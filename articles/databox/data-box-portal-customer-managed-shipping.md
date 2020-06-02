@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 2933eb216b7faed7b28fb53d79fec2f50bc4458d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c26f50d858d316cab0d4533187494e023cea5071
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749420"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266177"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Azure portal Azure Data Box için kendi kendine yönetilen dağıtımı kullanın
 
@@ -29,7 +29,7 @@ Bu makalede, bir Azure Data Box cihazının sıralaması, çekilmesi ve kapatıl
 * Singapur
 * Güney Kore
 
-## <a name="use-self-managed-shipping"></a>Kendi kendine yönetilen kargo kullan
+## <a name="use-self-managed-shipping"></a>Otomatik gönderimi kullanma
 
 Data Box bir sıra yerleştirdiğinizde, kendi kendine yönetilen teslim seçeneğini belirleyebilirsiniz.
 
@@ -41,7 +41,7 @@ Data Box bir sıra yerleştirdiğinizde, kendi kendine yönetilen teslim seçene
 3. Sevkiyat adresinizi girdikten sonra doğrulamanız ve siparişinizi doldurmanız gerekir.
    ![Kendi kendine yönetilen kargo](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
-4. Cihaz hazırlandıktan sonra bir toplama zamanlayabilirsiniz.
+4. Cihaz hazırlandıktan ve BT için bir e-posta bildirimi aldıktan sonra, bir toplama zamanlayabilirsiniz.
 
    Azure Data Box sırada **genel bakış** ' a gidin ve ardından **çekme zamanlaması**' nı seçin.
 
@@ -57,7 +57,7 @@ Data Box bir sıra yerleştirdiğinizde, kendi kendine yönetilen teslim seçene
 
    ![Yetkilendirme kodunuzu görüntüleme](media\data-box-portal-customer-managed-shipping\data-box-portal-auth-01b.png)
 
-   Bu **Yetkilendirme kodunu**bir yere getirin. Güvenlik gereksinimlerine göre, zamanlama alma ve bırakma sırasında, çekme ve bırakma için ulaşan kişinin adının sağlanması gerekir...
+   Bu **Yetkilendirme kodunu**bir yere getirin. Güvenlik gereksinimlerine göre, zamanlama alma sırasında, çekme için ulaşan kişinin adının sağlanması gerekir...
 
    Ayrıca, toplama için veri merkezine kimlerin gönderileceğini de öğreneceksiniz. Siz veya iletişim noktası, veri merkezinde doğrulanacak bir kamu onaylı fotoğraf KIMLIĞI içermelidir.
 

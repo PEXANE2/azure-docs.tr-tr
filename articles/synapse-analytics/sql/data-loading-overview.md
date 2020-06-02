@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 750898d8b3bb74672a44b8073563a4fca0b7eade
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 1e040ffeea7e0076052839ee7e1627ccbe11add4
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194095"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263217"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Azure SYNAPSE SQL havuzu için PolyBase veri yükleme stratejisi tasarlama
 
@@ -100,8 +100,6 @@ Dış tabloları tanımlama, veri kaynağını, metin dosyalarının biçimini v
 - [DıŞ VERI KAYNAĞı OLUŞTUR](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [DıŞ TABLO OLUŞTUR](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-
-Dış nesne oluşturma hakkında bir örnek için, yükleme öğreticisindeki [dış tablo oluşturma](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-external-tables-for-the-sample-data) adımına bakın.
 
 ### <a name="format-text-files"></a>Metin dosyalarını biçimlendirme
 

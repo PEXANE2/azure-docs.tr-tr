@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 4ec2f9101f724d0c5c6c5e52bb69fea82513efe5
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 04921cd617a688ebcf31bcec29cf26681914f44b
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118028"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247674"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -75,7 +75,7 @@ Evet.
 
 Azure Backup, Azure Backup Sunucusu ve DPM kullanılarak korunan dosyaların, klasörlerin ve uygulamaların yedeklenmesi için şu işletim sistemlerini destekler.
 
-**İşletim Sistemi** | **ISTEYIN** | **Ayrıntılar**
+**İşletim Sistemi** | **SKU** | **Bilgileri**
 --- | --- | ---
 İş İstasyonu | |
 Windows 10 64 bit | Enterprise, Pro, Home | Makinelerin en son hizmet paketlerini ve güncelleştirmeleri çalıştırması gerekir.
@@ -113,7 +113,7 @@ Azure VM | Bkz. [Azure VM yedeklemesi için destek matrisi](https://docs.microso
 
 Aşağıdaki tabloda, her bir veri kaynağı boyutunun nasıl belirlendiği açıklanmaktadır.
 
-**Veri kaynağı** | **Ayrıntılar**
+**Veri kaynağı** | **Bilgileri**
 --- | ---
 Birim |Yedeklenmekte olan tek bir birim VM'den yedeklenen verilerin miktarı.
 SQL Server veritabanı |Yedeklenmekte olan tek bir SQL veritabanının boyutu.
@@ -190,7 +190,7 @@ Hayır. Kurtarma işlemi ücretsizdir ve çıkış trafiği için sizden ücret 
 
 Yeni bir ilke uygulandığında yeni ilkenin zamanlama ve saklaması geçerli olur.
 
-- Bekletme süresi uzatıldıysa, yeni ilkeye göre tutulması için mevcut kurtarma noktaları işaretlenir.
+- Bekletme genişletildiğinde, var olan kurtarma noktaları, yeni ilkeye göre tutmak üzere işaretlenir.
 - Bekletme süresi kısaltıldıysa, bunlar sonraki temizleme işleminde kesilmek üzere işaretlenir ve sonra silinir.
 
 ## <a name="encryption"></a>Şifreleme

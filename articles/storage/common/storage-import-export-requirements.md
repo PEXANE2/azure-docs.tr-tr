@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 58997b20c01f33037a5e5e149caa59e1630373ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ded8aa0587ecb6bb756f3faa07cc816b7d46b561
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255320"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259584"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure İçeri/Dışarı Aktarma için sistem gereksinimleri
 
@@ -50,7 +50,7 @@ Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure Storage hesapla
 Her iş, yalnızca bir depolama hesabından veri aktarmak için kullanılabilir. Diğer bir deyişle, tek bir içeri/dışarı aktarma işi birden çok depolama hesabı arasında yayılamaz. Yeni bir depolama hesabı oluşturma hakkında bilgi için bkz. [depolama hesabı oluşturma](storage-account-create.md).
 
 > [!IMPORTANT]
-> Azure içeri aktarma verme hizmeti, [sanal ağ hizmeti uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md) özelliğinin etkinleştirildiği depolama hesaplarını desteklemez. 
+> Azure Içeri aktarma verme hizmeti, [sanal ağ hizmeti uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md)   özelliğinin etkinleştirildiği depolama hesaplarını desteklemez. 
 
 ## <a name="supported-storage-types"></a>Desteklenen depolama türleri
 
@@ -59,7 +59,7 @@ Aşağıdaki Depolama türleri listesi Azure Içeri/dışarı aktarma hizmeti il
 
 |İş  |Depolama hizmeti |Destekleniyor  |Desteklenmiyor  |
 |---------|---------|---------|---------|
-|İçeri Aktarma     |  Azure Blob depolama <br><br> Azure Dosya Depolama       | Blok Blobları ve sayfa Blobları desteklenir <br><br> Desteklenen dosyalar          |
+|İçeri Aktar     |  Azure Blob depolama <br><br> Azure Dosya Depolama       | Blok Blobları ve sayfa Blobları desteklenir <br><br> Desteklenen dosyalar          |
 |Dışarı Aktarma     |   Azure Blob depolama       | Blok Blobları, sayfa Blobları ve ekleme Blobları desteklenir         | Azure dosyaları desteklenmiyor
 
 
@@ -78,11 +78,13 @@ Aşağıdaki disk listesi Içeri/dışarı aktarma hizmeti ile kullanılmak üze
 |HDD     |  2,5 "<br>3,5 "       |SATA ıı, SATA ııı         |
 
 Aşağıdaki disk türleri desteklenmez:
+
 - USBs.
 - Yerleşik USB bağdaştırıcısı ile harici HDD.
 - Harici bir HDD 'nin kasasını içinde olan diskler.
 
 Tek bir içeri/dışarı aktarma işi şunları içerebilir:
+
 - En fazla 10 HDD/SSD.
 - Herhangi bir boyuttaki HDD/SSD karışımı.
 
@@ -90,9 +92,6 @@ Tek bir içeri/dışarı aktarma işi şunları içerebilir:
 
 Waımportexport aracını kullanarak sabit sürücüleri hazırlarken ve verileri kopyalarken, harici USB bağdaştırıcıları kullanabilirsiniz. Raf dışı USB 3,0 veya üzeri bağdaştırıcılar çalışmalıdır.
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Waımportexport aracını ayarlama](storage-import-export-tool-how-to.md)
 * [AzCopy komut satırı yardımcı programı ile veri aktarımı](storage-use-azcopy.md)
-* [Azure Içeri aktarma dışarı aktarma REST API örneği](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)

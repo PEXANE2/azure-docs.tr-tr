@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 8de6e9cff8149423f4b00b07e3113be6606181b5
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 72a76fb513dc6eb008fcf1d1e19ffc33e713cfdc
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714245"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259261"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Hızlı başlangıç: ilk statik Web uygulamanızı oluşturma
 
@@ -31,25 +31,25 @@ Bu makalede yeni bir depo oluşturmanızı kolaylaştırmak için GitHub şablon
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-- Yeni bir depo oluşturmak için aşağıdaki konuma gidin
+- GitHub 'da oturum açtığınızdan emin olun ve yeni bir depo oluşturmak için aşağıdaki konuma gidin
   - https://github.com/staticwebdev/angular-basic/generate
 - Deponuzu **-First-static-Web-App** olarak adlandırın
 
 # <a name="react"></a>[React](#tab/react)
 
-- Yeni bir depo oluşturmak için aşağıdaki konuma gidin
+- GitHub 'da oturum açtığınızdan emin olun ve yeni bir depo oluşturmak için aşağıdaki konuma gidin
   - https://github.com/staticwebdev/react-basic/generate
 - Deponuzu **-First-static-Web-App** olarak adlandırın
 
 # <a name="vue"></a>[Vue](#tab/vue)
 
-- Yeni bir depo oluşturmak için aşağıdaki konuma gidin
+- GitHub 'da oturum açtığınızdan emin olun ve yeni bir depo oluşturmak için aşağıdaki konuma gidin
   - https://github.com/staticwebdev/vue-basic/generate
 - Deponuzu **-First-static-Web-App** olarak adlandırın
 
 # <a name="no-framework"></a>[Çerçeve yok](#tab/vanilla-javascript)
 
-- Yeni bir depo oluşturmak için aşağıdaki konuma gidin
+- GitHub 'da oturum açtığınızdan emin olun ve yeni bir depo oluşturmak için aşağıdaki konuma gidin
   - https://github.com/staticwebdev/vanilla-basic/generate
 - Deponuzu **-First-static-Web-App** olarak adlandırın
 
@@ -72,7 +72,7 @@ Artık depo oluşturulduktan sonra, Azure portal statik bir Web uygulaması olu�
 - **Statik Web Apps (Önizleme)** seçeneğine tıklayın
 - **Oluştur** 'a tıklayın
 
-### <a name="basics"></a>Temel Bilgiler
+### <a name="basics"></a>Temel bilgiler
 
 Yeni uygulamanızı yapılandırıp bir GitHub deposuna bağlayarak başlayın.
 

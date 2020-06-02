@@ -3,15 +3,15 @@ title: Yönetilen kimlikler
 description: Yönetilen kimliklerin Azure App Service ve Azure Işlevlerinde nasıl çalıştığını, yönetilen bir kimliği yapılandırmayı ve arka uç kaynağı için bir belirteç oluşturmayı öğrenin.
 author: mattchenderson
 ms.topic: article
-ms.date: 04/14/2020
+ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 0bb17ab98dc17bbe7623467451acc65a126bcaf1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: d206ff114cd08f2ab3f2068076bf7cadb047a689
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779966"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258475"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma
 
@@ -79,7 +79,9 @@ Aşağıdaki adımlar, bir Web uygulaması oluşturma ve CLı kullanarak bir kim
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Aşağıdaki adımlar, bir Web uygulaması oluşturma ve Azure PowerShell kullanarak bir kimlik atama işleminde size yol gösterecektir:
+Aşağıdaki adımlar, bir uygulama oluşturmak ve Azure PowerShell kullanarak bir kimlik atamak için size yol gösterecektir. Bir Web uygulaması ve bir işlev uygulaması oluşturma yönergeleri farklıdır.
+
+#### <a name="using-azure-powershell-for-a-web-app"></a>Bir Web uygulaması için Azure PowerShell kullanma
 
 1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeleri kullanarak Azure PowerShell yükleyip `Login-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
 
@@ -87,20 +89,39 @@ Aşağıdaki adımlar, bir Web uygulaması oluşturma ve Azure PowerShell kullan
 
     ```azurepowershell-interactive
     # Create a resource group.
-    New-AzResourceGroup -Name myResourceGroup -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Create an App Service plan in Free tier.
-    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
+    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName $resourceGroupName -Tier Free
 
     # Create a web app.
-    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
+    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName $resourceGroupName
     ```
 
 3. `Set-AzWebApp -AssignIdentity`Bu uygulamanın kimliğini oluşturmak için komutunu çalıştırın:
 
     ```azurepowershell-interactive
-    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
+    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName $resourceGroupName 
     ```
+
+#### <a name="using-azure-powershell-for-a-function-app"></a>İşlev uygulaması için Azure PowerShell kullanma
+
+1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeleri kullanarak Azure PowerShell yükleyip `Login-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
+
+2. Azure PowerShell kullanarak bir işlev uygulaması oluşturun. Azure Işlevleri ile Azure PowerShell kullanma hakkında daha fazla örnek için, [az. Functions başvurusuna](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)bakın:
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account.
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName $sku
+
+    # Create a function app with a system-assigned identity.
+    New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType SystemAssigned
+    ```
+
+Bunun yerine, var olan bir işlev uygulamasını da güncelleştirebilirsiniz `Update-AzFunctionApp` .
 
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanma
 
@@ -176,6 +197,35 @@ Kullanıcı tarafından atanan kimlik ile uygulama oluşturmak için kimlik olu�
 6. Daha önce oluşturduğunuz kimliği arayın ve seçin. **Ekle**'ye tıklayın.
 
     ![App Service yönetilen kimliği](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
+
+### <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Aşağıdaki adımlar, bir uygulama oluşturmak ve Azure PowerShell kullanarak bir kimlik atamak için size yol gösterecektir.
+
+> [!NOTE]
+> Azure PowerShell Command'in geçerli sürümü, Azure App Service için Kullanıcı tarafından atanan kimlikleri desteklemez. Aşağıdaki yönergeler Azure Işlevleri içindir.
+
+1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeleri kullanarak Azure PowerShell yükleyip `Login-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
+
+2. Azure PowerShell kullanarak bir işlev uygulaması oluşturun. Azure Işlevleri ile Azure PowerShell kullanma hakkında daha fazla örnek için, [az. Functions başvurusuna](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)bakın. Aşağıdaki komut dosyası Ayrıca, `New-AzUserAssignedIdentity` [Azure PowerShell kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)ile ayrı olarak yüklenmesi gereken öğesinin kullanımını da sağlar.
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account.
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName $sku
+
+    # Create a user-assigned identity. This requires installation of the "Az.ManagedServiceIdentity" module.
+    $userAssignedIdentity = New-AzUserAssignedIdentity -Name $userAssignedIdentityName -ResourceGroupName $resourceGroupName
+
+    # Create a function app with a user-assigned identity.
+    New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType UserAssigned -IdentityId $userAssignedIdentity.Id
+    ```
+
+Bunun yerine, var olan bir işlev uygulamasını da güncelleştirebilirsiniz `Update-AzFunctionApp` .
 
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanma
 
@@ -428,7 +478,11 @@ Java uygulamaları ve işlevleri için, yönetilen bir kimlikle çalışmanın e
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>Kimlik kaldırma
 
-Portal, PowerShell veya CLı kullanılarak oluşturulduğu gibi özellik devre dışı bırakılarak sistem tarafından atanan bir kimlik kaldırılabilir. Kullanıcı tarafından atanan kimlikler tek tek kaldırılabilir. Tüm kimlikleri kaldırmak için, [ARM şablonunda](#using-an-azure-resource-manager-template)türü "none" olarak ayarlayın:
+Portal, PowerShell veya CLı kullanılarak oluşturulduğu gibi özellik devre dışı bırakılarak sistem tarafından atanan bir kimlik kaldırılabilir. Kullanıcı tarafından atanan kimlikler tek tek kaldırılabilir. Tüm kimlikleri kaldırmak için kimlik türünü "none" olarak ayarlayın.
+
+Sistem tarafından atanan bir kimliğin bu şekilde kaldırılması, Azure AD 'den de silinecek. Uygulama kaynağı silindiğinde, sistem tarafından atanan kimlikler de Azure AD 'den otomatik olarak kaldırılır.
+
+[ARM şablonundaki](#using-an-azure-resource-manager-template)tüm kimlikleri kaldırmak için:
 
 ```json
 "identity": {
@@ -436,7 +490,12 @@ Portal, PowerShell veya CLı kullanılarak oluşturulduğu gibi özellik devre d
 }
 ```
 
-Sistem tarafından atanan bir kimliğin bu şekilde kaldırılması, Azure AD 'den de silinecek. Uygulama kaynağı silindiğinde, sistem tarafından atanan kimlikler de Azure AD 'den otomatik olarak kaldırılır.
+Azure PowerShell tüm kimlikleri kaldırmak için (yalnızca Azure Işlevleri):
+
+```azurepowershell-interactive
+# Update an existing function app to have IdentityType "None".
+Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -IdentityType None
+```
 
 > [!NOTE]
 > Ayrıca, yalnızca yerel belirteç hizmetini devre dışı bırakan WEBSITE_DISABLE_MSI ayarlanbilen bir uygulama ayarı da vardır. Ancak, kimliği yerinde bırakır ve araç, yönetilen kimliği "açık" veya "etkin" olarak göstermeye devam eder. Sonuç olarak, bu ayarın kullanılması önerilmez.

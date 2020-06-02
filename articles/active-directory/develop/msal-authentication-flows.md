@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ce81af90baeeda519f1b56d1e10a46923ebd22c2
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 47978317b1ae914e952b764def854d8a011293e0
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772140"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266619"
 ---
 # <a name="authentication-flows"></a>Kimlik doğrulama akışları
 
@@ -43,7 +43,7 @@ Bu makalede, Microsoft kimlik doğrulama kitaplığı (MSAL) tarafından sunulan
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Yetkilendirme kodu akışı](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Örtük akış](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
-|[Karma OıDC akışı](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[Karma OıDC akışı](v2-protocols-oidc.md#protocol-diagram-access-token-acquisition)| | x  | |          |            x   |
 |[Belirteç satın alma yenileme](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | belirteci Yenile | x | x | x| |
 |[On-behalf-of akışı](v2-oauth2-on-behalf-of-flow.md) | erişim belirteci| x| x| x| |
 |[Cihaz kod akışı](v2-oauth2-device-code.md) | | x| x| x| |
@@ -87,7 +87,7 @@ Kullanıcılar Web uygulamalarında (Web siteleri) oturum açtığında, Web uyg
 1. Erişim belirteci için kullanılan bir yetkilendirme kodu ister.
 2. Bir Web API 'sini çağırmak için erişim belirtecini kullanır.
 
-### <a name="considerations"></a>Dikkat edilmesi gerekenler
+### <a name="considerations"></a>Önemli noktalar
 
 - Bir belirteci kullanmak için yalnızca bir kez yetkilendirme kodu kullanabilirsiniz. Aynı yetkilendirme koduyla bir belirteci birden çok kez edinmeyi denemeyin (protokol standart belirtimi tarafından açıkça yasaklanmıştır). Kodu kasıtlı olarak birkaç kez kullandıysanız veya bir Framework 'ün sizin için de yaptığı farkında olmadığınız için aşağıdaki hatayı alırsınız:`AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
 

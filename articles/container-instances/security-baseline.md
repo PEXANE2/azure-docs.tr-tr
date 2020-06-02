@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 5845a49dbb003c184b9520f85e6f1be14315081b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 3897ef75be34d4413e06dc5459739baec3afdcec
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119001"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84268008"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Container Instances için Azure Güvenlik temeli
 
@@ -157,7 +157,7 @@ Ayrıca, karmaşık güvenlik yapılandırmasını basitleştirmeye yardımcı o
 
 **Rehberlik**: tek bir şema tanımında Azure kaynakları Yöneticisi şablonları, RBAC denetimleri ve ilkeleri gibi temel ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları da kullanabilirsiniz. Şema 'i yeni aboneliklere uygulayabilir ve sürüm oluşturma aracılığıyla denetim ve yönetimi ayarlayabilirsiniz. 
 
-* [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manag)
+* [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
 * [Ağ için Azure Ilke örnekleri](https://docs.microsoft.com/azure/governance/policy/samples/#network)
 

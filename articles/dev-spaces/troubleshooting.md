@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 1242aa0e6c8255d778da55b0e574f3d12f61c381
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: a6ce0f2a4d45f0a703676c76f429dbe07a4517f4
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872024"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263508"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
 
@@ -97,7 +97,7 @@ Bu sorunu onarmak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-
 
 Azure Dev Spaces AKS kümenizin API sunucusuna bağlanamadığınızda bu hatayla karşılaşabilirsiniz.
 
-AKS kümesi API sunucunuza erişim kilitliyse veya AKS kümeniz için etkinleştirilmiş [API sunucusu YETKILENDIRILMIŞ IP adresi aralıklarına](../aks/api-server-authorized-ip-ranges.md) sahipseniz, [bölgeniz temelinde ek aralıklara izin vermek](https://github.com/Azure/dev-spaces/tree/master/public-ips)için kümenizi [oluşturmanız](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) veya [güncelleştirmeniz](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) gerekir.
+AKS kümesi API sunucunuza erişim kilitliyse veya AKS kümeniz için etkinleştirilmiş [API sunucusu YETKILENDIRILMIŞ IP adresi aralıklarına](../aks/api-server-authorized-ip-ranges.md) sahipseniz, [bölgeniz temelinde ek aralıklara izin vermek](configure-networking.md#aks-cluster-network-requirements) için kümenizi [oluşturmanız](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) ya da [güncelleştirmeniz](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) gerekir
 
 Kubectl komutlarını çalıştırarak API sunucusunun kullanılabilir olduğundan emin olun. API sunucusu kullanılamıyorsa, lütfen AKS desteğiyle iletişim kurun ve API sunucusu çalışırken yeniden deneyin.
 
@@ -150,7 +150,7 @@ Bu hata, Helm istemcisi artık kümede çalışan Tiller Pod ile iletişim kurmu
 
 Bu sorunu onarmak için kümenizdeki aracı düğümlerini yeniden başlatın.
 
-### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>"Azds- \< Identifier \> - \< spacename \> - \< ServiceName ' hatası \> başarısız oldu: ' \< ServiceName \> ' Hizmetleri zaten var" veya "ServiceName için çekme erişimi reddedildi \< \> , depo yok veya ' Docker login' gerektirebilir"
+### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>"Sürüm azds- \<identifier\> - \<spacename\> - \<servicename\> başarısız: ' ' Hizmetleri \<servicename\> zaten var" veya "çekme erişimi engellendi \<servicename\> , depo yok veya ' Docker login' gerektirebilir" hatası olabilir
 
 Bu hatalar, `helm install` `helm upgrade` `helm delete` `azds up` `azds down` aynı geliştirme alanı içinde dev Spaces komutlarıyla (ve gibi) çalışan doğrudan HELD komutlarının (örneğin, veya) karıştıradıysanız meydana gelebilir. Bu durum, dev Spaces 'ın aynı geliştirme alanında çalışan kendi Tiller örneğinizle çakışan kendi Tiller örneğine sahip olduğu için oluşur.
 
@@ -272,7 +272,7 @@ Bu sorunu onarmak için, değiştirmeye çalıştığınız Kubernetes hizmetini
 * İsteğe bağlı olarak, *Başlangıç türünü* *devre dışı*olarak ayarlayarak devre dışı bırakabilirsiniz.
 * *Tamam*'a tıklayın.
 
-### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>"Pod için Azureassignedıdentity bulunamadı: azds/AZD-Web kancası-Deployment- \< ID \> atanmış durumda"
+### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>"Pod için Azureassignedıdentity bulunamadı: azds/AZD-Web kancası-Deployment- \<id\> , atanan durumunda"
 
 [Yönetilen kimliğe](../aks/use-managed-identity.md) sahip bir aks kümesinde Azure dev Spaces bir hizmeti çalıştırırken ve [Pod tarafından yönetilen kimlikleri](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) yüklüyken, bu işlem *grafik yükleme* adımından sonra askıda kalabilir. Azds *-Injector-Web kancasını* *azds* ad alanında inceleyebilir, bu hatayı görebilirsiniz.
 
@@ -591,7 +591,7 @@ Küme düğümlerinden gelen çıkış trafiğinin kısıtlandığı bir AKS kü
 | storage.googleapis.com | HTTP: 443 | Held/Tiller görüntülerini çekmek için|
 | AZD 'ler- <guid> . <location> . azds.io | HTTPS: 443 | Denetleyicinize yönelik Azure Dev Spaces arka uç hizmetleriyle iletişim kurmak için. % USERPROFILE% azds\settings.JSON içindeki "dataplaneFqdn" içinde tam FQDN bulunabilir \.|
 
-### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Hata "küme \< kümesi, \> abonelik SubscriptionID 'da bulunamadı \< \> "
+### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Hata "küme \<cluster\> abonelikte bulunamadı \<subscriptionId\> "
 
 Kubeconfig dosyanız, Azure Dev Spaces istemci tarafı araçları ile kullanmaya çalıştığınız sayıdan farklı bir kümeyi veya aboneliği hedefliyorsanız bu hatayı görebilirsiniz. Azure Dev Spaces istemci tarafı araçları, kümesini seçmek ve kümeyle iletişim kurmak için [bir veya daha fazla kubeconfig dosyası](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) kullanan *kubectl*davranışını çoğaltır.
 

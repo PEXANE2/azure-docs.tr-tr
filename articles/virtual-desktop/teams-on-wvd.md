@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 90432d3aa0ce9ebdecc7d0314b1352e46db0ac47
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 3a14ffc9f103e58681418eacbb35b72b704f2d61
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234576"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267146"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma
 
@@ -32,8 +32,9 @@ Microsoft ekipleri için medya iyileştirmesi sayesinde, Windows Masaüstü iste
 Windows sanal masaüstü 'nde Microsoft ekipleri kullanabilmeniz için şu işlemleri yapmanız gerekir:
 
 - [Ağınızı](/microsoftteams/prepare-network/) Microsoft ekipleri için hazırlayın.
-- [Windows Masaüstü Istemcisini](connect-windows-7-and-10.md) Microsoft ekipleri [donanım gereksinimlerini](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)karşılayan bir Windows 10 cihazına yükler.
+- Windows [masaüstü istemcisini](connect-windows-7-and-10.md) , Windows [bilgisayardaki takımlar için Microsoft ekipleri donanım gereksinimlerini](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)karşılayan bir Windows 10 cihazına yükler.
 - Windows 10 çoklu oturum veya Windows 10 Enterprise sanal makinesine (VM) bağlanın.
+- Makine başına yükleme kullanarak takımlar masaüstü uygulamasını konağa yükleme. Microsoft ekipleri için medya iyileştirmesi, takımlar masaüstü uygulaması sürüm 1.3.00.4461 veya üzerini gerektirir.
 
 ## <a name="install-the-teams-desktop-app"></a>Takımlar masaüstü uygulamasını yükler
 
@@ -46,7 +47,7 @@ Ekipte makine başına yüklemeyi etkinleştirmek için konakta aşağıdaki kay
 1. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın. **HKEY_LOCAL_MACHINE \Software\microsoft\ekiplerine**gidin.
 2. Takımlar anahtarı için aşağıdaki değeri oluşturun:
 
-| Adı             | Tür   | Veri/değer  |
+| Name             | Tür   | Veri/değer  |
 |------------------|--------|-------------|
 | IsWVDEnvironment | DWORD  | 1           |
 
@@ -59,6 +60,10 @@ Ekipte makine başına yüklemeyi etkinleştirmek için konakta aşağıdaki kay
 Ekipler masaüstü uygulamasını makine başına yükleme kullanarak dağıtabilirsiniz. Microsoft ekiplerinizi Windows sanal masaüstü ortamınıza yüklemek için:
 
 1. Ortamınızla eşleşen [TAKıMLAR MSI paketini](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/) indirin. 64 bitlik bir yükleyicinin bir 64 bit işletim sisteminde kullanılması önerilir.
+
+      > [!NOTE]
+      > Microsoft ekipleri için medya iyileştirmesi, takımlar masaüstü uygulaması sürüm 1.3.00.4461 veya üzerini gerektirir.
+
 2. MSI 'yi konak VM 'ye yüklemek için bu komutu çalıştırın.
 
       ```console
@@ -138,7 +143,7 @@ Microsoft ekipleri desteğiyle iletişim kurmak için [Microsoft 365 yönetim me
 
 Bir konak havuzunun Uzak Masaüstü Protokolü (RDP) özelliklerini, çok Monitor deneyimi veya mikrofon ve ses yeniden yönlendirmeyi etkinleştirme gibi özelleştirme, kullanıcılarınız için gereksinimlerinize göre en iyi deneyim sunmanızı sağlar.
 
-Mikrofon ve kamera yeniden yönlendirmeyi etkinleştirmek için aşağıdaki RDP özelliklerini ayarlayın:
+Ekipleri medya iyileştirmesi ile kullanılırken cihaz yeniden yönlendirmelerini etkinleştirme gerekli değildir. Medya iyileştirmesi olmadan takımlar kullanıyorsanız, mikrofon ve kamera yeniden yönlendirmeyi etkinleştirmek için aşağıdaki RDP özelliklerini ayarlayın:
 
 - `audiocapturemode:i:1`Uzak oturumdaki yerel cihazdan ve redirets ses uygulamalarından ses yakalamaya izin vermez.
 - `audiomode:i:0`Yerel bilgisayarda ses çalar.

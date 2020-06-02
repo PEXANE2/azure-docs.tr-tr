@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 01/4/2020
 ms.author: metan
-ms.openlocfilehash: 2eab7ab62f6a7a105dab33aa889af9f2be3a3fa3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b9efe70e8658e25d61decffbe44dec776890b17b
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80052376"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267282"
 ---
 # <a name="what-is-immersive-reader"></a>Tam Ekran Okuyucu nedir?
 
@@ -55,12 +55,12 @@ Derinlikli okuyucu herkes için daha fazla erişilebilir hale getirmek üzere ta
 
 ## <a name="how-does-immersive-reader-work"></a>Modern okuyucu nasıl çalışır?
 
-Modern okuyucu, modern okuyucu JavaScript SDK 'Sı kullanılarak çağrıldığında, mevcut Web uygulamanızın en üstünde bir `iframe`ile görüntülenen tek başına bir Web uygulamasıdır. Modern okuyucuyu başlatmak için API 'YI çağırdığınızda, tam ekran okuyucusunda göstermek istediğiniz içeriği belirtin. SDK 'mız, okuma ve metin okuma, `iframe` çeviri vb. için içeriği Işleyen, tam ekran okuyucu arka uç hizmeti ile iletişim oluşturma ve stillendirmeyi idare eder.
+Modern okuyucu, modern okuyucu JavaScript SDK 'Sı kullanılarak çağrıldığında, mevcut Web uygulamanızın en üstünde bir ile görüntülenen tek başına bir Web uygulamasıdır `iframe` . Modern okuyucuyu başlatmak için API 'YI çağırdığınızda, tam ekran okuyucusunda göstermek istediğiniz içeriği belirtin. SDK 'mız, `iframe` okuma ve metin okuma, çeviri vb. için içeriği işleyen, tam ekran okuyucu arka uç hizmeti ile iletişim oluşturma ve stillendirmeyi idare eder.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Tam Ekran Okuyucu’yu kullanmaya başlama:
 
-* [Hızlı](./quickstart.md) başlangıca atlayın
+* [Hızlı](./quickstarts/client-libraries.md?pivots=programming-language-csharp) başlangıçlara atlayın
 * [GitHub 'Da modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) keşfet
 * [Tam ekran okuyucu SDK başvurusunu](./reference.md) okuyun

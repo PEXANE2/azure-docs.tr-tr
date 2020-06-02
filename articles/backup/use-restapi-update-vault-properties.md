@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak kasasının yapılandırmasını g
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 4c604fe067e73f5f9a17f4b5f810708121cff767
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: eadcebdaf4db3dbe6c0a62b8631ff7d76fa50fad
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744575"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248235"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>REST API kullanarak Azure kurtarma hizmetleri Kasası yapılandırmasını güncelleştirme
 
@@ -21,7 +21,7 @@ Korunan bir öğenin yedeklerini silmek, izlenmesi gereken önemli bir işlemdir
 
 Ancak bu özelliğin gerekmediği senaryolar vardır. Azure kurtarma hizmetleri Kasası, içinde yedekleme öğeleri varsa, hatta geçici olarak silinenler silinemez. Bu, kasanın hemen silinmesi gerektiğinde bir sorun oluşturabilir. Örneğin: dağıtım işlemleri genellikle aynı iş akışındaki oluşturulan kaynakları temizler. Dağıtım bir kasa oluşturabilir, bir öğe için yedeklemeleri yapılandırabilir, test geri yükleme yapabilir ve sonra yedekleme öğelerini ve kasasını silmeye devam edebilir. Kasa silme işlemi başarısız olursa, tüm dağıtım başarısız olabilir. Geçici silme işleminin devre dışı bırakılması, hemen silmeyi güvence altına almanın tek yoludur.
 
-Bu nedenle, senaryoya bağlı olarak, müşterinin belirli bir kasa için geçici silme devre dışı bırakılıp başlatılmayacağını dikkatle seçmesi gerekir. Daha fazla bilgi için bkz. [geçici silme makalesi](backup-azure-security-feature-cloud.md).
+Bu nedenle, senaryoya bağlı olarak belirli bir kasa için geçici silme devre dışı bırakılıp başlatılmayacağını dikkatle seçmeniz gerekir. Daha fazla bilgi için bkz. [geçici silme makalesi](backup-azure-security-feature-cloud.md).
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>REST API kullanarak geçici silme durumunu getirme
 
@@ -33,7 +33,7 @@ Bir kasadaki geçici silme işleminin geçerli durumunu getirmek için aşağıd
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-Get URI 'si `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}` parametreleri. Bu örnekte, `{vaultName}` "testkasası" ve `{vaultresourceGroupName}` "testVaultRG" dir. URI 'de tüm gerekli parametreler verildiğinden, ayrı bir istek gövdesi gerekmez.
+Get URI 'si, `{subscriptionId}` `{vaultName}` , `{vaultresourceGroupName}` parametreleri. Bu örnekte, `{vaultName}` "Testkasası" ve `{vaultresourceGroupName}` "testVaultRG" dir. URI 'de tüm gerekli parametreler verildiğinden, ayrı bir istek gövdesi gerekmez.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
@@ -71,7 +71,7 @@ REST API kullanarak kurtarma hizmetleri kasasının geçici silme durumunu günc
 PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-Düzeltme Eki URI 'si `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}` parametreleri. Bu örnekte, `{vaultName}` "testkasası" ve `{vaultresourceGroupName}` "testVaultRG" dir. URI 'yi yukarıdaki değerlerle değiştirirseniz URI şöyle görünecektir.
+Düzeltme Eki URI 'si `{subscriptionId}` , `{vaultName}` , `{vaultresourceGroupName}` parametreleri. Bu örnekte, `{vaultName}` "Testkasası" ve `{vaultresourceGroupName}` "testVaultRG" dir. URI 'yi yukarıdaki değerlerle değiştirirseniz URI şöyle görünecektir.
 
 ```http
 PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
@@ -88,7 +88,7 @@ Daha fazla ayrıntı için [REST API belgelerine](https://docs.microsoft.com/res
 |Özelliği     |         |   Dize      |  İsteğe bağlı eTag       |
 |location     |  true       |Dize         |   Kaynak konumu      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Kasanın özellikleri       |
-|etiketler     |         | Nesne        |     Kaynak etiketleri    |
+|tags     |         | Nesne        |     Kaynak etiketleri    |
 
 #### <a name="example-request-body"></a>Örnek istek gövdesi
 

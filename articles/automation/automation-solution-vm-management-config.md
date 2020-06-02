@@ -3,14 +3,14 @@ title: Azure Otomasyonu VM'leri çalışma saatleri dışında başlat/durdur ya
 description: Bu makalede, farklı kullanım durumlarını veya senaryolarını desteklemek üzere VM'leri çalışma saatleri dışında başlat/durdur özelliğinin nasıl yapılandırılacağı açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/01/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: b2f2939c6b7d07e128688f43e98b2a6b29595e1f
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 3fbd6292f654071f74b4dfccc5e4de393ccfff02
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204398"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266725"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur Yapılandır
 
@@ -50,7 +50,7 @@ Eylemi bir abonelik ve kaynak grubuna karşı hedefleyerek veya VM 'lerin belirl
 
 3. **WhatIf** parametre alanını true olarak ayarlayın.
 
-4. Değişkeni, `External_ExcludeVMNames` virgülle ayrılmış VM 'ler listesiyle yapılandırın (VM1, VM2, VM3).
+4. Değişkeni, virgülle `External_ExcludeVMNames` ayrılmış değerler arasında boşluk olmadan, virgülle ayrılmış VM 'lerin (VM1, VM2, VM3) bir listesiyle yapılandırın.
 
 5. Bu senaryo ve değişkenlerini dikkate almaz `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupnames` . Bu senaryo için kendi Otomasyon zamanlamanızı oluşturmanız gerekir. Ayrıntılar için bkz. [Azure Otomasyonu 'nda runbook 'U zamanlama](shared-resources/schedules.md).
 
@@ -81,7 +81,7 @@ Dağıtılmış bir iş yükünü destekleyen birden çok VM üzerinde iki veya 
 
 4. **WhatIf** değerini true olarak ayarlayın. 
 
-5. Değişkeni, `External_ExcludeVMNames` virgülle ayrılmış VM 'ler listesiyle yapılandırın.
+5. `External_ExcludeVMNames`Değişkeni, virgülle ayrılmış değerler arasında boşluk olmadan, virgülle ayrılmış VM 'ler listesiyle yapılandırın.
 
 6. Bu senaryo ve değişkenlerini dikkate almaz `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupnames` . Bu senaryo için kendi Otomasyon zamanlamanızı oluşturmanız gerekir. Ayrıntılar için bkz. [Azure Otomasyonu 'nda runbook 'U zamanlama](shared-resources/schedules.md).
 
@@ -128,7 +128,7 @@ Eylemi bir abonelik ve kaynak grubuna karşı etkinleştirebilir ve hedefleyebil
 
 1. Yeni bir [zamanlama](shared-resources/schedules.md#create-a-schedule) oluşturun ve bu parametreyi **AutoStop_CreateAlert_Parent** runbook 'una bağlayın, bu da PARAMETREYE virgülle ayrılmış bir VM adları listesi ekler `VMList` .
 
-2. İsteğe bağlı olarak, bazı sanal makineleri yeniden durdur eyleminden dışlamak istiyorsanız, değişkene ayrılmış bir VM adları listesi ekleyebilirsiniz `External_ExcludeVMNames` .
+2. İsteğe bağlı olarak, bazı VM 'Leri tekrar durdurma eyleminden dışlamak istiyorsanız, değişkene ayrılmış bir VM adları listesi (boşluk olmadan) ekleyebilirsiniz `External_ExcludeVMNames` .
 
 ## <a name="configure-email-notifications"></a>E-posta bildirimlerini yapılandırma
 
@@ -159,13 +159,13 @@ Aşağıda, özelliği sanal makineleri kapattığında gönderilen örnek bir e
 
 Özelliği çalışırken bir VM 'nin dahil edilmesini sağlamanın iki yolu vardır:
 
-* Özelliğin üst [runbook](automation-solution-vm-management.md#runbooks) 'larının her biri bir `VMList` parametreye sahiptir. Durumunuz için uygun üst runbook 'u zamanlarken bu parametreye, virgülle ayrılmış bir VM adları listesi geçirebilirsiniz ve bu VM 'Ler Özellik çalıştırıldığında dahil edilir.
+* Özelliğin üst [runbook](automation-solution-vm-management.md#runbooks) 'larının her biri bir `VMList` parametreye sahiptir. Koşullarınız için uygun üst runbook 'u zamanlarken bu parametreye, virgülle ayrılmış bir VM adı listesi (boşluk olmadan) geçirebilirsiniz ve bu VM 'Ler Özellik çalıştırıldığında dahil edilir.
 
 * Birden çok VM seçmek için, `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` başlatmak veya durdurmak Istediğiniz VM 'leri içeren kaynak grubu adlarını ayarlayın. Ayrıca, `*` özelliğin abonelikteki tüm kaynak grupları üzerinde çalışmasını sağlamak için değişkenlerini değerine ayarlayabilirsiniz.
 
 ### <a name="exclude-a-vm"></a>VM hariç tutuma
 
-VM 'Leri, çalışma saatleri dışında durdurma/başlatma VM 'lerinden dışlamak için, adını `External_ExcludeVMNames` değişkenine ekleyebilirsiniz. Bu değişken, özelliğinden çıkarılacak belirli VM 'lerin virgülle ayrılmış listesidir. Bu liste 140 VM 'Lerle sınırlıdır. Bu listeye 140 'den fazla VM eklerseniz, dışarıda bırakılacak şekilde ayarlanan VM 'Ler istenmeden başlatılabilir veya durmuş olabilir.
+VM 'Leri, çalışma saatleri dışında durdurma/başlatma VM 'lerinden dışlamak için, adını `External_ExcludeVMNames` değişkenine ekleyebilirsiniz. Bu değişken, özelliğin dışında tutulacak belirli VM 'lerin (boşluk olmadan) virgülle ayrılmış listesidir. Bu liste 140 VM 'Lerle sınırlıdır. Bu listeye 140 'den fazla VM eklerseniz, dışarıda bırakılacak şekilde ayarlanan VM 'Ler istenmeden başlatılabilir veya durmuş olabilir.
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>Başlatma ve kapatılma zamanlamalarını değiştirme
 

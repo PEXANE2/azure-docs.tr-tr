@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ea44355795f0685f42de1306e979707f34d8f142
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742764"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84264375"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure haritalar için en iyi uygulamalar Arama Hizmeti
 
-Azure haritalar [Arama hizmeti](https://docs.microsoft.com/rest/api/maps/search) çeşitli yetenekler sunan API 'leri içerir. Örneğin, arama adresi API 'SI, belirli bir konum etrafında ilgilendiğiniz noktaları (POı) veya verileri bulabilir. 
+Azure haritalar [Arama hizmeti](https://docs.microsoft.com/rest/api/maps/search) , geliştiricilerin adresleri, yerleri, iş listelerini ada veya kategoriye göre ve diğer coğrafi bilgileri aramasına yardımcı olmak için çeşitli yetenekler sunan API 'leri içerir. Örneğin,[benzer arama API 'si](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) kullanıcıların bir adres veya ilgi noktası (POI) aramasını sağlar.
 
 Bu makalede Arama Hizmeti Azure Maps 'tan veri çağırdığınızda ses uygulamalarının nasıl uygulanacağı açıklanır. Şunları öğrenirsiniz:
 
-* İlgili eşleşmeleri döndürmek için sorgular oluşturun.
-* Arama sonuçlarını sınırlayın.
-* Sonuç türleri arasındaki farkları öğrenin.
-* Adres Arama-Yanıt yapısını okuyun.
+* İlgili eşleşmeleri döndürmek için sorgular oluşturun
+* Arama sonuçlarını sınırla
+* Sonuç türleri arasındaki farkları öğrenin
+* Adres Arama-Yanıt yapısını okuyun
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -33,7 +33,7 @@ Azure haritalar hizmeti API 'Lerine çağrı yapmak için bir Azure Maps hesabı
 Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
 > [!TIP]
-> Arama Hizmeti sorgulamak için [Postman uygulamasını](https://www.getpostman.com/apps) kullanarak Rest çağrıları oluşturabilirsiniz. İsterseniz dilediğiniz API geliştirme ortamını de kullanabilirsiniz.
+> Arama Hizmeti sorgulamak için [Postman uygulamasını](https://www.getpostman.com/apps) kullanarak REST API çağrıları oluşturabilirsiniz. İsterseniz dilediğiniz API geliştirme ortamını de kullanabilirsiniz.
 
 ## <a name="best-practices-to-geocode-addresses"></a>Kodlamayı adreslerine yönelik en iyi uygulamalar
 
@@ -61,7 +61,7 @@ Kullanıcı için ilgili alana sonuç olarak, her zaman mümkün olduğunca fazl
 
 #### <a name="fuzzy-search-parameters"></a>Benzer arama parametreleri
 
-Bir arama sorgusuna yönelik Kullanıcı girdlerinizi bilmiyorsanız, Azure haritalar [arama, benzer API 'yi](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) kullanmanızı öneririz. API, POı aramasını ve coğrafi kodlamayı kurallı *tek satırlık bir aramada*birleştirir: 
+Bir arama sorgusuna yönelik Kullanıcı girdlerinizi bilmiyorsanız, Azure haritalar [arama, benzer API 'yi](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) kullanmanızı öneririz. Örneğin, kullanıcıdan gelen giriş bir adres veya Ilgi noktası (POı) türünde olabilir, *örn.* API, POı aramasını ve coğrafi kodlamayı kurallı *tek satırlık bir aramada*birleştirir: 
 
 * `minFuzzyLevel`Ve `maxFuzzyLevel` parametreleri, sorgu parametreleri kullanıcının istediği bilgilerle tam olarak eşleşmediği zaman bile ilgili eşleşmeleri döndürmeye yardımcı olur. Performansı en üst düzeye çıkarmak ve olağandışı sonuçları azaltmak için arama sorgularını, ve varsayılan değerleri olarak ayarlayın `minFuzzyLevel=1` `maxFuzzyLevel=2` . 
 
@@ -85,7 +85,7 @@ Bir arama sorgusuna yönelik Kullanıcı girdlerinizi bilmiyorsanız, Azure hari
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Coğrafya varlık türü için ters coğrafi kod ve filtre
 
-[Arama adresi ters API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)'sinde ters coğrafi kod araması yaptığınızda hizmet, yönetim alanlarının çokgenler döndürebilir.Belirli Coğrafya varlık türlerine aramayı daraltmak için, `entityType` isteklerinizin parametresini ekleyin. 
+[Arama adresi ters API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)'sinde ters coğrafi kod araması yaptığınızda hizmet, yönetim alanlarının çokgenler döndürebilir. Örneğin, bir şehirde alan poligonu getirmek isteyebilir.Belirli Coğrafya varlık türlerine aramayı daraltmak için, `entityType` isteklerinizin parametresini ekleyin. 
 
 Elde edilen yanıt, Coğrafya KIMLIĞI ve eşleşen varlık türü içerir. Birden fazla varlık sağlarsanız, uç nokta *kullanılabilir en küçük varlığı*döndürür. [Arama Çokgen hizmeti](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)aracılığıyla Coğrafya geometrisini almak için döndürülen geometri kimliğini kullanabilirsiniz.
 

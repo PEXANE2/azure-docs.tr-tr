@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/28/2020
 tags: connectors
-ms.openlocfilehash: 1eb017740fb13dbc4f67b11ad8768e48e5b29010
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: a44e0e9f2427fc5fcb44a78fb0a1798b219f9200
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171540"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249170"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps gelen HTTPS isteklerini alın ve bunlara yanıt verin
 
@@ -51,7 +51,7 @@ Istek tetikleyicisi, mantıksal uygulamanıza gelen çağrıları yetkilendirmek
 
 Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile ÇAĞRıLABILIR bir HTTPS uç noktası oluşturur. Bu olay gerçekleştiğinde tetikleyici ateşlenir ve mantıksal uygulamayı çalıştırır. Tetikleyicinin temel alınan JSON tanımı ve bu tetikleyiciyi çağırma hakkında daha fazla bilgi için, bkz. [istek tetikleme türü](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) ve Azure Logic Apps ' [de HTTPS uç noktaları ile çağrı, tetikleyici veya iç içe geçme iş akışları](../logic-apps/logic-apps-http-endpoint.md).
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Boş bir mantıksal uygulama oluşturma.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Boş bir mantıksal uygulama oluşturma.
 
 1. Mantıksal uygulama Tasarımcısı açıldıktan sonra arama kutusuna `http request` filtreniz olarak girin. Tetikleyiciler listesinden, mantıksal uygulama iş akışınızın ilk adımı olan **BIR http isteği alındığında** tetiklenir ' ı seçin.
 
@@ -63,7 +63,7 @@ Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile Ç
 
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
-   | **HTTP POST URL 'SI** | seçim | Evet | Mantıksal uygulamayı kaydettikten sonra oluşturulan ve mantıksal uygulamanızı çağırmak için kullanılan uç nokta URL 'SI |
+   | **HTTP POST URL 'SI** | seçim | Yes | Mantıksal uygulamayı kaydettikten sonra oluşturulan ve mantıksal uygulamanızı çağırmak için kullanılan uç nokta URL 'SI |
    | **İstek gövdesi JSON şeması** | `schema` | Hayır | Gelen istek gövdesindeki özellikleri ve değerleri açıklayan JSON şeması |
    |||||
 
@@ -157,6 +157,14 @@ Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile Ç
          }
       }
       ```
+
+1. Gelen çağrının, belirtilen şemadan eşleşen bir istek gövdesine sahip olup olmadığını denetlemek için şu adımları izleyin:
+
+   1. Istek tetikleyicisinin başlık çubuğunda üç nokta düğmesini (**...**) seçin.
+   
+   1. Tetikleyicinin ayarlarında, **şema doğrulamasını**açın ve **bitti**' yi seçin.
+   
+      Gelen çağrının istek gövdesi şemanıza eşleşmezse, tetikleyici bir `HTTP 400 Bad Request` hata döndürür.
 
 1. Ek özellikler belirtmek için **yeni parametre Ekle** listesini açın ve eklemek istediğiniz parametreleri seçin.
 
@@ -256,7 +264,7 @@ Mantıksal uygulamanız gelen isteği yalnızca [sınırlı bir süre](../logic-
 
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
-   | **Durum kodu** | `statusCode` | Evet | Yanıtta döndürülecek durum kodu |
+   | **Durum kodu** | `statusCode` | Yes | Yanıtta döndürülecek durum kodu |
    | **Üst Bilgiler** | `headers` | Hayır | Yanıta eklenecek bir veya daha fazla üstbilgiyi açıklayan bir JSON nesnesi |
    | **Gövde** | `body` | Hayır | Yanıt gövdesi |
    |||||

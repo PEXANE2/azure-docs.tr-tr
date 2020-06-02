@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 12c1a8c5231e0a6d6674ca55be78a491074a3d3a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7181dd74963a1af05438b16e00e2442478daac03
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053642"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267897"
 ---
 # <a name="tutorial-secure-an-azure-sql-database"></a>Öğretici: Azure SQL veritabanı güvenliğini sağlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -219,7 +219,7 @@ Azure AD kimlik doğrulamasıyla bir kullanıcı eklemek için:
 - Şifrelenmiş bir bağlantı isteyin
 - Sunucu sertifikasına güvenmiyor
 
-Bağlantı, Aktarım Katmanı Güvenliği (TLS) kullanılarak oluşturulur ve ortadaki adam saldırısı riskini azaltır. Bağlantı dizeleri veritabanı başına kullanılabilir ve ADO.NET, JDBC, ODBC ve PHP gibi istemci sürücülerini destekleyecek şekilde önceden yapılandırılmıştır. TLS ve bağlantı hakkında daha fazla bilgi için bkz. [TLS konuları](connect-query-content-reference-guide.md#tls-considerations-for-sql-database-connectivity).
+Bağlantı, Aktarım Katmanı Güvenliği (TLS) kullanılarak oluşturulur ve ortadaki adam saldırısı riskini azaltır. Bağlantı dizeleri veritabanı başına kullanılabilir ve ADO.NET, JDBC, ODBC ve PHP gibi istemci sürücülerini destekleyecek şekilde önceden yapılandırılmıştır. TLS ve bağlantı hakkında daha fazla bilgi için bkz. [TLS konuları](connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity).
 
 Güvenli bir bağlantı dizesini kopyalamak için:
 

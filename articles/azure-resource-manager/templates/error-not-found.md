@@ -2,13 +2,13 @@
 title: Kaynak bulunamadı hataları
 description: Azure Resource Manager şablonuyla dağıtıldığında bir kaynak bulunamadığında hataların nasıl çözümleneceğini açıklar.
 ms.topic: troubleshooting
-ms.date: 01/21/2020
-ms.openlocfilehash: b6f433118092e46f734d4b65040dd97c2fcb58d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/01/2020
+ms.openlocfilehash: 5d827f68ec97cfa77fb69a34284bd572286641a4
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76773256"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259363"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Azure kaynakları için bulunamadı hatalarını çözümleme
 
@@ -93,10 +93,27 @@ Kaynak, dağıtılmasından farklı bir kaynak grubunda mevcut olduğunda, kayna
 
 [Yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md)dolaylı olarak oluşturan bir kaynak dağıtıyorsanız, yönetilen kimlik değerlerini almadan önce bu kaynak dağıtılana kadar beklemeniz gerekir. Yönetilen kimlik adını [başvuru](template-functions-resource.md#reference) işlevine geçirirseniz, kaynak ve kimlik dağıtılmadan önce başvuruyu çözümlemeye çalışır Kaynak Yöneticisi. Bunun yerine, kimliğin uygulandığı kaynağın adını geçirin. Bu yaklaşım, başvuru işlevini çözümlediği Kaynak Yöneticisi önce kaynak ve yönetilen kimliğin dağıtılmasını sağlar.
 
-Başvuru işlevinde, yönetilen kimlik dahil `Full` tüm özellikleri almak için kullanın.
+Başvuru işlevinde, `Full` yönetilen kimlik dahil tüm özellikleri almak için kullanın.
 
-Örneğin, bir sanal makine ölçek kümesine uygulanan bir yönetilen kimliğin kiracı KIMLIĞINI almak için şunu kullanın:
+Bu model:
+
+`"[reference(resourceId(<resource-provider-namespace>, <resource-name>, <API-version>, 'Full').Identity.propertyName]"`
+
+> [!IMPORTANT]
+> Bu kalıbı kullanmayın:
+>
+> `"[reference(concat(resourceId(<resource-provider-namespace>, <resource-name>),'/providers/Microsoft.ManagedIdentity/Identities/default'),<API-version>).principalId]"`
+>
+> Şablonunuz başarısız olur.
+
+Örneğin, bir sanal makineye uygulanan bir yönetilen kimliğin asıl KIMLIĞINI almak için şunu kullanın:
 
 ```json
-"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+"[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')),'2019-12-01', 'Full').identity.principalId]",
+```
+
+Ya da bir sanal makine ölçek kümesine uygulanan bir yönetilen kimliğin kiracı KIMLIĞINI almak için şunu kullanın:
+
+```json
+"[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), 2019-12-01, 'Full').Identity.tenantId]"
 ```

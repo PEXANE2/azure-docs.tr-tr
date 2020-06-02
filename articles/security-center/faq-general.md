@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: e2cc04be5a79009f92e275f9de46df60a8e23c8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d5b4986c24a1db61527e6a9ff7be249f189d6248
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106585"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248558"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>SSS-Azure Güvenlik Merkezi ile ilgili genel sorular
 
@@ -40,7 +40,7 @@ Azure Güvenlik Merkezi aşağıdaki Azure kaynaklarını izler:
 * Azure Sanal Ağları
 * Kapsayıcılar
 * Azure SQL hizmeti
-* Azure Depolama hesabınızın
+* Azure Storage hesabı
 * Azure Web Apps ( [App Service ortamı](../app-service/environment/intro.md))
 * VM 'lerde ve App Service Ortamı bir Web uygulaması güvenlik duvarı gibi Azure aboneliğiniz ile tümleştirilmiş iş ortağı çözümleri
 
@@ -59,7 +59,7 @@ Azure Güvenlik Merkezi 'nde etkinleştirilen güvenlik ilkeleri, güvenlik öne
 
 
 ## <a name="who-can-modify-a-security-policy"></a>Güvenlik ilkesini kim değiştirebilir?
-Bir güvenlik ilkesini değiştirmek için, bir güvenlik yöneticisi veya bu aboneliğin sahibi veya katılımcısı olmanız gerekir.
+Bir güvenlik ilkesini değiştirmek için, bir **Güvenlik Yöneticisi** veya bu aboneliğin **sahibi** olmanız gerekir.
 
 Güvenlik ilkesi yapılandırma hakkında bilgi edinmek için bkz. [Azure Güvenlik Merkezi 'nde güvenlik Ilkelerini ayarlama](tutorial-security-policy.md).
 

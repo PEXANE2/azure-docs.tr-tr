@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 36d580b7659325d4bf5f13889f774ddaa2ab0702
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a7215790a7f052227b08f51dcd7ad5dd337bb4e9
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597131"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259278"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için yerel geliştirmeyi ayarlama
 
@@ -27,7 +27,7 @@ Bu makalede, aşağıdaki kavramlar dahil olmak üzere yerel geliştirme için �
 - Hata ayıklama ve uygulamayı çalıştırma
 - Uygulamanızın dosya ve klasör yapısına yönelik en iyi uygulamalar
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - Visual Studio Code için [Azure işlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
@@ -53,7 +53,7 @@ Bir Web sitesinin nasıl oluşturulduğuna bağlı olarak, uygulamayı tarayıc�
 ### <a name="static-site-generators"></a>Statik site oluşturucuları
 
 - [CLı tarafından Gatsby](https://www.gatsbyjs.org/docs/gatsby-cli/)
-- [Kugo](https://gohugo.io/getting-started/quick-start/)
+- [Hugo](https://gohugo.io/getting-started/quick-start/)
 - [Jekyıll](https://jekyllrb.com/docs/usage/)
 
 Sitenize hizmeti sağlamak için bir CLı aracı kullanıyorsanız, [API 'Yi çalıştıran](#run-api-locally) bölüme atlayabilirsiniz.
@@ -64,7 +64,7 @@ Visual Studio Code için canlı sunucu uzantısı, statik içerik sunan yerel bi
 
 #### <a name="create-a-repository"></a>Depo oluştur
 
-1. [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate)Bu şablonu kullanarak **Vanilla-API**adlı yeni bir GitHub projesine gidin ve oluşturun.
+1. GitHub 'da oturum açtığınızdan emin olun ve [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate) Bu şablonu kullanarak **Vanilla-API**adlı yeni bir GitHub projesi oluşturun ve ' a gidin.
 
     :::image type="content" source="media/local-development/vanilla-api.png" alt-text="GitHub yeni depo penceresi":::
 

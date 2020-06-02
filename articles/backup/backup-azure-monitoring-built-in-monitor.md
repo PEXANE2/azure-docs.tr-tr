@@ -4,16 +4,16 @@ description: Bu makalede, Azure portal kullanarak Azure Backup iş yükleri içi
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: de5a82f5ad1d8113b27c07484f2f08f4cf97c759
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c72c192f3bd12169703b70cbee76599b15eb560
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294932"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247062"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup iş yüklerini izleme
 
-Azure Backup, yedekleme gereksinimine ve altyapı topolojisine (Şirket içi vs Azure) göre birden çok yedekleme çözümü sağlar. Herhangi bir yedekleme kullanıcısı veya Yöneticisi, tüm çözümlerde neler olduğunu ve önemli senaryolarda bildirilmesi bekleni görmelidir. Bu makalede, Azure Backup hizmeti tarafından sunulan izleme ve bildirim özellikleri ayrıntılı olarak açıklanır.
+Azure Backup, yedekleme gereksinimine ve altyapı topolojisine (Şirket içi vs Azure) göre birden çok yedekleme çözümü sağlar. Herhangi bir yedekleme kullanıcısı veya Yöneticisi, tüm çözümlerde neler olduğunu ve önemli senaryolarda bildirilmesi beklendiğini görmelidir. Bu makalede, Azure Backup hizmeti tarafından sunulan izleme ve bildirim özellikleri ayrıntılı olarak açıklanır.
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>Kurtarma Hizmetleri kasasındaki yedekleme Işleri
 
@@ -21,13 +21,13 @@ Azure Backup, Azure Backup tarafından korunan iş yükleri için yerleşik izle
 
 ![RS Kasası yerleşik izleme](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltmonitoring.png)
 
-İşler, yedekleme, yedekleme, geri yükleme, yedeklemeyi silme gibi işlemler yapıldığında oluşturulur.
+İşler, yedekleme yapılandırması, yedekleme, geri yükleme, yedeği silme gibi işlemler gerçekleştirildiğinde oluşturulur.
 
 Aşağıdaki Azure Backup çözümlerinden gerçekleştirilen işler aşağıda gösterilmiştir:
 
 - Azure VM yedeklemesi
 - Azure dosya yedeklemesi
-- SQL ve SAP HANA gibi Azure iş yükü yedeklemesi
+- SQL ve SAP HANA gibi Azure iş yükü yedekleme
 - Azure Backup aracısı (MAB)
 
 System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) işleri gösterilmez.
@@ -78,7 +78,7 @@ Uyarı önem derecesine bağlı olarak, uyarılar üç tür halinde tanımlanabi
 
 - **Kritik**: prensibi, herhangi bir yedekleme veya Kurtarma hatası (zamanlanmış veya Kullanıcı tarafından tetiklenen), bir uyarının oluşturulmasına ve kritik bir uyarı olarak ve ayrıca yedekleme silme gibi bozucu işlemlere neden olarak gösterilmelidir.
 - **Uyarı**: yedekleme işlemi başarılı olur, ancak birkaç uyarı varsa uyarı uyarıları olarak listelenir.
-- **Bilgilendirici**: bugün itibariyle, Azure Backup hizmeti tarafından bir bilgilendirme uyarısı oluşturulmaz.
+- **Bilgilendirici**: şu anda Azure Backup hizmeti tarafından bir bilgilendirme uyarısı üretilmez.
 
 ## <a name="notification-for-backup-alerts"></a>Yedekleme uyarıları için bildirim
 

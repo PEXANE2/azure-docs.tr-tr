@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 8a704c3891c687edbb7c5aac206f4b6c7766fa8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba5105c6183c88ca7e5641cdacaa5d80ea529bc6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409999"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263899"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Azure Data Factory kullanarak Xero 'tan veri kopyalama
 
@@ -35,7 +35,7 @@ Xero 'ten desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz.
 
 Özellikle, bu Xero Bağlayıcısı şunları destekler:
 
-- Xero [özel uygulama](https://developer.xero.com/documentation/getting-started/api-application-types) ancak ortak uygulama değil.
+- Xero [özel uygulama](https://developer.xero.com/documentation/getting-started/getting-started-guide) ancak ortak uygulama değil.
 - Tüm Xero tabloları (API uç noktaları), "raporlar" hariç. 
 
 Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
@@ -52,10 +52,10 @@ Aşağıdaki özellikler Xero bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği: **Xero** olarak ayarlanmalıdır | Yes |
-| konak | Xero sunucusunun uç noktası (`api.xero.com`).  | Yes |
+| tür | Type özelliği: **Xero** olarak ayarlanmalıdır | Yes |
+| konak | Xero sunucusunun uç noktası ( `api.xero.com` ).  | Yes |
 | consumerKey | Xero uygulamasıyla ilişkili tüketici anahtarı. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
-| privateKey | Xero özel uygulamanız için oluşturulan. ped dosyasındaki özel anahtar, bkz. [ortak/özel anahtar çifti oluşturma](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Using `openssl genrsa -out privatekey.pem 512` **numbits of 512 ile PrivateKey. pek oluşturma** 1024 desteklenmiyor. . Ped dosyasındaki, Unix satır sonları (\n) dahil tüm metni ekleyin, aşağıdaki örneğe bakın.<br/><br/>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
+| privateKey | Xero özel uygulamanız için oluşturulan. ped dosyasındaki özel anahtar, bkz. [ortak/özel anahtar çifti oluşturma](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). **Numbits/512 kullanılarak PrivateKey. pek oluşturmak** için not `openssl genrsa -out privatekey.pem 512` ; 1024 desteklenmez. . Ped dosyasındaki, Unix satır sonları (\n) dahil tüm metni ekleyin, aşağıdaki örneğe bakın.<br/><br/>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
 | useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
 | Usehostdoğrulaması | TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşmesi için Sunucu sertifikasında ana bilgisayar adının gerekli olup olmadığını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
 | Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
@@ -98,7 +98,7 @@ Xero öğesinden veri kopyalamak için, veri kümesinin Type özelliğini **Xero
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | DataSet 'in Type özelliği: **XeroObject** olarak ayarlanmalıdır | Yes |
+| tür | DataSet 'in Type özelliği: **XeroObject** olarak ayarlanmalıdır | Yes |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örneğinde**
@@ -128,7 +128,7 @@ Xero adresinden veri kopyalamak için kopyalama etkinliğindeki kaynak türünü
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği: **XeroSource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **XeroSource** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM Contacts"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örneğinde**
@@ -165,9 +165,9 @@ Xero adresinden veri kopyalamak için kopyalama etkinliğindeki kaynak türünü
 
 Xero sorgusunu belirtirken aşağıdakileri aklınızda edin:
 
-- Karmaşık öğeler içeren tablolar birden çok tabloya bölünecektir. Örneğin, banka işlemleri "LineItems" karmaşık veri yapısına sahiptir, bu nedenle banka işleminin verileri tabloyla `Bank_Transaction` eşlenir ve `Bank_Transaction_Line_Items`bunları birbirine bağlamak için yabancı anahtar `Bank_Transaction_ID` olarak.
+- Karmaşık öğeler içeren tablolar birden çok tabloya bölünecektir. Örneğin, banka işlemleri "LineItems" karmaşık veri yapısına sahiptir, bu nedenle banka işleminin verileri tabloyla eşlenir `Bank_Transaction` ve `Bank_Transaction_Line_Items` `Bank_Transaction_ID` bunları birbirine bağlamak için yabancı anahtar olarak.
 
-- Xero verileri iki şema aracılığıyla kullanılabilir: `Minimal` (varsayılan) ve. `Complete` Tüm şema, istenen sorguyu yapmadan önce ek veriler (ör. ID sütunu) gerektiren önkoşul çağrı tabloları içerir.
+- Xero verileri iki şema aracılığıyla kullanılabilir: `Minimal` (varsayılan) ve `Complete` . Tüm şema, istenen sorguyu yapmadan önce ek veriler (ör. ID sütunu) gerektiren önkoşul çağrı tabloları içerir.
 
 Aşağıdaki tablolar, en küçük ve tamamen şema ile aynı bilgilere sahiptir. API çağrılarının sayısını azaltmak için en az şemayı kullanın (varsayılan).
 

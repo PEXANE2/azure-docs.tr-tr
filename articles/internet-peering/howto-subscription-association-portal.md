@@ -3,21 +3,21 @@ title: Portalı kullanarak eşdüzey ASN’yi Azure aboneliğiyle ilişkilendirm
 titleSuffix: Azure
 description: Portalı kullanarak eşdüzey ASN’yi Azure aboneliğiyle ilişkilendirme
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: article
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: ee4fb0708d437c21bea8e77864f210c42b5df019
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 5/18/2020
+ms.author: derekol
+ms.openlocfilehash: 9feefa8801892a668784ed7406f46dba2afd69da
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683967"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266959"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Portalı kullanarak eşdüzey ASN’yi Azure aboneliğiyle ilişkilendirme
 
-Bir eşleme isteği göndermeden önce, aşağıdaki adımları kullanarak ASN 'nizi Azure aboneliğiyle ilişkilendirmeniz gerekir.
+Bir Internet hizmet sağlayıcısı veya Internet Exchange sağlayıcısı olarak, bir eşleme isteği göndermeden önce aşağıdaki adımları kullanarak ASN 'nizi bir Azure aboneliğiyle ilişkilendirmeniz gerekir.
 
 İsterseniz, [PowerShell](howto-subscription-association-powershell.md)'i kullanarak bu kılavuzu tamamlayabilirsiniz.
 
@@ -55,8 +55,7 @@ Aşağıdaki adımları izleyerek aboneliğinizde eşleme kaynak sağlayıcısı
     > ![Kayıt tamamlandı](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>PeerAsn oluştur
-Bir Internet hizmet sağlayıcısı veya Internet Exchange sağlayıcısı olarak, bir Azure aboneliğiyle bir otonom sistem numarasını (ASN) ilişkilendirmek için yeni bir PeerAsn kaynağı oluşturabilirsiniz. İlişki oluşturmanız gereken her ASN için [bir PeerASN 'Yi ilişkilendir sayfasına](https://go.microsoft.com/fwlink/?linkid=2129592) giderek, birden çok ASNs 'yi bir abonelikle ilişkilendirebilirsiniz.
-
+Bir Internet hizmet sağlayıcısı veya Internet Exchange sağlayıcısı olarak, [bir eş ASN 'Yi ilişkilendir sayfasında](https://go.microsoft.com/fwlink/?linkid=2129592) , bir otonom sistem numarası 'Nı (ASN) Azure aboneliği ile ilişkilendirmek için yeni bir peerasn kaynağı oluşturabilirsiniz. İlişkilendirmeniz gereken her ASN için bir **Peerasn** oluşturarak, birden fazla ASNs 'yi bir abonelikle ilişkilendirebilirsiniz.
 
 1. **Eş ASN 'Yi ilişkilendir** sayfasında, **temel bilgiler** sekmesinde, alanları aşağıda gösterildiği gibi doldurun.
 

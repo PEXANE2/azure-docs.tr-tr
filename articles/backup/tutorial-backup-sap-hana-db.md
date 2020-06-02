@@ -3,12 +3,12 @@ title: Öğretici-Azure VM 'lerinde SAP HANA veritabanlarını yedekleme
 description: Bu öğreticide, Azure VM 'de çalışan SAP HANA veritabanlarını Azure Backup kurtarma hizmetleri kasasına nasıl yedekleyeceğinizi öğrenin.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: cb1fc4c1b9bfa2025850f16d175ba83bd5ee1470
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 31958a4d4e3af4f747ab2f9de7b1bc67560e87d7
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747223"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248252"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Öğretici: Azure VM 'de SAP HANA veritabanlarını yedekleme
 
@@ -22,6 +22,9 @@ Bu öğreticide, Azure VM 'lerinde çalışan SAP HANA veritabanlarının Azure 
 
 Şu anda desteklediğimiz tüm senaryolar [aşağıda](sap-hana-backup-support-matrix.md#scenario-support) verilmiştir.
 
+>[!NOTE]
+>RHEL için SAP HANA yedekleme önizlemesine (7,4, 7,6, 7,7 veya 8,1 [) başlayın.](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) Daha fazla sorgu için, adresinden bize yazın [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+
 ## <a name="prerequisites"></a>Ön koşullar
 
 Yedeklemeleri yapılandırmadan önce aşağıdakileri yaptığınızdan emin olun:
@@ -34,9 +37,7 @@ Yedeklemeleri yapılandırmadan önce aşağıdakileri yaptığınızdan emin ol
 * Kök kullanıcı olarak, HANA 'nın yüklü olduğu sanal makinede SAP HANA yedekleme yapılandırma betiğini (ön kayıt betiği) çalıştırın. [Bu betik](https://aka.ms/scriptforpermsonhana) , yedekleme IÇIN hazırlanma Hana sistemini alır. Ön kayıt betiği hakkında daha fazla bilgi edinmek için [ön kayıt betiğinin ne olduğunu](#what-the-pre-registration-script-does) öğrenin bölümüne bakın.
 
 >[!NOTE]
->Azure Backup, bir Azure VM 'de çalışan bir SAP HANA Veritabanının yedeklenmesinde gün ışığından yararlanma saati değişikliklerini otomatik olarak ayarlamaz.
->
->İlkeyi gerektiği şekilde el ile değiştirin.
+>Preregistration betiği, RHEL (7,4, 7,6 ve 7,7) üzerinde çalışan SAP HANA iş yükleri için **COMPAT-unixODBC234** ve rhel 8,1 Için **unixODBC** 'yi yüklüyor. [Bu paket, SAP Solutions (RPMs) deposu için RHEL for SAP HANA (RHEL 7 Server) Güncelleştirme Hizmetleri ' nde bulunur](https://access.redhat.com/solutions/5094721).  Azure Marketi RHEL görüntüsü için deponun **rhuı-RHEL-SAP-HANA-for-RHEL-7-Server-rhuı-E4s-RPMS**olması gerekir.
 
 ## <a name="set-up-network-connectivity"></a>Ağ bağlantısını ayarlama
 

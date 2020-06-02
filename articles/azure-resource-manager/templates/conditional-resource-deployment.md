@@ -2,17 +2,20 @@
 title: Şablonlarla koşullu dağıtım
 description: Azure Resource Manager şablonunda bir kaynağın koşullu olarak nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 001a1a7d6d15fe29b0f3184b75892f4ec75cef27
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/01/2020
+ms.openlocfilehash: effa7fe6ee1393e44a124bc087609da5d4898210
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017503"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259329"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>ARM şablonlarında koşullu dağıtım
 
 Bazen Azure Resource Manager (ARM) şablonunda bir kaynağı dağıtmanız gerekebilir. `condition`Kaynağın dağıtılıp dağıtılmayacağını belirtmek için öğesini kullanın. Bu öğenin değeri true veya false olarak çözümlenmektedir. Değer true olduğunda kaynak oluşturulur. Değer false olduğunda kaynak oluşturulmaz. Değer yalnızca kaynağın tamamına uygulanabilir.
+
+> [!NOTE]
+> Koşullu dağıtım, [alt kaynaklara](child-resource-name-type.md)basamaklandırmaz. Bir kaynağı ve alt kaynaklarını koşullu olarak dağıtmak istiyorsanız, her kaynak türüne aynı koşulu uygulamanız gerekir.
 
 ## <a name="new-or-existing-resource"></a>Yeni veya mevcut kaynak
 
@@ -81,7 +84,7 @@ Koşullu olarak dağıtılan bir kaynakla [başvuru](template-functions-resource
 
 Bir kaynağı koşullu kaynağa [bağlı olarak](define-resource-dependency.md) , diğer tüm kaynaklar gibi ayarlarsınız. Koşullu bir kaynak dağıtıldığında Azure Resource Manager, gerekli bağımlılıklardan otomatik olarak kaldırır.
 
-## <a name="condition-with-complete-mode"></a>Tamamlanmış mod ile koşul
+## <a name="complete-mode"></a>Mod Tamam
 
 Bir şablonu, [tamamlanma modu](deployment-modes.md) ile dağıtırsanız ve koşul false olarak değerlendirdiği için bir kaynak dağıtılmamışsa, sonuç, şablonu dağıtmak için kullandığınız REST API sürümüne bağlıdır. 2019-05-10 'den önceki bir sürümü kullanıyorsanız, kaynak **silinmez**. 2019-05-10 veya sonraki bir sürümü kullanarak kaynak **silinir**. Azure PowerShell ve Azure CLı 'nın en son sürümleri, koşul false olduğunda kaynağı siler.
 

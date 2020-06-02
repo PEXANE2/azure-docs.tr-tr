@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: a2eba958ca2d4a90cb3706839d726fdd0a48ed4f
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: acada42cd50d607925d7c4583820c2590ff76639
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994064"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266568"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows Veri Bilimi Sanal Makinesi yapabileceğiniz on işlem
 
@@ -55,24 +55,24 @@ R için, başlangıç menüsünde veya masaüstünde bulunan RStudio gibi bir ID
 
 Python için, Visual Studio için Python Araçları (PTV) uzantısının önceden yüklenmiş olduğu Visual Studio Community Edition gibi bir IDE kullanabilirsiniz. Varsayılan olarak, PTV 'lerde yalnızca Python 3,6, kök Conda ortamı yapılandırılır. Anaconda Python 2,7 ' i etkinleştirmek için aşağıdaki adımları uygulayın:
 
-1. **Araçlar** > **Python araçları** > **Python ortamları**' na giderek ve ardından Visual Studio Community Edition 'da **+ özel** ' i seçerek her bir sürüm için özel ortamlar oluşturun.
+1. **Araçlar**  >  **Python araçları**  >  **Python ortamları**' na giderek ve ardından Visual Studio Community Edition 'da **+ özel** ' i seçerek her bir sürüm için özel ortamlar oluşturun.
 1. Anaconda Python 2,7 için bir açıklama verin ve ortam ön eki yolunu **c:\anaconda\envs\python2** olarak ayarlayın.
-1. Ortamı kaydetmek için **Otomatik Algıla** > **Uygula** ' yı seçin.
+1. Ortamı kaydetmek için **Otomatik Algıla**  >  **Uygula** ' yı seçin.
 
 Python ortamları oluşturma hakkında daha fazla bilgi için bkz. [PTV belgeleri](https://aka.ms/ptvsdocs) .
 
-Şimdi yeni bir Python projesi oluşturmak için hazırsınız. **Dosya** > **New**yeni > **Project**proje > **Python** ' a gidin ve oluşturmakta olduğunuz Python uygulamasının türünü seçin. Python **ortamları** ' na sağ tıklayıp **Python ortamlarını Ekle/Kaldır**' ı seçerek, geçerli projenin Python ortamını istenen sürüme (Python 2,7 veya 3,6) ayarlayabilirsiniz. [Ürün belgelerinde](https://aka.ms/ptvsdocs)PTV ile çalışma hakkında daha fazla bilgi edinebilirsiniz.
+Şimdi yeni bir Python projesi oluşturmak için hazırsınız. **Dosya**  >  **Yeni**  >  **Proje**  >  **Python** ' a gidin ve oluşturmakta olduğunuz Python uygulamasının türünü seçin. Python **ortamları** ' na sağ tıklayıp **Python ortamlarını Ekle/Kaldır**' ı seçerek, geçerli projenin Python ortamını istenen sürüme (Python 2,7 veya 3,6) ayarlayabilirsiniz. [Ürün belgelerinde](https://aka.ms/ptvsdocs)PTV ile çalışma hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="use-jupyter-notebooks"></a>Jupyter not defterlerini kullanma
 Jupyter Notebook, veri araştırması ve modelleme için tarayıcı tabanlı bir IDE sağlar. Bir Jupyter not defterinde Python 2, Python 3 veya R (açık kaynak ve Microsoft R Server) kullanabilirsiniz.
 
-Jupyter Notebook başlatmak için **Başlat** menüsünde veya masaüstünde **Jupyter Notebook** simgesini seçin. DSVM komut isteminde, mevcut not defterlerine sahip olduğunuz veya yeni Not ```jupyter notebook``` defterleri oluşturmak istediğiniz dizinden komutunu da çalıştırabilirsiniz.  
+Jupyter Notebook başlatmak için **Başlat** menüsünde veya masaüstünde **Jupyter Notebook** simgesini seçin. DSVM komut isteminde, ```jupyter notebook``` mevcut not defterlerine sahip olduğunuz veya yeni not defterleri oluşturmak istediğiniz dizinden komutunu da çalıştırabilirsiniz.  
 
-Jupyıter 'ı başlattıktan sonra, DSVM 'ye `/notebooks` önceden paketlenmiş örnek Not defterleri için dizine gidin. Artık şunları yapabilirsiniz:
+Jupyıter 'ı başlattıktan sonra, `/notebooks` DSVM 'ye önceden paketlenmiş örnek Not defterleri için dizine gidin. Artık şunları yapabilirsiniz:
 
 * Kodu görmek için Not defterini seçin.
 * Her hücreyi SHIFT + enter ' i seçerek çalıştırın.
-* **Hücre** > **Çalıştır**' i seçerek tüm not defterini çalıştırın.
+* **Hücre**Çalıştır ' i seçerek tüm not defterini çalıştırın  >  **Run**.
 * Jupyter simgesini (sol üst köşedeki) seçerek yeni bir not defteri oluşturun, sağdaki **Yeni** düğmesini seçin ve sonra da Not defteri dilini (kernels olarak da bilinir) seçin.   
 
 > [!NOTE]
@@ -129,17 +129,17 @@ IrisPredictor(3,2,3,4)
 ```
 
 ### <a name="build-and-operationalize-r-models"></a>R modellerini derleme ve operationleştir
-Veri Bilimi Sanal Makinesi veya başka bir yerde oluşturulmuş R modellerini, Python için nasıl yapıldığına benzer bir şekilde Azure Machine Learning dağıtabilirsiniz. Adımlar aşağıdaki gibidir:
+Veri Bilimi Sanal Makinesi veya başka bir yerde oluşturulmuş R modellerini, Python için nasıl yapıldığına benzer bir şekilde Azure Machine Learning dağıtabilirsiniz. Uygulamanız gereken adımlar:
 
 1. Çalışma alanı KIMLIĞINIZI ve kimlik doğrulama belirtecinizi sağlamak için bir Settings. JSON dosyası oluşturun. 
 2. Modelin tahmin işlevi için bir sarmalayıcı yazın.
-3. İşlev ```publishWebService``` sarmalayıcısında geçirilecek Azure Machine Learning kitaplığındaki çağrısı.  
+3. ```publishWebService```İşlev sarmalayıcısında geçirilecek Azure Machine Learning kitaplığındaki çağrısı.  
 
 Azure Machine Learning bir modeli bir Web hizmeti olarak ayarlamak, derlemek, yayımlamak ve kullanmak için aşağıdaki yordamı ve kod parçacıklarını kullanın.
 
-#### <a name="set-up"></a>Ayarlama
+#### <a name="set-up"></a>Kurulum
 
-Giriş dizininiz altında adlı ```.azureml``` bir dizin altında bir Settings. JSON dosyası oluşturun. Azure Machine Learning çalışma alanınızdan parametreleri girin.
+Giriş dizininiz altında adlı bir dizin altında bir Settings. JSON dosyası oluşturun ```.azureml``` . Azure Machine Learning çalışma alanınızdan parametreleri girin.
 
 Settings. JSON dosya yapısı aşağıda verilmiştir:
 
@@ -171,7 +171,7 @@ ep <- publishWebService(ws, fun = sleepyPredict, name="sleepy lm", inputSchema =
 ```
 
 #### <a name="consume-the-model-deployed-in-azure-machine-learning"></a>Azure Machine Learning dağıtılan modeli tüketme
-Modeli bir istemci uygulamasından kullanmak için, yayımlanan Web hizmetini ada göre aramak üzere Azure Machine Learning kitaplığını kullanın. Uç noktayı `services` öğrenmek için API çağrısını kullanın. Daha sonra `consume` işlevi çağırır ve tahmin edilecek veri çerçevesini geçirmeniz yeterlidir.
+Modeli bir istemci uygulamasından kullanmak için, yayımlanan Web hizmetini ada göre aramak üzere Azure Machine Learning kitaplığını kullanın. `services`Uç noktayı öğrenmek için API çağrısını kullanın. Daha sonra `consume` işlevi çağırır ve tahmin edilecek veri çerçevesini geçirmeniz yeterlidir.
 
 Azure Machine Learning Web hizmeti olarak yayınlanan modeli kullanmak için aşağıdaki kodu kullanın:
 
@@ -266,7 +266,7 @@ Azure Blob depolama, büyük ve küçük veriler için güvenilir, ekonomik bir 
 
    ![Azure portal depolama hesabı oluşturma işleminin ekran görüntüsü](./media/vm-do-ten-things/create-azure-blob.png)
 
-* Komut satırı AzCopy aracının önceden yüklü olduğunu doğrulayın: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```. AzCopy. exe ' yi içeren dizin, PATH ortam değişkeninizden zaten bulunur, bu nedenle bu aracı çalıştırırken tam komut yolunu yazmaktan kaçınabilirsiniz. AzCopy aracı hakkında daha fazla bilgi için bkz. [AzCopy belgeleri](../../storage/common/storage-use-azcopy.md).
+* Komut satırı AzCopy aracının önceden yüklü olduğunu doğrulayın: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` . AzCopy. exe ' yi içeren dizin, PATH ortam değişkeninizden zaten bulunur, bu nedenle bu aracı çalıştırırken tam komut yolunu yazmaktan kaçınabilirsiniz. AzCopy aracı hakkında daha fazla bilgi için bkz. [AzCopy belgeleri](../../storage/common/storage-use-azcopy.md).
 * Azure Depolama Gezgini aracını başlatın. [Depolama Gezgini Web sayfasından](https://storageexplorer.com/)indirebilirsiniz. 
 
    ![Bir depolama hesabına erişen Azure Depolama Gezgini ekran görüntüsü](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
@@ -298,8 +298,8 @@ Bir Azure blobuna kopyalamak için AzCopy komutunu çalıştırdıktan sonra, do
 
 Ayrıca, Azure Depolama Gezgini kullanarak sanal makinenizde yerel dosyadaki verileri karşıya yükleyebilirsiniz:
 
-* Bir kapsayıcıya veri yüklemek için hedef kapsayıcıyı seçin ve **karşıya yükle** düğmesini seçin. ![Azure Depolama Gezgini 'de karşıya yükle düğmesinin ekran görüntüsü](./media/vm-do-ten-things/storage-accounts.png)
-* **Dosyalar** kutusunun sağ tarafındaki üç nokta (**...**) simgesini seçin, dosya sisteminden karşıya yüklenecek bir veya birden çok dosya seçin ve karşıya yükleme Işlemini başlatmak için **karşıya yükle** ' yi seçin. ![Dosyaları karşıya yükle iletişim kutusunun ekran görüntüsü](./media/vm-do-ten-things/upload-files-to-blob.png)
+* Bir kapsayıcıya veri yüklemek için hedef kapsayıcıyı seçin ve **karşıya yükle** düğmesini seçin. ![ Azure Depolama Gezgini 'de karşıya yükle düğmesinin ekran görüntüsü](./media/vm-do-ten-things/storage-accounts.png)
+* **Dosyalar** kutusunun sağ tarafındaki üç nokta (**...**) simgesini seçin, dosya sisteminden karşıya yüklenecek bir veya birden çok dosya seçin ve karşıya yükleme Işlemini başlatmak için **karşıya yükle** ' yi seçin. ![ Dosyaları karşıya yükle iletişim kutusunun ekran görüntüsü](./media/vm-do-ten-things/upload-files-to-blob.png)
 
 #### <a name="read-data-from-an-azure-blob-machine-learning-reader-module"></a>Azure Blob 'dan veri okuma: Machine Learning okuyucu modülü
 
@@ -454,10 +454,10 @@ Azure Cosmos DB, buluttaki bir NoSQL veritabanıdır. Bunu, JSON gibi belgelerle
 
 DSVM 'den Azure Cosmos DB erişmek için aşağıdaki önkoşul adımlarını kullanın:
 
-1. Azure Cosmos DB Python SDK, DSVM üzerinde zaten yüklü. Güncelleştirmek için bir komut isteminden ```pip install pydocumentdb --upgrade``` çalıştırın.
+1. Azure Cosmos DB Python SDK, DSVM üzerinde zaten yüklü. Güncelleştirmek için ```pip install pydocumentdb --upgrade``` bir komut isteminden çalıştırın.
 2. [Azure Portal](https://portal.azure.com)bir Azure Cosmos DB hesabı ve veritabanı oluşturun.
 3. Azure Cosmos DB veri geçiş aracı 'nı [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=53595) ' nden indirin ve seçtiğiniz bir dizine ayıklayın.
-4. Bir [genel Blobun](https://https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json) IÇINDE depolanan JSON verilerini (Volcano verileri), geçiş aracına aşağıdaki komut parametreleriyle Azure Cosmos DB içine aktarın. (Azure Cosmos DB Data Migration aracını yüklediğiniz dizinden dtuı. exe ' yi kullanın.) Şu parametrelerle kaynak ve hedef konumu girin:
+4. Bir [genel Blobun](https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json) IÇINDE depolanan JSON verilerini (Volcano verileri), geçiş aracına aşağıdaki komut parametreleriyle Azure Cosmos DB içine aktarın. (Azure Cosmos DB Data Migration aracını yüklediğiniz dizinden dtuı. exe ' yi kullanın.) Şu parametrelerle kaynak ve hedef konumu girin:
    
     `/s:JsonFile /s.Files:https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
@@ -466,11 +466,11 @@ Verileri içeri aktardıktan sonra Jupyter ' a gidip *Documentdbsample*adlı Not
 ## <a name="use-power-bi-reports-and-dashboards"></a>Power BI raporlarını ve panoları kullanma 
 Verilerle ilgili görsel Öngörüler elde etmek için Power BI Desktop önceki Azure Cosmos DB örneğinde bulunan Volcano JSON dosyasını görselleştirebilirsiniz. Ayrıntılı adımlar [Power BI makalesinde](../../cosmos-db/powerbi-visualize.md)bulunabilir. Üst düzey adımlar şunlardır:
 
-1. Power BI Desktop'ı açın ve **Veri Al**'ı seçin. URL 'YI şöyle belirtin: `https://cahandson.blob.core.windows.net/samples/volcano.json`.
+1. Power BI Desktop'ı açın ve **Veri Al**'ı seçin. URL 'YI şöyle belirtin: `https://cahandson.blob.core.windows.net/samples/volcano.json` .
 2. Liste olarak içeri aktarılmış JSON kayıtlarını görmeniz gerekir. Power BI onunla birlikte çalışabilmek için listeyi bir tabloya dönüştürün.
 4. Genişlet (ok) simgesini seçerek sütunları genişletin.
 5. Konumun bir **kayıt** alanı olduğuna dikkat edin. Kaydı genişletin ve yalnızca koordinatları seçin. **Koordinat** bir liste sütunudur.
-6. Liste koordinat sütununu, virgülle ayrılmış bir **LatLong** sütuna dönüştürmek için yeni bir sütun ekleyin. Formülü ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})```kullanarak koordinat listesi alanındaki iki öğeyi birleştirir.
+6. Liste koordinat sütununu, virgülle ayrılmış bir **LatLong** sütuna dönüştürmek için yeni bir sütun ekleyin. Formülü kullanarak koordinat listesi alanındaki iki öğeyi birleştirir ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})``` .
 7. **Yükseltme** sütununu Decimal olarak dönüştürdükten sonra **Kapat** ve **Uygula** düğmelerini seçin.
 
 Önceki adımlar yerine aşağıdaki kodu yapıştırabilirsiniz. Veri dönüştürmelerini bir sorgu dilinde yazmak için Power BI Gelişmiş Düzenleyici kullanılan adımları betikler.
@@ -508,7 +508,7 @@ Benzer şekilde, VM işleme kapasitesi için ihtiyacınız olan işlem ağır bi
 ## <a name="add-more-tools"></a>Daha fazla araç ekleyin
 DSVM 'de önceden yerleşik olarak bulunan araçlar birçok ortak veri analizi ihtiyaçlarını ele alabilir. Ortamlarınızı tek tek yükleyip yapılandırmanız gerekmiyorsa bu size zaman kazandırır. Yalnızca kullandığınız kaynaklar için ödeme yaptığınız için de paradan tasarruf etmenizi sağlar.
 
-Analiz ortamınızı geliştirmek için bu makalede profili oluşturulan diğer Azure veri ve analiz hizmetlerini kullanabilirsiniz. Bazı durumlarda, bazı özel iş ortağı araçları da dahil olmak üzere ek araçlara ihtiyacınız vardır. İhtiyaç duyduğunuz yeni araçları yüklemek için sanal makinede tam yönetici erişiminiz vardır. Python ve R 'ye önceden yüklenmemiş ek paketler de yükleyebilirsiniz. Python için ya ```conda``` ```pip```da kullanabilirsiniz. R için, r konsolunda kullanabilir ```install.packages()``` veya IDE 'yi kullanabilir ve **paketler** > için paketleri**yükleyebilirsiniz**seçeneğini belirleyebilirsiniz.
+Analiz ortamınızı geliştirmek için bu makalede profili oluşturulan diğer Azure veri ve analiz hizmetlerini kullanabilirsiniz. Bazı durumlarda, bazı özel iş ortağı araçları da dahil olmak üzere ek araçlara ihtiyacınız vardır. İhtiyaç duyduğunuz yeni araçları yüklemek için sanal makinede tam yönetici erişiminiz vardır. Python ve R 'ye önceden yüklenmemiş ek paketler de yükleyebilirsiniz. Python için ya da kullanabilirsiniz ```conda``` ```pip``` . R için, ```install.packages()``` r konsolunda kullanabilir veya IDE 'yi kullanabilir ve **paketler**için paketleri  >  **yükleyebilirsiniz**seçeneğini belirleyebilirsiniz.
 
 ## <a name="deep-learning"></a>Derin öğrenme
 

@@ -4,12 +4,12 @@ description: Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetle
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: a88ec4dc9283114e06eed424172dbb958850c2e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0afe83edc638cba4cd14cc27b84a98937175fc86
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025110"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248609"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetleri (MARS) aracı yedeklemelerini yönetme
 
@@ -22,7 +22,7 @@ Yedekleme ilkesini değiştirirken, yeni öğeler ekleyebilir, var olan öğeler
 - **Öğe Ekle** bu seçeneği yalnızca yedeklenecek yeni öğeler eklemek için kullanın. Varolan öğeleri kaldırmak için **öğeleri kaldır** veya **dışlama ayarları** seçeneğini kullanın.  
 - **Öğeleri kaldır** öğeleri yedeklenmeden kaldırmak için bu seçeneği kullanın.
   - **Öğeleri kaldırmak**yerine bir birim içindeki tüm öğeleri kaldırmak Için **dışlama ayarlarını** kullanın.
-  - Bir birimdeki tüm seçimlerin temizlenmesi, öğelerin eski yedeklerinin, son yedekleme sırasında değişiklik için kapsam olmadan saklama ayarlarına göre korunmasına neden olur.
+  - Bir birimdeki tüm seçimlerin temizlenmesi, öğelerin eski yedeklerinin, son yedekleme sırasında, değişiklik için kapsam olmadan saklama ayarlarına göre korunmasına neden olur.
   - Bu öğeleri yeniden seçtiğinizde, ilk tam yedekleme ve yeni ilke değişiklikleri eski yedeklemelere uygulanmaz.
   - Tüm birim seçimini kaldırmak, bekletme ilkesini değiştirmek için herhangi bir kapsam olmadan son yedeklemeyi korur.
 - **Dışlama ayarları** belirli öğelerin yedeklenmesini hariç tutmak için bu seçeneği kullanın.
@@ -125,7 +125,7 @@ Dosya ve klasör yedeklemesini korumayı durdurmanın iki yolu vardır:
 
     ![Zamanlanmış bir yedeklemeyi durdurun.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. El ile oluşturmanız gereken bir güvenlik PIN 'ı (kişisel kimlik numarası) girmeniz istenir. Bunu yapmak için öncelikle Azure portal oturum açın.
-5. **Kurtarma Hizmetleri Kasası** > **ayarları** > **özellikleri**' ne gidin.
+5. **Kurtarma Hizmetleri Kasası**  >  **ayarları**  >  **özellikleri**' ne gidin.
 6. **GÜVENLIK PIN**'ı altında **Oluştur**' u seçin. Bu PIN 'ı kopyalayın. PIN yalnızca beş dakika için geçerlidir.
 7. Yönetim konsolunda PIN 'i yapıştırın ve **Tamam**' ı seçin.
 
@@ -156,7 +156,7 @@ Verileri korurken korumayı durdurduysanız ve korumayı sürdürmeye karar verd
 
 Bir parola, şirket içi veya yerel makinenizi, MARS aracısını veya Azure 'dan veya Azure 'dan yedekleme sırasında verileri şifrelemek ve şifrelerini çözmek için kullanılır. Parolayı kaybettiyseniz veya unuttuysanız, bu adımları izleyerek, parolayı yeniden oluşturabilirsiniz (makineniz hala kurtarma hizmetleri kasası ile kaydedilir ve yedekleme yapılandırılmışsa):
 
-- Mars Aracısı konsolundan **Eylemler bölmesi** > >**Özellikleri Değiştir** ' e gidin. Ardından **şifreleme sekmesine**gidin.<br>
+- Mars Aracısı konsolundan **Eylemler bölmesi**  >  >**Özellikleri Değiştir** ' e gidin. Ardından **şifreleme sekmesine**gidin.<br>
 - **Parolayı Değiştir** onay kutusunu seçin.<br>
 - Yeni bir parola girin veya **parola oluştur**' a tıklayın.
 - Yeni parolayı kaydetmek için, **Araştır** ' a tıklayın.

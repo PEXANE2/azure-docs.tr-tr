@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: Soru-Cevap Oluşturma portalına soru ve yanıt ek
 description: Bu hızlı başlangıçta, kullanıcılarınızın sorularınızın doğru yanıtını bulabilmesi için meta verilerle soru ve yanıt çiftleri ekleme gösterilmektedir.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: fc40c6a6e0543d4d558da2c8a17c155fbb7cbf1f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: e35f7437f0028fedffea7cbcb6216fb7e1fad1f8
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994672"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266585"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Hızlı başlangıç: Soru-Cevap Oluşturma portalı ile soru ve yanıt ekleme
 
@@ -85,7 +85,7 @@ Bir soru ve yanıt çiftinin meta verilerini eklemek, istemci uygulamanızın fi
 1. Aynı iki meta veri etiketi için meta veri çiftleri ekleyin:
 
     `link_in_answer` : `true`<br>
-    `server`: `qna_maker`
+    `service`: `qna_maker`
 
     Artık, farklı değerlerle aynı meta veri etiketlerine sahip iki sorunuz vardır.
 

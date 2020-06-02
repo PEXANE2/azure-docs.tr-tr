@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak Azure sanal makine yedekleme 'nin 
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 4990d815721ddbdde8e6eb6ebf8d6d3b49adc700
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87e3d75d925968b6521324f5b776cf8df1f6af11
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74173377"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247808"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API kullanarak Azure sanal makinelerini geri yükleme
 
@@ -25,13 +25,13 @@ Bir yedekleme öğesinin kullanılabilir kurtarma noktaları, [Liste kurtarma no
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
 ```
 
-`{containerName}` Ve `{protectedItemName}` [burada](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)oluşturulur. `{fabricName}`"Azure" dır.
+`{containerName}`Ve `{protectedItemName}` [burada](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)oluşturulur. `{fabricName}`"Azure" dır.
 
 *Get* URI 'sinin tüm gerekli parametreleri vardır. Ek bir istek gövdesi gerekmez
 
 ### <a name="responses"></a>Yanıtlar
 
-|Adı  |Tür  |Açıklama  |
+|Name  |Tür  |Açıklama  |
 |---------|---------|---------|
 |200 TAMAM     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       Tamam  |
 
@@ -113,11 +113,11 @@ X-Powered-By: ASP.NET
 ......
 ```
 
-Kurtarma noktası yukarıdaki yanıttaki `{name}` alanla tanımlanır.
+Kurtarma noktası `{name}` Yukarıdaki yanıttaki alanla tanımlanır.
 
 ## <a name="restore-disks"></a>Diskleri geri yükleme
 
-Bir VM 'nin yedekleme verilerinden oluşturulmasını özelleştirmeniz gerekiyorsa, biri yalnızca seçili depolama hesabına ait diskleri geri yükleyebilir ve bu disklerden gereksinimlere göre bir VM oluşturabilir. Depolama hesabının, kurtarma hizmetleri kasasıyla aynı bölgede olması ve bölge yedekli olmaması gerekir. Diskler ve yedeklenen VM ("VMConfig. JSON") yapılandırması, belirtilen depolama hesabında depolanır.
+Bir VM 'nin yedekleme verilerinden oluşturulmasını özelleştirmeniz gerekiyorsa, bunlardan biri yalnızca seçili depolama hesabına ait diskleri geri yükleyebilir ve gereksinimlerine göre bu disklerden bir VM oluşturabilir. Depolama hesabının, kurtarma hizmetleri kasasıyla aynı bölgede olması ve bölge yedekli olmaması gerekir. Diskler ve yedeklenen VM ("VMConfig. JSON") yapılandırması, belirtilen depolama hesabında depolanır.
 
 Geri yükleme disklerinin tetiklenmesi bir *Post* isteğidir. Diskleri geri yükleme işlemi hakkında daha fazla bilgi edinmek için, ["geri yüklemeyi Tetikle" REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger)bakın.
 
@@ -125,13 +125,13 @@ Geri yükleme disklerinin tetiklenmesi bir *Post* isteğidir. Diskleri geri yük
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
-`{containerName}` Ve `{protectedItemName}` [burada](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)oluşturulur. `{fabricName}`, [yukarıda](#example-response)belirtilen kurtarma noktasının `{name}` alanı `{recoveryPointId}` olan "Azure" dır.
+`{containerName}`Ve `{protectedItemName}` [burada](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)oluşturulur. `{fabricName}`, `{recoveryPointId}` `{name}` [yukarıda](#example-response)belirtilen kurtarma noktasının alanı olan "Azure" dır.
 
 ### <a name="create-request-body"></a>İstek gövdesi oluştur
 
 Azure VM yedeğinden bir disk geri yükleme tetiklenmesi için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Adı  |Tür  |Açıklama  |
+|Name  |Tür  |Açıklama  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -165,9 +165,9 @@ Geri yükleme diskini tetikleme [zaman uyumsuz bir işlemdir](https://docs.micro
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Adı  |Tür  |Açıklama  |
+|Name  |Tür  |Açıklama  |
 |---------|---------|---------|
-|202 kabul edildi     |         |     Accepted    |
+|202 kabul edildi     |         |     Kabul edildi    |
 
 #### <a name="example-responses"></a>Örnek yanıtlar
 

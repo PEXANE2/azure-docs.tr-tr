@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 59c121f09858114cecfaeb45e257315d1ab92935
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 241aad3e9bf78d587c7f31d8046de171bd2638b3
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403435"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84264001"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Hızlı Başlangıç: REST API ve Java kullanarak bir görüntüdeki yüzleri algılama
 
@@ -65,11 +65,11 @@ import org.json.JSONObject;
 
 ### <a name="add-essential-fields"></a>Gerekli alanları Ekle
 
-**Ana** sınıfı aşağıdaki kodla değiştirin. Bu veriler, yüz hizmetine bağlanmayı ve giriş verilerinin nereden alınacağını belirtir. `subscriptionKey` Alanı abonelik anahtarınızın değeriyle güncelleştirmeniz ve `uriBase` dizeyi doğru uç nokta dizesini içerecek şekilde değiştirmeniz gerekir. Ayrıca değeri, `imageWithFaces` farklı bir görüntü dosyasına işaret eden bir yola ayarlamak isteyebilirsiniz.
+**Ana** sınıfı aşağıdaki kodla değiştirin. Bu veriler, yüz hizmetine bağlanmayı ve giriş verilerinin nereden alınacağını belirtir. `subscriptionKey`Alanı abonelik anahtarınızın değeriyle güncelleştirmeniz ve `uriBase` dizeyi doğru uç nokta dizesini içerecek şekilde değiştirmeniz gerekir. Ayrıca `imageWithFaces` değeri, farklı bir görüntü dosyasına işaret eden bir yola ayarlamak isteyebilirsiniz.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-`faceAttributes` Alanı yalnızca belirli öznitelik türlerinin bir listesidir. Algılanan yüzler hakkında hangi bilgilerin alınacağı belirler.
+`faceAttributes`Alanı yalnızca belirli öznitelik türlerinin bir listesidir. Algılanan yüzler hakkında hangi bilgilerin alınacağı belirler.
 
 ```Java
 public class Main {
@@ -248,7 +248,7 @@ Kodu derleyin ve çalıştırın. Başarılı bir yanıt, yüz verilerini konsol
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri algılamak ve özniteliklerini döndürmek için Azure Yüz Tanıma API'si REST çağrılarını kullanan basit bir Java konsol uygulaması oluşturdunuz. Daha sonra, Android uygulamasında bu işlevle daha fazlasını yapmayı öğrenin.
+Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri algılamak ve özniteliklerini döndürmek için Azure Yüz Tanıma API'si REST çağrılarını kullanan basit bir Java konsol uygulaması oluşturdunuz. Daha sonra, desteklenen senaryolar hakkında daha fazla bilgi edinmek için Yüz Tanıma API'si başvuru belgelerini inceleyin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: yüzeyleri algılamak ve çerçeveye eklemek için bir Android uygulaması oluşturma](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+> [Yüz Tanıma API'si](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

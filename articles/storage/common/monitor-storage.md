@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: c8125001b5960a0bf770e8e015ad757a277629ea
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3ede22b5af942c3f0c0cd88d86b56a625c7656c0
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684894"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267622"
 ---
 # <a name="monitor-azure-storage"></a>Azure Storage 'ı izleme
 
@@ -407,4 +407,3 @@ Hayır. Azure Işlem, disklerdeki ölçümleri destekler. Daha fazla bilgi için
 - Azure depolama tarafından oluşturulan günlüklere ve ölçümlere yönelik bir başvuru için bkz. [Azure depolama izleme veri başvurusu](monitor-storage-reference.md).
 - Azure kaynaklarını izleme hakkında daha fazla bilgi için bkz. Azure [izleyici Ile Azure kaynaklarını izleme](../../azure-monitor/insights/monitor-azure-resource.md).
 - Ölçüm geçişi hakkında daha fazla bilgi için bkz. [Azure Storage ölçümleri geçişi](./storage-metrics-migration.md).
-

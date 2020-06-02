@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 05/28/2020
-ms.openlocfilehash: e9ba6f2e2f6b6e6c4c4738576816e4473b4951a5
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 4802e9e6fa2fdd918266d3ddc58b783bdb6bb83e
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235824"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258496"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>DTU tabanlı modelden Azure SQL veritabanı 'nı sanal çekirdek tabanlı modele geçirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -187,7 +187,7 @@ Yalnızca birincil veritabanı için kullandığınız hizmet katmanını kullan
 
 Tek bir birincil veritabanı için elastik havuzda bir coğrafi ikincil oluşturuyorsanız, `maxVCore` Havuz ayarının birincil veritabanının işlem boyutuyla eşleştiğinden emin olun. Başka bir elastik havuzda birincil için bir coğrafi bölge oluşturuyorsanız, havuzların aynı ayarlara sahip olması önerilir `maxVCore` .
 
-## <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>DTU tabanlı bir veritabanını sanal çekirdek tabanlı veritabanına dönüştürmek için veritabanı kopyasını kullanma
+## <a name="use-database-copy-to-migrate-from-dtu-to-vcore"></a>DTU 'dan vCore 'a geçiş yapmak için veritabanı kopyasını kullanın
 
 Hedef işlem boyutu, kaynak veritabanının en büyük veritabanı boyutunu desteklediği sürece, DTU tabanlı işlem boyutu olan bir veritabanını, kısıtlama olmadan veya özel sıralamaya sahip bir veritabanı olarak bir veritabanına kopyalayabilirsiniz. Veritabanı kopyalama işlemi, kopyalama işleminin başlangıç saatinden itibaren verilerin bir anlık görüntüsünü oluşturur ve kaynak ile hedef arasında veri eşitlenmez.
 

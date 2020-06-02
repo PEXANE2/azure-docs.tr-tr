@@ -7,17 +7,26 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 6961b7bd94c9b3fe70365055851c488efa2cbeca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 193aa168cff436512dc2044d0986df508fd6bfa9
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480020"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248745"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Logic Apps ve Flow için Azure Izleyici günlükleri Bağlayıcısı
 [Azure Logic Apps](/azure/logic-apps/) ve [Güç otomatikleştirme](https://ms.flow.microsoft.com) , çeşitli hizmetler için yüzlerce eylemi kullanarak otomatik iş akışları oluşturmanıza olanak tanır. Azure Izleyici günlükleri Bağlayıcısı, Azure Izleyici 'deki bir Log Analytics çalışma alanından veya bir Application Insights uygulamasından veri alan iş akışları oluşturmanıza olanak tanır. Bu makalede, bağlayıcıya dahil edilen eylemler açıklanmakta ve bu verileri kullanarak iş akışı oluşturmaya yönelik bir yol sunulmaktadır.
 
 Örneğin, Azure Izleyici günlük verilerini Office 365 ' den bir e-posta bildiriminde kullanmak için bir mantıksal uygulama oluşturabilir, Azure DevOps 'da bir hata oluşturabilir veya bir bolluk iletisi postalayabilirsiniz.  Bir iş akışını basit bir zamanlamaya göre veya bir e-posta ya da tweet alınması gibi bağlı bir hizmette bazı bir eylemden tetikleyebilirsiniz. 
+
+## <a name="connector-limits"></a>Bağlayıcı limitleri
+Azure Izleyici günlükleri Bağlayıcısı şu sınırlara sahiptir:
+* En fazla veri boyutu: 16 MB
+* En fazla sorgu yanıt boyutu 100 MB
+* En fazla kayıt sayısı: 500.000
+* En fazla sorgu zaman aşımı 110 saniye.
+
+Verilerinizin boyutuna ve kullandığınız sorguya bağlı olarak bağlayıcı, sınırlarına ve başarısız olabilir. Tetikleyici tekrarlarını daha sık çalıştırmak ve daha az veri sorgulamak için ayarlama yaparken bu gibi durumlarda çözüm yapabilirsiniz. Daha az kayıt ve sütun döndürmek için verilerinizi toplayan sorguları kullanabilirsiniz.
 
 ## <a name="actions"></a>Eylemler
 Aşağıdaki tabloda, Azure Izleyici günlükleri bağlayıcısına dahil edilen eylemler açıklanmaktadır. Her ikisi de Log Analytics çalışma alanında veya Application Insights uygulamasında bir günlük sorgusu çalıştırmanızı sağlar. Fark, verilerin döndürülme yoludur.

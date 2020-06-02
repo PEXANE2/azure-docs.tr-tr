@@ -3,12 +3,12 @@ title: Azure Işlevlerinin güvenliğini sağlama
 description: Azure 'da çalışan işlev kodunuzun genel saldırılara karşı daha güvenli hale getirme hakkında bilgi edinin.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 07d099ae3ce8a544994208436770674e6674e6f0
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 692e8420bda1e7baa8521dd6caaf5eef183823fb
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744058"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259431"
 ---
 # <a name="securing-azure-functions"></a>Azure Işlevlerinin güvenliğini sağlama
 
@@ -83,7 +83,7 @@ Herhangi bir uygulama veya hizmette olduğu gibi, amaç, işlev uygulamanızı e
 
 #### <a name="user-management-permissions"></a>Kullanıcı yönetimi izinleri
 
-İşlevler, derleme [Azure rol tabanlı erişim denetimi 'ni (RBAC)](../role-based-access-control/overview.md)destekler. Işlevler tarafından desteklenen RBAC rolleri [katkıda bulunan](../role-based-access-control/built-in-roles.md#contributor), [sahip](../role-based-access-control/built-in-roles.md#owner)ve [okuyucu](../role-based-access-control/built-in-roles.md#owner). 
+İşlevler, yerleşik [Azure rol tabanlı erişim denetimini (RBAC)](../role-based-access-control/overview.md)destekler. Işlevler tarafından desteklenen RBAC rolleri [katkıda bulunan](../role-based-access-control/built-in-roles.md#contributor), [sahip](../role-based-access-control/built-in-roles.md#owner)ve [okuyucu](../role-based-access-control/built-in-roles.md#owner). 
 
 İzinler, işlev uygulama düzeyinde etkilidir. Birçok işlev uygulama düzeyi görevi gerçekleştirmek için katkıda bulunan rolü gereklidir. Bir işlev uygulamasını yalnızca sahip rolü silebilir. 
 

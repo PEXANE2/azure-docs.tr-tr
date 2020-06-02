@@ -3,12 +3,12 @@ title: Azure geçişi 'nde VMware değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile VMware VM değerlendirmesi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 0ec7006ce240df8c6e07afffa886e78ca9bc2a4d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 8e0b6f3babcc862e1a78effcdb1a61f430c01646
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849374"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267894"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware değerlendirmesi için destek matrisi 
 
@@ -18,10 +18,10 @@ VMware VM 'lerini değerlendirmek için bir Azure geçişi projesi oluşturun ve
 
 ## <a name="limitations"></a>Sınırlamalar
 
-**Destek** | **Ayrıntılar**
+**Destek** | **Bilgileri**
 --- | ---
 **Proje limitleri** | Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz.<br/><br/> Tek bir [projede](migrate-support-matrix.md#azure-migrate-projects)en fazla 35.000 VMware VM 'yi bulabilir ve değerlendirebilirsiniz. Bir proje, fiziksel sunucular ve Hyper-V VM 'lerini her biri için değerlendirme sınırlarına kadar de içerebilir.
-**Bulma** | Azure geçişi gereci vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.
+**Keşfini** | Azure geçişi gereci vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.
 **Değerlendirmesini** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.<br/><br/> Tek bir değerlendirmede 35.000 adede kadar VM 'yi değerlendirebilirsiniz.
 
 Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calculation.md) .
@@ -31,10 +31,10 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calcul
 
 Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalışan uygulamalar, rol ve özellikleri bulabilir. Uygulama envanterinizi keşfetmek, şirket içi iş yükleriniz için uyarlanmış bir geçiş yolu tanımlamanızı ve planlamanızı sağlar. 
 
-**Destek** | **Ayrıntılar**
+**Destek** | **Bilgileri**
 --- | ---
 **Desteklenen makineler** | Uygulama bulma Şu anda yalnızca VMware VM 'Leri için destekleniyor.
-**Bulma** | Uygulama bulma aracısız. Makine konuk kimlik bilgilerini kullanır ve WMI ve SSH çağrılarını kullanarak makinelere uzaktan erişir.
+**Keşfini** | Uygulama bulma aracısız. Makine konuk kimlik bilgilerini kullanır ve WMI ve SSH çağrılarını kullanarak makinelere uzaktan erişir.
 **VM desteği** | Uygulama bulma, tüm Windows ve Linux sürümleri için desteklenir.
 **vCenter kimlik bilgileri** | Uygulama bulma, salt okuma erişimi olan bir vCenter Server hesabına ve konuk Işlemleri > sanal makineler için etkinleştirilmiş ayrıcalıklara sahip olmalıdır.
 **VM kimlik bilgileri** | Uygulama bulma Şu anda tüm Windows sunucuları için bir kimlik bilgisi ve tüm Linux sunucuları için bir kimlik bilgisi kullanımını desteklemektedir.<br/><br/> Windows VM 'ler için bir Konuk Kullanıcı hesabı ve tüm Linux sanal makineleri için normal/normal kullanıcı hesabı (sudo erişimi olmayan) oluşturursunuz.
@@ -47,9 +47,9 @@ Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalı�
 
 ## <a name="vmware-requirements"></a>VMware gereksinimleri
 
-**VMware** | **Ayrıntılar**
+**VMware** | **Bilgileri**
 --- | ---
-**VMware Sanal Makineleri** | Değerlendirme, tüm Windows ve Linux işletim sistemleri için desteklenir.
+**VMware Sanal Makineleri** | Geçiş için tüm işletim sistemleri değerlendirilenebilir. 
 **vCenter Server** | Bulmak ve değerlendirmek istediğiniz makineler vCenter Server sürüm 5,5, 6,0, 6,5 veya 6,7 tarafından yönetilmelidir.
 **İzinler (değerlendirme)** | salt vCenter Server hesabı.
 **İzinler (App-Discovery)** | salt okuma erişimi olan ve **Konuk işlemleri > sanal makineler**için etkinleştirilen ayrıcalıkların vCenter Server hesabı.
@@ -77,10 +77,10 @@ ESXi Konakları (uygulama bulma/aracısız bağımlılık Analizi) | [Uygulama b
 
 Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalışan uygulamalar, rol ve özellikleri bulabilir. Uygulama envanterinizi keşfetmek, şirket içi iş yükleriniz için uyarlanmış bir geçiş yolu tanımlamanızı ve planlamanızı sağlar. 
 
-**Destek** | **Ayrıntılar**
+**Destek** | **Bilgileri**
 --- | ---
 **Desteklenen makineler** | Uygulama bulma Şu anda yalnızca VMware VM 'Leri için destekleniyor.
-**Bulma** | Uygulama bulma aracısız. Makine konuk kimlik bilgilerini kullanır ve WMI ve SSH çağrılarını kullanarak makinelere uzaktan erişir.
+**Keşfini** | Uygulama bulma aracısız. Makine konuk kimlik bilgilerini kullanır ve WMI ve SSH çağrılarını kullanarak makinelere uzaktan erişir.
 **VM desteği** | Uygulama bulma, tüm Windows ve Linux sürümleri için desteklenir.
 **vCenter kimlik bilgileri** | Uygulama bulma, salt okuma erişimi olan bir vCenter Server hesabına ve konuk Işlemleri > sanal makineler için etkinleştirilmiş ayrıcalıklara sahip olmalıdır.
 **VM kimlik bilgileri** | Uygulama bulma Şu anda tüm Windows sunucuları için bir kimlik bilgisi ve tüm Linux sunucuları için bir kimlik bilgisi kullanımını desteklemektedir.<br/><br/> Windows VM 'ler için bir Konuk Kullanıcı hesabı ve tüm Linux sanal makineleri için normal/normal kullanıcı hesabı (sudo erişimi olmayan) oluşturursunuz.
@@ -94,11 +94,11 @@ Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalı�
 
 [Bağımlılık Analizi](concepts-dependency-visualization.md) , değerlendirmek ve Azure 'a geçirmek istediğiniz şirket içi makineler arasındaki bağımlılıkları belirlemenize yardımcı olur. Tablo aracısız bağımlılık analizini ayarlamaya yönelik gereksinimleri özetler. 
 
-**Gereksinim** | **Ayrıntılar**
+**Gereksinim** | **Bilgileri**
 --- | --- 
 **Dağıtımdan önce** | Sunucu değerlendirme aracı projeye eklenerek bir Azure geçişi projesi olması gerekir.<br/><br/>  Şirket içi VMWare makinelerinizi bulmaya yönelik bir Azure geçiş gereci ayarladıktan sonra bağımlılık görselleştirmesini dağıtırsınız.<br/><br/> İlk kez bir proje oluşturmayı [öğrenin](create-manage-projects.md) .<br/> Mevcut bir projeye değerlendirme aracı eklemeyi [öğrenin](how-to-assess.md) .<br/> VMware VM 'lerinin değerlendirmesi için Azure geçişi gerecini ayarlamayı [öğrenin](how-to-set-up-appliance-vmware.md) .
 **VM desteği** | Şu anda yalnızca VMware VM 'Leri için destekleniyor.
-**Windows VM’leri** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bit).
+**Windows VM'leri** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bit).
 **Windows hesabı** |  Bağımlılık analizi için, Azure geçişi gereci, Windows VM 'lerine erişmek için bir etki alanı yöneticisi hesabı veya yerel yönetici hesabı gerekir.
 **Linux VM'leri** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Desek6, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
 **Linux hesabı** | Bağımlılık analizi için, Linux makinelerde Azure geçişi gereci, kök ayrıcalığına sahip bir kullanıcı hesabına ihtiyaç duyuyor.<br/><br/> Alternatif olarak, Kullanıcı hesabının/bin/netstat ve/bin/ls dosyalarında bu izinlere ihtiyacı vardır: CAP_DAC_READ_SEARCH ve CAP_SYS_PTRACE.
@@ -113,7 +113,7 @@ Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalı�
 
 [Bağımlılık Analizi](concepts-dependency-visualization.md) , değerlendirmek ve Azure 'a geçirmek istediğiniz şirket içi makineler arasındaki bağımlılıkları belirlemenize yardımcı olur. Tablo, aracı tabanlı bağımlılık analizini ayarlamaya yönelik gereksinimleri özetler. 
 
-**Gereksinim** | **Ayrıntılar** 
+**Gereksinim** | **Bilgileri** 
 --- | --- 
 **Dağıtımdan önce** | Azure geçişi: Sunucu değerlendirmesi aracı projeye eklenmiş bir Azure geçişi projesi olması gerekir.<br/><br/>  Şirket içi makinelerinizi bulmaya yönelik bir Azure geçiş gereci ayarladıktan sonra bağımlılık görselleştirmesini dağıtırsınız<br/><br/> İlk kez bir proje oluşturmayı [öğrenin](create-manage-projects.md) .<br/> Mevcut bir projeye değerlendirme aracı eklemeyi [öğrenin](how-to-assess.md) .<br/> [Hyper-V](how-to-set-up-appliance-hyper-v.md), [VMware](how-to-set-up-appliance-vmware.md)veya fiziksel sunucu değerlendirmesi için Azure geçişi gerecini ayarlamayı öğrenin.
 **Azure Devlet Kurumları** | Bağımlılık görselleştirmesi Azure Kamu 'da kullanılamaz.

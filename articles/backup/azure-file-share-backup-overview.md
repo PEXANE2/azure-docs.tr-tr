@@ -3,12 +3,12 @@ title: Azure dosya paylaşma yedeklemesi hakkında
 description: Azure dosya paylaşımlarını kurtarma hizmetleri kasasında nasıl yedekleyeceğinizi öğrenin
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: c79100724b882c0682c86070ee74a8726d6b049f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d4129b3618810d80df7d5289a7a7417d74fd077
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105752"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259039"
 ---
 # <a name="about-azure-file-share-backup"></a>Azure dosya paylaşma yedeklemesi hakkında
 
@@ -21,6 +21,7 @@ Azure dosya paylaşma yedeklemesi, buluttaki verilerinizi koruyan ve şirket iç
 * Yerleşik yönetim özellikleri: yedeklemeleri zamanlayabilir ve veri ayıklama ek yükü olmadan istenen saklama süresini belirtebilirsiniz.
 * Anında geri yükleme: Azure dosya paylaşma yedeklemesi dosya paylaşımının anlık görüntülerini kullanır, bu nedenle yalnızca anında geri yüklemek istediğiniz dosyaları seçebilirsiniz.
 * Uyarı ve raporlama: yedekleme ve geri yükleme hatalarıyla ilgili uyarıları yapılandırabilir ve dosya paylaşımlarınız genelinde yedeklemeler hakkında öngörü almak için Azure Backup tarafından sunulan raporlama çözümünü kullanabilirsiniz.
+* Dosya paylaşımlarının yanlışlıkla silinmesine karşı koruma: Azure Backup, depolama hesabı düzeyinde [geçici silme özelliğini](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) 14 günlük bir bekletme dönemi ile sunar. Kötü amaçlı aktör dosya paylaşımından silse bile, dosya paylaşımının içerik ve kurtarma noktaları (anlık görüntüler) yapılandırılabilir bir bekletme süresi boyunca tutulur ve böylece kaynak içeriğin ve anlık görüntülerin başarılı ve tamamen kurtarılmasına izin verilmez.
 
 ## <a name="architecture"></a>Mimari
 

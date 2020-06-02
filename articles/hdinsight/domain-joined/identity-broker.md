@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 1e7eaf49fb8b62259b8c619c89edffd629dfde7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa778aa395d013bd644f69886ea5ebc2399e6f54
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685506"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84265259"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>Kimlik bilgisi yönetimi için KIMLIK Aracısı (Önizleme) kullan
 
@@ -47,7 +47,7 @@ KIMLIK Aracısı özelliği kümeye bir ek VM ekler. Bu VM kimlik Aracısı dü�
 ![KIMLIK Broker 'ı etkinleştirme seçeneği](./media/identity-broker/identity-broker-enable.png)
 
 ### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını kullanma
-Şablonunuzun işlem profiline aşağıdaki özniteliklere sahip adlı `idbrokernode` yeni bir rol eklerseniz, küme, kimlik Aracısı düğümü etkinleştirilmiş olarak oluşturulur:
+`idbrokernode`Şablonunuzun işlem profiline aşağıdaki özniteliklere sahip adlı yeni bir rol eklerseniz, küme, kimlik Aracısı düğümü etkinleştirilmiş olarak oluşturulur:
 
 ```json
 .
@@ -92,7 +92,7 @@ HDInsight [IntelliJ eklentisi](https://docs.microsoft.com/azure/hdinsight/spark/
 
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>Azure AD DS Parola karması olmadan SSH erişimi
 
-KIMLIK Aracısı etkinleştirildikten sonra, etki alanı hesaplarıyla SSH senaryolarında Azure AD DS depolanan bir parola karması gerekecektir. Etki alanına katılmış bir VM 'ye SSH eklemek veya `kinit` komutu çalıştırmak için bir parola sağlamanız gerekir. 
+KIMLIK Aracısı etkinleştirildikten sonra, etki alanı hesaplarıyla SSH senaryolarında Azure AD DS depolanan bir parola karması gerekecektir. Etki alanına katılmış bir VM 'ye SSH eklemek veya komutu çalıştırmak için `kinit` bir parola sağlamanız gerekir. 
 
 SSH kimlik doğrulaması, karmasının Azure AD DS kullanılabilir olmasını gerektirir. SSH 'yi yalnızca yönetim senaryoları için kullanmak istiyorsanız yalnızca bir bulut hesabı oluşturabilir ve bunu kümeye SSH için kullanabilirsiniz. Diğer kullanıcılar, Azure AD DS 'de Parola karması olmadan ambarı veya HDInsight araçlarını (IntelliJ eklentisi gibi) kullanmaya devam edebilir.
 
@@ -100,7 +100,7 @@ SSH kimlik doğrulaması, karmasının Azure AD DS kullanılabilir olmasını ge
 
 KIMLIK Aracısı kurulumunda, ağ geçidine bağlanan özel uygulamalar ve istemciler, önce gerekli OAuth belirtecini almak üzere güncelleştirilebilen olabilir. Bu [belgedeki](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) adımları izleyerek belirteci aşağıdaki bilgilerle elde edebilirsiniz:
 
-*   OAuth Kaynak URI 'si:https://hib.azurehdinsight.net 
+*   OAuth Kaynak URI 'si:`https://hib.azurehdinsight.net` 
 * AppID: 7865c1d2-F040-46cc-875f-831a1ef6a28a
 *   İzin: (ad: Cluster. ReadWrite, ID: 8f89faa0-ffef-4007-974d-4989b39ad77d)
 

@@ -8,17 +8,17 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/05/2020
-ms.openlocfilehash: 79deb2f33a11e8ccb6f059bde7590b7cc0fe20c0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0f7e210c0818bd317f8e69ebed28301fd9b06dc0
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80521120"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263882"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Azure Cosmos hesabı, veritabanı, kapsayıcı ve öğe oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure portalı](create-cosmosdb-resources-portal.md)
+> * [Azure portal](create-cosmosdb-resources-portal.md)
 > * [.NET](create-sql-api-dotnet.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
@@ -56,6 +56,9 @@ Azure Cosmos DB hesabı oluşturmak için [Azure portalına](https://portal.azur
     |Ücretsiz katman Indirimi Uygula|Uygula veya Uygula|Azure Cosmos DB ücretsiz katman sayesinde ilk 400 RU/sn ve 5 GB depolama alanını hesapta ücretsiz olarak alırsınız. [Ücretsiz katman](https://azure.microsoft.com/pricing/details/cosmos-db/)hakkında daha fazla bilgi edinin.|
     |Konum|Kullanıcılarınıza en yakın bölge|Azure Cosmos DB hesabınızın barındırılacağı coğrafi konumu seçin. Verilere en hızlı erişimi sağlamak için kullanıcılarınıza en yakın olan konumu kullanın.|
     |Hesap türü|Üretim veya üretim dışı|Hesap bir üretim iş yükü için kullanılacaksa, **Üretim** ' ı seçin. Hesap üretim dışı, örneğin geliştirme, test, QA veya hazırlama için kullanılacaksa, **Üretim dışı** seçeneğini belirleyin. Bu, Portal deneyimini denetleyen ancak temel alınan Azure Cosmos DB hesabını etkilemeyen bir Azure Kaynak etiketi ayarıdır. Bu değeri dilediğiniz zaman değiştirebilirsiniz.|
+    |Coğrafi Yedeklilik|Etkinleştir veya devre dışı bırak|Bölgenizi bir çift bölge ile eşleştirerek hesabınızda genel dağıtımı etkinleştirin veya devre dışı bırakın. Daha sonra hesabınıza daha fazla bölge ekleyebilirsiniz.|
+    |Birden Çok Bölgeli Yazmalar|Etkinleştir veya devre dışı bırak|Çok bölgeli yazma özelliği, veritabanları ve iş parçacıklarınız için dünya genelindeki sağlanan aktarım hızı avantajlarından yararlanmanıza olanak sağlar.|
+    |Kullanılabilirlik Alanları|Etkinleştir veya devre dışı bırak|Kullanılabilirlik Alanları uygulamanızın kullanılabilirliğini ve esnekliğini daha da artırmanıza yardımcı olur.|
 
 
 > [!NOTE]
@@ -88,9 +91,9 @@ Veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgini kullanabi
     
     |Ayar|Önerilen değer|Açıklama
     |---|---|---|
-    |**Veritabanı Kimliği**|ToDoList|Yeni veritabanının adı olarak *ToDoList* girin. Veritabanı adları 1 ila 255 karakterden oluşmalıdır ve boşluk içeremez veya sonunda boşluk olamaz `/, \\, #, ?`. Veritabanı **Işleme sağlama** seçeneğini kontrol edin, veritabanı içindeki tüm kapsayıcılar üzerinde veritabanı için sağlanan aktarım hızını paylaşmanıza olanak sağlar. Bu seçenek maliyet tasarruflarıyla de yardımcı olur. |
+    |**Veritabanı Kimliği**|ToDoList|Yeni veritabanının adı olarak *ToDoList* girin. Veritabanı adları 1 ila 255 karakterden oluşmalıdır ve `/, \\, #, ?` boşluk içeremez veya sonunda boşluk olamaz. Veritabanı **Işleme sağlama** seçeneğini kontrol edin, veritabanı içindeki tüm kapsayıcılar üzerinde veritabanı için sağlanan aktarım hızını paylaşmanıza olanak sağlar. Bu seçenek maliyet tasarruflarıyla de yardımcı olur. |
     |**Aktarım hızı**|400|Aktarım hızını saniyede 400 istek birimi (RU/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz.| 
-    |**Kapsayıcı KIMLIĞI**|Öğeler|*Öğeleri* yeni kapsayıcının adı olarak girin. Kapsayıcı kimliklerinin karakter gereksinimleri, veritabanı adlarına ilişkin karakter gereksinimleri ile aynıdır.|
+    |**Kapsayıcı KIMLIĞI**|Öğeleri|*Öğeleri* yeni kapsayıcının adı olarak girin. Kapsayıcı kimliklerinin karakter gereksinimleri, veritabanı adlarına ilişkin karakter gereksinimleri ile aynıdır.|
     |**Bölüm anahtarı**| /kategori| Bu makalede açıklanan örnek, bölüm anahtarı olarak */category* kullanır.|
 
     
@@ -122,7 +125,7 @@ Veri Gezgini kullanarak yeni veritabanınıza veri ekleyin.
    
    ![JSON verilerini kopyalayın ve Azure portal Veri Gezgini Kaydet ' i seçin](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
    
-1. **Yeni belge** ' yi yeniden seçin ve benzersiz `id`ve istediğiniz diğer özellikleri ve değerleri içeren başka bir belge oluşturun ve kaydedin. Azure Cosmos DB verileriniz üzerinde herhangi bir şema uygulamayan, belgeleriniz herhangi bir yapıya sahip olabilir.
+1. **Yeni belge** ' yi yeniden seçin ve benzersiz `id` ve istediğiniz diğer özellikleri ve değerleri içeren başka bir belge oluşturun ve kaydedin. Azure Cosmos DB verileriniz üzerinde herhangi bir şema uygulamayan, belgeleriniz herhangi bir yapıya sahip olabilir.
 
 ## <a name="query-your-data"></a>Verilerinizi sorgulayın
 

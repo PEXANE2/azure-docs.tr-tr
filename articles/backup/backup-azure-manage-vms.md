@@ -4,12 +4,12 @@ description: Azure Backup hizmetini kullanarak Azure VM yedeklemelerini yönetme
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: dd4e9dc199048b3faf3da0cadfdf60bdcb26c5bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e49d1eed81d15970519299fb6f662c650116d6e
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248157"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248592"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup hizmeti ile Azure VM yedeklemelerini yönetme
 
@@ -167,7 +167,7 @@ Verilerinizi korumak için Azure Backup, geçici silme özelliğini içerir. Bir
 
 * Azure Backup için yapılandırılmış Azure VM 'Ler korumayı durdurmadan silinir veya taşınırsa, hem zamanlanmış yedekleme işleri hem de isteğe bağlı (geçici) yedekleme işleri UserErrorVmNotFoundV2 hatasıyla başarısız olur. Yedekleme ön denetimi yalnızca başarısız olan isteğe bağlı yedekleme işleri için kritik olarak görünür (başarısız zamanlanan işler gösterilmez).
 * Bu yedekleme öğeleri, Kullanıcı tarafından ayarlanan yedekleme ve bekletme ilkesine bağlı olarak, sistemde etkin kalır. Bu Azure VM 'lerinin yedeklenen verileri, bekletme ilkesine göre tutulacaktır. Süresi biten kurtarma noktaları (son kurtarma noktası dışında), yedekleme ilkesinde ayarlanan bekletme aralığına göre temizlenir.
-* Tüm ek maliyetlerden kaçınmak için, birincil veri kaynağı artık mevcut olmayan yedekleme öğelerini silmeniz önerilir, çünkü silme kaynakları için yedekleme öğesi/verileri artık son kurtarma noktası sürekli tutulur ve Kullanıcı, geçerli yedekleme fiyatlandırmasına göre ücretlendirilir.
+* Son kurtarma noktası sürekli olarak korunurken ve Kullanıcı uygun olan yedekleme fiyatlandırmasına göre ücretlendirildiği için, kullanıcılar birincil veri kaynağının artık mevcut olmadığı yedekleme öğelerini silmek için tavsiye edilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

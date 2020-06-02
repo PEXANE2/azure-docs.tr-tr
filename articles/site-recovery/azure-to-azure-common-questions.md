@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1ac42a5451da0347779475e96ce557633a02c59f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 98a2765b7adf31465fa0317cc626157137933af7
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834586"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248354"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Sık sorulan sorular: Azure 'dan Azure 'a olağanüstü durum kurtarma
 
@@ -172,6 +172,10 @@ Oluşturulan ilk kurtarma noktasının tamamen kopyası vardır. Tüm ardışık
 ### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>Kurtarma noktalarının bekletme döneminin artırılması depolama maliyetini arttırır mi?
 
 Evet, bekletme süresini 24 saat ile 72 saate artırırsanız Site Recovery, kurtarma noktalarını ek 48 saat boyunca kaydeder. Eklenen süre, depolama ücretlerine tabi olacaktır. Örneğin, tek bir kurtarma noktası, ayda $0,16 GB başına maliyet ile 10 GB 'lik Delta değişikliklere sahip olabilir. Ek ücretler ayda $1,60 × 48 olacaktır.
+
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Linux sunucularında uygulama tutarlılığı ile çoğaltmayı etkinleştirebilir miyim?
+
+Evet. Linux Işlem sistemi için Azure Site Recovery, uygulama tutarlılığı için uygulama özel komut dosyalarını destekler. Ön ve son seçenekleri olan özel betik, uygulama tutarlılığı sırasında Azure Site Recovery Mobility Aracısı tarafından kullanılır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#can-i-enable-replication-with-app-consistency-in-linux-servers)
 
 ## <a name="multi-vm-consistency"></a>Çoklu VM tutarlılığı
 

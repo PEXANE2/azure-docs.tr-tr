@@ -16,12 +16,12 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 04/28/2020
 ms.author: shvija
-ms.openlocfilehash: b9dcf35b3ea178894a0387e650b6814c0f920926
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cb47119fdddad70f8b7d5de94f9a2d35efd80d76
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649806"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259312"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure olay hub'ı için tanılama günlüklerini ayarlama
 
@@ -165,7 +165,7 @@ Kafka Coordinator log JSON, aşağıdaki tabloda listelenen öğeleri içerir:
 | ---- | ----------- | 
 | No | İzleme amacıyla kullanılan istek KIMLIĞI |
 | ResourceId | Azure Resource Manager kaynak KIMLIĞI |
-| İşlem | Grup düzenlemesi sırasında gerçekleştirilen işlemin adı |
+| Çalışma | Grup düzenlemesi sırasında gerçekleştirilen işlemin adı |
 | ClientId | İstemci Kimliği |
 | Uz | Ad alanı adı | 
 | SubscriptionId | Azure abonelik KIMLIĞI |
@@ -239,7 +239,7 @@ Müşteri tarafından yönetilen anahtar Kullanıcı günlüğü JSON, aşağıd
 | KeyVault | Key Vault kaynağın adı |
 | Anahtar | Key Vault anahtarının adı. |
 | Sürüm | Key Vault anahtarının sürümü |
-| İşlem | İsteklere hizmeti sağlamak için yapılan bir işlemin adı |
+| Çalışma | İsteklere hizmeti sağlamak için yapılan bir işlemin adı |
 | Kod | Durum kodu |
 | İleti | Bir hata veya bilgilendirici iletiyle ilgili ayrıntıları sağlayan ileti |
 
@@ -247,7 +247,7 @@ Müşteri tarafından yönetilen anahtar Kullanıcı günlüğü JSON, aşağıd
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Event Hubs giriş](event-hubs-what-is-event-hubs.md)
-- [Event Hubs API’sine genel bakış](event-hubs-api-overview.md)
+- [Event Hubs örnekleri](sdks.md)
 - Event Hubs kullanmaya başlayın
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)

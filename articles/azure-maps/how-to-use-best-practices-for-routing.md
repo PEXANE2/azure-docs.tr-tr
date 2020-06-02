@@ -1,6 +1,6 @@
 ---
 title: Azure haritalar için en iyi uygulamalar Yönlendirme Hizmeti | Microsoft Azure haritaları
-description: Microsoft Azure haritalardan Yönlendirme Hizmeti kullanarak verimli bir şekilde yönlendirmeyi öğrenin.
+description: Microsoft Azure haritalardan Yönlendirme Hizmeti kullanarak her bir yolu yönlendirmeyi öğrenin.
 author: philmea
 ms.author: philmea
 ms.date: 03/11/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 85ce29d088b8fbd110988db67776d89346215e5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 24fa4c48f6ca03e4049483a9acfff067d5a6a736
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335412"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266704"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps Route hizmeti için en iyi yöntemler
 
@@ -56,7 +56,7 @@ Senaryonuz şu şekilde olursa matris yönlendirme API 'sini çağırmayı düş
 
 Yol yönlerinin ve matris API 'Lerinin bazı özelliklerini göstermek için bir karşılaştırma aşağıda verilmiştir:
 
-| Azure Haritalar API 'SI | İstekteki en fazla sorgu sayısı | Alanlardan kaçının | Kamyonu ve elektrik araç yönlendirmesi | waypoints ve seyahat Salesman iyileştirmesi | Destekleyici noktaları |
+| Azure Haritalar API 'SI | İstekteki en fazla sorgu sayısı | Alanlardan kaçının | Kamyonu ve elektrik araç yönlendirmesi | Waypoints ve seyahat Salesman iyileştirmesi | Destekleyici noktaları |
 | :--------------: |  :--------------: |  :--------------: | :--------------: | :--------------: | :--------------: |
 | Rota yönlerini al | 1 | | X | X | |
 | Rota gönderme yönleri | 1 | X | X | X | X |
@@ -67,7 +67,7 @@ Elektrik araç yönlendirme özellikleri hakkında daha fazla bilgi edinmek içi
 
 ## <a name="request-historic-and-real-time-data"></a>Geçmiş ve gerçek zamanlı veriler iste
 
-Varsayılan olarak, rota hizmeti seyahat modunun bir otomobil olduğunu varsayar ve ayrılma zamanı şu anda olur. Yol hesaplama isteği aksini belirtmedikçe gerçek zamanlı trafik koşullarına bağlı olarak yol döndürür. ' Sol dönüşler arasında 4:00 PM ile 6:00 PM arasında izin verilmez ' gibi sabit zamana bağımlı trafik kısıtlamalarına göre yakalanacaktır ve yönlendirme altyapısı tarafından kabul edilir. Özel olarak geçerli canlı trafiği yok sayan bir yol istemediğiniz için, yol kapanışları gibi yol kapanışları göz önünde bulundurulacaktır. Geçerli trafiği yok saymak için API isteğiniz `traffic` içinde `false` olarak ayarlayın.
+Varsayılan olarak, rota hizmeti seyahat modunun bir otomobil olduğunu varsayar ve ayrılma zamanı şu anda olur. Yol hesaplama isteği aksini belirtmedikçe gerçek zamanlı trafik koşullarına bağlı olarak yol döndürür. ' Sol dönüşler arasında 4:00 PM ile 6:00 PM arasında izin verilmez ' gibi sabit zamana bağımlı trafik kısıtlamalarına göre yakalanacaktır ve yönlendirme altyapısı tarafından kabul edilir. Özel olarak geçerli canlı trafiği yok sayan bir yol istemediğiniz için, yol kapanışları gibi yol kapanışları göz önünde bulundurulacaktır. Geçerli trafiği yok saymak için `traffic` `false` API isteğiniz içinde olarak ayarlayın.
 
 Route Calculation **Seyahattimeınseconds** değeri trafik nedeniyle gecikme süresini içerir. Bu, geçerli ve geçmiş seyahat saati verilerinden yararlanarak oluşturulur. bu zaman, ayrılma saati şimdi olarak ayarlanır. Ayrılma zamanı gelecekte ayarlandıysa, API 'Ler, geçmiş verilere göre tahmini seyahat süresi döndürür.
 
@@ -129,7 +129,7 @@ Yanıt aşağıda gösterildiği gibi bir Özet içerir. Congesler nedeniyle, **
 
 ## <a name="request-route-and-leg-details"></a>İstek yolu ve bacak ayrıntıları
 
-Varsayılan olarak, yönlendirme hizmeti bir koordinat dizisi döndürür. Yanıt, adlı `points`bir listede yolu oluşturan koordinatları içerir. Yol yanıtı, yolun başından ve tahmini geçen sürenin uzaklığını da içerir. Bu değerler, tüm yolun ortalama hızını hesaplamak için kullanılabilir.
+Varsayılan olarak, yönlendirme hizmeti bir koordinat dizisi döndürür. Yanıt, adlı bir listede yolu oluşturan koordinatları içerir `points` . Yol yanıtı, yolun başından ve tahmini geçen sürenin uzaklığını da içerir. Bu değerler, tüm yolun ortalama hızını hesaplamak için kullanılabilir.
 
 Aşağıdaki görüntüde `points` öğesi gösterilmektedir.
 
@@ -139,7 +139,7 @@ Aşağıdaki görüntüde `points` öğesi gösterilmektedir.
 
 </center>
 
-Yolun koordinatlarının listesini görmek için `point` öğesini genişletin:
+`point`Yolun koordinatlarının listesini görmek için öğesini genişletin:
 
 <center>
 
@@ -149,7 +149,7 @@ Yolun koordinatlarının listesini görmek için `point` öğesini genişletin:
 
 Yol yönleri API 'Leri, **Komutctionstype** parametresini belirterek kullanılabilecek farklı yönergelerin biçimlerini destekler. Kolay bilgisayar işlemeye yönelik yönergeleri biçimlendirmek için, **Komutctionstype = Coded**kullanın. Yönergeleri kullanıcı için metin olarak göstermek için **Komutctionstype = etiketli** ' i kullanın. Ayrıca, yönergelerin bazı öğelerinin işaretlendiği ve yönergedeki özel biçimlendirmeyle birlikte sunulan yönergeler metin olarak biçimlendirilebilir. Daha fazla bilgi için [desteklenen yönerge türleri listesine](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routeinstructionstype)bakın.
 
-Yönergeler istendiğinde, yanıt adlı `guidance`yeni bir öğesi döndürür. `guidance` Öğesi iki bilgi parçasını tutar: açma yönü ve özetlenen yönergeler.
+Yönergeler istendiğinde, yanıt adlı yeni bir öğesi döndürür `guidance` . `guidance`Öğesi iki bilgi parçasını tutar: açma yönü ve özetlenen yönergeler.
 
 <center>
 
@@ -157,7 +157,7 @@ Yönergeler istendiğinde, yanıt adlı `guidance`yeni bir öğesi döndürür. 
 
 </center>
 
-`instructions` Öğesi seyahat için geri dönüş yönlerini tutar ve özetlenmiş yönergeleri `instructionGroups` vardır. Her yönerge Özeti, birden çok yol kapsayan seyahat segmentini kapsar. API 'Ler, bir yolun bölümlerinin ayrıntılarını döndürebilir. Örneğin, bir trafik sıkıştı koordinat aralığı veya trafiğin geçerli hızı.
+`instructions`Öğesi seyahat için geri dönüş yönlerini tutar ve `instructionGroups` özetlenmiş yönergeleri vardır. Her yönerge Özeti, birden çok yol kapsayan seyahat segmentini kapsar. API 'Ler, bir yolun bölümlerinin ayrıntılarını döndürebilir. Örneğin, bir trafik sıkıştı koordinat aralığı veya trafiğin geçerli hızı.
 
 <center>
 
@@ -183,7 +183,7 @@ Aşağıdaki örnek istek, bir ticari kamyonun yolunu sorgular. Kamyonu, sınıf
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&vehicleWidth=2&vehicleHeight=2&vehicleCommercial=true&vehicleLoadType=USHazmatClass1&travelMode=truck&instructionsType=text&query=51.368752,-0.118332:41.385426,-0.128929
 ```
 
-Rota API 'SI, kamyonun boyutlarına ve tehlikeli çöp kutusu ile uyumlu yönler döndürür. `guidance` Öğesini genişleterek yol yönergelerini okuyabilirsiniz.
+Rota API 'SI, kamyonun boyutlarına ve tehlikeli çöp kutusu ile uyumlu yönler döndürür. Öğesini genişleterek yol yönergelerini okuyabilirsiniz `guidance` .
 
 <center>
 
@@ -199,7 +199,7 @@ Yukarıdaki sorgudaki US hazı sınıfını değiştirmek, bu değişikliğe uyu
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&vehicleWidth=2&vehicleHeight=2&vehicleCommercial=true&vehicleLoadType=USHazmatClass9&travelMode=truck&instructionsType=text&query=51.368752,-0.118332:41.385426,-0.128929
 ```
 
-Aşağıdaki yanıt, sınıf 1 tehlikeli bir malzemeden daha az tehlikeli olan sınıf 9 tehlikeli bir malzeme taşıyan bir kamyon içindir. Yönleri okumak için `guidance` öğesini genişlettiğinizde, yönlerinin aynı olmadığına dikkat edin. Kamyonun Sınıf 1 tehlikeli malzemesini taşıyan daha fazla rota yönergesi bulunur.
+Aşağıdaki yanıt, sınıf 1 tehlikeli bir malzemeden daha az tehlikeli olan sınıf 9 tehlikeli bir malzeme taşıyan bir kamyon içindir. `guidance`Yönleri okumak için öğesini genişlettiğinizde, yönlerinin aynı olmadığına dikkat edin. Kamyonun Sınıf 1 tehlikeli malzemesini taşıyan daha fazla rota yönergesi bulunur.
 
 <center>
 
@@ -209,11 +209,11 @@ Aşağıdaki yanıt, sınıf 1 tehlikeli bir malzemeden daha az tehlikeli olan s
 
 ## <a name="request-traffic-information-along-a-route"></a>Yol üzerinde trafik bilgilerini isteme
 
-Azure haritalar yol yönü API 'Leri ile, geliştiriciler istekteki `sectionType` parametreyi ekleyerek her bir bölüm türü için Ayrıntılar talep edebilir. Örneğin, her trafik sıkışıklığı kesimine yönelik hız bilgilerini isteyebilirsiniz. İstediğiniz çeşitli ayrıntılar hakkında bilgi edinmek için [sectionType anahtarının değer listesine](https://docs.microsoft.com/rest/api/maps/route/getroutedirections#sectiontype) bakın.
+Azure haritalar yol yönü API 'Leri ile, geliştiriciler istekteki parametreyi ekleyerek her bir bölüm türü için Ayrıntılar talep edebilir `sectionType` . Örneğin, her trafik sıkışıklığı kesimine yönelik hız bilgilerini isteyebilirsiniz. İstediğiniz çeşitli ayrıntılar hakkında bilgi edinmek için [sectionType anahtarının değer listesine](https://docs.microsoft.com/rest/api/maps/route/getroutedirections#sectiontype) bakın.
 
 ### <a name="sample-query"></a>Örnek sorgu
 
-Aşağıdaki sorgu öğesini `sectionType` olarak `traffic`ayarlar. Seattle 'dan San Diego trafik bilgilerini içeren bölümleri ister.
+Aşağıdaki sorgu öğesini olarak ayarlar `sectionType` `traffic` . Seattle 'dan San Diego trafik bilgilerini içeren bölümleri ister.
 
 ```http
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&sectionType=traffic&query=47.6062,-122.3321:32.7157,-117.1611
@@ -249,7 +249,7 @@ Verilen waypoints 'i ziyaret etmek için en iyi sırayı iyileştirmek istiyorsa
 
 ### <a name="sample-query"></a>Örnek sorgu
 
-Aşağıdaki sorgu, `computeBestOrder` parametresi olarak `false`ayarlanan altı waypoints için yol ister. Ayrıca, `computeBestOrder` parametresi için varsayılan değerdir.
+Aşağıdaki sorgu, parametresi olarak ayarlanan altı waypoints için yol ister `computeBestOrder` `false` . Ayrıca, parametresi için varsayılan değerdir `computeBestOrder` .
 
 ```http
 https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&computeBestOrder=false&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861
@@ -275,7 +275,7 @@ Bu yol güzergah noktası sırası: 0, 1, 2, 3, 4, 5 ve 6.
 
 ### <a name="sample-query"></a>Örnek sorgu
 
-Aşağıdaki sorgu, yukarıdaki örnekteki gibi aynı altı waypoints için yolu ister. Bu kez, `computeBestOrder` parametresi olarak `true` ayarlanır (seyahat problemine iyileştirmesi).
+Aşağıdaki sorgu, yukarıdaki örnekteki gibi aynı altı waypoints için yolu ister. Bu kez, `computeBestOrder` parametresi olarak ayarlanır `true` (seyahat problemine iyileştirmesi).
 
 ```http
 https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&computeBestOrder=true&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861

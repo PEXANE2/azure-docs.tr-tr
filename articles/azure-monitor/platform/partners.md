@@ -4,12 +4,12 @@ description: Azure Izleyici iş ortakları ve bunlarla tümleştirme için belge
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 3224a9420d5a434ed9e3d8902f430f4e1ee28bcd
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: be309bf6caeb716fee86e4542363f5554b4568fb
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233393"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248980"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Izleyici iş ortağı tümleştirmeleri
 
@@ -60,7 +60,7 @@ Circonus, benzersiz iş öngörülerini ve değerlerini sağlamak için gerçek 
 
 Zaman ve para tasarrufu için oluşturulmuş bir platforma sahip bulutunuzu oluşturup otomatikleştirin. CloudHealth, bulut yönetimi için görünürlük, sezgisel iyileştirme ve Rock-Solid idare uygulamaları sağlar. CloudHealth platformu, kuruluşların ve MSPs 'nin bulut yatırımlarına dönüşü en üst düzeye çıkarmasına olanak sağlar. Maliyet, kullanım, performans ve güvenlik konusunda kendinize yönelik kararlar alın.
 
-[Daha fazla bilgi][cloudhealth-doc]
+[Daha fazla bilgi edinin][cloudhealth-doc]
 
 ## <a name="cloudmonix"></a>Cloudmonitorx
 
@@ -106,8 +106,6 @@ Grafana, zaman serisi ölçüm verilerini görselleştirmenizi sağlayan açık 
 
 ![Etkileyen XData logosu](./media/partners/Influxdata.png)
 
-Etkileyen etkili XData, DevOps ve IoT uygulamalarına yönelik ölçüm ve olayları (zaman serisi verileri) analiz etmek için baştan oluşturulmuş modern açık kaynaklı bir platform sunar. Veriler insanlardan, sensörlerden veya makinelerden geliyorsa, etkileyen, geliştiricilerin yeni nesil izleme, analiz ve IoT uygulamalarını daha hızlı, daha kolay hale getirmeye ve gerçek iş değerini hızlı bir şekilde izlemelerine kadar ölçeklendirmesine olanak sağlar. San Francisco 'a bağlı olarak, etkileyen 420 'den daha fazla müşteri Cisco, eBay, IBM ve Siemens ' i içerir.
-
 Etkileyen, açık kaynak zaman serisi veritabanı olan etkileyen, etkileyen verileri oluşturan Teknolojimiz, IoT cihazları, uygulamaları, ağları, kapsayıcıları ve bilgisayarları tarafından oluşturulan büyük hacimli zaman damgalı verileri işleyecek şekilde oluşturulmuştur. IBM, Visa, Siemens, Tesla ve NASA gibi geliştiricilere ve kuruluşlara yardımcı olmaya yönelik bir görev sunuyoruz. gerçek zamanlı verileri depolayıp analiz ederek, dönüştürme izleme, analiz ve IoT uygulamalarını daha hızlı bir şekilde ve ölçeklendirmenizi sağlar. Microsoft Azure Izleyicinin ölçüm ve olay koleksiyonu özellikleri, Microsoft kullanıcılarına önde gelen bir zaman serisi veritabanı çözümünden faydalanabilir ve telegraf ile büyüyen açık kaynaklı katkılardan faydalanabilir.
 
 
@@ -136,11 +134,11 @@ NextGen SıEM 'te lider olan LogRhythm, karma tehditleri hızlı bir şekilde al
 
 Mikro odak **Arcizlemesinde** , Azure izleyici Olay Hub 'ları için akıllı bağlayıcı bulunur.
 
-[Daha fazla bilgi](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "Arcgörüş belgeleri.")
+[Daha fazla bilgi edinin](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "Arcgörüş belgeleri.")
 
 Mikro odak **Işlemleri Köprüsü** , her türlü cihaz, işletim sistemi, veritabanı, uygulama ya da hizmet olan tüm karma BT kaynaklarını otomatik olarak izler ve tüm veri türleri – olaylar, ölçümler, Günlükler ve bağımlılıklar Için aıops uygular. Kapsamlı uygulama sistem durumu analizi ile bağlanmış, hizmet izleme kalitesi 'nin benzersiz bir birleşimini sağlar ve Microsoft Azure hizmetleri için kapsamlı performans ve kullanılabilirlik izleme içerir. İşlemler Köprüsü, müşterilerin hem iş hem de BT paydaşlarının anlayabilmesi için, tarayıcıyla her cihazda kullanılabilen tek bir cam bölmesi sağlamasına olanak sağlar.
 
-Daha fazlasını öğrenin
+Daha fazla bilgi edinin
 - [OB Suite 'e genel bakış](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [İndir](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - [Sitescope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -Sitescope, Işlemler köprü paketindeki bir bileşendir.

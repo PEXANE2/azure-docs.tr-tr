@@ -1,26 +1,26 @@
 ---
 title: 'Öğretici: New York Taxicab verilerini yükleme'
-description: Öğretici, SYNAPSE SQL için genel bir Azure blobundan New York Taxicab verilerini yüklemek için Azure portal ve SQL Server Management Studio kullanır.
+description: Öğretici, SYNAPSE SQL için bir Azure blobundan New York Taxicab verilerini yüklemek üzere Azure portal ve SQL Server Management Studio kullanır.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 02/04/2020
+ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 7f3d4a14f92aa9271f094db5e2315b64b0fe3151
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5f2d1d517db9ab0e4ccfbfff1cef3a5a0de738c9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015004"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267784"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Öğretici: New York Taxicab veri kümesini yükleme
 
-Bu öğretici, genel bir Azure Blob depolama hesabından yeni York Taxicab verilerini yüklemek için PolyBase 'i kullanır. Öğreticide aşağıdaki işlemler için [Azure Portal](https://portal.azure.com) ve [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) kullanılır:
+Bu öğretici, New York Taxıab veri kümesini bir Azure Blob depolama hesabından yüklemek için [Copy ifadesini](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) kullanır. Öğreticide aşağıdaki işlemler için [Azure Portal](https://portal.azure.com) ve [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) kullanılır:
 
 > [!div class="checklist"]
 >
@@ -28,10 +28,9 @@ Bu öğretici, genel bir Azure Blob depolama hesabından yeni York Taxicab veril
 > * Azure portalında sunucu düzeyinde güvenlik duvarı kuralı ayarlama
 > * SSMS ile veri ambarına bağlanma
 > * Verileri yüklemek için belirlenen bir kullanıcı oluşturma
-> * Azure blob depolama alanında veriler için dış tablolar oluşturma
-> * Verileri veri ambarınıza yüklemek için CTAS T-SQL deyimini kullanma
+> * Örnek veri kümesi için tabloları oluşturma 
+> * Veri ambarınıza veri yüklemek için COPY T-SQL ifadesini kullanın
 > * Yüklendikleri sırada verilerin ilerleme durumunu görüntüleme
-> * Yeni yüklenen verilere ilişkin istatistikler oluşturma
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
@@ -85,7 +84,7 @@ Boş bir veritabanı oluşturmak için bu adımları izleyin.
 
     ![performansı yapılandırma](./media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. **Apply** (Uygula) seçeneğini belirleyin.
+8. **Uygula**’yı seçin.
 9. Sağlama dikey penceresinde boş veritabanı için bir **harmanlama** seçin. Bu öğreticide varsayılan değeri kullanın. Harmanlamalar hakkında daha fazla bilgi için bkz. [Harmanlamalar](/sql/t-sql/statements/collations?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 10. Formu tamamladığınıza göre, veritabanını sağlamak için **Oluştur** ' u seçin. Sağlama birkaç dakika sürer.
@@ -211,9 +210,9 @@ Verileri yüklemenin ilk adımı LoaderRC20 olarak oturum açmaktır.
 
     ![Bağlantı başarılı oldu](./media/load-data-from-azure-blob-storage-using-polybase/connected-as-new-login.png)
 
-## <a name="create-external-tables-for-the-sample-data"></a>Örnek veriler için dış tablo oluşturma
+## <a name="create-tables-for-the-sample-data"></a>Örnek veriler için tablo oluşturma
 
-Verileri yeni veri ambarınıza yükleme işlemine başlamaya hazırsınız. Bu öğreticide, Azure depolama blobundan New York City TAXI cab verilerini yüklemek için dış tabloların nasıl kullanılacağı gösterilmektedir. Daha sonra başvurmak üzere verilerinizi Azure Blob depolama alanına alma veya doğrudan kaynağınızdan yükleme hakkında bilgi edinmek için bkz. [yüklemeye genel bakış](design-elt-data-loading.md).
+Verileri yeni veri ambarınıza yükleme işlemine başlamaya hazırsınız. Öğreticinin bu bölümünde, New York City TAXI cab veri kümesini bir Azure Storage blobundan yüklemek için COPY ifadesinin nasıl kullanılacağı gösterilmektedir. Daha sonra başvurmak üzere verilerinizi Azure Blob depolama alanına alma veya doğrudan kaynağınızdan yükleme hakkında bilgi edinmek için bkz. [yüklemeye genel bakış](design-elt-data-loading.md).
 
 Aşağıdaki SQL betiklerini çalıştırın ve yüklemek istediğiniz veriler hakkındaki bilgileri belirtin. Bu bilgiler verilerin konumu, verilerdeki içeriğin biçimi ve verilerin tablo tanımıdır.
 
@@ -223,58 +222,10 @@ Aşağıdaki SQL betiklerini çalıştırın ve yüklemek istediğiniz veriler h
 
 2. Sorgu pencerenizi önceki resimle karşılaştırın.  Yeni sorgu pencerenizin LoaderRC20 olarak çalıştırıldığını ve MySampleDataWarehouse veritabanınız üzerinde sorgular gerçekleştirdiğini doğrulayın. Tüm yükleme adımlarını gerçekleştirmek için bu sorgu penceresini kullanın.
 
-3. MySampleDataWarehouse veritabanı için bir ana anahtar oluşturun. Veritabanı başına yalnızca bir kez ana anahtar oluşturmanız gerekir.
+7. Tabloları oluşturmak için aşağıdaki T-SQL deyimlerini çalıştırın:
 
     ```sql
-    CREATE MASTER KEY;
-    ```
-
-4. Aşağıdaki [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) deyimini çalıştırarak Azure blobunun konumunu tanımlayın. Bu, dış taksi verilerinin konumudur.  Sorgu penceresine eklediğiniz bir komutu çalıştırmak için, çalıştırmak istediğiniz komutları vurgulayın ve **Yürüt**' ü seçin.
-
-    ```sql
-    CREATE EXTERNAL DATA SOURCE NYTPublic
-    WITH
-    (
-        TYPE = Hadoop,
-        LOCATION = 'wasbs://2013@nytaxiblob.blob.core.windows.net/'
-    );
-    ```
-
-5. Aşağıdaki [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL deyimini çalıştırarak dış veri dosyasının biçimlendirme özelliklerini ve seçeneklerini belirtin. Bu deyim dış verilerin metin olarak depolandığını ve değerlerin birbirinden dikey çizgi ('|') karakteriyle ayrıldığını belirtir. Dış dosya Gzip ile sıkıştırılır.
-
-    ```sql
-    CREATE EXTERNAL FILE FORMAT uncompressedcsv
-    WITH (
-        FORMAT_TYPE = DELIMITEDTEXT,
-        FORMAT_OPTIONS (
-            FIELD_TERMINATOR = ',',
-            STRING_DELIMITER = '',
-            DATE_FORMAT = '',
-            USE_TYPE_DEFAULT = False
-        )
-    );
-    CREATE EXTERNAL FILE FORMAT compressedcsv
-    WITH (
-        FORMAT_TYPE = DELIMITEDTEXT,
-        FORMAT_OPTIONS ( FIELD_TERMINATOR = '|',
-            STRING_DELIMITER = '',
-        DATE_FORMAT = '',
-            USE_TYPE_DEFAULT = False
-        ),
-        DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'
-    );
-    ```
-
-6. Aşağıdaki [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) deyimini çalıştırarak dış dosya biçiminiz için bir şema oluşturun. Şema, oluşturmak üzere olduğunuz dış tabloları düzenlemek için bir yol sağlar.
-
-    ```sql
-    CREATE SCHEMA ext;
-    ```
-
-7. Harici tabloları oluşturun. Tablo tanımları veri ambarında depolanır, ancak tablolar Azure Blob depolamada depolanan verilere başvurur. Aşağıdaki T-SQL komutlarını çalıştırarak, tamamı dış veri kaynağımızda daha önce tanımladığımız Azure blobunu işaret eden dış tablolar oluşturun.
-
-    ```sql
-    CREATE EXTERNAL TABLE [ext].[Date]
+    CREATE TABLE [dbo].[Date]
     (
         [DateID] int NOT NULL,
         [Date] datetime NULL,
@@ -311,13 +262,11 @@ Aşağıdaki SQL betiklerini çalıştırın ve yüklemek istediğiniz veriler h
     )
     WITH
     (
-        LOCATION = 'Date',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[Geography]
+    
+    CREATE TABLE [dbo].[Geography]
     (
         [GeographyID] int NOT NULL,
         [ZipCodeBKey] varchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -329,13 +278,11 @@ Aşağıdaki SQL betiklerini çalıştırın ve yüklemek istediğiniz veriler h
     )
     WITH
     (
-        LOCATION = 'Geography',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[HackneyLicense]
+    
+    CREATE TABLE [dbo].[HackneyLicense]
     (
         [HackneyLicenseID] int NOT NULL,
         [HackneyLicenseBKey] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -343,13 +290,11 @@ Aşağıdaki SQL betiklerini çalıştırın ve yüklemek istediğiniz veriler h
     )
     WITH
     (
-        LOCATION = 'HackneyLicense',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[Medallion]
+    
+    CREATE TABLE [dbo].[Medallion]
     (
         [MedallionID] int NOT NULL,
         [MedallionBKey] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -357,14 +302,11 @@ Aşağıdaki SQL betiklerini çalıştırın ve yüklemek istediğiniz veriler h
     )
     WITH
     (
-        LOCATION = 'Medallion',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
-    )
-    ;  
-    CREATE EXTERNAL TABLE [ext].[Time]
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    );
+    
+    CREATE TABLE [dbo].[Time]
     (
         [TimeID] int NOT NULL,
         [TimeBKey] varchar(8) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -378,13 +320,11 @@ Aşağıdaki SQL betiklerini çalıştırın ve yüklemek istediğiniz veriler h
     )
     WITH
     (
-        LOCATION = 'Time',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[Trip]
+    
+    CREATE TABLE [dbo].[Trip]
     (
         [DateID] int NOT NULL,
         [MedallionID] int NOT NULL,
@@ -412,13 +352,11 @@ Aşağıdaki SQL betiklerini çalıştırın ve yüklemek istediğiniz veriler h
     )
     WITH
     (
-        LOCATION = 'Trip2013',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = compressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[Weather]
+    
+    CREATE TABLE [dbo].[Weather]
     (
         [DateID] int NOT NULL,
         [GeographyID] int NOT NULL,
@@ -427,127 +365,123 @@ Aşağıdaki SQL betiklerini çalıştırın ve yüklemek istediğiniz veriler h
     )
     WITH
     (
-        LOCATION = 'Weather',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
-    )
-    ;
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    );
     ```
-
-8. Nesne Gezgini'nde, yeni oluşturduğunuz dış tabloların listesini görmek için mySampleDataWarehouse'u genişletin.
-
-    ![Dış tabloları görüntüleme](./media/load-data-from-azure-blob-storage-using-polybase/view-external-tables.png)
+    
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>Verileri veri ambarınıza yükleme
 
-Bu bölümde, örnek verileri Azure Depolama Blobu yüklemek için yeni tanımladığınız dış tablolar kullanılmaktadır.  
+Bu bölüm, örnek verileri Azure Depolama Blobu [yüklemek Için Copy ifadesini](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) kullanır.  
 
 > [!NOTE]
-> Bu öğretici verileri doğrudan son tabloya yükler. Üretim ortamında, genellikle CREATE TABLE AS SELECT kullanarak bir hazırlama tablosuna yüklersiniz. Veriler hazırlama tablosundayken tüm gerekli dönüştürmeleri yapabilirsiniz. Hazırlama tablosundaki verileri üretim tablosuna eklemek için, INSERT...SELECT deyimini kullanabilirsiniz. Daha fazla bilgi için kz. [Üretim tablosuna veri ekleme](guidance-for-loading-data.md#inserting-data-into-a-production-table).
+> Bu öğretici verileri doğrudan son tabloya yükler. Genellikle üretim iş yükleriniz için bir hazırlama tablosuna yüklersiniz. Veriler hazırlama tablosundayken tüm gerekli dönüştürmeleri yapabilirsiniz. 
 
-Verileri Azure Depolama Blobu'ndan veri ambarınızdaki yeni tablolara yüklemek için, betikte [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL deyimi kullanılır. CTAS bir SELECT deyiminin sonuçlarına göre yeni tablo oluşturur. Yeni tablo, select deyiminin sonuçları ile aynı sütunlara ve veri türlerine sahiptir. Select deyimleri bir dış tablodan seçim yaparken, veriler veri ambarındaki ilişkisel bir tabloya aktarılır.
-
-1. Aşağıdaki betiği çalıştırarak verileri veri ambarınızdaki yeni tablolara yükleyin.
+1. Verileri yüklemek için aşağıdaki deyimlerini çalıştırın:
 
     ```sql
-    CREATE TABLE [dbo].[Date]
+    COPY INTO [dbo].[Date]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Date'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS SELECT * FROM [ext].[Date]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Date]')
-    ;
-    CREATE TABLE [dbo].[Geography]
+    OPTION (LABEL = 'COPY : Load [dbo].[Date] - Taxi dataset');
+    
+    
+    COPY INTO [dbo].[Geography]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Geography'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS
-    SELECT * FROM [ext].[Geography]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Geography]')
-    ;
-    CREATE TABLE [dbo].[HackneyLicense]
+    OPTION (LABEL = 'COPY : Load [dbo].[Geography] - Taxi dataset');
+    
+    COPY INTO [dbo].[HackneyLicense]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/HackneyLicense'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS SELECT * FROM [ext].[HackneyLicense]
-    OPTION (LABEL = 'CTAS : Load [dbo].[HackneyLicense]')
-    ;
-    CREATE TABLE [dbo].[Medallion]
+    OPTION (LABEL = 'COPY : Load [dbo].[HackneyLicense] - Taxi dataset');
+    
+    COPY INTO [dbo].[Medallion]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Medallion'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS SELECT * FROM [ext].[Medallion]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Medallion]')
-    ;
-    CREATE TABLE [dbo].[Time]
+    OPTION (LABEL = 'COPY : Load [dbo].[Medallion] - Taxi dataset');
+    
+    COPY INTO [dbo].[Time]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Time'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS SELECT * FROM [ext].[Time]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Time]')
-    ;
-    CREATE TABLE [dbo].[Weather]
+    OPTION (LABEL = 'COPY : Load [dbo].[Time] - Taxi dataset');
+    
+    COPY INTO [dbo].[Weather]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Weather'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = '',
+        ROWTERMINATOR='0X0A'
     )
-    AS SELECT * FROM [ext].[Weather]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Weather]')
-    ;
-    CREATE TABLE [dbo].[Trip]
+    OPTION (LABEL = 'COPY : Load [dbo].[Weather] - Taxi dataset');
+    
+    COPY INTO [dbo].[Trip]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = '|',
+        FIELDQUOTE = '',
+        ROWTERMINATOR='0X0A',
+        COMPRESSION = 'GZIP'
     )
-    AS SELECT * FROM [ext].[Trip]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Trip]')
-    ;
+    OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
 
 2. Verilerinizi yüklenirken görüntüleyin. Birkaç GB veri yüklüyorsunuz ve yüksek performanslı columnstore dizinlerine sıkıştırıyorsunuz. Yüklemenin durumunu göstermek için, dinamik yönetim görünümleri (DMV’ler) kullanan aşağıdaki sorguyu çalıştırın.
 
     ```sql
-    SELECT
-        r.command,
-        s.request_id,
-        r.status,
-        count(distinct input_name) as nbr_files,
-        sum(s.bytes_processed)/1024/1024/1024.0 as gb_processed
-    FROM
-        sys.dm_pdw_exec_requests r
-        INNER JOIN sys.dm_pdw_dms_external_work s
-        ON r.request_id = s.request_id
-    WHERE
-        r.[label] = 'CTAS : Load [dbo].[Date]' OR
-        r.[label] = 'CTAS : Load [dbo].[Geography]' OR
-        r.[label] = 'CTAS : Load [dbo].[HackneyLicense]' OR
-        r.[label] = 'CTAS : Load [dbo].[Medallion]' OR
-        r.[label] = 'CTAS : Load [dbo].[Time]' OR
-        r.[label] = 'CTAS : Load [dbo].[Weather]' OR
-        r.[label] = 'CTAS : Load [dbo].[Trip]'
-    GROUP BY
-        r.command,
-        s.request_id,
-        r.status
-    ORDER BY
-        nbr_files desc,
-        gb_processed desc;
+    SELECT  r.[request_id]                           
+    ,       r.[status]                               
+    ,       r.resource_class                         
+    ,       r.command
+    ,       sum(bytes_processed) AS bytes_processed
+    ,       sum(rows_processed) AS rows_processed
+    FROM    sys.dm_pdw_exec_requests r
+                  JOIN sys.dm_pdw_dms_workers w
+                         ON r.[request_id] = w.request_id
+    WHERE [label] = 'COPY : Load [dbo].[Date] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Geography] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[HackneyLicense] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Medallion] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Time] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Weather] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Trip] - Taxi dataset' 
+    and session_id <> session_id() and type = 'WRITER'
+    GROUP BY r.[request_id]                           
+    ,       r.[status]                               
+    ,       r.resource_class                         
+    ,       r.command;
     ```
-
+    
 3. Tüm sistem sorgularını görüntüleyin.
 
     ```sql
@@ -557,55 +491,6 @@ Verileri Azure Depolama Blobu'ndan veri ambarınızdaki yeni tablolara yüklemek
 4. Veri ambarınıza verilerinizin sorunsuz şekilde yüklenmesinin keyfini çıkarın.
 
     ![Yüklenen tabloları görüntüleme](./media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
-
-## <a name="authenticate-using-managed-identities-to-load-optional"></a>Yüklenecek yönetilen kimlikleri kullanarak kimlik doğrulama (isteğe bağlı)
-
-PolyBase kullanarak yükleme ve yönetilen kimlikler aracılığıyla kimlik doğrulaması en güvenli mekanizmadır ve Azure Storage ile sanal ağ hizmet uç noktalarından yararlanmanızı sağlar.
-
-### <a name="prerequisites"></a>Ön koşullar
-
-1. Bu [Kılavuzu](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)kullanarak Azure PowerShell 'i yükler.
-2. Genel amaçlı v1 veya blob depolama hesabınız varsa, önce bu [Kılavuzu](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)kullanarak genel amaçlı v2 'ye yükseltmeniz gerekir.
-3. Azure depolama hesabı **güvenlik duvarları ve sanal ağlar** ayarları menüsünde **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin vermeniz** gerekir. Daha fazla bilgi için bu [kılavuza](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions) bakın.
-
-#### <a name="steps"></a>Adımlar
-
-1. PowerShell 'de, **sunucunuzu** Azure ACTIVE DIRECTORY (AAD) ile kaydedin:
-
-   ```powershell
-   Connect-AzAccount
-   Select-AzSubscription -SubscriptionId your-subscriptionId
-   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
-   ```
-
-2. Bu [Kılavuzu](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)kullanarak **genel amaçlı v2 depolama hesabı** oluşturun.
-
-   > [!NOTE]
-   > Genel amaçlı bir v1 veya blob depolama hesabınız varsa, önce bu [Kılavuzu](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)kullanarak **v2 'ye yükseltmeniz** gerekir.
-
-3. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. Sunucunuza **Depolama Blobu veri katılımcısı** RBAC rolünü atayın.
-
-   > [!NOTE]
-   > Yalnızca sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Azure kaynakları için çeşitli yerleşik roller için bu [kılavuza](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bakın.
-  
-**Azure depolama hesabına PolyBase bağlantısı:**
-
-1. **Kimlik = ' yönetilen hizmet kimliği '** olan veritabanı kapsamlı kimlik bilgilerinizi oluşturun:
-
-   ```SQL
-   CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
-   ```
-
-   > [!NOTE]
-   >
-   > * Bu mekanizma, kapsamakta olan [yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kullandığından Azure depolama erişim anahtarı ile gizli dizi belirtilmesi gerekmez.
-   > * PolyBase bağlantısının Azure Storage hesabıyla çalışması için KIMLIK adı **' yönetilen hizmet kimliği '** olmalıdır.
-
-2. Yönetilen Hizmet Kimliği veritabanı kapsamlı kimlik bilgilerini belirten dış veri kaynağını oluşturun.
-
-3. [Dış tablolar](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanarak normal şekilde sorgulama.
-
-Azure SYNAPSE Analytics için sanal ağ hizmet uç noktalarını ayarlamak isterseniz aşağıdaki [belgelere](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) bakın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -630,7 +515,7 @@ Kaynakları istediğiniz gibi temizlemek için bu adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, veri ambarı oluşturmayı ve verileri yüklemek için kullanıcı oluşturmayı öğrendiniz. Azure Depolama Blobu'nda depolanan verilerin yapısını tanımlamak için dış tablolar oluşturdunuz ve sonra da PolyBase CREATE TABLE AS SELECT deyimini kullanarak verileri veri ambarınıza yüklediniz.
+Bu öğreticide, veri ambarı oluşturmayı ve verileri yüklemek için kullanıcı oluşturmayı öğrendiniz. Veri ambarınıza veri yüklemek için basit [kopyalama ifadesini](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#examples) kullandınız.
 
 Şu işlemleri yaptınız:
 > [!div class="checklist"]
@@ -639,12 +524,17 @@ Bu öğreticide, veri ambarı oluşturmayı ve verileri yüklemek için kullanı
 > * Azure portalında sunucu düzeyinde güvenlik duvarı kuralı ayarlama
 > * SSMS ile veri ambarına bağlandı
 > * Verileri yüklemek için belirlenen bir kullanıcı oluşturuldu
-> * Azure Depolama Blobu'ndaki veriler için dış tablolar oluşturuldu
-> * Verileri veri ambarınıza yüklemek için CTAS T-SQL deyimi kullanıldı
+> * Örnek veriler için tablolar oluşturuldu
+> * Veri ambarınıza veri yüklemek için COPY T-SQL ifadesini kullandınız
 > * Yüklendikleri sırada verilerin ilerleme durumu görüntülendi
-> * Yeni yüklenen verilere ilişkin istatistikler oluşturuldu
 
-Mevcut bir veritabanını Azure SYNAPSE Analytics 'e geçirmeyi öğrenmek için geliştirmeye genel bakış ' a ilerleyin.
+Mevcut bir veritabanını Azure SYNAPSE Analytics 'e geçirmeyi öğrenmek için geliştirmeye genel bakış konusuna ilerleyin:
 
 > [!div class="nextstepaction"]
 > [Mevcut bir veritabanını Azure SYNAPSE Analytics 'e geçirmeye yönelik tasarım kararları](sql-data-warehouse-overview-develop.md)
+
+Daha fazla örnek ve başvuru yüklemek için aşağıdaki belgeleri görüntüleyin:
+
+- [Deyimdeki başvuru belgelerini Kopyala](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [Her kimlik doğrulama yöntemi için örnekleri KOPYALAYıN](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)
+- [Tek bir tablo için hızlı başlangıç kopyalama](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql)

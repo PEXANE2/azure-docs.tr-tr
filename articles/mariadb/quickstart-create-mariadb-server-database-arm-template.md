@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: ff7a22c0006d124f8d89b2f933dd213499dc1771
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 547b268a43cdd4b362d56b34cf9129a8b5efe16e
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997578"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266432"
 ---
-# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Hızlı başlangıç: bir ARM şablonu kullanarak MariaDB sunucusu için Azure veritabanı oluşturma
+# <a name="quickstart-use-a-resource-manager-template-to-create-an-azure-database-for-mariadb-server"></a>Hızlı başlangıç: MariaDB sunucusu için Azure veritabanı oluşturmak üzere bir Kaynak Yöneticisi şablonu kullanma
 
 MariaDB için Azure veritabanı, bulutta yüksek oranda kullanılabilir MariaDB veritabanlarını çalıştırmak, yönetmek ve ölçeklendirmek için kullandığınız bir yönetilen hizmettir. Bu hızlı başlangıçta, Azure portal, PowerShell veya Azure CLı 'de MariaDB sunucusu için Azure veritabanı oluşturmak üzere bir ARM şablonu kullanırsınız.
 
@@ -42,9 +42,9 @@ Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https:/
 
 Tanımlı bir dizi işlem ve depolama kaynağı ile MariaDB için Azure Veritabanı sunucusu oluşturulur. Daha fazla bilgi edinmek için bkz. [MariaDB Için Azure veritabanı fiyatlandırma katmanları](concepts-pricing-tiers.md). Sunucu, [Azure kaynak grubu](../azure-resource-manager/management/overview.md) içinde oluşturulur.
 
-### <a name="review-the-template"></a>Şablonu gözden geçirin
+### <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mariadb-with-vnet/).
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-managed-mariadb-with-vnet/).
 
 :::code language="json" source="~/quickstart-templates/101-managed-mariadb-with-vnet/azuredeploy.json" range="001-231" highlight="149,162,176,199,213":::
 
@@ -58,13 +58,13 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 
 MariaDB şablon örnekleri için daha fazla Azure veritabanı, [Azure hızlı başlangıç şablonlarında](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb&pageNumber=1&sort=Popular)bulunabilir.
 
-## <a name="deploy-the-template"></a>Şablonu dağıtma
+### <a name="deploy-the-template"></a>Şablonu dağıtma
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal için Azure veritabanı sunucu şablonunu dağıtmak için aşağıdaki bağlantıyı seçin:
 
-[![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mariadb-with-vnet%2fazuredeploy.json)
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mariadb-with-vnet%2fazuredeploy.json)
 
 **VNET Ile MariaDB Için Azure veritabanı 'Nı dağıtma** sayfasında:
 

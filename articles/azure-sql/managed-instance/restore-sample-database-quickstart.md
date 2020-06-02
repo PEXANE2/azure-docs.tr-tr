@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 74975c050ef77c02e8912ce6cdd9404ac5bba019
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c750912e942d5dadeb97e6675427f1730912704a
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054734"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267588"
 ---
 # <a name="quickstart-restore-a-database-to-an-azure-sql-managed-instance-with-ssms"></a>Hızlı başlangıç: SSMS ile bir veritabanını Azure SQL yönetilen örneğine geri yükleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -96,6 +96,7 @@ SQL Server Management Studio (SSMS) içinde, Wide World Importers veritabanını
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- 5. adımda, bir veritabanı geri yükleme işlemi 22003 ileti KIMLIĞI ile sonlandıysa, yedekleme sağlama toplamlarını içeren yeni bir yedekleme dosyası oluşturun ve geri yüklemeyi yeniden gerçekleştirin. Bkz. [yedekleme veya geri yükleme sırasında yedekleme sağlaması sağlama veya devre dışı bırakma](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server).
 - Bir URL 'de yedekleme sorunlarını gidermek için, bkz. [SQL Server yedekleme URL 'Si En Iyi uygulamalar ve sorun giderme](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting).
 - Uygulama bağlantısı seçeneklerine genel bakış için bkz. [UYGULAMALARıNıZı SQL yönetilen örneğine bağlama](connect-application-instance.md).
 - En sevdiğiniz araçları veya dilleri kullanarak sorgulamak için bkz. [hızlı başlangıç: Azure SQL veritabanı Connect ve Query](../database/connect-query-content-reference-guide.md).

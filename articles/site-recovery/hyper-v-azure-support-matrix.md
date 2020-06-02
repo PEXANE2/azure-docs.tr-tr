@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: fd10468e823201bfa67aaf7c570071bd075ec4ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99204657b7604250826ff0a4a870ad92fdb4df32
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420840"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249153"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Şirket içi Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarması için destek matrisi
 
@@ -32,7 +32,7 @@ Virtual Machine Manager olmadan Hyper-V | Virtual Machine Manager tarafından y�
 
 **Sunucu** | **Gereksinimler** | **Bilgileri**
 --- | --- | ---
-Hyper-V (Virtual Machine Manager olmadan çalışıyor) |  Windows Server 2019, Windows Server 2016 (Sunucu Çekirdeği yüklemesi dahil), en son güncelleştirmeleri içeren Windows Server 2012 R2 | Azure Site Recovery ile Windows Server 2012 R2 'yi/veya SCVMM 2012 R2 'yi zaten yapılandırdıysanız ve işletim sistemini yükseltmeyi planlarsanız, lütfen rehberlik [belgelerini izleyin.](upgrade-2012R2-to-2016.md) 
+Hyper-V (Virtual Machine Manager olmadan çalışıyor) |  Windows Server 2019, Windows Server 2016 (Sunucu Çekirdeği yüklemesi dahil), en son güncelleştirmeleri içeren Windows Server 2012 R2 | Azure Site Recovery ile Windows Server 2012 R2 'yi/veya SCVMM 2012 R2 'yi zaten yapılandırdıysanız ve işletim sistemini yükseltmeyi planlarsanız, lütfen rehberlik [belgelerini izleyin.](upgrade-2012R2-to-2016.md) <br/><br/> Not: Windows Server 2019 Server Core sürümü için yeniden çalışma desteklenmez.
 Hyper-V (Virtual Machine Manager ile çalışıyor) | Virtual Machine Manager 2019, Virtual Machine Manager 2016 Virtual Machine Manager 2012 R2 | Virtual Machine Manager kullanılırsa, Windows Server 2019 Konakları Virtual Machine Manager 2019 ' de yönetilmelidir. Benzer şekilde, Windows Server 2016 Konakları Virtual Machine Manager 2016 ' de yönetilmelidir.<br/><br/> Not: Windows Server 2019 konakları için alternatif konuma yeniden çalışma desteklenmez.
 
 
@@ -64,7 +64,7 @@ Konak ağı: IPv4 | Yes | Yes
 Konak ağı: IPv6 | Hayır | Hayır
 Konuk VM ağı: NIC ekibi oluşturma | Hayır | Hayır
 Konuk VM ağı: IPv4 | Yes | Yes
-Konuk VM ağı: IPv6 | Hayır | Yes
+Konuk VM ağı: IPv6 | Hayır | Evet
 Konuk VM ağı: statik IP (Windows) | Yes | Yes
 Konuk VM ağı: statik IP (Linux) | Hayır | Hayır
 Konuk VM ağı: çoklu NIC | Yes | Yes
@@ -120,7 +120,7 @@ Dinamik disk Ekle/Kaldır | Hayır | Hayır
 Diski hariç tutma | Yes | Yes
 Çoklu yol (MPIO) | Yes | Yes
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Depolama
 
 **Bileşen** | **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
 --- | --- | ---

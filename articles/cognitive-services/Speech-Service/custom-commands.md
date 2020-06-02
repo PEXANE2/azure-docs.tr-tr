@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 2e1b6ee0bd6c392804915fac6ff23278a00b6d33
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c02e823202aa848a4de94885276835899562e4b
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79367848"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266024"
 ---
-# <a name="what-are-custom-commands-preview"></a>Özel komutlar (Önizleme) nedir?
+# <a name="what-is-custom-commands-preview"></a>Özel komutlar (Önizleme) nedir?
 
-[Sesli yardımcılar](voice-assistants.md) gibi sesli uygulamalar kullanıcıları dinler ve yanıt olarak bir işlem gerçekleştirebilir, genellikle geri konuşuyor. Bu kişiler, kullanıcının konuşma işlemini yapmak için [konuşmayı metne](speech-to-text.md) dönüştürme özelliğini kullanır ve ardından metnin doğal dilde anlaşılmasına ilişkin işlem yapın. Bu eylem sıklıkla, [metinden konuşmaya](text-to-speech.md)ile oluşturulan yardımcdan konuşulan çıktıyı içerir. Cihazlar, konuşma SDK 'sının `DialogServiceConnector` nesnesiyle birlikte yardımcılar 'a bağlanır.
+[Sesli yardımcılar](voice-assistants.md) gibi sesli uygulamalar kullanıcıları dinler ve yanıt olarak bir işlem gerçekleştirebilir, genellikle geri konuşuyor. Bu kişiler, kullanıcının konuşma işlemini yapmak için [konuşmayı metne](speech-to-text.md) dönüştürme özelliğini kullanır ve ardından metnin doğal dilde anlaşılmasına ilişkin işlem yapın. Bu eylem sıklıkla, [metinden konuşmaya](text-to-speech.md)ile oluşturulan yardımcdan konuşulan çıktıyı içerir. Cihazlar, konuşma SDK 'sının nesnesiyle birlikte yardımcılar 'a bağlanır `DialogServiceConnector` .
 
 **Özel komutlar (Önizleme)** , sesli uygulamalar oluşturmaya yönelik kolaylaştırılmış bir çözümdür. Birleşik bir yazma deneyimi, bir otomatik barındırma modeli ve görece daha düşük karmaşıklığa karşı [doğrudan hat konuşma](direct-line-speech.md)gibi diğer seçeneklere kıyasla daha fazla karmaşıklık sağlar. Ancak bu basitleştirme, esneklik açısından bir düşüş ile birlikte gelir. Bu nedenle, özel komutlar (Önizleme) görev tamamlama veya komut ve denetim senaryoları için idealdir. Nesnelerin İnterneti (IoT) ve gözetimsiz cihazlar için oldukça iyi eşleştirilir.
 

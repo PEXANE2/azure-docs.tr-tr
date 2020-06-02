@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Azure Dev Spaces hakkında bazı yaygın soruların yanıtlarını bulun
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: b5a380f20640b9bc328aa30289ff7f915cc0b73c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6328515232b257e01b9b453de4ca0aca820c4038
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414305"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267503"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Dev Spaces hakkında sık sorulan sorular
 
@@ -30,7 +30,7 @@ Evet, AKS kümenizi Azure Dev Spaces başka bir [desteklenen bölgeye][supported
 
 ## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>Azure Dev Spaces, mevcut Dockerfiles veya Helm grafikleriyle kullanabilir miyim?
 
-Evet, projenizde zaten bir Dockerfile veya Held grafiği varsa, bu dosyaları Azure Dev Spaces kullanabilirsiniz. Çalıştırdığınızda `azds prep`, `--chart` parametresini kullanın ve grafiğin konumunu belirtin. Azure Dev Spaces, *azds. YAML* ve *dockerfile. geliþme* dosyası oluşturmaya devam eder, ancak mevcut bir Dockerfile veya Helu grafiğini değiştirmez ya da değiştirmeyecektir. *Azds. YAML* ve *dockerfile.* çalıştırırken `azds up`, her şeyin mevcut uygulamanızla doğru şekilde çalışması için dosyaları geliştirmeniz gerekebilir.
+Evet, projenizde zaten bir Dockerfile veya Held grafiği varsa, bu dosyaları Azure Dev Spaces kullanabilirsiniz. Çalıştırdığınızda `azds prep` , `--chart` parametresini kullanın ve grafiğin konumunu belirtin. Azure Dev Spaces, *azds. YAML* ve *dockerfile. geliþme* dosyası oluşturmaya devam eder, ancak mevcut bir Dockerfile veya Helu grafiğini değiştirmez ya da değiştirmeyecektir. *Azds. YAML* ve *dockerfile.* çalıştırırken, her şeyin mevcut uygulamanızla doğru şekilde çalışması için dosyaları geliştirmeniz `azds up` gerekebilir.
 
 Kendi Dockerfile veya Held grafiğinizi kullanırken aşağıdaki sınırlamalar vardır:
 * Yalnızca bir Dockerfile kullanılıyorsa, dil SDK 'Sı gibi yalnızca çalışma zamanı değil, geliştirme senaryolarını etkinleştirmek için ihtiyaç duyduğunuz her şeyi içermesi gerekir. Azure Dev Spaces için bir Dockerfile. geliştirme gibi ayrı bir Dockerfile kullanılıyorsa, geliştirme senaryolarını etkinleştirmek için ihtiyacınız olan her şey, bu Dockerfile 'a eklenmelidir.
@@ -99,7 +99,6 @@ Visual Studio 'da, Azure Dev Spaces aracılığıyla hata ayıklama için .NET C
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
-[aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [aks-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
 [aks-migration]: ../aks/aks-migration.md
 [aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities

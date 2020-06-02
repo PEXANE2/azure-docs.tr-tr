@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 5/21/2020
 ms.author: derekol
-ms.openlocfilehash: f9f93bc434a2eea34e8c0d1256cd72fa5527204f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: e4f9f5b59b61065c300b58fb1cdb88e12b7ddbe0
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849510"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247232"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-the-azure-portal"></a>Azure portal kullanarak eski bir Exchange eşlemesini Azure kaynağına dönüştürme
 
@@ -30,8 +30,7 @@ Bir Internet Exchange sağlayıcısı olarak, [eşleme oluşturarak]( https://go
 
 1. **Eşleme oluştur** sayfasında, **temel bilgiler** sekmesinde, kutulara aşağıda gösterildiği gibi kutuyu girin:
 
-
->   ![Eşleme Hizmeti'ni kaydetme](./media/setup-basics-tab.png)
+   ![Eşleme Hizmeti'ni kaydetme](./media/setup-basics-tab.png)
 
 * Azure aboneliğinizi seçin.
 
@@ -41,38 +40,15 @@ Bir Internet Exchange sağlayıcısı olarak, [eşleme oluşturarak]( https://go
 
 * Mevcut bir kaynak grubunu seçerseniz bölge otomatik olarak seçilir. Yeni bir kaynak grubu oluşturmayı seçerseniz, kaynağın bulunmasını istediğiniz Azure bölgesini de seçmeniz gerekir.
 
->[!NOTE]
->Kaynak grubunun bulunduğu bölge, Microsoft ile eşleme oluşturmak istediğiniz konumdan bağımsızdır. Ancak, en yakın Azure bölgelerinde bulunan kaynak grupları içindeki eşleme kaynaklarınızı düzenlemek en iyi uygulamadır. Örneğin, Ashburn içindeki eşlemeler için Doğu ABD veya Doğu ABD2 içinde bir kaynak grubu oluşturabilirsiniz.
+  >[!NOTE]
+  >Kaynak grubunun bulunduğu bölge, Microsoft ile eşleme oluşturmak istediğiniz konumdan bağımsızdır. Ancak, en yakın Azure bölgelerinde bulunan kaynak grupları içindeki eşleme kaynaklarınızı düzenlemek en iyi uygulamadır. Örneğin, Ashburn içindeki eşlemeler için Doğu ABD veya Doğu ABD2 içinde bir kaynak grubu oluşturabilirsiniz.
 
 * **Peerasn** kutusunda ASN 'nizi seçin.
 
->[!IMPORTANT]  
->Bir eşleme isteği göndermeden önce, yalnızca onay durumu ile bir ASN seçebilirsiniz. PeerAsn isteğinizi gönderdikten sonra, ASN ilişkisinin onaylanabilmesi için 12 saat bekleyin. Seçtiğiniz ASN, doğrulama bekliyor ise, bir hata iletisi görürsünüz. Seçmeniz gereken ASN 'yi görmüyorsanız doğru aboneliği seçtiğinizden emin olun. Bu durumda, **[EŞDÜZEY ASN 'Yi Azure aboneliğine ilişkilendir](https://go.microsoft.com/fwlink/?linkid=2129592)**' i kullanarak peerasn 'yi zaten oluşturmuş olup olmadığınızı kontrol edin.
+  >[!IMPORTANT]  
+  >Bir eşleme isteği göndermeden önce, yalnızca onay durumu ile bir ASN seçebilirsiniz. PeerAsn isteğinizi gönderdikten sonra, ASN ilişkisinin onaylanabilmesi için 12 saat bekleyin. Seçtiğiniz ASN, doğrulama bekliyor ise, bir hata iletisi görürsünüz. Seçmeniz gereken ASN 'yi görmüyorsanız doğru aboneliği seçtiğinizden emin olun. Bu durumda, **[EŞDÜZEY ASN 'Yi Azure aboneliğine ilişkilendir](https://go.microsoft.com/fwlink/?linkid=2129592)**' i kullanarak peerasn 'yi zaten oluşturmuş olup olmadığınızı kontrol edin.
 
 * **İleri ' yi seçin:** devam etmek için yapılandırma.
-
-### <a name="convert-legacy-exchange-peering"></a><a name=create></a>Eski Exchange eşlemesini Dönüştür
-
-[Eşleme oluşturma]( https://go.microsoft.com/fwlink/?linkid=2129593)kullanarak eski eşleme bağlantılarını dönüştürebilirsiniz.
-
-####  <a name="configure-basic-settings"></a>Temel ayarları yapılandırma
->   ![Eşleme Hizmeti'ni kaydetme](./media/setup-basics-tab.png)
-
-* Azure aboneliğinizi seçin.
-
-* Kaynak grubu için, açılan listeden var olan bir kaynak grubunu seçebilir veya yeni oluştur ' u seçerek yeni bir grup oluşturabilirsiniz. Bu örnek için yeni bir kaynak grubu oluşturacağız.
-
-* Ad, kaynak adına karşılık gelir ve seçtiğiniz herhangi bir şey olabilir.
-
-* Mevcut bir kaynak grubunu seçerseniz bölge otomatik olarak seçilir. Yeni bir kaynak grubu oluşturmayı seçerseniz, kaynağın bulunmasını istediğiniz Azure bölgesini de seçmeniz gerekir.
-
->[!NOTE]
-    Kaynak grubunun bulunduğu bölge, Microsoft ile eşleme oluşturmak istediğiniz konumdan bağımsızdır. Ancak, en yakın Azure bölgelerinde bulunan kaynak grupları içindeki eşleme kaynaklarınızı düzenlemek en iyi uygulamadır. Örneğin, Ashburn içindeki eşlemeler için Doğu ABD veya Doğu ABD2 içinde bir kaynak grubu oluşturabilirsiniz.
-
-* **Peerasn** kutusunda ASN 'nizi seçin.
-
->[!IMPORTANT]  
-    Bir eşleme isteği göndermeden önce, yalnızca onay durumu ile bir ASN seçebilirsiniz. PeerAsn isteğinizi gönderdikten sonra, ASN ilişkisinin onaylanabilmesi için 12 saat bekleyin. Seçtiğiniz ASN, doğrulama bekliyor ise, bir hata iletisi görürsünüz. Seçmeniz gereken ASN 'yi görmüyorsanız doğru aboneliği seçtiğinizden emin olun. Bu durumda, **[EŞDÜZEY ASN 'Yi Azure aboneliğine ilişkilendir](https://go.microsoft.com/fwlink/?linkid=2129592)**' i kullanarak peerasn 'yi zaten oluşturmuş olup olmadığınızı kontrol edin.
 
 
 #### <a name="configure-connections-and-submit"></a>Bağlantıları yapılandırma ve gönderme

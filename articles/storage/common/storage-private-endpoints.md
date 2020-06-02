@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: c51f2db698f30368c9d4090d3d571fa0c131178a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f79e257eb61cebe000ed9ab831a4da4a5748132
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299065"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267843"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Azure depolama için özel uç noktaları kullanma
 
@@ -79,17 +79,17 @@ Depolama uç noktası URL 'sini VNet dışından özel uç noktayla çözdüğü
 
 Yukarıdaki gösterilen örnek için, Özel uç noktayı barındıran VNet dışından çözümlendiğinde ' StorageAccountA ' depolama hesabı için DNS kaynak kayıtları şu şekilde olur:
 
-| Adı                                                  | Tür  | Değer                                                 |
+| Name                                                  | Tür  | Değer                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<depolama hizmeti genel uç noktası\>                   |
-| \<depolama hizmeti genel uç noktası\>                   | A     | \<depolama hizmeti genel IP adresi\>                 |
+| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
+| \<storage service public endpoint\>                   | A     | \<storage service public IP address\>                 |
 
 Daha önce belirtildiği gibi, depolama güvenlik duvarını kullanarak genel uç nokta aracılığıyla VNet dışındaki istemciler için erişimi reddedebilir veya kontrol edebilirsiniz.
 
 Özel uç noktasını barındıran VNet 'teki bir istemci tarafından çözümlendiğinde StorageAccountA için DNS kaynak kayıtları şu şekilde olur:
 
-| Adı                                                  | Tür  | Değer                                                 |
+| Name                                                  | Tür  | Değer                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
@@ -106,7 +106,7 @@ Depolama Hizmetleri için özel uç noktalar için önerilen DNS bölge adları 
 | Depolama hizmeti        | Bölge adı                            |
 | :--------------------- | :----------------------------------- |
 | Blob hizmeti           | `privatelink.blob.core.windows.net`  |
-| Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
+| Data Lake Storage 2. Nesil | `privatelink.dfs.core.windows.net`   |
 | Dosya hizmeti           | `privatelink.file.core.windows.net`  |
 | Kuyruk hizmeti          | `privatelink.queue.core.windows.net` |
 | Tablo hizmeti          | `privatelink.table.core.windows.net` |
@@ -137,7 +137,7 @@ Bu kısıtlama, a2 hesabı özel bir uç nokta oluşturduğunda yapılan DNS de�
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Özel uç noktaları olan alt ağlar için Ağ Güvenlik Grubu kuralları
 
-Şu anda, [ağ güvenlik grubu](../../virtual-network/security-overview.md) (NSG) kurallarını ve özel uç noktalar için Kullanıcı tanımlı yolları yapılandıramazsınız. Özel uç noktasını barındıran alt ağa uygulanan NSG kuralları özel uç noktaya uygulanır. Bu sorun için sınırlı bir geçici çözüm, kaynak alt ağlardaki özel uç noktalar için erişim kurallarınızı uygulamaktır, ancak bu yaklaşım daha yüksek bir yönetim yükü gerektirebilir.
+Şu anda, [ağ güvenlik grubu](../../virtual-network/security-overview.md) (NSG) kurallarını ve özel uç noktalar için Kullanıcı tanımlı yolları yapılandıramazsınız. Özel uç noktayı barındıran alt ağa uygulanan NSG kuralları, Özel uç noktadan yalnızca diğer uç noktalara (ör. NIC 'ler) uygulanır. Bu sorun için sınırlı bir geçici çözüm, kaynak alt ağlardaki özel uç noktalar için erişim kurallarınızı uygulamaktır, ancak bu yaklaşım daha yüksek bir yönetim yükü gerektirebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

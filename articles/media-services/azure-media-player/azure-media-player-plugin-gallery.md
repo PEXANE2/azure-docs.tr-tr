@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: ba8f60ea10a8b0b85bc030b23dfa71cf3cb264ff
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4d3d522de84ebd019fd432f5c4e5d89ac5ef8bcf
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195642"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263752"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Azure Media Player eklentisi Galerisi #
 
@@ -25,8 +25,8 @@ ms.locfileid: "84195642"
 | Tanılama yer paylaşımı                 | [Tanıtım](https://openidconnectweb.azurewebsites.net/Diagnoverlay.html)                        | [GitHub](https://github.com/willzhan/diagnoverlay)                     | Bu eklenti şunu görüntüler: tüm anahtar parametreleri, video istatistikleri, video kayıttan yürütme yaşam döngüsünün tüm olayları ve korunuyorsa anahtar KIMLIĞI, lisans alma URL 'Leri gibi DRM koruma bilgileri.                                                                                                                                                                      |
 | Kare hızı ve timecode Hesaplayıcı | Tanıtım yok | [GitHub](https://github.com/mconverti/media-services-javascript-azure-media-player-framerate-timecode-calculator-plugin)                     | Bu eklenti, `tfhd` / `trun` ilk MPEG-Dash video parçasının MP4 kutularına göre videonun kare hızını hesaplar, MPEG-Dash istemci bildiriminden zaman ölçeği değerini ayrıştırır ve ayrıca, Player 'dan verilen mutlak bir süre için timecode oluşturma ve aynı zamanda Player 'ın zaman koduna verilen mutlak zamanı sağlayan bir yol sağlar. |
 | <strike>Kayıttan yürütme hızı</strike>                      | [Tanıtım](https://azure-samples.github.io/media-services-javascript-Azure-Media-Player-playback-rate-plugin/)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-time-tip-plugin)                     | Bu eklenti, görüntüleyicilerin video hızını denetlemesine olanak sağlar. *Bu işlev, AMP v 2.0.0 + sürümünde otomatik olarak kullanılabilir ancak varsayılan olarak devre dışı bırakılmıştır.* Nasıl etkinleştireceğinizi öğrenmek için [buradaki](https://github.com/Azure-Samples/azure-media-player-samples) örneklere göz atın |
-| Vurgulama süresi Ipucu                      | [Tanıtım](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timetip/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-time-tip-plugin)                     | Zamana doğru arama için fare üzerine gelindiğinde ilerleme çubuğunun üzerinde bir zaman ipucu görüntüler. *Note: Bu eklenti, amp ile zaten tümleşiktir* ancak nasıl programlandığını görmek istiyorsanız, bir göz atın.                                                                                                                       |
-| Başlık kaplama                       | [Tanıtım](https://azure-samples.github.io/media-services-javascript-azure-media-player-title-overlay-plugin/)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-title-overlay-plugin)                     | Yapılandırılabilir video başlığını ekran üzerinde yer paylaşımı |
+| Vurgulama süresi Ipucu                      | [Tanıtım](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timetip/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-time-tip-plugin)                     | Zamana doğru arama için fare üzerine gelindiğinde ilerleme çubuğunun üzerinde bir zaman ipucu görüntüler. *Note: Bu eklenti, amp ile zaten tümleşiktir* ancak nasıl programlandığını görmek istiyorsanız, bir göz atın.                                                                                                                 |
+| Başlık kaplama                       | [Tanıtım](https://azure-samples.github.io/media-services-javascript-azure-media-player-title-overlay-plugin)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-title-overlay-plugin)                     | Yapılandırılabilir video başlığını ekran üzerinde yer paylaşımı |
 | Zaman çizelgesi Işaretçileri                    | [Tanıtım](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timelinemarkers/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-timeline-markers-plugin)                     | Bu eklenti, bir dizi zaman alır ve bu zamanlarda ilerleme çubuğunun üzerinde küçük işaretçiler kaplar. |
 | Analiz                           | | | |
 | Application Insights                | [Blog gönderisi](https://azure.microsoft.com/blog/player-analytics-azure-media-player-plugin/)                   | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin)                     | Player ölçümlerinizi izleyen ve görüntüleyicilerin oynatıcı deneyiminin sezgisel bir grafik gösterimi için Power BI bağlantı noktalarından oluşan eklenti. |

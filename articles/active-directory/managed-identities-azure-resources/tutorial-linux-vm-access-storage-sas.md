@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 670ae329943610ba16411da3782bc1da079c6490
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6a173fe36c20e9f13f1b1c1f27efc36821c8264a
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74183205"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266313"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>Öğretici: SAS kimlik bilgisiyle Azure Depolama'ya erişmek için Linux VM sistem tarafından atanan kimliğini kullanma
 
@@ -101,7 +101,7 @@ Bu adımları tamamlamak bir SSH istemciniz olmalıdır. Windows kullanıyorsan�
     
     > [!NOTE]
     > Önceki istekte, "resource" parametresinin değeri Azure AD'nin beklediği değerle tam olarak eşleşmelidir. Azure Resource Manager kaynak kimliği kullanıldığında, URI'nin sonundaki eğik çizgiyi de eklemelisiniz.
-    > Aşağıdaki yanıtta, access_token öğesi kısaltılmıştır.
+    > Aşağıdaki yanıtta access_token öğesi breçekimi için kısaltıldı.
     
     ```bash
     {"access_token":"eyJ0eXAiOiJ...",

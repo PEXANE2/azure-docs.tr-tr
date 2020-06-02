@@ -6,12 +6,12 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
-ms.openlocfilehash: e5fbb14477275ca329243797b75550cfe92077b6
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: a92c5fde68227bf94342dd380250429675bd084d
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701563"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248864"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Azure Spring Cloud ile devre kesici panosunu kullanma
 Yay [bulutu Netflix Turbin](https://github.com/Netflix/Turbine) , birden çok [hyte x](https://github.com/Netflix/Hystrix) ölçüm akışını toplamak için yaygın olarak kullanılır. böylece, akışlar hyçabax Panosu kullanılarak tek bir görünümde izlenebilir. Bu öğreticide, Azure Spring Cloud 'da nasıl kullanılacağı gösterilmektedir.
@@ -59,7 +59,7 @@ Tüm uygulamalar çalışır ve keşfedildikten sonra, `user-service` https:// <
 Ortak uç noktaları veya özel test uç noktaları kullanmayı doğrulayın.
 
 ### <a name="using-public-endpoints"></a>Ortak uç noktaları kullanma
-Tarayıcınızla bir x-Turbin yolu ile erişin `https://<SERVICE-NAME>-hystrix-turbine azuremicroservices.io/hystrix` .  Aşağıdaki şekilde, bu uygulamada çalışan Hyçabax panosu gösterilmektedir.
+Tarayıcınızla bir x-Turbin yolu ile erişin `https://<SERVICE-NAME>-hystrix-turbine.azuremicroservices.io/hystrix` .  Aşağıdaki şekilde, bu uygulamada çalışan Hyçabax panosu gösterilmektedir.
 
 ![Hyçabax panosu](media/spring-cloud-circuit-breaker/hystrix-dashboard.png)
 

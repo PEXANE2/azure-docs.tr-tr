@@ -1,6 +1,7 @@
 ---
-title: Sorgulamak için .NET Core kullanın
-description: Bu konu başlığı altında, .NET Core kullanarak Azure SQL veritabanı 'nda bir veritabanına bağlanan ve Transact-SQL deyimlerini kullanarak sorgulayan bir program oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
+title: .NET Core kullanarak bir veritabanını bağlama ve sorgulama
+description: Bu konu başlığında, .NET Core kullanarak Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanına bağlanan ve Transact-SQL deyimlerini kullanarak sorgulayan bir program oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,18 +11,18 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 07/29/2019
-ms.openlocfilehash: ff90cf7de3bb83a235f866d8035ccb036e021b83
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: 87acf1ab1591dadd5b3ac9c96fa36654bcbb4368
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189571"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267452"
 ---
-# <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database"></a>Hızlı başlangıç: Azure SQL veritabanı 'nda bir veritabanını sorgulamak için .NET Core (C#) kullanma
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanını sorgulamak için .NET Core (C#) kullanma
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Bu hızlı başlangıçta, Azure SQL veritabanı 'nda bir veritabanına bağlanmak için [.NET Core](https://www.microsoft.com/net/) ve C# Code 'u kullanacaksınız. Daha sonra verileri sorgulamak için bir Transact-SQL ifadesini çalıştıracaksınız.
+Bu hızlı başlangıçta, bir veritabanına bağlanmak için [.NET Core](https://www.microsoft.com/net/) ve C# Code 'u kullanacaksınız. Daha sonra verileri sorgulamak için bir Transact-SQL ifadesini çalıştıracaksınız.
 
 > [!TIP]
 > Aşağıdaki Microsoft Learn modülü, [Azure SQL veritabanında bir veritabanını sorgulayan bir ASP.NET uygulamasının nasıl geliştirileceği ve yapılandırılacağı](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/) hakkında bilgi edinmenize yardımcı olur
@@ -31,7 +32,7 @@ Bu hızlı başlangıçta, Azure SQL veritabanı 'nda bir veritabanına bağlanm
 Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Azure SQL veritabanı 'nda bir veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
+- Bir veritabanı. Bir veritabanı oluşturup yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
 
   || SQL Veritabanı | SQL Yönetilen Örnek | Azure VM’lerde SQL Server |
   |:--- |:--- |:---|:---|
@@ -204,6 +205,6 @@ namespace sqltest
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Komut satırını kullanarak Windows/Linus/macOS’ta .NET Core ile çalışmaya başlama](/dotnet/core/tutorials/using-with-xplat-cli).
-- [.NET Framework ve Visual Studio kullanarak Azure SQL veritabanı 'nda bir veritabanını bağlamayı ve sorgulamayı](connect-query-dotnet-visual-studio.md)öğrenin.  
-- [Azure SQL veritabanı 'NDA SSMS kullanarak ilk veritabanınızı tasarlamayı](design-first-database-tutorial.md) veya [Azure SQL veritabanı 'Nda bir veritabanı tasarlayarak C# ve ADO.NET ile bağlanma](design-first-database-csharp-tutorial.md)hakkında bilgi edinin.
+- [.NET Framework ve Visual Studio kullanarak Azure SQL veritabanı veya Azure SQL yönetilen örneği bağlama ve sorgulama](connect-query-dotnet-visual-studio.md)hakkında bilgi edinin.  
+- [SSMS ile ilk veritabanınızı tasarlamayı](design-first-database-tutorial.md) veya [bir veritabanı tasarlamanızı ve C# ve ADO.NET ile nasıl bağlanacağınızı](design-first-database-csharp-tutorial.md)öğrenin.
 - .NET hakkında daha fazla bilgi edinmek için [.NET belgelerine](https://docs.microsoft.com/dotnet/) bakın.

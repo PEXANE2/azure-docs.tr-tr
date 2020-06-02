@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 4d4b2f0305e1069ac7873df24d834ab55512aff7
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: ccd729510341a9232764b1c211aa18c197ad5a37
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219724"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248643"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini otomatik ölçeklendirme
 
@@ -74,10 +74,10 @@ Aşağıdaki tablo, otomatik ölçeklendirme özelliğiyle uyumlu küme türleri
 
 | Sürüm | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| ESP olmadan HDInsight 3,6 | Evet | Evet | Evet | Evet* | Hayır | Hayır | Hayır |
-| ESP olmadan HDInsight 4,0 | Evet | Evet | Evet | Evet* | Hayır | Hayır | Hayır |
-| HDInsight 3,6, ESP ile | Evet | Evet | Evet | Evet* | Hayır | Hayır | Hayır |
-| HDInsight 4,0, ESP ile | Evet | Evet | Evet | Evet* | Hayır | Hayır | Hayır |
+| ESP olmadan HDInsight 3,6 | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
+| ESP olmadan HDInsight 4,0 | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
+| HDInsight 3,6, ESP ile | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
+| HDInsight 4,0, ESP ile | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
 
 \*HBase kümeleri, yük tabanlı değil yalnızca zamanlama tabanlı ölçeklendirme için yapılandırılabilir.
 
@@ -210,7 +210,7 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 İstek yükünde uygun parametreleri kullanın. Aşağıdaki JSON yükü otomatik ölçeklendirmeyi etkinleştirmek için kullanılabilir. `{autoscale: null}`Otomatik ölçeklendirmeyi devre dışı bırakmak için yükü kullanın.
 
 ```json
-{ "autoscale": { "capacity": { "minInstanceCount": 3, "maxInstanceCount": 2 } } }
+{ "autoscale": { "capacity": { "minInstanceCount": 3, "maxInstanceCount": 5 } } }
 ```
 
 Tüm yük parametrelerinin tam açıklaması için [Yük tabanlı otomatik ölçeklendirmeyi etkinleştirme](#load-based-autoscaling) konusundaki önceki bölüme bakın.

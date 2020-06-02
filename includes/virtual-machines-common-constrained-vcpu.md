@@ -2,18 +2,18 @@
 title: include dosyası
 description: include dosyası
 services: virtual-machines
-author: jonbeck7
+author: mimckitt
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/09/2018
-ms.author: azcspmt;jonbeck;cynthn
+ms.author: mimckitt
 ms.custom: include file
-ms.openlocfilehash: 24fbab2bb637edf6c7e31215cdc7ac82bdb0ebab
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 8ee5238fd8043161271eef2c130a8e0a385a0bc0
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67188366"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84269158"
 ---
 SQL Server veya Oracle gibi bazı veritabanı iş yükleri yüksek bellek, depolama ve g/ç bant genişliği gerektirir, ancak yüksek çekirdekli bir sayı değildir. Birçok veritabanı iş yükü CPU yoğunluklu değildir. Azure, aynı bellek, depolama ve g/ç bant genişliğini koruyarak, VM vCPU sayısını, yazılım lisanslama maliyetini azaltmak üzere kısıtlamak için belirli VM boyutları sunar.
 
@@ -24,7 +24,7 @@ VCPU sayısı, özgün VM boyutunun bir yarısı veya bir çeyrekte kısıtlanab
 SQL Server veya Oracle için ücretlendirilen lisanslama ücretleri yeni vCPU sayısı ile sınırlıdır ve diğer ürünlerin yeni vCPU sayısı temelinde ücretlendirilmelidir. Bu, VM özelliklerinin etkin (Faturalanabilir) vCPU 'Lara oranını artırdığı için %50 ile %75 arasında bir sonuç verir. Bu yeni VM boyutları, müşteri iş yüklerinin, yazılım lisanslama maliyetini iyileştirirken aynı bellek, depolama ve g/ç bant genişliğini kullanmasına izin verir. Şu anda, işletim maliyeti, işletim sistemi lisansı içeren işlem maliyeti, özgün boyutuyla aynı kalır. Daha fazla bilgi için bkz. [Azure VM boyutları daha fazla maliyetli veritabanı iş yükleri için](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
 
-| Adı                | Sanal işlemci | Özellikler           |
+| Name                | Sanal işlemci | Özellikler           |
 |---------------------|------|-----------------|
 | Standard_M8-2ms     | 2    | M8ms ile aynı    |
 | Standard_M8-4ms     | 4    | M8ms ile aynı    |
@@ -45,6 +45,15 @@ SQL Server veya Oracle için ücretlendirilen lisanslama ücretleri yeni vCPU sa
 | Standard_E32 8s_v3  | 8    | E32s_v3 ile aynı |
 | Standard_E64 32s_v3 | 32   | E64s_v3 ile aynı |
 | Standard_E64 16s_v3 | 16   | E64s_v3 ile aynı |
+| Standard_E4 2ds_v4  | 2    | E4ds_v4 ile aynı |
+| Standard_E8 4ds_v4  | 4    | E8ds_v4 ile aynı |
+| Standard_E8 2ds_v4  | 2    | E8ds_v4 ile aynı |
+| Standard_E16 8ds_v4 | 8    | E16ds_v4 ile aynı|
+| Standard_E16 4ds_v4 | 4    | E16ds_v4 ile aynı|
+| Standard_E32 16ds_v4| 16   | E32ds_v4 ile aynı|
+| Standard_E32 8ds_v4 | 8    | E32ds_v4 ile aynı|
+| Standard_E64 32ds_v4| 32   | E64ds_v4 ile aynı|
+| Standard_E64 16ds_v4| 16   | E64ds_v4 ile aynı|
 | Standard_GS4-8      | 8    | GS4 ile aynı     |
 | Standard_GS4-4      | 4    | GS4 ile aynı     |
 | Standard_GS5-16     | 16   | GS5 ile aynı     |

@@ -3,12 +3,12 @@ title: Azure Backup ile Azure 'da bir SAP HANA veritabanını yedekleme
 description: Bu makalede, Azure Backup hizmeti ile SAP HANA bir veritabanını Azure sanal makinelerine nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 4183c1eca6b1149c5c61ed77c0ca1101c86f8f4f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 20086516dc37538474a31c7735e9b2d3b1a3d5b2
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745423"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248575"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 
@@ -25,8 +25,11 @@ Bu makalede şunları yapmayı öğreneceksiniz:
 > * İsteğe bağlı yedekleme işi çalıştırma
 
 >[!NOTE]
+>RHEL için SAP HANA yedekleme önizlemesine (7,4, 7,6, 7,7 veya 8,1 [) başlayın.](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) Daha fazla sorgu için, adresinden bize yazın [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+
+>[!NOTE]
 >Azure **VM 'de SQL Server Için geçici silme ve Azure VM iş yükleri SAP HANA için geçici silme** , artık önizleme aşamasında kullanıma sunuldu.<br>
->Önizlemeye kaydolmak için, şurada bize yazın:AskAzureBackupTeam@microsoft.com
+>Önizlemeye kaydolmak için, adresinden bize yazın [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 

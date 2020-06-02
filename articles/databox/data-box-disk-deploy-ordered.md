@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e7ab15749ccd4ef2808e9cbb362196e38e3d7f4b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: de481abd82b4fc7dd2eae3763f82b8dd96cc14a9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746091"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266534"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Öğretici: Azure Data Box Disk sıralama
 
@@ -41,7 +41,7 @@ Dağıtmadan önce, Data Box hizmeti ve Data Box Disk için aşağıdaki yapıla
 Başlamadan önce aşağıdakilerden emin olun:
 
 * Verileri kopyalayabilmeniz için kullanabileceğiniz bir istemci bilgisayarınızın olması gerekir. İstemci bilgisayarınızda:
-  * [Desteklenen bir işletim sistemi](data-box-disk-system-requirements.md#supported-operating-systems-for-clients) çalıştırılmalıdır.
+  * Desteklenen bir [işletim sistemi](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)çalıştırın.
   * Windows istemciyse diğer [gerekli yazılımlar](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) yüklenmiş olmalıdır.  
 
 ## <a name="order-data-box-disk"></a>Data Box Disk sipariş etme
@@ -105,7 +105,7 @@ Data Box Disk sıralamak için aşağıdaki adımları uygulayın.
 
 7. **Teslimat adresi** sekmesinde adınızı, soyadınızı, şirket adını, posta adresini ve geçerli bir telefon numarası girin. **Adresi doğrula**'ya tıklayın. Hizmet, teslimat adresinde hizmetin kullanılabilirlik durumunu doğrular. Hizmet belirtilen teslimat adresinde kullanılabilir durumdaysa bu konuda bir bildirim gönderilir.
 
-   Sipariş işlendikten sonra bir e-posta bildirimi alırsınız. Kendi kendine yönetilen kargo hakkında daha fazla bilgi için bkz. [otomatik olarak yönetilen gönderi kullanma](data-box-disk-portal-customer-managed-shipping.md).
+   Sipariş işlendikten sonra bir e-posta bildirimi alırsınız. Kendi kendine yönetilen kargo seçeneğini belirlediyseniz bkz. otomatik olarak [yönetilen gönderi kullanma](data-box-disk-portal-customer-managed-shipping.md).
 
     ![Teslimat adresi belirtme](media/data-box-disk-deploy-ordered/data-box-shipping-address.png)
 8. **Bildirim ayrıntıları** sayfasında e-posta adresi belirtin. Hizmet, belirtilen e-posta adreslerine sipariş durumundaki güncelleştirmelerle ilgili bilgi gönderir.

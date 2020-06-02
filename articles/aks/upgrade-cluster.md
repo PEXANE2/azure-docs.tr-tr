@@ -3,19 +3,19 @@ title: Azure Kubernetes Service (AKS) kümesini yükseltme
 description: En son özellikleri ve güvenlik güncelleştirmelerini almak için bir Azure Kubernetes hizmeti (AKS) kümesini nasıl yükselteceğinizi öğrenin.
 services: container-service
 ms.topic: article
-ms.date: 05/31/2019
-ms.openlocfilehash: 7e9a47b7bda4cdb0ff6f1983bc884f7441a26d9b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/28/2020
+ms.openlocfilehash: 761df8abc60671341fcdd74e7c66111cfeb105ad
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207982"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259244"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) kümesini yükseltme
 
 AKS kümesinin yaşam döngüsünün bir parçası olarak genellikle en son Kubernetes sürümüne yükseltmeniz gerekir. En son Kubernetes güvenlik sürümlerini uygulamanız veya en son özellikleri almak için yükseltmeniz önemlidir. Bu makalede, bir AKS kümesindeki ana bileşenlerin veya tek bir varsayılan düğüm havuzunun nasıl yükseltileceğini gösterir.
 
-Birden çok düğüm havuzu kullanan AKS kümelerinde bkz. [aks 'de düğüm havuzunu yükseltme][nodepool-upgrade].
+Birden çok düğüm havuzu veya Windows Server düğümü kullanan AKS kümeleri için (Şu anda AKS 'de önizlemededir), bkz. [aks 'de düğüm havuzunu yükseltme][nodepool-upgrade].
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -23,7 +23,6 @@ Bu makalede, Azure CLı sürüm 2.0.65 veya üstünü çalıştırıyor olmanız
 
 > [!WARNING]
 > AKS kümesi yükseltmesi, düğümlerinizin bir eş ve drenajı tetikler. Kullanılabilir düşük bir işlem kotası varsa, yükseltme başarısız olabilir. Daha fazla bilgi için bkz. [kotaları artırma](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) .
-> Kendi küme otomatik dağıtımınızı çalıştırıyorsanız, yükseltme sırasında yükseltme işlemini kesintiye uğratabileceği için, yükseltme sırasında bunu devre dışı bırakın (sıfır çoğaltmalara ölçeklendirebilirsiniz). Managed otomatik Scaler bunu otomatik olarak işler. 
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>Kullanılabilir AKS kümesi yükseltmelerini denetle
 
@@ -34,9 +33,9 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --outpu
 ```
 
 > [!NOTE]
-> Bir AKS kümesini yükselttiğinizde Kubernetes ikincil sürümleri atlanamaz. Örneğin, *1.12. x* -> *1.13. x* veya *1.13. x* -> *1.14. x* arasındaki yükseltmelere izin verilir, ancak *1.12. x* -> *1.14. x* değildir.
+> Bir AKS kümesini yükselttiğinizde Kubernetes ikincil sürümleri atlanamaz. Örneğin, *1.12. x*  ->  *1.13. x* veya *1.13. x*  ->  *1.14. x* arasındaki yükseltmelere izin verilir, ancak *1.12. x*  ->  *1.14. x* değildir.
 >
-> Yükseltmek için, *1.12. x* -> *1.14. x*sürümünden önce *1.12. x* -> *1.13. x*sürümünden yükseltme yapın ve ardından *1.13. x* -> *1.14. x*'den yükseltme yapın.
+> Yükseltmek için, *1.12. x*  ->  *1.14. x*sürümünden önce *1.12. x*  ->  *1.13. x*sürümünden yükseltme yapın ve ardından *1.13. x*  ->  *1.14. x*'den yükseltme yapın.
 
 Aşağıdaki örnek çıktı, kümenin *1.13.9* ve *1.13.10*sürümlerine yükseltileceğini gösterir:
 
@@ -48,6 +47,58 @@ default  myResourceGroup   1.12.8           1.12.8             1.13.9, 1.13.10
 Kullanılabilir bir yükseltme yoksa şunları alacaksınız:
 ```console
 ERROR: Table output unavailable. Use the --query option to specify an appropriate query. Use --debug for more info.
+```
+
+## <a name="customize-node-surge-upgrade-preview"></a>Düğüm aşırı gerilim yükseltmesini özelleştirme (Önizleme)
+
+> [!Important]
+> Düğüm dalgalanmalarına, her yükseltme işlemi için istenen en fazla aşırı gerilim sayısı için abonelik kotası gerekir. Örneğin, 5 düğüm havuzu olan, her birinde 4 düğüm sayısına sahip bir kümede toplam 20 düğüm vardır. Her düğüm havuzunda en fazla %50 bir aşırı gerilim değeri varsa, yükseltmeyi tamamlaması için 10 düğümün ek işlem ve IP kotası (2 düğüm * 5 havuz) gereklidir.
+
+Varsayılan olarak, AKS, bir ek düğüm ile aşırı gerilim yükseltmeleri yapılandırır. En fazla aşırı gerilim ayarı için bir varsayılan değeri, bir önceki sürümlü düğümü değiştirmek için mevcut uygulamaların eşinden önce ek bir düğüm oluşturarak iş yükü kesintisini en aza indirmenize olanak sağlar. Yükseltme hızı ve yükseltme kesintisi arasında bir denge sağlamak için, en fazla dalgalanma değeri düğüm havuzu başına özelleştirilebilir. En fazla dalgalanma değeri arttırılarak, yükseltme işlemi daha hızlı tamamlanır, ancak en fazla aşırı gerilim için büyük bir değer ayarlamak yükseltme işlemi sırasında kesintiler oluşmasına neden olabilir. 
+
+Örneğin, en fazla %100 bir dalgalanma değeri, olası en hızlı yükseltme işlemini (düğüm sayısı katlama) sağlar, ancak düğüm havuzundaki tüm düğümlerin aynı anda bırakılmasına neden olur. Ortamları test etmek için bu gibi daha yüksek bir değer kullanmak isteyebilirsiniz. Üretim düğüm havuzları için %33 max_surge bir ayar önerilir.
+
+AKS, en fazla dalgalanma için hem tamsayı değerlerini hem de yüzde değerini kabul eder. "5" gibi bir tamsayı, aşırı yapılacak beş ek düğümü gösterir. "%50" değeri, havuzdaki geçerli düğüm sayısının yarısını bir dalgalanma değerini gösterir. En fazla dalgalanma yüzdesi değeri en az %1, en fazla %100 olabilir. Yüzde değeri en yakın düğüm sayısına yuvarlanır. En fazla dalgalanma değeri, yükseltme sırasında geçerli düğüm sayısından düşükse, en fazla dalgalanma değeri için geçerli düğüm sayısı kullanılır.
+
+Yükseltme sırasında, en fazla dalgalanma değeri en az 1, düğüm havuzunuzdaki düğüm sayısına eşit bir en büyük değer olabilir. Daha büyük değerler ayarlayabilirsiniz, ancak en fazla dalgalanma için kullanılan en fazla düğüm sayısı, yükseltme sırasında havuzdaki düğüm sayısından daha yüksek olmayacaktır.
+
+### <a name="set-up-the-preview-feature-for-customizing-node-surge-upgrade"></a>Düğüm dalgalanma yükseltmesini özelleştirmek için önizleme özelliğini ayarlama
+
+```azurecli-interactive
+# register the preview feature
+az feature register --namespace "Microsoft.ContainerService" --name "MaxSurgePreview"
+```
+
+Kayıt için birkaç dakika sürer. Özelliğin kaydedildiğini doğrulamak için aşağıdaki komutu kullanın:
+
+```azurecli-interactive
+# Verify the feature is registered:
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MaxSurgePreview')].{Name:name,State:properties.state}"
+```
+
+Önizleme süresince, en fazla aşırı gerilim kullanmak için *aks-Preview* CLI uzantısının olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanın ve [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeler olup olmadığını denetleyin:
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+> [!Important]
+> Düğüm havuzundaki en fazla aşırı gerilim ayarı kalıcıdır.  Sonraki Kubernetes yükseltmeleri veya düğüm sürümü yükseltmeleri, bu ayarı kullanır. Düğüm havuzlarınızın en fazla dalgalanma değerini istediğiniz zaman değiştirebilirsiniz. Üretim düğüm havuzları için %33 olan en fazla% ayarını öneririz.
+
+Yeni veya var olan düğüm havuzları için en fazla dalgalanma değerlerini ayarlamak için aşağıdaki komutları kullanın.
+
+```azurecli-interactive
+# Set max surge for a new node pool
+az aks nodepool add -n mynodepool -g MyResourceGroup --cluster-name MyManagedCluster --max-surge 33%
+```
+
+```azurecli-interactive
+# Update max surge for an existing node pool 
+az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManagedCluster --max-surge 5
 ```
 
 ## <a name="upgrade-an-aks-cluster"></a>AKS kümesini yükseltme
@@ -63,7 +114,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 Kaç tane düğüme sahip olduğunuza bağlı olarak, kümeyi yükseltmek birkaç dakika sürer. 
 
 > [!NOTE]
-> Bir küme yükseltmesinin tamamlanabilmesi için bir toplam izin verilen süre vardır. Bu süre, ürünü alınarak hesaplanır `10 minutes * total number of nodes in the cluster`. Örneğin, 20 düğümlü bir kümede, yükseltme işlemleri 200 dakika içinde başarılı olmalıdır veya AKS kurtarılamayan bir küme durumundan kaçınmak için işlemi başarısız olur. Yükseltme hatasını kurtarmak için, zaman aşımı isabet alındıktan sonra yükseltme işlemini yeniden deneyin.
+> Bir küme yükseltmesinin tamamlanabilmesi için bir toplam izin verilen süre vardır. Bu süre, ürünü alınarak hesaplanır `10 minutes * total number of nodes in the cluster` . Örneğin, 20 düğümlü bir kümede, yükseltme işlemleri 200 dakika içinde başarılı olmalıdır veya AKS kurtarılamayan bir küme durumundan kaçınmak için işlemi başarısız olur. Yükseltme hatasını kurtarmak için, zaman aşımı isabet alındıktan sonra yükseltme işlemini yeniden deneyin.
 
 Yükseltmenin başarılı olduğunu doğrulamak için [az aks Show][az-aks-show] komutunu kullanın:
 
@@ -96,3 +147,5 @@ Bu makalede, mevcut bir AKS kümesini nasıl yükselteceğiniz açıklanır. AKS
 [az-aks-upgrade]: /cli/azure/aks#az-aks-upgrade
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update

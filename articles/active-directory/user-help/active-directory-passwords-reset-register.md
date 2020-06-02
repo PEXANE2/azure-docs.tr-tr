@@ -10,14 +10,14 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/15/2020
+ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 3deb59b04f3c0ba90e270bc064e3ece3c21229b3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 999b458985d8ab486e8dbd6bcaa48ddd9e02fc28
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739615"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266109"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>Kendi parolanızı sıfırlamak için doğrulama yöntemi bilgilerinizi kaydedin
 
@@ -26,7 +26,7 @@ ms.locfileid: "83739615"
 Bilgilerinizi kaydedebilmeniz ve kendi parolanızı sıfırlayabilmeniz için yöneticinizin bu özelliği açmanız gerekir. **Parolamı unuttum** seçeneğini görmüyorsanız, yöneticiniz kuruluşunuzun özelliğini etkinleştirmemiş demektir. Bunun yanlış olduğunu düşünüyorsanız yardım için yardım masasına başvurun.
 
 >[!Important]
->Bu makale, self servis parola sıfırlama için kaydolma kullanmaya çalışan kullanıcılara yöneliktir. Bu, kendi iş veya okul parolanızı (örneğin, alain@contoso.com ) yöneticinizin yardım 'ına gerek kalmadan sıfırlayabilmeniz anlamına gelir. Çalışanlarınız veya diğer kullanıcılarınız için self servis parola sıfırlamayı açma hakkında bilgi için bkz. [Azure AD self servis parola sıfırlama ve diğer makalelere dağıtım](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
+>Bu makale, self servis parola sıfırlama için kaydolma kullanmaya çalışan kullanıcılara yöneliktir. Bu, kendi iş veya okul parolanızı (gibi alain@contoso.com ) yöneticinizin yardım 'ına gerek kalmadan sıfırlayabilmeniz anlamına gelir. Çalışanlarınız veya diğer kullanıcılarınız için self servis parola sıfırlamayı açma hakkında bilgi için bkz. [Azure AD self servis parola sıfırlama ve diğer makalelere dağıtım](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
 
 ## <a name="set-up-your-password-reset-verification-method"></a>Parola sıfırlama doğrulama yönteminizi ayarlama
 

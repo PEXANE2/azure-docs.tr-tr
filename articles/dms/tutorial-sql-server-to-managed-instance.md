@@ -9,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: seo-lt-2019
+ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 28be6c46f3d914d76ed14dd5d4ac61a4dc5aee68
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 36efd3e90731e7659f023ad99df1eb9cb3c0198f
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194249"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247453"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-offline-using-dms"></a>Öğretici: DMS kullanarak SQL Server Azure SQL yönetilen örneğine çevrimdışı geçirme
 
@@ -76,6 +76,9 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 - Önceden oluşturduğunuz ağ paylaşımında tam denetim ayrıcalığına sahip olan Windows kullanıcısını (ve parolasını) not edin. Azure veritabanı geçiş hizmeti, yedekleme dosyalarını geri yükleme işlemi için Azure depolama kapsayıcısına yüklemek üzere Kullanıcı kimlik bilgisini taklit eder.
 - Bir blob kapsayıcısı oluşturun ve [Depolama Gezgini ile Azure Blob Depolama kaynaklarını yönetme](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) makalesindeki adımları kullanarak SAS URI'sini alın. SAS URI değerini oluştururken ilke penceresinde tüm izinleri (Okuma, Yazma, Silme, Listeleme) seçtiğinizden emin olun. Bu ayrıntı, Azure veritabanı geçiş hizmeti 'ni, veritabanlarını SQL yönetilen örneğine geçirmek için kullanılan yedekleme dosyalarını karşıya yüklemek üzere depolama hesabı kapsayıcınıza erişimi sağlar.
 
+    > [!NOTE]
+    > Azure veritabanı geçiş hizmeti, [geçiş ayarlarını yapılandırma](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance#configure-migration-settings) adımı sırasında depolama hesabı ayarlarını yapılandırırken hesap düzeyi SAS belirtecini kullanmayı desteklemez.
+    
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration kaynak sağlayıcısını kaydetme
 
 1. Azure portal'da oturum açın, **Tüm hizmetler**'i ve ardından **Abonelikler**'i seçin.
@@ -201,7 +204,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
     |**Ağ konumu paylaşımı** | Azure veritabanı geçiş hizmeti 'nin kaynak veritabanı yedeklemelerini atabileceğiniz yerel SMB ağ payı. Kaynak SQL Server örneğini çalıştıran hizmet hesabının ağ paylaşımında yazma ayrıcalıkları olmalıdır. Ağ paylaşımındaki bir sunucunun FQDN veya IP adresi değerini girin, örneğin: '\\\sunucuadi.etkialaniadi.com\yedeklemeklasoru' veya '\\\IP adresi\yedeklemeklasoru'.|
     |**Kullanıcı adı** | Windows kullanıcısının yukarıda belirttiğiniz ağ paylaşımında tam denetim ayrıcalığına sahip olduğundan emin olun. Azure veritabanı geçiş hizmeti, yedekleme dosyalarını geri yükleme işlemi için Azure depolama kapsayıcısına yüklemek üzere Kullanıcı kimlik bilgisinin kimliğine bürünecektir. Geçiş için TDE özelliğinin etkin olduğu veritabanlarının seçilmesi durumunda yukarıdaki Windows kullanıcısının yerleşik yönetici hesabı olması ve Azure Veritabanı Geçiş Hizmeti'nin sertifika dosyalarını yükleyip silmesi için [Kullanıcı Hesabı Denetimi](https://docs.microsoft.com/windows/security/identity-protection/user-account-control/user-account-control-overview) özelliğinin devre dışı bırakılmış olması gerekir. |
     |**Parola** | Kullanıcının parolası. |
-    |**Depolama hesabı ayarları** | Azure veritabanı geçiş hizmeti 'ni, hizmetin yedekleme dosyalarını karşıya yükleyen ve veritabanlarını SQL yönetilen örneği 'ne geçirmek için kullanılan depolama hesabı kapsayıcınıza erişimi sağlayan SAS URI 'SI. [Blob kapsayıcısı için SAS URI değerini almayı öğrenin](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).|
+    |**Depolama hesabı ayarları** | Azure veritabanı geçiş hizmeti 'ni, hizmetin yedekleme dosyalarını karşıya yükleyen ve veritabanlarını SQL yönetilen örneği 'ne geçirmek için kullanılan depolama hesabı kapsayıcınıza erişimi sağlayan SAS URI 'SI. [Blob kapsayıcısı için SAS URI değerini almayı öğrenin](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container). Bu SAS URI 'SI, depolama hesabı için değil, blob kapsayıcısı için olmalıdır.|
     |**TDE Ayarları** | Kaynak veritabanlarını Saydam Veri Şifrelemesi (TDE) etkin bir şekilde geçiriyorsanız, hedef SQL yönetilen örneği üzerinde yazma ayrıcalıklarına sahip olmanız gerekir.  Açılan menüden SQL yönetilen örneğinin sağlandığı aboneliği seçin.  Açılan menüden **Azure SQL Veritabanı Yönetilen Örneği** hedefini seçin. |
 
     ![Geçiş Ayarlarını Yapılandırma](media/tutorial-sql-server-to-managed-instance/dms-configure-migration-settings3.png)

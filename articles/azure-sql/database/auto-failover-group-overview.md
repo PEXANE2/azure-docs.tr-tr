@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 2/10/2020
-ms.openlocfilehash: bea815dbf9f0da6c0acda000478203f514b2fb2f
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: d32670ba79bd526c8f53438bf348323084f99928
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220372"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258581"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -309,8 +309,8 @@ Okuma-yazma dinleyicisinin DNS güncelleştirmesi, yük devretme başlatıldıkt
 ### <a name="enable-scenarios-dependent-on-objects-from-the-system-databases"></a>Sistem veritabanlarından nesnelere bağımlı senaryoları etkinleştirme
 Sistem veritabanları, bir yük devretme grubundaki ikincil örneğe çoğaltılmaz. Sistem veritabanlarından nesnelere bağlı olan senaryoları etkinleştirmek için ikincil örnekte, aynı nesneleri ikincil üzerinde oluşturmayı unutmayın. Örneğin, ikincil örnekte aynı oturum açmaları kullanmayı planlıyorsanız, bunları aynı SID ile oluşturmayı unutmayın. 
 ```SQL
--- Sample code to create login on the secondary instance
-CREATE LOGIN foo WITH PASSWORD = 'password', SID = 0x12345
+-- Code to create login on the secondary instance
+CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 ``` 
 
 

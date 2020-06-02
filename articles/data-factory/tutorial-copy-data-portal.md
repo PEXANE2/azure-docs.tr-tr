@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 04/13/2020
+ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: f5b95e4bc6ee035de0a3e39c0fc27e8387a6e239
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8372683c1463fe3443730bd004c013666deb4100
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022053"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248626"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolama alanında SQL veritabanına veri kopyalama
 
@@ -114,7 +114,8 @@ Bu öğreticide işlem hattını oluşturmaya başlayacaksınız. Daha sonra iş
 1. **Kullanmaya başlama** sayfasında **İşlem hattı oluştur** seçeneğini belirleyin.
 
    ![İşlem hattı oluşturma](./media/doc-common-process/get-started-page.png)
-1. İşlem hattının **Genel** sekmesinde **Ad** alanına **CopyPipeline** yazın.
+
+1. 1. Genel panelinde **Özellikler**altında, **ad**için **copypipeline** ' yı belirtin. Sonra sağ üst köşedeki Özellikler simgesine tıklayarak paneli daraltın.
 
 1. **Etkinlikler** araç kutusunda **taşıma ve dönüştürme** kategorisini genişletin ve araç kutusundan **veri kopyalama** etkinliğini sürükleyin ve ardışık düzen Tasarımcısı yüzeyine bırakın. **Ad** için **CopyFromBlobToSql** adını belirtin.
 

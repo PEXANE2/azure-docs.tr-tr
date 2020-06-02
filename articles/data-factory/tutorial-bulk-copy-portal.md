@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/27/2020
-ms.openlocfilehash: fd14945069b2786fa4acb994c37c17d3b434893e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 05/28/2020
+ms.openlocfilehash: f8b72037046d05b39587c2fd57794b4109a85ae3
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118279"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249187"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Azure Data Factory kullanarak birden çok tabloyu toplu olarak kopyalama
 
@@ -213,7 +213,8 @@ Bu öğreticide, iki işlem hattı oluşturursunuz: **IterateAndCopySQLTables** 
 1. Sol bölmede, **+ (artı)** düğmesine ve sonra da **İşlem Hattı**’na tıklayın.
 
     ![Yeni işlem hattı menüsü](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
-1. **Genel** sekmesinde ad için **IterateAndCopySQLTables** girişini belirtin. 
+ 
+1. Genel panelinde **Özellikler**altında, **ad**Için **Iterateandcopysqltables** ' ı belirtin. Sonra sağ üst köşedeki Özellikler simgesine tıklayarak paneli daraltın.
 
 1. **Parametreler** sekmesine geçin ve aşağıdaki eylemleri gerçekleştirin: 
 

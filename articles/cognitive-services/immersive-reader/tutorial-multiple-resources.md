@@ -9,16 +9,16 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
-ms.openlocfilehash: f68112095bc8a8fd9bcc1bd67ff77827d6d00fd7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d4fa61f8290f3bf9e2f065ec841fa94d8ecaaac1
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195630"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267214"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Öğretici: birden çok modern okuyucu kaynağını tümleştirme
 
-[Genel bakışta](./overview.md), derinlikli okuyucu ne olduğunu ve dil öğrenimi, gelişmekte olan okuyucular ve öğrenme farklılığı olan öğrenciler için okuma kavraışını geliştirmek üzere kendini kanıtlamış tekniklerin nasıl uyguladığını öğrendiniz. [Node. js hızlı başlangıç](./quickstart-nodejs.md)bölümünde, tek bir kaynakla modern okuyucu kullanmayı öğrendiniz. Bu öğreticide, aynı uygulamadaki birden çok derinlikli okuyucu kaynağını tümleştirme ele alınmaktadır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+[Genel bakışta](./overview.md), derinlikli okuyucu ne olduğunu ve dil öğrenimi, gelişmekte olan okuyucular ve öğrenme farklılığı olan öğrenciler için okuma kavraışını geliştirmek üzere kendini kanıtlamış tekniklerin nasıl uyguladığını öğrendiniz. [Node. js hızlı başlangıç](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)bölümünde, tek bir kaynakla modern okuyucu kullanmayı öğrendiniz. Bu öğreticide, aynı uygulamadaki birden çok derinlikli okuyucu kaynağını tümleştirme ele alınmaktadır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Var olan bir kaynak grubu altında birden çok modern okuyucu kaynağı oluşturma
@@ -28,13 +28,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* NodeJS ile modern okuyucuyu Başlatan bir Web uygulaması oluşturmak için [hızlı](./quickstart-nodejs.md) başlangıcı izleyin. Bu hızlı başlangıçta, tek bir tam ekran okuyucu kaynağı yapılandırırsınız. Bu öğreticide bunun üzerine oluşturacağız.
+* NodeJS ile modern okuyucuyu Başlatan bir Web uygulaması oluşturmak için [hızlı](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) başlangıcı izleyin. Bu hızlı başlangıçta, tek bir tam ekran okuyucu kaynağı yapılandırırsınız. Bu öğreticide bunun üzerine oluşturacağız.
 
 ## <a name="create-the-immersive-reader-resources"></a>Tam ekran okuyucu kaynakları oluşturma
 
-Her bir derinlikli okuyucu kaynağını oluşturmak için [Bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. **Create-ImmersiveReaderResource** betiği, `ResourceName` `ResourceSubdomain`, ve `ResourceLocation` olarak parametreler içerir. Bunlar, oluşturulmakta olan her kaynak için benzersiz olmalıdır. Kalan parametreler, ilk derinlikli okuyucu kaynağınızı ayarlarken kullandığınız ile aynı olmalıdır. Bu şekilde, her bir kaynak aynı Azure Kaynak grubu ve Azure AD uygulaması ile bağlantılı olabilir.
+Her bir derinlikli okuyucu kaynağını oluşturmak için [Bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. **Create-ImmersiveReaderResource** betiği,, `ResourceName` `ResourceSubdomain` ve `ResourceLocation` olarak parametreler içerir. Bunlar, oluşturulmakta olan her kaynak için benzersiz olmalıdır. Kalan parametreler, ilk derinlikli okuyucu kaynağınızı ayarlarken kullandığınız ile aynı olmalıdır. Bu şekilde, her bir kaynak aynı Azure Kaynak grubu ve Azure AD uygulaması ile bağlantılı olabilir.
 
-Aşağıdaki örnekte, biri WestUS ve diğeri EastUS içinde olmak üzere iki kaynağın nasıl oluşturulacağı gösterilmektedir. , `ResourceName` `ResourceSubdomain`Ve `ResourceLocation`için benzersiz değerlere dikkat edin.
+Aşağıdaki örnekte, biri WestUS ve diğeri EastUS içinde olmak üzere iki kaynağın nasıl oluşturulacağı gösterilmektedir. , Ve için benzersiz değerlere dikkat edin `ResourceName` `ResourceSubdomain` `ResourceLocation` .
 
 ```azurepowershell-interactive
 Create-ImmersiveReaderResource
@@ -64,7 +64,7 @@ Create-ImmersiveReaderResource
 
 ## <a name="add-resources-to-environment-configuration"></a>Ortam yapılandırmasına kaynak ekleme
 
-Hızlı başlangıçta, `TenantId`,, ve `ClientId` `ClientSecret` `Subdomain` parametrelerini içeren bir ortam yapılandırma dosyası oluşturdunuz. Tüm kaynaklarınız aynı Azure AD uygulamasını kullandığından, ve `TenantId` `ClientId` `ClientSecret`için aynı değerleri kullanabiliriz. Yapılması gereken tek değişiklik her bir kaynak için her bir alt etki alanını listeme amaçlıdır.
+Hızlı başlangıçta,,, ve parametrelerini içeren bir ortam yapılandırma dosyası oluşturdunuz `TenantId` `ClientId` `ClientSecret` `Subdomain` . Tüm kaynaklarınız aynı Azure AD uygulamasını kullandığından, ve için aynı değerleri kullanabiliriz `TenantId` `ClientId` `ClientSecret` . Yapılması gereken tek değişiklik her bir kaynak için her bir alt etki alanını listeme amaçlıdır.
 
 Yeni __. env__ dosyanız şimdi aşağıdakine benzer görünmelidir:
 
@@ -258,7 +258,7 @@ module.exports = router;
     npm start
     ```
 
-4. Tarayıcınızı açın ve adresine `http://localhost:3000`gidin. Sayfada Yukarıdaki içeriği görmeniz gerekir. Bu ilgili kaynakları kullanarak tam ekran okuyucuyu başlatmak için **EastUS derinlikli okuyucu** düğmesine veya **WestUS derinlikli okuyucu** düğmesine tıklayın.
+4. Tarayıcınızı açın ve adresine gidin `http://localhost:3000` . Sayfada Yukarıdaki içeriği görmeniz gerekir. Bu ilgili kaynakları kullanarak tam ekran okuyucuyu başlatmak için **EastUS derinlikli okuyucu** düğmesine veya **WestUS derinlikli okuyucu** düğmesine tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: yelevin
-ms.openlocfilehash: 2e1b1a4786670974a40b22d44fc219c6be5d97a3
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 9fa10dd1b278b48eb714affb74af59140c8baa09
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744758"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259346"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel izinleri
 
-Azure Sentinel, Azure 'daki kullanıcılara, gruplara ve hizmetlere atanabilen [yerleşik roller](../role-based-access-control/built-in-roles.md) sağlamak için [rol tabanlı Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md)kullanır.
+Azure Sentinel, Azure 'daki kullanıcılara, gruplara ve hizmetlere atanabilen [yerleşik roller](../role-based-access-control/built-in-roles.md)sağlamak Için [rol tabanlı Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md)kullanır   .
 
 RBAC kullanarak, Azure Sentinel 'e uygun erişim sağlamak için güvenlik işlemleri ekibiniz dahilinde roller kullanabilir ve oluşturabilirsiniz. Rollere bağlı olarak, Azure Sentinel 'e erişimi olan kullanıcıların neleri görebileceklerini ayrıntılı olarak denetleyebilirsiniz. RBAC rollerini doğrudan Azure Sentinel çalışma alanında veya çalışma alanının ait olduğu bir aboneliğe veya kaynak grubuna atayabilirsiniz.
 

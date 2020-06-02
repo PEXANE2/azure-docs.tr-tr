@@ -15,24 +15,26 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 5a20e9c64b6ef948167333b54b16b34e84dc0e32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab4c95e3525caa42b979b15fa8118e9dd21bb74a
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273588"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248303"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Bellek için iyileştirilmiş sanal makine boyutları
 
 Bellek için iyileştirilmiş VM boyutları, ilişkisel veritabanı sunucuları, orta ve büyük önbellekler ve bellek içi analizler için harika olan yüksek bir bellek-CPU oranı sunar. Bu makalede, bu gruplandırmadaki her bir boyut için sanal CPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkında bilgi sağlanır.
 
-- Özgün D serisi için bir takip olan [dv2 ve DSv2 serisi](dv2-dsv2-series-memory.md), daha güçlü bir CPU sunar. Dv2 serisi, D serisinden daha hızlı %35 daha hızlıdır. Intel&reg; Xeon&reg; 8171M 2,1 GHz (ufuk Gölü) veya Intel&reg; Xeon&reg; E5-2673 v4 2,3 GHz (çok iyi) veya Intel&reg; Xeon&reg; E5-2673 v3 2,4 GHz (haswell) işlemcileri üzerinde çalışır ve Intel Turbo Boost Technology 2,0. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
+- Özgün D serisi için bir takip olan [dv2 ve DSv2 serisi](dv2-dsv2-series-memory.md), daha güçlü bir CPU sunar. Dv2 serisi, D serisinden daha hızlı %35 daha hızlıdır. Intel &reg; Xeon &reg; 8171m 2,1 GHz (ufuk Gölü) veya Intel &reg; Xeon &reg; E5-2673 v4 2,3 GHz (çok iyi) veya Intel &reg; xeon &reg; E5-2673 v3 2,4 GHz (Haswell) Işlemcileri üzerinde çalışır ve Intel Turbo Boost Technology 2,0. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
 
     Dv2 ve DSv2 serisi, daha hızlı vCPU 'Ları, daha iyi geçici depolama performansını talep eden veya daha yüksek bellek taleplerine sahip olan uygulamalar için idealdir. Bu seçenekler birçok kurumsal sınıf uygulama için güçlü bir bileşim sunar.
 
 - [Eav4 ve Easv4 serisi](eav4-easv4-series.md) , en fazla 256 MB boyutlu önbellek kullanan çok iş parçacıklı BIR yapılandırmada AMD 'Nin 2.35 GHz epyıc<sup>TM</sup> 7452 işlemcisini kullanır ve en fazla bellek için iyileştirilmiş iş yüklerini çalıştırmaya yönelik seçenekleri artırır. Eav4-Series ve Easv4 serisi, Ev3 & Esv3 serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
 
-- [Ev3 ve Esv3-Series](ev3-esv3-series.md) Intel&reg; &reg; Xeon 8171M 2,1 GHz (ufuk Gölü) veya bir hiper&reg; iş&reg; yükleri için Intel Xeon E5-2673 v4 2,3 GHz (çok iyi) işlemcisi, çoğu genel amaçlı Iş yükleri için daha iyi bir değer teklifi sağlar ve Ev3 diğer birçok bulutun genel amaçlı VM 'leri ile hizalı hale getiriliyor. Bellek ve ağ sınırları, Hyper-Threading ' e geçiş ile hizalamak için, disk ve ağ sınırları her bir çekirdek temelinde ayarlanırken, bellek ve ağ sınırları, her bir çekirdek için bir saniyede ayarlanmışsa (7 GiB/vCPU 'dan 8 GiB Ev3, D/dv2 ailelerinin yüksek bellek sanal makine boyutlarına göre takip edilir.
+- [Ev3 ve Esv3-Series](ev3-esv3-series.md) Intel &reg; Xeon &reg; 8171M 2,1 GHz (ufuk Gölü) veya &reg; &reg; bir hiper iş yükleri için ıntel Xeon E5-2673 v4 2,3 GHz (çok iyi) işlemcisi, çoğu genel amaçlı iş yükleri için daha Iyi bir değer teklifi sağlar ve Ev3 diğer birçok bulutun genel amaçlı VM 'leri ile hizalı hale getiriliyor. Bellek ve ağ sınırları, Hyper-Threading ' e geçiş ile hizalamak için, disk ve ağ sınırları her bir çekirdek temelinde ayarlanırken, bellek ve ağ sınırları, her bir çekirdek için bir saniyede ayarlanmışsa (7 GiB/vCPU 'dan 8 GiB Ev3, D/dv2 ailelerinin yüksek bellek sanal makine boyutlarına göre takip edilir.
+
+- [Edv4 ve Edsv4 serisi](edv4-edsv4-series.md) 2. nesil Intel &reg; Xeon &reg; Platinum 8272Cl (Cascade Lake) işlemcileri üzerinde çalışarak, son derece büyük veritabanları veya yüksek vCPU sayıları ve büyük miktarda bellekten faydalanabilecek diğer uygulamalar için idealdir. 3,4 GHz 'nin tüm çekirdek Turbo saat hızına sürekli olarak sahiptir ve [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; hiper iş parçacıklı teknoloji](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve [Intel &reg; Gelişmiş vektör Uzantıları 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)özelliklerine sahiptir. 
 
 - [M serisi](m-series.md) , yüksek bir vCPU sayısı (128 vCPU kadar) ve büyük miktarda bellek (3,8 TİB 'ye kadar) sunar. Son derece büyük veritabanları veya yüksek sanal CPU sayılarından ve büyük miktarda bellekten faydalanabilir diğer uygulamalar için de idealdir.
 

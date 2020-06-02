@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: cbef0244f30a7cf14f8fea4c6a445cf0de662dc4
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: 46dd7949dde1890035053a7a985f2f1d921e141e
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82737904"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266670"
 ---
 # <a name="create-diagnostic-setting-to-collect-resource-logs-and-metrics-in-azure"></a>Azure 'da kaynak günlüklerini ve ölçümleri toplamak için tanılama ayarı oluştur
 
@@ -49,7 +49,7 @@ Platform günlükleri ve ölçümleri aşağıdaki tablodaki hedeflere gönderil
 | [Olay Hub 'ları](resource-logs-stream-event-hubs.md) | Event Hubs Günlükler ve ölçümler gönderme, üçüncü taraf SIG 'ler ve diğer Log Analytics çözümleri gibi dış sistemlere veri akışını sağlar. |
 | [Azure depolama hesabı](resource-logs-collect-storage.md) | Günlükleri ve ölçümleri bir Azure depolama hesabına arşivleme, denetim, statik analiz veya yedekleme için faydalıdır. Azure Izleyici günlükleri ve bir Log Analytics çalışma alanıyla karşılaştırıldığında, Azure Storage daha pahalı olur ve Günlükler sonsuza kadar tutulabilirler. |
 
-## <a name="create-diagnostic-settings-in-azure-portal"></a>Azure portal Tanılama ayarları oluşturma
+## <a name="create-diagnostic-settings-in-azure-portal"></a>Azure portalında tanılama ayarlarını oluşturma
 
 Azure portal tanılama ayarlarını Azure Izleyici menüsünden ya da kaynak menüsünden yapılandırabilirsiniz.
 
@@ -116,7 +116,7 @@ Azure portal tanılama ayarlarını Azure Izleyici menüsünden ya da kaynak men
 
 Birkaç dakika sonra, yeni ayar bu kaynak için ayarlar listenizde görünür ve yeni olay verileri oluşturulmasıyla Günlükler belirtilen hedeflere akışla kaydedilir. Bir olayın bir [Log Analytics çalışma alanında göründüğü](data-ingestion-time.md)zaman arasında 15 dakika kadar sürebilir.
 
-## <a name="create-diagnostic-settings-using-powershell"></a>PowerShell kullanarak tanılama ayarları oluşturma
+## <a name="create-diagnostic-settings-using-powershell"></a>PowerShell kullanarak tanılama ayarlarını oluşturma
 
 [Azure PowerShell](powershell-quickstart-samples.md)bir tanılama ayarı oluşturmak için [set-azdiagnosticsetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet 'ini kullanın. Bu cmdlet 'in parametrelerinin açıklamaları için belgelerine bakın.
 
@@ -129,7 +129,7 @@ Aşağıda, üç hedefi kullanarak bir tanılama ayarı oluşturan örnek bir Po
 Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault -Category AuditEvent -MetricCategory AllMetrics -Enabled $true -StorageAccountId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount -WorkspaceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace  -EventHubAuthorizationRuleId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
 ```
 
-## <a name="create-diagnostic-settings-using-azure-cli"></a>Azure CLı kullanarak tanılama ayarları oluşturma
+## <a name="create-diagnostic-settings-using-azure-cli"></a>Azure CLI kullanarak tanılama ayarlarını oluşturma
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest)ile bir tanılama ayarı oluşturmak için [az Monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) komutunu kullanın. Parametrelerinin açıklamaları için bu komuta yönelik belgelere bakın.
 
@@ -149,11 +149,11 @@ az monitor diagnostic-settings create  \
 --event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
 ```
 
-### <a name="configure-diagnostic-settings-using-rest-api"></a>REST API kullanarak tanılama ayarlarını yapılandırma
+## <a name="configure-diagnostic-settings-using-rest-api"></a>REST API kullanarak tanılama ayarlarını yapılandırma
 
 [Azure izleyici REST API](https://docs.microsoft.com/rest/api/monitor/)kullanarak tanılama ayarlarını oluşturmak veya güncelleştirmek için bkz. [Tanılama ayarları](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings) .
 
-### <a name="configure-diagnostic-settings-using-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak tanılama ayarlarını yapılandırma
+## <a name="configure-diagnostic-settings-using-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak tanılama ayarlarını yapılandırma
 
 Kaynak Yöneticisi şablonuyla Tanılama ayarları oluşturmak veya güncelleştirmek için [Kaynak Yöneticisi şablonu kullanarak Azure izleyici 'de tanılama ayarı oluşturma](diagnostic-settings-template.md) bölümüne bakın.
 

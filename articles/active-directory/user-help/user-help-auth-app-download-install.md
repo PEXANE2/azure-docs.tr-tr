@@ -9,38 +9,34 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 05/31/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 18c34e270f1849ef8d8d692b68567eab7d103b13
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d4053d4979861146705489dc02e628f03f3c4d85
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741363"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266228"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasını indirme ve yükleme
 
 >[!Important]
->Bu içerik kullanıcılara yöneliktir. Yöneticiyseniz, Azure Active Directory (Azure AD) ortamınızı ayarlama ve yönetme hakkında daha fazla bilgi için [Azure Active Directory Belgelerine](https://docs.microsoft.com/azure/active-directory) bakabilirsiniz.
+>Bu içerik kullanıcılara yöneliktir. Yöneticiyseniz, [Azure Active Directory için yönetim belgelerindeki](https://docs.microsoft.com/azure/active-directory)Azure Active Directory (Azure AD) ortamınızı ayarlama ve yönetme hakkında daha fazla bilgi edinebilirsiniz.
+>
+> Hesabınızda oturum açarken sorun yaşıyorsanız, yardım için [Microsoft hesabı oturum açma](https://support.microsoft.com/help/12429) konusunda bilgi için bkz..  Ayrıca, Microsoft hesabı oturum açmaya çalıştığınızda ["bu Microsoft hesabı yok"](https://support.microsoft.com/help/13811) iletisini aldığınızda yapılacaklar hakkında daha fazla bilgi edinebilirsiniz.
 
-Microsoft Authenticator uygulaması, iki öğeli doğrulama kullanırsanız hesaplarınızda oturum açmanıza yardımcı olur. İki öğeli doğrulama, özellikle de hassas bilgileri görüntülerken hesaplarınıza güvenli bir şekilde erişmenize yardımcı olur. Parolaların unutulabileceği, çalındığı veya güvenliği aşılmış olabileceğinden, iki öğeli doğrulama, diğer kişilerin kesintiye uğraması için hesabınızı korumanıza yardımcı olan ek bir güvenlik adımıdır.
-
-Microsoft Authenticator uygulamasını, aşağıdakiler dahil olmak üzere birden çok şekilde kullanabilirsiniz:
+Microsoft Authenticator uygulaması, iki öğeli doğrulama kullanırsanız hesaplarınızda oturum açmanıza yardımcı olur. İki öğeli doğrulama, parolaların unutulmuş, çalındığı veya tehlikeye girdiği için hesaplarınızı daha güvenli bir şekilde kullanmanıza yardımcı olur. İki öğeli doğrulama, diğer kişilerin hesabınızda kesilmesini zorlaştırmak için telefonunuza benzer ikinci bir faktör kullanır. Microsoft Authenticator uygulamasını, aşağıdakiler dahil olmak üzere birden çok şekilde kullanabilirsiniz:
 
 - **İki öğeli doğrulama.** Standart doğrulama yöntemi, etkenlerden biri parolandır. Kullanıcı adınızı ve parolanızı kullanarak oturum açtıktan sonra, bir bildirimi onaylayabilir veya belirtilen bir doğrulama kodu girebilirsiniz.
 
-- **Telefonla oturum açma.** Kullanıcı adınızı ve mobil cihazınızı parmak izinizle, yüzünüzü veya PIN 'iniz ile kullanmanıza gerek kalmadan, parola gerektirmeden oturum açmanıza olanak tanıyan iki öğeli doğrulamanın bir sürümü.
+- **Telefonla oturum açma.** Kullanıcı adınızı ve mobil cihazınızı parmak izinizle, yüzünüzü veya PIN 'iniz ile kullanmanıza gerek kalmadan bir parola gerektirmeden oturum açmanıza olanak tanıyan iki öğeli doğrulamanın bir sürümü.
 
 - **Kod oluşturma.** Kimlik doğrulayıcı uygulamalarını destekleyen diğer hesaplar için kod Oluşturucu olarak.
 
-> [!Important]
-> Microsoft Authenticator uygulama, iki öğeli doğrulama kullanan herhangi bir hesapla birlikte çalışarak, zaman tabanlı bir kerelik parola (TOTP) standartlarını destekler.
->
-> Kuruluşunuz, oturum açmak ve kurumsal verilerinize ve belgelerinize erişmek için bir doğrulayıcı uygulaması kullanmanızı gerektirebilir. Kullanıcı adınız uygulamada görünebilse de, kayıt işlemini tamamlayana kadar hesap aslında doğrulama yöntemi olarak davranacak şekilde ayarlanamaz. Daha fazla bilgi için bkz. [iş veya okul hesabınızı ekleme](user-help-auth-app-add-work-school-account.md).
-> 
-> [!NOTE]
-> Hesabınızda oturum açarken sorun yaşıyorsanız, yardım için [Microsoft hesabı oturum açma](https://support.microsoft.com/help/12429) konusunda bilgi için bkz..  Microsoft hesabı oturum açmaya çalıştığınızda ["bu Microsoft hesabı yok"](https://support.microsoft.com/help/13811) iletisini aldığınızda yapılacaklar hakkında daha fazla bilgi alın.
+Authenticator iki öğeli doğrulama kullanan herhangi bir hesapla çalışarak, zaman tabanlı bir kerelik parola (TOTP) standartlarını destekler.
+
+Kuruluşunuz, oturum açmak ve kuruluşunuzun verilerine ve belgelerine erişmek için doğrulayıcı uygulamasını kullanmanızı gerektirebilir. Kullanıcı adınız uygulamada görünse bile, kayıt tamamlanana kadar hesap doğrulama yöntemi olarak ayarlanamaz. Daha fazla bilgi için bkz. [iş veya okul hesabınızı ekleme](user-help-auth-app-add-work-school-account.md).
 
 ## <a name="download-and-install-the-app"></a>Uygulamayı indirme ve yükleme
 
@@ -55,7 +51,7 @@ Microsoft Authenticator uygulamasını, aşağıdakiler dahil olmak üzere birde
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulamayı indirip yükledikten sonra, çeşitli hesaplarınızı eklemeniz gerekir. Daha fazla bilgi için bkz.
+Uygulamayı indirip yükledikten sonra daha fazla bilgi edinmek için [kimlik doğrulayıcı uygulamasına genel bakış ' a](user-help-auth-app-overview.md) bakın. Daha fazla kurulum seçeneği için bkz.:
 
 - **Authenticator uygulaması.** İki adımlı doğrulama veya parola sıfırlama için bir onay bildirimi ya da rastgele oluşturulmuş bir onay kodu almak üzere bir Authenticator uygulaması indirin ve kullanın. Microsoft Authenticator uygulamasını ayarlama ve kullanma hakkında adım adım yönergeler için bkz. [güvenlik bilgilerini bir Authenticator uygulaması kullanmak Için ayarlama](security-info-setup-auth-app.md).
 

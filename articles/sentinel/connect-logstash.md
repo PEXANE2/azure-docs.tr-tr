@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: 79d29ef228fc27655da30edbeb64abcb01e45d5e
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 5edba7f5a7576cac189aa44936f9d8f24f3ffcaf
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84237181"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249017"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Veri kaynaklarını Azure Sentinel 'e bağlamak için Logstash 'i kullanma
 
@@ -51,7 +51,7 @@ Logstash için Azure Sentinel çıktı eklentisi, Log Analytics çalışma alan�
 - [Log Analytics REST API hakkında daha fazla bilgi edinin](https://docs.microsoft.com/rest/api/loganalytics/create-request).
 - [Özel Günlükler hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-custom-logs).
 
-## <a name="installing-and-configuring-the-azure-sentinel-output-plugin-in-logstash"></a>Logstash 'te Azure Sentinel çıkış eklentisini yükleme ve yapılandırma
+## <a name="deploying-the-azure-sentinel-output-plugin-in-logstash"></a>Logstash 'te Azure Sentinel çıkış eklentisini dağıtma
 
 1. **Yükleme**
 
@@ -112,11 +112,11 @@ Logstash için Azure Sentinel çıktı eklentisi, Log Analytics çalışma alan�
 
     1. Azure Sentinel gezinti menüsünde **Günlükler**' e tıklayın. **Tablolar** başlığı altında **özel Günlükler** kategorisini genişletin. Yapılandırmada belirttiğiniz tablonun adını bulun ve tıklayın (bir `_CL` sonek ile).
 
-        ![Logstash özel günlükleri](./media/connect-logstash/logstash-custom-logs-menu.png)
+        :::image type="content" source="./media/connect-logstash/logstash-custom-logs-menu.png" alt-text="Logstash özel günlükleri":::
 
     1. Tablodaki kayıtları görmek için tablo adını şema olarak kullanarak tabloyu sorgulayın.
 
-        ![Logstash özel günlük sorgusu](./media/connect-logstash/logstash-custom-logs-query.png)
+        :::image type="content" source="./media/connect-logstash/logstash-custom-logs-query.png" alt-text="Logstash özel günlük sorgusu":::
 
 ## <a name="monitor-output-plugin-audit-logs"></a>Çıktı eklentisi denetim günlüklerini izleme
 

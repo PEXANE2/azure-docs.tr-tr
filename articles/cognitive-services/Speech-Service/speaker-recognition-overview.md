@@ -1,0 +1,62 @@
+---
+title: Azure konuşmacı tanıma hizmeti
+titleSuffix: Azure Cognitive Services
+description: Azure bilişsel hizmetler konuşmacı tanıma, hoparlörleri benzersiz ses özelliklerine göre doğrulayan ve tanımlayan algoritmalar sağlar. Konuşmacı Tanıma, "konuşuyor kim?" sorusunu yanıtlamak için kullanılır.
+services: cognitive-services
+author: trevorbye
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: speech-service
+ms.topic: conceptual
+ms.date: 05/27/2020
+ms.author: trbye
+ms.openlocfilehash: 2d4ce6f274efbd4d8afe2ac48856b0fc312f0a09
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84261791"
+---
+# <a name="what-is-the-azure-speaker-recognition-service"></a>Azure konuşmacı tanıma hizmeti nedir?
+
+Konuşmacı Tanıma hizmeti, kendi benzersiz ses özelliklerine göre hoparlörleri doğrulayan ve tanımlayan algoritmalar sağlar. Konuşmacı Tanıma, "konuşuyor kim?" sorusunu yanıtlamak için kullanılır. Konuşmacı sesinin benzersiz özelliklerine göre bir kayıt profili oluşturan tek konuşmacı için ses eğitimi verileri sağlarsınız. Daha sonra konuşmacının aynı kişiye (konuşmacı doğrulaması) sahip olduğunu doğrulamak veya kayıtlı bir konuşmacı profili *grubuna* karşı ses seslerinizi çapraz olarak denetlemek için, gruptaki herhangi bir profille eşleşip eşleşmediğini öğrenmek için bu profile karşı ses ses örnekleri arasında çapraz denetim yapabilirsiniz. Buna karşılık, [Konuşmacı](batch-transcription.md#speaker-separation-diarization) , bir Batch işleminde konuşmacı tarafından sesin segmentlerini gruplandırır.
+
+## <a name="speaker-verification"></a>Konuşmacı Doğrulama
+
+Konuşmacı Doğrulama, kayıtlı konuşmacı kimliğini parola veya serbest biçimli ses girişi ile doğrulama sürecini kolaylaştırır. Bireyler, çağrı merkezlerindeki müşteri kimliği doğrulamadan, çok daha az tesis erişimi sağlamak için, çok sayıda çözümde güvenli, frictionuz müşteri görevlendirmelere yönelik kişileri doğrulamak üzere kullanılabilir.
+
+### <a name="how-does-speaker-verification-work"></a>Konuşmacı Doğrulama nasıl çalışır?
+
+![Konuşmacı doğrulaması nasıl çalışır?](media/speaker-recognition/speaker-rec.png)
+
+Konuşmacı doğrulama, metne bağımlı veya metin bağımsız olabilir. **Metne bağlı** doğrulama, hoparlörlerin hem kayıt hem de doğrulama aşamaları sırasında kullanmak üzere aynı parolayı seçmesi gerektiği anlamına gelir. **Metinden bağımsız** doğrulama, hoparlörlerin kayıt ve doğrulama tümceciklerine gündelik dilde konuşabilme anlamına gelir.
+
+**Metne bağlı** doğrulama için, konuşmacı sesi önceden tanımlanmış bir dizi tümcecikten bir parola ile kaydedilir. Ses Özellikleri, seçilen parola da tanınırken, benzersiz bir ses imzası oluşturmak için ses kaydından ayıklanır. Birlikte, ses imzası ve parola, konuşmacı doğrulamak için kullanılır. 
+
+**Metinle bağımsız** doğrulamanın kayıt sırasında veya ses örneğinde doğrulanacak olan, yalnızca benzerliği sağlamak üzere sesli Özellikler çıkaran bir kısıtlama yoktur. 
+
+API 'Ler, sesin canlı bir kişiden mi yoksa kayıtlı konuşmacı imitation/Recording mi olduğunu belirlemede tasarlanmamıştır. 
+
+## <a name="speaker-identification"></a>Konuşmacı Belirleme
+
+Konuşmacı kimliği, bir kayıtlı konuşmacı grubu içindeki bilinmeyen bir hoparlörün kimliğini belirlemede kullanılır. Konuşmacı Tanıma, konuşmayı tek tek hoparlörlerle öznitelemenize ve birden çok konuşmacı olan senaryolardan değerin kilidini açmanıza olanak sağlar; örneğin:
+
+* Uzak toplantı üretkenliği için destek çözümleri 
+* Çok kullanıcılı cihaz kişiselleştirmesi oluşturma
+
+### <a name="how-does-speaker-identification-work"></a>Konuşmacı kimliği nasıl çalışır?
+
+Konuşmacı tanımlamasının kaydı, **metinden bağımsızdır**, bu da konuşmacının ses içinde ne olduğuna ilişkin hiçbir kısıtlama olmadığı anlamına gelir. Konuşmacı Doğrulama benzer şekilde, kayıt aşamasında hoparlörün sesi kaydedilir ve ses özellikleri benzersiz bir ses imzası oluşturmak için ayıklanır. Tanımlama aşamasında, giriş sesi örneği, belirtilen kayıtlı seslerin listesiyle karşılaştırılır (her istekte en fazla 50 'e kadar).
+
+## <a name="data-security-and-privacy"></a>Veri güvenliği ve gizliliği
+
+Konuşmacı kayıt verileri, kayıt için konuşma sesi ve ses imza özellikleri de dahil olmak üzere güvenli bir sistemde depolanır. Kayıt için konuşma sesi yalnızca algoritma yükseltildiğinde kullanılır ve özelliklerin yeniden ayıklanabilmesi gerekir. Hizmet, konuşma kaydını veya tanıma aşamasında hizmete gönderilen ayıklanan ses özelliklerini korumaz. 
+
+Verilerin ne kadar süreyle bekletileceği kontrol edersiniz. API çağrıları aracılığıyla ayrı konuşmalara yönelik kayıt verilerini oluşturabilir, güncelleştirebilir ve silebilirsiniz. Abonelik silindiğinde, abonelikle ilişkili tüm konuşmacı kaydı verileri de silinir. 
+
+Tüm bilişsel hizmetler kaynaklarında olduğu gibi, konuşmacı tanıma hizmetini kullanan geliştiriciler Microsoft 'un müşteri verileri ilkelerine dikkat etmeniz gerekir. Konuşmacı Tanıma için kullanıcılardan uygun izinleri aldığınızdan emin olmanız gerekir. Daha fazla bilgi için Microsoft Güven Merkezi ' nde bilişsel [Hizmetler sayfasına](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)bakın   . 
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+> [!div class="nextstepaction"]
+> * Metnin bağımsız konuşmacı doğrulaması için [video öğreticisine](https://azure.microsoft.com/resources/videos/speaker-recognition-text-independent-verification-developer-tutorial/) bakın.

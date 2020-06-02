@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 50ce0d57ec7395c69bf65e41b67f0cb005a43cb8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d46b9f9386e8b16d4806e054820cbd82d83ef56b
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854971"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266997"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -47,7 +47,7 @@ appInsights.trackPageView(); // Manually call trackPageView to establish the cur
 
 ### <a name="snippet-based-setup"></a>Kod parçacığı tabanlı kurulum
 
-Uygulamanız NPM kullanmıyorsa, bu kod parçacığını sayfalarınızın en üstüne yapıştırarak Web sayfalarınızı Application Insights doğrudan bırakabilirsiniz. Tercihen, bağımlılıklarınızın tüm olası sorunlarını izleyebilmesi için `<head>` , bölüminizdeki ilk betik olmalıdır. Blazor Server uygulaması kullanıyorsanız, `_Host.cshtml` `<head>` bölümünde dosyanın en üstüne kod parçacığını ekleyin.
+Uygulamanız NPM kullanmıyorsa, bu kod parçacığını sayfalarınızın en üstüne yapıştırarak Web sayfalarınızı Application Insights doğrudan bırakabilirsiniz. Tercihen, `<head>` bağımlılıklarınızın tüm olası sorunlarını izleyebilmesi için, bölüminizdeki ilk betik olmalıdır. Blazor Server uygulaması kullanıyorsanız, bölümünde dosyanın en üstüne kod parçacığını ekleyin `_Host.cshtml` `<head>` .
 
 ```html
 <script type="text/javascript">
@@ -61,7 +61,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Azure portal telemetri gönderme
 
-Varsayılan olarak Application Insights JavaScript SDK 'Sı, uygulamanızın sistem durumunu ve temel alınan kullanıcı deneyimini belirlemede yardımcı olan bir dizi telemetri öğesini oto toplar. Bunlar:
+Varsayılan olarak Application Insights JavaScript SDK 'Sı, uygulamanızın sistem durumunu ve temel alınan kullanıcı deneyimini belirlemede yardımcı olan bir dizi telemetri öğesini oto toplar. Bu modüller şunlardır:
 
 - Uygulamanızdaki bilgiler dahil **yakalanamayan özel durumlar**
     - Yığın izleme
@@ -80,9 +80,9 @@ Varsayılan olarak Application Insights JavaScript SDK 'Sı, uygulamanızın sis
 - **Oturum bilgileri**
 
 ### <a name="telemetry-initializers"></a>Telemetri başlatıcıları
-Telemetri başlatıcıları, kullanıcının tarayıcısından gönderilmeden önce toplanan telemetrinin içeriğini değiştirmek için kullanılır. Ayrıca, belirli telemetrinin gönderilmesini engellemek için de kullanılabilir `false`. Application Insights örneğinize birden çok telemetri başlatıcıları eklenebilir ve bunlar ekleme sırasında yürütülür.
+Telemetri başlatıcıları, kullanıcının tarayıcısından gönderilmeden önce toplanan telemetrinin içeriğini değiştirmek için kullanılır. Ayrıca, belirli telemetrinin gönderilmesini engellemek için de kullanılabilir `false` . Application Insights örneğinize birden çok telemetri başlatıcıları eklenebilir ve bunlar ekleme sırasında yürütülür.
 
-İçin `addTelemetryInitializer` giriş bağımsız değişkeni, bir bağımsız değişken olarak bir [`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API-reference.md#addTelemetryInitializer) `boolean` veya `void`döndüren bir geri çağırma olur. Geri döntakdirde `false`telemetri öğesi gönderilmez, aksi takdirde bir sonraki telemetri başlatıcısına devam eder veya telemetri toplama uç noktasına gönderilir.
+İçin giriş bağımsız değişkeni, `addTelemetryInitializer` bir [`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API-reference.md#addTelemetryInitializer) bağımsız değişken olarak bir veya döndüren bir geri çağırma olur `boolean` `void` . Geri döntakdirde `false` telemetri öğesi gönderilmez, aksi takdirde bir sonraki telemetri başlatıcısına devam eder veya telemetri toplama uç noktasına gönderilir.
 
 Telemetri başlatıcılarının kullanılmasına bir örnek:
 ```ts
@@ -97,7 +97,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 
 ## <a name="configuration"></a>Yapılandırma
-Çoğu yapılandırma alanı, varsayılan olarak false olarak ayarlanabilecek şekilde adlandırılır. Tüm alanlar, hariç olarak isteğe `instrumentationKey`bağlıdır.
+Çoğu yapılandırma alanı, varsayılan olarak false olarak ayarlanabilecek şekilde adlandırılır. Tüm alanlar, hariç olarak isteğe bağlıdır `instrumentationKey` .
 
 | Name | Varsayılan | Açıklama |
 |------|---------|-------------|
@@ -109,7 +109,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | Maxbatchınterval | 15000 | Göndermeden önce toplu iş telemetrisi için ne kadar süre (milisaniye) |
 | disableExceptionTracking | yanlış | True ise özel durumlar, bir oto toplanmaz. Varsayılan değer false’tur. |
 | Disabletelemetri | yanlış | True ise telemetri toplanmaz veya gönderilmez. Varsayılan değer false’tur. |
-| enableDebug | yanlış | True ise, **iç** hata ayıklama VERILERI, SDK günlüğü ayarlarından bağımsız olarak, günlüğe kaydedilmesi **yerine** bir özel durum olarak oluşturulur. Varsayılan değer false’tur. <br>***Note:*** Bu ayarın etkinleştirilmesi, bir iç hata oluştuğunda telemetri oluşmasına neden olur. Bu, yapılandırma veya SDK kullanımınız ile ilgili sorunları hızlı bir şekilde tanımlamak için yararlı olabilir. Hata ayıklama sırasında Telemetriyi kaybetmek istemiyorsanız, `consoleLoggingLevel` veya `telemetryLoggingLevel` yerine kullanmayı düşünün. `enableDebug` |
+| enableDebug | yanlış | True ise, **iç** hata ayıklama VERILERI, SDK günlüğü ayarlarından bağımsız olarak, günlüğe kaydedilmesi **yerine** bir özel durum olarak oluşturulur. Varsayılan değer false’tur. <br>***Note:*** Bu ayarın etkinleştirilmesi, bir iç hata oluştuğunda telemetri oluşmasına neden olur. Bu, yapılandırma veya SDK kullanımınız ile ilgili sorunları hızlı bir şekilde tanımlamak için yararlı olabilir. Hata ayıklama sırasında Telemetriyi kaybetmek istemiyorsanız, veya yerine kullanmayı düşünün `consoleLoggingLevel` `telemetryLoggingLevel` `enableDebug` . |
 | loggingLevelConsole | 0 | **İç** Application Insights hatalarını konsola kaydeder. <br>0: kapalı, <br>1: yalnızca kritik hatalar, <br>2: her şey (hata & uyarı) |
 | Loggingleveltelemetri | 1 | **İç** Application Insights hatalarını telemetri olarak gönderir. <br>0: kapalı, <br>1: yalnızca kritik hatalar, <br>2: her şey (hata & uyarı) |
 | Diagnosticlogınterval | 10000 | iç İç günlük kuyruğu için yoklama aralığı (MS cinsinden) |
@@ -136,27 +136,27 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | appId | null | Uygulama kimliği, istemci tarafında sunucu tarafı istekleri ile oluşan AJAX bağımlılıkları arasındaki bağıntı için kullanılır. Işaret API 'SI etkinleştirildiğinde, otomatik olarak kullanılamaz, ancak yapılandırmada el ile ayarlanabilir. Varsayılan değer null |
 | enableCorsCorrelation | yanlış | Doğru ise, SDK giden AJAX bağımlılıklarını sunucu tarafındaki ilgili isteklerle ilişkilendirmek için tüm CORS isteklerine iki üst bilgi (' Istek-kimliği ' ve ' Istek-bağlam ') ekler. Varsayılan değer false şeklindedir |
 | namePrefix | tanımlayan | LocalStorage ve tanımlama bilgisi adı için ad soneki olarak kullanılacak isteğe bağlı bir değer.
-| Enableoto Routetracking | yanlış | Rota değişikliklerini tek sayfalı uygulamalarda (SPA) otomatik olarak izleyin. True ise, her yol değişikliği Application Insights yeni bir PageView gönderir. Karma yol değişiklikleri (`example.com/foo#bar`) de yeni sayfa görünümleri olarak kaydedilir.
+| Enableoto Routetracking | yanlış | Rota değişikliklerini tek sayfalı uygulamalarda (SPA) otomatik olarak izleyin. True ise, her yol değişikliği Application Insights yeni bir PageView gönderir. Karma yol değişiklikleri ( `example.com/foo#bar` ) de yeni sayfa görünümleri olarak kaydedilir.
 | enableRequestHeaderTracking | yanlış | True ise, AJAX & getirme isteği üst bilgileri izlenir, varsayılan değer false 'dur.
 | enableResponseHeaderTracking | yanlış | True ise, AJAX & getirme isteğinin yanıt üst bilgileri izlenir, varsayılan değer false 'dur.
-| distributedTracingMode | `DistributedTracingModes.AI` | Dağıtılmış izleme modunu ayarlar. AI_AND_W3C Mode veya W3C modu ayarlandıysa, W3C Trace bağlam üstbilgileri (traceparent/tracestate) oluşturulur ve tüm giden isteklere dahil edilir. AI_AND_W3C, eski Application Insights belgelenmiş hizmetlerle geri uyumluluk için sağlanır.
+| distributedTracingMode | `DistributedTracingModes.AI` | Dağıtılmış izleme modunu ayarlar. AI_AND_W3C Mode veya W3C modu ayarlandıysa, W3C Trace bağlam üstbilgileri (traceparent/tracestate) oluşturulur ve tüm giden isteklere dahil edilir. AI_AND_W3C, eski Application Insights belgelenmiş hizmetlerle geri uyumluluk için sağlanır. Örneğe [buraya](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps)bakın.
 
 ## <a name="single-page-applications"></a>Tek sayfalı uygulamalar
 
-Varsayılan olarak, bu SDK tek sayfalı uygulamalarda oluşan durum tabanlı yol **değiştirmeyi işlemez.** Tek sayfalı uygulamanız için otomatik yönlendirme değişikliği izlemeyi etkinleştirmek için, kurulum yapılandırmanıza ekleyebilirsiniz `enableAutoRouteTracking: true` .
+Varsayılan olarak, bu SDK tek sayfalı uygulamalarda oluşan durum tabanlı yol **değiştirmeyi işlemez.** Tek sayfalı uygulamanız için otomatik yönlendirme değişikliği izlemeyi etkinleştirmek için, `enableAutoRouteTracking: true` Kurulum yapılandırmanıza ekleyebilirsiniz.
 
 Şu anda, bu SDK ile başlatabilmeniz için ayrı bir yanıt verme [eklentisi](#react-extensions)sunuyoruz. Ayrıca, sizin için yol değişikliği izlemeyi da gerçekleştirecek ve diğer tepki verme açısından [özel telemetri](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)toplayacaktır.
 
 > [!NOTE]
-> Yalnızca `enableAutoRouteTracking: true` tepki verme **eklentisini kullanmıyorsanız kullanın** . Her ikisi de yol değiştiğinde yeni PageViews gönderebilir. Her ikisi de etkinse, yinelenen PageViews gönderilebilir.
+> `enableAutoRouteTracking: true`Yalnızca tepki verme eklentisini kullanmıyorsanız **not** kullanın. Her ikisi de yol değiştiğinde yeni PageViews gönderebilir. Her ikisi de etkinse, yinelenen PageViews gönderilebilir.
 
 ## <a name="configuration-autotrackpagevisittime"></a>Yapılandırma: oto Trackpagevisittime
 
-Ayar `autoTrackPageVisitTime: true`olarak, bir kullanıcının her sayfada harcadığı zaman izlenir. Yeni bir sayfa görünümünde, *önceki* sayfada harcanan sürenin adlı `PageVisitTime` [özel ölçüm](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) olarak gönderildiği süre. Bu özel ölçüm, [Ölçüm Gezgini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) "günlük tabanlı ölçüm" olarak görüntülenebilir.
+Ayar olarak `autoTrackPageVisitTime: true` , bir kullanıcının her sayfada harcadığı zaman izlenir. Yeni bir sayfa görünümünde, *önceki* sayfada harcanan sürenin adlı [özel ölçüm](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) olarak gönderildiği süre `PageVisitTime` . Bu özel ölçüm, [Ölçüm Gezgini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) "günlük tabanlı ölçüm" olarak görüntülenebilir.
 
 ## <a name="react-extensions"></a>Tepki verme uzantıları
 
-| Uzantıları |
+| Uzantılar |
 |---------------|
 | [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
 | [Yerel olarak tepki verme](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
@@ -183,7 +183,7 @@ Ayrıca, portaldaki tarayıcı deneyimi aracılığıyla JavaScript SDK 'sindeki
 
 ### <a name="analytics"></a>Analiz
 
-JavaScript SDK 'Sı tarafından toplanan telemetrinizi sorgulamak için **Günlükler (Analiz) Içinde görüntüle** düğmesini seçin. Bir `where` ifadesini `client_Type == "Browser"`ekleyerek yalnızca JavaScript SDK 'dan verileri görürsünüz ve diğer SDK 'lar tarafından toplanan tüm sunucu tarafı telemetri hariç tutulur.
+JavaScript SDK 'Sı tarafından toplanan telemetrinizi sorgulamak için **Günlükler (Analiz) Içinde görüntüle** düğmesini seçin. Bir ifadesini ekleyerek `where` `client_Type == "Browser"` yalnızca JavaScript SDK 'dan verileri görürsünüz ve diğer SDK 'lar tarafından toplanan tüm sunucu tarafı telemetri hariç tutulur.
  
 ```kusto
 // average pageView duration by name
@@ -220,7 +220,7 @@ Hafif bir deneyim için Application Insights temel sürümünü yükleyebilirsin
 ```
 npm i --save @microsoft/applicationinsights-web-basic
 ```
-Bu sürüm, en az özellik ve işlevlere sahiptir ve uygun gördüğünüz şekilde oluşturmak için size dayanır. Örneğin, hiçbir yeniden koleksiyon (yakalanamayan özel durumlar, AJAX vb.) yoktur. , Vb. gibi `trackTrace` `trackException`belirli telemetri türlerini göndermek için API 'ler bu sürüme dahil değildir, bu nedenle kendi sarmalayıcı sağlamanız gerekir. Kullanılabilir tek API `track`. [Örnek](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html) burada bulunur.
+Bu sürüm, en az özellik ve işlevlere sahiptir ve uygun gördüğünüz şekilde oluşturmak için size dayanır. Örneğin, hiçbir yeniden koleksiyon (yakalanamayan özel durumlar, AJAX vb.) yoktur. , Vb. gibi belirli telemetri türlerini göndermek için API 'Ler `trackTrace` `trackException` Bu sürüme dahil değildir, bu nedenle kendi sarmalayıcı sağlamanız gerekir. Kullanılabilir tek API `track` . [Örnek](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html) burada bulunur.
 
 ## <a name="examples"></a>Örnekler
 
@@ -231,10 +231,10 @@ Bu sürüm, en az özellik ve işlevlere sahiptir ve uygun gördüğünüz şeki
 SDK v2 sürümündeki son değişiklikler:
 - Daha iyi API imzaları sağlamak için, trackPageView ve trackException gibi bazı API çağrılarından bazıları güncelleştirilmiştir. Internet Explorer 8 ve tarayıcının önceki sürümlerinde çalıştırmak desteklenmez.
 - Telemetri zarfı, veri şeması güncelleştirmeleri nedeniyle alan adı ve yapı değişikliklerine sahiptir.
-- Taşındı `context.operation` `context.telemetryTrace`. Bazı alanlar da değiştirildi (`operation.id` --> `telemetryTrace.traceID`).
-  - Geçerli sayfa görüntülemesi kimliğini (örneğin, spa uygulamalarında) el ile yenilemek için kullanın `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()`.
+- Taşındı `context.operation` `context.telemetryTrace` . Bazı alanlar da değiştirildi ( `operation.id`  -->  `telemetryTrace.traceID` ).
+  - Geçerli sayfa görüntülemesi kimliğini (örneğin, spa uygulamalarında) el ile yenilemek için kullanın `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()` .
     > [!NOTE]
-    > Daha önce kullandığınız `Util.newId()`izleme kimliğini benzersiz tutmak için artık ' i kullanın `Util.generateW3CId()`. Her iki sonuç de işlem KIMLIĞI ' ni sonlandırın.
+    > Daha önce kullandığınız izleme KIMLIĞINI benzersiz tutmak için `Util.newId()` artık ' i kullanın `Util.generateW3CId()` . Her iki sonuç de işlem KIMLIĞI ' ni sonlandırın.
 
 Geçerli Application Insights ÜRETIM SDK 'sını (1.0.20) kullanıyorsanız ve yeni SDK 'nın çalışma zamanında çalışıp çalışmadığını görmek istiyorsanız, URL 'YI geçerli SDK yükleme senaryonuza bağlı olarak güncelleştirin.
 
@@ -243,7 +243,7 @@ Geçerli Application Insights ÜRETIM SDK 'sını (1.0.20) kullanıyorsanız ve 
    "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
    ```
 
-- NPM senaryosu: CDN `downloadAndSetup` 'Den tam ApplicationInsights betiğini indirme ve izleme anahtarıyla başlatma çağrısı:
+- NPM senaryosu: `downloadAndSetup` CDN 'den tam ApplicationInsights betiğini indirme ve izleme anahtarıyla başlatma çağrısı:
 
    ```ts
    appInsights.downloadAndSetup({

@@ -4,12 +4,12 @@ description: Ölçüm uyarıları ile yapabileceklerinize ve bunların Azure Izl
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 310d484fa1c88b2c54918fff84020a3438db9ae0
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 603df6f9b00c9261885937a3d85052b3806ff4f8
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855046"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248830"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure İzleyici'de ölçüm uyarılarının nasıl çalıştığını anlama
 
@@ -34,7 +34,7 @@ Azure Izleyici 'de ölçüm uyarıları, çok boyutlu ölçümlerin üzerine ça
 
 Uyarı kuralının oluşturulduğu zamandan itibaren izleyici 1 dakikada bir çalışır ve son 5 dakika boyunca ölçüm değerlerine bakar ve bu değerlerin ortalamasının 70 ' ı aşıp aşmadığını denetler. Koşul karşılanıyorsa, son 5 dakika boyunca ortalama yüzde CPU 70 değerini aşarsa, uyarı kuralı etkinleştirilmiş bir bildirimi tetikler. Uyarı kuralıyla ilişkili eylem grubunda bir e-posta veya Web kancası eylemi yapılandırdıysanız her ikisinde de etkinleştirilmiş bir bildirim alırsınız.
 
-Tek bir kuralda birden çok koşul kullanırken, "and" kuralı koşulları ile birlikte kullanılır.  Diğer bir deyişle, uyarı, uyarı içindeki tüm koşullar doğru olarak değerlendirilir ve koşullardan biri artık doğru olmadığında çözümlendiğinde ateşlenir. Ve bu tür bir uyarı örneği "%90 ' den yüksek CPU ve" kuyruk uzunluğu 300 öğeden fazla olduğunda "uyarı verebilir. 
+Tek bir kuralda birden çok koşul kullanırken, "and" kuralı koşulları ile birlikte kullanılır. Diğer bir deyişle, uyarı kuralındaki tüm koşullar doğru olarak değerlendirildiğinde bir uyarı ateşlenir ve koşullardan biri artık doğru olmadığında çözümlenir. Bu tür uyarı kuralı için bir örnek, hem "yüzde CPU %90 'den yüksek olduğunda" ve "kuyruk uzunluğu 300 öğeden fazla olduğunda" bir Azure sanal makinesini ve uyarısını izlemek olacaktır.
 
 ### <a name="alert-rule-with-dynamic-condition-type"></a>Dinamik koşul türü ile uyarı kuralı
 
@@ -129,9 +129,9 @@ Bu özellik şu anda aşağıdaki Azure bulutlarında aşağıdaki hizmetler iç
 | Hizmet | Genel Azure | Devlet | Çin |
 |:--------|:--------|:--------|:--------|
 | Sanal makineler  | **Evet** | Hayır | Hayır |
-| SQL Server veritabanları | **Evet** | **Evet** | No |
-| SQL Server elastik havuzlar | **Evet** | **Evet** | No |
-| Veri kutusu uç cihazları | **Evet** | **Evet** | No |
+| SQL Server veritabanları | **Evet** | **Evet** | Hayır |
+| SQL Server elastik havuzlar | **Evet** | **Evet** | Hayır |
+| Veri kutusu uç cihazları | **Evet** | **Evet** | Hayır |
 
 Tek bir ölçüm uyarısı kuralına göre izlemenin kapsamını üç şekilde belirtebilirsiniz. Örneğin, sanal makineler ile kapsamı şu şekilde belirtebilirsiniz:  
 

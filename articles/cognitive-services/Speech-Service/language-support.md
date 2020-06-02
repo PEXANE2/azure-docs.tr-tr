@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 423d65cc77cb06a6084ad9ad56f3d7274e057ffb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 437dc18dc16e879e95ff4ec7c1a9ab7ec3f17bef
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746502"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266007"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -101,27 +101,27 @@ Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](r
 
 |Yerel Ayar  | Dil            | Cinsiyet | Ses adı | Stil desteği |
 |--|--|--|--|--|
-| `de-DE` | Almanca (Almanya)                | Kadın | "de-KatjaNeural"      | Genel |
-| `en-AU` | İngilizce (Avustralya)             | Kadın | "en-AU-NatashaNeural"    | Genel |
-| `en-CA` | İngilizce (Kanada)                | Kadın | "en-CA-ClaraNeural"      | Genel |
-| `en-GB` | İngilizce (UK)                    | Kadın | "en-GB-LibbyNeural"      | Genel |
-|         |                                 | Kadın | "en-GB-MiaNeural"        | Genel |
-| `en-US` | İngilizce (ABD)                    | Kadın | "en-US-AriaNeural"       | Genel, birden çok ses stili mevcuttur |
-|         |                                 | Erkek   | "en-US-GuyNeural"        | Genel |
-| `es-ES` | İspanyolca (İspanya)                 | Kadın | "ES-ES-ElviraNeural"     | Genel |
-| `es-MX` | İspanyolca (Meksika)                | Kadın | "es-MX-DaliaNeural"      | Genel |
-| `fr-CA` | Fransızca (Kanada)                 | Kadın | "fr-CA-SylvieNeural"     | Genel |
-| `fr-FR` | Fransızca (Fransa)                 | Kadın | "fr-FR-DeniseNeural"     | Genel |
-| `it-IT` | İtalyanca (İtalya)                 | Kadın | "It-IT-ElsaNeural"       | Genel |
-| `ja-JP` | Japonca                        | Kadın | "ja-JP-NanamiNeural"     | Genel |
-| `ko-KR` | Korece                          | Kadın | "ko-KR-SunHiNeural"      | Genel |
-| `nb-NO` | Norveççe                       | Kadın | "NB-NO-IselinNeural"     | Genel |
-| `pt-BR` | Portekizce (Brezilya)             | Kadın | "PT-BR-FranciscaNeural"  | Genel |
-| `tr-TR` | Türkçe                         | Kadın | "tr-TR-EmelNeural"       | Genel |
-| `zh-CN` | Çince (Mandarin, Basitleştirilmiş)  | Kadın | "zh-CN-XiaoxiaoNeural"   | Genel, birden çok ses stili mevcuttur |
-|         |                                 | Kadın | "zh-CN-XiaoyouNeural"    | Çocuk sesi, öykü anlatımı için iyileştirilmiş |
-|         |                                 | Erkek   | "zh-CN-YunyangNeural"    | Haber okuma için iyileştirilmiş, birden fazla ses stili var |
-|         |                                 | Erkek   | "zh-CN-YunyeNeural"      | Öykü anlatımı için iyileştirildi |
+| `de-DE` | Almanca (Almanya)                | `Female` | "de-KatjaNeural"      | Genel |
+| `en-AU` | İngilizce (Avustralya)             | `Female` | "en-AU-NatashaNeural"    | Genel |
+| `en-CA` | İngilizce (Kanada)                | `Female` | "en-CA-ClaraNeural"      | Genel |
+| `en-GB` | İngilizce (UK)                    | `Female` | "en-GB-LibbyNeural"      | Genel |
+|         |                                 | `Female` | "en-GB-MiaNeural"        | Genel |
+| `en-US` | İngilizce (ABD)                    | `Female` | "en-US-AriaNeural"       | Genel, birden çok ses stili mevcuttur |
+|         |                                 | `Male`   | "en-US-GuyNeural"        | Genel |
+| `es-ES` | İspanyolca (İspanya)                 | `Female` | "ES-ES-ElviraNeural"     | Genel |
+| `es-MX` | İspanyolca (Meksika)                | `Female` | "es-MX-DaliaNeural"      | Genel |
+| `fr-CA` | Fransızca (Kanada)                 | `Female` | "fr-CA-SylvieNeural"     | Genel |
+| `fr-FR` | Fransızca (Fransa)                 | `Female` | "fr-FR-DeniseNeural"     | Genel |
+| `it-IT` | İtalyanca (İtalya)                 | `Female` | "It-IT-ElsaNeural"       | Genel |
+| `ja-JP` | Japonca                        | `Female` | "ja-JP-NanamiNeural"     | Genel |
+| `ko-KR` | Korece                          | `Female` | "ko-KR-SunHiNeural"      | Genel |
+| `nb-NO` | Norveççe                       | `Female` | "NB-NO-IselinNeural"     | Genel |
+| `pt-BR` | Portekizce (Brezilya)             | `Female` | "PT-BR-FranciscaNeural"  | Genel |
+| `tr-TR` | Türkçe                         | `Female` | "tr-TR-EmelNeural"       | Genel |
+| `zh-CN` | Çince (Mandarin, Basitleştirilmiş)  | `Female` | "zh-CN-XiaoxiaoNeural"   | Genel, birden çok ses stili mevcuttur |
+|         |                                 | `Female` | "zh-CN-XiaoyouNeural"    | Çocuk sesi, öykü anlatımı için iyileştirilmiş |
+|         |                                 | `Male`   | "zh-CN-YunyangNeural"    | Haber okuma için iyileştirilmiş, birden fazla ses stili var |
+|         |                                 | `Male`   | "zh-CN-YunyeNeural"      | Öykü anlatımı için iyileştirildi |
 
 > [!IMPORTANT]
 > `en-US-JessaNeural`Ses olarak değiştirildi `en-US-AriaNeural` . Daha önce "Jessa" kullandıysanız, "Aria" öğesine dönüştürün.
@@ -137,86 +137,86 @@ Sinir seslerini nasıl yapılandıracağınızı ve ayarlayabileceğinizi öğre
 
 | Yerel Ayar | Dil | Cinsiyet | Ses adı |
 |--|--|--|--|
-| <sup>1</sup>`ar-EG` | Arapça (Mısır) | Kadın | "ar-EG-Hoda" |
-| `ar-SA` | Arapça (Suudi Arabistan) | Erkek | "ar-SA-Naayf" |
-| `bg-BG` | Bulgarca | Erkek |  "BG-BG-Ivan" |
-| `ca-ES` | Katalanca | Kadın |  "CA-ES-HerenaRUS" |
-| `cs-CZ` | Çekçe | Erkek | "CS-CZ-Jakub" |
-| `da-DK` | Danca | Kadın |  "da-DK-HelleRUS" |
-| `de-AT` | Almanca (Avusturya) | Erkek | "on-Michael" |
-| `de-CH` | Almanca (İsviçre) | Erkek |  "de CH-Karsten" |
-| `de-DE` | Almanca (Almanya) | Kadın |  "de-DE-Hedda" |
-|  |  | Kadın | "de, HeddaRUS" |
-|  |  | Erkek |  "de-DE-Stefan-Apollo" |
-| `el-GR` | Yunanca | Erkek | "el-GR-Stefanos" |
-| `en-AU` | İngilizce (Avustralya) | Kadın |  "en-AU-Catherine" |
-|  |  | Kadın |  "en-AU-HayleyRUS" |
-| `en-CA` | İngilizce (Kanada) | Kadın |  "en-CA-Linda" |
-|  |  | Kadın |  "en-CA-Centherrus" |
-| `en-GB` | İngilizce (UK) | Kadın |  "en-GB-çiğdem-Apollo" |
-|  |  | Kadın |  "en-GB-HazelRUS" |
-|  |  | Erkek |  "en-GB-George-Apollo" |
-| `en-IE` | İngilizce (İrlanda) | Erkek | "en-IE-kemal" |
-| `en-IN` | İngilizce (Hindistan) | Kadın | "en-ın-heçi-Apollo" |
-|  |  | Kadın |  "en-basit Yarus" |
-|  |  | Erkek |  "en-ın-Ravi-Apollo" |
-| `en-US` | İngilizce (ABD) | Kadın |  "en-US-ZiraRUS" |
-|  |  | Kadın | "en-US-AriaRUS" |
-|  |  | Erkek | "en-US-BenjaminRUS" |
-|  |  | Erkek |  "en-US-Guy24kRUS" |
-| `es-ES` | İspanyolca (İspanya) | Kadın |  "ES-ES-gamze-Apollo" |
-|  |  | Kadın | "ES-ES-HelenaRUS" |
-|  |  | Erkek | "ES-ES-Pablo-Apollo" |
-| `es-MX` | İspanyolca (Meksika) | Kadın |  "es-MX-Tepdarus" |
-|  |  | Erkek | "es-MX-OYUL-Apollo" |
-| `fi-FI` | Fince | Kadın | "fi-FI-Heidrus" |
-| `fr-CA` | Fransızca (Kanada) | Kadın | "fr-CA-Caroline" |
-|  |  | Kadın | "fr-CA-Harmonitorerus" |
-| `fr-CH` | Fransızca (İsviçre) | Erkek | "fr-CH-Guildefme" |
-| `fr-FR` | Fransızca (Fransa) | Kadın |  "fr-FR-Julie-Apollo" |
-|  |  | Kadın |"fr-FR-HortenseRUS" |
-|  |  | Erkek |  "fr-FR-Paul-Apollo" |
-| `he-IL` | İbranice (Israil) | Erkek |  "he-Il-asaf" |
-| `hi-IN` | Hintçe (Hindistan) | Kadın | "HI-IN-Kalpana-Apollo" |
-|  |  | Kadın |  "Hi Pana" |
-|  |  | Erkek |  "Hi-IN-Hemant" |
-| `hr-HR` | Hırvatça | Erkek | "HR-HR-Matej" |
-| `hu-HU` | Macarca | Erkek |  "HU-HU-Szacıvacs" |
-| `id-ID` | Endonezce | Erkek | "kimlik-KIMLIĞI-Andika" |
-| `it-IT` | İtalyanca | Erkek |  "It-IT-Cosımo-Apollo" |
-|  |  | Kadın |  "It-IT-LuciaRUS" |
-| `ja-JP` | Japonca | Kadın |  "ja-JP-Ayumi-Apollo" |
-|  |  | Erkek | "ja-JP-Ichiro-Apollo" |
-|  |  | Kadın |  "ja-JP-HarukaRUS" |
-| `ko-KR` | Korece | Kadın | "ko-KR-Heamırus" |
-| `ms-MY` | Malayca | Erkek |  "MS-MY-Rizwan" |
-| `nb-NO` | Norveççe | Kadın |  "NB-hayır-HuldaRUS" |
-| `nl-NL` | Felemenkçe | Kadın |  "nl-NL-HannaRUS" |
-| `pl-PL` | Lehçe | Kadın |  "pl-PL-PaulinaRUS" |
-| `pt-BR` | Portekizce (Brezilya) | Kadın | "PT-BR-HeloisaRUS" |
-|  |  | Erkek |  "PT-BR-Daniel-Apollo" |
-| `pt-PT` | Portekizce (Portekiz) | Kadın | "PT-PT Helinarus" |
-| `ro-RO` | Rumence | Erkek | "RO-RO-Andrei" |
-| `ru-RU` | Rusça | Kadın |  "ru-RU-Irina-Apollo" |
-|  |  | Erkek | "ru-RU-Palevel-Apollo" |
-|  |  | Kadın |  ru-RU-EkaterinaRUS |
-| `sk-SK` | Slovakça | Erkek | "SK-SK-Filıp" |
-| `sl-SI` | Slovence | Erkek |  "SL-SI-Lado" |
-| `sv-SE` | İsveççe | Kadın | "ZF-i-HedvigRUS" |
-| `ta-IN` | Tamil dili (Hindistan) | Erkek |  "ta-Valluvar" |
-| `te-IN` | Telugu dili (Hindistan) | Kadın |  "te-Chitra" |
-| `th-TH` | Tayca | Erkek |  "TH-Pattara" |
-| `tr-TR` | Türkçe (Türkiye) | Kadın | "tr-TR-SedaRUS" |
-| `vi-VN` | Vietnamca | Erkek |  "VI-VN-a" |
-| `zh-CN` | Çince (Mandarin, Basitleştirilmiş) | Kadın |  "zh-CN-Huihuırus" |
-|  |  | Kadın | "zh-CN-Yaoyao-Apollo" |
-|  |  | Erkek | "zh-CN-Kangkang-Apollo" |
-| `zh-HK` | Çince (Cantoneo, geleneksel) | Kadın |  "zh-HK-Tracy-Apollo" |
-|  |  | Kadın | "zh-HK-Tracyırus" |
-|  |  | Erkek |  "zh-HK-Danny-Apollo" |
-| `zh-TW` | Çince (Taiwanese Mandarin) | Kadın |  "zh-TW-Yating-Apollo" |
-|  |  | Kadın | "zh-TW-HanHanRUS" |
-|  |  | Erkek |  "zh-TW-Zhiwei-Apollo" |
+| <sup>1</sup>`ar-EG` | Arapça (Mısır) | `Female` | "ar-EG-Hoda" |
+| `ar-SA` | Arapça (Suudi Arabistan) | `Male` | "ar-SA-Naayf" |
+| `bg-BG` | Bulgarca | `Male` |  "BG-BG-Ivan" |
+| `ca-ES` | Katalanca | `Female` |  "CA-ES-HerenaRUS" |
+| `cs-CZ` | Çekçe | `Male` | "CS-CZ-Jakub" |
+| `da-DK` | Danca | `Female` |  "da-DK-HelleRUS" |
+| `de-AT` | Almanca (Avusturya) | `Male` | "on-Michael" |
+| `de-CH` | Almanca (İsviçre) | `Male` |  "de CH-Karsten" |
+| `de-DE` | Almanca (Almanya) | `Female` |  "de-DE-Hedda" |
+|  |  | `Female` | "de, HeddaRUS" |
+|  |  | `Male` |  "de-DE-Stefan-Apollo" |
+| `el-GR` | Yunanca | `Male` | "el-GR-Stefanos" |
+| `en-AU` | İngilizce (Avustralya) | `Female` |  "en-AU-Catherine" |
+|  |  | `Female` |  "en-AU-HayleyRUS" |
+| `en-CA` | İngilizce (Kanada) | `Female` |  "en-CA-Linda" |
+|  |  | `Female` |  "en-CA-Centherrus" |
+| `en-GB` | İngilizce (UK) | `Female` |  "en-GB-çiğdem-Apollo" |
+|  |  | `Female` |  "en-GB-HazelRUS" |
+|  |  | `Male` |  "en-GB-George-Apollo" |
+| `en-IE` | İngilizce (İrlanda) | `Male` | "en-IE-kemal" |
+| `en-IN` | İngilizce (Hindistan) | `Female` | "en-ın-heçi-Apollo" |
+|  |  | `Female` |  "en-basit Yarus" |
+|  |  | `Male` |  "en-ın-Ravi-Apollo" |
+| `en-US` | İngilizce (ABD) | `Female` |  "en-US-ZiraRUS" |
+|  |  | `Female` | "en-US-AriaRUS" |
+|  |  | `Male` | "en-US-BenjaminRUS" |
+|  |  | `Male` |  "en-US-Guy24kRUS" |
+| `es-ES` | İspanyolca (İspanya) | `Female` |  "ES-ES-gamze-Apollo" |
+|  |  | `Female` | "ES-ES-HelenaRUS" |
+|  |  | `Male` | "ES-ES-Pablo-Apollo" |
+| `es-MX` | İspanyolca (Meksika) | `Female` |  "es-MX-Tepdarus" |
+|  |  | `Male` | "es-MX-OYUL-Apollo" |
+| `fi-FI` | Fince | `Female` | "fi-FI-Heidrus" |
+| `fr-CA` | Fransızca (Kanada) | `Female` | "fr-CA-Caroline" |
+|  |  | `Female` | "fr-CA-Harmonitorerus" |
+| `fr-CH` | Fransızca (İsviçre) | `Male` | "fr-CH-Guildefme" |
+| `fr-FR` | Fransızca (Fransa) | `Female` |  "fr-FR-Julie-Apollo" |
+|  |  | `Female` |"fr-FR-HortenseRUS" |
+|  |  | `Male` |  "fr-FR-Paul-Apollo" |
+| `he-IL` | İbranice (Israil) | `Male` |  "he-Il-asaf" |
+| `hi-IN` | Hintçe (Hindistan) | `Female` | "HI-IN-Kalpana-Apollo" |
+|  |  | `Female` |  "Hi Pana" |
+|  |  | `Male` |  "Hi-IN-Hemant" |
+| `hr-HR` | Hırvatça | `Male` | "HR-HR-Matej" |
+| `hu-HU` | Macarca | `Male` |  "HU-HU-Szacıvacs" |
+| `id-ID` | Endonezce | `Male` | "kimlik-KIMLIĞI-Andika" |
+| `it-IT` | İtalyanca | `Male` |  "It-IT-Cosımo-Apollo" |
+|  |  | `Female` |  "It-IT-LuciaRUS" |
+| `ja-JP` | Japonca | `Female` |  "ja-JP-Ayumi-Apollo" |
+|  |  | `Male` | "ja-JP-Ichiro-Apollo" |
+|  |  | `Female` |  "ja-JP-HarukaRUS" |
+| `ko-KR` | Korece | `Female` | "ko-KR-Heamırus" |
+| `ms-MY` | Malayca | `Male` |  "MS-MY-Rizwan" |
+| `nb-NO` | Norveççe | `Female` |  "NB-hayır-HuldaRUS" |
+| `nl-NL` | Felemenkçe | `Female` |  "nl-NL-HannaRUS" |
+| `pl-PL` | Lehçe | `Female` |  "pl-PL-PaulinaRUS" |
+| `pt-BR` | Portekizce (Brezilya) | `Female` | "PT-BR-HeloisaRUS" |
+|  |  | `Male` |  "PT-BR-Daniel-Apollo" |
+| `pt-PT` | Portekizce (Portekiz) | `Female` | "PT-PT Helinarus" |
+| `ro-RO` | Rumence | `Male` | "RO-RO-Andrei" |
+| `ru-RU` | Rusça | `Female` |  "ru-RU-Irina-Apollo" |
+|  |  | `Male` | "ru-RU-Palevel-Apollo" |
+|  |  | `Female` |  ru-RU-EkaterinaRUS |
+| `sk-SK` | Slovakça | `Male` | "SK-SK-Filıp" |
+| `sl-SI` | Slovence | `Male` |  "SL-SI-Lado" |
+| `sv-SE` | İsveççe | `Female` | "ZF-i-HedvigRUS" |
+| `ta-IN` | Tamil dili (Hindistan) | `Male` |  "ta-Valluvar" |
+| `te-IN` | Telugu dili (Hindistan) | `Female` |  "te-Chitra" |
+| `th-TH` | Tayca | `Male` |  "TH-Pattara" |
+| `tr-TR` | Türkçe (Türkiye) | `Female` | "tr-TR-SedaRUS" |
+| `vi-VN` | Vietnamca | `Male` |  "VI-VN-a" |
+| `zh-CN` | Çince (Mandarin, Basitleştirilmiş) | `Female` |  "zh-CN-Huihuırus" |
+|  |  | `Female` | "zh-CN-Yaoyao-Apollo" |
+|  |  | `Male` | "zh-CN-Kangkang-Apollo" |
+| `zh-HK` | Çince (Cantoneo, geleneksel) | `Female` |  "zh-HK-Tracy-Apollo" |
+|  |  | `Female` | "zh-HK-Tracyırus" |
+|  |  | `Male` |  "zh-HK-Danny-Apollo" |
+| `zh-TW` | Çince (Taiwanese Mandarin) | `Female` |  "zh-TW-Yating-Apollo" |
+|  |  | `Female` | "zh-TW-HanHanRUS" |
+|  |  | `Male` |  "zh-TW-Zhiwei-Apollo" |
 
 **1** *ar-örneğin modern Standart Arapça (MSA) desteği.*
 

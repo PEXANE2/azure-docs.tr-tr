@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f50c7e8dcb33fd2ed95829286aaf815926d9fb3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e05256d26da2c061559bcc8e50e9ecce6d8425a0
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80157662"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248218"
 ---
 # <a name="export-your-application"></a>Uygulamanızı dışarı aktarma
-
-
 
 Bu makalede, bir IoT Central uygulamasının yeniden kullanabilmek için bir çözüm Yöneticisi olarak nasıl dışarı aktarılacağı açıklanmaktadır.
 
@@ -93,4 +91,4 @@ Uygulama şablonunuzu güncelleştirmek için, **uygulama şablonu dışarı akt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulama şablonlarını nasıl kullanacağınızı öğrendiğinize göre, önerilen sonraki adım [Azure portal IoT Central nasıl yöneteceğinizi öğreneceksiniz.](howto-manage-iot-central-from-portal.md)
+Uygulama şablonlarını nasıl kullanacağınızı öğrendiğinize göre, bir sonraki adım, [bir IoT Central uygulamasına bağlı cihazların genel durumunu nasıl izleyeceğinizi](howto-monitor-application-health.md) öğrenmektedir.

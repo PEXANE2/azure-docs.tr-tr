@@ -1,6 +1,7 @@
 ---
 title: Azure portal sorgu düzenleyicisini kullanarak bir SQL veritabanını sorgulama
 description: Azure SQL veritabanı 'ndaki bir veritabanında Transact-SQL (T-SQL) sorgularını çalıştırmak için sorgu düzenleyicisini nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure SQL Database
 keywords: SQL veritabanı 'na bağlanma, SQL veritabanı, Azure Portal, Portal, sorgu Düzenleyicisi 'ni sorgulama
 services: sql-database
 ms.service: sql-database
@@ -11,16 +12,15 @@ ms.topic: quickstart
 author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
-ms.date: 03/12/2020
-ms.openlocfilehash: 2bd53f62f6e4d05931b7e8b6c3c2f4265b6c396b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: 4dbbf8267b4a7a1ea280d16ee787c8ae6cd652c9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054428"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267367"
 ---
-# <a name="quickstart-use-the-azure-portals-query-editor-to-query-a-database"></a>Hızlı başlangıç: bir veritabanını sorgulamak için Azure portal sorgu düzenleyicisini kullanın
-
+# <a name="quickstart-use-the-azure-portals-query-editor-to-query-an-azure-sql-database"></a>Hızlı başlangıç: Azure SQL veritabanını sorgulamak için Azure portal sorgu düzenleyicisini kullanma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Sorgu Düzenleyicisi, Azure SQL veritabanı veya Azure SQL veri ambarı 'nda veri ambarı içindeki veritabanınıza SQL sorguları çalıştırmak için Azure portal bir araçtır. 

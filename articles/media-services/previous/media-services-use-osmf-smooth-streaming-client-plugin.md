@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 71d28a19316bf1b618ec9008a5e96a503687b202
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bec5e68b334cada7f83c5dbeb9ba50203835d770
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681959"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84265327"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Adobe açık kaynak medya çerçevesi için Microsoft Kesintisiz Akış eklentisini kullanma  
 ## <a name="overview"></a>Genel Bakış
@@ -43,7 +43,7 @@ Eklenti, isteğe bağlı Kesintisiz Akış içeriğini aşağıdaki özelliklerl
 * OSMF yerleşik API 'Leri ile birden çok ses dili değiştirme
 * OSMF yerleşik API 'Leri ile en fazla kayıttan yürütme kalitesi seçimi
 * OSMF açıklamalı alt yazıları eklentisi ile dışarıdan arabası kapalı açıklamalı altyazı
-* Adobe&reg; Flash&reg; Player 11,4 veya üzeri.
+* Adobe &reg; Flash &reg; Player 11,4 veya üzeri.
 * Bu sürüm yalnızca OSMF 2,0 ' i destekler.
 
 ## <a name="supported-features-and-known-issues"></a>Desteklenen özellikler ve bilinen sorunlar
@@ -328,10 +328,10 @@ leyebilir
 }
 
 ## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>SS ODMF Dynamic eklentisi ile medya kayıttan yürütme
-OSMF dinamik eklentisi için Kesintisiz Akış, STO [medya kayıttan yürütme (SMP)](http://osmf.org/strobe_mediaplayback.html)ile uyumludur. SMP 'e Kesintisiz Akış içerik yürütme eklemek için OSMF eklentisi için SS kullanabilirsiniz. Bunu yapmak için, aşağıdaki adımları kullanarak HTTP yükü için bir Web sunucusu altına "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. swf" öğesini kopyalayın:
+OSMF dinamik eklentisi için Kesintisiz Akış, STO [medya kayıttan yürütme (SMP)](https://sourceforge.net/adobe/smp/home/Strobe%20Media%20Playback/)ile uyumludur. SMP 'e Kesintisiz Akış içerik yürütme eklemek için OSMF eklentisi için SS kullanabilirsiniz. Bunu yapmak için, aşağıdaki adımları kullanarak HTTP yükü için bir Web sunucusu altına "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. swf" öğesini kopyalayın:
 
 1. [Stroz medya kayıttan yürütme kurulum sayfasına](http://osmf.org/dev/2.0gm/setup.html)gözatamazsınız. 
-2. Src 'yi bir Kesintisiz Akış kaynağına ayarlayın (örn. http:\//devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
+2. Src 'yi bir Kesintisiz Akış kaynağına ayarlayın (örn. http: \/ /devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
 3. İstenen yapılandırma değişikliklerini yapın ve önizleme ve güncelleştirme ' ye tıklayın.
    
    **Göz önünde** İçerik Web sunucunuzun geçerli bir crossdomain. xml olması gerekir. 
@@ -380,8 +380,8 @@ OSMF dinamik eklentisi için Kesintisiz Akış, STO [medya kayıttan yürütme (
         </embed>
         </object>
         </html>
-2. HTML sayfanızı kaydedin ve bir Web sunucusuna yayımlayın. En sevdiğiniz Flash&reg; Player etkin Internet tarayıcısını (Internet Explorer, Chrome, Firefox vb.) kullanarak yayınlanan web sayfasına gidin.
-3. Adobe&reg; Flash&reg; Player içindeki kesintisiz akış içeriğin keyfini çıkarın.
+2. HTML sayfanızı kaydedin ve bir Web sunucusuna yayımlayın. En sevdiğiniz Flash &reg; Player etkin Internet tarayıcısını (Internet Explorer, Chrome, Firefox vb.) kullanarak yayınlanan web sayfasına gidin.
+3. Adobe Flash Player içindeki Kesintisiz Akış içeriğin keyfini çıkarın &reg; &reg; .
 
 Genel OSMF geliştirme hakkında daha fazla bilgi için lütfen resmi [OSMF geliştirme sayfasına](http://osmf.org/resources.html)bakın.
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 91a9a761b35a945fcd105465ae8dea7cb6623f42
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 62933a0e83a7494bc208068cb418f9ccc29ba637
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83643323"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266364"
 ---
 # <a name="what-are-security-defaults"></a>Güvenlik Varsayılanları nelerdir?
 
@@ -65,9 +65,9 @@ Azure Multi-Factor Authentication 'e kaydolduktan sonra, her oturum açtıkları
 - Exchange yöneticisi
 - Koşullu Erişim Yöneticisi
 - Güvenlik yöneticisi
-- Yardım Masası yönetici veya parola Yöneticisi
+- Yardım Masası Yöneticisi
 - Faturalama yöneticisi
-- Kullanıcı Yöneticisi
+- Kullanıcı yöneticisi
 - Kimlik doğrulama Yöneticisi
 
 ### <a name="protecting-all-users"></a>Tüm kullanıcıları koruma
@@ -145,9 +145,9 @@ Güvenlik varsayılanlarına benzer ilkeleri yapılandırmak için koşullu eri�
 
 Aşağıda, güvenlik Varsayılanları tarafından etkinleştirilen ilkelerle eşdeğer ilkeleri yapılandırmak için koşullu erişimi nasıl kullanabileceğiniz hakkında adım adım kılavuzlar verilmiştir:
 
-- [Yöneticiler için MFA gerektir](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
+- [Yöneticiler için MFA gerektirme](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
 - [Azure yönetimi için MFA gerektirme](../conditional-access/howto-conditional-access-policy-azure-management.md)
-- [Eski kimlik doğrulamasını engelle](../conditional-access/howto-conditional-access-policy-block-legacy.md)
+- [Eski kimlik doğrulamasını engelleme](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [Tüm kullanıcılar için MFA gerektirme](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
 - [Azure MFA kaydı gerektir](../identity-protection/howto-identity-protection-configure-mfa-policy.md) -Azure AD Premium P2 Azure AD kimlik koruması bir parçası gerektirir.
 
@@ -177,4 +177,4 @@ Dizininizde güvenlik varsayılanlarını devre dışı bırakmak için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Ortak koşullu erişim ilkeleri](../conditional-access/concept-conditional-access-policy-common.md)
+[Sık kullanılan Koşullu Erişim İlkeleri](../conditional-access/concept-conditional-access-policy-common.md)

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 6e780268d4b8c1a512ce82b1ca10a2f6b7b894b7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bbf569e95c59e888b830876f0458b063bd3920da
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125766"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258819"
 ---
 # <a name="topic-filters-and-actions"></a>Konu başlığı filtreleri ve eylemleri
 
@@ -64,7 +64,7 @@ Yönlendirme, ileti aboneliklerine öngörülebilir bir şekilde ileti dağıtma
 
 
 > [!NOTE]
-> Şu anda Azure portal abonelikler için filtre kuralları belirtmenize izin vermez. Abonelik kurallarını tanımlamak için desteklenen SDK 'Lardan veya Azure Resource Manager şablonlardan herhangi birini kullanabilirsiniz. 
+> Azure portal artık Service Bus Explorer işlevselliğini desteklediğinden, abonelik filtreleri portalda oluşturulabilir veya düzenlenebilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki örneklere bakın: 

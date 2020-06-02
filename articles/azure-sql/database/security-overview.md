@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 617c06c9f9a86e8377f32a5e80102eb92e9f029c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 7beaae92d8f08aaaa3625240bc2c70256ed0e1d4
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191701"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266058"
 ---
 # <a name="an-overview-of-azure-sql-database--sql-managed-instance-security-capabilities"></a>SQL yönetilen örnek güvenlik özellikleri & Azure SQL veritabanı 'na genel bakış
 
@@ -109,7 +109,7 @@ En iyi yöntem olarak, uygulama tarafından kullanılan bağlantı dizesinde, ş
 > [!IMPORTANT]
 > Bazı Microsoft dışı sürücülerin, çalışması için varsayılan olarak TLS veya daha eski bir TLS sürümünü (<1,2) kullanabileceğini unutmayın. Bu durumda sunucu yine de veritabanınıza bağlanmanızı sağlar. Ancak, özellikle hassas verileri depoluiyorsanız, bu tür sürücülere ve uygulamanın SQL veritabanına bağlanmasına izin vermenin güvenlik risklerini değerlendirmenizi öneririz.
 >
-> TLS ve bağlantı hakkında daha fazla bilgi için bkz. [TLS konuları](connect-query-content-reference-guide.md#tls-considerations-for-sql-database-connectivity)
+> TLS ve bağlantı hakkında daha fazla bilgi için bkz. [TLS konuları](connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity)
 
 ### <a name="transparent-data-encryption-encryption-at-rest"></a>Saydam Veri Şifrelemesi (bekleyen şifreleme)
 

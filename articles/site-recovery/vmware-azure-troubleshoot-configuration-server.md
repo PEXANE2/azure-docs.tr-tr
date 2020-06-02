@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 85021af94c3cc88f45b391690d7481d5498c40a9
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478314"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84246892"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Yapılandırma sunucusu sorunlarını giderme
 
@@ -43,15 +43,17 @@ Mobility aracısını yüklediğinizde kaynak makine, yapılandırma sunucusuna 
     4. Ağ sorunları çözümlendiğinde, [kaynak makineyi yapılandırma sunucusuna kaydetme](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)konusundaki yönergeleri izleyerek kaydı yeniden deneyin.
 
 6. Dize **POST isteği: (7)-sunucuya bağlanamadıysa** , aynı günlük dosyasında, dize **isteğini arayın: (60)-belirtilen CA sertifikalarıyla eş sertifika kimliği**doğrulanamıyor. Bu hata, yapılandırma sunucusu sertifikasının süresi dolduğunda veya kaynak makine TLS 1,0 veya üzeri protokollerini desteklemediğinden meydana gelebilir. Ayrıca, bir güvenlik duvarı, kaynak makine ile yapılandırma sunucusu arasında TLS iletişimini engelliyorsa de oluşabilir. Dize bulunursa: 
-    1. Çözümlemek için, kaynak makinede bir Web tarayıcısı kullanarak yapılandırma sunucusu IP adresine bağlanın. URI https:\/ \/<yapılandırma sunucusu IP adresini\>kullan: 443/. Kaynak makinenin, 443 bağlantı noktası üzerinden yapılandırma sunucusuna erişebildiğinden emin olun.
+    1. Çözümlemek için, kaynak makinede bir Web tarayıcısı kullanarak yapılandırma sunucusu IP adresine bağlanın. URI https: \/ \/<yapılandırma sunucusu IP adresini kullan \> : 443/. Kaynak makinenin, 443 bağlantı noktası üzerinden yapılandırma sunucusuna erişebildiğinden emin olun.
     2. Kaynak makinenin yapılandırma sunucusuyla iletişim kurmasını sağlamak için kaynak makinede herhangi bir güvenlik duvarı kuralı eklenmesi veya kaldırılması gerekip gerekmediğini denetleyin. Kullanımda olabilecek çeşitli güvenlik duvarı yazılımları nedeniyle, tüm gerekli güvenlik duvarı yapılandırmalarının listesini listeleyemiyorum. Bağlantı sorunlarının engelini kaldırmak için ağ yöneticilerle çalışın.
     3. [Virüsten koruma programlarından Site Recovery klasör dışlamaları](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) ' nda listelenen klasörlerin virüsten koruma yazılımından çıkarıldığından emin olun.  
     4. Sorunları çözdükten sonra, [kaynak makineyi yapılandırma sunucusuna kaydetme](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)bölümündeki yönergeleri izleyerek kaydı yeniden deneyin.
 
-7. Linux 'ta INSTALLATION_DIR\><' deki platformun değeri/etc/drscout.exe bozuksa, kayıt başarısız olur. Bu sorunu belirlemek için/var/log/ua_install. log dosyasını açın. **VM_PLATFORM değeri null olduğu veya VMware/Azure olmadığından, yapılandırmayı iptal**eden dizeyi arayın. Platform **VMware** ya da **Azure**olarak ayarlanmalıdır. Drscout. conf dosyası bozuksa, [Mobility aracısını kaldırmanızı](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) ve ardından Mobility aracısını yeniden yüklemenizi öneririz. Kaldırma başarısız olursa, aşağıdaki adımları izleyin: a. Installation_Directory/Uninstall.exe dosyasını açın ve **StopServices** işlevine olan çağrıyı not edin.
+7. Linux 'ta INSTALLATION_DIR <' deki platformun değeri \> /etc/drscout.exe bozuksa, kayıt başarısız olur. Bu sorunu belirlemek için/var/log/ua_install. log dosyasını açın. **VM_PLATFORM değeri null olduğu veya VMware/Azure olmadığından, yapılandırmayı iptal**eden dizeyi arayın. Platform **VMware** ya da **Azure**olarak ayarlanmalıdır. Drscout. conf dosyası bozuksa, [Mobility aracısını kaldırmanızı](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) ve ardından Mobility aracısını yeniden yüklemenizi öneririz. Kaldırma başarısız olursa, aşağıdaki adımları izleyin: a. Installation_Directory/Uninstall.exe dosyasını açın ve **StopServices** işlevine olan çağrıyı not edin.
     b. Installation_Directory/VX/bin/Uninstall.sh dosyasını açın ve **stop_services** işlevi çağrısını not edin.
     c. Installation_Directory/FX/Uninstall.exe dosyasını açın ve FX hizmetini durdurmaya çalışan tüm bölümün açıklamasını inceleyin.
     d. Mobility aracısını [kaldırın](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) . Başarıyla kaldırıldıktan sonra sistemi yeniden başlatın ve ardından Mobility aracısını yeniden yüklemeyi deneyin.
+
+8. Multi-Factor Authentication 'ın Kullanıcı hesabı için etkinleştirilmediğinden emin olun. Azure Site Recovery, şu anda Kullanıcı hesabı için Multi-Factor Authentication 'ı desteklemez. Configuration Server 'ı Multi-Factor Authentication etkin kullanıcı hesabı olmadan kaydedin.  
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>Yükleme hatası: hesaplar yüklenemedi
 
@@ -97,7 +99,7 @@ Kaynak makinede aşağıdaki komutu çalıştırın:
 
 Ayar | Ayrıntılar
 --- | ---
-Kullanım | UnifiedAgentConfigurator. exe/CSEndPoint <yapılandırma sunucusu IP adresi\> /parola sefilepath <parola dosya yolu\>
+Kullanım | UnifiedAgentConfigurator. exe/CSEndPoint < yapılandırma sunucusu IP adresi \> /parola sefilepath < parola dosya yolu\>
 Aracı yapılandırma günlükleri | %ProgramData%\asrsetuplogs\asrunifiedagentconfigurator.log altında bulunur.
 /CSEndPoint | Zorunlu parametre. Yapılandırma sunucusunun IP adresini belirtir. Herhangi bir geçerli IP adresi kullanın.
 /PassphraseFilePath |  Zorunlu. Parolanın konumu. Geçerli bir UNC veya yerel dosya yolu kullanın.
@@ -112,7 +114,7 @@ Kaynak makinede aşağıdaki komutu çalıştırın:
 
 Ayar | Ayrıntılar
 --- | ---
-Kullanım | CD/usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh-ı <yapılandırma sunucusu IP adresi\> -P <parola dosyası yolu\>
+Kullanım | CD/usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh-ı <yapılandırma sunucusu IP adresi \> -P <parola dosyası yolu\>
 -i | Zorunlu parametre. Yapılandırma sunucusunun IP adresini belirtir. Herhangi bir geçerli IP adresi kullanın.
 -P |  Zorunlu. Parolasının kaydedildiği dosyanın tam dosya yolu. Geçerli bir klasör kullanın.
 
@@ -203,7 +205,7 @@ Genellikle bu, bağlantı noktası 443 ' deki bir hata nedeniyle yapılır. Bağ
 
 Ana hedef aracısının yapılandırma sunucusu IP 'si için bir TCP oturumu oluşturup oluşturbildiğini doğrulamak için, ana hedef Aracısı günlüklerinde aşağıdakine benzer bir izleme arayın:
 
-TCP \<IP 'YI burada CS IP ile değiştirin>: \<52739 IP 'yi cs IP ile değiştirin>:443 SYN_SENT 
+TCP \<Replace IP with CS IP here> : 52739 \<Replace IP with CS IP here> : 443 SYN_SENT 
 
 TCP 192.168.1.40:52739 192.168.1.40:443 SYN_SENT//IP 'yi burada CS IP ile değiştirin
 

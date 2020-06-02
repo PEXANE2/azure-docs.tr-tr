@@ -1,6 +1,7 @@
 ---
 title: Sorgulamak Için Visual Studio ile .NET ve C# kullanın
-description: Azure SQL veritabanı 'nda bir veritabanına bağlanan ve Transact-SQL deyimleriyle sorgulayan bir C# uygulaması oluşturmak için Visual Studio 'Yu kullanın.
+description: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanına bağlanan ve sorguları çalıştıran bir C# uygulaması oluşturmak için Visual Studio 'Yu kullanın.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,16 +11,16 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 12/31/2019
-ms.openlocfilehash: 37567e09fc87a8677934ede4f110d029902c1373
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: 94f005ee4b2542e4cc0908880d589a2ee6a4d798
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189558"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267435"
 ---
-# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database"></a>Hızlı başlangıç: Azure SQL veritabanı 'na bağlanmak ve veritabanını sorgulamak için Visual Studio 'Da .NET ve C# kullanın
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanmak ve veritabanını sorgulamak için Visual Studio 'Da .NET ve C# kullanın
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Bu hızlı başlangıçta, Azure SQL veritabanı 'nda Transact-SQL deyimleriyle bir veritabanını sorgulamak için Visual Studio 'da [.NET Framework](https://www.microsoft.com/net/) ve C# kodunun nasıl kullanılacağı gösterilmektedir.
 

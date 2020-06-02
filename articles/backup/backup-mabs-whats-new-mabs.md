@@ -3,12 +3,12 @@ title: Microsoft Azure Backup Server 'daki yenilikler
 description: Microsoft Azure Backup sunucusu, VM 'Leri, dosyaları ve klasörleri, iş yüklerini ve daha fazlasını korumak için gelişmiş yedekleme olanakları sağlar. V3 Azure Backup Sunucusu nasıl yükleneceğini veya yükselteceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 61430ce06d3e441fcfe0443eaaf5de3755b04624
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 358de6f2986036621accde90550e2afcc47f9135
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77582815"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247555"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Microsoft Azure Backup Server 'daki yenilikler
 
@@ -26,7 +26,7 @@ Kurumlar ' de, MABS bir Yöneticiler ekibi tarafından yönetilir. Depolama üze
 
 ## <a name="custom-size-allocation"></a>Özel boyut ayırma
 
-Modern Yedekleme Alanı (MB), gerektiğinde depolama ölçülü kaynak kullanır. Bunu yapmak için, MABS, koruma için yapılandırıldığında yedeklenen verilerin boyutunu hesaplar. Ancak, bir dosya sunucusu durumunda olduğu gibi birçok dosya ve klasör birlikte yedekleniyorsa, boyut hesaplaması uzun zaman alabilir. MABS v3 ile, MABS 'yi her bir dosyanın boyutunu hesaplamak yerine varsayılan olarak kabul edecek şekilde yapılandırabilirsiniz. bu nedenle zaman tasarrufu sağlayabilirsiniz.
+Modern Yedekleme Alanı (MB), gerektiğinde depolama ölçülü kaynak kullanır. Bunu yapmak için, MABS, koruma için yapılandırıldığında yedeklenen verilerin boyutunu hesaplar. Ancak, bir dosya sunucusu durumunda olduğu gibi birçok dosya ve klasör birlikte yedekleniyorsa, boyut hesaplaması uzun zaman alabilir. MABS v3 ile, MABS 'yi, zaman tasarrufu sağlayan her bir dosyanın boyutunu hesaplamak yerine varsayılan olarak birim boyutunu kabul edecek şekilde yapılandırabilirsiniz.
 
 ## <a name="optimized-cc-for-rct-vms"></a>RCT VM 'Leri için iyileştirilmiş CC
 

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/20/2018
-ms.openlocfilehash: 3c29d7b30541e0d289182d448b5bcbf69d02a3dc
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: ba934d8eeadcd3d3e89d5d9f6115c258206c2d13
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194566"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247266"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server’daki birden fazla tablodan Azure SQL veritabanı’na artımlı olarak veri yükleme
 
@@ -388,7 +388,7 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. ForEach etkinli
 
 1. Sol bölmede, **+ (artı)** düğmesine ve sonra da **İşlem Hattı**’na tıklayın.
 
-1. **Genel** sekmesinde, **ad**için **ıncrementalcopypipeline** girin. 
+1. Genel panelinde **Özellikler**altında, **ad**için **ıncrementalcopypipeline** belirtin. Sonra sağ üst köşedeki Özellikler simgesine tıklayarak paneli daraltın.  
 
 1. **Parametreler** sekmesinde aşağıdaki adımları uygulayın: 
 
@@ -469,7 +469,7 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. ForEach etkinli
     1. **Parametreyi içeri aktar**’ı seçin. 
     1. Parametreler için aşağıdaki değerleri belirtin: 
 
-        | Adı | Tür | Değer | 
+        | Name | Tür | Değer | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Dize | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |

@@ -3,12 +3,12 @@ title: Azure Izleyici günlükleri veri modeli
 description: Bu makalede, Azure Backup verileri için Azure Izleyici Log Analytics veri modeli ayrıntıları hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 78d43e4c65f31b47f4b6070f071c932692cee883
-ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
+ms.openlocfilehash: ba50e10eee61c571249a9b99c7e3b53d74474382
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83707998"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248932"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup verileri için Log Analytics veri modeli
 
@@ -204,7 +204,7 @@ Bu tablo ilkeyle ilgili alanlarla ilgili ayrıntıları sağlar.
 | YearlyRetentionDaysOfTheMonth_s |Metin ||Yıllık bekletme için seçilen ayın tarihleri |
 | SynchronisationFrequencyPerDay_s |Tam Sayı |v2|SC DPM ve MABS için bir dosya yedeklemesinin eşitlendiği gün sayısı |
 | DiffBackupFormat_s |Metin |v2|Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemelerinin biçimi |
-| DiffBackupTime_s |Zaman |v2|Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemeleri süresi|
+| DiffBackupTime_s |Saat |v2|Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemeleri süresi|
 | DiffBackupRetentionDuration_s |Ondalık Sayı |v2|Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemeleri bekletme süresi|
 | LogBackupFrequency_s |Ondalık Sayı |v2|SQL için günlük yedeklemeleri sıklığı|
 | LogBackupRetentionDuration_s |Ondalık Sayı |v2|Azure VM yedeklemesi 'nde SQL için günlük yedeklemeleri bekletme süresi|

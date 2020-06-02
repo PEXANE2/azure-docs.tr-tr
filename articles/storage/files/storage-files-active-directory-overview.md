@@ -5,19 +5,19 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 7d9f8ccb4273d1378c4826dea420c4edca2f8ac3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db256c8361af740ac536e059969a5085e57df485
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536598"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263387"
 ---
-# <a name="overview-of-azure-files-identity-based-authentication-support-for-smb-access"></a>Azure dosyalarına genel bakış SMB erişimi için kimlik tabanlı kimlik doğrulama desteği
+# <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>SMB erişimi için Azure dosyalarına yönelik kimlik tabanlı kimlik doğrulama seçeneklerine genel bakış
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-Azure dosya paylaşımları (Önizleme) için şirket içi Active Directory Domain Services kimlik doğrulamasını nasıl etkinleştireceğinizi öğrenmek için bkz. [Azure dosya paylaşımları IÇIN SMB üzerinden şirket içi Active Directory Domain Services kimlik doğrulamasını etkinleştirme](storage-files-identity-auth-active-directory-enable.md).
+Azure dosya paylaşımları için şirket içi Active Directory Domain Services kimlik doğrulamasını nasıl etkinleştireceğinizi öğrenmek için bkz. [Azure dosya paylaşımları IÇIN SMB üzerinden şirket içi Active Directory Domain Services kimlik doğrulamasını etkinleştirme](storage-files-identity-auth-active-directory-enable.md).
 
 Azure dosya paylaşımları için Azure AD DS kimlik doğrulamasını etkinleştirme hakkında bilgi edinmek için bkz. [Azure dosyalarında Azure Active Directory Domain Services kimlik doğrulamasını etkinleştirme](storage-files-identity-auth-active-directory-domain-service-enable.md).
 
@@ -42,7 +42,7 @@ Azure dosya paylaşımları için SMB üzerinden Azure AD etki alanı hizmet kim
 
 - **Şirket içi Active Directory Domain Services (AD DS)**
 
-    Azure dosyaları (Önizleme) ile şirket içi Active Directory Domain Services (AD DS) tümleştirmesi, ağ kullanıcıları ve yöneticiler tarafından kullanılabilir hale getirilmesi sırasında dizin verilerinin depolanması için yöntemler sağlar. Güvenlik, oturum açma kimlik doğrulaması ve dizindeki nesnelere erişim denetimi aracılığıyla AD DS tümleşiktir. Tek bir ağ oturumu açma ile yöneticiler, ağ genelinde dizin verilerini ve organizasyonu yönetebilir ve yetkili ağ kullanıcıları ağ üzerinde herhangi bir yerde kaynaklara erişebilir. AD DS genellikle şirket içi ortamlarda kuruluşlar tarafından benimsenmiştir ve erişim denetimi kimliği olarak AD DS kimlik bilgileri kullanılır. Daha fazla bilgi için bkz. [Active Directory Domain Services genel bakış](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
+    Azure dosyaları ile şirket içi Active Directory Domain Services (AD DS) tümleştirmesi, ağ kullanıcıları ve yöneticiler tarafından kullanılabilir hale getirilmesi sırasında dizin verilerinin depolanması için yöntemler sağlar. Güvenlik, oturum açma kimlik doğrulaması ve dizindeki nesnelere erişim denetimi aracılığıyla AD DS tümleşiktir. Tek bir ağ oturumu açma ile yöneticiler, ağ genelinde dizin verilerini ve organizasyonu yönetebilir ve yetkili ağ kullanıcıları ağ üzerinde herhangi bir yerde kaynaklara erişebilir. AD DS genellikle şirket içi ortamlarda kuruluşlar tarafından benimsenmiştir ve erişim denetimi kimliği olarak AD DS kimlik bilgileri kullanılır. Daha fazla bilgi için bkz. [Active Directory Domain Services genel bakış](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
 -   **Azure rol tabanlı Access Control (RBAC)**
 
@@ -54,11 +54,11 @@ Azure dosyalarında Windows ACL 'Leri için kimlik tabanlı kimlik doğrulaması
 
 ### <a name="replace-on-premises-file-servers"></a>Şirket içi dosya sunucularını değiştirme
 
-Dağınık şirket içi dosya sunucularının kullanım dışı bırakılması ve değiştirilmesi, her kuruluşun BT çalışırken yolculuğunda karşılaştığı yaygın bir sorundur. Şirket içi AD DS (Önizleme) kimlik doğrulaması ile Azure dosya paylaşımları, verileri Azure dosyalarına geçirebileceğiniz en iyi şekilde burada yer alır. Tam geçiş, yüksek oranda kullanılabilirlik ve ölçeklenebilirlik avantajlarından yararlanarak istemci tarafı değişiklikleri de en aza indirmenizi sağlar. Son kullanıcılara sorunsuz bir geçiş deneyimi sağlar. bu sayede, mevcut etki alanına katılmış makineleri kullanarak verilerine aynı kimlik bilgileriyle erişmeye devam edebilirler.
+Dağınık şirket içi dosya sunucularının kullanım dışı bırakılması ve değiştirilmesi, her kuruluşun BT çalışırken yolculuğunda karşılaştığı yaygın bir sorundur. Şirket içi AD DS kimlik doğrulamasıyla Azure dosya paylaşımları, verileri Azure dosyalarına geçirebileceğiniz en iyi şekilde buraya uygundur. Tam geçiş, yüksek oranda kullanılabilirlik ve ölçeklenebilirlik avantajlarından yararlanarak istemci tarafı değişiklikleri de en aza indirmenizi sağlar. Son kullanıcılara sorunsuz bir geçiş deneyimi sağlar. bu sayede, mevcut etki alanına katılmış makineleri kullanarak verilerine aynı kimlik bilgileriyle erişmeye devam edebilirler.
 
 ### <a name="lift-and-shift-applications-to-azure"></a>Uygulamaları Azure 'a yükselt ve Kaydır
 
-Uygulamaları buluta kaldırdığınızda ve kaydırdığınızda verileriniz için aynı kimlik doğrulama modelini tutmak istersiniz. Kimlik tabanlı erişim denetimi deneyimini Azure dosya paylaşımlarına genişlettiğimiz için, uygulamanızı modern kimlik doğrulama yöntemlerine değiştirme ve bulut benimseme sürecini ortadan kaldırır. Azure dosya paylaşımları, kimlik doğrulaması için Azure AD DS ya da şirket içi AD DS (Önizleme) ile tümleştirme seçeneği sağlar. Planınız %100 bulut Native olarak kullanılıyorsa ve bulut altyapılarını yönetme çabalarını en aza indiriyorsa Azure AD DS tam olarak yönetilen bir etki alanı hizmeti olarak daha iyi bir şekilde uyum sağlar. AD DS özellikleri ile tam uyumlulukla karşılaşırsanız, VM 'lerde Self-hosting etki alanı denetleyicileri tarafından AD DS ortamınızı buluta genişletmeyi düşünmek isteyebilirsiniz. Her iki durumda da, iş gereksinimlerinize uygun etki alanı hizmetlerini seçme esnekliği sağlıyoruz.
+Uygulamaları buluta kaldırdığınızda ve kaydırdığınızda verileriniz için aynı kimlik doğrulama modelini tutmak istersiniz. Kimlik tabanlı erişim denetimi deneyimini Azure dosya paylaşımlarına genişlettiğimiz için, uygulamanızı modern kimlik doğrulama yöntemlerine değiştirme ve bulut benimseme sürecini ortadan kaldırır. Azure dosya paylaşımları, kimlik doğrulaması için Azure AD DS veya şirket içi AD DS tümleştirme seçeneği sunar. Planınız %100 bulut Native olarak kullanılıyorsa ve bulut altyapılarını yönetme çabalarını en aza indiriyorsa Azure AD DS tam olarak yönetilen bir etki alanı hizmeti olarak daha iyi bir şekilde uyum sağlar. AD DS özellikleri ile tam uyumlulukla karşılaşırsanız, VM 'lerde Self-hosting etki alanı denetleyicileri tarafından AD DS ortamınızı buluta genişletmeyi düşünmek isteyebilirsiniz. Her iki durumda da, iş gereksinimlerinize uygun etki alanı hizmetlerini seçme esnekliği sağlıyoruz.
 
 ### <a name="backup-and-disaster-recovery-dr"></a>Yedekleme ve olağanüstü durum kurtarma (DR)
 
@@ -66,17 +66,18 @@ Birincil dosya depolama alanınızı şirket içinde saklarken Azure dosya payla
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-Aşağıdaki tabloda Azure AD DS ve şirket içi AD DS (Önizleme) için desteklenen Azure dosya paylaşımları kimlik doğrulama senaryoları özetlenmektedir. Azure dosyaları ile tümleştirme için, istemci ortamınız için benimsediğiniz etki alanı hizmetini seçmenizi öneririz. Şirket içinde veya Azure 'da, cihazlarınızın etki alanına katıldığı AD DS (Önizleme) zaten varsa, Azure dosya paylaşımları kimlik doğrulaması için AD DS (Önizleme) özelliğinden faydalanmayı seçmeniz gerekir. Benzer şekilde, Azure AD DS 'yi (GA) zaten benimsediyseniz Azure dosya paylaşımları kimlik doğrulaması için bunu kullanmanız gerekir.
+Aşağıdaki tabloda Azure AD DS için desteklenen Azure dosya paylaşımları kimlik doğrulama senaryoları ve şirket içi AD DS özetlenmektedir. Azure dosyaları ile tümleştirme için, istemci ortamınız için benimsediğiniz etki alanı hizmetini seçmenizi öneririz. Şirket içinde veya Azure 'da cihazlarınızın etki alanına katıldığı AD DS zaten varsa, Azure dosya paylaşımları kimlik doğrulaması için AD DS özelliğinden faydalanmayı seçmeniz gerekir. Benzer şekilde, Azure AD DS zaten benimsediyseniz Azure dosya paylaşımlarında kimlik doğrulaması için bunu kullanmanız gerekir.
 
 
-|Azure AD DS kimlik doğrulaması  | Şirket içi AD DS (Önizleme) kimlik doğrulaması  |
+|Azure AD DS kimlik doğrulaması  | Şirket içi AD DS kimlik doğrulaması  |
 |---------|---------|
-|Azure AD DS katılmış Windows makineleri, SMB üzerinden Azure AD kimlik bilgileriyle Azure dosya paylaşımlarına erişebilir.     |Şirket içi AD DS katılmış Windows makineleri, SMB üzerinden Azure AD 'ye eşitleniyor olan şirket içi Active Directory kimlik bilgileriyle Azure dosya paylaşımlarına erişebilir.         |
+|Azure AD DS katılmış Windows makineleri, SMB üzerinden Azure AD kimlik bilgileriyle Azure dosya paylaşımlarına erişebilir.     |Şirket içi AD DS katılmış veya Azure AD DS 'a katılmış Windows makineleri, SMB üzerinden Azure AD 'ye eşitleniyor olan şirket içi Active Directory kimlik bilgileriyle Azure dosya paylaşımlarına erişebilir. İstemciniz AD DS bir görüş satırı içermelidir.        |
 
-### <a name="unsupported-scenarios"></a>Desteklenmeyen senaryolar
+### <a name="restrictions"></a>Kısıtlamalar
 
 - Azure AD DS ve şirket içi AD DS kimlik doğrulaması, bilgisayar hesaplarında kimlik doğrulamasını desteklemez. Bunun yerine bir hizmet oturum açma hesabı kullanmayı düşünebilirsiniz.
-- Azure AD DS kimlik doğrulaması, Azure AD 'ye katılmış cihazlarda kimlik doğrulamasını desteklemez.
+- Azure AD 'ye katılmış cihazlarda veya Azure AD 'ye kayıtlı cihazlarda Azure AD DS kimlik doğrulaması ve şirket içi AD DS kimlik doğrulaması desteklenmez.
+- Azure dosya paylaşımları yalnızca aşağıdaki etki alanı hizmetlerinden birine yönelik kimlik tabanlı kimlik doğrulamasını destekler [Azure Active Directory Domain Services (Azure AD DS)](#azure-ad-ds) ya da [Şirket içi Active Directory Domain Services (AD DS)](#ad-ds).
 
 ## <a name="advantages-of-identity-based-authentication"></a>Kimlik tabanlı kimlik doğrulamanın avantajları
 Azure dosyaları için kimlik tabanlı kimlik doğrulaması, paylaşılan anahtar kimlik doğrulamasını kullanarak çeşitli avantajlar sunar:
@@ -92,19 +93,37 @@ Azure dosyaları için kimlik tabanlı kimlik doğrulaması, paylaşılan anahta
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Azure dosya paylaşımları, Azure AD DS veya şirket içi AD DS (Önizleme) ile tümleştirme için Kerberos kimlik doğrulamasını destekler. Azure dosya paylaşımlarında kimlik doğrulamasını etkinleştirebilmeniz için önce etki alanı ortamınızı ayarlamanız gerekir. Azure AD DS kimlik doğrulaması için Azure AD Domain Services ve etki alanına, dosya verilerine erişmeyi planladığınız sanal makinelere katılmayı etkinleştirmeniz gerekir. Etki alanına katılmış VM 'niz Azure AD DS aynı sanal ağda (VNET) bulunmalıdır. Benzer şekilde, şirket içi AD DS (Önizleme) kimlik doğrulaması için etki alanı denetleyicinizi ve etki alanınıza, makinelerinize veya VM 'Lere katılmanız gerekir.
+Azure dosya paylaşımları, şirket içi AD DS veya Azure AD DS kimlik doğrulaması için Kerberos protokolünü kullanır. İstemci üzerinde çalışan bir kullanıcı veya uygulamayla ilişkili bir kimlik, Azure dosya paylaşımlarında verilere erişmeye çalıştığında, kimlik doğrulaması için AD DS ya da Azure AD DS etki alanı hizmetine gönderilir. Kimlik doğrulaması başarılı olursa, Kerberos belirteci döndürür. İstemci, Kerberos belirtecini içeren bir istek gönderir ve Azure dosya paylaşımları, isteği yetkilendirmek için bu belirteci kullanır. Azure dosya paylaşımları, erişim kimlik bilgileri değil yalnızca Kerberos belirtecini alır.
 
-Bir VM üzerinde çalışan bir uygulamayla ilişkili bir kimlik, Azure dosya paylaşımlarında verilere erişmeye çalıştığında, kimlik doğrulaması için istek Azure AD DS gönderilir. Kimlik doğrulaması başarılı olursa Azure AD DS bir Kerberos belirteci döndürür. Uygulama, Kerberos belirtecini içeren bir istek gönderir ve Azure dosya paylaşımları isteği yetkilendirmek için bu belirteci kullanır. Azure dosya paylaşımları yalnızca belirteci alır ve Azure AD DS kimlik bilgilerini kalıcı hale almaz. Şirket içi AD DS kimlik doğrulaması, AD DS Kerberos belirtecini sağlayan benzer bir biçimde çalışmaktadır.
+Azure dosya paylaşımlarında kimlik tabanlı kimlik doğrulamasını etkinleştirebilmeniz için önce etki alanı ortamınızı ayarlamanız gerekir.
 
-![SMB üzerinden Azure AD kimlik doğrulaması diyagramını gösteren ekran görüntüsü](media/storage-files-active-directory-overview/azure-active-directory-over-smb-for-files-overview.png)
+### <a name="ad-ds"></a>AD DS
+
+Şirket içi AD DS kimlik doğrulaması için AD etki alanı denetleyicilerinizi ve etki alanınıza, makinelerinize veya VM 'Lere katılmanız gerekir. Etki alanı denetleyicilerinizi Azure VM 'lerinde veya şirket içinde barındırabilirsiniz. Her iki durumda da, etki alanı katılmış istemcilerinizin etki alanı hizmetine bir görüş satırı olması gerekir, bu nedenle etki alanı hizmetinizin kurumsal ağı veya sanal ağı (VNET) içinde olmaları gerekir.
+
+Aşağıdaki diyagramda SMB üzerinden Azure dosya paylaşımlarına yönelik şirket içi AD DS kimlik doğrulaması gösterilmektedir. Şirket içi AD DS Azure AD Connect eşitleme kullanılarak Azure AD ile eşitlenmelidir. Yalnızca şirket içi AD DS ve Azure AD 'de bulunan karma kullanıcıların kimliği doğrulanabilir ve Azure dosya paylaşımının erişimine izin verebilir. Bunun nedeni, paylaşma düzeyi izninin Azure AD 'de temsil edilen kimliğe göre yapılandırılması, dizin/dosya düzeyi izninin AD DS ' de bu şekilde zorlandığı yerdir. İzinleri aynı karma kullanıcıya göre doğru şekilde yapılandırdığınızdan emin olun.
+
+:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="Diyagram":::
+
+### <a name="azure-ad-ds"></a>Azure AD DS
+
+Azure AD DS kimlik doğrulaması için Azure AD Domain Services ve etki alanına, dosya verilerine erişmeyi planladığınız sanal makinelere katılmayı etkinleştirmeniz gerekir. Etki alanına katılmış VM 'niz Azure AD DS aynı sanal ağda (VNET) bulunmalıdır. 
+
+Aşağıdaki diyagram, Azure AD DS kimlik doğrulaması için SMB üzerinden Azure dosya paylaşımlarına yönelik iş akışını temsil eder. Azure dosya paylaşımlarında, şirket içi AD DS kimlik doğrulaması için benzer bir düzeni izler. İki önemli fark vardır:
+
+- İlk olarak, depolama hesabını göstermek için Azure AD DS 'da kimlik oluşturmanız gerekmez. Bu işlem, arka planda etkinleştirme işlemi tarafından gerçekleştirilir.
+
+- İkinci olarak, Azure AD 'de bulunan tüm kullanıcıların kimliği doğrulanabilir ve yetkilendirilenebilir. Kullanıcı yalnızca bulutta veya hibrit olabilir. Azure AD 'den Azure AD DS eşitleme, Kullanıcı yapılandırmasına gerek duymadan platform tarafından yönetilir. Ancak, istemcinin Azure AD DS etki alanına katılmış olması gerekir; Azure AD 'ye katılmış veya kayıtlı olamaz. 
+
+:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Diyagram":::
 
 ### <a name="enable-identity-based-authentication"></a>Kimlik tabanlı kimlik doğrulamasını etkinleştir
 
-Yeni ve mevcut depolama hesaplarınızdaki Azure dosya paylaşımları için Azure AD DS veya şirket içi AD DS (Önizleme) ile kimlik tabanlı kimlik doğrulamasını etkinleştirebilirsiniz. Yalnızca bir etki alanı hizmeti, hesaptaki tüm dosya paylaşımları için geçerli olan depolama hesabında dosya erişimi kimlik doğrulaması için kullanılabilir. Makalelerimizde Azure AD DS kimlik doğrulaması için dosya paylaşımlarınızı ayarlamaya yönelik ayrıntılı kılavuz, diğer makalelerimizde şirket içi AD DS (Önizleme) için [Azure dosyalarında Azure Active Directory Domain Services kimlik doğrulamasını etkinleştirme](storage-files-identity-auth-active-directory-domain-service-enable.md) ve [Azure dosya paylaşımları için SMB üzerinden şirket içi Active Directory Domain Services kimlik doğrulamasını etkinleştirme](storage-files-identity-auth-active-directory-enable.md).
+Yeni ve mevcut depolama hesaplarınızdaki Azure dosya paylaşımları için Azure AD DS ya da şirket içi AD DS kimlik tabanlı kimlik doğrulamasını etkinleştirebilirsiniz. Yalnızca bir etki alanı hizmeti, hesaptaki tüm dosya paylaşımları için geçerli olan depolama hesabında dosya erişimi kimlik doğrulaması için kullanılabilir. Makalelerimizde Azure AD DS kimlik doğrulaması için dosya paylaşımlarınızı ayarlama hakkında ayrıntılı yönergeler ve diğer makalelerimizde şirket içi AD DS için Azure dosya ve yönergeler [üzerinde Azure Active Directory Domain Services kimlik doğrulamasını etkinleştirme](storage-files-identity-auth-active-directory-domain-service-enable.md) , [Azure dosya paylaşımları için SMB üzerinden şirket içi Active Directory Domain Services kimlik doğrulamasını etkinleştirme](storage-files-identity-auth-active-directory-enable.md).
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Azure dosyaları için paylaşma düzeyi izinleri yapılandırma
 
-Azure AD DS veya şirket içi AD DS (Önizleme) kimlik doğrulaması etkinleştirildikten sonra, yerleşik RBAC rollerini kullanabilir ya da Azure AD kimlikleri için özel rolleri yapılandırabilir ve depolama hesaplarınızdaki herhangi bir dosya paylaşımına erişim hakları atayabilirsiniz. Atanan izin, izin verilen kimliğin, kök dizin bile değil, yalnızca paylaşıma erişim almasına izin verir. Azure dosya paylaşımları için dizin veya dosya düzeyi izinlerini yine de yapılandırmanız gerekir.
+Azure AD DS veya şirket içi AD DS kimlik doğrulaması etkinleştirildikten sonra, yerleşik RBAC rollerini kullanabilir ya da Azure AD kimlikleri için özel rolleri yapılandırabilir ve depolama hesaplarınızdaki herhangi bir dosya paylaşımına erişim hakları atayabilirsiniz. Atanan izin, izin verilen kimliğin, kök dizin bile değil, yalnızca paylaşıma erişim almasına izin verir. Azure dosya paylaşımları için dizin veya dosya düzeyi izinlerini yine de yapılandırmanız gerekir.
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>Azure dosyaları için dizin veya dosya düzeyi izinlerini yapılandırma
 
@@ -119,7 +138,7 @@ Depolama hesabı anahtarına sahip bir Kullanıcı, Azure dosya paylaşımların
 
 ### <a name="preserve-directory-and-file-acls-when-importing-data-to-azure-file-shares"></a>Azure dosya paylaşımlarına veri aktarırken dizin ve dosya ACL 'Lerini koruma
 
-Azure dosyaları, verileri Azure dosya paylaşımlarına kopyalarken dizin veya dosya düzeyi ACL 'Lerinin korunması destekler. Bir dizin veya dosyadaki ACL 'Leri, Azure Dosya Eşitleme veya ortak dosya taşıma araç kümelerinden birini kullanarak Azure dosya paylaşımlarına kopyalayabilirsiniz. Örneğin, bir Azure dosya paylaşımındaki [robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) ACL 'leri ve `/copy:s` verileri kopyalamak için, Robocopy 'yi bayrağıyla birlikte kullanabilirsiniz. ACL 'ler varsayılan olarak korunur, ACL 'Leri korumak için depolama hesabınızda kimlik tabanlı kimlik doğrulamasını etkinleştirmeniz gerekmez.
+Azure dosyaları, verileri Azure dosya paylaşımlarına kopyalarken dizin veya dosya düzeyi ACL 'Lerinin korunması destekler. Bir dizin veya dosyadaki ACL 'Leri, Azure Dosya Eşitleme veya ortak dosya taşıma araç kümelerinden birini kullanarak Azure dosya paylaşımlarına kopyalayabilirsiniz. Örneğin, [robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) `/copy:s` bir Azure dosya paylaşımındaki ACL 'leri ve verileri kopyalamak için, Robocopy 'yi bayrağıyla birlikte kullanabilirsiniz. ACL 'ler varsayılan olarak korunur, ACL 'Leri korumak için depolama hesabınızda kimlik tabanlı kimlik doğrulamasını etkinleştirmeniz gerekmez.
 
 ## <a name="pricing"></a>Fiyatlandırma
 Depolama hesabınızda SMB üzerinden kimlik tabanlı kimlik doğrulamasını etkinleştirmek için başka bir hizmet ücreti yoktur. Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure dosyaları fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/files/) ve [Azure AD Domain Services fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory-ds/).

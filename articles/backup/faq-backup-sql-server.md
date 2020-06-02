@@ -4,12 +4,12 @@ description: Azure Backup ile Azure VM 'lerinde SQL Server veritabanlarının ye
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: a973761bf16e2d271d718e4a8b29e08624276987
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 11657a5dda79fc550f4c07d4020d75c671335da4
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247715"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248269"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM yedeklemesi üzerinde çalışan SQL Server veritabanları hakkında SSS
 
@@ -92,7 +92,7 @@ Bu veritabanını korumayı durdurmak için doğru yol, bu veritabanındaki **si
 
 ## <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior"></a>Korunduktan sonra veritabanının adını değiştirdiğimde, davranış ne olur?
 
-Yeniden adlandırılmış bir veritabanı yeni bir veritabanı olarak değerlendirilir. Bu nedenle, hizmet bu durumu veritabanı bulunmazsa ve yedeklemelerle başarısız olarak değerlendirir.
+Yeniden adlandırılmış bir veritabanı yeni bir veritabanı olarak değerlendirilir. Bu nedenle, bu durum veritabanı bulunamamıştır ve yedeklemelerle başarısız olursa hizmet bu durumu işler.
 
 Şimdi yeniden adlandırılan veritabanını seçebilirsiniz ve üzerinde koruma yapılandırabilirsiniz. Örnekte otomatik korumanın etkin olması durumunda, yeniden adlandırılmış veritabanı otomatik olarak algılanır ve korunur.
 

@@ -4,14 +4,14 @@ description: Azure bölgeleri arasında taşınabilecek Azure Kaynak türlerini 
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 01/20/2020
+ms.date: 05/31/2020
 ms.author: raynew
-ms.openlocfilehash: 9bc7dc66ccf3049ac878f7871c816e5ade1afde5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f59bbb4711d79fdcb59e39378c25c031ac68af8
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76760717"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249068"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Bölgeler arasında Azure kaynaklarını taşıma desteği
 
@@ -186,7 +186,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | hizmet |  Yes | 
+> | hizmet |  Evet (şablonu kullanarak) <br/><br/> [API Management bölgeler arasında taşıyın](../../api-management/api-management-howto-migrate.md). | 
 
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 
@@ -200,7 +200,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | apiapps | Hayır | 
+> | apiapps | Evet (şablonu kullanarak)<br/><br/> [App Service uygulamasını başka bir bölgeye taşıma](../../app-service/manage-move-across-regions.md) | 
 > | appdentities | Hayır | 
 > | geçidinin | Hayır | 
 
@@ -217,7 +217,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | automationaccounts | Hayır | 
+> | automationaccounts | Evet (şablonu kullanarak) <br/><br/> [Coğrafi çoğaltma kullanma](../../automation/automation-managing-data.md#geo-replication-in-azure-automation) |  
 > | automationaccounts/Configurations | Hayır | 
 > | automationaccounts/runbook 'lar | Hayır | 
 
@@ -249,7 +249,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | batchaccounts | Hayır |
+> | batchaccounts |  Evet (şablonu kullanarak)<br/><br/> [Batch hesabını bölgeler arasında taşıma](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
 
 ## <a name="microsoftbatchai"></a>Microsoft. Batchaı
 
@@ -355,6 +355,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
 > | accounts | Hayır | 
+> | Bilişsel Arama | Evet (şablonu kullanarak)<br/><br/> [Bilişsel Arama hizmetinizi başka bir bölgeye taşıma](../../search/search-howto-move-across-regions.md)
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -588,6 +589,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
 > | denetleyiciler | Hayır | 
+> | AKS kümesi | Hayır<br/><br/> Başka bir bölgeye geçme hakkında [daha fazla bilgi edinin](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region) .
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. DevTestLab
 
@@ -636,7 +638,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
 > | leriniz | Hayır |  
-> | öznitelikleri | Hayır | 
+> | öznitelikleri | Evet (şablon ile)<br/><br/> [Bir olay hub 'ı ad alanını başka bir bölgeye taşıma](../../event-hubs/move-across-regions.md) | 
 
 ## <a name="microsoftgenomics"></a>Microsoft. Genomiks
 
@@ -713,7 +715,15 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | ıotapps |  Hayır |  
+> | checknameavaılabılıty |  Hayır
+> | çıkarılamıyor | Hayır
+
+## <a name="microsoftiothub"></a>Microsoft. ıothub
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Bölge taşıma | 
+> | ------------- | ----------- |
+> |  ıothub |  Evet (kopya hub 'ı) <br/><br/> [IoT Hub 'ını başka bir bölgeye kopyalama](../../iot-hub/iot-hub-how-to-clone.md)
 
 ## <a name="microsoftiotspaces"></a>Microsoft. ıotspaces
 
@@ -897,7 +907,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | expressrouteports | Hayır | 
 > | frontkapıların | Hayır | 
 > | frontdoorwebapplicationfirewallpolicies | Hayır | 
-> | loadbalancers | Evet-temel SKU<br>Standart SKU yok | Evet-temel SKU<br> -Evet standart SKU |
+> | loadbalancers | Yes <br/><br/> Varolan yapılandırmayı bir şablon olarak dışa aktarabilir ve şablonu yeni bölgede dağıtabilirsiniz. [Dış](../..//load-balancer/move-across-regions-external-load-balancer-portal.md) veya [iç](../../load-balancer/move-across-regions-internal-load-balancer-portal.md) yük dengeleyiciyi taşımayı öğrenin. |
 > | localnetworkgateway 'ler |  Hayır | 
 > | natgateway 'ler |  Hayır | 
 > | networkıntpolicies ilkeleri |  Hayır | 
@@ -913,7 +923,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | privatednszones/virtualnetworklinks |  Hayır |  
 > | privateendpoints | Hayır | 
 > | privatelinkservices | Hayır | 
-> | publicıpaddresses | Evet-temel SKU<br>Standart SKU yok | Evet-temel SKU<br>Standart SKU yok |
+> | publicıpaddresses | Yes<br/><br/> Var olan genel IP adresi yapılandırmasını bir şablon olarak dışa aktarabilir ve şablonu yeni bölgede dağıtabilirsiniz. Genel IP adresini taşıma hakkında [daha fazla bilgi edinin](../../virtual-network/move-across-regions-publicip-portal.md) . |
 > | publicıpöneklerini | Hayır | 
 > | routefilters | Hayır | 
 > | routetables |  Hayır | 
@@ -1142,7 +1152,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Bölge taşıma | 
 > | ------------- | ----------- |
-> | storageaccounts | Yes | 
+> | storageaccounts | Yes<br/><br/> [Bir Azure Depolama hesabını başka bir bölgeye taşıma](../../storage/common/storage-account-move.md) | 
 
 ## <a name="microsoftstoragecache"></a>Microsoft. StorageCache
 

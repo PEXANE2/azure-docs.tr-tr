@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/24/2020
-ms.openlocfilehash: a41dcc9c7ec86f41c64a69ea1aba762b960b2633
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cdff42c6ff0cadb5ce4b3d7fc469d648349d1e88
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283030"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84265208"
 ---
 # <a name="getting-started-with-ai-enrichment"></a>AI zenginleştirme ile çalışmaya başlama
 
@@ -80,7 +80,7 @@ Dahili olarak, işlem hattı zenginleştirilmiş bir belge koleksiyonu oluşturu
 
 #### <a name="add-a-knowledgestore-element-to-save-enrichments"></a>Zenginleştirmelerin kaydedileceği bir knowledgeStore öğesi ekleme
 
-[Arama REST API-sürüm = 2019-05 -06-Preview](search-api-preview.md) , becerileri 'Yi, `knowledgeStore` Azure depolama bağlantısı ve zenginlerin nasıl depolandığını tanımlayan projeksiyonlar sağlayan bir tanım ile genişletir. Bu, dizininiz için de bir ektir. Standart bir AI ardışık düzeninde, zenginleştirilmiş belgeler yalnızca dizin oluşturma sırasında kullanılır ve sonra atılır. Bilgi deposu ile zenginleştirilmiş belgeler korunur. Daha fazla bilgi için bkz. [bilgi deposu (Önizleme)](knowledge-store-concept-intro.md).
+[Arama REST API-sürüm = 2019-05 -06-Preview](search-api-preview.md) , becerileri 'Yi `knowledgeStore` , Azure depolama bağlantısı ve zenginlerin nasıl depolandığını tanımlayan projeksiyonlar sağlayan bir tanım ile genişletir. Bu, dizininiz için de bir ektir. Standart bir AI ardışık düzeninde, zenginleştirilmiş belgeler yalnızca dizin oluşturma sırasında kullanılır ve sonra atılır. Bilgi deposu ile zenginleştirilmiş belgeler korunur. Daha fazla bilgi için bkz. [bilgi deposu (Önizleme)](knowledge-store-concept-intro.md).
 
 ### <a name="step-3-search-index-and-query-based-access"></a>3. Adım: arama dizini ve sorgu tabanlı erişim
 
@@ -102,7 +102,7 @@ Dizinler, Puanlama profilleri ve eş anlamlı haritalar gibi belirli bir dizine 
 
 1. [Dizin şemasını](https://docs.microsoft.com/rest/api/searchservice/create-index)tanımlayın. *Alanlar* koleksiyonu, kaynak verilerden alanlar içerir. Ayrıca, zenginleştirme sırasında oluşturulan içerikler için oluşturulan değerleri tutmak üzere ek alanlar da saplama yapmanız gerekir.
 
-1. Veri kaynağına, beceri ve dizine başvuran [Dizin oluşturucuyu](https://docs.microsoft.com/rest/api/searchservice/create-skillset) tanımlayın.
+1. Veri kaynağına, beceri ve dizine başvuran [Dizin oluşturucuyu](https://docs.microsoft.com/rest/api/searchservice/create-indexer) tanımlayın.
 
 1. Dizin Oluşturucu içinde *Outputfieldmappings*ekleyin. Bu bölüm, Beceri (adım 3 ' te) çıktısını Dizin şemasındaki (adım 4 ' te) giriş alanlarına eşler.
 

@@ -1,30 +1,30 @@
 ---
 title: Excel ile bağlanma
-description: Microsoft Excel 'i Azure SQL veritabanı 'nda bir veritabanına bağlamayı öğrenin. Raporlama ve veri araştırması için Excel'e veri aktarın.
+description: Microsoft Excel 'i Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanına bağlamayı öğrenin. Raporlama ve veri araştırması için Excel'e veri aktarın.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: joseidz
-ms.author: craigg
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
-ms.date: 02/12/2019
-ms.openlocfilehash: 332620699e30facb2fbbfee90e3328b8dcf1e179
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: e0a413847142ee516a06f924dd058578047fb3a8
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195494"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267520"
 ---
-# <a name="connect-excel-to-a-database-in-azure-sql-database-and-create-a-report"></a>Excel 'i Azure SQL veritabanı 'nda bir veritabanına bağlama ve rapor oluşturma
+# <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>Excel 'i Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanına bağlama ve rapor oluşturma
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+Excel 'i bir veritabanına bağlayıp sonra verileri içeri aktarabilir ve veritabanındaki değerlere göre tablolar ve grafikler oluşturabilirsiniz. Bu öğreticide, Excel ile bir veritabanı tablosu arasındaki bağlantıyı ayarlayacak, Excel'e ilişkin verilerin ve bağlantı bilgilerinin depolandığı dosyayı kaydedecek ve ardından veritabanı değerlerini kullanarak bir özet grafik oluşturacaksınız.
 
-Excel 'i Azure SQL veritabanı 'nda bir veritabanına bağlayıp, verileri içeri aktarabilir ve veritabanındaki değerlere göre tablolar ve grafikler oluşturabilirsiniz. Bu öğreticide, Excel ile bir veritabanı tablosu arasındaki bağlantıyı ayarlayacak, Excel'e ilişkin verilerin ve bağlantı bilgilerinin depolandığı dosyayı kaydedecek ve ardından veritabanı değerlerini kullanarak bir özet grafik oluşturacaksınız.
-
-Başlamadan önce SQL veritabanında bir veritabanı oluşturmanız gerekir. Bir tane yoksa, örnek veri içeren bir veritabanını birkaç dakikada çalışır duruma getirmek için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma](single-database-create-quickstart.md) ve [sunucu düzeyinde IP güvenlik duvarı oluşturma](firewall-create-server-level-portal-quickstart.md) .
+Başlamadan önce bir veritabanı oluşturmanız gerekir. Bir tane yoksa, örnek veri içeren bir veritabanını birkaç dakikada çalışır duruma getirmek için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma](single-database-create-quickstart.md) ve [sunucu düzeyinde IP güvenlik duvarı oluşturma](firewall-create-server-level-portal-quickstart.md) .
 
 Bu makalede, bu makaleden Excel 'e örnek veri aktarırsınız, ancak kendi verilerinize benzer adımları izleyebilirsiniz.
 
@@ -101,6 +101,6 @@ Bağlantı ayrıntılarını kalıcı olarak kaydetmek için bir. odc dosyası o
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Gelişmiş sorgulama ve analiz için [SQL Server Management Studio ile SQL Database'e bağlanma](connect-query-ssms.md) işlemini nasıl gerçekleştireceğinizi öğrenin.
+* Gelişmiş sorgulama ve analizler için [SQL Server Management Studio bağlama ve sorgulama](connect-query-ssms.md) hakkında bilgi edinin.
 * [Esnek havuzların](elastic-pool-overview.md) avantajları hakkında bilgi edinin.
-* [Arka uçta SQL Database'e bağlanan bir web uygulaması oluşturma](../../app-service/app-service-web-tutorial-dotnet-sqldatabase.md) hakkında bilgi edinin.
+* [Arka uçta Azure SQL veritabanı 'na bağlanan bir Web uygulaması oluşturmayı](../../app-service/app-service-web-tutorial-dotnet-sqldatabase.md)öğrenin.
