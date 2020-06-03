@@ -55,7 +55,7 @@ SQL Data Sync nasıl yapılandırılacağı hakkında PowerShell örnekleri içi
 
    **Veri eşitleme grubu oluştur** sayfasında, aşağıdaki ayarları değiştirin:
 
-   | Ayar                        | Açıklama |
+   | Ayar                        | Description |
    | ------------------------------ | ------------------------------------------------- |
    | **Eşitleme grubu adı** | Yeni eşitleme grubu için bir ad girin. Bu ad, veritabanının kendisinin adından farklıdır. |
    | **Meta veri veritabanını Eşitle** | Veritabanı oluşturmayı seçin (önerilir) veya var olan bir veritabanını kullanın.<br/><br/>**Yeni veritabanı**' nı seçerseniz **Yeni veritabanı oluştur** ' u seçin. Ardından **SQL veritabanı** sayfasında, yeni veritabanını adlandırın ve yapılandırın ve **Tamam**' ı seçin.<br/><br/>**Varolan veritabanını kullan**' ı seçerseniz, listeden veritabanını seçin. |
@@ -83,7 +83,7 @@ Yeni eşitleme grubu oluşturulup dağıtıldıktan sonra, **eşitleme üyeleri 
 
   **Azure SQL veritabanını Yapılandır** sayfasında, aşağıdaki ayarları değiştirin:
 
-  | Ayar                       | Açıklama |
+  | Ayar                       | Description |
   | ----------------------------- | ------------------------------------------------- |
   | **Eşitleme üyesi adı** | Yeni eşitleme üyesi için bir ad sağlayın. Bu ad, veritabanı adından farklıdır. |
   | **Abonelik** | Faturalama amacıyla ilişkili Azure aboneliğini seçin. |
@@ -165,7 +165,7 @@ Yeni eşitleme grubu üyeleri oluşturulup dağıtıldıktan sonra, **eşitleme 
 
 1. Listeden eşitlemek istediğiniz tabloları seçin. Varsayılan olarak, tüm sütunlar seçilidir, bu nedenle eşitlemek istemediğiniz sütunlar için onay kutusunu devre dışı bırakın. Birincil anahtar sütununu seçili bırakmayı unutmayın.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 1. Varsayılan olarak, veritabanları zamanlanana veya el ile çalışmaya kadar eşitlenmez. El ile eşitleme çalıştırmak için Azure portal SQL veritabanınıza gidin, **diğer veritabanlarına Eşitle**' yi seçin ve eşitleme grubunu seçin. **Veri eşitleme** sayfası açılır. **Eşitle**’yi seçin.
 

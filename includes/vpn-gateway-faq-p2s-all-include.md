@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ec684e5e6fa2ef8e9ed30be49f59e8aa7ef3a28b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3c10ca35ee2f085d4ce41e862a895ff17ff63a0
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79117114"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317761"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Noktadan Siteye yapılandırmamda kaç VPN istemci uç noktam olabilir?
 
 Ağ Geçidi SKU 'suna bağımlıdır. Desteklenen bağlantı sayısı hakkında daha fazla bilgi için bkz. [ağ geçidi SKU 'ları](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
 
-### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>Noktadan Siteye ile hangi istemci işletim sistemlerini kullanabilirim?
+### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>Noktadan siteye hangi istemci işletim sistemlerini kullanabilirim?
 
 Aşağıdaki istemci işletim sistemleri desteklenmektedir:
 
@@ -29,6 +29,7 @@ Aşağıdaki istemci işletim sistemleri desteklenmektedir:
 * Windows Server 2012 (yalnızca 64 bit)
 * Windows Server 2012 R2 (yalnızca 64 bit)
 * Windows Server 2016 (yalnızca 64 bit)
+* Windows Server 2019 (yalnızca 64 bit)
 * Windows 10
 * Mac OS X sürüm 10,11 veya üzeri
 * Linux (StrongSwan)

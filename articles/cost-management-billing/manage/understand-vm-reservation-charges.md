@@ -6,12 +6,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: ca54d5a0d196cbc39256668f21e19bdf9162dfbf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a9d9a5661e8a094b7d92a9dd83db3cdcd76b8b65
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202799"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018391"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Azure rezervasyon indirimini sanal makinelere uygulama
 
@@ -102,7 +102,7 @@ Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek iç
 
 - [Azure rezervasyonları nedir?](../reservations/save-compute-costs-reservations.md)
 - [Azure Ayrılmış VM Örnekleri ile Sanal Makinelere ön ödeme yapma](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Azure SQL Veritabanı ayrılmış kapasitesi ile SQL Veritabanı işlem kaynakları için ön ödeme yapma](../../sql-database/sql-database-reserved-capacity.md)
+- [Azure SQL Veritabanı ayrılmış kapasitesi ile SQL Veritabanı işlem kaynakları için ön ödeme yapma](../../azure-sql/database/reserved-capacity-overview.md)
 - [Azure rezervasyonlarını yönetme](../reservations/manage-reserved-vm-instance.md)
 - [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](../reservations/understand-reserved-instance-usage.md)
 - [Kurumsal kaydınız için rezervasyon kullanımını anlama](../reservations/understand-reserved-instance-usage-ea.md)

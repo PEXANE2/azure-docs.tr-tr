@@ -99,7 +99,7 @@ TDE PowerShell 'i yapılandırmak için Azure sahibi, katkıda bulunan veya SQL 
 
 Azure SQL veritabanı ve Azure SYNAPSE için aşağıdaki cmdlet 'leri kullanın:
 
-| Cmdlet | Açıklama |
+| Cmdlet | Description |
 | --- | --- |
 | [Set-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) |Bir veritabanı için saydam veri şifrelemeyi etkinleştirilir veya devre dışı bırakır.|
 | [Get-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) |Bir veritabanı için saydam veri şifreleme durumunu alır. |
@@ -120,7 +120,7 @@ Transact-SQL kullanarak TDE yönetin.
 
 Ana veritabanında bir yönetici veya **DBManager** rolünün üyesi olan bir oturum kullanarak veritabanına bağlanın.
 
-| Komut | Açıklama |
+| Komut | Description |
 | --- | --- |
 | [ALTER DATABASE (Azure SQL veritabanı)](/sql/t-sql/statements/alter-database-azure-sql-database) | ŞIFRELEMEYI ayarlama/kapatma bir veritabanının şifresini şifreler veya şifresini çözer |
 | [sys. dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Bir veritabanının şifreleme durumu ve ilişkili veritabanı şifreleme anahtarları hakkında bilgi döndürür |
@@ -136,7 +136,7 @@ REST API kullanarak TDE yönetin.
 TDE REST API aracılığıyla yapılandırmak için Azure sahibi, katkıda bulunan veya SQL güvenlik yöneticisi olarak bağlı olmanız gerekir.
 Azure SQL veritabanı ve Azure SYNAPSE için aşağıdaki komut kümesini kullanın:
 
-| Komut | Açıklama |
+| Komut | Description |
 | --- | --- |
 |[Sunucu oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Bir sunucuya Azure Active Directory kimliği ekler. (Key Vault erişim vermek için kullanılır)|
 |[Sunucu anahtarı oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|Bir sunucuya Key Vault anahtarı ekler.|

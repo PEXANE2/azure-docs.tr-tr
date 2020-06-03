@@ -4,12 +4,12 @@ description: Bu makalede, yedeklemeleri ve kurtarma noktalarını depolayan kurt
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 6ac1c7e887f80767d6ff1819476e91cb4b06bf1b
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: f1f1a66bd6e0fbd28be59b0211a1ac17f030022e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744937"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298627"
 ---
 # <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
@@ -90,9 +90,6 @@ Bu işlem için, depolama düzeyinde olduğu kadar fiyatlandırma etkileri vard�
 >- Desteklenen yönetilen türlerin ve bölgelerin listesi için [destek matrisini](backup-support-matrix.md#cross-region-restore) gözden geçirin.
 >- Çapraz bölge geri yükleme (CRR) özelliği artık tüm Azure genel bölgelerinde önizlenebilir.
 >- CRR, herhangi bir GRS Kasası için kasa düzeyi katılım özelliğidir (varsayılan olarak kapalıdır).
->- Aboneliğinizi bu özellik için eklemek üzere lütfen aşağıdaki komutu kullanın:<br>
->  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`
->- Genel sınırlı önizleme sırasında bu özelliğe eklendi yapıyorsanız, onay e-postasını gözden geçir fiyatlandırma ilkesi ayrıntılarını içerir.
 >- Bu işlem yapıldıktan sonra, yedekleme öğelerinin ikincil bölgelerde kullanılabilmesi 48 saat kadar sürebilir.
 >- Şu anda CRR yalnızca yedekleme yönetimi türü ARM Azure VM için desteklenir (klasik Azure VM desteklenmez).  Ek yönetim türleri CRR 'yi desteklediklerinde, bunlar **otomatik olarak** kaydedilir.
 

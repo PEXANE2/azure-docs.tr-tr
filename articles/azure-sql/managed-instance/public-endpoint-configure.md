@@ -1,5 +1,5 @@
 ---
-title: Ortak uç nokta ile yönetilen örneği yapılandırma
+title: Genel uç noktayı Yapılandırma-Azure SQL yönetilen örneği
 description: Azure SQL yönetilen örneği için genel bir uç nokta yapılandırmayı öğrenin
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: e11e8181ba17f9833cd4add7650ad9f81a158fd9
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: a6d4ea22d3b05b14ce0d3e63912ea8bb7a432e57
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118759"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310164"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde ortak uç noktayı yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,11 +94,11 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. **Gelen güvenlik kuralları** sekmesini seçin ve aşağıdaki ayarlarla **deny_all_inbound** kuralından daha yüksek önceliğe sahip bir kural **ekleyin** : </br> </br>
 
-    |Ayar  |Önerilen değer  |Açıklama  |
+    |Ayar  |Önerilen değer  |Description  |
     |---------|---------|---------|
-    |**Kaynak**     |Herhangi bir IP adresi veya hizmet etiketi         |<ul><li>Power BI gibi Azure hizmetleri için Azure Cloud Service etiketini seçin</li> <li>Bilgisayarınız veya Azure sanal makinesi için NAT IP adresi kullanın</li></ul> |
+    |**Kaynak**     |Herhangi bir IP adresi veya hizmet etiketi         |<ul><li>Power BI gibi Azure hizmetleri için Azure Cloud Service etiketini seçin</li> <li>Bilgisayarınız veya Azure sanal makineniz için NAT IP adresi kullanın</li></ul> |
     |**Kaynak bağlantı noktası aralıkları**     |* |Kaynak bağlantı noktaları genellikle dinamik olarak ayrıldığı ve bu şekilde tahmin edilemeyen |
-    |**Hedefine**     |Herhangi biri         |Yönetilen örnek alt ağına gelen trafiğe izin vermek için hedeften ayrılmaya |
+    |**Hedef**     |Herhangi biri         |Yönetilen örnek alt ağına gelen trafiğe izin vermek için hedeften ayrılmaya |
     |**Hedef bağlantı noktası aralıkları**     |3342         |Yönetilen örnek genel TDS uç noktası olan 3342 öğesine kapsam hedef bağlantı noktası |
     |**Protokol**     |TCP         |SQL yönetilen örneği TDS için TCP protokolünü kullanır |
     |**Eylem**     |İzin Ver         |Ortak uç nokta aracılığıyla yönetilen örneğe gelen trafiğe izin ver |
