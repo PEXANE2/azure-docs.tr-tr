@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ff5d8ecaaeff67e1a97c4afd4ca8119f8ac7c1e1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 68143c4ac3851604996e1f7ba2adce48934e59c5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696952"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295397"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
 
@@ -265,12 +265,12 @@ Azure AD B2C ilkesi ıDP meta verileri, SAML kimlik sağlayıcısı yapılandır
 
 ## <a name="4-setup-application-in-the-azure-ad-b2c-directory"></a>4. Azure AD B2C dizininde uygulama kurulum
 
-### <a name="41-register-your-application-in-azure-active-directory"></a>4,1 uygulamanızı Azure Active Directory kaydetme
+### <a name="41-register-your-application-in-azure-ad-b2c"></a>4,1 uygulamanızı Azure AD B2C kaydetme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
-1. **Uygulama kayıtları (Önizleme)** öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
+1. **Uygulama kayıtları**öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
 1. Uygulama için bir **ad** girin. Örneğin, *SAMLApp1*.
 1. **Desteklenen hesap türleri**altında **yalnızca bu kuruluş dizinindeki hesaplar** ' ı seçin
 1. **Yeniden yönlendirme URI 'si**altında **Web**' i seçin ve ardından girin `https://localhost` . Bu değeri daha sonra uygulama kaydının bildiriminde değiştirirsiniz.

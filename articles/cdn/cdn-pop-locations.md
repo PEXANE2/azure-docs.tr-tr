@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 385814677a868c0e631bd13bad3308609b174ed3
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: d8bca97cfaa3aff3cb3ca5a5eb9019f96576626e
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800091"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309025"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Metro tarafından Azure CDN kapsama 
 > [!div class="op_single_selector"]
@@ -44,10 +44,9 @@ Bu makalede, Azure Content Delivery Network (CDN) ürünleriyle ilgili varlık n
 | Afrika | Cabo Town, Güney Afrika<br />Johannesburg, Güney Afrika<br />Lagos, Nijerya<br />Nairobi, Kenya | Johannesburg, Güney Afrika | Güney Afrika |
 | Orta Doğu | Dubai, Birleşik Arap Emirlikleri<br />Tel Aviv, Israil<br />Istanbul, Türkiye | Muscat, Umman<br />Fujirah, Birleşik Arap Emirlikleri | Katar<br />Birleşik Arap Emirlikleri |
 | Hindistan | Chennai, Hindistan<br />Hyderabad, Hindistan<br />Mumbai, Hindistan<br />Yeni Delhi, Hindistan | Bengaluru (Bangalore), Hindistan<br />Chennai, Hindistan<br />Mumbai, Hindistan<br />Yeni Delhi, Hindistan<br /> | Hindistan |
-| Asya | Hong Kong<br />Osaka, Japonya<br />Tokyo, Japonya<br />Kuala Lumpur, Malezya<br />Cakarta, Endonezya<br />Manila, Filipinler<br />Singapur<br />Busa, Güney Kore<br />Seul, Güney Kore<br />Taipei, Tayvan<br />Bangkok, Tayland<br />Saigon, Vietnam | Hong Kong<br />Batam, Endonezya<br />Cakarta, Endonezya<br />Osaka, Japonya<br />Tokyo, Japonya<br />Singapur<br />Seul, Güney Kore<br />Kaoya siung, Tayvan<br />Taipei, Tayvan | Hong Kong<br />Endonezya<br />İsrail<br />Japonya<br />Makao<br />Malezya<br />Filipinler<br />Singapur<br />Güney Kore<br />Tayvan<br />Tayland<br />Türkiye<br />Vietnam |
+| Asya | Hong Kong<br />Osaka, Japonya<br />Tokyo, Japonya<br />Kuala Lumpur, Malezya<br />Cakarta, Endonezya<br />Manila, Filipinler<br />Singapur<br />Busa, Güney Kore<br />Seul, Güney Kore<br />Taipei, Tayvan<br />Bangkok, Tayland<br />Ho Chi Minh City, Vietnam | Hong Kong<br />Batam, Endonezya<br />Cakarta, Endonezya<br />Osaka, Japonya<br />Tokyo, Japonya<br />Singapur<br />Seul, Güney Kore<br />Kaoya siung, Tayvan<br />Taipei, Tayvan | Hong Kong<br />Endonezya<br />İsrail<br />Japonya<br />Makao<br />Malezya<br />Filipinler<br />Singapur<br />Güney Kore<br />Tayvan<br />Tayland<br />Türkiye<br />Vietnam |
 | Avustralya ve Yeni Zelanda | Brisbane, Avustralya<br />Melbourne, Avustralya<br />Perth, Avustralya<br />Sidney, Avustralya<br />Auckland, Yeni Zelanda | Melbourne, Avustralya<br />Sidney, Avustralya<br />Auckland, Yeni Zelanda | Avustralya<br />Yeni Zelanda |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Beyaz listeye yönelik en son IP adreslerini almak için [Azure CDN Edge düğümleri API 'sine](https://docs.microsoft.com/rest/api/cdn/edgenodes)bakın.
-

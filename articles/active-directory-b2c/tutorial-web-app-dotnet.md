@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9bf7339e500a006c168311145a9a5d992b07f145
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: dabceb3cc3b7fa2b48ad1b21dfcafb3278c2461d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84231814"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298780"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak bir Web uygulamasında kimlik doğrulamasını etkinleştirme
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Uygulamanızdaki kullanıcı deneyimlerini etkinleştirmek için [Kullanıcı akışları oluşturun](tutorial-create-user-flows.md) .
 * **ASP.net ve Web geliştirme** iş yüküyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) ' i yükledikten sonra.
@@ -42,28 +42,27 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ### <a name="add-a-redirect-uri-reply-url"></a>Yeniden yönlendirme URI 'SI (yanıt URL 'SI) ekleme
 
-Uygulamayı güncelleştirmek için geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (Önizleme)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregintro).
+Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
 
-#### <a name="applications"></a>[Uygulamalar](#tab/applications/)
-
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
-1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
-1. **Uygulamalar**' ı seçin ve ardından *WebApp1* uygulamasını seçin.
-1. **Yanıt URL 'si**altında, ekleyin `https://localhost:44316` .
-1. **Kaydet**’i seçin.
-1. Özellikler sayfasında, Web uygulamasını yapılandırırken daha sonraki bir adımda kullanmak üzere uygulama KIMLIĞINI kaydedin.
-
-#### <a name="app-registrations-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
-1. **Uygulama kayıtları (Önizleme)** öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *WebApp1* uygulamasını seçin.
-1. **Kimlik doğrulaması**' nı seçin ve ardından **Yeni deneyimi deneyin** (gösteriliyorsa) seçeneğini belirleyin.
+1. **Uygulama kayıtları**öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *WebApp1* uygulamasını seçin.
 1. **Web**altında **URI Ekle** bağlantısını seçin, girin `https://localhost:44316` ve ardından **Kaydet**' i seçin.
 1. **Genel bakış**'ı seçin.
 1. Web uygulamasını yapılandırırken daha sonraki bir adımda kullanmak üzere **uygulama (istemci) kimliğini** kaydedin.
+
+#### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
+
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
+1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
+1. **Uygulamalar (eski)** öğesini seçin ve ardından *WebApp1* uygulamasını seçin.
+1. **Yanıt URL 'si**altında, ekleyin `https://localhost:44316` .
+1. **Kaydet**'i seçin.
+1. Özellikler sayfasında, Web uygulamasını yapılandırırken daha sonraki bir adımda kullanmak üzere uygulama KIMLIĞINI kaydedin.
 
 * * *
 

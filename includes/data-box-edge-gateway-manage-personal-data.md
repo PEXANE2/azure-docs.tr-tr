@@ -18,7 +18,7 @@ ms.locfileid: "67189012"
   - Açık adres
   - Şehir
   - Posta kodu/posta kodu
-  - Durum
+  - Eyalet
   - Ülke/Eyalet/bölge
   - Kargo takip numarası
 

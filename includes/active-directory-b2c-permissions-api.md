@@ -5,21 +5,13 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: mimart
-ms.openlocfilehash: ee63c1c0913baf3700d77e6fba1582fe7027ead7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e37419b5d568b0f60e4c6a0c8fed26eb418f501e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80875713"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84297504"
 ---
-#### <a name="applications"></a>[Uygulamalar](#tab/applications/)
-
-1. **Uygulamalar**' ı seçin ve ardından API erişimi olması gereken Web uygulamasını seçin. Örneğin, *WebApp1*.
-1. **API erişimi**' ni seçin ve ardından **Ekle**' yi seçin.
-1. **API Seç** açılan menüsünde, Web uygulamasına erişim IZNI verilecek API 'yi seçin. Örneğin, *webapi1*.
-1. **Kapsamları Seç** açılan menüsünde, daha önce tanımladığınız kapsamları seçin. Örneğin, *demo. Read* ve *demo. Write*.
-1. **Tamam**’ı seçin.
-
 #### <a name="app-registrations-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
 
 1. **Uygulama kayıtları (Önizleme)** öğesini seçin ve ardından API 'ye erişimi olması gereken Web uygulamasını seçin. Örneğin, *WebApp1*.
@@ -33,3 +25,11 @@ ms.locfileid: "80875713"
 1. Bir hesap seçmeniz istenirse, şu anda oturum açmış olan yönetici hesabınızı seçin veya Azure AD B2C kiracınızda en azından *bulut uygulama Yöneticisi* rolüne atanan bir hesapla oturum açın.
 1. **Evet**' i seçin.
 1. **Yenile**' yi seçin ve ardından "verilen..." öğesini doğrulayın Her iki kapsam için **durum** altında görünür.
+
+#### <a name="applications"></a>[Uygulamalar](#tab/applications/)
+
+1. **Uygulamalar**' ı seçin ve ardından API erişimi olması gereken Web uygulamasını seçin. Örneğin, *WebApp1*.
+1. **API erişimi**' ni seçin ve ardından **Ekle**' yi seçin.
+1. **API Seç** açılan menüsünde, Web uygulamasına erişim IZNI verilecek API 'yi seçin. Örneğin, *webapi1*.
+1. **Kapsamları Seç** açılan menüsünde, daha önce tanımladığınız kapsamları seçin. Örneğin, *demo. Read* ve *demo. Write*.
+1. **Tamam**’ı seçin.

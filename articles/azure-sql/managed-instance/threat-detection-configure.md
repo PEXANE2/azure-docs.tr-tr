@@ -12,12 +12,12 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: a60156762a4d8dfb6b11ae70e608fb26b07e5764
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: cfd0aa6cf62c4f70365ecc06ad75efdda9563470
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045763"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310827"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde Gelişmiş tehdit koruması yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -31,7 +31,7 @@ Gelişmiş [tehdit koruması](../database/threat-detection-overview.md) , geliş
 ##  <a name="azure-portal"></a>Azure portal
 
 1. [Azure Portal](https://portal.azure.com)oturum açın. 
-2. Korumak istediğiniz SQL yönetilen örneğinin yapılandırma sayfasına gidin. **Ayarlar** sayfasında **Gelişmiş veri güvenliği**' ni seçin.
+2. Korumak istediğiniz SQL yönetilen örneği örneğinin yapılandırma sayfasına gidin. **Ayarlar** sayfasında **Gelişmiş veri güvenliği**' ni seçin.
 3. Gelişmiş veri güvenliği yapılandırma sayfasında
    - Gelişmiş **veri** güvenliğini açın.
    - Anormal veritabanı etkinliklerinin algılanması üzerine güvenlik uyarıları almak için **e-posta listesini** yapılandırın.
