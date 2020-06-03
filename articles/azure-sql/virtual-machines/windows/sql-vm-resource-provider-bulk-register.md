@@ -31,7 +31,7 @@ Kayıt işlemi risk içermez, kapalı kalma süresi yoktur ve SQL Server veya sa
 
 Kaynak sağlayıcısı hakkında daha fazla bilgi için bkz. [SQL VM kaynak sağlayıcısı](sql-vm-resource-provider-register.md). 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SQL Server VM kaynak sağlayıcısına kaydetmek için şunlar gerekir: 
 
@@ -40,7 +40,7 @@ SQL Server VM kaynak sağlayıcısına kaydetmek için şunlar gerekir:
 - En son [az PowerShell](/powershell/azure/new-azureps-module-az)sürümü. 
 - En son [az. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0)sürümü.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Devam etmeden önce, önce betiğin yerel bir kopyasını oluşturmanız, PowerShell modülü olarak içeri aktarmanız ve Azure 'a bağlanmanız gerekir. 
 

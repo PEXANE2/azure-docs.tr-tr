@@ -94,7 +94,7 @@ Ek belgeler ve yönergeler için bkz. [az VM Repair](https://docs.microsoft.com/
 
 Aşağıdaki örnek, adlı kaynak grubunda adlı sanal makinede tanılama uzantısını sunar ``myVMDeployed`` ``myResourceGroup`` :
 
-Azure CLI
+Azure CLI’si
 
 ```azurecli-interactive
 az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGroup --storage https://mystor.blob.core.windows.net/
