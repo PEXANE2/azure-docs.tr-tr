@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/17/2019
+ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 996fbcc7c3c9af0da9160216785ecd54840660e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa243071b9e5dcec0e49c3b49b3bf77ec6fe0e65
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "65957030"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299613"
 ---
-# <a name="develop-for-azure-netapp-files-with-rest-api"></a>REST API Azure NetApp Files için geliştirme 
+# <a name="develop-for-azure-netapp-files-with-rest-api"></a>REST API ile Azure NetApp Files için geliştirme 
 
 Azure NetApp Files hizmetinin REST API, NetApp hesabı, kapasite havuzu, birimler ve anlık görüntüler gibi kaynaklara karşı HTTP işlemlerini tanımlar. Bu makale, Azure NetApp Files REST API kullanmaya başlamanıza yardımcı olur.
 
@@ -38,9 +38,9 @@ Azure NetApp Files için REST API belirtimi [GitHub](https://github.com/Azure/az
 2. Azure Active Directory bir hizmet sorumlusu oluşturun (Azure AD):
    1. [Yeterli izinlere](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)sahip olduğunuzu doğrulayın.
 
-   1. Azure CLı 'de aşağıdaki komutu girin:  
+   2. Azure CLı 'de aşağıdaki komutu girin:  
 
-           az ad sp create-for-rbac --name $YOURSPNAMEGOESHERE--password $YOURGENERATEDPASSWORDGOESHERE
+           az ad sp create-for-rbac --name $YOURSPNAMEGOESHERE
 
       Komut çıktısı aşağıdaki örneğe benzer:  
 
@@ -52,11 +52,11 @@ Azure NetApp Files için REST API belirtimi [GitHub](https://github.com/Azure/az
                "tenant": "tenantIDgoeshere" 
            } 
 
-      Komut çıkışını saklayın.  `appId`, `password`Ve `tenant` değerlerine ihtiyacınız olacaktır. 
+      Komut çıkışını saklayın.  `appId`, Ve değerlerine ihtiyacınız olacaktır `password` `tenant` . 
 
 3. Bir OAuth erişim belirteci isteyin:
 
-    Bu makaledeki örneklerde kıvrımlı kullanılır.  [Postman](https://www.getpostman.com/), [Insomnia](https://insomnia.rest/)ve [Paw](https://paw.cloud/)gibi çeşitli API araçlarını da kullanabilirsiniz.  
+    Bu makaledeki örneklerde kıvrımlı kullanılır. [Postman](https://www.getpostman.com/), [Insomnia](https://insomnia.rest/)ve [Paw](https://paw.cloud/)gibi çeşitli API araçlarını da kullanabilirsiniz.  
 
     Aşağıdaki örnekteki değişkenleri yukarıdaki 2. adımdaki komut çıktısı ile değiştirin. 
 
@@ -71,47 +71,47 @@ Azure NetApp Files için REST API belirtimi [GitHub](https://github.com/Azure/az
 
 4. REST API erişiminizi doğrulamak için bir test çağrısı gönderin ve belirteci ekleyin:
 
-        curl -X GET -H "Authorization: Bearer [TOKEN]" -H "Content-Type: application/json" https://management.azure.com/subscriptions/[SUBSCRIPTION_ID]/providers/Microsoft.Web/sites?api-version=2016-08-01
+        curl -X GET -H "Authorization: Bearer [TOKEN]" -H "Content-Type: application/json" https://management.azure.com/subscriptions/[SUBSCRIPTION_ID]/providers/Microsoft.Web/sites?api-version=2019-11-01
 
 ## <a name="examples-using-the-api"></a>API kullanan örnekler  
 
 Bu makale, istek taban çizgisi için aşağıdaki URL 'YI kullanır. Bu URL, Azure NetApp Files ad alanının köküne işaret eder. 
 
-`https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts?api-version=2017-08-15`
+`https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts?api-version=2019-11-01`
 
-Aşağıdaki örneklerde `subID` ve `resourceGroups` değerlerini kendi değerlerinizle değiştirmelisiniz. 
+`SUBIDGOESHERE` `RESOURCEGROUPGOESHERE` Aşağıdaki örneklerde ve değerlerini kendi değerlerinizle değiştirmelisiniz. 
 
 ### <a name="get-request-examples"></a>İstek örneklerini al
 
 Aşağıdaki örneklerde gösterildiği gibi, bir abonelikte Azure NetApp Files nesnelerini sorgulamak için GET isteği kullanırsınız: 
 
         #get NetApp accounts 
-        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts?api-version=2017-08-15
+        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts?api-version=2019-11-01
 
         #get capacity pools for NetApp account 
-        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools?api-version=2017-08-15
+        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools?api-version=2019-11-01
 
         #get volumes in NetApp account & capacity pool 
-        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes?api-version=2017-08-15
+        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes?api-version=2019-11-01
 
         #get snapshots for a volume 
-        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/VOLUMEGOESHERE/snapshots?api-version=2017-08-15
+        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/VOLUMEGOESHERE/snapshots?api-version=2019-11-01
 
 ### <a name="put-request-examples"></a>PUT isteği örnekleri
 
-Aşağıdaki örneklerde gösterildiği gibi Azure NetApp Files yeni nesneler oluşturmak için bir PUT isteği kullanırsınız. PUT isteğinin gövdesi, değişiklikler için JSON biçimli verileri içerebilir veya okunacak bir dosyayı belirtebilir. 
+Aşağıdaki örneklerde gösterildiği gibi Azure NetApp Files yeni nesneler oluşturmak için bir PUT isteği kullanırsınız. PUT isteğinin gövdesi, değişiklikler için JSON biçimli verileri içerebilir. Metin veya başvuru olarak bir dosya olarak, kıvrımlı komutuna eklenmelidir. Gövdeye dosya olarak başvurmak için JSON örneğini bir dosyaya kaydedin ve `-d @<filename>` kıvrımlı komutuna ekleyin.
 
         #create a NetApp account  
-        curl -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE?api-version=2017-08-15
+        curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE?api-version=2019-11-01
 
         #create a capacity pool  
-        curl -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE?api-version=2017-08-15
+        curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE?api-version=2019-11-01
 
         #create a volume  
-        curl -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/MYNEWVOLUME?api-version=2017-08-15
+        curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/MYNEWVOLUME?api-version=2019-11-01
 
         #create a volume snapshot  
-        curl -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/MYNEWVOLUME/Snapshots/SNAPNAME?api-version=2017-08-15
+        curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/MYNEWVOLUME/Snapshots/SNAPNAME?api-version=2019-11-01
 
 ### <a name="json-examples"></a>JSON örnekleri
 
@@ -133,13 +133,13 @@ Aşağıdaki örnek, bir kapasite havuzunun nasıl oluşturulacağını gösteri
         "type": "Microsoft.NetApp/netAppAccounts/capacityPools",
         "location": "westus2",
         "properties": {
-            "name": "POOLNAME"
+            "name": "POOLNAME",
             "size": "4398046511104",
             "serviceLevel": "Premium"
         }
     }
 
-Aşağıdaki örnek, yeni bir birimin nasıl oluşturulacağını gösterir: 
+Aşağıdaki örnek, yeni bir birimin nasıl oluşturulacağını göstermektedir. (Birim için varsayılan protokol NFSV3 ' dir.) 
 
     {
         "name": "MYNEWVOLUME",
@@ -167,7 +167,7 @@ Aşağıdaki örnekte, bir birimin anlık görüntüsünün nasıl oluşturulaca
     }
 
 > [!NOTE] 
-> Anlık görüntü oluşturmak için `fileSystemId` belirtmeniz gerekir.  `fileSystemId` Değeri bir BIRIME yönelik Get isteğiyle elde edebilirsiniz. 
+> `fileSystemId`Anlık görüntü oluşturmak için belirtmeniz gerekir.  `fileSystemId`Değeri bir birime YÖNELIK Get isteğiyle elde edebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

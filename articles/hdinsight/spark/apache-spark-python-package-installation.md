@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: ec914db1e26e6f052715440c3e418df09fe8a361
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 317b3cd508ee1ab821838cae56cc5b5c9943ace0
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835980"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309892"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Betik Eylemi kullanarak Azure HDInsight üzerinde Python ortamını güvenli bir şekilde yönetin
 
@@ -23,7 +23,7 @@ ms.locfileid: "83835980"
 
 HDInsight, Spark kümesinde, Anaconda Python 2,7 ve Python 3,5 ' de iki yerleşik Python yüklemelerine sahiptir. Müşterilerin Python ortamını özelleştirmesi gerekebilir. Dış Python paketleri veya başka bir Python sürümü yükleme gibi. Burada, HDInsight 'ta Apache Spark kümeleri için Python ortamlarını güvenli bir şekilde yönetmeye yönelik en iyi uygulama gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md). HDInsight üzerinde zaten bir Spark kümeniz yoksa, küme oluşturma sırasında betik eylemleri çalıştırabilirsiniz. [Özel Betik eylemlerinin kullanımı](../hdinsight-hadoop-customize-cluster-linux.md)hakkındaki belgeleri ziyaret edin.
 
@@ -33,7 +33,7 @@ Microsoft Azure HDInsight hizmeti Apache Hadoop etrafında oluşturulan açık k
 
 HDInsight hizmetinde bulunan iki tür açık kaynaklı bileşen vardır:
 
-|Bileşen |Açıklama |
+|Bileşen |Description |
 |---|---|
 |Yerleşik|Bu bileşenler HDInsight kümelerinde önceden yüklenir ve kümenin temel işlevlerini sağlar. Örneğin, Apache Hadoop YARN Kaynak Yöneticisi, Apache Hive sorgu dili (HiveQL) ve Mahout kitaplığı bu kategoriye aittir. Tüm küme bileşenleri listesi, [HDInsight tarafından sağlanan Apache Hadoop kümesi sürümlerindeki yenilikler](../hdinsight-component-versioning.md)bölümünde bulunur.|
 |Özel|Kümenin bir kullanıcısı olarak, kuruluşunuzda bulunan veya sizin tarafınızdan oluşturulan herhangi bir bileşeni iş yükünüze yükleyebilir veya kullanabilirsiniz.|
@@ -146,7 +146,7 @@ HDInsight kümesi, Python 2,7 ve Python 3,5 yerleşik Python ortamına bağlıd�
 
 ## <a name="known-issue"></a>Bilinen sorun
 
-Anaconda sürümü, ve için bilinen bir hata `4.7.11` var `4.7.12` `4.8.0` . Betik eylemlerinizin askıda olduğunu `"Collecting package metadata (repodata.json): ...working..."` ve ile başarısız olduğunu görürseniz `"Python script has been killed due to timeout after waiting 3600 secs"` . Sorunu çözebilmeniz için [bu betiği](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) indirebilir ve tüm düğümlerde betik eylemleri olarak çalıştırabilirsiniz.
+Anaconda sürümü, ve için bilinen bir hata `4.7.11` var `4.7.12` `4.8.0` . Betik eylemlerinizin yanıt verdiğini `"Collecting package metadata (repodata.json): ...working..."` ve ile başarısız olduğunu görürseniz `"Python script has been killed due to timeout after waiting 3600 secs"` . Sorunu çözebilmeniz için [bu betiği](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) indirebilir ve tüm düğümlerde betik eylemleri olarak çalıştırabilirsiniz.
 
 Anaconda sürümünüzü denetlemek için, küme üst bilgisi düğümüne SSH oluşturabilir ve çalıştırabilirsiniz `/usr/bin/anaconda/bin/conda --v` .
 

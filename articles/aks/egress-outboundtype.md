@@ -3,45 +3,27 @@ title: Azure Kubernetes Service (AKS) içinde Kullanıcı tanımlı yolları (UD
 description: Azure Kubernetes Service (AKS) içinde özel çıkış yolu tanımlama hakkında bilgi edinin
 services: container-service
 ms.topic: article
-ms.date: 03/16/2020
-ms.openlocfilehash: babfd70a6a9732113531be13073af212a6820557
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/05/2020
+ms.openlocfilehash: d62f40fb835bfe6993ad31ddd20cfdea1d9135c2
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677895"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310878"
 ---
-# <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Küme çıkışı 'nı Kullanıcı tanımlı bir yol (Önizleme) ile özelleştirme
+# <a name="customize-cluster-egress-with-a-user-defined-route"></a>Küme çıkış listesini Kullanıcı tanımlı bir yol ile özelleştirme
 
-AKS kümesinden çıkış, belirli senaryolara uyacak şekilde özelleştirilebilir. Varsayılan olarak AKS, kurulum ve çıkış için kullanılacak standart bir SKU Load Balancer sağlar. Ancak, genel IP 'Ler izin verilmedikçe veya çıkış için ek atlamalar gerekliyse, varsayılan kurulum tüm senaryoların gereksinimlerini karşılamayabilir.
+AKS kümesinden çıkış, belirli senaryolara uyacak şekilde özelleştirilebilir. Varsayılan olarak AKS, çıkış için ayarlanacak ve kullanılacak standart bir SKU Load Balancer sağlar. Ancak, genel IP 'Ler izin verilmedikçe veya çıkış için ek atlamalar gerekliyse, varsayılan kurulum tüm senaryoların gereksinimlerini karşılamayabilir.
 
 Bu makalede, genel IP 'Lere izin vermeyen ve kümenin bir ağ sanal gereci (NVA) arkasına oturmasının gerekli olduğu gibi özel ağ senaryolarını desteklemek için bir kümenin çıkış yolunun nasıl özelleştirileceği gösterilmektedir.
 
-> [!IMPORTANT]
-> AKS Önizleme özellikleri self servis ' dir ve bir katılım temelinde sunulur. Önizlemeler *,* ve *kullanılabilir* olarak sağlanır ve hızmet düzeyi sözleşmesi (SLA) ve sınırlı garantiden çıkarılır. AKS önizlemeleri, müşteri desteğinin *en iyi çaba* temelinde kısmen ele alınmıştır. Bu nedenle, Özellikler üretim kullanımı için tasarlanmamıştır. Daha fazla bilgi için aşağıdaki destek makalelerine bakın:
->
-> * [AKS destek Ilkeleri](support-policies.md)
-> * [Azure desteği SSS](faq.md)
-
 ## <a name="prerequisites"></a>Önkoşullar
 * Azure CLı sürüm 2.0.81 veya üzeri
-* Azure CLı önizleme uzantısı sürüm 0.4.28 veya üstü
 * `2020-01-01`Veya daha büyük API sürümü
 
-## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>En son Azure CLı AKS önizleme uzantısını yükler
-Bir kümenin giden türünü ayarlamak için Azure CLı AKS önizleme uzantısı sürüm 0.4.18 veya sonraki bir sürümü gerekir. Az Extension Add komutunu kullanarak Azure CLı AKS önizleme uzantısını yükledikten sonra aşağıdaki az Extension Update komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
-
-```azure-cli
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
 
 ## <a name="limitations"></a>Sınırlamalar
-* Önizleme süresince `outboundType` yalnızca küme oluşturma zamanında tanımlanabilir ve daha sonra güncelleştirilemez.
-* Önizleme süresince `outboundType` aks kümelerinin Azure CNI kullanması gerekir. Kubenet yapılandırılabilir, kullanım, yol tablosunun AKS alt ağına el ile ilişkilendirmelerini gerektirir.
+* OutboundType, yalnızca küme oluşturma zamanında tanımlanabilir ve daha sonra güncelleştirilemez.
 * Ayar `outboundType` , ve için AKS kümeleri `vm-set-type` gerektirir `VirtualMachineScaleSets` `load-balancer-sku` `Standard` .
 * `outboundType`Bir değere ayarlandığında `UDR` , küme için geçerli giden bağlantıya sahip kullanıcı tanımlı bir yol gerekir.
 * `outboundType`Bir değere ayarlandığında `UDR` , yük dengeleyicisine yönlendirilen giriş kaynak IP 'si kümenin giden çıkış hedefi adresiyle **eşleşmeyebilir** .
@@ -53,14 +35,17 @@ AKS kümesi, `outboundType` yük dengeleyici veya Kullanıcı tanımlı yönlend
 > [!IMPORTANT]
 > Giden türü yalnızca kümenizin çıkış trafiğini etkiler. Daha fazla bilgi için bkz. giriş [denetleyicilerini ayarlama](ingress-basic.md) .
 
+> [!NOTE]
+> UDR ve Kubernetes kullanan Networking ile kendi [yol tablonuzu][byo-route-table] kullanabilirsiniz.
+
 ### <a name="outbound-type-of-loadbalancer"></a>Yük dengeleyici giden türü
 
-`loadBalancer`Ayarlanırsa, AKS aşağıdaki kurulumu otomatik olarak tamamlar. Yük dengeleyici, bir AKS atanmış genel IP üzerinden çıkış için kullanılır. Giden türü `loadBalancer` `loadBalancer` , aks kaynak sağlayıcısı tarafından oluşturulan yük dengeleyiciden çıkış bekleyen, türü Kubernetes hizmetlerini destekler.
+`loadBalancer`Ayarlanırsa, AKS aşağıdaki yapılandırmayı otomatik olarak tamamlar. Yük dengeleyici, bir AKS atanmış genel IP üzerinden çıkış için kullanılır. Giden türü `loadBalancer` `loadBalancer` , aks kaynak sağlayıcısı tarafından oluşturulan yük dengeleyiciden çıkış bekleyen, türü Kubernetes hizmetlerini destekler.
 
-Aşağıdaki kurulum AKS tarafından yapılır.
+Aşağıdaki yapılandırma AKS tarafından yapılır.
    * Küme çıkışı için genel bir IP adresi sağlandı.
    * Genel IP adresi, yük dengeleyici kaynağına atanır.
-   * Yük Dengeleyici için arka uç havuzları, kümedeki aracı düğümleri için kurulumlardır.
+   * Yük Dengeleyici için arka uç havuzları kümedeki aracı düğümleri için ayarlanır.
 
 Varsayılan olarak, AKS kümelerinde dağıtılan ve ' ı kullanan bir ağ topolojisi vardır `outboundType` `loadBalancer` .
 
@@ -173,9 +158,9 @@ az network vnet subnet create \
     --address-prefix 100.64.3.0/24
 ```
 
-## <a name="create-and-setup-an-azure-firewall-with-a-udr"></a>UDR ile Azure Güvenlik Duvarı oluşturma ve kurma
+## <a name="create-and-set-up-an-azure-firewall-with-a-udr"></a>UDR ile Azure Güvenlik Duvarı oluşturma ve ayarlama
 
-Azure Güvenlik Duvarı gelen ve giden kuralları yapılandırılmalıdır. Güvenlik duvarının ana amacı, kuruluşların, AKS kümesinin içine ve dışına parçalı giriş ve çıkış trafiği kuralları kurulumuna olanak sağlamaktır.
+Azure Güvenlik Duvarı gelen ve giden kuralları yapılandırılmalıdır. Güvenlik duvarının ana amacı, kuruluşların parçalı giriş ve çıkış trafiği kurallarını AKS kümesi içine ve dışına yapılandırmasına olanak sağlamaktır.
 
 ![Güvenlik Duvarı ve UDR](media/egress-outboundtype/firewall-udr.png)
 
@@ -198,7 +183,7 @@ az network firewall create -g $RG -n $FWNAME -l $LOC
 
 Daha önce oluşturulan IP adresi artık güvenlik duvarı ön ucunda atanabilir.
 > [!NOTE]
-> Genel IP adresinin Azure Güvenlik Duvarı 'na kurulması birkaç dakika sürebilir.
+> Azure Güvenlik Duvarı 'na genel IP adresinin ayarlanması birkaç dakika sürebilir.
 > 
 > Aşağıdaki komutta hatalar tekrarlanmışsa, mevcut güvenlik duvarını ve genel IP 'yi silin ve Portal üzerinden ortak IP ve Azure Güvenlik duvarını aynı anda sağlayın.
 
@@ -217,7 +202,13 @@ FWPUBLIC_IP=$(az network public-ip show -g $RG -n $FWPUBLICIP_NAME --query "ipAd
 FWPRIVATE_IP=$(az network firewall show -g $RG -n $FWNAME --query "ipConfigurations[0].privateIpAddress" -o tsv)
 ```
 
+> [!Note]
+> AKS API sunucusuna, [YETKILENDIRILMIŞ IP adresi aralıklarıyla](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)güvenli erişim kullanırsanız, güvenlik DUVARı genel IP 'SINI yetkili IP aralığına eklemeniz gerekir.
+
 ### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>Azure Güvenlik Duvarı için bir atlama ile UDR oluşturma
+
+> [!IMPORTANT]
+> UDR 'nin giden türü, yol tablosundaki NVA 'nın (ağ sanal gereç) 0.0.0.0/0 ve sonraki atlama hedefi için bir yol olmasını gerektirir.
 
 Azure, Azure alt ağları, sanal ağlar ve şirket içi ağlar arasındaki trafiği otomatik olarak yönlendirir. Azure 'un varsayılan yönlendirmesinde herhangi birini değiştirmek istiyorsanız, bir yol tablosu oluşturarak bunu yapabilirsiniz.
 
@@ -284,7 +275,7 @@ az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NA
 
 ## <a name="deploy-aks-with-outbound-type-of-udr-to-the-existing-network"></a>Mevcut ağa giden UDR türü ile AKS dağıtma
 
-Artık, var olan sanal ağ kurulumuna bir AKS kümesi dağıtılabilir. Küme giden türünü Kullanıcı tanımlı yönlendirmeye ayarlamak için, AKS 'e var olan bir alt ağın sağlanması gerekir.
+Artık bir AKS kümesi var olan sanal ağa dağıtılabilir. Küme giden türünü Kullanıcı tanımlı yönlendirmeye ayarlamak için, AKS 'e var olan bir alt ağın sağlanması gerekir.
 
 ![aks-Deploy](media/egress-outboundtype/outboundtype-udr.png)
 
@@ -321,7 +312,7 @@ Son olarak, AKS kümesi, küme için ayrıldığımız mevcut alt ağa dağıtı
 SUBNETID="/subscriptions/$SUBID/resourceGroups/$RG/providers/Microsoft.Network/virtualNetworks/$VNET_NAME/subnets/$AKSSUBNET_NAME"
 ```
 
-Alt ağda bulunan UDR 'yi izlemek için giden türü tanımlayacağız ve bu, artık kesinlikle iç olabilen yük dengeleyici için kurulumu ve IP sağlamayı atlayacak şekilde sağlar.
+Alt ağda var olan UDR 'yi izlemek için giden türü tanımlayın. Bu, AKS 'in, artık tam olarak iç olabilecek yük dengeleyici için ayarlama ve IP sağlamasını atlamasına olanak tanır.
 
 API sunucusu için [YETKILENDIRILMIŞ IP aralıklarının](api-server-authorized-ip-ranges.md) aks ÖZELLIĞI, API sunucusu erişimini yalnızca güvenlik duvarının genel uç noktasına sınırlamak için eklenebilir. Yetkili IP aralıkları özelliği diyagramda, denetim düzlemine erişmek için geçirilmesi gereken NSG olarak gösterilir. API sunucusu erişimini sınırlamak için yetkilendirilmiş IP aralığı özelliğini etkinleştirirken, geliştirici araçlarınızın güvenlik duvarının sanal ağından bir sıçrama kutusu kullanması veya tüm geliştirici uç noktalarını yetkilendirilmiş IP aralığına eklemeniz gerekir.
 
@@ -345,7 +336,7 @@ az aks create -g $RG -n $AKS_NAME -l $LOC \
 
 ### <a name="enable-developer-access-to-the-api-server"></a>API sunucusuna geliştirici erişimini etkinleştirme
 
-Küme için yetkilendirilmiş IP aralıkları ayarı nedeniyle, API sunucusuna erişmek için, Geliştirici araç IP adreslerinizi onaylanan IP aralıklarının AKS kümesi listesine eklemeniz gerekir. Diğer bir seçenek de, güvenlik duvarının sanal ağındaki ayrı bir alt ağ içinde gerekli araçları içeren bir sıçrama kutusu yapılandırmaktır.
+Küme için yetkilendirilmiş IP aralıkları nedeniyle, API sunucusuna erişmek için, Geliştirici araç IP adreslerinizi onaylanan IP aralıklarının AKS kümesi listesine eklemeniz gerekir. Diğer bir seçenek de, güvenlik duvarının sanal ağındaki ayrı bir alt ağ içinde gerekli araçları içeren bir sıçrama kutusu yapılandırmaktır.
 
 Aşağıdaki komutla onaylanan aralığa başka bir IP adresi ekleyin
 
@@ -364,9 +355,9 @@ az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/
  az aks get-credentials -g $RG -n $AKS_NAME
  ```
 
-### <a name="setup-the-internal-load-balancer"></a>İç yük dengeleyiciyi ayarlayın
+### <a name="set-up-the-internal-load-balancer"></a>İç yük dengeleyiciyi ayarlama
 
-AKS, küme ile [iç yük dengeleyici](internal-lb.md)olarak ayarlanabilir bir yük dengeleyici dağıtmıştır.
+AKS, bir [iç yük dengeleyici](internal-lb.md)olarak ayarlanabilen kümeyle birlikte yük dengeleyici dağıtmıştır.
 
 İç yük dengeleyici oluşturmak için, aşağıdaki örnekte gösterildiği gibi, Service Type LoadBalancer ve Azure-Load-dengeleyici-Internal Annotation ile iç-lb. YAML adlı bir hizmet bildirimi oluşturun:
 
@@ -542,3 +533,4 @@ Bkz. [yol tablosu oluşturma, değiştirme veya silme](https://docs.microsoft.co
 
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[byo-route-table]: configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet

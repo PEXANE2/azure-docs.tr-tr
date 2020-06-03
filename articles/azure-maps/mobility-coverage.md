@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 85988d74d21c411586a368e12972450116259a45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db53e09957b5907e9b742c264b6a41f51041df1c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334394"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310249"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure haritalar Mobility kapsamı
 
@@ -81,7 +81,7 @@ Aşağıdaki tabloda Azure Maps Mobility hizmeti için kapsam bilgileri sağlanm
 | Belarus        | Gomel, Grodno, Polotsk & Novopolotsk, Zhlobin, Vileyıka, Maladziečna, Minsk, Rechyıtsa | 
 | Belçika        | 'Ya |
 | Bolivya        | La Paz, Santa Cruz de la Sierra | 
-| Bosna Hersek | Bosna | 
+| Bosna-Hersek | Bosna | 
 | Bulgaristan       | <p>Balchık, Blagoevgrad, Burgaz, Dobrich, Gabrovo, Haskovo, Kardzhali, Lovech, Nessebar, Pazardzhik, Pleven, Plovdiv, Ruse, Shumence, Sliven, Stara Zagora, Vratsa, Yambol, Varna, Veliko, Sofia</P> |
 | Hırvatistan | Crikvenika, Dubrovnik, Rijeka, Slovanski Brod, Zagreb | 
 | Kıbrıs | Larnaca, Limassol, Nicoya | 

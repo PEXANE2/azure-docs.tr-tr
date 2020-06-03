@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 91e7b1c0be9a38c3d79440f07d944d182980dc10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 038d9ff39f388d1ef7b09b951c09dbe3420858b7
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80159243"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298236"
 ---
 # <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>IoT Tak ve Kullan cihazları oluşturmak için Visual Studio ve Visual Studio Code kullanma
 
@@ -25,9 +25,9 @@ Bu makale, şunları nasıl yapacağınızı gösterir:
 - Cihaz projenizde oluşturulan kodu kullanın.
 - İskelet kodunu yeniden oluşturarak yineleyin.
 
-IoT cihazları geliştirmek için VS Code kullanma hakkında daha fazla bilgi için bkz [https://github.com/microsoft/vscode-iot-workbench](https://github.com/microsoft/vscode-iot-workbench)..
+IoT cihazları geliştirmek için VS Code kullanma hakkında daha fazla bilgi için bkz [https://github.com/microsoft/vscode-iot-workbench](https://github.com/microsoft/vscode-iot-workbench) ..
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Visual Studio Code](https://code.visualstudio.com/)'i yükler.
 
@@ -53,11 +53,11 @@ VS Code ' de, **Ctrl + Shift + P** tuşlarına basarak komut paletini açın, **
 
 - **Proje türü**. Kod Oluşturucu Ayrıca bir CMake veya Arduino projesi oluşturur. Şu anda desteklenen proje türleri şunlardır:
 
-    - Windows 'da CMake **projesi**: Windows üzerinde [CMake](https://cmake.org/) olarak derleme sistemi kullanan bir cihaz projesi için. Bu seçenek, `CMakeLists.txt` C koduyla aynı klasörde bulunan cihaz SDK yapılandırması ile birlikte oluşturulur.
-    - **Linux üzerinde CMake projesi**: [CMake](https://cmake.org/) 'i Linux üzerinde derleme sistemi olarak kullanan bir cihaz projesi için. Bu seçenek, `CMakeLists.txt` C koduyla aynı klasörde bulunan cihaz SDK yapılandırması ile birlikte oluşturulur.
+    - Windows 'da CMake **projesi**: Windows üzerinde [CMake](https://cmake.org/) olarak derleme sistemi kullanan bir cihaz projesi için. Bu seçenek, `CMakeLists.txt` C koduyla aynı klasörde bulunan CIHAZ SDK yapılandırması ile birlikte oluşturulur.
+    - **Linux üzerinde CMake projesi**: [CMake](https://cmake.org/) 'i Linux üzerinde derleme sistemi olarak kullanan bir cihaz projesi için. Bu seçenek, `CMakeLists.txt` C koduyla aynı klasörde bulunan CIHAZ SDK yapılandırması ile birlikte oluşturulur.
     - **Mxyongaıot devkit projesi**: [Mxyonga IoT devkit](https://aka.ms/iot-devkit) cihazında çalışan bir cihaz projesi için. Bu seçenek, IoT DevKit cihazında derlemek ve çalıştırmak için [vs Code](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) veya ARDUINO IDE 'de kullanabileceğiniz bir Arduino projesi oluşturur.
 
-- **CIHAZ SDK türü**. CMake 'i proje türü olarak seçerseniz, oluşturulan kodun Azure IoT C cihaz SDK 'sını nasıl dahil edileceğini yapılandırmak için bu adım aşağıdaki gibidir `CMakeLists.txt`:
+- **CIHAZ SDK türü**. CMake 'i proje türü olarak seçerseniz, oluşturulan kodun Azure IoT C cihaz SDK 'sını nasıl dahil edileceğini yapılandırmak için bu adım aşağıdaki gibidir `CMakeLists.txt` :
 
     - **Kaynak kodu aracılığıyla**: oluşturulan kod, içine dahil etmek ve birlikte oluşturmak IÇIN [cihaz SDK kaynak kodunu](https://github.com/Azure/azure-iot-sdk-c) kullanır. Bu, cihaz SDK 'Sı kaynak kodunu özelleştirdiğiniz durumlarda önerilir.
     - **Vcpkg aracılığıyla**: oluşturulan kod, üzerine eklemek ve birlikte oluşturmak için [cihaz SDK 'Sı vcpkg](https://github.com/microsoft/vcpkg/tree/master/ports/azure-iot-sdk-c) 'yi kullanır. Bu, Windows, Linux veya macOS çalıştıran cihazlar için önerilen yoldur.
@@ -92,14 +92,14 @@ Ubuntu veya de, gibi bir Linux ortamında CMake 'i kullanarak, cihaz kodunu C SD
 
 1. Bir Terminal uygulaması açın.
 
-1. Komutunu kullanarak **GCC**, **Git**, `cmake`ve tüm bağımlılıkları yükler: `apt-get`
+1. Komutunu kullanarak **GCC**, **Git**, `cmake` ve tüm bağımlılıkları yükler `apt-get` :
 
     ```bash
     sudo apt-get update
     sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
     ```
 
-    Öğesinin `cmake` sürümünün **2.8.12** üzerinde olduğunu ve **GCC** 'nin sürümünün **4.4.7**'in üzerinde olduğunu doğrulayın.
+    Öğesinin sürümünün `cmake` **2.8.12** üzerinde olduğunu ve **GCC** 'nin sürümünün **4.4.7**'in üzerinde olduğunu doğrulayın.
 
     ```bash
     cmake --version
@@ -176,7 +176,7 @@ Komut satırında CMake ve Visual Studio C/C++ derleyicilerini kullanarak Window
 
     ![CMake çıkışı](media/howto-develop-with-vs-vscode/vs-cmake-output.png)
 
-1. **Çözüm Gezgini**, kök klasörde öğesine sağ tıklayın ve oluşturulan `CMakeLists.txt` kod Saplaması ' nı cihaz SDK 'sı ile derlemek için bağlam menüsünden **Oluştur** ' u seçin.
+1. **Çözüm Gezgini**, kök klasörde öğesine sağ tıklayın `CMakeLists.txt` ve oluşturulan kod Saplaması ' nı cihaz SDK 'sı ile derlemek Için bağlam menüsünden **Oluştur** ' u seçin.
 
 1. Oluşturma başarılı olduktan sonra komut isteminde, IoT Hub cihaz bağlantı dizesini parametre olarak belirten uygulamayı çalıştırın.
 
@@ -187,13 +187,13 @@ Komut satırında CMake ve Visual Studio C/C++ derleyicilerini kullanarak Window
 > [!TIP]
 > Visual Studio 'da CMake 'i kullanma hakkında daha fazla bilgi için bkz. [CMake projesi oluşturma](https://docs.microsoft.com/cpp/build/cmake-projects-in-visual-studio?view=vs-2019#building-cmake-projects) .
 
-### <a name="macos"></a>macOS
+### <a name="macos"></a>Mac OS
 
 Aşağıdaki adımlarda, CMake kullanarak macOS 'ta Device C SDK kaynak kodu ile birlikte cihaz kodunun nasıl oluşturulacağı gösterilmektedir:
 
 1. Terminal uygulamasını açın.
 
-1. Tüm bağımlılıkları yüklemek için [homebrew](https://homebrew.sh) kullanın:
+1. Tüm bağımlılıkları yüklemek için [homebrew](https://brew.sh) kullanın:
 
     ```bash
     brew update
@@ -216,7 +216,7 @@ Aşağıdaki adımlarda, CMake kullanarak macOS 'ta Device C SDK kaynak kodu ile
 
     Bu işlemin tamamlanması için birkaç dakika beklemeniz gerekebilir.
 
-1. Oluşturulan kodu içeren klasörün `cmake` altında adlı bir klasör oluşturun ve bu klasöre gidin.
+1. `cmake`Oluşturulan kodu içeren klasörün altında adlı bir klasör oluşturun ve bu klasöre gidin.
 
     ```bash
     mkdir cmake
@@ -247,10 +247,10 @@ DCM veya arabirim dosyalarınızı güncelleştirirseniz kod Oluşturucu kodu ye
 
 1. **{Project Name} için kodu yeniden oluştur**' u seçin.
 
-1. Kod Oluşturucu yapılandırdığınız önceki ayarı kullanır ve kodu yeniden oluşturur. Ancak, `main.c` ve `{project_name}_impl.c`gibi Kullanıcı kodu içerebilen dosyaların üzerine yazmaz.
+1. Kod Oluşturucu yapılandırdığınız önceki ayarı kullanır ve kodu yeniden oluşturur. Ancak, ve gibi Kullanıcı kodu içerebilen dosyaların üzerine yazmaz `main.c` `{project_name}_impl.c` .
 
 > [!NOTE]
-> Arabirim dosyanızdaki URN kimliğini güncelleştirirseniz, yeni bir arabirim olarak kabul edilir. Kodu yeniden oluşturduğunuzda, kod Oluşturucu arabirim için kod üretir ancak `{project_name}_impl.c` dosyanın özgün olanın üzerine yazmaz.
+> Arabirim dosyanızdaki URN kimliğini güncelleştirirseniz, yeni bir arabirim olarak kabul edilir. Kodu yeniden oluşturduğunuzda, kod Oluşturucu arabirim için kod üretir ancak dosyanın özgün olanın üzerine yazmaz `{project_name}_impl.c` .
 
 ## <a name="problems-and-feedback"></a>Sorunlar ve geri bildirim
 

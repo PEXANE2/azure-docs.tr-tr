@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 40285c811cd6f407c20c40bf3a90ec5b779a9c18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08a1d655d19b5e7deb81e42ca5bebdfe4f18aeef
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264407"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84297913"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: sık sorulan sorular (SSS)
 
@@ -35,9 +35,9 @@ Azure AD B2C, Microsoft Office 365 için kullanıcıların kimliğini doğrulama
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Azure AD B2C yerel hesaplar nelerdir? Azure AD 'de iş veya okul hesaplarından ne farklılık vardır?
 
-Bir Azure AD kiracısında kiracıya ait olan kullanıcılar formun `<xyz>@<tenant domain>`bir e-posta adresiyle oturum açın. , `<tenant domain>` Kiracının veya ilk `<...>.onmicrosoft.com` etki alanındaki doğrulanmış etki alanlarından biridir. Bu hesap türü bir iş veya okul hesabıdır.
+Bir Azure AD kiracısında kiracıya ait olan kullanıcılar formun bir e-posta adresiyle oturum açın `<xyz>@<tenant domain>` . , `<tenant domain>` Kiracının veya ilk etki alanındaki doğrulanmış etki alanlarından biridir `<...>.onmicrosoft.com` . Bu hesap türü bir iş veya okul hesabıdır.
 
-Azure AD B2C kiracısında çoğu uygulama, kullanıcının herhangi bir rastgele e-posta adresiyle oturum açmasını joe@comcast.netister (örneğin bob@gmail.com sarah@contoso.com,,, veya jim@live.com). Bu hesap türü yerel bir hesaptır. Yerel hesap olarak (örneğin, Ali, Bob, Sarah veya Jim) rastgele Kullanıcı adlarını da destekliyoruz. Azure portal Azure AD B2C için kimlik sağlayıcılarını yapılandırırken bu iki yerel hesap türünden birini seçebilirsiniz. Azure AD B2C kiracınızda **kimlik sağlayıcıları**' nı seçin, **yerel hesap**' ı seçin ve ardından **Kullanıcı adı**' nı seçin.
+Azure AD B2C kiracısında çoğu uygulama, kullanıcının herhangi bir rastgele e-posta adresiyle oturum açmasını ister (örneğin,,, joe@comcast.net bob@gmail.com sarah@contoso.com veya jim@live.com ). Bu hesap türü yerel bir hesaptır. Yerel hesap olarak (örneğin, Ali, Bob, Sarah veya Jim) rastgele Kullanıcı adlarını da destekliyoruz. Azure portal Azure AD B2C için kimlik sağlayıcılarını yapılandırırken bu iki yerel hesap türünden birini seçebilirsiniz. Azure AD B2C kiracınızda **kimlik sağlayıcıları**' nı seçin, **yerel hesap**' ı seçin ve ardından **Kullanıcı adı**' nı seçin.
 
 Uygulamalar için Kullanıcı hesapları, kaydolma Kullanıcı akışı, kaydolma veya oturum açma Kullanıcı akışı, Microsoft Graph API 'SI veya Azure portal aracılığıyla oluşturulabilir.
 
@@ -134,21 +134,20 @@ Evet, bkz. [dil özelleştirmesi](user-flow-language-customization.md). 36 dil i
 
 Azure AD B2C kiracınızı silmek için aşağıdaki adımları izleyin.
 
-Geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (Önizleme)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregintro).
+Yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski **uygulamalar (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
 
-#### <a name="applications"></a>[Uygulamalar](#tab/applications/)
+#### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
 1. [Azure Portal](https://portal.azure.com/) *Abonelik Yöneticisi*olarak oturum açın. Azure 'a kaydolmak için kullandığınız iş veya okul hesabını ya da aynı Microsoft hesabı kullanın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. Azure AD B2C kiracınızdaki tüm **Kullanıcı akışlarını (ilkeleri)** silin.
-1. Azure AD B2C kiracınızda kayıtlı olan tüm **uygulamaları** silin.
-1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
+1. **Uygulama kayıtları**' yi seçin ve ardından **tüm uygulamalar** sekmesini seçin.
+1. Kaydolduysanız tüm uygulamaları silin.
+1. **B2C-Extensions-App**' i silin.
 1. **Yönet** bölümünde **Kullanıcılar**’ı seçin.
 1. Her bir kullanıcıyı sırasıyla seçin (Şu anda oturum açmış olduğunuz *abonelik yönetici* kullanıcısını hariç tut). Sayfanın alt kısmındaki **Sil** ' i seçin ve istendiğinde **Evet** ' i seçin.
-1. **Yönet**altında **Uygulama kayıtları** (veya **uygulama kayıtları (eski)**) öğesini seçin.
-1. **Tüm uygulamaları görüntüle** seçeneğini belirleyin
-1. **B2C-Extensions-App**adlı uygulamayı seçin, **Sil**' i seçin ve istendiğinde **Evet** ' i seçin.
+1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
 1. **Yönet**altında **Kullanıcı ayarları**' nı seçin.
 1. Varsa, **LinkedIn hesap bağlantıları**altında **Hayır**' ı seçin ve ardından **Kaydet**' i seçin.
 1. **Yönet**altında **Özellikler** ' i seçin.
@@ -157,18 +156,19 @@ Geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (
 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
 1. **Genel bakış** sayfasında, **dizini Sil**' i seçin. İşlemi gerçekleştirmek için ekrandaki yönergeleri izleyin.
 
-#### <a name="app-registrations-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
+#### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
 1. [Azure Portal](https://portal.azure.com/) *Abonelik Yöneticisi*olarak oturum açın. Azure 'a kaydolmak için kullandığınız iş veya okul hesabını ya da aynı Microsoft hesabı kullanın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. Azure AD B2C kiracınızdaki tüm **Kullanıcı akışlarını (ilkeleri)** silin.
-1. **Uygulama kayıtları (Önizleme)** öğesini seçin ve ardından **tüm uygulamalar** sekmesini seçin.
-1. Kaydolduysanız tüm uygulamaları silin.
-1. **B2C-Extensions-App**' i silin.
+1. Azure AD B2C kiracınızda kayıtlı olan tüm **uygulamaları (eski)** silin.
+1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
 1. **Yönet** bölümünde **Kullanıcılar**’ı seçin.
 1. Her bir kullanıcıyı sırasıyla seçin (Şu anda oturum açmış olduğunuz *abonelik yönetici* kullanıcısını hariç tut). Sayfanın alt kısmındaki **Sil** ' i seçin ve istendiğinde **Evet** ' i seçin.
-1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
+1. **Yönet**'in altında **Uygulama kayıtları**nı seçin.
+1. **Tüm uygulamaları görüntüle** seçeneğini belirleyin
+1. **B2C-Extensions-App**adlı uygulamayı seçin, **Sil**' i seçin ve istendiğinde **Evet** ' i seçin.
 1. **Yönet**altında **Kullanıcı ayarları**' nı seçin.
 1. Varsa, **LinkedIn hesap bağlantıları**altında **Hayır**' ı seçin ve ardından **Kaydet**' i seçin.
 1. **Yönet**altında **Özellikler** ' i seçin.

@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 06/02/2020
 ms.author: spelluru
-ms.openlocfilehash: 46bceeb31fa38068c6c4f9f3a86ed556ad39effb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67746ebd8a16eb02b8f02d238b0e3c0125989189
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393162"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308277"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure Event Grid sistem konuları
 Azure Event Grid hizmeti, bir Azure Olay kaynağı için ilk olay aboneliği oluştururken sistem konuları oluşturur. Şu anda, Event Grid 11, 15, 2020 tarihinden önce oluşturulan konu kaynakları için sistem konuları oluşturmaz. Bu tarihte veya bu tarihten sonra oluşturduğunuz tüm konu kaynakları için Event Grid otomatik olarak sistem konuları oluşturur. Bu makalede Azure Event Grid içindeki **sistem konuları** açıklanmaktadır.
@@ -25,6 +25,9 @@ Azure depolama hesabı gibi bir Azure Olay kaynağı için ilk olay aboneliği o
 
 Sistem konusu özel konu senaryoları, diğer bir deyişle Event Grid konular ve Event Grid etki alanları için geçerli değildir. 
 
+## <a name="name"></a>Name 
+Daha önce, Azure kaynakları tarafından oluşturulan bir olay için abonelik oluşturduğunuzda, Event Grid hizmeti **rastgele oluşturulmuş bir ada**sahip bir sistem konusu otomatik olarak oluşturulur. Artık Azure portal konuyu oluştururken sistem konusu için bir ad belirtebilirsiniz. Bu sistem konu kaynağını, ölçümleri ve tanılama günlüklerini saptamak için kullanabilirsiniz.
+
 ## <a name="location"></a>Konum
 Belirli bir bölgedeki/konumdaki Azure olay kaynakları için sistem konusu, Azure Olay kaynağıyla aynı konumda oluşturulur. Örneğin, Doğu ABD bir Azure Blob depolama alanı için bir olay aboneliği oluşturursanız, sistem konusu Doğu ABD oluşturulur. Azure abonelikleri, kaynak grupları veya Azure haritaları gibi genel Azure olay kaynakları için Event Grid, **genel** konumdaki Sistem konusunu oluşturur. 
 
@@ -35,8 +38,6 @@ Kaynak grubunu depolama hesabıyla silmeye çalıştığınızda, etkilenen kayn
 
 ![Kaynak grubunu silme](./media/system-topics/delete-resource-group.png)
 
-## <a name="next-steps"></a>Sonraki adımlar
-Aşağıdaki makalelere bakın: 
 
-- [Özel konular](custom-topics.md)
-- [Etki alanları](event-domains.md)
+## <a name="next-steps"></a>Sonraki adımlar
+Aşağıdaki makaleye bakın: [sistem konularını oluşturma, görüntüleme ve yönetme](create-view-manage-system-topics.md).

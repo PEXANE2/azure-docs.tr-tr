@@ -2,29 +2,30 @@
 title: include dosyası
 description: include dosyası
 services: event-hubs
-author: sethmanheim
+author: spelluru
 ms.service: event-hubs
 ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 2aca4f2c236112b80e9fc985cf80ccad6d82bde3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 333f2317fcc834a10b7336bbda9a43ba16a7ad38
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75901813"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317694"
 ---
 Aşağıdaki tablolarda [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)'a özgü kotalar ve sınırlamalar sağlanmaktadır. Event Hubs fiyatlandırması hakkında daha fazla bilgi için bkz. [Event Hubs fiyatlandırması](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-Temel, standart ve adanmış katmanlarda aşağıdaki sınırlar yaygındır. 
+Aşağıdaki sınırlar temel ve Standart katmanlarda ortaktır. 
 
 | Sınır | Kapsam | Notlar | Değer |
 | --- | --- | --- | --- |
 | Abonelik başına Event Hubs ad alanı sayısı |Abonelik |- |100 |
 | Ad alanı başına Olay Hub 'ları sayısı |Ad Alanı |Yeni bir olay hub 'ı oluşturmaya yönelik sonraki istekler reddedilir. |10 |
 | Olay Hub 'ı başına bölüm sayısı |Varlık |- |32 |
-| Bir olay hub 'ı adının en büyük boyutu |Varlık |- |50 karakter |
+| Bir olay hub 'ı adının en büyük boyutu |Varlık |- | 256 karakter |
+| Bir tüketici grubu adının en büyük boyutu |Varlık |- | 256 karakter |
 | Tüketici grubu başına dönem olmayan alıcıların sayısı |Varlık |- |5 |
 | En fazla üretilen iş birimi |Ad Alanı |Üretilen iş birimi sınırının aşılması verilerinizin kısıtlanmasına neden olur ve [sunucu meşgul özel durumu](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)oluşturur. Standart katman için daha fazla sayıda üretilen iş birimi istemek üzere bir [destek isteği](/azure/azure-portal/supportability/how-to-create-azure-support-request)dosyası. [Ek üretilen iş birimleri](../articles/event-hubs/event-hubs-auto-inflate.md) , taahhüt edilen satın alma esasına göre 20 blok halinde kullanılabilir. |20 |
 | Ad alanı başına yetkilendirme kuralı sayısı |Ad Alanı|Yetkilendirme kuralı oluşturma için sonraki istekler reddedilir.|12 |
@@ -45,10 +46,10 @@ Temel, standart ve adanmış katmanlarda aşağıdaki sınırlar yaygındır.
 ### <a name="event-hubs-dedicated---quotas-and-limits"></a>Event Hubs Ayrılmış-kotalar ve sınırlar
 Event Hubs Ayrılmış teklif, en az 4 saatlik kullanım ile sabit bir aylık fiyatla faturalandırılır. Adanmış katman, standart planın tüm özelliklerini sunar, ancak yoğun iş yükleri olan müşterilere yönelik kurumsal ölçekli kapasite ve sınırlara sahiptir. 
 
-| Özellik | Sınırlar |
+| Öne çıkan özelliği | Sınırlar |
 | --- | ---|
 | Bant genişliği |  20 cu düzeyinde kapsanır |
-| Ad Alanları | CU başına 50 |
+| Ad alanları | CU başına 50 |
 | Event Hubs |  ad alanı başına 1000 |
 | Giriş olayları | Dahil |
 | İleti boyutu | 1 MB |

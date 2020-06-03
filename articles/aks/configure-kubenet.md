@@ -3,14 +3,14 @@ title: Azure Kubernetes Service (AKS) ' de Kubernetes kullanan ağını yapılan
 description: Azure Kubernetes Service 'te (AKS) Kubernetes kullanan (temel) ağını, var olan bir sanal ağ ve alt ağa bir AKS kümesi dağıtmak için nasıl yapılandıracağınızı öğrenin.
 services: container-service
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 060e98f2617da503068911ec1e687241d909dabc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a393e87963eabf2e3cf41148233c0e350dc6e380
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120921"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309677"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde kendi IP adresi aralıklarınız ile Kubernetes kullanan ağını kullanma
 
@@ -20,7 +20,7 @@ Varsayılan olarak, aks kümeleri [Kubernetes kullanan][kubenet]kullanır ve siz
 
 Bu makalede, bir aks kümesi için bir sanal ağ alt ağı oluşturmak ve kullanmak için *Kubernetes kullanan* Networking 'in nasıl kullanılacağı gösterilmektedir. Ağ seçenekleri ve konuları hakkında daha fazla bilgi için bkz. [Kubernetes ve AKS Için ağ kavramları][aks-network-concepts].
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * AKS kümesinin sanal ağı giden internet bağlantısına izin vermelidir.
 * Aynı alt ağda birden fazla AKS kümesi oluşturmayın.
@@ -139,7 +139,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Şimdi, [az role atama Create][az-role-assignment-create] komutunu kullanarak sanal ağ üzerinde aks kümesi *katılımcısı* izinleriniz için hizmet sorumlusu atayın. Hizmet sorumlusunu oluşturmak için önceki komutun çıktısında gösterildiği gibi kendi * \< AppID>* sağlayın:
+Şimdi, [az role atama Create][az-role-assignment-create] komutunu kullanarak sanal ağ üzerinde aks kümesi *katılımcısı* izinleriniz için hizmet sorumlusu atayın. *\<appId>* Hizmet sorumlusu oluşturmak için önceki komutun çıktısında gösterilen şekilde kendinizinkini sağlayın:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -147,7 +147,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Sanal ağda AKS kümesi oluşturma
 
-Artık bir sanal ağ ve alt ağ oluşturdunuz ve bu ağ kaynaklarını kullanmak için bir hizmet sorumlusu için oluşturduğunuz ve atanan izinler. Şimdi [az aks Create][az-aks-create] komutunu kullanarak sanal ağınızda ve alt ağınızda bir aks kümesi oluşturun. Hizmet sorumlusu oluşturmak için önceki komutun çıktısında gösterildiği gibi, kendi hizmet sorumlusu * \< AppID>* ve * \< parola>* tanımlayın.
+Artık bir sanal ağ ve alt ağ oluşturdunuz ve bu ağ kaynaklarını kullanmak için bir hizmet sorumlusu için oluşturduğunuz ve atanan izinler. Şimdi [az aks Create][az-aks-create] komutunu kullanarak sanal ağınızda ve alt ağınızda bir aks kümesi oluşturun. *\<appId>* *\<password>* Hizmet sorumlusunu oluşturmak için önceki komutun çıktısında gösterildiği gibi, kendi hizmet sorumlunuzu tanımlayın.
 
 Aşağıdaki IP adresi aralıkları, küme oluşturma işleminin parçası olarak da tanımlanmıştır:
 
@@ -195,7 +195,22 @@ az aks create \
     --client-secret <password>
 ```
 
-Bir AKS kümesi oluşturduğunuzda, bir ağ güvenlik grubu ve yol tablosu oluşturulur. Bu ağ kaynakları AKS denetim düzlemi tarafından yönetilir. Ağ güvenlik grubu, düğümlerinizin sanal NIC 'Leri ile otomatik olarak ilişkilendirilir. Yol tablosu, sanal ağ alt ağıyla otomatik olarak ilişkilendirilir. Ağ güvenlik grubu kuralları ve yol tabloları, hizmetleri oluşturup kullanıma sunan otomatik olarak güncelleştirilir.
+Bir AKS kümesi oluşturduğunuzda, otomatik olarak bir ağ güvenlik grubu ve yol tablosu oluşturulur. Bu ağ kaynakları AKS denetim düzlemi tarafından yönetilir. Ağ güvenlik grubu, düğümlerinizin sanal NIC 'Leri ile otomatik olarak ilişkilendirilir. Yol tablosu, sanal ağ alt ağıyla otomatik olarak ilişkilendirilir. Ağ güvenlik grubu kuralları ve yol tabloları, hizmetleri oluşturup kullanıma sunan otomatik olarak güncelleştirilir.
+
+## <a name="bring-your-own-subnet-and-route-table-with-kubenet"></a>Kubernetes kullanan ile kendi alt ağını ve yol tablonuzu getirme
+
+Kubenet ile, küme alt ağlarınız üzerinde bir yol tablosu bulunmalıdır. AKS, kendi mevcut alt ağlarınızı ve yol tablonuzu getirme desteği sunmaktadır.
+
+Özel alt ağınız bir yol tablosu içermiyorsa, AKS sizin için bir tane oluşturur ve ona kurallar ekler. Kümenizi oluştururken özel alt ağınız bir yol tablosu içeriyorsa, AKS, küme işlemleri sırasında mevcut yol tablosunu ve bulut sağlayıcısı işlemlerine uygun olarak güncelleştirme kurallarını onaylar.
+
+Sınırlamalar:
+
+* Küme oluşturmadan önce izinler atanmalıdır, özel alt ağınız ve özel yol tablonuz için yazma izinlerine sahip bir hizmet sorumlusu kullandığınızdan emin olun.
+* Yönetilen kimlikler Şu anda kubenet içindeki özel yol tabloları ile desteklenmemektedir.
+* AKS kümesini oluşturmadan önce özel bir yol tablosunun alt ağ ile ilişkilendirilmesi gerekir. Bu yol tablosu güncelleştirilemez ve AKS kümesini oluşturmadan önce tüm yönlendirme kuralları ilk yol tablosundan eklenmelidir veya çıkarılmalıdır.
+* Bir AKS sanal ağı içindeki tüm alt ağların aynı yol tablosuyla ilişkilendirilmesi gerekir.
+* Her AKS kümesinin benzersiz bir yol tablosu kullanması gerekir. Birden çok küme içeren bir rota tablosunu yeniden kullanamazsınız.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: ba4acf32e13304c62ec5091670fe0b45ec3cb32c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 452cef0a65dd9c994b5d010676e402013b195ed3
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235243"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300656"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Sanal ağ eşlemesi oluşturma, değiştirme veya silme
 
@@ -86,7 +86,7 @@ Bir eşlemeyi değiştirmeden önce, gereksinimler ve kısıtlamalar ve [gerekli
 3. **Ayarlar**altında, eşlemeler ' **i seçin.**
 4. Görüntülemek veya ayarlarını değiştirmek istediğiniz eşlemeyi seçin.
 5. Uygun ayarı değiştirin. Eşleme oluşturma [adımının 5. adımında](#add-peering) her ayar için seçenekler hakkında bilgi edinin.
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
 
 **Komutlar**
 
@@ -121,7 +121,7 @@ Sanal ağların bazen iletişim kurmasını istiyorsanız, her zaman bir eşleme
 - Sanal ağlar aynı veya farklı aboneliklerde olabilir. Farklı aboneliklerde sanal ağları eşler, her iki abonelik de aynı veya farklı Azure Active Directory kiracısıyla ilişkilendirilebilir. Zaten bir AD kiracınız yoksa, [bir tane oluşturabilirsiniz](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant). Farklı Azure Active Directory kiracılar ile ilişkili aboneliklerden sanal ağlar arasında eşleme desteği portalda kullanılamaz. CLı, PowerShell veya şablonları kullanabilirsiniz.
 - Eşin sanal ağlarda çakışmayan IP adresi alanları olmalıdır.
 - Bir sanal ağ başka bir sanal ağla eşlendikten sonra sanal ağın adres alanından adres aralıklarını ekleyemez veya silemezsiniz. Adres aralıklarını ekleme veya kaldırma, eşlemeyi silme, adres aralıklarını ekleme veya kaldırma, sonra eşlemeyi yeniden oluşturma. Sanal ağlardan adres aralıklarını eklemek veya adres aralıklarını kaldırmak için bkz. [sanal ağları yönetme](manage-virtual-network.md).
-- Kaynak Yöneticisi üzerinden dağıtılmış iki sanal ağı veya klasik dağıtım modeli aracılığıyla dağıtılan bir sanal ağ ile Kaynak Yöneticisi aracılığıyla dağıtılan bir sanal ağı eşleyebilirsiniz. Klasik dağıtım modeliyle oluşturulan iki sanal ağı eşleyemezsiniz. Azure dağıtım modelleriyle ilgili bilgi sahibi değilseniz [Azure dağıtım modellerini anlama](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) makalesini okuyun. Klasik dağıtım modeliyle oluşturulan iki sanal ağı bağlamak için [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) kullanabilirsiniz.
+- Kaynak Yöneticisi üzerinden dağıtılmış iki sanal ağı veya klasik dağıtım modeli aracılığıyla dağıtılan bir sanal ağ ile Kaynak Yöneticisi aracılığıyla dağıtılan bir sanal ağı eşleyebilirsiniz. Klasik dağıtım modeliyle oluşturulan iki sanal ağı eşleyemezsiniz. Azure dağıtım modelleriyle ilgili bilgi sahibi değilseniz [Azure dağıtım modellerini anlama](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) makalesini okuyun. Klasik dağıtım modeliyle oluşturulan iki sanal ağı bağlamak için [VPN Gateway](../vpn-gateway/design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) kullanabilirsiniz.
 - Resource Manager ile oluşturulmuş olan iki sanal ağı eşlerken eşlemedeki her sanal ağ için bir eşleme yapılandırılması gerekir. Eşleme durumu için aşağıdaki türlerden birini görürsünüz: 
   - *Başlatıldı:* Birinci sanal ağdan ikinci sanal ağa eşleme oluşturduğunuzda, eşleme durumu *başlatılır*. 
   - *Bağlı:* İkinci sanal ağdan ilk sanal ağa eşleme oluşturduğunuzda, eşleme durumu *bağlanır*. İlk sanal ağ için eşleme durumunu görüntülediğinizde, durumunun *başlatıldığı* ' dan *bağlı*' ya değiştiğini görürsünüz. Her iki sanal ağ eşlemesi için de eşleme durumu *bağlanana*kadar eşleme başarılı bir şekilde kurulmadı.
@@ -146,7 +146,7 @@ Sanal ağ eşlemesi ile çalışmak için kullandığınız hesapların aşağı
 
 Hesabınız önceki rollerden birine atanmamışsa, aşağıdaki tablodan gerekli eylemlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanması gerekir:
 
-| Eylem                                                          | Adı |
+| Eylem                                                          | Name |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | A ile sanal ağ B 'ye bir eşleme oluşturmak için gereklidir. sanal ağ A 'nın sanal ağ olması gerekir (Kaynak Yöneticisi)          |
 | Microsoft. Network/virtualNetworks/eş/eylem                   | B (Kaynak Yöneticisi) sanal ağından A sanal ağına eşleme oluşturmak için gereklidir                                                       |

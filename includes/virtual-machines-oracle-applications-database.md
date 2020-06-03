@@ -2,14 +2,14 @@
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 07/10/2019
+ms.date: 06/01/2020
 ms.author: danlep
-ms.openlocfilehash: 8106b1a77f11874b1b13f41bfc9e62ea800afc98
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: b9e275cbdaf264df3d0a40f032693fd93553e520
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68361537"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317459"
 ---
 ### <a name="database-tier"></a>Veritabanı katmanı
 
@@ -17,7 +17,7 @@ Veritabanı katmanı, uygulamanın veritabanı örneklerini içerir. Veritabanı
 
 Oracle DB kullanmak tercih ediyorsanız, veritabanı örneği Azure Market 'te bulunan Oracle DB görüntüleri aracılığıyla Azure 'da dağıtılabilir. Alternatif olarak, Oracle DB OCı üzerinde bir PaaS modelinde dağıtmak için Azure ile OCı arasındaki Interconnect 'i de kullanabilirsiniz.
 
-Oracle RAC için, IaaS modelinde veya PaaS modelinde OCı olarak Azure CloudSimple üzerinde Oracle RAC dağıtımı yapabilirsiniz. İki düğümlü bir RAC sistemi kullanmanız önerilir. 
+Oracle RAC için PaaS modelinde OCı kullanabilirsiniz. İki düğümlü bir RAC sistemi kullanmanız önerilir. IaaS modelinde Azure CloudSimple üzerinde Oracle RAC dağıtmak mümkün olsa da, Oracle tarafından desteklenen bir yapılandırma değildir. [Yetkili bulut ortamları için uygun Oracle programları](http://www.oracle.com/us/corporate/pricing/authorized-cloud-environments-3493562.pdf)bölümüne bakın.
 
 Son olarak, sınava veri sistemleri için OCı bağlantısını kullanın ve bu verileri OCı 'da dağıtın. Yukarıdaki önceki mimari diyagramda, iki alt ağ arasında OCı halinde dağıtılan bir sınava veri sistemi gösterilmektedir.
 

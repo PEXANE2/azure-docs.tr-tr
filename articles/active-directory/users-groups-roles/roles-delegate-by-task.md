@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fc447b97b35cefbe2ab8d44db6f9f6279c8533e
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 4837b654e5b538dda6f55eae9b15ddf0c5604693
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236225"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299477"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory 'de yönetici görevine göre yönetici rolleri
 
@@ -203,7 +203,7 @@ Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
 Oturum açma günlüklerini oku | Rapor okuyucu | Güvenlik okuyucusu, Güvenlik Yöneticisi
 
-## <a name="multi-factor-authentication"></a>Çok faktörlü kimlik doğrulaması
+## <a name="multi-factor-authentication"></a>Multi-factor authentication
 
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
@@ -274,6 +274,8 @@ Tüm yapılandırmaları Oku | Varsayılan Kullanıcı rolü ([bkz. belgeler](ht
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
 Kimlik doğrulama yöntemlerini yapılandırma | Genel Yönetici | 
+Parola korumasını yapılandırma | Güvenlik yöneticisi
+Akıllı kilitlemeyi yapılandırma | Güvenlik yöneticisi
 Tüm yapılandırmaları Oku | Genel okuyucu | 
 
 ## <a name="security---conditional-access"></a>Güvenlik-koşullu erişim

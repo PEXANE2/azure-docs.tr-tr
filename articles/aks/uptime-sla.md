@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: references_regions
-ms.openlocfilehash: 986bb835f319cebf3006d7e1bd31bd7f04a1ae82
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2df0ad675f03b25363ab0f5b13dceb762a657ed7
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194003"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299562"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes hizmeti (AKS) çalışma süresi SLA 'Sı
 
@@ -26,18 +26,6 @@ Müşteriler, bir hizmet düzeyi hedefi (SLO 99,5) olan sınırsız sayıda ücr
 ## <a name="sla-terms-and-conditions"></a>SLA hüküm ve koşulları
 
 Çalışma süresi SLA 'Sı ücretli bir özelliktir ve küme başına etkindir. Çalışma süresi SLA fiyatlandırması, ayrı kümelerin boyutuna göre değil, farklı kümelerin sayısıyla belirlenir. Daha fazla bilgi için [çalışma SÜRESI SLA fiyatlandırma ayrıntılarını](https://azure.microsoft.com/pricing/details/kubernetes-service/) görüntüleyebilirsiniz.
-
-## <a name="region-availability"></a>Bölge kullanılabilirliği
-
-Çalışma süresi SLA 'Sı aşağıdaki bölgelerde kullanılabilir:
-
-* Doğu Avustralya
-* Orta Kanada
-* Doğu ABD
-* Doğu ABD 2
-* Orta Güney ABD
-* Güneydoğu Asya
-* Batı ABD 2
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 

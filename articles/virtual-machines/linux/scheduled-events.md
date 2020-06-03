@@ -5,14 +5,14 @@ author: mimckitt
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 02/22/2018
+ms.date: 06/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: 7c33f29ab00605f68d41358b79284bf49188fece
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: c888a28607101cdf41fcd9b47cf25a2fc5da6337
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715877"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299528"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux sanal makineleri için Zamanlanan Olaylar
 
@@ -52,7 +52,7 @@ Zamanlanan olaylar şu şekilde dağıtılır:
 
 - Tek başına sanal makineler.
 - Bir bulut hizmetindeki tüm VM 'Ler.
-- Bir kullanılabilirlik kümesi/kullanılabilirlik bölgesindeki tüm VM 'Ler. 
+- Bir kullanılabilirlik kümesindeki tüm VM 'Ler.
 - Ölçek kümesi yerleştirme grubundaki tüm VM 'Ler. 
 
 Sonuç olarak, `Resources` hangi VM 'lerin etkilendiğini belirlemek için olaydaki alanı kontrol edin.
@@ -60,15 +60,17 @@ Sonuç olarak, `Resources` hangi VM 'lerin etkilendiğini belirlemek için olayd
 ### <a name="endpoint-discovery"></a>Uç nokta bulma
 VNET etkin VM 'Ler için Metadata Service statik olmayan statik bir IP 'den kullanılabilir `169.254.169.254` . Zamanlanan Olaylar en son sürümü için tam uç nokta şunlardır: 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01`
 
 VM bir sanal ağ içinde oluşturulmadıysa, bulut hizmetleri ve klasik VM 'Ler için varsayılan durumlar olarak, kullanılacak IP adresini bulması için ek mantık gerekir. [Konak uç noktasını bulmayı](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)öğrenmek için bu örneğe bakın.
 
 ### <a name="version-and-region-availability"></a>Sürüm ve bölge kullanılabilirliği
 Zamanlanan Olaylar hizmeti sürümlenmiş. Sürümler zorunludur; geçerli sürüm `2019-01-01` .
 
-| Sürüm | Yayın türü | Bölgeler | Release Notes (Sürüm Notları) | 
+| Sürüm | Yayın türü | Bölgeler | Sürüm Notları | 
 | - | - | - | - | 
+| 2019-08-01 | Genel kullanılabilirlik | Tümü | <li> EventSource için destek eklendi |
+| 2019-04-01 | Genel kullanılabilirlik | Tümü | <li> Olay açıklaması için destek eklendi |
 | 2019-01-01 | Genel kullanılabilirlik | Tümü | <li> Sanal Makine Ölçek Kümeleri için destek eklendi EventType ' Terminate ' |
 | 2017-11-01 | Genel kullanılabilirlik | Tümü | <li> Nokta VM çıkarma olay türü ' preempt ' için destek eklendi<br> | 
 | 2017-08-01 | Genel kullanılabilirlik | Tümü | <li> IaaS VM 'lerinin kaynak adlarından eklenmiş alt çizgi kaldırıldı<br><li>Tüm istekler için meta veri üst bilgisi gereksinimi zorlandı | 
@@ -88,7 +90,7 @@ Azure portal, API, CLı veya PowerShell aracılığıyla Kullanıcı tarafından
 
 Bir VM 'yi yeniden başlatırsanız, türüne sahip bir olay `Reboot` zamanlanır. Bir VM 'yi yeniden dağıtırsanız, türüne sahip bir olay `Redeploy` zamanlanır.
 
-## <a name="use-the-api"></a>API'yi kullanma
+## <a name="use-the-api"></a>API’yi kullanma
 
 ### <a name="headers"></a>Üst Bilgiler
 Metadata Service sorgulayıp, `Metadata:true` isteğin istem dışı olarak yeniden yönlendirilmemesini sağlamak için üst bilgiyi sağlamanız gerekir. `Metadata:true`Üst bilgi tüm zamanlanmış olaylar istekleri için gereklidir. Üst bilgiyi istek içine ekleme hatası, Metadata Service ' den gelen bir "Hatalı Istek" yanıtı ile sonuçlanır.
@@ -98,7 +100,7 @@ Aşağıdaki çağrıyı yaparak Zamanlanmış olaylar için sorgulama yapabilir
 
 #### <a name="bash"></a>Bash
 ```
-curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
 ```
 
 Bir yanıt, Zamanlanmış olaylar dizisi içerir. Boş bir dizi, şu anda hiçbir olayın planlanmadığını gösterir.
@@ -113,7 +115,9 @@ Zamanlanan olayların olduğu durumlarda, yanıt bir olay dizisi içerir.
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
-            "NotBefore": {timeInUTC},              
+            "NotBefore": {timeInUTC},       
+            "Description": {eventDescription},
+            "EventSource" : "Platform" | "User",
         }
     ]
 }
@@ -128,6 +132,8 @@ Zamanlanan olayların olduğu durumlarda, yanıt bir olay dizisi içerir.
 | Kaynaklar| Bu olayın etkilediği kaynakların listesi. Listenin, en çok bir [güncelleştirme etki](manage-availability.md)alanından makineler içermesi garanti edilir, ancak bu, ud 'deki tüm makineleri içermeyebilir. <br><br> Örnek: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Bu olayın durumu. <br><br> Değerler: <ul><li>`Scheduled`: Bu olay, özellikte belirtilen süreden sonra başlayacak şekilde zamanlandı `NotBefore` .<li>`Started`: Bu olay başlatıldı.</ul> Hiç `Completed` veya benzer bir durum sağlanmamıştır. Olay tamamlandığında olay artık döndürülmez.
 | NotBefore| Bu olayın başlayabileceği zaman. <br><br> Örnek: <br><ul><li> Mon, 19 Eyl 2016 18:29:47 GMT  |
+| Description | Bu olayın açıklaması. <br><br> Örnek: <br><ul><li> Ana bilgisayar sunucusu bakımda. |
+| EventSource | Olayın Başlatıcısı. <br><br> Örnek: <br><ul><li> `Platform`: Bu olay, platfrom tarafından başlatılır. <li>`User`: Bu olay kullanıcı tarafından başlatılır. |
 
 ### <a name="event-scheduling"></a>Olay zamanlaması
 Her olay, gelecekte olay türüne göre en az bir süre zamanlanır. Bu zaman, bir olayın `NotBefore` özelliğinde yansıtılır. 
@@ -197,9 +203,14 @@ def handle_scheduled_events(data):
         eventtype = evt['EventType']
         resourcetype = evt['ResourceType']
         notbefore = evt['NotBefore'].replace(" ", "_")
+    description = evt['Description']
+    eventSource = evt['EventSource']
         if this_host in resources:
             print("+ Scheduled Event. This host " + this_host +
-                " is scheduled for " + eventtype + " not before " + notbefore)
+                " is scheduled for " + eventtype + 
+        " by " + eventSource + 
+        " with description " + description +
+        " not before " + notbefore)
             # Add logic for handling events here
 
 

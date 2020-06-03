@@ -2,20 +2,20 @@
 title: Spark kullanarak Cassandra API tablo verilerini okuma
 titleSufix: Azure Cosmos DB
 description: Bu makalede Azure Cosmos DB Cassandra API tablolarından verilerin nasıl okunacağı açıklanır.
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 06/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 01a9582062d8eb0d039473a03901fc83fe179020
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c01d9970de1ab610333c129505cef75dfcaa35b1
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60893419"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309739"
 ---
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Spark kullanarak Azure Cosmos DB Cassandra API tablolarından veri okuma
 
@@ -83,7 +83,7 @@ readBooksDF.show
 
 ### <a name="apply-filters"></a>Filtreleri uygulama
 
-Koşul itme Şu anda desteklenmiyor, aşağıdaki örnekler istemci tarafı filtrelemeyi yansıtır. 
+Daha iyi iyileştirilmiş Spark sorgularına izin vermek için koşulları veritabanına gönderebilirsiniz. Koşul, genellikle WHERE yan tümcesinde bulunan true veya false döndüren bir sorgu üzerinde koşuldur. Bir koşul gönderimi, veritabanından alınan giriş sayısını azaltarak ve sorgu performansını geliştirerek veritabanı sorgusundaki verileri filtreler. Spark veri kümesi API 'SI varsayılan olarak, geçerli WHERE yan tümcelerini veritabanına otomatik olarak gönderir. 
 
 ```scala
 val readBooksDF = spark
@@ -102,6 +102,10 @@ readBooksDF.printSchema
 readBooksDF.explain
 readBooksDF.show
 ```
+
+Fiziksel planın PushedFilters bölümü, GreaterThan Push-ın filtresini içerir. 
+
+![bölümler](./media/cassandra-spark-read-ops/pushdown-predicates.png)
 
 ## <a name="rdd-api"></a>RDD APı 'SI
 

@@ -5,13 +5,13 @@ ms.topic: article
 author: karolz-ms
 ms.author: karolz
 ms.reviewer: danlep
-ms.date: 02/10/2020
-ms.openlocfilehash: 0608ca0e0e53acf2f19910a7f1107dacf67d4e61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/28/2020
+ms.openlocfilehash: fbf5dfd68b823b600b11cad3643e5d4004b85ff5
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77154900"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309824"
 ---
 # <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Azure Container Registry 'den bir Kubernetes kümesine görüntü çekme
 
@@ -20,7 +20,7 @@ ms.locfileid: "77154900"
 > [!TIP]
 > Yönetilen [Azure Kubernetes hizmetini](../aks/intro-kubernetes.md)kullanıyorsanız, küme Için hedef Azure Container Registry ile [kümenizi de tümleştirebilirsiniz](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) . 
 
-Bu makalede, zaten özel bir Azure Container Registry oluşturmuş olduğunuz varsayılmaktadır. Ayrıca, `kubectl` bir Kubernetes kümesine sahip olmanız ve komut satırı aracı aracılığıyla erişilebilir olması gerekir.
+Bu makalede, zaten özel bir Azure Container Registry oluşturmuş olduğunuz varsayılmaktadır. Ayrıca, bir Kubernetes kümesine sahip olmanız ve komut satırı aracı aracılığıyla erişilebilir olması gerekir `kubectl` .
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
@@ -36,45 +36,45 @@ Bu komut, hizmet sorumlusu için yeni ve geçerli bir parola döndürür.
 
 Kubernetes, kayıt defterinizde kimlik doğrulaması yapmak için gereken bilgileri depolamak için bir *resim çekme gizli anahtarı* kullanır. Bir Azure Container Registry için çekme gizli dizisi oluşturmak için hizmet sorumlusu KIMLIĞI, parola ve kayıt defteri URL 'sini sağlarsınız. 
 
-Aşağıdaki `kubectl` komutla bir resim çekme gizli dizisi oluşturun:
+Aşağıdaki komutla bir resim çekme gizli dizisi oluşturun `kubectl` :
 
 ```console
 kubectl create secret docker-registry <secret-name> \
-  --namespace <namespace> \
-  --docker-server=https://<container-registry-name>.azurecr.io \
-  --docker-username=<service-principal-ID> \
-  --docker-password=<service-principal-password>
+    --namespace <namespace> \
+    --docker-server=<container-registry-name>.azurecr.io \
+    --docker-username=<service-principal-ID> \
+    --docker-password=<service-principal-password>
 ```
 burada:
 
-| Değer | Açıklama |
+| Değer | Description |
 | :--- | :--- |
 | `secret-name` | Resim çekme parolasının adı, örneğin *ACR-sır* |
 | `namespace` | Gizli anahtarı yerleştirmek için Kubernetes ad alanı <br/> Yalnızca parolayı varsayılan ad alanından başka bir ad alanına yerleştirmek istiyorsanız gereklidir |
-| `container-registry-name` | Azure Container Registry 'nizin adı |
+| `container-registry-name` | Azure Container Registry 'nizin adı, örneğin, *myregistry*<br/><br/>, `--docker-server` Kayıt defteri oturum açma sunucusunun tam adı  |
 | `service-principal-ID` | Kayıt defterinize erişmek için Kubernetes tarafından kullanılacak hizmet sorumlusunun KIMLIĞI |
 | `service-principal-password` | Hizmet sorumlusu parolası |
 
 ## <a name="use-the-image-pull-secret"></a>Görüntü çekme gizli anahtarını kullanma
 
-Görüntü çekme gizli anahtarını oluşturduktan sonra, Kubernetes Pod ve dağıtımları oluşturmak için bunu kullanabilirsiniz. Dağıtım dosyasında altında `imagePullSecrets` gizli anahtar adı belirtin. Örneğin:
+Görüntü çekme gizli anahtarını oluşturduktan sonra, Kubernetes Pod ve dağıtımları oluşturmak için bunu kullanabilirsiniz. Dağıtım dosyasında altında gizli anahtar adı belirtin `imagePullSecrets` . Örneğin:
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: your-awesome-app-pod
+  name: my-awesome-app-pod
   namespace: awesomeapps
 spec:
   containers:
     - name: main-app-container
-      image: your-awesome-app:v1
+      image: myregistry.azurecr.io/my-awesome-app:v1
       imagePullPolicy: IfNotPresent
   imagePullSecrets:
     - name: acr-secret
 ```
 
-Yukarıdaki örnekte, `your-awesome-app:v1` Azure Container Registry 'den çekilecek görüntünün adıdır ve `acr-secret` kayıt defterine erişmek için oluşturduğunuz çekme parolasının adıdır. Pod 'u dağıttığınızda, Kubernetes kümede zaten mevcut değilse görüntüyü Kayıt defterinizden otomatik olarak çeker.
+Yukarıdaki örnekte, `my-awesome-app:v1` Azure Container Registry 'den çekilecek görüntünün adıdır ve `acr-secret` kayıt defterine erişmek için oluşturduğunuz çekme parolasının adıdır. Pod 'u dağıttığınızda, Kubernetes kümede zaten mevcut değilse görüntüyü Kayıt defterinizden otomatik olarak çeker.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a222e5a0602a676872eb8119e565f243f2ecc1b4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c23528fbb60b471a7613f372fe5316a4883ae733
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742927"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310623"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX uygulama iliştirmeyi ayarlama
 
 > [!IMPORTANT]
-> MSIX uygulaması iliştirme Şu anda özel önizlemededir.
+> MSIX uygulama iliştirme Şu anda genel önizlemededir.
 > Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu konu başlığı altında, bir Windows sanal masaüstü ortamında MSIX uygulama iliştirme 'yi ayarlama işleminde size yol gösterilir.
@@ -28,13 +28,14 @@ Bu konu başlığı altında, bir Windows sanal masaüstü ortamında MSIX uygul
 Başlamadan önce, MSIX uygulama iliştirme 'yi yapılandırmak için gerekenler şunlardır:
 
 - MSIX uygulama iliştirme API 'Leri desteğiyle Windows 10 sürümünü edinmek için Windows Insider portalına erişim.
-- Çalışan bir Windows sanal masaüstü dağıtımı. Bilgi için bkz. [Windows sanal masaüstü 'nde kiracı oluşturma](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).
+- Çalışan bir Windows sanal masaüstü dağıtımı. Windows sanal masaüstü Fall 2019 sürümünün nasıl dağıtılacağını öğrenmek için bkz. [Windows sanal masaüstü 'nde kiracı oluşturma](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Windows sanal masaüstü Spring 2020 sürümünün nasıl dağıtılacağını öğrenmek için, bkz. [Azure Portal bir konak havuzu oluşturma](./create-host-pools-azure-marketplace.md).
+
 - MSIX paketleme aracı
 - Windows sanal masaüstü dağıtımınızda MSIX paketinin depolanacağı bir ağ paylaşımıdır
 
-## <a name="get-the-os-image"></a>İşletim sistemi görüntüsünü al
+## <a name="get-the-os-image-from-the-technology-adoption-program-tap-portal"></a>Teknoloji benimseme programından (TAP) işletim sistemi görüntüsünü alın
 
-İlk olarak, MSIX uygulaması için kullanacağınız işletim sistemi görüntüsünü almanız gerekir. İşletim sistemi görüntüsünü almak için:
+Windows Insider portalından işletim sistemi görüntüsünü almak için:
 
 1. [Windows Insider portalını](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) açın ve oturum açın.
 
@@ -49,6 +50,21 @@ Başlamadan önce, MSIX uygulama iliştirme 'yi yapılandırmak için gerekenler
      >Şu anda, özelliği ile test edilen tek dil Ingilizce 'dir. Diğer dilleri seçebilirsiniz, ancak tasarlanan gibi görünmeyebilir.
     
 4. İndirme bağlantısı oluşturulduğunda, **64 bit indirmeyi** seçin ve yerel sabit diskinize kaydedin.
+
+## <a name="get-the-os-image-from-the-azure-portal"></a>Azure portal işletim sistemi görüntüsünü alın
+
+Azure portal işletim sistemi görüntüsünü almak için:
+
+1. [Azure Portal](https://portal.azure.com) açın ve oturum açın.
+
+2. **Sanal makine oluşturma**bölümüne gidin.
+
+3. **Temel** sekmede, **Windows 10 Enterprise multi-session, sürüm 2004**' ı seçin.
+      
+4. Sanal makine oluşturma işleminin tamamlanmasının ardından kalan yönergeleri izleyin.
+
+     >[!NOTE]
+     >Bu VM 'yi, MSIX uygulama iliştirmeyi doğrudan test etmek için kullanabilirsiniz. Daha fazla bilgi edinmek için, [MSIX için BIR VHD veya vhdx paketi oluşturmaya](#generate-a-vhd-or-vhdx-package-for-msix)devam edin. Aksi takdirde, bu bölümü okumaya devam edin.
 
 ## <a name="prepare-the-vhd-image-for-azure"></a>Azure için VHD görüntüsünü hazırlama 
 
@@ -77,7 +93,7 @@ sc config wuauserv start=disabled
 Otomatik güncelleştirmeleri devre dışı bırakıldıktan sonra, Hyper-V ' ı etkinleştirmeniz gerekir, çünkü VHD 'yi hazırlamak ve ve çıkarmak için-VHD 'yi, önbellekten çıkarmak için. 
 
 ```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```
 >[!NOTE]
 >Bu değişiklik, sanal makineyi yeniden başlatmanızı gerektirir.
@@ -187,7 +203,7 @@ Uygulamanız ortak güvenilir olmayan ya da kendinden imzalı bir sertifika kull
 5. Yükleyici, uygulamanın cihazınızda değişiklik yapmasına izin vermek isteyip istemediğinizi isterse, **Evet**' i seçin.
 6. **Tüm sertifikaları aşağıdaki depolama alanına yerleştir**' i seçin ve ardından da **Araştır**' ı seçin.
 7. Sertifika deposu Seç penceresi göründüğünde, **Güvenilen Kişiler**' i seçin ve ardından **Tamam**' ı seçin.
-8. **Son**' u seçin.
+8. **Son**'u seçin.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>MSIX uygulama iliştirme için PowerShell betikleri hazırlama
 

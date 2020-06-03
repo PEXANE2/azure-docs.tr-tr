@@ -1,16 +1,16 @@
 ---
 title: Azure Dev Spaces nasıl çalışır?
 services: azure-dev-spaces
-ms.date: 03/24/2020
+ms.date: 06/02/2020
 ms.topic: conceptual
 description: Güç Azure Dev Spaces olan süreçler açıklanmaktadır
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 99b0b3309d115b450bfca94871b6defd885349fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dca9f1246a093471cd9538d010bf78116be1b3c7
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80234979"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307376"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces nasıl çalışır?
 
@@ -22,9 +22,9 @@ Azure Dev Spaces, Kubernetes uygulamalarını hızla yinelemek ve hata ayıklama
 
 Azure Dev Spaces, Kubernetes uygulamanızı geliştirme, test etme ve AKS kümeniz bağlamında yineleme çabaları azaltır. Çabadaki Bu azalma, geliştiricilerin kendi uygulamalarının iş mantığına odaklanmasını ve hizmetlerini Kubernetes 'de çalışacak şekilde yapılandırmamasını sağlar.
 
-### <a name="connect-your-development-machine-to-aks"></a>Geliştirme makinenizi AKS 'e bağlama
+### <a name="local-process-with-kubernetes"></a>Kubernetes ile yerel Işlem
 
-Azure Dev Spaces ile geliştirme bilgisayarınızı AKS kümenize bağlayabilirsiniz ve bu kodda, geliştirme bilgisayarınızda, küme üzerinde çalışıyor gibi bir kod çalıştırmanıza ve hata ayıklamanıza olanak sağlayabilirsiniz. Azure Dev Spaces, kuruluşunuzda geliştirme makineniz ve küme arasında trafiği yeniden yönlendirmek için uzak bir aracı görevi gören bir pod çalıştırarak bağlı AKS kümeniz arasında trafiği yeniden yönlendirir. Bu trafik yeniden yönlendirme, AKS kümenizde çalışan geliştirme ve hizmetinizdeki kodların aynı AKS kümenizle gibi iletişim kurmasına olanak tanır. Geliştirme makinenizi AKS 'e bağlama hakkında daha fazla bilgi için bkz. [geliştirme BILGISAYARıNıZı aks kümenize bağlama nasıl yapılır?][how-it-works-connect].
+Kubernetes ile yerel Işlem sayesinde, geliştirme bilgisayarınızı Kubernetes kümenize bağlanarak, geliştirme bilgisayarınızda küme üzerinde çalışıyor gibi kod çalıştırmanıza ve hata ayıklamanıza olanak sağlayabilirsiniz. Azure Dev Spaces, kuruluşunuzda geliştirme bilgisayarınız ve küme arasında trafiği yeniden yönlendirmek için uzak bir aracı görevi gören bir pod çalıştırarak bağlı kümeniz arasında trafiği yeniden yönlendirir. Bu trafik yeniden yönlendirme, kümenizde çalışan geliştirme bilgisayarınızdaki ve hizmetinizdeki kodların aynı kümelemiş gibi iletişim kurmasına olanak tanır. Geliştirme bilgisayarınızı bir Kubernetes kümesine bağlama hakkında daha fazla bilgi için, [Kubernetes Ile yerel Işlemin nasıl çalıştığı hakkında][how-it-works-local-process-kubernetes]daha fazla bilgi için bkz..
 
 ### <a name="run-your-code-in-aks"></a>Kodunuzu AKS 'de çalıştırın
 
@@ -44,12 +44,12 @@ Ayrıca, birleştirme işleminden önce doğrudan kümenizdeki bir çekme isteğ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yerel geliştirme makinenizi AKS kümenize bağlamaya başlamak için bkz. [geliştirme makinenizi BIR aks kümesine bağlama][connect].
+Yerel geliştirme bilgisayarınızı AKS kümenize bağlamaya başlamak için bkz. [geliştirme bilgisayarınızı BIR aks kümesine bağlama][connect].
 
 Takım geliştirmesi için Azure Dev Spaces kullanmaya başlamak için Azure Dev Spaces hızlı başlangıçta [Takım geliştirme][quickstart-team] bölümüne bakın.
 
-[connect]: how-to/connect.md
-[how-it-works-connect]: how-dev-spaces-works-connect.md
+[connect]: how-to/local-process-kubernetes-vs-code.md
+[how-it-works-local-process-kubernetes]: how-dev-spaces-works-local-process-kubernetes.md
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

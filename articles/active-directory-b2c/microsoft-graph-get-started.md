@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 32117d4bfcf0c0af94eced095b94ab0c1b6f88af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b62f30f428a0aaf5a564e2f2d2ad8d753dff7767
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184374"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298950"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C yönetme
 
@@ -36,9 +36,11 @@ Azure AD B2C kiracınızdaki kaynakları yönetmek için Microsoft Graph API 'si
 
 * **Etkileşimli** -bir kez çalıştır görevleri için, yönetim görevlerini GERÇEKLEŞTIRMEK üzere B2C kiracısında bir yönetici hesabı kullanın. Bu mod, bir yöneticinin Microsoft Graph API 'YI çağırmadan önce kimlik bilgilerini kullanarak oturum açmasını gerektirir.
 
-* **Otomatikleştirilmiş** -zamanlanmış veya sürekli olarak çalıştırma görevleri için, bu yöntem yönetim görevlerini gerçekleştirmek için gereken izinlerle yapılandırdığınız bir hizmet hesabını kullanır. Uygulama *(istemci) kimliğini* ve OAuth 2,0 istemci kimlik bilgilerini kullanarak kimlik doğrulaması için kullanılan uygulama ve betiklerinizin bir uygulamayı kaydederek Azure AD B2C ' de "hizmet hesabı" oluşturursunuz. Bu durumda, uygulama, daha önce açıklanan etkileşimli yönteminde olduğu gibi yönetici kullanıcıyı değil Microsoft Graph API 'sini çağırmak için kendisini kendisi olarak çalışır.
+* **Otomatikleştirilmiş** -zamanlanmış veya sürekli olarak çalıştırma görevleri için, bu yöntem yönetim görevlerini gerçekleştirmek için gereken izinlerle yapılandırdığınız bir hizmet hesabını kullanır. Uygulama *(istemci) kimliğini* ve **OAuth 2,0 istemci kimlik bilgilerini** kullanarak kimlik doğrulaması için kullanılan uygulama ve betiklerinizin bir uygulamayı kaydederek Azure AD B2C ' de "hizmet hesabı" oluşturursunuz. Bu durumda, uygulama, daha önce açıklanan etkileşimli yönteminde olduğu gibi yönetici kullanıcıyı değil Microsoft Graph API 'sini çağırmak için kendisini kendisi olarak çalışır.
 
 Aşağıdaki bölümlerde gösterilen bir uygulama kaydı oluşturarak **Otomatik** etkileşim senaryosunu etkinleştirirsiniz.
+
+OAuth 2,0 istemci kimlik bilgileri verme akışı şu anda Azure AD B2C kimlik doğrulama hizmeti tarafından doğrudan desteklenmese de, Azure AD 'yi kullanarak istemci kimlik bilgileri akışını ve Azure AD B2C kiracınızdaki bir uygulama için Microsoft Identity platform/Token uç noktasını ayarlayabilirsiniz. Azure AD B2C kiracı, Azure AD kurumsal kiracılar ile bazı işlevleri paylaşır.
 
 ## <a name="register-management-application"></a>Yönetim uygulamasını Kaydet
 
@@ -73,9 +75,10 @@ Uygulamanızın veya betiğinizin kullanıcıları silmesi veya parolalarını g
 1. **Add (Ekle)** seçeneğini belirleyin. İzinlerin tam olarak yayılması birkaç dakika sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+Yönetim uygulamanızı kaydoldığınıza ve gerekli izinleri vermiş olduğunuza göre, uygulama ve hizmetleriniz (örneğin, Azure Pipelines) Microsoft Graph API 'siyle etkileşim kurmak için kimlik bilgilerini ve izinlerini kullanabilir. 
 
-Yönetim uygulamanızı kaydoldığınıza ve gerekli izinleri vermiş olduğunuza göre, uygulama ve hizmetleriniz (örneğin, Azure Pipelines) Microsoft Graph API 'siyle etkileşim kurmak için kimlik bilgilerini ve izinlerini kullanabilir.
-
+* [Azure AD'den erişim belirteci alma](https://docs.microsoft.com/graph/auth-v2-service#4-get-an-access-token)
+* [Microsoft Graph çağırmak için erişim belirtecini kullanın](https://docs.microsoft.com/graph/auth-v2-service#4-get-an-access-token)
 * [Microsoft Graph tarafından desteklenen B2C işlemleri](microsoft-graph-operations.md)
 * [Microsoft Graph ile Azure AD B2C Kullanıcı hesaplarını yönetme](manage-user-accounts-graph-api.md)
 * [Azure AD Raporlama API 'SI ile denetim günlüklerini alın](view-audit-logs.md#get-audit-logs-with-the-azure-ad-reporting-api)

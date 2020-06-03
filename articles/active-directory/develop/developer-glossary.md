@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 9709cd3b6036b384fd9212a522c191d0695b9bb4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 764600d61704378b1bc0937dd1399260a1266150
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161733"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308635"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform geliştirici sözlüğü
 
@@ -129,7 +129,7 @@ Daha fazla ayrıntı için bkz. [çok kiracılı uygulama modelini kullanarak he
 
 Bir cihaza yerel olarak yüklenen bir [istemci uygulaması](#client-application) türü. Tüm kod bir cihazda yürütüldüğü için, özel olarak/confidentially kimlik bilgilerini depolayamamasından dolayı "genel" istemci olarak kabul edilir. Daha fazla bilgi için bkz. [OAuth2 istemci türleri ve profilleri][OAuth2-Client-Types] .
 
-## <a name="permissions"></a>izinleri
+## <a name="permissions"></a>izinler
 
 [İstemci uygulaması](#client-application) , izin istekleri bildirerek bir [kaynak sunucusuna](#resource-server) erişim kazanır. İki tür mevcuttur:
 
@@ -202,7 +202,7 @@ Azure AD dizininin bir örneği Azure AD kiracısı olarak adlandırılır. Aşa
 * Kullanıcı hesaplarının ve kayıtlı uygulamaların kimlik doğrulaması
 * [Yetkilendirme uç noktası](#authorization-endpoint), [belirteç uç](#token-endpoint) noktası ve [çok kiracılı uygulamalar](#multi-tenant-application)tarafından kullanılan "ortak" uç noktası da dahil olmak üzere OAuth2 ve SAML DAHIL çeşitli protokolleri desteklemek için gereken REST uç noktaları.
 
-Azure AD kiracılar kayıt sırasında Azure ve Office 365 abonelikleri tarafından oluşturulur/ilişkilendirilir ve abonelik için kimlik & erişim yönetimi özellikleri sağlar. Azure abonelik yöneticileri Azure portal aracılığıyla ek Azure AD kiracıları da oluşturabilir. Bir kiracıya erişim sağlamak için kullanabileceğiniz çeşitli yollarla ilgili ayrıntılar için bkz. [Azure Active Directory kiracı alma][AAD-How-To-Tenant] . Abonelikler ve bir Azure AD kiracısı arasındaki ilişki hakkındaki ayrıntılar için bkz. [Azure aboneliklerinin Azure Active Directory ile ilişkilendirilmesi][AAD-How-Subscriptions-Assoc] .
+Azure AD kiracılar kayıt sırasında Azure ve Office 365 abonelikleri tarafından oluşturulur/ilişkilendirilir ve abonelik için kimlik & erişim yönetimi özellikleri sağlar. Azure abonelik yöneticileri Azure portal aracılığıyla ek Azure AD kiracıları da oluşturabilir. Bir kiracıya erişim sağlamak için kullanabileceğiniz çeşitli yollarla ilgili ayrıntılar için bkz. [Azure Active Directory kiracı alma][AAD-How-To-Tenant] . Abonelikler ve bir Azure AD kiracısı arasındaki ilişki hakkındaki ayrıntılar ve bir Azure AD kiracısına nasıl bir abonelik ilişkilendirileceğini veya bir aboneliğin ilişkilendirilmesi hakkındaki yönergeler için bkz. [Azure Active Directory kiracınıza Azure aboneliği ilişkilendirme veya ekleme][AAD-How-Subscriptions-Assoc] .
 
 ## <a name="token-endpoint"></a>belirteç uç noktası
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 6014e98d01755f29da74160fb1ef38ba29a74ba6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 661cfb4798ef553918ddc238a5388b11a54e23f9
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80547508"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298695"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede, MySQL için Azure veritabanı bağlantı mimarisinin yanı sıra trafiğin Azure 'daki ve dışındaki istemcilerden gelen MySQL için Azure veritabanı örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -44,6 +44,7 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MySQL için Azure veritabanı G
 | Doğu ABD | 40.121.158.30, 191.238.6.43  |
 | Doğu ABD 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
 | Orta Fransa | 40.79.137.0, 40.79.129.1  |
+| Güney Fransa | 40.79.177.0     |
 | Orta Almanya | 51.4.144.100     |
 | Almanya Kuzey Doğu | 51.5.144.179  |
 | Hindistan Orta | 104.211.96.159     |

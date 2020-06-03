@@ -12,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 0e2247e94b20846f19c2ed26c96a5dc53972e770
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a45160db09b3f6bf68bda3f25e40a29a1154099d
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80883822"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308498"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Hızlı başlangıç: kiracı ayarlama
 
@@ -73,4 +73,4 @@ Sosyal ve yerel hesapların oturumunu açan bir uygulama derlemeye başlamak iç
 
 * [Bir uygulamayı kaydedin](quickstart-register-app.md) ve Microsoft Identity platform ile tümleştirin. 
 * [Kimlik doğrulamanın temellerini](authentication-scenarios.md)öğrenin.
-* Abonelikler ve bir Azure AD kiracısı arasındaki ilişki hakkındaki ayrıntılar için bkz. [Azure aboneliklerinin Azure Active Directory ile ilişkilendirilmesi](../fundamentals/active-directory-how-subscriptions-associated-directory.md) .
+* Abonelikler ve bir Azure AD kiracısı arasındaki ilişki hakkındaki ayrıntılar için bkz. [Azure Active Directory kiracınıza Azure aboneliği ilişkilendirme veya ekleme](../fundamentals/active-directory-how-subscriptions-associated-directory.md) .

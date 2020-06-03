@@ -1,7 +1,7 @@
 ---
 title: Zaman içinde bir noktaya geri yükleme (ıNR)
 titleSuffix: Azure SQL Managed Instance
-description: Azure SQL yönetilen örneğindeki bir veritabanını zaman içinde önceki bir noktaya geri yükleyin.
+description: Azure SQL yönetilen örneğindeki bir veritabanını önceki bir zaman noktasına geri yükleyin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,17 +12,17 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 238d9ec814b19499e73533d067202641193aa574
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 379d5e59024174c8f6cfbc185b3514287b7d5031
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046904"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310181"
 ---
-# <a name="restore-an-azure-sql-managed-instance-database-to-a-previous-point-in-time"></a>Azure SQL yönetilen örnek veritabanını zaman içinde önceki bir noktaya geri yükleme
+# <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Azure SQL yönetilen örneğindeki bir veritabanını önceki bir zaman noktasına geri yükleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Bir veritabanını geçmişteki bir zamanda başka bir veritabanının kopyası olarak oluşturmak için belirli bir noktaya geri yükleme (ıNR) kullanın. Bu makalede, bir Azure SQL yönetilen örneği 'nde bir veritabanının bir noktadan noktaya geri yüklemesi nasıl yapılacağı açıklanır.
+Bir veritabanını geçmişteki bir zamanda başka bir veritabanının kopyası olarak oluşturmak için belirli bir noktaya geri yükleme (ıNR) kullanın. Bu makalede, Azure SQL yönetilen örneği 'nde bir veritabanının bir noktadan noktaya geri yüklemesi nasıl yapılacağı açıklanır.
 
 Zaman içinde geri yükleme, hatalardan kaynaklanan olaylar, yanlış yüklenmiş veriler veya önemli verilerin silinmesi gibi kurtarma senaryolarında yararlıdır. Bunu yalnızca test veya denetim için de kullanabilirsiniz. Yedekleme dosyaları, veritabanı ayarlarınıza bağlı olarak 7-35 gün boyunca tutulur.
 
@@ -34,19 +34,19 @@ Bir zaman noktaya geri yükleme bir veritabanını geri yükleyebilir:
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Bir SQL yönetilen örneği için zaman içindeki bir noktaya geri yükleme aşağıdaki sınırlamalara sahiptir:
+SQL yönetilen örneği için bir noktadan noktaya geri yükleme aşağıdaki sınırlamalara sahiptir:
 
-- Bir SQL yönetilen örneğinden diğerine geri yüklerken, her iki örnek de aynı abonelikte ve bölgede olmalıdır. Bölgeler arası ve çapraz abonelik geri yüklemesi şu anda desteklenmiyor.
-- Tüm SQL yönetilen örneğinin zaman içinde geri yüklenmesi mümkün değildir. Bu makalede, yalnızca olası özellikler açıklanmaktadır: SQL yönetilen örneği üzerinde barındırılan bir veritabanının zaman içindeki nokta geri yüklemesi.
+- SQL yönetilen örneği 'nin bir örneğinden diğerine geri yüklerken, her iki örnek de aynı abonelikte ve bölgede olmalıdır. Bölgeler arası ve çapraz abonelik geri yüklemesi şu anda desteklenmiyor.
+- Tüm SQL yönetilen örneğinin zaman içinde geri yüklenmesi mümkün değildir. Bu makalede yalnızca olası özellikler açıklanmaktadır: SQL yönetilen örneği üzerinde barındırılan bir veritabanının zaman içindeki nokta geri yüklemesi.
 
 > [!WARNING]
 > SQL yönetilen örneğinizin depolama boyutunu unutmayın. Geri yüklenecek verilerin boyutuna bağlı olarak, örnek depolamanın dışında kalabilirsiniz. Geri yüklenen veriler için yeterli alan yoksa farklı bir yaklaşım kullanın.
 
-Aşağıdaki tabloda, SQL yönetilen örnekleri için zaman içinde geri yükleme senaryoları gösterilmektedir:
+Aşağıdaki tabloda, SQL yönetilen örneği için zaman içinde geri yükleme senaryoları gösterilmektedir:
 
-|           |Var olan VERITABANıNı aynı SQL yönetilen örneğine geri yükleme| Var olan VERITABANıNı başka bir SQL yönetilen örneğine geri yükleme|Bırakılan DB 'yi aynı SQL yönetilen örneğine geri yükleme|Bırakılan VERITABANıNı başka bir SQL yönetilen örneğine geri yükleme|
+|           |Mevcut VERITABANıNı SQL yönetilen örneği 'nin aynı örneğine geri yükleme| Var olan VERITABANıNı başka bir SQL yönetilen örneğine geri yükleme|Bırakılan DB 'yi aynı SQL yönetilen örneğine geri yükleme|Bırakılan VERITABANıNı başka bir SQL yönetilen örneğine geri yükleme|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure portal**| Yes|No |Yes|No|
+|**Azure portal**| Yes|No |Evet|No|
 |**Azure CLI**|Yes |Yes |Hayır|Hayır|
 |**PowerShell**| Yes|Yes |Yes|Yes|
 
@@ -56,7 +56,7 @@ Azure portal, PowerShell veya Azure CLı kullanarak mevcut bir veritabanını ay
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 2. SQL yönetilen örneğinize gidin ve geri yüklemek istediğiniz veritabanını seçin.
 3. Veritabanı sayfasında **geri yükle** ' yi seçin:
 
@@ -245,7 +245,7 @@ Doğrudan SQL yönetilen örneğine bağlanın ve SQL Server Management Studio b
 ALTER DATABASE WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 ```
 
-SQL yönetilen örneğindeki veritabanınıza bağlanmak için aşağıdaki yöntemlerden birini kullanın:
+SQL yönetilen örneği 'nde veritabanınıza bağlanmak için aşağıdaki yöntemlerden birini kullanın:
 
 - [Azure sanal makinesi](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
 - [Noktadan siteye](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)

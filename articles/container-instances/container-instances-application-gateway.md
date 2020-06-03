@@ -3,12 +3,12 @@ title: Kapsayıcı grubu için statik IP adresi
 description: Bir sanal ağda kapsayıcı grubu oluşturun ve bir Azure Application Gateway kullanarak kapsayıcılı bir Web uygulamasına statik bir ön uç IP adresi sunun
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 5c3a14f93af3ecc614dc296f0a4d2815d7a64a66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a27cf20b7d04fedb0b9e0ab408de24d37f2935c7
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481798"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299171"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Bir kapsayıcı grubu için statik IP adresi kullanıma sunma
 
@@ -17,7 +17,7 @@ Bu makalede, bir Azure [Application Gateway](../application-gateway/overview.md)
 Bu makalede, bu senaryoya yönelik kaynakları oluşturmak için Azure CLı 'yi kullanırsınız:
 
 * Bir Azure sanal ağı
-* Küçük bir Web uygulamasını barındıran [Sanal ağda (Önizleme)](container-instances-vnet.md) dağıtılan bir kapsayıcı grubu
+* Küçük bir Web uygulaması barındıran [Sanal ağda](container-instances-vnet.md) dağıtılan bir kapsayıcı grubu
 * Genel ön uç IP adresine sahip bir uygulama ağ geçidi, ağ geçidinde bir Web sitesini barındırmak için bir dinleyici ve arka uç kapsayıcı grubuna bir rota
 
 Uygulama ağ geçidi çalıştığı ve kapsayıcı grubu, ağın Temsilcili alt ağında kararlı bir özel IP adresi kullanıma sunduğundan, kapsayıcı grubuna bu genel IP adresinden erişilebilir.
@@ -71,7 +71,7 @@ az network public-ip create \
 
 Önceki adımda yapılandırdığınız sanal ağda bir kapsayıcı grubu oluşturmak için aşağıdaki [az Container Create][az-container-create] öğesini çalıştırın. 
 
-Grup *Myacıubnet* alt ağına dağıtılır ve `aci-helloworld` görüntüyü çeken *AppContainer* adlı tek bir örnek içerir. Belgelerdeki diğer makalelerde gösterildiği gibi, bu görüntü, statik bir HTML sayfasına hizmet veren Node. js ' de yazılmış küçük bir Web uygulamasını paketler. 
+Grup *Myacıubnet* alt ağına dağıtılır ve görüntüyü çeken *AppContainer* adlı tek bir örnek içerir `aci-helloworld` . Belgelerdeki diğer makalelerde gösterildiği gibi, bu görüntü, statik bir HTML sayfasına hizmet veren Node. js ' de yazılmış küçük bir Web uygulamasını paketler. 
 
 ```azurecli
 az container create \
@@ -136,7 +136,7 @@ az network public-ip show \
 --output tsv
 ```
 
-Çıkış genel bir IP adresidir, şuna benzer: `52.142.18.133`.
+Çıkış genel bir IP adresidir, şuna benzer: `52.142.18.133` .
 
 Başarılı bir şekilde yapılandırıldığında çalışan Web uygulamasını görüntülemek için, tarayıcınızda ağ geçidinin genel IP adresine gidin. Başarılı erişim şuna benzerdir:
 

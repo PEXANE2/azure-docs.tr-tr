@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 4ef7e4058c4f9cb458f4036ad4b315f5e85036b1
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 95345ba864d498190186e1a366c8551be97c33f5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170724"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299727"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure Izleyici 'ye güvenli bir şekilde bağlamak için Azure özel bağlantısı 'nı kullanın
 
@@ -74,11 +74,17 @@ Her VNet yalnızca bir AMPLS kaynağına bağlanabildiğinden, aynı ağlar içi
 
 Azure Izleyici özel bağlantı kapsamı kaynağı oluşturarak başlayın.
 
-1. Azure portal **bir kaynak oluştur ' a** gidin ve **Azure Izleyici özel bağlantı kapsamını**arayın. 
-2. **Oluştur**' a tıklayın. 
-3. Bir abonelik ve kaynak grubu seçin. 
-4. AMPLS 'e bir ad verin. Kapsamın, ağ güvenlik sınırlarını yanlışlıkla kesmesine izin vermek için, kapsamın kullanılacağı amacı ve güvenlik sınırını belirten bir ad kullanmak en iyisidir. Örneğin, "AppServerProdTelem". 
+1. Azure portal **bir kaynak oluştur ' a** gidin ve **Azure Izleyici özel bağlantı kapsamını**arayın.
+
+   ![Azure Izleyici özel bağlantı kapsamını bulun](./media/private-link-security/ampls-find-1c.png)
+
+2. **Oluştur**' a tıklayın.
+3. Bir abonelik ve kaynak grubu seçin.
+4. AMPLS 'e bir ad verin. Kapsamın, ağ güvenlik sınırlarını yanlışlıkla kesmesine izin vermek için, kapsamın kullanılacağı amacı ve güvenlik sınırını belirten bir ad kullanmak en iyisidir. Örneğin, "AppServerProdTelem".
 5. **Gözden geçir + oluştur**' a tıklayın. 
+
+   ![Azure Izleyici özel bağlantı kapsamı oluştur](./media/private-link-security/ampls-create-1d.png)
+
 6. Doğrulama geçişine izin verin ve ardından **Oluştur**' a tıklayın.
 
 ## <a name="connect-azure-monitor-resources"></a>Azure Izleyici kaynaklarını bağlama
@@ -224,3 +230,6 @@ Log Analytics aracısının çözüm paketlerini indirmesini sağlamak için, uy
 |Azure Kamu | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Giden
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Giden
 
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Özel depolama](private-storage.md) hakkında bilgi edinin

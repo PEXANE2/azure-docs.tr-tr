@@ -6,8 +6,6 @@
   items:
     - name: Veri Bilimi Sanal Makinesi (DSVM) nedir?
       href: overview.md
-    - name: Coğrafi AI Veri Bilimi Sanal Makinesi nedir?
-      href: geo-ai-dsvm-overview.md
     - name: Veri Bilimi Sanal Makinesine Eklenen Araçlar
       href: tools-included.md
 - name: Hızlı Başlangıçlar
@@ -17,8 +15,6 @@
       href: provision-vm.md
     - name: Ubuntu Veri Bilimi Sanal Makinesi oluşturma
       href: dsvm-ubuntu-intro.md
-    - name: Coğrafi AI Veri Bilimi Sanal Makinesi oluşturma
-      href: provision-geo-ai-dsvm.md
 - name: Kavramlar
   items:
     - name: Derin Öğrenme ve AI çerçeveleri
@@ -45,8 +41,6 @@
       href: vm-do-ten-things.md
     - name: Linux Veri Bilimi Sanal Makinesi kullanma
       href: linux-dsvm-walkthrough.md
-    - name: Coğrafi AI Veri Bilimi Sanal Makinesi kullanma
-      href: use-geo-ai-dsvm.md
     - name: Otomatik ölçeklendirilmiş Veri Bilimi Sanal Makinesi havuzu oluşturma
       href: dsvm-pools.md
     - name: Active Directory ile tümleştirme

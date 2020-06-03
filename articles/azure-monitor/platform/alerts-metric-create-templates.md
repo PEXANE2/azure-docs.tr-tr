@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 2/24/2020
+ms.date: 6/2/2020
 ms.subservice: alerts
-ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9a1980eccb42342ebc5cb739b2c1f5a539e9f18
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677005"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299375"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager şablonu ile ölçüm uyarısı oluşturma
 
@@ -21,18 +21,18 @@ ms.locfileid: "80677005"
 Bu makalede, Azure Izleyici 'de [daha yeni ölçüm uyarılarını](../../azure-monitor/platform/alerts-metric-near-real-time.md) yapılandırmak için bir [Azure Resource Manager şablonu](../../azure-resource-manager/templates/template-syntax.md) nasıl kullanabileceğiniz gösterilmektedir. Kaynak Yöneticisi şablonlar, ortamınızda tutarlı ve tekrarlanabilir bir şekilde uyarı ayarlamanıza olanak sağlar. Daha yeni ölçüm uyarıları [Bu kaynak türleri kümesinde](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)Şu anda kullanılabilir.
 
 > [!IMPORTANT]
-> Kaynak türü için ölçüm uyarıları oluşturmaya yönelik kaynak şablonu: Azure Log Analytics çalışma alanı (yani) `Microsoft.OperationalInsights/workspaces`, ek adımlar gerektirir. Ayrıntılar için bkz. [Günlükler Için ölçüm uyarısı-kaynak şablonu](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)makalesi.
+> Kaynak türü için ölçüm uyarıları oluşturmaya yönelik kaynak şablonu: Azure Log Analytics çalışma alanı (yani) `Microsoft.OperationalInsights/workspaces` , ek adımlar gerektirir. Ayrıntılar için bkz. [Günlükler Için ölçüm uyarısı-kaynak şablonu](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)makalesi.
 
 Temel adımlar aşağıdaki gibidir:
 
 1. Aşağıdaki şablonlardan birini, uyarının nasıl oluşturulacağını açıklayan bir JSON dosyası olarak kullanın.
 2. Uyarıyı özelleştirmek için ilgili parametreler dosyasını bir JSON olarak düzenleyin ve kullanın.
-3. `metricName` Parametresi Için, [Azure izleyici desteklenen ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)' de kullanılabilen ölçümler bölümüne bakın.
+3. Parametresi için `metricName` , [Azure izleyici desteklenen ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)' de kullanılabilen ölçümler bölümüne bakın.
 4. [Herhangi bir dağıtım yöntemini](../../azure-resource-manager/templates/deploy-powershell.md)kullanarak şablonu dağıtın.
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Basit bir statik eşik ölçümü için şablon uyarısı
 
-Kaynak Yöneticisi şablonu kullanarak bir uyarı oluşturmak için, ilgili tüm özellikleri bir kaynak oluşturacak `Microsoft.Insights/metricAlerts` ve doldurmanız gerekir. Ölçüm uyarı kuralı oluşturan örnek bir şablon aşağıda verilmiştir.
+Kaynak Yöneticisi şablonu kullanarak bir uyarı oluşturmak için, `Microsoft.Insights/metricAlerts` ilgili tüm özellikleri bir kaynak oluşturacak ve doldurmanız gerekir. Ölçüm uyarı kuralı oluşturan örnek bir şablon aşağıda verilmiştir.
 
 Bu izlenecek yolun amacına uygun olarak JSON 'u simplestaticmetricalert. JSON olarak kaydedin.
 
@@ -281,7 +281,7 @@ az group deployment create \
 
 ## <a name="template-for-a-simple-dynamic-thresholds-metric-alert"></a>Basit dinamik eşikler ölçüm uyarısı için şablon
 
-Kaynak Yöneticisi şablonu kullanarak bir uyarı oluşturmak için, ilgili tüm özellikleri bir kaynak oluşturacak `Microsoft.Insights/metricAlerts` ve doldurmanız gerekir. Ölçüm uyarı kuralı oluşturan örnek bir şablon aşağıda verilmiştir.
+Kaynak Yöneticisi şablonu kullanarak bir uyarı oluşturmak için, `Microsoft.Insights/metricAlerts` ilgili tüm özellikleri bir kaynak oluşturacak ve doldurmanız gerekir. Ölçüm uyarı kuralı oluşturan örnek bir şablon aşağıda verilmiştir.
 
 Bu izlenecek yolun amacına uygun olarak JSON öğesini simpledynamicmetricalert. JSON olarak kaydedin.
 
@@ -567,7 +567,7 @@ Daha yeni ölçüm uyarıları, çok boyutlu ölçümler üzerinde uyarı vermey
 
 Bu şekilde, birden çok ölçüt içeren bir uyarı kuralında boyutlar kullanırken aşağıdaki kısıtlamalara göz önünde olun:
 - Her ölçüt içinde yalnızca boyut başına bir değer seçebilirsiniz.
-- Bir boyut değeri olarak\*"" kullanamazsınız.
+- \*Bir boyut değeri olarak "" kullanamazsınız.
 - Farklı criterions ' de yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılan bir boyut değeri, bu ölçümler için (ilgili criterions) aynı şekilde açıkça ayarlanmalıdır.
     - Aşağıdaki örnekte, hem **işlemler** hem de **SuccessE2ELatency** ölçümleri bir **apiname** boyutuna sahip olduğundan ve *Criterion1* **apiname** boyutu için *"GetBlob"* değerini belirttiğinden, Ayrıca, *criterion2* de **apiname** boyutu için bir *"GetBlob"* değeri ayarlamış olmalıdır.
 
@@ -807,7 +807,7 @@ Boyut ölçümlerinde statik ölçüm uyarı kuralı oluşturmak için aşağıd
 Tek bir uyarı kuralı birden çok ölçüm zaman serisini aynı anda izleyebilir, bu da daha az uyarı kuralına neden olur.
 
 Aşağıdaki örnekte, uyarı kuralı, **işlem** ölçümü Için **responseType** ve **apiname** boyutlarının boyut değer birleşimlerini izler:
-1. **ResponsType** -"\*" joker karakter kullanımı, gelecek değerler de dahil olmak üzere **responseType** boyutunun her bir değeri için ayrı olarak izlenen farklı bir zaman serisinin kullanılması anlamına gelir.
+1. **ResponsType** -" \* " joker karakter kullanımı, gelecek değerler de dahil olmak üzere **responseType** boyutunun her bir değeri için ayrı olarak izlenen farklı bir zaman serisinin kullanılması anlamına gelir.
 2. **Apiname** -farklı bir zaman serisi yalnızca **GetBlob** ve **PutBlob** boyut değerleri için izlenir.
 
 Örneğin, bu uyarı kuralı tarafından izlenen olası zaman serisinin bir birkaçı şunlardır:
@@ -3549,7 +3549,6 @@ Bu izlenecek yolun amacına uygun olarak JSON öğesini availabilityalert. JSON 
         ],
         "evaluationFrequency": "PT1M",
         "windowSize": "PT5M",
-        "templateType": 0,
         "criteria": {
           "odata.type": "Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria",
           "webTestId": "[resourceId('Microsoft.Insights/webtests', variables('pingTestName'))]",
@@ -3572,7 +3571,7 @@ Parametrelerin değerlerini, komut satırında veya bir parametre dosyası arac�
 
 > [!NOTE]
 >
-> `&amp`; & için HTML varlık başvurusudur. URL parametreleri hala tek bir & ayrılmıştır, ancak URL 'nin HTML 'de bahsetmeniz halinde bunu kodlamanız gerekir. Bu nedenle, pingURL parametre değerindeki "&" varsa, "`&amp`;" ile kaçış yapmanız gerekir
+> `&amp`; & için HTML varlık başvurusudur. URL parametreleri hala tek bir & ayrılmıştır, ancak URL 'nin HTML 'de bahsetmeniz halinde bunu kodlamanız gerekir. Bu nedenle, pingURL parametre değerindeki "&" varsa, ";" ile kaçış yapmanız gerekir `&amp`
 
 Aşağıdaki JSON öğesini availabilityalert. Parameters. JSON olarak kaydedin ve gereken şekilde değiştirin.
 

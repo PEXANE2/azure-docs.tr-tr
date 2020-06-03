@@ -13,12 +13,12 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 3e66cd6a05a7c616b22eefffdd9d132aa0f4d36d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: bf53afc0168417bc223a55cd73f9a97b5bb3ac47
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853977"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299987"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 'de yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
@@ -45,11 +45,11 @@ Yenileme belirteçleri, erişim belirteçleri, SAML belirteçleri, oturum belirt
 
 ### <a name="saml-tokens"></a>SAML belirteçleri
 
-SAML belirteçleri birçok Web tabanlı SAAS uygulaması tarafından kullanılır ve Azure Active Directory SAML2 protokol uç noktası kullanılarak elde edilir. Bunlar, WS-Federation kullanan uygulamalar tarafından da kullanılır. Belirtecin varsayılan yaşam süresi 1 saattir. Bir uygulamanın perspektifinden, belirtecin geçerlilik süresi belirteçteki `<conditions …>` öğenin NotOnOrAfter değeri ile belirtilir. Belirtecin geçerlilik süresi sona erdikten sonra, istemcinin yeni bir kimlik doğrulama isteği başlatması gerekir. Bu, genellikle çoklu oturum açma (SSO) oturum belirtecinin bir sonucu olarak etkileşimli oturum açmadan memnun olur.
+SAML belirteçleri birçok Web tabanlı SAAS uygulaması tarafından kullanılır ve Azure Active Directory SAML2 protokol uç noktası kullanılarak elde edilir. Bunlar, WS-Federation kullanan uygulamalar tarafından da kullanılır. Belirtecin varsayılan yaşam süresi 1 saattir. Bir uygulamanın perspektifinden, belirtecin geçerlilik süresi belirteçteki öğenin NotOnOrAfter değeri ile belirtilir `<conditions …>` . Belirtecin geçerlilik süresi sona erdikten sonra, istemcinin yeni bir kimlik doğrulama isteği başlatması gerekir. Bu, genellikle çoklu oturum açma (SSO) oturum belirtecinin bir sonucu olarak etkileşimli oturum açmadan memnun olur.
 
-NotOnOrAfter değeri, içindeki `AccessTokenLifetime` parametresi kullanılarak değiştirilebilir. `TokenLifetimePolicy` Varsa, ilkede yapılandırılan yaşam süresine ayarlanır ve beş dakikalık bir saat eğriltme faktörü olur.
+NotOnOrAfter değeri, `AccessTokenLifetime` içindeki parametresi kullanılarak değiştirilebilir `TokenLifetimePolicy` . Varsa, ilkede yapılandırılan yaşam süresine ayarlanır ve beş dakikalık bir saat eğriltme faktörü olur.
 
-`<SubjectConfirmationData>` Öğesinde belirtilen konu onayı NotOnOrAfter öğesinin belirteç ömür yapılandırmasından etkilenmediğini unutmayın. 
+Öğesinde belirtilen konu onayı NotOnOrAfter `<SubjectConfirmationData>` öğesinin belirteç ömür yapılandırmasından etkilenmediğini unutmayın. 
 
 ### <a name="refresh-tokens"></a>Belirteçleri Yenile
 
@@ -58,11 +58,11 @@ NotOnOrAfter değeri, içindeki `AccessTokenLifetime` parametresi kullanılarak 
 Gizli istemcilerle ortak istemciler arasında ayrım yapmak önemlidir, çünkü yenileme belirteçlerinin ne kadar süreyle kullanılabileceğini etkiler. Farklı istemci türleri hakkında daha fazla bilgi için bkz. [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
 
 #### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>Gizli istemci yenileme belirteçleriyle belirteç yaşam süreleri
-Gizli istemciler, bir istemci parolasını (gizli) güvenli bir şekilde depolayabilen uygulamalardır. İsteklerin kötü niyetli bir aktörden değil, güvenli istemci uygulamasından geldiğini kanıtlayabilirler. Örneğin, bir Web uygulaması Web sunucusunda bir istemci gizli dizisi depolayabildiğinden gizli bir istemcdir. Gösterilmez. Bu akışlar daha güvenli olduğundan, bu akışlara `until-revoked`verilen yenileme belirteçlerinin varsayılan yaşam süreleri, ilke kullanılarak değiştirilemez ve gönüllü parola sıfırlamaları üzerinde iptal edilmez.
+Gizli istemciler, bir istemci parolasını (gizli) güvenli bir şekilde depolayabilen uygulamalardır. İsteklerin kötü niyetli bir aktörden değil, güvenli istemci uygulamasından geldiğini kanıtlayabilirler. Örneğin, bir Web uygulaması Web sunucusunda bir istemci gizli dizisi depolayabildiğinden gizli bir istemcdir. Gösterilmez. Bu akışlar daha güvenli olduğundan, bu akışlara verilen yenileme belirteçlerinin varsayılan yaşam süreleri, `until-revoked` ilke kullanılarak değiştirilemez ve gönüllü parola sıfırlamaları üzerinde iptal edilmez.
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Ortak istemci yenileme belirteçleri ile belirteç yaşam süreleri
 
-Ortak istemciler, bir istemci parolasını (gizli) güvenli bir şekilde depolayaamaz. Örneğin, bir iOS/Android uygulaması, kaynak sahibinden bir parolayı gizli hale getirebilir, bu yüzden ortak istemci olarak kabul edilir. Belirli bir süreden daha eski olan ortak istemcilerden gelen yenileme belirteçlerinin, yeni bir erişim/yenileme belirteci çifti almasını engellemek için kaynaklar üzerinde ilkeler ayarlayabilirsiniz. (Bunu yapmak için, yenileme belirteci en fazla etkin olmayan süre özelliğini (`MaxInactiveTime`) kullanın.) Ayrıca, yenileme belirteçlerinin daha fazla kabul edilmeden önce bir süre ayarlamak için ilkeleri kullanabilirsiniz. (Bunu yapmak için, belirteç en fazla kullanım süresini Yenile özelliğini kullanın.) Bir yenileme belirtecinin kullanım süresini, bir genel istemci uygulaması kullanılırken sessizce yeniden kimlik doğrulaması yapmak yerine, kullanıcının kimlik bilgilerini ne zaman ve ne sıklıkta yeniden girmesi gerektiğini denetlemek için ayarlayabilirsiniz.
+Ortak istemciler, bir istemci parolasını (gizli) güvenli bir şekilde depolayaamaz. Örneğin, bir iOS/Android uygulaması, kaynak sahibinden bir parolayı gizli hale getirebilir, bu yüzden ortak istemci olarak kabul edilir. Belirli bir süreden daha eski olan ortak istemcilerden gelen yenileme belirteçlerinin, yeni bir erişim/yenileme belirteci çifti almasını engellemek için kaynaklar üzerinde ilkeler ayarlayabilirsiniz. (Bunu yapmak için, yenileme belirteci en fazla etkin olmayan süre özelliğini ( `MaxInactiveTime` ) kullanın.) Ayrıca, yenileme belirteçlerinin daha fazla kabul edilmeden önce bir süre ayarlamak için ilkeleri kullanabilirsiniz. (Bunu yapmak için, belirteç en fazla kullanım süresini Yenile özelliğini kullanın.) Bir yenileme belirtecinin kullanım süresini, bir genel istemci uygulaması kullanılırken sessizce yeniden kimlik doğrulaması yapmak yerine, kullanıcının kimlik bilgilerini ne zaman ve ne sıklıkta yeniden girmesi gerektiğini denetlemek için ayarlayabilirsiniz.
 
 > [!NOTE]
 > Maksimum yaş özelliği, tek bir belirtecin kullanılabileceği sürenin uzunluğudur. 
@@ -116,7 +116,7 @@ Uygulama nesneleri ve hizmet sorumlusu nesneleri arasındaki ilişki hakkında d
 
 Belirtecin geçerliliği, belirtecin kullanıldığı sırada değerlendirilir. Erişildiği uygulama üzerinde en yüksek önceliğe sahip ilke devreye girer.
 
-Burada kullanılan tüm zaman dilimlerini C# [TimeSpan](/dotnet/api/system.timespan) nesnesine göre biçimlendirilir-D. hh: mm: ss.  Bu nedenle 80 gün ve 30 dakika olabilir `80.00:30:00`.  0 olduğunda önde gelen D bırakılabilir, bu nedenle 90 dakika olur `00:90:00`.  
+Burada kullanılan tüm zaman dilimlerini C# [TimeSpan](/dotnet/api/system.timespan) nesnesine göre biçimlendirilir-D. hh: mm: ss.  Bu nedenle 80 gün ve 30 dakika olabilir `80.00:30:00` .  0 olduğunda önde gelen D bırakılabilir, bu nedenle 90 dakika olur `00:90:00` .  
 
 > [!NOTE]
 > İşte örnek bir senaryo.
@@ -208,13 +208,13 @@ Uygulamalar, hizmet sorumluları ve genel kuruluşunuz için belirteç yaşam s�
 * Web API 'sini çağıran yerel uygulama için bir ilke oluşturma
 * Gelişmiş bir ilkeyi yönetme
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Aşağıdaki örneklerde uygulamalar, hizmet sorumluları ve genel kurumunuzun ilkelerini oluşturur, güncelleştirir, bağlar ve silebilirsiniz. Azure AD 'de yeni başladıysanız, bu örneklere geçmeden önce [bir Azure AD kiracısı alma](quickstart-create-new-tenant.md) hakkında bilgi almanızı öneririz.  
 
 Başlamak için aşağıdaki adımları uygulayın:
 
 1. En son [Azure AD PowerShell modülü genel önizleme sürümünü](https://www.powershellgallery.com/packages/AzureADPreview)indirin.
-2. Azure AD `Connect` yönetici hesabınızda oturum açmak için komutunu çalıştırın. Her yeni oturumu başlattığınızda bu komutu çalıştırın.
+2. `Connect`Azure AD yönetici hesabınızda oturum açmak için komutunu çalıştırın. Her yeni oturumu başlattığınızda bu komutu çalıştırın.
 
     ```powershell
     Connect-AzureAD -Confirm
@@ -365,7 +365,7 @@ Bu örnekte, öncelik sisteminin nasıl çalıştığını öğrenmek için birk
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
         ```
 
-1. `IsOrganizationDefault` Bayrağı false olarak ayarlayın:
+1. `IsOrganizationDefault`Bayrağı false olarak ayarlayın:
 
     ```powershell
     Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
@@ -545,3 +545,9 @@ Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -Policy
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Uygulamanın **ObjectID (ID)** . | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |İlke **ObjectID** . | `-PolicyId <ObjectId of Policy>` |
+
+## <a name="license-requirements"></a>Lisans gereksinimleri
+
+Bu özelliğin kullanılması için Azure AD Premium P1 lisansı gerekir. Gereksinimleriniz için doğru lisans bulmak için bkz. [ücretsiz ve Premium sürümlerin genel kullanıma sunulan özelliklerini karşılaştırma](https://azure.microsoft.com/pricing/details/active-directory/).
+
+[Microsoft 365 iş lisanslarına](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) sahip müşterilerin koşullu erişim özelliklerine de erişimi vardır.

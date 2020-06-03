@@ -10,7 +10,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "77594303"
 ---
-Windows üzerinde PowerShell tabanlı bir kabukta, Tüketil `Invoke-WebRequest` Helm grafik sürümünü indirmek için kullanın ve ardından aşağıdaki gibi ile `Expand-Archive` ayıklayın:
+Windows üzerinde PowerShell tabanlı bir kabukta, `Invoke-WebRequest` Tüketil Helm grafik sürümünü indirmek için kullanın ve ardından aşağıdaki gibi ile ayıklayın `Expand-Archive` :
 
 ```powershell
 # Specify the Consul Helm chart version that will be leveraged throughout these instructions

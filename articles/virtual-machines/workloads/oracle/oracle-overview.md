@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/01/2020
 ms.author: borisb
-ms.openlocfilehash: 649d96a158682752e0d4a31bf7ec73eb7c442f0f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d739f9f5c0e1be80005d5f3c6db5aa94ff6cc85d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660550"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299851"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 'da Oracle uygulamalarına ve çözümlerine genel bakış
 
@@ -29,7 +29,9 @@ Azure Marketi 'nde bulunan Oracle Linux görüntülerde Oracle Database kullanar
 
 * Oracle Database 12,1, 12,2 ve 18,3 Enterprise Edition 
 
-* Oracle Database 12,1, 12,2 ve 18,3 Standard Edition 
+* Oracle Database 12,1, 12,2 ve 18,3 Standard Edition
+
+* Oracle Database 19,3
 
 Ayrıca, Azure 'da bulunan Oracle Linux olmayan bir görüntüde Oracle Database kurulumunu ve şirket içi ortamınızdan özel bir görüntü yüklemeyi tercih ettiğiniz özel bir görüntüye dayandırın.
 
@@ -45,7 +47,7 @@ Desteklenen Oracle işletim sistemlerinde Azure 'da kurumsal uygulamaları çal�
 
 * Oracle WebLogic Server 12.1.2
 
-* Kırılabilir kurumsal çekirdek (UEK) 6,8, 6,9, 6,10, 7,3, 7,4, 7,5 ve 7,6 ile Oracle Linux 
+* Ayırıcı kurumsal çekirdek (UEK) 6,8, 6,9, 6,10, 7,3 ile 7,7, 8,0, 8,1 ile Oracle Linux. 
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>Yüksek kullanılabilirlik ve olağanüstü durum kurtarma seçenekleri
 
@@ -72,8 +74,7 @@ Oracle bulut altyapısında (OCı) arka uç veritabanlarına bağlı olan Azure 
 
 Azure altyapısını ayarlamak ve Oracle uygulamalarını yüklemek için Terrayform şablonlarını kullanın. 
 
-> [!IMPORTANT]
-> Oracle, bu uygulamaların Azure 'da 2020 Mayıs ' e kadar Azure/Oracle bulut Interconnect çözümünü kullanırken Azure 'da çalışmasını onaylandıracaktır.
+Mayıs 2020 itibariyle, aşağıdaki Oracle uygulamaları Azure/Oracle bulut bağlantısı çözümü kullanılırken Azure 'da çalışmak üzere sertifikalandırilmiştir:
 
 * E-Iş paketi
 * JD edi EnterpriseOne

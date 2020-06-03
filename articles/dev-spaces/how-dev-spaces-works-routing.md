@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Güç Azure Dev Spaces ve yönlendirmenin nasıl çalıştığına ilişkin süreçler açıklanmaktadır
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: e9bc1875c053335da6a8e2603406bcdb34a6dd04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 126a534cec2ee4b07aa3a127fb3f47f9931f0031
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241393"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307427"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Yönlendirmenin nasıl çalıştığı Azure Dev Spaces
 
@@ -20,22 +20,22 @@ Bu makalede, yönlendirmenin dev Spaces ile nasıl çalıştığı açıklanır.
 
 ## <a name="how-routing-works"></a>Yönlendirmenin nasıl çalıştığı
 
-Geliştirici alanı AKS 'in üzerine kurulmuştur ve aynı [ağ kavramlarını](../aks/concepts-network.md)kullanır. Ayrıca Azure Dev Spaces merkezi bir *ingressmanager* hizmetine sahiptir ve kendi giriş denetleyiciyi aks kümesine dağıtır. *Inressmanager* hizmeti, aks kümelerini dev Spaces ile izler ve uygulama yığınlarında yönlendirme için giriş nesneleriyle kümedeki Azure dev Spaces giriş denetleyicisini iyileştirir. Her pod 'daki devspaces-proxy kapsayıcısı, URL 'yi `azds-route-as` temel alan bir GELIŞTIRME alanına http trafiği için bir http üst bilgisi ekler. Örneğin, URL *http://azureuser.s.default.serviceA.fedcba09...azds.io* 'ye yönelik bir istek Ile `azds-route-as: azureuser`bir http üst bilgisi alır. Devspaces-proxy kapsayıcısı zaten varsa, bir `azds-route-as` üst bilgi eklemez.
+Geliştirici alanı AKS 'in üzerine kurulmuştur ve aynı [ağ kavramlarını](../aks/concepts-network.md)kullanır. Ayrıca Azure Dev Spaces merkezi bir *ingressmanager* hizmetine sahiptir ve kendi giriş denetleyiciyi aks kümesine dağıtır. *Inressmanager* hizmeti, aks kümelerini dev Spaces ile izler ve uygulama yığınlarında yönlendirme için giriş nesneleriyle kümedeki Azure dev Spaces giriş denetleyicisini iyileştirir. Her pod 'daki devspaces-proxy kapsayıcısı, `azds-route-as` URL 'yi temel alan bir geliştirme ALANıNA HTTP trafiği için bir http üst bilgisi ekler. Örneğin, URL 'ye yönelik bir istek *http://azureuser.s.default.serviceA.fedcba09...azds.io* ile BIR http üst bilgisi alır `azds-route-as: azureuser` . Devspaces-proxy kapsayıcısı zaten varsa, bir `azds-route-as` üst bilgi eklemez.
 
-Küme dışından bir hizmete HTTP isteği yapıldığında, istek giriş denetleyicisine gider. Giriş denetleyicisi, isteği, giriş nesnelerine ve kurallarına göre doğrudan uygun Pod 'a yönlendirir. Pod 'daki devspaces-proxy kapsayıcısı isteği alır, URL 'yi temel alarak `azds-route-as` üst bilgiyi ekler ve sonra isteği uygulama kapsayıcısına yönlendirir.
+Küme dışından bir hizmete HTTP isteği yapıldığında, istek giriş denetleyicisine gider. Giriş denetleyicisi, isteği, giriş nesnelerine ve kurallarına göre doğrudan uygun Pod 'a yönlendirir. Pod 'daki devspaces-proxy kapsayıcısı isteği alır, `azds-route-as` URL 'yi temel alarak üst bilgiyi ekler ve sonra isteği uygulama kapsayıcısına yönlendirir.
 
 Küme içindeki başka bir hizmetten bir hizmete HTTP isteği yapıldığında, istek ilk olarak çağıran hizmetin devspaces-proxy kapsayıcısından geçer. Devspaces-proxy kapsayıcısı HTTP isteğine bakar ve `azds-route-as` üstbilgiyi denetler. Üst bilgiye bağlı olarak, devspaces-proxy kapsayıcısı, üst bilgi değeriyle ilişkili hizmetin IP adresini arar. Bir IP adresi bulunursa, devspaces-proxy kapsayıcısı bu IP adresine isteği reroutes. Bir IP adresi bulunamazsa, devspaces-proxy kapsayıcısı, isteği üst uygulama kapsayıcısına yönlendirir.
 
-Örneğin, *Servicea* ve *serviceb* uygulamaları *varsayılan*adlı bir üst geliştirme alanına dağıtılır. *Servicea* , *serviceb* 'YI kullanır ve buna http çağrıları yapar. Azure Kullanıcı, *azureuser*adlı *varsayılan* alana göre bir alt dev alanı oluşturur. Azure Kullanıcı aynı zamanda kendi *hizmet* sürümünü kendi alt alanına dağıtır. Bir istek yapıldığında *http://azureuser.s.default.serviceA.fedcba09...azds.io*:
+Örneğin, *Servicea* ve *serviceb* uygulamaları *varsayılan*adlı bir üst geliştirme alanına dağıtılır. *Servicea* , *serviceb* 'YI kullanır ve buna http çağrıları yapar. Azure Kullanıcı, *azureuser*adlı *varsayılan* alana göre bir alt dev alanı oluşturur. Azure Kullanıcı aynı zamanda kendi *hizmet* sürümünü kendi alt alanına dağıtır. Bir istek yapıldığında *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
 
 ![Azure Dev Spaces yönlendirme](media/how-dev-spaces-works/routing.svg)
 
 1. Giriş denetleyicisi, *Servicea. azureuser*olan URL ile ilişkili pod için IP 'yi arar.
 1. Giriş denetleyicisi, Azure kullanıcısının geliştirme alanında pod için IP 'yi bulur ve isteği *Servicea. azureuser* Pod 'a yönlendirir.
-1. *Servicea. azureuser* Pod içindeki devspaces-proxy kapsayıcısı, isteği alır ve bir http üst `azds-route-as: azureuser` bilgisi olarak ekler.
+1. *Servicea. azureuser* Pod içindeki devspaces-proxy kapsayıcısı, isteği alır ve `azds-route-as: azureuser` bir http üst bilgisi olarak ekler.
 1. *Servicea. azureuser* Pod içindeki devspaces-proxy kapsayıcısı, isteği *servicea. Azureuser* Pod içindeki *servicea* uygulama kapsayıcısına yönlendirir.
-1. *Servicea. azureuser* Pod Içindeki *Servicea* uygulaması, *serviceb*'ye bir çağrı yapar. *Servicea* uygulaması aynı zamanda var `azds-route-as` olan üstbilgiyi koruyacak kodu de içerir, bu durumda. `azds-route-as: azureuser`
-1. *Servicea. azureuser* Pod içindeki devspaces-proxy kapsayıcısı, isteği alır ve `azds-route-as` üst bilgi DEĞERINE göre *serviceb* IP 'sini arar.
+1. *Servicea. azureuser* Pod Içindeki *Servicea* uygulaması, *serviceb*'ye bir çağrı yapar. *Servicea* uygulaması aynı zamanda var olan üstbilgiyi koruyacak kodu de içerir `azds-route-as` , bu durumda `azds-route-as: azureuser` .
+1. *Servicea. azureuser* Pod içindeki devspaces-proxy kapsayıcısı, isteği alır ve üst bilgi değerine göre *serviceb* IP 'sini arar `azds-route-as` .
 1. *Servicea. azureuser* Pod içindeki devspaces-proxy kapsayıcısı *serviceb. AZUREUSER*için bir IP bulamadı.
 1. *Servicea. azureuser* Pod içindeki devspaces-proxy kapsayıcısı, ana alanda *SERVICEB* için IP 'yi arar. *varsayılan*.
 1. *Servicea. azureuser* Pod içindeki devspaces-proxy kapsayıcısı, *serviceb. Default* için IP 'Yi bulur ve isteği *serviceb. Default* Pod öğesine yönlendirir.
@@ -64,12 +64,12 @@ Türetilmiş geliştirme alanı Ayrıca, kendi uygulamaları ve üst öğesinden
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Dev Spaces, Hızlı yineleme ve geliştirme sağlamak üzere yönlendirmeyi nasıl kullandığını görmek için, bkz. [geliştirme makinenizi geliştirme alanınıza bağlama][how-it-works-connect], [Azure dev Spaces çalışma ile kodunuzda uzaktan hata ayıklama][how-it-works-remote-debugging]ve [Azure Kubernetes hizmeti & GitHub eylemleri][pr-flow].
+Azure Dev Spaces, Hızlı yineleme ve geliştirme sağlamak üzere yönlendirmeyi nasıl kullandığını görmek için, [Kubernetes Ile yerel Işlemin nasıl çalıştığı][how-it-works-local-process-kubernetes], [Azure dev Spaces ile kodunuzda uzaktan hata ayıklamanın][how-it-works-remote-debugging]yanı sıra [Azure Kubernetes hizmeti & GitHub eylemleriyle][pr-flow]ilgili bazı örnekler bulabilirsiniz.
 
 Takım geliştirmesi için Azure Dev Spaces ile yönlendirmeyi kullanmaya başlamak için, Azure Dev Spaces hızlı başlangıçta [Takım geliştirme][quickstart-team] bölümüne bakın.
 
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
-[how-it-works-connect]: how-dev-spaces-works-connect.md
+[how-it-works-local-process-kubernetes]: how-dev-spaces-works-local-process-kubernetes.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [pr-flow]: how-to/github-actions.md
 [quickstart-team]: quickstart-team-development.md

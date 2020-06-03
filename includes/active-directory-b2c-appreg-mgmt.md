@@ -5,34 +5,19 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: 31d4b65c6cd6a3dfe3cb779022329f338436c69b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 11728c62202b15f0052017609ac384e8ef259211
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184376"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298949"
 ---
-Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için, geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (Önizleme)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregintro).
-
-#### <a name="applications"></a>[Uygulamalar](#tab/applications/)
-
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Azure portal, araması yapın ve **Azure Active Directory**seçin.
-1. **Yönet**altında **uygulama kayıtları (eski)** seçeneğini belirleyin.
-1. **Yeni uygulama kaydı**’nı seçin.
-1. Uygulama için bir ad girin. Örneğin, *managementapp1*.
-1. **Uygulama türü**için **Web uygulaması/API**' yi seçin.
-1. **Oturum açma URL**'sinde GEÇERLI bir URL girin. Örneğin, `https://localhost`. Uç noktanın erişilebilir olması gerekmez, ancak geçerli bir URL olmalıdır.
-1. **Oluştur**’u seçin.
-1. **Kayıtlı uygulamaya** Genel Bakış sayfasında görüntülenen **uygulama kimliğini** kaydedin. Bu değeri sonraki bir adımda kullanırsınız.
-
-#### <a name="app-registrations-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
-1. **Uygulama kayıtları (Önizleme)** öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
+1. **Uygulama kayıtları**öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
 1. Uygulama için bir **ad** girin. Örneğin, *managementapp1*.
 1. **Yalnızca bu kuruluş dizininde hesaplar '** ı seçin.
 1. **İzinler**altında, *openıd ve offline_access izinleri Için yönetici izni ver* onay kutusunu temizleyin.

@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 4fe1ee3ccf2849943959889838ba0f22fb64bb9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73762c431c84de01ce3561d586c5a12bfd26ac81
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273065"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310134"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Ortak bulut hizmeti başlangıç görevleri
 Bu makalede, bulut hizmetinizde gerçekleştirmek isteyebileceğiniz yaygın başlangıç görevlerinin bazı örnekleri verilmiştir. Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görevleri kullanabilirsiniz. Gerçekleştirmek isteyebileceğiniz işlemler, bir bileşeni yüklemeyi, COM bileşenlerini kaydetmeyi, kayıt defteri anahtarlarını ayarlamayı veya uzun süre çalışan bir işlemi başlatmayı içerir. 
@@ -42,7 +42,7 @@ Belirli bir görev için tanımlanmış ortam değişkenlerine ihtiyacınız var
 </ServiceDefinition>
 ```
 
-Değişkenler, dağıtım hakkındaki bir şeye başvurmak için [geçerli bir Azure XPath değeri](cloud-services-role-config-xpath.md) de kullanabilir. `value` Özniteliğini kullanmak yerine bir [roleınstancevalue] alt öğesi tanımlayın.
+Değişkenler, dağıtım hakkındaki bir şeye başvurmak için [geçerli bir Azure XPath değeri](cloud-services-role-config-xpath.md) de kullanabilir. Özniteliğini kullanmak yerine `value` bir [Roleınstancevalue] alt öğesi tanımlayın.
 
 ```xml
 <Variable name="PathToStartupStorage">
@@ -67,7 +67,7 @@ Bununla birlikte, bir başlangıç görevi olarak *Appcmd. exe* ' nin kullanım�
 ### <a name="example-of-managing-the-error-level"></a>Hata düzeyini yönetme örneği
 Bu örnek, hata işleme ve günlüğe kaydetme ile JSON için bir sıkıştırma bölümü ve *Web. config* dosyasına bir sıkıştırma girişi ekler.
 
-[Service Definition. csdef] dosyasının ilgili bölümleri burada gösterilmektedir. Bu, *Web. config* dosyasındaki ayarları değiştirmek [için,](/previous-versions/azure/reference/gg557552(v=azure.100)#task) Appcmd `elevated` özniteliği için, *Appcmd. exe* ' nin yeterli izinleri vermesini içerir:
+[Service Definition. csdef] dosyasının ilgili bölümleri burada gösterilmektedir. Bu, [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) `elevated` *Web. config* dosyasındaki ayarları değiştirmek için, appcmd özniteliği için, *Appcmd. exe* ' nin yeterli izinleri vermesini içerir:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -138,7 +138,7 @@ Bir güvenlik duvarı kuralı oluşturan bir başlangıç görevinin bir [Execut
 </ServiceDefinition>
 ```
 
-Güvenlik duvarı kuralını eklemek için, başlangıç toplu iş dosyanızda uygun `netsh advfirewall firewall` komutları kullanmanız gerekir. Bu örnekte, başlangıç görevi TCP bağlantı noktası 80 için güvenlik ve şifreleme gerektirir.
+Güvenlik duvarı kuralını eklemek için, `netsh advfirewall firewall` Başlangıç toplu iş dosyanızda uygun komutları kullanmanız gerekir. Bu örnekte, başlangıç görevi TCP bağlantı noktası 80 için güvenlik ve şifreleme gerektirir.
 
 ```cmd
 REM   Add a firewall rule in a startup task.
@@ -300,7 +300,7 @@ Başlangıç göreviniz, bulut üzerinde çalışırken, işlem öykünücüsün
 
 Bu işlem öykünücüsü ve bulutu üzerinde farklı eylemler gerçekleştirebilme özelliği, [ServiceDefinition. csdef] dosyasında bir ortam değişkeni oluşturularak gerçekleştirilebilir. Daha sonra bu ortam değişkenini başlangıç görevinizdeki bir değer için test edersiniz.
 
-Ortam değişkenini oluşturmak için,[roleınstancevalue] öğesi [değişkenini]/ekleyin ve bir XPath değeri oluşturun `/RoleEnvironment/Deployment/@emulated`. **% ComputeEmulatorRunning%** ortam değişkeninin `true` değeri, işlem öykünücüsünde ve `false` bulutta çalışırken çalışır.
+Ortam değişkenini oluşturmak için, [Variable] / [roleınstancevalue] öğesi değişkenini ekleyin ve bir XPath değeri oluşturun `/RoleEnvironment/Deployment/@emulated` . **% ComputeEmulatorRunning%** ortam değişkeninin değeri, `true` işlem öykünücüsünde ve `false` bulutta çalışırken çalışır.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -383,9 +383,9 @@ Visual Studio, toplu iş dosyaları arasında adım adım bir hata ayıklayıcı
 
 XML 'nizi basitleştirmek için, tüm başlangıç görevlerinizi günlük kaydıyla birlikte çağıran bir sarmalayıcı *cmd* dosyası oluşturabilir ve her bir alt görevin aynı ortam değişkenlerini paylarını sağlayabilirsiniz.
 
-Her bir başlangıç görevinin sonunda kullanımı `>> "%TEMP%\StartupLog.txt" 2>&1` sinir bozucu olabilir. Günlüğe kaydetmeyi işleyen bir sarmalayıcı oluşturarak görev günlüğünü uygulayabilirsiniz. Bu sarmalayıcı, çalıştırmak istediğiniz gerçek toplu iş dosyasını çağırır. Hedef toplu iş dosyasındaki tüm çıktılar *Startuplog. txt* dosyasına yönlendirilir.
+Her bir başlangıç görevinin sonunda kullanımı sinir bozucu olabilir `>> "%TEMP%\StartupLog.txt" 2>&1` . Günlüğe kaydetmeyi işleyen bir sarmalayıcı oluşturarak görev günlüğünü uygulayabilirsiniz. Bu sarmalayıcı, çalıştırmak istediğiniz gerçek toplu iş dosyasını çağırır. Hedef toplu iş dosyasındaki tüm çıktılar *Startuplog. txt* dosyasına yönlendirilir.
 
-Aşağıdaki örnekte, tüm çıktının bir başlangıç toplu iş dosyasından nasıl yeniden yönlendirileceği gösterilmektedir. Bu örnekte, ServerDefinition. csdef dosyası *logwrap. cmd*' yi çağıran bir başlangıç görevi oluşturur. *logwrap. cmd* , tüm çıktıyı **% Temp%\\startuplog. txt**dosyasına yönlendirerek *Startup2. cmd*' yi çağırır.
+Aşağıdaki örnekte, tüm çıktının bir başlangıç toplu iş dosyasından nasıl yeniden yönlendirileceği gösterilmektedir. Bu örnekte, ServerDefinition. csdef dosyası *logwrap. cmd*' yi çağıran bir başlangıç görevi oluşturur. *logwrap. cmd* , tüm çıktıyı **% Temp% \\ startuplog. txt**dosyasına yönlendirerek *Startup2. cmd*' yi çağırır.
 
 ServiceDefinition. cmd:
 
@@ -459,16 +459,16 @@ EXIT %ERRORLEVEL%
 ```
 
 > [!TIP]
-> **Startuplog. txt** dosyası *c:\resources\temp\\{rol tanımlayıcısı} \roletemp* klasöründe bulunur.
+> **Startuplog. txt** dosyası *c:\resources\temp \\ {rol tanımlayıcısı} \roletemp* klasöründe bulunur.
 > 
 > 
 
 ### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>ExecutionContext 'i başlangıç görevleri için uygun şekilde ayarlama
 Başlangıç göreviyle ilgili ayrıcalıkları uygun şekilde ayarlayın. Bazen, rol normal ayrıcalıklarla çalıştırılsa bile başlangıç görevlerinin yükseltilmiş ayrıcalıklarla çalışması gerekir.
 
-[ExecutionContext][görev] özniteliği başlangıç görevinin ayrıcalık düzeyini ayarlar. Kullanımı `executionContext="limited"` , başlangıç görevinin rolle aynı ayrıcalık düzeyine sahip olduğu anlamına gelir. Kullanımı `executionContext="elevated"` , başlangıç görevinin yönetici ayrıcalıklarına sahip olduğu anlamına gelir ve bu, başlangıç görevinin rolünüze yönetici ayrıcalıkları vermeden yönetici görevleri gerçekleştirmesini sağlar.
+[ExecutionContext][görev] özniteliği başlangıç görevinin ayrıcalık düzeyini ayarlar. Kullanımı, `executionContext="limited"` Başlangıç görevinin rolle aynı ayrıcalık düzeyine sahip olduğu anlamına gelir. Kullanımı `executionContext="elevated"` , başlangıç görevinin yönetici ayrıcalıklarına sahip olduğu anlamına gelir ve bu, başlangıç görevinin rolünüze yönetici ayrıcalıkları vermeden yönetici görevleri gerçekleştirmesini sağlar.
 
-Yükseltilmiş ayrıcalıklar gerektiren bir başlangıç görevi örneği, IIS 'yi yapılandırmak için **Appcmd. exe** ' yi kullanan bir başlangıç görevidir. **Appcmd. exe** gerekli `executionContext="elevated"`.
+Yükseltilmiş ayrıcalıklar gerektiren bir başlangıç görevi örneği, IIS 'yi yapılandırmak için **Appcmd. exe** ' yi kullanan bir başlangıç görevidir. **Appcmd. exe** gerekli `executionContext="elevated"` .
 
 ### <a name="use-the-appropriate-tasktype"></a>Uygun taskType 'ı kullanın
 [TaskType][görev] özniteliği başlangıç görevinin yürütülme şeklini belirler. Üç değer vardır: **basit**, **arka plan**ve **ön plan**. Arka plan ve ön plan görevleri zaman uyumsuz olarak başlatılır ve basit görevler tek seferde bir kez yürütülür.
@@ -478,12 +478,12 @@ Yükseltilmiş ayrıcalıklar gerektiren bir başlangıç görevi örneği, IIS 
 **Arka plan** başlangıç görevleri ve **ön plan** başlangıç görevleri arasındaki fark, **ön plan görevlerinin,** **ön plan** görevi sona erene kadar rolün çalışır durumda tutulması gerektiğidir. Bu Ayrıca, **ön** plan görevi askıda kalırsa veya kilitlenirse, **ön plan** görevi zorlayarak kapanana kadar rolün geri dönüştürülmeyeceği anlamına gelir. Bu nedenle, **ön** plan görevinin özelliğinin gerekli olmadığı durumlar dışında, zaman uyumsuz başlangıç görevleri için **arka plan** görevleri önerilir.
 
 ### <a name="end-batch-files-with-exit-b-0"></a>Batch dosyalarını şu çıkış ile sonlandır/B 0
-Rol yalnızca basit başlangıç görevinizden gelen **ERRORLEVEL** sıfır ise başlatılır. Tüm Programlar **ERRORLEVEL** (çıkış kodu) doğru olarak ayarlanmadı, bu nedenle toplu iş dosyası her şey doğru şekilde `EXIT /B 0` çalıştırıldıysa bir ile bitmelidir.
+Rol yalnızca basit başlangıç görevinizden gelen **ERRORLEVEL** sıfır ise başlatılır. Tüm Programlar **ERRORLEVEL** (çıkış kodu) doğru olarak ayarlanmadı, bu nedenle toplu iş dosyası `EXIT /B 0` her şey doğru şekilde çalıştırıldıysa bir ile bitmelidir.
 
-Başlatma toplu `EXIT /B 0` iş dosyasının sonunda eksik olan bir rol, yaygın olarak kullanılan bir nedendir.
+`EXIT /B 0`Başlatma toplu iş dosyasının sonunda eksik olan bir rol, yaygın olarak kullanılan bir nedendir.
 
 > [!NOTE]
-> İç içe geçmiş toplu iş dosyalarının, `/B` parametresini kullanırken bazen askıda olduğunu fark ettim. [Günlük sarmalayıcı](#always-log-startup-activities)kullandığınızda olduğu gibi, başka bir Batch dosyası geçerli toplu iş dosyanızı çağırırsa, bu askıda kalma sorununun gerçekleşmediğinden emin olmak isteyebilirsiniz. Bu durumda `/B` parametreyi atlayabilirsiniz.
+> İç içe geçmiş toplu iş dosyalarının, parametresini kullanırken bazen yanıt vermeyi durdurdum olduğunu fark ettik `/B` . [Günlük sarmalayıcı](#always-log-startup-activities)kullandığınızda olduğu gibi, başka bir Batch dosyası geçerli toplu iş dosyanızı çağırırsa, bu sorunun gerçekleşmediğinden emin olmak isteyebilirsiniz. `/B`Bu durumda parametreyi atlayabilirsiniz.
 > 
 > 
 
@@ -512,6 +512,3 @@ Bulut hizmeti paketinizi [oluşturun ve dağıtın](cloud-services-how-to-create
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [Roleınstancevalue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-
-
-

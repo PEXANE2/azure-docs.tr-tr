@@ -9,23 +9,23 @@ ms.author: mlearned
 description: Azure Arc ile Azure Arc etkin bir Kubernetes kümesi bağlama
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
 ms.custom: references_regions
-ms.openlocfilehash: 097301a8704da24918dac70760f0540576975353
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 868964361e6089eb3417b0f2e2681d82d4aa0b75
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191714"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299652"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc etkin bir Kubernetes kümesine bağlanma (Önizleme)
 
-Bir Kubernetes kümesini Azure yaya bağlayın. 
+Bir Kubernetes kümesini Azure yaya bağlayın.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Aşağıdaki gereksinimlerin hazırlanaldığını doğrulayın:
 
 * Çalışır duruma sahip bir Kubernetes kümesi
-* Kubeconfig ve Cluster-admin erişimiyle erişmeniz gerekir. 
+* Kubeconfig ve Cluster-admin erişimiyle erişmeniz gerekir.
 * Ve komutlarıyla kullanılan Kullanıcı veya hizmet sorumlusu `az login` `az connectedk8s connect` ' Microsoft. Kubernetes/connectedkümeler ' kaynak türü üzerinde ' Read ' ve ' Write ' izinlerine sahip olmalıdır. Bu izinlere sahip olan "Kubernetes ekleme için Azure Arc" rolü, ekleme için Azure CLı ile kullanılan Kullanıcı veya hizmet sorumlusu üzerinde rol atamaları için kullanılabilir.
 * *Connectedk8s* ve *k8sconfiguration* uzantılarının en son sürümü
 
@@ -41,7 +41,7 @@ Azure Arc aracıları için aşağıdaki protokollerin/bağlantı noktalarının
 * 443 numaralı bağlantı noktasında TCP-->`https://:443`
 * 9418 numaralı bağlantı noktasında TCP-->`git://:9418`
 
-| Uç nokta (DNS)                                                                                               | Açıklama                                                                                                                 |
+| Uç nokta (DNS)                                                                                               | Description                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Aracının Azure 'a bağlanması ve kümeyi kaydetmesi için gereklidir                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Aracının durum ve getirme yapılandırma bilgilerini itilmesi için veri düzlemi uç noktası                                      |
@@ -70,7 +70,8 @@ az provider show -n Microsoft.Kubernetes -o table
 az provider show -n Microsoft.KubernetesConfiguration -o table
 ```
 
-## <a name="install-azure-cli-extensions"></a>Azure CLı uzantıları 'nı yükler
+## <a name="install-azure-cli-and-arc-enabled-kubernetes-extensions"></a>Azure CLı ve Arc etkin Kubernetes uzantılarını kurma
+Azure Arc etkin Kubernetes CLı uzantılarını yüklemek için Azure CLı sürüm 2.3 + gereklidir. Azure CLI sürüm 2.3 + sürümüne sahip olduğunuzdan emin olmak için [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 'yı veya güncelleştirme 'yi en son sürüme güncelleştirin.
 
 `connectedk8s`Kubernetes kümelerini Azure 'a bağlamanıza yardımcı olan uzantıyı yükleyebilirsiniz:
 
@@ -90,6 +91,9 @@ Uzantıları en son sürümlere güncelleştirmek için aşağıdaki komutları 
 az extension update --name connectedk8s
 az extension update --name k8sconfiguration
 ```
+
+## <a name="install-helm"></a>Held 'yi yükler
+Connectedk8s uzantısını kullanarak kümeyi ekleme için Held 3 gereklidir. Bu gereksinimi karşılamak için [Held 3 ' ün en son sürümünü yükler](https://helm.sh/docs/intro/install) .
 
 ## <a name="create-a-resource-group"></a>Kaynak Grubu oluşturma
 
@@ -167,6 +171,8 @@ Name           Location    ResourceGroup
 AzureArcTest1  eastus      AzureArcTest
 ```
 
+Bu kaynağı [Azure Preview Portal](https://preview.portal.azure.com/)'da da görüntüleyebilirsiniz. Portalı tarayıcınızda açtıktan sonra, komutta daha önce kullanılan kaynak adı ve kaynak grubu adı girdilerine göre kaynak grubuna ve Azure Arc etkin Kubernetes kaynağına gidin `az connectedk8s connect` .
+
 Azure Arc etkin Kubernetes, ad alanına birkaç işleç dağıtır `azure-arc` . Bu dağıtımları ve pod 'leri buradan görüntüleyebilirsiniz:
 
 ```console
@@ -211,11 +217,18 @@ Azure Arc etkin Kubernetes, kümenizde çalışan ve ad alanına dağıtılan bi
 
 `Microsoft.Kubernetes/connectedcluster`Azure CLI veya Azure Portal kullanarak bir kaynağı silebilirsiniz.
 
-Azure CLı komutu, `az connectedk8s delete` `Microsoft.Kubernetes/connectedCluster` kaynağı Azure 'da kaldırır. Azure CLı, `sourcecontrolconfiguration` Azure 'da ilişkili tüm kaynakları siler. Azure CLı, kümedeki aracıları kaldırmak için Held kaldırma kullanır.
 
-Azure portal `Microsoft.Kubernetes/connectedcluster` Azure 'daki kaynağı siler ve Azure 'daki tüm ilişkili kaynakları siler `sourcecontrolconfiguration` .
+* **Azure CLI kullanarak silme**: Azure Arc etkin Kubernetes kaynağını silme işlemini başlatmak Için AŞAĞıDAKI Azure CLI komutu kullanılabilir.
+  ```console
+  az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
+  ```
+  Bu, `Microsoft.Kubernetes/connectedCluster` kaynağı ve `sourcecontrolconfiguration` Azure 'daki ilişkili kaynakları kaldırır. Azure CLı, küme üzerinde çalışan aracıları da kaldırmak için Held kaldırma kullanır.
 
-Kümedeki aracıları kaldırmak için veya çalıştırmanız gerekir `az connectedk8s delete` `helm uninstall azurearcfork8s` .
+* **Azure Portal silme**: Azure Arc etkin Kubernetes kaynağını Azure Portal üzerinde silme Işlemi, `Microsoft.Kubernetes/connectedcluster` Azure 'daki kaynağı ve ilişkili kaynakları siler `sourcecontrolconfiguration` , ancak kümede çalışan aracıları silmez. Kümede çalışan aracıları silmek için aşağıdaki komutu çalıştırın.
+
+  ```console
+  az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
+  ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

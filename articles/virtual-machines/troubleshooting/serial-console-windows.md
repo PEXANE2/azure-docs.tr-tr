@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 68089a86b8b832638abd30aa7c36aa1c5bd84225
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c555b058e6d0b8c110a3273525b5a8c58baaff61
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410127"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309790"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows için Azure seri konsol
 
@@ -32,7 +32,7 @@ Linux için seri konsol belgeleri için bkz. [Linux Için Azure seri konsolu](se
 > Seri konsol Genel Azure bölgelerinde ve Azure Kamu 'da genel önizlemede kullanılabilir. Henüz Azure Çin bulutu 'nda mevcut değildir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * VM 'niz veya sanal makine ölçek kümesi örneğinizin kaynak yönetimi dağıtım modelini kullanması gerekir. Klasik dağıtımlar desteklenmez.
 
@@ -102,15 +102,15 @@ Windows önyükleme yükleyicisi komut istemlerini seri konsolunda görüntülem
 
     ![SAC 'ye bağlanma](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.    CMD `cmd` örneği olan bir kanal oluşturmak için girin.
+1.    `cmd`Cmd örneği olan bir kanal oluşturmak için girin.
 
-1.    CMD `ch -si 1` örneğini çalıştıran `<esc>+<tab>` kanala geçiş yapmak için kısayol tuşlarını girin veya basın.
+1.    `ch -si 1` `<esc>+<tab>` Cmd örneğini çalıştıran kanala geçiş yapmak için kısayol tuşlarını girin veya basın.
 
 1.    **ENTER**tuşuna basın ve ardından Yönetici izinleriyle oturum açma kimlik bilgilerini girin.
 
 1.    Geçerli kimlik bilgilerini girdikten sonra CMD örneği açılır.
 
-1.    Bir PowerShell örneği başlatmak için CMD örneğine `PowerShell` girin ve ardından **ENTER**tuşuna basın.
+1.    Bir PowerShell örneği başlatmak için `PowerShell` cmd örneğine girin ve ardından **ENTER**tuşuna basın.
 
     ![PowerShell örneğini aç](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
@@ -124,7 +124,7 @@ Seri konsol, Komut çubuğundaki klavye simgesini kullanarak bir Azure sanal mak
 Windows 'u bir NMI aldığında kilitlenme döküm dosyası oluşturmak üzere yapılandırma hakkında bilgi için, bkz. [BIR NMI kullanarak kilitlenme döküm dosyası](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)oluşturma.
 
 ### <a name="use-function-keys-in-serial-console"></a>Seri konsolundaki işlev anahtarlarını kullanma
-İşlev anahtarları Windows VM 'lerinde seri konsol kullanımı için etkinleştirilmiştir. Seri konsol açılan menüsünde F8, gelişmiş önyükleme ayarları menüsünü kolayca girmeye kolaylık sağlar, ancak seri konsol diğer tüm işlev anahtarlarıyla uyumludur. Seri konsol kullanmakta olduğunuz bilgisayara bağlı olarak, klavyenizde **FN** + **F1** (veya F2, F3, vb.) tuşlarına basmanız gerekebilir.
+İşlev anahtarları Windows VM 'lerinde seri konsol kullanımı için etkinleştirilmiştir. Seri konsol açılan menüsünde F8, gelişmiş önyükleme ayarları menüsünü kolayca girmeye kolaylık sağlar, ancak seri konsol diğer tüm işlev anahtarlarıyla uyumludur. **Fn**  +  Seri konsol kullanmakta olduğunuz bilgisayara bağlı olarak, klavyenizde FN**F1** (veya F2, F3, vb.) tuşlarına basmanız gerekebilir.
 
 ### <a name="use-wsl-in-serial-console"></a>Seri konsolda WSL kullanma
 Linux için Windows alt sistemi (WSL) Windows Server 2019 veya üzeri için etkinleştirilmiştir, bu nedenle Windows Server 2019 veya sonraki bir sürümünü çalıştırıyorsanız, seri konsol içinde kullanmak üzere WSL 'yi etkinleştirmek de mümkündür. Bu, Linux komutlarına alışkın olan kullanıcılar için yararlı olabilir. Windows Server için WSL 'yi etkinleştirme yönergeleri için bkz. [Yükleme Kılavuzu](https://docs.microsoft.com/windows/wsl/install-on-server).
@@ -160,10 +160,10 @@ Bir Kullanıcı seri konsoluna bağlandıysa ve başka bir kullanıcı aynı san
 > Bu, bağlantısı kesilen bir kullanıcının oturum açmayacağı anlamına gelir. Bağlantı kesildikten sonra (SıGHUP veya benzer mekanizmayı kullanarak) bir oturumu kapatma özelliği hala yol haritasında bulunur. Windows için, SAC 'de etkin bir otomatik zaman aşımı vardır. Linux için, Terminal zaman aşımı ayarını yapılandırabilirsiniz.
 
 ## <a name="accessibility"></a>Erişilebilirlik
-Erişilebilirlik, Azure seri konsolu için önemli bir odadır. Bu uçta, seri konsolunun görsel için erişilebilir olduğunu ve sorunsuz bir şekilde bir fare kullanamayacak kişileri duyduk.
+Erişilebilirlik, Azure seri konsolu için önemli bir odadır. Bu uçta, seri konsolunun görme engelli kişiler veya işitme güçlüğü çeken kişilerin yanı sıra fare kullanamayacak kişiler için erişilebilir olduğunu duyduk.
 
 ### <a name="keyboard-navigation"></a>Klavye ile gezinme
-Azure portal seri konsol arabiriminde gezinmek için klavyenizde **Tab** tuşunu kullanın. Konumunuz ekranda vurgulanacaktır. Seri konsol penceresinin odağını bırakmak için klavyenizde **CTRL**+**F6** tuşuna basın.
+Azure portal seri konsol arabiriminde gezinmek için klavyenizde **Tab** tuşunu kullanın. Konumunuz ekranda vurgulanacaktır. Seri konsol penceresinin odağını bırakmak için klavyenizde **CTRL** + **F6** tuşuna basın.
 
 ### <a name="use-the-serial-console-with-a-screen-reader"></a>Seri konsolu 'nu ekran okuyucu ile kullanma
 Seri konsolunda yerleşik ekran okuyucusu desteği vardır. Bir ekran okuyucusu açıkken dolaşma, ekran okuyucu tarafından şu anda seçili olan düğme için alternatif metnin yüksek sesle okunmasıyla izin verir.
@@ -186,8 +186,8 @@ Sorun                             |   Risk azaltma
 Bağlantı başlığından sonra **ENTER** tuşuna basmak, oturum açma isteminin görüntülenmesine neden olmaz. | Daha fazla bilgi için bkz. ENTER tuşuna basarak [hiçbir şey yapılmıyor](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Bu hata, Windows 'un seri bağlantı noktasına düzgün şekilde bağlanamamasına neden olan özel bir VM, sağlamlaştırılmış gereç veya önyükleme yapılandırması çalıştırıyorsanız oluşabilir. Yalnızca Windows Server VM 'Leri EMS 'nin etkin olacak şekilde yapılandırıldığı için, bu hata bir Windows 10 VM çalıştırıyorsanız da meydana gelir.
 Bir Windows VM 'sine bağlanılırken yalnızca sistem durumu bilgileri gösterilir| Bu hata, Özel Yönetim Konsolu Windows görüntünüz için etkinleştirilmemişse oluşur. Windows sanal makinenizde SAC 'yi el ile etkinleştirme hakkında yönergeler için bkz. [özel veya eski görüntülerde seri konsolunu etkinleştirme](#enable-the-serial-console-in-custom-or-older-images) . Daha fazla bilgi için bkz. [Windows sistem durumu sinyalleri](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
 SAC, tarayıcıda tüm seri konsol alanını gerçekleştirmez | Bu, Windows ve Terminal Öykünücüde bilinen bir sorundur. Bu sorunu her iki ekiple izliyoruz, ancak şimdilik bir azaltma yoktur.
-Çekirdek hata ayıklaması etkinse, SAC istemine yazılamıyor. | RDP 'den VM 'ye ve `bcdedit /debug {current} off` yükseltilmiş bir komut isteminden çalıştırın. RDP 'yi görmüyorsanız, işletim sistemi diskini başka bir Azure VM 'ye iliştirebilir ve çalıştırarak `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`bir veri diski olarak bağlı durumdayken değiştirebilir ve sonra diski geri takas edebilirsiniz.
-İlk içerik yinelenen bir karakter içeriyorsa, SAC 'de PowerShell 'e yapıştırma üçüncü bir karakterle sonuçlanır. | Geçici bir çözüm için, `Remove-Module PSReadLine` psreadline modülünü geçerli oturumdan kaldırmak için öğesini çalıştırın. Bu eylem modülü silmez veya kaldırmaz.
+Çekirdek hata ayıklaması etkinse, SAC istemine yazılamıyor. | RDP 'den VM 'ye ve `bcdedit /debug {current} off` yükseltilmiş bir komut isteminden çalıştırın. RDP 'yi görmüyorsanız, işletim sistemi diskini başka bir Azure VM 'ye iliştirebilir ve çalıştırarak bir veri diski olarak bağlı durumdayken değiştirebilir ve `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off` sonra diski geri takas edebilirsiniz.
+İlk içerik yinelenen bir karakter içeriyorsa, SAC 'de PowerShell 'e yapıştırma üçüncü bir karakterle sonuçlanır. | Geçici bir çözüm için, `Remove-Module PSReadLine` PSReadLine modülünü geçerli oturumdan kaldırmak için öğesini çalıştırın. Bu eylem modülü silmez veya kaldırmaz.
 Bazı klavye girdileri, alışılmadık SAC çıkışı oluşturur (örneğin, **[A**, **[3 ~**). | [VT100](https://aka.ms/vtsequences) KAÇıŞ dizileri sac istemi tarafından desteklenmez.
 Uzun dizeleri yapıştırma işe yaramıyor. | Seri konsol, seri bağlantı noktası bant genişliğinin aşırı yüklenmesini engellemek için, terminale yapıştırılan dizelerin uzunluğunu 2048 karakter olarak sınırlandırır.
 
@@ -195,11 +195,11 @@ Uzun dizeleri yapıştırma işe yaramıyor. | Seri konsol, seri bağlantı nokt
 
 **S. nasıl geri bildirim gönderebilirim?**
 
-A. Üzerinde https://aka.ms/serialconsolefeedbackbir GitHub sorunu oluşturarak geri bildirim sağlayın. Alternatif olarak (daha az tercih edilen), uygulamasının azserialhelp@microsoft.com https://feedback.azure.comsanal makine kategorisinde veya aracılığıyla geri bildirim gönderebilirsiniz.
+A. Üzerinde bir GitHub sorunu oluşturarak geri bildirim sağlayın https://aka.ms/serialconsolefeedback . Alternatif olarak (daha az tercih edilen), azserialhelp@microsoft.com uygulamasının sanal makine kategorisinde veya aracılığıyla geri bildirim gönderebilirsiniz https://feedback.azure.com .
 
 **S. seri konsol kopyalamayı/yapıştırmayı destekliyor mu?**
 
-A. Evet. Terminale kopyalayıp yapıştırmak için **CTRL**+**SHIFT**+**C** ve **CTRL**+**SHIFT**+**V** kullanın.
+A. Evet. **Ctrl** + **Shift** + **C** **Ctrl** + **Shift** + Terminale kopyalayıp yapıştırmak için CTRL SHIFT C ve CTRL SHIFT**V** kullanın.
 
 **S. Aboneliğimin seri konsolunu kimler etkinleştirebilir veya devre dışı bırakabilirim?**
 

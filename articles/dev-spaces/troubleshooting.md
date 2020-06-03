@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: a6ce0f2a4d45f0a703676c76f429dbe07a4517f4
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 51846c8630e4e8c60205f8d92fb7f74f92de3f41
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263508"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309654"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
 
@@ -27,6 +27,14 @@ Visual Studio için, `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` ortam değişk
 CLı içinde, komut yürütme sırasında anahtarı kullanarak daha fazla bilgi alabilirsiniz `--verbose` . Ayrıca, içinde daha ayrıntılı günlüklere de gidebilirsiniz `%TEMP%\Azure Dev Spaces` . Bir Mac üzerinde, *geçici* Dizin `echo $TMPDIR` bir terminal penceresinden çalıştırılarak bulunabilir. Bir Linux bilgisayarda, *geçici* dizin genellikle olur `/tmp` . Ayrıca, [Azure CLI yapılandırma dosyanızda](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)günlüğe kaydetme özelliğinin etkinleştirildiğini doğrulayın.
 
 Azure Dev Spaces, tek bir örneğin veya Pod hata ayıklaması yaparken en iyi şekilde de geçerlidir. `azds.yaml`Dosya, Kubernetes 'in hizmetinize çalıştığı düğüm sayısını gösteren bir, *replicacount*ayarı içerir. Uygulamanızı belirli bir hizmet için birden çok Pod çalıştıracak şekilde yapılandırmak üzere *replicacount* değerini değiştirirseniz, hata ayıklayıcı alfabetik olarak listelendiğinde ilk Pod 'a iliştirir. Özgün Pod geri dönüştürüldüğünde hata ayıklayıcı farklı bir pod 'a iliştirir, muhtemelen beklenmedik davranışa neden olur.
+
+## <a name="common-issues-when-using-local-process-with-kubernetes"></a>Kubernetes ile yerel Işlem kullanılırken sık karşılaşılan sorunlar
+
+### <a name="fail-to-restore-original-configuration-of-deployment-on-cluster"></a>Kümedeki dağıtımın özgün yapılandırması geri yüklenemedi
+
+Kubernetes ile yerel Işlem kullanılırken, Kubernetes istemcisi ile yerel işlem kilitlenirse veya aniden sonlandığında, Kubernetes ile yerel işlemin yeniden yönlendirilmesi, Kubernetes ile bağlantılı yerel Işlemden önce özgün durumuna geri yüklenemez.
+
+Bu sorunu onarmak için hizmeti kümenize yeniden dağıtın.
 
 ## <a name="common-issues-when-enabling-azure-dev-spaces"></a>Azure Dev Spaces etkinleştirilirken yaygın sorunlar
 
@@ -259,7 +267,7 @@ Bu hata, Azure Dev Spaces Şu anda çok aşamalı derlemeleri desteklemediğinde
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>Geliştirme makinenizi bağlarken ağ trafiği AKS kümenize iletilmez
 
-[AKS kümenizi geliştirme makinenize bağlamak için Azure dev Spaces](how-to/connect.md)kullanırken, ağ trafiğinin geliştirme makineniz ve aks kümeniz arasında iletilemediği bir sorunla karşılaşabilirsiniz.
+[AKS kümenizi geliştirme makinenize bağlamak için Azure dev Spaces](how-to/local-process-kubernetes-vs-code.md)kullanırken, ağ trafiğinin geliştirme makineniz ve aks kümeniz arasında iletilemediği bir sorunla karşılaşabilirsiniz.
 
 Geliştirme makinenizi AKS kümenize bağlarken, geliştirme makinenizin dosyasını değiştirerek AKS kümeniz ile geliştirme makineniz arasındaki ağ trafiğini iletir Azure Dev Spaces `hosts` . Azure Dev Spaces, `hosts` bir ana bilgisayar adı olarak değiştirdiğiniz Kubernetes hizmetinin adresiyle öğesinde bir giriş oluşturur. Bu giriş, geliştirme makineniz ve AKS kümesi arasında ağ trafiğini yönlendirmek için bağlantı noktası iletme ile kullanılır. Geliştirme makinenizdeki bir hizmet, değiştirdiğiniz Kubernetes hizmetinin bağlantı noktasıyla çakışıyorsa, Azure Dev Spaces Kubernetes hizmeti için ağ trafiğini iletemez. Örneğin, *Windows BranchCache* hizmeti genellikle *0.0.0.0:80*' e bağlanır, bu da çakışmalar tüm yerel ıp 'lerde bağlantı noktası 80 ' de çakışmaya neden olur.
 
@@ -274,7 +282,7 @@ Bu sorunu onarmak için, değiştirmeye çalıştığınız Kubernetes hizmetini
 
 ### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>"Pod için Azureassignedıdentity bulunamadı: azds/AZD-Web kancası-Deployment- \<id\> , atanan durumunda"
 
-[Yönetilen kimliğe](../aks/use-managed-identity.md) sahip bir aks kümesinde Azure dev Spaces bir hizmeti çalıştırırken ve [Pod tarafından yönetilen kimlikleri](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) yüklüyken, bu işlem *grafik yükleme* adımından sonra askıda kalabilir. Azds *-Injector-Web kancasını* *azds* ad alanında inceleyebilir, bu hatayı görebilirsiniz.
+[Yönetilen kimliğe](../aks/use-managed-identity.md) sahip bir aks kümesinde Azure dev Spaces bir hizmeti çalıştırırken ve [Pod tarafından yönetilen kimlikleri](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) yüklüyken, işlem *grafik yükleme* adımından sonra yanıt vermeyi durdurabilir. Azds *-Injector-Web kancasını* *azds* ad alanında inceleyebilir, bu hatayı görebilirsiniz.
 
 Azure Dev Spaces hizmetler kümede çalışır ve küme dışında Azure Dev Spaces arka uç hizmetleriyle konuşmak için kümenin yönetilen kimliğini kullanır. Pod yönetilen kimliği yüklendiğinde, kümenin düğümlerinde, yönetilen kimlik kimlik bilgileri için tüm çağrıları [kümeye yüklenmiş bir düğüm yönetilen kimliği (NMI) DaemonSet](https://github.com/Azure/aad-pod-identity#node-managed-identity)yeniden yönlendirmek üzere, ağ kuralları yapılandırılır. Bu NMI DaemonSet, çağıran Pod 'yi tanımlar ve pod 'ın istenen yönetilen kimliğe erişmek için uygun şekilde etiketlenmesini sağlar. Azure Dev Spaces, bir kümede Pod tarafından yönetilen kimliğin yüklü olup olmadığını algılayamaz ve Azure Dev Spaces hizmetlerin kümenin yönetilen kimliğine erişmesine izin vermek için gerekli yapılandırmayı gerçekleştiremez. Azure Dev Spaces Hizmetleri kümenin yönetilen kimliğine erişmek üzere yapılandırılmadığından, NMI DaemonSet, yönetilen kimlik için AAD belirteci almasına ve Azure Dev Spaces arka uç hizmetleriyle iletişim kuramamasına izin vermez.
 
@@ -589,7 +597,8 @@ Küme düğümlerinden gelen çıkış trafiğinin kısıtlandığı bir AKS kü
 | cloudflare.docker.com | HTTPS: 443 | Linux alp ve diğer Azure Dev Spaces görüntülerini çekmek için |
 | gcr.io | HTTP: 443 | Held/Tiller görüntülerini çekmek için|
 | storage.googleapis.com | HTTP: 443 | Held/Tiller görüntülerini çekmek için|
-| AZD 'ler- <guid> . <location> . azds.io | HTTPS: 443 | Denetleyicinize yönelik Azure Dev Spaces arka uç hizmetleriyle iletişim kurmak için. % USERPROFILE% azds\settings.JSON içindeki "dataplaneFqdn" içinde tam FQDN bulunabilir \.|
+
+Güvenlik duvarınızı veya güvenlik yapılandırmanızı, yukarıdaki FQDN 'Ler ve [Azure dev Spaces altyapı hizmetlerinden](../dev-spaces/configure-networking.md#virtual-network-or-subnet-configurations)gelen ve giden ağ trafiğine izin verecek şekilde güncelleştirin.
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Hata "küme \<cluster\> abonelikte bulunamadı \<subscriptionId\> "
 

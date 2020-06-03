@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 12/13/2018
-ms.openlocfilehash: 6e4f6789be2faa8d1af0fd75830541f8a9e27a7e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8aca5a4f76504f1e9c33f55101f697ea6b3b6856
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044573"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309918"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan-with-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği ile Azure App Service barındırma planı için eşitleme ağı yapılandırması
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,19 +30,19 @@ Bunu yapmak için şu adımları uygulayın:
 
 1. Web Apps App Service planına gidin.
 
-   ![App Service planı](./media/azure-app-sync-network-configuration/app-service-plan.png)
+   ![App Service planının ekran görüntüsü](./media/azure-app-sync-network-configuration/app-service-plan.png)
 
 2. **Ağ** ' ı seçin ve ardından **yönetmek Için buraya tıklayın ' ı**seçin.
 
-   ![hizmet planını Yönet](./media/azure-app-sync-network-configuration/manage-plan.png)
+   ![Hizmet planını yönetme ekran görüntüsü](./media/azure-app-sync-network-configuration/manage-plan.png)
 
 3. **VNET** ' i seçin ve **ağa Eşitle**' ye tıklayın.
 
-   ![Ağ eşitleme](./media/azure-app-sync-network-configuration/sync.png)
+   ![Eşitleme ağının ekran görüntüsü](./media/azure-app-sync-network-configuration/sync.png)
 
 4. Eşitleme işlemi tamamlanana kadar bekleyin.
   
-   ![Eşitleme tamamlandı](./media/azure-app-sync-network-configuration/sync-done.png)
+   ![Eşitlemenin ekran görüntüsü tamamlandı](./media/azure-app-sync-network-configuration/sync-done.png)
 
 Artık SQL yönetilen örneğinizin bağlantısını yeniden oluşturmaya başlamaya hazırsınız.
 

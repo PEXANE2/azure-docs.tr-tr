@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: IoT Central bir Solar penal izleme uygulaması oluşturma'
+title: 'Öğretici: IoT Central ile bir Solar paneli izleme uygulaması oluşturma'
 description: 'Öğretici: Azure IoT Central uygulama şablonlarını kullanarak Solar Panel uygulaması oluşturmayı öğrenin.'
 author: op-ravi
 ms.author: omravi
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: d5ea3d3420cb598693ccaede7ee10d2f8c4fd839
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5a48ea0747a110720a29a9c34fa2dca0f5a74f16
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77025784"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310011"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Öğretici: güneş paneli izleme uygulama şablonunu oluşturun ve ilerleyin 
 
@@ -30,7 +30,7 @@ Bu öğretici, sanal verileri içeren örnek bir cihaz modeli içeren Solar pane
 
 Aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 - Hiçbiri
 - Azure aboneliği önerilir, ancak denemek için gerekli değildir
 
@@ -110,4 +110,3 @@ Bu uygulamayı kullanmaya devam etmeyi istemediğinize karar verirseniz, aşağ�
 * Güneş paneli uygulama mimarisi hakkında bilgi edinin [kavram makalesine](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app) bakın
 * Ücretsiz paneli için uygulama şablonları oluşturun: [güneş paneli](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring) uygulaması
 * IoT Central hakkında daha fazla bilgi için bkz. [IoT Central genel bakış](https://docs.microsoft.com/azure/iot-central/)
-

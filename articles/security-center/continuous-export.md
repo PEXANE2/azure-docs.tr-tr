@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 19fdcc7b590c6ad6873c7808ae26d218bbda7f5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c30fef5c82f831365a11bcb14559b0914a9eda4c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158987"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299953"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Güvenlik uyarılarını ve önerilerini dışarı aktarma
 
@@ -28,6 +28,21 @@ Bu araçları kullanarak şunları yapabilirsiniz:
 * CSV 'ye aktar (bir kez)
 
 
+
+
+## <a name="availability"></a>Kullanılabilirlik
+
+- Yayın durumu: **genel olarak kullanılabilir**
+- Gerekli roller ve izinler:
+    - Dışarı aktarma yapılandırmasını içeren abonelikte **okuyucu**
+    - Kaynak grubunda (veya **sahip**) **Güvenlik Yöneticisi rolü**
+    - Ayrıca hedef kaynak için yazma izinlerine sahip olmalıdır
+- Larının 
+    - Ticari bulutlar ✔
+    - ✔ US Gov
+    - ✘ Çin gov, diğer gov
+
+
 ## <a name="setting-up-a-continuous-export"></a>Sürekli dışarı aktarma ayarlama
 
 Aşağıdaki adımlar Log Analytics çalışma alanına veya Azure Event Hubs sürekli bir dışarı aktarma işlemi yapılıp yapılmayacağını belirtir.
@@ -38,7 +53,7 @@ Aşağıdaki adımlar Log Analytics çalışma alanına veya Azure Event Hubs s�
     
 1. Bu aboneliğin Ayarlar sayfasının kenar çubuğundan **sürekli dışarı aktarma**' yı seçin.
 
-    [Azure Güvenlik Merkezi 'nde dışarı aktarma seçenekleri ![](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox) Burada dışa aktarma seçeneklerini görürsünüz. Kullanılabilir her dışa aktarma hedefi için bir sekme vardır. 
+    [ ![ Azure Güvenlik Merkezi 'nde dışarı aktarma seçenekleri](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox) burada dışa aktarma seçeneklerini görürsünüz. Kullanılabilir her dışa aktarma hedefi için bir sekme vardır. 
 
 1. Dışarı aktarmak istediğiniz veri türünü seçin ve her bir türdeki filtrelerden birini seçin (örneğin, yalnızca yüksek önem derecesine sahip uyarıları dışarı aktarın).
 
@@ -128,5 +143,5 @@ Bu makalede, önerilerinizi ve uyarılarınızı sürekli dışarı aktarmaları
 
 - [Azure Event Hubs belgeleri](https://docs.microsoft.com/azure/event-hubs/)
 - [Azure Sentinel belgeleri](https://docs.microsoft.com/azure/sentinel/)
-- [Azure Izleyici belgeleri](https://docs.microsoft.com/azure/azure-monitor/)
+- [Azure İzleyici belgeleri](https://docs.microsoft.com/azure/azure-monitor/)
 - [İş akışı otomasyonu ve sürekli dışarı aktarma veri türleri şemaları](https://aka.ms/ASCAutomationSchemas)

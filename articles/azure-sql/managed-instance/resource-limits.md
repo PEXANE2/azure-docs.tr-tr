@@ -1,7 +1,7 @@
 ---
 title: Kaynak sınırları
 titleSuffix: Azure SQL Managed Instance
-description: Bu makalede, Azure SQL yönetilen örnekleri için kaynak sınırlarına genel bir bakış sunulmaktadır.
+description: Bu makalede, Azure SQL yönetilen örneği için kaynak sınırlarına genel bir bakış sunulmaktadır.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,20 +12,20 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: 27b46a5511313e8ebc31618fe382e7108cdaa160
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b72195c818e418cfca9c88fe666b27b277aa7bda
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118659"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309110"
 ---
-# <a name="overview-azure-sql-managed-instance-resource-limits"></a>Azure SQL yönetilen örnek kaynak sınırlarına genel bakış
+# <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL yönetilen örnek kaynak sınırlarına genel bakış
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Bu makalede, Azure SQL yönetilen örneği için teknik özelliklere ve kaynak sınırlarına genel bir bakış sağlanır ve bu sınırlara bir artış isteme hakkında bilgi sağlanır.
 
 > [!NOTE]
-> Desteklenen özellikler ve T-SQL deyimlerindeki farklar için bkz. [özellik farklılıkları](../database/features-comparison.md) ve [t-SQL deyimi desteği](transact-sql-tsql-differences-sql-server.md). SQL veritabanı ve SQL yönetilen örneği için hizmet katmanları arasındaki genel farklılıklar için bkz. [hizmet katmanı karşılaştırması](../database/service-tiers-general-purpose-business-critical.md#service-tier-comparison).
+> Desteklenen özellikler ve T-SQL deyimlerindeki farklar için bkz. [özellik farklılıkları](../database/features-comparison.md) ve [t-SQL deyimi desteği](transact-sql-tsql-differences-sql-server.md). Azure SQL veritabanı ve SQL yönetilen örneği için hizmet katmanları arasındaki genel farklılıklar için bkz. [hizmet katmanı karşılaştırması](../database/service-tiers-general-purpose-business-critical.md#service-tier-comparison).
 
 ## <a name="hardware-generation-characteristics"></a>Donanım oluşturma özellikleri
 
@@ -40,12 +40,12 @@ SQL yönetilen örneği, temel altyapıyı ve mimarisine bağlı olan özellikle
 | En büyük örnek ayrılmış depolama alanı |  Genel Amaçlı: 8 TB<br/>İş Açısından Kritik: 1 TB | Genel Amaçlı: 8 TB<br/> Çekirdek sayısına bağlı olarak 1 TB, 2 TB veya 4 TB İş Açısından Kritik |
 
 > [!IMPORTANT]
-> - 4. nesil donanım kullanıma alınıyor ve Yeni dağıtımlar için artık kullanılamıyor. Tüm yeni SQL yönetilen örneklerinin 5. nesil donanımında dağıtılması gerekir.
-> - Daha geniş bir sanal çekirdek ve depolama ölçeklenebilirliği, hızlandırılmış ağ, en iyi GÇ performansı ve en düşük gecikme süresine sahip olmak için [SQL yönetilen örneklerinizi Gen 5 donanımına taşımayı](../database/service-tiers-vcore.md) düşünün.
+> - 4. nesil donanım kullanıma alınıyor ve Yeni dağıtımlar için artık kullanılamıyor. SQL yönetilen örneğinin tüm yeni örnekleri 5. nesil donanımında dağıtılmalıdır.
+> - Daha geniş bir sanal çekirdek ve depolama ölçeklenebilirliği, hızlandırılmış ağ, en iyi GÇ performansı ve en düşük gecikme süresine sahip olmak için [SQL yönetilen örneği örneğinizi Gen 5 donanımına taşımayı](../database/service-tiers-vcore.md) düşünün.
 
 ### <a name="in-memory-oltp-available-space"></a>Bellek içi OLTP kullanılabilir alanı 
 
-[İş açısından kritik](../database/service-tier-business-critical.md) hizmet katmanındaki bellek içi OLTP alanı miktarı, sanal çekirdekler ve donanım oluşturma sayısına bağlıdır. Aşağıdaki tabloda bellek Içi OLTP nesneleri için kullanılabilecek bellek limitleri listelenmektedir.
+[İş açısından kritik](../database/service-tier-business-critical.md) hizmet katmanındaki bellek içi OLTP alanı miktarı, sanal çekirdekler ve donanım oluşturma sayısına bağlıdır. Aşağıdaki tabloda, bellek Içi OLTP nesneleri için kullanılabilecek bellek sınırları listelenmektedir.
 
 | Bellek içi OLTP alanı  | **5. nesil** | **4. nesil** |
 | --- | --- | --- |
@@ -65,7 +65,7 @@ SQL yönetilen örneği iki hizmet katmanına sahiptir: [genel amaçlı](../data
 > [!Important]
 > İş Açısından Kritik hizmet katmanı, salt okunurdur iş yükü için kullanılabilecek SQL yönetilen örneği 'nin (ikincil çoğaltma) ek yerleşik bir kopyasını sağlar. Okuma-yazma sorgularını ve salt okunurdur/analitik/raporlama sorgularını ayırabiliyorsanız, aynı fiyata ait sanal çekirdekler ve belleğin iki katına alınması gerekir. İkincil çoğaltma, birincil örneğinin arkasında birkaç saniye geciktelebilirler, bu nedenle, tam olarak geçerli veri durumunun gerekli olmadığı raporlama/analiz iş yüklerini boşaltmak üzere tasarlanmıştır. Aşağıdaki tabloda, salt yazılır **sorgular** , ikincil çoğaltmada yürütülen sorgulardır.
 
-| **Özellik** | **Genel Amaçlı** | **İş Açısından Kritik** |
+| **Öne çıkan özelliği** | **Genel Amaçlı** | **İş Açısından Kritik** |
 | --- | --- | --- |
 | Sanal çekirdek sayısı\* | 4. nesil: 8, 16, 24<br/>5. nesil: 4, 8, 16, 24, 32, 40, 64, 80 | 4. nesil: 8, 16, 24 <br/> 5. nesil: 4, 8, 16, 24, 32, 40, 64, 80 <br/>\*Salt okuma sorguları için aynı sayıda sanal çekirdek ayrılmış. |
 | Maksimum bellek | 4. nesil: 56 GB-168 GB (7GB/sanal çekirdek)<br/>5. nesil: 20,4 GB-408 GB (5.1 GB/sanal çekirdek)<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. | 4. nesil: 56 GB-168 GB (7GB/sanal çekirdek)<br/>Okuma-yazma sorguları için 5. nesil: 20,4 GB-408 GB (5.1 GB/vCore)<br/>+ salt okuma sorguları için + ek 20,4 GB-408 GB (5.1 GB/vCore).<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. |
@@ -111,7 +111,7 @@ Ayrıca, en büyük günlük yazma aktarım hızı (22 MB/sn) üzerinde örnek d
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
-SQL yönetilen örnekler yalnızca [desteklenen bölgelerde](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)oluşturulabilir. Şu anda desteklenmeyen bir bölgede SQL yönetilen örneği oluşturmak için [Azure Portal aracılığıyla bir destek isteği gönderebilirsiniz](../database/quota-increase-request.md).
+SQL yönetilen örneği yalnızca [desteklenen bölgelerde](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)oluşturulabilir. Şu anda desteklenmeyen bir bölgede SQL yönetilen örneği oluşturmak için [Azure Portal aracılığıyla bir destek isteği gönderebilirsiniz](../database/quota-increase-request.md).
 
 ## <a name="supported-subscription-types"></a>Desteklenen abonelik türleri
 
@@ -128,11 +128,11 @@ SQL yönetilen örneği şu anda yalnızca aşağıdaki abonelik türlerinde da�
 
 Desteklenen Abonelik türleri, bölge başına sınırlı sayıda kaynak içerebilir. SQL yönetilen örneği, Azure bölgesi başına iki varsayılan sınıra sahiptir (bir abonelik türü türüne göre Azure portal özel bir [destek isteği](../database/quota-increase-request.md) oluşturarak isteğe bağlı olarak artırılabilir:
 
-- **Alt ağ sınırı**: SQL yönetilen örneklerinin tek bir bölgede dağıtıldığı alt ağların en fazla sayısı.
+- **Alt ağ sınırı**: SQL yönetilen örnek örneklerinin tek bir bölgede dağıtıldığı alt ağların en fazla sayısı.
 - **Vcore birim sınırı**: tek bir bölgedeki tüm örneklerde dağıtılabilecek en fazla Vcore birimi sayısı. Bir GP sanal çekirdeği bir vCore birimi kullanır ve bir BC sanal çekirdek 4 sanal çekirdek birimi alır. Toplam örnek sayısı, sanal çekirdek birim sınırının içinde olduğu sürece sınırlı değildir.
 
 > [!Note]
-> Bu sınırlar varsayılan ayarlar değildir ve teknik sınırlamalardır. Geçerli bölgede daha fazla SQL yönetilen örneği gerekiyorsa, Azure portal özel bir [destek isteği](../database/quota-increase-request.md) oluşturularak sınırlar artırılabilir. Alternatif olarak, destek istekleri göndermeden başka bir Azure bölgesinde yeni SQL yönetilen örnekler oluşturabilirsiniz.
+> Bu sınırlar varsayılan ayarlar değildir ve teknik sınırlamalardır. Geçerli bölgede daha fazla örneğe ihtiyaç duyuyorsanız, Azure portal özel bir [destek isteği](../database/quota-increase-request.md) oluşturularak sınırlar artırılabilir. Alternatif olarak, destek istekleri göndermeden başka bir Azure bölgesinde SQL yönetilen örneğinin yeni örneklerini oluşturabilirsiniz.
 
 Aşağıdaki tabloda desteklenen Abonelik türleri için **varsayılan bölgesel sınırlar** gösterilmektedir (varsayılan sınırlar aşağıda açıklanan destek isteği kullanılarak genişletilebilir):
 
@@ -146,13 +146,13 @@ Aşağıdaki tabloda desteklenen Abonelik türleri için **varsayılan bölgesel
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional ve MSDN Platformları|2|32|
 
-\*Dağıtımları planlama bölümünde, lütfen İş Açısından Kritik (BC) hizmet katmanının dört (4) kat daha fazla sanal çekirdek kapasitesi Genel Amaçlı (GP) hizmet katmanından gerektirdiğini göz önünde bulundurun. Örneğin: 1 GP vCore = 1 sanal çekirdek birim ve 1 BC sanal çekirdek = 4 sanal çekirdek birimi. Tüketim analizinizi varsayılan sınırlara karşı basitleştirmek için, SQL yönetilen örneklerin dağıtıldığı bölgedeki tüm alt ağlarda vCore birimlerini özetleyin ve sonuçları abonelik türü için örnek birim sınırlarıyla karşılaştırın. Bir bölgedeki her abonelik için **en fazla vCore birimi** sınırı geçerlidir. Birden çok alt ağ arasında dağıtılan tüm sanal çekirdekler toplamı, **en fazla sanal çekirdek birimi sayısına**eşit veya daha düşük olmalıdır.
+\*Dağıtımları planlama bölümünde, lütfen İş Açısından Kritik (BC) hizmet katmanının dört (4) kat daha fazla sanal çekirdek kapasitesi Genel Amaçlı (GP) hizmet katmanından gerektirdiğini göz önünde bulundurun. Örneğin: 1 GP vCore = 1 sanal çekirdek birim ve 1 BC sanal çekirdek = 4 sanal çekirdek birimi. Tüketim analizinizi varsayılan sınırlara karşı basitleştirmek için, SQL yönetilen örneğinin dağıtıldığı bölgedeki tüm alt ağlarda vCore birimlerini özetleyin ve sonuçları abonelik türü için örnek birim sınırlarıyla karşılaştırın. Bir bölgedeki her abonelik için **en fazla vCore birimi** sınırı geçerlidir. Birden çok alt ağ arasında dağıtılan tüm sanal çekirdekler toplamı, **en fazla sanal çekirdek birimi sayısına**eşit veya daha düşük olmalıdır.
 
 \*\*Daha büyük alt ağ ve sanal çekirdek limitleri şu bölgelerde kullanılabilir: Avustralya Doğu, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, Batı Avrupa, Batı ABD 2.
 
 ## <a name="request-a-quota-increase"></a>Kota artışı iste
 
-Geçerli Bölgelerinizdeki daha fazla SQL yönetilen örneği gerekiyorsa, Azure portal kullanarak kotayı uzatmak için bir destek isteği gönderin. Daha fazla bilgi için bkz. [Azure SQL veritabanı Için istek kotası artışları](../database/quota-increase-request.md).
+Geçerli Bölgelerinizdeki daha fazla örneğe ihtiyacınız varsa, Azure portal kullanarak kotayı uzatmak için bir destek isteği gönderin. Daha fazla bilgi için bkz. [Azure SQL veritabanı Için istek kotası artışları](../database/quota-increase-request.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

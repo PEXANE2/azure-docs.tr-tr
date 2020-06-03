@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4ed0b011e7b82ce95c002d2af68e577f1d10c84
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 63a4285725db4dcb41affa93261fbbc03d11598e
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266211"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310759"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -1943,4 +1943,4 @@ Kullanıcı | Kullanılmadığından gösterilmez | NA
 
 * Bir kullanıcıyı bir Azure aboneliğinin Yöneticisi olarak atama hakkında daha fazla bilgi edinmek için bkz. [Azure rolleri kullanarak erişimi yönetme (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 * Microsoft Azure içinde kaynak erişiminin nasıl denetlendiği hakkında daha fazla bilgi için bkz [. farklı rolleri anlama](../../role-based-access-control/rbac-and-directory-admin-roles.md)
-* Azure Active Directory ile Azure aboneliğinizin arasındaki ilişki hakkında bilgi için bkz. [Azure aboneliklerinin Azure Active Directory ile ilişkisi](../fundamentals/active-directory-how-subscriptions-associated-directory.md)
+* Abonelikler ve bir Azure AD kiracısı arasındaki ilişki hakkında daha fazla bilgi için veya bir aboneliği ilişkilendirme veya ekleme yönergeleri için bkz. [Azure Active Directory Kiracınıza Azure aboneliği ilişkilendirme veya ekleme](../fundamentals/active-directory-how-subscriptions-associated-directory.md)

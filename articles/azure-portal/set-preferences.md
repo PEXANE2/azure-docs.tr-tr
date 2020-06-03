@@ -9,12 +9,12 @@ ms.date: 12/19/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 7bcfdeec832b14eb53c0dab6cb2f53970d85c804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3f51c356f4476782bb830b2702a8fe87c79235c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310688"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308073"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Azure portalı tercihlerinizi ayarlama
 
@@ -79,7 +79,7 @@ Seçtiğiniz tema, Azure portal görüntülenen arka plan ve yazı tipi renkleri
 
    ![Temalar vurgulanmış Azure portal ayarlarını gösteren ekran görüntüsü](./media/set-preferences/theme.png)
 
-Bunun yerine yüksek karşıtlıklı temalardan birini seçebilirsiniz. Yüksek karşıtlık ayarları, görme engelli kullanıcılar için Azure portal okumayı daha kolay hale getirir ve diğer tüm tema seçimlerini geçersiz kılar. Daha fazla bilgi için bkz. [yüksek karşıtlığı açma veya temayı değiştirme](azure-portal-change-theme-high-contrast.md).
+Bunun yerine yüksek karşıtlıklı temalardan birini seçebilirsiniz. Yüksek karşıtlık ayarları, görsel bir engellilere sahip kişiler için Azure portal okumayı kolaylaştırır ve diğer tüm tema seçimlerini geçersiz kılar. Daha fazla bilgi için bkz. [yüksek karşıtlığı açma veya temayı değiştirme](azure-portal-change-theme-high-contrast.md).
 
 ### <a name="enable-or-disable-pop-up-notifications"></a>Açılır bildirimleri etkinleştirme veya devre dışı bırakma
 

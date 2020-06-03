@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 044930c9df7b54515b9b66426a6b05aa9517a3a1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 06cd02177d7d5c478f3378eb05517f1a37297e92
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70881276"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300741"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure ayrılmış HSM ağı
 
@@ -78,7 +78,7 @@ HSM cihazlarının, trafiği alternatif bir HSM 'ye yeniden yönlendirmek için 
 
 ### <a name="cross-region-ha-using-vpn-gateway"></a>Çapraz bölge HA VPN Gateway kullanma
 
-Küresel olarak dağıtılan uygulamalarda veya yüksek kullanılabilirlik bölgesel yük devretme senaryolarında, sanal ağların bölgeler arasında bağlanması gerekir. Azure ayrılmış HSM ile, yüksek kullanılabilirlik, iki sanal ağ arasında güvenli bir tünel sağlayan bir VPN Gateway kullanılarak elde edilebilir. VPN Gateway kullanarak VNET-VNET bağlantıları hakkında daha fazla bilgi için [VPN Gateway nedir?](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V) başlıklı makaleye bakın.
+Küresel olarak dağıtılan uygulamalarda veya yüksek kullanılabilirlik bölgesel yük devretme senaryolarında, sanal ağların bölgeler arasında bağlanması gerekir. Azure ayrılmış HSM ile, yüksek kullanılabilirlik, iki sanal ağ arasında güvenli bir tünel sağlayan bir VPN Gateway kullanılarak elde edilebilir. VPN Gateway kullanarak VNET-VNET bağlantıları hakkında daha fazla bilgi için [VPN Gateway nedir?](../vpn-gateway/design.md#V2V) başlıklı makaleye bakın.
 
 > [!NOTE]
 > Genel VNET eşlemesi Şu anda adanmış HSM 'ler ile bölgeler arası bağlantı senaryolarında kullanılamaz ve bunun yerine VPN Gateway kullanılmalıdır. 

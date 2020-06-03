@@ -3,26 +3,28 @@ title: Power otomatikleştirmede akışları Azure Logic Apps dışa aktarma
 description: Azure Resource Manager şablonları olarak dışa aktararak Power otomatikleştirmede akışları Azure Logic Apps geçirme
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 616f10b32d0a9c1a05d759a0e27550cd2808808b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b30a2ae8d90a193e23229dc6743c7e92ebf83b52
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75428877"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298729"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Akışları Power Automate'ten dışarı aktarma ve Azure Logic Apps’e dağıtma
 
 Akışınızın yeteneklerini genişletmek ve genişletmek için, bu akışı [Power otomatikleştirmede](https://flow.microsoft.com) [Azure Logic Apps](../logic-apps/logic-apps-overview.md)geçirebilirsiniz. Akışınızı bir mantıksal uygulama için bir Azure Resource Manager şablonu olarak dışa aktarabilir, bu mantıksal uygulama şablonunu bir Azure Kaynak grubuna dağıtabilir ve ardından mantıksal uygulama tasarımcısında bu mantıksal uygulamayı açabilirsiniz.
 
 > [!NOTE]
-> Azure Logic Apps ' de tüm güç otomatikleştirme bağlayıcıları kullanılamaz. Azure Logic Apps [benzer bağlayıcılar](../connectors/apis-list.md) içeren akışları içeri aktarabilirsiniz. Örneğin, düğme tetikleyicisi, onay Bağlayıcısı ve bildirim Bağlayıcısı, Power otomatikleştirmek için özeldir.
+> Azure Logic Apps ' de tüm güç otomatikleştirme bağlayıcıları kullanılamaz. Yalnızca Azure Logic Apps içindeki eşit bağlayıcılara sahip güç otomatikleştirme akışlarını geçirebilirsiniz. Örneğin, düğme tetikleyicisi, onay Bağlayıcısı ve bildirim Bağlayıcısı, Power otomatikleştirmek için özeldir. Şu anda, mantıksal uygulama şablonları olarak dışa aktarma ve dağıtım için Power otomatikleştirmede OpenAPI tabanlı akışlar desteklenmez.
 >
-> Power otomatikleştirmede dışarıya aktarılmış OpenAPI tabanlı akışlar, mantıksal uygulama şablonları olarak dağıtım için şu anda desteklenmiyor. 
+> * Hangi Power otomatikleştirmek bağlayıcılarının Logic Apps eşdeğerleri olmadığını öğrenmek için bkz. [Power otomatikleştiren bağlayıcılar](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors).
+>
+> * Hangi Logic Apps bağlayıcılarının güç otomatikleştirme eşdeğerleri olmadığını öğrenmek için bkz. [Logic Apps bağlayıcılar](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -30,7 +32,7 @@ Akışınızın yeteneklerini genişletmek ve genişletmek için, bu akışı [P
 
 ## <a name="export-a-flow"></a>Akışı dışarı aktarma
 
-1. [Power otomatikleştirmek](https://flow.microsoft.com)için oturum açın ve **Akışlarım**' ı seçin. Akışınızı bulun ve seçin. Araç çubuğunda üç nokta (**...**) düğmesini seçin. Logic Apps şablonunu **dışarı aktar** > **(. JSON)** seçeneğini belirleyin.
+1. [Power otomatikleştirmek](https://flow.microsoft.com)için oturum açın ve **Akışlarım**' ı seçin. Akışınızı bulun ve seçin. Araç çubuğunda üç nokta (**...**) düğmesini seçin. Logic Apps şablonunu **dışarı aktar**  >  **(. JSON)** seçeneğini belirleyin.
 
    ![Akışı dışarı aktarma](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
 
@@ -131,7 +133,7 @@ Mantıksal uygulamalar oluşturmaya yönelik [önkoşullara](../logic-apps/quick
 
    1. Mantıksal uygulamayı dağıtmadan önce çözümünüzü kaydedin.
 
-1. Çözüm Gezgini menüsünde, proje kısayol menüsünü açın ve**Yeni** **Dağıt** > ' ı seçin. Sorulursa Azure hesabınızla oturum açın.
+1. Çözüm Gezgini menüsünde, proje kısayol menüsünü açın ve yeni **Dağıt**' ı seçin  >  **New**. Sorulursa Azure hesabınızla oturum açın.
 
 1. İstendiğinde, Azure aboneliğini, Azure kaynak grubunu ve dağıtım için kullanmak istediğiniz diğer ayarları (şablon parametre değerlerini iletmek için kullanılacak [Parametreler dosyası](../azure-resource-manager/templates/parameter-files.md) gibi) onaylayın ve **Dağıt**' ı seçin.
 

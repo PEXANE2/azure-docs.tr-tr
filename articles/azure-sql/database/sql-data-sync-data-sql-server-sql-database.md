@@ -4,19 +4,19 @@ description: Bu genel bakış, Azure için SQL Data Sync sunarak verileri birden
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: data sync, sqldbrb=1
+ms.custom: data sync, sqldbrb=1, fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 73f0a733d4f32042e5ea3439282f88db0c065433
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: c2c0e6d1d3ffd9ec3091e92530ec5c191f3f7ca6
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188706"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84297964"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure için SQL Data Sync nedir?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -84,7 +84,7 @@ Veri eşitleme, aşağıdaki senaryolar için tercih edilen çözüm değildir:
 | Yararları | -Etkin-etkin destek<br/>-Şirket içi ve Azure SQL veritabanı arasında çift yönlü | -Düşük gecikme süresi<br/>-İşlemsel tutarlılık<br/>-Geçişten sonra var olan topolojiyi yeniden kullan <br/>-Azure SQL yönetilen örnek desteği |
 | Dezavantajlar | -5 dk veya daha fazla gecikme<br/>-İşlem tutarlılığı yok<br/>-Daha yüksek performans etkisi | -Azure SQL veritabanından yayımlanamıyor <br/>-Yüksek bakım maliyeti |
 
-## <a name="get-started"></a>başlarken 
+## <a name="get-started"></a>Kullanmaya başlayın 
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Azure portal veri eşitlemesini ayarlama
 
@@ -169,6 +169,18 @@ Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları e�
 
 > [!NOTE]
 > Yalnızca bir eşitleme grubu varsa, tek bir eşitleme grubunda 30 ' a kadar uç nokta olabilir. Birden fazla eşitleme grubu varsa, tüm eşitleme gruplarındaki bitiş noktalarının toplam sayısı 30 ' u aşamaz. Bir veritabanı birden çok eşitleme grubuna aitse, birden fazla uç nokta olarak sayılır.
+
+### <a name="network-requirements"></a>Ağ gereksinimleri
+
+Eşitleme grubu oluşturulduğunda, veri eşitleme hizmetinin hub veritabanına bağlanması gerekir. Eşitleme grubunu oluşturduğunuzda, Azure SQL Server 'ın ayarlarında aşağıdaki yapılandırma olmalıdır `Firewalls and virtual networks` :
+
+ * *Ortak ağ erişimini reddetme* *devre dışı*olarak ayarlanmalıdır.
+ * *Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin ver* ' in *Evet*olarak ayarlanması veya [veri eşitleme hizmeti tarafından kullanılan IP adresleri](network-access-controls-overview.md#data-sync)için IP kuralları oluşturmanız gerekir.
+
+Eşitleme grubu oluşturulup sağlandıktan sonra bu ayarları devre dışı bırakabilirsiniz. Eşitleme Aracısı doğrudan hub veritabanına bağlanır ve aracının hub sunucusuna erişmesine izin vermek için sunucunun [güvenlik DUVARı IP kurallarını](firewall-configure.md) veya [Özel uç noktalarını](private-endpoint-overview.md) kullanabilirsiniz.
+
+> [!NOTE]
+> Eşitleme grubunun şema ayarlarını değiştirirseniz, hub veritabanının yeniden sağlanması için veri eşitleme hizmeti 'nin sunucuya yeniden erişmesine izin vermeniz gerekir.
 
 ## <a name="faq-about-sql-data-sync"></a>SQL Data Sync hakkında SSS
 

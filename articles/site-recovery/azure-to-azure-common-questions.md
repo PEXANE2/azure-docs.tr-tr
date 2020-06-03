@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 98a2765b7adf31465fa0317cc626157137933af7
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: b4b92b907d9cd6d469163bc7bf457da42e9b673c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248354"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299791"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Sık sorulan sorular: Azure 'dan Azure 'a olağanüstü durum kurtarma
 
@@ -52,6 +52,14 @@ Evet. Site Recovery, Azure Disk Şifrelemesi etkin olan VM 'Lerde olağanüstü 
 - Site Recovery, Azure Active Directory (Azure AD) gerektiren bir şemaya sahip Azure disk şifreleme sürümü 0,1 ' ü destekler. Site Recovery Ayrıca, Azure AD gerektirmeyen 1,1 sürümünü de destekler. [Azure disk şifrelemesi için uzantı şeması hakkında daha fazla bilgi edinin](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schema).
   - Azure disk şifrelemesi sürüm 1,1 için, yönetilen disklerle Windows VM 'Leri kullanmanız gerekir.
   - Şifrelenmiş VM 'Ler için çoğaltmayı etkinleştirme hakkında [daha fazla bilgi edinin](azure-to-azure-how-to-enable-replication-ade-vms.md) .
+
+### <a name="can-i-select-an-automation-account-from-a-different-resource-group"></a>Farklı bir kaynak grubundan bir Otomasyon hesabı seçebilir miyim?
+
+Bu şu anda Portal aracılığıyla desteklenmez, ancak PowerShell aracılığıyla farklı bir kaynak grubundan Otomasyon hesabı seçebilirsiniz.
+
+### <a name="after-specifying-an-automation-account-that-is-in-a-different-resource-group-than-the-vault-am-i-permitted-to-delete-the-runbook-if-there-is-no-other-vault-to-specify"></a>Kasadan farklı bir kaynak grubunda bulunan bir Otomasyon hesabını belirttikten sonra, belirtmek için başka bir kasa yoksa runbook 'u silmesine izin verdim mıyım?
+
+Oluşturulan özel Runbook bir araçtır ve aynı daha uzun bir süre gerekmiyorsa silmenin güvenli hale gelir.
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>VM'leri başka bir aboneliğe çoğaltabilir miyim?
 

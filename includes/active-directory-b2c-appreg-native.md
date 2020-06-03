@@ -5,39 +5,39 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: d3a323a28d92e2a5834b65316d61c7d53a42aacf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2981a46502ad7a7ab673e00bd1e8d2033ef2213d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183796"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84317771"
 ---
-Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için, geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (Önizleme)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregintro).
+Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
 
-#### <a name="applications"></a>[Uygulamalar](#tab/applications/)
-
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
-1. **Uygulamalar**' ı seçin ve ardından **Ekle**' yi seçin.
-1. Uygulama için bir ad girin. Örneğin, *nativeapp1*.
-1. **Yerel istemci**için **Evet**' i seçin.
-1. Benzersiz bir şemaya sahip **özel bir yeniden yönlendirme URI 'si** girin. Örneğin, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`. Yeniden yönlendirme URI 'SI seçerken dikkat etmeniz gereken iki önemli nokta vardır:
-    * **Benzersiz**: YENIDEN yönlendirme URI 'sinin şeması her uygulama için benzersiz olmalıdır. Örnekte `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`, `com.onmicrosoft.contosob2c.exampleapp` şemadır. Bu düzenin izlenmesi gerekir. İki uygulama aynı düzeni paylaşıyorsa, kullanıcıya bir uygulama seçme seçeneği verilir. Kullanıcı yanlış seçerse, oturum açma başarısız olur.
-    * **Tamam**: yeniden yönlendirme URI 'sinin hem bir düzen hem de yol olması gerekir. Yol, etki alanından sonra en az bir eğik çizgi içermelidir. Örneğin, başarısız `//oauth/` olsa `//oauth` da işe yarar. URI 'de, alt çizgi gibi özel karakterler eklemeyin.
-1. **Oluştur**’u seçin.
-
-#### <a name="app-registrations-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
-1. **Uygulama kayıtları (Önizleme)** öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
+1. **Uygulama kayıtları**öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
 1. Uygulama için bir **ad** girin. Örneğin, *nativeapp1*.
 1. **Desteklenen hesap türleri**altında **herhangi bir kuruluş dizininde veya herhangi bir kimlik sağlayıcısında hesaplar**' ı seçin.
 1. **Yeniden yönlendirme URI 'si**altında, **genel istemci/yerel ' i (mobil & Masaüstü)** seçmek için açılan eklentiyi kullanın.
 1. Benzersiz bir düzene sahip bir yeniden yönlendirme URI 'SI girin. Örneğin, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`. Yeniden yönlendirme URI 'SI seçerken dikkat etmeniz gereken iki önemli nokta vardır:
-    * **Benzersiz**: YENIDEN yönlendirme URI 'sinin şeması her uygulama için benzersiz olmalıdır. Örnekte `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`, `com.onmicrosoft.contosob2c.exampleapp` şemadır. Bu düzenin izlenmesi gerekir. İki uygulama aynı düzeni paylaşıyorsa, kullanıcıya bir uygulama seçme seçeneği verilir. Kullanıcı yanlış seçerse, oturum açma başarısız olur.
-    * **Tamam**: yeniden yönlendirme URI 'sinin hem bir düzen hem de yol olması gerekir. Yol, etki alanından sonra en az bir eğik çizgi içermelidir. Örneğin, başarısız `//oauth/` olsa `//oauth` da işe yarar. URI 'de, alt çizgi gibi özel karakterler eklemeyin.
+    * **Benzersiz**: YENIDEN yönlendirme URI 'sinin şeması her uygulama için benzersiz olmalıdır. Örnekte `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` , `com.onmicrosoft.contosob2c.exampleapp` şemadır. Bu düzenin izlenmesi gerekir. İki uygulama aynı düzeni paylaşıyorsa, kullanıcıya bir uygulama seçme seçeneği verilir. Kullanıcı yanlış seçerse, oturum açma başarısız olur.
+    * **Tamam**: yeniden yönlendirme URI 'sinin hem bir düzen hem de yol olması gerekir. Yol, etki alanından sonra en az bir eğik çizgi içermelidir. Örneğin, `//oauth/` başarısız olsa da işe yarar `//oauth` . URI 'de, alt çizgi gibi özel karakterler eklemeyin.
 1. **İzinler**altında, *openıd ve offline_access izinleri Için yönetici izni ver* onay kutusunu seçin.
 1. **Kaydol**’u seçin.
+
+#### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
+
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
+1. **Uygulamalar (eski)** öğesini seçin ve ardından **Ekle**' yi seçin.
+1. Uygulama için bir ad girin. Örneğin, *nativeapp1*.
+1. **Yerel istemci**için **Evet**' i seçin.
+1. Benzersiz bir şemaya sahip **özel bir yeniden yönlendirme URI 'si** girin. Örneğin, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`. Yeniden yönlendirme URI 'SI seçerken dikkat etmeniz gereken iki önemli nokta vardır:
+    * **Benzersiz**: YENIDEN yönlendirme URI 'sinin şeması her uygulama için benzersiz olmalıdır. Örnekte `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` , `com.onmicrosoft.contosob2c.exampleapp` şemadır. Bu düzenin izlenmesi gerekir. İki uygulama aynı düzeni paylaşıyorsa, kullanıcıya bir uygulama seçme seçeneği verilir. Kullanıcı yanlış seçerse, oturum açma başarısız olur.
+    * **Tamam**: yeniden yönlendirme URI 'sinin hem bir düzen hem de yol olması gerekir. Yol, etki alanından sonra en az bir eğik çizgi içermelidir. Örneğin, `//oauth/` başarısız olsa da işe yarar `//oauth` . URI 'de, alt çizgi gibi özel karakterler eklemeyin.
+1. **Oluştur**’u seçin.

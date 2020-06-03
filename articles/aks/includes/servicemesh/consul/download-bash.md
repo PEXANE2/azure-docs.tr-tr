@@ -10,7 +10,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "77594301"
 ---
-Linux üzerinde Bash tabanlı bir kabukta, Linux veya MacOS [Için Windows alt sistemi][install-wsl] , aşağıdaki `curl` gibi, tüketil Helm grafik sürümünü indirmek için kullanın:
+Linux üzerinde Bash tabanlı bir kabukta, Linux veya MacOS [Için Windows alt sistemi][install-wsl] , `curl` aşağıdaki gibi, tüketil Helm grafik sürümünü indirmek için kullanın:
 
 ```bash
 # Specify the Consul Helm chart version that will be leveraged throughout these instructions

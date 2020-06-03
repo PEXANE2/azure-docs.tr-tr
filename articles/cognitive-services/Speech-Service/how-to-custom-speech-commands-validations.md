@@ -1,7 +1,7 @@
 ---
-title: 'Nasıl yapılır: özel komut parametrelerine doğrulama ekleme'
+title: Özel komutlarda doğrulama ekleme önizleme-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, özel komutlarda bir parametreye nasıl doğrulama ekleneceğini açıkladık.
+description: Özel komutlar önizleme uygulamasında bir komut parametresine doğrulama eklemeyi öğrenin.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -10,56 +10,59 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 2b7fd608156ab269cfc0c85c6c508fa9d5eebc83
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 6686016f109fad4ee8b7f4e494b1374a6003658c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857200"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310419"
 ---
-# <a name="how-to-add-validations-to-custom-command-parameters-preview"></a>Nasıl yapılır: özel komut parametrelerine doğrulama ekleme (Önizleme)
+# <a name="add-validations-to-a-command-parameter-in-a-custom-commands-preview-application"></a>Özel komutlar önizleme uygulamasında bir komut parametresine doğrulama ekleme
 
-Bu makalede, parametrelere doğrulama ekleyecek ve düzeltme isteminde bulunur.
+Bu makalede, parametrelere nasıl doğrulama ekleneceğini ve düzeltme istemlerini öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Aşağıdaki makalelerde bulunan adımları tamamlamış olmanız gerekir:
+Aşağıdaki makalelerdeki adımları uygulayın:
 
 > [!div class="checklist"]
-> * [Hızlı başlangıç: özel bir komut oluşturma](./quickstart-custom-speech-commands-create-new.md)
-> * [Hızlı başlangıç: parametrelerle özel komut oluşturma](./quickstart-custom-speech-commands-create-parameters.md)
+ 
+> * [Hızlı başlangıç: özel komutlar önizleme uygulaması oluşturma](./quickstart-custom-speech-commands-create-new.md)
+> * [Hızlı başlangıç: parametrelerle özel bir komut önizleme uygulaması oluşturma](./quickstart-custom-speech-commands-create-parameters.md)
 
 ## <a name="create-a-settemperature-command"></a>Setsıcaklık komutu oluşturma
 
-Doğrulamaları göstermek için kullanıcıların sıcaklığa izin vermesini sağlayan yeni bir komut oluşturalım.
+Doğrulamaları göstermek için, kullanıcıların sıcaklık ayarlamasına izin veren yeni bir komut oluşturun.
 
-1. Daha önce oluşturduğunuz özel komutlar uygulamanızı [konuşma Studio](https://speech.microsoft.com/) 'da açın
-1. Yeni bir komut oluştur`SetTemperature`
-1. Hedef sıcaklık için bir parametre ekleyin.
+1. [Konuşma Studio](https://speech.microsoft.com/)'da, oluşturduğunuz özel komutlar Önizleme uygulamasını açın.
+1. Yeni bir **Setsıcaklık** komutu oluşturun.
+1. Aşağıdaki yapılandırmaya sahip bir sıcaklık parametresi ekleyin:
 
-   | Parametre yapılandırması           | Önerilen değer    |Açıklama                 |                                    
+   | Parametre yapılandırması           | Önerilen değer    |Description                 |                                    
    | ----------------- | ----------------------------------| -------------|
-   | Name              | Sıcaklık                       | Parametre için açıklayıcı bir ad                                |
-   | Gerekli          | checked                           | Komutu tamamlamadan önce Bu parametre için bir değer gerekip gerekmediğini belirten onay kutusu |
-   | Gerekli parametre için yanıt     | Basit Düzenleyici-hangi sıcaklığın istediğiniz >?  | Bilinmiyorsa bu parametrenin değerini sormak için bir istem |
-   | Tür              | Sayı                            | Sayı, dize, tarih saat veya Coğrafya gibi parametre türü   |
+   | **Adı**              | **Sıcaklık**                       | Parametre için açıklayıcı bir ad                                |
+   | **Gerekli**          | İşaretli                           | Komutu tamamlamadan önce Bu parametre için bir değer gerekip gerekmediğini belirten onay kutusu |
+   | **Gerekli parametre için yanıt**     | **Basit Düzenleyici-hangi sıcaklığın istediğiniz >?**  | Bilinmiyorsa bu parametrenin değerini sormak için bir istem |
+   | **Tür**              | **Sayı**                            | Sayı, dize, DateTime veya Coğrafya gibi parametre türü   |
 
 1. Sıcaklık parametresi için bir doğrulama ekleyin.
 
-    - Parametresi `Temperature` için **Parametreler** yapılandırma sayfasında, doğrulamalar bölümünden öğesini `Add a validation` seçin.
-    - **Yeni doğrulama** açılır penceresinde değerleri aşağıda gösterildiği gibi girin ve **Oluştur**' u seçin.
+    1. Sıcaklık parametresi için **Parametreler** yapılandırma sayfasında, **doğrulamalar** bölümünde **Doğrulama Ekle** ' yi seçin.
 
+    1. **Yeni doğrulama** açılır penceresinde doğrulamayı aşağıdaki şekilde yapılandırın:
   
-       | Parametre yapılandırması         | Önerilen değer                                          | Açıklama                                                                        |
+       | Parametre yapılandırması         | Önerilen değer                                          | Description                                                                        |
        | ----------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-       | Minimum Değer        | 60               | Sayı parametreleri için bu parametrenin varsaydığı en küçük değer |
-       | Maksimum Değer        | 80               | Sayı parametreleri için bu parametrenin varsaydığı en büyük değer |
-       | Hata yanıtı-basit düzenleyici| İlk değişim-Üzgünüz, yalnızca 60 ve 80 derece arasında ayarlayabiliyorum      | Doğrulama başarısız olursa yeni bir değer sormak isteyip istemediğinizi sor                                       |
+       | **Minimum Değer**        | **60**               | Sayı parametreleri için bu parametrenin varsaydığı en küçük değer |
+       | **Maksimum Değer**        | **80**               | Sayı parametreleri için bu parametrenin varsaydığı en büyük değer |
+       | **Hata yanıtı-basit düzenleyici**| **İlk değişim-Üzgünüz, yalnızca 60 ve 80 derece arasında ayarlayabiliyorum**      | Doğrulama başarısız olursa yeni bir değer sormak isteyip istemediğinizi sor                                       |
 
        > [!div class="mx-imgBorder"]
        > ![Aralık doğrulaması ekle](media/custom-speech-commands/validations-add-temperature.png)
 
-1. Örnek tümceler ekleyin
+1. **Oluştur**’u seçin.
+
+1. Örnek cümleler ekleyin.
 
    ```
    set the temperature to {Temperature} degrees
@@ -68,22 +71,22 @@ Doğrulamaları göstermek için kullanıcıların sıcaklığa izin vermesini s
    change the temperature
    ```
 
-1. Sonucu doğrulamak için bir tamamlama kuralı ekleyin
+1. Aşağıdaki yapılandırmaya sahip bir tamamlama kuralı ekleyin. Bu kural, sonucu onaylar.
 
-   | Ayar    | Önerilen değer                                           |Açıklama                                     |
+   | Ayar    | Önerilen değer                                           |Description                                     |
    | ---------- | --------------------------------------------------------- |-----|
    | Name       | Onay Iletisi                                      |Kuralın amacını açıklayan bir ad |
-   | Koşullar | Gerekli parametreler-`Temperature`                       |Kuralın ne zaman çalıştırılabilmesine belirleme koşulları    |   
-   | Eylemler    | Konuşma yanıtı gönder-`Ok, setting temperature to {Temperature} degrees` | Kural koşulu true olduğunda gerçekleştirilecek eylem |
+   | **Koşullar** | **Gerekli parametreler-sıcaklık**                       |Kuralın ne zaman çalıştırılabilmesine belirleme koşulları    |   
+   | **Eylemler**    | **Konuşma yanıtı gönder-tamam, sıcaklığın {sıcaklık} derecenin olarak ayarlanması** | Kural koşulu true olduğunda gerçekleştirilecek eylem |
 
 > [!TIP]
-> Bu örnek, sonucu doğrulamak için bir konuşma yanıtı kullanır. Komutu bir istemci eylemiyle tamamlamaya yönelik örnekler için bkz. [nasıl yapılır: istemci üzerinde konuşma SDK 'sı Ile komutları yerine](./how-to-custom-speech-commands-fulfill-sdk.md) alma
-
+> Bu örnek, sonucu doğrulamak için bir konuşma yanıtı kullanır. Komutu bir istemci eylemiyle tamamlamaya yönelik örnekler için, bkz. [nasıl yapılır: istemci üzerinde konuşma SDK 'sı ile komutları yerine](./how-to-custom-speech-commands-fulfill-sdk.md)alma.
 
 ## <a name="try-it-out"></a>Deneyin
-1. Sağ `Train` bölmenin en üstünde bulunan simgesi seçin.
 
-1. Eğitim tamamlandığında, birkaç etkileşimi seçip `Test` yeniden deneyin.
+1. **Eğitim**' i seçin.
+
+1. Eğitim yapıldıktan sonra **Test**' i seçin ve ardından bu etkileşimleri deneyin:
 
     - Giriş: sıcaklığı 72 derece olarak ayarlayın
     - Çıkış: Tamam, sıcaklık 72 derece olarak ayarlanıyor
@@ -95,4 +98,4 @@ Doğrulamaları göstermek için kullanıcıların sıcaklığa izin vermesini s
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Nasıl yapılır: özel komuta onay ekleme (Önizleme)](./how-to-custom-speech-commands-confirmations.md)
+> [Özel komutlar önizleme uygulamasında bir komuta onaylar ekleme](./how-to-custom-speech-commands-confirmations.md)
