@@ -20,7 +20,7 @@ PostgreSQL için Azure Veritabanı, bulutta son derece kullanılabilir olan Post
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
