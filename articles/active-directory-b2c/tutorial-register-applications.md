@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6e78a6b422f592caa252cb5856fc590a4bed35a7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e97df60739b04884e8a9cd68679c23d4407e4947
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83637593"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298811"
 ---
-# <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Öğretici: uygulamayı Azure Active Directory B2C kaydetme
+# <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Öğretici: bir Web uygulamasını Azure Active Directory B2C kaydetme
 
 [Uygulamalarınızın](application-types.md) Azure Active Directory B2C (Azure AD B2C) ile etkileşime girebilmesi için, yönettiğiniz bir kiracıda kayıtlı olmaları gerekir. Bu öğreticide, Azure portal kullanarak bir Web uygulamasının nasıl kaydedileceği gösterilmektedir.
 
@@ -28,6 +28,8 @@ Bu makalede şunları öğreneceksiniz:
 > * Web uygulaması kaydetme
 > * İstemci parolası oluşturma
 
+Bunun yerine yerel bir uygulama kullanıyorsanız (ör. iOS, Android, mobil & Masaüstü), [yerel bir istemci uygulamasını nasıl kaydedeceğinizi](add-native-application.md)öğrenin.
+
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -36,33 +38,14 @@ Kendi [Azure AD B2C kiracınızı](tutorial-create-tenant.md)önceden oluşturma
 
 ## <a name="register-a-web-application"></a>Web uygulaması kaydetme
 
-Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için, geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (Önizleme)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregintro).
+Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
 
-#### <a name="applications"></a>[Uygulamalar](#tab/applications/)
+#### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
-1. **Uygulamalar**' ı seçin ve ardından **Ekle**' yi seçin.
-1. Uygulama için bir ad girin. Örneğin, *WebApp1*.
-1. **Web uygulaması/Web API 'Si Ekle** ve **örtük akışa Izin ver**için **Evet**' i seçin.
-1. **Yanıt URL 'si**için Azure AD B2C uygulamanızın isteklerinizin belirteçleri döndürmesi gereken bir uç nokta girin. Örneğin, bunu yerel olarak dinlemek için ayarlayabilirsiniz `https://localhost:44316` . Bağlantı noktası numarasını henüz bilmiyorsanız, bir yer tutucu değeri girip daha sonra değiştirebilirsiniz.
-
-    Bu öğreticide olduğu gibi test amacıyla, `https://jwt.ms` İnceleme için bir belirtecin içeriğini görüntüleyen olarak ayarlayabilirsiniz. Bu öğreticide, **yanıt URL** 'sini olarak ayarlayın `https://jwt.ms` .
-
-    Yanıt URL 'Leri için aşağıdaki kısıtlamalar geçerlidir:
-
-    * Yanıt URL 'SI, şemayla başlamalıdır `https` .
-    * Yanıt URL 'SI, büyük/küçük harfe duyarlıdır. Büyük/küçük harf durumu, çalışan uygulamanızın URL yolu ile aynı olmalıdır. Örneğin, uygulamanız yolunun bir parçası olarak içeriyorsa `.../abc/response-oidc` , `.../ABC/response-oidc` yanıt URL 'sinde belirtmeyin. Web tarayıcısı yollara büyük/küçük harfe duyarlı olarak davrandığı için, bununla ilişkili tanımlama bilgileri, `.../abc/response-oidc` büyük/küçük harfe eşleşmeyen URL 'ye yönlendiriliyorsa dışlanamaz `.../ABC/response-oidc` .
-
-1. Uygulama kaydını tamamlayabilmeniz için **Oluştur** ' u seçin.
-
-#### <a name="app-registrations-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
-
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
-1. **Uygulama kayıtları (Önizleme)** öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
+1. **Uygulama kayıtları**öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
 1. Uygulama için bir **ad** girin. Örneğin, *WebApp1*.
 1. **Desteklenen hesap türleri**altında **herhangi bir kuruluş dizininde (HERHANGI bir Azure ad dizini-çoklu kiracı) ve kişisel Microsoft hesaplarından (örn. Skype, Xbox) hesaplar**' ı seçin.
 1. **Yeniden yönlendirme URI 'si**altında **Web**' i seçin ve ardından `https://jwt.ms` URL metin kutusuna girin.
@@ -80,9 +63,27 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için, geçerli **uygulamala
 Uygulama kaydı tamamlandıktan sonra, örtük verme akışını etkinleştirin:
 
 1. **Yönet**altında **kimlik doğrulaması**' nı seçin.
-1. **Yeni deneyimi deneyin** (gösteriliyorsa) seçeneğini belirleyin.
 1. **Örtük izin**' ın altında, **erişim belirteçleri** ve **Kimlik belirteçleri** onay kutularını seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
+
+#### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
+
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
+1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
+1. **Uygulamalar (eski)** öğesini seçin ve ardından **Ekle**' yi seçin.
+1. Uygulama için bir ad girin. Örneğin, *WebApp1*.
+1. **Web uygulaması/Web API 'Si Ekle** ve **örtük akışa Izin ver**için **Evet**' i seçin.
+1. **Yanıt URL 'si**için Azure AD B2C uygulamanızın isteklerinizin belirteçleri döndürmesi gereken bir uç nokta girin. Örneğin, bunu yerel olarak dinlemek için ayarlayabilirsiniz `https://localhost:44316` . Bağlantı noktası numarasını henüz bilmiyorsanız, bir yer tutucu değeri girip daha sonra değiştirebilirsiniz.
+
+    Bu öğreticide olduğu gibi test amacıyla, `https://jwt.ms` İnceleme için bir belirtecin içeriğini görüntüleyen olarak ayarlayabilirsiniz. Bu öğreticide, **yanıt URL** 'sini olarak ayarlayın `https://jwt.ms` .
+
+    Yanıt URL 'Leri için aşağıdaki kısıtlamalar geçerlidir:
+
+    * Yanıt URL 'SI, şemayla başlamalıdır `https` .
+    * Yanıt URL 'SI, büyük/küçük harfe duyarlıdır. Büyük/küçük harf durumu, çalışan uygulamanızın URL yolu ile aynı olmalıdır. Örneğin, uygulamanız yolunun bir parçası olarak içeriyorsa `.../abc/response-oidc` , `.../ABC/response-oidc` yanıt URL 'sinde belirtmeyin. Web tarayıcısı yollara büyük/küçük harfe duyarlı olarak davrandığı için, bununla ilişkili tanımlama bilgileri, `.../abc/response-oidc` büyük/küçük harfe eşleşmeyen URL 'ye yönlendiriliyorsa dışlanamaz `.../ABC/response-oidc` .
+
+1. Uygulama kaydını tamamlayabilmeniz için **Oluştur** ' u seçin.
 
 * * *
 
@@ -90,20 +91,21 @@ Uygulama kaydı tamamlandıktan sonra, örtük verme akışını etkinleştirin:
 
 Uygulamanız bir erişim belirteci için bir yetkilendirme kodu alışverişi yaptıysanız, bir uygulama gizli anahtarı oluşturmanız gerekir.
 
-#### <a name="applications"></a>[Uygulamalar](#tab/applications/)
 
-1. **Azure AD B2C-uygulamalar** sayfasında, oluşturduğunuz uygulamayı seçin, örneğin, *WebApp1*.
-1. **Anahtarlar** ' ı seçin ve ardından **anahtar oluştur**' u seçin.
-1. Anahtarı görüntülemek için **Kaydet** ' i seçin. **Uygulama anahtarı** değerini not edin. Bu değeri, uygulamanızın kodunda uygulama gizli anahtarı olarak kullanırsınız.
+#### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
-#### <a name="app-registrations-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
-
-1. **Azure AD B2C-uygulama kayıtları (Önizleme)** sayfasında, oluşturduğunuz uygulamayı seçin, örneğin *WebApp1*.
+1. **Azure AD B2C-uygulama kayıtları** sayfasında, oluşturduğunuz uygulamayı seçin, örneğin *WebApp1*.
 1. **Yönet**altında **Sertifikalar & gizlilikler**' ı seçin.
 1. **Yeni istemci gizli dizisi**’ni seçin.
 1. **Açıklama** kutusuna istemci parolası için bir açıklama girin. Örneğin, *clientsecret1*.
 1. **Süre sonu**altında, parolasının geçerli olduğu bir süre seçin ve ardından **Ekle**' yi seçin.
 1. Gizli dizi **değerini**kaydedin. Bu değeri, uygulamanızın kodunda uygulama gizli anahtarı olarak kullanırsınız.
+
+#### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
+
+1. **Azure AD B2C-uygulamalar** sayfasında, oluşturduğunuz uygulamayı seçin, örneğin, *WebApp1*.
+1. **Anahtarlar** ' ı seçin ve ardından **anahtar oluştur**' u seçin.
+1. Anahtarı görüntülemek için **Kaydet** ' i seçin. **Uygulama anahtarı** değerini not edin. Bu değeri, uygulamanızın kodunda uygulama gizli anahtarı olarak kullanırsınız.
 
 * * *
 

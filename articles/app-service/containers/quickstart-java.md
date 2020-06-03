@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: ac4290963891a029f153bd26f94d5c671329f632
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 1ed7126f2698294ac6706aafcb85e3229a7491bb
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248983"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300106"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service Java uygulaması oluşturma
 
@@ -34,7 +34,7 @@ ms.locfileid: "84248983"
 Aşağıdaki Maven komutunu Cloud Shell istemine yürütün, adlı yeni bir uygulama oluşturun `helloworld` :
 
 ```bash
-mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
+mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp" -Dversion=1.0-SNAPSHOT
 ```
 Sonra çalışma dizininizi proje klasörü olarak değiştirin:
 
@@ -89,7 +89,13 @@ Confirm (Y/N)? : Y
 > [!NOTE]
 > Bu makalede yalnızca WAR dosyalarıyla paketlenmiş Java uygulamalarıyla çalışacağız. Eklenti ayrıca JAR web uygulamalarını da destekler. Denemek için [Linux'ta App Service'e Java SE JAR dosyası dağıtma](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
-`pom.xml`Eklenti yapılandırmasının güncelleştirildiğini görmek için bir kez daha App Service diğer yapılandırmaları, gerekirse doğrudan Pod dosyanızda değiştirebilirsiniz, bazı yaygın olanlar aşağıda listelenmiştir:
+`pom.xml`Güncelleştirilmiş yapılandırmayı görmek için ' i açın.
+
+```bash
+code pom.xml
+```
+
+App Service yapılandırmasını doğrudan Pod dosyanızda, gerekirse, bazı yaygın olanlar aşağıda listelenmiştir:
 
  Özellik | Gerekli | Açıklama | Sürüm
 ---|---|---|---

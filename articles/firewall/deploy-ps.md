@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 4/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 7f48012ca1f97c2e28380d95da37863c4bc17f63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 660645f69126d631a8190ce2bfd99f6fd9949db8
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73831831"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84297624"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Azure PowerShell kullanarak Azure Güvenlik duvarını dağıtma ve yapılandırma
 
@@ -47,7 +47,7 @@ Bu makalede şunları öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu yordam, PowerShell 'i yerel olarak çalıştırmanızı gerektirir. Azure PowerShell modülünün yüklü olması gerekir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-Az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Connect-AzAccount` komutunu çalıştırın.
 
@@ -177,7 +177,7 @@ $AppRule1 = New-AzFirewallApplicationRule -Name Allow-Google -SourceAddress 10.0
 $AppRuleCollection = New-AzFirewallApplicationRuleCollection -Name App-Coll01 `
   -Priority 200 -ActionType Allow -Rule $AppRule1
 
-$Azfw.ApplicationRuleCollections = $AppRuleCollection
+$Azfw.ApplicationRuleCollections.Add($AppRuleCollection)
 
 Set-AzFirewall -AzureFirewall $Azfw
 ```
@@ -195,7 +195,7 @@ $NetRule1 = New-AzFirewallNetworkRule -Name "Allow-DNS" -Protocol UDP -SourceAdd
 $NetRuleCollection = New-AzFirewallNetworkRuleCollection -Name RCNet01 -Priority 200 `
    -Rule $NetRule1 -ActionType "Allow"
 
-$Azfw.NetworkRuleCollections = $NetRuleCollection
+$Azfw.NetworkRuleCollections.Add($NetRuleCollection)
 
 Set-AzFirewall -AzureFirewall $Azfw
 ```
@@ -241,7 +241,7 @@ $NIC | Set-AzNetworkInterface
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   `www.google.com` İsteklerin başarılı olması ve `www.microsoft.com` isteklerin başarısız olması gerekir. Bu, güvenlik duvarı kurallarınızın beklendiği şekilde kullanıldığını gösterir.
+   `www.google.com`İsteklerin başarılı olması ve `www.microsoft.com` isteklerin başarısız olması gerekir. Bu, güvenlik duvarı kurallarınızın beklendiği şekilde kullanıldığını gösterir.
 
 Artık Güvenlik Duvarı kurallarının çalıştığını doğruladınız:
 

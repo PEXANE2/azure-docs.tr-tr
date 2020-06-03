@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: metan
-ms.openlocfilehash: c4dae18a5040d475c246d244ea7702ccfdf85cd9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cdf21ed85933c2a629c5752659e9cc50107a3762
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538750"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309314"
 ---
 # <a name="language-support-for-immersive-reader"></a>Modern okuyucu için dil desteği
 
@@ -33,18 +33,18 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Katalanca | ca-ES |
 | Çince | zh |
 | Çince (Çin) | zh-CN |
-| Çince (Hong Kong) | zh-HK |
-| Çince (Makao) | zh-MO |
+| Çince (Hong Kong ÖIB) | zh-HK |
+| Çince (Makau çın ÖIB) | zh-MO |
 | Çince (Singapur) | zh-SG |
 | Çince (Tayvan) | zh-TW |
 | Basitleştirilmiş Çince | zh-Hans |
 | Basitleştirilmiş Çince (Çin) | zh-Hans-CN |
 | Basitleştirilmiş Çince (Singapur) | zh-Hans-SG |
 | Geleneksel Çince | zh-Hant-CN |
-| Geleneksel Çince (Hong Kong) | zh-Hant-HK |
-| Geleneksel Çince (Makao) | zh-Hant-MO |
+| Geleneksel Çince (Hong Kong ÖIB) | zh-Hant-HK |
+| Geleneksel Çince (Makau çın ÖIB) | zh-Hant-MO |
 | Geleneksel Çince (Tayvan) | zh-Hant-TW |
-| Hırvatça | hr |
+| Hırvatça | sa |
 | Hırvatça (Hırvatistan) | hr-HR |
 | Çekçe | 'ye |
 | Çekçe (Çek Cumhuriyeti) | cs-CZ |
@@ -79,7 +79,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Hintçe (Hindistan) | hi-IN |
 | Macarca | Hu |
 | Macarca (Macaristan) | hu-HU |
-| Endonezce | id |
+| Endonezce | kimlik |
 | Endonezce (Endonezya) | id-ID |
 | İtalyanca | içerdiği |
 | İtalyanca (İtalya) | it-IT |
@@ -135,18 +135,18 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Katalanca | ca-ES |
 | Çince | zh |
 | Çince (Çin) | zh-CN |
-| Çince (Hong Kong) | zh-HK |
-| Çince (Makao) | zh-MO |
+| Çince (Hong Kong ÖIB) | zh-HK |
+| Çince (Makau çın ÖIB) | zh-MO |
 | Çince (Singapur) | zh-SG |
 | Çince (Tayvan) | zh-TW |
 | Basitleştirilmiş Çince | zh-Hans |
 | Basitleştirilmiş Çince (Çin) | zh-Hans-CN |
 | Basitleştirilmiş Çince (Singapur) | zh-Hans-SG |
 | Geleneksel Çince | zh-Hant-CN |
-| Geleneksel Çince (Hong Kong) | zh-Hant-HK |
-| Geleneksel Çince (Makao) | zh-Hant-MO |
+| Geleneksel Çince (Hong Kong ÖIB) | zh-Hant-HK |
+| Geleneksel Çince (Makau çın ÖIB) | zh-Hant-MO |
 | Geleneksel Çince (Tayvan) | zh-Hant-TW |
-| Hırvatça | hr |
+| Hırvatça | sa |
 | Hırvatça (Hırvatistan) | hr-HR |
 | Çekçe | 'ye |
 | Çekçe (Çek Cumhuriyeti) | cs-CZ |
@@ -187,7 +187,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Macarca | Hu |
 | Macarca (Macaristan) | hu-HU |
 | İzlandaca | is |
-| Endonezce | id |
+| Endonezce | kimlik |
 | Endonezce (Endonezya) | id-ID |
 | İrlandaca | GA |
 | İtalyanca | içerdiği |
@@ -267,10 +267,10 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Basitleştirilmiş Çince (Çin) | zh-Hans-CN |
 | Basitleştirilmiş Çince (Singapur) | zh-Hans-SG |
 | Geleneksel Çince | zh-Hant-CN |
-| Geleneksel Çince (Hong Kong) | zh-Hant-HK |
-| Geleneksel Çince (Makao) | zh-Hant-MO |
+| Geleneksel Çince (Hong Kong ÖIB) | zh-Hant-HK |
+| Geleneksel Çince (Makau çın ÖIB) | zh-Hant-MO |
 | Geleneksel Çince (Tayvan) | zh-Hant-TW |
-| Hırvatça | hr |
+| Hırvatça | sa |
 | Hırvatça (Hırvatistan) | hr-HR |
 | Çekçe | 'ye |
 | Çekçe (Çek Cumhuriyeti) | cs-CZ |
@@ -308,7 +308,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Macarca | Hu |
 | Macarca (Macaristan) | hu-HU |
 | İzlandaca | is |
-| Endonezce | id |
+| Endonezce | kimlik |
 | Endonezce (Endonezya) | id-ID |
 | İtalyanca | içerdiği |
 | İtalyanca (İtalya) | it-IT |
@@ -366,7 +366,7 @@ Bu makalede, modern okuyucu özellikleri için desteklenen insan dilleri listele
 | Bulgarca | bg |
 | Bulgarca (Bulgaristan) | bg-BG |
 | Katalanca | ca-ES |
-| Hırvatça | hr |
+| Hırvatça | sa |
 | Hırvatça (Hırvatistan) | hr-HR |
 | Çekçe | 'ye |
 | Çekçe (Çek Cumhuriyeti) | cs-CZ |

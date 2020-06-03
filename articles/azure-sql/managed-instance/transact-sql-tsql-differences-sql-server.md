@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 03/11/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: f6909acc5e4d4f56fb301a225f6dd854ba6f21e4
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 190d0bd242a685487480d4da613f354277663d9c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259567"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308039"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL yönetilen örneği arasındaki T-SQL farklılıkları
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -54,7 +54,7 @@ SQL yönetilen örneğinde bulunan ve gelecekte çözümlenecek olan geçici bil
 
 ### <a name="backup"></a>Backup
 
-SQL yönetilen örneklerin otomatik yedeklemeleri vardır, böylece kullanıcılar tam veritabanı yedeklemeleri oluşturabilir `COPY_ONLY` . Fark, günlük ve dosya anlık görüntüsü yedeklemeleri desteklenmez.
+SQL yönetilen örneğinin otomatik yedeklemeleri olduğundan, kullanıcılar tam veritabanı `COPY_ONLY` yedeklemeleri oluşturabilir. Fark, günlük ve dosya anlık görüntüsü yedeklemeleri desteklenmez.
 
 - SQL yönetilen örneği ile bir örnek veritabanını yalnızca bir Azure Blob depolama hesabına yedekleyebilirsiniz:
   - Yalnızca `BACKUP TO URL` desteklenir.
@@ -69,7 +69,7 @@ Sınırlamalar:
 
 - SQL yönetilen örneği sayesinde, yedekleme sıkıştırması kullanılıyorsa 4 TB 'a kadar olan veritabanları için yeterli olan bir örnek veritabanını en fazla 32 şeritli bir yedeklemeye yedekleyebilirsiniz.
 - `BACKUP DATABASE ... WITH COPY_ONLY`Hizmet tarafından yönetilen saydam veri şifrelemesi (TDE) ile şifrelenmiş bir veritabanında yürütemezsiniz. Hizmet tarafından yönetilen TDE, yedeklemelerin dahili bir TDE anahtarla şifrelenmesini zorlar. Anahtar verilemiyor, bu nedenle yedeklemeyi geri alamazsınız. Otomatik yedeklemeler ve zaman içinde geri yükleme kullanın veya bunun yerine [müşteri tarafından yönetilen (BYOK) TDE](../database/transparent-data-encryption-tde-overview.md#customer-managed-transparent-data-encryption---bring-your-own-key) kullanın. Ayrıca, veritabanında şifrelemeyi devre dışı bırakabilirsiniz.
-- SQL yönetilen örneğindeki komutu kullanarak en fazla yedekleme şeridi boyutu `BACKUP` 195 GB 'tır ve bu en büyük blob boyutudur. Tek tek Stripe boyutunu azaltmak ve bu sınırın içinde kalmak için yedekleme komutundaki şeritler sayısını artırın.
+- SQL yönetilen örneği 'nde komutu kullanılarak en fazla yedek şerit boyutu `BACKUP` 195 GB 'tır ve bu en büyük blob boyutudur. Tek tek Stripe boyutunu azaltmak ve bu sınırın içinde kalmak için yedekleme komutundaki şeritler sayısını artırın.
 
     > [!TIP]
     > Bu kısıtlamayı geçici olarak çözmek için, bir veritabanını şirket içi bir ortamda veya bir sanal makinede SQL Server yedekleyerek şunları yapabilirsiniz:
@@ -78,7 +78,7 @@ Sınırlamalar:
     > - Yedekleme dosyalarını blob depolamaya yükleyin.
     > - SQL yönetilen örneğine geri yükleyin.
     >
-    > `Restore`BIR SQL yönetilen örneğindeki komut, karşıya yüklenen yedekleme dosyalarının depolanması için farklı bir blob türü kullanıldığından, yedekleme dosyalarındaki daha büyük blob boyutlarını destekler.
+    > `Restore`Karşıya yüklenen yedekleme dosyalarının depolanması için farklı bir blob türü kullanıldığından, SQL yönetilen örneğindeki komut yedekleme dosyalarındaki daha büyük blob boyutlarını destekler.
 
 T-SQL kullanarak yedeklemeler hakkında daha fazla bilgi için bkz. [yedekleme](/sql/t-sql/statements/backup-transact-sql).
 
@@ -97,7 +97,7 @@ SQL yönetilen örneği 'nde XEvent denetimi Azure Blob depolama hedeflerini des
 `CREATE AUDIT`Azure Blob depolamaya denetim için söz diziminde önemli farklılıklar şunlardır:
 
 - `TO URL`Dosyaların yerleştirildiği Azure Blob depolama KAPSAYıCıSıNıN URL 'sini belirtmek için kullanabileceğiniz yeni bir sözdizimi sağlanır `.xel` .
-- `TO FILE`SQL yönetilen bir örnek Windows dosya paylaşımlarına erişemediği için sözdizimi desteklenmiyor.
+- `TO FILE`SQL yönetilen örnek Windows dosya paylaşımlarına erişemediği için sözdizimi desteklenmiyor.
 
 Daha fazla bilgi için bkz. 
 
@@ -130,7 +130,7 @@ Bkz. [KIMLIK bilgisi oluşturma](/sql/t-sql/statements/create-credential-transac
 
 ### <a name="cryptographic-providers"></a>Şifreleme sağlayıcıları
 
-Bir SQL yönetilen örneği dosyalara erişemez, bu nedenle şifreleme sağlayıcıları oluşturulamıyor:
+SQL yönetilen örneği dosyalara erişemez, bu nedenle şifreleme sağlayıcıları oluşturulamıyor:
 
 - `CREATE CRYPTOGRAPHIC PROVIDER`desteklenmez. Bkz. [ŞIFRELEME sağlayıcısı oluşturma](/sql/t-sql/statements/create-cryptographic-provider-transact-sql).
 - `ALTER CRYPTOGRAPHIC PROVIDER`desteklenmez. Bkz. [alter CRYPTOGRAPHIC PROVIDER](/sql/t-sql/statements/alter-cryptographic-provider-transact-sql).
@@ -165,7 +165,7 @@ Bir SQL yönetilen örneği dosyalara erişemez, bu nedenle şifreleme sağlayı
     - SQL yönetilen örneğinden bir veritabanını dışarı aktarın ve aynı Azure AD etki alanı içindeki SQL veritabanı 'na içeri aktarın. 
     - SQL veritabanından bir veritabanını dışarı aktarın ve aynı Azure AD etki alanı içinde SQL yönetilen örneği 'ne aktarın.
     - SQL yönetilen örneğinden bir veritabanını dışarı aktarın ve SQL Server (sürüm 2012 veya üzeri) içeri aktarın.
-      - Bu yapılandırmada tüm Azure AD kullanıcıları, oturum açma bilgileri olmayan SQL veritabanı sorumluları (kullanıcılar) olarak oluşturulur. Kullanıcıların türü SQL olarak listelenir (sys. database_principals içinde SQL_USER olarak görünür). İzinleri ve rolleri SQL Server veritabanı meta verilerinde kalır ve kimliğe bürünme için kullanılabilir. Ancak, kimlik bilgilerini kullanarak SQL Server erişmek ve oturum açmak için kullanılamaz.
+      - Bu yapılandırmada tüm Azure AD kullanıcıları, oturum açma bilgileri olmayan SQL Server veritabanı sorumluları (kullanıcılar) olarak oluşturulur. Kullanıcı türü olarak listelenir `SQL` ve `SQL_USER` sys. database_principals) olarak görünür. İzinleri ve rolleri SQL Server veritabanı meta verilerinde kalır ve kimliğe bürünme için kullanılabilir. Ancak, kimlik bilgilerini kullanarak SQL Server erişmek ve oturum açmak için kullanılamaz.
 
 - Yalnızca SQL yönetilen örnek sağlama işlemi tarafından oluşturulan sunucu düzeyi asıl oturum açma, veya gibi sunucu rollerinin üyeleri veya `securityadmin` `sysadmin` sunucu düzeyinde herhangi bir oturum açma iznini Değiştir ile diğer oturumlar, SQL yönetilen örneği için ana VERITABANıNDA Azure ad sunucu sorumlularını (oturum açma) oluşturabilir.
 - Oturum açma bir SQL sorumlusu ise, yalnızca rolün parçası olan oturum açma işlemleri `sysadmin` bir Azure AD hesabı için oturum açma bilgileri oluşturmak üzere Oluştur komutunu kullanabilir.
@@ -243,7 +243,7 @@ Daha fazla bilgi için bkz. [veritabanı oluşturma](/sql/t-sql/statements/creat
 
 Bazı dosya özellikleri ayarlanamaz veya değiştirilemez:
 
-- T-SQL ifadesinde bir dosya yolu belirtilemez `ALTER DATABASE ADD FILE (FILENAME='path')` . `FILENAME`BIR SQL yönetilen örneği dosyaları otomatik olarak yerleştirtiğinden, betikten kaldır. 
+- T-SQL ifadesinde bir dosya yolu belirtilemez `ALTER DATABASE ADD FILE (FILENAME='path')` . `FILENAME`SQL yönetilen örneği dosyaları otomatik olarak yerleştirtiğinden, betikten kaldır. 
 - Bir dosya adı, ifadesini kullanarak değiştirilemez `ALTER DATABASE` .
 
 Aşağıdaki seçenekler varsayılan olarak ayarlanır ve değiştirilemez:
@@ -291,7 +291,7 @@ Daha fazla bilgi için bkz. [alter database](/sql/t-sql/statements/alter-databas
     - Birleştirme çoğaltması işi adımı desteklenmez. 
     - Sıra okuyucusu desteklenmez. 
     - Komut kabuğu henüz desteklenmiyor.
-  - SQL yönetilen örnekler, örneğin Robocopy aracılığıyla ağ paylaşımları gibi dış kaynaklara erişemez. 
+  - SQL yönetilen örneği, örneğin, Robocopy aracılığıyla ağ paylaşımları gibi dış kaynaklara erişemez. 
   - SQL Server Analysis Services desteklenmez.
 - Bildirimler kısmen desteklenir.
 - E-posta bildirimi desteklenir, ancak bir Veritabanı Postası profili yapılandırmanızı gerektirir. SQL Server Agent yalnızca bir Veritabanı Postası profili kullanabilir ve çağrılması gerekir `AzureManagedInstance_dbmail_profile` . 
@@ -329,7 +329,7 @@ SQL yönetilen örneği dosya paylaşımlarına ve Windows klasörlerine erişem
 
 - `DATASOURCE`, `BULK INSERT` Azure Blob depolamadan dosyaları içeri aktarırken komutunda gereklidir. Bkz. [bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql).
 - `DATASOURCE`, `OPENROWSET` Azure Blob depolama alanındaki bir dosyanın içeriğini okurken işlevinde gereklidir. Bkz. [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql).
-- `OPENROWSET`diğer Azure SQL tek veritabanlarından, SQL yönetilen örneklerinden veya SQL Server örneklerinden veri okumak için kullanılabilir. Oracle veritabanları veya Excel dosyaları gibi diğer kaynaklar desteklenmez.
+- `OPENROWSET`Azure SQL veritabanı, Azure SQL yönetilen örneği veya SQL Server örneklerinden veri okumak için kullanılabilir. Oracle veritabanları veya Excel dosyaları gibi diğer kaynaklar desteklenmez.
 
 ### <a name="clr"></a>CLR
 
@@ -345,7 +345,7 @@ SQL yönetilen örneği dosya paylaşımlarına ve Windows klasörlerine erişem
  
 ### <a name="dbcc"></a>DBCC
 
-SQL Server ' de etkinleştirilen DBCC deyimleri, SQL yönetilen örneklerinde desteklenmez.
+SQL Server ' de etkinleştirilen DBCC deyimleri SQL yönetilen örneği 'nde desteklenmez.
 
 - Yalnızca sınırlı sayıda genel Izleme bayrağı desteklenir. Oturum düzeyi `Trace flags` desteklenmiyor. Bkz. [izleme bayrakları](/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - [DBCC TRACEOFF](/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) ve [DBCC TRACEON](/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) , sınırlı sayıda Global Trace-Flags ile çalışır.
@@ -353,7 +353,7 @@ SQL Server ' de etkinleştirilen DBCC deyimleri, SQL yönetilen örneklerinde de
 
 ### <a name="distributed-transactions"></a>Dağıtılmış işlemler
 
-Şu anda SQL yönetilen örneklerde MSDTC ve [elastik işlemler](../database/elastic-transactions-overview.md) desteklenmez.
+MSDTC ve [elastik işlemler](../database/elastic-transactions-overview.md) Şu anda SQL yönetilen örneği 'nde desteklenmiyor.
 
 ### <a name="extended-events"></a>Genişletilmiş Olaylar
 
@@ -387,7 +387,7 @@ Daha fazla bilgi için bkz. [FILESTREAM](/sql/relational-databases/blob/filestre
 
 ### <a name="linked-servers"></a>Bağlı sunucular
 
-SQL yönetilen örneklerinde bağlantılı sunucular sınırlı sayıda hedef destekler:
+SQL yönetilen örneğindeki bağlantılı sunucular, sınırlı sayıda hedefi destekler:
 
 - Desteklenen hedefler SQL yönetilen örneği, SQL veritabanı, Azure SYNAPSE SQL ve SQL Server örnekleri. 
 - Bağlı sunucular dağıtılmış yazılabilir işlemleri (MS DTC) desteklemez.
@@ -409,8 +409,8 @@ SQL yönetilen örneklerinde bağlantılı sunucular sınırlı sayıda hedef de
 
 - Anlık görüntü ve Iki yönlü çoğaltma türleri desteklenir. Birleştirme çoğaltması, eşler arası çoğaltma ve güncelleştirilebilir abonelikler desteklenmez.
 - [Işlemsel çoğaltma](replication-transactional-overview.md) , SQL yönetilen örneği üzerinde bazı kısıtlamalarla genel önizleme için kullanılabilir:
-    - Tüm çoğaltma katılımcıları türleri (yayımcı, dağıtıcı, çekme abonesi ve anında Iletme abonesi) SQL yönetilen örneklerine yerleştirilebilecek, ancak yayımcı ve dağıtıcı hem bulutta hem de şirket içinde olmalıdır.
-    - SQL yönetilen örnekler SQL Server son sürümleriyle iletişim kurabilir. Daha fazla bilgi için [Desteklenen sürümler matrisine](replication-transactional-overview.md#supportability-matrix) bakın.
+    - Tüm çoğaltma katılımcıları türleri (yayımcı, dağıtıcı, çekme abonesi ve anında Iletme abonesi) SQL yönetilen örneği üzerine yerleştirilebilir, ancak yayımcı ve dağıtıcı hem bulutta hem de şirket içinde olmalıdır.
+    - SQL yönetilen örneği SQL Server son sürümleriyle iletişim kurabilir. Daha fazla bilgi için [Desteklenen sürümler matrisine](replication-transactional-overview.md#supportability-matrix) bakın.
     - İşlemsel çoğaltma bazı [ek ağ gereksinimlerine](replication-transactional-overview.md#requirements)sahiptir.
 
 İşlem çoğaltmasını yapılandırma hakkında daha fazla bilgi için aşağıdaki öğreticilere bakın:
@@ -486,7 +486,7 @@ Restore deyimleri hakkında daha fazla bilgi için bkz. [restore deyimleri](/sql
 Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndürüyor:
 
 - `SERVERPROPERTY('EngineEdition')`8 değerini döndürür. Bu özellik SQL yönetilen örneğini benzersiz bir şekilde tanımlar. Bkz. [ServerProperty](/sql/t-sql/functions/serverproperty-transact-sql).
-- `SERVERPROPERTY('InstanceName')`bir SQL yönetilen örneği için SQL Server olduğu gibi örnek kavramı, NULL değerini döndürür. Bkz. [ServerProperty (' ÖrnekAdı ')](/sql/t-sql/functions/serverproperty-transact-sql).
+- `SERVERPROPERTY('InstanceName')`SQL yönetilen örneği için SQL Server olduğu gibi örnek kavramı, NULL değerini döndürür. Bkz. [ServerProperty (' ÖrnekAdı ')](/sql/t-sql/functions/serverproperty-transact-sql).
 - `@@SERVERNAME`tam DNS "bağlanılabilir" adı döndürür, örneğin, my-managed-instance.wcus17662feb9ce98.database.windows.net. Bkz [. @SERVERNAME @](/sql/t-sql/functions/servername-transact-sql). 
 - `SYS.SERVERS``myinstance.domain.database.windows.net`"ad" ve "data_source" özellikleri gibi bir tam DNS "bağlanılabilir" adı döndürür. Bkz [. sys. Sunucu](/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
 - `@@SERVICENAME`SQL Server için mevcut hizmet kavramı SQL yönetilen örneği için uygulanamadığından NULL değerini döndürür. Bkz [. @SERVICENAME @](/sql/t-sql/functions/servicename-transact-sql).
@@ -505,7 +505,7 @@ Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndü
 ### <a name="vnet"></a>Sanal ağ
 - VNet, kaynak modeli kullanılarak dağıtılabilir-sanal ağ için klasik model desteklenmez.
 - SQL yönetilen örneği oluşturulduktan sonra, SQL yönetilen örneği veya VNet 'in başka bir kaynak grubuna veya aboneliğe taşınması desteklenmez.
-- App Service ortamları, Logic Apps ve SQL yönetilen örnekler (coğrafi çoğaltma, Işlemsel çoğaltma veya bağlı sunucular aracılığıyla kullanılan) gibi bazı hizmetler, sanal ağları [genel eşleme](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)kullanılarak bağlanmışsa farklı bölgelerdeki SQL yönetilen örneklerine erişemez. Sanal ağ geçitleri aracılığıyla ExpressRoute veya VNet-VNet aracılığıyla bu kaynaklara bağlanabilirsiniz.
+- App Service ortamları, Logic Apps ve SQL yönetilen örneği (coğrafi çoğaltma, Işlemsel çoğaltma veya bağlı sunucular aracılığıyla kullanılan) gibi bazı hizmetler, sanal ağları [genel eşleme](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)kullanılarak bağlanmışsa farklı bölgelerdeki SQL yönetilen örneğine erişemez. Sanal ağ geçitleri aracılığıyla ExpressRoute veya VNet-VNet aracılığıyla bu kaynaklara bağlanabilirsiniz.
 
 ### <a name="failover-groups"></a>Yük devretme grupları
 Sistem veritabanları, bir yük devretme grubundaki ikincil örneğe çoğaltılmaz. Bu nedenle, nesneler ikincil üzerinde el ile oluşturulmadığı takdirde, sistem veritabanlarından nesnelere bağlı senaryolar ikincil örnekte imkansız olur.
@@ -540,7 +540,7 @@ SQL yönetilen örneği, ayrıntılı bilgileri hata günlüklerine koyar. Hata 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- SQL yönetilen örnekleri hakkında daha fazla bilgi için bkz. [SQL yönetilen örneği nedir?](sql-managed-instance-paas-overview.md)
+- SQL yönetilen örneği hakkında daha fazla bilgi için bkz. [SQL yönetilen örneği nedir?](sql-managed-instance-paas-overview.md)
 - Özellikler ve karşılaştırma listesi için bkz. [Azure SQL yönetilen örnek özelliği karşılaştırması](../database/features-comparison.md).
 - Yayın güncelleştirmeleri ve bilinen sorunlar durumu için bkz. [SQL yönetilen örnek sürüm notları](../database/doc-changes-updates-release-notes.md)
 - Yeni bir SQL yönetilen örneği oluşturmayı gösteren bir hızlı başlangıç için bkz. [SQL yönetilen örneği oluşturma](instance-create-quickstart.md).

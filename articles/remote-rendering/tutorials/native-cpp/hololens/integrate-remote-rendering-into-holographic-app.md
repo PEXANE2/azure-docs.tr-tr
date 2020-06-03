@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: 9db32912e86079875ad382fb23e521c720fc7fbd
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b6dceff8b777d09a6f791437eb4aaca70365b518
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83776888"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300726"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>Öğretici: uzaktan Işlemeyi bir HoloLens holographic uygulamasına tümleştirme
 
@@ -26,13 +26,16 @@ Bu öğretici, `Holographic App` Yerel Işlemeyi Azure uzaktan işlemeyle birle�
 > [!TIP]
 > [ARR örnekleri deposu](https://github.com/Azure/azure-remote-rendering) , Bu öğreticinin, kullanıma yönelik bir Visual Studio projesi olarak sonucunu içerir. Ayrıca, Kullanıcı arabirimi sınıfı aracılığıyla doğru hata ve durum raporlama ile zenginleştirilmiş olur `StatusDisplay` . Öğreticide, tüm ARR eklemeleri tarafından kapsamlandırılır `#ifdef USE_REMOTE_RENDERING`  /  `#endif` , bu nedenle uzaktan işleme eklemelerinin belirlenmesi kolaydır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide şunlar gerekir:
 
 * Hesap bilgileriniz (Hesap KIMLIĞI, hesap anahtarı, abonelik KIMLIĞI). Hesabınız yoksa [hesap oluşturun](../../../how-tos/create-an-account.md).
 * Windows SDK 10.0.18362.0 [(İndir)](https://developer.microsoft.com/windows/downloads/windows-10-sdk).
 * Visual Studio 2019 'nin en son sürümü [(indirme)](https://visualstudio.microsoft.com/vs/older-downloads/).
+* [Karma gerçeklik Için Visual Studio Araçları](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). Özellikle, aşağıdaki *Iş yükü* yüklemeleri zorunludur:
+  * **C++ ile masaüstü geliştirme**
+  * **Evrensel Windows Platformu (UWP) geliştirme**
 * Visual Studio için Windows Mixed Reality uygulama şablonları [(indirme)](https://marketplace.visualstudio.com/items?itemName=WindowsMixedRealityteam.WindowsMixedRealityAppTemplatesVSIX).
 
 ## <a name="create-a-new-holographic-app-sample"></a>Yeni bir holographic App örneği oluşturma

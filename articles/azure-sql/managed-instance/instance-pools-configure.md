@@ -35,15 +35,15 @@ Aşağıdaki tabloda, Azure portal ve PowerShell 'de örnek havuzlarla ilgili ku
 |Örnek havuzu kullanımını ve özelliklerini denetleme|Hayır|Evet |
 |Örnek havuzu silme|Hayır|Evet|
 |Örnek havuzu içinde yönetilen bir örnek oluşturma|Hayır|Evet|
-|Yönetilen örnek için kaynak kullanımını güncelleştirme|Evet |Yes|
-|Yönetilen örnek için kullanımı ve özellikleri denetleyin|Evet|Yes|
-|Yönetilen bir örneği havuzdan silme|Evet|Yes|
-|Havuzda bir örnek içinde veritabanı oluşturma|Evet|Yes|
-|SQL yönetilen örneğinden bir veritabanını silme|Evet|Yes|
+|Yönetilen örnek için kaynak kullanımını güncelleştirme|Yes |Yes|
+|Yönetilen örnek için kullanımı ve özellikleri denetleyin|Yes|Yes|
+|Yönetilen bir örneği havuzdan silme|Yes|Yes|
+|Havuzda bir örnek içinde veritabanı oluşturma|Yes|Yes|
+|SQL yönetilen örneğinden bir veritabanını silme|Yes|Yes|
 
 Kullanılabilir [PowerShell komutları](https://docs.microsoft.com/powershell/module/az.sql/):
 
-|Cmdlet |Açıklama |
+|Cmdlet |Description |
 |:---|:---|
 |[New-Azsqlınstancepool](/powershell/module/az.sql/new-azsqlinstancepool/) | SQL yönetilen örnek havuzu oluşturur. |
 |[Get-Azsqlınstancepool](/powershell/module/az.sql/get-azsqlinstancepool/) | Örnek havuz hakkında bilgi döndürür. |
