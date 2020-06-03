@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 7ee186684b702a42335c6e1a7832cc5c761a69d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c6385ff804b047cca11587ce5da5a0a682fdce8
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686933"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307937"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>OPC Kasası sertifika yönetimi hizmetini derleme ve dağıtma
 
@@ -22,7 +22,7 @@ Bu makalede, OPC Kasası sertifika yönetimi hizmetinin Azure 'da nasıl dağıt
 > [!NOTE]
 > Daha fazla bilgi için GitHub [OPC Kasası deposuna](https://github.com/Azure/azure-iiot-opc-vault-service)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="install-required-software"></a>Gerekli yazılımları yükler
 
@@ -51,11 +51,11 @@ Alternatif olarak, depoyu doğrudan Visual Studio 2017 ' de kopyalayabilirsiniz.
 PowerShell betiği OPC Kasası mikro hizmetini ve uygulamayı dağıtmanın kolay bir yolunu sağlar.
 
 1. Depo kökünde bir PowerShell penceresi açın. 
-3. Dağıtım klasörüne `cd deploy`gidin.
-3. Diğer dağıtılan Web sayfalarıyla `myResourceGroup` çakışmaya neden olması olası olmayan bir ad seçin. Bu makalenin ilerleyen bölümlerindeki "Web sitesi adı zaten kullanımda" bölümüne bakın.
-5. Etkileşimli yükleme için ile `.\deploy.ps1` dağıtımı başlatın veya tam bir komut satırı girin:  
+3. Dağıtım klasörüne gidin `cd deploy` .
+3. `myResourceGroup`Diğer dağıtılan Web sayfalarıyla çakışmaya neden olması olası olmayan bir ad seçin. Bu makalenin ilerleyen bölümlerindeki "Web sitesi adı zaten kullanımda" bölümüne bakın.
+5. `.\deploy.ps1`Etkileşimli yükleme için ile dağıtımı başlatın veya tam bir komut satırı girin:  
 `.\deploy.ps1  -subscriptionName "MySubscriptionName" -resourceGroupLocation "East US" -tenantId "myTenantId" -resourceGroupName "myResourceGroup"`
-7. Bu dağıtım ile geliştirmeyi planlıyorsanız, Swagger Kullanıcı arabirimini etkinleştirmek `-development 1` ve hata ayıklama yapılarını dağıtmak için ekleyin.
+7. Bu dağıtım ile geliştirmeyi planlıyorsanız, `-development 1` Swagger Kullanıcı arabirimini etkinleştirmek ve hata ayıklama yapılarını dağıtmak için ekleyin.
 6. Aboneliğinizde oturum açmak ve ek bilgi sağlamak için betikteki yönergeleri izleyin.
 9. Başarılı bir derleme ve dağıtım işleminden sonra şu iletiyi görmeniz gerekir:
    ```
@@ -76,13 +76,13 @@ PowerShell betiği OPC Kasası mikro hizmetini ve uygulamayı dağıtmanın kola
    > Sorun oluşması durumunda, makalenin devamındaki "dağıtım hataları sorunlarını giderme" bölümüne bakın.
 
 8. En sevdiğiniz tarayıcıyı açın ve uygulama sayfasını açın:`https://myResourceGroup.azurewebsites.net`
-8. Web uygulamasına ve OPC Kasası mikro hizmetine dağıtımdan sonra ısınma için birkaç dakika verin. Web giriş sayfası, ilk yanıtları yapana kadar bir dakika boyunca ilk kullanımda askıda kalabilir.
+8. Web uygulamasına ve OPC Kasası mikro hizmetine dağıtımdan sonra ısınma için birkaç dakika verin. Web giriş sayfası, ilk yanıtları yapana kadar bir dakika kadar ilk kullanımda yanıt vermeyi durdurabilir.
 11. Swagger API 'sine göz atmak için şunu açın:`https://myResourceGroup-service.azurewebsites.net`
-13. DotNet ile yerel bir GDS sunucusunu başlatmak için başlatın `.\myResourceGroup-gds.cmd`. Docker ile başlatın `.\myResourceGroup-dockergds.cmd`.
+13. DotNet ile yerel bir GDS sunucusunu başlatmak için başlatın `.\myResourceGroup-gds.cmd` . Docker ile başlatın `.\myResourceGroup-dockergds.cmd` .
 
 Bir derlemeyi tamamen aynı ayarlarla yeniden dağıtmak mümkündür. Bu tür bir işlemin tüm uygulama gizli dizilerini yenilediğini ve Azure Active Directory (Azure AD) uygulama kayıtlarında bazı ayarları sıfırlayabileceğini unutmayın.
 
-Yalnızca Web uygulaması ikili dosyalarını yeniden dağıtmak da mümkündür. Parametresiyle `-onlyBuild 1`, hizmetin yeni ZIP paketleri ve uygulama Web uygulamalarına dağıtılır.
+Yalnızca Web uygulaması ikili dosyalarını yeniden dağıtmak da mümkündür. Parametresiyle `-onlyBuild 1` , hizmetin yeni ZIP paketleri ve uygulama Web uygulamalarına dağıtılır.
 
 Dağıtım başarılı olduktan sonra Hizmetleri kullanmaya başlayabilirsiniz. Bkz. [OPC Kasası sertifika yönetimi hizmetini yönetme](howto-opc-vault-manage.md).
 
@@ -94,8 +94,8 @@ Bunu yapmak için:
 2. Hizmetin dağıtıldığı kaynak grubuna gidin.
 3. **Kaynak grubunu sil**'i seçip onaylayın.
 4. Kısa bir süre sonra dağıtılan tüm hizmet bileşenleri silinir.
-5. **Azure Active Directory** > **uygulama kayıtları**gidin.
-6. Dağıtılan her kaynak grubu için üç kayıt listelenmiş olmalıdır. Kayıtlar şu adlara sahiptir: `resourcegroup-client`, `resourcegroup-module`,. `resourcegroup-service` Her kaydı ayrı ayrı silin.
+5. **Azure Active Directory**  >  **uygulama kayıtları**gidin.
+6. Dağıtılan her kaynak grubu için üç kayıt listelenmiş olmalıdır. Kayıtlar şu adlara sahiptir: `resourcegroup-client` , `resourcegroup-module` , `resourcegroup-service` . Her kaydı ayrı ayrı silin.
 
 Artık dağıtılan tüm bileşenler kaldırılır.
 
@@ -107,7 +107,7 @@ Kısa ve basit kaynak grubu adı kullanın. Ad, kaynakları ve hizmet URL öneki
 
 ### <a name="website-name-already-in-use"></a>Web sitesi adı zaten kullanımda
 
-Web sitesinin adı zaten kullanımda olabilir. Farklı bir kaynak grubu adı kullanmanız gerekir. Dağıtım betiği tarafından kullanılan ana bilgisayar adları şunlardır: https:\//resourcegroupname.azurewebsites.net ve https:\//resourgroupname-Service.azurewebsites.net.
+Web sitesinin adı zaten kullanımda olabilir. Farklı bir kaynak grubu adı kullanmanız gerekir. Dağıtım betiği tarafından kullanılan ana bilgisayar adları şunlardır: https: \/ /resourcegroupname.azurewebsites.net ve https: \/ /resourgroupname-Service.azurewebsites.net.
 Diğer hizmet adları, kısa ad karmalarının birleşimiyle oluşturulmuştur ve diğer hizmetlerle çakışmadan daha düşüktür.
 
 ### <a name="azure-ad-registration"></a>Azure AD kaydı 
@@ -161,7 +161,7 @@ Bu, kullanılacak Azure AD kiracısıdır.
 -development 0|1
 ```
 
-Bu, geliştirme için dağıtımaktır. Hata ayıklama derlemesini kullanın ve ASP.NET ortamını geliştirme olarak ayarlayın. Uygulamayı `.publishsettings` ve hizmeti doğrudan dağıtmasını sağlamak Için Visual Studio 2017 ' de içeri aktarma için oluşturun. Bu parametre Ayrıca isteğe bağlıdır.
+Bu, geliştirme için dağıtımaktır. Hata ayıklama derlemesini kullanın ve ASP.NET ortamını geliştirme olarak ayarlayın. `.publishsettings`Uygulamayı ve hizmeti doğrudan dağıtmasını sağlamak Için Visual Studio 2017 ' de içeri aktarma için oluşturun. Bu parametre Ayrıca isteğe bağlıdır.
 
 ```
 -onlyBuild 0|1

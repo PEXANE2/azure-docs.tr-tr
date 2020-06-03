@@ -5,14 +5,14 @@ author: ancav
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: b2d2d14f89fa25bba1a19538c758aa0c930b3964
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2aca113e21d759416580c8876ec2092762893da5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018540"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299834"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Izleyici 'de özel ölçümler (Önizleme)
 
@@ -30,9 +30,9 @@ Azure Izleyici özel ölçümleri genel önizlemede geçerli.
 - Azure Izleme çıkış eklentisini kullanarak Azure Linux sanal makinenize etkileyen bir Azure [Data telegraf Aracısı](collect-custom-metrics-linux-telegraf.md) 'nı yükleyip ölçümleri gönderin.
 - Özel ölçümleri [doğrudan Azure izleyici REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)gönderin `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` .
 
-## <a name="pricing-model-and-rentention"></a>Fiyatlandırma modeli ve randevu
+## <a name="pricing-model-and-retention"></a>Fiyatlandırma modeli ve bekletme
 
-Özel ölçümler ve ölçüm sorguları için faturalandırma özelliğinin ne zaman etkinleştirileceğini hakkında ayrıntılı bilgi edinmek için [Azure izleyici fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/monitor/) kontrol edin. Özel ölçümler ve ölçüm sorguları dahil olmak üzere tüm ölçümler için belirli fiyat ayrıntıları bu sayfada bulunabilir. Özet olarak, Azure Izleyici ölçüm deposuna standart ölçümleri (Platform ölçümleri) alma maliyeti yoktur, ancak genel kullanılabilirliği girerken özel ölçümler ücret alınmaz. Ölçüm API 'SI sorguları ınpb maliyetlerine sahiptir.
+Özel ölçümler ve ölçüm sorguları için faturalandırma özelliğinin ne zaman etkinleştirileceğini hakkında ayrıntılı bilgi edinmek için [Azure izleyici fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/monitor/) kontrol edin. Özel ölçümler ve ölçüm sorguları dahil olmak üzere tüm ölçümler için belirli fiyat ayrıntıları bu sayfada bulunabilir. Özet olarak, Azure Izleyici ölçüm deposuna standart ölçümleri (Platform ölçümleri) alma maliyeti yoktur, ancak özel ölçümler genel kullanılabilirliği girerken maliyette yer alacak. Ölçüm API sorguları, ücretlendirilir.
 
 Özel ölçümler, [Platform ölçümleriyle aynı süre](data-platform-metrics.md#retention-of-metrics)boyunca tutulur. 
 
@@ -78,7 +78,7 @@ Ad alanları, benzer ölçümleri birlikte sınıflandırmanız veya gruplandır
 **Ad** , bildirilen ölçümün adıdır. Genellikle, ne ölçülerin tanımlanmasına yardımcı olmak için ad açıklayıcı bir yoldur. Bir örnek, belirli bir VM 'de kullanılan bellek baytlarının sayısını ölçen bir ölçümdür. **Kullanılmakta olan bellek baytları**gibi bir ölçüm adı olabilir.
 
 ### <a name="dimension-keys"></a>Boyut anahtarları
-Boyut, toplanmakta olan ölçüm hakkında ek özellikler tanımlamaya yardımcı olan bir anahtar veya değer çiftidir. Ek özellikleri kullanarak, daha derin Öngörüler sağlayan ölçüm hakkında daha fazla bilgi toplayabilirsiniz. Örneğin, kullanılmakta olan **bellek baytları** , bir VM 'deki her işlemin kaç baytlık bellek kullandığını yakalayan **işlem** adlı bir boyut anahtarına sahip olabilir. Bu anahtarı kullanarak, bellek kullanımına göre ilk beş işlemi ne kadar belleğe kullandığını görmek için ya da ölçüyü filtreleyebilirsiniz.
+Boyut, toplanmakta olan ölçüm hakkında ek özellikler tanımlamaya yardımcı olan bir anahtar veya değer çiftidir. Ek özellikleri kullanarak, daha derin Öngörüler sağlayan ölçüm hakkında daha fazla bilgi toplayabilirsiniz. Örneğin, kullanılmakta olan **bellek baytları** , bir VM 'deki her işlemin kaç baytlık bellek kullandığını yakalayan **işlem** adlı bir boyut anahtarına sahip olabilir. Bu anahtarı kullanarak, belleğe özgü işlemlerin ne kadar iyi kullanıldığını görmek veya bellek kullanımına göre ilk beş işlemi tanımlamak için ölçüyü filtreleyebilirsiniz.
 Boyutlar isteğe bağlıdır, tüm ölçümler boyutlara sahip olamaz. Özel bir ölçüm en fazla 10 boyut içerebilir.
 
 ### <a name="dimension-values"></a>Boyut değerleri
@@ -196,6 +196,7 @@ Genel Önizleme sırasında, özel ölçümleri yayımlama özelliği yalnızca 
 |Orta ABD      | https: \/ /centralus.Monitoring.Azure.com |
 |Orta Kanada | https: \/ /canadacentral.Monitoring.Azure.Comc
 |Doğu ABD| https: \/ /eastus.Monitoring.Azure.com/ |
+|Doğu ABD 2 | https: \/ /eastus2.Monitoring.Azure.com/
 | **Avrupa** | |
 |Kuzey Avrupa    | https: \/ /northeurope.Monitoring.Azure.com/ |
 |Batı Avrupa     | https: \/ /westeurope.Monitoring.Azure.com/ |

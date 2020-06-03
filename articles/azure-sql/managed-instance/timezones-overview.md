@@ -1,5 +1,5 @@
 ---
-title: Yönetilen örnek saat dilimleri
+title: Azure SQL yönetilen örnek saat dilimleri
 description: Azure SQL yönetilen örneği 'nin saat dilimi özellikleri hakkında bilgi edinin
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: ef8572f03ddb3df8dae5f823c2d8d6d12f3e1a31
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: df4d91cf6dffaeb9309c5304382b415f7adde8b5
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046820"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309688"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde saat dilimleri
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -25,7 +25,7 @@ Eşgüdümlü Evrensel Saat (UTC), bulut çözümlerinin veri katmanı için ön
 [GETDATE ()](/sql/t-sql/functions/getdate-transact-sql) veya clr Code gibi T-SQL işlevleri örnek düzeyinde ayarlanan saat dilimini gözlemler. SQL Server Agent işler, örneğin zaman dilimine göre zamanlamaları da izler.
 
   > [!NOTE]
-  > Azure SQL veritabanı, saat dilimi ayarlarını desteklemez; her zaman UTC 'yi izler. Tarih ve saat bilgilerini UTC dışı bir saat diliminde yorumlayabilmeniz gerekiyorsa SQL veritabanlarında [saat dilimini](/sql/t-sql/queries/at-time-zone-transact-sql) kullanın.
+  > Azure SQL veritabanı, saat dilimi ayarlarını desteklemez; her zaman UTC 'yi izler. Tarih ve saat bilgilerini UTC dışı bir saat diliminde yorumlayabilmeniz gerekiyorsa SQL veritabanında [saat dilimini](/sql/t-sql/queries/at-time-zone-transact-sql) kullanın.
 
 ## <a name="supported-time-zones"></a>Desteklenen saat dilimleri
 

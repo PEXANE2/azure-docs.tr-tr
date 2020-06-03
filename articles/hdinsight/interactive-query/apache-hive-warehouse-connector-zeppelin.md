@@ -6,13 +6,13 @@ ms.author: nisgoel
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: 1f9d2d9bd2a58fa4c6f14db8ffd067bb39fc1553
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 05/28/2020
+ms.openlocfilehash: fa90c3579e241fd6b7dc53c9df7d996402fc78a5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853816"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296910"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Zeppelin 'i Hive ambarı Bağlayıcısı ile tümleştirme
 
@@ -22,7 +22,7 @@ HDInsight Spark kümeleri, farklı yorumlayıcılara sahip Apache Zeppelin not d
 
 [Hive ambarı Bağlayıcısı kurulum](apache-hive-warehouse-connector.md#hive-warehouse-connector-setup) adımlarını doldurun.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 1. Apache Spark kümenize bağlanmak için [SSH komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME öğesini kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
 
@@ -91,10 +91,17 @@ Zeppelin 'daki Hive tablolarına Livy yorumlayıcısıyla erişmek için aşağ�
 
     | Yapılandırma| Değer|
     |---|---|
-    | Livy. spark. Sql. Hive. hiveserver2. JDBC. URL. Principal | `hive/<headnode-FQDN>@<AAD-Domain>` |
+    | Livy. spark. Sql. Hive. hiveserver2. JDBC. URL. Principal | `hive/<llap-headnode>@<AAD-Domain>` |
 
-    `<headnode-FQDN>`Etkileşimli sorgu kümesinin baş düğümünün tam etki alanı adıyla değiştirin.
-    `<AAD-DOMAIN>`Kümenin katıldığı Azure Active Directory (AAD) adıyla değiştirin. Değer için bir büyük dize kullanın `<AAD-DOMAIN>` , aksi takdirde kimlik bilgisi bulunamadı. `/etc/krb5.conf`Gerekirse bölge adlarını kontrol edin.
+    * Bir Web tarayıcısından, CLUSTERNAME öğesine gidin ve `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` etkileşimli sorgu kümenizin adıdır. **HiveServer2 Interactive**seçeneğine tıklayın. Ekran görüntüsünde gösterildiği gibi LLAP 'nin çalıştığı baş düğümün tam etki alanı adını (FQDN) görürsünüz. `<llap-headnode>`Bu değerle değiştirin.
+
+        ![Hive ambar Bağlayıcısı baş düğümü](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
+
+    * Etkileşimli sorgu kümenize bağlanmak için [SSH komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. `default_realm`Dosyadaki parametreyi bulun `/etc/krb5.conf` . `<AAD-DOMAIN>`Bu değerle değiştirin, aksi takdirde kimlik bilgisi bulunamadı.
+
+        ![Hive ambar Bağlayıcısı AAD etki alanı](./media/apache-hive-warehouse-connector/aad-domain.png)
+
+    * Örneğin, `hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET` .
 
 1. Değişiklikleri kaydedin ve Livy yorumlayıcısını yeniden başlatın.
 
