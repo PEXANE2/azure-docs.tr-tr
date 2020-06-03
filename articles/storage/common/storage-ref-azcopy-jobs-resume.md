@@ -34,7 +34,7 @@ azcopy jobs resume [jobID] [flags]
 
 ## <a name="options"></a>Seçenekler
 
-|Seçenek|Açıklama|
+|Seçenek|Description|
 |--|--|
 |--hedef-SAS dizesi|Verilen iş kimliği için hedefin hedef SAS 'ları.|
 |--dizeyi Dışla|Filtre: iş sürdürülürken bu başarısız olan aktarım (ler) i hariç tut. Dosyalar '; ' ile ayrılmalıdır.|
@@ -44,7 +44,7 @@ azcopy jobs resume [jobID] [flags]
 
 ## <a name="options-inherited-from-parent-commands"></a>Üst komutlardan devralınan seçenekler
 
-|Seçenek|Açıklama|
+|Seçenek|Description|
 |---|---|
 |--Cap-Mbps uint32|Saniye başına megabit cinsinden aktarım hızının üst sınırı. Kısa süre içinde işlem hacmi büyük bir farklılık gösterebilir. Bu seçenek sıfır olarak ayarlandıysa veya atlanırsa, üretilen iş işleme alınır.|
 |--çıkış türü dize|Komutun çıktısının biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer "Text" değeridir.|
