@@ -4,16 +4,16 @@ description: Azure özel uç noktasını kullanarak bir Web uygulamasına özel 
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
 ms.topic: article
-ms.date: 03/12/2020
+ms.date: 06/02/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 2f10c7378ae7681b14df6e96b6a6f1adac832d1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34ea9961c257f398ebed3baaf4ed2ee5b6f3547e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80287824"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298712"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Azure özel uç noktası (Önizleme) kullanarak bir Web uygulamasına özel olarak bağlanma
 
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, bir Web uygulamasını özel uç nokta ile dağıtmay
 Daha fazla bilgi için bkz. [Azure Web uygulaması Için özel uç noktaları kullanma][privatenedpointwebapp].
 
 > [!Note]
->Önizleme, tüm PremiumV2 Windows ve Linux Web Apps için Doğu ABD ve Batı ABD 2 bölgelerinde kullanılabilir. 
+>Önizleme, PremiumV2 Windows ve Linux Web Apps ve elastik Premium işlevleri için genel bölgelerde kullanılabilir. 
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -37,7 +37,7 @@ Bu bölümde, Özel uç nokta aracılığıyla Web uygulamanıza erişmek için 
 
 Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
 
-1. Ekranın sol üst tarafında, **kaynak** > oluştur**ağ** > **sanal ağı** ' nı veya arama kutusunda **sanal ağ** ara ' yı seçin.
+1. Ekranın sol üst tarafında, **kaynak oluştur**  >  **ağ**  >  **sanal ağı** ' nı veya arama kutusunda **sanal ağ** ara ' yı seçin.
 
 1. **Sanal ağ oluştur**' da, temel bilgiler sekmesinde bu bilgileri girin veya seçin:
 
@@ -60,7 +60,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
 
 ### <a name="create-virtual-machine"></a>Sanal makine oluşturma
 
-1. Azure Portal ekranın sol üst kısmında **kaynak** > oluştur**işlem** > **sanal makinesi** ' ni seçin.
+1. Azure Portal ekranın sol üst kısmında **kaynak oluştur**  >  **işlem**  >  **sanal makinesi** ' ni seçin.
 
 1. Sanal makine oluşturma-temel bilgiler bölümünde, bu bilgileri girin veya seçin:
 
@@ -89,7 +89,7 @@ Bu bölümde özel bir uç nokta kullanarak özel bir Web uygulaması oluşturac
 
 ### <a name="web-app"></a>Web App
 
-1. Azure Portal ekranın sol üst tarafında, **kaynak** > oluştur**Web** > **Web uygulaması** ' nı seçin.
+1. Azure Portal ekranın sol üst tarafında, **kaynak oluştur**  >  **Web**  >  **Web uygulaması** ' nı seçin.
 
 1. Web uygulaması oluşturma-temel bilgiler bölümünde, bu bilgileri girin veya seçin:
 
@@ -102,7 +102,7 @@ Bu bölümde özel bir uç nokta kullanarak özel bir Web uygulaması oluşturac
 
 ### <a name="create-the-private-endpoint"></a>Özel uç nokta oluşturma
 
-1. Web uygulaması özelliklerinde **Ayarlar** > **ağ** ' ı seçin ve **"özel uç nokta bağlantılarınızı yapılandırın"** seçeneğine tıklayın.
+1. Web uygulaması özelliklerinde **Ayarlar**  >  **ağ** ' ı seçin ve **"özel uç nokta bağlantılarınızı yapılandırın"** seçeneğine tıklayın.
 
    > [!div class="mx-imgBorder"]
    >![Web uygulaması ağı][7]
@@ -120,8 +120,8 @@ Bu bölümde özel bir uç nokta kullanarak özel bir Web uygulaması oluşturac
 1. Özel uç noktanın oluşturulmasını gözden geçirin
 
    > [!div class="mx-imgBorder"]
-   >![Özel][10]
-   >![uç noktanın son görünümünü gözden geçirin][11]
+   >![][10]
+   > ![ Özel uç noktanın son görünümünü gözden geçirin][11]
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>İnternet'ten bir sanal makineye bağlanma
 

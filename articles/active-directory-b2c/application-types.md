@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e8328db12bde531c2e27936c09247611ff1a3583
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29a82c1aed4ea79673b4019270a334eac722bc96
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78190152"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295431"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Active Directory B2C kullanılabilecek uygulama türleri
 
@@ -65,7 +65,7 @@ Bir Web uygulamasında, bir [ilkenin](user-flow-overview.md) her yürütülmesi 
 2. Web uygulaması, çalıştırılacak ilkeyi belirten Azure AD B2C kullanıcıyı yeniden yönlendirir.
 3. Kullanıcı ilkeyi tamamlar.
 4. Azure AD B2C tarayıcıya döndürür `id_token` .
-5. , `id_token` YENIDEN yönlendirme URI 'sine gönderilir.
+5. , `id_token` Yeniden YÖNLENDIRME URI 'sine gönderilir.
 6. , `id_token` Onaylanır ve bir oturum tanımlama bilgisi ayarlanır.
 7. Kullanıcıya güvenli bir sayfa döndürülür.
 
@@ -93,10 +93,10 @@ Web API 'SI, Web uygulamaları, masaüstü ve mobil uygulamalar, tek sayfa uygul
 
 1. Web uygulaması bir ilkeyi yürütür ve Kullanıcı Kullanıcı deneyimini tamamlar.
 2. Azure AD B2C tarayıcıya bir (OpenID Connect) `id_token` ve yetkilendirme kodu döndürür.
-3. Tarayıcı, `id_token` ve yetkilendirme kodunu YENIDEN yönlendirme URI 'sine gönderir.
+3. Tarayıcı, `id_token` ve yetkilendirme kodunu yeniden YÖNLENDIRME URI 'sine gönderir.
 4. Web sunucusu, `id_token` bir oturum tanımlama bilgisini doğrular ve belirler.
-5. Web sunucusu, kimlik doğrulama kodunu, `access_token` uygulama istemci kimliğini ve istemci kimlik bilgilerini sağlayarak Azure AD B2C ister.
-6. Ve `access_token` `refresh_token` , Web sunucusuna döndürülür.
+5. Web sunucusu, `access_token` kimlik doğrulama kodunu, uygulama ISTEMCI kimliğini ve istemci kimlik bilgilerini sağlayarak Azure AD B2C ister.
+6. `access_token`Ve, `refresh_token` Web sunucusuna döndürülür.
 7. Web API 'SI, `access_token` bir yetkilendirme üst bilgisinde ile çağrılır.
 8. Web API 'SI belirteci doğrular.
 9. Güvenli veriler Web uygulamasına döndürülür.
@@ -109,7 +109,7 @@ Azure AD B2C'yi kullanarak bir web API'sini nasıl güvence altına alacağını
 
 Mobil ve Masaüstü uygulamaları gibi cihazlarda yüklü olan uygulamaların, genellikle kullanıcı adına arka uç hizmetlerine veya Web API 'Lerine erişmesi gerekir. Yerel uygulamalarınıza özelleştirilmiş kimlik yönetimi deneyimleri ekleyebilir ve Azure AD B2C ve [OAuth 2,0 yetkilendirme kodu akışını](authorization-code-flow.md)kullanarak arka uç hizmetlerini güvenle çağırabilirsiniz.
 
-Bu akışta, uygulama [ilkeleri](user-flow-overview.md) yürütür ve Kullanıcı ilkeyi tamamladıktan sonra `authorization_code` bir Azure AD 'den alır. , `authorization_code` Uygulamanın, oturum açmış olan kullanıcı adına arka uç hizmetlerini çağırma iznini temsil eder. Uygulama daha sonra bir `authorization_code` `access_token` ve için arka planda öğesini değiştirebilir. `refresh_token`  Uygulama, `access_token` http isteklerinde bir arka uç Web API 'sine kimlik doğrulaması yapmak için kullanabilir. Ayrıca eskisinin süresi dolduğunda yeni bir `access_token` almak için `refresh_token` öğesini kullanabilir.
+Bu akışta, uygulama [ilkeleri](user-flow-overview.md) yürütür ve `authorization_code` Kullanıcı ilkeyi tamamladıktan sonra bir Azure AD 'den alır. , `authorization_code` Uygulamanın, oturum açmış olan kullanıcı adına arka uç hizmetlerini çağırma iznini temsil eder. Uygulama daha sonra `authorization_code` bir ve için arka planda öğesini değiştirebilir `access_token` `refresh_token` .  Uygulama, `access_token` http isteklerinde bir arka uç Web API 'sine kimlik doğrulaması yapmak için kullanabilir. Ayrıca eskisinin süresi dolduğunda yeni bir `access_token` almak için `refresh_token` öğesini kullanabilir.
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
@@ -119,9 +119,11 @@ Bu akışta, uygulama [ilkeleri](user-flow-overview.md) yürütür ve Kullanıc�
 
 Uzun süre çalışan süreçler içeren veya bir kullanıcının varlığı olmadan çalışan uygulamalar, Web API 'Leri gibi güvenli kaynaklara erişmek için bir yol da gerekir. Bu uygulamalar, uygulamanın kimliğini (kullanıcının Temsilcili kimliği yerine) kullanarak ve OAuth 2,0 istemci kimlik bilgileri akışını kullanarak belirteçlerin kimliğini doğrulayabilir ve alabilir. İstemci kimlik bilgileri akışı, sunucu-sunucu kimlik doğrulaması için kullanılmamalıdır ve şirket içi akışla aynı değildir.
 
-İstemci kimlik bilgileri akışı şu anda Azure AD B2C tarafından desteklenmese de, Azure AD 'yi kullanarak istemci kimlik bilgisi akışını ayarlayabilirsiniz. Azure AD B2C kiracı, Azure AD kurumsal kiracılar ile bazı işlevleri paylaşır.  İstemci kimlik bilgisi akışı, Azure AD B2C kiracının Azure AD işlevselliği kullanılarak desteklenir.
+OAuth 2,0 istemci kimlik bilgileri verme akışı şu anda Azure AD B2C kimlik doğrulama hizmeti tarafından doğrudan desteklenmese de, Azure AD 'yi kullanarak istemci kimlik bilgileri akışını ve Azure AD B2C kiracınızdaki bir uygulama için Microsoft Identity platform/Token uç noktasını ayarlayabilirsiniz. Azure AD B2C kiracı, Azure AD kurumsal kiracılar ile bazı işlevleri paylaşır.
 
 İstemci kimlik bilgileri akışını ayarlamak için, bkz. [Azure Active Directory v 2.0 ve OAuth 2,0 istemci kimlik bilgileri akışı](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-client-creds). Başarılı bir kimlik doğrulaması, Azure AD [belirteç başvurusunda](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)açıklandığı gıbı Azure AD tarafından kullanılabilmesi için biçimlendirilen belirtecin alınmasına neden olur.
+
+Bir yönetim uygulamasını kaydetme hakkında yönergeler için bkz. [Microsoft Graph Azure AD B2C yönetme](microsoft-graph-get-started.md).
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Web API'si zincirleri (temsili akış)
 

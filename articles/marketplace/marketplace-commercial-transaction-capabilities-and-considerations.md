@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 6cac7218c8f1fc48734b426c9e041831bf0b1f71
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 8818b06e84f6ffe05398087c4aaeba282adc8b2e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800042"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298219"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Ticari Market Transact özellikleri
 
@@ -53,7 +53,7 @@ Kullanılan işlem seçeneğine bağlı olarak, yazılım lisansı ücretleri a�
 - **Ücretsiz** – yazılım lisansları için ücret alınmaz.
 - **Kendi lisansınızı getirin** (KLG) – yazılım lisansları için geçerli ücretler, doğrudan yayımcı ile müşteri arasında yönetilir. Microsoft yalnızca Azure altyapı kullanım ücretleri üzerinden geçer. Bu yalnızca sanal makineler ve Azure uygulamaları için geçerlidir.
 - **Kullandıkça Öde** – yazılım lisans ücretleri, kullanılan Azure altyapısına göre saat başına, çekirdek başına (vCPU) fiyatlandırma ücreti olarak sunulur. Bu yalnızca sanal makineler ve Azure uygulamaları için geçerlidir.
-- **Abonelik fiyatlandırması** – yazılım lisans ücretleri aylık veya yıllık olarak, sabit bir fiyat veya bilgisayar başına faturalandırılan yinelenen ücret olarak sunulur. Bu, SaaS uygulamaları ve yalnızca Azure uygulamaları tarafından yönetilen uygulamalar için geçerlidir.
+- **Abonelik fiyatlandırması** – yazılım lisans ücretleri aylık veya yıllık olarak, sabit bir fiyat veya bilgisayar başına faturalandırılan yinelenen ücret olarak sunulur. Bu, SaaS uygulamaları (aylık veya yıllık) ve Azure uygulamaları tarafından yönetilen uygulamalar (aylık) için geçerlidir.
 - **Ücretsiz yazılım denemesi** : 30 veya 90 gün için yazılım lisansları ücreti alınmaz.
 
 ### <a name="free-and-bring-your-own-license-byol-pricing"></a>Ücretsiz ve kendi lisansını getir (KLG) fiyatlandırması

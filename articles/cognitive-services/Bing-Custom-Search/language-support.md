@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 85326ae9166f7ea15ec2f45c01755b8f9ef03aff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 004bd973651d5903db4254a8883be2c8a83d9b38
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66388574"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310589"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Bing Özel Arama API'si için dil ve bölge desteği
 
@@ -23,9 +23,9 @@ Bing Özel Arama API'si, birden fazla dilden çok sayıda ülkeyi/bölgeyi deste
 
 İsteğe bağlı olsa da, isteğin, sonuçların gelmesini istediğiniz pazarı tanımlayan [Mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) sorgu parametresini belirtmesi gerekir. İsteğe bağlı sorgu parametrelerinin bir listesi için bkz. [sorgu parametreleri](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)
 
-`cc` Sorgu parametresini kullanarak bir ülke/bölge belirtebilirsiniz. Bir ülke/bölge belirtirseniz, `Accept-Language` üstbilgiyi kullanarak bir veya daha fazla dil kodu da belirtmeniz gerekir. Desteklenen diller ülkeye/bölgeye göre farklılık gösterir. Bunlar, **pazarlar** tablosundaki her bir ülke/bölge için verilir.
+Sorgu parametresini kullanarak bir ülke/bölge belirtebilirsiniz `cc` . Bir ülke/bölge belirtirseniz, üstbilgiyi kullanarak bir veya daha fazla dil kodu da belirtmeniz gerekir `Accept-Language` . Desteklenen diller ülkeye/bölgeye göre farklılık gösterir. Bunlar, **pazarlar** tablosundaki her bir ülke/bölge için verilir.
 
-`Accept-Language` Üst bilgi ve `setLang` sorgu parametresi birbirini dışlıyor; ikisini de belirtmeyin. Ayrıntılar için bkz. [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage).
+`Accept-Language`Üst bilgi ve `setLang` sorgu parametresi birbirini dışlıyor; ikisini de belirtmeyin. Ayrıntılar için bkz. [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage).
 
 ## <a name="countriesregions"></a>Ülkeler/bölgeler
 
@@ -44,7 +44,7 @@ Bing Özel Arama API'si, birden fazla dilden çok sayıda ülkeyi/bölgeyi deste
 |Almanya|DE|
 |Hong Kong ÖİB|HK|
 |Hindistan|IN|
-|Endonezya|Kimlik|
+|Endonezya|ID|
 |İtalya|BT|
 |Japonya|JP|
 |Güney Kore|KR|
@@ -66,7 +66,7 @@ Bing Özel Arama API'si, birden fazla dilden çok sayıda ülkeyi/bölgeyi deste
 |Tayvan|TW|
 |Türkiye|TR|
 |Birleşik Krallık|GB|
-|Amerika Birleşik Devletleri|ABD|
+|Birleşik Devletler|ABD|
 
 
 ## <a name="markets"></a>Pazar
@@ -86,7 +86,7 @@ Bing Özel Arama API'si, birden fazla dilden çok sayıda ülkeyi/bölgeyi deste
 |Finlandiya|Fince|fi-FI|
 |Fransa|Fransızca|fr-FR|
 |Almanya|Almanca|de-DE|
-|Hong Kong, ÖIB|Geleneksel Çince|zh-HK|
+|Hong Kong ÖİB|Geleneksel Çince|zh-HK|
 |Hindistan|İngilizce|En-ın|
 |Endonezya|İngilizce|En-KIMLIĞI|
 |İtalya|İtalyanca|it-IT|
@@ -111,5 +111,5 @@ Bing Özel Arama API'si, birden fazla dilden çok sayıda ülkeyi/bölgeyi deste
 |Tayvan|Geleneksel Çince|zh-TW|
 |Türkiye|Türkçe|tr-TR|
 |Birleşik Krallık|İngilizce|en-GB|
-|Amerika Birleşik Devletleri|İngilizce|tr-TR|
-|Amerika Birleşik Devletleri|İspanyolca|es-US|
+|Birleşik Devletler|İngilizce|tr-TR|
+|Birleşik Devletler|İspanyolca|es-US|
