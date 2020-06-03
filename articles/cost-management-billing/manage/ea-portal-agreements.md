@@ -3,16 +3,16 @@ title: Azure EA sözleşmeleri ve düzeltmeleri
 description: Bu makalede Azure EA sözleşmeleri ve düzeltmelerinin Azure EA portalı kullanımınızı nasıl etkilediği açıklanır.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/07/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 356b08526d96b6aa51a537a3dd1f7266cbf47141
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4904390ce0642d0331e82610e8aef4b735b56f1f
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648190"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298151"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA sözleşmeleri ve düzeltmeleri
 
@@ -43,7 +43,7 @@ Kayıt aşağıdaki durum değerlerinden birine sahiptir. Değerlerin her biri k
 
 **Süresi Doldu**: EA kaydı kurumsal anlaşma bitiş tarihine ulaştığında kaydın süresi dolar. EA müşterisi uzatılmış süreyi kabul etmemiş ve tüm hizmetleri devre dışı bırakılmıştır.
 
-1 Ağustos 2019 itibarıyla Azure ticari müşterileri için yeni geri çevirme formları kabul edilmez. Bunun yerine tüm kayıtlar süresiz uzatılan süre durumuna geçer. Azure hizmetlerini kullanmayı durdurmak istiyorsanız [Azure EA portalında](https://portal.azure.com) aboneliğinizi kapatın. İsterseniz iş ortağınız https://www.explore.ms adresine bir sonlandırma isteği de gönderebilir. Kamu anlaşması türlerindeki müşteriler için hiçbir değişiklik yoktur.
+1 Ağustos 2019 itibarıyla Azure ticari müşterileri için yeni geri çevirme formları kabul edilmez. Bunun yerine tüm kayıtlar süresiz uzatılan süre durumuna geçer. Azure hizmetlerini kullanmayı durdurmak istiyorsanız [Azure portalında](https://portal.azure.com) aboneliğinizi kapatın. İsterseniz iş ortağınız https://www.explore.ms adresine bir sonlandırma isteği de gönderebilir. Kamu anlaşması türlerindeki müşteriler için hiçbir değişiklik yoktur.
 
 **Aktarıldı**: Aktarıldı durumu, ilişkili hesapları ve hizmetleri yeni kayda aktarılmış olan kayıtlara uygulanır. Yenileme sırasında yeni bir kayıt numarası oluşturulduysa kayıtlar otomatik olarak aktarılmaz. Otomatik aktarım için müşterinin yenileme isteğine önceki kayıt numarası eklenmelidir.
 

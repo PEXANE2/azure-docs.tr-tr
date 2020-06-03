@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 3e4ad74a55504367de18a3dc9f0a7d33c462b329
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 309016821eb13ef6332ba248a11593fec8da9f75
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199849"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267571"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure Aboneliği yöneticileri ekleme veya değiştirme
 
@@ -71,7 +71,7 @@ Bir aboneliğin hesap yöneticisinin kim olduğunu bilmiyorsanız aşağıdaki a
 
 * [Rol tabanlı erişim denetimi (RBAC) nedir?](../../role-based-access-control/overview.md)
 * [Azure'daki farklı rolleri anlama](../../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Nasıl yapılır: Azure Active Directory’ye bir Azure aboneliğini ekleme veya ilişkilendirme](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+* [Azure Active Directory kiracınıza bir Azure aboneliğini ekleme veya ilişkilendirme](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Azure Active Directory'deki yönetici rolü izinleri](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 
 ## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun
