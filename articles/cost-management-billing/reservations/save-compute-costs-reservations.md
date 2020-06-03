@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: ae94a5c8d7e9ff93098e85535aea3699206b9e03
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: b41435cb0b337edc2d73820c75da847913326315
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626966"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015990"
 ---
 # <a name="what-are-azure-reservations"></a>Azure Ayırmaları nedir?
 
@@ -127,6 +127,6 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 - Hizmet planları için rezervasyonlar hakkında daha fazla bilgi edinin:
     - [Azure Ayrılmış VM Örnekleri ile Sanal Makineler](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
     - [Azure Cosmos DB ayrılmış kapasitesine sahip Azure Cosmos DB kaynakları](../../cosmos-db/cosmos-db-reserved-capacity.md)
-    - [Azure SQL Veritabanı ayrılmış kapasitesine sahip SQL Veritabanı işlem kaynakları](../../sql-database/sql-database-reserved-capacity.md) Yazılım planlarına yönelik rezervasyonlar hakkında daha fazla bilgi edinin:
+    - [Azure SQL Veritabanı ayrılmış kapasitesine sahip SQL Veritabanı işlem kaynakları](../../azure-sql/database/reserved-capacity-overview.md) Yazılım planlarına yönelik rezervasyonlar hakkında daha fazla bilgi edinin:
     - [Azure Ayrılmış Sanal Makine Örneklerinden Red Hat yazılım planları](../../virtual-machines/linux/prepay-rhel-software-charges.md)
     - [Azure Ayrılmış Sanal Makine Örneklerinden SESU yazılım planları](../../virtual-machines/linux/prepay-suse-software-charges.md)

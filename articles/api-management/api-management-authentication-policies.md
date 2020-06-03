@@ -48,16 +48,16 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 ### <a name="elements"></a>Öğeler
 
-|Adı|Açıklama|Gerekli|
+|Name|Description|Gerekli|
 |----------|-----------------|--------------|
-|kimlik doğrulama-temel|Kök öğe.|Evet|
+|kimlik doğrulama-temel|Kök öğe.|Yes|
 
 ### <a name="attributes"></a>Öznitelikler
 
-|Adı|Açıklama|Gerekli|Varsayılan|
+|Name|Description|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|kullanıcı adı|Temel kimlik bilgisinin Kullanıcı adını belirtir.|Evet|Yok|
-|password|Temel kimlik bilgisinin parolasını belirtir.|Evet|Yok|
+|kullanıcı adı|Temel kimlik bilgisinin Kullanıcı adını belirtir.|Yes|Yok|
+|password|Temel kimlik bilgisinin parolasını belirtir.|Yes|Yok|
 
 ### <a name="usage"></a>Kullanım
  Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
@@ -88,13 +88,13 @@ Bu örnekte istemci sertifikası, kaynak adı ile tanımlanır.
 
 ### <a name="elements"></a>Öğeler  
   
-|Adı|Açıklama|Gerekli|  
+|Name|Description|Gerekli|  
 |----------|-----------------|--------------|  
-|kimlik doğrulama-sertifika|Kök öğe.|Evet|  
+|kimlik doğrulama-sertifika|Kök öğe.|Yes|  
   
 ### <a name="attributes"></a>Öznitelikler  
   
-|Adı|Açıklama|Gerekli|Varsayılan|  
+|Name|Description|Gerekli|Varsayılan|  
 |----------|-----------------|--------------|-------------|  
 |#c0|İstemci sertifikası için parmak izi.|`thumbprint`Ya da `certificate-id` mevcut olmalıdır.|Yok|  
 |sertifika kimliği|Sertifika kaynağı adı.|`thumbprint`Ya da `certificate-id` mevcut olmalıdır.|Yok|  
@@ -161,17 +161,17 @@ Bu örnekte istemci sertifikası, kaynak adı ile tanımlanır.
 
 ### <a name="elements"></a>Öğeler  
   
-|Adı|Açıklama|Gerekli|  
+|Name|Description|Gerekli|  
 |----------|-----------------|--------------|  
-|kimlik doğrulama-yönetilen-kimlik |Kök öğe.|Evet|  
+|kimlik doğrulama-yönetilen-kimlik |Kök öğe.|Yes|  
   
 ### <a name="attributes"></a>Öznitelikler  
   
-|Adı|Açıklama|Gerekli|Varsayılan|  
+|Name|Description|Gerekli|Varsayılan|  
 |----------|-----------------|--------------|-------------|  
-|kaynak|Dize. Azure Active Directory içindeki hedef Web API 'sinin (güvenli kaynak) uygulama KIMLIĞI.|Evet|Yok|  
-|çıkış-belirteç-değişken-adı|Dize. Bir nesne türü olarak belirteç değeri alacak bağlam değişkeninin adı `string` . |Hayır|Yok|  
-|yoksayma-hata|Boolean. Olarak ayarlanırsa `true` , bir erişim belirteci alınmasa bile ilke ardışık düzeni yürütülmeye devam eder.|Hayır|yanlış|  
+|kaynak|Dize. Azure Active Directory içindeki hedef Web API 'sinin (güvenli kaynak) uygulama KIMLIĞI.|Yes|Yok|  
+|çıkış-belirteç-değişken-adı|Dize. Bir nesne türü olarak belirteç değeri alacak bağlam değişkeninin adı `string` . |No|Yok|  
+|yoksayma-hata|Boolean. Olarak ayarlanırsa `true` , bir erişim belirteci alınmasa bile ilke ardışık düzeni yürütülmeye devam eder.|No|yanlış|  
   
 ### <a name="usage"></a>Kullanım  
  Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.  

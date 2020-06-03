@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: 573bd0797e63fc512e59b0e0882c718e4569111c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e6a8fddc61e05bc2e354d77c9e56c55e354a45b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262902"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309841"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>GRUB ve SySRq erişimine sahip olmanızı sağlamak, size büyük bir süre aşağı kaydetme
 
@@ -76,7 +76,7 @@ Azure seri konsoluna erişiminizin olmasını sağlamak ve GRUB, parola değişi
 
 - Disk takas: Şu iki kullanılarak otomatik olabilir:
 
-   - [Power Shell kurtarma betikleri](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
+   - [PowerShell kurtarma betikleri](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
    - [Bash kurtarma betikleri](https://github.com/sribs/azure-support-scripts)
 
 - Eski Yöntem
@@ -98,7 +98,7 @@ Bu makalede, farklı Linux dağıtımlarını ve belge yapılandırmalarının, 
 SySRq anahtarı, varsayılan olarak bazı yeni Linux yedeklerindeki etkin hale gelir, ancak diğer bir deyişle, yalnızca belirli SysRq işlevlerine değer kabul etmek için yapılandırılmış olabilir.
 Daha eski bir işlem, tamamen devre dışı bırakılabilir.
 
-SysRq özelliği, doğrudan Azure seri konsolundan kilitlenen veya askıda bir VM 'yi yeniden başlatmak için yararlıdır. Ayrıca, bir VM 'yi başka bir portal penceresinden veya SSH oturumundan yeniden başlatmak geçerli konsol bağlantınızı bırakabilir ve bu nedenle, GRUB menüsünü görüntülerken kullanılan zaman aşımına uğramakta olan GRUB zaman aşımı süresi dolar.
+SysRq özelliği, kilitlenmiş veya yanıt vermeyen bir VM 'yi doğrudan Azure seri konsolundan yeniden başlatmak için yararlıdır. Ayrıca, bir VM 'yi başka bir portal penceresinden veya SSH oturumundan yeniden başlatmak geçerli konsol bağlantınızı bırakabilir ve bu nedenle, GRUB menüsünü görüntülerken kullanılan zaman aşımına uğramak üzere zaman aşımı olur.
 VM, çekirdek parametresi için 1 değerini kabul edecek şekilde yapılandırılmalıdır. Bu, yeniden başlatma/kapatma izni veren tüm SySRq veya 128 işlevlerini sağlar
 
 
@@ -123,7 +123,7 @@ Azure portal Işlemler-> Çalıştır komutu-> RunShellScript özelliğini kulla
 
 `sysctl -w kernel.sysrq=1 ; echo kernel.sysrq = 1 >> /etc/sysctl.conf`
 
-Burada gösterildiği gibi: ![sysrq2 etkinleştirin](./media/virtual-machines-serial-console/enabling-sysrq-2.png)
+Burada gösterildiği gibi: ![ sysrq2 etkinleştirin](./media/virtual-machines-serial-console/enabling-sysrq-2.png)
 
 Tamamlandıktan sonra, **SySRq** erişimini deneyebilirsiniz ve yeniden başlatmanın mümkün olduğunu görmeniz gerekir.
 
@@ -173,7 +173,7 @@ GRUB_TIMEOUT_STYLE=countdown
 ```
 
 
-## <a name="ubuntu-1204"></a>Ubuntu 12\.04
+## <a name="ubuntu-1204"></a>Ubuntu 12 \. 04
 
 Ubuntu 12,04, seri konsoluna erişime izin verir, ancak etkileşim özelliği sunmaz. **Oturum açma:** istem görülmedi
 
@@ -236,7 +236,7 @@ Her şey iyi gitse, diğer kurtarma seçeneklerini gerçekleştirmenize yardımc
 
 ## <a name="red-hat-grub-configuration"></a>Red Hat GRUB yapılandırması
 
-## <a name="red-hat-74-grub-configuration"></a>Red hat 7\.4\+ grub yapılandırması
+## <a name="red-hat-74-grub-configuration"></a>Red hat 7 \. 4 \+ grub yapılandırması
 Bu sürümlerdeki varsayılan/etc/default/grub yapılandırması yeterli şekilde yapılandırıldı
 
 ```
@@ -256,7 +256,7 @@ SysRq anahtarını etkinleştir
 sysctl -w kernel.sysrq=1;echo kernel.sysrq = 1 >> /etc/sysctl.conf;sysctl -a | grep -i sysrq
 ```
 
-## <a name="red-hat-72-and-73-grub-configuration"></a>Red hat 7\.2 ve 7\.3 grub yapılandırması
+## <a name="red-hat-72-and-73-grub-configuration"></a>Red hat 7 \. 2 ve 7 \. 3 grub yapılandırması
 Değiştirilecek dosya/etc/default/GRUB ' dir; varsayılan bir yapılandırma şöyle görünür:
 
 ```
@@ -320,8 +320,8 @@ Alternatif olarak, kabuğa veya Çalıştır komutuyla tek bir satır kullanarak
 `cp /etc/default/grub /etc/default/grub.bak; sed -i 's/GRUB_TIMEOUT=1/GRUB_TIMEOUT=5/g' /etc/default/grub; sed -i 's/GRUB_TERMINAL_OUTPUT="console"/GRUB_TERMINAL="serial console"/g' /etc/default/grub; echo "GRUB_SERIAL_COMMAND=\"serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1\"" >> /etc/default/grub;grub2-mkconfig -o /boot/grub2/grub.cfg;sysctl -w kernel.sysrq=1;echo kernel.sysrq = 1 /etc/sysctl.conf;sysctl -a | grep -i sysrq`
 
 
-## <a name="red-hat-6x-grub-configuration"></a>Red hat 6\.x grub yapılandırması
-Değiştirilecek dosya/boot/grub/grub.conf. Değer `timeout` , için ne kadar sürecereceğine ilişkin olarak belirlenir.
+## <a name="red-hat-6x-grub-configuration"></a>Red hat 6 \. x GRUB yapılandırması
+Değiştirilecek dosya/boot/grub/grub.conf. `timeout`Değer, için ne kadar sürecereceğine ilişkin olarak belirlenir.
 
 ```
 #boot=/dev/vda
@@ -346,7 +346,7 @@ GRUB menüsü, yapılandırılmış zaman aşımı = 15 ' in ESC tuşuna basmas�
 ## <a name="suse"></a>SuSE
 
 ## <a name="sles-12-sp1"></a>SLES 12 SP1
-Her resmi [Belgeler](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#grub-access-in-suse-sles) için yast önyükleme yükleyicisine kullanın
+Her resmi [Belgeler](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#grub-access-in-suse-sles) Için yast önyükleme yükleyicisine kullanın
 
 Ya da/etc/default/grub öğesine Ekle/Değiştir aşağıdaki parametreleri:
 

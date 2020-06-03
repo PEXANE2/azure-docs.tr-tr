@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 04/16/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5cb3e6d53f6840b8f4e535976739c188daed18b2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 5af9deef7b6c3e2ea688f9e8ad5cc498f79c784e
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789054"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317667"
 ---
 Paylaşılan görüntü Galerisi, yönetilen görüntülerinizin etrafında yapı ve kuruluş oluşturmanıza yardımcı olan bir hizmettir. Paylaşılan görüntü galerileri şunları sağlar:
 
@@ -31,7 +31,7 @@ Korumanız gereken çok sayıda görüntünüz varsa ve bunları şirketiniz gen
 
 Paylaşılan görüntü Galerisi özelliği birden çok kaynak türüne sahiptir:
 
-| Kaynak | Açıklama|
+| Kaynak | Description|
 |----------|------------|
 | **Görüntü kaynağı** | Bu, bir görüntü galerisinde **görüntü sürümü** oluşturmak için kullanılabilecek bir kaynaktır. Görüntü kaynağı, başka bir görüntü galerisinde [Genelleştirilmiş veya özelleştirilmiş](#generalized-and-specialized-images), yönetilen bir görüntü, anlık görüntü veya görüntü sürümü olan mevcut BIR Azure VM olabilir. |
 | **Görüntü Galerisi** | Azure Marketi gibi bir **görüntü Galerisi** , görüntüleri yönetmek ve paylaşmak için bir depodur, ancak kimlerin erişimi olduğunu kontrol edersiniz. |
@@ -48,11 +48,11 @@ Görüntü tanımları bir görüntünün sürümleri için bir mantıksal grupl
 
 Her görüntü tanımı için, kombinasyon- **Yayımcı**, **teklif** ve **SKU**'da kullanılan üç parametre vardır. Bunlar, belirli bir görüntü tanımını bulmak için kullanılır. Üç değerden birini veya ikisini birden paylaşan görüntü sürümlerine sahip olabilirsiniz.  Örneğin, aşağıda üç görüntü tanımı ve değerleri verilmiştir:
 
-|Görüntü Tanımı|Yayımcı|Sunduğu|Sku|
+|Görüntü Tanımı|Publisher|Sunduğu|Sku|
 |---|---|---|---|
-|myImage1|Contoso|Finans|Arka uç|
-|myImage2|Contoso|Finans|Ön uç|
-|myImage3|Test Etme|Finans|Ön uç|
+|myImage1|Contoso|Finance|Arka uç|
+|myImage2|Contoso|Finance|Ön uç|
+|myImage3|Test Etme|Finance|Ön uç|
 
 Bunların üçü de benzersiz değer kümelerine sahiptir. Bu biçim, bir market görüntüsünün en son sürümünü almak için Azure PowerShell ' de [Azure Market görüntüleri](../articles/virtual-machines/windows/cli-ps-findimage.md) için yayımcı, TEKLIF ve SKU 'yu nasıl belirteceğinize benzer. Her görüntü tanımının bu değerlerin benzersiz bir kümesine sahip olması gerekir.
 
@@ -71,14 +71,14 @@ Aşağıda, kaynaklarınızı daha kolay izleyebilmek için görüntü tanımın
 
 ## <a name="generalized-and-specialized-images"></a>Genelleştirilmiş ve özelleştirilmiş görüntüler
 
-Paylaşılan görüntü Galerisi tarafından desteklenen iki işletim sistemi durumu vardır. Genellikle görüntüler, görüntüyü oluşturmak için kullanılan VM 'nin görüntü alınmadan önce Genelleştirilmiş olmasını gerektirir. Genelleştirme, VM 'den makine ve kullanıcıya özgü bilgileri kaldıran bir işlemdir. Windows için, Sysprep de kullanılır. Linux için [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` veya `-deprovision+user` Parameters kullanabilirsiniz.
+Paylaşılan görüntü Galerisi tarafından desteklenen iki işletim sistemi durumu vardır. Genellikle görüntüler, görüntüyü oluşturmak için kullanılan VM 'nin görüntü alınmadan önce Genelleştirilmiş olmasını gerektirir. Genelleştirme, VM 'den makine ve kullanıcıya özgü bilgileri kaldıran bir işlemdir. Windows için Sysprep aracı kullanılır. Linux için [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` veya `-deprovision+user` Parameters kullanabilirsiniz.
 
-Özel VM 'Ler makineye özgü bilgileri ve hesapları kaldırma işlemi boyunca değil. Ayrıca, özelleştirilmiş görüntülerden oluşturulan VM 'Ler bunlarla `osProfile` ilişkili değildir. Bu, özelleştirilmiş görüntülerin bazı avantajlara ek olarak bazı sınırlamalara sahip olacağı anlamına gelir.
+Özel VM 'Ler makineye özgü bilgileri ve hesapları kaldırma işlemi boyunca değil. Ayrıca, özelleştirilmiş görüntülerden oluşturulan VM 'Ler `osProfile` bunlarla ilişkili değildir. Bu, özelleştirilmiş görüntülerin bazı avantajlara ek olarak bazı sınırlamalara sahip olacağı anlamına gelir.
 
 - Özelleştirilmiş görüntülerden oluşturulan VM 'Ler ve ölçek kümeleri daha hızlı çalışıyor olabilir. İlk önyüklemede zaten olan bir kaynaktan oluşturulduğundan, bu görüntülerden oluşturulan VM 'Ler daha hızlı başlatılabilir.
 - VM 'de oturum açmak için kullanılabilecek hesaplar, bu VM 'den oluşturulan özelleştirilmiş görüntü kullanılarak oluşturulan herhangi bir VM 'de de kullanılabilir.
 - VM 'Ler, yansımanın alındığı VM 'nin **bilgisayar adına** sahip olur. Çakışmaları önlemek için bilgisayar adını değiştirmelisiniz.
-- `osProfile` , Kullanılarak `secrets`, bazı hassas bilgilerin VM 'ye geçirilmesi. Bu, Anahtar Kasası, WinRM ve ' de kullanılan `secrets` diğer işlevleri kullanarak soruna neden olabilir `osProfile`. Bazı durumlarda, bu sınırlamalara geçici çözüm bulmak için yönetilen hizmet kimliklerini (MSI) kullanabilirsiniz.
+- , `osProfile` Kullanılarak, bazı hassas bIlgIlerIn VM 'ye geçirilmesi `secrets` . Bu, Anahtar Kasası, WinRM ve ' de kullanılan diğer işlevleri kullanarak soruna neden olabilir `secrets` `osProfile` . Bazı durumlarda, bu sınırlamalara geçici çözüm bulmak için yönetilen hizmet kimliklerini (MSI) kullanabilirsiniz.
 
 ## <a name="regional-support"></a>Bölgesel destek
 
@@ -139,14 +139,14 @@ Paylaşılan görüntü sürümünün çoğaltılacağı bölgeler, oluşturma z
 
 ![Görüntüleri nasıl çoğaltacağınızı gösteren grafik](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Erişim
+## <a name="access"></a>Access
 
 Paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümü tüm kaynaklar olduğundan, yerleşik yerel Azure RBAC denetimleri kullanılarak paylaşılabilir. RBAC kullanarak bu kaynakları diğer kullanıcılar, hizmet sorumluları ve gruplar ile paylaşabilirsiniz. Hatta, içinde oluşturuldukları kiracı dışındaki bireylere erişim de paylaşabilirsiniz. Bir kullanıcının paylaşılan görüntü sürümüne erişimi olduktan sonra, bir VM veya bir sanal makine ölçek kümesi dağıtabilirler.  Kullanıcının ne erişimi olduğunu anlamanıza yardımcı olan paylaşım matrisi aşağıda verilmiştir:
 
 | Kullanıcıyla paylaşıldı     | Paylaşılan Görüntü Galerisi | Görüntü Tanımı | Görüntü sürümü |
 |----------------------|----------------------|--------------|----------------------|
 | Paylaşılan Görüntü Galerisi | Yes                  | Yes          | Yes                  |
-| Görüntü Tanımı     | Hayır                   | Yes          | Yes                  |
+| Görüntü Tanımı     | Hayır                   | Evet          | Yes                  |
 
 En iyi deneyim için Galeri düzeyinde paylaşım yapmanızı öneririz. Ayrı görüntü sürümlerinin paylaşılmasını önermiyoruz. RBAC hakkında daha fazla bilgi için bkz. [RBAC kullanarak Azure kaynaklarına erişimi yönetme](../articles/role-based-access-control/role-assignments-portal.md).
 
@@ -162,12 +162,12 @@ Paylaşılan görüntü Galerisi hizmetinin kullanılması için ek ücret alın
 Oluşturulduktan sonra, görüntü Galerisi kaynaklarında bazı değişiklikler yapabilirsiniz. Bunlarla sınırlı:
  
 Paylaşılan görüntü Galerisi:
-- Açıklama
+- Description
 
 Görüntü tanımı:
 - Önerilen vCPU 'Lar
 - Önerilen bellek
-- Açıklama
+- Description
 - Yaşam tarihi sonu
 
 Görüntü sürümü:
@@ -293,7 +293,7 @@ Bölgesel çoğaltma sayısını belirtmek için, konumu bu bölgede oluşturmak
 
 Bölgesel çoğaltma sayısı her konum ile belirtilmediyse, varsayılan çoğaltma sayısı belirttiğiniz ortak çoğaltma sayısı olacaktır. 
 
-CLı 'de ortak çoğaltma sayısını belirtmek için, `az sig image-version create` komutta **--Replica-Count** bağımsız değişkenini kullanın.
+CLı 'de ortak çoğaltma sayısını belirtmek için, komutta **--Replica-Count** bağımsız değişkenini kullanın `az sig image-version create` .
 
 ### <a name="can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version"></a>Paylaşılan görüntü galerisini görüntü tanımı ve görüntü sürümü için olandan farklı bir konumda oluşturabilir miyim?
 
