@@ -5,16 +5,16 @@ services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 04/16/2020
+ms.date: 06/02/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: ada451b6bb3578a2903e9bd832b98981d7029d1d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c84bf32f0d7b8b8381747e995f060d7e2dc1c9b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81605684"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310534"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Hızlı başlangıç: Blob Depolama olaylarını Azure portal web uç noktasına yönlendirme
 
@@ -71,7 +71,7 @@ Blob depolamasındaki olaylara abone olmadan önce olay iletisi için uç noktay
 4. **Kaynak grubu** sayfasında, kaynak listesinde, oluşturduğunuz Web uygulamasını seçin. Ayrıca, bu listede App Service planı ve depolama hesabı ' nı da görürsünüz. 
 
     ![Web sitesi Seç](./media/blob-event-quickstart-portal/resource-group-resources.png)
-5. Web uygulamanızın **App Service** sayfasında, Web sitesine gitmek için URL 'yi seçin. URL şu biçimde olmalıdır: `https://<your-site-name>.azurewebsites.net`.
+5. Web uygulamanızın **App Service** sayfasında, Web sitesine gitmek için URL 'yi seçin. URL şu biçimde olmalıdır: `https://<your-site-name>.azurewebsites.net` .
     
     ![Web sitesine git](./media/blob-event-quickstart-portal/web-site.png)
 
@@ -86,16 +86,22 @@ Blob depolamasındaki olaylara abone olmadan önce olay iletisi için uç noktay
 Event Grid’e hangi olayları izlemek istediğinizi ve olayların nereye gönderileceğini bildirmek için bir konuya abone olursunuz.
 
 1. Portalda, daha önce oluşturduğunuz Azure depolama hesabınıza gidin. Sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve depolama hesabınızı seçin. 
-2. **Depolama hesabı** sayfasında, sol taraftaki menüden **Olaylar** ' ı seçin.
+2. **Depolama hesabı** sayfasında, sol taraftaki menüden **Olaylar** ' ı seçin. 
 1. **Diğer Seçenekler**'i ve **Web Kancası**'nı seçin. Uç nokta için bir Web kancası kullanarak Görüntüleyici uygulamanıza olay gönderiyorsunuz. 
 
    ![Web kancasını seçme](./media/blob-event-quickstart-portal/select-web-hook.png)
 3. **Olay aboneliği oluştur** sayfasında, aşağıdaki adımları uygulayın: 
     1. Olay aboneliği için bir **ad** girin.
+    2. **Sistem konusu**için bir **ad** girin. 
+
+       ![Olay aboneliği ve sistem konusunun adlarını girin](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
+
+       > [!NOTE]
+       > Daha önce, Azure kaynakları tarafından oluşturulan bir olay için abonelik oluşturduğunuzda, Event Grid hizmeti rastgele oluşturulmuş bir ada sahip bir sistem konusu otomatik olarak oluşturulur. Şimdi bu metin kutusunu kullanarak sistem konusu için bir ad belirtebilirsiniz. Bu sistem konu kaynağını, ölçümleri ve tanılama günlüklerini saptamak için kullanabilirsiniz.
     2. **Uç nokta türü**Için **Web kancası** seçin. 
 
        ![Web kancası uç noktası türünü seçin](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)
-4. **Uç**nokta için **bir uç nokta seç**' e tıklayın ve Web uygulamanızın URL 'sini gırın ve giriş `api/updates` sayfası URL 'sine ekleyin (örneğin: `https://spegridsite.azurewebsites.net/api/updates`) ve ardından **Seçimi Onayla**' yı seçin.
+4. **Uç**nokta için **bir uç nokta seç**' e tıklayın ve Web uygulamanızın URL 'sini gırın ve `api/updates` giriş sayfası URL 'sine ekleyin (örneğin: `https://spegridsite.azurewebsites.net/api/updates` ) ve ardından **Seçimi Onayla**' yı seçin.
 
    ![Uç nokta seçimini Onayla](./media/blob-event-quickstart-portal/confirm-endpoint-selection.png)
 5. Şimdi olay **aboneliği oluştur** sayfasında, olay aboneliğini oluşturmak için **Oluştur** ' u seçin. 
