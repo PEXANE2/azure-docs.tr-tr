@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/06/2020
-ms.openlocfilehash: 0ac33a0912d52405cf3d2ae18d5102930a94f3ff
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 06/02/2020
+ms.openlocfilehash: 27de2d3926a1f03cbd9169216e8f68c8ca81f2a5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890865"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298610"
 ---
 # <a name="data-flow-script-dfs"></a>Veri akışı betiği (DFS)
 
@@ -22,7 +22,7 @@ Veri akışı betiği (DFS), bir eşleme veri akışında bulunan dönüştürme
 
 ![Betik düğmesi](media/data-flow/scriptbutton.png "Betik düğmesi")
 
-Örneğin, bir `allowSchemaDrift: true,` kaynak dönüşümünde, bu hizmet, şema projeksiyonsuz olmasalar bile veri akışındaki kaynak veri kümesinden tüm sütunları içermesini söyler.
+Örneğin, `allowSchemaDrift: true,` bir kaynak dönüşümünde, bu hizmet, şema projeksiyonsuz olmasalar bile veri akışındaki kaynak veri kümesinden tüm sütunları içermesini söyler.
 
 ## <a name="use-cases"></a>Uygulama alanları
 DFS, Kullanıcı arabirimi tarafından otomatik olarak üretilir. Betiği görüntülemek ve özelleştirmek için betik düğmesine tıklayabilirsiniz. Ayrıca ADF Kullanıcı arabirimi dışında betikler oluşturabilir ve ardından bunu PowerShell cmdlet 'ine geçirebilirsiniz. Karmaşık veri akışları hata ayıklarken, akışlarınızın UI grafik gösterimini taramak yerine, arka plan kod dosyasını taramayı daha kolay bulabilirsiniz.
@@ -52,7 +52,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-Türeme dönüştürmesi eklemeye karar verirse, ilk olarak, adlı `upperCaseTitle`yeni bir büyük sütun eklemek için basit bir ifadeye sahip olan temel dönüşüm metnini oluşturmanız gerekir:
+Türeme dönüştürmesi eklemeye karar verirse, ilk olarak, adlı yeni bir büyük sütun eklemek için basit bir ifadeye sahip olan temel dönüşüm metnini oluşturmanız gerekir `upperCaseTitle` :
 ```
 derive(upperCaseTitle = upper(title)) ~> deriveTransformationName
 ```
@@ -71,7 +71,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-Şimdi de, yeni dönüştürmenin ne kadar sonra gelmesini istediğini (Bu durumda `source1`) ve akışın adını yeni dönüştürmeye kopyalamak istediğimiz dönüştürmeyi tanımlayarak gelen akışı yeniden yönlendirdik:
+Şimdi de, yeni dönüştürmenin ne kadar sonra gelmesini istediğini (Bu durumda `source1` ) ve akışın adını yeni dönüştürmeye kopyalamak istediğimiz dönüştürmeyi tanımlayarak gelen akışı yeniden yönlendirdik:
 ```
 source(output(
         movieId as string,
@@ -85,7 +85,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-Son olarak, bu yeni dönüşümden sonra gelmesi istediğimiz dönüşümü tanımlıyoruz ve giriş akışını (Bu durumda, `sink1`) yeni dönüştürtiğimiz çıkış akışı adıyla değiştirin:
+Son olarak, bu yeni dönüşümden sonra gelmesi istediğimiz dönüşümü tanımlıyoruz ve giriş akışını (Bu durumda, `sink1` ) yeni dönüştürtiğimiz çıkış akışı adıyla değiştirin:
 ```
 source(output(
         movieId as string,
@@ -165,7 +165,7 @@ ValueDistAgg aggregate(numofunique = countIf(countunique==1),
 ```
 
 ### <a name="include-all-columns-in-an-aggregate"></a>Tüm sütunları bir toplamaya dahil et
-Bu, toplamalar oluştururken çıktı meta verilerinde kalan sütunları nasıl tutabileceğinizi gösteren genel bir toplama modelidir. Bu durumda, adı "film" ```first()``` olmayan her sütunda ilk değeri seçmek için işlevini kullanırız. Bunu kullanmak için, DistinctRows adlı bir toplam dönüşüm oluşturun ve ardından bunu, var olan DistinctRows toplama betiğinin üst kısmına yapıştırın.
+Bu, toplamalar oluştururken çıktı meta verilerinde kalan sütunları nasıl tutabileceğinizi gösteren genel bir toplama modelidir. Bu durumda, ```first()``` adı "film" olmayan her sütunda ilk değeri seçmek için işlevini kullanırız. Bunu kullanmak için, DistinctRows adlı bir toplam dönüşüm oluşturun ve ardından bunu, var olan DistinctRows toplama betiğinin üst kısmına yapıştırın.
 
 ```
 aggregate(groupBy(movie),
@@ -173,7 +173,7 @@ aggregate(groupBy(movie),
 ```
 
 ### <a name="create-row-hash-fingerprint"></a>Satır karması parmak izi oluştur 
-Üç sütun ```DWhash``` ```sha1``` karması üreten adlı yeni bir türetilmiş sütun oluşturmak için veri akışı betiğinizdeki bu kodu kullanın.
+```DWhash```Üç sütun karması üreten adlı yeni bir türetilmiş sütun oluşturmak için veri akışı betiğinizdeki bu kodu kullanın ```sha1``` .
 
 ```
 derive(DWhash = sha1(Name,ProductNumber,Color))
@@ -186,12 +186,22 @@ derive(DWhash = sha1(columns()))
 ```
 
 ### <a name="string_agg-equivalent"></a>String_agg eşdeğeri
-Bu kod T-SQL ```string_agg()``` işlevi gibi davranır ve dize değerlerini bir dizi olarak toplar. Daha sonra bu diziyi SQL hedefleri ile kullanmak üzere bir dizeye çevirebilirsiniz.
+Bu kod T-SQL işlevi gibi davranır ```string_agg()``` ve dize değerlerini bir dizi olarak toplar. Daha sonra bu diziyi SQL hedefleri ile kullanmak üzere bir dizeye çevirebilirsiniz.
 
 ```
 source1 aggregate(groupBy(year),
     string_agg = collect(title)) ~> Aggregate1
 Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
+```
+
+### <a name="count-number-of-updates-upserts-inserts-deletes"></a>Güncelleştirme sayısı, yukarı serts, ekler, siler
+Alter Row dönüşümünü kullanırken, bu sonucu alter Row ilkelerinizin içinde silen güncelleştirme sayısını saymak isteyebilirsiniz. Alter satırınızda bir toplama dönüştürmesi ekleyin ve bu veri akışı betiğini bu sayımlar için toplama tanımına yapıştırın:
+
+```
+aggregate(updates = countIf(isUpdate(), 1),
+        inserts = countIf(isInsert(), 1),
+        upserts = countIf(isUpsert(), 1),
+        deletes = countIf(isDelete(),1)) ~> RowCount
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

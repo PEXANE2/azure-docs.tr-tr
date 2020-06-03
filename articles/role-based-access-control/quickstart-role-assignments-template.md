@@ -10,12 +10,12 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 05/21/2020
 ms.author: rolyon
-ms.openlocfilehash: 4cb25b0398dca05f32f944962e2fc8630ea10870
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: da25f4bc585da26b9765fd36d65a8b5e0689f725
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267656"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300673"
 ---
 # <a name="quickstart-add-an-azure-role-assignment-using-an-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak Azure rol ataması ekleme
 
@@ -25,7 +25,7 @@ Azure [rol tabanlı erişim denetimi (Azure RBAC)](overview.md) , Azure kaynakla
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Rol atamaları eklemek için şunları yapmanız gerekir:
 
@@ -40,6 +40,10 @@ Rol ataması eklemek için üç öğe belirtmeniz gerekir: güvenlik sorumlusu, 
 Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/). Şablonda üç parametre ve bir kaynak bölümü vardır. Kaynaklar bölümünde rol atamasının üç öğesine sahip olduğuna dikkat edin: güvenlik sorumlusu, rol tanımı ve kapsam. 
 
 :::code language="json" source="~/quickstart-templates/101-rbac-builtinrole-resourcegroup/azuredeploy.json" highlight="30-32":::
+
+Şablonda tanımlanan kaynak:
+
+- [Microsoft. Authorization/Roleatamalar](/azure/templates/Microsoft.Authorization/roleAssignments)
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 

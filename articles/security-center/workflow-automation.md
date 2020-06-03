@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5d947cf41e13abdea9a2fd29f8a740d0c101dc6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9e905e78a835c833abe415d8b76c09ce672f849c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80397904"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300123"
 ---
 # <a name="workflow-automation"></a>İş akışı otomasyonu
 
@@ -25,15 +25,25 @@ Bu makalede, Azure Güvenlik Merkezi 'nin iş akışı Otomasyonu özelliği aç
 > Daha önce kenar çubuğunda playbooks (Önizleme) görünümünü kullandıysanız, yeni iş akışı Otomasyonu sayfasında genişletilmiş işlevlerle aynı özellikleri bulacaksınız.
 
 
-## <a name="requirements"></a>Gereksinimler
 
-* Azure Logic Apps iş akışlarıyla çalışmak için aşağıdaki Logic Apps rollere/izinlere sahip olmanız gerekir:
+## <a name="availability"></a>Kullanılabilirlik
 
-    * [Mantıksal uygulama işleci](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) izinleri gerekiyor veya mantıksal uygulama okuma/tetikleme erişimi (Bu rol, mantıksal uygulamalar oluşturamaz veya düzenleyemez; yalnızca var olanları *Çalıştır* )
+- Yayın durumu: **genel olarak kullanılabilir**
+- Gerekli roller ve izinler:
+    - Dışarı aktarma yapılandırmasını içeren abonelikte **okuyucu**
+    - Kaynak grubunda (veya **sahip**) **Güvenlik Yöneticisi rolü**
+    - Ayrıca hedef kaynak için yazma izinlerine sahip olmalıdır
+    - Ayrıca, Azure Logic Apps iş akışlarıyla çalışmak için aşağıdaki Logic Apps rollere/izinlere sahip olmanız gerekir:
 
-    * Mantıksal uygulama oluşturma ve değiştirme için [mantıksal uygulama katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) izinleri gereklidir
+        * [Mantıksal uygulama işleci](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) izinleri gerekiyor veya mantıksal uygulama okuma/tetikleme erişimi (Bu rol, mantıksal uygulamalar oluşturamaz veya düzenleyemez; yalnızca var olanları *Çalıştır* )
 
-* Logic App bağlayıcıları kullanmak istiyorsanız, ilgili hizmetlerinde oturum açmak için ek kimlik bilgilerine ihtiyacınız olabilir (örneğin, Outlook/takımlar/bolluk örnekleri)
+        * Mantıksal uygulama oluşturma ve değiştirme için [mantıksal uygulama katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) izinleri gereklidir
+
+        * Logic App bağlayıcıları kullanmak istiyorsanız, ilgili hizmetlerinde oturum açmak için ek kimlik bilgilerine ihtiyacınız olabilir (örneğin, Outlook/takımlar/bolluk örnekleri)
+- Larının 
+    - Ticari bulutlar ✔
+    - ✔ US Gov
+    - ✘ Çince gov, diğer gov
 
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>Bir mantıksal uygulama oluşturun ve ne zaman otomatik olarak çalışacağını tanımlayın 

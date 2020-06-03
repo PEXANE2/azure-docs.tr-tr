@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 208a7a677bdf0b76ffed83e679c6f1ff3041d50d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7da5e6fa3c977d309ad028cb446cd411a9d4fbaf
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80239677"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298967"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak Azure Güvenlik duvarını karma ağda dağıtma ve yapılandırma
 
@@ -45,7 +45,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu yordamı gerçekleştirmek için Azure PowerShell kullanmak istiyorsanız, bkz. [Azure PowerShell kullanarak Azure Güvenlik duvarını karma ağda dağıtma ve yapılandırma](tutorial-hybrid-ps.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Karma ağ, Azure sanal ağları ile şirket içi ağlar arasında trafiği yönlendirmek için hub ve bağlı bileşen mimarisi modelini kullanır. Hub ve bağlı bileşen mimarisi aşağıdaki gereksinimlere sahiptir:
 
@@ -74,7 +74,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 İlk olarak, Bu öğreticinin kaynaklarını içerecek kaynak grubunu oluşturun:
 
 1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
-2. Azure Portal giriş sayfasında **kaynak grupları** > **Ekle**' yi seçin.
+2. Azure Portal giriş sayfasında **kaynak grupları**  >  **Ekle**' yi seçin.
 3. **Kaynak grubu adı**Için, **FW-karma-test**yazın.
 4. **Abonelik** bölümünde aboneliğinizi seçin.
 5. **Bölge**için **Doğu ABD**' yi seçin. Daha sonra oluşturduğunuz tüm kaynakların aynı konumda olması gerekir.
@@ -131,18 +131,6 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 4. **Adres aralığı (CIDR bloğu)** için **192.168.2.0/24**yazın.
 5. **Tamam**’ı seçin.
 
-### <a name="create-a-public-ip-address"></a>Genel IP adresi oluşturma
-
-Bu, şirket içi ağ geçidi için kullanılan genel IP adresidir.
-
-1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
-2. Arama metin kutusuna **genel IP adresi** yazın ve **ENTER**tuşuna basın.
-3. **Genel IP adresi** ' ni seçin ve ardından **Oluştur**' u seçin.
-4. Ad için **VNET-Onprea-GW-PI**yazın.
-5. Kaynak grubu için, **FW-karma-test**yazın.
-6. **Konum** alanında önceden kullandığınız konumu seçin.
-7. Diğer varsayılanları kabul edin ve **Oluştur**' u seçin.
-
 ## <a name="configure-and-deploy-the-firewall"></a>Güvenlik duvarını yapılandırma ve dağıtma
 
 Şimdi güvenlik duvarını güvenlik duvarı hub 'ı sanal ağına dağıtın.
@@ -153,12 +141,12 @@ Bu, şirket içi ağ geçidi için kullanılan genel IP adresidir.
 
    |Ayar  |Değer  |
    |---------|---------|
-   |Abonelik     |\<aboneliğiniz\>|
+   |Abonelik     |\<your subscription\>|
    |Kaynak grubu     |**FW-karma-test** |
-   |Adı     |**AzFW01**|
+   |Name     |**AzFW01**|
    |Konum     |Önceden kullandığınız konumu seçin|
    |Bir sanal ağ seçin     |**Var olanı kullan**:<br> **VNet-hub**|
-   |Genel IP adresi     |Yeni oluştur: <br>**Ad** - **FW-PIP**. |
+   |Genel IP adresi     |Yeni oluştur: <br>**Ad**  -  **FW-PIP**. |
 
 5. **İncele ve oluştur**’u seçin.
 6. Özeti gözden geçirin ve ardından güvenlik duvarını oluşturmak için **Oluştur** ' u seçin.
@@ -288,7 +276,7 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 2. Sol sütunda, eşlemeler ' i **seçin.**
 3. **Spoketohub** eşlemesini seçin.
 4. **VNET hub 'ından sanal ağa yönlendirilen trafiğe Izin ver**altında, **etkin**' i seçin.
-5. **Kaydet**’i seçin.
+5. **Kaydet**'i seçin.
 
 ## <a name="create-the-routes"></a>Yolları oluşturma
 
@@ -402,7 +390,7 @@ Bu, Uzak Masaüstü kullanarak genel IP adresine bağlanmak için kullandığın
 2. **Popüler**bölümünde **Windows Server 2016 Datacenter**' u seçin.
 3. Sanal makine için şu değerleri girin:
     - **Kaynak grubu** -mevcut ' ı seçin ve ardından **FW-karma-test**' i seçin.
-    - **Sanal makine adı** - *VM-onpred*.
+    - **Sanal makine adı**  -  *VM-Onpred*.
     - **Bölge** -daha önce kullandığınız bölge.
     - **Kullanıcı adı**: *azureuser*.
     - **Parola**: *Azure123456!*.
@@ -422,9 +410,9 @@ Bu, Uzak Masaüstü kullanarak genel IP adresine bağlanmak için kullandığın
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-3. **VM-Onpred**üzerinde bir Web tarayıcısı açın ve http://\<VM-ıŞıNSAL-01 özel IP\>konumuna gidin.
+3. **VM-Onpred**üzerinde bir Web tarayıcısı açın ve http://konumuna gidin \<VM-spoke-01 private IP\> .
 
-   VM-ışınsal- **01** Web sayfasını görmeniz gerekir: ![VM-ışınsal-01 Web sayfası](media/tutorial-hybrid-portal/VM-Spoke-01-web.png)
+   VM-ışınsal- **01** Web sayfasını görmeniz gerekir: ![ VM-ışınsal-01 Web sayfası](media/tutorial-hybrid-portal/VM-Spoke-01-web.png)
 
 4. **VM-Onpree** sanal makinesinden, özel IP adresinde **VM-ışınsal-01 arası** uzak bir masaüstü açın.
 
@@ -442,7 +430,7 @@ Ardından, güvenlik duvarı kurallarının beklendiği gibi çalıştığını 
 2. **Kurallar**' ı seçin.
 3. **Ağ kuralı koleksiyonu** sekmesini seçin ve **RCNet01** kural koleksiyonunu seçin.
 4. **Eylem**için **Reddet**' i seçin.
-5. **Kaydet**’i seçin.
+5. **Kaydet**'i seçin.
 
 Değişen kuralları test etmeden önce var olan tüm uzak masaüstlerini kapatın. Şimdi testleri yeniden çalıştırın. Bu kez tümü başarısız olmalıdır.
 

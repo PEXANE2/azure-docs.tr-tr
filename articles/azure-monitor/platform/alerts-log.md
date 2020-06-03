@@ -6,94 +6,101 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 96b1bd86576f8cf34428eb60e2d3f476312311c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 85aaefa12f0cef21e3a367700d1a4899a75e8a90
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249431"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298470"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme
 
 ## <a name="overview"></a>Genel Bakış
-Bu makalede, Azure portal içindeki uyarılar arabirimini kullanarak günlük uyarılarının nasıl ayarlanacağı gösterilmektedir. Uyarı kuralının tanımı üç bölümden oluşur:
-- Hedef: izlenecek belirli Azure kaynağı
-- Ölçüt: sinyalde görüldüğü belirli koşul veya mantık eylemi tetiklemelidir
+Bu makalede, Azure portal içindeki uyarılar arabirimini kullanarak günlük uyarılarını oluşturma ve yönetme işlemlerinin nasıl yapılacağı gösterilir. Uyarı kuralları üç bileşen tarafından tanımlanır:
+- Hedef: izlenecek belirli bir Azure kaynağı
+- Ölçüt: Truth için değerlendirilecek bir koşul veya mantık. True ise, uyarı ateşlenir.  
 - Eylem: bir bildirim alıcısına gönderilen belirli çağrı-e-posta, SMS, Web kancası vb.
 
-**Günlük** , [Log Analytics çalışma alanında](../learn/tutorial-viewdata.md) veya [Application Insights](../app/analytics.md), sinyalin günlük sorgusu olduğu uyarıları betimleyen uyarıları anlatmaktadır. Günlük uyarılarından işlevsellik, terminoloji ve türler hakkında daha fazla bilgi edinin [-genel bakış](alerts-unified-log.md).
+**Günlük uyarısı** , [Log Analytics çalışma alanındaki](../learn/tutorial-viewdata.md) veya [Application Insights](../app/analytics.md) bir günlük sorgusunun değerlendirildiği ve sonuç doğru ise tetiklenen bir uyarı tanımlar. Günlük uyarılarından işlevsellik, terminoloji ve türler hakkında daha fazla bilgi edinin [-genel bakış](alerts-unified-log.md).
 
 > [!NOTE]
-> [Bir Log Analytics çalışma alanındaki](../../azure-monitor/learn/tutorial-viewdata.md) popüler günlük verileri artık Azure izleyici 'de ölçüm platformunda de mevcuttur. Ayrıntılar görünümü için, [Günlükler Için ölçüm uyarısı](alerts-metric-logs.md)
+> [Bir Log Analytics çalışma alanındaki](../../azure-monitor/learn/tutorial-viewdata.md) günlük verileri de Azure izleyici ölçümleri veritabanına yönlendirilebilir. Ölçüm uyarıları [farklı davranışa](alerts-metric-overview.md)sahiptir ve bu işlem, çalıştığınız verilere bağlı olarak daha çok tercih edilebilir.   Günlükleri ölçümlere yönlendirme hakkında bilgi için bkz. [Günlükler Için ölçüm uyarısı](alerts-metric-logs.md).
 
-## <a name="managing-log-alerts-from-the-azure-portal"></a>Azure portal günlük uyarılarını yönetme
+## <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Azure portal bir günlük uyarı kuralı oluşturun
 
-Ayrıntılı ileri, Azure portal arabirimini kullanarak günlük uyarılarını kullanmaya yönelik adım adım kılavuzlardır.
-
-### <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Azure portal bir günlük uyarı kuralı oluşturun
-
-1. [Portalda](https://portal.azure.com/) **izleyici** ' yi seçin ve izleyici bölümünde **Uyarılar**' ı seçin.
+1. [Portalda](https://portal.azure.com/), **İzle**' yi seçin. Bu bölümde **Uyarılar**' ı seçin.
 
     ![İzleme](media/alerts-log/AlertsPreviewMenu.png)
 
-1. Azure 'da yeni bir uyarı oluşturmak için **Yeni uyarı kuralı** düğmesini seçin.
+1. **Yeni uyarı kuralı**' na tıklayın. 
 
     ![Uyarı Ekle](media/alerts-log/AlertsPreviewOption.png)
 
-1. Uyarı oluştur bölümü, şu üç bölümden oluşur: *Uyarı koşulunu tanımlayın*, *uyarı ayrıntılarını tanımlayın*ve *Eylem grubunu tanımlayın*.
+1. **Uyarı oluştur** bölmesi görüntülenir. Dört bölümden oluşur: 
+    - Uyarının uygulandığı kaynak
+    - Denetlenecek koşul
+    - Koşul doğru ise gerçekleştirilecek eylem
+    - Uyarının adı ve açıklaması hakkında ayrıntılar. 
 
     ![Kural Oluştur](media/alerts-log/AlertsPreviewAdd.png)
 
-1. **Kaynak Seç** bağlantısını kullanarak ve bir kaynak seçerek hedefi belirterek uyarı koşulunu tanımlayın. _Abonelik_, _kaynak türü_ve gerekli _kaynağı_seçerek filtre uygulayın.
+1. **Kaynak Seç** bağlantısını kullanarak ve bir kaynak seçerek hedefi belirterek uyarı koşulunu tanımlayın. *Abonelik*, *kaynak türü*ve gerekli *kaynağı*seçerek filtre uygulayın. 
 
-   > [!NOTE]
-   > Günlük uyarısı oluşturmak için-devam etmeden önce seçili kaynak için **günlük** sinyalinin kullanılabilir olduğunu doğrulayın.
-   >  ![Kaynak seçin](media/alerts-log/Alert-SelectResourceLog.png)
+   ![Kaynak seçin](media/alerts-log/Alert-SelectResourceLog.png)
 
-1. *Günlük uyarıları*: **kaynak türünün** *Log Analytics* veya *Application Insights* ve sinyal türü olarak **günlük**olarak bir analiz kaynağı olduğundan emin olun, ardından uygun **kaynak** seçildiğinde, *bitti*' ye tıklayın. Ardından, kaynak için kullanılabilen sinyal seçeneklerinin listesini görüntülemek için **Ölçüt Ekle** düğmesini kullanın ve *Log Analytics* veya *Application Insights*gibi seçili günlük izleme hizmeti için sinyal listesi **özel günlük araması** seçeneğini kullanın.
+1. **Kaynak türünün** *Log Analytics* veya *Application Insights* gibi bir analiz kaynağı ve *günlük*olarak sinyal türü olduğundan emin olun. **Bitti**’ye tıklayın. Ardından, kaynak için kullanılabilen sinyal seçeneklerinin listesini görüntülemek için **Ölçüt Ekle** düğmesini kullanın. Günlük uyarılarınız için verilerin bulunduğu yere bağlı olarak, *Log Analytics* veya *Application Insights*için **özel günlük araması** seçeneğini bulun ve seçin.
 
    ![Kaynak seçin-özel günlük araması](media/alerts-log/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
    > 
-   > Uyarı listeleri, yukarıdaki çizimde görüldüğü gibi Analytics sorgusunu, sinyal türü- **günlük (kaydedilmiş sorgu)** olarak içeri aktarabilir. Böylece kullanıcılar, sorgulamanızı sorgulayabilir ve daha sonra uyarılarda kullanmak üzere kaydedebilir. [Azure izleyici 'de günlük sorgusu](../log-query/log-query-overview.md) veya [Application Insights Analytics 'te paylaşılan sorgu](../app/app-insights-overview.md)kullanarak, sorguyu kaydetme hakkında daha ayrıntılı bilgi edinin.
+   > Uyarı listeleri, yukarıdaki çizimde görüldüğü gibi Analytics sorgusunu, sinyal türü- **günlük (kaydedilmiş sorgu)** olarak içeri aktarabilir. Böylece kullanıcılar, analizlerinizi sorgulayabilir ve daha sonra uyarılarda kullanılmak üzere kaydedebilir. Kayıtlı sorguları kullanma hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük sorgusu kullanma](../log-query/log-query-overview.md) ve [Application Insights Analytics 'te paylaşılan sorgu](../app/app-insights-overview.md).
 
-1. *Günlük uyarıları*: seçildiğinde, uyarı sorgusu **arama sorgusu** alanında belirtilebilir; sorgu söz dizimi yanlışsa, alan hatayı kırmızı olarak görüntüler. Sorgu söz dizimi doğruysa, belirtilen sorgunun başvuru tarihi geçmiş verileri Için, son altı saatten geçen haftaya kadar olan zaman penceresini ince ayar seçeneği içeren bir grafik olarak gösterilir.
+1. Seçildiğinde, **arama sorgusu** alanında uyarı sorgusu oluşturun. Sorgu söz dizimi yanlışsa, alan kırmızı renkte görüntülenir. 
+
+1. Sorgu söz dizimi doğruysa sorgunun geçmiş verileri, son altı saatten geçen haftaya kadar olan zaman penceresini ince ayar seçeneği ile bir grafik olarak görüntülenir.
 
     ![Uyarı kuralını Yapılandır](media/alerts-log/AlertsPreviewAlertLog.png)
 
-   > [!NOTE]
-   > 
-   > Geçmiş veri görselleştirmesi yalnızca sorgu sonuçlarının zaman ayrıntıları varsa gösterilir. Sorgunuz özetlenmiş veriler veya belirli sütun değerleri ile sonuçlanırsa-aynı tekil bir çizim olarak gösterilir.
-   > Application Insights kullanarak günlük uyarılarının ölçüm ölçümü türü veya [yenı API 'ye geçiş](alerts-log-api-switch.md)Için, **toplama** seçeneğini kullanarak verileri hangi belirli değişkenin gruplandırmaya yönelik olduğunu belirtebilirsiniz; aşağıda gösterildiği gibi:
-   > 
-   > ![toplama açık seçeneği](media/alerts-log/aggregate-on.png)
+   Geçmiş veri görselleştirmesi yalnızca sorgu sonuçlarının zaman ayrıntıları varsa gösterilir. Sorgunuz özetlenmiş veriler veya belirli sütun değerleriyle sonuçlanırsa, ekranda tek bir çizim gösterilir.
+  
+   Application Insights veya [log ANALYTICS API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)kullanan ölçüm ölçümleri Için, **toplama** seçeneğini kullanarak verileri hangi belirli değişkenin gruplandırarak belirtebilirsiniz; burada gösterildiği gibi: 
+  
+   ![toplama açık seçeneği](media/alerts-log/aggregate-on.png)
 
-1. *Günlük uyarıları*: görselleştirme ile birlikte, **Uyarı mantığı** koşul, toplama ve son eşik seçenekleri arasından seçilebilir. Son olarak, **Dönem** seçeneğini kullanarak belirtilen koşul için değerlendirme süresini mantığa belirtin. **Sıklık**' i seçerek uyarının ne sıklıkta çalışacağını öğrenin. **Günlük uyarıları** şunları temel alabilir:
+
+
+1. Ardından, **Uyarı mantığı** koşulunu, toplamayı ve eşiği seçin. 
+
+1. Belirtilen koşulun değerlendilecek süreyi, **period** seçeneğini kullanarak seçin. 
+
+1. Uyarının **Sıklık**olarak ne sıklıkta çalışacağını seçin. 
+
+    **Günlük uyarıları** şunları temel alabilir:
     - [Kayıt sayısı](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules): sorgu tarafından döndürülen kayıt sayısı, belirtilen değerden büyükse veya bundan küçükse bir uyarı oluşturulur.
     - [Ölçüm ölçümü](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules): sonuçlardaki her bir *toplama değeri* , belirtilen eşik değerini aşarsa ve seçilen değere *göre gruplandırılmışsa* bir uyarı oluşturulur. Bir uyarı için ihlal sayısı, eşiğin seçilen dönemde kaç kez aşıldığını sayısıdır. Sonuçlar kümesi veya ardışık ihlallerin her türlü birleşimi için, her türlü ihlal kombinasyonu için, binlerin ardışık örneklerde oluşması gerekir.
 
 
-1. İkinci adım olarak, uyarı **kuralı adı** alanında uyarı için bir ad tanımlayın ve belirtilen seçeneklerden uyarı ve **önem derecesi** değerinin ayrıntılarını açıklayan bir **Açıklama** belirtin. Bu ayrıntılar, Azure Izleyici tarafından yapılan tüm uyarı e-postalarında, bildirimlerde veya göndermede yeniden kullanılır. Ayrıca, Kullanıcı oluşturma seçeneği için **kuralı etkinleştir** seçeneğini uygun şekilde değiştirerek, oluşturma sırasında uyarı kuralını hemen etkinleştirmeyi seçebilir.
+1. **Bitti**’ye tıklayın. 
 
-    Yalnızca **günlük uyarıları** Için, uyarı ayrıntılarında bazı ek işlevler kullanılabilir:
+1. Uyarı **kuralı adı** alanında, uyarı ve **önem derecesi** değerinin ayrıntılarını açıklayan bir **açıklamanın** yanı sıra, belirtilen seçeneklerden bir ad tanımlayın. Bu ayrıntılar, Azure Izleyici tarafından yapılan tüm uyarı e-postalarında, bildirimlerde veya Gönderimleriyle yeniden kullanılır. Ayrıca, oluşturma **sırasında kuralı etkinleştir**' e tıklayarak oluşturma sırasında uyarı kuralını hemen etkinleştirmeyi seçebilirsiniz.
 
-    - **Uyarıları bastır**: uyarı kuralı için gizleme özelliğini açtığınızda, yeni bir uyarı oluşturulduktan sonra kural için Eylemler tanımlı bir süre için devre dışı bırakılır. Kural hala çalışıyor ve ölçüt karşılandığında uyarı kayıtları oluşturuyor. Yinelenen eylemleri çalıştırmadan sorunu düzeltmeniz için zaman sağlar.
+1. Uyarıları bir süre **gizlemek** istiyorsanız seçin.  Uyarı kuralı için gizlemeyi açtığınızda, kuralın eylemleri, yeni bir uyarı oluşturulduktan sonra tanımlanan süre için devre dışı bırakılır. Kural hala çalışır ve ölçütler sağlandığında uyarı kayıtları oluşturur. Bu ayar, yinelenen eylemleri çalıştırmadan sorunu düzeltmenize zaman sağlar.
 
-        ![Günlük uyarıları uyarılarını gösterme](media/alerts-log/AlertsPreviewSuppress.png)
+   ![Günlük uyarıları uyarılarını gösterme](media/alerts-log/AlertsPreviewSuppress.png)
 
-        > [!TIP]
-        > Bildirimlerin çakışma olmadan durdurulduğundan emin olmak için uyarı sıklığından daha büyük bir gizleme uyarı değeri belirtin
+    > [!TIP]
+    > Bildirimlerin çakışma olmadan durdurulduğundan emin olmak için uyarı sıklığından daha büyük bir gizleme uyarı değeri belirtin
 
-1. Üçüncü ve son adımla, uyarı koşulu karşılandığında uyarı kuralı için herhangi bir **eylem grubunun** tetiklenmesi gerekip gerekmediğini belirtin. Uyarı ile var olan herhangi bir eylem grubunu seçebilir veya yeni bir eylem grubu oluşturabilirsiniz. Seçili eylem grubuna göre, uyarı, Azure tarafından tetiklenir: e-posta gönderin, SMS gönderin, Web kancaları çağırın, Azure runbook 'Ları kullanarak düzeltin, ıTSM aracınızı gönderin, vb. [Eylem grupları](action-groups.md)hakkında daha fazla bilgi edinin.
+1. Üçüncü ve son adım olarak, uyarı koşulu karşılandığında uyarı kuralının bir veya daha fazla **Eylem grubunu** tetiklemeniz gerekip gerekmediğini belirtin. Var olan herhangi bir eylem grubunu seçebilir veya yeni bir tane oluşturabilirsiniz. Eylem gruplarıyla, e-posta gönder, SMS gönderme, Web kancaları çağırma, Azure runbook 'Ları kullanma, ıTSM aracınızı yükleme ve daha fazlası gibi çeşitli eylemler gerçekleştirebilirsiniz. [Eylem grupları](action-groups.md)hakkında daha fazla bilgi edinin.
 
     > [!NOTE]
-    > Azure eylem grupları aracılığıyla günlük uyarıları için tetiklenen runbook yüklerinin sınırları için [Azure abonelik hizmeti sınırlarına](../../azure-resource-manager/management/azure-subscription-service-limits.md) bakın
+    > Gerçekleştirilebilecek eylemlerdeki sınırlamalar için [Azure abonelik hizmeti sınırlarına](../../azure-resource-manager/management/azure-subscription-service-limits.md) bakın.  
 
-    **Günlük uyarıları** için, varsayılan eylemleri geçersiz kılmak üzere bazı ek işlevler kullanılabilir:
+    Varsayılan eylemleri geçersiz kılmak için bazı ek işlevler kullanılabilir:
 
-    - **E-posta bildirimi**: eylem grubu ile gönderilen e-posta *konusunu* geçersiz kılar; söylemi eylem grubunda bir veya daha fazla e-posta eylemi mevcutsa. Postanın gövdesini değiştiremezsiniz ve bu alan e-posta adresi için **değil** .
-    - **Özel JSON yükünü dahil et**: eylem grupları tarafından kullanılan Web kancası JSON değerini geçersiz kılar; söylemi eylem grubunda bir veya daha fazla Web kancası eylemi varsa. Kullanıcı, ilişkili eylem grubunda yapılandırılmış tüm Web kancaları için kullanılacak JSON biçimini belirtebilir; Web kancası biçimleri hakkında daha fazla bilgi için bkz. [günlük uyarıları için Web kancası eylemi](../../azure-monitor/platform/alerts-log-webhook.md). Örnek JSON verilerini kullanarak Biçimlendirmeyi denetlemek için Web kancasını görüntüle seçeneği sağlanır.
+    - **E-posta bildirimi**: eylem grubu aracılığıyla gönderilen e-postadaki *e-posta konusunu* geçersiz kılar. Postanın gövdesini değiştiremezsiniz ve bu alan e-posta adresi için **değil** .
+    - **Özel JSON yükünü dahil et**: eylem grubunun bir Web kancası türü içerdiğini varsayarak, eylem grupları tarafından kullanılan Web kancası JSON 'ı geçersiz kılar. Web kancası biçimleri hakkında daha fazla bilgi için bkz. [günlük uyarıları için Web kancası eylemi](../../azure-monitor/platform/alerts-log-webhook.md). Örnek JSON verilerini kullanarak Biçimlendirmeyi denetlemek için Web kancasını görüntüle seçeneği sağlanır.
 
         ![Günlük uyarıları için eylem geçersiz kılmaları](media/alerts-log/AlertsPreviewOverrideLog.png)
 
@@ -121,7 +128,7 @@ Ayrıca kullanıcılar, [Log Analytics](../log-query/portals.md) 'te analiz sorg
 
 ## <a name="managing-log-alerts-using-azure-resource-template"></a>Azure kaynak şablonu kullanarak günlük uyarılarını yönetme
 
-Azure Izleyici 'deki günlük uyarıları kaynak türüyle `Microsoft.Insights/scheduledQueryRules/`ilişkilendirilir. Bu kaynak türü hakkında daha fazla bilgi için bkz. [Azure izleyici-zamanlanmış sorgu KURALLARı API başvurusu](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Application Insights veya Log Analytics için günlük uyarıları, [Zamanlanmış sorgu kuralları API 'si](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)kullanılarak oluşturulabilir.
+Azure Izleyici 'deki günlük uyarıları kaynak türüyle ilişkilendirilir `Microsoft.Insights/scheduledQueryRules/` . Bu kaynak türü hakkında daha fazla bilgi için bkz. [Azure izleyici-zamanlanmış sorgu KURALLARı API başvurusu](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Application Insights veya Log Analytics için günlük uyarıları, [Zamanlanmış sorgu kuralları API 'si](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)kullanılarak oluşturulabilir.
 
 > [!NOTE]
 > Log Analytics için günlük uyarıları, eski [Log Analytics uyarı API 'si](api-alerts.md) ve [Log Analytics kayıtlı aramaların ve uyarıların](../insights/solutions-resources-searches-alerts.md) eski şablonları kullanılarak da yönetilebilir. Burada ayrıntılı olarak açıklanan yeni ScheduledQueryRules API 'sini kullanma hakkında daha fazla bilgi için, bkz. [Log Analytics uyarılar için yenı API 'ye geçme](alerts-log-api-switch.md).
@@ -305,22 +312,23 @@ Yukarıdaki örnek JSON (deyin) sampleScheduledQueryRule. JSON olarak kaydedileb
 
 Azure Izleyici- [Zamanlanmış sorgu kuralları API 'si](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) bir REST API ve Azure Resource Manager REST API ile tamamen uyumludur. Ve aşağıda listelenen PowerShell cmdlet 'leri, [Zamanlanmış sorgu KURALLARı API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)'sini kullanabilir.
 
-1. New [-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) : PowerShell cmdlet 'i yeni bir günlük uyarı kuralı oluşturmak için.
-1. [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) : PowerShell cmdlet 'i var olan bir günlük uyarısı kuralını güncelleştirmek için.
-1. [New-AzScheduledQueryRuleSource](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulesource) : bir günlük uyarısı için kaynak parametrelerini belirten nesne oluşturmak veya güncelleştirmek için PowerShell cmdlet 'i. [New-azscheduledqueryrule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) ve [set-azscheduledqueryrule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) cmdlet 'i tarafından giriş olarak kullanılır.
-1. [New-AzScheduledQueryRuleSchedule](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleSchedule): bir günlük uyarısı için zamanlama parametrelerini belirten nesne oluşturmak veya güncelleştirmek için PowerShell cmdlet 'i. [New-azscheduledqueryrule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) ve [set-azscheduledqueryrule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) cmdlet 'i tarafından giriş olarak kullanılır.
-1. [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) : bir günlük uyarısı için eylem parametreleri belirten nesne oluşturmak veya güncelleştirmek için PowerShell cmdlet 'i. [New-azscheduledqueryrule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) ve [set-azscheduledqueryrule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) cmdlet 'i tarafından giriş olarak kullanılır.
-1. [New-AzScheduledQueryRuleAznsActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) : bir günlük uyarısı için eylem grupları parametrelerini belirten nesne oluşturmak veya güncelleştirmek için PowerShell cmdlet 'i. [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) cmdlet 'i tarafından giriş olarak kullanılır.
-1. [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) : günlük uyarısı için tetikleyici koşulu parametrelerini belirten nesne oluşturmak veya güncelleştirmek için PowerShell cmdlet 'i. [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) cmdlet 'i tarafından giriş olarak kullanılır.
-1. [New-AzScheduledQueryRuleLogMetricTrigger](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) : ölçüm [Ölçüm türü günlük uyarısı](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)için ölçüm tetikleyicisi koşul parametrelerini belirten nesne oluşturmak veya güncelleştirmek için PowerShell cmdlet 'i. [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) cmdlet 'i tarafından giriş olarak kullanılır.
-1. [Get-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule) : var olan günlük uyarısı kurallarını veya belirli bir günlük uyarısı kuralını listelemek için PowerShell cmdlet 'i
-1. [Update-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule) : PowerShell cmdlet 'i, günlük uyarı kuralını etkinleştirmek veya devre dışı bırakmak için
-1. [Remove-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule): PowerShell cmdlet 'i var olan bir günlük uyarı kuralını siler
+- New [-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) : PowerShell cmdlet 'i yeni bir günlük uyarı kuralı oluşturmak için.
+- [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) : PowerShell cmdlet 'i var olan bir günlük uyarısı kuralını güncelleştirmek için.
+- [New-AzScheduledQueryRuleSource](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulesource) : bir günlük uyarısı için kaynak parametrelerini belirten nesne oluşturmak veya güncelleştirmek için PowerShell cmdlet 'i. [New-azscheduledqueryrule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) ve [set-azscheduledqueryrule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) cmdlet 'i tarafından giriş olarak kullanılır.
+- [New-AzScheduledQueryRuleSchedule](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleSchedule): bir günlük uyarısı için zamanlama parametrelerini belirten nesne oluşturmak veya güncelleştirmek için PowerShell cmdlet 'i. [New-azscheduledqueryrule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) ve [set-azscheduledqueryrule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) cmdlet 'i tarafından giriş olarak kullanılır.
+- [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) : bir günlük uyarısı için eylem parametreleri belirten nesne oluşturmak veya güncelleştirmek için PowerShell cmdlet 'i. [New-azscheduledqueryrule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) ve [set-azscheduledqueryrule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) cmdlet 'i tarafından giriş olarak kullanılır.
+- [New-AzScheduledQueryRuleAznsActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) : bir günlük uyarısı için eylem grupları parametrelerini belirten nesne oluşturmak veya güncelleştirmek için PowerShell cmdlet 'i. [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) cmdlet 'i tarafından giriş olarak kullanılır.
+- [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) : günlük uyarısı için tetikleyici koşulu parametrelerini belirten nesne oluşturmak veya güncelleştirmek için PowerShell cmdlet 'i. [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) cmdlet 'i tarafından giriş olarak kullanılır.
+- [New-AzScheduledQueryRuleLogMetricTrigger](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) : ölçüm [Ölçüm türü günlük uyarısı](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)için ölçüm tetikleyicisi koşul parametrelerini belirten nesne oluşturmak veya güncelleştirmek için PowerShell cmdlet 'i. [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) cmdlet 'i tarafından giriş olarak kullanılır.
+- [Get-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule) : var olan günlük uyarısı kurallarını veya belirli bir günlük uyarısı kuralını listelemek için PowerShell cmdlet 'i
+- [Update-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule) : PowerShell cmdlet 'i, günlük uyarı kuralını etkinleştirmek veya devre dışı bırakmak için
+- [Remove-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule): PowerShell cmdlet 'i var olan bir günlük uyarı kuralını siler
 
 > [!NOTE]
 > ScheduledQueryRules PowerShell cmdlet 'leri yalnızca oluşturulan cmdlet 'lerin kendisini yönetebilir veya Azure Izleyici ile [Zamanlanmış sorgu kuralları API 'sini](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)kullanabilir. Eski [Log Analytics uyarı API 'si](api-alerts.md) kullanılarak oluşturulan günlük uyarı kuralları ve [Log Analytics kayıtlı aramaların ve uyarıların](../insights/solutions-resources-searches-alerts.md) eski şablonları, yalnızca Kullanıcı [Log Analytics uyarıları için API tercihine](alerts-log-api-switch.md)geçtikten sonra scheduledqueryrules PowerShell cmdlet 'leri kullanılarak yönetilebilir.
 
 Sonraki adımda, scheduledQueryRules PowerShell cmdlet 'lerini kullanarak örnek günlük uyarısı kuralı oluşturma adımları gösterilmektedir.
+
 ```powershell
 $source = New-AzScheduledQueryRuleSource -Query 'Heartbeat | summarize AggregatedValue = count() by bin(TimeGenerated, 5m), _ResourceId' -DataSourceId "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews"
 

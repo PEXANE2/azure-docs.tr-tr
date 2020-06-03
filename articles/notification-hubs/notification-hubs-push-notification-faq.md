@@ -17,12 +17,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 3212520f37d33a2d8fb1b071506f688b9f75f15c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29ef1ec551169bb84680f343e38949f73724f5ae
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76263838"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307393"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs ile anında iletme bildirimleri: sık sorulan sorular
 
@@ -56,7 +56,7 @@ Temel ve Standart Notification Hubs katmanlarında, düzgün şekilde yapıland�
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Hub veya ad alanını farklı bir katmana yükseltmek veya alçaltma Nasıl yaparım? mı?
 
-**[Azure Portal]** > **Notification Hubs ad alanlarına** veya **Notification Hubs**gidin. Güncelleştirmek istediğiniz kaynağı seçin ve **fiyatlandırma katmanına**gidin. Aşağıdaki gereksinimleri dikkate alın:
+**[Azure Portal]**  >  **Notification Hubs ad alanlarına** veya **Notification Hubs**gidin. Güncelleştirmek istediğiniz kaynağı seçin ve **fiyatlandırma katmanına**gidin. Aşağıdaki gereksinimleri dikkate alın:
 
 * Güncelleştirilmiş fiyatlandırma katmanı, üzerinde çalıştığınız ad alanındaki *Tüm* hub 'lara uygulanır.
 * Cihazınızın sayısı, eski sürümü düşürüyoruz katman sınırını aşarsa, ' ı indirgemeden önce cihazları silmeniz gerekir.
@@ -79,7 +79,7 @@ Notification Hubs, mobil uygulamaları çalıştıran cihazlara bildirim gönder
 
 Desteklenen cihaz sayısıyla ilgili ayrıntılı bilgi için [Notification Hubs fiyatlandırma] sayfasına bakın.
 
-10.000.000 ' den fazla kayıtlı cihaz için desteğe ihtiyacınız varsa, cihazlarınızı birden çok hub arasında bölümleyebilirsiniz.
+10.000.000 ' den fazla kayıtlı cihaz için desteğe ihtiyacınız varsa, cihazlarınızı birden çok ad alanı üzerinde bölümlemeli olursunuz.
 
 ### <a name="how-many-push-notifications-can-i-send-out"></a>Kaç anında iletme bildirimi gönderebilirim?
 
@@ -121,7 +121,7 @@ Anında iletme bildirimlerinin doğası nedeniyle (bunlar harici, platforma özg
 
 Bir mobil uygulama, platformun geliştirici portalına (örneğin, Apple veya Google) kaydedildiğinde, bir uygulama tanımlayıcısı ve güvenlik belirteçleri gönderilir. Uygulama arka ucu bu belirteçleri platformun PNS 'leri için sağlar, böylece anında iletme bildirimleri cihazlara gönderilebilir. Güvenlik belirteçleri, sertifikalar biçiminde (örneğin, Apple iOS veya Windows Phone) veya güvenlik anahtarlarına (örneğin, Google Android veya Windows) olabilir. Bildirim Hub 'larında yapılandırılması gerekir. Yapılandırma genellikle Bildirim Hub 'ı düzeyinde yapılır, ancak aynı zamanda çok kiracılı bir senaryoda ad alanı düzeyinde de yapılabilir.
 
-#### <a name="namespaces"></a>Ad Alanları
+#### <a name="namespaces"></a>Ad alanları
 
 Ad alanları, dağıtım gruplandırması için kullanılabilir. Aynı uygulamadaki tüm kiracılar için tüm Bildirim Hub 'larını çok kiracılı bir senaryoda göstermek için de kullanılabilir.
 
@@ -153,7 +153,7 @@ Gönderenin Azure Notification Hubs 'den PNS 'ye kadar olan tüm bağlantılar H
 
 Gizli yükleri göndermek için güvenli bir gönderme deseninin kullanılması önerilir. Gönderen, hassas yük olmadan cihaza ileti tanımlayıcısı ile bir ping bildirimi sunar. Cihazdaki uygulama yükü aldığında, uygulama ileti ayrıntılarını getirmek için doğrudan güvenli bir API çağırır. Bu düzenin nasıl uygulanacağı hakkında bir kılavuz için, [Notification Hubs güvenli anında iletme öğreticisi] sayfasına gidin.
 
-## <a name="operations"></a>İşlemler
+## <a name="operations"></a>Operations
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>Olağanüstü durum kurtarma için hangi destek sağlanır?
 
@@ -193,7 +193,7 @@ Azure Notification Hubs, özellikle bırakılan bildirimlerin en yaygın senaryo
 
 Azure Notification Hubs, [Azure Portal]Telemetri verilerinin görüntülenmesine izin verebilir. Ölçümlerin ayrıntıları [Notification Hubs ölçümleri] sayfasında bulunabilir.
 
-Ölçümlere de programlı bir şekilde erişebilirsiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Ölçümlere de programlı bir şekilde erişebilirsiniz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [.Net Ile Azure izleyici ölçümlerini alın](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/). Bu örnek, Kullanıcı adını ve parolayı kullanır. Bir sertifika kullanmak için, [Bu örnekte](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)gösterildiği gibi bir sertifika sağlamak üzere FromServicePrincipal metodunu aşırı yükleme. 
 - [Bir kaynak için ölçümleri ve etkinlik günlüklerini alma](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)

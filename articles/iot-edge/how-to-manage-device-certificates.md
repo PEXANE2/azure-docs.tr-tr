@@ -4,16 +4,16 @@ description: Üretim dağıtımına hazırlanmak için test sertifikaları oluş
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/02/2020
+ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c18c3d560adb3c3cae54bda808ee5842c260fd6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b13944e30c339357997fbc5f0919e5eb8485a0a9
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79539214"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308787"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>IoT Edge cihazda sertifikaları yönetme
 
@@ -23,15 +23,15 @@ Tüm IoT Edge cihazlar, çalışma zamanı ve cihazda çalışan modüller aras�
 
 IoT Edge ilk yüklediğinizde ve cihazınızı sağladığınızda cihaz, hizmeti test edebilmeniz için geçici sertifikalarla ayarlanır.
 Bu geçici sertifikaların süreleri 90 gün içinde doluyor veya makineniz yeniden başlatılarak sıfırlanabilir.
-Cihazlarınızı bir üretim senaryosuna taşımaya hazırsanız ya da bir ağ geçidi senaryosu oluşturmak istiyorsanız kendi sertifikalarınızı sağlamanız gerekir.
+Bir üretim senaryosuna geçtiğinizde veya bir ağ geçidi cihazı oluşturmak istiyorsanız kendi sertifikalarınızı sağlamanız gerekir.
 Bu makalede, IoT Edge cihazlarınıza sertifika yüklemek için gereken adımlar gösterilir.
 
-Farklı sertifika türleri ve IoT Edge senaryolarındaki rolleri hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Edge sertifikaları nasıl kullandığını anlayın](iot-edge-certs.md).
+Farklı sertifika türleri ve rolleri hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Edge sertifikaları nasıl kullandığını anlayın](iot-edge-certs.md).
 
 >[!NOTE]
 >Bu makale boyunca kullanılan "kök CA" terimi, IoT çözümünüz için Sertifika zincirinin en üst yetkili ortak sertifikasına başvurur. Bir dağıtılmış sertifika yetkilisinin sertifika kökünü veya kuruluşunuzun sertifika yetkilisinin kökünü kullanmanız gerekmez. Çoğu durumda, aslında bir ara CA genel sertifikasıdır.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * [Windows](how-to-install-iot-edge-windows.md) veya [Linux](how-to-install-iot-edge-linux.md)üzerinde çalışan IoT Edge bir cihaz.
 * Bir kök sertifika yetkilisi (CA) sertifikasına sahip veya Baltimore, Verisign, DigiCert veya GlobalSign gibi güvenilir bir ticari sertifika yetkilisinden satın alınmış.
@@ -69,24 +69,24 @@ Sertifika zincirinizi IoT Edge cihaza yükleyip IoT Edge çalışma zamanını y
    * Pencerelerin`C:\ProgramData\iotedge\config.yaml`
    * 'Un`/etc/iotedge/config.yaml`
 
-1. Config. YAML dosyasındaki **sertifika** özelliklerini, IoT Edge cihazdaki sertifika ve anahtar dosyalarının tam yoluna ayarlayın. Dört satırın `#` açıklamasını kaldırmak için, sertifika özelliklerinden önceki karakteri kaldırın. **Sertifikalarda:** Line 'ın önünde boşluk olmadığından ve iç içe yerleştirilmiş öğelerin iki boşlukla girintilendiğinden emin olun. Örneğin:
+1. Config. YAML içindeki **sertifika** özelliklerini IoT Edge cihazdaki sertifika ve anahtar dosyaları IÇIN dosya URI yolu olarak ayarlayın. `#`Dört satırın açıklamasını kaldırmak için, sertifika özelliklerinden önceki karakteri kaldırın. **Sertifikalarda:** Line 'ın önünde boşluk olmadığından ve iç içe yerleştirilmiş öğelerin iki boşlukla girintilendiğinden emin olun. Örneğin:
 
    * Windows:
 
       ```yaml
       certificates:
-        device_ca_cert: "c:\\<path>\\device-ca.cert.pem"
-        device_ca_pk: "c:\\<path>\\device-ca.key.pem"
-        trusted_ca_certs: "c:\\<path>\\root-ca.root.ca.cert.pem"
+        device_ca_cert: "file:///C:/<path>/<device CA cert>"
+        device_ca_pk: "file:///C:/<path>/<device CA key>"
+        trusted_ca_certs: "file:///C:/<path>/<root CA cert>"
       ```
 
    * Linux:
 
       ```yaml
       certificates:
-        device_ca_cert: "<path>/device-ca.cert.pem"
-        device_ca_pk: "<path>/device-ca.key.pem"
-        trusted_ca_certs: "<path>/root-ca.root.ca.cert.pem"
+        device_ca_cert: "file:///<path>/<device CA cert>"
+        device_ca_pk: "file:///<path>/<device CA key>"
+        trusted_ca_certs: "file:///<path>/<root CA cert>"
       ```
 
 1. Linux cihazlarda, kullanıcının **ıotedge** 'in sertifikaları tutan dizin için okuma izinlerine sahip olduğundan emin olun.
@@ -125,7 +125,7 @@ Kendi cihaz CA sertifikalarınızı sağladıysanız, bu değer hala iş yükü 
 
 Config. YAML dosyasında bayrağı belirttikten sonra, aşağıdaki adımları uygulayın:
 
-1. `hsm` Klasörün içeriğini silin.
+1. Klasörün içeriğini silin `hsm` .
 
    Windows: `C:\ProgramData\iotedge\hsm\certs and C:\ProgramData\iotedge\hsm\cert_keys` Linux:`/var/lib/iotedge/hsm/certs and /var/lib/iotedge/hsm/cert_keys`
 

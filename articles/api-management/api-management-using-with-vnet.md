@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 05/21/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 016a907e3e660ca6da9dc637b2c9c844b7077b84
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: f7a036a382ac3b16093529a67abe9ef78b897274
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193957"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300103"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlar ile Azure API Management’ı kullanma
 Azure Sanal Ağları (VNET’ler) Azure kaynaklarınızdan herhangi birini, erişimini denetlediğiniz İnternet tabanlı olmayan ve yönlendirilebilir bir ağa yerleştirmenizi sağlar. Bu ağlar daha sonra, çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure sanal ağları hakkında daha fazla bilgi edinmek için buradaki bilgilerle başlayın: [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
@@ -32,7 +32,7 @@ Azure API Management, sanal ağ (VNET) içinde dağıtılabilir ve bu sayede ağ
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız gerekir:
 
@@ -139,7 +139,7 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Azure Genel      | <ul><li>gcs.prod.monitoring.core.windows.net (**Yeni**)</li><li>prod.warmpath.msftcloudes.com (**kullanım dışı**)</li><li>global.prod.microsoftmetrics.com (**Yeni**)</li><li>global.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2.prod.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-black.prod.microsoftmetrics.com (**Yeni**)</li><li>prod3-black.prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-red.prod.microsoftmetrics.com (**Yeni**)</li><li>prod3-red.prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>gcs.prod.warm.ingestion.monitoring.azure.com</li></ul> |
     | Azure Kamu  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>global.prod.microsoftmetrics.com (**Yeni**)</li><li>global.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2.prod.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.us</li></ul>                                                                                                                                                                                                                                                |
-    | Azure Çin 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>global.prod.microsoftmetrics.com (**Yeni**)</li><li>global.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2.prod.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>global.prod.microsoftmetrics.com (**Yeni**)</li><li>global.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2.prod.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
 
   >[!IMPORTANT]
   > DNS bölgesi **. nsatc.net** to **. microsoftmetrics.com** ile yukarıdaki kümelerin DEĞIŞIKLIĞI, genellikle bir DNS değişiklidir. Kümenin IP adresi değişmeyecektir.
@@ -250,12 +250,12 @@ IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin veril
 | Azure Genel| Almanya Kuzey| 51.116.0.0|
 | Azure Genel| Norveç Doğu| 51.120.2.185|
 | Azure Genel| Norveç Batı| 51.120.130.134|
-| Azure Çin 21Vianet| Çin Kuzey (genel)| 139.217.51.16|
-| Azure Çin 21Vianet| Çin Doğu (genel)| 139.217.171.176|
-| Azure Çin 21Vianet| Kuzey Çin| 40.125.137.220|
-| Azure Çin 21Vianet| Doğu Çin| 40.126.120.30|
-| Azure Çin 21Vianet| Çin Kuzey 2| 40.73.41.178|
-| Azure Çin 21Vianet| Çin Doğu 2| 40.73.104.4|
+| Azure China 21Vianet| Çin Kuzey (genel)| 139.217.51.16|
+| Azure China 21Vianet| Çin Doğu (genel)| 139.217.171.176|
+| Azure China 21Vianet| Kuzey Çin| 40.125.137.220|
+| Azure China 21Vianet| Doğu Çin| 40.126.120.30|
+| Azure China 21Vianet| Çin Kuzey 2| 40.73.41.178|
+| Azure China 21Vianet| Çin Doğu 2| 40.73.104.4|
 | Azure Kamu| USGov Virginia (genel)| 52.127.42.160|
 | Azure Kamu| USGov Texas (genel)| 52.127.34.192|
 | Azure Kamu| USGov Virginia| 52.227.222.92|
@@ -266,7 +266,7 @@ IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin veril
 | Azure Kamu| USDoD Doğu| 52.181.32.192|
 
 ## <a name="related-content"></a><a name="related-content"> </a>İlgili içerik
-* [VPN ağ geçidi kullanarak bir sanal ağı arka uca bağlama](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
+* [VPN ağ geçidi kullanarak bir sanal ağı arka uca bağlama](../vpn-gateway/design.md#s2smulti)
 * [Farklı dağıtım modellerinden bir sanal ağ bağlama](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Azure API Management çağrıları izlemek için API denetçisini kullanma](api-management-howto-api-inspector.md)
 * [Sanal ağ hakkında sık sorulan sorular](../virtual-network/virtual-networks-faq.md)

@@ -3,12 +3,12 @@ title: Azure Kubernetes hizmeti (AKS) için sık sorulan sorular
 description: Azure Kubernetes hizmeti (AKS) ile ilgili bazı yaygın soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: 767b5b80aab7d98af92f86bf66cc2ff83242ff92
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 136f79df43bcc1730f187980df8726d693390faa
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677792"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300935"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hakkında sık sorulan sorular
 
@@ -75,11 +75,13 @@ Düğüm kaynak grubuyla çalışırken şunları yapmanız gerektiğini aklın�
 * Düğüm kaynak grubu için farklı bir abonelik belirtin.
 * Küme oluşturulduktan sonra düğüm kaynak grubu adını değiştirin.
 * Düğüm kaynak grubu içindeki yönetilen kaynakların adlarını belirtin.
-* Düğüm kaynak grubu içindeki yönetilen kaynakların etiketlerini değiştirin veya silin. (Sonraki bölümde daha fazla bilgi için bkz.)
+* Düğüm kaynak grubu içinde yönetilen kaynakların Azure tarafından oluşturulan etiketlerini değiştirin veya silin. (Sonraki bölümde daha fazla bilgi için bkz.)
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Düğüm kaynak grubundaki AKS kaynaklarının etiketlerini ve diğer özelliklerini değiştirebilir miyim?
 
-Düğüm kaynak grubundaki Azure tarafından oluşturulan etiketleri ve diğer kaynak özelliklerini değiştirir veya silerseniz, hataları ölçekleme ve yükseltme gibi beklenmedik sonuçlara ulaşabilirsiniz. AKS özel etiketler oluşturmanıza ve değiştirmenize olanak sağlar. Örneğin, bir iş birimi veya maliyet merkezi atamak için özel etiketler oluşturmak veya değiştirmek isteyebilirsiniz. AKS kümesindeki düğüm kaynak grubu altındaki kaynakları değiştirerek, hizmet düzeyi hedefini (SLO) böedersiniz. Daha fazla bilgi için bkz. [AKS bir hizmet düzeyi sözleşmesi sunuyor mu?](#does-aks-offer-a-service-level-agreement)
+Düğüm kaynak grubundaki Azure tarafından oluşturulan etiketleri ve diğer kaynak özelliklerini değiştirir veya silerseniz, hataları ölçekleme ve yükseltme gibi beklenmedik sonuçlara ulaşabilirsiniz. AKS, son kullanıcılar tarafından oluşturulan özel etiketler oluşturup değiştirmenize olanak sağlar. Örneğin, bir iş birimi veya maliyet merkezi atamak için özel etiketler oluşturmak veya değiştirmek isteyebilirsiniz. Bu, yönetilen kaynak grubundaki bir kapsamla Azure Ilkeleri oluşturularak elde edilebilir.
+
+Ancak, AKS kümesindeki düğüm kaynak grubu altındaki kaynaklarda bulunan **Azure tarafından oluşturulan etiketlerin** değiştirilmesi, hizmet düzeyi HEDEFINI (SLO) kesen desteklenmeyen bir eylemdir. Daha fazla bilgi için bkz. [AKS bir hizmet düzeyi sözleşmesi sunuyor mu?](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Kubernetes giriş denetleyicileri AKS 'i destekliyor? Giriş denetleyicileri eklenebilir mi, kaldırılabilir mi?
 

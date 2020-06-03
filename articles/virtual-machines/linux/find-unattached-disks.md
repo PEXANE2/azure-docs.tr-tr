@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 6cf48c53e7b5c1cc8537abeda164460de66abddb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4a46e79b3bb2feabe7af739086b8e0166c4ac55
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78945157"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296298"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks-using-the-azure-cli"></a>Azure CLı kullanarak eklenmemiş Azure yönetilen ve yönetilmeyen diskleri bulma ve silme
 Azure 'da bir sanal makineyi (VM) sildiğinizde, varsayılan olarak, VM 'ye bağlı olan tüm diskler silinmez. Bu özellik, VM 'lerin istenmeden silinmesinden dolayı veri kaybını önlemeye yardımcı olur. Bir VM silindikten sonra, eklenmemiş diskler için ödeme yapmaya devam edersiniz. Bu makalede, eklenmemiş disklerin nasıl bulunacağını ve silineceğini ve gereksiz maliyetlerin nasıl azaltalacağı gösterilmektedir. 
@@ -52,7 +52,7 @@ done
 
 ## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>Yönetilmeyen diskler: eklenmemiş diskleri bulma ve silme 
 
-Yönetilmeyen diskler, [Azure depolama hesaplarında](../../storage/common/storage-create-storage-account.md) [sayfa BLOBLARı](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) olarak depolanan VHD dosyalarıdır. Aşağıdaki betik, **Leasestatus** özelliğinin değerini inceleyerek eklenmemiş yönetilmeyen diskleri (sayfa Blobları) arar. Bir sanal makineye yönetilmeyen bir disk eklendiğinde, **Leasestatus** özelliği **kilitli**olarak ayarlanır. Yönetilmeyen bir disk bağlı değilken, **Leasestatus** özelliği **kilitlenmemiş**olarak ayarlanır. Betik, bir Azure aboneliğindeki tüm Azure depolama hesaplarında yönetilmeyen tüm diskleri inceler. Betik, **Leasestatus** özelliği **kilitlenmemiş**olarak ayarlanmış bir yönetilmeyen disk bulduktan sonra, komut dosyası diskin eklenmemiş olduğunu belirler.
+Yönetilmeyen diskler, [Azure depolama hesaplarında](../../storage/common/storage-account-overview.md) [sayfa BLOBLARı](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) olarak depolanan VHD dosyalarıdır. Aşağıdaki betik, **Leasestatus** özelliğinin değerini inceleyerek eklenmemiş yönetilmeyen diskleri (sayfa Blobları) arar. Bir sanal makineye yönetilmeyen bir disk eklendiğinde, **Leasestatus** özelliği **kilitli**olarak ayarlanır. Yönetilmeyen bir disk bağlı değilken, **Leasestatus** özelliği **kilitlenmemiş**olarak ayarlanır. Betik, bir Azure aboneliğindeki tüm Azure depolama hesaplarında yönetilmeyen tüm diskleri inceler. Betik, **Leasestatus** özelliği **kilitlenmemiş**olarak ayarlanmış bir yönetilmeyen disk bulduktan sonra, komut dosyası diskin eklenmemiş olduğunu belirler.
 
 >[!IMPORTANT]
 >İlk olarak, **Deleteunattachedvhd** değişkenini 0 olarak ayarlayarak betiği çalıştırın. Bu eylem, tüm eklenmemiş yönetilmeyen VHD 'leri bulup görüntülemenizi sağlar.
@@ -105,7 +105,6 @@ done
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Depolama hesabını Sil](../../storage/common/storage-create-storage-account.md)
-
+Daha fazla bilgi için bkz. [Depolama hesabını silme](../../storage/common/storage-account-create.md#delete-a-storage-account).
 
 

@@ -11,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: d7cd437f597fc34fe83904715fc2e459dfe4550f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4a36019f9023490c3aac68dbe7004b053f08e5ec
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80875603"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298831"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Öğretici: Azure AD B2C ile tek sayfalı bir uygulamada kimlik doğrulamasını etkinleştirme
 
@@ -34,7 +34,7 @@ Serideki [sonraki öğretici](tutorial-single-page-app-webapi.md) , kod ÖRNEĞI
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticideki adımlara devam etmeden önce aşağıdaki Azure AD B2C kaynaklara sahip olmanız gerekir:
 
@@ -51,28 +51,27 @@ Ayrıca, yerel geliştirme ortamınızda aşağıdakiler gereklidir:
 
 Önkoşulların bir parçası olarak tamamladığınız ikinci öğreticide, Azure AD B2C bir Web uygulaması kaydettiniz. Bu öğreticide kod örneğiyle iletişimi etkinleştirmek için uygulama kaydına bir yanıt URL 'SI (yeniden yönlendirme URI 'SI olarak da bilinir) ekleyin.
 
-Uygulamayı güncelleştirmek için geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (Önizleme)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregintro).
+Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
 
-#### <a name="applications"></a>[Uygulamalar](#tab/applications/)
-
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
-1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve sonra **Azure AD B2C**' i arayıp seçin.
-1. **Uygulamalar**' ı seçin ve ardından *WebApp1* uygulamasını seçin.
-1. **Yanıt URL 'si**altında, `http://localhost:6420`ekleyin.
-1. **Kaydet**’i seçin.
-1. Özellikler sayfasında, **uygulama kimliğini**kaydedin. Uygulama KIMLIĞI ' ni, tek sayfalı Web uygulamasındaki kodu güncelleştirdiğinizde sonraki bir adımda kullanırsınız.
-
-#### <a name="app-registrations-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
-1. **Uygulama kayıtları (Önizleme)** öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *WebApp1* uygulamasını seçin.
-1. **Kimlik doğrulaması**' nı seçin ve ardından **Yeni deneyimi deneyin** (gösteriliyorsa) seçeneğini belirleyin.
-1. **Web**altında **URI Ekle** bağlantısını seçin, girin `http://localhost:6420`ve ardından **Kaydet**' i seçin.
-1. **Genel Bakış**’ı seçin.
+1. **Uygulama kayıtları**öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *WebApp1* uygulamasını seçin.
+1. **Web**altında **URI Ekle** bağlantısını seçin, girin `http://localhost:6420` ve ardından **Kaydet**' i seçin.
+1. **Genel bakış**'ı seçin.
 1. Tek sayfalı Web uygulamasındaki kodu güncelleştirdiğinizde daha sonraki bir adımda kullanmak üzere **uygulama (istemci) kimliğini** kaydedin.
+
+#### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
+
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
+1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve sonra **Azure AD B2C**' i arayıp seçin.
+1. **Uygulamalar (eski)** öğesini seçin ve ardından *WebApp1* uygulamasını seçin.
+1. **Yanıt URL 'si**altında, ekleyin `http://localhost:6420` .
+1. **Kaydet**'i seçin.
+1. Özellikler sayfasında, **uygulama kimliğini**kaydedin. Uygulama KIMLIĞI ' ni, tek sayfalı Web uygulamasındaki kodu güncelleştirdiğinizde sonraki bir adımda kullanırsınız.
 
 * * *
 
@@ -91,7 +90,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 Örneği edindiğinizden, kodu Azure AD B2C kiracı adınızla ve önceki bir adımda kaydettiğiniz uygulama KIMLIĞIYLE güncelleştirin.
 
 1. *AuthConfig. js* dosyasını *javascriptspa* klasörü içinde açın.
-1. `msalConfig` Nesnede, Güncelleştir:
+1. `msalConfig`Nesnede, Güncelleştir:
     * `clientId`önceki bir adımda kaydettiğiniz **uygulama (istemci) kimliğine** sahip değer ile
     * `authority`Azure AD B2C kiracı adınızla URI ve önkoşulların bir parçası olarak oluşturduğunuz kaydolma/oturum açma Kullanıcı akışının adı (örneğin, *B2C_1_signupsignin1*)
 
@@ -128,7 +127,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
     ```console
     Listening on port 6420...
     ```
-1. Yerel makinenizde `http://localhost:6420` çalışan Web uygulamasını görüntülemek için öğesine gidin.
+1. `http://localhost:6420`Yerel makinenizde çalışan Web uygulamasını görüntülemek için öğesine gidin.
 
     :::image type="content" source="media/tutorial-single-page-app/web-app-spa-01-not-logged-in.png" alt-text="Yerel olarak çalışan tek sayfalı uygulamayı gösteren Web tarayıcısı":::
 

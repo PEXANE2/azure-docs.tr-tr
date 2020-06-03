@@ -10,17 +10,17 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 9574af31c881589668c462099cae46d9e83b454b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 043e61f498417b74831cd49f046f78b02e907964
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73744370"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310317"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Content Moderator API için dil desteği
 
 > [!NOTE]
-> **Dil** parametresi için, makine yardımlı `eng` **Sınıflandırma** yanıtını (Önizleme özelliği) görmek üzere boş bırakın veya boş bırakın. **Bu özellik yalnızca İngilizce 'yi destekler**.
+> **Dil** parametresi için, `eng` makine yardımlı **Sınıflandırma** yanıtını (Önizleme özelliği) görmek üzere boş bırakın veya boş bırakın. **Bu özellik yalnızca İngilizce 'yi destekler**.
 >
 > **Küfür terimleri** algılama için, bu makalede listelenen desteklenen dillerin [ISO 639-3 kodunu](http://www-01.sil.org/iso639-3/codes.asp) kullanın veya boş bırakın.
 
@@ -28,13 +28,13 @@ ms.locfileid: "73744370"
 | Dil algılama | Küfür   | OCR    | Otomatik Düzeltme     |
 | -------------------- |-------------|--------|---------------------|
 | Arapça (Romanlanmış)   | Afrikaner   | Arapça   | Arapça |
-| Bali | Arnavutça | Çince (Basitleştirilmiş)    | Danca |
-| Bengali | Amhara Dili | seçenekleri yerine     | Felemenkçe |
+| Bali | Arnavutça | Basitleştirilmiş Çince    | Danca |
+| Bengali | Amhara Dili | Geleneksel Çince     | Felemenkçe |
 | Bugi | Arapça | Çekçe                     | İngilizce |
 | Buhid | Ermenice | Danca                     | Fince |
 | Carian dili | Assam | Felemenkçe                     | Fransızca |
-| Çince (Basitleştirilmiş) | Dili | İngilizce  | Yunanca (modern) |
-| seçenekleri yerine | Bangla-Bangladeş | Fince  | İtalyanca |
+| Basitleştirilmiş Çince | Dili | İngilizce  | Yunanca (modern) |
+| Geleneksel Çince | Bangla-Bangladeş | Fince  | İtalyanca |
 | Church (Slavcası) | Bangla-Hindistan | Fransızca     | Korece |
 | Kıpti | Baskça | Almanca                      | Norveççe |
 | Çekçe |  Beyaz Rusça | Yunanca (modern)         | Lehçe |
@@ -45,7 +45,7 @@ ms.locfileid: "73744370"
 | Fransızca | Katalanca | Norveççe                        | İspanyolca |
 | Almanca | Orta Kürtçe | Lehçe        | Türkçe |
 | Yunanca | Çeroki dili | Portekizce | |
-| Haiti | Çince (Basitleştirilmiş) | Rumence | |
+| Haiti | Basitleştirilmiş Çince | Rumence | |
 | İbranice | Çince (Geleneksel)-Hong Kong ÖIB | Rusça | |
 | Hintçe | Çince (Geleneksel)-Tayvan | Sırpça Kiril | |
 | Hmong | Hırvatça | Sırpça Latin | |

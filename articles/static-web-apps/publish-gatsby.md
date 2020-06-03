@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 14706b623c6973c09b499e4fcd905e3eed430898
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 24d5ee132444f19118613f6b1b798fd763e46e3c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599622"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299335"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>Öğretici: Azure statik Web Apps önizleme 'ye bir Gatsby sitesi yayımlama
 
 Bu makalede, bir [Gatsby](https://gatsbyjs.org) Web uygulamasının nasıl oluşturulacağı ve [Azure statik Web Apps](overview.md)nasıl dağıtılacağı gösterilir. Nihai sonuç, uygulamanın nasıl oluşturulduğunu ve yayımlanabileceğini denetlemenizi sağlayan yeni bir statik Web Apps sitedir (ilişkili GitHub eylemleriyle birlikte).
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -95,7 +95,7 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 
 1. _Kaynak grubu_' nda **Yeni**' yi seçin. _Yeni kaynak grubu adı_' nda, **Gatsby-static-Web-App** girin ve **Tamam**' ı seçin.
 
-1. Ardından, **ad** kutusuna uygulamanız için genel olarak benzersiz bir ad sağlayın. Geçerli karakterler `a-z` ,, `A-Z` ve `0-9` içerir `-` . Bu değer, statik Web uygulamanız için biçiminde URL öneki olarak kullanılır `https://<YOUR_APP_NAME>.azurestaticapps.net` .
+1. Ardından, **ad** kutusunda uygulamanız için bir ad. Geçerli karakterler `a-z` ,, `A-Z` ve `0-9` içerir `-` .
 
 1. _Bölge_için bir kullanılabilir bölge seçin.
 

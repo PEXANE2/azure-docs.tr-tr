@@ -46,7 +46,7 @@ Denetim olayları, denetim yapılandırması sırasında tanımlanan Log Analyti
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>Denetim günlüğü alanları
 
-| Ad (blob) | Ad (Event Hubs/Log Analytics) | Açıklama | Blob türü | Event Hubs/Log Analytics türü |
+| Ad (blob) | Ad (Event Hubs/Log Analytics) | Description | Blob türü | Event Hubs/Log Analytics türü |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | Eylemin KIMLIĞI | varchar (4) | string |
 | action_name | action_name_s | Eylemin adı | Yok | string |

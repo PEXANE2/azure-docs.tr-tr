@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: bd9eaad0c141eda815da159e3c13d6c51f5e6200
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cc1bf52190cb47bc4ffd6efe159ed88cac560e02
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599742"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298014"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>Öğretici: Azure statik Web Apps önizleme 'ye VuePress sitesi yayımlama
 
 Bu makalede, [Azure Azure statik Web Apps](overview.md)bir [vuepress](https://vuepress.vuejs.org/) Web uygulaması oluşturma ve dağıtma işlemlerinin nasıl yapılacağı gösterilir. Nihai sonuç, uygulamanın nasıl oluşturulduğunu ve yayımlanabileceğini denetlemenize olanak tanıyan, ilişkili GitHub eylemlerine sahip yeni bir Azure statik Web Apps uygulamasıdır.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -120,7 +120,7 @@ Aşağıdaki adımlarda, yeni bir statik Web Apps uygulamasının nasıl oluştu
 
 1. _Kaynak grubu_' nda **Yeni**' yi seçin. _Yeni kaynak grubu adı_alanına **vuepress-static-App** girin ve **Tamam**' ı seçin.
 
-1. Ardından, **ad** kutusuna uygulamanız için genel olarak benzersiz bir ad sağlayın. Geçerli karakterler `a-z` ,, `A-Z` ve `0-9` içerir `-` . Bu değer, statik uygulamanız için biçiminde URL öneki olarak kullanılır `https://<APP_NAME>.azurestaticapps.net` .
+1. Ardından, **ad** kutusunda uygulamanız için bir ad. Geçerli karakterler `a-z` ,, `A-Z` ve `0-9` içerir `-` .
 
 1. _Bölge_için bir kullanılabilir bölge seçin.
 

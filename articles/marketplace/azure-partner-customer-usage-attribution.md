@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 20f8e0bea460c20ed3af0c2844ebc3510bd2d6b6
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 9c70f8d728786e8aff8da33f9a39b8c2cfaafdc4
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800802"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295635"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Ticari Market iş ortağı ve müşteri kullanımı attributıon
 
@@ -59,6 +59,9 @@ GUID 'lerin, müşteri kullanımı atısyonu sağlamak için Iş Ortağı Merkez
 
 Şablonunuza veya kullanıcı aracısına bir GUID ekleyin ve GUID 'yi Iş Ortağı Merkezi 'ne kaydettikten sonra gelecek dağıtımlar izlenir.
 
+> [!NOTE]
+> [Azure Uygulama](./partner-center-portal/create-new-azure-apps-offer.md) teklifinizi Iş Ortağı Merkezi aracılığıyla Azure Marketi 'nde yayımlıyorsanız, şablonunuzda kullanılan yeni GUID 'ler, şablon karşıya yüklendiğinde Iş Ortağı Merkezi profilinize otomatik olarak kaydedilir.  
+
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard)' nde oturum açın.
 
 1. [Ticari Market yayımcısı](https://aka.ms/JoinMarketplace)olarak kaydolun.
@@ -75,7 +78,7 @@ GUID 'lerin, müşteri kullanımı atısyonu sağlamak için Iş Ortağı Merkez
 
 1. Birden fazla GUID kaydetmek için, **izleme GUID 'i yeniden Ekle** ' yi seçin. Sayfada ek kutular görüntülenir.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager şablonlarını kullanma
 Birçok iş ortağı çözümü Azure Resource Manager şablonları kullanılarak dağıtılır. Azure Marketi 'nde, GitHub 'da veya hızlı başlangıç olarak kullanılabilen bir Kaynak Yöneticisi şablonunuz varsa, müşteri kullanımı atısyonu 'nı etkinleştirmek için şablonunuzu değiştirme işlemi sorunsuz bir şekilde ileriye doğru.
@@ -238,15 +241,15 @@ Raporu görmek için Iş ortağı Ilişki türü açılan listesinde Izlenen şa
 
 ## <a name="notify-your-customers"></a>Müşterilerinize bildirme
 
-İş ortakları, müşterilerine müşteri kullanımı attributıon kullanan dağıtımlar hakkında bilgi sağlamalıdır. Microsoft, bu dağıtımlarla ilişkili olan Azure kullanımını iş ortaklarına bildirir. Aşağıdaki örneklerde, bu dağıtımlar hakkında müşterilerinizi bilgilendirmek için kullanabileceğiniz içerikler yer alır. Örneklerde, \< iş ortağı> değerini şirket adınızla değiştirin. İş ortakları, kullanıcıların izlemenin dışında bırakılmasını sağlama seçenekleri de dahil olmak üzere, veri gizliliğiyle ve koleksiyon ilkeleriyle hizalandığından emin olmalıdır.
+İş ortakları, müşterilerine müşteri kullanımı attributıon kullanan dağıtımlar hakkında bilgi sağlamalıdır. Microsoft, bu dağıtımlarla ilişkili olan Azure kullanımını iş ortaklarına bildirir. Aşağıdaki örneklerde, bu dağıtımlar hakkında müşterilerinizi bilgilendirmek için kullanabileceğiniz içerikler yer alır. Örneklerde, \<PARTNER> şirketinizin adıyla değiştirin. İş ortakları, kullanıcıların izlemenin dışında bırakılmasını sağlama seçenekleri de dahil olmak üzere, veri gizliliğiyle ve koleksiyon ilkeleriyle hizalandığından emin olmalıdır.
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Kaynak Yöneticisi Şablon dağıtımları için bildirim
 
-Bu şablonu dağıttığınızda, Microsoft, \< dağıtılan Azure kaynaklarıyla iş ortağı> yazılımını yüklemeyi tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un adresinde bulunan gizlilik ilkelerine göre toplanır ve yönetilir https://www.microsoft.com/trustcenter .
+Bu şablonu dağıttığınızda, Microsoft, \<PARTNER> dağıtılan Azure kaynaklarıyla yazılım yüklemeyi tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un adresinde bulunan gizlilik ilkelerine göre toplanır ve yönetilir https://www.microsoft.com/trustcenter .
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>SDK veya API dağıtımları için bildirim
 
-\<İş ortağı> yazılımını dağıtırken, Microsoft, \< dağıtılan Azure kaynaklarıyla iş ortağı> yazılımının yüklenmesini tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un adresinde bulunan gizlilik ilkelerine göre toplanır ve yönetilir https://www.microsoft.com/trustcenter .
+\<PARTNER>Yazılım dağıttığınızda, Microsoft, \<PARTNER> dağıtılan Azure kaynaklarıyla yazılım yüklemeyi tanımlayabilir. Microsoft, yazılımı desteklemek için kullanılan Azure kaynaklarını ilişkilendirebiliyor. Microsoft bu bilgileri, ürünleriyle ilgili en iyi deneyimleri sağlamak ve işlerini işletmek için toplar. Veriler, Microsoft 'un adresinde bulunan gizlilik ilkelerine göre toplanır ve yönetilir https://www.microsoft.com/trustcenter .
 
 ## <a name="get-support"></a>Destek alın
 

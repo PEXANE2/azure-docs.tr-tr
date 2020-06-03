@@ -2,13 +2,13 @@
 title: Kapsayıcılar için Azure Izleyici aracı veri toplamayı yapılandırma | Microsoft Docs
 description: Bu makalede stdout/stderr ve ortam değişkenleri günlük toplamayı denetlemek için kapsayıcılar aracısının Azure Izleyicisini nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 000f68d5498324fa0e68bce178688a79f3ce9c5b
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.date: 06/01/2020
+ms.openlocfilehash: 039c6355bef638aae0b2ef074f006aabc04185c4
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220238"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299290"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici için aracı veri toplamayı yapılandırma
 
@@ -31,16 +31,17 @@ Bunu sıfırdan oluşturmak zorunda kalmadan özelleştirmelerinizle kolayca dü
 
 Aşağıda, veri toplamayı denetlemek için yapılandırılabilecek ayarlar verilmiştir.
 
-|Anahtar |Veri türü |Değer |Açıklama |
-|----|----------|------|------------|
-|`schema-version` |Dize (büyük/küçük harfe duyarlı) |v1 |Bu, bu ConfigMap ayrıştırılırken aracı tarafından kullanılan şema sürümüdür. Şu anda desteklenen şema sürümü v1. Bu değerin değiştirilmesi desteklenmez ve ConfigMap değerlendirildiğinde reddedilir.|
-|`config-version` |Dize | | , Kaynak denetimi sisteminizde/deponuzda bu yapılandırma dosyasının sürümünün izini sürme yeteneğini destekler. İzin verilen en fazla karakter sayısı 10 ' dur ve diğer tüm karakterler kesilir. |
-|`[log_collection_settings.stdout] enabled =` |Boole | true veya false | Bu, stdout kapsayıcı günlüğü koleksiyonunun etkinleştirilip etkinleştirilmediğini denetler. Olarak ayarlandığında `true` ve STDOUT günlük toplama için hiçbir ad alanı dışlandığında ( `log_collection_settings.stdout.exclude_namespaces` Aşağıdaki ayar), stdout günlükleri kümedeki tüm düğüm/düğümler genelinde tüm kapsayıcılardan toplanacaktır. ConfigMaps içinde belirtilmemişse, varsayılan değer `enabled = true` . |
-|`[log_collection_settings.stdout] exclude_namespaces =`|Dize | Virgülle ayrılmış dizi |Stdout günlüklerinin toplanmayacak Kubernetes ad alanları dizisi. Bu ayar yalnızca `log_collection_settings.stdout.enabled` , olarak ayarlandıysa geçerlidir `true` . ConfigMap içinde belirtilmemişse, varsayılan değer `exclude_namespaces = ["kube-system"]` .|
-|`[log_collection_settings.stderr] enabled =` |Boole | true veya false |Bu, stderr kapsayıcı günlüğü koleksiyonunun etkinleştirilip etkinleştirilmediğini denetler. Olarak ayarlandığında `true` ve STDOUT günlük toplama (ayarı) için hiçbir ad alanı dışlandığında `log_collection_settings.stderr.exclude_namespaces` , stderr günlükleri kümedeki tüm düğüm/düğümler genelinde tüm kapsayıcılardan toplanacaktır. ConfigMaps içinde belirtilmemişse, varsayılan değer `enabled = true` . |
-|`[log_collection_settings.stderr] exclude_namespaces =` |Dize |Virgülle ayrılmış dizi |Stderr günlüklerinin toplanmayacak Kubernetes ad alanları dizisi. Bu ayar yalnızca `log_collection_settings.stdout.enabled` , olarak ayarlandıysa geçerlidir `true` . ConfigMap içinde belirtilmemişse, varsayılan değer `exclude_namespaces = ["kube-system"]` . |
-| `[log_collection_settings.env_var] enabled =` |Boole | true veya false | Bu ayar, kümedeki tüm düğüm/düğümler genelinde ortam değişkeni toplamayı denetler ve `enabled = true` ConfigMaps 'ta belirtilmediğinde varsayılan değerleri alır. Ortam değişkenlerinin toplanması genel olarak etkinleştirilmişse, ortam değişkenini `AZMON_COLLECT_ENV` bir Dockerfile ayarıyla veya **env:** bölümünün altındaki [pod için yapılandırma dosyasında](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) **yanlış** olarak ayarlayarak belirli bir kapsayıcı için devre dışı bırakabilirsiniz. Ortam değişkenlerinin toplanması genel olarak devre dışıysa, belirli bir kapsayıcı için koleksiyonu etkinleştiremezsiniz (yani, kapsayıcı düzeyinde uygulanabilecek tek geçersiz kılma, genel olarak etkinleştirildiğinde koleksiyonu devre dışı bırakmalıdır.). |
-| `[log_collection_settings.enrich_container_logs] enabled =` |Boole | true veya false | Bu ayar kapsayıcı günlüğü zenginleştirme, kümedeki tüm kapsayıcı günlükleri için ContainerLog tablosuna yazılan her günlük kaydına ilişkin ad ve görüntü özellik değerlerini doldurmak üzere kontrol eder. `enabled = false`ConfigMap içinde belirtilmediğinde varsayılan değer olarak belirlenir. |
+| Anahtar | Veri türü | Değer | Description |
+|--|--|--|--|
+| `schema-version` | Dize (büyük/küçük harfe duyarlı) | v1 | Bu, aracı tarafından kullanılan şema sürümüdür<br> Bu ConfigMap ayrıştırılırken.<br> Şu anda desteklenen şema sürümü v1.<br> Bu değerin değiştirilmesi desteklenmez ve<br> ConfigMap değerlendirilirken reddedildi. |
+| `config-version` | Dize |  | , Kaynak denetimi sisteminizde/deponuzda bu yapılandırma dosyasının sürümünün izini sürme yeteneğini destekler.<br> İzin verilen en fazla karakter sayısı 10 ' dur ve diğer tüm karakterler kesilir. |
+| `[log_collection_settings.stdout] enabled =` | Boole | true veya false | Bu, stdout kapsayıcı günlüğü koleksiyonunun etkinleştirilip etkinleştirilmediğini denetler. Olarak ayarlandığında `true` ve STDOUT günlük toplama için hiçbir ad alanı dışlanmazsa<br> ( `log_collection_settings.stdout.exclude_namespaces` aşağıda ayarı), stdout günlükleri kümedeki tüm düğüm/düğümler genelinde tüm kapsayıcılardan toplanacaktır. ConfigMaps içinde belirtilmemişse,<br> Varsayılan değer `enabled = true` . |
+| `[log_collection_settings.stdout] exclude_namespaces =` | Dize | Virgülle ayrılmış dizi | Stdout günlüklerinin toplanmayacak Kubernetes ad alanları dizisi. Bu ayar yalnızca şu durumlarda geçerlidir<br> `log_collection_settings.stdout.enabled`<br> , olarak ayarlanır `true` .<br> ConfigMap içinde belirtilmemişse, varsayılan değer<br> `exclude_namespaces = ["kube-system"]`. |
+| `[log_collection_settings.stderr] enabled =` | Boole | true veya false | Bu, stderr kapsayıcı günlüğü koleksiyonunun etkinleştirilip etkinleştirilmediğini denetler.<br> Olarak ayarlandığında `true` ve STDOUT günlük toplama için hiçbir ad alanı dışlanmazsa<br> ( `log_collection_settings.stderr.exclude_namespaces` ayar), stderr günlükleri kümedeki tüm düğüm/düğümler genelinde tüm kapsayıcılardan toplanacak.<br> ConfigMaps içinde belirtilmemişse, varsayılan değer<br> `enabled = true`. |
+| `[log_collection_settings.stderr] exclude_namespaces =` | Dize | Virgülle ayrılmış dizi | Stderr günlüklerinin toplanmayacak Kubernetes ad alanları dizisi.<br> Bu ayar yalnızca şu durumlarda geçerlidir<br> `log_collection_settings.stdout.enabled`, olarak ayarlanır `true` .<br> ConfigMap içinde belirtilmemişse, varsayılan değer<br> `exclude_namespaces = ["kube-system"]`. |
+| `[log_collection_settings.env_var] enabled =` | Boole | true veya false | Bu ayar ortam değişkeni toplamayı denetler<br> kümedeki tüm pods/düğümler genelinde<br> ve belirtilmediğinde varsayılan olarak `enabled = true`<br> ConfigMaps 'ta.<br> Ortam değişkenlerinin toplanması genel olarak etkinleştirilmişse, belirli bir kapsayıcı için devre dışı bırakabilirsiniz<br> ortam değişkenini ayarlayarak<br> `AZMON_COLLECT_ENV`bir Dockerfile ayarıyla ya da **env:** bölümünün altındaki [Pod Için yapılandırma dosyasında](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) **yanlış** .<br> Ortam değişkenlerinin toplanması genel olarak devre dışıysa, belirli bir kapsayıcı için koleksiyonu etkinleştiremezsiniz (yani, kapsayıcı düzeyinde uygulanabilecek tek geçersiz kılma, genel olarak etkinleştirildiğinde koleksiyonu devre dışı bırakmalıdır.). |
+| `[log_collection_settings.enrich_container_logs] enabled =` | Boole | true veya false | Bu ayar, ad ve görüntü özelliği değerlerini doldurmak için kapsayıcı günlüğü zenginleştirme özelliğini denetler<br> kümedeki tüm kapsayıcı günlükleri için ContainerLog tablosuna yazılan her günlük kaydı için.<br> `enabled = false`ConfigMap içinde belirtilmediğinde varsayılan değer olarak belirlenir. |
+| `[log_collection_settings.collect_all_kube_events]` | Boole | true veya false | Bu ayar tüm türlerin Kume olayları koleksiyonuna izin verir.<br> Varsayılan olarak, *normal* tür Kume olayları toplanmaz. Bu ayar olarak ayarlandığında `true` , *normal* olaylar artık filtrelenmez ve tüm olaylar toplanır.<br> Varsayılan olarak, bu olarak ayarlanır `false` . |
 
 ConfigMaps genel bir liste ve aracıya yalnızca bir ConfigMap uygulanmış olabilir. Koleksiyonlar üzerine başka bir ConfigMaps olamaz.
 

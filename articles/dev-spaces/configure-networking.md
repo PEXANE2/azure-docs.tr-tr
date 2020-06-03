@@ -5,12 +5,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: Azure Kubernetes hizmetlerinde Azure Dev Spaces çalıştırmaya yönelik ağ gereksinimlerini açıklar
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, CNı, kubenet, SDN, ağ
-ms.openlocfilehash: a5cac4eaf1f87e6e704bb643279637902c792c7c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: c3ee84819172fe28aef779493d01e2433ccca336
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267537"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300700"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Farklı ağ topolojilerinde Azure Dev Spaces için ağ yapılandırma
 
@@ -83,7 +83,7 @@ az aks use-dev-spaces -g MyResourceGroup -n MyAKS -e private
 
 ## <a name="client-requirements"></a>İstemci gereksinimleri
 
-Azure Dev Spaces, hata ayıklama için AKS kümeniz ile iletişim kurmak için Azure Dev Spaces CLı uzantısı, Visual Studio Code uzantısı ve Visual Studio uzantısı gibi istemci tarafı araçları kullanır. Azure Dev Spaces istemci tarafı araçları 'nı kullanmak için, geliştirme makinelerinden *azds- \* . azds.io* etki alanına giden trafiğe izin verin. Tam FQDN için içindeki *Dataplanefqdn* bölümüne bakın `USERPROFILE\.azds\settings.json` . [API sunucusu YETKILENDIRILMIŞ IP aralıklarını][auth-range-section]KULLANıYORSANıZ, API sunucunuza bağlanmak için hata ayıklama için aks kümenize bağlanan herhangi bir GELIŞTIRME makinesi IP adresine de izin vermeniz gerekir.
+Azure Dev Spaces, hata ayıklama için AKS kümeniz ile iletişim kurmak için Azure Dev Spaces CLı uzantısı, Visual Studio Code uzantısı ve Visual Studio uzantısı gibi istemci tarafı araçları kullanır. Azure Dev Spaces istemci tarafı araçları 'nı kullanmak için geliştirme makinelerinden [Azure dev Spaces altyapısına][dev-spaces-allow-infrastructure]giden trafiğe izin verin. [API sunucusu YETKILENDIRILMIŞ IP aralıklarını][auth-range-section]KULLANıYORSANıZ, API sunucunuza bağlanmak için hata ayıklama için aks kümenize bağlanan herhangi bir GELIŞTIRME makinesi IP adresine de izin vermeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -103,6 +103,7 @@ Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar g
 [aks-private-clusters]: ../aks/private-clusters.md
 [auth-range-section]: #using-api-server-authorized-ip-ranges
 [azure-cli-install]: /cli/azure/install-azure-cli
+[dev-spaces-allow-infrastructure]: #virtual-network-or-subnet-configurations
 [dev-spaces-routing]: how-dev-spaces-works-routing.md
 [endpoint-options]: #using-different-endpoint-options
 [firewall-service-tags]: ../firewall/service-tags.md

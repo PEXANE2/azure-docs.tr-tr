@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
-ms.openlocfilehash: 0e18fd0c52fd4090477599f53cd0ef0bc05855f2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 550579b40470d7a1ad02031b8140e7d0a7164f46
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587349"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310606"
 ---
 # <a name="long-audio-api-preview"></a>Uzun ses API 'SI (Önizleme)
 
@@ -48,7 +48,7 @@ Metin dosyanızı hazırlarken şunları yaptığınızdan emin olun:
   * Düz metin için, her paragraf **Enter/Return** -View [düz metin girişi örneğine](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) vurarak ayrılır
   * SSML metninde her SSML parçası bir paragraf olarak değerlendirilir. SSML parçaları farklı paragraflar ile ayrılmalıdır- [SSML metin girişi örneğini](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) görüntüleyin
 > [!NOTE]
-> Çince (Mainland), Çince (Hong Kong), Çince (Tayvan), Japonca ve Korece için bir sözcük iki karakter olarak sayılır. 
+> Çince (Mainland), Çince (Hong Kong çın ÖIB), Çince (Tayvan), Japonca ve Korece için bir sözcük iki karakter olarak sayılır. 
 
 ## <a name="submit-synthesis-requests"></a>Sensıs isteklerini gönder
 
@@ -56,7 +56,7 @@ Giriş içeriği hazırlandıktan sonra, isteği göndermek için [uzun biçimli
 
 **Http durum kodları** yaygın hataları gösterir.
 
-| API | HTTP durum kodu | Açıklama | Teklif |
+| API | HTTP durum kodu | Description | Teklif |
 |-----|------------------|-------------|----------|
 | Oluştur | 400 | Ses birleştirme bu bölgede etkin değil. | Konuşma abonelik anahtarını desteklenen bir bölge ile değiştirin. |
 |        | 400 | Bu bölge için yalnızca **Standart** konuşma aboneliği geçerlidir. | Konuşma abonelik anahtarını "standart" fiyatlandırma katmanıyla değiştirin. |

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 13e41f6346f2ce32ed65aefb7d50680d1302ca26
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 694f10b53d02d44d189cbe7cbe492f48ac3b5669
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193706"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299800"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Kopyalama etkinliği performansını sorun giderme
 
@@ -40,6 +40,7 @@ Bir başvuru olarak şu anda performans ayarlama ipuçları aşağıdaki durumla
 | Veri deposuna özgü   | **Azure Synpao Analytics 'e veri yükleme (eski ADıYLA SQL DW)**: kullanılmıyorsa PolyBase veya Copy deyimlerini kullanmayı önerin. |
 | &nbsp;                | Verileri **Azure SQL veritabanı**'ndan kopyalama: DTU yüksek kullanım altındaysa, daha yüksek katmana yükseltmeyi önerin. |
 | &nbsp;                | Veri kopyalama/hedef **Azure Cosmos DB**: ru yüksek kullanım altındayken, daha büyük ru 'ya yükseltmeyi önerin. |
+|                       | **SAP tablosundan**veri kopyalama: büyük miktarda veriyi kopyalarken, paralel yüklemeyi etkinleştirmek ve en fazla bölüm numarasını ARTıRMAK için SAP bağlayıcısının bölüm seçeneğinden yararlanın. |
 | &nbsp;                | **Amazon Redshift**'tan veri almak: KULLANıLMıYORSA, kaldırma kullanmayı önerin. |
 | Veri depolama alanı azaltma | Kopyalama sırasında veri deposu tarafından bir dizi okuma/yazma işlemi kısıtlanıyor ise, veri deposu için izin verilen istek hızını denetlemeyi ve artırmayı önerin ya da eşzamanlı iş yükünü azaltın. |
 | Tümleştirme çalışma zamanı  | Şirket içinde barındırılan bir **Integration Runtime (IR)** kullanıyorsanız ve kopyalama ETKINLIĞI, IR 'nin yürütülmesi için kullanılabilir kaynağa sahip olana kadar kuyrukta uzun süre bekliyorsa, IR 'nin ölçeğini genişletme/büyütme önerin. |
@@ -52,7 +53,7 @@ Bir başvuru olarak şu anda performans ayarlama ipuçları aşağıdaki durumla
 
 Kopyalama etkinliği izleme görünümünün en altındaki yürütme ayrıntıları ve süreleri, kopyalama etkinliğinizin (Bu makalenin başındaki örnek), özellikle de kopyalama performansının giderilmesi için yararlı olan anahtar aşamalarını açıklar. Kopya çalışmalarınızın performans sorunu en uzun süreye sahip bir süredir. Her bir aşamanın tanımında aşağıdaki tabloya başvurun ve [Azure IR kopyalama etkinliğinin nasıl giderileceğini](#troubleshoot-copy-activity-on-azure-ir) ve bu tür bilgiyle şirket IÇINDE [barındırılan IR 'de kopyalama etkinliğinin nasıl giderileceğini](#troubleshoot-copy-activity-on-self-hosted-ir) öğrenin.
 
-| Aşama           | Açıklama                                                  |
+| Aşama           | Description                                                  |
 | --------------- | ------------------------------------------------------------ |
 | Kuyruk           | Kopyalama etkinliği tümleştirme çalışma zamanı üzerinde çalışmaya başlanana kadar geçen süre. |
 | Kopyalama öncesi betiği | IR ve kopyalama etkinliğinden itibaren kopyalama etkinliği arasındaki geçen süre, havuz veri deposunda kopyalama öncesi betiği yürütmeyi tamamlıyor. Veritabanı havuzları için kopyalama öncesi betiği yapılandırdığınızda, örneğin Azure SQL veritabanı 'na veri yazarken yeni verileri kopyalamaya başlamadan önce bu uygulamayı temizleyebilirsiniz. |

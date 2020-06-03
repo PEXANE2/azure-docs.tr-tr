@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2019
 ms.author: spelluru
-ms.openlocfilehash: fc5051667100a2ebaa01b7815f825fadd766b08f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8da33f5a553b4a671d9d7b9b223f77b301b8440b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75456981"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310283"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Azure DevTest Labs sanal makinesine yapıtlar uygulanırken sorunları giderme
 Yapıları bir sanal makineye uygulamak çeşitli nedenlerle başarısız olabilir. Bu makale, olası nedenleri belirlemenize yardımcı olmak için bazı yöntemlerle size rehberlik eder.
@@ -57,8 +57,9 @@ Aşağıdaki yöntemlerden birini kullanarak DevTest Labs ve Kaynak Yöneticisi 
 
 ## <a name="symptoms-causes-and-potential-resolutions"></a>Belirtiler, nedenler ve olası çözümler 
 
-### <a name="artifact-appears-to-hang"></a>Yapıt askıda görünüyor   
-Önceden tanımlanmış bir zaman aşımı süresi dolana kadar bir yapıt askıda kalır ve yapıt **başarısız**olarak işaretlenir.
+### <a name="artifact-appears-to-stop-responding"></a>Yapıt yanıt vermeyi durdurmuş gibi görünüyor
+
+Önceden tanımlanmış bir zaman aşımı süresi doluncaya ve yapıt **başarısız**olarak işaretlenene kadar bir yapıt yanıt vermeyi durdurmuş gibi görünür.
 
 Bir yapıtı asılı göründüğünde ilk olarak takılmış olduğunu saptayın. Yürütme sırasında aşağıdaki adımlardan birinde bir yapıt engellenebilir:
 
@@ -67,14 +68,14 @@ Bir yapıtı asılı göründüğünde ilk olarak takılmış olduğunu saptayı
     - Bu girişlerin altındaki hataları arayın. Bazen hata buna uygun şekilde etiketlenmez ve her bir girdiyi araştırmanız gerekir.
     - Her girişin ayrıntılarını incelerken, JSON yükünün içeriğini gözden geçirdiğinizden emin olun. Bu belgenin altında bir hata görebilirsiniz.
 - **Yapıt yürütülmeye çalışılırken**. Bu, ağ veya depolama sorunlarından dolayı olabilir. Ayrıntılar için bu makalenin devamındaki ilgili bölüme bakın. Ayrıca, betiğin yazıldığı gibi bir durum da oluşabilir. Örneğin:
-    - Bir PowerShell betiği **zorunlu parametrelere**sahiptir, ancak kullanıcının boş bırakmasını sağladığından veya artifactfile. JSON tanım dosyasında özellik için varsayılan bir değer olmadığından, bu değere bir değer geçirilemez. Komut dosyası, Kullanıcı girişi beklediği için askıda kalacak.
+    - Bir PowerShell betiği **zorunlu parametrelere**sahiptir, ancak kullanıcının boş bırakmasını sağladığından veya artifactfile. JSON tanım dosyasında özellik için varsayılan bir değer olmadığından, bu değere bir değer geçirilemez. Komut dosyası, Kullanıcı girişi beklediği için yanıt vermeyi durduracak.
     - Bir PowerShell betiği, yürütmenin parçası olarak **Kullanıcı girişi gerektirir** . Betiklerin, herhangi bir kullanıcı müdahalesi gerektirmeden sessizce çalışacak şekilde yazılması gerekir.
 - **VM aracısının hazırlanmaya uzun sürme**. VM ilk başlatıldığında veya özel Betik uzantısı ilk kez, yapıtları uygulamak için isteği sunacak şekilde yüklendiğinde, VM, VM Aracısı 'nı yükseltmeyi veya VM aracısının başlamasını beklemek isteyebilir. VM aracısının başlatılması uzun süren bir hizmet olabilir. Bu gibi durumlarda, daha fazla sorun giderme için bkz. [Azure sanal makine aracısına genel bakış](../virtual-machines/extensions/agent-windows.md) .
 
-### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-script"></a>Betik nedeniyle yapıtın askıda görünüp göründüğünü doğrulamak için
+### <a name="to-verify-if-the-artifact-appears-to-stop-responding-because-of-the-script"></a>Betik nedeniyle yapıtın yanıt vermeyi durdurmuş gibi göründüğünü doğrulamak için
 
 1. Söz konusu sanal makinede oturum açın.
-2. Betiği sanal makinede yerel olarak kopyalayın veya altında `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\<version>`sanal makinede bulun. Bu, yapıt betiklerinin indirileceği konumdur.
+2. Betiği sanal makinede yerel olarak kopyalayın veya altında sanal makinede bulun `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\<version>` . Bu, yapıt betiklerinin indirileceği konumdur.
 3. Yükseltilmiş bir komut istemi kullanarak, soruna neden olmak için aynı parametre değerlerini sağlayarak betiği yerel olarak yürütün.
 4. Betiğin istenmeyen davranışların olup olmadığını belirleme. Varsa, yapıt için bir güncelleştirme isteyin (ortak depodan ise); ya da düzeltmeleri kendiniz yapın (özel deponuz varsa).
 
@@ -83,7 +84,7 @@ Bir yapıtı asılı göründüğünde ilk olarak takılmış olduğunu saptayı
 > 
 > Kendi yapılarınızı yazma hakkında daha fazla bilgi için bkz. [AUTHORING.MD](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/AUTHORING.md) Document.
 
-### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-vm-agent"></a>VM Aracısı nedeniyle yapıtın askıda görünüp göründüğünü doğrulamak için:
+### <a name="to-verify-if-the-artifact-appears-to-stop-responding-because-of-the-vm-agent"></a>VM Aracısı nedeniyle yapıtın yanıt vermeyi durdur olarak görünüp göründüğünü doğrulamak için:
 1. Söz konusu sanal makinede oturum açın.
 2. Dosya Gezgini 'ni kullanarak **C:\windowsazure\logs dizinine**gidin.
 3. **Waappagent. log**dosyasını bulun ve açın.
@@ -119,7 +120,7 @@ Yukarıdaki hata, **yapıtları Yönet**altındaki **yapıt sonuçları** sayfas
 ### <a name="to-ensure-communication-to-the-azure-storage-service-isnt-being-blocked"></a>Azure depolama hizmeti ile iletişimin engellenmediğinden emin olmak için:
 
 - **Eklenen ağ güvenlik grupları (NSG) olup olmadığını denetleyin**. NSG 'lerin tüm sanal ağlarda otomatik olarak yapılandırıldığı bir abonelik ilkesi eklenmiş olabilir. Ayrıca, sanal makinelerin oluşturulması için kullanılan laboratuvar veya laboratuvarınızda yapılandırılmış başka bir sanal ağ olan varsayılan sanal ağı da etkiler.
-- **Varsayılan laboratuvarın depolama hesabını** (yani, laboratuvar oluşturulduğunda oluşturulan ilk depolama hesabı, adı genellikle "a" harfiyle başlar ve bir\<labname\># olan çok basamaklı bir sayıyla biter) denetleyin.
+- **Varsayılan laboratuvarın depolama hesabını** (diğer bir deyişle, laboratuvar oluşturulduğunda oluşturulan ilk depolama hesabı, adı genellikle "a" harfiyle başlar ve #) olan çok basamaklı bir sayıyla biter \<labname\> .
     1. Laboratuvarın kaynak grubuna gidin.
     2. Adı kuralıyla eşleşen **depolama hesabı**türü kaynağını bulun.
     3. **Güvenlik duvarları ve sanal ağlar**adlı depolama hesabı sayfasına gidin.
@@ -137,4 +138,3 @@ Daha az sık olası hata kaynakları vardır. Servis talebi için geçerli olup 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu hatalardan hiçbiri oluşmazsa ve yapıtları hala uygulayadıysanız, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.
-

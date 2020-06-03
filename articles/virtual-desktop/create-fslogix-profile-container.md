@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 06/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 294a59ed94344ecf590eb9b34f991deaaa10db69
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c2ffd22c8b3e3ca1786e0a1f905cd07d0568fcf2
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607393"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296366"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma
 
@@ -33,7 +33,7 @@ Bu kılavuzdaki yönergeler özellikle Windows sanal masaüstü kullanıcıları
 >[!NOTE]
 >Azure 'daki farklı FSLogix profili kapsayıcı depolama seçenekleri hakkında daha fazla bilgi arıyorsanız, bkz. [FSLogix profil kapsayıcıları Için depolama seçenekleri](store-fslogix-profile.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir konak havuzu için bir FSLogix profil kapsayıcısı oluşturabilmeniz için öncelikle şunları yapmanız gerekir:
 
@@ -132,7 +132,7 @@ Ardından, yeni bir birim oluşturmanız gerekir.
     - **Sanal ağ**için, açılan menüden etki alanı denetleyicisiyle bağlantısı olan var olan bir sanal ağı seçin.
     - **Alt ağ**altında **Yeni oluştur**' u seçin. Bu alt ağın Azure NetApp Files için temsilci olarak olacağını aklınızda bulundurun.
 
-3.  **Sonraki: \> ** protokol ' i seçerek protokol sekmesini açın ve birim erişim parametrelerinizi yapılandırın.
+3.  **Sonraki: \> \> ** protokol ' i seçerek protokol sekmesini açın ve birim erişim parametrelerinizi yapılandırın.
 
 ## <a name="configure-volume-access-parameters"></a>Birim erişim parametrelerini yapılandırma
 
@@ -158,19 +158,19 @@ Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için 
 
 2. İndirilen dosyayı sıkıştırmayı açın.
 
-3. Dosyasında **x64** > **sürümleri** ' ne gidin ve **fslogixappssetup. exe**' yi çalıştırın. Yükleme menüsü açılır.
+3. Dosyasında **x64**  >  **sürümleri** ' ne gidin ve **fslogixappssetup. exe**' yi çalıştırın. Yükleme menüsü açılır.
 
 4.  Ürün anahtarınız varsa, ürün anahtarı metin kutusuna girin.
 
 5. **Lisans hüküm ve koşullarını kabul**ediyorum seçeneğinin yanındaki onay kutusunu işaretleyin.
 
-6. **Yükle**’yi seçin.
+6. **Yükle**'yi seçin.
 
-7. Aracının yüklendiğini doğrulamak için **\\C:\\Program Files fslogix\\uygulamalarına** gidin.
+7. Aracının yüklendiğini doğrulamak için **C: \\ Program Files \\ fslogix \\ uygulamalarına** gidin.
 
 8. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın.
 
-9. **Bilgisayar\\HKEY_LOCAL_MACHINE\\yazılım\\fslogix**sayfasına gidin.
+9. **Bilgisayar \\ HKEY_LOCAL_MACHINE \\ yazılım \\ fslogix**sayfasına gidin.
 
 10. **Profiller**adlı bir anahtar oluşturun.
 
@@ -210,7 +210,7 @@ Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için 
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Kullanıcıların Azure NetApp dosya paylaşımında erişebildiğinizden emin olun
 
-1. Internet tarayıcınızı açın ve adresine gidin <https://rdweb.wvd.microsoft.com/arm/webclient>.
+1. Internet tarayıcınızı açın ve adresine gidin <https://rdweb.wvd.microsoft.com/arm/webclient> .
 
 2. Uzak Masaüstü grubuna atanan bir kullanıcının kimlik bilgileriyle oturum açın.
 
@@ -222,7 +222,7 @@ Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için 
 
 5. **Genel bakış** sekmesine gidin ve FSLogix profil kapsayıcısının boşluk kullandığını doğrulayın.
 
-6. Uzak Masaüstü 'Nü kullanarak konak havuzunun herhangi bir sanal makine bölümüne doğrudan bağlanın ve **dosya gezginini açın.** Sonra **bağlama yoluna** gidin (aşağıdaki örnekte, bağlama yolu ANF-SMB-3863.gt1107.onmicrosoft.com \\ \\\\ANF-Vol ' dır).
+6. Uzak Masaüstü 'Nü kullanarak konak havuzunun herhangi bir sanal makine bölümüne doğrudan bağlanın ve **dosya gezginini açın.** Sonra **bağlama yoluna** gidin (aşağıdaki örnekte, bağlama yolu \\ \\ ANF-SMB-3863.GT1107.ONMICROSOFT.com \\ ANF-Vol ' dır).
 
    Bu klasör içinde, aşağıdaki örnekte olduğu gibi bir profil VHD (veya VHDX) olmalıdır.
 
@@ -231,3 +231,5 @@ Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 FSLogix profil kapsayıcılarını kullanarak bir kullanıcı profili oluşturabilirsiniz. Yeni kapsayıcılarınız ile Kullanıcı profili paylaşımları oluşturmayı öğrenmek için bkz. bir [dosya paylaşımı kullanarak bir konak havuzu için profil kapsayıcısı oluşturma](create-host-pools-user-profile.md).
+
+Ayrıca, FSLogix profilinizi depolamak için bir Azure dosyaları dosya paylaşma da oluşturabilirsiniz. Daha fazla bilgi için bkz. [bir etki alanı denetleyicisiyle Azure dosyaları dosya paylaşma oluşturma](create-file-share.md).

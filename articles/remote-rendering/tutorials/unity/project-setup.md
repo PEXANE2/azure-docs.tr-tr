@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/30/2020
 ms.topic: tutorial
-ms.openlocfilehash: d68a3b1291d2e001c535a0c5a6b0c754c9d2b2e1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7901f12763cb97fa76c0908e76755247ae934a20
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021356"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300598"
 ---
 # <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>Öğretici: sıfırdan Unity projesi ayarlama
 
@@ -25,13 +25,16 @@ Bu öğreticide şunları öğreneceksiniz:
 > * Modeller bir işleme oturumuna yükleniyor.
 > * Bağlantı istatistikleri gösteriliyor.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide şunlar gerekir:
 
 * Hesap bilgileriniz (Hesap KIMLIĞI, hesap anahtarı, abonelik KIMLIĞI). Hesabınız yoksa [hesap oluşturun](../../how-tos/create-an-account.md).
 * Windows SDK 10.0.18362.0 [(İndir)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* Visual Studio 2019 ' un en son sürümü [(indirme)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* Visual Studio 2019 'nin en son sürümü [(indirme)](https://visualstudio.microsoft.com/vs/older-downloads/). 
+* [Karma gerçeklik Için Visual Studio Araçları](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). Özellikle, aşağıdaki *Iş yükü* yüklemeleri zorunludur:
+  * **C++ ile masaüstü geliştirme**
+  * **Evrensel Windows Platformu (UWP) geliştirme**
 * GIT [(İndir)](https://git-scm.com/downloads)
 * Unity 2019.3.1 [(indirme)](https://unity3d.com/get-unity/download)
   * Bu modülleri Unity 'ye yükler:

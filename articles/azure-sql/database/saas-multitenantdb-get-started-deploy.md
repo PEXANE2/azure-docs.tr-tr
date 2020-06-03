@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
-ms.openlocfilehash: 274f8d985304ee27776017dfee7d263df8271fbc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 59a7fbbd6f948ec5207522814a1375b806536810
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047107"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310096"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Parçalı bir çok kiracılı uygulamayı dağıtma ve araştırma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -47,7 +47,7 @@ Herkes, [GitHub deposundan][link-github-wingtip-multitenantdb-55g]Wingtip biletl
 
 Bu ilk dağıtımı üzerine inşa eden bir dizi ilgili öğretici vardır. Öğreticiler bir dizi SaaS tasarımı ve yönetim desenini keşfedebilir. Öğreticilerde çalışırken, farklı SaaS desenlerinin nasıl uygulandığını görmek için, belirtilen betiklerin içinde ilerletirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığından emin olun:
 
@@ -131,7 +131,7 @@ Merkezi bir **Olay Hub 'ı** Web sayfası, belirli dağıtımınızdaki kiracıl
 
 2. **Olay Hub’ında****Fabrikam Caz Kulübü**’ne tıklayın.
 
-   ![Olaylar](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
+   ![Ekinlikler](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
@@ -265,7 +265,7 @@ Bu öğreticide şunları öğrendiniz:
 > - Kiracı etkinliğini izlemek için havuz kullanımını görüntüleme.
 > - İlgili faturalandırmayı durdurmak için örnek kaynakları silme.
 
-Şimdi [sağlama ve Katalog öğreticisini](saas-dbpertenant-provision-and-catalog.md)deneyin.
+Şimdi [sağlama ve Katalog öğreticisini](saas-multitenantdb-provision-and-catalog.md)deneyin.
 
 
 <!--  Link references.

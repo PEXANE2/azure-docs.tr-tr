@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 383ad5e5063a0a207320a517c34f3b41cc57804a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7d95cc08595296d697618cbb3ff0025c7c212a1f
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067162"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296536"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure dosyaları ağ iletişimi konuları 
 Bir Azure dosya paylaşımının bağlantısını iki şekilde yapabilirsiniz:
@@ -51,7 +51,7 @@ Azure dosyaları, şirket içi iş istasyonlarınız ve sunucularınız ile Azur
 
 - [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md): VPN Gateway, bir Azure sanal ağı ile Internet üzerinden farklı bir konum (örneğin, şirket içi) arasında şifrelenmiş trafik göndermek için kullanılan belirli bir sanal ağ geçidi türüdür. Azure VPN Gateway, bir depolama hesabının veya diğer Azure kaynaklarının yanı bir şekilde bir kaynak grubuna dağıtılabilecek bir Azure kaynağıdır. VPN ağ geçitleri iki farklı bağlantı türünü kullanıma sunar:
     - Azure ile tek bir istemci arasındaki VPN bağlantıları olan [Noktadan siteye (P2S) VPN](../../vpn-gateway/point-to-site-about.md) ağ geçidi bağlantıları. Bu çözüm, genellikle kuruluşunuzun şirket içi ağına ait olmayan cihazlar için yararlıdır; Örneğin, Azure dosya paylaşımlarını yoldayken evden, kahve dükkanı veya otel 'tan bağlayabilmek ister. Azure dosyaları ile P2S VPN bağlantısı kullanmak için, bağlanmak isteyen her istemci için bir P2S VPN bağlantısının yapılandırılması gerekir. Bir P2S VPN bağlantısının dağıtımını basitleştirmek için bkz. Azure [dosyaları ile kullanmak üzere Windows üzerinde Noktadan siteye (P2S) VPN yapılandırma](storage-files-configure-p2s-vpn-windows.md) ve [Azure dosyaları Ile kullanmak Için Linux 'ta Noktadan siteye (P2S) VPN](storage-files-configure-p2s-vpn-linux.md)yapılandırma.
-    - Azure ile kuruluşunuzun ağı arasındaki VPN bağlantıları olan [siteden siteye (S2S) VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti). S2S VPN bağlantısı, Azure dosya paylaşımınıza erişmesi gereken her istemci cihaz için yerine, kuruluşunuzun ağında barındırılan bir VPN sunucusu veya cihazı için bir kez VPN bağlantısı yapılandırmanıza olanak sağlar. Bir S2S VPN bağlantısının dağıtımını basitleştirmek için bkz. [Azure dosyaları ile kullanmak Için siteden siteye (S2S) VPN yapılandırma](storage-files-configure-s2s-vpn.md).
+    - Azure ile kuruluşunuzun ağı arasındaki VPN bağlantıları olan [siteden siteye (S2S) VPN](../../vpn-gateway/design.md#s2smulti). S2S VPN bağlantısı, Azure dosya paylaşımınıza erişmesi gereken her istemci cihaz için yerine, kuruluşunuzun ağında barındırılan bir VPN sunucusu veya cihazı için bir kez VPN bağlantısı yapılandırmanıza olanak sağlar. Bir S2S VPN bağlantısının dağıtımını basitleştirmek için bkz. [Azure dosyaları ile kullanmak Için siteden siteye (S2S) VPN yapılandırma](storage-files-configure-s2s-vpn.md).
 - [ExpressRoute](../../expressroute/expressroute-introduction.md), Azure ile internet 'te geçiş olmayan şirket içi ağınız arasında tanımlı bir yol oluşturmanızı sağlar. ExpressRoute, şirket içi veri merkeziniz ile Azure arasında ayrılmış bir yol sağladığından, ExpressRoute, ağ performansı dikkate alındığı zaman yararlı olabilir. Kuruluşunuzun ilkesi veya mevzuata gereksinimleri, buluttaki kaynaklarınıza yönelik belirleyici bir yol gerektirdiğinde, ExpressRoute da iyi bir seçenektir.
 
 Azure dosya paylaşımlarınız için kullandığınız tünel yönteminden bağımsız olarak, depolama hesabınızın trafiğinin normal internet bağlantınız yerine tünelden geçmesinden emin olmak için bir mekanizmaya ihtiyacınız vardır. Depolama hesabının genel uç noktasına yönlendirmek Teknik olarak mümkündür, ancak depolama hesapları herhangi bir zamanda depolama kümeleri arasında taşınabildiğinden, bu durum, bir bölgedeki Azure depolama kümelerinin tüm IP adreslerini sabit kodlamaya ihtiyaç duyar. Bu, yeni kümelerin her zaman eklendiğinden, IP adresi eşlemelerinin sürekli güncelleştirilmesini de gerektirir.
@@ -71,18 +71,18 @@ Azure dosyaları ile özel uç noktalar kullanmak şunları yapmanızı sağlar:
 Özel bir uç nokta oluşturmak için bkz. [Azure dosyaları için özel uç noktaları yapılandırma](storage-files-networking-endpoints.md).
 
 ### <a name="private-endpoints-and-dns"></a>Özel uç noktalar ve DNS
-Özel bir uç nokta oluşturduğunuzda, varsayılan olarak alt `privatelink` etki alanına karşılık gelen BIR özel DNS bölgesi de oluşturur (veya var olan). Tam anlamda, depolama hesabınız için özel bir uç nokta kullanmak üzere özel bir DNS bölgesi oluşturmak gerekmez, ancak Azure dosya paylaşımınızı Active Directory bir Kullanıcı sorumlusu veya dosya Dosyasıapı 'sinden erişim için bağlama sırasında genel ve açıkça gerekli değildir.
+Özel bir uç nokta oluşturduğunuzda, varsayılan olarak alt etki alanına karşılık gelen bir özel DNS bölgesi de oluşturur (veya var olan) `privatelink` . Tam anlamda, depolama hesabınız için özel bir uç nokta kullanmak üzere özel bir DNS bölgesi oluşturmak gerekmez, ancak Azure dosya paylaşımınızı Active Directory bir Kullanıcı sorumlusu veya dosya Dosyasıapı 'sinden erişim için bağlama sırasında genel ve açıkça gerekli değildir.
 
 > [!Note]  
-> Bu makalede, `core.windows.net`Azure ortak bölgeleri için depolama hesabı DNS son eki kullanılmaktadır. Bu yorum, Azure ABD kamu bulutu ve Azure Çin bulutu gibi Azure Sogeign bulutları için de geçerlidir. ortamınız için uygun son ekleri yerine koyun. 
+> Bu makalede, Azure ortak bölgeleri için depolama hesabı DNS son eki kullanılmaktadır `core.windows.net` . Bu yorum, Azure ABD kamu bulutu ve Azure Çin bulutu gibi Azure Sogeign bulutları için de geçerlidir. ortamınız için uygun son ekleri yerine koyun. 
 
-Özel DNS bölgeniz için `storageaccount.privatelink.file.core.windows.net` bir kayıt ve depolama hesabının normal adı IÇIN bir CNAME kaydı oluşturacağız ve bu da bu kalıbı `storageaccount.file.core.windows.net`izler. Azure özel DNS bölgeniz özel uç noktasını içeren sanal ağa bağlı olduğundan, PowerShell 'den `Resolve-DnsName` cmdlet 'Ini BIR Azure sanal MAKINESINDE çağırarak DNS yapılandırmasını gözlemleyebilirsiniz (alternatif `nslookup` olarak Windows ve Linux 'ta):
+Özel DNS bölgeniz için bir kayıt `storageaccount.privatelink.file.core.windows.net` ve depolama hesabının normal adı için BIR CNAME kaydı oluşturacağız ve bu da bu kalıbı izler `storageaccount.file.core.windows.net` . Azure özel DNS bölgeniz özel uç noktasını içeren sanal ağa bağlı olduğundan, `Resolve-DnsName` PowerShell 'den cmdlet 'ini bir Azure sanal makinesinde ÇAĞıRARAK DNS yapılandırmasını gözlemleyebilirsiniz (alternatif `nslookup` olarak Windows ve Linux 'ta):
 
 ```powershell
 Resolve-DnsName -Name "storageaccount.file.core.windows.net"
 ```
 
-Bu örnekte, depolama hesabı `storageaccount.file.core.windows.net` özel uç NOKTANıN özel IP adresi olarak çözümlenmektedir. `192.168.0.4`
+Bu örnekte, depolama hesabı `storageaccount.file.core.windows.net` Özel uç noktanın özel IP adresi olarak çözümlenmektedir `192.168.0.4` .
 
 ```Output
 Name                              Type   TTL   Section    NameHost
@@ -109,7 +109,7 @@ TimeToExpiration       : 2419200
 DefaultTTL             : 300
 ```
 
-Aynı komutu şirket içinde çalıştırırsanız, aynı depolama hesabı adının bunun yerine depolama hesabının genel IP adresine çözümlendiğini görürsünüz; `storageaccount.file.core.windows.net` , IÇIN `storageaccount.privatelink.file.core.windows.net`bir CNAME kaydıdır, bu da depolama hesabını barındıran Azure Storage kümesi için bir CNAME kaydıdır:
+Aynı komutu şirket içinde çalıştırırsanız, aynı depolama hesabı adının bunun yerine depolama hesabının genel IP adresine çözümlendiğini görürsünüz; `storageaccount.file.core.windows.net`, için BIR CNAME kaydıdır `storageaccount.privatelink.file.core.windows.net` , bu da depolama hesabını barındıran Azure Storage kümesi IÇIN bir CNAME kaydıdır:
 
 ```Output
 Name                              Type   TTL   Section    NameHost
@@ -128,9 +128,9 @@ IP4Address : 52.239.194.40
 
 Bu, depolama hesabının hem genel uç nokta hem de bir veya daha fazla özel uç nokta sergileyebilecekleri gerçeğini yansıtır. Depolama hesabı adının özel uç noktanın özel IP adresine çözümlendiğinden emin olmak için, şirket içi DNS sunucularınızda yapılandırmayı değiştirmeniz gerekir. Bu, çeşitli yollarla gerçekleştirilebilir:
 
-- İstemcilerinizdeki ana bilgisayar dosyasını değiştirerek istenen özel uç `storageaccount.file.core.windows.net` NOKTANıN özel IP adresine çözüm sağlayın. Azure dosya paylaşımlarınızı bağlamak isteyen her istemcide bu değişiklikleri yapmanız gerektiğinden, depolama hesabında veya özel uç noktada yapılan değişiklikler otomatik olarak işlenmediğinden, bu, üretim ortamları için kesinlikle önerilmez.
-- Şirket içi DNS sunucularınızda için `storageaccount.file.core.windows.net` bir kayıt oluşturma. Bu, şirket içi ortamınızdaki istemcilerin her bir istemciyi yapılandırmaya gerek kalmadan depolama hesabını otomatik olarak çözümleyebilmesini sağlar, ancak bu çözüm, değişiklikler yansıtılmadığı için ana bilgisayar dosyasını değiştirmeye benzer şekilde Brittle. Bu çözüm Brittle olsa da, bazı ortamlar için en iyi seçenek olabilir.
-- Şirket içi `core.windows.net` DNS sunucularınızdaki bölgeyi Azure özel DNS bölgenize iletin. Azure özel DNS ana bilgisayarına yalnızca Azure özel DNS bölgesine bağlı sanal ağlardan erişilebilen`168.63.129.16`özel bir IP adresi () üzerinden erişilebilir. Bu sınırlamaya geçici bir çözüm olarak, Azure özel DNS bölgesine iletecek `core.windows.net` sanal ağınız IÇINDE ek DNS sunucuları çalıştırabilirsiniz. Bu ayarı basitleştirmek için, Azure sanal ağınızda DNS sunucularını otomatik olarak dağıtan ve istediğiniz gibi yapılandırabilecek PowerShell cmdlet 'leri sağladık. DNS iletmeyi ayarlamayı öğrenmek için bkz. [DNS 'ı Azure dosyaları Ile yapılandırma](storage-files-networking-dns.md).
+- İstemcilerinizdeki ana bilgisayar dosyasını değiştirerek `storageaccount.file.core.windows.net` istenen özel uç noktanın özel IP adresine çözüm sağlayın. Azure dosya paylaşımlarınızı bağlamak isteyen her istemcide bu değişiklikleri yapmanız gerektiğinden, depolama hesabında veya özel uç noktada yapılan değişiklikler otomatik olarak işlenmediğinden, bu, üretim ortamları için kesinlikle önerilmez.
+- Şirket içi DNS sunucularınızda için bir kayıt oluşturma `storageaccount.file.core.windows.net` . Bu, şirket içi ortamınızdaki istemcilerin her bir istemciyi yapılandırmaya gerek kalmadan depolama hesabını otomatik olarak çözümleyebilmesini sağlar, ancak bu çözüm, değişiklikler yansıtılmadığı için ana bilgisayar dosyasını değiştirmeye benzer şekilde Brittle. Bu çözüm Brittle olsa da, bazı ortamlar için en iyi seçenek olabilir.
+- Şirket `core.windows.net` ıçı DNS sunucularınızdaki bölgeyi Azure özel DNS bölgenize iletin. Azure özel DNS ana bilgisayarına `168.63.129.16` yalnızca Azure özel DNS bölgesine bağlı sanal ağlardan erişilebilen özel bır IP adresi () üzerinden erişilebilir. Bu sınırlamaya geçici bir çözüm olarak, `core.windows.net` Azure özel DNS bölgesine iletecek sanal ağınız içinde ek DNS sunucuları çalıştırabilirsiniz. Bu ayarı basitleştirmek için, Azure sanal ağınızda DNS sunucularını otomatik olarak dağıtan ve istediğiniz gibi yapılandırabilecek PowerShell cmdlet 'leri sağladık. DNS iletmeyi ayarlamayı öğrenmek için bkz. [DNS 'ı Azure dosyaları Ile yapılandırma](storage-files-networking-dns.md).
 
 ## <a name="storage-account-firewall-settings"></a>Depolama hesabı güvenlik duvarı ayarları
 Bir güvenlik duvarı, bir depolama hesabı için genel uç noktaya hangi isteklerin erişmelerine izin verileceğini denetleyen bir ağ ilkesidir. Depolama hesabı güvenlik duvarını kullanarak, depolama hesabının genel uç noktasına erişimi belirli IP adresleri veya aralıklarıyla veya bir sanal ağ ile kısıtlayabilirsiniz. Genel olarak, bir depolama hesabı için çoğu güvenlik duvarı ilkesi, ağ erişimini bir veya daha fazla sanal ağa kısıtlar. 

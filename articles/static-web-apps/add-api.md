@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: 1b2db92106e0dad79c90188c904b07d7bb1d7212
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 1720ea31c8f0b15485df194e62e463671d092b26
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258649"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310861"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Azure Işlevleri ile Azure statik Web Apps önizlemesine API ekleme
 
 Azure Işlevleri ile tümleştirme yoluyla, Azure statik Web Apps sunucusuz API 'Ler ekleyebilirsiniz. Bu makalede bir Azure statik Web Apps sitesine API ekleme ve dağıtma işlemlerinin nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan Azure hesabı.
   - Hesabınız yoksa, [ücretsiz olarak bir tane oluşturabilirsiniz](https://azure.microsoft.com/free).
@@ -127,7 +127,7 @@ Ardından, `GetMessage` işlevi ön uca bir ileti döndürecek şekilde değişt
 
 Yukarıdaki ayarlarla API uç noktası şu şekilde olur:
 
-- İşleve bir HTTP isteğiyle tetiklenen
+- İşleve bir HTTP isteği yapıldığında tetiklenir
 - Kimlik doğrulama durumundan bağımsız olarak tüm istekler için kullanılabilir
 - _/Api/Message_ yolu aracılığıyla sunulur
 
