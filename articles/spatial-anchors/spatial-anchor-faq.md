@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 02/24/2019
+ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 046e438304991c4af7ea4a208e51b7a695a5bf23
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 4bf55daa64319cfd47efd2e38a368d76f3814b4e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83004464"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296678"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure uzamsal bağlantıları hakkında sık sorulan sorular
 
@@ -61,8 +61,8 @@ Saydamlığın sağlanması için bir ortamın görüntüsü ve türetilmiş sey
 
 Azure uzamsal bağlantıları, [Azure hizmet sözleşmesi koşullarına](https://go.microsoft.com/fwLink/?LinkID=522330&amp;amp;clcid=0x9)ve [Microsoft gizlilik bildirimine](https://go.microsoft.com/fwlink/?LinkId=521839&amp;clcid=0x409)uyar.
 
-![Bir ortam ve onun türetilmiş seyrek nokta bulutu](./media/sparse-point-cloud.png)
-*Şekil 1: bir ortam ve onun türetilmiş seyrek nokta bulutu*
+![Bir ortam ve onun türetilmiş seyrek nokta bulutu ](./media/sparse-point-cloud.png)
+ *Şekil 1: bir ortam ve onun türetilmiş seyrek nokta bulutu*
 
 **S: Microsoft 'a tanılama bilgilerini gönderemem için bir yol var mı?**
 
@@ -72,21 +72,21 @@ Y **: Evet**. Azure uzamsal bağlayıcılarının, geliştiricilerin Azure uzams
 
 **S: bir SLA sağlayın mi?**
 
-Y **:** Azure hizmetleri için standart olduğu gibi,% 99,9 ' den büyük bir kullanılabilirliği hedefliyoruz. Azure uzamsal Çıpaların Şu anda önizleme aşamasında olduğunu ve [Önizleme ek koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'nın geçerli olduğunu unutmayın.
+Y **:** Azure hizmetleri için standart olduğu gibi,% 99,9 ' den büyük bir kullanılabilirliği hedefliyoruz. 
 
 **S: uygulamalarımı Azure uzamsal bağlayıcılarını uygulama mağazalarına kullanarak yayımlayabilirim miyim? Görev açısından kritik üretim senaryolarında Azure uzamsal bağlayıcılarını kullanabilir miyim?**
 
-Y **:** Azure uzamsal çıpası Şu anda önizleme aşamasındadır ve bu süre boyunca uygulama geliştirmeye, ürünle ilgili [geri bildirim sağlamanıza](https://feedback.azure.com/forums/919252-azure-spatial-anchors) ve üretim dağıtımlarınızı planlamaya davet ediyoruz.
-
-Genel kullanılabilirlik (GA) tarihleri yakında duyurulacak.
+Y **:** Evet, Azure uzamsal bağlantıları genel kullanıma sunulmuştur ve standart bir Azure Hizmetleri SLA 'sı vardır. Size üretim dağıtımlarınız için uygulama geliştirmeye davet ediyoruz ve ürünle ilgili [görüşlerinizi bizimle paylaşabilirsiniz](https://feedback.azure.com/forums/919252-azure-spatial-anchors) .
 
 **S: herhangi bir azaltma sınırlarınız var mı?**
 
-Y **: Evet**, azaltma sınırımız var.  Bunlara, tipik uygulama geliştirme ve test için ulaşacağız. Üretim dağıtımları için, müşterilerimizin yüksek ölçekli gereksinimlerini desteklemeye hazırız. Tartışmak için [bizimle Iletişim kurun](mailto:azuremrs@microsoft.com) . Bu önizleme aşamasında, katmanlama ve fiyatlandırma yapınızı henüz yayımladık, ancak bu işlemi yakında yapacağız.
+Y **: Evet**, azaltma sınırımız var.  Bunlara, tipik uygulama geliştirme ve test için ulaşacağız. Üretim dağıtımları için, müşterilerimizin yüksek ölçekli gereksinimlerini desteklemeye hazırız. Tartışmak için [bizimle Iletişim kurun](mailto:azuremrs@microsoft.com) . 
 
 **S: Azure uzamsal çıpası hangi bölgelerde kullanılabilir?**
 
-Y **:** Azure Doğu ABD 2 bölgesinde bugün bir Azure uzamsal bağlayıcı hesabı oluşturabilirsiniz. Bunun anlamı, bu hizmeti destekleyen işlem ve depolama alanının bu bölgede olduğunu gösterir. Bu şekilde, istemcilerinizin bulunduğu yerde bir kısıtlama yoktur. Gelecekte, hizmetin bölgesel kullanılabilirliğini tüm birincil Azure bölgelerine genişleteceğiz.
+Y **:** Azure uzamsal bağlayıcıları Şu anda Batı ABD 2, Doğu ABD, Doğu ABD 2, Orta Güney ABD, Batı Avrupa, Kuzey Avrupa, UK Güney ve Avustralya Doğu sürümünde kullanılabilir. Daha sonra ek bölgeler kullanılabilecektir.
+
+Bu, hem işlem hem de depolamanın bu hizmeti destekleyen bu bölgelerde olduğu anlamına gelir. Bu şekilde, istemcilerinizin bulunduğu yerde bir kısıtlama yoktur. 
 
 **S: Azure uzamsal Tutturucuların ücretlendirmi? Ücret ödemeniz gerekecek mi?**
 
