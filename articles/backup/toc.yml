@@ -123,6 +123,8 @@
               href: backup-azure-linux-app-consistent.md
         - name: Geri Yükleme
           items:
+            - name: Azure VM geri yükleme hakkında
+              href: about-azure-vm-restore.md
             - name: Portalda Azure VM’lerini geri yükleme
               href: backup-azure-arm-restore-vms.md
             - name: Azure VM yedeklerinden dosya kurtarma

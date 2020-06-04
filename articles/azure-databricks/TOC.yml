@@ -1188,6 +1188,8 @@
             - name: Kullanıcı tanımlı yol ayarları
               href: /azure/databricks/administration-guide/cloud-configurations/azure/udr
               maintainContext: true
+            - name: MySQL IP adresleri
+              href: mysql-ip-address.md
     - name: Sorun giderme
       items:
         - name: Sık sorulan sorular
