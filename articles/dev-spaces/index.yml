@@ -11,12 +11,12 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
   ms.date: 09/30/2019
-  ms.openlocfilehash: 752482e33573de4e466b7812616d03f04d2cf395
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: ea9865d35b25b5691f702b91c6255f0f703c3e90
+  ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78196221"
+  ms.lasthandoff: 06/03/2020
+  ms.locfileid: "84310045"
 landingContent:
 - title: Azure Dev Spaces Hakkında
   linkLists:
@@ -64,7 +64,7 @@ landingContent:
     links:
     - text: Azure Dev Spaces ile GitHub Eylemlerini Kullanma
       url: how-to/github-actions.md
-    - text: Geliştirme makinenizi AKS kümesine bağlama
-      url: how-to/connect.md
-    - text: Azure Dev Spaces kümenizi Helm 3 kullanacak şekilde yapılandırma
-      url: how-to/helm-3.md
+    - text: Visual Studio Code aracılığıyla Kubernetes ile Yerel İşlem Kullanma
+      url: how-to/local-process-kubernetes-vs-code.md
+    - text: Visual Studio aracılığıyla Kubernetes ile Yerel İşlem Kullanma
+      url: how-to/local-process-kubernetes-visual-studio.md

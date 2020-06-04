@@ -24,6 +24,8 @@
           href: work-remotely-support.md
         - name: NVA yapılandırmaları ve uzaktan çalışma
           href: nva-work-remotely-support.md
+    - name: VPN Gateway tasarımı hakkında
+      href: design.md
     - name: VPN Gateway ayarları hakkında
       href: vpn-gateway-about-vpn-gateway-settings.md
     - name: VPN cihazları hakkında

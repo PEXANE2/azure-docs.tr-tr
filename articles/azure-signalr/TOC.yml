@@ -73,6 +73,12 @@
       items:
         - name: Erişim anahtarı döndürme
           href: signalr-howto-key-rotation.md
+        - name: Azure Hizmet Etiketleri’ni kullanma
+          href: howto-service-tags.md
+        - name: Azure Özel Uç Noktalar'ı kullanma
+          href: howto-private-endpoints.md
+        - name: Ağ erişim denetimini yönetme
+          href: howto-network-access-control.md
     - name: Tümleştirme
       items:
         - name: Azure İşlevleri bağlamaları

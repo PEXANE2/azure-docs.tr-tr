@@ -61,11 +61,13 @@
         - name: HDInsight - ML Services
           href: ../../hdinsight/r-server/quickstart-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Key Vault
-          href: ../../key-vault/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+          href: ../../key-vault/secrets/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Load Balancer
           href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Yönetilen uygulama
           href: ../managed-applications/publish-service-catalog-app.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Machine Learning
+          href: ../../machine-learning/tutorial-resource-manager-workspace.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Notification Hubs
           href: ../../notification-hubs/create-notification-hub-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: İlke
@@ -81,7 +83,7 @@
         - name: Site Recovery
           href: ../../site-recovery/quickstart-create-vault-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: SQL Veritabanı
-          href: ../../sql-database/sql-database-single-database-get-started-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+          href: ../../azure-sql/database/single-database-create-arm-template-quickstart.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Sanal makine ölçek kümeleri - Linux
           href: ../../virtual-machine-scale-sets/quick-create-template-linux.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Sanal Makine Ölçek Kümelerine - Windows
@@ -164,6 +166,8 @@
   items:
     - name: Şablon en iyi uygulamalar
       href: template-best-practices.md
+    - name: Sık sorulan sorular
+      href: frequently-asked-questions.md
     - name: Bulut tutarlılığına yönelik şablonlar
       href: templates-cloud-consistency.md
     - name: Dağıtım modları

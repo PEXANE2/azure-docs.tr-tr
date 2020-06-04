@@ -69,6 +69,8 @@
       items:
         - name: Önyükleme tanılamaları
           href: boot-diagnostics.md
+        - name: Önyükleme Hatası - Disk Okuma Hatası Oluştu
+          href: boot-error-disk-read-error-occurred.md
         - name: BitLocker hataları
           href: troubleshoot-bitlocker-boot-error.md
         - name: Mavi ekran hataları

@@ -548,6 +548,9 @@
               href: msal-js-pass-custom-state-authentication-request.md
             - name: Komut istemi davranışı
               href: msal-js-prompt-behavior.md
+            - name: SPA’yı örtük durumdan kimlik doğrulaması akışına geçirme
+              href: migrate-spa-implicit-to-auth-code.md
+              displayName: 'authorization, single-page app, 2.0'
         - name: iOS ve macOS için MSAL
           items:
             - name: iOS ve macOS için MSAL farklılıkları
