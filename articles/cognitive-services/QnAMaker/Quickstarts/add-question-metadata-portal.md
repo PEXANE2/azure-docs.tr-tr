@@ -3,16 +3,16 @@ title: 'Hızlı başlangıç: Soru-Cevap Oluşturma portalına soru ve yanıt ek
 description: Bu hızlı başlangıçta, kullanıcılarınızın sorularınızın doğru yanıtını bulabilmesi için meta verilerle soru ve yanıt çiftleri ekleme gösterilmektedir.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e35f7437f0028fedffea7cbcb6216fb7e1fad1f8
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a832d9f421d3a1851401c286f129e29d0196ec99
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266585"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331398"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Hızlı başlangıç: Soru-Cevap Oluşturma portalı ile soru ve yanıt ekleme
 
-Bilgi Bankası oluşturulduktan sonra, yanıtı filtrelemek için meta verilerle soru ve cevap (QnA) çiftleri ekleyin. Aşağıdaki tablodaki sorular Azure hizmet limitleri ile ilgilidir, ancak her birinin farklı bir Azure hizmeti ile yapması gerekir.
+Bilgi Bankası oluşturulduktan sonra, yanıtı filtrelemek için meta verilerle soru ve cevap (QnA) çiftleri ekleyin. Aşağıdaki tablodaki sorular Azure hizmet limitleri ile ilgilidir, ancak her birinin farklı bir Azure Search hizmeti ile yapması gerekir.
 
 <a name="qna-table"></a>
 
@@ -27,7 +27,7 @@ Bir QnA çiftine meta veriler eklendikten sonra istemci uygulama şunları yapab
 * Tüm yanıtları al, ancak her yanıt için meta verilere bağlı olarak yanıtları son işle.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Önceki hızlı](./create-publish-knowledge-base.md) başlangıcı doldurun
 

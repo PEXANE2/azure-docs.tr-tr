@@ -1,20 +1,20 @@
 ---
 title: 'Hızlı başlangıç: toplu iş soruları ile test bilgi tabanı'
 description: Beklenen yanıtlar, güvenirlik puanları ve çok yönlü istemler için Soru-Cevap Oluşturma kaynaklarınızın bilgi temellerini test etmek üzere Soru-Cevap Oluşturma Batch test aracını kullanın.
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 05/26/2020
-ms.openlocfilehash: 9845b7c7cc19550c450a1eb00ec02731ef2d9d44
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 01c767a6fbea5061f644052234f7462857dd342b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873670"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337742"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Hızlı başlangıç: toplu sorularla ve beklenen yanıtlardan test Bilgi Bankası
 
 Beklenen yanıtlar, güvenirlik puanları ve çok yönlü istemler için Soru-Cevap Oluşturma kaynaklarınızın bilgi temellerini test etmek üzere Soru-Cevap Oluşturma Batch test aracını kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Soru-cevap oluşturma bir hizmet oluşturun](create-publish-knowledge-base.md) ya da İngilizce dilini kullanan mevcut bir hizmeti kullanın.
