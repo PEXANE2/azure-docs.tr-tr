@@ -1,5 +1,5 @@
 ---
-title: Multi-Factor AAD kimlik doğrulamasını kullanma
+title: Multi-Factor Azure Active Directory kimlik doğrulamasını kullanma
 description: Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics, Active Directory evrensel kimlik doğrulaması kullanarak SQL Server Management Studio (SSMS) bağlantılarını destekler.
 services: sql-database
 ms.service: sql-database
@@ -13,14 +13,14 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 04/23/2020
 tags: azure-synapse
-ms.openlocfilehash: 574999686c38ce4ce1e6d40b3148b70e3602fe00
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 607644a67fad966be25915e55a1bec83d70a1fe0
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041892"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344824"
 ---
-# <a name="using-multi-factor-aad-authentication"></a>Multi-Factor AAD kimlik doğrulamasını kullanma
+# <a name="using-multi-factor-azure-active-directory-authentication"></a>Multi-Factor Azure Active Directory kimlik doğrulamasını kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Azure SQL veritabanı, Azure yönetilen örneği ve Azure SYNAPSE Analytics, MFA kimlik doğrulamasıyla *Azure Active Directory-Universal* kullanarak SQL Server Management Studio (SSMS) bağlantılarını destekler. Bu makalede çeşitli kimlik doğrulama seçenekleri arasındaki farklar ve ayrıca evrensel kimlik doğrulaması kullanımıyla ilişkili sınırlamalar ele alınmaktadır.
@@ -42,11 +42,11 @@ Birçok farklı uygulamada (ADO.NET, JDCB, ODC vb.) kullanılabilecek iki etkile
 - `Azure Active Directory - Password`
 - `Azure Active Directory - Integrated`
 
-Azure Multi-Factor Authentication 'ı (MFA) de destekleyen etkileşimli Yöntem:`Active Directory - Universal with MFA`
+Azure Multi-Factor Authentication (MFA) de destekleyen etkileşimli yöntem şunlardır:`Active Directory - Universal with MFA`
 
 Azure MFA, kullanıcıların oturum açmaya yönelik basit işlem taleplerini karşılarken, verilere ve uygulamalara erişimi korumaya da yardımcı olur. Kolay doğrulama seçenekleriyle (telefon araması, SMS mesajı, PIN ile akıllı kartlar veya mobil uygulama bildirimi), kullanıcıların tercih ettikleri yöntemi seçebilmesine olanak tanıyan güçlü kimlik doğrulaması sağlar. Azure AD ile etkileşimli MFA, doğrulama için bir açılır iletişim kutusu ile sonuçlanabilir.
 
-Multi-Factor Authentication açıklaması için bkz. [Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md).
+Azure Multi-Factor Authentication 'nin bir açıklaması için bkz. [Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md).
 Yapılandırma adımları için bkz. [SQL Server Management Studio Için Azure SQL veritabanı Multi-Factor Authentication 'ı yapılandırma](authentication-mfa-ssms-configure.md).
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD etki alanı adı veya kiracı KIMLIĞI parametresi
@@ -80,7 +80,7 @@ Azure AD B2B senaryolarında Konuk Kullanıcı olarak desteklenen Azure AD kulla
 - [Azure Active Directory kimlik doğrulamasını SQL veritabanı veya Azure SYNAPSE ile yapılandırma ve yönetme](authentication-aad-configure.md)  
 - [Microsoft SQL Server Data-Tier Application Framework (17.0.0 GA)](https://www.microsoft.com/download/details.aspx?id=55088)  
 - [SQLPackage. exe](https://docs.microsoft.com/sql/tools/sqlpackage)  
-- [BACPAC dosyasını yeni bir Azure SQL Veritabanı’na içeri aktarma](database-import.md)  
-- [Azure SQL Veritabanı’nı bir BACPAC dosyasına dışarı aktarma](database-export.md)  
+- [BACPAC dosyasını yeni bir veritabanına aktarma](database-import.md)  
+- [BACPAC dosyasından veritabanını dışarı aktarma](database-export.md)  
 - C# arabirimi [ıüniversalauthprovider arabirimi](https://msdn.microsoft.com/library/microsoft.sqlserver.dac.iuniversalauthprovider.aspx)  
 - MFA kimlik doğrulamasıyla **Active Directory Universal** KULLANıRKEN, adal Izleme [SSMS 17,3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)ile başlayarak kullanılabilir. Varsayılan olarak, **Azure hizmetleri**, **Azure Cloud**, **adal çıkış penceresi izleme düzeyi**altındaki **Araçlar**, **Seçenekler** menüsünü ve ardından **Görünüm** menüsünde **çıktıyı** etkinleştirerek, adal izlemeyi açabilirsiniz. İzlemeler **Azure Active Directory seçenek**belirlendiğinde çıkış penceresinde kullanılabilir.  

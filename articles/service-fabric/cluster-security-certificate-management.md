@@ -4,12 +4,12 @@ description: X. 509.440 sertifikalarıyla güvenliği sağlanmış bir Service F
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: ecdeb5c9e30c176e2f3525f8efeb861d9210b202
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6be9cbe77ef5e64659e56447d0a5b6be30b05272
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196250"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324751"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric kümelerinde sertifika yönetimi
 
@@ -82,7 +82,8 @@ Bu konu, Key Vault [belgelerinde](../key-vault/create-certificate.md)ayrıntıl�
     - veren (sertifika yetkilisi) imzalı sertifikayla yanıt verdiğinde, sonuç kasayla birleştirilir ve sertifika aşağıdaki işlemler için kullanılabilir:
       - {vaultUri}/Certificates/{Name} altında: ortak anahtar ve meta verileri içeren sertifika
       - {vaultUri}/Keys/{Name} altında: sertifikanın özel anahtarı şifreleme işlemleri için kullanılabilir (sarmalama/sarmalama, imzala/doğrula)
-      - {vaultUri}/Secrets/{Name} altında: kendi özel anahtarı dahil olmak üzere, korumasız bir PFX veya pem dosyası olarak indirmek için kullanılabilen, bir kasa sertifikasının, kronolojik bir sertifika örnekleri, bir ilkeyi paylaşma, aslında bir, Sertifika sürümleri, ilkenin ömür ve yenileme özniteliklerine göre oluşturulacaktır. Kasa sertifikalarının konuları veya etki alanlarını/DNS adlarını paylaşmadığından kesinlikle önerilir; farklı kasalardan, aynı konularla, ancak veren, anahtar kullanımları vb. gibi farklı diğer özniteliklerle sertifika örnekleri sağlamak için bir kümede karışıklığa yol açabilir.
+      - {vaultUri}/Secrets/{Name} altında: özel anahtarı dahil, korumasız bir PFX veya pem dosyası olarak indirmek için kullanılabilir  
+    Bir kasa sertifikasının, aslında kronolojik bir sertifika örnekleri, bir ilkeyi paylaşılarak olduğunu unutmayın. Sertifika sürümleri, ilkenin ömür ve yenileme özniteliklerine göre oluşturulacaktır. Kasa sertifikalarının konuları veya etki alanlarını/DNS adlarını paylaşmadığından kesinlikle önerilir; farklı kasalardan, aynı konularla, ancak veren, anahtar kullanımları vb. gibi farklı diğer özniteliklerle sertifika örnekleri sağlamak için bir kümede karışıklığa yol açabilir.
 
 Bu noktada kasada bir sertifika mevcuttur, tüketim için hazırlanın. Onward:
 
@@ -202,7 +203,7 @@ Bu, böyle bir duruma karşılık gelen bir şablondan alınan bir JSON alıntı
   ]
 ```   
 
-Yukarıdaki temel olarak, parmak izine ```json [parameters('primaryClusterCertificateTP')] ``` sahip ve Anahtar Kasası URI ```json [parameters('clusterCertificateUrlValue')] ``` 'sinde bulunan sertifikanın, parmak izine göre kümenin tek sertifikası olarak bildirildiği belirtilir. Daha sonra, sertifikanın tekrar geçişine olanak sağlamak için gereken ek kaynakları ayarlayacağız.
+Yukarıdaki temel olarak, parmak izine sahip ```json [parameters('primaryClusterCertificateTP')] ``` ve anahtar KASASı URI 'sinde bulunan sertifikanın ```json [parameters('clusterCertificateUrlValue')] ``` , parmak izine göre kümenin tek sertifikası olarak bildirildiği belirtilir. Daha sonra, sertifikanın tekrar geçişine olanak sağlamak için gereken ek kaynakları ayarlayacağız.
 
 ### <a name="setting-up-prerequisite-resources"></a>Önkoşul kaynaklarını ayarlama
 Daha önce bahsedildiği gibi, sanal makine ölçek kümesi gizli dizisi olarak sağlanan bir sertifika, ilk taraf kimliği ve dağıtım operatörü adına kullanılarak Microsoft. COMPUTE kaynak sağlayıcısı hizmeti tarafından kasadan alınır. Değiştirilecek olan oto geçişi için, sanal makine ölçek kümesine atanan ve kasaların gizli dizileri için izin verilen yönetilen bir kimlik ile geçiş yapacağız.
@@ -414,7 +415,7 @@ Bu noktada, yukarıda belirtilen güncelleştirmeleri tek bir dağıtımda çal�
 Bu bölüm, yukarıda açıklanan adımları açıklayan ve önemli yönlere dikkat çekmek için bir catch-all ' dır.
 
 #### <a name="certificate-provisioning-explained"></a>Sertifika sağlama, açıklanma
-Bir sağlama Aracısı olarak KVVM uzantısı, önceden belirlenmiş bir sıklıkta sürekli olarak çalışır. Gözlemlenen bir sertifikayı almadığında, sıradaki bir sonraki satıra devam eder ve sonraki döngüye kadar bekler. Küme önyükleme Aracısı olarak SFVM uzantısı, kümenin Form oluşturmadan önce, belirtilen sertifikaları gerektirecektir. Bu, buna karşılık, SFVM uzantısının yalnızca, ```json "provisionAfterExtensions" : [ "KVVMExtension" ]"``` yan tümce ve KeyVaultVM uzantısının ```json "requireInitialSync": true``` ayarı tarafından belirtilen küme sertifikalarının başarıyla alındıktan sonra çalıştırılabileceği anlamına gelir. Bu, ilk çalıştırmada (dağıtımdan sonra veya yeniden başlatmadan sonra) tüm başarılı bir şekilde indirilene kadar gözlemlenen sertifikalarında geçiş yapılması gereken KVVM uzantısını belirtir. Bu parametrenin, küme sertifikalarını alma hatasıyla birlikte false olarak ayarlanması, küme dağıtımında hata oluşmasına neden olur. Buna karşılık, gözlemlenen sertifikaların hatalı/geçersiz listesiyle bir ilk eşitleme gerektirmek, KVVM uzantısının bir hatasına neden olur ve bu nedenle, kümeyi dağıtmaya yönelik bir hata oluşur.  
+Bir sağlama Aracısı olarak KVVM uzantısı, önceden belirlenmiş bir sıklıkta sürekli olarak çalışır. Gözlemlenen bir sertifikayı almadığında, sıradaki bir sonraki satıra devam eder ve sonraki döngüye kadar bekler. Küme önyükleme Aracısı olarak SFVM uzantısı, kümenin Form oluşturmadan önce, belirtilen sertifikaları gerektirecektir. Bu, buna karşılık, SFVM uzantısının yalnızca, ```json "provisionAfterExtensions" : [ "KVVMExtension" ]"``` yan tümce ve KeyVaultVM uzantısının ayarı tarafından belirtilen küme sertifikalarının başarıyla alındıktan sonra çalıştırılabileceği anlamına gelir ```json "requireInitialSync": true``` . Bu, ilk çalıştırmada (dağıtımdan sonra veya yeniden başlatmadan sonra) tüm başarılı bir şekilde indirilene kadar gözlemlenen sertifikalarında geçiş yapılması gereken KVVM uzantısını belirtir. Bu parametrenin, küme sertifikalarını alma hatasıyla birlikte false olarak ayarlanması, küme dağıtımında hata oluşmasına neden olur. Buna karşılık, gözlemlenen sertifikaların hatalı/geçersiz listesiyle bir ilk eşitleme gerektirmek, KVVM uzantısının bir hatasına neden olur ve bu nedenle, kümeyi dağıtmaya yönelik bir hata oluşur.  
 
 #### <a name="certificate-linking-explained"></a>Sertifika bağlama, açıklanacak
 KVVM uzantısının ' Linkonyenilemeye ' bayrağını ve false olarak ayarlandığını fark etmiş olabilirsiniz. Burada, bu bayrak tarafından denetlenen davranışın ve kümenin çalışmasına ilişkin etkilerine ilişkin ayrıntılı olarak adresliyoruz. Bu davranışın Windows 'a özgü olduğunu aklınızda yapın.
@@ -441,7 +442,7 @@ Her iki durumda da aktarım başarısız olur ve küme devam edebilir; Belirtile
 
 Bu tür olaylara karşı azaltmak için şunları yapmanızı öneririz:
   - farklı kasa sertifikalarının San 'larını karıştırmayın; Her kasa sertifikası ayrı bir amaç sunmalı ve bunların konusu ve SAN 'ı benzersiz bir şekilde yansıtmalıdır
-  - ilgili ortak adı SAN listesine ekleyin (as, harfine, "CN =<subject common name>")  
+  - ilgili ortak adı SAN listesine ekleyin (as, harfine, "CN = <subject common name> ")  
   - emin değilseniz, KVVM uzantısıyla sağlanan sertifikalar için yenileme bağlantısını devre dışı bırakın 
 
 #### <a name="why-use-a-user-assigned-managed-identity-what-are-the-implications-of-using-it"></a>Kullanıcı tarafından atanan yönetilen kimlik neden kullanılmalıdır? Kullanmanın etkileri nelerdir?

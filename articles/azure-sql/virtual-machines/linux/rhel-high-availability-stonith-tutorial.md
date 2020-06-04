@@ -1,5 +1,5 @@
 ---
-title: Azure 'da SQL Server RHEL sanal makinelerinde kullanılabilirlik grupları yapılandırma-Linux Sanal Makineleri | Microsoft Docs
+title: Azure-Linux sanal makinelerinde RHEL sanal makinelerinde SQL Server için kullanılabilirlik grupları yapılandırma | Microsoft Docs
 description: Bir RHEL küme ortamında yüksek kullanılabilirlik ayarlama ve STONITH ayarlama hakkında bilgi edinin
 ms.service: virtual-machines-linux
 ms.subservice: ''
@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 02/27/2020
-ms.openlocfilehash: 445ab97e2e980cdcafe333fa05a340c0e5fef24b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d323d89b13a89a8dd9f2dac6292a01215bf6068a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053690"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343804"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için kullanılabilirlik grupları yapılandırma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -21,12 +21,12 @@ ms.locfileid: "84053690"
 > [!NOTE]
 > Sunulan öğretici **genel önizlemede**. 
 >
-> Bu öğreticide RHEL 7,6 ile SQL Server 2017 kullanıyoruz, ancak HA 'yi yapılandırmak için RHEL 7 veya RHEL 8 ' de SQL Server 2019 kullanmak mümkündür. Kullanılabilirlik grubu kaynaklarını yapılandırma komutları RHEL 8 ' de değişmiştir ve doğru komutlar hakkında daha fazla bilgi için, [kullanılabilirlik grubu kaynağı](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) ve RHEL 8 kaynakları oluşturma makalesine bakmak isteyeceksiniz.
+> Bu öğreticide RHEL 7,6 ile SQL Server 2017 kullanıyoruz, ancak yüksek kullanılabilirliği yapılandırmak için RHEL 7 veya RHEL 8 ' de SQL Server 2019 kullanmak mümkündür. Kullanılabilirlik grubu kaynaklarını yapılandırma komutları RHEL 8 ' de değişmiştir ve doğru komutlar hakkında daha fazla bilgi için [kullanılabilirlik grubu kaynağı](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) ve RHEL 8 kaynakları oluşturma makalesine bakmak isteyeceksiniz.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> - Yeni bir kaynak grubu, kullanılabilirlik kümesi ve Azure Linux Sanal Makineleri (VM) oluşturma
+> - Yeni bir kaynak grubu, kullanılabilirlik kümesi ve Linux sanal makineleri (VM 'Ler) oluşturma
 > - Yüksek kullanılabilirliği etkinleştir (HA)
 > - Paceoluşturucu kümesi oluşturma
 > - Bir TNITH cihazı oluşturarak bir uçum Aracısı yapılandırma
@@ -35,7 +35,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Paceoluşturucu kümesindeki kullanılabilirlik grubu (AG) kaynaklarını yapılandırma
 > - Yük devretme ve sınırlama aracısını test etme
 
-Bu öğretici, Azure 'da kaynak dağıtmak için Azure komut satırı arabirimi 'ni (CLı) kullanır.
+Bu öğreticide Azure 'da kaynak dağıtmak için Azure CLı kullanılır.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -43,7 +43,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLı sürüm 2.0.30 veya sonraki bir sürümü gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Kaynak Grubu oluşturma
+## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
 Birden fazla aboneliğiniz varsa, bu kaynakları dağıtmak istediğiniz [aboneliği ayarlayın](/cli/azure/manage-azure-subscriptions-azure-cli) .
 
@@ -95,7 +95,7 @@ Komut tamamlandıktan sonra aşağıdaki sonuçları almanız gerekir:
 >
 > "Çift faturalandırılan" olmaması için, Azure VM oluştururken bir RHEL HA görüntüsü kullanın. RHEL-HA görüntüleri olarak sunulan görüntüler Ayrıca, HA deposu önceden etkin olan PAYG görüntüleridir.
 
-1. HA ile RHEL sağlayan sanal makine (VM) görüntülerinin bir listesini alın:
+1. RHEL 'yi HA ile sunan sanal makine görüntülerinin listesini alın:
 
     ```azurecli-interactive
     az vm image list --all --offer "RHEL-HA"
@@ -472,7 +472,7 @@ sudo firewall-cmd --reload
 
 ## <a name="install-sql-server-and-mssql-tools"></a>SQL Server ve MSSQL araçları 'nı yükler
  
-VM 'Lere SQL Server ve MSSQL araçları yüklemek için aşağıdaki bölümü kullanın. Tüm düğümlerde bu eylemlerin her birini gerçekleştirin. Daha fazla bilgi için bkz. [Red Hat VM 'sini SQL Server](/sql/linux/quickstart-install-connect-red-hat).
+VM 'Lere SQL Server ve MSSQL araçları yüklemek için aşağıdaki bölümü kullanın. Tüm düğümlerde bu eylemlerin her birini gerçekleştirin. Daha fazla bilgi için bkz. [Red Hat VM 'sine SQL Server](/sql/linux/quickstart-install-connect-red-hat).
 
 ### <a name="installing-sql-server-on-the-vms"></a>VM 'Lere SQL Server yükleme
 
@@ -531,13 +531,13 @@ Aşağıdaki çıktıyı görmeniz gerekir:
            └─11640 /opt/mssql/bin/sqlservr
 ```
 
-## <a name="configure-sql-server-always-on-availability-group"></a>SQL Server Always on kullanılabilirlik grubu yapılandırma
+## <a name="configure-an-availability-group"></a>Kullanılabilirlik grubu yapılandırma
 
-Sanal makinelerinize yönelik SQL Server Always on kullanılabilirlik grubunu yapılandırmak için aşağıdaki adımları kullanın. Daha fazla bilgi için bkz. [Linux üzerinde yüksek kullanılabilirlik için SQL Server Always on kullanılabilirlik grubu yapılandırma](/sql/linux/sql-server-linux-availability-group-configure-ha)
+Sanal makinelerinize yönelik SQL Server Always on kullanılabilirlik grubunu yapılandırmak için aşağıdaki adımları kullanın. Daha fazla bilgi için bkz. [Linux üzerinde yüksek kullanılabilirlik için SQL Server Always on kullanılabilirlik grupları yapılandırma](/sql/linux/sql-server-linux-availability-group-configure-ha)
 
-### <a name="enable-alwayson-availability-groups-and-restart-mssql-server"></a>AlwaysOn kullanılabilirlik gruplarını etkinleştirin ve MSSQL-Server 'ı yeniden başlatın
+### <a name="enable-always-on-availability-groups-and-restart-mssql-server"></a>Always on kullanılabilirlik grupları 'Nı etkinleştirin ve MSSQL-Server 'ı yeniden başlatın
 
-SQL Server örneğini barındıran her düğüm üzerinde AlwaysOn kullanılabilirlik grupları 'nı etkinleştirin. Sonra MSSQL-Server ' ı yeniden başlatın. Şu betiği çalıştırın:
+SQL Server örneğini barındıran her düğümde Always on kullanılabilirlik grupları 'Nı etkinleştirin. Sonra MSSQL-Server ' ı yeniden başlatın. Şu betiği çalıştırın:
 
 ```
 sudo /opt/mssql/bin/mssql-conf set hadr.hadrenabled 1
@@ -548,7 +548,7 @@ sudo systemctl restart mssql-server
 
 Şu anda AG uç noktasında AD kimlik doğrulamasını desteklemiyoruz. Bu nedenle, AG uç noktası şifrelemesi için bir sertifika kullanılmalıdır.
 
-1. SQL Server Management Studio (SSMS) veya SQL CMD kullanarak **tüm düğümlere** bağlanın. AlwaysOn_health oturumu etkinleştirmek ve bir ana anahtar oluşturmak için aşağıdaki komutları çalıştırın:
+1. SQL Server Management Studio (SSMS) veya SQL CMD kullanarak **tüm düğümlere** bağlanın. Bir AlwaysOn_health oturumu etkinleştirmek ve bir ana anahtar oluşturmak için aşağıdaki komutları çalıştırın:
 
     > [!IMPORTANT]
     > SQL Server örneğinize uzaktan bağlanıyorsanız, güvenlik duvarınız üzerinde 1433 numaralı bağlantı noktasını açmanız gerekir. Ayrıca, her VM için NSG bağlantı noktası 1433 ' e gelen bağlantılara izin vermeniz gerekir. Daha fazla bilgi için bkz. gelen güvenlik kuralı oluşturmak için [güvenlik kuralı oluşturma](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) .
@@ -566,19 +566,19 @@ sudo systemctl restart mssql-server
 1. SSMS veya SQL CMD kullanarak birincil çoğaltmaya bağlanın. Aşağıdaki komutlar, `/var/opt/mssql/data/dbm_certificate.cer` `var/opt/mssql/data/dbm_certificate.pvk` birincil SQL Server çoğaltmaınızla ilgili olarak bir sertifika ve bir özel anahtar oluşturacaktır:
 
     - Yerine `<Private_Key_Password>` kendi parolanızı koyun.
-
-```sql
-CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
-GO
-
-BACKUP CERTIFICATE dbm_certificate
-   TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
-   WITH PRIVATE KEY (
-           FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
-           ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
-       );
-GO
-```
+    
+    ```sql
+    CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
+    GO
+    
+    BACKUP CERTIFICATE dbm_certificate
+       TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
+       WITH PRIVATE KEY (
+               FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
+               ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
+           );
+    GO
+    ```
 
 Komutunu çalıştırarak SQL CMD oturumundan çıkın `exit` ve SSH oturumunuza geri dönün.
  
@@ -631,7 +631,7 @@ Komutunu çalıştırarak SQL CMD oturumundan çıkın `exit` ve SSH oturumunuza
 
 ### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>Tüm çoğaltmalarda veritabanı yansıtma uç noktalarını oluşturma
 
-SQL CMD veya SSMS kullanarak tüm SQL örneklerinde aşağıdaki betiği çalıştırın:
+SQL CMD veya SSMS kullanarak tüm SQL Server örneklerinde aşağıdaki betiği çalıştırın:
 
 ```sql
 CREATE ENDPOINT [Hadr_endpoint]
@@ -687,7 +687,7 @@ GO
 
 ### <a name="create-a-sql-server-login-for-pacemaker"></a>Pacemaker için SQL Server oturum açma oluşturma
 
-Tüm SQL sunucularında, pacemaker için bir SQL oturum açma oluşturun. Aşağıdaki Transact-SQL bir oturum açma oluşturur.
+Tüm SQL Server örneklerinde, pacemaker için SQL Server bir oturum açma oluşturun. Aşağıdaki Transact-SQL bir oturum açma oluşturur.
 
 - `<password>`Kendi karmaşık parolanızla değiştirin.
 
@@ -702,7 +702,7 @@ ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
 GO
 ```
 
-Tüm SQL Server 'Lar üzerinde SQL Server oturum açma için kullanılan kimlik bilgilerini kaydedin. 
+Tüm SQL Server örneklerinde, SQL Server oturum açmak için kullanılan kimlik bilgilerini kaydedin. 
 
 1. Dosyayı oluşturun:
 
@@ -745,7 +745,7 @@ Tüm SQL Server 'Lar üzerinde SQL Server oturum açma için kullanılan kimlik 
     GO
     ```
 
-1. Aşağıdaki Transact-SQL betiğini birincil çoğaltmada ve tüm ikincil çoğaltmalarda çalıştırın:
+1. Birincil çoğaltma ve her ikincil çoğaltma üzerinde aşağıdaki Transact-SQL betiğini çalıştırın:
 
     ```sql
     GRANT ALTER, CONTROL, VIEW DEFINITION ON AVAILABILITY GROUP::ag1 TO pacemakerLogin;
@@ -790,7 +790,7 @@ GO
 SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.dm_hadr_database_replica_states;
 ```
 
-`synchronization_state_desc`Liste IÇIN eşitlendiğinde `db1` , çoğaltmaların eşitlendiği anlamına gelir. İkincil öğeler `db1` birincil çoğaltmada gösteriliyor.
+`synchronization_state_desc`Listeleri IÇIN eşitlendiğinde `db1` , çoğaltmaların eşitlendiği anlamına gelir. İkincil öğeler `db1` birincil çoğaltmada gösteriliyor.
 
 ## <a name="create-availability-group-resources-in-the-pacemaker-cluster"></a>Pacemaker kümesinde kullanılabilirlik grubu kaynakları oluşturma
 
@@ -917,7 +917,7 @@ Daemon Status:
 
 Yapılandırmanın şimdiye kadar başarılı olduğundan emin olmak için bir yük devretmeyi test edeceğiz. Daha fazla bilgi için bkz. [Linux 'Ta Always on kullanılabilirlik grubu yük devretmesi](/sql/linux/sql-server-linux-availability-group-failover-ha).
 
-1. Birincil çoğaltmanın el ile yük devretmesi için aşağıdaki komutu çalıştırın `<VM2>` . `<VM2>`Sunucu adınızın değeriyle değiştirin.
+1. Birincil çoğaltmanın üzerinde el ile yük devretmek için aşağıdaki komutu çalıştırın `<VM2>` . `<VM2>`Sunucu adınızın değeriyle değiştirin.
 
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
@@ -985,7 +985,7 @@ Bir çit cihazını test etme hakkında daha fazla bilgi için aşağıdaki [Red
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL sunucularınız için bir kullanılabilirlik grubu dinleyicisinden yararlanmak üzere bir yük dengeleyici oluşturmanız ve yapılandırmanız gerekir.
+SQL Server örneklerinizin bir kullanılabilirlik grubu dinleyicisine yararlanmak için bir yük dengeleyici oluşturmanız ve yapılandırmanız gerekir.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için kullanılabilirlik grubu dinleyicisini yapılandırma](rhel-high-availability-listener-tutorial.md)
+> [Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için bir kullanılabilirlik grubu dinleyicisi yapılandırma](rhel-high-availability-listener-tutorial.md)

@@ -8,18 +8,18 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: 2f67bf0951ef8928297c71e8fc9f924cf05c63f4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c5880aac01e0611565afb825a61b682197baf5d6
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68932685"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344756"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUSıS uygulamaları için API v1-v2 geçiş kılavuzu
-Sürüm 1 [uç noktası](https://aka.ms/v1-endpoint-api-docs) ve [yazma](https://aka.ms/v1-authoring-api-docs) API 'leri kullanım dışıdır. Sürüm 2 [uç noktası](https://go.microsoft.com/fwlink/?linkid=2092356) ve [yazma](https://go.microsoft.com/fwlink/?linkid=2092087) API 'lerine nasıl geçiş yapılacağını anlamak için bu kılavuzu kullanın. 
+Sürüm 1 [uç noktası](https://aka.ms/v1-endpoint-api-docs) ve [yazma](https://aka.ms/v1-authoring-api-docs) API 'leri kullanım dışıdır. Sürüm 2 [uç noktası](https://go.microsoft.com/fwlink/?linkid=2092356) ve [yazma](https://go.microsoft.com/fwlink/?linkid=2092087) API 'lerine nasıl geçiş yapılacağını anlamak için bu kılavuzu kullanın.
 
 ## <a name="new-azure-regions"></a>Yeni Azure bölgeleri
 LUıS, LUıS API 'Leri için belirtilen yeni [bölgelere](https://aka.ms/LUIS-regions) sahiptir. LUSıS, bölge grupları için farklı bir portal sağlar. Uygulamanın, sorgulamak istediğiniz bölgede yazılması gerekir. Uygulamalar bölgeleri otomatik olarak geçirmez. Uygulamayı bir bölgeden dışarı aktarıp yeni bir bölgede kullanılabilir olması için başka bir bölgeden içeri aktarırsınız.
@@ -28,7 +28,7 @@ LUıS, LUıS API 'Leri için belirtilen yeni [bölgelere](https://aka.ms/LUIS-re
 Yazma API yolu, **API** yolunu kullanarak **Program** rotası kullanılarak değiştirilir.
 
 
-| version | yol |
+| sürüm | yol |
 |--|--|
 |1|/Luis/v1.0/**prog**/Apps|
 |2|/Luis/**API**/v2.0/Apps|
@@ -37,7 +37,7 @@ Yazma API yolu, **API** yolunu kullanarak **Program** rotası kullanılarak değ
 ## <a name="endpoint-route-changes"></a>Uç nokta rota değişiklikleri
 Endpoint API 'sinin yeni sorgu dizesi parametreleri ve farklı bir yanıt vardır. Verbose bayrağı true ise, puandan bağımsız olarak tüm amaçlar, topScoringIntent adlı bir dizide döndürülür.
 
-| version | Rotayı al |
+| sürüm | Rotayı al |
 |--|--|
 |1|/Luis/v1/Application? ID = {AppID} &q = {q}|
 |2|/Luis/v2.0/Apps/{AppID}? q = {q} [&Timezonekayması] [&verbose] [&spellCheck] [&hazırlama] [&Bing-yazım denetimi-abonelik-anahtar] [&günlüğü]|
@@ -107,17 +107,17 @@ v2 uç noktası başarı yanıtı:
 ## <a name="key-management-no-longer-in-api"></a>Anahtar yönetimi artık API 'de yok
 Abonelik uç noktası anahtar API 'Leri kullanımdan kalktı ve 410 döndürülüyor.
 
-| version | yol |
+| sürüm | yol |
 |--|--|
 |1|/Luis/v1.0/prog/abonelikler|
 |1|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-Azure [uç nokta anahtarları](luis-how-to-azure-subscription.md) Azure Portal oluşturulur. **[Yayımla](luis-how-to-azure-subscription.md)** SAYFASıNDA bir Luo uygulamasına anahtar atarsınız. Gerçek anahtar değerini bilmeniz gerekmez. LUSıS, atamayı yapmak için abonelik adını kullanır. 
+Azure [uç nokta anahtarları](luis-how-to-azure-subscription.md) Azure Portal oluşturulur. **[Yayımla](luis-how-to-azure-subscription.md)** SAYFASıNDA bir Luo uygulamasına anahtar atarsınız. Gerçek anahtar değerini bilmeniz gerekmez. LUSıS, atamayı yapmak için abonelik adını kullanır.
 
 ## <a name="new-versioning-route"></a>Yeni sürüm oluşturma yolu
 V2 modeli artık bir [sürümde](luis-how-to-manage-versions.md)yer alıyor. Bir sürüm adı, rotada 10 karakterdir. Varsayılan sürüm "0,1" dir.
 
-| version | yol |
+| sürüm | yol |
 |--|--|
 |1|/Luis/v1.0/**prog**/Apps/{AppID}/Entities|
 |2|/Luis/**API**/v2.0/Apps/{AppID}/**Versions**/{VersionId}/Entities|
@@ -136,7 +136,7 @@ LUıS meta verilerini döndüren bazı API 'Ler yeni adlara sahiptir.
 ## <a name="sample-renamed-to-suggest"></a>"Örnek", "öner" olarak yeniden adlandırıldı
 LUO, modeli geliştirebilecek mevcut [uç nokta dıklarından](luis-how-to-review-endpoint-utterances.md) gelen söylenme önerisinde bulunur. Önceki sürümde, bu **örnek**olarak adlandırılmıştır. Yeni sürümde, ad örnekten **önerecek**şekilde değiştirilir. Bu, LUSıS Web sitesinde **[Gözden geçirme uç noktası utbotları](luis-how-to-review-endpoint-utterances.md)** olarak adlandırılır.
 
-| version | yol |
+| sürüm | yol |
 |--|--|
 |1|/Luis/v1.0/**prog**/Apps/{AppID}/Entities/{EntityId}/**Sample**|
 |1|/Luis/v1.0/**prog**/Apps/{AppID}/Ints/{cütid}/**Sample**|
@@ -153,22 +153,22 @@ LUO, modeli geliştirebilecek mevcut [uç nokta dıklarından](luis-how-to-revie
 |/luis/api/v2.0/apps/customprebuiltdomains/{culture}  |get|
 
 ## <a name="importing-1x-app-into-2x"></a>1. x uygulamasını 2. x 'e aktarma
-Aktarılan 1. x uygulamasının JSON 'ı, [luın][LUIS] 2,0 'e aktarmadan önce değiştirmeniz gereken bazı alanlara sahiptir. 
+Aktarılan 1. x uygulamasının JSON 'ı, [luın][LUIS] 2,0 'e aktarmadan önce değiştirmeniz gereken bazı alanlara sahiptir.
 
-### <a name="prebuilt-entities"></a>Önceden oluşturulmuş varlıklar 
-[Önceden oluşturulmuş varlıklar](luis-prebuilt-entities.md) değiştirilmiştir. V2 önceden oluşturulmuş varlıkları kullandığınızdan emin olun. Bu, DateTime yerine [datetimeV2](luis-reference-prebuilt-datetimev2.md)kullanmayı içerir. 
+### <a name="prebuilt-entities"></a>Önceden oluşturulmuş varlıklar
+[Önceden oluşturulmuş varlıklar](luis-prebuilt-entities.md) değiştirilmiştir. V2 önceden oluşturulmuş varlıkları kullandığınızdan emin olun. Bu, DateTime yerine [datetimeV2](luis-reference-prebuilt-datetimev2.md)kullanmayı içerir.
 
 ### <a name="actions"></a>Eylemler
-Actions özelliği artık geçerli değil. Boş olmalıdır 
+Actions özelliği artık geçerli değil. Boş olmalıdır
 
 ### <a name="labeled-utterances"></a>Etiketlenmiş utterslar
-V1, sözcük veya tümceciğin başlangıcında veya sonunda boşluk içerecek şekilde etiketlendi. Boşluklar kaldırıldı. 
+V1, sözcük veya tümceciğin başlangıcında veya sonunda boşluk içerecek şekilde etiketlendi. Boşluklar kaldırıldı.
 
 ## <a name="common-reasons-for-http-response-status-codes"></a>HTTP yanıt durum kodlarının genel nedenleri
 Bkz. [LUSıS API yanıt kodları](luis-reference-response-codes.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-LUıS [uç noktası](https://go.microsoft.com/fwlink/?linkid=2092356) ve [yazma](https://go.microsoft.com/fwlink/?linkid=2092087) API 'lerine yönelik mevcut Rest ÇAĞRıLARıNı güncelleştirmek için v2 API belgelerini kullanın. 
+LUıS [uç noktası](https://go.microsoft.com/fwlink/?linkid=2092356) ve [yazma](https://go.microsoft.com/fwlink/?linkid=2092087) API 'lerine yönelik mevcut Rest ÇAĞRıLARıNı güncelleştirmek için v2 API belgelerini kullanın.
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

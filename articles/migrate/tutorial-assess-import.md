@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 484dfd7834a206dce6805dc38b0eabeae2ee352a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 519520538c16b1bde18f0810344864d37090accf
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82114573"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342655"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>İçeri aktarılan verileri kullanarak sunucuları değerlendirme
 
@@ -68,13 +68,13 @@ Yeni bir Azure geçişi projesi ayarlamak için:
 5. **Projeyi geçir** bölümünde Azure aboneliğinizi seçin ve henüz yapmadıysanız bir kaynak grubu oluşturun.
 6. **Proje ayrıntıları**' nda projeyi oluşturmak istediğiniz proje adını ve coğrafi konumu belirtin. Daha fazla bilgi için:
 
-    - [Kamu](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafi lıkları gözden geçirin.
+    - [Genel](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government) için desteklenen coğrafyaları inceleyin.
     - Bir geçiş çalıştırdığınızda herhangi bir hedef bölgeyi seçebilirsiniz.
 
     ![Azure geçişi projesi oluşturma](./media/tutorial-assess-import/migrate-project.png)
 
 7. **İleri**’yi seçin.
-8. **Değerlendirme Seç aracında** **Azure geçişi: Sunucu değerlendirmesi** > **İleri**' yi seçin.
+8. **Değerlendirme Seç aracında** **Azure geçişi: Sunucu değerlendirmesi**  >  **İleri**' yi seçin.
 
     ![Azure geçişi değerlendirmesi oluşturma](./media/tutorial-assess-import/assessment-tool.png)
 
@@ -88,7 +88,7 @@ CSV şablonunu indirin ve buna sunucu bilgilerini ekleyin.
 
 ### <a name="download-the-template"></a>Şablonu indirme
 
-1. **Geçiş hedefleri** > **sunucuları** > **Azure geçişi: Sunucu değerlendirmesi**' nde **bul**' u seçin.
+1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **bul**' u seçin.
 2. **Makine bul**' da **CSV kullanarak içeri aktar**' ı seçin.
 3. CSV şablonunu indirmek için **İndir** ' i seçin. Alternatif olarak, [doğrudan indirebilirsiniz](https://go.microsoft.com/fwlink/?linkid=2109031).
 
@@ -103,30 +103,31 @@ Sunucu verilerini toplayın ve CSV dosyasına ekleyin.
 
 Aşağıdaki tabloda, doldurulacak dosya alanları özetlenmektedir:
 
-**Alan adı** | **Zorunlu** | **Bilgileri**
+**Alan adı** | **Zorunlu** | **Ayrıntılar**
 --- | --- | ---
 **Sunucu adı** | Yes | Tam etki alanı adını (FQDN) belirtmeyi öneririz.
-**IP adresi** | Hayır | Sunucu adresi.
+**IP adresi** | No | Sunucu adresi.
 **Çekirdekler** | Yes | Sunucuya ayrılan işlemci çekirdekleri sayısı.
 **Bellek** | Yes | Sunucuya ayrılan toplam RAM (MB).
 **İşletim sistemi adı** | Yes | Sunucu işletim sistemi. <br/> [Bu](#supported-operating-system-names) listedeki adları eşleşen veya içeren işletim sistemi adları değerlendirme tarafından tanınır.
-**İşletim sistemi sürümü** | Hayır | Sunucu işletim sistemi sürümü.
-**Disk sayısı** | Hayır | Ayrı disk ayrıntıları sağlanmışsa gerekli değildir.
-**Disk 1 boyutu**  | Hayır | Maksimum disk boyutu (GB cinsinden).<br/>Şablona [sütun ekleyerek](#add-multiple-disks) daha fazla disk için ayrıntılar ekleyebilirsiniz. En fazla sekiz disk ekleyebilirsiniz.
-**Disk 1 okuma Ops** | Hayır | Saniye başına disk okuma işlemi.
-**Disk 1 yazma Ops** | Hayır | Saniye başına disk yazma işlemi.
-**Disk 1 okuma aktarım hızı** | Hayır | Diskten saniyede okunan veriler, MB/saniye cinsinden.
-**Disk 1 yazma aktarım hızı** | Hayır | Saniyede diske yazılan veriler (MB/saniye).
-**CPU kullanım yüzdesi** | Hayır | Kullanılan CPU yüzdesi.
-**Bellek kullanım yüzdesi** | Hayır | Kullanılan RAM yüzdesi.
-**Toplam disk okuma Ops** | Hayır | Saniye başına disk okuma işlemi.
-**Toplam disk yazma Ops** | Hayır | Saniye başına disk yazma işlemi.
-**Toplam disk okuma performansı** | Hayır | Diskten MB/saniye cinsinden okunan veriler.
-**Toplam disk yazma performansı** | Hayır | Diske yazılan veriler MB/saniye cinsinden.
-**Aktarım sırasında ağ** | Hayır | Sunucu tarafından saniyede MB cinsinden alınan veriler.
-**Ağ çıkış performansı** | Hayır | Sunucu tarafından saniye başına MB cinsinden aktarılan veriler.
-**Bellenim türü** | Hayır | Sunucu üretici yazılımı. Değerler "BIOS" veya "UEFı" olabilir.
-**MAC adresi**| Hayır | Sunucu MAC adresi.
+**İşletim sistemi sürümü** | No | Sunucu işletim sistemi sürümü.
+**İşletim sistemi mimarisi** | No | Sunucu işletim sistemi mimarisi <br/> Geçerli değerler şunlardır: x64, x86, AMD64, 32-bit veya 64 bit
+**Disk sayısı** | No | Ayrı disk ayrıntıları sağlanmışsa gerekli değildir.
+**Disk 1 boyutu**  | No | Maksimum disk boyutu (GB cinsinden).<br/>Şablona [sütun ekleyerek](#add-multiple-disks) daha fazla disk için ayrıntılar ekleyebilirsiniz. En fazla sekiz disk ekleyebilirsiniz.
+**Disk 1 okuma Ops** | No | Saniye başına disk okuma işlemi.
+**Disk 1 yazma Ops** | No | Saniye başına disk yazma işlemi.
+**Disk 1 okuma aktarım hızı** | No | Diskten saniyede okunan veriler, MB/saniye cinsinden.
+**Disk 1 yazma aktarım hızı** | No | Saniyede diske yazılan veriler (MB/saniye).
+**CPU kullanım yüzdesi** | No | Kullanılan CPU yüzdesi.
+**Bellek kullanım yüzdesi** | No | Kullanılan RAM yüzdesi.
+**Toplam disk okuma Ops** | No | Saniye başına disk okuma işlemi.
+**Toplam disk yazma Ops** | No | Saniye başına disk yazma işlemi.
+**Toplam disk okuma performansı** | No | Diskten MB/saniye cinsinden okunan veriler.
+**Toplam disk yazma performansı** | No | Diske yazılan veriler MB/saniye cinsinden.
+**Aktarım sırasında ağ** | No | Sunucu tarafından saniyede MB cinsinden alınan veriler.
+**Ağ çıkış performansı** | No | Sunucu tarafından saniye başına MB cinsinden aktarılan veriler.
+**Bellenim türü** | No | Sunucu üretici yazılımı. Değerler "BIOS" veya "UEFı" olabilir.
+**MAC adresi**| No | Sunucu MAC adresi.
 
 
 ### <a name="add-operating-systems"></a>İşletim sistemleri ekleme
@@ -171,14 +172,14 @@ Sunucu için verileri aynı **sunucu adıyla**yeniden içeri aktararak sunucu bi
 Azure portal, bulma sonrasında sunucuların göründüğünü doğrulamak için:
 
 1. Azure geçişi panosunu açın.
-2. **Azure geçişi-sunucular** > **Azure geçişi: Sunucu değerlendirmesi** sayfasında, **bulunan sunucuların**sayısını görüntüleyen simgeyi seçin.
+2. **Azure geçişi-sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi** sayfasında, **bulunan sunucuların**sayısını görüntüleyen simgeyi seçin.
 3. **Içeri aktarma tabanlı** sekmesini seçin.
 
 ## <a name="set-up-and-run-an-assessment"></a>Değerlendirme ayarlama ve çalıştırma
 
 Sunucu değerlendirmesi kullanarak iki tür değerlendirme oluşturabilirsiniz.
 
-**Değerlendirme türü** | **Bilgileri** | **Veri**
+**Değerlendirme türü** | **Ayrıntılar** | **Veri**
 --- | --- | ---
 **Performans tabanlı** | Belirtilen performans verileri değerlerini temel alan değerlendirmeler. | **ÖNERILEN VM boyutu**: CPU ve bellek kullanım verilerine göre.<br/><br/> **Önerilen disk türü (Standart veya Premium yönetilen disk)**: giriş/çıkış/sanıye (IOPS) ve şirket içi disklerin verimlilik temelinde.
 **Şirket içi olarak** | Şirket içi boyutlandırmayı temel alan değerlendirmeler. | **ÖNERILEN VM boyutu**: belirtilen sunucu boyutunu temel alır.<br/><br> **Önerilen disk türü**: değerlendirme için seçtiğiniz depolama türü ayarına göre.
@@ -192,7 +193,7 @@ Bir değerlendirme çalıştırmak için:
 
 3. **Sunucuları değerlendir**bölümünde, değerlendirme için bir ad belirtin.
 4. **Bulma kaynağı**' nda **Azure geçişi ' ne içeri aktarma yoluyla eklenen makineler**' i seçin.
-5. Değerlendirme özelliklerini gözden geçirmek için **Tümünü görüntüle** ' yi seçin.
+5. Değerlendirme özelliklerini gözden geçirmek için **Tümünü görüntüle**’yi seçin.
 
     ![Değerlendirme özellikleri](./media/tutorial-assess-physical/view-all.png)
 
@@ -202,7 +203,7 @@ Bir değerlendirme çalıştırmak için:
 
     ![Değerlendirme oluşturma](./media/tutorial-assess-physical/assessment-create.png)
 
-9. Değerlendirme oluşturulduktan sonra **sunucuları** > **Azure geçişi: Sunucu değerlendirmesi** > **değerlendirmeleri**' nde görüntüleyin.
+9. Değerlendirme oluşturulduktan sonra **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**  >  **değerlendirmeleri**' nde görüntüleyin.
 10. Bir Microsoft Excel dosyası olarak indirmek için **dışarı aktarma değerlendirmesi** ' ni seçin.
 
 ## <a name="review-an-assessment"></a>Değerlendirmeyi gözden geçirme
@@ -215,7 +216,7 @@ Bir değerlendirme şunları açıklar:
 
 ### <a name="view-an-assessment"></a>Değerlendirme görüntüleme
 
-1. **Geçiş hedefleri** > **sunucularında** **Azure geçişi: Sunucu değerlendirmesi**' nde **değerlendirmeler** ' ı seçin.
+1. **Geçiş hedefleri**  >  **sunucularında** **Azure geçişi: Sunucu değerlendirmesi**' nde **değerlendirmeler** ' ı seçin.
 2. **Değerlendirmede**, açmak için bir değerlendirme seçin.
 
     ![Değerlendirme özeti](./media/tutorial-assess-physical/assessment-summary.png)
@@ -233,7 +234,7 @@ Bir değerlendirme şunları açıklar:
 
 ### <a name="review-cost-details"></a>Maliyet ayrıntılarını gözden geçirin
 
-Bu görünüm Azure 'da çalışan VM 'lerin tahmini işlem ve depolama maliyetini gösterir. Şunları yapabilirsiniz:
+Bu görünüm Azure 'da çalışan VM 'lerin tahmini işlem ve depolama maliyetini gösterir. Seçenekleriniz şunlardır:
 
 - Aylık işlem ve depolama maliyetlerini gözden geçirin. Ücretler, değerlendirilen gruptaki tüm sunucular için toplanır.
 

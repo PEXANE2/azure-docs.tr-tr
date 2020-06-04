@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 06/02/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45ca11af061e37cf4f804ce2d7ceed72a9448294
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 608c8206227a129a320a560e752cf31a4843dca3
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393074"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321691"
 ---
 # <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Azure Active Directory self servis parola sıfırlama için lisans gereksinimleri
 
-Bir Kullanıcı cihazlarındaki veya bir uygulamada oturum açarken yardım masası çağrılarını ve üretkenlik kaybını azaltmak için, Azure Active Directory (Azure AD) içindeki kullanıcı hesapları self servis parola sıfırlama (SSPR) için etkinleştirilebilir. SSPR 'yi oluşturan Özellikler parola değiştirme, sıfırlama, kilidini açma ve bir şirket içi dizini geri yazma 'yı içerir. Temel SSPR özellikleri Office 365 ve tüm Azure AD kullanıcıları tarafından ücretsiz olarak kullanılabilir.
+Bir Kullanıcı cihazlarındaki veya bir uygulamada oturum açarken yardım masası çağrılarını ve üretkenlik kaybını azaltmak için, Azure Active Directory (Azure AD) içindeki kullanıcı hesapları self servis parola sıfırlama (SSPR) için etkinleştirilebilir. SSPR 'yi oluşturan Özellikler parola değiştirme, sıfırlama, kilidini açma ve bir şirket içi dizini geri yazma 'yı içerir. Temel SSPR özellikleri Microsoft 365 İş standart veya daha yüksek ve tüm Azure AD Premium SKU 'Larında ücretsiz olarak kullanılabilir.
 
 Bu makalede, self servis parola sıfırlamanın lisanslanması ve kullanılması için farklı yollar ayrıntılarıyla açıklanır. Fiyatlandırma ve faturalandırma hakkında belirli Ayrıntılar için bkz. [Azure AD fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -30,14 +30,14 @@ SSPR Kullanıcı başına lisanslanır. Uyumluluğun korunması için, kuruluşl
 
 Aşağıdaki tabloda parola değiştirme, sıfırlama veya şirket içi geri yazma için farklı SSPR senaryoları ve hangi SKU 'Ların özelliği sağladığı özetlenmektedir.
 
-| Özellik | Azure AD Ücretsiz | Office 365 İş Ekstra | Microsoft 365 İş | Azure AD Premium P1 veya P2 |
+| Öne çıkan özelliği | Azure AD Ücretsiz | Microsoft 365 İş standart | Microsoft 365 İş Premium | Azure AD Premium P1 veya P2 |
 | --- |:---:|:---:|:---:|:---:|
 | **Yalnızca bulutta bulunan Kullanıcı parolası değiştirme**<br />Azure AD 'deki bir Kullanıcı parolasını bilir ve yeni bir şekilde değiştirmek ister. | ● | ● | ● | ● |
 | **Yalnızca bulut Kullanıcı parolası sıfırlama**<br />Azure AD 'deki bir Kullanıcı parolasını unutursa ve sıfırlanması gerekir. | | ● | ● | ● |
 | **Karma Kullanıcı parolası, şirket içi geri yazma ile değiştirme veya sıfırlama**<br />Azure AD 'deki bir Kullanıcı Azure AD Connect kullanan bir şirket içi dizinden eşitlendiğinde, parolasını değiştirmek veya sıfırlamak ve ayrıca yeni parolayı yeniden şirket içi olarak yazmak ister. | | | ● | ● |
 
 > [!WARNING]
-> Tek başına Office 365 lisans planları, şirket içi geri yazma ile SSPR 'yi desteklemez. Bu Office 365 lisans planları, bu işlevin çalışması için Azure AD Premium P1, Premium P2 veya Microsoft 365 İş gerektirir.
+> Tek başına Microsoft 365 temel ve standart lisanslama planları, şirket içi geri yazma ile SSPR 'yi desteklemez. Şirket içi geri yazma özelliği Azure AD Premium P1, Premium P2 veya Microsoft 365 İş Premium gerektirir.
 
 Maliyetler de dahil olmak üzere ek lisans bilgileri için aşağıdaki sayfalara bakın:
 
@@ -51,7 +51,7 @@ Maliyetler de dahil olmak üzere ek lisans bilgileri için aşağıdaki sayfalar
 
 Azure AD, grup tabanlı lisanslamayı destekler. Yöneticiler, lisansları tek seferde atamak yerine bir kullanıcı grubuna toplu olarak atayabilirler. Daha fazla bilgi için bkz. [lisanslarla ilgili sorunları atama, doğrulama ve çözme](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
-Bazı Microsoft Hizmetleri tüm konumlarda kullanılamaz. Bir lisansın bir kullanıcıya atanabilmesi için, yöneticinin kullanıcı üzerinde **Kullanım konumu** özelliğini belirtmesi gerekir. Lisansların atanması Azure Portal **Kullanıcı** > **profili** > **ayarları** bölümünde yapılabilir. *Grup lisansı atamasını kullandığınızda, kullanım konumu belirtilmemiş tüm kullanıcılar dizinin konumunu alır.*
+Bazı Microsoft Hizmetleri tüm konumlarda kullanılamaz. Bir lisansın bir kullanıcıya atanabilmesi için, yöneticinin kullanıcı üzerinde **Kullanım konumu** özelliğini belirtmesi gerekir. Lisansların atanması Azure Portal **Kullanıcı**  >  **profili**  >  **ayarları** bölümünde yapılabilir. *Grup lisansı atamasını kullandığınızda, kullanım konumu belirtilmemiş tüm kullanıcılar dizinin konumunu alır.*
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

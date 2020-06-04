@@ -11,21 +11,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: c9b25912e1386520d61412a8ba05f6b02224fbe6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 10f4a0012076deef0757743f206f937ab43dc8b8
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046897"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345300"
 ---
-# <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde bellek Içi teknolojileri kullanarak performansı iyileştirin
+# <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde bellek içi teknolojileri kullanarak performansı iyileştirin
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 Bellek içi teknolojiler uygulamanızın performansını iyileştirebilmeniz ve veritabanınızın maliyetini büyük olasılıkla azaltmanızı sağlar.
 
 ## <a name="when-to-use-in-memory-technologies"></a>Bellek içi teknolojiler ne zaman kullanılır?
 
-Bellek Içi teknolojileri kullanarak, çeşitli iş yükleriyle performans iyileştirmeleri elde edebilirsiniz:
+Bellek içi teknolojileri kullanarak, çeşitli iş yükleriyle performans iyileştirmeleri elde edebilirsiniz:
 
 - **İşlem** (çevrimiçi işlem Işleme (OLTP)) çoğu istek, daha küçük veri kümesini okur veya güncelleştirir (ÖRNEĞIN, CRUD işlemleri).
 - Sorguların çoğunun raporlama amaçları için karmaşık hesaplamaları olduğu, mevcut tablolara veri yükleyen ve ekleyen (toplu yükleme olarak adlandırılır) veya tablolardaki verileri silen **analitik** (çevrimiçi analitik Işleme (OLAP)).
@@ -35,7 +35,7 @@ Bellek içi teknolojiler, bu iş yüklerinin performansını, sorguların yerel 
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure SQL veritabanı ve Azure SQL yönetilen örneği aşağıdaki bellek Içi teknolojilere sahiptir:
+Azure SQL veritabanı ve Azure SQL yönetilen örneği aşağıdaki bellek içi teknolojilere sahiptir:
 
 - *[Bellek ıçı OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)* , saniye başına işlem sayısını artırır ve işlem işleme gecikmesini azaltır. Bellek Içi OLTP 'dan faydalanabilir senaryolar: ticari ve oyun gibi yüksek performanslı işlem işleme, olaylardan veya IoT cihazlarından veri alımı, önbelleğe alma, veri yükleme ve geçici tablo ve tablo değişken senaryolarıdır.
 - *Kümelenmiş columnstore dizinleri* , depolama alanı parmak izini (10 kez) azaltır ve raporlama ve analiz sorguları için performansı geliştirir. Veritabanınıza daha fazla veri sığdırmak ve performansı artırmak için veri reyonlarınızdaki olgu tabloları ile birlikte kullanabilirsiniz. Ayrıca, onu arşivlemek ve 10 kat daha fazla veri sorgulayabilmeniz için işletimsel veritabanınızdaki geçmiş verilerle birlikte kullanabilirsiniz.
@@ -44,9 +44,9 @@ Azure SQL veritabanı ve Azure SQL yönetilen örneği aşağıdaki bellek Içi 
 
 Columnstore dizinleri ve bellek Içi OLTP, sırasıyla 2012 ve 2014 ' den beri SQL Server ürünün bir parçasıdır. Azure SQL veritabanı, Azure SQL yönetilen örneği ve SQL Server bellek içi teknolojilerin aynı uygulamasını paylaşır.
 
-## <a name="benefits-of-in-memory-technology"></a>Bellek Içi teknolojinin avantajları
+## <a name="benefits-of-in-memory-technology"></a>Bellek içi teknolojinin avantajları
 
-Daha verimli sorgu ve işlem işleme nedeniyle, bellek Içi teknolojiler de maliyeti azaltmanıza yardımcı olur. Performans kazancı elde etmek için genellikle veritabanının fiyatlandırma katmanını yükseltmeniz gerekmez. Bazı durumlarda, fiyatlandırma katmanını azaltabilir, ancak bellek içi teknolojilerle performans iyileştirmeleri görmeye devam edebilirsiniz.
+Daha verimli sorgu ve işlem işleme nedeniyle, bellek içi teknolojiler de maliyeti azaltmanıza yardımcı olur. Performans kazancı elde etmek için genellikle veritabanının fiyatlandırma katmanını yükseltmeniz gerekmez. Bazı durumlarda, fiyatlandırma katmanını azaltabilir, ancak bellek içi teknolojilerle performans iyileştirmeleri görmeye devam edebilirsiniz.
 
 Aşağıda, bellek Içi OLTP 'un performansı önemli ölçüde iyileştirmesine yardımcı olacak iki örnek verilmiştir:
 
@@ -67,7 +67,7 @@ Bu makalede, Azure SQL veritabanı ve Azure SQL yönetilen örneği 'ne özgü b
 - Farklı fiyatlandırma katmanları arasında bu teknolojileri kullanan veritabanlarının hareketini yönetme hakkında bilgi edineceksiniz.
 - Ayrıca, bellek Içi OLTP ve columnstore dizinlerinin kullanımını gösteren iki örnek görürsünüz.
 
-SQL Server bellek Içi hakkında daha fazla bilgi için bkz.:
+SQL Server bellek içi hakkında daha fazla bilgi için bkz.:
 
 - [Bellek ıçı OLTP genel bakış ve kullanım senaryoları](/sql/relational-databases/in-memory-oltp/overview-and-usage-scenarios) (müşteri örnek olay incelemeleri ve kullanmaya başlamak için bilgiler içerir)
 - [Bellek Içi OLTP için belgeler](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
@@ -111,7 +111,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 ### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>Bellek Içi OLTP için veri boyutu ve depolama alanı üst sınırı
 
-Bellek içi OLTP, Kullanıcı verilerini depolamak için kullanılan bellek için iyileştirilmiş tablolar içerir. Bu tabloların belleğe sığması gerekir. Belleği doğrudan SQL veritabanı hizmetinde yönetirken, Kullanıcı verileri için bir kota kavramımız vardır. Bu fikir, *bellek ıçı OLTP depolaması*olarak adlandırılır.
+Bellek içi OLTP, Kullanıcı verilerini depolamak için kullanılan bellek için iyileştirilmiş tablolar içerir. Bu tabloların belleğe sığması gerekir. Belleği doğrudan SQL veritabanı 'nda yönetirken, Kullanıcı verileri için bir kota kavramımız vardır. Bu fikir, *bellek ıçı OLTP depolaması*olarak adlandırılır.
 
 Desteklenen her tek veritabanı fiyatlandırma katmanı ve her elastik havuz fiyatlandırma katmanı, belirli bir bellek Içi OLTP depolama miktarı içerir.
 
@@ -142,7 +142,7 @@ Elastik havuzlarla, bellek Içi OLTP depolaması, havuzdaki tüm veritabanları 
 
 Veritabanınızı veya örneğinizi İş Açısından Kritik Genel Amaçlı gibi daha yüksek bir katmana (veya standart olarak Premium 'a) yükseltebilirsiniz. Kullanılabilir işlev ve kaynaklar yalnızca artar.
 
-Ancak katmanı daha eski sürüme dönüştürmek veritabanınızı olumsuz etkileyebilir. Veritabanı bellek içi OLTP nesneleri içerdiğinde İş Açısından Kritik ' den Genel Amaçlı (veya Premium ile standart ya da temel) sürümüne düşürülen etki oldukça görünür. Bellek için iyileştirilmiş tablolar, düşürme sonrasında (görünür kalsalar bile) kullanılamaz. Aynı noktalar, elastik bir havuzun fiyatlandırma katmanını azaltdığınızda veya bir veritabanını bellek Içi teknolojilerle Genel Amaçlı, standart veya temel elastik havuza taşırken geçerlidir.
+Ancak katmanı daha eski sürüme dönüştürmek veritabanınızı olumsuz etkileyebilir. Veritabanı bellek içi OLTP nesneleri içerdiğinde İş Açısından Kritik ' den Genel Amaçlı (veya Premium ile standart ya da temel) sürümüne düşürülen etki oldukça görünür. Bellek için iyileştirilmiş tablolar, düşürme sonrasında (görünür kalsalar bile) kullanılamaz. Aynı noktalar, elastik bir havuzun fiyatlandırma katmanını azaltdığınızda veya bir veritabanını bellek içi teknolojilerle Genel Amaçlı, standart veya temel elastik havuza taşırken geçerlidir.
 
 > [!Important]
 > Bellek içi OLTP Genel Amaçlı, standart veya temel katmanda desteklenmez. Bu nedenle, bellek Içi OLTP nesnelerine sahip bir veritabanını bu katmanlardan birine taşımak mümkün değildir.
@@ -183,7 +183,7 @@ Hedef katmanınız S3 altındaysa, *tek veritabanını temel veya Standart sür�
 **Kümelenmiş** bir columnstore dizininiz varsa, tüm tablo düşürme sonrasında kullanılamaz hale gelir. Bu nedenle, veritabanınızı desteklenmeyen bir katmana veya düzeye indirgeyebilmeniz için tüm *kümelenmiş* columnstore dizinlerini düşürmenizi öneririz.
 
 > [!Note]
-> Yönetilen örnek, tüm katmanlarda ColumnStore dizinlerini destekler.
+> SQL yönetilen örneği, tüm katmanlarda ColumnStore dizinlerini destekler.
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
 
@@ -192,7 +192,7 @@ Hedef katmanınız S3 altındaysa, *tek veritabanını temel veya Standart sür�
 - [Hızlı Başlangıç 1: daha hızlı T-SQL performansı için bellek Içi OLTP teknolojileri](https://msdn.microsoft.com/library/mt694156.aspx)
 - [Mevcut bir Azure SQL uygulamasında bellek Içi OLTP kullanın](in-memory-oltp-configure.md)
 - Bellek içi OLTP için [bellek ıçı OLTP depolama alanını izleme](in-memory-oltp-monitor-space.md)
-- [Bellek Içi özellikleri deneyin](in-memory-sample.md)
+- [Bellek içi özellikleri deneme](in-memory-sample.md)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
@@ -207,7 +207,7 @@ Hedef katmanınız S3 altındaysa, *tek veritabanını temel veya Standart sür�
 
 ### <a name="application-design"></a>Uygulama tasarımı
 
-- [Bellek içi OLTP (bellek Içi Iyileştirme)](https://msdn.microsoft.com/library/dn133186.aspx)
+- [Bellek içi OLTP (bellek içi iyileştirme)](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Mevcut bir Azure SQL uygulamasında bellek Içi OLTP kullanın](in-memory-oltp-configure.md)
 
 ### <a name="tools"></a>Araçlar

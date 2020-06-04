@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 75c25454451b733870f8a674b292cd131454f4d2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f3f4d49b42fa4b978db93fd3fee08e3f9017667e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045889"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342868"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server yük devretme kümesi örneği yapılandırma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -56,7 +56,7 @@ Kullandıkça Öde lisanslaması sayesinde, Azure sanal makinelerinde SQL Server
 
 Yazılım güvencesi içeren Kurumsal Anlaşma sahipseniz, her etkin düğüm için bir ücretsiz pasif FCı düğümü kullanabilirsiniz. Azure 'da Bu avantajdan faydalanmak için, KLG VM görüntülerini kullanın ve FCı 'nin hem etkin hem de pasif düğümlerinde aynı lisansı kullanın. Daha fazla bilgi için bkz. [Kurumsal Anlaşma](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx).
 
-Azure sanal makinelerinde SQL Server için Kullandıkça öde ve KLG lisanslamayı karşılaştırmak için bkz. [SQL VM 'leri kullanmaya başlama](sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-vms).
+Azure sanal makinelerinde SQL Server için Kullandıkça öde ve KLG lisanslamayı karşılaştırmak için bkz. [SQL VM 'leri kullanmaya başlama](sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms).
 
 Lisanslama SQL Server hakkında tüm bilgiler için bkz. [fiyatlandırma](https://www.microsoft.com/sql-server/sql-server-2017-pricing).
 
@@ -111,7 +111,7 @@ Bu önkoşulları yerine, yük devretme kümenizi oluşturmaya başlayabilirsini
 
    1. Azure portal Azure Marketi 'ni açmak için **kaynak oluştur** ' u seçin. **Kullanılabilirlik kümesi**araması yapın.
    1. **Kullanılabilirlik kümesi**seçin.
-   1. **Oluştur**’u seçin.
+   1. **Oluştur**'u seçin.
    1. **Kullanılabilirlik kümesi oluştur**altında şu değerleri girin:
       - **Ad**: kullanılabilirlik kümesi için bir ad.
       - **Abonelik**: Azure aboneliğiniz.
@@ -366,9 +366,9 @@ Yük dengeleyiciyi oluşturmak için:
 
 1. Azure portal, sanal makineleri içeren kaynak grubuna gidin.
 
-1. **Add (Ekle)** seçeneğini belirleyin. **Load Balancer**Için Azure Marketi 'nde arama yapın. **Load Balancer**seçin.
+1. **Ekle**'yi seçin. **Load Balancer**Için Azure Marketi 'nde arama yapın. **Load Balancer**seçin.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 1. Yük dengeleyiciyi şu şekilde yapılandırın:
 
@@ -402,7 +402,7 @@ Yük dengeleyiciyi oluşturmak için:
 
 1. Yük dengeleyici dikey penceresinde **sistem durumu araştırmaları**' nı seçin.
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**'yi seçin.
 
 1. **Sistem durumu araştırması Ekle** dikey penceresinde <a name="probe"></a> sistem durumu araştırma parametrelerini ayarlayın.
 
@@ -418,7 +418,7 @@ Yük dengeleyiciyi oluşturmak için:
 
 1. Yük dengeleyici dikey penceresinde **Yük Dengeleme kuralları**' nı seçin.
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**'yi seçin.
 
 1. Yük Dengeleme kuralı parametrelerini ayarlayın:
 

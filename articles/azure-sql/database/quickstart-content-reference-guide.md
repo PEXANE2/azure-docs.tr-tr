@@ -1,6 +1,6 @@
 ---
 title: Tek veritabanı hızlı başlangıç içeriği başvurusu
-description: Azure SQL veritabanı 'nda tek veritabanlarına hızlıca başlamanıza yardımcı olacak tüm hızlı başlangıçlara yönelik içerik başvurusunu bulun
+description: Azure SQL veritabanı 'nda tek veritabanlarını hızlıca kullanmaya başlamanıza yardımcı olacak tüm hızlı başlangıçlara yönelik içerik başvurusunu bulun.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,17 +11,17 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 07/29/2019
-ms.openlocfilehash: c4a699a6b531feee98f9c6f83ba19cfef9d27620
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3265b1f8234e1f2a2f19fb488d5c311e501c770e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054608"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338303"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek veritabanlarıyla çalışmaya başlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[Tek bir veritabanı](../index.yml) , modern bulut kaynaklı uygulamalar için ideal bir depolama altyapısı olan hizmet olarak veritabanı (DBaaS) tam olarak yönetilir. Bu bölümde, Azure SQL veritabanı 'nda tek bir veritabanını hızlı bir şekilde yapılandırmayı ve oluşturmayı öğreneceksiniz.
+[Tek bir veritabanı](../index.yml) , modern bulut kaynaklı uygulamalar için ideal depolama altyapısı olan bir hizmet olarak platform (PaaS) veritabanı (DbaaS) olan tam olarak yönetilen bir hizmet olarak platform (PaaS) hizmetidir. Bu bölümde, Azure SQL veritabanı 'nda tek bir veritabanını hızlı bir şekilde yapılandırmayı ve oluşturmayı öğreneceksiniz.
 
 ## <a name="quickstart-overview"></a>Hızlı başlangıca genel bakış
 
@@ -48,8 +48,8 @@ Bu hızlı başlangıç, bir dosya kullanarak veritabanınızı hızlı bir şek
 Aşağıdaki Microsoft Learn modülleri, Azure SQL veritabanı hakkında ücretsiz bilgi edinmenize yardımcı olur.
 
 - [Uygulama verilerini depolamak için SQL veritabanı 'nda veritabanı sağlama](https://docs.microsoft.com/learn/modules/provision-azure-sql-db/)
-- [Azure SQL veritabanı 'nı sorgulayan bir ASP.NET uygulaması geliştirin ve yapılandırın](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
-- [Azure SQL veritabanınızın güvenliğini sağlama](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
+- [Azure SQL veritabanı 'nda bir veritabanını sorgulayan bir ASP.NET uygulaması geliştirin ve yapılandırın](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
+- [Azure SQL veritabanı 'nda veritabanınızın güvenliğini sağlama](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -58,4 +58,4 @@ Aşağıdaki Microsoft Learn modülleri, Azure SQL veritabanı hakkında ücrets
 - [Azure SQL veritabanı 'nda tek bir veritabanının nasıl kullanılacağı](how-to-content-reference-guide.md)hakkında daha gelişmiş nasıl yapılır hakkında daha fazla bilgi edinin.
 - [PowerShell](powershell-script-content-guide.md) ve [Azure CLI](az-cli-script-samples-content-guide.md)'de yazılmış daha fazla örnek komut dosyası bulabilirsiniz.
 - Veritabanlarınızı yapılandırmak için kullanabileceğiniz [Yönetim API 'si](single-database-manage.md) hakkında daha fazla bilgi edinin.
-- Şirket [içi veritabanınız için doğru Azure SQL veritabanını veya SQL yönetilen örnek SKU 'Sunu belirler](/sql/dma/dma-sku-recommend-sql-db/).
+- Şirket [içi veritabanınız için doğru Azure SQL veritabanını veya Azure SQL yönetilen örnek SKU 'Sunu belirler](/sql/dma/dma-sku-recommend-sql-db/).

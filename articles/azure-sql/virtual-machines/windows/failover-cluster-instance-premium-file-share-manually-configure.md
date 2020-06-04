@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 60526dbeb3e221e6a2e4c6b900ff3a109d4cdf8f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 01787fbf3339a7e079b705fb4be27ba1e30aee1b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045966"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342890"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Azure sanal makinelerinde Premium dosya paylaşımıyla SQL Server yük devretme kümesi örneği yapılandırma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -64,7 +64,7 @@ Kullandıkça Öde lisanslaması sayesinde, Azure sanal makinelerinde SQL Server
 
 Yazılım güvencesi içeren Kurumsal Anlaşma sahipseniz, her etkin düğüm için bir ücretsiz pasif FCı düğümü kullanabilirsiniz. Azure 'da Bu avantajdan faydalanmak için, KLG VM görüntülerini kullanın ve FCı 'nin hem etkin hem de pasif düğümlerinde aynı lisansı kullanın. Daha fazla bilgi için bkz. [Kurumsal Anlaşma](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx).
 
-Azure sanal makinelerinde SQL Server için Kullandıkça öde ve KLG lisanslamayı karşılaştırmak için bkz. [SQL VM 'leri kullanmaya başlama](sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-vms).
+Azure sanal makinelerinde SQL Server için Kullandıkça öde ve KLG lisanslamayı karşılaştırmak için bkz. [SQL VM 'leri kullanmaya başlama](sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms).
 
 Lisanslama SQL Server hakkında tüm bilgiler için bkz. [fiyatlandırma](https://www.microsoft.com/sql-server/sql-server-2017-pricing).
 
@@ -72,7 +72,7 @@ Lisanslama SQL Server hakkında tüm bilgiler için bkz. [fiyatlandırma](https:
 
 Premium dosya paylaşımıyla yük devretme kümesi için FILESTREAM desteklenmez. FILESTREAM kullanmak için [depolama alanları doğrudan](failover-cluster-instance-storage-spaces-direct-manually-configure.md)kullanarak kümenizi dağıtın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlamadan önce, zaten şunları yapmalısınız:
 
@@ -102,7 +102,7 @@ Bu önkoşulları yerine, yük devretme kümenizi oluşturmaya başlayabilirsini
 
    1. Azure portal Azure Marketi 'ni açmak için **kaynak oluştur** ' u seçin. **Kullanılabilirlik kümesi**araması yapın.
    1. **Kullanılabilirlik kümesi**seçin.
-   1. **Oluştur**’u seçin.
+   1. **Oluştur**'u seçin.
    1. **Kullanılabilirlik kümesi oluştur**altında şu değerleri girin:
       - **Ad**: kullanılabilirlik kümesi için bir ad.
       - **Abonelik**: Azure aboneliğiniz.
@@ -331,9 +331,9 @@ Yük dengeleyiciyi oluşturmak için:
 
 1. Azure portal, sanal makineleri içeren kaynak grubuna gidin.
 
-1. **Add (Ekle)** seçeneğini belirleyin. **Load Balancer**Için Azure Marketi 'nde arama yapın. **Load Balancer**seçin.
+1. **Ekle**'yi seçin. **Load Balancer**Için Azure Marketi 'nde arama yapın. **Load Balancer**seçin.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 1. Aşağıdaki değerleri kullanarak yük dengeleyiciyi ayarlayın:
 
@@ -368,7 +368,7 @@ Yük dengeleyiciyi oluşturmak için:
 
 1. Yük dengeleyici dikey penceresinde **sistem durumu araştırmaları**' nı seçin.
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**'yi seçin.
 
 1. **Sistem durumu araştırması Ekle** dikey penceresinde aşağıdaki <span id="probe"> </span> sistem durumu araştırma parametrelerini ayarlayın.
 
@@ -384,7 +384,7 @@ Yük dengeleyiciyi oluşturmak için:
 
 1. Yük dengeleyici dikey penceresinde **Yük Dengeleme kuralları**' nı seçin.
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**'yi seçin.
 
 1. Yük Dengeleme kuralı parametrelerini ayarlayın:
 
@@ -459,7 +459,7 @@ Bağlantıyı sınamak için aynı sanal ağdaki başka bir sanal makinede oturu
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Azure sanal makineleri, kümelenmiş paylaşılan birimlerde (CSV) ve [Standart yük dengeleyicide](../../../load-balancer/load-balancer-standard-overview.md)depolama Ile Windows Server 2019 ' de Microsoft Dağıtılmış işlem DÜZENLEYICISI (MSDTC) ' i destekler.
+Azure sanal makineleri, Windows Server 2019 üzerinde, kümelenmiş paylaşılan birimler (CSV) ve [Standart yük dengeleyici](../../../load-balancer/load-balancer-standard-overview.md)üzerinde depolama ile Microsoft Dağıtılmış işlem DÜZENLEYICISI (MSDTC) destekler.
 
 Azure sanal makinelerde, Windows Server 2016 veya önceki sürümlerde MSDTC desteklenmez çünkü:
 

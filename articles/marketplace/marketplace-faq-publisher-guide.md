@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 1eae45eea35a118be51dc1e2f95055238212560d
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 79ca7381c1d06d897202320632b55f91e4a50d91
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800667"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340479"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Microsoft ticari Market hakkında sık sorulan sorular
 
@@ -274,9 +274,12 @@ Müşteriler, genellikle önceki fatura döngüsündeki tüm Satınalmalar için
 
 ### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>Ticari Market aracılığıyla satışa ne sıklıkta ödeme alabilirim?
 
-Ödemeler aylık gerçekleşir. Önceki ayda işlenen koleksiyonlar bir kez ödenir ve satış en düşük $50,00 Birleşik değerine sahip olmalıdır.
+Ödemeler aylık gerçekleşir. Ödeme zamanlamalarıyla ilgili ayrıntılar için, Iş Ortağı Merkezi 'nde yaklaşan ödemelerden ve müşteri ödemesiz müşterilere nasıl uğradığımızda bulabilirsiniz. ödeme [Ilkesi ayrıntılarına](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payout-policy-details)bakın.
 
-Kredi kartı abonelikleri ve satın alma işlemleri aylık olarak faturalandırılır ve bir Microsoft Müşteri Sözleşmesi veya Kurumsal Anlaşma faturaları daha seyrek olabilir. Müşterilerin faturalandırılmaları sırasında, bu kullanıcılara 30 gün sonra ödeme yaptık. Ödemeyi aldıktan sonra, kredi kartı işlemleri 30 günlük bir emanet dönemi içine gider.
+- Müşterinin bir Kurumsal Anlaşma kullandığı işlemler için, ödemeler sonraki ödeme ömrü 30 günlük Müşteri faturasında verilir. 
+- Müşterinin kredi kartı kullandığı işlemler için, fon 'nin net olmasını sağlamak ve geri ödeme veya şüpheli Sahtekarlık olmaması için ödeme aldıktan sonra ek 30 günlük bir emanet süresi vardır.
+
+Ödemeler yalnızca, satış en düşük $50,00 Birleşik değerine eriştiğinde verilir.
 
 Daha fazla bilgi için bkz. [ödeme eşikleri, Yöntemler ve zaman kareleri](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payment-thresholds-methods-timeframes).
 

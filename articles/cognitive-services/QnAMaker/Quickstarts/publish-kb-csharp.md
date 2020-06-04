@@ -4,13 +4,13 @@ description: Bu C# REST tabanlı hızlı başlangıç bilgileri, bilgi tabanın�
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 0a2f64795d82928e33a10c7e9d162f2333cdf7bf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 7eaa8d7f7d86e215ea2e9906075c27dd2916dcd5
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851712"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342757"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Hızlı başlangıç: C# kullanarak Soru-Cevap Oluşturma’da bilgi bankası yayımlama
 
@@ -19,11 +19,11 @@ Bu REST tabanlı hızlı başlangıç, bilgi bankanızı (KB) programlı bir şe
 Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 * [Publish](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish): Bu API için istek gövdesinde herhangi bir bilgi iletilmesi gerekmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * En son [**Visual Studio Community sürümü**](https://www.visualstudio.com/downloads/).
 * Bir [soru-cevap oluşturma hizmetiniz](../How-To/set-up-qnamaker-service-azure.md)olmalıdır. Anahtarınızı ve uç noktanızı (kaynak adını da içerir) almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin.
-* `kbid` Sorgu DIZESI parametresindeki URL 'de aşağıda gösterildiği gibi soru-cevap oluşturma bilgi BANKASı (KB) kimliği bulundu.
+* `kbid`Sorgu dizesi PARAMETRESINDEKI URL 'de aşağıda gösterildiği gibi soru-cevap oluşturma Bilgi Bankası (KB) kimliği bulundu.
 
     ![Soru-Cevap Oluşturma bilgi bankası kimliği](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
@@ -35,7 +35,7 @@ Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 ## <a name="create-knowledge-base-project"></a>Bilgi bankası projesi oluşturma
 
 1. Visual Studio 2019 Community Edition 'ı açın.
-1. Yeni bir **konsol uygulaması (.NET Core)** projesi oluşturun ve projeyi `QnaMakerQuickstart`adlandırın. Diğer ayarlar için varsayılan değerleri kabul edin.
+1. Yeni bir **konsol uygulaması (.NET Core)** projesi oluşturun ve projeyi adlandırın `QnaMakerQuickstart` . Diğer ayarlar için varsayılan değerleri kabul edin.
 
 ## <a name="add-required-dependencies"></a>Gerekli bağımlılıkları ekleme
 

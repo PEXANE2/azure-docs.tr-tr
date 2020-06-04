@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: 4ad793ee27d00359dd63f3394b8d7fd4a70b297f
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 9d3ba2f6106171b78584d74498df0bbe3d1306a6
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266687"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344807"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>SQL yönetilen örneği & Azure SQL veritabanı 'ndaki yenilikler nelerdir?
 
@@ -49,7 +49,7 @@ Bu tablo, terminoloji değişikliği için hızlı bir karşılaştırma sağlar
 
 ### <a name="azure-sql-database"></a>[Azure SQL Veritabanı](#tab/single-database)
 
-| Özellik | Ayrıntılar |
+| Öne çıkan özelliği | Ayrıntılar |
 | ---| --- |
 | Yeni Fsv2 serisi ve d serisi donanım nesilleri| Bilgi için bkz. [donanım nesilleri](service-tiers-vcore.md#hardware-generations).|
 | Tek veritabanları ve elastik havuzlarla hızlandırılmış veritabanı kurtarma | Bilgi için bkz. [hızlandırılmış veritabanı kurtarma](../accelerated-database-recovery.md).|
@@ -64,7 +64,7 @@ Bu tablo, terminoloji değişikliği için hızlı bir karşılaştırma sağlar
 
 ### <a name="azure-sql-managed-instance"></a>[Azure SQL Yönetilen Örnek](#tab/managed-instance)
 
-| Özellik | Ayrıntılar |
+| Öne çıkan özelliği | Ayrıntılar |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Örnek havuzları</a> | Daha küçük SQL örneklerini buluta geçirmek için kullanışlı ve uygun maliyetli bir yol. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Örnek düzeyi Azure AD sunucu sorumluları (oturum açmalar)</a> | <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Dış SAĞLAYıCıDAN oturum oluştur</a> ekstresini kullanarak örnek düzeyinde oturum açma oluşturun. |
@@ -90,7 +90,7 @@ Aşağıdaki özellikler, H1 2019 ' de SQL yönetilen örnek dağıtım modelind
   - <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 ve SharePoint 2019 </a> ile <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a> için destek
   - <a href="https://aka.ms/managed-instance-collation">Örnek düzeyi harmanlama</a> ve tercih ettiğiniz <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">zaman dilimi</a> ile SQL yönetilen örnekler oluşturun.
   - SQL yönetilen örnekler artık [yerleşik güvenlik duvarıyla](../managed-instance/management-endpoint-verify-built-in-firewall.md)korunuyor.
-  - SQL yönetilen örnekleri, [genel uç noktaları](../managed-instance/public-endpoint-configure.md)kullanacak şekilde yapılandırın, <a href="https://aka.ms/four-cores-sql-mi-update">5. nesil donanım oluşturma konusunda</a> daha iyi ağ performansı elde etmek için [proxy geçersiz kılma](connectivity-architecture.md#connection-policy) bağlantısı yapın veya en son nokta geri yükleme için <a href="https://aka.ms/managed-instance-configurable-backup-retention">35 güne kadar yedekleme bekletmesini yapılandırın</a> . [Uzun süreli yedek saklama](long-term-retention-overview.md#managed-instance-support) (10 yıla kadar) Şu anda sınırlı genel önizleme aşamasındadır.  
+  - SQL yönetilen örnekleri, [genel uç noktaları](../managed-instance/public-endpoint-configure.md)kullanacak şekilde yapılandırın, <a href="https://aka.ms/four-cores-sql-mi-update">5. nesil donanım oluşturma konusunda</a> daha iyi ağ performansı elde etmek için [proxy geçersiz kılma](connectivity-architecture.md#connection-policy) bağlantısı yapın veya en son nokta geri yükleme için <a href="https://aka.ms/managed-instance-configurable-backup-retention">35 güne kadar yedekleme bekletmesini yapılandırın</a> . [Uzun süreli yedek saklama](long-term-retention-overview.md#sql-managed-instance-support) (10 yıla kadar) Şu anda sınırlı genel önizleme aşamasındadır.  
   - Yeni işlevler, <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">PowerShell kullanarak veritabanınızı başka bir veri merkezine coğrafi olarak geri yükleme</a>, [veritabanını yeniden adlandırma](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), [sanal kümeyi silme](../managed-instance/virtual-cluster-delete.md)olanağı sağlar.
   - Yeni yerleşik [örnek katılımcısı rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) , güvenlik ilkelerine ve kurumsal standartlarla uyumluluğa sahip vergi (SOD) uyumluluğuna izin verebilir.
   - SQL yönetilen örneği, aşağıdaki Azure Kamu bölgelerinde GA (US Gov Teksas, US Gov Arizona) ve Çin Kuzey 2 ve Çin Doğu 2 ' ye kadar sunulmaktadır. Ayrıca, şu ortak bölgelerde de mevcuttur: Avustralya Orta, Avustralya Orta 2, Brezilya Güney, Fransa Güney, BAE Orta, BAE Kuzey, Güney Afrika Kuzey, Güney Afrika Batı.

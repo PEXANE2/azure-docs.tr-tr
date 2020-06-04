@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: f784d6ef56ad5cb800c0061fbb5d0d4ca3252fa0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d7f33dd782b46afa1aa3845d2acb5712a76ea420
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048234"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324207"
 ---
 # <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Azure SQL veritabanı 'nda R ve SQL verileriyle çalışma Machine Learning Services (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Bu makalede, verileri [Azure SQL veritabanı 'nda Machine Learning Services (r ile)](machine-learning-services-overview.md)içinde r ve SQL veritabanı arasında taşırken karşılaşabileceğiniz bazı yaygın sorunlar ele alınmaktadır. Bu alıştırmada elde ettiğiniz deneyim, kendi betikinizdeki verilerle çalışırken önemli bir arka plan sağlar.
+Bu makalede, [Azure SQL veritabanı 'nda Machine Learning Services (r ile)](machine-learning-services-overview.md)içinde r ve Azure SQL veritabanı arasında veri taşırken karşılaşabileceğiniz yaygın sorunlardan bazıları açıklanmaktadır. Bu alıştırmada elde ettiğiniz deneyim, kendi betikinizdeki verilerle çalışırken önemli bir arka plan sağlar.
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -35,7 +35,7 @@ Karşılaşabileceğiniz yaygın sorunlar şunlardır:
 - Atama ve dönüştürme işlemleri bazen gereklidir
 - R ve SQL farklı veri nesneleri kullanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/) .
 

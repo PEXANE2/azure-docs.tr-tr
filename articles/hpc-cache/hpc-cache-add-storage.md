@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: v-erkel
-ms.openlocfilehash: dde29d02f3dbf10ca068d6b3f1ef6c326c206370
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d08526334a9891788df63b156cdf65f55c587ca
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195052"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344943"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
@@ -22,6 +22,10 @@ Tek bir önbellek için en fazla on farklı depolama hedefi tanımlayabilirsiniz
 Depolama dışarı aktarımlarının, önbelleğinizin sanal ağından erişilebilir olması gerektiğini unutmayın. Şirket içi donanım depolaması için NFS depolama erişimi için konak adlarını çözebilen bir DNS sunucusu ayarlamanız gerekebilir. [DNS erişiminde](hpc-cache-prereqs.md#dns-access)daha fazla bilgi edinin.
 
 Önbelleğinizi oluşturduktan sonra depolama hedefleri ekleyin. Yordam, Azure Blob depolama veya NFS dışarı aktarma eklediğinize bağlı olarak biraz farklılık gösterebilir. Her biri için Ayrıntılar aşağıda verilmiştir.
+
+Önbellek oluşturma ve depolama hedefi ekleme hakkında bir [video tanıtımı](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) izlemek için aşağıdaki görüntüye tıklayın.
+
+[![video küçük resmi: Azure HPC Cache: Setup (video sayfasını ziyaret etmek için tıklayın)](media/video4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
 ## <a name="open-the-storage-targets-page"></a>Depolama hedefleri sayfasını açın
 
@@ -70,7 +74,7 @@ RBAC rolleri ekleme adımları:
 
 1. Depolama hesabı için **erişim denetimi (IAM)** sayfasını açın. ( **Depolama hedefi Ekle** sayfasındaki bağlantı, seçili hesap için otomatik olarak bu sayfayı açar.)
 
-1. **+** Sayfanın üst kısmındaki öğesine tıklayın ve **rol ataması Ekle**' yi seçin.
+1. Sayfanın üst kısmındaki öğesine tıklayın **+** ve **rol ataması Ekle**' yi seçin.
 
 1. Listeden "depolama hesabı katılımcısı" rolünü seçin.
 
@@ -149,15 +153,15 @@ Bu tablo, kullanım modeli farklarını özetler:
 
 | Kullanım modeli | Önbelleğe alma modu | Arka uç doğrulaması | En fazla geri yazma gecikmesi |
 | ---- | ---- | ---- | ---- |
-| Yoğun, seyrek okunan yazma işlemleri | Okuma | Hiçbir zaman | Hiçbiri |
-| %15 yazma boyutundan büyük | Okuma/yazma | Hiçbir zaman | 1 saat |
-| İstemcileri önbelleği atlar | Okuma | 30 saniye | Hiçbiri |
+| Yoğun, seyrek okunan yazma işlemleri | Okuma | Asla | Yok |
+| %15 yazma boyutundan büyük | Okuma/yazma | Asla | 1 saat |
+| İstemcileri önbelleği atlar | Okuma | 30 saniye | Yok |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Depolama hedefleri oluşturduktan sonra şu görevlerden birini göz önünde bulundurun:
 
-* [Azure HPC önbelleğini bağlama](hpc-cache-mount.md)
+* [Azure HPC Önbelleği’ni bağlama](hpc-cache-mount.md)
 * [Verileri Azure Blob depolamaya taşıma](hpc-cache-ingest.md)
 
 Herhangi bir ayarı güncelleştirmeniz gerekiyorsa, [bir depolama hedefini düzenleyebilirsiniz](hpc-cache-edit-storage.md).

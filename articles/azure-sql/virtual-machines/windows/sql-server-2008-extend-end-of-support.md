@@ -14,12 +14,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62ed33b8344d0d5a79cd956274c5f7ddd62a714a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6d96737e276dce69b7f3867ab16727119a38d4b1
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047247"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342453"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Azure ile SQL Server 2008 ve SQL Server 2008 R2 desteğini genişletme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -61,7 +61,7 @@ SQL Server, kurtarmayı güvence altına almak için uygulamayla tutarlı Azure 
 
 ### <a name="database-migration-service"></a>Veritabanı geçiş hizmeti
 
-[Veritabanı geçiş hizmeti](/azure/dms/dms-overview) , SQL Server 2012 sürümüne veya sonrasına yükselterek şirket Içinden BIR Azure VM 'ye geçiş yapıyorsanız müşteriler için bir seçenektir.
+[Azure veritabanı geçiş hizmeti](/azure/dms/dms-overview) , SQL Server 2012 sürümüne veya sonrasına yükselterek şirket Içinden BIR Azure VM 'ye geçiş yapıyorsanız müşteriler için bir seçenektir.
 
 ## <a name="disaster-recovery"></a>Olağanüstü durum kurtarma
 
@@ -74,7 +74,7 @@ Azure VM 'de EOS SQL Server için olağanüstü durum kurtarma çözümleri şun
 ## <a name="security-patching"></a>Güvenlik Düzeltme eki uygulama
 SQL Server VM 'Ler için genişletilmiş güvenlik güncelleştirmeleri, SQL Server VM SQL VM [kaynak sağlayıcısına](sql-vm-resource-provider-register.md)kaydedildikten sonra Microsoft Update kanalları aracılığıyla dağıtılır. Düzeltme ekleri el ile veya otomatik olarak indirilebilir.
 
-*Otomatik düzeltme eki uygulama* varsayılan olarak etkindir. Otomatik düzeltme eki uygulama Azure’un SQL Server’a ve işletim sistemine otomatik olarak düzeltme eki uygulamasını sağlar. SQL Server IaaS uzantısı yüklüyse, bakım penceresi için haftanın gününü, saatini ve süreyi belirtebilirsiniz. Azure düzeltme eki uygulamayı bu bakım penceresinde gerçekleştirir. Bakım penceresi zamanlaması saat için VM yerel saatini kullanır.  Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için otomatik düzeltme eki uygulama](automated-patching.md).
+*Otomatik düzeltme eki uygulama* varsayılan olarak etkindir. Otomatik düzeltme eki uygulama Azure’un SQL Server’a ve işletim sistemine otomatik olarak düzeltme eki uygulamasını sağlar. SQL Server IaaS uzantısı yüklüyse, bakım penceresi için haftanın gününü, saatini ve süreyi belirtebilirsiniz. Azure düzeltme eki uygulamayı bu bakım penceresinde gerçekleştirir. Bakım penceresi zamanlaması saat için VM yerel saatini kullanır. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için otomatik düzeltme eki uygulama](automated-patching.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

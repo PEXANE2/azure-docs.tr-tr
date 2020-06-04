@@ -13,17 +13,18 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 968cc9ed9d938bb04d1243102855c134147ddf3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7464a9d13e1ffccbc3fab3256fe6c7ab1cb10495
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81269882"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321505"
 ---
 # <a name="network-security-groups"></a>Ağ güvenlik grupları
 <a name="network-security-groups"></a>
 
 Azure sanal ağındaki Azure kaynaklarından gelen ve giden ağ trafiğini filtrelemek için Azure ağ güvenlik grubu ' nu kullanabilirsiniz. Bir ağ güvenlik grubu, Azure kaynaklarından oluşan çeşitli türlerden gelen ağ trafiğine veya giden ağ trafiğine izin veren veya reddeden [güvenlik kuralları](#security-rules) içerir. Her kural için kaynak, hedef, bağlantı noktası ve protokol belirtebilirsiniz.
+
 Bu makalede bir ağ güvenlik grubu kuralının özellikleri, uygulanan [varsayılan güvenlik kuralları](#default-security-rules) ve [genişletilmiş bir güvenlik kuralı](#augmented-security-rules)oluşturmak için değiştirebileceğiniz kural özellikleri açıklanmaktadır.
 
 ## <a name="security-rules"></a><a name="security-rules"></a>Güvenlik kuralları
@@ -32,9 +33,9 @@ Bir ağ güvenlik grubunda Azure abonelik [limitleri](../azure-resource-manager/
 
 |Özellik  |Açıklama  |
 |---------|---------|
-|Adı|Ağ güvenlik grubu içinde benzersiz bir ad.|
+|Name|Ağ güvenlik grubu içinde benzersiz bir ad.|
 |Öncelik | 100 ile 4096 arasında bir rakam. Kurallar öncelik sırasına göre işleme alınır ve düşük rakamlı kurallar daha yüksek önceliğe sahip olduğundan yüksek rakamlı kurallardan önce uygulanır. Trafik bir kuralla eşleştiğinde işlem durur. Bunun sonucunda yüksek önceliğe sahip olan kurallarla aynı özniteliklere sahip olan önceliği daha düşük olan (yüksek rakamlı) kurallar işleme alınmaz.|
-|Kaynak veya hedef| Herhangi bir IP adresi, sınıfsız etki alanları arası yönlendirme (CIDR) bloğu (10.0.0.0/24 gibi), [hizmet etiketi](service-tags-overview.md) veya [uygulama güvenlik grubu](#application-security-groups). Bir Azure kaynağı için adres belirtirken kaynağa atanmış olan özel IP adresini belirtmeniz gerekir. Ağ güvenlik grupları, Azure gelen trafik için genel IP adresini özel IP adresine çevirdikten sonra ve giden trafik için özel IP adresini genel IP adreslerine çevirmeden önce işleme alınır. Azure [IP adresleri](virtual-network-ip-addresses-overview-arm.md) hakkında daha fazla bilgi edinin. Aralık, hizmet etiketi veya uygulama güvenlik grubu belirterek daha az sayıda güvenlik kuralı oluşturabilirsiniz. Bir kuralda birden fazla IP adresi veya aralığı belirtme özelliği (birden fazla hizmet etiketi veya uygulama grubu belirtemezsiniz) [genişletilmiş güvenlik kuralı](#augmented-security-rules) olarak adlandırılır. Genişletilmiş güvenlik kuralları yalnızca Resource Manager dağıtım modeliyle oluşturulmuş olan ağ güvenlik gruplarında oluşturulabilir. Klasik dağıtım modeliyle oluşturulmuş olan ağ güvenlik gruplarında birden fazla IP adresi ve IP adresi aralığı belirtemezsiniz. [Azure dağıtım modelleri](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)hakkında daha fazla bilgi edinin.|
+|Kaynak veya hedef| Herhangi biri veya tek bir IP adresi, sınıfsız etki alanı içi yönlendirme (CIDR) bloğu (örneğin, 10.0.0.0/24), hizmet etiketi veya uygulama güvenlik grubu. Bir Azure kaynağı için adres belirtirken kaynağa atanmış olan özel IP adresini belirtmeniz gerekir. Ağ güvenlik grupları, Azure gelen trafik için genel IP adresini özel IP adresine çevirdikten sonra ve giden trafik için özel IP adresini genel IP adreslerine çevirmeden önce işleme alınır. . Aralık, hizmet etiketi veya uygulama güvenlik grubu belirterek daha az sayıda güvenlik kuralı oluşturabilirsiniz. Bir kuralda birden fazla IP adresi veya aralığı belirtme özelliği (birden fazla hizmet etiketi veya uygulama grubu belirtemezsiniz) [genişletilmiş güvenlik kuralı](#augmented-security-rules) olarak adlandırılır. Genişletilmiş güvenlik kuralları yalnızca Resource Manager dağıtım modeliyle oluşturulmuş olan ağ güvenlik gruplarında oluşturulabilir. Klasik dağıtım modeliyle oluşturulmuş olan ağ güvenlik gruplarında birden fazla IP adresi ve IP adresi aralığı belirtemezsiniz.|
 |Protokol     | TCP, UDP, ıCMP veya any.|
 |Yön| Kuralın gelen veya giden trafiğe uygulanma seçeneği.|
 |Bağlantı noktası aralığı     |Tek bir bağlantı noktası veya aralık belirtebilirsiniz. Örneğin 80 veya 10000-10005 değerini kullanabilirsiniz. Aralık belirterek oluşturmanız gereken güvenlik kuralı sayısını azaltabilirsiniz. Genişletilmiş güvenlik kuralları yalnızca Resource Manager dağıtım modeliyle oluşturulmuş olan ağ güvenlik gruplarında oluşturulabilir. Klasik dağıtım modeliyle oluşturulmuş olan ağ güvenlik gruplarında aynı güvenlik kuralı içinde birden fazla bağlantı noktası ve bağlantı noktası aralığı belirtemezsiniz.   |
@@ -53,19 +54,19 @@ Azure, oluşturduğunuz tüm ağ güvenlik gruplarına aşağıdaki varsayılan 
 
 ##### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Öncelik|Kaynak|Kaynak bağlantı noktaları|Hedef|Hedef bağlantı noktaları|Protokol|Erişim|
+|Öncelik|Kaynak|Kaynak bağlantı noktaları|Hedef|Hedef bağlantı noktaları|Protokol|Access|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Herhangi biri|İzin Ver|
 
 ##### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Öncelik|Kaynak|Kaynak bağlantı noktaları|Hedef|Hedef bağlantı noktaları|Protokol|Erişim|
+|Öncelik|Kaynak|Kaynak bağlantı noktaları|Hedef|Hedef bağlantı noktaları|Protokol|Access|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Herhangi biri|İzin Ver|
 
 ##### <a name="denyallinbound"></a>DenyAllInbound
 
-|Öncelik|Kaynak|Kaynak bağlantı noktaları|Hedef|Hedef bağlantı noktaları|Protokol|Erişim|
+|Öncelik|Kaynak|Kaynak bağlantı noktaları|Hedef|Hedef bağlantı noktaları|Protokol|Access|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Herhangi biri|Reddet|
 
@@ -73,19 +74,19 @@ Azure, oluşturduğunuz tüm ağ güvenlik gruplarına aşağıdaki varsayılan 
 
 ##### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Öncelik|Kaynak|Kaynak bağlantı noktaları| Hedef | Hedef bağlantı noktaları | Protokol | Erişim |
+|Öncelik|Kaynak|Kaynak bağlantı noktaları| Hedef | Hedef bağlantı noktaları | Protokol | Access |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Herhangi biri | İzin Ver |
 
 ##### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|Öncelik|Kaynak|Kaynak bağlantı noktaları| Hedef | Hedef bağlantı noktaları | Protokol | Erişim |
+|Öncelik|Kaynak|Kaynak bağlantı noktaları| Hedef | Hedef bağlantı noktaları | Protokol | Access |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | Herhangi biri | İzin Ver |
 
 ##### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Öncelik|Kaynak|Kaynak bağlantı noktaları| Hedef | Hedef bağlantı noktaları | Protokol | Erişim |
+|Öncelik|Kaynak|Kaynak bağlantı noktaları| Hedef | Hedef bağlantı noktaları | Protokol | Access |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Herhangi biri | Reddet |
 
@@ -148,7 +149,7 @@ Bir ağ arabirimi için [geçerli güvenlik kurallarını](virtual-network-netwo
 > Ağ güvenlik grupları, klasik dağıtım modelinde dağıtılan alt ağlar veya sanal makineler ve bulut Hizmetleri ile ve Kaynak Yöneticisi dağıtım modelindeki alt ağlar veya ağ arabirimleri ile ilişkilendirilir. Azure dağıtım modelleri hakkında daha fazla bilgi edinmek için bkz. [Azure dağıtım modellerini kavrama](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 > [!TIP]
-> Belirli bir nedeniniz yoksa bir ağ güvenlik grubunu bir alt ağ veya ağ arabirimi ile ilişkilendirmenizi ancak ikisiyle birden ilişkilendirmemenizi öneririz. Bir alt ağ ile ilişkilendirilmiş olan ağ güvenlik grubundaki kurallar bir ağ arabirimi ile ilişkilendirilmiş olan ağ güvenlik grubundaki kurallarla çakışabileceğinden çözmeniz gereken beklenmeyen iletişim sorunlarıyla karşılaşabilirsiniz.
+> İçin belirli bir nedeniniz yoksa, bir ağ güvenlik grubunu bir alt ağ veya ağ arabirimiyle ilişkilendirmenizi öneririz, ancak ikisini birden kullanamazsınız. Bir alt ağ ile ilişkilendirilmiş olan ağ güvenlik grubundaki kurallar bir ağ arabirimi ile ilişkilendirilmiş olan ağ güvenlik grubundaki kurallarla çakışabileceğinden çözmeniz gereken beklenmeyen iletişim sorunlarıyla karşılaşabilirsiniz.
 
 ## <a name="azure-platform-considerations"></a>Azure platformunda dikkat edilmesi gerekenler
 

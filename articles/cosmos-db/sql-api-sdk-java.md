@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 06/03/2020
 ms.author: anfeldma
-ms.openlocfilehash: 53ae3217e77a9301cbe0d3d63ce0712a0b9b7f1e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 799f38cff1c10da1b0d280121a7a5ab4a380152d
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171625"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331432"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Java SDK Azure Cosmos DB: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -47,6 +47,12 @@ Bu, zaman uyumlu işlemleri destekleyen SQL API 'SI için özgün Azure Cosmos D
 |**Desteklenen en düşük çalışma zamanı**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable)|
 
 ## <a name="release-notes"></a>Sürüm notları
+
+### <a name="251"></a><a name="2.5.1"></a>2.5.1
+* DocumentCollection sorgusunda ana bölüm önbelleği sorununu düzeltir.
+
+### <a name="250"></a><a name="2.5.0"></a>2.5.0
+* 449 için yeniden deneme özel yapılandırma desteği eklendi.
 
 ### <a name="247"></a><a name="2.4.7"></a>2.4.7
 * Bağlantı havuzu zaman aşımı sorununu düzeltir.
@@ -268,6 +274,8 @@ Kullanımdan kaldırılan bir SDK 'Yı kullanarak Cosmos DB istek, hizmet taraf�
 
 | Sürüm | Yayın Tarihi | Emeklilik tarihi |
 | --- | --- | --- |
+| [2.5.1](#2.5.1) |03 Haziran 2020 |--- |
+| [2.5.0](#2.5.0) |12 Mayıs 2020 |--- |
 | [2.4.7](#2.4.7) |20 Şubat 2020 |--- |
 | [2.4.6](#2.4.6) |24 Ocak 2020 |--- |
 | [2.4.5](#2.4.5) |10 Kasım 2019 |--- |

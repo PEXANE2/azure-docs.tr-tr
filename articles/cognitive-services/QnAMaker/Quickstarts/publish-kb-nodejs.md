@@ -4,13 +4,13 @@ description: Bu hızlı başlangıçta, Node. js için Soru-Cevap Oluşturma RES
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: ecc3fb144fb4b4e27182567925199f841b1c4357
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: b42bc3be0d425a84da8bb545ebb29e261a6b0780
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851679"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342740"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Hızlı başlangıç: node. js için REST API 'Leri Soru-Cevap Oluşturma
 
@@ -25,11 +25,11 @@ Node. js için Soru-Cevap Oluşturma REST API 'Lerini kullanarak şunları yapı
 * Bilgi Bankası indirin
 * İşlemin durumunu al
 
-[Başvuru belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Node. js örnekleri](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
+[Başvuru belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [Node. js örnekleri](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Node. js](https://nodejs.org)' nin geçerli sürümü.
@@ -41,7 +41,7 @@ Node. js için Soru-Cevap Oluşturma REST API 'Lerini kullanarak şunları yapı
 
 Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak soru-cevap oluşturma için bir kaynak oluşturun.
 
-Kaynağından bir anahtar aldıktan sonra, ve `QNAMAKER_RESOURCE_KEY` `QNAMAKER_AUTHORING_ENDPOINT`adlı kaynak için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) . Azure portal kaynağın **hızlı başlangıç** sayfasında bulunan anahtar ve uç nokta değerlerini kullanın.
+Kaynağından bir anahtar aldıktan sonra, ve adlı kaynak için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `QNAMAKER_RESOURCE_KEY` `QNAMAKER_AUTHORING_ENDPOINT` . Azure portal kaynağın **hızlı başlangıç** sayfasında bulunan anahtar ve uç nokta değerlerini kullanın.
 
 ### <a name="create-a-new-nodejs-application"></a>Yeni bir Node.js uygulaması oluşturma
 
@@ -51,13 +51,13 @@ Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bi
 mkdir myapp && cd myapp
 ```
 
-Bir düğüm `npm init -y` `package.json` dosyası oluşturmak için komutunu çalıştırın.
+`npm init -y`Bir düğüm dosyası oluşturmak için komutunu çalıştırın `package.json` .
 
 ```console
 npm init -y
 ```
 
-`reqeuestretry` Ve `request` NPM paketlerini ekleyin:
+`reqeuestretry`Ve `request` NPM paketlerini ekleyin:
 
 ```console
 npm install requestretry request --save
@@ -76,7 +76,7 @@ Bu kod parçacıkları, Node. js için Soru-Cevap Oluşturma REST API 'Leri ile 
 
 ## <a name="add-the-dependencies"></a>Bağımlılıkları ekleme
 
-Adlı `rest-apis.js` bir dosya oluşturun ve http istekleri oluşturmak için aşağıdaki _gerekli_ ifadeyi ekleyin.
+Adlı bir dosya oluşturun `rest-apis.js` ve http istekleri oluşturmak için aşağıdaki _gerekli_ ifadeyi ekleyin.
 
 ```javascript
 const request = require("requestretry");
@@ -89,7 +89,7 @@ Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun.
 Aşağıdaki ortam değerlerini ayarlayın:
 
 * `QNAMAKER_RESOURCE_KEY`- **Anahtar** bir 32 karakter dizesidir ve **hızlı başlangıç** sayfasında soru-cevap oluşturma kaynağında Azure Portal kullanılabilir. Bu, tahmin uç noktası anahtarıyla aynı değildir.
-* `QNAMAKER_AUTHORING_ENDPOINT`-Kendi biçimindeki `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`yazma uç noktanız, **kaynak adınızı**içerir. Bu, tahmin uç noktasını sorgulamak için kullanılan URL 'nin aynı değildir.
+* `QNAMAKER_AUTHORING_ENDPOINT`-Kendi biçimindeki yazma uç noktanız, `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` **kaynak adınızı**içerir. Bu, tahmin uç noktasını sorgulamak için kullanılan URL 'nin aynı değildir.
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]
 
@@ -136,7 +136,7 @@ Bilgi Bankası 'nı kullanarak işiniz bittiğinde silin.
 
 ## <a name="get-status-of-an-operation"></a>İşlemin durumunu al
 
-Oluşturma işlemi gibi uzun süre çalışan işlemler, ayrı bir REST API çağrısıyla denetlenmesi gereken bir işlem KIMLIĞI döndürür. Bu işlev, oluşturma yanıtının gövdesini alır. Önemli anahtar, yoklamaya `operationState`devam etmeniz gerektiğini belirleyen ' dır.
+Oluşturma işlemi gibi uzun süre çalışan işlemler, ayrı bir REST API çağrısıyla denetlenmesi gereken bir işlem KIMLIĞI döndürür. Bu işlev, oluşturma yanıtının gövdesini alır. Önemli anahtar, `operationState` yoklamaya devam etmeniz gerektiğini belirleyen ' dır.
 
 [Bilgi Bankası 'ndaki işlemleri izlemek için REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)kullanın.
 
@@ -146,7 +146,7 @@ Oluşturma işlemi gibi uzun süre çalışan işlemler, ayrı bir REST API ça�
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı uygulama dizininizdeki `node rest-apis.js` komutla çalıştırın.
+Uygulamayı `node rest-apis.js` uygulama dizininizdeki komutla çalıştırın.
 
 ```console
 node rest-apis.js

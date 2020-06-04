@@ -1,6 +1,6 @@
 ---
 title: Sanal çekirdek satın alma modeline genel bakış
-titleSuffix: Azure SQL Database & SQL Managed Instance
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Sanal çekirdek satın alma modeli, işlem ve depolama kaynaklarını bağımsız olarak ölçeklendirmenize, şirket içi performansı eşleşmenize ve Azure SQL veritabanı ve Azure SQL yönetilen örneği için fiyata iyileştirmenize olanak tanır.
 services: sql-database
 ms.service: sql-database
@@ -10,28 +10,28 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 1a6546ad587fa308ab5559d04814191c503ecdc3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1f7d0d411ffbff6aad7d134711a0190251f68aa8
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044097"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324445"
 ---
-# <a name="vcore-model-overview---azure-sql-database--sql-managed-instance"></a>vCore modeline genel bakış-SQL yönetilen örnek & Azure SQL veritabanı 
+# <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Sanal çekirdek modeline genel bakış-Azure SQL veritabanı ve Azure SQL yönetilen örneği 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Azure SQL veritabanı ve Azure SQL yönetilen örneği tarafından kullanılan sanal çekirdek (vCore) satın alma modeli çeşitli avantajlar sunar:
 
-- Daha yüksek işlem, bellek, GÇ ve depolama sınırları.
+- Daha yüksek işlem, bellek, g/ç ve depolama sınırları.
 - İş yükünün işlem ve bellek gereksinimlerini daha iyi eşleştirmek için donanım oluşturma üzerinde denetim.
 - [Azure hibrit avantajı (AHB)](../azure-hybrid-benefit.md) ve [ayrılmış örnek (RI)](reserved-capacity-overview.md)için fiyatlandırma iskontoları.
 - İşlem gücüne yönelik donanım ayrıntılarında daha büyük saydamlık; Şirket içi dağıtımlardan geçiş planlamayı kolaylaştırır.
 
 ## <a name="service-tiers"></a>Hizmet katmanları
 
-Sanal çekirdek modelindeki hizmet katmanı seçenekleri Genel Amaçlı, İş Açısından Kritik ve Hyperscale içerir. Hizmet katmanı genellikle depolama mimarisini, boşluk ve GÇ sınırlarını ve kullanılabilirlik ve olağanüstü durum kurtarma ile ilgili iş sürekliliği seçeneklerini tanımlar.
+Sanal çekirdek modelindeki hizmet katmanı seçenekleri Genel Amaçlı, İş Açısından Kritik ve Hyperscale içerir. Hizmet katmanı genellikle depolama mimarisini, boşluk ve g/ç sınırlarını ve kullanılabilirlik ve olağanüstü durum kurtarma ile ilgili iş sürekliliği seçeneklerini tanımlar.
 
-||**Genel amaçlı**|**İş açısından kritik**|**Hiper Ölçek**|
+||**Genel Amaçlı**|**İş Açısından Kritik**|**Hiper Ölçek**|
 |---|---|---|---|
 |En iyi kullanım alanı:|Birçok iş yükü. Bütçeye dayalı, dengeli ve ölçeklenebilir işlem ve depolama seçenekleri sunar. |, Birkaç yalıtılmış çoğaltma kullanarak ve en yüksek g/ç performansı sunan iş uygulamalarına en yüksek esnekliği sağlar.|Yüksek düzeyde ölçeklenebilir depolama ve okuma ölçeği gereksinimlerine sahip iş yüklerinin çoğu.  , Birden fazla yalıtılmış veritabanı çoğaltmasının yapılandırılmasına izin vererek daha yüksek esnekliği hatalara olanak sağlar. |
 |Depolama|Uzak depolamayı kullanır.<br/>**SQL veritabanı sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Sunucusuz işlem**:<br/>5 GB-3 TB<br/>**SQL yönetilen örneği**: 32 GB-8 TB |Yerel SSD depolama kullanır.<br/>**SQL veritabanı sağlanan işlem**:<br/>5 GB – 4 TB<br/>**SQL yönetilen örneği**:<br/>32 GB-4 TB |Gerektiğinde depolamanın esnek otomatik büyümesi. 100 TB 'a kadar depolamayı destekler. Yerel ara havuz önbelleği ve yerel veri depolaması için yerel SSD depolama kullanır. Son uzun süreli veri deposu olarak Azure uzak depolama kullanır. |
@@ -46,7 +46,7 @@ Sanal çekirdek modelindeki hizmet katmanı seçenekleri Genel Amaçlı, İş A�
 
 Belirli bir iş yükünüz için bir hizmet katmanı seçme hakkında bilgi için aşağıdaki makalelere bakın:
 
-- [Genel amaçlı hizmet katmanını seçme](service-tier-general-purpose.md#when-to-choose-this-service-tier)
+- [Genel Amaçlı hizmet katmanını seçme](service-tier-general-purpose.md#when-to-choose-this-service-tier)
 - [İş Açısından Kritik hizmet katmanını seçme](service-tier-business-critical.md#when-to-choose-this-service-tier)
 - [Hiper ölçek hizmet katmanını seçme](service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
 
@@ -112,7 +112,7 @@ Kaynak limitleri hakkında daha fazla bilgi için bkz. [tek veritabanları (sana
 
 ### <a name="selecting-a-hardware-generation"></a>Donanım oluşturma seçme
 
-Azure portal, bir SQL veritabanı veya havuzu için oluşturma sırasında donanım oluşturmayı seçebilir veya var olan bir SQL veritabanının veya havuzunun donanım oluşturma işlevini değiştirebilirsiniz.
+Azure portal, oluşturma sırasında SQL veritabanında bir veritabanı veya havuz için donanım oluşturmayı seçebilir veya var olan bir SQL veritabanının veya havuzunun donanım oluşturma işlevini değiştirebilirsiniz.
 
 **Bir SQL veritabanı veya havuzu oluştururken bir donanım oluşturma seçmek için**
 
@@ -147,7 +147,7 @@ Ayrıntılı bilgi için bkz. [SQL yönetilen örneği oluşturma](../managed-in
   
 **Mevcut bir SQL yönetilen örneğinin donanım üretimini değiştirmek için**
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="the-azure-portal"></a>[Azure portal](#tab/azure-portal)
 
 SQL yönetilen örneği sayfasında, Ayarlar bölümünün altına yerleştirilmiş **fiyatlandırma katmanı** bağlantısı ' nı seçin.
 
@@ -165,7 +165,7 @@ Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" 
 
 Daha fazla ayrıntı için [set-Azsqlınstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) komutunu inceleyin.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Aşağıdaki CLı komutunu kullanın:
 
@@ -228,7 +228,7 @@ Başlamak için bkz.:
 
 Fiyatlandırma ayrıntıları için bkz. [Azure SQL Veritabanı fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/sql-database/single/).
 
-Genel amaçlı ve iş açısından kritik hizmet katmanlarında bulunan belirli işlem ve depolama boyutları hakkında daha fazla bilgi için bkz.: 
+Genel amaçlı ve iş açısından kritik hizmet katmanlarında bulunan belirli işlem ve depolama boyutları hakkında daha fazla bilgi için bkz.:
 
 - [Azure SQL veritabanı Için sanal çekirdek tabanlı kaynak sınırları](resource-limits-vcore-single-databases.md).
 - [havuza alınmış Azure SQL veritabanı Için sanal çekirdek tabanlı kaynak sınırları](resource-limits-vcore-elastic-pools.md).

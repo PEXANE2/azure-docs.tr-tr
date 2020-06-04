@@ -1,5 +1,5 @@
 ---
-title: Azure portal kullanarak Azure 'da SQL Server VM 'Leri yönetme | Microsoft Docs
+title: Azure portal kullanarak Azure 'da SQL Server sanal makineleri yönetme | Microsoft Docs
 description: Azure 'da barındırılan bir SQL Server VM için Azure portal SQL sanal makine kaynağına erişmeyi öğrenin.
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,17 +13,17 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6cf6fac84abd1d996c77aae7240c0322c5ec53fb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8d04099bc4b384c4b8554a77bafd5d669f0d0e76
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049074"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344246"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>Azure 'da SQL Server VM 'Leri Azure portal kullanarak yönetin
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-[Azure Portal](https://portal.azure.com), **SQL sanal makineler** kaynağı bağımsız bir yönetim hizmetidir. Bunu, tüm SQL Server sanal makinelerinizi aynı anda görüntülemek ve SQL Server adanmış ayarları değiştirmek için kullanabilirsiniz: 
+[Azure Portal](https://portal.azure.com), **SQL sanal makineler** (VM) kaynağı bağımsız bir yönetim hizmetidir. Bunu, tüm SQL Server sanal makinelerinizi aynı anda görüntülemek ve SQL Server adanmış ayarları değiştirmek için kullanabilirsiniz: 
 
 ![SQL sanal makineler kaynağı](./media/manage-sql-vm-portal/sql-vm-manage.png)
 

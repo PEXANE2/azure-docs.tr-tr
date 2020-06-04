@@ -4,18 +4,34 @@ description: Azure HPC önbelleğini kullanma önkoşulları
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/03/2020
-ms.author: rohogue
-ms.openlocfilehash: 4508ef7583760a7ef7503f8a6f37202af2684d81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/01/2020
+ms.author: v-erkel
+ms.openlocfilehash: d8f345b12d635f0ab683929fc67d5d789bfea8d9
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106517"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343651"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC önbelleği önkoşulları
 
 Yeni bir Azure HPC önbelleği oluşturmak için Azure portal kullanmadan önce ortamınızın bu gereksinimleri karşıladığından emin olun.
+
+## <a name="video-overviews"></a>Video genel bakış
+
+Sistemin bileşenlerine hızlı bir genel bakış ve birlikte çalışmak için gerekenler için bu videoları izleyin.
+
+(Video görüntüsünü veya izlemek için bağlantıyı tıklatın.)
+
+* [Nasıl çalışır?](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/) Azure HPC önbelleğinin depolama ve istemcilerle nasıl etkileşime gireceğini açıklar
+
+  [![video küçük resmi resmi: Azure HPC Cache: nasıl çalıştığı (video sayfasını ziyaret etmek için tıklayın)](media/video2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
+
+* [Önkoşullar](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/) -NAS depolama, Azure Blob depolama, ağ erişimi ve istemci erişimi için gereksinimleri açıklar
+
+  [![video küçük resmi resmi: Azure HPC Cache: Önkoşullar (video sayfasını ziyaret etmek için tıklayın)](media/video3-prereqs.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
+
+Belirli öneriler için bu makalenin geri kalanını okuyun.
 
 ## <a name="azure-subscription"></a>Azure aboneliği
 
@@ -103,7 +119,7 @@ Daha fazla bilgi için [bkz. NAS yapılandırması ve NFS depolama hedefi sorunl
 
   Depolama sisteminizin ayarlarını denetlemek için bu yordamı izleyin.
 
-  * Gerekli bağlantı `rpcinfo` noktalarını denetlemek için depolama sisteminize bir komut verin. Aşağıdaki komut, bağlantı noktalarını listeler ve ilgili sonuçları bir tabloyla biçimlendirir. ( *<storage_IP>* terimi yerıne sisteminizin IP adresini kullanın.)
+  * `rpcinfo`Gerekli bağlantı noktalarını denetlemek için depolama sisteminize bir komut verin. Aşağıdaki komut, bağlantı noktalarını listeler ve ilgili sonuçları bir tabloyla biçimlendirir. ( *<storage_IP>* terimi yerıne sisteminizin IP adresini kullanın.)
 
     Bu komutu, NFS altyapısının yüklü olduğu herhangi bir Linux istemcisinden verebilirsiniz. Küme alt ağı içinde bir istemci kullanırsanız, alt ağ ve depolama sistemi arasındaki bağlantıyı doğrulamaya da yardımcı olabilir.
 
@@ -111,9 +127,9 @@ Daha fazla bilgi için [bkz. NAS yapılandırması ve NFS depolama hedefi sorunl
     rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
     ```
 
-  ``rpcinfo`` Sorgu tarafından döndürülen tüm bağlantı NOKTALARıNıN Azure HPC önbelleğinin alt ağından sınırsız trafiğe izin verdiğinden emin olun.
+  Sorgu tarafından döndürülen tüm bağlantı noktalarının ``rpcinfo`` Azure HPC önbelleğinin alt ağından sınırsız trafiğe izin verdiğinden emin olun.
 
-  * `rpcinfo` Komutunu kullanamıyoruz, yaygın olarak kullanılan bu bağlantı noktalarının gelen ve giden trafiğe izin verdiğinizden emin olun:
+  * Komutunu kullanamıyoruz `rpcinfo` , yaygın olarak kullanılan bu bağlantı noktalarının gelen ve giden trafiğe izin verdiğinizden emin olun:
 
     | Protokol | Bağlantı noktası  | Hizmet  |
     |----------|-------|----------|
@@ -127,7 +143,7 @@ Daha fazla bilgi için [bkz. NAS yapılandırması ve NFS depolama hedefi sorunl
 
   * Bu gerekli bağlantı noktalarının tümünde trafiğe izin verdiklerinden emin olmak için güvenlik duvarı ayarlarını kontrol edin. Azure 'da kullanılan güvenlik duvarlarını, veri merkezinizdeki şirket içi güvenlik duvarlarını da denetlediğinizden emin olun.
 
-* **Dizin erişimi:** Depolama sisteminde `showmount` komutunu etkinleştirin. Azure HPC Cache, depolama hedefi yapılandırmanızın geçerli bir dışarı aktarmaya işaret ettiğini ve ayrıca birden çok takın aynı alt dizinlere (dosya çarpışması için risk) eriş, emin olup olmadığını denetlemek için bu komutu kullanır.
+* **Dizin erişimi:** `showmount`Depolama sisteminde komutunu etkinleştirin. Azure HPC Cache, depolama hedefi yapılandırmanızın geçerli bir dışarı aktarmaya işaret ettiğini ve ayrıca birden çok takın aynı alt dizinlere (dosya çarpışması için risk) eriş, emin olup olmadığını denetlemek için bu komutu kullanır.
 
   > [!NOTE]
   > NFS depolama sisteminizde NetApp 'ın ONTAP 9,2 işletim sistemi kullanılıyorsa, ' yi **etkinleştirmeyin `showmount` **. Yardım için [Microsoft hizmetine ve desteğe başvurun](hpc-cache-support-ticket.md) .
@@ -136,7 +152,7 @@ Daha fazla bilgi için [bkz. NAS yapılandırması ve NFS depolama hedefi sorunl
 
 * **Kök erişimi** (okuma/yazma): önbellek arka uç SISTEMINE Kullanıcı kimliği 0 olarak bağlanır. Depolama sisteminizde bu ayarları kontrol edin:
   
-  * Etkinleştirin `no_root_squash`. Bu seçenek, uzak kök kullanıcının köke ait dosyalara erişebilmesini sağlar.
+  * Etkinleştirin `no_root_squash` . Bu seçenek, uzak kök kullanıcının köke ait dosyalara erişebilmesini sağlar.
 
   * Önbelleğin alt ağından kök erişim kısıtlamalarını dahil olmadıklarından emin olmak için dışarı aktarma ilkelerini denetleyin.
 

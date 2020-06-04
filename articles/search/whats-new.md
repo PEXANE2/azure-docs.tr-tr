@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 05/19/2020
-ms.openlocfilehash: 6597a8d5f1f8f4aa34ba9f59d4e08b5dc6d66728
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f8ddc3ef56aefc6ea613af19d91cd0122435efd7
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682472"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344212"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -29,7 +29,7 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 
 + Dizin oluşturmak üzere bir Azure veri kaynağıyla bağlantı kurmak için [sistem tarafından yönetilen bir kimlik (Önizleme)](search-howto-managed-identities-data-sources.md) kullanın. Azure SQL veritabanı, Azure Cosmos DB ve Azure depolama gibi Azure veri kaynaklarından içerik alan [Dizin oluşturucular](search-indexer-overview.md) için geçerlidir.
 
-+ [ScoringStatistics = Global sorgu parametresini](index-similarity-and-scoring.md#scoring-statistics)kullanarak, arama puanlarının her parça başına ve tüm parçalara göre nasıl hesaplandığından bağımsız olarak değişiklik yapın.
++ [ScoringStatistics = Global](index-similarity-and-scoring.md#scoring-statistics) ve SessionID sorgu parametrelerini kullanarak, arama puanlarının her parça başına ve tüm parçalara göre nasıl hesaplandığından bağımsız olarak değişiklik yapın.
 
 ### <a name="march-2020"></a>Mart 2020
 

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: edf22c7f1086c1d13717adaff514c42aab3a4cfd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b33d8db9d43b151cb0405ea24e0bea87e21cbdc9
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046925"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345351"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Azure SQL veritabanı 'nda sorgu performans sorunlarının algılanabilir türleri
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -153,11 +153,11 @@ Yavaş sorgu performansı, alt ve olmayan sorgu planlarıyla ilgili değildir ve
 - [Akıllı içgörüler](database/intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) kullanarak kaynak sınırlarını algılama
 - [DMVs](database/monitoring-with-dmvs.md)kullanarak kaynak sorunlarını algılama:
 
-  - [Sys. dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV, bir SQL VERITABANı için CPU, g/ç ve bellek tüketimi döndürür. Veritabanında etkinlik olmasa bile, her 15 saniyelik Aralık için bir satır vardır. Geçmiş verileri bir saat boyunca tutulur.
+  - [Sys. dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV, VERITABANı için CPU, g/ç ve bellek tüketimini döndürür. Veritabanında etkinlik olmasa bile, her 15 saniyelik Aralık için bir satır vardır. Geçmiş verileri bir saat boyunca tutulur.
   - [Sys. resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV, Azure SQL VERITABANı için CPU kullanımı ve depolama verileri döndürür. Veriler, beş dakikalık aralıklarla toplanır ve toplanır.
   - [Yüksek CPU kullanan çok sayıda tekil sorgu](database/monitoring-with-dmvs.md#many-individual-queries-that-cumulatively-consume-high-cpu)
 
-Sorunu yetersiz kaynak olarak belirlerseniz, CPU gereksinimlerini artışlarını devralarak için SQL veritabanınızın kapasitesini artırmak üzere kaynakları yükseltebilirsiniz. Daha fazla bilgi için bkz. Azure SQL [veritabanı 'nda tek veritabanı kaynaklarını ölçeklendirme](database/single-database-scale.md) ve [Azure SQL veritabanı 'nda elastik havuz kaynaklarını ölçeklendirme](database/elastic-pool-scale.md). Yönetilen bir örneği ölçeklendirme hakkında daha fazla bilgi için bkz. [hizmet katmanı kaynak sınırları](managed-instance/resource-limits.md#service-tier-characteristics)
+Sorunu yetersiz kaynak olarak belirlerseniz, CPU gereksinimlerini artışlarını devralarak için veritabanınızın kapasitesini artırmak üzere kaynakları yükseltebilirsiniz. Daha fazla bilgi için bkz. Azure SQL [veritabanı 'nda tek veritabanı kaynaklarını ölçeklendirme](database/single-database-scale.md) ve [Azure SQL veritabanı 'nda elastik havuz kaynaklarını ölçeklendirme](database/elastic-pool-scale.md). Yönetilen bir örneği ölçeklendirme hakkında daha fazla bilgi için bkz. [hizmet katmanı kaynak sınırları](managed-instance/resource-limits.md#service-tier-characteristics)
 
 ## <a name="performance-problems-caused-by-increased-workload-volume"></a>Artan iş yükü biriminden kaynaklanan performans sorunları
 

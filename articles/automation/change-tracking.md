@@ -3,14 +3,14 @@ title: Azure Otomasyonu Değişiklik İzleme ve envantere genel bakış
 description: Bu makalede, ortamınızdaki yazılım ve Microsoft hizmet değişikliklerini belirlemenize yardımcı olan Değişiklik İzleme ve envanter özelliği açıklanır.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 01/28/2019
+ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7a1c5d5371663f3520e76060c9c2a8df0a18449c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: cef323fd5b73b1befec5261e56357751ac72adae
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117538"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342927"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Değişiklik İzleme ve envantere genel bakış
 
@@ -52,7 +52,9 @@ Değişiklik İzleme ve envanter Şu anda aşağıdaki sorunları yaşıyor:
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
-Değişiklik İzleme ve envanter, Log Analytics Aracısı gereksinimlerini karşılayan tüm işletim sistemlerinde desteklenir. Resmi işletim sistemi sürümleri Windows Server 2008 SP1 veya üzeri ve Windows 7 SP1 veya sonraki bir sürümü. Özelliği, bir dizi Linux işletim sisteminde de desteklenir. Log Analytics destekleyen işletim sistemleri için bkz. [Log Analytics aracısına genel bakış](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent). 
+Değişiklik İzleme ve envanter, Log Analytics Aracısı gereksinimlerini karşılayan tüm işletim sistemlerinde desteklenir. Resmi işletim sistemi sürümleri Windows Server 2008 SP1 veya üzeri ve Windows 7 SP1 veya sonraki bir sürümü. Özelliği, bir dizi Linux işletim sisteminde de desteklenir. Log Analytics destekleyen işletim sistemleri için bkz. [Log Analytics aracısına genel bakış](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent).
+
+TLS 1,2 için istemci gereksinimlerini anlamak üzere bkz. [Azure Otomasyonu Için tls 1,2 zorlaması](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
 ## <a name="network-requirements"></a>Ağ gereksinimleri
 
@@ -75,7 +77,7 @@ Değişiklik izleme grafiğini ve değişiklik türü ve zaman aralıklarına g�
 
 Ayrıntılarını görüntülemek için bir değişikliğe veya olaya tıklayabilirsiniz. Kullanılabilir değişiklik türleri şunlardır:
 
-* Olaylar
+* Ekinlikler
 * Daemon 'ları
 * Dosyalar
 * Kayıt Defteri
@@ -182,7 +184,7 @@ Log Analytics Aracısı, performansı iyileştirmek için yalnızca değişiklik
 
 Değişiklik İzleme ve envanterin önemli bir özelliği, karma ortamınızın yapılandırma durumundaki değişiklikler hakkında uyarı verebilir. Birçok yararlı eylem, uyarılara yanıt olarak tetiklenebilir. Örneğin, Azure işlevleri, Otomasyon Runbook 'ları, Web kancaları ve benzeri eylemler. Bir makine için **c:\Windows\system32\drivers\etc\hosts** dosyasında yapılan değişikliklerle ilgili uyarı verme, değişiklik izleme ve envanter verileri için tek iyi bir uyarı uygulamasıdır. Sonraki tabloda tanımlanan sorgu senaryoları da dahil olmak üzere, uyarı için çok daha fazla senaryo vardır. 
 
-|Sorgu  |Açıklama  |
+|Sorgu  |Description  |
 |---------|---------|
 |ConfigurationChange <br>ConfigChangeType = = "Files" ve Filesystemmpath "c: \\ Windows \\ system32 \\ drivers \\ " içerdiğinde &#124;|Sistem açısından kritik dosyalarda yapılan değişiklikleri izlemek için faydalıdır.|
 |ConfigurationChange <br>Alanlardaki "FileContentChecksum" ve Filesystemmpath = = "c: \\ Windows \\ system32 \\ Drivers ve \\ \\ Konakları" içeren &#124;|Anahtar yapılandırma dosyalarında yapılan değişiklikleri izlemek için faydalıdır.|

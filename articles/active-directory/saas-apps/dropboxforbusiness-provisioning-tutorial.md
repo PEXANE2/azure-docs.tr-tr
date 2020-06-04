@@ -15,21 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 3acc2c271e590bddb13aaa01498f404da4340036
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a8aaa82a3913bcafbe8f86b85d63c39d44f08ac9
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77058468"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323765"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Iş Dropbox 'ı yapılandırma
 
 Bu öğreticinin amacı, Kullanıcı ve/veya grupları otomatik olarak sağlamak ve devre dışı bırakmak için Azure AD 'yi yapılandırmak üzere Iş için Dropbox ve Azure Active Directory (Azure AD) ' de gerçekleştirilecek adımları göstermektir.
 
+> [!IMPORTANT]
+> Microsoft ve Dropbox, eski Dropbox tümleştirmesi etkin 04/01/2021 ' i kullanımdan kaldırır. Hizmetin kesintiye uğramaması için, grupları destekleyen yeni Dropbox tümleştirmesi ' ne geçiş yapmanızı öneririz. Yeni Dropbox tümleştirmesine geçiş yapmak için aşağıdaki adımları kullanarak Azure AD kiracınızda sağlama için yeni bir Dropbox örneği ekleyin ve yapılandırın. Yeni Dropbox tümleştirmesini yapılandırdıktan sonra, sağlama çakışmalarını önlemek için eski Dropbox tümleştirmesinde sağlamayı devre dışı bırakın.
+
 > [!NOTE]
 > Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -82,7 +85,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 ### <a name="to-configure-automatic-user-provisioning-for-dropbox-for-business-in-azure-ad"></a>Azure AD 'de Iş için Dropbox otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

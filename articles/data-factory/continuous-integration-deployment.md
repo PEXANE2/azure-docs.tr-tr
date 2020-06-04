@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 51f583b946d6f5a18325e77cfe12404daab83d22
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 74f89629c783a444633fe276d99dc75d6c7fc8d8
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268032"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331976"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
@@ -98,7 +98,7 @@ Aşağıda, bir veri fabrikasının birden çok ortama dağıtımını otomatikl
 
     ![Aşama görünümü](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  Yeni bir görev oluşturun. **Azure Kaynak grubu dağıtımı**' nı arayın ve ardından **Ekle**' yi seçin.
+    b.  Yeni bir görev oluşturun. **ARM şablon dağıtımı**araması yapın ve ardından **Ekle**' yi seçin.
 
     c.  Dağıtım görevinde, hedef veri fabrikası için abonelik, kaynak grubu ve konum ' u seçin. Gerekirse kimlik bilgilerini sağlayın.
 
@@ -108,7 +108,7 @@ Aşağıda, bir veri fabrikasının birden çok ortama dağıtımını otomatikl
 
     f.  Seç **...** **şablon parametreleri** kutusunun yanındaki parametreler dosyasını seçin. `ARMTemplateParametersForFactory.json` <FactoryName> Adf_publish dalının klasöründe dosyayı arayın.
 
-    g.  Seç **...** **şablon parametrelerinin üzerine yaz** kutusunun yanında, hedef veri fabrikası için istenen parametre değerlerini girin. Azure Key Vault gelen kimlik bilgileri için, çift tırnak işaretleri arasında gizli dizi adını girin. Örneğin, gizli dizinin adı cred1 ise, bu değer için **"$ (cred1)"** girin.
+    örneğin:  Seç **...** **şablon parametrelerinin üzerine yaz** kutusunun yanında, hedef veri fabrikası için istenen parametre değerlerini girin. Azure Key Vault gelen kimlik bilgileri için, çift tırnak işaretleri arasında gizli dizi adını girin. Örneğin, gizli dizinin adı cred1 ise, bu değer için **"$ (cred1)"** girin.
 
     h. **Dağıtım modu**için **artımlı** ' ı seçin.
 

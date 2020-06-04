@@ -4,21 +4,21 @@ description: Bu Java REST tabanlı hızlı başlangıç, Bilgi Bankası 'ndan pr
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 67f09b6d1e284cdf35825a2e584b372bd2adf70a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: f162276044e63c9deb46a60033ffe9904366f777
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851745"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342808"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Hızlı başlangıç: Java ile Bilgi Bankası 'ndan bir soruya yanıt alın
 
 Bu hızlı başlangıçta, yayımlanan Soru-Cevap Oluşturma bilgi bankasından programlı bir yanıt alma işlemi adım adım gösterilmektedir. Bilgi Bankası, SSS gibi [veri kaynaklarından](../Concepts/knowledge-base.md) gelen sorular ve yanıtlar içerir. [Soru](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) soru-cevap oluşturma hizmetine gönderilir. [Yanıt](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) , en fazla tahmini yanıtı içerir.
 
-[Başvuru belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [örneği](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/get-answer/GetAnswer.java)
+[Başvuru belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime)  |  [Örnek](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/get-answer/GetAnswer.java)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [JDK SE](https://aka.ms/azure-jdks)  (Java Geliştirme Seti, Standart Sürüm)
 * Bu örnek, HTTP bileşenlerinden Apache [http istemcisini](https://hc.apache.org/httpcomponents-client-ga/) kullanır. Projenize aşağıdaki Apache HTTP istemci kitaplıklarını eklemeniz gerekir:
@@ -35,7 +35,7 @@ Bu hızlı başlangıçta, yayımlanan Soru-Cevap Oluşturma bilgi bankasından 
 
 ## <a name="create-a-java-file"></a>Java dosyası oluşturma
 
-VSCode 'u açın ve adlı `GetAnswer.java` yeni bir dosya oluşturun ve aşağıdaki sınıfı ekleyin:
+VSCode 'u açın ve adlı yeni bir dosya oluşturun `GetAnswer.java` ve aşağıdaki sınıfı ekleyin:
 
 ```Java
 public class GetAnswer {
@@ -49,13 +49,13 @@ public class GetAnswer {
 
 ## <a name="add-the-required-dependencies"></a>Gerekli bağımlılıkları ekleme
 
-Bu hızlı başlangıçta HTTP istekleri için Apache sınıfları kullanılmaktadır. GetAnswer sınıfının üstünde, `GetAnswer.java` dosyanın en üstünde, projeye gerekli bağımlılıkları ekleyin:
+Bu hızlı başlangıçta HTTP istekleri için Apache sınıfları kullanılmaktadır. GetAnswer sınıfının üstünde, dosyanın en üstünde, `GetAnswer.java` projeye gerekli bağımlılıkları ekleyin:
 
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=5-13 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>Gerekli sabitleri ekleme
 
-`GetAnswer.java` Sınıfının üst kısmında, soru-cevap oluşturma erişmek için gereken sabitleri ekleyin. Bu değerler, Bilgi Bankası 'nı yayımladıktan sonra **Yayımla** sayfasında bulunur.
+Sınıfının üst kısmında `GetAnswer.java` , soru-cevap oluşturma erişmek için gereken sabitleri ekleyin. Bu değerler, Bilgi Bankası 'nı yayımladıktan sonra **Yayımla** sayfasında bulunur.
 
 [!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=26-42 "Add the required constants")]
 
@@ -65,7 +65,7 @@ Aşağıdaki kod, soruyu bilgi tabanına göndermek için Soru-Cevap Oluşturma 
 
 [!code-java[Add a POST request to send question to knowledge base](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=44-72 "Add a POST request to send question to knowledge base")]
 
-`Authorization` Üstbilginin değeri dizeyi `EndpointKey`içerir.
+`Authorization`Üstbilginin değeri dizeyi içerir `EndpointKey` .
 
 [İstek](../how-to/metadata-generateanswer-usage.md#generateanswer-request) ve [Yanıt](../how-to/metadata-generateanswer-usage.md#generateanswer-response)hakkında daha fazla bilgi edinin.
 

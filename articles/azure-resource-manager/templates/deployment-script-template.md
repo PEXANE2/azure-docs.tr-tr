@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: jgao
-ms.openlocfilehash: e3f3301ac78480c4d8ebbf909bafcefa025ff395
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 2ca6848ed8fe16baea49311ee4b4b15ae8c64b56
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168582"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344722"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım betikleri kullanma (Önizleme)
 
@@ -38,7 +38,7 @@ Dağıtım betiği kaynağı yalnızca Azure Container Instance 'ın kullanılab
 > [!IMPORTANT]
 > Betik yürütme ve sorun giderme için bir depolama hesabı ve kapsayıcı örneği gereklidir. Mevcut bir depolama hesabını belirtme seçenekleriniz vardır; Aksi takdirde, kapsayıcı örneğiyle birlikte depolama hesabı betik hizmeti tarafından otomatik olarak oluşturulur. Dağıtım betiği yürütmesi bir terminal durumunda olduğunda, otomatik olarak oluşturulan iki kaynak genellikle betik hizmeti tarafından silinir. Kaynaklar silinene kadar kaynaklar için faturalandırılırsınız. Daha fazla bilgi için bkz. [Temizleme dağıtım betiği kaynakları](#clean-up-deployment-script-resources).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Hedef kaynak grubu için katkıda bulunan rolüne sahip bir kullanıcı tarafından atanan yönetilen kimlik**. Bu kimlik, dağıtım betikleri yürütmek için kullanılır. İşlemleri kaynak grubu dışında gerçekleştirmek için ek izinler vermeniz gerekir. Örneğin, yeni bir kaynak grubu oluşturmak istiyorsanız kimliği abonelik düzeyine atayın.
 
@@ -131,7 +131,7 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
 ```
 
 > [!NOTE]
-> Örnek, tanıtım amaçlı amaçlıdır.  **Scriptcontent** ve **primaryscriptursıs** bir şablonda birlikte bulunamaz.
+> Örnek, tanıtım amaçlı amaçlıdır.  **Scriptcontent** ve **Primaryscripturi** bir şablonda birlikte bulunamaz.
 
 Özellik değeri ayrıntıları:
 
@@ -190,7 +190,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="use-external-scripts"></a>Dış betikler kullanın
 
-Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsiniz. Yalnızca **ps1** dosya uzantısına sahip birincil PowerShell betikleri desteklenir. CLı betikleri için, betikler geçerli Bash betikleri olduğu sürece, birincil betiklerin uzantıları (veya uzantısı olmadan) olabilir. Dış betik dosyalarını kullanmak için ile değiştirin `scriptContent` `primaryScriptUri` . Örneğin:
+Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsiniz. Yalnızca **ps1** dosya uzantısına sahip birincil PowerShell betikleri desteklenir. CLı betikleri için, betikler geçerli Bash betikleri olduğu sürece, birincil betiklerin uzantıları (veya uzantısı olmadan) olabilir. Dış betik dosyalarını kullanmak için ile değiştirin `scriptContent` `primaryScriptUri` . Örnek:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -333,7 +333,7 @@ Mevcut bir depolama hesabını belirtmek için aşağıdaki JSON öğesini öğe
 ```
 
 - **storageAccountName**: depolama hesabının adını belirtin.
-- **Storageaccountkey "**: depolama hesabı anahtarlarından birini belirtin. [`listKeys()`](./template-functions-resource.md#listkeys)Anahtarı almak için işlevini kullanabilirsiniz. Örneğin:
+- **Storageaccountkey "**: depolama hesabı anahtarlarından birini belirtin. [`listKeys()`](./template-functions-resource.md#listkeys)Anahtarı almak için işlevini kullanabilirsiniz. Örnek:
 
     ```json
     "storageAccountSettings": {

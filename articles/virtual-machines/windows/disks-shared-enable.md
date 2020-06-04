@@ -4,17 +4,17 @@ description: Paylaşılan diskler (Önizleme) ile bir Azure yönetilen diski, bu
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0dbb1844d4c670abfdc5562580b0ee8b4549b6bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8fdbe71ab1b4104fed9ecc7d6cd2cb637da860f6
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085492"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343481"
 ---
-# <a name="enable-shared-disk"></a>Paylaşılan diski etkinleştir
+# <a name="enable-shared-disk"></a>Paylaşılan diski etkinleştirme
 
 Bu makalede, Azure yönetilen diskler için paylaşılan diskler (Önizleme) özelliğinin nasıl etkinleştirileceği ele alınmaktadır. Azure paylaşılan diskler (Önizleme), birden çok sanal makineye (VM) aynı anda yönetilen bir disk iliştirmenizi sağlayan, Azure yönetilen disklere yönelik yeni bir özelliktir. Yönetilen bir diskin birden çok VM 'ye eklenmesi, yeni bir dağıtım veya mevcut kümelenmiş uygulamaları Azure 'a geçirmenize olanak sağlar. 
 

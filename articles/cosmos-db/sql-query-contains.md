@@ -4,19 +4,19 @@ description: Azure Cosmos DB SQL sistem işlevinin, ilk dize ifadesinin ikincisi
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a08fe47122d7e9ddd1c9038bb5f15ebbb0be30fa
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 4877272fc2db521977a4111317118380399d27c5
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848983"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322712"
 ---
 # <a name="contains-azure-cosmos-db"></a>IÇERIR (Azure Cosmos DB)
 
- İlk dize ifadesinin ikincisini içerip içermediğini gösteren bir Boole değeri döndürür.  
+İlk dize ifadesinin ikincisini içerip içermediğini gösteren bir Boole değeri döndürür.  
   
 ## <a name="syntax"></a>Söz dizimi
   
@@ -75,6 +75,8 @@ System işlevindeki özelliğin kardinalitesi arttıkça, Contains 'in RU tüket
 ```
 
 İlk sorgu büyük olasılıkla ikinci sorgudan daha fazla bir değer kullanacaktır çünkü kasabanın kardinalitesi ülkeden daha yüksektir.
+
+İçindeki özellik boyutu bazı belgeler için 1 KB 'tan büyükse, sorgu altyapısının bu belgeleri yüklemesi gerekir. Bu durumda sorgu altyapısı, Contains 'i bir dizin ile tam olarak değerlendiremeyecektir. Özellik boyutları 1 KB 'tan fazla olan çok sayıda belgeniz varsa, Contains için RU ücreti yüksek olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

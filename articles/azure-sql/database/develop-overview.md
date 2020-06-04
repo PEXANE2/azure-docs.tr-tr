@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.custom: sqldbrb=2
-ms.openlocfilehash: c2556cb1dcf59cdb8ae5014b7dd95fa2c431dc93
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1d384bf4919589675dd6947fcb083585ebaf7e18
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050425"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344603"
 ---
 # <a name="application-development-overview---sql-database--sql-managed-instance"></a>Uygulama geliştirmeye genel bakış-SQL veritabanı & SQL yönetilen örneği 
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -53,7 +53,7 @@ Azure SQL veritabanınızda planlı bakım olaylarına hazırlanma hakkında dah
 - İstemci programınızı barındıran bilgisayarda güvenlik duvarının 1433 numaralı bağlantı noktasından giden TCP iletişimine izin verdiğinden emin olun.  Daha fazla bilgi: [Azure SQL veritabanı güvenlik duvarını yapılandırma](firewall-configure.md).
 - İstemciniz bir Azure sanal makinesi (VM) üzerinde çalışırken istemci programınız SQL veritabanı 'na bağlanırsa, sanal makine üzerinde belirli bağlantı noktası aralıklarını açmanız gerekir. Daha fazla bilgi: [ADO.NET 4,5 ve SQL veritabanı için 1433 dışındaki bağlantı noktaları](adonet-v12-develop-direct-route-ports.md).
 - Azure SQL veritabanı 'na yönelik istemci bağlantıları bazen proxy 'yi atlar ve veritabanıyla doğrudan etkileşime geçin. 1433 dışındaki bağlantı noktaları önemli hale gelmiştir. Daha fazla bilgi için, [Azure SQL veritabanı bağlantı mimarisi](connectivity-architecture.md) ve [ADO.NET 4,5 ve SQL veritabanı için 1433](adonet-v12-develop-direct-route-ports.md)' den fazla bağlantı noktası.
-- SQL yönetilen örneği için ağ yapılandırması için bkz. [SQL yönetilen örnekler için ağ yapılandırması](../managed-instance/how-to-content-reference-guide.md#network-configuration).
+- SQL yönetilen örneği örneği için ağ yapılandırması için bkz. [SQL yönetilen örneği için ağ yapılandırması](../managed-instance/how-to-content-reference-guide.md#network-configuration).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

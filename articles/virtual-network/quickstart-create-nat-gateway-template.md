@@ -8,6 +8,7 @@ author: asudbring
 manager: KumudD
 Customer intent: I want to create a NAT gateway by using an Azure Resource Manager template so that I can provide outbound connectivity for my virtual machines.
 ms.service: virtual-network
+ms.subservice: nat
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -15,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/09/2020
 ms.author: allensu
 ms.custom: subject-armqs
-ms.openlocfilehash: 3850f3f22e730e46f6d278b6cef0e17d357b126d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5e0d62885598aea6f1656d0cdcef5f0c3406e7dd
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81618060"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84341040"
 ---
 # <a name="quickstart-create-a-nat-gateway---resource-manager-template"></a>Hızlı başlangıç: NAT Gateway-Kaynak Yöneticisi şablonu oluşturma
 
@@ -40,7 +41,7 @@ Bu şablon, bir
 
 Ubuntu VM, NAT ağ geçidi kaynağıyla ilişkili bir alt ağa dağıtılır.
 
-### <a name="review-the-template"></a>Şablonu gözden geçirin
+### <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-nat-gateway-1-vm/azuredeploy.json)
 
@@ -100,13 +101,13 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri
 ```
 
-**Azure portalı**
+**Azure portal**
 
 [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-nat-gateway-1-vm%2Fazuredeploy.json)
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. Sol bölmeden **kaynak grupları** ' nı seçin.
 
@@ -135,7 +136,7 @@ Artık gerekli değilse, [Remove-AzResourceGroup](https://docs.microsoft.com/pow
 Remove-AzResourceGroup -Name myResourceGroupNAT
 ```
 
-**Azure portalı**
+**Azure portal**
 
 Artık gerekli olmadığında kaynak grubunu, NAT ağ geçidini ve tüm ilgili kaynakları silin. NAT ağ geçidini içeren **Myresourcegroupnat** kaynak grubunu seçin ve **Sil**' i seçin.
 

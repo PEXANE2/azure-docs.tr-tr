@@ -4,21 +4,21 @@ description: Bu C# REST tabanlı hızlı başlangıç, Bilgi Bankası 'ndan prog
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 16093ec5e837b098da3c9b038fe2a57cd76c7151
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 8e821531fdc7be13833b134b087d26c2b157425a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851811"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342842"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Hızlı başlangıç: C ile Bilgi Bankası 'ndan bir soruya yanıt alın #
 
 Bu hızlı başlangıçta, yayımlanan Soru-Cevap Oluşturma bilgi bankasından programlı bir yanıt alma işlemi adım adım gösterilmektedir. Bilgi Bankası, SSS gibi [veri kaynaklarından](../Concepts/knowledge-base.md) gelen sorular ve yanıtlar içerir. [Soru](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) soru-cevap oluşturma hizmetine gönderilir. [Yanıt](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) , en fazla tahmini yanıtı içerir.
 
-[Başvuru belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [örneği](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs)
+[Başvuru belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime)  |  [Örnek](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * En son [**Visual Studio Community sürümü**](https://www.visualstudio.com/downloads/).
 * Bir [soru-cevap oluşturma hizmetiniz](../How-To/set-up-qnamaker-service-azure.md)olmalıdır. Anahtarınızı almak için Azure panonuzda Soru-Cevap Oluşturma kaynağınız için **kaynak yönetimi** altındaki **anahtarlar** ' ı seçin.
@@ -41,7 +41,7 @@ Projeye gerekli bağımlılıkları eklemek için Program.cs dosyasının en üs
 
 ## <a name="add-the-required-constants"></a>Gerekli sabitleri ekleme
 
-`Program` Sınıfının `Main`üst kısmında, soru-cevap oluşturma erişmek için gereken sabitleri ekleyin. Bu değerler, Bilgi Bankası 'nı yayımladıktan sonra **Yayımla** sayfasında bulunur.
+Sınıfının üst kısmında, `Program` `Main` soru-cevap oluşturma erişmek için gereken sabitleri ekleyin. Bu değerler, Bilgi Bankası 'nı yayımladıktan sonra **Yayımla** sayfasında bulunur.
 
 [!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs?range=9-41 "Add the required constants")]
 
@@ -51,7 +51,7 @@ Aşağıdaki kod, soruyu bilgi tabanına göndermek için Soru-Cevap Oluşturma 
 
 [!code-csharp[Add a POST request to send question to knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs?range=43-76 "Add a POST request to send question to knowledge base")]
 
-`Authorization` Üstbilginin değeri dizeyi `EndpointKey`içerir.
+`Authorization`Üstbilginin değeri dizeyi içerir `EndpointKey` .
 
 [İstek](../how-to/metadata-generateanswer-usage.md#generateanswer-request) ve [Yanıt](../how-to/metadata-generateanswer-usage.md#generateanswer-response)hakkında daha fazla bilgi edinin.
 

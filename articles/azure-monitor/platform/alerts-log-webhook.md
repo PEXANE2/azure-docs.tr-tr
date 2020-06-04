@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 7b1956ad2bf9bf38ba9edc4c7234078557564071
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c9bacfc4354351cbbf2eb735414ff3334cd7d0a
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77667712"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323680"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Günlük uyarısı kuralları için Web kancası eylemleri
 [Azure 'da bir günlük uyarısı oluşturulduğunda](alerts-log.md), bir veya daha fazla eylem gerçekleştirmek için [eylem gruplarını kullanarak yapılandırma](action-groups.md) seçeneğiniz vardır. Bu makalede, kullanılabilen farklı Web kancası eylemleri açıklanmakta ve özel bir JSON tabanlı Web kancasının nasıl yapılandırılacağı gösterilmektedir.
@@ -37,26 +37,30 @@ Web kancası eylemleri aşağıdaki tablodaki özellikleri gerektirir.
 Web kancaları, dış hizmete gönderilen verilerin JSON 'de biçimlendirildiği bir URL ve bir yük içerir. Varsayılan olarak, yük aşağıdaki tablodaki değerleri içerir. Bu yükü kendi özel bir biriyle değiştirmeyi tercih edebilirsiniz. Bu durumda, her bir parametre için tablodaki değişkenleri, değerlerini özel yükünüzü içerecek şekilde kullanın.
 
 
-| Parametre | Değişken | Açıklama |
+| Parametre | Değişken | Description |
 |:--- |:--- |:--- |
 | *Alertrutaname* |#alertrulename |Uyarı kuralının adı. |
 | *Önem Derecesi* |#severity |Tetiklenen günlük uyarısı için önem derecesi kümesi. |
 | *AlertThresholdOperator* |#thresholdoperator |Uyarı kuralı için ' den büyük veya küçüktür kullanan eşik işleci. |
 | *AlertThresholdValue* |#thresholdvalue |Uyarı kuralının eşik değeri. |
 | *LinkToSearchResults* |#linktosearchresults |Uyarıyı oluşturan sorgudaki kayıtları döndüren analiz portalına bağlantı. |
+| *Linktosearchresultsapı* |#linktosearchresultsapi |Uyarıyı oluşturan sorgudaki kayıtları döndüren analiz API 'sine bağlantı. |
+| *Linktofilteredsearchresultsuı* |#linktofilteredsearchresultsui |Uyarıyı oluşturan boyut değer birleşimlerine göre filtrelenmiş sorgudan kayıtları döndüren analiz portalına bağlantı. |
+| *Linktofilteredsearchresultsapı* |#linktofilteredsearchresultsapi |Uyarıyı oluşturan boyut değer birleşimlerine göre filtrelenmiş sorgudan kayıtları döndüren analiz API 'sine bağlantı. |
 | *Ayarlanan resultcount* |#searchresultcount |Arama sonuçlarındaki kayıt sayısı. |
 | *Arama aralığı bitiş zamanı* |#searchintervalendtimeutc |UTC olarak sorgunun bitiş saati, aa/gg/yyyy HH: mm: ss "/PM biçiminde. |
 | *Arama aralığı* |#searchinterval |Uyarı kuralı için ss: DD: ss biçiminde zaman penceresi. |
 | *Arama aralığı başlangıçsaati* |#searchintervalstarttimeutc |Sorgu için, aa/gg/yyyy HH: mm: ss/PM biçimindeki UTC olarak başlangıç zamanı. 
 | *SearchQuery* |#searchquery |Uyarı kuralı tarafından kullanılan günlük arama sorgusu. |
-| *SearchResults* |"Includesearchresults": true|Sorgu tarafından JSON 1.000 tablosu olarak döndürülen kayıtlar, "ıncludesearchresults": true, özel bir JSON Web kancası tanımına en üst düzey özellik olarak eklenirse. |
+| *SearchResults* |"Includesearchresults": true|Sorgu tarafından JSON tablosu olarak döndürülen kayıtlar, ilk 1.000 kayıtla sınırlıdır. "Includesearchresults": true, özel bir JSON Web kancası tanımına en üst düzey özellik olarak eklenir. |
+| *Boyutlarına* |"Includedimensions": true|Bu uyarıyı JSON bölümü olarak tetikleyen boyut değer birleşimleri. "Includedimensions": true, özel bir JSON Web kancası tanımına en üst düzey özellik olarak eklenir. |
 | *Uyarı türü*| #alerttype | [Ölçüm ölçümü](alerts-unified-log.md#metric-measurement-alert-rules) veya [sonuç sayısı](alerts-unified-log.md#number-of-results-alert-rules)olarak yapılandırılan günlük uyarısı kuralının türü.|
 | *Workspaceıd* |#workspaceid |Log Analytics çalışma alanınızın KIMLIĞI. |
-| *Uygulama KIMLIĞI* |#applicationid |Application Insights uygulamanızın KIMLIĞI. |
-| *Abonelik KIMLIĞI* |#subscriptionid |Kullanılan Azure aboneliğinizin KIMLIĞI. 
+| *Uygulama Kimliği* |#applicationid |Application Insights uygulamanızın KIMLIĞI. |
+| *Abonelik Kimliği* |#subscriptionid |Kullanılan Azure aboneliğinizin KIMLIĞI. 
 
 > [!NOTE]
-> *Linktosearchresults* , *SearchQuery*, *arama aralığı başlangıçsaati*ve analiz bölümünde görüntülenmek üzere Azure Portal URL 'sindeki *arama aralığı bitiş zamanı* gibi parametreleri geçirir. Azure portal yaklaşık 2.000 karakter uzunluğunda bir URI boyut sınırına sahiptir. Parametreler, parametre değerleri sınırı aşarsa, uyarılarda belirtilen *bağlantıları açmaz.* Sonuçları analiz portalında görüntülemek için el ile bilgi girebilirsiniz. Ya da sonuçları programlı bir şekilde almak için [Application Insights Analytics REST API](https://dev.applicationinsights.io/documentation/Using-the-API) veya [Log Analytics REST API](/rest/api/loganalytics/) kullanabilirsiniz. 
+> Belirtilen bağlantılar *SearchQuery*, *arama aralığı başlangıçsaati*ve Azure Portal veya API URL 'sindeki *arama aralığı bitiş zamanı* gibi parametreleri geçirir.
 
 Örneğin, *metin*adlı tek bir parametre içeren aşağıdaki özel yükü belirtebilirsiniz. Bu Web kancası çağrısının çağrı yaptığı hizmet bu parametreyi bekler.
 
@@ -88,9 +92,9 @@ Aşağıdaki örnek yük, Log Analytics dayalı uyarılar için kullanılan *Öz
 
 ```json
 {
-    "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName":"AcmeRule",
-    "SearchQuery":"Perf | where ObjectName == \"Processor\" and CounterName == \"% Processor Time\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer",
+    "SubscriptionId": "12345a-1234b-123c-123d-12345678e",
+    "AlertRuleName": "AcmeRule",
+    "SearchQuery": "Perf | where ObjectName == \"Processor\" and CounterName == \"% Processor Time\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer",
     "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
     "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
     "AlertThresholdOperator": "Greater Than",
@@ -98,28 +102,56 @@ Aşağıdaki örnek yük, Log Analytics dayalı uyarılar için kullanılan *Öz
     "ResultCount": 2,
     "SearchIntervalInSeconds": 3600,
     "LinkToSearchResults": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "LinkToFilteredSearchResultsUI": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "LinkToSearchResultsAPI": "https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
+    "LinkToFilteredSearchResultsAPI": "https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
     "Description": "log alert rule",
     "Severity": "Warning",
-    "SearchResult":
+    "AffectedConfigurationItems": [
+        "INC-Gen2Alert"
+    ],
+    "Dimensions": [
         {
-        "tables":[
-                    {"name":"PrimaryResult","columns":
-                        [
-                        {"name":"$table","type":"string"},
-                        {"name":"Id","type":"string"},
-                        {"name":"TimeGenerated","type":"datetime"}
-                        ],
-                    "rows":
-                        [
-                            ["Fabrikam","33446677a","2018-02-02T15:03:12.18Z"],
-                            ["Contoso","33445566b","2018-02-02T15:16:53.932Z"]
-                        ]
+            "name": "Computer",
+            "value": "INC-Gen2Alert"
+        }
+    ],
+    "SearchResult": {
+        "tables": [
+            {
+                "name": "PrimaryResult",
+                "columns": [
+                    {
+                        "name": "$table",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Computer",
+                        "type": "string"
+                    },
+                    {
+                        "name": "TimeGenerated",
+                        "type": "datetime"
                     }
+                ],
+                "rows": [
+                    [
+                        "Fabrikam",
+                        "33446677a",
+                        "2018-02-02T15:03:12.18Z"
+                    ],
+                    [
+                        "Contoso",
+                        "33445566b",
+                        "2018-02-02T15:16:53.932Z"
+                    ]
                 ]
-        },
-    "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
+            }
+        ]
+    },
+    "WorkspaceId": "12345a-1234b-123c-123d-12345678e",
     "AlertType": "Metric measurement"
- }
+}
  ```
 
 > [!NOTE]
@@ -131,39 +163,64 @@ Aşağıdaki örnek yük, Application Insights dayalı günlük uyarıları içi
     
 ```json
 {
-    "schemaId":"Microsoft.Insights/LogAlert","data":
-    { 
-    "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName":"AcmeRule",
-    "SearchQuery":"requests | where resultCode == \"500\"",
-    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
-    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
-    "AlertThresholdOperator": "Greater Than",
-    "AlertThresholdValue": 0,
-    "ResultCount": 2,
-    "SearchIntervalInSeconds": 3600,
-    "LinkToSearchResults": "https://portal.azure.com/AnalyticsBlade/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "Description": null,
-    "Severity": "3",
-    "SearchResult":
-        {
-        "tables":[
-                    {"name":"PrimaryResult","columns":
+    "schemaId": "Microsoft.Insights/LogAlert",
+    "data": {
+        "SubscriptionId": "12345a-1234b-123c-123d-12345678e",
+        "AlertRuleName": "AcmeRule",
+        "SearchQuery": "requests | where resultCode == \"500\" | summarize AggregatedValue = Count by bin(Timestamp, 5m), IP",
+        "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
+        "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
+        "AlertThresholdOperator": "Greater Than",
+        "AlertThresholdValue": 0,
+        "ResultCount": 2,
+        "SearchIntervalInSeconds": 3600,
+        "LinkToSearchResults": "https://portal.azure.com/AnalyticsBlade/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+        "LinkToFilteredSearchResultsUI": "https://portal.azure.com/AnalyticsBlade/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+        "LinkToSearchResultsAPI": "https://api.applicationinsights.io/v1/apps/0MyAppId0/metrics/requests/count",
+        "LinkToFilteredSearchResultsAPI": "https://api.applicationinsights.io/v1/apps/0MyAppId0/metrics/requests/count",
+        "Description": null,
+        "Severity": "3",
+        "Dimensions": [
+            {
+                "name": "IP",
+                "value": "1.1.1.1"
+            }
+        ],
+        "SearchResult": {
+            "tables": [
+                {
+                    "name": "PrimaryResult",
+                    "columns": [
+                        {
+                            "name": "$table",
+                            "type": "string"
+                        },
+                        {
+                            "name": "Id",
+                            "type": "string"
+                        },
+                        {
+                            "name": "Timestamp",
+                            "type": "datetime"
+                        }
+                    ],
+                    "rows": [
                         [
-                        {"name":"$table","type":"string"},
-                        {"name":"Id","type":"string"},
-                        {"name":"TimeGenerated","type":"datetime"}
+                            "Fabrikam",
+                            "33446677a",
+                            "2018-02-02T15:03:12.18Z"
                         ],
-                    "rows":
                         [
-                            ["Fabrikam","33446677a","2018-02-02T15:03:12.18Z"],
-                            ["Contoso","33445566b","2018-02-02T15:16:53.932Z"]
+                            "Contoso",
+                            "33445566b",
+                            "2018-02-02T15:16:53.932Z"
                         ]
-                    }
-                ]
+                    ]
+                }
+            ]
         },
-    "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1",
-    "AlertType": "Number of results"
+        "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1",
+        "AlertType": "Metric measurement"
     }
 }
 ```

@@ -4,12 +4,12 @@ description: Azure Service Fabric kümesi için güvenlik senaryoları ve bunlar
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: c43cfbd4468a64867d50482d9c8055622602f159
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71a5891bf26cbd79ba5cfeff8324e225b3febd73
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461591"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324020"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric kümesi güvenlik senaryoları
 
@@ -33,7 +33,7 @@ Azure 'da çalıştırılan kümeler ve Windows üzerinde çalışan tek başın
 
 Service Fabric, küme oluştururken düğüm türü yapılandırmanın bir parçası olarak belirttiğiniz X. 509.952 sunucu sertifikalarını kullanır. Bu makalenin sonunda, bu sertifikaların ne olduğuna ve bunları nasıl elde edebilir veya oluşturabileceğiniz hakkında kısa bir genel bakış görebilirsiniz.
 
-Azure portal, bir Azure Resource Manager şablonu kullanarak ya da tek başına bir JSON şablonu kullanarak küme oluştururken sertifika güvenliği ayarlayın. Service Fabric SDK 'nın varsayılan davranışı, sertifikayı, gelecekteki süresi dolan sertifikaya en uzdan dağıtmaktır. Klasik davranış, el ile başlatılan rollover 'lar için birincil ve ikincil sertifikaların tanımlanmasına izin verilir ve yeni işlevsellik üzerinde kullanılması önerilmez. Kullanılacak olan birincil sertifikaların gelecekteki kullanım süresi dolmak üzere olması, yönetim istemcisinden ve [istemciden düğüme güvenlik](#client-to-node-security)için ayarladığınız Salt okunabilir istemci sertifikalarından farklı olmalıdır.
+Azure portal, bir Azure Resource Manager şablonu kullanarak ya da tek başına bir JSON şablonu kullanarak küme oluştururken sertifika güvenliği ayarlayın. Service Fabric SDK 'nın varsayılan davranışı, sertifikayı, gelecekteki bitiş tarihine kadar en uzdan dağıtmak ve yüklemek. Klasik davranış, el ile başlatılan rollover 'lar için birincil ve ikincil sertifikaların tanımlanmasına izin verilir ve yeni işlevsellik üzerinde kullanılması önerilmez. Kullanılacak olan birincil sertifikaların gelecekteki kullanım süresi dolmak üzere olması, yönetim istemcisinden ve [istemciden düğüme güvenlik](#client-to-node-security)için ayarladığınız Salt okunabilir istemci sertifikalarından farklı olmalıdır.
 
 Azure için bir kümede sertifika güvenliği ayarlamayı öğrenmek için bkz. [Azure Resource Manager şablonu kullanarak küme ayarlama](service-fabric-cluster-creation-via-arm.md).
 
@@ -113,7 +113,7 @@ Sertifikanın aşağıdaki gereksinimleri karşılaması gerekir:
 
 Göz önünde bulundurulması gereken bazı şeyler:
 
-* **Konu** alanı birden fazla değere sahip olabilir. Değer türünü belirtmek için her değere bir başlatma ön eki eklenir. Genellikle, başlatma **CN** 'dir ( *ortak ad*için); Örneğin, **CN = www\.contoso.com**.
+* **Konu** alanı birden fazla değere sahip olabilir. Değer türünü belirtmek için her değere bir başlatma ön eki eklenir. Genellikle, başlatma **CN** 'dir ( *ortak ad*için); Örneğin, **CN = www \. contoso.com**.
 * **Konu** alanı boş olabilir.
 * İsteğe bağlı **konu alternatif adı** alanı doldurulmuşsa, hem sertifikanın ortak adına hem de San başına bir girişe sahip olmalıdır. Bunlar **DNS ad** değerleri olarak girilir. San 'Lara sahip sertifikalar oluşturmayı öğrenmek için bkz. güvenli bir [LDAP sertifikasına konu alternatif adı ekleme](https://support.microsoft.com/kb/931351).
 * Sertifikanın **amaçlanan amaçlar** alanının değeri, **sunucu kimlik doğrulaması** veya **istemci kimlik doğrulaması**gibi uygun bir değer içermelidir.

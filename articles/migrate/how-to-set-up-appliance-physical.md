@@ -4,12 +4,12 @@ description: Fiziksel sunucu değerlendirmesi için bir Azure geçişi gereci ay
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
-ms.openlocfilehash: ddc70ee9430d3a767ce01191824c150a4dbd5e6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d9cc071ad5d81a09a14b12fe2acdf564c2ea6c8
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538282"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331789"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Fiziksel sunucular için bir gereç ayarlama
 
@@ -35,8 +35,8 @@ Gereci kurmak için şunları yapın:
 
 Gereç için daraltılmış dosyayı indirin.
 
-1. **Geçiş hedefleri** > **sunucuları** > **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
-2.  > Makinelerde **bulunan makineler****sanallaştırılmış mi?**, **sanallaştırılmamış/diğer**' e tıklayın.
+1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
+2. Makinelerde **bulunan makineler**  >  **sanallaştırılmış mi?**, **sanallaştırılmamış/diğer**' e tıklayın.
 3. Sıkıştırılmış dosyayı indirmek için **İndir** ' e tıklayın.
 
     ![VM 'yi indir](./media/tutorial-assess-physical/download-appliance.png)
@@ -51,20 +51,19 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Genel bulut için örnek kullanım:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
     - Kamu Bulutu için örnek kullanım:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  Karma değerleri doğrula:
+3.  En son gereç sürümünü ve karma değerlerini doğrulayın:
  
-    - Genel bulut için (en son gereç sürümü için):
+    - Genel bulut için:
 
-        **Algoritma** | **Karma değeri**
-          --- | ---
-          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+        **Senaryo** | **İndirme*** | **Karma değeri**
+        --- | --- | ---
+        Fiziksel (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
 
-    - Azure Kamu için (en son gereç sürümü için):
+    - Azure Kamu için:
 
-        **Algoritma** | **Karma değeri**
-          --- | ---
-          MD5 | f81c155fc4a1409901caea948713913f
+        **Senaryo** | **İndirme*** | **Karma değeri**
+        --- | --- | ---
+        Fiziksel (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
 
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Azure geçişi yükleyici betiğini çalıştırma
@@ -108,7 +107,7 @@ Gereci ilk kez ayarlayın.
 2. **Önkoşulları ayarlamak**> Web uygulamasında şunları yapın:
     - **Lisans**: lisans koşullarını kabul edin ve üçüncü taraf bilgilerini okuyun.
     - **Bağlantı**: uygulama, sanal makinenin internet erişimi olup olmadığını denetler. VM bir proxy kullanıyorsa:
-        - **Proxy ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, veya http://ProxyIPAddress http://ProxyFQDNbiçiminde belirtin.
+        - **Proxy ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, veya biçiminde belirtin http://ProxyIPAddress http://ProxyFQDN .
         - Proxy için kimlik doğrulaması gerekiyorsa kimlik bilgilerini gerekin.
         - Yalnızca HTTP proxy’si desteklenir.
     - **Zaman eşitleme**: Saat doğrulandı. VM bulmanın düzgün çalışması için gereç süresi internet saatine eşit olmalıdır.
@@ -123,7 +122,7 @@ Gereci ilk kez ayarlayın.
 3. Başarıyla oturum açtıktan sonra Web uygulamasına geri dönün.
 4. Azure geçişi projesinin oluşturulduğu aboneliği seçin. Ardından projeyi seçin.
 5. Gereç için bir ad belirtin. Ad 14 karakter veya daha az olmalıdır.
-6. **Kaydol**' a tıklayın.
+6. **Kaydet**’e tıklayın.
 
 
 ## <a name="start-continuous-discovery"></a>Sürekli bulmayı Başlat
@@ -146,7 +145,7 @@ Bu, bulmayı başlatır. Bulunan VM 'lerin meta verilerinde Azure portal görün
 Bulma işlemi tamamlandıktan sonra, sunucuların portalda göründüğünü doğrulayabilirsiniz.
 
 1. Azure geçişi panosunu açın.
-2. **Azure geçişi-sunucular** > **Azure geçişi: Sunucu değerlendirmesi** sayfasında, **bulunan sunucuların**sayısını görüntüleyen simgeye tıklayın.
+2. **Azure geçişi-sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi** sayfasında, **bulunan sunucuların**sayısını görüntüleyen simgeye tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

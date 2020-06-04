@@ -11,20 +11,20 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/04/2020
-ms.openlocfilehash: 0e9b8f7bc4129c07145130f198b738839b0c7b55
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c48bc2602da70e20e2fb86d54697d42d70775846
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047863"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324681"
 ---
-# <a name="create-alerts-for-azure-sql-database-and-azure-synapse-using-azure-portal"></a>Azure portal kullanarak Azure SQL veritabanı ve Azure SYNAPSE için uyarılar oluşturma
+# <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Azure portal kullanarak Azure SQL veritabanı ve Azure SYNAPSE Analytics için uyarı oluşturma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makalede, Azure SQL veritabanı ve Azure Synapse (eskiden Azure SQL veri ambarı) içindeki veritabanları için Azure portal kullanarak nasıl uyarı ayarlanacağı gösterilmektedir. Uyarılar bir e-posta gönderebilir veya bazı bir ölçüm (örneğin, veritabanı boyutu veya CPU kullanımı) eşiğe ulaştığında bir Web kancası çağırabilir. Bu makale, uyarı dönemlerini ayarlamaya yönelik en iyi yöntemleri de sağlar.
+Bu makalede, Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla Azure SQL veri ambarı) içindeki veritabanları için Azure portal kullanarak nasıl uyarı ayarlanacağı gösterilmektedir. Uyarılar bir e-posta gönderebilir veya bazı bir ölçüm (örneğin, veritabanı boyutu veya CPU kullanımı) eşiğe ulaştığında bir Web kancası çağırabilir. Bu makale, uyarı dönemlerini ayarlamaya yönelik en iyi yöntemleri de sağlar.
 
 > [!NOTE]
 > Azure SQL yönetilen örneğe özgü yönergeler için bkz. [Azure SQL yönetilen örneği için uyarı oluşturma](../managed-instance/alerts-create.md).
@@ -44,7 +44,7 @@ Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz
 
 * [Azure portal](../../azure-monitor/platform/alerts-classic-portal.md)
 * [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
-* [komut satırı arabirimi (CLı)](../../azure-monitor/platform/alerts-classic-portal.md)
+* [Komut satırı arabirimi (CLı)](../../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure İzleyici REST API'si](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Azure portal bir ölçümde uyarı kuralı oluşturma
@@ -60,7 +60,7 @@ Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz
 4. **Koşul** bölümünde **Ekle**' ye tıklayın.
   ![Koşulu tanımla](./media/alerts-insights-configure-portal/create-rule.png)
 5. **Sinyal mantığını Yapılandır** sayfasında bir sinyal seçin.
-  ![Sinyal seçin ](./media/alerts-insights-configure-portal/select-signal.png) .
+  ![Sinyal Seç](./media/alerts-insights-configure-portal/select-signal.png)
 6. **CPU yüzdesi**gibi bir sinyal seçtikten sonra **sinyal mantığını Yapılandır** sayfası görünür.
   ![Sinyal mantığını yapılandırma](./media/alerts-insights-configure-portal/configure-signal-logic.png)
 7. Bu sayfada, bu eşik türü, işleç, toplama türü, eşik değeri, toplama ayrıntı düzeyi ve değerlendirme sıklığını yapılandırın. Sonra da **Bitti**’ye tıklayın.

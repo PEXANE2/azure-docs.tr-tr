@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: d5b4986c24a1db61527e6a9ff7be249f189d6248
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 3db9dc260cb8546109870834f364c62305aa3fbb
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248558"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324530"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>SSS-Azure Güvenlik Merkezi ile ilgili genel sorular
 
@@ -37,14 +37,8 @@ Azure Güvenlik Merkezi aşağıdaki Azure kaynaklarını izler:
 
 * Sanal makineler (VM 'Ler) ( [Cloud Services](../cloud-services/cloud-services-choose-me.md)dahil)
 * Sanal makine ölçek kümeleri
-* Azure Sanal Ağları
-* Kapsayıcılar
-* Azure SQL hizmeti
-* Azure Storage hesabı
-* Azure Web Apps ( [App Service ortamı](../app-service/environment/intro.md))
 * VM 'lerde ve App Service Ortamı bir Web uygulaması güvenlik duvarı gibi Azure aboneliğiniz ile tümleştirilmiş iş ortağı çözümleri
-
-Ayrıca, Azure dışı (Şirket içi) makineler de Azure Güvenlik Merkezi tarafından izlenebilir. Hem [Windows makineleri](./quick-onboard-windows-computer.md) hem de [Linux makineleri](./quick-onboard-linux-computer.md) desteklenir.
+* [Ürüne genel bakış bölümünde listelenen birçok Azure PaaS hizmeti](features-paas.md)
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Azure kaynaklarım 'ın geçerli güvenlik durumunu nasıl görebilirim?

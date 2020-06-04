@@ -5,21 +5,21 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 2413e53e9613aaa1140b083cb24fe709eb1b067d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: c071d372ba90d29806fd8a44909e2c803a8d3fa4
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561759"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339289"
 ---
 # <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>Windows PowerShell aracılığıyla Azure Data Box Gateway cihazını yönetme
 
 Azure Data Box Gateway çözümü, verileri ağ üzerinden Azure 'a göndermenizi sağlar. Bu makalede, Data Box Gateway cihazınız için yapılandırma ve yönetim görevlerinin bazıları açıklanmaktadır. Cihazınızı yönetmek için Azure portal, yerel Web Kullanıcı arabirimini veya Windows PowerShell arabirimini kullanabilirsiniz.
 
-Bu makale, PowerShell arabirimini kullanarak yaptığınız görevlere odaklanır. 
+Bu makale, PowerShell arabirimini kullanarak yaptığınız görevlere odaklanır.
 
 Bu makale aşağıdaki yordamları içerir:
 

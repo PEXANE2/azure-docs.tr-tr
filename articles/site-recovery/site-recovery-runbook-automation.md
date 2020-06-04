@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 123ef7de338bfe872948db60c68c0c5743f5cda1
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257491"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345147"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Kurtarma planlarına Azure Otomasyonu runbook’ları ekleme
 
@@ -56,6 +56,9 @@ Bir betik çalıştırıldığında, runbook 'a bir kurtarma planı bağlamını
 | CloudServiceName |VM 'nin altında oluşturulduğu Azure bulut hizmeti adı. |
 | RoleName |Azure VM 'nin adı. |
 | Recoverypointıd|VM kurtarma için zaman damgası. |
+
+>[!Note]
+>' FailoverDirection ' değişkeninin değeri, yük devretme ve yeniden çalışma durumunda ' SecondaryToPrimary ' olması durumunda ' PrimaryToSecondary ' olacaktır.
 
 Aşağıdaki örnek bir bağlam değişkenini gösterir:
 
@@ -117,7 +120,7 @@ Aman parçalara ayırma [bulutlarının](http://harvestingclouds.com) üzerinde 
 
     ![Özelleştir düğmesine tıklayın](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. **Grup 1** > ' in yanındaki üç nokta (...) işaretine tıklayın:**Post Ekle eylemi**Başlat.
+2. **Grup 1**' in yanındaki üç nokta (...) işaretine tıklayın:  >  **Post Ekle eylemi**Başlat.
 3. **Ekle eyleminde** **betiğin** seçili olduğunu doğrulayın ve betik için bir ad belirtin (**Merhaba Dünya**).
 4. Bir Otomasyon hesabı belirtin ve bir runbook seçin. Betiği kaydetmek için **Tamam**' a tıklayın. Komut dosyası **1. Grup: son adımlar**' a eklenir.
 

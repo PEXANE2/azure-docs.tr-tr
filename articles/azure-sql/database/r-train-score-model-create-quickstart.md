@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6dee5d6e1bb2802114d7bba14a57b91dbab09e19
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 37cc50a31f2f31c0cb7fc49102328f2072c6570a
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054794"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324598"
 ---
 # <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Hızlı başlangıç: Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de tahmine dayalı bir model oluşturma ve eğitme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta, R kullanarak tahmine dayalı bir model oluşturup eğ
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Azure SQL veritabanı 'nda](single-database-create-quickstart.md) [sunucu düzeyinde güvenlik duvarı kuralına](firewall-create-server-level-portal-quickstart.md) sahip bir veritabanı
@@ -53,9 +53,9 @@ Doğrusal modelin gereksinimleri oldukça basittir:
 
 Aşağıdaki adımlarda eğitim verilerini ayarlayacaksınız, regresyon modeli oluşturacak, eğitim verilerini kullanarak eğtireceğiz ve ardından modeli bir SQL tablosuna kaydetmelisiniz.
 
-1. **SQL Server Management Studio** açın ve SQL veritabanınıza bağlanın.
+1. **SQL Server Management Studio** açın ve veritabanınıza bağlanın.
 
-   Bağlantı için yardıma ihtiyacınız varsa bkz. [hızlı başlangıç: Azure SQL veritabanına bağlanmak ve sorgu sorgulamak için SQL Server Management Studio kullanma](connect-query-ssms.md).
+   Bağlantı için yardıma ihtiyacınız varsa bkz. [hızlı başlangıç: Azure SQL veritabanı 'nda bir veritabanına bağlanmak ve veritabanını sorgulamak için SQL Server Management Studio kullanın](connect-query-ssms.md).
 
 1. Eğitim verilerini kaydetmek için **Carspeed** tablosunu oluşturun.
 
@@ -139,7 +139,7 @@ Aşağıdaki adımlarda eğitim verilerini ayarlayacaksınız, regresyon modeli 
 
 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) saklı yordamından döndürülen R çıkışı genellikle tek bir veri çerçevesiyle sınırlıdır. Ancak veri çerçevesine ek olarak skaler değer gibi diğer türlerdeki çıkışları da döndürebilirsiniz.
 
-Örneğin, bir modeli eğitebilmeniz, ancak modeldeki katsayıların tablosunu hemen görüntülemek istediğinizi varsayalım. Bunu yapmak için, katsayıların bir kısmını ana sonuç kümesi olarak oluşturur ve eğitilen modeli bir SQL değişkeninde çıktı olarak alırsınız. Değişkeni çağırarak modeli hemen yeniden kullanabilirsiniz ya da modeli burada gösterildiği gibi bir tabloya kaydedebilirsiniz.
+Örneğin, bir modeli eğitebilmeniz, ancak modeldeki katsayıların tablosunu hemen görüntülemek istediğinizi varsayalım. Bunu yapmak için, katsayıların bir kısmını ana sonuç kümesi olarak oluşturur ve eğitilen modeli bir SQL değişkenine çıktı olarak alırsınız. Değişkeni çağırarak modeli hemen yeniden kullanabilirsiniz ya da modeli burada gösterildiği gibi bir tabloya kaydedebilirsiniz.
 
 ```sql
 DECLARE @model VARBINARY(max)

@@ -3,12 +3,12 @@ title: Azure Geçişi gereci
 description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 5995242f84738eca1b2be680e3f744e36831d78f
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 8d385e956aaa2888d72d711571fa8e7cb91da772
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235330"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323816"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -49,7 +49,7 @@ Aşağıdaki tabloda, VMware için Azure geçişi gereç gereksinimleri özetlen
 **Bulma sınırları** | Bir gereç, vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.<br/> Bir gereç, tek bir vCenter Server bağlanabilir.
 **OVA şablonu** | Portalından veya sürümünden indirin https://aka.ms/migrate/appliance/vmware .<br/><br/> İndirme boyutu 11,2 GB 'dir.<br/><br/> İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
 **PowerShell betiği** | Betik [indirme](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> 
-**Yazılım/donanım** |  Gereç, Windows Server 2016, 32-GB RAM, 8 vCPU ve 80 GB disk depolaması ve harici bir sanal anahtar ile makine üzerinde çalışmalıdır.<br/> Gereç doğrudan veya bir ara sunucu üzerinden internet erişimi gerektirir.<br/><br/> Gereci bir VMware VM üzerinde çalıştırırsanız, gereksinimleri karşılayan bir VM 'yi ayırmak için vCenter Server yeterli kaynaklara sahip olmanız gerekir.<br/><br/> Gereci fiziksel bir makinede çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun. 
+**Yazılım/donanım** |  Gereç, Windows Server 2016, 32-GB RAM, 8 vCPU ve 80 GB disk depolaması ve harici bir sanal anahtar ile makine üzerinde çalışmalıdır.<br/> Gereç doğrudan veya bir ara sunucu üzerinden internet erişimi gerektirir.<br/><br/> Gereci bir VMware VM üzerinde çalıştırırsanız, gereksinimleri karşılayan bir VM 'yi ayırmak için vCenter Server yeterli kaynaklara sahip olmanız gerekir.<br/><br/> Gereci fiziksel bir makinede çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun.
 **VMware gereksinimleri** | Gereci bir VMware VM 'si olarak dağıtırsanız, sürüm 5,5 veya sonraki bir sürümünü çalıştıran bir ESXi konağına dağıtılması gerekir.<br/><br/> 5,5, 6,0, 6,5 veya 6,7 vCenter Server çalışıyor.
 **VDDK (aracısız geçiş)** | Gereci bir VMware sanal makinesi olarak dağıtırsanız ve aracısız bir geçiş çalıştırıyorsanız, VMware vSphere VDDK 'nin gereç sanal makinesine yüklenmesi gerekir.
 **Karma değeri-OVA** | OVA şablonu karma değerlerini [doğrulayın](tutorial-assess-vmware.md#verify-security) .
@@ -180,7 +180,7 @@ IPv6 adresleri | 'nin. Guest.Net
 Aktarım hızını oku (MB/saniye) | net. alınan. Ortalama
 Yazma üretilen işi (MB/saniye) | net. iletilmiş. Average
 **Envanter yolu ayrıntıları** | 
-Adı | kapsayıcı. GetType (). Ada
+Name | kapsayıcı. GetType (). Ada
 Alt nesnenin türü | kapsayıcı. ChildType
 Başvuru ayrıntıları | kapsayıcı. MoRef
 Üst Ayrıntılar | Container. Parent
@@ -225,9 +225,9 @@ Sağlayıcı  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <
 
 Uygulamanın, uygulama bulma için etkinleştirilen her bir VM 'den topladığı Özellikler verileri aşağıda verilmiştir. Bu veriler Azure 'a gönderilir.
 
-**Veri**  | **PowerShell cmdlet 'i** | **Özelliði**
+**Veri**  | **PowerShell cmdlet 'i** | **Özellik**
 --- | --- | ---
-Adı  | Get-WindowsFeature  | Adı
+Name  | Get-WindowsFeature  | Name
 Özellik türü | Get-WindowsFeature  | FeatureType
 Üst  | Get-WindowsFeature  | Üst
 
@@ -237,7 +237,7 @@ Uygulamanın, uygulama bulma için etkinleştirilmiş Microsoft SQL Server çal�
 
 **Veri**  | **Kayıt Defteri Konumu**  | **Anahtar**
 --- | --- | ---
-Adı  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\ınstance Names\SQL  | ınstalınstalstance
+Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\ınstance Names\SQL  | ınstalınstalstance
 Sürüm  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Sürüm 
 Hizmet Paketi  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP2
 Sürüm  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Sürüm 
@@ -246,9 +246,9 @@ Sürüm  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \s
 
 Bu, gerecin uygulama bulma için etkin her VM 'yi topladığı işletim sistemi verileri. Bu veriler Azure 'a gönderilir.
 
-Veri  | WMI sınıfı  | WMI sınıfı özelliği
+Veriler  | WMI sınıfı  | WMI sınıfı özelliği
 --- | --- | ---
-Adı  | Win32_operatingsystem  | Başlık
+Name  | Win32_operatingsystem  | Başlık
 Sürüm  | Win32_operatingsystem  | Sürüm
 Mimari  | Win32_operatingsystem  | OSArchitecture
 
@@ -256,9 +256,9 @@ Mimari  | Win32_operatingsystem  | OSArchitecture
 
 Uygulamanın, uygulama bulma için etkinleştirilen her bir VM 'den topladığı yüklü uygulama verileri aşağıda verilmiştir. VM 'nin işletim sistemine bağlı olarak, bir veya daha fazla komut çalıştırılır. Bu veriler Azure 'a gönderilir.
 
-Veri  | Komut
+Veriler  | Komut
 --- | --- 
-Adı | RPM, dpkg-Query, Snap
+Name | RPM, dpkg-Query, Snap
 Sürüm | RPM, dpkg-Query, Snap
 Sağlayıcı | RPM, dpkg-Query, Snap
 
@@ -268,7 +268,7 @@ Bu, gerecin uygulama bulma için etkin her VM 'yi topladığı işletim sistemi 
 
 **Veri**  | **Komut** 
 --- | --- | ---
-Adı <br/> sürüm | Aşağıdaki dosyalardan bir veya daha fazlası toplanmıştır:<br/> <br/>/etc/OS-Release  <br> /usr/lib/OS-Release  <br> /etc/Enterprise-Release  <br> /etc/redhat-release  <br> /etc/Oracle-Release  <br> /etc/SuSE-release  <br> /etc/LSB-Release  <br> /etc/debian_version 
+Name <br/> sürüm | Aşağıdaki dosyalardan bir veya daha fazlası toplanmıştır:<br/> <br/>/etc/OS-Release  <br> /usr/lib/OS-Release  <br> /etc/Enterprise-Release  <br> /etc/redhat-release  <br> /etc/Oracle-Release  <br> /etc/SuSE-release  <br> /etc/LSB-Release  <br> /etc/debian_version 
 Mimari | uname
 
 
@@ -507,7 +507,7 @@ Bileşenlerden herhangi biri için daha eski bir sürüm çalıştırıyorsanız
 
 1. En son gereç hizmeti sürümlerini denetlemek için LatestComponents. json dosyasını [indirin](https://aka.ms/latestapplianceservices) .
 2.    İndirdikten sonra, Not defteri 'nde LatestComponents. json dosyasını açın.
-3. Dosyadaki en son hizmet sürümünü ve bunun için karşıdan yükleme bağlantısını bulun. Örneğin:
+3. Dosyadaki en son hizmet sürümünü ve bunun için karşıdan yükleme bağlantısını bulun. Örnek:
 
     "Ad": "ASRMigrationWebApp", "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 

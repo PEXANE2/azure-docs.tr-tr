@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: f521cc68476e2f9df1cc8288cf41156da3851cd0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9a490550bf6652186c80268d4a99bff931897fcd
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78251885"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344195"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak Standart Yük Dengeleyici ile kullanılabilirlik alanları arasındaki sanal makinelerde yük dengeleme
 
@@ -49,14 +49,14 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Standart Yük Dengeleyici yalnızca Standart Genel IP adresini destekler. Yük dengeleyiciyi oluştururken yeni bir genel IP oluşturduğunuzda, bir Standart SKU sürümü halinde otomatik olarak yapılandırılır ve ayrıca otomatik olarak alanlar arası yedeklidir.
 
-1. Ekranın sol üst kısmında **kaynak** > **ağ** > **Load Balancer**oluştur ' a tıklayın.
+1. Ekranın sol üst kısmında **kaynak**  >  **ağ**  >  **Load Balancer**oluştur ' a tıklayın.
 2. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur**' u seçin:
 
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna *MyResourceGroupLBAZ* yazın.|
-    | Adı                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Bölge         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Ortak**seçeneğini belirleyin.                                        |
     | SKU           | **Standart**' ı seçin.                          |
@@ -75,12 +75,12 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
 
 | Parametre                   | Değer                |
 |-----------------------------|----------------------|
-| **\<Kaynak-Grup adı>**  | myResourceGroupLBAZ (mevcut kaynak grubunu Seç) |
-| **\<sanal ağ-adı>** | myVNet          |
-| **\<bölge adı>**          | Batı Avrupa      |
-| **\<IPv4-adres-alanı>**   | 10.0.0.0 \ 16          |
-| **\<alt ağ-adı>**          | myBackendSubnet        |
-| **\<alt ağ-adres aralığı>** | 10.0.0.0 \ 24          |
+| **\<resource-group-name>**  | myResourceGroupLBAZ (mevcut kaynak grubunu Seç) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | Batı Avrupa      |
+| **\<IPv4-address-space>**   | 10.0.0.0 \ 16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.0.0.0 \ 24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -127,7 +127,7 @@ Bu bölümde, Azure portalı ile HTTP ve RDP kullanarak gelen bağlantılara izi
 
 Yük dengeleyicinin arka uç sunucuları olarak hareket edebilen bölge için farklı alanlarda (bölge 1, bölge 2 ve bölge 3) sanal makineler oluşturun.
 
-1. Ekranın sol üst kısmında, **kaynak** > oluştur**işlem** > **Windows Server 2016 Datacenter** ' a tıklayın ve sanal makine için şu değerleri girin:
+1. Ekranın sol üst kısmında, **kaynak oluştur**  >  **işlem**  >  **Windows Server 2016 Datacenter** ' a tıklayın ve sanal makine için şu değerleri girin:
     - Sanal makinenin adı için *myVM1*.        
     - Yönetici kullanıcı adı için *azureuser*.    
     - *myResourceGroupLBAZ* - **Kaynak grubu** için **Var olanı kullan**’ı seçin ve sonra *myResourceGroupLBAZ* seçeneğini belirleyin.
@@ -140,9 +140,6 @@ Yük dengeleyicinin arka uç sunucuları olarak hareket edebilen bölge için fa
     - *myNetworkSecurityGroup* - Ağ güvenlik grubunun (güvenlik duvarı) adı.
 5. Önyükleme tanılamalarını devre dışı bırakmak için **Devre Dışı** seçeneğine tıklayın.
 6. **Tamam**’a tıklayın, özet sayfasındaki ayarları gözden geçirin ve sonra **Oluştur**’a tıklayın.
-  
-   ![Sanal makine oluşturma](./media/load-balancer-standard-public-availability-zones-portal/create-vm-standard-ip.png)
-
 7. Adım 1-6’yı kullanarak, sanal ağ *myVnet*, alt ağ *myBackendSubnet* ve **myNetworkSecurityGroup* ağ güvenlik grubu olacak şekilde Bölge 2’de *VM2* adlı ikinci bir VM, Bölge 3’te üçüncü bir VM oluşturun.
 
 ### <a name="install-iis-on-vms"></a>VM’lere IIS yükleme
@@ -150,7 +147,7 @@ Yük dengeleyicinin arka uç sunucuları olarak hareket edebilen bölge için fa
 1. Sol menüden **Tüm kaynaklar**’a tıklayın ve kaynak listesinden, *myResourceGroupLBAZ* kaynak grubunda bulunan **myVM1** öğesine tıklayın.
 2. Sanal makineye yönelik RDP için **Genel Bakış** sayfasında **Bağlan**’a tıklayın.
 3. *azureuser* kullanıcı adıyla sanal makinede oturum açın.
-4. Sunucu masaüstünde **Windows Yönetim Araçları**>**Windows PowerShell**' e gidin.
+4. Sunucu masaüstünde **Windows Yönetim Araçları** > **Windows PowerShell**' e gidin.
 5. PowerShell Penceresinde aşağıdaki komutları çalıştırarak IIS sunucusunu yükleyin, varsayılan iisstart.htm dosyasını kaldırın ve ardından VM’nin adını gösteren yeni bir iisstart.htm dosyasını ekleyin:
    ```azurepowershell-interactive
     

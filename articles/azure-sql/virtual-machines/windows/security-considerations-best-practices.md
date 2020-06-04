@@ -1,5 +1,5 @@
 ---
-title: Azure 'da SQL Server yönelik güvenlik konuları | Microsoft Docs
+title: Güvenlik konuları | Microsoft Docs
 description: Bu konu, bir Azure sanal makinesinde çalışan SQL Server güvenliğini sağlamaya yönelik genel rehberlik sağlar.
 services: virtual-machines-windows
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f04620430571a1f86d601eac2b1b662c77499a76
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a9c3588d75bbad3ed7feb2d8a53c0a698286861a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047268"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342570"
 ---
-# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure Sanal Makineler'de SQL Server için Güvenlikle İlgili Dikkat Edilmesi Gerekenler
+# <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server yönelik güvenlik konuları
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Bu konu, bir Azure sanal makinesindeki (VM) SQL Server örneklerine güvenli erişim sağlamaya yardımcı olan genel güvenlik yönergelerini içerir.
@@ -31,7 +31,7 @@ Azure, bir sanal makinede çalışan SQL Server ile uyumlu bir çözüm oluştur
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="control-access-to-the-sql-vm"></a>SQL VM 'ye erişimi denetleme
+## <a name="control-access-to-the-sql-virtual-machine"></a>SQL sanal makinesine erişimi denetleme
 
 SQL Server sanal makinenizi oluştururken, makineye kimlerin erişebileceğini ve SQL Server ne kadar dikkatli bir şekilde kontrol etmeyi göz önünde bulundurun. Genel olarak, aşağıdakileri yapmalısınız:
 
@@ -54,13 +54,13 @@ Portalda seçilen seçenekler, sanal makinenize ağ trafiğine izin vermek veya 
 
 Ağ trafiğini kısıtlamak için NSG kurallarına ek olarak, sanal makinede Windows güvenlik duvarını da kullanabilirsiniz.
 
-Klasik dağıtım modeliyle uç noktalar kullanıyorsanız, bu dosyaları kullanmıyorsanız sanal makinedeki tüm uç noktaları kaldırın. ACL 'Leri uç noktalarla kullanma hakkında yönergeler için bkz. [bir uç noktada ACL 'Yi yönetme](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint). Bu, Kaynak Yöneticisi kullanan VM 'Ler için gerekli değildir.
+Klasik dağıtım modeliyle uç noktalar kullanıyorsanız, bu dosyaları kullanmıyorsanız sanal makinedeki tüm uç noktaları kaldırın. ACL 'Leri uç noktalarla kullanma hakkında yönergeler için bkz. [bir uç noktada ACL 'Yi yönetme](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint). Bu, Azure Resource Manager kullanan VM 'Ler için gerekli değildir.
 
 Son olarak, Azure sanal makinenizde SQL Server veritabanı altyapısının örneği için şifrelenmiş bağlantıları etkinleştirmeyi düşünün. SQL Server örneğini imzalı bir sertifika ile yapılandırın. Daha fazla bilgi için bkz. veritabanı altyapısı ve [bağlantı dizesi söz dizimine](https://msdn.microsoft.com/library/ms254500.aspx) [şifreli bağlantıları etkinleştirme](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) .
 
 ## <a name="encryption"></a>Şifreleme
 
-Yönetilen diskler sunucu tarafı şifrelemesi ve Azure disk şifrelemesi sunar. [Sunucu tarafı şifrelemesi](/azure/virtual-machines/windows/disk-encryption) , bekleyen şifreleme sağlar ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamak için verilerinizi korur. [Azure disk şifrelemesi](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) , BitLocker ya da dm-crypt teknolojisini kullanır ve hem işletim sistemini hem de veri disklerini şifrelemek için Azure Key Vault ile tümleşir. 
+Yönetilen diskler, sunucu tarafı şifreleme ve Azure disk şifrelemesi sunar. [Sunucu tarafı şifreleme](/azure/virtual-machines/windows/disk-encryption) , bekleyen şifreleme sağlar ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamak için verilerinizi korur. [Azure disk şifrelemesi](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) , BitLocker ya da dm-crypt teknolojisini kullanır ve hem işletim sistemini hem de veri disklerini şifrelemek için Azure Key Vault ile tümleşir. 
 
 ## <a name="use-a-non-default-port"></a>Varsayılan olmayan bir bağlantı noktası kullan
 
@@ -107,7 +107,7 @@ Bu konu başlığı altında açıklanan uygulamalara ek olarak, hem geleneksel 
 Sanal makine güvenliği hakkında daha fazla bilgi için bkz. [sanal makineler güvenliğine genel bakış](/azure/security/fundamentals/virtual-machines-overview).
 
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
 Performansla ilgili en iyi yöntemleri de ilgileniyorsanız, bkz. [Azure sanal makinelerinde SQL Server Için En Iyi performans uygulamaları](performance-guidelines-best-practices.md).
 

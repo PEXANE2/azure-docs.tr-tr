@@ -2,14 +2,14 @@
 title: Yazma ve çalışma zamanı anahtarlarını kullanma-LUSıS
 description: Language Understanding (LUU) ilk kez kullandığınızda, yazma anahtarı oluşturmanız gerekmez. Uygulamayı yayımlamayı ve sonra çalışma zamanı uç noktanızı kullanmayı amaçlıyorsanız, çalışma zamanı anahtarını uygulamaya oluşturup atamanız gerekir.
 services: cognitive-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: d9235b6ef1c7cddbfbbd36f8382439d781af6d5f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c566e8fe56d19856f5a577e472929b7610497d7c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101034"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344467"
 ---
 # <a name="create-luis-resources"></a>LUSıS kaynakları oluşturma
 
@@ -51,7 +51,7 @@ Tahmin uç noktanızı yayımlamaya hazır olduğunuzda, başlangıç anahtar i�
 
 Her kaynağı ayrı ayrı oluşturmak için [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 'yi kullanın.
 
-Kaynak `kind`:
+Kaynak `kind` :
 
 * Özgün`LUIS.Authoring`
 * Hızlı`LUIS`
@@ -64,13 +64,13 @@ Kaynak `kind`:
 
     Bu, doğru hesabı seçmenizi ve kimlik doğrulaması sağlamanıza olanak tanıyan bir tarayıcı açar.
 
-1. `westus` Bölge için adlı `my-resource-group` _mevcut_ kaynak grubunda adlı `my-luis-authoring-resource` bir **lusıs yazma kaynağı** `LUIS.Authoring`oluşturun.
+1. **LUIS authoring resource** `LUIS.Authoring` `my-luis-authoring-resource` Bölge için adlı _mevcut_ kaynak grubunda adlı bir lusıs yazma kaynağı oluşturun `my-resource-group` `westus` .
 
     ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. `westus` Bölge için adlı `my-resource-group` _mevcut_ kaynak grubunda adlı `LUIS` `my-luis-prediction-resource` , türü bir **lusıs tahmin uç noktası kaynağı**oluşturun. Ücretsiz katmandan daha yüksek bir aktarım hızı istiyorsanız olarak `F0` `S0`değiştirin. [Fiyatlandırma katmanları ve verimlilik](luis-limits.md#key-limits)hakkında daha fazla bilgi edinin.
+1. **LUIS prediction endpoint resource** `LUIS` `my-luis-prediction-resource` Bölge için adlı _mevcut_ kaynak grubunda adlı, türü bir lusıs tahmin uç noktası kaynağı oluşturun `my-resource-group` `westus` . Ücretsiz katmandan daha yüksek bir aktarım hızı istiyorsanız `F0` olarak değiştirin `S0` . [Fiyatlandırma katmanları ve verimlilik](luis-limits.md#key-limits)hakkında daha fazla bilgi edinin.
 
     ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
@@ -85,7 +85,7 @@ Tek bir uygulama için veya LUSıS 'deki tüm uygulamalar için bir yazma kayna�
 
 1. [Lui portalında](https://www.luis.ai)oturum açın.
 1. Üst gezinti çubuğunda, en sağdaki kullanıcı hesabınızı seçin ve ardından **Ayarlar**' ı seçin.
-1. **Kullanıcı ayarları** sayfasında, **yazma kaynağı Ekle** ' yi seçin ve var olan bir yazma kaynağı seçin. **Kaydet**’i seçin.
+1. **Kullanıcı ayarları** sayfasında, **yazma kaynağı Ekle** ' yi seçin ve var olan bir yazma kaynağı seçin. **Kaydet**'i seçin.
 
 ## <a name="assign-a-resource-to-an-app"></a>Uygulamaya kaynak atama
 
@@ -113,7 +113,7 @@ CI/CD işlem hattı gibi Otomasyon amaçları için bir lusıs çalışma zaman�
 
     |Üst bilgi|Değer|
     |--|--|
-    |`Authorization`|Öğesinin `Authorization` değeri `Bearer {token}`. Belirteç değerinin önünde `Bearer` ve bir boşluk olması gerektiğini unutmayın.|
+    |`Authorization`|Öğesinin değeri `Authorization` `Bearer {token}` . Belirteç değerinin önünde `Bearer` ve bir boşluk olması gerektiğini unutmayın.|
     |`Ocp-Apim-Subscription-Key`|Yazma anahtarınız.|
 
     Bu API, abonelik KIMLIĞI, kaynak grubu ve kaynak adı gibi, hesap adı olarak döndürülen LUSıS aboneliklerinizin JSON nesnelerinin bir dizisini döndürür. LUO uygulamasına atanacak LUO kaynağı olan dizideki bir öğeyi bulun.
@@ -124,7 +124,7 @@ CI/CD işlem hattı gibi Otomasyon amaçları için bir lusıs çalışma zaman�
 
     |Tür|Ayar|Değer|
     |--|--|--|
-    |Üst bilgi|`Authorization`|Öğesinin `Authorization` değeri `Bearer {token}`. Belirteç değerinin önünde `Bearer` ve bir boşluk olması gerektiğini unutmayın.|
+    |Üst bilgi|`Authorization`|Öğesinin değeri `Authorization` `Bearer {token}` . Belirteç değerinin önünde `Bearer` ve bir boşluk olması gerektiğini unutmayın.|
     |Üst bilgi|`Ocp-Apim-Subscription-Key`|Yazma anahtarınız.|
     |Üst bilgi|`Content-type`|`application/json`|
     |QueryString|`appid`|LUIS app kimliği.

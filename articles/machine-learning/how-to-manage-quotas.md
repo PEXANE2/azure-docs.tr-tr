@@ -11,25 +11,28 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/08/2020
 ms.custom: contperfq4
-ms.openlocfilehash: c5862ee90a12240e7293647fae6af4f18f30c164
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0fb9e0ced0cc7cacdd2247bd208e4354fffe82c8
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680398"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344926"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning sahip kaynaklara yönelik kotaları yönetme & artırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, aboneliğiniz için Azure kaynakları üzerinde önceden yapılandırılmış sınırlara ilişkin ayrıntılar [Azure Machine Learning](overview-what-is-azure-ml.md) kullanıcılara sunulmaktadır. Ayrıca, her bir kaynak türü için kota iyileştirmeleri isteme yönergeleri de mevcuttur. Bu sınırlar, sahtekarlık nedeniyle yapılan bütçeyi önlemek ve Azure kapasite kısıtlamalarını kabul etmek için yerinde konur.
+Bu makalede, [Azure Machine Learning](overview-what-is-azure-ml.md) aboneliğiniz ve yönetebileceğiniz kotalar için Azure kaynakları üzerinde önceden yapılandırılmış sınırlar hakkında bilgi edineceksiniz. Bu sınırlar, sahtekarlık nedeniyle yapılan bütçeyi önlemek ve Azure kapasite kısıtlamalarını kabul etmek için yerinde konur. 
 
 Diğer Azure hizmetlerinde olduğu gibi, Azure Machine Learning ilişkili belirli kaynaklarda sınırlamalar vardır. Bu sınırlar, model eğitimi veya çıkarım/Puanlama için kullanılan gerçek temeldeki işlem üzerinde sınırlara kadar [çalışma alanı](concept-workspace.md) sayısı üst sınırından aralığıdır. 
 
 Azure Machine Learning kaynaklarınızı üretim iş yükleri için tasarlayıp ölçeklendirerek, bu sınırları göz önünde bulundurun. Örneğin, kümeniz hedef düğüm sayısına ulaşmazsa, aboneliğiniz için bir Azure Machine Learning Işlem çekirdeği sınırına ulaşmış olabilirsiniz. Sınırı veya kotayı varsayılan sınırın üzerinde yükseltmek istiyorsanız, ücretsiz bir çevrimiçi müşteri destek isteği açın. Limitler, Azure kapasite kısıtlamaları nedeniyle aşağıdaki tablolarda gösterilen en büyük sınır değerinin üzerinde yer alınamıyor. En fazla limit sütunu yoksa, kaynak ayarlanabilir sınırlara sahip olmaz.
 
+
+Kotaları yönetme ile birlikte, [Azure Machine Learning için maliyetleri nasıl planlayacağınızı &](concept-plan-manage-cost.md)de öğrenebilirsiniz.
+
 ## <a name="special-considerations"></a>Özel Konular
 
-+ Kota, kapasite garantisi değil, kredi limiti olur. Büyük ölçekli kapasite gereksinimleriniz varsa Azure desteği 'ne başvurun.
++ Kota, kapasite garantisi değil, kredi limiti olur. Büyük ölçekli kapasite gereksinimleriniz varsa Azure desteği 'ne başvurun. Ayrıca, [kotalarınızı artırabilirsiniz](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors).
 
 + Kotayı Azure Machine Learning dahil olmak üzere aboneliklerinizde bulunan tüm hizmetler arasında paylaşılır. Tek özel durum, çekirdek işlem kotasından ayrı bir kota içeren Azure Machine Learning işlem amaçlıdır. Kapasite ihtiyaçlarınızı değerlendirirken tüm hizmetler genelinde kota kullanımını hesapladığınızdan emin olun.
 
@@ -63,7 +66,7 @@ Kullanılabilir kaynaklar:
 
 + Dönüştürüldükten sonra aşılmayacak başka kesin sınırlar vardır.
 
-| **Kaynak** | **Maksimum sınır** |
+| **Kaynak** | **Üst sınır** |
 | --- | --- |
 | Kaynak grubu başına en fazla çalışma alanı | 800 |
 | Tek bir Azure Machine Learning Işlem (AmlCompute) kaynağındaki en fazla düğüm | 100 düğümleri |

@@ -1,6 +1,6 @@
 ---
 title: Azure Izleyici günlükleriyle SQL Data Sync izleme
-description: Azure Izleyici günlüklerini kullanarak SQL Data Sync izlemeyi öğrenin
+description: Azure Izleyici günlüklerini kullanarak SQL Data Sync izlemeyi öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,15 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: b7c801d75d778deccae645e0945fba557dbc6782
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 307e501743d01b94cfca3692cc09c05cc90ed3ce
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188792"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343243"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle SQL Data Sync izleme 
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 SQL Data Sync etkinlik günlüğünü denetlemek ve hataları ve uyarıları algılamak için, daha önce Azure portal SQL Data Sync el ile kontrol etmeniz veya PowerShell ya da REST API kullanmanız gerekiyordu. Veri eşitleme izleme deneyimini geliştiren özel bir çözüm yapılandırmak için bu makaledeki adımları izleyin. Bu çözümü, senaryonuza uyacak şekilde özelleştirebilirsiniz.
 
@@ -62,7 +61,7 @@ Aşağıdaki iki örneği indirin:
 
 -   [Veri eşitleme Azure Izleyici görünümü](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki şeyleri ayarladığınızdan emin olun:
 
@@ -86,7 +85,7 @@ Runbook oluşturma hakkında daha fazla bilgi için bkz. [Ilk PowerShell runbook
 
 4.  **Runbook dosyası**altında, verilen dosyayı kullanın `DataSyncLogPowerShellRunbook` . **Runbook türünü** olarak ayarlayın `PowerShell` . Runbook 'a bir ad verin.
 
-5.  **Oluştur**’u seçin. Artık bir runbook 'a sahipsiniz.
+5.  **Oluştur**'u seçin. Artık bir runbook 'a sahipsiniz.
 
 6.  Azure Otomasyonu hesabınız altında, paylaşılan kaynaklar ' ın altındaki **değişkenler** sekmesini seçin.
 
@@ -124,7 +123,7 @@ Runbook 'u zamanlamak için:
 
 5.  **Yinelemeyi** yineleme olarak ayarlayın ve istediğiniz aralığı ayarlayın. Burada, komut dosyasında ve Azure Izleyici günlüklerinde aynı aralığı kullanın.
 
-6.  **Oluştur**’u seçin.
+6.  **Oluştur**'u seçin.
 
 ### <a name="check-the-automation"></a>Otomasyonu denetleyin
 
@@ -136,7 +135,7 @@ Azure Izleyici günlüklerini kullanan bir uyarı oluşturmak için aşağıdaki
 
 1.  Azure portal **günlük araması**' nı seçin.
 
-2.  Seçtiğiniz Aralık dahilinde eşitleme grubuna göre hataları ve uyarıları seçmek için bir sorgu oluşturun. Örneğin:
+2.  Seçtiğiniz Aralık dahilinde eşitleme grubuna göre hataları ve uyarıları seçmek için bir sorgu oluşturun. Örnek:
 
     `DataSyncLog_CL | where LogLevel_s != "Success" | summarize AggregatedValue = count() by bin(TimeGenerated,60m),SyncGroupName_s`
 
@@ -188,7 +187,7 @@ Azure Izleyici görünümünü yapılandırmak için aşağıdaki işlemleri yap
 
 **Azure Otomasyonu:** Kullanımınıza bağlı olarak, Azure Otomasyonu hesabının bir maliyeti olabilir. Ayda ilk 500 dakikalık iş çalıştırma süresi ücretsizdir. Çoğu durumda, bu çözümün ayda 500 dakikadan kısa bir süre kullanması beklenir. Ücretlerden kaçınmak için, runbook 'u iki saat veya daha uzun bir zaman aralığında çalışacak şekilde zamanlayın. Daha fazla bilgi için bkz. [Otomasyon Fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
 
-**Azure izleyici günlükleri:** Kullanımınıza bağlı olarak Azure Izleyici günlükleriyle ilişkili bir maliyet olabilir. Ücretsiz katman, günde 500 MB/saniye veri içerir. Çoğu durumda, bu çözümün günde 500 MB 'tan az olması beklenir. Kullanımı azaltmak için, runbook 'a dahil edilen hata filtrelemeyi kullanın. Günde 500 MB 'tan fazla kullanıyorsanız, sınırlamaya ulaşıldığında analiz durdurma riskini önlemek için ücretli katmana yükseltin. Daha fazla bilgi için bkz. [Azure izleyici günlükleri fiyatlandırması](https://azure.microsoft.com/pricing/details/log-analytics/).
+**Azure izleyici günlükleri:** Kullanımınıza bağlı olarak Azure Izleyici günlükleriyle ilişkili bir maliyet olabilir. Ücretsiz katman, günde 500 MB/saniye veri içerir. Çoğu durumda, bu çözümün günde 500 MB 'tan az olması beklenir. Kullanımı azaltmak için, runbook 'a dahil edilen hata filtrelemeyi kullanın. Günde 500 MB 'tan fazla kullanım yapıyorsanız, sınırlamaya ulaşıldığında analiz durdurma riskini önlemek için ücretli katmana yükseltin. Daha fazla bilgi için bkz. [Azure izleyici günlükleri fiyatlandırması](https://azure.microsoft.com/pricing/details/log-analytics/).
 
 ## <a name="code-samples"></a>Kod örnekleri
 

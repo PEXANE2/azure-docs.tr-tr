@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 384b66020b3d18064ea1cd9f162911878caa598d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fe899eebb0139dffabef96da32ab1641c983f726
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017554"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338416"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>SQL Server Agent uzantısı (klasik) ile Azure sanal makinelerinde yönetim görevlerini otomatikleştirme
 > [!div class="op_single_selector"]
@@ -37,13 +37,13 @@ SQL Server IaaS Aracısı uzantısı (SQLIaaSAgent), yönetim görevlerini otoma
 ## <a name="supported-services"></a>Desteklenen hizmetler
 SQL Server IaaS Aracısı uzantısı aşağıdaki yönetim görevlerini destekler:
 
-| Yönetim özelliği | Açıklama |
+| Yönetim özelliği | Description |
 | --- | --- |
 | **SQL Otomatik Yedekleme** |VM 'deki SQL Server varsayılan örneği için tüm veritabanları için yedeklemelerin zamanlamasını otomatikleştirir. Daha fazla bilgi için bkz. [Azure sanal makineler 'de SQL Server Için otomatik yedekleme (klasik)](../classic/sql-automated-backup.md). |
 | **SQL Otomatik Düzeltme Eki Uygulama** |VM 'niz için önemli Windows güncelleştirmelerinin gerçekleşmesi sırasında bir bakım penceresi yapılandırır, bu sayede iş yükünüz için yoğun zamanlarda güncelleştirmelerden kaçınabilirsiniz. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için otomatik düzeltme eki uygulama (klasik)](../classic/sql-automated-patching.md). |
 | **Azure Key Vault tümleştirme** |SQL Server VM Azure Key Vault otomatik olarak yüklemenize ve yapılandırmanıza olanak sağlar. Daha fazla bilgi için bkz. [Azure VM 'lerde SQL Server için Azure Key Vault tümleştirmesini yapılandırma (klasik)](../classic/ps-sql-keyvault.md). |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 SANAL makinenizde SQL Server IaaS Aracısı uzantısını kullanma gereksinimleri:
 
 ### <a name="operating-system"></a>İşletim Sistemi:
@@ -82,7 +82,7 @@ SQL IaaS aracı uzantısının en son sürümüne güncelleştirirseniz, uzantı
 > Klasik sanal makinelerde, Portal üzerinden SQL IaaS Aracısı uzantısını yükleyip yapılandırma seçeneği yoktur.
 
 > [!NOTE]
-> SQL Server IaaS Aracısı uzantısı yalnızca [SQL Server VM Galeri görüntülerinde](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-vms) desteklenir (Kullandıkça Öde veya kendi lisansını getir). Yalnızca bir işletim sistemi Windows Server sanal makinesine SQL Server el ile yüklüyorsanız veya özelleştirilmiş bir SQL Server VM VHD dağıtırsanız desteklenmez. Bu gibi durumlarda, PowerShell kullanarak uzantıyı el ile yüklemek ve yönetmek mümkün olabilir, ancak bunun yerine SQL Server VM Galeri görüntüsünü yükleyip özelleştirmek önemle önerilir.
+> SQL Server IaaS Aracısı uzantısı yalnızca [SQL Server VM Galeri görüntülerinde](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms) desteklenir (Kullandıkça Öde veya kendi lisansını getir). Yalnızca bir işletim sistemi Windows Server sanal makinesine SQL Server el ile yüklüyorsanız veya özelleştirilmiş bir SQL Server VM VHD dağıtırsanız desteklenmez. Bu gibi durumlarda, PowerShell kullanarak uzantıyı el ile yüklemek ve yönetmek mümkün olabilir, ancak bunun yerine SQL Server VM Galeri görüntüsünü yükleyip özelleştirmek önemle önerilir.
 
 ## <a name="status"></a>Durum
 Uzantının yüklendiğini doğrulamak için bir yol, Azure portalında aracı durumunu görüntülemek için kullanılır. Sanal makine dikey penceresinde listelenen bir sanal makineyi seçin ve ardından **Uzantılar**' a tıklayın. **Sqliaasagent** uzantısını listede görmeniz gerekir.

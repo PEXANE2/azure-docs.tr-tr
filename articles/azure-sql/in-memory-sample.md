@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: aa26b0c6e30413366e06673a0890b21434fc842b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: aed1965b07a80efa3cd8dbc84e396b9ef4f99252
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047345"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345283"
 ---
 # <a name="in-memory-sample"></a>Bellek içi örnek
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -47,13 +47,13 @@ Daha fazla uyarlaması için, ancak bellek Içi OLTP için daha görsel açıdan
 
 ### <a name="installation-steps"></a>Yükleme adımları
 
-1. [Azure Portal](https://portal.azure.com/)sunucuda bir Premium veya iş açısından kritik veritabanı oluşturun. **Kaynağı** AdventureWorksLT örnek veritabanına ayarlayın. Ayrıntılı yönergeler için bkz. [Ilk Azure SQL veritabanınızı oluşturma](database/single-database-create-quickstart.md).
+1. [Azure Portal](https://portal.azure.com/)sunucuda bir Premium veya iş açısından kritik veritabanı oluşturun. **Kaynağı** AdventureWorksLT örnek veritabanına ayarlayın. Ayrıntılı yönergeler için bkz. [Azure SQL veritabanı 'nda ilk veritabanınızı oluşturma](database/single-database-create-quickstart.md).
 
 2. Veritabanına SQL Server Management Studio [(SSMS. exe)](https://msdn.microsoft.com/library/mt238290.aspx)ile bağlanın.
 
 3. [Bellek ıçı OLTP Transact-SQL betiğini](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) panonuza kopyalayın. T-SQL betiği, 1. adımda oluşturduğunuz AdventureWorksLT örnek veritabanında gerekli bellek Içi nesneleri oluşturur.
 
-4. T-SQL betiğini SSMS 'ye yapıştırın ve betiği yürütün. `MEMORY_OPTIMIZED = ON`Yan tümce create table deyimleri önemli. Örneğin:
+4. T-SQL betiğini SSMS 'ye yapıştırın ve betiği yürütün. `MEMORY_OPTIMIZED = ON`Yan tümce create table deyimleri önemli. Örnek:
 
 ```sql
 CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
@@ -365,7 +365,7 @@ P2 fiyatlandırma katmanının bulunduğu bir veritabanında, geleneksel dizin i
 
 #### <a name="tools"></a>Araçlar
 
-- [Azure portalı](https://portal.azure.com/)
+- [Azure portal](https://portal.azure.com/)
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 

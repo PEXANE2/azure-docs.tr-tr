@@ -1,6 +1,6 @@
 ---
-title: Microsoft&reg; kesintisiz akış Istemci taşıma kiti lisanslama
-description: Microsoft&reg; kesintisiz akış Istemci taşıma paketi 'nin nasıl lisanslandığı hakkında bilgi edinin.
+title: Microsoft &reg; kesintisiz akış Istemci taşıma kiti lisanslama
+description: Microsoft Kesintisiz Akış Istemci taşıma paketi 'nin nasıl lisanslandığı hakkında bilgi edinin &reg; .
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: bd77c53a195a9549f6aaad9ee2928206f5324b0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 423597da44a74afb60e69c4e32cbd6353f81e726
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686907"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344042"
 ---
-# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft&reg; kesintisiz akış Istemci taşıma kiti lisanslama 
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft &reg; kesintisiz akış Istemci taşıma kiti lisanslama 
 ## <a name="overview"></a>Genel Bakış
 Microsoft Kesintisiz Akış Client taşıma kiti (Short için**Sspk** ), yerleşik cihaz üreticilerine, kablolu ve mobil işleçlere, içerik hizmeti sağlayıcılarına, ahize üreticilerine, bağımsız yazılım satıcılarına (ISV) ve kesintisiz akış biçimde Uyarlamalı içerik akışı için ürün ve hizmet oluşturmaya yönelik çözüm sağlayıcılarına yardımcı olmak üzere iyileştirilmiş bir kesintisiz akış istemci uygulamasıdır. SSPK, lisans tarafından herhangi bir cihaza ve platforma bir cihaz tarafından aşılenebilir Kesintisiz Akış istemcisinin platformdan bağımsız bir uygulamasıdır. 
 
@@ -29,7 +29,7 @@ Aşağıda yer alan üst düzey bir mimari ve IIS Kesintisiz Akış taşıma pak
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>Açıklama
+## <a name="description"></a>Description
 SSPK, mükemmel iş değeri sunan koşullara göre lisanslanır. SSPK lisansı sektörde şunları sağlar:
 
 * C++ ' ta Kesintisiz Akış taşıma paketi kaynağı 
@@ -71,11 +71,11 @@ Kesintisiz Akış Istemcisi son ürünü, şu şekilde bir ayrıcalıklı model 
 * Her yıl ilk 10.000 cihaz uygulaması için lisanslı değildir 
 
 ## <a name="licensing-procedure-and-sspk-access"></a>Lisans prosedürü ve SSPK erişimi
-Tüm [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com) lisans sorguları için e-posta.
+[sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com)Tüm lisans sorguları için e-posta.
 
 SSPK dağıtım portalına kayıtlı geçici lisans sahipleri tarafından erişilebilir.
 
-Ara ve nihai SSPK lisanslamamaları, konusunda teknik sorular [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)gönderebilir.
+Ara ve nihai SSPK lisanslamamaları, konusunda teknik sorular gönderebilir [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com) .
 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft Kesintisiz Akış Istemci ara ürün sözleşmesi lisans sahipleri
 
@@ -144,6 +144,7 @@ Ara ve nihai SSPK lisanslamamaları, konusunda teknik sorular [smoothpk@microsof
 * Shenzhen Chuangwei-RGB Electronics Co., Ltd.
 * Shenzhen Conakliye Electronics CO., LTD
 * Shenzhen Jiuzhou Elektrik Co., Ltd
+* Shenzhen KTC Technology Co., Ltd. 
 * Kıenzhen ufuk, dijital teknoloji Co., Ltd
 * Sichuan Changhong Elektrik Co., Ltd.
 * Skardın Endüstriyel Corp.

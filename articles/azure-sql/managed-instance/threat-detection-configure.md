@@ -12,19 +12,19 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: cfd0aa6cf62c4f70365ecc06ad75efdda9563470
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 5cc5adf54b522f9209b386fa1fbb457ef6a3e8ff
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310827"
+ms.locfileid: "84322354"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde Gelişmiş tehdit koruması yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 [Azure SQL yönetilen örneği](sql-managed-instance-paas-overview.md) Için [Gelişmiş tehdit koruması](../database/threat-detection-overview.md) , veritabanları için olağandışı ve olası zararlı girişimleri gösteren anormal etkinlikleri algılar. Gelişmiş tehdit koruması, **OLASı SQL ekleme**, **olağan dışı konum veya veri merkezinden erişim**, **bilinmeyen bir sorumlu veya zararlı uygulamadan ERIŞIM**ve **deneme yanılma SQL kimlik bilgilerini** belirleyebilir. [Gelişmiş tehdit koruması uyarıları](../database/threat-detection-overview.md#alerts)hakkında daha fazla ayrıntı için bkz..
 
-Algılanan tehditler hakkında [e-posta bildirimleri](../database/threat-detection-overview.md#explore-detection-of-a-suspicious-event) veya [Azure Portal](../database/threat-detection-overview.md#explore-alerts-in-azure-portal) ile ilgili bildirimler alabilirsiniz
+Algılanan tehditler hakkında [e-posta bildirimleri](../database/threat-detection-overview.md#explore-detection-of-a-suspicious-event) veya [Azure Portal](../database/threat-detection-overview.md#explore-alerts-in-the-azure-portal) ile ilgili bildirimler alabilirsiniz
 
 Gelişmiş [tehdit koruması](../database/threat-detection-overview.md) , gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir paket olan [Gelişmiş veri güvenliği](../database/advanced-data-security.md) sunumunun bir parçasıdır. Gelişmiş Tehdit Koruması'na merkezi SQL ADS portalı yoluyla erişilebilir ve yönetilebilir.
 

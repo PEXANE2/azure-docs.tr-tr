@@ -2,14 +2,14 @@
 title: Azure geçişi ile Azure 'a geçiş için Hyper-V VM 'lerini değerlendirin | Microsoft Docs
 description: Azure geçişi sunucu değerlendirmesi kullanılarak Azure 'a geçiş için şirket içi Hyper-V VM 'lerinin nasıl değerlendirileneceğini açıklar.
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: c627902268af3a91e172223c1741dd24ea21fa92
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2c4233df6566f3187c8366188b0eb960189b43c5
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535460"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331772"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Azure geçişi sunucu değerlendirmesi ile Hyper-V VM 'lerini değerlendirin
 
@@ -31,7 +31,7 @@ Bu öğretici, Hyper-V VM 'lerinin Azure 'a nasıl değerlendirileceğini ve ge�
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bu serideki ilk öğreticiyi [doldurun](tutorial-prepare-hyper-v.md) . Bunu yapmazsanız, bu öğreticideki yönergeler çalışmaz.
 - İlk öğreticide yapmanız gerekenler şunlardır:
@@ -57,7 +57,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     ![Azure geçişi projesi oluşturma](./media/tutorial-assess-hyper-v/migrate-project.png)
 
 7. **İleri**’ye tıklayın.
-8. **Değerlendirme Seç aracında** **Azure geçişi: Sunucu değerlendirmesi** > **İleri**' yi seçin.
+8. **Değerlendirme Seç aracında** **Azure geçişi: Sunucu değerlendirmesi**  >  **İleri**' yi seçin.
 
     ![Azure geçişi projesi oluşturma](./media/tutorial-assess-hyper-v/assessment-tool.png)
 
@@ -79,8 +79,8 @@ Gereci oluşturduktan sonra Azure geçişi 'ne bağlanıp bağlanamadıktan sonr
 
 Gereç için daraltılmış VHD şablonunu indirin.
 
-1. **Geçiş hedefleri** > **sunucuları** > **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
-2.  > Makinelerde **bulunan makinelerde**makineler**sanallaştırılmış mı?**, **Hyper-V ile Evet 'e**tıklayın.
+1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
+2. Makinelerde **bulunan makinelerde**makineler  >  **sanallaştırılmış mı?**, **Hyper-V ile Evet 'e**tıklayın.
 3. VHD dosyasını indirmek için **İndir** ' e tıklayın.
 
     ![VM 'yi indir](./media/tutorial-assess-hyper-v/download-appliance-hyperv.png)
@@ -96,12 +96,20 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
     - Örnek kullanım: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
 
-3.  Gereç sürümü 2.19.07.30 için, oluşturulan karma bu ayarlarla eşleşmelidir.
+3.  En son gereç sürümlerini doğrulayın ve değerleri içerir:
 
-  **Algoritma** | **Karma değeri**
-  --- | ---
-  MD5 | 29a7531f32bcf69f32d964fa5ae950bc
-  SHA256 | 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
+    - Azure genel bulutu için:
+
+        **Senaryo** | **İndir** | **SHA256**
+        --- | --- | ---
+        Hyper-V (8,93 MB) | [En son sürüm](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+
+    - Azure Kamu için:
+
+        **Senaryon*** | **İndir** | **SHA256**
+        --- | --- | ---
+        Hyper-V (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+
 
 ### <a name="create-the-appliance-vm"></a>Gereç VM 'sini oluşturma
 
@@ -117,9 +125,9 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
     ![VHD dağıtma](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
 2. Sanal makineyi Içeri aktarma sihirbazında > **başlamadan önce** **İleri**' ye tıklayın.
-3. **Klasörü bul**' da, **sanal makineler** klasörünü seçin. Ardından **İleri**’ye tıklayın.
+3. **Klasörü bul**' da, **sanal makineler** klasörünü seçin. Ardından **İleri**'ye tıklayın.
 1. **Sanal makine seç**bölümünde **İleri**' ye tıklayın.
-2. **Içeri aktarma türünü seçin**bölümünde **sanal makineyi Kopyala (yenı bir benzersiz kimlik oluştur)** seçeneğine tıklayın. Ardından **İleri**’ye tıklayın.
+2. **Içeri aktarma türünü seçin**bölümünde **sanal makineyi Kopyala (yenı bir benzersiz kimlik oluştur)** seçeneğine tıklayın. Ardından **İleri**'ye tıklayın.
 3. **Hedef Seç**bölümünde varsayılan ayarı bırakın. **İleri**’ye tıklayın.
 4. **Depolama klasörlerinde**varsayılan ayarı bırakın. **İleri**’ye tıklayın.
 5. **Ağ seçin**bölümünde, VM 'nin kullanacağı sanal anahtarı belirtin. Anahtar, verileri Azure 'a göndermek için internet bağlantısı gerektirir. Sanal anahtar oluşturma hakkında [bilgi edinin](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines) .
@@ -146,7 +154,7 @@ Gereci ilk kez ayarlayın.
 1. **Önkoşulları ayarlamak**> Web uygulamasında şunları yapın:
     - **Lisans**: lisans koşullarını kabul edin ve üçüncü taraf bilgilerini okuyun.
     - **Bağlantı**: uygulama, sanal makinenin internet erişimi olup olmadığını denetler. VM bir proxy kullanıyorsa:
-      - **Proxy ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, veya http://ProxyIPAddress http://ProxyFQDNbiçiminde belirtin.
+      - **Proxy ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, veya biçiminde belirtin http://ProxyIPAddress http://ProxyFQDN .
       - Proxy için kimlik doğrulaması gerekiyorsa kimlik bilgilerini gerekin.
       - Yalnızca HTTP proxy’si desteklenir.
     - **Zaman eşitleme**: Saat doğrulandı. VM bulmanın düzgün çalışması için gereç süresi internet saatine eşit olmalıdır.
@@ -161,7 +169,7 @@ Gereci ilk kez ayarlayın.
 3. Başarıyla oturum açtıktan sonra Web uygulamasına geri dönün.
 4. Azure geçişi projesinin oluşturulduğu aboneliği seçin. Ardından projeyi seçin.
 5. Gereç için bir ad belirtin. Ad 14 karakter veya daha az olmalıdır.
-6. **Kaydol**' a tıklayın.
+6. **Kaydet**’e tıklayın.
 
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>SMB VHD 'leri için temsilci kimlik bilgileri
@@ -187,7 +195,7 @@ Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com Hyper
 
 Alternatif olarak, bunu gereç üzerindeki Yerel Grup İlkesi Düzenleyicisi yapın:
 
-1. **Yerel bilgisayar ilkesi** > **bilgisayar yapılandırması**' nda, **Yönetim Şablonları** > **sistem** > **kimlik bilgileri temsili**' ne tıklayın.
+1. **Yerel bilgisayar ilkesi**  >  **bilgisayar yapılandırması**' nda, **Yönetim Şablonları**  >  **sistem**  >  **kimlik bilgileri temsili**' ne tıklayın.
 2. **Yeni kimlik bilgileri aktarımına Izin ver**' e çift tıklayın ve **etkin**' i seçin.
 3. **Seçenekler**' de **göster**' e tıklayın ve bulmayı Istediğiniz her Hyper-V konağını, **WSMan/** as öneki ile listeye ekleyin.
 4. Ardından, **kimlik bilgileri temsilcisi**' nde, **yalnızca NTLM sunucu kimlik doğrulamasıyla yeni kimlik bilgileri aktarmaya izin ver**' e çift tıklayın. Daha sonra, bulmayı istediğiniz her Hyper-V konağını, **WSMan/** as öneki ile listeye ekleyin.
@@ -212,13 +220,13 @@ Bu, bulmayı başlatır. Bulunan sunucuların meta verilerinin Azure portal gör
 Bulma işlemi tamamlandıktan sonra, VM 'Lerin portalda göründüğünü doğrulayabilirsiniz.
 
 1. Azure geçişi panosunu açın.
-2. **Azure geçişi-sunucular** > **Azure geçişi: Sunucu değerlendirmesi** sayfasında, **bulunan sunucuların**sayısını görüntüleyen simgeye tıklayın.
+2. **Azure geçişi-sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi** sayfasında, **bulunan sunucuların**sayısını görüntüleyen simgeye tıklayın.
 
 ## <a name="set-up-an-assessment"></a>Değerlendirme ayarlama
 
 Azure geçişi sunucu değerlendirmesi kullanarak çalıştırabileceğiniz iki tür değerlendirme vardır.
 
-**Değerlendirme** | **Bilgileri** | **Veri**
+**Değerlendirmesini** | **Ayrıntılar** | **Veri**
 --- | --- | ---
 **Performans tabanlı** | Toplanan performans verilerine dayalı değerlendirmeler | **ÖNERILEN VM boyutu**: CPU ve bellek kullanım verilerine göre.<br/><br/> **Önerilen disk türü (Standart veya Premium yönetilen disk)**: Şirket ıçı disklerin IOPS ve aktarım hızına göre.
 **Şirket içi olarak** | Şirket içi boyutlandırmayı temel alan değerlendirmeler. | **ÖNERILEN VM boyutu**: ŞIRKET içi VM boyutuna göre<br/><br> **Önerilen disk türü**: değerlendirme için seçtiğiniz depolama türü ayarına göre.
@@ -230,7 +238,7 @@ Azure geçişi sunucu değerlendirmesi kullanarak çalıştırabileceğiniz iki 
 Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
 
 1. Değerlendirme oluşturmak için [en iyi uygulamaları](best-practices-assessment.md) gözden geçirin.
-2. **Sunucular** > **Azure geçişi: Sunucu değerlendirmesi**' nde **değerlendir**' e tıklayın.
+2. **Sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **değerlendir**' e tıklayın.
 
     ![Değerlendirme](./media/tutorial-assess-hyper-v/assess.png)
 
@@ -245,7 +253,7 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
 
     ![Değerlendirme oluşturma](./media/tutorial-assess-hyper-v/assessment-create.png)
 
-6. Değerlendirme oluşturulduktan sonra **sunucuları** > **Azure geçişi: Sunucu değerlendirmesi**' nde görüntüleyin.
+6. Değerlendirme oluşturulduktan sonra **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde görüntüleyin.
 7. Excel dosyası olarak indirmek için **Değerlendirmeyi dışarı aktar**’a tıklayın.
 
 
@@ -260,7 +268,7 @@ Bir değerlendirme şunları açıklar:
 
 ### <a name="view-an-assessment"></a>Değerlendirme görüntüleme
 
-1. **Geçiş hedefleri** >  **sunucuları** > **Azure geçişi: Sunucu değerlendirmesi**' nde, **değerlendirmeler**' ı tıklatın.
+1. **Geçiş hedefleri**  >   **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde, **değerlendirmeler**' ı tıklatın.
 2. **Değerlendirmede**, bir değerlendirmeye tıklayarak açın.
 
     ![Değerlendirme özeti](./media/tutorial-assess-hyper-v/assessment-summary.png)
