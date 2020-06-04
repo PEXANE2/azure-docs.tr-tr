@@ -24,7 +24,7 @@
           href: batch-transcription.md
         - name: Konuşma tanımanın temelleri
           href: speech-to-text-basics.md
-    - name: Hızlı Başlangıç
+    - name: Hızlı Başlangıçlar
       items:
         - name: Mikrofon girişiyle yapılan konuşmayı tanıma
           href: quickstarts/speech-to-text-from-microphone.md
@@ -32,6 +32,8 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Blob depolama alanında depolanan konuşmayı tanıma
           href: quickstarts/from-blob.md
+        - name: Speech Studio’da ses dosyalarını kullanarak model test etme
+          href: quickstarts/speech-studio-test-model.md
     - name: Nasıl yapılır kılavuzları
       items:
         - name: Konuşma tanıma modunu seçme
@@ -466,7 +468,7 @@
           items:
             - name: Konuşma Tanıma REST API’si
               href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
-- name: Barındırma
+- name: Hosting
   items:
     - name: Barındırma belgeleri
       href: index-hosting.yml

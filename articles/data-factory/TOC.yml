@@ -90,6 +90,10 @@
                   href: tutorial-incremental-copy-change-tracking-feature-portal.md
                 - name: Azure PowerShell
                   href: tutorial-incremental-copy-change-tracking-feature-powershell.md
+            - name: Azure SQL MI’da CDC kullanma
+              items:
+                - name: Kullanıcı arabirimi (UI)
+                  href: tutorial-incremental-copy-change-data-capture-feature-portal.md
             - name: Son değiştirme tarihine göre yeni dosyalar
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
             - name: Zamana göre bölümlenmiş dosya adına göre yeni dosyalar
@@ -196,6 +200,8 @@
       items:
         - name: Veri fabrikalarını görsel olarak yazma
           href: author-visually.md
+        - name: Yönetim merkezi
+          href: author-management-hub.md
         - name: Kaynak denetimi
           href: source-control.md
         - name: Sürekli tümleştirme ve teslim
