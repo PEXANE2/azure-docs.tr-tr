@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: e2414873db06ada4d0a260e007998ef2ba2f2cf9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6a8770cfaf5acedcf3549d92f1365948acda8bc7
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050502"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344654"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Azure SQL veritabanı 'nı kullanarak küresel olarak kullanılabilir hizmetler tasarlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,7 +45,7 @@ Aşağıdaki diyagramda bir kesinti olmadan önce bu yapılandırma gösterilmek
 
 ![Senaryo 1. Kesinti olmadan önce yapılandırma.](./media/designing-cloud-solutions-for-disaster-recovery/scenario1-a.png)
 
-Birincil bölgedeki bir kesinti olduktan sonra SQL veritabanı, birincil veritabanının erişilebilir olduğunu algılar ve otomatik yük devretme ilkesinin (1) parametrelerine göre ikincil bölgeye yük devretmeyi tetikler. Uygulamanızın SLA 'sına bağlı olarak, kesinti ve yük devretme algılaması arasındaki süreyi denetleyen bir yetkisiz kullanım süresi yapılandırabilirsiniz. Yük devretme grubu, veritabanının yük devretmesini tetiklemesini yapmadan önce Traffic Manager uç nokta yük devretmesini başlatır. Bu durumda, Web uygulaması veritabanına hemen yeniden bağlanamaz. Ancak yeniden bağlantı, veritabanının yük devretmesi tamamlandıktan hemen sonra otomatik olarak başarılı olur. Başarısız bölge geri yüklendiğinde ve tekrar çevrimiçi olduğunda eski birincil, yeni bir ikincil olarak otomatik olarak yeniden bağlanır. Aşağıdaki diyagramda, yük devretmeden sonra yapılandırma gösterilmektedir.
+Birincil bölgedeki bir kesinti olduktan sonra SQL veritabanı, birincil veritabanının erişilebilir olduğunu algılar ve otomatik yük devretme ilkesinin (1) parametrelerine göre ikincil bölgeye yük devretmeyi tetikler. Uygulamanızın SLA 'sına bağlı olarak, kesinti ve yük devretme algılaması arasındaki süreyi denetleyen bir yetkisiz kullanım süresi yapılandırabilirsiniz. Yük devretme grubu, veritabanının yük devretmesini tetiklemesini yapmadan önce Azure Traffic Manager uç nokta yük devretmesini başlattığı olasıdır. Bu durumda, Web uygulaması veritabanına hemen yeniden bağlanamaz. Ancak yeniden bağlantı, veritabanının yük devretmesi tamamlandıktan hemen sonra otomatik olarak başarılı olur. Başarısız bölge geri yüklendiğinde ve tekrar çevrimiçi olduğunda eski birincil, yeni bir ikincil olarak otomatik olarak yeniden bağlanır. Aşağıdaki diyagramda, yük devretmeden sonra yapılandırma gösterilmektedir.
 
 > [!NOTE]
 > Yük devretme işleminden sonra kaydedilen tüm işlemler, yeniden bağlantı sırasında kaybedilir. Yük devretme tamamlandıktan sonra, B bölgesindeki uygulama yeniden bağlanabilir ve Kullanıcı isteklerini işlemeye yeniden başlatılabilir. Hem Web uygulaması hem de birincil veritabanı artık B bölgesinde ve birlikte bulunan olarak kalır.
@@ -89,7 +89,7 @@ Traffic Manager A bölgesine bağlantı hatası algıladığında, Kullanıcı t
 
 ![Senaryo 2. Olağanüstü durum kurtarma aşamaları.](./media/designing-cloud-solutions-for-disaster-recovery/scenario2-b.png)
 
-B bölgesinde bir kesinti olursa Traffic Manager, B bölgesinde Web-App-2 bitiş noktası başarısızlığını algılar ve düzeyi düşürülmüş (1) olarak işaretler. Bu sırada, yük devretme grubu salt okuma dinleyicisini A (2) bölgesine geçirir. Bu kesinti, son kullanıcı deneyimini etkilemez, ancak birincil veritabanı kesinti sırasında gösterilir. Aşağıdaki diyagramda ikincil bölgedeki bir hata gösterilmektedir:
+B bölgesinde bir kesinti olursa Traffic Manager, B bölgesinde Web-App-2 bitiş noktası başarısızlığını algılar ve düzeyi düşürülmüş (1) olarak işaretler. Bu sırada, yük devretme grubu salt okuma dinleyicisini A (2) bölgesine geçirir. Bu kesinti Son Kullanıcı deneyimini etkilemez, ancak birincil veritabanı kesinti sırasında gösterilir. Aşağıdaki diyagramda ikincil bölgedeki bir hata gösterilmektedir:
 
 ![Senaryo 2. İkincil bölgenin kesintisi.](./media/designing-cloud-solutions-for-disaster-recovery/scenario2-c.png)
 
@@ -111,9 +111,9 @@ Bu senaryoda, uygulama aşağıdaki özelliklere sahiptir:
 * Verilere yazma erişimi, kullanıcıların çoğunluğu için aynı coğrafya içinde desteklenmelidir
 * Son Kullanıcı deneyimi için okuma gecikmesi kritiktir
 
-Bu gereksinimleri karşılamak için, Kullanıcı cihazının, veri tarama, analiz vb. gibi salt okuma işlemleri için aynı coğrafya 'da dağıtılan uygulamaya **her zaman** bağlandığından emin olmanız gerekir. Öte yandan, OLTP işlemleri **zaman**içinde aynı coğrafya içinde işlenir. Örneğin, OLTP işlemlerinin gün içinde aynı coğrafya 'da işlendiği, ancak kapalı saatlerde farklı bir Coğrafya içinde işlenebilecekleri zaman içinde. Son Kullanıcı etkinliği genellikle çalışma saatlerinde gerçekleşdiğinde, çoğu kullanıcının çoğu için en iyi performansı garanti edebilirsiniz. Aşağıdaki diyagramda bu topoloji gösterilmektedir.
+Bu gereksinimleri karşılamak için, Kullanıcı cihazının, veri tarama, analiz vb. gibi salt okuma işlemleri için aynı coğrafya 'da dağıtılan uygulamaya **her zaman** bağlandığından emin olmanız gerekir. OLTP işlemleri **zaman**içinde aynı coğrafya içinde işlenir. Örneğin, OLTP işlemlerinin gün içinde aynı coğrafya 'da işlendiği, ancak kapalı saatlerde farklı bir Coğrafya içinde işlenebilecekleri zaman içinde. Son Kullanıcı etkinliği çoğunlukla çalışma saatlerinde gerçekleşdiğinde, çoğu kullanıcının çoğu için en iyi performansı garanti edebilirsiniz. Aşağıdaki diyagramda bu topoloji gösterilmektedir.
 
-Uygulamanın kaynakları, önemli kullanım talebi olan her bir Coğrafya üzerinde dağıtılmalıdır. Örneğin, uygulamanız Birleşik Devletler etkin olarak kullanılıyorsa, Avrupa Birliği ve Güney Doğu Asya, uygulamanın tüm bu coğrafi ormallara dağıtılması gerekir. Birincil veritabanı, çalışma saatlerinin sonunda bir Coğrafya 'dan bir sonrakine dinamik olarak yerleştirilmelidir. Bu yöntem "Güneş izle" olarak adlandırılır. OLTP iş yükü, her zaman okuma-yazma dinleyicisi ** &lt; yük devretmesi-grup-adı &gt; . Database.Windows.net** (1) yoluyla veritabanına bağlanır. Salt okuma iş yükü, veritabanı sunucusu uç nokta ** &lt; sunucusu-adı &gt; . Database.Windows.net** (2) kullanarak doğrudan yerel veritabanına bağlanır. Traffic Manager, [performans yönlendirme yöntemiyle](../../traffic-manager/traffic-manager-configure-performance-routing-method.md)yapılandırılır. Son kullanıcının cihazının en yakın bölgede Web hizmetine bağlı olmasını sağlar. Traffic Manager her Web hizmeti uç noktası (3) için uç nokta izleme etkinleştirilmiş olarak ayarlanmalıdır.
+Uygulamanın kaynakları, önemli kullanım talebi olan her bir Coğrafya üzerinde dağıtılmalıdır. Örneğin, uygulamanız Birleşik Devletler etkin olarak kullanılıyorsa, Avrupa Birliği ve Güney Doğu Asya, uygulamanın tüm bu coğrafi ormallara dağıtılması gerekir. Birincil veritabanı, çalışma saatlerinin sonunda bir Coğrafya 'dan bir sonrakine dinamik olarak yerleştirilmelidir. Bu yöntem "Güneş izle" olarak adlandırılır. OLTP iş yükü, her zaman okuma-yazma dinleyicisi ** &lt; yük devretmesi-grup-adı &gt; . Database.Windows.net** (1) yoluyla veritabanına bağlanır. Salt okuma iş yükü, veritabanı sunucusu uç nokta ** &lt; sunucusu-adı &gt; . Database.Windows.net** (2) kullanarak doğrudan yerel veritabanına bağlanır. Traffic Manager, [performans yönlendirme yöntemiyle](../../traffic-manager/traffic-manager-configure-performance-routing-method.md)yapılandırılır. Son Kullanıcı cihazının en yakın bölgede Web hizmetine bağlı olmasını sağlar. Traffic Manager her Web hizmeti uç noktası (3) için uç nokta izleme etkinleştirilmiş olarak ayarlanmalıdır.
 
 > [!NOTE]
 > Yük devretme grubu yapılandırması, yük devretme için hangi bölgenin kullanıldığını tanımlar. Yeni birincil konum farklı bir Coğrafya içinde olduğundan, etkilenen bölge yeniden çevrimiçi olana kadar hem OLTP hem de salt okuma iş yükleri için yük devretme sonuçları daha uzun gecikme süresine sahiptir.

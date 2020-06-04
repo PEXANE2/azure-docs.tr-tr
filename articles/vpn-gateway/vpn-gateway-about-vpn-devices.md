@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: f4caa9160280b0f65f84bed36b5209d08d7f7c11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd73c6a388cde55db5437442492d53768eb03866
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279435"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343158"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Siteden Siteye VPN Gateway bağlantıları için VPN cihazları ve IPsec/IKE parametreleri hakkında
 
@@ -141,8 +141,8 @@ Aşağıdaki tablolarda:
 | IKE Sürümü                   |IKEv1          |IKEv1 ve IKEv2                              |
 | Şifreleme ve Karma Algoritmaları |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |[RouteBased QM SA Teklifleri](#RouteBasedOffers) |
 | SA Yaşam Süresi (Zaman)            |3.600 saniye  |27.000 saniye                               |
-| SA Yaşam Süresi (Bayt)           |102.400.000 KB | -                                           |
-| Kusursuz İletme Gizliliği (PFS) |Hayır             |[RouteBased QM SA Teklifleri](#RouteBasedOffers) |
+| SA Yaşam Süresi (Bayt)           |102.400.000 KB |102.400.000 KB                               |
+| Kusursuz İletme Gizliliği (PFS) |No             |[RouteBased QM SA Teklifleri](#RouteBasedOffers) |
 | Kullanılmayan Eş Algılama (DPD)     |Desteklenmiyor  |Destekleniyor                                    |
 
 
@@ -154,24 +154,24 @@ Aşağıdaki tabloda IPsec SA (IKE Hızlı Mod) Teklifleri listelenir. Teklifler
 
 |-  |**Şifreleme**|**Kimlik Doğrulaması**|**PFS Grubu**|
 |---| ---          |---               |---          |
-| 1 |GCM AES256    |GCM (AES256)      |Hiçbiri         |
-| 2 |AES256        |SHA1              |Hiçbiri         |
-| 3 |3DES          |SHA1              |Hiçbiri         |
-| 4 |AES256        |SHA256            |Hiçbiri         |
-| 5 |AES128        |SHA1              |Hiçbiri         |
-| 6 |3DES          |SHA256            |Hiçbiri         |
+| 1 |GCM AES256    |GCM (AES256)      |Yok         |
+| 2 |AES256        |SHA1              |Yok         |
+| 3 |3DES          |SHA1              |Yok         |
+| 4 |AES256        |SHA256            |Yok         |
+| 5 |AES128        |SHA1              |Yok         |
+| 6 |3DES          |SHA256            |Yok         |
 
 #### <a name="azure-gateway-as-responder"></a>Yanıtlayıcı olarak Azure Gateway
 
 |-  |**Şifreleme**|**Kimlik Doğrulaması**|**PFS Grubu**|
 |---| ---          | ---              |---          |
-| 1 |GCM AES256    |GCM (AES256)      |Hiçbiri         |
-| 2 |AES256        |SHA1              |Hiçbiri         |
-| 3 |3DES          |SHA1              |Hiçbiri         |
-| 4 |AES256        |SHA256            |Hiçbiri         |
-| 5 |AES128        |SHA1              |Hiçbiri         |
-| 6 |3DES          |SHA256            |Hiçbiri         |
-| 7 |DES           |SHA1              |Hiçbiri         |
+| 1 |GCM AES256    |GCM (AES256)      |Yok         |
+| 2 |AES256        |SHA1              |Yok         |
+| 3 |3DES          |SHA1              |Yok         |
+| 4 |AES256        |SHA256            |Yok         |
+| 5 |AES128        |SHA1              |Yok         |
+| 6 |3DES          |SHA256            |Yok         |
+| 7 |DES           |SHA1              |Yok         |
 | 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |
 | 10|AES256        |SHA1              |14           |
@@ -186,7 +186,7 @@ Aşağıdaki tabloda IPsec SA (IKE Hızlı Mod) Teklifleri listelenir. Teklifler
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
-| 22|AES128        |SHA256            |Hiçbiri         |
+| 22|AES128        |SHA256            |Yok         |
 | 23|AES128        |SHA256            |1            |
 | 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |

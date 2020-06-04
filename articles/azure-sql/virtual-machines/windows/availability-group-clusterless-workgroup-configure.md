@@ -1,6 +1,6 @@
 ---
 title: Etki alanı bağımsız bir çalışma grubu kullanılabilirlik grubunu yapılandırma
-description: Azure 'da SQL Server bir sanal makinede Active Directory Etki Alanı bağımsız bir çalışma grubu Always on kullanılabilirlik grubunu yapılandırmayı öğrenin.
+description: Azure 'da SQL Server bir sanal makinede Active Directory etki alanı bağımsız çalışma grubu Always on kullanılabilirlik grubu yapılandırma hakkında bilgi edinin.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 36c4a141acf38d83ff925bafaa75c294847a7d74
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 0d3e7e7de6d8f044355a43eb870420ad121ed61f
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049333"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343702"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Çalışma grubu kullanılabilirlik grubunu yapılandırma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "84049333"
 Bu makalede, her zaman açık kullanılabilirlik grubu ile Active Directory bir etki alanı bağımsız kümesi oluşturmak için gereken adımlar açıklanmaktadır; Bu, çalışma grubu kümesi olarak da bilinir. Bu makale, çalışma grubu ve kullanılabilirlik grubunu hazırlamaya ve yapılandırmaya yönelik adımlara ve küme oluşturma veya kullanılabilirlik grubunu dağıtma gibi diğer makalelerde kapsanan adımları glosses. 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir çalışma grubu kullanılabilirlik grubunu yapılandırmak için şunlar gerekir:
 - SQL Server 2016 (veya üzeri) çalıştıran sanal makineler, aynı Kullanılabilirlik kümesine veya statik IP adresleri kullanılarak farklı kullanılabilirlik bölgelerine dağıtılır. 2016 
@@ -36,17 +36,17 @@ Bir çalışma grubu kullanılabilirlik grubunu yapılandırmak için şunlar ge
 
 Başvuru için, bu makalede aşağıdaki parametreler kullanılır, ancak gerekli olduğu gibi değiştirilebilir: 
 
-| **Adı** | **Parametresinin** |
+| **Adı** | **Parametre** |
 | :------ | :---------------------------------- |
 | **Düğüm1**   | AGNode1 (10.0.0.4) |
 | **Düğüm2**   | AGNode2 (10.0.0.5) |
 | **Küme adı** | AGWGAG (10.0.0.6) |
 | **Dinleyici** | AGListener (kısmına 10.0.0.7) | 
-| **DNS Son Ek** | ag.wgcluster.example.com | 
+| **DNS son eki** | ag.wgcluster.example.com | 
 | **Çalışma grubu adı** | AGWorkgroup | 
 | &nbsp; | &nbsp; |
 
-## <a name="set-dns-suffix"></a>DNS sonekini ayarla 
+## <a name="set-a-dns-suffix"></a>DNS son eki ayarlama 
 
 Bu adımda, her iki sunucu için de DNS sonekini yapılandırın. Örneğin, `ag.wgcluster.example.com`. Bu, bağlanmak istediğiniz nesnenin adını ağınız içinde (gibi) tam bir adres olarak kullanmanıza olanak tanır `AGNode1.ag.wgcluster.example.com` . 
 
@@ -71,13 +71,13 @@ DNS sonekini yapılandırmak için aşağıdaki adımları izleyin:
 1. İstendiğinde sunucuyu yeniden başlatın. 
 1. Kullanılabilirlik grubu için kullanılacak diğer düğümlerde bu adımları yineleyin. 
 
-## <a name="edit-host-file"></a>Konak dosyasını Düzenle
+## <a name="edit-a-host-file"></a>Konak dosyasını düzenleme
 
 Active Directory olmadığından, Windows bağlantılarının kimliklerinin doğrulanması bir yolu yoktur. Bu nedenle, ana bilgisayar dosyasını bir metin düzenleyicisiyle düzenleyerek güven atayın. 
 
 Konak dosyasını düzenlemek için aşağıdaki adımları izleyin:
 
-1. Sanal makinenize RDP ekleyin. 
+1. Sanal makinenize RDP. 
 1. Gitmek için **Dosya Gezgini** 'ni kullanın `c:\windows\system32\drivers\etc` . 
 1. **Hosts** dosyasına sağ tıklayın ve dosyayı **Notepad** (veya başka bir metin düzenleyici) ile açın.
 1. Dosyanın sonunda, her düğüm için bir giriş, kullanılabilirlik grubu ve şunun gibi bir şekilde dinleyici ekleyin `IP Address, DNS Suffix #comment` : 
@@ -132,11 +132,11 @@ Küme oluşturulduktan sonra bir statik küme IP adresi atayın. Bunu yapmak iç
 
 Bu adımda, bir bulut paylaşma tanığı yapılandırın. Adımları tanımıyorsanız [Yük devretme kümesi öğreticisi](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-a-cloud-witness)' ne bakın. 
 
-## <a name="enable-availability-group-feature"></a>Kullanılabilirlik grubu özelliğini etkinleştir 
+## <a name="enable-the-availability-group-feature"></a>Kullanılabilirlik grubu özelliğini etkinleştirme 
 
 Bu adımda, kullanılabilirlik grubu özelliğini etkinleştirin. Adımlara alışkın değilseniz, [kullanılabilirlik grubu öğreticisine](availability-group-manually-configure-tutorial.md#enable-availability-groups)bakın. 
 
-## <a name="create-keys-and-certificate"></a>Anahtar ve sertifika oluşturma
+## <a name="create-keys-and-certificates"></a>Anahtar ve sertifika oluşturma
 
 Bu adımda, bir SQL oturum açmanın şifreli uç noktada kullandığı sertifikalar oluşturun. Her düğümde, sertifika yedeklerini tutacak bir klasör oluşturun (örneğin,) `c:\certs` . 
 
@@ -277,19 +277,19 @@ GO
 
 Kümede başka bir düğüm varsa, ilgili sertifikayı ve Kullanıcı adlarını değiştirerek bu adımları da yineleyin. 
 
-## <a name="configure-availability-group"></a>Kullanılabilirlik grubunu yapılandır
+## <a name="configure-an-availability-group"></a>Kullanılabilirlik grubu yapılandırma
 
 Bu adımda, kullanılabilirlik grubunuzu yapılandırın ve veritabanlarınızı ona ekleyin. Şu an bir dinleyici oluşturmayın. Adımlara alışkın değilseniz, [kullanılabilirlik grubu öğreticisi](availability-group-manually-configure-tutorial.md#create-the-availability-group)' ne bakın. Her şeyin olması gerektiği şekilde çalıştığını doğrulamak için bir yük devretme ve yeniden çalışma işlemi başlattığınızdan emin olun. 
 
    > [!NOTE]
    > Eşitleme işlemi sırasında bir hata oluşursa, `NT AUTHORITY\SYSTEM` ilk düğümde geçici olarak olduğu gibi küme kaynakları oluşturmak için sysadmin hakları vermeniz gerekebilir `AGNode1` . 
 
-## <a name="configure-load-balancer"></a>Yük dengeleyiciyi yapılandırma
+## <a name="configure-a-load-balancer"></a>Yük dengeleyiciyi yapılandırma
 
-Bu son adımda, [Azure Portal](availability-group-load-balancer-portal-configure.md) veya [PowerShell](availability-group-listener-powershell-configure.md) 'i kullanarak yük dengeleyiciyi yapılandırın
+Bu son adımda, [Azure Portal](availability-group-load-balancer-portal-configure.md) veya [PowerShell](availability-group-listener-powershell-configure.md)'i kullanarak yük dengeleyiciyi yapılandırın.
 
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
 Kullanılabilirlik grubunu yapılandırmak için [az SQL VM CLI](availability-group-az-cli-configure.md) de kullanabilirsiniz. 
 

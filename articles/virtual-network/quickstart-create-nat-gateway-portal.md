@@ -8,18 +8,19 @@ author: asudbring
 manager: KumudD
 Customer intent: I want to create a NAT gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
+ms.subservice: nat
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 1ff13d8ef0ca4c6cf499c3245d3ef14370283075
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 38cd4e9e7abdfe2d1548a8388a3f160cf3da1f1a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80066397"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84341244"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak NAT ağ geçidi oluşturma
 
@@ -29,7 +30,7 @@ Tercih ederseniz, [Azure CLI](quickstart-create-nat-gateway-cli.md)'yi kullanara
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="virtual-network-and-parameters"></a>Sanal ağ ve parametreler
 
@@ -39,12 +40,12 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
 
 | Parametre                   | Değer                |
 |-----------------------------|----------------------|
-| **\<Kaynak-Grup adı>**  | myResourceGroupNAT |
-| **\<sanal ağ-adı>** | myVNet          |
-| **\<bölge adı>**          | Doğu ABD 2      |
-| **\<IPv4-adres-alanı>**   | 192.168.0.0 \ 16          |
-| **\<alt ağ-adı>**          | mySubnet        |
-| **\<alt ağ-adres aralığı>** | 192.168.0.0 \ 24          |
+| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | Doğu ABD 2      |
+| **\<IPv4-address-space>**   | 192.168.0.0 \ 16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 192.168.0.0 \ 24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -52,16 +53,16 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
 
 Artık NAT hizmetini kullanmak için bir VM oluşturacağız. Bu VM 'nin VM 'ye erişiminizi sağlamak için örnek düzeyi genel IP olarak kullanılacak genel bir IP 'si vardır. NAT hizmeti akış yönü farkındadır ve alt ağınızdaki varsayılan Internet hedefini değiştirecek. VM 'nin genel IP adresi giden bağlantılar için kullanılmayacak.
 
-1. Portalın sol üst tarafında, **kaynak** > oluştur**işlem** > **Ubuntu Server 18,04 LTS**' yi seçin veya Market aramasında **Ubuntu Server 18,04 LTS** ' yi arayın.
+1. Portalın sol üst tarafında, **kaynak oluştur**  >  **işlem**  >  **Ubuntu Server 18,04 LTS**' yi seçin veya Market aramasında **Ubuntu Server 18,04 LTS** ' yi arayın.
 
 2. **Sanal makine oluştur**' da, **temel bilgiler** sekmesinde aşağıdaki değerleri yazın veya seçin:
-   - **Abonelik** > **kaynak grubu**: **myresourcegroupnat**' ı seçin.
-   - **Örnek ayrıntıları** > **sanal makine adı**: **myvm**yazın.
-   - **Örnek ayrıntıları** > **bölgesi** > **Doğu ABD 2**seçin.
-   - **Yönetici hesabı** > **kimlik doğrulama türü**: **parola**seçin.
+   - **Abonelik**  >  **Kaynak grubu**: **Myresourcegroupnat**' ı seçin.
+   - **Örnek ayrıntıları**  >  **Sanal makine adı**: **myvm**yazın.
+   - **Örnek ayrıntıları**  >  **Bölge** > **Doğu ABD 2**seçin.
+   - **Yönetici hesabı**  >  **Kimlik doğrulama türü**: **parola**seçin.
    - **Yönetici hesabı** > **Kullanıcı adı**, **parola**ve **parola onaylama** bilgilerini girin.
-   - **Gelen bağlantı noktası kuralları** > **ortak gelen bağlantı noktaları**: **Seçili bağlantı noktalarına izin ver**öğesini seçin
-   - **Gelen bağlantı noktası kuralları** > **gelen bağlantı noktalarını seçin**: **SSH Seç (22)**
+   - **Gelen bağlantı noktası kuralları**  >  **Ortak gelen bağlantı noktaları**: **Seçili bağlantı noktalarına izin ver**öğesini seçin.
+   - **Gelen bağlantı noktası kuralları**  >  **Gelen bağlantı noktalarını seçin**: **SSH seçin (22)**
    - **Ağ** sekmesini seçin veya **Sonraki: diskler**' i ve sonra **İleri: ağ**' ı seçin.
 
 3. **Ağ** sekmesinde aşağıdakilerin seçili olduğundan emin olun:
@@ -88,7 +89,7 @@ Bu bölümde, NAT ağ geçidi kaynağını kullanarak NAT hizmetinin aşağıdak
 
 ### <a name="create-a-public-ip-address"></a>Genel IP adresi oluşturma
 
-1. Portalın sol üst tarafında, **kaynak** > **ağı** > **genel IP adresi**oluştur ' u seçin veya Market aramasında **genel IP adresini** arayın.
+1. Portalın sol üst tarafında, **kaynak**  >  **ağı**  >  **genel IP adresi**oluştur ' u seçin veya Market aramasında **genel IP adresini** arayın.
 
 2. **Genel IP adresi oluştur**' da bu bilgileri girin veya seçin:
 
@@ -96,7 +97,7 @@ Bu bölümde, NAT ağ geçidi kaynağını kullanarak NAT hizmetinin aşağıdak
     | ------- | ----- |
     | IP sürümü | **IPv4** seçin.
     | SKU | **Standart**' ı seçin.
-    | Adı | **Mypublicıp**girin. |
+    | Name | **Mypublicıp**girin. |
     | Abonelik | Aboneliğinizi seçin.|
     | Kaynak grubu | **Myresourcegroupnat**öğesini seçin. |
     | Konum | **Doğu ABD 2**’yi seçin.|
@@ -105,13 +106,13 @@ Bu bölümde, NAT ağ geçidi kaynağını kullanarak NAT hizmetinin aşağıdak
 
 ### <a name="create-a-public-ip-prefix"></a>Genel IP öneki oluşturma
 
-1. Portalın sol üst kısmında **kaynak** > **ağı** > **genel IP öneki**oluştur ' u seçin veya Market aramasında **genel IP öneki** ' ni arayın. 
+1. Portalın sol üst kısmında **kaynak**  >  **ağı**  >  **genel IP öneki**oluştur ' u seçin veya Market aramasında **genel IP öneki** ' ni arayın. 
 
 2. **Genel IP öneki oluştur**' da, **temel bilgiler** sekmesinde aşağıdaki değerleri yazın veya seçin:
-   - **Abonelik** > **kaynak grubu**: **myresourcegroupnat** seçin>
-   - **Örnek ayrıntıları** > **adı**: **mypublicipprefix**yazın.
-   - **Örnek ayrıntıları** > **bölgesi**: **Doğu ABD 2**seçin.
-   - **Örnek ayrıntıları** > **ön ek boyutu**: Select **/31 (2 adres)**
+   - **Abonelik**  >  **Kaynak grubu**: **Myresourcegroupnat** seçin>
+   - **Örnek ayrıntıları**  >  **Ad**: **Mypublicipprefix**yazın.
+   - **Örnek ayrıntıları**  >  **Bölge**: **Doğu ABD 2**seçin.
+   - **Örnek ayrıntıları**  >  **Ön ek boyutu**: Select **/31 (2 adres)**
 
 3. Rest varsayılanlarını bırakın ve **gözden geçir + oluştur**' u seçin.
 
@@ -120,13 +121,13 @@ Bu bölümde, NAT ağ geçidi kaynağını kullanarak NAT hizmetinin aşağıdak
 
 ### <a name="create-a-nat-gateway-resource"></a>NAT ağ geçidi kaynağı oluşturma
 
-1. Portalın sol üst kısmında, **kaynak** > **ağı** > **NAT ağ geçidi**oluştur ' u seçin veya Market aramasında **NAT ağ geçidini** arayın.
+1. Portalın sol üst kısmında, **kaynak**  >  **ağı**  >  **NAT ağ geçidi**oluştur ' u seçin veya Market aramasında **NAT ağ geçidini** arayın.
 
 2. **Ağ adresi çevirisi (NAT) ağ geçidi oluştur**' da, **temel bilgiler** sekmesinde aşağıdaki değerleri yazın veya seçin:
-   - **Abonelik** > **kaynak grubu**: **myresourcegroupnat**' ı seçin.
-   - **Örnek ayrıntıları** > **NAT ağ geçidi adı**: **mynatgateway**yazın.
-   - **Örnek ayrıntıları** > **bölgesi**: **Doğu ABD 2**seçin.
-   - **Örnek ayrıntıları** > **boşta zaman aşımı (dakika)**: tür **10**.
+   - **Abonelik**  >  **Kaynak grubu**: **Myresourcegroupnat**' ı seçin.
+   - **Örnek ayrıntıları**  >  **NAT ağ geçidi adı**: **Mynatgateway**yazın.
+   - **Örnek ayrıntıları**  >  **Bölge**: **Doğu ABD 2**seçin.
+   - **Örnek ayrıntıları**  >  **Boşta kalma zaman aşımı (dakika)**: tür **10**.
    - **Genel IP** sekmesini seçin veya ileri ' yi seçin **: genel IP**.
 
 3. **Genel IP** sekmesinde, aşağıdaki değerleri yazın veya seçin:
@@ -135,7 +136,7 @@ Bu bölümde, NAT ağ geçidi kaynağını kullanarak NAT hizmetinin aşağıdak
    - **Alt ağ** sekmesini seçin veya **Ileri: alt ağ**' ı seçin.
 
 4. **Alt ağ** sekmesinde, aşağıdaki değerleri yazın veya seçin:
-   - **Sanal ağ**: **myresourcegroupnat** > **myvnet**öğesini seçin.
+   - **Sanal ağ**: **myresourcegroupnat**  >  **myvnet**öğesini seçin.
    - **Alt ağ adı**: **mysubnet öğesinin**yanındaki kutuyu seçin.
 
 5. **İncele ve oluştur**’u seçin.

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: 93e18a95e30c21a44f9ca7df92925323930a9ce8
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 87cb5714a1f4b362e2f73879d93f5739f0fc20cf
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122433"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324292"
 ---
 # <a name="featurization-with-automated-machine-learning"></a>Otomatik makine öğrenimi ile korturlama
 
@@ -42,7 +42,7 @@ SDK ile yapılandırılan denemeleri için ayarı etkinleştirebilir/devre dış
 
 Aşağıdaki tabloda, `featurization` [oto mlconfig sınıfında](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)için kabul edilen ayarlar gösterilmektedir. 
 
-|Korleştirme yapılandırması | Açıklama|
+|Korleştirme yapılandırması | Description|
 ------------- | ------------- |
 |**`"featurization": 'auto'`**| Ön işleme 'nin bir parçası olarak, [veri guardı ve korleştirme adımlarının](#featurization) otomatik olarak gerçekleştirileceğini belirtir. **Varsayılan ayar**.|
 |**`"featurization": 'off'`**| Korleştirme adımlarının otomatik olarak yapılmaması gerektiğini gösterir.|
@@ -57,7 +57,7 @@ Aşağıdaki tablo, verilerinize otomatik olarak uygulanan teknikleri özetler. 
 > [!NOTE]
 > Auto ML tarafından oluşturulan modellerinizi bir [onnx modeline](concept-onnx.md)dışarı aktarmayı planlıyorsanız, onnx biçiminde yalnızca bir * ile gösterilen featurleştirme seçenekleri desteklenir. [Modelleri ONNX 'e dönüştürme](concept-automated-ml.md#use-with-onnx)hakkında daha fazla bilgi edinin. 
 
-|Korturlama &nbsp; adımları| Açıklama |
+|Korturlama &nbsp; adımları| Description |
 | ------------- | ------------- |
 |**Yüksek önem düzeyi bırakma veya fark özelliği yok*** |Tüm değerleri eksik olan özellikler de dahil olmak üzere eğitim ve doğrulama kümelerinden bunları bırakın, tüm satırlarda veya yüksek kardinalite (örneğin, karma değerler, kimlikler veya GUID 'Ler) ile aynı değeri kullanın.|
 |**Impute eksik değerler*** |Sayısal özellikler için sütunundaki değerleri ortalama olan ımpute.<br/><br/>Kategorik özellikler için en sık değer içeren ımpute.|
@@ -88,7 +88,7 @@ Denemenizin ilgili olduğu verileri gözden geçirebilirsiniz
 
 Data guardrayları şu üç durumdan birini görüntüler: **başarılı**, **bitti**veya **Uyarı**.
 
-|Durum| Açıklama |
+|Eyalet| Açıklama |
 |----|---- |
 |**Geçiril**| Hiçbir veri sorunu algılanmadı ve Kullanıcı eylemi gerekli değildir. |
 |**Bitti**| Verilerinize değişiklikler uygulandı. Kullanıcıların, değişikliklerin beklenen sonuçlarla hizalandığını garantilemek için otomatik ML 'nin düzeltici eylemleri gözden geçirmesini öneririz. |
@@ -99,7 +99,7 @@ Aşağıdaki tabloda, şu anda desteklenmekte olan veriler ve kullanıcıların 
 Guarddemiryolu|Durum|&nbsp;Tetikleyici için &nbsp; koşul
 ---|---|---
 **Eksik özellik değerleri imputation** |*Geçiril* <br><br><br> *Bitti*| Eğitim verilerinizde eksik özellik değeri algılanmadı. [Eksik imputation değeri](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) hakkında daha fazla bilgi edinin. <br><br> Eğitim verilerinizde eksik özellik değerleri algılandı ve genişletilmiş.
-**Yüksek kardinalite özelliği işleme** |*Geçiril* <br><br><br> *Bitti*| Girişlerinizin çözümlenmesi ve yüksek kardinalite özelliklerinin saptanmamış olması. [Yüksek kardinalite Özellik algılaması](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) hakkında daha fazla bilgi edinin. <br><br> Girdilerde yüksek kardinalite özellikleri algılandı ve işlendi.
+**Yüksek kardinalite özelliği işleme** |*Geçiril* <br><br><br> *Bitti*| Girişlerinizin çözümlenmesi ve yüksek kardinalite özelliklerinin saptanmamış olması. [Yüksek kardinalite Özellik algılaması](#automatic-featurization) hakkında daha fazla bilgi edinin. <br><br> Girdilerde yüksek kardinalite özellikleri algılandı ve işlendi.
 **Doğrulama bölünmüş işleme** |*Bitti*| Doğrulama yapılandırması ' Auto ' olarak ayarlandı ve eğitim verileri **20.000 satırdan daha az satır**içeriyordu. <br> Eğitilen modelin her yinelemesi çapraz doğrulama aracılığıyla doğrulanmıştı. [Doğrulama verileri](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) hakkında daha fazla bilgi edinin. <br><br> Doğrulama yapılandırması ' Auto ' olarak ayarlandı ve eğitim verileri **20.000 satırdan fazla satır**içeriyordu. <br> Giriş verileri, modelin doğrulanması için bir eğitim veri kümesine ve bir doğrulama veri kümesine bölündü.
 **Sınıf Dengeleme algılaması** |*Geçiril* <br><br><br><br><br> *Uyarı* | Girişlerinizin çözümlenmesi ve tüm sınıfların eğitim verilerinizde dengelenmesi. Her sınıfın veri kümesinde iyi bir temsili varsa, örneklerin sayısı ve oranı ile ölçüldüğü bir veri kümesi dengeli olarak değerlendirilir. <br><br><br> Girdilerde imdengelenmiş sınıflar algılandı. Model sapmalarının giderilmesi için, Dengeleme sorununu düzeltir. [İmdengelenmiş veriler](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data) hakkında daha fazla bilgi edinin.
 **Bellek sorunları algılama** |*Geçiril* <br><br><br><br> *Bitti* |<br> Seçilen {ufuk, öteleme, hareketli pencere} değerleri çözümlendi ve olası bellek dışı sorunlar algılandı. Zaman serisi [tahmin yapılandırması](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) hakkında daha fazla bilgi edinin. <br><br><br>Seçilen {ufuk, öteleme, hareketli pencere} değerleri çözümlendi ve bu, denemenizin belleği tükenmesine neden olacak. Öteleme veya sıralı pencere yapılandırması kapatılmış.

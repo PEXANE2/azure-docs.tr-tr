@@ -11,19 +11,19 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6151bbd9f056ef95c0875b83c7b6fccb732aebfe
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: a56f7248d5782b63befc55c4215360e0f5cb52b2
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870970"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338575"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory self servis parola sıfırlama dağıtımını planlayın
 
 > [!IMPORTANT]
 > Bu dağıtım planı, Azure AD self servis parola sıfırlama (SSPR) dağıtımı için rehberlik ve en iyi yöntemleri sunar.
 >
-> **Siz ve son kullanıcı ve hesabınızı yeniden almanız gerekiyorsa, adresine gidin [https://aka.ms/sspr](https://aka.ms/sspr) **.
+> **Son bir Kullanıcı kullanıyorsanız ve hesabınıza geri [https://aka.ms/sspr](https://aka.ms/sspr) **dönmek istiyorsanız adresine gidin.
 
 [Self servis parola sıfırlama (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) , kullanıcıların yardım için BT personeline başvurmadan parolalarını sıfırlamalarını sağlayan bir Azure ACTIVE DIRECTORY (ad) özelliğidir. Kullanıcılar kendi kendilerini engellemeyi kaldırabilir ve nerede olurlarsa veya gün içinde çalışmaya devam edebilir. Kuruluşunuz, çalışanların kendi engellemesini engellemelerine izin vererek, en yaygın parolayla ilgili sorunlara yönelik üretken olmayan süreyi ve yüksek destek maliyetlerini azaltabilir.
 
@@ -64,7 +64,7 @@ Sürümleri ve özellikleri karşılaştırmak ve grup veya Kullanıcı tabanlı
 
 Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Active Directory fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * En az deneme sürümü lisansı etkinleştirilmiş çalışan bir Azure AD kiracısına erişim. Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -105,7 +105,7 @@ Kullanıcılar parolayı sıfırlamak için [parola sıfırlama portalına](http
 
 Note: [Parola karması eşitlemesi (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) devre dışı bırakılmış kullanıcılar IÇIN, SSPR parolaları yalnızca şirket içi Active Directory depolar.
 
-### <a name="best-practices"></a>En iyi uygulamalar
+### <a name="best-practices"></a>Önerilen uygulamalar
 
 Kullanıcıların, kuruluştaki başka bir popüler uygulama veya hizmetle birlikte SSPR 'yi dağıtarak hızla kaydolmaya yardımcı olabilirsiniz. Bu eylem, büyük bir oturum açma hacmi oluşturur ve kayıt işlemini yeniden dener.
 
@@ -131,7 +131,7 @@ Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlul
 | İş rolü/kişi| Azure AD rolü (gerekirse) |
 | - | - |
 | Düzey 1 yardım masası| Parola yöneticisi |
-| Düzey 2 yardım masası| Kullanıcı Yöneticisi |
+| Düzey 2 yardım masası| Kullanıcı yöneticisi |
 | SSPR Yöneticisi| Genel yönetici |
 
 
@@ -254,7 +254,7 @@ SSPR genellikle kullanıcı sorunları oluşturmadığından, oluşabilecek soru
 
 Destek takımınızın başarısını etkinleştirmek için, kullanıcılarınızın aldığınız sorulara dayalı bir SSS oluşturabilirsiniz. İşte birkaç örnek:
 
-| Senaryolar| Açıklama |
+| Senaryolar| Description |
 | - | - |
 | Kullanıcının kayıtlı bir kimlik doğrulama yöntemi yok| Kullanıcı parolasını sıfırlamaya çalışıyor ancak kaydoldukları kimlik doğrulama yöntemlerinden hiçbirine sahip değil (örnek: kendi cep telefonlarını evde ve e-postaya erişemez) |
 | Kullanıcı Office veya cep telefonunda bir metin veya çağrı almıyor| Kullanıcı, kimliğini metin veya çağrı yoluyla doğrulamaya çalışıyor ancak bir metin/çağrı almıyor. |

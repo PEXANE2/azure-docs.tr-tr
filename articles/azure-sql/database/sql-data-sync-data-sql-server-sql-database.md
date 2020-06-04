@@ -11,15 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: c2c0e6d1d3ffd9ec3091e92530ec5c191f3f7ca6
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 94479bda00e2ea7fa7cf2d0b7cd8001a070a5703
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84297964"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343277"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure için SQL Data Sync nedir?
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 SQL Data Sync, hem şirket içinde hem de bulutta birden çok veritabanı üzerinde çift yönlü olarak seçtiğiniz verileri eşitlemenize olanak sağlayan Azure SQL veritabanı üzerinde oluşturulmuş bir hizmettir. 
 
@@ -84,7 +83,7 @@ Veri eşitleme, aşağıdaki senaryolar için tercih edilen çözüm değildir:
 | Yararları | -Etkin-etkin destek<br/>-Şirket içi ve Azure SQL veritabanı arasında çift yönlü | -Düşük gecikme süresi<br/>-İşlemsel tutarlılık<br/>-Geçişten sonra var olan topolojiyi yeniden kullan <br/>-Azure SQL yönetilen örnek desteği |
 | Dezavantajlar | -5 dk veya daha fazla gecikme<br/>-İşlem tutarlılığı yok<br/>-Daha yüksek performans etkisi | -Azure SQL veritabanından yayımlanamıyor <br/>-Yüksek bakım maliyeti |
 
-## <a name="get-started"></a>Kullanmaya başlayın 
+## <a name="get-started"></a>başlarken 
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Azure portal veri eşitlemesini ayarlama
 
@@ -137,8 +136,8 @@ Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sa
 - Nesnelerin (veritabanları, tablolar ve sütunlar) adları, yazdırılabilir karakterler (.), sol köşeli ayraç ([) veya sağ köşeli ayraç (]) içeremez.
 - Azure Active Directory kimlik doğrulaması desteklenmiyor.
 - Aynı ada ancak farklı şemaya (örneğin, dbo. Customers ve Sales. Customers) sahip tablolar desteklenmez.
-- Kullanıcı tanımlı veri türleri olan sütunlar desteklenmiyor
-- Sunucuları farklı abonelikler arasında taşıma desteklenmez. 
+- Kullanıcı tanımlı veri türleri olan sütunlar desteklenmez
+- Sunucuları farklı abonelikler arasında taşımak desteklenmez. 
 
 #### <a name="unsupported-data-types"></a>Desteklenmeyen veri türleri
 
@@ -149,7 +148,7 @@ Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sa
 
 #### <a name="unsupported-column-types"></a>Desteklenmeyen sütun türleri
 
-Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları eşitleyemiyor. Örneğin:
+Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları eşitleyemiyor. Örnek:
 
 - Hesaplanan sütunlar.
 - Zamana bağlı tablolar için sistem tarafından oluşturulan sütunlar.
@@ -200,16 +199,16 @@ Evet. Hub veritabanını barındırmak için bir SQL veritabanı hesabınızın 
 
 Doğrudan değil. Ancak, Azure 'da bir hub veritabanı oluşturup sonra şirket içi veritabanlarını eşitleme grubuna ekleyerek SQL Server veritabanları arasında dolaylı olarak eşitleme yapabilirsiniz.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Farklı aboneliklere ait olan SQL veritabanları arasında eşitleme yapmak için veri eşitleme kullanabilir miyim
+### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-subscriptions"></a>Farklı aboneliklere ait olan SQL veritabanında veritabanları arasında eşitleme yapmak için veri eşitleme kullanabilir miyim
 
-Evet. Farklı aboneliklere ait kaynak gruplarına ait olan SQL veritabanları arasında eşitleme yapabilirsiniz.
+Evet. Farklı aboneliklere ait kaynak gruplarına ait veritabanları arasında eşitleme yapabilirsiniz.
 
 - Abonelikler aynı kiracıya aitse ve tüm abonelikler için izniniz varsa, Azure portal eşitleme grubunu yapılandırabilirsiniz.
 - Aksi takdirde, farklı aboneliklere ait olan eşitleme üyelerini eklemek için PowerShell kullanmanız gerekir.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Farklı bulutlara ait SQL veritabanları arasında eşitleme yapmak için veri eşitleme kullanabilir miyim (Azure genel bulutu ve Azure Çin 21Vianet gibi)
+### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Farklı bulutlara ait olan SQL veritabanında veritabanları arasında eşitleme yapmak için veri eşitleme kullanabilir miyim (Azure genel bulutu ve Azure Çin 21Vianet gibi)
 
-Evet. Farklı bulutlara ait olan SQL veritabanları arasında eşitleme yapabilirsiniz, farklı aboneliklere ait olan eşitleme üyelerini eklemek için PowerShell kullanmanız gerekir.
+Evet. Farklı bulutlara ait veritabanları arasında eşitleme yapabilirsiniz. Farklı aboneliklere ait olan eşitleme üyelerini eklemek için PowerShell kullanmanız gerekir.
 
 ### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Veri eşitlemesini, üretim veritabanından boş bir veritabanına veri kaynağı için kullanabilir miyim ve sonra bunları eşitleyebilirsiniz
 
@@ -217,7 +216,7 @@ Evet. Şemayı orijinalden komut dosyasıyla yeni veritabanında el ile oluştur
 
 ### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Veritabanlarınızı yedeklemek ve geri yüklemek için SQL Data Sync kullanmalıyım
 
-Verilerinizin yedeğini oluşturmak için SQL Data Sync kullanılması önerilmez. SQL Data Sync eşitlemeler sürümü oluşturulmadığından belirli bir zaman noktasına yedekleme ve geri yükleme yapamazsınız. Ayrıca, SQL Data Sync saklı yordamlar gibi diğer SQL nesnelerini de yedeklememesini ve geri yükleme işleminin hemen eşdeğerini yapmaz.
+Verilerinizin yedeğini oluşturmak için SQL Data Sync kullanılması önerilmez. SQL Data Sync eşitlemeler sürümü olmadığından belirli bir zaman noktasına yedekleme ve geri yükleme yapamazsınız. Ayrıca, SQL Data Sync saklı yordamlar gibi diğer SQL nesnelerini de yedeklememez ve geri yükleme işleminin hemen eşdeğerini yapmaz.
 
 Önerilen bir yedekleme tekniği için bkz. [Azure SQL veritabanını kopyalama](database-copy.md).
 
@@ -259,3 +258,4 @@ Azure SQL veritabanı hakkında daha fazla bilgi için aşağıdaki makalelere b
 
 - [SQL Veritabanı'na Genel Bakış](sql-database-paas-overview.md)
 - [Veritabanı Yaşam Döngüsü Yönetimi](https://msdn.microsoft.com/library/jj907294.aspx)
+ 

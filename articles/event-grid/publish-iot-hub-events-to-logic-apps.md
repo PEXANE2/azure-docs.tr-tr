@@ -5,14 +5,14 @@ services: iot-hub
 author: robinsh
 ms.service: iot-hub
 ms.topic: tutorial
-ms.date: 11/21/2019
+ms.date: 06/02/2020
 ms.author: robinsh
-ms.openlocfilehash: 0b1870af6316713590eec59aee2af94ce34b7e1a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 5a0b9b2752a2ad8b7d2e03a40af11407b97391bc
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722567"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322048"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Öğretici: Event Grid ve Logic Apps kullanarak Azure IoT Hub olaylarıyla ilgili e-posta bildirimleri gönderin
 
@@ -20,7 +20,7 @@ Azure Event Grid, aşağı akış iş uygulamalarınızda eylemler tetikleyerek 
 
 Bu makalede IoT Hub ve Event Grid kullanan bir örnek yapılandırma gösterilmektedir. Son olarak, IoT Hub 'ınıza bir cihaz eklendiğinde bildirim e-postası gönderecek şekilde ayarlanmış bir Azure mantıksal uygulamanız vardır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin bir Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir Azure hesabı oluşturabilirsiniz](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -47,7 +47,7 @@ Bu makalede IoT Hub ve Event Grid kullanan bir örnek yapılandırma gösterilme
 
    ![Mantıksal uygulama oluşturma alanları](./media/publish-iot-hub-events-to-logic-apps/create-logic-app-fields.png)
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 1. Kaynak oluşturulduktan sonra mantıksal uygulamanıza gidin. Bunu yapmak için **kaynak grupları**' nı seçin ve ardından Bu öğretici için oluşturduğunuz kaynak grubunu seçin. Ardından mantıksal uygulamayı kaynak listesinden bulun ve seçin. 
 
@@ -175,19 +175,26 @@ Bu bölümde, IoT Hub'ınızı gerçekleşen olayları yayımlamak için yapıla
 
 4. Olay aboneliğini aşağıdaki değerlerle oluşturun: 
 
-   * **Olay aboneliği ayrıntıları**: açıklayıcı bir ad belirtin ve **Event Grid şeması**' nı seçin.
+    1. **Olay ABONELIĞI ayrıntıları** bölümünde aşağıdaki görevleri yapın:
+        1. Olay aboneliği için bir **ad** sağlayın. 
+        2. **Olay şeması**Için **Event Grid şeması** ' nı seçin. 
+   2. **Konu ayrıntıları** bölümünde aşağıdaki görevleri yapın:
+       1. **Konu türünün** **IoT Hub**olarak ayarlandığını onaylayın. 
+       2. IoT Hub 'ın adının **kaynak kaynak** alanı için değer olarak ayarlandığını doğrulayın. 
+       3. Sizin için oluşturulacak **Sistem konusu** için bir ad girin. 
+   3. **Olay türleri** bölümünde aşağıdaki görevleri yapın: 
+        1. **Olay türlerine filtre uygulamak**Için, **cihaz oluşturma**dışında tüm seçimlerin işaretini kaldırın.
 
-   * **Olay türleri**: **olay türlerine filtre uygulamak Için**, **cihaz oluşturma**dışında tüm seçimlerin işaretini kaldırın.
+           ![abonelik olay türleri](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+   4. **Uç nokta ayrıntıları** bölümünde aşağıdaki görevleri yapın: 
+       1. **Uç nokta türünü** **Web kancası**olarak seçin.
+       2. **Uç nokta seç**' e tıklayın, mantıksal UYGULAMANıZDAN kopyaladığınız URL 'yi yapıştırın ve seçimi onaylayın.
 
-       ![abonelik olay türleri](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+         ![uç nokta URL'si seçme](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
 
-   * **Uç nokta ayrıntıları**: uç nokta türünü **Web kancası** olarak seçin ve *uç nokta seç* ' i SEÇIN ve mantıksal uygulamanızdan kopyaladığınız URL 'yi yapıştırın ve seçimi onaylayın.
+         İşiniz bittiğinde, bölmesi aşağıdaki örnekteki gibi görünmelidir: 
 
-     ![uç nokta URL'si seçme](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
-
-   İşiniz bittiğinde, bölmesi aşağıdaki örnekteki gibi görünmelidir: 
-
-    ![Örnek olay aboneliği formu](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
+        ![Örnek olay aboneliği formu](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
 5. Olay aboneliğini buraya kaydedebilir ve IoT Hub'ınızda oluşturulan her cihaz için bildirimler alabilirsiniz. Bu öğreticide, belirli cihazları filtrelemek için isteğe bağlı alanları kullanalım. Bölmenin en üstündeki **filtreleri** seçin.
 
@@ -223,7 +230,7 @@ Olay bildirim e-postasını tetiklemek için yeni bir cihaz oluşturarak mantık
 
 3. **Cihaz Kimliği** için `Building1_Floor1_Room1_Light` girin.
 
-4. **Kaydet**’i seçin. 
+4. **Kaydet**'i seçin. 
 
 5. Olay abonelik filtrelerini test etmek için farklı cihaz kimlikleri olan birden çok cihaz ekleyebilirsiniz. Şu örnekleri deneyin: 
 

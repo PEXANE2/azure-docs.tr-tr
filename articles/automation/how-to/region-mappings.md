@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: process-automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/23/2020
+ms.date: 06/03/2020
 ms.topic: conceptual
 manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: d594d5a9dd263817023d2b5987c03aa50828191c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 1ccf87bfd387182af269670abf1d86833854834d
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191855"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331636"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Bağlı Log Analytics çalışma alanı için desteklenen bölgeler
 
@@ -37,6 +37,7 @@ Aşağıdaki tabloda desteklenen eşlemeler gösterilmektedir:
 |AustraliaSoutheast|AustraliaSoutheast|
 |Güneydoğu|Güneydoğu|
 |Merkezileştirme Hindistan|Merkezileştirme Hindistan|
+|ChinaEast2<sup>3</sup>|ChinaEast2|
 |JapanEast|JapanEast|
 |**Avrupa**||
 |UKSouth|UKSouth|
@@ -47,6 +48,8 @@ Aşağıdaki tabloda desteklenen eşlemeler gösterilmektedir:
 Log Analytics çalışma alanları için <sup>1</sup> EastUS eşlemesi, Otomasyon hesaplarında tam bir bölgeden bölgeye eşleme değildir, ancak doğru eşleme olur.
 
 <sup>2</sup> kapasite depoları nedeniyle, yeni kaynaklar oluştururken bölge kullanılamaz. Bu, Otomasyon hesaplarını ve Log Analytics çalışma alanlarını içerir. Ancak, bölgede önceden var olan bağlı kaynakların çalışmaya devam etmesi gerekir.
+
+<sup>3</sup> Azure Çin 'de yalnızca güncelleştirme yönetimi desteklenir ve değişiklik izleme ve envanter gibi diğer özellikler Şu anda kullanılamaz. 
 
 ## <a name="unlink-a-workspace"></a>Çalışma alanının bağlantısını kaldır
 

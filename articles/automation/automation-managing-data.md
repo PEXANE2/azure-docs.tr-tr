@@ -1,20 +1,45 @@
 ---
-title: Azure Otomasyonu verilerinin yönetilmesi
-description: Bu makalede, veri saklama ve yedekleme dahil olmak üzere Azure Otomasyonu 'nda veri yönetimi kavramları sunulmaktadır.
+title: Azure Otomasyonu veri güvenliği
+description: Bu makale, Azure Otomasyonu 'nun gizliliğinizi nasıl koruduğunu ve verilerinizin güvenliğini nasıl sağladığını öğrenmenize yardımcı olur.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 03/23/2020
+ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: de60ef31a39a698f9a797a5836546f9b75b67594
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 2dbaebac2228c11aef5fb33af4588f75ea15677a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835215"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343063"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Otomasyonu verilerinin yönetilmesi
 
-Bu makalede, verileri bir Azure Otomasyonu ortamında yönetmeye yönelik çeşitli konular yer almaktadır.
+Bu makalede, Azure Otomasyonu ortamında verilerin nasıl korunduğu ve güvenliğinin sağlandığı hakkında çeşitli konular yer almaktadır.
+
+## <a name="tls-12-enforcement-for-azure-automation"></a>Azure Otomasyonu için TLS 1,2 zorlaması
+
+Azure Otomasyonu 'na geçişte verilerin güvenliğini sağlamak için, Aktarım Katmanı Güvenliği (TLS) 1,2 kullanımını yapılandırmanızı kesinlikle öneririz. Aşağıda, HTTPS üzerinden Automation hizmetine iletişim kuran yöntemlerin veya istemcilerin listesi verilmiştir:
+
+* Web kancası çağrıları
+
+* Güncelleştirme Yönetimi ve Değişiklik İzleme ve envanter tarafından yönetilen makineler içeren karma runbook çalışanları.
+
+* DSC düğümleri
+
+TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümlerinin **kullanılması önerilmez**. 2020 Eylül 'den başlayarak şifreleme protokolünün TLS 1,2 ve sonraki sürümlerini zorlamaya başlayacağız.
+
+Yalnızca, TLS 1,3 gibi daha yeni güvenli protokollerden otomatik olarak algılama ve bu özelliklerden faydalanmanıza olanak tanıyan platform düzeyi güvenlik özelliklerini bozabileceği için, yalnızca kesinlikle gerekli olmadığı sürece, aracılarınızın yalnızca TLS 1,2 kullanmasını öneririz.
+
+Karma Runbook Worker rolüne yönelik bir bağımlılık olan Windows ve Linux için Log Analytics aracısıyla TLS 1,2 desteği hakkında bilgi için bkz. [Log Analytics Agent genel bakış-TLS 1,2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol). 
+
+### <a name="platform-specific-guidance"></a>Platforma özgü kılavuz
+
+|Platform/dil | Destek | Daha Fazla Bilgi |
+| --- | --- | --- |
+|Linux | Linux dağıtımları, TLS 1,2 desteği için [OpenSSL](https://www.openssl.org) 'yi kullanır.  | OpenSSL sürümünüzü doğrulamak için [OpenSSL changelog](https://www.openssl.org/news/changelog.html) ' yı denetleyin.|
+| Windows 8,0-10 | Desteklenir ve varsayılan olarak etkindir. | Hala [varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)kullandığınızdan emin olun.  |
+| Windows Server 2012-2016 | Desteklenir ve varsayılan olarak etkindir. | [Varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) hala kullandığınızı doğrulamak için |
+| Windows 7 SP1 ve Windows Server 2008 R2 SP1 | Desteklenir, ancak varsayılan olarak etkinleştirilmez. | ' Nin nasıl etkinleştirileceği hakkında ayrıntılı bilgi için bkz. [Aktarım Katmanı Güvenliği (TLS) kayıt defteri ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) sayfası.  |
 
 ## <a name="data-retention"></a>Veri saklama
 
@@ -53,16 +78,16 @@ Azure Otomasyonu varlıklarını dışarı veremezsiniz: sertifikalar, bağlant�
 
 Cmdlet 'leri kullanarak, şifrelenmiş değişkenlerin veya kimlik bilgilerinin parola alanlarının değerlerini alamazsınız. Bu değerleri bilmiyorsanız bir runbook 'ta alabilirsiniz. Değişken değerlerini almak için bkz. [Azure Otomasyonu 'Nda değişken varlıkları](shared-resources/variables.md). Kimlik bilgisi değerlerini alma hakkında daha fazla bilgi edinmek için bkz. [Azure Automation 'Da kimlik bilgisi varlıkları](shared-resources/credentials.md).
 
- ### <a name="dsc-configurations"></a>DSC yapılandırması
+### <a name="dsc-configurations"></a>DSC yapılandırması
 
 Windows PowerShell 'de Azure portal veya [Export-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0
 ) cmdlet 'INI kullanarak DSC yapılandırmalarını betik dosyalarına aktarabilirsiniz. Bu konfigürasyonları başka bir Otomasyon hesabında içeri aktarabilir ve kullanabilirsiniz.
 
 ## <a name="geo-replication-in-azure-automation"></a>Azure Otomasyonu 'nda coğrafi çoğaltma
 
-Coğrafi çoğaltma, Azure Otomasyonu hesaplarında standarttır. Hesabınızı ayarlarken bir birincil bölge seçersiniz. İç otomasyon coğrafi çoğaltma hizmeti, hesaba otomatik olarak bir ikincil bölge atar. Hizmet daha sonra birincil bölgedeki hesap verilerini ikincil bölgeye sürekli olarak yedekler. Birincil ve ikincil bölgelerin tam listesi [iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşlenmiş bölgeler '](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)de bulunabilir. 
+Coğrafi çoğaltma, Azure Otomasyonu hesaplarında standarttır. Hesabınızı ayarlarken bir birincil bölge seçersiniz. İç otomasyon coğrafi çoğaltma hizmeti, hesaba otomatik olarak bir ikincil bölge atar. Hizmet daha sonra birincil bölgedeki hesap verilerini ikincil bölgeye sürekli olarak yedekler. Birincil ve ikincil bölgelerin tam listesi [iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşlenmiş bölgeler '](../best-practices-availability-paired-regions.md)de bulunabilir.
 
-Automation coğrafi çoğaltma hizmeti tarafından oluşturulan yedekleme, Otomasyon varlıklarının, yapılandırmaların ve benzeri tam bir kopyasıdır. Bu yedekleme, birincil bölge aşağı gittiğinde ve verileri kaybederse kullanılabilir. Birincil bir bölgenin verilerinin kaybedilmesi olası olmayan olayda, Microsoft bunu kurtarmaya çalışır. Şirket birincil verileri kurtaramaz, otomatik yük devretme kullanır ve Azure aboneliğinizde bu durumu bilgilendirir. 
+Automation coğrafi çoğaltma hizmeti tarafından oluşturulan yedekleme, Otomasyon varlıklarının, yapılandırmaların ve benzeri tam bir kopyasıdır. Bu yedekleme, birincil bölge aşağı gittiğinde ve verileri kaybederse kullanılabilir. Birincil bir bölgenin verilerinin kaybedilmesi olası olmayan olayda, Microsoft bunu kurtarmaya çalışır. Şirket birincil verileri kurtaramaz, otomatik yük devretme kullanır ve Azure aboneliğinizde bu durumu bilgilendirir.
 
 Bir bölgesel hata varsa, Otomasyon coğrafi çoğaltma hizmetine doğrudan dış müşteriler erişemez. Bölgesel hatalarda Otomasyon yapılandırmasını ve Runbook 'larını sürdürmek istiyorsanız:
 
@@ -77,4 +102,5 @@ Bir bölgesel hata varsa, Otomasyon coğrafi çoğaltma hizmetine doğrudan dı�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure Automation 'da güvenli varlıklar hakkında daha fazla bilgi edinmek için bkz. [Azure Automation 'da güvenli varlıkların şifrelenmesi](automation-secure-asset-encryption.md).
-* Coğrafi çoğaltma hakkında daha fazla bilgi edinmek için bkz. [etkin coğrafi çoğaltma oluşturma ve kullanma](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication).
+
+* Coğrafi çoğaltma hakkında daha fazla bilgi edinmek için bkz. [etkin coğrafi çoğaltma oluşturma ve kullanma](../sql-database/sql-database-active-geo-replication.md).

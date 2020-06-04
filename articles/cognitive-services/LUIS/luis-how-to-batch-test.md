@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 4d3535d419b0f99491795b3920fdd295e3128299
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ee15d08c820492cfa2c0701dfe3b682d57e00187
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653999"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344416"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Bir dizi örnek ile toplu test
 
@@ -51,7 +51,7 @@ Testi çalıştırmak için veri kümesi adını seçin, sonra bağlamsal araç 
 
 İndirilebilir veri kümesi, toplu test için karşıya yüklenen dosyadır.
 
-|Durum|Anlamı|
+|Eyalet|Anlamı|
 |--|--|
 |![Başarılı test yeşil daire simgesi](./media/luis-how-to-batch-test/batch-test-result-green.png)|Tüm söyleymalar başarılı.|
 |![Kırmızı x simgesi başarısız test](./media/luis-how-to-batch-test/batch-test-result-red.png)|En az bir söylenişi hedefi tahmine uymuyor.|

@@ -4,12 +4,12 @@ description: Bu makalede Azure Site Recovery hakkındaki popüler genel sorular 
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 2e6cbac9896fc2bc6b3d4d95a28a25d8177bd7a5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: b16301bb092395ac71a5bfd6f53f392ab708b10c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193553"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345181"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery ilgili genel sorular
 
@@ -226,6 +226,9 @@ Evet. Linux Işlem sistemi için Azure Site Recovery, uygulama tutarlılığı i
 ```
 
 5. Uygulama tutarlılığı gerektiren uygulamalar için ön ve son adımlara yönelik dondurma ve çözme giriş/çıkış komutlarını ekleyin. Bunları belirten başka bir betik eklemeyi ve ön ve sonrası seçenekleri olan "customscript.sh" öğesinden çağırmayı seçebilirsiniz.
+
+>[!Note]
+>Özel betikleri desteklemek için Site Recovery Agent sürümü 9,24 veya üzeri olmalıdır.
 
 ## <a name="failover"></a>Yük devretme
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Azure 'a yük devretdiğimde yük devretmeden sonra Azure VM 'lerine nasıl erişebilirim?

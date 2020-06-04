@@ -1,6 +1,6 @@
 ---
-title: Özel Bağlantı
-description: Özel uç nokta özelliğine genel bakış
+title: Azure Özel Bağlantı
+description: Özel uç nokta özelliğine genel bakış.
 author: rohitnayakmsft
 ms.author: rohitna
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
@@ -9,36 +9,36 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: e1093e57757d780bf5393b6cb1bb45a706b18b11
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: cd2f88d78a967b46c1983e7eb96328c14d90a81a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219873"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344008"
 ---
-# <a name="private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için özel bağlantı
+# <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için Azure özel bağlantısı
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 Özel bağlantı, Azure 'daki çeşitli PaaS hizmetlerine **özel bir uç nokta**aracılığıyla bağlanmanızı sağlar. Özel bağlantı işlevselliğini destekleyen PaaS hizmetlerinin bir listesi için [özel bağlantı belgeleri](../../private-link/index.yml) sayfasına gidin. Özel uç nokta, belirli bir [sanal](../../virtual-network/virtual-networks-overview.md) ağ ve alt ağ içindeki özel bir IP adresidir.
 
 > [!IMPORTANT]
-> Bu makale hem Azure SQL veritabanı hem de Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) için geçerlidir. Basitlik için, ' Database ' terimi, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'te her iki veritabanına başvurur. Benzer şekilde, ' Server ' öğesine yapılan tüm başvurular, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'i barındıran [MANTıKSAL SQL Server](logical-servers.md) 'a başvurmaktadır. Bu *Makale,* **Azure SQL yönetilen örneği**için geçerlidir.
+> Bu makale hem Azure SQL veritabanı hem de Azure SYNAPSE Analytics (eski adıyla Azure SQL veri ambarı) için geçerlidir. Basitlik için, ' Database ' terimi, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'te her iki veritabanına başvurur. Benzer şekilde, ' Server ' öğesine yapılan tüm başvurular, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'i barındıran [MANTıKSAL SQL Server](logical-servers.md) 'a başvurmaktadır. Bu *Makale,* **Azure SQL yönetilen örneği**için geçerlidir.
 
 ## <a name="data-exfiltration-prevention"></a>Veri kaybı önleme
 
 Azure SQL veritabanı 'nda veri ayıklama, veritabanı yöneticisi gibi yetkili bir kullanıcının verileri bir sistemden ayıklamasına ve kuruluşun dışında başka bir konuma veya sisteme taşımasına yönelik bir veritabanıdır. Örneğin, Kullanıcı, verileri üçüncü tarafa ait bir depolama hesabına taşıtır.
 
-Bir SQL veritabanına bağlanan bir Azure VM içinde SQL Server Management Studio (SSMS) çalıştıran bir kullanıcı içeren bir senaryo düşünün. Bu SQL veritabanı Batı ABD veri merkezinde. Aşağıdaki örnekte, ağ erişim denetimleri kullanılarak SQL veritabanı 'ndaki genel uç noktalarla erişimin nasıl sınırlandıralınacağını gösterilmektedir.
+SQL veritabanı 'nda bir veritabanına bağlanan bir Azure sanal makinesi içinde SQL Server Management Studio (SSMS) çalıştıran bir kullanıcıya sahip bir senaryo düşünün. Bu veritabanı Batı ABD veri merkezinde. Aşağıdaki örnekte, ağ erişim denetimleri kullanılarak SQL veritabanı 'ndaki genel uç noktalarla erişimin nasıl sınırlandıralınacağını gösterilmektedir.
 
 1. Azure hizmetlerinin **kapalı**çalışmasına izin ver ayarını yaparak, genel uç nokta aracılığıyla SQL veritabanı 'Na tüm Azure hizmet trafiğini devre dışı bırakın. Sunucu ve veritabanı düzeyinde güvenlik duvarı kurallarında IP adresine izin verilmediğinden emin olun. Daha fazla bilgi için bkz. [Azure SQL veritabanı ve Azure SYNAPSE Analytics ağ erişim denetimleri](network-access-controls-overview.md).
-1. Yalnızca VM 'nin özel IP adresini kullanarak SQL veritabanı 'na giden trafiğe izin verin. Daha fazla bilgi için [hizmet uç noktası](vnet-service-endpoint-rule-overview.md) ve [VNET güvenlik duvarı kuralları](firewall-configure.md)makalesine bakın.
+1. Yalnızca VM 'nin özel IP adresini kullanarak SQL veritabanı 'ndaki veritabanına giden trafiğe izin verin. Daha fazla bilgi için [hizmet uç noktası](vnet-service-endpoint-rule-overview.md) ve [sanal ağ güvenlik duvarı kuralları](firewall-configure.md)makalesine bakın.
 1. Azure VM 'de, [ağ güvenlik grupları (NSG 'ler)](../../virtual-network/manage-network-security-group.md) ve hizmet etiketleri kullanarak giden bağlantı kapsamını aşağıda gösterildiği gibi daraltın
     - Hizmet etiketi = SQL için trafiğe izin veren bir NSG kuralı belirtin. WestUs-yalnızca Batı ABD SQL veritabanı 'na bağlantıya izin veriliyor
     - Hizmet etiketi = SQL-tüm bölgelerde SQL veritabanı bağlantılarını reddetmek için bir NSG kuralı ( **daha yüksek önceliğe**sahip) belirtin
 
-Bu kurulumun sonunda, Azure VM yalnızca Batı ABD bölgesindeki SQL veritabanlarına bağlanabilir. Ancak, bağlantı tek bir SQL veritabanıyla sınırlı değildir. VM, aboneliğin parçası olmayan veritabanları da dahil olmak üzere Batı ABD bölgesindeki SQL veritabanlarına yine de bağlanabilir. Yukarıdaki senaryodaki veri taşalım kapsamını belirli bir bölgeye azalttık, ancak bunu tamamen ortadan kaldırdık.
+Bu kurulumun sonunda, Azure VM yalnızca Batı ABD bölgesindeki SQL veritabanındaki bir veritabanına bağlanabilir. Ancak, bağlantı SQL veritabanı 'ndaki tek bir veritabanıyla sınırlı değildir. VM, aboneliğin parçası olmayan veritabanları da dahil olmak üzere Batı ABD bölgesindeki herhangi bir veritabanına hala bağlanabilir. Yukarıdaki senaryodaki veri taşalım kapsamını belirli bir bölgeye azalttık, ancak bunu tamamen ortadan kaldırdık.
 
-Özel bağlantıyla, müşteriler artık özel uç noktaya erişimi kısıtlamak için NSG 'ler gibi ağ erişim denetimleri ayarlayabilir. Tek tek Azure PaaS kaynakları, belirli özel uç noktalara eşlenir. Kötü amaçlı bir Insider, eşlenen PaaS kaynağına (örneğin bir SQL veritabanı) ve başka bir kaynağa erişebilir. 
+Özel bağlantıyla, müşteriler artık özel uç noktaya erişimi kısıtlamak için NSG 'ler gibi ağ erişim denetimleri ayarlayabilir. Tek tek Azure PaaS kaynakları, belirli özel uç noktalara eşlenir. Kötü amaçlı bir Insider, eşlenen PaaS kaynağına (örneğin, SQL veritabanı 'ndaki bir veritabanı) ve başka bir kaynağa erişebilir. 
 
 ## <a name="on-premises-connectivity-over-private-peering"></a>Özel eşleme üzerinden şirket içi bağlantı
 
@@ -49,15 +49,15 @@ Müşteriler şirket içi makinelerden ortak uç noktaya bağlandıklarında, IP
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Azure SQL veritabanı için özel bağlantı ayarlama 
 
 ### <a name="creation-process"></a>Oluşturma Işlemi
-Özel uç noktalar Portal, PowerShell veya Azure CLı kullanılarak oluşturulabilir:
+Özel uç noktalar Azure portal, PowerShell veya Azure CLı kullanılarak oluşturulabilir:
 - [Portal](../../private-link/create-private-endpoint-portal.md)
 - [PowerShell](../../private-link/create-private-endpoint-powershell.md)
 - [CLI](../../private-link/create-private-endpoint-cli.md)
 
-### <a name="approval-process"></a>Onay Işlemi
+### <a name="approval-process"></a>Onay işlemi
 Ağ Yöneticisi özel uç noktayı (PE) oluşturduktan sonra, SQL Yöneticisi özel uç nokta bağlantısını (PEC) SQL veritabanı 'na yönetebilir.
 
-1. Aşağıdaki ekran görüntüsünde gösterilen adımlara göre Azure portal SQL Server kaynağına gidin
+1. Aşağıdaki ekran görüntüsünde gösterilen adımlara göre Azure portal sunucu kaynağına gidin
 
     - (1) sol bölmedeki özel uç nokta bağlantılarını seçin
     - (2) tüm özel uç nokta bağlantılarının (lar) bir listesini gösterir
@@ -74,11 +74,11 @@ Ağ Yöneticisi özel uç noktayı (PE) oluşturduktan sonra, SQL Yöneticisi ö
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Azure SQL veritabanı için özel bağlantı durumlarını kullanma 
 
-İstemciler aynı VNet 'ten özel uç noktaya, aynı bölgedeki eşlenmiş VNet 'e veya bölgeler arasında VNet-VNet bağlantısı aracılığıyla bağlanabilir. Ayrıca, istemciler ExpressRoute, özel eşleme veya VPN tüneli kullanarak şirket içinden bağlanabilir. Aşağıda, yaygın kullanım durumlarını gösteren basitleştirilmiş bir diyagram bulunur.
+İstemciler aynı sanal ağdaki özel uç noktaya, aynı bölgedeki eşlenmiş sanal ağa veya bölgeler arasında sanal ağdan sanal ağ bağlantısı aracılığıyla bağlanabilir. Ayrıca, istemciler ExpressRoute, özel eşleme veya VPN tüneli kullanarak şirket içinden bağlanabilir. Aşağıda, yaygın kullanım durumlarını gösteren basitleştirilmiş bir diyagram bulunur.
 
  ![Bağlantı seçenekleri diyagramı][1]
 
-## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network-vnet"></a>Aynı sanal ağdaki (VNet) bir Azure VM 'den SQL veritabanı ile bağlantı sınama
+## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network"></a>Aynı sanal ağdaki bir Azure VM 'den SQL veritabanı 'na bağlantıyı test etme
 
 Bu senaryo için, Windows Server 2016 çalıştıran bir Azure sanal makinesi (VM) oluşturduğunuzu varsayın. 
 
@@ -93,7 +93,7 @@ Bu senaryo için, Windows Server 2016 çalıştıran bir Azure sanal makinesi (V
 
 [Telnet Client](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29) , bağlantıyı test etmek için kullanılabilen bir Windows özelliğidir. Windows işletim sisteminin sürümüne bağlı olarak, bu özelliği açıkça etkinleştirmeniz gerekebilir. 
 
-Telnet 'i yükledikten sonra bir komut Istemi penceresi açın. Telnet komutunu çalıştırın ve SQL veritabanının IP adresini ve özel uç noktasını belirtin.
+Telnet 'i yükledikten sonra bir komut Istemi penceresi açın. Telnet komutunu çalıştırın ve SQL veritabanı 'nda veritabanının IP adresini ve özel uç noktasını belirtin.
 
 ```
 >telnet 10.1.1.5 1433
@@ -159,17 +159,17 @@ where session_id=@@SPID
 Özel uç nokta bağlantıları yalnızca [bağlantı ilkesi](connectivity-architecture.md#connection-policy) olarak **proxy** 'yi destekler
 
 
-## <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Eşlenen sanal ağdaki (VNet) bir Azure VM 'den bağlanma 
+## <a name="connecting-from-an-azure-vm-in-peered-virtual-network"></a>Eşlenen sanal ağdaki bir Azure VM 'den bağlanma 
 
-Eşlenen VNet 'teki bir Azure VM 'den SQL veritabanı bağlantısı kurmak için [VNET eşlemesini](../../virtual-network/tutorial-connect-virtual-networks-powershell.md) yapılandırın.
+Eşlenmiş bir sanal ağdaki bir Azure VM 'den SQL veritabanı bağlantısı kurmak için [sanal ağ eşlemeyi](../../virtual-network/tutorial-connect-virtual-networks-powershell.md) yapılandırın.
 
-## <a name="connecting-from-an-azure-vm-in-vnet-to-vnet-environment"></a>VNet-VNet ortamında bir Azure VM 'sinden bağlantı kurma
+## <a name="connecting-from-an-azure-vm-in-virtual-network-to-virtual-network-environment"></a>Sanal ağdaki bir Azure VM 'den sanal ağ ortamına bağlanma
 
-Farklı bir bölgedeki veya abonelikteki bir Azure VM 'den bir SQL veritabanı bağlantısı kurmak için [VNET-VNET VPN Gateway bağlantısını](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) yapılandırın.
+Farklı bir bölgedeki veya abonelikteki bir Azure VM 'den SQL veritabanındaki bir veritabanına bağlantı kurmak için [sanal ağı sanal ağ VPN Gateway bağlantısına](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) yapılandırın.
 
 ## <a name="connecting-from-an-on-premises-environment-over-vpn"></a>VPN üzerinden şirket içi bir ortamdan bağlanma
 
-Şirket içi bir ortamdan SQL veritabanına bağlantı kurmak için seçeneklerden birini seçin ve uygulayın:
+Şirket içi bir ortamdan SQL veritabanı 'ndaki veritabanına bağlantı kurmak için seçeneklerden birini seçin ve uygulayın:
 - [Noktadan siteye bağlantı](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 - [Konumlar arası VPN bağlantısı](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 - [ExpressRoute devresi](../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
@@ -177,7 +177,7 @@ Farklı bir bölgedeki veya abonelikteki bir Azure VM 'den bir SQL veritabanı b
 
 ## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase"></a>PolyBase kullanarak Azure SYNAPSE Analytics 'ten Azure depolama 'ya bağlanma
 
-PolyBase, Azure depolama hesaplarından Azure SYNAPSE Analytics 'e veri yüklemek için yaygın olarak kullanılır. Verileri yüklediğiniz Azure depolama hesabı, erişimi yalnızca özel uç noktalar, hizmet uç noktaları veya IP tabanlı güvenlik duvarları aracılığıyla yalnızca bir VNet-alt ağ kümesine sınırlayıp, PolyBase 'den hesaba olan bağlantı kesilir. VNet ile güvenli hale getirilmiş Azure depolama 'ya bağlanan Azure SYNAPSE Analytics ile PolyBase içeri ve dışarı aktarma senaryolarını etkinleştirmek için [burada](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)verilen adımları izleyin. 
+PolyBase, Azure depolama hesaplarından Azure SYNAPSE Analytics 'e veri yüklemek için yaygın olarak kullanılır. Verileri yüklediğiniz Azure depolama hesabı, erişimi yalnızca özel uç noktalar, hizmet uç noktaları veya IP tabanlı güvenlik duvarları aracılığıyla yalnızca bir sanal ağ alt ağları kümesine sınırlayıp, PolyBase 'den hesaba olan bağlantı kesilir. Bir sanal ağla güvenli hale getirilmiş Azure depolama 'ya bağlanan Azure SYNAPSE Analytics ile PolyBase içeri ve dışarı aktarma senaryolarını etkinleştirmek için [burada](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)verilen adımları izleyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

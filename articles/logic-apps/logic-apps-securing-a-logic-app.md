@@ -3,15 +3,15 @@ title: Erişimin ve verilerin güvenliğini sağlama
 description: Giriş, çıkış, istek tabanlı tetikleyiciler, çalıştırma geçmişi, yönetim görevleri ve Azure Logic Apps içindeki diğer kaynaklara erişimi güvenli hale getirme
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 8fe53b7a27c922462f9134bc78ff648aca3aca62
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.date: 05/28/2020
+ms.openlocfilehash: f7796674efc8c8f8b9e58adb760153b409134488
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715554"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322439"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -27,7 +27,7 @@ Azure Logic Apps erişimi denetlemek ve hassas verileri korumak için, bu alanla
 
 ## <a name="access-to-request-based-triggers"></a>İstek tabanlı tetikleyicilere erişim
 
-Mantıksal uygulamanız istek veya [Web kancası](../connectors/connectors-native-webhook.md) tetikleyicisi gibi gelen çağrıları veya istekleri [alan istek tabanlı](../connectors/connectors-native-reqres.md) bir tetikleyici kullanıyorsa, yalnızca yetkili istemcilerin mantıksal uygulamanızı çağırabilmesi için erişimi sınırlayabilirsiniz. Bir mantıksal uygulama tarafından alınan tüm istekler, daha önce Güvenli Yuva Katmanı (SSL), protokol olarak bilinen Aktarım Katmanı Güvenliği (TLS) ile şifrelenir ve güvenlik altına alınır.
+Mantıksal uygulamanız istek veya [Web kancası](../connectors/connectors-native-webhook.md) tetikleyicisi gibi gelen çağrıları veya istekleri [alan istek tabanlı](../connectors/connectors-native-reqres.md) bir tetikleyici kullanıyorsa, yalnızca yetkili istemcilerin mantıksal uygulamanızı çağırabilmesi için erişimi sınırlayabilirsiniz. Bir mantıksal uygulama tarafından alınan tüm istekler, daha önce Güvenli Yuva Katmanı (SSL) olarak bilinen Aktarım Katmanı Güvenliği (TLS) protokolü ile şifrelenir ve güvenli hale getirilir.
 
 Bu tetikleyici türüne erişimi güvenli hale getirmenize yardımcı olabilecek seçenekler şunlardır:
 
@@ -46,7 +46,7 @@ Bir mantıksal uygulamadaki her istek uç noktası, bitiş noktasının URL 'sin
 
 Her URL `sp` , `sv` `sig` Bu tabloda açıklandığı gibi,, ve sorgu parametresini içerir:
 
-| Sorgu parametresi | Açıklama |
+| Sorgu parametresi | Description |
 |-----------------|-------------|
 | `sp` | İzin verilen HTTP yöntemlerinin kullanması için izinleri belirtir. |
 | `sv` | İmzayı oluşturmak için kullanılacak SAS sürümünü belirtir. |
@@ -531,7 +531,7 @@ Bu bölümler hakkında daha fazla bilgi aşağıda verilmiştir `parameters` :
 
 Bu örnek, türü kullanan birden çok güvenli parametre tanımına sahip olan şablon `securestring` :
 
-| Parametre adı | Açıklama |
+| Parametre adı | Description |
 |----------------|-------------|
 | `TemplatePasswordParam` | Daha sonra iş akışı tanımının parametresine geçirilen bir parolayı kabul eden bir şablon parametresi `basicAuthPasswordParam` |
 | `TemplateUsernameParam` | Daha sonra iş akışı tanımının parametresine geçirilen bir kullanıcı adını kabul eden bir şablon parametresi `basicAuthUserNameParam` |
@@ -716,7 +716,7 @@ HTTP ve HTTPS uç noktaları çeşitli kimlik doğrulama türlerini destekler. G
 
 [Temel](../active-directory-b2c/secure-rest-api.md) seçenek varsa, bu özellik değerlerini belirtin:
 
-| Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
+| Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Description |
 |---------------------|-----------------|----------|-------|-------------|
 | **Kimlik Doğrulaması** | `type` | Yes | Temel | Kullanılacak kimlik doğrulaması türü |
 | **Nitelen** | `username` | Yes | <*Kullanıcı adı*>| Hedef hizmet uç noktasına erişim doğrulaması için Kullanıcı adı |
@@ -747,9 +747,9 @@ Gizli bilgileri işlemek ve güvenli hale getirmek için [güvenli parametreleri
 
 [Istemci sertifikası](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) seçeneği varsa, bu özellik değerlerini belirtin:
 
-| Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
+| Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Description |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik Doğrulaması** | `type` | Yes | **İstemci sertifikası** <br>veya <br>`ClientCertificate` | TLS/SSL istemci sertifikaları için kullanılacak kimlik doğrulaması türü <p><p>**Note**: otomatik olarak imzalanan sertifikalar desteklenirken, TLS/SSL için otomatik olarak imzalanan sertifikalar desteklenmez. HTTP Bağlayıcısı ara TLS/SSL sertifikalarını desteklemez. |
+| **Kimlik Doğrulaması** | `type` | Yes | **İstemci sertifikası** <br>veya <br>`ClientCertificate` | Kullanılacak kimlik doğrulaması türü. Sertifikaları [Azure API Management](../api-management/api-management-howto-mutual-certificates.md)yönetebilirsiniz. <p></p>**Note**: özel bağlayıcılar hem gelen hem de giden çağrılar için sertifika tabanlı kimlik doğrulamasını desteklemez. |
 | **Türk** | `pfx` | Yes | <*kodlanmış-pfx-dosya-içerik*> | Kişisel bilgi değişimi (PFX) dosyasından gelen Base64 kodlamalı içerik <p><p>PFX dosyasını Base64 kodlamalı biçime dönüştürmek için aşağıdaki adımları izleyerek PowerShell kullanabilirsiniz: <p>1. sertifika içeriğini bir değişkene kaydedin: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. işlevi kullanarak sertifika içeriğini dönüştürün `ToBase64String()` ve bu içeriği bir metin dosyasına kaydedin: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Parola** | `password`| No | <*-pfx dosyası için parola*> | PFX dosyasına erişim parolası |
 |||||
@@ -786,7 +786,7 @@ Gizli bilgileri işlemek ve güvenli hale getirmek için [güvenli parametreleri
 
 Istek Tetikleyicileri üzerinde, mantıksal uygulamanız için [Azure AD yetkilendirme ilkeleri ayarladıktan](#enable-oauth) sonra gelen çağrıların kimliğini doğrulamak Için [Azure Active Directory açma kimlik doğrulaması](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) kullanabilirsiniz. Seçmeniz için **Active Directory OAuth** kimlik doğrulaması türünü sağlayan diğer tüm tetikleyiciler ve eylemler için şu özellik değerlerini belirtin:
 
-| Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
+| Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Description |
 |---------------------|-----------------|----------|-------|-------------|
 | **Kimlik Doğrulaması** | `type` | Yes | **Active Directory OAuth** <br>veya <br>`ActiveDirectoryOAuth` | Kullanılacak kimlik doğrulaması türü. Logic Apps Şu anda [OAuth 2,0 protokolünü](../active-directory/develop/v2-overview.md)izler. |
 | **Yetkili** | `authority` | No | <*URL-for-Authority-Token-Issuer*> | Kimlik doğrulama belirtecini sağlayan yetkilinin URL 'SI. Varsayılan olarak, bu değer `https://login.windows.net` . |
@@ -840,7 +840,7 @@ Authorization: OAuth realm="Photos",
 
 Ham kimlik doğrulamasını destekleyen tetikleyici veya eylemde, bu özellik değerlerini belirtin:
 
-| Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
+| Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Description |
 |---------------------|-----------------|----------|-------|-------------|
 | **Kimlik Doğrulaması** | `type` | Yes | Ham | Kullanılacak kimlik doğrulaması türü |
 | **Değer** | `value` | Yes | <*Yetkilendirme-üst bilgi-değer*> | Kimlik doğrulaması için kullanılacak yetkilendirme üst bilgisi değeri |
@@ -867,7 +867,7 @@ Gizli bilgileri işlemek ve güvenli hale getirmek için [güvenli parametreleri
 
 ### <a name="managed-identity-authentication"></a>Yönetilen kimlik doğrulaması
 
-[Yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) seçeneği kullanılabilir olduğunda, mantıksal uygulamanız, oturum açmadan Azure Active Directory (Azure AD) tarafından korunan diğer kaynaklara erişim izni vermek için sistem tarafından atanan kimliği veya *tek* el ile oluşturulmuş bir kimlik doğrulaması kullanabilir. Azure bu kimliği sizin için yönetir ve gizli dizileri sağlamanız veya döndürmenize gerek olmadığı için kimlik bilgilerinizi güvenli hale getirmeye yardımcı olur. [Azure AD kimlik doğrulaması için yönetilen kimlikleri destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)hakkında daha fazla bilgi edinin.
+[Yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) seçeneği kullanılabilir olduğunda, mantıksal uygulamanız, oturum açmadan Azure Active Directory (Azure AD) tarafından korunan diğer kaynaklara erişimi kimlik doğrulaması için sistem tarafından atanan kimliği veya *tek* el ile oluşturulmuş bir kimlik kimliğini kullanabilir. Azure bu kimliği sizin için yönetir ve gizli dizileri sağlamanız veya döndürmenize gerek olmadığı için kimlik bilgilerinizi güvenli hale getirmeye yardımcı olur. [Azure AD kimlik doğrulaması için yönetilen kimlikleri destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)hakkında daha fazla bilgi edinin.
 
 1. Mantıksal uygulamanızın yönetilen bir kimlik kullanabilmesi [için Azure Logic Apps ' deki yönetilen kimlikleri kullanarak Azure kaynaklarına erişimi kimlik doğrulama](../logic-apps/create-managed-service-identity.md)bölümündeki adımları izleyin. Bu adımlar, mantıksal uygulamanızda yönetilen kimliği etkinleştirir ve bu kimliğin hedef Azure kaynağına erişimini ayarlar.
 
@@ -875,7 +875,7 @@ Gizli bilgileri işlemek ve güvenli hale getirmek için [güvenli parametreleri
 
 1. Yönetilen kimliği kullanmak istediğiniz tetikleyici veya eylemde, bu özellik değerlerini belirtin:
 
-   | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
+   | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Description |
    |---------------------|-----------------|----------|-------|-------------|
    | **Kimlik Doğrulaması** | `type` | Yes | **Yönetilen Kimlik** <br>veya <br>`ManagedServiceIdentity` | Kullanılacak kimlik doğrulaması türü |
    | **Yönetilen Kimlik** | `identity` | Yes | * **Sistem tarafından atanan yönetilen kimlik** <br>veya <br>`SystemAssigned` <p><p>* <*Kullanıcı tarafından atanan kimlik-adı*> | Kullanılacak yönetilen kimlik |

@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: allensu
-ms.openlocfilehash: d2208f6769c8051b38bdafb92d62ec03cb2d668c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e20f6ce9540d357b61ae2cfdf0e8f96d127dc6c0
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253569"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343226"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN Rules altyapısı için Verizon 'e özgü HTTP üstbilgileri
 
 **Verizon ürünlerinden Azure CDN Premium** için, kaynak sunucuya bir http isteği gönderildiğinde, varlık noktası (pop) sunucusu, pop 'a istemci isteğine bir veya daha fazla ayrılmış üst bilgi (veya proxy özel üst bilgileri) ekleyebilir. Bu üst bilgiler, alınan standart iletme üst bilgilerine ek niteliğindedir. Standart istek üstbilgileri hakkında daha fazla bilgi için bkz. [istek alanları](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields).
 
-Bu ayrılmış üstbilgilerin, kaynak sunucuya Azure CDN (Content Delivery Network) POP isteğine eklenmesini engellemek istiyorsanız, kurallar altyapısında [Ara sunucu özel üstbilgileri özelliğiyle](cdn-verizon-premium-rules-engine-reference-features.md#proxy-special-headers) bir kural oluşturmanız gerekir. Bu kuralda, kaldırmak istediğiniz üstbilgiyi üstbilgiler alanındaki üstbilgiler listesinden dışlayın. [Hata ayıklama önbelleği yanıt üst bilgileri özelliğini](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers)etkinleştirdiyseniz, gerekli `X-EC-Debug` üst bilgileri eklediğinizden emin olun. 
+Bu ayrılmış üstbilgilerin, kaynak sunucuya Azure CDN (Content Delivery Network) POP isteğine eklenmesini engellemek istiyorsanız, kurallar altyapısında [Ara sunucu özel üstbilgileri özelliğiyle](https://docs.vdms.com/cdn/Content/HRE/F/Proxy-Special-Headers.htm) bir kural oluşturmanız gerekir. Bu kuralda, kaldırmak istediğiniz üstbilgiyi üstbilgiler alanındaki üstbilgiler listesinden dışlayın. [Hata ayıklama önbelleği yanıt üst bilgileri özelliğini](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm)etkinleştirdiyseniz, gerekli üst bilgileri eklediğinizden emin olun `X-EC-Debug` . 
 
-Örneğin, `Via` üstbilgiyi kaldırmak için kuralın üstbilgiler alanı aşağıdaki üst bilgi listesini Içermelidir: *x-iletilmiş-for, x-iletilmiş-Proto, x-Host, x-midgress, x-Gateway-List, x-EC-Name, Host*. 
+Örneğin, üstbilgiyi kaldırmak için `Via` kuralın üstbilgiler alanı aşağıdaki üst bilgi listesini içermelidir: *x-Iletilmiş-for, x-Iletilmiş-Proto, x-Host, x-Midgress, x-Gateway-List, x-EC-Name, Host*. 
 
 ![Proxy özel üstbilgileri kuralı](./media/cdn-http-headers/cdn-proxy-special-header-rule.png)
 
@@ -42,10 +42,10 @@ X-ana bilgisayar | İsteğin ana bilgisayar adını gösterir. | cdn.mydomain.co
 X-Midgress | İsteğin ek bir CDN sunucusu aracılığıyla proxy kullanıp kullanmadığını belirtir. Örneğin, bir başlangıç sunucusundan kaynağa kalkan sunucusu veya bir AÇıLAN sunucudan ADN ağ geçidi sunucusu. <br />Bu üst bilgi yalnızca orta boyutlu trafik gerçekleştiğinde isteğe eklenir. Bu durumda, isteğin ek bir CDN sunucusu aracılığıyla proxy olduğunu göstermek için üst bilgi 1 olarak ayarlanır.| 1
 [Konak](#host-request-header) | İstenen içeriğin bulunabileceği Konağı ve bağlantı noktasını tanımlar. | marketing.mydomain.com:80
 [X-Gateway-List](#x-gateway-list-request-header) | ADN: bir müşteri kaynağına atanan ADN Ağ Geçidi sunucularının yük devretme listesini tanımlar. <br />Kaynak Kalkanı: bir müşteri kaynağına atanan kaynak kalkan sunucularının kümesini gösterir. | `icn1,hhp1,hnd1`
-X-EC-_&lt;adı&gt;_ | *X-EC* (örneğin, x-EC-Tag, [x-EC-Debug](cdn-http-debug-headers.md)) Ile başlayan istek üstbilgileri CDN tarafından kullanılmak üzere ayrılmıştır.| WAF-üretim
+X-EC-_ &lt; adı &gt; _ | *X-EC* (örneğin, x-EC-Tag, [x-EC-Debug](cdn-http-debug-headers.md)) Ile başlayan istek üstbilgileri CDN tarafından kullanılmak üzere ayrılmıştır.| WAF-üretim
 
 ## <a name="via-request-header"></a>İstek üst bilgisi aracılığıyla
-`Via` İstek ÜSTBILGISININ bir pop sunucusunu tanımladığı biçim aşağıdaki sözdizimi tarafından belirtilir:
+`Via`İstek üstbilgisinin BIR pop sunucusunu tanımladığı biçim aşağıdaki sözdizimi tarafından belirtilir:
 
 `Via: Protocol from Platform (POP/ID)` 
 
@@ -69,11 +69,11 @@ Sözdiziminde kullanılan terimler aşağıdaki gibi tanımlanır:
 `Via: HTTP/1.1 ECD (dca/1A2B)`
 
 ## <a name="host-request-header"></a>Ana bilgisayar istek üst bilgisi
-Aşağıdaki koşullardan her ikisi de doğru `Host` olduğunda pop sunucuları üst bilginin üzerine yazar:
+`Host`Aşağıdaki koşullardan her ikisi de doğru olduğunda pop sunucuları üst bilginin üzerine yazar:
 - İstenen içerik kaynağı bir müşteri kaynak sunucusudur.
 - Karşılık gelen müşteri kaynağının HTTP ana bilgisayar üst bilgisi seçeneği boş değil.
 
-HTTP `Host` ana bilgisayar üstbilgisi seçeneğinde tanımlanan değeri yansıtacak şekilde istek üst bilgisinin üzerine yazılacak.
+`Host`Http ana bilgisayar üstbilgisi seçeneğinde tanımlanan değeri yansıtacak şekilde istek üst bilgisinin üzerine yazılacak.
 Müşteri başlangıcının HTTP ana bilgisayar üst bilgisi seçeneği boş olarak ayarlandıysa, `Host` istek sahibi tarafından gönderilen istek üst bilgisi müşterinin kaynak sunucusuna iletilir.
 
 ## <a name="x-gateway-list-request-header"></a>X-Gateway-List istek üst bilgisi

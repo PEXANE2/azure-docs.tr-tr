@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: dda2812b5e2cc79d53658d568ba0845d593f41d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23355abdced3a4073cf90ccf60c14af088a4e564
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605372"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324174"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Eşleme veri akışında derleme ifadeleri
 
@@ -76,24 +76,20 @@ Dize ilişkilendirme için bazı örnekler:
 
 Tek satırlı ve çok satırlı açıklama söz dizimini kullanarak deyimlerinizi açıklama ekleyin.
 
-![Tek satırlı ve çok satırlı açıklama sözdizimi](media/data-flow/comments.png "Açıklamalar")
-
 Aşağıdaki örnekler geçerli açıklamalardır:
 
 * ```/* This is my comment */```
 
 * ```/* This is a```
 *   ```multi-line comment */```
-   
-* ```// This is a single line comment```
 
 İfadeniz üzerine bir yorum koyarsanız, dönüştürme ifadelerinizi belgelemek için dönüşüm metin kutusunda görünür.
 
-![Dönüştürme metin kutusunda açıklama](media/data-flow/comments2.png "Açıklamalar")
+![Dönüştürme metin kutusunda açıklama](media/data-flow/comments2.png "Yorumlar")
 
 ## <a name="regular-expressions"></a>Normal ifadeler
 
-Birçok ifade dili işlevi normal ifade söz dizimini kullanır. Normal ifade işlevleri kullandığınızda, Ifade Oluşturucusu bir ters eğik çizgi (\\) karakterini bir kaçış karakter sırası olarak yorumlamaya çalışır. Normal ifadenizde ters eğik çizgi kullandığınızda, tüm Regex geri işaretleri (\`) içine alın ya da çift ters eğik çizgi kullanın.
+Birçok ifade dili işlevi normal ifade söz dizimini kullanır. Normal ifade işlevleri kullandığınızda, Ifade Oluşturucusu bir ters eğik çizgi ( \\ ) karakterini bir kaçış karakter sırası olarak yorumlamaya çalışır. Normal ifadenizde ters eğik çizgi kullandığınızda, tüm Regex geri işaretleri () içine alın ya da \` çift ters eğik çizgi kullanın.
 
 Geri işaretleri kullanan bir örnek:
 
@@ -124,11 +120,11 @@ Dizileri döndüren ifade işlevleri ile, döndürülen dizi nesneleri içindeki
 
 ## <a name="convert-to-dates-or-timestamps"></a>Tarihlere veya zaman damgalarına Dönüştür
 
-Zaman damgası çıkışındaki dize sabit değerlerini dahil etmek için, dönüştürmeyi ' ```toString()```de sarın.
+Zaman damgası çıkışındaki dize sabit değerlerini dahil etmek için, dönüştürmeyi ' de sarın ```toString()``` .
 
 ```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
 
-Süreyi dönem 'den bir tarih veya zaman damgasına dönüştürmek için kullanın `toTimestamp(<number of milliseconds>)`. Süre saniyeler içinde geliyorsa 1.000 ile çarpın.
+Süreyi dönem 'den bir tarih veya zaman damgasına dönüştürmek için kullanın `toTimestamp(<number of milliseconds>)` . Süre saniyeler içinde geliyorsa 1.000 ile çarpın.
 
 ```toTimestamp(1574127407*1000l)```
 

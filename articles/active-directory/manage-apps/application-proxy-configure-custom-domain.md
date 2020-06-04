@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: mimart
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fda84a68921500e8ba40aa6d04bfb5939f79a1ef
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: dd3958022a5947a04b8bca4db4bee3ad059c7e17
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736492"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331959"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu özel etki alanlarını yapılandırma
 
@@ -87,7 +87,7 @@ Uygulamanızı özel bir etki alanı ile uygulama proxy 'Si aracılığıyla yay
    
 4. **Dış URL** alanında, listeyi aşağı açılır ve kullanmak istediğiniz özel etki alanını seçin.
    
-5. **Add (Ekle)** seçeneğini belirleyin.
+5. **Ekle**'yi seçin.
    
    ![Özel etki alanı seç](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
@@ -138,7 +138,7 @@ Sertifika zinciri istemci cihazlarınızda yüklüyse, kendi ortak anahtar altya
 
 Tüm sertifika yönetimi tek tek uygulama sayfalarıdır. **Sertifika** alanına erişmek Için uygulamanın **uygulama proxy 'si** sayfasına gidin.
 
-Birden çok uygulama için aynı sertifikayı kullanabilirsiniz. Karşıya yüklenen bir sertifika başka bir uygulamayla çalışıyorsa, otomatik olarak uygulanır. Uygulamayı eklediğinizde veya yapılandırdığınızda yeniden yüklemeniz istenmez. 
+Bir uygulama için bir sertifika karşıya yüklendikten sonra, aynı sertifikayı kullanan **Yeni** uygulamalara otomatik olarak de uygulanır. Kiracınızdaki mevcut uygulamalar için sertifikayı yeniden yüklemeniz gerekir.
 
 Bir sertifikanın süresi dolmuşsa, başka bir sertifikayı karşıya yüklemeyi söyleyen bir uyarı alırsınız. Sertifika iptal edildiğinde, kullanıcılarınız uygulamaya erişirken bir güvenlik uyarısı görebilirler. Bir uygulama için sertifikayı güncelleştirmek için uygulama **ara sunucusu** sayfasına gidin, **sertifika**' ı seçin ve yeni bir sertifika yükleyin. Eski sertifika diğer uygulamalar tarafından kullanılmıyorsa, otomatik olarak silinir. 
 

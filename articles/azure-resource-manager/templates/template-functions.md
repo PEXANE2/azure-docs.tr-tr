@@ -3,12 +3,12 @@ title: Şablon işlevleri
 description: Değerleri almak, dizeler ve sayı ile çalışmak ve dağıtım bilgilerini almak için Azure Resource Manager şablonda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a15e7dfdf01a99cd23b216fafcfb44320a716d16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d237f5c42c1d1eaab7b2236b15a3122bcb55865b
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231297"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331415"
 ---
 # <a name="arm-template-functions"></a>ARM şablon işlevleri
 
@@ -18,21 +18,21 @@ Kendi işlevlerinizi oluşturmak için, bkz. [Kullanıcı tanımlı işlevler](t
 
 Çoğu işlev bir kaynak grubuna, aboneliğe, yönetim grubuna veya kiracıya dağıtıldığında aynı şekilde çalışır. Birkaç işlev tüm kapsamlarında kullanılamaz. Bunlar aşağıdaki listelerde belirtilmiştir.
 
-<a id="array" aria-hidden="true" />
-<a id="concatarray" aria-hidden="true" />
-<a id="contains" aria-hidden="true" />
-<a id="createarray" aria-hidden="true" />
-<a id="empty" aria-hidden="true" />
-<a id="first" aria-hidden="true" />
-<a id="intersection" aria-hidden="true" />
-<a id="last" aria-hidden="true" />
-<a id="length" aria-hidden="true" />
-<a id="min" aria-hidden="true" />
-<a id="max" aria-hidden="true" />
-<a id="range" aria-hidden="true" />
-<a id="skip" aria-hidden="true" />
-<a id="take" aria-hidden="true" />
-<a id="union" aria-hidden="true" />
+<a id="array" aria-hidden="true"></a>
+<a id="concatarray" aria-hidden="true"></a>
+<a id="contains" aria-hidden="true"></a>
+<a id="createarray" aria-hidden="true"></a>
+<a id="empty" aria-hidden="true"></a>
+<a id="first" aria-hidden="true"></a>
+<a id="intersection" aria-hidden="true"></a>
+<a id="last" aria-hidden="true"></a>
+<a id="length" aria-hidden="true"></a>
+<a id="min" aria-hidden="true"></a>
+<a id="max" aria-hidden="true"></a>
+<a id="range" aria-hidden="true"></a>
+<a id="skip" aria-hidden="true"></a>
+<a id="take" aria-hidden="true"></a>
+<a id="union" aria-hidden="true"></a>
 
 ## <a name="array-functions"></a>Dizi işlevleri
 
@@ -54,12 +54,12 @@ Kaynak Yöneticisi diziler ile çalışmak için çeşitli işlevler sağlar.
 * [almanız](template-functions-array.md#take)
 * [birleşim](template-functions-array.md#union)
 
-<a id="coalesce" aria-hidden="true" />
-<a id="equals" aria-hidden="true" />
-<a id="less" aria-hidden="true" />
-<a id="lessorequals" aria-hidden="true" />
-<a id="greater" aria-hidden="true" />
-<a id="greaterorequals" aria-hidden="true" />
+<a id="coalesce" aria-hidden="true"></a>
+<a id="equals" aria-hidden="true"></a>
+<a id="less" aria-hidden="true"></a>
+<a id="lessorequals" aria-hidden="true"></a>
+<a id="greater" aria-hidden="true"></a>
+<a id="greaterorequals" aria-hidden="true"></a>
 
 ## <a name="comparison-functions"></a>Karşılaştırma işlevleri
 
@@ -72,9 +72,9 @@ Kaynak Yöneticisi, şablonlarınıza karşılaştırmalar yapmak için çeşitl
 * [büyüktür](template-functions-comparison.md#greater)
 * [greaterOrEquals](template-functions-comparison.md#greaterorequals)
 
-<a id="deployment" aria-hidden="true" />
-<a id="parameters" aria-hidden="true" />
-<a id="variables" aria-hidden="true" />
+<a id="deployment" aria-hidden="true"></a>
+<a id="parameters" aria-hidden="true"></a>
+<a id="variables" aria-hidden="true"></a>
 
 ## <a name="date-functions"></a>Tarih işlevleri
 
@@ -92,32 +92,32 @@ Kaynak Yöneticisi, şablon bölümlerinden ve dağıtımla ilgili değerlerin d
 * [parametrelere](template-functions-deployment.md#parameters)
 * [değişkenlerinin](template-functions-deployment.md#variables)
 
-<a id="and" aria-hidden="true" />
-<a id="bool" aria-hidden="true" />
-<a id="if" aria-hidden="true" />
-<a id="not" aria-hidden="true" />
-<a id="or" aria-hidden="true" />
+<a id="and" aria-hidden="true"></a>
+<a id="bool" aria-hidden="true"></a>
+<a id="if" aria-hidden="true"></a>
+<a id="not" aria-hidden="true"></a>
+<a id="or" aria-hidden="true"></a>
 
 ## <a name="logical-functions"></a>Mantıksal işlevler
 
 Kaynak Yöneticisi mantıksal koşullarla çalışmak için aşağıdaki işlevleri sağlar:
 
-* ['](template-functions-logical.md#and)
+* [ve](template-functions-logical.md#and)
 * [bool](template-functions-logical.md#bool)
 * [if](template-functions-logical.md#if)
 * [başlatılmadı](template-functions-logical.md#not)
 * [veya](template-functions-logical.md#or)
 
-<a id="add" aria-hidden="true" />
-<a id="copyindex" aria-hidden="true" />
-<a id="div" aria-hidden="true" />
-<a id="float" aria-hidden="true" />
-<a id="int" aria-hidden="true" />
-<a id="minint" aria-hidden="true" />
-<a id="maxint" aria-hidden="true" />
-<a id="mod" aria-hidden="true" />
-<a id="mul" aria-hidden="true" />
-<a id="sub" aria-hidden="true" />
+<a id="add" aria-hidden="true"></a>
+<a id="copyindex" aria-hidden="true"></a>
+<a id="div" aria-hidden="true"></a>
+<a id="float" aria-hidden="true"></a>
+<a id="int" aria-hidden="true"></a>
+<a id="minint" aria-hidden="true"></a>
+<a id="maxint" aria-hidden="true"></a>
+<a id="mod" aria-hidden="true"></a>
+<a id="mul" aria-hidden="true"></a>
+<a id="sub" aria-hidden="true"></a>
 
 ## <a name="numeric-functions"></a>Sayısal işlevler
 
@@ -134,7 +134,7 @@ Kaynak Yöneticisi, tamsayılarla çalışmak için aşağıdaki işlevleri sağ
 * [MUL](template-functions-numeric.md#mul)
 * [alt](template-functions-numeric.md#sub)
 
-<a id="json" aria-hidden="true" />
+<a id="json" aria-hidden="true"></a>
 
 ## <a name="object-functions"></a>Nesne işlevleri
 
@@ -147,16 +147,16 @@ Kaynak Yöneticisi nesneleriyle çalışmak için çeşitli işlevler sağlar.
 * [uzunluklu](template-functions-object.md#length)
 * [birleşim](template-functions-object.md#union)
 
-<a id="extensionResourceId" aria-hidden="true" />
-<a id="listkeys" aria-hidden="true" />
-<a id="list" aria-hidden="true" />
-<a id="providers" aria-hidden="true" />
-<a id="reference" aria-hidden="true" />
-<a id="resourcegroup" aria-hidden="true" />
-<a id="resourceid" aria-hidden="true" />
-<a id="subscription" aria-hidden="true" />
-<a id="subscriptionResourceId" aria-hidden="true" />
-<a id="tenantResourceId" aria-hidden="true" />
+<a id="extensionResourceId" aria-hidden="true"></a>
+<a id="listkeys" aria-hidden="true"></a>
+<a id="list" aria-hidden="true"></a>
+<a id="providers" aria-hidden="true"></a>
+<a id="reference" aria-hidden="true"></a>
+<a id="resourcegroup" aria-hidden="true"></a>
+<a id="resourceid" aria-hidden="true"></a>
+<a id="subscription" aria-hidden="true"></a>
+<a id="subscriptionResourceId" aria-hidden="true"></a>
+<a id="tenantResourceId" aria-hidden="true"></a>
 
 ## <a name="resource-functions"></a>Kaynak işlevleri
 
@@ -175,36 +175,36 @@ Kaynak Yöneticisi, kaynak değerlerini almak için aşağıdaki işlevleri sağ
 * [Subscriptionresourceıd](template-functions-resource.md#subscriptionresourceid)
 * [Tenantresourceıd](template-functions-resource.md#tenantresourceid)
 
-<a id="base64" aria-hidden="true" />
-<a id="base64tojson" aria-hidden="true" />
-<a id="base64tostring" aria-hidden="true" />
-<a id="concat" aria-hidden="true" />
-<a id="containsstring" aria-hidden="true" />
-<a id="datauri" aria-hidden="true" />
-<a id="datauritostring" aria-hidden="true" />
-<a id="emptystring" aria-hidden="true" />
-<a id="endswith" aria-hidden="true" />
-<a id="firststring" aria-hidden="true" />
-<a id="guid" aria-hidden="true" />
-<a id="indexof" aria-hidden="true" />
-<a id="laststring" aria-hidden="true" />
-<a id="lastindexof" aria-hidden="true" />
-<a id="lengthstring" aria-hidden="true" />
-<a id="padleft" aria-hidden="true" />
-<a id="replace" aria-hidden="true" />
-<a id="skipstring" aria-hidden="true" />
-<a id="split" aria-hidden="true" />
-<a id="startswith" aria-hidden="true" />
-<a id="string" aria-hidden="true" />
-<a id="substring" aria-hidden="true" />
-<a id="takestring" aria-hidden="true" />
-<a id="tolower" aria-hidden="true" />
-<a id="toupper" aria-hidden="true" />
-<a id="trim" aria-hidden="true" />
-<a id="uniquestring" aria-hidden="true" />
-<a id="uri" aria-hidden="true" />
-<a id="uricomponent" aria-hidden="true" />
-<a id="uricomponenttostring" aria-hidden="true" />
+<a id="base64" aria-hidden="true"></a>
+<a id="base64tojson" aria-hidden="true"></a>
+<a id="base64tostring" aria-hidden="true"></a>
+<a id="concat" aria-hidden="true"></a>
+<a id="containsstring" aria-hidden="true"></a>
+<a id="datauri" aria-hidden="true"></a>
+<a id="datauritostring" aria-hidden="true"></a>
+<a id="emptystring" aria-hidden="true"></a>
+<a id="endswith" aria-hidden="true"></a>
+<a id="firststring" aria-hidden="true"></a>
+<a id="guid" aria-hidden="true"></a>
+<a id="indexof" aria-hidden="true"></a>
+<a id="laststring" aria-hidden="true"></a>
+<a id="lastindexof" aria-hidden="true"></a>
+<a id="lengthstring" aria-hidden="true"></a>
+<a id="padleft" aria-hidden="true"></a>
+<a id="replace" aria-hidden="true"></a>
+<a id="skipstring" aria-hidden="true"></a>
+<a id="split" aria-hidden="true"></a>
+<a id="startswith" aria-hidden="true"></a>
+<a id="string" aria-hidden="true"></a>
+<a id="substring" aria-hidden="true"></a>
+<a id="takestring" aria-hidden="true"></a>
+<a id="tolower" aria-hidden="true"></a>
+<a id="toupper" aria-hidden="true"></a>
+<a id="trim" aria-hidden="true"></a>
+<a id="uniquestring" aria-hidden="true"></a>
+<a id="uri" aria-hidden="true"></a>
+<a id="uricomponent" aria-hidden="true"></a>
+<a id="uricomponenttostring" aria-hidden="true"></a>
 
 ## <a name="string-functions"></a>Dize işlevleri
 

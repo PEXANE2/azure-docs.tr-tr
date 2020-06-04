@@ -7,15 +7,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: fa7e2321d61721e370ef6b5924dc6f820dd1f724
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 61e53e6110e545d253dae81e94f8738ee17c4141
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685288"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344484"
 ---
 # <a name="add-entities-to-extract-data"></a>Verileri ayıklamak için varlık ekleme
 
@@ -72,7 +72,7 @@ Bu işlem makine tarafından öğrenilen varlıklar, liste varlıkları ve norma
 1. [Luo portalında](https://www.luis.ai)oturum açın ve bu yazma kaynağına atanmış uygulamaları görmek için **aboneliğinizi** ve **yazma kaynağını** seçin.
 1. **Uygulamalarım** sayfasında adını seçerek uygulamanızı açın.
 1. **Derleme** bölümünde, sol paneldeki **varlıklar** ' ı seçin ve ardından **+ Oluştur**' u seçin.
-1. **Varlık türü oluştur** iletişim kutusunda varlığın adını girip **öğrenilen makine**' yi seçin. Alt varlıklar eklemek için **Yapı Ekle**' yi seçin. **Oluştur**’u seçin.
+1. **Varlık türü oluştur** iletişim kutusunda varlığın adını girip **öğrenilen makine**' yi seçin. Alt varlıklar eklemek için **Yapı Ekle**' yi seçin. **Oluştur**'u seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Makine tarafından öğrenilen varlık oluşturma ekran görüntüsü.](media/add-entities/machine-learned-entity-with-structure.png)
@@ -213,7 +213,7 @@ Aşağıdakiler hakkında daha fazla bilgi edinin:
 * [Yayımlama](luis-how-to-publish-app.md)
 * Lıklarını
     * [Kavramlar](luis-concept-patterns.md)
-    * [Söz dizimi](reference-pattern-syntax.md)
+    * [Sözdizimi](reference-pattern-syntax.md)
 * [Önceden oluşturulmuş varlıklar GitHub deposu](https://github.com/Microsoft/Recognizers-Text)
 * [Veri ayıklama kavramları](luis-concept-data-extraction.md)
 

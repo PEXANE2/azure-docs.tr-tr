@@ -1,5 +1,5 @@
 ---
-title: Stream Analytics tümleştirme kullanarak verileri akış (Önizleme)
+title: Azure Stream Analytics tümleştirme kullanarak verileri akış (Önizleme)
 description: Azure SQL veritabanı 'na veri akışı sağlamak için Azure Stream Analytics tümleştirme kullanın.
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,16 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: ea129902e5ab30a5d7f7a70c3606d4aa73cd84a5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 90d3507a8867ad3556891f6001f0e15ebda8c4f4
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044657"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345368"
 ---
-# <a name="stream-data-into-azure-sql-database-using-stream-analytics-integration-preview"></a>Stream Analytics tümleştirme kullanarak Azure SQL veritabanı 'na veri akışı (Önizleme)
-[!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
+# <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Azure Stream Analytics tümleştirme kullanarak Azure SQL veritabanı 'na veri akışı (Önizleme)
 
-Kullanıcılar artık [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md)kullanarak Azure Portal bir SQL veritabanından bir tabloya doğrudan gerçek zamanlı akış verileri alabilir, işleyebilir, görüntüleyebilir ve analiz edebilir. Bu deneyim, bağlı araba, uzaktan izleme, sahtekarlık algılaması ve çok daha fazlası gibi çok çeşitli senaryolar sunar. Azure portal, bir olay kaynağı (Olay Hub 'ı/IoT Hub) seçebilir, gelen gerçek zamanlı olayları görüntüleyebilir ve olayları depolayabilen bir tablo seçebilirsiniz. Ayrıca, gelen olayları dönüştürmek ve bunları seçili tabloda depolamak için portala Stream Analytics sorgu dili sorguları yazabilirsiniz. Bu yeni giriş noktası, Stream Analytics zaten bulunan oluşturma ve yapılandırma deneyimlerine ek niteliğindedir. Bu deneyim, veritabanınızın bağlamlarından itibaren başlar ve Azure SQL veritabanı ile Stream Analytics deneyimleriyle sorunsuz Stream Analytics bir şekilde gezinmenize olanak tanır.
+Kullanıcılar artık gerçek zamanlı akış verilerini doğrudan Azure SQL veritabanı 'ndaki bir veritabanından bir tabloya alabilir, işleyebilir, görüntüleyebilir ve analiz edebilir. Azure portal [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md)kullanarak bu şekilde yapılır. Bu deneyim, bağlı araba, uzaktan izleme, sahtekarlık algılaması ve çok daha fazlası gibi çok çeşitli senaryolar sunar. Azure portal, bir olay kaynağı (Olay Hub 'ı/IoT Hub) seçebilir, gelen gerçek zamanlı olayları görüntüleyebilir ve olayları depolayabilen bir tablo seçebilirsiniz. Ayrıca, gelen olayları dönüştürmek ve bunları seçili tabloda depolamak için portala Azure Stream Analytics sorgu dili sorguları yazabilirsiniz. Bu yeni giriş noktası, Stream Analytics zaten bulunan oluşturma ve yapılandırma deneyimlerine ek niteliğindedir. Bu deneyim, veritabanınızın bağlamlarından itibaren başlar ve Azure SQL veritabanı ve Stream Analytics deneyimlerinde veritabanı arasında sorunsuz Stream Analytics bir şekilde gezinmenize olanak tanır.
 
 ![Stream Analytics akışı](./media/stream-data-stream-analytics-integration/stream-analytics-flow.png)
 
@@ -32,9 +31,9 @@ Kullanıcılar artık [Azure Stream Analytics](../../stream-analytics/stream-ana
 - Önizleme verileri ile ilgili ek kullanım kolaylığı: seçili tablo bağlamında olaylar kaynağından (Olay Hub/IoT Hub) gelen verileri önizleyin
 
 > [!IMPORTANT]
-> Azure Stream Analytics bir iş Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure Synapse (eskiden Azure SQL veri ambarı) ile çıkış yapabilir. Daha fazla bilgi için bkz. [çıktılar](../../stream-analytics/stream-analytics-define-outputs.md#sql-database).
+> Azure Stream Analytics bir iş Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SYNAPSE Analytics (eskiden Azure SQL veri ambarı) ile çıkış yapabilir. Daha fazla bilgi için bkz. [çıktılar](../../stream-analytics/stream-analytics-define-outputs.md#sql-database).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
 
@@ -49,7 +48,7 @@ Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
 
     ![Stream Analytics](./media/stream-data-stream-analytics-integration/stream-analytics.png)
 
-3. Akış verilerinizi bu SQL veritabanına aktarmak için **Oluştur** ' u seçin ve akış işinize bir ad verin ve ardından **İleri: giriş**' i seçin.
+3. Akış verilerinizi bu veritabanına alma işlemini başlatmak için **Oluştur** ' u seçin ve akış işinize bir ad verin ve ardından **İleri: giriş**' i seçin.
 
     ![Stream Analytics işi oluştur](./media/stream-data-stream-analytics-integration/create-job.png)
 
@@ -108,7 +107,7 @@ Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
    - **Akış birimleri**: Azure Stream Analytics, verileri hizmette işlemek için gereken Akış Birimi sayısına göre fiyatlandırılır. Daha fazla bilgi için bkz. [Azure Stream Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/stream-analytics/).
    - **Çıkış verileri hata işleme**:  
      - Yeniden deneme: bir hata oluştuğunda, yazma başarılı olana kadar olayın süresiz olarak yazılmasına yeniden denemeler Azure Stream Analytics. Yeniden denemeler için zaman aşımı yok. Sonuç olarak, sonraki tüm olayların yeniden denenecek olay tarafından işlenmesi engellenir. Bu seçenek, varsayılan çıkış hatası işleme ilkesidir.
-     - Bırak: Azure Stream Analytics, veri dönüştürme hatasıyla sonuçlanan tüm çıktı olaylarını bırakacak. Bırakılan olaylar daha sonra yeniden işleme için kurtarılamaz. Tüm geçici hatalar (örneğin, ağ hataları), ilke yapılandırmasından oluşan çıkış hatası işleme ne olursa olsun yeniden denenir.
+     - Bırak: Azure Stream Analytics, veri dönüştürme hatasıyla sonuçlanan tüm çıktı olaylarını bırakacak. Bırakılan olaylar daha sonra yeniden işlenmek üzere kurtarılamaz. Tüm geçici hatalar (örneğin, ağ hataları), ilke yapılandırmasından oluşan çıkış hatası işleme ne olursa olsun yeniden denenir.
    - **SQL veritabanı çıkış ayarları**: tabloya birden çok yazıcı ile tam paralel topolojiyi etkinleştirmek için önceki sorgu adımlarınızın bölümleme şemasını devralma seçeneği. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'na Azure Stream Analytics çıktısı](../../stream-analytics/stream-analytics-sql-output-perf.md).
    - **En fazla yığın sayısı**: her toplu ekleme hareketiyle gönderilen kayıt sayısı için önerilen üst sınır.  
     Çıkış hatası işleme hakkında daha fazla bilgi için bkz. [Azure Stream Analytics çıkış hatası ilkeleri](../../stream-analytics/stream-analytics-output-error-policy.md).  
@@ -119,7 +118,7 @@ Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
    - **Işi Başlat/Durdur**: iş çalışıyorsa işi durdurabilirsiniz. İş durdurulmuşsa, işi başlatabilirsiniz.
    - **Işi Düzenle**: sorguyu düzenleyebilirsiniz. İş EX 'de daha fazla değişiklik yapmak istiyorsanız, daha fazla giriş/çıkış ekleyin ve sonra Stream Analytics içinde işi açın. İş çalışırken Düzenle seçeneği devre dışıdır.
    - **Önizleme çıkış tablosu**: SQL sorgu Düzenleyicisi 'nde tablonun önizlemesini yapabilirsiniz.
-   - **Stream Analytics açın**: işi Stream Analytics hizmetinde açarak izleme, işin hata ayıklama ayrıntılarını görüntüleyin.
+   - **Stream Analytics açın**: işin izleme, hata ayıklama ayrıntılarını görüntülemek için Stream Analytics açın.
 
      ![Stream Analytics işleri](./media/stream-data-stream-analytics-integration/jobs.png)
 
@@ -127,3 +126,4 @@ Bu makaledeki adımları tamamlamak için aşağıdaki kaynaklar gereklidir:
 
 - [Azure Stream Analytics belgeleri](https://docs.microsoft.com/azure/stream-analytics/)
 - [Azure Stream Analytics çözüm desenleri](../../stream-analytics/stream-analytics-solution-patterns.md)
+ 

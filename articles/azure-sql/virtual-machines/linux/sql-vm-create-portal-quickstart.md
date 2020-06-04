@@ -11,14 +11,14 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ac7a836f339e86ce3705d64d04cad143f1043a81
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 767bdeef48ed78b32ad5e3b0e43002a21cb1c9b6
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259533"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343719"
 ---
-# <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Azure portalında bir Linux SQL Server sanal makinesi sağlama
+# <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>Azure portal SQL Server çalıştıran bir Linux sanal makinesi sağlayın
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
@@ -28,18 +28,18 @@ ms.locfileid: "84259533"
 Bu hızlı başlangıç öğreticisinde, SQL Server 2017 yüklü bir Linux sanal makinesi oluşturmak için Azure portal kullanırsınız. Şunları öğrenirsiniz: 
 
 
-* [Galeriden bir Linux SQL VM oluşturma](#create)
+* [Galeriden SQL Server çalıştıran bir Linux VM oluşturma](#create)
 * [ssh ile yeni VM'ye bağlanma](#connect)
 * [SA parolasını değiştirme](#password)
 * [Uzak bağlantılar için yapılandırma](#remote)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
 ## <a name="create-a-linux-vm-with-sql-server-installed"></a><a id="create"></a> SQL Server yüklü bir Linux VM oluşturma
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Sol bölmede **Kaynak oluştur**'u seçin.
 
@@ -60,7 +60,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
    > [!TIP]
    > Geliştirici sürümü, Enterprise Edition özellikleriyle test veya geliştirme yapmanızı sağlar, ancak SQL Server lisanslama maliyetlerine sahip olmaz. Yalnızca Linux VM çalıştırma maliyetleri için ödeme yaparsınız.
 
-1. **Oluştur**’u seçin. 
+1. **Oluştur**'u seçin. 
 
 
 ### <a name="set-up-your-linux-vm"></a>Linux VM 'nizi ayarlama
@@ -125,7 +125,7 @@ Windows üzerinde çalıştırıyorsanız ve BASH kabuğu yoksa, PuTTY gibi bir 
 
 Linux VM'lerinize bağlanma hakkında daha fazla bilgi için bkz. [Portal kullanarak Azure’da bir Linux VM oluşturma](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal).
 
-> [!Note]
+> [!NOTE]
 > Sunucunun ana bilgisayar anahtarı hakkında kayıt defterinde önbelleğe alınmamış bir PuTTY güvenlik uyarısı görürseniz, aşağıdaki seçeneklerden birini belirleyin. Bu konağa güveniyorsanız, anahtarı PuTTy 'in önbelleğine eklemek ve bağlanmaya devam etmek için **Evet** ' i seçin. Yalnızca bir kez bağlanmak istiyorsanız, anahtarı önbelleğe eklemeden, **Hayır**' ı seçin. Bu konağa güvenmiyorsanız bağlantıyı bırakmak için **iptal** ' i seçin.
 
 ## <a name="change-the-sa-password"></a><a id="password"></a> SA parolasını değiştirme

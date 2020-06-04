@@ -3,12 +3,12 @@ title: Azure Kamu 'da Azure geçiş gereci ayarlama
 description: Azure Kamu 'da Azure geçiş gereci ayarlamayı öğrenin
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: fd97161ffa075a6165ea963ef80bfabf8904576e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7a2e90b718c50cb86fdca9911e7535d434e7afa
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81726741"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84332010"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Azure Kamu 'da gereç ayarlama 
 
@@ -19,7 +19,7 @@ Bir Azure Kamu bulutundaki VMware VM 'Leri, Hyper-V VM 'Leri ve fiziksel sunucul
 > Şablonu kullanarak bir gereci dağıtma seçeneği (VMware VM 'Leri ve Hyper-V VM 'Leri için) Azure Kamu 'da desteklenmez.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Betik, mevcut bir fiziksel makineye veya VM 'ye Azure geçişi gereci ayarlar.
 
@@ -33,8 +33,8 @@ VMware için gereci ayarlamak üzere Azure portal daraltılmış bir dosya indir
 
 ### <a name="download-the-script"></a>Betiği indir
 
-1.  **Geçiş hedefleri** > **sunucuları** > **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
-2.   > Makinelerde **bulunan makineler****sanallaştırılmış mı?**, **VMware vSphere Hiper Yöneticisi ile Evet '** i seçin.
+1.  **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
+2.  Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **VMware vSphere Hiper Yöneticisi ile Evet '** i seçin.
 3.  Sıkıştırılmış dosyayı indirmek için **İndir**' e tıklayın. 
 
 
@@ -47,12 +47,12 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Örnek: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip MD5```
 
-3. Oluşturulan karma değerleri doğrulayın. En son gereç sürümü için:
+3. En son gereç sürümünü ve karma değerini doğrulayın:
 
-    **Algoritma** | **Karma değeri**
-    --- | ---
-    MD5 | 6316bcc8bc932204295bfe33f4be3949
-          
+    **Algoritma** | **İndir** | **SHA256**
+    --- | --- | ---
+    VMware (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
+
 
 ### <a name="run-the-script"></a>Betiği çalıştırın
 
@@ -85,8 +85,8 @@ Hyper-V için gereci ayarlamak üzere Azure portal daraltılmış bir dosya indi
 
 ### <a name="download-the-script"></a>Betiği indir
 
-1.  **Geçiş hedefleri** > **sunucuları** > **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
-2.   > Makinelerde **bulunan makineler****sanallaştırılmış mı?**, **Hyper-V ile Evet '** i seçin.
+1.  **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
+2.  Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **Hyper-V ile Evet '** i seçin.
 3.  Sıkıştırılmış dosyayı indirmek için **İndir**' e tıklayın. 
 
 
@@ -99,11 +99,12 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Örnek: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip MD5```
 
-3. Oluşturulan karma değerleri doğrulayın. En son gereç sürümü için:
+3. En son gereç sürümünü ve karma değerini doğrulayın:
 
-    **Algoritma** | **Karma değeri**
-    --- | ---
-    MD5 | 717f8b9185f565006b5af0215ecadac
+    **Senaryo** | **İndir** | **SHA256**
+    --- | --- | ---
+    Hyper-V (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+
           
 
 ### <a name="run-the-script"></a>Betiği çalıştırın
@@ -137,8 +138,8 @@ VMware için gereci ayarlamak üzere Azure portal daraltılmış bir dosya indir
 
 ### <a name="download-the-script"></a>Betiği indir
 
-1.  **Geçiş hedefleri** > **sunucuları** > **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
-2.   > Makinelerde **bulunan makineler****sanallaştırılmış mi?**, **sanallaştırılmamış/diğer**' i seçin.
+1.  **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
+2.  Makinelerde **bulunan makineler**  >  **sanallaştırılmış mi?**, **sanallaştırılmamış/diğer**' i seçin.
 3.  Sıkıştırılmış dosyayı indirmek için **İndir**' e tıklayın. 
 
 
@@ -151,11 +152,11 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Örnek: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5```
 
-3. Oluşturulan karma değerleri doğrulayın. En son gereç sürümü için:
+3. En son gereç sürümünü ve karma değerini doğrulayın:
 
-    **Algoritma** | **Karma değeri**
-    --- | ---
-    MD5 | f81c155fc4a1409901caea948713913f
+    **Senaryo** | **İndirme*** | **Karma değeri**
+    --- | --- | ---
+    Fiziksel (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
           
 
 ### <a name="run-the-script"></a>Betiği çalıştırın

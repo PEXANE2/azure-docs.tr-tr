@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1ea47dbc743c980b0509a3da42da13d294bc64fc
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: f8b31b97752a39724a4b1b7073c2d4282bc54763
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300130"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344858"
 ---
 # <a name="create-an-azure-files-file-share-with-a-domain-controller"></a>Bir etki alanı denetleyicisi ile Azure dosyaları dosya paylaşma oluşturma
 
@@ -43,7 +43,7 @@ Bir depolama hesabı ayarlamak için:
     - Depolama hesabınız için benzersiz bir ad girin.
     - **Konum**Için, Windows sanal masaüstü ana bilgisayar havuzuyla aynı konumu seçmenizi öneririz.
     - **Performans** alanında **Standart**’ı seçin. (IOPS gereksinimlerinize bağlı olarak. Daha fazla bilgi için bkz. [Windows sanal masaüstündeki FSLogix profil kapsayıcıları Için depolama seçenekleri](store-fslogix-profile.md).)
-    - **Hesap türü**için **StorageV2**öğesini seçin.
+    - **Hesap türü**için **StorageV2** veya **FileStorage**' ı seçin.
     - **Çoğaltma**Için **yerel olarak yedekli depolama (LRS)** seçeneğini belirleyin.
 
 5. İşiniz bittiğinde, **gözden geçir + oluştur**' u seçin ve ardından **Oluştur**' u seçin.
@@ -62,17 +62,17 @@ Dosya paylaşımı oluşturmak için:
 
 3. **+ Dosya paylaşımları**' nı seçin, **profiller**adlı yeni bir dosya paylaşımı oluşturun, ardından uygun bir kota girin veya hiçbir kota olmaması için alanı boş bırakın.
 
-4. **Oluştur**’u seçin.
+4. **Oluştur**'u seçin.
 
-## <a name="enable-azure-active-directory-authentication"></a>Azure Active Directory kimlik doğrulamasını etkinleştir
+## <a name="enable-active-directory-authentication"></a>Active Directory kimlik doğrulamasını etkinleştir
 
-Sonra, Azure Active Directory (AD) kimlik doğrulamasını etkinleştirmeniz gerekir. Bu ilkeyi etkinleştirmek için, zaten etki alanına katılmış bir makinede bu bölümün yönergelerini izlemeniz gerekir. Kimlik doğrulamasını etkinleştirmek için, etki alanı denetleyicisini çalıştıran VM 'de şu yönergeleri izleyin:
+Sonra, Active Directory (AD) kimlik doğrulamasını etkinleştirmeniz gerekir. Bu ilkeyi etkinleştirmek için, zaten etki alanına katılmış bir makinede bu bölümün yönergelerini izlemeniz gerekir. Kimlik doğrulamasını etkinleştirmek için, etki alanı denetleyicisini çalıştıran VM 'de şu yönergeleri izleyin:
 
 1. Etki alanına katılmış VM 'ye Uzak Masaüstü Protokolü.
 
 2. AzFilesHybrid modülünü yüklemek ve kimlik doğrulamasını etkinleştirmek için [Azure dosya paylaşımlarınız Için azure AD DS kimlik doğrulamasını etkinleştirme](../storage/files/storage-files-identity-ad-ds-enable.md) bölümündeki yönergeleri izleyin.
 
-3.  Azure portal açın, depolama hesabınızı açın, **yapılandırma**' yı seçin ve **Azure Active Directory (ad)** **etkin**olarak ayarlandığını onaylayın.
+3.  Azure portal açın, depolama hesabınızı açın, **yapılandırma**' yı seçin ve **Active Directory (ad)** **etkin**olarak ayarlandığını onaylayın.
 
      ![Azure Active Directory (AD) özellikli yapılandırma sayfasının ekran görüntüsü.](media/active-directory-enabled.png)
 
@@ -178,7 +178,7 @@ NTFS izinlerinizi yapılandırmak için:
      - <bağlı sürücü harfi> sürücüyü eşlemek için kullandığınız sürücünün harfiyle değiştirin.
      - Kullanıcı-e-posta> <, paylaşıma erişim gerektirecek kullanıcıları içeren Kullanıcı veya Active Directory grubunun UPN 'si ile değiştirin.
 
-     Örneğin:
+     Örnek:
 
      ```powershell
      icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
@@ -187,7 +187,7 @@ NTFS izinlerinizi yapılandırmak için:
      icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
-5. **Uygula**’yı seçin.
+5. **Apply** (Uygula) seçeneğini belirleyin.
 
 ## <a name="configure-fslogix-on-session-host-vms"></a>Oturum Ana bilgisayar VM 'lerinde FSLogix yapılandırma
 

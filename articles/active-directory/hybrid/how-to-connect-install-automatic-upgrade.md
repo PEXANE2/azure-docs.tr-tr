@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/18/2020
+ms.date: 06/01/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a05de8bf6a6e4ab79e63d6634ddb1b79fae6045f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 232a1b714802ce9531a9932bc2af4c6b6f35dffd
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680224"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324224"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Otomatik yükseltme
 Bu özellik Build 1.1.105.0 ile tanıtılmıştır [(2016 Şubat tarihinde yayımlanmıştır)](reference-connect-version-history.md#111050).  Bu özellik [Build 1.1.561](reference-connect-version-history.md#115610) içinde güncelleştirildi ve artık daha önce desteklenmeyen ek senaryoları destekliyor.
@@ -37,7 +37,7 @@ Otomatik yükseltme, aşağıdakiler için varsayılan olarak etkindir:
 
 Otomatik yükseltmenin geçerli durumu PowerShell cmdlet 'i ile görüntülenebilir `Get-ADSyncAutoUpgrade` . Aşağıdaki durumlara sahiptir:
 
-| Durum | Yorum |
+| Eyalet | Yorum |
 | --- | --- |
 | Etkin |Otomatik yükseltme etkindir. |
 | Askıya alındı |Yalnızca sistem tarafından ayarlanır. Sistem **Şu anda** Otomatik yükseltmeleri almaya uygun değil. |
@@ -67,7 +67,7 @@ Artık otomatik yükseltme durumuyla ilişkili Eventlogs ' u görebilirsiniz.
 
 Sonuç kodu, duruma genel bakış içeren bir ön eke sahiptir.
 
-| Sonuç kodu öneki | Açıklama |
+| Sonuç kodu öneki | Description |
 | --- | --- |
 | Başarılı |Yükleme başarıyla yükseltildi. |
 | Yükseltme Iptal edildi |Geçici bir koşul yükseltmeyi durdurdu. Yeniden denenecek ve beklenmek, daha sonra başarılı olur. |
@@ -75,7 +75,7 @@ Sonuç kodu, duruma genel bakış içeren bir ön eke sahiptir.
 
 Burada, bulduğunuz en yaygın mesajların bir listesi verilmiştir. Tümünü listelemez, ancak sonuç iletisi sorunun ne olduğu konusunda açık olmalıdır.
 
-| Sonuç Iletisi | Açıklama |
+| Sonuç Iletisi | Description |
 | --- | --- |
 | **Yükseltme Iptal edildi** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Kayıt defterine yazılamadı. |
@@ -89,18 +89,11 @@ Burada, bulduğunuz en yaygın mesajların bir listesi verilmiştir. Tümünü l
 | UpgradeAbortedSyncExeInUse |[Eşitleme Hizmeti Yöneticisi Kullanıcı arabirimi](how-to-connect-sync-service-manager-ui.md) sunucuda açıktır. |
 | UpgradeAbortedSyncOrConfigurationInProgress |Yükleme Sihirbazı çalışıyor veya zamanlayıcı dışında bir eşitleme zamanlandı. |
 | **Yükseltilebilir nominal destekleniyor** | |
-| Yükseltildi ınttrsupportedaddfsignınmethod | Oturum açma yöntemi olarak ADFS 'yi seçtiniz. |
 | UpgradeNotSupportedCustomizedSyncRules |Yapılandırmaya kendi özel kurallarınızı eklediniz. |
-| Yükseltildi nominal Devicewritebackenabled |[Cihaz geri yazma](how-to-connect-device-writeback.md) özelliğini etkinleştirdiniz. |
-| 2. Paydatsupportedgroupwritebackenabled |Grup geri yazma özelliğini etkinleştirdiniz. |
 | UpgradeNotSupportedInvalidPersistedState |Yükleme bir hızlı ayarlar veya DirSync yükseltmesi değildir. |
-| UpgradeNotSupportedMetaverseSizeExceeeded |Meta veri deposunda 100.000 taneden fazla nesne var. |
-| 1 $ Supportedmultiforestsetup yükseltildi |Birden fazla ormana bağlanıyorsunuz. Hızlı Kurulum yalnızca bir ormana bağlanır. |
 | 1 $ Supportednonlocaldbınstall yükseltildi |SQL Server Express LocalDB veritabanı kullandeğilsiniz. |
-| Yükseltildi nominal olmayan Msolaccount |[AD DS bağlayıcı hesabı](reference-connect-accounts-permissions.md#ad-ds-connector-account) artık varsayılan MSOL_ hesabı değil. |
-| 1 $ Supportednotconfiguredsignınmethod yükseltildi | AAD Connect ayarlanırken, oturum açma yöntemini seçerken *yapılandırmayın* seçeneğini tercih edersiniz. |
-| Yükseltilebilir nominal Tsupportedstagingmodeenabled |Sunucu, [hazırlama modunda](how-to-connect-sync-staging-server.md)olacak şekilde ayarlanır. |
-| Şu değeri Yükseltsupporteduserwritebackenabled |[Kullanıcı geri yazma](how-to-connect-preview.md#user-writeback) özelliğini etkinleştirdiniz. |
+|Yükseltilebilir nominal Tsupportedlocaldbsizeaşıldı|Yerel DB boyutu 8 GB 'den büyük veya buna eşit|
+|Yükseltildi ınttrsupportedadadhealthuploaddisabled|Sistem durumu verileri karşıya yüklemeleri portaldan devre dışı bırakıldı|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.

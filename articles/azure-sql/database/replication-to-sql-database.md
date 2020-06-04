@@ -1,6 +1,6 @@
 ---
-title: Azure SQL veritabanı 'na SQL Server çoğaltma
-description: Bir Azure SQL veritabanını, tek yönlü bir işlem veya anlık görüntü çoğaltma topolojisinde anında iletme abonesi olarak yapılandırabilirsiniz.
+title: Azure SQL veritabanı 'na Azure SQL Server çoğaltması
+description: Azure SQL veritabanında bir veritabanını, tek yönlü bir işlem veya anlık görüntü çoğaltma topolojisinde anında iletme abonesi olarak yapılandırabilirsiniz.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: ec0aebc10d47b3e9945e63e818240da7bf2451e4
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6f1eb48655c4e38e2cf0520409e5e2b38750baf5
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192961"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324156"
 ---
 # <a name="replication-to-azure-sql-database"></a>Azure SQL veritabanı 'na çoğaltma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,16 +26,16 @@ Bir Azure SQL veritabanını, tek yönlü bir işlem veya anlık görüntü ço�
 > [!NOTE]
 > Bu makalede, Azure SQL veritabanı 'nda [İşlemsel çoğaltmanın](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) kullanımı açıklanmaktadır. Tek tek veritabanlarının tam okunabilir çoğaltmalarını oluşturmanızı sağlayan bir Azure SQL veritabanı özelliği olan [etkin coğrafi çoğaltma](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication)ile ilgili değildir.
 
-## <a name="supported-configurations"></a>Desteklenen Yapılandırmalar
+## <a name="supported-configurations"></a>Desteklenen yapılandırmalar
   
 - Azure SQL veritabanı yalnızca bir SQL Server yayımcısı ve dağıtıcısının gönderim abonesi olabilir.  
-- Yayımcı ve/veya dağıtıcı olarak davranan SQL Server, [Şirket içi](https://www.microsoft.com/sql-server/sql-server-downloads), [Azure SQL yönetilen örneği](../managed-instance/instance-create-quickstart.md)veya [buluttaki bir azure sanal makinesinde çalışan bir SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)örneğini çalıştıran bir SQL Server örneği olabilir. 
-- Dağıtım veritabanı ve çoğaltma aracıları bir Azure SQL veritabanına yerleştirilemez.  
+- Yayımcı ve/veya dağıtıcı gibi davranan SQL Server örnek, [Şirket içinde çalışan bir SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads)örneği olabilir, [Azure SQL yönetilen örneği](../managed-instance/instance-create-quickstart.md)veya [buluttaki bir azure sanal makinesinde çalışan bir SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)örneği olabilir. 
+- Dağıtım veritabanı ve çoğaltma aracıları Azure SQL veritabanı 'ndaki bir veritabanına yerleştirilemez.  
 - [Anlık görüntü](/sql/relational-databases/replication/snapshot-replication) ve [tek yönlü işlemsel](/sql/relational-databases/replication/transactional/transactional-replication) çoğaltma desteklenir. Eşler arası işlem çoğaltma ve birleştirme çoğaltması desteklenmez.
 
 ### <a name="versions"></a>Sürümler  
 
-Bir Azure SQL veritabanına başarıyla çoğaltma yapmak için SQL Server yayımcılar ve dağıtımcılar aşağıdaki sürümlerden birini kullanıyor olmalıdır: 
+Azure SQL veritabanında bir veritabanına başarıyla çoğaltma yapmak için SQL Server yayımcılar ve dağıtımcılar aşağıdaki sürümlerden birini kullanıyor olmalıdır:
 
 SQL Server veritabanından herhangi bir Azure SQL veritabanına yayımlama, aşağıdaki SQL Server sürümleri tarafından desteklenir:
 
@@ -54,11 +54,11 @@ Farklı [çoğaltma türleri](https://docs.microsoft.com/sql/relational-database
 
 | Çoğaltma | Azure SQL Veritabanı | Azure SQL Yönetilen Örnek |
 | :----| :------------- | :--------------- |
-| [**Standart Işlem**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Evet (yalnızca abone olarak) | Evet | 
-| [**Anlık Görüntü**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Evet (yalnızca abone olarak) | Evet|
+| [**Standart Işlem**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Evet (yalnızca abone olarak) | Yes | 
+| [**Anlık Görüntü**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Evet (yalnızca abone olarak) | Yes|
 | [**Birleştirme çoğaltması**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Hayır | Hayır|
 | [**Eşler arası**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Hayır | Hayır|
-| [**Çift yönlü**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Hayır | Evet|
+| [**Çift yönlü**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Yes|
 | [**Güncelleştirilebilir abonelikler**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Hayır | Hayır|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -116,7 +116,6 @@ Azure SQL veritabanı abonelikleri için aşağıdaki seçenekler desteklenmez:
 - HierarchyId 'yi MAX veri türlerine Dönüştür  
 - Uzamsal değeri en fazla veri türlerine Dönüştür  
 - Genişletilmiş özellikleri Kopyala  
-- İzinleri Kopyala  
 
 ### <a name="limitations-to-be-determined"></a>Belirlenecek sınırlamalar
 

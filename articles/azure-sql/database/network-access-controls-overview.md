@@ -1,7 +1,7 @@
 ---
 title: Ağ erişim denetimleri
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Azure SQL veritabanı ve SQL veri ambarı (eski adıyla SQL veri ambarı) için ağ erişimini yönetme ve denetleme konusuna genel bakış.
+description: Azure SQL veritabanı ve Azure SQL veri ambarı (eskiden Azure SQL veri ambarı) için ağ erişimini yönetme ve denetleme konusuna genel bakış.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,15 +12,14 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 95fa7a22f88d8c6a53a6459e0f5d6a123b2f728b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3a88ce96ca95bd02481558597bcc8082adf7c975
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045581"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343991"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics ağ erişim denetimleri
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 Azure SQL veritabanı ve Azure SYNAPSE Analytics için [Azure Portal](single-database-create-quickstart.md) BIR mantıksal SQL Server oluşturduğunuzda sonuç, *yourservername.Database.Windows.net*biçiminde genel bir uç noktasıdır.
 
@@ -37,7 +36,7 @@ Ayrıca, [sanal ağlardan](../../virtual-network/virtual-networks-overview.md) v
 > [!IMPORTANT]
 > Bu *Makale,* **SQL yönetilen örneği**için geçerlidir. Ağ yapılandırması hakkında daha fazla bilgi için bkz. [Azure SQL yönetilen örneğine bağlanma](../managed-instance/connect-application-instance.md) .
 
-Bu erişim denetimlerine ilişkin üst düzey bir açıklama ve ne yapabilecekleri hakkında daha fazla bilgi için aşağıdaki videoya bakın:
+Bu erişim denetimlerine ilişkin üst düzey bir açıklama ve ne yapacaklarınız için aşağıdaki videoya bakın:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--SQL-Database-Connectivity-Explained/player?WT.mc_id=dataexposed-c9-niner]
 
@@ -53,11 +52,11 @@ Bu ayarı, mantıksal SQL Server aşağıdaki gibi oluşturulduktan sonra güven
 
 Çoğu durumda, **Açık** ayarı, çoğu müşterinin izin verilenden daha fazla izne sahiptir. Bu ayarı **kapalı** olarak ayarlamak ve daha kısıtlayıcı IP güvenlik duvarı kuralları veya sanal ağ güvenlik duvarı kuralları ile değiştirmek isteyebilirsiniz. 
 
-Ancak bunun yapılması, Azure 'daki sanal makinelerde çalışan, VNet 'iniz kapsamında olmayan ve bu nedenle veritabanına bir Azure IP adresi aracılığıyla bağlanan aşağıdaki özellikleri etkiler:
+Ancak bunun yapılması, Azure 'da sanal ağınızın bir parçası olmayan ve bu nedenle veritabanına bir Azure IP adresi aracılığıyla bağlanan sanal makinelerde çalışan aşağıdaki özellikleri etkiler:
 
 ### <a name="import-export-service"></a>İçeri aktarma hizmeti al
 
-**Azure hizmetlerine erişime Izin ver** **kapalı**olarak ayarlandığında içeri aktarma hizmeti kullanılamaz. Ancak, [SqlPackage. exe ' yi bir Azure VM 'sinden el ile çalıştırarak veya](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) DACFX API kullanarak doğrudan kodunuzda dışarı aktarmayı gerçekleştirerek soruna geçici bir çözüm bulabilirsiniz.
+**Azure hizmetlerine erişime Izin ver** **devre dışı**bırakıldığında içeri aktarma hizmeti çalışmıyor. Ancak, [SqlPackage. exe ' yi bir Azure VM 'sinden el ile çalıştırarak veya](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) DACFX API kullanarak doğrudan kodunuzda dışarı aktarmayı gerçekleştirerek soruna geçici bir çözüm bulabilirsiniz.
 
 ### <a name="data-sync"></a>Data Sync
 
@@ -83,7 +82,7 @@ PS C:\> $sql.Properties.AddressPrefixes
 > [!TIP]
 > Get-AzNetworkServiceTag, location parametresini belirtirken SQL Service etiketinin genel aralığını döndürür. Eşitleme grubunuz tarafından kullanılan Merkez veritabanını barındıran bölgeye filtre uyguladığınızdan emin olun
 
-PowerShell betiğinin çıktısının sınıfsız etki alanları arası yönlendirme (CıDR) gösterimi içinde ve [Get-IPrangeStartEnd. ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) kullanarak bir başlangıç ve bitiş IP adresi biçimine dönüştürülmesi gerektiğini unutmayın:
+PowerShell betiğinin çıktısının sınıfsız etki alanları arası yönlendirme (CıDR) gösterimde olduğunu unutmayın. Bu, [Get-IPrangeStartEnd. ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) kullanılarak bir başlangıç ve bitiş IP adresi biçimine dönüştürülmelidir, örneğin:
 
 ```powershell
 PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26
@@ -126,13 +125,13 @@ Sanal ağ güvenlik duvarı kurallarını araştırırken aşağıdaki Azure ağ
 
 **Sanal ağ hizmeti uç noktası:** [Sanal ağ hizmeti uç noktası](../../virtual-network/virtual-network-service-endpoints-overview.md) , özellik değerleri bir veya daha fazla resmi Azure hizmet türü adı içeren bir alt ağıdır. Bu makalede, SQL veritabanı adlı Azure hizmetine başvuran **Microsoft. SQL**tür adı ile ilgileniyoruz.
 
-**Sanal ağ kuralı:** Sunucunuz için bir sanal ağ kuralı, sunucunuzun erişim denetim listesinde (ACL) listelenen bir alt ağıdır. SQL veritabanınızın ACL 'sinde olması için alt ağın **Microsoft. SQL** tür adını içermesi gerekir. Bir sanal ağ kuralı, sunucunuza alt ağdaki her düğümden gelen iletişimleri kabul etmesini söyler.
+**Sanal ağ kuralı:** Sunucunuz için bir sanal ağ kuralı, sunucunuzun erişim denetim listesinde (ACL) listelenen bir alt ağıdır. SQL veritabanında veritabanınızın ACL 'sinde olması için, alt ağ **Microsoft. SQL** tür adını içermelidir. Bir sanal ağ kuralı, sunucunuza alt ağdaki her düğümden gelen iletişimleri kabul etmesini söyler.
 
 ## <a name="ip-vs-virtual-network-firewall-rules"></a>IP-sanal ağ güvenlik duvarı kuralları
 
 Azure SQL veritabanı güvenlik duvarı, iletişimlerin SQL veritabanı 'na kabul edileceği IP adresi aralıklarını belirtmenize olanak tanır. Bu yaklaşım, Azure özel ağının dışında olan kararlı IP adresleri için çok uygundur. Ancak, Azure özel ağı içindeki sanal makineler (VM) *dinamik* IP adresleriyle yapılandırılır. Dinamik IP adresleri, VM 'niz yeniden başlatıldığında değişebilir ve IP tabanlı güvenlik duvarı kuralını geçersiz kılar. Bir güvenlik duvarı kuralında, bir üretim ortamında dinamik bir IP adresi belirtmek de bu şekilde yapılır.
 
-SANAL ağınız için bir *statik* IP adresi elde ederek bu sınırlamaya geçici bir çözüm bulabilirsiniz. Ayrıntılar için bkz. [Azure Portal kullanarak bir sanal makine için özel IP adreslerini yapılandırma](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md). Ancak, statik IP yaklaşımının yönetilmesi zor olabilir ve ölçekteki tamamlandığında maliyetli hale gelir.
+SANAL ağınız için bir *statik* IP adresi elde ederek bu sınırlamaya geçici bir çözüm bulabilirsiniz. Ayrıntılar için bkz. [Azure Portal kullanarak bir sanal makine için özel IP adreslerini yapılandırma](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md). Ancak, statik IP yaklaşımının yönetilmesi zor olabilir ve ölçekteki işlem sırasında maliyetli olur.
 
 Sanal ağ kuralları, VM 'lerinizi içeren belirli bir alt ağdan erişimi kurmak ve yönetmek için daha kolay bir alternatiftir.
 
@@ -147,7 +146,7 @@ Sanal ağ kuralları, VM 'lerinizi içeren belirli bir alt ağdan erişimi kurma
 
 - Sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturmaya yönelik hızlı başlangıç için bkz. [SQL veritabanı 'nda veritabanı oluşturma](single-database-create-quickstart.md).
 
-- Sunucu düzeyinde VNET güvenlik duvarı kuralı oluşturmaya yönelik hızlı başlangıç için bkz. [Azure SQL veritabanı Için sanal ağ hizmet uç noktaları ve kuralları](vnet-service-endpoint-rule-overview.md).
+- Sunucu düzeyinde bir sanal ağ güvenlik duvarı kuralı oluşturmaya yönelik hızlı başlangıç için bkz. [Azure SQL veritabanı Için sanal ağ hizmet uç noktaları ve kuralları](vnet-service-endpoint-rule-overview.md).
 
 - Açık kaynaklı veya üçüncü taraf uygulamalardan SQL veritabanındaki bir veritabanına bağlanma konusunda yardım için bkz. [SQL veritabanı Için istemci hızlı başlangıç kodu örnekleri](https://msdn.microsoft.com/library/azure/ee336282.aspx).
 
@@ -160,3 +159,4 @@ Sanal ağ kuralları, VM 'lerinizi içeren belirli bir alt ağdan erişimi kurma
 <!--Image references-->
 [1]: media/quickstart-create-single-database/new-server2.png
 [2]: media/quickstart-create-single-database/manage-server-firewall.png
+ 

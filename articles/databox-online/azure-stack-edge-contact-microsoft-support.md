@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 291dbdd874e3d657ff171d7e08ea6a1ee7e5999f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4d513471e288c1aadbf70b24ef367965a0b69a80
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683092"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339918"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>Azure Stack Edge ve Azure Data Box Gateway için bir destek bileti açın
 
@@ -39,7 +39,7 @@ Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
     7. Seçtiğiniz sorun türüne göre ilgili bir **sorun alt türünü**seçin.
     8. **İleri ' yi seçin: çözümler >>**.
 
-        ![Temel Bilgiler](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
+        ![Temel bilgiler](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
 
 3. **Ayrıntılar** sekmesinde aşağıdaki adımları uygulayın:
 
@@ -57,7 +57,7 @@ Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
 
         ![Sorun](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-2.png)
 
-4. **Gözden geçir + oluştur** sekmesinde destek bileti ile ilgili bilgileri gözden geçirin. **Oluştur**’u seçin. 
+4. **Gözden geçir + oluştur** sekmesinde destek bileti ile ilgili bilgileri gözden geçirin. **Oluştur**'u seçin. 
 
     ![Sorun](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-3.png)
 

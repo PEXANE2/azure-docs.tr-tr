@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 205b52201edb849abab02809b58ff9dc77a32a29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 18158c867ba7a3307585eab0f950d15a6a12aa7c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80127670"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342638"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
 
@@ -50,13 +50,16 @@ Bir iç hata nedeniyle bir veya daha fazla ağ bağdaştırıcısı için uygunl
 
 ## <a name="linux-vms-are-conditionally-ready"></a>Linux VM 'Leri "koşullu olarak hazırlanıyor"
 
-Sunucu değerlendirmesi, sunucu değerlendirmesinde bilinen bir boşluk nedeniyle Linux sanal makinelerini "koşullu olarak hazırlanıyor" olarak işaretler.
+VMware ve Hyper-V VM 'lerinde sunucu değerlendirmesi, sunucu değerlendirmesinde bilinen bir boşluk nedeniyle Linux sanal makinelerini "koşullu olarak hazırlanıyor" olarak işaretler. 
 
 - Bu Aralık, BT 'nin şirket içi VM 'lerde yüklü Linux IŞLETIM sisteminin ikincil sürümünü algılamasını önler.
-- Örneğin, RHEL 6,10 için şu anda sunucu değerlendirmesi, işletim sistemi sürümü olarak yalnızca RHEL 6 ' ı algılar.
+- Örneğin, RHEL 6,10 için şu anda sunucu değerlendirmesi, işletim sistemi sürümü olarak yalnızca RHEL 6 ' ı algılar. Bunun nedeni, Hyper-V ana bilgisayarının vCenter Server ar, Linux VM işletim sistemleri için çekirdek sürümü sağlamasunmamalıdır.
 -  Azure, Linux 'un yalnızca belirli sürümlerini sağladığından, Linux VM 'Leri Şu anda sunucu değerlendirmesi için koşullu olarak kullanılabilir olarak işaretlendi.
 - [Azure Linux desteğini](https://aka.ms/migrate/selfhost/azureendorseddistros)inceleyerek, ŞIRKET içi VM 'de çalışan Linux Işletim sisteminin Azure 'da olup olmadığını belirleyebilirsiniz.
 -  Doğrulanan dağıtımı doğruladıktan sonra bu uyarıyı yoksayabilirsiniz.
+
+Bu boşluk, VMware VM 'lerinde [uygulama bulma](https://docs.microsoft.com/azure/migrate/how-to-discover-applications) etkinleştirilerek çözülebilir. Sunucu değerlendirmesi, belirtilen konuk kimlik bilgilerini kullanarak VM 'den algılanan işletim sistemini kullanır. Bu işletim sistemi verileri, hem Windows hem de Linux VM 'lerinde doğru IŞLETIM sistemi bilgilerini tanımlar.
+
 
 ## <a name="azure-skus-bigger-than-on-premises"></a>Azure SKU 'Ları Şirket içinden daha büyük
 
@@ -102,6 +105,8 @@ Azure geçişi sunucu değerlendirmesi Şu anda yalnızca Windows makineler içi
 
 Sunucu Değerlendirmesi şirket içi makinelerin performans verilerini sürekli toplar ve bunları Azure’da VM SKU'su ile disk SKU'su önermek için kullanır. Performans tabanlı verilerin nasıl toplandığını [öğrenin](concepts-assessment-calculation.md#calculate-sizing-performance-based) .
 
+## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combintion-of-reserved-instances-vm-uptime-and-discount-"></a>Değerlendirmem neden, geçersiz bir combintion ayrılmış örnek, VM çalışma süresi ve Indirim (%) ile oluşturulduğunu belirten bir uyarı gösteriyor?
+' Ayrılmış örnekler ' seçtiğinizde, ' Discount (%) ' ve ' VM çalışma süresi ' özellikleri geçerli değil. Değerlendirmenizi bu özelliklerin geçersiz bir birleşimiyle oluşturulduğundan, Düzenle ve yeniden hesapla düğmeleri devre dışı bırakılır. Lütfen yeni bir değerlendirme oluşturun. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2131554).
 
 ## <a name="dependency-visualization-in-azure-government"></a>Azure Kamu 'da bağımlılık görselleştirmesi
 
@@ -113,7 +118,7 @@ Azure geçişi, bağımlılık görselleştirme işlevselliği için Hizmet Eşl
 
 Windows VM 'Leri için:
 1. Denetim Masası 'nda MMA 'yı başlatın.
-2. **Azure Log Analytics (OMS)** **Microsoft Monitoring Agent özelliklerinde** > , çalışma alanının **durumunun** yeşil olduğundan emin olun.
+2. **Microsoft Monitoring Agent properties**  >  **Azure Log Analytics (OMS)** Microsoft Monitoring Agent özelliklerinde, çalışma alanının **durumunun** yeşil olduğundan emin olun.
 3. Durum yeşil değilse, çalışma alanını kaldırmayı ve onu yeniden eklemeyi deneyin.
 
     ![MMA durumu](./media/troubleshoot-assessment/mma-properties.png)
@@ -152,7 +157,7 @@ Bağımlılık görselleştirmesi etkinleştirilmiş makineleri Azure 'a geçird
 
 Ağ trafiği günlüklerini aşağıda gösterildiği gibi toplayın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Geliştirici Araçları başlamak için F12 tuşuna basın. Gerekirse, **Gezinti ayarında girişleri temizle** ' yi temizleyin.
 3. **Ağ** sekmesini seçin ve ağ trafiğini yakalamaya başlayın:
    - Chrome 'da **günlüğü koru**' yı seçin. Kayıt otomatik olarak başlamalıdır. Kırmızı bir daire trafiğin yakalandığını gösterir. Kırmızı daire görünmezse başlamak için siyah daireyi seçin.
@@ -165,6 +170,15 @@ Ağ trafiği günlüklerini aşağıda gösterildiği gibi toplayın:
    - Chrome 'da konsol günlüğünde herhangi bir yere sağ tıklayın. Günlüğe **Kaydet**, dışarı aktarmak için ve günlüğü posta ' yı seçin.
    - Microsoft Edge veya Internet Explorer 'da hatalara sağ tıklayıp **Tümünü Kopyala**' yı seçin.
 7. Geliştirici Araçları kapatın.
+
+
+## <a name="where-is-the-operating-system-data-in-my-assessment-discovered-from"></a>Değerlendirmem içindeki işletim sistemi verileri nerede bulundu?
+
+- VMware VM 'Leri için varsayılan olarak, vCenter tarafından belirtilen işletim sistemi verileri vardır. 
+   - VMware Linux VM 'Leri için, uygulama bulma etkinse, işletim sistemi ayrıntıları Konuk VM 'den alınır. Değerlendirmede hangi IŞLETIM sistemi ayrıntılarının olduğunu denetlemek için, bulunan sunucular görünümüne ve fareyi "Işletim sistemi" sütunundaki değerin üzerine gidin. Açılan metinde, gördüğünüz işletim sistemi verilerinin vCenter Server 'dan mı yoksa VM kimlik bilgileri kullanılarak Konuk VM 'den mi toplandığını görebileceksiniz. 
+   - Windows VM 'Leri için, işletim sistemi ayrıntıları her zaman vCenter Server getirilir.
+- Hyper-V VM 'Leri için, işletim sistemi verileri Hyper-V konağından toplanır
+- Fiziksel sunucular için, sunucusundan getirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

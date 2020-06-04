@@ -6,12 +6,12 @@ author: sauryadas
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: 77d64391888957a1697a5823a1485413686682d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f396ba6ec1ecc6bd111e048ce34e3546c7364dc
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77593453"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345062"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti’nde (AKS) desteklenen Kubernetes sürümleri
 
@@ -95,10 +95,10 @@ New Supported Version List
 * Kubernetes 'in yeni **İkincil** sürümleri için
   * Tüm kullanıcılar, yeni sürümden ve hangi sürümün kaldırılabileceği herkese açık bir şekilde bildirilir.
   * Yeni bir yama sürümü yayınlandığında, en eski düzeltme eki sürümü aynı anda kaldırılır.
-  * Müşterilerin desteklenen bir alt sürüm sürümüne yükseltilmesi için genel bildirim tarihinden itibaren **30 gün** daha vardır.
+  * Azure desteği, müşterilerin desteklenen bir alt sürüm sürümüne yükseltilmesi için genel bildirim tarihinden itibaren **30 gün süre** sağlar. 30 gün geçtikten sonra, destek almaya devam etmek için ikincil sürümünüzü güncelleştirmeniz gerekir.
 * Kubernetes 'in yeni **Düzeltme Eki** sürümleri için
   * Tüm kullanıcılara, yayımlanmakta olan yeni yama sürümü bildirilir ve en son düzeltme eki sürümüne yükseltilir.
-  * Kullanıcıların, en eski kaldırılmadan önce daha yeni ve desteklenen bir yama sürümüne yükseltilmesi **30 gün** daha vardır.
+  * Azure desteği, daha eski bir yama sürümü kaldırıldıktan sonra, desteklenen bir yama sürümüne yükseltmek için müşterilere **30 gün** sağlar. 30 gün geçtikten sonra, destek almaya devam etmek için düzeltme eki sürümünüzü güncelleştirmeniz gerekir.
 
 AKS, tüm SLO/Quality ve tüm bölgelerde kullanılabilen genel kullanıma açık olan sürümler olarak "yayınlanan sürümü" tanımlar. AKS, açıkça etiketlenmiş ve önizleme hüküm ve koşullarına tabi olan önizleme sürümlerini de destekleyebilir.
 
@@ -138,7 +138,7 @@ az aks get-versions --location eastus --output table
 
 **Bir müşteri bir Kubernetes kümesini desteklenmeyen küçük bir sürümle yükseltdiğinde ne olur?**
 
-*N-3* sürümdaysanız, destek dışında olursunuz ve yükseltmeniz istenir. N-3 sürümünden n-2 ' ye yükseltme başarılı olursa, şimdi destek ilkeleriniz dahilinde olursunuz. Örneğin:
+*N-3* sürümdaysanız, destek dışında olursunuz ve yükseltmeniz istenir. N-3 sürümünden n-2 ' ye yükseltme başarılı olursa, şimdi destek ilkeleriniz dahilinde olursunuz. Örnek:
 
 - Desteklenen en eski AKS sürümü *1.13. a* ve *1.12. b* veya daha eski bir sürümse, destek dışında olursunuz.
 - *1.12. b* 'den *1.13* 'e yükseltme işlemi başarılı olursa, destek ilkilerimizin içine geri dönebilirsiniz.
@@ -155,7 +155,7 @@ AKS tarafından desteklenmeyen alt sürümler için, ölçeklendirme ve küçül
 
 **Bir müşteri, bir Kubernetes sürümünde sonsuza kadar kalabilir mi?**
 
-Evet. Ancak, küme AKS tarafından desteklenen sürümlerden birinde değilse, küme AKS destek ilkelerinden çıkar. Azure, kümenizi otomatik olarak yükseltmez veya silmez.
+Bir kümenin 3 ' ten fazla alt sürüm desteği tükenmiştir ve güvenlik riskleri taşıyan bir güvenlik riski bulunursa, Azure, kümenizi proaktif olarak yükseltmeniz için size iletişim kurar. Daha fazla işlem yapmazsanız, Azure, kümenizi sizin adınıza yükseltmeye zorlama hakkını saklı tutar.
 
 **Düğüm havuzu desteklenen AKS sürümlerinden birinde değilse, denetim düzlemi hangi sürümü destekler?**
 

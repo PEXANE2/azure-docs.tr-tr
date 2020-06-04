@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 206d63e05b68cbcec65b0d06e11da48065251ea0
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 7c12beaf30651a6cb1048a75b0f7cb353b45173a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569998"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339901"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>Dosyaları Azure Stack Edge üzerinde taşımak için C# IoT Edge modülünü geliştirme
 
@@ -24,6 +24,7 @@ Azure Stack Kenarlarınızın Azure IoT Edge modüllerini kullanarak verileri Az
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
+>
 > * Modüllerinizi depolamak ve yönetmek için bir kapsayıcı kayıt defteri oluşturun (Docker görüntüleri).
 > * Azure Stack Edge cihazınızda dağıtmak üzere bir IoT Edge modülü oluşturun. 
 
@@ -40,7 +41,7 @@ Azure Stack Edge cihazınız, IoT Edge modülleri dağıtabilir ve çalıştıra
 
 Dosya bulut paylaşımından olduktan sonra otomatik olarak Azure depolama hesabınıza yüklenir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 
@@ -75,7 +76,7 @@ Azure kapsayıcı kayıt defteri, Azure’da özel Docker kapsayıcısı görün
 
       ![Kapsayıcı kayıt defteri oluşturma](./media/azure-stack-edge-create-iot-edge-module/create-container-registry-1.png)
  
-4. **Oluştur**’u seçin.
+4. **Oluştur**'u seçin.
 5. Kapsayıcı kayıt defteriniz oluşturulduktan sonra, bu kayıt defterine gidin ve **Erişim anahtarları**'nı seçin.
 
     ![Erişim anahtarları al](./media/azure-stack-edge-create-iot-edge-module/get-access-keys-1.png)
@@ -107,7 +108,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
 
     5. Önceki bölümde, ilk modülünüzün görüntü deposu olarak oluşturduğunuz kapsayıcı kayıt defterini belirtin. **localhost:5000** yerine kopyaladığınız oturum açma sunucusu değerini yazın.
 
-        Son dize gibi `<Login server name>/<Module name>`görünür. Bu örnekte, dize: `mycontreg2.azurecr.io/filecopymodule`.
+        Son dize gibi görünür `<Login server name>/<Module name>` . Bu örnekte, dize: `mycontreg2.azurecr.io/filecopymodule` .
 
         ![Yeni çözüm oluştur 3](./media/azure-stack-edge-create-iot-edge-module/create-new-solution-3.png)
 
@@ -272,7 +273,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
 
     *Program. cs (77, 44): uyarı CS1998: Bu zaman uyumsuz yöntemde ' await ' işleçleri yok ve zaman uyumlu olarak çalışacak. Engelleyici olmayan API çağrılarını beklemek için ' await ' işlecini veya bir arka plan iş parçacığında CPU 'ya bağlı çalışma yapmak için ' await Task. Run (...) ' kullanmayı düşünün.*
 
-4. VS Code tümleşik terminalinde etiketle tam kapsayıcı görüntü adresini görebilirsiniz. Görüntü adresi, Module. JSON dosyasındaki biçimdeki `<repository>:<version>-<platform>`bilgilerden oluşturulur. Bu makalede, şöyle `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`görünmelidir.
+4. VS Code tümleşik terminalinde etiketle tam kapsayıcı görüntü adresini görebilirsiniz. Görüntü adresi, Module. JSON dosyasındaki biçimdeki bilgilerden oluşturulur `<repository>:<version>-<platform>` . Bu makalede, şöyle görünmelidir `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

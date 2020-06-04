@@ -3,14 +3,14 @@ title: Web kancasından Azure Otomasyonu runbook 'u başlatma
 description: Bu makalede, Azure Otomasyonu 'nda bir runbook 'u HTTP çağrısından başlatmak için Web kancasının nasıl kullanılacağı açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/16/2020
+ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2578e15a60b2021d9e599018043c4834d0c07d34
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 78ce1e46b7ea2cc82a0c478b0c81abbf701f68a9
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830506"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342978"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Web kancasından runbook başlatma
 
@@ -20,6 +20,8 @@ Web kancası, bir dış hizmetin Azure Otomasyonu 'nda belirli bir runbook 'u te
 > Python runbook 'u başlatmak için Web kancası kullanılması desteklenmez.
 
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
+
+Web kancalarıyla TLS 1,2 için istemci gereksinimlerini anlamak için bkz. [Azure Otomasyonu Için tls 1,2 zorlaması](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
 ## <a name="webhook-properties"></a>Web kancası özellikleri
 
@@ -101,7 +103,8 @@ Azure portal bir runbook 'a bağlı yeni bir Web kancası oluşturmak için aşa
    ![Web kancası URL 'SI](media/automation-webhooks/copy-webhook-url.png)
 
 1. Runbook parametreleri için değerler sağlamak üzere **Parametreler** ' e tıklayın. Runbook 'un zorunlu parametreleri varsa, değer sağlamadıkça Web kancasını oluşturamazsınız.
-1. Web kancasını oluşturmak için **Oluştur**’a tıklayın.
+
+2. Web kancasını oluşturmak için **Oluştur**’a tıklayın.
 
 ## <a name="use-a-webhook"></a>Web kancası kullanma
 
@@ -113,7 +116,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 İstemci, istekten aşağıdaki dönüş kodlarından birini alır `POST` .
 
-| Kod | Metin | Açıklama |
+| Kod | Metin | Description |
 |:--- |:--- |:--- |
 | 202 |Kabul edildi |İstek kabul edildi ve Runbook başarıyla kuyruğa alındı. |
 | 400 |Hatalı İstek |İstek aşağıdaki nedenlerden biri için kabul edilmedi: <ul> <li>Web kancası süresi doldu.</li> <li>Web kancası devre dışı bırakıldı.</li> <li>URL 'deki belirteç geçersiz.</li>  </ul> |

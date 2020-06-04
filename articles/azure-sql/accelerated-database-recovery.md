@@ -1,7 +1,7 @@
 ---
 title: Hızlandırılmış veritabanı kurtarma
 titleSuffix: Azure SQL
-description: Hızlandırılmış veritabanı kurtarma, Azure SQL hizmeti portföyündeki veritabanları için hızlı ve tutarlı veritabanı kurtarma, anlık işlem geri alma ve agresif günlük kesme sağlar.
+description: Hızlandırılmış veritabanı kurtarma, Azure SQL portföyündeki veritabanları için hızlı ve tutarlı veritabanı kurtarma, anlık işlem geri alma ve agresif günlük kesme sağlar.
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=4
@@ -11,17 +11,17 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 05/19/2020
-ms.openlocfilehash: c0243ecea778a02238b205f1659d796165f7b316
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a6d95bbcb0873086a799dcf216beab4a6b0d33de
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044363"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344705"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Azure SQL 'de hızlandırılmış veritabanı kurtarma 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-**Hızlandırılmış veritabanı kurtarma (ADR)** , SQL veritabanı altyapısı kurtarma işlemini yeniden tasarlayarak, özellikle uzun süre çalışan işlemler söz konusu olduğunda veritabanı kullanılabilirliğini büyük ölçüde GELIŞTIREN bir SQL veritabanı altyapısı özelliğidir. ADR Şu anda Azure SQL veritabanı, Azure SQL yönetilen örneği, Azure VM 'lerinde SQL Server ve Azure Synapse (Şu anda önizlemede) veritabanları için kullanılabilir. ADR 'nin başlıca avantajları şunlardır:
+**Hızlandırılmış veritabanı kurtarma (ADR)** , özellikle uzun süre çalışan işlemler söz konusu olduğunda veritabanı kullanılabilirliğini, SQL Server veritabanı altyapısı kurtarma işlemini yeniden tasarlayarak büyük ölçüde artıran bir SQL Server veritabanı altyapısı özelliğidir. ADR Şu anda Azure SQL veritabanı, Azure SQL yönetilen örneği, Azure VM 'de SQL Server ve Azure SYNAPSE Analytics 'teki veritabanları (Şu anda önizlemede) için kullanılabilir. ADR 'nin başlıca avantajları şunlardır:
 
 - **Hızlı ve tutarlı veritabanı kurtarma**
 
@@ -53,15 +53,15 @@ Veritabanı [Kurtarma, bu kurtarma modelini](https://people.eecs.berkeley.edu/~b
 
   Kilitlenme süresi itibariyle etkin olan her işlem için, bu işlemin gerçekleştirdiği işlemleri geri alarak günlüğü geriye doğru geçer.
 
-Bu tasarıma bağlı olarak, SQL veritabanı altyapısının beklenmeyen bir yeniden başlatmadan kurtarmak için geçen süre (kabaca), kilitlenme sırasında sistemdeki en uzun etkin işlemin boyutuyla orantılıdır. Kurtarma işlemi tamamlanmamış tüm işlemlerin geri alınmasını gerektirir. Gerekli sürenin uzunluğu, işlemin gerçekleştirildiği iş ile orantılıdır ve etkin olduğu zaman. Bu nedenle, kurtarma işlemi uzun süre çalışan işlemler (büyük bir tabloya karşı büyük toplu ekleme işlemleri veya dizin derleme işlemleri gibi) bulunması uzun sürebilir.
+Bu tasarıma bağlı olarak, SQL Server veritabanı altyapısının beklenmeyen bir yeniden başlatmadan kurtarmak için geçen süre (kabaca), kilitlenme sırasında sistemdeki en uzun etkin işlemin boyutuyla orantılıdır. Kurtarma işlemi tamamlanmamış tüm işlemlerin geri alınmasını gerektirir. Gerekli sürenin uzunluğu, işlemin gerçekleştirildiği iş ile orantılıdır ve etkin olduğu zaman. Bu nedenle, kurtarma işlemi uzun süre çalışan işlemler (büyük bir tabloya karşı büyük toplu ekleme işlemleri veya dizin derleme işlemleri gibi) bulunması uzun sürebilir.
 
 Ayrıca, bu tasarıma göre büyük bir işlemin iptal edilmesi/geri alınması, yukarıda açıklandığı gibi aynı geri alma kurtarma aşamasını kullandığından uzun zaman alabilir.
 
-Ayrıca, uzun süreli işlemler olduğunda SQL veritabanı altyapısı, kurtarma ve geri alma işlemleri için karşılık gelen günlük kayıtları gerektiği için işlem günlüğünü kesemez. Bu SQL veritabanı altyapısının tasarımının bir sonucu olarak, bazı müşteriler, işlem günlüğü boyutunun çok büyük bir şekilde büyüdüğü ve büyük miktarlarda sürücü alanı tükettiği sorunu ortaya almak için kullanılır.
+Ayrıca, SQL Server veritabanı altyapısı uzun süre çalışan işlemler olduğunda işlem günlüğünü kesemez çünkü kurtarma ve geri alma işlemleri için karşılık gelen günlük kayıtları gereklidir. SQL Server veritabanı altyapısının bu tasarımının bir sonucu olarak, bazı müşteriler, işlem günlüğü boyutunun çok büyük bir şekilde büyüdüğü ve büyük miktarlarda sürücü alanı tükettiği sorunu ortaya almak için kullanılır.
 
 ## <a name="the-accelerated-database-recovery-process"></a>Hızlandırılmış veritabanı kurtarma işlemi
 
-ADR, SQL veritabanı altyapısı kurtarma sürecini tamamen yeniden tasarlayarak Yukarıdaki sorunları giderir:
+ADR, SQL Server veritabanı altyapısı kurtarma sürecini tamamen yeniden tasarlayarak Yukarıdaki sorunları giderir:
 
 - Günlüğü en eski etkin işlemin başlangıcına kadar taramak zorunda kalmadan, bunu sabit bir zaman/anında yapın. ADR ile, işlem günlüğü yalnızca son başarılı denetim noktasından (veya en eski kirli sayfa günlüğü sıra numarası (LSN)) işlenir. Sonuç olarak, kurtarma süresi uzun süren işlemlerden etkilenmez.
 - Tüm işlem için günlüğü işlemek zorunda olmadığından, gerekli işlem günlüğü alanını en aza indirin. Sonuç olarak, işlem günlüğü, denetim noktaları ve yedeklemeler gerçekleşilerek kesilebilir.
@@ -97,7 +97,7 @@ ADR 'nin dört temel bileşeni şunlardır:
 
 - **Kalıcı sürüm deposu (PVS)**
 
-  Kalıcı sürüm deposu, geleneksel sürüm deposu yerine veritabanında oluşturulan satır sürümlerinin kalıcı hale getirilmesine yönelik yeni bir SQL veritabanı altyapısı mekanizmasıdır `tempdb` . PVS, kaynak yalıtımına izin verir ve okunabilir ikinciller kullanılabilirliğini geliştirir.
+  Kalıcı sürüm deposu, geleneksel sürüm deposu yerine veritabanında oluşturulan satır sürümlerinin kalıcı hale getirilmesine yönelik yeni bir SQL Server veritabanı altyapısı mekanizmasıdır `tempdb` . PVS, kaynak yalıtımına izin verir ve okunabilir ikinciller kullanılabilirliğini geliştirir.
 
 - **Mantıksal olarak döndürülüyor**
 

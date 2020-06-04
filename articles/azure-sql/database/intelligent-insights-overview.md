@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 08904b3a5a1053d64e3b54582189da5d82f62dee
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 133ca6503a2e0fa9ff19fa55cf126b9556b741e0
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051930"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344059"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Veritabanı performansını izlemek ve sorunlarını gidermek için AI kullanarak Akıllı İçgörüler (Önizleme)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -73,10 +73,10 @@ Kullanılabilir Akıllı İçgörüler seçenekleri şunlardır:
 
 | Akıllı İçgörüler seçeneği | Azure SQL veritabanı desteği | Azure SQL Yönetilen Örneği desteği |
 | :----------------------------- | ----- | ----- |
-| **Akıllı içgörüler yapılandırma** -veritabanlarınız için akıllı içgörüler analizini yapılandırın. | Evet | Evet |
-| **Azure SQL Analytics** içgörüler için Azure SQL Analytics Stream Insights. | Evet | Evet |
-| Daha fazla özel Tümleştirmeler için Event Hubs, **Olay Hub 'ına** akış öngörüleri alın. | Evet | Evet |
-| **Azure depolama** hakkında bilgi edinin-daha fazla analiz ve uzun süreli arşivleme Için Azure depolama ile akış öngörüleri. | Evet | Evet |
+| **Akıllı içgörüler yapılandırma** -veritabanlarınız için akıllı içgörüler analizini yapılandırın. | Yes | Yes |
+| **Azure SQL Analytics** içgörüler için Azure SQL Analytics Stream Insights. | Yes | Yes |
+| Daha fazla özel Tümleştirmeler için Event Hubs **Azure Event Hubs** Stream öngörülerini edinin. | Yes | Yes |
+| **Azure depolama** hakkında bilgi edinin-daha fazla analiz ve uzun süreli arşivleme Için Azure depolama ile akış öngörüleri. | Yes | Yes |
 
 ## <a name="configure-the-export-of-the-intelligent-insights-log"></a>Akıllı İçgörüler günlüğünün dışarı aktarılmasını yapılandırma
 
@@ -86,7 +86,7 @@ Akıllı İçgörüler çıkışı, analiz için birkaç hedefden birine akışl
 - Azure Event Hubs akış çıkışı, özel izleme ve uyarı senaryoları geliştirmesi için kullanılabilir
 - Azure Storage 'a akan çıkış, özel raporlama, uzun vadeli veri arşivleme gibi özel uygulama geliştirme için kullanılabilir.
 
-Azure SQL Analytics, Azure Olay Hub 'ı, Azure depolama veya üçüncü taraf ürünlerinin tümleştirilmesi, ilk olarak bir veritabanının Tanılama ayarları dikey penceresinde Akıllı İçgörüler günlüğe kaydetme ("Sqlinsıghts" günlüğü) ve ardından bu hedeflerin birine akışa eklenecek Akıllı İçgörüler günlük verilerinin yapılandırılması aracılığıyla gerçekleştirilir.
+Azure SQL Analytics, Azure Event Hubs, Azure depolama veya üçüncü taraf ürünlerinin tümleştirilmesi, ilk olarak bir veritabanının Tanılama ayarları dikey penceresinde Akıllı İçgörüler günlüğe kaydetme ("Sqlinsıghts" günlüğü) ve ardından bu hedeflere bir birine akışa eklenecek Akıllı İçgörüler günlük verilerinin yapılandırılması aracılığıyla gerçekleştirilir.
 
 Akıllı İçgörüler günlüğe kaydetme özelliğini etkinleştirme ve ölçüm ve kaynak günlük verilerinin bir tüketen ürüne akışını yapılandırma hakkında daha fazla bilgi için bkz. [ölçümler ve tanılama günlüğü](metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
 
@@ -104,7 +104,7 @@ Aşağıdaki örnek, Azure SQL Analytics ile görüntülenen bir Akıllı İçg�
 
 ### <a name="set-up-with-event-hubs"></a>Event Hubs ayarla
 
-Event Hubs Akıllı İçgörüler kullanmak için Akıllı İçgörüler günlük verilerini Event Hubs akışa almak üzere yapılandırın, [ölçüm ve tanılama günlüğü](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) ' ne bakın ve [Azure tanılama günlüklerini Event Hubs için akışın](../../azure-monitor/platform/resource-logs-stream-event-hubs.md).
+Event Hubs Akıllı İçgörüler kullanmak için Akıllı İçgörüler günlük verilerini Event Hubs akışa almak üzere yapılandırın, bkz. [ölçüm ve tanılama günlüğe kaydetme](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) ve [Azure tanılama günlüklerini akışa alma Event Hubs](../../azure-monitor/platform/resource-logs-stream-event-hubs.md).
 
 Özel izleme ve uyarı ayarlamak için Event Hubs kullanmak için, bkz. [Event Hubs ' de ölçümler ve tanılama günlükleri Ile neler yapılır](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs).
 
@@ -133,7 +133,7 @@ Tüm ölçümler, algılanan her bir performans sorununu kategorilere ayırır s
 
 - Algılanan performans sorununun ayrıntıları.
 - Algılanan sorunun kök neden analizi.
-- Mümkün olduğunda izlenen SQL veritabanının performansının nasıl geliştirileceğine ilişkin öneriler.
+- Mümkün olduğunda izlenen veritabanının performansının nasıl geliştirileceğine ilişkin öneriler.
 
 ## <a name="query-duration"></a>Sorgu süresi
 

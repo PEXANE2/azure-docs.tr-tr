@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: bir yük devretme grubuna veritabanı ekleme'
-description: Azure portal, PowerShell veya Azure CLı kullanarak bir otomatik yük devretme grubuna Azure SQL veritabanı ekleyin.
+description: Azure SQL veritabanı 'nda Azure portal, PowerShell veya Azure CLı kullanarak bir oto yük devretme grubuna veritabanı ekleme.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,17 +11,17 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 78904feac106fbd1b612dfd494a2e8a280b40b25
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4df537e8cce51cc7358784fc72ef8ae077614df7
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051489"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344569"
 ---
-# <a name="tutorial-add-an-azure-sql-database-to-an-auto-failover-group"></a>Öğretici: bir otomatik yük devretme grubuna Azure SQL veritabanı ekleme
+# <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Öğretici: bir Azure SQL veritabanını bir oto yük devretme grubuna ekleme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[Yük devretme grubu](auto-failover-group-overview.md) , birden çok coğrafi çoğaltılan veritabanını gruplamayı sağlayan, bildirime dayalı bir soyutlama katmanıdır. Azure SQL veritabanı için bir yük devretme grubu yapılandırmayı ve Azure portal, PowerShell veya Azure CLı kullanarak yük devretmeyi test yapmayı öğrenin.  Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+[Yük devretme grubu](auto-failover-group-overview.md) , birden çok coğrafi çoğaltılan veritabanını gruplamayı sağlayan, bildirime dayalı bir soyutlama katmanıdır. Azure SQL veritabanı için bir yük devretme grubu yapılandırmayı ve Azure portal, PowerShell veya Azure CLı kullanarak yük devretmeyi test yapmayı öğrenin.  Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -29,9 +29,9 @@ ms.locfileid: "84051489"
 > - İki sunucu arasında veritabanı için bir yük devretme grubu oluşturun.
 > - Yük devretme testi.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="the-portal"></a>[Portal](#tab/azure-portal)
 
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 
@@ -44,7 +44,7 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 - Azure aboneliği. Henüz bir [hesabınız yoksa ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Öğreticiyi tamamlayabilmeniz için aşağıdaki öğelerin bulunduğundan emin olun:
 
@@ -61,7 +61,7 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 
 Bu adımda, var olan bir sunucu ile başka bir bölgedeki yeni bir sunucu arasında bir [Yük devretme grubu](auto-failover-group-overview.md) oluşturacaksınız. Ardından örnek veritabanını yük devretme grubuna ekleyin.
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="the-portal"></a>[Portal](#tab/azure-portal)
 
 Yük devretme grubunuzu oluşturun ve Azure portal kullanarak veritabanınızı veritabanına ekleyin.
 
@@ -172,7 +172,7 @@ Yük devretme grubunuzu oluşturun ve PowerShell 'i kullanarak veritabanınızı
 | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Azure SQL veritabanı 'nda bir veya daha fazla veritabanını alır. |
 | [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Azure SQL veritabanı 'nda bir yük devretme grubuna bir veya daha fazla veritabanı ekler. |
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Yük devretme grubunuzu oluşturun ve Azure CLı kullanarak veritabanınızı veritabanına ekleyin.
 
@@ -207,7 +207,7 @@ Yük devretme grubunuzu oluşturun ve Azure CLı kullanarak veritabanınızı ve
 
 Bu adımda, yük devretme grubunuzu ikincil sunucuya devreder ve sonra Azure portal kullanarak yeniden başarısız olursunuz.
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="the-portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal kullanarak yük devretmeyi test edin.
 
@@ -225,10 +225,10 @@ Azure portal kullanarak yük devretmeyi test edin.
 1. Örnek veritabanınızı içeren yük devretme grubunuzun yükünü devretmek için görev bölmesinden **Yük devretmeyi** seçin.
 1. TDS oturumlarının kesileceğini bildiren uyarıda **Evet** ' i seçin.
 
-   ![SQL veritabanınızı içeren yük devretme grubunuzun yükünü devreder](./media/failover-group-add-single-database-tutorial/failover-sql-db.png)
+   ![SQL veritabanı 'nda veritabanınızı içeren yük devretme grubunuzun yükünü devreder](./media/failover-group-add-single-database-tutorial/failover-sql-db.png)
 
 1. Hangi sunucunun artık birincil olduğunu ve hangi sunucunun ikincil olduğunu gözden geçirin. Yük devretme başarılı olursa iki sunucu, bulunan rolleri değiştirmiş olmalıdır.
-1. Sunucuları ilk rollerine geri dönmek için **Yük devretmeyi** yeniden seçin.
+1. Sunucuları özgün rollerine geri dönmek için **Yük devretmeyi** yeniden seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -291,7 +291,7 @@ Yük devretme grubunu birincil sunucuya geri çevir:
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Azure SQL veritabanı yük devretme gruplarını alır veya listeler. |
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Bir Azure SQL veritabanı yük devretme grubunun yük devretmesini yürütür. |
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLı kullanarak yük devretmeyi test edin.
 
@@ -331,7 +331,7 @@ Yük devretme grubunu birincil sunucuya geri çevir:
 
 Kaynak grubunu silerek kaynakları temizleyin.
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="the-portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal kullanarak kaynak grubunu silin.
 
@@ -359,7 +359,7 @@ PowerShell kullanarak kaynak grubunu silin.
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu kaldırır |
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLı kullanarak kaynak grubunu silin.
 
@@ -419,7 +419,7 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | [az SQL yük devretme-grup kümesi-birincil](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Geçerli birincil sunucudaki tüm veritabanlarının yükünü devretmek için yük devretme grubunun birincil kısmını ayarlayın. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="the-portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal için kullanılabilir komut yok.
 
@@ -429,7 +429,7 @@ Diğer Azure SQL veritabanı betiklerini buradan bulabilirsiniz: [Azure PowerShe
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir yük devretme grubuna bir Azure SQL veritabanı eklediniz ve yük devretmeyi test edersiniz. Şunları öğrendiniz:
+Bu öğreticide, Azure SQL veritabanı 'nda bir yük devretme grubuna bir veritabanı eklediniz ve yük devretme işlemi test edildi. Şunları öğrendiniz:
 
 > [!div class="checklist"]
 >

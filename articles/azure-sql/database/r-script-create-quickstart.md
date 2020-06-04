@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6645b50a6cd2d2145f9510ca2e2de0ee702fc3ad
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9b78b696b42431c744c30c91a730fdc7ec8c1032
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054698"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324615"
 ---
 # <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Hızlı başlangıç: Azure SQL veritabanı Machine Learning Services basit R betikleri oluşturma ve çalıştırma (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta, Azure SQL veritabanı 'nda Machine Learning Services 
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Azure SQL veritabanı 'nda](single-database-create-quickstart.md) [sunucu düzeyinde güvenlik duvarı kuralına](firewall-create-server-level-portal-quickstart.md) sahip bir veritabanı
@@ -41,7 +41,7 @@ Bu örnek, iyi biçimlendirilmiş bir R betiğini kaydırmak için [sp_execute_e
 
 R betiğini çalıştırmak için, [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql)sistem saklı yordamına bir bağımsız değişken olarak geçireceğiz.
 
-Aşağıdaki adımlarda, SQL veritabanınızda Bu örnek R betiğini çalıştıracaksınız:
+Aşağıdaki adımlarda, veritabanınızda Bu örnek R betiğini çalıştıracaksınız:
 
 ```r
 a <- 1
@@ -51,9 +51,9 @@ d <- a*b
 print(c(c, d))
 ```
 
-1. **SQL Server Management Studio** açın ve SQL veritabanınıza bağlanın.
+1. **SQL Server Management Studio** açın ve veritabanınıza bağlanın.
 
-   Bağlantı için yardıma ihtiyacınız varsa bkz. [hızlı başlangıç: Azure SQL veritabanına bağlanmak ve sorgu sorgulamak için SQL Server Management Studio kullanma](connect-query-ssms.md).
+   Bağlantı için yardıma ihtiyacınız varsa bkz. [hızlı başlangıç: Azure SQL veritabanı 'nda bir veritabanına bağlanmak ve veritabanını sorgulamak için SQL Server Management Studio kullanın](connect-query-ssms.md).
 
 1. Tüm R betiğini [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) saklı yordamına geçirin.
 
@@ -70,7 +70,7 @@ print(c(c, d))
     '
     ```
 
-   Hata alırsanız Machine Learning Services (R ile) genel önizleme sürümü SQL veritabanınız için etkinleştirilmemiş olabilir. Yukarıdaki [önkoşulları](#prerequisites) inceleyin.
+   Herhangi bir hata alırsanız, Machine Learning Services (R ile) genel önizlemesi veritabanınız için etkinleştirilmemiş olabilir. Yukarıdaki [önkoşulları](#prerequisites) inceleyin.
 
    > [!NOTE]
    > Yönetici değilseniz, dış kodu otomatik olarak çalıştırabilirsiniz. Komutunu kullanarak diğer kullanıcılara izin verebilirsiniz:
@@ -196,7 +196,7 @@ Varsayılan olarak, [sp_execute_external_script](https://docs.microsoft.com/sql/
 
 ## <a name="check-r-version"></a>R sürümünü denetleme
 
-SQL veritabanınızda hangi R sürümünün yüklü olduğunu görmek isterseniz, aşağıdaki betiği çalıştırın.
+Veritabanınıza hangi R sürümünün yüklendiğini görmek isterseniz, aşağıdaki betiği çalıştırın.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -229,7 +229,7 @@ nickname       Someone to Lean On
 
 ## <a name="list-r-packages"></a>R paketlerinin listesi
 
-Microsoft, SQL veritabanınızda önceden Machine Learning Services ile birlikte yüklenmiş bir dizi R paketi sunar.
+Microsoft, veritabanınıza Machine Learning Services önceden yüklenmiş bir dizi R paketi sağlar.
 
 Sürüm, bağımlılıklar, lisans ve kitaplık yolu bilgileri de dahil olmak üzere hangi R paketlerinin yüklü olduğunu görmek için aşağıdaki betiği çalıştırın.
 

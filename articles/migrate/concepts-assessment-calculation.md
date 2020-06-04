@@ -3,12 +3,12 @@ title: Azure geçişi sunucu değerlendirmesi ile değerlendirmeler
 description: Azure geçişi sunucu değerlendirmesinde değerlendirmeler hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: bfae3f23dd16b0d1a09b49f56efbca88a7bea08f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: ee6b13edd12109b7f748abeaf13a5e8f3ded2a8e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171013"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343957"
 ---
 # <a name="assessments-in-azure-migrate-server-assessment"></a>Azure geçişi 'nde değerlendirmeler: Sunucu değerlendirmesi
 
@@ -110,14 +110,14 @@ Sunucu değerlendirmesinde bir değerlendirmeye dahil edilmiştir:
 **Hedef konum** | Geçirmek istediğiniz konum. Sunucu değerlendirmesi Şu anda bu hedef Azure bölgelerini destekliyor:<br/><br/> Avustralya Doğu, Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Kanada Doğu, Orta Hindistan, Orta ABD, Çin Doğu, Çin Kuzey, Doğu Asya, Doğu ABD, Doğu ABD 2, Almanya Orta, Almanya Kuzeydoğu, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, Güney Hindistan, UK Güney, UK Batı, US gov Arizona, US Gov Teksas, US Gov Virginia , Orta Batı ABD, Batı Avrupa, Batı Hindistan, Batı ABD ve Batı ABD 2.
 **Hedef depolama diski (örneğin, boyutlandırma)** | Azure 'da depolama için kullanılacak disk türü. <br/><br/> Hedef depolama diskini Premium tarafından yönetilen, Standart SSD yönetilen veya Standart HDD yönetilen olarak belirtin.
 **Hedef depolama diski (performans tabanlı boyutlandırma)** | Hedef depolama diskinin türünü otomatik, Premium tarafından yönetilen, Standart HDD yönetilen veya Standart SSD yönetilen olarak belirtir.<br/><br/> **Otomatik**: disk önerisi, disklerin performans verilerine göre BELIRLENIR, IOPS ve aktarım hızı anlamına gelir.<br/><br/>**Premium veya standart**: değerlendirme, seçilen depolama türü içinde bir disk SKU 'su önerir.<br/><br/> % 99,9 için tek örnekli bir VM hizmet düzeyi sözleşmesi (SLA) istiyorsanız Premium ile yönetilen diskler kullanmayı düşünün. Bu kullanım, değerlendirmede tüm disklerin Premium yönetilen diskler olarak önerilmesini sağlar.<br/><br/> Azure geçişi, geçiş değerlendirmesi için yalnızca yönetilen diskleri destekler.
-**Azure ayrılmış VM örnekleri** | Değerlendirmede maliyet tahminleri bunları hesaba alacak şekilde [ayrılmış örnekleri](https://azure.microsoft.com/pricing/reserved-vm-instances/) belirtir.<br/><br/> Ayrılmış örnekler seçiliyse, varsayılan ayarları indirimli (%) olarak bırakın. ve VM çalışma süresi özellikleri.<br/><br/> Azure geçişi Şu anda Azure ayrılmış VM örneklerini yalnızca Kullandıkça Öde teklifleri için desteklemektedir.
+**Azure ayrılmış VM örnekleri** | Değerlendirmede maliyet tahminleri bunları hesaba alacak şekilde [ayrılmış örnekleri](https://azure.microsoft.com/pricing/reserved-vm-instances/) belirtir.<br/><br/> ' Ayrılmış örnekler ' seçtiğinizde, ' Discount (%) ' ve ' VM çalışma süresi ' özellikleri geçerli değil.<br/><br/> Azure geçişi Şu anda Azure ayrılmış VM örneklerini yalnızca Kullandıkça Öde teklifleri için desteklemektedir.
 **Boyutlandırma ölçütü** | Azure VM 'yi farenin altına almak için kullanılır.<br/><br/> As, boyutlandırma veya performans tabanlı boyutlandırma kullanın.
 **Performans geçmişi** | Performans tabanlı boyutlandırma ile kullanılır. Performans geçmişi performans verileri değerlendirilirken kullanılan süreyi belirtir.
 **Yüzdebirlik kullanımı** | Performans tabanlı boyutlandırma ile kullanılır. Yüzdebirlik kullanımı, doğru hale getirmek için kullanılan performans örneğinin yüzdebirlik değerini belirtir.
 **VM serisi** | Doğru hale getirmek için göz önünde bulundurulması istediğiniz Azure VM Serisi. Örneğin, Azure 'da bir serisi VM gerektiren bir üretim ortamınız yoksa, seri listesinden bir serisi dışarıda bırakabilirsiniz.
 **Konfor katsayısı** | Değerlendirme sırasında kullanılan arabellek. VM 'Ler için CPU, RAM, disk ve ağ kullanım verilerine uygulanır. Dönemsel kullanım, kısa performans geçmişi ve gelecekteki kullanımlarda olası artışlar gibi sorunlar için BT hesapları.<br/><br/> Örneğin, %20 kullanımındaki bir 10 çekirdekli VM normalde iki çekirdekli bir VM ile sonuçlanır. 2,0, bir BT faktörü ile bunun yerine dört çekirdekli bir VM olur.
-**Sunduğu** | Kayıtlı olduğunuz [Azure teklifi](https://azure.microsoft.com/support/legal/offer-details/) . Sunucu değerlendirmesi, bu teklifin maliyetini tahmin eder.
-**Para Birimi** | Hesabınız için faturalandırma para birimi.
+**Teklif** | Kayıtlı olduğunuz [Azure teklifi](https://azure.microsoft.com/support/legal/offer-details/) . Sunucu değerlendirmesi, bu teklifin maliyetini tahmin eder.
+**Para birimi** | Hesabınız için faturalandırma para birimi.
 **İndirim (%)** | Azure teklifinin üzerine aldığınız, aboneliğe özgü tüm indirimler. Varsayılan ayar, %0’dır.
 **VM çalışma süresi** | Sürekli olarak çalışmayan Azure VM 'Leri için her ay gün ve saat başına gün cinsinden süre. Maliyet tahminleri bu süreye göre hesaplanır.<br/><br/> Varsayılan değerler ayda 31 gün ve günde 24 saat değerlerdir.
 **Azure Hibrit Avantajı** | Yazılım Güvencesi olup olmadığını ve [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-use-benefit/)uygun olduğunu belirtir. Ayarın varsayılan değeri "Evet" ise, Windows dışındaki işletim sistemleri için Azure fiyatları Windows VM 'Leri olarak kabul edilir.
@@ -154,7 +154,8 @@ Sunucu değerlendirmesi, Azure üzerinde çalışıp çalışmadığını anlama
 Sunucu değerlendirmesi, sanal makine özelliklerini gözden geçirmede bir makinenin Konuk işletim sistemine bakar ve Azure üzerinde çalışıp çalışmadığını tespit edebilir.
 
 > [!NOTE]
-> VMware VM 'lerinin Konuk analizini işlemek için sunucu değerlendirmesi, vCenter Server içinde VM için belirtilen işletim sistemini kullanır. VMware üzerinde çalışan Linux VM 'Leri için sunucu değerlendirmesi Şu anda Konuk işletim sisteminin çekirdek sürümünü tanımlamıyor.
+> VMware VM 'lerinin Konuk analizini işlemek için sunucu değerlendirmesi, vCenter Server içinde VM için belirtilen işletim sistemini kullanır. Ancak, vCenter Server Linux VM işletim sistemleri için çekirdek sürümü sağlamaz. Sürümü bulmak için [uygulama bulmayı](https://docs.microsoft.com/azure/migrate/how-to-discover-applications)ayarlamanız gerekir. Daha sonra, Gereç, uygulama bulmayı ayarlarken belirttiğiniz Konuk kimlik bilgilerini kullanarak sürüm bilgilerini bulur.
+
 
 Sunucu değerlendirmesi, işletim sistemine bağlı olarak Azure hazırlığını belirlemek için aşağıdaki mantığı kullanır:
 
@@ -199,7 +200,8 @@ Performans tabanlı boyutlandırma kullanırsanız, sunucu değerlendirmesi, boy
 
 Azure geçişi, depolama boyutu için makineye bağlı her diski bir Azure diskine eşlemeye çalışır. Boyutlandırma aşağıdaki gibi çalışmaktadır:
 
-1. Sunucu değerlendirmesi, gereken toplam ıOPS 'yi almak için bir diskin okuma ve yazma ıOPS 'sini ekler. Benzer şekilde, her diskin toplam aktarım hızını almak için okuma ve yazma aktarım hızı değerlerini ekler.
+1. Sunucu değerlendirmesi, gereken toplam ıOPS 'yi almak için bir diskin okuma ve yazma ıOPS 'sini ekler. Benzer şekilde, her diskin toplam aktarım hızını almak için okuma ve yazma aktarım hızı değerlerini ekler. İçeri aktarma tabanlı değerlendirmeler söz konusu olduğunda toplam ıOPS, toplam üretilen iş ve toplam No ' u sağlama seçeneğiniz vardır. ayrı ayrı disk ayarları belirtmeden içeri aktarılan dosyadaki diskler. Bunu yaparsanız, tek bir disk boyutlandırma atlanır ve sağlanan veriler doğrudan boyutlandırmayı hesaplamak için kullanılır ve uygun bir VM SKU 'SU seçer.
+
 1. Depolama türünü otomatik olarak belirttiyseniz, seçilen tür, etkin ıOPS ve aktarım hızı değerlerini temel alır. Sunucu değerlendirmesi, diskin Azure 'da bir Standart HDD, Standart SSD veya Premium diskle eşlenip eşlenmeyeceğini belirler. Depolama türü bu disk türlerinden birine ayarlanırsa, sunucu değerlendirmesi seçilen depolama türü içinde bir disk SKU 'SU bulmaya çalışır.
 1. Diskler şu şekilde seçilir:
     - Sunucu değerlendirmesi gereken ıOPS ve aktarım hızına sahip bir disk bulamazsa, makineyi Azure için uygun değil olarak işaretler.

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 03/18/2020
-ms.openlocfilehash: 361ba17532d27a7020be1b6874993da999f48604
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/3/2020
+ms.openlocfilehash: a6d340543289fa07370e053681599348a86940cf
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79527716"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343413"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>MariaDB sunucu sürümleri için desteklenen Azure veritabanı
 
@@ -26,15 +26,15 @@ MariaDB için Azure veritabanı şu anda şu sürümü desteklemektedir:
 
 ## <a name="mariadb-version-102"></a>MariaDB sürüm 10,2
 
-Düzeltme Eki Sürümü: 10.2.25
+Düzeltme Eki Sürümü: 10.2.31
 
-Bu sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [MariaDB belgelerine](https://mariadb.com/kb/en/library/mariadb-10225-release-notes/) bakın.
+Bu sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [MariaDB belgelerine](https://mariadb.com/kb/en/mariadb-10231-release-notes/) bakın.
 
 ## <a name="mariadb-version-103"></a>MariaDB sürüm 10,3
 
-Düzeltme Eki Sürümü: 10.3.16
+Düzeltme Eki Sürümü: 10.3.22
 
-Bu sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [MariaDB belgelerine](https://mariadb.com/kb/en/library/mariadb-10316-release-notes/) bakın.
+Bu sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [MariaDB belgelerine](https://mariadb.com/kb/en/mariadb-10322-release-notes/) bakın.
 
 ## <a name="managing-updates-and-upgrades"></a>Güncelleştirmeleri ve yükseltmeleri yönetme
 Hizmet, düzeltme eki güncelleştirmelerine yönelik yükseltmeleri otomatik olarak yönetir. Örneğin, 10.2.21 to 10.2.23.  

@@ -11,21 +11,21 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/14/2020
-ms.openlocfilehash: 6f7c90791025f14e743a83693503fe235792c603
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e5fd842e47c606c8f41aafe72253c1c4a1e885f3
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051958"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324411"
 ---
-# <a name="configure--manage-content-reference---azure-sql-database"></a>İçerik başvurusunu yapılandırma & yönetme-Azure SQL veritabanı
+# <a name="configure-and-manage-content-reference---azure-sql-database"></a>İçerik başvurusunu yapılandırma ve yönetme-Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Bu makalede, Azure SQL veritabanınızı yönetmenize ve yapılandırmanıza yardımcı olabilecek çeşitli kılavuzların, betiklerin ve açıklamalarının içerik başvurusunu bulabilirsiniz. 
 
 ## <a name="load-data"></a>Veri yükleme
 
-- [SQL veritabanına geçiş](migrate-to-database-from-sql-server.md)
+- [SQL Veritabanına geçiş](migrate-to-database-from-sql-server.md)
 - [Geçişten sonra SQL veritabanını yönetmeyi](manage-data-after-migrating-to-database.md)öğrenin.
 - [Veritabanı kopyalama](database-copy.md)
 - [BACPAC’ten veritabanını içeri aktarma](database-import.md)
@@ -35,10 +35,10 @@ Bu makalede, Azure SQL veritabanınızı yönetmenize ve yapılandırmanıza yar
 
 ## <a name="configure-features"></a>Yapılandırma özellikleri
 
-- [Azure AD kimlik doğrulamasını yapılandırma](authentication-aad-configure.md)
+- [Azure Active Directory (Azure AD) kimlik doğrulamasını yapılandırma](authentication-aad-configure.md)
 - [Koşullu erişimi yapılandırma](conditional-access-configure.md)
-- [Çok faktörlü AAD kimlik doğrulaması](authentication-mfa-ssms-overview.md)
-- [Çok faktörlü kimlik doğrulamasını yapılandırma](authentication-mfa-ssms-configure.md)
+- [Multi-Factor Azure AD kimlik doğrulaması](authentication-mfa-ssms-overview.md)
+- [Multi-Factor Authentication Yapılandır](authentication-mfa-ssms-configure.md)
 - [Zamana bağlı saklama ilkesini yapılandırma](temporal-tables-retention-policy.md)
 - [KAG ile TDE Yapılandırması](transparent-data-encryption-byok-configure.md)
 - [TDE KAG anahtarlarını döndürme](transparent-data-encryption-byok-key-rotation.md)
@@ -88,7 +88,7 @@ Bu makalede, Azure SQL veritabanınızı yönetmenize ve yapılandırmanıza yar
 - [Data Sync için en iyi deneyimler](sql-data-sync-best-practices.md)
 - [Data Sync’de sorun giderme](sql-data-sync-troubleshoot.md)
 
-## <a name="elastic-database-jobs"></a>Elastik Veritabanı İşleri
+## <a name="elastic-database-jobs"></a>Elastik Veritabanı işleri
 
 - [Oluşturma ve yönetme](elastic-jobs-powershell-create.md) PowerShell kullanarak elastik veritabanı Işleri.
 - [Oluşturma ve yönetme](elastic-jobs-tsql-create-manage.md) Transact-SQL kullanan elastik veritabanı Işleri.
@@ -128,11 +128,12 @@ Bu makalede, Azure SQL veritabanınızı yönetmenize ve yapılandırmanıza yar
 - [Elastik havuzlara yönelik tasarım](disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 - [Uygulama yükseltmelerine yönelik tasarım](manage-application-rolling-upgrade.md)
 
-### <a name="design-multi-tenant-saas-applications"></a>Çok kiracılı SaaS uygulamaları tasarlama
+### <a name="design-multi-tenant-software-as-a-service-saas-applications"></a>Çok kiracılı hizmet olarak yazılım (SaaS) uygulamaları tasarlama
 
 - [SaaS tasarım desenleri](saas-tenancy-app-design-patterns.md)
 - [SaaS video dizinleyicisi](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [SaaS uygulama güvenliği](saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [SQL yönetilen örneği Için nasıl yapılır kılavuzlarından](../managed-instance/how-to-content-reference-guide.md) daha fazla bilgi edinin
+
+- [Azure SQL yönetilen örneği Için nasıl yapılır kılavuzlarından](../managed-instance/how-to-content-reference-guide.md) daha fazla bilgi edinin

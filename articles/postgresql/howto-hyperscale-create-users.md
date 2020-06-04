@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 1/8/2019
-ms.openlocfilehash: 684116f92544e61a892b3653f8539f9f8f03e0c9
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b8d47d1036473af1b367cc0266aae3ea1bceeada
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584088"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343940"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda Kullanıcı oluşturma-hiper ölçek (Citus)
 
@@ -30,12 +30,12 @@ PostgreSQL altyapısı, veritabanı nesnelerine erişimi denetlemek için [Rolle
 
 Hiper ölçek yönetilen bir PaaS hizmeti olduğundan, yalnızca Microsoft `postgres` süper kullanıcı rolüyle oturum açabilir. Sınırlı yönetim erişimi için hiper ölçek `citus` rolü sağlar.
 
-`citus` Rol izinleri:
+`citus`Rol izinleri:
 
 * Tüm yapılandırma değişkenlerini, hatta yalnızca süper kullanıcılar için görünür olan değişkenleri okuyun.
-* Tüm pg\_stat\_ \* görünümlerini okuyun ve normalde yalnızca süper kullanıcılar için görünür olan, hatta diğer istatistiklerle ilgili uzantıları kullanın.
+* Tüm pg \_ stat \_ \* görünümlerini okuyun ve normalde yalnızca süper kullanıcılar için görünür olan, hatta diğer istatistiklerle ilgili uzantıları kullanın.
 * Büyük olasılıkla uzun bir süre boyunca tablolardaki kilitleri paylaşma ERIŞIMI olabilecek izleme işlevlerini yürütün.
-* [PostgreSQL uzantıları oluşturun](concepts-hyperscale-extensions.md) (rol öğesinin `azure_pg_admin`üyesi olduğu için).
+* [PostgreSQL uzantıları oluşturun](concepts-hyperscale-extensions.md) (rol öğesinin üyesi olduğu için `azure_pg_admin` ).
 
 Özellikle, `citus` rolde bazı kısıtlamalar vardır:
 
@@ -60,22 +60,17 @@ Kullanıcı, sunucu grubunun düzenleyici düğümünde oluşturulacak ve tüm �
 
 Yeni Kullanıcı rolleri genellikle kısıtlanmış ayrıcalıklarla veritabanı erişimi sağlamak için kullanılır. Kullanıcı ayrıcalıklarını değiştirmek için, PgAdmin veya psql gibi bir araç kullanarak standart PostgreSQL komutlarını kullanın. (Bkz. Hyperscale (Citus) hızlı başlangıç bölümünde [psql ile bağlanma](quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql) .)
 
-Örneğin, okumaya `db_user` `mytable`izin vermek için izin verin:
+Örneğin, okumaya izin vermek için `db_user` `mytable` izin verin:
 
 ```sql
 GRANT SELECT ON mytable TO db_user;
 ```
 
-Hiper ölçek (Citus) tek tablo verme deyimlerini tüm çalışan düğümlerine uygulayarak tüm küme aracılığıyla yayar. Bununla birlikte, sistem genelinde (örneğin, bir şemadaki tüm tablolar için) her bir tarih düğümünde çalıştırılması gereken Izin verir.  `run_command_on_workers()` Yardımcı işlevini kullanın:
+Hiper ölçek (Citus) tek tablo verme deyimlerini tüm çalışan düğümlerine uygulayarak tüm küme aracılığıyla yayar. Ayrıca sistem genelinde (örneğin, bir şemadaki tüm tablolar için) Izin verir:
 
 ```sql
--- applies to the coordinator node
+-- applies to the coordinator node and propagates to workers
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
-
--- make it apply to workers as well
-SELECT run_command_on_workers(
-  'GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;'
-);
 ```
 
 ## <a name="how-to-delete-a-user-role-or-change-their-password"></a>Kullanıcı rolünü silme veya parolasını değiştirme
@@ -84,7 +79,7 @@ Bir kullanıcıyı güncelleştirmek için, hiper ölçek sunucu grubunuzun **Ro
 
    ![Rol düzenleme](media/howto-hyperscale-create-users/edit-role.png)
 
-`citus` Rol ayrıcalıklı ve silinemez.
+`citus`Rol ayrıcalıklı ve silinemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

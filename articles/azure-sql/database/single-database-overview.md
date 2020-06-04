@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: f6b705da74fc939cab5f72e6335278207b98dc1a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8f92fe8e4a4ebbc2d970bf28e415859249b9f67c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041767"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343328"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek bir veritabanı nedir?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Tek veritabanı kaynak türü, Azure SQL veritabanı 'nda kendi kaynak kümesiyle bir veritabanı oluşturur ve bir [sunucu](logical-servers.md)aracılığıyla yönetilir. Tek bir veritabanı ile, her veritabanı birbirleriyle ve taşınabilir, her biri [DTU tabanlı satın alma modeli](service-tiers-dtu.md) veya [sanal çekirdek tabanlı satın alma modeli](service-tiers-vcore.md) ve garantili bir işlem boyutu içindeki kendi hizmet katmanına sahip ve taşınabilir.
+Tek veritabanı kaynak türü, Azure SQL veritabanı 'nda kendi kaynak kümesiyle bir veritabanı oluşturur ve bir [sunucu](logical-servers.md)aracılığıyla yönetilir. Tek bir veritabanı ile, her veritabanı yalıtılmış ve taşınabilir. Her birinin [DTU tabanlı satın alma modeli](service-tiers-dtu.md) veya [sanal çekirdek tabanlı satın alma modeli](service-tiers-vcore.md) ve garantili bir işlem boyutu içinde kendi hizmet katmanı vardır.
 
 > [!IMPORTANT]
 > Tek veritabanı, Azure SQL veritabanı için bir kaynak türüdür. Diğer [elastik havuzlarıdır](elastic-pool-overview.md).
@@ -46,7 +46,7 @@ Tek veritabanları ve elastik havuzlar birçok kullanılabilirlik özelliği sa�
 
 Uygulamaların kullandığı çoğu Transact-SQL özelliği hem Microsoft SQL Server hem de Azure SQL veritabanı 'nda tam olarak desteklenmektedir. Örneğin, veri türleri, işleçler, dize, aritmetik, mantıksal ve imleç işlevleri gibi çekirdek SQL bileşenleri, SQL Server ve SQL veritabanı 'nda aynı şekilde çalışır. Bununla birlikte, DDL (veri tanımlama dili) ve DML (veri işleme dili) öğelerinde yalnızca kısmen desteklenen (Bu makalede daha sonra tartıştığımız) bir T-SQL farkı vardır.
 
-Ayrıca, Azure SQL veritabanı, özellikleri ana veritabanı ve işletim sistemi bağımlılıklarından yalıtmak üzere tasarlandığından, desteklenmeyen bazı özellikler ve söz dizimi vardır. Bu nedenle, çoğu sunucu düzeyi etkinlik SQL veritabanı için uygun değildir. T-SQL deyimleri ve seçenekleri, sunucu düzeyindeki seçenekleri, işletim sistemi bileşenlerini yapılandırıp veya dosya sistemi yapılandırması belirttiğinizde kullanılamaz. Bu tür özellikler gerektiğinde, SQL veritabanından veya başka bir Azure özelliğinden ya da hizmetinden başka bir şekilde, uygun bir alternatif vardır.
+Ayrıca, Azure SQL veritabanı, özellikleri ana veritabanı ve işletim sistemi bağımlılıklarından yalıtmak üzere tasarlandığından, desteklenmeyen bazı özellikler ve söz dizimi vardır. Bu nedenle, çoğu sunucu düzeyi etkinlik SQL veritabanı için uygun değildir. T-SQL deyimleri ve seçenekleri, sunucu düzeyi seçeneklerini yapılandırır, işletim sistemi bileşenlerini yapılandırır veya dosya sistemi yapılandırması ' nı belirtirseniz kullanılamaz. Bu tür özellikler gerektiğinde, SQL veritabanından veya başka bir Azure özelliğinden ya da hizmetinden başka bir şekilde, uygun bir alternatif vardır.
 
 Daha fazla bilgi için bkz. [SQL veritabanına geçiş sırasında Transact-SQL farklılıklarını çözümleme](transact-sql-tsql-differences-sql-server.md).
 
@@ -55,7 +55,7 @@ Daha fazla bilgi için bkz. [SQL veritabanına geçiş sırasında Transact-SQL 
 SQL veritabanı, uygulamanızın çeşitli güvenlik ve uyumluluk gereksinimlerini karşılamasına yardımcı olmak için bir dizi [yerleşik güvenlik ve uyumluluk](security-overview.md) özelliği sağlar.
 
 > [!IMPORTANT]
-> Azure SQL veritabanı, bir dizi uyumluluk standartlarına karşı sertifikalandırilmiştir. Daha fazla bilgi için SQL veritabanı uyumluluk sertifikalarının en güncel listesini bulabileceğiniz [Microsoft Azure Güven Merkezi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) ' ne bakın.
+> Azure SQL veritabanı, bir dizi uyumluluk standartlarına karşı sertifikalandırilmiştir. Daha fazla bilgi için, SQL veritabanı uyumluluk sertifikalarının en güncel listesini bulabileceğiniz [Microsoft Azure Güven Merkezi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)' ne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

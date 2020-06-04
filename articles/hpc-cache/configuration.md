@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: a3bab06166110a3627bb3a99d51ceb09b0c7ed80
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: e9eebc9e977c6065f08b996f5ab3f3e46bc1a134
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871419"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344280"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Ek Azure HPC önbellek ayarlarını yapılandırma
 
@@ -22,6 +22,9 @@ Bu makalede ayrıca Azure Blob depolama hedefleri için anlık görüntü özell
 Ayarları görmek için, önbelleğin **yapılandırma** sayfasını Azure Portal açın.
 
 ![Azure portal 'de yapılandırma sayfasının ekran görüntüsü](media/configuration.png)
+
+> [!TIP]
+> [Azure HPC Cache videosunu yönetme videosu](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) , yapılandırma sayfasını ve ayarlarını gösterir.
 
 ## <a name="adjust-mtu-value"></a>MTU değerini ayarla
 <!-- linked from troubleshoot-nas article -->
@@ -48,7 +51,7 @@ Kök sıkıştırarak etkinleştirildiğinde, istemciden gelen kök kullanıcıl
 
 Kök sıkıştırarak devre dışıysa, istemci kök kullanıcısı (UID 0) isteği, kök olarak bir arka uç NFS depolama sistemine geçirilir. Bu yapılandırma uygunsuz dosya erişimine izin verebilir.
 
-Önbellek üzerinde kök sıkıştırma ayarlama, depolama hedefleri olarak kullanılan NAS sistemlerinde gerekli ``no_root_squash`` ayar için telafi sağlanmasına yardımcı olabilir. ( [NFS depolama hedefi önkoşulları](hpc-cache-prereqs.md#nfs-storage-requirements)hakkında daha fazla bilgi edinin.) Ayrıca, Azure Blob depolama hedefleri ile birlikte kullanıldığında güvenliği de iyileştirebilir.
+Önbellek üzerinde kök sıkıştırma ayarlama, ``no_root_squash`` depolama hedefleri olarak kullanılan NAS sistemlerinde gerekli ayar için telafi sağlanmasına yardımcı olabilir. ( [NFS depolama hedefi önkoşulları](hpc-cache-prereqs.md#nfs-storage-requirements)hakkında daha fazla bilgi edinin.) Ayrıca, Azure Blob depolama hedefleri ile birlikte kullanıldığında güvenliği de iyileştirebilir.
 
 Varsayılan ayar **Evet**' tir. (Nisan 2020 ' den önce oluşturulan önbellekler varsayılan ayar **No**olabilir.)
 
@@ -73,4 +76,4 @@ Azure HPC Cache, günlük, haftalık ve aylık anlık görüntüleri yeni olanla
 * 8 haftalık anlık görüntüye kadar
 * en fazla 3 aylık anlık görüntü
 
-BLOB depolama hedefinin ad alanındaki `.snapshot` dizindeki anlık görüntülere erişin.
+`.snapshot`BLOB depolama hedefinin ad alanındaki dizindeki anlık görüntülere erişin.

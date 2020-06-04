@@ -2,14 +2,14 @@
 title: Hizmet kotaları ve limitleri
 description: Varsayılan Azure Batch kotaları, sınırları ve kısıtlamaları hakkında bilgi edinin ve kota artışlarının nasıl isteneceğini öğrenin
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 06/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3168c6fc60b2552129e9a11fbf6e8e24d9b37b14
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 45eefd10f7227509e7db8730e5e7192bd5833721
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84229845"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323901"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch hizmet kotaları ve limitleri
 
@@ -83,41 +83,41 @@ Batch hesabı kotalarınızı [Azure Portal][portal]görüntüleyin.
 1. **Yeni destek isteği**  >  **temelleri**' ni seçin.
 1. **Temel bilgiler**:
    
-    a. **Sorun türü**  >  **Hizmet ve abonelik limitleri (kotalar)**
+    1. **Sorun türü**  >  **Hizmet ve abonelik limitleri (kotalar)**
    
-    b. Aboneliğinizi seçin.
+    1. Aboneliğinizi seçin.
    
-    c. **Kota türü**  >  **Batch**
+    1. **Kota türü**  >  **Batch**
       
-    **İleri**’yi seçin.
+       **İleri**’yi seçin.
     
 1. **Ayrıntılar** bölümünde:
       
-    a. **Ayrıntıları sağla**bölümünde konumu, kota türünü ve Batch hesabını belirtin.
+    1. **Ayrıntıları sağla**bölümünde konumu, kota türünü ve Batch hesabını belirtin.
     
-    ![Toplu kota artışı][quota_increase]
+       ![Toplu kota artışı][quota_increase]
 
-    Kota türleri şunlardır:
+       Kota türleri şunlardır:
 
-    * **Batch hesabı başına**  
-        Adanmış ve düşük öncelikli çekirdekler ve iş ve havuz sayısı dahil olmak üzere tek bir Batch hesabına özgü değerler.
+       * **Batch hesabı başına**  
+         Adanmış ve düşük öncelikli çekirdekler ve iş ve havuz sayısı dahil olmak üzere tek bir Batch hesabına özgü değerler.
         
-    * **Bölge başına**  
-        Bir bölgedeki tüm Batch hesaplarına uygulanan ve abonelik başına bölge başına toplu Işlem hesaplarının sayısını içeren değerler.
+       * **Bölge başına**  
+         Bir bölgedeki tüm Batch hesaplarına uygulanan ve abonelik başına bölge başına toplu Işlem hesaplarının sayısını içeren değerler.
 
-    Düşük öncelikli kota, tüm VM serileri genelinde tek bir değerdir. Kısıtlanmış SKU 'Lara ihtiyacınız varsa **düşük öncelikli çekirdekler** ' ı seçmeniz ve isteğe sanal makine aileleri eklemeniz gerekir.
+       Düşük öncelikli kota, tüm VM serileri genelinde tek bir değerdir. Kısıtlanmış SKU 'Lara ihtiyacınız varsa **düşük öncelikli çekirdekler** ' ı seçmeniz ve isteğe sanal makine aileleri eklemeniz gerekir.
 
-    b. [İşletmenizin etkilerine][support_sev]göre **önem derecesi** seçin.
+    1. [İşletmenizin etkilerine][support_sev]göre **önem derecesi** seçin.
 
-    **İleri**’yi seçin.
+       **İleri**’yi seçin.
 
 1. **İletişim bilgileri**:
    
-    a. **Tercih edilen bir iletişim yöntemi**seçin.
+    1. **Tercih edilen bir iletişim yöntemi**seçin.
    
-    b. Gerekli iletişim ayrıntılarını doğrulayın ve girin.
+    1. Gerekli iletişim ayrıntılarını doğrulayın ve girin.
    
-    Destek isteğini göndermek için **Oluştur** ' u seçin.
+       Destek isteğini göndermek için **Oluştur** ' u seçin.
 
 Destek isteğinizi gönderdikten sonra, Azure desteği sizinle iletişim kuracaktır. Kota istekleri, birkaç dakika veya en fazla iki iş günü içinde tamamlanabilir.
 

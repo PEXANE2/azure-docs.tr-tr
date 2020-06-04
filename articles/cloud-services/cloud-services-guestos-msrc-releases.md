@@ -10,40 +10,39 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/14/2020
+ms.date: 6/2/2020
 ms.author: yohaddad
-ms.openlocfilehash: 9ea1caff5a0aba99bcd0d21b97650d075b830d2a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 89344c38c719a06d8241ec34136a75c96de9f901
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656401"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322881"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
 
 ## <a name="may-2020-guest-os"></a>Mayıs 2020 Konuk işletim sistemi
->[!NOTE]
->Nisan Konuk işletim sistemi, şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine alındı. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Nisan Konuk işletim sisteminde aşağıdaki düzeltme ekleri bulunmaktadır. Bu liste değişebilir. "
+
 
 | Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-|  Rel 20-05   |  [4556798]  |  Internet Explorer   |  2,98, 3,85, 4,78  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4556813]  |  En son toplu güncelleştirme (LCU)   |  5,43  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4551853]  |  En son toplu güncelleştirme (LCU)   |  6,19  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4552940]  |  Aylık toplu   |  2,98  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4556836]  |  Aylık toplu   |  2,98  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4555449]  |  Hizmet yığını güncelleştirmesi   |  2,98  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4552920]  |  Aylık toplu   |  2,98  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4552979]  |  Aylık toplu   |  3,85  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4556840]  |  Aylık toplu   |  3,85  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4552947]  |  Aylık toplu   |  3,85  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4552982]  |  Aylık toplu   |  3,85  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4552946]  |  Aylık toplu   |  4,78  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4556846]  |  Aylık toplu   |  4,78  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4550994]  |  Hizmet yığını güncelleştirmesi   |  5,43  |  14 Nisan 2020  |
-|  Rel 20-05   |  [4552924]  |  Aylık toplu   |  6,19  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4549947]  |  Hizmet yığını güncelleştirmesi   |  6,19  |  14 Nisan 2020  |
+|  Rel 20-05   |  [4556798]  |  Internet Explorer   |  [2,98], [3,85], [4,78]  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4556813]  |  En son toplu güncelleştirme (LCU)   |  [5,43]  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4551853]  |  En son toplu güncelleştirme (LCU)   |  [6,19]  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4552940]  |  Aylık toplu   |  [2,98]  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4556836]  |  Aylık toplu   |  [2,98]  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4555449]  |  Hizmet yığını güncelleştirmesi   |  [2,98]  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4552920]  |  Aylık toplu   |  [2,98]  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4552979]  |  Aylık toplu   |  [3,85]  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4556840]  |  Aylık toplu   |  [3,85]  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4552947]  |  Aylık toplu   |  [3,85]  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4552982]  |  Aylık toplu   |  [3,85]  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4552946]  |  Aylık toplu   |  [4,78]  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4556846]  |  Aylık toplu   |  [4,78]  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4550994]  |  Hizmet yığını güncelleştirmesi   |  [5,43]  |  14 Nisan 2020  |
+|  Rel 20-05   |  [4552924]  |  Aylık toplu   |  [6,19]  |  12 Mayıs 2020  |
+|  Rel 20-05   |  [4549947]  |  Hizmet yığını güncelleştirmesi   |  [6,19]  |  14 Nisan 2020  |
 
 
 [4556798]: https://support.microsoft.com/kb/4556798
@@ -62,7 +61,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4550994]: https://support.microsoft.com/kb/4550994
 [4552924]: https://support.microsoft.com/kb/4552924
 [4549947]: https://support.microsoft.com/kb/4549947
-
+[2,98]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,85]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,43]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,19]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 ## <a name="april-2020-guest-os"></a>Nisan 2020 Konuk işletim sistemi
 

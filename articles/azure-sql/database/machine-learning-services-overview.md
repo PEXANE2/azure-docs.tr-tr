@@ -13,12 +13,12 @@ ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6e3bd464b5b93155e8ca8c3ba012b883f2b08f80
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c45d52b89d23b2b030f6292a2257dfd732e8f766
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051440"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344773"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>R ile Azure SQL veritabanı Machine Learning Services (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ Machine Learning Services, Microsoft 'un kurumsal R paketleriyle çakışan, R '
 
 En yaygın açık kaynaklı R paketleri Machine Learning Services önceden yüklenir. Microsoft 'un aşağıdaki R paketleri de dahil edilmiştir:
 
-| R paketi | Açıklama|
+| R paketi | Description|
 |-|-|
 | [Microsoft R Open](https://mran.microsoft.com/rro) | Microsoft R Open, Microsoft 'tan R 'nin gelişmiş bir dağıtımı olan Microsoft. İstatistiksel analiz ve veri bilimi için tam açık kaynaklı bir platformdur. Bu, R ile uyumlu olan ve %100 ' i temel alır ve gelişmiş performans ve reproducibility için ek yetenekler içerir. |
 | [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | Geri alınamaz, ölçeklenebilir R için birincil kitaplıktır. bu kitaplıktaki Işlevler en yaygın olarak kullanılan bir seçenektir. Bu kitaplıklarda veri dönüştürmeleri ve düzenleme, istatistiksel özetleme, görselleştirme ve birçok modelleme ve analizler bulunur. Ayrıca, bu kitaplıkların işlevleri paralel işleme için kullanılabilir çekirdekler üzerinde iş yüklerini otomatik olarak dağıtır ve hesaplama altyapısı tarafından düzenlenen ve yönetilen veri öbeklerinde çalışma olanağı sağlar. |
@@ -57,3 +57,4 @@ En yaygın açık kaynaklı R paketleri Machine Learning Services önceden yükl
 - [SQL Server Machine Learning Services arasındaki önemli farklılıkları](machine-learning-services-differences.md)inceleyin.
 - R 'yi kullanarak Azure SQL veritabanı Machine Learning Services (Önizleme) sorgulama hakkında bilgi edinmek için [hızlı başlangıç kılavuzuna](connect-query-r.md)bakın.
 - Bazı basit R betiklerini kullanmaya başlamak için bkz. [Azure SQL veritabanı 'nda basit r betikleri oluşturma ve çalıştırma Machine Learning Services (Önizleme)](r-script-create-quickstart.md).
+ 

@@ -2,13 +2,13 @@
 title: Kaynak günlüklerini toplama & analiz etme
 description: Kimlik doğrulama, görüntü gönderme ve resim çekme gibi Azure Container Registry kaynak günlüğü olaylarını kaydedin ve çözümleyin.
 ms.topic: article
-ms.date: 01/03/2020
-ms.openlocfilehash: 00f9468721126bd166051df47cec1596356e9b54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/01/2020
+ms.openlocfilehash: b41b1001a669fe42721471bc196e7628eabff983
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409652"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343192"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Tanılama değerlendirmesi ve denetimi için Azure Container Registry günlükleri
 
@@ -24,12 +24,14 @@ Azure Izleyici 'yi kullanarak kaynak günlük verilerinin toplanması ek maliyet
 
 Görüntüler ve diğer yapıtlar için aşağıdaki depo düzeyi olaylar şu anda günlüğe kaydedilir:
 
-* **Anında iletme olayları**
-* **Çekme olayları**
-* **Olayların etiketini kaldır**
-* **Olayları silme** (depo silme olayları dahil)
+* **Gönder**
+* **Çek**
+* **Etiketi Kaldır**
+* **Sil** (depo silme olayları dahil)
+* **Etiketi temizle** ve **bildirimi temizle**
 
-Şu anda günlüğe kayıtlı olmayan depo düzeyi olayları: Temizleme olayları.
+> [!NOTE]
+> Temizleme olayları yalnızca bir kayıt defteri [saklama ilkesi](container-registry-retention-policy.md) yapılandırılmışsa günlüğe kaydedilir.
 
 ## <a name="registry-resource-logs"></a>Kayıt defteri kaynak günlükleri
 
@@ -37,7 +39,7 @@ Kaynak günlükleri, iç işlemlerini tanımlayan Azure kaynakları tarafından 
 
 * **Kapsayıcıregistryloginevents** -kayıt defteri doğrulama olayları ve gelen KIMLIK ve IP adresi dahil olmak üzere durum
 * **Containerregistryhavuzuyevents** -kayıt defteri depolarındaki görüntüler ve diğer yapılar için gönderme ve çekme gibi işlemler
-* **AzureMetrics** - [kapsayıcı kayıt defteri ölçümleri](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) , toplanan gönderim ve çekme sayıları gibi.
+* **AzureMetrics**  -  Toplu gönderim ve çekme sayıları gibi [kapsayıcı kayıt defteri ölçümleri](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) .
 
 İşlemler için günlük verileri şunları içerir:
   * Başarı veya başarısızlık durumu
@@ -83,16 +85,58 @@ Azure portal Log Analytics kullanmaya yönelik bir öğretici için bkz. [Azure 
 
 Günlük sorguları hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](../azure-monitor/log-query/log-query-overview.md).
 
-### <a name="additional-query-examples"></a>Ek sorgu örnekleri
+## <a name="query-examples"></a>Sorgu örnekleri
 
-#### <a name="100-most-recent-registry-events"></a>100 en son kayıt defteri olayları
+### <a name="error-events-from-the-last-hour"></a>Son saatin hata olayları
+
+```Kusto
+union Event, Syslog // Event table stores Windows event records, Syslog stores Linux records
+| where TimeGenerated > ago(1h)
+| where EventLevelName == "Error" // EventLevelName is used in the Event (Windows) records
+    or SeverityLevel== "err" // SeverityLevel is used in Syslog (Linux) records
+```
+
+### <a name="100-most-recent-registry-events"></a>100 en son kayıt defteri olayları
 
 ```Kusto
 ContainerRegistryRepositoryEvents
 | union ContainerRegistryLoginEvents
 | top 100 by TimeGenerated
-| project TimeGenerated, LoginServer , OperationName , Identity , Repository , DurationMs , Region , ResultType
+| project TimeGenerated, LoginServer, OperationName, Identity, Repository, DurationMs, Region , ResultType
 ```
+
+### <a name="identity-of-user-or-object-that-deleted-repository"></a>Depoyu silen kullanıcının veya nesnenin kimliği
+
+```Kusto
+ContainerRegistryRepositoryEvents
+| where OperationName contains "Delete"
+| project LoginServer, OperationName, Repository, Identity, CallerIpAddress
+```
+
+### <a name="identity-of-user-or-object-that-deleted-tag"></a>Etiketi silinen kullanıcının veya nesnenin kimliği
+
+```Kusto
+ContainerRegistryRepositoryEvents
+| where OperationName contains "Untag"
+| project LoginServer, OperationName, Repository, Tag, Identity, CallerIpAddress
+```
+
+### <a name="reposity-level-operation-failures"></a>Kayıt düzeyindeki işlem sorunları
+
+```kusto
+ContainerRegistryRepositoryEvents 
+| where ResultDescription contains "40"
+| project TimeGenerated, OperationName, Repository, Tag, ResultDescription
+```
+
+### <a name="registry-authentication-failures"></a>Kayıt defteri kimlik doğrulama sorunları
+
+```kusto
+ContainerRegistryLoginEvents 
+| where ResultDescription != "200"
+| project TimeGenerated, Identity, CallerIpAddress, ResultDescription
+```
+
 
 ## <a name="additional-log-destinations"></a>Ek günlük hedefleri
 

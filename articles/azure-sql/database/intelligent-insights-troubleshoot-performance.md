@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 2008dd5e1e583a99756f62bc25f27e8f9832646e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9b92454abcb985a21952389f9f618c1f58d45182
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045609"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344790"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Akıllı İçgörüler ile Azure SQL veritabanı ve Azure SQL yönetilen örnek performans sorunlarını giderme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -90,7 +90,7 @@ Tanılama günlüğü, yürütmesi arttığı sorguların sayısını ve iş yü
 
 İş yüklerini veritabanına daha eşit dağıtmayı düşünebilirsiniz. Dizinler ekleyerek performansı etkileyen sorguyu optimize etmeyi göz önünde bulundurun. Ayrıca, iş yükünüzü birden çok veritabanı arasında dağıtabilirsiniz. Bu çözümler mümkün değilse, kullanılabilir kaynak miktarını artırmak için veritabanı aboneliğinizin fiyatlandırma katmanını artırmayı göz önünde bulundurun.
 
-## <a name="memory-pressure"></a>Bellek Baskısı
+## <a name="memory-pressure"></a>Bellek baskısı
 
 ### <a name="what-is-happening"></a>Ne oluyor
 
@@ -188,7 +188,7 @@ Tanılama günlüğü, iş yükü performansını etkilemek için tanımlanan so
 > Sürekli performans iyileştirmesi için [otomatik ayarlamayı](automatic-tuning-overview.md)etkinleştirmenizi öneririz. Bu benzersiz yerleşik zeka özelliği, veritabanınızı sürekli olarak izler ve veritabanlarınızın dizinlerini otomatik olarak oluşturur.
 >
 
-## <a name="new-query"></a>Yeni Sorgu
+## <a name="new-query"></a>Yeni sorgu
 
 ### <a name="what-is-happening"></a>Ne oluyor
 
@@ -202,7 +202,7 @@ Tanılama günlüğü, sorgu karmaları da dahil olmak üzere en fazla iki yeni 
 
 Azure SQL veritabanı 'nda [sorgu performansı içgörüleri](query-performance-insight-use.md)kullanmayı düşünün.
 
-## <a name="increased-wait-statistic"></a>Daha fazla bekleme Istatistiği
+## <a name="increased-wait-statistic"></a>Daha fazla bekleme istatistiği
 
 ### <a name="what-is-happening"></a>Ne oluyor
 
@@ -283,11 +283,11 @@ Veritabanı kapsamlı yapılandırma değişiklikleri, her bir veritabanı için
 
 ### <a name="troubleshooting"></a>Sorun giderme
 
-Tanılama günlüğü, kısa süre önce yapılan ve önceki yedi günlük iş yükü davranışına kıyasla performans düşüşüne neden olan veritabanı kapsamlı yapılandırma değişikliklerini çıktı. Önceki değerlere yapılandırma değişikliklerini geri döndürebilirsiniz. Ayrıca, istenen performans düzeyine ulaşılana kadar değeri değere göre ayarlayabilirsiniz. Veritabanı kapsamı yapılandırma değerlerini, tatmin edici performansa sahip benzer bir veritabanından kopyalayabilirsiniz. Performansla ilgili sorun gidermek için varsayılan varsayılan değerlere dönün ve bu taban çizgisinden başlayarak ince ayar yapmayı deneyin.
+Tanılama günlüğü, kısa süre önce yapılan ve önceki yedi günlük iş yükü davranışına kıyasla performans düşüşüne neden olan veritabanı kapsamlı yapılandırma değişikliklerini çıktı. Önceki değerlere yapılandırma değişikliklerini geri döndürebilirsiniz. Ayrıca, istenen performans düzeyine ulaşılana kadar değeri değere göre ayarlayabilirsiniz. Veritabanı kapsamı yapılandırma değerlerini, tatmin edici performansa sahip benzer bir veritabanından kopyalayabilirsiniz. Performansla ilgili sorun gidermek için varsayılan değerlere dönün ve bu taban çizgisinden başlayarak ince ayar yapmayı deneyin.
 
 Yapılandırmayı değiştirirken veritabanı kapsamlı yapılandırma ve T-SQL söz dizimini iyileştirme hakkında daha fazla bilgi için bkz. [alter database-kapsamlıdır Configuration (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx).
 
-## <a name="slow-client"></a>Yavaş Istemci
+## <a name="slow-client"></a>Yavaş istemci
 
 ### <a name="what-is-happening"></a>Ne oluyor
 
