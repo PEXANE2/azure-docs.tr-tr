@@ -4,13 +4,13 @@ description: Bu Go, REST tabanlı hızlı başlangıç bilgi tabanınızı yayı
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 4ce655bdc7a913ecb281ce8a75e7ec4f2009a2ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 4bfa523c6a42c8848f30ceb88770d3ce3fb03fae
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851701"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342723"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>Hızlı başlangıç: Go kullanarak Soru-Cevap Oluşturma’da bilgi bankası yayımlama
 
@@ -19,12 +19,12 @@ Bu REST tabanlı hızlı başlangıç, bilgi bankanızı (KB) programlı bir şe
 Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 * [Publish](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish): Bu API için istek gövdesinde herhangi bir bilgi iletilmesi gerekmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Go 1.10.1](https://golang.org/dl/)
 * Bir [soru-cevap oluşturma hizmetiniz](../How-To/set-up-qnamaker-service-azure.md)olmalıdır. Anahtarınızı ve uç noktanızı (kaynak adını da içerir) almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin.
 
-* `kbid` Sorgu DIZESI parametresindeki URL 'de aşağıda gösterildiği gibi soru-cevap oluşturma bilgi BANKASı (KB) kimliği bulundu.
+* `kbid`Sorgu dizesi PARAMETRESINDEKI URL 'de aşağıda gösterildiği gibi soru-cevap oluşturma Bilgi Bankası (KB) kimliği bulundu.
 
     ![Soru-Cevap Oluşturma bilgi bankası kimliği](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
@@ -35,7 +35,7 @@ Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 
 ## <a name="create-a-go-file"></a>Go dosyası oluşturma
 
-VSCode 'u açın ve adlı `publish-kb.go`yeni bir dosya oluşturun.
+VSCode 'u açın ve adlı yeni bir dosya oluşturun `publish-kb.go` .
 
 ## <a name="add-the-required-dependencies"></a>Gerekli bağımlılıkları ekleme
 

@@ -2,13 +2,13 @@
 title: Azure geçişi 'nde fiziksel sunucu değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile fiziksel sunucu değerlendirmesi desteği hakkında bilgi edinin
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: 2a6149da95501b106a57466ad923c0480f52e065
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.date: 06/03/2020
+ms.openlocfilehash: 058a438d722454368f3275216c92d0a2692b359c
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267928"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324326"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Fiziksel sunucu değerlendirmesi için destek matrisi 
 
@@ -20,7 +20,7 @@ Fiziksel sunucuları değerlendirmek için bir Azure geçişi projesi oluşturun
 
 ## <a name="limitations"></a>Sınırlamalar
 
-**Destek** | **Bilgileri**
+**Destek** | **Ayrıntılar**
 --- | ---
 **Değerlendirme limitleri** | Tek bir [Azure geçişi projesinde](migrate-support-matrix.md#azure-migrate-projects)35.000 fiziksel sunucuyu bulabilir ve değerlendirebilirsiniz.
 **Proje limitleri** | Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz. Fiziksel sunuculara ek olarak bir proje, VMware VM 'leri ve Hyper-V VM 'lerini, her biri için değerlendirme sınırlarına kadar içerebilir.
@@ -31,7 +31,7 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calcul
 
 ## <a name="physical-server-requirements"></a>Fiziksel sunucu gereksinimleri
 
-| **Destek**                | **Bilgileri**               
+| **Destek**                | **Ayrıntılar**               
 | :-------------------       | :------------------- |
 | **Fiziksel sunucu dağıtımı**       | Fiziksel sunucu tek başına olabilir veya bir kümede dağıtılabilir. |
 | **İzinler**           | **Windows:** Keşfetmesini istediğiniz tüm Windows sunucularında bir etki alanı yöneticisi veya yerel yönetici olmanız gerekir. Kullanıcı hesabı şu gruplara eklenmelidir: uzak yönetim kullanıcıları, performans Izleyicisi kullanıcıları ve performans günlüğü kullanıcıları. <br/><br/> **Linux:** Bulunmasını istediğiniz Linux sunucularında bir kök hesabınız olması gerekir. |
@@ -54,13 +54,13 @@ Aşağıdaki tabloda, değerlendirme için bağlantı noktası gereksinimleri ö
 **Cihaz** | **Bağlantı**
 --- | ---
 **Elektrikli** | TCP bağlantı noktası 3389 ' deki gelen bağlantılar, Gereç ile Uzak Masaüstü bağlantılarına izin vermek için.<br/><br/> Bağlantı noktası 44368 ' de, URL 'YI kullanarak gereç yönetimi uygulamasına uzaktan erişmek için gelen bağlantılar:``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443 (HTTPS) bağlantı noktalarında giden bağlantılar.
-**Fiziksel sunucular** | **Windows:** WinRM bağlantı noktaları 5985 (HTTP) ve 5986 (HTTPS) üzerinde gelen bağlantılar, Windows sunucularından yapılandırma ve performans meta verilerini çekme. <br/><br/> **Linux:**  22 (UDP) bağlantı noktasındaki gelen bağlantılar, Linux sunucularından yapılandırma ve performans meta verilerini çekme. |
+**Fiziksel sunucular** | **Windows:** WinRM bağlantı noktaları 5985 (HTTP) ve 5986 (HTTPS) üzerinde gelen bağlantılar, Windows sunucularından yapılandırma ve performans meta verilerini çekme. <br/><br/> **Linux:**  22 (TCP) bağlantı noktasındaki gelen bağlantılar, Linux sunucularından yapılandırma ve performans meta verilerini çekme. |
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Aracı tabanlı bağımlılık Analizi gereksinimleri
 
 [Bağımlılık Analizi](concepts-dependency-visualization.md) , değerlendirmek ve Azure 'a geçirmek istediğiniz şirket içi makineler arasındaki bağımlılıkları belirlemenize yardımcı olur. Tablo, aracı tabanlı bağımlılık analizini ayarlamaya yönelik gereksinimleri özetler. Şu anda yalnızca aracı tabanlı bağımlılık Analizi fiziksel sunucular için desteklenir.
 
-**Gereksinim** | **Bilgileri** 
+**Gereksinim** | **Ayrıntılar** 
 --- | --- 
 **Dağıtımdan önce** | Sunucu değerlendirme aracı projeye eklenerek bir Azure geçişi projesi olması gerekir.<br/><br/>  Şirket içi makinelerinizi bulmaya yönelik bir Azure geçiş gereci ayarladıktan sonra bağımlılık görselleştirmesini dağıtırsınız<br/><br/> İlk kez bir proje oluşturmayı [öğrenin](create-manage-projects.md) .<br/> Mevcut bir projeye değerlendirme aracı eklemeyi [öğrenin](how-to-assess.md) .<br/> [Hyper-V](how-to-set-up-appliance-hyper-v.md), [VMware](how-to-set-up-appliance-vmware.md)veya fiziksel sunucu değerlendirmesi için Azure geçişi gerecini ayarlamayı öğrenin.
 **Azure Devlet Kurumları** | Bağımlılık görselleştirmesi Azure Kamu 'da kullanılamaz.

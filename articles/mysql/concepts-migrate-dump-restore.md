@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: 158dd5e1f69340e233a0c2392d3f19fd5cf562ea
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: bc3411a926e71c88f0b4e4f84fcdf083b519f46a
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845555"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323561"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Döküm alma ve geri yükleme işlemlerini kullanarak MySQL veritabanınızı MySQL için Azure Veritabanı'na geçirme
 Bu makalede, MySQL için Azure veritabanınızdaki veritabanlarını yedeklemenin ve geri yüklemenin iki yaygın yolu açıklanmaktadır
@@ -98,7 +98,8 @@ Daha hızlı veri yükleri için hedef Azure veritabanını MySQL sunucusuna haz
 - slow_query_log: yavaş sorgu günlüğünü kapatmak için kapalı olarak ayarlayın. Bu, veri yükleri sırasında yavaş sorgu günlüğü 'nün neden olduğu yükü ortadan kaldırır.
 - query_store_capture_mode: sorgu deposunu kapatmak için her ikisini de yok olarak ayarlayın. Bu, sorgu deposu tarafından örnekleme etkinliklerinin neden olduğu yükü ortadan kaldırır.
 - innodb_buffer_pool_size: innodb_buffer_pool_size artırmak için, geçiş sırasında portalın fiyatlandırma katmanından 32 sanal çekirdek bellek için Iyileştirilmiş SKU 'SU ölçeğini artırın. Innodb_buffer_pool_size, yalnızca MySQL için Azure veritabanı sunucusu için işlem ölçeklendirerek artırılabilir.
-- innodb_write_io_threads & innodb_write_io_threads-geçiş hızını artırmak için Azure portal içindeki sunucu parametrelerinden 16 olarak değiştirin.
+- innodb_io_capacity & innodb_io_capacity_max-geçiş hızını iyileştirmek üzere GÇ kullanımını iyileştirmek için Azure portal sunucu parametrelerinden 9000 olarak değiştirin.
+- innodb_write_io_threads & innodb_write_io_threads-geçiş hızını artırmak için Azure portal içindeki sunucu parametrelerinden 4 ' e geçin.
 - Depolama katmanını ölçeklendirin: MySQL için Azure veritabanı sunucusu için IOPS, depolama katmanındaki artışla aşamalı olarak artar. Daha hızlı yüklemeler için, sağlanan IOPS 'yi artırmak üzere depolama katmanını artırmak isteyebilirsiniz. Lütfen depolamanın yalnızca ölçeği küçültüleceğini unutmayın.
 
 Geçiş tamamlandıktan sonra, sunucu parametreleri ve işlem katmanı yapılandırmasını önceki değerlerine geri döndürebilirsiniz. 

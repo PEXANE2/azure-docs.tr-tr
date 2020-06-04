@@ -4,12 +4,12 @@ description: Azure geçişi ile Hyper-V VM 'lerinin değerlendirmesi/geçirilmes
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: ea6290eae187ed4ead39f7307a84a54a23c19c29
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 22fd5bc87494eb2fc162828363e7ca70afe1bbf0
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81641628"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322174"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM 'lerinin Azure 'a değerlendirmesi ve geçirilmesi için hazırlanma
 
@@ -38,7 +38,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Azure geçişi dağıtımı için izinleri ayarlamanız gerekir.
 
-**Görev** | **Bilgileri** 
+**Görev** | **Ayrıntılar** 
 --- | --- 
 **Azure geçişi projesi oluşturma** | Azure hesabınızın bir proje oluşturmak için katılımcısı veya sahip izinlerine ihtiyacı vardır. | 
 **Kaynak sağlayıcılarını kaydetme** | Azure geçişi, Azure geçişi sunucu değerlendirmesi ile Hyper-V VM 'lerini bulup değerlendirmek için hafif bir Azure geçiş gereci kullanır.<br/><br/> Gereç kaydı sırasında kaynak sağlayıcıları, Gereç içinde seçilen aboneliğe kaydedilir. [Daha fazla bilgi edinin](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Kaynak sağlayıcılarını kaydetmek için abonelikte bir katkıda bulunan veya sahip rolü gerekir.
@@ -73,7 +73,7 @@ Aşağıdaki yöntemlerden birini kullanarak, Gereç kaydı sırasında Azure AD
 
 Kiracı/Genel yönetici, izinleri aşağıdaki gibi verebilir:
 
-1. Azure AD 'de, kiracı/genel yönetici **Azure Active Directory** > **Users** > Kullanıcı**Kullanıcı ayarları**' na gitmelidir.
+1. Azure AD 'de, kiracı/genel yönetici **Azure Active Directory**  >  **Kullanıcı**  >  **Kullanıcı ayarları**' na gitmelidir.
 2. Yönetici **uygulama kayıtları** **Evet**olarak ayarlanmalıdır.
 
     ![Azure AD izinleri](./media/tutorial-prepare-hyper-v/aad.png)
@@ -126,11 +126,10 @@ Betiği aşağıdaki gibi çalıştırın:
     ```
     Örnek kullanım: 
     ```
-    C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1
-    SHA256
+    C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1 SHA256
     ```
 
-4.    Betik bütünlüğünü doğruladıktan sonra, bu PowerShell komutuyla her Hyper-V konağında betiği çalıştırın:
+4. Betik bütünlüğünü doğruladıktan sonra, bu PowerShell komutuyla her Hyper-V konağında betiği çalıştırın:
     ```
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```
@@ -139,7 +138,7 @@ Betiği aşağıdaki gibi çalıştırın:
 
 Karma değerleri şunlardır:
 
-| **Yla** | **Deeri** |
+| **Yla** | **Değer** |
 | --- | --- |
 | **MD5** | 0ef418f31915d01f896ac42a80dc414e |
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |

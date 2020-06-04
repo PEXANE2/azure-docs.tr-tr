@@ -15,20 +15,20 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9b9e98b4e1f5c286acb9089893f169f2c52b855c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fc14d79edda1fb8e0083dffa68d23f46630ba2f6
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047275"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342604"
 ---
-# <a name="pricing-guidance-for-azure-sql-server-vms"></a>Azure SQL Server VM'leri için fiyatlandırma yönergeleri
+# <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server için fiyatlandırma Kılavuzu
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Bu makalede, Azure 'da [SQL Server sanal makineler](sql-server-on-azure-vm-iaas-what-is-overview.md) için fiyatlandırma Kılavuzu sunulmaktadır. Maliyeti etkileyen çeşitli seçenekler vardır ve maliyetleri iş gereksinimleriyle dengeleyen doğru görüntüyü seçmek önemlidir.
+Bu makale, [Azure sanal makinelerinde SQL Server](sql-server-on-azure-vm-iaas-what-is-overview.md)için fiyatlandırma kılavuzu sağlar. Maliyeti etkileyen çeşitli seçenekler vardır ve maliyetleri iş gereksinimleriyle dengeleyen doğru görüntüyü seçmek önemlidir.
 
 > [!TIP]
-> Yalnızca SQL Server Edition 'ın ve sanal makine boyutunun belirli bir birleşimi için maliyet tahmini yapmanız gerekiyorsa, [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) veya [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux)için fiyatlandırma sayfasına bakın. **Işletim sistemi/yazılım** listesinden platformunuzu ve SQL Server sürümünüzü seçin.
+> Yalnızca SQL Server Edition ve sanal makine (VM) boyutunun belirli bir birleşimi için maliyet tahmini yapmanız gerekiyorsa, [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) veya [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux)için fiyatlandırma sayfasına bakın. **Işletim sistemi/yazılım** listesinden platformunuzu ve SQL Server sürümünüzü seçin.
 >
 > ![VM fiyatlandırma sayfasında kullanıcı arabirimi](./media/pricing-guidance/virtual-machines-pricing-ui.png)
 >
@@ -42,7 +42,7 @@ Kavram kanıtı geliştirmek, test etmek veya oluşturmak istiyorsanız, ücrets
 
 Bu geliştirme/test ve hafif üretim iş yükleri için, bu iş yükleriyle eşleşen daha küçük bir VM boyutu seçerek de tasarruf edebilirsiniz. DS1v2, bazı senaryolarda iyi bir seçenek olabilir.
 
-Bu görüntülerden biriyle SQL Server 2017 Azure VM oluşturmak için aşağıdaki bağlantılara bakın:
+Bu görüntülerden biriyle SQL Server 2017 çalıştıran bir Azure VM oluşturmak için aşağıdaki bağlantılara bakın:
 
 | Platform | Serbestçe lisanslanan görüntüler |
 |---|---|
@@ -55,7 +55,7 @@ Bu görüntülerden biriyle SQL Server 2017 Azure VM oluşturmak için aşağıd
 
 Hafif olmayan bir üretim iş yükünüz varsa, aşağıdaki SQL Server sürümlerinden birini kullanın:
 
-| SQL Server sürümü | İş yükü |
+| SQL Server yayını | İş yükü |
 |-----|-----|
 | Web | Küçük Web siteleri |
 | Standart | Küçük ve orta ölçekli iş yükleri |
@@ -65,7 +65,7 @@ Bu sürümler için SQL Server Lisanslama için ödeme yapmak üzere iki seçene
 
 ## <a name="pay-per-usage"></a>Kullanım başına ödeme
 
-**SQL Server lisansını kullanım başına** (Kullandıkça Öde olarak da bilinir) **ödeyin**, Azure VM 'yi çalıştırmanın ikinci başına maliyetinin SQL Server lisansın maliyetini içerir. [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) veya [LINUX](https://azure.microsoft.com/pricing/details/virtual-machines/linux)için Azure VM fiyatlandırma sayfasında farklı SQL Server sürümleri (Web, standart, kurumsal) için fiyatlandırmayı görebilirsiniz.
+**SQL Server lisansını kullanım başına** (Kullandıkça Öde olarak da bilinir) **ödeyin**, Azure VM 'yi çalıştırmanın ikinci başına maliyetinin SQL Server lisansın maliyetini içerir. [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) veya [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux)için Azure sanal makineler fiyatlandırma sayfasında farklı SQL Server sürümleri (Web, standart, kurumsal) için fiyatlandırmayı görebilirsiniz.
 
 Maliyet, tüm SQL Server sürümleri (2012 SP3 2017 ' e) için aynıdır. Saniye başına lisans maliyeti, VM vCPU sayısına bağlıdır.
 
@@ -75,7 +75,7 @@ Kullanım başına SQL Server lisansa ödeme yapılması önerilir:
 
 - **Bilinmeyen yaşam süresine veya ölçeğe sahip Iş yükleri**. Örneğin, birkaç ay içinde gerekli olmayan veya talebe bağlı olarak daha fazla veya daha az işlem gücü gerektiren bir uygulama.
 
-Bu Kullandıkça Öde görüntülerinden biriyle bir SQL Server 2017 Azure sanal makinesi oluşturmak için aşağıdaki bağlantılara bakın:
+Bu Kullandıkça Öde görüntülerinden biriyle SQL Server 2017 çalıştıran bir Azure VM oluşturmak için aşağıdaki bağlantılara bakın:
 
 | Platform | Lisanslı görüntüler |
 |---|---|
@@ -85,14 +85,14 @@ Bu Kullandıkça Öde görüntülerinden biriyle bir SQL Server 2017 Azure sanal
 | Ubuntu | [SQL Server 2017 Web Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonUbuntuServer1604LTS)<br/>[SQL Server 2017 standart Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS)<br/>[SQL Server 2017 Enterprise Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS) |
 
 > [!IMPORTANT]
-> Portalda bir SQL Server sanal makine oluşturduğunuzda, **boyut seç** penceresinde tahmini bir maliyet gösterilir. Bu tahminin yalnızca VM 'yi çalıştırmaya yönelik işlem maliyetleri (Windows veya üçüncü taraf Linux işletim sistemleri) ile birlikte çalıştırılması önemlidir.
+> Azure portal bir SQL Server sanal makine oluşturduğunuzda, **boyut seç** penceresinde tahmini bir maliyet gösterilir. Bu tahminin yalnızca VM 'yi çalıştırmaya yönelik işlem maliyetleri (Windows veya üçüncü taraf Linux işletim sistemleri) ile birlikte çalıştırılması önemlidir.
 >
 > ![VM boyutu dikey penceresini seçin](./media/pricing-guidance/sql-vm-choose-size-pricing-estimate.png)
 >
 >Web, Standard ve Enterprise sürümleri için ek SQL Server lisanslama maliyetleri içermez. En doğru fiyatlandırma tahminini almak için, [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) veya [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)'un fiyatlandırma sayfasında işletim sisteminizi ve SQL Server sürümünüzü seçin.
 
 > [!NOTE]
-> Lisans modelini, kendi lisansını getir (KLG) ve geri almak için kullanım başına ödeme durumundan değiştirmek mümkündür. Daha fazla bilgi için bkz. [SQL VM için lisans modelini değiştirme](licensing-model-azure-hybrid-benefit-ahb-change.md). 
+> Lisans modelini, kendi lisansını getir (KLG) ve geri almak için kullanım başına ödeme durumundan değiştirmek mümkündür. Daha fazla bilgi için bkz. [SQL Server VM için lisans modelini değiştirme](licensing-model-azure-hybrid-benefit-ahb-change.md). 
 
 ## <a name="bring-your-own-license-byol"></a><a id="byol"></a>Kendi lisansınızı getirin (KLG)
 
@@ -102,9 +102,9 @@ Bu Kullandıkça Öde görüntülerinden biriyle bir SQL Server 2017 Azure sanal
 > KLG görüntüleri yazılım güvencesi içeren bir Kurumsal Anlaşma gerektirir. Azure bulut çözümü ortağı 'nın (CSP) bir parçası olarak şu anda kullanılamaz. CSP müşterileri, Kullandıkça Öde görüntüsünü dağıtarak ve sonra [Azure hibrit avantajı](licensing-model-azure-hybrid-benefit-ahb-change.md)etkinleştirerek kendi lisansını getirebilir.
 
 > [!NOTE]
-> KLG görüntüleri şu anda yalnızca Windows sanal makineler için kullanılabilir. Ancak, yalnızca Linux VM 'ye SQL Server el ile yükleyebilirsiniz. [LINUX SQL VM SSS](../linux/frequently-asked-questions-faq.md)bölümündeki yönergelere bakın.
+> KLG görüntüleri şu anda yalnızca Windows sanal makineler için kullanılabilir. Ancak, yalnızca Linux VM 'ye SQL Server el ile yükleyebilirsiniz. [Bir LINUX VM hakkında SSS üzerinde SQL Server](../linux/frequently-asked-questions-faq.md)yönergelere bakın.
 
-Kendi SQL lisanslarınızın Lisans Taşınabilirliği üzerinden getirilmesi için önerilir:
+Kendi SQL Server lisanslarınızın Lisans Taşınabilirliği üzerinden getirilmesi için şunları yapmanız önerilir:
 
 - **Sürekli iş yükleri**. Örneğin, iş işlemlerini 7/24 desteklemek için gereken bir uygulama.
 
@@ -112,12 +112,12 @@ Kendi SQL lisanslarınızın Lisans Taşınabilirliği üzerinden getirilmesi i�
 
 Bir SQL Server VM ile KLG kullanmak için, bazı toplu lisanslama programları ve diğer kişilerle isteğe bağlı satın alma işlemleri aracılığıyla gerekli bir seçenek olan SQL Server Standard veya kuruluş ve [yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1)lisansına sahip olmanız gerekir. Toplu Lisanslama programları aracılığıyla belirtilen fiyatlandırma düzeyi, sözleşmenin türüne ve miktarına ve SQL Server taahhütüne göre değişir. Ancak, bir Thumb kuralı olarak, sürekli üretim iş yükleri için kendi lisansınızı getirmek aşağıdaki avantajlara sahiptir:
 
-| KLG avantajı | Açıklama |
+| KLG avantajı | Description |
 |-----|-----|
 | **Maliyet tasarrufları** | [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) %55 tasarruf sağlar. Daha fazla bilgi için bkz. [Lisans modelini değiştirme](licensing-model-azure-hybrid-benefit-ahb-change.md) |
 | **Ücretsiz pasif ikincil çoğaltma** | Kendi lisansınızı kullanmanın bir diğer avantajı da, yüksek kullanılabilirlik amaçlarıyla SQL Server başına [bir pasif ikincil çoğaltmanın ücretsiz lisanslaması](https://azure.microsoft.com/pricing/licensing-faq/) olur. Bu, yüksek oranda kullanılabilir SQL Server dağıtımının lisanslama maliyetinin yarısını keser (örneğin, Always on kullanılabilirlik grupları kullanılarak). Pasif ikincil çalıştırma hakları, yük devretme sunucuları yazılım güvencesi avantajı üzerinden sağlanır. |
 
-Kendi lisans yansımalarından biriyle bir SQL Server 2017 Azure VM oluşturmak için, "{KLG}" önekli VM 'Lere bakın:
+Bu SQL Server 2017 çalıştıran bir Azure VM oluşturmak için kendi lisansını getir görüntülerinden birini kullanarak, "{KLG}" önekli VM 'Lere bakın:
 
 - [SQL Server 2017 Enterprise Azure VM](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016)
 - [SQL Server 2017 standart Azure VM](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016)
@@ -126,7 +126,7 @@ Kendi lisans yansımalarından biriyle bir SQL Server 2017 Azure VM oluşturmak 
 > Azure 'da kaç SQL Server Lisansı kullandığınızı öğrenmek için 10 gün içinde bize bilgi verin. Önceki görüntülerin bağlantıları bunun nasıl yapılacağı hakkında yönergeler sağlar.
 
 > [!NOTE]
-> Lisans modelini, kendi lisansını getir (KLG) ve geri almak için kullanım başına ödeme durumundan değiştirmek mümkündür. Daha fazla bilgi için bkz. [SQL VM için lisans modelini değiştirme](licensing-model-azure-hybrid-benefit-ahb-change.md). 
+> Lisans modelini, kendi lisansını getir (KLG) ve geri almak için kullanım başına ödeme durumundan değiştirmek mümkündür. Daha fazla bilgi için bkz. [SQL Server VM için lisans modelini değiştirme](licensing-model-azure-hybrid-benefit-ahb-change.md). 
 
 
 
@@ -140,7 +140,7 @@ SQL Server Lisanslama ücreti, vCPU sayısıyla doğrudan ilgilidir. CPU, bellek
 
 Belirli türdeki SQL Server iş yükleriyle iyi çalışan yeni makine boyutları vardır. Bu makine boyutları, yüksek düzeyde bellek, depolama ve g/ç bant genişliğini korur, ancak daha düşük bir sanallaştırılmış çekirdek sayısına sahiptir. Örneğin, aşağıdaki örneği göz önünde bulundurun:
 
-| VM Boyutu | Sanal çekirdek | Bellek | En fazla disk | En fazla g/ç performansı | SQL lisanslama maliyetleri | Toplam maliyet (Işlem + lisanslama) |
+| VM boyutu | Sanal çekirdek | Bellek | Maksimum disk | Maksimum G/Ç aktarım hızı | SQL Server lisanslama maliyetleri | Toplam maliyet (işlem + lisanslama) |
 |---|---|---|---|---|---|---|
 | **Standard_DS14v2** | 16 | 112 GB | 32 | 51.200 IOPS veya 768 MB/sn | | |
 | **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51.200 IOPS veya 768 MB/sn | %75 daha düşük | %57 daha düşük |
@@ -156,7 +156,7 @@ Sürekli çalıştırmayan iş yüklerini kullanıyorsanız, etkin olmayan döne
 
 Örneğin, yalnızca bir Azure VM üzerinde SQL Server deniyorsanız, yanlışlıkla hafta boyunca çalışır durumda bırakarak ücretlendirmeye tabi olmak istemezsiniz. Tek bir çözüm [otomatik kapatılma özelliğini](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)kullanmaktır.
 
-![SQL VM oto kapatması](./media/pricing-guidance/sql-vm-auto-shutdown.png)
+![SQL Server VM oto kapatma](./media/pricing-guidance/sql-vm-auto-shutdown.png)
 
 Otomatik kapatmalar, [Azure DevTest Labs](https://azure.microsoft.com/services/devtest-lab)tarafından sunulan daha büyük bir benzer özellikler kümesinin bir parçasıdır.
 
@@ -167,9 +167,9 @@ Diğer iş akışları için Azure [Otomasyonu](https://azure.microsoft.com/serv
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Genel Azure fiyatlandırma Kılavuzu için bkz. [Azure Faturalandırma ve maliyet yönetimiyle ilgili beklenmedik maliyetleri engelleme](../../../cost-management-billing/manage/getting-started.md). SQL Server dahil olmak üzere en son sanal makineler fiyatlandırması için bkz. [Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 'Leri ve [Linux VM 'LERI](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)için Azure VM Azure fiyatlandırma sayfası.
+Genel Azure fiyatlandırma Kılavuzu için bkz. [Azure Faturalandırma ve maliyet yönetimiyle ilgili beklenmedik maliyetleri engelleme](../../../cost-management-billing/manage/getting-started.md). SQL Server dahil olmak üzere en son Azure sanal makineleri fiyatlandırması için bkz. [Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 'Leri ve [Linux VM 'Ler](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)için Azure sanal makineleri fiyatlandırma sayfası.
 
-Azure sanal makinelerinde çalışan SQL Server bir genel bakış için aşağıdaki makalelere bakın:
+Azure sanal makinelerinde SQL Server genel bir bakış için aşağıdaki makalelere bakın:
 
 - [Windows VM 'lerinde SQL Server genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md)
 - [Linux üzerinde SQL Server VM 'lerine genel bakış](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)

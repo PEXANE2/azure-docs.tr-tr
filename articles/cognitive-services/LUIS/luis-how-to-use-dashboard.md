@@ -8,23 +8,23 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: d9ae126753f55349f9bf3eefd20bc4d222866af1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0ff59819c3bfda6e19d14cbe2deaea43e1694375
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73888210"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345249"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Uygulamanızı geliştirmek için panoyu kullanma
 
-Örnek utbotları kullanırken eğitilen uygulamanızın amaçları ile ilgili sorunları bulup giderin. Panoda, düzeltilmesi gereken amaçları vurgularla genel uygulama bilgileri görüntülenir. 
+Örnek utbotları kullanırken eğitilen uygulamanızın amaçları ile ilgili sorunları bulup giderin. Panoda, düzeltilmesi gereken amaçları vurgularla genel uygulama bilgileri görüntülenir.
 
 Pano analizini gözden geçirin yinelemeli bir işlemdir ve modelinizi değiştirirken yineleyin ve modelinizi geliştirebilirsiniz.
 
-Bu sayfada, _yalnızca desen_ uygulamaları olarak bilinen amaçlar içinde herhangi bir örnek yok bulunmayan uygulamalar için ilgili Analize sahip olmayacaktır. 
+Bu sayfada, _yalnızca desen_ uygulamaları olarak bilinen amaçlar içinde herhangi bir örnek yok bulunmayan uygulamalar için ilgili Analize sahip olmayacaktır.
 
 ## <a name="what-issues-can-be-fixed-from-dashboard"></a>Panodan hangi sorunlar düzeltilenebilir?
 
@@ -38,37 +38,37 @@ Panoda giderilen üç sorun şunlardır:
 
 Doğru tahminler mavi renkle gösterilir.
 
-Panoda bu sorunlar gösterilir ve hangi amaçlardan etkilendiğine ve uygulamayı geliştirmek için ne yapmanız gerektiğini size bildirir. 
+Panoda bu sorunlar gösterilir ve hangi amaçlardan etkilendiğine ve uygulamayı geliştirmek için ne yapmanız gerektiğini size bildirir.
 
-## <a name="before-app-is-trained"></a>Uygulama eğitilmadan önce 
+## <a name="before-app-is-trained"></a>Uygulama eğitilmadan önce
 
-Uygulamayı eğmadan önce, pano düzeltme önerisi içermez. Bu önerileri görmek için uygulamanızı eğitme.  
+Uygulamayı eğmadan önce, pano düzeltme önerisi içermez. Bu önerileri görmek için uygulamanızı eğitme.
 
 ## <a name="check-your-publishing-status"></a>Yayımlama durumunuzu denetleyin
 
-**Yayımlama durumu** kartı, etkin sürümün son yayımlama bilgileri hakkında bilgi içerir. 
+**Yayımlama durumu** kartı, etkin sürümün son yayımlama bilgileri hakkında bilgi içerir.
 
-Etkin sürümün, düzeltilmesi istediğiniz sürüm olduğunu denetleyin. 
+Etkin sürümün, düzeltilmesi istediğiniz sürüm olduğunu denetleyin.
 
 ![Pano, uygulamanın dış hizmetlerini, yayımlanan bölgelerini ve toplu uç nokta isabetlerini gösterir.](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
 
-Bu, tüm dış Hizmetleri, yayımlanan bölgeleri ve toplanmış uç nokta isabetlerini de gösterir. 
+Bu, tüm dış Hizmetleri, yayımlanan bölgeleri ve toplanmış uç nokta isabetlerini de gösterir.
 
 ## <a name="review-training-evaluation"></a>Eğitim değerlendirmesini gözden geçirin
 
-**Eğitim değerlendirme** kartı, uygulamanın genel doğruluk alanının toplu özetini içerir. Puan, amaç kalitesini gösterir. 
+**Eğitim değerlendirme** kartı, uygulamanın genel doğruluk alanının toplu özetini içerir. Puan, amaç kalitesini gösterir.
 
 ![Eğitim değerlendirme kartı, uygulamanızın genel doğruluğu hakkındaki ilk bilgi alanını içerir.](./media/luis-how-to-use-dashboard/analytics-card-2-shows-app-overall-accuracy.png)
 
-Grafik, doğru şekilde tahmin edilen hedefleri ve farklı renklerle ilgili sorun bölgelerini gösterir. Uygulamayı önerilerle geliştirdıkça bu puan artar. 
+Grafik, doğru şekilde tahmin edilen hedefleri ve farklı renklerle ilgili sorun bölgelerini gösterir. Uygulamayı önerilerle geliştirdıkça bu puan artar.
 
-Önerilen düzeltmeler sorun türüne göre ayrılır ve uygulamanız için en önemidir. Her amaç için sorunları gözden geçirmeyi ve gidermeyi tercih ediyorsanız, sayfanın en altında **[hatalar Içeren amaçlar](#intents-with-errors)** kartını kullanın. 
+Önerilen düzeltmeler sorun türüne göre ayrılır ve uygulamanız için en önemidir. Her amaç için sorunları gözden geçirmeyi ve gidermeyi tercih ediyorsanız, sayfanın en altında **[hatalar Içeren amaçlar](#intents-with-errors)** kartını kullanın.
 
 Her bir sorun alanının düzeltilmesi gereken amaçları vardır. Amaç adını seçtiğinizde, **Amaç** sayfası, söylemeye uygulanan bir filtre ile açılır. Bu filtre, soruna neden olan söyleymelere odaklanabilmenizi sağlar.
 
 ### <a name="compare-changes-across-versions"></a>Sürümler arasındaki değişiklikleri karşılaştırın
 
-Uygulamada değişiklik yapmadan önce yeni bir sürüm oluşturun. Yeni sürümde, amacın örnek ara penceresinde önerilen değişiklikleri yapıp yeniden eğitme. Pano sayfasının **eğitim değerlendirme** kartında, değişiklikleri karşılaştırmak için **eğitilen sürümden değişikliği göster** ' i kullanın. 
+Uygulamada değişiklik yapmadan önce yeni bir sürüm oluşturun. Yeni sürümde, amacın örnek ara penceresinde önerilen değişiklikleri yapıp yeniden eğitme. Pano sayfasının **eğitim değerlendirme** kartında, değişiklikleri karşılaştırmak için **eğitilen sürümden değişikliği göster** ' i kullanın.
 
 ![Sürümler arasındaki değişiklikleri karşılaştırın](./media/luis-how-to-use-dashboard/compare-improvement-across-versions.png)
 
@@ -84,27 +84,27 @@ Uygulamanızı düzeltmeye yönelik birincil yöntem, örnek işleme ve yeniden 
 
 ### <a name="patterns-and-phrase-lists"></a>Desenler ve tümcecik listeleri
 
-Analiz sayfası, [desenlerin](luis-concept-patterns.md) veya [tümcecik listelerinin](luis-concept-feature.md)ne zaman kullanılacağını göstermez. Bunları eklerseniz, yanlış veya belirsiz tahminlerde yardımcı olabilir, ancak veri dengesizliği ile ilgili yardım vermez. 
+Analiz sayfası, [desenlerin](luis-concept-patterns.md) veya [tümcecik listelerinin](luis-concept-feature.md)ne zaman kullanılacağını göstermez. Bunları eklerseniz, yanlış veya belirsiz tahminlerde yardımcı olabilir, ancak veri dengesizliği ile ilgili yardım vermez.
 
 ### <a name="review-data-imbalance"></a>Veri dengesizliği gözden geçirme
 
 Bu sorunla başlayın-diğer sorunların temel nedeni olabilir.
 
-**Veri dengesizliği** amaç listesi, veri dengesizliği ' nı düzeltmek için daha fazla söylenmesi gereken amaçları gösterir. 
+**Veri dengesizliği** amaç listesi, veri dengesizliği ' nı düzeltmek için daha fazla söylenmesi gereken amaçları gösterir.
 
 **Bu sorunu onarmak için**:
 
-* Hedefe daha fazla konuşma ekleyin ve ardından yeniden eğitme. 
+* Hedefe daha fazla konuşma ekleyin ve ardından yeniden eğitme.
 
 Panoda önerilmediği takdirde, yok amacını eklemeyin.
 
 > [!Tip]
-> Hangi amaçlarla ilgili daha fazla bilgi gerektiren hızlı bir görsel kılavuz olarak, sayfa üzerindeki üçüncü bölümü, **utterer (sayı)** ayarıyla birlikte **Amaç uyarınca** kullanın.  
+> Hangi amaçlarla ilgili daha fazla bilgi gerektiren hızlı bir görsel kılavuz olarak, sayfa üzerindeki üçüncü bölümü, **utterer (sayı)** ayarıyla birlikte **Amaç uyarınca** kullanın.
     ![Veri dengesizliği olan amaçları bulmak için ' Utterslar (sayı) ' kullanın.](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
 
 ### <a name="review-incorrect-predictions"></a>Yanlış tahminleri gözden geçirin
 
-**Yanlış tahmin** hedefi listesi, belirli bir amaç için örnek olarak kullanılan ancak farklı amaçlar için tahmin edilen, utterler içeren amaçları gösterir. 
+**Yanlış tahmin** hedefi listesi, belirli bir amaç için örnek olarak kullanılan ancak farklı amaçlar için tahmin edilen, utterler içeren amaçları gösterir.
 
 **Bu sorunu onarmak için**:
 
@@ -132,11 +132,11 @@ Aşağıdaki grafikte, çok sayıda sorunu gidermek için kötü bir dengeli uyg
 
 ![Aşağıdaki grafikte, neredeyse düzeltilme sorunu olan iyi şekilde dengelenmiş bir uygulama gösterilmektedir.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
 
-Amaç hakkında bilgi almak için her bir amaç çubuğunun üzerine gelin. 
+Amaç hakkında bilgi almak için her bir amaç çubuğunun üzerine gelin.
 
 ![Aşağıdaki grafikte, neredeyse düzeltilme sorunu olan iyi şekilde dengelenmiş bir uygulama gösterilmektedir.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
 
-Bu sorunla birlikte en çok sorunlu hedefleri üzerine odaklanabilmeniz için amaçları sorun türüne göre düzenlemek için **sıralama ölçütü** özelliğini kullanın. 
+Bu sorunla birlikte en çok sorunlu hedefleri üzerine odaklanabilmeniz için amaçları sorun türüne göre düzenlemek için **sıralama ölçütü** özelliğini kullanın.
 
 ## <a name="intents-with-errors"></a>Hatalı amaçlar
 
@@ -144,13 +144,13 @@ Bu kart, belirli bir amaç için sorunları incelemenizi sağlar. Bu kartın var
 
 ![Hatalar içeren amaçlar, belirli bir amaç için sorunları incelemenizi sağlar. Kart, en çok sorunlu amaçlar için varsayılan olarak filtrelenir. bu sayede çabalarınıza odaklanmayı bilirsiniz.](./media/luis-how-to-use-dashboard/most-problematic-intents-with-errors.png)
 
-Üstteki halka grafiğinde, üç sorun türü genelinde amaç ile ilgili sorunlar gösterilmektedir. Üç sorun türünde sorunlar varsa, her türün aşağıdaki bir grafiği vardır ve tüm Rival hedefleri ile birlikte. 
+Üstteki halka grafiğinde, üç sorun türü genelinde amaç ile ilgili sorunlar gösterilmektedir. Üç sorun türünde sorunlar varsa, her türün aşağıdaki bir grafiği vardır ve tüm Rival hedefleri ile birlikte.
 
 ### <a name="filter-intents-by-issue-and-percentage"></a>Hedefleri soruna ve yüzdeye göre filtrele
 
-Kartın bu bölümü, hata eşiğin dışında kalan örnek bulmalar bulmanıza olanak tanır. İdeal tahminlerden önemli olmasını isteyebilirsiniz. Bu yüzde iş ve müşteri odaklı olur. 
+Kartın bu bölümü, hata eşiğin dışında kalan örnek bulmalar bulmanıza olanak tanır. İdeal tahminlerden önemli olmasını isteyebilirsiniz. Bu yüzde iş ve müşteri odaklı olur.
 
-İşletmeniz için rahat bir şekilde sahip olduğunuz eşik yüzdelerini saptayın. 
+İşletmeniz için rahat bir şekilde sahip olduğunuz eşik yüzdelerini saptayın.
 
 Filtre, belirli bir sorunla olan amaçları bulmanıza olanak sağlar:
 
@@ -167,7 +167,7 @@ Size güvenilir bir tahmin güvenilirliği puanı nedir? Uygulama geliştirmenin
 
 ### <a name="unclear-or-incorrect-prediction-threshold"></a>Belirsiz veya yanlış tahmin eşiği
 
-Bu iki filtre, eşiğin ötesinde seçili amaç içindeki uttasları bulmanıza olanak tanır. Bu iki yüzdeyi hata yüzdeleri olarak düşünebilirsiniz. Tahmine dayalı olarak% 10-15 hata oranı rahat olursa, bu değerin üzerindeki tüm çakışmaları bulmak için filtre eşiğini %15 olarak ayarlayın. 
+Bu iki filtre, eşiğin ötesinde seçili amaç içindeki uttasları bulmanıza olanak tanır. Bu iki yüzdeyi hata yüzdeleri olarak düşünebilirsiniz. Tahmine dayalı olarak% 10-15 hata oranı rahat olursa, bu değerin üzerindeki tüm çakışmaları bulmak için filtre eşiğini %15 olarak ayarlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

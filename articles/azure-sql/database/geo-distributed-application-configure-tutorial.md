@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 415f76fc7c8b52a79bc864e61e1f85759e3f5d1f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 523fd3103585865a969f6463b3dc41fe362b9130
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043383"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324734"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>Öğretici: coğrafi olarak dağıtılmış bir veritabanı uygulama (Azure SQL veritabanı)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,7 @@ SQL veritabanı ve istemci uygulamasındaki bir veritabanını uzak bir bölgeye
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -42,8 +42,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 - Azure SQL veritabanı 'nda tek bir veritabanı. Bir kullanım oluşturmak için
-  - [Portal](single-database-create-quickstart.md)
-  - [CLI](az-cli-script-samples-content-guide.md)
+  - [Azure portalı](single-database-create-quickstart.md)
+  - [Azure CLI](az-cli-script-samples-content-guide.md)
   - [PowerShell](powershell-script-content-guide.md)
 
   > [!NOTE]
@@ -92,7 +92,7 @@ Get-AzSqlDatabase -ResourceGroupName $resourceGroup -ServerName $server -Databas
     Add-AzSqlDatabaseToFailoverGroup -ResourceGroupName $resourceGroup -ServerName $server -FailoverGroupName $failoverGroup
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!IMPORTANT]
 > `az login`Azure 'da oturum açmak için ' i çalıştırın.
@@ -344,7 +344,7 @@ Yük devretmeyi test etmek için:
     -ServerName $server -FailoverGroupName $failoverGroup
    ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Aşağıdaki komutla, test sırasında olağanüstü durum kurtarma sunucusunun rolünü kontrol edebilirsiniz:
 
@@ -370,7 +370,7 @@ Yük devretmeyi test etmek için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, uzak bir bölgeye yük devretme için bir Azure SQL veritabanı ve uygulaması yapılandırmış ve bir yük devretme planını test edersiniz. Şunları öğrendiniz:
+Bu öğreticide, Azure SQL veritabanı 'nda bir veritabanını ve bir uzak bölgeye yük devretme ve yük devretme planını test eden bir uygulamayı yapılandırdınız. Şunları öğrendiniz:
 
 > [!div class="checklist"]
 >
@@ -378,7 +378,7 @@ Bu öğreticide, uzak bir bölgeye yük devretme için bir Azure SQL veritabanı
 > - SQL veritabanında bir veritabanını sorgulamak için bir Java uygulaması çalıştırma
 > - Yük devretme testi
 
-Bir yük devretme grubuna Azure SQL yönetilen örneği ekleme hakkında sonraki öğreticiye ilerleyin:
+Bir yük devretme grubuna Azure SQL yönetilen örneği örneği ekleme hakkında sonraki öğreticiye ilerleyin:
 
 > [!div class="nextstepaction"]
-> [Yük devretme grubuna Azure SQL yönetilen örneği ekleme](../managed-instance/failover-group-add-instance-tutorial.md)
+> [Bir yük devretme grubuna Azure SQL yönetilen örneği örneği ekleme](../managed-instance/failover-group-add-instance-tutorial.md)

@@ -4,19 +4,19 @@ description: İlk dize ifadesinin ikinci ile bitip bitmediğini gösteren bir Bo
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 0cd927af50eca04aa8162d9d8f292077d9e4165c
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 3d37786c7364b07228d1d8d6540e7b6d8a174eb5
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844973"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322695"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
 
- İlk dize ifadesinin ikinciyle sonlanıp bitmediğini gösteren bir Boole değeri döndürür.  
+İlk dize ifadesinin ikinciyle sonlanıp bitmediğini gösteren bir Boole değeri döndürür.  
   
 ## <a name="syntax"></a>Söz dizimi
   
@@ -75,6 +75,8 @@ System işlevindeki özelliğin kardinalitesi arttıkça, EndsWith 'ın RU tüke
 ```
 
 İlk sorgu büyük olasılıkla ikinci sorgudan daha fazla bir değer kullanacaktır çünkü kasabanın kardinalitesi ülkeden daha yüksektir.
+
+EndsWith özellik boyutu bazı belgeler için 1 KB 'tan büyükse, sorgu altyapısının bu belgeleri yüklemesi gerekir. Bu durumda, sorgu altyapısı EndsWith 'ı bir dizinle tamamen değerlendiremeyecektir. Özellik boyutları 1 KB 'den büyük olan çok sayıda belgeniz varsa, EndsWith RU ücreti yüksek olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

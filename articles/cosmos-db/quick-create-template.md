@@ -6,14 +6,14 @@ ms.author: sngun
 tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: quickstart
-ms.date: 02/27/2020
+ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: f524a1e1db426b9b9dafb2fb95d77538a34b04ec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 273305894e05b397d0f48acd7a483a9fdfc247ef
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81605459"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324054"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak Azure Cosmos DB ve kapsayıcı oluşturma
 
@@ -23,7 +23,7 @@ Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritaba
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir Azure aboneliği veya ücretsiz Azure Cosmos DB deneme hesabı
 
@@ -33,11 +33,11 @@ Bir Azure aboneliği veya ücretsiz Azure Cosmos DB deneme hesabı
 
 ## <a name="create-an-azure-cosmos-account-database-container"></a>Azure Cosmos hesabı, veritabanı, kapsayıcı oluşturma
 
-### <a name="review-the-template"></a>Şablonu gözden geçirin
+### <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-cosmosdb-create/).
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/) alınmıştır.
 
-:::code language="json" source="~/quickstart-templates/101-cosmosdb-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
 Şablonda üç Azure kaynağı tanımlanmıştır:
 
@@ -53,7 +53,7 @@ Daha fazla Azure Cosmos DB Şablon örneği [hızlı başlangıç şablonu galer
 
 1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon bir Azure Cosmos hesabı, veritabanı ve bir kapsayıcı oluşturur.
 
-   [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-create%2Fazuredeploy.json)
+   [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 2. Aşağıdaki değerleri seçin veya girin.
 
@@ -63,21 +63,24 @@ Daha fazla Azure Cosmos DB Şablon örneği [hızlı başlangıç şablonu galer
 
     * **Abonelik**: Bir Azure aboneliği seçin.
     * **Kaynak grubu**: **Yeni oluştur**' u seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam**' a tıklayın.
-    * **Konum**: Bir konum seçin.  Örneğin, **Orta ABD**.
+    * **Konum**: Bir konum seçin.  Örneğin **Orta ABD**.
     * **Hesap adı**: Azure Cosmos hesabı için bir ad girin. Bu, genel olarak benzersiz olmalıdır.
     * **Konum**: Azure Cosmos hesabınızı oluşturmak istediğiniz konumu girin. Azure Cosmos hesabı, kaynak grubuyla aynı konumda olabilir.
     * **Birincil bölge**: Azure Cosmos hesabının birincil çoğaltma bölgesi.
     * **İkincil bölge**: Azure Cosmos hesabı için ikincil çoğaltma bölgesi.
+    * **Varsayılan tutarlılık düzeyi**: Azure Cosmos hesabı için varsayılan tutarlılık düzeyi.
+    * **Maksimum Eskime durumu ön eki**: en fazla eski istek. Boundedstalet için gereklidir.
+    * **Saniye cinsinden en fazla zaman aralığı**: en fazla gecikme süresi. Boundedstalet için gereklidir.
     * **Veritabanı adı**: Azure Cosmos veritabanının adı.
     * **Kapsayıcı adı**: Azure Cosmos kapsayıcısının adı.
     * **Aktarım hızı**: kapsayıcı için aktarım hızı, en düşük aktarım hızı DEĞERI 400 ru/sn 'dir.
-    * **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**: Seçin.
+    * **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**: Bunu seçin.
 
 3. **Satın al**'ı seçin. Azure Cosmos hesabı başarıyla dağıtıldıktan sonra bir bildirim alırsınız:
 
    ![Kaynak Yöneticisi şablonu, Cosmos DB tümleştirme, Portal dağıtma bildirimi](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 
-Azure portal, şablonu dağıtmak için kullanılır. Azure portal ek olarak, Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-powershell.md).
+Şablonu dağıtmak için Azure portalı kullanılır. Azure portal ek olarak, Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 

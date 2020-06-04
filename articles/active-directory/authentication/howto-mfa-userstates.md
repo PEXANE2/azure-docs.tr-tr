@@ -11,21 +11,21 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0db72e30fbced17665c112ad56510d7c2ca23d12
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c51863cd95deff5e460707b004206f6fde54cac4
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83639617"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337759"
 ---
-# <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Oturum açma olaylarını güvenli hale getirmek için Kullanıcı başına Azure Multi-Factor Authentication etkinleştirme
+# <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Oturum açma olaylarının güvenliğini sağlamak için kullanıcı başına Azure Multi-Factor Authentication’ı etkinleştirme
 
 Azure AD 'de Multi-Factor Authentication 'ı zorunlu kılarak Kullanıcı oturum açma olaylarını güvenli hale getirmek için iki yol vardır. İlk ve tercih edilen seçeneği, belirli koşullarda çok faktörlü kimlik doğrulaması gerektiren bir koşullu erişim ilkesi ayarlamaya yönelik bir seçenektir. İkinci seçenek, her kullanıcıyı Azure Multi-Factor Authentication için etkinleştirmektir. Kullanıcılar ayrı ayrı etkinleştirildiğinde, her oturum açtıklarında çok faktörlü kimlik doğrulaması gerçekleştirir (güvenilir IP adreslerinden oturum açtıklarında veya _anımsanan cihazlar_ özelliği açık olduğunda olduğu gibi bazı özel durumlar ile).
 
 > [!NOTE]
-> Koşullu erişim ilkelerini kullanarak Azure Multi-Factor Authentication etkinleştirme önerilen yaklaşımdır. Lisanslarınız, kullanıcıların her oturum açtıklarında MFA gerçekleştirmesini gerektirdiği için koşullu erişim içermediği sürece Kullanıcı durumlarının değiştirilmesi artık önerilmez.
+> Koşullu erişim ilkelerini kullanarak Azure Multi-Factor Authentication etkinleştirme önerilen yaklaşımdır. Lisanslarınız, kullanıcıların her oturum açtıklarında MFA gerçekleştirmesini gerektirdiği için koşullu erişim içermediği sürece Kullanıcı durumlarının değiştirilmesi artık önerilmez. Koşullu erişimi kullanmaya başlamak için bkz. [öğretici: Azure Multi-Factor Authentication Ile güvenli Kullanıcı oturum açma olayları](tutorial-enable-azure-mfa.md).
 >
-> Koşullu erişimi kullanmaya başlamak için bkz. [öğretici: Azure Multi-Factor Authentication Ile güvenli Kullanıcı oturum açma olayları](tutorial-enable-azure-mfa.md).
+> Koşullu erişim olmadan Azure AD ücretsiz kiracılarında, [kullanıcıları korumak için güvenlik varsayılanlarını kullanabilirsiniz](../fundamentals/concept-fundamentals-security-defaults.md).
 
 ## <a name="azure-multi-factor-authentication-user-states"></a>Azure Multi-Factor Authentication Kullanıcı durumları
 

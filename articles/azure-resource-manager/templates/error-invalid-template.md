@@ -3,12 +3,12 @@ title: Geçersiz şablon hataları
 description: Azure Resource Manager şablonları dağıtılırken geçersiz şablon hatalarının nasıl çözümleneceğini açıklar.
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: bb053f59c417827a7c07ca193ccea0b8509244d6
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 2902a6d82c32192bb241697825a31d759d5c7b75
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832530"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324071"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Geçersiz şablon hatalarını giderme
 
@@ -29,7 +29,7 @@ Hata iletisi hata türüne bağlıdır.
 
 Bu hata, çeşitli farklı hata türlerinin oluşmasına neden olabilir. Genellikle şablonda bir sözdizimi veya yapısal hata içerir.
 
-<a id="syntax-error" />
+<a id="syntax-error"></a>
 
 ## <a name="solution-1---syntax-error"></a>Çözüm 1-söz dizimi hatası
 
@@ -50,7 +50,7 @@ Eşleşen söz dizimini sağlamazsanız, şablon, sizin niyetinden farklı bir d
 
 Bu tür bir hata aldığınızda, ifade söz dizimini dikkatle gözden geçirin. [Visual Studio](create-visual-studio-deployment-project.md) veya [VISUAL STUDIO Code](use-vs-code-to-create-template.md)gibi bir JSON Düzenleyicisi kullanmayı düşünün; bu, söz dizimi hataları hakkında sizi uyarabilir.
 
-<a id="incorrect-segment-lengths" />
+<a id="incorrect-segment-lengths"></a>
 
 ## <a name="solution-2---incorrect-segment-lengths"></a>Çözüm 2-yanlış kesim uzunlukları
 
@@ -111,7 +111,7 @@ Segmentlerin alınması, kaynak sağlayıcıları genelinde uygulanan Kaynak Yö
 }
 ```
 
-<a id="parameter-not-valid" />
+<a id="parameter-not-valid"></a>
 
 ## <a name="solution-3---parameter-is-not-valid"></a>Çözüm 3-parametre geçerli değil
 
@@ -126,13 +126,13 @@ part of the allowed values
 
 Şablonda izin verilen değerleri çift işaretleyin ve dağıtım sırasında bir tane belirtin. İzin verilen parametre değerleri hakkında daha fazla bilgi için [Azure Resource Manager şablonlarının parametreler bölümüne](template-syntax.md#parameters)bakın.
 
-<a id="too-many-resource-groups" />
+<a id="too-many-resource-groups"></a>
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>Çözüm 4-çok fazla hedef kaynak grubu
 
 Tek bir dağıtımda beş hedef kaynak grubu ile sınırlı olduğunuzdan bu hatayı daha önceki dağıtımlarda görebilirsiniz. Mayıs 2020 ' de, bu sınır 800 kaynak gruplarına artmıştı. Daha fazla bilgi için bkz. [Azure kaynaklarını birden fazla aboneliğe veya kaynak grubuna dağıtma](cross-resource-group-deployment.md).
 
-<a id="circular-dependency" />
+<a id="circular-dependency"></a>
 
 ## <a name="solution-5---circular-dependency-detected"></a>Çözüm 5-döngüsel bağımlılık algılandı
 

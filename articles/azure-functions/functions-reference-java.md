@@ -3,12 +3,12 @@ title: Azure Işlevleri için Java geliştirici başvurusu
 description: Java ile işlevleri geliştirmeyi anlayın.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 6ce886fd0ca47d728a115427b354442fd259e714
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b3404920dda9225b289d82013d29c35a1297ec32
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648239"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340343"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Işlevleri Java geliştirici kılavuzu
 
@@ -166,7 +166,7 @@ Adlı bir uygulama ayarında ek bağımsız değişkenler sağlayabilirsiniz `JA
 
 [Azure Portal](https://portal.azure.com), ayarı eklemek Için [uygulama ayarları sekmesini](functions-how-to-use-azure-function-app-settings.md#settings) kullanın `JAVA_OPTS` .
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Aşağıdaki örnekte olduğu gibi, ayarlamak için [az functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) komutunu kullanabilirsiniz `JAVA_OPTS` :
 
@@ -391,7 +391,7 @@ Yukarıdaki örnekte,, `queryValue` `name` http istek URL 'sindeki sorgu dizesi 
 
 ## <a name="execution-context"></a>Yürütme bağlamı
 
-`ExecutionContext`, içinde tanımlanan, `azure-functions-java-library` işlevler çalışma zamanı ile iletişim kurmak için yardımcı yöntemleri içerir.
+`ExecutionContext`, içinde tanımlanan, `azure-functions-java-library` işlevler çalışma zamanı ile iletişim kurmak için yardımcı yöntemleri içerir. Daha fazla bilgi için, [ExecutionContext başvuru makalesine](/java/api/com.microsoft.azure.functions.executioncontext)bakın.
 
 ### <a name="logger"></a>Medi
 

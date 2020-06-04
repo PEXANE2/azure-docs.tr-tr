@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
-ms.openlocfilehash: b352458b768c997f295596a7cbd5e8c02f843a9f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 01b0eae7d2e5d1078c0761838081a2379a724a97
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569803"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342995"
 ---
 # <a name="enable-compute-network-on-your-azure-stack-edge"></a>Azure Stack Kenarunuzda işlem ağını etkinleştirin
 
@@ -27,7 +27,7 @@ Ağı yapılandırmak için aşağıdaki adımları uygulayın:
 
 Bu öğreticide, senaryoyu göstermek için bir Web sunucusu uygulama modülünü kullanacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunları yapmanız gerekir:
 
@@ -83,7 +83,7 @@ Azure Stack Edge cihazınıza bir Web sunucusu uygulama modülü eklemek için a
 
         ![IoT Edge özel modül dikey penceresinde bağlantı noktası bilgilerini belirtin](media/azure-stack-edge-extend-compute-access-modules/module-information.png)
 
-    4. **Kaydet**’i seçin.
+    4. **Kaydet**'i seçin.
 
 ## <a name="verify-module-access"></a>Modül erişimini doğrula
 

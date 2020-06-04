@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/18/2020
-ms.openlocfilehash: a90a2def874c7f081f83a34aea956083eb72879a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/02/2020
+ms.openlocfilehash: 70e0a95a85920562af8bf9d3fffa6633709dccc5
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686489"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322099"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürmeyi seçin
 
@@ -39,7 +39,10 @@ Sabit eşlemeler, hiyerarşik bir sütunun alt sütununu en üst düzey bir süt
 
 ## <a name="rule-based-mapping"></a>Kural tabanlı eşleme
 
-Birden çok sütunu aynı anda eşlemek veya düzeltebilecekler sütunları aşağı akış olarak geçirmek istiyorsanız, sütun düzenlerini kullanarak eşlemelerinizi tanımlamak için kural tabanlı eşleme kullanın. ,,, Ve `name` `position` sütunlarını `type`temel `stream`alarak eşleştirin. Sabit ve kural tabanlı eşlemelerin herhangi bir birleşimini kullanabilirsiniz. Varsayılan olarak, 50 'den büyük sütunları olan tüm projeksiyonlar varsayılan olarak, her sütunda eşleşen ve giriş yapan adı izleyen kural tabanlı bir eşleme olur. 
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4xiXz]
+
+Birden çok sütunu aynı anda eşlemek veya düzeltebilecekler sütunları aşağı akış olarak geçirmek istiyorsanız, sütun düzenlerini kullanarak eşlemelerinizi tanımlamak için kural tabanlı eşleme kullanın. ,,, Ve sütunlarını temel alarak eşleştirin `name` `type` `stream` `position` . Sabit ve kural tabanlı eşlemelerin herhangi bir birleşimini kullanabilirsiniz. Varsayılan olarak, 50 'den büyük sütunları olan tüm projeksiyonlar varsayılan olarak, her sütunda eşleşen ve giriş yapan adı izleyen kural tabanlı bir eşleme olur. 
 
 Kural tabanlı eşleme eklemek için **eşleme Ekle** ' ye tıklayın ve **kural tabanlı eşleme**' yi seçin.
 
@@ -49,7 +52,7 @@ Her kural tabanlı eşleme için iki giriş gerekir: ile eşleşmesi gereken dur
 
 ![kural tabanlı eşleme](media/data-flow/rule-based-mapping.png "Kural tabanlı eşleme")
 
-Eşleşen `$$` bir sütunun giriş adına başvurmak için söz dizimini kullanın. Yukarıdaki görüntünün bir örnek olarak kullanılması, bir kullanıcının adı altı karakterden kısa olan tüm dize sütunlarında eşleştirmek istediğini varsayalım. Gelen bir sütun adlandırıldıysa `test`, ifadesi `$$ + '_short'` sütunu `test_short`yeniden adlandırır. Var olan tek eşleme varsa, koşulu karşılamayan tüm sütunlar, outputfrom verilerinden bırakılır.
+`$$`Eşleşen bir sütunun giriş adına başvurmak için söz dizimini kullanın. Yukarıdaki görüntünün bir örnek olarak kullanılması, bir kullanıcının adı altı karakterden kısa olan tüm dize sütunlarında eşleştirmek istediğini varsayalım. Gelen bir sütun adlandırıldıysa `test` , ifadesi `$$ + '_short'` sütunu yeniden adlandırır `test_short` . Var olan tek eşleme varsa, koşulu karşılamayan tüm sütunlar, outputfrom verilerinden bırakılır.
 
 Desenler hem düzeltebilecekler hem de tanımlı sütunlarla eşleşir. Hangi tanımlı sütunların bir kuralla eşlendiğini görmek için kuralın yanındaki göz gözlük simgesine tıklayın. Veri önizlemeyi kullanarak çıktlarınızı doğrulayın.
 
@@ -59,9 +62,9 @@ Aşağı köşeli çift ayraç simgesine tıklarsanız, bir Regex-Mapping koşul
 
 ![kural tabanlı eşleme](media/data-flow/regex-matching.png "Kural tabanlı eşleme")
 
-Yukarıdaki örnek, Regex düzeniyle `(r)` veya küçük harf içeren bir sütun adı ile eşleşir. Standart kural tabanlı eşlemeye benzer şekilde, eşleşen tüm sütunlar, sözdizimi kullanılarak `$$` sağdaki koşul tarafından değiştirilir.
+Yukarıdaki örnek, Regex düzeniyle `(r)` veya küçük harf içeren bir sütun adı ile eşleşir. Standart kural tabanlı eşlemeye benzer şekilde, eşleşen tüm sütunlar, sözdizimi kullanılarak sağdaki koşul tarafından değiştirilir `$$` .
 
-Sütun adınızla birden çok Regex eşleşmesi varsa, ' n ' öğesine karşılık gelen eşleşme ' ı kullanarak `$n` belirli eşleşmelere başvurabilirsiniz. Örneğin, ' $2 ', bir sütun adı içindeki ikinci eşleşmeyi ifade eder.
+Sütun adınızla birden çok Regex eşleşmesi varsa, `$n` ' n ' öğesine karşılık gelen eşleşme ' ı kullanarak belirli eşleşmelere başvurabilirsiniz. Örneğin, ' $2 ', bir sütun adı içindeki ikinci eşleşmeyi ifade eder.
 
 ### <a name="rule-based-hierarchies"></a>Kural tabanlı hiyerarşiler
 
@@ -69,11 +72,11 @@ Tanımlı projeksiyonda bir hiyerarşisi varsa, hiyerarşiler alt sütunlarını
 
 ![kural tabanlı eşleme](media/data-flow/rule-based-hierarchy.png "Kural tabanlı eşleme")
 
-Yukarıdaki örnek, karmaşık sütunun `a`tüm alt sütunlarında eşleşir. `a`iki alt sütun `b` ve `c`içerir. Çıkış şeması iki sütun `b` içerir ve `c` ' ad As ' koşulu olur. `$$`
+Yukarıdaki örnek, karmaşık sütunun tüm alt sütunlarında eşleşir `a` . `a`iki alt sütun `b` ve içerir `c` . Çıkış şeması iki sütun içerir `b` ve `c` ' ad As ' koşulu olur `$$` .
 
 ### <a name="parameterization"></a>Parametreleştirme
 
-Kural tabanlı eşlemeyi kullanarak sütun adlarını parametreleştirebilirsiniz. Gelen sütun adlarını ```name``` bir parametreye göre eşleştirmek için anahtar sözcüğünü kullanın. Örneğin, bir veri akışı parametresi ```mycolumn```varsa, şuna eşit olan herhangi bir sütun adıyla eşleşen bir kural oluşturabilirsiniz. ```mycolumn``` Eşleşen sütununu ' iş anahtarı ' gibi sabit kodlanmış bir dize olarak yeniden adlandırabilir ve açıkça başvurabilirsiniz. Bu örnekte, eşleşen koşul ```name == $mycolumn``` ve ad koşulu ' iş anahtarı ' olur. 
+Kural tabanlı eşlemeyi kullanarak sütun adlarını parametreleştirebilirsiniz. ```name```Gelen sütun adlarını bir parametreye göre eşleştirmek için anahtar sözcüğünü kullanın. Örneğin, bir veri akışı parametresi varsa ```mycolumn``` , şuna eşit olan herhangi bir sütun adıyla eşleşen bir kural oluşturabilirsiniz ```mycolumn``` . Eşleşen sütununu ' iş anahtarı ' gibi sabit kodlanmış bir dize olarak yeniden adlandırabilir ve açıkça başvurabilirsiniz. Bu örnekte, eşleşen koşul ```name == $mycolumn``` ve ad koşulu ' iş anahtarı ' olur. 
 
 ## <a name="auto-mapping"></a>Otomatik eşleme
 

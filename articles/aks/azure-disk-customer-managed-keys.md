@@ -4,12 +4,12 @@ description: AKS işletim sistemini ve veri disklerini şifrelemek için kendi a
 services: container-service
 ms.topic: article
 ms.date: 01/12/2020
-ms.openlocfilehash: ac6c4d2c4b3f309e2098ff6a6513aab8a3f8ea5f
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: c16bdb613c60a8eef3efd1be8d7ab1a78e002f98
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141543"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84325108"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Azure diskleriyle kendi anahtarlarınızı (BYOK) getirin
 
@@ -110,9 +110,8 @@ az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset
 
 Yukarıda oluşturulan kümeye yeni düğüm havuzları eklendiğinde, oluşturma sırasında belirtilen müşteri tarafından yönetilen anahtar, işletim sistemi diskini şifrelemek için kullanılır.
 
-## <a name="encrypt-your-aks-cluster-data-disk"></a>AKS kümesi veri diskinizi şifreleyin
-
-AKS veri disklerini kendi anahtarınızla de şifreleyebilirsiniz.
+## <a name="encrypt-your-aks-cluster-data-diskoptional"></a>AKS kümesi veri diskinizi şifreleyin (isteğe bağlı)
+V 1.17.2 veri diski için anahtar sağlanmazsa ve ayrıca AKS veri disklerini diğer anahtarlarla şifreleyebiliyorsanız, işletim sistemi disk şifreleme anahtarı veri diskini şifrelemek için kullanılacaktır.
 
 > [!IMPORTANT]
 > Uygun AKS kimlik bilgilerine sahip olduğunuzdan emin olun. Hizmet sorumlusunun, diskencryptionset 'in dağıtıldığı kaynak grubuna katkıda bulunan erişiminin olması gerekir. Aksi takdirde, hizmet sorumlusunun izin içermediğinden emin olmak için bir hata alırsınız.
@@ -166,11 +165,9 @@ kubectl apply -f byok-azure-disk.yaml
 ## <a name="limitations"></a>Sınırlamalar
 
 * BYOK, yalnızca belirli [Azure BÖLGELERINDE][supported-regions] GA ve önizleme sürümünde kullanılabilir
-* Kubernetes sürüm 1,17 ve üzerinde işletim sistemi disk şifrelemesi destekleniyor   
+* Kubernetes sürüm 1,17 ve üzeri ile desteklenen veri diski şifrelemesi   
 * Yalnızca BYOK 'ın desteklendiği bölgelerde kullanılabilir
 * Müşteri tarafından yönetilen anahtarlarla şifreleme Şu anda yalnızca yeni AKS kümelerine yöneliktir, mevcut kümeler yükseltilemez
-* Sanal makine ölçek kümeleri kullanan AKS kümesi gereklidir, sanal makine kullanılabilirlik kümeleri için destek gerekmez
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/4/2020
-ms.openlocfilehash: d9d600b4ac34e4608b7747bee0e0a704ad2ab3be
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 1536773840693e943b1e32f0ae7358b8b2ee7ce9
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846061"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324649"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -106,6 +106,9 @@ Ana ve çoğaltma arasında çoğaltmayı durdurabilirsiniz. Bir ana sunucu ve b
 ### <a name="pricing-tiers"></a>Fiyatlandırma katmanları
 
 Okuma çoğaltmaları Şu anda yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarında kullanılabilir.
+
+> [!NOTE]
+> Çoğaltma sunucusunu çalıştırmanın maliyeti, çoğaltma sunucusunun çalıştığı bölgeyi temel alır.
 
 ### <a name="master-server-restart"></a>Ana sunucu yeniden başlatması
 

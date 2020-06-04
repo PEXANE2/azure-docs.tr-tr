@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 6a0a4c0885552d7f8697a1f13b8750e084d8770a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5aba4c690f91b515424eb866d387652ca9f40e7e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041727"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344620"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-azure-sql-database-from-code"></a>Koddan Azure SQL veritabanına erişmek için bir uygulamanın kimlik doğrulaması için gerekli değerleri alın
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Koddan SQL veritabanı oluşturup yönetmek için uygulamanızı Azure kaynaklarınızın oluşturulduğu abonelikte Azure Active Directory (AAD) etki alanına kaydetmeniz gerekir.
+Azure SQL veritabanı 'nı koddan oluşturup yönetmek için uygulamanızı Azure kaynaklarınızın oluşturulduğu abonelikte Azure Active Directory (Azure AD) etki alanına kaydetmeniz gerekir.
 
 ## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Uygulamadan kaynaklara erişmek için hizmet sorumlusu oluşturma
 

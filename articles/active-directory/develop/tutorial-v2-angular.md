@@ -12,17 +12,14 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1ede6592b3da979136d70b873142af6d2bb8b593
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6d869243f7f125ef7a795d6049d0b4f70fc51361
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201322"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322779"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Öğretici: Kullanıcı oturum açma ve angular tek sayfalı uygulamadan Microsoft Graph API 'sini çağırma
-
-> [!IMPORTANT]
-> Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma (GA) önce değişebilir.
 
 Bu öğreticide, angular tek sayfalı uygulamanın (SPA) nasıl kullanılabileceğini gösterilmektedir:
 - Kişisel hesaplar, iş hesapları veya okul hesaplarında oturum açın.
@@ -46,13 +43,13 @@ Bu senaryoda, bir Kullanıcı oturum açtıktan sonra, yetkilendirme üst bilgis
 
 Bu öğretici aşağıdaki kitaplığı kullanır:
 
-|Kitaplık|Açıklama|
+|Kitaplık|Description|
 |---|---|
 |[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript angular sarmalayıcı için Microsoft kimlik doğrulama kitaplığı|
 
 MSAL. js kitaplığı için kaynak kodunu GitHub ' da [Azuread/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) deposunda bulabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi çalıştırmak için şunlar gerekir:
 
@@ -265,14 +262,14 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 Bu kodda, `scopes` API için erişim belirtecinde döndürülmek istenen kapsamları içerir.
 
-Örneğin:
+Örnek:
 
 * `["user.read"]`Microsoft Graph için
 * `["<Application ID URL>/scope"]`Özel Web API 'Leri için (yani, `api://<Application ID>/access_as_user` )
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-Bazen kullanıcının Microsoft Identity platform uç noktasıyla etkileşim kurması gerekir. Örneğin:
+Bazen kullanıcının Microsoft Identity platform uç noktasıyla etkileşim kurması gerekir. Örnek:
 
 * Parolasının süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekebilir.
 * Uygulamanız, kullanıcının onaylaması gereken ek kaynak kapsamlarına erişim istiyor.

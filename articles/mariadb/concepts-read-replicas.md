@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 5/4/2020
-ms.openlocfilehash: 6b738fc96a51893d8c0a0e75c5551007da60bdd2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e3615286150723308f861456bfe2bbb0cff81707
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793202"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321674"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -86,7 +86,7 @@ mysql -h myreplica.mariadb.database.azure.com -u myadmin@myreplica -p
 
 MariaDB için Azure veritabanı, Azure Izleyici 'de **saniye cinsinden çoğaltma gecikmesi** sağlar. Bu ölçüm yalnızca çoğaltmalar için kullanılabilir.
 
-Bu ölçüm, MariaDB `seconds_behind_master` 'nin `SHOW SLAVE STATUS` komutunda kullanılabilir olan ölçüm kullanılarak hesaplanır.
+Bu ölçüm, `seconds_behind_master` MariaDB 'nin komutunda kullanılabilir olan ölçüm kullanılarak hesaplanır `SHOW SLAVE STATUS` .
 
 Çoğaltma gecikmesi iş yükünüz için kabul edilebilir bir değere ulaştığında sizi bilgilendirmek için bir uyarı ayarlayın.
 
@@ -107,6 +107,9 @@ Ana ve çoğaltma arasında çoğaltmayı durdurabilirsiniz. Bir ana sunucu ve b
 ### <a name="pricing-tiers"></a>Fiyatlandırma katmanları
 
 Okuma çoğaltmaları Şu anda yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarında kullanılabilir.
+
+> [!NOTE]
+> Çoğaltma sunucusunu çalıştırmanın maliyeti, çoğaltma sunucusunun çalıştığı bölgeyi temel alır.
 
 ### <a name="master-server-restart"></a>Ana sunucu yeniden başlatması
 
@@ -145,7 +148,7 @@ Aşağıdaki sunucu parametreleri hem ana hem de çoğaltma sunucularında kilit
 - [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
 - [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
 
-[`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) Parametresi, çoğaltma sunucularında kilitlidir.
+[`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler)Parametresi, çoğaltma sunucularında kilitlidir.
 
 Ana sunucuda yukarıdaki parametrelerden birini güncelleştirmek için lütfen çoğaltma sunucularını silin, ana bilgisayardaki parametre değerini güncelleştirin ve çoğaltmaları yeniden oluşturun.
 

@@ -11,19 +11,19 @@ ms.date: 05/18/2020
 ms.author: procha
 ms.reviewer: mabasile
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e7d370c49d4571b7b46d0d5db121955afd62fd45
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e4af27d841beb21b364b499231a422112eb3ad78
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664455"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324139"
 ---
 # <a name="azure-synapse-analytics-launch-partners"></a>Azure SYNAPSE Analytics başlatma Iş ortakları
 
 Azure SYNAPSE Analytics iş ortakları, müşterilerin bulut ölçek analizi ile dijital dönüştürmelerini hızlandırmasına yardımcı olmak için, sektörlerde teslim uzmanlığına sahip kapsamlı tümleştirme araçlarıyla gelir &. Sosyal yükseltme, atölyeler ve teklifleriyle 19 Mayıs 'ta genel önizlemeyi destekleyen aşağıdaki iş ortaklarının tekliflerini inceleyin.
 
 ## <a name="our-public-preview-launch-partners"></a>Genel Önizleme başlatma iş ortaklarımız
-| İş Ortağı | Açıklama | Web sitesi/ürün bağlantısı |
+| İş Ortağı | Description | Web sitesi/ürün bağlantısı |
 | ------- | ----------- | -------------------- |
 | ![Accenture](./media/sql-data-warehouse-partner-public-preview/accenture-logo.png) |**Accenture**<br>Avanade tarafından desteklenen Accenture Microsoft Iş grubu olan 45000 + adanmış profesyonellerini bir araya getirmek, kuruluşları dijital kesintide Misyonumuz 'e güçler.|[İş ortağı sayfası](https://www.accenture.com/us-en/services/microsoft-index)<br>|
 | ![Adamı](./media/sql-data-warehouse-partner-public-preview/adatis-logo.png) |**Adamı**<br>Adamı, veri yönetimi stratejisinden ve geliştiriciliğe aracılığıyla dünya çapındaki ve yönetilen hizmetlere kadar gelişmiş veri analizlerine özelleştirilmiş profesyonel hizmetler sunar. |[İş ortağı sayfası](https://adatis.co.uk/)<br> |
@@ -40,7 +40,6 @@ Azure SYNAPSE Analytics iş ortakları, müşterilerin bulut ölçek analizi ile
 | ![Qlik](./media/sql-data-warehouse-partner-business-intelligence/qlik_logo.png) |**Qlik Sense Enterprise**<br>Herkesin kullanabileceği veri görselleştirme uygulamasıyla Öngörüler bulmayı sürücü ile tanıyın. Qlik Sense sayesinde kuruluşunuzdaki herkes kolayca esnek, etkileşimli görselleştirmeler oluşturabilir ve anlamlı kararlar verebilir. |[Ürün sayfası](https://www.qlik.com/us/products/qlik-sense/enterprise)<br> [Azure Market](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/qlik.qlik-sense) |
 | ![SqlDBM](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |**SqlDBM**<br>SqlDBM, veritabanınızı herhangi bir tarayıcıda geliştirmek için kolay ve kullanışlı bir yöntem sunan bulut tabanlı bir veri modelleme aracıdır. Tüm gerekli veritabanı kurallarını ve veritabanı anahtarları, şemalar, dizinler, sütun kısıtlamaları ve ilişkiler gibi nesneleri dahil ederken. |[Ürün sayfası](http://sqldbm.com/)<br>[Azure Market](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
 | ![Tatatmi](./media/sql-data-warehouse-partner-data-integration/talend_logo.png) |**Taödünç bulutu**<br>Taödünç bulutu, bulutta veya şirket içinde herhangi bir veriyi bağlamak, erişmek ve dönüştürmek için bir kurumsal veri tümleştirme platformudur. Bu, geniş kapsamlı bağlantı, yerleşik veri kalitesi ve en son büyük veri ve bulut teknolojileri için yerel destek sağlayan bir hizmet olarak platform (ıpaas) tümleştirme platformudur. |[Ürün sayfası](https://www.talend.com/)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/talend.talendremoteengine?source=datamarket&tab=Overview) |
-| ![Düşünme noktası](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**Düşünme noktası**<br>Milyarlarca veri satırı üzerinden ayrıntılı Öngörüler elde etmek için arama 'yı kullanın veya soru sormaktan düşünmeyebilirsiniz sorulardan Öngörüler elde edin. Düşüneme noktası, businesspeople bulma öngörülerini şirket verilerinde Saniyeler içinde gizlemeye yardımcı olur. Verilerinizi analiz etmek ve ihtiyacınız olduğunda otomatik Öngörüler elde etmek için arama ' yı kullanın.|[Ürün sayfası](https://www.thoughtspot.com)<br>|
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Diğer iş ortaklarımız hakkında daha fazla bilgi edinmek için bkz. [iş zekası iş ortakları](sql-data-warehouse-partner-business-intelligence.md), [veri tümleştirme iş ortakları](sql-data-warehouse-partner-data-integration.md)ve [veri yönetimi iş ortakları](sql-data-warehouse-partner-data-management.md).

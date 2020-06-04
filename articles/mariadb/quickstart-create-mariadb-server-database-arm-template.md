@@ -7,20 +7,20 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 547b268a43cdd4b362d56b34cf9129a8b5efe16e
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 78b38f5059d50d56158e31c65299e5f747c8c073
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266432"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323612"
 ---
-# <a name="quickstart-use-a-resource-manager-template-to-create-an-azure-database-for-mariadb-server"></a>Hızlı başlangıç: MariaDB sunucusu için Azure veritabanı oluşturmak üzere bir Kaynak Yöneticisi şablonu kullanma
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Hızlı başlangıç: bir ARM şablonu kullanarak MariaDB sunucusu için Azure veritabanı oluşturma
 
 MariaDB için Azure veritabanı, bulutta yüksek oranda kullanılabilir MariaDB veritabanlarını çalıştırmak, yönetmek ve ölçeklendirmek için kullandığınız bir yönetilen hizmettir. Bu hızlı başlangıçta, Azure portal, PowerShell veya Azure CLı 'de MariaDB sunucusu için Azure veritabanı oluşturmak üzere bir ARM şablonu kullanırsınız.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

@@ -3,12 +3,12 @@ title: Linux üzerinde geliştirme ortamınızı ayarlama
 description: Linux üzerinde çalışma zamanını ve SDK'yı yükleyip yerel bir geliştirme kümesi oluşturun. Bu kurulumu tamamladıktan sonra uygulama derlemek için hazır hale gelirsiniz.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 000d615d779ed14eb1698cf297075480a07c71ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38ea94e14a182671b3540a87c3bf90e861479fe5
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193420"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338473"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux üzerinde geliştirme ortamınızı hazırlama
 > [!div class="op_single_selector"]
@@ -25,11 +25,11 @@ Bu makaledeki adımlarda, Linux’a yerel olarak yükleme yaptığınız veya Se
 Linux için Windows Alt Sistemine SDK ve Service Fabric çalışma zamanının yüklenmesi desteklenmez. Desteklenen Azure Service Fabric komut satırı arabirimiyle (CLI) bulutta veya şirket içinde başka herhangi bir yerde barındırılan Service Fabric varlıklarını yönetebilirsiniz. CLI'yi yükleme hakkında bilgi için bkz. [Service Fabric CLI'sini ayarlama](./service-fabric-cli.md).
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Geliştirme için şu işletim sistemi sürümleri desteklenir.
 
-* Ubuntu 16.04 (`Xenial Xerus`)
+* Ubuntu 16,04 ( `Xenial Xerus` ), 18,04 ( `Bionic Beaver` )
 
     `apt-transport-https` paketinin yüklü olduğundan emin olun.
          
@@ -60,46 +60,41 @@ SDK ve ilişkili çalışma zamanı paketini apt-get komut satırı aracıyla y�
 ### <a name="ubuntu"></a>Ubuntu
 
 1. Bir terminal açın.
-2. Service Fabric deponuzu kaynaklar listenize ekleyin.
+
+2. `dotnet` deposunu kaynak listenize ekleyin.
 
     ```bash
-    sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
-    ```
-
-3. `dotnet` deposunu kaynak listenize ekleyin.
-
-    ```bash
-    wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
+    wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
     sudo dpkg -i packages-microsoft-prod.deb
     ```
 
-4. Yeni Gnu Privacy Guard (GnuPG, veya GPG) anahtarını APT anahtarlığınıza ekleyin.
+3. Yeni Gnu Privacy Guard (GnuPG, veya GPG) anahtarını APT anahtarlığınıza ekleyin.
 
     ```bash
     curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
     ```
 
-5. Resmi Docker GPG anahtarını APT anahtarlığınıza ekleyin.
+4. Resmi Docker GPG anahtarını APT anahtarlığınıza ekleyin.
 
     ```bash
     sudo apt-get install curl
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     ```
 
-6. Docker deposunu ayarlayın.
+5. Docker deposunu ayarlayın.
 
     ```bash
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. APT kimlik anahtarlığı 'e Azul JDK anahtarını ekleyin ve deposunu ayarlayın.
+6. APT kimlik anahtarlığı 'e Azul JDK anahtarını ekleyin ve deposunu ayarlayın.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
     sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
-8. Paket listelerinizi yeni eklenen depolara göre yenileyin.
+7. Paket listelerinizi yeni eklenen depolara göre yenileyin.
 
     ```bash
     sudo apt-get update
@@ -179,7 +174,7 @@ Yükleme tamamlandıktan sonra yerel bir küme başlatın.
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. Bir Web tarayıcısı açın ve **Service Fabric Explorer** (`http://localhost:19080/Explorer`) sayfasına gidin. Küme başlatıldığında, Service Fabric Explorer panosunu görürsünüz. Kümenin tamamen ayarlanması birkaç dakika sürebilir. Tarayıcınız URL’yi açamazsa veya Service Fabric Explorer sistemin hazır olduğunu göstermezse, birkaç dakika bekleyip tekrar deneyin.
+2. Bir Web tarayıcısı açın ve **Service Fabric Explorer** () sayfasına gidin `http://localhost:19080/Explorer` . Küme başlatıldığında, Service Fabric Explorer panosunu görürsünüz. Kümenin tamamen ayarlanması birkaç dakika sürebilir. Tarayıcınız URL’yi açamazsa veya Service Fabric Explorer sistemin hazır olduğunu göstermezse, birkaç dakika bekleyip tekrar deneyin.
 
     ![Linux üzerinde Service Fabric Explorer][sfx-linux]
 
@@ -261,13 +256,13 @@ Service Fabric için Eclipse eklentisini Java EE Geliştiricileri veya Java Geli
 > 
 > Ubuntu üzerinde, paket yükleyici (`apt` veya `apt-get`) kullanmak yerine doğrudan Eclipse sitesinden yükleme yapılmasını öneririz. Böylece, Eclipse’in en güncel sürümünü elde etmeniz sağlanır. Java EE Geliştiricileri için veya Java Geliştiricileri için Eclipse IDE’yi yükleyebilirsiniz.
 
-1. Eclipse’te, Eclipse Neon veya sonraki bir sürümünün ve Buildship 2.2.1 veya sonraki bir sürümünün yüklü olduğundan emin olun.  > **Çakışan**küreler > **Yükleme ayrıntıları**hakkında **Yardım**' i seçerek yüklü bileşenlerin sürümlerini denetleyin. [Eclipse Buildship: Gradle için Eclipse eklentileri][buildship-update] bölümünde sağlanan yönergelerden yararlanarak Buildship’i güncelleştirebilirsiniz.
+1. Eclipse’te, Eclipse Neon veya sonraki bir sürümünün ve Buildship 2.2.1 veya sonraki bir sürümünün yüklü olduğundan emin olun. **Help**  >  **Çakışan Küreler**  >  **Yükleme ayrıntıları**hakkında Yardım ' i seçerek yüklü bileşenlerin sürümlerini denetleyin. [Eclipse Buildship: Gradle için Eclipse eklentileri][buildship-update] bölümünde sağlanan yönergelerden yararlanarak Buildship’i güncelleştirebilirsiniz.
 
-2. Service Fabric eklentisini yüklemek için **Yardım** > **yeni yazılım yüklemesi**' ni seçin.
+2. Service Fabric eklentisini yüklemek için **Yardım**  >  **yeni yazılım yüklemesi**' ni seçin.
 
-3. **Birlikte çalış** kutusuna **https\/:/dl.Microsoft.com/Eclipse**girin.
+3. **Birlikte çalış** kutusuna **https: \/ /DL.Microsoft.com/Eclipse**girin.
 
-4. **Add (Ekle)** seçeneğini belirleyin.
+4. **Ekle**'yi seçin.
 
     ![Kullanılabilir Yazılım sayfası][sf-eclipse-plugin]
 
@@ -275,7 +270,7 @@ Service Fabric için Eclipse eklentisini Java EE Geliştiricileri veya Java Geli
 
 6. Yükleme adımlarını gerçekleştirin. Ardından son kullanıcı lisans sözleşmesini kabul edin.
 
-Service Fabric Eclipse eklentisi zaten yüklüyse, en yeni sürümü kullandığınızdan emin olun.  > **Çakışan**küreler > **Yükleme ayrıntıları**hakkında **Yardım**seçerek denetleyin. Ardından, yüklü eklentiler listesinde Service Fabric arayın. daha yeni bir sürüm varsa **Güncelleştir** ' i seçin.
+Service Fabric Eclipse eklentisi zaten yüklüyse, en yeni sürümü kullandığınızdan emin olun. **Help**  >  **Çakışan Küreler**  >  **Yükleme ayrıntıları**hakkında yardım seçerek denetleyin. Ardından, yüklü eklentiler listesinde Service Fabric arayın. daha yeni bir sürüm varsa **Güncelleştir** ' i seçin.
 
 Daha fazla bilgi için bkz. [Eclipse Java uygulama geliştirmesi için Service Fabric eklentisi](service-fabric-get-started-eclipse.md).
 

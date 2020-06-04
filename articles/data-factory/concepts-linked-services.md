@@ -11,18 +11,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 7d071a98b8d82d6f11278b59e1dfc91882a9bfcc
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: f826113abc756654fbf02e7d643b8ac1f9d9f98a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192853"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338133"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure Data Factory'de bağlı hizmetler
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-create-datasets.md)
-> * [Geçerli sürüm](concepts-linked-services.md)
+> * [Güncel sürüm](concepts-linked-services.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -68,10 +68,10 @@ Aşağıdaki tabloda, yukarıdaki JSON 'daki özellikler açıklanmaktadır:
 
 Özellik | Açıklama | Gerekli |
 -------- | ----------- | -------- |
-name | Bağlı hizmetin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Evet |
-tür | Bağlı hizmetin türü. Örneğin: Azure Storage (veri deposu) veya AzureBatch (işlem). TypeProperties açıklamasına bakın. | Evet |
-typeProperties | Tür özellikleri her bir veri deposu veya işlem için farklıdır. <br/><br/> Desteklenen veri deposu türleri ve bunların tür özellikleri için, bu makaledeki [veri kümesi türü](concepts-datasets-linked-services.md#dataset-type) tablosuna bakın. Bir veri deposuna özgü tür özellikleri hakkında bilgi edinmek için veri deposu Bağlayıcısı makalesine gidin. <br/><br/> Desteklenen işlem türleri ve bunların tür özellikleri için bkz. [işlem bağlantılı hizmetleri](compute-linked-services.md). | Evet |
-connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel bir ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Hayır
+name | Bağlı hizmetin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Yes |
+tür | Bağlı hizmetin türü. Örneğin: Azure Storage (veri deposu) veya AzureBatch (işlem). TypeProperties açıklamasına bakın. | Yes |
+typeProperties | Tür özellikleri her bir veri deposu veya işlem için farklıdır. <br/><br/> Desteklenen veri deposu türleri ve bunların tür özellikleri için, bu makaledeki [veri kümesi türü](concepts-datasets-linked-services.md#dataset-type) tablosuna bakın. Bir veri deposuna özgü tür özellikleri hakkında bilgi edinmek için veri deposu Bağlayıcısı makalesine gidin. <br/><br/> Desteklenen işlem türleri ve bunların tür özellikleri için bkz. [işlem bağlantılı hizmetleri](compute-linked-services.md). | Yes |
+connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel bir ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | No
 
 ## <a name="linked-service-example"></a>Bağlı hizmet örneği
 
@@ -95,7 +95,10 @@ Aşağıdaki bağlı hizmet bir Azure Storage bağlı hizmetidir. Türün Azure 
 
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
 
-Şu araçlardan veya SDK 'Lardan birini kullanarak bağlı hizmetler oluşturabilirsiniz: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager şablonu ve Azure Portal
+Bağlı hizmetler, [Yönetim hub](author-management-hub.md) 'ı ve bunlara başvuran etkinlikler, veri kümeleri veya veri akışları aracılığıyla Azure Data Factory UX içinde oluşturulabilir.
+
+Şu araçlardan veya SDK 'Lardan birini kullanarak bağlı hizmetler oluşturabilirsiniz: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager şablonu ve Azure Portal.
+
 
 ## <a name="data-store-linked-services"></a>Veri deposu bağlı hizmetleri
 

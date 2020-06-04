@@ -1,6 +1,6 @@
 ---
 title: Ortak güvenlik gereksinimlerini ele almak için PlayBook
-titleSuffix: Azure SQL Database & SQL Managed Instance
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Bu makalede, Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde ortak güvenlik gereksinimleri ve en iyi uygulamalar sağlanmaktadır.
 ms.service: sql-database
 ms.subservice: security
@@ -10,28 +10,28 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: a462c3480d58a7895429863cb3d09874cd6ef0f8
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 5a35d9f9ff611576f26a55cb5792bc4b1718bee0
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217927"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323850"
 ---
-# <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database--sql-managed-instance"></a>Azure SQL veritabanı & SQL yönetilen örneği ile yaygın güvenlik gereksinimlerini ele almak için PlayBook
+# <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile ortak güvenlik gereksinimlerini ele almak için PlayBook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Bu makalede, ortak güvenlik gereksinimlerinin nasıl çözübir konusunda en iyi yöntemler sunulmaktadır. Tüm gereksinimler tüm ortamlar için geçerli değildir ve uygulanacak özellikler hakkında veritabanınıza ve güvenlik ekibinize başvurmanız gerekir.
 
 ## <a name="solving-common-security-requirements"></a>Ortak güvenlik gereksinimlerini çözme
 
-Bu belge, Azure SQL veritabanı ve Azure SQL yönetilen örneği kullanılarak yeni veya mevcut uygulamalar için ortak güvenlik gereksinimlerinin nasıl çözülebileceğine ilişkin yönergeler sağlar. Bu, üst düzey güvenlik alanlarıyla düzenlenmiştir. Belirli tehditleri adreslemek için [ortak güvenlik tehditleri ve olası azaltmaları](#common-security-threats-and-potential-mitigations) bölümüne bakın. Şirket içinden Azure 'a uygulama geçirirken sunulan önerilerin bazıları uygulanabilir olsa da, geçiş senaryoları bu belgenin odağı değildir.
+Bu belge, Azure SQL veritabanı ve Azure SQL yönetilen örneği kullanılarak yeni veya mevcut uygulamalar için ortak güvenlik gereksinimlerinin nasıl çözülebileceğine ilişkin yönergeler sağlar. Üst düzey güvenlik alanlarıyla düzenlenmiştir. Belirli tehditleri adreslemek için [ortak güvenlik tehditleri ve olası azaltmaları](#common-security-threats-and-potential-mitigations) bölümüne bakın. Şirket içinden Azure 'a uygulama geçirirken sunulan önerilerin bazıları uygulanabilir olsa da, geçiş senaryoları bu belgenin odağı değildir.
 
 ### <a name="azure-sql-database-deployment-offers-covered-in-this-guide"></a>Bu kılavuzda ele alınan Azure SQL veritabanı dağıtımı teklifleri
 
-- [Azure SQL veritabanları](https://docs.microsoft.com/azure/sql-database/sql-database-single-index): [sunuculardaki](logical-servers.md) [tek veritabanları](single-database-overview.md) ve [elastik havuzlar](elastic-pool-overview.md)
-- [Azure SQL yönetilen örnekleri](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)
+- [Azure SQL veritabanı](https://docs.microsoft.com/azure/sql-database/sql-database-single-index): [sunuculardaki](logical-servers.md) [tek veritabanları](single-database-overview.md) ve [elastik havuzlar](elastic-pool-overview.md)
+- [Azure SQL Yönetilen Örnek](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)
 
-### <a name="sql-deployment-offers-not-covered-in-this-guide"></a>Bu kılavuzda kapsanmayan SQL dağıtım teklifleri
+### <a name="deployment-offers-not-covered-in-this-guide"></a>Bu kılavuzda kapsanmayan dağıtım teklifleri
 
 - Azure SQL Veri Ambarı
 - Azure SQL VM 'Leri (IaaS)
@@ -78,7 +78,7 @@ Kimlik doğrulama, kullanıcının talep ettikleri kim olduğunu kanıtlama işl
 
 Merkezi kimlik yönetimi aşağıdaki avantajları sunar:
 
-- Sunucular, veritabanları ve SQL yönetilen örnekleri arasında oturum açmaları olmadan grup hesaplarını yönetin ve Kullanıcı izinlerini denetleyin.
+- Sunucular, veritabanları ve yönetilen örnekler arasında oturum açmaları olmadan grup hesaplarını yönetin ve Kullanıcı izinlerini denetleyin.
 - Basitleştirilmiş ve esnek izin yönetimi.
 - Ölçekteki uygulamaların yönetimi.
 
@@ -103,7 +103,7 @@ Merkezi kimlik yönetimi aşağıdaki avantajları sunar:
 
 - Azure AD denetim etkinlik raporlarını kullanarak Azure AD grup üyeliği değişikliklerini izleyin.
 
-- SQL yönetilen örneği için, Azure AD Yöneticisi oluşturmak üzere ayrı bir adım gerekir.
+- Yönetilen bir örnek için, bir Azure AD Yöneticisi oluşturmak için ayrı bir adım gerekir.
   - [Yönetilen örneğiniz için Azure Active Directory Yöneticisi sağlama](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)makalesine bakın.
 
 > [!NOTE]
@@ -114,41 +114,41 @@ Merkezi kimlik yönetimi aşağıdaki avantajları sunar:
 > - Azure AD erişim belirteci, istemci tarafında önbelleğe alınır ve süresi, belirteç yapılandırmasına bağlıdır. [Azure Active Directory yapılandırılabilir belirteç yaşam süreleri](../../active-directory/develop/active-directory-configurable-token-lifetimes.md) makalesine bakın
 > - Azure AD kimlik doğrulaması sorunlarını giderme konusunda yönergeler için şu bloga bakın: [Azure AD sorunlarını giderme](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991).
 
-### <a name="multi-factor-authentication-mfa"></a>Multi-Factor Authentication (MFA)
+### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
 > Bahsedilen: OSA uygulaması #2, ISO Access Control (AC)
 
-Azure Multi-Factor Authentication (MFA), birden fazla kimlik doğrulama biçimi gerektirerek ek güvenlik sağlanmasına yardımcı olur.
+Azure Multi-Factor Authentication, birden fazla kimlik doğrulama biçimi gerektirerek ek güvenlik sağlanmasına yardımcı olur.
 
 **Nasıl uygulanır**:
 
-- Koşullu erişim kullanarak Azure AD 'de [MFA 'Yı etkinleştirin](../../active-directory/authentication/concept-mfa-howitworks.md) ve etkileşimli kimlik doğrulaması kullanın.
+- Koşullu erişimi kullanarak Azure AD 'de [Multi-Factor Authentication etkinleştirin](../../active-directory/authentication/concept-mfa-howitworks.md) ve etkileşimli kimlik doğrulaması kullanın.
 
-- Alternatif, tüm Azure AD veya AD etki alanı için MFA 'yı etkinleştirmektir.
+- Alternatif olarak, tüm Azure AD veya AD etki alanı için Multi-Factor Authentication etkinleştirilir.
 
 **En iyi uygulamalar**:
 
 - Azure AD 'de koşullu erişimi etkinleştirin (Premium aboneliği gerektirir).
   - [Azure AD 'de koşullu erişim](../../active-directory/conditional-access/overview.md)makalesine bakın.  
 
-- Azure AD grupları oluşturun ve Azure AD koşullu erişim kullanarak seçilen gruplar için MFA ilkesini etkinleştirin.
+- Azure AD grupları oluşturun ve Azure AD koşullu erişim kullanarak seçili gruplar için Multi-Factor Authentication İlkesi etkinleştirin.
   - [Koşullu erişim dağıtımını planlayın](../../active-directory/conditional-access/plan-conditional-access.md)başlıklı makaleye bakın.
 
-- MFA, Azure AD 'nin tamamı için veya Azure AD ile Federal tüm Active Directory için etkinleştirilebilir.
+- Multi-Factor Authentication tüm Azure AD veya Azure AD ile Federal tüm Active Directory için etkinleştirilebilir.
 
-- Azure SQL veritabanı için Azure AD etkileşimli kimlik doğrulaması modunu ve etkileşimli olarak bir parolanın istendiği Azure SQL yönetilen örneğini, ardından MFA kimlik doğrulamasını kullanın:
-  - SSMS 'de evrensel kimlik doğrulaması kullanın. [Azure SQL veritabanı, SQL yönetilen örneği, Azure Synapse (MFA IÇIN SSMS desteği) Ile Multi-Factor AAD kimlik doğrulamasını kullanma](authentication-mfa-ssms-overview.md)makalesine bakın.
+- Azure SQL veritabanı için Azure AD etkileşimli kimlik doğrulaması modunu ve bir parolanın etkileşimli olarak istendiği Azure SQL yönetilen örneğini, ardından Multi-Factor Authentication şunu kullanın:
+  - SSMS 'de evrensel kimlik doğrulaması kullanın. [Azure SQL veritabanı, SQL yönetilen örneği, Azure Synapse (Multi-Factor Authentication IÇIN SSMS desteği) Ile Multi-Factor Azure AD kimlik doğrulamasını kullanma](authentication-mfa-ssms-overview.md)makalesine bakın.
   - SQL Server Veri Araçları (SSDT) içinde desteklenen etkileşimli kimlik doğrulaması kullanın. [SQL Server veri araçları (SSDT) Azure Active Directory destek](https://docs.microsoft.com/sql/ssdt/azure-active-directory?view=azuresqldb-current)makalesine bakın.
-  - MFA destekleyen diğer SQL araçlarını kullanın.
+  - Multi-Factor Authentication destekleyen diğer SQL araçlarını kullanın.
     - Dışarı aktarma/ayıklama/dağıtım veritabanı için SSMS Sihirbazı desteği  
     - [SqlPackage. exe](https://docs.microsoft.com/sql/tools/sqlpackage): '/uA ' seçeneği
     - [sqlcmd yardımcı programı](https://docs.microsoft.com/sql/tools/sqlcmd-utility): Option-G (etkileşimli)
     - [bcp yardımcı programı](https://docs.microsoft.com/sql/tools/bcp-utility): Option-G (etkileşimli)
 
-- MFA desteğiyle etkileşimli kimlik doğrulaması kullanarak Azure SQL veritabanı 'na veya Azure SQL yönetilen örneğine bağlanmak için uygulamalarınızı uygulayın.
+- Multi-Factor Authentication desteğiyle etkileşimli kimlik doğrulaması kullanarak Azure SQL veritabanı 'na veya Azure SQL yönetilen örneğine bağlanmak için uygulamalarınızı uygulayın.
   - Azure [Multi-Factor Authentication Azure SQL veritabanı 'Na bağlanma](active-directory-interactive-connect-azure-sql-db.md)makalesine bakın.
   > [!NOTE]
-  > Bu kimlik doğrulama modu, Kullanıcı tabanlı kimlikler gerektirir. Tek tek Azure AD Kullanıcı kimlik doğrulamasını (ör. Azure kaynakları için yönetilen kimlik kullanarak) atlayarak güvenilir bir kimlik modelinin kullanıldığı durumlarda MFA uygulanmaz.
+  > Bu kimlik doğrulama modu, Kullanıcı tabanlı kimlikler gerektirir. Tek tek Azure AD Kullanıcı kimlik doğrulamasını atlayarak güvenilir bir kimlik modelinin kullanıldığı durumlarda (ör. Azure kaynakları için yönetilen kimliği kullanarak) Multi-Factor Authentication uygulanmaz.
 
 ### <a name="minimize-the-use-of-password-based-authentication-for-users"></a>Kullanıcılar için parola tabanlı kimlik doğrulaması kullanımını en aza indirme
 
@@ -178,7 +178,7 @@ Parola tabanlı kimlik doğrulama yöntemleri, daha zayıf bir kimlik doğrulama
 - [Azure kaynakları için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md)kullanın.
   - [Sistem tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql.md)
   - [Kullanıcı tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
-  - [Yönetilen kimliğe sahip App Service 'ten Azure SQL veritabanı 'nı kullanma (kod değişikliği olmadan)](https://github.com/Azure-Samples/app-service-msi-entityframework-dotnet)
+  - [Yönetilen kimliğe sahip Azure App Service Azure SQL veritabanı 'nı kullanın (kod değişikliği olmadan)](https://github.com/Azure-Samples/app-service-msi-entityframework-dotnet)
 
 - Bir uygulama için sertifika tabanlı kimlik doğrulaması kullanın.
   - Bu [kod örneğine](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/security/azure-active-directory-auth/token)bakın.
@@ -192,7 +192,7 @@ Parolaların kaçınılmaz olduğu durumlarda, bunların güvenli olduklarından
 
 **Nasıl uygulanır**:
 
-- Parolaları ve gizli dizileri depolamak için Azure Key Vault kullanın. Uygun olduğunda, Azure AD kullanıcıları ile Azure SQL veritabanı için MFA 'yı kullanın.
+- Parolaları ve gizli dizileri depolamak için Azure Key Vault kullanın. Uygun olduğunda Azure AD kullanıcılarıyla Azure SQL veritabanı için Multi-Factor Authentication kullanın.
 
 **En iyi uygulamalar**:
 
@@ -242,7 +242,7 @@ Gerekli görevleri gerçekleştirmek için yalnızca gerekli [izinleri](https://
   - Kullanıcıları gereksiz rollere atamadığınızdan emin olun.
 
 - Azure Resource Manager:
-  - Kullanılabilir veya özel RBAC rolleri için yerleşik roller kullanın ve gerekli izinleri atayın.
+  - Kullanılabilir veya özel RBAC rollerinin yerleşik rollerini kullanın ve gerekli izinleri atayın.
     - [Azure için yerleşik roller](../../role-based-access-control/built-in-roles.md)
     - [Azure kaynakları için özel roller](../../role-based-access-control/custom-roles.md)
 
@@ -294,7 +294,7 @@ Görev ayrımı olarak da adlandırılan görevlerin ayrılması, hassas görevl
 
 - Gerekli Kullanıcı gruplarına göre roller oluşturun ve rollere izinler atayın.
   - Azure portal veya PowerShell aracılığıyla yönetim düzeyi görevler için, RBAC rollerini kullanın. Gereksinimle eşleşen bir yerleşik rol bulun ya da kullanılabilir izinleri kullanarak özel bir RBAC rolü oluşturun
-  - SQL yönetilen örneği 'nde sunucu genelindeki görevler (yeni oturumlar, veritabanları oluşturma) için sunucu rolleri oluşturun.
+  - Yönetilen bir örnekte sunucu genelindeki görevler için sunucu rolleri oluşturun (yeni oturumlar, veritabanları oluşturma).
   - Veritabanı düzeyindeki görevler için veritabanı rolleri oluşturun.
 
 - Belirli hassas görevler için, görevleri kullanıcılar adına yürütmek üzere bir sertifika tarafından imzalanan özel saklı yordamlar oluşturmayı düşünün. Dijital olarak imzalanan saklı yordamların önemli avantajlarından biri, yordam değiştirilirse yordamın önceki sürümüne verilen izinler hemen kaldırılır.
@@ -312,7 +312,7 @@ Görev ayrımı olarak da adlandırılan görevlerin ayrılması, hassas görevl
 
 **En iyi uygulamalar**:
 
-- Geliştirme/test ve üretim ortamları için farklı hesapların kullanıldığından emin olun. Farklı hesaplar test & üretim sistemlerinin ayırılmasına uyum sağlamaya yardımcı olur.
+- Geliştirme/test ve üretim ortamları için farklı hesapların kullanıldığından emin olun. Farklı hesaplar, test ve üretim sistemlerinin ayrılmalarına uyum sağlamaya yardımcı olur.
 
 - Bireysel kullanıcılara izin atamayı engellemez. Bunun yerine rolleri (veritabanı veya sunucu rolleri) sürekli olarak kullanın. Rollerin olması, raporlama ve sorun giderme izinlerinin büyük ölçüde sağlanmasına yardımcı olur.
 
@@ -352,7 +352,7 @@ SoD 'ye daha ayrıntılı bir şekilde geçmek isteyen okuyucular için aşağı
 
 > Bahsedilen: PCI: 6.3.2, SOC: SDL-3
 
-Görevlerin ayrımı, veritabanındaki verilerle sınırlı değildir, ancak uygulama kodunu içerir. Kötü amaçlı kod güvenlik denetimlerini değiştirebilir. Üretime özel kod dağıtılmadan önce, nelerin dağıtıldığını gözden geçirmeniz önemlidir.
+Görev ayrımı bir veritabanındaki verilerle sınırlı değildir, ancak uygulama kodunu içerir. Kötü amaçlı kod güvenlik denetimlerini değiştirebilir. Üretime özel kod dağıtılmadan önce, nelerin dağıtıldığını gözden geçirmeniz önemlidir.
 
 **Nasıl uygulanır**:
 
@@ -400,7 +400,7 @@ Bekleyen şifreleme, veritabanı, günlük ve yedekleme dosyalarında kalıcı h
 **Nasıl uygulanır**:
 
 - Azure SQL veritabanı ve SQL yönetilen örneği 2017 sonrasında oluşturulan tüm veritabanları için hizmet tarafından yönetilen anahtarlarla [Saydam veritabanı şifrelemesi (TDE)](transparent-data-encryption-tde-overview.md) varsayılan olarak etkindir.
-- SQL yönetilen örneğinde, veritabanı şirket içi sunucu kullanan bir geri yükleme işleminden oluşturulduysa, özgün veritabanının TDE ayarı uygulanır. Özgün veritabanında TDE etkin değilse, SQL yönetilen örneği için TDE 'nın el ile açık olmasını öneririz.
+- Yönetilen bir örnekte, veritabanı şirket içi sunucu kullanan bir geri yükleme işleminden oluşturulduysa, özgün veritabanının TDE ayarı uygulanır. Özgün veritabanında TDE etkin değilse, yönetilen örnek için TDE 'nın el ile açık olmasını öneririz.
 
 **En iyi uygulamalar**:
 
@@ -453,7 +453,7 @@ Hangi verilerin gizli olduğunu ve gizli verilerin bellekte şifrelenmesi gereki
 - Hücre düzeyinde şifrelemeyi (CLE) kullanın. Ayrıntılar için [bir veri sütununu şifreleyin](https://docs.microsoft.com/sql/relational-databases/security/encryption/encrypt-a-column-of-data) başlıklı makaleye bakın.
 - Always Encrypted kullanın, ancak kısıtlamasından haberdar olun. Sınırlamalar aşağıda listelenmiştir.
 
-**En iyi uygulamalar**
+**Önerilen uygulamalar**
 
 CLE kullanırken:
 
@@ -503,7 +503,7 @@ Azure SQL veritabanı ve SQL yönetilen örneği ile bağlantı kurarak, iyi bil
 
 **Nasıl uygulanır**:
 
-- Azure SQL veritabanı ve SQL yönetilen örneği 'ne bağlanan istemci makinelerin [Aktarım Katmanı Güvenliği (TLS)](security-overview.md#transport-layer-security-tls-encryption-in-transit)kullandığından emin olun.
+- Azure SQL veritabanı ve SQL yönetilen örneği 'ne bağlanan istemci makinelerin [Aktarım Katmanı Güvenliği (TLS)](security-overview.md#transport-layer-security-encryption-in-transit)kullandığından emin olun.
 
 **En iyi uygulamalar**:
 
@@ -541,23 +541,23 @@ SQL yönetilen örneği 'nde:
 **En iyi uygulamalar**:
 
 - Özel bir uç noktaya bağlanarak (örneğin, özel bir veri yolu kullanarak) Azure SQL veritabanı ve SQL yönetilen örneği erişimini kısıtlama:
-  - Dış erişimi engellemek için bir SQL yönetilen örneği VNet içinde yalıtılabilir. Aynı bölgedeki aynı veya eşlenmiş VNet 'teki uygulamalar ve araçlar buna doğrudan erişebilir. Farklı bölgedeki uygulamalar ve araçlar, bağlantı kurmak için VNet-VNet bağlantısı veya ExpressRoute bağlantı hattı eşlemesi kullanabilir. Müşteri, 1433 numaralı bağlantı noktası üzerinden erişimi yalnızca yönetilen bir örneğe erişim gerektiren kaynaklarla kısıtlamak için ağ güvenlik grupları (NSG) kullanmalıdır.
-  - Bir SQL veritabanı için, VNet 'iniz içindeki sunucu için adanmış bir özel IP sağlayan [özel bağlantı](../../private-link/private-endpoint-overview.md) özelliğini kullanın. Ayrıca, sunucularınıza erişimi kısıtlamak için VNET [güvenlik duvarı kuralları Ile VNET hizmet uç noktalarını](vnet-service-endpoint-rule-overview.md) kullanabilirsiniz.
+  - Yönetilen bir örnek, dış erişimi engellemek için bir sanal ağ içinde yalıtılabilir. Aynı bölgedeki aynı veya eşlenmiş sanal ağdaki uygulamalar ve araçlar doğrudan erişebilir. Farklı bölgedeki uygulamalar ve araçlar, bağlantı kurmak için sanal-ağdan sanal ağ bağlantısı veya ExpressRoute devre eşlemesini kullanabilir. Müşteri, 1433 numaralı bağlantı noktası üzerinden erişimi yalnızca yönetilen bir örneğe erişim gerektiren kaynaklarla kısıtlamak için ağ güvenlik grupları (NSG) kullanmalıdır.
+  - Bir SQL veritabanı için, sanal ağınız içindeki sunucu için adanmış bir özel IP sağlayan [özel bağlantı](../../private-link/private-endpoint-overview.md) özelliğini kullanın. Sunucularınızla erişimi kısıtlamak için sanal ağ [güvenlik duvarı kurallarıyla sanal ağ hizmet uç noktalarını](vnet-service-endpoint-rule-overview.md) da kullanabilirsiniz.
   - Mobil kullanıcıların, veri yolu üzerinden bağlanmak için Noktadan siteye VPN bağlantıları kullanması gerekir.
   - Şirket içi ağına bağlanan kullanıcıların, veri yolu üzerinden bağlanmak için siteden siteye VPN bağlantısı veya ExpressRoute kullanması gerekir.
 
 - Azure SQL veritabanı ve SQL yönetilen örneğine, genel bir uç noktaya bağlanarak erişebilirsiniz (örneğin, ortak bir veri yolu kullanarak). Aşağıdaki en iyi yöntemler göz önünde bulundurulmalıdır:
   - SQL veritabanındaki bir sunucu için, erişimi yalnızca yetkili IP adresleriyle kısıtlamak üzere [IP güvenlik duvarı kurallarını](firewall-configure.md) kullanın.
-  - SQL yönetilen örneğindeki bir örnek için ağ güvenlik grupları (NSG) ' i kullanarak yalnızca gerekli kaynaklarla bağlantı noktası 3342 üzerinden erişimi kısıtlayın. Daha fazla bilgi için bkz. [genel uç noktalarla güvenli bir şekilde Azure SQL yönetilen örneği kullanma](../managed-instance/public-endpoint-overview.md).
+  - SQL yönetilen örneği için ağ güvenlik grupları (NSG) kullanarak 3342 numaralı bağlantı noktasına yalnızca gerekli kaynaklarla erişimi kısıtlayın. Daha fazla bilgi için bkz. [genel uç noktalarla güvenli bir şekilde yönetilen örnek kullanma](../managed-instance/public-endpoint-overview.md).
 
 > [!NOTE]
 > SQL yönetilen örnek genel uç noktası varsayılan olarak etkinleştirilmemiştir ve açıkça etkinleştirilmelidir. Şirket ilkesi genel uç noktaların kullanılmasına izin vermez, ilk yerde genel bitiş noktalarının etkinleştirilmesini engellemek için [Azure ilkesi](../../governance/policy/overview.md) 'ni kullanın.
 
 - Azure ağ bileşenlerini ayarlama:
   - [Ağ güvenliği için En Iyi Azure uygulamalarını](../../security/fundamentals/network-best-practices.md)izleyin.
-  - [Azure sanal ağ hakkında sık sorulan sorular (SSS)](../../virtual-network/virtual-networks-faq.md) ve plan 'da özetlenen en iyi uygulamalar başına sanal ağ (VNet) yapılandırması planlayın.
+  - [Azure sanal ağ hakkında sık sorulan sorular (SSS)](../../virtual-network/virtual-networks-faq.md) ve plan 'da özetlenen en iyi uygulamalar başına sanal ağ yapılandırması planlayın.
   - Bir sanal ağı birden çok alt ağa bölüm ve benzer rolün kaynaklarını aynı alt ağa (örneğin, ön uç ile arka uç kaynakları) atayın.
-  - Azure VNet sınırının içindeki alt ağlar arasındaki trafiği denetlemek için [ağ güvenlik grupları (NSG 'ler)](../../virtual-network/security-overview.md) kullanın.
+  - Azure sanal ağ sınırının içindeki alt ağlar arasındaki trafiği denetlemek için [ağ güvenlik grupları (NSG 'ler)](../../virtual-network/security-overview.md) kullanın.
   - Gelen ve giden ağ trafiğini izlemek üzere aboneliğiniz için [Azure Ağ İzleyicisi](../../network-watcher/network-watcher-monitoring-overview.md) 'ni etkinleştirin.
 
 ### <a name="configure-power-bi-for-secure-connections-to-sql-databasesql-managed-instance"></a>SQL veritabanı/SQL yönetilen örneği için güvenli bağlantılar için Power BI yapılandırma
@@ -578,19 +578,19 @@ SQL yönetilen örneği 'nde:
 
 - Basit bir Web uygulaması için genel uç nokta üzerinden bağlantı kurmak için **Azure HIZMETLERININ** açık olması gerekir.
 
-- SQL yönetilen örneği için özel veri yolu bağlantısı için [uygulamanızı bir Azure sanal ağıyla tümleştirin](../../app-service/web-sites-integrate-with-vnet.md) . İsteğe bağlı olarak, [App Service ortamları (Ao)](../../app-service/environment/intro.md)Ile bir Web uygulaması da dağıtabilirsiniz.
+- Yönetilen bir örneğe özel veri yolu bağlantısı için [uygulamanızı bir Azure sanal ağıyla tümleştirin](../../app-service/web-sites-integrate-with-vnet.md) . İsteğe bağlı olarak, [App Service ortamları (Ao)](../../app-service/environment/intro.md)Ile bir Web uygulaması da dağıtabilirsiniz.
 
-- ASE veya VNet tümleşik Web uygulamasıyla SQL veritabanı 'ndaki bir veritabanına bağlanan Web uygulaması için, [VNET hizmet uç noktalarını ve VNET güvenlik duvarı kurallarını](vnet-service-endpoint-rule-overview.md) kullanarak belirli bir sanal ağ ve alt ağdan erişimi sınırlayabilirsiniz. Daha sonra **Azure HIZMETLERININ kapalı çalışmasına Izin ver** seçeneğini belirleyin. Ayrıca, ASE 'yi bir özel veri yolu üzerinden SQL yönetilen örneğindeki yönetilen bir örneğe de bağlayabilirsiniz.  
+- Aya veya sanal ağ ile tümleşik Web uygulamasına sahip Web uygulaması için SQL veritabanı 'ndaki bir veritabanına bağlanırken, [sanal ağ hizmet uç noktalarını ve sanal ağ güvenlik duvarı kurallarını](vnet-service-endpoint-rule-overview.md) kullanarak belirli bir sanal ağ ve alt ağdan erişimi sınırlayabilirsiniz. Daha sonra **Azure HIZMETLERININ kapalı çalışmasına Izin ver** seçeneğini belirleyin. Ayrıca, ASE 'yi bir özel veri yolu üzerinden SQL yönetilen örneğindeki yönetilen bir örneğe de bağlayabilirsiniz.  
 
-- Web uygulamanızın, [Azure App Service kullanarak PaaS Web ve mobil uygulamaları güvenli hale getirmek Için en iyi uygulamalar](../../security/fundamentals/paas-applications-using-app-services.md)makalesine göre yapılandırıldığından emin olun.
+- Web uygulamanızın, [bir hizmet olarak platform (PaaS) Web ve mobil uygulamaları Azure App Service kullanarak güvenli hale getirmek Için en iyi yöntemler](../../security/fundamentals/paas-applications-using-app-services.md)makalesine göre yapılandırıldığından emin olun.
 
 - Web uygulamanızı ortak güvenlik açıklarından ve güvenlik açıklarından korumak için [Web uygulaması güvenlik duvarını (WAF)](../../web-application-firewall/ag/ag-overview.md) yükler.
 
-### <a name="configure-azure-vm-hosting-for-secure-connections-to-sql-databasesql-managed-instance"></a>SQL veritabanı/SQL yönetilen örneği için güvenli bağlantılar için Azure VM barındırma yapılandırma
+### <a name="configure-azure-virtual-machine-hosting-for-secure-connections-to-sql-databasesql-managed-instance"></a>SQL veritabanı/SQL yönetilen örneği için güvenli bağlantılar için Azure sanal makine barındırma yapılandırma
 
 **En iyi uygulamalar**:
 
-- VM 'den hangi bölgelere erişilebileceğini denetlemek için Azure VM 'lerinin NSG 'lerinde Izin verme ve reddetme kurallarının bir birleşimini kullanın.
+- VM 'den hangi bölgelere erişilebileceğini denetlemek için Azure sanal makinelerinde NSG 'ler üzerinde Izin verme ve reddetme kurallarının bir birleşimini kullanın.
 
 - [Azure 'Da IaaS iş yükleri için En Iyi güvenlik uygulamaları](../../security/fundamentals/iaas.md)olan her makale için sanal makinenizin yapılandırıldığından emin olun.
 
@@ -602,7 +602,7 @@ SQL yönetilen örneği 'nde:
 
 - Eşleme kullanıyorsanız veya şirket içi sunucuya bağlanıyorsanız [isteğe bağlı varsayılan yollar](../../virtual-network/virtual-networks-udr-overview.md#optional-default-routes) uygulayın.
 
-- VNet 'teki tüm trafiği paket incelemesi için bir ağ sanal gerecine göndermeniz gerekiyorsa [Kullanıcı tanımlı yollar](../../virtual-network/virtual-networks-udr-overview.md#user-defined) uygulayın.
+- Paket incelemesi için sanal ağdaki tüm trafiği bir ağ sanal gerecine göndermeniz gerekiyorsa [Kullanıcı tanımlı yollar](../../virtual-network/virtual-networks-udr-overview.md#user-defined) uygulayın.
 
 - Azure omurga ağı aracılığıyla Azure depolama gibi PaaS hizmetlerine güvenli erişim için [sanal ağ hizmet uç noktalarını](vnet-service-endpoint-rule-overview.md) kullanın.
 
@@ -616,7 +616,7 @@ Dağıtılmış hizmet reddi (DDoS) saldırıları, kötü niyetli bir kullanıc
 
 DDoS koruması, Azure platformunun bir parçası olarak otomatik olarak etkinleştirilir. Ortak uç noktalarda her zaman açık trafik izleme ve ağ düzeyinde saldırıları gerçek zamanlı olarak hafifletme bilgilerini içerir.
 
-- VNET 'lerde dağıtılan kaynaklarla ilişkili genel IP adreslerini izlemek için [Azure DDoS koruması](../../virtual-network/ddos-protection-overview.md) 'nı kullanın.
+- Sanal ağlarda dağıtılan kaynaklarla ilişkili genel IP adreslerini izlemek için [Azure DDoS koruması](../../virtual-network/ddos-protection-overview.md) 'nı kullanın.
 
 - Veritabanlarına karşı hizmet reddi (DoS) saldırılarını algılamak için [Azure SQL veritabanı Için Gelişmiş tehdit koruması](threat-detection-overview.md) 'nı kullanın.
 
@@ -666,7 +666,7 @@ Veritabanı olaylarının izlenmesi, veritabanı etkinliğini anlamanıza yardı
 **En iyi uygulamalar**:
 
 - Sunucunuz üzerinde [SQL veritabanı denetimi](../../azure-sql/database/auditing-overview.md) veya olayları denetlemek Için [yönetilen örnek denetimi](../managed-instance/auditing-configure.md) yapılandırarak, bu sunucudaki tüm mevcut ve yeni oluşturulan veritabanları denetlenir.
-- Varsayılan olarak denetim ilkesi, veritabanlarına karşı tüm eylemleri (sorgular, saklı yordamlar ve başarılı ve başarısız oturumlar) içerir ve bu da yüksek düzeyde denetim günlüklerine neden olabilir. Müşterilerin [PowerShell kullanarak farklı türlerde eylemler ve eylem grupları için denetimi yapılandırması](../../sql-database/sql-database-auditing.md#manage-auditing)önerilir. Bunu yapılandırmak, denetlenen eylemlerin sayısını denetlemeye yardımcı olur ve olay kaybı riskini en aza indirir. Özel denetim yapılandırması, müşterilerin yalnızca gerekli denetim verilerini yakalamasına izin verir.
+- Varsayılan olarak denetim ilkesi, veritabanlarına karşı tüm eylemleri (sorgular, saklı yordamlar ve başarılı ve başarısız oturumlar) içerir ve bu da yüksek düzeyde denetim günlüklerine neden olabilir. Müşterilerin [PowerShell kullanarak farklı türlerde eylemler ve eylem grupları için denetimi yapılandırması](../../sql-database/sql-database-auditing.md#manage-auditing)önerilir. Bunu yapılandırmak, denetlenen eylemlerin sayısını denetlemeye yardımcı olur ve olay kaybı riskini en aza indirir. Özel denetim yapılandırması, müşterilerin yalnızca gerekli denetim verilerini yakalamasına olanak tanır.
 - Denetim günlükleri doğrudan [Azure Portal](https://portal.azure.com/)veya yapılandırılan depolama konumundan tüketilebilir.
 
 > [!NOTE]
@@ -728,7 +728,7 @@ Büyük olasılıkla hassas veriler içeren sütunları bulur. Hassas veriler b�
 - Veritabanlarınızdaki hassas verileri bulmak, sınıflandırmak, etiketlemek ve korumak için [SQL veri bulma ve sınıflandırmasını](data-discovery-and-classification-overview.md) kullanın.
   - SQL veri bulma ve sınıflandırma panosundaki otomatik bulma tarafından oluşturulan sınıflandırma önerilerini görüntüleyin. Hassas verilerinizin kalıcı olarak sınıflandırma etiketleriyle etiketlenmesi gibi ilgili sınıflandırmaları kabul edin.
   - Otomatik mekanizmaya bulunmayan ek gizli veri alanları için sınıflandırmaları el ile ekleyin.
-- Daha fazla bilgi için bkz. [SQL veri bulma & sınıflandırması](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification).
+- Daha fazla bilgi için bkz. [SQL veri bulma ve sınıflandırma](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification).
 
 **En iyi uygulamalar**:
 
@@ -745,7 +745,7 @@ Gizli verilere erişen ve denetim günlüklerindeki gizli verilerdeki sorguları
 **Nasıl uygulanır**:
 
 - SQL denetim ve veri sınıflandırması birleşimini kullanın.
-  - [SQL veritabanı denetim](../../azure-sql/database/auditing-overview.md) günlüğlemenizde, erişimi gizli verilere özel olarak izleyebilirsiniz. Ayrıca, erişilen veriler ve duyarlık etiketi gibi bilgileri de görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [veri bulma & sınıflandırma](data-discovery-and-classification-overview.md) ve [hassas verilere erişimi denetleme](data-discovery-and-classification-overview.md#audit-sensitive-data).
+  - [SQL veritabanı denetim](../../azure-sql/database/auditing-overview.md) günlüğlemenizde, erişimi gizli verilere özel olarak izleyebilirsiniz. Ayrıca, erişilen veriler ve duyarlık etiketi gibi bilgileri de görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [veri bulma ve sınıflandırma](data-discovery-and-classification-overview.md) ve [hassas verilere erişimi denetleme](data-discovery-and-classification-overview.md#audit-sensitive-data).
 
 **En iyi uygulamalar**:
 
@@ -755,7 +755,7 @@ Gizli verilere erişen ve denetim günlüklerindeki gizli verilerdeki sorguları
 
 ### <a name="visualize-security-and-compliance-status"></a>Güvenlik ve uyumluluk durumunu görselleştirin
 
-Veri merkezlerinizin güvenlik duruşunu güçlendirir (SQL veritabanları dahil) Birleşik bir altyapı güvenliği yönetim sistemi kullanın. Veritabanlarının güvenliğine ve uyumluluk durumuna ilişkin önerilerin bir listesini görüntüleyin.
+Veri merkezlerinizin güvenlik duruşunu güçlendirir (SQL veritabanı 'ndaki veritabanları dahil) Birleşik bir altyapı güvenliği yönetim sistemi kullanın. Veritabanlarının güvenliğine ve uyumluluk durumuna ilişkin önerilerin bir listesini görüntüleyin.
 
 **Nasıl uygulanır**:
 
@@ -785,13 +785,13 @@ Bugün, Azure SQL veritabanı ve SQL yönetilen örneği, veri çıkarma tehditl
   - Yalnızca VNet güvenlik duvarı kuralı ayarlayarak, Azure VM 'nizi içeren alt ağdan gelen trafiğe izin verin.
   - [Özel bağlantı](../../private-link/private-endpoint-overview.md) kullan
 - SQL yönetilen örneği için, özel IP erişiminin kullanılması standart dışı bir VM 'nin ilk veri savunma sorunu ele alınmıştır. Bir SQL yönetilen örnek alt ağında en kısıtlayıcı ilkeyi otomatik olarak ayarlamak için bir alt ağ üzerinde alt ağ temsili özelliğini açın.
-- Bir SQL yönetilen örneğiyle daha büyük bir yüzey alanı olduğu ve ağ gereksinimlerinin müşteriler tarafından görülebilmesi için sahte olması gereken standart olmayan bir konudur. Bunun için en iyi şekilde risk azaltma, bu güvenlik kılavuzundaki tüm uygulamaların ilk yerinde (yalnızca veri ayıklanma değil) standart dışı DBA senaryosunu önlemesini sağlar. Always Encrypted hassas verileri şifreleyerek korumak ve anahtarı DBA için erişilemez durumda tutmak için bir yöntemdir.
+- Daha büyük bir yüzey alanı olduğu ve ağ gereksinimlerinin müşteriler tarafından görülebilmesi için, sahte bir DBA, SQL yönetilen örneği ile daha fazla açığa çıkarılır. Bunun için en iyi şekilde risk azaltma, bu güvenlik kılavuzundaki tüm uygulamaların ilk yerinde (yalnızca veri ayıklanma değil) standart dışı DBA senaryosunu önlemesini sağlar. Always Encrypted hassas verileri şifreleyerek korumak ve anahtarı DBA için erişilemez durumda tutmak için bir yöntemdir.
 
 ## <a name="security-aspects-of-business-continuity-and-availability"></a>İş sürekliliği ve kullanılabilirliğinin güvenlik yönleri
 
 Çoğu güvenlik standardı, tek hata noktalarından kaçınmak için artıklık ve yük devretme özellikleri uygulayarak gerçekleştirilen işlemsel sürekliliği açısından veri kullanılabilirliğini ele geçirir. Olağanüstü durum senaryolarında verilerin ve günlük dosyalarının yedeklerini tutan yaygın bir uygulamadır.Aşağıdaki bölümde, Azure 'da yerleşik olan yetenekler hakkında üst düzey bir genel bakış sağlanmaktadır. Ayrıca, belirli ihtiyaçları karşılamak üzere yapılandırılabilecek ek seçenekler de sağlar:
 
-- Azure, SQL [veritabanı & SQL yönetilen örneği Ile yüksek](high-availability-sla.md) kullanılabilirlik sunan yerleşik yüksek kullanılabilirlik sağlar.
+- Azure, yerleşik yüksek kullanılabilirlik sunar: [SQL veritabanı ve SQL yönetilen örneği Ile yüksek kullanılabilirlik](high-availability-sla.md)
 
 - İş Açısından Kritik katmanı, yük devretme grupları, çoklu kullanılabilirlik alanları, tam ve fark günlüğü yedeklemeleri ve varsayılan olarak etkin olan noktadan sonra geri yükleme yedeklemelerini içerir:  
   - [Yüksek kullanılabilirlik-bölge yedekli yapılandırma](high-availability-sla.md#zone-redundant-configuration)

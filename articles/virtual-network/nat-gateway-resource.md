@@ -7,6 +7,7 @@ documentationcenter: na
 author: asudbring
 manager: KumudD
 ms.service: virtual-network
+ms.subservice: nat
 Customer intent: As an IT administrator, I want to learn more about how to design virtual networks with NAT gateway resources.
 ms.devlang: na
 ms.topic: overview
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: 6bb53539c105cda99c842b6b0fa236f0e18a85ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 640a1795c5f2223563f6615c97a3f450a8c6fc7d
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82182489"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84341142"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ağ geçidi kaynaklarıyla sanal ağlar tasarlama
 
@@ -236,7 +237,7 @@ Her NAT ağ geçidi, atanan giden IP adresi başına 64.000 bağlantıyı destek
 
 Kaynak ağ adresi çevirisi (SNAT), bir akışın kaynağını farklı bir IP adresinden kaynaklanan bir şekilde yeniden yazar.  NAT ağ geçidi kaynakları, bağlantı noktası adresi çevirisi (PAT) ile yaygın olarak anılan bir, SNAT değişkenini kullanır. PAT kaynak adresi ve kaynak bağlantı noktasını yeniden yazar. SNAT ile, özel adres sayısı ve bunların çevrilmiş ortak adresleri arasında sabit bir ilişki yoktur.  
 
-### <a name="fundamentals"></a>Temel Konular
+### <a name="fundamentals"></a>Temel Bilgiler
 
 Temel kavramı açıklamak için dört akışla bir örneğe bakalım.  NAT ağ geçidi, genel IP adresi kaynağı 65.52.0.2 kullanıyor.
 

@@ -1,6 +1,6 @@
 ---
 title: Yaygın olarak karşılaşılan Azure SQL Veritabanı bağlantı sorunlarını giderme
-description: Azure SQL veritabanı bağlantı sorunlarını giderme ve diğer Azure SQL veritabanı ya da SQL yönetilen örnek özel sorunlarını çözme adımlarını sağlar
+description: Azure SQL veritabanı bağlantı sorunlarını giderme ve diğer Azure SQL veritabanı veya Azure SQL yönetilen örnek özel sorunlarını çözme adımlarını sağlar
 services: sql-database
 ms.service: sql-database
 ms.topic: troubleshooting
@@ -9,17 +9,17 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 0420138ac7366916e8b83cf40abcab1a376017bd
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: e22f962c69091e783b8f6ab55905a02025213f5e
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116803"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321402"
 ---
-# <a name="troubleshooting-connectivity-issues-and-other-errors-with-sql-database-and-sql-managed-instance"></a>SQL veritabanı ve SQL yönetilen örneği ile bağlantı sorunlarını ve diğer hataları giderme
+# <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile bağlantı sorunlarını ve diğer hataları giderme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL veritabanı veya SQL yönetilen örneği bağlantısı başarısız olduğunda hata iletileri alırsınız. Bu bağlantı sorunlarına yeniden yapılandırma, güvenlik duvarı ayarları, bir bağlantı zaman aşımı, yanlış oturum açma bilgileri veya [uygulama tasarım](develop-overview.md) sürecinde en iyi yöntemler ve tasarım yönergeleri uygulama hatası oluşabilir. Ayrıca, bazı Azure SQL veritabanı veya SQL yönetilen örnek kaynaklarında maksimum sınıra ulaşıldığında artık bağlanamazsınız.
+Azure SQL veritabanı veya Azure SQL yönetilen örneği bağlantısı başarısız olduğunda hata iletileri alırsınız. Bu bağlantı sorunlarına yeniden yapılandırma, güvenlik duvarı ayarları, bir bağlantı zaman aşımı, yanlış oturum açma bilgileri veya [uygulama tasarım](develop-overview.md) sürecinde en iyi yöntemler ve tasarım yönergeleri uygulama hatası oluşabilir. Ayrıca, bazı Azure SQL veritabanı veya SQL yönetilen örnek kaynaklarında maksimum sınıra ulaşıldığında artık bağlanamazsınız.
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>Geçici hata hata iletileri (40197, 40613 ve diğerleri)
 
@@ -27,10 +27,10 @@ Azure altyapısının SQL Veritabanı hizmetinde ağır iş yükleri ortaya çı
 
 ### <a name="list-of-transient-fault-error-codes"></a>Geçici hata hata kodları listesi
 
-| Hata kodu | Severity | Açıklama |
+| Hata kodu | Severity | Description |
 | ---:| ---:|:--- |
 | 4060 |16 |Oturum açma tarafından istenen "%. &#x2a;ls" veritabanı açılamıyor. Oturum açılamadı. Daha fazla bilgi için bkz. [hatalar 4000-4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
-| 40197 |17 |Hizmet, isteğinizi işlerken bir hatayla karşılaştı. Lütfen tekrar deneyin. Hata kodu% d.<br/><br/>Yazılım veya donanım yükseltmeleri, donanım hataları veya diğer yük devretme sorunları nedeniyle bu hatayı alırsınız. # 40197 hatası iletisi içinde gömülü hata kodu (% d), hata veya yük devretme türü hakkında ek bilgiler sağlar. Hata kodlarının bazı örnekleri 40020 40197, 40143, 40166 ve 40540 hata koduna katıştırılır.<br/><br/>Yeniden bağlanma, sizi veritabanınızın sağlıklı bir kopyasına otomatik olarak bağlar. Uygulamanız hata 40197 ' i yakalamalı, sorun giderme için ileti içinde katıştırılmış hata kodunu (% d) günlüğe kaydedin ve kaynaklar kullanılabilir olana kadar SQL veritabanı 'na yeniden bağlanmayı deneyin ve bağlantınız yeniden oluşturulur. Daha fazla bilgi için bkz. [geçici hatalar](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
+| 40197 |17 |Hizmet, isteğinizi işlerken bir hatayla karşılaştı. Lütfen tekrar deneyin. Hata kodu% d.<br/><br/>Yazılım veya donanım yükseltmeleri, donanım hataları veya diğer yük devretme sorunları nedeniyle bu hatayı alırsınız. 40197 hatası iletisi içinde gömülü hata kodu (% d), hata veya yük devretme türü hakkında ek bilgiler sağlar. Hata kodlarının bazı örnekleri 40020 40197, 40143, 40166 ve 40540 hata koduna katıştırılır.<br/><br/>Yeniden bağlanma, sizi veritabanınızın sağlıklı bir kopyasına otomatik olarak bağlar. Uygulamanız hata 40197 ' i yakalamalı, sorun giderme için ileti içinde katıştırılmış hata kodunu (% d) günlüğe kaydedin ve kaynaklar kullanılabilir olana kadar SQL veritabanı 'na yeniden bağlanmayı deneyin ve bağlantınız yeniden oluşturulur. Daha fazla bilgi için bkz. [geçici hatalar](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
 | 40501 |20 |Hizmet şu an meşgul. 10 saniye sonra isteği yeniden deneyin. Olay KIMLIĞI:% ls. Kod:% d. Daha fazla bilgi için bkz. <br/>&bull;&nbsp; [Mantıksal SQL Server Kaynak sınırları](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Tek veritabanları için DTU tabanlı sınırlar](service-tiers-dtu.md)<br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [tek veritabanları için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL yönetilen örnek kaynak sınırları](../managed-instance/resource-limits.md).|
 | 40613 |17 |'%. &#x2a;ls ' sunucusundaki '%. &#x2a;ls ' veritabanı şu anda kullanılamıyor. Lütfen bağlantıyı daha sonra yeniden deneyin. Sorun devam ederse, müşteri desteğine başvurun ve '%. &#x2a;ls ' öğesinin oturum izleme KIMLIĞINI sağlayın.<br/><br/> Bu hata, veritabanında zaten var olan bir ayrılmış yönetici bağlantısı (DAC) varsa meydana gelebilir. Daha fazla bilgi için bkz. [geçici hatalar](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
 | 49918 |16 |İsteği işlenemiyor. İsteği işlemek için yeterli kaynak yok.<br/><br/>Hizmet şu an meşgul. Lütfen isteği daha sonra yeniden deneyin. Daha fazla bilgi için bkz. <br/>&bull;&nbsp; [Mantıksal SQL Server Kaynak sınırları](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Tek veritabanları için DTU tabanlı sınırlar](service-tiers-dtu.md)<br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [tek veritabanları için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL yönetilen örnek kaynak sınırları](../managed-instance/resource-limits.md). |
@@ -295,7 +295,7 @@ Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel ç
 
 ### <a name="table-of-additional-resource-governance-error-messages"></a>Ek kaynak idare hata iletileri tablosu
 
-| Hata kodu | Severity | Açıklama |
+| Hata kodu | Severity | Description |
 | ---:| ---:|:--- |
 | 10928 |20 |Kaynak KIMLIĞI:% d. Veritabanı için% s sınırı% d ve bu sınıra ulaşıldı. Daha fazla bilgi için bkz. [tek ve havuza alınmış veritabanları Için SQL veritabanı kaynak sınırları](resource-limits-logical-server.md).<br/><br/>Kaynak KIMLIĞI, sınıra ulaşan kaynağı gösterir. Çalışan iş parçacıkları için kaynak KIMLIĞI = 1. Oturumlar için kaynak KIMLIĞI = 2.<br/><br/>Bu hata ve nasıl çözüleceği hakkında daha fazla bilgi için bkz.: <br/>&bull;&nbsp; [Mantıksal SQL Server Kaynak sınırları](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Tek veritabanları için DTU tabanlı sınırlar](service-tiers-dtu.md)<br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [tek veritabanları için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL yönetilen örnek kaynak sınırları](../managed-instance/resource-limits.md). |
 | 10929 |20 |Kaynak KIMLIĞI:% d. % S en düşük garanti% d, maksimum sınır% d ve veritabanı için geçerli kullanım% d. Ancak, sunucu şu anda bu veritabanı için% d değerinden büyük istekleri desteklemeye yönelik çok meşgul. Kaynak KIMLIĞI, sınıra ulaşan kaynağı gösterir. Çalışan iş parçacıkları için kaynak KIMLIĞI = 1. Oturumlar için kaynak KIMLIĞI = 2. Daha fazla bilgi için bkz. <br/>&bull;&nbsp; [Mantıksal SQL Server Kaynak sınırları](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Tek veritabanları için DTU tabanlı sınırlar](service-tiers-dtu.md)<br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [tek veritabanları için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL yönetilen örnek kaynak sınırları](../managed-instance/resource-limits.md). <br/>Aksi takdirde, lütfen daha sonra yeniden deneyin. |
@@ -310,7 +310,7 @@ Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel ç
 
 Aşağıdaki hatalar elastik havuzlar oluşturma ve kullanmayla ilgilidir:
 
-| Hata kodu | Severity | Açıklama | Düzeltici eylem |
+| Hata kodu | Severity | Description | Düzeltici eylem |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |Elastik havuz, depolama sınırına ulaştı. Elastik havuzun depolama alanı kullanımı (% d) MB/s değerini aşamaz. Elastik havuzun depolama sınırına ulaşıldığında veritabanına veri yazmaya çalışılıyor. Kaynak limitleri hakkında bilgi için bkz.: <br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md). <br/> |Depolama sınırını artırmak, elastik havuzdaki ayrı veritabanları tarafından kullanılan depolamayı azaltmak veya elastik havuzdan veritabanlarını kaldırmak için mümkünse, depolama alanı sayısını ve/veya depolama alanını esnek havuza eklemeyi düşünün. Elastik havuz ölçekleme için bkz. [elastik havuz kaynaklarını ölçeklendirme](elastic-pool-scale.md).|
 | 10929 | 16 |% S en düşük garanti% d, maksimum sınır% d ve veritabanı için geçerli kullanım% d. Ancak, sunucu şu anda bu veritabanı için% d değerinden büyük istekleri desteklemeye yönelik çok meşgul. Kaynak limitleri hakkında bilgi için bkz.: <br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md). <br/> Aksi takdirde, lütfen daha sonra yeniden deneyin. Veritabanı başına DTU/sanal çekirdek en az; Veritabanı başına DTU/sanal çekirdek maks. Elastik havuzdaki tüm veritabanları genelinde eş zamanlı çalışan (istek) toplam sayısı havuz sınırını aşmaya çalıştı. |Çalışan sınırını artırmak veya elastik havuzdan veritabanlarını kaldırmak için mümkünse, elastik havuzun DTU 'ları veya sanal çekirdekleri artırmayı düşünün. |
@@ -390,4 +390,4 @@ Günlüğe kaydetmenin nasıl etkinleştirileceği hakkında daha fazla bilgi i�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure SQL veritabanı bağlantı mimarisi](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture)
-- [Azure SQL veritabanı ve veri ambarı ağ erişim denetimleri](https://docs.microsoft.com/azure/sql-database/sql-database-networkaccess-overview)
+- [Azure SQL veritabanı ve Azure SYNAPSE Analytics ağ erişim denetimleri](https://docs.microsoft.com/azure/sql-database/sql-database-networkaccess-overview)

@@ -5,25 +5,26 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: b452362744d7fbf655ea043127a15f5173d04e4c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 675ee8b19a870221488ade2f578199f4f53599b9
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562466"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339000"
 ---
-# <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Azure Data Box Gateway sorunlarınızı giderme 
+# <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Azure Data Box Gateway sorunlarınızı giderme
 
-Bu makalede Azure Data Box Gateway sorunlarını giderme adımları açıklanmaktadır. Bu makalede şunları öğreneceksiniz:
+Bu makalede Azure Data Box Gateway sorunlarını giderme adımları açıklanmaktadır.
+Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
+>
 > * Tanılama çalıştırma
 > * Destek paketi toplama
 > * Sorun gidermek için günlükleri kullanma
-
 
 ## <a name="run-diagnostics"></a>Tanılama çalıştırma
 

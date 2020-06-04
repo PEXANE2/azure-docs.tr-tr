@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: c4043702bd27bb9a37fca70475ef254bbd1f7372
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 98431e7a451aa54dfdee2126d4ce94b8b0b0fb84
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561349"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339221"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Azure Data Box Gateway için erişimi, güç ve bağlantı modunu yönetme
 
@@ -22,6 +22,7 @@ Bu makalede, Azure Data Box Gateway erişim, güç ve bağlantı modunun nasıl 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
+>
 > * Cihaz erişimini yönetme
 > * Bağlantı modunu Yönet
 > * Güç yönetimi
@@ -65,7 +66,7 @@ Azure Stack Edge cihazının etkinleştirme anahtarını oluştururken veya kiml
 -  İlişkili bir depolama hesabıyla bir paylaşma oluşturuluyor.
 -  Cihazdaki paylaşımlara erişebilen bir Kullanıcı oluşturma.
 
-Active Directory kiracısında yapabilmeniz için bir `User` erişiminizin olması gerekir. `Read all directory objects` Bir Konuk Kullanıcı, izinleri olmadığı için `Read all directory objects`bu kullanıcı olamaz. Bir konuğunuzda, bir etkinleştirme anahtarı oluşturma, Azure Stack Edge cihazınızda bir paylaşımın oluşturulması gibi işlemler, bir kullanıcının oluşturulması başarısız olur.
+`User`Active Directory kiracısında yapabilmeniz için bir erişiminizin olması gerekir `Read all directory objects` . Bir Konuk Kullanıcı, izinleri olmadığı için bu kullanıcı olamaz `Read all directory objects` . Bir konuğunuzda, bir etkinleştirme anahtarı oluşturma, Azure Stack Edge cihazınızda bir paylaşımın oluşturulması gibi işlemler, bir kullanıcının oluşturulması başarısız olur.
 
 API Microsoft Graph için kullanıcılara erişim sağlama hakkında daha fazla bilgi için, bkz. [Microsoft Graph izinleri başvurusu](https://docs.microsoft.com/graph/permissions-reference).
 
@@ -79,7 +80,7 @@ Bu kaynakların kaynak sağlayıcıları zaten kayıtlı olduğu sürece, kullan
 
 Herhangi bir kaynak oluşturmayı denemeden önce, kaynak sağlayıcının abonelikte kayıtlı olduğundan emin olun. Kaynak sağlayıcısı kayıtlı değilse, yeni kaynağı oluşturan kullanıcının abonelik düzeyinde gerekli kaynak sağlayıcısını kaydetmek için yeterli haklara sahip olduğundan emin olmanız gerekir. Bunu yapmadıysanız, şu hatayı görürsünüz:
 
-*> abonelik \<abonelik adı kaynak sağlayıcıları kaydetme iznine sahip değil: Microsoft. DataBoxEdge.*
+*Abonelikte \<Subscription name> kaynak sağlayıcıları kaydetme izni yok: Microsoft. DataBoxEdge.*
 
 
 Geçerli abonelikteki kayıtlı kaynak sağlayıcılarının bir listesini almak için aşağıdaki komutu çalıştırın:
@@ -88,7 +89,7 @@ Geçerli abonelikteki kayıtlı kaynak sağlayıcılarının bir listesini almak
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Azure Stack Edge cihazında `Microsoft.DataBoxEdge` kayıtlı olmalıdır. Kaydolmak `Microsoft.DataBoxEdge`için, abonelik Yöneticisi aşağıdaki komutu çalıştırmalıdır:
+Azure Stack Edge cihazında kayıtlı olmalıdır `Microsoft.DataBoxEdge` . Kaydolmak için `Microsoft.DataBoxEdge` , abonelik Yöneticisi aşağıdaki komutu çalıştırmalıdır:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge

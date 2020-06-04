@@ -10,19 +10,19 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 08/05/2019
-ms.openlocfilehash: e5af2a0b88ba46dd1c4751a8aeee4c118ca1b8ae
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2f4e9841a44252829fae283a12ba804219204022
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049718"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321555"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-sql-database"></a>Azure SQL veritabanı için Gelişmiş tehdit koruması yapılandırma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Azure SQL veritabanı için [Gelişmiş tehdit koruması](threat-detection-overview.md) , veritabanları için olağan dışı ve olası zararlı girişimleri gösteren anormal etkinlikleri algılar. Gelişmiş tehdit koruması, **OLASı SQL ekleme**, **olağan dışı konum veya veri merkezinden erişim**, **bilinmeyen bir sorumlu veya zararlı uygulamadan ERIŞIM**ve **deneme yanılma SQL kimlik bilgilerini** belirleyebilir. [Gelişmiş tehdit koruması uyarıları](threat-detection-overview.md#alerts)hakkında daha fazla ayrıntı için bkz..
 
-Algılanan tehditler hakkında [e-posta bildirimleri](threat-detection-overview.md#explore-detection-of-a-suspicious-event) veya [Azure Portal](threat-detection-overview.md#explore-alerts-in-azure-portal) ile ilgili bildirimler alabilirsiniz
+Algılanan tehditler hakkında [e-posta bildirimleri](threat-detection-overview.md#explore-detection-of-a-suspicious-event) veya [Azure Portal](threat-detection-overview.md#explore-alerts-in-the-azure-portal) ile ilgili bildirimler alabilirsiniz
 
 Gelişmiş [tehdit koruması](threat-detection-overview.md) , gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir paket olan [Gelişmiş veri güvenliği](advanced-data-security.md) sunumunun bir parçasıdır. Gelişmiş tehdit korumasına, merkezi SQL gelişmiş veri güvenliği portalı aracılığıyla erişilebilir ve yönetilebilir.
 

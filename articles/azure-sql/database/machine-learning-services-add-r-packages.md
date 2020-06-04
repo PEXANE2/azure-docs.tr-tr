@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 289b1346fce2e79a2c1e546f5e42e98734ef800c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 764d0131b0b8074a210bd9eb7f806f5d1a32fa1f
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053570"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324241"
 ---
 # <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>Azure SQL veritabanı 'na R paketi ekleme Machine Learning Services (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ Bu makalede, Azure SQL veritabanı Machine Learning Services (Önizleme) için b
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Yerel bilgisayarınıza [R](https://www.r-project.org) ve [rstudio Desktop](https://www.rstudio.com/products/rstudio/download/) 'ı yükler. R, Windows, macOS ve Linux için kullanılabilir. Bu makalede, Windows kullandığınızı varsaymaktadır.
 
@@ -46,17 +46,17 @@ Azure Data Studio veya SSMS 'de aşağıdaki komutu çalıştırarak yüklü R p
 
 1. Şu komutu çalıştırın:
 
-```sql
-EXECUTE sp_execute_external_script @language = N'R'
+    ```sql
+    EXECUTE sp_execute_external_script @language = N'R'
     , @script = N'
-OutputDataSet <- data.frame(installed.packages()[,c("Package", "Version", "Depends", "License")]);'
-WITH RESULT SETS((
-            Package NVARCHAR(255)
-            , Version NVARCHAR(100)
-            , Depends NVARCHAR(4000)
-            , License NVARCHAR(1000)
-            ));
-```
+    OutputDataSet <- data.frame(installed.packages()[,c("Package", "Version", "Depends", "License")]);'
+    WITH RESULT SETS((
+                Package NVARCHAR(255)
+                , Version NVARCHAR(100)
+                , Depends NVARCHAR(4000)
+                , License NVARCHAR(1000)
+                ));
+    ```
 
 Çıktı aşağıdakine benzer görünmelidir.
 

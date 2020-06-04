@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: 57a3bab06e4c0a1e4fd8df5d0794a89904a88954
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f9768d4d20380e8e0c4ca6f7c71fddd68bb93d5c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747643"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340683"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN Rules altyapısı için HTTP değişkenleri
 HTTP değişkenleri, HTTP isteği ve yanıt meta verilerini almak için kullanabileceğiniz yolları sağlar. Bu meta veriler, bir isteği veya yanıtı dinamik olarak değiştirmek için kullanılabilir. HTTP değişkenlerinin kullanımı aşağıdaki kural altyapısı özellikleriyle kısıtlıdır:
 
-- [Cache-Key yeniden yazma](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
-- [Istemci Isteği üst bilgisini Değiştir](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
-- [Istemci yanıtı başlığını Değiştir](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
-- [URL yeniden yönlendirme](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
-- [URL yeniden yazma](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
+- [Cache-Key yeniden yazma](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Rewrite.htm)
+- [Istemci Isteği üst bilgisini Değiştir](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Request-Header.htm)
+- [Istemci yanıtı başlığını Değiştir](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Response-Header.htm)
+- [URL yeniden yönlendirme](https://docs.vdms.com/cdn/Content/HRE/F/URL-Redirect.htm)
+- [URL yeniden yazma](https://docs.vdms.com/cdn/Content/HRE/F/URL-Rewrite.htm)
 
 ## <a name="definitions"></a>Tanımlar
 Aşağıdaki tabloda desteklenen HTTP değişkenleri açıklanmaktadır. COĞRAFI meta veriler (örneğin, posta kodu) belirli bir istek için kullanılamadığında boş bir değer döndürülür.
 
 
-| Name | Değişken | Açıklama | Örnek değer |
+| Name | Değişken | Description | Örnek değer |
 | ---- | -------- | ----------- | ------------ |
 | ASN (Istek sahibi) | % {geo_asnum} | İstek sahibinin numarasını belirtir. <br /><br />**Kullanım dışı:** % {virt_dst_asnum}. <br />Bu değişken,% {geo_asnum} için kullanım dışı bırakıldı. Kullanım dışı bırakılan bu değişkeni kullanan bir kural çalışmaya devam edebilse de, yeni değişkenini kullanmak için güncelleştirmeniz gerekir. | AS15133 |
 | Şehir (Istek sahibi) | % {geo_city} | İsteyanın şehrini gösterir. | Los Angeles |
@@ -69,7 +69,7 @@ Aşağıdaki tabloda desteklenen HTTP değişkenleri açıklanmaktadır. COĞRAF
 Aşağıdaki tabloda, bir HTTP değişkeni belirtmek için uygun sözdizimi açıklanmaktadır.
 
 
-| Söz dizimi | Örnek | Açıklama |
+| Sözdizimi | Örnek | Description |
 | ------ | -------- | ---------- |
 | % { &lt; Httpvariable &gt; } | % {Konak} | Belirtilen httpvariable öğesine karşılık gelen değerin tamamını almak için bu sözdizimini kullanın &lt; &gt; . |
 | % { &lt; Httpvariabledelimiter &gt; } | % {Ana bilgisayar,} | Belirtilen httpvariablesınırlayıcısına karşılık gelen değerin tamamı için büyük/küçük harf ayarlamak için bu sözdizimini kullanın &lt; &gt; . |
@@ -92,7 +92,7 @@ Bir sınırlayıcı, aşağıdaki etkilerden herhangi birine ulaşmak için bir 
 
 Sınırlayıcılar aşağıdaki tabloda açıklanmıştır.
 
-| Sınırlayıcı | Açıklama |
+| Sınırlayıcı | Description |
 | --------- | ----------- |
 | := | Değişkene varsayılan bir değer atandığını belirtir: <br />-Eksik <br />-NULL olarak ayarlayın. |
 | :+ | Kendisine bir değer atandığında değişkene varsayılan bir değer atanacağını belirtir. |
@@ -125,7 +125,7 @@ Aşağıdaki koşullardan herhangi birini karşıladığında, bir üst bilgiye 
 
 Aşağıdaki tabloda, varsayılan bir değerin nasıl tanımlanacağı açıklanmaktadır.
 
-| Koşul | Söz dizimi | Örnek | Açıklama |
+| Koşul | Sözdizimi | Örnek | Description |
 | --------- | ------ | --------| ----------- |
 | Aşağıdaki koşullardan herhangi birini karşıladığında bir üst bilgiyi varsayılan değere ayarlayın: <br /><br />-Eksik üst bilgi <br /><br />-Header değeri NULL olarak ayarlandı.| % {Variable: = değer} | % {http_referrer: = belirtilmemiş} | Başvuran üst bilgisi yalnızca eksik ya da NULL olarak ayarlandığında *belirtilmemiş* olarak ayarlanır. Ayarlandıysa hiçbir eylem gerçekleşmeyecektir. |
 | Bir üst bilgiyi, eksik olduğunda varsayılan değere ayarlayın. | % {Variable = değer} | % {http_referrer = belirtilmemiş} | Başvuran üst bilgisi yalnızca eksik olduğunda *belirtilmemiş* olarak ayarlanır. Ayarlandıysa hiçbir eylem gerçekleşmeyecektir. |
@@ -174,7 +174,7 @@ https: \/ /www.mydomain.com/Mobile/Marketing/Proposal.htm
 ### <a name="pattern-removal"></a>Model kaldırma
 Belirli bir düzenle eşleşen metin, bir değişkenin değerinin başından veya sonundan kaldırılabilir.
 
-| Söz dizimi | Eylem |
+| Sözdizimi | Eylem |
 | ------ | ------ |
 | % {Değişken # model} | Bir değişkenin değerinin başlangıcında belirtilen model bulunduğunda metni kaldır. |
 | % {Değişken% model} | Bir değişkenin değerinin sonunda belirtilen model bulunduğunda metni kaldır. |
@@ -195,7 +195,7 @@ Aşağıdaki tabloda bu sözdiziminin nasıl çalıştığı gösterilmektedir.
 ### <a name="find-and-replace"></a>Bulma ve değiştirme
 Bul ve Değiştir sözdizimi aşağıdaki tabloda açıklanmıştır.
 
-| Söz dizimi | Eylem |
+| Sözdizimi | Eylem |
 | ------ | ------ |
 | % {Değişken/Bul/Değiştir} | Belirtilen düzenin ilk oluşumunu bul ve Değiştir. |
 | % {Değişken//Bul/Değiştir} | Belirtilen düzenin tüm oluşumlarını bul ve Değiştir. |
@@ -207,7 +207,7 @@ Bul ve Değiştir sözdizimi aşağıdaki tabloda açıklanmıştır.
 ### <a name="find-and-rewrite"></a>Bul ve yeniden yaz
 Bul ve Değiştir 'teki bir varyasyon için, yeniden yazarken belirtilen Düzenle eşleşen metni kullanın. Bul ve yeniden yaz sözdizimi aşağıdaki tabloda açıklanmıştır.
 
-| Söz dizimi | Eylem |
+| Sözdizimi | Eylem |
 | ------ | ------ |
 | % {Variable/= bul/yeniden yaz} | Belirtilen düzenin tüm oluşumlarını bulun, kopyalayın ve yeniden yazın. |
 | % {Variable/^ bul/yeniden yaz} | Değişkenin başlangıcında gerçekleştiği sırada belirtilen kalıbı bulun, kopyalayın ve yeniden yazın. |

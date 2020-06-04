@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 679073715588a4a81e69e3e7ba2d18341b1bab4b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b480dca46e544caabdf3be62b57b38652ee973ae
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82096631"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337997"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure Kaynak yazma anahtarına geçiş
 
@@ -61,12 +61,12 @@ Pencereyi iptal ederek geçiş işlemini erteleyebilirsiniz. Geçiş yapılınca
 
 ### <a name="before-you-migrate"></a>Geçirmeden önce
 
-* **Gerekli**, bir [Azure aboneliğinizin](https://azure.microsoft.com/free/)olması gerekir. Abonelik işleminin bir parçası faturalandırma bilgileri gerektirir. Ancak, LUSıS kullandığınızda ücretsiz (`F0`) fiyatlandırma katmanını kullanabilirsiniz.
+* **Gerekli**, bir [Azure aboneliğinizin](https://azure.microsoft.com/free/)olması gerekir. Abonelik işleminin bir parçası faturalandırma bilgileri gerektirir. Ancak, `F0` lusıs kullandığınızda ücretsiz () fiyatlandırma katmanını kullanabilirsiniz.
 * **Isteğe bağlı**olarak, her uygulamayı dışarı aktararak ve dışarı aktarma [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)'sini kullanarak, bu uygulamaları lusıs portalının uygulamalar listesinden yedekleyin.
 * **Isteğe bağlı**olarak, her bir uygulamanın ortak kayıt listesini kaydedin. Bu e-posta listesi, geçiş işleminin bir parçası olarak sağlanır.
 
 
-**Lusıs uygulamanızı yazma**, `F0` katman tarafından belirtilen ücretsizdir. [Fiyatlandırma katmanları hakkında daha fazla](luis-limits.md#key-limits)bilgi edinin.
+**Lusıs uygulamanızı yazma**, katman tarafından belirtilen ücretsizdir `F0` . [Fiyatlandırma katmanları hakkında daha fazla](luis-limits.md#key-limits)bilgi edinin.
 
 Azure aboneliğiniz yoksa [kaydolun](https://azure.microsoft.com/free/).
 

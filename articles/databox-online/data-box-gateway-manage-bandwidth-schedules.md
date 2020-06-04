@@ -5,29 +5,29 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: feae75b1fbb832f833a01fa20ce07962ab5c484f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 25f74fb78979313acc068320d842d09a982d8d16
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561449"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339153"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>Azure Data Box Gateway bant genişliği zamanlamalarını yönetmek için Azure portalı kullanma  
 
-Bu makalede Azure Data Box Gateway kullanıcılarını yönetme adımları açıklanmaktadır. Bant genişliği zamanlamaları, ağ bant genişliği kullanımını birden çok zamanlamaya göre yapılandırmanızı sağlar. Bu zamanlamalar, cihazınızla bulut arasında gerçekleştirilen yükleme ve indirme işlemlerine uygulanabilir. 
+Bu makalede Azure Data Box Gateway kullanıcılarını yönetme adımları açıklanmaktadır. Bant genişliği zamanlamaları, ağ bant genişliği kullanımını birden çok zamanlamaya göre yapılandırmanızı sağlar. Bu zamanlamalar, cihazınızla bulut arasında gerçekleştirilen yükleme ve indirme işlemlerine uygulanabilir.
 
 Data Box Gateway cihazınız için bant genişliği zamanlaması ekleme, değiştirme veya silme işlemlerini Azure portaldan gerçekleştirebilirsiniz.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
+>
 > * Zamanlama ekleme
 > * Zamanlamayı değiştirme
-> * Zamanlamayı silme 
-
+> * Zamanlamayı silme
 
 ## <a name="add-a-schedule"></a>Zamanlama ekleme
 

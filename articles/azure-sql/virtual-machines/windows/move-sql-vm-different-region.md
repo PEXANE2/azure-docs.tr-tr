@@ -1,5 +1,5 @@
 ---
-title: Sanal makineyi başka bir bölgeye taşı (Azure Site Recovery)
+title: Bir sanal makineyi başka bir bölgeye taşıma (Azure Site Recovery)
 description: SQL Server sanal makinenizi Azure 'da bir bölgeden diğerine nasıl geçirebileceğinizi öğrenin.
 services: virtual-machines-windows
 documentationcenter: na
@@ -15,24 +15,24 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bca7237b38c1164d14ccf796e18980ba326090ac
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4211909a577adf7c16a99610654907ce58908fdf
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042753"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337776"
 ---
-# <a name="move-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery-services"></a>SQL Server VM Azure Site Recovery hizmetleriyle Azure 'daki başka bir bölgeye taşıma
+# <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>SQL Server VM Azure Site Recovery Azure içindeki başka bir bölgeye taşıma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Bu makalede, SQL Server sanal makinenizi (VM) Azure 'da bir bölgeden diğerine geçirmek için Azure Site Recovery kullanma öğretilir. 
 
 SQL Server VM farklı bir bölgeye taşımak şunları gerektirir:
-1. [**Hazırlanıyor**](#prepare-to-move): hem kaynak SQL Server VM hem de hedef bölgenizin taşıma için yeterli hazır olduğunu onaylayın. 
-1. [**Yapılandırma**](#configure-azure-site-recovery-vault): SQL Server VM taşımak, Azure Site Recovery kasasında çoğaltılan bir nesne olmasını gerektirir. SQL Server VM Azure Site Recovery kasasına eklemeniz gerekir. 
-1. [**Test**](#test-move-process): SQL Server VM geçişi, kaynak bölgeden çoğaltılan hedef bölgeye yük devretmesini gerektirir. Taşıma işleminin başarılı olduğundan emin olmak için öncelikle SQL Server VM hedef bölgeye başarıyla yük devredebileceğinizi test etmeniz gerekir. Bu, tüm sorunları ortaya çıkaran ve gerçek taşıma gerçekleştirirken bunları önlemenize yardımcı olur. 
-1. [**Taşıma**](#move-the-sql-server-vm): test yük devretmesi başarılı olduktan sonra, SQL Server VM geçirmek için güvenli olduğunuzu öğrendikten sonra sanal makinenin hedef bölgeye taşınmasını sağlayabilirsiniz. 
-1. [**Temizleniyor**](#clean-up-source-resources): Faturalandırma ücretlerinden kaçınmak için, kasadan SQL Server VM ve kaynak grubunda kalan gereksiz kaynakları kaldırın. 
+1. [Hazırlanıyor](#prepare-to-move): hem kaynak SQL Server VM hem de hedef bölgenizin taşıma için yeterli hazır olduğunu onaylayın. 
+1. [Yapılandırma](#configure-azure-site-recovery-vault): SQL Server VM taşımak, Azure Site Recovery kasasında çoğaltılan bir nesne olmasını gerektirir. SQL Server VM Azure Site Recovery kasasına eklemeniz gerekir. 
+1. [Test](#test-move-process): SQL Server VM geçişi, kaynak bölgeden çoğaltılan hedef bölgeye yük devretmesini gerektirir. Taşıma işleminin başarılı olduğundan emin olmak için öncelikle SQL Server VM hedef bölgeye başarıyla yük devredebildiğini test etmeniz gerekir. Bu, tüm sorunları ortaya çıkaran ve gerçek taşıma gerçekleştirirken bunları önlemenize yardımcı olur. 
+1. [Taşıma](#move-the-sql-server-vm): test yük devretmesi başarılı olduktan sonra, SQL Server VM geçirmek için güvenli olduğunuzu öğrendikten sonra sanal makinenin hedef bölgeye taşınmasını sağlayabilirsiniz. 
+1. [Temizleniyor](#clean-up-source-resources): Faturalandırma ücretlerinden kaçınmak için, kasadan SQL Server VM ve kaynak grubunda kalan gereksiz kaynakları kaldırın. 
 
 ## <a name="verify-prerequisites"></a>Önkoşulları doğrulama 
 
@@ -51,7 +51,7 @@ Taşıma için hem kaynak SQL Server VM hem de hedef bölgeyi hazırlayın.
 ### <a name="prepare-the-source-sql-server-vm"></a>Kaynak SQL Server VM hazırlama
 
 - En son kök sertifikaların, taşımak istediğiniz SQL Server VM olduğundan emin olun. En son kök sertifikalar orada yoksa, güvenlik kısıtlamaları hedef bölgeye veri kopyalamayı engeller. 
-- Windows VM 'Leri için, tüm güvenilen kök sertifikaların makinede olması için, tüm en son Windows güncelleştirmelerini VM 'ye yükler. Bağlantısı kesilmiş bir ortamda, kuruluşunuz için standart Windows UPdate ve sertifika güncelleştirme işlemini izleyin. 
+- Windows VM 'Leri için, tüm güvenilen kök sertifikaların makinede olması için, tüm en son Windows güncelleştirmelerini VM 'ye yükler. Bağlantısı kesilmiş bir ortamda, kuruluşunuz için standart Windows Update ve sertifika güncelleştirme işlemini izleyin. 
 - Linux sanal makineleri için, VM 'deki en son güvenilen kök sertifikaları ve sertifika iptal listesini almak için Linux dağıtıcısının sunduğu yönergeleri izleyin. 
 - Taşımak istediğiniz VM 'Ler için ağ bağlantısını denetlemek üzere bir kimlik doğrulama proxy 'si kullanmadığınız emin olun. 
 - Taşımaya çalıştığınız sanal makinenin internet erişimi yoksa veya giden erişimi denetlemek için bir güvenlik duvarı ara sunucusu kullanıyorsa, gereksinimleri kontrol edin. 

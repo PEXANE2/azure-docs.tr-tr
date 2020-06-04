@@ -3,12 +3,12 @@ title: Azure geçişi sunucu değerlendirmesi ile Azure 'a geçiş için fizikse
 description: Azure geçişi sunucu değerlendirmesi kullanılarak Azure 'a geçiş için şirket içi fiziksel sunucuların nasıl değerlendirileneceğini açıklar.
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: b36cba18bd154cd5d14e16a9f8bf85cda6bf87a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5cbd1b85bdb9017a96dc863b83223c31c716cf77
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535443"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331806"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Azure geçişi ile fiziksel sunucuları değerlendirme: Sunucu değerlendirmesi
 
@@ -30,7 +30,7 @@ Bu öğretici, fiziksel sunucuların Azure 'a nasıl değerlendirileceğini ve g
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bu serideki ilk öğreticiyi [doldurun](tutorial-prepare-physical.md) . Bunu yapmazsanız, bu öğreticideki yönergeler çalışmaz.
 - İlk öğreticide yapmanız gerekenler şunlardır:
@@ -61,7 +61,7 @@ Aşağıdaki şekilde yeni bir Azure Geçişi projesi oluşturun.
 
 
 7. **İleri**’ye tıklayın.
-8. **Değerlendirme Seç aracında** **Azure geçişi: Sunucu değerlendirmesi** > **İleri**' yi seçin.
+8. **Değerlendirme Seç aracında** **Azure geçişi: Sunucu değerlendirmesi**  >  **İleri**' yi seçin.
 
     ![Azure geçişi projesi oluşturma](./media/tutorial-assess-physical/assessment-tool.png)
 
@@ -86,8 +86,8 @@ Azure geçişi: Sunucu değerlendirmesi bir hafif gereç çalıştırır.
 
 Gereç için daraltılmış dosyayı indirin.
 
-1. **Geçiş hedefleri** > **sunucuları** > **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
-2.  > Makinelerde **bulunan makineler****sanallaştırılmış mi?**, **sanallaştırılmamış/diğer**' e tıklayın.
+1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
+2. Makinelerde **bulunan makineler**  >  **sanallaştırılmış mi?**, **sanallaştırılmamış/diğer**' e tıklayın.
 3. Sıkıştırılmış dosyayı indirmek için **İndir** ' e tıklayın.
 
     ![Yükleyiciyi indir](./media/tutorial-assess-physical/download-appliance.png)
@@ -102,20 +102,18 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Genel bulut için örnek kullanım:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
     - Kamu Bulutu için örnek kullanım:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  Karma değerleri doğrula:
- 
-    - Genel bulut için (en son gereç sürümü için):
+3.  En son gereç sürümlerini ve karma değerlerini doğrulayın:
+    - Genel bulut için:
 
-        **Algoritma** | **Karma değeri**
-          --- | ---
-          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+        **Senaryo** | **İndirme*** | **Karma değeri**
+        --- | --- | ---
+        Fiziksel (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
 
-    - Azure Kamu için (en son gereç sürümü için):
+    - Azure Kamu için:
 
-        **Algoritma** | **Karma değeri**
-          --- | ---
-          MD5 | f81c155fc4a1409901caea948713913f
+        **Senaryo** | **İndirme*** | **Karma değeri**
+        --- | --- | ---
+        Fiziksel (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Azure geçişi yükleyici betiğini çalıştırma
 
@@ -158,7 +156,7 @@ Gereci ilk kez ayarlayın.
 2. **Önkoşulları ayarlamak**> Web uygulamasında şunları yapın:
     - **Lisans**: lisans koşullarını kabul edin ve üçüncü taraf bilgilerini okuyun.
     - **Bağlantı**: uygulama, sunucunun internet erişimi olup olmadığını denetler. Sunucu bir proxy kullanıyorsa:
-        - **Proxy ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, veya http://ProxyIPAddress http://ProxyFQDNbiçiminde belirtin.
+        - **Proxy ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, veya biçiminde belirtin http://ProxyIPAddress http://ProxyFQDN .
         - Proxy için kimlik doğrulaması gerekiyorsa kimlik bilgilerini gerekin.
         - Yalnızca HTTP proxy’si desteklenir.
     - **Zaman eşitleme**: Saat doğrulandı. Sunucu bulmanın düzgün çalışması için gereç saatinin internet ile eşitlenmiş olması gerekir.
@@ -173,7 +171,7 @@ Gereci ilk kez ayarlayın.
 3. Başarıyla oturum açtıktan sonra Web uygulamasına geri dönün.
 4. Azure geçişi projesinin oluşturulduğu aboneliği seçin. Ardından projeyi seçin.
 5. Gereç için bir ad belirtin. Ad 14 karakter veya daha az olmalıdır.
-6. **Kaydol**' a tıklayın.
+6. **Kaydet**’e tıklayın.
 
 
 ## <a name="start-continuous-discovery"></a>Sürekli bulmayı Başlat
@@ -196,13 +194,13 @@ Bu, bulmayı başlatır. Sunucu başına, bulunan sunucunun meta verilerinde Azu
 Bulmadan sonra, sunucuların Azure portal göründüğünü doğrulayabilirsiniz.
 
 1. Azure geçişi panosunu açın.
-2. **Azure geçişi-sunucular** > **Azure geçişi: Sunucu değerlendirmesi** sayfasında, **bulunan sunucuların**sayısını görüntüleyen simgeye tıklayın.
+2. **Azure geçişi-sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi** sayfasında, **bulunan sunucuların**sayısını görüntüleyen simgeye tıklayın.
 
 ## <a name="set-up-an-assessment"></a>Değerlendirme ayarlama
 
 Azure geçişi: Sunucu değerlendirmesi kullanarak oluşturabileceğiniz iki tür değerlendirme vardır.
 
-**Değerlendirme** | **Bilgileri** | **Veri**
+**Değerlendirmesini** | **Ayrıntılar** | **Veri**
 --- | --- | ---
 **Performans tabanlı** | Toplanan performans verilerine dayalı değerlendirmeler | **ÖNERILEN VM boyutu**: CPU ve bellek kullanım verilerine göre.<br/><br/> **Önerilen disk türü (Standart veya Premium yönetilen disk)**: Şirket ıçı disklerin IOPS ve aktarım hızına göre.
 **Şirket içi olarak** | Şirket içi boyutlandırmayı temel alan değerlendirmeler. | **ÖNERILEN VM boyutu**: şirket içi sunucu boyutuna göre<br/><br> **Önerilen disk türü**: değerlendirme için seçtiğiniz depolama türü ayarına göre.
@@ -228,7 +226,7 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
 
     ![Değerlendirme oluşturma](./media/tutorial-assess-physical/assessment-create.png)
 
-6. Değerlendirme oluşturulduktan sonra **sunucuları** > **Azure geçişi: Sunucu değerlendirmesi** > **değerlendirmeleri**' nde görüntüleyin.
+6. Değerlendirme oluşturulduktan sonra **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**  >  **değerlendirmeleri**' nde görüntüleyin.
 7. Excel dosyası olarak indirmek için **Değerlendirmeyi dışarı aktar**’a tıklayın.
 
 
@@ -243,7 +241,7 @@ Bir değerlendirme şunları açıklar:
 
 ### <a name="view-an-assessment"></a>Değerlendirme görüntüleme
 
-1. **Geçiş hedefleri** >  **sunucularında** **Azure geçişi: Sunucu değerlendirmesi**' nde **değerlendirmeler** ' a tıklayın.
+1. **Geçiş hedefleri**  >   **sunucularında** **Azure geçişi: Sunucu değerlendirmesi**' nde **değerlendirmeler** ' a tıklayın.
 2. **Değerlendirmede**, bir değerlendirmeye tıklayarak açın.
 
     ![Değerlendirme özeti](./media/tutorial-assess-physical/assessment-summary.png)

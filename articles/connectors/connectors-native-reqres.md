@@ -5,45 +5,56 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: a44e0e9f2427fc5fcb44a78fb0a1798b219f9200
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 9f3f361b3e9fafdb350f943c0a8adcd87fa06c78
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249170"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84325142"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps gelen HTTPS isteklerini alın ve bunlara yanıt verin
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve yerleşik istek tetikleyicisi ve yanıtı eylemiyle, gelen https isteklerini alıp yanıtlayan otomatik görevler ve iş akışları oluşturabilirsiniz. Örneğin, mantıksal uygulamanızı kullanabilirsiniz:
 
 * Şirket içi bir veritabanındaki veriler için bir HTTPS isteği alın ve yanıt verin.
+
 * Dış Web kancası olayı gerçekleştiğinde iş akışı tetikleyin.
+
 * Başka bir mantıksal uygulamadan bir HTTPS çağrısını alın ve yanıtlayın.
 
 Istek tetikleyicisi, mantıksal uygulamanıza gelen çağrıları yetkilendirmek için [Azure Active Directory açma kimlik doğrulamasını](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) destekler. Bu kimlik doğrulamasını etkinleştirme hakkında daha fazla bilgi için [Azure Logic Apps Azure AD OAuth kimlik doğrulamasını etkinleştirme ' deki güvenli erişim ve verilere](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)bakın.
 
-> [!NOTE]
-> Istek tetikleyicisi, gelen çağrılar için *yalnızca* aktarım katmanı GÜVENLIĞI (TLS) 1,2 ' i destekler. Giden çağrılar TLS 1,0, 1,1 ve 1,2 destekler. Daha fazla bilgi için bkz. [TLS 1,0 sorununu çözme](https://docs.microsoft.com/security/solving-tls1-problem).
->
-> TLS el sıkışma hataları alırsanız TLS 1,2 kullandığınızdan emin olun. 
-> Gelen çağrılar için desteklenen şifre paketleri şunlardır:
->
-> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 
 * [Logic Apps](../logic-apps/logic-apps-overview.md)hakkında temel bilgi. Logic Apps 'e yeni başladıysanız, [ilk mantıksal uygulamanızı oluşturmayı](../logic-apps/quickstart-create-first-logic-app-workflow.md)öğrenin.
+
+<a name="tls-support"></a>
+
+## <a name="transport-layer-security-tls"></a>Aktarım Katmanı Güvenliği (TLS)
+
+* Gelen çağrılar *yalnızca* aktarım katmanı GÜVENLIĞI (TLS) 1,2 ' i destekler. TLS el sıkışma hataları alırsanız TLS 1,2 kullandığınızdan emin olun. Daha fazla bilgi için bkz. [TLS 1,0 sorununu çözme](https://docs.microsoft.com/security/solving-tls1-problem). Giden çağrılar, hedef uç noktanın özelliğine göre TLS 1,0, 1,1 ve 1,2 destekler.
+
+* Gelen çağrılar bu şifreleme paketlerini destekler:
+
+  * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+
+  * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+
+  * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+  * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+
+  * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+
+  * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+
+  * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+
+  * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 <a name="add-request"></a>
 
@@ -51,7 +62,7 @@ Istek tetikleyicisi, mantıksal uygulamanıza gelen çağrıları yetkilendirmek
 
 Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile ÇAĞRıLABILIR bir HTTPS uç noktası oluşturur. Bu olay gerçekleştiğinde tetikleyici ateşlenir ve mantıksal uygulamayı çalıştırır. Tetikleyicinin temel alınan JSON tanımı ve bu tetikleyiciyi çağırma hakkında daha fazla bilgi için, bkz. [istek tetikleme türü](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) ve Azure Logic Apps ' [de HTTPS uç noktaları ile çağrı, tetikleyici veya iç içe geçme iş akışları](../logic-apps/logic-apps-http-endpoint.md).
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. Boş bir mantıksal uygulama oluşturma.
+1. [Azure portalında](https://portal.azure.com) oturum açın. Boş bir mantıksal uygulama oluşturma.
 
 1. Mantıksal uygulama Tasarımcısı açıldıktan sonra arama kutusuna `http request` filtreniz olarak girin. Tetikleyiciler listesinden, mantıksal uygulama iş akışınızın ilk adımı olan **BIR http isteği alındığında** tetiklenir ' ı seçin.
 
@@ -64,7 +75,7 @@ Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile Ç
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST URL 'SI** | seçim | Yes | Mantıksal uygulamayı kaydettikten sonra oluşturulan ve mantıksal uygulamanızı çağırmak için kullanılan uç nokta URL 'SI |
-   | **İstek gövdesi JSON şeması** | `schema` | Hayır | Gelen istek gövdesindeki özellikleri ve değerleri açıklayan JSON şeması |
+   | **İstek gövdesi JSON şeması** | `schema` | No | Gelen istek gövdesindeki özellikleri ve değerleri açıklayan JSON şeması |
    |||||
 
 1. **Istek GÖVDESI JSON şeması** kutusunda, isteğe bağlı olarak, gelen istekteki gövdeyi açıklayan bir JSON şeması girin, örneğin:
@@ -170,8 +181,8 @@ Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile Ç
 
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
-   | **Yöntem** | `method` | Hayır | Gelen isteğin mantıksal uygulamayı çağırmak için kullanması gereken Yöntem |
-   | **Göreli yol** | `relativePath` | Hayır | Mantıksal uygulamanın uç nokta URL 'sinin kabul edebileceği parametrenin göreli yolu |
+   | **Yöntem** | `method` | No | Gelen isteğin mantıksal uygulamayı çağırmak için kullanması gereken Yöntem |
+   | **Göreli yol** | `relativePath` | No | Mantıksal uygulamanın uç nokta URL 'sinin kabul edebileceği parametrenin göreli yolu |
    |||||
 
    Bu örnek, **Yöntem** özelliğini ekler:
@@ -207,7 +218,7 @@ Tetikleyicinin temel alınan JSON tanımı ve bu tetikleyiciyi çağırma hakkı
 
 Istek tetikleyicisinden alınan çıktılar hakkında daha fazla bilgi aşağıda verilmiştir:
 
-| JSON Özellik adı | Veri türü | Açıklama |
+| JSON Özellik adı | Veri türü | Description |
 |--------------------|-----------|-------------|
 | `headers` | Nesne | İstekten üstbilgileri açıklayan bir JSON nesnesi |
 | `body` | Nesne | İstekten gelen gövde içeriğini açıklayan bir JSON nesnesi |
@@ -265,8 +276,8 @@ Mantıksal uygulamanız gelen isteği yalnızca [sınırlı bir süre](../logic-
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
    | **Durum kodu** | `statusCode` | Yes | Yanıtta döndürülecek durum kodu |
-   | **Üst Bilgiler** | `headers` | Hayır | Yanıta eklenecek bir veya daha fazla üstbilgiyi açıklayan bir JSON nesnesi |
-   | **Gövde** | `body` | Hayır | Yanıt gövdesi |
+   | **Üst Bilgiler** | `headers` | No | Yanıta eklenecek bir veya daha fazla üstbilgiyi açıklayan bir JSON nesnesi |
+   | **Gövde** | `body` | No | Yanıt gövdesi |
    |||||
 
 1. Yanıt gövdesi için JSON şeması gibi ek özellikler belirtmek için **yeni parametre Ekle** listesini açın ve eklemek istediğiniz parametreleri seçin.

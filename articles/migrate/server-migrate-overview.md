@@ -2,13 +2,13 @@
 title: Azure geçişi sunucu geçişine sahip bir VMware geçiş seçeneği seçin | Microsoft Docs
 description: Azure geçişi sunucu geçişi ile VMware VM 'lerini Azure 'a geçirme seçeneklerine genel bakış sağlar
 ms.topic: conceptual
-ms.date: 07/09/2019
-ms.openlocfilehash: 52e7103ea3ebcd83369a866cc3f75b0bf0e889a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/03/2020
+ms.openlocfilehash: 196b80f600d9895e9fcb6471bfb5df5fb5bbe8d1
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76028723"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324513"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware geçiş seçeneği seçin
 
@@ -40,9 +40,9 @@ Hangi yöntemin kullanılacağına karar vermenize yardımcı olması için bu s
 
 Sınırlamaları inceledikten sonra, her bir çözümü dağıtmaya ilişkin adımları anlamak hangi seçenek arasından seçim yapmanıza yardımcı olur.
 
-**Görev** | **Bilgileri** |**Aracısız** | **Aracı tabanlı**
+**Görev** | **Ayrıntılar** |**Aracısız** | **Aracı tabanlı**
 --- | --- | --- | ---
-**Değerlendirme** | Geçişten önce sunucuları değerlendirin.  Değerlendirme isteğe bağlıdır. Makineleri geçirmeden önce değerlendirmenizi öneririz, ancak şunları yapmanız gerekmez. <br/><br/> Değerlendirme için Azure geçişi, VM 'Leri keşfetmek ve değerlendirmek için bir hafif gereç kurar. | Değerlendirmede daha az bir geçiş çalıştırırsanız, aracısız geçiş için aynı Azure geçişi gereç ayarı kullanılır.  |  Değerlendirdikten sonra aracı tabanlı bir geçiş çalıştırırsanız, değerlendirme için ayarlanan gereç aracısız geçiş sırasında kullanılmaz. Daha fazla bulma ve değerlendirme yapmak istemiyorsanız, gereci yerinde bırakabilir veya kaldırabilirsiniz.
+**Değerlendirmesini** | Geçişten önce sunucuları değerlendirin.  Değerlendirme isteğe bağlıdır. Makineleri geçirmeden önce değerlendirmenizi öneririz, ancak şunları yapmanız gerekmez. <br/><br/> Değerlendirme için Azure geçişi, VM 'Leri keşfetmek ve değerlendirmek için bir hafif gereç kurar. | Değerlendirmede daha az bir geçiş çalıştırırsanız, aracısız geçiş için aynı Azure geçişi gereç ayarı kullanılır.  |  Değerlendirdikten sonra aracı tabanlı bir geçiş çalıştırırsanız, değerlendirme için ayarlanan gereç, aracı tabanlı geçiş sırasında kullanılmaz. Daha fazla bulma ve değerlendirme yapmak istemiyorsanız, gereci yerinde bırakabilir veya kaldırabilirsiniz.
 **VMware sunucularını ve VM 'Leri geçiş için hazırlama** | VMware sunucularında ve VM 'lerde bir dizi ayarı yapılandırın. | Gerekli | Gerekli
 **Sunucu geçiş aracını ekleme** | Azure geçişi projesine Azure geçiş sunucusu geçiş aracı 'nı ekleyin. | Gerekli | Gerekli
 **Azure geçişi gereci dağıtma** | VM bulma ve değerlendirme için bir VMware VM 'de hafif gereç ayarlayın. | Gerekli | Gerekli değildir.

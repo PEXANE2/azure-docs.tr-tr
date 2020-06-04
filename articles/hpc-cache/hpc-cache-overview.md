@@ -4,20 +4,26 @@ description: Yüksek performanslı bilgi işlem için bir dosya erişim Hızland
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 04/15/2020
+ms.date: 05/29/2020
 ms.author: v-erkel
-ms.openlocfilehash: 02013abe7050f7f193b6aeb1a441e70f46a5df48
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3cbde9564e17dc67d2b41f138efb4d8622d84abd
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82106466"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343600"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Azure HPC Önbelleği nedir?
 
 Azure HPC Cache, yüksek performanslı bilgi işlem (HPC) görevleri için verilerinize erişimi hızlandırır. Azure HPC Cache, Azure 'daki dosyaları önbelleğe alarak, bulut bilgi işlemin ölçeklenebilirliğini mevcut iş akışınıza getirir. Bu hizmet, verilerinizin WAN bağlantıları arasında depolandığı iş akışları (örneğin, yerel veri merkezi ağ bağlantılı depolama (NAS) ortamınızda) için de kullanılabilir.
 
 Azure HPC önbelleğinin Azure portal kolayca başlatılması ve izlenmesi kolay bir işlemdir. Mevcut NFS depolaması veya yeni blob kapsayıcıları, arka uç depolama hedefini değiştirseniz bile, istemci erişiminin basit olmasını sağlayan, toplanmış ad alanının bir parçası haline gelebilir.
+
+## <a name="overview-video"></a>Genel bakış videosu
+
+[![video küçük resmi: Azure HPC önbelleğine genel bakış-video sayfasını ziyaret etmek için tıklayın](media/video1-overview.png)](https://azure.microsoft.com/resources/videos/hpc-cache-overview/)
+
+[Azure HPC Cache 'e kısa bir genel bakış](https://azure.microsoft.com/resources/videos/hpc-cache-overview/)izlemek için yukarıdaki resme tıklayın.
 
 ## <a name="use-cases"></a>Uygulama alanları
 

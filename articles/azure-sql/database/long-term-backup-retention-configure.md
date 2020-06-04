@@ -12,19 +12,19 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/14/2020
-ms.openlocfilehash: 6ae38bb81ad0b229d6bb5a9e2f626d17810d7b01
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 57b0c6286cbf40d1694d1f7fda08bc9b02641658
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048346"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324275"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL veritabanı uzun süreli yedekleme bekletmesini yönetme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Azure SQL veritabanı 'nda, veritabanı yedeklerini 10 yıla kadar ayrı Azure Blob depolama kapsayıcılarında otomatik olarak saklamak için [uzun süreli bir yedekleme bekletme](long-term-retention-overview.md) IlkesI (LTR) içeren bir veritabanı yapılandırabilirsiniz. Daha sonra Azure portal veya PowerShell kullanarak bu yedeklemeleri kullanarak bir veritabanını kurtarabilirsiniz. [Azure SQL yönetilen örneği](../managed-instance/long-term-backup-retention-configure.md) için uzun süreli saklama 'yı da yapılandırabilirsiniz, ancak şu anda sınırlı genel önizleme aşamasındadır.
 
-## <a name="using-azure-portal"></a>Azure portalını kullanma
+## <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
 Aşağıdaki bölümlerde, uzun süreli saklama 'yi yapılandırmak, uzun süreli bekletmede yedeklemeleri görüntülemek ve uzun süreli bekletmede yedeklemeyi geri yüklemek için Azure portal nasıl kullanılacağı gösterilmektedir.
 
@@ -32,7 +32,7 @@ Aşağıdaki bölümlerde, uzun süreli saklama 'yi yapılandırmak, uzun sürel
 
 SQL veritabanını, [Otomatik yedeklemeleri](long-term-retention-overview.md) hizmet katmanınızın saklama süresinden daha uzun bir süre koruyacak şekilde yapılandırabilirsiniz.
 
-1. Azure portal SQL Server 'nizi seçin ve ardından **Yedeklemeleri Yönet**' e tıklayın. **Ilkeleri Yapılandır** sekmesinde, uzun süreli yedek saklama ilkelerini ayarlamak veya değiştirmek istediğiniz veritabanının onay kutusunu seçin. Veritabanının yanındaki onay kutusu seçili değilse, ilkeye yönelik değişiklikler bu veritabanına uygulanmaz.  
+1. Azure portal, SQL Server örneğinizi seçin ve ardından **Yedeklemeleri Yönet**' e tıklayın. **Ilkeleri Yapılandır** sekmesinde, uzun süreli yedek saklama ilkelerini ayarlamak veya değiştirmek istediğiniz veritabanının onay kutusunu seçin. Veritabanının yanındaki onay kutusu seçili değilse, ilkeye yönelik değişiklikler bu veritabanına uygulanmaz.  
 
    ![Yedeklemeleri Yönet bağlantısı](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
 
@@ -61,7 +61,7 @@ Bir LTR ilkesiyle belirli bir veritabanı için tutulan yedeklemeleri görüntü
 
    ![geri yükleme](./media/long-term-backup-retention-configure/ltr-restore.png)
 
-1. Veritabanınızı Azure SQL depolama 'daki yedekten yeni veritabanına geri yüklemek için **Tamam** ' a tıklayın.
+1. Veritabanınızı Azure Storage 'daki yedekten yeni veritabanına geri yüklemek için **Tamam** ' a tıklayın.
 
 1. Geri yükleme işinin durumunu görüntülemek için araç çubuğundaki bildirim simgesine tıklayın.
 
@@ -72,14 +72,14 @@ Bir LTR ilkesiyle belirli bir veritabanı için tutulan yedeklemeleri görüntü
 > [!NOTE]
 > Buradan [var olan veritabanına kopyalamak için geri yüklenen veritabanından veri ayıklama veya var olan veritabanını silerek geri yüklenen veritabanının adını var olan veritabanının adıyla değiştirme](recovery-using-backups.md#point-in-time-restore) gibi görevleri gerçekleştirmek için SQL Server Management Studio kullanarak geri yüklenen veritabanına bağlanabilirsiniz.
 
-## <a name="using-powershell"></a>PowerShell’i kullanma
+## <a name="using-powershell"></a>PowerShell'i kullanma
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
-Aşağıdaki bölümlerde, PowerShell kullanarak uzun süreli yedek saklama, Azure SQL depolamada yedeklemeleri görüntüleme ve Azure SQL depolama 'daki bir yedekten geri yükleme işlemleri gösterilmektedir.
+Aşağıdaki bölümlerde, PowerShell kullanarak uzun süreli yedek saklama, Azure depolama 'daki yedeklemeleri görüntüleme ve Azure Storage 'daki bir yedekten geri yükleme işlemleri gösterilmektedir.
 
 ### <a name="rbac-roles-to-manage-long-term-retention"></a>Uzun süreli saklama yönetimi için RBAC rolleri
 

@@ -8,23 +8,23 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: ef5f6967b7ad9500672d00d93dd8acaca99e5948
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b9646f2bab4c17449c6683ae7924af87b184167
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73499456"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340190"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Node. js kullanarak program aracılığıyla bir LUSıS uygulaması oluşturma
 
-LUSıS, [Luo](luis-reference-regions.md) Web sitesinin yaptığı her şeyi yapan BIR programlı API sağlar. Bu, önceden var olan verileriniz olduğunda zamandan tasarruf edebilir ve el ile bilgi girerek bir LUO uygulamasının programlı bir şekilde oluşturulması daha hızlıdır. 
+LUSıS, [Luo](luis-reference-regions.md) Web sitesinin yaptığı her şeyi yapan BIR programlı API sağlar. Bu, önceden var olan verileriniz olduğunda zamandan tasarruf edebilir ve el ile bilgi girerek bir LUO uygulamasının programlı bir şekilde oluşturulması daha hızlıdır.
 
 [!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Lusıs](luis-reference-regions.md) Web sitesinde oturum açın ve hesap ayarları ' nda [yazma anahtarınızı](luis-concept-keys.md#authoring-key) bulun. Yazma API 'Lerini çağırmak için bu anahtarı kullanırsınız.
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
@@ -32,14 +32,14 @@ LUSıS, [Luo](luis-reference-regions.md) Web sitesinin yaptığı her şeyi yapa
 * NPM ile en son Node. js ' i yükler. [Buradan](https://nodejs.org/en/download/)indirin.
 * **[Önerilir]** IntelliSense ve hata ayıklama için Visual Studio Code, [buradan](https://code.visualstudio.com/) ücretsiz indirin.
 
-Bu makaledeki tüm kod, [Azure-Samples Language Understanding GitHub deposunda](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv)bulunur. 
+Bu makaledeki tüm kod, [Azure-Samples Language Understanding GitHub deposunda](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv)bulunur.
 
 ## <a name="map-preexisting-data-to-intents-and-entities"></a>Önceden varolan verileri amaçlar ve varlıklara eşleyin
 LUıN ile oluşturulmamış bir sisteminiz olsa da, kullanıcıların yapmak istedikleri farklı şeylere eşlenen metin verileri içeriyorsa, bu kullanıcı girişi kategorilerinden LUSıS 'deki amaçlar için bir eşleme ile karşılaşabilirsiniz. Kullanıcıların söyledikleriyle ilişkili önemli sözcükleri veya tümceleri belirleyebiliyorsanız, bu sözcükler varlıklara eşlenir.
 
-[`IoT.csv`](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv) Dosyasını açın. Bir kuramsal giriş Otomasyonu hizmetine, kategorilere ayrılmaları, kullanıcının ne söyledikleri ve yararlı bilgiler içeren bazı sütunlarda Kullanıcı sorgularının bir günlüğünü içerir. 
+Dosyasını açın [`IoT.csv`](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv) . Bir kuramsal giriş Otomasyonu hizmetine, kategorilere ayrılmaları, kullanıcının ne söyledikleri ve yararlı bilgiler içeren bazı sütunlarda Kullanıcı sorgularının bir günlüğünü içerir.
 
-![Önceden var olan verilerin CSV dosyası](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
+![Önceden var olan verilerin CSV dosyası](./media/luis-tutorial-node-import-utterances-csv/csv.png)
 
 **RequestType** sütununun amaçları olduğunu ve **istek** sütununda bir örnek olduğunu görürsünüz. Diğer alanlar, utterde oluşduklarında varlık olabilir. Amaçlar, varlıklar ve örnek söyleyler olduğundan, basit, örnek bir uygulama için gereksinimleri vardır.
 
@@ -47,21 +47,21 @@ LUıN ile oluşturulmamış bir sisteminiz olsa da, kullanıcıların yapmak ist
 CSV dosyasından yeni bir LUO uygulaması oluşturmak için:
 
 * CSV dosyasından verileri ayrıştırın:
-    * Yazma API 'sini kullanarak LUYA indirebileceğiniz bir biçime dönüştürün. 
-    * Ayrıştırılmış verilerden, amaçlar ve varlıklar hakkında bilgi toplayın. 
+    * Yazma API 'sini kullanarak LUYA indirebileceğiniz bir biçime dönüştürün.
+    * Ayrıştırılmış verilerden, amaçlar ve varlıklar hakkında bilgi toplayın.
 * Yazma API 'SI çağrıları yapın:
     * Uygulamayı oluşturun.
-    * Ayrıştırılmış verilerden toplanan amaçları ve varlıkları ekleyin. 
-    * LUSıS uygulamasını oluşturduktan sonra, ayrıştırılmış verilerden örnek oluşturma işlemi ekleyebilirsiniz. 
+    * Ayrıştırılmış verilerden toplanan amaçları ve varlıkları ekleyin.
+    * LUSıS uygulamasını oluşturduktan sonra, ayrıştırılmış verilerden örnek oluşturma işlemi ekleyebilirsiniz.
 
-Bu programın, `index.js` dosyanın son bölümünde akışını görebilirsiniz. Bu kodu kopyalayın veya [indirin](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js) ve kaydedin `index.js`.
+Bu programın, dosyanın son bölümünde akışını görebilirsiniz `index.js` . Bu kodu kopyalayın veya [indirin](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js) ve kaydedin `index.js` .
 
    [!code-javascript[Node.js code for calling the steps to build a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/index.js)]
 
 
 ## <a name="parse-the-csv"></a>CSV 'yi ayrıştırma
 
-CSV 'deki detersliği içeren sütun girdilerinin, LUIN anlayabileceği bir JSON biçiminde ayrıştırılabilmesi gerekir. Bu JSON biçimi, utterance 'in amacını tanımlayan bir `intentName` alan içermelidir. Ayrıca, bir alan içermesi `entityLabels` gerekir, bu da bir varlık olmaması halinde boş olabilir. 
+CSV 'deki detersliği içeren sütun girdilerinin, LUIN anlayabileceği bir JSON biçiminde ayrıştırılabilmesi gerekir. Bu JSON biçimi `intentName` , utterance 'in amacını tanımlayan bir alan içermelidir. Ayrıca, bir alan içermesi gerekir, bu da bir `entityLabels` varlık olmaması halinde boş olabilir.
 
 Örneğin, "ışıkları aç" girdisi bu JSON ile eşlenir:
 
@@ -84,33 +84,33 @@ CSV 'deki detersliği içeren sütun girdilerinin, LUIN anlayabileceği bir JSON
         }
 ```
 
-Bu örnekte,, `intentName` CSV dosyasındaki **istek** sütunu başlığı altındaki Kullanıcı isteğinden gelir ve anahtar bilgileri ile diğer sütunlardan `entityName` gelir. Örneğin, **işlem** veya **cihaz**için bir giriş varsa ve bu dize gerçek istekte da gerçekleşirse, bir varlık olarak etiketlenebilir. Aşağıdaki kod bu ayrıştırma sürecini gösterir. Kopyalayabilir veya [indirebilir](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js) ve kaydedebilirsiniz `_parse.js`.
+Bu örnekte,, `intentName` CSV dosyasındaki **istek** sütunu başlığı altındaki Kullanıcı isteğinden gelir ve `entityName` anahtar bilgileri ile diğer sütunlardan gelir. Örneğin, **işlem** veya **cihaz**için bir giriş varsa ve bu dize gerçek istekte da gerçekleşirse, bir varlık olarak etiketlenebilir. Aşağıdaki kod bu ayrıştırma sürecini gösterir. Kopyalayabilir veya [indirebilir](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js) ve kaydedebilirsiniz `_parse.js` .
 
    [!code-javascript[Node.js code for parsing a CSV file to extract intents, entities, and labeled utterances](~/samples-luis/examples/build-app-programmatically-csv/_parse.js)]
 
 
 
 ## <a name="create-the-luis-app"></a>LUSıS uygulamasını oluşturma
-Veriler JSON 'a ayrıştırıldıktan sonra bir LUO uygulamasına ekleyin. Aşağıdaki kod LUSıS uygulamasını oluşturur. Kopyalayın veya [indirin](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_create.js) ve içine `_create.js`kaydedin.
+Veriler JSON 'a ayrıştırıldıktan sonra bir LUO uygulamasına ekleyin. Aşağıdaki kod LUSıS uygulamasını oluşturur. Kopyalayın veya [indirin](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_create.js) ve içine kaydedin `_create.js` .
 
    [!code-javascript[Node.js code for creating a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/_create.js)]
 
 
 ## <a name="add-intents"></a>Hedef ekleme
-Uygulamanız olduktan sonra, bu uygulama için gerekli olan hedefleri gerekir. Aşağıdaki kod LUSıS uygulamasını oluşturur. Kopyalayın veya [indirin](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_intents.js) ve içine `_intents.js`kaydedin.
+Uygulamanız olduktan sonra, bu uygulama için gerekli olan hedefleri gerekir. Aşağıdaki kod LUSıS uygulamasını oluşturur. Kopyalayın veya [indirin](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_intents.js) ve içine kaydedin `_intents.js` .
 
    [!code-javascript[Node.js code for creating a series of intents](~/samples-luis/examples/build-app-programmatically-csv/_intents.js)]
 
 
 ## <a name="add-entities"></a>Varlık ekleme
-Aşağıdaki kod, varlıkları LUSıS uygulamasına ekler. Kopyalayın veya [indirin](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_entities.js) ve içine `_entities.js`kaydedin.
+Aşağıdaki kod, varlıkları LUSıS uygulamasına ekler. Kopyalayın veya [indirin](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_entities.js) ve içine kaydedin `_entities.js` .
 
    [!code-javascript[Node.js code for creating entities](~/samples-luis/examples/build-app-programmatically-csv/_entities.js)]
-   
+
 
 
 ## <a name="add-utterances"></a>Konuşma ekleme
-ASIS uygulamasında varlıklar ve amaçlar tanımlandıktan sonra, bu tür ekleme yapabilirsiniz. Aşağıdaki kod, bir kerede en çok 100 utun eklemenize olanak tanıyan [Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) API 'sini kullanır.  Kopyalayın veya [indirin](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_upload.js) ve içine `_upload.js`kaydedin.
+ASIS uygulamasında varlıklar ve amaçlar tanımlandıktan sonra, bu tür ekleme yapabilirsiniz. Aşağıdaki kod, bir kerede en çok 100 utun eklemenize olanak tanıyan [Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) API 'sini kullanır.  Kopyalayın veya [indirin](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_upload.js) ve içine kaydedin `_upload.js` .
 
    [!code-javascript[Node.js code for adding utterances](~/samples-luis/examples/build-app-programmatically-csv/_upload.js)]
 
@@ -135,7 +135,7 @@ Bu uygulamayı kullanabilmeniz için index. js dosyasındaki değerleri kendi u�
 // Change these values
 const LUIS_programmaticKey = "YOUR_AUTHORING_KEY";
 const LUIS_appName = "Sample App";
-const LUIS_appCulture = "en-us"; 
+const LUIS_appCulture = "en-us";
 const LUIS_versionId = "0.1";
 ```
 
@@ -146,7 +146,7 @@ Betiği Node. js ile bir terminalden/komut satırından çalıştırın.
 > node index.js
 ```
 
-or
+veya
 
 ```console
 > npm start
@@ -196,5 +196,5 @@ Betik tamamlandıktan sonra, [lusıs](luis-reference-regions.md) 'de oturum aça
 Bu örnek uygulama aşağıdaki LUıS API 'Lerini kullanır:
 - [uygulama oluştur](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)
 - [Amaç Ekle](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0c)
-- [varlık Ekle](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e) 
+- [varlık Ekle](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e)
 - [utterslar ekleme](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)

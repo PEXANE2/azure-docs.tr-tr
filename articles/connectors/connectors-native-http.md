@@ -5,47 +5,26 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 9ed3d960b3f5653ea8706b39559c9d5a71c45a6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33075173385a6e36829199c5bda854c78a4424fc
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81867626"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84325125"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps 'den HTTP veya HTTPS üzerinden hizmet uç noktalarını çağır
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve yerleşik http tetikleyicisi veya EYLEMIYLE, http veya https üzerinden hizmet uç noktalarına istek gönderen otomatikleştirilmiş görevler ve iş akışları oluşturabilirsiniz. Örneğin, bu uç noktayı belirli bir zamanlamaya göre denetleyerek Web siteniz için hizmet uç noktasını izleyebilirsiniz. Bu uç noktada belirtilen olay, Web siteniz gibi olduğunda, olay mantıksal uygulamanızın iş akışını tetikler ve bu iş akışındaki eylemleri çalıştırır. Bunun yerine gelen HTTPS çağrılarını alıp yanıtlamak istiyorsanız, yerleşik [istek tetikleyicisi veya Yanıt eylemini](../connectors/connectors-native-reqres.md)kullanın.
 
-> [!NOTE]
-> Hedef uç noktanın özelliği temel alınarak, HTTP Bağlayıcısı Aktarım Katmanı Güvenliği (TLS) 1,0, 1,1 ve 1,2 sürümlerini destekler. Logic Apps, uç nokta ile mümkün olan en yüksek desteklenen sürümü kullanarak görüşür. Örneğin, uç nokta 1,2 ' ı destekliyorsa, bağlayıcı önce 1,2 ' i kullanır. Aksi halde, bağlayıcı desteklenen bir sonraki en yüksek sürümü kullanır.
->
-> HTTP Bağlayıcısı, kimlik doğrulaması için ara TLS/SSL sertifikalarını desteklemez.
+* Bir uç noktayı yinelenen bir zamanlamaya göre denetlemek veya *yoklamak* IÇIN, [http tetikleyicisini](#http-trigger) iş akışınıza ilk adım olarak ekleyin. Tetikleyici uç noktayı her denetlediğinde tetikleyici, uç noktaya bir istek çağırır veya bir *istek* gönderir. Uç noktanın yanıtı, mantıksal uygulamanızın iş akışının çalışıp çalışmadığını belirler. Tetikleyici, mantıksal uygulamanızdaki eylemlere bitiş noktası yanıtından içerik geçirir.
 
-Bir uç noktayı yinelenen bir zamanlamaya göre denetlemek veya *yoklamak* IÇIN, [http tetikleyicisini](#http-trigger) iş akışınıza ilk adım olarak ekleyin. Tetikleyici uç noktayı her denetlediğinde tetikleyici, uç noktaya bir istek çağırır veya bir *istek* gönderir. Uç noktanın yanıtı, mantıksal uygulamanızın iş akışının çalışıp çalışmadığını belirler. Tetikleyici, mantıksal uygulamanızdaki eylemlere bitiş noktası yanıtından içerik geçirir.
-
-Bir uç noktayı iş akışınızda başka herhangi bir yerde çağırmak için [http eylemini ekleyin](#http-action). Uç noktanın yanıtı, iş akışınızın kalan eylemlerinin nasıl çalışacağını belirler.
-
-> [!IMPORTANT]
-> Bir HTTP tetikleyicisi veya eylemi bu üstbilgileri içeriyorsa Logic Apps, bu üst bilgileri herhangi bir uyarı veya hata görüntülenmeden oluşturulan istek iletisinden kaldırır:
->
-> * `Accept-*`
-> * `Allow`
-> * `Content-*`Bu özel durumlarla birlikte `Content-Disposition`: `Content-Encoding`, ve`Content-Type`
-> * `Cookie`
-> * `Expires`
-> * `Host`
-> * `Last-Modified`
-> * `Origin`
-> * `Set-Cookie`
-> * `Transfer-Encoding`
->
-> Logic Apps, bu üst bilgilerle bir HTTP tetikleyicisi veya eylemi kullanan mantıksal uygulamaları kaydetmenizi durdurmasa da, Logic Apps bu üst bilgileri yoksayar.
+* Bir uç noktayı iş akışınızda başka herhangi bir yerde çağırmak için [http eylemini ekleyin](#http-action). Uç noktanın yanıtı, iş akışınızın kalan eylemlerinin nasıl çalışacağını belirler.
 
 Bu makalede mantıksal uygulamanızın iş akışına bir HTTP tetikleyicisi veya eyleminin nasıl ekleneceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -55,15 +34,50 @@ Bu makalede mantıksal uygulamanızın iş akışına bir HTTP tetikleyicisi vey
 
 * Hedef uç noktayı çağırmak istediğiniz mantıksal uygulama. HTTP tetikleyicisiyle başlamak için [boş bir mantıksal uygulama oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md). HTTP eylemini kullanmak için mantıksal uygulamanızı istediğiniz tetikleyiciyle başlatın. Bu örnek, ilk adım olarak HTTP tetikleyicisini kullanır.
 
+<a name="tls-support"></a>
+
+## <a name="transport-layer-security-tls"></a>Aktarım Katmanı Güvenliği (TLS)
+
+Hedef uç noktanın özelliği temel alınarak, giden çağrılar daha önce Güvenli Yuva Katmanı (SSL), sürüm 1,0, 1,1 ve 1,2 olan Aktarım Katmanı Güvenliği 'ni (TLS) destekler. Logic Apps, uç nokta ile mümkün olan en yüksek desteklenen sürümü kullanarak görüşür.
+
+Örneğin, uç nokta 1,2 destekliyorsa, HTTP Bağlayıcısı önce 1,2 ' i kullanır. Aksi halde, bağlayıcı desteklenen bir sonraki en yüksek sürümü kullanır.
+
+<a name="self-signed"></a>
+
+## <a name="self-signed-certificates"></a>Otomatik olarak imzalanan sertifikalar
+
+* Genel, çok kiracılı Azure ortamındaki Logic Apps için, HTTP Bağlayıcısı kendinden imzalı TLS/SSL sertifikalarına izin vermez. Mantıksal uygulamanız sunucuya HTTP çağrısı yapar ve bir TLS/SSL otomatik olarak imzalanan sertifika sunduğunda, HTTP çağrısı hata vererek başarısız olur `TrustFailure` .
+
+* Bir [tümleştirme hizmeti ortamındaki (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için http BAĞLAYıCıSı, TLS/SSL el sıkışmaları için otomatik olarak imzalanan sertifikalara izin verir. Ancak, önce Logic Apps REST API kullanarak mevcut bir ıSE veya yeni bir ıSE için [otomatik olarak imzalanan sertifika desteğini etkinleştirmeniz](../logic-apps/create-integration-service-environment-rest-api.md#request-body) ve ortak sertifikayı konuma yüklemeniz gerekir `TrustedRoot` .
+
+## <a name="known-issues"></a>Bilinen sorunlar
+
+### <a name="omitted-http-headers"></a>Atlanan HTTP üstbilgileri
+
+Bir HTTP tetikleyicisi veya eylemi bu üstbilgileri içeriyorsa Logic Apps, bu üst bilgileri herhangi bir uyarı veya hata görüntülenmeden oluşturulan istek iletisinden kaldırır:
+
+* `Accept-*`
+* `Allow`
+* `Content-*`Bu özel durumlarla birlikte: `Content-Disposition` , `Content-Encoding` ve`Content-Type`
+* `Cookie`
+* `Expires`
+* `Host`
+* `Last-Modified`
+* `Origin`
+* `Set-Cookie`
+* `Transfer-Encoding`
+
+Logic Apps, bu üst bilgilerle bir HTTP tetikleyicisi veya eylemi kullanan mantıksal uygulamaları kaydetmenizi durdurmasa da, Logic Apps bu üst bilgileri yoksayar.
+
 <a name="http-trigger"></a>
 
 ## <a name="add-an-http-trigger"></a>HTTP tetikleyicisi ekleme
 
 Bu yerleşik tetikleyici, bir uç nokta için belirtilen URL 'ye HTTP çağrısı yapar ve bir yanıt döndürür.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
 
-1. Tasarımcı 'nın arama kutusunda **yerleşik**' i seçin. Arama kutusuna filtreniz olarak yazın `http` . **Tetikleyiciler** listesinden **http** tetikleyicisi ' ni seçin.
+1. Tasarımcı 'nın arama kutusunda **yerleşik**' i seçin. Arama kutusuna `http` filtreniz olarak yazın. **Tetikleyiciler** listesinden **http** tetikleyicisi ' ni seçin.
 
    ![HTTP tetikleyicisi seçin](./media/connectors-native-http/select-http-trigger.png)
 
@@ -90,15 +104,15 @@ Bu yerleşik tetikleyici, bir uç nokta için belirtilen URL 'ye HTTP çağrıs�
 
 Bu yerleşik eylem, bir uç nokta için belirtilen URL 'ye HTTP çağrısı yapar ve bir yanıt döndürür.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın. Mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
    Bu örnek, ilk adım olarak HTTP tetikleyicisini kullanır.
 
 1. HTTP eylemini eklemek istediğiniz adım altında **yeni adım**' ı seçin.
 
-   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
+   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, **yerleşik**' i seçin. Arama kutusuna filtreniz olarak yazın `http` . **Eylemler** listesinden **http** eylemini seçin.
+1. **Eylem seçin**altında, **yerleşik**' i seçin. Arama kutusuna `http` filtreniz olarak yazın. **Eylemler** listesinden **http** eylemini seçin.
 
    ![HTTP eylemi seçin](./media/connectors-native-http/select-http-action.png)
 
@@ -119,7 +133,7 @@ Bu yerleşik eylem, bir uç nokta için belirtilen URL 'ye HTTP çağrısı yapa
 
 ## <a name="content-with-multipartform-data-type"></a>Multipart/form veri türü olan içerik
 
-HTTP isteklerinde `multipart/form-data` türü olan içeriği işlemek için, bu BIÇIMI kullanarak http isteğinin gövdesine `$content-type` ve `$multipart` özniteliklerini içeren bir JSON nesnesi ekleyebilirsiniz.
+HTTP isteklerinde türü olan içeriği işlemek için `multipart/form-data` , `$content-type` `$multipart` Bu biçimi kullanarak http isteğinin gövdesine ve ÖZNITELIKLERINI içeren bir JSON nesnesi ekleyebilirsiniz.
 
 ```json
 "body": {
@@ -135,7 +149,7 @@ HTTP isteklerinde `multipart/form-data` türü olan içeriği işlemek için, bu
 }
 ```
 
-Örneğin, bu sitenin API `multipart/form-data` 'sini kullanarak bir Web sitesine bir Excel dosyası IÇIN http post isteği gönderen bir mantıksal uygulamanız olduğunu varsayalım. Bu eylemin şu şekilde görünebileceğini aşağıda görebilirsiniz:
+Örneğin, bu sitenin API 'sini kullanarak bir Web sitesine bir Excel dosyası için HTTP POST isteği gönderen bir mantıksal uygulamanız olduğunu varsayalım `multipart/form-data` . Bu eylemin şu şekilde görünebileceğini aşağıda görebilirsiniz:
 
 ![Çok parçalı form verileri](./media/connectors-native-http/http-action-multipart.png)
 
@@ -174,17 +188,17 @@ Tetikleyici ve eylem parametreleri hakkında daha fazla bilgi için aşağıdaki
 
 Bu bilgileri döndüren bir HTTP tetikleyicisinden veya eylemden çıktılar hakkında daha fazla bilgi bulabilirsiniz:
 
-| Özellik adı | Tür | Açıklama |
+| Özellik adı | Tür | Description |
 |---------------|------|-------------|
-| bilgisinde | object | İstekten gelen üstbilgiler |
-| body | object | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |
+| bilgisinde | nesne | İstekten gelen üstbilgiler |
+| body | nesne | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |
 | durum kodu | int | İstekteki durum kodu |
 |||
 
-| Durum kodu | Açıklama |
+| Durum kodu | Description |
 |-------------|-------------|
 | 200 | Tamam |
-| 202 | Accepted |
+| 202 | Kabul edildi |
 | 400 | Hatalı istek |
 | 401 | Yetkisiz |
 | 403 | Yasak |

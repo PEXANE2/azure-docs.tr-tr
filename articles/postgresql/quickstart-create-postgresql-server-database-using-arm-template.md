@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 70def2584cf8855e8fdf4a74081dc5a9a8c46f68
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 28671484460407efac8798505f630c13ec0b4918
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205118"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84325091"
 ---
-# <a name="quickstart-use-a-resource-manager-template-to-create-an-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: bir Kaynak Yöneticisi şablonu kullanarak PostgreSQL için Azure veritabanı oluşturma-tek sunucu
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: bir ARM şablonu kullanarak PostgreSQL için Azure veritabanı oluşturma-tek sunucu
 
 PostgreSQL için Azure Veritabanı, bulutta son derece kullanılabilir olan PostgreSQL veritabanlarını çalıştırmak, yönetmek ve ölçeklendirmek için kullandığınız, yönetilen bir hizmettir. Bu hızlı başlangıçta, Azure portal, PowerShell veya Azure CLı 'de PostgreSQL için Azure veritabanı-tek sunucu oluşturmak için ARM şablonunu kullanırsınız.
 

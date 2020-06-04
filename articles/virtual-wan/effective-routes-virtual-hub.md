@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 06/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1173da81736661048d1e4e12d9919bc2aadf73ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f0785f8ce2528d0c17a8aca520212df931bf394
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73515856"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343379"
 ---
 # <a name="view-effective-routes-of-a-virtual-hub"></a>Bir sanal hub 'ın geçerli yollarını görüntüleme
 
@@ -42,24 +42,24 @@ Bunu perspektife koymak için, ilk satır Doğu ABD hub 'ın, VPN *sonraki atlam
 
 | **Ön ek** |  **Sonraki atlama türü** | **Sonraki atlama** |  **Yol kaynağı** |**AS yolu** |
 | ---        | ---                | ---          | ---               | ---         |
-| 10.20.1.0/24|VPN |10.1.0.6, 10.1.0.7| /Subscriptions/`<sub>`/ResourceGroups/`<rg>`/Providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-GW| 20000|
-|10.21.1.0/24 |ExpressRoute|10.1.0.10, 10.1.0.11|/Subscriptions/`<sub>`/ResourceGroups/`<rg>`/Providers/Microsoft.Network/expressRouteGateways/4444a6ac74e4d85555-eastus-GW|21000|
-|10.23.1.0/24| VPN |10.1.0.6, 10.1.0.7|/Subscriptions/`<sub>`/ResourceGroups/`<rg>`/Providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-GW|23000|
+| 10.20.1.0/24|VPN |10.1.0.6, 10.1.0.7| /Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-GW| 20000|
+|10.21.1.0/24 |ExpressRoute|10.1.0.10, 10.1.0.11|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/expressRouteGateways/4444a6ac74e4d85555-eastus-GW|21000|
+|10.23.1.0/24| VPN |10.1.0.6, 10.1.0.7|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-GW|23000|
 |10.4.0.0/16|Sanal ağ bağlantısı| Bağlantı üzerine |  |  |
-|10.5.0.0/16| IP Adresi| 10.4.0.6|/Subscriptions/`<sub>`/ResourceGroups/`<rg>`/Providers/Microsoft.Network/virtualhubs/easthub_1/routetables/table_1| |
-|0.0.0.0/0| IP Adresi| `<Azure Firewall IP>` |/Subscriptions/`<sub>`/ResourceGroups/`<rg>`/Providers/Microsoft.Network/virtualhubs/easthub_1/routetables/table_1| |
-|10.22.1.0/16| Uzak Merkez|10.8.0.6, 10.8.0.7|/Subscriptions/`<sub>`/ResourceGroups/`<rg>`/Providers/Microsoft.Network/virtualhubs/westhub_| 4848-22000 |
-|10.9.0.0/16| Uzak Merkez|  Bağlantı üzerine |/Subscriptions/`<sub>`/ResourceGroups/`<rg>`/Providers/Microsoft.Network/virtualhubs/westhub_1| |
+|10.5.0.0/16| IP Adresi| 10.4.0.6|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/easthub_1/routeTables/table_1| |
+|0.0.0.0/0| IP Adresi| `<Azure Firewall IP>` |/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/easthub_1/routeTables/table_1| |
+|10.22.1.0/16| Uzak Merkez|10.8.0.6, 10.8.0.7|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/westhub_| 4848-22000 |
+|10.9.0.0/16| Uzak Merkez|  Bağlantı üzerine |/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/westhub_1| |
 
 >[!NOTE]
 > Doğu ABD ve Batı Avrupa hub 'ları örnek topolojide birbirleriyle iletişim kurmadığında, öğrenilen yol (10.9.0.0/16) mevcut olmaz. Hub 'lar yalnızca doğrudan kendisine bağlı olan ağları duyurur.
 >
 
-## <a name="additional-information"></a><a name="additional"></a>Ek bilgiler
+## <a name="additional-information"></a><a name="additional"></a>Ek bilgi
 
 ### <a name="about-the-hub-route-table"></a><a name="abouthubroute"></a>Merkez yol tablosu hakkında
 
-Sanal hub yolu oluşturabilir ve yolu sanal hub yolu tablosuna uygulayabilirsiniz. Sanal hub rota tablosuna birden fazla rota uygulayabilirsiniz. Bu, hedef VNet için bir IP adresi (genellikle bir bağlı olan VNet 'teki ağ sanal gereci (NVA)) yoluyla bir yol ayarlamanıza olanak sağlar. NVA 'lar hakkında daha fazla bilgi için bkz. [bir sanal hub 'dan NVA 'ya trafiği yönlendirme](virtual-wan-route-table-portal.md).
+Sanal hub yolu oluşturabilir ve yolu sanal hub yolu tablosuna uygulayabilirsiniz. Sanal hub rota tablosuna birden fazla rota uygulayabilirsiniz. Bu, hedef VNet için bir IP adresi (genellikle bir bağlı olan VNet 'teki ağ sanal gereci (NVA)) yoluyla bir yol ayarlamanıza olanak sağlar. NVA 'lar hakkında daha fazla bilgi için bkz. [bir sanal hub 'dan NVA 'ya trafiği yönlendirme](virtual-wan-route-table-portal.md). Bu yolların etkin yol tablosunda gösterilmeyeceğini lütfen unutmayın. Etkin yol tablosu, yalnızca yerel ve uzak hub 'ların ve bağlı sanal ağ adres alanının ve BGP aracılığıyla öğrenilen yolların öneklerini içerir.
 
 ### <a name="about-default-route-00000"></a><a name="aboutdefaultroute"></a>Varsayılan yol hakkında (0.0.0.0/0)
 

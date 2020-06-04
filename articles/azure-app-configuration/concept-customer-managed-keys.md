@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: ace34cf4a72b871ba6646b279007b8ce21c03e9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d312346accc4fb6781744343911158bb538c0ccf
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457442"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324088"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>Uygulama yapılandırma verilerinizi şifrelemek için müşteri tarafından yönetilen anahtarları kullanın
 Azure Uygulama yapılandırması, [bekleyen gizli bilgileri şifreler](../security/fundamentals/encryption-atrest.md). Müşteri tarafından yönetilen anahtarların kullanımı, şifreleme anahtarlarınızı yönetmenize olanak tanıyarak gelişmiş veri koruması sağlar.  Yönetilen anahtar şifrelemesi kullanıldığında, uygulama yapılandırmasındaki tüm hassas bilgiler Kullanıcı tarafından sağlanmış bir Azure Key Vault anahtarıyla şifrelenir.  Bu, şifreleme anahtarını isteğe bağlı olarak döndürme olanağı sağlar.  Ayrıca, uygulama yapılandırma örneğinin anahtara erişimini iptal ederek Azure uygulama yapılandırmasının hassas bilgilere erişimini iptal etme olanağı da sağlar.
@@ -36,7 +36,7 @@ Azure Uygulama yapılandırması için müşteri tarafından yönetilen anahtar 
 
 Bu kaynaklar yapılandırıldıktan sonra, Azure uygulama yapılandırmasının Key Vault anahtarını kullanmasına izin vermek için iki adım kalır:
 1. Azure uygulama yapılandırma örneğine yönetilen bir kimlik atama
-2. Hedef Key Vault erişim `GET`ilkesinde `WRAP`kimliğe, `UNWRAP` ve izinlere izin verin.
+2. `GET` `WRAP` `UNWRAP` Hedef Key Vault erişim ilkesinde kimliğe, ve izinlere izin verin.
 
 ## <a name="enable-customer-managed-key-encryption-for-your-azure-app-configuration-instance"></a>Azure uygulama yapılandırma örneğiniz için müşteri tarafından yönetilen anahtar şifrelemesini etkinleştirme
 Başlamak için, düzgün şekilde yapılandırılmış bir Azure uygulama yapılandırma örneğine ihtiyacınız olacaktır. Henüz bir uygulama yapılandırma örneğiniz yoksa, bir tane ayarlamak için şu hızlı başlangıçlardan birini izleyin:
@@ -49,33 +49,33 @@ Başlamak için, düzgün şekilde yapılandırılmış bir Azure uygulama yapı
 > Azure Cloud Shell, bu makaledeki komut satırı talimatlarını çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur.  .NET Core SDK dahil olmak üzere önceden yüklenmiş ortak Azure araçları vardır. Azure aboneliğinizde oturum açtıysanız, shell.azure.com adresinden [Azure Cloud Shell](https://shell.azure.com) başlatın.  [Belgelerimizi okuyarak](../cloud-shell/overview.md) Azure Cloud Shell hakkında daha fazla bilgi edinebilirsiniz
 
 ### <a name="create-and-configure-an-azure-key-vault"></a>Azure Key Vault oluşturma ve yapılandırma
-1. Azure CLı kullanarak bir Azure Key Vault oluşturun.  Hem hem de `vault-name` `resource-group-name` Kullanıcı tarafından sağlandığını ve benzersiz olması gerektiğini unutmayın.  Bu örneklerde `contoso-vault` ve `contoso-resource-group` kullanırız.
+1. Azure CLı kullanarak bir Azure Key Vault oluşturun.  Hem hem de `vault-name` `resource-group-name` Kullanıcı tarafından sağlandığını ve benzersiz olması gerektiğini unutmayın.  `contoso-vault` `contoso-resource-group` Bu örneklerde ve kullanırız.
 
     ```azurecli
     az keyvault create --name contoso-vault --resource-group contoso-resource-group
     ```
     
-1. Key Vault için geçici silme ve Temizleme korumasını etkinleştirin. 1. adımda oluşturulan Key Vault (`contoso-vault`) ve kaynak grubunun (`contoso-resource-group`) adlarını değiştirin.
+1. Key Vault için geçici silme ve Temizleme korumasını etkinleştirin. `contoso-vault`1. adımda oluşturulan Key Vault () ve kaynak grubunun () adlarını değiştirin `contoso-resource-group` .
 
     ```azurecli
     az keyvault update --name contoso-vault --resource-group contoso-resource-group --enable-purge-protection --enable-soft-delete
     ```
     
-1. Key Vault anahtarı oluşturun. Bu anahtar için `key-name` benzersiz bir değer sağlayın ve 1. adımda oluşturulan Key Vault (`contoso-vault`) adlarını değiştirin. Veya `RSA` `RSA-HSM` şifrelemeyi tercih etmek isteyip istemediğinizi belirtin.
+1. Key Vault anahtarı oluşturun. Bu anahtar için benzersiz bir değer sağlayın `key-name` ve `contoso-vault` 1. adımda oluşturulan Key Vault () adlarını değiştirin. Veya şifrelemeyi tercih etmek isteyip istemediğinizi belirtin `RSA` `RSA-HSM` .
 
     ```azurecli
     az keyvault key create --name key-name --kty {RSA or RSA-HSM} --vault-name contoso-vault
     ```
     
-    Bu komutun çıktısı, oluşturulan anahtar için anahtar KIMLIĞINI ("KID") gösterir.  Bu alıştırmada daha sonra kullanmak için anahtar KIMLIĞINI bir yere unutmayın.  Anahtar KIMLIĞI şu biçimdedir: `https://{my key vault}.vault.azure.net/keys/{key-name}/{Key version}`.  Anahtar KIMLIĞINDE üç önemli bileşen vardır:
+    Bu komutun çıktısı, oluşturulan anahtar için anahtar KIMLIĞINI ("KID") gösterir.  Bu alıştırmada daha sonra kullanmak için anahtar KIMLIĞINI bir yere unutmayın.  Anahtar KIMLIĞI şu biçimdedir: `https://{my key vault}.vault.azure.net/keys/{key-name}/{Key version}` .  Anahtar KIMLIĞINDE üç önemli bileşen vardır:
     1. Key Vault URI: ' https://{Anahtar Kasası}. kasa. Azure. net
     1. Key Vault anahtar adı: {Key Name}
     1. Key Vault anahtar sürümü: {Key Version}
 
-1. Azure CLı kullanarak, uygulama yapılandırma örneğinizin adını ve önceki adımlarda kullanılan kaynak grubunu değiştirerek bir sistem tarafından atanmış yönetilen kimlik oluşturun. Yönetilen kimlik, yönetilen anahtara erişmek için kullanılacaktır. Uygulama yapılandırma `contoso-app-config` örneğinin adını göstermek için kullanıyoruz:
+1. Azure CLı kullanarak, uygulama yapılandırma örneğinizin adını ve önceki adımlarda kullanılan kaynak grubunu değiştirerek bir sistem tarafından atanmış yönetilen kimlik oluşturun. Yönetilen kimlik, yönetilen anahtara erişmek için kullanılacaktır. `contoso-app-config`Uygulama yapılandırma örneğinin adını göstermek için kullanıyoruz:
     
     ```azurecli
-    az appconfig identity assign --na1. me contoso-app-config --group contoso-resource-group --identities [system]
+    az appconfig identity assign --name contoso-app-config --resource-group contoso-resource-group --identities [system]
     ```
     
     Bu komutun çıktısı, sistem tarafından atanan kimliğin asıl KIMLIĞINI ("PrincipalId") ve kiracı KIMLIĞINI ("Tenandıd") içerir.  Bu, yönetilen anahtara kimlik erişimi vermek için kullanılacaktır.
@@ -89,13 +89,13 @@ Başlamak için, düzgün şekilde yapılandırılmış bir Azure uygulama yapı
     }
     ```
 
-1. Azure uygulama yapılandırma örneğinin yönetilen kimliği anahtar doğrulama, şifreleme ve şifre çözme işlemleri gerçekleştirmek için anahtara erişmesi gerekir. Erişmesi gereken belirli eylemler kümesi şunları içerir: `GET`, `WRAP`, ve `UNWRAP` anahtarlar için.  Erişim verilmesi, uygulama yapılandırma örneğinin yönetilen kimliğinin sorumlu KIMLIĞI için gereklidir. Bu değer, önceki adımda elde edildi. Aşağıda gösterildiği gibi `contoso-principalId`. Komut satırını kullanarak yönetilen anahtara izin verin:
+1. Azure uygulama yapılandırma örneğinin yönetilen kimliği anahtar doğrulama, şifreleme ve şifre çözme işlemleri gerçekleştirmek için anahtara erişmesi gerekir. Erişmesi gereken belirli eylemler kümesi şunları içerir: `GET` , `WRAP` , ve `UNWRAP` anahtarlar için.  Erişim verilmesi, uygulama yapılandırma örneğinin yönetilen kimliğinin sorumlu KIMLIĞI için gereklidir. Bu değer, önceki adımda elde edildi. Aşağıda gösterildiği gibi `contoso-principalId` . Komut satırını kullanarak yönetilen anahtara izin verin:
 
     ```azurecli
     az keyvault set-policy -n contoso-vault --object-id contoso-principalId --key-permissions get wrapKey unwrapKey
     ```
 
-1. Azure uygulama yapılandırma örneği yönetilen anahtara erişebildikten sonra, Azure CLı kullanarak hizmette müşteri tarafından yönetilen anahtar özelliğini etkinleştirebiliriz. Anahtar oluşturma adımları sırasında kaydedilen aşağıdaki özellikleri geri çekin: `key name` `key vault URI`.
+1. Azure uygulama yapılandırma örneği yönetilen anahtara erişebildikten sonra, Azure CLı kullanarak hizmette müşteri tarafından yönetilen anahtar özelliğini etkinleştirebiliriz. Anahtar oluşturma adımları sırasında kaydedilen aşağıdaki özellikleri geri çekin: `key name` `key vault URI` .
 
     ```azurecli
     az appconfig update -g contoso-resource-group -n contoso-app-config --encryption-key-name key-name --encryption-key-version key-version --encryption-key-vault key-vault-Uri

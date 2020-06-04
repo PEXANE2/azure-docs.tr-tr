@@ -1,5 +1,5 @@
 ---
-title: Azure 'da SQL Server RHEL sanal makinelerinde kullanılabilirlik grubu dinleyicisini yapılandırma-Linux Sanal Makineleri | Microsoft Docs
+title: Azure-Linux sanal makinelerinde RHEL sanal makinelerinde SQL Server için bir kullanılabilirlik grubu dinleyicisi yapılandırma | Microsoft Docs
 description: Azure 'daki RHEL sanal makinelerinde SQL Server bir kullanılabilirlik grubu dinleyicisi ayarlama hakkında bilgi edinin
 ms.service: virtual-machines-linux
 ms.subservice: ''
@@ -8,22 +8,22 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: edd9b83de0feff3b9ef12c67cdca19501eaa63a2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f60cb3f28c57d6df4a309a7630d078c593d75410
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053924"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343776"
 ---
-# <a name="tutorial-configure-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için kullanılabilirlik grubu dinleyicisini yapılandırma
+# <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için bir kullanılabilirlik grubu dinleyicisi yapılandırma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
 > Sunulan öğretici **genel önizlemede**. 
 >
-> Bu öğreticide RHEL 7,6 ile SQL Server 2017 kullanıyoruz, ancak HA 'yi yapılandırmak için RHEL 7 veya RHEL 8 ' de SQL Server 2019 kullanmak mümkündür. Kullanılabilirlik grubu kaynaklarını yapılandırma komutları RHEL 8 ' de değişmiştir ve doğru komutlar hakkında daha fazla bilgi için, [kullanılabilirlik grubu kaynağı](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) ve RHEL 8 kaynakları oluşturma makalesine bakmak isteyeceksiniz.
+> Bu öğreticide RHEL 7,6 ile SQL Server 2017 kullanıyoruz, ancak yüksek kullanılabilirliği yapılandırmak için RHEL 7 veya RHEL 8 ' de SQL Server 2019 kullanmak mümkündür. Kullanılabilirlik grubu kaynaklarını yapılandırma komutları RHEL 8 ' de değişmiştir ve doğru komutlar hakkında daha fazla bilgi için [kullanılabilirlik grubu kaynağı](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) ve RHEL 8 kaynakları oluşturma makalesine bakmak isteyeceksiniz.
 
-Bu öğreticide, Azure 'daki RHEL sanal makinelerinde SQL sunucularınız için bir kullanılabilirlik grubu dinleyicisi oluşturma adımları ele alınacaktır. Şunları öğrenirsiniz:
+Bu öğreticide, Azure 'daki RHEL sanal makinelerinde (VM) bulunan SQL sunucularınız için bir kullanılabilirlik grubu dinleyicisi oluşturma adımları ele alınacaktır. Şunları öğrenirsiniz:
 
 > [!div class="checklist"]
 > - Azure portal yük dengeleyici oluşturma
@@ -37,7 +37,7 @@ Bu öğreticide, Azure 'daki RHEL sanal makinelerinde SQL sunucularınız için 
 
 ## <a name="prerequisite"></a>Önkoşul
 
-Tamamlanan [ **öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için kullanılabilirlik grupları yapılandırma**](rhel-high-availability-stonith-tutorial.md)
+Tamamlanan [öğretici: Azure 'DA RHEL sanal makinelerinde SQL Server için kullanılabilirlik grupları yapılandırma](rhel-high-availability-stonith-tutorial.md)
 
 ## <a name="create-the-load-balancer-in-the-azure-portal"></a>Azure portal yük dengeleyiciyi oluşturun
 
@@ -59,7 +59,7 @@ Aşağıdaki yönergeler, yük [dengeleyici-Azure Portal](../windows/availabilit
    | --- | --- |
    | **Adı** |Yük dengeleyiciyi temsil eden bir metin adı. Örneğin, **Sqllb**. |
    | **Tür** |**İç** |
-   | **Sanal ağ** |Oluşturulan varsayılan VNet **VM1VNET**olarak adlandırılmalıdır. |
+   | **Sanal ağ** |Oluşturulan varsayılan sanal ağ **VM1VNET**olarak adlandırılmalıdır. |
    | **Alt ağ** |SQL Server örneklerinin bulunduğu alt ağı seçin. Varsayılan değer **VM1Subnet**olmalıdır.|
    | **IP adresi ataması** |**Se** |
    | **Özel IP adresi** |`virtualip`Kümede oluşturulan IP adresini kullanın. |
@@ -130,7 +130,7 @@ Yük Dengeleme kuralları, yük dengeleyicinin trafiği SQL Server örneklerine 
    | **Adı** |Yük Dengeleme kurallarını temsil eden bir metin adı. Örneğin, **Sqlalwaysonendpointlistener**. |
    | **Protokol** |**TCP** |
    | **Bağ** |*1433* |
-   | **Arka Uç Bağlantı Noktası** |*1433*. Bu kural **kayan IP (doğrudan sunucu dönüşü)** kullandığından bu değer yok sayılır. |
+   | **Arka uç bağlantı noktası** |*1433*. Bu kural **kayan IP (doğrudan sunucu dönüşü)** kullandığından bu değer yok sayılır. |
    | **Yokla** |Bu yük dengeleyici için oluşturduğunuz araştırmanın adını kullanın. |
    | **Oturum kalıcılığı** |**Yok** |
    | **Boşta kalma zaman aşımı (dakika)** |*4* |
@@ -220,7 +220,7 @@ Bu noktada, kaynak grubunun tüm SQL Server makinelere bağlanan bir yük dengel
 
 ## <a name="test-the-listener-and-a-failover"></a>Dinleyiciyi ve yük devretmeyi test etme
 
-### <a name="test-logging-into-sql-server-using-the-availability-group-listener"></a>Kullanılabilirlik grubu dinleyicisini kullanarak SQL Server oturum açma
+### <a name="test-logging-in-to-sql-server-using-the-availability-group-listener"></a>Kullanılabilirlik grubu dinleyicisini kullanarak SQL Server için test oturum açma
 
 1. Kullanılabilirlik grubu dinleyicisi adını kullanarak SQL Server birincil düğümünde oturum açmak için SQLCMD kullanın:
 
@@ -238,11 +238,11 @@ Bu noktada, kaynak grubunun tüm SQL Server makinelere bağlanan bir yük dengel
 
     Çıktın geçerli birincil düğümü göstermesi gerekir. Bu `VM1` , bir yük devretmeyi hiç test etmemelisiniz olmalıdır.
 
-    Komutunu yazarak SQL oturumundan çıkın `exit` .
+    Komutu yazarak SQL Server oturumundan çıkın `exit` .
 
 ### <a name="test-a-failover"></a>Yük devretmeyi test etme
 
-1. Birincil çoğaltmayı `<VM2>` veya başka bir çoğaltmayı el ile yük devretmek için aşağıdaki komutu çalıştırın. `<VM2>`Sunucu adınızın değeriyle değiştirin.
+1. Birincil çoğaltmayı `<VM2>` veya başka bir çoğaltmayı el ile devretmek için aşağıdaki komutu çalıştırın. `<VM2>`Sunucu adınızın değeriyle değiştirin.
 
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
@@ -280,7 +280,7 @@ Bu noktada, kaynak grubunun tüm SQL Server makinelere bağlanan bir yük dengel
 
     ```bash
     sqlcmd -S ag1-listener -U sa -P <YourPassword>
-    ```
+     ```
 
 1. Bağlı olduğunuz sunucuyu kontrol edin. SQLCMD 'de şu komutu çalıştırın:
 
@@ -295,4 +295,4 @@ Bu noktada, kaynak grubunun tüm SQL Server makinelere bağlanan bir yük dengel
 Azure 'daki yük dengeleyiciler hakkında daha fazla bilgi için bkz.:
 
 > [!div class="nextstepaction"]
-> [Azure SQL Server VM 'lerde bir kullanılabilirlik grubu için yük dengeleyici yapılandırma](../windows/availability-group-load-balancer-portal-configure.md)
+> [Azure VM 'lerinde SQL Server bir kullanılabilirlik grubu için yük dengelemesi yapılandırma](../windows/availability-group-load-balancer-portal-configure.md)

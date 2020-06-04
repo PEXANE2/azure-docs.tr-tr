@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: b72195c818e418cfca9c88fe666b27b277aa7bda
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 8007966482ba5f046a918ddfc02025e06fadc8d6
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309110"
+ms.locfileid: "84324190"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL yönetilen örnek kaynak sınırlarına genel bakış
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -82,6 +82,7 @@ SQL yönetilen örneği iki hizmet katmanına sahiptir: [genel amaçlı](../data
 | Depolama GÇ gecikmesi (yaklaşık) | 5-10 MS | 1-2 MS |
 | Bellek içi OLTP | Desteklenmiyor | Kullanılabilir, [Boyut sanal çekirdek sayısına bağlıdır](#in-memory-oltp-available-space) |
 | En fazla oturum sayısı | 30000 | 30000 |
+| Maksimum eş zamanlı çalışan (istek) | 4. nesil: 210 * sanal çekirdek sayısı + 800<br>5. nesil: 105 * sanal çekirdek sayısı + 800 | 4. nesil: 210 * sanal çekirdek sayısı + 800<br>5. nesil: 105 * sanal çekirdek sayısı + 800 |
 | [Salt okuma çoğaltmaları](../database/read-scale-out.md) | 0 | 1 (fiyata dahildir) |
 | İşlem yalıtımı | 5. nesil<br/>-80 sanal çekirdekler için desteklenir<br/>-diğer boyutlar için desteklenmez<br/><br/>Kullanımdan kaldırılması nedeniyle 4. nesil desteklenmiyor|5. nesil<br/>-60, 64, 80 sanal çekirdekler için desteklenir<br/>-diğer boyutlar için desteklenmez<br/><br/>Kullanımdan kaldırılması nedeniyle 4. nesil desteklenmiyor|
 
@@ -126,6 +127,9 @@ SQL yönetilen örneği şu anda yalnızca aşağıdaki abonelik türlerinde da�
 
 ## <a name="regional-resource-limitations"></a>Bölgesel kaynak sınırlamaları
 
+> [!Note]
+> Abonelikler için bölge kullanılabilirliği hakkında en son bilgiler için, önce [RESMI COVı-19 blog gönderisini](https://aka.ms/sqlcapacity)denetleyin.
+
 Desteklenen Abonelik türleri, bölge başına sınırlı sayıda kaynak içerebilir. SQL yönetilen örneği, Azure bölgesi başına iki varsayılan sınıra sahiptir (bir abonelik türü türüne göre Azure portal özel bir [destek isteği](../database/quota-increase-request.md) oluşturarak isteğe bağlı olarak artırılabilir:
 
 - **Alt ağ sınırı**: SQL yönetilen örnek örneklerinin tek bir bölgede dağıtıldığı alt ağların en fazla sayısı.
@@ -149,6 +153,9 @@ Aşağıdaki tabloda desteklenen Abonelik türleri için **varsayılan bölgesel
 \*Dağıtımları planlama bölümünde, lütfen İş Açısından Kritik (BC) hizmet katmanının dört (4) kat daha fazla sanal çekirdek kapasitesi Genel Amaçlı (GP) hizmet katmanından gerektirdiğini göz önünde bulundurun. Örneğin: 1 GP vCore = 1 sanal çekirdek birim ve 1 BC sanal çekirdek = 4 sanal çekirdek birimi. Tüketim analizinizi varsayılan sınırlara karşı basitleştirmek için, SQL yönetilen örneğinin dağıtıldığı bölgedeki tüm alt ağlarda vCore birimlerini özetleyin ve sonuçları abonelik türü için örnek birim sınırlarıyla karşılaştırın. Bir bölgedeki her abonelik için **en fazla vCore birimi** sınırı geçerlidir. Birden çok alt ağ arasında dağıtılan tüm sanal çekirdekler toplamı, **en fazla sanal çekirdek birimi sayısına**eşit veya daha düşük olmalıdır.
 
 \*\*Daha büyük alt ağ ve sanal çekirdek limitleri şu bölgelerde kullanılabilir: Avustralya Doğu, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, Batı Avrupa, Batı ABD 2.
+
+> [!IMPORTANT]
+> VCore ve alt ağ sınırlarınızın 0 olması durumunda, abonelik türü için varsayılan bölgesel sınırın ayarlanmayacağı anlamına gelir. Aynı yordamın yanı sıra gerekli sanal çekirdek ve alt ağ değerlerini sağlayan belirli bir bölgede abonelik erişimi almak için kota artışı isteği 'ni de kullanabilirsiniz.
 
 ## <a name="request-a-quota-increase"></a>Kota artışı iste
 

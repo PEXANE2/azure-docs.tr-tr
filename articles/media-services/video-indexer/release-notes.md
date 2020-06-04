@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 06/02/2020
 ms.author: juliako
-ms.openlocfilehash: d78390aac51ea6fa70e1285b15dcc7ade74434ee
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5bd4c9aa3fde9e3fa596ce5a18b892edfab60af5
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124593"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84325074"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
@@ -29,6 +29,20 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 * Bilinen sorunlar
 * Hata düzeltmeleri
 * Kullanım dışı işlevsellik
+
+## <a name="may-2020"></a>Mayıs 2020
+
+### <a name="video-indexer-deployed-in-the-east-us"></a>Doğu ABD Video Indexer dağıtıldı
+
+Artık Doğu ABD bölgesinde Video Indexer ücretli bir hesap oluşturabilirsiniz.
+ 
+### <a name="video-indexer-url"></a>Video Indexer URL 'SI
+
+Video Indexer bölgesel bitiş noktalarının hepsi yalnızca www ile başlayacak şekilde birleştirilmiştir. Eylem öğesi gerekli değildir.
+
+Şu andan itibaren, pencere öğeleri ekleme veya Video Indexer Web uygulamalarında oturum açma için mi olduğunu www.videoindexer.ai 'ye ulaşıyorsunuz.
+
+Ayrıca, wus.videoindexer.ai www 'e yeniden yönlendirilir. Daha fazla bilgi, [uygulamalarınızda ekleme video Indexer pencere öğeleri](video-indexer-embed-widgets.md)içinde bulunabilir.
 
 ## <a name="april-2020"></a>Nisan 2020
 
@@ -243,4 +257,4 @@ Zaten desteklenen (SRT, VTT ve TTML) kapalı açıklamalı alt yazı biçiminin 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Genel bakış](video-indexer-overview.md)
+[Genel Bakış](video-indexer-overview.md)

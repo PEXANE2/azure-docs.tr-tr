@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/20/2020
+ms.date: 06/01/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a12c454906d6c6ff702b7f635a91361bbe3994c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d790bf20da8cc0d10c8fa47d750014de4f3d285
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77616883"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331738"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA (büyük örnekler) depolama mimarisi
 
@@ -36,8 +36,6 @@ Depolama alanı ayırma açısından aşağıdaki tabloya bakın. Tablo, farklı
 | S192 | 4.608 GB | 1.024 GB | 1.536 GB | 1.024 GB |
 | S192m | 11.520 GB | 1.536 GB | 1.792 GB | 1.536 GB |
 | S192xm |  11.520 GB |  1.536 GB |  1.792 GB |  1.536 GB |
-| S224 |  4.224 GB |  512 GB |  1.024 GB |  512 GB |
-| S224m |  8.448 GB |  512 GB |  1.024 GB |  512 GB |
 | S384 | 11.520 GB | 1.536 GB | 1.792 GB | 1.536 GB |
 | S384m | 12.000 GB | 2.050 GB | 2.050 GB | 2.040 GB |
 | S384xm | 16.000 GB | 2.050 GB | 2.050 GB | 2.040 GB |
@@ -47,6 +45,35 @@ Depolama alanı ayırma açısından aşağıdaki tabloya bakın. Tablo, farklı
 | S768m | 28.000 GB | 3.100 GB | 2.050 GB | 3.100 GB |
 | S768xm | 40.960 GB | 6.144 GB | 4.096 GB | 6.144 GB |
 | S960m | 36.000 GB | 4.100 GB | 2.050 GB | 4.100 GB |
+
+HANA büyük örneklerinin daha yeni SKU 'Ları, şunun gibi görünen depolama yapılandırmalarına göre dağıtılır:
+
+| HANA büyük örnek SKU 'SU | Hana/veri | Hana/günlük | Hana/paylaşılan | Hana/günlüğe yedeklemeler |
+| --- | --- | --- | --- | --- |
+| S224 | 4.224 GB | 512 GB | 1.024 GB | 512 GB |
+| S224oo | 6.336 GB | 512 GB | 1.024 GB | 512 GB |
+| S224m | 8.448 GB | 512 GB | 1.024 GB | 512 GB |
+| S224om | 8.448 GB | 512 GB | 1.024 GB | 512 GB |
+| S224ooo | 10.560 GB | 512 GB | 1.024 GB | 512 GB |
+| S224oom | 12.672 GB | 512 GB | 1.024 GB | 512 GB |
+| S448 | 8.448 GB | 512 GB | 1.024 GB | 512 GB |
+| S448oo | 12.672 GB | 512 GB | 1.024 GB | 512 GB |
+| S448m | 16.896 GB | 512 GB | 1.024 GB | 512 GB |
+| S448om | 16.896 GB | 512 GB | 1.024 GB | 512 GB |
+| S448ooo | 21.120 GB | 512 GB | 1.024 GB | 512 GB |
+| S448oom | 25.344 GB | 512 GB | 1.024 GB | 512 GB |
+| S672 | 12.672 GB | 512 GB | 1.024 GB | 512 GB |
+| S672oo | 19.008 GB | 512 GB | 1.024 GB | 512 GB |
+| S672m | 25.344 GB | 512 GB | 1.024 GB | 512 GB |
+| S672om | 25.344 GB | 512 GB | 1.024 GB | 512 GB |
+| S672ooo | 31.680 GB | 512 GB | 1.024 GB | 512 GB |
+| S672oom | 38.016 GB | 512 GB | 1.024 GB | 512 GB |
+| S896 | 16.896 GB | 512 GB | 1.024 GB | 512 GB |
+| S896oo | 25.344 GB | 512 GB | 1.024 GB | 512 GB |
+| S896m | 33.792 GB | 512 GB | 1.024 GB | 512 GB |
+| S896om | 33.792 GB | 512 GB | 1.024 GB | 512 GB |
+| S896ooo | 42.240 GB | 512 GB | 1.024 GB | 512 GB |
+| S896oom | 50.688 GB | 512 GB | 1.024 GB | 512 GB |
 
 
 Dağıtılan gerçek birimler, dağıtıma ve birim boyutlarını göstermek için kullanılan araca göre farklılık gösterebilir.

@@ -8,20 +8,16 @@ ms.custom: mimckitt
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 795891f56985504a3584089d7377f753605ba4dd
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: d6f70e00bc33430cba13895b6d0c9a0aac5ef246
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263049"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338694"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 ve Edsv4 serisi
 
 Edv4 ve Edsv4 serisi, &reg; &reg; hiper iş parçacıklı bir yapılandırmadaki Intel Xeon Platinum 8272CL (Cascade Lake) işlemcilerde çalışır ve 504 gib 'A kadar RAM, [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; hiper Iş parçacığı teknolojisi](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve Intel [ &reg; Gelişmiş vektör Uzantıları 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)için idealdir. Bu yeni VM boyutları %50 daha büyük yerel depolamaya sahip olacak ve [Gen2 VM](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) 'lerle [Ev3/Esv3](https://docs.microsoft.com/azure/virtual-machines/ev3-esv3-series) boyutlarına kıyasla hem okuma hem de yazma için daha iyi yerel disk IOPS 'si sağlar
-
-
-> [!IMPORTANT]
-> Edv4 veya Edsv4 serisi kullanarak yeni bir sanal makine dağıtıyorsanız ve bir Linux görüntüsü kullanmayı planlıyorsanız, RHEL 8. x, CentOS 8. x veya Oracle 7. x ya da daha yeni bir sürümünü kullanmanız gerekir. RHEL 7. x, CentOS 7. x veya Orcale 6. x seçilirse bir çekirdek Panic hatası olacaktır. Microsoft, bir onarımı etkin bir şekilde dağıtmakta. Yalnızca RHEL, CentOS ve Oracle etkilendi.
 
 ## <a name="edv4-series"></a>Edv4 serisi
 

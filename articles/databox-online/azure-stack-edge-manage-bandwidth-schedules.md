@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: a21828413b8d8750827fafa077002863439f8643
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 9e5361c1082424a76699affee653b4b9fc798116
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569595"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339766"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge"></a>Azure Stack Kenarunuzdaki bant genişliği zamanlamalarını yönetmek için Azure portal kullanın  
 
@@ -44,7 +44,7 @@ Bir zamanlama eklemek için Azure portal aşağıdaki adımları uygulayın.
    2. Bu zamanlamanın her gün çalışması gerekiyorsa, **tüm gün** seçeneğini işaretleyin.
    3. **Bant genişliği hızı**, cihazınızda gerçekleştirilen bulutla ilgili işlemler (yükleme ve indirme) için kullanılan bant genişliğidir ve saniye başına megabit (Mb/sn) cinsinden ölçülür. Bu alan için 20 ile 1.000.000.007 arasında bir sayı girin.
    4. Veri yükleme ve indirme işlemlerini kısıtlamak istemiyorsanız **Sınırsız** bant genişliğini seçin.
-   5. **Add (Ekle)** seçeneğini belirleyin.
+   5. **Ekle**'yi seçin.
 
       ![Zamanlama Ekle](media/azure-stack-edge-manage-bandwidth-schedules/add-schedule-2.png)
 

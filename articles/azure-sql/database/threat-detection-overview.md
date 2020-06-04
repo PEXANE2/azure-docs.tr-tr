@@ -1,7 +1,7 @@
 ---
 title: Gelişmiş Tehdit Koruması
-titleSuffix: Azure SQL Database, SQL Managed Instance, & Azure Synapse
-description: Gelişmiş tehdit koruması, Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE 'te olası güvenlik tehditlerini gösteren anormal veritabanı etkinliklerini algılar.
+titleSuffix: Azure SQL Database, SQL Managed Instance, & Azure Synapse Analytics
+description: Gelişmiş tehdit koruması, Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics 'teki olası güvenlik tehditlerini gösteren anormal veritabanı etkinliklerini algılar.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -13,17 +13,17 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: 27d44ba8be56839f248312e1bdb4b0e4b7761110
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 351c37d20360518e5cd341fd6e14d25c62e87c08
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047023"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321543"
 ---
-# <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance--azure-synapse"></a>Azure SQL veritabanı için Gelişmiş tehdit koruması, SQL yönetilen örneği & Azure SYNAPSE
+# <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Azure SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics için Gelişmiş tehdit koruması
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure SQL [veritabanı](sql-database-paas-overview.md)Için Gelişmiş tehdit koruması, [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md) ve [Azure SYNAPSE](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) , veritabanları için olağandışı ve potansiyel olarak zararlı girişimleri gösteren anormal etkinlikleri algılar.
+Azure [SQL veritabanı](sql-database-paas-overview.md)Için Gelişmiş tehdit koruması, [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md) ve [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) , veritabanları için olağandışı ve potansiyel olarak zararlı girişimleri belirten anormal etkinlikleri algılar.
 
 Gelişmiş tehdit koruması, gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir paket olan [Gelişmiş veri güvenliği](advanced-data-security.md) sunumunun bir parçasıdır. Gelişmiş Tehdit Koruması'na merkezi SQL ADS portalı yoluyla erişilebilir ve yönetilebilir.
 
@@ -47,13 +47,13 @@ Anormal veritabanı etkinliklerinin algılanmasıyla bir e-posta bildirimi alır
 
    ![Etkinlik tehditleri](./media/threat-detection-overview/active_threats.png)
 
-2. Bu tehdidi araştırmaya ve gelecekteki tehditleri incelemeye yönelik ek ayrıntılar ve eylemler almak için belirli bir uyarıya tıklayın.
+1. Bu tehdidi araştırmaya ve gelecekteki tehditleri incelemeye yönelik ek ayrıntılar ve eylemler almak için belirli bir uyarıya tıklayın.
 
    Örneğin, SQL ekleme, Internet 'teki veri odaklı uygulamalara saldırmak için kullanılan en yaygın web uygulaması güvenlik sorunlarından biridir. Saldırganlar, uygulama giriş alanlarına kötü amaçlı SQL deyimleri eklemek, veritabanındaki verileri ihlal etmek veya değiştirmek için uygulama güvenlik açıklarından faydalanabilir. SQL ekleme uyarıları için, uyarının ayrıntıları, güvenlik açığı bulunan SQL bildirisini içerir.
 
    ![Özel uyarı](./media/threat-detection-overview/specific_alert.png)
 
-## <a name="explore-alerts-in-azure-portal"></a>Azure portal uyarıları keşfet
+## <a name="explore-alerts-in-the-azure-portal"></a>Azure portal uyarıları araştırma
 
 Gelişmiş tehdit koruması, uyarılarını [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)ile tümleştirir. Veritabanı ve SQL REKLAMLARı dikey penceresinde canlı SQL Gelişmiş tehdit koruması kutucukları, etkin tehditler durumunu izlemek Azure portal.
 

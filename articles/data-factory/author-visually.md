@@ -10,12 +10,12 @@ ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
 ms.date: 05/15/2020
-ms.openlocfilehash: 79b89c6a6a7598dd3fbdfc5030fd59fe1aab6625
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ac51fd63adcc0328ff67f5fbe13dbfdb768f4bfe
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832796"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343131"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory 'de görsel yazma
 
@@ -42,6 +42,12 @@ Varsayılan görsel yazma deneyimi, Data Factory hizmetiyle doğrudan çalışı
 ![Yazı tuvali](media/author-visually/properties-pane.png)
 
 Özellikler bölmesi yalnızca kaynak oluşturma sırasında varsayılan olarak açılır. Düzenlemek için, tuvalin sağ üst köşesinde bulunan özellikler bölmesi simgesine tıklayın.
+
+## <a name="management-hub"></a>Yönetim Merkezi
+
+Azure Data Factory UX içindeki *Yönet* sekmesi tarafından erişilen Yönetim Merkezi, veri fabrikanızın genel yönetim eylemlerini barındıran bir portalıdır. Burada, veri depoları ve dış hesaplar, kaynak denetimi yapılandırması ve tetikleyici ayarları bağlantılarını yönetebilirsiniz. Daha fazla bilgi için [Yönetim hub 'ının](author-management-hub.md)özellikleri hakkında bilgi edinin.
+
+![Bağlı hizmetleri yönetme](media/author-management-hub/management-hub-linked-services.png)
 
 ## <a name="expressions-and-functions"></a>İfadeler ve işlevler
 

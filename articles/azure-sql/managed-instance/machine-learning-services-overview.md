@@ -11,13 +11,13 @@ author: garyericson
 ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
-ms.date: 05/27/2020
-ms.openlocfilehash: fb74cc3aba3ad37e36a4d7cbe726bde4cb088e90
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/03/2020
+ms.openlocfilehash: 45d005e4239039d4e547e9a3fddc61877d07e8db
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045105"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331381"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Azure SQL yönetilen örneği 'nde Machine Learning Services (Önizleme)
 
@@ -63,3 +63,4 @@ SQL yönetilen örneğindeki Machine Learning Services, genel önizleme sırası
 - [SQL Server Machine Learning Services arasındaki önemli farklılıkları](machine-learning-services-differences.md)inceleyin.
 - Machine Learning Services 'de Python kullanmayı öğrenmek için bkz. [Python betiklerini çalıştırma](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15).
 - Machine Learning Services 'de R 'yi nasıl kullanacağınızı öğrenmek için bkz. [Run r Scripts](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15).
+- Diğer SQL platformlarında makine öğrenimi hakkında daha fazla bilgi için bkz. [SQL Machine Learning belgeleri](https://docs.microsoft.com/sql/machine-learning/).

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/11/2020
+ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 5f14a269478541eaa5852697a917afb3d771841a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f66bb1c271418b02c2548de486793b4474f40c8b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196965"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337402"
 ---
 Şimdilik, Ultra diskler ek sınırlamalara sahiptir ve bunlar şu şekildedir:
 
@@ -40,7 +40,6 @@ Aşağıdaki tabloda, Ultra disklerin ' de kullanılabildiği bölgeler ve bunla
 |Doğu Japonya     |İki bölge         |
 
 
-
 - Yalnızca şu VM serisinde desteklenir:
     - [ESv3](../articles/virtual-machines/ev3-esv3-series.md#esv3-series)
     - [DSv3](../articles/virtual-machines/dv3-dsv3-series.md#dsv3-series)
@@ -53,6 +52,7 @@ Aşağıdaki tabloda, Ultra disklerin ' de kullanılabildiği bölgeler ve bunla
 - Yalnızca boş disk olarak oluşturulabilir  
 - Şu anda disk anlık görüntülerini, VM görüntülerini, kullanılabilirlik kümelerini, Azure adanmış Konakları veya Azure disk şifrelemesini desteklemez
 - Azure Backup veya Azure Site Recovery tümleştirmesini desteklememektedir
+- Yalnızca önbelleğe alınmamış okuma ve önbelleğe alınmamış yazmaları destekler
 - GA VM 'lerde ıOPS için geçerli en büyük sınır 80.000 ' dir.
 
 Azure Ultra diskler, varsayılan olarak her abonelik için her bölge için en fazla 16 TiB sunar, ancak Ultra diskler isteğe göre daha yüksek kapasiteyi destekler. Kapasiteden artış istemek için Azure desteğine başvurun.

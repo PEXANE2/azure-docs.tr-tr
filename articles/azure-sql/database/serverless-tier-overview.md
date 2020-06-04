@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 5/13/2020
-ms.openlocfilehash: fd552e3236732fd37b2fc5d23dd234f0a87f0f27
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3d3eee7dc57a2438ccf726851025c700824a5e3a
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049942"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322082"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL veritabanı sunucusuz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Sunucusuz, tek bir Azure SQL veritabanı için, bir saniyede kullanılan işlem 
 
 ## <a name="serverless-compute-tier"></a>Sunucusuz işlem katmanı
 
-Tek bir Azure SQL veritabanı için sunucusuz işlem katmanı, bir işlem otomatik ölçeklendirme aralığı ve otomatik duraklama gecikmesi tarafından parametrelenir.  Bu parametrelerin yapılandırması, veritabanı performans deneyimini ve işlem maliyetini şekillendirilir.
+Azure SQL veritabanı 'ndaki tek veritabanlarına yönelik sunucusuz işlem katmanı, bir işlem otomatik ölçeklendirme aralığı ve otomatik duraklama gecikmesi tarafından parametrelenir. Bu parametrelerin yapılandırması, veritabanı performans deneyimini ve işlem maliyetini şekillendirilir.
 
 ![Sunucusuz faturalandırma](./media/serverless-tier-overview/serverless-billing.png)
 
@@ -125,9 +125,9 @@ Veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncelleştirmel
 
 Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeniden sürdürme tetiklenir:
 
-|Özellik|Oto özgeçmişi tetikleyicisi|
+|Öne çıkan özelliği|Oto özgeçmişi tetikleyicisi|
 |---|---|
-|Kimlik doğrulama ve yetkilendirme|Oturum aç|
+|Kimlik doğrulaması ve yetkilendirme|Oturum aç|
 |Tehdit algılama|Veritabanı veya sunucu düzeyinde tehdit algılama ayarlarını etkinleştirme/devre dışı bırakma.<br>Tehdit algılama ayarlarını veritabanı veya sunucu düzeyinde değiştirme.|
 |Veri bulma ve sınıflandırma|Duyarlılık etiketlerini ekleme, değiştirme, silme veya görüntüleme|
 |Denetim|Denetim kayıtlarını görüntüleme.<br>Denetim ilkesini güncelleştirme veya görüntüleme.|
@@ -183,11 +183,11 @@ Yeni bir veritabanı oluşturmak veya var olan bir veritabanını sunucusuz bir 
    |Oto duraklatma gecikmesi|En az: 60 dakika (1 saat)<br>Maksimum: 10080 dakika (7 gün)<br>Artımlar: 10 dakika<br>Oto duraklamayı devre dışı bırak:-1|60 dakika|
 
 
-### <a name="create-new-database-in-serverless-compute-tier"></a>Sunucusuz işlem katmanında yeni veritabanı oluştur 
+### <a name="create-a-new-database-in-the-serverless-compute-tier"></a>Sunucusuz işlem katmanında yeni bir veritabanı oluşturun
 
 Aşağıdaki örnekler sunucusuz işlem katmanında yeni bir veritabanı oluşturur.
 
-#### <a name="use-azure-portal"></a>Azure portalı kullanma
+#### <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
 Bkz. [hızlı başlangıç: Azure SQL veritabanı 'nda Azure Portal kullanarak tek bir veritabanı oluşturma](single-database-create-quickstart.md).
 
@@ -199,7 +199,7 @@ New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
   -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
-#### <a name="use-azure-cli"></a>Azure CLI kullanma
+#### <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
 ```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
@@ -218,7 +218,7 @@ CREATE DATABASE testdb
 
 Ayrıntılar için bkz. [veritabanı oluşturma](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).  
 
-### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Veritabanını sağlanan işlem katmanından sunucusuz işlem katmanına taşıma
+### <a name="move-a-database-from-the-provisioned-compute-tier-into-the-serverless-compute-tier"></a>Sağlanan işlem katmanından bir veritabanını sunucusuz işlem katmanına taşıma
 
 Aşağıdaki örneklerde, bir veritabanı sağlanan işlem katmanından sunucusuz işlem katmanına taşınır.
 
@@ -231,7 +231,7 @@ Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
 
-#### <a name="use-azure-cli"></a>Azure CLI kullanma
+#### <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
 ```azurecli
 az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
@@ -250,7 +250,7 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 Ayrıntılar için bkz. [alter database](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current).
 
-### <a name="move-database-from-serverless-compute-tier-into-provisioned-compute-tier"></a>Veritabanını sunucusuz işlem katmanından sağlanan işlem katmanına taşıma
+### <a name="move-a-database-from-the-serverless-compute-tier-into-the-provisioned-compute-tier"></a>Bir veritabanını sunucusuz işlem katmanından sağlanan işlem katmanına taşıma
 
 Bir sunucusuz veritabanı, sağlanan bir işlem veritabanını sunucusuz bir işlem katmanına taşıma ile aynı şekilde, sağlanan bir işlem katmanına taşınabilir.
 
@@ -260,7 +260,7 @@ Bir sunucusuz veritabanı, sağlanan bir işlem veritabanını sunucusuz bir iş
 
 Maksimum veya en düşük sanal çekirdekleri ve oto duraklatma gecikmesini değiştirmek,, ve bağımsız değişkenleri kullanılarak PowerShell 'deki [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) komutu kullanılarak gerçekleştirilir `MaxVcore` `MinVcore` `AutoPauseDelayInMinutes` .
 
-### <a name="use-azure-cli"></a>Azure CLI kullanma
+### <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
 Maksimum veya en düşük sanal çekirdekleri ve oto duraklatma gecikmesini değiştirmek,, ve bağımsız değişkenlerini kullanarak Azure CLı 'deki [az SQL DB Update](/cli/azure/sql/db#az-sql-db-update) komutu kullanılarak gerçekleştirilir `capacity` `min-capacity` `auto-pause-delay` .
 
@@ -307,7 +307,7 @@ Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername 
   | Select -ExpandProperty "Status"
 ```
 
-#### <a name="use-azure-cli"></a>Azure CLI kullanma
+#### <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
 ```azurecli
 az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json

@@ -13,15 +13,15 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 49b669627507af0e3e7386f31e344082cc4686df
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: d7ce3a19ddb5f14e53a8821cf070500f8e3eb061
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219317"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338450"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>SQL VM kaynak sağlayıcısı ile Azure 'da birden çok SQL sanal makinesi kaydetme
-[!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)][!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
+[!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Bu makalede, PowerShell cmdlet 'ini kullanarak SQL Server sanal makinelerinizin (VM) SQL VM kaynak sağlayıcısı ile Azure 'da toplu olarak nasıl kaydedileceği açıklanmaktadır `Register-SqlVMs` .
 
@@ -35,12 +35,12 @@ Kaynak sağlayıcısı hakkında daha fazla bilgi için bkz. [SQL VM kaynak sağ
 
 SQL Server VM kaynak sağlayıcısına kaydetmek için şunlar gerekir: 
 
-- [Kaynak sağlayıcısına kayıtlı](sql-vm-resource-provider-register.md#register-subscription-with-rp) ve kaydedilmemiş SQL Server sanal makineler Içeren bir [Azure aboneliği](https://azure.microsoft.com/free/) . 
+- [Kaynak sağlayıcısına kayıtlı](sql-vm-resource-provider-register.md#register-a-subscription-with-the-resource-provider) ve kaydedilmemiş SQL Server sanal makineler Içeren bir [Azure aboneliği](https://azure.microsoft.com/free/) . 
 - Sanal makineleri kaydetmek için kullanılan istemci kimlik bilgileri şu RBAC rollerinin hiçbirinde bulunuyor: **sanal makine katılımcısı**, **katkıda bulunan**veya **sahip**. 
 - En son [az PowerShell](/powershell/azure/new-azureps-module-az)sürümü. 
 - En son [az. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0)sürümü.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 Devam etmeden önce, önce betiğin yerel bir kopyasını oluşturmanız, PowerShell modülü olarak içeri aktarmanız ve Azure 'a bağlanmanız gerekir. 
 
@@ -78,7 +78,7 @@ Register-SqlVMs -SubscriptionList SubscriptionId1,SubscriptionId2
 Örnek çıktı: 
 
 ```
-Number of Subscriptions registration failed for 
+Number of subscriptions registration failed for 
 because you do not have access or credentials are wrong: 1
 Total VMs Found: 10
 VMs Already registered: 1
@@ -155,7 +155,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="register-specific-vms-in-single-resource-group"></a>Belirli VM 'Leri tek kaynak grubuna Kaydet
+## <a name="register-specific-vms-in-a-single-resource-group"></a>Belirli VM 'Leri tek bir kaynak grubuna kaydetme
 
 Belirli SQL Server sanal makinelerini tek bir kaynak grubuna kaydetmek için aşağıdaki cmdlet 'i kullanın:
 

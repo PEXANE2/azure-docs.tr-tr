@@ -11,19 +11,16 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 44acc81df9eb6dc6a6af28b5b0f4730aa93adffc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c488b2ad6fcb5228de0e89bd036e299632c5dd4
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475436"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337419"
 ---
 # <a name="collect-data-for-models-in-production"></a>Üretimde modeller için veri toplama
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
-
->[!IMPORTANT]
-> Azure Machine Learning Izleme SDK 'Sı yakında kullanımdan kaldırılacak. SDK halen, SDK 'leri modellerdeki veri kayması izlemek için kullanan geliştiriciler için uygun olmaya devam etmektedir. Ancak yeni müşteriler için [Application Insights ile basitleştirilmiş veri izlemeyi](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)kullanmanızı öneririz.
 
 Bu makalede, Azure Machine Learning giriş modeli verilerinin nasıl toplanacağı gösterilmektedir. Ayrıca, giriş verilerinin bir Azure Kubernetes hizmeti (AKS) kümesine nasıl dağıtılacağı ve çıkış verilerinin Azure Blob depolama alanında nasıl depolandığı gösterilmektedir.
 
@@ -56,9 +53,9 @@ Blob 'daki çıkış verilerinin yolu şu sözdizimini izler:
 ```
 
 >[!NOTE]
-> Python için Azure Machine Learning SDK 'nın 0.1.0 A16 sürümünden önceki sürümlerinde `designation` bağımsız değişken olarak adlandırılır. `identifier` Kodunuzu daha önceki bir sürümle geliştirdiyseniz, uygun şekilde güncelleştirmeniz gerekir.
+> Python için Azure Machine Learning SDK 'nın 0.1.0 A16 sürümünden önceki sürümlerinde `designation` bağımsız değişken olarak adlandırılır `identifier` . Kodunuzu daha önceki bir sürümle geliştirdiyseniz, uygun şekilde güncelleştirmeniz gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://aka.ms/AMLFree) oluşturun.
 
@@ -84,7 +81,7 @@ Veri toplamayı etkinleştirmek için şunları yapmanız gerekir:
    from azureml.monitoring import ModelDataCollector
    ```
 
-1. İşlevinizdeki `init` veri toplama değişkenlerinizi bildirin:
+1. İşlevinizdeki veri toplama değişkenlerinizi bildirin `init` :
 
     ```python
     global inputs_dc, prediction_dc
@@ -125,7 +122,7 @@ Ortam dosyanıza ve Puanlama dosyanıza yüklenmiş bağımlılıklara sahip bir
 
 1. Çalışma alanınızı açın.
 
-1. **Dağıtımları** > seçin**hizmet** > **Düzenle**' yi seçin.
+1. **Dağıtımları**seçin  >  **hizmet**  >  **Düzenle**' yi seçin.
 
    ![Hizmeti düzenleme](././media/how-to-enable-data-collection/EditService.PNG)
 
@@ -143,7 +140,7 @@ Ortam dosyanıza ve Puanlama dosyanıza yüklenmiş bağımlılıklara sahip bir
 
 1. Çalışma alanınızı açın.
 
-1. **Dağıtımları** > seçin**hizmet** > **Düzenle**' yi seçin.
+1. **Dağıtımları**seçin  >  **hizmet**  >  **Düzenle**' yi seçin.
 
    [![Düzenle seçeneğini belirleyin](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
@@ -189,7 +186,7 @@ Blob depolamadaki toplanan verileri analiz etmek için tercih ettiğiniz bir ara
 
     [![Power BI blob kurulumu](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
-1. Depolama hesabınızın adını ekleyin ve depolama anahtarınızı girin. Bu bilgileri, Blobun **Ayarlar** > **erişim anahtarları** ' nı seçerek bulabilirsiniz.
+1. Depolama hesabınızın adını ekleyin ve depolama anahtarınızı girin. Bu bilgileri, Blobun **Ayarlar**  >  **erişim anahtarları** ' nı seçerek bulabilirsiniz.
 
 1. **Model veri** kapsayıcısını seçin ve **Düzenle**' yi seçin.
 
@@ -199,7 +196,7 @@ Blob depolamadaki toplanan verileri analiz etmek için tercih ettiğiniz bir ara
 
 1. Model yolunuzu filtreye girin. Yalnızca belirli bir yıla veya aya ait dosyalara bakmak isterseniz, filtre yolunu genişletmeniz yeterlidir. Örneğin, yalnızca Mart verilerine bakmak için şu filtre yolunu kullanın:
 
-   /modeldata/\<SubscriptionID>/\<resourcegroupname>/\<çalışmaadı>\</WebServiceName>\</ModelName>\</modelversion>\</atama>\</yıl>/3
+   /modeldata/ \<subscriptionid> / \<resourcegroupname> / \<workspacename> / \<webservicename> / \<modelname> / \<modelversion> / \<designation> / \<year> /3
 
 1. **Ad** değerlerine göre sizin için uygun olan verileri filtreleyin. Tahminleri ve girişleri depoladıysanız, her biri için bir sorgu oluşturmanız gerekir.
 
@@ -227,7 +224,7 @@ Blob depolamadaki toplanan verileri analiz etmek için tercih ettiğiniz bir ara
 
     [![Databricks veri yükleme seçeneğini belirleme](./media/how-to-enable-data-collection/dbupload.png)](././media/how-to-enable-data-collection/dbupload.png#lightbox)
 
-1. **Yeni tablo oluştur** ' u seçin **ve diğer veri kaynakları** > ' nı seçin**Azure Blob Storage** > **tablo oluştur Not defteri**.
+1. **Yeni tablo oluştur** ' u seçin ve **diğer veri kaynakları**' nı seçin  >  **Azure Blob Storage**  >  **tablo oluştur Not defteri**.
 
     [![Databricks tablosu oluşturma](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 

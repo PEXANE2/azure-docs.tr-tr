@@ -11,19 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/30/2020
-ms.openlocfilehash: cbd15e2356e9ceb781d7314cb9a0114d2d47d412
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 84e9593884f40fce8affce628b7817c528b3c31d
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041781"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343294"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek veritabanı kaynaklarını ölçeklendirme
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Bu makalede, sağlanan işlem katmanında bir Azure SQL veritabanı için kullanılabilir işlem ve depolama kaynaklarının nasıl ölçeklendiriyapılacağı açıklanır. Alternatif olarak, [sunucusuz bilgi işlem katmanı](serverless-tier-overview.md) , kullanılan işlem için saniye başına işlem otomatik ölçeklendirme ve fatura sağlar.
 
-Sanal çekirdekler veya DTU sayısını ilk kez seçtikten sonra, [Azure Portal](single-database-manage.md#azure-portal), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), [Azure CLI](/cli/azure/sql/db#az-sql-db-update)veya [REST API](https://docs.microsoft.com/rest/api/sql/databases/update)kullanarak gerçek deneyime göre tek bir veritabanını dinamik olarak yukarı veya aşağı ölçeklendirdirebilirsiniz.
+Sanal çekirdekler veya DTU sayısını ilk kez seçtikten sonra, [Azure Portal](single-database-manage.md#the-azure-portal), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), [Azure CLI](/cli/azure/sql/db#az-sql-db-update)veya [REST API](https://docs.microsoft.com/rest/api/sql/databases/update)kullanarak gerçek deneyime göre tek bir veritabanını dinamik olarak yukarı veya aşağı ölçeklendirdirebilirsiniz.
 
 Aşağıdaki videoda, tek bir veritabanı için kullanılabilir DTU 'ları artırmak üzere hizmet katmanını ve işlem boyutunu dinamik olarak değiştirme gösterilmektedir.
 
@@ -36,13 +35,13 @@ Aşağıdaki videoda, tek bir veritabanı için kullanılabilir DTU 'ları artı
 
 Genellikle hizmet katmanını veya işlem boyutunu değiştirmek hizmeti aşağıdaki adımları gerçekleştirmeyle ilgilidir:
 
-1. Veritabanı için yeni işlem örneği oluştur  
+1. Veritabanı için yeni bir işlem örneği oluşturun. 
 
-    İstenen hizmet katmanı ve işlem boyutu ile yeni bir işlem örneği oluşturulur. Hizmet katmanı ve işlem boyutu değişikliklerinin bazı birleşimleri için, veritabanının bir kopyasının oluşturulması ve toplam gecikme süresinin kesin bir şekilde etkilenmesinin yanı sıra yeni işlem örneğinde oluşturulması gerekir. Ne olursa olsun, bu adım sırasında veritabanı çevrimiçi kalır ve bağlantılar özgün işlem örneğindeki veritabanına yönlendirilmeye devam eder.
+    İstenen hizmet katmanı ve işlem boyutu ile yeni bir işlem örneği oluşturulur. Hizmet katmanı ve işlem boyutu değişikliklerinin bazı birleşimleri için, veritabanının bir kopyasının yeni işlem örneğinde oluşturulması gerekir. Bu, verilerin kopyalanmasını ve genel gecikmeyi kesin bir şekilde etkileyebilir. Ne olursa olsun, bu adım sırasında veritabanı çevrimiçi kalır ve bağlantılar özgün işlem örneğindeki veritabanına yönlendirilmeye devam eder.
 
-2. Bağlantıların yeni işlem örneğine yönlendirilmesini Değiştir
+2. Bağlantıların yeni bir işlem örneğine yönlendirilmesini değiştirin.
 
-    Özgün işlem örneğindeki veritabanına yönelik var olan bağlantılar bırakılmıştı. Yeni işlem örneğindeki veritabanına yeni bağlantılar oluşturulur. Hizmet katmanı ve işlem boyutu değişikliklerinin bazı birleşimleri için, veritabanı dosyaları, anahtar sırasında ayrılır ve yeniden eklenir.  Ne olursa olsun, veritabanı genellikle 30 saniyeden kısa bir süre boyunca ve genellikle birkaç saniye boyunca kullanılamadığında kısa bir hizmet kesintisine neden olabilir. Bağlantılar bırakıldığında çalışan uzun süre çalışan işlemler varsa, bu adımın süresi durdurulan işlemleri kurtarmak için daha uzun sürebilir. [Hızlandırılmış veritabanı kurtarma](../accelerated-database-recovery.md) , uzun süre çalışan işlemleri iptal etme etkisini azaltabilir.
+    Özgün işlem örneğindeki veritabanına yönelik var olan bağlantılar bırakılmıştı. Yeni işlem örneğindeki veritabanına yeni bağlantılar oluşturulur. Hizmet katmanı ve işlem boyutu değişikliklerinin bazı birleşimleri için, veritabanı dosyaları, anahtar sırasında ayrılır ve yeniden eklenir.  Ne olursa olsun, veritabanı genellikle 30 saniyeden kısa bir süre boyunca ve genellikle birkaç saniye boyunca kullanılamadığında kısa bir hizmet kesintisine neden olabilir. Bağlantılar bırakıldığında çalışan uzun süre çalışan işlemler varsa, bu adımın süresi, durdurulan işlemleri kurtarmak için daha uzun sürebilir. [Hızlandırılmış veritabanı kurtarma](../accelerated-database-recovery.md) , uzun süre çalışan işlemleri iptal etme etkisini azaltabilir.
 
 > [!IMPORTANT]
 > İş akışındaki herhangi bir adım sırasında hiçbir veri kaybolmaz. Hizmet katmanı değiştirildiğinde Azure SQL veritabanı 'nı kullanan uygulamalar ve bileşenlerde bazı [yeniden deneme mantığı](troubleshoot-common-connectivity-issues.md) uyguladığınızdan emin olun.
@@ -78,9 +77,9 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 
 Bir hizmet katmanı değişikliği veya işlem yeniden oluşturma işlemi iptal edilebilir.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="the-azure-portal"></a>Azure portal
 
-Veritabanına genel bakış dikey penceresinde **Bildirimler** ' e gidin ve devam eden bir işlem olduğunu belirten kutucuğa tıklayın:
+Veritabanına genel bakış dikey penceresinde **Bildirimler** ' e gidin ve devam eden bir işlem olduğunu gösteren kutucuğa tıklayın:
 
 ![Devam eden işlem](./media/single-database-scale/ongoing-operations.png)
 
@@ -108,10 +107,10 @@ else {
 - Daha yüksek bir hizmet katmanına veya işlem boyutuna yükseltiyorsanız, açıkça daha büyük bir boyut (MaxSize) belirtmediğiniz müddetçe veritabanının en büyük boyutu artmaz.
 - Bir veritabanının indirgenmesini sağlamak için, kullanılan veritabanı hedef hizmet katmanının izin verilen en büyük boyuttan ve işlem boyutundan daha küçük olmalıdır.
 - **Premium** 'dan **Standart** katmana düşürme yaparken, her ikisi de (1) veritabanının en büyük boyutu hedef işlem boyutunda destekleniyorsa ve (2) en büyük boyut, hedef işlem boyutunun dahil edilen depolama miktarını aşarsa, ek bir depolama maliyeti geçerlidir. Örneğin, boyut üst sınırı 500 GB olan bir P1 veritabanı S3 olarak boyutlandırıldıysa, S3 en büyük 1 TB boyutunu desteklediğinden ve dahil edilen depolama miktarı yalnızca 250 GB olduğundan, ek bir depolama maliyeti uygulanır. Bu nedenle, ek depolama miktarı 500 GB – 250 GB = 250 GB olur. Ek depolama alanı fiyatlandırması için bkz. [Azure SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/). Kullanılan gerçek alan miktarı, dahil edilen depolama miktarından daha azsa, veritabanının maksimum boyutu dahil edilen tutara azaltılarak bu ek maliyetin önlenebilir olmasını sağlayabilirsiniz.
-- [Coğrafi çoğaltma](active-geo-replication-configure-portal.md) etkinken bir veritabanını yükseltirken, birincil veritabanını yükseltmeden önce ikincil veritabanlarını istenen hizmet katmanına ve işlem boyutuna yükseltin (en iyi performans için genel kılavuz). Farklı bir sürüme yükseltirken, önce ikincil veritabanının yükseltilmesi gereksinimidir.
+- [Coğrafi çoğaltma](active-geo-replication-configure-portal.md) etkinken bir veritabanını yükseltirken, birincil veritabanını yükseltmeden önce ikincil veritabanlarını istenen hizmet katmanına ve işlem boyutuna yükseltin (en iyi performans için genel kılavuz). Farklı bir sürüme yükseltirken, önce ikincil veritabanının yükseltilme zorunluluğu vardır.
 - [Coğrafi çoğaltma](active-geo-replication-configure-portal.md) etkinken bir veritabanını indirgemeden, ikincil veritabanını eski sürüme indirgemeden önce, birincil veritabanlarının istenen hizmet katmanına ve işlem boyutuna indirgenmesini sağlar (en iyi performans için genel kılavuz). Farklı bir sürüme düşürme yaparken, öncelikle birincil veritabanının indirgenmesi gereksinimidir.
-- Geri yükleme hizmeti teklifleri, çeşitli hizmet katmanları için farklılık gösterir. **Temel** katmana eski sürüme düşürürseniz, daha düşük bir yedekleme saklama süresi vardır. Bkz. [Azure SQL veritabanı yedeklemeleri](automated-backups-overview.md).
-- Veritabanının yeni özellikleri, değişiklikler tamamlanana kadar uygulanmaz.
+- Geri yükleme hizmeti teklifleri, çeşitli hizmet katmanları için farklılık gösterir. **Temel** katmana eski sürüme düşürüyorsanız, daha düşük bir yedekleme saklama süresi vardır. Bkz. [Azure SQL veritabanı yedeklemeleri](automated-backups-overview.md).
+- Veritabanı için yeni özellikler, değişiklikler tamamlanana kadar uygulanmaz.
 
 ## <a name="billing"></a>Faturalandırma
 
@@ -147,12 +146,13 @@ Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından b
 
 Premium katmanda 1 TB 'den fazla depolama alanı şu anda tüm bölgelerde kullanılabilir: Çin Doğu, Çin Kuzey, Almanya Orta, Almanya Kuzeydoğu, Orta Batı ABD, US DoD bölgeleri ve ABD Devlet Merkezi. Bu bölgelerde, Premium katmanda en fazla depolama alanı 1 TB ile sınırlıdır. En büyük boyut olan 1 TB 'den büyük olan P11 ve P15 veritabanları için aşağıdaki önemli noktalar ve sınırlamalar geçerlidir:
 
-- Bir P11 veya P15 veritabanının en büyük boyutu 1 TB 'den büyük bir değere ayarlandıysa, bu, yalnızca bir P11 veya P15 veritabanına geri yüklenebilir veya kopyalanabilir.  Daha sonra, veritabanı farklı bir işlem boyutuna ölçeklendirildi olabilir, ancak bu işlem sırasında ayrılan alan miktarı yeni işlem boyutunun en büyük boyut sınırlarını aşmaz.
+- Bir P11 veya P15 veritabanının en büyük boyutu 1 TB 'den büyük bir değere ayarlandıysa, bu, yalnızca bir P11 veya P15 veritabanına geri yüklenebilir veya kopyalanabilir.  Daha sonra, veritabanı farklı bir işlem boyutuna ölçeklendirildi, ancak bu işlem sırasında ayrılan alan miktarı, yeni işlem boyutunun en büyük boyut sınırlarını aşmaz.
 - Etkin coğrafi çoğaltma senaryoları için:
-  - Coğrafi çoğaltma ilişkisi ayarlama: birincil veritabanı P11 veya P15 ise, ikincil (ies) da P11 veya P15 olmalıdır; daha düşük işlem boyutu 1 TB 'den fazla destekleme yeteneğine sahip olmadıkları için ikincil olarak reddedilir.
+  - Coğrafi çoğaltma ilişkisi ayarlama: birincil veritabanı P11 veya P15 ise, ikincil (ies) da P11 veya P15 olmalıdır. Daha düşük işlem boyutu 1 TB 'den fazla destekleme yeteneğine sahip olmadığından ikincil olarak reddedilir.
   - Coğrafi çoğaltma ilişkisinde birincil veritabanını yükseltme: birincil veritabanında en büyük boyutu 1 TB 'den fazlasına değiştirmek ikincil veritabanında aynı değişikliği tetikler. Birincil değişikliğin etkili olabilmesi için her iki yükseltme de başarılı olmalıdır. 1 TB 'den fazla seçeneği için bölge sınırlamaları geçerlidir. İkincil, 1 TB 'ın üzerinde bir değer desteklemeyen bir bölgedeyse, birincil yükseltilmemiştir.
-- 1 TB 'den fazla P11/P15 veritabanlarını yüklemek için Içeri/dışarı aktarma hizmeti kullanımı desteklenmez. Verileri [içeri](database-import.md) ve [dışarı](database-export.md) aktarmak için SqlPackage. exe ' yi kullanın.
+- 1 TB 'tan fazla P11/P15 veritabanlarını yüklemek için Içeri/dışarı aktarma hizmeti kullanımı desteklenmez. Verileri [içeri](database-import.md) ve [dışarı](database-export.md) aktarmak için SqlPackage. exe ' yi kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Genel kaynak sınırları için bkz. [Azure SQL veritabanı sanal çekirdek tabanlı kaynak limitleri-tek veritabanları](resource-limits-vcore-single-databases.md) ve [Azure SQL veritabanı DTU tabanlı kaynak limitleri-tek veritabanları](resource-limits-dtu-single-databases.md).
+ 

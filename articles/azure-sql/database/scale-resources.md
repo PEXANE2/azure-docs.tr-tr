@@ -1,5 +1,5 @@
 ---
-title: Kaynakları ölçeklendirin
+title: Kaynakları ölçeklendirme
 description: Bu makalede, ayrılan kaynakları ekleyerek veya kaldırarak Azure SQL veritabanı ve SQL yönetilen örneği 'nde veritabanınızın ölçeklendirilmesi açıklanmaktadır.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 19703557ce03100888dffc7a6c7f41b72b036214
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 19c75952846067d338d0956391a4b78bbb7d0d26
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050082"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323476"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Veritabanı kaynaklarını en az kapalı kalma süresiyle dinamik olarak ölçeklendirin
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,17 +25,17 @@ Azure SQL veritabanı ve SQL yönetilen örneği, en az [kapalı kalma süresiyl
 
 ## <a name="overview"></a>Genel Bakış
 
-Uygulamanız için talep bir cihaz ve müşteriden milyonlarca kullanıcıya büyüdükçe, Azure SQL veritabanı ve SQL yönetilen örneği, en az kapalı kalma süresiyle birlikte hareket halindeyken ölçeklendirilir. Ölçeklenebilirlik, gerektiğinde hizmetinize dinamik olarak daha fazla kaynak eklemenizi sağlayan PaaS 'nin en önemli özelliklerinden biridir. Azure SQL veritabanı, veritabanlarınıza ayrılan kaynakları (CPU gücü, bellek, GÇ işleme ve depolama) kolayca değiştirmenize olanak sağlar.
+Uygulamanız için talepler, çok sayıda cihazdan ve müşteriden milyonlarca, Azure SQL veritabanı ve SQL yönetilen örnek ölçeğinde en az kapalı kalma süresine kadar artar. Ölçeklenebilirlik, hizmet olarak platform (PaaS) ' ın en önemli özelliklerinden biridir ve gerektiğinde hizmetinize dinamik olarak daha fazla kaynak eklemenizi sağlar. Azure SQL veritabanı, veritabanlarınıza ayrılan kaynakları (CPU gücü, bellek, GÇ işleme ve depolama) kolayca değiştirmenize olanak sağlar.
 
 Uygulamanızın dizin oluşturma veya sorgu yeniden yazma yöntemleri kullanılarak düzeltilmeyen kullanımı nedeniyle performans sorunlarını azaltabilirsiniz. Daha fazla kaynak eklemek, veritabanınız geçerli kaynak limitlerini ziyaret ettiğinizde hızlı bir şekilde tepki sağlamanıza olanak sağlar ve gelen iş yükünü işlemek için daha fazla güç gerektirir. Azure SQL veritabanı, maliyeti düşürmek için ihtiyaç duyulmadığında kaynakları ölçeklendirmenize de olanak sağlar.
 
-Donanım satın alma ve temel altyapıyı değiştirme konusunda endişelenmeniz gerekmez. Ölçeklendirme veritabanı, kaydırıcı kullanılarak Azure portal aracılığıyla kolayca yapılabilir.
+Donanım satın alma ve temel altyapıyı değiştirme konusunda endişelenmeniz gerekmez. Bir veritabanının ölçeklendirilmesi, kaydırıcı kullanılarak Azure portal aracılığıyla kolayca yapılabilir.
 
 ![Veritabanı performansını ölçeklendirin](./media/scale-resources/scale-performance.svg)
 
 Azure SQL veritabanı, [DTU tabanlı satın](service-tiers-dtu.md) alma modeli ve [sanal çekirdek tabanlı satın alma MODELI](service-tiers-vcore.md)sunarak Azure SQL yönetilen örneği yalnızca [sanal çekirdek tabanlı satın alma modeli](service-tiers-vcore.md)sunar. 
 
-- [DTU tabanlı satın alma modeli](service-tiers-dtu.md) , hafif ve ağır veritabanı iş yüklerini desteklemek için üç hizmet katmanında işlem, bellek ve GÇ kaynakları Blend sağlar: temel, standart ve Premium. Her katman içindeki performans düzeyleri, bu kaynakların farklı bir karışımını sağlar ve bunlara ek depolama kaynakları da eklenebilir.
+- [DTU tabanlı satın alma modeli](service-tiers-dtu.md) , hafif ve ağır veritabanı iş yüklerini desteklemek için üç hizmet katmanında işlem, bellek ve g/ç kaynakları Blend sağlar: temel, standart ve Premium. Her katman içindeki performans düzeyleri, bu kaynakların farklı bir karışımını sağlar ve bunlara ek depolama kaynakları da eklenebilir.
 - [Sanal çekirdek tabanlı satın alma modeli](service-tiers-vcore.md) , sanal çekirdek sayısını, miktarı veya belleği ve depolamanın miktarını ve hızını seçmenize olanak sağlar. Bu satın alma modeli üç hizmet katmanı sunar: Genel Amaçlı, İş Açısından Kritik ve hiper ölçek.
 
 İlk uygulamanızı, temel, standart veya Genel Amaçlı hizmet katmanında aylık düşük maliyette küçük, tek bir veritabanında oluşturabilir ve sonra, çözümünüzün ihtiyaçlarını karşılamak için bu hizmet katmanını, Premium veya İş Açısından Kritik hizmet katmanına dilediğiniz zaman el ile veya programlama yoluyla değiştirebilirsiniz. Performansı uygulamanız veya müşterileriniz kesinti yaşamadan ayarlayabilirsiniz. Dinamik ölçeklenebilirlik, veritabanınızın hızla değişen kaynak gereksinimlerine hızlı şekilde yanıt vermesini ve yalnızca ihtiyaç duyduğunuz kaynaklara ve ihtiyaç duyduğunuz süre boyunca ödeme yapmanızı sağlar.
@@ -44,7 +44,7 @@ Azure SQL veritabanı, [DTU tabanlı satın](service-tiers-dtu.md) alma modeli v
 > Dinamik ölçeklenebilirlik, otomatik ölçeklendirmeden farklıdır. Otomatik ölçeklendirme, bir hizmetin ölçütlere göre otomatik olarak ölçeklendirilmesi durumunda dinamik ölçeklenebilirlik, en az kapalı kalma süresiyle el ile ölçeklendirilmesine olanak sağlar.
 
 Azure SQL veritabanı 'ndaki tek veritabanları el ile dinamik ölçeklenebilirliği destekler, ancak otomatik ölçeklendirmeyi desteklemez. Daha *otomatik* bir deneyim için, veritabanlarının tek tek veritabanı gereksinimlerine göre bir havuzdaki kaynakları paylaşmasına olanak sağlayan elastik havuzları kullanın.
-Ancak, tek bir Azure SQL veritabanı için ölçeklenebilirliği otomatik hale getirmeye yardımcı olabilecek betikler vardır. Örnek için bkz. [PowerShell kullanarak tek bir SQL Veritabanını izleme ve ölçeklendirme](scripts/monitor-and-scale-database-powershell.md).
+Ancak, Azure SQL veritabanı 'nda tek bir veritabanı için ölçeklenebilirliği otomatikleştirmeye yardımcı olabilecek betikler vardır. Örnek için bkz. [PowerShell kullanarak tek bir SQL Veritabanını izleme ve ölçeklendirme](scripts/monitor-and-scale-database-powershell.md).
 
 Uygulamanızda çok az (genellikle ortalama dört saniyenin altında) kesinti ile dilediğiniz zaman [DTU hizmet katmanlarını](service-tiers-dtu.md) veya [sanal çekirdek özelliklerini](resource-limits-vcore-single-databases.md) değiştirebilirsiniz. Veritabanı oluşturabilmek ve veritabanı performansını isteğe göre yükseltip düşürebilmek, özellikle kullanım biçimlerinin nispeten tahmin edilebilir olduğu durumlarda birçok işletme ve uygulama için yeterlidir. Ancak tahmin edilemeyen kullanım biçimlerine sahipseniz bu durum maliyetlerin ve iş modelinizin yönetimini zorlaştırabilir. Bu senaryo için, havuzdaki birden çok veritabanı arasında paylaşılan belirli sayıda eDTU 'lar ile elastik bir havuz kullanırsınız.
 
@@ -57,7 +57,7 @@ Azure SQL veritabanı, veritabanlarınızı dinamik olarak ölçeklendirmenize o
 
 Azure SQL yönetilen örneği, ölçeklendirmenize de olanak tanır: 
 
-- [SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md) [vçekirdekler](../managed-instance/sql-managed-instance-paas-overview.md#vcore-based-purchasing-model) modunu KULLANıR ve en yüksek CPU çekirdeğini ve örneğiniz için ayrılan en fazla depolama alanını tanımlamanıza olanak sağlar. Örnek içindeki tüm veritabanları, örneğe ayrılan kaynakları paylaşacaktır.
+- [SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md) [vçekirdekler](../managed-instance/sql-managed-instance-paas-overview.md#vcore-based-purchasing-model) modunu KULLANıR ve en yüksek CPU çekirdeğini ve örneğiniz için ayrılan en fazla depolama alanını tanımlamanıza olanak sağlar. Yönetilen örnek içindeki tüm veritabanları örneğe ayrılan kaynakları paylaşır.
 
 Herhangi bir türde ölçek artırma veya ölçek azaltma eylemini başlatmak, veritabanı motoru işlemini yeniden başlatır ve gerekirse farklı bir sanal makineye taşır. Veritabanı altyapısı işleminin yeni bir sanal makineye taşınması, işlem devam ederken mevcut Azure SQL veritabanı hizmetinizi kullanmaya devam edebileceğiniz **çevrimiçi bir işlemdir** . Hedef veritabanı altyapısı tam olarak başlatıldıktan ve sorguları işlemeye hazırlandıktan sonra, bağlantılar [kaynaktan hedef veritabanı altyapısına geçiş](single-database-scale.md#impact)yapılır.
 

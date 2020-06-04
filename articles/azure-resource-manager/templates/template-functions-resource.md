@@ -3,12 +3,12 @@ title: Şablon işlevleri-kaynaklar
 description: Kaynaklarla ilgili değerleri almak için Azure Resource Manager şablonda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: a31aadb02ed3fff83ee6dc62a71aa32d0b716629
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 15b1610dfcacb37bce2e265b4e16f675e944b9db
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259448"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331517"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM şablonları için kaynak işlevleri
 
@@ -34,12 +34,12 @@ Parametrelerden, değişkenlerden veya geçerli dağıtımdan değer almak için
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
 | resourceId |Yes |string |Uzantı kaynağının uygulandığı kaynağın kaynak KIMLIĞI. |
 | resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
 | resourceName1 |Yes |string |Kaynağın adı. |
-| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
+| resourceName2 |No |string |Gerekirse, sonraki kaynak adı segmenti. |
 
 Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
 
@@ -101,8 +101,8 @@ Aşağıdaki örnek, bir kaynak grubu kilidinin kaynak KIMLIĞINI döndürür.
 }
 ```
 
-<a id="listkeys" />
-<a id="list" />
+<a id="listkeys"></a>
+<a id="list"></a>
 
 ## <a name="list"></a>Listele
 
@@ -112,11 +112,11 @@ Bu işlevin sözdizimi, liste işlemlerinin adına göre değişir. Her uygulama
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
 | resourceName veya ResourceIdentifier |Yes |string |Kaynak için benzersiz tanımlayıcı. |
 | apiVersion |Yes |string |Kaynak çalışma zamanı durumunun API sürümü. Genellikle, **yyyy-aa-gg**biçiminde. |
-| functionValues |Hayır |nesne | İşlevi için değerler içeren bir nesne. Bu nesneyi yalnızca bir depolama hesabındaki **Listaccountsas** gibi parametre değerleriyle bir nesne almayı destekleyen işlevler için sağlayın. Bu makalede işlev değerlerini geçirme örneği gösterilmektedir. |
+| functionValues |No |nesne | İşlevi için değerler içeren bir nesne. Bu nesneyi yalnızca bir depolama hesabındaki **Listaccountsas** gibi parametre değerleriyle bir nesne almayı destekleyen işlevler için sağlayın. Bu makalede işlev değerlerini geçirme örneği gösterilmektedir. |
 
 ### <a name="valid-uses"></a>Geçerli kullanımlar
 
@@ -361,10 +361,10 @@ Kaynak sağlayıcısı ve desteklenen kaynak türleri hakkında bilgi döndürü
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |Yes |string |Sağlayıcının ad alanı |
-| resourceType |Hayır |string |Belirtilen ad alanı içindeki kaynak türü. |
+| resourceType |No |string |Belirtilen ad alanı içindeki kaynak türü. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -436,11 +436,11 @@ Kaynağın çalışma zamanı durumunu temsil eden bir nesne döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
 | resourceName veya ResourceIdentifier |Yes |string |Kaynağın adı veya benzersiz tanımlayıcısı. Geçerli şablondaki bir kaynağa başvururken, yalnızca kaynak adını parametre olarak belirtin. Daha önce dağıtılan bir kaynağa ya da kaynağın adı belirsiz olduğunda kaynak KIMLIĞI sağlayın. |
-| apiVersion |Hayır |string |Belirtilen kaynağın API sürümü. **Kaynak aynı şablon içinde sağlanmıyorsa Bu parametre gereklidir.** Genellikle, **yyyy-aa-gg**biçiminde. Kaynağınız için geçerli API sürümleri için bkz. [şablon başvurusu](/azure/templates/). |
-| Tümünü |Hayır |string |Tam kaynak nesnesinin döndürülüp döndürülmeyeceğini belirten değer. Belirtmezseniz `'Full'` , yalnızca kaynağın Özellikler nesnesi döndürülür. Tam nesne, kaynak KIMLIĞI ve konum gibi değerleri içerir. |
+| apiVersion |No |string |Belirtilen kaynağın API sürümü. **Kaynak aynı şablon içinde sağlanmıyorsa Bu parametre gereklidir.** Genellikle, **yyyy-aa-gg**biçiminde. Kaynağınız için geçerli API sürümleri için bkz. [şablon başvurusu](/azure/templates/). |
+| Tümünü |No |string |Tam kaynak nesnesinin döndürülüp döndürülmeyeceğini belirten değer. Belirtmezseniz `'Full'` , yalnızca kaynağın Özellikler nesnesi döndürülür. Tam nesne, kaynak KIMLIĞI ve konum gibi değerleri içerir. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -527,7 +527,7 @@ Bir kaynağa tam nitelikli bir başvuru oluştururken, kesimleri tür ve ad ile 
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
 
-Örneğin:
+Örnek:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt``Microsoft.Compute/virtualMachines/extensions/myVM/myExt`doğru değil
 
@@ -759,13 +759,13 @@ Bir kaynağın benzersiz tanımlayıcısını döndürür. Bu işlevi, kaynak ad
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Hayır |dize (GUID biçiminde) |Varsayılan değer geçerli abonelikte bulunur. Başka bir abonelikteki bir kaynağı almanız gerektiğinde bu değeri belirtin. Bu değeri yalnızca bir kaynak grubunun veya aboneliğin kapsamına dağıtma sırasında belirtin. |
-| resourceGroupName |Hayır |string |Varsayılan değer geçerli kaynak grubudur. Başka bir kaynak grubundaki bir kaynağı almanız gerektiğinde bu değeri belirtin. Yalnızca bir kaynak grubunun kapsamına dağıtım yaparken bu değeri sağlayın. |
+| subscriptionId |No |dize (GUID biçiminde) |Varsayılan değer geçerli abonelikte bulunur. Başka bir abonelikteki bir kaynağı almanız gerektiğinde bu değeri belirtin. Bu değeri yalnızca bir kaynak grubunun veya aboneliğin kapsamına dağıtma sırasında belirtin. |
+| resourceGroupName |No |string |Varsayılan değer geçerli kaynak grubudur. Başka bir kaynak grubundaki bir kaynağı almanız gerektiğinde bu değeri belirtin. Yalnızca bir kaynak grubunun kapsamına dağıtım yaparken bu değeri sağlayın. |
 | resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
 | resourceName1 |Yes |string |Kaynağın adı. |
-| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
+| resourceName2 |No |string |Gerekirse, sonraki kaynak adı segmenti. |
 
 Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
 
@@ -955,12 +955,12 @@ Abonelik düzeyinde dağıtılan bir kaynak için benzersiz tanımlayıcıyı d�
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Hayır |dize (GUID biçiminde) |Varsayılan değer geçerli abonelikte bulunur. Başka bir abonelikteki bir kaynağı almanız gerektiğinde bu değeri belirtin. |
+| subscriptionId |No |dize (GUID biçiminde) |Varsayılan değer geçerli abonelikte bulunur. Başka bir abonelikteki bir kaynağı almanız gerektiğinde bu değeri belirtin. |
 | resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
 | resourceName1 |Yes |string |Kaynağın adı. |
-| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
+| resourceName2 |No |string |Gerekirse, sonraki kaynak adı segmenti. |
 
 Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
 
@@ -1037,11 +1037,11 @@ Kiracı düzeyinde dağıtılan bir kaynak için benzersiz tanımlayıcıyı dö
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
 | resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
 | resourceName1 |Yes |string |Kaynağın adı. |
-| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
+| resourceName2 |No |string |Gerekirse, sonraki kaynak adı segmenti. |
 
 Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
 

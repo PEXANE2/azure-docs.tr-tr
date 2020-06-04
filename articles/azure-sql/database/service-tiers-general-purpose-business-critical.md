@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 01/30/2020
-ms.openlocfilehash: 1783285704870dbcaeac731dc085bddf8851c7be
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6b56d96a9684b2da3889219d4a5e13302e7e22e3
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049830"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343906"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL veritabanı ve Azure SQL yönetilen örnek hizmeti katmanları
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -94,7 +94,7 @@ MDF ve LDF dosyalarınızın geçerli toplam boyutunu izlemek için [sp_spaceuse
 Veritabanı yedeklemeleri için depolama, SQL veritabanı ve SQL yönetilen örneği 'nin zaman içinde geri yükleme (ıNR) ve [uzun süreli saklama (LTR)](long-term-retention-overview.md) özelliklerini desteklemek için ayrılır. Bu depolama, her veritabanı için ayrı ayrı ayrılır ve iki ayrı veritabanı başına ücret olarak faturalandırılır.
 
 - **Sür**: ayrı veritabanı yedeklemeleri, [Okuma Erişimli Coğrafi olarak yedekli (RA-GRS) depolamaya](../../storage/common/geo-redundant-design.md) otomatik olarak kopyalanır. Yeni yedeklemeler oluşturuldıkça depolama boyutu dinamik olarak artar. Depolama, haftalık tam yedeklemeler, günlük değişiklik yedeklemeleri ve 5 dakikada bir kopyalanmış olan işlem günlüğü yedeklemeleri tarafından kullanılır. Depolama alanı tüketimi, veritabanının değişim hızına ve yedeklemeler için Bekletme süresine bağlıdır. Her veritabanı için 7 ila 35 gün arasında ayrı bir bekletme süresi yapılandırabilirsiniz. Veritabanı boyutunun yüzde 100 ' una (1x) eşit olan minimum depolama miktarı ek bir ücret ödemeden sunulmaktadır. Çoğu veritabanı için, bu miktar 7 günlük yedeklemeleri depolamak için yeterlidir.
-- **LTR**: 10 yıla kadar tam yedeklemelerin uzun süreli bekletmesini yapılandırma seçeneğiniz de vardır (Bu özellik [SQL yönetilen örneği için sınırlı genel önizleme](long-term-retention-overview.md#managed-instance-support)aşamasındadır. Bir LTR ilkesi ayarlarsanız, bu yedeklemeler RA-GRS depolama alanında otomatik olarak depolanır, ancak yedeklemelerin ne sıklıkla kopyalanacağını kontrol edebilirsiniz. Farklı uyumluluk gereksinimlerini karşılamak için haftalık, aylık ve/veya yıllık yedeklemeler için farklı saklama süreleri seçebilirsiniz. Seçtiğiniz yapılandırma, LTR yedeklemeleri için ne kadar Depolama kullanılacağını belirler. LTR depolama maliyetini tahmin etmek için, LTR Fiyatlandırma hesaplayıcısı ' nı kullanabilirsiniz. Daha fazla bilgi için bkz. [SQL veritabanı uzun süreli saklama](long-term-retention-overview.md).
+- **LTR**: 10 yıla kadar tam yedeklemelerin uzun süreli bekletmesini yapılandırma seçeneğiniz de vardır (Bu özellik [SQL yönetilen örneği için sınırlı genel önizleme](long-term-retention-overview.md#sql-managed-instance-support)aşamasındadır. Bir LTR ilkesi ayarlarsanız, bu yedeklemeler RA-GRS depolama alanında otomatik olarak depolanır, ancak yedeklemelerin ne sıklıkla kopyalanacağını kontrol edebilirsiniz. Farklı uyumluluk gereksinimlerini karşılamak için haftalık, aylık ve/veya yıllık yedeklemeler için farklı saklama süreleri seçebilirsiniz. Seçtiğiniz yapılandırma, LTR yedeklemeleri için ne kadar Depolama kullanılacağını belirler. LTR depolama maliyetini tahmin etmek için, LTR Fiyatlandırma hesaplayıcısı ' nı kullanabilirsiniz. Daha fazla bilgi için bkz. [SQL veritabanı uzun süreli saklama](long-term-retention-overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

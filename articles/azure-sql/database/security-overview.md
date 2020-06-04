@@ -1,7 +1,7 @@
 ---
 title: Güvenlik Genel Bakış
-titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Azure SQL veritabanı 'nda güvenlik hakkında bilgi edinin ve Azure SQL yönetilen örneği, SQL Server nasıl farklılık gösterir.
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
+description: Azure SQL veritabanı ve Azure SQL yönetilen örneği ' nde, SQL Server nasıl farklılık gösteren güvenlik hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,15 +12,14 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 7beaae92d8f08aaaa3625240bc2c70256ed0e1d4
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 6204600cde1b9776e5edbbe129d550065cebf331
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266058"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322131"
 ---
-# <a name="an-overview-of-azure-sql-database--sql-managed-instance-security-capabilities"></a>SQL yönetilen örnek güvenlik özellikleri & Azure SQL veritabanı 'na genel bakış
-
+# <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL veritabanı ve SQL yönetilen örnek güvenlik özelliklerine genel bakış
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Bu makalede, [Azure SQL veritabanı](sql-database-paas-overview.md) ve [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md)kullanılarak bir uygulamanın veri katmanını güvenli hale getirmenin temelleri özetlenmektedir. Açıklanan güvenlik stratejisi aşağıdaki resimde gösterildiği gibi katmanlı derinlemesine savunma yaklaşımını takip eder ve dışarıdan şu şekilde gider:
@@ -42,12 +41,12 @@ IP güvenlik duvarı kuralları, her isteğin kaynak IP adresine göre veritaban
 [Sanal ağ kuralları](vnet-service-endpoint-rule-overview.md) , Azure SQL veritabanı 'nın yalnızca bir sanal ağ içindeki seçili alt ağlardan gönderilen iletişimleri kabul etmesine olanak tanır.
 
 > [!NOTE]
-> Güvenlik Duvarı kurallarıyla erişimi denetlemek **SQL yönetilen örneği** *için uygulanmaz.* Gereken ağ yapılandırması hakkında daha fazla bilgi için bkz. [SQL yönetilen örneğine bağlanma](../managed-instance/connect-application-instance.md).
+> Güvenlik Duvarı kurallarıyla erişimi denetlemek **SQL yönetilen örneği** *için geçerlidir.* Gereken ağ yapılandırması hakkında daha fazla bilgi için bkz. [yönetilen örneğe bağlanma](../managed-instance/connect-application-instance.md)
 
 ## <a name="access-management"></a>Erişim yönetimi
 
 > [!IMPORTANT]
-> Azure 'daki veritabanlarını ve sunucuları yönetmek, Portal Kullanıcı hesabınızın rol atamaları tarafından denetlenir. Bu makale hakkında daha fazla bilgi için, bkz. [Azure Portal rol tabanlı erişim denetimi](../../role-based-access-control/overview.md).
+> Azure 'daki veritabanlarını ve sunucuları yönetmek, Portal Kullanıcı hesabınızın rol atamaları tarafından denetlenir. Bu makale hakkında daha fazla bilgi için [Azure Portal rol tabanlı erişim denetimi](../../role-based-access-control/overview.md)bölümüne bakın.
 
 ### <a name="authentication"></a>Kimlik Doğrulaması
 
@@ -66,17 +65,17 @@ Kimlik doğrulama, kullanıcının talep ettikleri kim olduğunu kanıtlama işl
     Kullanılabilir ek Azure AD kimlik doğrulama seçenekleri [Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) ve [koşullu erişim](conditional-access-configure.md)dahil [SQL Server Management Studio bağlantılar için evrensel kimlik doğrulaması Active Directory](authentication-mfa-ssms-overview.md) .
 
 > [!IMPORTANT]
-> Azure 'daki veritabanlarını ve sunucuları yönetmek, Portal Kullanıcı hesabınızın rol atamaları tarafından denetlenir. Bu makale hakkında daha fazla bilgi için, bkz. [Azure Portal rol tabanlı erişim denetimi](../../role-based-access-control/overview.md). Güvenlik Duvarı kurallarıyla erişimi denetlemek **SQL yönetilen örneği** *için uygulanmaz.* Gereken ağ yapılandırması hakkında daha fazla bilgi için lütfen [yönetilen bir örneğe bağlanma](../managed-instance/connect-application-instance.md) hakkında aşağıdaki makaleye bakın.
+> Azure 'daki veritabanlarını ve sunucuları yönetmek, Portal Kullanıcı hesabınızın rol atamaları tarafından denetlenir. Bu makale hakkında daha fazla bilgi için, bkz. [Azure Portal rol tabanlı erişim denetimi](../../role-based-access-control/overview.md). Güvenlik Duvarı kurallarıyla erişimi denetlemek **SQL yönetilen örneği** *için geçerlidir.* Gereken ağ yapılandırması hakkında daha fazla bilgi için lütfen [yönetilen bir örneğe bağlanma](../managed-instance/connect-application-instance.md) hakkında aşağıdaki makaleye bakın.
 
 ## <a name="authorization"></a>Yetkilendirme
 
-Yetkilendirme, bir Azure SQL veritabanı veya SQL yönetilen örneği içindeki bir kullanıcıya atanan izinleri ifade eder ve kullanıcının ne yapmasına izin verileceğini belirler. İzinler, [veritabanı rollerine](/sql/relational-databases/security/authentication-access/database-level-roles) Kullanıcı hesapları eklenerek ve bu rollere veritabanı düzeyi izinleri atanarak veya kullanıcıya belirli [nesne düzeyi izinleri](/sql/relational-databases/security/permissions-database-engine)verilerek denetlenir. Daha fazla bilgi için bkz. [oturum açma ve kullanıcılar](logins-create-manage.md)
+Yetkilendirme, Azure SQL veritabanı veya Azure SQL yönetilen örneği içindeki bir veritabanı içindeki bir kullanıcıya atanan izinlere başvurur ve kullanıcının ne yapmasına izin verileceğini belirler. İzinler, [veritabanı rollerine](/sql/relational-databases/security/authentication-access/database-level-roles) Kullanıcı hesapları eklenerek ve bu rollere veritabanı düzeyi izinleri atanarak veya kullanıcıya belirli [nesne düzeyi izinleri](/sql/relational-databases/security/permissions-database-engine)verilerek denetlenir. Daha fazla bilgi için bkz. [oturum açma ve kullanıcılar](logins-create-manage.md)
 
 En iyi uygulama olarak, gerektiğinde özel roller oluşturun. Kullanıcıları, iş işlevlerini yapmak için gereken en düşük ayrıcalıklara sahip olan role ekleyin. İzinleri doğrudan kullanıcılara atamayın. Sunucu Yöneticisi hesabı, kapsamlı izinlere sahip ve yalnızca yönetim görevleri olan birkaç kullanıcıya verilmesi gereken yerleşik db_owner rolünün bir üyesidir. Uygulamalar için, çağrılan modülün Yürütme bağlamını belirtmek için [execute as](/sql/t-sql/statements/execute-as-clause-transact-sql) kullanın veya sınırlı Izinlerle [uygulama rollerini](/sql/relational-databases/security/authentication-access/application-roles) kullanın. Bu uygulama, veritabanına bağlanan uygulamanın uygulama için gereken en düşük ayrıcalıklara sahip olmasını sağlar. Bu en iyi uygulamaları takip etmek, görevlerin ayrılmasını de çok daha da fazla.
 
 ### <a name="row-level-security"></a>Satır düzeyi güvenlik
 
-Satır düzeyi güvenlik, müşterilerin bir veritabanı tablosundaki satırlara erişimi, sorguyu yürüten kullanıcının özelliklerine göre denetlemesini sağlar (örneğin, Grup üyeliği veya yürütme bağlamı). Satır düzeyi güvenlik, özel etiket tabanlı güvenlik kavramlarını uygulamak için de kullanılabilir. Daha fazla bilgi için bkz. [Satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security).
+Satır düzeyi güvenlik, müşterilerin bir veritabanı tablosundaki satırlara erişimi, sorguyu yürüten kullanıcının özelliklerine göre denetlemesini sağlar (örneğin, Grup üyeliği veya yürütme bağlamı). Satır düzeyi güvenlik, özel etiket tabanlı güvenlik kavramlarını uygulamak için de kullanılabilir. Daha fazla bilgi için bkz. [satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security).
 
 ![Azure-Database-RLS. png](./media/security-overview/azure-database-rls.png)
 
@@ -96,9 +95,9 @@ Gelişmiş tehdit koruması, olağan dışı davranışları ve veritabanlarına
 
 ## <a name="information-protection-and-encryption"></a>Bilgi koruması ve şifreleme
 
-### <a name="transport-layer-security-tls-encryption-in-transit"></a>Aktarım Katmanı Güvenliği TLS (iletim içi şifreleme)
+### <a name="transport-layer-security-encryption-in-transit"></a>Aktarım Katmanı Güvenliği (iletim içi şifreleme)
 
-[Aktarım Katmanı Güvenliği](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)ile hareket halindeki VERILERI şifreleyerek SQL VERITABANı ve SQL yönetilen örneği güvenli müşteri verileri.
+[Aktarım Katmanı Güvenliği (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)ile hareket halindeki VERILERI şifreleyerek SQL VERITABANı ve SQL yönetilen örneği güvenli müşteri verileri.
 
 SQL veritabanı ve SQL yönetilen örneği, tüm bağlantılar için her zaman şifreleme (SSL/TLS) uygular. Bu, bağlantı dizesinde **şifreleme** veya **TrustServerCertificate** ayarından bağımsız olarak, tüm verilerin istemci ve sunucu arasında "geçişte" şifrelendiğinden emin olmanızı sağlar.
 
@@ -113,7 +112,7 @@ En iyi yöntem olarak, uygulama tarafından kullanılan bağlantı dizesinde, ş
 
 ### <a name="transparent-data-encryption-encryption-at-rest"></a>Saydam Veri Şifrelemesi (bekleyen şifreleme)
 
-[Azure SQL veritabanı için saydam veri şifrelemesi (TDE) & SQL yönetilen örneği](transparent-data-encryption-tde-overview.md) , bekleyen verilerin ham dosyalara veya yedeklemelere izinsiz veya çevrimdışı erişimden korunmasına yardımcı olmak için bir güvenlik katmanı ekler. Yaygın senaryolar, veri merkezi hırsızlığı veya disk sürücüleri ve yedekleme bantları gibi donanım veya ortamların güvenli bir şekilde çıkarılması içerir.TDE, uygulama geliştiricilerinin mevcut uygulamalarda herhangi bir değişiklik yapmasını gerektirmeyen bir AES şifreleme algoritması kullanarak tüm veritabanını şifreler.
+[Azure SQL veritabanı ve SQL yönetilen örneği için saydam veri şifrelemesi (TDE),](transparent-data-encryption-tde-overview.md) bekleyen verilerin ham dosyalara veya yedeklemelere izinsiz veya çevrimdışı erişimden korunmasına yardımcı olmak için bir güvenlik katmanı ekler. Yaygın senaryolar, veri merkezi hırsızlığı veya disk sürücüleri ve yedekleme bantları gibi donanım veya ortamların güvenli bir şekilde çıkarılması içerir.TDE, uygulama geliştiricilerinin mevcut uygulamalarda herhangi bir değişiklik yapmasını gerektirmeyen bir AES şifreleme algoritması kullanarak tüm veritabanını şifreler.
 
 Azure 'da, yeni oluşturulan tüm veritabanları varsayılan olarak şifrelenir ve veritabanı şifreleme anahtarı yerleşik bir sunucu sertifikası tarafından korunur.  Sertifika bakımı ve döndürme, hizmet tarafından yönetilir ve kullanıcıdan giriş gerektirmez. Şifreleme anahtarlarının denetimini almayı tercih eden müşteriler [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md)anahtarlarını yönetebilir.
 
@@ -125,7 +124,7 @@ Azure 'da, yeni oluşturulan tüm veritabanları varsayılan olarak şifrelenir 
 
 ![Azure-Database-AE. png](./media/security-overview/azure-database-ae.png)
 
-[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) , belirli veritabanı sütunlarında depolanan hassas verileri erişimden korumak için tasarlanmış bir özelliktir (örneğin, kredi kartı numaraları, ulusal kimlik numaraları veya tek _yapmanız gereken_ veriler). Bu, veritabanı yöneticilerini veya yönetim görevlerini gerçekleştirmek üzere veritabanına erişim yetkisi olan diğer ayrıcalıklı kullanıcıları içerir, ancak şifrelenmiş sütunlardaki belirli verilere erişmesi gereken iş gerektirmez. Veriler her zaman şifrelenir. Bu, şifrelenmiş verilerin yalnızca şifreleme anahtarına erişimi olan istemci uygulamaları tarafından işlenmek üzere şifresinin çözülmesi anlamına gelir.  Şifreleme anahtarı hiçbir şekilde SQL 'e gösterilmez ve [Windows sertifika deposunda](always-encrypted-certificate-store-configure.md) veya [Azure Key Vault](always-encrypted-azure-key-vault-configure.md)depolanabilir.
+[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) , belirli veritabanı sütunlarında depolanan hassas verileri erişimden korumak için tasarlanmış bir özelliktir (örneğin, kredi kartı numaraları, ulusal kimlik numaraları veya tek _yapmanız gereken_ veriler). Bu, veritabanı yöneticilerini veya yönetim görevlerini gerçekleştirmek üzere veritabanına erişim yetkisi olan diğer ayrıcalıklı kullanıcıları içerir, ancak şifrelenmiş sütunlardaki belirli verilere erişmesi gereken iş gerektirmez. Veriler her zaman şifrelenir. Bu, şifrelenmiş verilerin yalnızca şifreleme anahtarına erişimi olan istemci uygulamaları tarafından işlenmek üzere şifresinin çözülmesi anlamına gelir. Şifreleme anahtarı hiçbir şekilde SQL veritabanı veya SQL yönetilen örneği için gösterilmez ve [Windows sertifika deposunda](always-encrypted-certificate-store-configure.md) veya [Azure Key Vault](always-encrypted-azure-key-vault-configure.md)depolanabilir.
 
 ### <a name="dynamic-data-masking"></a>Dinamik veri maskeleme
 
@@ -139,15 +138,15 @@ Dinamik veri maskeleme, hassas verileri ayrıcalıksız kullanıcılarla maskele
 
 [Güvenlik açığı değerlendirmesi](sql-vulnerability-assessment.md) , genel veritabanı güvenliğini önceden iyileştirmek amacıyla hedefe yönelik olası veritabanı güvenlik açıklarını keşfettirecek, izleyebilen ve düzeltmeye yardımcı olabilecek bir hizmeti kolayca yapılandırabilir. Güvenlik açığı değerlendirmesi (VA), gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir paket olan gelişmiş veri güvenliği sunumunun bir parçasıdır. Güvenlik açığı değerlendirmesi, merkezi SQL gelişmiş veri güvenlik portalı aracılığıyla erişilebilir ve yönetilebilir.
 
-### <a name="data-discovery--classification"></a>Veri bulma ve sınıflandırma
+### <a name="data-discovery-and-classification"></a>Veri bulma ve sınıflandırma
 
-Veri bulma & sınıflandırması (Şu anda önizleme aşamasındadır), veritabanlarınızdaki hassas verileri bulmak, sınıflandırmak, etiketlemek ve korumak için Azure SQL veritabanı ve SQL yönetilen örneği yerleşik olarak bulunan gelişmiş özellikleri sağlar. En önemli verilerinizi bulma ve sınıflandırma (iş/finans, Sağlık Hizmetleri, kişisel veriler vb.), kurumsal bilgi koruma ortamınızda bir özetleme rolü oynayabilir. Şunlara altyapı sağlayabilir:
+Veri bulma ve sınıflandırma (Şu anda önizleme aşamasında), veritabanlarınızdaki hassas verileri bulmak, sınıflandırmak, etiketlemek ve korumak için Azure SQL veritabanı ve SQL yönetilen örneği yerleşik olarak bulunan gelişmiş özellikleri sağlar. En önemli verilerinizi bulma ve sınıflandırma (iş/finans, Sağlık Hizmetleri, kişisel veriler vb.), kurumsal bilgi koruma ortamınızda bir özetleme rolü oynayabilir. Şunlara altyapı sağlayabilir:
 
 - Hassas verilere yönelik anormal erişimlerde izleme (denetim) ve uyarı verme gibi çeşitli güvenlik senaryoları.
 - Son derece hassas veriler içeren veritabanlarının güvenliğine erişimi ve güvenliğini sağlamlaştırma.
 - Veri gizliliği standartlarına uymaya ve mevzuat uyumluluğu gereksinimlerini karşılamaya yardımcı olma.
 
-Daha fazla bilgi için bkz. [veri bulma ile çalışmaya başlama & sınıflandırma](data-discovery-and-classification-overview.md).
+Daha fazla bilgi için, bkz. [veri bulma ve sınıflandırmayla çalışmaya başlama](data-discovery-and-classification-overview.md).
 
 ### <a name="compliance"></a>Uyumluluk
 

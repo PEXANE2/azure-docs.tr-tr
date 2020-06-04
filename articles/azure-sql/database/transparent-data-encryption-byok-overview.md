@@ -1,6 +1,6 @@
 ---
 title: Müşteri tarafından yönetilen saydam veri şifrelemesi (TDE)
-description: Kendi Anahtarını Getir (BYOK) SQL veritabanı ve Azure SYNAPSE için Azure Key Vault ile Saydam Veri Şifrelemesi (TDE) desteği. BYOK 'a genel bakış, avantajlar, nasıl çalıştığı, önemli noktalar ve öneriler ile TDE.
+description: Kendi Anahtarını Getir (BYOK) SQL veritabanı ve Azure SYNAPSE Analytics için Azure Key Vault ile Saydam Veri Şifrelemesi (TDE) desteği. BYOK 'a genel bakış, avantajlar, nasıl çalıştığı, önemli noktalar ve öneriler ile TDE.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 4677a16f1c3bd4a0d04e5ada5cee98e3e0f8e094
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 51187a81865d9efa098e2c25cccdead01ed6dc74
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048738"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321317"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarla Azure SQL Saydam Veri Şifrelemesi
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -25,7 +25,7 @@ Müşteri tarafından yönetilen anahtarla Azure SQL [Saydam veri şifrelemesi (
 
 Bu senaryoda, TDE koruyucusu olarak adlandırılan veritabanı şifreleme anahtarı (DEK) şifrelemesi için kullanılan anahtar, bulut tabanlı bir dış anahtar yönetim sistemi olan müşterinin sahip olduğu ve müşteri tarafından yönetilen [Azure Key Vault (AKV)](../../key-vault/general/secure-your-key-vault.md)içinde depolanan, müşteri tarafından yönetilen bir asimetrik anahtardır. Key Vault, isteğe bağlı olarak FIPS 140-2 düzey 2 tarafından doğrulanan donanım güvenlik modülleri (HSM 'ler) tarafından desteklenen, RSA şifreleme anahtarları için yüksek düzeyde kullanılabilir ve ölçeklenebilir güvenli depolama alanı. Depolanan bir anahtara doğrudan erişime izin vermez, ancak yetkili varlıkların anahtarını kullanarak şifreleme/şifre çözme hizmetleri sağlar. Anahtar, Anahtar Kasası tarafından oluşturulabilir, içeri aktarılabilir veya [bir şirket ıçı HSM cihazından anahtar kasasına aktarılabilir](../../key-vault/keys/hsm-protected-keys.md).
 
-Azure SQL veritabanı ve Azure SYNAPSE için, TDE koruyucusu sunucu düzeyinde ayarlanır ve bu sunucuyla ilişkili olan tüm şifreli veritabanları tarafından devralınır. Azure SQL yönetilen örneği için, TDE koruyucusu örnek düzeyinde ayarlanır ve bu örnekteki tüm şifreli veritabanları tarafından devralınır. *Sunucu* TERIMI hem SQL veritabanı hem de Azure SYNAPSE ' deki bir sunucuya ve farklı belirtilmedikçe, bu belge boyunca SQL yönetilen örneğindeki yönetilen bir örneğe başvurur.
+Azure SQL veritabanı ve Azure SYNAPSE Analytics için, TDE koruyucusu sunucu düzeyinde ayarlanır ve bu sunucuyla ilişkili olan tüm şifreli veritabanları tarafından devralınır. Azure SQL yönetilen örneği için, TDE koruyucusu örnek düzeyinde ayarlanır ve bu örnekteki tüm şifreli veritabanları tarafından devralınır. *Sunucu* TERIMI hem SQL veritabanı hem de Azure SYNAPSE ' deki bir sunucuya ve farklı belirtilmedikçe, bu belge boyunca SQL yönetilen örneğindeki yönetilen bir örneğe başvurur.
 
 > [!IMPORTANT]
 > Müşteri tarafından yönetilen TDE kullanmaya başlamak isteyen hizmet tarafından yönetilen TDE kullanan bu işlemler için veriler, geçiş işlemi sırasında şifrelenmiş olarak kalır ve veritabanı dosyalarının kapalı kalması veya yeniden şifrelenmesi gerekmez. Hizmet tarafından yönetilen anahtardan müşterinin yönettiği bir anahtara geçiş yapmak, hızlı ve çevrimiçi bir işlem olan DEK ' ın yeniden şifrelenmesini gerektirir.
@@ -50,7 +50,7 @@ Müşteri tarafından yönetilen TDE müşteri için aşağıdaki avantajları s
 
 ![Müşteri tarafından yönetilen TDE 'nın kurulumu ve çalışması](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-roles.PNG)
 
-Sunucunun, 1. & lt; 1} içinde depolanan TDE koruyucusunu kullanabilmesi için, Anahtar Kasası yöneticisinin benzersiz AAD kimliğini kullanarak sunucuya aşağıdaki erişim haklarını vermesi gerekir:
+Sunucunun, 1. & lt; 1} içinde depolanan TDE koruyucusunu kullanabilmesi için, Anahtar Kasası yöneticisinin benzersiz Azure Active Directory (Azure AD) kimliğini kullanarak sunucuya aşağıdaki erişim haklarını vermesi gerekir:
 
 - Key Vault, anahtarın genel bölümünü ve **özelliklerini alma**
 
@@ -76,7 +76,7 @@ Denetçiler, günlük etkinleştirildiyse Anahtar Kasası AuditEvent günlükler
 
 - Anahtar kasasında [geçici silme](../../key-vault/general/overview-soft-delete.md) özelliğinin etkinleştirilmesi, veri kaybını korumak için yanlışlıkla anahtar (veya Anahtar Kasası) silme gerçekleşmelidir. Geçici olarak silinen kaynaklar, bu sırada müşteri tarafından kurtarılmaz veya temizlenmediği takdirde 90 gün boyunca tutulur. *Kurtarma* ve *Temizleme* eylemlerinin bir Anahtar Kasası erişim ilkesiyle ilişkili kendi izinleri vardır. Geçici silme özelliği varsayılan olarak kapalıdır ve [PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) veya [CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete)aracılığıyla etkinleştirilebilir. Azure portal aracılığıyla etkinleştirilemez.  
 
-- Azure Active Directory kimliğini kullanarak sunucuya veya yönetilen örnek için anahtar kasasına (Get, wrapKey, unwrapKey) erişim izni verin. Azure portal kullanırken, Azure AD kimliği otomatik olarak oluşturulur. PowerShell veya CLı kullanırken, Azure AD kimliğinin açık bir şekilde oluşturulması ve tamamlanmasının doğrulanması gerekir. PowerShell kullanırken ayrıntılı adım adım yönergeler için bkz. [bYok Ile TDE yapılandırma](transparent-data-encryption-byok-configure.md) ve [yönetilen örnek için bYok Ile TDE yapılandırma](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) .
+- Azure Active Directory kimliğini kullanarak sunucuya veya yönetilen örnek için anahtar kasasına (Get, wrapKey, unwrapKey) erişim izni verin. Azure portal kullanılırken, Azure AD kimliği otomatik olarak oluşturulur. PowerShell veya CLı kullanırken, Azure AD kimliğinin açık bir şekilde oluşturulması ve tamamlanmasının doğrulanması gerekir. PowerShell kullanırken ayrıntılı adım adım yönergeler için bkz. [bYok Ile TDE yapılandırma](transparent-data-encryption-byok-configure.md) ve [SQL yönetilen örneği için bYok Ile TDE yapılandırma](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) .
 
 - AKV ile güvenlik duvarı kullanırken, *Güvenilen Microsoft hizmetlerinin güvenlik duvarını atlamasına Izin ver*seçeneğini etkinleştirmeniz gerekir.
 
@@ -164,9 +164,9 @@ Key Vault bir TDE koruyucusu ile şifrelenmiş bir yedeklemeyi geri yüklemek i�
 
 Bir yedeklemeyi geri yüklemek için gerekli olan anahtar artık hedef sunucu için kullanılabilir değilse, geri yükleme denemeniz: "hedef sunucunun `<Servername>` ve arasında oluşturulan tüm AKV URI 'lere erişimi yok \<Timestamp #1> \<Timestamp #2> . Lütfen tüm AKV URI 'Lerini geri yükledikten sonra işlemi yeniden deneyin. "
 
-Bunu azaltmak için, hedef sunucu için [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet 'ini veya hedef yönetilen örnek için [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) komutunu çalıştırarak kullanılabilir anahtarların listesini döndürün ve eksik olanları belirleyebilirsiniz. Tüm yedeklemelerin geri yüklenebildiğinden emin olmak için, geri yükleme için hedef sunucunun gerekli tüm anahtarlara erişebildiğinden emin olun. Bu anahtarların TDE koruyucusu olarak işaretlenmesi gerekmez.
+Bunu azaltmak için, hedef sunucu için [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet 'ini veya hedef yönetilen örnek için [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) ' i çalıştırarak kullanılabilir anahtarların listesini döndürün ve eksik olanları tespit edin. Tüm yedeklemelerin geri yüklenebildiğinden emin olmak için, geri yükleme için hedef sunucunun gerekli tüm anahtarlara erişebildiğinden emin olun. Bu anahtarların TDE koruyucusu olarak işaretlenmesi gerekmez.
 
-SQL veritabanı için yedekleme kurtarması hakkında daha fazla bilgi edinmek için bkz. [SQL veritabanı 'nda veritabanını kurtarma](recovery-using-backups.md). SQL havuzu için yedekleme kurtarması hakkında daha fazla bilgi edinmek için bkz. [BIR SQL havuzunu kurtarma](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md). SQL yönetilen örneği ile SQL Server yerel yedekleme/geri yükleme için bkz [. hızlı başlangıç: veritabanını BIR SQL yönetilen örneğine geri yükleme](../managed-instance/restore-sample-database-quickstart.md)
+SQL veritabanı için yedekleme kurtarması hakkında daha fazla bilgi edinmek için bkz. [SQL veritabanı 'nda veritabanını kurtarma](recovery-using-backups.md). SQL havuzu için yedekleme kurtarması hakkında daha fazla bilgi edinmek için bkz. [BIR SQL havuzunu kurtarma](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md). SQL yönetilen örneği ile SQL Server yerel yedekleme/geri yükleme için bkz [. hızlı başlangıç: VERITABANıNı SQL yönetilen örneğine geri yükleme](../managed-instance/restore-sample-database-quickstart.md)
 
 Günlük dosyaları için ek dikkat: yedeklenen günlük dosyaları, döndürülse bile özgün TDE koruyucusu ile şifrelenmeye devam eder ve veritabanı şimdi yeni bir TDE koruyucu kullanıyor.  Geri yükleme sırasında, veritabanını geri yüklemek için her iki anahtar de gerekecektir.  Günlük dosyası Azure Key Vault depolanan bir TDE koruyucu kullanıyorsa, veritabanı hizmet tarafından yönetilen TDE kullanacak şekilde değiştirilse bile, bu anahtar geri yükleme zamanında gerekecektir.
 
@@ -174,9 +174,9 @@ Günlük dosyaları için ek dikkat: yedeklenen günlük dosyaları, döndürül
 
 Sunucu için yapılandırılmış coğrafi yedeklilik olmadığında bile, sunucuyu aynı anahtar malzemesine sahip iki farklı bölgede iki farklı Anahtar Kasası kullanacak şekilde yapılandırmak kesinlikle önerilir. Sunucu ile aynı bölgede yer alan birincil anahtar kasası ile bir TDE koruyucu oluşturularak ve anahtarı farklı bir Azure bölgesindeki bir anahtar kasasına kopyalayarak, sunucunun ikinci bir anahtar kasasına erişimi olması ve veritabanının çalışır durumda olduğundan birincil anahtar kasası 'nın bir kesinti olması gerekir.
 
-Anahtarı birincil anahtar kasasından şifrelenmiş biçimde almak için Backup-AzKeyVaultKey cmdlet 'ini kullanın ve ardından restore-AzKeyVaultKey cmdlet 'ini kullanın ve anahtarı klonlamak için ikinci bölgede bir Anahtar Kasası belirtin. Alternatif olarak, anahtarı yedeklemek ve geri yüklemek için Azure portal kullanın. Diğer bölgedeki ikincil anahtar kasasındaki anahtar, TDE koruyucusu olarak işaretlenmemelidir ve buna izin verilmez.
+Anahtarı birincil anahtar kasasından şifrelenmiş biçimde almak için Backup-AzKeyVaultKey cmdlet 'ini kullanın ve ardından restore-AzKeyVaultKey cmdlet 'ini kullanın ve anahtarı klonlamak için ikinci bölgede bir Anahtar Kasası belirtin. Alternatif olarak, anahtarı yedeklemek ve geri yüklemek için Azure portal kullanın. Diğer bölgedeki ikincil anahtar kasasındaki anahtar, TDE koruyucusu olarak işaretlenmemelidir ve buna izin verilmemiştir.
 
- Birincil anahtar kasasını etkileyen bir kesinti varsa ve bu durumda, sistem varsa ikincil anahtar kasasında aynı parmak izine sahip diğer bağlantılı anahtara otomatik olarak geçiş yapar. Bu anahtar, iptal edilen erişim haklarından dolayı TDE koruyucusu erişilemediğinde veya anahtar ya da Anahtar Kasası silindiği için, müşterinin bir sunucunun anahtara erişimini kasıtlı olarak kısıtlayabileceğinden bu anahtarın gerçekleşmeyeceğini unutmayın.
+Birincil anahtar kasasını etkileyen bir kesinti varsa ve bu durumda, sistem varsa ikincil anahtar kasasında aynı parmak izine sahip diğer bağlantılı anahtara otomatik olarak geçiş yapar. Bu anahtar, iptal edilen erişim haklarından dolayı TDE koruyucusu erişilemediğinde veya anahtar ya da Anahtar Kasası silindiği için, müşterinin bir sunucunun anahtara erişimini kasıtlı olarak kısıtlayabileceğinden bu anahtarın gerçekleşmeyeceğini unutmayın.
 
 ![Tek sunuculu HA](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 
@@ -194,7 +194,7 @@ Eksik anahtar malzemesi nedeniyle coğrafi çoğaltma sırasında veya sırasın
 
 ![Yük devretme grupları ve coğrafi-Dr](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-bcdr.png)
 
-Yük devretmeyi test etmek için [etkin coğrafi Çoğaltmaya genel bakış](active-geo-replication-overview.md)' daki adımları izleyin. Her iki anahtar kasası da korunmak üzere SQL 'e yönelik erişim izinlerini onaylamak için düzenli olarak yapılmalıdır.
+Yük devretmeyi test etmek için [etkin coğrafi Çoğaltmaya genel bakış](active-geo-replication-overview.md)' daki adımları izleyin. SQL veritabanının her iki Anahtar Kasası için de erişim izni olduğunu doğrulamak için yük devretme testi düzenli olarak yapılmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -204,4 +204,4 @@ Ayrıca, müşteri tarafından yönetilen TDE ile yaygın işlemler için aşağ
 
 - [PowerShell kullanarak SQL veritabanı için Saydam Veri Şifrelemesi (TDE) koruyucusunu kaldırma](transparent-data-encryption-byok-remove-tde-protector.md)
 
-- [Yönetilen bir örnekteki Saydam Veri Şifrelemesi PowerShell kullanarak kendi anahtarınızla yönetme](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+- [PowerShell kullanarak kendi anahtarınızla SQL yönetilen örneğindeki Saydam Veri Şifrelemesi yönetme](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)

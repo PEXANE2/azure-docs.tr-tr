@@ -3,12 +3,12 @@ title: Bir komut dosyası ile Azure geçişi gereci ayarlama
 description: Bir komut dosyası ile Azure geçişi gereci ayarlamayı öğrenin
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 0c4d85909bbfa623b5ad8590e973250474d9d95a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20dbe4ba3b1b4858cb7022bb72129ee419ea2540
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676307"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331993"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Komut dosyası ile gereç ayarlama
 
@@ -20,7 +20,7 @@ VMware ve Hyper-V VM 'Leri için bir betik kullanarak veya Azure portal indirti�
 - Fiziksel sunucular için bir gereç ayarlamak üzere yalnızca bir komut dosyası kullanabilirsiniz. [Bu makaleyi](how-to-set-up-appliance-physical.md)izleyin.
 - Azure Kamu bulutunda bir gereç ayarlamak için [Bu makaleyi](deploy-appliance-script-government.md)izleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Betik, mevcut bir fiziksel makineye veya VM 'ye Azure geçişi gereci ayarlar.
 
@@ -34,8 +34,8 @@ VMware için gereci ayarlamak üzere Azure portal daraltılmış bir dosya indir
 
 ### <a name="download-the-script"></a>Betiği indir
 
-1.  **Geçiş hedefleri** > **sunucuları** > **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
-2.   > Makinelerde **bulunan makineler****sanallaştırılmış mı?**, **VMware vSphere Hiper Yöneticisi ile Evet '** i seçin.
+1.  **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
+2.  Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **VMware vSphere Hiper Yöneticisi ile Evet '** i seçin.
 3.  Sıkıştırılmış dosyayı indirmek için **İndir**' e tıklayın. 
 
 
@@ -47,12 +47,11 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 2. Daraltılmış dosyanın karmasını oluşturmak için aşağıdaki komutu çalıştırın
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Örnek: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
-3. Oluşturulan karma değeri doğrulayın. En son gereç sürümü için:
+3. Azure genel bulutu için en son gereç sürümünü ve betiğini doğrulayın:
 
-    **Algoritma** | **Karma değeri**
-    --- | ---
-    MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-    SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+    **Algoritma** | **İndir** | **SHA256**
+    --- | --- | ---
+    VMware (10,9 GB) | [En son sürüm](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
 
 
 
@@ -89,8 +88,8 @@ Hyper-V için gereci ayarlamak üzere Azure portal daraltılmış bir dosya indi
 
 ### <a name="download-the-script"></a>Betiği indir
 
-1.  **Geçiş hedefleri** > **sunucuları** > **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
-2.   > Makinelerde **bulunan makineler****sanallaştırılmış mı?**, **Hyper-V ile Evet '** i seçin.
+1.  **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
+2.  Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **Hyper-V ile Evet '** i seçin.
 3.  Sıkıştırılmış dosyayı indirmek için **İndir**' e tıklayın. 
 
 
@@ -103,12 +102,11 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Örnek: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
 
-3. Oluşturulan karma değerleri doğrulayın. En son gereç sürümü için:
+3. Azure genel bulutu için en son gereç sürümünü ve betiğini doğrulayın:
 
-    **Algoritma** | **Karma değeri**
-    --- | ---
-    MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-    SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+    **Senaryo** | **İndir** | **SHA256**
+    --- | --- | ---
+    Hyper-V (8,93 MB) | [En son sürüm](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
 
 ### <a name="run-the-script"></a>Betiği çalıştırın
 

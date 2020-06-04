@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 0b0ece8adf58d894d9ccafbbc97dea9fba2b3c5d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 01e1c63a4cfea367a0f721ac33986abade8b5b35
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046799"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343838"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örnek uygulama performansını artırmak için toplu işlem kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 Azure SQL veritabanı ve Azure SQL yönetilen örneği için toplu işlem işlemleri, uygulamalarınızın performansını ve ölçeklenebilirliğini önemli ölçüde geliştirir. Avantajları anlamak için, bu makalenin ilk bölümü, sıralı ve toplu istekleri Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanıyla karşılaştıran bazı örnek test sonuçlarını ele almaktadır. Makalenin geri kalanında Azure uygulamalarınızda toplu işlem oluşturmayı başarıyla kullanmanıza yardımcı olacak teknikler, senaryolar ve önemli noktalar gösterilmektedir.
 
-## <a name="why-is-batching-important-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği için neden toplu işleme önemlidir
+## <a name="why-is-batching-important-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği için neden toplu olarak önem veriyor?
 
 Uzak bir hizmete yapılan toplu çağrılar, performansı ve ölçeklenebilirliği artırmak için iyi bilinen bir stratejidir. Serileştirme, ağ aktarımı ve seri durumundan çıkarma gibi uzak bir hizmetle her türlü etkileşimlere yönelik sabit işleme maliyetleri vardır. Tek bir toplu işte çok sayıda ayrı işlem paketleme bu maliyetleri en aza indirir.
 
@@ -99,7 +99,7 @@ Aşağıdaki tabloda bazı geçici test sonuçları gösterilmektedir. Testler, 
 
 **Şirket Içinden Azure 'a**:
 
-| İşlemler | Işlem yok (MS) | İşlem (MS) |
+| Operations | İşlem yok (MS) | İşlem (MS) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
@@ -108,7 +108,7 @@ Aşağıdaki tabloda bazı geçici test sonuçları gösterilmektedir. Testler, 
 
 **Azure 'Dan Azure 'a (aynı veri merkezi)**:
 
-| İşlemler | Işlem yok (MS) | İşlem (MS) |
+| Operations | İşlem yok (MS) | İşlem (MS) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -195,7 +195,7 @@ cmd.CommandType = CommandType.StoredProcedure;
 
 Aşağıdaki tabloda, tablo değerli parametrelerin kullanım için milisaniye cinsinden geçici test sonuçları gösterilmektedir.
 
-| İşlemler | Şirket Içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
+| Operations | Şirket içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -233,7 +233,7 @@ Toplu kopyalamanın tablo değerli parametreler üzerinden tercih edildiği baz�
 
 Aşağıdaki geçici test sonuçları, her saniye içinde **SqlBulkCopy** ile toplu işleme performansını gösterir.
 
-| İşlemler | Şirket Içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
+| Operations | Şirket içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -276,7 +276,7 @@ Bu örnek, temel kavramı göstermek için tasarlanmıştır. Daha gerçekçi bi
 
 Aşağıdaki geçici test sonuçları, bu tür INSERT deyimlerinin performansını milisaniye cinsinden gösterir.
 
-| İşlemler | Tablo değerli parametreler (MS) | Tek deyimli Insert (MS) |
+| Operations | Tablo değerli parametreler (MS) | Tek deyimli Insert (MS) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |
@@ -331,7 +331,7 @@ Testlerimizde, genellikle büyük toplu işleri küçük parçalara ayırma avan
 > [!NOTE]
 > Sonuçlar kıyaslamalar değildir. [Bu makaledeki zamanlama sonuçları hakkında nota](#note-about-timing-results-in-this-article)bakın.
 
-1000 satırı için en iyi performansın her seferinde bir kez göndermesi gerektiğini görebilirsiniz. Diğer testlerde (burada gösterilmez), 10000 satır toplu işini iki farklı 5000 toplu işe bölmek için küçük bir performans kazancı vardı. Ancak bu testlerin tablo şeması nispeten basittir. bu nedenle, bu bulguları doğrulamak için belirli verileriniz ve toplu iş boyutlarınız üzerinde testler gerçekleştirmeniz gerekir.
+1000 satırı için en iyi performansın her seferinde bir kez göndermesi gerektiğini görebilirsiniz. Diğer testlerde (burada gösterilmez), 10000 satırlık toplu işi iki ayrı 5000 toplu işe bölmek için küçük bir performans kazancı vardı. Ancak bu testlerin tablo şeması nispeten basittir. bu nedenle, bu bulguları doğrulamak için belirli verileriniz ve toplu iş boyutlarınız üzerinde testler gerçekleştirmeniz gerekir.
 
 Göz önünde bulundurulması gereken başka bir faktör ise, toplam toplu işlem çok büyük hale gelirse, Azure SQL veritabanı veya Azure SQL yönetilen örneği, toplu işi daha fazla azaltabilecek ve reddedebilir. En iyi sonuçlar için, ideal bir toplu iş boyutu olup olmadığını öğrenmek üzere belirli senaryonuzu test edin. Performans veya hatalara göre hızlı ayarlamaları etkinleştirmek için toplu iş boyutunu çalışma zamanında yapılandırılabilir hale getirin.
 

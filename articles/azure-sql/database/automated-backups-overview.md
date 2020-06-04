@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: a99045359d9d6c6a327ef646ba15457c3e4fbbda
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 62e8bbbc3781c7e27671e8cb303ef2dcad2a30f3
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299817"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324343"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Otomatik yedeklemeler-SQL yönetilen örnek & Azure SQL veritabanı
 
@@ -39,7 +39,7 @@ Bu yedeklemeleri kullanarak şunları yapabilirsiniz:
 - Mevcut bir veritabanını, Azure portal, Azure PowerShell, Azure CLı veya REST API kullanarak saklama süresi içinde **geçmiş bir noktaya geri yükleyin** . Tek ve havuza alınmış veritabanları için bu işlem, özgün veritabanıyla aynı abonelikte aynı sunucuda yeni bir veritabanı oluşturur. Yönetilen bir örnekte bu işlem, aynı abonelik kapsamında veritabanının bir kopyasını veya aynı veya farklı bir yönetilen örneği oluşturabilir.
 - **Silinen bir veritabanını silme zamanına** veya Bekletme dönemi içinde herhangi bir zamanda geri yükleyin. Silinen veritabanı yalnızca aynı sunucuya veya yönetilen örneğe ve özgün veritabanının oluşturulduğu abonelikte geri yüklenebilir.
 - **Veritabanını başka bir coğrafi bölgeye geri yükleyin**. Coğrafi geri yükleme, sunucunuza ve veritabanınıza erişene zaman coğrafi bir olağanüstü durumdan kurtulmanızı sağlar. Bu, dünyanın herhangi bir yerindeki mevcut herhangi bir sunucuda yeni bir veritabanı oluşturur.
-- Veritabanı uzun süreli bir bekletme ilkesiyle yapılandırılmışsa (LTR), tek bir veritabanı veya havuza alınmış bir veritabanındaki **belirli bir uzun süreli yedeklemeden veritabanını geri yükleyin** . LTR, bir uyumluluk isteğini karşılamak veya uygulamanın eski bir sürümünü çalıştırmak için [Azure Portal](long-term-backup-retention-configure.md#using-azure-portal) veya [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) kullanarak veritabanının eski bir sürümünü geri yüklemenize olanak tanır. Daha fazla bilgi için bkz. [Uzun süreli saklama](long-term-retention-overview.md).
+- Veritabanı uzun süreli bir bekletme ilkesiyle yapılandırılmışsa (LTR), tek bir veritabanı veya havuza alınmış bir veritabanındaki **belirli bir uzun süreli yedeklemeden veritabanını geri yükleyin** . LTR, bir uyumluluk isteğini karşılamak veya uygulamanın eski bir sürümünü çalıştırmak için [Azure Portal](long-term-backup-retention-configure.md#using-the-azure-portal) veya [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) kullanarak veritabanının eski bir sürümünü geri yüklemenize olanak tanır. Daha fazla bilgi için bkz. [Uzun süreli saklama](long-term-retention-overview.md).
 
 Geri yükleme gerçekleştirmek için bkz. [veritabanlarını yedeklerden geri yükleme](recovery-using-backups.md).
 

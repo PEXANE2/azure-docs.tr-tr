@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63a4285725db4dcb41affa93261fbbc03d11598e
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: b38ac6400a882d98c68ea39ae359e20ed237cd5f
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310759"
+ms.locfileid: "84340275"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -82,7 +82,7 @@ Bu role sahip kullanıcılar, bazı kullanıcılar için parola olmayan kimlik b
 [Ayrıcalıklı kimlik doğrulama Yöneticisi](#privileged-authentication-administrator) rolü, tüm kullanıcılar için yeniden kayıt ve Multi-Factor Authentication 'ı zorunlu hale verebilir.
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişiler için kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişiler için kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve kimlik doğrulama yöneticilerine başka bir yerde izin verilmez. Bu yol aracılığıyla bir kimlik doğrulama Yöneticisi bir uygulama sahibinin kimliğini varsayabilir ve sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
 >- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
@@ -224,7 +224,7 @@ Bu yönetici Azure AD kuruluşları ve dış kimlik sağlayıcıları arasında 
 
 ### <a name="global-administrator--company-administrator"></a>[Genel yönetici/Şirket Yöneticisi](#company-administrator-permissions)
 
-Bu role sahip olan kullanıcılar, Azure Active Directory ' deki tüm yönetim özelliklerine ve Microsoft 365 Güvenlik Merkezi, Microsoft 365 Uyumluluk Merkezi, Exchange Online, SharePoint Online ve Skype Kurumsal Çevrimiçi kullanım gibi Azure Active Directory kimliklerini kullanan hizmetlere erişebilir. Azure AD organizasyonu için kaydolan kişi genel yönetici haline gelir. Şirketinizde birden fazla genel yönetici olabilir. Genel yöneticiler, tüm kullanıcıların ve diğer tüm yöneticilerin parolalarını sıfırlayabilir.
+Bu role sahip olan kullanıcılar, Azure Active Directory ' deki tüm yönetim özelliklerine ve Microsoft 365 Güvenlik Merkezi, Microsoft 365 Uyumluluk Merkezi, Exchange Online, SharePoint Online ve Skype Kurumsal Çevrimiçi kullanım gibi Azure Active Directory kimliklerini kullanan hizmetlere erişebilir. Ayrıca, genel Yöneticiler tüm Azure aboneliklerini ve Yönetim gruplarını yönetmek üzere [erişimini yükseltebilir](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin) . Bu, genel yöneticilerin ilgili Azure AD kiracısı kullanarak tüm Azure kaynaklarına tam erişim sağlamasına izin verir. Azure AD organizasyonu için kaydolan kişi genel yönetici haline gelir. Şirketinizde birden fazla genel yönetici olabilir. Genel yöneticiler, tüm kullanıcıların ve diğer tüm yöneticilerin parolalarını sıfırlayabilir.
 
 > [!NOTE]
 > Microsoft Graph API ve Azure AD PowerShell 'de, bu rol "Şirket Yöneticisi" olarak tanımlanır. [Azure Portal](https://portal.azure.com), "genel yönetici" dir.
@@ -267,7 +267,7 @@ Bu role sahip kullanıcılar parolaları değiştirebilir, yenileme belirteçler
 * Rapor okuyucu
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve yardım masası yöneticilerine başka bir yerde izin verilmez. Bu yol aracılığıyla bir yardım masası Yöneticisi, bir uygulama sahibinin kimliğini varsayabilir ve daha sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
 >- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.
@@ -389,7 +389,7 @@ Bu role sahip kullanıcılar, Microsoft 365 Yönetim Merkezi 'nde ve Power BI ' 
 
 ### <a name="search-administrator"></a>[Yönetici ara](#search-administrator-permissions)
 
-Bu roldeki kullanıcılar, Microsoft 365 Yönetim Merkezi 'ndeki tüm Microsoft arama yönetimi özelliklerine tam erişime sahiptir. Arama yöneticileri, kullanıcılara arama yöneticileri ve arama Düzenleyicisi rollerini devredebilir ve yer işaretleri, soru&olarak ve konumlar gibi içerik oluşturabilir ve yönetebilir. Ayrıca, bu kullanıcılar ileti merkezini görüntüleyebilir, hizmet durumunu izleyebilir ve hizmet istekleri oluşturabilir.
+Bu roldeki kullanıcılar, Microsoft 365 Yönetim Merkezi 'ndeki tüm Microsoft arama yönetimi özelliklerine tam erişime sahiptir. Ayrıca, bu kullanıcılar ileti merkezini görüntüleyebilir, hizmet durumunu izleyebilir ve hizmet istekleri oluşturabilir.
 
 ### <a name="search-editor"></a>[Arama Düzenleyicisi](#search-editor-permissions)
 
@@ -496,7 +496,7 @@ Bu role sahip kullanıcılar Kullanıcı oluşturabilir ve bazı kısıtlamalara
 |Yalnızca yönetici olmayan veya aşağıdaki sınırlı Yönetici rollerinin hiçbirinde olan kullanıcılar için:<ul><li>Dizin okuyucuları<li>Konuk davetci<li>Yardım Masası Yöneticisi<li>İleti Merkezi okuyucusu<li>Rapor okuyucu<li>Kullanıcı Yöneticisi|<p>Sil ve geri yükle</p><p>Devre dışı bırak ve Etkinleştir</p><p>Yenileme belirteçlerini geçersiz kıl</p><p>Kullanıcı asıl adı dahil tüm kullanıcı özelliklerini yönet</p><p>Parola sıfırlama</p><p>Güncelleştirme (FIDO) cihaz anahtarları</p>|
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örneğin:
+> Bu role sahip kullanıcılar, Azure Active Directory ' nin içindeki ve dışındaki gizli veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini kabul etme imkanını ifade edebilir. Örnek:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen uygulama kaydı ve kurumsal uygulama sahipleri. Bu uygulamaların Azure AD 'de ayrıcalıklı izinleri olabilir ve Kullanıcı yöneticilerine başka bir yerde izin verilmez. Bu yoldan, bir Kullanıcı Yöneticisi bir uygulama sahibinin kimliğini varsayabilir ve daha sonra uygulamanın kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini daha fazla varsayabilir.
 >- Azure abonelik sahipleri, hassas veya özel bilgilere veya Azure 'da kritik yapılandırmaya erişebilir.

@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/02/2020
 ms.author: rogarana
-ms.openlocfilehash: 5592a3c53a57e9cd96468bfca187e02faef28b05
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 4423067fde70728a5449485434cc40c5c3d3ee8f
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268509"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324105"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Birinci kısım: Azure dosya paylaşımlarınız için AD DS kimlik doğrulamasını etkinleştirme 
 
@@ -89,7 +89,18 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>AD içinde depolama hesabını el ile temsil eden bir kimlik oluşturma
 
-Bu hesabı el ile oluşturmak için, kullanarak depolama hesabınız için yeni bir Kerberos anahtarı oluşturun `New-AzStorageAccountKey -KeyName kerb1` . Daha sonra, hesabınız için parola olarak bu Kerberos anahtarını kullanın. Bu anahtar yalnızca kurulum sırasında kullanılır ve depolama hesabına karşı herhangi bir denetim veya veri düzlemi işlemi için kullanılamaz. Bu anahtarı aldıktan sonra, OU 'sunda bir hizmet veya bilgisayar hesabı oluşturun. Aşağıdaki belirtimi kullanın (örnek metni depolama hesabınızın adıyla değiştirmeyi unutmayın):
+Bu hesabı el ile oluşturmak için, depolama hesabınız için yeni bir Kerberos anahtarı oluşturun. Daha sonra, aşağıdaki PowerShell cmdlet 'lerini kullanarak hesabınızın parolası olarak bu Kerberos anahtarını kullanın. Bu anahtar yalnızca kurulum sırasında kullanılır ve depolama hesabına karşı herhangi bir denetim veya veri düzlemi işlemi için kullanılamaz. 
+
+```PowerShell
+# Create the Kerberos key on the storage account and get the Kerb1 key as the password for the AD identity to represent the storage account
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
+New-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -KeyName kerb1
+Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -ListKerbKey | where-object{$_.Keyname -contains "kerb1"}
+```
+
+Bu anahtarı aldıktan sonra, OU 'sunda bir hizmet veya bilgisayar hesabı oluşturun. Aşağıdaki belirtimi kullanın (örnek metni depolama hesabınızın adıyla değiştirmeyi unutmayın):
 
 SPN: "CIFS/sizin-Storage-Account-Name-burada. File. Core. Windows. net" Password: depolama hesabınız için Kerberos anahtarı.
 

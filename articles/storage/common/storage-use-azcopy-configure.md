@@ -8,12 +8,12 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: c3ee0f335741c171c3a7ee1df3eea6dea9c4b728
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6066cd4f347ef05e6fcdb67bb1223ffbc0cae46b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176167"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84341021"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy 'i yapılandırma, iyileştirme ve sorun giderme
 
@@ -37,6 +37,17 @@ AzCopy ara sunucu ayarlarını yapılandırmak için `https_proxy` ortam değiş
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
 Şu anda AzCopy, NTLM veya Kerberos ile kimlik doğrulaması gerektiren proxy 'leri desteklemiyor.
+
+### <a name="bypassing-a-proxy"></a>Proxy atlama ###
+
+Windows üzerinde AzCopy çalıştırıyorsanız ve bu sunucuya _hiçbir_ proxy (ayarları otomatik olarak algılama yerine) kullanmayı söylemek istiyorsanız bu komutları kullanın. Bu ayarlarla AzCopy, herhangi bir proxy 'yi aramaz veya kullanmayı denemez.
+
+| İşletim sistemi | Ortam | Komutlar  |
+|--------|-----------|----------|
+| **Windows** | Komut istemi (CMD) | `set HTTPS_PROXY=dummy.invalid` <br>`set NO_PROXY=*`|
+| **Windows** | PowerShell | `$env:HTTPS_PROXY="dummy.invalid"` <br>`$env:NO_PROXY="*"`<br>|
+
+Diğer işletim sistemlerinde, ara sunucu kullanmak istiyorsanız HTTPS_PROXY değişkenini yok etmeniz yeterlidir.
 
 ## <a name="optimize-performance"></a>Performansı iyileştirme
 
@@ -72,15 +83,15 @@ Bu komutla ilgili ayrıntılı yardım kılavuzunu görüntülemek için yazın 
 
 ### <a name="optimize-throughput"></a>Aktarım hızını iyileştirme
 
-İş hızı veri hızına `cap-mbps` bir tavan koymak için komutlarınızın bayrağını kullanabilirsiniz. Örneğin, aşağıdaki komut, bir işi sürdürür ve saniye başına `10` MEGABAYT (MB) cinsinden bir işleme devam eder. 
+`cap-mbps`İş hızı veri hızına bir tavan koymak için komutlarınızın bayrağını kullanabilirsiniz. Örneğin, aşağıdaki komut, bir işi sürdürür ve `10` saniye başına megabayt (MB) cinsinden bir işleme devam eder. 
 
 ```azcopy
 azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
-Küçük dosyalar aktarılırken üretilen iş azalabilir. `AZCOPY_CONCURRENCY_VALUE` Ortam değişkenini ayarlayarak aktarım hızını artırabilirsiniz. Bu değişken, gerçekleşebileceğini eşzamanlı isteklerin sayısını belirtir.  
+Küçük dosyalar aktarılırken üretilen iş azalabilir. Ortam değişkenini ayarlayarak aktarım hızını artırabilirsiniz `AZCOPY_CONCURRENCY_VALUE` . Bu değişken, gerçekleşebileceğini eşzamanlı isteklerin sayısını belirtir.  
 
-Bilgisayarınızda 5 ' ten az CPU varsa, bu değişkenin değeri olarak `32`ayarlanır. Aksi takdirde, varsayılan değer 16 ' ya eşittir CPU sayısıyla çarpılır. Bu değişkenin en büyük varsayılan değeri `3000`, ancak bu değeri el ile veya daha düşük bir şekilde ayarlayabilirsiniz. 
+Bilgisayarınızda 5 ' ten az CPU varsa, bu değişkenin değeri olarak ayarlanır `32` . Aksi takdirde, varsayılan değer 16 ' ya eşittir CPU sayısıyla çarpılır. Bu değişkenin en büyük varsayılan değeri `3000` , ancak bu değeri el ile veya daha düşük bir şekilde ayarlayabilirsiniz. 
 
 | İşletim sistemi | Komut  |
 |--------|-----------|
@@ -88,13 +99,13 @@ Bilgisayarınızda 5 ' ten az CPU varsa, bu değişkenin değeri olarak `32`ayar
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
-Bu değişkenin `azcopy env` geçerli değerini denetlemek için öğesini kullanın. Değer boşsa, herhangi bir AzCopy günlük dosyasının başlangıcına bakarak hangi değerin kullanıldığını okuyabilirsiniz. Seçili değer ve seçildiği neden burada raporlanır.
+`azcopy env`Bu değişkenin geçerli değerini denetlemek için öğesini kullanın. Değer boşsa, herhangi bir AzCopy günlük dosyasının başlangıcına bakarak hangi değerin kullanıldığını okuyabilirsiniz. Seçili değer ve seçildiği neden burada raporlanır.
 
-Bu değişkeni ayarlamadan önce, bir kıyaslama testi çalıştırmanızı öneririz. Kıyaslama test süreci, önerilen eşzamanlılık değerini rapor eder. Alternatif olarak, ağ koşullarınız ve yüklerinizin farklılık göstermesi durumunda bu değişkeni belirli bir `AUTO` sayı yerine kelimeyle ayarlayın. Bu, AzCopy 'in kıyaslama testlerinde kullandığı otomatik ayarlama işlemini her zaman çalıştırmasına neden olur.
+Bu değişkeni ayarlamadan önce, bir kıyaslama testi çalıştırmanızı öneririz. Kıyaslama test süreci, önerilen eşzamanlılık değerini rapor eder. Alternatif olarak, ağ koşullarınız ve yüklerinizin farklılık göstermesi durumunda bu değişkeni `AUTO` belirli bir sayı yerine kelimeyle ayarlayın. Bu, AzCopy 'in kıyaslama testlerinde kullandığı otomatik ayarlama işlemini her zaman çalıştırmasına neden olur.
 
 ### <a name="optimize-memory-use"></a>Bellek kullanımını iyileştirme
 
-Dosya indirme `AZCOPY_BUFFER_GB` ve karşıya yükleme sırasında AzCopy 'in kullanmasını istediğiniz en fazla sistem belleği miktarını belirtmek için ortam değişkenini ayarlayın.
+`AZCOPY_BUFFER_GB`Dosya indirme ve karşıya yükleme sırasında AzCopy 'in kullanmasını istediğiniz en fazla sistem belleği miktarını belirtmek için ortam değişkenini ayarlayın.
 Bu değeri gigabayt (GB) cinsinden ifade edin.
 
 | İşletim sistemi | Komut  |
@@ -107,26 +118,26 @@ Bu değeri gigabayt (GB) cinsinden ifade edin.
 
 [Eşitleme](storage-ref-azcopy-sync.md) komutu hedefteki tüm dosyaları tanımlar ve ardından eşitleme işlemine başlamadan önce dosya adlarını ve son değiştirilme zaman damgalarını karşılaştırır. Çok sayıda dosya varsa, bu ön işlemden yararlanarak performansı artırabilirsiniz. 
 
-Bunu gerçekleştirmek için, bunun yerine [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanın ve `--overwrite` bayrağını olarak `ifSourceNewer`ayarlayın. AzCopy, dosyaları, ön tarama ve karşılaştırmalar yapılmadan kopyalandıkları gibi karşılaştıracaktır. Bu, Karşılaştırılacak çok sayıda dosya olduğu durumlarda bir performans kenarı sağlar.
+Bunu gerçekleştirmek için, bunun yerine [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanın ve `--overwrite` bayrağını olarak ayarlayın `ifSourceNewer` . AzCopy, dosyaları, ön tarama ve karşılaştırmalar yapılmadan kopyalandıkları gibi karşılaştıracaktır. Bu, Karşılaştırılacak çok sayıda dosya olduğu durumlarda bir performans kenarı sağlar.
 
-[AzCopy kopyalama](storage-ref-azcopy-copy.md) komutu, hedefteki dosyaları silmez, bu nedenle hedefteki dosyaları kaynak üzerinde olmayan bir `true` şekilde silmek isterseniz [AzCopy Sync](storage-ref-azcopy-sync.md) komutunu `--delete-destination` bayrağıyla veya `prompt`değerine ayarlanmış şekilde kullanın. 
+[AzCopy kopyalama](storage-ref-azcopy-copy.md) komutu, hedefteki dosyaları silmez, bu nedenle hedefteki dosyaları kaynak üzerinde olmayan bir şekilde silmek isterseniz [AzCopy Sync](storage-ref-azcopy-sync.md) komutunu `--delete-destination` bayrağıyla veya değerine ayarlanmış şekilde kullanın `true` `prompt` . 
 
 ## <a name="troubleshoot-issues"></a>Sorunları giderme
 
 AzCopy her iş için günlük ve plan dosyaları oluşturur. Olası sorunları araştırmak ve sorunlarını gidermek için günlükleri kullanabilirsiniz. 
 
-Günlükler hatanın durumunu (`UPLOADFAILED`, `COPYFAILED`, ve `DOWNLOADFAILED`), tam yolu ve hatanın nedenini içerecektir.
+Günlükler hatanın durumunu ( `UPLOADFAILED` , `COPYFAILED` , ve `DOWNLOADFAILED` ), tam yolu ve hatanın nedenini içerecektir.
 
-Varsayılan olarak, günlük ve plan dosyaları Mac ve Linux üzerindeki Windows `%USERPROFILE%\.azcopy` veya `$HOME$\.azcopy` dizindeki dizinde bulunur, ancak isterseniz bu konumu değiştirebilirsiniz.
+Varsayılan olarak, günlük ve plan dosyaları `%USERPROFILE%\.azcopy` `$HOME$\.azcopy` Mac ve Linux üzerindeki Windows veya dizindeki dizinde bulunur, ancak isterseniz bu konumu değiştirebilirsiniz.
 
-İlgili hata, dosyada görüntülenen ilk hata değildir. Ağ hataları, zaman aşımları ve sunucu meşgul hataları gibi hatalar için AzCopy en fazla 20 kez yeniden dener ve genellikle yeniden deneme işlemi başarılı olur.  Gördüğünüz ilk hata, başarıyla yeniden denenen bir zararsız olabilir.  Bu nedenle, dosyadaki ilk hataya bakmak yerine, veya `UPLOADFAILED` `COPYFAILED` `DOWNLOADFAILED`yakınındaki hataları arayın. 
+İlgili hata, dosyada görüntülenen ilk hata değildir. Ağ hataları, zaman aşımları ve sunucu meşgul hataları gibi hatalar için AzCopy en fazla 20 kez yeniden dener ve genellikle yeniden deneme işlemi başarılı olur.  Gördüğünüz ilk hata, başarıyla yeniden denenen bir zararsız olabilir.  Bu nedenle, dosyadaki ilk hataya bakmak yerine, veya yakınındaki hataları arayın `UPLOADFAILED` `COPYFAILED` `DOWNLOADFAILED` . 
 
 > [!IMPORTANT]
 > Microsoft Desteği bir istek gönderirken (veya herhangi bir üçüncü taraf ile ilgili sorunu gidermeye çalıştığınızda), yürütmek istediğiniz komutun Redaksiyonu yapılmış sürümünü paylaşabilirsiniz. Bu, SAS 'nin yanlışlıkla herhangi bir gövdele paylaşılmamasını sağlar. Redaksiyonu yapılmış sürümü günlük dosyasının başlangıcında bulabilirsiniz.
 
 ### <a name="review-the-logs-for-errors"></a>Günlükleri hatalara karşı gözden geçirin
 
-Aşağıdaki komut, `UPLOADFAILED` `04dc9ca9-158f-7945-5933-564021086c79` günlükteki durum ile tüm hataları alacak:
+Aşağıdaki komut, günlükteki durum ile tüm hataları alacak `UPLOADFAILED` `04dc9ca9-158f-7945-5933-564021086c79` :
 
 **Windows (PowerShell)**
 
@@ -174,7 +185,7 @@ Bir işi sürdürürseniz AzCopy iş planı dosyasına bakar. Plan dosyası, iş
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>Planın ve günlük dosyalarının konumunu değiştirme
 
-Varsayılan olarak, plan ve günlük dosyaları Windows veya Mac ve `%USERPROFILE%\.azcopy` Linux `$HOME$\.azcopy` dizinindeki dizinde bulunur. Bu konumu değiştirebilirsiniz.
+Varsayılan olarak, plan ve günlük dosyaları `%USERPROFILE%\.azcopy` Windows veya `$HOME$\.azcopy` Mac ve Linux dizinindeki dizinde bulunur. Bu konumu değiştirebilirsiniz.
 
 ### <a name="change-the-location-of-plan-files"></a>Plan dosyalarının konumunu değiştirme
 
@@ -186,7 +197,7 @@ Bu komutlardan herhangi birini kullanın.
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
-Bu değişkenin `azcopy env` geçerli değerini denetlemek için öğesini kullanın. Değer boşsa, plan dosyaları varsayılan konuma yazılır.
+`azcopy env`Bu değişkenin geçerli değerini denetlemek için öğesini kullanın. Değer boşsa, plan dosyaları varsayılan konuma yazılır.
 
 ### <a name="change-the-location-of-log-files"></a>Günlük dosyalarının konumunu değiştirme
 
@@ -198,18 +209,18 @@ Bu komutlardan herhangi birini kullanın.
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
 | **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 
-Bu değişkenin `azcopy env` geçerli değerini denetlemek için öğesini kullanın. Değer boşsa, günlükler varsayılan konuma yazılır.
+`azcopy env`Bu değişkenin geçerli değerini denetlemek için öğesini kullanın. Değer boşsa, günlükler varsayılan konuma yazılır.
 
 ## <a name="change-the-default-log-level"></a>Varsayılan günlük düzeyini değiştirme
 
-Varsayılan olarak, AzCopy günlük düzeyi olarak `INFO`ayarlanır. Disk alanından tasarruf etmek için günlük ayrıntı düzeyini azaltmak isterseniz, ``--log-level`` seçeneğini kullanarak bu ayarın üzerine yazın. 
+Varsayılan olarak, AzCopy günlük düzeyi olarak ayarlanır `INFO` . Disk alanından tasarruf etmek için günlük ayrıntı düzeyini azaltmak isterseniz, seçeneğini kullanarak bu ayarın üzerine yazın ``--log-level`` . 
 
-Kullanılabilir günlük düzeyleri şunlardır: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC`, ve `FATAL`.
+Kullanılabilir günlük düzeyleri şunlardır: `NONE` , `DEBUG` , `INFO` , `WARNING` , `ERROR` , `PANIC` , ve `FATAL` .
 
 ## <a name="remove-plan-and-log-files"></a>Planı ve günlük dosyalarını kaldır
 
 Disk alanını kazanmak için yerel makinenizden tüm planı ve günlük dosyalarını kaldırmak istiyorsanız `azcopy jobs clean` komutunu kullanın.
 
-Yalnızca bir işle ilişkili planı ve günlük dosyalarını kaldırmak için kullanın `azcopy jobs rm <job-id>`. Bu örnekteki `<job-id>` yer tutucuyu işin iş kimliğiyle değiştirin.
+Yalnızca bir işle ilişkili planı ve günlük dosyalarını kaldırmak için kullanın `azcopy jobs rm <job-id>` . `<job-id>`Bu örnekteki yer tutucuyu işin iş kimliğiyle değiştirin.
 
 

@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.reviewer: akjosh
-ms.openlocfilehash: bed65754dd872d51d4cbd1bccc673373e8e96846
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0ea5c11254d8dba050fe63a4cd915240c8270dd1
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653001"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324581"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Öğretici: Azure CLI ile bir Azure VM'nin özel görüntüsünü oluşturma
 
@@ -68,7 +68,7 @@ az group create --name myGalleryRG --location eastus
 az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
-## <a name="get-infornation-about-the-vm"></a>VM hakkında daha fazla bilgi edinme
+## <a name="get-information-about-the-vm"></a>VM hakkında bilgi edinme
 
 [Az VM List](/cli/azure/vm#az-vm-list)kullanılarak kullanılabilir olan VM 'lerin bir listesini görebilirsiniz. 
 

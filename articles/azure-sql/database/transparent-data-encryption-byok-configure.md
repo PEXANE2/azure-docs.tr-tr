@@ -1,7 +1,7 @@
 ---
 title: SQL TDE Azure Key Vault etkinleştir
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Azure SQL veritabanı ve Azure SYNAPSE analizlerini, PowerShell veya CLı kullanarak bekleyen şifreleme için Saydam Veri Şifrelemesi (TDE) kullanmaya başlamak üzere nasıl yapılandıracağınızı öğrenin.
+description: Azure SQL veritabanı ve Azure SYNAPSE analizlerini, PowerShell veya Azure CLı kullanarak bekleyen şifreleme için Saydam Veri Şifrelemesi (TDE) kullanmaya başlamak üzere nasıl yapılandıracağınızı öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,17 +12,17 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 7a71d4f2d724584509f25c7ae458ed6ab1b415af
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 136bea5ffa33210362e4785f8f3003f5cd5cc8fa
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051181"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321419"
 ---
-# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell ve CLı: Saydam Veri Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarla etkinleştirin
+# <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell ve Azure CLı: Saydam Veri Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarla etkinleştirin
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Bu makalede, Azure SQL veritabanı veya Azure SYNAPSE Analytics (eski adıyla SQL DW) Azure Key Vault Saydam Veri Şifrelemesi (TDE) için bir anahtarın nasıl kullanılacağı anlatılmaktadır. TDE Azure Key Vault tümleştirme-Kendi Anahtarını Getir (BYOK) desteği hakkında daha fazla bilgi edinmek için, [Azure Key Vault 'de müşteri tarafından yönetilen anahtarlarla TDE](transparent-data-encryption-byok-overview.md)sayfasını ziyaret edin.
+Bu makalede, Azure SQL veritabanı veya Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) Azure Key Vault Saydam Veri Şifrelemesi (TDE) için bir anahtarın nasıl kullanılacağı açıklanmaktadır. TDE Azure Key Vault tümleştirme-Kendi Anahtarını Getir (BYOK) desteği hakkında daha fazla bilgi edinmek için, [Azure Key Vault 'de müşteri tarafından yönetilen anahtarlarla TDE](transparent-data-encryption-byok-overview.md)sayfasını ziyaret edin.
 
 ## <a name="prerequisites-for-powershell"></a>PowerShell önkoşulları
 
@@ -47,9 +47,9 @@ Key Vault hakkında daha fazla bilgi için bkz. [Key Vault PowerShell yönergele
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager (RM) modülü hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. AzureRM modülü, en az Aralık 2020 ' e kadar hata düzeltmeleri almaya devam edecektir.  Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumluluklarını hakkında daha fazla bilgi için bkz. [new Azure PowerShell konusuna giriş az Module](/powershell/azure/new-azureps-module-az).
 
-## <a name="assign-an-azure-ad-identity-to-your-server"></a>Sunucunuza bir Azure AD kimliği atama
+## <a name="assign-an-azure-active-directory-azure-ad-identity-to-your-server"></a>Sunucunuza Azure Active Directory (Azure AD) kimliği atama
 
-Var olan bir [sunucunuz](logical-servers.md)varsa, sunucunuza BIR Azure ad kimliği eklemek için aşağıdakileri kullanın:
+Var olan bir [sunucunuz](logical-servers.md)varsa, sunucunuza Azure Active Directory (Azure AD) kimliği eklemek için aşağıdakileri kullanın:
 
    ```powershell
    $server = Set-AzSqlServer -ResourceGroupName <SQLDatabaseResourceGroupName> -ServerName <LogicalServerName> -AssignIdentity
@@ -121,9 +121,9 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
    -ServerName <LogicalServerName> -DatabaseName <DatabaseName>  
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Gerekli komut satırı arabirimi sürüm 2,0 veya üstünü yüklemek ve Azure aboneliğinize bağlanmak için bkz. [Azure platformlar arası komut satırı arabirimi 2,0 ' ni yükleyip yapılandırma](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Azure CLı 'nın gerekli sürümünü (sürüm 2,0 veya üzeri) yüklemek ve Azure aboneliğinize bağlanmak için bkz. [Azure platformlar arası komut satırı arabirimi 2,0 ' ni yükleyip yapılandırma](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 Key Vault hakkında daha fazla bilgi için bkz. [clı 2,0 kullanarak Key Vault yönetme](../../key-vault/general/manage-with-cli2.md) ve [CLI ile geçici silme Key Vault kullanma](../../key-vault/general/soft-delete-cli.md).
 
@@ -207,7 +207,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
    Remove-AzSqlServerKeyVaultKey -KeyId <KeyVaultKeyId> -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 - Genel veritabanı ayarları için bkz. [az SQL](/cli/azure/sql).
 
@@ -229,7 +229,7 @@ Bir sorun oluşursa, aşağıdakileri denetleyin:
    Get-AzSubscription -SubscriptionId <SubscriptionId>
    ```
 
-   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+   # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
    ```powershell
    az account show - s <SubscriptionId>

@@ -4,13 +4,13 @@ description: Bu Java REST tabanlı hızlı başlangıç bilgi tabanınızı yay�
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 149d7963f29bf041cda75fffaac533e0a62ee7a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: e8df1fcc61d6b838c08f8daca9298e73820590f5
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851690"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342706"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>Hızlı başlangıç: Java kullanarak Soru-Cevap Oluşturma’da bilgi bankası yayımlama
 
@@ -19,7 +19,7 @@ Bu REST tabanlı hızlı başlangıç, bilgi bankanızı (KB) programlı bir şe
 Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 * [Publish](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish): Bu API için istek gövdesinde herhangi bir bilgi iletilmesi gerekmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [JDK SE](https://aka.ms/azure-jdks)  (Java Geliştirme Seti, Standart Sürüm)
 * Bu örnek, HTTP bileşenlerinden Apache [http istemcisini](https://hc.apache.org/httpcomponents-client-ga/) kullanır. Projenize aşağıdaki Apache HTTP istemci kitaplıklarını eklemeniz gerekir:
@@ -28,7 +28,7 @@ Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
     * Commons-logging-1.2. jar
 * [Visual Studio Code](https://code.visualstudio.com/)
 * Bir [soru-cevap oluşturma hizmetiniz](../How-To/set-up-qnamaker-service-azure.md)olmalıdır. Anahtarınızı ve uç noktanızı (kaynak adını da içerir) almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin.
-* `kbid` Sorgu DIZESI parametresindeki URL 'de aşağıda gösterildiği gibi soru-cevap oluşturma bilgi BANKASı (KB) kimliği bulundu.
+* `kbid`Sorgu dizesi PARAMETRESINDEKI URL 'de aşağıda gösterildiği gibi soru-cevap oluşturma Bilgi Bankası (KB) kimliği bulundu.
 
     ![Soru-Cevap Oluşturma bilgi bankası kimliği](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
@@ -39,11 +39,11 @@ Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 
 ## <a name="create-a-java-file"></a>Java dosyası oluşturma
 
-VSCode 'u açın ve adlı `PublishKB.java`yeni bir dosya oluşturun.
+VSCode 'u açın ve adlı yeni bir dosya oluşturun `PublishKB.java` .
 
 ## <a name="add-the-required-dependencies"></a>Gerekli bağımlılıkları ekleme
 
-Sınıfının en üstünde `PublishKB.java`,, gerekli bağımlılıkları projeye eklemek için aşağıdaki satırları ekleyin:
+Sınıfının en üstünde `PublishKB.java` ,, gerekli bağımlılıkları projeye eklemek için aşağıdaki satırları ekleyin:
 
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=1-13 "Add the required dependencies")]
 

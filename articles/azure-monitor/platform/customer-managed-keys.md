@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/20/2020
-ms.openlocfilehash: 8bff8cf1111675446c1c9fb2e5dde8b19e2ef5c1
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 9a80adbbeda2754f9f08a4d2f16b8caf9263b087
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310895"
+ms.locfileid: "84340869"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Izleyici müşteri tarafından yönetilen anahtar 
 
@@ -40,7 +40,7 @@ Azure Izleyici, Azure Key Vault erişim sağlamak için sistem tarafından atana
 CMK yapılandırmasından sonra, *küme* kaynağınızın ilişkili çalışma alanlarına alınan tüm veriler, Key Vault anahtarındaki anahtarınızla şifrelenir. Çalışma alanlarının herhangi bir zamanda *küme* kaynağıyla ilişkisini kaldırabilirsiniz. Yeni veriler, yeni ve eski verilerinizi sorunsuz bir şekilde sorgulayabilir Log Analytics depolama ve Microsoft anahtar ile şifrelenmiş olarak kullanıma alınır.
 
 
-![CMK genel bakış](media/customer-managed-keys/cmk-overview-8bit.png)
+![CMK genel bakış](media/customer-managed-keys/cmk-overview.png)
 
 1. Key Vault
 2. Log Analytics *küme* kaynağı, Key Vault izinleri olan yönetilen kimliğe sahip--kimlik, adanmış Log Analytics küme depolamasına yayılmıştır
@@ -80,7 +80,7 @@ Yordam, şu anda Kullanıcı arabiriminde desteklenmez ve sağlama işlemi REST 
 > [!IMPORTANT]
 > Herhangi bir API isteği, istek üst bilgisinde bir taşıyıcı yetkilendirme belirteci içermelidir.
 
-Örneğin:
+Örnek:
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview

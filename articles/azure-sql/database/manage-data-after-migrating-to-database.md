@@ -1,7 +1,7 @@
 ---
 title: Geçişten sonra Yönet
 titleSuffix: Azure SQL Database
-description: Azure SQL veritabanı 'na geçişten sonra tek ve havuza alınmış veritabanınızı yönetmeyi öğrenin.
+description: Azure SQL veritabanı 'na geçişten sonra tek ve havuza alınmış veritabanlarınızı yönetmeyi öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -12,17 +12,17 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: e36e11e4150c977b72b445e5bda7dce410c77925
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 17c0e02aa091d1271967b5a238f71123cc7aeede
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193937"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322678"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Bulutta yeni DBA: geçişten sonra Azure SQL veritabanı 'nı yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Geleneksel olarak yönetilen, kendi kendine denetlenen ortamdan PaaS ortamına geçiş, ilk olarak biraz zaman alabilir. Bir uygulama geliştiricisi veya bir DBA olarak, uygulamanın kullanılabilir, performans, güvenli ve dayanıklı-her zaman korunmasına yardımcı olacak platformun temel yeteneklerini bilmek isteyebilirsiniz. Bu makale, tam olarak bunu yapar. Succinctly makalesi, kaynakları düzenler ve uygulamanızı verimli bir şekilde çalışır durumda tutmak ve bulutta en iyi sonuçları elde etmek için SQL veritabanı 'nın temel özelliklerini tek ve havuza alınmış veritabanlarıyla en iyi şekilde kullanmaya yönelik yönergeler sağlar. Bu makale için tipik kitleler şunlardır:
+Geleneksel olarak yönetilen, kendi kendine denetlenen ortamdan PaaS ortamına geçiş, ilk olarak biraz zaman alabilir. Bir uygulama geliştiricisi veya bir DBA olarak, uygulamanın kullanılabilir, performans, güvenli ve dayanıklı-her zaman korunmasına yardımcı olacak platformun temel yeteneklerini bilmek isteyebilirsiniz. Bu makale, tam olarak bunu yapar. Bu makale, kaynakları düzenler ve Azure SQL veritabanı 'nın, uygulamanızı verimli bir şekilde çalışır durumda tutmak ve bulutta en iyi sonuçları elde etmek için tek ve havuza alınmış veritabanlarıyla en iyi şekilde kullanılması konusunda size rehberlik sağlar. Bu makale için tipik kitleler şunlardır:
 
 - Uygulamalarının Azure SQL veritabanı 'na geçişini değerlendiriyor ve uygulamanızı modernleştiriliyor.
 - , Uygulama-geçiş senaryosunu geçirme sürecdir.
@@ -30,7 +30,7 @@ Geleneksel olarak yönetilen, kendi kendine denetlenen ortamdan PaaS ortamına g
 
 Bu makalede, Azure SQL veritabanı 'nın bazı temel özellikleri, tek veritabanları ve elastik havuzlardaki havuza alınmış veritabanları ile çalışırken kullanabileceğiniz bir platform olarak açıklanmaktadır. Bunlar şunlardır:
 
-- Veritabanını Azure portal kullanarak izleme
+- Azure portalını kullanarak veritabanlarını izleme
 - İş sürekliliği ve olağanüstü durum kurtarma (BCDR)
 - Güvenlik ve uyumluluk
 - Akıllı veritabanı izleme ve bakım
@@ -90,7 +90,7 @@ Olağanüstü durum kurtarma hakkında daha fazla bilgi için bkz. [Azure SQL ve
 
 SQL veritabanı, güvenlik ve gizliliği çok önemli bir şekilde alır. SQL veritabanı içindeki güvenlik veritabanı düzeyinde ve platform düzeyinde kullanılabilir ve birçok katmana kategorize edildiğinde en iyi şekilde anlaşılır. Her katmanda, uygulamanız için en iyi güvenliği denetlemenizi ve sağlamanızı sağlarsınız. Katmanlar şunlardır:
 
-- Kimlik & kimlik doğrulaması ([SQL kimlik doğrulaması ve Azure Active Directory [AAD] kimlik doğrulaması](logins-create-manage.md)).
+- Kimlik & kimlik doğrulaması ([SQL kimlik doğrulaması ve Azure Active Directory [Azure AD] kimlik doğrulaması](logins-create-manage.md)).
 - İzleme etkinliği ([Denetim](../../azure-sql/database/auditing-overview.md) ve [tehdit algılama](threat-detection-configure.md)).
 - Gerçek verileri koruma ([Saydam veri şifrelemesi [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) ve [Always Encrypted [AE]](/sql/relational-databases/security/encryption/always-encrypted-database-engine)).
 - Gizli ve ayrıcalıklı verilere erişimi denetleme ([satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security) ve [dinamik veri maskeleme](/sql/relational-databases/security/dynamic-data-masking)).
@@ -104,13 +104,13 @@ SQL veritabanı 'nda sunulan iki kimlik doğrulama yöntemi vardır:
 - [Azure Active Directory Kimlik Doğrulaması](authentication-aad-overview.md)
 - [SQL kimlik doğrulaması](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-Geleneksel Windows kimlik doğrulaması desteklenmez. Azure Active Directory (AD) merkezi bir kimlik ve erişim yönetimi hizmetidir. Bu sayesinde, kuruluşunuzdaki tüm personele çok rahat bir oturum açma erişimi (SSO) sağlayabilirsiniz. Bu anlamı, kimlik bilgilerinin daha basit kimlik doğrulama için tüm Azure hizmetleri genelinde paylaşılmasıdır. AAD, [MFA 'yı (çok faktörlü kimlik doğrulaması)](authentication-mfa-ssms-overview.md) destekler ve [birkaç tıklamayla](../../active-directory/hybrid/how-to-connect-install-express.md) aad, Windows Server Active Directory ile tümleştirilebilir. SQL kimlik doğrulaması, tam olarak onu zaten kullandığınız gibi çalışmaktadır. Bir Kullanıcı adı/parola sağlarsınız ve belirli bir sunucudaki tüm veritabanları için kullanıcıların kimliğini doğrulayabilirsiniz. Bu Ayrıca, SQL veritabanı ve SQL veri ambarı 'nın bir Azure AD etki alanı içinde Multi-Factor Authentication ve Konuk Kullanıcı hesapları sunmasına olanak tanır. Şirket içi bir Active Directory zaten varsa, dizininizi Azure 'a genişletmek için dizini Azure Active Directory federasyona bağlayabilirsiniz.
+Geleneksel Windows kimlik doğrulaması desteklenmez. Azure Active Directory (Azure AD) merkezi bir kimlik ve erişim yönetimi hizmetidir. Bu sayesinde, kuruluşunuzdaki tüm personele çok rahat bir oturum açma erişimi (SSO) sağlayabilirsiniz. Bu anlamı, kimlik bilgilerinin daha basit kimlik doğrulama için tüm Azure hizmetleri genelinde paylaşılmasıdır. Azure AD, Azure [Multi-Factor Authentication](authentication-mfa-ssms-overview.md) destekler ve [bırkaç tıklamayla](../../active-directory/hybrid/how-to-connect-install-express.md) Azure ad, Windows Server Active Directory ile tümleştirilebilir. SQL kimlik doğrulaması, tam olarak onu zaten kullandığınız gibi çalışmaktadır. Bir Kullanıcı adı/parola sağlarsınız ve belirli bir sunucudaki tüm veritabanları için kullanıcıların kimliğini doğrulayabilirsiniz. Bu Ayrıca, SQL veritabanı ve SQL veri ambarı 'nın bir Azure AD etki alanı içinde Multi-Factor Authentication ve Konuk Kullanıcı hesapları sunmasına olanak tanır. Şirket içi bir Active Directory zaten varsa, dizininizi Azure 'a genişletmek için dizini Azure Active Directory federasyona bağlayabilirsiniz.
 
 |**Eğer...**|**SQL veritabanı/SQL veri ambarı**|
 |---|---|
-|Azure 'da Azure Active Directory (AD) kullanmayı tercih et|[SQL kimlik doğrulaması](security-overview.md) kullan|
+|Azure 'da Azure Active Directory (Azure AD) kullanmayı tercih etme|[SQL kimlik doğrulaması](security-overview.md) kullan|
 |Şirket içi SQL Server kullanılan AD|[Ad 'Yi Azure AD Ile Federasyonun](../../active-directory/hybrid/whatis-hybrid-identity.md)ve Azure AD kimlik doğrulamasını kullanın. Bununla birlikte, çoklu oturum açma kullanabilirsiniz.|
-|Multi-Factor Authentication (MFA) zorlaması gerekir|[Microsoft koşullu erişimi](conditional-access-configure.md)aracılığıyla bir Ilke olarak MFA gerektır ve [MFA desteğiyle Azure AD evrensel kimlik doğrulaması](authentication-mfa-ssms-overview.md)kullanın.|
+|Multi-Factor Authentication zorunlu kılmak gerekir|[Microsoft koşullu erişimi](conditional-access-configure.md)ile ilke olarak Multi-Factor Authentication gerektir ve [MULTI-Factor AUTHENTICATION desteğiyle Azure AD evrensel kimlik doğrulaması](authentication-mfa-ssms-overview.md)kullanın.|
 |Microsoft hesaplarından (live.com, outlook.com) veya diğer etki alanlarından (gmail.com) Konuk hesapları vardır|Azure AD [B2B Işbirliğinin](../../active-directory/b2b/what-is-b2b.md)kullanıldığı SQL veritabanı/veri ambarı 'NDA [Azure AD evrensel kimlik doğrulaması](authentication-mfa-ssms-overview.md) kullanın.|
 |, Federasyon etki alanındaki Azure AD kimlik bilgilerinizi kullanarak Windows 'da oturum açar|[Azure AD Tümleşik kimlik doğrulaması](authentication-aad-configure.md)kullanın.|
 |Azure ile federe olmayan bir etki alanındaki kimlik bilgilerini kullanarak Windows 'da oturum açar|[Azure AD Tümleşik kimlik doğrulaması](authentication-aad-configure.md)kullanın.|
@@ -125,7 +125,7 @@ Elden çıkarmada, uygulamanız için en uygun bağlantı kuruluşunu sağlamak 
 - VNet hizmet uç noktaları
 - Ayrılmış IP’ler
 
-#### <a name="firewall"></a>Güvenlik duvarı
+#### <a name="firewall"></a>Güvenlik Duvarı
 
 Bir güvenlik duvarı, sunucunuza yalnızca belirli varlıkların erişmesine izin vererek bir dış varlıktan sunucunuza erişimi engeller. Varsayılan olarak, sunucu içindeki veritabanlarına yönelik tüm bağlantılara, diğer Azure hizmetlerinden gelen (optionally7) bağlantılar dışında izin verilmez. Bir güvenlik duvarı kuralıyla, bu bilgisayarın IP adresine güvenlik duvarı üzerinden izin vererek, yalnızca onayladığınız varlıklara (örneğin, bir geliştirici makinesi) erişimi açabilirsiniz. Ayrıca, sunucuya erişime izin vermek istediğiniz bir IP aralığı belirtmenize olanak tanır. Örneğin, kuruluşunuzdaki geliştirici makinesi IP adresleri, güvenlik duvarı ayarları sayfasında bir Aralık belirtilerek bir kerede eklenebilir.
 
@@ -170,7 +170,7 @@ Hassas verilerinizi uçuş sırasında ve bekleyen bir şekilde korumak için SQ
 |**Özellikler**|**Always Encrypted**|**Saydam Veri Şifrelemesi**|
 |---|---|---|
 |**Şifreleme kapsamı**|Uçtan uca|Rest verileri|
-|**Sunucu, hassas verilere erişebilir**|Hayır|Evet, çünkü şifreleme bekleyen veriler için|
+|**Sunucu, hassas verilere erişebilir**|No|Evet, çünkü şifreleme bekleyen veriler için|
 |**İzin verilen T-SQL işlemleri**|Eşitlik karşılaştırması|Tüm T-SQL Surface alanı kullanılabilir|
 |**Özelliği kullanmak için gereken uygulama değişiklikleri**|En az|Çok küçük|
 |**Şifreleme ayrıntı düzeyi**|Sütun düzeyi|Veritabanı düzeyinde Kimlik Bilgileri belirleme seçeneği|
@@ -211,17 +211,17 @@ Aşağıdaki diyagramda Always Encrypted içindeki sütun ana anahtarlarına yö
 
 ### <a name="how-can-i-optimize-and-secure-the-traffic-between-my-organization-and-sql-database"></a>Kuruluşum ve SQL veritabanı arasındaki trafiği nasıl iyileştiriyorum ve güvenli hale getirebilirim?
 
-Kuruluşunuz ve SQL veritabanı arasındaki ağ trafiği genellikle genel ağ üzerinden yönlendirilir. Ancak, bu yolu iyileştirmenizi ve daha güvenli hale getirmeyi seçerseniz, Express Route 'a bakabilirsiniz. Express Route temelde Şirket ağınızı özel bir bağlantı üzerinden Azure platformuna genişletmenizi sağlar. Bunu yaptığınızda, genel Internet üzerinden geçmeyin. Ayrıca, genellikle genel İnternet üzerinden ilerleyenden daha hızlı ağ gecikmeleri ve çok daha hızlı hızlara çeviren daha yüksek güvenlik, güvenilirlik ve yönlendirme iyileştirmesi da alırsınız. Kuruluşunuz ve Azure arasında önemli bir veri öbeğini aktarmayı planlıyorsanız, Express Route 'u kullanarak maliyet avantajları elde edebilirsiniz. Kuruluşunuzun Azure 'a bağlantısı için üç farklı bağlantı modeli arasından seçim yapabilirsiniz:
+Kuruluşunuz ve SQL veritabanı arasındaki ağ trafiği genellikle genel ağ üzerinden yönlendirilir. Ancak, bu yolu iyileştirmenizi ve daha güvenli hale getirmeyi seçerseniz Azure ExpressRoute 'a bakabilirsiniz. ExpressRoute temelde Şirket ağınızı özel bir bağlantı üzerinden Azure platformuna genişletmenizi sağlar. Bunu yaptığınızda, genel Internet üzerinden geçmeyin. Ayrıca, genellikle genel İnternet üzerinden ilerleyenden daha hızlı ağ gecikmeleri ve çok daha hızlı hızlara çeviren daha yüksek güvenlik, güvenilirlik ve yönlendirme iyileştirmesi da alırsınız. Kuruluşunuz ve Azure arasında önemli bir veri öbeğini aktarmayı planlıyorsanız, ExpressRoute 'u kullanarak maliyet avantajları elde edebilirsiniz. Kuruluşunuzun Azure 'a bağlantısı için üç farklı bağlantı modeli arasından seçim yapabilirsiniz:
 
 - [Bulut Exchange ortak konumu](../../expressroute/expressroute-connectivity-models.md#CloudExchange)
 - [Herhangi bir](../../expressroute/expressroute-connectivity-models.md#IPVPN)
 - [Noktadan noktaya](../../expressroute/expressroute-connectivity-models.md#Ethernet)
 
-Express Route Ayrıca, ek ücret ödemeden satın aldığınız bant genişliği sınırına kadar en fazla 2x veri bloğu oluşturmanızı sağlar. Ayrıca, Express Route kullanılarak çapraz bölge bağlantısını yapılandırmak da mümkündür. ER bağlantı sağlayıcılarının listesini görmek için bkz. [Express Route ortakları ve eşleme konumları](../../expressroute/expressroute-locations.md). Aşağıdaki makalelerde Express Route daha ayrıntılı olarak açıklanır:
+ExpressRoute Ayrıca, ek ücret ödemeden satın aldığınız bant genişliği sınırına kadar en fazla 2x veri bloğu oluşturmanızı sağlar. Ayrıca, ExpressRoute kullanarak çapraz bölge bağlantısını yapılandırmak da mümkündür. ExpressRoute bağlantı sağlayıcılarının listesini görmek için bkz: [ExpressRoute Iş ortakları ve eşleme konumları](../../expressroute/expressroute-locations.md). Aşağıdaki makalelerde Express Route daha ayrıntılı olarak açıklanır:
 
 - [Express Route 'a giriş](../../expressroute/expressroute-introduction.md)
 - [Önkoşullar](../../expressroute/expressroute-prerequisites.md)
-- [İş Akışları](../../expressroute/expressroute-workflows.md)
+- [İş akışları](../../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL veritabanı, herhangi bir düzenleme gereksinimleriyle uyumludur ve kendi Kuruluşumun uyumluluğuyla nasıl yardımcı olur?
 
@@ -237,7 +237,7 @@ Veritabanınızı SQL veritabanına geçirdikten sonra, veritabanınızı izleme
 
 ### <a name="performance-monitoring-and-optimization"></a>Performans izleme ve iyileştirme
 
-Sorgu performans öngörüleri sayesinde, uygulamalarınızın en uygun düzeyde çalışmaya devam edebilmesi için veritabanı iş yükünüz için özel öneriler elde edebilirsiniz. Ayrıca, Bu önerilerin otomatik olarak uygulanması için de ayarlayabilirsiniz ve bakım görevlerini gerçekleştirmek zorunda değilsiniz. Index Advisor ile, iş yükünüze göre dizin önerilerini otomatik olarak uygulayabilirsiniz; bu otomatik ayarlama olarak adlandırılır. Öneriler, uygulama iş yükünüz olarak geliştikçe en ilgili önerileri size sağlar. Ayrıca, bu önerileri el ile gözden geçirme ve bunları sizin takdirinize göre uygulama seçeneğini de alırsınız.  
+Sorgu performans öngörüleri sayesinde, uygulamalarınızın en uygun düzeyde çalışmaya devam edebilmesi için veritabanı iş yükünüz için özel öneriler elde edebilirsiniz. Ayrıca, Bu önerilerin otomatik olarak uygulanması için de ayarlayabilirsiniz ve bakım görevlerini gerçekleştirmek zorunda değilsiniz. SQL Veritabanı Danışmanı ile, iş yükünüze göre otomatik olarak dizin önerileri uygulayabilirsiniz; bu otomatik ayarlama olarak adlandırılır. Öneriler, uygulama iş yükünüz olarak geliştikçe en ilgili önerileri size sağlar. Ayrıca, bu önerileri el ile gözden geçirme ve bunları sizin takdirinize göre uygulama seçeneğini de alırsınız.  
 
 ### <a name="security-optimization"></a>Güvenlik iyileştirmesi
 
@@ -269,7 +269,7 @@ Azure portal, veritabanını seçip Genel Bakış bölmesinde grafiğe tıklayar
 
 Bu grafikten, uyarıları kaynağa göre de yapılandırabilirsiniz. Bu uyarılar, bir e-posta ile kaynak koşullarına yanıt vermenize, bir HTTPS/HTTP uç noktasına yazmaya veya bir eylem gerçekleştirmenize olanak tanır. Daha fazla bilgi için bkz. [uyarı oluşturma](alerts-insights-configure-portal.md).
 
-#### <a name="dynamic-management-views"></a>Dinamik Yönetim Görünümleri
+#### <a name="dynamic-management-views"></a>Dinamik yönetim görünümleri
 
 Son 14 günün geçmişini döndürmek için son saatten ve [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Sistem kataloğu görünümünden kaynak tüketimi istatistikleri geçmişini döndürmek üzere [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamik yönetim görünümünü sorgulayabilirsiniz.
 
@@ -281,7 +281,7 @@ Son 14 günün geçmişini döndürmek için son saatten ve [sys. resource_stats
 
 #### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde Azure SQL Analytics (Önizleme)
 
-[Azure izleyici günlükleri](../../azure-monitor/insights/azure-sql.md) , temel Azure SQL veritabanı performans ölçümlerini toplamanıza ve görselleştirmenize olanak tanır. bu sayede, çalışma alanı BAŞıNA 150.000 SQL veritabanı ve 5.000 SQL elastik havuzu sağlayabilirsiniz. Bunu, bildirimleri izlemek ve almak için kullanabilirsiniz. SQL veritabanı ve elastik havuz ölçümlerini birden çok Azure aboneliği ve elastik havuzlarda izleyebilir ve uygulama yığınının her katmanında sorunları belirlemek için kullanılabilir.
+[Azure izleyici günlükleri](../../azure-monitor/insights/azure-sql.md) , temel Azure SQL veritabanı performans ölçümlerini toplamanıza ve görselleştirmenize olanak tanır. bu sayede, çalışma alanı başına en fazla 150.000 veritabanı ve 5.000 SQL elastik havuzu destekler Bunu, bildirimleri izlemek ve almak için kullanabilirsiniz. SQL veritabanı ve elastik havuz ölçümlerini birden çok Azure aboneliği ve elastik havuzlarda izleyebilir ve uygulama yığınının her katmanında sorunları belirlemek için kullanılabilir.
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Yaşıyorsanız performans sorunları: SQL veritabanı sorun giderme yöntemlerimin SQL Server farklıdır
 

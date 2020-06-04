@@ -3,15 +3,15 @@ title: Logic Apps REST API tümleştirme hizmeti ortamları (sesleri) oluşturun
 description: Azure Logic Apps Azure sanal ağlarına (VNet) erişebilmek için Logic Apps REST API kullanarak bir tümleştirme hizmeti ortamı (ıSE) oluşturun
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: 0670331d2338b4b6419ffbff1452b5fbac91029f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/29/2020
+ms.openlocfilehash: 7b163c65c0bf781a068abcd6434d75149a1de20b
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478841"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324768"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Logic Apps kullanarak bir tümleştirme hizmeti ortamı (ıSE) oluşturun REST API
 
@@ -22,7 +22,7 @@ Ayrıca, [örnek Azure Resource Manager hızlı başlangıç şablonunu](https:/
 > [!IMPORTANT]
 > Logic Apps, yerleşik Tetikleyiciler, yerleşik Eylemler ve ıSE 'de çalışan bağlayıcılar, tüketim tabanlı fiyatlandırma planından farklı bir fiyatlandırma planı kullanır. Fiyatlandırma ve faturalandırma işinin nasıl sesleri olduğunu öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](../logic-apps/logic-apps-pricing.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure portal bir ıSE oluşturduğunuzda, [Ise için erişimi etkinleştirmek için](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) aynı [Önkoşullar](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) ve gereksinimler
 
@@ -50,13 +50,15 @@ Dağıtımın tamamlanabilmesi için genellikle iki saat içinde sürer. Bazen d
 
 İstek üstbilgisinde şu özellikleri ekleyin:
 
-* `Content-type`: Bu özellik değerini olarak `application/json`ayarlayın.
+* `Content-type`: Bu özellik değerini olarak ayarlayın `application/json` .
 
 * `Authorization`: Bu özellik değerini, kullanmak istediğiniz Azure aboneliğine veya kaynak grubuna erişimi olan müşterinin taşıyıcı belirtecine ayarlayın.
 
-### <a name="request-body-syntax"></a>İstek gövdesi sözdizimi
+<a name="request-body"></a>
 
-İşte, ıSE 'nizi oluştururken kullanılacak özellikleri açıklayan istek gövdesi sözdizimi şöyledir:
+## <a name="request-body"></a>İstek gövdesi
+
+İşte, ıSE 'nizi oluştururken kullanılacak özellikleri açıklayan istek gövdesi söz dizimi. Konumda yüklü olan kendinden imzalı bir sertifikanın kullanılmasına izin veren bir ıSE oluşturmak için `TrustedRoot` , `certificates` nesneyi Ise tanımının bölümünün içine ekleyin `properties` . Mevcut bir ıSE için yalnızca nesnesi için bir yama isteği gönderebilirsiniz `certificates` . Otomatik olarak imzalanan sertifikaları kullanma hakkında daha fazla bilgi için Ayrıca bkz. [http Bağlayıcısı-otomatik olarak imzalanan sertifikalar](../connectors/connectors-native-http.md#self-signed).
 
 ```json
 {
@@ -88,6 +90,13 @@ Dağıtımın tamamlanabilmesi için genellikle iki saat içinde sürer. Bazen d
                "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Network/virtualNetworks/{virtual-network-name}/subnets/{subnet-4}",
             }
          ]
+      },
+      // Include `certificates` object to enable self-signed certificate support
+      "certificates": {
+         "testCertificate": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         }
       }
    }
 }
@@ -127,7 +136,12 @@ Bu örnek istek gövdesinde örnek değerler gösterilmektedir:
                "id": "/subscriptions/********************/resourceGroups/Fabrikam-RG/providers/Microsoft.Network/virtualNetworks/Fabrikam-VNET/subnets/subnet-4",
             }
          ]
-      }
+      },
+      "certificates": {
+         "testCertificate": {
+            "publicCertificate": "LS0tLS1CRUdJTiBDRV...",
+            "kind": "TrustedRoot"
+         }
    }
 }
 ```

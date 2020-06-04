@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: ee4bd24264be9e7730d4dc99af4e61b05a7692bc
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 716d40a0b86ec3385f236a3d81f651d24a36845a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594143"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342128"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure ön kapısı hakkında sık sorulan sorular
 
@@ -46,7 +46,7 @@ Birinci kapıdan Application Gateway kullanılması gereken önemli senaryolar �
 
 - Ön kapı, yalnızca genel düzeyde yol tabanlı yük dengelemesi gerçekleştirebilir, ancak biri sanal ağı (VNET) içinde daha da fazla yük dengelemek isterse, Application Gateway kullanmaları gerekir.
 - Ön kapı bir VM/kapsayıcı düzeyinde çalışmadığından bağlantı boşaltma yapılamaz. Ancak Application Gateway bağlantı boşaltma yapmanıza olanak sağlar. 
-- AFD 'ın arkasındaki Application Gateway, biri %100 TLS/SSL yük boşaltma elde edebilir ve yalnızca kendi sanal ağı (VNET) içinde HTTP isteklerini yönlendirebilir.
+- Ön kapıdan bir Application Gateway, biri %100 TLS/SSL yük boşaltma elde edebilir ve yalnızca kendi sanal ağı (VNET) içinde HTTP isteklerini yönlendirebilir.
 - Ön kapı ve Application Gateway her ikisi de oturum benzeşimini destekler. Ön kapı sonraki trafiği bir kullanıcı oturumundan, belirli bir bölgedeki aynı kümeye veya arka uca yönlendirebilir. Application Gateway, trafiği küme içindeki aynı sunucuya yönlendirebilir.  
 
 ### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>Ön kapıdan Azure Load Balancer dağıtabilir.
@@ -98,7 +98,7 @@ Uygulamanızı yalnızca belirli ön kapıdan gelen trafiği kabul edecek şekil
     > [!WARNING]
     > Ön kapısının arka uç IP alanı daha sonra değişebilir, ancak [Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com/download/details.aspx?id=56519)ile tümleştirilebilmemiz için bu işlem yapılmadan önce bu şekilde daha önce de olur. Herhangi bir değişiklik veya güncelleştirme için [Azure IP aralıklarına ve hizmet etiketlerine](https://www.microsoft.com/download/details.aspx?id=56519) abone olmanızı öneririz.
 
--    API sürümü `2020-01-01` veya üzeri Ile ön kapıda bir get işlemi gerçekleştirin. API çağrısında `frontdoorID` alan ara. '**X-Azure-FDıD**' gelen başlığına, ön kapıdan arka ucunuza, alanın `frontdoorID`değerine göre değer ile gönderilen filtre uygulayın. 
+-    API sürümü veya üzeri ile ön kapıda bir GET işlemi gerçekleştirin `2020-01-01` . API çağrısında `frontdoorID` alan ara. '**X-Azure-FDıD**' gelen başlığına, ön kapıdan arka ucunuza, alanın değerine göre değer ile gönderilen filtre uygulayın `frontdoorID` . 
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>Her noktaya yayın IP 'nin ön kapımın ömrü boyunca değiştirilmesini mi?
 
@@ -213,7 +213,7 @@ Hayır, kendinden imzalı sertifikalar ön kapıda desteklenmez ve kısıtlama h
 
 Arka ucunuza, sistem durumu araştırmalarının veya isteklerin iletilmesi için başarılı HTTPS bağlantıları sağlamak için, HTTPS trafiğinin başarısız olmasının iki nedeni olabilir:
 
-1. **Sertifika konu adı uyumsuzluğu**: ön kapı, HTTPS bağlantıları için arka uç ana bilgisayar adı ile eşleşen GEÇERLI bir CA 'dan sertifika sunuyor. Örnek olarak, arka uç ana bilgisayar adı olarak ayarlanmışsa `myapp-centralus.contosonews.net` ve TLS el sıkışması sırasında arka ucunuzun temsil etmediği sertifika, ilgili `myapp-centralus.contosonews.net` ada `*myapp-centralus*.contosonews.net` sahip değilse, ön kapı bağlantıyı reddeder ve bir hatayla sonuçlanır. 
+1. **Sertifika konu adı uyumsuzluğu**: ön kapı, HTTPS bağlantıları için arka uç ana bilgisayar adı ile eşleşen GEÇERLI bir CA 'dan sertifika sunuyor. Örnek olarak, arka uç ana bilgisayar adı olarak ayarlanmışsa `myapp-centralus.contosonews.net` ve TLS el sıkışması sırasında arka ucunuzun temsil `myapp-centralus.contosonews.net` etmediği sertifika, ilgili ada sahip değilse `*myapp-centralus*.contosonews.net` , ön kapı bağlantıyı reddeder ve bir hatayla sonuçlanır. 
     1. **Çözüm**: bir uyumluluk açısından önerilmemekle karşı, ön kapılarınız için sertifika konu adı denetimini devre dışı bırakarak bu hatayı geçici olarak yapabilirsiniz. Bu, Azure portal ayarları altında ve API 'deki BackendPoolsSettings altında bulunur.
 2. **GEÇERSIZ CA 'Dan arka uç barındırma sertifikası**: yalnızca [geçerli CA](/azure/frontdoor/front-door-troubleshoot-allowed-ca) 'Lardan sertifikalar, ön kapılı arka uçta kullanılabilir. İç CA 'Ların veya otomatik olarak imzalanan sertifikaların sertifikalara izin verilmez.
 

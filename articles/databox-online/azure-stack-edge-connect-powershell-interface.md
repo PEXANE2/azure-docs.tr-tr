@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: ee69015b52024ba4edaaa414a0d9dda753510b3e
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 445e86f1979d52496052572c1682e0b894d512dd
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570102"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339884"
 ---
 # <a name="manage-an-azure-stack-edge-device-via-windows-powershell"></a>Windows PowerShell aracılığıyla Azure Stack Edge cihazını yönetme
 
@@ -71,7 +71,7 @@ Sertifikalar hakkında daha fazla bilgi için [Azure IoT Edge sertifikalara](htt
 İşlem rolü cihazınızda yapılandırılmışsa, işlem günlüklerini PowerShell arabirimi aracılığıyla da alabilirsiniz.
 
 1. [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
-2. Cihazınızın işlem `Get-AzureDataBoxEdgeComputeRoleLogs` günlüklerini almak için kullanın.
+2. `Get-AzureDataBoxEdgeComputeRoleLogs`Cihazınızın işlem günlüklerini almak için kullanın.
 
     Aşağıdaki örnek, bu cmdlet 'in kullanımını gösterir:
 

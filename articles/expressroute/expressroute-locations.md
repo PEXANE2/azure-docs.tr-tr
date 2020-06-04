@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: f45bbd010bca8bbf42be13eeaac327a98f564864
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b9ede5479a9b05355fe2d6d5e2f47c52a6fea2d3
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298253"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323918"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -159,7 +159,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Telus](https://www.telus.com)** |Destekleniyor |Destekleniyor |Montreal, Seattle, Tora |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Destekleniyor |Destekleniyor |Cape Town, Johannesburg |
 | **[TIME dotCom](https://www.time.com.my/enterprise/connectivity/direct-cloud)** | Destekleniyor | Destekleniyor | Kuala Lumpur |
-| **[Transtelco](https://transtelco.net/enterprise-services/)** |Destekleniyor |Destekleniyor |Dallas, Los Angeles|
+| **[Transtelco](https://transtelco.net/enterprise-services/)** |Destekleniyor |Destekleniyor |Dallas, Los Angeles, Queretaro|
 | **[UOLDIVEO](https://www.uoldiveo.com.br/)** |Destekleniyor |Destekleniyor |Sao Paulo |
 | **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |Destekleniyor |Destekleniyor |Amsterdam, Chicago, Dallas, Hong Kong ÖIB, Londra, Mumbai, Silicon Valley, Singapur, Sidney, Tokyo, Toron, Washington DC |
 | **[Viasat](http://www.directcloud.viasatbusiness.com/)** | Destekleniyor | Destekleniyor | Washington DC2 |

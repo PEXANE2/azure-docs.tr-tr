@@ -10,15 +10,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 06/02/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: f7a036a382ac3b16093529a67abe9ef78b897274
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 970c20edd3a24594f22ff7e72cd4275118193845
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300103"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323799"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlar ile Azure API Management’ı kullanma
 Azure Sanal Ağları (VNET’ler) Azure kaynaklarınızdan herhangi birini, erişimini denetlediğiniz İnternet tabanlı olmayan ve yönlendirilebilir bir ağa yerleştirmenizi sağlar. Bu ağlar daha sonra, çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure sanal ağları hakkında daha fazla bilgi edinmek için buradaki bilgilerle başlayın: [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
@@ -120,14 +120,13 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
 | */445                      | Giden           | TCP                | VIRTUAL_NETWORK/depolama             | [GIT](api-management-configuration-repository-git.md) Için Azure dosya paylaşımında bağımlılık                      | Dış & Iç  |
 | */1886                     | Giden           | TCP                | VIRTUAL_NETWORK/Azurecyüksek            | Kaynak Durumu sistem durumu yayımlamak için gereklidir          | Dış & Iç  |
 | */443                     | Giden           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | [Tanılama günlüklerini ve ölçümlerini](api-management-howto-use-azure-monitor.md) yayımlama                       | Dış & Iç  |
-| */25                       | Giden           | TCP                | VIRTUAL_NETWORK/INTERNET            | E-posta göndermek için SMTP geçişine Bağlan                    | Dış & Iç  |
-| */587                      | Giden           | TCP                | VIRTUAL_NETWORK/INTERNET            | E-posta göndermek için SMTP geçişine Bağlan                    | Dış & Iç  |
-| */25028                    | Giden           | TCP                | VIRTUAL_NETWORK/INTERNET            | E-posta göndermek için SMTP geçişine Bağlan                    | Dış & Iç  |
-| */6381-6383              | Gelen & giden | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Makineler arasındaki [hız limiti](api-management-access-restriction-policies.md#LimitCallRateByKey) Ilkeleri için Redsıs hizmetine erişin         | Dış & Iç  |
+| */25, 587, 25028                       | Giden           | TCP                | VIRTUAL_NETWORK/INTERNET            | E-posta göndermek için SMTP geçişine Bağlan                    | Dış & Iç  |
+| */6381-6383              | Gelen & giden | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Makineler arasındaki [önbellek](api-management-caching-policies.md) Ilkeleri için Redsıs hizmetine erişme         | Dış & Iç  |
+| */4290              | Gelen & giden | UDP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Makineler arasındaki [hız limiti](api-management-access-restriction-policies.md#LimitCallRateByKey) ilkeleri Için eşitleme sayaçları         | Dış & Iç  |
 | * / *                        | Gelen            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Azure altyapı Load Balancer                          | Dış & Iç  |
 
 >[!IMPORTANT]
-> API Management hizmetin başarıyla dağıtılması için *Purpose* , amacının **kalın** olduğu bağlantı noktaları gereklidir. Diğer bağlantı noktalarını engellemek, çalışan hizmeti kullanma ve izleme yeteneğinin azalmasına neden olur.
+> API Management hizmetin başarıyla dağıtılması için *Purpose* , amacının **kalın** olduğu bağlantı noktaları gereklidir. Diğer bağlantı noktalarını engellemek, **çalışan hizmeti kullanma ve izleme ve taahhüt EDILEN SLA sağlama**yeteneğinin **azalmasına** neden olur.
 
 + **TLS işlevselliği**: TLS/SSL sertifika zinciri oluşturma ve doğrulamayı etkinleştirmek için API Management hizmeti, ocsp.msocsp.com, mscrl.microsoft.com ve CRL.Microsoft.com giden ağ bağlantısı gerektirir. API Management karşıya yüklediğiniz herhangi bir sertifika, CA köküne tam zinciri içeriyorsa, bu bağımlılık gerekli değildir.
 

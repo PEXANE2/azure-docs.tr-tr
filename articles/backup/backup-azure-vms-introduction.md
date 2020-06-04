@@ -3,12 +3,12 @@ title: Azure VM yedeklemesi hakkında
 description: Bu makalede, Azure Backup hizmetinin Azure sanal makinelerini nasıl yedeklediği ve en iyi yöntemleri nasıl izledikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: f4b36f57362607a13c09896cd7109596aba0a852
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9838f4993e71f2991500af0e152abee36f996050
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79415975"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322918"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM yedeklemesine genel bakış
 
@@ -49,7 +49,7 @@ Azure Backup Azure VM 'Leri için bir yedeklemeyi nasıl tamamlarsa aşağıda v
 
 Azure Backup ile Azure VM 'Leri yedeklerken, sanal makineler Depolama Hizmeti Şifrelemesi (SSE) ile geri kalanıyla şifrelenir. Azure Backup, Azure disk şifrelemesi kullanılarak şifrelenmiş Azure VM 'Leri de yedekleyebilir.
 
-**Şifreleme** | **Bilgileri** | **Destek**
+**Şifreleme** | **Ayrıntılar** | **Destek**
 --- | --- | ---
 **Azure Disk Şifrelemesi** | Azure disk şifrelemesi, hem işletim sistemini hem de Azure VM 'Leri için veri disklerini şifreler.<br/><br/> Azure disk şifrelemesi, bir anahtar kasasında gizli dizi olarak korunmuş olan BitLocker şifreleme anahtarları (BEKs) ile tümleşir. Azure disk şifrelemesi Ayrıca Azure Key Vault anahtar şifreleme anahtarları (KEKs) ile tümleşir. | Azure Backup, yalnızca BEKs ile şifrelenen yönetilen ve yönetilmeyen Azure VM 'lerinin yedeklenmesini destekler, ya da KEKs ile birlikte BEKs.<br/><br/> Hem BEKs hem de KEKs yedeklenir ve şifrelenir.<br/><br/> KEKs ve BEKs yedeklendiği için, gerekli izinlere sahip kullanıcılar anahtarları ve gizli dizileri gerekirse anahtar kasasına geri yükleyebilir. Bu kullanıcılar şifreli VM 'yi de kurtarabilir.<br/><br/> Şifrelenmiş anahtarlar ve gizlilikler yetkisiz kullanıcılar veya Azure tarafından okunamaz.
 **SSE** | SSE ile Azure Storage, verileri depolamadan önce otomatik olarak şifreleyerek, bekleyen şifreleme sağlar. Azure Storage, verileri almadan önce de verilerin şifresini çözer. | Azure Backup, Azure VM 'lerinin Rest şifrelemesi için SSE kullanır.
@@ -76,7 +76,7 @@ Azure Backup, anlık görüntüleri yedekleme zamanlamalarına göre alır.
 
 Aşağıdaki tabloda farklı türde anlık görüntü tutarlılığı açıklanmaktadır:
 
-**Anlık Görüntü** | **Bilgileri** | **Kurtarma** | **Dikkate Alınacak Nokta**
+**Anlık Görüntü** | **Ayrıntılar** | **Kurtarma** | **Dikkate Alınacak Nokta**
 --- | --- | --- | ---
 **Uygulamayla tutarlı** | Uygulamayla tutarlı yedeklemeler bellek içeriğini ve bekleyen g/ç işlemlerini yakalar. Uygulamayla tutarlı anlık görüntüler, bir yedekleme gerçekleşmeden önce uygulama verilerinin tutarlılığını sağlamak için bir VSS yazıcısı (veya Linux için ön betikler öncesi) kullanır. | VM 'yi uygulamayla tutarlı bir anlık görüntüyle kurtarırken, VM önyüklenir. Veri bozulması veya kaybı yok. Uygulamalar tutarlı bir durumda başlar. | Windows: tüm VSS yazıcıları başarılı oldu<br/><br/> Linux: ön/son betik yapılandırma ve başarılı
 **Dosya sistemiyle tutarlı** | Dosya sistemiyle tutarlı yedeklemeler, tüm dosyaların bir anlık görüntüsünü aynı anda alarak tutarlılık sağlar.<br/><br/> | Bir sanal makineyi dosya sistemiyle tutarlı bir anlık görüntüyle kurtarırken, VM önyüklenir. Veri bozulması veya kaybı yok. Geri yüklenen verilerin tutarlı olduğundan emin olmak için uygulamaların kendi "düzeltilmesi" mekanizmasını uygulaması gerekir. | Windows: bazı VSS yazıcıları başarısız oldu <br/><br/> Linux: varsayılan (ön/sonrası betikler yapılandırılmamışsa veya başarısız olursa)
@@ -84,12 +84,12 @@ Aşağıdaki tabloda farklı türde anlık görüntü tutarlılığı açıklanm
 
 ## <a name="backup-and-restore-considerations"></a>Yedekleme ve geri yükleme konuları
 
-**Dikkate Alınacak Nokta** | **Bilgileri**
+**Dikkate Alınacak Nokta** | **Ayrıntılar**
 --- | ---
 **Disk** | VM disklerinin yedeklenmesi paralel. Örneğin, bir VM 'nin dört diski varsa, yedekleme hizmeti dört diski paralel olarak yedeklemeye çalışır. Yedekleme artımlı (yalnızca değiştirilen veriler).
 **Zamanlama** |  Yedekleme trafiğini azaltmak için günün farklı saatlerinde farklı VM 'Leri yedekleyin ve zamanların çakışmadığından emin olun. VM 'Lerin yedeklenmesi aynı anda trafik jams oluşmasına neden olur.
 **Yedeklemeler hazırlanıyor** | Yedeklemenin hazırlanması için gereken süreyi göz önünde bulundurun. Hazırlık süresi, yedekleme uzantısını yüklemeyi veya güncelleştirmeyi, yedekleme çizelgesine göre bir anlık görüntüyü tetiklemeyi içerir.
-**Veri aktarımı** | Önceki yedeklemeden artımlı değişiklikleri belirlemek için Azure Backup gereken süreyi göz önünde bulundurun.<br/><br/> Artımlı yedeklemede, Azure Backup bloğun sağlama toplamını hesaplayarak değişiklikleri belirler. Bir blok değiştirilirse, kasaya aktarım için işaretlenir. Hizmet, aktarılacak veri miktarını daha aza indirmeye çalışacak şekilde tanımlanan blokları analiz eder. Değiştirilen tüm blokları değerlendirdikten sonra Azure Backup değişiklikleri kasaya aktarır.<br/><br/> Anlık görüntü alma ve kasaya kopyalama arasında bir gecikme olabilir.<br/><br/> Yoğun saatlerde, yedeklemelerin işlenmesi sekiz saate kadar sürebilir. Bir VM için yedekleme zamanı, günlük yedekleme için 24 saatten daha az olacaktır.
+**Veri aktarımı** | Önceki yedeklemeden artımlı değişiklikleri belirlemek için Azure Backup gereken süreyi göz önünde bulundurun.<br/><br/> Artımlı yedeklemede, Azure Backup bloğun sağlama toplamını hesaplayarak değişiklikleri belirler. Bir blok değiştirilirse, kasaya aktarım için işaretlenir. Hizmet, aktarılacak veri miktarını daha aza indirmeye çalışacak şekilde tanımlanan blokları analiz eder. Değiştirilen tüm blokları değerlendirdikten sonra Azure Backup değişiklikleri kasaya aktarır.<br/><br/> Anlık görüntü alma ve kasaya kopyalama arasında bir gecikme olabilir. Yoğun zamanlarda, anlık görüntülerin kasaya aktarılması sekiz saate kadar sürebilir. Bir VM için yedekleme zamanı, günlük yedekleme için 24 saatten daha az olacaktır.
 **İlk yedekleme** | Artımlı yedeklemeler için toplam Yedekleme süresi 24 saatten daha az olsa da, ilk yedekleme için bu durum olmayabilir. İlk yedekleme için gereken süre, verilerin boyutuna ve yedeklemenin işlendiği zamana bağlı olarak değişir.
 **Geri yükleme kuyruğu** | Azure Backup işlemler birden çok depolama hesabından aynı anda geri yüklenir ve geri yükleme isteklerini bir sıraya koyar.
 **Kopyayı geri yükle** | Geri yükleme işlemi sırasında veriler kasadan depolama hesabına kopyalanır.<br/><br/> Toplam geri yükleme süresi, saniye başına g/ç işlemlerine (ıOPS) ve depolama hesabının aktarım hızına bağlıdır.<br/><br/> Kopyalama süresini azaltmak için, diğer uygulama yazmaları ve okumaları ile yüklenmeyen bir depolama hesabı seçin.
@@ -103,7 +103,7 @@ Bu yaygın senaryolar toplam yedekleme süresini etkileyebilir:
 - **Disk karmaşıklığı:** Artımlı yedekleme yapılmakta olan korumalı diskler 200 GB 'tan fazla günlük bir dalgalanma sahip olursa, yedekleme işleminin tamamlanması uzun zaman alabilir (sekiz saatten fazla).
 - **Yedekleme sürümleri:** Yedeklemenin en son sürümü (anında geri yükleme sürümü olarak bilinir), değişiklikleri belirlemek için sağlama toplamı karşılaştırmasından daha iyileştirilmiş bir işlem kullanır. Ancak anlık geri yükleme kullanıyorsanız ve bir yedek anlık görüntüsünü sildiyseniz yedekleme, sağlama toplamı karşılaştırmasına geçer. Bu durumda, yedekleme işlemi 24 saati (veya başarısız) aşacaktır.
 
-## <a name="best-practices"></a>En iyi uygulamalar
+## <a name="best-practices"></a>Önerilen uygulamalar
 
 VM yedeklemelerini yapılandırırken, aşağıdaki yöntemleri takip ederiz:
 

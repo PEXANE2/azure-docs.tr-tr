@@ -1,7 +1,7 @@
 ---
-title: Bir Azure SQL veritabanını BACPAC dosyasını dışarı aktarma (Azure portal)
-titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Azure portal kullanarak bir Azure SQL veritabanını BACPAC dosyasına aktarma
+title: Bir Azure SQL veritabanını BACPAC dosyasına dışarı aktarma (Azure portal)
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
+description: Azure portal kullanarak bir Azure SQL veritabanını BACPAC dosyasına aktarın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,14 +11,14 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/16/2019
 ms.topic: conceptual
-ms.openlocfilehash: efd5e33f5ed8ecffa84dd0e9dc356d5ec3b1f69d
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 22dd4286b77fd93ca595d48706cf5760808428a9
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188843"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322983"
 ---
-# <a name="export-to-a-bacpac-file---azure-sql-database--sql-managed-instance"></a>BACPAC dosyasına aktarma-SQL yönetilen örnek & Azure SQL veritabanı
+# <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>BACPAC dosyasına aktarma-Azure SQL veritabanı ve Azure SQL yönetilen örneği
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 
@@ -39,9 +39,9 @@ Arşivleme için bir veritabanını dışarı veya başka bir platforma taşıma
 > [!NOTE]
 > BACPACs yedekleme ve geri yükleme işlemleri için kullanılmak üzere tasarlanmamıştır. Azure, her kullanıcı veritabanı için otomatik olarak yedeklemeler oluşturur. Ayrıntılar için bkz. [iş sürekliliği genel bakış](business-continuity-high-availability-disaster-recover-hadr-overview.md) ve [SQL veritabanı yedeklemeleri](automated-backups-overview.md).
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="the-azure-portal"></a>Azure portal
 
-[Azure SQL yönetilen örneğinden](../managed-instance/sql-managed-instance-paas-overview.md) bir veritabanının bacpac 'sini Azure Portal kullanarak dışarı aktarmak Şu anda desteklenmemektedir. Bunun yerine SQL Server Management Studio veya SQLPackage kullanın.
+[Azure SQL yönetilen örneğinden](../managed-instance/sql-managed-instance-paas-overview.md) bir veritabanının bacpac 'sini Azure Portal kullanarak dışarı aktarma işlemi şu anda desteklenmiyor. Bunun yerine SQL Server Management Studio veya SQLPackage kullanın.
 
 > [!NOTE]
 > Azure portal veya PowerShell aracılığıyla gönderilen içeri/dışarı aktarma isteklerini işleyen makineler, BACPAC dosyasını ve veri katmanı uygulama çerçevesi (DacFX) tarafından oluşturulan geçici dosyaları da depolaması gerekir. Gerekli disk alanı, aynı boyuta sahip veritabanları arasında önemli ölçüde farklılık gösterir ve veritabanı boyutunun 3 katına kadar disk alanı gerektirebilir. İçeri/dışarı aktarma isteği çalıştıran makinelerde yalnızca 450GB yerel disk alanı vardır. Sonuç olarak, bazı istekler hata vererek başarısız olabilir `There is not enough space on the disk` . Bu durumda geçici çözüm, SqlPackage. exe ' yi yeterli yerel disk alanına sahip bir makinede çalıştırmalıdır. Bu sorundan kaçınmak için, [SQL paketini](#sqlpackage-utility) 150gb 'den büyük veritabanlarını içeri/dışarı aktarmak için kullanmayı öneririz.
@@ -62,7 +62,7 @@ Arşivleme için bir veritabanını dışarı veya başka bir platforma taşıma
 
 ## <a name="sqlpackage-utility"></a>SQLPackage yardımcı programı
 
-[SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) komut satırı yardımcı programını kullanarak bir SQL veritabanını dışarı aktarmak için bkz. [dışarı aktarma parametreleri ve özellikleri](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties). SQLPackage yardımcı programı, [Visual Studio için](https://msdn.microsoft.com/library/mt204009.aspx) [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) ve SQL Server veri araçları en son sürümleriyle birlikte gelir veya [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) 'ın en son sürümünü doğrudan Microsoft Yükleme Merkezi ' nden indirebilirsiniz.
+[SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) komut satırı yardımcı programını kullanarak SQL veritabanında bir veritabanını dışarı aktarmak için bkz. [dışarı aktarma parametreleri ve özellikleri](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties). SQLPackage yardımcı programı, [Visual Studio için](https://msdn.microsoft.com/library/mt204009.aspx) [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) ve SQL Server veri araçları en son sürümleriyle birlikte gelir veya [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) 'ın en son sürümünü doğrudan Microsoft Yükleme Merkezi ' nden indirebilirsiniz.
 
 Çoğu üretim ortamında, ölçek ve performans için SQLPackage yardımcı programının kullanılmasını öneririz. BACPAC dosyalarını kullanarak geçiş hakkında bir SQL Server Müşteri Danışmanlık Ekibi blogu için bkz. [BACPAC Dosyalarını kullanarak SQL Server’dan Azure SQL Veritabanına Geçiş](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 
@@ -74,7 +74,7 @@ SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=apptestserver.d
 
 ## <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 
-SQL Server Management Studio en yeni sürümleri, bir Azure SQL veritabanını veya SQL yönetilen örnek veritabanını BACPAC dosyasına aktarmaya yönelik bir sihirbaz sağlar. [Veri katmanı uygulamasını dışarı aktarma](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)bölümüne bakın.
+SQL Server Management Studio en yeni sürümleri, Azure SQL veritabanındaki bir veritabanını veya bir SQL yönetilen örnek veritabanını BACPAC dosyasına aktarmak için bir sihirbaz sağlar. [Veri katmanı uygulamasını dışarı aktarma](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)bölümüne bakın.
 
 ## <a name="powershell"></a>PowerShell
 
@@ -106,10 +106,10 @@ $exportStatus
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Tek bir veritabanı ve havuza alınmış veritabanlarının uzun süreli yedek saklama hakkında bilgi edinmek için, bir veritabanını arşiv amaçlarıyla dışarıya aktarma alternatifi olarak, bkz. [uzun süreli yedek saklama](long-term-retention-overview.md). [Yalnızca kopya veritabanı yedeklemelerini](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) , uzun süreli yedek bekletmeye alternatif olarak ZAMANLAMAK Için SQL Agent işlerini kullanabilirsiniz.
+- Tek bir veritabanı ve havuza alınmış veritabanlarının uzun süreli yedek saklama hakkında bilgi edinmek için, bir veritabanını arşiv amaçlarıyla dışarı aktarmaya alternatif olarak bkz. [uzun süreli yedek saklama](long-term-retention-overview.md). [Yalnızca kopya veritabanı yedeklemelerini](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) , uzun süreli yedek bekletmeye alternatif olarak ZAMANLAMAK Için SQL Agent işlerini kullanabilirsiniz.
 - BACPAC dosyalarını kullanarak geçiş hakkında bir SQL Server Müşteri Danışmanlık Ekibi blogu için bkz. [BACPAC Dosyalarını kullanarak SQL Server’dan Azure SQL Veritabanına Geçiş](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 - Bir SQL Server veritabanına BACPAC aktarma hakkında bilgi edinmek için bkz. [BACPAC 'yi bir SQL Server veritabanına aktarma](https://msdn.microsoft.com/library/hh710052.aspx).
 - Bir SQL Server veritabanından BACPAC dışarı aktarma hakkında bilgi edinmek için bkz. [veri katmanı uygulamasını dışarı aktarma](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
-- Veri geçişi hizmetini kullanarak bir veritabanını geçirme hakkında bilgi edinmek için bkz. [DMS kullanarak Azure SQL veritabanı 'na SQL Server geçirme](../../dms/tutorial-sql-server-to-azure-sql.md).
+- Veri taşıma hizmetini kullanarak bir veritabanını geçirme hakkında bilgi edinmek için bkz. [DMS kullanarak SQL Server 'Ten Azure SQL veritabanı 'Na geçiş](../../dms/tutorial-sql-server-to-azure-sql.md).
 - Azure SQL veritabanı 'na geçiş yapmak için SQL Server 'den bir Prelude olarak veriyorsanız, bkz. [SQL Server veritabanını Azure SQL veritabanı 'Na geçirme](migrate-to-database-from-sql-server.md).
 - Depolama anahtarlarını ve paylaşılan erişim imzalarını güvenli bir şekilde yönetme ve paylaşma hakkında bilgi edinmek için bkz. [Azure Storage Güvenlik Kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-security-guide).
