@@ -5,17 +5,17 @@ description: Hizmetin dışında eğitilen modellerle Azure Machine Learning nas
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/17/2020
-ms.openlocfilehash: 924bd2fdba2359e6f1108c39802ad3ce95ebdf07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2cf80a509b1a8100aaa00bf6a2fdeedbbdf143af
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79472384"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433921"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>Azure Machine Learning var olan bir modeli kullanın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,14 +31,14 @@ Azure Machine Learning dışında eğitilen bir makine öğrenimi modelinize sah
 >
 > Dağıtım işlemi hakkında genel bilgi için bkz. [modelleri Azure Machine Learning Ile dağıtma](how-to-deploy-and-where.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [çalışma alanı oluşturma](how-to-manage-workspace.md).
 
     > [!TIP]
     > Bu makaledeki Python örnekleri, `ws` değişkenin Azure Machine Learning çalışma alanınıza ayarlandığını varsayar.
     >
-    > CLı örnekleri `myworkspace` ve `myresourcegroup`yer tutucusu kullanır. Bunları, çalışma alanınızın adı ve onu içeren kaynak grubu ile değiştirin.
+    > CLı örnekleri ve yer tutucusu kullanır `myworkspace` `myresourcegroup` . Bunları, çalışma alanınızın adı ve onu içeren kaynak grubu ile değiştirin.
 
 * [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
 
@@ -47,11 +47,11 @@ Azure Machine Learning dışında eğitilen bir makine öğrenimi modelinize sah
 * Eğitilen bir model. Model, geliştirme ortamınızda bir veya daha fazla dosyada kalıcı olmalıdır.
 
     > [!NOTE]
-    > Azure Machine Learning dışında eğitilen bir modelin kaydını göstermek için, bu makaledeki örnek kod parçacıkları Paolo Ripamonti 'ın Twitter yaklaşım Analizi projesi tarafından oluşturulan modelleri kullanır: [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis).
+    > Azure Machine Learning dışında eğitilen bir modelin kaydını göstermek için, bu makaledeki örnek kod parçacıkları Paolo Ripamonti 'ın Twitter yaklaşım Analizi projesi tarafından oluşturulan modelleri kullanır: [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis) .
 
 ## <a name="register-the-models"></a>Model (ler) i Kaydet
 
-Bir modeli kaydetmek, çalışma alanınızdaki modeller hakkında meta verileri depolamanıza, sürümüne ve izlemenize olanak sağlar. Aşağıdaki Python ve CLI `models` örneklerinde, Dizin `model.h5`, `model.w2v` `encoder.pkl`, ve `tokenizer.pkl` dosyalarını içerir. Bu örnek, `models` dizinde bulunan dosyaları adlı `sentiment`yeni bir model kaydı olarak yükler:
+Bir modeli kaydetmek, çalışma alanınızdaki modeller hakkında meta verileri depolamanıza, sürümüne ve izlemenize olanak sağlar. Aşağıdaki Python ve CLI örneklerinde, `models` Dizin `model.h5` ,, `model.w2v` `encoder.pkl` ve dosyalarını içerir `tokenizer.pkl` . Bu örnek, dizinde bulunan dosyaları `models` adlı yeni bir model kaydı olarak yükler `sentiment` :
 
 ```python
 from azureml.core.model import Model
@@ -70,7 +70,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 ```
 
 > [!TIP]
-> Ayrıca, kayıtlı modele ekleme `tags` ve `properties` sözlük nesneleri de ayarlayabilirsiniz. Bu değerler, daha sonra belirli bir modeli belirlemesine yardımcı olmak için kullanılabilir. Örneğin, kullanılan çerçeve, eğitim parametreleri vb.
+> Ayrıca, `tags` kayıtlı modele ekleme ve `properties` sözlük nesneleri de ayarlayabilirsiniz. Bu değerler, daha sonra belirli bir modeli belirlemesine yardımcı olmak için kullanılabilir. Örneğin, kullanılan çerçeve, eğitim parametreleri vb.
 
 Daha fazla bilgi için, [az ml model kayıt](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register) başvurusuna bakın.
 
@@ -81,7 +81,7 @@ Model kaydı hakkında genel bilgi için bkz. [Machine Learning modellerini yön
 
 Çıkarım yapılandırması, dağıtılan modeli çalıştırmak için kullanılan ortamı tanımlar. Çıkarım yapılandırması, dağıtıldıktan sonra modeli çalıştırmak için kullanılan aşağıdaki varlıklara başvurur:
 
-* Giriş betiği. Bu dosya (adlandırılmış `score.py`), dağıtılan hizmet başladığında modeli yükler. Verilerin alınması, modele geçirilmesi ve sonra bir yanıt döndürmesi da sorumludur.
+* Giriş betiği. Bu dosya (adlandırılmış `score.py` ), dağıtılan hizmet başladığında modeli yükler. Verilerin alınması, modele geçirilmesi ve sonra bir yanıt döndürmesi da sorumludur.
 * Azure Machine Learning [ortamı](how-to-use-environments.md). Bir ortam, model ve giriş betiğini çalıştırmak için gereken yazılım bağımlılıklarını tanımlar.
 
 Aşağıdaki örnek, bir ortam oluşturmak için SDK 'nın nasıl kullanılacağını gösterir ve ardından bunu bir çıkarım yapılandırmasıyla kullanmaktır:
@@ -111,7 +111,7 @@ inference_config = InferenceConfig(entry_script="score.py",
                                    environment=myenv)
 ```
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 + [Ortamları kullanma](how-to-use-environments.md).
 + [Inenceconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) başvurusu.
@@ -127,7 +127,7 @@ CLı, bir YAML dosyasından çıkarım yapılandırmasını yükler:
 }
 ```
 
-CLı ile, Conda ortamı, çıkarım yapılandırması tarafından başvurulan `myenv.yml` dosyada tanımlanır. Aşağıdaki YAML bu dosyanın içeriğidir:
+CLı ile, Conda ortamı, `myenv.yml` çıkarım yapılandırması tarafından başvurulan dosyada tanımlanır. Aşağıdaki YAML bu dosyanın içeriğidir:
 
 ```yaml
 name: inference_environment
@@ -146,12 +146,12 @@ dependencies:
 
 ### <a name="entry-script"></a>Giriş betiği
 
-Giriş betiği yalnızca iki zorunlu işleve sahiptir `init()` ve. `run(data)` Bu işlevler, başlatma sırasında hizmeti başlatmak ve bir istemci tarafından geçirilen istek verilerini kullanarak modeli çalıştırmak için kullanılır. Komut dosyasının geri kalanı, modeli yüklemeyi ve çalıştırmayı işler.
+Giriş betiği yalnızca iki zorunlu işleve sahiptir `init()` ve `run(data)` . Bu işlevler, başlatma sırasında hizmeti başlatmak ve bir istemci tarafından geçirilen istek verilerini kullanarak modeli çalıştırmak için kullanılır. Komut dosyasının geri kalanı, modeli yüklemeyi ve çalıştırmayı işler.
 
 > [!IMPORTANT]
 > Tüm modeller için kullanılan genel bir giriş betiği yok. Her zaman kullanılan modele özeldir. Modelin nasıl yükleneceğini, modelin beklediği veri biçimini ve modeli kullanarak verilerin nasıl puanlandıralınacağını anlamalıdır.
 
-Aşağıdaki Python kodu bir örnek giriş betiğine (`score.py`) sahiptir:
+Aşağıdaki Python kodu bir örnek giriş betiğine ( `score.py` ) sahiptir:
 
 ```python
 import os
@@ -258,7 +258,7 @@ Azure bulutundaki Azure Kubernetes hizmeti gibi farklı bir işlem hedefine dağ
 
 ## <a name="deploy-the-model"></a>Modeli dağıtma
 
-Aşağıdaki örnek, adlı `sentiment`kayıtlı modele bilgileri yükler ve ardından adlı `sentiment`bir hizmet olarak dağıtır. Dağıtım sırasında, hizmet ortamını oluşturmak ve yapılandırmak için çıkarım yapılandırma ve dağıtım yapılandırması kullanılır:
+Aşağıdaki örnek, adlı kayıtlı modele bilgileri yükler `sentiment` ve ardından adlı bir hizmet olarak dağıtır `sentiment` . Dağıtım sırasında, hizmet ortamını oluşturmak ve yapılandırmak için çıkarım yapılandırma ve dağıtım yapılandırması kullanılır:
 
 ```python
 from azureml.core.model import Model
@@ -273,7 +273,7 @@ print("scoring URI: " + service.scoring_uri)
 
 Daha fazla bilgi için bkz. [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) başvurusu.
 
-Modeli CLı 'dan dağıtmak için aşağıdaki komutu kullanın. Bu komut, `inferenceConfig.json` ve `deploymentConfig.json` dosyalarında depolanan çıkarım ve dağıtım`sentiment:1`yapılandırmasını kullanarak kayıtlı modelin () sürüm 1 ' i dağıtır:
+Modeli CLı 'dan dağıtmak için aşağıdaki komutu kullanın. Bu komut `sentiment:1` , ve dosyalarında depolanan çıkarım ve dağıtım yapılandırmasını kullanarak kayıtlı modelin () sürüm 1 ' i `inferenceConfig.json` dağıtır `deploymentConfig.json` :
 
 ```azurecli
 az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc deploymentConfig.json

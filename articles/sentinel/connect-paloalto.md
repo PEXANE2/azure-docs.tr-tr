@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: a79b7a1448e1decb377aa0072261df068c366567
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 337575a85b899b918162ad59c0bbbbaf742a83fe
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588136"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417472"
 ---
 # <a name="connect-palo-alto-networks-to-azure-sentinel"></a>Palo Alto ağlarını Azure Sentinel 'e bağlama
 
@@ -34,7 +34,7 @@ Bu makalede, Palo Alto Networks gerecinizi Azure Sentinel 'e nasıl bağlayabile
 Azure çalışma alanınıza Syslog Aracısı aracılığıyla syslog iletilerini CEF biçiminde iletmek için Palo Alto ağlarını yapılandırın:
 1.  [Ortak olay biçimi (CEF) yapılandırma kılavuzlarından](https://docs.paloaltonetworks.com/resources/cef) gidin ve gereç türü için PDF 'yi indirin. CEF olaylarını toplamak üzere Palo Alto Networks gerecinizi ayarlamak için kılavuzdaki tüm yönergeleri izleyin. 
 
-1.  [Syslog Izlemesini yapılandırma](https://aka.ms/asi-syslog-paloalto-forwarding) bölümüne gidin ve Azure Sentinel 'e Palo Alto Networks GERECINDEN CEF olay iletmeyi yapılandırmak için adım 2 ve 3 ' ü izleyin.
+1.  [Syslog Izlemesini yapılandırma](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/configure-syslog-monitoring) bölümüne gidin ve Azure Sentinel 'e Palo Alto Networks GERECINDEN CEF olay iletmeyi yapılandırmak için adım 2 ve 3 ' ü izleyin.
 
     1. **Syslog Sunucu biçimini** **BSD**olarak ayarladığınızdan emin olun.
 

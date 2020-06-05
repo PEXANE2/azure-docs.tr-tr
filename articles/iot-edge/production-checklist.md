@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e818de4885d3859199108d7d88e4cbcb215dc4cc
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780751"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431916"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge çözümünüzü üretime dağıtmaya hazırlanma
 
@@ -129,7 +129,7 @@ TimeToLiveSecs parametresinin varsayılan değeri 7200 saniyedir ve bu iki saatt
 
 ### <a name="do-not-use-debug-versions-of-module-images"></a>Modül görüntülerinin hata ayıklama sürümlerini kullanmayın
 
-Test senaryolarından üretim senaryolarına geçiş yaparken, hata ayıklama yapılandırmalarının dağıtım bildirimlerini kaldırmayı unutmayın. Dağıtım bildirimlerinde modül görüntülerinin hiçbirinin ** \.hata ayıklama** sonekine sahip olup olmadığını denetleyin. Hata ayıklama için modüllerde bağlantı noktalarını açığa çıkarmak için oluşturma seçenekleri eklediyseniz, bu oluşturma seçeneklerini de kaldırın.
+Test senaryolarından üretim senaryolarına geçiş yaparken, hata ayıklama yapılandırmalarının dağıtım bildirimlerini kaldırmayı unutmayın. Dağıtım bildirimlerinde modül görüntülerinin hiçbirinin ** \. hata ayıklama** sonekine sahip olup olmadığını denetleyin. Hata ayıklama için modüllerde bağlantı noktalarını açığa çıkarmak için oluşturma seçenekleri eklediyseniz, bu oluşturma seçeneklerini de kaldırın.
 
 ## <a name="container-management"></a>Kapsayıcı yönetimi
 
@@ -151,7 +151,7 @@ Hizmet sorumlusu oluşturmak için, [hizmet sorumlusu oluşturma](../container-r
 
 * İlk komut, hizmet sorumlusu oluşturur. Hizmet sorumlusu KIMLIĞI ve hizmet sorumlusu parolasının çıktısını verir. Bu değerleri kayıtlarınızda güvenli bir şekilde depolayın.
 
-* İkinci betik, daha sonra gerekirse çalıştırılabilen hizmet sorumlusuna verilecek rol atamaları oluşturur. `role` Parametresi Için **acrpull** Kullanıcı rolünü uygulamamız önerilir. Rollerin listesi için bkz. [Azure Container Registry roller ve izinler](../container-registry/container-registry-roles.md).
+* İkinci betik, daha sonra gerekirse çalıştırılabilen hizmet sorumlusuna verilecek rol atamaları oluşturur. Parametresi için **Acrpull** Kullanıcı rolünü uygulamamız önerilir `role` . Rollerin listesi için bkz. [Azure Container Registry roller ve izinler](../container-registry/container-registry-roles.md).
 
 Hizmet sorumlusu kullanarak kimlik doğrulaması yapmak için, ilk betikten edindiğiniz hizmet sorumlusu KIMLIĞINI ve parolasını belirtin. Dağıtım bildiriminde bu kimlik bilgilerini belirtin.
 
@@ -181,7 +181,7 @@ Etiket kuralına bir örnek için bkz. IoT Edge sıralı etiketleri ve sürümle
 | [Azure IoT Edge Aracısı](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
 | [Azure IoT Edge HUb 'ı](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
 
-Ardından, edgeAgent ve edgeHub sistem modülleri için Deployment. Template. JSON dosyasındaki görüntü başvurularını güncelleştirdiğinizden emin olun. Her `mcr.microsoft.com` iki modül için kayıt defteri adınızla ve sunucu ile değiştirin.
+Ardından, edgeAgent ve edgeHub sistem modülleri için Deployment. Template. JSON dosyasındaki görüntü başvurularını güncelleştirdiğinizden emin olun. `mcr.microsoft.com`Her iki modül için kayıt defteri adınızla ve sunucu ile değiştirin.
 
 * edgeAgent:
 
@@ -210,13 +210,13 @@ Ağ Kurulum, IoT Edge cihazlarından yapılan bağlantılara açıkça izin verm
 * **IoT Edge hub** , büyük olasılıkla WebSockets üzerinden tek bir kalıcı AMQP bağlantısı veya IoT Hub için birden çok MQTT bağlantısı açar.
 * **IoT Edge Daemon** , IoT Hub için ARALıKLı olarak https çağrıları yapar.
 
-Üç durumda da DNS adı, \*. Azure-Devices.NET ile eşleşir.
+Üç durumda da DNS adı, \* . Azure-Devices.NET ile eşleşir.
 
 Ayrıca, **kapsayıcı altyapısı** , https üzerinden kapsayıcı kayıt defterlerine çağrı yapar. IoT Edge çalışma zamanı kapsayıcı görüntülerini almak için DNS adı mcr.microsoft.com olur. Kapsayıcı altyapısı, dağıtımda yapılandırıldığı şekilde diğer kayıt defterlerine bağlanır.
 
 Bu denetim listesi, güvenlik duvarı kuralları için bir başlangıç noktasıdır:
 
-   | URL (\* = joker karakter) | Giden TCP bağlantı noktaları | Kullanım |
+   | URL ( \* = joker karakter) | Giden TCP bağlantı noktaları | Kullanım |
    | ----- | ----- | ----- |
    | mcr.microsoft.com  | 443 | Microsoft Container Registry |
    | global.azure-devices-provisioning.net  | 443 | DPS erişimi (isteğe bağlı) |
@@ -226,6 +226,10 @@ Bu denetim listesi, güvenlik duvarı kuralları için bir başlangıç noktası
    | \*. docker.io  | 443 | Docker Hub erişimi (isteğe bağlı) |
 
 Bu güvenlik duvarı kurallarından bazıları Azure Container Registry devralınır. Daha fazla bilgi için bkz. [güvenlik duvarı arkasındaki Azure Container Registry 'ye erişmek için kuralları yapılandırma](../container-registry/container-registry-firewall-access-rules.md).
+
+> [!NOTE]
+> Geri kalan ve veri uç noktaları arasında, **15 haziran 2020 '** den itibaren TUTARLı bir FQDN sağlamak Için, Microsoft Container Registry veri uç noktası şu `*.cdn.mscr.io` şekilde değişir`*.data.mcr.microsoft.com`  
+> Daha fazla bilgi için bkz. [Microsoft Container Registry istemci güvenlik duvarı kuralları yapılandırması](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)
 
 Güvenlik duvarınızı ortak kapsayıcı kayıt defterlerine erişime izin verecek şekilde yapılandırmak istemiyorsanız, özel [kayıt defterinizde çalışma zamanı kapsayıcıları](#store-runtime-containers-in-your-private-registry)bölümünde açıklandığı gibi özel kapsayıcı kayıt defterinizde görüntüler saklayabilirsiniz.
 
@@ -241,7 +245,7 @@ Cihazlarınız bir ara sunucu kullanan bir ağda dağıtılırsa, IoT Hub ve kap
 
 ### <a name="set-up-logs-and-diagnostics"></a>Günlükleri ve tanılamayı ayarlama
 
-Linux 'ta IoT Edge Daemon, günlükleri varsayılan günlük sürücüsü olarak kullanır. Komut satırı aracını `journalctl` kullanarak Daemon günlüklerini sorgulayın. Windows 'da IoT Edge Daemon, PowerShell tanılamayı kullanır. Arka `Get-IoTEdgeLog` plan programından günlükleri sorgulamak için kullanın. IoT Edge modüller, günlük kaydı için varsayılan olan JSON sürücüsünü kullanır.  
+Linux 'ta IoT Edge Daemon, günlükleri varsayılan günlük sürücüsü olarak kullanır. Komut satırı aracını kullanarak `journalctl` Daemon günlüklerini sorgulayın. Windows 'da IoT Edge Daemon, PowerShell tanılamayı kullanır. `Get-IoTEdgeLog`Arka plan programından günlükleri sorgulamak için kullanın. IoT Edge modüller, günlük kaydı için varsayılan olan JSON sürücüsünü kullanır.  
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
@@ -255,7 +259,7 @@ Varsayılan olarak, Moby kapsayıcı altyapısı kapsayıcı günlük boyutu sı
 
 #### <a name="option-set-global-limits-that-apply-to-all-container-modules"></a>Seçenek: tüm kapsayıcı modülleri için uygulanan genel sınırları ayarla
 
-Kapsayıcı motoru günlük seçeneklerinde tüm kapsayıcı günlük dosyalarının boyutunu sınırlayabilirsiniz. Aşağıdaki örnek, günlük sürücüsünü boyut ve dosya `json-file` sayısı limitleriyle (önerilir) olarak ayarlar:
+Kapsayıcı motoru günlük seçeneklerinde tüm kapsayıcı günlük dosyalarının boyutunu sınırlayabilirsiniz. Aşağıdaki örnek, günlük sürücüsünü `json-file` boyut ve dosya sayısı limitleriyle (önerilir) olarak ayarlar:
 
 ```JSON
 {
@@ -267,7 +271,7 @@ Kapsayıcı motoru günlük seçeneklerinde tüm kapsayıcı günlük dosyaları
 }
 ```
 
-Bu bilgileri adlı `daemon.json` bir dosyaya ekleyin (veya ekleyin) ve cihaz platformunuzun doğru konumunu yerleştirin.
+Bu bilgileri adlı bir dosyaya ekleyin (veya ekleyin) `daemon.json` ve cihaz platformunuzun doğru konumunu yerleştirin.
 
 | Platform | Konum |
 | -------- | -------- |
@@ -278,7 +282,7 @@ Değişikliklerin etkili olması için kapsayıcı altyapısının yeniden başl
 
 #### <a name="option-adjust-log-settings-for-each-container-module"></a>Seçenek: her kapsayıcı modülü için günlük ayarlarını ayarla
 
-Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örneğin:
+Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örnek:
 
 ```yml
 "createOptions": {
@@ -296,7 +300,7 @@ Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örneğin:
 
 #### <a name="additional-options-on-linux-systems"></a>Linux sistemlerinde ek seçenekler
 
-* Varsayılan günlük sürücüsü olarak ayarlayarak `systemd` `journald` , depo altyapısını günlüğe Günlükler gönderecek şekilde yapılandırın. [journal](https://docs.docker.com/config/containers/logging/journald/)
+* `systemd`Varsayılan günlük sürücüsü olarak ayarlayarak, depo [altyapısını günlüğe Günlükler](https://docs.docker.com/config/containers/logging/journald/) gönderecek şekilde yapılandırın `journald` .
 
 * Logrotate aracını yükleyerek eski günlükleri cihazınızdan düzenli olarak kaldırın. Aşağıdaki dosya belirtimini kullanın:
 

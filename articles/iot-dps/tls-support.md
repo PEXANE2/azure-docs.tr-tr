@@ -5,26 +5,26 @@ services: iot-dps
 author: wesmc7777
 ms.service: iot-dps
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 06/04/2020
 ms.author: wesmc
-ms.openlocfilehash: 285832d80d37c8553ffc8e37c6f6eab5d7f6d943
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0daddd2fb1368819c8f7b4cf0183c90a8c6c065e
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984856"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417982"
 ---
 # <a name="tls-support-in-azure-iot-hub-device-provisioning-service-dps"></a>Azure IoT Hub cihaz sağlama hizmeti 'nde (DPS) TLS desteği
 
-DPS, IoT cihazlarındaki bağlantıları güvenli hale getirmek için Aktarım Katmanı Güvenliği 'ni (TLS) kullanır. TLS protokolünün üç sürümü şu anda desteklenmektedir. 1,0, 1,1 ve 1,2 sürümleri.
+DPS, IoT cihazlarındaki bağlantıları güvenli hale getirmek için Aktarım Katmanı Güvenliği 'ni (TLS) kullanır. DPS tarafından desteklenen TLS protokol sürümleri TLS 1,2 ' i içerir.
 
-TLS 1,0 ve 1,1 eski olarak değerlendirilir ve kullanımdan kaldırma için planlanmaktadır. Daha fazla bilgi için bkz. [IoT Hub IÇIN TLS 1,0 ve 1,1 kullanımdan](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md)kaldırılıyor. DPS 'e bağlanırken tercih edilen TLS sürümü olarak TLS 1,2 kullanmanız önemle önerilir.
+TLS 1,0 ve 1,1 eski olarak değerlendirilir ve kullanımdan kaldırma için planlanmaktadır. Daha fazla bilgi için bkz. [IoT Hub IÇIN TLS 1,0 ve 1,1 kullanımdan](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md)kaldırılıyor. 
 
 ## <a name="restrict-connections-to-tls-12"></a>TLS 1,2 ile bağlantıları kısıtlama
 
 Ek güvenlik için, DPS örneklerinizi *yalnızca* TLS sürüm 1,2 kullanan cihaz istemci bağlantılarına izin verecek şekilde yapılandırmanız ve [Önerilen şifrelemelerin](#recommended-ciphers)kullanımını zorunlu hale getirilmesi önerilir.
 
-Bunu yapmak için, [desteklenen bölgelerin](#supported-regions) herhangi birinde yenı bir DPS kaynağı sağlayın ve `minTlsVersion` özelliği Azure Resource Manager şablonunuzun DPS kaynak belirtiminde `1.2` olarak ayarlayın. Aşağıdaki örnek şablon JSON, yeni bir `minTlsVersion` DPS örneği için özelliğini belirtir.
+Bunu yapmak için, [desteklenen bölgelerin](#supported-regions) herhangi birinde yenı bir DPS kaynağı sağlayın ve `minTlsVersion` ÖZELLIĞI `1.2` Azure Resource Manager şablonunuzun DPS kaynak belirtiminde olarak ayarlayın. Aşağıdaki örnek şablon JSON, `minTlsVersion` Yeni BIR DPS örneği için özelliğini belirtir.
 
 ```json
 {
@@ -59,7 +59,7 @@ Kaynak Yöneticisi şablonlarıyla DPS kaynakları oluşturma hakkında daha faz
 Bu yapılandırma kullanılarak oluşturulan DPS kaynağı, 1,0 ve 1,1 TLS sürümlerini kullanarak bağlanmayı deneyen cihazları reddeder. Benzer şekilde, cihaz istemcisinin HELLO iletisi [Önerilen şifrelemelerin](#recommended-ciphers)hiçbirini LISTELEMEZ ise TLS el sıkışması reddedilir.
 
 > [!NOTE]
-> `minTlsVersion` Özelliği salt OKUNURDUR ve DPS kaynağınız oluşturulduktan sonra değiştirilemez. Bu nedenle, *Tüm* IoT CIHAZLARıNıZıN TLS 1,2 ile uyumlu olduğunu ve [Önerilen şifrelemeleri](#recommended-ciphers) önceden test etmeniz ve doğrulamanız önemlidir.
+> `minTlsVersion`Özelliği salt okunurdur ve DPS kaynağınız oluşturulduktan sonra değiştirilemez. Bu nedenle, *Tüm* IoT CIHAZLARıNıZıN TLS 1,2 ile uyumlu olduğunu ve [Önerilen şifrelemeleri](#recommended-ciphers) önceden test etmeniz ve doğrulamanız önemlidir.
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
@@ -69,7 +69,7 @@ TLS 1,2 kullanımını gerektiren IoT DPS örnekleri aşağıdaki bölgelerde ol
 * US Gov Virginia
 
 > [!NOTE]
-> Yük devretme sonrasında, DPS `minTlsVersion` özelliğinin özelliği, coğrafi olarak eşleştirilmiş bölgenin yük devretmesinde etkili olmaya devam edecektir.
+> `minTlsVersion`Yük devretme sonrasında, DPS özelliğinin özelliği, coğrafi olarak eşleştirilmiş bölgenin yük devretmesinde etkili olmaya devam edecektir.
 
 ## <a name="recommended-ciphers"></a>Önerilen şifrelemeler
 
@@ -92,7 +92,10 @@ Azure IoT istemci SDK 'lerinde TLS 1,2 ve izin verilen şifrelemeleri yapıland�
 | Java     | Sürüm 1.19.0 veya daha yeni            | [Bağlantı](https://aka.ms/Tls_Java_SDK_IoT) |
 | NodeJS   | Sürüm 1.12.2 veya daha yeni            | [Bağlantı](https://aka.ms/Tls_Node_SDK_IoT) |
 
+## <a name="use-tls-12-with-iot-hub"></a>IoT Hub TLS 1,2 kullanma
+
+IoT Hub, cihazlarla iletişim kurarken TLS 1,2 kullanacak şekilde yapılandırılabilir. Daha fazla bilgi için bkz. [IoT Hub IÇIN TLS 1,0 ve 1,1 kullanımdan](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md)kaldırılıyor.
 
 ## <a name="use-tls-12-with-iot-edge"></a>IoT Edge TLS 1,2 kullanma
 
-IoT Edge cihazlar, IoT Hub ve DPS ile iletişim kurarken TLS 1,2 kullanacak şekilde yapılandırılabilir. Bu amaçla [IoT Edge belge sayfasını](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md)kullanın.
+IoT Edge cihazlar, IoT Hub ve DPS ile iletişim kurarken TLS 1,2 kullanacak şekilde yapılandırılabilir. Daha fazla bilgi için [IoT Edge belge sayfasına](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md)bakın.

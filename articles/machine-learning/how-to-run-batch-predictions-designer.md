@@ -5,17 +5,17 @@ description: Tasarımcıyı kullanarak bir modeli eğitme ve Batch tahmini işle
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.date: 02/24/2020
 ms.custom: Ignite2019, designer
-ms.openlocfilehash: 5079953994b74378a54a316c288c77d13c3af782
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a464ab001eec877ffc6dc0ab5e33e82493c226ff
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653668"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84429935"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısını (önizleme) kullanarak toplu tahminleri çalıştırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -81,7 +81,7 @@ Bu bölümde, tahminleri yapmak için farklı bir veri kümesi belirtmek üzere 
 
     İletişim kutusunun alt kısmında, eğitim sırasında kullanılan veri kümesi KIMLIĞI için varsayılan bir değerle yapılandırdığınız parametreyi görebilirsiniz.
 
-1. **Yayımla**’yı seçin.
+1. **Yayımla** seçeneğini belirleyin.
 
 ![İşlem hattı yayımlama](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
 

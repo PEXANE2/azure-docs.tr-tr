@@ -5,17 +5,17 @@ description: Azure portal Azure Machine Learning çalışma alanlarını oluştu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4b4b64bcca57e1dc98cdba10626597532ae1461c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c729f59fbb92584ff613147577ab097e63307ace
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81269746"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430449"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portal Azure Machine Learning çalışma alanları oluşturun ve yönetin
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Bir çalışma alanı oluşturmak için bir Azure aboneliğine ihtiyacınız var
 
 1. Yeni çalışma alanınızı yapılandırmak için aşağıdaki bilgileri sağlayın:
 
-   Alan|Açıklama 
+   Alan|Description 
    ---|---
    Çalışma alanı adı |Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte **docs-WS**kullanıyoruz. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın. Çalışma alanı adı büyük/küçük harfe duyarlıdır.
    Abonelik |Kullanmak istediğiniz Azure aboneliğini seçin.
@@ -80,7 +80,7 @@ Düşük kodlu deneyimler ve gelişmiş güvenlik özellikleri gibi gelişmiş �
 
 1. Sayfanın sağ üst kısmında **daha fazla bilgi edinin** ' i seçin.
 
-   [![Çalışma alanını](./media/how-to-manage-workspace/upgrade.png) yükseltme](./media/how-to-manage-workspace/upgrade.png#lightbox)
+   [![Çalışma alanını ](./media/how-to-manage-workspace/upgrade.png) yükseltme](./media/how-to-manage-workspace/upgrade.png#lightbox)
 
 1. Görüntülenen pencerede **Yükselt** ' i seçin.
 
@@ -90,7 +90,7 @@ Düşük kodlu deneyimler ve gelişmiş güvenlik özellikleri gibi gelişmiş �
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Çalışma alanı bul
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Üst arama alanına **Machine Learning**yazın.  
 
@@ -102,7 +102,7 @@ Düşük kodlu deneyimler ve gelişmiş güvenlik özellikleri gibi gelişmiş �
 
 1. Özelliklerini göstermek için bir çalışma alanı seçin.
 
-## <a name="delete-a-workspace"></a>Çalışma alanını silme
+## <a name="delete-a-workspace"></a>Çalışma alanı silme
 
 [Azure Portal](https://portal.azure.com/), silmek istediğiniz çalışma alanının en üstünde bulunan **Sil** ' i seçin.
 

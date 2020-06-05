@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: e5966f142ece32f148c56edb5b0ef5dfd88603aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 640884168aef13ef3a8d751c211bf16756ff350f
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380072"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417897"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 'deki tutarlılık düzeyleri
 
@@ -72,13 +72,13 @@ Oturum yazma işlemi dışındaki istemciler aşağıdaki garantilere sahip olur
 - Birden çok ana hesap için tek bir bölgeye yazan istemciler için tutarlılık = tutarlı ön ek
 - Çoklu yönetici hesabı için birden çok bölgeye yazan istemciler için tutarlılık = son
 
-  Oturum tutarlılığı, hem tek bölge hem de küresel olarak dağıtılan uygulamalar için yaygın olarak kullanılan tutarlılık düzeyidir. Nihai tutarlılık ile karşılaştırılabilir yazma gecikmeleri, kullanılabilirlik ve okuma üretilen işi sağlar, ancak aynı zamanda bir kullanıcı bağlamında çalışmak üzere yazılmış uygulamaların ihtiyaçlarına uygun tutarlılık garantisi sağlar. Aşağıdaki grafik, müzik notları ile oturum tutarlılığını göstermektedir. "Batı ABD 2 yazıcısı" ve "Batı ABD 2 okuyucu" aynı oturumu (oturum A) kullanıyor, böylece her ikisi de aynı anda aynı verileri okur. "Avustralya Doğu" bölgesi "oturum B" kullandığından, verileri daha sonra ve yazma sırasıyla aynı sırada alır.
+  Oturum tutarlılığı, hem tek bölge hem de küresel olarak dağıtılan uygulamalar için en yaygın olarak kullanılan tutarlılık düzeyidir. Nihai tutarlılık ile karşılaştırılabilir yazma gecikmeleri, kullanılabilirlik ve okuma üretilen işi sağlar, ancak aynı zamanda bir kullanıcı bağlamında çalışmak üzere yazılmış uygulamaların ihtiyaçlarına uygun tutarlılık garantisi sağlar. Aşağıdaki grafik, müzik notları ile oturum tutarlılığını göstermektedir. "Batı ABD 2 yazıcısı" ve "Batı ABD 2 okuyucu" aynı oturumu (oturum A) kullanıyor, böylece her ikisi de aynı anda aynı verileri okur. "Avustralya Doğu" bölgesi "oturum B" kullandığından, verileri daha sonra ve yazma sırasıyla aynı sırada alır.
 
   ![video](media/consistency-levels/session-consistency.gif)
 
 - **Tutarlı ön ek**: döndürülen güncelleştirmeler boşluklar olmadan tüm güncelleştirmelerin bazı ön eklerini içerir. Tutarlı ön ek tutarlılık düzeyi, okumaların hiçbir şekilde sıra dışı yazmaları görmeme garantisi sağlar.
 
-Yazma işlemlerinin `A, B, C` sırasında gerçekleştirilmesi durumunda istemci `A`, `A,B` veya `A,B,C` görebilir ancak `A,C` veya `B,A,C` gibi bozuk sıraları görmez. Tutarlı ön ek, nihai tutarlılık ile karşılaştırılabilir yazma gecikmeleri, kullanılabilirlik ve okuma üretilen işi sağlar, ancak aynı zamanda siparişin önemli olduğu senaryoların ihtiyaçlarına uygun sıra garantisi sağlar. 
+Sıralamada yazma işlemleri gerçekleştirildiyse, istemci, veya `A, B, C` `A` `A,B` `A,B,C` gibi hiçbir bir sıra dışı permütasyon görür `A,C` `B,A,C` . Tutarlı ön ek, nihai tutarlılık ile karşılaştırılabilir yazma gecikmeleri, kullanılabilirlik ve okuma üretilen işi sağlar, ancak aynı zamanda siparişin önemli olduğu senaryoların ihtiyaçlarına uygun sıra garantisi sağlar. 
 
 Tutarlı ön ek için tutarlılık garantisi aşağıda verilmiştir:
 

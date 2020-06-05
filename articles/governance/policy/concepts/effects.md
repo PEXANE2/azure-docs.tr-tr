@@ -3,12 +3,12 @@ title: Efektlerin nasıl çalıştığını anlama
 description: Azure Ilke tanımlarının uyumluluğun nasıl yönetildiğini ve raporlanmadığını belirten çeşitli etkileri vardır.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 223acb523b8a7e4bc14d894c0eb6781d147b8923
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: f077548f2de06ef35a80aea0e8e33718a18ff229
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308889"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424355"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Ilke efektlerini anlama
 
@@ -115,7 +115,7 @@ Denetim efektinin, ilke tanımının **daha sonra** koşulunda kullanılmak üze
 
 ## <a name="auditifnotexists"></a>Auditınotexists
 
-Auditınotexists, **IF** koşuluyla eşleşen kaynaklarda denetim imkanı sunar, ancak **daha sonra** koşulun **ayrıntılarında** belirtilen bileşenleri yoktur.
+Auditınotexists, **IF** koşuluyla eşleşen kaynakla _ilgili_ kaynakların denetlenmesini sağlar, **ancak koşulun** **ayrıntılarında** belirtilen özellikleri içermez.
 
 ### <a name="auditifnotexists-evaluation"></a>Auditınotexists değerlendirmesi
 
@@ -547,7 +547,7 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
 
 ## <a name="layering-policy-definitions"></a>İlke tanımlarını katmanlama
 
-Bir kaynak, birkaç atamadan etkilenebilir. Bu atamalar aynı kapsamda veya farklı kapsamlardadır olabilir. Bu atamaların her biri de tanımlı farklı bir etkiye sahip olabilir. Her ilke için koşul ve efekt bağımsız olarak değerlendirilir. Örneğin:
+Bir kaynak, birkaç atamadan etkilenebilir. Bu atamalar aynı kapsamda veya farklı kapsamlardadır olabilir. Bu atamaların her biri de tanımlı farklı bir etkiye sahip olabilir. Her ilke için koşul ve efekt bağımsız olarak değerlendirilir. Örnek:
 
 - İlke 1
   - Kaynak konumunu ' westus ' olarak kısıtlar

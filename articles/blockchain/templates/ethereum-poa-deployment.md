@@ -1,15 +1,15 @@
 ---
 title: Azure 'da Ethereum yetki kanıtlama Konsorsiyumu çözüm şablonu dağıtma
 description: Azure 'da çok siteli bir konsorsiyumum ağını dağıtmak ve yapılandırmak için Ethereum yetkili bir Konsorsiyumu çözümünü kullanın
-ms.date: 12/18/2019
+ms.date: 06/04/2020
 ms.topic: article
-ms.reviewer: coborn
-ms.openlocfilehash: 7e9af5c501b58f6828360ee280440ea85698bf16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: ravastra
+ms.openlocfilehash: 2be87dec252aa927c6b1acfc6cb1aa23bf7d2620
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75387676"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434351"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Azure 'da Ethereum yetki kanıtlama Konsorsiyumu çözüm şablonu dağıtma
 
@@ -76,13 +76,13 @@ Sonraki bölümlerde, ağdaki ilk üyenin parmak izini nasıl yapılandıracağ�
 
 [Azure Portal](https://portal.azure.com)sol üst köşedeki **kaynak oluştur** ' u seçin.
 
-**Blok zinciri** > **Ethereum yetki kanıtlama Konsorsiyumu (Önizleme)** öğesini seçin.
+**Blok zinciri**  >  **Ethereum yetki kanıtlama Konsorsiyumu (Önizleme)** öğesini seçin.
 
-### <a name="basics"></a>Temel Bilgiler
+### <a name="basics"></a>Temel bilgiler
 
 **Temel bilgiler**altında herhangi bir dağıtım için standart parametrelerin değerlerini belirtin.
 
-![Temel Bilgiler](./media/ethereum-poa-deployment/basic-blade.png)
+![Temel bilgiler](./media/ethereum-poa-deployment/basic-blade.png)
 
 Parametre | Açıklama | Örnek değer
 ----------|-------------|--------------
@@ -144,7 +144,7 @@ Parametre | Açıklama | Örnek değer
 Konsorsiyum üye KIMLIĞI | Konsorsiyum ağına katılan her üyeyle ilişkili KIMLIK. Çarpışmadan kaçınmak için IP adresi alanlarını yapılandırmak için kullanılır. Özel ağ için, üye KIMLIĞI aynı ağdaki farklı kuruluşlarda benzersiz olmalıdır.  Aynı kuruluş birden çok bölgeye dağıttığında bile benzersiz bir üye KIMLIĞI gereklidir. Bu parametrenin değerini, çakışma olmadığından emin olmak için diğer birleştirme üyeleriyle paylaşmanız gerektiğinden yapın. Geçerli Aralık 0 ile 255 arasındadır. | 0
 Ağ KIMLIĞI | Dağıtmakta olan konsorsiyumum ağının ağ KIMLIĞI. Her bir Ethereum ağının kendi ağ KIMLIĞI vardır ve bu, genel ağın KIMLIĞI olan 1 ' dir. Geçerli Aralık 5 ile 999.999.999 arasındadır | 10101010
 Yönetici Ethereum adresi | PoA idaresinde katılım için kullanılan Ethereum hesap adresi. Ethereum adresini oluşturmak için MetaMask kullanabilirsiniz. |
-Gelişmiş Seçenekler | Ethereum ayarları için Gelişmiş Seçenekler | Etkinleştirme
+Gelişmiş Seçenekler | Ethereum ayarları için Gelişmiş Seçenekler | Etkinleştir
 Genel IP kullanarak dağıtma | Özel VNet seçilirse, ağ bir VNet ağ geçidinin arkasında dağıtılır ve eşleme erişimi kaldırılır. Özel VNet için, bağlantının uyumlu olması için tüm üyelerin VNet Gateway kullanması gerekir. | Genel IP
 Blok gaz sınırı | Ağın başlangıç blok gaz sınırı. | 50000000
 Yeniden mühürlemek süresi (sn) | Ağ üzerinde işlem olmadığında boş blokların oluşturulma sıklığı. Daha yüksek bir sıklık daha hızlı ve daha fazla depolama maliyetine sahip olacaktır. | 15
@@ -160,7 +160,7 @@ Yeniden mühürlemek süresi (sn) | Ağ üzerinde işlem olmadığında boş blo
 
 Parametre | Açıklama | Örnek değer
 ----------|-------------|--------------
-İzleme | İzlemeyi etkinleştirme seçeneği | Etkinleştirme
+İzleme | İzlemeyi etkinleştirme seçeneği | Etkinleştir
 Mevcut Azure Izleyici günlüklerine bağlanma | Yeni bir Azure Izleyici günlükleri örneği oluşturma veya var olan bir örneğe katma seçeneği | Yeni oluştur
 Konum | Yeni örneğin dağıtıldığı bölge | Doğu ABD
 Mevcut Log Analytics çalışma alanı KIMLIĞI (mevcut Azure Izleyici günlüklerine Bağlan = var olanı Birleştir)|Mevcut Azure Izleyici günlükleri örneğinin çalışma alanı KIMLIĞI||NA
@@ -325,9 +325,9 @@ Güvenlik nedenleriyle, SSH bağlantı noktası erişimi varsayılan olarak bir 
 
     ![SSH etkinleştirme izin ver](./media/ethereum-poa-deployment/ssh-enable-allow.png)
 
-1. **Kaydet**’i seçin. Değişikliklerin uygulanması birkaç dakika sürebilir.
+1. **Kaydet**'i seçin. Değişikliklerin uygulanması birkaç dakika sürebilir.
 
-Belirtilen Yönetici Kullanıcı adı ve parola/SSH anahtarı ile SSH aracılığıyla Doğrulayıcı düğümlerine yönelik sanal makinelere uzaktan bağlanabilirsiniz. İlk Doğrulayıcı düğümüne erişmek için SSH komutu, şablon dağıtım çıktısında listelenir. Örneğin:
+Belirtilen Yönetici Kullanıcı adı ve parola/SSH anahtarı ile SSH aracılığıyla Doğrulayıcı düğümlerine yönelik sanal makinelere uzaktan bağlanabilirsiniz. İlk Doğrulayıcı düğümüne erişmek için SSH komutu, şablon dağıtım çıktısında listelenir. Örnek:
 
 ``` bash
 ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
@@ -335,7 +335,7 @@ ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
 
 Ek işlem düğümlerine ulaşmak için, bağlantı noktası numarasını bir artırın.
 
-Birden fazla bölgeye dağıttıysanız, komutu bu bölgedeki yük dengeleyicinin DNS adı veya IP adresi olarak değiştirin. Diğer bölgelerin DNS adını veya IP adresini bulmak için, adlandırma kuralı ** \* \* \* \* \*-lbpıp-reg\# ** adlı kaynağı bulun ve DNS adını ve IP adresi özelliklerini görüntüleyin.
+Birden fazla bölgeye dağıttıysanız, komutu bu bölgedeki yük dengeleyicinin DNS adı veya IP adresi olarak değiştirin. Diğer bölgelerin DNS adını veya IP adresini bulmak için, adlandırma kuralı ** \* \* \* \* \* -lbpıp-reg \# ** adlı kaynağı bulun ve DNS adını ve IP adresi özelliklerini görüntüleyin.
 
 ## <a name="azure-traffic-manager-load-balancing"></a>Azure Traffic Manager yük dengelemesi
 
@@ -555,10 +555,10 @@ Akıllı sözleşmeleri derlemek, dağıtmak ve test etmek için, Ethereum geli�
 
 Aşağıdaki örnekte basit bir akıllı sözleşme oluşturursunuz. Akıllı sözleşmeyi derlemek ve blok zinciri ağınıza dağıtmak için Truffle kullanırsınız. Dağıtıldıktan sonra bir işlem aracılığıyla akıllı sözleşme işlevini çağırabilirsiniz.
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 * [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)'i yükler. Truffle ve Web3 için Python gereklidir. Yolunuza Python eklemek için Install seçeneğini seçin.
-* Truffle v 5.0.5 `npm install -g truffle@v5.0.5`'i yükler. Truffle, [Node. js](https://nodejs.org), [Git](https://git-scm.com/)gibi çeşitli araçların yüklenmesini gerektirir. Daha fazla bilgi için bkz. [Truffle belgeleri](https://github.com/trufflesuite/truffle).
+* Truffle v 5.0.5 'i yükler `npm install -g truffle@v5.0.5` . Truffle, [Node. js](https://nodejs.org), [Git](https://git-scm.com/)gibi çeşitli araçların yüklenmesini gerektirir. Daha fazla bilgi için bkz. [Truffle belgeleri](https://github.com/trufflesuite/truffle).
 
 ### <a name="create-truffle-project"></a>Truffle projesi oluştur
 
@@ -566,8 +566,8 @@ Akıllı bir sözleşmeyi derleyip dağıtabilmeniz için önce bir truffle proj
 
 1. Bir komut istemi veya kabuk açın.
 1. `HelloWorld` adlı bir klasör oluşturun.
-1. Dizini yeni `HelloWorld` klasör olarak değiştirin.
-1. Komutunu `truffle init`kullanarak yeni bir truffle projesi başlatın.
+1. Dizini yeni klasör olarak değiştirin `HelloWorld` .
+1. Komutunu kullanarak yeni bir truffle projesi başlatın `truffle init` .
 
     ![Yeni bir truffle projesi oluştur](./media/ethereum-poa-deployment/create-truffle-project.png)
 
@@ -575,7 +575,7 @@ Akıllı bir sözleşmeyi derleyip dağıtabilmeniz için önce bir truffle proj
 
 Akıllı sözleşmelerinizi Truffle projenizin **sözleşmeler** alt dizininde oluşturun.
 
-1. Truffle projenizin sözleşmeler alt `postBox.sol` dizininde adında **contracts** bir dosya oluşturun.
+1. `postBox.sol`Truffle projenizin **sözleşmeler** alt dizininde adında bir dosya oluşturun.
 1. Aşağıdaki Solidity kodunu **Postbox. Nuevo**öğesine ekleyin.
 
     ```javascript
@@ -600,7 +600,7 @@ Truffle projeleri blok zinciri ağ bağlantısı ayrıntıları için bir yapıl
 > Ethereum özel anahtarınızı hiçbir şekilde ağ üzerinden göndermeyin. Her bir işlemin önce yerel olarak imzalandığından ve imzalı işlemin ağ üzerinden gönderildiğinden emin olun.
 
 1. [Blok zinciri ağınızı dağıtmada kullanılan Ethereum yönetici hesabı](#ethereum-settings)için anımsatıcı ifadesi gerekir. Hesabı oluşturmak için MetaMask kullandıysanız, MetaMask adresinden gelen anımsatıcı alabilirsiniz. MetaMask uzantısının sağ üst köşesindeki yönetici hesabı simgesini seçin ve **ayarlar > güvenlik & gizlilik > tohum sözcüklerini açığa çıkar**' ı seçin.
-1. Truffle projenizde `truffle-config.js` içeriğini aşağıdaki içerikle değiştirin. Yer tutucu uç noktasını ve anımsatıcı değerlerini değiştirin.
+1. `truffle-config.js`Truffle projenizde içeriğini aşağıdaki içerikle değiştirin. Yer tutucu uç noktasını ve anımsatıcı değerlerini değiştirin.
 
     ```javascript
     const HDWalletProvider = require("truffle-hdwallet-provider");
@@ -623,11 +623,11 @@ Truffle projeleri blok zinciri ağ bağlantısı ayrıntıları için bir yapıl
     };
     ```
 
-1. Truffle HD cüzdan sağlayıcısını kullandığımızdan, komutunu `npm install truffle-hdwallet-provider --save`kullanarak bu modülü projenize yüklersiniz.
+1. Truffle HD cüzdan sağlayıcısını kullandığımızdan, komutunu kullanarak bu modülü projenize yüklersiniz `npm install truffle-hdwallet-provider --save` .
 
 Truffle, bir blok zinciri ağına akıllı sözleşmeleri dağıtmak için geçiş betikleri kullanır. Yeni akıllı sözleşmenizi dağıtmak için bir geçiş betiğinin olması gerekir.
 
-1. Yeni sözleşmeyi dağıtmak için yeni bir geçiş ekleyin. Truffle `2_deploy_contracts.js` projesinin **geçişler** alt dizininde dosya oluşturun.
+1. Yeni sözleşmeyi dağıtmak için yeni bir geçiş ekleyin. `2_deploy_contracts.js`Truffle projesinin **geçişler** alt dizininde dosya oluşturun.
 
     ``` javascript
     var postBox = artifacts.require("postBox");
@@ -647,7 +647,7 @@ Truffle, bir blok zinciri ağına akıllı sözleşmeleri dağıtmak için geçi
 
 Akıllı sözleşmeniz dağıtıldığına göre, bir işlevi çağırmak için bir işlem gönderebilirsiniz.
 
-1. Truffle proje dizininde adlı `sendtransaction.js`yeni bir dosya oluşturun.
+1. Truffle proje dizininde adlı yeni bir dosya oluşturun `sendtransaction.js` .
 1. Aşağıdaki içerikleri **sendtransaction. js**' ye ekleyin.
 
     ``` javascript
@@ -718,6 +718,20 @@ Hayır. Eşleme iki yönlü iletişim gerektirir, böylece tüm ağ genel veya �
 ### <a name="how-do-i-subscribe-to-smart-contract-events"></a>Nasıl yaparım? akıllı sözleşme olaylarına abone misiniz?
 
 Ethereum yetki kanıtı artık Web-Sockets 'i desteklemektedir.  Web yuvası URL 'sini ve bağlantı noktasını bulmak için dağıtım çıktınızdan emin olun.
+
+## <a name="support-and-feedback"></a>Destek ve geri bildirim
+
+Azure blok zinciri haberleri için Azure blok zinciri [blogu](https://azure.microsoft.com/blog/topics/blockchain/) ' nı ziyaret ederek, blok zinciri hizmeti tekliflerini ve Azure blok zinciri Mühendisliği ekibinin bilgilerini güncel tutun.
+
+Ürün geri bildirimi sağlamak veya yeni özellikler istemek için, [blok zinciri Için Azure geri bildirim Forumu](https://aka.ms/blockchainuservoice)aracılığıyla bir fikir gönderin veya oylayın.
+
+### <a name="community-support"></a>Topluluk desteği
+
+Microsoft mühendisleri ve Azure blok zinciri topluluk uzmanlarıyla birlikte katılın.
+
+* [Microsoft Q&Azure blok zinciri hizmeti için soru sayfası](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). Blok zinciri şablonları için mühendislik desteği, dağıtım sorunlarıyla sınırlıdır.
+* [Microsoft Teknoloji Topluluğu](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

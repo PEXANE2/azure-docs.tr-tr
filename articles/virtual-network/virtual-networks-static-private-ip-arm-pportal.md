@@ -8,18 +8,19 @@ manager: twooley
 tags: azure-resource-manager
 ms.assetid: 11245645-357d-4358-9a14-dd78e367b494
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
-ms.openlocfilehash: 946926a8a805ec3c53ea3c57dc3eded2462f7673
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04e936fe4a6d514b000b08ddf11b52d0e524d98e
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461557"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417880"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>Azure portal kullanarak bir VM için özel IP adresi yapılandırma
 
@@ -45,10 +46,10 @@ Kaynak Yöneticisi dağıtım modunda bir VM oluşturduğunuzda, Azure portal ku
 1. [Azure Portal](https://portal.azure.com) menüsünde **kaynak oluştur**' u seçin.
 
     ![Kaynak oluşturma, Azure portal](./media/virtual-networks-static-ip-arm-pportal/create-a-resource.png)
-2. **İşlem** > **sanal makinesini**seçin.
+2. **İşlem**  >  **sanal makinesini**seçin.
 
     ![VM oluşturma, Azure portal](./media/virtual-networks-static-ip-arm-pportal/compute-virtual-machine.png)
-3. **Temel bilgiler**bölümünde, aşağıdaki tabloda açıklandığı gibi öğeler için değerler belirtin. Ardından **İleri&nbsp;&nbsp;: diskler** ve sonra **İleri&nbsp;&nbsp;**' yi seçin.
+3. **Temel bilgiler**bölümünde, aşağıdaki tabloda açıklandığı gibi öğeler için değerler belirtin. Ardından **İleri &nbsp; : &nbsp; diskler** ve sonra ileri ' yi seçin ** &nbsp; &nbsp; **.
 
     | Öğe | Değer |
     | --- | --- |
@@ -71,7 +72,7 @@ Kaynak Yöneticisi dağıtım modunda bir VM oluşturduğunuzda, Azure portal ku
     | **Alt ağ** | **FrontEnd** |
 
     ![Ağ sekmesi, sanal makine oluşturma Azure portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-networking.png)
-5. **Yönetim**bölümünde, **Tanılama depolama hesabı**altında, **vnetstorage**' ı seçin. Bu depolama hesabı listede görünmezse, **Yeni oluştur**' u seçin, *vnetstorage* **adını** belirtin ve **Tamam**' ı seçin. Son olarak, **Gözden&nbsp;+&nbsp;geçirme oluştur**' u seçin.
+5. **Yönetim**bölümünde, **Tanılama depolama hesabı**altında, **vnetstorage**' ı seçin. Bu depolama hesabı listede görünmezse, **Yeni oluştur**' u seçin, *vnetstorage* **adını** belirtin ve **Tamam**' ı seçin. Son olarak, **Gözden geçirme &nbsp; + &nbsp; Oluştur**' u seçin.
 
     ![Yönetim sekmesi, sanal makine oluşturma Azure portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-management.png)
 6. **Gözden geçir + oluştur**bölümünde genel bakış bilgilerini gözden geçirin ve ardından **Oluştur**' u seçin.

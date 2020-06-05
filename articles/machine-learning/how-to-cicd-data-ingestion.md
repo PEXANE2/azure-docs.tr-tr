@@ -5,18 +5,18 @@ description: Model eğitimi için veri hazırlamak üzere kullanılan bir veri a
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 01/30/2020
-ms.openlocfilehash: d987171d41bd6d80bab4cce91ef9ecec1f0dc7a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5ffd45eadfd2d1b0e455ea3de91bf91c11c2517
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80247189"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434610"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>Veri alma işlem hattı için DevOps
 
@@ -44,7 +44,7 @@ Ekip üyeleri, Python Not defteri kaynak kodunda ve Azure Data Factory kaynak ko
 
 ### <a name="python-notebook-source-code"></a>Python Not defteri kaynak kodu
 
-Veri mühendisleri, Python Not defteri kaynak koduyla yerel olarak bir IDE 'de (örneğin, [Visual Studio Code](https://code.visualstudio.com)) veya doğrudan Databricks çalışma alanında çalışır. İkincisi geliştirme ortamındaki kodda hata ayıklama yeteneği sağlar. Herhangi bir durumda, kod, dallanma ilkesi takip eden depoya birleştirilir. Kodu `.ipynb` Jupyter Not defteri biçiminde değil `.py` dosyalarında depolamak kesinlikle önerilir. Kod okunabilirliğini geliştirir ve CI işleminde otomatik kod kalitesi denetimleri sağlar.
+Veri mühendisleri, Python Not defteri kaynak koduyla yerel olarak bir IDE 'de (örneğin, [Visual Studio Code](https://code.visualstudio.com)) veya doğrudan Databricks çalışma alanında çalışır. İkincisi geliştirme ortamındaki kodda hata ayıklama yeteneği sağlar. Herhangi bir durumda, kod, dallanma ilkesi takip eden depoya birleştirilir. Kodu `.py` `.ipynb` Jupyter Not defteri biçiminde değil dosyalarında depolamak kesinlikle önerilir. Kod okunabilirliğini geliştirir ve CI işleminde otomatik kod kalitesi denetimleri sağlar.
 
 ### <a name="azure-data-factory-source-code"></a>Azure Data Factory kaynak kodu
 

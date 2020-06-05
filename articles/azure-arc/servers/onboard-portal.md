@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 0b43bb92a58af58ae5924610f0667e9796a426e6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: febd5d1e49a87f0846aba2aaa976e170ee31fab8
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193752"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432330"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Karma makineleri Azure portal Azure 'a bağlama
 
@@ -42,7 +42,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     >Sunucular için Azure Arc (Önizleme) yalnızca aşağıdaki bölgeleri destekler:
     >- WestUS2
     >- WestEurope
-    >- Westasıya
+    >- Güneydoğu
     >
     >Genel Bakış [makalesinde bölge seçerken](overview.md#supported-regions) dikkat edilecek ek konuları gözden geçirin.
 

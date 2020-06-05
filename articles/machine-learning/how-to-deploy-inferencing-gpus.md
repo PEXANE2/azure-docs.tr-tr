@@ -5,17 +5,17 @@ description: Bu makalede, GPU özellikli bir TensorFlow derin öğrenme modelini
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: b0fd537d1930e7c9d5f7a33f56ec5d00b1556562
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6442a5c4af5b9804456f0b4b9e78c8999249f25
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78398331"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433405"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU ile çıkarım için derin öğrenme modeli dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +33,7 @@ Bu makalede, GPU özellikli bir modeli bir Web hizmeti olarak dağıtmak için A
 > [!NOTE]
 > Bu makaledeki bilgiler, [Azure Kubernetes hizmetine dağıtma](how-to-deploy-azure-kubernetes-service.md) makalesindeki bilgileri oluşturur. Bu makalede genellikle AKS 'e dağıtımı ele alınmaktadır ve bu makalede GPU 'ya özgü dağıtım ele alınmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
@@ -135,11 +135,11 @@ def run(raw_data):
     return y_hat.tolist()
 ```
 
-Bu dosya adı `score.py`. Giriş betikleri hakkında daha fazla bilgi için bkz. [nasıl ve nereye dağıtılacak](how-to-deploy-and-where.md).
+Bu dosya adı `score.py` . Giriş betikleri hakkında daha fazla bilgi için bkz. [nasıl ve nereye dağıtılacak](how-to-deploy-and-where.md).
 
 ## <a name="define-the-conda-environment"></a>Conda ortamını tanımlama
 
-Conda ortamı dosyası hizmetin bağımlılıklarını belirtir. Hem model hem de giriş betiği için gereken bağımlılıkları içerir. Lütfen, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerdiğinden, >= 1.0.45 = ile azureml-varsayılan değeri bir PIP bağımlılığı olarak belirtmeniz gerektiğini unutmayın. Aşağıdaki YAML, bir TensorFlow modeli için ortamı tanımlar. Bu dağıtımda `tensorflow-gpu`kullanılan GPU 'yu kullanacak şekilde belirtir:
+Conda ortamı dosyası hizmetin bağımlılıklarını belirtir. Hem model hem de giriş betiği için gereken bağımlılıkları içerir. Lütfen, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerdiğinden, >= 1.0.45 = ile azureml-varsayılan değeri bir PIP bağımlılığı olarak belirtmeniz gerektiğini unutmayın. Aşağıdaki YAML, bir TensorFlow modeli için ortamı tanımlar. `tensorflow-gpu`Bu dağıtımda kullanılan GPU 'yu kullanacak şekilde belirtir:
 
 ```yaml
 name: project_environment
@@ -157,7 +157,7 @@ channels:
 - conda-forge
 ```
 
-Bu örnekte, dosya olarak `myenv.yml`kaydedilir.
+Bu örnekte, dosya olarak kaydedilir `myenv.yml` .
 
 ## <a name="define-the-deployment-configuration"></a>Dağıtım yapılandırmasını tanımlama
 
@@ -214,7 +214,7 @@ print(aks_service.state)
 ```
 
 > [!NOTE]
-> `InferenceConfig` Nesne varsa `enable_gpu=True`, `deployment_target` parametresi GPU sağlayan bir kümeye başvurmalıdır. Aksi takdirde, dağıtım başarısız olur.
+> Nesne varsa `InferenceConfig` `enable_gpu=True` , `deployment_target` parametresi GPU sağlayan bir kümeye başvurmalıdır. Aksi takdirde, dağıtım başarısız olur.
 
 Daha fazla bilgi için bkz. [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)için başvuru belgeleri.
 

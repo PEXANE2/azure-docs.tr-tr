@@ -3,12 +3,12 @@ title: Azure hizmetlerine göre kaynak sağlayıcıları
 description: Azure Resource Manager için tüm kaynak sağlayıcısı ad alanlarını listeler ve bu ad alanı için Azure hizmetini gösterir.
 ms.topic: conceptual
 ms.date: 06/02/2020
-ms.openlocfilehash: a87d55ceee759d81d0aab823f003b4bb36a66610
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 272e6cb27b01ed971025bd273b225d4823d04501
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310334"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424450"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure hizmetleri için kaynak sağlayıcıları
 
@@ -55,7 +55,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. ClassicSubscription<sup>1</sup> | Klasik dağıtım modeli |
 | Microsoft. Biliveservices | [Bilişsel Hizmetler](/azure/cognitive-services/) |
 | Microsoft. Commerce<sup>1</sup> | çekirdeğin |
-| Microsoft.Compute | [Sanal makineler](/azure/virtual-machines/)<br />[Sanal Makine Ölçek Kümeleri](/azure/virtual-machine-scale-sets/) |
+| Microsoft.Compute | [Sanal Makineler](/azure/virtual-machines/)<br />[Sanal Makine Ölçek Kümeleri](/azure/virtual-machine-scale-sets/) |
 | Microsoft. tüketim<sup>1</sup> | [Maliyet Yönetimi](/azure/cost-management/) |
 | Microsoft. Containerınstance | [Container Instances](/azure/container-instances/) |
 | Microsoft. ContainerRegistry | [Container Registry](/azure/container-registry/) |
@@ -121,7 +121,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. Migrate | [Azure Geçişi](../../migrate/migrate-overview.md) |
 | Microsoft. MixedReality | [Azure Spatial Anchors](/azure/spatial-anchors/) |
 | Microsoft. NetApp | [Azure NetApp Files](../../azure-netapp-files/index.yml) |
-| Microsoft.Network | [Application Gateway](../../application-gateway/index.yml)<br />[Azure Bastion](/azure/bastion/)<br />[Azure DDoS Koruması](../../virtual-network/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure Güvenlik Duvarı](../../firewall/index.yml)<br />[Azure Front Door Hizmeti](../../frontdoor/index.yml)<br />[Azure Özel Bağlantı](../../private-link/index.yml)<br />[Load Balancer](../../load-balancer/index.yml)<br />[Ağ İzleyicisi](../../network-watcher/index.yml)<br />[Traffic Manager](../../traffic-manager/index.yml)<br />[Sanal Ağ](../../virtual-network/index.yml)<br />[Sanal WAN](../../virtual-wan/index.yml)<br />[VPN Gateway](../../vpn-gateway/index.yml)<br /> |
+| Microsoft.Network | [Application Gateway](../../application-gateway/index.yml)<br />[Azure Bastion](/azure/bastion/)<br />[Azure DDoS Koruması](../../virtual-network/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure Güvenlik Duvarı](../../firewall/index.yml)<br />[Azure Front Door Hizmeti](../../frontdoor/index.yml)<br />[Azure Özel Bağlantı](../../private-link/index.yml)<br />[Load Balancer](../../load-balancer/index.yml)<br />[Ağ İzleyicisi](../../network-watcher/index.yml)<br />[Traffic Manager](../../traffic-manager/index.yml)<br />[Sanal ağ](../../virtual-network/index.yml)<br />[Sanal WAN](../../virtual-wan/index.yml)<br />[VPN Gateway](../../vpn-gateway/index.yml)<br /> |
 | Microsoft. Notificationhub 'Lar | [Notification Hubs](../../notification-hubs/index.yml) |
 | Microsoft. ObjectStore | Nesne deposu |
 | Microsoft. OffAzure | [Azure Geçişi](../../migrate/migrate-overview.md) |
@@ -174,8 +174,8 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. Windowsıot | [Windows 10 IoT Core Services](https://docs.microsoft.com/windows-hardware/manufacture/iot/iotcoreservicesoverview) |
 | Microsoft. WorkloadMonitor<sup>1</sup> | [Azure İzleyici](../../azure-monitor/index.yml) |
 
-<sup>1</sup> varsayılan olarak etkin
+<sup>1</sup> varsayılan olarak kaydedildi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kaynak sağlayıcıları hakkında daha fazla bilgi için bkz. [Azure kaynak sağlayıcıları ve türleri](resource-providers-and-types.md)
+Kaynak sağlayıcısını kaydetme dahil olmak üzere kaynak sağlayıcıları hakkında daha fazla bilgi için bkz. [Azure kaynak sağlayıcıları ve türleri](resource-providers-and-types.md)

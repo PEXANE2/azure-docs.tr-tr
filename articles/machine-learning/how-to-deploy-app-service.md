@@ -5,17 +5,17 @@ description: Azure App Service bir modeli bir Web uygulamasına dağıtmak için
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 646254238f83166c53fe94a1821c68ff4dac8f04
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 787c8ec88b001a55a83bfba3124c62e12800aa58
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82651920"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433951"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service bir makine öğrenimi modeli dağıtma (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +36,7 @@ Azure App Service tarafından sunulan özellikler hakkında daha fazla bilgi iç
 > [!IMPORTANT]
 > Dağıtılan modelinizle kullanılan Puanlama verilerini veya Puanlama sonuçlarını günlüğe kaydetmek istiyorsanız, bunun yerine Azure Kubernetes hizmetine dağıtmanız gerekir. Daha fazla bilgi için bkz. [Üretim modellerinizde veri toplama](how-to-enable-data-collection.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -103,7 +103,7 @@ Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için orta
 Azure App Service dağıtılan Docker görüntüsünü oluşturmak için [model. Package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-)kullanın. Aşağıdaki kod parçacığı, modelden ve çıkarım yapılandırmasından nasıl yeni bir görüntü oluşturulacağını gösterir:
 
 > [!NOTE]
-> Kod parçacığı, kayıtlı bir `model` model içerdiğini ve çıkarım ortamının yapılandırmasını `inference_config` içeren olduğunu varsayar. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
+> Kod parçacığı, `model` kayıtlı bir model içerdiğini ve `inference_config` çıkarım ortamının yapılandırmasını içeren olduğunu varsayar. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
 ```python
 from azureml.core import Model
@@ -114,14 +114,14 @@ package.wait_for_creation(show_output=True)
 print(package.location)
 ```
 
-Ne `show_output=True`zaman, Docker Build işleminin çıktısı gösterilir. İşlem tamamlandıktan sonra görüntü, çalışma alanınızın Azure Container Registry oluşturulur. Görüntü derlendikten sonra Azure Container Registry konum görüntülenir. Döndürülen konum biçimindedir `<acrinstance>.azurecr.io/package@sha256:<imagename>`. Örneğin, `myml08024f78fd10.azurecr.io/package@sha256:20190827151241`.
+Ne zaman `show_output=True` , Docker Build işleminin çıktısı gösterilir. İşlem tamamlandıktan sonra görüntü, çalışma alanınızın Azure Container Registry oluşturulur. Görüntü derlendikten sonra Azure Container Registry konum görüntülenir. Döndürülen konum biçimindedir `<acrinstance>.azurecr.io/package@sha256:<imagename>` . Örneğin, `myml08024f78fd10.azurecr.io/package@sha256:20190827151241`.
 
 > [!IMPORTANT]
 > Görüntü dağıtımında kullanılan konum bilgilerini kaydedin.
 
 ## <a name="deploy-image-as-a-web-app"></a>Web uygulaması olarak görüntü dağıtma
 
-1. Görüntüyü içeren Azure Container Registry oturum açma kimlik bilgilerini almak için aşağıdaki komutu kullanın. Daha `<acrinstance>` önce döndürülen değerle değiştirin `package.location`:
+1. Görüntüyü içeren Azure Container Registry oturum açma kimlik bilgilerini almak için aşağıdaki komutu kullanın. `<acrinstance>`Daha önce döndürülen değerle değiştirin `package.location` :
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -154,12 +154,12 @@ Ne `show_output=True`zaman, Docker Build işleminin çıktısı gösterilir. İ�
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    Bu örnekte, __temel__ bir Fiyatlandırma Katmanı (`--sku B1`) kullanılır.
+    Bu örnekte, __temel__ bir Fiyatlandırma Katmanı ( `--sku B1` ) kullanılır.
 
     > [!IMPORTANT]
-    > Azure Machine Learning tarafından oluşturulan görüntüler Linux kullanır, bu nedenle `--is-linux` parametresini kullanmanız gerekir.
+    > Azure Machine Learning tarafından oluşturulan görüntüler Linux kullanır, bu nedenle parametresini kullanmanız gerekir `--is-linux` .
 
-1. Web uygulamasını oluşturmak için aşağıdaki komutu kullanın. Kullanmak `<app-name>` istediğiniz adla değiştirin. Ve `<acrinstance>` `<imagename>` değerlerini daha önce döndürülen `package.location` değerlerle değiştirin:
+1. Web uygulamasını oluşturmak için aşağıdaki komutu kullanın. `<app-name>`Kullanmak istediğiniz adla değiştirin. `<acrinstance>`Ve `<imagename>` değerlerini daha önce döndürülen değerlerle değiştirin `package.location` :
 
     ```azurecli-interactive
     az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package@sha256:<imagename>
@@ -188,7 +188,7 @@ Ne `show_output=True`zaman, Docker Build işleminin çıktısı gösterilir. İ�
     > [!IMPORTANT]
     > Bu noktada, Web uygulaması oluşturulmuştur. Ancak, görüntüyü içeren Azure Container Registry kimlik bilgilerini sağlamadıysanız, Web uygulaması etkin değildir. Bir sonraki adımda, kapsayıcı kayıt defteri için kimlik doğrulama bilgilerini sağlarsınız.
 
-1. Web uygulamasına kapsayıcı kayıt defterine erişmek için gereken kimlik bilgilerini sağlamak üzere aşağıdaki komutu kullanın. Kullanmak `<app-name>` istediğiniz adla değiştirin. Ve `<acrinstance>` `<imagename>` değerlerini daha önce döndürülen `package.location` değerlerle değiştirin. Ve `<username>` `<password>` daha önce alınan ACR oturum açma bilgileriyle değiştirin:
+1. Web uygulamasına kapsayıcı kayıt defterine erişmek için gereken kimlik bilgilerini sağlamak üzere aşağıdaki komutu kullanın. `<app-name>`Kullanmak istediğiniz adla değiştirin. `<acrinstance>`Ve `<imagename>` değerlerini daha önce döndürülen değerlerle değiştirin `package.location` . `<username>`Ve `<password>` daha önce alınan ACR oturum açma bilgileriyle değiştirin:
 
     ```azurecli-interactive
     az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package@sha256:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -234,7 +234,7 @@ Bu noktada, Web uygulaması görüntüyü yüklemeye başlar.
 > az webapp log tail --name <app-name> --resource-group myresourcegroup
 > ```
 >
-> Görüntü yüklendikten ve site etkin olduktan sonra, günlüğü belirten bir ileti görüntüler `Container <container name> for site <app-name> initialized successfully and is ready to serve requests`.
+> Görüntü yüklendikten ve site etkin olduktan sonra, günlüğü belirten bir ileti görüntüler `Container <container name> for site <app-name> initialized successfully and is ready to serve requests` .
 
 Görüntü dağıtıldıktan sonra, aşağıdaki komutu kullanarak ana bilgisayar adını bulabilirsiniz:
 
@@ -242,11 +242,11 @@ Görüntü dağıtıldıktan sonra, aşağıdaki komutu kullanarak ana bilgisaya
 az webapp show --name <app-name> --resource-group myresourcegroup
 ```
 
-Bu komut, aşağıdaki ana bilgisayar adına benzer bilgileri döndürür `<app-name>.azurewebsites.net`. Bu değeri, hizmetin __temel URL__ 'sinin bir parçası olarak kullanın.
+Bu komut, aşağıdaki ana bilgisayar adına benzer bilgileri döndürür `<app-name>.azurewebsites.net` . Bu değeri, hizmetin __temel URL__ 'sinin bir parçası olarak kullanın.
 
 ## <a name="use-the-web-app"></a>Web uygulamasını kullanma
 
-İstekleri modele geçiren Web hizmeti konumunda `{baseurl}/score`bulunur. Örneğin, `https://<app-name>.azurewebsites.net/score`. Aşağıdaki Python kodu, URL 'ye veri göndermeyi ve yanıtı görüntülemeyi gösterir:
+İstekleri modele geçiren Web hizmeti konumunda bulunur `{baseurl}/score` . Örneğin, `https://<app-name>.azurewebsites.net/score`. Aşağıdaki Python kodu, URL 'ye veri göndermeyi ve yanıtı görüntülemeyi gösterir:
 
 ```python
 import requests

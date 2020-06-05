@@ -14,7 +14,7 @@ ms.locfileid: "67189039"
 DHCP olmayan bir ortamda önyükleme yaparsanız, Data Box Gateway sanal makineyi dağıtmak için aşağıdaki adımları izleyin.
 
 1. [Cihazın Windows PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
-2. Sanal cihazınızda `Get-HcsIpAddress` etkin olan ağ arabirimlerini listelemek için cmdlet 'ini kullanın. Cihazınızda tek bir ağ arabirimi varsa `Ethernet` varsayılan adı atanır.
+2. `Get-HcsIpAddress`Sanal cihazınızda etkin olan ağ arabirimlerini listelemek için cmdlet 'ini kullanın. Cihazınızda tek bir ağ arabirimi varsa `Ethernet` varsayılan adı atanır.
 
     Aşağıdaki örnek, bu cmdlet 'in kullanımını gösterir:
 

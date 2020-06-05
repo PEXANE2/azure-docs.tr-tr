@@ -5,18 +5,18 @@ description: Veri kümelerinizi en iyi şekilde nasıl yükleyeceğinizi ve maki
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.custom: ''
-ms.openlocfilehash: 5bd4436fc63fb570f052606ab557dbcf243cf5e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f05f778278f6ee33ff53ab47d416446444063d8
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476861"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434425"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Denemeleri içinde veri kümelerini sürüm ve izleme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,7 @@ Tipik sürüm oluşturma senaryoları:
 * Yeniden eğitim için yeni veriler kullanılabilir olduğunda
 * Farklı veri hazırlama veya özellik Mühendisliği yaklaşımları uygularken
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici için şunlar gerekir:
 
@@ -52,7 +52,7 @@ Bir veri kümesini kaydederek denemeleri ve iş arkadaşlarınızla paylaşabili
 
 ### <a name="register-a-dataset-version"></a>Veri kümesi sürümünü kaydetme
 
-Aşağıdaki kod, `titanic_ds` `create_new_version` parametresini olarak `True`ayarlayarak veri kümesinin yeni bir sürümünü kaydeder. Çalışma alanına kayıtlı mevcut `titanic_ds` bir veri kümesi yoksa, kod adıyla `titanic_ds` yeni bir veri kümesi oluşturur ve sürümünü 1 olarak ayarlar.
+Aşağıdaki kod, `titanic_ds` parametresini olarak ayarlayarak veri kümesinin yeni bir sürümünü kaydeder `create_new_version` `True` . `titanic_ds`Çalışma alanına kayıtlı mevcut bir veri kümesi yoksa, kod adıyla yeni bir veri kümesi oluşturur `titanic_ds` ve sürümünü 1 olarak ayarlar.
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,
@@ -63,7 +63,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>Bir veri kümesini ada göre al
 
-Varsayılan olarak, `Dataset` sınıfındaki [get_by_name ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) yöntemi, çalışma alanına kayıtlı veri kümesinin en son sürümünü döndürür. 
+Varsayılan olarak, sınıfındaki [get_by_name ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) yöntemi, `Dataset` çalışma alanına kayıtlı veri kümesinin en son sürümünü döndürür. 
 
 Aşağıdaki kod, `titanic_ds` veri kümesinin 1. sürümünü alır.
 
@@ -156,9 +156,9 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 ## <a name="track-datasets-in-experiments"></a>Denemeleri içinde veri kümelerini izleme
 
-Her Machine Learning denemesi için, giriş olarak kullanılan veri kümelerini deneme `Run` nesnesi aracılığıyla kolayca izleyebilirsiniz.
+Her Machine Learning denemesi için, giriş olarak kullanılan veri kümelerini deneme nesnesi aracılığıyla kolayca izleyebilirsiniz `Run` .
 
-Aşağıdaki kod, deneme çalıştırması [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) ile hangi giriş veri kümelerinin kullanıldığını izlemek için yöntemini kullanır:
+Aşağıdaki kod, [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) deneme çalıştırması ile hangi giriş veri kümelerinin kullanıldığını izlemek için yöntemini kullanır:
 
 ```Python
 # get input datasets
@@ -169,9 +169,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-Ayrıca, `input_datasets` kullanarak https://ml.azure.com/denemeleri adresinden bulabilirsiniz. 
+Ayrıca, `input_datasets` kullanarak denemeleri adresinden bulabilirsiniz https://ml.azure.com/ . 
 
-Aşağıdaki görüntüde Azure Machine Learning Studio 'da bir deneyin giriş veri kümesinin nerede bulunacağı gösterilmektedir. Bu örnekte, **denemeleri** bölmenize gidin ve denemenizin belirli bir çalışması için **Özellikler** sekmesini açın `keras-mnist`.
+Aşağıdaki görüntüde Azure Machine Learning Studio 'da bir deneyin giriş veri kümesinin nerede bulunacağı gösterilmektedir. Bu örnekte, **denemeleri** bölmenize gidin ve denemenizin belirli bir çalışması için **Özellikler** sekmesini açın `keras-mnist` .
 
 ![Giriş veri kümeleri](./media/how-to-version-track-datasets/input-datasets.png)
 
@@ -183,7 +183,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Kayıt sonrasında, Python veya şuraya git kullanılarak veri kümesiyle kaydedilen modellerin listesini görebilirsiniz https://ml.azure.com/.
+Kayıt sonrasında, Python veya şuraya git kullanılarak veri kümesiyle kaydedilen modellerin listesini görebilirsiniz https://ml.azure.com/ .
 
 Aşağıdaki görünüm, **varlıklar**altındaki **veri kümeleri** bölmesinden yapılır. Veri kümesini seçin ve ardından veri kümesine kayıtlı modellerin listesi için **modeller** sekmesini seçin. 
 

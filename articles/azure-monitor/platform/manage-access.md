@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 1e86317999a34e4ab4cb94f93fb788e3e7314cea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0106be09ac4c45ada712b333311aedf0402f785
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193063"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432807"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme
 
@@ -61,10 +61,10 @@ DefaultWorkspace38917: True
 DefaultWorkspace21532: False
 ```
 
-Değeri, çalışma `False` alanının çalışma alanı bağlamı erişim moduyla yapılandırıldığı anlamına gelir.  Değeri, çalışma `True` alanının kaynak bağlamı erişim moduyla yapılandırıldığı anlamına gelir.
+Değeri, çalışma alanının `False` çalışma alanı bağlamı erişim moduyla yapılandırıldığı anlamına gelir.  Değeri, `True` çalışma alanının kaynak bağlamı erişim moduyla yapılandırıldığı anlamına gelir.
 
 > [!NOTE]
-> Bir çalışma alanı Boole değeri olmadan döndürülürse ve boşsa, bu da bir `False` değer sonuçlarıyla eşleşir.
+> Bir çalışma alanı Boole değeri olmadan döndürülürse ve boşsa, bu da bir değer sonuçlarıyla eşleşir `False` .
 >
 
 Belirli bir çalışma alanı için erişim denetimi modunu kaynak bağlamı iznine ayarlamak için aşağıdaki betiği kullanın:
@@ -132,7 +132,7 @@ Azure 'da Log Analytics çalışma alanları için iki yerleşik kullanıcı rol
 
 Log Analytics okuyucu rolü aşağıdaki Azure eylemlerini içerir:
 
-| Tür    | İzin | Açıklama |
+| Tür    | İzin | Description |
 | ------- | ---------- | ----------- |
 | Eylem | `*/read`   | Tüm Azure kaynaklarını ve kaynak yapılandırmalarını görüntüleyebilme. Aşağıdakileri görüntülemeyi içerir: <br> Sanal makine uzantısı durumu <br> Kaynaklarda Azure tanılamalarının yapılandırması <br> Tüm kaynakların tüm özellikleri ve ayarları. <br> Çalışma alanları için, tam Kısıtlanmamış izinlerin çalışma alanı ayarlarını okumasını ve verilerin üzerinde sorgu gerçekleştirmesini sağlar. Daha ayrıntılı seçeneklere bakın. |
 | Eylem | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Kullanım dışı, kullanıcılara atanması gerekmez. |
@@ -160,7 +160,7 @@ Log Analytics okuyucu rolü aşağıdaki Azure eylemlerini içerir:
 
 Log Analytics katkıda bulunan rolü aşağıdaki Azure eylemlerini içerir:
 
-| İzin | Açıklama |
+| İzin | Description |
 | ---------- | ----------- |
 | `*/read`     | Tüm kaynakların ve kaynak yapılandırmalarının görüntülenmesine imkan sağlar. Aşağıdakileri görüntülemeyi içerir: <br> Sanal makine uzantısı durumu <br> Kaynaklarda Azure tanılamalarının yapılandırması <br> Tüm kaynakların tüm özellikleri ve ayarları. <br> Çalışma alanları için, tam Kısıtlanmamış izinlerin çalışma alanı ayarını okumasına ve verilerde sorgu gerçekleştirmesine izin verir. Daha ayrıntılı seçeneklere bakın. |
 | `Microsoft.Automation/automationAccounts/*` | Runbook'ları ekleme ve düzenleme dahil olmak üzere Azure Otomasyonu hesapları oluşturma ve yapılandırma olanağı |
@@ -168,7 +168,7 @@ Log Analytics katkıda bulunan rolü aşağıdaki Azure eylemlerini içerir:
 | `Microsoft.ClassicStorage/storageAccounts/listKeys/action` <br> `Microsoft.Storage/storageAccounts/listKeys/action` | Depolama hesabı anahtarını görüntüleyin. Log Analytics’i Azure depolama hesaplarındaki günlükleri okuyacak şekilde yapılandırmak için gereklidir |
 | `Microsoft.Insights/alertRules/*` | Uyarı kurallarını ekleme, güncelleştirme ve kaldırma |
 | `Microsoft.Insights/diagnosticSettings/*` | Azure kaynaklarında tanılama ayarlarını ekleme, güncelleştirme ve kaldırma |
-| `Microsoft.OperationalInsights/*` | Log Analytics çalışma alanları için yapılandırma ekleyin, güncelleştirin ve kaldırın. Çalışma alanı gelişmiş ayarlarını düzenlemek için, Kullanıcı `Microsoft.OperationalInsights/workspaces/write`ihtiyaçları. |
+| `Microsoft.OperationalInsights/*` | Log Analytics çalışma alanları için yapılandırma ekleyin, güncelleştirin ve kaldırın. Çalışma alanı gelişmiş ayarlarını düzenlemek için, Kullanıcı ihtiyaçları `Microsoft.OperationalInsights/workspaces/write` . |
 | `Microsoft.OperationsManagement/*` | Yönetim çözümlerini ekleme ve kaldırma |
 | `Microsoft.Resources/deployments/*` | Dağıtımları oluşturma ve silme. Çözümleri, çalışma alanlarını ve otomasyon hesaplarını eklemek ve kaldırmak için gereklidir |
 | `Microsoft.Resources/subscriptions/resourcegroups/deployments/*` | Dağıtımları oluşturma ve silme. Çözümleri, çalışma alanlarını ve otomasyon hesaplarını eklemek ve kaldırmak için gereklidir |
@@ -187,12 +187,12 @@ Doğru erişim denetimini güvence altına almak için kaynak düzeyinde (çalı
 
 Kullanıcılar, kaynak bağlamı erişimi kullanarak bir çalışma alanından günlükleri sorgularsa, kaynak üzerinde aşağıdaki izinlere sahip olurlar:
 
-| İzin | Açıklama |
+| İzin | Description |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Örnekler:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Kaynak için tüm günlük verilerini görüntüleme olanağı.  |
 | `Microsoft.Insights/diagnosticSettings/write` | Tanılama ayarını bu kaynak için günlükleri ayarlamaya izin verecek şekilde yapılandırma özelliği. |
 
-`/read`izin genellikle, yerleşik [okuyucu](../../role-based-access-control/built-in-roles.md#reader) ve [katkıda](../../role-based-access-control/built-in-roles.md#contributor) bulunan rolleri gibi _ \*/Read veya_ _\*_ Permissions içeren bir rolden verilir. Belirli eylemler veya adanmış yerleşik roller içeren özel roller bu izni içermeyebilir.
+`/read`izin genellikle, yerleşik okuyucu ve katkıda bulunan rolleri gibi _ \* /Read veya_ Permissions içeren bir rolden verilir _\*_ . [Reader](../../role-based-access-control/built-in-roles.md#reader) [Contributor](../../role-based-access-control/built-in-roles.md#contributor) Belirli eylemler veya adanmış yerleşik roller içeren özel roller bu izni içermeyebilir.
 
 Farklı tablolar için farklı erişim denetimi oluşturmak isterseniz, aşağıdaki [tablo başına erişim denetimi tanımlama](#table-level-rbac) bölümüne bakın.
 
@@ -208,17 +208,17 @@ Farklı tablolar için farklı erişim denetimi oluşturmak isterseniz, aşağı
 
     * Çalışma alanı erişim denetimi modunu **çalışma alanı veya kaynak izinleri kullanacak** şekilde yapılandırma
 
-    * Çalışma alanında kullanıcılara aşağıdaki izinleri verin: `Microsoft.OperationalInsights/workspaces/read` ve. `Microsoft.OperationalInsights/workspaces/sharedKeys/action` Kullanıcılar, bu izinlerle hiçbir çalışma alanı düzeyi sorgu gerçekleştiremez. Bunlar yalnızca çalışma alanını numaralandırırlar ve Tanılama ayarları veya aracı yapılandırması için bir hedef olarak kullanabilir.
+    * Çalışma alanında kullanıcılara aşağıdaki izinleri verin: `Microsoft.OperationalInsights/workspaces/read` ve `Microsoft.OperationalInsights/workspaces/sharedKeys/action` . Kullanıcılar, bu izinlerle hiçbir çalışma alanı düzeyi sorgu gerçekleştiremez. Bunlar yalnızca çalışma alanını numaralandırırlar ve Tanılama ayarları veya aracı yapılandırması için bir hedef olarak kullanabilir.
 
-    * Kullanıcılara kaynakları için aşağıdaki izinleri verin: `Microsoft.Insights/logs/*/read` ve. `Microsoft.Insights/diagnosticSettings/write` [Log Analytics katkıda](../../role-based-access-control/built-in-roles.md#contributor) bulunan rolü zaten atanırsa, okuyucu rolüne atanmış veya bu kaynakta izin verilen `*/read` izinler varsa, bu yeterli olur.
+    * Kullanıcılara kaynakları için aşağıdaki izinleri verin: `Microsoft.Insights/logs/*/read` ve `Microsoft.Insights/diagnosticSettings/write` . [Log Analytics katkıda](../../role-based-access-control/built-in-roles.md#contributor) bulunan rolü zaten atanırsa, okuyucu rolüne atanmış veya `*/read` Bu kaynakta izin verilen izinler varsa, bu yeterli olur.
 
 3. Güvenlik olaylarını okuyup veri gönderebilmek zorunda kalmadan, kaynaklarından günlük verilerine erişim vermek için aşağıdakileri yapın:
 
     * Çalışma alanı erişim denetimi modunu **çalışma alanı veya kaynak izinleri kullanacak** şekilde yapılandırma
 
-    * Kullanıcılara kaynakları için aşağıdaki izinleri verin: `Microsoft.Insights/logs/*/read`.
+    * Kullanıcılara kaynakları için aşağıdaki izinleri verin: `Microsoft.Insights/logs/*/read` .
 
-    * Kullanıcıların SecurityEvent türünü okumasını engellemek için aşağıdaki eylemi ekleyin: `Microsoft.Insights/logs/SecurityEvent/read`. Olmayan eylem, okuma izni (`Microsoft.Insights/logs/*/read`) sağlayan eylem ile aynı özel rolde yer almaktadır. Kullanıcı bu kaynağa veya abonelik ya da kaynak grubuna atanmış başka bir rolden okuma eylemini içeriyorsa, tüm günlük türlerini okuyabilirler. Bu, örneğin, okuyucu veya katkıda `*/read`bulunan rolüyle, varsa de geçerlidir.
+    * Kullanıcıların SecurityEvent türünü okumasını engellemek için aşağıdaki eylemi ekleyin: `Microsoft.Insights/logs/SecurityEvent/read` . Olmayan eylem, okuma izni () sağlayan eylem ile aynı özel rolde yer almaktadır `Microsoft.Insights/logs/*/read` . Kullanıcı bu kaynağa veya abonelik ya da kaynak grubuna atanmış başka bir rolden okuma eylemini içeriyorsa, tüm günlük türlerini okuyabilirler. Bu, `*/read` Örneğin, okuyucu veya katkıda bulunan rolüyle, varsa de geçerlidir.
 
 4. Bir kullanıcıya, kaynaklarından günlük verileri için erişim izni vermek ve tüm Azure AD oturum açma ve Güncelleştirme Yönetimi çözüm günlüğü verilerini çalışma alanından okumak için aşağıdakileri yapın:
 
@@ -235,7 +235,7 @@ Farklı tablolar için farklı erişim denetimi oluşturmak isterseniz, aşağı
         * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read`– Güncelleştirme Yönetimi çözümü kullanabilmek için gereklidir
         * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read`– Güncelleştirme Yönetimi çözümü kullanabilmek için gereklidir
 
-    * Kullanıcılara kaynakları için aşağıdaki izinleri verin: `*/read`, okuyucu rolüne atanır veya. `Microsoft.Insights/logs/*/read` 
+    * Kullanıcılara kaynakları için aşağıdaki izinleri verin: `*/read` , okuyucu rolüne atanır veya `Microsoft.Insights/logs/*/read` . 
 
 ## <a name="table-level-rbac"></a>Tablo düzeyi RBAC
 
@@ -286,11 +286,11 @@ Yalnızca _Securitybaseline_ tablosuna erişimi olan bir rol oluşturmak için a
 
 Bazen özel Günlükler, belirli bir kaynakla doğrudan ilişkili olmayan kaynaklardan gelir. Bu durumda, yalnızca bu günlüklere erişimi yönetmek için bir kaynak grubu oluşturun. Kaynak grubu hiçbir ücret vermez, ancak özel günlüklere erişimi denetlemek için geçerli bir kaynak KIMLIĞI sağlar. Örneğin, belirli bir güvenlik duvarı özel Günlükler gönderiyorsa, "MyFireWallLogs" adlı bir kaynak grubu oluşturun ve API isteklerinin "MyFireWallLogs" kaynak KIMLIĞINI içerdiğinden emin olun. Daha sonra güvenlik duvarı günlük kayıtları, yalnızca MyFireWallLogs veya tam çalışma alanı erişimiyle erişim izni verilen kullanıcılar için erişilebilir.          
 
-### <a name="considerations"></a>Dikkat edilmesi gerekenler
+### <a name="considerations"></a>Önemli noktalar
 
-* Bir kullanıcıya, _ \*/Read_ eylemini içeren standart okuyucu veya katkıda bulunan rollerle genel okuma izni verildiyse, tablo başına erişim denetimini geçersiz kılar ve tüm günlük verilerine erişim sağlar.
+* Bir kullanıcıya, _ \* /Read_ eylemini içeren standart okuyucu veya katkıda bulunan rollerle genel okuma izni verildiyse, tablo başına erişim denetimini geçersiz kılar ve tüm günlük verilerine erişim sağlar.
 * Bir kullanıcıya tablo başına erişim verildiyse ancak başka izinler yoksa, API 'den günlük verilerine erişebilecek ancak Azure portal. Azure portal erişim sağlamak için, temel rolü olarak Log Analytics okuyucu kullanın.
-* Aboneliğin yöneticileri, diğer izin ayarlarından bağımsız olarak tüm veri türlerine erişebilir.
+* Aboneliğin yöneticileri ve sahipleri, diğer izin ayarlarından bağımsız olarak tüm veri türlerine erişebilir.
 * Çalışma alanı sahipleri, tablo başına erişim denetimi için diğer kullanıcılar gibi davranır.
 * Bireysel kullanıcılar yerine, atamaların sayısını azaltmak için güvenlik gruplarına roller atanmasını öneririz. Bu Ayrıca, erişimi yapılandırmak ve doğrulamak için mevcut Grup Yönetimi araçlarını kullanmanıza yardımcı olur.
 

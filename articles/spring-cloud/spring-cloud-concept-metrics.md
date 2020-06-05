@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
-ms.openlocfilehash: 746366675501c80776f0a4308e22250f344a00c9
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: ed8a46683d79211559b4af7972c6d1bb784e1f02
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343447"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434165"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Azure yay bulutu için ölçümleri anlama
 
@@ -90,8 +90,8 @@ Aşağıdaki tablolarda kullanılabilir ölçümler ve Ayrıntılar gösterilmek
 >[!div class="mx-tdCol2BreakAll"]
 >| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
->| Tomcat genel hatası (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılmak üzere)  | Tomcat. Global. Error | Sayı | İşlenen isteklerden oluşan hata sayısı |
->| Tomcat. Global. Error | Tomcat. Global. Error | Sayı | İşlenen isteklerden oluşan hata sayısı |
+>| Tomcat genel hatası (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılmak üzere)  | Tomcat. Global. Error | Sayı | İşlenen isteklerde oluşan hata sayısı |
+>| Tomcat. Global. Error | Tomcat. Global. Error | Sayı | İşlenen isteklerde oluşan hata sayısı |
 
 ### <a name="performance"></a>Performans
 >[!div class="mx-tdCol2BreakAll"]
@@ -101,7 +101,7 @@ Aşağıdaki tablolarda kullanılabilir ölçümler ve Ayrıntılar gösterilmek
 >| System. CPU. Usage | System. CPU. Usage | Yüzde | Tüm sistem için en son CPU kullanımı. Bu değer [0.0, 1.0] aralığındaki bir Double değeridir. 0,0 değeri, izlenen son süre boyunca tüm CPU 'ların boşta kaldığı, 1,0 değeri, tüm CPU 'ların, en son dönemde geçen sürenin %100 ' i etkin bir şekilde çalıştırdığı anlamına gelir.|
 >| Uygulama CPU kullanım yüzdesi (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılır) | Uygulama CPU kullanım yüzdesi | Yüzde | Java Sanal Makinesi işlemi için en son CPU kullanımı. Bu değer [0.0, 1.0] aralığındaki bir Double değeridir. 0,0 değeri, en son geçen süre boyunca JVM işlemindeki iş parçacıklarını hiçbir CPU 'nun çalıştırmadığı anlamına gelir, 1,0 değeri, tüm CPU 'ların, en son dönemde geçen sürenin% JVM 100% ' den etkin bir şekilde çalıştığı anlamına gelir. JVM 'deki iş parçacıkları, uygulama iş parçacıklarını ve JVM iç iş parçacıklarını içerir.|
 >| Process. CPU. Usage | Uygulama CPU kullanım yüzdesi | Yüzde | Java Sanal Makinesi işlemi için en son CPU kullanımı. Bu değer [0.0, 1.0] aralığındaki bir Double değeridir. 0,0 değeri, en son geçen süre boyunca JVM işlemindeki iş parçacıklarını hiçbir CPU 'nun çalıştırmadığı anlamına gelir, 1,0 değeri, tüm CPU 'ların, en son dönemde geçen sürenin% JVM 100% ' den etkin bir şekilde çalıştığı anlamına gelir. JVM 'deki iş parçacıkları, uygulama iş parçacıklarını ve JVM iç iş parçacıklarını içerir.|
->| Atanan uygulama belleği (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılmak üzere) | JVM. Memory. taahhüt | Bayt | JVM tarafından kullanılabilecek garanti edilen bellek miktarını temsil eder. JVM, belleği sisteme bırakabilir ve yürütme init 'ten az olabilir. taahhüt edilen her zaman en fazla veya daha büyük olur. |
+>| Atanan uygulama belleği (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılmak üzere) | JVM. Memory. taahhüt | Bayt | JVM tarafından kullanılabilecek garanti edilen bellek miktarını temsil eder. JVM, belleği sisteme bırakabilir ve kaydedilmiş bellek ilk bellekten daha az olabilir. Kaydedilmiş bellek, kullanılan bellekten her zaman daha büyük veya ona eşit olacaktır. |
 >| JVM. Memory. taahhüt | JVM. Memory. taahhüt | Bayt | JVM tarafından kullanılabilecek garanti edilen bellek miktarını temsil eder. JVM, belleği sisteme bırakabilir ve yürütme init 'ten az olabilir. taahhüt edilen her zaman en fazla veya daha büyük olur. |
 >| Kullanılan uygulama belleği (kullanım dışı)<br><br>(1 Temmuz 2020 ' den sonra kaldırılmak üzere) | JVM. Memory. kullanıldı | Bayt | Bayt cinsinden şu anda kullanılan bellek miktarını temsil eder. |
 >| JVM. Memory. kullanıldı | JVM. Memory. kullanıldı | Bayt | Bayt cinsinden şu anda kullanılan bellek miktarını temsil eder. |

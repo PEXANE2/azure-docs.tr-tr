@@ -1,19 +1,19 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/15/2019
+ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 72d87142f9b9c1f7bcb2b02281851bd1e29bc9c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45b611144d5a62171061febfd4efa98db69bacb9
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78262488"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84436109"
 ---
 Azure yönetilen diskler Şu anda dört disk türü sunmaktadır, her tür belirli müşteri senaryolarına yönelik olarak tasarlanmıştır.
 
@@ -26,7 +26,7 @@ Aşağıdaki tabloda, ne kullanacağınıza karar vermenize yardımcı olmak üz
 |Disk türü   |SSD   |SSD   |SSD   |HDD   |
 |Senaryo   |[SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), üst katman veritabanları (ÖRNEĞIN, SQL, Oracle) ve diğer işlem açısından ağır iş YÜKLERI gibi GÇ yoğunluklu iş yükleri.   |Üretim ve performansa duyarlı iş yükleri   |Web sunucuları, az kullanılan kurumsal uygulamalar ve geliştirme/test   |Yedekleme, kritik olmayan, seyrek erişim   |
 |En büyük disk boyutu   |65.536 gibibayt (GiB)    |32.767 GiB    |32.767 GiB   |32.767 GiB   |
-|En yüksek işleme hızı   |2.000 MiB/sn    |900 MiB/sn   |750 MiB/sn   |500 MiB/sn   |
+|En yüksek işleme hızı   |2.000 MB/s    |900 MB/s   |750 MB/s   |500 MB/s   |
 |Maks. IOPS   |160.000    |20.000   |6.000   |2.000   |
 
 ## <a name="ultra-disk"></a>Ultra disk

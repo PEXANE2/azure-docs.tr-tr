@@ -4,14 +4,14 @@ description: Bu belgede Azure Cosmos DB için bir sanal ağ hizmeti uç noktası
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 06/04/2020
 ms.author: mjbrown
-ms.openlocfilehash: 442623880c1b95f3d7e038ae44832b74853d2c4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 904b976b5e5c811912df9421dc64be1617b30b44
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366233"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431725"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Sanal ağlardan (VNet) erişimi yapılandırma
 
@@ -202,7 +202,7 @@ az cosmosdb create \
 
 ### <a name="connect-and-configure-a-cosmos-account-to-a-back-end-subnet-independently"></a>Cosmos hesabını bağımsız olarak arka uç alt ağına bağlama ve yapılandırma
 
-Bu örnek, bir Azure Cosmos hesabının alt ağın henüz hizmet uç noktaları için yapılandırılmadığı mevcut yeni bir sanal ağa nasıl bağlanacağını göstermek için tasarlanmıştır. Bu, `--ignore-missing-vnet-service-endpoint` parametresi kullanılarak yapılır. Bu, sanal ağın alt ağının yapılandırması tamamlanmadan önce Cosmos hesabının yapılandırmasının hatasız tamamlanmasını sağlar. Alt ağ yapılandırması tamamlandıktan sonra, Cosmos hesabına, yapılandırılmış alt ağ üzerinden erişilebilecektir.
+Bu örnek, bir Azure Cosmos hesabının alt ağın henüz hizmet uç noktaları için yapılandırılmadığı mevcut yeni bir sanal ağa nasıl bağlanacağını göstermek için tasarlanmıştır. Bu, parametresi kullanılarak yapılır `--ignore-missing-vnet-service-endpoint` . Bu, sanal ağın alt ağının yapılandırması tamamlanmadan önce Cosmos hesabının yapılandırmasının hatasız tamamlanmasını sağlar. Alt ağ yapılandırması tamamlandıktan sonra, Cosmos hesabına, yapılandırılmış alt ağ üzerinden erişilebilecektir.
 
 ```azurecli-interactive
 # Create an Azure Cosmos Account with a service endpoint connected to a backend subnet
@@ -257,6 +257,10 @@ az network vnet subnet update \
    --vnet-name $vnetName \
    --service-endpoints Microsoft.AzureCosmosDB
 ```
+
+## <a name="port-range-when-using-direct-mode"></a>Doğrudan mod kullanılırken bağlantı noktası aralığı
+
+Bir Azure Cosmos hesabıyla doğrudan mod bağlantısı aracılığıyla hizmet uç noktaları kullandığınızda, 20000 10000 numaralı TCP bağlantı noktasının açık olduğundan emin olmanız gerekir.
 
 ## <a name="migrating-from-an-ip-firewall-rule-to-a-virtual-network-acl"></a><a id="migrate-from-firewall-to-vnet"></a>IP güvenlik duvarı kuralından bir sanal ağ ACL 'sine geçiş
 

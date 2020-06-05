@@ -6,21 +6,19 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/31/2020
+ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: 8d180eeffdbc41db6fa0e636daf7702faad47fcc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 29cd4e2b395d28733f384ad3b073a4c11f7cf194
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77368483"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84416428"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+[Başvuru belgeleri](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)  |  [Örnek](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/LUIS/go-rest-model/model.go)
 
-* Azure Language Understanding-yazma kaynağı 32 karakter anahtarı ve yazma uç noktası URL 'SI. [Azure Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) veya [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli)ile oluşturun.
-* Bilişsel hizmetler-dil düzeyi GitHub deposundan [Travelagent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) uygulamasını içeri aktarın.
-* İçeri aktarılan TravelAgent uygulamasının LUIS uygulama kimliği. Uygulama kimliği, uygulama panosunda gösterilir.
-* Konuşmaları alan uygulamanın içindeki sürüm kimliği. Varsayılan kimlik: "0.1".
+## <a name="prerequisites"></a>Önkoşullar
+
 * [Go](https://golang.org/) programlama dili
 * [Visual Studio Code](https://code.visualstudio.com/)
 
@@ -28,121 +26,23 @@ ms.locfileid: "77368483"
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
+## <a name="create-pizza-app"></a>Pizza uygulaması oluşturma
+
+[!INCLUDE [Create pizza app](get-started-get-model-create-pizza-app.md)]
+
 ## <a name="change-model-programmatically"></a>Modeli program aracılığıyla değiştirme
 
 1. `predict.go` adlı yeni bir dosya oluşturun. Aşağıdaki kodu ekleyin:
 
-    ```go
-    // dependencies
-    package main
-    import (
-        "fmt"
-        "net/http"
-        "io/ioutil"
-        "log"
-        "strings"
-    )
+    [!code-go[Code snippet](~/cognitive-services-quickstart-code/go/LUIS/go-rest-model/model.go)]
 
-    // main function
-    func main() {
-
-        // NOTE: change to your app ID
-        var appID = "YOUR-APP-ID"
-
-        // NOTE: change to your authoring key
-        var authoringKey = "YOUR-KEY"
-
-        // NOTE: change to your authoring key's endpoint, for example, your-resource-name.api.cognitive.microsoft.com
-        var endpoint = "YOUR-ENDPOINT"
-
-        var version = "0.1"
-
-        var exampleUtterances = `
-        [
-            {
-              'text': 'go to Seattle today',
-              'intentName': 'BookFlight',
-              'entityLabels': [
-                {
-                  'entityName': 'Location::LocationTo',
-                  'startCharIndex': 6,
-                  'endCharIndex': 12
-                }
-              ]
-            },
-            {
-                'text': 'a barking dog is annoying',
-                'intentName': 'None',
-                'entityLabels': []
-            }
-          ]
-        `
-
-        fmt.Println("add example utterances requested")
-        addUtterance(authoringKey, appID, version, exampleUtterances, endpoint)
-
-        fmt.Println("training selected")
-        requestTraining(authoringKey, appID, version, endpoint)
-
-        fmt.Println("training status selected")
-        getTrainingStatus(authoringKey, appID, version, endpoint)
-    }
-
-    // get utterances from file and add to model
-    func addUtterance(authoringKey string, appID string,  version string, labeledExampleUtterances string, endpoint string){
-
-        var authoringUrl = fmt.Sprintf("https://%s/luis/authoring/v3.0-preview/apps/%s/versions/%s/examples", endpoint, appID, version)
-
-        httpRequest("POST", authoringUrl, authoringKey, labeledExampleUtterances)
-    }
-    func requestTraining(authoringKey string, appID string,  version string, endpoint string){
-
-        trainApp("POST", authoringKey, appID, version, endpoint)
-    }
-    func trainApp(httpVerb string, authoringKey string, appID string,  version string, endpoint string){
-
-        var authoringUrl = fmt.Sprintf("https://%s/luis/authoring/v3.0-preview/apps/%s/versions/%s/train", endpoint, appID, version)
-
-        httpRequest(httpVerb,authoringUrl, authoringKey, "")
-    }
-    func getTrainingStatus(authoringKey string, appID string, version string, endpoint string){
-
-        trainApp("GET", authoringKey, appID, version, endpoint)
-    }
-    // generic HTTP request
-    // includes setting header with authoring key
-    func httpRequest(httpVerb string, url string, authoringKey string, body string){
-
-        client := &http.Client{}
-
-        request, err := http.NewRequest(httpVerb, url, strings.NewReader(body))
-        request.Header.Add("Ocp-Apim-Subscription-Key", authoringKey)
-
-        fmt.Println("body")
-        fmt.Println(body)
-
-        response, err := client.Do(request)
-        if err != nil {
-            log.Fatal(err)
-        } else {
-            defer response.Body.Close()
-            contents, err := ioutil.ReadAll(response.Body)
-            if err != nil {
-                log.Fatal(err)
-            }
-            fmt.Println("   ", response.StatusCode)
-            fmt.Println(string(contents))
-        }
-    }
-    ```
-
-1. İle `YOUR-` başlayan değerleri kendi değerlerinizle değiştirin.
+1. İle başlayan değerleri `YOUR-` kendi değerlerinizle değiştirin.
 
     |Bilgi|Amaç|
     |--|--|
-    |`YOUR-KEY`|32 karakter yazma anahtarınız.|
-    |`YOUR-ENDPOINT`| Yazma URL 'niz uç noktasıdır. Örneğin, `replace-with-your-resource-name.api.cognitive.microsoft.com`. Kaynağı oluşturduğunuzda kaynak adınızı ayarlarsınız.|
     |`YOUR-APP-ID`| LUSıS uygulama KIMLIĞINIZ. |
+    |`YOUR-AUTHORING-KEY`|32 karakter yazma anahtarınız.|
+    |`YOUR-AUTHORING-ENDPOINT`| Yazma URL 'niz uç noktasıdır. Örneğin, `https://replace-with-your-resource-name.api.cognitive.microsoft.com/`. Kaynağı oluşturduğunuzda kaynak adınızı ayarlarsınız.|
 
     Atanan anahtarlar ve kaynaklar, **Azure kaynakları** sayfasındaki Yönet bölümündeki Luo portalında görünür. Uygulama KIMLIĞI, **uygulama ayarları** sayfasında aynı Yönet bölümünde bulunur.
 
@@ -156,6 +56,195 @@ ms.locfileid: "77368483"
 
     ```console
     go run model.go
+    ```
+
+1. Yazma yanıtını gözden geçirin:
+
+    ```console
+    add example utterances requested
+    body
+    [{'text': 'order a pizza', 'intentName': 'ModifyOrder', 'entityLabels': [{'entityName': 'Order', 'startCharIndex': 6, 'endCharIndex': 12}]}, {'text': 'order a large pepperoni pizza', 'intentName': 'ModifyOrder', 'entityLabels': [{'entityName': 'Order', 'startCharIndex': 6, 'endCharIndex': 28}, {'entityName': 'FullPizzaWithModifiers', 'startCharIndex': 6, 'endCharIndex': 28}, {'entityName': 'PizzaType', 'startCharIndex': 14, 'endCharIndex': 28}, {'entityName': 'Size', 'startCharIndex': 8, 'endCharIndex': 12}]}, {'text': 'I want two large pepperoni pizzas on thin crust', 'intentName': 'ModifyOrder', 'entityLabels': [{'entityName': 'Order', 'startCharIndex': 7, 'endCharIndex': 46}, {'entityName': 'FullPizzaWithModifiers', 'startCharIndex': 7, 'endCharIndex': 46}, {'entityName': 'PizzaType', 'startCharIndex': 17, 'endCharIndex': 32}, {'entityName': 'Size', 'startCharIndex': 11, 'endCharIndex': 15}, {'entityName': 'Quantity', 'startCharIndex': 7, 'endCharIndex': 9}, {'entityName': 'Crust', 'startCharIndex': 37, 'endCharIndex': 46}]}]
+        201
+    [{"value":{"ExampleId":1137150691,"UtteranceText":"order a pizza"},"hasError":false},{"value":{"ExampleId":1137150692,"UtteranceText":"order a large pepperoni pizza"},"hasError":false},{"value":{"ExampleId":1137150693,"UtteranceText":"i want two large pepperoni pizzas on thin crust"},"hasError":false}]
+    training selected
+    body
+
+        202
+    {"statusId":9,"status":"Queued"}
+    training status selected
+    body
+
+        200
+    [{"modelId":"edb46abf-0000-41ab-beb2-a41a0fe1630f","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"a5030be2-616c-4648-bf2f-380fa9417d37","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"3f2b1f31-a3c3-4fbd-8182-e9d9dbc120b9","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"e4b6704b-1636-474c-9459-fe9ccbeba51c","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"031d3777-2a00-4a7a-9323-9a3280a30000","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"9250e7a1-06eb-4413-9432-ae132ed32583","details":{"statusId":9,"status":"Queued","exampleCount":0}}]
+    ```
+
+    Okunabilirlik için biçimlendirilen çıktı aşağıda verilmiştir:
+
+    ```json
+    add example utterances requested
+    body
+    [
+      {
+        'text': 'order a pizza',
+        'intentName': 'ModifyOrder',
+        'entityLabels': [
+          {
+            'entityName': 'Order',
+            'startCharIndex': 6,
+            'endCharIndex': 12
+          }
+        ]
+      },
+      {
+        'text': 'order a large pepperoni pizza',
+        'intentName': 'ModifyOrder',
+        'entityLabels': [
+          {
+            'entityName': 'Order',
+            'startCharIndex': 6,
+            'endCharIndex': 28
+          },
+          {
+            'entityName': 'FullPizzaWithModifiers',
+            'startCharIndex': 6,
+            'endCharIndex': 28
+          },
+          {
+            'entityName': 'PizzaType',
+            'startCharIndex': 14,
+            'endCharIndex': 28
+          },
+          {
+            'entityName': 'Size',
+            'startCharIndex': 8,
+            'endCharIndex': 12
+          }
+        ]
+      },
+      {
+        'text': 'I want two large pepperoni pizzas on thin crust',
+        'intentName': 'ModifyOrder',
+        'entityLabels': [
+          {
+            'entityName': 'Order',
+            'startCharIndex': 7,
+            'endCharIndex': 46
+          },
+          {
+            'entityName': 'FullPizzaWithModifiers',
+            'startCharIndex': 7,
+            'endCharIndex': 46
+          },
+          {
+            'entityName': 'PizzaType',
+            'startCharIndex': 17,
+            'endCharIndex': 32
+          },
+          {
+            'entityName': 'Size',
+            'startCharIndex': 11,
+            'endCharIndex': 15
+          },
+          {
+            'entityName': 'Quantity',
+            'startCharIndex': 7,
+            'endCharIndex': 9
+          },
+          {
+            'entityName': 'Crust',
+            'startCharIndex': 37,
+            'endCharIndex': 46
+          }
+        ]
+      }
+    ]
+
+        201
+    [
+      {
+        "value": {
+          "ExampleId": 1137150691,
+          "UtteranceText": "order a pizza"
+        },
+        "hasError": false
+      },
+      {
+        "value": {
+          "ExampleId": 1137150692,
+          "UtteranceText": "order a large pepperoni pizza"
+        },
+        "hasError": false
+      },
+      {
+        "value": {
+          "ExampleId": 1137150693,
+          "UtteranceText": "i want two large pepperoni pizzas on thin crust"
+        },
+        "hasError": false
+      }
+    ]
+    training selected
+    body
+
+        202
+    {
+      "statusId": 9,
+      "status": "Queued"
+    }
+    training status selected
+    body
+
+        200
+    [
+      {
+        "modelId": "edb46abf-0000-41ab-beb2-a41a0fe1630f",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "a5030be2-616c-4648-bf2f-380fa9417d37",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "3f2b1f31-a3c3-4fbd-8182-e9d9dbc120b9",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "e4b6704b-1636-474c-9459-fe9ccbeba51c",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "031d3777-2a00-4a7a-9323-9a3280a30000",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "9250e7a1-06eb-4413-9432-ae132ed32583",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      }
+    ]
     ```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 481406b02d7d864dd16ac42918ae1aa2dea0b145
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 31c285b8130e7df549ae9f3bb7f1e30cd8a0546c
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195219"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432678"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Azure depolama izleme veri başvurusu
 
@@ -32,11 +32,15 @@ Azure depolama, Azure Izleyici 'de aşağıdaki kapasite ölçümlerini sağlar.
 
 #### <a name="account-level"></a>Hesap düzeyi
 
+Bu tabloda [hesap düzeyi ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccounts)gösterilmektedir.
+
 | Metric | Açıklama |
 | ------------------- | ----------------- |
 | UsedCapacity | Depolama hesabı tarafından kullanılan depolama miktarı. Standart depolama hesapları için blob, tablo, dosya ve kuyruk tarafından kullanılan kapasitenin toplamıdır. Premium depolama ve Blob Depolama hesapları için BlobCapacity ile aynıdır. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 
 #### <a name="blob-storage"></a>Blob depolama
+
+Bu tabloda [BLOB depolama ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsblobservices)gösterilmektedir.
 
 | Metric | Açıklama |
 | ------------------- | ----------------- |
@@ -45,7 +49,9 @@ Azure depolama, Azure Izleyici 'de aşağıdaki kapasite ölçümlerini sağlar.
 | ContainerCount    | Depolama hesabındaki kapsayıcıların sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 | Dizin kapasitesi     | ADLS 2. hiyerarşik dizin tarafından kullanılan depolama miktarı <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 
-#### <a name="table-storage"></a>Table Storage
+#### <a name="table-storage"></a>Tablo depolama
+
+Bu tabloda [Tablo depolama ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountstableservices)gösterilmektedir.
 
 | Metric | Açıklama |
 | ------------------- | ----------------- |
@@ -55,6 +61,8 @@ Azure depolama, Azure Izleyici 'de aşağıdaki kapasite ölçümlerini sağlar.
 
 #### <a name="queue-storage"></a>Kuyruk depolama
 
+Bu tabloda [kuyruk depolama ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsfileservices)gösterilmektedir.
+
 | Metric | Açıklama |
 | ------------------- | ----------------- |
 | QueueCapacity | Depolama hesabı tarafından kullanılan kuyruk depolama miktarı. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
@@ -62,6 +70,8 @@ Azure depolama, Azure Izleyici 'de aşağıdaki kapasite ölçümlerini sağlar.
 | QueueMessageCount | Depolama hesabındaki süre dolma edilmemiş sıra iletilerinin sayısı. <br/><br/>Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 
 #### <a name="file-storage"></a>Dosya depolama
+
+Bu tabloda [dosya depolama ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsqueueservices)gösterilmektedir.
 
 | Metric | Açıklama |
 | ------------------- | ----------------- |
@@ -90,13 +100,13 @@ Azure depolama, Azure Izleyici 'de aşağıdaki işlem ölçümlerini sağlar.
 
 Azure depolama, Azure Izleyici 'de ölçümler için aşağıdaki boyutları destekler.
 
-| Boyut adı | Açıklama |
+| Boyut adı | Description |
 | ------------------- | ----------------- |
 | **BlobType** | Yalnızca blob ölçümleri için blob türü. Desteklenen değerler **Blockblob**, **pageblob**ve **Azure Data Lake Storage**. Append blobu BlockBlob 'a dahildir. |
 | **BlobTier** | Azure depolama, blob nesne verilerini en düşük maliyetli biçimde depolamanıza olanak sağlayan farklı erişim katmanları sunar. Bkz. [Azure Storage blob katmanında](../blobs/storage-blob-storage-tiers.md)daha fazla bilgi. Desteklenen değerler şunlardır: <br/> <li>**Sık**erişimli: etkin katman</li> <li>**Cool**: Cool Tier</li> <li>**Arşiv**: Arşiv katmanı</li> <li>**Premium**: Blok Blobu için Premium katman</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Premium Sayfa Blobu için katman türleri</li> <li>**Standart**: standart sayfa blobu için katman türü</li> <li>**Katmanlanmadan**: genel amaçlı v1 depolama hesabı için katman türü</li> |
 | **GeoType** | Birincil veya Ikincil kümeden işlem. Kullanılabilir değerler **PRIMARY** ve **Secondary**' i içerir. İkincil kiracının nesnelerini okurken Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) için geçerlidir. |
 | **ResponseType** | İşlem yanıt türü. Kullanılabilir değerler şunlardır: <br/><br/> <li>**Serverothererror**: açıklananlar hariç diğer tüm sunucu tarafı hataları </li> <li>**Serverbusyerror**: kimliği doğrulanmış Istek bir http 503 durum kodu döndürdü. </li> <li>**Servertimeouterror**: bir http 500 durum kodu döndüren zaman aşımına uğramış istek kimliği. Zaman aşımı bir sunucu hatası nedeniyle gerçekleşti. </li> <li>**Authorizationerror**: yetkisiz veri erişimi veya yetkilendirme hatası nedeniyle başarısız olan kimliği doğrulanmış istek. </li> <li>**Networkerror**: ağ hataları nedeniyle başarısız olan kimliği doğrulanmış istek. Çoğunlukla bir istemci, zaman aşımı süre sonundan önce bağlantıyı erkenden kapattığında gerçekleşir. </li><li>**ClientAccountBandwidthThrottlingError**: istek, [depolama hesabı ölçeklenebilirlik sınırlarını](scalability-targets-standard-account.md)aşan bant genişliği üzerinde kısıtlandı.</li><li>**Clientaccountrequestazaltıngerror**: istek, [depolama hesabı ölçeklenebilirlik sınırlarını](scalability-targets-standard-account.md)aşmamak için istek hızında kısıtlanıyor.<li>**Clientkısıtlar Lingerror**: diğer istemci tarafı azaltma hatası. ClientAccountBandwidthThrottlingError ve Clientaccountrequestkısıtlar Lingerror hariç tutulur.</li> <li>**Clienttimeouterror**: bir http 500 durum kodu döndüren zaman aşımına uğramış istek kimliği. İstemcinin ağ zaman aşımı veya istek zaman aşımı depolama hizmetinin beklediğinden düşük bir değere ayarlanmışsa beklenen bir zaman aşımıdır. Aksi takdirde, bir ServerTimeoutError olarak bildirilir. </li> <li>**Clienentothererror**: açıklananlar hariç diğer tüm istemci tarafı hataları. </li> <li>**Başarılı: başarılı**istek</li> <li> Başarılı **azaltma**: bir SMB istemcisi ilk denemede azaltılırsa, ancak yeniden denemeler yapıldıktan sonra başarılı olan istek.</li> |
-| **ApiName** | İşlemin adı. Örneğin: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Tüm işlem adları için bkz. [belge](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
+| **ApiName** | İşlemin adı. Örnek: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Tüm işlem adları için bkz. [belge](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
 | **Kimlik Doğrulaması** | İşlemlerde kullanılan kimlik doğrulaması türü. Kullanılabilir değerler şunlardır: <br/> <li>**Accountkey**: işlem, depolama hesabı anahtarıyla doğrulanır.</li> <li>**SAS**: işlem, paylaşılan erişim imzaları ile doğrulanır.</li> <li>**OAuth**: Işlem, OAuth erişim belirteçleriyle doğrulanır.</li> <li>**Anonim**: işlem anonim olarak istendi. Bu, ön kontrol isteklerini içermez.</li> <li>**Anonymousbir ön**kontrol: işlem, ön kontrol isteği.</li> |
 
 Boyutları destekleyen ölçümler için, karşılık gelen ölçüm değerlerini görmek için boyut değerini belirtmeniz gerekir. Örneğin, başarılı yanıtlar için **işlem** değerine bakarsanız, **responseType** boyutunu **başarılı**olarak filtrelemeniz gerekir. Ya da Blok Blobu için **Blobcount** değerine bakarsanız, **Blobtype** boyutunu **blockblob**ile filtrelemeniz gerekir.

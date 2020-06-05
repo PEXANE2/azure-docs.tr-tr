@@ -5,16 +5,16 @@ description: Otomatikleştirilmiş ML modelinizin Özellik önemini nasıl belir
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.date: 03/11/2020
-ms.openlocfilehash: e0ec6cbc4cea926dfc50cdae247aea5d765c20ca
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 6fcebb34f82565fcf83a9535e8c036231c5b3cf7
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691217"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430536"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Yorumlenebilirlik: otomatik makine öğreniminde model açıklamaları
 
@@ -22,7 +22,7 @@ ms.locfileid: "82691217"
 
 Bu makalede, Azure Machine Learning ' de otomatik makine öğrenimi (ML) açıklamalarını alma hakkında bilgi edineceksiniz. Otomatikleştirilmiş ML, uygulanan özellik önemini anlamanıza yardımcı olur. 
 
-1.0.85 sonrasında tüm SDK sürümleri varsayılan `model_explainability=True` olarak ayarlanır. SDK sürüm 1.0.85 ve önceki sürümlerinde, kullanıcıların model yorumlenebilirliğini `model_explainability=True` kullanabilmesi `AutoMLConfig` için nesnesine ayarlanması gerekir. 
+1.0.85 sonrasında tüm SDK sürümleri `model_explainability=True` Varsayılan olarak ayarlanır. SDK sürüm 1.0.85 ve önceki sürümlerinde, kullanıcıların `model_explainability=True` `AutoMLConfig` model yorumlenebilirliğini kullanabilmesi için nesnesine ayarlanması gerekir. 
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -30,18 +30,18 @@ Bu makalede şunları öğreneceksiniz:
 - Veri ve açıklamaları desenlerdeki desenleri görmenizi sağlayacak görselleştirmeleri etkinleştirin.
 - Çıkarım veya Puanlama sırasında yorumlenebilirlik uygulayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Yorumlenebilirlik özellikleri. Gerekli `pip install azureml-interpret azureml-contrib-interpret` paketleri almak için ' i çalıştırın.
+- Yorumlenebilirlik özellikleri. `pip install azureml-interpret azureml-contrib-interpret`Gerekli paketleri almak için ' i çalıştırın.
 - Otomatik ML denemeleri oluşturma hakkında bilgi. Azure Machine Learning SDK 'sını kullanma hakkında daha fazla bilgi için, bu [regresyon modeli öğreticisini](tutorial-auto-train-models.md) doldurun veya [Otomatik ml denemeleri](how-to-configure-auto-train.md)'yi nasıl yapılandıracağınızı öğrenin.
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>En iyi model için eğitim sırasında yorumlenebilirlik
 
-Tarafından uygulanan özelliklerin açıklamalarını içeren `best_run`öğesinden açıklamayı alın.
+Tarafından `best_run` uygulanan özelliklerin açıklamalarını içeren öğesinden açıklamayı alın.
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>Yapıt deposundan uygulanan özellik önem derecesini indirin
 
-' Nin yapıt `ExplanationClient` deposundan, uygulanan özellik açıklamalarını indirmek için ' i kullanabilirsiniz `best_run`. 
+' `ExplanationClient` Nin yapıt deposundan, uygulanan özellik açıklamalarını indirmek için ' i kullanabilirsiniz `best_run` . 
 
 ```python
 from azureml.explain.model._internal.explanation_client import ExplanationClient
@@ -63,7 +63,7 @@ automl_run, fitted_model = local_run.get_output(metric='accuracy')
 
 ### <a name="set-up-the-model-explanations"></a>Model açıklamalarını ayarlama
 
-Mühendislik `automl_setup_model_explanations` uygulanan açıklamaları almak için kullanın. , `fitted_model` Aşağıdaki öğeleri oluşturabilir:
+`automl_setup_model_explanations`Mühendislik uygulanan açıklamaları almak için kullanın. , `fitted_model` Aşağıdaki öğeleri oluşturabilir:
 
 - Eğitilen veya test örneklerinden öne çıkan veriler
 - Uygulanan özellik adı listeleri
@@ -85,7 +85,7 @@ Oto ml modelleriyle ilgili bir açıklama oluşturmak için `MimicWrapper` sın�
 
 - Açıklama Kurulum nesnesi
 - Çalışma alanınız
-- `fitted_model` Otomatikleştirilmiş ml modelini açıklamak için bir yedek modeli
+- Otomatikleştirilmiş ML modelini açıklamak için bir yedek modeli `fitted_model`
 
 Mımısarmalayıcı, uygulanan açıklamalarının `automl_run` karşıya yükleneceği nesneyi de alır.
 
@@ -104,7 +104,7 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
 
 ### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>Uygulanan özellik önemini hesaplamak ve görselleştirmek için MimicExplainer kullanın
 
-Oluşturulan mühendislik özelliklerine ilişkin `explain()` Özellik önemini elde etmek için, dönüştürülmüş test örnekleriyle birlikte msarmalayıcı içindeki yöntemi çağırabilirsiniz. Ayrıca, üretilen mühendislik `ExplanationDashboard` özelliklerinin özellik önem değerlerinin Pano görselleştirmesini otomatik ml özelliklerine göre görüntülemek için ' i de kullanabilirsiniz.
+`explain()`Oluşturulan mühendislik özelliklerine ilişkin özellik önemini elde etmek için, dönüştürülmüş test örnekleriyle birlikte Msarmalayıcı içindeki yöntemi çağırabilirsiniz. Ayrıca, `ExplanationDashboard` üretilen mühendislik özelliklerinin özellik önem değerlerinin Pano görselleştirmesini OTOMATIK ml özelliklerine göre görüntülemek için ' i de kullanabilirsiniz.
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
@@ -117,7 +117,7 @@ Bu bölümde, önceki bölümde yer alan açıklamaları hesaplamak için kullan
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>Modeli ve Puanlama açıklama kaydetme
 
-' İ `TreeScoringExplainer` kullanarak, uygulanan özellik önem değerlerini, çıkarım zamanında hesaplayacağımız Puanlama açıklama oluşturmak için kullanın. Puanlama açıklama daha önce hesaplanan ile birlikte `feature_map` başlatılıyor. 
+' İ kullanarak, `TreeScoringExplainer` uygulanan özellik önem değerlerini, çıkarım zamanında hesaplayacağımız Puanlama açıklama oluşturmak için kullanın. Puanlama Açıklama `feature_map` daha önce hesaplanan ile birlikte başlatılıyor. 
 
 Puanlama Açıklama ' nı kaydedin ve sonra modeli ve Puanlama Açıklama ' ı Model Yönetimi hizmetiyle kaydedin. Aşağıdaki kodu çalıştırın:
 

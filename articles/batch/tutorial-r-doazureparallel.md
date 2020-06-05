@@ -5,12 +5,12 @@ ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
 ms.custom: mvc
-ms.openlocfilehash: c9708360df4a7fb711a3d57b39f33c576c75a0d5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dc5c022b4722f844e0b3c117bb5961843865bd55
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117106"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418186"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Öğretici: Azure Batch ile paralel R simülasyonu çalıştırma 
 
@@ -24,7 +24,7 @@ Bu öğreticide bir Batch havuzu dağıtma ve doğrudan RStudio içinde Azure Ba
 > * R oturumunuz için bir paralel arka uç olarak Batch havuzu oluşturma
 > * Havuz üzerinde örnek bir paralel simülasyon çalıştırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Microsoft R Open](https://mran.microsoft.com/open) gibi yüklü bir [R](https://www.r-project.org/) dağıtımı. R 3.3.1 veya sonraki bir sürümü kullanın.
 
@@ -220,7 +220,7 @@ closingPrices_p <- foreach(i = 1:100, .combine='c', .options.azure = opt) %dopar
 end_p <- Sys.time() 
 ```
 
-Simülasyon, görevleri Batch havuzundaki düğümlere dağıtır. Azure portalında havuzun ısı haritasındaki etkinliği görebilirsiniz]. **Batch hesapları** > *mybatchaccount*' a gidin. **Havuzlar** > *mypoolname*öğesine tıklayın. 
+Simülasyon, görevleri Batch havuzundaki düğümlere dağıtır. Etkinliği, Azure portal havuzun ısı haritasında görebilirsiniz. **Batch hesapları**  >  *mybatchaccount*' a gidin. **Havuzlar**  >  *mypoolname*öğesine tıklayın. 
 
 ![Paralel R görevleri çalıştıran havuzun ısı haritası](media/tutorial-r-doazureparallel/pool.png)
 

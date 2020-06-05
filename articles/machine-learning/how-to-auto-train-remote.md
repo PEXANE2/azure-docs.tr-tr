@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: e55e6d4eb4f52b8a4b64db89691cf087a30ecb73
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3e88db734ecabb38363087d98b97f9eb4ec181ec
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612325"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434654"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Otomatik makine öğrenmesi ile modelleri bulutta eğitin
 
@@ -34,7 +34,7 @@ Uzaktan işlem hedefi kullandığınızda daha fazla özellik kullanılabilir.  
 
 "[Otomatik makine öğrenimi ile sınıflandırma modelini eğitme](tutorial-auto-train-models.md)" öğreticisi, bir MODELI otomatik ml ile eğitme konusunda yerel bir bilgisayar kullanmayı öğretir. Eğitim yerel olarak uzak hedefler de için de geçerli olduğunda iş akışı. Uzaktan eğitebilmeniz için öncelikle AmlCompute gibi bir uzak işlem hedefi oluşturursunuz. Ardından, uzak kaynağı yapılandırıp kodunuzu buraya gönderebilirsiniz.
 
-Bu makalede, uzak bir AmlCompute hedefinde otomatik ML denemesi çalıştırmak için gereken ek adımlar gösterilmektedir. Öğreticiden alınan çalışma `ws`alanı nesnesi buradaki kod boyunca kullanılır.
+Bu makalede, uzak bir AmlCompute hedefinde otomatik ML denemesi çalıştırmak için gereken ek adımlar gösterilmektedir. `ws`Öğreticiden alınan çalışma alanı nesnesi buradaki kod boyunca kullanılır.
 
 ```python
 ws = Workspace.from_config()
@@ -42,7 +42,7 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>Kaynak oluşturma
 
-[`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) Hedefi zaten yoksa çalışma alanınızda (`ws`) oluşturun.
+[`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py)Hedefi zaten yoksa çalışma alanınızda ( `ws` ) oluşturun.
 
 **Tahmin süresi**: AmlCompute hedefinin oluşturulması yaklaşık 5 dakika sürer.
 
@@ -85,13 +85,13 @@ Artık `compute_target` nesneyi uzak işlem hedefi olarak kullanabilirsiniz.
 
 Küme adı kısıtlamaları şunları içerir:
 + 64 karakterden kısa olmalıdır.
-+ Şu karakterlerden herhangi birini içeremez: `\` ~! @ # $% ^ & * () = + _ [] {} \\ \\ |; : \' \\",  < > /?. `
++ Şu karakterlerden herhangi birini içeremez: `\` ~! @ # $% ^ & * () = + _ [] {} \\ \\ |;: \' \\ ",  < > /?. `
 
 ## <a name="access-data-using-tabulardataset-function"></a>TabularDataset işlevini kullanarak verilere erişme
 
-Ve içinde otomatik [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) ml 'ye geçirilen etiketi olarak tanımlanmış training_data [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py). Yöntemi, varsayılan olarak, sütun türünü otomatik olarak çıkardığı true olarak ayarlar `infer_column_types` `TabularDataset` `from_delimited_files` 
+[`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)Ve Içinde OTOMATIK ml 'ye geçirilen etiketi olarak tanımlanmış training_data [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) . Yöntemi, varsayılan olarak, `TabularDataset` `from_delimited_files` `infer_column_types` sütun türünü otomatik olarak çıkardığı true olarak ayarlar. 
 
-Sütun türlerini el ile ayarlamak isterseniz, her sütunun türünü el ile ayarlamak için `set_column_types` bağımsız değişkenini ayarlayabilirsiniz. Aşağıdaki kod örneğinde, veriler sköğren paketinden gelir.
+Sütun türlerini el ile ayarlamak isterseniz, `set_column_types` her sütunun türünü el ile ayarlamak için bağımsız değişkenini ayarlayabilirsiniz. Aşağıdaki kod örneğinde, veriler sköğren paketinden gelir.
 
 ```python
 from sklearn import datasets
@@ -125,7 +125,7 @@ training_data = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/di
 ```
 
 ## <a name="configure-experiment"></a>Deneme yapılandırma
-İçin `AutoMLConfig`ayarları belirtin.  ( [Parametrelerin tam listesini](how-to-configure-auto-train.md#configure-experiment) ve olası değerlerini görün.)
+İçin ayarları belirtin `AutoMLConfig` .  ( [Parametrelerin tam listesini](how-to-configure-auto-train.md#configure-experiment) ve olası değerlerini görün.)
 
 ```python
 from azureml.train.automl import AutoMLConfig

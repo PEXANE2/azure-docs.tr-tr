@@ -4,14 +4,14 @@ description: Bir sanal ağda özel bir IP adresi kullanarak bir Azure Cosmos hes
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 06/04/2020
 ms.author: thweiss
-ms.openlocfilehash: c5b82e8cdea49f8dd761844ff5492df0ad109943
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b05fa32529372a89ff441b953f001dc2ab1b5606
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116676"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431657"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Cosmos hesabı için Azure özel bağlantısını yapılandırma
 
@@ -398,7 +398,7 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
 $deploymentOutput
 ```
 
-PowerShell betikte, `GroupId` değişken yalnızca bir değer içerebilir. Bu değer, hesabın API türüdür. İzin verilen değerler: `Sql` , `MongoDB` , `Cassandra` , `Gremlin` , ve `Table` . Bazı Azure Cosmos hesap türlerine birden çok API aracılığıyla erişilebilir. Örneğin:
+PowerShell betikte, `GroupId` değişken yalnızca bir değer içerebilir. Bu değer, hesabın API türüdür. İzin verilen değerler: `Sql` , `MongoDB` , `Cassandra` , `Gremlin` , ve `Table` . Bazı Azure Cosmos hesap türlerine birden çok API aracılığıyla erişilebilir. Örnek:
 
 * Gremlin API hesabına hem Gremlin hem de SQL API hesaplarından erişilebilir.
 * Tablo API'si hesaba hem tablo hem de SQL API hesaplarından erişilebilir.
@@ -628,6 +628,10 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 Önceki bölümde açıklandığı gibi, belirli güvenlik duvarı kuralları ayarlanmamışsa, özel bir uç nokta eklemek Azure Cosmos hesabınızı yalnızca özel uç noktalar aracılığıyla erişilebilir hale getirir. Bu, Azure Cosmos hesabına oluşturulduktan sonra ve özel bir uç nokta eklendikten sonra ortak trafiğinden erişilebileceği anlamına gelir. Genel ağ erişiminin özel uç noktaları oluşturmadan önce bile devre dışı bırakıldığından emin olmak için, `publicNetworkAccess` bayrağı `Disabled` Hesap oluşturma sırasında ayarlayabilirsiniz. Bu bayrağın nasıl kullanılacağını gösteren bir örnek için [bu Azure Resource Manager şablonuna](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/) bakın.
 
+## <a name="port-range-when-using-direct-mode"></a>Doğrudan mod kullanılırken bağlantı noktası aralığı
+
+Bir Azure Cosmos hesabıyla doğrudan mod bağlantısıyla özel bağlantı kullanırken, TCP bağlantı noktalarının (0-65535) tam aralığının açık olduğundan emin olmanız gerekir.
+
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Bölge eklediğinizde veya kaldırdığınızda özel bir uç noktayı güncelleştirme
 
 Azure Cosmos hesabına bölge ekleme veya kaldırma, bu hesaba ait DNS girdilerini eklemenizi veya kaldırmanızı gerektirir. Bölgeler eklendikten veya kaldırıldıktan sonra alt ağın özel DNS bölgesini, eklenen veya kaldırılan DNS girişlerini ve bunlara karşılık gelen özel IP adreslerini yansıtacak şekilde güncelleştirebilirsiniz.
@@ -642,7 +646,7 @@ Bir bölgeyi kaldırırken de aynı adımları kullanabilirsiniz. Bölge kaldır
 
 Bir Azure Cosmos hesabıyla özel bağlantı kullandığınızda aşağıdaki sınırlamalar geçerlidir:
 
-* Doğrudan mod bağlantısı kullanarak bir Azure Cosmos hesabıyla özel bağlantı kullanırken, yalnızca TCP protokolünü kullanabilirsiniz. HTTP protokolü Şu anda desteklenmiyor.
+* Bir Azure Cosmos hesabıyla doğrudan mod bağlantısı aracılığıyla özel bağlantı kullanırken, yalnızca TCP protokolünü kullanabilirsiniz. HTTP protokolü Şu anda desteklenmiyor.
 
 * MongoDB hesapları için Azure Cosmos DB API 'sini kullanırken, yalnızca sunucu sürümü 3,6 (yani, o şekilde, o) hesapları için özel bir uç nokta desteklenir `*.mongo.cosmos.azure.com` . Özel bağlantı, sunucu sürümü 3,2 (yani, bu uç noktayı kullanan hesaplar) hesapları için desteklenmez `*.documents.azure.com` . Özel bağlantıyı kullanmak için eski hesapları yeni sürüme geçirmeniz gerekir.
 

@@ -7,14 +7,14 @@ ms.author: laobri
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/31/2020
-ms.openlocfilehash: 419dbd998abc5cbd2da64a990e13d46f3fb2efbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f096f432111e4e8b52ffcaff355fbf8d9e603819
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77580637"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430433"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST kullanarak Azure ML kaynakları oluşturma, çalıştırma ve silme
 
@@ -32,12 +32,12 @@ Bu makalede şunları öğreneceksiniz:
 > * Kaynakları temizlemek için SILME isteklerini kullanma 
 > * Dağıtılan modellere puan vermek için anahtar tabanlı yetkilendirmeyi kullanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Yönetici haklarına sahip olduğunuz bir **Azure aboneliği** . Bu tür bir aboneliğiniz yoksa [ücretsiz veya ücretli kişisel aboneliği](https://aka.ms/AMLFree) deneyin
 - Bir [Azure Machine Learning çalışma alanı](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
 - Yönetim REST istekleri hizmet sorumlusu kimlik doğrulamasını kullanır. Çalışma alanınızda hizmet sorumlusu oluşturmak için [Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulama ayarlama](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication) bölümündeki adımları izleyin
-- **Kıvrımlı** yardımcı programı. **Kıvrımlı** program, [Linux Için Windows alt sistemi](https://aka.ms/wslinstall/) veya herhangi bir UNIX dağıtımı ile kullanılabilir. PowerShell **'de,** **çağırma-WebRequest** için bir diğer addır ve `curl -d "key=val" -X POST uri` olur. `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` 
+- **Kıvrımlı** yardımcı programı. **Kıvrımlı** program, [Linux Için Windows alt sistemi](https://aka.ms/wslinstall/) veya herhangi bir UNIX dağıtımı ile kullanılabilir. PowerShell **'de,** **çağırma-WebRequest** için bir diğer addır ve `curl -d "key=val" -X POST uri` olur `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` . 
 
 ## <a name="retrieve-a-service-principal-authentication-token"></a>Hizmet sorumlusu kimlik doğrulama belirtecini alma
 
@@ -53,7 +53,7 @@ Bir belirteci almak için:
 
 1. Bir terminal penceresi açın
 1. Komut satırına aşağıdaki kodu girin
-1. , `{your-tenant-id}` `{your-client-id}`Ve `{your-client-secret}`için kendi değerlerinizi yerine koyun. Bu makale boyunca, küme ayraçları ile çevrelenen dizeler, kendi uygun değerlerinizle değiştirmeniz gereken değişkenlerdir.
+1. , Ve için kendi değerlerinizi yerine koyun `{your-tenant-id}` `{your-client-id}` `{your-client-secret}` . Bu makale boyunca, küme ayraçları ile çevrelenen dizeler, kendi uygun değerlerinizle değiştirmeniz gereken değişkenlerdir.
 1. Yeni bir “kurtarma VM’si” oluşturmak ve sorunlu VM’nin işletim sistemi diskini kurtarma VM’sine veri diski olarak takmak için
 
 ```bash
@@ -91,7 +91,7 @@ Aboneliğinizle ilişkili kaynak gruplarının listesini almak için şunu çal�
 curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups?api-version=2019-11-01 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Azure 'da birçok REST API yayımlandı. Her hizmet sağlayıcısı API 'leri kendi temposunda güncelleştirir, ancak mevcut programları bozmadan bu şekilde devam eder. Hizmet sağlayıcı, `api-version` uyumluluk sağlamak için bağımsız değişkenini kullanır. `api-version` Bağımsız değişken hizmetten hizmete değişir. Machine Learning hizmeti için, örneğin, geçerli API sürümü `2019-11-01`. Depolama hesapları için bu `2019-06-01`. Anahtar kasaları için, bu `2019-09-01`. Tüm REST çağrılarının `api-version` bağımsız değişkenini beklenen değere ayarlaması gerekir. API gelişmeye devam ettiğinde, belirtilen sürümün söz dizimine ve semantiğine güvenebilirsiniz. `api-version` Bağımsız değişken olmadan bir sağlayıcıya istek gönderirseniz, yanıt, desteklenen değerlerin okunabilir bir listesini içerir. 
+Azure 'da birçok REST API yayımlandı. Her hizmet sağlayıcısı API 'leri kendi temposunda güncelleştirir, ancak mevcut programları bozmadan bu şekilde devam eder. Hizmet sağlayıcı, `api-version` uyumluluk sağlamak için bağımsız değişkenini kullanır. `api-version`Bağımsız değişken hizmetten hizmete değişir. Machine Learning hizmeti için, örneğin, geçerli API sürümü `2019-11-01` . Depolama hesapları için bu `2019-06-01` . Anahtar kasaları için, bu `2019-09-01` . Tüm REST çağrılarının `api-version` bağımsız değişkenini beklenen değere ayarlaması gerekir. API gelişmeye devam ettiğinde, belirtilen sürümün söz dizimine ve semantiğine güvenebilirsiniz. Bağımsız değişken olmadan bir sağlayıcıya istek gönderirseniz `api-version` , yanıt, desteklenen değerlerin okunabilir bir listesini içerir. 
 
 Yukarıdaki çağrı, formun sıkıştırılmış JSON yanıtına neden olur: 
 
@@ -123,7 +123,7 @@ Yukarıdaki çağrı, formun sıkıştırılmış JSON yanıtına neden olur:
 
 ## <a name="drill-down-into-workspaces-and-their-resources"></a>Çalışma alanları ve kaynakları hakkında detaya gitme
 
-Bir kaynak grubundaki çalışma alanları kümesini almak için, ve `{your-subscription-id}` `{your-resource-group}` `{your-access-token}`yerine şunu çalıştırın: 
+Bir kaynak grubundaki çalışma alanları kümesini almak için, ve yerine şunu çalıştırın `{your-subscription-id}` `{your-resource-group}` `{your-access-token}` : 
 
 ```
 curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/?api-version=2019-11-01 \
@@ -166,7 +166,7 @@ Bu kez, bir liste içeren bir JSON listesi ve bir çalışma alanı ayrıntılar
 }
 ```
 
-Bir çalışma alanındaki kaynaklarla çalışmak için genel **Management.Azure.com** sunucusundan, çalışma alanının konumuna özel bir REST API sunucusuna geçiş yapacaksınız. Yukarıdaki JSON yanıtında `discoveryUrl` anahtarın değerini aklınızda edin. Bu URL 'YI alırsanız şöyle bir yanıt alırsınız:
+Bir çalışma alanındaki kaynaklarla çalışmak için genel **Management.Azure.com** sunucusundan, çalışma alanının konumuna özel bir REST API sunucusuna geçiş yapacaksınız. `discoveryUrl`YUKARıDAKI JSON yanıtında anahtarın değerini aklınızda edin. Bu URL 'YI alırsanız şöyle bir yanıt alırsınız:
 
 ```json
 {
@@ -183,7 +183,7 @@ Bir çalışma alanındaki kaynaklarla çalışmak için genel **Management.Azur
 }
 ```
 
-`api` Yanıtın değeri, ek istekler için kullanacağınız sunucunun URL 'sidir. Örneğin, denemeleri listelemek için aşağıdaki komutu gönderin. Yanıtın değeriyle değiştirin `regional-api-server` (örneğin, `centralus.api.azureml.ms`). `api` Ayrıca, `your-subscription-id` `your-resource-group` `your-workspace-name`,, ve `your-access-token` her zamanki gibi değiştirin:
+Yanıtın değeri, `api` ek istekler için kullanacağınız sunucunun URL 'sidir. Örneğin, denemeleri listelemek için aşağıdaki komutu gönderin. `regional-api-server`Yanıtın değeriyle değiştirin `api` (örneğin, `centralus.api.azureml.ms` ). Ayrıca `your-subscription-id` ,, `your-resource-group` , `your-workspace-name` ve `your-access-token` her zamanki gibi değiştirin:
 
 ```bash
 curl https://{regional-api-server}/history/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
@@ -199,15 +199,15 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Yolun, modelleri listelemeye `history/v1.0` çalışırken denemeleri listelendiğine dikkat edin. `modelmanagement/v1.0` REST API, her biri ayrı bir yol ile birkaç işlem grubuna bölünmüştür. Aşağıdaki bağlantılardan API başvuru belgeleri, çeşitli işlemler için işlemleri, parametreleri ve yanıt kodlarını listeler.
+Yolun, `history/v1.0` modelleri listelemeye çalışırken denemeleri listelendiğine dikkat edin `modelmanagement/v1.0` . REST API, her biri ayrı bir yol ile birkaç işlem grubuna bölünmüştür. Aşağıdaki bağlantılardan API başvuru belgeleri, çeşitli işlemler için işlemleri, parametreleri ve yanıt kodlarını listeler.
 
 |Alan|Yol|Başvuru|
 |-|-|-|
-|Yapıtlar|yapıt/v 2.0/|[REST API Başvurusu](https://docs.microsoft.com/rest/api/azureml/artifacts)|
-|Veri depoları|veri deposu/v 1.0/|[REST API Başvurusu](https://docs.microsoft.com/rest/api/azureml/datastores)|
-|Hiper parametre ayarı|Hiper sürücü/v 1.0/|[REST API Başvurusu](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
-|Modeller|modelmanagement/v 1.0/|[REST API Başvurusu](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
-|Çalıştırma geçmişi|yürütme/v 1.0/ve History/v 1.0/|[REST API Başvurusu](https://docs.microsoft.com/rest/api/azureml/runs)|
+|Artifacts|yapıt/v 2.0/|[REST API başvurusu](https://docs.microsoft.com/rest/api/azureml/artifacts)|
+|Veri depolama alanları|veri deposu/v 1.0/|[REST API başvurusu](https://docs.microsoft.com/rest/api/azureml/datastores)|
+|Hiper parametre ayarı|Hiper sürücü/v 1.0/|[REST API başvurusu](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
+|Modeller|modelmanagement/v 1.0/|[REST API başvurusu](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
+|Çalıştırma geçmişi|yürütme/v 1.0/ve History/v 1.0/|[REST API başvurusu](https://docs.microsoft.com/rest/api/azureml/runs)|
 
 Genel örüntüsünün kullanıldığı REST API keşfedebilirsiniz:
 
@@ -235,7 +235,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/com
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Adlandırılmış bir işlem kaynağı oluşturmak veya üzerine yazmak için bir PUT isteği kullanırsınız. Aşağıdaki şekilde,,,, ve değerlerinin,,,, ve `your-subscription-id`değerlerinin `your-resource-group`yanı `your-workspace-name`sıra, `your-access-token`,, `your-compute-name`, ve değerleri için `location`de `vmSize`bilinen `vmPriority` `scaleSettings`değişimler `adminUserName`buna ek `adminUserPassword`olarak. [Machine Learning işlem oluşturma veya GÜNCELLEŞTIRME SDK başvurusunda](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)belirtilen şekilde, aşağıdaki komut, 30 dakika sonra ölçeklenebilen ayrılmış, tek düğümlü bir Standard_D1 (temel bir CPU işlem kaynağı) oluşturur:
+Adlandırılmış bir işlem kaynağı oluşturmak veya üzerine yazmak için bir PUT isteği kullanırsınız. Aşağıdaki şekilde,,,, ve değerlerinin,,,, ve değerlerinin yanı sıra,,,, ve değerleri için de bilinen `your-subscription-id` `your-resource-group` `your-workspace-name` `your-access-token` `your-compute-name` değişimler buna `location` `vmSize` `vmPriority` `scaleSettings` `adminUserName` ek olarak `adminUserPassword` . [Machine Learning işlem oluşturma veya GÜNCELLEŞTIRME SDK başvurusunda](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)belirtilen şekilde, aşağıdaki komut, 30 dakika sonra ölçeklenebilen ayrılmış, tek düğümlü bir Standard_D1 (temel bir CPU işlem kaynağı) oluşturur:
 
 ```bash
 curl -X PUT \
@@ -264,9 +264,9 @@ curl -X PUT \
 ```
 
 > [!Note]
-> Windows terminallerinde JSON verilerini gönderirken çift tırnak sembollerine atlamanız gerekebilir. Diğer bir deyişle, gibi metinler `"location"` olur `\"location\"`. 
+> Windows terminallerinde JSON verilerini gönderirken çift tırnak sembollerine atlamanız gerekebilir. Diğer bir deyişle, gibi metinler `"location"` olur `\"location\"` . 
 
-Başarılı bir istek bir `201 Created` yanıt alır, ancak bu yanıtın sağlama işleminin başlamış olduğunu unutmayın. Başarılı tamamlamayı onaylamak için yoklamalısınız (veya portalını kullanmanız gerekir).
+Başarılı bir istek bir yanıt alır `201 Created` , ancak bu yanıtın sağlama işleminin başlamış olduğunu unutmayın. Başarılı tamamlamayı onaylamak için yoklamalısınız (veya portalını kullanmanız gerekir).
 
 ### <a name="create-an-experimental-run"></a>Deneysel çalıştırma oluşturma
 
@@ -320,7 +320,7 @@ Bu sonraki kod parçacığını **tanım. JSON**olarak kaydedin. "Komut dosyası
 }
 ```
 
-İçeriği kullanarak `multipart/form-data` bu dosyaları sunucuya gönderin:
+İçeriği kullanarak bu dosyaları sunucuya gönderin `multipart/form-data` :
 
 ```bash
 curl https://{regional-api-server}/execution/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/experiments/{your-experiment-name}/startrun?api-version=2019-11-01 \
@@ -331,7 +331,7 @@ curl https://{regional-api-server}/execution/v1.0/subscriptions/{your-subscripti
   -F runDefinitionFile=@runDefinition.json
 ```
 
-Başarılı bir POST isteği, oluşturulan çalıştırmanın `200 OK` tanımlayıcısını içeren yanıt gövdesiyle bir durum oluşturur:
+Başarılı bir POST isteği `200 OK` , oluşturulan çalıştırmanın tanımlayıcısını içeren yanıt gövdesiyle bir durum oluşturur:
 
 ```json
 {
@@ -359,7 +359,7 @@ curl
 
 ## <a name="use-rest-to-score-a-deployed-model"></a>Dağıtılan bir modeli Puanlama için REST kullanma
 
-Bir modeli, bir hizmet sorumlusu ile kimlik doğrulaması yapmak üzere dağıtmak mümkün olsa da, istemciye yönelik çoğu dağıtımda anahtar tabanlı kimlik doğrulaması kullanılır. Uygun anahtarı, Studio 'nun **uç noktalar** sekmesinde dağıtımınızın sayfasında bulabilirsiniz. Aynı konum, uç noktanızın Puanlama URI 'sini gösterir. Modelinizin girişleri adlı `data`bir JSON dizisi olarak modellenmelidir:
+Bir modeli, bir hizmet sorumlusu ile kimlik doğrulaması yapmak üzere dağıtmak mümkün olsa da, istemciye yönelik çoğu dağıtımda anahtar tabanlı kimlik doğrulaması kullanılır. Uygun anahtarı, Studio 'nun **uç noktalar** sekmesinde dağıtımınızın sayfasında bulabilirsiniz. Aynı konum, uç noktanızın Puanlama URI 'sini gösterir. Modelinizin girişleri adlı bir JSON dizisi olarak modellenmelidir `data` :
 
 ```bash
 curl 'https://{scoring-uri}' \
@@ -372,7 +372,7 @@ curl 'https://{scoring-uri}' \
 
 Her Azure ML çalışma alanının, diğer dört Azure kaynağına bağımlılığı vardır: yönetim özellikli bir kapsayıcı kayıt defteri, bir Anahtar Kasası, Application Insights kaynağı ve depolama hesabı. Bu kaynaklar mevcut olana kadar bir çalışma alanı oluşturamazsınız. Her bir kaynağı oluşturma hakkındaki ayrıntılar için REST API başvuruya başvurun.
 
-Bir çalışma alanı oluşturmak için şuna benzer bir çağrı koyun `management.azure.com`. Bu çağrı çok sayıda değişken ayarlamanızı gerektirdiğinden, bu makalede ele alınan diğer çağrılarla yapısal olarak aynıdır. 
+Bir çalışma alanı oluşturmak için şuna benzer bir çağrı koyun `management.azure.com` . Bu çağrı çok sayıda değişken ayarlamanızı gerektirdiğinden, bu makalede ele alınan diğer çağrılarla yapısal olarak aynıdır. 
 
 ```bash
 curl -X PUT \
@@ -400,7 +400,7 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 }'
 ```
 
-Bir `202 Accepted` yanıt almalısınız ve döndürülen üst bilgilerde bir `Location` URI. Bağımlı kaynaklarınızdan biriyle ilgili bir sorun varsa (örneğin, kapsayıcı kayıt defterinizde yönetici erişimini etkinleştirmeyi unuttuysanız), bu URI 'yi dağıtım hakkında daha fazla bilgi alabilirsiniz. 
+Bir `202 Accepted` Yanıt almalısınız ve döndürülen üst bilgilerde bir `Location` URI. Bağımlı kaynaklarınızdan biriyle ilgili bir sorun varsa (örneğin, kapsayıcı kayıt defterinizde yönetici erişimini etkinleştirmeyi unuttuysanız), bu URI 'yi dağıtım hakkında daha fazla bilgi alabilirsiniz. 
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

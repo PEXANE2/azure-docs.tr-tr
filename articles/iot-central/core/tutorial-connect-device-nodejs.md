@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mqtt
-ms.openlocfilehash: a8c5d9479585c0a519d0ad05a4d73f3f15b21287
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65f441425113d89010cc2d282758c5a042be9300
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81758191"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417914"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Öğretici: Azure IoT Central uygulamanıza bir istemci uygulaması oluşturma ve bağlama (node. js)
 
@@ -34,12 +34,12 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Cihaz özelliklerini yönetmek için bir görünüm kullanın.
 > * Cihazı denetlemek için zaman uyumlu ve zaman uyumsuz komutları çağırın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
 * **Özel uygulama** şablonu kullanılarak oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
-* [Node. js](https://nodejs.org/) sürüm 10.0.0 veya üzeri yüklü bir geliştirme makinesi. Sürümünüzü denetlemek için `node --version` komut satırında çalıştırabilirsiniz. Bu öğreticideki yönergeler, Windows komut isteminde **node** komutunu çalıştırmakta olduğunuzu varsayar. Ancak, Node. js ' yi diğer birçok işletim sisteminde kullanabilirsiniz.
+* [Node. js](https://nodejs.org/) sürüm 10.0.0 veya üzeri yüklü bir geliştirme makinesi. `node --version`Sürümünüzü denetlemek için komut satırında çalıştırabilirsiniz. Bu öğreticideki yönergeler, Windows komut isteminde **node** komutunu çalıştırmakta olduğunuzu varsayar. Ancak, Node. js ' yi diğer birçok işletim sisteminde kullanabilirsiniz.
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
 
@@ -47,16 +47,16 @@ Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
 Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihaza bağlanan bir Node. js istemci uygulamasının nasıl oluşturulacağı gösterilmektedir. Bu Node. js uygulaması gerçek bir cihazın davranışının benzetimini yapar.
 
-1. Komut satırı ortamınızda, daha önce oluşturduğunuz `environmental-sensor` klasöre gidin.
+1. Komut satırı ortamınızda, `environmental-sensor` daha önce oluşturduğunuz klasöre gidin.
 
-1. Node. js projenizi başlatmak ve gerekli bağımlılıkları yüklemek için aşağıdaki komutları çalıştırın: çalıştırdığınızda `npm init`tüm varsayılan seçenekleri kabul edin:
+1. Node. js projenizi başlatmak ve gerekli bağımlılıkları yüklemek için aşağıdaki komutları çalıştırın: çalıştırdığınızda tüm varsayılan seçenekleri kabul edin `npm init` :
 
     ```cmd/sh
     npm init
     npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
-1. `environmental-sensor` Klasöründe **Environmentalalgılayıcı. js** adlı bir dosya oluşturun.
+1. Klasöründe **Environmentalalgılayıcı. js** adlı bir dosya oluşturun `environmental-sensor` .
 
 1. `require` **Environmentalalgılayıcı. js** dosyasının başlangıcında aşağıdaki deyimleri ekleyin:
 
@@ -87,7 +87,7 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihaza bağlanan bir No
     var ledOn = true;
     ```
 
-    Yer tutucuları, `{your Scope ID}`, `{your Device ID}`ve `{your Primary Key}` daha önce bir notcuı yaptığınız değerlerle güncelleştirin. Bu örnekte, sıfırdan başlatın `targetTemperature` , cihazdaki geçerli okumayı veya cihazdan ikizi bir değeri kullanabilirsiniz.
+    Yer tutucuları `{your Scope ID}` , `{your Device ID}` , ve `{your Primary Key}` daha önce bir notcuı yaptığınız değerlerle güncelleştirin. Bu örnekte, `targetTemperature` sıfırdan başlatın, cihazdaki geçerli okumayı veya cihazdan ikizi bir değeri kullanabilirsiniz.
 
 1. Azure IoT Central uygulamanıza sanal telemetri göndermek için, dosyaya aşağıdaki işlevi ekleyin:
 
@@ -107,7 +107,7 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihaza bağlanan bir No
     }
     ```
 
-    Telemetri öğelerinin (`temp` ve `humid`) adları, cihaz şablonunda kullanılan adlarla aynı olmalıdır.
+    Telemetri öğelerinin (ve) adları, `temp` `humid` cihaz şablonunda kullanılan adlarla aynı olmalıdır.
 
 1. Azure IoT Central uygulamanıza cihaz ikizi özellikleri göndermek için, dosyanıza aşağıdaki işlevi ekleyin:
 
@@ -164,7 +164,7 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihaza bağlanan bir No
 
     İşleci IoT Central uygulamasında yazılabilir bir özellik ayarladığında, uygulama, değeri cihaza göndermek için bir Device ikizi istenen özelliğini kullanır. Cihaz daha sonra bir Device ikizi bildirilen özelliği kullanarak yanıt verir. IoT Central bildirilen özellik değerini aldığında, özellik görünümünü **eşitlenmiş**durumuyla güncelleştirir.
 
-    Özelliklerin (`name` ve `brightness`) adları, cihaz şablonunda kullanılan adlarla eşleşmelidir.
+    Özelliklerin (ve) adları, `name` `brightness` cihaz şablonunda kullanılan adlarla eşleşmelidir.
 
 1. IoT Central uygulamasından gönderilen komutları işlemek için aşağıdaki kodu ekleyin:
 
@@ -246,7 +246,7 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihaza bağlanan bir No
     }
     ```
 
-    Komutların (`blink`, `turnon`, `turnoff`ve `rundiagnostics`) adları, cihaz şablonunda kullanılan adlarla aynı olmalıdır.
+    Komutların ( `blink` , `turnon` , ve) adları, `turnoff` `rundiagnostics` cihaz şablonunda kullanılan adlarla aynı olmalıdır.
 
     Şu anda IoT Central, cihaz yetenek modelinde tanımlanan yanıt şemasını kullanmıyor. Zaman uyumlu bir komut için, yanıt yükü geçerli bir JSON olabilir. Zaman uyumsuz bir komut için, cihazın hemen bir 202 yanıtı döndürmesi ve sonra iş tamamlandığında bildirilen özellik güncelleştirmesi gelmelidir. Bildirilen özellik güncelleştirmesinin biçimi:
 
@@ -330,8 +330,9 @@ Aygıtın komutlara ve özellik güncelleştirmelerine nasıl yanıt verdiğini 
 
 Bir cihaz geliştiricisi olarak, Node. js kullanarak bir cihazın nasıl oluşturulacağı hakkında temel bilgileri öğrendiğinize göre, önerilen bazı sonraki adımlar şunlardır:
 
-- Bir [Mxyonga IoT DevKit cihazını Azure IoT Central uygulama](./howto-connect-devkit.md) nasıl yapılır makalesine bağlama hakkında IoT Central için gerçek bir cihazı nasıl bağlayacağınızı öğrenin.
-- Cihazların IoT Central nasıl kaydedileceği ve cihaz bağlantılarının güvenliğini IoT Central sağlama hakkında daha fazla bilgi edinmek için [Azure IoT Central 'ye](./concepts-get-connected.md) bağlanın.
+* Bir [Mxyonga IoT DevKit cihazını Azure IoT Central uygulama](./howto-connect-devkit.md) nasıl yapılır makalesine bağlama hakkında IoT Central için gerçek bir cihazı nasıl bağlayacağınızı öğrenin.
+* Cihaz kodunuzu uygularken cihaz şablonlarının rolü hakkında daha fazla bilgi edinmek için cihaz [şablonu nedir?](./concepts-device-templates.md) makalesini okuyun.
+* Cihazların IoT Central nasıl kaydedileceği ve cihaz bağlantılarının güvenliğini IoT Central sağlama hakkında daha fazla bilgi edinmek için [Azure IoT Central 'ye](./concepts-get-connected.md) bağlanın.
 
 IoT Central öğreticiler kümesine devam etmeyi tercih ediyorsanız ve bir IoT Central çözümü oluşturma hakkında daha fazla bilgi edinmek istiyorsanız, bkz.:
 

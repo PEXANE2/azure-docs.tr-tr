@@ -15,144 +15,148 @@ ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8da634c43be5c57028f90497324e3f2562ebb28
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 45b3f6bbda9923b7f4f19dda505e799cb8b102ca
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325957"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424338"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>Öğretici: Siteıntel ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
 Bu öğreticide, Siteıntel 'i Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Siteıntel 'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
 * Azure AD 'de Siteıntel 'e erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla Siteıntel 'e otomatik olarak oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Kullanıcılarınızın Azure AD hesaplarıyla Siteıntel 'te otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin, Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Siteıntel çoklu oturum açma (SSO) etkin aboneliği.
+* Siteıntel çoklu oturum açma (SSO) özellikli abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Siteıntel **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
-* Siteıntel 'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin boyutunu gerçek zamanlı olarak koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Siteıntel, SP tarafından başlatılan ve IDP tarafından başlatılan SSO 'yu destekler.
+* Siteıntel 'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-siteintel-from-the-gallery"></a>Galeriden Siteıntel ekleme
+## <a name="add-siteintel-from-the-gallery"></a>Galeriden Siteıntel 'i ekleme
 
 Siteıntel 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, galerideki Siteıntel 'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **siteıntel** yazın.
-1. Sonuçlar panelinden **Siteıntel** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
+1. Sol bölmede **Azure Active Directory**' yi seçin.
+1. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni bir uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** kutusuna **siteıntel**' i girin.
+1. Sonuçlar listesinde **Siteıntel**' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-siteintel"></a>Siteıntel için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, siteıntel Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Siteıntel 'te bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
+*B. Simon*adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu siteıntel ile yapılandırın ve test edin. SSO 'nun çalışması için, Siteıntel 'te bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Siteıntel ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. **[Siteıntel SSO 'Yu yapılandırma](#configure-siteintel-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    1. Siteıntel **[test kullanıcısı oluşturun](#create-siteintel-test-user)** -sitede, kullanıcının Azure AD gösterimine bağlı olan B. Simon 'un bir karşılığı vardır.
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** .  
+
+    a. Kullanıcı B. Simon ile Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .  
+
+    b. Azure AD çoklu oturum açma özelliğini kullanmak için Kullanıcı B. Simon 'u etkinleştirmek üzere **[Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user)** .
+
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Siteıntel SSO 'Yu yapılandırın](#configure-siteintel-sso)** .
+
+    * Siteıntel 'te kullanıcının Azure AD gösterimine bağlı olan B. Simon kullanıcısına karşılık gelen bir **[siteıntel test kullanıcısı oluşturun](#create-a-siteintel-test-user)** .
+
+1. Yapılandırmanın çalıştığını doğrulamak için **[test SSO 'su](#test-sso)** .
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için aşağıdakileri yapın:
 
-1. [Azure Portal](https://portal.azure.com/), **siteıntel** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **siteıntel** uygulama tümleştirmesi sayfasında, **Yönet** bölümüne gidin ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması**' nın yanındaki **Düzenle** ' yi (kalem simgesi) seçin.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   !["SAML ile çoklu oturum açma ayarlama" bölmesinin ekran görüntüsü](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
+1. Uygulamayı IDP tarafından başlatılan modda yapılandırmak için, **temel SAML yapılandırması** bölümünde aşağıdakileri yapın:
 
-    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`urn:amazon:cognito:sp:<REGION>_<USERPOOLID>`
+    a. **Tanımlayıcı** kutusunda, aşağıdaki BIÇIMDE bir URL yazın:`urn:amazon:cognito:sp:<REGION>_<USERPOOLID>`
 
-    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<CLIENT>.auth.siteintel.com/saml2/idpresponse`
+    b. **Yanıt URL** 'si kutusuna aşağıdaki BIÇIMDE bir URL yazın:`https://<CLIENT>.auth.siteintel.com/saml2/idpresponse`
 
-    c. **Geçiş durumu** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<CLIENT>.siteintel.com`
+    c. **Geçiş durumu** kutusunda, aşağıdaki BIÇIMDE bir URL yazın:`https://<CLIENT>.siteintel.com`
 
-1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımları gerçekleştirin:
+1. Uygulamayı SP tarafından başlatılan modda yapılandırmak için **ek URL 'Ler ayarla**' yı seçin ve ardından aşağıdakileri yapın:
 
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<CLIENT>.siteintel.com`
+   * **Oturum açma URL 'si** kutusuna aşağıdaki BIÇIMDE bir URL yazın:`https://<CLIENT>.siteintel.com`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI, oturum açma URL 'SI ve geçiş durumu ile güncelleştirin. Bu değerleri almak için [Siteıntel istemci desteği ekibine](mailto:support@intalytics.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bunları gerçek tanımlayıcı, yanıt URL 'SI, oturum açma URL 'SI ve geçiş durumuyla güncelleştirin. Bu değerleri almak için, [Siteıntel istemci desteği ekibine](mailto:support@intalytics.com)başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, URL 'Yi **uygulama Federasyon meta verileri URL 'si** kutusuna kopyalamak için **Kopyala** düğmesini seçin.
 
-    ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
+    !["Uygulama Federasyon meta veri URL 'Si" kopyalama düğmesinin ekran görüntüsü](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+1. Azure Portal sol bölmede, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
+1. Bölmenin en üstünde bulunan **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şunları yapın:
+
+   a. **Ad** kutusuna **B. Simon**girin.  
+
+   b. **Kullanıcı adı** kutusuna şu biçimde Kullanıcı adını girin: `username@companydomain.extension` (örneğin, `B.Simon@contoso.com` ).
+
+   c. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+
+   d. **Oluştur**'u seçin.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Siteıntel 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, Siteıntel 'e erişim vererek Kullanıcı B. Simon 'u Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştirirsiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **Siteıntel**' i seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure Portal **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
+1. **Uygulamalar** listesinde **siteıntel**' i seçin.
+1. Uygulamaya Genel Bakış sayfasında, **Yönet** bölümünde **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısının ekran görüntüsü](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle** ' yi seçin ve sonra **atama Ekle** bölmesinde **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
+    !["Kullanıcı Ekle" düğmesinin ekran görüntüsü](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. **Kullanıcılar ve gruplar** bölmesinde **B. Simon**' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesini seçin.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** bölmesinde, Kullanıcı için listeden uygun rolü seçin ve ardından **Seç** düğmesini seçin.
+1. **Atama Ekle** bölmesinde **ata** düğmesini seçin.
 
 ## <a name="configure-siteintel-sso"></a>Siteıntel SSO 'yu yapılandırma
 
-**Siteıntel** tarafında çoklu oturum açmayı yapılandırmak Için, **App Federasyon meta veri URL 'sini** [siteıntel destek ekibine](mailto:support@intalytics.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+Siteıntel tarafında çoklu oturum açmayı yapılandırmak için, **uygulama Federasyon meta verileri URL 'si** kutusundan kopyaladığınız URL 'Yi [siteıntel destek ekibine](mailto:support@intalytics.com)gönderin. Bu değer, SAML SSO bağlantısını her iki tarafta da düzgün şekilde kuracak şekilde ayarlar.
 
-### <a name="create-siteintel-test-user"></a>Siteıntel test kullanıcısı oluşturma
+### <a name="create-a-siteintel-test-user"></a>Siteıntel test kullanıcısı oluşturma
 
-Bu bölümde, Siteıntel 'te Britta Simon adlı bir Kullanıcı oluşturacaksınız. Siteıntel platformunda kullanıcıları eklemek için [siteıntel destek ekibi](mailto:support@intalytics.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Siteıntel 'te *Britta Simon* adlı bir Kullanıcı oluşturacaksınız. Siteıntel platformunda kullanıcıları eklemek için [siteıntel destek ekibi](mailto:support@intalytics.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Siteıntel kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Siteıntel ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde **siteıntel** kutucuğunu SEÇTIĞINIZDE, SSO 'Yu ayarladığınız siteıntel ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
-
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
 - [Azure AD ile Siteıntel 'i deneyin](https://aad.portal.azure.com/)
-
 - [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
 - [Gelişmiş görünürlük ve denetimlerle Siteıntel 'i koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: 2d7f53862a30287460ca72297231da468514646b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/03/2020
+ms.openlocfilehash: a621ba9ebab1ffca0f9e1b8fb315714e3cf2af2f
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648161"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84416180"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Tümleştirme hizmeti ortamı (ıSE) kullanarak Azure Logic Apps Azure sanal ağlarına bağlanma
 
@@ -54,20 +54,22 @@ Ayrıca, [örnek Azure Resource Manager hızlı başlangıç şablonunu](https:/
 
   * Sanal ağınızın, ıSE 'nin doğru çalışabilmesi ve erişilebilir kalabilmesi [IÇIN Ise için erişim sağladığından](#enable-access) emin olun.
 
-  * [ExpressRoute](../expressroute/expressroute-introduction.md) , şirket içi ağlarınızı Microsoft bulutuna genişletmenize ve bağlantı sağlayıcısı tarafından kolaylaştırılırlanan özel bir bağlantı üzerinden Microsoft bulut hizmetlerine bağlanmanızı sağlar. ExpressRoute özellikle, trafiği genel İnternet yerine özel bir ağ üzerinden yönlendiren bir sanal özel ağ olur. Logic Apps, ExpressRoute veya bir sanal özel ağ aracılığıyla bağlanırken aynı sanal ağdaki şirket içi kaynaklara bağlanabilir. 
+  * [ExpressRoute](../expressroute/expressroute-introduction.md) , şirket içi ağlarınızı Microsoft bulutuna genişletmenize ve bağlantı sağlayıcısı tarafından kolaylaştırılırlanan özel bir bağlantı üzerinden Microsoft bulut hizmetlerine bağlanmanızı sağlar. ExpressRoute özellikle, trafiği genel İnternet üzerinden değil, özel bir ağ üzerinden yönlendiren bir sanal özel ağ. Mantıksal uygulamalarınız, ExpressRoute veya bir sanal özel ağ aracılığıyla bağlandıklarında aynı sanal ağdaki şirket içi kaynaklara bağlanabilir.
+     
+    ExpressRoute kullanırsanız, [Zorlamalı tünel](../firewall/forced-tunneling.md)kullandığınızdan emin olun. Zorlamalı tünel kullanıyorsanız, aşağıdaki rotayı belirten [bir yol tablosu oluşturmanız](../virtual-network/manage-route-table.md) gerekir:
   
-    ExpressRoute kullanırsanız, aşağıdaki rotayı içeren [bir yol tablosu oluşturmanız](../virtual-network/manage-route-table.md) ve bu tabloyu Ise 'niz tarafından kullanılan her alt ağa bağlamanız gerekir:
-
     **Ad**: <*yol adı*><br>
     **Adres ön eki**: 0.0.0.0/0<br>
     **Sonraki durak**: Internet
+    
+    Bu yol tablosunu, ıSE tarafından kullanılan her alt ağa bağlamanız gerekir. Logic Apps bileşenlerinin Azure depolama ve Azure SQL VERITABANı gibi diğer bağımlı Azure hizmetleriyle iletişim kurabilmesi için yol tablosu gereklidir. Bu yol hakkında daha fazla bilgi için bkz. [0.0.0.0/0 adres ön eki](../virtual-network/virtual-networks-udr-overview.md#default-route).
+   
+  * Bir [ağ sanal gereci (NVA)](../virtual-network/virtual-networks-udr-overview.md#user-defined)KULLANıYORSANıZ, TLS/SSL sonlandırmasını etkinleştirmeyin veya giden TLS/SSL trafiğini değiştiremezsiniz. Ayrıca, ıSE 'nin alt ağından kaynaklanan trafik için incelemeyi etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [sanal ağ trafiği yönlendirme](../virtual-network/virtual-networks-udr-overview.md).
 
-    Bu yol tablosu, Azure depolama ve Azure SQL VERITABANı gibi diğer bağımlı Azure hizmetleriyle iletişim kurması için Logic Apps bileşenleri için gereklidir.
+  * Azure sanal ağınız için özel DNS sunucuları kullanmak istiyorsanız, ıSE 'nizi sanal ağınıza dağıtmadan önce [Bu adımları izleyerek bu sunucuları ayarlayın](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) . DNS sunucusu ayarlarını yönetme hakkında daha fazla bilgi için bkz. [sanal ağ oluşturma, değiştirme veya silme](../virtual-network/manage-virtual-network.md#change-dns-servers).
 
-* Azure sanal ağınız için özel DNS sunucuları kullanmak istiyorsanız, ıSE 'nizi sanal ağınıza dağıtmadan önce [Bu adımları izleyerek bu sunucuları ayarlayın](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) . DNS sunucusu ayarlarını yönetme hakkında daha fazla bilgi için bkz. [sanal ağ oluşturma, değiştirme veya silme](../virtual-network/manage-virtual-network.md#change-dns-servers).
-
-  > [!NOTE]
-  > DNS sunucunuzu veya DNS sunucusu ayarlarını değiştirirseniz, ıSE 'nin bu değişiklikleri görebilmesi için ıSE 'nizi yeniden başlatmanız gerekir. Daha fazla bilgi için bkz. [Ise 'Nizi yeniden başlatma](../logic-apps/ise-manage-integration-service-environment.md#restart-ISE).
+    > [!NOTE]
+    > DNS sunucunuzu veya DNS sunucusu ayarlarını değiştirirseniz, ıSE 'yi bu değişiklikleri çekebilecek şekilde yeniden başlatmanız gerekir. Daha fazla bilgi için bkz. [Ise 'Nizi yeniden başlatma](../logic-apps/ise-manage-integration-service-environment.md#restart-ISE).
 
 <a name="enable-access"></a>
 
@@ -144,13 +146,13 @@ Bu tabloda, ıSE 'nizin erişilebilir olması ve bu bağlantı noktalarının am
 
    ![Ortam ayrıntılarını sağlama](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | Özellik | Gerekli | Değer | Açıklama |
+   | Özellik | Gerekli | Değer | Description |
    |----------|----------|-------|-------------|
    | **Abonelik** | Yes | <*Azure-abonelik-adı*> | Ortamınız için kullanılacak Azure aboneliği |
    | **Kaynak grubu** | Yes | <*Azure-Resource-Group-Name*> | Ortamınızı oluşturmak istediğiniz yeni veya mevcut bir Azure Kaynak grubu |
    | **Tümleştirme hizmeti ortam adı** | Yes | <*ortam-adı*> | Yalnızca harf, sayı, kısa çizgi ( `-` ), alt çizgi () `_` ve nokta () içerebilen Ise adınız `.` . |
    | **Konum** | Yes | <*Azure-Datacenter-Region*> | Ortamınızı dağıtacağınız Azure veri merkezi bölgesi |
-   | **ISTEYIN** | Yes | **Premium** veya **Geliştirici (SLA yok)** | Oluşturulacak ve kullanılacak ıSE SKU 'SU. Bu SKU 'Lar arasındaki farklar için bkz. [Ise SKU 'ları](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level). <p><p>**Önemli**: Bu seçenek yalnızca Ise oluşturma sırasında kullanılabilir ve daha sonra değiştirilemez. |
+   | **SKU** | Yes | **Premium** veya **Geliştirici (SLA yok)** | Oluşturulacak ve kullanılacak ıSE SKU 'SU. Bu SKU 'Lar arasındaki farklar için bkz. [Ise SKU 'ları](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level). <p><p>**Önemli**: Bu seçenek yalnızca Ise oluşturma sırasında kullanılabilir ve daha sonra değiştirilemez. |
    | **Ek kapasite** | Premium: <br>Yes <p><p>Tasarımcı <br>Uygulanamaz | Premium: <br>0 ila 10 <p><p>Tasarımcı <br>Uygulanamaz | Bu ıSE kaynağı için kullanılacak ek işleme birimi sayısı. Oluşturulduktan sonra kapasite eklemek için, bkz. [Ise kapasitesi ekleme](../logic-apps/ise-manage-integration-service-environment.md#add-capacity). |
    | **Erişim uç noktası** | Yes | **İç** veya **dış** | ISE için kullanılacak erişim uç noktalarının türü. Bu uç noktalar, işinizdeki Logic Apps 'teki istek veya Web kancasının, sanal ağınızın dışından çağrı alıp almamadığını belirtir. <p><p>Seçiminiz, mantıksal uygulama çalışma geçmişinizdeki girdileri ve çıkışları görüntüleme ve erişme şeklini de etkiler. Daha fazla bilgi için bkz. [Ise uç noktası erişimi](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). <p><p>**Önemli**: yalnızca Ise oluşturma sırasında erişim uç noktasını seçebilir ve bu seçeneği daha sonra değiştiremezsiniz. |
    | **Sanal ağ** | Yes | <*Azure-sanal-ağ-adı*> | Ortamınızı eklemek istediğiniz Azure sanal ağı, bu ortamdaki Logic Apps 'in sanal ağınıza erişebilmesi için kullanabilirsiniz. Ağınız yoksa, [önce bir Azure sanal ağı oluşturun](../virtual-network/quick-create-portal.md). <p><p>**Önemli**: Bu ekleme işlemini *yalnızca* Ise 'nizi oluştururken gerçekleştirebilirsiniz. |

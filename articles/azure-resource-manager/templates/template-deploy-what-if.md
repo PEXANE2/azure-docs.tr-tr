@@ -3,14 +3,14 @@ title: Şablon dağıtımı-if (Önizleme)
 description: Azure Resource Manager şablonu dağıtılmadan önce kaynaklarınızda hangi değişikliklerin gerçekleşecektir belirleme.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/04/2020
 ms.author: tomfitz
-ms.openlocfilehash: 31ef0f26043c416ff902fe792bae064c63f15b20
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 62f46d158bea9507246fda7f24750c3743a5e1f1
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218285"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424253"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM şablonu dağıtımı ne-if işlemi (Önizleme)
 
@@ -19,19 +19,23 @@ Bir Azure Resource Manager (ARM) şablonu dağıtılmadan önce, gerçekleşen d
 > [!NOTE]
 > Bu işlem şu anda önizleme aşamasındadır. Önizleme sürümü olarak, sonuçlar bazen hiçbir değişiklik gerçekleşmediği zaman bir kaynağın değiştirileceği gösterebilir. Bu sorunları azaltmak için çalışıyoruz, ancak yardımımız için ihtiyacımız var. Lütfen bu sorunları konusunda bildirin [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 
-Azure PowerShell, Azure CLı veya REST API işlemleri ile durum işlemini kullanabilirsiniz.
+Azure PowerShell, Azure CLı veya REST API işlemleri ile durum işlemini kullanabilirsiniz. Kaynak grubu ve abonelik düzeyinde dağıtımlar için desteklenir.
 
-## <a name="install-powershell-module"></a>PowerShell modülünü yükler
+## <a name="install-azure-powershell-module"></a>Azure PowerShell modülünü Install
 
-PowerShell 'de ne olduğunu kullanmak için, PowerShell galerisinden az. resources modülünün bir önizleme sürümünü yüklemelisiniz. Ancak, modülü yüklemeden önce PowerShell Core (6. x veya 7. x) olduğundan emin olun. PowerShell 5. x veya daha önceki [bir sürümünü kullanıyorsanız, PowerShell sürümünüzü güncelleştirin](/powershell/scripting/install/installing-powershell). Önizleme modülünü PowerShell 5. x veya önceki bir sürümüne yükleyemezsiniz.
+PowerShell 'de ne olduğunu kullanmak için **az Module sürüm 4,2 veya sonraki bir**sürümünü kullanmanız gerekir.
 
-### <a name="install-preview-version"></a>Önizleme sürümünü yükler
+Ancak, gerekli modülü yüklemeden önce PowerShell Core (6. x veya 7. x) olduğundan emin olun. PowerShell 5. x veya daha önceki [bir sürümünü kullanıyorsanız, PowerShell sürümünüzü güncelleştirin](/powershell/scripting/install/installing-powershell). Gerekli modülü PowerShell 5. x veya önceki bir sürümüne yükleyemezsiniz.
 
-Önizleme modülünü yüklemek için şunu kullanın:
+### <a name="install-latest-version"></a>En son sürümü yükler
+
+Modülünü yüklemek için şunu kullanın:
 
 ```powershell
-Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+Install-Module -Name Az -Force
 ```
+
+Modül yükleme hakkında daha fazla bilgi için bkz. [yükleme Azure PowerShell](/powershell/azure/install-az-ps).
 
 ### <a name="uninstall-alpha-version"></a>Alfa sürümünü kaldır
 
@@ -101,7 +105,7 @@ Resource changes: 1 to modify.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Bir şablonu dağıtımdan önce değişiklikleri önizlemek için `-Whatif` dağıtım komutuna anahtar parametresini ekleyin.
+Bir şablonu dağıtımdan önce değişiklikleri önizlemek için [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) veya [New-azsubscriptiondeployment](/powershell/module/az.resources/new-azdeployment)komutunu kullanın. `-Whatif`Dağıtım komutuna anahtar parametresini ekleyin.
 
 * `New-AzResourceGroupDeployment -Whatif`kaynak grubu dağıtımları için
 * `New-AzSubscriptionDeployment -Whatif``New-AzDeployment -Whatif`abonelik düzeyinde dağıtımlar için
@@ -111,19 +115,19 @@ Bir şablonu dağıtımdan önce değişiklikleri önizlemek için `-Whatif` da�
 * `New-AzResourceGroupDeployment -Confirm`kaynak grubu dağıtımları için
 * `New-AzSubscriptionDeployment -Confirm``New-AzDeployment -Confirm`abonelik düzeyinde dağıtımlar için
 
-Yukarıdaki komutlar el ile inceleyebilmeniz için bir metin Özeti döndürür. Değişiklikler için programlı olarak inceleyebileceğiniz bir nesne almak için şunu kullanın:
+Yukarıdaki komutlar el ile inceleyebilmeniz için bir metin Özeti döndürür. Program aracılığıyla değişiklikler için inceleyebileceğiniz bir nesne almak için [Get-Azresourcegroupdeploymentwhatıresult](/powershell/module/az.resources/get-azresourcegroupdeploymentwhatifresult) veya [Get-azsubscriptiondeploymentwhatıresult](/powershell/module/az.resources/get-azdeploymentwhatifresult)' ı kullanın.
 
 * `$results = Get-AzResourceGroupDeploymentWhatIfResult`kaynak grubu dağıtımları için
 * `$results = Get-AzSubscriptionDeploymentWhatIfResult``$results = Get-AzDeploymentWhatIfResult`abonelik düzeyi dağıtımlar için veya
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Bir şablonu dağıtımdan önce değişiklikleri önizlemek için `what-if` dağıtım komutuyla kullanın.
+Bir şablonu dağıtımdan önce değişiklikleri önizlemek için [az Deployment Group ne-if](/cli/azure/deployment/group#az-deployment-group-what-if) veya [az Deployment Sub ne-if](/cli/azure/deployment/sub#az-deployment-sub-what-if)' ı kullanın.
 
 * `az deployment group what-if`kaynak grubu dağıtımları için
 * `az deployment sub what-if`abonelik düzeyinde dağıtımlar için
 
-`--confirm-with-what-if` `-c` Değişiklikleri önizlemek ve dağıtıma devam etmek isteyip istemediğiniz sorulduğunda anahtarı (veya kısa biçimini) kullanabilirsiniz.
+`--confirm-with-what-if` `-c` Değişiklikleri önizlemek ve dağıtıma devam etmek isteyip istemediğiniz sorulduğunda anahtarı (veya kısa biçimini) kullanabilirsiniz. Bu anahtarı [az Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create) veya [az Deployment Sub Create](/cli/azure/deployment/sub#az-deployment-sub-create)öğesine ekleyin.
 
 * `az deployment group create --confirm-with-what-if`veya `-c` kaynak grubu dağıtımları için
 * `az deployment sub create --confirm-with-what-if``-c`abonelik düzeyi dağıtımlar için veya

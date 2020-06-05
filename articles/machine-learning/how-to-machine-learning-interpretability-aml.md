@@ -5,17 +5,17 @@ description: Machine Learning modelinizin Özellik önemini nasıl belirlediğin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
-ms.openlocfilehash: 39d2bf0e527d43e2a5fb9437720f249e54b4dff3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: e0d8cb42e0dc1e161de56ca2b56eee0ce62ec25f
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983644"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430709"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Python 'da öngörülere & ML modellerini açıklamak için yorumlamalar paketini kullanın
 
@@ -41,7 +41,7 @@ Desteklenen yorumlenebilirlik teknikleri ve makine öğrenimi modelleri hakkınd
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>Kişisel makinenizde Özellik önemi değeri oluştur 
 Aşağıdaki örnekte, Azure hizmetleriyle iletişim kurmadan kişisel makinenizde yorumlenebilirlik paketinin nasıl kullanılacağı gösterilmektedir.
 
-1. Ve `azureml-interpret` `azureml-contrib-interpret` paketlerini yükler.
+1. `azureml-interpret`Ve `azureml-contrib-interpret` paketlerini yükler.
     ```bash
     pip install azureml-interpret
     pip install azureml-contrib-interpret
@@ -71,8 +71,8 @@ Aşağıdaki örnekte, Azure hizmetleriyle iletişim kurmadan kişisel makineniz
    * Bir açıklama nesnesini başlatmak için modelinizi ve bazı eğitim verilerinizi açıklama oluşturucusuna geçirin.
    * Açıklamaları ve görselleştirmelerinizi daha bilgilendirici hale getirmek için sınıflandırma yaparsanız özellik adlarını ve çıkış sınıfı adlarını geçirmeye seçebilirsiniz.
 
-   Aşağıdaki kod blokları `TabularExplainer`, `MimicExplainer`, ve `PFIExplainer` yerel olarak bir açıklama nesnesinin örneğini oluşturmayı gösterir.
-   * `TabularExplainer`Alttaki üç Shap explainers birini (`TreeExplainer`, `DeepExplainer`, veya `KernelExplainer`) çağırır.
+   Aşağıdaki kod blokları `TabularExplainer` ,, `MimicExplainer` ve yerel olarak bir açıklama nesnesinin örneğini oluşturmayı gösterir `PFIExplainer` .
+   * `TabularExplainer`Alttaki üç SHAP explainers birini ( `TreeExplainer` , `DeepExplainer` , veya `KernelExplainer` ) çağırır.
    * `TabularExplainer`kullanım durumu için en uygun olanı otomatik olarak seçer, ancak her üç temel explainers doğrudan çağırabilirsiniz.
 
     ```python
@@ -159,11 +159,11 @@ sorted_local_importance_values = local_explanation.get_ranked_local_values()
 
 ### <a name="raw-feature-transformations"></a>Ham Özellik dönüştürmeleri
 
-Mühendislik uygulanmış özellikler yerine ham, dönüştürülmemiş özellikler açısından açıklamaları almayı tercih edebilirsiniz. Bu seçenek için, özellik dönüştürme işlem hattınızı içindeki `train_explain.py`açıklama geçitirsiniz. Aksi takdirde açıklama, mühendislik uygulanmış özellikler açısından açıklamaları sağlar.
+Mühendislik uygulanmış özellikler yerine ham, dönüştürülmemiş özellikler açısından açıklamaları almayı tercih edebilirsiniz. Bu seçenek için, özellik dönüştürme işlem hattınızı içindeki açıklama geçitirsiniz `train_explain.py` . Aksi takdirde açıklama, mühendislik uygulanmış özellikler açısından açıklamaları sağlar.
 
 Desteklenen dönüşümlerin biçimi, [sköğren-Pandas](https://github.com/scikit-learn-contrib/sklearn-pandas)bölümünde açıklananla aynıdır. Genel olarak, Tüm dönüştürmeler tek bir sütunda çalıştıkları sürece desteklenir, böylece bir çok-çok olacak şekilde net bir şekilde çalışır.
 
-Bir veya bir `sklearn.compose.ColumnTransformer` birlikte bulunan transformatör tanımlama gruplarının listesi ile ham özellikler için bir açıklama alın. Aşağıdaki örnek kullanılmıştır `sklearn.compose.ColumnTransformer`.
+Bir `sklearn.compose.ColumnTransformer` veya bir birlikte bulunan transformatör tanımlama gruplarının listesi ile ham özellikler için bir açıklama alın. Aşağıdaki örnek kullanılmıştır `sklearn.compose.ColumnTransformer` .
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -233,12 +233,12 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 ## <a name="generate-feature-importance-values-via-remote-runs"></a>Uzak çalıştırmalar aracılığıyla Özellik önem değerleri oluşturma
 
-Aşağıdaki örnek, uzak çalıştırmalar için model yorumlenebilirliğini etkinleştirmek üzere `ExplanationClient` sınıfını nasıl kullanabileceğinizi gösterir. Yerel işlemle kavramsal olarak benzerdir, ancak şunları yapabilirsiniz:
+Aşağıdaki örnek, `ExplanationClient` uzak çalıştırmalar için model yorumlenebilirliğini etkinleştirmek üzere sınıfını nasıl kullanabileceğinizi gösterir. Yerel işlemle kavramsal olarak benzerdir, ancak şunları yapabilirsiniz:
 
-* `ExplanationClient` Yorumlenebilirlik bağlamını karşıya yüklemek için uzak çalıştırmada öğesini kullanın.
+* `ExplanationClient`Yorumlenebilirlik bağlamını karşıya yüklemek için uzak çalıştırmada öğesini kullanın.
 * Bağlamı daha sonra yerel bir ortamda indirin.
 
-1. Ve `azureml-interpret` `azureml-contrib-interpret` paketlerini yükler.
+1. `azureml-interpret`Ve `azureml-contrib-interpret` paketlerini yükler.
     ```bash
     pip install azureml-interpret
     pip install azureml-contrib-interpret
@@ -303,7 +303,7 @@ Yerel Jupyter Not defterinize açıklamaları indirdikten sonra, modelinizi anla
 
 Aşağıdaki çizimler, eğitilen modelin, tahminlerinin ve açıklamalarıyla birlikte genel görünümünü sağlar.
 
-|ZF|Açıklama|
+|ZF|Description|
 |----|-----------|
 |Veri araştırması| Tahmin değerleriyle birlikte veri kümesine genel bir bakış görüntüler.|
 |Küresel önem derecesi|, Modelin genel üst K (yapılandırılabilir K) önemli özelliklerini göstermek için tek tek veri noktalarının Özellik önem değerlerini toplar. Temel alınan modelin genel davranışının anlaşılmasına yardımcı olur.|
@@ -317,7 +317,7 @@ Aşağıdaki çizimler, eğitilen modelin, tahminlerinin ve açıklamalarıyla b
 
 Tüm veri noktaları için tek tek özellik önem kümesini, genel çizbir veri noktasına tıklayarak yükleyebilirsiniz.
 
-|ZF|Açıklama|
+|ZF|Description|
 |----|-----------|
 |Yerel önem derecesi|Tek bir tahmin için en üstteki K (yapılandırılabilir K) önemli özellikleri gösterir. Belirli bir veri noktasındaki temeldeki modelin yerel davranışını göstermeye yardımcı olur.|
 |Perturbation Araştırması (Analize)|Seçili veri noktasının özellik değerlerinde değişikliklere izin verir ve sonuç olarak tahmini değişiklikleri gözlemleyin.|
@@ -379,7 +379,7 @@ Azure Machine Learning Studio 'daki görselleştirme panosuna erişmek için bu 
 
 Açıklama 'yi özgün modelle birlikte dağıtabilir ve yeni DataPoint için bireysel Özellik önem değerlerini (yerel açıklama) sağlamak üzere çıkarımı zaman içinde kullanabilirsiniz. Ayrıca, çıkarım performansını artırmak için daha hafif Puanlama explainers sunuyoruz. Daha hafif bir Puanlama açıklama dağıtma işlemi, model dağıtmaya benzer ve aşağıdaki adımları içerir:
 
-1. Bir açıklama nesnesi oluşturun. Örneğin, şunu kullanabilirsiniz `TabularExplainer`:
+1. Bir açıklama nesnesi oluşturun. Örneğin, şunu kullanabilirsiniz `TabularExplainer` :
 
    ```python
     from interpret.ext.blackbox import TabularExplainer
@@ -564,7 +564,7 @@ Açıklama 'yi özgün modelle birlikte dağıtabilir ve yeni DataPoint için bi
 
 1. Temizleyin.
 
-   Dağıtılmış bir Web hizmetini silmek için kullanın `service.delete()`.
+   Dağıtılmış bir Web hizmetini silmek için kullanın `service.delete()` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

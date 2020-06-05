@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 03/13/2020
-ms.openlocfilehash: 6d18a8d09749b832984872b57eec8a36abc1b2e2
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 705c35570484f604e9281b9c19ceb734180ba3e1
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857674"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418271"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma
 
@@ -97,7 +97,7 @@ Azure Data Factory Kullanıcı arabirimini kullanarak şirket içinde barındır
 
 Şirket içinde barındırılan mevcut bir IR kurmak veya yönetmek için komut satırını kullanabilirsiniz. Bu kullanım özellikle, şirket içinde barındırılan IR düğümlerinin yüklenmesinin ve kaydının otomatikleştirilmesine yardımcı olabilir.
 
-Dmgcmd. exe, şirket içinde barındırılan yükleyicide bulunur. Genellikle C:\Program Files\Microsoft Integration Runtime\3,\shared\ klasöründe bulunur. Bu uygulama, çeşitli parametreleri destekler ve otomasyon için Batch betikleri kullanılarak bir komut satırı aracılığıyla çağrılabilir.
+Dmgcmd. exe, şirket içinde barındırılan yükleyicide bulunur. Genellikle C:\Program Files\Microsoft Integration Runtime\4.0\Shared\ klasöründe bulunur. Bu uygulama, çeşitli parametreleri destekler ve otomasyon için Batch betikleri kullanılarak bir komut satırı aracılığıyla çağrılabilir.
 
 Uygulamayı aşağıdaki gibi kullanın:
 
@@ -117,7 +117,7 @@ Uygulamanın parametrelerinin ve özelliklerinin ayrıntıları şunlardır:
 | **Anahtar** "`<AuthenticationKey>`"                                 | Önceki kimlik doğrulama anahtarının üzerine yazın veya güncelleştirin. Bu eyleme dikkat edin. Anahtar yeni bir tümleştirme çalışma zamanı ise, önceki şirket içinde barındırılan IR düğümünüz çevrimdışı duruma geçebilir. | No       |
 | **Generatebackupfile** "`<filePath>`" "`<password>`"            | Geçerli düğüm için bir yedek dosya oluşturun. Yedekleme dosyası, düğüm anahtarını ve veri deposu kimlik bilgilerini içerir. | No       |
 | **Importbackupfile** "`<filePath>`" "`<password>`"              | Düğümü bir yedekleme dosyasından geri yükleyin.                          | No       |
-| **Yeniden Başlatma**                                                     | Şirket içinde barındırılan tümleştirme çalışma zamanı ana bilgisayarı hizmetini yeniden başlatın.   | No       |
+| **Yeniden başlat**                                                     | Şirket içinde barındırılan tümleştirme çalışma zamanı ana bilgisayarı hizmetini yeniden başlatın.   | No       |
 | **Başlangıç**                                                       | Şirket içinde barındırılan tümleştirme çalışma zamanı ana bilgisayarı hizmetini başlatın.     | No       |
 | **Durdur**                                                        | Şirket içinde barındırılan tümleştirme çalışma zamanı ana bilgisayarı hizmetini durdurun.        | No       |
 | **StartUpgradeService**                                         | Şirket içinde barındırılan tümleştirme çalışma zamanı yükseltme hizmetini başlatın.       | No       |
@@ -151,9 +151,9 @@ Uygulamanın parametrelerinin ve özelliklerinin ayrıntıları şunlardır:
 - Bir Azure sanal ağı içindeki veri tümleştirmesini desteklemek için şirket içinde barındırılan bir tümleştirme çalışma zamanı kullanın.
 - Azure ExpressRoute kullandığınızda bile, veri kaynağınızı bir güvenlik duvarının arkasındaki şirket içi veri kaynağı olarak değerlendirin. Hizmeti veri kaynağına bağlamak için şirket içinde barındırılan tümleştirme çalışma zamanını kullanın.
 - Veri deposu bir Azure hizmet olarak altyapı (IaaS) sanal makinesi üzerinde bulutta olsa bile, şirket içinde barındırılan tümleştirme çalışma zamanını kullanın.
-- Görevler, FIPS uyumlu şifreleme etkin olan bir Windows Server 'a yüklediğiniz şirket içinde barındırılan tümleştirme çalışma zamanında başarısız olabilir. Bu sorunu geçici olarak çözmek için sunucuda FIPS uyumlu şifrelemeyi devre dışı bırakın. FIPS uyumlu şifrelemeyi devre dışı bırakmak için, aşağıdaki kayıt defteri alt anahtarının değerini 1 (etkin) iken 0 (devre dışı) olarak `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`değiştirin:.
+- Görevler, FIPS uyumlu şifreleme etkin olan bir Windows Server 'a yüklediğiniz şirket içinde barındırılan tümleştirme çalışma zamanında başarısız olabilir. Bu sorunu geçici olarak çözmek için sunucuda FIPS uyumlu şifrelemeyi devre dışı bırakın. FIPS uyumlu şifrelemeyi devre dışı bırakmak için, aşağıdaki kayıt defteri alt anahtarının değerini 1 (etkin) iken 0 (devre dışı) olarak değiştirin: `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Desteklenen Windows sürümleri şunlardır:
   + Windows 7 Service Pack 1
@@ -173,7 +173,7 @@ Uygulamanın parametrelerinin ve özelliklerinin ayrıntıları şunlardır:
 - Kopyalama-etkinlik çalıştırmaları belirli bir sıklıkta gerçekleşir. Makinedeki işlemci ve RAM kullanımı, yoğun ve boşta zamanlarla aynı düzene uyar. Kaynak kullanımı Ayrıca, taşınan veri miktarına büyük ölçüde bağlıdır. Birden çok kopyalama işi devam ederken, yoğun saatlerde kaynak kullanımını görürsünüz.
 - , Parquet, ORC veya avro biçimlerinde veri ayıklama sırasında görevler başarısız olabilir. Parquet hakkında daha fazla bilgi için [Azure Data Factory Içindeki Parquet biçimine](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime)bakın. Dosya oluşturma, şirket içinde barındırılan tümleştirme makinesinde çalışır. Dosya oluşturma, beklendiği gibi çalışması için aşağıdaki önkoşulları gerektirir:
     - [Visual C++ 2010 yeniden dağıtılabilir](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe) Paket (x64)
-    - Java Runtime (JRE) sürüm 8, bir JRE sağlayıcısından, [OpenJDK 'Yi benimseyin](https://adoptopenjdk.net/). `JAVA_HOME` Ortam değişkeninin ayarlandığından emin olun.
+    - Java Runtime (JRE) sürüm 8, bir JRE sağlayıcısından, [OpenJDK 'Yi benimseyin](https://adoptopenjdk.net/). `JAVA_HOME`Ortam değişkeninin ayarlandığından emin olun.
 
 ## <a name="installation-best-practices"></a>Yükleme için en iyi yöntemler
 
@@ -220,7 +220,7 @@ Uygulamanın parametrelerinin ve özelliklerinin ayrıntıları şunlardır:
 > Her bir düğümü ilişkilendirmek için şirket içinde barındırılan yeni bir tümleştirme çalışma zamanı oluşturmanız gerekmez. Şirket içinde barındırılan tümleştirme çalışma zamanını başka bir makineye yükleyebilir ve aynı kimlik doğrulama anahtarını kullanarak kaydedebilirsiniz.
 
 > [!NOTE]
-> Yüksek kullanılabilirlik ve ölçeklenebilirlik için başka bir düğüm eklemeden önce, ilk düğümde **Intranete uzaktan erişim** seçeneğinin etkinleştirildiğinden emin olun. Bunu yapmak için **Microsoft Integration Runtime Configuration Manager** > **ayarları** > **intranete uzaktan erişim**' i seçin.
+> Yüksek kullanılabilirlik ve ölçeklenebilirlik için başka bir düğüm eklemeden önce, ilk düğümde **Intranete uzaktan erişim** seçeneğinin etkinleştirildiğinden emin olun. Bunu yapmak için **Microsoft Integration Runtime Configuration Manager**  >  **ayarları**  >  **intranete uzaktan erişim**' i seçin.
 
 ### <a name="scale-considerations"></a>Ölçek konuları
 
@@ -375,9 +375,9 @@ HTTP proxy 'sini görüntülemek ve güncelleştirmek için Configuration Manage
 
 HTTP proxy için **sistem proxy kullan** seçeneğini belirlerseniz, şirket içinde barındırılan tümleştirme çalışma zamanı, diahost. exe. config ve diawp. exe. config dosyasındaki proxy ayarlarını kullanır. Bu dosyalar proxy belirtmeksizin, şirket içinde barındırılan tümleştirme çalışma zamanı, bir ara sunucuya geçmeden doğrudan bulut hizmetine bağlanır. Aşağıdaki yordam diahost. exe. config dosyasını güncelleştirmek için yönergeler sağlar:
 
-1. Dosya Gezgini 'nde, özgün dosyanın bir yedeklemesi olarak C:\Program Files\Microsoft Integration Runtime\3.0\Shared\diahost.exe.config ' ın güvenli bir kopyasını oluşturun.
+1. Dosya Gezgini 'nde, özgün dosyanın bir yedeklemesi olarak C:\Program Files\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config ' ın güvenli bir kopyasını oluşturun.
 1. Yönetici olarak çalışan Not defteri 'Ni açın.
-1. Not defteri 'nde C:\Program Files\Microsoft Integration Runtime\3.0\Shared\diahost.exe.config. metin dosyasını açın.
+1. Not defteri 'nde C:\Program Files\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config. metin dosyasını açın.
 1. Varsayılan **System.net** etiketini aşağıdaki kodda gösterildiği gibi bulun:
 
     ```xml
@@ -395,7 +395,7 @@ HTTP proxy için **sistem proxy kullan** seçeneğini belirlerseniz, şirket iç
     </system.net>
     ```
 
-    Proxy etiketi, ek özelliklerin gibi `scriptLocation`gerekli ayarları belirlemesine izin verir. Sözdizimi için bkz [ \<. proxy\> öğesi (ağ ayarları)](https://msdn.microsoft.com/library/sa91de1e.aspx) .
+    Proxy etiketi, ek özelliklerin gibi gerekli ayarları belirlemesine izin verir `scriptLocation` . Sözdizimi için bkz. [ \<proxy\> öğesi (ağ ayarları)](https://msdn.microsoft.com/library/sa91de1e.aspx) .
 
     ```xml
     <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
@@ -416,7 +416,7 @@ Ayrıca, Microsoft Azure şirketinizin izin verilenler listesinde olduğundan em
 Aşağıdakiler gibi hata iletileri görürseniz, olası neden güvenlik duvarının veya ara sunucunun yapılandırması hatalı olur. Bu tür yapılandırma, şirket içinde barındırılan tümleştirme çalışma zamanının kendi kimliğini doğrulamak için Data Factory bağlanmasına engel olur. Güvenlik duvarınızın ve ara sunucunuzun düzgün yapılandırıldığından emin olmak için önceki bölüme bakın.
 
 * Şirket içinde barındırılan tümleştirme çalışma zamanını kaydettirmeye çalıştığınızda şu hata iletisini alırsınız: "Bu Integration Runtime düğümü kaydedilemedi! Kimlik doğrulama anahtarının geçerli olduğunu ve tümleştirme hizmeti ana bilgisayar hizmetinin bu makinede çalıştığını doğrulayın. "
-* Integration Runtime Configuration Manager açtığınızda, **bağlantısı kesilen** veya **bağlanan**bir durum görürsünüz. Windows olay günlüklerini görüntülediğinizde,**uygulama ve hizmet günlükleri** > **Microsoft Integration Runtime** **Olay Görüntüleyicisi** > altında, şöyle bir hata mesajı görürsünüz:
+* Integration Runtime Configuration Manager açtığınızda, **bağlantısı kesilen** veya **bağlanan**bir durum görürsünüz. Windows olay günlüklerini görüntülediğinizde, **Event Viewer**  >  **uygulama ve hizmet günlükleri**  >  **Microsoft Integration Runtime**Olay Görüntüleyicisi altında, şöyle bir hata mesajı görürsünüz:
 
     ```
     Unable to connect to the remote server

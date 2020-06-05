@@ -5,18 +5,18 @@ description: Azure Machine Learning ile otomatik makine öğrenimi modelleri olu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: nibaccam
 author: aniththa
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/20/2020
-ms.openlocfilehash: 20d98f8eb4971d2aba1ecfbf8abeaba261cde8c4
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 7335eee191d87ba34e32a5f7842c088d8ea4cb3e
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115888"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431564"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning ile otomatik makine öğrenimi modelleri oluşturun, gözden geçirin ve dağıtın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Uçtan uca örnek için [Azure Machine Learning OTOMATIKLEŞTIRILMIŞ ml arabiri
 
 Python kod tabanlı bir deneyim için [otomatik makine öğrenimi denemeleri](how-to-configure-auto-train.md) Azure Machine Learning SDK ile yapılandırın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
@@ -66,7 +66,7 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
 
     1. Doğruluk için **ayarları ve önizleme** formunu gözden geçirin. Form, dosya türüne göre akıllıca doldurulur. 
 
-        Alan| Açıklama
+        Alan| Description
         ----|----
         Dosya biçimi| Bir dosyada depolanan verilerin yerleşimini ve türünü tanımlar.
         Sınırlayıcı| Düz metin veya diğer veri akışlarında ayrı, bağımsız bölgeler arasındaki sınırı belirtmek için bir veya daha fazla karakter.
@@ -93,13 +93,13 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
 
 1. Bu deneme için işlem bağlamını yapılandırmak üzere **Yeni bir Işlem oluştur** ' u seçin.
 
-    Alan|Açıklama
+    Alan|Description
     ---|---
     İşlem adı| İşlem bağlamını tanımlayan benzersiz bir ad girin.
     Sanal makine boyutu| İşlem için sanal makine boyutunu seçin.
     En az/en fazla düğüm (Gelişmiş ayarlarda)| Veri profili için, 1 veya daha fazla düğüm belirtmeniz gerekir. İşlem için en fazla düğüm sayısını girin. Varsayılan değer bir AML Işlem için 6 düğümünüz.
     
-    **Oluştur**’u seçin. Yeni bir işlem oluşturmak birkaç dakika sürebilir.
+    **Oluştur**'u seçin. Yeni bir işlem oluşturmak birkaç dakika sürebilir.
 
     >[!NOTE]
     > İşlem adınız, seçtiğiniz işlem *profil oluşturma*/oluşturma işleminin etkin olup olmadığını gösterir. (Daha fazla ayrıntı için bkz. [veri profili oluşturma](#profile) bölümü).
@@ -117,7 +117,7 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
 
 1. Seçim Ek yapılandırma ayarlarını görüntüle: eğitim işini daha iyi denetleyebilmeniz için kullanabileceğiniz ek ayarlar. Aksi takdirde, denemeler seçimine ve verilerine göre varsayılan ayarlar uygulanır. 
 
-    Ek yapılandırmalar|Açıklama
+    Ek yapılandırmalar|Description
     ------|------
     Birincil ölçüm| Modelinize Puanlama için kullanılan ana ölçüm. [Model ölçümleri hakkında daha fazla bilgi edinin](how-to-configure-auto-train.md#explore-model-metrics).
     Otomatik olarak korleştirme| Otomatik makine öğrenimi tarafından yapılan seçimi etkinleştirmek veya devre dışı bırakmak için seçin. Otomatik hale getirme, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir. Zaman serisi tahmin görev türü için desteklenmez. [Korleştirme hakkında daha fazla bilgi edinin](how-to-configure-auto-features.md#featurization). 
@@ -140,9 +140,9 @@ Veri ayarlanmış olup olmadığını doğrulamak için veri kümesi genelinde �
 >[!NOTE]
 > İlgisiz türler içeren özellikler için boş girdiler görüntülenir.
 
-İstatistik|Açıklama
+İstatistik|Description
 ------|------
-Özellik| Özetlenen sütunun adı.
+Öne çıkan özelliği| Özetlenen sütunun adı.
 Profil| Çıkarılan türe göre satır içi görselleştirme. Örneğin, dizeler, Boole değerleri ve tarihler değer sayılarına sahip olacaktır, ancak Ondalıklar (Numerics) de yaklaşık histogramlar olur. Bu, verilerin dağıtımını hızlı bir şekilde anlayabilmeniz için size izin verir.
 Tür dağılımı| Bir sütun içindeki türlerin satır içi değer sayısı. Null değerler kendi türlerdir, bu nedenle bu görselleştirme tek veya eksik değerleri algılamak için yararlıdır.
 Tür|Sütunun Çıkarsanan türü. Olası değerler şunlardır: dizeler, Boole değerleri, tarihler ve ondalıklar.
@@ -206,7 +206,7 @@ Otomatikleştirilmiş ML, kodu yazmadan modeli dağıtmanıza yardımcı olur:
     Alan| Değer
     ----|----
     Adı| Dağıtımınız için benzersiz bir ad girin.
-    Açıklama| Bu dağıtımın ne için olduğunu daha iyi tanımlamak için bir açıklama girin.
+    Description| Bu dağıtımın ne için olduğunu daha iyi tanımlamak için bir açıklama girin.
     İşlem türü| Dağıtmak istediğiniz uç nokta türünü seçin: *Azure Kubernetes hizmeti (AKS)* veya *Azure Container Instance (acı)*.
     İşlem adı| *Yalnızca AKS Için geçerlidir:* Dağıtmak istediğiniz AKS kümesinin adını seçin.
     Kimlik doğrulamasını etkinleştir | Belirteç tabanlı veya anahtar tabanlı kimlik doğrulamasına izin vermek için seçin.

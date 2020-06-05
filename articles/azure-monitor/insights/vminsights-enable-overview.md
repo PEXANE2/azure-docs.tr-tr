@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/28/2020
-ms.openlocfilehash: 3c9c5e69eea72b20da485ffb1edf806f2c9f3b41
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: 87d8b26110eba647975de577e9d7b5b0ed138266
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195316"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84423981"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>VM'ler için Azure İzleyici genel bakış 'ı etkinleştir
 
@@ -24,7 +24,7 @@ VM'ler için Azure İzleyici ayarlamak için:
 * PowerShell kullanarak, belirtilen bir abonelik veya kaynak grubu genelinde iki veya daha fazla Azure VM veya sanal makine ölçek kümesi etkinleştirin.
 * Şirket ağınızda veya diğer bulut ortamınızda barındırılan VM 'Leri veya fiziksel bilgisayarları izlemek için VM'ler için Azure İzleyici etkinleştirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki bölümlerde yer alan bilgileri anladığınızdan emin olun. 
 
@@ -43,6 +43,7 @@ VM'ler için Azure İzleyici, aşağıdaki bölgelerde bir Log Analytics çalı�
 - Doğu ABD 2
 - Orta ABD
 - Orta Kuzey ABD
+- US Gov VA
 - Orta Kanada
 - Güney Birleşik Krallık
 - Kuzey Avrupa
@@ -165,11 +166,11 @@ Karma bir ortamda, bağımlılık aracısını el ile indirip yükleyebilir veya
 
 Aşağıdaki tabloda, bir karma ortamda harita özelliğinin desteklediği bağlı kaynaklar açıklanmaktadır.
 
-| Bağlı kaynak | Destekleniyor | Açıklama |
+| Bağlı kaynak | Destekleniyor | Description |
 |:--|:--|:--|
-| Windows aracıları | Evet | [Windows aracıların Log Analytics aracı](../../azure-monitor/platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
-| Linux aracıları | Evet | Linux aracısının [Log Analytics aracısıyla](../../azure-monitor/platform/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
-| System Center Operations Manager yönetim grubu | Hayır | |
+| Windows aracıları | Yes | [Windows aracıların Log Analytics aracı](../../azure-monitor/platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
+| Linux aracıları | Yes | Linux aracısının [Log Analytics aracısıyla](../../azure-monitor/platform/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
+| System Center Operations Manager yönetim grubu | No | |
 
 Bağımlılık aracısını şu konumlardan indirebilirsiniz:
 
@@ -188,7 +189,7 @@ Log Analytics çalışma alanına erişimi denetleme hakkında daha fazla bilgi 
 
 Bu tabloda açıklanan yöntemlerden birini kullanarak VM'ler için Azure İzleyici etkinleştirin:
 
-| Dağıtım durumu | Yöntem | Açıklama |
+| Dağıtım durumu | Yöntem | Description |
 |------------------|--------|-------------|
 | Tek Azure VM veya sanal makine ölçek kümesi | [VM 'den etkinleştir](vminsights-enable-single-vm.md) | Doğrudan VM veya sanal makine ölçek kümesinden **Öngörüler** seçerek tek BIR Azure VM 'yi etkinleştirebilirsiniz. |
 | Birden çok Azure VM veya sanal makine ölçek kümesi | [Azure Ilkesi aracılığıyla etkinleştir](vminsights-enable-at-scale-policy.md) | Azure Ilkesi ve kullanılabilir ilke tanımlarını kullanarak birden fazla Azure VM 'yi etkinleştirebilirsiniz. |

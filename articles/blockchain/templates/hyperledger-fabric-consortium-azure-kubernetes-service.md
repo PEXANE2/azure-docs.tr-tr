@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes Service (AKS) üzerinde hiper muhasebe doku Consortium
 description: Azure Kubernetes hizmetinde hiper muhasebe doku Consortium ağını dağıtma ve yapılandırma
-ms.date: 01/08/2020
+ms.date: 06/04/2020
 ms.topic: article
-ms.reviewer: v-umha
-ms.openlocfilehash: da4ec99f1b9d73ab67a2312094feaa1a89aee394
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.reviewer: ravastra
+ms.openlocfilehash: 98d89905c89156d05fd61389693ad8d5765ba9e1
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980243"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434344"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde hiper muhasebe doku Consortium
 
@@ -275,8 +275,8 @@ Eş kuruluş istemcisinden, belirtilen kanalda eş kuruluşa ait bağlantı eşl
 
 `<anchorPeersList>`, bir çapa eşi olarak ayarlanacak eş düğümlerinin boşlukla ayrılmış bir listesidir. Örneğin,
 
-  - Yalnızca `<anchorPeersList>` peer1 düğümünü bağlayıcı eşi olarak ayarlamak istiyorsanız "peer1" olarak ayarlayın.
-  - Hem `<anchorPeersList>` peer1 hem de peer3 düğümünü bağlayıcı eşi olarak ayarlamak istiyorsanız "peer1" "peer3" olarak ayarlayın.
+  - `<anchorPeersList>`Yalnızca peer1 düğümünü bağlayıcı eşi olarak ayarlamak istiyorsanız "peer1" olarak ayarlayın.
+  - `<anchorPeersList>`Hem peer1 hem de peer3 düğümünü bağlayıcı eşi olarak ayarlamak istiyorsanız "peer1" "peer3" olarak ayarlayın.
 
 ### <a name="consortium-management-commands"></a>Konsorsiyum yönetim komutları
 
@@ -358,8 +358,8 @@ ORGNAME ortam değişkeninde ayarlanan eşdüzey kuruluşun tüm eşdüzey düğ
 
 Adımları izleyin:  
 
-1.  `USER_IDENTITY` PeerOrg1 ve sorun `./azhlf chaincode install` komutuna göre ayarlayın `ORGNAME` .  
-2.  `USER_IDENTITY` PeerOrg2 ve sorun `./azhlf chaincode install` komutuna göre ayarlayın `ORGNAME` .  
+1.  `ORGNAME` `USER_IDENTITY` PeerOrg1 ve sorun komutuna göre ayarlayın `./azhlf chaincode install` .  
+2.  `ORGNAME` `USER_IDENTITY` PeerOrg2 ve sorun komutuna göre ayarlayın `./azhlf chaincode install` .  
 
 ### <a name="instantiate-chaincode"></a>Chaincode örneği oluşturma  
 
@@ -368,7 +368,7 @@ Eş istemci uygulamasından, kanaldaki chaincode 'u başlatmak için aşağıdak
 ```bash
 ./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
 ```
-Örnek oluşturma işlevi adı ve bağımsız değişken ayrılmış listesi ' ni `<instantiateFunc>` ve `<instantiateFuncArgs>` sırasıyla geçirin. Örneğin, chaincode_example02. go chaincode 'da, ' a `<instantiateFunc>` `init`ve `<instantiateFuncArgs>` "a" "2000" "b" "1000" olarak ayarlanmış chaincode 'u oluşturmak için.
+Örnek oluşturma işlevi adı ve bağımsız değişken ayrılmış listesi ' ni `<instantiateFunc>` ve `<instantiateFuncArgs>` sırasıyla geçirin. Örneğin, chaincode_example02. go chaincode 'da, ' `<instantiateFunc>` `init` a ve " `<instantiateFuncArgs>` a" "2000" "b" "1000" olarak ayarlanmış chaincode 'u oluşturmak için.
 
 > [!NOTE]
 > Kanalda herhangi bir eş kuruluştan bir kez komutunu yürütün. İşlem düzenli olarak sipariş 'e gönderildikten sonra, sipariş bu işlemi kanaldaki tüm eş kuruluşlara dağıtır. Bu nedenle, chaincode, kanaldaki tüm eş kuruluşlardaki tüm eşdüzey düğümlerde oluşturulur.  
@@ -382,7 +382,7 @@ Eş kuruluş istemcisinden, chaincode işlevini çağırmak için aşağıdaki k
 ./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>  
 ```
 
-' In `<invokeFunction>` ve `<invokeFuncArgs>` sırasıyla bağımsız değişkenlerin çağırma işlev adını ve boşlukla ayrılmış listesini geçirin. Çağırma işlemini gerçekleştirmek için chaincode_example02. go chaincode örneğine devam edin, "a `<invokeFunction>` " `invoke` " `<invokeFuncArgs>` b" "10" olarak ayarlayın.  
+' In ve sırasıyla bağımsız değişkenlerin çağırma işlev adını ve boşlukla ayrılmış listesini geçirin  `<invokeFunction>`    `<invokeFuncArgs>`   . Çağırma işlemini gerçekleştirmek için chaincode_example02. go chaincode örneğine devam edin,  `<invokeFunction>`    `invoke`    `<invokeFuncArgs>`   "a" "b" "10" olarak ayarlayın.  
 
 >[!NOTE]
 > Kanalda herhangi bir eş kuruluştan bir kez komutunu yürütün. İşlem düzenli olarak sipariş 'e gönderildikten sonra, sipariş bu işlemi kanaldaki tüm eş kuruluşlara dağıtır. Bu nedenle, dünyanın durumu, kanaldaki tüm eş kuruluşların tüm eşdüzey düğümlerinde güncelleştirilir.  
@@ -395,7 +395,7 @@ Chaincode 'u sorgulamak için aşağıdaki komutu yürütün:
 ```bash
 ./azhlf chaincode query -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>  
 ```
-Sorgu işlevi adı ve bağımsız değişken ayrılmış listesini içinde `<queryFunction>` ve `<queryFuncArgs>` sırasıyla geçirin. Yeniden chaincode_example02 `<queryFunction>` . Bu, "a" `query` ve `<queryArgs>` "a" olarak ayarlanan dünya durumundaki "a" değerini sorgulamak için.  
+Sorgu işlevi adı ve bağımsız değişken ayrılmış listesini içinde  `<queryFunction>`   ve sırasıyla geçirin  `<queryFuncArgs>`   . Yeniden chaincode_example02. Bu, "a"  `<queryFunction>`    `query` ve  `<queryArgs>` "a" olarak ayarlanan dünya durumundaki "a" değerini sorgulamak için.  
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
@@ -418,3 +418,17 @@ SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER
 kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 
 ```
+
+## <a name="support-and-feedback"></a>Destek ve geri bildirim
+
+Azure blok zinciri haberleri için Azure blok zinciri [blogu](https://azure.microsoft.com/blog/topics/blockchain/) ' nı ziyaret ederek, blok zinciri hizmeti tekliflerini ve Azure blok zinciri Mühendisliği ekibinin bilgilerini güncel tutun.
+
+Ürün geri bildirimi sağlamak veya yeni özellikler istemek için, [blok zinciri Için Azure geri bildirim Forumu](https://aka.ms/blockchainuservoice)aracılığıyla bir fikir gönderin veya oylayın.
+
+### <a name="community-support"></a>Topluluk desteği
+
+Microsoft mühendisleri ve Azure blok zinciri topluluk uzmanlarıyla birlikte katılın.
+
+- [Microsoft Q&Azure blok zinciri hizmeti için soru sayfası](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). Blok zinciri şablonları için mühendislik desteği, dağıtım sorunlarıyla sınırlıdır.
+- [Microsoft Teknoloji Topluluğu](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

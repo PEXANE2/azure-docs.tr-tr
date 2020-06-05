@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 05/19/2020
-ms.openlocfilehash: 46c11ef3b3a1fa1a1861f9e944c93ffdf94f7c5a
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/04/2020
+ms.openlocfilehash: 3786b7a2b8b8fc40b1cf393aa452c15d72c5b963
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118889"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433707"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile talep tahmini
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -33,7 +33,7 @@ Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğren
 > * Deneme sonuçlarını keşfet.
 > * En iyi modeli dağıtın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Enterprise Edition Azure Machine Learning çalışma alanı. Bir çalışma alanınız yoksa, [Enterprise Edition çalışma alanı oluşturun](how-to-manage-workspace.md). 
     * Azure Machine Learning Studio 'da otomatik makine öğrenimi yalnızca Enterprise Edition çalışma alanları için kullanılabilir. 
@@ -75,7 +75,7 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
        
     1. **Ayarlar ve önizleme** formunun aşağıdaki gibi doldurulduğunu doğrulayın ve **İleri ' yi**seçin.
         
-        Alan|Açıklama| Öğretici için değer
+        Alan|Description| Öğretici için değer
         ---|---|---
         Dosya biçimi|Bir dosyada depolanan verilerin yerleşimini ve türünü tanımlar.| Ted
         Sınırlayıcı|&nbsp;Düz metin veya diğer veri akışlarında ayrı, bağımsız bölgeler arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgül
@@ -110,7 +110,7 @@ Verilerinizi yükleyip yapılandırdıktan sonra, uzaktan işlem hedefini ayarla
 
     1. **Yeni Işlem oluştur** ' u seçin ve işlem hedefini yapılandırın. Otomatikleştirilmiş ML yalnızca Azure Machine Learning işlem destekler. 
 
-        Alan | Açıklama | Öğretici için değer
+        Alan | Description | Öğretici için değer
         ----|---|---
         İşlem adı |İşlem bağlamını tanımlayan benzersiz bir ad.|Bisiklet-işlem
         Sanal &nbsp; makine &nbsp; boyutu| İşlem için sanal makine boyutunu seçin.|Standard_DS12_V2
@@ -124,7 +124,7 @@ Verilerinizi yükleyip yapılandırdıktan sonra, uzaktan işlem hedefini ayarla
 
     1. **İleri**’yi seçin.
 
-## <a name="select-task-type-and-settings"></a>Görev türü ve ayarlarını seçin
+## <a name="select-forecast-settings"></a>Tahmin ayarlarını seçin
 
 Machine Learning görev türünü ve yapılandırma ayarlarını belirterek otomatik ML denemenizin kurulumunu doldurun.
 
@@ -135,7 +135,7 @@ Machine Learning görev türünü ve yapılandırma ayarlarını belirterek otom
     1. **Ek yapılandırma ayarlarını görüntüle** ' yi seçin ve alanları aşağıdaki gibi doldurun. Bu ayarlar, eğitim işini daha iyi denet, tahmininize yönelik ayarları belirtmenize yöneliktir. Aksi takdirde, denemeler seçimine ve verilerine göre varsayılan ayarlar uygulanır.
 
   
-        Ek &nbsp; yapılandırma|Açıklama|&nbsp;Öğretici için &nbsp; değer
+        Ek &nbsp; yapılandırma|Description|&nbsp;Öğretici için &nbsp; değer
         ------|---------|---
         Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|Normalleştirilmiş kök ortalama kare hatası
         Otomatik olarak korleştirme| Ön işleme etkinleştirilir. Bu, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir.| Etkinleştir
@@ -146,7 +146,7 @@ Machine Learning görev türünü ve yapılandırma ayarlarını belirterek otom
         Doğrulama | Çapraz doğrulama türü ve test sayısı seçin.|Doğrulama türü:<br>&nbsp;&nbsp;çapraz doğrulamayı yana kesme <br> <br> Doğrulama sayısı: 5
         Eşzamanlılık| Yineleme başına yürütülen en fazla paralel yineleme sayısı| En fazla &nbsp; eşzamanlı &nbsp; yineleme: 6
         
-        **Kaydet**’i seçin.
+        **Kaydet**'i seçin.
 
 ## <a name="run-experiment"></a>Deneme Çalıştır
 

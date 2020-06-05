@@ -6,12 +6,12 @@ ms.author: paelaz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 2249dbdebecc52a8f5d6decccb83d3b1fc0777f7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a1b1c01f7cf720690decd9c7aac5fb14b92121ec
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747371"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431998"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Azure Cosmos DB kaynaklarına yönelik idare ve denetimleri uygulamak için Azure Ilkesini kullanma
 
@@ -79,21 +79,24 @@ Bu komutlar Azure Cosmos DB özelliği için özellik diğer adları listesini �
 
 [Özel ilke tanımı kurallarında](../governance/policy/tutorials/create-custom-policy-definition.md#policy-rule)bu özellik diğer ad adlarından herhangi birini kullanabilirsiniz.
 
-Aşağıda, Azure Cosmos DB bir SQL veritabanının sağlanan aktarım hızı izin verilen maksimum 400 RU/sn sınırının daha büyük olup olmadığını denetleyen örnek bir ilke tanımı verilmiştir. Özel bir ilke tanımı iki kural içerir: bir tane, özellik diğer adının belirli türünü ve ikinci bir türün belirli bir özelliği için bir denetim. Her iki kural de diğer adları kullanır.
+Aşağıda, birden fazla yazma konumu için Azure Cosmos DB hesabının yapılandırılıp yapılandırılmadığını denetleyen örnek bir ilke tanımı verilmiştir. Özel ilke tanımı iki kural içerir: bir tane, özellik diğer adının belirli bir türünü denetlemek için, ikincisi ise türün belirli bir özelliği için, bu durumda birden çok yazma konumu ayarını depolayan alan. Her iki kural de diğer adları kullanır.
 
 ```json
 "policyRule": {
   "if": {
     "allOf": [
       {
-      "field": "type",
-      "equals": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings"
+        "field": "type",
+        "equals": "Microsoft.DocumentDB/databaseAccounts"
       },
       {
-      "field": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/default.resource.throughput",
-      "greater": 400
+        "field": "Microsoft.DocumentDB/databaseAccounts/enableMultipleWriteLocations",
+        "notEquals": true
       }
     ]
+  },
+  "then": {
+    "effect": "Audit"
   }
 }
 ```
@@ -106,21 +109,26 @@ Aşağıda, Azure Cosmos DB bir SQL veritabanının sağlanan aktarım hızı iz
 
 Uyumluluk sonuçlarını ve düzeltme ayrıntılarını [Azure Portal](../governance/policy/how-to/get-compliance-data.md#portal) veya [Azure CLI](../governance/policy/how-to/get-compliance-data.md#command-line) veya [Azure izleyici günlükleri](../governance/policy/how-to/get-compliance-data.md#azure-monitor-logs)aracılığıyla gözden geçirebilirsiniz.
 
-Aşağıdaki ekran görüntüsünde iki örnek ilke ataması gösterilmektedir. Bir atama, Azure Cosmos DB kaynaklarının yalnızca izin verilen Azure bölgelerine dağıtıldığını denetleyen yerleşik bir ilke tanımına dayalıdır. Diğer atama, özel bir ilke tanımına dayalıdır. Bu atama, Azure Cosmos DB kaynaklarında sağlanan üretilen işin belirtilen bir üst sınırı aşmadığını denetler.
+Aşağıdaki ekran görüntüsünde iki örnek ilke ataması gösterilmektedir.
 
-İlke atamaları dağıtıldıktan sonra, uyumluluk panosu değerlendirme sonuçlarını gösterir. Bu, ilke atamasını dağıttıktan sonra 30 dakika sürebileceğini unutmayın.
+Bir atama, Azure Cosmos DB kaynaklarının yalnızca izin verilen Azure bölgelerine dağıtıldığını denetleyen yerleşik bir ilke tanımına dayalıdır. Kaynak uyumluluğu, kapsam içi kaynaklar için ilke değerlendirme sonucunu (uyumlu veya uyumlu değil) gösterir.
 
-Ekran görüntüsünde aşağıdaki uyumluluk değerlendirmesi sonuçları gösterilmektedir:
+Diğer atama, özel bir ilke tanımına dayalıdır. Bu atama Cosmos DB hesaplarının birden fazla yazma konumu için yapılandırıldığını denetler.
 
-- Belirtilen kapsamdaki bir Azure Cosmos DB hesapların hiçbiri, kaynakların izin verilen bölgelere dağıtılıp dağıtılmadığını denetlemek için ilke atamasıyla uyumludur.
-- Belirtilen kapsamdaki iki Azure Cosmos DB veritabanı ya da koleksiyon kaynağı, belirtilen maksimum sınırı aşan sağlanan aktarım hızını denetlemek için ilke atamasıyla uyumludur.
+İlke atamaları dağıtıldıktan sonra, uyumluluk panosu değerlendirme sonuçlarını gösterir. Bu, ilke atamasını dağıttıktan sonra 30 dakika sürebileceğini unutmayın. Ayrıca, ilke [değerlendirme taramaları](../governance/policy/how-to/get-compliance-data.md#on-demand-evaluation-scan) , ilke atamaları oluşturulduktan hemen sonra isteğe bağlı olarak başlatılabilir.
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="Azure Cosmos DB yerleşik ilke tanımlarını arayın":::
+Ekran görüntüsünde, kapsamdaki Azure Cosmos DB hesapları için aşağıdaki uyumluluk değerlendirmesi sonuçları gösterilmektedir:
 
-Uyumlu olmayan kaynakları düzeltmek için bkz. [Azure ilkesi ile düzeltilen](../governance/policy/how-to/remediate-resources.md) makalesi.
+- Sıfır iki hesap, sanal ağ (VNet) filtrelemesinin yapılandırılması gereken bir ilkeyle uyumludur.
+- Hesabın birden fazla yazma konumu için yapılandırılmasını gerektiren bir ilkeyle uyumlu iki hesap yok
+- İki hesabın sıfır olması, kaynakların izin verilen Azure bölgelerine dağıtıldığı ilkeyle uyumludur.
 
-## <a name="next-steps"></a>Sonraki Adımlar
+:::image type="content" source="./media/policy/compliance.png" alt-text="Listelenen Azure Ilke atamalarının uyumluluk sonuçları":::
 
-- [Azure Cosmos DB için örnek özel ilke tanımlarını gözden geçirin](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB)
+Uyumlu olmayan kaynakları düzeltmek için bkz. [Azure ilkesi ile kaynakları](../governance/policy/how-to/remediate-resources.md)düzeltme.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- Yukarıda gösterilen birden fazla yazma konumu ve VNet filtreleme ilkeleri için de dahil olmak üzere [Azure Cosmos DB için örnek özel ilke tanımlarını gözden geçirin](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB).
 - [Azure portal ilke ataması oluşturma](../governance/policy/assign-policy-portal.md)
 - [Azure Cosmos DB için Azure Ilkesi yerleşik ilke tanımlarını gözden geçirin](./policy-samples.md)

@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) içinde özel çıkış yolu tanıml
 services: container-service
 ms.topic: article
 ms.date: 06/05/2020
-ms.openlocfilehash: d62f40fb835bfe6993ad31ddd20cfdea1d9135c2
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 03b18a9cb8fa28d54952a77bf8721c63dd56a9ad
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310878"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84416792"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Küme çıkış listesini Kullanıcı tanımlı bir yol ile özelleştirme
 
@@ -227,11 +227,11 @@ Azure 'un varsayılan sistem yollarını nasıl geçersiz kılabileceğiniz veya
 ## <a name="adding-network-firewall-rules"></a>Ağ güvenlik duvarı kuralları ekleme
 
 > [!WARNING]
-> Aşağıda, bir güvenlik duvarı kuralı eklemenin bir örneği gösterilmektedir. [Gerekli çıkış uç noktalarında](egress.md) tanımlanan tüm çıkış uç noktaları, aks kümelerinin çalışması için uygulama güvenlik duvarı kuralları tarafından etkinleştirilmelidir. Bu uç noktalar etkin olmadığında kümeniz çalışamaz.
+> Aşağıda, bir güvenlik duvarı kuralı eklemenin bir örneği gösterilmektedir. [Gerekli çıkış uç noktalarında](limit-egress-traffic.md) tanımlanan tüm çıkış uç noktaları, aks kümelerinin çalışması için uygulama güvenlik duvarı kuralları tarafından etkinleştirilmelidir. Bu uç noktalar etkin olmadığında kümeniz çalışamaz.
 
 Aşağıda bir ağ ve uygulama kuralı örneği verilmiştir. Tüm protokol, kaynak adresi, hedef adres ve hedef bağlantı noktalarına izin veren bir ağ kuralı ekleyeceğiz. AKS 'in gerektirdiği **bazı** uç noktalar için de bir uygulama kuralı ekleyeceğiz.
 
-Bir üretim senaryosunda, yalnızca uygulamanız için gerekli uç noktalara ve [aks gerekli çıkış](egress.md)durumunda tanımlananlara erişimi etkinleştirmeniz gerekir.
+Bir üretim senaryosunda, yalnızca uygulamanız için gerekli uç noktalara ve [aks gerekli çıkış](limit-egress-traffic.md)durumunda tanımlananlara erişimi etkinleştirmeniz gerekir.
 
 ```
 # Add Network FW Rules

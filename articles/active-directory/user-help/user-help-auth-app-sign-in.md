@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 02/25/2020
+ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: abf5d0d4aeeb18a11f50220e982448d41a9ac1b4
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 4b2d79b24263a848d146bbbe8d42f23ec28f49b8
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773211"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84415891"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasını kullanarak hesaplarınızda oturum açın
 
@@ -31,7 +31,7 @@ Microsoft Authenticator uygulamasını, aşağıdakiler dahil olmak üzere birde
   >[!Important]
   >Bu telefon oturum açma yöntemi yalnızca iş veya okul ve kişisel Microsoft hesaplarınızla çalışır. Microsoft dışı hesaplarınız, standart iki öğeli doğrulama işlemini kullanmanızı gerektirir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Microsoft Authenticator uygulamasını kullanabilmeniz için öncelikle şunları yapmanız gerekir:
 
@@ -51,22 +51,11 @@ Telefonla oturum açma yalnızca Android 6,0 veya üzeri çalıştıran iOS ve A
 
 Microsoft Authenticator uygulamasını açın, iş veya okul hesabınıza gidin ve telefonla oturum açma özelliğini açın.
 
-Bir Android cihazında:
+- **Hesap kutucuğuna dokunduktan**sonra hesabın tam ekran görünümünü görürsünüz. **Telefonla oturum açma özelliğinin etkin** olduğunu görürseniz, parolanız olmadan oturum açmak için tam olarak ayarladığınız anlamına gelir. **Telefonla oturum açmayı etkinleştir**' i görürseniz, telefonla oturum açma özelliğini etkinleştirmek için bu seçeneğe dokunun.
+- **Uygulamayı iki öğeli doğrulama için zaten kullanıyorsanız**, hesabın tam ekran görünümünü görmek için hesap kutucuğuna dokunabilirsiniz. Telefonla oturum açma özelliğini etkinleştirmek için telefonla **oturum açmayı etkinleştir** ' e dokunun.
+- Uygulamanın **hesaplar** ekranında **iş veya okul hesabınızı bulamıyorsanız** , uygulamayı henüz uygulamaya eklemediniz demektir. İş veya okul hesabınız [ekleme Yardımlarınızın](user-help-auth-app-add-work-school-account.md)adımlarını izleyerek iş veya okul hesabınızı ekleyin.
 
-- **Bu simge simgesini, ayarlamış olduğunuzu gösteren bir simge görürsünüz ![ ](media/user-help-auth-app-sign-in/icon.png) .** Bu simge iş veya okul hesabınızın adının yanında görünürse, hesap için zaten telefonla oturum açma ayarlamış olmanız anlamına gelir. Hesabınız için anında iletme bildirimleri eklemeniz istenebilir, böylece uygulama dışındaki kimlik doğrulama istekleri hakkında bildirim alabilirsiniz.
-- **Uygulamayı iki öğeli doğrulama için zaten kullanıyorsanız.** Uygulamayı ve iki öğeli doğrulamayı zaten kullanıyorsanız, hesap adının yanındaki oku seçebilirsiniz ve ardından **telefonla oturum açmayı etkinleştir**' i seçebilirsiniz.
-- **İş veya okul hesabınızı bulamıyorsanız.** Uygulamanın **hesaplar** ekranında iş veya okul hesabınızı bulamıyorsanız, uygulamayı henüz uygulamaya eklemediniz demektir. İş veya okul hesabınızı [ekleme makalesindeki adımları](user-help-auth-app-add-work-school-account.md) izleyerek iş veya okul hesabınızı ekleyin.
-
-İOS cihazında:
-
-- Hesap **kutucuğuna dokunduğunuzda**hesap, hesabın tam ekran görünümünde açılır. **Telefonla oturum açma özelliğinin etkin** olduğunu görürseniz, parolanız olmadan oturum açmak için tam olarak ayarladığınız anlamına gelir. **Telefonla oturum açmayı etkinleştir**' i görürseniz, telefonla oturum açma özelliğini etkinleştirmek için bu seçeneğe dokunun.
-- **Uygulamayı iki öğeli doğrulama için zaten kullanıyorsanız**, hesap kutucuğuna dokunarak hesabın tam ekran görünümüne de dokunabilirsiniz. Telefonla oturum açma özelliğini etkinleştirmek için telefonla **oturum açmayı etkinleştir** ' e dokunun.
-- Uygulamanın **hesaplar** ekranında **iş veya okul hesabınızı bulamıyorsanız** , uygulamayı henüz uygulamaya eklemediniz demektir. İş veya okul hesabınızı ekleme makalesindeki adımları izleyerek iş veya okul hesabınızı ekleyin.
-
-> [!NOTE]
-> İOS üzerinde kimlik doğrulayıcısında cihaz kaydı ve sertifika tabanlı kimlik doğrulaması birleşimini desteklemiyoruz. Oturum açmadan önce kullanıcının kimlik doğrulayıcı ayarları aracılığıyla cihazı el ile kaydederek geçici bir çözüm kullanması gerekir.
-
-Telefonla oturum açma özelliğini etkinleştirdikten sonra yalnızca Microsoft Authenticator uygulamasını kullanarak oturum açabilirsiniz.
+Telefonla oturum açma özelliğini etkinleştirdikten sonra yalnızca Microsoft Authenticator uygulamasını kullanarak oturum açabilirsiniz. Bunu yapmak için:
 
 1. İş veya okul hesabınızda oturum açın.
 
@@ -93,16 +82,8 @@ Outlook.com, Xbox veya Skype 'da oturum açmak için kullandığınız hesap gib
 
 Microsoft Authenticator uygulamasını açın, iş veya okul hesabınıza gidin ve telefonla oturum açma özelliğini açın.
 
-Bir Android cihazında:
-
-- **Bu simge simgesini, ayarlamış olduğunuzu gösteren bir simge görürsünüz ![ ](media/user-help-auth-app-sign-in/icon.png) .** Bu simge kişisel Microsoft hesabı adınızın yanında görünürse, hesap için zaten telefonla oturum açma ayarlamış olmanız anlamına gelir. Hesabınız için anında iletme bildirimleri eklemeniz istenebilir, böylece uygulama dışındaki kimlik doğrulama istekleri hakkında bildirim alabilirsiniz.
-- **Uygulamayı iki öğeli doğrulama için kullanıyorsanız.** Uygulamayı ve iki öğeli doğrulamayı zaten kullanıyorsanız, hesap adının yanındaki oku seçebilirsiniz ve ardından **telefonla oturum açmayı etkinleştir**' i seçebilirsiniz.
-- **İş veya okul hesabınızı bulamıyorsanız.** Hesabınızı uygulamanın **hesaplar** ekranında bulamıyorsanız, uygulamayı henüz uygulamaya eklemediniz demektir.) [Kişisel Microsoft hesapları ekleme](user-help-auth-app-add-personal-ms-account.md) makalesindeki adımları izleyerek hesabınızı ekleyin.
-
-İOS cihazında:
-
-- Hesap **kutucuğuna dokunduğunuzda**hesap, hesabın tam ekran görünümünde açılır. **Telefonla oturum açma özelliğinin etkin** olduğunu görürseniz, parolanız olmadan oturum açmak için tam olarak ayarladığınız anlamına gelir. **Telefonla oturum açmayı etkinleştir**' i görürseniz, telefonla oturum açma özelliğini etkinleştirmek için bu seçeneğe dokunun.
-- **Uygulamayı iki öğeli doğrulama için zaten kullanıyorsanız**, hesap kutucuğuna dokunarak hesabın tam ekran görünümüne getirebilirsiniz. Telefonla oturum açma özelliğini etkinleştirmek için telefonla **oturum açmayı etkinleştir** ' e dokunun.
+- **Hesap kutucuğuna dokunduğunuzda**, hesabın tam ekran görünümünü görürsünüz. **Telefonla oturum açma özelliğinin etkin** olduğunu görürseniz, parolanız olmadan oturum açmak için tam olarak ayarladığınız anlamına gelir. **Telefonla oturum açmayı etkinleştir**' i görürseniz, telefonla oturum açma özelliğini etkinleştirmek için bu seçeneğe dokunun.
+- **Uygulamayı iki öğeli doğrulama için zaten kullanıyorsanız**, hesabın tam ekran görünümünü görmek için hesap kutucuğuna dokunabilirsiniz. Telefonla oturum açma özelliğini etkinleştirmek için telefonla **oturum açmayı etkinleştir** ' e dokunun.
 - **Hesabınızı** uygulamanın **hesaplar** ekranında bulamıyorsanız, uygulamayı henüz uygulamaya eklemediniz demektir.) Kişisel [Microsoft hesapları ekleme](user-help-auth-app-add-personal-ms-account.md) makalesindeki adımları izleyerek kişisel Microsoft hesabı ekleyin.
 
 ### <a name="sign-in-to-your-account-using-phone-sign-in"></a>Telefonla oturum açma kullanarak hesabınızda oturum açın
@@ -115,7 +96,7 @@ Bir Android cihazında:
 
 ## <a name="sign-in-using-two-factor-verification-for-your-account"></a>Hesabınız için iki öğeli doğrulama kullanarak oturum açın
 
-Standart iki öğeli doğrulama yöntemi, oturum açmak için kullandığınız cihaza Kullanıcı adınızı ve parolanızı girmenizi gerektirir. Ardından, Microsoft Authenticator uygulamanızı açıp hesabınız için rastgele oluşturulan kodu **girerek kodu gir** kutusuna yazın. Bir Android cihazında, bu doğrulama kodları **hesaplar** ekranında bulunabilir. Bir iOS cihazında, hesap türüne bağlı olarak, bu doğrulama kodları **hesaplar** ekranında veya bir hesabın tam ekran görünümünde bulunabilir. Hesabı Microsoft Authenticator uygulamasına eklemek için, işlem kapsamında hesabınız için iki öğeli doğrulamayı açın.
+Standart iki öğeli doğrulama yöntemi, oturum açmak için kullandığınız cihaza Kullanıcı adınızı ve parolanızı girmenizi ve ardından Microsoft Authenticator uygulamasının bir bildirim alıp almadığını veya doğrulama kodunu Authenticator uygulamasından kopyalamak isteyip istemediğinizi seçmenizi sağlar. Bir Android cihazında, doğrulama kodları **hesaplar** ekranında bulunabilir. Bir iOS cihazında, bu doğrulama kodları **hesaplar** ekranında veya hesap türüne bağlı olarak bir hesabın tam ekran görünümünde bulunabilir. Hesabı Microsoft Authenticator uygulamasına eklediğinizde hesabınız için iki öğeli doğrulamayı açın.
 
 >[!Note]
 >Microsoft Authenticator uygulamasının **hesaplar** ekranında iş veya okul hesabınızı veya kişisel hesabınızı görmüyorsanız, hesabı Microsoft Authenticator uygulamasına eklemediğiniz anlamına gelir. Hesabınızı eklemek için bkz. [iş veya okul hesabınızı ekleme](user-help-auth-app-add-work-school-account.md) veya [Kişisel hesaplarınızı ekleme](user-help-auth-app-add-personal-ms-account.md).

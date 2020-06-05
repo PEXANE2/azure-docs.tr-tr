@@ -8,15 +8,15 @@ ms.author: sanpil
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: b3e4bf19a7ec153f85483f3c5028e468e06ed7f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3da1cea0b5e17f43d42ced4d1c4ca55d0d3050ad
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982370"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433464"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>Application Insights hata ayıklama ve makine öğrenimi ardışık düzenleri sorunlarını giderme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "80982370"
 
 Günlüklerinizin bir yerde olması, özel durumların ve hata iletilerinin geçmişini sağlar. Application Insights Azure uyarıları ile tümleştirilebildiğinden, Application Insights sorgularını temel alan uyarılar da oluşturabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Machine Learning](./how-to-manage-workspace.md) çalışma alanı oluşturma ve [ilk işlem hattınızı oluşturma](./how-to-create-your-first-pipeline.md) adımlarını izleyin
 * Azure Machine Learning SDK 'Yı yüklemek için [geliştirme ortamınızı yapılandırın](./how-to-configure-environment.md) .
@@ -39,7 +39,7 @@ Günlüklerinizin bir yerde olması, özel durumların ve hata iletilerinin geç
 
 Bu bölüm, Azure Machine Learning bir işlem hattından OpenCensus kullanımına özgü bir giriş niteliğindedir. Ayrıntılı bir öğretici için bkz. [Opencensus Azure Izleyici Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 
-Azure ML ardışık düzenine bir PythonScriptStep ekleyin. [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) 'nizi opencensus-ext-Azure bağımlılığı ile yapılandırın. `APPLICATIONINSIGHTS_CONNECTION_STRING` Ortam değişkenini yapılandırın.
+Azure ML ardışık düzenine bir PythonScriptStep ekleyin. [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) 'nizi opencensus-ext-Azure bağımlılığı ile yapılandırın. `APPLICATIONINSIGHTS_CONNECTION_STRING`Ortam değişkenini yapılandırın.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -142,7 +142,7 @@ logger.info("I will be sent to Application Insights with Custom Dimensions", cus
 
 OpenCensus AzureLogHandler, Python günlüklerini Application Insights yönlendirmek için kullanılır. Sonuç olarak, Python günlüğü nusları göz önünde bulundurulmalıdır. Bir günlükçü oluşturulduğunda, varsayılan bir günlük düzeyi olur ve bu düzeyden daha büyük veya bu düzeye eşit olan günlükleri gösterir. Python günlüğü özelliklerinin kullanılması için iyi bir başvuru, [günlük tanıtım rehberini](https://docs.python.org/3/howto/logging-cookbook.html)kullanmaktır.
 
-OpenCensus kitaplığı için `APPLICATIONINSIGHTS_CONNECTION_STRING` ortam değişkeni gereklidir. Düz metin bağlantı dizelerinin etrafında geçiş yapmak için bu ortam değişkenini bir işlem hattı parametresi olarak geçirmek yerine ayarlamayı öneririz.
+`APPLICATIONINSIGHTS_CONNECTION_STRING`OpenCensus kitaplığı için ortam değişkeni gereklidir. Düz metin bağlantı dizelerinin etrafında geçiş yapmak için bu ortam değişkenini bir işlem hattı parametresi olarak geçirmek yerine ayarlamayı öneririz.
 
 ## <a name="querying-logs-in-application-insights"></a>Application Insights Günlükler sorgulanıyor
 

@@ -6,18 +6,31 @@ author: Daya-Patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery
-ms.date: 10/16/2019
+ms.date: 6/4/2020
 ms.author: dapatil
-ms.openlocfilehash: bf32809f426f3bfcabd08ec3bd95e76202aa8f84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74b02da51603366f5ec18aa4733117bc2c59faf7
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72433420"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417863"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure Site Recovery Dağıtım Planlayıcısı sürümü geçmişi
 
 Bu makalede, tüm Azure Site Recovery Dağıtım Planlayıcısı sürümlerinin yanı sıra düzeltmeler, her biri ve bunların yayın tarihlerinde bilinen sınırlamaları sunulmaktadır.
+
+## <a name="version-252"></a>Sürüm 2,52
+
+**Yayın tarihi: 4 Haziran 2020**
+
+**Düzeltilen**
+
+- VCenter 7,0 için destek eklendi
+- Aşağıdaki işletim sistemleri için destek eklendi:
+
+    - SUSE Linux Enterprise 15 (tüm ikincil sürümlerle birlikte)
+    - Red Hat Enterprise Linux 8 (tüm ikincil sürümlerle birlikte)
+
 
 ## <a name="version-251"></a>Sürüm 2,51
 
@@ -44,7 +57,7 @@ Bu makalede, tüm Azure Site Recovery Dağıtım Planlayıcısı sürümlerinin 
 
 - Özellikle yerelleştirme tabanlı hataları işlerken geliştirilmiş işletim sistemi uyumluluğu.
 - Uyumluluk denetim listelerine en fazla 20 Mbps veri değişim oranı (dalgalanma) içeren VM 'Ler eklendi.
-- Geliştirilmiş hata iletileri
+- Hata iletileri iyileştirildi
 - VCenter 6,7 için destek eklendi.
 - Windows Server 2019 ve Red Hat Enterprise Linux (RHEL) iş istasyonu için destek eklendi.
 
@@ -109,7 +122,7 @@ Bu makalede, tüm Azure Site Recovery Dağıtım Planlayıcısı sürümlerinin 
 
 **Bilinen sınırlamalar:**
 
-- Hyper `,`-V ' d e, Azure olağanüstü durum kurtarma için:, `"` `[` `]`,, ve ``` ` ``` gibi karakterleri içeren VM 'ler desteklenmez. Profili oluşturulmuş ise, rapor oluşturma başarısız olur veya hatalı bir sonuca sahip olur.
+- Hyper-V ' d e, Azure olağanüstü durum kurtarma için:,,, ve gibi karakterleri içeren VM 'ler `,` `"` `[` `]` ``` ` ``` desteklenmez. Profili oluşturulmuş ise, rapor oluşturma başarısız olur veya hatalı bir sonuca sahip olur.
 - VMware 'den Azure 'a olağanüstü durum kurtarma için, virgül içeren ada sahip VM desteklenmez. Profil oluşturma, rapor oluşturma başarısız olursa veya hatalı bir sonuç verir.
 
 ## <a name="version-131"></a>Sürüm 1.3.1

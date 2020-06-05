@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 02/24/2020
 ms.author: tomfitz
-ms.openlocfilehash: c883383d3c870689bb95f808f6f60c5185c165c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33a63280f6973d2c5e29db29f7a6f3fc68c57c77
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334949"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424780"
 ---
 | Kaynak | Sınır |
 | --- | --- |
@@ -22,7 +22,7 @@ ms.locfileid: "80334949"
 | Etiket anahtarı uzunluğu |512 |
 | Etiket değeri uzunluğu |256 |
 
-<sup>1</sup> Kaynak grubu başına 800 dağıtım sınırına ulaşırsanız, artık gerekli olmayan geçmişten dağıtımları silin. Dağıtım geçmişinden bir girişin silinmesi dağıtılan kaynakları etkilemez. Daha fazla bilgi için bkz. [dağıtım sayısı 800 ' i aştığında hata çözümleme](../articles/azure-resource-manager/templates/deployment-quota-exceeded.md).
+<sup>1</sup> 2020 Haziran 'dan başlayarak, sınıra yaklaşmanıza kadar dağıtımlar otomatik olarak geçmişten silinir. Dağıtım geçmişinden bir girişin silinmesi dağıtılan kaynakları etkilemez. Daha fazla bilgi için bkz. [dağıtım geçmişinden otomatik silme işlemleri](../articles/azure-resource-manager/templates/deployment-history-deletions.md).
 
 #### <a name="template-limits"></a>Şablon sınırları
 

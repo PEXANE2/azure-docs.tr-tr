@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service 'te (AKS) Windows Server düğüm havuzlarını ve uygulama iş yüklerini çalıştırırken oluşan bilinen sınırlamalar hakkında bilgi edinin
 services: container-service
 ms.topic: article
-ms.date: 12/18/2019
-ms.openlocfilehash: 935b049ce5e1951952b4af4e7df9574df764b6e8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/28/2020
+ms.openlocfilehash: 89cfb42da4433f17298cf2cb68f1a4b3d8f9e549
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208015"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433017"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Windows Server düğüm havuzları ve uygulama iş yükleri için geçerli sınırlamalar
 
@@ -57,6 +57,19 @@ En son düzeltme eki düzeltmelerini ve güncelleştirmelerini almak için AKS '
 > [!NOTE]
 > Güncelleştirilmiş Windows Server görüntüsü, düğüm havuzu yükseltmeden önce bir küme yükseltmesi (denetim düzlemi yükseltmesi) gerçekleştirildiğinde kullanılacaktır
 >
+
+## <a name="why-am-i-seeing-an-error-when-i-try-to-create-a-new-windows-agent-pool"></a>Yeni bir Windows Agent havuzu oluşturmaya çalıştığımda neden hata görüyorum?
+
+Kümenizi 2020 Şubat 'tan önce oluşturduysanız ve hiçbir şekilde hiçbir küme yükseltme işlemi yapmadıysanız, küme hala eski bir Windows görüntüsü kullanır. Aşağıdakine benzer bir hata görmüş olabilirsiniz:
+
+"Dağıtım şablonundan başvurulan aşağıdaki görüntülerin listesi bulunamadı: Yayımcı: MicrosoftWindowsServer, teklif: WindowsServer, SKU: 2019-Datacenter-Core-smalldisk-2004, sürüm: Latest. https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimageKullanılabilir görüntüleri bulma yönergeleri için lütfen adresine bakın. "
+
+Bu hatayı onarmak için:
+
+1. [Küme denetim düzlemi][upgrade-cluster-cp]' ni yükseltin. Bu işlem, görüntü teklifini ve yayımcıyı güncelleştirir.
+1. Yeni Windows Agent havuzları oluşturun.
+1. Windows yığınlarını var olan Windows Agent havuzlarından yeni Windows Agent havuzlarına taşıyın.
+1. Eski Windows Agent havuzlarını silin.
 
 ## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Windows düğüm havuzum için hizmet sorumlusunu Nasıl yaparım? döndürün?
 
@@ -112,6 +125,8 @@ AKS 'de Windows Server kapsayıcıları kullanmaya başlamak için [AKS 'de Wind
 [windows-node-cli]: windows-container-cli.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[upgrade-cluster]: upgrade-cluster.md
+[upgrade-cluster-cp]: use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools
 [azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909

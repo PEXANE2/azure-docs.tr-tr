@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 06/04/2020
 ms.author: memildin
-ms.openlocfilehash: 6e61571400930d4a781d6d67647bd662a7f2d350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4ecc7f0e11712fa3d664d1227eacb39409bd184
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106228"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418220"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde İzinler
 
@@ -35,13 +35,12 @@ Bu rollere ek olarak iki özel Güvenlik Merkezi rolü vardır:
 > [!NOTE]
 > Güvenlik, güvenlik okuyucusu ve Güvenlik Yöneticisi güvenlik rollerinin yalnızca güvenlik merkezi 'ne erişimi vardır. Güvenlik rollerinin, Azure 'un depolama, Web & Mobile veya Nesnelerin İnterneti gibi diğer hizmet bölümlerine erişimi yoktur.
 >
->
 
 ## <a name="roles-and-allowed-actions"></a>Roller ve izin verilen eylemler
 
 Aşağıdaki tabloda Güvenlik Merkezi 'nde roller ve izin verilen eylemler görüntülenmektedir.
 
-| Rol | Güvenlik ilkesini Düzenle | Bir kaynak için güvenlik önerilerini uygulama</br> (' hızlı Düzelle! ' ile birlikte) | Uyarıları ve önerileri kapat | Uyarıları ve önerileri görüntüleme |
+| Rol | Güvenlik ilkesini Düzenle | Bir kaynak için güvenlik önerilerini uygulama</br> (' hızlı Düzelle! ' ile birlikte) | Uyarıları kapat | Uyarıları ve önerileri görüntüleme |
 |:--- |:---:|:---:|:---:|:---:|
 | Abonelik sahibi | ✔ | ✔ | ✔ | ✔ |
 | Abonelik Katılımcısı | -- | ✔ | ✔ | ✔ |

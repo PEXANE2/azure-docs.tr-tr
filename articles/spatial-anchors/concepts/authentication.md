@@ -1,19 +1,19 @@
 ---
 title: Kimlik doğrulaması ve yetkilendirme
 description: Bir uygulama veya hizmetin Azure uzamsal bağlayıcıların kimliğini doğrulayabileceği çeşitli yollar ve Azure uzamsal Tutturucuların erişimini geçit halinde denetleyebilmeniz gereken denetim düzeylerini öğrenin.
-author: julianparismorgan
+author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
-ms.author: pmorgan
+ms.author: crtreasu
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9a3b326f97246ffac386ad43cfa08ce413eea899
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8a64c8cabe91bb7bbfb533b38a32f58a82fd3351
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653364"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434393"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure uzamsal Tutturucuların kimlik doğrulaması ve yetkilendirmesi
 
@@ -39,7 +39,6 @@ Azure AD kimlik doğrulaması belirteçleri iki şekilde elde edilebilir:
 Azure uzamsal Çıpaları hesabınıza erişim için hesap anahtarlarının kullanılması, kullanmaya başlamanın en kolay yoludur. Hesap anahtarlarınızı Azure portal bulacaksınız. Hesabınıza gidin ve "anahtarlar" sekmesini seçin.
 
 ![Azure uzamsal Tutturucuların kimlik doğrulamasına genel bakış](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
-
 
 Her ikisi de uzamsal bağlayıcı hesabına erişim için aynı anda geçerli olan iki anahtar kullanılabilir hale getirilir. Hesaba erişmek için kullandığınız anahtarı düzenli olarak güncelleştirmeniz önerilir; iki ayrı geçerli anahtarın olması, bu tür güncelleştirmeleri kapalı kalma süresi olmadan etkinleştirir; yalnızca birincil anahtarı ve ikincil anahtarı güncelleştirmeniz gerekir.
 

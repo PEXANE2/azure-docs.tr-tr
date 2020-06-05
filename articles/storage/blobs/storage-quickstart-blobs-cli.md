@@ -7,14 +7,14 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 04/23/2020
+ms.date: 06/04/2020
 ms.author: tamram
-ms.openlocfilehash: 333d9f12ff817a5264183666cd1b858075a93077
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 471a8018a608da818f5961973f23123874c63427
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82176694"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434455"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Bloblar oluşturma, indirme ve listeleme
 
@@ -22,7 +22,7 @@ Azure CLI, Azure kaynaklarını yönetmek için Azure tarafından sunulan komut 
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -32,7 +32,7 @@ Azure CLI, Azure kaynaklarını yönetmek için Azure tarafından sunulan komut 
 
 Azure CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2.0.46 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümünüzü belirlemek için `az --version` çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
-Azure CLı 'yi yerel olarak çalıştırıyorsanız, oturum açıp kimlik doğrulaması yapmanız gerekir. Azure Cloud Shell kullanıyorsanız bu adım gerekli değildir. Azure CLı 'da oturum açmak için tarayıcı penceresinde `az login` çalıştırın ve kimlik doğrulaması yapın:
+Azure CLı 'yi yerel olarak çalıştırıyorsanız, oturum açıp kimlik doğrulaması yapmanız gerekir. Azure Cloud Shell kullanıyorsanız bu adım gerekli değildir. Azure CLı 'da oturum açmak için `az login` tarayıcı penceresinde çalıştırın ve kimlik doğrulaması yapın:
 
 ```azurecli
 az login
@@ -44,9 +44,9 @@ Azure CLı ile kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure CL
 
 Azure CLı 'dan Azure AD kimlik bilgileriyle veya depolama hesabı erişim anahtarını kullanarak blob depolamaya erişim yetkisi verebilirsiniz. Azure AD kimlik bilgilerinin kullanılması önerilir. Bu makalede, Azure AD kullanarak BLOB depolama işlemlerini yetkilendirme işlemi gösterilmektedir.
 
-Blob depolamaya yönelik veri işlemlerine yönelik Azure CLı komutları, belirli `--auth-mode` bir işlemin yetkilendirmesini belirtmenize olanak sağlayan parametresini destekler. `--auth-mode` PARAMETRESINI Azure AD kimlik `login` bilgileriyle yetkilendirmek için olarak ayarlayın. Daha fazla bilgi için bkz. [Azure CLI ile blob veya kuyruk verilerine erişim yetkisi verme](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Blob depolamaya yönelik veri işlemlerine yönelik Azure CLı komutları `--auth-mode` , belirli bir işlemin yetkilendirmesini belirtmenize olanak sağlayan parametresini destekler. `--auth-mode`Parametresini `login` Azure AD kimlik bilgileriyle yetkilendirmek için olarak ayarlayın. Daha fazla bilgi için bkz. [Azure CLI ile blob veya kuyruk verilerine erişim yetkisi verme](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Yalnızca BLOB depolama veri işlemleri `--auth-mode` parametreyi destekler. Kaynak grubu veya depolama hesabı oluşturma gibi yönetim işlemleri, yetkilendirme için otomatik olarak Azure AD kimlik bilgilerini kullanır.
+Yalnızca BLOB depolama veri işlemleri parametreyi destekler `--auth-mode` . Kaynak grubu veya depolama hesabı oluşturma gibi yönetim işlemleri, yetkilendirme için otomatik olarak Azure AD kimlik bilgilerini kullanır.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -77,9 +77,13 @@ az storage account create \
 
 ## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
-Bloblar her zaman bir kapsayıcıya yüklenir. Kapsayıcılardaki blob gruplarını, dosyalarınızı bilgisayarınızdaki dosyalarınıza düzenlemenize benzer şekilde düzenleyebilirsiniz.
+Bloblar her zaman bir kapsayıcıya yüklenir. Kapsayıcılardaki blob gruplarını, dosyalarınızı bilgisayarınızdaki dosyalarınıza düzenlemenize benzer şekilde düzenleyebilirsiniz. [az storage container create](/cli/azure/storage/container) komutunu kullanarak blobları depolamak için bir kapsayıcı oluşturun. 
 
-[az storage container create](/cli/azure/storage/container) komutunu kullanarak blobları depolamak için bir kapsayıcı oluşturun. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Aşağıdaki örnek, kapsayıcıyı oluşturma işlemini yetkilendirmek için Azure AD hesabınızı kullanır. Kapsayıcıyı oluşturmadan önce, [Depolama Blobu veri katılımcısı](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) rolünü kendinize atayın. Hesap sahibi olsanız bile, depolama hesabında veri işlemleri gerçekleştirmek için açık izinlere sahip olmanız gerekir. RBAC rolleri atama hakkında daha fazla bilgi için bkz. [Azure CLI kullanarak erişim IÇIN RBAC rolü atama](../common/storage-auth-aad-rbac-cli.md?toc=/azure/storage/blobs/toc.json).  
+
+Ayrıca, kapsayıcıyı oluşturmak için işlemi yetkilendirmek üzere depolama hesabı anahtarını da kullanabilirsiniz. Veri işlemlerini Azure CLı ile yetkilendirme hakkında daha fazla bilgi için bkz. [Azure CLI ile blob veya kuyruk verilerine erişim yetkisi verme](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json).
+
+Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```azurecli
 az storage container create \

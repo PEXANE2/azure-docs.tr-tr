@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.author: v-erkel
-ms.openlocfilehash: d8f345b12d635f0ab683929fc67d5d789bfea8d9
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 817c03780b91e39d43a5348f84105236ee811cc8
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343651"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433622"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC önbelleği önkoşulları
 
@@ -25,11 +25,11 @@ Sistemin bileşenlerine hızlı bir genel bakış ve birlikte çalışmak için 
 
 * [Nasıl çalışır?](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/) Azure HPC önbelleğinin depolama ve istemcilerle nasıl etkileşime gireceğini açıklar
 
-  [![video küçük resmi resmi: Azure HPC Cache: nasıl çalıştığı (video sayfasını ziyaret etmek için tıklayın)](media/video2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
+  [![video küçük resmi resmi: Azure HPC Cache: nasıl çalıştığı (video sayfasını ziyaret etmek için tıklayın)](media/video-2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
 
 * [Önkoşullar](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/) -NAS depolama, Azure Blob depolama, ağ erişimi ve istemci erişimi için gereksinimleri açıklar
 
-  [![video küçük resmi resmi: Azure HPC Cache: Önkoşullar (video sayfasını ziyaret etmek için tıklayın)](media/video3-prereqs.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
+  [![video küçük resmi resmi: Azure HPC Cache: Önkoşullar (video sayfasını ziyaret etmek için tıklayın)](media/video-3-prerequisites.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
 
 Belirli öneriler için bu makalenin geri kalanını okuyun.
 

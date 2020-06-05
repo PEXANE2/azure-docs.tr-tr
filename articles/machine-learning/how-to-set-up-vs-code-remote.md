@@ -5,16 +5,16 @@ description: Azure Machine Learning ile kodunuzda etkileşimli olarak hata ayık
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: 1999d29db21f820fbcdbca08f2258b657673be3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19d4b6e7994450eacacab51e9a01cbf58eab803a
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77169747"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433126"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>VS Code uzaktan Azure Machine Learning Işlem örneğinde etkileşimli olarak hata ayıklama
 
@@ -34,7 +34,7 @@ Windows platformlarında, zaten yoksa bir [OpenSSH uyumlu SSH istemcisi yükleme
 
 ## <a name="get-ip-and-ssh-port"></a>IP ve SSH bağlantı noktası al 
 
-1. Konumundaki https://ml.azure.com/Azure Machine Learning Studio 'ya gidin.
+1. Konumundaki Azure Machine Learning Studio 'ya gidin https://ml.azure.com/ .
 
 2. [Çalışma alanınızı](concept-workspace.md)seçin.
 1. **Işlem örnekleri** sekmesine tıklayın.
@@ -86,7 +86,7 @@ Host azmlci1
 
 Burada, alanlarla ilgili bazı ayrıntılar verilmiştir: 
 
-|Alan|Açıklama|
+|Alan|Description|
 |----|---------|
 |Ana bilgisayar|İşlem örneği için istediğiniz toplu şeyi kullanın |
 |Ana bilgisayar adı|Bu, işlem örneğinin IP adresidir |
@@ -94,7 +94,7 @@ Burada, alanlarla ilgili bazı ayrıntılar verilmiştir:
 |Kullanıcı|Bunun olması gerekir `azureuser` |
 |Identityfile|Özel anahtarı kaydettiğiniz dosyaya işaret etmelidir |
 
-Şimdi, yukarıda kullandığınız toplu işlemi kullanarak işlem örneğinizi SSH ile sağlayabilmelisiniz `ssh azmlci1`. 
+Şimdi, yukarıda kullandığınız toplu işlemi kullanarak işlem örneğinizi SSH ile sağlayabilmelisiniz `ssh azmlci1` . 
 
 ## <a name="connect-vs-code-to-the-instance"></a>Örneğe VS Code bağlama 
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: 99204657b7604250826ff0a4a870ad92fdb4df32
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 332b0193059c2c60cce0bc653d48bace45eca38d
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249153"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432729"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Şirket içi Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarması için destek matrisi
 
@@ -23,25 +23,27 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak şirket 
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-**Senaryo** | **Bilgileri**
+**Senaryo** | **Ayrıntılar**
 --- | ---
 Virtual Machine Manager ile Hyper-V <br> <br>| System Center Virtual Machine Manager dokusunda yönetilen Hyper-V konaklarında çalışan VM 'Ler için Azure 'da olağanüstü durum kurtarma gerçekleştirebilirsiniz.<br/><br/> Bu senaryoyu Azure portal veya PowerShell kullanarak dağıtabilirsiniz.<br/><br/> Hyper-V konakları Virtual Machine Manager tarafından yönetildiğinde, ikincil şirket içi bir siteye olağanüstü durum kurtarma işlemi de yapabilirsiniz. Bu senaryo hakkında daha fazla bilgi edinmek için [Bu öğreticiyi](hyper-v-vmm-disaster-recovery.md)okuyun.
 Virtual Machine Manager olmadan Hyper-V | Virtual Machine Manager tarafından yönetilmeyen Hyper-V konaklarında çalışan VM 'Ler için Azure 'da olağanüstü durum kurtarma gerçekleştirebilirsiniz.<br/><br/> Bu senaryoyu Azure portal veya PowerShell kullanarak dağıtabilirsiniz.
 
 ## <a name="on-premises-servers"></a>Şirket içi sunucular
 
-**Sunucu** | **Gereksinimler** | **Bilgileri**
+**Sunucu** | **Gereksinimler** | **Ayrıntılar**
 --- | --- | ---
-Hyper-V (Virtual Machine Manager olmadan çalışıyor) |  Windows Server 2019, Windows Server 2016 (Sunucu Çekirdeği yüklemesi dahil), en son güncelleştirmeleri içeren Windows Server 2012 R2 | Azure Site Recovery ile Windows Server 2012 R2 'yi/veya SCVMM 2012 R2 'yi zaten yapılandırdıysanız ve işletim sistemini yükseltmeyi planlarsanız, lütfen rehberlik [belgelerini izleyin.](upgrade-2012R2-to-2016.md) <br/><br/> Not: Windows Server 2019 Server Core sürümü için yeniden çalışma desteklenmez.
+Hyper-V (Virtual Machine Manager olmadan çalışıyor) |  Windows Server 2019, Windows Server 2016, en son güncelleştirmeleri olan Windows Server 2012 R2 (Bu işletim sistemlerinin sunucu çekirdeği yüklemesi dahil) | Azure Site Recovery ile Windows Server 2012 R2 'yi/veya SCVMM 2012 R2 'yi zaten yapılandırdıysanız ve işletim sistemini yükseltmeyi planlarsanız, lütfen rehberlik [belgelerini izleyin.](upgrade-2012R2-to-2016.md) <br/><br/> Not: Windows Server 2019 Server Core sürümü için yeniden çalışma desteklenmez.
 Hyper-V (Virtual Machine Manager ile çalışıyor) | Virtual Machine Manager 2019, Virtual Machine Manager 2016 Virtual Machine Manager 2012 R2 | Virtual Machine Manager kullanılırsa, Windows Server 2019 Konakları Virtual Machine Manager 2019 ' de yönetilmelidir. Benzer şekilde, Windows Server 2016 Konakları Virtual Machine Manager 2016 ' de yönetilmelidir.<br/><br/> Not: Windows Server 2019 konakları için alternatif konuma yeniden çalışma desteklenmez.
 
+> [!NOTE]
+> Şirket içi sunucuda .NET Framework 4.6.2 veya üzeri bulunduğundan emin olun.
 
 ## <a name="replicated-vms"></a>Çoğaltılan VM 'Ler
 
 
 Aşağıdaki tabloda VM desteği özetlenmektedir. Site Recovery, desteklenen bir işletim sisteminde çalışan tüm iş yüklerini destekler.
 
- **Bileşen** | **Bilgileri**
+ **Bileşen** | **Ayrıntılar**
 --- | ---
 VM yapılandırması | Azure 'a çoğaltılan VM 'Lerin [Azure gereksinimlerini](#azure-vm-requirements)karşılaması gerekir.
 Konuk işletim sistemi | [Azure için desteklenen](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases)herhangi bir konuk işletim sistemi.<br/><br/> Windows Server 2016 nano sunucu desteklenmiyor.
@@ -49,7 +51,7 @@ Konuk işletim sistemi | [Azure için desteklenen](https://docs.microsoft.com/az
 
 ## <a name="vmdisk-management"></a>VM/disk yönetimi
 
-**Eylem** | **Bilgileri**
+**Eylem** | **Ayrıntılar**
 --- | ---
 Çoğaltılan Hyper-V VM 'de diski yeniden boyutlandır | Desteklenmiyor. Çoğaltmayı devre dışı bırakın, değişikliği yapın ve ardından VM için çoğaltmayı yeniden etkinleştirin.
 Çoğaltılan Hyper-V VM 'ye disk ekleme | Desteklenmiyor. Çoğaltmayı devre dışı bırakın, değişikliği yapın ve ardından VM için çoğaltmayı yeniden etkinleştirin.
@@ -64,7 +66,7 @@ Konak ağı: IPv4 | Yes | Yes
 Konak ağı: IPv6 | Hayır | Hayır
 Konuk VM ağı: NIC ekibi oluşturma | Hayır | Hayır
 Konuk VM ağı: IPv4 | Yes | Yes
-Konuk VM ağı: IPv6 | Hayır | Evet
+Konuk VM ağı: IPv6 | No | Evet
 Konuk VM ağı: statik IP (Windows) | Yes | Yes
 Konuk VM ağı: statik IP (Linux) | Hayır | Hayır
 Konuk VM ağı: çoklu NIC | Yes | Yes
@@ -120,7 +122,7 @@ Dinamik disk Ekle/Kaldır | Hayır | Hayır
 Diski hariç tutma | Yes | Yes
 Çoklu yol (MPIO) | Yes | Yes
 
-## <a name="azure-storage"></a>Azure Depolama
+## <a name="azure-storage"></a>Azure Storage
 
 **Bileşen** | **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
 --- | --- | ---
@@ -135,12 +137,12 @@ Bekleyen şifreleme (CMK) <br></br> (Yalnızca yönetilen disklere yük devretme
 Premium depolama | Yes | Yes
 İçeri/dışarı aktarma hizmeti | Hayır | Hayır
 Güvenlik Duvarı etkin Azure depolama hesapları | Evet. Hedef depolama ve önbellek için. | Evet. Hedef depolama ve önbellek için.
-Depolama hesabını değiştir | Hayır. Hedef Azure depolama hesabı, çoğaltma etkinleştirildikten sonra değiştirilemez. Değişiklik yapmak için, olağanüstü durum kurtarmayı devre dışı bırakıp yeniden etkinleştirin. | Hayır
+Depolama hesabını değiştir | Hayır. Hedef Azure depolama hesabı, çoğaltma etkinleştirildikten sonra değiştirilemez. Değişiklik yapmak için, olağanüstü durum kurtarmayı devre dışı bırakıp yeniden etkinleştirin. | No
 
 
 ## <a name="azure-compute-features"></a>Azure işlem özellikleri
 
-**Özellik** | **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
+**Öne çıkan özelliği** | **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
 --- | --- | ---
 Kullanılabilirlik kümeleri | Yes | Yes
 HUB | Yes | Yes  
@@ -150,7 +152,7 @@ Yönetilen diskler | Evet, yük devretme için.<br/><br/> Yönetilen disklerin y
 
 Azure 'a çoğaltılan şirket içi VM 'Lerin bu tabloda özetlenen Azure VM gereksinimlerini karşılaması gerekir.
 
-**Bileşen** | **Gereksinimler** | **Bilgileri**
+**Bileşen** | **Gereksinimler** | **Ayrıntılar**
 --- | --- | ---
 Konuk işletim sistemi | Site Recovery, [Azure tarafından desteklenen](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)tüm işletim sistemlerini destekler.  | Desteklenmiyorsa önkoşul denetimi başarısız olur.
 Konuk işletim sistemi mimarisi | 32-bit (Windows Server 2008)/64-bit | Desteklenmiyorsa önkoşul denetimi başarısız olur.
@@ -181,7 +183,7 @@ Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma<br/><br/> 
 
 Dağıtımınızın bu makaledeki ayarlarla uyumlu olduğundan emin olmak için en son sağlayıcı ve aracı sürümlerini çalıştırdığınızdan emin olun.
 
-**Adı** | **Açıklama** | **Bilgileri**
+**Adı** | **Açıklama** | **Ayrıntılar**
 --- | --- | --- 
 Azure Site Recovery sağlayıcı | Şirket içi sunucular ile Azure arasındaki iletişimleri düzenler <br/><br/> Virtual Machine Manager ile Hyper-V: Virtual Machine Manager sunucularına yüklendi<br/><br/> Virtual Machine Manager olmadan Hyper-V: Hyper-V konaklarında yüklü| En son sürüm: 5.1.2700.1 (Azure portal kullanılabilir)<br/><br/> [En son özellikler ve düzeltmeler](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Microsoft Azure Kurtarma Hizmetleri aracısı | Hyper-V VM 'Leri ve Azure arasında çoğaltmayı düzenler<br/><br/> Şirket içi Hyper-V sunucularında yüklü (Virtual Machine Manager sahip veya olmayan) | Portalda kullanılabilir en son aracı

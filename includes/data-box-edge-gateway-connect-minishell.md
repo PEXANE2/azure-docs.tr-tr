@@ -28,7 +28,7 @@ Bir Windows istemcisinden uzaktan bağlanmak için aşağıdaki adımları izley
 
     $ip = "<device_ip>"
 
-    Cihazınızın `<device_ip>` IP adresiyle değiştirin.
+    `<device_ip>`CIHAZıNıZıN IP adresiyle değiştirin.
 
 4. Cihazınızın IP adresini istemcinin güvenilen konaklar listesine eklemek için aşağıdaki komutu yazın:
 
@@ -59,7 +59,7 @@ Bir Windows istemcisinden uzaktan bağlanmak için aşağıdaki adımları izley
 Bağlanmak için kullanacağınız Linux istemcisinde:
 
 - SSH uzaktan iletişim özelliğini almak için GitHub 'dan [Linux için en son PowerShell Core 'U yükler](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) . 
-- [Yalnızca NTLM modülünden `gss-ntlmssp` paketi yükler](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). Ubuntu istemcileri için aşağıdaki komutu kullanın:
+- [Yalnızca `gss-ntlmssp` NTLM modülünden paketi yükler](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). Ubuntu istemcileri için aşağıdaki komutu kullanın:
     - `sudo apt-get install gss-ntlmssp`
 
 Daha fazla bilgi için [SSH üzerinden PowerShell uzaktan iletişimi](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)konusuna gidin.

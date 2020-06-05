@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6d31edaea109f2969cc68c566594dc436be203d7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8c854a503e3c949be0165d9dda046e0169686c67
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743542"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434149"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Creator ınkapımaps için dinamik stil uygulama
 
 Azure haritalar Creator [özelliği durum hizmeti](https://docs.microsoft.com/rest/api/maps/featurestate) , ınkapımap veri özelliklerinin dinamik özelliklerine göre stiller uygulamanıza olanak tanır.  Örneğin, hizmet toplantısı odalarını, doluluk durumunu yansıtmak için belirli bir renkle işleyebilirsiniz. Bu makalede, iç hat eşleme özelliklerinin [özellik durum hizmeti](https://docs.microsoft.com/rest/api/maps/featurestate) ve [ınkapılı web modülü](how-to-use-indoor-module.md)ile dinamik olarak nasıl işleneceğini göstereceğiz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure Haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
@@ -48,7 +48,7 @@ Aşağıdaki betik, fare tıklaması olayını uygular. Kod, `id` tıklatıklana
 /* Upon a mouse click, log the feature properties to the browser's console. */
 map.events.add("click", function(e){
 
-    var features = map.layers.getRenderedShapes(e.position, "indoor")
+    var features = map.layers.getRenderedShapes(e.position, "indoor");
 
     var result = features.reduce(function (ids, feature) {
         if (feature.layer.id == "indoor_unit_office") {

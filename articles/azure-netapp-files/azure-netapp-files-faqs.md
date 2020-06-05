@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 06/03/2020
 ms.author: b-juche
-ms.openlocfilehash: a8c299a6f0e6732d50b40fc29bde07179fc2c412
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e9ee573ca908c41fe7c7887d0f306971369f83f
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185651"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417506"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -64,7 +64,7 @@ Tüm Azure NetApp Files birimleri FIPS 140-2 standardı kullanılarak şifreleni
 
 Azure NetApp Files için anahtar yönetimi, hizmet tarafından işlenir. Her birim için benzersiz bir XTS-AES-256 veri şifreleme anahtarı oluşturulur. Tüm birim anahtarlarını şifrelemek ve korumak için bir şifreleme anahtarı hiyerarşisi kullanılır. Bu şifreleme anahtarları hiçbir şekilde, şifrelenmemiş bir biçimde gösterilmez veya bildirilmez. Şifreleme anahtarları bir birim silindiğinde hemen silinir.
 
-Azure ayrılmış HSM 'yi kullanarak Kullanıcı tarafından yönetilen anahtarlar (kendi anahtarlarınızı getir) için destek, ABD Doğu, US West2 ve ABD Orta Güney bölgelerinde denetimli bir şekilde sunulmaktadır.  Adresinden **anffeedback@microsoft.com**erişim isteyebilirsiniz. Kapasite kullanılabilir olduğu için istekler onaylanır.
+Azure ayrılmış HSM 'yi kullanarak Kullanıcı tarafından yönetilen anahtarlar (kendi anahtarlarınızı getir) için destek, ABD Doğu, US West2 ve ABD Orta Güney bölgelerinde denetimli bir şekilde sunulmaktadır.  Adresinden erişim isteyebilirsiniz **anffeedback@microsoft.com** . Kapasite kullanılabilir olduğu için istekler onaylanır.
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Azure NetApp Files hizmeti bağlama hedefine erişimi denetlemek için NFS dışarı aktarma ilkesi kurallarını yapılandırabilir miyim?
 
@@ -79,7 +79,7 @@ Hayır, şu anda ağ güvenlik gruplarını, Azure NetApp Files için temsilci a
 
 Evet, Azure ıAM ile RBAC özelliklerini destekler Azure NetApp Files.
 
-## <a name="performance-faqs"></a>Performans SSS
+## <a name="performance-faqs"></a>Performans hakkında SSS
 
 ### <a name="what-should-i-do-to-optimize-or-tune-azure-netapp-files-performance"></a>Azure NetApp Files performansını iyileştirmek veya ayarlamak için ne yapmam gerekir?
 
@@ -103,11 +103,11 @@ Bir birimin hizmet düzeyini değiştirme Şu anda desteklenmiyor.
 
 Azure NetApp Files, birim performans ölçümleri sağlar. Azure Izleyici 'yi, Azure NetApp Files kullanım ölçümlerini izlemek için de kullanabilirsiniz.  Azure NetApp Files için performans ölçümlerinin listesi için bkz. [Azure NetApp Files ölçümleri](azure-netapp-files-metrics.md) .
 
-## <a name="nfs-faqs"></a>NFS SSS
+## <a name="nfs-faqs"></a>NFS hakkında SSS
 
 ### <a name="i-want-to-have-a-volume-mounted-automatically-when-an-azure-vm-is-started-or-rebooted--how-do-i-configure-my-host-for-persistent-nfs-volumes"></a>Bir Azure VM başlatıldığında veya yeniden başlatıldığında bir birimin otomatik olarak bağlanmasını istiyorum.  Nasıl yaparım? kalıcı NFS birimleri için ana bilgisayarımı yapılandırın mi?
 
-VM başlatma veya yeniden başlatma sırasında bir NFS biriminin otomatik olarak bağlanması için konaktaki `/etc/fstab` dosyaya bir giriş ekleyin. 
+VM başlatma veya yeniden başlatma sırasında bir NFS biriminin otomatik olarak bağlanması için konaktaki dosyaya bir giriş ekleyin `/etc/fstab` . 
 
 Ayrıntılar için bkz. [Windows veya Linux sanal makineleri için bir birimi bağlama veya çıkarma](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md) .  
 
@@ -123,7 +123,11 @@ Azure NetApp Files, NFSv3 ve NFSv 4.1 destekler. NFS sürümünü kullanarak [bi
 
 Kök kilitlenme Şu anda desteklenmiyor.
 
-## <a name="smb-faqs"></a>SMB SSS
+## <a name="smb-faqs"></a>SMB hakkında SSS
+
+### <a name="which-smb-versions-are-supported-by-azure-netapp-files"></a>Hangi SMB sürümleri Azure NetApp Files tarafından destekleniyor?
+
+Azure NetApp Files, SMB 2,1 ve SMB 3,1 (SMB 3,0 desteğini içerir) desteği sunar.    
 
 ### <a name="is-an-active-directory-connection-required-for-smb-access"></a>SMB erişimi için bir Active Directory bağlantısı gerekiyor mu? 
 
@@ -139,7 +143,7 @@ NetApp hesabı başına bir AD bağlantısı yapılandırılır; AD bağlantıs�
 
 [Azure Active Directory (ad) etki alanı Hizmetleri](https://docs.microsoft.com/azure/active-directory-domain-services/overview) ve [Active Directory Domain Services (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) desteklenir. Mevcut Active Directory etki alanı denetleyicilerini Azure NetApp Files ile birlikte kullanabilirsiniz. Etki alanı denetleyicileri, Azure 'da sanal makineler veya ExpressRoute ya da S2S VPN aracılığıyla şirket içi olarak bulunabilir. Azure NetApp Files Şu anda [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) için ad katılmayı desteklemez.
 
-Azure Active Directory Domain Services ile Azure NetApp Files kullanıyorsanız, kuruluş birimi yolu, NetApp hesabınız için `OU=AADDC Computers` Active Directory yapılandırdığınızda olur.
+Azure Active Directory Domain Services ile Azure NetApp Files kullanıyorsanız, kuruluş birimi yolu, `OU=AADDC Computers` NetApp hesabınız için Active Directory yapılandırdığınızda olur.
 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>Windows Server Active Directory sürümleri destekleniyor mu?
 
@@ -173,7 +177,7 @@ Hayır. Azure NetApp Files Azure Depolama Gezgini tarafından desteklenmez.
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>Nasıl yaparım?, bir dizinin sınır boyutuna yaklaşıp yaklaştığını mi belirlemektir?
 
-Bir dizinin en büyük `stat` boyut sınırına (320 MB) yaklaşıp yaklaşmadığını görmek için istemcisinden komutunu kullanabilirsiniz.
+Bir `stat` dizinin en büyük boyut sınırına (320 MB) yaklaşıp yaklaşmadığını görmek için istemcisinden komutunu kullanabilirsiniz.
 
 320 MB 'lik bir dizin için, blok sayısı 655360 ' dir ve her blok boyutu 512 bayttır.  (Yani, 320x1024x1024/512.)  
 

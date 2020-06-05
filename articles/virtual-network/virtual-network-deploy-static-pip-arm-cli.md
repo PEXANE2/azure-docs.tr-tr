@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 55bc21b0-2a45-4943-a5e7-8d785d0d015c
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 8e3e37347c8c23ccc9746bbb98ef6a822743848b
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e0d17c91c4f5052d9ada369c14980dea8a606607
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790295"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417710"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-cli"></a>Azure CLı kullanarak statik genel IP adresi ile sanal makine oluşturma
 
@@ -30,14 +31,14 @@ Statik bir genel IP adresine sahip bir sanal makine oluşturabilirsiniz. Genel b
 
 Aşağıdaki adımları yerel bilgisayarınızdan veya Azure Cloud Shell kullanarak tamamlayabilirsiniz. Yerel bilgisayarınızı kullanmak için [Azure CLI 'nin yüklü](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)olduğundan emin olun. Azure Cloud Shell kullanmak için, takip eden herhangi bir komut kutusunun sağ üst köşesinde bulunan **deneyin** ' i seçin. Cloud Shell sizi Azure 'da oturum açar.
 
-1. Cloud Shell kullanılıyorsa adım 2 ' ye atlayın. Bir komut oturumu açın ve ile `az login`Azure 'da oturum açın.
+1. Cloud Shell kullanılıyorsa adım 2 ' ye atlayın. Bir komut oturumu açın ve ile Azure 'da oturum açın `az login` .
 2. [az group create](/cli/azure/group#az-group-create) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek, Doğu ABD Azure bölgesinde bir kaynak grubu oluşturur:
 
    ```azurecli-interactive
    az group create --name myResourceGroup --location eastus
    ```
 
-3. [az vm create](/cli/azure/vm#az-vm-create) komutuyla bir sanal makine oluşturun. `--public-ip-address-allocation=static` Seçeneği, sanal makineye statik BIR genel IP adresi atar. Aşağıdaki örnek, *Mypublicıpaddress*adlı statik, temel SKU genel IP adresi ile birlikte bir Ubuntu sanal makinesi oluşturur:
+3. [az vm create](/cli/azure/vm#az-vm-create) komutuyla bir sanal makine oluşturun. `--public-ip-address-allocation=static`Seçeneği, sanal makineye statik bir genel IP adresi atar. Aşağıdaki örnek, *Mypublicıpaddress*adlı statik, temel SKU genel IP adresi ile birlikte bir Ubuntu sanal makinesi oluşturur:
 
    ```azurecli-interactive
    az vm create \
@@ -50,7 +51,7 @@ Aşağıdaki adımları yerel bilgisayarınızdan veya Azure Cloud Shell kullana
      --public-ip-address-allocation static
    ```
 
-   Genel IP adresi standart bir SKU olmalıdır ve önceki komuta ekleyin `--public-ip-sku Standard` . [Genel IP adresi SKU 'ları](virtual-network-ip-addresses-overview-arm.md#sku)hakkında daha fazla bilgi edinin. Sanal makine, genel bir Azure Load Balancer arka uç havuzuna eklenecektir, sanal makinenin genel IP adresi SKU 'su, yük dengeleyicinin genel IP adresi SKU 'SU ile aynı olmalıdır. Ayrıntılar için bkz. [Azure Load Balancer](../load-balancer/skus.md).
+   Genel IP adresi standart bir SKU olmalıdır ve `--public-ip-sku Standard` önceki komuta ekleyin. [Genel IP adresi SKU 'ları](virtual-network-ip-addresses-overview-arm.md#sku)hakkında daha fazla bilgi edinin. Sanal makine, genel bir Azure Load Balancer arka uç havuzuna eklenecektir, sanal makinenin genel IP adresi SKU 'su, yük dengeleyicinin genel IP adresi SKU 'SU ile aynı olmalıdır. Ayrıntılar için bkz. [Azure Load Balancer](../load-balancer/skus.md).
 
 4. Atanan genel IP adresini görüntüleyin ve statik, temel bir SKU adresi olarak oluşturulduğunu, [az Network public-IP Show](/cli/azure/network/public-ip#az-network-public-ip-show)komutuyla doğrulayın:
 

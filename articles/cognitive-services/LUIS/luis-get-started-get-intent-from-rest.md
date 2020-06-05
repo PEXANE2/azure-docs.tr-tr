@@ -4,18 +4,16 @@ description: Bu REST API hızlı başlangıçta, kullanıcının konuşma metinl
 ms.topic: quickstart
 ms.date: 05/18/2020
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 90d98e56e53e28991fb5aada9eab5a7e9c2e69c3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 919308bbb557247516e85017909df9caed8eafdf
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654293"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418100"
 ---
 # <a name="quickstart-get-intent-with-rest-apis"></a>Hızlı başlangıç: REST API 'Leri ile amaç alın
 
 Bu hızlı başlangıçta, bir kullanıcının konuşma metinden bir amaç olduğunu öğrenmek için bir LUO uygulaması kullanacaksınız. Kullanıcının amaç metnini, pizza uygulamasının HTTP tahmin uç noktasına gönderin. Uç noktada, Lu, doğal dil metnini anlam açısından analiz etmek için pizza uygulamasının modelini uygular, bu da genel amaçlı olarak belirlenir ve uygulamanın konu etki alanıyla ilgili verileri ayıklamaktır.
-
-Bu hızlı başlangıç REST API uç noktasını kullanır. Daha fazla bilgi için bkz: [uç API belgeleri](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78).
 
 Bu makale için ücretsiz bir [LUIS](https://www.luis.ai) hesabınız olması gerekir.
 

@@ -6,15 +6,15 @@ author: trevorbye
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: trbye
 ms.date: 03/05/2020
-ms.openlocfilehash: 73b9ae6bc3c15526bfdafd74330c7b86286631b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92120d7eabcd4f9fe8d30c1124555588fcadd19a
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78396147"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432909"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Azure Machine Learning oturum açmayı etkinleştir
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Azure Machine Learning Python SDK 'Sı, hem varsayılan Python günlüğü paket
 
 ## <a name="training-models-and-compute-target-logging"></a>Eğitim modelleri ve işlem hedefi günlüğü
 
-Model eğitimi işlemi sırasında günlüğü etkinleştirmenin birden çok yolu vardır ve gösterilen örneklerde yaygın tasarım desenleri gösterilmektedir. `Experiment` Sınıftaki `start_logging` işlevini kullanarak, çalıştırmada ilgili verileri bulutta çalışma alanınıza kolayca kaydedebilirsiniz.
+Model eğitimi işlemi sırasında günlüğü etkinleştirmenin birden çok yolu vardır ve gösterilen örneklerde yaygın tasarım desenleri gösterilmektedir. Sınıftaki işlevini kullanarak, çalıştırmada ilgili verileri bulutta çalışma alanınıza kolayca kaydedebilirsiniz `start_logging` `Experiment` .
 
 ```python
 from azureml.core import Experiment
@@ -52,13 +52,13 @@ experiment = Experiment(ws, experiment_name)
 run = experiment.submit(config=run_config_object, show_output=True)
 ```
 
-Ayrıca, sonuç çalıştırmasında `wait_for_completion` işlevinde aynı parametreyi de kullanabilirsiniz.
+Ayrıca, sonuç çalıştırmasında işlevinde aynı parametreyi de kullanabilirsiniz `wait_for_completion` .
 
 ```python
 run.wait_for_completion(show_output=True)
 ```
 
-SDK Ayrıca, eğitim için belirli senaryolarda varsayılan Python günlük paketi ' ni kullanmayı da destekler. Aşağıdaki örnek, bir `INFO` `AutoMLConfig` nesnesinde bir günlüğe kaydetme düzeyi sunar.
+SDK Ayrıca, eğitim için belirli senaryolarda varsayılan Python günlük paketi ' ni kullanmayı da destekler. Aşağıdaki örnek, bir nesnesinde bir günlüğe kaydetme düzeyi sunar `INFO` `AutoMLConfig` .
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -73,7 +73,7 @@ automated_ml_config = AutoMLConfig(task='regression',
                                    primary_metric="spearman_correlation")
 ```
 
-Kalıcı bir işlem hedefi oluştururken `show_output` parametresini de kullanabilirsiniz. İşlem hedefi oluşturma sırasında günlüğe `wait_for_completion` kaydetmeyi etkinleştirmek için işlevinde parametresini belirtin.
+`show_output`Kalıcı bir işlem hedefi oluştururken parametresini de kullanabilirsiniz. `wait_for_completion`İşlem hedefi oluşturma sırasında günlüğe kaydetmeyi etkinleştirmek için işlevinde parametresini belirtin.
 
 ```python
 from azureml.core.compute import ComputeTarget
@@ -95,7 +95,7 @@ service = Webservice(name="service-name", workspace=ws)
 logs = service.get_logs()
 ```
 
-Ayrıca, istek/yanıt sürelerini, hata oranlarını ve özel durumları izlemenize olanak tanıyan Application Insights etkinleştirerek Web hizmetiniz için özel yığın izlemelerini günlüğe kaydedebilirsiniz. Application Insights sağlamak `update()` için var olan bir Web hizmetinde işlevi çağırın.
+Ayrıca, istek/yanıt sürelerini, hata oranlarını ve özel durumları izlemenize olanak tanıyan Application Insights etkinleştirerek Web hizmetiniz için özel yığın izlemelerini günlüğe kaydedebilirsiniz. `update()`Application Insights sağlamak için var olan bir Web hizmetinde işlevi çağırın.
 
 ```python
 service.update(enable_app_insights=True)

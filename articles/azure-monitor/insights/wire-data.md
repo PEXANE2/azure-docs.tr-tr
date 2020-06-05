@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/03/2018
-ms.openlocfilehash: ee7a2f49641eb0cfe1f8a4bffb44c7f8642408fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/29/2020
+ms.openlocfilehash: afcad5df1072f2eb474e54aaeca866735a12c5c8
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670653"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424474"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Izleyici 'de Wire Data 2.0 (Önizleme) çözümü
 
@@ -19,12 +19,15 @@ ms.locfileid: "77670653"
 
 Çevre verileri, ortamınızdaki Operations Manager izlenenler de dahil olmak üzere, Windows bağlı ve Linux bağlantılı bilgisayarlardan Log Analytics aracısıyla toplanan birleştirilmiş ağ ve performans verileri. Verilerin bağıntısını sağlamanıza yardımcı olmak için ağ verileri diğer günlük verilerinizle birleştirilir.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
-
 Log Analytics aracısına ek olarak, kablo verileri çözümü BT altyapınızdaki bilgisayarlara yüklediğiniz Microsoft bağımlılık aracılarını kullanır. Bağımlılık Aracıları [OSI modelinde](https://en.wikipedia.org/wiki/OSI_model) 2-3 ağ düzeyleri için bilgisayarlarınıza ve bilgisayarlarınızdan gönderilen ağ verilerini, ayrıca kullanılan çeşitli protokollerle bağlantı noktalarını izler. Veriler daha sonra Aracılar kullanılarak Azure Izleyici 'ye gönderilir.  
 
 >[!NOTE]
->Daha önce Hizmet Eşlemesi dağıttıysanız veya Hizmet Eşlemesi veya [VM'ler için Azure izleyici](../../azure-monitor/insights/vminsights-overview.md)düşünüyorsanız, Azure izleyici 'de toplayıp depolarlar ve depolarlar. böylece, Tel veriye karşılaştırılabilir bilgiler sağlayan yeni bir bağlantı ölçüm verileri kümesi vardır.
+>Tel veri çözümü, [hizmet eşlemesi çözümüyle](service-map.md)değiştirilmiştir.  Her ikisi de Log Analytics Aracısı ve bağımlılık Aracısı 'nı kullanarak ağ bağlantısı verilerini Azure Izleyici 'ye toplayın. 
+> 
+>Tel veri çözümünü kullanan mevcut müşteriler bu uygulamayı kullanmaya devam edebilir. Hizmet Eşlemesi taşımak için bir geçiş zaman çizelgesine yönelik rehberlik yayımlayacağız.
+>
+>Yeni müşteriler [hizmet eşlemesi çözümünü](service-map.md) veya [VM'ler için Azure izleyici](vminsights-overview.md)yüklemelidir.  Hizmet Eşlemesi veri kümesi, Tel verilerle karşılaştırılabilir.  VM'ler için Azure İzleyici, analiz için ek performans verileri ve özellikleriyle Hizmet Eşlemesi veri kümesini içerir. 
+
 
 Azure Izleyici, varsayılan olarak, Windows ve Linux 'ta yerleşik sayaçların yanı sıra, belirtebileceğiniz diğer performans sayaçlarından CPU, bellek, disk ve ağ performansı verileri için verileri günlüğe kaydeder. Her aracı için, alt ağlar ve bilgisayar tarafından kullanılmakta olan uygulama düzeyi protokoller de dahil olmak üzere, ağ ve diğer verileri toplama işlemi gerçek zamanlı olarak yapılır.  Wire Data, alttaki TCP aktarım katmanında değil uygulama düzeyindeki ağ verilerine bakar. Çözüm tek tek ACK'lere ve SYN'lere bakmaz. Karşılıklı anlaşma tamamlandıktan sonra, bu canlı bir bağlantı olarak kabul edilir ve Bağlandı olarak işaretlenir. Söz konusu bağlantı, her iki taraf da yuvanın açık olduğunu ve verilerin ileri ve geri geçiş yapabildiğini kabul ettiği sürece canlı kalır. Her iki taraf da bağlantıyı kapattığında, bağlantısı kesik olarak işaretlenir.  Bu nedenle, yalnızca başarıyla tamamlanan paketlerin bant genişliğini sayar; yeniden göndermeleri veya başarısız paketleri raporlamaz.
 
@@ -56,7 +59,7 @@ Wire Data verilerini Microsoft Bağımlılık Aracısı'ndan alır. Dependency A
 | Windows aracıları | Yes | Wire Data, Windows aracı bilgisayarlarından gelen verileri analiz eder ve toplar. <br><br> Windows Agents, [Windows için Log Analytics aracısına](../platform/agent-windows.md)ek olarak Microsoft bağımlılık Aracısı 'nı gerektirir. İşletim sistemi sürümlerinin tam listesi için bkz. [Desteklenen işletim sistemleri](vminsights-enable-overview.md#supported-operating-systems). |
 | Linux aracıları | Yes | Wire Data, Linux aracı bilgisayarlarından gelen verileri analiz eder ve toplar.<br><br> Linux [için Log Analytics aracısına](../learn/quick-collect-linux-computer.md)ek olarak, Linux aracıları Microsoft bağımlılık Aracısı gerektirir. İşletim sistemi sürümlerinin tam listesi için bkz. [Desteklenen işletim sistemleri](vminsights-enable-overview.md#supported-operating-systems). |
 | System Center Operations Manager yönetim grubu | Yes | Wire Data, bağlantılı bir [System Center Operations Manager yönetim grubunda](../platform/om-agents.md) Windows ve Linux aracılarından gelen verileri analiz eder ve toplar. <br><br> System Center Operations Manager Aracısı bilgisayarından Azure Izleyici 'ye doğrudan bağlantı gereklidir. |
-| Azure depolama hesabı | Hayır | Wire Data verileri aracı bilgisayarlardan topladığından, Azure Depolama'dan toplayacağı veri yoktur. |
+| Azure depolama hesabı | No | Wire Data verileri aracı bilgisayarlardan topladığından, Azure Depolama'dan toplayacağı veri yoktur. |
 
 Windows 'da Microsoft Monitoring Agent (MMA), veri toplamak ve göndermek için hem System Center Operations Manager hem de Azure Izleyici tarafından kullanılır. Bağlama bağlı olarak, aracıya System Center Operations Manager Aracı, Log Analytics Aracısı, MMA veya doğrudan Aracı denir. System Center Operations Manager ve Azure Izleyici, MMA 'nın biraz farklı sürümlerini sağlar. Bu sürümler her rapor System Center Operations Manager, Azure Izleyici 'ye veya her ikisine de bağlanabilir.
 
@@ -73,7 +76,7 @@ Azure Izleyici 'ye bağlı bir yönetim grubu System Center Operations Manager b
 
 Windows veya Linux bilgisayarlarınız hizmete doğrudan bağlanamıyorsa, Log Analytics aracısını Log Analytics ağ geçidini kullanarak Azure Izleyici 'ye bağlanacak şekilde yapılandırmanız gerekir. Log Analytics ağ geçidini [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=52666)' nden indirebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [İçgörü ve Analiz](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) çözüm teklifi gereklidir.
 - Wire Data çözümünü önceki sürümünü kullanıyorsanız, önce o sürümü kaldırmalısınız. Ancak özgün Wire Data çözümüyle yakalanmış olan tüm veriler Wire Data 2.0'da ve günlük aramasında yine kullanılabilir.

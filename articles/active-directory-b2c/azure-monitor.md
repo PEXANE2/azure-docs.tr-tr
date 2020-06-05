@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: 99e04c95156e40eed8c2b9aa88a2bee6f39e90c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4069774249795073b4390de839ae9f563c8b1cb
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392888"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424031"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Izleyici ile Azure AD B2C izleme
 
@@ -25,12 +25,12 @@ Farklı izleme çözümlerine Azure Active Directory B2C (Azure AD B2C) oturum a
 Günlük olaylarını şu şekilde yönlendirebilirsiniz:
 
 * Bir Azure [depolama hesabı](../storage/blobs/storage-blobs-introduction.md).
-* Azure [Olay Hub 'ı](../event-hubs/event-hubs-about.md) (ve splunk ve sumo Logic Instances ile tümleştirin).
 * [Log Analytics çalışma alanı](../azure-monitor/platform/resource-logs-collect-workspace.md) (verileri analiz etmek, panolar oluşturmak ve belirli olaylara uyarı vermek için).
+* Azure [Olay Hub 'ı](../event-hubs/event-hubs-about.md) (ve splunk ve sumo Logic Instances ile tümleştirin).
 
 ![Azure İzleyici](./media/azure-monitor/azure-monitor-flow.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için, Azure PowerShell modülünü kullanarak bir Azure Resource Manager şablonu dağıtırsınız.
 
@@ -72,7 +72,7 @@ Yönetimi kolaylaştırmak için, her rol için Azure AD Kullanıcı *grupları*
 
 ### <a name="create-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu oluşturma
 
-Azure AD kiracınızı ( **Müşteri**) eklemek için aşağıdaki bilgilerle teklifiniz için bir [Azure Resource Manager şablonu](../lighthouse/how-to/onboard-customer.md) oluşturun. Ve `mspOfferName` `mspOfferDescription` değerleri, Azure Portal [hizmet sağlayıcıları sayfasında](../lighthouse/how-to/view-manage-service-providers.md) teklif ayrıntılarını görüntülediğinizde görülebilir.
+Azure AD kiracınızı ( **Müşteri**) eklemek için aşağıdaki bilgilerle teklifiniz için bir [Azure Resource Manager şablonu](../lighthouse/how-to/onboard-customer.md) oluşturun. `mspOfferName`Ve `mspOfferDescription` değerleri, Azure Portal [hizmet sağlayıcıları sayfasında](../lighthouse/how-to/view-manage-service-providers.md) teklif ayrıntılarını görüntülediğinizde görülebilir.
 
 | Alan   | Tanım |
 |---------|------------|
@@ -87,7 +87,7 @@ Azure Resource Manager şablonu ve parametre dosyalarını indirin:
 - [rgDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
 - [rgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
-Daha sonra, Parameters dosyasını daha önce kaydettiğiniz değerlerle güncelleştirin. Aşağıdaki JSON kod parçacığında bir Azure Resource Manager şablon parametreleri dosyası örneği gösterilmektedir. İçin `authorizations.value.roleDefinitionId`, *katkıda bulunan rolü*için `b24988ac-6180-42a0-ab88-20f7382dd24c` [yerleşik rol](../role-based-access-control/built-in-roles.md) değerini kullanın.
+Daha sonra, Parameters dosyasını daha önce kaydettiğiniz değerlerle güncelleştirin. Aşağıdaki JSON kod parçacığında bir Azure Resource Manager şablon parametreleri dosyası örneği gösterilmektedir. İçin `authorizations.value.roleDefinitionId` , *katkıda bulunan rolü*için [yerleşik rol](../role-based-access-control/built-in-roles.md) değerini kullanın `b24988ac-6180-42a0-ab88-20f7382dd24c` .
 
 ```JSON
 {
@@ -123,7 +123,7 @@ Daha sonra, Parameters dosyasını daha önce kaydettiğiniz değerlerle güncel
 
 Parametreleri dosyanızı güncelleştirdikten sonra, Azure Resource Manager şablonunu abonelik düzeyinde bir dağıtım olarak Azure kiracısına dağıtın. Bu, abonelik düzeyinde bir dağıtım olduğundan Azure portal başlatılamaz. Azure PowerShell modülünü veya Azure CLı 'yi kullanarak dağıtabilirsiniz. Azure PowerShell yöntemi aşağıda gösterilmiştir.
 
-[Connect-AzAccount](/powershell/azure/authenticate-azureps)' ı kullanarak aboneliğinizi içeren dizinde oturum açın. Kimlik doğrulamasını `-tenant` doğru dizine zorlamak için bayrağını kullanın.
+[Connect-AzAccount](/powershell/azure/authenticate-azureps)' ı kullanarak aboneliğinizi içeren dizinde oturum açın. `-tenant`Kimlik doğrulamasını doğru dizine zorlamak için bayrağını kullanın.
 
 ```PowerShell
 Connect-AzAccount -tenant contoso.onmicrosoft.com
@@ -141,7 +141,7 @@ Sonra, Azure AD B2C kiracısına proje eklemek istediğiniz aboneliğe geçin:
 Select-AzSubscription <subscription ID>
 ```
 
-Son olarak, daha önce indirdiğiniz ve güncelleştirdiğiniz Azure Resource Manager şablonu ve parametre dosyalarını dağıtın. `Location`, `TemplateFile`Ve `TemplateParameterFile` değerlerini uygun şekilde değiştirin.
+Son olarak, daha önce indirdiğiniz ve güncelleştirdiğiniz Azure Resource Manager şablonu ve parametre dosyalarını dağıtın. `Location`, `TemplateFile` Ve `TemplateParameterFile` değerlerini uygun şekilde değiştirin.
 
 ```PowerShell
 New-AzDeployment -Name "AzureADB2C" `
@@ -223,7 +223,7 @@ Azure portal [Tanılama ayarları oluşturmaya](../active-directory/reports-moni
 
 Azure AD B2C etkinlik günlüklerinin izleme ayarlarını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. **Azure Active Directory** seçin
 1. **İzleme** bölümünde **Tanılama ayarları**'nı seçin.
@@ -234,14 +234,14 @@ Azure AD B2C etkinlik günlüklerinin izleme ayarlarını yapılandırmak için:
 1. Ayarınız yoksa, bir ad verin.
 1. Günlükleri göndermek için her bir hedefin kutusunu işaretleyin. Ayarlarını aşağıdaki tabloda açıklandığı gibi belirtmek için **Yapılandır** ' ı seçin.
 
-    | Ayar | Açıklama |
+    | Ayar | Description |
     |:---|:---|
     | Bir depolama hesabına arşivle | Depolama hesabının adı. |
     | Bir olay hub'ına akış yap | Olay Hub 'ının oluşturulduğu ad alanı (Bu, ilk zaman akış günlükleriniz ise) veya akışa (Bu ad alanına ait günlük kategorisini akışa alınmış kaynaklar varsa).
     | Log Analytics’e gönderme | Çalışma alanının adı. |
 
 1. **Auditlogs** ve **signınlogs**' u seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

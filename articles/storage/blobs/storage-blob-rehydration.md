@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 7ec10366ec51be86fa45d25eca87ea86e82338f7
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: cbaa1d34eb8fe44b1c367d8fa3f84687fe7568e2
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220455"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433185"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Arşiv katmanından blob verilerini yeniden doldurma
 
@@ -61,7 +61,7 @@ Arşiv katmanındaki Bloblar en az 180 gün önce depolanmalıdır. Arşivlenmi�
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Bir arşiv blobunu çevrimiçi katmana yeniden doldurma
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Azure portal, **tüm kaynakları**arayıp seçin.
 
@@ -94,7 +94,7 @@ $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountN
 $ctx = $storageAccount.Context
 
 #Select the blob from a container
-$blobs = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $context
+$blobs = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx
 
 #Change the blob’s access tier to Hot using Standard priority rehydrate
 $blob.ICloudBlob.SetStandardBlobTier("Hot", "Standard")

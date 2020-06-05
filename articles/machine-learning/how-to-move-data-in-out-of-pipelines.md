@@ -5,17 +5,17 @@ description: Verilerin Azure Machine Learning işlem hatlarında giriş & çık�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: laobri
 author: lobrien
 ms.date: 04/01/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 233361fb238342cde3c692174e85fb57f69979b1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 67af2fec75c2a4ead10e59c651dac1542c095659
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858460"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430107"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML işlem hattı adımlarına ve adımlar arasında veri taşıma (Python)
 
@@ -25,14 +25,14 @@ Bu makalede, bir Azure Machine Learning işlem hattındaki adımlar arasında ve
 
 Bu makalede nasıl yapılacağı gösterilmektedir:
 
-- Önceden `Dataset` var olan veriler için nesneleri kullanma
+- `Dataset`Önceden var olan veriler için nesneleri kullanma
 - Adımlarınız içindeki verilere erişin
-- Verileri `Dataset` , eğitim ve doğrulama alt kümeleri gibi alt kümelere bölme
-- Sonraki `PipelineData` işlem hattı adımına veri aktarmak için nesne oluşturma
+- `Dataset`Verileri, eğitim ve doğrulama alt kümeleri gibi alt kümelere bölme
+- `PipelineData`Sonraki işlem hattı adımına veri aktarmak için nesne oluşturma
 - İşlem `PipelineData` hattı adımlarına girdi olarak nesneleri kullanma
-- Kalıcı hale `Dataset` getirmek istediğiniz `PipelineData` yeni nesneler oluşturun
+- `Dataset`Kalıcı hale getirmek istediğiniz yeni nesneler oluşturun `PipelineData`
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Gerekenler:
 
@@ -42,7 +42,7 @@ Gerekenler:
 
 - Azure Machine Learning çalışma alanı.
   
-  [Azure Machine Learning bir çalışma alanı oluşturun](how-to-manage-workspace.md) ya da Python SDK 'sı aracılığıyla mevcut bir tane kullanın. `Workspace` Ve `Datastore` sınıfını içeri aktarın ve işlevini `config.json` `from_config()`kullanarak dosyadaki abonelik bilgilerinizi yükleyin. Bu işlev, varsayılan olarak geçerli dizindeki JSON dosyasını arar, ancak kullanarak `from_config(path="your/file/path")`dosyayı işaret etmek için bir yol parametresi de belirtebilirsiniz.
+  [Azure Machine Learning bir çalışma alanı oluşturun](how-to-manage-workspace.md) ya da Python SDK 'sı aracılığıyla mevcut bir tane kullanın. `Workspace`Ve sınıfını içeri aktarın `Datastore` ve işlevini kullanarak dosyadaki abonelik bilgilerinizi yükleyin `config.json` `from_config()` . Bu işlev, varsayılan olarak geçerli dizindeki JSON dosyasını arar, ancak kullanarak dosyayı işaret etmek için bir yol parametresi de belirtebilirsiniz `from_config(path="your/file/path")` .
 
    ```python
    import azureml.core
@@ -55,11 +55,11 @@ Gerekenler:
 
 - İsteğe bağlı: [Azure MACHINE LEARNING SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma](how-to-create-your-first-pipeline.md)bölümünde açıklananlar gibi mevcut bir Machine Learning işlem hattı.
 
-## <a name="use-dataset-objects-for-pre-existing-data"></a>Önceden `Dataset` var olan veriler için nesneleri kullanma 
+## <a name="use-dataset-objects-for-pre-existing-data"></a>`Dataset`Önceden var olan veriler için nesneleri kullanma 
 
 Bir işlem hattına veri almanın tercih edilen yolu bir [veri kümesi](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) nesnesi kullanmaktır. `Dataset`nesneler, çalışma alanı genelinde kullanılabilir kalıcı verileri temsil eder.
 
-Nesneleri oluşturmak ve kaydettirmek `Dataset` için birçok yol vardır. Tablo veri kümeleri, bir veya daha fazla dosyada kullanılabilen sınırlandırılmış verilere yöneliktir. Dosya veri kümeleri, ikili veriler (örneğin, görüntüler) veya ayrıştırılacak veriler içindir. Nesneleri oluşturmanın `Dataset` en basit programlama yolları, çalışma alanı depolamada veya genel URL 'lerde Mevcut blobları kullanmaktır:
+Nesneleri oluşturmak ve kaydettirmek için birçok yol vardır `Dataset` . Tablo veri kümeleri, bir veya daha fazla dosyada kullanılabilen sınırlandırılmış verilere yöneliktir. Dosya veri kümeleri, ikili veriler (örneğin, görüntüler) veya ayrıştırılacak veriler içindir. Nesneleri oluşturmanın en basit programlama yolları, `Dataset` çalışma alanı depolamada veya genel URL 'lerde Mevcut blobları kullanmaktır:
 
 ```python
 datastore = Datastore.get(workspace, 'training_data')
@@ -75,17 +75,17 @@ Farklı seçeneklere ve farklı kaynaklara sahip veri kümeleri oluşturma, bunl
 
 ### <a name="pass-datasets-to-your-script"></a>Veri kümelerini betiğe geçirin
 
-Veri kümesinin yolunu betiğe geçirmek için `Dataset` nesnenin `as_named_input()` metodunu kullanın. Sonuç `DatasetConsumptionConfig` nesnesini betiğe bir bağımsız değişken olarak geçirebilir ya da işlem hattı betiğinizin `inputs` bağımsız değişkenini kullanarak veri kümesini kullanarak `Run.get_context().input_datasets[]`alabilirsiniz.
+Veri kümesinin yolunu betiğe geçirmek için `Dataset` nesnenin `as_named_input()` metodunu kullanın. Sonuç `DatasetConsumptionConfig` nesnesini betiğe bir bağımsız değişken olarak geçirebilir ya da işlem `inputs` hattı betiğinizin bağımsız değişkenini kullanarak veri kümesini kullanarak alabilirsiniz `Run.get_context().input_datasets[]` .
 
-Adlandırılmış bir giriş oluşturduktan sonra, erişim modunu seçebilirsiniz: `as_mount()` veya. `as_download()` Betik, veri kümenizdeki tüm dosyaları işliyorsa ve işlem kaynağınızın disk veri kümesi için yeterince büyükse, indirme erişimi modu daha iyi bir seçimdir. İndirme erişimi modu, çalışma zamanında veri akışı yükünü ortadan kaldırır. Betiğinizin bir veri kümesinin alt kümesine erişmesi veya işlem için çok büyük olması durumunda bağlama erişim modunu kullanın. Daha fazla bilgi için [bağlama ve indirme](https://docs.microsoft.com/azure/machine-learning/how-to-train-with-datasets#mount-vs-download) bölümünü okuyun
+Adlandırılmış bir giriş oluşturduktan sonra, erişim modunu seçebilirsiniz: `as_mount()` veya `as_download()` . Betik, veri kümenizdeki tüm dosyaları işliyorsa ve işlem kaynağınızın disk veri kümesi için yeterince büyükse, indirme erişimi modu daha iyi bir seçimdir. İndirme erişimi modu, çalışma zamanında veri akışı yükünü ortadan kaldırır. Betiğinizin bir veri kümesinin alt kümesine erişmesi veya işlem için çok büyük olması durumunda bağlama erişim modunu kullanın. Daha fazla bilgi için [bağlama ve indirme](https://docs.microsoft.com/azure/machine-learning/how-to-train-with-datasets#mount-vs-download) bölümünü okuyun
 
 Bir veri kümesini ardışık düzen adımınızda geçirmek için:
 
-1. Bir `TabularDataset.as_named_inputs()` `DatasetConsumptionConfig` nesne `FileDataset.as_named_input()` oluşturmak için veya (sonunda ' sonunda yok) kullanın
-1. Erişim `as_mount()` modunu `as_download()` ayarlamak için veya kullanın
-1. `arguments` Ya da `inputs` bağımsız değişkenini kullanarak veri kümelerini ardışık düzen adımlarınızı geçirin
+1. `TabularDataset.as_named_inputs()` `FileDataset.as_named_input()` Bir nesne oluşturmak için veya (sonunda ' sonunda yok) kullanın `DatasetConsumptionConfig`
+1. `as_mount()` `as_download()` Erişim modunu ayarlamak için veya kullanın
+1. `arguments`Ya da bağımsız değişkenini kullanarak veri kümelerini ardışık düzen adımlarınızı geçirin `inputs`
 
-Aşağıdaki kod parçacığında, bu adımları `PythonScriptStep` oluşturucunun içinde birleştirmenin yaygın bir deseninin gösterildiği gösterilmektedir: 
+Aşağıdaki kod parçacığında, bu adımları oluşturucunun içinde birleştirmenin yaygın bir deseninin gösterildiği gösterilmektedir `PythonScriptStep` : 
 
 ```python
 
@@ -97,7 +97,7 @@ train_step = PythonScriptStep(
 )
 ```
 
-Ayrıca, `random_split()` ve `take_sample()` gibi yöntemleri kullanarak birden çok giriş oluşturabilir veya ardışık düzen adımınıza geçirilen veri miktarını azaltabilirsiniz:
+Ayrıca, ve gibi yöntemleri kullanarak `random_split()` `take_sample()` birden çok giriş oluşturabilir veya ardışık düzen adımınıza geçirilen veri miktarını azaltabilirsiniz:
 
 ```python
 seed = 42 # PRNG seed
@@ -114,7 +114,7 @@ train_step = PythonScriptStep(
 
 ### <a name="access-datasets-within-your-script"></a>Komut dosyası içindeki veri kümelerine erişin
 
-İşlem hattı adım betiğinizin adlandırılmış girdileri, `Run` nesne içindeki bir sözlük olarak mevcuttur. Kullanarak etkin `Run` nesneyi alın `Run.get_context()` ve kullanarak `input_datasets`adlandırılmış girişlerin sözlüğünü alın. `DatasetConsumptionConfig` `arguments` Nesneyi `inputs` bağımsız değişken yerine bağımsız değişkenini kullanarak geçirtiniz kodu kullanarak `ArgParser` verilere erişin. Her iki teknik de aşağıdaki kod parçacığında gösterilmiştir.
+İşlem hattı adım betiğinizin adlandırılmış girdileri, nesne içindeki bir sözlük olarak mevcuttur `Run` . Kullanarak etkin `Run` nesneyi alın `Run.get_context()` ve kullanarak adlandırılmış girişlerin sözlüğünü alın `input_datasets` . Nesneyi bağımsız değişken yerine `DatasetConsumptionConfig` bağımsız değişkenini kullanarak geçirtiniz `arguments` `inputs` kodu kullanarak verilere erişin `ArgParser` . Her iki teknik de aşağıdaki kod parçacığında gösterilmiştir.
 
 ```python
 # In pipeline definition script:
@@ -138,7 +138,7 @@ testing_data_folder = Run.get_context().input_datasets['test']
 
 Geçirilen değer, veri kümesi dosyalarının yolu olacak.
 
-Ayrıca kayıtlı `Dataset` bir doğrudan erişim de mümkündür. Kayıtlı veri kümeleri kalıcı olduğundan ve bir çalışma alanı genelinde paylaşıldığından, bunları doğrudan alabilirsiniz:
+Ayrıca kayıtlı bir doğrudan erişim de mümkündür `Dataset` . Kayıtlı veri kümeleri kalıcı olduğundan ve bir çalışma alanı genelinde paylaşıldığından, bunları doğrudan alabilirsiniz:
 
 ```python
 run = Run.get_context()
@@ -146,9 +146,9 @@ ws = run.experiment.workspace
 ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 ```
 
-## <a name="use-pipelinedata-for-intermediate-data"></a>Ara `PipelineData` veriler için kullanın
+## <a name="use-pipelinedata-for-intermediate-data"></a>`PipelineData`Ara veriler için kullanın
 
-Nesneler `Dataset` kalıcı verileri temsil ederken, ardışık düzen adımlarından çıktı olan geçici veriler Için [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nesneleri kullanılır. Bir `PipelineData` nesnenin kullanım ömrü tek bir işlem hattı adımından daha uzun olduğundan, bunları ardışık düzen tanımı betiğine tanımlarsınız. Bir `PipelineData` nesne oluşturduğunuzda, verilerin bulunacağı bir ad ve veri deposu sağlamanız gerekir. `PipelineData` Nesne (ler `PythonScriptStep` `arguments` ) `outputs` _i ve bağımsız değişkenlerini kullanarak kendi_ uygulamanıza geçirin:
+`Dataset`Nesneler kalıcı verileri temsil ederken, ardışık düzen adımlarından çıktı olan geçici veriler Için [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nesneleri kullanılır. Bir nesnenin kullanım ömrü `PipelineData` tek bir işlem hattı adımından daha uzun olduğundan, bunları ardışık düzen tanımı betiğine tanımlarsınız. Bir `PipelineData` nesne oluşturduğunuzda, verilerin bulunacağı bir ad ve veri deposu sağlamanız gerekir. `PipelineData`Nesne (ler) `PythonScriptStep` _both_ `arguments` i ve bağımsız değişkenlerini kullanarak kendi uygulamanıza geçirin `outputs` :
 
 ```python
 default_datastore = workspace.get_default_datastore()
@@ -164,15 +164,15 @@ dataprep_step = PythonScriptStep(
 )
 ```
 
-`PipelineData` Nesnesini, anında karşıya yükleme sağlayan bir erişim modu kullanarak oluşturmayı seçebilirsiniz. Bu durumda, oluşturduğunuz `PipelineData`zaman öğesini `upload_mode` olarak `"upload"` ayarlayın ve verileri yazmak istediğiniz yolu belirtmek için `output_path_on_compute` bağımsız değişkenini kullanın:
+`PipelineData`Nesnesini, anında karşıya yükleme sağlayan bir erişim modu kullanarak oluşturmayı seçebilirsiniz. Bu durumda, oluşturduğunuz zaman `PipelineData` öğesini `upload_mode` olarak ayarlayın `"upload"` ve `output_path_on_compute` verileri yazmak istediğiniz yolu belirtmek için bağımsız değişkenini kullanın:
 
 ```python
 PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", output_path_on_compute="clean_data_output/")
 ```
 
-### <a name="use-pipelinedata-as-outputs-of-a-training-step"></a>Eğitim `PipelineData` adımının çıkışları olarak kullanın
+### <a name="use-pipelinedata-as-outputs-of-a-training-step"></a>`PipelineData`Eğitim adımının çıkışları olarak kullanın
 
-Ardışık yollarınızın içinde `PythonScriptStep`, programın bağımsız değişkenlerini kullanarak kullanılabilir çıkış yollarını alabilirsiniz. Bu adım ilk ise ve çıktı verilerini başlatacaktır, belirtilen yolda dizini oluşturmanız gerekir. Daha sonra içine dahil etmek istediğiniz dosyaları yazabilirsiniz `PipelineData`.
+Ardışık `PythonScriptStep` yollarınızın içinde, programın bağımsız değişkenlerini kullanarak kullanılabilir çıkış yollarını alabilirsiniz. Bu adım ilk ise ve çıktı verilerini başlatacaktır, belirtilen yolda dizini oluşturmanız gerekir. Daha sonra içine dahil etmek istediğiniz dosyaları yazabilirsiniz `PipelineData` .
 
 ```python
 parser = argparse.ArgumentParser()
@@ -185,11 +185,11 @@ with open(args.output_path, 'w') as f:
     f.write("Step 1's output")
 ```
 
-' I ' a `PipelineData` ayarlanmış `is_directory` bağımsız değişkenle oluşturduysanız, yalnızca `os.makedirs()` çağrıyı gerçekleştirmek için yeterli olur ve ardından yola beklediğiniz dosyaları yazmanız ücretsizdir. `True` Daha ayrıntılı bilgi için bkz. [Pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) Reference belgeleri.
+`PipelineData` `is_directory` ' I ' a ayarlanmış bağımsız değişkenle oluşturduysanız `True` , yalnızca çağrıyı gerçekleştirmek için yeterli olur `os.makedirs()` ve ardından yola beklediğiniz dosyaları yazmanız ücretsizdir. Daha ayrıntılı bilgi için bkz. [Pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) Reference belgeleri.
 
-### <a name="read-pipelinedata-as-inputs-to-non-initial-steps"></a>İlk `PipelineData` olmayan adımlara giriş olarak oku
+### <a name="read-pipelinedata-as-inputs-to-non-initial-steps"></a>`PipelineData`İlk olmayan adımlara giriş olarak oku
 
-İlk işlem hattı adımı, `PipelineData` yola bazı veriler yazar ve bu ilk adımın çıktısı haline gelirse, sonraki bir adımda giriş olarak kullanılabilir:
+İlk işlem hattı adımı, yola bazı veriler yazar `PipelineData` ve bu ilk adımın çıktısı haline gelirse, sonraki bir adımda giriş olarak kullanılabilir:
 
 ```python
 step1_output_data = PipelineData("processed_data", datastore=def_blob_store, output_mode="upload")
@@ -215,7 +215,7 @@ step2 = PythonScriptStep(
 pipeline = Pipeline(workspace=ws, steps=[step1, step2])
 ```
 
-Bir `PipelineData` girdinin değeri, önceki çıktının yoludur. Daha önce gösterildiği gibi, ilk adım tek bir dosya yazdı, bu, şu şekilde görünebilir: 
+Bir girdinin değeri, `PipelineData` önceki çıktının yoludur. Daha önce gösterildiği gibi, ilk adım tek bir dosya yazdı, bu, şu şekilde görünebilir: 
 
 ```python
 parser = argparse.ArgumentParser()
@@ -226,9 +226,9 @@ with open(args.pd) as f:
     print(f.read())
 ```
 
-## <a name="convert-pipelinedata-objects-to-datasets"></a>Nesneleri `PipelineData` s öğesine `Dataset`Dönüştür
+## <a name="convert-pipelinedata-objects-to-datasets"></a>`PipelineData`Nesneleri s öğesine `Dataset` Dönüştür
 
-Bir çalıştırmanın süresinden daha uzun bir süre `PipelineData` için kullanılabilir hale getirmek istiyorsanız, `as_dataset()` işlevini ' a `Dataset`dönüştürmek için kullanın. Sonra, `Dataset`çalışma alanınızda birinci sınıf bir vatandaşlık yaparak öğesini kaydedebilirsiniz. İşlem hattı `PipelineData` her çalıştığında nesneniz farklı bir yola sahip olacağı `create_new_version` için, bir `True` `Dataset` `PipelineData` nesneden oluşturulan bir kayıt sırasında olarak ayarlamanız kesinlikle önerilir.
+`PipelineData`Bir çalıştırmanın süresinden daha uzun bir süre için kullanılabilir hale getirmek istiyorsanız, `as_dataset()` işlevini ' a dönüştürmek için kullanın `Dataset` . Sonra, `Dataset` çalışma alanınızda birinci sınıf bir vatandaşlık yaparak öğesini kaydedebilirsiniz. `PipelineData`İşlem hattı her çalıştığında nesneniz farklı bir yola sahip olacağı `create_new_version` için, `True` `Dataset` bir nesneden oluşturulan bir kayıt sırasında olarak ayarlamanız kesinlikle önerilir `PipelineData` .
 
 ```python
 step1_output_ds = step1_output_data.as_dataset()

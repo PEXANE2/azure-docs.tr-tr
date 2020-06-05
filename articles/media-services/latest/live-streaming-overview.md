@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: juliako
-ms.openlocfilehash: ee9dfc11cad61d6190ae4a2382f0124207c32c4c
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 23ee7ba7a5456916eb307e21aa2074924614cb4b
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801629"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418152"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 ile canlı akış
 
@@ -30,12 +30,14 @@ Azure Media Services, Azure bulutunda müşterilerinize canlı olaylar sunmanız
 - Bir kameradan (veya dizüstü bilgisayar gibi başka bir cihazdan) sinyalleri Media Services gönderilen bir katkı akışına dönüştüren canlı bir video Kodlayıcısı. Katkı akışı, reklamları ile ilgili, SCTE-35 işaretçileri gibi sinyalleri içerebilir.<br/>Önerilen canlı akış kodlayıcıları listesi için bkz. [canlı akış kodlayıcılar](recommended-on-premises-live-encoders.md). Ayrıca, bu bloga göz atın: [OBS Ile canlı akış üretimi](https://link.medium.com/ttuwHpaJeT).
 - Media Services ' deki bileşenler, canlı etkinliği müşterilerinize alma, önizleme, paketleme, kaydetme, şifreleme ve yayınlaymanıza, daha fazla dağıtım için bir CDN 'ye yönelik bir CDN 'ye yönelik olarak.
 
+Büyük internet kitlelerine içerik teslim etmek isteyen müşteriler için, [akış uç NOKTASıNDA](streaming-endpoint-concept.md)CDN 'yi etkinleştirmenizi öneririz.
+
 Bu makale, Media Services ile canlı akış ve diğer ilgili makalelerin bağlantılarıyla ilgili genel bakış ve kılavuzluk sağlar.
  
 > [!NOTE]
 > V3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, v3 [varlıklarını](assets-concept.md)görüntülemek, API 'lere erişim hakkında bilgi almak için [Azure Portal](https://portal.azure.com/) kullanabilirsiniz. Diğer tüm yönetim görevleri (örneğin, dönüşümler ve Işler) için [REST API](https://docs.microsoft.com/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 
-## <a name="dynamic-packaging"></a>Dinamik paketleme
+## <a name="dynamic-packaging-and-delivery"></a>Dinamik paketleme ve teslim
 
 Media Services ile, canlı akışlarınızı, hizmet 'e gönderilen katkı akışından [MPEG Dash, HLS ve kesintisiz akış biçimlerinde](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) önizleme ve yayınlama olanağı sağlayan [dinamik paketlemeden](dynamic-packaging-overview.md)yararlanabilirsiniz. Görüntüleyicilerinizin her türlü HLS, ÇIZGI veya Kesintisiz Akış uyumlu oyuncularla canlı akışı kayıttan yürütebileceği. Bu protokollerden herhangi birine akışını sunmak için Web veya mobil uygulamalarınızda [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) kullanabilirsiniz.
 
@@ -46,13 +48,13 @@ Dinamik şifreleme, etkin veya isteğe bağlı içeriğinizi AES-128 veya üç a
 > [!NOTE]
 > Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
-## <a name="dynamic-manifest"></a>Dinamik bildirim
+## <a name="dynamic-filtering"></a>Dinamik filtreleme
 
 Dinamik filtreleme, oyunculara gönderilen iz, biçim, bitme ve sunum süresi pencerelerinin sayısını denetlemek için kullanılır. Daha fazla bilgi için bkz. [filtreler ve dinamik bildirimler](filters-dynamic-manifest-overview.md).
 
 ## <a name="live-event-types"></a>Canlı olay türleri
 
-[Canlı Etkinlikler](https://docs.microsoft.com/rest/api/media/liveevents) sırasında canlı video akışları alınır ve işlenir. Canlı bir olay, *doğrudan geçiş* (Şirket içi bir Live Encoder çoklu bit hızı akışı gönderir) veya *canlı kodlama* (Şirket içi bir Live Encoder tek bit hızı akışı gönderir) olarak ayarlanabilir. Media Services v3 sürümünde canlı akış hakkında daha fazla bilgi için bkz. [canlı olaylar ve canlı çıktılar](live-events-outputs-concept.md).
+Canlı [Etkinlikler](https://docs.microsoft.com/rest/api/media/liveevents) , canlı video akışlarını geri almak ve işlemeden sorumludur. Canlı bir olay, *doğrudan geçiş* (Şirket içi bir Live Encoder çoklu bit hızı akışı gönderir) veya *canlı kodlama* (Şirket içi bir Live Encoder tek bit hızı akışı gönderir) olarak ayarlanabilir. Media Services v3 sürümünde canlı akış hakkında daha fazla bilgi için bkz. [canlı olaylar ve canlı çıktılar](live-events-outputs-concept.md).
 
 ### <a name="pass-through"></a>Geçiş
 
@@ -77,9 +79,9 @@ Canlı döküm, doğrudan geçiş ya da canlı kodlama olan canlı olaylarla kul
 
 Media Services v3 sürümünde canlı akış iş akışını anlamak için öncelikle aşağıdaki kavramları gözden geçirmeniz ve anlamanız gerekir: 
 
-- [Akış Uç Noktaları](streaming-endpoint-concept.md)
-- [Canlı Etkinlikler ve Canlı Çıkışlar](live-events-outputs-concept.md)
-- [Akış Bulucuları](streaming-locators-concept.md)
+- [Akış uç noktaları](streaming-endpoint-concept.md)
+- [Canlı etkinlikler ve canlı çıktılar](live-events-outputs-concept.md)
+- [Akış Konumlandırıcı](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>Genel adımlar
 
@@ -104,7 +106,7 @@ Media Services v3 sürümünde canlı akış iş akışını anlamak için önce
 
     * Kodlayıcıdan akışı göndermeyi durdurun.
     * Canlı etkinliği durdurun. Canlı etkinlik durdurulduktan sonra ücret ödemeyecektir. Tekrar başlatmanız gerektiğinde, aynı alma URL’sine sahip olacağından kodlayıcıyı yeniden yapılandırmanız gerekmez.
-    * Canlı olayınızın arşivini isteğe bağlı bir akış olarak sunmaya devam etmek istemiyorsanız Akış Uç Noktanızı durdurabilirsiniz. Canlı etkinlik durdurulmuş durumdaysa, hiçbir ücret ödemeyecektir.
+    * Canlı olaylarınızın arşivini isteğe bağlı bir akış olarak sağlamaya devam etmek istemediğiniz sürece akış uç noktanızı durdurabilirsiniz. Canlı etkinlik durdurulmuş durumdaysa, hiçbir ücret ödemeyecektir.
 
 Canlı çıktının Arşivlenmesi gereken varlık, canlı çıktı silindiğinde otomatik olarak isteğe bağlı bir varlık haline gelir. Canlı bir olay durdurulmadan önce tüm canlı çıktıları silmeniz gerekir. Durdurulduğunda canlı çıktıları otomatik olarak kaldırmak için, bir [Removeoutputsonstop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) isteğe bağlı bayrağını kullanabilirsiniz. 
 

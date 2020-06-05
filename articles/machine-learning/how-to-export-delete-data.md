@@ -5,18 +5,18 @@ description: Azure Machine Learning Studio, CLı, SDK ve kimliği doğrulanmış
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
 ms.date: 04/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 50234eb356314039b8023f0442207ae0b762676e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d10228eb76f95a7d5225b6b414ca622c92bf1c5
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191643"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434270"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning hizmeti çalışma alanı verilerinizi dışarı veya silme
 
@@ -36,11 +36,11 @@ Azure Machine Learning, kişisel veriler, çalışma geçmişi belgelerinin ve h
 
 ## <a name="delete-workspace-data-with-the-rest-api"></a>REST API çalışma alanı verilerini silme
 
-Verileri silmek için aşağıdaki API çağrıları HTTP DELETE fiili ile yapılabilir. Bunlar, istekte bir `Authorization: Bearer <arm-token>` üst bilgi varmış ve bu, `<arm-token>` `https://management.core.windows.net/` uç nokta için AAD erişim belirteci olduğu yetkilidir.  
+Verileri silmek için aşağıdaki API çağrıları HTTP DELETE fiili ile yapılabilir. Bunlar, istekte bir üst bilgi varmış ve bu, `Authorization: Bearer <arm-token>` `<arm-token>` uç nokta için AAD erişim belirteci olduğu yetkilidir `https://management.core.windows.net/` .  
 
 Bu belirteci alma ve Azure uç noktalarını çağırma hakkında bilgi edinmek için bkz. ML kaynaklarını ve [azure REST API belgelerini](https://docs.microsoft.com/rest/api/azure/) [yönetmek için REST kullanma](how-to-manage-rest.md) .  
 
-Aşağıdaki örneklerde, içindeki {} metni, ilişkili kaynağı belirten örnek adlarıyla değiştirin.
+Aşağıdaki örneklerde, içindeki metni, {} ilişkili kaynağı belirten örnek adlarıyla değiştirin.
 
 ### <a name="delete-an-entire-workspace"></a>Tüm çalışma alanını sil
 
@@ -92,11 +92,11 @@ Ayrı hizmetler şu şekilde silinebilir:
 
 ## <a name="export-service-data-with-the-rest-api"></a>Hizmet verilerini REST API dışa aktarma
 
-Verileri dışarı aktarmak için, aşağıdaki API çağrıları HTTP GET fiili ile yapılabilir. Bunlar, istekte bir `Authorization: Bearer <arm-token>` üst bilgi varmış ve bu, uç nokta `<arm-token>` için AAD erişim belirteci olduğu durumlarda yetkilendirilir`https://management.core.windows.net/`  
+Verileri dışarı aktarmak için, aşağıdaki API çağrıları HTTP GET fiili ile yapılabilir. Bunlar, istekte bir üst bilgi varmış ve bu, `Authorization: Bearer <arm-token>` `<arm-token>` uç nokta için AAD erişim belirteci olduğu durumlarda yetkilendirilir`https://management.core.windows.net/`  
 
 Bu belirteci nasıl alabileceğinizi ve Azure uç noktalarına nasıl çağrılacağını öğrenmek için bkz. ML kaynaklarını ve [azure REST API belgelerini](https://docs.microsoft.com/rest/api/azure/) [yönetmek için REST kullanma](how-to-manage-rest.md) ..   
 
-Aşağıdaki örneklerde, içindeki {} metni, ilişkili kaynağı belirten örnek adlarıyla değiştirin.
+Aşağıdaki örneklerde, içindeki metni, {} ilişkili kaynağı belirten örnek adlarıyla değiştirin.
 
 ### <a name="export-workspace-information"></a>Çalışma alanı bilgilerini dışarı aktar
 

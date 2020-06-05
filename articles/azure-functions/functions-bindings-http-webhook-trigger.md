@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: ce40a46d4c1da627930ef8de8813936b71dcc281
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2f102a2a335d61326ccb02a898f425e7924f7fdb
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648935"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434030"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Işlevleri HTTP tetikleyicisi
 
@@ -479,9 +479,9 @@ Tüm bir örnek için bkz. [tetikleyici örneği](#example).
 
 Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `HttpTrigger` .
 
-|function. JSON özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
-| **türüyle** | yok| Gerekli-olarak ayarlanmalıdır `httpTrigger` . |
+| **tür** | yok| Gerekli-olarak ayarlanmalıdır `httpTrigger` . |
 | **Görünüm** | yok| Gerekli-olarak ayarlanmalıdır `in` . |
 | **ada** | yok| Required-istek veya istek gövdesi için işlev kodunda kullanılan değişken adı. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |, Varsa, işlevi çağırmak için istekte hangi anahtarların mevcut olması gerektiğini belirler. Yetkilendirme düzeyi aşağıdaki değerlerden biri olabilir: <ul><li><code>anonymous</code>&mdash;API anahtarı gerekli değildir.</li><li><code>function</code>&mdash;İşleve özgü bir API anahtarı gereklidir. Hiçbiri sağlanmazsa varsayılan değer budur.</li><li><code>admin</code>&mdash;Ana anahtar gereklidir.</li></ul> Daha fazla bilgi için [Yetkilendirme anahtarları](#authorization-keys)hakkında bölümüne bakın. |
@@ -634,12 +634,14 @@ public class HttpTriggerJava {
 
 ---
 
-Varsayılan olarak, tüm işlev yollarına *API*ön eki eklenir. Ayrıca, `http.routePrefix` [Host. JSON](functions-host-json.md) dosyanızdaki özelliğini kullanarak ön eki özelleştirebilir veya kaldırabilirsiniz. Aşağıdaki örnek, *Host. JSON* dosyasındaki önek için boş bir dize kullanarak *API* yol önekini kaldırır.
+Varsayılan olarak, tüm işlev yollarına *API*ön eki eklenir. Ayrıca, `extensions.http.routePrefix` [Host. JSON](functions-host-json.md) dosyanızdaki özelliğini kullanarak ön eki özelleştirebilir veya kaldırabilirsiniz. Aşağıdaki örnek, *Host. JSON* dosyasındaki önek için boş bir dize kullanarak *API* yol önekini kaldırır.
 
 ```json
 {
-    "http": {
-    "routePrefix": ""
+    "extensions": {
+        "http": {
+            "routePrefix": ""
+        }
     }
 }
 ```

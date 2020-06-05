@@ -5,18 +5,18 @@ description: Azure Machine Learning aracılığıyla dağıtılan bir Web hizmet
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: a58b0120feaba907c62bc646f4f85d9185227fed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb766a81cda822377eeda09cab75d19111523bef
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80287348"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432862"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -54,7 +54,7 @@ Bu, bir Web hizmetinin güvenliğini sağlamaya yönelik genel bir işlemdir:
 
 ## <a name="get-a-domain-name"></a>Etki alanı adı Al
 
-Zaten bir etki alanı adınız yoksa, bir *etki alanı adı kaydedicisinde*bir tane satın alın. İşlem ve fiyat kayıt şirketlerinde arasında farklılık gösterir. Kaydedici, etki alanı adını yönetmek için araçlar sağlar. Tam etki alanı adını (FQDN) (örneğin, www\.contoso.com) Web HIZMETINIZI barındıran IP adresine eşlemek için bu araçları kullanabilirsiniz.
+Zaten bir etki alanı adınız yoksa, bir *etki alanı adı kaydedicisinde*bir tane satın alın. İşlem ve fiyat kayıt şirketlerinde arasında farklılık gösterir. Kaydedici, etki alanı adını yönetmek için araçlar sağlar. Tam etki alanı adını (FQDN) (örneğin, www \. contoso.com) Web hizmetinizi BARıNDıRAN IP adresine eşlemek için bu araçları kullanabilirsiniz.
 
 ## <a name="get-a-tlsssl-certificate"></a>Bir TLS/SSL sertifikası alın
 
@@ -63,7 +63,7 @@ Bir TLS/SSL sertifikası (dijital sertifika) almanın birçok yolu vardır. En y
 * Bir **sertifika**. Sertifika, tam sertifika zincirini içermelidir ve "pek-Encoded" olmalıdır.
 * Bir **anahtar**. Anahtar Ayrıca pek kodlu olmalıdır.
 
-Bir sertifika istediğinizde, Web hizmeti için kullanmayı planladığınız adresin FQDN 'sini sağlamanız gerekir (örneğin, www\.contoso.com). Sertifikaya atılabilecek adres ve istemcilerin kullandığı adres, Web hizmetinin kimliğini doğrulamak için karşılaştırılır. Bu adresler eşleşmezse istemci bir hata iletisi alır.
+Bir sertifika istediğinizde, Web hizmeti için kullanmayı planladığınız adresin FQDN 'sini sağlamanız gerekir (örneğin, www \. contoso.com). Sertifikaya atılabilecek adres ve istemcilerin kullandığı adres, Web hizmetinin kimliğini doğrulamak için karşılaştırılır. Bu adresler eşleşmezse istemci bir hata iletisi alır.
 
 > [!TIP]
 > Sertifika yetkilisi sertifikayı ve anahtarı pek kodlu dosyalar olarak sağlayamıyorum, biçimi değiştirmek için [OpenSSL](https://www.openssl.org/) gibi bir yardımcı program kullanabilirsiniz.
@@ -87,7 +87,7 @@ AKS 'e dağıttığınızda, yeni bir AKS kümesi oluşturabilir veya var olan b
 
 **Enable_ssl** yöntemi, Microsoft tarafından veya satın aldığınız bir sertifika tarafından sunulan bir sertifikayı kullanabilir.
 
-  * Microsoft 'tan bir sertifika kullandığınızda *leaf_domain_label* parametresini kullanmanız gerekir. Bu parametre, hizmetin DNS adını oluşturur. Örneğin, "contoso" değeri "contoso\<altı-rastgele-karakter> bir etki alanı adı oluşturur. \<azureregion>. cloudapp.Azure.com ", \<azureregion>, hizmeti içeren bölgedir. İsteğe bağlı olarak, mevcut *leaf_domain_label*üzerine yazmak için *overwrite_existing_domain* parametresini kullanabilirsiniz.
+  * Microsoft 'tan bir sertifika kullandığınızda *leaf_domain_label* parametresini kullanmanız gerekir. Bu parametre, hizmetin DNS adını oluşturur. Örneğin, "contoso" değeri "contoso" etki alanı adını oluşturur \<six-random-characters> . \<azureregion> cloudapp.azure.com ", burada \<azureregion> hizmeti içeren bölgedir. İsteğe bağlı olarak, mevcut *leaf_domain_label*üzerine yazmak için *overwrite_existing_domain* parametresini kullanabilirsiniz.
 
     Hizmeti TLS etkin olarak dağıtmak (veya yeniden dağıtmak) için, *ssl_enabled* parametresini uygun olduğunda "true" olarak ayarlayın. *Ssl_certificate* parametresini *sertifika* dosyasının değerine ayarlayın. *Ssl_key* *anahtar* dosyasının değerine ayarlayın.
 
@@ -172,6 +172,10 @@ TLS/SSL sertifikalarının kullanım süreleri ve yenilenmesi gerekiyor. Genelli
 
 Sertifika ilk olarak Microsoft tarafından oluşturulduysa (hizmeti oluşturmak için *leaf_domain_label* kullanılırken), sertifikayı güncelleştirmek için aşağıdaki örneklerden birini kullanın:
 
+> [!IMPORTANT]
+> * Mevcut sertifika hala geçerliyse, `renew=True` yapılandırmayı yenilemeye zorlamak için (SDK) veya `--ssl-renew` (CLI) kullanın. Örneğin, var olan sertifika 10 gün boyunca hala geçerliyse ve kullanmıyorsanız `renew=True` , sertifika yenilenmeyebilir.
+> * Hizmet ilk kez dağıtıldığında, `leaf_domain_label` modelini kullanarak BIR DNS adı oluşturmak için kullanılır `<leaf-domain-label>######.<azure-region>.cloudapp.azure.net` . Var olan adı (başlangıçta oluşturulan 6 basamak dahil) korumak için özgün `leaf_domain_label` değeri kullanın. Oluşturulan 6 basamağı eklemeyin.
+
 **SDK 'Yı kullanma**
 
 ```python
@@ -183,7 +187,7 @@ from azureml.core.compute.aks import SslConfiguration
 aks_target = AksCompute(ws, clustername)
 
 # Update the existing certificate by referencing the leaf domain label
-ssl_configuration = SslConfiguration(leaf_domain_label="myaks", overwrite_existing_domain=True)
+ssl_configuration = SslConfiguration(leaf_domain_label="myaks", overwrite_existing_domain=True, renew=True)
 update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)
 ```
@@ -191,7 +195,7 @@ aks_target.update(update_config)
 **CLI kullanma**
 
 ```azurecli
-az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True
+az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True --ssl-renew
 ```
 
 Daha fazla bilgi için aşağıdaki başvuru belgelerine bakın:
@@ -241,7 +245,7 @@ Daha fazla bilgi için aşağıdaki başvuru belgelerine bakın:
 
 ## <a name="disable-tls"></a>TLS 'yi devre dışı bırak
 
-Azure Kubernetes hizmetine dağıtılan bir model için TLS 'yi devre dışı bırakmak için, `SslConfiguration` bir `status="Disabled"`ile oluşturun ve sonra bir güncelleştirme gerçekleştirin:
+Azure Kubernetes hizmetine dağıtılan bir model için TLS 'yi devre dışı bırakmak için, bir `SslConfiguration` ile oluşturun `status="Disabled"` ve sonra bir güncelleştirme gerçekleştirin:
 
 ```python
 from azureml.core.compute import AksCompute

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: d29420d14a716e5a45e42dd681faa01f518f713a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: aa442e15dbc95709ecf3c818f69301d2f02e9b5b
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666543"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417030"
 ---
 # <a name="iot-central-device-development-overview"></a>IoT Central cihaz geliştirmeye genel bakış
 
@@ -85,7 +85,9 @@ Cihazınızın davranışını uygulamak için [Azure IoT cihaz SDK](#languages-
 - Cihaz ve IoT Central arasındaki özellik değerlerini eşitler. Cihaz şablonu, IoT Central bilgileri görüntüleyebilmesi için özellik adlarını ve veri türlerini belirtir.
 - Komutlar için komut işleyicilerini uygulama cihaz şablonunda belirtir. Cihaz şablonu, cihazın kullanması gereken komut adlarını ve parametreleri belirtir.
 
-Daha fazla bilgi için bkz [. Node. js istemci uygulaması oluşturma ve bağlama](./tutorial-connect-device-nodejs.md) veya [Python istemci uygulaması oluşturma ve bağlama](./tutorial-connect-device-python.md).
+Cihaz şablonlarının rolü hakkında daha fazla bilgi için bkz. [cihaz şablonları nelerdir?](./concepts-device-templates.md).
+
+Bazı örnek kodlar için bkz [. Node. js istemci uygulaması oluşturma ve bağlama](./tutorial-connect-device-nodejs.md) veya [Python istemci uygulaması oluşturma ve bağlama](./tutorial-connect-device-python.md).
 
 ### <a name="languages-and-sdks"></a>Diller ve SDK 'lar
 

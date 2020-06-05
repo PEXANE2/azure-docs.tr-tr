@@ -8,6 +8,7 @@ manager: dcscontentpm
 tags: azure-service-management
 ms.assetid: b8ef8367-58b2-42df-9f26-3269980950b8
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0bc080ed41f32ae2af018e9316e67ab38c2d0650
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ff4dcdf5806196a0b86445880ddbf13da3dbbc3
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81449910"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417829"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-portal"></a>Azure portal kullanarak bir sanal makine için özel IP adresleri yapılandırma (klasik)
 
@@ -40,13 +41,13 @@ Aşağıdaki örnek adımlarda, önceden oluşturulmuş basit bir ortam beklenir
 *192.168.1.101*statik özel IP 'Si Ile *Testvnet* adlı VNET 'in *ön uç* alt ağında *DNS01* adlı bir VM oluşturmak için aşağıdaki adımları izleyin:
 
 1. Tarayıcıdan https://portal.azure.com adresine gidin ve gerekiyorsa Azure hesabınızla oturum açın.
-2. **Yeni** > **Compute**işlem > **Windows Server 2012 R2 veri merkezini**seçin, **bir dağıtım modeli Seç** listesinin zaten **Klasik**olduğunu ve sonra **Oluştur**' u seçmesini unutmayın.
+2. **Yeni**  >  **işlem**  >  **Windows Server 2012 R2 veri merkezini**seçin, **bir dağıtım modeli Seç** listesinin zaten **Klasik**olduğunu ve sonra **Oluştur**' u seçmesini unutmayın.
    
     ![Azure portal VM oluşturma](./media/virtual-networks-static-ip-classic-pportal/figure01.png)
 3. **VM oluştur**altında, oluşturulacak VM 'nin adını (senaryoda*DNS01* ), yerel yönetici hesabını ve parolayı girin.
    
     ![Azure portal VM oluşturma](./media/virtual-networks-static-ip-classic-pportal/figure02.png)
-4. **İsteğe bağlı yapılandırma** > **ağı** > **sanal ağı**' nı seçin ve ardından **testvnet**' i seçin. **Testvnet** yoksa, *Orta ABD* konumunu kullandığınızdan ve bu makalenin başlangıcında açıklanan test ortamını oluşturmuş olduğunuzdan emin olun.
+4. **İsteğe bağlı yapılandırma**  >  **ağı**  >  **sanal ağı**' nı seçin ve ardından **testvnet**' i seçin. **Testvnet** yoksa, *Orta ABD* konumunu kullandığınızdan ve bu makalenin başlangıcında açıklanan test ortamını oluşturmuş olduğunuzdan emin olun.
    
     ![Azure portal VM oluşturma](./media/virtual-networks-static-ip-classic-pportal/figure03.png)
 5. **Ağ**altında, şu anda seçili olan alt ağın *ön uç*olduğundan emin olun **, IP** **adresi ataması** ' nın altında **statik**' ı seçin ve ardından aşağıda görüldüğü gibi **IP adresi** için *192.168.1.101* girin.
@@ -60,7 +61,7 @@ Aşağıdaki örnek adımlarda, önceden oluşturulmuş basit bir ortam beklenir
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Bir VM için statik özel IP adresi bilgilerini alma
 Yukarıdaki adımlarla oluşturulan VM 'nin statik özel IP adresi bilgilerini görüntülemek için aşağıdaki adımları yürütün.
 
-1. Azure Portal tüm sanal makinelere **göz at** > **(klasik)** > **DNS01** > **Tüm ayarlar** > **IP adresleri** ' ni seçin ve IP adresi atamasını ve IP adresini aşağıda görüldüğü gibi unutmayın.
+1. Azure Portal tüm sanal makinelere **göz at**  >  **(klasik)**  >  **DNS01**  >  **Tüm ayarlar**  >  **IP adresleri** ' ni seçin ve IP adresi atamasını ve IP adresini aşağıda görüldüğü gibi unutmayın.
    
     ![Azure portal VM oluşturma](./media/virtual-networks-static-ip-classic-pportal/figure06.png)
 

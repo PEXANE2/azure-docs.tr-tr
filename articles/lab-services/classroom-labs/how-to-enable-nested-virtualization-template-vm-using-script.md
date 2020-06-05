@@ -13,42 +13,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 56e5ad21f94521565b4df193b2450a1c994b66f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b03bf543226da12e5cfca5228b879a533942d384
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79503042"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424372"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>Betik kullanarak Azure Lab Services bir şablon sanal makinesinde iç içe sanallaştırmayı etkinleştirme
 
 İç içe sanallaştırma, bir laboratuvarın şablon sanal makinesi içinde çoklu VM ortamı oluşturmanızı sağlar. Şablonu yayımlamak, her kullanıcıya, içindeki birden çok VM ile bir sanal makine oluşturacak şekilde laboratuvar sağlar.  İç içe sanallaştırma ve Azure Lab Services hakkında daha fazla bilgi için bkz. [Azure Lab Services bir şablon sanal makinesinde iç içe sanallaştırmayı etkinleştirme](how-to-enable-nested-virtualization-template-vm.md).
 
-Bu makaledeki adımlar, Windows Server 2016 veya Windows Server 2019 için iç içe sanallaştırmayı ayarlamaya odaklanmaktadır. Hyper-V ile şablon makinesi ayarlamak için bir komut dosyası kullanacaksınız.  Aşağıdaki adımlar, [Laboratuvar Hizmetleri Hyper-V betiklerini](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV)kullanma konusunda size rehberlik edecektir.
+Bu makaledeki adımlar, Windows Server 2016, Windows Server 2019 veya Windows 10 için iç içe sanallaştırmayı ayarlamaya odaklanmaktadır. Hyper-V ile şablon makinesi ayarlamak için bir komut dosyası kullanacaksınız.  Aşağıdaki adımlar, [Laboratuvar Hizmetleri Hyper-V betiklerini](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV)kullanma konusunda size rehberlik edecektir.
 
 >[!IMPORTANT]
 >Laboratuvar oluştururken sanal makine boyutu için **büyük (iç içe sanallaştırma)** veya **Orta (iç içe sanallaştırma)** seçeneğini belirleyin.  İç içe sanallaştırma, aksi takdirde çalışmaz.  
 
 ## <a name="run-script"></a>Betik çalıştırma
 
-1. Internet Explorer kullanıyorsanız, güvenilen siteler listesine eklemeniz `https://github.com` gerekebilir.
+1. Internet Explorer kullanıyorsanız, `https://github.com` Güvenilen siteler listesine eklemeniz gerekebilir.
     1. Internet Explorer'ı açın.
     1. Dişli simgesini seçin ve **Internet seçenekleri**' ni seçin.  
     1. **Internet seçenekleri** iletişim kutusu göründüğünde, **güvenlik**' i seçin, **Güvenilen siteler**' i seçin, **siteler** ' i tıklatın.
-    1. **Güvenilen siteler** iletişim kutusu göründüğünde, güvenilir Web `https://github.com` siteleri listesine ekleyin ve **Kapat**' ı seçin.
+    1. **Güvenilen siteler** iletişim kutusu göründüğünde, `https://github.com` güvenilir web siteleri listesine ekleyin ve **Kapat**' ı seçin.
 
         ![Güvenilen siteler](../media/how-to-enable-nested-virtualization-template-vm-using-script/trusted-sites-dialog.png)
 1. Git deposu dosyalarını aşağıdaki adımlarda özetlenen şekilde indirin.
-    1. Adresine gidin [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/).
+    1. Adresine gidin [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/) .
     1. **Kopyala veya indir** düğmesine tıklayın.
     1. **ZIP 'ı indir**' e tıklayın.
     1. ZIP dosyasını Ayıkla
 
     >[!TIP]
-    >Git deposunu üzerinde [https://github.com/Azure/azure-devtestlab.git](https://github.com/Azure/azure-devtestlab.git)de kopyalayabilirsiniz.
+    >Git deposunu üzerinde de kopyalayabilirsiniz [https://github.com/Azure/azure-devtestlab.git](https://github.com/Azure/azure-devtestlab.git) .
 
 1. **PowerShell** 'i **yönetici** modunda başlatın.
-1. PowerShell penceresinde, indirilen betiği içeren klasöre gidin. Depo dosyalarının en üst klasöründen gezindiğinizde, betiği adresinde `azure-devtestlab\samples\ClassroomLabs\Scripts\HyperV\`bulunur.
+1. PowerShell penceresinde, indirilen betiği içeren klasöre gidin. Depo dosyalarının en üst klasöründen gezindiğinizde, betiği adresinde bulunur `azure-devtestlab\samples\ClassroomLabs\Scripts\HyperV\` .
 1. Betiği başarıyla çalıştırmak için yürütme ilkesini değiştirmeniz gerekebilir. Şu komutu çalıştırın:
 
     ```powershell

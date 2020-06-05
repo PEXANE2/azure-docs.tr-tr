@@ -7,14 +7,14 @@ author: Blackmist
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 1cafc311c842cd5bc17fefe34eacbdfc99b7147a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3603bf8afdcd990144897113f4e8506629f60a3
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617734"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84429743"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Öğretici: CLı 'dan model eğitme ve dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ Aşağıdaki eylemleri nasıl gerçekleştireceğinizi öğrenin:
 > * Modeli bir Web hizmeti olarak dağıtma
 > * Web hizmetini kullanarak veri puanı
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
@@ -45,7 +45,7 @@ Aşağıdaki eylemleri nasıl gerçekleştireceğinizi öğrenin:
 
 ## <a name="download-the-example-project"></a>Örnek projeyi indirin
 
-Bu öğretici için [https://github.com/microsoft/MLOps](https://github.com/microsoft/MLOps) projeyi indirin. `examples/cli-train-deploy` Dizindeki dosyalar bu öğreticideki adımlar tarafından kullanılır.
+Bu öğretici için [https://github.com/microsoft/MLOps](https://github.com/microsoft/MLOps) projeyi indirin. `examples/cli-train-deploy`Dizindeki dosyalar bu öğreticideki adımlar tarafından kullanılır.
 
 Dosyaların yerel bir kopyasını almak için, [bir. zip arşivi indirin](https://github.com/microsoft/MLOps/archive/master.zip)ya da depoyu kopyalamak Için aşağıdaki git komutunu kullanın:
 
@@ -55,7 +55,7 @@ git clone https://github.com/microsoft/MLOps.git
 
 ### <a name="training-files"></a>Eğitim dosyaları
 
-Projedeki `examples/cli-train-deploy` Dizin, bir modeli eğitmek için kullanılan aşağıdaki dosyaları içerir:
+`examples/cli-train-deploy`Projedeki Dizin, bir modeli eğitmek için kullanılan aşağıdaki dosyaları içerir:
 
 * `.azureml\mnist.runconfig`: Bir __çalışma yapılandırma__ dosyası. Bu dosya, modeli eğitmek için gereken çalışma zamanı ortamını tanımlar. Bu örnekte, modeli eğitim ortamına eğitmek için kullanılan verileri de takar.
 * `scripts\train.py`: Eğitim betiği. Bu dosya, modeli tratlar.
@@ -70,7 +70,7 @@ Depo, eğitilen modeli bir Web hizmeti olarak dağıtmak için kullanılan aşa�
 * `aciDeploymentConfig.yml`: Bir __dağıtım yapılandırma__ dosyası. Bu dosya, model için gereken barındırma ortamını tanımlar.
 * `inferenceConfig.json`: Bir __çıkarım yapılandırma__ dosyası. Bu dosya, hizmet tarafından modelle verileri Puanlama için kullanılan yazılım ortamını tanımlar.
 * `score.py`: Gelen verileri kabul eden bir Python betiği, modeli kullanarak bunu alır ve bir yanıt döndürür.
-* `scoring-env.yml`: Modeli ve `score.py` betiği çalıştırmak için gereken Conda bağımlılıkları.
+* `scoring-env.yml`: Modeli ve betiği çalıştırmak için gereken Conda bağımlılıkları `score.py` .
 * `testdata.json`: Dağıtılan Web hizmetini test etmek için kullanılabilecek bir veri dosyası.
 
 ## <a name="connect-to-your-azure-subscription"></a>Azure aboneliğinize bağlanma
@@ -81,7 +81,7 @@ CLı 'dan Azure aboneliğinizde kimlik doğrulayabilmeniz için çeşitli yollar
 az login
 ```
 
-CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum açma sayfasını yükler. Aksi takdirde, bir tarayıcı açmanız ve komut satırındaki yönergeleri izlemeniz gerekir. Yönergeler, bir yetkilendirme koduna [https://aka.ms/devicelogin](https://aka.ms/devicelogin) göz atmaya ve girmeye yönelik bilgiler içerir.
+CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum açma sayfasını yükler. Aksi takdirde, bir tarayıcı açmanız ve komut satırındaki yönergeleri izlemeniz gerekir. Yönergeler, [https://aka.ms/devicelogin](https://aka.ms/devicelogin) bir yetkilendirme koduna göz atmaya ve girmeye yönelik bilgiler içerir.
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
@@ -103,7 +103,7 @@ az extension update -n azure-cli-ml
 
 Kaynak grubu, Azure platformunda temel bir kaynak kapsayıcısıdır. Azure Machine Learning ile çalışırken, kaynak grubu Azure Machine Learning çalışma alanınızı içerecektir. Ayrıca, çalışma alanı tarafından kullanılan diğer Azure hizmetlerini de içerecektir. Örneğin, modelinize bulut tabanlı bir işlem kaynağı kullanarak eğitebilirsiniz, kaynak grubunda bu kaynak oluşturulur.
 
-__Yeni bir kaynak grubu oluşturmak__için aşağıdaki komutu kullanın. Bu `<resource-group-name>` kaynak grubu için kullanılacak adla değiştirin. Bu `<location>` kaynak grubu Için kullanılacak Azure bölgesiyle değiştirin:
+__Yeni bir kaynak grubu oluşturmak__için aşağıdaki komutu kullanın. `<resource-group-name>`Bu kaynak grubu için kullanılacak adla değiştirin. `<location>`Bu kaynak grubu için kullanılacak Azure bölgesiyle değiştirin:
 
 > [!TIP]
 > Azure Machine Learning kullanılabilir olan bir bölge seçmelisiniz. Bilgi için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
@@ -132,7 +132,7 @@ Kaynak gruplarıyla çalışma hakkında daha fazla bilgi için bkz. [az Group](
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
-Yeni bir çalışma alanı oluşturmak için aşağıdaki komutu kullanın. Bu `<workspace-name>` çalışma alanı için kullanmak istediğiniz adla değiştirin. Kaynak `<resource-group-name>` grubunun adıyla değiştirin:
+Yeni bir çalışma alanı oluşturmak için aşağıdaki komutu kullanın. `<workspace-name>`Bu çalışma alanı için kullanmak istediğiniz adla değiştirin. `<resource-group-name>`Kaynak grubunun adıyla değiştirin:
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
@@ -182,7 +182,7 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 }
 ```
 
-Bu komut, çalışma `.azureml/config.json` alanınıza bağlanmak için gereken bilgileri içeren bir dosya oluşturur. Bu öğreticide kullanılan `az ml` komutların geri kalanı bu dosyayı kullanacaktır. bu nedenle, çalışma alanını ve kaynak grubunu tüm komutlara eklemeniz gerekmez.
+Bu komut `.azureml/config.json` , çalışma alanınıza bağlanmak için gereken bilgileri içeren bir dosya oluşturur. `az ml`Bu öğreticide kullanılan komutların geri kalanı bu dosyayı kullanacaktır. bu nedenle, çalışma alanını ve kaynak grubunu tüm komutlara eklemeniz gerekmez.
 
 ## <a name="create-the-compute-target-for-training"></a>Eğitim için işlem hedefi oluşturma
 
@@ -203,16 +203,16 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 }
 ```
 
-Bu komut, en fazla dört düğüm ile `cpu-cluster`adlı yeni bir işlem hedefi oluşturur. Seçilen VM boyutu, GPU kaynağına sahip bir VM sağlar. VM boyutu hakkında daha fazla bilgi için bkz. [VM türleri ve boyutları].
+Bu komut `cpu-cluster` , en fazla dört düğüm ile adlı yeni bir işlem hedefi oluşturur. Seçilen VM boyutu, GPU kaynağına sahip bir VM sağlar. VM boyutu hakkında daha fazla bilgi için bkz. [VM türleri ve boyutları].
 
 > [!IMPORTANT]
-> İşlem hedefinin adı (`cpu-cluster` Bu örnekte) önemlidir; bir sonraki bölümde kullanılan `.azureml/mnist.runconfig` dosya tarafından başvurulur.
+> İşlem hedefinin adı ( `cpu-cluster` Bu örnekte) önemlidir; `.azureml/mnist.runconfig` sonraki bölümde kullanılan dosya tarafından başvurulur.
 
 ## <a name="define-the-dataset"></a>Veri kümesini tanımlama
 
-Bir modeli eğitebilmeniz için eğitim verilerini bir veri kümesi kullanarak sağlayabilirsiniz. CLı 'dan bir veri kümesi oluşturmak için bir veri kümesi tanım dosyası sağlamanız gerekir. Depoda `dataset.json` belirtilen dosya, veri kümesini kullanarak yeni bir veri kümesi oluşturur. Oluşturduğu veri kümesi adı `mnist-dataset`.
+Bir modeli eğitebilmeniz için eğitim verilerini bir veri kümesi kullanarak sağlayabilirsiniz. CLı 'dan bir veri kümesi oluşturmak için bir veri kümesi tanım dosyası sağlamanız gerekir. Depoda `dataset.json` belirtilen dosya, veri kümesini kullanarak yeni bir veri kümesi oluşturur. Oluşturduğu veri kümesi adı `mnist-dataset` .
 
-Veri kümesini `dataset.json` dosyayı kullanarak kaydetmek için aşağıdaki komutu kullanın:
+Veri kümesini dosyayı kullanarak kaydetmek için `dataset.json` aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
 az ml dataset register -f dataset.json --skip-validation
@@ -245,7 +245,7 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 ```
 
 > [!IMPORTANT]
-> Bir sonraki bölümde kullanıldığı gibi `id` girdinin değerini kopyalayın.
+> Bir `id` sonraki bölümde kullanıldığı gibi girdinin değerini kopyalayın.
 
 Bir veri kümesine yönelik daha kapsamlı bir şablon görmek için aşağıdaki komutu kullanın:
 
@@ -255,7 +255,7 @@ az ml dataset register --show-template
 
 ## <a name="reference-the-dataset"></a>Veri kümesine başvur
 
-Veri kümesini eğitim ortamında kullanılabilir hale getirmek için, bu dosyaya runconfig dosyasından başvurmanız gerekir. `.azureml/mnist.runconfig` Dosya aşağıdaki YAML girdilerini içerir:
+Veri kümesini eğitim ortamında kullanılabilir hale getirmek için, bu dosyaya runconfig dosyasından başvurmanız gerekir. `.azureml/mnist.runconfig`Dosya aşağıdaki YAML girdilerini içerir:
 
 ```yaml
 # The arguments to the script file.
@@ -288,33 +288,33 @@ data:
     overwrite: false
 ```
 
-`id` Girişin değerini, veri kümesini kaydettiğinizde döndürülen değerle eşleşecek şekilde değiştirin. Bu değer, eğitim sırasında verileri işlem hedefine yüklemek için kullanılır.
+Girişin değerini, `id` veri kümesini kaydettiğinizde döndürülen değerle eşleşecek şekilde değiştirin. Bu değer, eğitim sırasında verileri işlem hedefine yüklemek için kullanılır.
 
 Bu YAML, eğitim sırasında aşağıdaki eylemlere neden olur:
 
-* Veri kümesini (veri kümesinin KIMLIĞINE göre) eğitim ortamında takar ve `mnist` ortam değişkeninde bağlama noktasının yolunu depolar.
-* Eğitim ortamının içindeki verinin konumunu (bağlama noktası) `--data-folder` bağımsız değişkenini kullanarak betiğe geçirir.
+* Veri kümesini (veri kümesinin KIMLIĞINE göre) eğitim ortamında takar ve ortam değişkeninde bağlama noktasının yolunu depolar `mnist` .
+* Eğitim ortamının içindeki verinin konumunu (bağlama noktası) bağımsız değişkenini kullanarak betiğe geçirir `--data-folder` .
 
-Runconfig dosyası aynı zamanda eğitim çalıştırması tarafından kullanılan ortamı yapılandırmak için kullanılan bilgileri de içerir. Bu dosyayı inceliyorsanız, daha önce oluşturduğunuz `cpu-compute` işlem hedefine başvurmuş olduğunu görürsünüz. Ayrıca, eğitim (`"nodeCount": "4"`) sırasında kullanılacak düğüm sayısını ve eğitim betiğini çalıştırmak Için gereken Python paketlerini `"condaDependencies"` listeleyen bir bölümü içerir.
+Runconfig dosyası aynı zamanda eğitim çalıştırması tarafından kullanılan ortamı yapılandırmak için kullanılan bilgileri de içerir. Bu dosyayı inceliyorsanız, `cpu-compute` daha önce oluşturduğunuz işlem hedefine başvurmuş olduğunu görürsünüz. Ayrıca, eğitim () sırasında kullanılacak düğüm sayısını `"nodeCount": "4"` ve `"condaDependencies"` eğitim betiğini çalıştırmak Için gereken Python paketlerini listeleyen bir bölümü içerir.
 
 > [!TIP]
-> El ile bir runconfig dosyası oluşturulması mümkün olsa da, bu örnekteki `generate-runconfig.py` dosya depoya dahil edilen dosya kullanılarak oluşturulmuştur. Bu dosya kayıtlı veri kümesine bir başvuru alır, bir Run config program aracılığıyla oluşturur ve sonra dosyayı devam ettirir.
+> El ile bir runconfig dosyası oluşturulması mümkün olsa da, bu örnekteki `generate-runconfig.py` Dosya depoya dahil edilen dosya kullanılarak oluşturulmuştur. Bu dosya kayıtlı veri kümesine bir başvuru alır, bir Run config program aracılığıyla oluşturur ve sonra dosyayı devam ettirir.
 
 Yapılandırma dosyalarını Çalıştır hakkında daha fazla bilgi için bkz. [model eğitimi için işlem hedeflerini ayarlama ve kullanma](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli). Tüm JSON başvurusu için bkz. [runconfigschema. JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json).
 
 ## <a name="submit-the-training-run"></a>Eğitim çalıştırmasını gönder
 
-`cpu-cluster` İşlem hedefi üzerinde bir eğitim çalıştırmak için aşağıdaki komutu kullanın:
+İşlem hedefi üzerinde bir eğitim çalıştırmak için `cpu-cluster` aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
 az ml run submit-script -c mnist -e myexperiment --source-directory scripts -t runoutput.json
 ```
 
-Bu komut, deneme (`myexperiment`) için bir ad belirtir. Deneme, çalışma alanında bu çalıştırma hakkındaki bilgileri depolar.
+Bu komut, deneme () için bir ad belirtir `myexperiment` . Deneme, çalışma alanında bu çalıştırma hakkındaki bilgileri depolar.
 
-`-c mnist` Parametresi, `.azureml/mnist.runconfig` dosyasını belirtir.
+`-c mnist`Parametresi, dosyasını belirtir `.azureml/mnist.runconfig` .
 
-`-t` PARAMETRESI bir JSON dosyasında bu çalıştırmaya yönelik bir başvuru depolar ve sonraki adımlarda modeli kaydetmek ve indirmek için kullanılır.
+`-t`Parametresi BIR json dosyasında bu çalıştırmaya yönelik bir başvuru depolar ve sonraki adımlarda modeli kaydetmek ve indirmek için kullanılır.
 
 Eğitim işlemleri sırasında, uzaktan işlem kaynağındaki eğitim oturumundan bilgi akışı. Bilgilerin bir kısmı aşağıdaki metne benzer:
 
@@ -325,9 +325,9 @@ Accuracy is 0.9185
 
 Bu metin eğitim betiğiyle günlüğe kaydedilir ve modelin doğruluğunu görüntüler. Diğer modeller farklı performans ölçümlerine sahip olacaktır.
 
-Eğitim betiğini inceleyebileceğiniz zaman da eğitilen modeli depoladığında Alfa değerini de kullandığını fark edeceksiniz `outputs/sklearn_mnist_model.pkl`.
+Eğitim betiğini inceleyebileceğiniz zaman da eğitilen modeli depoladığında Alfa değerini de kullandığını fark edeceksiniz `outputs/sklearn_mnist_model.pkl` .
 
-Model, eğitilen işlem hedefinde `./outputs` dizine kaydedildi. Bu durumda, Azure bulutu 'nda Azure Machine Learning Işlem örneği. Eğitim süreci, eğitim Azure Machine Learning çalışma alanınıza gerçekleştiği işlem `./outputs` hedefinden dizinin içeriğini otomatik olarak yükler. Bu, denemenin bir parçası olarak depolanır (`myexperiment` Bu örnekte).
+Model, `./outputs` eğitilen işlem hedefinde dizine kaydedildi. Bu durumda, Azure bulutu 'nda Azure Machine Learning Işlem örneği. Eğitim süreci, `./outputs` eğitim Azure Machine Learning çalışma alanınıza gerçekleştiği işlem hedefinden dizinin içeriğini otomatik olarak yükler. Bu, denemenin bir parçası olarak depolanır ( `myexperiment` Bu örnekte).
 
 ## <a name="register-the-model"></a>Modeli kaydedin
 
@@ -337,7 +337,7 @@ Modeli denemenizin içindeki saklı sürümden doğrudan kaydetmek için aşağ�
 az ml model register -n mymodel -f runoutput.json --asset-path "outputs/sklearn_mnist_model.pkl" -t registeredmodel.json
 ```
 
-Bu komut, eğitim `outputs/sklearn_mnist_model.pkl` tarafından oluşturulan dosyayı, adlı `mymodel`yeni bir model kaydı olarak kaydeder. Bir `--assets-path` deneyde bir yola başvurur. Bu durumda, deneme ve çalıştırma bilgileri, eğitim komutu tarafından oluşturulan `runoutput.json` dosyadan yüklenir. , `-t registeredmodel.json` Bu komut tarafından oluşturulan yeni kayıtlı modele başvuran bir JSON dosyası oluşturur ve kayıtlı modellerle çalışan diğer CLI komutları tarafından kullanılır.
+Bu komut `outputs/sklearn_mnist_model.pkl` , eğitim tarafından oluşturulan dosyayı, adlı yeni bir model kaydı olarak kaydeder `mymodel` . `--assets-path`Bir deneyde bir yola başvurur. Bu durumda, deneme ve çalıştırma bilgileri, `runoutput.json` eğitim komutu tarafından oluşturulan dosyadan yüklenir. , `-t registeredmodel.json` Bu komut tarafından oluşturulan yeni kayıtlı modele başvuran BIR JSON dosyası oluşturur ve kayıtlı modellerle çalışan DIĞER CLI komutları tarafından kullanılır.
 
 Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 
@@ -366,7 +366,7 @@ az ml model download -i "mymodel:1" -t .
 az ml model register -n mymodel -p "sklearn_mnist_model.pkl"
 ```
 
-İlk komut kayıtlı modeli geçerli dizine indirir. Dosya adı `sklearn_mnist_model.pkl`, modeli kaydettiğinizde başvurulan dosya olur. İkinci komut, önceki kayıtla (`-p "sklearn_mnist_model.pkl"``mymodel`) aynı ada sahip yerel modeli () kaydeder. Bu kez, döndürülen JSON verisi sürümü 2 olarak listeler.
+İlk komut kayıtlı modeli geçerli dizine indirir. Dosya adı `sklearn_mnist_model.pkl` , modeli kaydettiğinizde başvurulan dosya olur. İkinci komut, `-p "sklearn_mnist_model.pkl"` önceki kayıtla () aynı ada sahip yerel modeli () kaydeder `mymodel` . Bu kez, döndürülen JSON verisi sürümü 2 olarak listeler.
 
 ## <a name="deploy-the-model"></a>Modeli dağıtma
 
@@ -379,18 +379,18 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.json --dc ac
 > [!NOTE]
 > "LocalWebservice varlığı denetlenemedi" veya "Docker Client oluşturulamadı" hatasıyla ilgili bir uyarı alabilirsiniz. Yerel bir Web hizmeti dağıtmadıkça bunu güvenle yoksayabilirsiniz.
 
-Bu komut, daha önce kaydettiğiniz modelin `myservice`1. sürümünü kullanarak adlı yeni bir hizmet dağıtır.
+Bu komut `myservice` , daha önce kaydettiğiniz modelin 1. sürümünü kullanarak adlı yeni bir hizmet dağıtır.
 
-`inferenceConfig.yml` Dosya, çıkarım için modeli kullanma hakkında bilgi sağlar. Örneğin, giriş betiğine (`score.py`) ve yazılım bağımlılıklarına başvurur.
+`inferenceConfig.yml`Dosya, çıkarım için modeli kullanma hakkında bilgi sağlar. Örneğin, giriş betiğine ( `score.py` ) ve yazılım bağımlılıklarına başvurur.
 
 Bu dosyanın yapısı hakkında daha fazla bilgi için, bkz. [çıkarım yapılandırma şeması](reference-azure-machine-learning-cli.md#inference-configuration-schema). Giriş betikleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md#prepare-to-deploy).
 
-Hizmetini `aciDeploymentConfig.yml` barındırmak için kullanılan dağıtım ortamını açıklar. Dağıtım yapılandırması, dağıtım için kullandığınız işlem türüne özeldir. Bu durumda, bir Azure Kapsayıcı örneği kullanılır. Daha fazla bilgi için bkz. [dağıtım yapılandırma şeması](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
+`aciDeploymentConfig.yml`Hizmetini barındırmak için kullanılan dağıtım ortamını açıklar. Dağıtım yapılandırması, dağıtım için kullandığınız işlem türüne özeldir. Bu durumda, bir Azure Kapsayıcı örneği kullanılır. Daha fazla bilgi için bkz. [dağıtım yapılandırma şeması](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
 
 Dağıtım işleminin tamamlanması birkaç dakika sürer.
 
 > [!TIP]
-> Bu örnekte, Azure Container Instances kullanılır. ACI 'ya dağıtımlar, gerekli ACI kaynağını otomatik olarak oluşturur. Bunun yerine Azure Kubernetes hizmetine dağıtım yapıyorsanız, zaman içinde bir AKS kümesi oluşturmanız ve bunu `az ml model deploy` komutun bir parçası olarak belirtmeniz gerekir. AKS 'e dağıtmaya bir örnek için bkz. [Azure Kubernetes hizmet kümesine model dağıtma](how-to-deploy-azure-kubernetes-service.md).
+> Bu örnekte, Azure Container Instances kullanılır. ACI 'ya dağıtımlar, gerekli ACI kaynağını otomatik olarak oluşturur. Bunun yerine Azure Kubernetes hizmetine dağıtım yapıyorsanız, zaman içinde bir AKS kümesi oluşturmanız ve bunu komutun bir parçası olarak belirtmeniz gerekir `az ml model deploy` . AKS 'e dağıtmaya bir örnek için bkz. [Azure Kubernetes hizmet kümesine model dağıtma](how-to-deploy-azure-kubernetes-service.md).
 
 Birkaç dakika sonra, aşağıdaki JSON ile benzer bilgiler döndürülür:
 
@@ -409,19 +409,19 @@ ACI service creation operation finished, operation "Succeeded"
 
 ### <a name="the-scoring-uri"></a>Puanlama URI 'SI
 
-Dağıtımdan `scoringUri` döndürülen, Web hizmeti olarak dağıtılan BIR modelin REST uç noktasıdır. Bu URI 'yi aşağıdaki komutu kullanarak da edinebilirsiniz:
+`scoringUri`Dağıtımdan döndürülen, Web hizmeti olarak dağıtılan bir MODELIN REST uç noktasıdır. Bu URI 'yi aşağıdaki komutu kullanarak da edinebilirsiniz:
 
 ```azurecli-interactive
 az ml service show -n myservice
 ```
 
-Bu komut, `scoringUri`dahil olmak üzere aynı JSON belgesini döndürür.
+Bu komut, dahil olmak üzere aynı JSON belgesini döndürür `scoringUri` .
 
 REST uç noktası, hizmete veri göndermek için kullanılabilir. Hizmete veri gönderen bir istemci uygulaması oluşturma hakkında bilgi için bkz. [Web hizmeti olarak dağıtılan Azure Machine Learning modelini](how-to-consume-web-service.md) kullanma
 
 ### <a name="send-data-to-the-service"></a>Verileri hizmete gönder
 
-Uç noktasını çağırmak için bir istemci uygulaması oluşturabilirsiniz, ancak Machine Learning CLı, test istemcisi olarak davranabilen bir yardımcı program sağlar. `testdata.json` Dosyadaki verileri hizmete göndermek için aşağıdaki komutu kullanın:
+Uç noktasını çağırmak için bir istemci uygulaması oluşturabilirsiniz, ancak Machine Learning CLı, test istemcisi olarak davranabilen bir yardımcı program sağlar. Dosyadaki verileri hizmete göndermek için aşağıdaki komutu kullanın `testdata.json` :
 
 ```azurecli-interactive
 az ml service run -n myservice -d @testdata.json
@@ -434,7 +434,7 @@ az ml service run -n myservice -d @testdata.json
 > az ml service run -n myservice -d `@testdata.json
 > ```
 
-Komuttan gelen yanıt şuna benzerdir `[ 3 ]`.
+Komuttan gelen yanıt şuna benzerdir `[ 3 ]` .
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -453,7 +453,7 @@ Bu komut, silinen hizmetin adını içeren bir JSON belgesi döndürür. Hizmet 
 
 ### <a name="delete-the-training-compute"></a>Eğitim işlem programını silme
 
-Azure Machine Learning çalışma alanını kullanmaya devam ederseniz, ancak eğitim için oluşturulan `cpu-cluster` işlem hedefinin kurtulığını yapmak istiyorsanız aşağıdaki komutu kullanın:
+Azure Machine Learning çalışma alanını kullanmaya devam ederseniz, ancak `cpu-cluster` eğitim için oluşturulan işlem hedefinin kurtulığını yapmak istiyorsanız aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
 az ml computetarget delete -n cpu-cluster
@@ -465,7 +465,7 @@ Bu komut, silinen işlem hedefinin KIMLIĞINI içeren bir JSON belgesi döndür�
 
 Oluşturduğunuz kaynakları kullanmayı planlamıyorsanız, ek ücret ödemeniz için bunları silin.
 
-Kaynak grubunu ve bu belgede oluşturulan tüm Azure kaynaklarını silmek için aşağıdaki komutu kullanın. Daha `<resource-group-name>` önce oluşturduğunuz kaynak grubunun adıyla değiştirin:
+Kaynak grubunu ve bu belgede oluşturulan tüm Azure kaynaklarını silmek için aşağıdaki komutu kullanın. `<resource-group-name>`Daha önce oluşturduğunuz kaynak grubunun adıyla değiştirin:
 
 ```azurecli-interactive
 az group delete -g <resource-group-name> -y

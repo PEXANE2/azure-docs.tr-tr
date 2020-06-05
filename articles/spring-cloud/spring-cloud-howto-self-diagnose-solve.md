@@ -6,15 +6,15 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
-ms.openlocfilehash: c4eada891f68a21732ab9a19548cbdfe1a3833a8
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: f1d5161b0efe0b8d9b9c0b84ac149050c3823ab6
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325855"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84429482"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Azure Spring Cloud 'da sorunları kendi kendine tanılama ve çözme
-Bu öğreticide, Azure Spring Cloud ile ilgili sorunları nasıl kendi kendine tanılamanıza ve giderebileceğiniz gösterilmektedir. Ölçüm ve günlükleri toplamanın kolay bir yolunu sağlar.
+App Service tanılama, uygulamanızın sorunlarını gidermenize yardımcı olacak etkileşimli bir deneyimdir. Yapılandırma gerekmez. Sorunları bulduğunuzda App Service tanılama, nelerin yanlış olduğunu gösterir ve sorunu gidermeye ve sorunu çözmeye yardımcı olan bilgilere kılavuzluk eder.
 
 ## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:

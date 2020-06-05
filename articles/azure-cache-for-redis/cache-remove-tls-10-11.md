@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: b7b3556896f2d8bb8fea7ffc4543356e248df60d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 69df5a65df99a7497099e71e9f41701458370c87
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848830"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84423930"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>TLS 1,0 ve 1,1 ' i Redsıs için Azure Cache ile birlikte kullanarak kaldırma
 
@@ -31,16 +31,18 @@ Bu makalede, bu önceki TLS sürümlerindeki bağımlılıkların nasıl algıla
 
 Bu değişikliklerin etkili olması için tarihler şunlardır:
 
-| Bulut                | Aşama 1 başlangıç tarihi | 2. aşama başlangıç tarihi      |
-|----------------------|--------------------|-------------------------|
-| Azure (genel)       |  13 Ocak 2020  | 11 Mayıs 2020            |
-| Azure Kamu     |  13 Mart 2020    | 11 Mayıs 2020            |
-| Azure Almanya        |  13 Mart 2020    | 11 Mayıs 2020            |
-| Azure Çin 21Vianet |  13 Mart 2020    | 11 Mayıs 2020            |
+| Bulut                | Aşama 1 başlangıç tarihi | 2. aşama başlangıç tarihi         |
+|----------------------|--------------------|----------------------------|
+| Azure (genel)       |  13 Ocak 2020  | COVıD 19 nedeniyle ertelendi  |
+| Azure Kamu     |  13 Mart 2020    | COVıD 19 nedeniyle ertelendi  |
+| Azure Almanya        |  13 Mart 2020    | COVıD 19 nedeniyle ertelendi  |
+| Azure China 21Vianet |  13 Mart 2020    | COVıD 19 nedeniyle ertelendi  |
+
+Not: 2. aşama için yeni tarih henüz belirlenmedi
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Uygulamanızın zaten uyumlu olup olmadığını denetleyin
 
-Uygulamanızın TLS 1,2 ile çalışıp çalışmadığını bulmanın en kolay yolu, kullandığı bir test veya hazırlama önbelleğinde **En düşük TLS sürümü** değerini TLS 1,2 olarak ayarlayacaktır. **En düşük TLS sürümü** ayarı, Azure Portal önbellek örneğinizin [Gelişmiş ayarlarından](cache-configure.md#advanced-settings) oluşur. Bu değişiklikten sonra uygulama beklendiği gibi çalışmaya devam ederse büyük olasılıkla uyumludur. Özellikle TLS 1,2 ' i etkinleştirmek için, uygulamanız tarafından kullanılan bazı Reddir istemci kitaplıklarını yapılandırmanız gerekebilir. bu nedenle, bu güvenlik protokolünün üzerinden Red. Azure önbelleğine bağlanabilirler.
+Uygulamanızın TLS 1,2 ile çalışıp çalışmadığını bulmanın en kolay yolu, **En düşük TLS sürümü** değerini bir test veya HAZıRLAMA önbelleğinde TLS 1,2 olarak ayarlamak ve ardından testleri çalıştırmak için kullanılır. **En düşük TLS sürümü** ayarı, Azure Portal önbellek örneğinizin [Gelişmiş ayarlarından](cache-configure.md#advanced-settings) oluşur.  Bu değişiklikten sonra uygulama beklendiği gibi çalışmaya devam ederse büyük olasılıkla uyumludur. Redsıs için Azure önbelleğine bağlanmak üzere TLS 1,2 ' i etkinleştirmek için, uygulamanız tarafından kullanılan Redsıs istemci kitaplığını yapılandırmanız gerekebilir.
 
 ## <a name="configure-your-application-to-use-tls-12"></a>Uygulamanızı TLS 1,2 kullanacak şekilde yapılandırma
 
@@ -57,9 +59,9 @@ Redsıs .NET istemcileri, en eski TLS sürümünü varsayılan olarak .NET Frame
 
 Redis .NET Core istemcileri varsayılan işletim sistemi varsayılan TLS sürümüne göre değişir. 
 
-İşletim sisteminin ne zaman yayınlandığına ve başka herhangi bir düzeltme eklerinin varsayılan TLS sürümünü değiştirdiğine bağlı olarak, işletim sistemi TLS sürümü oldukça değiştirilebilir. Bunun hakkında [tüm bilgiler olmasa](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)da, Windows işletim sistemi için özellikle daha fazla bilgi edinebilirsiniz. 
+İşletim sistemi sürümüne ve uygulanan tüm düzeltme eklerine bağlı olarak, geçerli varsayılan TLS sürümü farklılık gösterebilir. Bu bilgiler hakkında bir bilgi kaynağı olmakla kalmaz, Windows için bir makale [aşağıda](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) verilmiştir. 
 
-Ancak, eski bir işletim sistemi kullanıyorsanız veya tercih ettiğiniz TLS sürümünü istemci aracılığıyla el ile yapılandırmak istediğimizi unutmayın.
+Ancak, eski bir işletim sistemi kullanıyorsanız veya yalnızca emin olmak istiyorsanız, tercih edilen TLS sürümünü istemci aracılığıyla el ile yapılandırmanızı öneririz.
 
 
 ### <a name="java"></a>Java
