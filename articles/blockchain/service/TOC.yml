@@ -4,6 +4,8 @@
   items:
     - name: Azure Blok Zinciri Hizmeti Hakkında
       href: overview.md
+    - name: Yenilikler
+      href: whats-new.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
