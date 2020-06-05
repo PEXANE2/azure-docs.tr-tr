@@ -82,6 +82,8 @@
           href: specify-marketplace-images.md
         - name: Destek bilgilerini belirtme (laboratuvar hesabı sahibi)
           href: lab-account-owner-support-information.md
+        - name: Laboratuvarlar için maliyet yönetimi
+          href: cost-management-guide.md
     - name: Sınıf laboratuvarlarını oluşturma ve yapılandırma (eğitimci)
       items:
         - name: Sınıf laboratuvarları oluşturma ve yönetme

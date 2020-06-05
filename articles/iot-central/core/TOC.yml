@@ -57,6 +57,8 @@
       href: concepts-architecture.md
     - name: Uygulama şablonları nedir?
       href: concepts-app-templates.md
+    - name: Cihaz şablonları nedir?
+      href: concepts-device-templates.md
     - name: Cihaz bağlantısı
       href: concepts-get-connected.md
     - name: IoT Edge cihazlarını bağlama

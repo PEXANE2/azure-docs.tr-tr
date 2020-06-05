@@ -23,8 +23,6 @@
       href: 'https://github.com/Azure-Samples/media-services-video-indexer'
 - name: Kavramlar
   items:
-    - name: Genel Bakış
-      href: video-indexer-concepts.md
     - name: Video Indexer ile Media Services ön ayarlarını karşılaştırma
       href: compare-video-indexer-with-media-services-presets.md
     - name: Birden çok kiracıyı yönetme

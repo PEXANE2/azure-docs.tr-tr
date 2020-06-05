@@ -195,6 +195,10 @@
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: HDFS Mağazası’ndan
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+    - name: Başvuru
+      items:
+        - name: Azure CLI
+          href: /cli/azure/ext/databox/databox
     - name: Kaynaklar
       items:
         - name: Data Box ürünü

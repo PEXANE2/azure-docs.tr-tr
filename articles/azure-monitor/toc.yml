@@ -230,7 +230,7 @@
                     - name: Sürüm geçmişi
                       href: platform/diagnostics-extension-versions.md
                     - name: JSON Satırları kaynak günlüklerinin biçimi
-                      href: platform/diagnostic-logs-append-blobs.md
+                      href: platform/resource-logs-append-blobs.md
                     - name: Sorun giderme
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
@@ -1173,8 +1173,10 @@
           href: platform/alerts-metric-near-real-time.md
     - name: Platform günlükleri
       items:
+        - name: Desteklenen kaynak günlüğü türleri ve kategorileri
+          href: platform/resource-logs-categories.md
         - name: Kaynak günlüğü şemaları
-          href: platform/diagnostic-logs-schema.md
+          href: platform/resource-logs-schema.md
         - name: Etkinlik günlüğü şeması
           href: platform/activity-log-schema.md
     - name: Tanılama uzantısı şemaları

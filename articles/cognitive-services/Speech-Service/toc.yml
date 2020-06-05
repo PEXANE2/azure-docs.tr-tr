@@ -466,7 +466,7 @@
       items:
         - name: REST API'leri
           items:
-            - name: Konuşma Tanıma REST API’si
+            - name: Konuşmacı Tanıma REST API’si
               href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
 - name: Hosting
   items:

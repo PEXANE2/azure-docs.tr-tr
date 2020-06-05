@@ -114,6 +114,8 @@
   items:
     - name: Yönetme
       items:
+        - name: İşleri otomatik ölçeklendirme
+          href: stream-analytics-autoscale.md
         - name: Kimlik bilgilerini güncelleştirme
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: Olay sıralama ilkeleri yapılandırma
@@ -611,6 +613,8 @@
       href: /rest/api/streamanalytics
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.streamanalytics/allversions
+    - name: Azure CLI
+      href: /cli/azure/ext/stream-analytics/stream-analytics
 - name: Kaynaklar
   items:
     - name: Stream Analytics önizlemeleri

@@ -13,6 +13,9 @@
       href: quick-create-powershell.md
     - name: VM Oluşturma - Azure CLI
       href: quick-create-cli.md
+    - name: VM oluşturma - ARM şablonu
+      displayName: 'Resource Manager, template, json'
+      href: quick-create-template.md
 - name: Öğreticiler
   items:
     - name: 1 - VM oluşturma / yönetme

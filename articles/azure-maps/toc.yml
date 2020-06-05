@@ -177,6 +177,14 @@
               href: map-get-information-from-coordinate.md
             - name: A'dan B'ye yönleri gösterme
               href: map-route.md
+        - name: İç Mekan Haritaları modülü
+          items:
+            - name: İç Mekan Haritaları modülü
+              href: how-to-use-indoor-module.md
+            - name: İç mekan haritalarında dinamik stilleme
+              href: indoor-map-dynamic-styling.md
+            - name: Çizim hatası görselleştiricisi
+              href: drawing-error-visualizer.md
         - name: Uzamsal GÇ modülü
           items:
             - name: Uzamsal GÇ modülünü kullanma
@@ -211,14 +219,6 @@
           href: how-to-add-tile-layer-android-map.md
         - name: Trafik verilerini gösterme
           href: how-to-show-traffic-android.md
-    - name: Creator iç mekan haritaları ile geliştirme
-      items:
-        - name: İç Mekan Haritaları modülü
-          href: how-to-use-indoor-module.md
-        - name: İç mekan haritalarında dinamik stilleme
-          href: indoor-map-dynamic-styling.md
-        - name: Çizim hatası görselleştiricisi
-          href: drawing-error-visualizer.md
     - name: Verilerle ilgili geri bildirim sağlama
       href: how-to-use-feedback-tool.md
 - name: Başvuru
