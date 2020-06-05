@@ -190,6 +190,8 @@
           href: howto-connection-string.md
         - name: SSL yapılandırma
           href: howto-configure-ssl.md
+        - name: TLS’yi yapılandırma
+          href: howto-tls-configurations.md
         - name: Web uygulamaları
           href: howto-connect-webapp.md
         - name: Yeniden yönlendirme ile bağlanma

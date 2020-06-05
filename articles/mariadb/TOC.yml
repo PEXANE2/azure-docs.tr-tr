@@ -142,6 +142,8 @@
           href: howto-connection-string.md
         - name: SSL yapılandırma
           href: howto-configure-ssl.md
+        - name: TLS’yi yapılandırma
+          href: howto-tls-configurations.md
     - name: Sunucu parametrelerini yapılandırma
       items:
         - name: Azure portal

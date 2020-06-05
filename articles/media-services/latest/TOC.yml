@@ -73,7 +73,7 @@
           displayName: 'name, naming, file name, upload, output, download'
     - name: Dosyaları işleme
       items:
-        - name: Dönüşümler ve İşler
+        - name: Dönüşümler ve işler
           href: transforms-jobs-concept.md
           displayName: 'preset, schema'
     - name: İçerik kodlama
@@ -93,13 +93,13 @@
         - name: Genel Bakış
           href: analyzing-video-audio-files-concept.md
           displayName: 'analyze, analyzing, presets, jobs'
-        - name: Dönüşümler ve İşler
+        - name: Dönüşümler ve işler
           href: transforms-jobs-concept.md
     - name: Canlı akış
       items:
         - name: Genel Bakış
           href: live-streaming-overview.md
-        - name: Canlı Etkinlikler ve Canlı Çıkışlar
+        - name: Canlı etkinlikler ve canlı çıkışlar
           href: live-events-outputs-concept.md
           displayName: 'vanity, ingest'
         - name: Test edilmiş şirket içi gerçek zamanlı kodlayıcılar
@@ -126,15 +126,15 @@
         - name: Filtreler
           displayName: "manifest, dynamic manifest, filter, hls, dash, m3u8, mpd,\tcontent delivery"
           href: filters-concept.md
-        - name: Akış Uç Noktaları
+        - name: Akış uç noktaları
           displayName: 'origin, packager, cdn'
           href: streaming-endpoint-concept.md
         - name: CDN ile akışı ölçeklendirme
           href: scale-streaming-cdn.md
-        - name: Akış Bulucuları
+        - name: Akış bulucuları
           displayName: URLs
           href: streaming-locators-concept.md
-        - name: Akış İlkeleri
+        - name: Akış ilkeleri
           href: streaming-policy-concept.md
     - name: İçerik koruma
       items:
@@ -152,9 +152,9 @@
               href: widevine-license-template-overview.md
             - name: FairPlay lisans gereksinimleri
               href: fairplay-license-overview.md
-        - name: Akış İlkeleri
+        - name: Akış ilkeleri
           href: streaming-policy-concept.md
-        - name: İçerik Anahtar İlkeleri
+        - name: İçerik anahtarı ilkeleri
           href: content-key-policy-concept.md
     - name: İzleme
       items:
@@ -181,9 +181,9 @@
           href: rbac-overview.md
         - name: Hata kodları
           items:
-            - name: Akış Uç Noktası hata kodları
+            - name: Akış uç noktası hata kodları
               href: streaming-endpoint-error-codes.md
-            - name: Canlı Etkinlik hata kodları
+            - name: Canlı etkinlik hata kodları
               href: live-event-error-codes.md
             - name: İş hata kodları
               href: job-error-codes.md
@@ -215,9 +215,9 @@
         - name: Erişim API’si
           displayName: 'portal, cli'
           href: access-api-howto.md
-        - name: Medya Ayrılmış Birimlerini Ölçeklendirme
+        - name: Medya ayrılmış birimlerini ölçeklendirme
           href: media-reserved-units-cli-how-to.md
-        - name: Asset oluşturma
+        - name: Varlık oluşturma
           href: cli-create-asset.md
     - name: Geliştirici kılavuzları
       items:
@@ -266,7 +266,7 @@
         - name: İş girişi olarak yerel dosya
           displayName: 'encode, encoding'
           href: job-input-from-local-file-how-to.md
-        - name: Özel Transform ile kodlama
+        - name: Özel dönüştürme ile kodlama
           items:
             - name: .NET ile
               displayName: 'encode, encoding, custom, transform'
@@ -293,7 +293,7 @@
           href: live-events-wirecast-quickstart.md
         - name: Şirket içi kodlayıcınızı doğrulama
           href: become-on-premises-encoder-partner.md
-        - name: Canlı Etkinlik hata kodları
+        - name: Canlı etkinlik hata kodları
           href: live-event-error-codes.md
     - name: Event Grid kullanma
       items:
@@ -347,9 +347,9 @@
           href: frequently-asked-questions.md
         - name: Hata kodları
           items:
-            - name: Akış Uç Noktası hata kodları
+            - name: Akış uç noktası hata kodları
               href: streaming-endpoint-error-codes.md
-            - name: Canlı Etkinlik hata kodları
+            - name: Canlı etkinlik hata kodları
               href: live-event-error-codes.md
             - name: İş hata kodları
               href: job-error-codes.md
@@ -376,12 +376,16 @@
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.media/allversions
+    - name: Standart Kodlayıcı şemaları
+      items:
+        - name: Çıkış meta verileri
+          href: output-metadata-schema.md
 - name: Kaynaklar
   items:
     - name: Azure Media Services topluluğu
       displayName: 'forums, twitter, feedback'
       href: media-services-community.md
-    - name: Azure Yol Haritası
+    - name: Azure yol haritası
       href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/media-services/'
