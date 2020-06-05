@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 5fce5c8de3b2224ef471b0b3eec5ff29a869a9f6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 10bd2e4722751b290263fc0599890ca92cd743c9
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844531"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995658"
 ---
 # <a name="understand-cost-management-data"></a>Maliyet Yönetimi verilerini anlama
 
@@ -75,7 +75,12 @@ Aşağıdaki teklifler henüz desteklenmiyor:
 | **Destek Planları** | Azure Kamu Pro-Direct Destek | Default_2014-09-01 | MS-AZR-USGOV-0042P |
 | **Destek Planları** | Azure Kamu Geliştirici Desteği  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
-## <a name="determine-your-offer-type"></a>Teklif türünü belirleme
+### <a name="free-trial-to-pay-as-you-go-upgrade"></a>Ücretsiz denemeden kullandıkça öde planına yükseltme
+
+Ücretsiz denemeden kullandıkça öde fiyatlandırmasına yükseltme yaptıktan sonra sunulan ücretsiz katman hizmetleri hakkında bilgi edinmek için bkz. [Azure ücretsiz hesabı hakkında SSS](https://azure.microsoft.com/free/free-account-faq/).
+
+### <a name="determine-your-offer-type"></a>Teklif türünü belirleme
+
 Abonelikle ilgili veri görmüyorsanız ve aboneliğinizin desteklenen tekliflerin arasında olup olmadığı öğrenmek istiyorsanız aboneliğinizin desteklenip desteklenmediğini doğrulayabilirsiniz. Bir Azure aboneliğinin desteklenip desteklenmediğini doğrulamak için [Azure portalında](https://portal.azure.com) oturum açın. Ardından sol taraftaki menü bölmesinden **Tüm Hizmetler**'i seçin. Hizmetler listesinde **Abonelikler**'i seçin. Abonelik listesi menüsünden doğrulamak istediğiniz aboneliği seçin. Aboneliğiniz Genel Bakış sekmesinde gösterilir ve **Teklif** ile **Teklif Kimliği** bilgilerini görebilirsiniz. Aşağıdaki resimde bir örnek gösterilir.
 
 ![Teklif ve Teklif Kimliği bilgilerinin gösterildiği Aboneliğe Genel Bakış sekmesi örneği](./media/understand-cost-mgt-data/offer-and-offer-id.png)
@@ -106,7 +111,7 @@ Azure Maliyet Yönetimi, ayrı hizmetler tarafından gönderilen kullanım kayı
 - Kaynak etiketleri yalnızca kaynak gruplarına dağıtılmış olan kaynaklar için desteklenir.
 - Dağıtılan kaynakların bazıları etiket desteği sunmayabilir veya kullanım verilerine etiket eklemeyebilir. Bkz. [Azure kaynakları için etiket desteği](../../azure-resource-manager/tag-support.md).
 - Kaynak etiketleri yalnızca etiketin uygulanmış olduğu kullanım verilerine dahil edilir. Etiketler, verilere geçmişe dönük olarak uygulanmaz.
-- Kaynak etiketleri Maliyet Yönetimi'nde yalnızca veriler yenilendikten sonra kullanılabilir. Bkz. [Kullanım verileri güncelleştirme sıklığı değişiyor](#usage-data-update-frequency-varies).
+- Kaynak etiketleri, yalnızca veriler yenilendikten sonra Maliyet Yönetimi’nde kullanılabilir. Bkz. [Maliyet ile kullanım verilerinin güncelleştirilmesi ve saklama](#cost-and-usage-data-updates-and-retention).
 - Kaynak etiketleri Maliyet Yönetimi'nde yalnızca kaynak etkin/çalışır durumda olduğunda ve kullanım kaydı oluşturduğunda kullanılabilir (örneğin, VM'nin serbest bırakılmış olduğu durumlarda kullanılamaz).
 - Etiketlerin yönetilmesi için her bir kaynakta katkıda bulunan erişimi gerekir.
 - Etiket ilkelerinin yönetilmesi için yönetim grubu, abonelik veya kaynak grubu düzeyinde sahip veya ilke katkıda bulunanı erişimi gerekir.
@@ -114,7 +119,7 @@ Azure Maliyet Yönetimi, ayrı hizmetler tarafından gönderilen kullanım kayı
 Maliyet Yönetimi'nde belirli bir etiketi göremiyorsanız şu durumları değerlendirin:
 
 - Etiket doğrudan kaynağa mı uygulandı?
-- Etiketin uygulanmasının üzerinden 24 saat geçti mi? Bkz. [Kullanım verileri güncelleştirme sıklığı değişiyor](#usage-data-update-frequency-varies)
+- Etiketin uygulanmasının üzerinden 24 saat geçti mi? Bkz. [Maliyet ile kullanım verilerinin güncelleştirilmesi ve saklama](#cost-and-usage-data-updates-and-retention)
 - Kaynak türü etiketleri destekliyor mu? Aşağıdaki kaynak türleri 1 Aralık 2019 tarihinden itibaren kullanım verilerinde etiketleri desteklememektedir. Desteklenen türlerin tam listesi için bkz. [Azure kaynakları için etiket desteği](../../azure-resource-manager/tag-support.md).
     - Azure Active Directory B2C Dizinleri
     - Azure Güvenlik Duvarları
@@ -134,24 +139,22 @@ Aşağıda, etiketlerle çalışma konusunda birkaç ipucu verilmiştir:
 - Geçerli etiketlere göre maliyetlere ulaşmak için Query veya UsageDetails ile birlikte Tags API'yi kullanın.
 
 
-## <a name="free-trial-to-pay-as-you-go-upgrade"></a>Ücretsiz denemeden kullandıkça öde planına yükseltme
+## <a name="cost-and-usage-data-updates-and-retention"></a>Maliyet ile kullanım verilerinin güncelleştirilmesi ve saklama
 
-Ücretsiz denemeden kullandıkça öde fiyatlandırmasına yükseltme yaptıktan sonra sunulan ücretsiz katman hizmetleri hakkında bilgi edinmek için bkz. [Azure ücretsiz hesabı hakkında SSS](https://azure.microsoft.com/free/free-account-faq/).
+Maliyet ve kullanım verileri genellikle 8 ila 24 saat arasında, Azure portalının Maliyet Yönetimi + Faturalandırma bölümünden ve [destekleyen API’lerden](../index.yml) kullanılabilir. Maliyetleri incelerken şu noktaları dikkate alın:
 
-## <a name="rated-usage-data-refresh-schedule"></a>Ücretlendirilen kullanım verilerini yenileme zamanlaması
-
-Maliyet ve kullanım verileri, Azure portalının Maliyet Yönetimi + Faturalandırma bölümünden ve [destekleyen API'lerden](../index.yml) kullanılabilir. Maliyetleri incelerken şu noktaları dikkate alın:
-
+- Her Azure hizmeti (Depolama, İşlem ve SQL gibi) kullanımı farklı aralıklara yayar. Bazı hizmetlere ait verileri diğerlerinden daha önce görebilirsiniz.
 - Geçerli faturalama dönemine ait tahmini ücretler günde altı kez güncelleştirilir.
 - Geçerli faturalama dönemine ait tahmini ücretler, kullanım arttıkça değişebilir.
 - Güncelleştirmeler birikmelidir ve her biri, bir önceki güncelleştirmede bulunan satır öğelerinin ve bilgilerinin tamamını içerir.
 - Azure, faturalama dönemi sona erdikten 72 saat (üç takvim günü) sonra geçerli faturalama dönemini sonlandırır veya _kapatır_.
 
-Aşağıdaki örnekte faturalama döneminin nasıl bitebileceği gösterilmiştir.
+Aşağıdaki örnekte faturalama döneminin nasıl bitebileceği gösterilmiştir:
 
-Kurumsal Anlaşma (EA) abonelikleri: Faturalama ayının 31 Mart tarihinde sona ermesi halinde tahmini ücretler 72 saat sonrasına kadar güncelleştirilir. Bu örnekte 4 Nisan gece yarısı (UTC).
+* Kurumsal Anlaşma (EA) abonelikleri: Faturalama ayının 31 Mart tarihinde sona ermesi halinde tahmini ücretler 72 saat sonrasına kadar güncelleştirilir. Bu örnekte 4 Nisan gece yarısı (UTC).
+* Kullandıkça öde abonelikleri: Faturalama ayının 15 Mart tarihinde sona ermesi halinde tahmini ücretler 72 saat sonrasına kadar güncelleştirilebilir. Bu örnekte 19 Mayıs gece yarısı (UTC).
 
-Kullandıkça öde abonelikleri: Faturalama ayının 15 Mart tarihinde sona ermesi halinde tahmini ücretler 72 saat sonrasına kadar güncelleştirilebilir. Bu örnekte 19 Mayıs gece yarısı (UTC).
+Maliyet ve kullanım verileri Maliyet Yönetimi ve Faturalama bölümünde yer alır ve en az 7 yıl boyunca saklanır.
 
 ### <a name="rerated-data"></a>Yeniden ücretlendirilen veriler
 
@@ -166,16 +169,6 @@ Maliyet Yönetimi’nde gösterilen ücretler yuvarlanır. Sorgu API’si taraf�
   - Ücret 2: 0,004 ABD doları
   -    İşlenen toplam ücret: 0,004 + 0,004 = 0,008. Gösterilen ücret 0,01 ABD dolarıdır.
 - Sorgu API’si - Ücretler sekiz ondalık basamak ile gösterilir ve yuvarlama yapılmaz.
-
-
-## <a name="usage-data-update-frequency-varies"></a>Kullanım verileri güncelleştirme sıklığı değişir
-
-Maliyet Yönetimi'ndeki tahakkuk eden kullanım verilerinin kullanılabilirliği bir dizi faktöre bağlıdır, bunlar:
-
-- Azure hizmetlerinin (Depolama, İşlem, CDN ve SQL gibi) kullanımı iletme sıklığı.
-- Kullanım verilerinin ücretlendirme altyapısından ve maliyet yönetimi işlem hatlarından geçirilmesi için harcanan süre.
-
-Bazı hizmetler kullanım verilerini diğerlerinden daha sık iletir. Bu nedenle Maliyet Yönetimi'nde bazı hizmetlerin, daha düşük sıklıkta veri ileten diğer hizmetlerden daha hızlı olduğunu görebilirsiniz. Hizmet kullanım verilerinin Maliyet Yönetimi'ne yansıtılması genelde 8-24 saat arası sürer. Güncelleştirmeler birikmeli olduğundan kullanımla birlikte açık bir aya ait verilerin yenilenebileceğine dikkat edin.
 
 ## <a name="historical-data-might-not-match-invoice"></a>Geçmişe dönük veriler faturayla eşleşmeyebilir
 

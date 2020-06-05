@@ -3,17 +3,17 @@ title: 'Öğretici: Azure bütçesi oluşturma ve yönetme'
 description: Bu öğretici, kullandığınız Azure hizmetlerinin maliyetleriyle ilgili plan yapmanıza yardımcı olmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/22/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: e8afa19b6d79ce915ca41f7b0e6b4a203d7daa1b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: ef165f63ff1f9e45bb3586192146d822e334dc54
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101765"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142444"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Öğretici: Azure bütçesi oluşturma ve yönetme
 
@@ -115,6 +115,15 @@ Bir bütçe oluşturulduktan sonra maliyet analizi bölümünde gösterilir. Bü
 
 Yukarıdaki örnekte abonelik için bir bütçe oluşturdunuz. Bir kaynak grubu için de bütçe oluşturabilirsiniz. Bir kaynak grubu için bütçe oluşturmak isterseniz **Maliyet Yönetimi + Faturalandırma** &gt; **Abonelikler** &gt; yolunu izleyin, bir abonelik seçin > **Kaynak grupları** > bir kaynak grubu seçin > **Bütçeler** > ve **Ekle**'yi seçerek bir bütçe ekleyin.
 
+### <a name="create-a-budget-for-combined-azure-and-aws-costs"></a>Birleşik Azure ve AWS maliyetlerine yönelik bütçe oluşturma
+
+Bağlayıcınıza, birleştirilmiş ve bağlı hesaplarıyla birlikte bir yönetim grubu atayarak Azure ve AWS maliyetlerinizi birlikte gruplandırabilirsiniz. Azure aboneliklerinizi aynı yönetim grubuna atayın. Daha sonra birleşik maliyetler için bir bütçe oluşturun.
+
+1. Maliyet Yönetimi’nde **Bütçeler**’i seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Kapsamı değiştir**’i ve sonra yönetim grubunu seçin.
+1. Tamamlanana kadar bütçeyi oluşturmaya devam edin.
+
 ## <a name="costs-in-budget-evaluations"></a>Bütçe maliyeti değerlendirmeleri
 
 Bütçe maliyeti değerlendirmeleri artık ayrılmış örnek ve satın alma verilerini de içeriyor. Ücretlerin sizin için geçerli olması halinde değerlendirmelerinize dahil ettiğiniz ücretler için uyarılar alabilirsiniz. Bütçe eşiklerinin yeni maliyetleri dikkate alacak şekilde yapılandırıldığını doğrulamak için [Azure portalında](https://portal.azure.com) oturum açmanız önerilir. Faturalandırılan Azure ücretleriniz değişmez. Bütçeler artık maliyetlerinizin daha kapsamlı bir kümesine göre değerlendiriliyor. Ücretler sizin için uygun değilse bütçe davranışlarınız aynı şekilde kalır.
@@ -125,7 +134,6 @@ Bütçelerin yalnızca birinci taraf Azure tüketim ücretlerine göre değerlen
 - Ücret Türü: Kullanım
 
 Bütçe maliyet değerlendirmeleri, gerçek maliyeti temel alır. Amorti edilen maliyetler kullanılmaz. Bütçelerde kullanabileceğiniz filtreleme seçenekleri hakkında daha fazla bilgi için bkz. [Gruplandırma ve filtreleme seçeneklerini anlama](quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options).
-
 
 ## <a name="trigger-an-action-group"></a>Bir eylem grubunu tetikleme
 

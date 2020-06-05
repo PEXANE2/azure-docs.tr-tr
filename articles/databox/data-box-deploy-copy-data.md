@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1730317296c672eb9347986ec41fdba25427408e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a3e66e7f6857361136fb4b7839953790f66b4db5
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200478"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219106"
 ---
-::: zone target="docs" 
+::: zone target="docs"
 
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Öğretici: SMB aracılığıyla Azure Data Box’a veri kopyalama
 
@@ -35,10 +35,10 @@ Bu öğreticide yerel web arabirimini kullanarak bağlantı kurma, ana bilgisaya
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
+>
 > * Ön koşullar
 > * Data Box'a bağlanma
 > * Data Box'a veri kopyalama
-
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -47,15 +47,16 @@ Başlamadan önce aşağıdakilerden emin olun:
 1. [Öğretici: Azure Data Box’ı ayarlama](data-box-deploy-set-up.md).
 2. Data Box’ı teslim aldınız ve portaldaki sipariş durumu **Teslim Edildi** oldu.
 3. Data Box üzerinden kopyalamak istediğiniz verileri içeren bir ana bilgisayarınız var. Ana bilgisayarınız:
-    - [Desteklenen bir işletim sistemi](data-box-system-requirements.md) çalıştırılmalıdır.
-    - Yüksek hızlı bir ağa bağlı olmalıdır. En az bir adet 10 GbE bağlantınızın olması önemle tavsiye edilir. 10 GbE bağlantı yoksa, 1 GbE veri bağlantısı kullanın ancak kopyalama hızınızın etkileneceğini göz önünde bulundurun.
+   * [Desteklenen bir işletim sistemi](data-box-system-requirements.md) çalıştırılmalıdır.
+   * Yüksek hızlı bir ağa bağlı olmalıdır. En az bir adet 10 GbE bağlantınızın olması önemle tavsiye edilir. 10 GbE bağlantı yoksa, 1 GbE veri bağlantısı kullanın ancak kopyalama hızınızın etkileneceğini göz önünde bulundurun.
 
 ## <a name="connect-to-data-box"></a>Data Box'a bağlanma
 
 Seçilen depolama hesabına bağlı olarak, Data Box şunların tamamını veya bir bölümünü oluşturabilir:
-- İlişkili her depolama hesabına GPv1 ve GPv2 için üç paylaşım.
-- Premium depolama için bir paylaşım.
-- Blob depolama hesabı için bir paylaşım.
+
+* İlişkili her depolama hesabına GPv1 ve GPv2 için üç paylaşım.
+* Premium depolama için bir paylaşım.
+* Blob depolama hesabı için bir paylaşım.
 
 Blok blobu ve sayfa blobu paylaşımlarının altında birinci düzeydeki varlıklar kapsayıcılar, ikinci düzeydeki varlıklar ise bloblardır. Azure Dosyaları paylaşımlarında birinci düzeydeki varlıklar paylaşımlar, ikinci düzeydeki varlıklar ise dosyalardır.
 
@@ -85,7 +86,7 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için a�
     - Azure Blok blobu - `\\10.126.76.172\devicemanagertest1_BlockBlob`
     - Azure Sayfa blobu - `\\10.126.76.172\devicemanagertest1_PageBlob`
     - Azure Dosyalar - `\\10.126.76.172\devicemanagertest1_AzFile`
-    
+
 4. İstendiğinde paylaşımın parolasını girin. Aşağıdaki örnekte yukarıdaki komutla paylaşıma bağlanma adımları gösterilmektedir.
 
     ```
@@ -100,7 +101,7 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için a�
 
     Artık paylaşımları klasörler olarak görebilirsiniz.
     
-    ![Paylaşıma Dosya Gezgini ile bağlanma 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)    
+    ![Paylaşıma Dosya Gezgini ile bağlanma 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
     **Her zaman kopyalamayı düşündüğünüz dosyalar için paylaşımda bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın**. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
     
@@ -113,7 +114,7 @@ Bir Linux istemcisi kullanıyorsanız, SMB paylaşımını bağlamak için aşa�
 Data Box paylaşımlarına bağlandıktan sonra veri kopyalamaya başlayabilirsiniz. Verileri kopyalamaya başlamadan önce aşağıdaki konuları gözden geçirin:
 
 * Verilerin uygun dosya biçimine karşılık gelen paylaşımlara kopyalandığından emin olun. Örneğin blok blobu verilerinin blok blobu paylaşımına kopyalanması gerekir. VHD'leri sayfa blobuna kopyalayın. Veri biçimi uygun paylaşım türüyle eşleşmiyorsa verilerin Azure'a yüklenmesi başarısız olur.
-*  Veri kopyalama sırasında veri boyutunun [Azure depolama ve Data Box sınırları](data-box-limits.md) içinde belirtilen boyut sınırlarına uygun olduğundan emin olun.
+* Veri kopyalama sırasında veri boyutunun [Azure depolama ve Data Box sınırları](data-box-limits.md) içinde belirtilen boyut sınırlarına uygun olduğundan emin olun.
 * Data Box tarafından yüklenen verilerin Data Box haricinde başka bir uygulama tarafından da yüklenmesi durumunda yükleme işinde hata oluşabilir ve veri bozulması yaşanabilir.
 * Şunları öneririz:
   * SMB ve NFS'yi aynı anda kullanmayın.
@@ -121,7 +122,9 @@ Data Box paylaşımlarına bağlandıktan sonra veri kopyalamaya başlayabilirsi
 
   Böyle durumlarda nihai sonucu kestirmek mümkün olmayabilir.
 * Her zaman kopyalamayı düşündüğünüz dosyalar için paylaşımda bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
-* Data Box'ın verilerinizi Azure Depolama'ya aktardığını onaylayana kadar kaynak verilerinizin bir kopyasına sahip olduğunuzdan emin olun.
+
+> [!IMPORTANT]
+> Data Box'ın verilerinizi Azure Depolama'ya aktardığını onaylayana kadar kaynak verilerinizin bir kopyasına sahip olduğunuzdan emin olun.
 
 SMB paylaşımına bağlandıktan sonra verileri kopyalamaya başlayın. Verilerinizi kopyalamak için Robocopy gibi SMB uyumlu herhangi bir dosya kopyalama aracını kullanabilirsiniz. Robocopy ile birden fazla kopyalama işlemini başlatabilirsiniz. Aşağıdaki komutu kullanın:
     
@@ -203,7 +206,6 @@ Aşağıdaki örnekte dosyaları Data Box'a kopyalamak için kullanılan Robocop
         Files :        17        17         0         0         0         0
         Bytes :     3.9 k     3.9 k         0         0         0         0          
     C:\Users>
-       
 
 Performansı iyileştirmek için veri kopyalama sırasında aşağıdaki Robocopy parametrelerini kullanın.
 
@@ -211,13 +213,12 @@ Performansı iyileştirmek için veri kopyalama sırasında aşağıdaki Robocop
 |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
 |    Data Box         |    2 Robocopy oturumu <br> Oturum başına 16 iş parçacığı    |    3 Robocopy oturumu <br> Oturum başına 16 iş parçacığı    |    2 Robocopy oturumu <br> Oturum başına 24 iş parçacığı    |
 
-
 Robocopy komutu hakkında daha fazla bilgi için bkz. [Robocopy ve birkaç örnek](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx).
 
 Kopyalanan dosyaları görüntülemek ve doğrulamak için hedef klasörü açın. Kopyalama işlemi sırasında hatayla karşılaşırsanız sorun giderme için hata dosyalarını indirin. Daha fazla bilgi için bkz. [Data Box’a veri kopyalama sırasında hata günlüklerini görüntüleme](data-box-logs.md#view-error-log-during-data-copy). Veri kopyalama sırasında karşılaşılan hataların ayrıntılı bir listesi için bkz. [Data Box sorunlarını giderme](data-box-troubleshoot.md).
 
 Veri bütünlüğünü sağlamak için sağlama toplamı veri kopyalama sırasında satır içinde hesaplanır. Kopyalama tamamlandıktan sonra cihazınızdaki kullanılan alanı ve boş alanı doğrulayın.
-    
+
    ![Panoda boş ve kullanılan alanı doğrulama](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ::: zone-end
@@ -230,6 +231,8 @@ Her durumda, paylaşım ve klasör adlarıyla veri boyutunun, [Azure Depolama ve
 
 ## <a name="copy-data-via-smb"></a>SMB ile veri kopyalama
 
+SMB ile veri kopyalamak için:
+
 1. Bir Windows ana bilgisayar kullanıyorsanız, SMB paylaşımlarına bağlanmak için aşağıdaki komutu kullanın:
 
     `\\<IP address of your device>\ShareName`
@@ -240,6 +243,8 @@ Her durumda, paylaşım ve klasör adlarıyla veri boyutunun, [Azure Depolama ve
 Adım adım yönergeler için [Öğretici: SMB aracılığıyla Azure Data Box’a veri kopyalama](data-box-deploy-copy-data.md) bölümüne gidin.
 
 ## <a name="copy-data-via-nfs"></a>NFS ile veri kopyalama
+
+NFS ile veri kopyalamak için:
 
 1. NFS ana bilgisayarı kullanıyorsanız, NFS paylaşımlarını Data Box’a bağlamak için aşağıdaki komutu kullanın:
 
@@ -252,6 +257,8 @@ Adım adım yönergeler için [Öğretici: NFS aracılığıyla Azure Data Box�
 
 ## <a name="copy-data-via-rest"></a>REST ile veri kopyalama
 
+REST ile veri kopyalamak için:
+
 1. REST API’leri aracılığıyla Data Box Blob depolama alanı kullanarak verileri kopyalamak için *http* ya da *https* üzerinden bağlanabilirsiniz.
 2. Data Box Blob depolama alanına veri kopyalamak için AzCopy aracını kullanabilirsiniz.
 
@@ -259,12 +266,16 @@ Adım adım yönergeler için [Öğretici: REST API’leri aracılığıyla Azur
 
 ## <a name="copy-data-via-data-copy-service"></a>Veri kopyalama hizmeti aracılığıyla veri kopyalama
 
-1. Veri kopyalama hizmetini kullanarak veri kopyalamak için bir iş oluşturmanız gerekir. Data Box yerel web kullanıcı arabiriminde **Yönet > Verileri kopyala > Oluştur**'a gidin. 
+Veri kopyalama hizmeti aracılığıyla veri kopyalamak için:
+
+1. Veri kopyalama hizmetini kullanarak veri kopyalamak için bir iş oluşturmanız gerekir. Data Box yerel web kullanıcı arabiriminde **Yönet > Verileri kopyala > Oluştur**'a gidin.
 2. Parametreleri doldurun ve bir iş oluşturun.
 
 Adım adım yönergeler için [Öğretici: Veri kopyalama hizmetini kullanarak Azure Data Box’a veri kopyalama](data-box-deploy-copy-data-via-copy-service.md) bölümüne gidin.
 
 ## <a name="copy-data-to-managed-disks"></a>Yönetilen disklere veri kopyalama
+
+Yönetilen disklere veri kopyalama:
 
 1. Data Box cihazını sipariş ederken depolama hedefiniz olarak yönetilen diskleri seçmiş olmanız gerekir.
 2. SMB veya NFS paylaşımları üzerinden Data Box’a bağlanabilirsiniz.
@@ -274,7 +285,6 @@ Adım adım yönergeler için [Öğretici: Azure’da yönetilen diskler olarak 
 
 ::: zone-end
 
-
 ::: zone target="docs"
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -282,10 +292,10 @@ Adım adım yönergeler için [Öğretici: Azure’da yönetilen diskler olarak 
 Bu öğreticide aşağıdaki Azure Data Box konularını öğrendiniz:
 
 > [!div class="checklist"]
+>
 > * Ön koşullar
 > * Data Box'a bağlanma
 > * Data Box'a veri kopyalama
-
 
 Data Box'ı Microsoft’a geri gönderme hakkında bilgi edinmek için sonraki öğreticiye geçin.
 
@@ -293,4 +303,3 @@ Data Box'ı Microsoft’a geri gönderme hakkında bilgi edinmek için sonraki �
 > [Azure Data Box verilerinizi Microsoft'a gönderme](./data-box-deploy-picked-up.md)
 
 ::: zone-end
-

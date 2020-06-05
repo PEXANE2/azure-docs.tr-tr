@@ -3,20 +3,69 @@ title: Azure Maliyet Yönetimi'ndeki yaygın maliyet analizi kullanımları
 description: Bu makale, Azure Maliyet Yönetimi'ndeki yaygın maliyet analizi görevlerinden nasıl faydalanabileceğinizi açıklamaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/10/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 2e0e222e636f694328835e20fda97deca1d9986a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 130d313c1ca549f3a4e6f1ec1bbac2a16a753709
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261523"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142543"
 ---
 # <a name="common-cost-analysis-uses"></a>Yaygın maliyet analizi kullanımları
 
 Azure Maliyet Yönetimi kullanıcıları genellikle çoğu kullanıcının sorduğu soruların yanıtlarını bulmak ister. Bu makale, Maliyet Yönetimi'ndeki yaygın maliyet analizi görevlerinden sonuç elde etme konusunda size yol gösterecektir.
+
+## <a name="view-forecasted-costs"></a>Tahmin edilen maliyetleri görüntüleme
+
+Tahmin edilen maliyetler, alan ve yığılmış sütun görünümlerindeki maliyet analizi alanlarında gösterilir. Tahmin, geçmiş kaynak kullanımınızı temel alır. Kaynak kullanımınızdaki değişiklikler, tahmin edilen maliyetleri etkiler.
+
+Azure portalında kapsamınıza ait maliyet analizine gidin. Örneğin: **Maliyet Yönetimi + Faturalama** > **Maliyet Yönetimi** > **Maliyet analizi**.
+
+Varsayılan görünümde, en üstteki grafik Gerçek/İtfa Edilmiş maliyeti ve tahmin edilen maliyet bölümlerini gösterir. Grafiğin düz rengi, Gerçek/İtfa Edilmiş maliyetinizi gösterir. Gölgeli renk, tahmin edilen maliyeti gösterir.
+
+[![Tahmin edilen maliyet](./media/cost-analysis-common-uses/enrollment-forecast.png)](./media/cost-analysis-common-uses/enrollment-forecast.png#lightbox)
+
+## <a name="view-forecasted-costs-grouped-by-service"></a>Hizmete göre gruplandırılmış tahmin edilen maliyetleri görüntüleme
+
+Varsayılan görünüm, hizmete göre gruplandırılmış tahmin edilen maliyetleri göstermediğinden, seçime göre grup eklemeniz gerekir.
+
+Azure portalında kapsamınıza ait maliyet analizine gidin. Örneğin: **Maliyet Yönetimi + Faturalama** > **Maliyet Yönetimi** > **Maliyet analizi**.
+
+**Gruplandırma ölçütü** > **Hizmet adı**’nı seçin.
+
+Görünüm, her hizmete göre gruplandırılmış maliyetlerinizi gösterir. Tahmin edilen maliyet her hizmet için hesaplanmaz. Tahmin, tüm hizmetlerinizin **Toplamı** için hesaplanır.
+
+[![Gruplandırılmış tahmin edilen maliyet](./media/cost-analysis-common-uses/forecast-group-by-service.png)](./media/cost-analysis-common-uses/forecast-group-by-service.png#lightbox)
+
+## <a name="view-forecasted-costs-for-a-service"></a>Bir hizmet için tahmin edilen maliyetleri görüntüleme
+
+Tahmin edilen maliyetleri, tek bir hizmete göre daraltılmış biçimde görüntüleyebilirsiniz. Örneğin, yalnızca sanal makineler için tahmin edilen maliyetleri görmek istiyor olabilirsiniz.
+
+1. Azure portalında kapsamınıza ait maliyet analizine gidin. Örneğin: **Maliyet Yönetimi + Faturalama** > **Maliyet Yönetimi** > **Maliyet analizi**.
+1. **Filtre ekle**’yi ve sonra **Hizmet adı**’nı seçin.
+1. **Seçim** listesinde bir hizmet seçin. Örneğin, **sanal makineleri** seçin.
+
+Seçime ait gerçek maliyeti ve tahmin edilen maliyeti gözden geçirin.
+
+Görünüme daha fazla özelleştirme ekleyebilirsiniz.
+
+1. **Ölçüm** için ikinci bir filtre ekleyin ve seçili hizmet adınızın kapsamındaki bağımsız bir ölçüm türüne yönelik filtre uygulamak üzere bir değer seçin.
+1. Maliyet yansıtan belirli kaynakları görmek için **Kaynağa** göre gruplandırın. Tahmin edilen maliyet her hizmet için hesaplanmaz. Tüm kaynaklarınızın **Toplamı** için yansıtılır.
+
+[![Bir hizmet için tahmin edilen maliyet](./media/cost-analysis-common-uses/forecast-by-service.png)](./media/cost-analysis-common-uses/forecast-by-service.png#lightbox)
+
+## <a name="view-your-azure-and-aws-costs-together"></a>Azure ve AWS maliyetlerinizi birlikte görüntüleme  
+
+Azure ve AWS maliyetlerini birlikte görüntülemek için Azure’daki yönetim grubu kapsamlarını kullanırsınız.
+
+1. Yönetim grubu oluşturun veya mevcut bir grubu seçin.
+1. İhtiyaç duyduğunuz mevcut Azure aboneliklerini bir yönetim grubuna atayın.
+1. *Aynı* yönetim grubunu, bağlayıcının bağlı hesabına atayın.
+1. Maliyet analizine gidin ve **Birikmiş maliyetler**’i seçin.
+1. **Gruplandırma Ölçütü** - **Sağlayıcı**’yı seçin.
 
 ## <a name="view-cost-breakdown-by-azure-service"></a>Azure hizmetine göre maliyet dökümünü görüntüleme
 
@@ -37,7 +86,6 @@ Azure portalında fatura ayrıntılarınızı görüntülemek için, analiz etti
 Fatura ayrıntılarını görüntüleyerek beklenmeyen maliyetler getiren hizmeti belirleyebilir ve hangi kaynakların Maliyet analizindeki kaynakla doğrudan ilişkili olduğunu saptayabilirsiniz. Örneğin Sanal Makineler hizmetinin ücretlerini analiz etmek istiyorsanız, **Birikmiş maliyet** görünümüne gidin. Ardından ayrıntı düzeyini **Günlük** olarak ayarlayın, sonra **Hizmet adı: Sanal makineler** için ücretleri filtreleyin ve ücretleri **Kaynak**’a göre gruplandırın.
 
 [![Sanal makinelerin birikmiş maliyetlerini gösteren örnek](./media/cost-analysis-common-uses/virtual-machines.png)](./media/cost-analysis-common-uses/virtual-machines.png#lightbox)
-
 
 ## <a name="view-cost-breakdown-by-azure-resource"></a>Azure kaynağına göre maliyet dökümünü görüntüleme
 

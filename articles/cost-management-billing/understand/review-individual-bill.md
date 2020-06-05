@@ -6,20 +6,22 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 02/13/2020
+ms.date: 05/28/2020
 ms.author: banders
-ms.openlocfilehash: 8ebda9716df2e9e45050760ee8d0434c12838370
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5a9e21cacb17743cbb8324a06c083c52aa261eb9
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199135"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194128"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Öğretici: Bireysel Azure faturanızı gözden geçirme
 
 Bu makale, Azure faturanızı anlamanıza ve gözden geçirmenize yardımcı olur. Her faturalama döneminde e-posta ile bir fatura gönderilir. Faturanız Azure ücretlerinizin gösterimidir. Faturadaki maliyet bilgileri Azure portalında da mevcuttur. Bu öğreticide Azure portalında faturanızı ayrıntılı günlük kullanım dosyası ve maliyet analizi ile karşılaştıracaksınız.
 
 Bu öğretici yalnızca bireysel aboneliğe sahip olan Azure müşterileri için geçerlidir. Bireysel abonelikler genellikle doğrudan Azure web sitesinden satın alınan ve kullandıkça öde ücretlerini kullanan aboneliklerdir.
+
+Beklenmeyen ücretleri anlamayla ilgili yardıma ihtiyacınız varsa bkz. [Beklenmeyen ücretleri analiz etme](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started#analyze-unexpected-charges). Azure aboneliğinizi iptal etmeniz gerekiyorsa bkz. [Azure aboneliğinizi iptal etme](../manage/cancel-azure-subscription.md).
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -47,7 +49,7 @@ Kullanım verilerini ve maliyetleri karşılaştırmanın ilk adımı, faturanı
 
 Azure portalında arama kutusuna *abonelikler* yazın ve [Abonelikler](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)'e tıklayın.
 
-![Abonelikler'e gidin](./media/review-individual-bill/navigate-subscriptions.png)
+[![Aboneliklere gitme](./media/review-individual-bill/navigate-subscriptions.png)](./media/review-individual-bill/navigate-subscriptions.png#lightbox)
 
 Abonelikler listesinde aboneliğe tıklayın.
 
@@ -147,7 +149,7 @@ Sanal makine gibi tek bir Azure kaynağı oluşturduğunuzda bu kaynağın bir v
 
 VM oluşturulduğunda her ölçüm kullanım kayıtları üretmeye başlar. Bu kullanım ve ölçümün fiyatı Azure ölçüm sisteminde izlenir.
 
-CSV biçimindeki kullanım dosyanızda faturanızın hesaplanması için kullanılan ölçümleri görebilirsiniz.
+Önceki örnekte olduğu gibi, CSV biçimindeki kullanım dosyanızda faturanızın hesaplanması için kullanılan ölçümleri görebilirsiniz.
 
 ## <a name="pay-your-bill"></a><a name="payment"></a>Faturanızı ödeme
 

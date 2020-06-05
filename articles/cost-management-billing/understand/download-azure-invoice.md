@@ -7,20 +7,18 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 05/28/2020
 ms.author: banders
-ms.openlocfilehash: 16534343a831f0802a60a9214f567742153360e0
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 4e77b167f00e2cfa3838439143c6074bd4122976
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80479000"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191352"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Microsoft Azure faturanızı görüntüleme ve indirme
 
 Faturanızı [Azure portalından](https://portal.azure.com/) indirebilir veya e-postayla gönderilmesini sağlayabilirsiniz. Kurumsal Anlaşmalı bir Azure müşterisiyseniz (EA müşterisi), kuruluşunuzun faturasını indiremezsiniz. Bunun yerine faturalar, kayıt için faturaları alacak kişi olarak ayarlanan kişiye gönderilir.
-
-[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="when-invoices-are-generated"></a>Faturalar ne zaman oluşturulur?
 
@@ -42,11 +40,11 @@ Bir MOSP faturalama hesabı aşağıdaki faturalara sahip olabilir:
 
 Örneğin Burak, 5 Mart’ta *Azure sub 01*, 10 Mart’ta *Azure sub 02* aboneliklerini oluşturuyor. *Azure sub 01* aboneliğinin faturasına bir ayın beşinci gününden diğer ayın dördüncü gününe kadar olan ücretler dahil edilir. *Azure sub 02* aboneliğinin faturasına ise bir ayın onuncu gününden diğer ayın dokuzuncu gününe kadar olan ücretler dahil edilir. Tüm Azure aboneliklerine ilişkin faturalar normalde hesabın oluşturulduğu ayın gününde oluşturulur, ancak iki gün sonraya kadar ertelenebilir. Bu örnekte Burak, hesabını 2 Şubat’ta oluşturduysa, hem *Azure sub 01* hem de *Azure sub 02* aboneliği için faturalar normalde her ayın ikinci gününde oluşturulur, ancak iki gün sonraya kadar ertelenebilir.
 
-**Azure Market, rezervasyonlar ve spot VM’ler**: Abonelik kullanılarak satın alınan rezervasyonlar, market ürünleri ve spot VM’leri için bir fatura oluşturulur. Fatura önceki aya ait tüm ilgili ücretleri gösterir. Örneğin Burak, 1 Mart’ta bir rezervasyon, 30 Mart’ta başka bir rezervasyon satın aldı. Her iki rezervasyon için Nisan ayında tek bir fatura oluşturulur. Azure Market, rezervasyonlar ve spot VM’ler yaklaşık her zaman ayın dokuzuncu gününde oluşturulur.
+**Azure Market, rezervasyonlar ve spot VM’ler**: Abonelik kullanılarak satın alınan rezervasyonlar, market ürünleri ve spot VM’ler için bir fatura oluşturulur. Fatura önceki aya ait tüm ilgili ücretleri gösterir. Örneğin Burak, 1 Mart’ta bir rezervasyon, 30 Mart’ta başka bir rezervasyon satın aldı. Her iki rezervasyon için Nisan ayında tek bir fatura oluşturulur. Azure Market, rezervasyonlar ve spot VM’lere yönelik fatura yaklaşık olarak her zaman ayın dokuzuncu gününde oluşturulur.
 
 Azure için bir kredi kartıyla ödeme yapıp rezervasyon satın alırsanız Azure hemen bir fatura oluşturur. Ancak bir faturayla faturalandırıldığında, rezervasyonun ücreti sonraki aya ait faturanıza yansıtılır.
 
-**Azure destek planı**: Destek planı aboneliğiniz için her ay bir fatura oluşturulur. İlk fatura, satın aldığınız günde veya sonraki iki gün içinde oluşturulur. Sonraki destek planı faturaları normalde hesabın oluşturulduğu ayın aynı gününde oluşturulur, ancak iki gün sonraya kadar ertelenebilir.
+**Azure destek planı**: Destek planı aboneliğiniz için her ay bir fatura oluşturulur. İlk fatura, satın aldığınız günde veya sonraki iki gün içinde oluşturulur. Sonraki destek planı faturaları normalde ay içinde hesabın oluşturulduğu günde oluşturulur, ancak iki gün sonraya kadar ertelenebilir.
 
 ## <a name="download-your-mosp-azure-subscription-invoice"></a>MOSP Azure aboneliği faturanızı indirme
 
@@ -58,7 +56,7 @@ Faturasını indirebilmek için abonelikte hesap yöneticisi rolüne sahip olman
 1. Faturalama bölümünde **Faturalar**’ı seçin.  
     ![Bir aboneliğe ait faturalar seçeneğini belirleyen kullanıcıyı gösteren ekran görüntüsü](./media/download-azure-invoice/select-subscription-invoice.png)
 1. Faturanızın PDF biçimindeki halini indirmek **İndir**’i seçin ve ardından fatura bölümü altından **İndir**’i seçin.  
-    [![Faturalama dönemini, indirme seçeneğini ve her faturalama dönemi için toplam ücretleri gösteren ekran görüntüsü](./media/download-azure-invoice/download-invoice-subscription.png)](./media/download-azure-invoice/download-invoice-subscription-zoomed.png#lightbox)
+    ![Faturalama dönemini, indirme seçeneğini ve her faturalama dönemi için toplam ücretleri gösteren ekran görüntüsü](./media/download-azure-invoice/downloadinvoice-subscription.png)
 1. Dilerseniz kullanım ayrıntıları bölümü altından **İndir**’i seçerek tüketilen miktar ve kullanıma ait günlük dökümünüzü de indirebilirsiniz. CSV dosyasının hazırlanması birkaç dakika sürebilir.  
     ![Faturayı indir seçeneğini ve kullanım sayfasını gösteren ekran görüntüsü](./media/download-azure-invoice/usage-and-invoice-subscription.png)
 
@@ -66,39 +64,33 @@ Faturanız hakkında daha fazla bilgi için bkz. [Microsoft Azure faturanızı a
 
 ## <a name="download-your-mosp-support-plan-invoice"></a>MOSP destek planı faturanızı indirme
 
-Fatura, yalnızca bir MOSP faturalama hesabına ait destek planı aboneliği için oluşturulur. [MOSP hesabına erişiminizi denetleyin](../manage/view-all-accounts.md#check-the-type-of-your-account). 
+Fatura, yalnızca bir MOSP faturalama hesabına ait destek planı aboneliği için oluşturulur. [MOSP hesabına erişiminizi denetleyin](../manage/view-all-accounts.md#check-the-type-of-your-account).
 
 Faturasını indirebilmek için destek planı aboneliğinde hesap yöneticisi rolüne sahip olmanız gerekir.
 
-1.  [Azure Portal](https://portal.azure.com) oturum açın.
-1.  **Maliyet Yönetimi + Faturalama** araması yapın.  
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. **Maliyet Yönetimi + Faturalama** araması yapın.  
     ![Portalda maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/download-azure-invoice/search-cmb.png)
-1.  Sol taraftan **Faturalar**’ı seçin.
-1.  Destek planı aboneliğinizi ve ardından **İndir**’i seçin.  
+1. Sol taraftan **Faturalar**’ı seçin.
+1. Destek planı aboneliğinizi ve ardından **İndir**’i seçin.  
     [![Faturalama profili listesini gösteren ekran görüntüsü](./media/download-azure-invoice/cmb-invoices.png)](./media/download-azure-invoice/cmb-invoices-zoomed-in.png#lightbox)
-1.  Faturanızın PDF biçimindeki halini indirmek için **İndir**’i seçin.  
+1. Faturanızın PDF biçimindeki halini indirmek için **İndir**’i seçin.  
     ![Faturalama dönemini, indirme seçeneğini ve her faturalama dönemi için toplam ücretleri gösteren ekran görüntüsü](./media/download-azure-invoice/download-invoice-support-plan.png)
 
-## <a name="allow-others-to-download-an-mosp-subscription-invoice"></a>Başkalarının MOSP aboneliği faturasını indirmesine izin verme
-
-Faturanın PDF biçimindeki halinde hesap yöneticisinin kişisel bilgileri yer alır, bu yüzden aboneliğin hesap yöneticisinin diğer kullanıcılara fatura indirme izni vermesi gerekir. İzin verildikten sonra, uygun rollere sahip şu kişi ve kullanıcılar abonelik faturalarını indirebilir:
-
-- Kullanıcılar
-- Gruplar
-- Sahip ile hizmet sorumluları
-- Katılımcı
-- Okuyucu
-- Kullanıcı erişimi yöneticisi
-- Faturalama okuyucusu
-- Ortak Yönetici
-- Hizmet Yöneticisi
+## <a name="allow-others-to-download-the-your-subscription-invoice"></a>Başkalarının aboneliğinizin faturasını indirmesine izin verme
 
 Fatura indirmek için:
 
 1.  [Azure portalında](https://portal.azure.com) aboneliğin hesap yöneticisi olarak oturum açın.
-1.  **Maliyet Yönetimi + Faturalama** araması yapın.  
-1.  Sol taraftan **Faturalar**’ı seçin.
-1.  Azure aboneliğinizi seçin ve ardından **Faturaya erişim**’i seçin.  
+
+2.  **Maliyet Yönetimi + Faturalama** araması yapın.
+
+    ![Portalda maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/download-azure-invoice/search-cmb.png)
+
+3.  Sol taraftan **Faturalar**’ı seçin.
+
+4.  Azure aboneliğinizi seçin ve **Başkalarının fatura indirmesine izin ver**’e tıklayın.
+
     [![Faturaya erişimin seçilmesini gösteren ekran görüntüsü](./media/download-azure-invoice/cmb-select-access-to-invoice.png)](./media/download-azure-invoice/cmb-select-access-to-invoice-zoomed-in.png#lightbox)
 1.  **Açık** seçeneğini, ardından sayfanın üstünde bulunan **Kaydet** seçeneğini belirleyin.  
     ![Faturaya erişim için Açık seçeneğinin belirlenmesini gösteren ekran görüntüsü](./media/download-azure-invoice/cmb-access-to-invoice.png)
@@ -108,16 +100,16 @@ Fatura indirmek için:
 Faturayı e-posta ile almayı kabul etmek için bir abonelikte veya destek planında hesap yöneticisi rolüne sahip olmanız gerekir. E-posta faturaları yalnızca abonelikler ve destek planları için geçerlidir, rezervasyonlar veya Azure Market satın alımlarında kullanılmaz. Faturayı e-posta ile almayı kabul ettikten sonra, faturayı alacak diğer alıcıları ekleyebilirsiniz.
 
 1.  [Azure Portal](https://portal.azure.com) oturum açın.
-1.  **Maliyet Yönetimi + Faturalama** araması yapın.  
-1.  Sol taraftan **Faturalar**’ı seçin.
-1.  Azure aboneliğinizi veya destek planı aboneliğinizi seçin ve sonra **E-posta faturası**’nı seçin.  
+2.  **Maliyet Yönetimi + Faturalama** araması yapın.  
+3.  Sol taraftan **Faturalar**’ı seçin.
+4.  Azure aboneliğinizi veya destek planı aboneliğinizi belirleyin ve sonra **Faturayı e-posta ile alın**’ı seçin.  
     [![Faturalama profili listesini gösteren ekran görüntüsü](./media/download-azure-invoice/cmb-email-invoice.png)](./media/download-azure-invoice/cmb-email-invoice-zoomed-in.png#lightbox)
-1. **Kabul et**’i seçin ve koşulları kabul edin.  
-    ![Kabul etme akışının 2. adımını gösteren ekran görüntüsü](./media/download-azure-invoice/invoice-article-step02.png)
-1. Fatura, tercih ettiğiniz iletişim e-posta adresinize gönderilir. E-posta adresini [faturalama hesabınızın iletişim bilgilerinden](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/Properties) güncelleştirebilirsiniz.  
-    ![Kabul etme akışının 3. adımını gösteren ekran görüntüsü](./media/download-azure-invoice/invoice-article-step03-verify-email.png)
+5. **E-posta faturası**’na tıklayın ve koşulları kabul edin.  
+    ![Kabul etme akışının 2. adımını gösteren ekran görüntüsü](./media/download-azure-invoice/invoicearticlestep02.png)
+6. Fatura, tercih ettiğiniz iletişim e-posta adresinize gönderilir. E-postayı güncelleştirmek için **Profili güncelleştir**’i seçin.  
+    ![Kabul etme akışının 3. adımını gösteren ekran görüntüsü](./media/download-azure-invoice/invoicearticlestep03-verifyemail.png)
 
-## <a name="share-your-mosp-invoices-with-others-by-email"></a>MOSP faturalarınızı e-posta üzerinden başkalarıyla paylaşma
+## <a name="share-subscription-and-support-plan-invoices"></a>Abonelik paylaşma ve destek planı faturaları
 
 Aboneliğinize ve destek planınıza ait faturaları her ay muhasebe ekibinizle paylaşmak veya başka bir e-posta adresinize göndermek isteyebilirsiniz.
 
@@ -140,13 +132,22 @@ Hesabınızdaki her bir faturalama profili için ay başında aylık bir fatura 
 Faturasını Azure portalından indirmek için faturalama profilinde sahip, katkıda bulunan, okuyucu veya fatura yöneticisi rollerinden birine sahip olmanız gerekir. Faturalama hesabında sahip, katkıda bulunan veya okuyucu rolüne sahip olan kullanıcılar hesaptaki tüm faturalama profiline ait faturaları indirebilir.
 
 1.  [Azure Portal](https://portal.azure.com) oturum açın.
-1.  **Maliyet Yönetimi + Faturalama** araması yapın.  
-1. Sol taraftan **Faturalar**’ı seçin.
-    [![MCA faturalama hesabı için Faturalar sayfasını gösteren ekran görüntüsü](./media/download-azure-invoice/mca-billing-profile-invoices.png)](./media/download-azure-invoice/mca-billing-profile-invoices-zoomed.png#lightbox)
-1. Faturalar tablosunda, indirmek istediğiniz faturayı seçin.
-1. Sayfanın üst kısmındaki **Faturayı PDF olarak indir**’i seçin.  
-    ![Faturanın PDF olarak indirilmesini gösteren ekran görüntüsü](./media/download-azure-invoice/mca-billing-profile-download-invoice.png)
-1. Ayrıca **Azure kullanımını indir**’i seçerek günlük tüketilen miktar dökümünüzü ve tahmini ücretleri içeren bir CSV dosyası da indirebilirsiniz. CSV dosyasının hazırlanması birkaç dakika sürebilir.
+
+2.  **Maliyet Yönetimi + Faturalama** araması yapın.
+
+    ![Portalda maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/download-azure-invoice/search-cmb.png)
+
+3. Sol taraftan **Faturalar**’ı seçin.
+
+    [![MCA faturalama hesabı için Faturalar sayfasını gösteren ekran görüntüsü](./media/download-azure-invoice/mca-billingprofile-invoices.png)](./media/download-azure-invoice/mca-billingprofile-invoices-zoomed-in.png#lightbox)
+
+4. Faturalar tablosunda, indirmek istediğiniz faturayı seçin.
+
+5. Sayfanın üst kısmındaki **Fatura PDF’sini indir**’e tıklayın.
+
+    [![Faturanın PDF olarak indirilmesini gösteren ekran görüntüsü](./media/download-azure-invoice/mca-billingprofile-download-invoice.png)](./media/download-azure-invoice/mca-billingprofile-download-invoice-zoomed-in.png#lightbox)
+
+6. Ayrıca **Azure kullanımını indir**’e tıklayarak günlük tüketilen miktar dökümünüzü ve tahmini ücretleri de indirebilirsiniz. CSV dosyasının hazırlanması birkaç dakika sürebilir.
 
 ## <a name="get-your-billing-profiles-invoice-in-email"></a>Faturalama profilinizin faturasını e-posta ile alma
 
@@ -160,7 +161,15 @@ E-posta fatura tercihini güncelleştirmek için faturalama profilinde veya bu p
     ![MCA faturalama hesabı için Faturalar sayfasını gösteren ekran görüntüsü](./media/download-azure-invoice/mca-billing-profile-email-invoice.png)
 1.  **Güncelleştir**’i seçin.
 
-## <a name="give-others-access-to-mca-or-mpa-invoices"></a>Başkalarına MCA veya MPA faturalarına erişim izni verme
+2.  **Maliyet Yönetimi + Faturalama** araması yapın.
+
+    ![Portalda maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/download-azure-invoice/search-cmb.png)
+
+3.  Sol taraftaki **Faturalar**’ı seçtikten sonra sayfanın üst tarafından **Faturayı E-posta ile Gönder**’i seçin.
+
+    [![MCA faturalama hesabı için Faturalar sayfasını gösteren ekran görüntüsü](./media/download-azure-invoice/mca-billingprofile-select-emailinvoice.png)](./media/download-azure-invoice/mca-billingprofile-select-emailinvoice-zoomed-in.png)
+
+4.  Birden fazla faturalama profiliniz varsa bunlardan birini seçin ve ardından **Kabul et**’i seçin.
 
 Bir MCA veya MPA faturalama profilinde fatura yöneticisi rolünü atayarak başkalarına faturaları görüntüleme, indirme ve ödeme erişimi verirsiniz. Faturanın e-posta ile gönderilmesini kabul ettiyseniz faturalar bu kullanıcılara da e-posta ile gönderilir.
 
@@ -173,15 +182,68 @@ Bir MCA veya MPA faturalama profilinde fatura yöneticisi rolünü atayarak baş
 1. Rol açılan listesinde **Fatura Yöneticisi**'ni seçin. Erişim izni vermek için kullanıcının e-posta adresini girin. Rolü atamak için **Kaydet**’i seçin.  
    ![Bir kullanıcıyı fatura yöneticisi olarak eklemeyi gösteren ekran görüntüsü](./media/download-azure-invoice/mca-added-invoice-manager.png)
 
-## <a name="why-you-might-not-see-an-invoice"></a><a name="noinvoice"></a> Fatura görememenizin nedeni nedir?
+1. **Maliyet Yönetimi + Faturalama** araması yapın.
+
+   ![Portalda abonelik aramasını gösteren ekran görüntüsü](./media/download-azure-invoice/search-cmb.png)
+
+1. Soldaki **Faturalama profilleri** seçeneğini belirleyin. Faturalama profilleri listesinden fatura yöneticisi rolünü atamak istediğiniz faturalama profilini seçin.
+
+   ![Faturalama profili listesini gösteren ekran görüntüsü](./media/download-azure-invoice/mca-select-profile-zoomed-in.png)
+
+1. Sol taraftan **Erişim Denetimi (IAM)** girişini seçtikten sonra sayfanın üst tarafından **Ekle**'yi seçin.
+
+   [![Erişim denetimi sayfasını gösteren ekran görüntüsü](./media/download-azure-invoice/mca-select-access-control-zoomed-in.png)
+
+1. Rol açılan listesinde **Fatura Yöneticisi**'ni seçin. Erişim izni vermek için kullanıcının e-posta adresini girin. Rolü atamak için **Kaydet**’i seçin.
+
+   [![Bir kullanıcıyı fatura yöneticisi olarak eklemeyi gösteren ekran görüntüsü](./media/download-azure-invoice/mca-added-invoice-manager.png)](./media/download-azure-invoice/mca-added-invoice-manager.png#lightbox)
+   
+   
+##  <a name="why-you-might-not-see-an-invoice"></a>Fatura neden göremiyorsunuz?
+
+<a name="noinvoice"></a>
 
 Bir faturayı görmemenizin birden fazla nedeni olabilir:
 
-- Azure'a abone olmanızın üzerinden 30 gün geçmemiştir. 
-- Azure, fatura döneminizin bitişinden birkaç gün sonra faturanızı iletir. Bu nedenle fatura henüz oluşturulmamış olabilir.
-- Faturaları görüntüleme izniniz yoktur.
-    MCA veya MPA faturalama hesabınız varsa faturaları görüntülemek için bir faturalama profilinde Sahip, Katkıda Bulunan, Okuyucu veya Fatura Yöneticisi rolüne veya faturalama hesabında Sahip, Katkıda Bulunan veya Okuyucu rolüne sahip olmanız gerekir. Diğer abonelikler için Hesap Yöneticisi değilseniz faturaları göremeyebilirsiniz. Faturalama bilgilerine erişme hakkında daha fazla bilgi için bkz. [Rolleri kullanarak Azure faturalamasına erişimi yönetme](../manage/manage-billing-access.md).
-- MOSP faturalama hesabınız varsa ve Azure Ücretsiz Hesabına veya aylık kredi miktarına sahip bir aboneliğe kaydolduysanız yalnızca aylık kredi miktarı kullanımını aştığınızda fatura alırsınız. MCA veya MPA için bir faturalama hesabınız varsa her zaman fatura alırsınız.
+- Fatura henüz hazır değil
+    
+    - Azure'a abone olmanızın üzerinden 30 gün geçmemiştir. 
+
+    - Azure, fatura döneminizin bitişinden birkaç gün sonra faturanızı iletir. Bu nedenle fatura henüz oluşturulmamış olabilir.
+
+- Faturaları görüntüleme izniniz yoktur. 
+    
+    - MCA veya MPA faturalama hesabınız varsa faturaları görüntülemek için bir faturalama profilinde Sahip, Katkıda Bulunan, Okuyucu veya Fatura Yöneticisi rolüne veya faturalama hesabında Sahip, Katkıda Bulunan veya Okuyucu rolüne sahip olmanız gerekir. 
+    
+    - Diğer faturalama hesapları için Hesap Yöneticisi değilseniz faturaları göremeyebilirsiniz.
+
+- Hesabınız faturayı desteklemiyor.
+
+    - Microsoft Çevrimiçi Abonelik Programı (MOSP) için faturalama hesabınız varsa ve Azure Ücretsiz Hesabına veya aylık kredi miktarına sahip bir aboneliğe kaydolduysanız yalnızca aylık kredi miktarı kullanımını aştığınızda fatura alırsınız.
+
+    - Microsoft Müşteri Sözleşmesi (MCA) veya Microsoft İş Ortağı Sözleşmesi (MPA) için bir faturalama hesabınız varsa her zaman bir fatura alırsınız.
+
+- Diğer hesaplarınızdan biri üzerinden faturaya erişebilirsiniz.
+
+    - Bu durum genellikle, portaldaki faturanızı görüntülemenizi isteyen bir e-posta bağlantısına tıkladığınızda olur. Bağlantıya tıkladığınızda şu hata iletisini görürsünüz: `We can't display your invoices. Please try again`. Faturaları görme izinlerine sahip bir e-posta adresiyle oturum açtığınızı doğrulayın.
+
+- Farklı bir kimlik üzerinden faturaya erişebilirsiniz. 
+
+    - Bazı müşterilerin aynı e-posta adresinde iki kimliği vardır: iş hesabı ve Microsoft hesabı. Genellikle, kimliklerden yalnızca birinin faturaları görüntüleme izni vardır. İzni olmayan kimlikle oturum açarlarsa faturaları göremezler. Oturum açmak için doğru kimliği kullandığınızı doğrulayın.
+
+- Yanlış Azure Active Directory (AAD) kiracısında oturum açtınız. 
+
+    - Faturalama hesabınız bir AAD kiracısıyla ilişkili. Yanlış bir kiracıda oturum açtıysanız faturalama hesabınızdaki aboneliklerin faturasını görmezsiniz. Doğru Azure Active Directory (AAD) kiracısında oturum açtığınızı doğrulayın. Doğru kiracıda oturum açmadıysanız Azure portalından kiracıyı değiştirmek için aşağıdakileri kullanın:
+
+        1. Sayfanın sağ üst kısmından e-postanızı seçin.
+
+        2. **Dizini değiştir**’i seçin.
+
+           ![Portalda dizini değiştirme adımının seçildiğini gösteren ekran görüntüsü](./media/download-azure-invoice/select-switch-directory.png)
+
+        3. **Tüm dizinler** bölümünden bir dizin seçin.
+
+           ![Portalda dizin seçme adımını gösteren ekran görüntüsü](./media/download-azure-invoice/select-directory.png)
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
@@ -200,5 +262,3 @@ MCA’ya sahipseniz bkz.
 - [Faturalama profilinizin faturasındaki ücretleri anlama](review-customer-agreement-bill.md)
 - [Faturalama profilinizin faturasındaki terimleri anlama](mca-understand-your-invoice.md)
 - [Faturalama profilinizin Azure kullanımı ve ücretleri dosyasını anlama](mca-understand-your-usage.md)
-
-

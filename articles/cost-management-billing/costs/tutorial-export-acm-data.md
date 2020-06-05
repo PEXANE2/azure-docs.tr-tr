@@ -3,17 +3,17 @@ title: Öğretici - Azure Maliyet Yönetimi'nden dışarı aktarılan verileri o
 description: Bu makalede, dış sistemlerde kullanabilmeniz için dışarı aktarılan Azure Maliyet Yönetimi verilerini nasıl oluşturup yönetebileceğiniz gösterilir.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 05/27/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f0a1515816fe7a9e1d79f69655e6bf21725a0b5d
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 90334d29ed2f649854863f9ad86f03811728a945
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877958"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142340"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Öğretici: Dışarı aktarılan verileri oluşturma ve yönetme
 
@@ -49,17 +49,15 @@ Yeni bir aboneliğiniz varsa Maliyet Yönetimi özelliklerini hemen kullanamazs�
 
 ## <a name="create-a-daily-export"></a>Günlük bir dışarı aktarma oluşturma
 
-Dışarı aktarma oluşturmak veya görüntülemek ya da zamanlamak için Azure portalında istediğiniz kapsamı açıp menüden **Maliyet analizi**'ni seçin. Örneğin **Abonelikler**'e gidin, listeden bir abonelik belirleyin ve menüden **Maliyet analizi**'ni seçin. Maliyet Analizi sayfasının en üstünde **Dışarı aktar**'ı seçin ve bir dışarı aktarma seçeneği belirleyin. Örneğin **Dışarı aktarma zamanla**'yı seçin.  
+Dışarı aktarma oluşturmak veya görüntülemek ya da zamanlamak için Azure portalında istediğiniz kapsamı açıp menüden **Maliyet analizi**'ni seçin. Örneğin **Abonelikler**'e gidin, listeden bir abonelik belirleyin ve menüden **Maliyet analizi**'ni seçin. Maliyet analizi sayfasının üst kısmında **Ayarlar**’ı ve sonra **Dışarı Aktarmalar**’ı seçin, ardından bir dışarı aktarma seçeneği belirleyin.
 
 > [!NOTE]
 > - Dışarı aktarmayı aboneliklerin yanı sıra, kaynak grupları, hesaplar, departmanlar ve kayıtlar özelinde de oluşturabilirsiniz. Kapsamlar hakkında daha fazla bilgi için bkz. [Kapsamları anlama ve birlikte çalışma](understand-work-scopes.md).
 >- Ödeme hesabı kapsamında veya müşteri kiracısında iş ortağı olarak oturum açtığınızda verileri iş ortağı depolama hesabıyla ilişkilendirilmiş olan Azure Depolama hesabına aktarabilirsiniz. Ancak CSP kiracınızda etkin bir aboneliğe sahip olmanız gerekir.
->
-
 
 **Ekle**'yi seçin, dışarı aktarma için bir ad yazın ve ardından **Ay başından bugüne kadarki maliyetlerin günlük dışarı aktarması**'nı seçin. **İleri**’yi seçin.
 
-![Dışarı aktarma türünü gösteren yeni dışarı aktarma örneği](./media/tutorial-export-acm-data/basics_exports.png)
+[![Dışarı aktarma türünü gösteren yeni dışarı aktarma örneği](./media/tutorial-export-acm-data/basics_exports.png)](./media/tutorial-export-acm-data/basics_exports.png#lightbox)
 
 Azure depolama hesabınıza ait aboneliği belirttikten sonra depolama hesabınızı seçin.  Dışarı aktarılan dosyanın gitmesini istediğiniz depolama kapsayıcısını ve dizin yolunu belirtin. **İleri**’yi seçin.
 
@@ -83,10 +81,19 @@ Har dışarı aktarma işlemi yeni bir dosya oluşturur ve eski dışarı aktarm
 **Özel**: Hafta başından bugüne ve ay başından bugüne seçenekleriyle haftalık ve aylık dışarı aktarma zamanlaması gerçekleştirmenizi sağlar. *İlk dışarı aktarma anında çalışır.*
 
 Kullandıkça Öde, MSDN veya Visual Studio aboneliğiniz varsa faturanızdaki fatura dönemi takvim ayından farklı olabilir. Bu abonelik türleri ve kaynak grupları için fatura döneminize veya takvim aylarına uyan bir dışarı aktarma oluşturabilirsiniz. Fatura ayınıza uygun bir dışarı aktarma oluşturmak için **Özel**'e gidin ve **Faturalama döneminden bugüne**'yi seçin.  Takvim ayına hizalanmış bir dışarı aktarma oluşturmak için **Bugüne kadar aylık** seçeneğini tercih edin.
->
->
 
 ![Yeni dışarı aktarma - Özel bugüne kadar haftalık seçeneğini gösteren Temel sekmesi](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
+
+#### <a name="create-an-export-for-multiple-subscriptions"></a>Birden çok abonelik için dışarı aktarma oluşturma
+
+Kurumsal Anlaşmanız varsa abonelik maliyeti bilgilerini tek bir kapsayıcıda toplamak için bir yönetim grubu kullanabilirsiniz. Daha sonra, yönetim grubu için maliyet yönetimi verilerini dışarı aktarabilirsiniz.
+
+Diğer abonelik türlerinin yönetim gruplarına yönelik dışarı aktarmalar desteklenmez.
+
+1. Bir yönetim grubu oluşturun ve buna abonelikler atayın.
+1. Dışarı Aktarmalar’da **Kapsam**’ı seçin.
+1. **Bu yönetim grubunu seç**’i belirleyin.
+1. Yönetim grubundaki aboneliklere yönelik maliyet yönetimi verilerini almak için kapsama uygun bir dışarı aktarma işlemi oluşturun.
 
 ## <a name="verify-that-data-is-collected"></a>Verilerin toplandığını doğrulama
 
@@ -104,6 +111,18 @@ Dosya, CSV dosyası uzantılarını açmak üzere ayarlanmış program veya uygu
 
 ![Excel'de gösterilen dışarı aktarılmış örnek CSV verileri](./media/tutorial-export-acm-data/example-export-data.png)
 
+### <a name="download-an-exported-csv-data-file"></a>Dışarı aktarılmış bir CSV veri dosyasını indirme
+
+Dışarı aktarılmış CSV dosyasını Azure portalından da indirebilirsiniz. Aşağıdaki adımlarda, maliyet analizinden bu dosyayı nasıl bulacağınız açıklanmıştır.
+
+1. Maliyet analizinde **Ayarlar**’ı ve sonra **Dışarı Aktarmalar**’ı seçin.
+1. Dışarı aktarmalar listesinde, dışarı aktarma işlemine ait depolama hesabını seçin.
+1. Depolama hesabınızda **Kapsayıcılar**’a tıklayın.
+1. Kapsayıcılar listesinden kapsayıcıyı seçin.
+1. Dizinlerde ve depolama bloblarında istediğiniz tarihe doğru gidin.
+1. CSV dosyasını seçip **İndir** seçeneğini belirleyin.
+
+[![Örnek dışarı aktarma indirmesi](./media/tutorial-export-acm-data/download-export.png)](./media/tutorial-export-acm-data/download-export.png#lightbox)
 
 ## <a name="access-exported-data-from-other-systems"></a>Dışarı aktarılan verilere diğer sistemlerden erişme
 

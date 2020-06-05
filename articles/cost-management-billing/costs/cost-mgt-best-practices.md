@@ -3,17 +3,17 @@ title: Azure Maliyet Yönetimi ile bulut yatırımınızı iyileştirme
 description: Bu makale bulut yatırımlarınızdan en iyi şekilde yararlanmanıza, maliyetlerinizi azaltmanıza ve paranızın nereye harcandığını değerlendirmenize yardımcı olur.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/04/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 759c69544c083e95cbd5198eecf9f7bb0e882aa8
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f328f17b1d64bc9b8f0be35321aecaba0cb85fa6
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791621"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142427"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Azure Maliyet Yönetimi ile bulut yatırımınızı iyileştirme
 
@@ -131,14 +131,39 @@ Daha fazla bilgi için bkz. [Azure Geçişi](https://docs.microsoft.com/azure/mi
 
 Kuruluşunuzun maliyetlerinin zaman içinde nasıl değiştiğini takip edin. Harcamalarınızı doğru şekilde anlamak ve yönetmek için aşağıdaki teknikleri kullanın.
 
-### <a name="organize-and-tag-your-resources"></a>Kaynaklarınızı düzenleyin ve etiketleyin
+### <a name="organize-resources-to-maximize-cost-insights-and-accountability"></a>Maliyet içgörülerini ve sorumluluğunu en üst düzeye çıkarmak için kaynakları düzenleme
 
-Kaynaklarınızı maliyetleri dikkate alarak düzenleyin. Abonelik ve kaynak grubu oluştururken ilgili maliyetlerden sorumlu olan ekipleri düşünün. Raporlamanın şirketiniz için uygun olduğundan emin olun. Abonelikler ve kaynak grupları, kuruluş genelindeki harcamaların düzenlenmesi ve atanması için uygun demetler sunar. Etiketler, maliyetleri atamak için uygun bir yöntem sunar. Etiketleri filtre olarak kullanabilirsiniz. Ayrıca bunları veri analizi ve maliyet inceleme aşamalarında gruplama ölçütü olarak da kullanabilirsiniz. Kurumsal Anlaşma müşterileri, departman oluşturabilir ve abonelikleri departmanların altına yerleştirebilir. Azure'daki maliyet tabanlı düzen, kuruluşunuzdaki ilgili kişilerin ekipleri tarafından yapılan harcamaların azaltılmasından sorumlu tutulmasını sağlar.
+Azure faturalamanız ve kaynak hiyerarşileriniz için iyi planlanmış bir organizasyonel yapı, bulut altyapınızı oluşturdukça maliyetlerinizi daha iyi bir kavrayıp denetlemenize yardımcı olur. Kullanılabilir organizasyonel araçları daha iyi anlayıp bunlardan nasıl yararlanacağınızı öğrenmek için [Varlık hiyerarşilerini ayarlama](https://www.youtube.com/watch?v=n3TLRaYJ1NY) adlı videoyu izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
 
-Kuruluşunuzda ölçeklenebilir kaynak etiketlemeyi zorunlu tutmak amacıyla kullanabileceğiniz araçları anlamak için [Azure Maliyet Yönetimi ile etiket ilkelerini gözden geçirme](https://www.youtube.com/watch?v=nHQYcYGKuyw) videosunu izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
+>[!VIDEO https://www.youtube.com/embed/n3TLRaYJ1NY]
+
+İhtiyaçlarınızı karşılayan bir hiyerarşiyi değerlendirip oluştururken kendinize aşağıdaki soruları sorun.
+
+*Hangi faturalama hiyerarşisini kullanabilirim ve yararlanabileceğim farklı kapsamlar nelerdir?*
+
+Azure teklifinizin türünü belirleyerek kuruluşunuzun faturalama düzenlemesini tanımlayın. Her Azure faturalama düzenlemesine ilişkin kullanılabilir kapsamlar [Kapsamları anlama ve bunlarla çalışma](understand-work-scopes.md) bölümünde belgelenmiştir.
+
+*Birden çok ekibim varsa aboneliklerini ve kaynak gruplarını nasıl düzenlemem gerekir?*
+
+Her ekip için bir abonelik veya kaynak grubu oluşturmak yaygın bir uygulamadır. Bu uygulamalar, maliyetleri ayırt etmenize ve ekipleri bunlardan sorumlu tutmanıza yardımcı olur. Ancak, maliyetler aboneliğe veya kaynak grubuna bağlıdır.
+
+Birden çok aboneliği olan ekipleriniz varsa maliyetleri birlikte analiz etmek için abonelikleri yönetim gruplarına ayırmanız faydalı olabilir. Yönetim grupları, abonelikler ve kaynak gruplarının tümü Azure RBAC hiyerarşisinin birer parçasıdır. Ekiplerinizdeki denetime erişmek için bunları birlikte kullanın.
+
+Kaynaklar özellikle birden çok ekip veya iş yükü tarafından paylaşıldığında birden çok kapsama yayılabilir. Kaynakları etiketlerle tanımlamanız yararlı olabilir. Etiketler, sonraki bölümde ayrıntılı bir şekilde ele alınacaktır.
+
+*Geliştirme ve Üretim ortamlarına sahip miyim?*
+
+Düşük fiyatlandırmadan yararlanmak için geliştirme ortamlarınızda Geliştirme ve Test abonelikleri oluşturmanız faydalı olabilir. İş yükleri birden çok ekibe veya Azure kapsamına yayıldıysa bunları tanımlamak için etiketleri kullanabilirsiniz.
+
+### <a name="tag-shared-resources"></a>Paylaşılan kaynakları etiketleme
+
+Etiketler, birden çok ekip ve Azure kapsamı genelinde yayılan maliyetleri anlamanın etkin bir yoludur. Örneğin, pek çok ekip tarafından kullanılan e-posta sunucusu gibi bir kaynağınız olabilir. E-posta sunucusu gibi paylaşılan bir kaynağı, paylaşılan kaynaklara ayrılmış bir aboneliğe veya mevcut bir aboneliğe ekleyebilirsiniz. Mevcut bir aboneliğe eklerseniz abonelik sahibi, bu kaynağın maliyetinin her ay kendi ekibine yansıtılmasını istemeyebilir. Bu örnek özelinde, kaynağı paylaşılan olarak tanımlamak için bir etiket kullanabilirsiniz.
+
+Benzer şekilde, farklı ekiplerin sahip olduğu birden çok abonelik genelinde kaynaklar kullanan Test veya Üretim gibi web uygulamalarınız veya ortamlarınız da olabilir. İş yüklerinin tam maliyetini daha iyi kavramak amacıyla, bu iş yükleri tarafından kullanılan kaynakları etiketleyin. Etiketler düzgün bir şekilde uygulandığında, eğilimleri daha iyi anlamak için bunları maliyet analizinde filtre olarak uygulayabilirsiniz.
+
+Kaynak etiketlemeye yönelik plan yaptıktan sonra, kaynaklar üzerinde etiketlemeyi zorunlu kılmak için bir Azure ilkesi yapılandırabilirsiniz. Ölçeklenebilir kaynak etiketlemesini zorunlu kılmanıza yardımcı olacak kullanılabilir araçları anlamak için [Azure Maliyet Yönetimi ile etiket ilkelerini gözden geçirme](https://www.youtube.com/watch?v=nHQYcYGKuyw) adlı videoyu izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
-
 
 ### <a name="use-cost-analysis"></a>Maliyet analizini kullanma
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: d1425407b9d451a8c35e736c38b8fac059a7c9d8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8dea0da44ebfb35165daa7096296dada55e78e99
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204894"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83997137"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 
@@ -246,7 +246,7 @@ PEC maliyetlerinin detayına inmek için halka grafikte açılan listeyi ve ard�
 
 **PartnerEarnedCreditApplied** özelliği _False_ olduğunda ilgili maliyet, kredi için gerekli uygunluğu sağlamamış olur. Satın alınan hizmet de iş ortağı tarafından kazanılmış kredi için uygun olmayabilir.
 
-Hizmet kullanım verilerinin Maliyet Yönetimi'ne yansıtılması normalde 8-24 saat arası sürer. Daha fazla bilgi için bkz. [Kullanım verileri güncelleştirme sıklığı değişiyor](understand-cost-mgt-data.md#usage-data-update-frequency-varies). PEC kredileri, Azure Maliyet Yönetimi erişiminden itibaren 48 saat içinde görünür.
+Hizmet kullanım verilerinin Maliyet Yönetimi'ne yansıtılması normalde 8-24 saat arası sürer. Daha fazla bilgi için bkz. [Maliyet ile kullanım verilerinin güncelleştirilmesi ve saklama](understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention). PEC kredileri, Azure Maliyet Yönetimi erişiminden itibaren 48 saat içinde görünür.
 
 
 İsterseniz **PartnerEarnedCreditApplied** özelliğini **Gruplandırma ölçütü** seçeneklerini kullanarak gruplandırabilir ve filtreleyebilirsiniz. Bu seçenekleri kullanarak PEC içeren ve içermeyen maliyetleri inceleyebilirsiniz.
