@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: ad6acbad57df24e5cd78c72c9d00bcd32a83219a
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 28453af7eb38f4195774d70c5960eacc8467dedd
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731586"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417013"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager sık sorulan sorular (SSS)
 
@@ -306,7 +306,7 @@ Trafik Görünümü fiyatlandırması, çıktıyı oluşturmak için kullanılan
 
 Azure Web Apps ile birden çok abonelikteki uç noktaların kullanılması mümkün değildir. Azure Web Apps, Web Apps birlikte kullanılan herhangi bir özel etki alanı adının yalnızca tek bir abonelik içinde kullanılmasını gerektirir. Aynı etki alanı adına sahip birden çok abonelikten Web Apps kullanmak mümkün değildir.
 
-Diğer uç nokta türleri için birden fazla abonelikteki uç noktalarla Traffic Manager kullanmak mümkündür. Kaynak Yöneticisi, Traffic Manager profilini yapılandıran kişinin uç noktaya okuma erişimi olduğu sürece herhangi bir abonelikteki uç noktalar Traffic Manager eklenebilir. Bu izinler, [Azure Resource Manager rol tabanlı erişim denetimi (RBAC)](../role-based-access-control/role-assignments-portal.md)kullanılarak verilebilir.
+Diğer uç nokta türleri için birden fazla abonelikteki uç noktalarla Traffic Manager kullanmak mümkündür. Kaynak Yöneticisi, Traffic Manager profilini yapılandıran kişinin uç noktaya okuma erişimi olduğu sürece herhangi bir abonelikteki uç noktalar Traffic Manager eklenebilir. Bu izinler, [Azure Resource Manager rol tabanlı erişim denetimi (RBAC)](../role-based-access-control/role-assignments-portal.md)kullanılarak verilebilir. Diğer aboneliklerden gelen uç noktalar, [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) veya [Azure CLI](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create)kullanılarak eklenebilir.
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Bulut hizmeti ' hazırlama ' yuvaları ile Traffic Manager kullanabilir miyim?
 

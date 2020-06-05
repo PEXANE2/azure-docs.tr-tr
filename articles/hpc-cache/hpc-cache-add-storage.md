@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: v-erkel
-ms.openlocfilehash: 9d08526334a9891788df63b156cdf65f55c587ca
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 442c9897c5f02e9ed9cbcda96b6a540b9201f428
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344943"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434110"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
@@ -25,7 +25,7 @@ Depolama dışarı aktarımlarının, önbelleğinizin sanal ağından erişileb
 
 Önbellek oluşturma ve depolama hedefi ekleme hakkında bir [video tanıtımı](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) izlemek için aşağıdaki görüntüye tıklayın.
 
-[![video küçük resmi: Azure HPC Cache: Setup (video sayfasını ziyaret etmek için tıklayın)](media/video4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
+[![video küçük resmi: Azure HPC Cache: Setup (video sayfasını ziyaret etmek için tıklayın)](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
 ## <a name="open-the-storage-targets-page"></a>Depolama hedefleri sayfasını açın
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 3e5507069a3e1eeadfaf4c3eeee288b2651e88a1
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 083b130d1bb02ccc922c834c09a0d16fab004ae9
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996049"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433571"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Blob dizini (Önizleme) ile Azure Blob depolama üzerinde verileri yönetme ve bulma
 
@@ -208,7 +208,7 @@ Blob dizin etiketleri, blob verilerine bir alt kaynaktır. Blob 'ları okuma vey
 
 |   Blob işlemleri   |  RBAC eylemi   |
 |---------------------|----------------|
-| Blob 'Ları etiketlere göre bul  | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/filtre |
+| Blob 'Ları etiketlere göre bul  | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/filtre/eylem |
 | Blob etiketlerini ayarla         | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/Etiketler/yazma | 
 | Blob etiketlerini al         | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/Etiketler/okuma |
 

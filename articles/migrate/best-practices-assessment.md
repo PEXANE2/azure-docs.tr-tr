@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: de6953b6648613595bc9975b17941b3a453a6d60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 635ea81f37e72cdee80fbae928745e49b103820e
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185975"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433051"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Değerlendirme oluşturmak için en iyi uygulamalar
 
@@ -23,7 +23,7 @@ Bu makalede, Azure geçişi sunucu değerlendirmesi Aracı kullanılarak değerl
 
 Azure geçişi sunucu değerlendirmesi ile oluşturduğunuz değerlendirmeler, verilerin bir zaman noktası anlık görüntüsüdür. Azure geçişi 'nde iki tür değerlendirme vardır.
 
-**Değerlendirme türü** | **Bilgileri** | **Veri**
+**Değerlendirme türü** | **Ayrıntılar** | **Veri**
 --- | --- | ---
 **Performans tabanlı** | Toplanan performans verilerine dayalı öneriler oluşturan değerlendirmeler | VM boyutu önerisi, CPU ve bellek kullanımı verilerine göre belirlenir.<br/><br/> Disk türü önerisi (Standart HDD/SSD veya Premium yönetilen diskler), şirket içi disklerin ıOPS ve aktarım hızını temel alır.
 **Şirket içi olarak** | Öneriler oluşturmak için performans verilerini kullanmayan değerlendirmeler. | VM boyutu önerisi, şirket içi VM boyutunu temel alır<br/><br> Önerilen disk türü, değerlendirme için depolama türü ayarında neleri seçdiklerinize bağlıdır.
@@ -83,7 +83,18 @@ Bir değerlendirme oluşturduktan sonra bir gruba makine ekler veya kaldırırsa
 
 ### <a name="outdated-assessments"></a>Güncel olmayan değerlendirmeler
 
-Değerlendirilen bir gruptaki VM 'lerde şirket içi değişiklikler varsa, değerlendirme **güncelliğini yitirmiş**olarak işaretlenir. Değişiklikleri yansıtmak için değerlendirmeyi yeniden çalıştırın.
+Değerlendirilen bir gruptaki VM 'lerde şirket içi değişiklikler varsa, değerlendirme **güncelliğini yitirmiş**olarak işaretlenir. Aşağıdaki özelliklerde bir veya daha fazla değişiklik olduğundan, bir değerlendirme "güncel değil" olarak işaretlenebilir:
+
+- İşlemci çekirdekleri sayısı
+- Ayrılan bellek
+- Önyükleme türü veya bellenim
+- İşletim sistemi adı, sürümü ve mimarisi
+- Disk sayısı
+- Ağ bağdaştırıcısı sayısı
+- Disk boyutu değişikliği (GB ayrılmış)
+- NIC özelliklerine güncelleştirin. Örnek: MAC adresi değişiklikleri, IP adresi ekleme vb.
+
+Değişiklikleri yansıtmak için değerlendirmeyi yeniden çalıştırın (yeniden**Hesapla**).
 
 ### <a name="low-confidence-rating"></a>Düşük güvenilirlikli derecelendirme
 

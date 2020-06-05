@@ -14,7 +14,7 @@ ms.locfileid: "67448615"
 Doğru bir SSL sertifikası, doğru sunucuya şifreli bilgiler gönderiyor olmanızı sağlar. Şifrelemenin yanı sıra, sertifika da kimlik doğrulaması için izin verir. Aygıtın PowerShell arabirimi aracılığıyla kendi güvenilen SSL sertifikanızı karşıya yükleyebilirsiniz.
 
 1. [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
-2. Sertifikayı karşıya `Set-HcsCertificate` yüklemek için cmdlet 'ini kullanın. İstendiğinde, aşağıdaki parametreleri sağlayın:
+2. `Set-HcsCertificate`Sertifikayı karşıya yüklemek için cmdlet 'ini kullanın. İstendiğinde, aşağıdaki parametreleri sağlayın:
 
    - `CertificateFilePath`- *. Pfx* biçiminde sertifika dosyasını içeren paylaşımın yolu.
    - `CertificatePassword`-Sertifikayı korumak için kullanılan parola.

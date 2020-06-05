@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: 4b10a4c98abd6bec4074bf35764a9cbb85d5b157
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/03/2020
+ms.openlocfilehash: 2c57ddd88046044cccd13b0ade23144cd5649455
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605975"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433325"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Eşleme veri akışında havuz dönüştürme
 
@@ -23,6 +23,22 @@ ms.locfileid: "81605975"
 Verilerinizi dönüştürdükten sonra, verileri bir hedef veri kümesine havuza alabilirsiniz. Her veri akışı için en az bir havuz dönüştürmesi gerekir, ancak dönüştürme akışınızı tamamlaması için gereken sayıda havuz yazabilirsiniz. Ek havuzlar yazmak için yeni dallar ve koşullu bölmeler aracılığıyla yeni akışlar oluşturun.
 
 Her havuz dönüştürmesi, tam olarak bir Data Factory veri kümesiyle ilişkilendirilir. Veri kümesi, yazmak istediğiniz verilerin şeklini ve konumunu tanımlar.
+
+## <a name="inline-datasets"></a>Satır içi veri kümeleri
+
+Bir havuz dönüştürmesi oluştururken, havuz bilgilerinizin bir veri kümesi nesnesi içinde mi yoksa havuz dönüşümünde mi tanımlandığını seçin. Çoğu biçim yalnızca bir veya diğeri ile kullanılabilir. Belirli bir bağlayıcıyı nasıl kullanacağınızı öğrenmek için lütfen uygun bağlayıcı belgesine başvurun.
+
+Bir biçim hem satır içi hem de bir veri kümesi nesnesinde destekleniyorsa, her ikisine de faydalanır. Veri kümesi nesneleri, diğer veri akışlarında ve kopyalama gibi etkinliklerde yararlanılabilir olabilecek yeniden kullanılabilir varlıklardır. Bunlar özellikle sıkı bir şema kullanılırken kullanışlıdır. Veri kümeleri Spark tabanlı değildir ve bazen havuz dönüşümünde belirli ayarları veya şema projeksiyonunu geçersiz kılmanız gerekebilir.
+
+Esnek şemalar, tek kapalı havuz örnekleri veya parametreli havuzlar kullanılırken satır içi veri kümeleri önerilir. Havuzunuzu yoğun şekilde parametreleştirmiş ise, satır içi veri kümeleri "kukla" bir nesne oluşturmanıza izin verir. Satır içi veri kümeleri Spark 'a dayalıdır ve özellikleri veri akışına yereldir.
+
+Satır içi veri kümesi kullanmak için, **Havuz türü** seçicisinde istediğiniz biçimi seçin. Bir havuz veri kümesi seçmek yerine, bağlanmak istediğiniz bağlı hizmeti seçersiniz.
+
+![Satır içi veri kümesi](media/data-flow/inline-selector.png "Satır içi veri kümesi")
+
+### <a name="supported-inline-dataset-formats"></a>Desteklenen satır içi veri kümesi biçimleri
+
+Şu anda kullanılabilen tek satır içi veri kümesi biçimi, [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md)'Dan okunan [ortak veri modelidir](format-common-data-model.md#sink-properties) .
 
 ## <a name="supported-sink-connectors-in-mapping-data-flow"></a>Eşleme veri akışında desteklenen havuz bağlayıcıları
 
@@ -37,7 +53,7 @@ Her havuz dönüştürmesi, tam olarak bir Data Factory veri kümesiyle ilişkil
 
 Bu bağlayıcılara özgü ayarlar, **Ayarlar** sekmesinde bulunur. bu ayarlarla ilgili bilgiler bağlayıcı belgelerinde bulunur. 
 
-Azure Data Factory, [90 yerel bağlayıcı](connector-overview.md)üzerinde erişime sahiptir. Veri akışınızdan diğer kaynaklara veri yazmak için kopyalama etkinliğini kullanarak veri akışınızı tamamladıktan sonra desteklenen hazırlama alanlarından birindeki verileri yükleyin.
+Azure Data Factory’nin [90’ın üzerinde yerel bağlayıcıya](connector-overview.md) erişimi vardır. Veri akışınızdan diğer bağlayıcılara veri yazmak için kopyalama etkinliğini kullanarak veri akışınızı tamamladıktan sonra desteklenen hazırlama alanlarından birindeki verileri yükleyin.
 
 ## <a name="sink-settings"></a>Havuz ayarları
 

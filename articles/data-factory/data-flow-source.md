@@ -7,13 +7,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: b2f533e8bd9199025260aaca9cff587b13adce64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/03/2020
+ms.openlocfilehash: 6da0c56e11b8531192ba77d8f0c27fa16eea5de2
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606317"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433293"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Eşleme veri akışında kaynak dönüştürme 
 
@@ -25,7 +25,23 @@ Her veri akışı için en az bir kaynak dönüştürmesi gerekir, ancak veri d�
 
 Her kaynak dönüştürmesi, tam olarak bir Data Factory veri kümesiyle ilişkilendirilir. Veri kümesi, yazmak veya okumak istediğiniz verilerin şeklini ve konumunu tanımlar. Dosya tabanlı veri kümesi kullanılıyorsa, aynı anda birden fazla dosyayla çalışmak için kaynağınızdan joker karakterler ve dosya listelerini kullanabilirsiniz.
 
-## <a name="supported-source-connectors-in-mapping-data-flow"></a>Eşleme veri akışında desteklenen kaynak bağlayıcıları
+## <a name="inline-datasets"></a>Satır içi veri kümeleri
+
+Kaynak dönüştürmesi oluştururken yaptığınız ilk karar, kaynak bilgilerinizin bir veri kümesi nesnesi içinde veya kaynak dönüşümünde tanımlanıp tanımlanmayacağı. Çoğu biçim yalnızca bir veya diğeri ile kullanılabilir. Belirli bir bağlayıcıyı nasıl kullanacağınızı öğrenmek için lütfen uygun bağlayıcı belgesine başvurun.
+
+Bir biçim hem satır içi hem de bir veri kümesi nesnesinde destekleniyorsa, her ikisine de faydalanır. Veri kümesi nesneleri, diğer veri akışlarında ve kopyalama gibi etkinliklerde yararlanılabilir olabilecek yeniden kullanılabilir varlıklardır. Bunlar özellikle sıkı bir şema kullanılırken kullanışlıdır. Veri kümeleri Spark tabanlı değildir ve bazen kaynak dönüşümünde belirli ayarları veya şema projeksiyonunu geçersiz kılmanız gerekebilir.
+
+Esnek şemalar, tek seferlik kaynak örnekleri veya parametreli kaynaklar kullanılırken satır içi veri kümeleri önerilir. Kaynağınız çok fazla parametreli ise, satır içi veri kümeleri "kukla" bir nesne oluşturmanıza izin verir. Satır içi veri kümeleri Spark 'a dayalıdır ve özellikleri veri akışına yereldir.
+
+Satır içi veri kümesi kullanmak için, **kaynak türü** seçicideki istenen biçimi seçin. Kaynak veri kümesi seçmek yerine, bağlanmak istediğiniz bağlı hizmeti seçersiniz.
+
+![Satır içi veri kümesi](media/data-flow/inline-selector.png "Satır içi veri kümesi")
+
+### <a name="supported-inline-dataset-formats"></a>Desteklenen satır içi veri kümesi biçimleri
+
+Şu anda kullanılabilen tek satır içi veri kümesi biçimi, [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md)'Dan okunan [ortak veri modelidir](format-common-data-model.md#source-properties) .
+
+## <a name="supported-source-datasets-in-mapping-data-flow"></a>Eşleme veri akışında desteklenen kaynak veri kümeleri
 
 Veri akışı eşleme, bir Ayıkla, yükle, Dönüştür (ELT) yaklaşımını izler ve Azure 'da tümü olan *hazırlama* veri kümeleri ile birlikte kullanılır. Şu anda aşağıdaki veri kümeleri bir kaynak dönüşümünde kullanılabilir:
     
@@ -38,7 +54,7 @@ Veri akışı eşleme, bir Ayıkla, yükle, Dönüştür (ELT) yaklaşımını i
 
 Bu bağlayıcılara özgü ayarlar **kaynak seçenekleri** sekmesinde bulunur. bu ayarlarla ilgili bilgiler bağlayıcı belgelerinde bulunur. 
 
-Azure Data Factory, [90 yerel bağlayıcı](connector-overview.md)üzerinde erişime sahiptir. Veri akışınız içindeki diğer kaynaklardan verileri dahil etmek için kopyalama etkinliğini kullanarak bu verileri desteklenen hazırlama alanlarından birine yükleyin.
+Azure Data Factory’nin [90’ın üzerinde yerel bağlayıcıya](connector-overview.md) erişimi vardır. Veri akışınız içindeki diğer kaynaklardan verileri dahil etmek için kopyalama etkinliğini kullanarak bu verileri desteklenen hazırlama alanlarından birine yükleyin.
 
 ## <a name="source-settings"></a>Kaynak ayarları
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: c888a28607101cdf41fcd9b47cf25a2fc5da6337
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 1f34066b9f8fa16a2889c1872ebfd3f8cf33ee69
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299528"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418118"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux sanal makineleri için Zamanlanan Olaylar
 
@@ -53,7 +53,12 @@ Zamanlanan olaylar şu şekilde dağıtılır:
 - Tek başına sanal makineler.
 - Bir bulut hizmetindeki tüm VM 'Ler.
 - Bir kullanılabilirlik kümesindeki tüm VM 'Ler.
+- Bir kullanılabilirlik bölgesindeki tüm VM 'Ler. 
 - Ölçek kümesi yerleştirme grubundaki tüm VM 'Ler. 
+
+> [!NOTE]
+> Bir kullanılabilirlik bölgesindeki VM 'lere özel olarak, zamanlanan olaylar bir bölgedeki tek VM 'lere gider.
+> Örneğin, bir kullanılabilirlik kümesinde 100 VM varsa ve bunlardan birine yönelik bir güncelleştirme varsa, zamanlanan olay tüm 100 ' e gider, ancak bir bölgede 100 tek VM varsa, olay yalnızca etkilenen VM 'ye gider.
 
 Sonuç olarak, `Resources` hangi VM 'lerin etkilendiğini belirlemek için olaydaki alanı kontrol edin.
 

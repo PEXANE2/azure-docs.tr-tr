@@ -8,21 +8,21 @@ ms.author: sanpil
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/07/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 32b3e153a98ca7de91e0dd05258414780b39dec4
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: b56b07bce558a65df79a23eaf1948aac8e4fabad
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857967"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433758"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Bir mantıksal uygulamadan Machine Learning işlem hattının çalıştırılmasını tetikleme
 
 Yeni veriler göründüğünde Azure Machine Learning işlem hattının çalıştırılmasını tetikleyin. Örneğin, BLOB depolama hesabında yeni veriler göründüğünde yeni bir modeli eğitemak üzere işlem hattını tetiklemek isteyebilirsiniz. Tetikleyiciyi [Azure Logic Apps](../logic-apps/logic-apps-overview.md)ayarlayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
@@ -88,7 +88,7 @@ Mantıksal uygulamanız sağlandıktan sonra, işlem hattınızda bir tetikleyic
     },
     ```
 
-    `DataStoreName` Çalışma alanınıza bir [Önkoşul](#prerequisites)olarak eklediğiniz öğesini kullanın.
+    `DataStoreName`Çalışma alanınıza bir [Önkoşul](#prerequisites)olarak eklediğiniz öğesini kullanın.
      
     > [!div class="mx-imgBorder"]
     > ![HTTP ayarları](media/how-to-trigger-published-pipeline/http-settings.png)

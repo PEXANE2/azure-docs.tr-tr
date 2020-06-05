@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 921a9c5f7136713f278d9c50bf67f02d9742a470
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: e2ded81c3525de6f9c49d774594c73f9da2b5696
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309144"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430670"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>IoT Edge cihaz özelliklerini sınamak için tanıtım sertifikaları oluşturma
 
@@ -272,7 +272,7 @@ Ancak, aynı adı kullanmaktan kaçınmak iyi bir uygulamadır.
 ## <a name="create-downstream-device-certificates"></a>Aşağı akış cihaz sertifikaları oluşturma
 
 Bir ağ geçidi senaryosu için bir aşağı akış IoT cihazı ayarlıyorsanız ve X. 509.952 kimlik doğrulamasını kullanmak istiyorsanız, aşağı akış cihazı için tanıtım sertifikaları oluşturabilirsiniz.
-Simetrik anahtar kimlik doğrulaması kullanmak istiyorsanız, aşağı akış cihazına yönelik sertifikalara ihtiyacınız yoktur.
+Simetrik anahtar kimlik doğrulaması kullanmak istiyorsanız, aşağı akış cihazı için ek sertifikalar oluşturmanız gerekmez.
 X. 509.440 sertifikalarını kullanarak IoT cihazının kimlik doğrulamasının iki yolu vardır: otomatik olarak imzalanan sertifikalar kullanma veya sertifika yetkilisi (CA) imzalı sertifikaları kullanma.
 X. 509.440 otomatik imzalı kimlik doğrulaması için bazen parmak izi kimlik doğrulaması olarak da adlandırılan, IoT cihazınıza yerleştirilecek yeni sertifikalar oluşturmanız gerekir.
 Bu sertifikaların kimlik doğrulaması için IoT Hub paylaştığınız bir parmak izi vardır.
@@ -293,7 +293,7 @@ IoT cihazınız, IoT Hub kimlik doğrulaması yapabilmesi için cihaz sertifikal
 
 1. Sertifika oluşturma betikleri ve kök CA sertifikası olan çalışma dizinine gidin.
 
-2. Aşağı akış cihazı için iki sertifika (birincil ve ikincil) oluşturun. Kullanımı kolay bir adlandırma kuralı, IoT cihazının adı ve ardından birincil veya ikincil etiket ile sertifikalar oluşturmaktır. Örneğin:
+2. Aşağı akış cihazı için iki sertifika (birincil ve ikincil) oluşturun. Kullanımı kolay bir adlandırma kuralı, IoT cihazının adı ve ardından birincil veya ikincil etiket ile sertifikalar oluşturmaktır. Örnek:
 
    ```PowerShell
    New-CACertsDevice "<device name>-primary"
@@ -323,7 +323,7 @@ IoT cihazınız, IoT Hub kimlik doğrulaması yapabilmesi için cihaz sertifikal
 
 1. Sertifika oluşturma betikleri ve kök CA sertifikası olan çalışma dizinine gidin.
 
-2. Aşağı akış cihazı için iki sertifika (birincil ve ikincil) oluşturun. Kullanımı kolay bir adlandırma kuralı, IoT cihazının adı ve ardından birincil veya ikincil etiket ile sertifikalar oluşturmaktır. Örneğin:
+2. Aşağı akış cihazı için iki sertifika (birincil ve ikincil) oluşturun. Kullanımı kolay bir adlandırma kuralı, IoT cihazının adı ve ardından birincil veya ikincil etiket ile sertifikalar oluşturmaktır. Örnek:
 
    ```bash
    ./certGen.sh create_device_certificate "<device name>-primary"

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.openlocfilehash: 44472eb697a4d191d4ed99b7879654fcca61383b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e2cc1e20c20c17742f2bea56f4e87e8678e4cc03
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655213"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434020"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için GitHub eylemleri iş akışları
 
@@ -102,10 +102,10 @@ Her olay tetikleyicisi bir olay işleyicisi gerektirir. [İşler](https://help.g
 
 Statik Web Apps iş akışı dosyasında, kullanılabilir iki iş vardır.
 
-| Name  | Açıklama |
+| Name  | Description |
 |---------|---------|
 |`build_and_deploy_job` | Yürütmeler gönderdiğinizde veya özellikte listelenen dala karşı bir çekme isteği açtığınızda yürütülür `on` . |
-|`close_pull_request_job` | YALNıZCA bir çekme isteğini kapattığınızda yürütülür. |
+|`close_pull_request_job` | Yalnızca çekme isteklerinden oluşturulan hazırlama ortamını kaldıran bir çekme isteğini kapattığınızda yürütülür. |
 
 ## <a name="steps"></a>Adımlar
 
@@ -137,8 +137,8 @@ with:
 | Özellik | Açıklama | Gerekli |
 |---|---|---|
 | `app_location` | Uygulama kodunuzun konumu.<br><br>Örneğin, `/` uygulamanızın kaynak kodu deponun kökünde veya `/app` uygulama kodunuz adlı bir dizinde ise girin `app` . | Yes |
-| `api_location` | Azure Işlevleri kodunuzun konumu.<br><br>Örneğin, `/api` uygulama kodunuz adlı bir klasörde ise yazın `api` . Klasörde hiçbir Azure Işlevleri uygulaması algılanmazsa, derleme başarısız olmaz, iş akışı bir API istemediğinizi varsayar. | Hayır |
-| `app_artifact_location` | Derleme çıkış dizininin öğesine göre konumu `app_location` .<br><br>Örneğin, uygulama kaynak kodunuz adresinde bulunuyorsa `/app` ve derleme betiği dosyaları klasörüne çıktıdaysa `/app/build` `build` değer olarak ayarlanır `app_artifact_location` . | Hayır |
+| `api_location` | Azure Işlevleri kodunuzun konumu.<br><br>Örneğin, `/api` uygulama kodunuz adlı bir klasörde ise yazın `api` . Klasörde hiçbir Azure Işlevleri uygulaması algılanmazsa, derleme başarısız olmaz, iş akışı bir API istemediğinizi varsayar. | No |
+| `app_artifact_location` | Derleme çıkış dizininin öğesine göre konumu `app_location` .<br><br>Örneğin, uygulama kaynak kodunuz adresinde bulunuyorsa `/app` ve derleme betiği dosyaları klasörüne çıktıdaysa `/app/build` `build` değer olarak ayarlanır `app_artifact_location` . | No |
 
 `repo_token`, `action` , Ve `azure_static_web_apps_api_token` değerleri Azure static tarafından sizin için ayarlanır Web Apps el ile değiştirilmemelidir.
 
@@ -148,7 +148,7 @@ Dağıtım sırasında hangi komutların çalıştığı hakkında ayrıntılı 
 
 Dağıtım her zaman `npm install` özel bir komuttan önce çağırır.
 
-| Komut            | Açıklama |
+| Komut            | Description |
 |---------------------|-------------|
 | `app_build_command` | Statik içerik uygulamasının dağıtımı sırasında çalışacak özel bir komut tanımlar.<br><br>Örneğin, angular uygulaması için bir üretim yapısını yapılandırmak için, girin `ng build --prod` . Boş bırakılırsa, iş akışı `npm run build` veya komutlarını çalıştırmayı dener `npm run build:Azure` .  |
 | `api_build_command` | Azure Işlevleri API uygulaması dağıtımı sırasında çalışacak özel bir komut tanımlar. |
@@ -166,4 +166,4 @@ Dağıtım her zaman `npm install` özel bir komuttan önce çağırır.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Ön üretim ortamlarında çekme isteklerini gözden geçirin](review-publish-pull-requests.md)
+> [Üretim öncesi ortamlarında çekme isteklerini inceleme](review-publish-pull-requests.md)

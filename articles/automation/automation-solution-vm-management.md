@@ -3,20 +3,23 @@ title: Azure Otomasyonu VM'leri çalışma saatleri dışında başlat/durdur ge
 description: Bu makalede, bir zamanlamaya göre VM 'Leri başlatan veya durduran ve bunları Azure Izleyici günlüklerinden etkin bir şekilde izleyen VM'leri çalışma saatleri dışında başlat/durdur özelliği açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/28/2020
+ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7c0cc2b4996c1002aae0656234c356c805923811
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 3b4358651b811ba5c1e7644333a1e9f5a8da2990
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205135"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424083"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VM'leri çalışma saatleri dışında başlat/durdur genel bakış
 
 VM'leri çalışma saatleri dışında başlat/durdur özelliği, etkin Azure VM 'Leri başlatır veya sonlandırır. Kullanıcı tanımlı zamanlamalarda makineleri başlatır veya sonlandırır, Azure Izleyici günlükleri aracılığıyla öngörüler sağlar ve [eylem gruplarını](../azure-monitor/platform/action-groups.md)kullanarak isteğe bağlı e-postalar gönderir. Bu özellik çoğu senaryo için hem Azure Resource Manager hem de klasik VM 'lerde etkinleştirilebilir. 
 
-Bu özellik, VM 'Leri başlatmak için [Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) cmdlet 'ini kullanır. VM 'Leri durdurmak için [stop-AzureRmVM](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0) kullanır.
+Bu özellik, VM 'Leri başlatmak için [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) cmdlet 'ini kullanır. VM 'Leri durdurmak için [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) kullanır.
+
+> [!NOTE]
+> Runbook 'lar yeni Azure az Module cmdlet 'lerini kullanacak şekilde güncelleştirildiğinden Azurere ön ek diğer adını kullanır.
 
 > [!NOTE]
 > VM'leri çalışma saatleri dışında başlat/durdur, mevcut Azure modüllerinin en yeni sürümlerini destekleyecek şekilde güncelleştirilmiştir. Bu özelliğin Market 'te bulunan güncelleştirilmiş sürümü azurere modüllerini desteklemez, azurerm'den az modüllere geçirdik.
@@ -32,7 +35,7 @@ Geçerli özellikle ilgili sınırlamalar aşağıda verilmiştir:
 - Herhangi bir bölgedeki VM 'Leri yönetir, ancak yalnızca Azure Otomasyonu hesabınızla aynı abonelikte kullanılabilir.
 - Azure ve Azure Kamu 'da, bir Log Analytics çalışma alanını, bir Azure Otomasyonu hesabını ve uyarıları destekleyen her bölgede kullanılabilir. Azure Kamu bölgeleri Şu anda e-posta işlevlerini desteklememektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Çalışma saatleri dışında VM 'Leri Başlat/Durdur özelliği için Runbook 'lar bir [Azure farklı çalıştır hesabıyla](automation-create-runas-account.md)çalışır. Bu farklı çalıştır hesabı, kullanım süresini dolacak veya sıklıkla değiştirebilen bir parola yerine sertifika kimlik doğrulaması kullandığından, tercih edilen kimlik doğrulama yöntemidir.
 
@@ -73,7 +76,7 @@ Mevcut bir Otomasyon hesabı ve Log Analytics çalışma alanı kullanarak VM'le
 
 Yeni bir Otomasyon hesabı ve Log Analytics çalışma alanı kullanarak VM'leri çalışma saatleri dışında başlat/durdur özelliği için sanal makineleri etkinleştirebilirsiniz. Bu durumda, önceki bölümde tanımlanan izinlere ve bu bölümde tanımlanan izinlere ihtiyacınız vardır. Ayrıca aşağıdaki rolleri de gereklidir:
 
-- Abonelikte coadministrator. Klasik VM 'Leri yönetecekdeyseniz, bu rol klasik farklı çalıştır hesabını oluşturmak için gereklidir. [Klasik farklı çalıştır hesapları](automation-create-standalone-account.md#create-a-classic-run-as-account) artık varsayılan olarak oluşturulmaz.
+- Abonelikte ortak yönetici. Klasik VM 'Leri yönetecekdeyseniz, bu rol klasik farklı çalıştır hesabını oluşturmak için gereklidir. [Klasik farklı çalıştır hesapları](automation-create-standalone-account.md#create-a-classic-run-as-account) artık varsayılan olarak oluşturulmaz.
 - [Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md) uygulama geliştirici rolünde üyelik. Farklı Çalıştır hesaplarını yapılandırma hakkında daha fazla bilgi için bkz. [Farklı Çalıştır hesaplarını yapılandırma izinleri](manage-runas-account.md#permissions).
 - Abonelik üzerinde veya aşağıdaki izinlerle katkıda bulunan.
 
@@ -101,11 +104,11 @@ Aşağıdaki tabloda, özelliğin Otomasyon hesabınıza dağıttığı runbook 
 
 Tüm üst runbook 'lar `WhatIf` parametresi içerir. True olarak ayarlandığında parametresi, runbook 'un parametre olmadan çalıştırıldığında aldığı tam davranışı ayrıntılandıran şekilde destekler ve doğru VM 'Lerin hedeflendiğine doğrular. Bir runbook yalnızca `WhatIf` parametre false olarak ayarlandığında tanımlı eylemlerini gerçekleştirir.
 
-|Runbook | Parametreler | Açıklama|
+|Runbook | Parametreler | Description|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Üst runbook 'tan çağırılır. Bu runbook otomatik durdurma senaryosu için kaynak temelinde uyarı oluşturur.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true veya false  | Hedeflenen abonelik veya kaynak gruplarındaki VM 'lerde Azure uyarı kuralları oluşturur veya güncelleştirir. <br> `VMList`, örneğin, bir VM 'lerin virgülle ayrılmış listesidir (boşluk olmadan) `vm1,vm2,vm3` .<br> `WhatIf`yürütme olmadan runbook mantığının doğrulanmasına izin vermez.|
-|AutoStop_Disable | Hiçbiri | Otomatik durdurma uyarılarını ve Varsayılan zamanlamayı devre dışı bırakır.|
+|AutoStop_Disable | Yok | Otomatik durdurma uyarılarını ve Varsayılan zamanlamayı devre dışı bırakır.|
 |AutoStop_VM_Child | WebHookData | Üst runbook 'tan çağırılır. Uyarı kuralları, klasik bir sanal makineyi durdurmak için bu runbook 'u çağırır.|
 |AutoStop_VM_Child_ARM | WebHookData |Üst runbook 'tan çağırılır. Uyarı kuralları bir sanal makineyi durdurmak için bu runbook 'u çağırır.  |
 |ScheduledStartStop_Base_Classic | CloudServiceName<br> Eylem: Başlat veya Durdur<br> VMList  | Cloud Services tarafından klasik VM grubunda Eylem Başlat veya durdur işlemini gerçekleştirir. |
@@ -121,7 +124,7 @@ Aşağıdaki tabloda, Otomasyon hesabınızda oluşturulan değişkenler listele
 > [!NOTE]
 > VM adı ve kaynak grubuyla ilgili sınırlamalar büyük ölçüde değişken boyutunun bir sonucudur. Bkz. [Azure Otomasyonu 'Nda değişken varlıkları](https://docs.microsoft.com/azure/automation/shared-resources/variables).
 
-|Değişken | Açıklama|
+|Değişken | Description|
 |---------|------------|
 |External_AutoStop_Condition | Bir uyarıyı tetiklemeden önce koşulu yapılandırmak için gereken koşullu işleç. Kabul edilebilir değerler `GreaterThan` ,,, `GreaterThanOrEqual` `LessThan` ve `LessThanOrEqual` .|
 |External_AutoStop_Description | CPU yüzdesi eşiği aşarsa VM 'yi durdurma uyarısı.|
@@ -132,7 +135,7 @@ Aşağıdaki tabloda, Otomasyon hesabınızda oluşturulan değişkenler listele
 |External_AutoStop_TimeAggregationOperator | Koşulu değerlendirmek için seçilen pencere boyutuna uygulanan zaman toplama işleci. Kabul edilebilir değerler `Average` ,,, `Minimum` `Maximum` `Total` ve `Last` .|
 |External_AutoStop_TimeWindow | Azure 'un bir uyarı tetiklenmesi için seçili ölçümleri analiz eden pencerenin boyutu. Bu parametre, girişi TimeSpan biçiminde kabul eder. Olası değerler 5 dakikadan 6 saate kadar sürer.|
 |External_EnableClassicVMs| Klasik VM 'Lerin özelliğin hedeflediği değeri belirten değer. Varsayılan değer true 'dur. Azure bulut çözümü sağlayıcısı (CSP) abonelikleri için bu değişkeni false olarak ayarlayın. Klasik VM 'Ler, [Klasik farklı çalıştır hesabı](automation-create-standalone-account.md#create-a-classic-run-as-account)gerektirir.|
-|External_ExcludeVMNames | 140 VM 'Lerle sınırlı tutulacak VM adlarının virgülle ayrılmış listesi. Listeye 140 'den fazla VM eklerseniz, dışarıda bırakılacak şekilde ayarlanan VM 'Ler istenmeden başlatılabilir veya durmuş olabilir.|
+|External_ExcludeVMNames | 140 VM 'Lerle sınırlı tutulacak VM adlarının virgülle ayrılmış listesi. Listeye 140 'den fazla VM eklerseniz, dışlama için belirtilen VM 'Ler istenmeden başlatılabilir veya durmuş olabilir.|
 |External_Start_ResourceGroupNames | Başlatma eylemleri için hedeflenen bir veya daha fazla kaynak grubunun virgülle ayrılmış listesi.|
 |External_Stop_ResourceGroupNames | Durdurma eylemlerini hedefleyen bir veya daha fazla kaynak grubunun virgülle ayrılmış listesi.|
 |External_WaitTimeForVMRetrySeconds |**SequencedStartStop_Parent** runbook 'un VM 'lerde gerçekleştirilmesi için saniye cinsinden bekleme süresi. Bu değişken, runbook 'un bir sonraki eylemle devam etmeden önce belirtilen saniye sayısı için alt işlemleri beklemesine izin verir. En uzun bekleme süresi 10800 veya üç saattir. Varsayılan değer 2100 saniyedir.|
@@ -153,7 +156,7 @@ Aşağıdaki tabloda, Otomasyon hesabınızda oluşturulan varsayılan zamanlama
 
 Tüm zamanlamaları etkinleştirmeyin, çünkü bu durum çakışan zamanlama eylemleri oluşturabilir. En iyi yöntem, hangi iyileştirmelerin yapmak istediğinizi belirlemektir ve bunları uygun şekilde değiştirebilirsiniz. Daha fazla açıklama için genel bakış bölümündeki örnek senaryolar bölümüne bakın.
 
-|Zamanlama adı | Sıklık | Açıklama|
+|Zamanlama adı | Sıklık | Description|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 8 saatte bir | **AutoStop_CreateAlert_Parent** runbook 'u her 8 saatte bir çalıştırır ve bu da, `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` ve değişkenlerinde VM tabanlı değerleri de durduruyor `External_ExcludeVMNames` . Alternatif olarak, parametresini kullanarak, VM 'lerin virgülle ayrılmış bir listesini belirtebilirsiniz `VMList` .|
 |Scheduled_StopVM | Kullanıcı tanımlı, günlük | **ScheduledStopStart_Parent** runbook 'u `Stop` her gün belirtilen zamanda bir parametre ile çalıştırır., Değişken varlıklar tarafından tanımlanan kuralları karşılayan tüm VM 'Leri otomatik olarak sonlandırır.**Zamanlanan-StartVM**ilgili zamanlamasını etkinleştirin.|

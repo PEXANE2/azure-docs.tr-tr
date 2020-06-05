@@ -5,17 +5,17 @@ description: Çalışma alanınız tarafından kullanılan Azure depolama hesab�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/06/2020
-ms.openlocfilehash: f1541c177cea2d223a5e7df576d95fab7eafb310
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4ae4890d28236db493909243d66e28d308e2002
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80296931"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434638"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Depolama hesabı erişim anahtarlarını yeniden oluştur
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ Azure Machine Learning tarafından kullanılan Azure depolama hesapları için e
 
 Güvenlik nedeniyle, bir Azure depolama hesabının erişim anahtarlarını değiştirmeniz gerekebilir. Erişim anahtarını yeniden oluşturduğunuzda Azure Machine Learning yeni anahtarı kullanmak için güncelleştirilmeleri gerekir. Azure Machine Learning, hem model depolama hem de bir veri deposu olarak depolama hesabı kullanıyor olabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
 
@@ -95,7 +95,7 @@ Yeni anahtarı kullanmak üzere Azure Machine Learning güncelleştirmek için a
 
         [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
 
-    1. Yeni anahtarı kullanmak üzere çalışma alanını güncelleştirmek için aşağıdaki komutu kullanın. Azure Machine Learning `myworkspace` çalışma alanı adınızla değiştirin ve öğesini, çalışma `myresourcegroup` alanını içeren Azure Kaynak grubunun adıyla değiştirin.
+    1. Yeni anahtarı kullanmak üzere çalışma alanını güncelleştirmek için aşağıdaki komutu kullanın. `myworkspace`Azure Machine Learning çalışma alanı adınızla değiştirin ve öğesini, `myresourcegroup` çalışma alanını içeren Azure Kaynak grubunun adıyla değiştirin.
 
         ```azurecli-interactive
         az ml workspace sync-keys -w myworkspace -g myresourcegroup
@@ -125,8 +125,8 @@ Yeni anahtarı kullanmak üzere Azure Machine Learning güncelleştirmek için a
     
     ```
 
-    `overwrite=True` Belirtildiği için, bu kod var olan kaydın üzerine yazar ve yeni anahtarı kullanacak şekilde günceller.
+    `overwrite=True`Belirtildiği için, bu kod var olan kaydın üzerine yazar ve yeni anahtarı kullanacak şekilde günceller.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veri depolarını kaydetme hakkında daha fazla bilgi için bkz. [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) sınıf başvurusu.
+Veri depolarını kaydetme hakkında daha fazla bilgi için bkz [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) . sınıf başvurusu.

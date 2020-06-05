@@ -8,14 +8,14 @@ ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/21/2020
-ms.openlocfilehash: ccdb2b24499c86a54909b2617abd7e9bf294a261
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: b8869eee4e44001f5d4aeafbbdb32f93f0a7e0c8
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220187"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433342"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace-preview"></a>Çalışma alanınızda Jupyıter not defterlerini çalıştırma (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Nasıl kullanabileceğinizi öğrenin:
 * Not defteri ortamını değiştirme
 * Not defterlerinizi çalıştırmak için kullanılan işlem örneklerinin ayrıntılarını bulun
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://aka.ms/AMLFree) oluşturun.
 * Machine Learning çalışma alanı. Bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
@@ -49,7 +49,7 @@ Yeni bir not defteri oluşturmak için:
 1. Dosyayı adlandırın. 
 1. Jupyter Notebook dosyaları için dosya türü olarak **Python Not defteri** ' ni seçin.
 1. Bir dosya dizini seçin.
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 > [!TIP]
 > Metin dosyaları da oluşturabilirsiniz.  Dosya türü olarak **metin** ' i seçin ve uzantıyı ada ekleyin (örneğin, MyFile.py veya dosyam. txt)  
@@ -125,7 +125,7 @@ Bir not defterinden deneme çalıştırmak için önce çalışan bir [işlem ö
 
 1. **+** Not defteri araç çubuğundan öğesini seçin. 
 2. Işlem adını adlandırın ve bir **sanal makine boyutu**seçin. 
-3. **Oluştur**’u seçin.
+3. **Oluştur**'u seçin.
 4. İşlem örneği not defterine otomatik olarak bağlanır ve artık hücrelerden çalıştırabilirsiniz.
 
 Yalnızca sizin oluşturduğunuz işlem örneklerini görebilir ve kullanabilirsiniz.  **Kullanıcı DOSYALARıNıZ** VM 'den ayrı olarak depolanır ve çalışma alanındaki tüm işlem örnekleri arasında paylaşılır.

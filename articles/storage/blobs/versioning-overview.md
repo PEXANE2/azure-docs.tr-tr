@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7e4bc74a51e3d6b19957bdd12512e18fa594c811
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 89d69547d793599fc669927b1a500716a858cc89
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123845"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433598"
 ---
 # <a name="blob-versioning-preview"></a>Blob sürümü oluşturma (Önizleme)
 
@@ -176,10 +176,10 @@ Blob sürümü oluşturma, verilerinizi yanlışlıkla veya kötü amaçlı olar
 
 Aşağıdaki tabloda, hangi RBAC eylemlerinin bir blob veya blob sürümünü silmenin desteklediği gösterilmektedir.
 
-| Açıklama | Blob hizmeti işlemi | RBAC verileri eylemi gerekiyor | RBAC yerleşik rol desteği |
+| Description | Blob hizmeti işlemi | RBAC verileri eylemi gerekiyor | RBAC yerleşik rol desteği |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| Blobun geçerli sürümü siliniyor | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Delete/Actionsiliyor** | Depolama Blobu veri Katılımcısı |
-| Bir sürümü silme | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/deleteBlobVersion/** | Depolama Blobu veri sahibi |
+| Blobun geçerli sürümü siliniyor | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil** | Depolama Blobu veri Katılımcısı |
+| Bir sürümü silme | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/deleteBlobVersion/Action** | Depolama Blobu veri sahibi |
 
 ### <a name="shared-access-signature-sas-parameters"></a>Paylaşılan erişim imzası (SAS) parametreleri
 
@@ -289,25 +289,25 @@ Blob sürüm oluşturmayı etkinleştirirken aşağıdaki noktaları dikkate ald
 
 Aşağıdaki senaryolarda, giderlerin bir Blok Blobu ve sürümleri için nasıl tahakkuk olduğu gösterilmektedir.
 
-#### <a name="scenario-1"></a>Senaryo 1
+#### <a name="scenario-1"></a>1\. Senaryo
 
 Senaryo 1 ' de, blob 'un önceki bir sürümü vardır. Sürüm oluşturulduktan sonra blob güncelleştirilmedi, bu nedenle ücretler yalnızca 1, 2 ve 3 benzersiz blokları için ücretlendirilir.
 
 ![Azure depolama kaynakları](./media/versioning-overview/versions-billing-scenario-1.png)
 
-#### <a name="scenario-2"></a>Senaryo 2
+#### <a name="scenario-2"></a>2\. Senaryo
 
 Senaryo 2 ' de, blobdaki bir blok (diyagramdaki blok 3) güncelleştirildi. Güncelleştirilmiş blok aynı verileri ve aynı KIMLIĞI içerse de, önceki sürümde blok 3 ile aynı değildir. Sonuç olarak, hesap dört blok için ücretlendirilir.
 
 ![Azure depolama kaynakları](./media/versioning-overview/versions-billing-scenario-2.png)
 
-#### <a name="scenario-3"></a>3. Senaryo
+#### <a name="scenario-3"></a>3\. Senaryo
 
 Senaryo 3 ' te blob güncelleştirildi, ancak sürüm değil. Blok 3, temel Blobun içindeki blok 4 ile değiştirilmiştir, ancak önceki sürüm hala blok 3 ' ü yansıtır. Sonuç olarak, hesap dört blok için ücretlendirilir.
 
 ![Azure depolama kaynakları](./media/versioning-overview/versions-billing-scenario-3.png)
 
-#### <a name="scenario-4"></a>4. Senaryo
+#### <a name="scenario-4"></a>4\. Senaryo
 
 Senaryo 4 ' te, temel blob tamamen güncelleştirilmiştir ve özgün bloklarından hiçbirini içermez. Sonuç olarak, hesap, &mdash; temel Blobun dört benzersiz blok ve önceki sürümde dört adet ücretlendirilir. Bu senaryo, blob 'u koy işlemi ile bir blob 'a yazıyorsanız, bu durum temel Blobun tüm içeriğinin yerini almıştır.
 

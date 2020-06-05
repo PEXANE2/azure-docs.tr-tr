@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
-ms.openlocfilehash: b59f933fedd5f1d3ed3f7972b1a1fe653df31be2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75893908"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434378"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Microsoft Azure Site Recovery Sağlayıcısını yükseltme hatalarını giderme
 
@@ -30,7 +30,7 @@ Yükseltmek için aşağıdaki adımları kullanın:
    1. [Azure Site Recovery makalesindeki hizmet güncelleştirmelerinin](service-updates-how-to.md#links-to-currently-supported-update-rollups) "Şu anda desteklenen güncelleştirme paketlerinin bağlantıları" bölümünde, yükseltmekte olduğunuz sağlayıcıyı seçin.
    2. Toplama sayfasında, **güncelleştirme bilgileri** bölümünü bulun ve Site Recovery birleşik kurulum Microsoft Azure Için güncelleştirme paketini indirin.
 
-2. Bir komut istemi açın ve Birleşik kurulum dosyasını indirdiğiniz klasöre gidin. Aşağıdaki komutu kullanarak kurulum dosyalarını indirden ayıklayın, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;ayıklanan dosyalar&gt;için klasör yolu.
+2. Bir komut istemi açın ve Birleşik kurulum dosyasını indirdiğiniz klasöre gidin. Aşağıdaki komutu kullanarak kurulum dosyalarını indirden ayıklayın, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: &lt; ayıklanan dosyalar için klasör yolu &gt; .
     
     Örnek komut:
 
@@ -49,11 +49,11 @@ Yükseltmenin başarılı olması için 3. taraf klasörü yeniden adlandırılm
 Sorunu gidermek için.
 
 1. Kayıt Defteri Düzenleyicisi 'Ni (Regedit. exe) başlatın ve HKEY_LOCAL_MACHINE \Software\wow6432node\ınmage Systems\yüklü Products\10 dalını açın.
-1. `Build_Version` Anahtar değerini inceleyin. En son sürüme ayarlanırsa sürüm numarasını küçültün. Örneğin, en son sürüm 9,22 ise. \* ve bu `Build_Version` değere ayarlanan anahtar, 9,21 olarak azaltılmasını sağlar. \*.
+1. `Build_Version`Anahtar değerini inceleyin. En son sürüme ayarlanırsa sürüm numarasını küçültün. Örneğin, en son sürüm 9,22 ise. \* ve `Build_Version` bu değere ayarlanan anahtar, 9,21 olarak azaltılmasını sağlar. \*
 1. Birleşik kurulum Site Recovery en son Microsoft Azure indirin:
    1. [Azure Site Recovery makalesindeki hizmet güncelleştirmelerinin](service-updates-how-to.md#links-to-currently-supported-update-rollups) "Şu anda desteklenen güncelleştirme paketlerinin bağlantıları" bölümünde, yükseltmekte olduğunuz sağlayıcıyı seçin.
    2. Toplama sayfasında, **güncelleştirme bilgileri** bölümünü bulun ve Site Recovery birleşik kurulum Microsoft Azure Için güncelleştirme paketini indirin.
-1. Bir komut istemi açın ve birleştirilmiş kurulum dosyasını indirdiğiniz klasöre gidin ve aşağıdaki komutu kullanarak kurulum dosyalarını indirme dosyasından ayıklayın, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;ayıklanan dosyalar&gt;için klasör yolu.
+1. Bir komut istemi açın ve birleştirilmiş kurulum dosyasını indirdiğiniz klasöre gidin ve aşağıdaki komutu kullanarak kurulum dosyalarını indirme dosyasından ayıklayın, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: &lt; ayıklanan dosyalar için klasör yolu &gt; .
 
     Örnek komut:
 
@@ -65,4 +65,16 @@ Sorunu gidermek için.
 
 1. Yüklemenin ilerlemesini izlemek için Görev Yöneticisi 'ni kullanın. CX_THIRDPARTY_SETUP için işlem. EXE artık görev yöneticisi 'nde görünmez, sonraki adıma geçin.
 1. C:\üçüncü taraf olduğunu ve klasörün RRD kitaplıklarını içerdiğini doğrulayın.
-1. Birleşik kurulumu indirdiğiniz klasöre dönün ve yükseltme işleminin ardından MicrosoftAzureSiteRecoveryUnifiedSetup. exe ' yi çalıştırın. 
+1. Birleşik kurulumu indirdiğiniz klasöre dönün ve yükseltme işleminin ardından MicrosoftAzureSiteRecoveryUnifiedSetup. exe ' yi çalıştırın.
+
+## <a name="upgrade-failure-due-to-master-target-installation-failure"></a>Ana hedef yükleme hatası nedeniyle yükseltme hatası
+
+Microsoft Azure Site Recovery sağlayıcısı (DRA) yükseltilirken, ana hedef yüklemesi ' yükleme konumu yok ' hatası ile başarısız olur veya 1 GB boş alana sahip değildir ve/veya sabit bir sürücüde mevcut değildir.
+
+Bunun nedeni, kayıt defteri anahtarındaki bir parametre için null değer olabilir. Sorunu çözmek için-
+
+1. Kayıt Defteri Düzenleyicisi 'Ni (Regedit. exe) başlatın ve HKEY_LOCAL_MACHINE \Software\wow6432node\ınmage Systems\yüklü Products\4 dalını açın.
+1. ' InstallDirectory ' anahtar değerini inceleyin.Null ise, geçerli install dizin değerini ekleyin.
+1. Benzer şekilde, kayıt defteri düzenleyicisinde \Software\wow6432node\ınmage Systems\yüklü Products\5 dalını HKEY_LOCAL_MACHINE açın.
+1. ' InstallDirectory ' anahtar değerini inceleyin ve geçerli install Directory değerini ekleyin.
+1. Birleşik kurulum yükleyicisini yeniden çalıştırın.

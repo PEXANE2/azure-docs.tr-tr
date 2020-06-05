@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 06/03/2020
 ms.author: jgao
-ms.openlocfilehash: 2ca6848ed8fe16baea49311ee4b4b15ae8c64b56
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: fb910260c562a41871fe0cd13d5e5e9652b2017d
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344722"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417115"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım betikleri kullanma (Önizleme)
 
@@ -248,8 +248,9 @@ Dağıtım betiği çıkışları AZ_SCRIPTS_OUTPUT_PATH konumuna kaydedilmelidi
 
 ### <a name="handle-non-terminating-errors"></a>Sonlandırma olmayan hataları işle
 
-Dağıtım betiğinizdeki [**$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
-) değişkenini kullanarak, PowerShell 'in sonlandırmasız hatalara nasıl yanıt vereceğini kontrol edebilirsiniz. Betik hizmeti değeri ayarladı/değiştirmez.  $ErrorActionPreference için ayarladığınız değere rağmen dağıtım betiği, betik bir hatayla karşılaştığında kaynak sağlama durumunu *başarısız* olarak ayarlar.
+Dağıtım betiğinizdeki **$ErrorActionPreference** değişkenini kullanarak, PowerShell 'in sonlandırmasız hatalara nasıl yanıt vereceğini kontrol edebilirsiniz. Dağıtım betiğinizdeki değişken ayarlanmamışsa, komut dosyası hizmeti **devam et**varsayılan değerini kullanır.
+
+Betik hizmeti, $ErrorActionPreference ayarına rağmen bir hatayla karşılaştığında, kaynak sağlama durumunu **başarısız** olarak ayarlar.
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Güvenli dizeleri dağıtım betiğine geçir
 
@@ -354,7 +355,7 @@ Bu kaynakların yaşam döngüsü, şablondaki aşağıdaki özelliklerle denetl
 
 - **cleanuppreference**: betik yürütme bir terminal durumunda olduğunda temizle tercihi. Desteklenen değerler şunlardır:
 
-  - **Her zaman**: betik yürütme bir Terminal durumuna ulaştıktan sonra otomatik olarak oluşturulan kaynakları silin. Mevcut bir depolama hesabı kullanılıyorsa, betik hizmeti depolama hesabında oluşturulan dosya paylaşımından siler. Kaynak temizlenmeden sonra deploymentScripts kaynağı hala mevcut olabileceğinden, betik Hizmetleri komut dosyası yürütme sonuçlarını (örneğin, stdout, çıktılar, dönüş değeri vb.), kaynaklar silinmeden önce kalıcı hale gelebilir.
+  - **Her zaman**: betik yürütme bir Terminal durumuna ulaştıktan sonra otomatik olarak oluşturulan kaynakları silin. Mevcut bir depolama hesabı kullanılıyorsa, betik hizmeti depolama hesabında oluşturulan dosya paylaşımından siler. Kaynak temizlenmeden sonra deploymentScripts kaynağı yine de mevcut olabileceğinden, komut dosyası yürütme sonuçları, örneğin stdout, çıktılar, dönüş değeri, vb. kaynakları silinmeden önce devam edebilir.
   - **OnSuccess**: otomatik olarak oluşturulan kaynakları yalnızca betik yürütme başarılı olduğunda silin. Mevcut bir depolama hesabı kullanılıyorsa, betik hizmeti yalnızca betik yürütme başarılı olduğunda dosya paylaşımının kaldırılmasına neden olur. Hata ayıklama bilgilerini bulmak için kaynaklara erişmeye devam edebilirsiniz.
   - **Onexpiration**: yalnızca **retentionInterval** ayarının süresi dolduğunda otomatik olarak kaynakları silin. Mevcut bir depolama hesabı kullanılıyorsa, betik hizmeti dosya paylaşımından kaldırır, ancak depolama hesabını korurlar.
 

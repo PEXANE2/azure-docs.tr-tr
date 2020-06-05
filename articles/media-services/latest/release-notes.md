@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/28/2020
+ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: e072bcb0edc741b7843f470f14c3c37153338efb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0833215449c92a1710dcaf4f2fe13ce9a16685ba
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647643"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434051"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -35,6 +35,14 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 > V3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, v3 [varlıklarını](assets-concept.md)görüntülemek, API 'lere erişim hakkında bilgi almak için [Azure Portal](https://portal.azure.com/) kullanabilirsiniz. Diğer tüm yönetim görevleri (örneğin, dönüşümler ve Işler) için [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 
 Daha fazla bilgi için bkz. [Media Services V2 'den v3 'e geçiş Için geçiş kılavuzu](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="june-2020"></a>Haziran 2020
+
+### <a name="live-video-analytics-on-iot-edge-preview-release"></a>IoT Edge Preview sürümünde canlı video analizi
+
+IoT Edge canlı video analizinin önizlemesi herkese açık oldu. Daha fazla bilgi için bkz. [sürüm notları](../live-video-analytics-edge/release-notes.md).
+
+IoT Edge üzerindeki canlı video analizi, Media Service ailesine yönelik bir genişletmektir. Bu, kendi Edge cihazlarınızda seçtiğiniz AI modelleriyle canlı videoyu çözümlemenize ve isteğe bağlı olarak bu videoyu yakalayıp kaydetmenize olanak sağlar. Artık canlı bir video işlem hattı oluşturma ve çalıştırma karmaşıklığı hakkında endişelenmenize gerek kalmadan gerçek zamanlı video analiziyle birlikte uygulamalar oluşturabilirsiniz.
 
 ## <a name="may-2020"></a>Mayıs 2020
 
@@ -370,6 +378,6 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Genel bakış](media-services-overview.md)
+- [Genel Bakış](media-services-overview.md)
 - [Media Services v3 belge güncelleştirmeleri](docs-release-notes.md)
 - [Media Services V2 sürüm notları](../previous/media-services-release-notes.md)

@@ -5,17 +5,17 @@ description: Modelinizin Azure Machine Learning SDK 'Yı kullanarak neden tahmin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/02/2020
-ms.openlocfilehash: f4210352a9d8cd3cd9cb9afda7d9a4798d96f44b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: dd9620b690b031567a85cfd1dfc2dcbc76fb6835
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982896"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430503"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Azure Machine Learning model yorumlenebilirliği
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,11 +46,11 @@ Yorumlenebilirlik sınıfları birden çok SDK paketi aracılığıyla kullanıl
 
 * `azureml.train.automl.automlexplainer`otomatik makine öğrenimi modellerini yorumlama paketi.
 
-`pip install azureml-interpret` Ve `pip install azureml-interpret-contrib` için genel kullanım `pip install azureml-interpret-contrib` için ve oto ml 'yi kullanarak yorumlenebilirliği paketlerini alın.
+`pip install azureml-interpret`Ve için `pip install azureml-interpret-contrib` Genel Kullanım Için ve `pip install azureml-interpret-contrib` oto ml 'yi kullanarak yorumlenebilirliği paketlerini alın.
 
 
 > [!IMPORTANT]
-> `contrib` Ad alanındaki içerik tam olarak desteklenmez. Deneysel işlevler, diğer bir deyişle, bu, yavaş olarak ana ad alanına taşınır.
+> `contrib`Ad alanındaki içerik tam olarak desteklenmez. Deneysel işlevler, diğer bir deyişle, bu, yavaş olarak ana ad alanına taşınır.
 .
 
 
@@ -72,7 +72,7 @@ Desteklenen yorumlenebilirlik teknikleri, desteklenen makine öğrenimi modeller
 
  `azureml-interpret`, eğitim yorumlanmış ve kara kutu AI sistemlerinin açıklanmasına yardımcı olmak üzere açık kaynaklı bir Python paketi olan [yorumlama-topluluk](https://github.com/interpretml/interpret-community/)' da geliştirilmiş yorumlanmış teknikleri kullanır. [Yorumlama-topluluk](https://github.com/interpretml/interpret-community/) , bu SDK 'nın desteklenen explainers ana bilgisayarı olarak görev yapar ve şu anda aşağıdaki yorumlamış teknikleri destekler:
 
-|Yorumlenebilirlik tekniği|Açıklama|Tür|
+|Yorumlenebilirlik tekniği|Description|Tür|
 |--|--|--------------------|
 |SHAP ağacı açıklama| Ağaç **ve Kümelemeler**ağaçlarına özgü polinom zaman hızlı Shap değer tahmini algoritmasına odaklanan [Shap](https://github.com/slundberg/shap)'nin Tree açıklama.|Modele özgü|
 |SHAP derin açıklama| SHAP 'nin açıklamasına göre, derin açıklama ", Shap [NıP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)'Lerde açıklanan ayrıntılı bir bağlantı üzerinde bağlantı kurulan derin öğrenme MODELLERINDEKI Shap değerleri için yüksek hızda bir yaklaşık algoritmadır. TensorFlow arka ucunu kullanan **TensorFlow** modelleri ve **keras** modelleri desteklenir (Ayrıca, pytorch için de ön destek vardır) ".|Modele özgü|
@@ -84,7 +84,7 @@ Desteklenen yorumlenebilirlik teknikleri, desteklenen makine öğrenimi modeller
 
 
 
-Yukarıda açıklanan yorumlamalar tekniklerinin yanı sıra, adlı `TabularExplainer`başka BIR Shap tabanlı açıklama destekliyoruz. Modele bağlı olarak, `TabularExplainer` desteklenen Shap explainers birini kullanır:
+Yukarıda açıklanan yorumlamalar tekniklerinin yanı sıra, adlı başka bir SHAP tabanlı açıklama destekliyoruz `TabularExplainer` . Modele bağlı olarak, `TabularExplainer` desteklenen SHAP explainers birini kullanır:
 
 * Tüm ağaç tabanlı modeller için TreeExplainer
 * DNN modelleri için DeepExplainer
@@ -103,17 +103,17 @@ Aşağıdaki diyagramda desteklenen explainers 'in geçerli yapısı gösterilme
 
 ## <a name="supported-machine-learning-models"></a>Desteklenen makine öğrenimi modelleri
 
-SDK `azureml.interpret` paketi, aşağıdaki veri kümesi biçimleriyle eğitilen modelleri destekler:
+`azureml.interpret`SDK paketi, aşağıdaki veri kümesi biçimleriyle eğitilen modelleri destekler:
 - `numpy.array`
 - `pandas.DataFrame`
 - `iml.datatypes.DenseData`
 - `scipy.sparse.csr_matrix`
 
-Açıklama işlevleri, giriş olarak hem modelleri hem de işlem hatlarını kabul eder. Bir model sağlanmışsa, modelin tahmin işlevini `predict` uygulaması veya `predict_proba` scikit kuralına uygun olması gerekir. Modeliniz bunu desteklemiyorsa, modelinizi aynı sonucu oluşturan bir işlevde `predict` veya `predict_proba` scikit içinde sarmalayan ve bu sarmalayıcı işlevi seçili açıklama ile birlikte kullanabilirsiniz. Bir işlem hattı sağlanırsa, açıklama işlevi çalışan ardışık düzen betiğinin bir tahmin döndürdüğünü varsayar. Bu sarmalama tekniğinin `azureml.interpret` kullanılması, PyTorch, TensorFlow ve keras derin öğrenme çerçevelerinin yanı sıra klasik makine öğrenimi modelleri aracılığıyla eğitilen modelleri destekleyebilir.
+Açıklama işlevleri, giriş olarak hem modelleri hem de işlem hatlarını kabul eder. Bir model sağlanmışsa, modelin tahmin işlevini uygulaması `predict` veya `predict_proba` Scikit kuralına uygun olması gerekir. Modeliniz bunu desteklemiyorsa, modelinizi aynı sonucu oluşturan bir işlevde `predict` veya `predict_proba` Scikit içinde sarmalayan ve bu sarmalayıcı işlevi seçili açıklama ile birlikte kullanabilirsiniz. Bir işlem hattı sağlanırsa, açıklama işlevi çalışan ardışık düzen betiğinin bir tahmin döndürdüğünü varsayar. Bu sarmalama tekniğinin kullanılması, `azureml.interpret` PyTorch, TensorFlow ve keras derin öğrenme çerçevelerinin yanı sıra klasik makine öğrenimi modelleri aracılığıyla eğitilen modelleri destekleyebilir.
 
 ## <a name="local-and-remote-compute-target"></a>Yerel ve uzak işlem hedefi
 
-`azureml.interpret` Paket hem yerel hem de uzak işlem hedefleri ile çalışacak şekilde tasarlanmıştır. Yerel olarak çalıştırırsanız, SDK işlevleri hiçbir Azure hizmetine başvurmaz. 
+`azureml.interpret`Paket hem yerel hem de uzak işlem hedefleri ile çalışacak şekilde tasarlanmıştır. Yerel olarak çalıştırırsanız, SDK işlevleri hiçbir Azure hizmetine başvurmaz. 
 
 Azure Machine Learning Işlem sırasında açıklamayı Uzaktan çalıştırabilir ve açıklama bilgilerini Azure Machine Learning çalıştırma geçmişi hizmetine kaydedebilirsiniz. Bu bilgiler günlüğe kaydedildikten sonra, açıklamada bulunan raporlar ve görselleştirmeler Kullanıcı analizi için Azure Machine Learning Studio 'da kullanıma hazırdır.
 

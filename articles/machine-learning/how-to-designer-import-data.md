@@ -5,17 +5,17 @@ description: Verilerinizi çeşitli veri kaynaklarından Azure Machine Learning 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
 ms.custom: designer
-ms.openlocfilehash: 2b42f8f9dfe6ef2993b4615f0e4584874beabb28
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 386da835c239953066bf47ee670f7fb27c7b04f4
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644563"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84429528"
 ---
 # <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Verilerinizi Azure Machine Learning tasarımcı 'ya aktarma (Önizleme)
 

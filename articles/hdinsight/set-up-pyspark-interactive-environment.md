@@ -9,23 +9,23 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 47f774f7b848e34aa7dc219ee4b08fb083cbd813
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: deeb80ba74385574d62348ddc2ca3b99a7637541
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188217"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417268"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code için PySpark etkileşimli ortamını ayarlama
 
-Aşağıdaki adımlarda VS Code 'da PySpark etkileşimli ortamının nasıl ayarlanacağı gösterilmektedir.
+Aşağıdaki adımlarda, VSCode 'da PySpark etkileşimli ortamının nasıl ayarlanacağı gösterilmektedir. Bu adım yalnızca Windows dışı kullanıcılar içindir.
 
 Ana yolunuzda sanal ortam oluşturmak için **Python/PIP** komutunu kullanıyoruz. Başka bir sürüm kullanmak istiyorsanız, **Python/PIP** komutunun varsayılan sürümünü el ile değiştirmeniz gerekir. Daha fazla ayrıntı için bkz. [Update-alternatifler](https://linux.die.net/man/8/update-alternatives).
 
 1. [Python](https://www.python.org/downloads/) ve [PIP](https://pip.pypa.io/en/stable/installing/)'yi yükler.
 
-   * Python uygulamasını şuradan [https://www.python.org/downloads/](https://www.python.org/downloads/)
-   * PIP 'yi [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) yükleme (Python yüklemesinden yüklenmemişse).
+   * Python [https://www.python.org/downloads/](https://www.python.org/downloads/) uygulamasını şuradan 
+   * PIP 'yi yükleme [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) (Python yüklemesinden yüklenmemişse).
    * Aşağıdaki komutları kullanarak Python ve PIP 'nin başarıyla yüklendiğini doğrulayın. (İsteğe bağlı)
 
         ![Python pversıon sürümü komutunu denetle](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
@@ -41,7 +41,7 @@ Ana yolunuzda sanal ortam oluşturmak için **Python/PIP** komutunu kullanıyoru
 
 ## <a name="other-packages"></a>Diğer paketler
 
-Bir hata iletisiyle karşılaşırsanız, aşağıdaki komutları çalıştırarak gerekli paketleri yükleyebilirsiniz:
+Linux 'ta aşağıdaki hata iletisiyle karşılaşırsanız, aşağıdaki iki komutu çalıştırarak gerekli paketleri yükleyebilirsiniz.
 
    ![Python için libkrb5 paketini yükler](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
 
@@ -53,7 +53,7 @@ sudo apt-get install libkrb5-dev
 sudo apt-get install python-dev
 ```
 
-VS Code yeniden başlatın ve ardından HDInsight çalıştıran betik düzenleyicisine geri dönün **: PySpark Interactive**.
+VSCode 'u yeniden başlatın ve ardından VSCode düzenleyicisine dönün ve **Spark: Pyspark Interactive** komutunu çalıştırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

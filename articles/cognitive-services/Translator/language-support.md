@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 359079ad73fcf162fb742afe74c1c1de5896c35c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 6339b86166aff008bf17b5096d42629daf6e3401
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996083"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434294"
 ---
 # <a name="language-and-region-support-for-translator"></a>Çevirmen için dil ve bölge desteği
 
@@ -74,10 +74,11 @@ ms.locfileid: "83996083"
 |İrlandaca | `ga`| Sinir
 |İtalyanca|    `it`    |    Sinir|
 |Japonca|    `ja`    |    Sinir|
-|Kannada dili|`kn`| Sinir
+|Kannada dili|`kn`| Sinir|
+|Kazakça |`kk`| Sinir|
 |Svahili dili|    `sw`    |    Ki|
-|Klingon|    `tlh`    |    Ki|
-|Klingon (plqaD)|    `tlh-Qaak`    |    Ki|
+|Klingon|    `tlh-Latn`    |    Ki|
+|Klingon (plqaD)|    `tlh-Piqd`    |    Ki|
 |Korece    |`ko`    |    Sinir|
 |Letonca|    `lv`    |    Sinir|
 |Litvanca|    `lt`    |    Sinir|
@@ -130,20 +131,20 @@ Alfabede bulunan yöntem aşağıdaki dilleri destekler. "To/from", "<-->", dili
 | Basitleştirilmiş Çince | `zh-Hans` | Basitleştirilmiş Çince`Hans`| <--> | Geleneksel Çince`Hant`|
 | Geleneksel Çince | `zh-Hant` | Geleneksel Çince`Hant`| <--> | Tin`Latn` |
 | Geleneksel Çince | `zh-Hant` | Geleneksel Çince`Hant`| <--> | Basitleştirilmiş Çince`Hans` |
-| Gucerat dili | `gu`  | Gucerat dili`Gujr` | --> | Tin`Latn` |
+| Gucerat dili | `gu`  | Gucerat dili`Gujr` | <--> | Tin`Latn` |
 | İbranice | `he` | İbranice`Hebr` | <--> | Tin`Latn` |
 | Hintçe | `hi` | Devanagari`Deva` | <--> | Tin`Latn` |
 | Japonca | `ja` | Japonca`Jpan` | <--> | Tin`Latn` |
-| Kannada dili | `kn` | Kannada dili`Knda` | --> | Tin`Latn` |
-| Malayalam dili | `ml` | Malayalam dili`Mlym` | --> | Tin`Latn` |
-| Marathi | `mr` | Devanagari`Deva` | --> | Tin`Latn` |
+| Kannada dili | `kn` | Kannada dili`Knda` | <--> | Tin`Latn` |
+| Malayalam dili | `ml` | Malayalam dili`Mlym` | <--> | Tin`Latn` |
+| Marathi | `mr` | Devanagari`Deva` | <--> | Tin`Latn` |
 | Oriya | `or` | Oriya`Orya` | <--> | Tin`Latn` |
 | Pencap dili | `pa` | Gurmukhi`Guru`  | <--> | Tin`Latn`  |
 | Sırpça (Kiril) | `sr-Cyrl` | V`Cyrl`  | --> | Tin`Latn` |
 | Sırpça (Latin) | `sr-Latn` | Tin`Latn` | --> | V`Cyrl`|
-| Tamil dili | `ta` | Tamil dili`Taml` | --> | Tin`Latn` |
-| Telugu dili | `te` | Telugu dili`Telu` | --> | Tin`Latn` |
-| Tayca | `th` | Tay dili`Thai` | --> | Tin`Latn` |
+| Tamil dili | `ta` | Tamil dili`Taml` | <--> | Tin`Latn` |
+| Telugu dili | `te` | Telugu dili`Telu` | <--> | Tin`Latn` |
+| Tayca | `th` | Tay dili`Thai` | <--> | Tin`Latn` |
 
 ## <a name="dictionary"></a>Sözlük
 
@@ -177,7 +178,7 @@ Sözlük, arama ve örnekler yöntemlerini kullanarak Ingilizce 'ye veya Ingiliz
 | İtalyanca      | `it`          |
 | Japonca      | `ja`          |
 | Svahili dili      | `sw`          |
-| Klingon      | `tlh`          |
+| Klingon      | `tlh-Latn`          |
 | Korece      | `ko`          |
 | Letonca      | `lv`          |
 | Litvanca      | `lt`          |

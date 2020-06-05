@@ -5,16 +5,16 @@ description: Python 'da Azure Machine Learning işlem hatlarınızı hata ayıkl
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: 4f0eb6aa92dd8999baed6868a159c86d5e7bd0c8
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: bf6a8dd0bfc4ffb9f6b6fa0c9b1d864c4298755a
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594668"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433443"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Makine öğrenmesi işlem hatlarında hata ayıklama ve sorun giderme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -50,7 +50,7 @@ Yerel ortamınızda çalıştırmak üzere bir betik kurulumuna sahip olduktan s
 
 ### <a name="debugging-scripts-from-remote-context"></a>Uzak bağlamdaki betiklerin hatalarını ayıklama
 
-Komut dosyalarını yerel olarak test etmek, bir işlem hattı oluşturmaya başlamadan önce büyük kod parçalarının ve karmaşık mantığın hatalarını ayıklamanın harika bir yoludur. ancak bazı bir noktada, özellikle de işlem hattı adımları arasındaki etkileşim sırasında oluşan davranışı tanılarken, büyük olasılıkla gerçek ardışık düzen sırasında betiklerde hata ayıklaması yapmanız gerekir. Uzaktan yürütme sırasında nesne durumunu ve `print()` beklenen değerleri görebilmeniz Için, JavaScript kodunun hatalarını ayıklamanıza benzer şekilde, adım betiklerinizde deyimlerin serbest bir şekilde kullanılmasını öneririz.
+Komut dosyalarını yerel olarak test etmek, bir işlem hattı oluşturmaya başlamadan önce büyük kod parçalarının ve karmaşık mantığın hatalarını ayıklamanın harika bir yoludur. ancak bazı bir noktada, özellikle de işlem hattı adımları arasındaki etkileşim sırasında oluşan davranışı tanılarken, büyük olasılıkla gerçek ardışık düzen sırasında betiklerde hata ayıklaması yapmanız gerekir. `print()`Uzaktan yürütme sırasında nesne durumunu ve beklenen değerleri görebilmeniz için, JavaScript kodunun hatalarını ayıklamanıza benzer şekilde, adım betiklerinizde deyimlerin serbest bir şekilde kullanılmasını öneririz.
 
 Günlük dosyası `70_driver_log.txt` şunları içerir: 
 
@@ -78,11 +78,11 @@ Aşağıdaki tabloda, potansiyel çözümlerle birlikte işlem hattı geliştirm
 
 | Sorun | Olası çözüm |
 |--|--|
-| Verileri `PipelineData` dizine geçiremedi | Komut dosyasında, işlem hattının adım çıkış verilerini beklediği yere karşılık gelen bir dizin oluşturduğunuzdan emin olun. Çoğu durumda, bir giriş bağımsız değişkeni çıkış dizinini tanımlar ve ardından dizini açıkça oluşturursunuz. Çıkış `os.makedirs(args.output_dir, exist_ok=True)` dizinini oluşturmak için kullanın. Bu tasarım modelini gösteren bir Puanlama betiği örneği için [öğreticiye](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) bakın. |
+| Verileri dizine geçiremedi `PipelineData` | Komut dosyasında, işlem hattının adım çıkış verilerini beklediği yere karşılık gelen bir dizin oluşturduğunuzdan emin olun. Çoğu durumda, bir giriş bağımsız değişkeni çıkış dizinini tanımlar ve ardından dizini açıkça oluşturursunuz. `os.makedirs(args.output_dir, exist_ok=True)`Çıkış dizinini oluşturmak için kullanın. Bu tasarım modelini gösteren bir Puanlama betiği örneği için [öğreticiye](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) bakın. |
 | Bağımlılık hataları | Komut dosyalarını yerel olarak geliştirdiyseniz, ancak işlem hattındaki uzak bir işlem üzerinde çalışırken bağımlılık sorunları bulursanız, işlem ortamı bağımlılıklarınızın ve sürümlerinin test ortamınızla eşleştiğinden emin olun. (Bkz. [ortam oluşturma, önbelleğe alma ve yeniden kullanma](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)|
 | İşlem hedefleri ile belirsiz hatalar | İşlem hedeflerini silme ve yeniden oluşturma işlemi, işlem hedefleriyle ilgili bazı sorunları çözebilir. |
-| İşlem hattı adımları yeniden kullanma | Adım yeniden kullanım varsayılan olarak etkindir, ancak işlem hattı adımında devre dışı bırakılmadığınızdan emin olun. Yeniden kullanım devre dışıysa, adımdaki `allow_reuse` parametre olarak `False`ayarlanır. |
-| İşlem hattı gereksiz yere yeniden çalıştırılıyor | Adımların yalnızca temel alınan verileri veya betikleri değiştiğinde yeniden çalıştırılması için dizinlerinizi her bir adımla ayırın. Birden çok adım için aynı kaynak dizinini kullanırsanız, gereksiz yeniden çalıştırma işlemleri yaşayabilirsiniz. İşlem hattı `source_directory` adımı nesnesi üzerinde parametresini kullanarak bu adım için yalıtılmış dizininizi işaret edin ve birden çok adım için aynı `source_directory` yolu kullanmadığınız emin olun. |
+| İşlem hattı adımları yeniden kullanma | Adım yeniden kullanım varsayılan olarak etkindir, ancak işlem hattı adımında devre dışı bırakılmadığınızdan emin olun. Yeniden kullanım devre dışıysa, `allow_reuse` adımdaki parametre olarak ayarlanır `False` . |
+| İşlem hattı gereksiz yere yeniden çalıştırılıyor | Adımların yalnızca temel alınan verileri veya betikleri değiştiğinde yeniden çalıştırılması için dizinlerinizi her bir adımla ayırın. Birden çok adım için aynı kaynak dizinini kullanırsanız, gereksiz yeniden çalıştırma işlemleri yaşayabilirsiniz. İşlem `source_directory` hattı adımı nesnesi üzerinde parametresini kullanarak bu adım için yalıtılmış dizininizi işaret edin ve `source_directory` birden çok adım için aynı yolu kullanmadığınız emin olun. |
 
 ### <a name="logging-options-and-behavior"></a>Günlüğe kaydetme seçenekleri ve davranışı
 
@@ -162,7 +162,7 @@ OpenCensus Python kitaplığını bu şekilde kullanma hakkında daha fazla bilg
 
 Bazı durumlarda, ML ardışık düzeninde kullanılan Python kodunda etkileşimli olarak hata ayıklaması yapmanız gerekebilir. Visual Studio Code (VS Code) ve Visual Studio için Python Araçları (PTVSD) kullanarak, eğitim ortamında çalışırken koda ekleyebilirsiniz.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * __Azure sanal ağını__kullanmak üzere yapılandırılmış bir __Azure Machine Learning çalışma alanı__ .
 * İşlem hattı adımlarının bir parçası olarak Python betikleri kullanan bir __Azure Machine Learning işlem hattı__ . Örneğin, bir PythonScriptStep.
@@ -185,7 +185,7 @@ ML işlem hattı adımlarınız Python betikleri çalıştırır. Bu betikler a�
 
 3. Geliştirme ortamınızdan, komut dosyasının çalıştığı IP adresini bulmak için eğitim süreci tarafından oluşturulan günlükleri izleyebilirsiniz.
 
-4. Bir `launch.json` dosya kullanarak hata ayıklayıcıyı bağlamak için ıp adresine vs Code söylemiş olursunuz.
+4. Bir dosya kullanarak hata ayıklayıcıyı bağlamak için IP adresine VS Code söylemiş olursunuz `launch.json` .
 
 5. Hata ayıklayıcıyı ekler ve komut dosyasında etkileşimli olarak ilereolursunuz.
 
@@ -218,7 +218,7 @@ Hata ayıklamayı etkinleştirmek için, ML işlem hattınızdaki adımlar taraf
     run = Run.get_context()
     ```
 
-1. PTVSD ' i başlatan ve bir hata ayıklayıcının iliştirmesini bekleyen bir `if` ifade ekleyin. Zaman aşımından önce bir hata ayıklayıcı yoksa, komut dosyası normal olarak devam eder.
+1. `if`PTVSD ' i başlatan ve bir hata ayıklayıcının iliştirmesini bekleyen bir ifade ekleyin. Zaman aşımından önce bir hata ayıklayıcı yoksa, komut dosyası normal olarak devam eder.
 
     ```python
     if args.remote_debug:
@@ -233,7 +233,7 @@ Hata ayıklamayı etkinleştirmek için, ML işlem hattınızdaki adımlar taraf
         print(f'Debugger attached = {ptvsd.is_attached()}')
     ```
 
-Aşağıdaki Python örneği, hata ayıklamayı sağlayan `train.py` temel bir dosya göstermektedir:
+Aşağıdaki Python örneği, `train.py` hata ayıklamayı sağlayan temel bir dosya göstermektedir:
 
 ```python
 # Copyright (c) Microsoft. All rights reserved.
@@ -287,7 +287,7 @@ if not (args.output_train is None):
 
 ### <a name="configure-ml-pipeline"></a>ML ardışık düzenini yapılandırma
 
-PTVSD başlatmak ve çalıştırma bağlamını almak için gereken Python paketlerini sağlamak için bir ortam oluşturun ve ayarlayın `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']`. SDK sürümünü, kullanmakta olduğunuz bir sürümle eşleşecek şekilde değiştirin. Aşağıdaki kod parçacığı bir ortamın nasıl oluşturulacağını gösterir:
+PTVSD başlatmak ve çalıştırma bağlamını almak için gereken Python paketlerini sağlamak için bir ortam oluşturun ve ayarlayın `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']` . SDK sürümünü, kullanmakta olduğunuz bir sürümle eşleşecek şekilde değiştirin. Aşağıdaki kod parçacığı bir ortamın nasıl oluşturulacağını gösterir:
 
 ```python
 # Use a RunConfiguration to specify some additional requirements for this step.
@@ -312,7 +312,7 @@ run_config.environment.python.conda_dependencies = CondaDependencies.create(cond
                                                                            pip_packages=['ptvsd', 'azureml-sdk==1.0.83'])
 ```
 
-[Python betikleri Yapılandır](#configure-python-scripts) bölümünde, ml ardışık düzen adımlarınız tarafından kullanılan betiklerin iki yeni bağımsız değişkeni eklenmiştir. Aşağıdaki kod parçacığı, bileşen için hata ayıklamayı etkinleştirmek ve zaman aşımı ayarlamak için bu bağımsız değişkenlerin nasıl kullanılacağını gösterir. Ayrıca, daha önce oluşturulan ortamın şu şekilde nasıl kullanılacağını gösterir `runconfig=run_config`:
+[Python betikleri Yapılandır](#configure-python-scripts) bölümünde, ml ardışık düzen adımlarınız tarafından kullanılan betiklerin iki yeni bağımsız değişkeni eklenmiştir. Aşağıdaki kod parçacığı, bileşen için hata ayıklamayı etkinleştirmek ve zaman aşımı ayarlamak için bu bağımsız değişkenlerin nasıl kullanılacağını gösterir. Ayrıca, daha önce oluşturulan ortamın şu şekilde nasıl kullanılacağını gösterir `runconfig=run_config` :
 
 ```python
 # Use RunConfig from a pipeline step
@@ -325,14 +325,14 @@ step1 = PythonScriptStep(name="train_step",
                          allow_reuse=False)
 ```
 
-İşlem hattı çalıştırıldığında, her adım bir alt çalıştırma oluşturur. Hata ayıklama etkinleştirilirse, değiştirilen betik, `70_driver_log.txt` alt çalışma için içindeki aşağıdaki metne benzer bilgileri günlüğe kaydeder:
+İşlem hattı çalıştırıldığında, her adım bir alt çalıştırma oluşturur. Hata ayıklama etkinleştirilirse, değiştirilen betik, alt çalışma için içindeki aşağıdaki metne benzer bilgileri günlüğe kaydeder `70_driver_log.txt` :
 
 ```text
 Timeout for debug connection: 300
 ip_address: 10.3.0.5
 ```
 
-`ip_address` Değeri kaydedin. Sonraki bölümde kullanılır.
+Değeri kaydedin `ip_address` . Sonraki bölümde kullanılır.
 
 > [!TIP]
 > Bu işlem hattı adımı için alt çalıştırma için çalıştırma günlüklerinden IP adresini de bulabilirsiniz. Bu bilgileri görüntüleme hakkında daha fazla bilgi için bkz. [Azure ML deneme çalıştırmaları ve ölçümlerini izleme](how-to-track-experiments.md).
@@ -351,7 +351,7 @@ ip_address: 10.3.0.5
 
     1. VS Code, __Hata Ayıkla__ menüsünü ve ardından __yapılandırma aç__' ı seçin. __Launch. JSON__ adlı bir dosya açılır.
 
-    1. __Launch. JSON__ dosyasında, içeren `"configurations": [`satırı bulun ve sonra aşağıdaki metni ekleyin. `"host": "10.3.0.5"` Girişi, önceki bölümden günlüklerinizin döndürdüğü IP adresiyle değiştirin. `"localRoot": "${workspaceFolder}/code/step"` Girişi, hata ayıklanan betiğin bir kopyasını içeren bir yerel dizin olarak değiştirin:
+    1. __Launch. JSON__ dosyasında, içeren satırı bulun `"configurations": [` ve sonra aşağıdaki metni ekleyin. Girişi, `"host": "10.3.0.5"` önceki bölümden günlüklerinizin DÖNDÜRDÜĞÜ IP adresiyle değiştirin. Girişi, `"localRoot": "${workspaceFolder}/code/step"` hata ayıklanan betiğin bir kopyasını içeren bir yerel dizin olarak değiştirin:
 
         ```json
         {
@@ -374,7 +374,7 @@ ip_address: 10.3.0.5
         > Konfigürasyonlar bölümünde zaten başka girdiler varsa, eklediğiniz koddan sonra bir virgül (,) ekleyin.
 
         > [!TIP]
-        > En iyi uygulama, `localRoot` örnek değerin neden başvurduğu `/code/step1`, farklı dizinlerde komut dosyaları için kaynakları tutmaktır.
+        > En iyi uygulama, örnek değerin neden başvurduğu, farklı dizinlerde komut dosyaları için kaynakları tutmaktır `localRoot` `/code/step1` .
         >
         > Birden çok betikte hata ayıklaması yapıyorsanız, farklı dizinlerde, her komut dosyası için ayrı bir yapılandırma bölümü oluşturun.
 
@@ -389,7 +389,7 @@ ip_address: 10.3.0.5
     Bu noktada, VS Code işlem düğümündeki PTVSD öğesine bağlanır ve daha önce ayarladığınız kesme noktasında durmaktadır. Artık kodu çalışırken, değişkenleri görüntülerken vb. adımları izleyebilirsiniz.
 
     > [!NOTE]
-    > Günlükte belirten `Debugger attached = False`bir giriş görüntüleniyorsa, zaman aşımı süresi doldu ve betik hata ayıklayıcı olmadan devam eder. İşlem hattını yeniden gönder ve `Timeout for debug connection` iletiden sonra, zaman aşımı süresi dolmadan önce hata ayıklayıcıyı bağla.
+    > Günlükte belirten bir giriş görüntüleniyorsa `Debugger attached = False` , zaman aşımı süresi doldu ve betik hata ayıklayıcı olmadan devam eder. İşlem hattını yeniden gönder ve `Timeout for debug connection` iletiden sonra, zaman aşımı süresi dolmadan önce hata ayıklayıcıyı bağla.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

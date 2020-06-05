@@ -5,18 +5,18 @@ description: Bir FPGA üzerinde çalışan bir modelle bir Web hizmetini, son de
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8569f4751c54d7b37aa15737a9b3f7f394c7e26e
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: ac246c5135f9c00368ccce2ca79627322f504976
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983593"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433894"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Alan-programlanabilir kapı dizileri (FPGA) ve dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Aşağıdaki diyagramda ve tabloda Fpg'in diğer işlemcilerle nasıl Karşıla�
 
 ![Azure Machine Learning FPGA karşılaştırması diyagramı](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|İşlemci||Açıklama|
+|İşlemci||Description|
 |---|:-------:|------|
 |Uygulamaya özgü tümleşik devreler|ASICS|Google 'ın TensorFlow Işlemci birimleri (TPU) gibi özel devreler en yüksek verimliliği sağlar. Gereksinimleriniz değiştikçe bu değişiklikler yeniden yapılandırılamaz.|
 |Alan-programlanabilir kapı dizileri|FPGA'lar|Azure 'da kullanılabilir olanlar gibi FPGAs 'ler, ASICs performansına yakın performans sağlar. Ayrıca, yeni mantık uygulamak için zaman içinde esnek ve yeniden yapılandırılabilir.|
@@ -85,7 +85,7 @@ Aşağıdaki senaryolar FPGAs kullanır:
 
 [Azure Machine Learning hızlandırılmış donanım modelleri](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py)Ile fpgas üzerinde bir modeli Web hizmeti olarak dağıtabilirsiniz. FPGAs kullanımı, tek bir toplu iş boyutuyla bile Ultra düşük gecikme çıkarımı sağlar. Çıkarım veya model Puanlama, dağıtılan modelin tahmin için en yaygın olarak üretim verilerinde kullanıldığı aşamadır.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği.  Aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
@@ -96,7 +96,7 @@ Aşağıdaki senaryolar FPGAs kullanır:
     ```
 
     > [!TIP]
-    > Diğer olası konumlar, ``southeastasia`` ``westeurope``ve ``westus2``' dir.
+    > Diğer olası konumlar ``southeastasia`` , ve ' dir ``westeurope`` ``westus2`` .
 
     Komut şuna benzer bir metin döndürür:
 
@@ -108,7 +108,7 @@ Aşağıdaki senaryolar FPGAs kullanır:
 
     __CurrentValue__altında en az 6 vCPU kullandığınızdan emin olun.
 
-    Kotayı yoksa ' de [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI)bir istek gönderebilirsiniz.
+    Kotayı yoksa ' de bir istek gönderebilirsiniz [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI) .
 
 - Python için bir Azure Machine Learning çalışma alanı ve Azure Machine Learning SDK 'Sı yüklendi. Daha fazla bilgi için bkz. [çalışma alanı oluşturma](how-to-manage-workspace.md).
  
@@ -344,7 +344,7 @@ aks_service.wait_for_deployment(show_output=True)
 #### <a name="test-the-cloud-service"></a>Bulut hizmetini test etme
 Docker görüntüsü, gRPC 'yi ve "tahmin" API 'sini sunan TensorFlow 'ı destekler.  Modelden öngörülere ulaşmak için Docker görüntüsünü çağırmak üzere örnek istemcisini kullanın.  Örnek istemci kodu kullanılabilir:
 - [Python](https://github.com/Azure/aml-real-time-ai/blob/master/pythonlib/amlrealtimeai/client.py)
-- [, #](https://github.com/Azure/aml-real-time-ai/blob/master/sample-clients/csharp)
+- [C#](https://github.com/Azure/aml-real-time-ai/blob/master/sample-clients/csharp)
 
 TensorFlow hizmeti kullanmak istiyorsanız, [örnek bir istemci indirebilirsiniz](https://www.tensorflow.org/serving/setup).
 

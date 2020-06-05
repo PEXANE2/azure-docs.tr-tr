@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: overview
 ms.date: 05/29/2020
 ms.author: v-erkel
-ms.openlocfilehash: 3cbde9564e17dc67d2b41f138efb4d8622d84abd
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c0d32beeedba61bc2ecdc444685f7e81073459be
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343600"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433669"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Azure HPC Önbelleği nedir?
 
@@ -21,7 +21,7 @@ Azure HPC önbelleğinin Azure portal kolayca başlatılması ve izlenmesi kolay
 
 ## <a name="overview-video"></a>Genel bakış videosu
 
-[![video küçük resmi: Azure HPC önbelleğine genel bakış-video sayfasını ziyaret etmek için tıklayın](media/video1-overview.png)](https://azure.microsoft.com/resources/videos/hpc-cache-overview/)
+[![video küçük resmi: Azure HPC önbelleğine genel bakış-video sayfasını ziyaret etmek için tıklayın](media/video-1-overview.png)](https://azure.microsoft.com/resources/videos/hpc-cache-overview/)
 
 [Azure HPC Cache 'e kısa bir genel bakış](https://azure.microsoft.com/resources/videos/hpc-cache-overview/)izlemek için yukarıdaki resme tıklayın.
 

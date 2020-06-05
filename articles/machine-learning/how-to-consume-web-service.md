@@ -5,18 +5,18 @@ description: Azure Machine Learning bir model dağıtıldığında oluşturulan 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0222b63323c4e546628d790fabb881eba006494e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb957169f542fdf6dc01e1024e3daab57eabd894
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81383388"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433556"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web hizmeti olarak dağıtılan bir Azure Machine Learning modeli kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,14 +41,14 @@ Machine Learning Web hizmeti kullanan bir istemci oluşturmak için genel iş ak
 
 [Azureml. Core. WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) sınıfı, istemci oluşturmak için gereken bilgileri sağlar. Aşağıdaki `Webservice` Özellikler bir istemci uygulaması oluşturmak için yararlıdır:
 
-* `auth_enabled`-Anahtar kimlik doğrulaması etkinse, `True`; Aksi takdirde `False`,.
-* `token_auth_enabled`-Belirteç kimlik doğrulaması etkinse `True`; Aksi takdirde `False`,.
+* `auth_enabled`-Anahtar kimlik doğrulaması etkinse `True` ; Aksi takdirde, `False` .
+* `token_auth_enabled`-Belirteç kimlik doğrulaması etkinse `True` ; Aksi takdirde, `False` .
 * `scoring_uri`-REST API adresi.
 * `swagger_uri`-Openapı belirtiminin adresi. Otomatik şema oluşturmayı etkinleştirdiyseniz, bu URI kullanılabilir. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
 Dağıtılan Web Hizmetleri için bu bilgileri almanın üç yolu vardır:
 
-* Bir modeli dağıtırken, hizmet hakkındaki bilgilerle `Webservice` bir nesne döndürülür:
+* Bir modeli dağıtırken, `Webservice` hizmet hakkındaki bilgilerle bir nesne döndürülür:
 
     ```python
     service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
@@ -57,7 +57,7 @@ Dağıtılan Web Hizmetleri için bu bilgileri almanın üç yolu vardır:
     print(service.swagger_uri)
     ```
 
-* Çalışma alanınızdaki modeller `Webservice.list` için dağıtılan Web Hizmetleri listesini almak için kullanabilirsiniz. Döndürülen bilgi listesini daraltmak için filtre ekleyebilirsiniz. Ne filtrelenebilir hakkında daha fazla bilgi için, bkz. [WebService. List](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) başvuru belgeleri.
+* `Webservice.list`Çalışma alanınızdaki modeller için dağıtılan Web Hizmetleri listesini almak için kullanabilirsiniz. Döndürülen bilgi listesini daraltmak için filtre ekleyebilirsiniz. Ne filtrelenebilir hakkında daha fazla bilgi için, bkz. [WebService. List](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) başvuru belgeleri.
 
     ```python
     services = Webservice.list(ws)
@@ -65,7 +65,7 @@ Dağıtılan Web Hizmetleri için bu bilgileri almanın üç yolu vardır:
     print(services[0].swagger_uri)
     ```
 
-* Dağıtılan hizmetin adını biliyorsanız, ' nin `Webservice`yeni bir örneğini oluşturabilir ve çalışma alanını ve hizmet adını parametreler olarak sağlayabilirsiniz. Yeni nesne dağıtılan hizmetle ilgili bilgiler içerir.
+* Dağıtılan hizmetin adını biliyorsanız, ' nin yeni bir örneğini oluşturabilir `Webservice` ve çalışma alanını ve hizmet adını parametreler olarak sağlayabilirsiniz. Yeni nesne dağıtılan hizmetle ilgili bilgiler içerir.
 
     ```python
     service = Webservice(workspace=ws, name='myservice')
@@ -91,7 +91,7 @@ Azure Machine Learning, Web hizmetlerinizi erişimi denetlemek için iki yol sa�
 |Anahtar|Varsayılan olarak devre dışı| Varsayılan olarak etkindir|
 |Belirteç| Kullanılamaz| Varsayılan olarak devre dışı |
 
-Bir anahtara veya belirteçle güvenli hale getirilmiş bir hizmete istek gönderilirken, anahtar veya belirteci geçirmek için __Yetkilendirme__ üst bilgisini kullanın. Anahtar veya belirtecin olarak `Bearer <key-or-token>`biçimlendirilmesi gerekir, burada `<key-or-token>` anahtar veya belirteç değeridir.
+Bir anahtara veya belirteçle güvenli hale getirilmiş bir hizmete istek gönderilirken, anahtar veya belirteci geçirmek için __Yetkilendirme__ üst bilgisini kullanın. Anahtar veya belirtecin olarak biçimlendirilmesi gerekir `Bearer <key-or-token>` , burada `<key-or-token>` anahtar veya belirteç değeridir.
 
 #### <a name="authentication-with-keys"></a>Anahtarlar ile kimlik doğrulama
 
@@ -100,9 +100,9 @@ Bir dağıtım için kimlik doğrulamasını etkinleştirdiğinizde, otomatik ol
 * Azure Kubernetes hizmetine dağıtım yaparken, varsayılan olarak kimlik doğrulaması etkinleştirilir.
 * Azure Container Instances dağıtım yaparken, varsayılan olarak kimlik doğrulaması devre dışıdır.
 
-Kimlik doğrulamasını denetlemek için, bir `auth_enabled` dağıtım oluştururken veya güncelleştirirken parametresini kullanın.
+Kimlik doğrulamasını denetlemek için, `auth_enabled` bir dağıtım oluştururken veya güncelleştirirken parametresini kullanın.
 
-Kimlik doğrulaması etkinleştirilirse, birincil ve ikincil kimlik doğrulama `get_keys` anahtarını almak için yöntemini kullanabilirsiniz:
+Kimlik doğrulaması etkinleştirilirse, `get_keys` birincil ve ikincil kimlik doğrulama anahtarını almak için yöntemini kullanabilirsiniz:
 
 ```python
 primary, secondary = service.get_keys()
@@ -110,7 +110,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Bir anahtarı yeniden oluşturmanız gerekiyorsa kullanın [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
+> Bir anahtarı yeniden oluşturmanız gerekiyorsa kullanın [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) .
 
 #### <a name="authentication-with-tokens"></a>Belirteçlerle kimlik doğrulama
 
@@ -119,9 +119,9 @@ Bir Web hizmeti için belirteç kimlik doğrulamasını etkinleştirdiğinizde, 
 * Azure Kubernetes hizmetine dağıtım yaparken belirteç kimlik doğrulaması varsayılan olarak devre dışıdır.
 * Azure Container Instances dağıtım yaparken belirteç kimlik doğrulaması desteklenmez.
 
-Belirteç kimlik doğrulamasını denetlemek için, bir `token_auth_enabled` dağıtım oluştururken veya güncelleştirirken parametresini kullanın.
+Belirteç kimlik doğrulamasını denetlemek için, `token_auth_enabled` bir dağıtım oluştururken veya güncelleştirirken parametresini kullanın.
 
-Belirteç kimlik doğrulaması etkinleştirilirse, bir taşıyıcı belirteci almak için `get_token` yöntemini ve bu belirteçlerin süre sonu süresini kullanabilirsiniz:
+Belirteç kimlik doğrulaması etkinleştirilirse, `get_token` bir taşıyıcı belirteci almak için yöntemini ve bu belirteçlerin süre sonu süresini kullanabilirsiniz:
 
 ```python
 token, refresh_by = service.get_token()
@@ -129,7 +129,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> Belirtecin `refresh_by` zamanından sonra yeni bir belirteç istemeniz gerekir. 
+> Belirtecin zamanından sonra yeni bir belirteç istemeniz gerekir `refresh_by` . 
 
 ## <a name="request-data"></a>İstek verileri
 

@@ -14,7 +14,7 @@ ms.locfileid: "67188830"
 Herhangi bir cihaz sorunu yaşarsanız, sistem günlüklerinden bir destek paketi oluşturabilirsiniz. Microsoft Desteği sorunları gidermek için bu paketi kullanır. Destek paketi oluşturmak için aşağıdaki adımları izleyin:
 
 1. [Cihazınızın PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
-2. Bir destek `Get-HcsNodeSupportPackage` paketi oluşturmak için komutunu kullanın. Cmdlet 'in kullanımı aşağıdaki gibidir:
+2. `Get-HcsNodeSupportPackage`Bir destek paketi oluşturmak için komutunu kullanın. Cmdlet 'in kullanımı aşağıdaki gibidir:
 
     ```powershell
     Get-HcsNodeSupportPackage [-Path] <string> [-Zip] [-ZipFileName <string>] [-Include {None | RegistryKeys | EtwLogs

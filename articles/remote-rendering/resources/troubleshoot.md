@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 59dc64c952aab6b37e6a779ab1e7e85b9a8ab4b7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4fccf7b786de91c8bcce0b2073e0519ef6c1f2ab
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018829"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424421"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -171,6 +171,56 @@ Kararsız hologragram (Wobbling, warping, su ya da atlama hologramlar) için ba�
 Bakmak için başka bir değer de vardır `ARRServiceStats.LatencyPoseToReceiveAvg` . Sürekli olarak 100 ms 'nin altında olması gerekir. Daha yüksek değerler görürseniz, bu, çok uzakta olan bir veri merkezine bağlı olduğunu gösterir.
 
 Olası azaltmaları bir liste için bkz. [ağ bağlantısı yönergeleri](../reference/network-requirements.md#guidelines-for-network-connectivity).
+
+## <a name="z-fighting"></a>Z-Fighting
+
+ARR, [kele hafifletme işlevselliği](../overview/features/z-fighting-mitigation.md)sunurken, z-Fighting, sahnede görünmeye devam edebilir. Bu, kalan sorunları gidermeye yönelik bu kılavuzda hata giderme.
+
+### <a name="recommended-steps"></a>Önerilen adımlar
+
+Z-Fighting 'i azaltmak için aşağıdaki iş akışını kullanın:
+
+1. Sahneye varsayılan ayarlarla test edin (z-Fighting üzerinde risk azaltma)
+
+1. [API 'si](../overview/features/z-fighting-mitigation.md) ile z mücadele riskini devre dışı bırakma 
+
+1. Kameranın yakınında ve en solundaki düzlemi daha yakın bir aralığa değiştirme
+
+1. Sonraki bölüm aracılığıyla sahnenin sorunlarını giderme
+
+### <a name="investigating-remaining-z-fighting"></a>Kalan z-Fighting araştırma
+
+Yukarıdaki adımlar tükenirse ve kalan z mücadele kabul edilemez ise, z 'nin temel nedeninin araştırılması gerekir. [Z 'nin risk azaltma özelliği sayfasında](../overview/features/z-fighting-mitigation.md)belirtildiği gibi, z mücadele için iki temel neden vardır: derinlik aralığının en sonunda derinlik duyarlık kaybı ve kaar sırasında kesişen yüzeyler. Derinlik duyarlık kaybı matematiksel bir eventuseldir ve yalnızca yukarıdaki 3. adımda azaltılabilir. Coplanar yüzeyleri bir kaynak varlık kusurunu gösterir ve kaynak verilerde daha iyi düzeltilir.
+
+ARR, yüzeylerin z-Fige olup olmadığını belirlemek için bir özelliğe sahiptir: [dama tahtası vurgulama](../overview/features/z-fighting-mitigation.md). Ayrıca, z 'ye ne neden olduğunu görsel olarak belirleyebilirsiniz. Aşağıdaki ilk animasyon, uzaklığa göre derinlemesine bir duyarlık kaybı örneği gösterir ve ikincisi neredeyse coplanar yüzeylerinin bir örneğini gösterir:
+
+![Derinlik-duyarlık-z-Fighting](./media/depth-precision-z-fighting.gif)  ![coplanar-z-Fighting](./media/coplanar-z-fighting.gif)
+
+Nedeni öğrenmek için bu örnekleri z ile karşılaştırın ya da isteğe bağlı olarak bu adım adım iş akışını izleyin:
+
+1. Kamerayı doğrudan yüzeye bakmak için z-Fighting yüzeylerinin üzerine konumlandırın.
+1. Kamerayı yavaşça, yüzeylerden uzağa doğru hareket ettirin.
+1. Z-Fighting her zaman görünür durumdaysa, yüzeyler kusursuz coplanar. 
+1. Z-Fighting çoğu zaman görünür durumdaysa, yüzeyler neredeyse coplanar olur.
+1. Z-Fighting yalnızca en başından itibaren görülemiyorsa, nedeni derinlemesine bir duyarlık olmamasıdır.
+
+Coplanar yüzeylerinin çeşitli nedenleri olabilir:
+
+* Bir hata veya farklı iş akışı yaklaşımı nedeniyle bir nesne dışarı aktarma uygulaması tarafından yinelendi.
+
+    İlgili uygulama ve uygulama desteğiyle ilgili bu sorunları denetleyin.
+
+* Yüzeyler yinelenir ve ön yüz ya da arka yüz katmanı kullanan oluşturuculara çift taraflı görünmesi için çevrilmiş.
+
+    [Model dönüştürme](../how-tos/conversion/model-conversion.md) ile içeri aktarma, modelin ana kenar düzeyini belirler. Çift yönlü bir varsayılan olarak kabul edilir. Yüzey, her iki taraftan da fiziksel olarak doğru aydınlatma ile ince bir duvar olarak işlenir. Tek taraflı engeli, kaynak varlığın bayrakları tarafından ima edilebilir veya [model dönüştürme](../how-tos/conversion/model-conversion.md)sırasında açıkça zorlanır. Ayrıca, isteğe bağlı olarak, [tek taraflı mod](../overview/features/single-sided-rendering.md) "normal" olarak ayarlanabilir.
+
+* Nesneler kaynak varlıklarda Kesiştir.
+
+     Nesneleri, bazı yüzeylerinin örtüşmesine yol bir şekilde dönüştürülemez. ARR 'deki içeri aktarılan sahnedeki sahne ağacının parçalarını dönüştürmek bu sorunu da oluşturabilir.
+
+* Yüzeyler, iletişim için, Decal 'ler veya duvarlardaki metinler gibi, dokunarak tam olarak yazılmıştır.
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

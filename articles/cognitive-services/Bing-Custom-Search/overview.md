@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 12c255f0e4ed11ce8acbd762530604218f8bc12b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 010f2960693a06a50cd15ac3bac2fe35b6c0985f
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448733"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434582"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Bing Özel Arama API'si nedir?
 
@@ -23,13 +23,13 @@ Bing Özel Arama API'si, ilgilendiğiniz konular için özel ad-ücretsiz arama 
 
 ## <a name="features"></a>Özellikler
 
-|Özellik  |Açıklama  |
+|Öne çıkan özelliği  |Description  |
 |---------|---------|
 |[Özel gerçek zamanlı arama önerileri](define-custom-suggestions.md)     | Kullanıcılarınızın yazmasıyla açılan bir liste olarak görüntülenebilen arama önerileri sağlar.       | 
 |[Özel görüntü arama deneyimleri](get-images-from-instance.md)     | Kullanıcılarınızın özel arama Örneğinizde belirtilen etki alanlarından ve Web sitelerinden görüntü aramasını sağlar.        |        
 |[Özel video arama deneyimleri](get-videos-from-instance.md)     | Kullanıcılarınızın özel arama Örneğinizde belirtilen etki alanları ve sitelerde video aramasını sağlar.        |    
 |[Özel arama örneğinizi paylaşma](share-your-custom-search.md)     | Ekip üyeleriniz ile paylaşarak arama örneğinizi işbirliği yaparak düzenleyin ve test edin.        | 
-|[Uygulamalarınız ve Web siteleriniz için bir kullanıcı arabirimi yapılandırma](hosted-ui.md)     | Ekip üyeleriniz ile paylaşarak arama örneğinizi işbirliği yaparak düzenleyin ve test edin.        | 
+|[Uygulamalarınız ve Web siteleriniz için bir kullanıcı arabirimi yapılandırma](hosted-ui.md)     | , Web sayfalarınızı ve Web uygulamalarınızı JavaScript kod parçacığı olarak kolayca tümleştirebileceğinizi barındırılan bir kullanıcı arabirimi sağlar.        | 
 ## <a name="workflow"></a>İş akışı
 
 [Bing özel arama portalını](https://customsearch.ai)kullanarak özelleştirilmiş bir arama örneği oluşturabilirsiniz. Portal, Bing aramasını istediğiniz etki alanlarını, Web sitelerini ve Web sayfalarını, arama yapılmasını istemediğiniz kişilerle birlikte belirten özel bir arama örneği oluşturmanızı sağlar. Ayrıca, Portal 'ı kullanarak şunları yapabilirsiniz: arama deneyimini önizleme, API 'nin sağladığı arama sıralamalarına göre ayarlama ve isteğe bağlı olarak, Web siteleriniz ve uygulamalarınızda işlenecek aranabilir bir kullanıcı arabirimi yapılandırma.

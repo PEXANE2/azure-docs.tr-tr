@@ -7,12 +7,12 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d6c44c81db78fa76eeaf4b7181cca34fb8e81523
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ba619cc4e86b997f4e11536e6ea7b9ed906f41e4
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81758174"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417693"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Öğretici: Azure IoT Central uygulamanıza istemci uygulaması oluşturma ve bağlama (Python)
 
@@ -33,12 +33,12 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Cihaz özelliklerini yönetmek için bir görünüm kullanın.
 > * Cihazı denetlemek için zaman uyumlu ve zaman uyumsuz komutları çağırın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
 * **Özel uygulama** şablonu kullanılarak oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
-* [Python](https://www.python.org/) sürüm 3,7 veya sonraki bir sürümü yüklü bir geliştirme makinesi. Sürümünüzü denetlemek için `python3 --version` komut satırından çalıştırabilirsiniz. Python, çok çeşitli işletim sistemleri için kullanılabilir. Bu öğreticideki yönergeler, **python3** komutunu Windows komut isteminde kullandığınızı varsayar.
+* [Python](https://www.python.org/) sürüm 3,7 veya sonraki bir sürümü yüklü bir geliştirme makinesi. `python3 --version`Sürümünüzü denetlemek için komut satırından çalıştırabilirsiniz. Python, çok çeşitli işletim sistemleri için kullanılabilir. Bu öğreticideki yönergeler, **python3** komutunu Windows komut isteminde kullandığınızı varsayar.
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
 
@@ -46,7 +46,7 @@ Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
 Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihaza bağlanan bir Python istemci uygulamasının nasıl oluşturulacağı gösterilmektedir. Bu Python uygulaması, gerçek bir cihazın davranışının benzetimini yapar.
 
-1. Komut satırı ortamınızda, daha önce oluşturduğunuz `environmental-sensor` klasöre gidin.
+1. Komut satırı ortamınızda, `environmental-sensor` daha önce oluşturduğunuz klasöre gidin.
 
 1. Gerekli kitaplıkları yüklemek için aşağıdaki komutları çalıştırın:
 
@@ -54,7 +54,7 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihaza bağlanan bir Py
     pip install azure-iot-device
     ```
 
-1. `environmental-sensor` Klasörde **environmental_sensor. Kopyala** adlı bir dosya oluşturun.
+1. Klasörde **environmental_sensor. Kopyala** adlı bir dosya oluşturun `environmental-sensor` .
 
 1. `import` **Environmental_sensor. Kopyala** dosyasının başlangıcına aşağıdaki deyimlerini ekleyin:
 
@@ -90,11 +90,11 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihaza bağlanan bir Py
     asyncio.run(main())
     ```
 
-    Yer tutucuları, `{your Scope ID}`, `{your Device ID}`ve `{your Primary Key}` daha önce bir notcuı yaptığınız değerlerle güncelleştirin. Gerçek bir uygulamada, bu bilgileri uygulamada sabit olarak kodmayın.
+    Yer tutucuları `{your Scope ID}` , `{your Device ID}` , ve `{your Primary Key}` daha önce bir notcuı yaptığınız değerlerle güncelleştirin. Gerçek bir uygulamada, bu bilgileri uygulamada sabit olarak kodmayın.
 
-    Aşağıdaki işlev tanımlarının ve kodların hepsi `main` işlevin içinde iç içe.
+    Aşağıdaki işlev tanımlarının ve kodların hepsi işlevin içinde iç içe `main` .
 
-1. Cihazı kaydetmek ve IoT Central uygulamanıza bağlamak için `main` aşağıdaki iki işlevi işlevin içine ekleyin. Kayıt, Azure cihaz sağlama hizmeti 'ni kullanır:
+1. `main`Cihazı kaydetmek ve IoT Central uygulamanıza bağlamak için aşağıdaki iki işlevi işlevin içine ekleyin. Kayıt, Azure cihaz sağlama hizmeti 'ni kullanır:
 
     ```python
       async def register_device():
@@ -128,7 +128,7 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihaza bağlanan bir Py
           return device_client
     ```
 
-1. IoT Central uygulamanıza telemetri göndermek için `main` işlevin içine aşağıdaki işlevi ekleyin:
+1. `main`IoT Central uygulamanıza telemetri göndermek için işlevin içine aşağıdaki işlevi ekleyin:
 
     ```python
       async def send_telemetry():
@@ -143,9 +143,9 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihaza bağlanan bir Py
           await asyncio.sleep(delay)
     ```
 
-    Telemetri öğelerinin (`temp` ve `humid`) adları, cihaz şablonunda kullanılan adlarla aynı olmalıdır.
+    Telemetri öğelerinin (ve) adları, `temp` `humid` cihaz şablonunda kullanılan adlarla aynı olmalıdır.
 
-1. IoT Central uygulamanızdan çağrılan komutları işlemek için `main` işlevin içine aşağıdaki işlevleri ekleyin:
+1. `main`IoT Central uygulamanızdan çağrılan komutları işlemek için işlevin içine aşağıdaki işlevleri ekleyin:
 
     ```python
       async def blink_command(request):
@@ -199,7 +199,7 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihaza bağlanan bir Py
           await commands[method_request.name](method_request)
     ```
 
-    Komutların (`blink`, `turnon`, `turnoff`ve `rundiagnostics`) adları, cihaz şablonunda kullanılan adlarla aynı olmalıdır.
+    Komutların ( `blink` , `turnon` , ve) adları, `turnoff` `rundiagnostics` cihaz şablonunda kullanılan adlarla aynı olmalıdır.
 
     Şu anda IoT Central, cihaz yetenek modelinde tanımlanan yanıt şemasını kullanmıyor. Zaman uyumlu bir komut için, yanıt yükü geçerli bir JSON olabilir. Zaman uyumsuz bir komut için, cihazın hemen bir 202 yanıtı döndürmesi ve sonra iş tamamlandığında bildirilen özellik güncelleştirmesi gelmelidir. Bildirilen özellik güncelleştirmesinin biçimi:
 
@@ -213,7 +213,7 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihaza bağlanan bir Py
 
     Bir işleç, yanıt yükünü komut geçmişinde görüntüleyebilir.
 
-1. IoT Central uygulamanızdan gönderilen Özellik güncelleştirmelerini işlemek `main` için işlevin içine aşağıdaki işlevleri ekleyin:
+1. `main`IoT Central uygulamanızdan gönderilen Özellik güncelleştirmelerini işlemek için işlevin içine aşağıdaki işlevleri ekleyin:
 
     ```python
         async def name_setting(value, version):
@@ -243,9 +243,9 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihaza bağlanan bir Py
 
     İşleci IoT Central uygulamasında yazılabilir bir özellik ayarladığında, uygulama, değeri cihaza göndermek için bir Device ikizi istenen özelliğini kullanır. Cihaz daha sonra bir Device ikizi bildirilen özelliği kullanarak yanıt verir. IoT Central bildirilen özellik değerini aldığında, özellik görünümünü **eşitlenmiş**durumuyla güncelleştirir.
 
-    Özelliklerin (`name` ve `brightness`) adları, cihaz şablonunda kullanılan adlarla eşleşmelidir.
+    Özelliklerin (ve) adları, `name` `brightness` cihaz şablonunda kullanılan adlarla eşleşmelidir.
 
-1. Uygulamayı denetlemek için `main` işlevin içine aşağıdaki işlevleri ekleyin:
+1. `main`Uygulamayı denetlemek için işlevin içine aşağıdaki işlevleri ekleyin:
 
     ```python
       # Define behavior for halting the application
@@ -307,8 +307,9 @@ Aygıtın komutlara ve özellik güncelleştirmelerine nasıl yanıt verdiğini 
 
 Bir cihaz geliştiricisi olarak, Node. js kullanarak bir cihazın nasıl oluşturulacağı hakkında temel bilgileri öğrendiğinize göre, önerilen bazı sonraki adımlar şunlardır:
 
-- Bir [Mxyonga IoT DevKit cihazını Azure IoT Central uygulama](./howto-connect-devkit.md) nasıl yapılır makalesine bağlama hakkında IoT Central için gerçek bir cihazı nasıl bağlayacağınızı öğrenin.
-- Cihazların IoT Central nasıl kaydedileceği ve cihaz bağlantılarının güvenliğini IoT Central sağlama hakkında daha fazla bilgi edinmek için [Azure IoT Central 'ye](./concepts-get-connected.md) bağlanın.
+* Bir [Mxyonga IoT DevKit cihazını Azure IoT Central uygulama](./howto-connect-devkit.md) nasıl yapılır makalesine bağlama hakkında IoT Central için gerçek bir cihazı nasıl bağlayacağınızı öğrenin.
+* Cihaz kodunuzu uygularken cihaz şablonlarının rolü hakkında daha fazla bilgi edinmek için cihaz [şablonu nedir?](./concepts-device-templates.md) makalesini okuyun.
+* Cihazların IoT Central nasıl kaydedileceği ve cihaz bağlantılarının güvenliğini IoT Central sağlama hakkında daha fazla bilgi edinmek için [Azure IoT Central 'ye](./concepts-get-connected.md) bağlanın.
 
 IoT Central öğreticiler kümesine devam etmeyi tercih ediyorsanız ve bir IoT Central çözümü oluşturma hakkında daha fazla bilgi edinmek istiyorsanız, bkz.:
 

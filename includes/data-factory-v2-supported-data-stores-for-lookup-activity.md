@@ -1,5 +1,5 @@
 ---
-title: include dosyası
+title: dosya dahil etme
 description: Arama etkinliği için desteklenen bağlayıcılar
 services: data-factory
 author: linda33wj
@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/13/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: d583c25afc5c328ef64a8c931e4209f0d88a14a9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 35997f57b0a66b4f7853ea117519273fd7b6f726
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84124218"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84436143"
 ---
 | Kategori | Veri deposu |
 |:--- |:--- |
-| **Azure** |[Azure Blob depolama](../articles/data-factory/connector-azure-blob-storage.md) |
+| **Azure** |[Azure Blob Depolama](../articles/data-factory/connector-azure-blob-storage.md) |
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |
 | &nbsp; |[Azure Veri Gezgini](../articles/data-factory/connector-azure-data-explorer.md) |
 | &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/connector-azure-data-lake-store.md) |
@@ -25,12 +25,12 @@ ms.locfileid: "84124218"
 | &nbsp; |[MariaDB için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-mariadb.md) |
 | &nbsp; |[MySQL için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-mysql.md) |
 | &nbsp; |[PostgreSQL için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-postgresql.md) |
-| &nbsp; |[Azure Dosyalar](../articles/data-factory/connector-azure-file-storage.md) |
+| &nbsp; |[Azure Dosyaları](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL Veritabanı](../articles/data-factory/connector-azure-sql-database.md) |
 | &nbsp; |[Azure SQL Yönetilen Örnek](../articles/azure-sql/managed-instance/sql-managed-instance-paas-overview.md) |
 | &nbsp; |[Azure Synapse Analytics (eski adı SQL Veri Ambarı)](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
-| &nbsp; |[Azure Tablo depolama](../articles/data-factory/connector-azure-table-storage.md) |
-| **Veritabanınızı** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
+| &nbsp; |[Azure Tablo Depolama](../articles/data-factory/connector-azure-table-storage.md) |
+| **Veritabanı** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |
 | &nbsp; |[Drill](../articles/data-factory/connector-drill.md) |
 | &nbsp; |[Google BigQuery](../articles/data-factory/connector-google-bigquery.md) |
@@ -51,6 +51,7 @@ ms.locfileid: "84124218"
 | &nbsp; |[MDX aracılığıyla SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse.md) |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |
 | &nbsp; |[SAP Tablosu](../articles/data-factory/connector-sap-table.md) |
+| &nbsp; |[Snowflake](../articles/data-factory/connector-snowflake.md) |
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |
 | &nbsp; |[Sybase](../articles/data-factory/connector-sybase.md) |
@@ -80,7 +81,7 @@ ms.locfileid: "84124218"
 | &nbsp; |[Marketo (Önizleme)](../articles/data-factory/connector-marketo.md) |
 | &nbsp; |[Oracle Eloqua (Önizleme)](../articles/data-factory/connector-oracle-eloqua.md) |
 | &nbsp; |[Oracle Responsys (Önizleme)](../articles/data-factory/connector-oracle-responsys.md) |
-| &nbsp; |[Oracle hizmet bulutu (Önizleme)](../articles/data-factory/connector-oracle-service-cloud.md) |
+| &nbsp; |[Oracle Service Cloud (Önizleme)](../articles/data-factory/connector-oracle-service-cloud.md) |
 | &nbsp; |[PayPal (Önizleme)](../articles/data-factory/connector-paypal.md) |
 | &nbsp; |[QuickBooks (Önizleme)](../articles/data-factory/connector-quickbooks.md) |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |
@@ -92,7 +93,7 @@ ms.locfileid: "84124218"
 | &nbsp; |[Shopify (Önizleme)](../articles/data-factory/connector-shopify.md) |
 | &nbsp; |[SharePoint Online Listesi](../articles/data-factory/connector-sharepoint-online-list.md) |
 | &nbsp; |[Square (Önizleme)](../articles/data-factory/connector-square.md) |
-| &nbsp; |[Web Tablosu (HTML tablosu)](../articles/data-factory/connector-web-table.md) 
+| &nbsp; |[Web tablosu (HTML tablosu)](../articles/data-factory/connector-web-table.md) 
 | &nbsp; |[Xero](../articles/data-factory/connector-xero.md) |
 | &nbsp; |[Zoho (Önizleme)](../articles/data-factory/connector-zoho.md) |
 

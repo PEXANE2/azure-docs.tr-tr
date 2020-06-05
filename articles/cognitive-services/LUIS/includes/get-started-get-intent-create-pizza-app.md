@@ -1,21 +1,21 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: cognitive-services
 author: roy-har
 manager: diberry
 ms.service: cognitive-services
-ms.date: 05/18/2020
+ms.date: 06/03/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
 ms.author: roy-har
-ms.openlocfilehash: 7ab6aa5f830e335a30502207d3a49a528d03f7fd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8e67a6d0c98a3839922a79e9b452465087da1b69
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654286"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418076"
 ---
 1. Dosya için GitHub sayfasını açmak için [pizza-App-for-Luu-V6. JSON](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) ' ı seçin `pizza-app-for-luis.json` .
 1. **Ham** düğmesine sağ tıklayın veya uzun dokunduktan sonra **Bağlantıyı farklı kaydet** ' i seçerek bilgisayarınıza kaydedin `pizza-app-for-luis.json` .
@@ -29,7 +29,7 @@ ms.locfileid: "83654286"
 
 Uygulama içeri aktarılacak.
 
-**Etkin BIR Luo uygulamasının nasıl oluşturulacağı hakkında**bir iletişim kutusu görürseniz, iletişim kutusunu kapatın.
+**Etkin BIR Luo uygulaması oluşturma**iletişim kutusunu görürseniz, iletişim kutusunu kapatın.
 
 ## <a name="train-and-publish-the-pizza-app"></a>Pizza uygulamasını eğitme ve yayımlama
 
@@ -43,7 +43,7 @@ Pizza uygulamanız artık kullanıma hazırdır.
 
 ## <a name="record-the-app-id-prediction-key-and-prediction-endpoint-of-your-pizza-app"></a>Pizza uygulamanızın uygulama KIMLIĞI, tahmin anahtarı ve tahmin uç noktasını kaydetme
 
-Yeni pizza uygulamanızı kullanmak için, pizza uygulamanızın uygulama KIMLIĞI, tahmin anahtarı ve uç noktasına ihtiyacınız olacaktır.
+Yeni pizza uygulamanızı kullanmak için, pizza uygulamanızın uygulama KIMLIĞI, tahmin anahtarı ve tahmin uç noktasına ihtiyacınız olacaktır.
 
 Bu değerleri bulmak için:
 

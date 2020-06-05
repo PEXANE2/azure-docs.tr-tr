@@ -5,18 +5,18 @@ description: Rol tabanlı erişim denetimi (RBAC) kullanarak bir Azure Machine L
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
 ms.date: 03/06/2020
 ms.custom: seodec18
-ms.openlocfilehash: 127a0a2b7f7573db91df9347169e90de3e14c4c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9763cc0d93e6731bb42bcc55f9d8bf9463e2b0dd
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270101"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434670"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -53,7 +53,7 @@ Bir çalışma alanının sahibiyseniz, çalışma alanı için roller ekleyebil
 az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
 ```
 
-`user` Alan, çalışma alanı üst aboneliğinin yaşadığı Azure Active Directory örneğindeki mevcut bir kullanıcının e-posta adresidir. Bu komutun nasıl kullanılacağına ilişkin bir örnek aşağıda verilmiştir:
+`user`Alan, çalışma alanı üst aboneliğinin yaşadığı Azure Active Directory örneğindeki mevcut bir kullanıcının e-posta adresidir. Bu komutun nasıl kullanılacağına ilişkin bir örnek aşağıda verilmiştir:
 
 ```azurecli-interactive 
 az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
@@ -87,7 +87,7 @@ Yerleşik roller yetersizse, özel roller oluşturabilirsiniz. Özel rollerin bu
 }
 ```
 
-Bu özel rolün kapsamını `AssignableScopes` abonelik düzeyinde, kaynak grubu düzeyinde veya belirli bir çalışma alanı düzeyinde ayarlamak için alanı değiştirebilirsiniz.
+`AssignableScopes`Bu özel rolün kapsamını abonelik düzeyinde, kaynak grubu düzeyinde veya belirli bir çalışma alanı düzeyinde ayarlamak için alanı değiştirebilirsiniz.
 
 Bu özel rol, aşağıdaki eylemler hariç çalışma alanındaki her şeyi gerçekleştirebilir:
 
@@ -102,7 +102,7 @@ Bu özel rolü dağıtmak için aşağıdaki Azure CLı komutunu kullanın:
 az role definition create --role-definition data_scientist_role.json
 ```
 
-Dağıtımdan sonra, bu rol belirtilen çalışma alanında kullanılabilir hale gelir. Artık bu rolü Azure portal ekleyip atayabilirsiniz. Ya da, `az ml workspace share` CLI komutunu kullanarak bu rolü bir kullanıcıya atayabilirsiniz:
+Dağıtımdan sonra, bu rol belirtilen çalışma alanında kullanılabilir hale gelir. Artık bu rolü Azure portal ekleyip atayabilirsiniz. Ya da, CLI komutunu kullanarak bu rolü bir kullanıcıya atayabilirsiniz `az ml workspace share` :
 
 ```azurecli-interactive
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
@@ -118,7 +118,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 ### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>S. Azure Machine Learning hizmetinde çeşitli işlemleri gerçekleştirmek için gereken izinler nelerdir?
 
-Aşağıdaki tabloda Azure Machine Learning etkinliklerin Özeti ve bunları en az kapsamda gerçekleştirmek için gereken izinler verilmiştir. Örnek olarak, bir etkinlik bir çalışma alanı kapsamıyla (sütun 4) gerçekleştirilebileceği takdirde, bu izne sahip tüm daha yüksek kapsam de otomatik olarak çalışacaktır. Bu tablodaki tüm yollar **göreli yollardır** `Microsoft.MachineLearningServices/`.
+Aşağıdaki tabloda Azure Machine Learning etkinliklerin Özeti ve bunları en az kapsamda gerçekleştirmek için gereken izinler verilmiştir. Örnek olarak, bir etkinlik bir çalışma alanı kapsamıyla (sütun 4) gerçekleştirilebileceği takdirde, bu izne sahip tüm daha yüksek kapsam de otomatik olarak çalışacaktır. Bu tablodaki tüm yollar **göreli yollardır** `Microsoft.MachineLearningServices/` .
 
 | Etkinlik | Abonelik düzeyi kapsamı | Kaynak grubu düzeyi kapsamı | Çalışma alanı düzeyi kapsamı |
 |---|---|---|---|
@@ -139,7 +139,7 @@ az role definition list --subscription <sub-id> --custom-role-only true
 
 ### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>S. Nasıl yaparım? Aboneliğimde bir rolün rol tanımını bulamıyor musunuz?
 
-Azure CLı 'de aşağıdaki komutu çalıştırın. Yukarıdaki komutun `<role-name>` döndürdüğü biçimde olması gerektiğini unutmayın.
+Azure CLı 'de aşağıdaki komutu çalıştırın. `<role-name>`Yukarıdaki komutun döndürdüğü biçimde olması gerektiğini unutmayın.
 
 ```azurecli-interactive
 az role definition list -n <role-name> --subscription <sub-id>
@@ -159,7 +159,7 @@ Yeni rol tanımınızın tüm kapsamı üzerinde izinleriniz olması gerektiğin
 > Rol güncelleştirmelerinin, bu kapsamdaki tüm rol atamaları üzerinde uygulanması 15 dakika ila saat arasında sürebilir.
 ### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>S. Çalışma alanı sürümünün güncelleştirilmesini engelleyen bir rol tanımlayabilir miyim? 
 
-Evet, çalışma alanı sürümünün güncelleştirilmesini engelleyen bir rol tanımlayabilirsiniz. Çalışma alanı güncelleştirmesi, çalışma alanı nesnesi üzerinde bir yama çağrısı olduğundan, bunu JSON tanımınızdaki `"NotActions"` diziye aşağıdaki eylemi koyarak yapabilirsiniz: 
+Evet, çalışma alanı sürümünün güncelleştirilmesini engelleyen bir rol tanımlayabilirsiniz. Çalışma alanı güncelleştirmesi, çalışma alanı nesnesi üzerinde bir yama çağrısı olduğundan, bunu `"NotActions"` JSON tanımınızdaki diziye aşağıdaki eylemi koyarak yapabilirsiniz: 
 
 `"Microsoft.MachineLearningServices/workspaces/write"`
 

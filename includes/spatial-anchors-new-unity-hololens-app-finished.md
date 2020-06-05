@@ -1,21 +1,21 @@
 ---
-author: julianparismorgan
+author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.date: 05/14/2019
 ms.topic: include
-ms.author: pmorgan
+ms.author: crtreasu
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 96439479ebb007507efdd577e963532d9cdf90d4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 76d42361a65dd6a92704cd1189e5dddab50331f4
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67722955"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84429682"
 ---
 ## <a name="putting-everything-together"></a>Her şeyi birlikte yerleştirme
 
-Tüm farklı öğeler birlikte yerleştirildikten sonra, tüm `AzureSpatialAnchorsScript` sınıf dosyaları nasıl görünmelidir. Bunu kendi dosyanıza göre karşılaştırmak için bir başvuru olarak kullanabilir ve herhangi bir farklılık varsa, herhangi bir farklılık olabilir.
+`AzureSpatialAnchorsScript`Tüm farklı öğeler birlikte yerleştirildikten sonra, tüm sınıf dosyaları nasıl görünmelidir. Bunu kendi dosyanıza göre karşılaştırmak için bir başvuru olarak kullanabilir ve herhangi bir farklılık varsa, herhangi bir farklılık olabilir.
 
 ```csharp
 using Microsoft.Azure.SpatialAnchors;

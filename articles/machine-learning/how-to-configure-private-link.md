@@ -5,17 +5,17 @@ description: Azure Machine Learning çalışma alanınıza sanal bir ağdan güv
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 5428f24ea5ab780c4b51e0af37908077ddc32232
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 9a5a739ec9a17d37d8bcfd65face91c8223c452c
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891360"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432255"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Machine Learning çalışma alanı için Azure özel bağlantısını yapılandırma (Önizleme)
 
@@ -71,7 +71,7 @@ Daha fazla bilgi için bkz. [özel şablondan kaynak dağıtma](../azure-resourc
 
 ### <a name="deploy-the-template-using-azure-powershell"></a>Azure PowerShell kullanarak şablonu dağıtma
 
-Bu örnek, bu belgenin sonundaki şablonlardan birini geçerli dizinde adlı `azuredeploy.json` bir dosyaya kaydettiğiniz varsayılır:
+Bu örnek, bu belgenin sonundaki şablonlardan birini geçerli dizinde adlı bir dosyaya kaydettiğiniz varsayılır `azuredeploy.json` :
 
 ```powershell
 New-AzResourceGroup -Name examplegroup -Location "East US"
@@ -84,7 +84,7 @@ Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ile kaynak dağıtm
 
 ### <a name="deploy-the-template-using-the-azure-cli"></a>Azure CLı kullanarak şablonu dağıtma
 
-Bu örnek, bu belgenin sonundaki şablonlardan birini geçerli dizinde adlı `azuredeploy.json` bir dosyaya kaydettiğiniz varsayılır:
+Bu örnek, bu belgenin sonundaki şablonlardan birini geçerli dizinde adlı bir dosyaya kaydettiğiniz varsayılır `azuredeploy.json` :
 
 ```azurecli-interactive
 az group create --name examplegroup --location "East US"

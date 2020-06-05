@@ -12,7 +12,7 @@ ms.lasthandoff: 04/29/2020
 ms.locfileid: "82561764"
 ---
 1. [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
-2. Cihazınızın bilgilerini `Get-HcsApplianceInfo` almak için kullanın.
+2. `Get-HcsApplianceInfo`Cihazınızın bilgilerini almak için kullanın.
 
     Aşağıdaki örnek, bu cmdlet 'in kullanımını gösterir:
 
