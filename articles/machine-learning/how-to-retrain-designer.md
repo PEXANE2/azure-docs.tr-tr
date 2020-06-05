@@ -5,17 +5,17 @@ description: Azure Machine Learning tasarımcısında yayımlanmış işlem hatl
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
 ms.custom: designer
-ms.openlocfilehash: 7a132734c3ccb6d5d143053b83723950d154d74c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c466684bf5c07b5e88e8052c29aa9fb0b8583a89
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653698"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430064"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısı (önizleme) ile modelleri yeniden eğitme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -67,7 +67,7 @@ Bu makalede kullanılan işlem hattı, [örnek 3: gelir tahmini](samples-designe
    > [!NOTE]
    > İşlem hattı taslağınız başlığının yanındaki **Ayarlar** dişli simgesini seçerek işlem hattı parametrelerinizi inceleyebilir ve düzenleyebilirsiniz. 
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 1. İşlem hattı çalıştırmasını gönder.
 
@@ -93,7 +93,7 @@ Tasarımcı, eğitilen modeller dahil olmak üzere tüm işlem hattı çıkışl
    > [!NOTE]
    > Tek bir uç noktada birden çok işlem hattı yayımlayabilirsiniz. Belirli bir uç noktadaki her işlem hattına, ardışık düzen uç noktasını çağırdığınızda belirtebileceğiniz bir sürüm numarası verilir.
 
-1. **Yayımla**’yı seçin.
+1. **Yayımla** seçeneğini belirleyin.
 
 ## <a name="retrain-your-model"></a>Modelinizi yeniden eğitme
 

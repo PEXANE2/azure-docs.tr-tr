@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9b2a47cde4d79671aada7c280c2bffd9bb8fe759
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c0b043bdb20cad508950a11853403958340acadf
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596977"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434205"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Azure Maps ınkapısı haritaları modülünü kullanma
 
@@ -33,12 +33,12 @@ Azure Haritalar Web SDK 'Sı, *Azure Maps ınkapısı* modülünü içerir. *Azu
 
 *Azure Maps ınkapısı* modülünün genel olarak barındırılan Azure Content Delivery Network sürümünü kullanmak IÇIN, HTML dosyasının öğesinde aşağıdaki JavaScript ve stil sayfası başvurularına başvurun `<head>` :
 
-  ```html
-    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-    <script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
-  ```
+```html
+<script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+<script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
+<link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+<link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+```
 
  Ya da *Azure Maps ınkapıl* modülünü de indirebilirsiniz. *Azure Maps ınkapısı* modülü, Azure Maps hizmetlerine erişmek için bir istemci kitaplığı içerir. *Inkapısı* modülünü yüklemek ve Web uygulamanıza yüklemek için aşağıdaki adımları izleyin.  
   
@@ -47,8 +47,8 @@ Azure Haritalar Web SDK 'Sı, *Azure Maps ınkapısı* modülünü içerir. *Azu
   2. NPM paketini yükler. Konsolunda yönetici ayrıcalıklarını kullandığınızdan emin olun:
 
       ```powershell
-        >npm install azure-maps-control
-        >npm install azure-maps-indoor
+      >npm install azure-maps-control
+      >npm install azure-maps-indoor
       ```
 
   3. HTML dosyasının öğesindeki *Azure Maps ınkapısı* modül JavaScript ve stil sayfasına başvurun `<head>` :
@@ -63,16 +63,20 @@ Azure Haritalar Web SDK 'Sı, *Azure Maps ınkapısı* modülünü içerir. *Azu
 İlk olarak bir *Map nesnesi*oluşturun. *Map nesnesi* , *ınkapılı Manager* nesnesinin örneğini oluşturmak için bir sonraki adımda kullanılacaktır.  Aşağıdaki kod, *Map nesnesinin*örneğini oluşturmayı gösterir:
 
 ```javascript
-  const subscriptionKey = "<your Azure Maps Primary Subscription Key>";
+const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
 
-  const map = new atlas.Map("map-id", {
-    //use your facility's location
-    center: [-122.13315, 47.63637],
-    //or, you can use bounds: [#,#,#,#] and replace # with your map's bounds
-    style: "blank",
-    subscriptionKey,
-    zoom: 19,
-  });
+const map = new atlas.Map("map-id", {
+  //use your facility's location
+  center: [-122.13315, 47.63637],
+  //or, you can use bounds: [# west, # south, # east, # north] and replace # with your map's bounds
+  style: "blank",
+  view: 'Auto',
+  authOptions: { 
+      authType: 'subscriptionKey',
+      subscriptionKey: subscriptionKey
+  },
+  zoom: 19,
+});
 ```
 
 ## <a name="instantiate-the-indoor-manager"></a>Inkapılı yöneticinin örneğini oluşturma
@@ -92,7 +96,6 @@ const indoorManager = new atlas.indoor.IndoorManager(map, {
 Sağladığınız durum verilerinin yoklanmasını etkinleştirmek için `statesetId` ve çağrısını sağlamanız gerekir `indoorManager.setDynamicStyling(true)` . Yoklama durumu verileri dinamik özelliklerin veya *durumların*durumunu dinamik olarak güncelleştirmenize olanak tanır. Örneğin, oda gibi bir özelliğin adlı dinamik bir özelliği (*durum*) olabilir `occupancy` . Uygulamanız, görsel harita içindeki değişikliği yansıtacak şekilde herhangi bir *durum* değişikliğini yoklamak isteyebilir. Aşağıdaki kod, durum yoklamasını nasıl etkinleştireceğinizi göstermektedir:
 
 ```javascript
-
 const tilesetId = "";
 const statesetId = "";
 
@@ -104,7 +107,6 @@ const indoorManager = new atlas.indoor.IndoorManager(map, {
 if (statesetId.length > 0) {
     indoorManager.setDynamicStyling(true);
 }
-
 ```
 
 ## <a name="indoor-level-picker-control"></a>Inkapısı düzeyi seçici denetimi
@@ -123,14 +125,14 @@ indoorManager.setOptions({ levelControl });
 ```javascript
 map.events.add("levelchanged", indoorManager, (eventData) => {
 
-    //code that you want to run after a level has been changed
-    console.log("The level has changed: ", eventData);
-
+  //code that you want to run after a level has been changed
+  console.log("The level has changed: ", eventData);
 });
+
 map.events.add("facilitychanged", indoorManager, (eventData) => {
 
-    //code that you want to run after a facility has been changed
-    console.log("The facility has changed: ", eventData);
+  //code that you want to run after a facility has been changed
+  console.log("The facility has changed: ", eventData);
 });
 ```
 
@@ -149,7 +151,7 @@ Bu örnek, Web uygulamanızda *Azure Maps ınkapısı* modülünü nasıl kullan
 4. *Harita nesnesi*başlatın. *Map nesnesi* aşağıdaki seçenekleri destekler:
     - `Subscription key`Azure haritalar birincil abonelik anahtarınız.
     - `center`ınkapıeşlem merkezi konumunuz için bir enlem ve Boylam tanımlar. `center`İçin bir değer sağlamak istemiyorsanız, için bir değer girin `bounds` . Biçim şöyle görünmelidir `center` : [-122,13315, 47,63637].
-    - `bounds`, tileset eşleme verilerini kapsayan en küçük dikdörtgen şekildir. `bounds`İçin bir değer ayarlamak istemiyorsanız, için bir değer ayarlayın `center` . [Tileset LISTE API](https://docs.microsoft.com/rest/api/maps/tileset/listpreview)'sini çağırarak harita sınırlarınızı bulabilirsiniz. Tileset API 'SI, `bbox` ayrıştırılabilir ve atayabileceğiniz öğesini döndürür `bounds` . Biçim şöyle görünmelidir `bounds` : [#, #, #, #].
+    - `bounds`, tileset eşleme verilerini kapsayan en küçük dikdörtgen şekildir. `bounds`İçin bir değer ayarlamak istemiyorsanız, için bir değer ayarlayın `center` . [Tileset LISTE API](https://docs.microsoft.com/rest/api/maps/tileset/listpreview)'sini çağırarak harita sınırlarınızı bulabilirsiniz. Tileset API 'SI, `bbox` ayrıştırılabilir ve atayabileceğiniz öğesini döndürür `bounds` . Biçim şöyle görünmelidir `bounds` : [# Batı, # Güney, # Doğu, # Kuzey].
     - `style`arka planın rengini ayarlamanıza olanak sağlar. Beyaz bir arka planı göstermek için `style` "boş" olarak tanımlayın.
     - `zoom`Haritanız için en düşük ve en yüksek yakınlaştırma düzeylerini belirtmenize olanak tanır.
 
@@ -168,10 +170,13 @@ Dosyanız artık aşağıdaki HTML 'ye benzer şekilde görünmelidir.
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, user-scalable=no" />
       <title>Indoor Maps App</title>
-       <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-        <script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+      
+      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+
+      <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+      <script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
+        
       <style>
         html,
         body {
@@ -191,16 +196,20 @@ Dosyanız artık aşağıdaki HTML 'ye benzer şekilde görünmelidir.
     <body>
       <div id="map-id"></div>
       <script>
-        const subscriptionKey = "<your Azure Maps Primary Subscription Key>";
+        const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
         const tilesetId = "<your tilesetId>";
         const statesetId = "<your statesetId>";
 
         const map = new atlas.Map("map-id", {
           //use your facility's location
           center: [-122.13315, 47.63637],
-          //or, you can use bounds: [ # , # , # , # ] and replace # with your Map bounds
+          //or, you can use bounds: [# west, # south, # east, # north] and replace # with your Map bounds
           style: "blank",
-          subscriptionKey,
+          view: 'Auto',
+          authOptions: { 
+              authType: 'subscriptionKey',
+              subscriptionKey: subscriptionKey
+          },
           zoom: 19,
         });
 
@@ -241,7 +250,7 @@ Inkapısı eşlemenizi görmek için bir Web tarayıcısına yükleyin. Aşağı
 *Azure Maps ınkapılı* modülüyle Ilgili API 'ler hakkında bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Paket gereksinimlerini çizme](drawing-requirements.md)
+> [Çizim paketi gereksinimleri](drawing-requirements.md)
 
 >[!div class="nextstepaction"]
 > [Inkapı haritaları için Oluşturucu](creator-indoor-maps.md)
