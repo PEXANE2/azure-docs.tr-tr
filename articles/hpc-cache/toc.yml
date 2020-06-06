@@ -38,6 +38,10 @@
       href: hpc-cache-manage.md
     - name: İsteğe bağlı ayarları yapılandırma
       href: configuration.md
+- name: Başvuru
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/hpc-cache/hpc-cache
 - name: Kaynaklar
   items:
     - name: Destek bileti açma
