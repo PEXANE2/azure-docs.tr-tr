@@ -4,19 +4,19 @@ description: Kimlik koruması 'nda risk algılamalarını benzetmeyi öğrenin
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 10/18/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e50e406e74c0b78f41830c4ea7c5b10830002ed3
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: cbcc2351b7ead3714cfd21aa30b031cec75074a9
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72886941"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463765"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>Kimlik korumasında risk algılamaları benzetimi yapma
 
@@ -44,7 +44,7 @@ Aşağıdaki yordamı tamamlamak için şunları kullanmanız gerekir:
 
 **Anonım IP 'den bir oturum açma benzetimi yapmak için aşağıdaki adımları uygulayın**:
 
-1. [Tor tarayıcısını](https://www.torproject.org/projects/torbrowser.html.en)kullanarak öğesine [https://myapps.microsoft.com](https://myapps.microsoft.com)gidin.   
+1. [Tor tarayıcısını](https://www.torproject.org/projects/torbrowser.html.en)kullanarak öğesine gidin [https://myapps.microsoft.com](https://myapps.microsoft.com) .   
 2. **Anonım IP adreslerinden oturum açma** işlemleri raporunda görünmesini istediğiniz hesabın kimlik bilgilerini girin.
 
 Oturum açma, kimlik koruması panosunda 10-15 dakika içinde görüntülenir. 
@@ -76,11 +76,11 @@ Algoritma makine öğrenimini taklit ettiğinden, algoritma tanıdık cihazlarda
 
 **Sıradan bir seyahat riskini algılamada benzetimini yapmak için aşağıdaki adımları uygulayın**:
 
-1. Standart tarayıcınızı kullanarak öğesine [https://myapps.microsoft.com](https://myapps.microsoft.com)gidin.  
+1. Standart tarayıcınızı kullanarak öğesine gidin [https://myapps.microsoft.com](https://myapps.microsoft.com) .  
 2. İçin atipik bir seyahat riski algılaması oluşturmak istediğiniz hesabın kimlik bilgilerini girin.
 3. Kullanıcı aracınızı değiştirin. Microsoft Edge 'deki Kullanıcı aracısını Geliştirici Araçları (F12) olarak değiştirebilirsiniz.
 4. IP adresinizi değiştirin. Bir VPN, Tor eklentisi veya farklı bir veri merkezinde Azure 'da yeni bir sanal makine oluşturarak IP adresinizi değiştirebilirsiniz.
-5. Önceki oturum açma işleminden [https://myapps.microsoft.com](https://myapps.microsoft.com) daha önce ve birkaç dakika içinde aynı kimlik bilgilerini kullanarak oturum açın.
+5. [https://myapps.microsoft.com](https://myapps.microsoft.com)Önceki oturum açma işleminden daha önce ve birkaç dakika içinde aynı kimlik bilgilerini kullanarak oturum açın.
 
 Oturum açma, kimlik koruması panosunda 2-4 saat içinde görüntülenir.
 
@@ -93,15 +93,15 @@ Bu bölüm, makalede oluşturulan kullanıcı ve oturum açma risk ilkelerinin t
 Bir Kullanıcı risk güvenlik ilkesini test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. [Azure portalına](https://portal.azure.com) gidin.
-1. **Azure Active Directory** > **Security**güvenliğe > **Genel Bakış ' a**göz atın.
+1. **Azure Active Directory**  >  **Güvenliğe**  >  **Genel Bakış ' a**göz atın.
 1. **Kullanıcı risk Ilkesini Yapılandır**' ı seçin.
    1. **Atamalar** altında
       1. **Kullanıcılar** - **tüm kullanıcılar** ' ı seçin veya dağıtımı sınırlandırdıysanız **bireyler ve gruplar ' ı seçin** .
          1. İsteğe bağlı olarak, kullanıcıların ilkeden hariç tutulmasını seçebilirsiniz.
-      1. **Koşullar** - **Kullanıcı riski** Microsoft 'un önerisi, bu seçeneğin **yüksek**olarak ayarlanmalarıdır.
+      1. **Koşullar**  -  **Kullanıcı riski** Microsoft 'un önerisi, bu seçeneği **yüksek**olarak ayarlamanıza olanak sağlar.
    1. **Denetimler** altında
       1. **Erişim** -Microsoft 'un önerisi **erişime izin vermek** ve **parola değişikliğine gerek duyar**.
-   1. **İlkeyi** - **devre dışı bırak**
+   1. **Ilkeyi zorla**  -  **Kapalı**
    1. **Kaydet** -bu eylem sizi **genel bakış** sayfasına verecektir.
 1. Bir sınama hesabının kullanıcı riskini, örneğin, risk algılarından birinin birkaç kez benzetimini yaparak yükseltin.
 1. Birkaç dakika bekleyin ve ardından riskin Kullanıcı için yükseltildiğini doğrulayın. Aksi takdirde, Kullanıcı için daha fazla risk algılamalarını taklit edin.
@@ -113,15 +113,15 @@ Bir Kullanıcı risk güvenlik ilkesini test etmek için aşağıdaki adımları
 Bir oturum açma risk ilkesini test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. [Azure portalına](https://portal.azure.com) gidin.
-1. **Azure Active Directory** > **Security**güvenliğe > **Genel Bakış ' a**göz atın.
+1. **Azure Active Directory**  >  **Güvenliğe**  >  **Genel Bakış ' a**göz atın.
 1. **Oturum açma risk Ilkesini Yapılandır**' ı seçin.
    1. **Atamalar** altında
       1. **Kullanıcılar** - **tüm kullanıcılar** ' ı seçin veya dağıtımı sınırlandırdıysanız **bireyler ve gruplar ' ı seçin** .
          1. İsteğe bağlı olarak, kullanıcıların ilkeden hariç tutulmasını seçebilirsiniz.
-      1. **Koşulların** - **oturum açma riski** Microsoft 'un önerisi, bu seçeneği **Orta ve üzeri**olarak ayarlamanıza olanak sağlar.
+      1. **Koşullar**  -  **Oturum açma riski** Microsoft 'un önerisi, bu seçeneği **Orta ve üst düzeyde**ayarlamaya yönelik bir seçenektir.
    1. **Denetimler** altında
       1. **Erişim** -Microsoft 'un önerisi, **erişime izin vermek** ve **Multi-Factor Authentication gerektirir**.
-   1. **İlkeyi zorla** - **On**
+   1. **Ilkeyi zorla**  -  **Üzerinde**
    1. **Kaydet** -bu eylem sizi **genel bakış** sayfasına verecektir.
 1. Artık riskli bir oturum kullanarak oturum açma riski tabanlı koşullu erişimi test edebilirsiniz (örneğin, Tor tarayıcısını kullanarak). 
 

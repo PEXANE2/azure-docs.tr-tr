@@ -2,13 +2,13 @@
 title: Azure hizmetlerine göre kaynak sağlayıcıları
 description: Azure Resource Manager için tüm kaynak sağlayıcısı ad alanlarını listeler ve bu ad alanı için Azure hizmetini gösterir.
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.openlocfilehash: 272e6cb27b01ed971025bd273b225d4823d04501
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.date: 06/05/2020
+ms.openlocfilehash: 70abbfe09f3200f0d26978727d21a033e1d4ee34
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424450"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84462864"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure hizmetleri için kaynak sağlayıcıları
 
@@ -21,11 +21,11 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. AAD | [Azure Active Directory Domain Services](../../active-directory-domain-services/index.yml) |
 | Microsoft. addons | çekirdeğin |
 | Microsoft. ADHybridHealthService<sup>1</sup> | [Azure Active Directory](/azure/active-directory/) |
-| Microsoft. Advisor | [Azure Danışmanı](../../advisor/index.yml) |
+| Microsoft. Advisor | [Azure Advisor](../../advisor/index.yml) |
 | Microsoft. AlertsManagement | [Azure İzleyici](../../azure-monitor/index.yml) |
 | Microsoft. AnalysisServices | [Azure Analysis Services](/azure/analysis-services/) |
 | Microsoft. Apimanane | [API Management](../../api-management/index.yml) |
-| Microsoft. AppConfiguration | çekirdeğin |
+| Microsoft. AppConfiguration | [Azure Uygulama Yapılandırması](../../azure-app-configuration/index.yml) |
 | Microsoft. AppPlatform | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
 | Microsoft. kanıtlama | Azure kanıtlama hizmeti |
 | Microsoft. Authorization<sup>1</sup> | [Azure Resource Manager](../index.yml) |
@@ -58,11 +58,11 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft.Compute | [Sanal Makineler](/azure/virtual-machines/)<br />[Sanal Makine Ölçek Kümeleri](/azure/virtual-machine-scale-sets/) |
 | Microsoft. tüketim<sup>1</sup> | [Maliyet Yönetimi](/azure/cost-management/) |
 | Microsoft. Containerınstance | [Container Instances](/azure/container-instances/) |
-| Microsoft. ContainerRegistry | [Container Registry](/azure/container-registry/) |
+| Microsoft. ContainerRegistry | [Container Kayıt Defteri](/azure/container-registry/) |
 | Microsoft. ContainerService | [Azure Kubernetes Hizmeti (AKS)](/azure/aks/) |
 | Microsoft. CostManagement<sup>1</sup> | [Maliyet Yönetimi](/azure/cost-management/) |
 | Microsoft. CostManagementExports | [Maliyet Yönetimi](/azure/cost-management/) |
-| Microsoft. Customerkasası | Microsoft Azure için Müşteri Kasası |
+| Microsoft. Customerkasası | [Microsoft Azure için Müşteri Kasası](../../security/fundamentals/customer-lockbox-overview.md) |
 | Microsoft. CustomProviders | [Azure Özel Sağlayıcılar](../custom-providers/overview.md) |
 | Microsoft. DataBox | [Azure Data Box](/azure/databox-family/) |
 | Microsoft. DataBoxEdge | [Azure Stack Edge](../../databox-online/azure-stack-edge-overview.md) |
@@ -121,7 +121,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. Migrate | [Azure Geçişi](../../migrate/migrate-overview.md) |
 | Microsoft. MixedReality | [Azure Spatial Anchors](/azure/spatial-anchors/) |
 | Microsoft. NetApp | [Azure NetApp Files](../../azure-netapp-files/index.yml) |
-| Microsoft.Network | [Application Gateway](../../application-gateway/index.yml)<br />[Azure Bastion](/azure/bastion/)<br />[Azure DDoS Koruması](../../virtual-network/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure Güvenlik Duvarı](../../firewall/index.yml)<br />[Azure Front Door Hizmeti](../../frontdoor/index.yml)<br />[Azure Özel Bağlantı](../../private-link/index.yml)<br />[Load Balancer](../../load-balancer/index.yml)<br />[Ağ İzleyicisi](../../network-watcher/index.yml)<br />[Traffic Manager](../../traffic-manager/index.yml)<br />[Sanal ağ](../../virtual-network/index.yml)<br />[Sanal WAN](../../virtual-wan/index.yml)<br />[VPN Gateway](../../vpn-gateway/index.yml)<br /> |
+| Microsoft.Network | [Application Gateway](../../application-gateway/index.yml)<br />[Azure Bastion](/azure/bastion/)<br />[Azure DDoS Koruması](../../virtual-network/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure Güvenlik Duvarı](../../firewall/index.yml)<br />[Azure Front Door Hizmeti](../../frontdoor/index.yml)<br />[Azure Özel Bağlantı](../../private-link/index.yml)<br />[Load Balancer](../../load-balancer/index.yml)<br />[Ağ İzleyicisi](../../network-watcher/index.yml)<br />[Traffic Manager](../../traffic-manager/index.yml)<br />[Sanal Ağ](../../virtual-network/index.yml)<br />[Sanal WAN](../../virtual-wan/index.yml)<br />[VPN Gateway](../../vpn-gateway/index.yml)<br /> |
 | Microsoft. Notificationhub 'Lar | [Notification Hubs](../../notification-hubs/index.yml) |
 | Microsoft. ObjectStore | Nesne deposu |
 | Microsoft. OffAzure | [Azure Geçişi](../../migrate/migrate-overview.md) |

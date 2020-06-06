@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/19/2020
+ms.date: 06/05/2020
 ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: 232b166d667996f2138224dc6ecbbc925d0ebe9e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 9e2f4eccb725bfac2229fa1471673a121c77f648
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712664"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84448526"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Microsoft kimlik platformu videoları
 
@@ -32,38 +32,38 @@ ___
 
 :::row:::
     :::column:::
-        1-geliştiriciler için Microsoft Identity platform 'a genel bakış (33:55)
+        1- <a href="https://www.youtube.com/watch?v=zjezqZPPOfc&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=1" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> geliştiriciler için Microsoft Identity platform 'A genel bakış</a> (33:55)
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/zjezqZPPOfc]
+        <a href="https://www.youtube.com/watch?v=zjezqZPPOfc" target="_blank"> <img src="./media/identity-videos/id-for-devs-01.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
      :::column:::
-        2-Microsoft Identity platform (29:09) ile uygulamalarınızın kullanıcılarının kimliğini doğrulama
+        2- <a href="https://www.youtube.com/watch?v=Mtpx_lpfRLs&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=2" target="_blank">Microsoft Identity Platform <span class="docon docon-navigate-external x-hidden-focus"></span> (29:09) ile uygulamalarınızın kullanıcılarının kimliğini doğrulama</a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/Mtpx_lpfRLs]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        3-Microsoft Identity platformunun izinleri ve onay çerçevesi (45:08)
-    :::column-end:::
-    :::column:::
-        >[!VIDEO https://www.youtube.com/embed/toAWRNqqDL4]
-    :::column-end:::
-    :::column:::
-        4-Microsoft Identity platformunu kullanarak API 'Leri koruma (33:17)
-    :::column-end:::
-    :::column:::
-        >[!VIDEO https://www.youtube.com/embed/IIQ7QW4bYqA]
+        <a href="https://www.youtube.com/watch?v=Mtpx_lpfRLs" target="_blank"> <img src="./media/identity-videos/id-for-devs-02.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        5-Microsoft Identity platformunda uygulama rolleri ve güvenlik grupları (15:52)
+        3- <a href="https://www.youtube.com/watch?v=toAWRNqqDL4&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=3" target="_blank">Microsoft Identity platformunun izinleri ve onay çerçevesi <span class="docon docon-navigate-external x-hidden-focus"></span> </a> (45:08)
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/-BK2iBDrmNo]
+        <a href="https://www.youtube.com/watch?v=toAWRNqqDL4" target="_blank"> <img src="./media/identity-videos/id-for-devs-03.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+    :::column:::
+        4- <a href="https://www.youtube.com/watch?v=IIQ7QW4bYqA&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=4" target="_blank">Microsoft Identity platformunu <span class="docon docon-navigate-external x-hidden-focus"></span> kullanarak API 'leri koruma</a> (33:17)
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=IIQ7QW4bYqA" target="_blank"> <img src="./media/identity-videos/id-for-devs-04.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        5- <a href="https://www.youtube.com/watch?v=-BK2iBDrmNo&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=5" target="_blank">Microsoft Identity platformunda <span class="docon docon-navigate-external x-hidden-focus"></span> uygulama rolleri ve güvenlik grupları</a> (15:52)
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=-BK2iBDrmNo" target="_blank"> <img src="./media/identity-videos/id-for-devs-05.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
         <!-- BLANK TITLE CELL -->
@@ -73,6 +73,20 @@ ___
     :::column-end:::
 :::row-end:::
 
+<!-- IMAGES -->
+[id-plat-01-img]: ./media/identity-videos/id-for-devs-01.jpg
+[id-plat-02-img]: ./media/identity-videos/id-for-devs-02.jpg
+[id-plat-03-img]: ./media/identity-videos/id-for-devs-03.jpg
+[id-plat-04-img]: ./media/identity-videos/id-for-devs-04.jpg
+[id-plat-05-img]: ./media/identity-videos/id-for-devs-05.jpg
+
+<!-- VIDEOS -->
+[id-plat-01-vid]: https://www.youtube.com/watch?v=zjezqZPPOfc&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=1
+[id-plat-02-vid]: https://www.youtube.com/watch?v=Mtpx_lpfRLs&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=2
+[id-plat-03-vid]: https://www.youtube.com/watch?v=toAWRNqqDL4&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=3
+[id-plat-04-vid]: https://www.youtube.com/watch?v=IIQ7QW4bYqA&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=4
+[id-plat-05-vid]: https://www.youtube.com/watch?v=-BK2iBDrmNo&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=5
+
 ## <a name="authentication-fundamentals"></a>Kimlik doğrulama temelleri
 
 Kimlik sağlayıcıları, güvenlik belirteçleri, talepler ve hedef kitle gibi kavramlardan yeni başladıysanız, bu video serisi modern kimlik doğrulamasında kavramların ve bileşenlerin temizlenme konusunda yardımcı olabilir.
@@ -80,46 +94,62 @@ ___
 
 :::row:::
     :::column:::
-        1-temel bilgiler: Modern kimlik doğrulama kavramları (4:33)
+        1- <a href="https://www.youtube.com/watch?v=fbSVgC8nGz4&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=1" target="_blank">temel bilgiler: Modern kimlik doğrulama <span class="docon docon-navigate-external x-hidden-focus"></span> kavramları</a> (4:33)
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+        <a href="https://www.youtube.com/watch?v=fbSVgC8nGz4" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-01.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
      :::column:::
-        2-Web uygulamaları için modern kimlik doğrulaması (6:02)
+        2- <a href="https://www.youtube.com/watch?v=tCNcG1lcCHY&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=2" target="_blank">Web uygulamaları <span class="docon docon-navigate-external x-hidden-focus"></span> için modern kimlik doğrulaması</a> (6:02)
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/tCNcG1lcCHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+        <a href="https://www.youtube.com/watch?v=tCNcG1lcCHY" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-02.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        3-Web çoklu oturum açma (4:13)
+        3- <a href="https://www.youtube.com/watch?v=51B-jSOBF8U&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=3" target="_blank">Web çoklu oturum açma <span class="docon docon-navigate-external x-hidden-focus"></span> </a> (4:13)
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/51B-jSOBF8U?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+        <a href="https://www.youtube.com/watch?v=51B-jSOBF8U" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-03.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
-        4-Federe Web kimlik doğrulaması (6:19)
+        4- <a href="https://www.youtube.com/watch?v=CjarTgjKcX8&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=4" target="_blank">Federe Web kimlik <span class="docon docon-navigate-external x-hidden-focus"></span> doğrulaması</a> (6:19)
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/CjarTgjKcX8?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+        <a href="https://www.youtube.com/watch?v=CjarTgjKcX8" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-04.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        5-yerel istemci uygulamaları-Bölüm 1 (8:12)
+        5- <a href="https://www.youtube.com/watch?v=OGMDnuDrAcQ&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=5" target="_blank">yerel istemci uygulamaları-Bölüm 1 <span class="docon docon-navigate-external x-hidden-focus"></span> </a> (8:12)
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/OGMDnuDrAcQ?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+        <a href="https://www.youtube.com/watch?v=OGMDnuDrAcQ" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-05.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
-        6-yerel istemci uygulamaları-2. Bölüm (5:33)
+        6- <a href="https://www.youtube.com/watch?v=2RE6IhXfmHY&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=6" target="_blank">yerel istemci uygulamaları- <span class="docon docon-navigate-external x-hidden-focus"></span> 2. bölüm</a> (5:33)
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/2RE6IhXfmHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+        <a href="https://www.youtube.com/watch?v=2RE6IhXfmHY" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-06.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::
+
+<!-- IMAGES -->
+[auth-fund-01-img]: ./media/identity-videos/aad-auth-fund-01.jpg
+[auth-fund-02-img]: ./media/identity-videos/aad-auth-fund-02.jpg
+[auth-fund-03-img]: ./media/identity-videos/aad-auth-fund-03.jpg
+[auth-fund-04-img]: ./media/identity-videos/aad-auth-fund-04.jpg
+[auth-fund-05-img]: ./media/identity-videos/aad-auth-fund-05.jpg
+[auth-fund-06-img]: ./media/identity-videos/aad-auth-fund-06.jpg
+
+<!-- VIDEOS -->
+[auth-fund-01-vid]: https://www.youtube.com/watch?v=fbSVgC8nGz4&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=1
+[auth-fund-02-vid]: https://www.youtube.com/watch?v=tCNcG1lcCHY&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=2
+[auth-fund-03-vid]: https://www.youtube.com/watch?v=51B-jSOBF8U&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=3
+[auth-fund-04-vid]: https://www.youtube.com/watch?v=CjarTgjKcX8&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=4
+[auth-fund-05-vid]: https://www.youtube.com/watch?v=OGMDnuDrAcQ&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=5
+[auth-fund-06-vid]: https://www.youtube.com/watch?v=2RE6IhXfmHY&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=6
 
 ## <a name="microsoft-identity-platform-basics"></a>Microsoft Identity platform temelleri
 
@@ -128,84 +158,84 @@ ___
 
 :::row:::
     :::column:::
-        Microsoft Identity platformuna genel bakış
+        <a href="https://www.youtube.com/watch?v=bNlcFuIo3r8" target="_blank">Microsoft Identity platformuna genel bakış<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/bNlcFuIo3r8]
+        <a href="https://www.youtube.com/watch?v=bNlcFuIo3r8" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
     :::column-end:::
     :::column:::
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        MSAL kitaplıklarına giriş
-    :::column-end:::
-    :::column:::
-        >[!VIDEO https://www.youtube.com/embed/apbbx2n4tnU]
-    :::column-end:::
-    :::column:::
-        MSAL kimlik doğrulamasını nasıl kolaylaştırmaktadır
-    :::column-end:::
-    :::column:::
-        >[!VIDEO https://www.youtube.com/embed/yLVEBU9Z96Q]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        Açıklanan kapsamlar
+        <a href="https://www.youtube.com/watch?v=apbbx2n4tnU" target="_blank">Microsoft Graph ve Microsoft kimlik doğrulama kitaplığı (MSAL)<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/eiPHOoLmGJs]
+        <a href="https://www.youtube.com/watch?v=apbbx2n4tnU" target="_blank"> <img src="./media/identity-videos/graph-and-msal.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
-        Aracılar nedir?
+        <a href="https://www.youtube.com/watch?v=yLVEBU9Z96Q" target="_blank">Kitaplıkların MSAL ailesi nedir?<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/Zd_Uubnu0U0]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        Yeniden yönlendirme URI 'Leri
-    :::column-end:::
-    :::column:::
-        >[!VIDEO https://www.youtube.com/embed/znSN_3JAuoU]
-    :::column-end:::
-    :::column:::
-        Açıklanamayan kiracılar
-    :::column-end:::
-    :::column:::
-        >[!VIDEO https://www.youtube.com/embed/mDhT4Zv1fZU]
+        <a href="https://www.youtube.com/watch?v=yLVEBU9Z96Q" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        Azure AD rolü
+        <a href="https://www.youtube.com/watch?v=eiPHOoLmGJs" target="_blank">Açıklanan kapsamlar<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/zDEC7A5ZS2Q]
+        <a href="https://www.youtube.com/watch?v=eiPHOoLmGJs" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
-        Azure AD uygulama nesnelerinin rolü
+        <a href="https://www.youtube.com/watch?v=Zd_Uubnu0U0" target="_blank">Aracılar nedir?<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/HEpq_YSmuWw]
+        <a href="https://www.youtube.com/watch?v=Zd_Uubnu0U0" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        Kurumsal ve kişisel Microsoft hesabı farklılıkları
+        <a href="https://www.youtube.com/watch?v=znSN_3JAuoU" target="_blank">Yeniden yönlendirme URI 'Leri<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/E2OUluQQKSk]
+        <a href="https://www.youtube.com/watch?v=znSN_3JAuoU" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
-        SPA ve Web uygulaması farkları
+        <a href="https://www.youtube.com/watch?v=mDhT4Zv1fZU" target="_blank">Açıklanamayan kiracılar<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/ZJirt7eTVw8?t=5]
+        <a href="https://www.youtube.com/watch?v=mDhT4Zv1fZU" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=zDEC7A5ZS2Q" target="_blank">Azure AD rolü<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=zDEC7A5ZS2Q" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=HEpq_YSmuWw" target="_blank">Azure AD uygulama nesnelerinin rolü<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=HEpq_YSmuWw" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=E2OUluQQKSk" target="_blank">Kurumsal ve kişisel Microsoft hesabı farklılıkları<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=E2OUluQQKSk" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=ZJirt7eTVw8" target="_blank">SPA ve Web uygulaması farkları<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=ZJirt7eTVw8" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::
 
@@ -216,29 +246,29 @@ ___
 
 :::row:::
     :::column:::
-        Uç noktalar ve v 2.0 'a geçme avantajları
+        <a href="https://www.youtube.com/watch?v=qpdC45tZYDg" target="_blank">ADAL 'dan MSAL 'e geçiş yapma<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
+        <a href="https://www.youtube.com/watch?v=qpdC45tZYDg" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
      :::column:::
-        ADAL kod tabanınızı MSAL 'e geçirme
+        <a href="https://www.youtube.com/watch?v=xgL_z9yCnrE" target="_blank">ADAL kod tabanınızı MSAL 'e geçirme<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/xgL_z9yCnrE]
+        <a href="https://www.youtube.com/watch?v=xgL_z9yCnrE" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        ADAL 'dan MSAL 'e geçiş yapma
+        <a href="https://www.youtube.com/watch?v=q-TDszj2O-4" target="_blank">ADAL üzerinden MSAL avantajları<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
+        <a href="https://www.youtube.com/watch?v=q-TDszj2O-4" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
-        ADAL üzerinden MSAL avantajları
+        <!-- BLANK TITLE CELL -->
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/q-TDszj2O-4]
+        <!-- BLANK VIDEO CELL -->
     :::column-end:::
 :::row-end:::

@@ -5,13 +5,13 @@ author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 533cd8fa69c01b8a36ff5e314ce61a4b624e62ec
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/04/2020
+ms.openlocfilehash: b2efca53ce8d59ca1e050a9c18100b67024f3ba3
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655815"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465669"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Otomatik ölçeklendirme işleme ile Azure Cosmos kapsayıcıları ve veritabanları oluşturma
 
@@ -29,7 +29,7 @@ Otomatik ölçeklendirme sağlanan aktarım hızı ile yapılandırılan Azure C
 
 * **Ölçeklenebilir:** Veritabanları ve kapsayıcılar, sağlanan aktarım hızını gerektiği şekilde otomatik olarak ölçeklendirir. İstemci bağlantıları, uygulamalar veya Azure Cosmos DB SLA 'Lara etkisi yoktur.
 
-* Uygun **maliyetli:** Otomatik ölçeklendirme, kullanımda olmadığında ölçeği ölçeklendirerek RU/s kullanımınızı ve maliyet kullanımınızı iyileştirmenize yardımcı olur. Yalnızca iş yüklerinizin saat başına ihtiyaç duyduğu kaynaklar için ödeme yaparsınız.
+* Uygun **maliyetli:** Otomatik ölçeklendirme, kullanımda olmadığında ölçeği ölçeklendirerek RU/s kullanımınızı ve maliyet kullanımınızı iyileştirmenize yardımcı olur. Yalnızca iş yüklerinizin saat başına ihtiyaç duyduğu kaynaklar için ödeme yaparsınız. Ayın tüm saatlerinde, otomatik ölçeklendirme en fazla RU/sn (Tmax) ayarlarsanız ve saat veya daha az %66 için tam miktar Tmax kullanırsanız, otomatik ölçeklendirme ile tasarruf edersiniz. Daha fazla bilgi edinmek için bkz. [Standart (el ile) ve otomatik ölçeklendirme sağlanan üretilen iş](how-to-choose-offer.md) oluşturma makalesini seçme.
 
 * **Yüksek oranda kullanılabilir:** Otomatik ölçeklendirme kullanan veritabanları ve kapsayıcılar, veri dayanıklılığı ve yüksek kullanılabilirlik sağlamak için aynı küresel olarak dağıtılmış, hataya dayanıklı, yüksek oranda kullanılabilir Azure Cosmos DB arka ucunu kullanır.
 

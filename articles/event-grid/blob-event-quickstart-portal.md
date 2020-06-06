@@ -9,12 +9,12 @@ ms.date: 06/02/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 877dab3376e1a4397d9f1c6971baea957b4eea68
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: 8c1627b0a9ae37f7d784c49613eb14b0c851b9b1
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424202"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457057"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Hızlı başlangıç: Blob Depolama olaylarını Azure portal web uç noktasına yönlendirme
 
@@ -92,12 +92,9 @@ Event Grid’e hangi olayları izlemek istediğinizi ve olayların nereye gönde
    ![Web kancasını seçme](./media/blob-event-quickstart-portal/select-web-hook.png)
 3. **Olay aboneliği oluştur** sayfasında, aşağıdaki adımları uygulayın: 
     1. Olay aboneliği için bir **ad** girin.
-    2. **Sistem konusu**için bir **ad** girin. Daha önce, Azure Blob depolama veya Azure Event Hubs gibi Azure kaynakları tarafından oluşturulan bir olay için bir abonelik oluşturduğunuzda, Event Grid hizmeti **rastgele oluşturulmuş bir ada**sahip bir sistem konusu otomatik olarak oluşturulur. Şimdi, aşağıdaki görüntüde gösterildiği gibi Azure portal konuyu oluştururken sistem konusu için bir ad belirtebilirsiniz. Bu sistem konu kaynağını, ölçümleri ve tanılama günlüklerini saptamak için kullanabilirsiniz.
+    2. **Sistem konusu**için bir **ad** girin. Sistem konuları hakkında bilgi edinmek için bkz. [sistem konularına genel bakış](system-topics.md).
 
        ![Olay aboneliği ve sistem konusunun adlarını girin](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
-
-       > [!NOTE]
-       > Daha önce, Azure kaynakları tarafından oluşturulan bir olay için abonelik oluşturduğunuzda, Event Grid hizmeti rastgele oluşturulmuş bir ada sahip bir sistem konusu otomatik olarak oluşturulur. Şimdi bu metin kutusunu kullanarak sistem konusu için bir ad belirtebilirsiniz. Bu sistem konu kaynağını, ölçümleri ve tanılama günlüklerini saptamak için kullanabilirsiniz.
     2. **Uç nokta türü**Için **Web kancası** seçin. 
 
        ![Web kancası uç noktası türünü seçin](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)

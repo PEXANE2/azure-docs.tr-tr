@@ -4,16 +4,16 @@ description: .NET istemci kitaplığını kullanarak Azure Storage hesabınızda
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 155b8f5d50c7b106daff8dab4df17200b844c988
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da0c5bf6bc371bc512d9264afeab52b9908396fa
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135913"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463567"
 ---
 # <a name="list-blob-containers-with-net"></a>.NET ile blob kapsayıcılarını listeleme
 
@@ -30,15 +30,15 @@ Bu yöntemlerin aşırı yüklemeleri, kapsayıcıların listeleme işlemi taraf
 
 ### <a name="manage-how-many-results-are-returned"></a>Kaç sonuç döndürüldüğünü yönetin
 
-Varsayılan olarak, bir listeleme işlemi bir seferde en fazla 5000 sonuç döndürür. Daha küçük bir sonuç kümesi döndürmek için, **Listcontainerkesimli** metotlardan birini `maxresults` çağırırken parametresi için sıfır dışında bir değer sağlayın.
+Varsayılan olarak, bir listeleme işlemi bir seferde en fazla 5000 sonuç döndürür. Daha küçük bir sonuç kümesi döndürmek için, `maxresults` **Listcontainerkesimli** metotlardan birini çağırırken parametresi için sıfır dışında bir değer sağlayın.
 
-Depolama hesabınızda 5000 ' den fazla kapsayıcı varsa veya liste işlemi depolama hesabındaki kapsayıcıların bir alt kümesini döndürdüğünde `maxresults` bu şekilde bir değer belirttiyseniz, Azure Storage kapsayıcı listesini içeren bir *devamlılık belirteci* döndürür. Devamlılık belirteci, Azure depolama 'nın bir sonraki sonuç kümesini almak için kullanabileceğiniz donuk bir değerdir.
+Depolama hesabınızda 5000 ' den fazla kapsayıcı varsa veya `maxresults` liste işlemi depolama hesabındaki kapsayıcıların bir alt kümesini döndürdüğünde bu şekilde bir değer belirttiyseniz, Azure Storage kapsayıcı listesini içeren bir *devamlılık belirteci* döndürür. Devamlılık belirteci, Azure depolama 'nın bir sonraki sonuç kümesini almak için kullanabileceğiniz donuk bir değerdir.
 
 Kodunuzda, null olup olmadığını anlamak için devamlılık belirtecinin değerini denetleyin. Devamlılık belirteci null olduğunda, sonuç kümesi tamamlanır. Devamlılık belirteci null değilse, devam belirteci null olana kadar, sonraki sonuç kümesini almak için **Listcontainerskesimli** veya **ListContainersSegmentedAsync** yeniden çağırın.
 
 ### <a name="filter-results-with-a-prefix"></a>Sonuçları bir ön eke göre filtrele
 
-Kapsayıcılar listesini filtrelemek için, `prefix` parametre için bir dize belirtin. Ön ek dizesi bir veya daha fazla karakter içerebilir. Daha sonra Azure Storage yalnızca adları bu önek ile başlayan kapsayıcıları döndürür.
+Kapsayıcılar listesini filtrelemek için, parametre için bir dize belirtin `prefix` . Ön ek dizesi bir veya daha fazla karakter içerebilir. Daha sonra Azure Storage yalnızca adları bu önek ile başlayan kapsayıcıları döndürür.
 
 ### <a name="return-metadata"></a>Meta veri döndür
 
@@ -100,5 +100,5 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[List Containers](/rest/api/storageservices/list-containers2)
-[BLOB kaynaklarını listeler](/rest/api/storageservices/enumerating-blob-resources) halinde listeleme kapsayıcıları
+[Kapsayıcıları Listele](/rest/api/storageservices/list-containers2) 
+ [BLOB kaynaklarını numaralandırma](/rest/api/storageservices/enumerating-blob-resources)

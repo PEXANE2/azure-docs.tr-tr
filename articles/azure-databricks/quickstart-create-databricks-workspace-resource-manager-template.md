@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/27/2020
-ms.openlocfilehash: 1fe0eb0a69e8522fa0eb8683e2eb706f3e60b92c
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: c8503aee5cefbe197fd63cd6406006a1cdf8afa9
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433035"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463159"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-by-using-the-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonunu kullanarak Azure Databricks çalışma alanı oluşturma
 
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, bir Azure Databricks çalışma alanı oluşturmak i�
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlayabilmeniz için şunları yapmanız gerekir:
 
@@ -37,7 +37,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 
 :::code language="json" source="~/quickstart-templates/101-databricks-workspace/azuredeploy.json" range="1-53" highlight="33-46":::
 
-Şablonda tanımlanan Azure kaynağı [Microsoft. Databricks/Workspaces:](/azure/templates/microsoft.databricks/workspaces): Azure Databricks bir çalışma alanı oluşturur.
+Şablonda tanımlanan Azure kaynağı [Microsoft. Databricks/Workspaces](/azure/templates/microsoft.databricks/workspaces): Azure Databricks çalışma alanı oluşturur.
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 

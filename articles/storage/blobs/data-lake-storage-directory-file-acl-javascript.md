@@ -5,21 +5,21 @@ author: normesta
 ms.service: storage
 ms.date: 03/20/2020
 ms.author: normesta
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 04d0d23bdbdaeda6a4823c900badb3133ba9eeae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a95af730e8250539e8b33af4bd5a90dc3a604a2
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061549"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466077"
 ---
 # <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. içinde dizinleri, dosyaları ve ACL 'Leri yönetmek için JavaScript kullanın
 
 Bu makalede, hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında Dizin, dosya ve izinleri oluşturmak ve yönetmek için JavaScript 'In nasıl kullanılacağı gösterilmektedir. 
 
-[Paket (düğüm paketi Yöneticisi)](https://www.npmjs.com/package/@azure/storage-file-datalake) | [örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples) | [geribildirim sağlar](https://github.com/Azure/azure-sdk-for-java/issues)
+[Paket (düğüm Paket Yöneticisi)](https://www.npmjs.com/package/@azure/storage-file-datalake)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)  |  [Geri bildirimde](https://github.com/Azure/azure-sdk-for-java/issues) bulunun
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -36,7 +36,7 @@ Bir Terminal penceresi açarak ve ardından aşağıdaki komutu yazarak JavaScri
 npm install @azure/storage-file-datalake
 ```
 
-Bu ifadeyi `storage-file-datalake` kod dosyanızın en üstüne yerleştirerek paketi içeri aktarın. 
+`storage-file-datalake`Bu ifadeyi kod dosyanızın en üstüne yerleştirerek paketi içeri aktarın. 
 
 ```javascript
 const AzureStorageDataLake = require("@azure/storage-file-datalake");
@@ -94,7 +94,7 @@ function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantI
 
 Dosya sistemi dosyalarınız için bir kapsayıcı olarak davranır. Bir **filesystemclient** örneği alarak ve sonra **Filesystemclient. Create** metodunu çağırarak bir tane oluşturabilirsiniz.
 
-Bu örnek adlı `my-file-system`bir dosya sistemi oluşturur. 
+Bu örnek adlı bir dosya sistemi oluşturur `my-file-system` . 
 
 ```javascript
 async function CreateFileSystem(datalakeServiceClient) {
@@ -112,7 +112,7 @@ async function CreateFileSystem(datalakeServiceClient) {
 
 Bir **directoryclient** örneği alarak ve sonra **directoryclient. Create** metodunu çağırarak bir dizin başvurusu oluşturun.
 
-Bu örnek, bir dosya sistemine `my-directory` adlı bir dizin ekler. 
+Bu örnek, bir dosya sistemine adlı bir dizin ekler `my-directory` . 
 
 ```javascript
 async function CreateDirectory(fileSystemClient) {
@@ -128,7 +128,7 @@ async function CreateDirectory(fileSystemClient) {
 
 **Directoryclient. Rename** metodunu çağırarak bir dizini yeniden adlandırın veya taşıyın. İstenen dizinin yolunu bir parametre olarak geçirin. 
 
-Bu örnek, bir alt dizini ada `my-directory-renamed`yeniden adlandırır.
+Bu örnek, bir alt dizini ada yeniden adlandırır `my-directory-renamed` .
 
 ```javascript
 async function RenameDirectory(fileSystemClient) {
@@ -139,7 +139,7 @@ async function RenameDirectory(fileSystemClient) {
 }
 ```
 
-Bu örnek adlı dizini adlı `my-directory-renamed` `my-directory-2`bir dizinin alt dizinine taşır. 
+Bu örnek adlı dizini adlı bir `my-directory-renamed` dizinin alt dizinine taşır `my-directory-2` . 
 
 ```javascript
 async function MoveDirectory(fileSystemClient) {
@@ -154,7 +154,7 @@ async function MoveDirectory(fileSystemClient) {
 
 **Directoryclient. Delete** yöntemini çağırarak bir dizini silin.
 
-Bu örnek adlı `my-directory`bir dizini siler.   
+Bu örnek adlı bir dizini siler `my-directory` .   
 
 ```javascript
 async function DeleteDirectory(fileSystemClient) {
@@ -167,7 +167,7 @@ async function DeleteDirectory(fileSystemClient) {
 
 ## <a name="manage-a-directory-acl"></a>Dizin ACL 'sini yönetme
 
-Bu örnek, adlı `my-directory`BIR dizinin ACL 'sini alır ve ayarlar. Bu örnek, sahip olan kullanıcıya okuma, yazma ve yürütme izinlerini verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma erişimini sağlar.
+Bu örnek, adlı bir dizinin ACL 'sini alır ve ayarlar `my-directory` . Bu örnek, sahip olan kullanıcıya okuma, yazma ve yürütme izinlerini verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma erişimini sağlar.
 
 > [!NOTE]
 > Uygulamanız Azure Active Directory (Azure AD) kullanarak erişim yetkisi alıyorsa, uygulamanızın erişim yetkisi vermek için kullandığı güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için [Azure Data Lake Storage 2. erişim denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)' ne bakın.
@@ -221,9 +221,9 @@ async function ManageDirectoryACLs(fileSystemClient) {
 
 ## <a name="upload-a-file-to-a-directory"></a>Dizine dosya yükleme
 
-İlk olarak bir dosya okuyun. Bu örnek Node. js `fs` modülünü kullanır. Ardından, bir **fileclient** örneği oluşturup, sonra **fileclient. Create** metodunu çağırarak hedef dizinde bir dosya başvurusu oluşturun. **Fileclient. Append** metodunu çağırarak bir dosyayı karşıya yükleyin. **Fileclient. Flush** yöntemini çağırarak karşıya yüklemeyi tamamladığınızdan emin olun.
+İlk olarak bir dosya okuyun. Bu örnek Node. js modülünü kullanır `fs` . Ardından, bir **fileclient** örneği oluşturup, sonra **fileclient. Create** metodunu çağırarak hedef dizinde bir dosya başvurusu oluşturun. **Fileclient. Append** metodunu çağırarak bir dosyayı karşıya yükleyin. **Fileclient. Flush** yöntemini çağırarak karşıya yüklemeyi tamamladığınızdan emin olun.
 
-Bu örnek, bir metin dosyasını adlı `my-directory`bir dizine yükler. '
+Bu örnek, bir metin dosyasını adlı bir dizine yükler `my-directory` . '
 
 ```javascript
 async function UploadFile(fileSystemClient) {
@@ -249,7 +249,7 @@ async function UploadFile(fileSystemClient) {
 
 ## <a name="manage-a-file-acl"></a>Dosya ACL 'sini yönetme
 
-Bu örnek, adlı `upload-file.txt`BIR dosyanın ACL 'sini alır ve ayarlar. Bu örnek, sahip olan kullanıcıya okuma, yazma ve yürütme izinlerini verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma erişimini sağlar.
+Bu örnek, adlı bir dosyanın ACL 'sini alır ve ayarlar `upload-file.txt` . Bu örnek, sahip olan kullanıcıya okuma, yazma ve yürütme izinlerini verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma erişimini sağlar.
 
 > [!NOTE]
 > Uygulamanız Azure Active Directory (Azure AD) kullanarak erişim yetkisi alıyorsa, uygulamanızın erişim yetkisi vermek için kullandığı güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için [Azure Data Lake Storage 2. erişim denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)' ne bakın.
@@ -303,7 +303,7 @@ await fileClient.setAccessControl(acl);
 
 ## <a name="download-from-a-directory"></a>Bir dizinden indir
 
-İlk olarak, indirmek istediğiniz dosyayı temsil eden bir **Filesystemclient** örneği oluşturun. Dosyayı okumak için **Filesystemclient. Read** metodunu kullanın. Sonra dosyayı yazın. Bu örnek, bunu yapmak için Node `fs` . js modülünü kullanır. 
+İlk olarak, indirmek istediğiniz dosyayı temsil eden bir **Filesystemclient** örneği oluşturun. Dosyayı okumak için **Filesystemclient. Read** metodunu kullanın. Sonra dosyayı yazın. Bu örnek, `fs` bunu yapmak Için Node. js modülünü kullanır. 
 
 > [!NOTE]
 > Dosya indirme yöntemi yalnızca Node. js uygulamaları için geçerlidir. Kodunuzu bir tarayıcıda çalıştırmayı planlıyorsanız, bunu bir tarayıcıda nasıl yapacağınızı gösteren bir örnek için bkz. [JavaScript için istemci kitaplığı Data Lake Azure Storage dosyası](https://www.npmjs.com/package/@azure/storage-file-datalake) . 
@@ -341,7 +341,7 @@ async function DownloadFile(fileSystemClient) {
 
 ## <a name="list-directory-contents"></a>Dizin içeriğini listeleme
 
-Bu örnek, adlı `my-directory`bir dizinde bulunan her bir dizin ve dosyanın adlarını yazdırır.
+Bu örnek, adlı bir dizinde bulunan her bir dizin ve dosyanın adlarını yazdırır `my-directory` .
 
 ```javascript
 async function ListFilesInDirectory(fileSystemClient) {

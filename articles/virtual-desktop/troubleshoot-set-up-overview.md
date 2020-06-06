@@ -1,19 +1,19 @@
 ---
 title: Windows sanal masaüstü sorunlarını gidermeye genel bakış-Azure
-description: Windows sanal masaüstü kiracı ortamı ayarlarken sorun gidermeye yönelik genel bakış.
+description: Windows sanal masaüstü ortamı ayarlanırken sorun gidermeye yönelik genel bakış.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c5be26509eccdaebf1b504c1b0b8c7edb35e101c
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: f177c0961c1ab408916d046b36a0a1b54e816751
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84203876"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84455816"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>Sorun çözümüne genel bakış, geri bildirim ve destek
 
@@ -23,7 +23,7 @@ ms.locfileid: "84203876"
 > Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
 > Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Bu makalede, bir Windows sanal masaüstü kiracı ortamı ayarlarken karşılaşabileceğiniz sorunlara genel bir bakış sağlanır ve sorunları çözmeye yönelik yollar sağlanır.
+Bu makalede, bir Windows sanal masaüstü ortamı ayarlarken karşılaşabileceğiniz sorunlara genel bir bakış sağlanır ve sorunları çözmeye yönelik yollar sağlanır.
 
 ## <a name="report-issues-during-public-preview"></a>Genel Önizleme sırasında sorunları raporla
 
@@ -35,14 +35,13 @@ Yardım isteyen bir gönderi yaptığınızda veya yeni bir özellik önerdiğin
 
 Başka bir şey yapmadan önce, Azure hizmetinizin düzgün çalıştığından emin olmak için Azure [durum sayfasını](https://status.azure.com/status) ve [Azure hizmet durumunu](https://azure.microsoft.com/features/service-health/) kontrol ettiğinizden emin olun.
 
-Uzak Masaüstü istemcisi 'ni kullanarak bir kiracı ortamı ayarlarken karşılaşabileceğiniz sorunları belirlemek ve çözmek için aşağıdaki tabloyu kullanın. Kiracınız kurulduktan sonra, yaygın senaryolara yönelik sorunları belirlemek için yeni [Tanılama hizmetimizi](diagnostics-role-service.md) kullanabilirsiniz.
+Uzak Masaüstü istemcisi 'ni kullanarak bir ortam ayarlarken karşılaşabileceğiniz sorunları belirlemek ve çözmek için aşağıdaki tabloyu kullanın. Ortamınız kurulduktan sonra, yaygın senaryolara yönelik sorunları belirlemek için yeni [Tanılama hizmetimizi](diagnostics-role-service.md) kullanabilirsiniz.
 
 | **Konuda**                                                            | **Önerilen çözüm**  |
 |----------------------------------------------------------------------|-------------------------------------------------|
-| Azure portal Market şablonlarına erişme       | Azure Market Windows sanal masaüstü şablonları serbestçe kullanılabilir.|
 | Oturum Ana bilgisayar havuzu Azure sanal ağ (VNET) ve hızlı rota ayarları               | [Bir Azure destek Isteği açın](https://azure.microsoft.com/support/create-ticket/)ve uygun hizmeti seçin (ağ kategorisi altında). |
-| Windows sanal masaüstü ile birlikte sunulan Azure Resource Manager şablonları kullanılmıyorsa, oturum ana bilgisayar havuzu sanal makinesi (VM) oluşturma | [Bir Azure destek Isteği açın](https://azure.microsoft.com/support/create-ticket/)ve ardından hizmet için **Windows çalıştıran sanal makine** ' yi seçin. <br> <br> Windows sanal masaüstü ile birlikte sunulan Azure Resource Manager şablonlarıyla ilgili sorunlar için, [ortam ve konak havuzu oluşturma](troubleshoot-set-up-issues.md)'Nın Windows sanal masaüstü kiracı bölümü oluşturma bölümüne bakın. |
-| Azure portal Windows sanal masaüstü oturumu ana bilgisayarı ortamını yönetme    | [Bir Azure destek Isteği açın](https://azure.microsoft.com/support/create-ticket/). <br> <br> Uzak Masaüstü Hizmetleri/Windows sanal masaüstü PowerShell 'i kullanırken yönetim sorunları için, bkz. [Windows sanal masaüstü PowerShell](troubleshoot-powershell.md) veya [bir Azure destek isteği açın](https://azure.microsoft.com/support/create-ticket/), hizmet için **Windows sanal masaüstü** ' nü seçin, sorun türü için **yapılandırma ve yönetim** ' i seçin, ardından sorun alt türü için **PowerShell 'i kullanarak kiracı yapılandırma sorunları** ' nı seçin. |
+| Windows sanal masaüstü ile birlikte sunulan Azure Resource Manager şablonları kullanılmıyorsa, oturum ana bilgisayar havuzu sanal makinesi (VM) oluşturma | [Bir Azure destek Isteği açın](https://azure.microsoft.com/support/create-ticket/)ve ardından hizmet için **Windows çalıştıran sanal makine** ' yi seçin. <br> <br> Windows sanal masaüstü ile birlikte sunulan Azure Resource Manager şablonlarıyla ilgili sorunlar için, bkz. [konak havuzu oluşturma](troubleshoot-set-up-issues.md)'nın Azure Resource Manager şablon hataları bölümü. |
+| Azure portal Windows sanal masaüstü oturumu ana bilgisayarı ortamını yönetme    | [Bir Azure destek Isteği açın](https://azure.microsoft.com/support/create-ticket/). <br> <br> Uzak Masaüstü Hizmetleri/Windows sanal masaüstü PowerShell 'i kullanırken yönetim sorunları için, bkz. [Windows sanal masaüstü PowerShell](troubleshoot-powershell.md) veya [bir Azure destek isteği açın](https://azure.microsoft.com/support/create-ticket/), hizmet için **Windows sanal masaüstü** ' nü seçin, sorun türü için **yapılandırma ve yönetim** ' i seçin, ardından sorun alt türü için **PowerShell 'i kullanarak ortamı yapılandırma sorunları** ' nı seçin. |
 | Konak havuzlarına ve uygulama gruplarına bağlı Windows sanal masaüstü yapılandırmasını yönetme (uygulama grupları)      | [Windows sanal masaüstü PowerShell](troubleshoot-powershell.md)'e bakın veya [bir Azure destek isteği açın](https://azure.microsoft.com/support/create-ticket/), hizmet Için **Windows sanal masaüstü 'nü** seçip ilgili sorun türünü seçin.|
 | FSLogix profil kapsayıcılarını dağıtma ve yönetme | Bkz. [FSLogix ürünleri Için sorun giderme kılavuzu](/fslogix/fslogix-trouble-shooting-ht/) ve bu sorunu çözmezse, [bir Azure destek isteği açın](https://azure.microsoft.com/support/create-ticket/), hizmet için **Windows sanal masaüstü** ' nü seçin, sorun türü için **fslogix** ' i seçin ve ardından uygun sorun alt türünü seçin. |
 | Başlangıç sırasında uzak masaüstü istemcileri hatalı çalışma                                                 | Bkz. [Uzak Masaüstü Istemcisinde sorun giderme](troubleshoot-client.md) ve bu sorunu çözmezse, [bir Azure destek isteği açın](https://azure.microsoft.com/support/create-ticket/), hizmet için **Windows sanal masaüstü** ' nü seçin ve ardından sorun türü için **Uzak Masaüstü istemcileri** ' ni seçin.  <br> <br> Ağ sorunu varsa, kullanıcılarınızın ağ yöneticisiyle iletişim kurabilmesi gerekir. |
@@ -57,7 +56,7 @@ Uzak Masaüstü istemcisi 'ni kullanarak bir kiracı ortamı ayarlarken karşıl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Windows sanal masaüstü ortamında bir konak havuzu oluştururken oluşan sorunları gidermek için, bkz. [ortam ve konak havuzu oluşturma](troubleshoot-set-up-issues.md).
+- Windows sanal masaüstü ortamında bir konak havuzu oluştururken oluşan sorunları gidermek için bkz. [konak havuzu oluşturma](troubleshoot-set-up-issues.md).
 - Windows sanal masaüstündeki bir sanal makineyi (VM) yapılandırırken oluşan sorunları gidermek için bkz. [oturum ana bilgisayarı sanal makine yapılandırması](troubleshoot-vm-configuration.md).
 - Windows sanal masaüstü istemci bağlantılarıyla ilgili sorunları gidermek için bkz. [Windows sanal masaüstü hizmeti bağlantıları](troubleshoot-service-connection.md).
 - Uzak Masaüstü istemcileriyle ilgili sorunları gidermek için bkz [. uzak masaüstü Istemcisinde sorun giderme](troubleshoot-client.md)

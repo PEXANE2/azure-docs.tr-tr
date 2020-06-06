@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
-ms.date: 02/04/2020
-ms.openlocfilehash: 53160fa5a2d24f747b0653673a6f817ae14a7975
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/04/2020
+ms.openlocfilehash: bded7c33493c63a565ebab2dda2dccd320c6aecb
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118862"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456714"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için istek kotası artıyor
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -49,19 +49,20 @@ SQL veritabanı için Azure portal yeni bir destek isteği oluşturmak için aş
 
    ![Kota türü seçin](./media/quota-increase-request/select-quota-type.png)
 
-1. **Ayrıntılar** penceresinde, ek bilgi girmek Için **Ayrıntılar sağla** ' yı seçin.
+1. **Ayrıntılar** penceresinde, ek bilgi girmek Için **ayrıntıları girin** ' i seçin.
 
-   !["Ayrıntıları sağla" bağlantısı](./media/quota-increase-request/provide-details-link.png)
+   ![Ayrıntılar bağlantısı girin](./media/quota-increase-request/provide-details-link.png)
 
-**Ayrıntıları sağla** 'ya tıkladığınızda ek bilgi eklemenize olanak tanıyan **Kota ayrıntıları** penceresi görüntülenir. Aşağıdaki bölümlerde **SQL veritabanı** ve **SQL veritabanı yönetilen örnek** kota türleri için farklı seçenekler açıklanır.
+**Ayrıntıları girin** ' e tıkladığınızda, ek bilgi eklemenize olanak tanıyan **Kota ayrıntıları** penceresi görüntülenir. Aşağıdaki bölümlerde **SQL veritabanı** ve **SQL veritabanı yönetilen örnek** kota türleri için farklı seçenekler açıklanır.
 
 ## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a>SQL veritabanı kota türleri
 
-Aşağıdaki bölümlerde, **SQL veritabanı** kota türleri için üç kota artışı seçeneği açıklanır:
+Aşağıdaki bölümlerde, **SQL veritabanı** kota türleri için kota artışı seçenekleri açıklanır:
 
 - Sunucu başına veritabanı işlem birimi (DTU)
 - Abonelik başına sunucu sayısı
-- Bir bölgeye abonelik erişimini etkinleştirme
+- A serisi bölge erişimi
+- Bölge erişimi
 
 ### <a name="database-transaction-units-dtus-per-server"></a>Sunucu başına veritabanı işlem birimi (DTU)
 
@@ -91,15 +92,32 @@ Abonelik başına sunucu sayısında artış istemek için aşağıdaki adımlar
 
 Daha fazla bilgi için bkz. [SQL veritabanı kaynak limitleri ve kaynak](resource-limits-logical-server.md)İdaresi.
 
-### <a name="enable-subscription-access-to-a-region"></a><a id="other"></a>Bir bölgeye abonelik erişimini etkinleştirme
+### <a name="enable-subscription-access-to-a-region"></a><a id="region"></a>Bir bölgeye abonelik erişimini etkinleştirme
 
 Bazı teklif türleri her bölgede kullanılamaz. Aşağıdakiler gibi bir hata görebilirsiniz:
 
-`This location is not available for subscription`
+`Your subscription does not have access to create a server in the selected region. For the latest information about region availability for your subscription, go to aka.ms/sqlcapacity. Please try another region or create a support ticket to request access.`
 
-Aboneliğiniz belirli bir bölgede erişime ihtiyacı varsa, lütfen erişim istemek için **diğer kota isteği** seçeneğini kullanın. İsteğiniz içinde, bölge için etkinleştirmek istediğiniz teklif ve SKU ayrıntılarını belirtin. Teklif ve SKU seçeneklerini araştırmak için bkz. [Azure SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/single/).
+Aboneliğinizin belirli bir bölgede erişmesi gerekiyorsa **bölge erişimi** seçeneğini belirleyin. İsteğiniz içinde, bölge için etkinleştirmek istediğiniz teklif ve SKU ayrıntılarını belirtin. Teklif ve SKU seçeneklerini araştırmak için bkz. [Azure SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/single/).
 
-![Diğer kota ayrıntıları](./media/quota-increase-request/quota-details-whitelisting.png)
+1. **Bölge erişimi** kota türünü seçin.
+
+1. **Konum seçin** listesinde, kullanılacak Azure bölgesini seçin. Kota her bölgede abonelik başına olur.
+
+1. **Satın alma modelini**ve **beklenen tüketim** ayrıntılarını girin.
+
+   ![İstek bölgesi erişimi](./media/quota-increase-request/quota-details-whitelisting.png)
+
+### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a>Bir bölgeye e-serisi erişimi etkinleştir
+
+Bir abonelik ve bölge için, e serisi donanım etkinleştirmek üzere bir destek isteği açılmalıdır.
+
+1. **D serisi bölge erişim** kotası türünü seçin.
+
+1. **Konum seçin** listesinde, kullanılacak Azure bölgesini seçin. Kota her bölgede abonelik başına olur.
+
+
+   ![İstek bölgesi erişimi](./media/quota-increase-request/quota-m-series.png)
 
 ## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a>SQL yönetilen örnek kota türü
 

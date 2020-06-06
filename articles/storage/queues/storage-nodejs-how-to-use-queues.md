@@ -6,15 +6,15 @@ ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 7abcad03678131668700f5d2c64b9c971081cb89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7b5e679fa47437e7019884317d0ab14792055f3
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060927"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465431"
 ---
 # <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Node. js ' den kuyruk oluşturmak ve silmek için Azure kuyruk hizmeti 'ni kullanma
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -51,7 +51,7 @@ Azure Storage 'ı kullanmak için, depolama REST hizmetleriyle iletişim kuran b
     +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
     ```
 
-3. Bir **\_düğüm modülleri** klasörünün oluşturulduğunu doğrulamak için **ls** komutunu el ile çalıştırabilirsiniz. Bu klasörün içinde, depolama alanına erişmek için ihtiyaç duyduğunuz kitaplıkları içeren **azure-storage** paketini bulacaksınız.
+3. Bir **düğüm \_ modülleri** klasörünün oluşturulduğunu doğrulamak için **ls** komutunu el ile çalıştırabilirsiniz. Bu klasörün içinde, depolama alanına erişmek için ihtiyaç duyduğunuz kitaplıkları içeren **azure-storage** paketini bulacaksınız.
 
 ### <a name="import-the-package"></a>Paketi içeri aktarma
 Not defteri veya başka bir metin düzenleyicisi kullanarak aşağıdakini, depolamayı kullanmayı düşündüğünüz uygulamanın **Server. js** dosyasına ekleyin:
@@ -61,7 +61,7 @@ var azure = require('azure-storage');
 ```
 
 ## <a name="setup-an-azure-storage-connection"></a>Azure depolama bağlantısı kurma
-Azure modülü, Azure depolama hesabınıza bağlanmak için gereken\_bilgiler\_için AZURE depolama\_hesabı\_ve\_Azure depolama erişim anahtarı\_ya\_da\_Azure depolama bağlantı dizesi ortam değişkenlerini okur. Bu ortam değişkenleri ayarlanmamışsa, **Createqueueservice**çağrılırken hesap bilgilerini belirtmeniz gerekir.
+Azure modülü, Azure depolama hesabınıza \_ \_ \_ \_ \_ \_ \_ \_ bağlanmak IÇIN gereken bilgiler için Azure depolama HESABı ve Azure depolama erişim anahtarı ya da Azure depolama bağlantı dizesi ortam değişkenlerini okur. Bu ortam değişkenleri ayarlanmamışsa, **Createqueueservice**çağrılırken hesap bilgilerini belirtmeniz gerekir.
 
 ## <a name="how-to-create-a-queue"></a>Nasıl yapılır: kuyruk oluşturma
 Aşağıdaki kod, kuyruklarla çalışmanıza olanak sağlayan bir **QueueService** nesnesi oluşturur.
@@ -82,7 +82,7 @@ queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
 
 Sıra oluşturulduysa, `result.created` doğru olur. Sıra varsa, `result.created` false olur.
 
-### <a name="filters"></a>FilTReleri
+### <a name="filters"></a>Filtreler
 İsteğe bağlı filtreleme işlemleri, **QueueService**kullanılarak gerçekleştirilen işlemlere uygulanabilir. Filtreleme işlemleri, günlüğe kaydetme, otomatik yeniden deneme vb. içerebilir. Filtreler imzaya sahip bir yöntemi uygulayan nesnelerdir:
 
 ```javascript
@@ -126,7 +126,7 @@ queueSvc.peekMessages('myqueue', function(error, results, response){
 });
 ```
 
-İletiyi `result` içerir.
+`result`İletiyi içerir.
 
 > [!NOTE]
 > Kuyruktaki hiçbir ileti olmadığında **peekMessages** kullanılması bir hata döndürmez, ancak hiçbir ileti döndürülmez.
@@ -227,7 +227,7 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 });
 ```
 
-Tüm kuyruklar döndürülmezse, `result.continuationToken` daha fazla sonuç almak Için **Listqueuessegmentinin** Ilk parametresi olarak veya **listQueuesSegmentedWithPrefix** ikinci parametresi olarak kullanılabilir.
+Tüm kuyruklar döndürülmezse, `result.continuationToken` daha fazla sonuç almak Için **Listqueuessegmentinin** ilk parametresi olarak veya **listQueuesSegmentedWithPrefix** ikinci parametresi olarak kullanılabilir.
 
 ## <a name="how-to-delete-a-queue"></a>Nasıl yapılır: kuyruğu silme
 Bir kuyruğu ve içerdiği tüm iletileri silmek için, kuyruk nesnesi üzerinde **DeleteQueue** yöntemini çağırın.

@@ -4,19 +4,19 @@ description: Bildirimlerin araştırma etkinliklerinizi nasıl desteklediğini �
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 05/05/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 200ede6b4c5565a8eab95b0398abaa1c056c612f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: c7b5208d2da3635e822049859cae9c8f17b6105a
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853145"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464258"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Kimlik Koruması bildirimleri
 
@@ -43,7 +43,7 @@ Yönetici olarak şunları yapabilirsiniz:
 - **Bu e-postanın alıcıları** varsayılan olarak tüm genel yöneticileri içerir. Genel Yöneticiler, diğer genel Yöneticiler, güvenlik yöneticileri, güvenlik okuyucularını da alıcı olarak ekleyebilir.
    - İsteğe bağlı olarak, **uyarı bildirimleri almak için ek e-postalar ekleyebilirsiniz** . Bu özellik bir önizlemedir ve tanımlanan kullanıcılar Azure Portal bağlantılı raporları görüntülemek için uygun izinlere sahip olmalıdır.
 
-Risk altındaki **Azure Portal** Kullanıcı e-postalarını **Azure Active Directory** > **güvenlik** > **kimlik koruması** > **kullanıcıları tarafından algılanan uyarıları**yapılandırın.
+Risk altındaki **Azure Portal** Kullanıcı e-postalarını **Azure Active Directory**  >  **güvenlik**  >  **kimlik koruması**  >  **kullanıcıları tarafından algılanan uyarıları**yapılandırın.
 
 ## <a name="weekly-digest-email"></a>Haftalık Özet e-postası
 
@@ -62,7 +62,7 @@ Varsayılan olarak, alıcılar tüm genel yöneticileri içerir. Genel Yönetici
 
 Yönetici olarak, haftalık bir Özet e-postası göndermeyi veya kapatmayı değiştirebilir ve e-postayı almak için atanan kullanıcıları seçebilirsiniz.
 
- >  **Azure Active Directory****Security**güvenlik > **kimlik**koruması > **haftalık Özeti**altındaki **Azure Portal** Haftalık Özet e-postasını yapılandırın.
+**Azure portal** **Azure Active Directory**  >  **güvenlik**  >  **kimlik koruması**  >  **haftalık Özeti**altındaki Azure Portal Haftalık Özet e-postasını yapılandırın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

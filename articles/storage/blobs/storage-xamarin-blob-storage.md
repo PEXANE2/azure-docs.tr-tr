@@ -6,13 +6,13 @@ ms.author: mhopkins
 ms.date: 05/11/2017
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 8a1c91c8a8a59af26386e70e68e7c4fd93f5eaa9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: a724cf309ef0677b79636f6789de9a6c8f9ba248
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68726332"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465516"
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>Xamarin 'ten blob depolamayı kullanma
 
@@ -37,7 +37,7 @@ Artık bir sayacı artıran bir düğmeye tıklaetmenize olanak tanıyan bir uyg
 
 ## <a name="create-container-and-upload-blob"></a>Kapsayıcı oluştur ve blobu yükle
 
-Ardından, `(Portable)` projeniz altında, ' ye `MyClass.cs`bir kod ekleyeceksiniz. Bu kod bir kapsayıcı oluşturur ve bu kapsayıcıya bir BLOB yükler. `MyClass.cs`aşağıdaki gibi görünmelidir:
+Ardından, projeniz altında `(Portable)` , ' ye bir kod ekleyeceksiniz `MyClass.cs` . Bu kod bir kapsayıcı oluşturur ve bu kapsayıcıya bir BLOB yükler. `MyClass.cs`aşağıdaki gibi görünmelidir:
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;
@@ -233,7 +233,7 @@ namespace XamarinApp.WinPhone
 
 Artık bu uygulamayı bir Android veya Windows Phone öykünücüsünde çalıştırabilirsiniz. Bu uygulamayı bir iOS öykünücüsünde de çalıştırabilirsiniz, ancak bunun için bir Mac gerekir. Bunun nasıl yapılacağı hakkında ayrıntılı yönergeler için lütfen [Visual Studio 'yu bir Mac 'e bağlama](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/) belgelerini okuyun
 
-Uygulamanızı çalıştırdığınızda, kapsayıcıyı `mycontainer` depolama hesabınızda oluşturacaktır. Metin içeren blobu `myblob`içermelidir, `Hello, world!`. [Microsoft Azure Depolama Gezgini](https://storageexplorer.com/)kullanarak bunu doğrulayabilirsiniz.
+Uygulamanızı çalıştırdığınızda, kapsayıcıyı `mycontainer` depolama hesabınızda oluşturacaktır. Metin içeren blobu içermelidir, `myblob` `Hello, world!` . [Microsoft Azure Depolama Gezgini](https://storageexplorer.com/)kullanarak bunu doğrulayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

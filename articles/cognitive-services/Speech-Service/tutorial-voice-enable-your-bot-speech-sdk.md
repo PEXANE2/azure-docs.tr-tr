@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: c55d81db848dcb1aebe9dacb03387565b3d8db48
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 69046772b81f0b5b597cce8e86aca9cbf27c49f8
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745608"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457108"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Öğretici: konuşma SDK 'sını kullanarak bot uygulamanızı etkinleştirin
 
@@ -104,7 +104,7 @@ Bir konuşma kaynağı oluşturmak için aşağıdaki yönergeleri izleyin:
 
 Bu noktada, kaynak grubunuzun (**SpeechEchoBotTutorial-ResourceGroup**) bir konuşma kaynağına sahip olup olmadığını kontrol edin:
 
-| Name | Tür  | Konum |
+| Adı | Tür  | Konum |
 |------|-------|----------|
 | SpeechEchoBotTutorial-konuşma | Bilişsel Hizmetler | Batı ABD |
 
@@ -125,7 +125,7 @@ Sonraki adım App Service bir plan oluşturmaktır. App Service planı, bir web 
 
 Bu noktada, kaynak grubunuz (**SpeechEchoBotTutorial-ResourceGroup**) iki kaynak olduğunu kontrol edin:
 
-| Name | Tür  | Konum |
+| Adı | Tür  | Konum |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service Planı | Batı ABD |
 | SpeechEchoBotTutorial-konuşma | Bilişsel Hizmetler | Batı ABD |
@@ -197,6 +197,7 @@ Sonraki adım, yankı bot 'ı Azure 'a dağıtmaktır. Bir bot dağıtmanın bir
    * **Barındırma planı**için **SpeechEchoBotTutorial-appserviceplan** ' ı seçin.
    * **Application Insights**Için, **yok** olarak bırakın
 1. **Oluştur** 'a tıklayın
+1. Yeni oluşturulan profilin sağ tarafında **Yayımla** ' ya tıklayın.
 1. Visual Studio 'da şuna benzer bir başarı iletisi görmeniz gerekir:
 
    ```
@@ -207,7 +208,7 @@ Sonraki adım, yankı bot 'ı Azure 'a dağıtmaktır. Bir bot dağıtmanın bir
 1. Varsayılan tarayıcınızın açılması ve "bot 'Niz hazır!" yazan bir sayfa görüntülemesi gerekir.
 1. Bu noktada, Azure portal kaynak grubunuzu **SpeechEchoBotTutorial-ResourceGroup** ' u kontrol edin ve üç kaynak olduğunu onaylayın:
 
-| Name | Tür  | Konum |
+| Adı | Tür  | Konum |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | Batı ABD |
 | SpeechEchoBotTutorial-AppServicePlan | App Service planı | Batı ABD |
@@ -236,7 +237,7 @@ Botunuzu barındırmak için bir Azure App Service oluşturduğunuza göre, sonr
 
 1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Azure bot kanalları kaydı oluşturma<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 2. Sizden bazı bilgiler sağlamanız istenecektir:
-   * **Bot tutamacı**için **SpeechEchoBotTutorial-botregistration**yazın.
+   * **Bot tutamacı**Için, **SpeechEchoBotTutorial-botregistration-# # # #** girin ve ile değiştirin, **####** sizin tercih ettiğiniz bir sayıdır. Bot tanıtıcısının genel olarak benzersiz olması gerektiğini unutmayın. Bir bot tanıtıcısı girer, ancak şu hata iletisini alırsanız, _istenen bot kimliği kullanılabilir değil_, farklı bir sayı seçin. Aşağıdaki örneklerde 8726 kullandık
    * **Abonelik**Için **ücretsiz deneme**' yı seçin.
    * **Kaynak grubu**için **SpeechEchoBotTutorial-ResourceGroup**öğesini seçin.
    * **Konum**için **Batı ABD**' yi seçin.
@@ -248,25 +249,47 @@ Botunuzu barındırmak için bir Azure App Service oluşturduğunuza göre, sonr
 
 Bu noktada, Azure portal kaynak grubunuzu **SpeechEchoBotTutorial-ResourceGroup** ' u kontrol edin. Şimdi dört kaynak göstermesi gerekir:
 
-| Name | Tür  | Konum |
+| Adı | Tür  | Konum |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | Batı ABD |
 | SpeechEchoBotTutorial-AppServicePlan | App Service planı | Batı ABD |
-| SpeechEchoBotTutorial-BotRegistration | Bot kanalları kaydı | global |
+| SpeechEchoBotTutorial-BotRegistration-8726 | Bot kanalları kaydı | global |
 | SpeechEchoBotTutorial-konuşma | Bilişsel Hizmetler | Batı ABD |
 
 > [!IMPORTANT]
 > Batı ABD seçmiş olsanız da, bot kanalları kayıt kaynağı genel bölgeyi gösterir. Bu beklenen bir durumdur.
 
+## <a name="optional-test-in-web-chat"></a>İsteğe bağlı: Web sohbetinde test
+
+Azure bot kanalları kayıt sayfasında, **bot Management**altında **Web sohbeti testi** seçeneği vardır. Web sohbetin bot 'unuza göre kimlik doğrulaması yapması gerektiğinden, bu, varsayılan olarak, bot 'unuzla çalışmaz. Dağıtılan bot 'ı metin girişi ile test etmek istiyorsanız aşağıdaki adımları izleyin. Bu adımların isteğe bağlı olduğuna ve öğreticinin sonraki adımlarına devam edebilmek için gerekli değildir. 
+
+1. [Azure Portal](https://portal.azure.com) **yankı Botöğreticisi-botkayıt-# # # #** kaynağını bulup açın
+1. **Bot yönetimi** gezinmede **Ayarlar**' ı seçin. **Microsoft uygulama kimliği** altındaki değeri kopyalayın
+1. Visual Studio Yankıbot çözümünü açın. Çözüm Gezgini ' nde, **appSettings. JSON** ' ı bulup çift tıklayın
+1. JSON dosyasında, kopyalanmış KIMLIK değeri ile **Microsoftappıd** yanındaki boş dizeyi değiştirin
+1. Azure portal geri dönüp, **bot yönetimi** gezinmede **Ayarlar**' ı SEÇIN ve **Microsoft uygulama kimliği** ' nin yanındaki **(Yönet)** seçeneğine tıklayın.
+1. **Yeni istemci parolası**' na tıklayın. Bir açıklama ekleyin (örn. "Web sohbeti") ve **Ekle**' ye tıklayın. Yeni parolayı Kopyala
+1. JSON dosyasında, kopyalanmış gizli değeri ile birlikte **Microsoftapppassword** yanındaki boş dizeyi değiştirin
+1. JSON dosyasını kaydedin. Şuna benzer şekilde görünecektir:
+```json
+{
+  "MicrosoftAppId": "3be0abc2-ca07-475e-b6c3-90c4476c4370",
+  "MicrosoftAppPassword": "-zRhJZ~1cnc7ZIlj4Qozs_eKN.8Cq~U38G"
+}
+```
+9. Uygulamayı yeniden yayımlayın (Visual Studio Çözüm Gezgini 'nde **Yankıbot** projesine sağ tıklayın, **Yayımla...** ' yı seçin ve **Yayımla** düğmesine tıklayın)
+10. Şimdi Web sohbetinde bot 'ı test etmeye hazırsınız!
+
 ## <a name="register-the-direct-line-speech-channel"></a>Doğrudan hat konuşma kanalını kaydetme
 
 Şimdi doğrudan hat konuşma kanalı ile botunuzu kaydetme zamanı. Bu kanal, yankı bot 'niz ile konuşma SDK 'Sı ile derlenen bir istemci uygulaması arasında bağlantı oluşturmak için kullanılır.
 
-1. [Azure Portal](https://portal.azure.com) **SpeechEchoBotTutorial-botregistration** kaynağınızı bulun ve açın.
-1. **Azure hizmetleri** gezinmede **Kanallar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) **SpeechEchoBotTutorial-botregistration-# # # #** kaynağını bulup açın.
+1. **Bot yönetimi** gezinmede **Kanallar**' ı seçin.
    * **Daha fazla kanal**arayın, **doğrudan hat konuşmayı**bulun ve tıklatın.
    * Sayfadaki **doğrudan konuşmayı Yapılandır**' ı, ardından "bilişsel hizmet hesabı" olarak etiketlenen açılan menüyü genişleterek sayfada bulunan metni gözden geçirin.
    * Daha önce oluşturduğunuz konuşma kaynağını (ör. **SpeechEchoBotTutorial-Speech**) seçerek bot 'unuzu konuşma abonelik anahtarınızla ilişkilendirin.
+   * İsteğe bağlı alanların geri kalanını yoksay
    * **Kaydet**’e tıklayın.
 
 1. **Bot yönetimi** gezinmede **Ayarlar**' a tıklayın.
@@ -289,7 +312,7 @@ Windows Voice Yardımcısı Istemcisinde, bot ile bağlantıyı yapılandırman�
    * çalıştırmak için çalıştırılabilir dosyayı içeren bir ZIP paketi indirin veya
    * Depoyu kopyalayarak ve projeyi oluşturarak çalıştırılabilir dosyayı kendiniz oluşturun.
 
-1. İstemci uygulamasını başlatın ve yapılandırın.
+1. İstemci uygulamasını başlatın ve GitHub deposundaki yönergelere bağlı olarak bu uygulamayı bot 'unuza bağlanacak şekilde yapılandırın
 1. **Yeniden bağlan** ' a tıklayın ve **mikrofonunuza konuşmaya başlamak Için mikrofon düğmesine basın veya yazarak**emin olun.
 1. Şimdi test edin. Mikrofon düğmesine tıklayın ve Ingilizce 'de birkaç sözcükten konuşun. Konuşma sırasında tanınan metin görüntülenir. Konuşmayı tamamladığınızda, bot kendi sesinden yanıt vererek "Echo" ve ardından tanınan kelimeleri söyleyerek.
 1. Ayrıca, bot ile iletişim kurmak için metin de kullanabilirsiniz. Metni alt çubuğa yazmanız yeterlidir. 
@@ -331,7 +354,7 @@ Her bot **etkinlik** iletilerini gönderir ve alır. Windows Voice Yardımcısı
     },
     "entities":[],
     "from":{
-        "id":"SpeechEchoBotTutorial-BotRegistration"
+        "id":"SpeechEchoBotTutorial-BotRegistration-8726"
     },
     "id":"89841b4d-46ce-42de-9960-4fe4070c70cc",
     "inputHint":"acceptingInput",

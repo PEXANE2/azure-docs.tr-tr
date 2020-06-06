@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: b398f739189232f39a2fee06fc6e6ff0d53348f0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ca4e79977132586c619f323015f9d915e04707f1
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656617"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449524"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB 'de otomatik ölçeklendirme sağlanan aktarım hızı hakkında sık sorulan sorular
 
@@ -86,6 +86,10 @@ Evet, otomatik ölçeklendirme, paylaşılan üretilen iş veritabanları için 
 
 ### <a name="what-is-the-number-of-allowed-containers-per-shared-throughput-database-when-autoscale-is-enabled"></a>Otomatik ölçeklendirme etkinken paylaşılan üretilen iş veritabanı başına izin verilen kapsayıcı sayısı nedir?
 Azure Cosmos DB, otomatik ölçeklendirme veya standart (el ile) aktarım hızı içeren veritabanları için geçerli olan paylaşılan bir üretilen iş veritabanında en fazla 25 kapsayıcı zorlar. 
+
+### <a name="what-is-the-impact-of-autoscale-on-database-consistency-level"></a>Otomatik ölçeklendirmeyi veritabanı tutarlılık düzeyinde etkisi nedir?
+Veritabanının tutarlılık düzeyinde otomatik ölçeklendirmeyi bir etkisi yoktur.
+Kullanılabilir tutarlılık düzeyleri hakkında daha fazla bilgi için [tutarlılık düzeyleri](consistency-levels.md) makalesine bakın.
 
 ### <a name="what-is-the-storage-limit-associated-with-each-max-rus-option"></a>Her bir maksimum RU/sn seçeneğiyle ilişkili depolama sınırı nedir?  
 Her Max RU/sn için GB cinsinden depolama sınırı: en fazla RU/s/veritabanı veya kapsayıcı/100. Örneğin, en fazla RU/sn 20.000 RU/s ise, kaynak 200 GB depolama alanını destekleyebilir. Kullanılabilir en büyük RU/sn ve depolama seçenekleri için [Otomatik ölçeklendirme sınırları](provision-throughput-autoscale.md#autoscale-limits) makalesine bakın. 

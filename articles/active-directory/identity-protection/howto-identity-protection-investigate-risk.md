@@ -4,19 +4,19 @@ description: Azure Active Directory Kimlik Koruması ' de riskli kullanıcılar�
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 12/13/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23105a78e2ba34cf6a45f749ebfdd6b034ebf0dc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3610fa5ea442e5ccb15255d8a1ddcee211871aeb
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680151"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463952"
 ---
 # <a name="how-to-investigate-risk"></a>Nasıl yapılır: riski araştırma
 

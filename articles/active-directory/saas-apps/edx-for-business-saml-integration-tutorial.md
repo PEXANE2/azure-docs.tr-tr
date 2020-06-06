@@ -1,0 +1,162 @@
+---
+title: 'Öğretici Azure Active Directory: edX for Business SAML tümleştirmesi ile çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
+description: Azure Active Directory ve edX for Business SAML tümleştirmesi arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+services: active-directory
+documentationCenter: na
+author: jeevansd
+manager: mtillman
+ms.reviewer: barbkess
+ms.assetid: e00001b6-a8af-4547-976a-68d1c41d374c
+ms.service: active-directory
+ms.subservice: saas-app-tutorial
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.topic: tutorial
+ms.date: 06/04/2020
+ms.author: jeedes
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e17ffa9330da4fec0cfa3260f9bb99fbaffc24f6
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466733"
+---
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-edx-for-business-saml-integration"></a>Öğretici: edX for Business SAML tümleştirmesi ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+
+Bu öğreticide, edX for Business SAML tümleştirmesini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. EdX for Business SAML tümleştirmesini Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+
+* Azure AD 'de, edX for Business SAML tümleştirmesine erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Iş SAML tümleştirmesi için edX ' i otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+
+## <a name="prerequisites"></a>Ön koşullar
+
+Başlamak için aşağıdaki öğeler gereklidir:
+
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* edX for Business SAML tümleştirme çoklu oturum açma (SSO) etkin abonelik.
+
+## <a name="scenario-description"></a>Senaryo açıklaması
+
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+* edX for Business SAML tümleştirmesi **SP** tarafından başlatılan SSO 'yu destekler
+* edX for Business SAML tümleştirmesi **, tam zamanında** Kullanıcı sağlamayı destekler
+
+* EdX for Business SAML tümleştirmesini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin boyutunu gerçek zamanlı olarak koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+## <a name="adding-edx-for-business-saml-integration-from-the-gallery"></a>Galeriden edX for Business SAML tümleştirmesi ekleme
+
+EdX for Business SAML tümleştirmesini Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeriden, edX for Business SAML tümleştirmesi ' ni Galeri 'den yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **EDX for Business SAML tümleştirmesi** yazın.
+1. Sonuçlar panelinden **EDX for BUSINESS SAML tümleştirmesi** ' ni seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+
+
+## <a name="configure-and-test-azure-ad-single-sign-on-for-edx-for-business-saml-integration"></a>EdX for Business SAML tümleştirmesi için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+
+**B. Simon**adlı bir test kullanıcısı kullanarak, EDX for Business SAML tümleştirmesiyle Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, edX for Business SAML tümleştirmesi içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+
+Azure AD SSO 'yu edX for Business SAML tümleştirmesiyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. **[EdX for BUSINESS SAML tümleştirme SSO 'Su yapılandırma](#configure-edx-for-business-saml-integration-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    1. EDX **[for BUSINESS SAML tümleştirme test kullanıcısı oluşturma](#create-edx-for-business-saml-integration-test-user)** -EDX for Business SAML tümleştirmesi için, kullanıcının Azure AD gösterimine bağlanmış bir B. Simon.
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
+
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+
+1. [Azure Portal](https://portal.azure.com/), **EDX for Business SAML tümleştirme** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+
+1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
+
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://courses.edx.org/dashboard?tpa_hint=<INSTANCE_NAME>`
+
+    > [!NOTE]
+    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [EDX for BUSINESS SAML tümleştirme istemci destek ekibine](mailto:api-support@edx.org) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+
+1. edX for Business SAML tümleştirme uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
+
+    ![image](common/default-attributes.png)
+
+1. Yukarıdaki, edX for Business SAML tümleştirme uygulaması, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+    
+    | Adı | |  Kaynak özniteliği|
+    | ---------------| --------------- | --------- |
+    | ülke | | Kullanıcı. ülke  |
+
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
+
+    ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
+
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+
+Bu bölümde, edX for Business SAML tümleştirmesine erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **EDX for BUSINESS SAML tümleştirmesi**' ni seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
+
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+
+## <a name="configure-edx-for-business-saml-integration-sso"></a>EdX for Business SAML tümleştirme SSO 'SU yapılandırma
+
+**EDX for BUSINESS SAML tümleştirme** tarafında çoklu oturum açma 'yı yapılandırmak için, bu **uygulama Federasyon meta veri URL 'sini** [EDX for Business SAML tümleştirme destek ekibine](mailto:api-support@edx.org)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+
+### <a name="create-edx-for-business-saml-integration-test-user"></a>EdX for Business SAML tümleştirme test kullanıcısı oluşturma
+
+Bu bölümde, edX Iş SAML tümleştirmesi ' nde Britta Simon adlı bir Kullanıcı oluşturulmuştur. edX for Business SAML tümleştirmesi, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı, edX for Business SAML tümleştirmesinde zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+
+## <a name="test-sso"></a>Test SSO 'SU 
+
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+
+Erişim paneli 'nde edX for Business SAML tümleştirme kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Iş için edX for Business SAML tümleştirmesinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="additional-resources"></a>Ek kaynaklar
+
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD ile Iş SAML tümleştirme için edX 'i deneyin](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [EdX for Business SAML tümleştirmesini gelişmiş görünürlük ve denetimlerle koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+

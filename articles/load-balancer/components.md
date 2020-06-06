@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2020
+ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 84857315e4b6b4375ed5b78520b4c6ff0d66751a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b696cdf2d54c42d3967041c5d10b1bd9bb5a3065
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684989"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84448691"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer bileşenleri
 
@@ -39,6 +39,8 @@ IP adresinin doğası, oluşturulan yük dengeleyicinin **türünü** belirler. 
 
 ![Katmanlı yük dengeleyici örneği](./media/load-balancer-overview/load-balancer.png)
 
+Load Balancer birden çok ön uç IP 'si olabilir. [Birden çok ön uçlar](load-balancer-multivip-overview.md)hakkında daha fazla bilgi edinin.
+
 ## <a name="backend-pool"></a>Arka uç havuzu
 
 Gelen isteğe hizmet veren bir sanal makine ölçek kümesindeki sanal makine veya örnek grubu. Yüksek hacimli gelen trafiği karşılamak üzere maliyeti etkili bir şekilde ölçeklendirmek için, bilgi işlem kılavuzu genellikle arka uç havuzuna daha fazla örnek eklenmesini önerir.
@@ -57,7 +59,7 @@ Sistem durumu araştırmalarının sağlıksız eşiğini tanımlayabilirsiniz. 
 - Boşta kalma zaman aşımı oluştu
 - VM kapanıyor
 
-Load Balancer uç noktalar için farklı durum araştırma türleri sağlar: TCP, HTTP ve HTTPS.
+Load Balancer uç noktalar için farklı durum araştırma türleri sağlar: TCP, HTTP ve HTTPS. [Load Balancer sistem durumu araştırmaları hakkında daha fazla bilgi edinin](load-balancer-custom-probe-overview.md).
 
 Temel Load Balancer HTTPS araştırmaları desteklemez. Temel Load Balancer tüm TCP bağlantılarını (kurulan bağlantılar dahil) kapatır.
 
@@ -67,15 +69,34 @@ Bir Load Balancer kuralı, gelen trafiğin arka uç havuzundaki **Tüm** örnekl
 
 Örneğin, ön uç IP 'nizin bağlantı noktası 80 ' deki (veya başka bir bağlantı noktası) trafik, tüm arka uç örneklerinizin 80 numaralı bağlantı noktasına yönlendirilmek istiyorsanız, bunu başarmak için bir yük dengeleme kuralı kullanırsınız.
 
+### <a name="high-availability-ports"></a>Yüksek kullanılabilirlik bağlantı noktaları
+
+' Protocol-All ve port-0 ' ile yapılandırılmış bir Load Balancer kuralı. Bu, bir iç Standart Load Balancer tüm bağlantı noktalarına gelen tüm TCP ve UDP akışlarının yük dengelenmesi için tek bir kural sağlamayı sağlar. Yük Dengeleme kararı akış başına yapılır. Bu eylem aşağıdaki beş demet bağlantısına dayanır: 
+1. 
+    en yakın kullanılabilir uç noktayı arama
+  
+2. kaynak bağlantı noktası
+3. hedef IP adresi
+4. hedef bağlantı noktası
+5. protokol
+
+HA bağlantı noktaları Yük Dengeleme kuralları, sanal ağların içindeki ağ sanal gereçleri (NVA 'lar) için yüksek kullanılabilirlik ve ölçek gibi kritik senaryolarda size yardımcı olur. Bu özellik, çok sayıda bağlantı noktasının yük dengeli olması gerektiğinde da yardımcı olabilir.
+
+[Ha bağlantı noktaları](load-balancer-ha-ports-overview.md)hakkında daha fazla bilgi edinebilirsiniz.
+
 ## <a name="inbound-nat-rules"></a>Gelen NAT kuralları
 
 Gelen NAT kuralı, seçilen bir ön uç IP adresine ve bağlantı noktası birleşimine gönderilen gelen trafiği, arka uç havuzundaki **belirli** bir sanal makineye veya örneğe iletir. Bağlantı noktası iletme, Yük Dengeleme ile aynı karma tabanlı dağıtım tarafından yapılır.
 
 Örneğin, bir arka uç havuzundaki sanal makine örneklerinin Uzak Masaüstü Protokolü (RDP) veya Secure Shell (SSH) oturumlarını istiyorsanız. Aynı ön uç IP adresindeki bağlantı noktalarıyla birden çok iç uç nokta eşlenebilir. Ön uç IP adresleri, ek bir sıçrama kutusu olmadan sanal makinelerinizi uzaktan yönetmek için kullanılabilir.
 
+Sanal Makine Ölçek Kümeleri (VMSS) bağlamında gelen NAT kuralları gelen NAT havuzlarıdır. [Load Balancer bileşenleri ve VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#azure-virtual-machine-scale-sets-with-azure-load-balancer)hakkında daha fazla bilgi edinin.
+
 ## <a name="outbound-rules"></a>Giden kuralları
 
 Giden bir kural, arka uç havuzu tarafından tanımlanan tüm sanal makineler veya örnekler için giden ağ adresi çevirisi 'ni (NAT) yapılandırır. Bu, arka uçtaki örneklerin internet veya diğer uç noktalara iletişim kurmasını sağlar.
+
+[Giden bağlantılar ve kurallar](load-balancer-outbound-connections.md)hakkında daha fazla bilgi edinin.
 
 Temel yük dengeleyici giden kuralları desteklemez.
 
@@ -89,9 +110,6 @@ Temel yük dengeleyici giden kuralları desteklemez.
 - [Standart Load Balancer tanılama](load-balancer-standard-diagnostics.md)hakkında bilgi edinin.
 - [Boşta durumunda TCP sıfırlaması](load-balancer-tcp-reset.md)hakkında bilgi edinin.
 - [Ha bağlantı noktaları Yük Dengeleme kurallarıyla standart Load Balancer](load-balancer-ha-ports-overview.md)hakkında bilgi edinin.
-- [Birden çok ön uç IP yapılandırmasıyla Load Balancer](load-balancer-multivip-overview.md)kullanma hakkında bilgi edinin.
 - [Ağ güvenlik grupları](../virtual-network/security-overview.md)hakkında daha fazla bilgi edinin.
-- [Araştırma türleri](load-balancer-custom-probe-overview.md#types)hakkında bilgi edinin.
 - [Yük dengeleyici sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)hakkında daha fazla bilgi edinin.
 - [Bağlantı noktası iletmeyi](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)kullanma hakkında bilgi edinin.
-- [Yük dengeleyici giden kuralları](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)hakkında daha fazla bilgi edinin.

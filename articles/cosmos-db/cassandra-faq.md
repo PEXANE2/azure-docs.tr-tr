@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 7d4618382c31f0b1f2efa42fe87a6efe4bc85319
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 04708a307cd0eedfbe0510324930eb2327adf06e
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608260"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449745"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Azure Cosmos DB Cassandra API hakkında sık sorulan sorular
 
@@ -32,7 +32,7 @@ Bu makalede, Azure Cosmos DB içindeki Apache Cassandra ve Cassandra API arasın
 
 ### <a name="what-protocol-version-does-the-cassandra-api-support"></a>Cassandra API hangi protokol sürümü destekler?
 
-Azure Cosmos DB için Cassandra API CQL sürüm 3. x ' i destekler. CQL uyumluluğu, genel [Apache Cassandra GitHub deposuna](https://github.com/apache/cassandra/blob/trunk/doc/cql3/CQL.textile)dayalıdır. Diğer protokolleri destekleme hakkında geri bildiriminiz varsa, [Kullanıcı sesli geri bildirimi](https://feedback.azure.com/forums/263030-azure-cosmos-db) veya e-posta gönderme bilgilerini bizimle öğrenin [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com).
+Azure Cosmos DB için Cassandra API CQL sürüm 3. x ' i destekler. CQL uyumluluğu, genel [Apache Cassandra GitHub deposuna](https://github.com/apache/cassandra/blob/trunk/doc/cql3/CQL.textile)dayalıdır. Diğer protokolleri destekleme hakkında geri bildiriminiz varsa, [Kullanıcı sesli geri bildirimi](https://feedback.azure.com/forums/263030-azure-cosmos-db) veya e-posta gönderme bilgilerini bizimle öğrenin [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) .
 
 ### <a name="why-is-choosing-throughput-for-a-table-a-requirement"></a>Bir tablo gereksinimi için neden üretilen iş üretimi seçiliyor?
 
@@ -85,7 +85,7 @@ Evet, bölüm anahtarı varlığı doğru konuma yerleştirmek için kullanılı
 
 Azure Cosmos DB, hizmet düzeyi sözleşmesine (SLA) dayalı bir sistemdir. Gecikme süresi, aktarım hızı, kullanılabilirlik ve tutarlılık garantisi sayesinde sınırsız ölçek sağlar. Bu sınırsız depolama, anahtar kavram olarak bölümlendirme kullanılarak verilerin yatay ölçeğini temel alır. Bölümleme kavramı, [bölüm ve ölçek Azure Cosmos DB](partition-data.md) makalesinde de açıklanacaktır.
 
-Mantıksal bölüm başına varlık veya öğe sayısı için 10 GB sınırına uymalısınız. Uygulamanızın iyi ölçeklendirdiğinden emin olmak için, tüm bilgileri tek bir bölümde depolayarak ve sorgulayarak bir sıcak bölüm *oluşturmamalıdır* . Bu hata yalnızca verilerinizin eğriltilmiş olması halinde gelebilir: Yani, tek bir bölüm anahtarı (10&nbsp;GB 'tan fazla) için çok fazla veriniz olması yeterlidir. Depolama portalını kullanarak verilerin dağıtımını bulabilirsiniz. Bu hatayı gidermenin yolu, tabloyu yeniden oluşturmak ve verilerin daha iyi dağıtımına izin veren parçalı bir birincil (bölüm anahtarı) seçmek.
+Mantıksal bölüm başına varlık veya öğe sayısı için 10 GB sınırına uymalısınız. Uygulamanızın iyi ölçeklendirdiğinden emin olmak için, tüm bilgileri tek bir bölümde depolayarak ve sorgulayarak bir sıcak bölüm *oluşturmamalıdır* . Bu hata yalnızca verilerinizin eğriltilmiş olması halinde gelebilir: Yani, tek bir bölüm anahtarı (10 GB 'tan fazla) için çok fazla veriniz olması yeterlidir &nbsp; . Depolama portalını kullanarak verilerin dağıtımını bulabilirsiniz. Bu hatayı gidermenin yolu, tabloyu yeniden oluşturmak ve verilerin daha iyi dağıtımına izin veren parçalı bir birincil (bölüm anahtarı) seçmek.
 
 ### <a name="can-i-use-the-cassandra-api-as-a-key-value-store-with-millions-or-billions-of-partition-keys"></a>Cassandra API milyonlarca veya milyarlarca bölüm anahtarı içeren bir anahtar değer deposu olarak kullanabilir miyim?
 
@@ -101,11 +101,11 @@ Azure Cosmos DB hem veri hem de denetim düzlemi etkinlikleri için kaynak taraf
 
 ### <a name="what-is-the-maximum-number-of-tables-that-i-can-create"></a>Oluşturabileceğiniz en fazla tablo sayısı nedir?
 
-Tablo sayısında fiziksel sınır yoktur. Çok sayıda tablonuz varsa (Toplam sabit boyutun 10 TB 'den fazla olması), her zamanki on veya yüzlerce, e-posta gönderilmesi gerekir [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com).
+Tablo sayısında fiziksel sınır yoktur. Çok sayıda tablonuz varsa (Toplam sabit boyutun 10 TB 'den fazla olması), her zamanki on veya yüzlerce, e-posta gönderilmesi gerekir [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) .
 
 ### <a name="what-is-the-maximum-number-of-keyspaces-that-i-can-create"></a>Oluşturabileceğiniz en fazla keyboşluk sayısı nedir?
 
-Anahtar uzayları sayısında, meta veri kapsayıcıları olduklarından fiziksel sınır yoktur. Çok sayıda keyspaces varsa, e-posta gönderin [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com).
+Anahtar uzayları sayısında, meta veri kapsayıcıları olduklarından fiziksel sınır yoktur. Çok sayıda keyspaces varsa, e-posta gönderin [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) .
 
 ### <a name="can-i-bring-in-a-lot-of-data-after-starting-from-a-normal-table"></a>Normal bir tablodan başlattıktan sonra çok miktarda veri getirebilir miyim?
 
@@ -133,7 +133,7 @@ Evet, TTL destekleniyor.
 
 ### <a name="how-can-i-monitor-infrastructure-along-with-throughput"></a>İş verimini birlikte altyapıyı nasıl izleyebilirim?
 
-Azure Cosmos DB, altyapıyı yönetme ve izleme konusunda endişelenmenize yardımcı olan bir platform hizmetidir. Örneğin, daha önce çeşitli araçlarla düğüm durumu, çoğaltma durumu, GC ve işletim sistemi parametrelerini izlemeniz gerekmez. Yalnızca, kısıtlı olup olmadığını görmek için Portal ölçümlerinde bulunan aktarım hızını bilmeniz ve daha sonra bu iş üretimini artırabilir veya azaltabilirsiniz. Şunları yapabilirsiniz:
+Azure Cosmos DB, altyapıyı yönetme ve izleme konusunda endişelenmenize yardımcı olan bir platform hizmetidir. Örneğin, daha önce çeşitli araçlarla düğüm durumu, çoğaltma durumu, GC ve işletim sistemi parametrelerini izlemeniz gerekmez. Yalnızca, kısıtlı olup olmadığını görmek için Portal ölçümlerinde bulunan aktarım hızını bilmeniz ve daha sonra bu iş üretimini artırabilir veya azaltabilirsiniz. Seçenekleriniz şunlardır:
 
 - [SLA 'ları](monitor-accounts.md) izleme
 - [Ölçümleri](use-metrics.md) kullanma
@@ -141,7 +141,7 @@ Azure Cosmos DB, altyapıyı yönetme ve izleme konusunda endişelenmenize yard�
 
 ### <a name="which-client-sdks-can-work-with-the-cassandra-api"></a>Cassandra API hangi istemci SDK 'Ları çalışabilir?
 
-CQLv3 kullanan Apache Cassandra SDK istemci sürücüleri istemci programları için kullanılmıştır. Kullandığınız başka sürücüleriniz varsa veya sorun yaşıyorsanız, adresine e [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)-posta gönderin.
+CQLv3 kullanan Apache Cassandra SDK istemci sürücüleri istemci programları için kullanılmıştır. Kullandığınız başka sürücüleriniz varsa veya sorun yaşıyorsanız, adresine e-posta gönderin [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) .
 
 ### <a name="are-composite-partition-keys-supported"></a>Bileşik bölüm anahtarları destekleniyor mu?
 
@@ -153,13 +153,13 @@ Hayır, sstableloader desteklenmez.
 
 ### <a name="can-i-pair-an-on-premises-apache-cassandra-cluster-with-the-cassandra-api"></a>Şirket içi Apache Cassandra kümesini Cassandra API ile değiştirebilir miyim?
 
-Azure Cosmos DB, bir bulut ortamında işlem yükü olmadan en iyi duruma getirilmiş bir deneyim sunar. Eşleştirme gerektiriyorsa, senaryonuzun bir açıklamayla e [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) -posta gönderin. Şirket içi veya bulut Cassandra kümesini Azure Cosmos DB Cassandra API ile eşleştirmeye yardımcı olmaya yönelik bir sunum üzerinde çalışıyoruz.
+Azure Cosmos DB, bir bulut ortamında işlem yükü olmadan en iyi duruma getirilmiş bir deneyim sunar. Eşleştirme gerektiriyorsa, [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) senaryonuzun bir açıklamayla e-posta gönderin. Şirket içi veya bulut Cassandra kümesini Azure Cosmos DB Cassandra API ile eşleştirmeye yardımcı olmaya yönelik bir sunum üzerinde çalışıyoruz.
 
 ### <a name="does-the-cassandra-api-provide-full-backups"></a>Cassandra API tam yedeklemeler sağlar mi?
 
 Azure Cosmos DB, tüm API 'lerde dört saatlik aralıklarla gerçekleştirilen iki ücretsiz tam yedekleme sağlar. Bu nedenle, bir yedekleme zamanlaması ayarlamanız gerekmez. 
 
-Bekletme ve sıklığı değiştirmek istiyorsanız, e-posta gönderin [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) veya bir destek talebi yükseltin. Yedekleme özelliği hakkında bilgi, [Azure Cosmos DB makalesinde otomatik çevrimiçi yedekleme ve geri yükleme](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) bölümünde verilmiştir.
+Bekletme ve sıklığı değiştirmek istiyorsanız, e-posta gönderin [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) veya bir destek talebi yükseltin. Yedekleme özelliği hakkında bilgi, [Azure Cosmos DB makalesinde otomatik çevrimiçi yedekleme ve geri yükleme](online-backup-and-restore.md) bölümünde verilmiştir.
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Bir bölge aşağı gittiğinde Cassandra API hesabı yük devretmeyi nasıl işler?
 

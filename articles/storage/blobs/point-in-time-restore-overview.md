@@ -10,12 +10,12 @@ ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 3af87af0dca34b6587cf92bcc65568ad6dd943be
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 513f0240296debb5e878461ed1ca7cffecad760a
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324309"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463000"
 ---
 # <a name="point-in-time-restore-for-block-blobs-preview"></a>Blok Blobları için noktadan noktaya geri yükleme (Önizleme)
 
@@ -85,7 +85,7 @@ Aşağıdaki bölgeler önizlemede bir noktaya geri yüklemeyi destekler:
 Önizleme aşağıdaki sınırlamaları içerir:
 
 - Premium blok bloblarının geri yüklenmesi desteklenmez.
-- Arşiv katmanındaki Blobların geri yüklenmesi desteklenmez. Örneğin, sık kullanılan katmandaki bir blob arşiv katmanına iki gün önce taşınmışsa ve geri yükleme işlemi üç gün önce bir noktaya geri yüklenirse, blob etkin katmana geri yüklenmez.
+- Arşiv katmanındaki blobları geri yükleme desteklenmez. Örneğin, sık erişim katmanındaki bir blob iki gün önce arşiv katmanına taşınmışsa ve geri yükleme işlemi üç gün önceki bir noktaya geri yüklüyorsa blob sık erişim katmanına geri yüklenmez.
 - Azure Data Lake Storage 2. düz ve hiyerarşik ad alanlarını geri yükleme desteklenmez.
 - Müşteri tarafından belirtilen anahtarlar kullanılarak depolama hesaplarının geri yüklenmesi desteklenmez.
 
@@ -122,7 +122,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 ### <a name="check-registration-status"></a>Kayıt durumunu denetle
 
-Kaydlarınızın durumunu denetlemek için aşağıdaki komutları çalıştırın:
+Zaman içinde nokta geri yükleme kaydı otomatiktir ve 10 dakikadan kısa sürer. Kaydlarınızın durumunu denetlemek için aşağıdaki komutları çalıştırın:
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell

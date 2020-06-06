@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: 202acff5bae87174781dc6c914bebf0494dfcf05
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: da7164fbf9148764ef8da0205b147b0fd188de9d
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871445"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457261"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Azure PowerShell kullanarak hızlandırılmış ağlarla bir Windows sanal makinesi oluşturma
 
@@ -98,7 +98,7 @@ Ağ arabirimi bilgilerinde, **hızlandırılmış ağ** etiketinin yanındaki Po
 
 ## <a name="vm-creation-using-powershell"></a>PowerShell kullanarak VM oluşturma
 
-Devam etmeden önce [Azure PowerShell](/powershell/azure/install-az-ps) Version 1.0.0 veya üstünü yükleyebilirsiniz. Yüklü olan sürümünüzü bulmak için çalıştırın `Get-Module -ListAvailable Az`. Yüklemeniz veya yükseltmeniz gerekiyorsa, [PowerShell Galerisi](https://www.powershellgallery.com/packages/Az)az modülünün en son sürümünü yüklemeniz gerekir. PowerShell oturumunda, [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount)komutunu kullanarak bir Azure hesabında oturum açın.
+Devam etmeden önce [Azure PowerShell](/powershell/azure/install-az-ps) Version 1.0.0 veya üstünü yükleyebilirsiniz. Yüklü olan sürümünüzü bulmak için çalıştırın `Get-Module -ListAvailable Az` . Yüklemeniz veya yükseltmeniz gerekiyorsa, [PowerShell Galerisi](https://www.powershellgallery.com/packages/Az)az modülünün en son sürümünü yüklemeniz gerekir. PowerShell oturumunda, [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount)komutunu kullanarak bir Azure hesabında oturum açın.
 
 Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. *Myresourcegroup*, *MYNIC*ve *myvm*dahil olmak üzere örnek parametre adları.
 
@@ -244,7 +244,7 @@ VM 'yi Azure 'da oluşturduktan sonra VM 'ye bağlanın ve Ethernet denetleyicis
 
 3. VM 'ye Genel Bakış sayfasında, sanal makinenin **durumu** **oluşturma**olarak listeleniyorsa, Azure VM oluşturmayı bitirene kadar bekleyin. VM **Status** oluşturma işlemi tamamlandıktan sonra durum **çalışıyor** olarak değiştirilir.
 
-4. VM 'ye genel bakış araç çubuğundan **Bağlan** > **RDP** > RDP**indirme RDP dosyasını**seçin.
+4. VM 'ye genel bakış araç çubuğundan **Bağlan**  >  **RDP**  >  **indirme RDP dosyasını**seçin.
 
 5. . Rdp dosyasını açın ve ardından VM 'de [sanal makine oluşturma ve ağ arabirimi iliştirme](#create-a-vm-and-attach-the-network-interface) bölümüne girdiğiniz kimlik bilgileriyle oturum açın. Azure 'da bir Windows sanal makinesine hiç bağlanmadıysanız, bkz. [sanal makineye bağlanma](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine).
 
@@ -327,7 +327,7 @@ Bir sanal makine ölçek kümesi biraz farklıdır, ancak aynı iş akışını 
 3. Değişikliklerin hemen çekilmesi için uygulanan güncelleştirmeleri otomatik olarak ayarlayın:
 
     ```azurepowershell
-    $vmss.UpgradePolicy.AutomaticOSUpgrade = $true
+    $vmss.UpgradePolicy.Mode = "Automatic"
     
     Update-AzVmss -ResourceGroupName "myResourceGroup" `
         -VMScaleSetName "myScaleSet" `

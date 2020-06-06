@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2020
 ms.author: spelluru
-ms.openlocfilehash: 5c2ea38dfa799239adde158506e1359fb84adcc4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 751d55493b1bdb06dfe61d9f951846e13e1e5d72
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650525"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457193"
 ---
 # <a name="classroom-lab-setup-guide"></a>Sınıf Laboratuvarı Kurulum Kılavuzu
 
@@ -137,7 +137,7 @@ Sınıfınızın laboratuvarınızın gereksinimlerini anladıktan sonra, ayarla
 1. **Panoyu kullanın.** Yönergeler için bkz. [Laboratuvar panosunu kullanma](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard).
 
     > [!NOTE]
-    > Panoda gösterilen tahmini maliyet, laboratuvarın öğrencilerinin kullanımı için tahmin edebileceğiniz maksimum maliyettir. Örneğin, öğrencileriniz tarafından *not* kullanılmayan kota saatleri için ücretlendirilmeyecektir. Tahmini maliyetler, şablon VM 'si veya paylaşılan görüntü Galerisi 'ni kullanma *ücretini yansıtmaz.*
+    > Panoda gösterilen tahmini maliyet, laboratuvarın öğrencilerinin kullanımı için tahmin edebileceğiniz maksimum maliyettir. Örneğin, öğrencileriniz tarafından *not* kullanılmayan kota saatleri için ücretlendirilmeyecektir. Tahmini maliyetler, şablon VM 'si, paylaşılan görüntü Galerisi veya laboratuvar Oluşturucu bir Kullanıcı makinesini başlattığında herhangi bir ücret *yansıtmazlar* .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

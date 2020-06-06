@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, güncelleştirme yönetimi, değişiklik izleme, envanter, runbook 'lar, Python, grafik, karma
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: 95a01db7d4d889df4695390bfd0d01510d83a817
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c9e69e221dc21baae96ab814cb9fb0b65ce98126
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648051"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449490"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Sunucular için Azure Arc nedir (Önizleme)
 
@@ -37,9 +37,10 @@ Sunucular için Azure Arc (Önizleme) bağlı makinelerle aşağıdaki senaryola
 
 Sunucular için Azure Arc (Önizleme) ile yalnızca belirli bölgeler desteklenir:
 
+- EastUS
 - WestUS2
 - WestEurope
-- Westasıya
+- Güneydoğu
 
 Çoğu durumda, yükleme betiğini oluştururken seçtiğiniz konum coğrafi olarak makinenizin konumuna en yakın olan Azure bölgesi olmalıdır. Bekleyen veriler, belirttiğiniz bölgeyi içeren Azure Coğrafya içinde depolanır ve bu da veri yerleşimi gereksinimleriniz varsa bölge seçiminizi de etkileyebilir. Makinenizin bağlandığı Azure bölgesi bir kesinti nedeniyle etkileniyorsa, bağlı makine etkilenmez, ancak Azure 'u kullanan yönetim işlemleri tamamlanmayabilir. Bölgesel bir kesinti durumunda esnekliği için, coğrafi olarak yedekli bir hizmet sağlayan birden çok konumunuz varsa, her konumdaki makineleri farklı bir Azure bölgesine bağlamak en iyisidir.
 

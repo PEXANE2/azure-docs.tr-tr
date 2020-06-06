@@ -4,19 +4,19 @@ description: Azure AD Kimlik Koruması Multi-Factor Authentication kayıt ilkesi
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 10/18/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fa6a4cf184b426355f62117ea51642127eee529
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4c6b57eaa2a68906053faade48dd0e63fbf0db7
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74382136"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464343"
 ---
 # <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>Nasıl yapılır: Azure Multi-Factor Authentication kayıt ilkesini yapılandırma
 
@@ -36,16 +36,16 @@ Azure Multi-Factor Authentication hakkında daha fazla bilgi için bkz. [azure M
 ## <a name="policy-configuration"></a>İlke yapılandırması
 
 1. [Azure portalına](https://portal.azure.com) gidin.
-1. **Azure Active Directory** > **Security**güvenlik > **kimlik**koruması > **MFA kayıt ilkesi**' ne gidin.
+1. **Azure Active Directory**  >  **güvenlik**  >  **kimlik koruması**  >  **MFA kayıt ilkesi**' ne gidin.
    1. **Atamalar** altında
       1. **Kullanıcılar** - **tüm kullanıcılar** ' ı seçin veya dağıtımı sınırlandırdıysanız **bireyler ve gruplar ' ı seçin** .
          1. İsteğe bağlı olarak, kullanıcıların ilkeden hariç tutulmasını seçebilirsiniz.
    1. **Denetimler** altında
       1. CheckBox 'ın **Azure MFA kaydının** seçili olduğundan emin olun ve **Seç ' i**seçin.
-   1. **İlkeyi zorla** - **On**
+   1. **Ilkeyi zorla**  -  **Üzerinde**
    1. **Kaydet**
 
-## <a name="user-experience"></a>Kullanıcı deneyimleri
+## <a name="user-experience"></a>Kullanıcı deneyimi
 
 Azure Active Directory Kimlik Koruması, kullanıcılarınıza etkileşimli olarak oturum açtıklarında kaydolmaları istenir ve kayıt işleminin tamamlanışında 14 gün daha olur. Bu 14 günlük süre boyunca kayıt atlayabilir, ancak sürenin sonunda oturum açma işlemini tamamlayabilmeleri için önce kaydolmaları gerekecektir.
 

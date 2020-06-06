@@ -4,16 +4,16 @@ description: .NET istemci kitaplığını kullanarak Azure Storage hesabınızda
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 03/30/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 76142838d1ec138b75fb6c594414b2ff5d8cd939
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: 0f0b3488bd34a31002449b9b7635064d5d835072
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883303"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465584"
 ---
 # <a name="list-blobs-with-net"></a>.NET ile Blobları listeleme
 
@@ -24,6 +24,15 @@ Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overvie
 ## <a name="understand-blob-listing-options"></a>Blob listeleme seçeneklerini anlama
 
 Blob 'ları bir depolama hesabında listelemek için şu yöntemlerden birini çağırın:
+
+# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+
+- [BlobContainerClient. Getbloblar](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs?view=azure-dotnet)
+- [BlobContainerClient. GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync?view=azure-dotnet)
+- [BlobContainerClient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)
+- [BlobContainerClient. Getblobsbyhiyerarşik Yasync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet)
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 - [CloudBlobClient. Listblob 'Lar](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobs)
 - [CloudBlobClient. Listblobskesimli](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmented)
@@ -37,21 +46,27 @@ Bir kapsayıcıdaki Blobları listelemek için şu yöntemlerden birini çağır
 
 Bu yöntemlerin aşırı yüklemeleri, Blobların listeleme işlemi tarafından nasıl döndürüldüğünü yönetmek için ek seçenekler sağlar. Bu seçenekler aşağıdaki bölümlerde açıklanmıştır.
 
+---
+
 ### <a name="manage-how-many-results-are-returned"></a>Kaç sonuç döndürüldüğünü yönetin
 
-Varsayılan olarak, bir listeleme işlemi bir seferde en fazla 5000 sonuç döndürür. Daha küçük bir sonuç kümesi döndürmek için, **Listblobları** yöntemlerinden birini çağırırken `maxresults` parametresi için sıfır dışında bir değer sağlayın.
+Varsayılan olarak, bir listeleme işlemi bir seferde en fazla 5000 sonuç döndürür, ancak her listeleme işleminin dönmesini istediğiniz sonuç sayısını belirtebilirsiniz. Bu makalede sunulan örneklerde bunun nasıl yapılacağı gösterilmektedir.
 
-Bir listeleme işlemi 5000 'den fazla BLOB döndürürse ya da listeleme işlemi depolama hesabındaki kapsayıcıların bir alt kümesini `maxresults` döndürdüğünde bu şekilde bir değer belirttiyseniz Azure Storage, blob 'ların listesini içeren bir *devamlılık belirteci* döndürür. Devamlılık belirteci, Azure depolama 'nın bir sonraki sonuç kümesini almak için kullanabileceğiniz donuk bir değerdir.
+Bir listeleme işlemi 5000 'den fazla BLOB döndürürse veya kullanılabilir BLOB sayısı belirttiğiniz sayıyı aşarsa Azure Storage, blob 'ların listesini içeren bir *devamlılık belirteci* döndürür. Devamlılık belirteci, Azure depolama 'nın bir sonraki sonuç kümesini almak için kullanabileceğiniz donuk bir değerdir.
 
 Kodunuzda, null olup olmadığını anlamak için devamlılık belirtecinin değerini denetleyin. Devamlılık belirteci null olduğunda, sonuç kümesi tamamlanır. Devamlılık belirteci null değilse, devamlılık belirteci null olana kadar, sonraki sonuç kümesini almak için devamlılık belirtecini geçirerek Listeleme işlemini yeniden çağırın.
 
 ### <a name="filter-results-with-a-prefix"></a>Sonuçları bir ön eke göre filtrele
 
-Kapsayıcılar listesini filtrelemek için, `prefix` parametre için bir dize belirtin. Ön ek dizesi bir veya daha fazla karakter içerebilir. Daha sonra Azure Storage yalnızca adları bu önek ile başlayan blob 'ları döndürür.
+Kapsayıcılar listesini filtrelemek için, parametre için bir dize belirtin `prefix` . Ön ek dizesi bir veya daha fazla karakter içerebilir. Daha sonra Azure Storage yalnızca adları bu önek ile başlayan blob 'ları döndürür.
 
 ### <a name="return-metadata"></a>Meta veri döndür
 
-Sonuçlara blob meta verileri döndürmek için [Bloblistingdetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) numaralandırması Için **meta veri** değerini belirtin. Azure depolama, her blob döndürülen meta verileri içerir, bu nedenle blob meta verilerini almak için bu bağlamdaki **Fetchattributes** yöntemlerinden birini çağırmanız gerekmez.
+Sonuçlarla blob meta verileri döndürebilirsiniz. 
+
+- .NET V12 SDK kullanıyorsanız [Blobnitelikleri](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits?view=azure-dotnet) numaralandırması Için **meta veri** değerini belirtin.
+
+- .NET v11 SDK kullanıyorsanız, [Bloblistingdetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) numaralandırması Için **meta veri** değerini belirtin. Azure depolama, her blob döndürülen meta verileri içerir, bu nedenle blob meta verilerini almak için bu bağlamdaki **Fetchattributes** yöntemlerinden birini çağırmanız gerekmez.
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>Düz liste ve hiyerarşik listeye karşı
 
@@ -66,6 +81,12 @@ Bloblarınızı bir sınırlayıcı kullanarak adlandırın, Blobları hiyerarş
 Varsayılan olarak, bir listeleme işlemi blob 'ları düz bir listede döndürür. Düz bir listede, Bloblar sanal dizin tarafından düzenlenmez.
 
 Aşağıdaki örnek, bir düz liste kullanarak belirtilen kapsayıcıdaki Blobları listeler ve isteğe bağlı bir kesim boyutu belirtildi ve BLOB adını bir konsol penceresine yazar.
+
+# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsFlatListing":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)
@@ -85,7 +106,6 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 
             foreach (var blobItem in resultSegment.Results)
             {
-                // A flat listing operation returns only blobs, not virtual directories.
                 blob = (CloudBlob)blobItem;
 
                 // Write out some blob properties.
@@ -108,6 +128,8 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 }
 ```
 
+---
+
 Örnek çıkış şuna benzerdir:
 
 ```
@@ -126,7 +148,17 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 
 Bir Listeleme işlemini hiyerarşik olarak çağırdığınızda, Azure Storage hiyerarşinin ilk düzeyindeki sanal dizinleri ve Blobları döndürür. Her sanal dizinin [önek](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) özelliği, bir sonraki dizini almak için bir özyinelemeli çağrıda öneki geçirebilmeniz için ayarlanır.
 
-Blobları hiyerarşik olarak listelemek için, `useFlatBlobListing` listeleme yönteminin parametresini **false**olarak ayarlayın.
+# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+
+Blobları hiyerarşik olarak listelemek için [blobcontainerclient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)veya [Blobcontainerclient. Getblobsbysıradüzenli yasync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet) yöntemini çağırın.
+
+Aşağıdaki örnek, belirtilen kapsayıcıdaki Blobları, isteğe bağlı bir kesim boyutuyla belirtilen hiyerarşik bir liste kullanılarak listeler ve BLOB adını konsol penceresine yazar.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsHierarchicalListing":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
+Blobları hiyerarşik olarak listelemek için, `useFlatBlobListing` Listeleme yönteminin parametresini **false**olarak ayarlayın.
 
 Aşağıdaki örnek, bir düz liste kullanarak belirtilen kapsayıcıdaki Blobları listeler ve isteğe bağlı bir kesim boyutu belirtildi ve BLOB adını konsol penceresine yazar.
 
@@ -182,6 +214,8 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
     }
 }
 ```
+
+---
 
 Örnek çıkış şuna benzerdir:
 

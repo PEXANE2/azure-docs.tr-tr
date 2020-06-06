@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a62cd4ad6d992d8994fbd3e66bd0b90e45aa213
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b308e5d74f1a87ea1cebed26f602780307c77d35
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636992"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447926"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkenizde REST API talep alışverişlerini tümleştirin
 
@@ -32,6 +32,9 @@ Azure AD B2C kullanarak, kendi iş mantığınızı Kullanıcı yolculuğuna ekl
 - **Özel iş mantığını çalıştırın**. Anında iletme bildirimleri gönderebilir, kurumsal veritabanlarını güncelleştirebilir, bir kullanıcı geçiş işlemi çalıştırabilir, izinleri yönetebilir, veritabanlarını denetleyebilir ve diğer iş akışlarını gerçekleştirebilirsiniz.
 
 ![Yeniden takip eden bir hizmet talebi değişimi diyagramı](media/custom-policy-rest-api-intro/restful-service-claims-exchange.png)
+
+> [!NOTE]
+> Yeniden Azure AD B2C için kalan hizmetten yavaş veya hiç yanıt yoksa, zaman aşımı 30 saniyedir ve yeniden deneme sayısı 2 kez olur (toplamda 3 deneme olur). Zaman aşımı ve yeniden deneme sayısı ayarları şu anda yapılandırılamaz.
 
 ## <a name="calling-a-restful-service"></a>Yeniden bir hizmet çağırma
 

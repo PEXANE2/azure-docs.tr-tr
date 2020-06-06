@@ -3,12 +3,12 @@ title: Azure geçişi sunucu değerlendirmesi 'nde bağımlılık Analizi
 description: Azure geçişi sunucu değerlendirmesi kullanılarak değerlendirme için bağımlılık analizinin nasıl kullanılacağını açıklar.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: f0b956620895ae2264b53916015d440f5e586eb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b269322f5426a68b072452bc2f79531685be3742
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024770"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447586"
 ---
 # <a name="dependency-analysis"></a>Bağımlılık Analizi
 
@@ -70,7 +70,7 @@ Log Analytics | Gerekli değildir. | Azure geçişi, bağımlılık analizi içi
 Nasıl çalışır? | Bağımlılık görselleştirmesi için etkinleştirilen makinelerde TCP bağlantı verilerini yakalar. Bulmadan sonra, verileri beş dakikalık aralıklarla toplar. | Bir makineye yüklü Hizmet Eşlemesi aracılar, her bir işlem için TCP işlemleri ve gelen/giden bağlantılarla ilgili verileri toplar.
 Veriler | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef makine sunucu adı, işlem, uygulama adı ve bağlantı noktası. | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef makine sunucu adı, işlem, uygulama adı ve bağlantı noktası.<br/><br/> Bağlantı sayısı, gecikme süresi ve veri aktarımı bilgilerinin toplanması ve Log Analytics sorguları için kullanılabilir olması. 
 Görselleştirme | Tek bir sunucunun bağımlılık eşlemesi, bir saat ile 30 güne kadar bir süre içinde görüntülenebilir. | Tek bir sunucunun bağımlılık eşlemesi.<br/><br/> Eşleme, yalnızca bir saat boyunca görüntülenebilir.<br/><br/> Bir sunucu grubunun bağımlılık eşlemesi.<br/><br/> Harita görünümünden bir gruptaki sunucuları ekleyin ve kaldırın.
-Veri dışarı aktarma | Şu anda tablolu biçimde indirilemez. | Veriler, Log Analytics ile sorgulanabilir.
+Veri dışarı aktarma | Son 30 günlük veri, CSV biçiminde indirilebilir. | Veriler, Log Analytics ile sorgulanabilir.
 
 
 

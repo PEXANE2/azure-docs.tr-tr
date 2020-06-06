@@ -5,21 +5,21 @@ author: normesta
 ms.service: storage
 ms.date: 03/20/2020
 ms.author: normesta
-ms.topic: article
+ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: b83d0d2d765b60585832f1a3e7c610f05eac075c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc2013a3875c74a1371196cacb0096356cf3ffdf
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061575"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466128"
 ---
 # <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. içindeki dizinleri, dosyaları ve ACL 'Leri yönetmek için .NET kullanın
 
 Bu makalede, .NET kullanarak hiyerarşik ad alanı (HNS) etkinleştirilmiş depolama hesaplarında Dizin, dosya ve izinleri oluşturma ve bunları yönetme işlemi gösterilmektedir. 
 
-[Package (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake) | [örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake) | [API başvurusu](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake) | [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md) | [geri bildirimde](https://github.com/Azure/azure-sdk-for-net/issues) bulunun
+[Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)  |  [API başvurusu](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake)  |  [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)  |  [Geri bildirimde](https://github.com/Azure/azure-sdk-for-net/issues) bulunun
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -95,7 +95,7 @@ public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceCl
 
 Dosya sistemi dosyalarınız için bir kapsayıcı olarak davranır. [DataLakeServiceClient. CreateFileSystem](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient.createfilesystemasync) metodunu çağırarak bir tane oluşturabilirsiniz.
 
-Bu örnek adlı `my-file-system`bir dosya sistemi oluşturur. 
+Bu örnek adlı bir dosya sistemi oluşturur `my-file-system` . 
 
 ```cs
 public async Task<DataLakeFileSystemClient> CreateFileSystem
@@ -109,7 +109,7 @@ public async Task<DataLakeFileSystemClient> CreateFileSystem
 
 [Datalakefilesystemclient. CreateDirectoryAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.createdirectoryasync) yöntemini çağırarak bir dizin başvurusu oluşturun.
 
-Bu örnek, bir dosya sistemine `my-directory` adlı bir dizin ekler ve sonra adlı `my-subdirectory`bir alt dizin ekler. 
+Bu örnek `my-directory` , bir dosya sistemine adlı bir dizin ekler ve sonra adlı bir alt dizin ekler `my-subdirectory` . 
 
 ```cs
 public async Task<DataLakeDirectoryClient> CreateDirectory
@@ -129,7 +129,7 @@ public async Task<DataLakeDirectoryClient> CreateDirectory
 
 [Datalakedirectoryclient. RenameAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.renameasync) yöntemini çağırarak bir dizini yeniden adlandırın veya taşıyın. İstenen dizinin yolunu bir parametre olarak geçirin. 
 
-Bu örnek, bir alt dizini ada `my-subdirectory-renamed`yeniden adlandırır.
+Bu örnek, bir alt dizini ada yeniden adlandırır `my-subdirectory-renamed` .
 
 ```cs
 public async Task<DataLakeDirectoryClient> 
@@ -142,7 +142,7 @@ public async Task<DataLakeDirectoryClient>
 }
 ```
 
-Bu örnek adlı dizini adlı `my-subdirectory-renamed` `my-directory-2`bir dizinin alt dizinine taşır. 
+Bu örnek adlı dizini adlı bir `my-subdirectory-renamed` dizinin alt dizinine taşır `my-directory-2` . 
 
 ```cs
 public async Task<DataLakeDirectoryClient> MoveDirectory
@@ -159,7 +159,7 @@ public async Task<DataLakeDirectoryClient> MoveDirectory
 
 [Datalakedirectoryclient. Delete](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.delete) yöntemini çağırarak bir dizini silin.
 
-Bu örnek adlı `my-directory`bir dizini siler.  
+Bu örnek adlı bir dizini siler `my-directory` .  
 
 ```cs
 public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient)
@@ -178,7 +178,7 @@ public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient)
 > [!NOTE]
 > Uygulamanız Azure Active Directory (Azure AD) kullanarak erişim yetkisi alıyorsa, uygulamanızın erişim yetkisi vermek için kullandığı güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için [Azure Data Lake Storage 2. erişim denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)' ne bakın. 
 
-Bu örnek, adlı `my-directory`BIR dizinin ACL 'sini alır ve ayarlar. Dize `user::rwx,group::r-x,other::rw-` , sahip olan kullanıcıya okuma, yazma ve yürütme izinleri verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma ve yazma izinlerini verir.
+Bu örnek, adlı bir dizinin ACL 'sini alır ve ayarlar `my-directory` . Dize, `user::rwx,group::r-x,other::rw-` sahip olan kullanıcıya okuma, yazma ve yürütme izinleri verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma ve yazma izinlerini verir.
 
 ```cs
 public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
@@ -205,7 +205,7 @@ public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
 
 İlk olarak, [Datalakefileclient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient) sınıfının bir örneğini oluşturarak hedef dizinde bir dosya başvurusu oluşturun. [Datalakefileclient. Appendadsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.appendasync) yöntemini çağırarak bir dosyayı karşıya yükleyin. [Datalakefileclient. FlushAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.flushasync) yöntemini çağırarak karşıya yüklemeyi tamamladığınızdan emin olun.
 
-Bu örnek, adlı `my-directory`bir dizine bir metin dosyası yükler.    
+Bu örnek, adlı bir dizine bir metin dosyası yükler `my-directory` .    
 
 ```cs
 public async Task UploadFile(DataLakeFileSystemClient fileSystemClient)
@@ -260,7 +260,7 @@ public async Task UploadFileBulk(DataLakeFileSystemClient fileSystemClient)
 > [!NOTE]
 > Uygulamanız Azure Active Directory (Azure AD) kullanarak erişim yetkisi alıyorsa, uygulamanızın erişim yetkisi vermek için kullandığı güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için [Azure Data Lake Storage 2. erişim denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)' ne bakın. 
 
-Bu örnek, adlı `my-file.txt`BIR dosyanın ACL 'sini alır ve ayarlar. Dize `user::rwx,group::r-x,other::rw-` , sahip olan kullanıcıya okuma, yazma ve yürütme izinleri verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma ve yazma izinlerini verir.
+Bu örnek, adlı bir dosyanın ACL 'sini alır ve ayarlar `my-file.txt` . Dize, `user::rwx,group::r-x,other::rw-` sahip olan kullanıcıya okuma, yazma ve yürütme izinleri verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma ve yazma izinlerini verir.
 
 ```cs
 public async Task ManageFileACLs(DataLakeFileSystemClient fileSystemClient)
@@ -327,7 +327,7 @@ public async Task DownloadFile(DataLakeFileSystemClient fileSystemClient)
 
 [Filesystemclient. GetPathsAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getpathsasync) yöntemini çağırarak ve sonra sonuçlar arasında sıralama yaparak dizin içeriğini listeleyin.
 
-Bu örnek, adlı `my-directory`bir dizinde bulunan her bir dosyanın adını yazdırır.
+Bu örnek, adlı bir dizinde bulunan her bir dosyanın adını yazdırır `my-directory` .
 
 ```cs
 public async Task ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient)

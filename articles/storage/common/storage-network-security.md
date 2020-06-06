@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 06/04/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 4b72f94548a5222fcb950141e983007efde7fe4e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: aff731b310010a23d4e1e514493cd32398dd3cfd
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871197"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465856"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -223,7 +223,7 @@ Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için s
     ```
 
     > [!TIP]
-    > Başka bir Azure AD kiracısına ait olan VNet 'teki bir alt ağa yönelik bir kural eklemek için, "/Subscriptions/ \< Subscription-ID \> /ResourceGroups/ \< resourceGroup-Name \> /providers/Microsoft.Network/virtualNetworks/ \< VNET-Name \> /Subnets/ \< subnet-Name \> " biçiminde tam bir alt ağ kimliği kullanın.
+    > Başka bir Azure AD kiracısına ait olan bir sanal ağa yönelik bir kural eklemek için, "/Subscriptions/ \<subscription-ID\> /ResourceGroups/ \<resourceGroup-Name\> /providers/Microsoft.Network/virtualNetworks/ \<vNet-name\> /Subnets/" biçiminde tam bır alt ağ kimliği kullanın \<subnet-name\> .
     >
     > Başka bir Azure AD kiracısına ait olan bir sanal ağın alt ağ KIMLIĞINI almak için **abonelik** parametresini kullanabilirsiniz.
 
@@ -377,11 +377,11 @@ Bazı Microsoft Hizmetleri, ağ kurallarınıza dahil olmayan ağlardan çalış
 | Azure DevTest Labs       | Microsoft. DevTestLab       | Özel görüntü oluşturma ve yapıt yüklemesi. [Daha fazla bilgi edinin](/azure/devtest-lab/devtest-lab-overview). |
 | Azure Event Grid         | Microsoft. EventGrid        | Blob Storage olay yayımlamayı etkinleştirin ve Event Grid depolama sıralarında yayımlamaya izin verin. [BLOB depolama olayları](/azure/event-grid/event-sources) ve [kuyruklarda yayımlama](/azure/event-grid/event-handlers)hakkında bilgi edinin. |
 | Azure Event Hubs         | Microsoft. EventHub         | Event Hubs yakalama ile verileri arşivleme. [Daha fazla bilgi edinin](/azure/event-hubs/event-hubs-capture-overview). |
-| Azure Dosya Eşitleme          | Microsoft. Storagessync      | Şirket içi dosya sunucunuzu Azure dosya paylaşımları için bir önbelleğe dönüştürmenizi sağlar. Çok siteli eşitleme, hızlı olağanüstü durum kurtarma ve bulut tarafı yedekleme için izin verme. [Daha fazla bilgi edinin](../files/storage-sync-files-planning.md) |
+| Azure Dosya Eşitleme          | Microsoft. Storagessync      | Şirket içi dosya sunucunuzu Azure dosya paylaşımları için bir önbelleğe dönüştürmenizi sağlar. Çok siteli eşitleme, hızlı olağanüstü durum kurtarma ve bulut tarafı yedekleme için izin verme. [Daha fazla bilgi](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft. HDInsight        | Yeni bir HDInsight kümesi için varsayılan dosya sisteminin başlangıçtaki içeriğini sağlayın. [Daha fazla bilgi edinin](/azure/hdinsight/hdinsight-hadoop-use-blob-storage). |
 | Azure Içeri aktarma dışarı aktarma      | Microsoft. ımportexport     | Içeri/dışarı aktarma hizmeti kullanılarak verilerin Azure 'a içeri aktarılmasını ve Azure 'dan dışarı aktarılmasını sağlar. [Daha fazla bilgi edinin](/azure/storage/common/storage-import-export-service).  |
 | Azure İzleyici            | Microsoft. Insights         | Kaynak günlükleri, Azure Active Directory oturum açma ve denetim günlükleri ve Microsoft Intune Günlükler dahil olmak üzere, izleme verilerinin güvenli bir depolama hesabına yazılmasına izin verir. [Daha fazla bilgi edinin](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security). |
-| Azure ağı         | Microsoft.Network          | Ağ trafiği günlüklerini depolayın ve çözümleyin. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview). |
+| Azure ağı         | Microsoft.Network          | Ağ Izleyicisi ve Trafik Analizi hizmetleri dahil olmak üzere ağ trafiği günlüklerini depolayın ve çözümleyin. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview). |
 | Azure Site Recovery      | Microsoft. Sıterecovery     | Güvenlik Duvarı özellikli önbellek, kaynak veya hedef depolama hesapları kullanırken Azure IaaS sanal makinelerinin olağanüstü durum kurtarma için çoğaltmayı etkinleştirin.  [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
 
 **Güvenilen Microsoft hizmetlerine Izin ver...** ayarı aynı zamanda bu kaynak örneği için [sistem tarafından atanan YÖNETILEN kimliğe](../../active-directory/managed-identities-azure-resources/overview.md) [bir RBAC rolü atarsanız](storage-auth-aad.md#assign-rbac-roles-for-access-rights) , aşağıdaki hizmetlerin belirli bir örneğinin depolama hesabına erişmesine izin verir. Bu durumda, örnek için erişim kapsamı yönetilen kimliğe atanan RBAC rolüne karşılık gelir.
@@ -392,7 +392,7 @@ Bazı Microsoft Hizmetleri, ağ kurallarınıza dahil olmayan ağlardan çalış
 | Azure Container Registry Görevleri | Microsoft. ContainerRegistry/kayıt defterleri | ACR görevleri, kapsayıcı görüntüleri oluştururken depolama hesaplarına erişebilir. |
 | Azure Data Factory             | Microsoft. DataFactory/Factory        | ADF çalışma zamanı aracılığıyla depolama hesaplarına erişime izin verir. |
 | Azure Veri Paylaşımı               | Microsoft. DataShare/hesapları           | Veri paylaşımından depolama hesaplarına erişime izin verir. |
-| Azure IoT Hub                  | Microsoft. Devices/IotHubs              | IoT Hub 'ından gelen verilerin blob depolamaya yazılmasına izin verir. [Daha fazla bilgi edinin](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
+| Azure IoT Hub                  | Microsoft. Devices/IotHubs              | IoT Hub 'ından gelen verilerin blob depolamaya yazılmasına izin verir. [Daha fazla bilgi](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
 | Azure Logic Apps               | Microsoft. Logic/iş akışları              | Mantıksal uygulamaların depolama hesaplarına erişmesini sağlar. [Daha fazla bilgi edinin](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity). |
 | Azure Machine Learning Hizmeti | Microsoft.MachineLearningServices      | Yetkili Azure Machine Learning çalışma alanları BLOB depolama alanına deneme çıkış, model ve Günlükler yazar ve verileri okur. [Daha fazla bilgi edinin](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
 | Azure SQL Veri Ambarı       | Microsoft.Sql                          | PolyBase kullanarak belirli SQL veritabanı örneklerinden verilerin içeri ve dışarı aktarılmasını sağlar. [Daha fazla bilgi edinin](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |

@@ -7,13 +7,13 @@ ms.author: mhopkins
 ms.date: 08/20/2019
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 9ffa69980f020580376aea447f40ac615f26cf03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: f4e6e2f2732d1c90e8fe669788d82692c8016fd6
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135896"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463459"
 ---
 # <a name="copy-a-blob-with-net"></a>.NET ile blob kopyalama
 
@@ -109,7 +109,7 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
 
 ## <a name="abort-a-blob-copy-operation"></a>Blob kopyalama işlemini durdur
 
-Bir kopyalama işleminin iptal edilmeden, blok Blobları, ekleme Blobları ve sayfa Blobları için sıfır uzunluğundaki hedef Blobun sonuçlanır. Ancak, hedef Blobun meta verileri, kaynak Blobun yeni değerleri kopyalayacak veya [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) ya da [Startcopyasync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) çağrısında açıkça ayarlanmış olacak. Özgün meta verileri kopyalama öncesinde tutmak için, veya `StartCopy` `StartCopyAsync`çağrılmadan önce hedef Blobun anlık görüntüsünü oluşturun.
+Bir kopyalama işleminin iptal edilmeden, blok Blobları, ekleme Blobları ve sayfa Blobları için sıfır uzunluğundaki hedef Blobun sonuçlanır. Ancak, hedef Blobun meta verileri, kaynak Blobun yeni değerleri kopyalayacak veya [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) ya da [Startcopyasync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) çağrısında açıkça ayarlanmış olacak. Özgün meta verileri kopyalama öncesinde tutmak için, veya çağrılmadan önce hedef Blobun anlık görüntüsünü oluşturun `StartCopy` `StartCopyAsync` .
 
 Devam eden bir blob kopyalama işlemini iptal ettiğinizde, hedef Blobun [CopyState. Status](/dotnet/api/microsoft.azure.storage.blob.copystate.status?view=azure-dotnet#Microsoft_Azure_Storage_Blob_CopyState_Status) , [Copystatus. durduruldu](/dotnet/api/microsoft.azure.storage.blob.copystatus?view=azure-dotnet)olarak ayarlanır.
 

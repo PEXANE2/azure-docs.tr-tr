@@ -1,5 +1,5 @@
 ---
-title: Birden çok model uç noktası oluşturma
+title: Birden çok model ve uç nokta oluşturma
 titleSuffix: ML Studio (classic) - Azure
 description: Aynı algoritmaya ancak farklı eğitim veri kümelerine sahip birden çok Machine Learning modeli ve Web hizmeti uç noktaları oluşturmak için PowerShell 'i kullanın.
 services: machine-learning
@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 1dd17d3ac715c2b32f645602203aa2551c91b42a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 145ee5b458927fc4e3cda5277de614383181eed5
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195339"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465703"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>ML Studio (klasik) ve PowerShell ile bir deneyden birden çok Web hizmeti uç noktası oluşturma
 

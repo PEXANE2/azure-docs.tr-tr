@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: akıllı Global Idare ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+title: 'Öğretici: akıllı küresel Idare ile Azure AD SSO tümleştirmesi'
 description: Azure Active Directory ile akıllı küresel Idare arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -15,155 +15,156 @@ ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb14f4c8dd498bf26ac093f7a491876cd2e73940
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 5c3b2f5332f3dc94f10a7822068b165db13b3d33
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872638"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456785"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smart-global-governance"></a>Öğretici: akıllı genel Idare ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
 Bu öğreticide, akıllı küresel Idare Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Azure AD ile akıllı Global Idare tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de, akıllı Global Idare erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla akıllı Global Idare için otomatik olarak oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Azure AD 'yi kullanarak, akıllı Global Idare ile kimlerin erişebileceğini denetleyin.
+* Kullanıcılarınızın Azure AD hesaplarıyla akıllı küresel Idare ' de otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Smart Global Idare çoklu oturum açma (SSO) etkin aboneliği.
+* Çoklu oturum açma (SSO) özellikli bir akıllı küresel Idare aboneliği.
 
-## <a name="scenario-description"></a>Senaryo açıklaması
+## <a name="tutorial-description"></a>Öğretici açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edeceksiniz.
 
-* Smart Global Idare **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
-* Akıllı küresel Idare yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin bir kısmını gerçek zamanlı olarak koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Smart Global Idare, SP tarafından başlatılan ve ıDP tarafından başlatılan SSO 'yu destekler.
 
-## <a name="adding-smart-global-governance-from-the-gallery"></a>Galeriden akıllı küresel Idare ekleme
+Akıllı Global Idare yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve inkesini korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+## <a name="add-smart-global-governance-from-the-gallery"></a>Galeriden akıllı küresel Idare ekleme
 
 Akıllı küresel yönetim 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize akıllı küresel Idare eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. [Azure Portal](https://portal.azure.com) bir iş veya okul hesabıyla ya da kişisel bir Microsoft hesabı oturum açın.
+1. Sol bölmede **Azure Active Directory**’yi seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Smart Global idare** yazın.
-1. Sonuçlar panelinden **akıllı Global idare** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Bir uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Smart Global idare** girin.
+1. Sonuçlar panelinde **Smart Global idare** ' yı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-smart-global-governance"></a>Akıllı küresel Idare için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-smart-global-governance"></a>Akıllı küresel Idare için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu akıllı Global idare ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında akıllı küresel Idare arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO 'yu, B. Simon adlı bir test kullanıcısı kullanarak akıllı Global Idare ile yapılandırıp test edersiniz. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ilgili Kullanıcı ile akıllı küresel Idare arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu akıllı Global Idare ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu akıllı küresel Idare ile yapılandırmak ve test etmek için şu üst düzey adımları uygulamanız gerekir:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. **[Akıllı küresel Idare SSO 'Yu yapılandırma](#configure-smart-global-governance-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    1. Kullanıcının Azure AD gösterimine bağlı olan Smart Global Idare 'nda B. Simon 'a sahip olmak için, **[akıllı küresel idare testi kullanıcısı oluşturun](#create-smart-global-governance-test-user)** .
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın özelliğini kullanmasını sağlamak için **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** .
+    1. Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
+    1. Kullanıcının Azure AD çoklu oturum açma özelliğini kullanmasını sağlamak için **[Test kullanıcısına erişim Izni verin](#grant-access-to-the-test-user)** .
+1. Uygulama tarafında **[Smart Global Idare SSO 'Yu yapılandırın](#configure-smart-global-governance-sso)** .
+    1. Kullanıcının Azure AD gösterimine karşılık gelen bir **[akıllı küresel idare testi kullanıcısı oluşturun](#create-a-smart-global-governance-test-user)** .
+1. Yapılandırmanın çalıştığını doğrulamak için **[test SSO 'su](#test-sso)** .
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/), **Smart Global idare** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **akıllı küresel idare** uygulama tümleştirmesi sayfasında, **Yönet** bölümünde **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem düğmesini seçin:
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML yapılandırması için kalem düğmesi](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
+1. **Temel SAML yapılandırması** bölümünde, uygulamayı IDP tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın.
 
-    a. **Tanımlayıcı** metin kutusunda, aşağıdaki URL 'den birini kullanın:
+    a. **Tanımlayıcı** kutusuna şu URL 'lerden birini girin:
 
     | | |
     |-|-|
     | `https://eu-fr-south.console.smartglobalprivacy.com/platform/authentication-saml2/metadata`|
     | `https://eu-fr-south.console.smartglobalprivacy.com/dpo/authentication-saml2/metadata`|
 
-    b. **Yanıt URL 'si** metin kutusunda, aşağıdaki URL 'den birini kullanın:
+    b. **Yanıt URL 'si** kutusuna şu URL 'lerden birini girin:
 
     | | |
     |-|-|
     | `https://eu-fr-south.console.smartglobalprivacy.com/platform/authentication-saml2/acs`|
     | `https://eu-fr-south.console.smartglobalprivacy.com/dpo/authentication-saml2/acs`|
 
-1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
+1. Uygulamayı SP tarafından başlatılan modda yapılandırmak istiyorsanız **ek URL 'Ler ayarla** ' yı seçin ve aşağıdaki adımı doldurun.
 
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki URL 'den birini kullanın:
+   - **Oturum açma URL 'si** kutusuna şu URL 'lerden birini girin:
 
     | | |
     |-|-|
     | `https://eu-fr-south.console.smartglobalprivacy.com/dpo`|
     | `https://eu-fr-south.console.smartglobalprivacy.com/platform`|
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **sertifika (ham)** bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, sertifikayı Indirip bilgisayarınıza kaydetmek için sertifika **yükleme** bağlantısını **(ham)** seçin:
 
     ![Sertifika indirme bağlantısı](common/certificateraw.png)
 
-1. **Akıllı genel Idare ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **Akıllı genel Idare ayarla** bölümünde, gereksinimlerinize göre uygun URL 'Yi veya URL 'leri kopyalayın:
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal sol bölmesinde **Azure Active Directory**' ı seçin. **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+1. **Kullanıcı** özellikleri ' nde şu adımları uygulayın:
+   1. **Ad** kutusuna **B. Simon**girin.  
+   1. **Kullanıcı adı** kutusuna \<username> @ \<companydomain> .. yazın. \<extension> Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**'u seçin.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+### <a name="grant-access-to-the-test-user"></a>Test kullanıcısına erişim izni verme
 
-Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak akıllı küresel Idare 'ye erişim vererek B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, bu kullanıcıya akıllı küresel Idare erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **Smart Global idare**' ı seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünde, **Kullanıcılar ve gruplar**' ı seçin:
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+   ![Kullanıcı ve gruplar'ı seçin](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin ve sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin:
 
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
+    ![Kullanıcı ekle seçeneğini belirleme](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, **Kullanıcılar** listesinde **B. Simon** öğesini seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata**' yı seçin.
 
 ## <a name="configure-smart-global-governance-sso"></a>Smart Global Idare SSO 'yu yapılandırma
 
-**Akıllı küresel idare** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (ham)** ve uygun kopyalanmış URL 'Leri Azure Portal ' den [Smart Global idare destek ekibine](mailto:support.tech@smartglobal.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+Akıllı küresel Idare tarafında çoklu oturum açmayı yapılandırmak için, indirilen ham sertifikayı ve Azure portal 'den kopyaladığınız uygun URL 'Leri [akıllı küresel idare desteği ekibine](mailto:support.tech@smartglobal.com)göndermeniz gerekir. SAML SSO bağlantısını her iki tarafta da doğru olacak şekilde yapılandırır.
 
-### <a name="create-smart-global-governance-test-user"></a>Akıllı küresel Idare testi kullanıcısı oluşturma
+### <a name="create-a-smart-global-governance-test-user"></a>Akıllı küresel Idare testi kullanıcısı oluşturma
 
-Bu bölümde, Smart Global Idare 'nda Britta Simon adlı bir Kullanıcı oluşturacaksınız. Akıllı küresel idare platformunda kullanıcıları eklemek için [akıllı küresel idare desteği ekibi](mailto:support.tech@smartglobal.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Smart Global Idare 'nda B. Simon adlı bir kullanıcı eklemek için [Smart Global idare destek ekibi](mailto:support.tech@smartglobal.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, erişim paneli ' ni kullanarak Azure AD SSO yapılandırmanızı test edeceksiniz.
 
-Erişim panelinde Smart Global Idare kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız akıllı küresel Idare için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Akıllı küresel Idare kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız akıllı küresel Idare örneğinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneli 'Ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile akıllı küresel Idare 'yi deneyin](https://aad.portal.azure.com/)
 

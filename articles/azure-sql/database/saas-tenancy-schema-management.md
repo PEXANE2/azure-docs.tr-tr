@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: a9378d0f499814706762349a0eac2c5a26ca939a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 02b7b7b78e2a5933d9e9cc5931ca2cd2a46a6e9e
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042039"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449308"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL veritabanı ile kiracı başına veritabanı düzenini kullanarak bir SaaS uygulamasında şemayı yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,12 +49,10 @@ Kiracı başına veritabanı, kiracı verilerini etkili bir şekilde ayırır, a
 ![ekran](./media/saas-tenancy-schema-management/schema-management-dpt.png)
 
 
-## <a name="elastic-jobs-limited-preview"></a>Esnek İşler sınırlı önizlemesi
+## <a name="elastic-jobs-public-preview"></a>Elastik Işler genel önizleme
 
-Artık Azure SQL veritabanı 'nın tümleşik bir özelliği olan elastik Işlerin yeni bir sürümü var. Esnek İşler’in bu yeni sürümü, şu anda sınırlı önizlemeyle sunulmaktadır. Bu sınırlı önizleme Şu anda bir iş Aracısı oluşturmak için PowerShell kullanmayı destekler ve işleri oluşturmak ve yönetmek için T-SQL ' i destekler.
-
-> [!NOTE]
-> Bu öğretici, SQL Veritabanı hizmetinin sınırlı önizleme (Elastik Veritabanı işleri) olarak sunulan özelliklerini kullanır. Bu öğreticiyi yapmak istiyorsanız, abonelik KIMLIĞINIZI SaaSFeedback@microsoft.com Subject = elastik Işler Önizleme ' ye girin. Aboneliğinizin etkinleştirildiğini belirten onayı aldıktan sonra, [en son ön sürüm işleri cmdlet’lerini indirip yükleyin](https://github.com/jaredmoo/azure-powershell/releases). Bu önizleme sınırlı olduğundan SaaSFeedback@microsoft.com ilgili soruların veya desteğin iletişim kurun.
+Artık Azure SQL veritabanı 'nın tümleşik bir özelliği olan elastik Işlerin yeni bir sürümü var. Elastik Işlerin bu yeni sürümü şu anda genel önizlemededir. Bu genel önizleme Şu anda iş Aracısı oluşturmak için PowerShell kullanmayı ve işleri oluşturmak ve yönetmek için T-SQL ' i desteklemektedir.
+Daha fazla bilgi için bkz. [elastik veritabanı işleri](https://docs.microsoft.com/azure/azure-sql/database/elastic-jobs-overview) makalesi.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Kiracı uygulama betikleri başına Wingtip bilet SaaS veritabanını alın
 

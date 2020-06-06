@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 9262d01e35bd03a9116a30b070b023f578f0b15a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/03/2020
+ms.openlocfilehash: 402fae5622219b14cfdab921ebe1a78ad5dd111e
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74112565"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84462847"
 ---
 # <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>Azure Bilişsel Arama yönetim erişimi için RBAC rolleri ayarlama
 
@@ -34,6 +34,21 @@ Azure Bilişsel Arama için roller, aşağıdaki yönetim görevlerini destekley
 | Okuyucu |Hizmet temellerini ve ölçümlerini görüntüleyin. Bu rolün üyeleri dizin, Dizin Oluşturucu, veri kaynağı veya anahtar bilgilerini görüntüleyemez.  |
 
 Roller, hizmet uç noktasına erişim hakkı vermez. Dizin Yönetimi, dizin oluşturma ve arama verilerinde sorgular gibi arama hizmeti işlemleri, rol değil API anahtarları aracılığıyla denetlenir. Daha fazla bilgi için bkz. [API anahtarlarını yönetme](search-security-api-keys.md).
+
+## <a name="permissions-table"></a>İzinler tablosu
+
+Aşağıdaki tabloda, Azure Bilişsel Arama 'de izin verilen işlemler özetlenmektedir ve hangi anahtarın belirli bir işleme erişim kilidi vardır.
+
+| Çalışma | İzinler |
+|-----------|-------------------------|
+| Hizmet oluşturma | Azure abonelik sahibi |
+| Hizmeti ölçeklendirme | Kaynakta yönetici anahtarı, RBAC sahibi veya katkıda bulunan  |
+| Hizmet silme | Kaynakta yönetici anahtarı, RBAC sahibi veya katkıda bulunan |
+| Hizmette nesne oluşturun, değiştirin, silin: <br>Dizinler ve bileşen bölümleri (çözümleyici tanımları, Puanlama profilleri, CORS seçenekleri dahil), Dizin oluşturucular, veri kaynakları, eş anlamlılar, öneri araçları | Kaynakta yönetici anahtarı, RBAC sahibi veya katkıda bulunan |
+| Dizin sorgulama | Yönetici veya sorgu anahtarı (RBAC uygulanamaz) |
+| İstatistik, sayı ve nesne listesi döndürme gibi sistem bilgilerini sorgulama | Yönetici anahtarı, kaynak üzerinde RBAC (sahip, katkıda bulunan, okuyucu) |
+| Yönetici anahtarlarını yönetme | Kaynak üzerinde yönetici anahtarı, RBAC sahibi veya katkıda bulunan |
+| Sorgu anahtarlarını Yönet |  Kaynak üzerinde yönetici anahtarı, RBAC sahibi veya katkıda bulunan  |
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

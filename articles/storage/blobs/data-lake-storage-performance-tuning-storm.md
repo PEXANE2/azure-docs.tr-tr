@@ -4,16 +4,16 @@ description: Azure Data Lake Storage 2. fırtınası performansı ayarlama yöne
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 125c583512f6bae34c2dd3c3dd76a1b96a181ac1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60e0d3fc22fdfc158110e9936748cc0bda280853
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74327914"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465941"
 ---
 # <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>Performansı ayarlama: fırtınası, HDInsight & Azure Data Lake Storage 2.
 
@@ -21,7 +21,7 @@ Azure fırtınası topolojisinin performansını ayarladığınızda göz önün
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure Data Lake Storage 2. hesabı**. Bir oluşturma hakkında yönergeler için bkz. [hızlı başlangıç: analitik için depolama hesabı oluşturma](data-lake-storage-quickstart-create-account.md).
 * Data Lake Storage 2. hesabına erişimi olan **Azure HDInsight kümesi** . Bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Küme için Uzak Masaüstü 'Nü etkinleştirdiğinizden emin olun.
 * **Data Lake Storage 2. bir fırtınası kümesi çalıştırılıyor**. Daha fazla bilgi için bkz. [HDInsight 'Ta fırtınası](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
@@ -63,7 +63,7 @@ D13v2 Azure VM ile 8 çalışan düğüm kümeniz olduğunu varsayalım. Bu VM 8
 Temel topolojiden sonra, parametrelerden herhangi birini ince ayar isteyip istemediğinizi göz önünde bulundurun:
 * **Çalışan düğümü başına JVM sayısı.** Bellekte barındırdığınızda büyük bir veri yapınız (örneğin, bir arama tablosu) varsa, her JVM ayrı bir kopya gerektirir. Alternatif olarak, daha az JVM varsa veri yapısını birçok iş parçacığı üzerinde kullanabilirsiniz. Cıvatanın g/ç için, JVM 'lerin sayısı bu JVM 'Ler genelinde eklenen iş parçacığı sayısı kadar farklılık yapmaz. Kolaylık olması açısından, çalışan başına bir JVM olması iyi bir fikirdir. Aradığınıza bağlı olarak veya ihtiyacınız olan uygulama işlemlerini, ancak bu numarayı değiştirmeniz gerekebilir.
 * **Spout yürüticileri sayısı.** Yukarıdaki örnek Data Lake Storage 2. yazmak için cıvatları kullandığından, spotların sayısı, doğrudan cıvatiye uygun değildir. Ancak, Spout 'daki işleme veya g/ç miktarına bağlı olarak en iyi performansı elde etmek iyi bir fikirdir. Cıvatları meşgul tutmaya yetecek kadar biriktirmeolduğunuzdan emin olun. Spotların çıkış ücretleri cıvatların verimlilik ile aynı olmalıdır. Gerçek yapılandırma Spout 'a bağlıdır.
-* **Görev sayısı.** Her bir sürgüsü tek bir iş parçacığı olarak çalışır. Her bir ek görev, ek eşzamanlılık sağlamaz. Yalnızca kullanım açısından, kayıt düzeni elde etmek için gereken tek zaman, rulonun yürütme süresinin büyük bir oranını alırsa. Daha fazla tanımlama grubunu daha büyük bir ekleme için, fiteleten bir onay göndermeden önce bu çok sayıda grubu gruplamak iyi bir fikirdir. Bu nedenle, çoğu durumda birden çok görev ek bir avantaj sağlamaz.
+* **Görev sayısı.** Her bir sürgüsü tek bir iş parçacığı olarak çalışır. Her bir ek görev, ek eşzamanlılık sağlamaz. Yalnızca kullanım açısından, kayıt düzeni elde etmek için gereken tek zaman, rulonun yürütme süresinin büyük bir oranını alırsa. Bir onay noktasından bildirim göndermeden önce çok sayıda tanımlama grubunu daha büyük bir ekleme halinde gruplamak iyi bir fikirdir. Bu nedenle, çoğu durumda birden çok görev ek bir avantaj sağlamaz.
 * **Yerel veya karıştırma gruplandırması.** Bu ayar etkinleştirildiğinde, diziler aynı çalışan işlemi içinde cıvatlara gönderilir. Bu işlem işlemler arası iletişimi ve ağ çağrılarını azaltır. Bu çoğu topolojilerde önerilir.
 
 Bu temel senaryo, iyi bir başlangıç noktasıdır. En iyi performansı elde etmek için yukarıdaki parametreleri ince ayar için kendi verilerinize test edin.
@@ -89,7 +89,7 @@ Topolojiniz çalışırken, bunu fırtınası Kullanıcı arabiriminde izleyebil
 
 * **Toplam işlem yürütme gecikmesi.** Bu, bir tanımlama grubunun Spout tarafından, cıvata işlenen ve onaylanan ortalama süredir.
 
-* **Toplam rulo işlem gecikmesi.** Bu, bir onay alana kadar, cıvata kayıt düzeni tarafından harcanan ortalama süredir.
+* **Toplam rulo işlem gecikmesi.** Bu, bir onay alana gelinceye kadar, bu kayıt düzeni tarafından harcanan ortalama süredir.
 
 * **Toplam cıvata yürütme gecikmesi.** Bu, Execute yöntemindeki cıvatın harcadığı ortalama süredir.
 
@@ -110,8 +110,8 @@ Data Lake Storage 2. tarafından belirtilen bant genişliği sınırlarına ula�
 
 Kısıtlanıyor olup olmadığınızı denetlemek için istemci tarafında hata ayıklama günlüğünü etkinleştirin:
 
-1. **Ambarı** > **fırtınası** > **Advanced storm-worker-log4j****Config** ** &lt;&gt; ** ** &lt;&gt;** yapılandırması Gelişmiş fırtınası-çalışan-Log4J ' de kök düzeyi = "info" öğesini root Level = "Debug" olarak değiştirin. >  Yapılandırmanın etkili olması için tüm düğümleri/hizmeti yeniden başlatın.
-2. Data Lake Storage 2. azaltma özel durumları için çalışan düğümlerdeki fırtınası topolojisi günlüklerini (&lt;/var/log/Storm/Worker-Artifacts/topologyıname&gt;&gt;/&lt;Port/Worker.log altında) izleyin.
+1. **Ambarı**  >  **fırtınası**  >  **yapılandırması**  >  **Gelişmiş fırtınası-çalışan-Log4J**' de ** &lt; kök düzeyi = "info" &gt; ** öğesini ** &lt; root Level = "Debug" &gt; **olarak değiştirin. Yapılandırmanın etkili olması için tüm düğümleri/hizmeti yeniden başlatın.
+2. Data Lake Storage 2. azaltma özel durumları için çalışan düğümlerdeki fırtınası topolojisi günlüklerini (/var/log/Storm/Worker-Artifacts/ &lt; topologyıname &gt; / &lt; Port &gt; /Worker.log altında) izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Bu blogda](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/), fırtınası için ek performans ayarlamaya başvurulabilir.

@@ -3,15 +3,15 @@ title: Azure portal eylem grupları oluşturma ve yönetme
 description: Azure portal eylem grupları oluşturmayı ve yönetmeyi öğrenin.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 4/17/2020
+ms.date: 6/5/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: b88b6d1ea4b9d9fc2b33849157968ee1c2f8c620
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: dbc810ad7227d9d47099fe85e89a92c8fa750302
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170469"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465261"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portal eylem grupları oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. Bir abonelikte en fazla 2.000 eylem grubu yapılandırabilirsiniz.
@@ -72,7 +72,7 @@ Bir eylem grubu oluşturduktan sonra, **izleme** bölmesinde **Uyarılar** giri�
 > [!NOTE]
 > Aşağıdaki öğelerin her birinde sayısal limitleri [izlemek Için abonelik hizmeti sınırlarına](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits) bakın.  
 
-### <a name="automation-runbook"></a>Otomasyon Runbook 'U
+### <a name="automation-runbook"></a>Otomasyon Runbook'u
 Runbook yüklerinin sınırları için [Azure abonelik hizmeti sınırlarına](../../azure-resource-manager/management/azure-subscription-service-limits.md) bakın.
 
 Bir eylem grubunda sınırlı sayıda runbook eylemi olabilir. 
@@ -106,7 +106,7 @@ Bir eylem grubunda sınırlı sayıda ıSM eylemi olabilir.
 ### <a name="logic-app"></a>Logic App
 Bir eylem grubunda sınırlı sayıda mantıksal uygulama eylemi olabilir.
 
-### <a name="secure-webhook"></a>Güvenli Web kancası
+### <a name="secure-webhook"></a>Güvenli Web Kancası
 Eylem grupları Web kancası eylemi, eylem grubunuz ve korumalı Web API 'niz (Web kancası uç noktası) arasındaki bağlantıyı güvenli hale getirmek için Azure Active Directory avantajlarından yararlanmanızı sağlar. Bu işlevden yararlanmak için genel iş akışı aşağıda açıklanmıştır. Azure AD uygulamalarına ve hizmet sorumlularına genel bakış için bkz. [Microsoft Identity platform (v 2.0) genel bakış](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
 
 1. Korumalı Web API 'niz için bir Azure AD uygulaması oluşturun. Bkz. https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
@@ -217,7 +217,12 @@ Bir eylem grubunda sınırlı sayıda ses eylemi olabilir.
 Desteklenen ülkeler/bölgeler için fiyatlandırma, [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)listelenmiştir.
 
 ### <a name="webhook"></a>Web Kancası
-Web kancaları aşağıdaki kurallar kullanılarak yeniden denenir. Aşağıdaki HTTP durum kodları döndürüldüğünde Web kancası çağrısı en fazla 2 kez yeniden denenir: 408, 429, 503, 504 veya HTTP uç noktası yanıt vermez. İlk yeniden deneme 10 saniye sonra yapılır. İkinci yeniden deneme 100 saniye sonra gerçekleşir. İki hatadan sonra, herhangi bir eylem grubu 30 dakika için uç noktayı çağırmaz. 
+Web kancaları aşağıdaki kurallar kullanılarak işlenir
+- Bir Web kancası çağrısı en fazla 3 kez denendi.
+- Zaman aşımı süresi içinde bir yanıt alınmadığında veya aşağıdaki HTTP durum kodlarından biri döndürülürse, çağrı yeniden denenir: 408, 429, 503 veya 504.
+- İlk çağrı bir yanıt için 10 saniye bekler.
+- İkinci ve üçüncü denemeler, yanıt için 30 saniye bekler.
+- Web kancasını çağırma 3 girişimi başarısız olduysa, hiçbir eylem grubu 15 dakika boyunca bitiş noktasını çağırmaz.
 
 Kaynak IP adresi aralıkları
  - 13.72.19.232

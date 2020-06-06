@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: c3b514c79be87cd136375b4853226426965f4185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4253e496aca4cbf71fab7ef0ee388b1356df5c16
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311211"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456802"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT cihazınızda bir güvenlik Aracısı seçin ve dağıtın
 
@@ -44,9 +44,9 @@ C tabanlı güvenlik aracısının daha düşük bir bellek parmak izi vardır v
 
 |     | C tabanlı güvenlik Aracısı | C# tabanlı güvenlik Aracısı |
 | --- | ----------- | --------- |
-| Açık kaynak | [GitHub](https://aka.ms/iot-security-github-cs) 'da [MIT Lisansı](https://en.wikipedia.org/wiki/MIT_License) altında kullanılabilir | [GitHub](https://aka.ms/iot-security-github-c) 'da [MIT Lisansı](https://en.wikipedia.org/wiki/MIT_License) altında kullanılabilir |
+| Açık kaynak | [GitHub](https://aka.ms/iot-security-github-c) 'da [MIT Lisansı](https://en.wikipedia.org/wiki/MIT_License) altında kullanılabilir | [GitHub](https://aka.ms/iot-security-github-cs) 'da [MIT Lisansı](https://en.wikipedia.org/wiki/MIT_License) altında kullanılabilir |
 | Geliştirme dili    | C | C# |
-| Desteklenen Windows platformları? | Hayır | Yes |
+| Desteklenen Windows platformları? | Hayır | Evet |
 | Windows önkoşulları | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | Desteklenen Linux platformları? | Evet, x64 ve x86 | Evet, yalnızca x64 |
 | Linux önkoşulları | libunwind8, libcurl3, UUID-Runtime, auditd, audispd-eklentiler | libunwind8, libcurl3, UUID-Runtime, auditd, audispd-Eklentiler, sudo, netstat, Iptables |

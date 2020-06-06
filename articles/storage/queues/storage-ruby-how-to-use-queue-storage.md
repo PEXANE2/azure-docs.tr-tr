@@ -6,14 +6,14 @@ ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: cbrooks
-ms.openlocfilehash: c7211bc805f4ed1d026faedbfdc9d53d3c1dfd93
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 72185cf8bc5701e67c6126c9b1b5cc76bb80f362
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68721274"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463425"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Ruby’den Kuyruk depolama kullanma
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -46,7 +46,7 @@ require "azure"
 ```
 
 ## <a name="setup-an-azure-storage-connection"></a>Azure depolama bağlantısı kurma
-Azure modülü, Azure depolama hesabına bağlanmak için gereken bilgiler için Azure **\_depolama\_hesabı** ve **\_Azure\_depolama ACCESS_KEY** ortam değişkenlerini okur. Bu ortam değişkenleri ayarlanmamışsa, aşağıdaki kodla **Azure:: QueueService** ' i kullanmadan önce hesap bilgilerini belirtmeniz gerekir:
+Azure modülü, Azure depolama hesabına bağlanmak için gereken bilgiler için Azure ** \_ depolama \_ hesabı** ve **Azure \_ depolama \_ ACCESS_KEY** ortam değişkenlerini okur. Bu ortam değişkenleri ayarlanmamışsa, aşağıdaki kodla **Azure:: QueueService** ' i kullanmadan önce hesap bilgilerini belirtmeniz gerekir:
 
 ```ruby
 Azure.config.storage_account_name = "<your azure storage account>"
@@ -86,7 +86,7 @@ azure_queue_service.create_message("test-queue", "test message")
 ```
 
 ## <a name="how-to-peek-at-the-next-message"></a>Nasıl yapılır: bir sonraki Iletiye göz atma
-**İletileri göz at\_()** yöntemini çağırarak sıradan kaldırmadan bir kuyruğun önündeki iletiye göz atmayı sağlayabilirsiniz. Varsayılan olarak, **iletilere\_göz atın ()** tek bir iletiye göz atar. Ayrıca, kaç tane ileti göz atmayı istediğinizi de belirtebilirsiniz.
+**İletileri göz at \_ ()** yöntemini çağırarak sıradan kaldırmadan bir kuyruğun önündeki iletiye göz atmayı sağlayabilirsiniz. Varsayılan olarak, **iletilere göz atın \_ ()** tek bir iletiye göz atar. Ayrıca, kaç tane ileti göz atmayı istediğinizi de belirtebilirsiniz.
 
 ```ruby
 result = azure_queue_service.peek_messages("test-queue",
@@ -96,10 +96,10 @@ result = azure_queue_service.peek_messages("test-queue",
 ## <a name="how-to-dequeue-the-next-message"></a>Nasıl yapılır: sonraki Iletiyi sıradan çıkarma
 İki adımda kuyruktan bir ileti kaldırabilirsiniz.
 
-1. **Liste\_iletilerini ()** çağırdığınızda, bir sıradaki bir sonraki iletiyi varsayılan olarak alırsınız. Ayrıca, kaç tane ileti almak istediğinizi de belirtebilirsiniz. **Liste\_iletilerinden ()** döndürülen iletiler, bu kuyruktan gelen diğer kod okuma iletileri için görünmez hale gelir. Görünürlük zaman aşımını bir parametre olarak Saniyeler içinde geçitirsiniz.
+1. **Liste \_ iletilerini ()** çağırdığınızda, bir sıradaki bir sonraki iletiyi varsayılan olarak alırsınız. Ayrıca, kaç tane ileti almak istediğinizi de belirtebilirsiniz. **Liste \_ iletilerinden ()** döndürülen iletiler, bu kuyruktan gelen diğer kod okuma iletileri için görünmez hale gelir. Görünürlük zaman aşımını bir parametre olarak Saniyeler içinde geçitirsiniz.
 2. İletiyi kuyruktan kaldırma işleminin tamamlanabilmesi için **delete_message ()** öğesini de çağırmanız gerekir.
 
-Bir iletiyi kaldırmanın bu iki adımlı işlemi, kodunuz, donanım veya yazılım arızasından kaynaklanan bir iletiyi işleyemediğinde, kodunuzun başka bir örneğinin aynı mesajı almasını ve yeniden denemesini sağlar. Kodunuz, ileti işlendikten hemen sonra **silme\_iletisini ()** çağırır.
+Bir iletiyi kaldırmanın bu iki adımlı işlemi, kodunuz, donanım veya yazılım arızasından kaynaklanan bir iletiyi işleyemediğinde, kodunuzun başka bir örneğinin aynı mesajı almasını ve yeniden denemesini sağlar. Kodunuz, ileti işlendikten hemen sonra **silme \_ iletisini ()** çağırır.
 
 ```ruby
 messages = azure_queue_service.list_messages("test-queue", 30)
@@ -123,7 +123,7 @@ pop_receipt, time_next_visible = azure_queue_service.update_message(
 1. Toplu bir ileti alabilirsiniz.
 2. Daha uzun veya daha kısa görünürlük zaman aşımı ayarlayabilir, böylece her iletiyi tamamen işlemek için kodunuzun daha fazla veya daha az zaman aşımına uğramamasını sağlayabilirsiniz.
 
-Aşağıdaki kod örneği, bir çağrıda 15 ileti almak için **List\_Messages ()** yöntemini kullanır. Ardından her iletiyi yazdırır ve siler. Ayrıca her ileti için görünmezlik zaman aşımı beş dakika olarak ayarlanır.
+Aşağıdaki kod örneği, bir çağrıda 15 ileti almak için **List \_ Messages ()** yöntemini kullanır. Ardından her iletiyi yazdırır ve siler. Ayrıca her ileti için görünmezlik zaman aşımı beş dakika olarak ayarlanır.
 
 ```ruby
 azure_queue_service.list_messages("test-queue", 300
@@ -134,7 +134,7 @@ end
 ```
 
 ## <a name="how-to-get-the-queue-length"></a>Nasıl yapılır: kuyruk uzunluğunu alma
-Kuyruktaki ileti sayısını tahmin edebilirsiniz. **Alma\_kuyruğu\_meta verileri ()** yöntemi, kuyruk hizmetinden sıraya ilişkin yaklaşık ileti sayısını ve meta verileri döndürmesini ister.
+Kuyruktaki ileti sayısını tahmin edebilirsiniz. **Alma \_ kuyruğu \_ meta verileri ()** yöntemi, kuyruk hizmetinden sıraya ilişkin yaklaşık ileti sayısını ve meta verileri döndürmesini ister.
 
 ```ruby
 message_count, metadata = azure_queue_service.get_queue_metadata(
@@ -142,7 +142,7 @@ message_count, metadata = azure_queue_service.get_queue_metadata(
 ```
 
 ## <a name="how-to-delete-a-queue"></a>Nasıl yapılır: kuyruğu silme
-Bir kuyruğu ve içerdiği tüm iletileri silmek için, kuyruk nesnesi üzerindeki **Delete\_Queue ()** yöntemini çağırın.
+Bir kuyruğu ve içerdiği tüm iletileri silmek için, kuyruk nesnesi üzerindeki **Delete \_ Queue ()** yöntemini çağırın.
 
 ```ruby
 azure_queue_service.delete_queue("test-queue")

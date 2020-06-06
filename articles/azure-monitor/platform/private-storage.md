@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 7213cb10936fc1c2117b2c5c3fc32a6bfea02d30
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 6a123fac9f199fc0b19a3e6af33ad705ce51945c
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816783"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464462"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure Izleyici 'de günlük alımı için müşterinin sahip olduğu depolama hesapları
 
@@ -232,4 +232,4 @@ Depolama hesapları, depolanan verilerin hacmine, depolama türlerine ve artıkl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Özel bir bağlantı ayarlama hakkında daha fazla bilgi için bkz. [ağları Azure Izleyicisine güvenli şekilde bağlamak için Azure özel bağlantısı kullanma} (Private-link-security.md)
+- Özel bir bağlantı ayarlama hakkında daha fazla bilgi için bkz. [Azure özel bağlantı kullanarak ağları güvenli bir şekilde Azure izleyici 'ye bağlama](private-link-security.md)

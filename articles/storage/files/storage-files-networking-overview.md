@@ -7,20 +7,20 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7d95cc08595296d697618cbb3ff0025c7c212a1f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 804e469a01be042b4c299fd608f11426e7274b72
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296536"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464819"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure dosyaları ağ iletişimi konuları 
 Bir Azure dosya paylaşımının bağlantısını iki şekilde yapabilirsiniz:
 
 - Doğrudan SMB veya FileREST protokolleri aracılığıyla paylaşıma erişme. Bu erişim stili, birincil olarak çok sayıda şirket içi sunucuyu ortadan kaldırmak için kullanılır.
-- Azure Dosya Eşitleme ile şirket içi sunucuda Azure dosya paylaşımının bir önbelleğini oluşturma ve şirket içi sunucudaki dosya paylaşımının verilerine (SMB, NFS, FTPS, vb.) kullanım ihtimaliniz için erişme. Bu erişim deseninin her ikisi de şirket içi performans ve bulut ölçeğinden ve Azure Backup gibi sunucusuz eklenebilir hizmetlerden en iyi şekilde birleştirilemediğinden yararlı olur.
+- Azure Dosya Eşitleme ile şirket içi sunucuda (veya bir Azure VM 'de) Azure dosya paylaşımının bir önbelleğini oluşturma ve şirket içi sunucudaki dosya paylaşımının verilerine (SMB, NFS, FTPS, vb.) kullanım örneği için erişim Bu erişim deseninin her ikisi de şirket içi performans ve bulut ölçeğinden ve Azure Backup gibi sunucusuz eklenebilir hizmetlerden en iyi şekilde birleştirilemediğinden yararlı olur.
 
-Bu makalede, kullanım örneği Azure Dosya Eşitleme kullanmak yerine doğrudan Azure dosya paylaşımında erişim için çağrı yapıldığında, için ağ yapılandırma konusuna odaklanılır. Azure Dosya Eşitleme dağıtımına yönelik ağ konuları hakkında daha fazla bilgi için bkz. [Azure dosya eşitleme proxy ve güvenlik duvarı ayarlarını yapılandırma](storage-sync-files-firewall-and-proxy.md).
+Bu makalede, kullanım örneği Azure Dosya Eşitleme kullanmak yerine doğrudan Azure dosya paylaşımında erişim için çağrı yapıldığında, için ağ yapılandırma konusuna odaklanılır. Azure Dosya Eşitleme dağıtımına yönelik ağ konuları hakkında daha fazla bilgi için bkz. [Azure dosya eşitleme ağ değerlendirmeleri](storage-sync-files-networking-overview.md).
 
 Azure dosya paylaşımları için ağ yapılandırması, Azure depolama hesabında yapılır. Depolama hesabı, birden çok dosya paylaşımını ve BLOB kapsayıcıları ya da kuyrukları gibi diğer depolama kaynaklarını dağıtabileceğiniz, paylaşılan bir depolama havuzunu temsil eden bir yönetim yapısıdır. Depolama hesapları, dosya paylaşımlarınıza ağ erişimini güvenli hale getirmenize yardımcı olan birden çok ayarı sunar: ağ uç noktaları, depolama hesabı güvenlik duvarı ayarları ve aktarım sırasında şifreleme. 
 

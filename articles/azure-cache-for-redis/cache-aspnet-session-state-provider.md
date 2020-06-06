@@ -6,16 +6,16 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 8083efe833ec80290713fc14d9cb89acd8263fa2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1599fe76f3542717bebe63228d8c46f7e5de97c3
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010911"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457176"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure için Redis Cache için ASP.NET Oturum Durumu Sağlayıcısı
 
-Redin için Azure Cache, oturum durumunu bir SQL Server veritabanı yerine Redto için Azure önbelleği ile bellekte depolamak için kullanabileceğiniz bir oturum durumu sağlayıcısı sağlar. Önbelleğe alma oturum durumu sağlayıcısını kullanmak için, önce önbelleğinizi yapılandırın ve ardından ASP.NET uygulamanızı, Redsıs oturum durumu NuGet paketi için Azure önbelleğini kullanarak önbellek için yapılandırın.
+Redin için Azure Cache, oturum durumunu bir SQL Server veritabanı yerine Redto için Azure önbelleği ile bellekte depolamak için kullanabileceğiniz bir oturum durumu sağlayıcısı sağlar. Önbelleğe alma oturum durumu sağlayıcısını kullanmak için, önce önbelleğinizi yapılandırın ve ardından ASP.NET uygulamanızı, Redsıs oturum durumu NuGet paketi için Azure önbelleğini kullanarak önbellek için yapılandırın. ASP.NET Core uygulamalar için [ASP.NET Core ' de oturum ve durum yönetimini](https://docs.microsoft.com/aspnet/core/fundamentals/app-state)okuyun.
 
 Bir Kullanıcı oturumu için bir durum biçiminin depolanmasını önlemek için genellikle gerçek dünyada bir bulut uygulamasında pratik değildir ancak bazı yaklaşımlar performansı ve ölçeklenebilirliği diğerlerinden daha fazla etkiler. Durumu depolamanız gerekirse, en iyi çözüm durum miktarını küçük tutmak ve tanımlama bilgilerinde depolamak olur. Bu uygun değilse, bir sonraki en iyi çözüm dağıtılmış, bellek içi önbellek için bir sağlayıcıyla ASP.NET oturum durumunu kullanmaktır. Performans ve ölçeklenebilirlik açısından en kötü çözüm, veritabanı tarafından desteklenen bir oturum durumu sağlayıcısı kullanmaktır. Bu konu, ASP.NET oturum durumu sağlayıcısını Redsıs için Azure önbelleği kullanma hakkında rehberlik sağlar. Diğer oturum durumu seçenekleri hakkında daha fazla bilgi için bkz. [ASP.NET oturum durumu seçenekleri](#aspnet-session-state-options).
 
@@ -89,10 +89,10 @@ Açıklamalı bölüm, her bir özniteliğe yönelik özniteliklerin ve örnek a
 * **throwOnError** : bir hata oluşursa bir özel durumun oluşturulması için doğru veya işlemin sessizce başarısız olmasını istiyorsanız false. Statik Microsoft. Web. Redsıs. RedisSessionStateProvider. LastException özelliğini denetleyerek bir hata olup olmadığını kontrol edebilirsiniz. Varsayılan değer true 'dur.
 * **Retrytimeoutınmilliseconds** – başarısız olan işlemler, milisaniye cinsinden belirtilen aralık sırasında yeniden denenir. İlk yeniden deneme 20 milisaniyelik sonra gerçekleşir ve yeniden denemeler, Retrytimeoutınmilliseconds aralığı sona erene kadar her saniye oluşur. Bu aralıktan hemen sonra işlem bir son kez yeniden denenir. İşlem yine başarısız olursa, throwOnError ayarına bağlı olarak, özel durum çağırana geri getirilir. Varsayılan değer 0 ' dır, bu da yeniden deneme anlamına gelir.
 * **DatabaseID** : önbellek çıkış verileri için kullanılacak veritabanını belirtir. Belirtilmemişse, varsayılan 0 değeri kullanılır.
-* **ApplicationName** – anahtarları redsıs olarak `{<Application Name>_<Session ID>}_Data`depolanır. Bu adlandırma şeması, birden fazla uygulamanın aynı Redsıs örneğini paylaşmasına olanak sağlar. Bu parametre isteğe bağlıdır ve bunu sağlamazsanız varsayılan bir değer kullanılır.
+* **ApplicationName** – anahtarları redsıs olarak depolanır `{<Application Name>_<Session ID>}_Data` . Bu adlandırma şeması, birden fazla uygulamanın aynı Redsıs örneğini paylaşmasına olanak sağlar. Bu parametre isteğe bağlıdır ve bunu sağlamazsanız varsayılan bir değer kullanılır.
 * **Connectiontimeoutınmilliseconds** – Bu ayar, StackExchange. redsıs Istemcisinde ConnectTimeout ayarını geçersiz kılmanızı sağlar. Belirtilmezse, varsayılan connectTimeout ayarı 5000 kullanılır. Daha fazla bilgi için bkz. [StackExchange. redsıs yapılandırma modeli](https://go.microsoft.com/fwlink/?LinkId=398705).
 * **Operationtimeoutınmilliseconds** – Bu ayar, StackExchange. redsıs Istemcisinde synctimeout ayarını geçersiz kılmanızı sağlar. Belirtilmemişse, varsayılan syncTimeout ayarı 1000 kullanılır. Daha fazla bilgi için bkz. [StackExchange. redsıs yapılandırma modeli](https://go.microsoft.com/fwlink/?LinkId=398705).
-* **Redisserializertype** -Bu ayar redsıs 'e gönderilen oturum içeriğinin özel serileştirmesini belirtmenize olanak tanır. Belirtilen türün uygulanması `Microsoft.Web.Redis.ISerializer` ve ortak parametresiz oluşturucuyu bildirmesi gerekir. Varsayılan `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` olarak kullanılır.
+* **Redisserializertype** -Bu ayar redsıs 'e gönderilen oturum içeriğinin özel serileştirmesini belirtmenize olanak tanır. Belirtilen türün uygulanması `Microsoft.Web.Redis.ISerializer` ve ortak parametresiz oluşturucuyu bildirmesi gerekir. Varsayılan olarak `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` kullanılır.
 
 Bu özellikler hakkında daha fazla bilgi için bkz. [ASP.net for the The redsıs for](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)The The The The The The The The The The The The
 

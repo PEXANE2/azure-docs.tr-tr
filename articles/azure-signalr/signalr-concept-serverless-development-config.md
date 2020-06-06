@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbacb6a5bbdead52750935c476f453423647fc0f
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77523179"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457142"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure SignalR Hizmeti ile Azure İşlevleri geliştirme ve yapılandırma
 
@@ -32,17 +32,25 @@ Azure portal, SignalR hizmeti kaynağınızın *Ayarlar* sayfasını bulun. *Hiz
 Azure İşlevleri ve Azure SignalR Hizmeti ile oluşturulan sunucusuz bir gerçek zamanlı uygulama için genelde iki Azure İşlevi gerekir:
 
 * Müşterinin geçerli bir SignalR Hizmeti erişim belirteci ve hizmet uç noktası URL’si almak için çağırdığı “negotiate” işlevi
-* İleti gönderen veya grup üyeliğini yöneten bir ya da daha fazla işlev
+* SignalR hizmetinden iletileri işleyen ve ileti gönderen veya grup üyeliğini yöneten bir veya daha fazla işlev
 
 ### <a name="negotiate-function"></a>Negotiate işlevi
 
 İstemci uygulaması, Azure SignalR hizmetine bağlanmak için geçerli bir erişim belirteci gerektirir. Erişim belirteci, belirli bir kullanıcı KIMLIĞI için anonim veya kimliği doğrulanmış olabilir. Sunucusuz SignalR hizmeti uygulamaları, bir belirteç ve SignalR hizmeti uç noktası URL 'SI gibi diğer bağlantı bilgilerini almak için "Negotiate" adlı bir HTTP uç noktası gerektirir.
 
-Bağlantı bilgileri nesnesini oluşturmak için HTTP ile tetiklenen bir Azure Işlevi ve *Signalrconnectionınfo* giriş bağlaması kullanın. İşlevin ' de `/negotiate`sonlanan bir http yolu olması gerekir.
+Bağlantı bilgileri nesnesini oluşturmak için HTTP ile tetiklenen bir Azure Işlevi ve *Signalrconnectionınfo* giriş bağlaması kullanın. İşlevin ' de sonlanan bir HTTP yolu olması gerekir `/negotiate` .
+
+C# dilinde [sınıf tabanlı model](#class-based-model) Ile, *Signalrconnectionınfo* giriş bağlamaya gerek kalmaz ve özel talepler ekleyebilir. Bkz. [sınıf tabanlı modelde anlaşma deneyimi](#negotiate-experience-in-class-based-model)
 
 Negotiate işlevinin nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [ *Signalrconnectionınfo* giriş bağlama başvurusu](../azure-functions/functions-bindings-signalr-service-input.md).
 
 Kimliği doğrulanmış bir belirteç oluşturma hakkında bilgi edinmek için [App Service kimlik doğrulaması kullanma](#using-app-service-authentication)konusuna bakın.
+
+### <a name="handle-messages-sent-from-signalr-service"></a>SignalR hizmetinden gönderilen iletileri işle
+
+SignalR hizmetinden gönderilen iletileri işlemek için *SignalR tetikleme* bağlamasını kullanın. İstemciler ileti gönderir veya istemcileri bağlandığında veya bağlantısı kesildiğinde tetiklenebilir.
+
+Daha fazla bilgi için bkz. [ *SignalR tetikleyicisi* bağlama başvurusu](../azure-functions/functions-bindings-signalr-service-trigger.md)
 
 ### <a name="sending-messages-and-managing-group-membership"></a>İleti gönderme ve grup üyeliğini yönetme
 
@@ -56,6 +64,111 @@ Daha fazla bilgi için bkz. [ *SignalR* çıkış bağlama başvurusu](../azure-
 
 SignalR 'nin bir "Hub" kavramı vardır. Her istemci bağlantısı ve Azure Işlevlerinden gönderilen her ileti, belirli bir hub 'ın kapsamına alınır. Hub 'ları, bağlantılarınızı ve iletilerinizi mantıksal ad alanlarına ayırmak için bir yol olarak kullanabilirsiniz.
 
+## <a name="class-based-model"></a>Sınıf tabanlı model
+
+Sınıf tabanlı model C# için ayrılmıştır. Sınıf tabanlı model ile tutarlı bir SignalR sunucu tarafı programlama deneyimine sahip olabilir. Aşağıdaki özelliklere sahiptir.
+
+* Daha az yapılandırma çalışıyor: sınıf adı olarak kullanılır `HubName` , yöntem adı olarak kullanılır `Event` ve `Category` Yöntem adına göre otomatik olarak karar verir.
+* Auto parametresi bağlama: ne `ParameterNames` de öznitelik `[SignalRParameter]` gerekli değildir. Parametreler, Azure Function yönteminin bağımsız değişkenlerine sırayla otomatik olarak bağlanır.
+* Uygun çıkış ve anlaşma deneyimi.
+
+Aşağıdaki kodlar şu özellikleri göstermektedir:
+
+```cs
+public class SignalRTestHub : ServerlessHub
+{
+    [FunctionName("negotiate")]
+    public SignalRConnectionInfo Negotiate([HttpTrigger(AuthorizationLevel.Anonymous)]HttpRequest req)
+    {
+        return Negotiate(req.Headers["x-ms-signalr-user-id"], GetClaims(req.Headers["Authorization"]));
+    }
+
+    [FunctionName(nameof(OnConnected))]
+    public async Task OnConnected([SignalRTrigger]InvocationContext invocationContext, ILogger logger)
+    {
+        await Clients.All.SendAsync(NewConnectionTarget, new NewConnection(invocationContext.ConnectionId));
+        logger.LogInformation($"{invocationContext.ConnectionId} has connected");
+    }
+
+    [FunctionName(nameof(Broadcast))]
+    public async Task Broadcast([SignalRTrigger]InvocationContext invocationContext, string message, ILogger logger)
+    {
+        await Clients.All.SendAsync(NewMessageTarget, new NewMessage(invocationContext, message));
+        logger.LogInformation($"{invocationContext.ConnectionId} broadcast {message}");
+    }
+
+    [FunctionName(nameof(OnDisconnected))]
+    public void OnDisconnected([SignalRTrigger]InvocationContext invocationContext)
+    {
+    }
+}
+```
+
+Sınıf tabanlı modelin kullanmasını istediğiniz tüm işlevlerin **Serverlesshub**'dan devralan sınıfın yöntemi olması gerekir. Örnekteki sınıf adı `SignalRTestHub` hub adıdır.
+
+### <a name="define-hub-method"></a>Hub yöntemini tanımla
+
+Tüm **hub yöntemlerinin bir** özniteliğe sahip olması `[SignalRTrigger]` ve parametresiz Oluşturucu kullanması **gerekir** . Sonra **Yöntem adı** parametre **olayı**olarak değerlendirilir.
+
+Varsayılan olarak, `category=messages` Yöntem adı dışında aşağıdaki adlardan biridir:
+
+* **OnConnected**: olarak kabul edilir`category=connections, event=connected`
+* **OnConnected**: olarak değerlendirildi`category=connections, event=disconnected`
+
+### <a name="parameter-binding-experience"></a>Parametre bağlama deneyimi
+
+Sınıf tabanlı modelde, `[SignalRParameter]` Tüm bağımsız değişkenler varsayılan olarak olarak işaretlendiğinden, `[SignalRParameter]` aşağıdaki durumlardan biri dışında, bu gerekli değildir:
+
+* Bağımsız değişken bir bağlama özniteliği tarafından tasarlanmalıdır.
+* Bağımsız değişkenin türü `ILogger` veya`CancellationToken`
+* Bağımsız değişken özniteliğe göre düzenlenmiş`[SignalRIgnore]`
+
+### <a name="negotiate-experience-in-class-based-model"></a>Sınıf tabanlı modelde anlaşma deneyimi
+
+SignalR giriş bağlamasını kullanmak yerine `[SignalR]` , sınıf tabanlı modelde anlaşma daha esnek olabilir. Temel sınıfta `ServerlessHub` bir yöntemi vardır
+
+```cs
+SignalRConnectionInfo Negotiate(string userId = null, IList<Claim> claims = null, TimeSpan? lifeTime = null)
+```
+
+Bu özellikler Kullanıcı `userId` `claims` işlev yürütme sırasında veya öğesini özelleştirir.
+
+## <a name="use-signalrfilterattribute"></a>`SignalRFilterAttribute` kullan
+
+Kullanıcı soyut sınıfı alabilir ve uygulayabilir `SignalRFilterAttribute` . İçinde özel durumlar oluşturulursa `FilterAsync` , `403 Forbidden` istemcilere geri gönderilir.
+
+Aşağıdaki örnek, yalnızca ' ın çağrılmasını sağlayan bir müşteri filtresinin nasıl uygulanacağını gösterir `admin` `broadcast` .
+
+```cs
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
+internal class FunctionAuthorizeAttribute: SignalRFilterAttribute
+{
+    private const string AdminKey = "admin";
+
+    public override Task FilterAsync(InvocationContext invocationContext, CancellationToken cancellationToken)
+    {
+        if (invocationContext.Claims.TryGetValue(AdminKey, out var value) &&
+            bool.TryParse(value, out var isAdmin) &&
+            isAdmin)
+        {
+            return Task.CompletedTask;
+        }
+
+        throw new Exception($"{invocationContext.ConnectionId} doesn't have admin role");
+    }
+}
+```
+
+İşlevi yetkilendirmek için özniteliğiyle yararlanın.
+
+```cs
+[FunctionAuthorize]
+[FunctionName(nameof(Broadcast))]
+public async Task Broadcast([SignalRTrigger]InvocationContext invocationContext, string message, ILogger logger)
+{
+}
+```
+
 ## <a name="client-development"></a>İstemci geliştirme
 
 SignalR istemci uygulamaları, Azure SignalR hizmetine kolayca bağlanmak ve ileti almak için çeşitli dillerden birindeki SignalR istemci SDK 'sinden yararlanabilir.
@@ -67,7 +180,7 @@ SignalR hizmetine bağlanmak için, bir istemcinin aşağıdaki adımlardan olu�
 1. Geçerli bağlantı bilgilerini almak için yukarıda ele alınan *Negotiate* HTTP uç noktasına bir istek yapın
 1. Hizmet uç noktası URL 'sini ve *Negotiate* uç noktasından alınan erişim belirtecini kullanarak SignalR hizmetine bağlanma
 
-SignalR istemci SDK 'Ları, anlaşma anlaşmasını gerçekleştirmek için gereken mantığı zaten içeriyor. Negotiate uç noktasının URL 'sini, `negotiate` SEGMENTI, SDK 'nın `HubConnectionBuilder`' ye geçirin. JavaScript 'te bir örnek aşağıda verilmiştir:
+SignalR istemci SDK 'Ları, anlaşma anlaşmasını gerçekleştirmek için gereken mantığı zaten içeriyor. Negotiate uç noktasının URL 'sini, `negotiate` segmenti, SDK 'nın ' ye geçirin `HubConnectionBuilder` . JavaScript 'te bir örnek aşağıda verilmiştir:
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -75,7 +188,7 @@ const connection = new signalR.HubConnectionBuilder()
   .build()
 ```
 
-Kural gereği, SDK otomatik olarak URL `/negotiate` 'ye ekler ve anlaşmayı başlatmak için onu kullanır.
+Kural gereği, SDK otomatik olarak `/negotiate` URL 'ye ekler ve anlaşmayı başlatmak için onu kullanır.
 
 > [!NOTE]
 > JavaScript/TypeScript SDK bir tarayıcıda kullanıyorsanız, İşlev Uygulaması için [çıkış noktaları arası kaynak paylaşımı 'nı (CORS) etkinleştirmeniz](#enabling-cors) gerekir.
@@ -102,10 +215,10 @@ JavaScript/TypeScript istemcisi, bağlantı anlaşmasını başlatmak için Nego
 
 #### <a name="localhost"></a>E
 
-Yerel bilgisayarınızda Işlev uygulamasını çalıştırırken CORS 'yi etkinleştirmek için `Host` *yerel. Settings. JSON* öğesine bir bölüm ekleyebilirsiniz. `Host` Bölümünde iki özellik ekleyin:
+Yerel bilgisayarınızda Işlev uygulamasını çalıştırırken `Host` CORS 'yi etkinleştirmek için *yerel. Settings. JSON* öğesine bir bölüm ekleyebilirsiniz. `Host`Bölümünde iki özellik ekleyin:
 
 * `CORS`-istemci uygulamanın kaynağı olan temel URL 'YI girin
-* `CORSCredentials`-Bunu `true` "withcredentials" isteklerine izin verecek şekilde ayarlayın
+* `CORSCredentials`-Bunu `true` "withCredentials" isteklerine izin verecek şekilde ayarlayın
 
 Örnek:
 
@@ -167,9 +280,9 @@ Azure Işlevleri, Facebook, Twitter, Microsoft hesabı, Google ve Azure Active D
 
 Azure portal, Işlev uygulamanızın *platform özellikleri* sekmesinde *kimlik doğrulama/yetkilendirme* ayarları penceresini açın. Seçtiğiniz kimlik sağlayıcısını kullanarak kimlik doğrulaması yapılandırmak için [App Service kimlik doğrulama](../app-service/overview-authentication-authorization.md) belgelerini izleyin.
 
-Yapılandırıldıktan sonra kimliği doğrulanmış HTTP istekleri, sırasıyla `x-ms-client-principal-name` kimliği `x-ms-client-principal-id` doğrulanmış kimliğin Kullanıcı adı ve Kullanıcı kimliği bilgilerini içerir.
+Yapılandırıldıktan sonra kimliği doğrulanmış HTTP istekleri, `x-ms-client-principal-name` `x-ms-client-principal-id` sırasıyla kimliği doğrulanmış kimliğin Kullanıcı adı ve Kullanıcı kimliği bilgilerini içerir.
 
-Kimliği doğrulanmış bağlantılar oluşturmak için, *Signalrconnectionınfo* bağlama yapılandırmanızda bu üst bilgileri kullanabilirsiniz. `x-ms-client-principal-id` Üstbilgiyi kullanan örnek bir C# Negotiate işlevi aşağıda verilmiştir.
+Kimliği doğrulanmış bağlantılar oluşturmak için, *Signalrconnectionınfo* bağlama yapılandırmanızda bu üst bilgileri kullanabilirsiniz. Üstbilgiyi kullanan örnek bir C# Negotiate işlevi aşağıda verilmiştir `x-ms-client-principal-id` .
 
 ```csharp
 [FunctionName("negotiate")]
@@ -184,7 +297,7 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-Daha sonra, bir SignalR iletisinin `UserId` özelliğini ayarlayarak bu kullanıcıya iletiler gönderebilirsiniz.
+Daha sonra, `UserId` bir SignalR iletisinin özelliğini ayarlayarak bu kullanıcıya iletiler gönderebilirsiniz.
 
 ```csharp
 [FunctionName("SendMessage")]

@@ -5,21 +5,21 @@ author: srchi
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 11/16/2019
+ms.date: 06/04/2020
 ms.author: srchi
-ms.openlocfilehash: cc6b74a56d2a538d35e324090832e6c7e03e609f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4b159ef897185dc0c886b525e5fdf38cd919b8cc
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647298"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465720"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sindeki akışları değiştirme
 
 Azure Cosmos DB, MongoDB için API 'sinde bulunan [akış](change-feed.md) desteğini değiştirme, akışları değiştirme API 'si kullanılarak kullanılabilir. Uygulamalarınız, değişiklik akışları API 'sini kullanarak koleksiyonda veya tek bir parçadaki öğelerde yapılan değişiklikleri alabilir. Daha sonra sonuçlara göre daha fazla işlem yapabilirsiniz. Koleksiyondaki öğelerde yapılan değişiklikler, değişiklik zamanının sırasına göre yakalanır ve sıralama düzeni parça anahtarı başına garanti edilir.
 
-[!NOTE]
-Değişiklik akışlarını kullanmak için, Azure Cosmos DB MongoDB için API 'sinin veya sonraki bir sürümünün 3,6 sürümünü içeren hesabı oluşturun. Değişiklik akışı örneklerini önceki bir sürüme karşı çalıştırırsanız, `Unrecognized pipeline stage name: $changeStream` hatayı görebilirsiniz.
+> [!NOTE]
+> Değişiklik akışlarını kullanmak için, Azure Cosmos DB MongoDB için API 'sinin veya sonraki bir sürümünün 3,6 sürümünü içeren hesabı oluşturun. Değişiklik akışı örneklerini önceki bir sürüme karşı çalıştırırsanız, `Unrecognized pipeline stage name: $changeStream` hatayı görebilirsiniz.
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 

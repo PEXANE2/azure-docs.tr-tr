@@ -2,13 +2,13 @@
 title: Dağıtım geçmişi silme işlemleri
 description: Azure Resource Manager dağıtım geçmişinden dağıtımları otomatik olarak silme işlemini açıklar. Geçmiş 800 sınırını aşmaya yakın olduğunda dağıtımlar silinir.
 ms.topic: conceptual
-ms.date: 05/27/2020
-ms.openlocfilehash: 3e48b2da00986da00f7597cf887aa74f84587710
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/05/2020
+ms.openlocfilehash: 2d87cc1dcc0d3a41cb32bf7750ccdd832019f8bf
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122454"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84462745"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Dağıtım geçmişinden otomatik silme işlemleri
 
@@ -28,6 +28,9 @@ Dağıtımlar yalnızca 800 sınırına yaklaşdığınızda dağıtım geçmiş
 Dağıtıma ek olarak, [durum işlemini](template-deploy-what-if.md) çalıştırdığınızda veya bir dağıtımı doğrulamak için de silmeleri tetiklersiniz.
 
 Bir dağıtıma geçmişle aynı adı verdiğinizde, geçmişteki yerini sıfırladınız. Dağıtım, geçmişteki en son yere gider. Ayrıca bir hatadan sonra [Bu dağıtıma geri](rollback-on-error.md) döndüğünüzde bir dağıtımın yerini sıfırlayabilirsiniz.
+
+> [!NOTE]
+> Kaynak grubunuz zaten 800 sınırında ise, bir sonraki dağıtımınız hata vererek başarısız olur. Otomatik silme işlemi hemen başlatılır. Kısa bir bekleme sonrasında dağıtımınızı yeniden deneyebilirsiniz.
 
 ## <a name="opt-out-of-automatic-deletions"></a>Otomatik silme işlemleri devre dışı
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: f03d1cfeccf03614fe0a5828a05768a5ae3f56e2
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 269ad20d99f21c05d527d60af61692eb49048f08
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699657"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84448082"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Azure Lab Services kullanarak doğal dil işlemede derin öğrenmeye odaklanan bir laboratuvar kurun
 Bu makalede, Azure Lab Services kullanarak doğal dil işleme (NLP) için derin öğrenime odaklanan bir laboratuvarı nasıl ayarlayabileceğiniz gösterilmektedir. Doğal dil işleme (NLP), çeviri, konuşma tanıma ve diğer dil anlama özelliklerine sahip bilgisayarları sağlayan yapay zeka (AI) biçimidir.  
@@ -38,7 +38,7 @@ Yeni bir laboratuvar oluşturmak ve aşağıdaki ayarları uygulamak için [Bu �
 
 | Laboratuvar ayarları | Değer/yönergeler | 
 | ------------ | ------------------ |
-| Sanal makine (VM) boyutu | Küçük GPU (Işlem). Bu boyut, yapay zeka ve derin öğrenme gibi yoğun işlem yoğunluğu ve yoğun ağ kullanımı gerektiren uygulamalar için idealdir. |
+| Sanal makine (VM) boyutu | **Küçük GPU (işlem)**. Bu boyut, yapay zeka ve derin öğrenme gibi yoğun işlem yoğunluğu ve yoğun ağ kullanımı gerektiren uygulamalar için idealdir. |
 | VM görüntüsü | [Linux için veri bilimi sanal makinesi (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Bu görüntü, Machine Learning ve veri bilimi için derin öğrenme çerçeveleri ve araçları sağlar. Bu görüntüdeki yüklü araçların tam listesini görüntülemek için şu makaleye bakın: [DSVM 'ye nelerin dahil olduğu?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm). |
 | Uzak Masaüstü bağlantısı 'nı etkinleştir | <p>Veri bilimi görüntüsü, öğretmen ve öğrencilerin GUI Uzak Masaüstü kullanarak bağlanabilmesi için X2Go kullanmak üzere zaten yapılandırılmıştır.  X2Go, **Uzak Masaüstü bağlantısını etkinleştir** ayarının *etkinleştirilmesini gerektirmez.*  Bu ayarın, bunun yerine RDP kullanmayı tercih ediyorsanız etkinleştirilmesi gerekir.
 

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ce19c670df5062a11bf86e9c383a322f9033818d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 6e4459eea07f60d90dad692d6625dd45c5038093
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612019"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456989"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Sanal Masaüstü PowerShell
 
@@ -36,7 +36,7 @@ Bu bölümde, Windows sanal masaüstü ayarlanırken genellikle kullanılan Powe
 ### <a name="error-new-azroleassignment-the-provided-information-does-not-map-to-an-ad-object-id"></a>Hata: New-Azroleatama: belirtilen bilgiler bir AD nesne KIMLIĞIYLE eşlenmiyor
 
 ```powershell
-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
 ```
 
 **Neden:** *-Signınname* parametresi tarafından belirtilen kullanıcı, Windows sanal masaüstü ortamına bağlı Azure Active Directory bulunamıyor. 
@@ -73,7 +73,7 @@ Neden: Windows sanal masaüstü, belirli konumlarda hizmet meta verilerini depol
 New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e423b8b7d168 Error: ApplicationGroup must be in same location as associated HostPool
 ```
 
-**Neden:** Bir konum uyumsuzluğu var. Tüm konak havuzları, uygulama grupları ve çalışma alanları, hizmet meta verilerini depolamak için bir konuma sahiptir. Oluşturduğunuz tüm nesneler aynı konumda olmalıdır. Örneğin, bir konak havuzu içinde `eastus`ise, içinde `eastus`uygulama grupları da oluşturmanız gerekir. Bu uygulama gruplarının kaydedileceği bir çalışma alanı oluşturursanız, bu çalışma alanının da olması `eastus` gerekir.
+**Neden:** Bir konum uyumsuzluğu var. Tüm konak havuzları, uygulama grupları ve çalışma alanları, hizmet meta verilerini depolamak için bir konuma sahiptir. Oluşturduğunuz tüm nesneler aynı konumda olmalıdır. Örneğin, bir konak havuzu içinde ise `eastus` , içinde uygulama grupları da oluşturmanız gerekir `eastus` . Bu uygulama gruplarının kaydedileceği bir çalışma alanı oluşturursanız, bu çalışma alanının da olması gerekir `eastus` .
 
 **Çözüm:** Konak havuzunun oluşturulduğu konumu alın, ardından oluşturmakta olduğunuz uygulama grubunu aynı konuma atayın.
 

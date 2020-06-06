@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 3d9e4e54d2b1186278afc72c72cdd6bcf33dd41b
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: a4cbe49efd605e2104dbbc9f389a85e8fc4c468e
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235450"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449609"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -144,11 +144,11 @@ Bulunan VM 'Ler portalda görünmezse veya VM verileri güncel değilse, birkaç
 
 VM 'Leri silerseniz ve portalda hala görünüyorsa 30 dakika bekleyin. Hala görünüyorsa, yukarıda açıklandığı gibi yenileyin.
 
-## <a name="error-the-file-uploaded-is-not-in-the-expected-format"></a>Hata: karşıya yüklenen dosya beklenen biçimde değil
-Bazı araçların, bir sınırlayıcı olarak noktalı virgül ile CSV dosyası oluşturan bölgesel ayarları vardır. Sınırlandırıcının virgül olduğundan emin olmak için lütfen ayarları değiştirin.
+## <a name="error-the-file-uploaded-is-not-in-the-expected-format"></a>Hata: Yüklenen dosya beklenen biçimde değil
+Bazı araçların bölgesel ayarları, sınırlayıcı olarak noktalı virgül kullanan CSV dosyaları oluşturur. Ayarların sınırlayıcı olarak virgül kullandığından emin olun.
 
-## <a name="i-imported-a-csv-but-i-see-discovery-is-in-progress"></a>CSV 'yi içeri aktardım, ancak "bulma devam ediyor" görüyorum
-Bu durum, CSV yüklemeniz doğrulama hatası nedeniyle başarısız olduysa görüntülenir. CSV 'yi yeniden içeri aktarmayı deneyin. Önceki karşıya yükleme işleminin hata raporunu indirebilir ve hataları onarmak için dosyadaki düzeltme kılavuzunu takip edebilirsiniz. Hata raporu ' bilgisayarları Bul ' sayfasındaki ' Içeri aktarma ayrıntıları ' bölümünden indirilebilir.
+## <a name="i-imported-a-csv-but-i-see-discovery-is-in-progress"></a>CSV’yi içeri aktardım ancak “Keşif sürüyor” yazısıyla karşılaşıyorum
+Bu durum, CSV yüklemeniz doğrulama hatası nedeniyle başarısız olduysa görüntülenir. CSV’yi içeri aktarmayı yeniden deneyin. Önceki karşıya yüklemenin hata raporunu indirebilir ve hataları gidermek için düzeltme kılavuzunu izleyebilirsiniz. Hata raporları ‘Makineleri keşfet’ sayfasındaki ‘Ayrıntıları içeri aktar’ bölümünden indirilebilir.
 
 ## <a name="do-not-see-application-details-even-after-updating-guest-credentials"></a>Konuk kimlik bilgilerini güncelleştirdikten sonra bile uygulama ayrıntılarını görmeyin
 Uygulama bulma her 24 saatte bir çalışır. Ayrıntıları hemen görmek isterseniz aşağıdaki gibi yenileyin. Hayır öğesine bağlı olarak bu işlem birkaç dakika sürebilir. bulunan VM 'Ler.
@@ -168,39 +168,54 @@ Azure geçişi, Azure geçişi: Sunucu değerlendirmesi kullanılarak uygulama, 
 Tipik uygulama bulma hataları tabloda özetlenir. 
 
 **Hata** | **Sağlamak** | **Eylem**
---- | --- | --- | ---
-10000: "sunucuda yüklü uygulamalar bulunamadı" | Makine işletim sistemi Windows veya Linux değilse bu durum oluşabilir. | Yalnızca Windows/Linux için uygulama bulmayı kullanın.
-10001: "sunucu yüklü uygulamalar alınamıyor" | İç hata-gereç içindeki bazı dosyalar eksik. | Microsoft Desteği'ne başvurun.
-10002: "sunucu yüklü uygulamalar alınamıyor" | Gereç üzerindeki bulma Aracısı düzgün çalışmıyor olabilir. | Sorun, 24 saat içinde kendiliğinden çözümlenmezse desteğe başvurun.
-10003 "sunucu yüklü uygulamalar alınamıyor" | Gereç üzerindeki bulma Aracısı düzgün çalışmıyor olabilir. | Sorun, 24 saat içinde kendiliğinden çözümlenmezse desteğe başvurun.
-10004: "<Windows/Linux> makineler için yüklü uygulamalar bulunamıyor" |  <Windows/Linux> makinelere erişim kimlik bilgileri, Gereç içinde sağlanmamış.| <Windows/Linux> makinelerine erişimi olan gereç için bir kimlik bilgisi ekleyin.
-10005: "Şirket içi sunucuya erişilemiyor" | Erişim kimlik bilgileri yanlış olabilir. | Gereç kimlik bilgilerini güncelleştirme ilgili makineye bunlarla erişebildiğinizden emin olun. 
-10006: "Şirket içi sunucuya erişilemiyor" | Makine işletim sistemi Windows veya Linux değilse bu durum oluşabilir.|  Yalnızca Windows/Linux için uygulama bulmayı kullanın.
-10007: "alınan meta veriler işlenemiyor" | JSON seri durumdan çıkarılmaya çalışılırken bu iç hata oluştu | Bir çözüm için Microsoft Desteği başvurun
-9000/9001/9002: "sunucuda yüklü uygulamalar bulunamadı" | VMware araçları yüklenmemiş veya bozuk olabilir. | VMware araçlarını ilgili makineye yükleyin/yeniden yükleyin ve çalıştığını denetleyin.
-9003: sunucuda yüklü olan uygulamalar bulunamadı " | Makine işletim sistemi Windows veya Linux değilse bu durum oluşabilir. | Yalnızca Windows/Linux için uygulama bulmayı kullanın.
-9004: "sunucuda yüklü uygulamalar bulunamadı" | VM kapatılmışsa bu durum oluşabilir. | Bulma için VM 'nin açık olduğundan emin olun.
-9005: "sanal makinede yüklü olan uygulamalar bulunamadı | Makine işletim sistemi Windows veya Linux değilse bu durum oluşabilir. | Yalnızca Windows/Linux için uygulama bulmayı kullanın.
-9006/9007: "sunucu yüklü uygulamalar alınamıyor" | Gereç üzerindeki bulma Aracısı düzgün çalışmıyor olabilir. | Sorun, 24 saat içinde kendiliğinden çözümlenmezse desteğe başvurun
-9008: "sunucu yüklü uygulamalar alınamıyor". | Bir iç hata olabilir.  | TF sorun, 24 saat içinde kendiliğinden çözümlenmiyor, desteğe başvurun.
-9009: "sunucu yüklü uygulamalar alınamıyor" | Sunucu üzerindeki Windows Kullanıcı hesabı denetimi (UAC) ayarları kısıtlayıcıysa ve yüklü uygulamaların bulunmasını engelliyorsa, bu durum oluşabilir. | Sunucuda ' Kullanıcı hesabı denetimi ' ayarlarını arayın ve sunucudaki UAC ayarını alt iki düzeyden birine yapılandırın.
-9010: "VM kapalı" | VM kapalı.  | VM 'nin açık olduğundan emin olun.
-9011: "konuğa indirilecek dosya Konuk sanal makinede bulunamadı" | Sorun, bir iç hata nedeniyle oluşabilir. | Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse lütfen Microsoft Desteği başvurun.
-9012: "sonuç dosyası içerikleri boş" | Sorun, bir iç hata nedeniyle oluşabilir. | Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse lütfen Microsoft Desteği başvurun.
-9013: "VMware VM 'de her oturum açma işlemi için yeni bir geçici profil oluşturulur" | VM 'de her oturum açma için yeni bir geçici profil oluşturulur | Konuk VM kimlik bilgilerinde belirtilen kullanıcı adının UPN biçiminde olduğundan emin olun.
-9014: "meta veri, Konuk VM dosya sisteminden alınamıyor" | ESXi konağına bağlanılırken bir sorun oluştu | Gerecin VM 'yi çalıştıran ESXi konağında 443 numaralı bağlantı noktasına bağlanabildiğinden emin olun
-9015: "vCenter üzerinde yetersiz ayrıcalıklar nedeniyle VMware VM 'lerine bağlanılamıyor" | VCenter Kullanıcı hesabında Konuk Işlemler rolü etkin değil | VCenter Kullanıcı hesabında Konuk Işlemleri rolünün etkinleştirildiğinden emin olun.
-9016: "Konuk işlem Aracısı veri dışında, VMware VM 'lerine bağlanılamıyor" | VMware araçları düzgün yüklenmemiş veya güncel değil. | VMware araçlarının düzgün bir şekilde yüklendiğinden ve güncel olduğundan emin olun.
-9017: "bulunan meta verileri içeren dosya VM 'de bulunamadı" | Sorun, bir iç hata nedeniyle oluşabilir. | Bir çözüm için Microsoft Desteği başvurun.
-9018: "PowerShell, Konuk VM 'lerde yüklü değil" | PowerShell, Konuk VM 'de kullanılamıyor. | PowerShell 'i Konuk VM 'ye yükler.
-9019: "Konuk VM işlem hatalarından dolayı bulunamıyor" | VMware Konuk işlemi VM 'de başarısız oldu. | VM kimlik bilgilerinin geçerli olduğundan ve konuk VM kimlik bilgilerinde belirtilen kullanıcı adının UPN biçiminde olduğundan emin olun.
-9020: "dosya oluşturma izni reddedildi" | Kullanıcı veya grup ilkesiyle ilişkili rol, kullanıcının klasörde dosyayı oluşturmasını kısıtlıyor | Belirtilen Konuk kullanıcının klasördeki dosya için oluşturma iznine sahip olup olmadığını denetleyin. Klasör adı için bkz. Sunucu değerlendirmesi içindeki **Bildirimler** .
-9021: "dosya oluşturma izni, klasör sistem geçici yolunda reddedildi" | VM 'deki VMware aracı sürümü desteklenmiyor | VMware aracı sürümünüzü 10.2.0 ' dan yükseltin.
-9022: "WMI nesnesi erişimini al reddedildi" | Kullanıcı veya grup ilkesiyle ilişkili rol, kullanıcının WMI nesnesine erişmesini kısıtlıyor. | Lütfen Microsoft Desteği başvurun.
-9023: "SystemRoot ortam değişkeni değeri boş" | Bilinmiyor | Lütfen Microsoft Desteği başvurun.
-9024: "TEMP ortam değişkeni değeri boş" | Bilinmiyor | Lütfen Microsoft Desteği başvurun.
-9025: "PowerShell, Konuk VM 'lerde bozuk" | Bilinmiyor | PowerShell 'i Konuk VM 'de yeniden yükleyin ve PowerShell 'in Konuk VM 'de çalıştırıp çalıştırabileceğinizden emin olun.
-8084: "VMware hatası nedeniyle uygulamalar bulunamıyor:  <Exception from VMware> " | Azure geçişi gereci, uygulamaları bulmaya yönelik VMware API 'Lerini kullanır. Bu sorun, uygulamalar bulunmaya çalışılırken vCenter Server tarafından bir özel durum oluşturulursa meydana gelebilir. VMware 'den hata iletisi, portalda gösterilen hata iletisinde görüntülenir. | [VMware belgelerindeki](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)iletiyi arayın ve onarmak için adımları izleyin. Bu hatayı düzeltemedi, Microsoft destek 'e başvurun.
+--- | --- | ---
+9000: VMware araç durumu algılanamıyor.     |   VMWare araçları yüklenmemiş veya bozuk olabilir.    |   VMware araçlarının VM 'de yüklü olduğundan ve çalıştığından emin olun.
+9001: VMware araçları yüklü değil.     |   VMWare araçları yüklenmemiş veya bozuk olabilir.    |   VMware araçlarının VM 'de yüklü olduğundan ve çalıştığından emin olun.
+9002: VMware araçları çalışmıyor.   |   VMWare araçları yüklenmemiş veya bozuk olabilir.    |   VMware araçlarının VM 'de yüklü olduğundan ve çalıştığından emin olun.
+9003: işletim sistemi türü, Konuk VM keşfi için desteklenmiyor.    |   Sunucu üzerinde çalışan işletim sistemi Windows veya Linux değildir.    |   Desteklenen işletim sistemi türleri yalnızca Windows ve Linux. Sunucu gerçekten Windows veya Linux ise vCenter Server ' de belirtilen işletim sistemi türünü denetleyin.
+9004: VM çalışmıyor.     |   VM kapalı.  |   VM 'nin açık olduğundan emin olun.
+9005: işletim sistemi türü, Konuk VM keşfi için desteklenmiyor.    |   Konuk VM keşfi için işletim sistemi türü desteklenmiyor.     |   Desteklenen işletim sistemi türleri yalnızca Windows ve Linux.
+9006: meta veri dosyasının konuğdan indirileceği URL boş.     |   Bu durum, bulma Aracısı beklendiği gibi çalışmıyorsa gerçekleşebilir.    |   Sorun otomatik olarak in24 saat çözümlenmelidir. Sorun devam ederse, Microsoft Desteği başvurun.
+9007: Konuk VM 'de bulma görevini çalıştıran işlem bulunamadı.   |   Keşif Aracısı düzgün çalışmıyorsa bu durum oluşabilir.   |   Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse, Microsoft Desteği başvurun.
+9008: Konuk VM işlem durumu alınamıyor.   |   Sorun, bir iç hata nedeniyle oluşabilir.   |   Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse, Microsoft Desteği başvurun.
+9009: Windows UAC, sunucuda bulma görevi yürütmeyi engelledi.  |   Sunucu üzerindeki Windows Kullanıcı hesabı denetimi (UAC) ayarları kısıtlayıcıdır ve yüklü uygulamaların keşfedilmesi önlenir.  |   Sunucudaki ' Kullanıcı hesabı denetimi ' ayarları ' nda, UAC ayarını alt iki düzeyden birinde olacak şekilde yapılandırın.
+9010: VM kapalı.     |   VM kapalı.  |   VM 'nin açık olduğundan emin olun.
+9011: bulunan meta veri dosyası Konuk VM dosya sisteminde bulunamadı.    |   Sorun, bir iç hata nedeniyle oluşabilir.   |   Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse, Microsoft Desteği başvurun.
+9012: bulunan meta veri dosyası boş.     |   Sorun, bir iç hata nedeniyle oluşabilir.   |   Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse, Microsoft Desteği başvurun.
+9013: her oturum açma işlemi için yeni bir geçici profil oluşturulur.    |   VMware VM 'de her oturum açma işlemi için yeni bir geçici profil oluşturulur.    |   Bir çözüm için Microsoft Desteği başvurun.
+9014: Konuk VM dosya sisteminden meta veriler alınamıyor.     |   ESXi konağına bağlantı yok    |   Gerecin VM 'yi çalıştıran ESXi konağında 443 numaralı bağlantı noktasına bağlanabildiğinden emin olun
+9015: vCenter Kullanıcı hesabında Konuk Işlemler rolü etkin değil   |   Konuk Işlemler rolü vCenter Kullanıcı hesabında etkin değil.   |   VCenter Kullanıcı hesabında Konuk Işlemleri rolünün etkinleştirildiğinden emin olun.
+9016: Konuk işlem Aracısı güncel olmadığından bulunamıyor.   |   VMware araçları düzgün yüklenmemiş veya güncel değil.    |   VMware araçlarının düzgün bir şekilde yüklendiğinden ve güncel olduğundan emin olun.
+9017: sanal makinede bulunan meta verileri içeren dosya bulunamadı.  |   Sorun, bir iç hata nedeniyle oluşabilir.   |   Bir çözüm için Microsoft Desteği başvurun.
+9018: PowerShell, Konuk VM 'lerde yüklü değil.  |   PowerShell, Konuk VM 'de kullanılamıyor.    |   PowerShell 'i Konuk VM 'ye yükler.
+9019: Konuk VM işlem hatalarından dolayı bulunamıyor.     |   VMware Konuk işlemi VM 'de başarısız oldu.    |   VM kimlik bilgilerinin geçerli olduğundan ve konuk VM kimlik bilgilerinde belirtilen kullanıcı adının UPN biçiminde olduğundan emin olun.
+9020: dosya oluşturma izni reddedildi.    |   Kullanıcı veya grup ilkesiyle ilişkili rol, kullanıcının klasörde dosya oluşturmasını kısıtlıyor    |   Belirtilen Konuk kullanıcının klasöründeki dosya için oluşturma iznine sahip olup olmadığını denetleyin. Klasör adı için bkz. Sunucu değerlendirmesi içindeki **Bildirimler** .
+9021: sistem geçici yolunda dosya oluşturulamıyor.     |   VMware aracı, kullanıcılar geçici yolu yerine sistem geçici yolunu raporlar.    |   VMware aracı sürümünüzü 10287 ' dan (NGC/VI Istemci biçimi) yükseltin.
+9022: WMI nesnesine erişim reddedildi.    |   Kullanıcı veya grup ilkesiyle ilişkili rol, kullanıcının WMI nesnesine erişimini kısıtlıyor.  |   Lütfen Microsoft Desteği başvurun.
+9023: sistem kök ortam değişkeni değeri boş olduğundan PowerShell çalıştırılamıyor.    |   Konuk VM için SystemRoot ortam değişkeninin değeri boş.     |   Bir çözüm için Microsoft Desteği başvurun.
+9024: GEÇICI ortam değişkeni değeri boş olduğu için bulunamıyor.    |   Konuk VM için GEÇICI ortam değişkeninin değeri boş.   |   Lütfen Microsoft Desteği başvurun.
+9025: PowerShell, Konuk VM 'lerde bozulmuş.  |   PowerShell, Konuk VM 'de bozuk.    |   PowerShell 'i Konuk VM 'ye yeniden yükleyin ve PowerShell 'in Konuk VM 'de çalıştırılabildiğini doğrulayın.
+9026: VM üzerinde Konuk işlemleri çalıştırılamıyor.  |   VM durumu, VM 'de Konuk işlemlerin çalıştırılmasına izin vermiyor.   |   Bir çözüm için Microsoft Desteği başvurun.
+9027: Konuk işlem Aracısı VM 'de çalışmıyor.   |   Sanal makine içinde çalışan konuk işlem aracısıyla iletişim kurulamadı.    |   Bir çözüm için Microsoft Desteği başvurun.
+9028: VM 'de yetersiz disk depolaması nedeniyle dosya oluşturulamıyor.     |   Diskte yeterli alan yok.   |   VM 'nin disk depolamada yeterli kullanılabilir alan olduğundan emin olun.
+9029: belirtilen Konuk VM kimlik bilgilerinde PowerShell 'e erişim yok.   |   PowerShell 'e erişim kullanıcı için kullanılamaz.     |   Gereçte eklenen kullanıcının PowerShell 'e Konuk VM üzerinde erişebildiğinden emin olun.
+9030: ESXi konağının bağlantısı kesildiğinden keşfedilen meta veriler toplanamıyor.     |   ESXi ana bilgisayarı bağlantısı kesik durumda.   |   VM 'yi çalıştıran ESXi konağının bağlı olduğundan emin olun.
+9031: ESXi Konağı yanıt vermediğinden keşfedilen meta veriler toplanamıyor.   |   Uzak ana bilgisayar geçersiz durumda.    |   VM 'yi çalıştıran ESXi konağının çalıştığından ve bağlı olduğundan emin olun.
+9032: bir iç hata nedeniyle bulunamıyor.   |   Sorun, bir iç hata nedeniyle oluşabilir.   |   Bir çözüm için Microsoft Desteği başvurun.
+9033: VM Kullanıcı adı geçersiz karakterler içerdiğinden bulunamıyor.     |   Kullanıcı adında geçersiz karakterler algılandı.   |   Geçersiz karakter olmadığından VM kimlik bilgisini yeniden sağlayın.
+9034: belirtilen Kullanıcı adı UPN biçiminde değil.    |   Kullanıcı adı UPN biçiminde değil.  |   Kullanıcı adının Kullanıcı asıl adı (UPN) biçiminde olduğundan emin olun.
+9035: PowerShell dil modu ' Full Language ' olarak ayarlı olmadığından bulunamıyor.  |   Konuk VM 'de PowerShell için dil modu tam dil olarak ayarlanmadı.   |   PowerShell dil modunun ' Full Language ' olarak ayarlandığından emin olun.
+10000: işletim sistemi türü desteklenmiyor.   |   Sunucu üzerinde çalışan işletim sistemi Windows veya Linux değildir.    |   Desteklenen işletim sistemi türleri yalnızca Windows ve Linux.
+10001: sunucu bulma betiği gereç üzerinde bulunamadı.    |   Bulma beklendiği gibi çalışmıyor.   |   Bir çözüm için Microsoft Desteği başvurun.
+10002: bulma görevi zamanında tamamlanmadı.     |   Bulma Aracısı beklendiği gibi çalışmıyor.     |   Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse, Microsoft Desteği başvurun.
+10003: bulma görevinin yürütüldüğü işleme bir hatayla çıkıldı.    |   Bulma görevinin yürütüldüğü işleme bir hatayla çıkıldı.  |   Sorun, 24 saat içinde otomatik olarak çözümlenmelidir. Sorun devam ederse lütfen Microsoft Desteği başvurun.
+10004: Konuk işletim sistemi türü için kimlik bilgisi sağlanmadı.  |   Bu işletim sistemi türündeki makinelere erişim kimlik bilgileri, Azure geçiş gereci 'nda sağlanmadı.    |   Gereç üzerindeki makineler için kimlik bilgileri ekleme
+10005: girilen kimlik bilgileri geçerli değil.   |   Gereç için sunucu erişimi için belirtilen kimlik bilgileri yanlış.  |   Gereçte sunulan kimlik bilgilerini güncelleştirin ve kimlik bilgilerini kullanarak sunucuya erişilebilir olduğundan emin olun.
+10006: Konuk işletim sistemi türü kimlik bilgisi deposu tarafından desteklenmiyor.  |   Sunucu üzerinde çalışan işletim sistemi Windows veya Linux değildir.    |   Desteklenen işletim sistemi türleri yalnızca Windows ve Linux.
+10007: keşfedilen meta veriler işlenemiyor.    |   JSON seri durumdan çıkarılmaya çalışılırken hata oluştu.    |   Bir çözüm için Microsoft Desteği başvurun.
+10008: sunucuda bir dosya oluşturulamıyor.    |  Sorun bir iç hata nedeniyle oluşabilir.    |   Bir çözüm için Microsoft Desteği başvurun.
+10009: keşfedilen meta veriler sunucudaki bir dosyaya yazılamıyor.  |   Sorun, bir iç hata nedeniyle oluşabilir.   |   Bir çözüm için Microsoft Desteği başvurun.
+
 
 
 

@@ -5,16 +5,16 @@ description: Yanlışlıkla değiştirildiğinde veya silindiğinde verilerinizi
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 5d6cbf873ac1b76c24f5907a47038157b22e5680
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 970a6dfc167a6bef7984598c60e7ce89c6e4b34c
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83634111"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463731"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>Blob 'lar için geçici silmeyi etkinleştirme ve yönetme
 
@@ -105,7 +105,7 @@ Geçerli geçici silme bekletme ilkesini bulmak için aşağıdaki komutu kullan
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
-# <a name="cli"></a>[CLı](#tab/azure-CLI)
+# <a name="cli"></a>[CLI](#tab/azure-CLI)
 
 Geçici silme özelliğini etkinleştirmek için bir blob istemcisinin hizmet özelliklerini güncelleştirin:
 

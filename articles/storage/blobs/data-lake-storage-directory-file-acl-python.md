@@ -5,21 +5,21 @@ author: normesta
 ms.service: storage
 ms.date: 04/10/2020
 ms.author: normesta
-ms.topic: article
+ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: a79f3110206a01b9b974952f0ec0d299644be11f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06c263d751f6452e18765efb928ae6425ac50099
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262358"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466043"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetmek için Python kullanma
 
 Bu makalede hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında Dizin, dosya ve izinleri oluşturmak ve yönetmek için Python 'un nasıl kullanılacağı gösterilmektedir. 
 
-[Paket (Python paket dizini)](https://pypi.org/project/azure-storage-file-datalake/) | [örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [API başvurusu](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0/azure.storage.filedatalake.html) | [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [geri bildirimde](https://github.com/Azure/azure-sdk-for-python/issues) bulunun
+[Paket (Python paket dizini)](https://pypi.org/project/azure-storage-file-datalake/)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)  |  [API başvurusu](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0/azure.storage.filedatalake.html)  |  [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  |  [Geri bildirimde](https://github.com/Azure/azure-sdk-for-python/issues) bulunun
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -65,9 +65,9 @@ except Exception as e:
     print(e)
 ```
  
-- `storage_account_name` Yer tutucu değerini depolama hesabınızın adıyla değiştirin.
+- `storage_account_name`Yer tutucu değerini depolama hesabınızın adıyla değiştirin.
 
-- `storage_account_key` Yer tutucu değerini depolama hesabı erişim anahtarınızla değiştirin.
+- `storage_account_key`Yer tutucu değerini depolama hesabı erişim anahtarınızla değiştirin.
 
 ### <a name="connect-by-using-azure-active-directory-ad"></a>Azure Active Directory kullanarak bağlanma (AD)
 
@@ -97,7 +97,7 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 
 Dosya sistemi dosyalarınız için bir kapsayıcı olarak davranır. **FileSystemDataLakeServiceClient. create_file_system** yöntemini çağırarak bir tane oluşturabilirsiniz.
 
-Bu örnek adlı `my-file-system`bir dosya sistemi oluşturur.
+Bu örnek adlı bir dosya sistemi oluşturur `my-file-system` .
 
 ```python
 def create_file_system():
@@ -115,7 +115,7 @@ def create_file_system():
 
 **Filesystemclient. create_directory** yöntemini çağırarak bir dizin başvurusu oluşturun.
 
-Bu örnek, bir dosya sistemine `my-directory` adlı bir dizin ekler. 
+Bu örnek, bir dosya sistemine adlı bir dizin ekler `my-directory` . 
 
 ```python
 def create_directory():
@@ -130,7 +130,7 @@ def create_directory():
 
 **Datalakedirectoryclient. rename_directory** yöntemini çağırarak bir dizini yeniden adlandırın veya taşıyın. İstenen dizinin yolunu bir parametre olarak geçirin. 
 
-Bu örnek, bir alt dizini ada `my-subdirectory-renamed`yeniden adlandırır.
+Bu örnek, bir alt dizini ada yeniden adlandırır `my-subdirectory-renamed` .
 
 ```python
 def rename_directory():
@@ -150,7 +150,7 @@ def rename_directory():
 
 **Datalakedirectoryclient. delete_directory** yöntemini çağırarak bir dizini silin.
 
-Bu örnek adlı `my-directory`bir dizini siler.  
+Bu örnek adlı bir dizini siler `my-directory` .  
 
 ```python
 def delete_directory():
@@ -170,7 +170,7 @@ def delete_directory():
 > [!NOTE]
 > Uygulamanız Azure Active Directory (Azure AD) kullanarak erişim yetkisi alıyorsa, uygulamanızın erişim yetkisi vermek için kullandığı güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için [Azure Data Lake Storage 2. erişim denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)' ne bakın.
 
-Bu örnek, adlı `my-directory`BIR dizinin ACL 'sini alır ve ayarlar. Dize `rwxr-xrw-` , sahip olan kullanıcıya okuma, yazma ve yürütme izinleri verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma ve yazma izinlerini verir.
+Bu örnek, adlı bir dizinin ACL 'sini alır ve ayarlar `my-directory` . Dize, `rwxr-xrw-` sahip olan kullanıcıya okuma, yazma ve yürütme izinleri verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma ve yazma izinlerini verir.
 
 ```python
 def manage_directory_permissions():
@@ -199,7 +199,7 @@ def manage_directory_permissions():
 
 İlk olarak, **Datalakefileclient** sınıfının bir örneğini oluşturarak hedef dizinde bir dosya başvurusu oluşturun. **Datalakefileclient. append_data** yöntemini çağırarak bir dosyayı karşıya yükleyin. **Datalakefileclient. flush_data** yöntemini çağırarak karşıya yüklemeyi tamamladığınızdan emin olun.
 
-Bu örnek, adlı `my-directory`bir dizine bir metin dosyası yükler.   
+Bu örnek, adlı bir dizine bir metin dosyası yükler `my-directory` .   
 
 ```python
 def upload_file_to_directory():
@@ -256,7 +256,7 @@ def upload_file_to_directory_bulk():
 > [!NOTE]
 > Uygulamanız Azure Active Directory (Azure AD) kullanarak erişim yetkisi alıyorsa, uygulamanızın erişim yetkisi vermek için kullandığı güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için [Azure Data Lake Storage 2. erişim denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)' ne bakın.
 
-Bu örnek, adlı `my-file.txt`BIR dosyanın ACL 'sini alır ve ayarlar. Dize `rwxr-xrw-` , sahip olan kullanıcıya okuma, yazma ve yürütme izinleri verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma ve yazma izinlerini verir.
+Bu örnek, adlı bir dosyanın ACL 'sini alır ve ayarlar `my-file.txt` . Dize, `rwxr-xrw-` sahip olan kullanıcıya okuma, yazma ve yürütme izinleri verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma ve yazma izinlerini verir.
 
 ```python
 def manage_file_permissions():
@@ -313,7 +313,7 @@ def download_file_from_directory():
 
 **Filesystemclient. get_paths** yöntemini çağırarak ve sonra sonuçlar arasında sıralama yaparak dizin içeriğini listeleyin.
 
-Bu örnek, adlı `my-directory`bir dizinde bulunan her bir alt dizin ve dosyanın yolunu yazdırır.
+Bu örnek, adlı bir dizinde bulunan her bir alt dizin ve dosyanın yolunu yazdırır `my-directory` .
 
 ```python
 def list_directory_contents():

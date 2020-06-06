@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 778a18edafadc0bd043df1e9a5ab1d660fab6525
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: e432f599196a6948633d7150e1a747fbe626e1f4
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869728"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464666"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 
@@ -254,9 +254,7 @@ Kuruluşunuzun ilkesi veya benzersiz düzenleme gereksinimlerine bağlı olarak,
 - Ortamınızdaki proxy 'nizi desteklemek için Azure Dosya Eşitleme yapılandırın.
 - Azure Dosya Eşitleme ağ etkinliğini kısıtlama.
 
-Azure Dosya Eşitleme ağ işlevselliğini yapılandırma hakkında daha fazla bilgi edinmek için, bkz.:
-- [Azure Dosya Eşitleme proxy’si ve güvenli duvarı ayarları](storage-sync-files-firewall-and-proxy.md)
-- [Azure Dosya Eşitleme, veri merkezinizde iyi bir komşu bir komşuyu sağlamaktır](storage-sync-files-server-registration.md)
+Azure Dosya Eşitleme ve ağ oluşturma hakkında daha fazla bilgi için bkz. [Azure dosya eşitleme ağ değerlendirmeleri](storage-sync-files-networking-overview.md).
 
 ## <a name="encryption"></a>Şifreleme
 Azure Dosya Eşitleme kullanırken göz önünde bulundurmanız gereken üç farklı şifreleme katmanı vardır: Windows Server 'ın Rest deposunda şifreleme, Azure Dosya Eşitleme Aracısı ile Azure arasında geçiş sırasında şifreleme ve Azure dosya paylaşımındaki verilerinizin geri kalanında şifreleme. 
@@ -377,7 +375,7 @@ Virüsten koruma çözümleri gibi, yedekleme çözümleri katmanlı dosyaların
 > Çıplak (BMR) geri yükleme beklenmeyen sonuçlara neden olabilir ve şu anda desteklenmemektedir.
 
 > [!Note]  
-> Azure Dosya Eşitleme aracısının 9. sürümünde, VSS anlık görüntüleri (önceki sürümler dahil), artık bulut katmanlaması etkinleştirilmiş birimlerde desteklenmektedir. Ancak, PowerShell aracılığıyla önceki sürüm uyumluluğunu etkinleştirmeniz gerekir. [Nasıl olduğunu öğrenin](storage-files-deployment-guide.md).
+> Azure Dosya Eşitleme aracısının 9. sürümünde, VSS anlık görüntüleri (önceki sürümler dahil), artık bulut katmanlaması etkinleştirilmiş birimlerde desteklenmektedir. Ancak, PowerShell aracılığıyla önceki sürüm uyumluluğunu etkinleştirmeniz gerekir. [Nasıl yapılacağını öğrenin](storage-files-deployment-guide.md).
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure Dosya Eşitleme aracısı güncelleştirme ilkesi
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

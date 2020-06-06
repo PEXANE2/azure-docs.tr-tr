@@ -1,5 +1,5 @@
 ---
-title: Azure Event Grid 'da sistem konuları oluşturun, görüntüleyin ve yönetin
+title: Azure Event Grid (portal) içinde sistem konuları oluşturma, görüntüleme ve yönetme
 description: Bu makalede, Azure portal kullanarak var olan sistem konusunun nasıl görüntüleneceği, Azure Event Grid sistem konuları oluşturulacağı gösterilmektedir.
 services: event-grid
 author: spelluru
@@ -7,29 +7,21 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: spelluru
-ms.openlocfilehash: ac22afb351973397960e66c2a8fe86031e0b213a
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 23b87812492485fc2336b8d2d35bf0426ede4772
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84316659"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457244"
 ---
-# <a name="create-view-and-manage-system-topics-in-azure-event-grid"></a>Azure Event Grid 'da sistem konuları oluşturun, görüntüleyin ve yönetin
-Bu makalede aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
-
-- Bir sistem konusu oluşturun
-- Var olan tüm sistem konularını görüntüleme 
-- Bir sistem konusunu silme
-- Bir sistem konusu için olay aboneliği oluşturma
-
+# <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>Azure portal Event Grid sistem konuları oluşturun, görüntüleyin ve yönetin
+Bu makalede, Azure portal kullanarak sistem konuları oluşturma ve yönetme işlemlerinin nasıl yapılacağı gösterilir. Sistem konularına genel bakış için bkz. [sistem konuları](system-topics.md).
 
 ## <a name="create-a-system-topic"></a>Bir sistem konusu oluşturun
-Azure kaynağı için bir sistem konusunu iki şekilde oluşturabilirsiniz:
+Azure kaynağı (depolama hesabı, Event Hubs ad alanı vb.) için bir sistem konusu oluşturarak iki şekilde oluşturabilirsiniz:
 
-- Kaynak sayfasını kullanma (örneğin, depolama hesabı sayfası veya Event Hubs ad alanı sayfası). 
-- **Event Grid sistem konuları** sayfasını kullanma. 
-
-Bir kaynak sayfası (Azure portal bir kaynak sayfasının**Olaylar** sekmesi) kullanılarak bir sistem konusu oluşturma örneği için [Bu hızlı](blob-event-quickstart-portal.md) başlangıca bakın. Aşağıdaki adımlar **Event Grid sistem konuları** sayfasını kullanarak bir sistem konusu oluşturmaktır. 
+- Örneğin, depolama hesabı veya Event Hubs ad alanı gibi bir kaynağın **Olaylar** sayfasını kullanma. Azure kaynağı tarafından oluşturulan bir olay için olay aboneliği oluşturmak üzere Azure portal **Olaylar** sayfasını kullandığınızda (örneğin, Azure depolama hesabı), Portal, Azure kaynağı için bir sistem konusu oluşturur ve ardından sistem konusu için bir abonelik oluşturur. Azure kaynağında ilk kez bir olay aboneliği oluşturuyorsanız, sistem konusunun adını belirtirsiniz. İkinci zamandan itibaren, sistem konu adı sizin için salt okuma modunda görüntülenir. Ayrıntılı adımlar için bkz. [hızlı başlangıç: Blob Depolama olaylarını Web uç noktasına yönlendirme Azure Portal](blob-event-quickstart-portal.md#subscribe-to-the-blob-storage) .
+- **Event Grid sistem konuları** sayfasını kullanma. Aşağıdaki adımlar **Event Grid sistem konuları** sayfasını kullanarak bir sistem konusu oluşturmaktır. 
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 2. Üstteki arama kutusuna **Event Grid sistem konuları**yazın ve ardından **ENTER**tuşuna basın. 
@@ -57,11 +49,9 @@ Bir kaynak sayfası (Azure portal bir kaynak sayfasının**Olaylar** sekmesi) ku
 
         ![Sistem konu sayfası](./media/create-view-manage-system-topics/system-topic-page.png)
 
+
 ## <a name="view-all-system-topics"></a>Tüm sistem konularını görüntüleme
 Tüm mevcut Event Grid sistem konularını görüntülemek için bu adımları izleyin. 
-
-> [!NOTE]
-> Daha önce, Azure kaynakları tarafından oluşturulan bir olay için abonelik oluşturduğunuzda, Event Grid hizmeti rastgele oluşturulmuş bir ada sahip bir sistem konusu otomatik olarak oluşturulur. Artık, konuyu oluştururken sistem konusu için bir ad belirtebilirsiniz. Bu sistem konu kaynağını, ölçümleri ve tanılama günlüklerini saptamak için kullanabilirsiniz.
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 2. Üstteki arama kutusuna **Event Grid sistem konuları**yazın ve ardından **ENTER**tuşuna basın. 
@@ -100,7 +90,6 @@ Tüm mevcut Event Grid sistem konularını görüntülemek için bu adımları i
 3. **Konu türü**, **kaynak kaynağı**ve **konu adının** otomatik olarak doldurulduğunu doğrulayın. Bir ad girin, bir **uç nokta türü**seçin ve **uç noktasını**belirtin. Ardından olay aboneliğini oluşturmak için **Oluştur** ' u seçin. 
 
     ![Sistem konusu-olay aboneliği oluştur](./media/create-view-manage-system-topics/create-event-subscription.png)
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure Event Grid tarafından desteklenen sistem konuları ve konu türleri hakkında daha fazla bilgi edinmek için [Azure Event Grid bölümündeki sistem konularına](system-topics.md) bakın. 

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Perforce Helix Core-Helix kimlik doğrulama hizmeti ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve Perforce HELIX Core-Helix kimlik doğrulama hizmeti arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Helix Core-Helix kimlik doğrulama hizmeti ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve Helix çekirdek-Helix kimlik doğrulama hizmeti arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,22 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 05/28/2020
+ms.date: 06/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aba0b5daf5a1e2d95a95feea321066e090dbed1
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: afe752dbaffc96186d37bfae319367e2c6e13385
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84237651"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466162"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perforce-helix-core--helix-authentication-service"></a>Öğretici: Perforce Helix Core-Helix kimlik doğrulama hizmeti ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-helix-core---helix-authentication-service"></a>Öğretici: Helix Core-Helix kimlik doğrulama hizmeti ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu öğreticide, Perforce Helix Core-Helix kimlik doğrulama hizmetini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Perforce Helix Core-Helix kimlik doğrulama hizmetini Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, HELIX Core-Helix kimlik doğrulama hizmetini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Helix Core-Helix kimlik doğrulama hizmetini Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de, Perforce Helix Core-Helix kimlik doğrulama hizmetine erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla Delce Helix çekirdek-Helix kimlik doğrulama hizmeti için otomatik olarak oturum açma olanağı sağlayın.
+* Azure AD 'de Helix Core-Helix kimlik doğrulama hizmetine erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Helix Core-Helix kimlik doğrulama hizmetine otomatik olarak kaydolmalarına olanak tanır.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
@@ -37,44 +37,44 @@ Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Perforce Helix Core-Helix kimlik doğrulama hizmeti çoklu oturum açma (SSO) etkin aboneliği.
+* HELIX Core-Helix kimlik doğrulama hizmeti çoklu oturum açma (SSO) özellikli abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Perforce Helix Core-Helix kimlik doğrulama hizmeti **SP** tarafından başlatılan SSO 'yu destekler
-* Perforce Helix Core-Helix kimlik doğrulama hizmetini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bu verileri korumayı koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* HELIX Core-Helix kimlik doğrulama hizmeti **SP** tarafından başlatılan SSO 'yu destekler
+* HELIX Core-Helix kimlik doğrulama hizmetini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bu verileri korumayı koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-perforce-helix-core--helix-authentication-service-from-the-gallery"></a>Galeriden Delce Helix Core-Helix kimlik doğrulama hizmeti ekleme
+## <a name="adding-helix-core---helix-authentication-service-from-the-gallery"></a>Galeriden Helix Core-Helix kimlik doğrulama hizmeti ekleme
 
-Perforce Helix Core-Helix kimlik doğrulama hizmeti 'nin Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden Delce Helix Core-Helix kimlik doğrulama hizmeti 'ni galerisinden yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+HELIX Core-Helix kimlik doğrulama hizmeti 'nin Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize Helix Core-Helix kimlik doğrulama hizmeti eklemeniz gerekir.
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Perforce Helix Core-Helix kimlik doğrulama hizmeti** yazın.
-1. Sonuçlar panelinden **Perforce Helix Core-Helix kimlik doğrulama hizmeti** ' ni seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Helix Core-Helix kimlik doğrulama hizmeti** yazın.
+1. Sonuçlar panelinden **Helix Core-Helix kimlik doğrulama hizmeti** ' ni seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-perforce-helix-core--helix-authentication-service"></a>Delce Helix Core-Helix kimlik doğrulama hizmeti için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on-for-helix-core---helix-authentication-service"></a>HELIX Core-Helix kimlik doğrulama hizmeti için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Perforce Helix Core-Helix kimlik doğrulama hizmeti Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Perforce Helix Core-Helix kimlik doğrulama hizmeti içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Helix Core-Helix kimlik doğrulama hizmeti Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, HELIX Core-Helix kimlik doğrulama hizmetinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu Perforce Helix Core-Helix kimlik doğrulama hizmeti ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+HELIX Core-Helix kimlik doğrulama hizmeti ile Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. **[Delce Helix Core-Helix kimlik doğrulama HIZMETI SSO](#configure-perforce-helix-core--helix-authentication-service-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için yapılandırma.
-    1. **[Delce Helix Core-Helix Authentication Service test kullanıcısına](#create-perforce-helix-core--helix-authentication-service-test-user)** , kullanıcının Azure AD gösterimine bağlı olan Delce Helix Core-Helix kimlik doğrulama hizmetinde B. Simon 'ın bir karşılığı olacak şekilde bir.
+1. **[HELIX Core-Helix kimlik doğrulama HIZMETI SSO](#configure-helix-core-helix-authentication-service-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    1. HELIX **[Core-Helix kimlik doğrulama hizmeti test kullanıcısı oluşturma](#create-helix-core-helix-authentication-service-test-user)** -kullanıcının Azure AD gösterimine bağlı olan Helix Core-Helix kimlik doğrulama hizmetinde B. Simon 'ın bir karşılığı olacak şekilde.
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Perforce Helix çekirdek-Helix kimlik doğrulama hizmeti** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **HELIX Core-Helix kimlik doğrulama hizmeti** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
@@ -87,7 +87,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<helix-auth-service>.<customer-hostname>.com/saml`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Delce Helix Core-Helix kimlik doğrulama hizmeti istemci destek ekibine](mailto:support@perforce.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [HELIX Core-Helix kimlik doğrulama hizmeti istemci destek ekibine](mailto:support@perforce.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
@@ -107,10 +107,10 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Delce Helix Core-Helix kimlik doğrulama hizmetine erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, HELIX Core-Helix kimlik doğrulama hizmetine erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **Perforce Helix Core-Helix kimlik doğrulama hizmeti**' ni seçin.
+1. Uygulamalar listesinde **Helix Core-Helix kimlik doğrulama hizmeti**' ni seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
@@ -123,19 +123,19 @@ Bu bölümde, Delce Helix Core-Helix kimlik doğrulama hizmetine erişim izni ve
 1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-perforce-helix-core--helix-authentication-service-sso"></a>Perforce Helix Core-Helix kimlik doğrulama hizmeti SSO 'yu yapılandırma
+## <a name="configure-helix-core-helix-authentication-service-sso"></a>HELIX Core-Helix kimlik doğrulama hizmeti SSO 'SU yapılandırma
 
-**Delce Helix Core-Helix kimlik doğrulama hizmeti** tarafında çoklu oturum açmayı yapılandırmak Için, **uygulama Federasyon meta veri URL 'Sini** [Perforce Helix Core-Helix Authentication Service support ekibine](mailto:support@perforce.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**HELIX Core-Helix kimlik doğrulama hizmeti** tarafında çoklu oturum açma 'yı yapılandırmak Için, **uygulama Federasyon meta verileri URL 'Sini** [HELIX Core-Helix kimlik doğrulama hizmeti destek ekibine](mailto:support@perforce.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
-### <a name="create-perforce-helix-core--helix-authentication-service-test-user"></a>Perforce Helix Core-Helix kimlik doğrulama hizmeti test kullanıcısı oluşturma
+### <a name="create-helix-core-helix-authentication-service-test-user"></a>HELIX Core-Helix kimlik doğrulama hizmeti test kullanıcısı oluşturma
 
-Bu bölümde, Perforce Helix Core-Helix kimlik doğrulama hizmetinde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Perforce Helix Core- [Helix kimlik doğrulama hizmeti destek ekibi](mailto:support@perforce.com) ile çalışarak, Delce Helix çekirdek-Helix kimlik doğrulama hizmeti platformunda kullanıcıları ekleyin. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, HELIX Core-Helix kimlik doğrulama hizmetinde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Helix Core-Helix kimlik doğrulaması hizmeti [destek ekibi](mailto:support@perforce.com) ile çalışarak, kullanıcıları Helix çekirdek-Helix kimlik doğrulama hizmeti platformunda ekleyin. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Perforce Helix Core-Helix kimlik doğrulama hizmeti kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Perforce Helix Core-Helix kimlik doğrulama hizmetinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim paneli 'nde HELIX Core-Helix kimlik doğrulama hizmeti kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Helix Core-Helix kimlik doğrulama hizmetinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
@@ -145,9 +145,9 @@ Erişim panelinde Perforce Helix Core-Helix kimlik doğrulama hizmeti kutucuğun
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Perforce Helix Core-Helix kimlik doğrulama hizmetini deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile Helix Core-Helix kimlik doğrulama hizmetini deneyin](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Delce Helix Core-Helix kimlik doğrulama hizmetini gelişmiş görünürlük ve denetimlerle koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Gelişmiş görünürlük ve denetimlerle HELIX Core-Helix kimlik doğrulama hizmetini koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

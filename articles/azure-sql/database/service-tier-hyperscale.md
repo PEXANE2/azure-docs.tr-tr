@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: 7fe29bfa7d6140f3abce8feb9e372a5c066b9692
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 2625e1f55c0b7e7df44da6c1f36e024911577d63
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343889"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457278"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
@@ -171,7 +171,7 @@ Azure SQL veritabanındaki bir hiper ölçek veritabanını, bir olağanüstü d
 Azure SQL veritabanı hiper ölçek katmanı, tüm bölgelerde kullanılabilir ancak aşağıda listelenen aşağıdaki bölgelerde varsayılan olarak etkindir.
 Desteklenen olarak listelenmeyen bir bölgede hiper ölçekli veritabanı oluşturmak istiyorsanız, Azure portal aracılığıyla bir ekleme isteği gönderebilirsiniz. Yönergeler için bkz. [Azure SQL veritabanı Için istek kotası artışlarına](quota-increase-request.md) bakın. İsteğiniz gönderilirken aşağıdaki yönergeleri kullanın:
 
-- [Diğer kota isteği](quota-increase-request.md#other) SQL veritabanı kota türünü kullanın.
+- [Bölge erişimi](quota-increase-request.md#region) SQL veritabanı kota türünü kullanın.
 - Metin ayrıntılarına, okunabilir çoğaltmalar dahil işlem SKU 'SU/toplam çekirdekleri ekleyin.
 - Tahmini TB 'yi de belirtin.
 
@@ -216,7 +216,7 @@ Etkin bölgeler:
 
 Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırlamalardır.  Mümkün olduğunca bu sınırlamaların çoğunu kaldırmak için etkin bir şekilde çalışıyoruz.
 
-| Sorun | Description |
+| Sorun | Açıklama |
 | :---- | :--------- |
 | Bir sunucunun Yedeklemeleri Yönet bölmesi hiper ölçekli veritabanlarını göstermez, bunlar görünümden filtrelenecektir  | Hiper ölçek, yedeklemeleri yönetmek için ayrı bir yönteme sahiptir ve bu nedenle uzun süreli saklama ve zaman içinde yedekleme bekletme ayarları uygulanmaz. Buna uygun olarak, hiper ölçekli veritabanları yedekleme bölmesini yönetme bölmesinde görünmez.|
 | Belirli bir noktaya geri yükleme | Hiper olmayan bir veritabanı hiper ölçekli bir veritabanı olarak geri yüklenemez ve hiper ölçek veritabanı hiper olmayan bir veritabanı olarak geri yüklenemez. Hizmet katmanını değiştirerek hiper ölçeğe geçirilmiş hiper olmayan bir veritabanı için, geçiş işleminden önce ve veritabanının yedekleme saklama süresi içinde bir zaman noktasına geri [yükleyin.](recovery-using-backups.md#programmatically-performing-recovery-by-using-automated-backups) Geri yüklenen veritabanı hiper olmayan ölçek olacaktır. |

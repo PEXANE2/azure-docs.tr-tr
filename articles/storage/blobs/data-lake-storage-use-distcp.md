@@ -4,16 +4,16 @@ description: Data Lake Storage 2. veri kopyalamak için DistCp aracını kullanm
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 2ea7fb97b6c97a797ce99878762333833965549d
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 602053f7a52b9a46fa797bd1146cf63c02bb60d2
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698658"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465363"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Azure depolama Blobları ve Azure Data Lake Storage 2. arasında veri kopyalamak için DistCp kullanma
 
@@ -21,7 +21,7 @@ Genel amaçlı v2 depolama hesabı ile genel amaçlı v2 depolama hesabı arası
 
 DistCp, çeşitli komut satırı parametreleri sağlar ve kullanımınızı iyileştirmek için bu makaleyi okumanızı kesinlikle öneririz. Bu makalede, verileri hiyerarşik bir ad alanı etkin bir hesaba kopyalamak için kullanımına odaklanırken temel işlevsellik gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * Data Lake Storage 2. yetenekleri olmayan mevcut bir Azure depolama hesabı (hiyerarşik ad alanı) etkin.
@@ -63,7 +63,7 @@ An HDInsight küme, farklı kaynaklardaki verileri bir HDInsight kümesine kopya
 
 DistCp 'nin en düşük ayrıntı düzeyi tek bir dosya olduğundan, en fazla eşzamanlı kopya sayısını ayarlamak, Data Lake Storage karşı iyileştirmek için en önemli parametredir. Eşzamanlı kopya sayısı, komut satırındaki mappay (**e**) parametresinin sayısına eşittir. Bu parametre, verileri kopyalamak için kullanılan en fazla Map, eşleme sayısını belirtir. Varsayılan değer 20 ' dir.
 
-**Örnek**
+**Örneğinde**
 
     hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
 
@@ -77,7 +77,7 @@ Aşağıda kullanabileceğiniz bazı yönergeler verilmiştir.
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
-**Örnek**
+**Örneğinde**
 
 Bir 4X D14v2s kümeniz olduğunu ve 10 farklı klasörden 10 TB veri aktarmaya çalıştığınız varsayıyoruz. Klasörlerin her biri farklı miktarda veri içerir ve her klasör içindeki dosya boyutları farklıdır.
 

@@ -3,13 +3,13 @@ title: Sık sorulan sorular
 description: Azure Container Instances hizmetiyle ilgili sık sorulan soruların yanıtları
 author: dkkapur
 ms.topic: article
-ms.date: 04/10/2020
-ms.openlocfilehash: 4fca198356c8db006c4190e0f16b20f78dc1d477
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/02/2020
+ms.openlocfilehash: 64dcd3da42083401d7086c1db6f3f930beb9a76d
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115236"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447790"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Container Instances hakkında sık sorulan sorular
 
@@ -33,19 +33,22 @@ Kapsayıcı başlatma süresini azaltmak için daha [ayrıntılı rehberlik](con
 
 ### <a name="what-windows-base-os-images-are-supported"></a>Hangi Windows temel işletim sistemi görüntüleri destekleniyor?
 
+> [!NOTE]
+> 2020 sürümündeki Windows güncelleştirmelerinden sonra geriye dönük uyumlulukla ilgili sorunlar nedeniyle, aşağıdaki görüntü sürümleri temel görüntızda kullanmanızı önerdiğimiz en düşük sürüm numarasını içerir. Eski görüntü sürümlerini kullanan geçerli dağıtımlar etkilenmez, ancak yeni dağıtımlar aşağıdaki temel görüntülere uymalıdır. 
+
 #### <a name="windows-server-2016-base-images"></a>Windows Server 2016 temel görüntüler
 
-* [Nano sunucu](https://hub.docker.com/_/microsoft-windows-nanoserver): `10.0.14393.x`,`sac2016`
-* [Windows Server çekirdeği](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`,`10.0.14393.x`
+* [Nano sunucu](https://hub.docker.com/_/microsoft-windows-nanoserver): `sac2016` `10.0.14393.3506` veya daha yeni
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016` `10.0.14393.3506` veya daha yeni
 
 > [!NOTE]
 > Yarı yıllık kanal sürümü 1709 veya 1803 tabanlı Windows görüntüleri desteklenmez.
 
 #### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 ve istemci temel görüntüleri (Önizleme)
 
-* [Nano sunucu](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809` `10.0.17763.914` veya önceki
-* [Windows Server çekirdeği](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`, `1809` `10.0.17763.914` veya daha önceki
-* [Windows](https://hub.docker.com/_/microsoft-windows): `1809`, `10.0.17763.914` veya öncesi
+* [Nano sunucu](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809` `10.0.17763.1040` veya daha yeni
+* [Windows Server çekirdeği](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019` , `1809` `10.0.17763.1040` veya daha yeni
+* [Windows](https://hub.docker.com/_/microsoft-windows): `1809` `10.0.17763.1040` veya daha yeni
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Kapsayıcımda hangi .NET veya .NET Core görüntü katmanını kullanmalıyım? 
 

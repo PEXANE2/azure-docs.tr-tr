@@ -5,14 +5,14 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 06/04/2020
 ms.author: lbosq
-ms.openlocfilehash: 8156c1c3601b0cd6f518f6a70bc4e0769c570e7f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a93486e00325e84de655b5b759162fcf63956454
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647284"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465686"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB 'den Azure Cosmos DB MongoDB için API 'sine veri geçişleri için geçiş öncesi adımlar
 
@@ -42,7 +42,7 @@ Aşağıda, MongoDB için Azure Cosmos DB API 'SI hakkında özel özellikler ve
 
 [MongoDB için Azure Cosmos DB API 'si Için Azure veritabanı geçiş hizmeti](../dms/tutorial-mongodb-cosmos-db.md) , tam olarak yönetilen bir barındırma platformu, geçiş izleme seçenekleri ve otomatik azaltma işleme sağlayarak veri geçişini kolaylaştıran bir mekanizma sağlar. Seçeneklerin tam listesi şunlardır:
 
-|**Geçiş türü**|**Çözümden**|**Dikkat edilmesi gerekenler**|
+|**Geçiş türü**|**Çözümden**|**Önemli noktalar**|
 |---------|---------|---------|
 |Çevrimdışı|[Veri geçiş aracı](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Birden çok kaynağı ayarlama ve destekleyen kolay <br/>&bull;Büyük veri kümeleri için uygun değildir.|
 |Çevrimdışı|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Birden çok kaynağı ayarlama ve destekleyen kolay <br/>&bull;Azure Cosmos DB toplu yürütücü kitaplığını kullanır <br/>&bull;Büyük veri kümeleri için uygun <br/>&bull;Checkişaret olmaması, geçiş işlemi sırasında herhangi bir sorunun tüm geçiş sürecinin yeniden başlatılmasını gerektirmeyeceği anlamına gelir.<br/>&bull;Sahipsiz bir sıra olmaması, birkaç hatalı dosyanın tüm geçiş sürecini durduramaması anlamına gelir. <br/>&bull;Belirli veri kaynakları için okuma aktarım hızını artırmak için özel kod gerekir|
@@ -79,7 +79,10 @@ Parça olarak da bilinen bölümlendirme, verileri geçirmeden önce önemli bir
 Benzer şekilde bölümlendirme özelliği, kapasiteyi otomatik olarak ekler ve verileri uygun şekilde yeniden dengeler. Verileriniz için doğru bölüm anahtarını seçmeye ilişkin ayrıntılar ve öneriler için lütfen [bölüm anahtarı seçme makalesine](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)bakın. 
 
 ## <a name="index-your-data"></a><a id="indexing"></a>Verilerinizin dizinini oluşturma
-Varsayılan olarak Azure Cosmos DB, ekli tüm verilerde otomatik dizin oluşturma sağlar. Azure Cosmos DB tarafından sunulan dizin oluşturma özellikleri, bileşik dizinler, benzersiz dizinler ve yaşam süresi (TTL) dizinlerinin eklenmesini içerir. Dizin yönetimi arabirimi, `createIndex()` komuta eşlenir. [Azure Cosmos DB MongoDB IÇIN API 'Sinde dizin oluşturma](mongodb-indexing.md)hakkında daha fazla bilgi edinin.
+
+Azure Cosmos DB MongoDB Server sürüm 3,6 API 'SI yalnızca alanı otomatik olarak dizine ekler `_id` . Bu alan bırakılamaz. Bu, parça anahtarı başına alanın benzersizlik düzeyini otomatik olarak zorlar `_id` . Ek alanlara dizin eklemek için MongoDB Dizin Yönetimi komutlarını uygularsınız. Bu varsayılan dizin oluşturma ilkesi, tüm alanları varsayılan olarak dizinleyen Azure Cosmos DB SQL API 'sinden farklıdır.
+
+Azure Cosmos DB tarafından sunulan dizin oluşturma özellikleri, bileşik dizinler, benzersiz dizinler ve yaşam süresi (TTL) dizinlerinin eklenmesini içerir. Dizin yönetimi arabirimi, `createIndex()` komuta eşlenir. [Azure Cosmos DB MongoDB için API 'Sindeki dizin oluşturma](mongodb-indexing.md)hakkında daha fazla bilgi edinin.
 
 [Azure veritabanı geçiş hizmeti](../dms/tutorial-mongodb-cosmos-db.md) , MongoDB koleksiyonlarını benzersiz dizinlerle otomatik olarak geçirir. Ancak, geçiş işleminden önce benzersiz dizinlerin oluşturulması gerekir. Azure Cosmos DB, Koleksiyonlarınızdan zaten veri olduğunda benzersiz dizinlerin oluşturulmasını desteklemez. Daha fazla bilgi için bkz. [Azure Cosmos DB Içindeki benzersiz anahtarlar](unique-keys.md).
 

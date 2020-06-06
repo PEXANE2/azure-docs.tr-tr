@@ -4,16 +4,16 @@ description: Hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında dizin
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: fca9fa8a964c6c9d69ffbb3036bd4774e0d1bd34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e8b99d4a9c48692551e3aba06aba1a3db385e60
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255554"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466060"
 ---
 # <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. içindeki dizinleri, dosyaları ve ACL 'Leri yönetmek için Azure Depolama Gezgini kullanın
 
@@ -111,4 +111,4 @@ Tek tek dizinlerde ve tek tek dosyalar üzerinde izinleri yönetebilir, bu da si
 Data Lake Storage 2. erişim denetim listelerine öğrenin.
 
 > [!div class="nextstepaction"]
-> [Azure Data Lake Storage 2. erişim denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+> [Azure Data Lake Storage 2. Nesil'de Erişim Denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
