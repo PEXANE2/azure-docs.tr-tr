@@ -4,15 +4,15 @@ description: Azure Content Delivery Network (CDN) kullanarak bir Azure depolama 
 author: normesta
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
-ms.openlocfilehash: 4516e9f48174a0f1f5201c46cf114badf13d99d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02b7e02c33161db33420e2efe1ef4b70a138d127
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878840"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465227"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>Statik bir Web sitesini Azure CDN tümleştirme
 
@@ -41,7 +41,7 @@ Statik Web siteniz için Azure CDN doğrudan depolama hesabınızdan etkinleşti
    Statik Web sitesi uç noktanızı bulmak için, depolama hesabınız için **statik Web sitesi** ayarları ' na gidin.  Birincil uç noktayı kopyalayın ve CDN yapılandırmasına yapıştırın.
 
    > [!IMPORTANT]
-   > Protokol tanımlayıcısını (*örn.* https) ve URL 'nin sonundaki eğik çizgiyi kaldırdığınızdan emin olun. Örneğin, statik Web sitesi uç noktası ise `https://mystorageaccount.z5.web.core.windows.net/`, **kaynak ana bilgisayar adı** alanında `mystorageaccount.z5.web.core.windows.net` öğesini belirtirsiniz.
+   > Protokol tanımlayıcısını (*örn.* https) ve URL 'nin sonundaki eğik çizgiyi kaldırdığınızdan emin olun. Örneğin, statik Web sitesi uç noktası ise `https://mystorageaccount.z5.web.core.windows.net/` , `mystorageaccount.z5.web.core.windows.net` **kaynak ana bilgisayar adı** alanında öğesini belirtirsiniz.
 
    Aşağıdaki görüntüde örnek bir uç nokta yapılandırması gösterilmektedir:
 
@@ -49,7 +49,7 @@ Statik Web siteniz için Azure CDN doğrudan depolama hesabınızdan etkinleşti
 
 1. **Oluştur**' u seçin ve ardından CDN 'nin sağlamasını bekleyin. Uç nokta oluşturulduktan sonra uç nokta listesinde görünür. (Formda herhangi bir hata varsa, bu alanın yanında bir ünlem işareti görünür.)
 
-1. CDN uç noktasının doğru şekilde yapılandırıldığını doğrulamak için, ayarlarına gitmek üzere uç noktaya tıklayın. Depolama hesabınız için CDN genel görünümünde, uç nokta ana bilgisayar adını bulun ve aşağıdaki görüntüde gösterildiği gibi uç noktaya gidin. CDN uç noktanızın biçimi şuna benzer olacaktır `https://staticwebsitesamples.azureedge.net`.
+1. CDN uç noktasının doğru şekilde yapılandırıldığını doğrulamak için, ayarlarına gitmek üzere uç noktaya tıklayın. Depolama hesabınız için CDN genel görünümünde, uç nokta ana bilgisayar adını bulun ve aşağıdaki görüntüde gösterildiği gibi uç noktaya gidin. CDN uç noktanızın biçimi şuna benzer olacaktır `https://staticwebsitesamples.azureedge.net` .
 
     ![CDN uç noktasına genel bakış gösteren ekran görüntüsü](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 

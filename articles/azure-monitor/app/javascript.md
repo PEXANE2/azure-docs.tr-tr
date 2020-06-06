@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: d46b9f9386e8b16d4806e054820cbd82d83ef56b
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: f198e4aac08039eb7aed8468e6adb45b5b0d67b4
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266997"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464581"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -21,7 +21,7 @@ Application Insights tüm web sayfalarıyla kullanılabilir; kısa bir JavaScrip
 ## <a name="adding-the-javascript-sdk"></a>JavaScript SDK 'Sı ekleme
 
 1. Önce bir Application Insights kaynağına ihtiyacınız vardır. Henüz bir kaynak ve izleme anahtarınız yoksa [Yeni kaynak oluştur yönergelerini](create-new-resource.md)izleyin.
-2. JavaScript telemetrinizin gönderilmesini istediğiniz kaynaktaki izleme anahtarını kopyalayın.
+2. JavaScript telemetrinizin gönderilmesini istediğiniz kaynak için ("Ikey" olarak da bilinir) _izleme anahtarını_ (adım 1 ' den) kopyalayın. Bunu, `instrumentationKey` Application Insights JavaScript SDK 'sı ayarına ekleyeceksiniz.
 3. Aşağıdaki iki seçenekten birini kullanarak Web sayfanıza veya uygulamanıza Application Insights JavaScript SDK 'sını ekleyin:
     * [NPM kurulumu](#npm-based-setup)
     * [JavaScript kod parçacığı](#snippet-based-setup)
@@ -34,6 +34,14 @@ Application Insights tüm web sayfalarıyla kullanılabilir; kısa bir JavaScrip
 
 ### <a name="npm-based-setup"></a>NPM tabanlı kurulum
 
+NPM aracılığıyla yükler.
+
+```sh
+npm i --save @microsoft/applicationinsights-web
+```
+
+> *Not:* **Bu pakete dahil**edilmiştir. bu nedenle, ayrı bir typler paketi **yüklemeniz gerekmez.**
+    
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
 
@@ -47,17 +55,63 @@ appInsights.trackPageView(); // Manually call trackPageView to establish the cur
 
 ### <a name="snippet-based-setup"></a>Kod parçacığı tabanlı kurulum
 
-Uygulamanız NPM kullanmıyorsa, bu kod parçacığını sayfalarınızın en üstüne yapıştırarak Web sayfalarınızı Application Insights doğrudan bırakabilirsiniz. Tercihen, `<head>` bağımlılıklarınızın tüm olası sorunlarını izleyebilmesi için, bölüminizdeki ilk betik olmalıdır. Blazor Server uygulaması kullanıyorsanız, bölümünde dosyanın en üstüne kod parçacığını ekleyin `_Host.cshtml` `<head>` .
+Uygulamanız NPM kullanmıyorsa, bu kod parçacığını sayfalarınızın en üstüne yapıştırarak Web sayfalarınızı Application Insights doğrudan bırakabilirsiniz. Tercihen, `<head>` bağımlılıklarınızın tüm olası sorunlarını ve isteğe bağlı olarak tüm JavaScript hatalarını izleyebilmesi için, bölüminizdeki ilk betik olmalıdır. Blazor Server uygulaması kullanıyorsanız, bölümünde dosyanın en üstüne kod parçacığını ekleyin `_Host.cshtml` `<head>` .
+
+Uygulamanızın hangi kod parçacığının kullandığını izlemeye yardımcı olmak için, 2.5.5 sürümünden başlayarak sayfa görünümü olayı, tanımlanan kod parçacığı sürümünü içerecek yeni bir "AI. Internal. parçacığının" etiketini içerecektir.
+
+Geçerli kod parçacığı (aşağıda listelenmiştir) "3" sürümü olarak tanımlanacaktır.
 
 ```html
 <script type="text/javascript">
-var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(n){var o={config:n,initialize:!0},t=document,e=window,i="script";setTimeout(function(){var e=t.createElement(i);e.src=n.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",t.getElementsByTagName(i)[0].parentNode.appendChild(e)});try{o.cookie=t.cookie}catch(e){}function a(n){o[n]=function(){var e=arguments;o.queue.push(function(){o[n].apply(o,e)})}}o.queue=[],o.version=2;for(var s=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];s.length;)a("track"+s.pop());var r="Track",c=r+"Page";a("start"+c),a("stop"+c);var u=r+"Event";if(a("start"+u),a("stop"+u),a("addTelemetryInitializer"),a("setAuthenticatedUserContext"),a("clearAuthenticatedUserContext"),a("flush"),o.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===n.disableExceptionTracking||n.extensionConfig&&n.extensionConfig.ApplicationInsightsAnalytics&&!0===n.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){a("_"+(s="onerror"));var p=e[s];e[s]=function(e,n,t,i,a){var r=p&&p(e,n,t,i,a);return!0!==r&&o["_"+s]({message:e,url:n,lineNumber:t,columnNumber:i,error:a}),r},n.autoExceptionInstrumented=!0}return o}(
-{
-  instrumentationKey:"INSTRUMENTATION_KEY"
-}
-);(window[aiName]=aisdk).queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+!function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", // The SDK URL Source
+//name: "appInsights", // Global SDK Instance name defaults to "appInsights" when not supplied
+//ld: 0, // Defines the load delay (in ms) before attempting to load the sdk. -1 = block page load and add to head. (default) = 0ms load after timeout,
+//useXhr: 1, // Use XHR instead of fetch to report failures (if available),
+//crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag 
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    /* ...Other Configuration Options... */
+}});
 </script>
 ```
+
+> [!NOTE]
+> Okunabilirliği sağlamak ve olası JavaScript hatalarını azaltmak için, tüm olası yapılandırma seçenekleri yukarıdaki kod parçacığı kodunda yeni bir satırda listelenir. Bu, bir açıklamalı çizginin değerini değiştirmek istemiyorsanız kaldırılabilir.
+
+
+#### <a name="reporting-script-load-failures"></a>Betik yükleme başarısızlıklarını bildirme
+
+Kod parçacığının bu sürümü, Azure Izleyici portalına bir özel durum olarak SDK yükleme sırasında hata saptar ve bildirir (hata &gt; özel durumlar &gt; tarayıcısı altında), bu özel durum, uygulamanızın telemetri (veya diğer özel durumlar) beklenen şekilde bildirilmediğini bilmeniz için bu türden hatalara görünürlük sağlar. Bu sinyal, Telemetriyi kaybettiğiniz, SDK 'nın yüklenmediği veya başlamadığı için önemli bir ölçüdür.
+- Kullanıcılarınızın, sitenizi nasıl kullandığını (veya kullanmaya nasıl çalıştığını) raporlamak;
+- Son kullanıcılarınızın sitenizi nasıl kullandığını gösteren telemetri eksik;
+- Son kullanıcılarınızı sitenizi kullanarak başarıyla engelliyor olabilecek JavaScript hataları eksik.
+
+Bu özel durumla ilgili ayrıntılar için bkz. [SDK yükleme hatası](javascript-sdk-load-failure.md) sorun giderme sayfası.
+
+Bu hatanın Portal için bir özel durum olarak bildirilmesi, Application Insights yapılandırmasından yapılandırma seçeneğini kullanmaz ```disableExceptionTracking``` ve bu nedenle bu hata oluşursa, Window. mak desteği devre dışı olduğunda bile her zaman kod parçacığı tarafından bildirilir.
+
+SDK yükleme hatalarının raporlanması özellikle IE 8 (veya daha az) üzerinde desteklenmez. Bu, çoğu ortamın özel olarak IE 8 veya daha az olmadığı varsayıldığında, kod parçacığının küçültülmüş boyutunu azaltmaya yardımcı olur. Bu gereksinime sahipseniz ve bu özel durumları almak istiyorsanız, bir Fetch Poly dolgusu dahil etmeniz veya bunun yerine kullanan kendi kod parçacığı sürümünü oluşturmanız gerekir ```XDomainRequest``` ```XMLHttpRequest``` , ancak [belirtilen kod parçacığı kaynak kodunu](https://github.com/microsoft/ApplicationInsights-JS/blob/master/AISKU/snippet/snippet.js) başlangıç noktası olarak kullanmanız önerilir.
+
+> [!NOTE]
+> Kod parçacığının önceki bir sürümünü kullanıyorsanız, önceden bildirilmeyen sorunları alabilmeniz için en son sürüme güncelleştirmeniz önemle önerilir.
+
+#### <a name="snippet-configuration-options"></a>Kod parçacığı yapılandırma seçenekleri
+
+Tüm yapılandırma seçenekleri, yanlışlıkla SDK 'nın yüklenmesine neden olmayan JavaScript hatalarına neden olmamak, ancak hatanın raporlanmasını devre dışı bırakacağından, komut dosyasının sonuna doğru şekilde geçmektedir.
+
+Her yapılandırma seçeneği, yukarıdaki yeni bir satırda gösterilir. [isteğe bağlı] olarak listelenen bir öğenin varsayılan değerini geçersiz kılmak istemiyorsanız, döndürülen sayfanızın elde edilen boyutunu en aza indirmek için bu satırı kaldırabilirsiniz.
+
+Kullanılabilir yapılandırma seçenekleri şunlardır 
+
+| Adı | Tür | Açıklama
+|------|------|----------------
+| src | dize **[gerekli]** | SDK 'nın yükleneceği yerin tam URL 'SI. Bu değer, dinamik olarak eklenen bir betiğin/etiketin "src" özniteliği için kullanılır &lt; &gt; . Genel CDN konumunu veya kendi özel olarak barındırılan birini kullanabilirsiniz.
+| name | dize *[isteğe bağlı]* | Başlatılmış SDK için genel ad, varsayılan Appınsights olarak belirlenmiştir. ```window.appInsights```Bu nedenle, başlatılmış örneğe bir başvuru olacaktır. Note: bir ad değeri sağlarsanız veya bir önceki örnek atanmak üzere görünüyorsa (Appınsi\dk genel adı aracılığıyla), bu ad değeri aynı zamanda genel ad alanında olarak tanımlanır ```window.appInsightsSDK=<name value>``` , bu da SDK başlatma kodunun doğru kod parçacığı çatısı ve proxy yöntemlerinin başlatılmasını ve güncelleştirilmesini sağlamak için gereklidir.
+| Eski | MS olarak sayı *[isteğe bağlı]* | SDK 'Yı yüklemeyi denemeden önce beklenecek yük gecikmesini tanımlar. Varsayılan değer 0 ' dır ve herhangi bir negatif değer, sayfanın baş bölgesine hemen bir betik etiketi ekler ve &lt; &gt; Bu, betik yüklenene kadar sayfa yükleme olayını engeller (veya başarısız olur).
+| useXhr | Boole *[isteğe bağlı]* | Bu ayar yalnızca SDK yükleme hatalarının bildirdiği için kullanılır. Raporlama ilk olarak, varsa Fetch () kullanmaya çalışır ve ardından XHR 'a geri dönüşse, bu değeri true olarak ayarlamak yalnızca getirme denetimini atlar. Bu değerin kullanılması yalnızca uygulamanız, alma işlemi hata olaylarını gönderemediği bir ortamda kullanılıyorsa gereklidir.
+| Çapraz Sorigin | dize *[isteğe bağlı]* | Bu ayarı ekleyerek, SDK 'Yı indirmek için eklenen komut dosyası etiketi, bu dize değerine sahip çapraz Sorigin özniteliğini içerecektir. Tanımlanmadığında (varsayılan), hiçbir çapraz ekleme özniteliği eklenmez. Önerilen değerler tanımlı değil (varsayılan); ""; veya "Anonymous" (tüm geçerli değerler Için bkz [. html özniteliği: çapraz sorumde](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) belgeler)
+| satırında | nesne **[gerekli]** | Yapılandırma, başlatma sırasında Application Insights SDK 'ya geçirildi.
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Azure portal telemetri gönderme
 
@@ -99,7 +153,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Yapılandırma
 Çoğu yapılandırma alanı, varsayılan olarak false olarak ayarlanabilecek şekilde adlandırılır. Tüm alanlar, hariç olarak isteğe bağlıdır `instrumentationKey` .
 
-| Name | Varsayılan | Açıklama |
+| Adı | Varsayılan | Açıklama |
 |------|---------|-------------|
 | ınstrumentationkey | null | **Gerekli**<br>Azure portal aldığınız izleme anahtarı. |
 | accountId | null | Uygulamanız kullanıcıları hesaplara gruplayan isteğe bağlı hesap KIMLIĞI. Boşluk, virgül, noktalı virgül, eşittir veya dikey çubuklar yok |
@@ -140,6 +194,11 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | enableRequestHeaderTracking | yanlış | True ise, AJAX & getirme isteği üst bilgileri izlenir, varsayılan değer false 'dur.
 | enableResponseHeaderTracking | yanlış | True ise, AJAX & getirme isteğinin yanıt üst bilgileri izlenir, varsayılan değer false 'dur.
 | distributedTracingMode | `DistributedTracingModes.AI` | Dağıtılmış izleme modunu ayarlar. AI_AND_W3C Mode veya W3C modu ayarlandıysa, W3C Trace bağlam üstbilgileri (traceparent/tracestate) oluşturulur ve tüm giden isteklere dahil edilir. AI_AND_W3C, eski Application Insights belgelenmiş hizmetlerle geri uyumluluk için sağlanır. Örneğe [buraya](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps)bakın.
+| enableAjaxErrorStatusText | yanlış | Varsayılan yanlış. Doğru ise, başarısız AJAX isteklerinde bağımlılık olayına yanıt hatası veri metnini ekleyin.
+| enableAjaxPerfTracking | yanlış | Varsayılan yanlış. Daha fazla tarayıcı penceresi aramak ve dahil olmak üzere izin vermek için bayrak. bildirilen Ajax (XHR ve fetch) tarafından bildirilen ölçümlerde performans zamanlamaları.
+| maxAjaxPerfLookupAttempts | 3 | Varsayılan olarak 3 ' e döner. Pencerenin aranacağı en fazla sayı. performans zamanlamaları (varsa), tüm tarayıcılar pencereyi doldurmadığından bu gereklidir. XHR isteğinin sonunu ve getirme isteklerini raporlamadan önce bu, tamamlandıktan sonra eklenir.
+| ajaxPerfLookupDelay | 25 | Varsayılan olarak 25 MS olur. Bir AJAX isteği için Windows. Performance zamanlamalarını bulmayı yeniden denemeden önce beklenecek süre (süre milisaniye cinsinden) ve doğrudan setTimeout () öğesine geçirilir.
+| enableUnhandledPromiseRejectionTracking | yanlış | Doğru ise, işlenmeyen Promise reddi sayısı, yeniden toplanacak ve bir JavaScript hatası olarak raporlanır. DisableExceptionTracking true olduğunda (özel durumları izlememeyin), yapılandırma değeri yok sayılır ve işlenmemiş Promise geri alma raporlanmaz.
 
 ## <a name="single-page-applications"></a>Tek sayfalı uygulamalar
 
@@ -256,12 +315,13 @@ Geçerli Application Insights ÜRETIM SDK 'sını (1.0.20) kullanıyorsanız ve 
 
 ## <a name="sdk-performanceoverhead"></a>SDK performansı/ek yükü
 
-Yalnızca 25 KB 'lık bir değere sahip ve başlatmak için yalnızca ~ 15 MS alan Application Insights, Web sitenize fazla miktarda loadtime ekler. Kod parçacığını kullanarak, kitaplığın minimum bileşenleri hızlı bir şekilde yüklenir. Bu sırada, tam komut dosyası arka planda indirilir.
+Yalnızca 36 KB gdaraltılmış ve yalnızca ~ 15 MS 'yi başlatmak için Application Insights, Web sitenize daha fazla sayıda loadtime ekler. Kod parçacığını kullanarak, kitaplığın minimum bileşenleri hızlı bir şekilde yüklenir. Bu sırada, tam komut dosyası arka planda indirilir.
 
 Betik CDN 'den indirilirken, sayfanızın tüm izlenmesi sıraya alınır. İndirilen betik zaman uyumsuz olarak başlatıldıktan sonra, kuyruğa alınan tüm olaylar izlenir. Sonuç olarak, sayfanızın tüm yaşam döngüsü boyunca hiçbir Telemetriyi kaybetmezsiniz. Bu kurulum işlemi, sayfanıza, kullanıcılarınız için görünmeyen sorunsuz bir analiz sistemi sağlar.
 
 > Özet:
-> - **25 KB** gdaraltılmış
+> - ![NPM sürümü](https://badge.fury.io/js/%40microsoft%2Fapplicationinsights-web.svg)
+> - ![gzip sıkıştırılmış boyutu](https://img.badgesize.io/https://js.monitor.azure.com/scripts/b/ai.2.min.js.svg?compression=gzip)
 > - **15 MS** genel başlatma süresi
 > - Sayfanın yaşam döngüsü boyunca **sıfır** izleme kaçırıldı
 
@@ -269,7 +329,15 @@ Betik CDN 'den indirilirken, sayfanızın tüm izlenmesi sıraya alınır. İndi
 
 ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
-Chrome en son ✔ |  Firefox en son ✔ | IE 9 + & Edge ✔ | Opera en son ✔ | Safari en son ✔ |
+Chrome en son ✔ |  Firefox en son ✔ | IE 9 + & Edge ✔<br>IE 8 uyumlu | Opera en son ✔ | Safari en son ✔ |
+
+## <a name="es3ie8-compatibility"></a>ES3/ıE8 uyumluluğu
+
+Bir SDK olarak, müşterilerinin kullandıkları tarayıcıları denetleyemeyebilecek çok sayıda kullanıcı vardır. Bu nedenle, bu SDK 'nın "iş" olmaya devam ettiğinden ve daha eski bir tarayıcı tarafından yüklendiğinde JS yürütmesini bozmadığından emin olunması gerekir. IE8 ve daha eski nesil (ES3) tarayıcılarını desteklememe konusunda ideal olmaya devam ederken, "iş" için sayfa gerektirmeye devam eden çok sayıda büyük müşteri/Kullanıcı vardır ve bu durum, son kullanıcıların kullanmak için hangi tarayıcıyı seçebileceğini denetleyebilir
+
+Bu, yalnızca en düşük ortak özellik kümesini desteklenebiliyoruz; yalnızca ES3 kod uyumluluğunu sürdürmemiz ve yeni özellikler eklenirken, ES3 JavaScript ayrıştırmayı kesintiye uğramayacak ve isteğe bağlı bir özellik olarak eklenen bir şekilde eklenmeleri gerekir.
+
+[IE8 desteğiyle ilgili tam Ayrıntılar için bkz. GitHub](https://github.com/Microsoft/ApplicationInsights-JS#es3ie8-compatibility)
 
 ## <a name="open-source-sdk"></a>Açık kaynaklı SDK
 
@@ -279,3 +347,4 @@ Application Insights JavaScript SDK 'Sı, kaynak kodu görüntülemek veya proje
 * [Kullanımı İzleme](usage-overview.md)
 * [Özel etkinlikler ve ölçümler](api-custom-events-metrics.md)
 * [Build-measure-learn](usage-overview.md)
+* [SDK yükleme hatası sorunlarını giderme](javascript-sdk-load-failure.md)

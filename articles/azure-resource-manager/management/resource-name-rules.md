@@ -3,16 +3,18 @@ title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 73e5f7ce7f5c13a0ce456372d299e49033c7e704
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 1ed8db4c7f780af8ac06074c514a602cc1654554
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170588"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456885"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
 Bu makalede, Azure kaynakları için adlandırma kuralları ve kısıtlamalar özetlenmektedir. Kaynakları adlandırma hakkında öneriler için bkz. [Önerilen adlandırma ve etiketleme kuralları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
+
+Bu makalede kaynak sağlayıcısı ad alanına göre kaynaklar listelenir. Kaynak sağlayıcılarının Azure hizmetleriyle nasıl eşleşeceğini gösteren bir liste için bkz. [Azure hizmetleri Için kaynak sağlayıcıları](azure-services-resource-providers.md).
 
 Geçerli karakterler sütununda özellikle belirtilmedikçe, kaynak adları büyük/küçük harfe duyarlıdır.
 
@@ -59,9 +61,9 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | Service/Openıdconnectproviders | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/ilkeler | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/ürünler | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/ürünler/API 'ler | product | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/ürünler/gruplar | product | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
-> | hizmet/ürünler/Etiketler | product | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/ürünler/API 'ler | ürün | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/ürünler/gruplar | ürün | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
+> | hizmet/ürünler/Etiketler | ürün | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/Özellikler | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/abonelikler | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
 > | hizmet/Etiketler | hizmet | 1-256 | Şu kullanılamıyor:<br> `*#&+:<>?` |
@@ -540,7 +542,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | çözümler | çalışma alanı | YOK | Microsoft tarafından yazılan çözümler için, adın şu düzende olması gerekir:<br>`SolutionType(WorkspaceName)`<br><br>Üçüncü taraflar tarafından yazılan çözümler için, adın düzende olması gerekir:<br>`SolutionType[WorkspaceName]`<br><br>Örneğin, geçerli bir ad:<br>`AntiMalware(contoso-IT)`<br><br>Çözüm türü, büyük/küçük harfe duyarlıdır. |
+> | çözümler | çalışma alanı | Yok | Microsoft tarafından yazılan çözümler için, adın şu düzende olması gerekir:<br>`SolutionType(WorkspaceName)`<br><br>Üçüncü taraflar tarafından yazılan çözümler için, adın düzende olması gerekir:<br>`SolutionType[WorkspaceName]`<br><br>Örneğin, geçerli bir ad:<br>`AntiMalware(contoso-IT)`<br><br>Çözüm türü, büyük/küçük harfe duyarlıdır. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 

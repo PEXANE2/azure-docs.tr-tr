@@ -7,12 +7,12 @@ ms.date: 07/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: b243d05619642e1dd3ad8dfe2bbe1d0a9661b773
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d52877129fe256253410f1d38011fa0343dd433d
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75351313"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84455952"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Hızlı başlangıç: .NET için Azure Blob depolama istemci kitaplığı v11
 
@@ -27,7 +27,7 @@ ms.locfileid: "75351313"
 * Bir kapsayıcıdaki tüm Blobları listeleme
 * Kapsayıcı silme
 
-[API başvurusu belge](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-storage-net/tree/master/Blob) | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [örnekleri](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
+[API başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-storage-net/tree/master/Blob)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)  |  [Örnekler](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -45,7 +45,7 @@ Bu bölümde, bir projeyi .NET için Azure Blob depolama istemci kitaplığıyla
 
 İlk olarak, blob adlı bir .NET Core uygulaması oluşturun *-hızlı başlangıç*.
 
-1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), *BLOB-QuickStart*adlı yeni bir `dotnet new` konsol uygulaması oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*.
+1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` *BLOB-QuickStart*adlı yeni bir konsol uygulaması oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*.
 
    ```console
    dotnet new console -n blob-quickstart
@@ -80,7 +80,7 @@ Time Elapsed 00:00:03.08
 
 ### <a name="install-the-package"></a>Paketi yükler
 
-Hala uygulama dizininde, `dotnet add package` komutunu kullanarak .net Için Azure Blob Storage istemci kitaplığı 'nı yükleyebilirsiniz.
+Hala uygulama dizininde, komutunu kullanarak .NET için Azure Blob Storage istemci kitaplığı 'nı yükleyebilirsiniz `dotnet add package` .
 
 ```console
 dotnet add package Microsoft.Azure.Storage.Blob
@@ -91,10 +91,10 @@ dotnet add package Microsoft.Azure.Storage.Blob
 Proje dizininden:
 
 1. *Program.cs* dosyasını Düzenleyicinizde açın
-2. `Console.WriteLine` İfadeyi kaldır
-3. Yönergeler `using` ekleme
-4. Örnek için `ProcessAsync` ana kodun bulunacağı bir yöntem oluşturun
-5. `ProcessAsync` Yöntemi zaman uyumsuz olarak çağırın`Main`
+2. İfadeyi Kaldır `Console.WriteLine`
+3. `using`Yönergeler ekleme
+4. `ProcessAsync`Örnek için ana kodun bulunacağı bir yöntem oluşturun
+5. Yöntemi zaman uyumsuz olarak çağırın `ProcessAsync``Main`
 
 Kod şu şekildedir:
 
@@ -109,12 +109,11 @@ namespace blob_quickstart
 {
     class Program
     {
-        public static void Main()
+        public static async Task Main()
         {
             Console.WriteLine("Azure Blob Storage - .NET quickstart sample\n");
 
-            // Run the examples asynchronously, wait for the results before proceeding
-            ProcessAsync().GetAwaiter().GetResult();
+            await ProcessAsync();
 
             Console.WriteLine("Press any key to exit the sample application.");
             Console.ReadLine();
@@ -140,7 +139,7 @@ namespace blob_quickstart
 
 ### <a name="configure-your-storage-connection-string"></a>Depolama bağlantı dizelerinizi yapılandırma
 
-Bağlantı dizenizi kopyaladıktan sonra uygulamayı çalıştıran yerel makine üzerindeki yeni bir ortam değişkenine yazın. Ortam değişkenini ayarlamak için bir konsol penceresi açın ve işletim sisteminizin yönergelerini izleyin. Gerçek `<yourconnectionstring>` bağlantı dizeniz ile değiştirin.
+Bağlantı dizenizi kopyaladıktan sonra uygulamayı çalıştıran yerel makine üzerindeki yeni bir ortam değişkenine yazın. Ortam değişkenini ayarlamak için bir konsol penceresi açın ve işletim sisteminizin yönergelerini izleyin. `<yourconnectionstring>`Gerçek bağlantı dizeniz ile değiştirin.
 
 #### <a name="windows"></a>Windows
 
@@ -178,10 +177,10 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 
 Şu kaynaklarla etkileşim kurmak için aşağıdaki .NET sınıflarını kullanın:
 
-* [Cloudstorageaccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount): sınıfı `CloudStorageAccount` , Azure depolama hesabınızı temsil eder. Bu sınıfı, hesap erişim anahtarlarınızı kullanarak blob depolamaya erişim yetkisi vermek için kullanın.
-* [Cloudblobclient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient): sınıfı `CloudBlobClient` , kodunuzdaki blob hizmetine bir erişim noktası sağlar.
-* [Cloudblobcontainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer): sınıf `CloudBlobContainer` , kodunuzda bir blob kapsayıcısını temsil eder.
-* [Cloudblockblob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob): nesne `CloudBlockBlob` , kodunuzda bir Blok Blobu temsil eder. Blok blobları, ayrı ayrı yönetilebilen veri bloklarından oluşur.
+* [Cloudstorageaccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount): `CloudStorageAccount` sınıfı, Azure depolama hesabınızı temsil eder. Bu sınıfı, hesap erişim anahtarlarınızı kullanarak blob depolamaya erişim yetkisi vermek için kullanın.
+* [Cloudblobclient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient): `CloudBlobClient` sınıfı, kodunuzdaki blob hizmetine bir erişim noktası sağlar.
+* [Cloudblobcontainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer): `CloudBlobContainer` sınıf, kodunuzda bir blob kapsayıcısını temsil eder.
+* [Cloudblockblob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob): `CloudBlockBlob` nesne, kodunuzda bir Blok Blobu temsil eder. Blok blobları, ayrı ayrı yönetilebilen veri bloklarından oluşur.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -197,9 +196,9 @@ Bu örnek kod parçacıkları, .NET için Azure Blob depolama istemci kitaplığ
 
 ### <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Aşağıdaki kod, ortam değişkeninin depolama hesabına işaret eden bir [Cloudstorageaccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet) nesnesi oluşturmak için ayrıştırılabilen bir bağlantı dizesi içerip içermediğini denetler. Bağlantı dizesinin geçerli olup olmadığını denetlemek için [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse?view=azure-dotnet) yöntemini kullanın. Başarılı `TryParse` olursa, `storageAccount` değişkenini başlatır ve döndürür `true`.
+Aşağıdaki kod, ortam değişkeninin depolama hesabına işaret eden bir [Cloudstorageaccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet) nesnesi oluşturmak için ayrıştırılabilen bir bağlantı dizesi içerip içermediğini denetler. Bağlantı dizesinin geçerli olup olmadığını denetlemek için [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse?view=azure-dotnet) yöntemini kullanın. `TryParse`Başarılı olursa, `storageAccount` değişkenini başlatır ve döndürür `true` .
 
-Bu kodu `ProcessAsync` metodun içine ekleyin:
+Bu kodu metodun içine ekleyin `ProcessAsync` :
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage 
@@ -231,7 +230,7 @@ else
 ```
 
 > [!NOTE]
-> Bu makaledeki işlemlerin geri kalanını gerçekleştirmek için yukarıdaki kodda yer alarak aşağıdaki `// ADD OTHER OPERATIONS HERE` bölümlerde bulunan kod parçacıkları ile değiştirin.
+> Bu makaledeki işlemlerin geri kalanını gerçekleştirmek için `// ADD OTHER OPERATIONS HERE` Yukarıdaki kodda yer alarak aşağıdaki bölümlerde bulunan kod parçacıkları ile değiştirin.
 
 ### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
@@ -270,7 +269,7 @@ await cloudBlobContainer.SetPermissionsAsync(permissions);
 
 ### <a name="upload-blobs-to-a-container"></a>Blobları bir kapsayıcıya yükleme
 
-Aşağıdaki kod parçacığı, önceki bölümde oluşturulan kapsayıcıda `CloudBlockBlob` [Getblockblobreference](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getblockblobreference) yöntemini çağırarak nesnesine bir başvuru alır. Ardından, [Uploadfromfileasync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromfileasync) yöntemini çağırarak seçili yerel dosyayı bloba yükler. Bu yöntem, daha önce oluşturulmadıysa bir blob oluşturur, aksi takdirde üzerine yazar.
+Aşağıdaki kod parçacığı, `CloudBlockBlob` önceki bölümde oluşturulan kapsayıcıda [Getblockblobreference](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getblockblobreference) yöntemini çağırarak nesnesine bir başvuru alır. Ardından, [Uploadfromfileasync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromfileasync) yöntemini çağırarak seçili yerel dosyayı bloba yükler. Bu yöntem, daha önce oluşturulmadıysa bir blob oluşturur, aksi takdirde üzerine yazar.
 
 ```csharp
 // Create a file in your local MyDocuments folder to upload to a blob.

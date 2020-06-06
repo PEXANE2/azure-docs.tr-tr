@@ -4,16 +4,16 @@ description: Premium performans özellikleriyle Azure BlockBlobStorage hesabın�
 author: tamram
 services: storage
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4767c0310783e7e2cc51b4caa7d6e6a052d0a05a
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 31a7048c263d7231fe827ad5a1c927c5cb3e2f6d
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007313"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463595"
 ---
 # <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage hesabı oluşturma
 
@@ -110,7 +110,7 @@ Azure portal bir blok Blobstorage hesabı oluşturmak için aşağıdaki adımla
 
    |Alan     |Değer  |
    |---------|---------|
-   |**Mının**    |  **Premium**' u seçin.   |
+   |**Performans**    |  **Premium**' u seçin.   |
    |**Hesap türü**    | **Blockblobstorage**' ı seçin.      |
    |**Çoğaltma**    |  **Yerel olarak yedekli depolama (LRS)** varsayılan ayarını bırakın.      |
 
@@ -127,7 +127,7 @@ Azure portal bir blok Blobstorage hesabı oluşturmak için aşağıdaki adımla
 
 8. Depolama hesabı ayarlarını gözden geçirmek için **gözden geçir + oluştur** ' u seçin.
 
-9. **Oluştur**’u seçin.
+9. **Oluştur**'u seçin.
 
 ## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 

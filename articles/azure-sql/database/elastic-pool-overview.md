@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 04/09/2020
-ms.openlocfilehash: aa2ccf9c382ff560c081c7cdd13c4ab2199c2551
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f79eb910728286ef5dc3a28974353db012bc5a16
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044979"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449660"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastik havuzlar Azure SQL veritabanı 'nda birden çok veritabanını yönetmenize ve ölçeklendirmenize yardımcı olur
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,10 +31,7 @@ SaaS geliştiricileri, birden fazla veritabanından oluşan büyük ölçekli ve
 - Maliyet tasarrufu sağlamak için, en yüksek performans ve müşteri memnuniyetini harcamadan maliyeti tasarruf edin.
 
 Elastik havuzlar, veritabanlarının ihtiyaç duydukları performans kaynaklarını almasını sağlayarak bu sorunu çözebilir. Bunlar, tahmin edilebilir bir bütçe içinde basit bir kaynak ayırma mekanizması sağlar. Elastik havuzları kullanan SaaS uygulamalarının tasarım desenleri hakkında daha fazla bilgi edinmek için bkz. [Azure SQL Veritabanı kullanan Çok Kiracılı SaaS Uygulamaları için Tasarım Desenleri](saas-tenancy-app-design-patterns.md).
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
-
 > [!IMPORTANT]
 > Elastik havuzlar için veritabanı başına ücret alınmaz. Kullanımdan veya havuzun bir saatten daha az etkin olup olmamasına bakılmaksızın, en yüksek eDTU veya sanal çekirdekler için bir havuzun bulunduğu her saat için faturalandırılırsınız.
 
@@ -147,7 +144,7 @@ Havuza alınan veritabanları genellikle tek veritabanları için kullanılabile
 
   Belirli bir noktaya geri yükleme, havuzdaki bir veritabanını zaman içinde belirli bir noktaya kurtarmak için otomatik veritabanı yedeklemeleri kullanır. Bkz. [Belirli Bir Noktaya Geri Yükleme](recovery-using-backups.md#point-in-time-restore)
 
-- **Coğrafi Geri Yükleme**
+- **Coğrafi geri yükleme**
 
   Coğrafi geri yükleme, veritabanının barındırıldığı bölgedeki bir olay nedeniyle kullanılabilir olmadığında varsayılan kurtarma seçeneğini sağlar. Bkz. [Bir Azure SQL Veritabanını geri yükleme veya ikincil veritabanına yük devretme](disaster-recovery-guidance.md)
 

@@ -4,17 +4,17 @@ description: Data Lake Storage 2. için
 services: storage
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 1d5313f3f0fff128dd09f9c9857b7dd9921ea4f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c5b1d38e32ff0a0d0954064c8a2511d898d16e2
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "69992212"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84462932"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage 2. ile
 
@@ -48,15 +48,15 @@ Bağlantı dizesi, Azure portal HDInsight kümesi dikey penceresinin "SSH + Clus
 
     hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
 
-* Yer tutucusunu `<container-name>` , kapsayıcınıza vermek istediğiniz adla değiştirin.
+* `<container-name>`Yer tutucusunu, kapsayıcınıza vermek istediğiniz adla değiştirin.
 
-* `<storage-account-name>` Yer tutucusunu depolama hesabınızın adıyla değiştirin.
+* `<storage-account-name>`Yer tutucusunu depolama hesabınızın adıyla değiştirin.
 
 ## <a name="get-a-list-of-files-or-directories"></a>Dosya veya dizinlerin listesini al
 
     hdfs dfs -ls <path>
 
-`<path>` Yer tutucuyu kapsayıcının veya KAPSAYıCı klasörünün URI 'siyle değiştirin.
+`<path>`Yer tutucuyu kapsayıcının veya kapsayıcı KLASÖRÜNÜN URI 'siyle değiştirin.
 
 Örneğin, `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
@@ -64,7 +64,7 @@ Bağlantı dizesi, Azure portal HDInsight kümesi dikey penceresinin "SSH + Clus
 
     hdfs dfs -mkdir [-p] <path>
 
-`<path>` Yer tutucusunu kök kapsayıcı adı veya Kapsayıcınız içindeki bir klasör ile değiştirin.
+`<path>`Yer tutucusunu kök kapsayıcı adı veya Kapsayıcınız içindeki bir klasör ile değiştirin.
 
 Örneğin, `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
 
@@ -72,7 +72,7 @@ Bağlantı dizesi, Azure portal HDInsight kümesi dikey penceresinin "SSH + Clus
 
     hdfs dfs -rm <path>
 
-Yer tutucusunu `<path>` , silmek istediğiniz dosya veya klasörün URI 'siyle değiştirin.
+`<path>`Yer tutucusunu, silmek istediğiniz dosya veya KLASÖRÜN URI 'siyle değiştirin.
 
 Örneğin, `hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
 

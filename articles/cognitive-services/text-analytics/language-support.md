@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 06/03/2020
 ms.author: aahi
-ms.openlocfilehash: c0e71ffcc88a85caf4b76c34940293663c4acf66
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 4fd893691f68c8b51fa3ef234d7828b1bd70cea5
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142172"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465601"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Metin Analizi API'si v3 dil desteği 
 
 > [!IMPORTANT]
-> Metin Analizi API'si sürüm 3. x şu bölgelerde Şu anda kullanılamıyor: Orta Hindistan, Fairfax, BAE Kuzey, Güney Afrika Kuzey, Çin Kuzey 2, Çin Doğu.
+> Metin Analizi API'si sürüm 3. x şu bölgelerde kullanılamıyor: Orta Hindistan, BAE Kuzey, Çin Kuzey 2, Çin Doğu.
 
 
 #### <a name="sentiment-analysis"></a>[Yaklaşım Analizi](#tab/sentiment-analysis)
@@ -31,7 +31,7 @@ ms.locfileid: "84142172"
 | Geleneksel Çince   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
 | Danca               |     `da`      |     ✓      |            |                            |                    |
 | Felemenkçe                 |     `nl`      |     ✓      |            |                            |                    |
-| Türkçe               |     `en`      |     ✓      |     ✓      |         2019-10-01         |                    |
+| İngilizce               |     `en`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Fince               |     `fi`      |     ✓      |            |                            |                    |
 | Fransızca                |     `fr`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Almanca                |     `de`      |     ✓      |     ✓      |         2019-10-01         |                    |
@@ -51,7 +51,7 @@ ms.locfileid: "84142172"
 
 | Dil              | Dil kodu | V3 modeli sürümünden itibaren: |              Notlar |
 |:----------------------|:-------------:|:------------------------------------:|-------------------:|
-| Türkçe               |     `en`      |              2020-04-01              |                    |
+| İngilizce               |     `en`      |              2020-04-01              |                    |
 
 
 #### <a name="named-entity-recognition-ner"></a>[Adlandırılmış varlık tanıma (NER)](#tab/named-entity-recognition)
@@ -68,7 +68,7 @@ ms.locfileid: "84142172"
 | Geleneksel Çince   |   `zh-hant`   |     ✓      |            |                                 |                    |
 | Danca                |     `da`      |     ✓      |            |                                 |                    |
 | Felemenkçe                 |     `nl`      |     ✓      |            |                                 |                    |
-| Türkçe                |     `en`      |     ✓      |     ✓      |           2019-10-01            |                    |
+| İngilizce                |     `en`      |     ✓      |     ✓      |           2019-10-01            |                    |
 | Fince               |     `fi`      |     ✓      |            |                                 |                    |
 | Fransızca                 |     `fr`      |     ✓      |            |                                 |                    |
 | Almanca                 |     `de`      |     ✓      |            |                                 |                    |
@@ -91,7 +91,7 @@ ms.locfileid: "84142172"
 | Dil              | Dil kodu | v2 desteği | v3 desteği | V3 model sürümü ile başlayarak kullanılabilir: |       Notlar        |
 |:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
 | Felemenkçe                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Türkçe               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| İngilizce               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Fince               |     `fi`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Fransızca                |     `fr`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Almanca                |     `de`      |     ✓      |     ✓      |                2019-10-01                 |                    |
@@ -110,7 +110,7 @@ ms.locfileid: "84142172"
 
 | Dil | Dil kodu | v2 desteği | v3 desteği | V3 model sürümü ile başlayarak kullanılabilir: | Notlar |
 |:---------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:-----:|
-| Türkçe  |     `en`      |     ✓      |     ✓      |                2019-10-01                 |       |
+| İngilizce  |     `en`      |     ✓      |     ✓      |                2019-10-01                 |       |
 | İspanyolca  |     `es`      |     ✓      |     ✓      |                2019-10-01                 |       |
 
 #### <a name="language-detection"></a>[Dil Algılama](#tab/language-detection)

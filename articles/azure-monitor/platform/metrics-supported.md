@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 3d7ab9d4e7a7c560fa05bdc06c7d1c357a2c2767
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 09aa3a5febe9ea25d8614a99ec3f832cc2d0309f
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196626"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456955"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Izleyici ile desteklenen ölçümler
 
@@ -235,7 +235,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |IOWriteBytes|GÇ Yazma baytları|Bayt|Toplam|GÇ Yazma baytları|Node|
 |Connectionkabul edildi|Kabul edilen bağlantılar|Sayı|Toplam|Kabul edilen bağlantılar|Node|
 |Connectionişlenmiş|İşlenmiş bağlantılar|Sayı|Toplam|İşlenmiş bağlantılar|Node|
-|ConnectionActive|Etkin bağlantılar|Sayı|Ortalama|Etkin bağlantılar|Node|
+|ConnectionActive|Etkin Bağlantılar|Sayı|Ortalama|Etkin Bağlantılar|Node|
 |RequestHandled|İşlenmiş Istekler|Sayı|Toplam|İşlenmiş Istekler|Node|
 |Processedbkilitler|İşlenen bloklar|Sayı|Toplam|İşlenen bloklar|Node|
 |ProcessedTransactions|İşlenen Işlemler|Sayı|Toplam|İşlenen Işlemler|Node|
@@ -255,16 +255,16 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |cachemissrate|Önbellek Isabetsizlik oranı|Yüzde|cachemissrate||Parça|
 |GetCommands|Alınanlar|Sayı|Toplam||Parça|
 |SetCommands|Kümeler|Sayı|Toplam||Parça|
-|operationsPerSecond|İşlem/saniye|Sayı|Maksimum||Parça|
+|operationsPerSecond|Saniye Başına İşlem|Sayı|Maksimum||Parça|
 |çıkarılan anahtarlar|Çıkarılan Anahtarlar|Sayı|Toplam||Parça|
 |totalkeys|Toplam anahtar sayısı|Sayı|Maksimum||Parça|
 |expiredkeys|Süresi Dolan Anahtarlar|Sayı|Toplam||Parça|
 |usedmemory|Kullanılan Bellek|Bayt|Maksimum||Parça|
-|usedmemorypercentage|Kullanılan bellek yüzdesi|Yüzde|Maksimum||Parça|
+|usedmemorypercentage|Kullanılan Bellek Yüzdesi|Yüzde|Maksimum||Parça|
 |usedmemoryRss|Kullanılan bellek RSS|Bayt|Maksimum||Parça|
-|Sunucuyükü|Sunucu yükü|Yüzde|Maksimum||Parça|
-|cacheWrite|Önbellek yazma|BytesPerSecond|Maksimum||Parça|
-|cacheRead|Önbellek Okuma|BytesPerSecond|Maksimum||Parça|
+|Sunucuyükü|Sunucu Yükü|Yüzde|Maksimum||Parça|
+|cacheWrite|Önbellek Yazması|BytesPerSecond|Maksimum||Parça|
+|cacheRead|Önbellek Okuması|BytesPerSecond|Maksimum||Parça|
 |percentProcessorTime|CPU|Yüzde|Maksimum||Parça|
 |cacheLatency|Önbellek gecikmesi mikrosaniye (Önizleme)|Sayı|Ortalama||Parça|
 |hatalar|Hatalar|Sayı|Maksimum||Shardıd, ErrorType|
@@ -545,7 +545,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |---|---|---|---|---|---|
 |Toplam çağrılar|Toplam çağrı sayısı|Sayı|Toplam|Toplam çağrı sayısı.|ApiName, OperationName, bölge|
 |Başarılı çağrılar|Başarılı çağrılar|Sayı|Toplam|Başarılı çağrı sayısı.|ApiName, OperationName, bölge|
-|Toplam hata sayısı|Toplam hata sayısı|Sayı|Toplam|Hata yanıtıyla Toplam çağrı sayısı (HTTP yanıt kodu 4xx veya 5xx).|ApiName, OperationName, bölge|
+|Toplam hata sayısı|Toplam Hata Sayısı|Sayı|Toplam|Hata yanıtıyla Toplam çağrı sayısı (HTTP yanıt kodu 4xx veya 5xx).|ApiName, OperationName, bölge|
 |Blockedçağrılarında|Engellenen çağrılar|Sayı|Toplam|Oran veya kota sınırını aşan çağrı sayısı.|ApiName, OperationName, bölge|
 |ServerErrors|Sunucu hataları|Sayı|Toplam|Hizmet iç hatası olan çağrı sayısı (HTTP yanıt kodu 5xx).|ApiName, OperationName, bölge|
 |ClientErrors|İstemci hataları|Sayı|Toplam|İstemci tarafı hatası olan çağrı sayısı (HTTP yanıt kodu 4xx).|ApiName, OperationName, bölge|
@@ -762,7 +762,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |ScanFailed|Tarama başarısız oldu|Sayı|Toplam|Başarısız tarama sayısını belirtir.|Yok|
 |ScanTimeTaken|Harcanan Tarama süresi|Saniye|Toplam|Saniye cinsinden toplam tarama süresini gösterir.|Yok|
 |CatalogActiveUsers|Günlük etkin kullanıcılar|Sayı|Toplam|Günlük etkin kullanıcı sayısı|Yok|
-|CatalogUsage|Işleme göre kullanım dağılımı|Sayı|Toplam|Kullanıcının kataloğa yaptığı işlem sayısını belirtin, örneğin, erişim, arama, sözlük.|İşlem|
+|CatalogUsage|Işleme göre kullanım dağılımı|Sayı|Toplam|Kullanıcının kataloğa yaptığı işlem sayısını belirtin, örneğin, erişim, arama, sözlük.|Çalışma|
 
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft. DataFactory/DataFactory
@@ -845,7 +845,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |serverlog_storage_percent|Sunucu günlüğü depolama yüzdesi|Yüzde|Ortalama|Sunucu günlüğü depolama yüzdesi|Yok|
 |serverlog_storage_usage|Kullanılan sunucu günlüğü depolaması|Bayt|Ortalama|Kullanılan sunucu günlüğü depolaması|Yok|
 |serverlog_storage_limit|Sunucu günlüğü depolama sınırı|Bayt|Ortalama|Sunucu günlüğü depolama sınırı|Yok|
-|active_connections|Etkin bağlantılar|Sayı|Ortalama|Etkin bağlantılar|Yok|
+|active_connections|Etkin Bağlantılar|Sayı|Ortalama|Etkin Bağlantılar|Yok|
 |connections_failed|Başarısız Bağlantılar|Sayı|Toplam|Başarısız Bağlantılar|Yok|
 |seconds_behind_master|Saniye cinsinden çoğaltma gecikmesi|Sayı|Maksimum|Saniye cinsinden çoğaltma gecikmesi|Yok|
 |backup_storage_used|Kullanılan yedekleme depolama alanı|Bayt|Ortalama|Kullanılan yedekleme depolama alanı|Yok|
@@ -866,7 +866,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |serverlog_storage_percent|Sunucu günlüğü depolama yüzdesi|Yüzde|Ortalama|Sunucu günlüğü depolama yüzdesi|Yok|
 |serverlog_storage_usage|Kullanılan sunucu günlüğü depolaması|Bayt|Ortalama|Kullanılan sunucu günlüğü depolaması|Yok|
 |serverlog_storage_limit|Sunucu günlüğü depolama sınırı|Bayt|Maksimum|Sunucu günlüğü depolama sınırı|Yok|
-|active_connections|Etkin bağlantılar|Sayı|Ortalama|Etkin bağlantılar|Yok|
+|active_connections|Etkin Bağlantılar|Sayı|Ortalama|Etkin Bağlantılar|Yok|
 |connections_failed|Başarısız Bağlantılar|Sayı|Toplam|Başarısız Bağlantılar|Yok|
 |seconds_behind_master|Saniye cinsinden çoğaltma gecikmesi|Sayı|Maksimum|Saniye cinsinden çoğaltma gecikmesi|Yok|
 |backup_storage_used|Kullanılan yedekleme depolama alanı|Bayt|Ortalama|Kullanılan yedekleme depolama alanı|Yok|
@@ -887,7 +887,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |serverlog_storage_percent|Sunucu günlüğü depolama yüzdesi|Yüzde|Ortalama|Sunucu günlüğü depolama yüzdesi|Yok|
 |serverlog_storage_usage|Kullanılan sunucu günlüğü depolaması|Bayt|Ortalama|Kullanılan sunucu günlüğü depolaması|Yok|
 |serverlog_storage_limit|Sunucu günlüğü depolama sınırı|Bayt|Maksimum|Sunucu günlüğü depolama sınırı|Yok|
-|active_connections|Etkin bağlantılar|Sayı|Ortalama|Etkin bağlantılar|Yok|
+|active_connections|Etkin Bağlantılar|Sayı|Ortalama|Etkin Bağlantılar|Yok|
 |connections_failed|Başarısız Bağlantılar|Sayı|Toplam|Başarısız Bağlantılar|Yok|
 |backup_storage_used|Kullanılan yedekleme depolama alanı|Bayt|Ortalama|Kullanılan yedekleme depolama alanı|Yok|
 |network_bytes_egress|Ağ Çıkışı|Bayt|Toplam|Etkin bağlantılar arasında ağ çıkışı|Yok|
@@ -905,7 +905,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |'ye|IOPS|Sayı|Ortalama|GÇ Işlemi/saniye|Yok|
 |storage_percent|Depolama alanı yüzdesi|Yüzde|Ortalama|Depolama alanı yüzdesi|Yok|
 |storage_used|Kullanılan depolama alanı|Bayt|Ortalama|Kullanılan depolama alanı|Yok|
-|active_connections|Etkin bağlantılar|Sayı|Ortalama|Etkin bağlantılar|Yok|
+|active_connections|Etkin Bağlantılar|Sayı|Ortalama|Etkin Bağlantılar|Yok|
 |network_bytes_egress|Ağ Çıkışı|Bayt|Toplam|Etkin bağlantılar arasında ağ çıkışı|Yok|
 |network_bytes_ingress|Ağ Girişi|Bayt|Toplam|Etkin bağlantılar genelinde ağ|Yok|
 
@@ -919,7 +919,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |'ye|IOPS|Sayı|Ortalama|GÇ Işlemi/saniye|Yok|
 |storage_percent|Depolama alanı yüzdesi|Yüzde|Ortalama|Depolama alanı yüzdesi|Yok|
 |storage_used|Kullanılan depolama alanı|Bayt|Ortalama|Kullanılan depolama alanı|Yok|
-|active_connections|Etkin bağlantılar|Sayı|Ortalama|Etkin bağlantılar|Yok|
+|active_connections|Etkin Bağlantılar|Sayı|Ortalama|Etkin Bağlantılar|Yok|
 |network_bytes_egress|Ağ Çıkışı|Bayt|Toplam|Etkin bağlantılar arasında ağ çıkışı|Yok|
 |network_bytes_ingress|Ağ Girişi|Bayt|Toplam|Etkin bağlantılar genelinde ağ|Yok|
 |connections_failed|Başarısız Bağlantılar|Sayı|Toplam|Başarısız Bağlantılar|Yok|
@@ -1085,8 +1085,8 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
 |---|---|---|---|---|---|
 |Işlem sayısı|İşlem sayısı|Sayı|Sayı|Toplam Işlem sayısı|Işlem sayısı|
-|Başarılı sayısı|Başarı Sayısı|Sayı|Sayı|Başarılı Işlem sayısı|Başarılı sayısı|
-|FailureCount|Hata Sayısı|Sayı|Sayı|Başarısız Işlem sayısı|FailureCount|
+|Başarılı sayısı|Başarılı İşlem Sayısı|Sayı|Sayı|Başarılı Işlem sayısı|Başarılı sayısı|
+|FailureCount|Başarısız İşlem Sayısı|Sayı|Sayı|Başarısız Işlem sayısı|FailureCount|
 |Başarılı gecikme|Başarı gecikmesi|Mayacak|Ortalama|Başarılı Işlemlerin gecikmesi|Başarılı sayısı|
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/Domains
@@ -1856,7 +1856,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |Toplam Average_Bytes/sn|Toplam bayt/sn|Sayı|Ortalama|Toplam Average_Bytes/sn|Bilgisayar, ObjectName, InstanceName, CounterPath, dir|
 |Average_Processor kuyruğu uzunluğu|İşlemci kuyruğu uzunluğu|Sayı|Ortalama|Average_Processor kuyruğu uzunluğu|Bilgisayar, ObjectName, InstanceName, CounterPath, dir|
 |Sinyal|Sinyal|Sayı|Toplam|Sinyal|Bilgisayar, OSType, sürüm, Sourcecomputerıd|
-|Güncelleştirme|Güncelleştirme|Sayı|Ortalama|Güncelleştirme|Bilgisayar, ürün, sınıflandırma, UpdateState, Isteğe bağlı, onaylanan|
+|Güncelleştir|Güncelleştir|Sayı|Ortalama|Güncelleştir|Bilgisayar, ürün, sınıflandırma, UpdateState, Isteğe bağlı, onaylanan|
 |Olay|Olay|Sayı|Ortalama|Olay|Kaynak, olay günlüğü, bilgisayar, EventCategory, EventLevel, EventLevelName, EventID|
 
 ## <a name="microsoftpeeringpeeringservices"></a>Microsoft. eşleme/peeringServices

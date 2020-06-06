@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB’ye yüzlerce terabaytlık verileri geçirme
 description: Bu belge, Cosmos DB terabaytlık verileri nasıl geçirebileceğinizi açıklar
-author: bharathsreenivas
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.author: bharathb
-ms.openlocfilehash: 69b400eb7838c986ac6f275da58c7457179ebea6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0eabb3c226a444d872e6f3e5c85ae1a9fa377de3
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72880214"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465771"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Azure Cosmos DB’ye yüzlerce terabaytlık verileri geçirme 
 

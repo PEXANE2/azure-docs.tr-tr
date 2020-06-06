@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 0a9728e05aee27e74054a77e2c9be7dc08968207
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4aec156821a7d38907602cc1def0459dbf996b24
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79455868"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447569"
 ---
 # <a name="train-model-module"></a>Model modülünü eğitme
 
@@ -64,7 +64,7 @@ Azure Machine Learning, makine öğrenimi modelinin oluşturulması ve kullanıl
   
 5.  İşlem hattını gönderme. Çok fazla veriniz varsa bu işlem biraz zaman alabilir.
 
-## <a name="results"></a><a name="bkmk_results"></a>Sonucunun
+## <a name="results"></a>Sonuçlar
 
 Model eğitilirken:
 

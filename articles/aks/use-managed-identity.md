@@ -2,30 +2,28 @@
 title: Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma
 description: Azure Kubernetes hizmeti 'nde (AKS) yönetilen kimlikleri nasıl kullanacağınızı öğrenin
 services: container-service
-author: saudas
-manager: saudas
 ms.topic: article
-ms.date: 04/02/2020
-ms.author: saudas
-ms.openlocfilehash: 00ecc077ba55ab9f91fc58f8a47fcdf7440deea6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.openlocfilehash: ae66c6a6fbfef2a6052a037e010ecdeb4256bfd8
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112975"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456445"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma
 
 Şu anda Azure Kubernetes hizmeti (AKS) kümesi (özellikle Kubernetes bulut sağlayıcısı), Azure 'da yük dengeleyiciler ve yönetilen diskler gibi ek kaynaklar oluşturmak için bir kimlik gerektirir. bu kimlik, *yönetilen bir kimlik* ya da *hizmet sorumlusu*olabilir. [Hizmet sorumlusu](kubernetes-service-principal.md)kullanıyorsanız, bir veya birden çok aks sizin adınıza bir tane oluşturuyor olmalıdır. Yönetilen kimlik kullanıyorsanız, bu işlem sizin için otomatik olarak oluşturulur. Hizmet sorumlularını kullanan kümeler sonunda, kümenin çalışmasını sağlamak için hizmet sorumlusunun yenilenmesi gereken bir duruma ulaşır. Hizmet sorumlularını yönetmek karmaşıklık ekler ve bunun yerine yönetilen kimliklerin kullanılması daha kolay olur. Aynı izin gereksinimleri hem hizmet sorumluları hem de yönetilen kimlikler için geçerlidir.
 
-*Yönetilen kimlikler* temelde hizmet sorumluları etrafında bir sarmalayıcıdır ve yönetimini daha kolay hale getirir. Daha fazla bilgi edinmek için [Azure kaynakları için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)hakkında bilgi edinin.
+*Yönetilen kimlikler* temelde hizmet sorumluları etrafında bir sarmalayıcıdır ve yönetimini daha kolay hale getirir. MSI için kimlik bilgisi döndürme, Azure Active Directory varsayılan olarak her 46 günde bir otomatik olarak gerçekleşir. Daha fazla bilgi edinmek için [Azure kaynakları için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)hakkında bilgi edinin.
 
 AKS iki yönetilen kimlik oluşturur:
 
-- **Sistem tarafından atanan yönetilen kimlik**: Kubernetes bulut sağlayıcısının kullanıcı adına Azure kaynakları oluşturmak için kullandığı kimlik. Sistem tarafından atanan kimliğin yaşam döngüsü, kümeyle bağlantılıdır. Küme silindiğinde kimlik silinir.
-- **Kullanıcı tarafından atanan yönetilen kimlik**: kümede yetkilendirme için kullanılan kimlik. Örneğin, Kullanıcı tarafından atanan kimlik, Azure Container Registry 'leri (ACRs) kullanmak üzere AKS 'leri yetkilendirmek veya kubelet 'in Azure 'dan meta verileri almasına yetki vermek için kullanılır.
+- **Sistem tarafından atanan yönetilen kimlik**: Kubernetes bulut sağlayıcısı 'nın Kullanıcı adına, [Yük DENGELEYICI](load-balancer-standard.md) veya [genel IP adresi](static-ip.md)gibi Azure kaynakları oluşturmak için kullandığı kimlik. Sistem tarafından atanan kimliğin yaşam döngüsü, kümeyle bağlantılıdır ve yalnızca bulut sağlayıcısı tarafından kullanılmalıdır. Küme silindiğinde kimlik silinir.
 
-Eklentiler ayrıca yönetilen kimlik kullanarak kimlik doğrular. Her eklenti için, yönetilen bir kimlik AKS tarafından oluşturulur ve eklentinin ömrü boyunca sürer. 
+- **Kullanıcı tarafından atanan yönetilen kimlik**: kümede yetkilendirme için kullanılan kimlik ve başka bir şey denetlemek istediğiniz bir şeydir. Örneğin, Kullanıcı tarafından atanan kimlik, Azure Container Registry 'leri (ACRs) kullanmak üzere AKS 'leri yetkilendirmek veya kubelet 'in Azure 'dan meta verileri almasına yetki vermek için kullanılır.
+
+Eklentiler ayrıca yönetilen kimlik kullanarak kimlik doğrular. Her eklenti için, yönetilen bir kimlik AKS tarafından oluşturulur ve eklentinin ömrü boyunca sürer.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 

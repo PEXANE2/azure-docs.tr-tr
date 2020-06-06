@@ -7,37 +7,44 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: spelluru
-ms.openlocfilehash: 67746ebd8a16eb02b8f02d238b0e3c0125989189
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: c34ada2c7437d8415b52c68fb66103ec3aa81d95
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308277"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456938"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure Event Grid sistem konuları
-Azure Event Grid hizmeti, bir Azure Olay kaynağı için ilk olay aboneliği oluştururken sistem konuları oluşturur. Şu anda, Event Grid 11, 15, 2020 tarihinden önce oluşturulan konu kaynakları için sistem konuları oluşturmaz. Bu tarihte veya bu tarihten sonra oluşturduğunuz tüm konu kaynakları için Event Grid otomatik olarak sistem konuları oluşturur. Bu makalede Azure Event Grid içindeki **sistem konuları** açıklanmaktadır.
+Sistem konuları, Azure depolama ve Azure Event Hubs gibi Azure hizmetleri için oluşturulan konulardır. Azure portal, PowerShell, CLı veya Azure Resource Manager şablonunu kullanarak sistem konuları oluşturabilirsiniz.  
 
 > [!NOTE]
 > Bu özellik şu anda Azure Kamu Bulutu için etkinleştirilmemiş. 
 
-## <a name="overview"></a>Genel Bakış
-Azure depolama hesabı gibi bir Azure Olay kaynağı için ilk olay aboneliği oluşturduğunuzda, abonelik için sağlama işlemi **Microsoft. EventGrid/Systemkonuları**türünde ek bir kaynak oluşturur. Azure olay kaynağına yönelik son olay aboneliği silindiğinde, sistem konusu otomatik olarak silinir.
+## <a name="create-system-topics"></a>Sistem oluşturma konuları
+Bir sistem konusunu iki şekilde oluşturabilirsiniz: 
 
-Sistem konusu özel konu senaryoları, diğer bir deyişle Event Grid konular ve Event Grid etki alanları için geçerli değildir. 
+- Bir Azure kaynağı için bir sistem konusu oluşturun ve ardından bu sistem konusu için bir olay aboneliği oluşturun.
+- Azure kaynağında, sizin için dahili olarak bir sistem konusu oluşturan bir olay aboneliği oluşturun.
 
-## <a name="name"></a>Name 
-Daha önce, Azure kaynakları tarafından oluşturulan bir olay için abonelik oluşturduğunuzda, Event Grid hizmeti **rastgele oluşturulmuş bir ada**sahip bir sistem konusu otomatik olarak oluşturulur. Artık Azure portal konuyu oluştururken sistem konusu için bir ad belirtebilirsiniz. Bu sistem konu kaynağını, ölçümleri ve tanılama günlüklerini saptamak için kullanabilirsiniz.
+İlk yaklaşımı kullandığınızda, söz konusu sistem konusunun son olay aboneliği silindiğinde sistem konusu otomatik olarak silinmez. İkinci yaklaşımı kullandığınızda, son olay aboneliği silindiğinde sistem konusu otomatik olarak silinir. 
 
-## <a name="location"></a>Konum
+Azure portal, PowerShell veya CLı kullanarak sistem konuları oluşturmayla ilgili ayrıntılı yönergeler için aşağıdaki makalelere bakın:
+
+- [Azure Portal kullanarak sistem konuları oluşturun, görüntüleyin ve yönetin](create-view-manage-system-topics.md).
+- [Azure CLı kullanarak Event Grid sistem konuları oluşturma, görüntüleme ve yönetme](create-view-manage-system-topics-cli.md)
+- [Azure Resource Manager şablonları kullanarak Event Grid sistem konuları oluşturma](create-view-manage-system-topics-arm.md)
+
+## <a name="system-topic-name"></a>Sistem konu adı
+Event Grid, 11, 15, 2020 tarihinden önce oluşturulan Azure kaynakları (Azure depolama, Azure Event Hubs vb.) için sistem konuları oluşturmamıştı. 3/15/2020 ile 6/2/2020 arasında Azure kaynakları tarafından oluşturulan bir olay için abonelik oluşturduysanız, Event Grid hizmeti **rastgele oluşturulmuş bir ada**sahip bir sistem konusu otomatik olarak oluşturulur. 6/2/2020 sonra, bir Azure kaynağı için bir olay aboneliği oluştururken sistem konusu için bir ad belirtebilirsiniz. 
+
+## <a name="location-and-resource-group"></a>Konum ve kaynak grubu
 Belirli bir bölgedeki/konumdaki Azure olay kaynakları için sistem konusu, Azure Olay kaynağıyla aynı konumda oluşturulur. Örneğin, Doğu ABD bir Azure Blob depolama alanı için bir olay aboneliği oluşturursanız, sistem konusu Doğu ABD oluşturulur. Azure abonelikleri, kaynak grupları veya Azure haritaları gibi genel Azure olay kaynakları için Event Grid, **genel** konumdaki Sistem konusunu oluşturur. 
 
-## <a name="resource-group"></a>Kaynak grubu 
 Genel olarak, sistem konusu Azure olay kaynağının bulunduğu kaynak grubunda oluşturulur. Azure abonelik kapsamında oluşturulan olay abonelikleri için, sistem konusu **varsayılan-EventGrid**kaynak grubu altında oluşturulur. Kaynak grubu yoksa, Azure Event Grid Sistem konusunu oluşturmadan önce onu oluşturur. 
 
-Kaynak grubunu depolama hesabıyla silmeye çalıştığınızda, etkilenen kaynaklar listesinde Sistem konusunu görürsünüz.  
-
-![Kaynak grubunu silme](./media/system-topics/delete-resource-group.png)
-
-
 ## <a name="next-steps"></a>Sonraki adımlar
-Aşağıdaki makaleye bakın: [sistem konularını oluşturma, görüntüleme ve yönetme](create-view-manage-system-topics.md).
+Aşağıdaki makalelere bakın: 
+
+- [Azure Portal kullanarak sistem konuları oluşturun, görüntüleyin ve yönetin](create-view-manage-system-topics.md).
+- [Azure CLı kullanarak Event Grid sistem konuları oluşturma, görüntüleme ve yönetme](create-view-manage-system-topics-cli.md)
+- [Azure Resource Manager şablonları kullanarak Event Grid sistem konuları oluşturma](create-view-manage-system-topics-arm.md)

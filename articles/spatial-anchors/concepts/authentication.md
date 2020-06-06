@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8a64c8cabe91bb7bbfb533b38a32f58a82fd3351
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: baf5252a6b158855739546c2a03e63dceee6701e
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434393"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456513"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure uzamsal Tutturucuların kimlik doğrulaması ve yetkilendirmesi
 
@@ -174,13 +174,14 @@ Azure AD erişim belirteci [msal kitaplığı](../../active-directory/develop/ms
         1.  Azure portal ' de **Azure Active Directory**' a gidin ve **uygulama kayıtları** ' nı seçin.
         2.  **Yeni uygulama kaydı** seçin
         3.  Uygulamanızın adını girin, uygulama türü olarak **Web uygulaması/API** ' yi seçin ve hizmetinizin kimlik doğrulama URL 'sini girin. Sonra **Oluştur**' a basın.
-        4.  Bu uygulamada, **Ayarlar**' a basın, sonra **anahtarlar** sekmesini seçin. anahtarınızın adını girin, bir süre seçin ve **Kaydet**' e basın. Web hizmetinizin koduna dahil etmeniz gerekeceğinden, bu sırada görüntülenen anahtar değerini kaydettiğinizden emin olun.
+        4.  Bu uygulamada, **Ayarlar**' a, sonra da **Sertifikalar ve gizlilikler** sekmesini seçin. yeni bir istemci parolası oluşturun, bir süre seçin ve **Ekle**'ye basın. Web hizmetinizin koduna dahil etmeniz gerekeceğinden gizli anahtar değerini kaydettiğinizden emin olun.
     2.  Uygulamanıza ve/veya kullanıcılarınızın kaynağına erişmesine izin verin:
         1.  Azure portal içindeki uzamsal bağlayıcılarınızın kaynağına gidin
         2.  **Erişim denetimi (IAM)** sekmesine geçiş yap
         3.  **Rol ataması Ekle** ' ye basın
         1.  [Rol seç](#role-based-access-control)
         2.  **Seç** alanına, oluşturduğunuz ve erişim atamak istediğiniz uygulama (lar) ın adını girin. Uygulamanızın kullanıcılarının uzamsal bağlayıcı hesabına karşı farklı rollere sahip olmasını istiyorsanız, Azure AD 'de birden çok uygulamayı kaydetmeniz ve ayrı bir role atamanız gerekir. Ardından, kullanıcılarınız için doğru rolü kullanmak üzere yetkilendirme mantığınızı uygulayın.
+        3.  Not- **atanan erişimi** **eklemek istediğiniz rol atama** seçimini "Azure AD Kullanıcı, Grup veya hizmet sorumlusu" olarak ayarlayın.
     3.  **Kaydet**'e tıklayın.
 2.  Kodunuzda (Note: GitHub ' da bulunan hizmet örneğini kullanabilirsiniz):
     1.  MSAL ' de istemci KIMLIĞI, gizli anahtar ve Redirecturı parametreleri olarak kendi Azure AD uygulamanızın uygulama KIMLIĞI, uygulama gizli anahtarı ve yeniden yönlendirme URI 'sini kullandığınızdan emin olun

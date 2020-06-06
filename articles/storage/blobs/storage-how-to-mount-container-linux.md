@@ -4,16 +4,16 @@ description: Linux üzerinde SIGORTASı ile bir Azure Blob depolama kapsayıcıs
 author: rishabpoh
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: a0a03df59bc6ecffcb4f0a701616297f2da78fdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3505cdaa009520f581e2ccf9f8bc60cbfb65586c
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061419"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465482"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Blob depolamayı blobsigortası ile dosya sistemi olarak bağlama
 
@@ -43,7 +43,7 @@ lsb_release -a
 sudo rpm -Uvh https://packages.microsoft.com/config/rhel/6/packages-microsoft-prod.rpm
 ```
 
-Benzer şekilde, URL 'yi bir `.../rhel/7/...` Enterprise Linux 7 dağıtımına işaret olacak şekilde değiştirin.
+Benzer şekilde, URL 'yi `.../rhel/7/...` bir Enterprise Linux 7 dağıtımına işaret olacak şekilde değiştirin.
 
 Ubuntu 14,04 dağıtımında başka bir örnek:
 ```bash
@@ -52,7 +52,7 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
 
-Benzer şekilde, URL `.../ubuntu/16.04/...` `.../ubuntu/18.04/...` 'Yi başka bir Ubuntu sürümüne başvuracak şekilde değiştirin.
+Benzer şekilde, URL 'yi `.../ubuntu/16.04/...` `.../ubuntu/18.04/...` başka bir Ubuntu sürümüne başvuracak şekilde değiştirin.
 
 ### <a name="install-blobfuse"></a>Blobsigortası 'yi yükler
 
@@ -112,7 +112,7 @@ chmod 600 fuse_connection.cfg
 ```
 
 > [!NOTE]
-> Yapılandırma dosyasını Windows üzerinde oluşturduysanız, dosyayı temizleme ve UNIX biçimine dönüştürme `dos2unix` için çalıştırdığınızdan emin olun. 
+> Yapılandırma dosyasını Windows üzerinde oluşturduysanız, `dos2unix` dosyayı temizleme ve UNIX biçimine dönüştürme için çalıştırdığınızdan emin olun. 
 >
 
 ### <a name="create-an-empty-directory-for-mounting"></a>Bağlama için boş bir dizin oluşturun
@@ -132,7 +132,7 @@ Blobsigortası bağlamak için, Kullanıcı ile aşağıdaki komutu çalıştır
 sudo blobfuse ~/mycontainer --tmp-path=/mnt/resource/blobfusetmp  --config-file=/path/to/fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120
 ```
 
-Artık, normal dosya sistemi API 'Leri aracılığıyla blok bloblarınıza erişiminizin olması gerekir. Dizini oluşturan kullanıcı, varsayılan olarak erişime güvenlik altına alan tek kişidir. Tüm kullanıcılara erişim izni vermek için, seçeneğini ```-o allow_other```kullanarak bağlayabilirsiniz. 
+Artık, normal dosya sistemi API 'Leri aracılığıyla blok bloblarınıza erişiminizin olması gerekir. Dizini oluşturan kullanıcı, varsayılan olarak erişime güvenlik altına alan tek kişidir. Tüm kullanıcılara erişim izni vermek için, seçeneğini kullanarak bağlayabilirsiniz ```-o allow_other``` . 
 
 ```bash
 cd ~/mycontainer

@@ -6,16 +6,16 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: f1d8189068278b46e3ec3ea66875d79bb91e5e16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c8f91cee01273aa2ed1cbfe1812130b600a094a
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010214"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456751"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için ASP.NET çıkış önbelleği sağlayıcısı
 
-Redsıs çıkış önbelleği sağlayıcısı, çıkış önbelleği verileri için işlem dışı bir depolama mekanizmasıdır. Bu veriler özellikle tam HTTP yanıtları (sayfa çıktısı önbelleği) içindir. Sağlayıcı, ASP.NET 4 ' te tanıtılan yeni çıktı önbelleği sağlayıcısı genişletilebilirlik noktasına takılır.
+Redsıs çıkış önbelleği sağlayıcısı, çıkış önbelleği verileri için işlem dışı bir depolama mekanizmasıdır. Bu veriler özellikle tam HTTP yanıtları (sayfa çıktısı önbelleği) içindir. Sağlayıcı, ASP.NET 4 ' te tanıtılan yeni çıktı önbelleği sağlayıcısı genişletilebilirlik noktasına takılır. ASP.NET Core uygulamalar için [ASP.NET Core yanıt önbelleğe alma işlemini](https://docs.microsoft.com/aspnet/core/performance/caching/response)okuyun. 
 
 Redsıs çıkış önbelleği sağlayıcısını kullanmak için, önce önbelleğinizi yapılandırın ve ardından ASP.NET uygulamanızı Redsıs çıkış önbelleği sağlayıcısı NuGet paketini kullanarak yapılandırın. Bu konu, uygulamanızın Redsıs çıkış önbelleği sağlayıcısını kullanmak üzere yapılandırılmasına ilişkin yönergeler sağlar. Redsıs örneği için Azure önbelleği oluşturma ve yapılandırma hakkında daha fazla bilgi için bkz. [önbellek oluşturma](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
@@ -84,7 +84,7 @@ Aşağıdaki örneklerde, *ConnectionString* 'in nasıl kullanıldığı göster
 </connectionStrings>
 ```
 
-' `web.config`De, yukarıdaki anahtarı gerçek değer yerine parametre değeri olarak kullanın.
+' De `web.config` , yukarıdaki anahtarı gerçek değer yerine parametre değeri olarak kullanın.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -104,7 +104,7 @@ Aşağıdaki örneklerde, *ConnectionString* 'in nasıl kullanıldığı göster
 </appSettings>
 ```
 
-' `web.config`De, yukarıdaki anahtarı gerçek değer yerine parametre değeri olarak kullanın.
+' De `web.config` , yukarıdaki anahtarı gerçek değer yerine parametre değeri olarak kullanın.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -193,7 +193,7 @@ Bu sınıfın **Mycompanydll**adlı bir derlemede tanımlandığını varsayarsa
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 ```
 
-Önceki örnekte, önbelleğe alınan sayfa verileri 60 saniye boyunca önbellekte kalır ve sayfanın farklı bir sürümü her bir parametre birleşimi için önbelleğe alınır. OutputCache yönergesi hakkında daha fazla bilgi için bkz [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837)..
+Önceki örnekte, önbelleğe alınan sayfa verileri 60 saniye boyunca önbellekte kalır ve sayfanın farklı bir sürümü her bir parametre birleşimi için önbelleğe alınır. OutputCache yönergesi hakkında daha fazla bilgi için bkz [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837) ..
 
 Bu adımlar gerçekleştirildikten sonra uygulamanız Redsıs çıkış önbelleği sağlayıcısını kullanacak şekilde yapılandırılır.
 

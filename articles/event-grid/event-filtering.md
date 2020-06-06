@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: spelluru
-ms.openlocfilehash: 0f503b21d5a7d0fdfbee79354c198775789c0b91
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: afe97fd1736fbaa6858adb2fc658b4ab34546f84
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888776"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456855"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid abonelikleri için olay filtrelemeyi anlayın
 
@@ -24,7 +24,7 @@ Bu makalede, hangi olayların uç noktanıza gönderileceğini filtrelemeye yön
 
 ## <a name="event-type-filtering"></a>Olay türü filtreleme
 
-Varsayılan olarak, olay kaynağı için tüm [olay türleri](event-schema.md) uç noktaya gönderilir. Uç noktanıza yalnızca belirli olay türlerini gönderilmeye karar verebilirsiniz. Örneğin, kaynaklarınız için güncelleştirmeler hakkında bildirim alabilir, ancak silme işlemleri gibi diğer işlemlere yönelik bilgilendirilirsiniz. Bu durumda, `Microsoft.Resources.ResourceWriteSuccess` olay türüne göre filtreleyin. Olay türlerine sahip bir dizi sağlayın veya olay kaynağı için `All` tüm olay türlerini almak üzere belirtin.
+Varsayılan olarak, olay kaynağı için tüm [olay türleri](event-schema.md) uç noktaya gönderilir. Uç noktanıza yalnızca belirli olay türlerini gönderilmeye karar verebilirsiniz. Örneğin, kaynaklarınız için güncelleştirmeler hakkında bildirim alabilir, ancak silme işlemleri gibi diğer işlemlere yönelik bilgilendirilirsiniz. Bu durumda, olay türüne göre filtreleyin `Microsoft.Resources.ResourceWriteSuccess` . Olay türlerine sahip bir dizi sağlayın veya `All` olay kaynağı için tüm olay türlerini almak üzere belirtin.
 
 Olay türüne göre filtreleme için JSON sözdizimi şöyledir:
 
@@ -39,9 +39,9 @@ Olay türüne göre filtreleme için JSON sözdizimi şöyledir:
 
 ## <a name="subject-filtering"></a>Konu filtreleme
 
-Konuya göre basit filtreleme için, konu için bir başlangıç veya bitiş değeri belirtin. Örneğin, konunun bittiğini yalnızca bir metin dosyasını depolama hesabına `.txt` yüklemeyle ilgili olayları almak üzere belirtebilirsiniz. Ya da, o kapsayıcının tüm olaylarını almak için `/blobServices/default/containers/testcontainer` , depolama hesabındaki diğer kapsayıcıları değil, konunun ile başlayan bir filtre uygulayabilirsiniz.
+Konuya göre basit filtreleme için, konu için bir başlangıç veya bitiş değeri belirtin. Örneğin, konunun bittiğini `.txt` yalnızca bir metin dosyasını depolama hesabına yüklemeyle ilgili olayları almak üzere belirtebilirsiniz. Ya da, `/blobServices/default/containers/testcontainer` o kapsayıcının tüm olaylarını almak için, depolama hesabındaki diğer kapsayıcıları değil, konunun ile başlayan bir filtre uygulayabilirsiniz.
 
-Olayları özel konulara yayımlarken, etkinliklerinizin etkinlikleri oluşturun ve bu da abonelerin olayla ilgilenip ilgilenmediğini bilmesini kolaylaştırır. Aboneler olayları filtrelemek ve yönlendirmek için Subject özelliğini kullanır. Örneğin, abonelerin bu yolun segmentlerine göre filtreleyebilmesi için olayın gerçekleştiği yolu eklemeyi göz önünde bulundurun. Yol, abonelerin olayları en dar veya genel olarak filtrelemesine olanak sağlar. Konu `/A/B/C` içinde üç segment yolu sağlarsanız, aboneler çok sayıda olayı almak için ilk kesime `/A` göre filtreleyebilirsiniz. Bu aboneler, veya `/A/B/C` `/A/D/E`gibi konularla olayları alır. Diğer aboneler, daha dar `/A/B` bir olay kümesi almak için tarafından filtreleyebilirler.
+Olayları özel konulara yayımlarken, etkinliklerinizin etkinlikleri oluşturun ve bu da abonelerin olayla ilgilenip ilgilenmediğini bilmesini kolaylaştırır. Aboneler olayları filtrelemek ve yönlendirmek için Subject özelliğini kullanır. Örneğin, abonelerin bu yolun segmentlerine göre filtreleyebilmesi için olayın gerçekleştiği yolu eklemeyi göz önünde bulundurun. Yol, abonelerin olayları en dar veya genel olarak filtrelemesine olanak sağlar. Konu içinde üç segment yolu sağlarsanız `/A/B/C` , aboneler `/A` çok sayıda olayı almak için ilk kesime göre filtreleyebilirsiniz. Bu aboneler, veya gibi konularla olayları `/A/B/C` alır `/A/D/E` . Diğer aboneler, daha `/A/B` dar bir olay kümesi almak için tarafından filtreleyebilirler.
 
 Konuya göre filtrelemeye yönelik JSON sözdizimi şöyledir:
 
@@ -125,7 +125,7 @@ Tüm dize karşılaştırmaları büyük/küçük harfe duyarlı **değildir** .
 
 Event Grid şemasındaki olaylar için, anahtar için aşağıdaki değerleri kullanın:
 
-* Kimlik
+* ID
 * Konu başlığı
 * Özne
 * Olay türü
@@ -146,7 +146,7 @@ Bulut olayları şemasındaki olaylar için, anahtar için aşağıdaki değerle
 
 Değerler şu şekilde olabilir:
 
-* number
+* sayı
 * string
 * boole
 * array
@@ -155,10 +155,10 @@ Değerler şu şekilde olabilir:
 
 Gelişmiş filtreleme aşağıdaki sınırlamalara sahiptir:
 
-* Olay Kılavuzu aboneliği başına beş gelişmiş filtre
+* Her olay Kılavuzu aboneliği için tüm filtrelerdeki 5 Gelişmiş filtre ve 25 filtre değeri
 * dize değeri başına 512 karakter
 * **İçindeki** ve **Not** işleçleri için beş değer
-* (Nokta) karakterleriyle anahtarlar. ** `.` ** Örneğin: `http://schemas.microsoft.com/claims/authnclassreference` veya `john.doe@contoso.com`. Şu anda Anahtarlar içinde kaçış karakterleri için destek yoktur. 
+* ** `.` (Nokta)** karakterleriyle anahtarlar. Örneğin: `http://schemas.microsoft.com/claims/authnclassreference` veya `john.doe@contoso.com` . Şu anda Anahtarlar içinde kaçış karakterleri için destek yoktur. 
 
 Aynı anahtar birden fazla filtrede kullanılabilir.
 

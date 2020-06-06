@@ -2,17 +2,15 @@
 title: Önizleme-Azure Kubernetes Service (AKS) kümesine bir spot düğüm havuzu ekleme
 description: Azure Kubernetes Service (AKS) kümesine bir spot düğüm havuzu eklemeyi öğrenin.
 services: container-service
-author: zr-msft
 ms.service: container-service
 ms.topic: article
 ms.date: 02/25/2020
-ms.author: zarhoads
-ms.openlocfilehash: 466ad7c88547b6676ba0ae263b74d14059322f1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1dc54810371c4258616ca95b9f0f0abeee4c415
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77622051"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84462966"
 ---
 # <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Önizleme-Azure Kubernetes Service (AKS) kümesine bir spot düğüm havuzu ekleme
 
@@ -111,7 +109,7 @@ az aks nodepool add \
 
 Varsayılan olarak, çok düğümlü havuzlarla bir küme oluşturduğunuzda AKS kümenizde *düzenli* *önceliğe* sahip bir düğüm havuzu oluşturursunuz. Yukarıdaki komut, var olan bir AKS kümesine bir *nokta* *önceliği* olan bir yardımcı düğüm havuzu ekler. Noktanın *önceliği* , *Spot* düğüm havuzunun bir spot düğüm havuzu olmasını sağlar. *Çıkarma-ilke* parametresi, yukarıdaki örnekte varsayılan değer olan, *silinmek* üzere ayarlanır. [Çıkarma Ilkesini][eviction-policy] *silinmek*üzere ayarladığınızda, düğüm havuzunun temeldeki ölçek kümesindeki düğümler çıkarıldıklarında silinir. Çıkarma ilkesini *serbest bırakma*olarak da ayarlayabilirsiniz. Çıkarma ilkesini *serbest bırakma*olarak ayarladığınızda, temel alınan ölçek kümesindeki düğümler, çıkarma sırasında durdurulmuş, serbest bırakılmış duruma ayarlanır. İşlem kotasından dolayı durdurulmuş serbest bırakılmış durum sayısı içindeki düğümler, küme ölçeklendirme veya yükseltme ile ilgili sorunlara neden olabilir. *Öncelik* ve *çıkarma ilkesi* değerleri yalnızca düğüm havuzu oluşturma sırasında ayarlanabilir. Bu değerler daha sonra güncellenemiyor.
 
-Komut Ayrıca, küme düğüm havuzlarıyla kullanılması önerilen [küme otomatik Scaler][cluster-autoscaler]öğesini de sağlar. Kümenizde çalışan iş yüklerine bağlı olarak, otomatik ölçeklendirme kümesi, düğüm havuzundaki düğüm sayısını ölçeklendirir ve ölçeklendirir. Spot düğüm havuzları için, ek düğümlere ihtiyaç duyulduktan sonra, küme otomatik olarak bir çıkarma sonrasında düğüm sayısını ölçeklendirecektir. Düğüm havuzunun sahip olduğu en fazla düğüm sayısını değiştirirseniz, küme otomatik Scaler ile ilişkili `maxCount` değeri de ayarlamanız gerekir. Bir küme otomatik yüklemesi kullanmazsanız, çıkarma sonrasında, nokta havuzu sonunda sıfır olarak azalır ve ek spot düğümleri almak için el ile bir işlem gerekir.
+Komut Ayrıca, küme düğüm havuzlarıyla kullanılması önerilen [küme otomatik Scaler][cluster-autoscaler]öğesini de sağlar. Kümenizde çalışan iş yüklerine bağlı olarak, otomatik ölçeklendirme kümesi, düğüm havuzundaki düğüm sayısını ölçeklendirir ve ölçeklendirir. Spot düğüm havuzları için, ek düğümlere ihtiyaç duyulduktan sonra, küme otomatik olarak bir çıkarma sonrasında düğüm sayısını ölçeklendirecektir. Düğüm havuzunun sahip olduğu en fazla düğüm sayısını değiştirirseniz, `maxCount` küme otomatik Scaler ile ilişkili değeri de ayarlamanız gerekir. Bir küme otomatik yüklemesi kullanmazsanız, çıkarma sonrasında, nokta havuzu sonunda sıfır olarak azalır ve ek spot düğümleri almak için el ile bir işlem gerekir.
 
 > [!Important]
 > Yalnızca yığın işleme işleri ve test ortamları gibi kesintileri işleyebilen spot düğüm havuzlarındaki iş yüklerini zamanlayın. Yalnızca düğüm çıkarmaları işleyebilen iş yüklerinin bir spot düğüm havuzunda zamanlanmasını sağlamak için spot düğüm havuzunuzdaki [Talara ve toleransyonlar][taints-tolerations] ayarlamanız önerilir. Örneğin, yukarıdaki komut, varsayılan olarak bir Taint *Kubernetes.Azure.com/scalesetpriority=spot:NoSchedule* , bu durumda yalnızca karşılık gelen bir toleransı olan Pod 'ler zamanlanır.

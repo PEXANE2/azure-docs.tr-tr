@@ -1,17 +1,17 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
 ms.date: 04/23/2020
 ms.author: dacoulte
-ms.openlocfilehash: 04e607296478520298a2febab61a7edac911a59c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e9faea1d5913a19dfdeff662e26992529dc1b22d
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82131556"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84466814"
 ---
 Azure Ilkesi için her nesne türü için en fazla sayı vardır. _Kapsam_ girişi, abonelik ya da [Yönetim grubu](../articles/governance/management-groups/overview.md)anlamına gelir.
 
@@ -19,7 +19,7 @@ Azure Ilkesi için her nesne türü için en fazla sayı vardır. _Kapsam_ giri�
 |---|---|---|
 | Kapsam | İlke tanımları | 500 |
 | Kapsam | Girişim tanımları | 100 |
-| Kiracı | Girişim tanımları | 1000 |
+| Kiracı | Girişim tanımları | 2,500 |
 | Kapsam | İlke veya girişim atamaları | 100 |
 | İlke tanımı | Parametreler | 20 |
 | Girişim tanımı | İlkeler | 100 |

@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/01/2020
+ms.date: 06/05/2020
 ms.author: borisb
-ms.openlocfilehash: d739f9f5c0e1be80005d5f3c6db5aa94ff6cc85d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b738d0a04ded3e592f69075d1b113a22905efa11
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299851"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84462728"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 'da Oracle uygulamalarına ve çözümlerine genel bakış
 
@@ -43,7 +43,7 @@ Bulut yolculuğunun hızlandırmanız için çeşitli WebLogic Server Azure uygu
 
 ## <a name="applications-on-oracle-linux-and-weblogic-server"></a>Oracle Linux ve WebLogic Server 'daki uygulamalar
 
-Desteklenen Oracle işletim sistemlerinde Azure 'da kurumsal uygulamaları çalıştırın. Aşağıdaki sanal makine görüntüleri Azure Marketi 'nde kullanılabilir:
+Desteklenen Oracle Linux görüntülerde Azure 'da kurumsal uygulamaları çalıştırın. Aşağıdaki sanal makine görüntüleri Azure Marketi 'nde kullanılabilir:
 
 * Oracle WebLogic Server 12.1.2
 
@@ -53,7 +53,7 @@ Desteklenen Oracle işletim sistemlerinde Azure 'da kurumsal uygulamaları çal�
 
 * Şirket içinde yüksek kullanılabilirlik için [kullanılabilirlik alanları](../../../availability-zones/az-overview.md) ile [birlikte, Azure](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html) altyapısına yönelik fsfo, parçalı veya [altın kapıyla](https://www.oracle.com/middleware/technologies/goldengate.html) birlikte [Oracle Data Guard](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956), [Active Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)'ı yapılandırın. Ayrıca, bu konfigürasyonları, ek kullanılabilirlik ve olağanüstü durum kurtarma için birden çok Azure bölgesinde da ayarlayabilirsiniz.
 
-* Azure 'da ve şirket içi veya fiziksel sunucularınızdaki Oracle Linux sanal makinelerinize yönelik olağanüstü durum kurtarmayı düzenlemek ve yönetmek için [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) kullanın. 
+* Azure 'da ve fiziksel sunucularınızda Oracle Linux sanal makinelerinize yönelik olağanüstü durum kurtarmayı düzenlemek ve yönetmek için [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) kullanın. 
 
 * Azure [VMware çözümünü](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/) veya [Flashgrid ufuk kümesini](https://www.flashgrid.io/oracle-rac-in-azure/)kullanarak Azure 'Da Oracle gerçek uygulama kümelerini (RAC) etkinleştirin.
 
@@ -74,7 +74,7 @@ Oracle bulut altyapısında (OCı) arka uç veritabanlarına bağlı olan Azure 
 
 Azure altyapısını ayarlamak ve Oracle uygulamalarını yüklemek için Terrayform şablonlarını kullanın. 
 
-Mayıs 2020 itibariyle, aşağıdaki Oracle uygulamaları Azure/Oracle bulut bağlantısı çözümü kullanılırken Azure 'da çalışmak üzere sertifikalandırilmiştir:
+Oracle, Azure/Oracle bulut bağlantısı çözümü aracılığıyla bir Oracle veritabanına bağlanırken bu uygulamaların Azure 'da çalıştırılmasını sertifikalandırmıştır:
 
 * E-Iş paketi
 * JD edi EnterpriseOne
@@ -86,7 +86,7 @@ Ayrıca, Azure 'da OCı ve diğer Azure hizmetleriyle bağlantı sağlayan özel
 
 ### <a name="set-up-oracle-databases-in-oci"></a>OCı 'da Oracle veritabanlarını ayarlama
 
-Azure 'da çalışan Oracle uygulamalarıyla birlikte Oracle Database Cloud Services (özerk veritabanı, RAC, sınavı verileri, DBaaS, tek düğüm) kullanın. [OCI veritabanı seçenekleri](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)hakkında daha fazla bilgi edinin. 
+Azure 'da çalışan Oracle yazılımıyla birlikte Oracle Database Cloud Services (özerk veritabanı, RAC, sınavı verileri, DBaaS, tek düğüm) kullanın. [OCI veritabanı seçenekleri](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)hakkında daha fazla bilgi edinin. 
  
 
 ## <a name="licensing"></a>Lisanslama

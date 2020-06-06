@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 45043718664eb1b3b6b865821b3f6b2a51199194
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c4842c673dc5d56cd57a2131f1c522b0bc682559
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115039"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84448028"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Sınıf türlerine genel bakış-Azure Lab Services
 
@@ -62,9 +62,19 @@ Tanıtım amaçlı bir mobil uygulama geliştirme sınıfı öğretmek için Azu
 Bu tür laboratuvarın nasıl ayarlanacağı hakkında ayrıntılı bilgi için bkz. [mobil uygulama geliştirmeyi Android Studio öğretmek için laboratuvar ayarlama](class-type-mobile-dev-android-studio.md).
 
 ## <a name="big-data-analytics"></a>Büyük veri analizi
-Büyük bir veri analizi sınıfı öğretmek için bir laboratuvar ayarlayabilirsiniz. Bu tür bir sınıfla, öğrenciler büyük hacimlere yönelik verileri nasıl işleyeceğinizi ve veri öngörüleri türetmede makine ve istatistiksel öğrenme algoritmaları uygulamayı öğreniyor. Öğrenciler için önemli bir amaç, büyük verileri depolamak, yönetmek ve işlemek için araçlar sağlayan Apache Hadoop açık kaynaklı yazılım paketi gibi veri analizi araçlarını kullanmayı öğrenmektir. 
+Büyük bir veri analizi sınıfı öğretmek için bir GPU Laboratuvarı ayarlayabilirsiniz. Bu tür bir sınıfla, öğrenciler büyük hacimlere yönelik verileri nasıl işleyeceğinizi ve veri öngörüleri türetmede makine ve istatistiksel öğrenme algoritmaları uygulamayı öğreniyor. Öğrenciler için önemli bir amaç, büyük verileri depolamak, yönetmek ve işlemek için araçlar sağlayan Apache Hadoop açık kaynaklı yazılım paketi gibi veri analizi araçlarını kullanmayı öğrenmektir. 
 
 Bu tür laboratuvar kurulumu hakkında ayrıntılı bilgi için bkz. [Hortonçalışmalar veri platformunun Docker dağıtımını kullanarak büyük veri analizi için laboratuvar ayarlama](class-type-big-data-analytics.md).
+
+## <a name="matlab"></a>MATLAB
+Matris Laboratuvarı temsil eden [MATLAB](https://www.mathworks.com/products/matlab.html), [MathWorks](https://www.mathworks.com/)'den programlama platformudur.  İşlem gücünü ve görselleştirmeyi, Math, mühendislik, fizik ve Chemistry alanlarında popüler bir araç haline getirir.
+
+Bu tür laboratuvarın nasıl ayarlanacağı hakkında ayrıntılı bilgi için bkz. [bir laboratuvarı, MATLAB öğretmek için](class-type-matlab.md)ayarlama.
+
+## <a name="solidworks-computer-aided-design-cad"></a>Solidçalışmalar bilgisayar destekli tasarım (CAD)
+Mühendisler [için mühendislik](https://www.solidworks.com/)öğrencilerine erişim sağlayan bir GPU Laboratuvarı ayarlayabilirsiniz.  Solidçalışmalar, kesintisiz nesneler modellemeye yönelik bir 3B CAD ortamı sağlar.  Solidçalışmalarla mühendisler, tasarımlarını kolayca oluşturabilir, görselleştirin, benzetimini yapabilir ve belgeleyin.
+
+Bu tür laboratuvar kurulumu hakkında ayrıntılı bilgi için bkz. [Solidçalışmalar kullanarak mühendislik sınıfları için laboratuvar ayarlama](class-type-solidworks.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

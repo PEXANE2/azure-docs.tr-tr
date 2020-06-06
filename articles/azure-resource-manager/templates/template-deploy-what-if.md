@@ -3,14 +3,14 @@ title: Şablon dağıtımı-if (Önizleme)
 description: Azure Resource Manager şablonu dağıtılmadan önce kaynaklarınızda hangi değişikliklerin gerçekleşecektir belirleme.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/04/2020
+ms.date: 06/05/2020
 ms.author: tomfitz
-ms.openlocfilehash: 62f46d158bea9507246fda7f24750c3743a5e1f1
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: abe834670c5df461b523bd48717f20093bdef0a3
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424253"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457295"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM şablonu dağıtımı ne-if işlemi (Önizleme)
 
@@ -136,6 +136,8 @@ Yukarıdaki komutlar el ile inceleyebilmeniz için bir metin Özeti döndürür.
 
 * `az deployment group what-if --no-pretty-print`kaynak grubu dağıtımları için
 * `az deployment sub what-if --no-pretty-print`abonelik düzeyinde dağıtımlar için
+
+Sonuçları renkler olmadan döndürmek istiyorsanız, [Azure CLI yapılandırma](/cli/azure/azure-cli-configuration) dosyanızı açın. **No_color** **Evet**olarak ayarlayın.
 
 ### <a name="azure-rest-api"></a>Azure REST API
 

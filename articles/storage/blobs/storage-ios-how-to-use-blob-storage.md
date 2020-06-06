@@ -6,13 +6,13 @@ ms.author: mhopkins
 ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 2e168abaf522fa1126e3cb4618941952b562df31
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.topic: how-to
+ms.openlocfilehash: 378c21a6904acad16847bb32955e4bc091e587df
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831883"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465499"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>İOS 'dan blob depolamayı kullanma
 
@@ -82,7 +82,7 @@ Ardından, aşağıdaki işlemleri gerçekleştirerek Framework dosyasını uygu
 #import <AZSClient/AZSClient.h>
 ```
 
-Swift kullanıyorsanız, bir köprü oluşturma üst bilgisi oluşturmanız ve \< AZSClient/AZSClient. h> içeri aktarmanız gerekir:
+Swift kullanıyorsanız, bir köprü oluşturma üst bilgisi oluşturmalı ve içeri aktarmanız gerekir \<AZSClient/AZSClient.h> :
 
 1. Üst bilgi dosyası oluşturun `Bridging-Header.h` ve yukarıdaki içeri aktarma ifadesini ekleyin.
 2. *Derleme ayarları* sekmesine gidin ve *Amaç-C köprü oluşturma üst bilgisi*için arama yapın.

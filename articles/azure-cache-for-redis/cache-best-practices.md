@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 105a3996753a1d1c2d71846cc8bad574e4498acf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a1dddfbcdbf2bd49586238872db15f1da5d7ce1
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478616"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457312"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Redis için Azure Cache'in en iyi yöntemleri 
 Bu en iyi yöntemleri izleyerek Redsıs örneği için Azure önbelleğinizin performansını ve düşük maliyetli kullanımını en üst düzeye çıkarmanıza yardımcı olabilirsiniz.
@@ -38,6 +38,8 @@ Bu en iyi yöntemleri izleyerek Redsıs örneği için Azure önbelleğinizin pe
  * **Pahalı Işlemlerden kaçının** - [anahtarlar](https://redis.io/commands/keys) komutu gibi bazı redin işlemleri *çok* pahalıdır ve kaçınılmalıdır.  Daha fazla bilgi için bkz. uzun süreli [komutlarla](cache-troubleshoot-server.md#long-running-commands) ilgili bazı konular
 
  * **TLS şifrelemesini kullanma** -redsıs Için Azure önbelleği varsayılan olarak TLS şifreli iletişim gerektirir.  TLS sürümleri 1,0, 1,1 ve 1,2 Şu anda desteklenmektedir.  Ancak, bu durumda TLS 1,0 ve 1,1, sektör genelinde kullanımdan kalkmaya yönelik bir yoldur. bu nedenle, tüm mümkünse TLS 1,2 kullanın.  İstemci kitaplığınız veya aracınız TLS desteklemiyorsa, şifrelenmemiş bağlantıları etkinleştirmek Azure portal veya [Yönetim API 'leri](https://docs.microsoft.com/rest/api/redis/redis/update) [aracılığıyla](cache-configure.md#access-ports) yapılabilir.  Şifrelenmiş bağlantıların mümkün olmadığı durumlarda, önbelleğinizi ve istemci uygulamanızı bir sanal ağa yerleştirmek önerilir.  Sanal ağ önbelleği senaryosunda hangi bağlantı noktalarının kullanıldığı hakkında daha fazla bilgi için bu [tabloya](cache-how-to-premium-vnet.md#outbound-port-requirements)bakın.
+ 
+ * **Boşta kalma zaman aşımı** -Azure Redu 'nin bağlantı için 10 dakikalık boş zaman aşımı süresi vardır; bu nedenle bu, 10 dakikadan kısa bir süre içinde ayarlanmalıdır.
  
 ## <a name="memory-management"></a>Bellek yönetimi
 Göz önünde bulundurmanız isteyebileceğiniz Redsıs sunucu örneğiniz dahilinde bellek kullanımıyla ilgili birkaç şey vardır.  İşte birkaç:
@@ -67,7 +69,7 @@ Ne yazık ki kolay bir yanıt yok.  Her uygulamanın hangi işlemlerin yeniden d
 Kodunuzun hata koşulları altında nasıl çalıştığını test etmek isterseniz, [yeniden başlatma özelliğini](cache-administration.md#reboot)kullanmayı düşünün. Yeniden başlatma, bağlantı sinyalleri 'nin uygulamanızı nasıl etkilediğini görmenizi sağlar.
 
 ## <a name="performance-testing"></a>Performansı test etme
- * Kendi performans testlerinizi yazmadan önce olası üretilen iş/gecikme süresi hakkında fikir almak için **kullanarak `redis-benchmark.exe` başlayın** .  Redin-kıyaslama belgeleri [burada bulunabilir](https://redis.io/topics/benchmarks).  Redin-kıyaslama TLS ' i desteklemediğine, bu nedenle testi çalıştırmadan önce [Portal ÜZERINDEN TLS olmayan bağlantı noktasını etkinleştirmeniz](cache-configure.md#access-ports) gerekir.  [Redis-benchmark. exe ' nin Windows uyumlu bir sürümü burada bulunabilir](https://github.com/MSOpenTech/redis/releases)
+ * **Kullanarak `redis-benchmark.exe` başlayın** kendi performans testlerinizi yazmadan önce olası işleme/gecikme süresi hakkında fikir almak için.  Redin-kıyaslama belgeleri [burada bulunabilir](https://redis.io/topics/benchmarks).  Redin-kıyaslama TLS ' i desteklemediğine, bu nedenle testi çalıştırmadan önce [Portal ÜZERINDEN TLS olmayan bağlantı noktasını etkinleştirmeniz](cache-configure.md#access-ports) gerekir.  [Redis-benchmark. exe ' nin Windows uyumlu bir sürümü burada bulunabilir](https://github.com/MSOpenTech/redis/releases)
  * Test için kullanılan istemci sanal makinesi, Redsıs Cache örneğiniz ile **aynı bölgede** olmalıdır.
  * Daha iyi donanımlar olduğundan ve en iyi sonuçları sunduklarında, istemciniz için **dv2 VM serisini kullanmanızı öneririz** .
  * Kullandığınız istemci VM 'sinin, test edilmekte olan önbelleğin*en az işlem ve bant genişliğine* sahip olduğundan emin olun. 

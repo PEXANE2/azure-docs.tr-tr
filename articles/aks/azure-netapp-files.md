@@ -2,16 +2,14 @@
 title: Azure NetApp Files Azure Kubernetes hizmeti ile tümleştirme
 description: Azure NetApp Files Azure Kubernetes hizmeti ile tümleştirme hakkında bilgi edinin
 services: container-service
-author: zr-msft
 ms.topic: article
 ms.date: 09/26/2019
-ms.author: zarhoads
-ms.openlocfilehash: 1c4996df66d475c63110e3d2797f55598fd85b8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0648100e155d1462f3291a7f5f078cf316bc0aa
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273745"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465652"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files Azure Kubernetes hizmeti ile tümleştirme
 
@@ -23,7 +21,7 @@ Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ih
 > [!IMPORTANT]
 > AKS kümeniz de [Azure NetApp Files destekleyen bir bölgede][anf-regions]olmalıdır.
 
-Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü `az --version` bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır.  `az --version`Sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 ### <a name="limitations"></a>Sınırlamalar
 
@@ -148,7 +146,7 @@ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_
 }
 ```
 
-Bir PersistentVolume `pv-nfs.yaml` tanımlama oluşturma. Önceki `path` komuttan *Creationtoken* ile ve `server` *IPAddress* ile değiştirin. Örneğin:
+Bir `pv-nfs.yaml` PersistentVolume tanımlama oluşturma. `path`Önceki komuttan *creationtoken* ile ve `server` *IPAddress* ile değiştirin. Örneğin:
 
 ```yaml
 ---
@@ -180,7 +178,7 @@ kubectl describe pv pv-nfs
 
 ## <a name="create-the-persistentvolumeclaim"></a>PersistentVolumeClaim oluşturma
 
-Bir PersistentVolume `pvc-nfs.yaml` tanımlama oluşturma. Örneğin:
+Bir `pvc-nfs.yaml` PersistentVolume tanımlama oluşturma. Örneğin:
 
 ```yaml
 apiVersion: v1
@@ -210,7 +208,7 @@ kubectl describe pvc pvc-nfs
 
 ## <a name="mount-with-a-pod"></a>Pod ile bağlama
 
-PersistentVolumeClaim kullanan bir pod `nginx-nfs.yaml` tanımlama oluşturma. Örneğin:
+`nginx-nfs.yaml`PersistentVolumeClaim kullanan bir pod tanımlama oluşturma. Örneğin:
 
 ```yaml
 kind: Pod

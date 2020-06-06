@@ -7,16 +7,19 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.author: wesmc
-ms.openlocfilehash: 0daddd2fb1368819c8f7b4cf0183c90a8c6c065e
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: fefae4ad1f4e10598fcc67d65155c3b13efc9ff4
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417982"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449626"
 ---
 # <a name="tls-support-in-azure-iot-hub-device-provisioning-service-dps"></a>Azure IoT Hub cihaz sağlama hizmeti 'nde (DPS) TLS desteği
 
-DPS, IoT cihazlarındaki bağlantıları güvenli hale getirmek için Aktarım Katmanı Güvenliği 'ni (TLS) kullanır. DPS tarafından desteklenen TLS protokol sürümleri TLS 1,2 ' i içerir.
+DPS, IoT cihazlarındaki bağlantıları güvenli hale getirmek için [Aktarım Katmanı Güvenliği 'ni (TLS)](http://wikipedia.org/wiki/Transport_Layer_Security) kullanır. 
+
+DPS tarafından desteklenen geçerli TLS protokol sürümleri şunlardır: 
+* TLS 1.2
 
 TLS 1,0 ve 1,1 eski olarak değerlendirilir ve kullanımdan kaldırma için planlanmaktadır. Daha fazla bilgi için bkz. [IoT Hub IÇIN TLS 1,0 ve 1,1 kullanımdan](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md)kaldırılıyor. 
 
@@ -24,7 +27,7 @@ TLS 1,0 ve 1,1 eski olarak değerlendirilir ve kullanımdan kaldırma için plan
 
 Ek güvenlik için, DPS örneklerinizi *yalnızca* TLS sürüm 1,2 kullanan cihaz istemci bağlantılarına izin verecek şekilde yapılandırmanız ve [Önerilen şifrelemelerin](#recommended-ciphers)kullanımını zorunlu hale getirilmesi önerilir.
 
-Bunu yapmak için, [desteklenen bölgelerin](#supported-regions) herhangi birinde yenı bir DPS kaynağı sağlayın ve `minTlsVersion` ÖZELLIĞI `1.2` Azure Resource Manager şablonunuzun DPS kaynak belirtiminde olarak ayarlayın. Aşağıdaki örnek şablon JSON, `minTlsVersion` Yeni BIR DPS örneği için özelliğini belirtir.
+Bunu yapmak için, `minTlsVersion` özelliği `1.2` Azure Resource Manager şablonun DPS kaynak belirtiminde olarak ayarlamak için yenı bir DPS kaynağı sağlayın. Aşağıdaki örnek şablon JSON, `minTlsVersion` Yeni BIR DPS örneği için özelliğini belirtir.
 
 ```json
 {
@@ -35,7 +38,7 @@ Bunu yapmak için, [desteklenen bölgelerin](#supported-regions) herhangi birind
             "type": "Microsoft.Devices/ProvisioningServices",
             "apiVersion": "2020-01-01",
             "name": "<provide-a-valid-DPS-resource-name>",
-            "location": "<any-of-supported-regions-below>",
+            "location": "<any-region>",
             "properties": {
                 "minTlsVersion": "1.2"
             },
@@ -61,12 +64,6 @@ Bu yapılandırma kullanılarak oluşturulan DPS kaynağı, 1,0 ve 1,1 TLS sür�
 > [!NOTE]
 > `minTlsVersion`Özelliği salt okunurdur ve DPS kaynağınız oluşturulduktan sonra değiştirilemez. Bu nedenle, *Tüm* IoT CIHAZLARıNıZıN TLS 1,2 ile uyumlu olduğunu ve [Önerilen şifrelemeleri](#recommended-ciphers) önceden test etmeniz ve doğrulamanız önemlidir.
 
-## <a name="supported-regions"></a>Desteklenen bölgeler
-
-TLS 1,2 kullanımını gerektiren IoT DPS örnekleri aşağıdaki bölgelerde oluşturulabilir:
-
-* US Gov Arizona
-* US Gov Virginia
 
 > [!NOTE]
 > `minTlsVersion`Yük devretme sonrasında, DPS özelliğinin özelliği, coğrafi olarak eşleştirilmiş bölgenin yük devretmesinde etkili olmaya devam edecektir.

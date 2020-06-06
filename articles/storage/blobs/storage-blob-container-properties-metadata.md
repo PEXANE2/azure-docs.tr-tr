@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: c66b521b5cd75825fcafe07b24d5d527c45f5153
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6923ab3a2344c8496f314e2f7a23b536a534bca
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135930"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457040"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>.NET ile kapsayıcı özelliklerini ve meta verileri yönetme
 
@@ -70,7 +70,7 @@ Meta verileri bir blob veya kapsayıcı kaynağında bir veya daha fazla ad-değ
 - [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadataasync)
 
-Meta verilerinizin adı, C# tanımlayıcıları için adlandırma kurallarına uygun olmalıdır. Meta veri adları, oluşturulduğu durumu korur, ancak ayarlandığında veya okurken büyük/küçük harf duyarsız olur. Bir kaynak için aynı ada sahip iki veya daha fazla meta veri üst bilgisi gönderilirse, BLOB depolama HTTP hata kodu 400 (Hatalı Istek) döndürür.
+Meta verilerinizin adı, C# tanımlayıcıları için adlandırma kurallarına uygun olmalıdır. Meta veri adları, oluşturulduğu durumu korur, ancak ayarlandığında veya okurken büyük/küçük harf duyarsız olur. Bir kaynak için aynı ada sahip iki veya daha fazla meta veri üstbilgisi gönderilirse, BLOB depolama alanı virgülle ayırın ve iki değeri ayırır ve HTTP yanıt kodu 200 (Tamam) döndürün.
 
 Aşağıdaki kod örneği bir kapsayıcıda meta verileri ayarlar. Bir değer, koleksiyonun **Add** yöntemi kullanılarak ayarlanır. Diğer değer örtük anahtar/değer sözdizimi kullanılarak ayarlanır. Her ikisi de geçerlidir.
 

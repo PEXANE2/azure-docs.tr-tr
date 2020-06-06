@@ -1,19 +1,19 @@
 ---
-title: Birden çok ISS bağlantısı üzerinde Azure yol seçimi
+title: Günlükleri ve ölçümler
 titleSuffix: Azure Virtual WAN
-description: Azure yol seçimi ve sanal WAN hakkında bilgi edinin
+description: Azure sanal WAN günlükleri ve ölçümleri hakkında bilgi edinin
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 06/01/2020
+ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 73249b2c66c7e064aa5c07ae1b78d819f4f44c23
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 7fa5353449db04184c60be79adece63489de0a74
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300361"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466213"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure sanal WAN günlükleri ve ölçümleri
 

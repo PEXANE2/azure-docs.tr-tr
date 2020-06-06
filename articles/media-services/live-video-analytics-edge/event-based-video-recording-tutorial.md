@@ -3,12 +3,12 @@ title: Bulut öğreticiden buluta ve kayıttan yürütmeye yönelik olay tabanl�
 description: Bu öğreticide, bulutta bulut ve kayıttan yürütmeye yönelik olay tabanlı bir video kaydı gerçekleştirmek için IoT Edge canlı video analizinin nasıl kullanılacağını öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 92367634a2f5785ecbb102db1e03f3d5f12d744e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 7ff8502688e2b507b8a576c177948f29c2248be4
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300850"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456681"
 ---
 # <a name="tutorial-event-based-video-recording-to-cloud-and-playback-from-cloud"></a>Öğretici: bulutta buluta ve kayıttan yürütmeye yönelik olay tabanlı video kaydı
 
@@ -34,7 +34,7 @@ Aşağıdaki belge sayfalarını okumanız önerilir
 * [Dağıtım. *. Template. JSON nasıl düzenlenir](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 * [IoT Edge dağıtım bildiriminde yolların nasıl bildirilemeyeceğini gösteren](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) bölüm
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticinin Önkoşulları aşağıdaki gibidir
 
@@ -181,7 +181,7 @@ Nesne sayaç modülünün ve IoT Edge modülündeki canlı video analizinden ola
 
 1. GraphTopologySet düğümü altında aşağıdakileri düzenleyin:
 
-    `"topologyUrl" : "https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
     
 1. Ardından, Graphınstanceset ve Graphtopologyıdelete, Düzenle, düğümleri altında
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: cb7f11f184ba8e19eb8786817da58edf8ddee44e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6b72d80f0be65af22bf334752052757346457a67
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137102"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84448640"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Artırılmış karar ağacı gerileme modülü
 
@@ -99,7 +99,7 @@ Gradyan artırma yöntemi, uygun bir kayıp işleviyle regresyon için azaltıla
 
 Eğitim tamamlandıktan sonra:
 
-+ Puanlama için modeli kullanmak üzere, yeni giriş örneklerine ilişkin değerleri tahmin etmek için [modeli puan](./score-model.md)alanına bağlayın.
++ Puanlama modelini kullanmak için, yeni giriş örneklerine ilişkin değerleri tahmin etmek üzere model [puanına](./score-model.md) [eğitme modeli](train-model.md) ' ni bağlayın.
 
 + Eğitilen modelin anlık görüntüsünü kaydetmek için **eğitilen modelin** sağ panelindeki **çıktılar** sekmesini seçin ve **veri kümesini kaydet** simgesine tıklayın. Eğitilen modelin kopyası modül ağacında bir modül olarak kaydedilir ve işlem hattının art arda çalıştırılmasıyla güncelleştirilmeyecek.
 

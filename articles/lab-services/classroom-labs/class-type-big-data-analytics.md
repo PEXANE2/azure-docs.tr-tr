@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/15/2020
 ms.author: nicolela
-ms.openlocfilehash: 3035b9debdd46c1a8ba246882312e28d1a2087e4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5c2962fcc470525510be8ee0c89baba658d9f9d9
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118439"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449643"
 ---
-# <a name="set-up-a-lab-to-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Hortonçalışmalar veri platformunun Docker dağıtımını kullanarak büyük veri analizlerinin bir laboratuvarını ayarlama
+# <a name="set-up-a-lab-for-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Hortonçalışmalar veri platformunun Docker dağıtımını kullanarak büyük veri analizi için laboratuvar ayarlama
 
 Bu makalede, büyük bir veri analizi sınıfı öğretmek için bir laboratuvarın nasıl ayarlanacağı gösterilmektedir.  Bu tür bir sınıfta, öğrenciler büyük hacimlere yönelik verileri nasıl işleyeceğinizi ve veri öngörüleri türetmede makine ve istatistiksel öğrenme algoritmaları uygulamayı öğreniyor.  Öğrenciler için önemli bir amaç, büyük verileri depolamak, yönetmek ve işlemek için araçlar sağlayan [Apache Hadoop açık kaynaklı yazılım paketi](https://hadoop.apache.org/) gibi veri analizi araçlarını kullanmayı öğrenmektir.
 

@@ -3,12 +3,12 @@ title: Kavramlar-ağ bağlantısı
 description: Azure VMware çözümünde (AVS), ağ ve bağlantı durumları hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 82e5497c30bf02313e5ff8ad24167af569a153c2
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 1d869601110266f7ad16e23b66453c44793cdf31
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740921"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457091"
 ---
 # <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware çözümü (AVS) önizleme ağı ve karşılıklı bağlantı kavramları
 
@@ -58,11 +58,11 @@ Ayrıca, şirket içi ortamları AVS özel bulutlarınıza da bağlayabilirsiniz
 Global Reach ile bağlandıktan sonra, iki ExpressRoute bağlantı hattı, şirket içi ortamlarınız ve özel bulutunuz arasında ağ trafiğini yönlendirmeyecektir. Şirket içinden özel bulut bağlantısı, önceki diyagramda gösterilmiştir. Diyagramda temsil edilen bağlantılar aşağıdaki kullanım örneklerini sunar:
 
 - Etkin/soğuk çapraz vCenter vMotion
-- Şirket içinden AVS 'ye özel bulut yönetimi erişimi
+- Şirket Içinden AVS 'ye özel bulut yönetimi erişimi
 
 Tam bağlantıyı etkinleştirmek için, Azure portal Global Reach bir yetkilendirme anahtarı ve özel eşleme KIMLIĞI istenebilir. Aboneliğinizde bir ExpressRoute bağlantı hattı ve yeni özel bulutunuz için ExpressRoute bağlantı hattı arasında Global Reach oluşturmak için anahtar ve KIMLIĞI kullanın. [Özel bir bulut oluşturmaya yönelik öğretici](tutorial-create-private-cloud.md) , anahtar ve kimlik isteme ve kullanma yordamlarını sağlar.
 
-Çözümün yönlendirme gereksinimleri, diğer sanal ağlarla ve şirket içi ağlarla örtüşmelere engel olmak için özel bulut ağ adresi alanları planlamanız gerekir. AVS özel bulutları, alt ağlar için `/22` aşağıda gösterilen en az bir CIDR ağ adres bloğu gerektirir. Bu ağ, şirket içi ağlarınızı tamamlar. Şirket içi ortamlara ve sanal ağlara bağlanmak için bu, çakışmayan bir ağ adresi bloğu olmalıdır.
+Çözümün yönlendirme gereksinimleri, diğer sanal ağlarla ve şirket içi ağlarla örtüşmelere engel olmak için özel bulut ağ adresi alanları planlamanız gerekir. AVS özel bulutları `/22` , alt ağlar için aşağıda gösterilen en az bir CIDR ağ adres bloğu gerektirir. Bu ağ, şirket içi ağlarınızı tamamlar. Şirket içi ortamlara ve sanal ağlara bağlanmak için bu, çakışmayan bir ağ adresi bloğu olmalıdır.
 
 Örnek `/22` CIDR ağ adresi bloğu:`10.10.0.0/22`
 

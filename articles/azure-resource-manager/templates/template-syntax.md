@@ -2,13 +2,13 @@
 title: Şablon yapısı ve sözdizimi
 description: Bildirim temelli JSON sözdizimi kullanan Azure Resource Manager şablonlarının yapısını ve özelliklerini açıklar.
 ms.topic: conceptual
-ms.date: 04/20/2020
-ms.openlocfilehash: fa6f0e053c57d5b433bf63dc858615501d07759d
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.date: 06/05/2020
+ms.openlocfilehash: 1014cb34cd82ed36fec0ab9f9ea3fd71b528178b
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331449"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465822"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>ARM şablonlarının yapısını ve sözdizimini anlayın
 
@@ -37,12 +37,12 @@ En basit yapısında, bir şablon aşağıdaki öğelere sahiptir:
 |:--- |:--- |:--- |
 | $schema |Yes |Şablon dilinin sürümünü açıklayan JSON Şema dosyasının konumu. Kullandığınız sürüm numarası dağıtımın kapsamına ve JSON düzenleyicinize bağlıdır.<br><br>[Azure Resource Manager araçları uzantısı ile vs Code](use-vs-code-to-create-template.md)kullanıyorsanız, kaynak grubu dağıtımları için en son sürümü kullanın:<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>Diğer düzenleyiciler (Visual Studio dahil) Bu şemayı işleyemeyebilir. Bu düzenleyiciler için şunu kullanın:<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Abonelik dağıtımları için şunu kullanın:<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>Yönetim grubu dağıtımları için şunu kullanın:<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>Kiracı dağıtımları için şunu kullanın:<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
 | contentVersion |Yes |Şablonun sürümü (1.0.0.0 gibi). Bu öğe için herhangi bir değer sağlayabilirsiniz. Şablonunuzda önemli değişiklikleri belgelemek için bu değeri kullanın. Şablonu kullanarak kaynakları dağıttığınızda, bu değer doğru şablonun kullanıldığından emin olmak için kullanılabilir. |
-| apiProfile |No | Kaynak türleri için API sürümleri koleksiyonu görevi gören bir API sürümü. Şablondaki her kaynak için API sürümlerini belirtmek zorunda kalmamak için bu değeri kullanın. Bir API profili sürümü belirttiğinizde ve kaynak türü için bir API sürümü belirtmezseniz Kaynak Yöneticisi, profilde tanımlanan bu kaynak türü için API sürümünü kullanır.<br><br>API profili özelliği, bir şablonu Azure Stack ve küresel Azure gibi farklı ortamlara dağıtmada özellikle faydalıdır. Şablonunuzun her iki ortamda da desteklenen sürümleri otomatik olarak kullandığından emin olmak için API profili sürümünü kullanın. Geçerli API profili sürümlerinin ve profilde tanımlanan kaynak API sürümlerinin bir listesi için bkz. [API profili](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>Daha fazla bilgi için bkz. [API profillerini kullanarak sürümleri izleme](templates-cloud-consistency.md#track-versions-using-api-profiles). |
-| [parametrelere](#parameters) |No |Kaynak dağıtımını özelleştirmek için dağıtım yürütüldüğünde belirtilen değerler. |
-| [değişkenlerinin](#variables) |No |Şablon dil ifadelerini basitleştirmek için şablonda JSON parçaları olarak kullanılan değerler. |
-| [lerdir](#functions) |No |Şablon içinde kullanılabilen Kullanıcı tanımlı işlevler. |
+| apiProfile |Hayır | Kaynak türleri için API sürümleri koleksiyonu görevi gören bir API sürümü. Şablondaki her kaynak için API sürümlerini belirtmek zorunda kalmamak için bu değeri kullanın. Bir API profili sürümü belirttiğinizde ve kaynak türü için bir API sürümü belirtmezseniz Kaynak Yöneticisi, profilde tanımlanan bu kaynak türü için API sürümünü kullanır.<br><br>API profili özelliği, bir şablonu Azure Stack ve küresel Azure gibi farklı ortamlara dağıtmada özellikle faydalıdır. Şablonunuzun her iki ortamda da desteklenen sürümleri otomatik olarak kullandığından emin olmak için API profili sürümünü kullanın. Geçerli API profili sürümlerinin ve profilde tanımlanan kaynak API sürümlerinin bir listesi için bkz. [API profili](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>Daha fazla bilgi için bkz. [API profillerini kullanarak sürümleri izleme](templates-cloud-consistency.md#track-versions-using-api-profiles). |
+| [parametrelere](#parameters) |Hayır |Kaynak dağıtımını özelleştirmek için dağıtım yürütüldüğünde belirtilen değerler. |
+| [değişkenlerinin](#variables) |Hayır |Şablon dil ifadelerini basitleştirmek için şablonda JSON parçaları olarak kullanılan değerler. |
+| [lerdir](#functions) |Hayır |Şablon içinde kullanılabilen Kullanıcı tanımlı işlevler. |
 | [kaynakların](#resources) |Yes |Bir kaynak grubunda veya abonelikte dağıtılan veya güncellenen kaynak türleri. |
-| [çıkışı](#outputs) |No |Dağıtımdan sonra döndürülen değerler. |
+| [çıkışı](#outputs) |Hayır |Dağıtımdan sonra döndürülen değerler. |
 
 Her öğenin ayarlayabileceğiniz özellikleri vardır. Bu makalede, şablonun bölümleri daha ayrıntılı olarak açıklanmaktadır.
 
@@ -73,13 +73,13 @@ Bir parametre için kullanılabilen özellikler şunlardır:
 |:--- |:--- |:--- |
 | parametre-adı |Yes |Parametrenin adı. Geçerli bir JavaScript tanımlayıcısı olmalıdır. |
 | tür |Yes |Parametre değerinin türü. İzin verilen türler ve değerler **dize**, **SecureString**, **int**, **bool**, **nesne**, **secureobject**ve **dizidir**. Bkz. [veri türleri](#data-types). |
-| Değerinin |No |Parametresi için değer sağlanmazsa, parametre için varsayılan değer. |
-| allowedValues |No |Doğru değerin sağlandığından emin olmak için parametresi için izin verilen değerler dizisi. |
-| minValue |No |İnt tür parametrelerinin minimum değeri, bu değer dahil değildir. |
-| Değerini |No |İnt tür parametrelerinin en büyük değeri, bu değer dahil değildir. |
-| minLength |No |Dize, güvenli dize ve dizi türü parametrelerinin minimum uzunluğu, bu değer dahil değildir. |
-| 'In |No |Dize, güvenli dize ve dizi türü parametrelerinin uzunluk üst sınırı, bu değer dahil değildir. |
-| açıklama |No |Portalda kullanıcılara görüntülenen parametrenin açıklaması. Daha fazla bilgi için bkz. [şablonlarda açıklamalar](#comments). |
+| Değerinin |Hayır |Parametresi için değer sağlanmazsa, parametre için varsayılan değer. |
+| allowedValues |Hayır |Doğru değerin sağlandığından emin olmak için parametresi için izin verilen değerler dizisi. |
+| minValue |Hayır |İnt tür parametrelerinin minimum değeri, bu değer dahil değildir. |
+| Değerini |Hayır |İnt tür parametrelerinin en büyük değeri, bu değer dahil değildir. |
+| minLength |Hayır |Dize, güvenli dize ve dizi türü parametrelerinin minimum uzunluğu, bu değer dahil değildir. |
+| 'In |Hayır |Dize, güvenli dize ve dizi türü parametrelerinin uzunluk üst sınırı, bu değer dahil değildir. |
+| açıklama |Hayır |Portalda kullanıcılara görüntülenen parametrenin açıklaması. Daha fazla bilgi için bkz. [şablonlarda açıklamalar](#comments). |
 
 Parametrelerin nasıl kullanılacağına ilişkin örnekler için, bkz. [Azure Resource Manager şablonlarındaki parametreler](template-parameters.md).
 
@@ -91,7 +91,7 @@ Satır içi parametre olarak geçirilen tamsayılar için, değer aralığı, da
 
 Nesneler sol küme ayracı ile başlayıp sağ parantez ile biter. Diziler sol köşeli ayraç ile başlar ve sağ köşeli ayraç ile biter.
 
-Güvenli dizeler ve güvenli nesneler, kaynak dağıtımdan sonra okunamaz.
+Bir parametreyi güvenli bir dizeye veya güvenli bir nesneye ayarladığınızda, parametrenin değeri dağıtım geçmişine kaydedilmez ve günlüğe kaydedilmez. Ancak, bu güvenli değeri güvenli bir değer beklemeyen bir özellik olarak ayarlarsanız değer korunmaz. Örneğin, bir etikete güvenli bir dize ayarlarsanız, bu değer düz metin olarak depolanır. Parolalar ve gizlilikler için güvenli dizeler kullanın.
 
 Veri türlerini biçimlendirme örnekleri için bkz. [parametre türü biçimleri](parameter-files.md#parameter-type-formats).
 
@@ -168,8 +168,8 @@ Bir Kullanıcı işlevi tanımlarken bazı kısıtlamalar vardır:
 |:--- |:--- |:--- |
 | ad alanı |Yes |Özel işlevler için ad alanı. Şablon işlevleriyle adlandırma çakışmalarını önlemek için kullanın. |
 | işlev adı |Yes |Özel işlevin adı. İşlevi çağrılırken, işlev adını ad alanıyla birleştirin. Örneğin, contoso ad alanında uniqueName adlı bir işlevi çağırmak için kullanın `"[contoso.uniqueName()]"` . |
-| parametre-adı |No |Özel işlev içinde kullanılacak parametrenin adı. |
-| parametre-değer |No |Parametre değerinin türü. İzin verilen türler ve değerler **dize**, **SecureString**, **int**, **bool**, **nesne**, **secureobject**ve **dizidir**. |
+| parametre-adı |Hayır |Özel işlev içinde kullanılacak parametrenin adı. |
+| parametre-değer |Hayır |Parametre değerinin türü. İzin verilen türler ve değerler **dize**, **SecureString**, **int**, **bool**, **nesne**, **secureobject**ve **dizidir**. |
 | çıkış türü |Yes |Çıkış değerinin türü. Çıkış değerleri işlev giriş parametreleriyle aynı türleri destekler. |
 | çıkış değeri |Yes |İşlev tarafından değerlendirilen ve döndürülen şablon dili ifadesi. |
 
@@ -237,20 +237,20 @@ Kaynakları aşağıdaki yapıyla tanımlarsınız:
 
 | Öğe adı | Gerekli | Açıklama |
 |:--- |:--- |:--- |
-| koşul | No | Bu dağıtım sırasında kaynağın sağlanıp sağlanmayacağını belirten Boole değeri. Ne zaman `true` , kaynak dağıtım sırasında oluşturulur. Ne zaman `false` , bu dağıtım için kaynak atlanır. [Koşula](conditional-resource-deployment.md)bakın. |
+| koşul | Hayır | Bu dağıtım sırasında kaynağın sağlanıp sağlanmayacağını belirten Boole değeri. Ne zaman `true` , kaynak dağıtım sırasında oluşturulur. Ne zaman `false` , bu dağıtım için kaynak atlanır. [Koşula](conditional-resource-deployment.md)bakın. |
 | tür |Yes |Kaynağın türü. Bu değer, kaynak sağlayıcının ve kaynak türünün ( **Microsoft. Storage/storageAccounts**gibi) ad alanının bir birleşimidir. Kullanılabilir değerleri anlamak için bkz. [şablon başvurusu](/azure/templates/). Bir alt kaynak için, türün biçimi üst kaynak içinde iç içe veya üst kaynak dışında tanımlanmış olmasına bağlıdır. Bkz. [alt kaynaklar için ad ve tür ayarlama](child-resource-name-type.md). |
 | apiVersion |Yes |Kaynağı oluşturmak için kullanılacak REST API sürümü. Kullanılabilir değerleri anlamak için bkz. [şablon başvurusu](/azure/templates/). |
 | name |Yes |Kaynağın adı. Ad, RFC3986 içinde tanımlanan URI bileşen kısıtlamalarına uymalıdır. Kaynak adını dış taraflar üzerinde kullanıma sunan Azure Hizmetleri, başka bir kimliği sızma girişimi olmadığından emin olmak için adı doğrular. Bir alt kaynak için, adın biçimi üst kaynak içinde iç içe veya üst kaynak dışında tanımlanmış olmasına bağlıdır. Bkz. [alt kaynaklar için ad ve tür ayarlama](child-resource-name-type.md). |
-| açıklamaları |No |Şablonunuzda kaynakları belgelemek için notlarınız. Daha fazla bilgi için bkz. [şablonlarda açıklamalar](template-syntax.md#comments). |
+| açıklamaları |Hayır |Şablonunuzda kaynakları belgelemek için notlarınız. Daha fazla bilgi için bkz. [şablonlarda açıklamalar](template-syntax.md#comments). |
 | location |Değişir |Belirtilen kaynağın desteklenen coğrafi konumları. Kullanılabilir konumlardan herhangi birini seçebilirsiniz, ancak genellikle kullanıcılarınıza yakın olan bir seçim yapmak mantıklı olur. Genellikle, aynı bölgedeki birbirleriyle etkileşim kuran kaynakları yerleştirmek de anlamlı hale gelir. Çoğu kaynak türü bir konum gerektirir, ancak bazı türler (örneğin, rol ataması) bir konum gerektirmez. Bkz. [kaynak konumunu ayarlama](resource-location.md). |
-| dependsOn |No |Bu kaynak dağıtılmadan önce dağıtılması gereken kaynaklar. Kaynak Yöneticisi, kaynaklar arasındaki bağımlılıkları değerlendirir ve doğru sırayla dağıtır. Kaynaklar birbirine bağımlı olmadığında, paralel olarak dağıtılır. Değer, kaynak adlarının veya kaynak benzersiz tanımlayıcılarının virgülle ayrılmış bir listesi olabilir. Yalnızca bu şablonda dağıtılan kaynakları listeleyin. Bu şablonda tanımlı olmayan kaynaklar zaten var olmalıdır. Dağıtımınızı yavaşlatabilir ve dairesel bağımlılıklar oluşturduklarında gereksiz bağımlılıkları eklemekten kaçının. Bağımlılıkları ayarlama hakkında yönergeler için bkz. [Azure Resource Manager şablonlarda bağımlılıkları tanımlama](define-resource-dependency.md). |
-| tags |No |Kaynakla ilişkili Etiketler. Aboneliğiniz genelinde kaynakları mantıksal olarak düzenlemek için etiketleri uygulayın. |
-| isteyin | No | Bazı kaynaklar, dağıtılacak SKU 'YU tanımlayan değerlere izin verir. Örneğin, bir depolama hesabı için artıklık türünü belirtebilirsiniz. |
-| denetlenmesi | No | Bazı kaynaklar, dağıttığınız kaynak türünü tanımlayan bir değere izin verir. Örneğin, oluşturulacak Cosmos DB türünü belirtebilirsiniz. |
-| kopyalama |No |Birden fazla örnek gerekliyse, oluşturulacak kaynak sayısı. Varsayılan mod paraleldir. Tüm veya kaynakların aynı anda dağıtılmasını istemiyorsanız seri modunu belirtin. Daha fazla bilgi için bkz. [Azure Resource Manager çeşitli kaynak örnekleri oluşturma](copy-resources.md). |
-| plan | No | Bazı kaynaklar, dağıtılacak planı tanımlayan değerlere izin verir. Örneğin, bir sanal makine için Market görüntüsünü belirtebilirsiniz. |
-| properties |No |Kaynağa özgü yapılandırma ayarları. Özelliklerin değerleri, kaynağı oluşturmak için REST API işlem (PUT yöntemi) için istek gövdesinde sağladığınız değerlerle aynıdır. Ayrıca, bir özelliğin birkaç örneğini oluşturmak için bir kopya dizisi belirtebilirsiniz. Kullanılabilir değerleri anlamak için bkz. [şablon başvurusu](/azure/templates/). |
-| kaynaklar |No |Tanımlanmakta olan kaynağa bağlı olan alt kaynaklar. Yalnızca üst kaynağın şemasına izin verilen kaynak türlerini sağlayın. Üst kaynağın bağımlılığı örtük değildir. Bu bağımlılığı açıkça tanımlamanız gerekir. Bkz. [alt kaynaklar için ad ve tür ayarlama](child-resource-name-type.md). |
+| dependsOn |Hayır |Bu kaynak dağıtılmadan önce dağıtılması gereken kaynaklar. Kaynak Yöneticisi, kaynaklar arasındaki bağımlılıkları değerlendirir ve doğru sırayla dağıtır. Kaynaklar birbirine bağımlı olmadığında, paralel olarak dağıtılır. Değer, kaynak adlarının veya kaynak benzersiz tanımlayıcılarının virgülle ayrılmış bir listesi olabilir. Yalnızca bu şablonda dağıtılan kaynakları listeleyin. Bu şablonda tanımlı olmayan kaynaklar zaten var olmalıdır. Dağıtımınızı yavaşlatabilir ve dairesel bağımlılıklar oluşturduklarında gereksiz bağımlılıkları eklemekten kaçının. Bağımlılıkları ayarlama hakkında yönergeler için bkz. [Azure Resource Manager şablonlarda bağımlılıkları tanımlama](define-resource-dependency.md). |
+| etiketler |Hayır |Kaynakla ilişkili Etiketler. Aboneliğiniz genelinde kaynakları mantıksal olarak düzenlemek için etiketleri uygulayın. |
+| isteyin | Hayır | Bazı kaynaklar, dağıtılacak SKU 'YU tanımlayan değerlere izin verir. Örneğin, bir depolama hesabı için artıklık türünü belirtebilirsiniz. |
+| denetlenmesi | Hayır | Bazı kaynaklar, dağıttığınız kaynak türünü tanımlayan bir değere izin verir. Örneğin, oluşturulacak Cosmos DB türünü belirtebilirsiniz. |
+| kopyalama |Hayır |Birden fazla örnek gerekliyse, oluşturulacak kaynak sayısı. Varsayılan mod paraleldir. Tüm veya kaynakların aynı anda dağıtılmasını istemiyorsanız seri modunu belirtin. Daha fazla bilgi için bkz. [Azure Resource Manager çeşitli kaynak örnekleri oluşturma](copy-resources.md). |
+| plan | Hayır | Bazı kaynaklar, dağıtılacak planı tanımlayan değerlere izin verir. Örneğin, bir sanal makine için Market görüntüsünü belirtebilirsiniz. |
+| properties |Hayır |Kaynağa özgü yapılandırma ayarları. Özelliklerin değerleri, kaynağı oluşturmak için REST API işlem (PUT yöntemi) için istek gövdesinde sağladığınız değerlerle aynıdır. Ayrıca, bir özelliğin birkaç örneğini oluşturmak için bir kopya dizisi belirtebilirsiniz. Kullanılabilir değerleri anlamak için bkz. [şablon başvurusu](/azure/templates/). |
+| kaynaklar |Hayır |Tanımlanmakta olan kaynağa bağlı olan alt kaynaklar. Yalnızca üst kaynağın şemasına izin verilen kaynak türlerini sağlayın. Üst kaynağın bağımlılığı örtük değildir. Bu bağımlılığı açıkça tanımlamanız gerekir. Bkz. [alt kaynaklar için ad ve tür ayarlama](child-resource-name-type.md). |
 
 ## <a name="outputs"></a>Çıkışlar
 
@@ -275,10 +275,10 @@ Aşağıdaki örnek, bir çıkış tanımının yapısını gösterir:
 | Öğe adı | Gerekli | Açıklama |
 |:--- |:--- |:--- |
 | çıkış adı |Yes |Çıkış değerinin adı. Geçerli bir JavaScript tanımlayıcısı olmalıdır. |
-| koşul |No | Bu çıkış değerinin döndürülüp döndürülmeyeceğini belirten Boolean değeri. Ne zaman `true` , bu değer dağıtımın çıktısına dahil edilir. Ne zaman `false` , bu dağıtım için çıkış değeri atlanır. Belirtilmediğinde, varsayılan değer `true` . |
+| koşul |Hayır | Bu çıkış değerinin döndürülüp döndürülmeyeceğini belirten Boolean değeri. Ne zaman `true` , bu değer dağıtımın çıktısına dahil edilir. Ne zaman `false` , bu dağıtım için çıkış değeri atlanır. Belirtilmediğinde, varsayılan değer `true` . |
 | tür |Yes |Çıkış değerinin türü. Çıkış değerleri, şablon giriş parametreleriyle aynı türleri destekler. Çıktı türü için **SecureString** belirtirseniz, değer dağıtım geçmişinde gösterilmez ve başka bir şablondan alınamaz. Birden fazla şablonda gizli bir değer kullanmak için, gizli anahtarı bir Key Vault depolayın ve parametre dosyasındaki gizli dizi başvurusu yapın. Daha fazla bilgi için bkz. [dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](key-vault-parameter.md). |
-| value |No |Değerlendirilen ve çıkış değeri olarak döndürülen şablon dili ifadesi. **Değer** ya da **kopya**belirtin. |
-| kopyalama |No | Bir çıktı için birden fazla değer döndürmek için kullanılır. **Değer** veya **kopya**belirtin. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarda çıkış yinelemesi](copy-outputs.md). |
+| value |Hayır |Değerlendirilen ve çıkış değeri olarak döndürülen şablon dili ifadesi. **Değer** ya da **kopya**belirtin. |
+| kopyalama |Hayır | Bir çıktı için birden fazla değer döndürmek için kullanılır. **Değer** veya **kopya**belirtin. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarda çıkış yinelemesi](copy-outputs.md). |
 
 Çıkışları kullanma örnekleri için bkz. [Azure Resource Manager şablonundaki çıktılar](template-outputs.md).
 

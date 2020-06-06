@@ -3,7 +3,7 @@ title: SUSE Linux Enterprise Server ile bir Azure VM 'yi SUSE 15 SP1 'e yükselt
 description: Bu makalede, SUSE Linux Enterprise Server 'ı bir Azure sanal makinesi için SUSE 15 SP1 'e yükseltmek üzere SUSE dağıtım geçiş sisteminin nasıl kullanılacağına ilişkin genel adımlar sağlanmaktadır.
 services: virtual-machines-linux
 documentationcenter: ''
-author: genlin
+author: amkarmak
 manager: dcscontentpm
 editor: ''
 tags: virtual-machines
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 05/21/2020
-ms.author: genli
-ms.openlocfilehash: 635758ad2624a4fc8b06702f881a34e4b2f3f123
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.author: arremana
+ms.openlocfilehash: 079574ab4c5846eae6266d1e13240baf99428a69
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261110"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449252"
 ---
 # <a name="upgrade-azure-vm-with-sles-12-to-sles-15-sp1"></a>SLES 12 ile Azure VM 'yi SLES 15 SP1 'e yükseltme
 

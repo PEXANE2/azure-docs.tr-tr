@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB, Azure Analysis Services ve Power BI kullanarak gerçek zamanlı bir pano oluşturun
 description: Azure Cosmos DB ve Azure Analysis Services kullanarak Power BI canlı hava durumu panosu oluşturmayı öğrenin.
-author: bharathsreenivas
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.author: bharathb
 ms.reviewer: sngun
-ms.openlocfilehash: d225a14edddcad58c08094dbc758d67df8f834e6
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: aac89de936ae709ac825391eb0515e7f36a457a6
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70376599"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465805"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Azure Cosmos DB ve Power BI kullanarak gerçek zamanlı pano oluşturma
 
@@ -96,9 +96,9 @@ Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset/local-
 
 ### <a name="connect-azure-analysis-services-to-azure-cosmos-account"></a>Azure Analysis Services Azure Cosmos hesabına bağlama
 
-1. **Yeni bir Azure Analysis Services kümesi** - oluşturun Azure Cosmos hesabı ve databricks kümesiyle aynı bölgede[Azure Analysis Services örneği oluşturun](../analysis-services/analysis-services-create-server.md) .
+1. **Yeni bir Azure Analysis Services kümesi oluşturma**  -  Azure Analysis Services 'in Azure Cosmos hesabı ve Databricks kümesiyle aynı bölgede [bir örneğini oluşturun](../analysis-services/analysis-services-create-server.md) .
 
-1. **Visual Studio 'da yeni bir Analysis Services tablosal projesi oluşturma** -  [SQL Server veri araçları (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017) ve Visual Studio 'da Analysis Services tablolu bir proje oluşturun.
+1. **Visual Studio 'da yeni bir Analysis Services tablosal projesi oluşturma**  -   [SQL Server veri araçları (SSDT) yükleyip](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017) Visual Studio 'da bir Analysis Services tablosal projesi oluşturun.
 
    ![Azure Analysis Services projesi oluştur](./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png)
 
@@ -106,7 +106,7 @@ Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset/local-
 
    ![Azure Analysis Services tablolu model Tasarımcısı](./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png)
 
-1. **Azure Cosmos DB veri kaynağını ekleyin** - **modeller**> **veri kaynakları** > **Yeni veri kaynağı** ' na gidin ve aşağıdaki ekran görüntüsünde gösterildiği gibi Azure Cosmos DB veri kaynağını ekleyin:
+1. **Azure Cosmos DB veri kaynağını ekleyin** - **modeller** >  **veri kaynakları**  >  **Yeni veri kaynağı** ' na gidin ve aşağıdaki ekran görüntüsünde gösterildiği gibi Azure Cosmos DB veri kaynağını ekleyin:
 
    ![Cosmos DB veri kaynağı Ekle](./media/create-real-time-weather-dashboard-powerbi/add-data-source.png)
 

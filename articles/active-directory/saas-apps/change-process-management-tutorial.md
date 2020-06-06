@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Işlem yönetimi ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+title: 'Öğretici: değişiklik Işlemi yönetimi ile Azure AD SSO tümleştirmesi'
 description: Azure Active Directory ve Işlem yönetimini değiştirme arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -15,139 +15,139 @@ ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad145593d6811860fe367f5473b54de2a057d71
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 1f803fda1d1709e60db078f7b729d7588aa725fd
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984380"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456836"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-change-process-management"></a>Öğretici: değişiklik Işlemi yönetimiyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
 Bu öğreticide, değişiklik Işlem yönetimini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Değişiklik Işlem yönetimini Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de, Işlem yönetimini değiştirme erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla Işlem yönetimini değiştirmek için otomatik olarak oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Değişiklik Işlem yönetimine kimlerin erişebileceğini denetlemek için Azure AD 'yi kullanın.
+* Işlem yönetimini Azure AD hesaplarıyla değiştirmek için kullanıcılarınızın otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Işlem yönetimi çoklu oturum açma (SSO) etkin aboneliğini değiştirin.
+* Çoklu oturum açma (SSO) etkin bir değişiklik Işlemi yönetimi aboneliği.
 
-## <a name="scenario-description"></a>Senaryo açıklaması
+## <a name="tutorial-description"></a>Öğretici açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edeceksiniz.
 
-* Işlem yönetimini değiştirme, **IDP** tarafından başlatılan SSO 'yu destekler
-* Değişiklik Işlem yönetimini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin boyutunu gerçek zamanlı olarak koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Işlem yönetimini Değiştir, ıDP tarafından başlatılan SSO 'yu destekler.
 
-## <a name="adding-change-process-management-from-the-gallery"></a>Galeriden değişiklik Işlemi yönetimi ekleme
+Değişiklik Işlem yönetimini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+## <a name="add-change-process-management-from-the-gallery"></a>Galeriden değişiklik Işlemi yönetimi ekleme
 
 Değişiklik Işlemi yönetiminin Azure AD ile tümleştirilmesini yapılandırmak için, Galeri 'den yönetilen SaaS uygulamaları listenize değişiklik Işlem yönetimini eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. [Azure Portal](https://portal.azure.com) bir iş veya okul hesabıyla ya da kişisel bir Microsoft hesabı oturum açın.
+1. Sol bölmede **Azure Active Directory**’yi seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **işlem yönetimini Değiştir** yazın.
-1. **Işlem yönetimini** sonuçlar panelinden Değiştir ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Bir uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **işlem yönetimini Değiştir** ' i girin.
+1. Sonuçlar panelinde **Işlem yönetimini Değiştir** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-change-process-management"></a>Değişiklik Işlemi yönetimi için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-change-process-management"></a>Değişiklik Işlemi yönetimi için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu değişiklik işlemi yönetimiyle yapılandırın ve test edin. SSO 'nun çalışması için, Işlem yönetiminde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+B. Simon adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu değişiklik Işlemi yönetimiyle yapılandırıp test edersiniz. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı ve değişiklik Işlemi yönetimi arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu değişiklik Işlemi yönetimi ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu değişiklik Işlemi yönetimi ile yapılandırmak ve test etmek için aşağıdaki üst düzey adımları uygulayın:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. **[Işlem yönetimini DEĞIŞTIRME SSO](#configure-change-process-management-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    1. Kullanıcının Azure AD gösterimine bağlı olan değişiklik Işlem yönetiminde B. Simon 'a sahip olmak için **[değişiklik Işlemi yönetimi test kullanıcısı oluşturun](#create-change-process-management-test-user)** .
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın özelliğini kullanmasını sağlamak için **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** .
+    1. Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
+    1. Kullanıcının Azure AD çoklu oturum açma özelliğini kullanmasını sağlamak için **[Test kullanıcısına erişim Izni verin](#grant-access-to-the-test-user)** .
+1. Uygulama tarafında **[Işlem yönetimini DEĞIŞTIR SSO 'Yu yapılandırın](#configure-change-process-management-sso)** .
+    1. Kullanıcının Azure AD gösterimine karşılık gelen bir **[değişiklik Işlemi yönetimi test kullanıcısı oluşturun](#create-a-change-process-management-test-user)** .
+1. Yapılandırmanın çalıştığını doğrulamak için **[test SSO 'su](#test-sso)** .
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **işlem yönetimini Değiştir** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **işlem yönetimini Değiştir** uygulama tümleştirmesi sayfasında, **Yönet** bölümünde, **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem düğmesini seçin:
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML yapılandırması için kalem düğmesi](common/edit-urls.png)
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki alanlar için değerleri girin:
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında şu adımları uygulayın:
 
-    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<hostname>:8443/`
+    a. **Tanımlayıcı** kutusunda, aşağıdaki düzende bir URL girin:`https://<hostname>:8443/`
 
-    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<hostname>:8443/changepilot/saml/sso`
+    b. **Yanıt URL** 'si kutusuna aşağıdaki düzende bir URL girin:`https://<hostname>:8443/changepilot/saml/sso`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Işlem yönetimi istemci destek ekibine](mailto:support@realtech-us.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Önceki **tanımlayıcı** ve **yanıt URL** değerleri, kullanmanız gereken gerçek değerler değildir. Gerçek değerleri almak için [Işlem yönetimi destek ekibine](mailto:support@realtech-us.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, sertifikayı Indirip bilgisayarınıza kaydetmek için sertifika **indirme** bağlantısını **(base64)** seçin:
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. **Değişiklik Işlem yönetimini ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **Değişiklik Işlem yönetimini ayarla** bölümünde, gereksinimlerinize göre uygun URL 'Yi veya URL 'leri kopyalayın:
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal sol bölmesinde **Azure Active Directory**' ı seçin. **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+1. **Kullanıcı** özellikleri ' nde şu adımları uygulayın:
+   1. **Ad** kutusuna **B. Simon**girin.  
+   1. **Kullanıcı adı** kutusuna \<username> @ \<companydomain> .. yazın. \<extension> Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**'u seçin.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+### <a name="grant-access-to-the-test-user"></a>Test kullanıcısına erişim izni verme
 
-Bu bölümde, Işlem yönetimini değiştirme erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, bu kullanıcıya Işlem yönetimini değiştirme erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **Işlem yönetimini Değiştir**' i seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünde, **Kullanıcılar ve gruplar**' ı seçin:
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+   ![Kullanıcı ve gruplar'ı seçin](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin ve sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
+    ![Kullanıcı ekle seçeneğini belirleme](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, **Kullanıcılar** listesinde **B. Simon** öğesini seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata**' yı seçin.
 
 ## <a name="configure-change-process-management-sso"></a>Işlem yönetimini değiştirme SSO 'yu yapılandırma
 
-**Değişiklik Işlemi yönetimi** tarafında çoklu oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den uygun kopyalanmış URL 'leri, [işlem yönetimi destek ekibine değiştirmek](mailto:support@realtech-us.com)üzere göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+Değişiklik Işlemi yönetimi tarafında çoklu oturum açmayı yapılandırmak için, indirilen Base64 sertifikasını ve Azure portal kopyaladığınız uygun URL 'Leri [Işlem yönetimi destek ekibine](mailto:support@realtech-us.com)göndermeniz gerekir. SAML SSO bağlantısını her iki tarafta da doğru olacak şekilde yapılandırır.
 
-### <a name="create-change-process-management-test-user"></a>Değişiklik Işlemi yönetimi test kullanıcısı oluştur
-
-Bu bölümde, değişiklik Işlemi yönetiminde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Değişiklik Işlemi yönetim platformuna kullanıcıları eklemek için [Işlem yönetimi destek ekibi](mailto:support@realtech-us.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+### <a name="create-a-change-process-management-test-user"></a>Değişiklik Işlemi yönetimi test kullanıcısı oluşturma
+ Değişiklik Işlemi yönetimi 'nde B. Simon adlı bir kullanıcı eklemek için [Işlem yönetimi destek](mailto:support@realtech-us.com) ekibiyle birlikte çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, erişim paneli ' ni kullanarak Azure AD SSO yapılandırmanızı test edeceksiniz.
 
-Erişim panelinde Işlem yönetimini Değiştir kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız değişiklik Işlemi yönetiminde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Işlem yönetimi kutucuğunu Değiştir ' i seçtiğinizde, SSO 'yu ayarladığınız değişiklik Işlemi yönetimi örneğinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneli 'Ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Işlem yönetimini Azure AD ile değiştirmeyi deneyin](https://aad.portal.azure.com/)
 

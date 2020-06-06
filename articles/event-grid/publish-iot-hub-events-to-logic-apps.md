@@ -7,12 +7,12 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: robinsh
-ms.openlocfilehash: 5a0b9b2752a2ad8b7d2e03a40af11407b97391bc
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 2a0b25fc73bf0f549a199592d558c0097c2db8b8
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322048"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457074"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Öğretici: Event Grid ve Logic Apps kullanarak Azure IoT Hub olaylarıyla ilgili e-posta bildirimleri gönderin
 
@@ -20,7 +20,7 @@ Azure Event Grid, aşağı akış iş uygulamalarınızda eylemler tetikleyerek 
 
 Bu makalede IoT Hub ve Event Grid kullanan bir örnek yapılandırma gösterilmektedir. Son olarak, IoT Hub 'ınıza bir cihaz eklendiğinde bildirim e-postası gönderecek şekilde ayarlanmış bir Azure mantıksal uygulamanız vardır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin bir Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir Azure hesabı oluşturabilirsiniz](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -181,7 +181,7 @@ Bu bölümde, IoT Hub'ınızı gerçekleşen olayları yayımlamak için yapıla
    2. **Konu ayrıntıları** bölümünde aşağıdaki görevleri yapın:
        1. **Konu türünün** **IoT Hub**olarak ayarlandığını onaylayın. 
        2. IoT Hub 'ın adının **kaynak kaynak** alanı için değer olarak ayarlandığını doğrulayın. 
-       3. Sizin için oluşturulacak **Sistem konusu** için bir ad girin. 
+       3. Sizin için oluşturulacak **Sistem konusu** için bir ad girin. Sistem konuları hakkında bilgi edinmek için bkz. [sistem konularına genel bakış](system-topics.md).
    3. **Olay türleri** bölümünde aşağıdaki görevleri yapın: 
         1. **Olay türlerine filtre uygulamak**Için, **cihaz oluşturma**dışında tüm seçimlerin işaretini kaldırın.
 

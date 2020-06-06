@@ -5,16 +5,16 @@ description: Blob verilerini belirli bir anda yedeklemek için Blobun salt okunu
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 438692d5c142c3f617ee9d0c3f55b9b3740f9b7a
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: be3d06d8ea493ab7c246ace5c49d5e5bc0036108
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884702"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463544"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>.NET 'te blob anlık görüntüsü oluşturma ve yönetme
 
@@ -150,7 +150,7 @@ await blobClient.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, nul
 - [Deleteıfexists](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexists)
 - [Deleteıfexistsasync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexistsasync)
 
-Aşağıdaki kod örneği, .NET 'teki bir Blobun ve anlık görüntülerinin nasıl silineceğini gösterir; burada `blockBlob` , [CloudBlockBlob] [dotnet_CloudBlockBlob] türünde bir nesnedir:
+Aşağıdaki kod örneği, .NET 'teki bir Blobun ve anlık görüntülerinin nasıl silineceğini gösterir; burada, `blockBlob` [CloudBlockBlob] [dotnet_CloudBlockBlob] türünde bir nesnedir:
 
 ```csharp
 await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, null, null);

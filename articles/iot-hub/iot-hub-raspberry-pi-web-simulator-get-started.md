@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: wesmc
-ms.openlocfilehash: efbe41be6c923f3547df86fd6faeb56bff5e0802
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c1e56eced3ed675a70cc1ec2461038c80cff233
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73954524"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449796"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Raspberry PI çevrimiçi simülatörünü Azure IoT Hub 'a bağlama (node. js)
 
@@ -23,18 +23,20 @@ ms.locfileid: "73954524"
 
 Bu öğreticide, Raspberry PI çevrimiçi simülatörü ile çalışmanın temellerini öğrenerek başlarsınız. Daha sonra [Azure IoT Hub](about-iot-hub.md)kullanarak PI benzeticisinin buluta sorunsuz bir şekilde nasıl bağlanacağını öğreneceksiniz.
 
-Fiziksel cihazlarınız varsa, kullanmaya başlamak için [Raspberry Pi Ile Azure IoT Hub bağlama](iot-hub-raspberry-pi-kit-node-get-started.md) makalesini ziyaret edin.
-
 <p>
 <div id="diag" style="width:100%; text-align:center">
-<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#getstarted" target="_blank">
 <img src="media/iot-hub-raspberry-pi-web-simulator/3-banner.png" alt="Connect Raspberry Pi web simulator to Azure IoT Hub" width="400">
 </div>
+</p>
 <p>
 <div id="button" style="width:100%; text-align:center">
-<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted" target="_blank">
+<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#getstarted" target="_blank">
 <img src="media/iot-hub-raspberry-pi-web-simulator/6-button-default.png" alt="Start Raspberry Pi simulator" width="400" onmouseover="this.src='media/iot-hub-raspberry-pi-web-simulator/5-button-click.png';" onmouseout="this.src='media/iot-hub-raspberry-pi-web-simulator/6-button-default.png';">
+</a>
 </div>
+</p>
+
+Fiziksel cihazlarınız varsa, kullanmaya başlamak için [Raspberry Pi Ile Azure IoT Hub bağlama](iot-hub-raspberry-pi-kit-node-get-started.md) makalesini ziyaret edin.
 
 ## <a name="what-you-do"></a>Yapabilecekleriniz
 
@@ -96,9 +98,9 @@ Web benzeticisinde üç alan vardır.
 1. 
    ![Cihaz bağlantı dizesini değiştirme](media/iot-hub-raspberry-pi-web-simulator/1-connectionstring.png)
 
-2. Uygulamayı **Run** çalıştırmak için Çalıştır `npm start` veya yaz ' ı seçin.
+2. Uygulamayı çalıştırmak için **Çalıştır** veya yaz ' ı seçin `npm start` .
 
-Raspberry Pi 'den IoT Hub 'ınıza gönderilen algılayıcı verilerini ve IoT Hub ![çıkış algılayıcı verilerinize gönderilen iletileri gösteren aşağıdaki çıktıyı görmeniz gerekir](media/iot-hub-raspberry-pi-web-simulator/2-run-application.png)
+![Raspberry Pi 'Den IoT Hub 'ınıza gönderilen algılayıcı verilerini ve IoT Hub çıkış algılayıcı verilerinize gönderilen iletileri gösteren aşağıdaki çıktıyı görmeniz gerekir](media/iot-hub-raspberry-pi-web-simulator/2-run-application.png)
 
 ## <a name="read-the-messages-received-by-your-hub"></a>Hub 'ınız tarafından alınan iletileri okuyun
 

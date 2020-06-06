@@ -3,12 +3,12 @@ title: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık an
 description: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık analizini ayarlayın.
 ms.topic: how-to
 ms.date: 2/24/2020
-ms.openlocfilehash: af767bf73a3b9a6f2a91298987f11974499fd694
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3259c861b0e64b560eb2a17a832a02b87855bebf
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79455715"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449201"
 ---
 # <a name="set-up-agentless-dependency-visualization"></a>Aracısız bağımlılık görselleştirmesini ayarlama 
 
@@ -50,7 +50,7 @@ Kullanıcı hesabını gereç öğesine ekleyin.
 1. Gereç Yönetimi uygulamasını açın. 
 2. **VCenter ayrıntıları sağla** paneline gidin.
 3. **VM 'lerde uygulama ve bağımlılıkları keşfet**bölümünde **kimlik bilgileri ekle** ' ye tıklayın.
-3. **İşletim sistemini**seçin, hesap için bir kolay ad ve **Kullanıcı adı**/**parolasını** girin
+3. **İşletim sistemini**seçin, hesap için bir kolay ad ve **Kullanıcı adı** / **parolasını** girin
 6. **Kaydet**’e tıklayın.
 7. **Kaydet ve bulmayı Başlat**' a tıklayın.
 
@@ -63,9 +63,9 @@ Kullanıcı hesabını gereç öğesine ekleyin.
 1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
 2. **Bağımlılık Analizi** simgesine tıklayın.
 3. **Sunucu Ekle**' ye tıklayın.
-3. **Sunucu Ekle** sayfasında, ilgili makineleri bulan gereci seçin.
-4. Makine listesinden makineleri seçin.
-5. **Sunucu Ekle**' ye tıklayın.
+4. **Sunucu Ekle** sayfasında, ilgili makineleri bulan gereci seçin.
+5. Makine listesinden makineleri seçin.
+6. **Sunucu Ekle**' ye tıklayın.
 
     ![Bağımlılık bulmayı Başlat](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
@@ -91,6 +91,20 @@ Bağımlılık bulmayı başlattıktan sonra altı saat etrafında bağımlılı
 
 > [!NOTE]
 > Bağımlılık için işlem bilgileri her zaman kullanılabilir değildir. Kullanılabilir değilse, bağımlılık "Bilinmeyen işlem" olarak işaretlenen işlemle birlikte gösterilmiştir.
+
+## <a name="export-dependency-data"></a>Bağımlılık verilerini dışarı aktar
+
+1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
+2. **Bağımlılık Analizi** simgesine tıklayın.
+3. **Uygulama bağımlılıklarını dışarı aktar**' a tıklayın.
+4. **Uygulama bağımlılıklarını dışarı aktar** sayfasında, ilgili makineleri bulan gereci seçin.
+5. Başlangıç saatini ve bitiş saatini seçin. Verileri yalnızca son 30 güne indirebileceğinizi unutmayın.
+6. **Bağımlılığı dışarı aktar**öğesine tıklayın.
+
+Bağımlılık verileri bir CSV biçiminde verilir ve indirilir. İndirilen dosya, bağımlılık analizi için etkinleştirilen tüm makinelerde bağımlılık verilerini içerir. 
+
+    ![Export dependencies](./media/how-to-create-group-machine-dependencies-agentless/export.png)
+
 
 ## <a name="stop-dependency-discovery"></a>Bağımlılık bulmayı durdur
 

@@ -8,16 +8,18 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 0945743fb2cf3e37345ff562250e48511944cee6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: e55dfc692bdd625de8873f6e61c9969ed7fbf2df
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125562"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466179"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Azure Bilişsel Arama güvenli bağlantısı için özel uç nokta oluşturma
 
 Bu makalede, Internet üzerinden erişilemeyen yeni bir Azure Bilişsel Arama hizmet örneği oluşturmak için Azure portal kullanacaksınız. Daha sonra, aynı sanal ağ içinde bir Azure sanal makinesini yapılandıracaksınız ve özel bir uç nokta aracılığıyla arama hizmetine erişmek için kullanacaksınız.
+
+Özel uç noktalar [Azure özel bağlantısı](../private-link/private-link-overview.md)tarafından ayrı bir hizmet olarak sağlanır. Maliyetler hakkında daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/private-link/).
 
 > [!Important]
 > Azure Bilişsel Arama için özel uç nokta desteği, Azure portal veya [yönetim REST API 2020-03-13 sürümü](https://docs.microsoft.com/rest/api/searchmanagement/)kullanılarak yapılandırılabilir. Hizmet uç noktası özel olduğunda, bazı Portal özellikleri devre dışı bırakılır. Hizmet düzeyi bilgilerini görüntüleyebilir ve yönetebileceksiniz, ancak dizin verilerine ve hizmette Dizin, Dizin Oluşturucu ve beceri tanımları gibi çeşitli bileşenlere erişim sağlamak için Portal erişimi güvenlik nedenleriyle kısıtlıdır.
@@ -44,7 +46,7 @@ Bu bölümde, arama hizmetinizin özel uç noktasına erişmek için kullanılac
     | ------- | ----- |
     | Abonelik | Aboneliğinizi seçme|
     | Kaynak grubu | **Yeni oluştur**' u seçin, *Myresourcegroup*yazın ve **Tamam** ' ı seçin. |
-    | Name | *MyVirtualNetwork* girin |
+    | Adı | *MyVirtualNetwork* girin |
     | Bölge | İstediğiniz bölgeyi seçin |
     |||
 
@@ -64,7 +66,7 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
     | **ÖRNEK AYRıNTıLARı** |  |
-    | URL'si | Benzersiz bir ad girin. |
+    | URL | Benzersiz bir ad girin. |
     | Konum | İstediğiniz bölgeyi seçin. |
     | Fiyatlandırma katmanı | **Fiyatlandırma katmanını Değiştir** ' i seçin ve istediğiniz hizmet katmanını seçin. ( **Ücretsiz** katmanda desteklenmez. **Temel** veya daha yüksek olmalıdır.) |
     |||
@@ -84,7 +86,7 @@ Bu bölümde, özel bir uç nokta ile yeni bir Azure Bilişsel Arama hizmeti olu
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
     | Konum | **Batı ABD**seçin.|
-    | Name |  *Myprivateendpoint*girin.  |
+    | Adı |  *Myprivateendpoint*girin.  |
     | Hedef alt kaynak | Varsayılan **SearchService**' i bırakın. |
     | **IŞLEMLERI** |  |
     | Sanal ağ  | *Myresourcegroup*kaynak grubundan *MyVirtualNetwork* öğesini seçin. |

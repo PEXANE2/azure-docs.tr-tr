@@ -4,16 +4,16 @@ description: Depolama hesabınızdan verilerin bir alt kümesini almak için sor
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.openlocfilehash: d7213bb44503fbe191a69683188bdea6976827ee
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: cc9235f07c0829abfb8be42e83d05d8428bc1806
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930089"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465873"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>Azure Data Lake Storage sorgu hızlandırma kullanarak verileri filtreleme (Önizleme)
 
@@ -53,11 +53,11 @@ Sorgu hızlandırma (Önizleme), uygulamaların ve analiz çerçevelerinin yaln�
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-1. Sorgu hızlandırma paketlerini indirin. Bu bağlantıyı kullanarak bu paketleri içeren sıkıştırılmış bir. zip dosyası elde edebilirsiniz: [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net). 
+1. Sorgu hızlandırma paketlerini indirin. Bu bağlantıyı kullanarak bu paketleri içeren sıkıştırılmış bir. zip dosyası elde edebilirsiniz: [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net) . 
 
 2. Bu dosyanın içeriğini proje dizininize ayıklayın.
 
-3. Proje dosyanızı (*. csproj*) bir metin düzenleyicisinde açın ve bu paket başvurularını \<proje\> öğesinin içine ekleyin.
+3. Proje dosyanızı (*. csproj*) bir metin düzenleyicisinde açın ve bu paket başvurularını öğesinin içine ekleyin \<Project\> .
 
    ```xml
    <ItemGroup>
@@ -67,7 +67,7 @@ Sorgu hızlandırma (Önizleme), uygulamaların ve analiz çerçevelerinin yaln�
    </ItemGroup>
    ```
 
-4. Önizleme SDK paketlerini geri yükleyin. Bu örnek komut, `dotnet restore` komutunu kullanarak önizleme SDK paketlerini geri yükler. 
+4. Önizleme SDK paketlerini geri yükleyin. Bu örnek komut, komutunu kullanarak önizleme SDK paketlerini geri yükler `dotnet restore` . 
 
    ```console
    dotnet restore --source C:\Users\contoso\myProject
@@ -86,7 +86,7 @@ Sorgu hızlandırma (Önizleme), uygulamaların ve analiz çerçevelerinin yaln�
    > [!NOTE]
    > Bu makaledeki örneklerde, Dizin adının **lib**olduğu varsayılır.
 
-2. Sorgu hızlandırma paketlerini indirin. Bu bağlantıyı kullanarak bu paketleri içeren sıkıştırılmış bir. zip dosyası elde edebilirsiniz: [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java). 
+2. Sorgu hızlandırma paketlerini indirin. Bu bağlantıyı kullanarak bu paketleri içeren sıkıştırılmış bir. zip dosyası elde edebilirsiniz: [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java) . 
 
 3. Bu. zip dosyasındaki dosyaları oluşturduğunuz dizine ayıklayın. Örneğimizde, bu dizin **lib**olarak adlandırılmıştır. 
 
@@ -162,7 +162,7 @@ using CsvHelper;
 using CsvHelper.Configuration;
 ```
 
-Bu makalede sunulan örnekleri derlemek için de bu `using` deyimleri de eklemeniz gerekir.
+Bu makalede sunulan örnekleri derlemek için de bu deyimleri de eklemeniz gerekir `using` .
 
 ```csharp
 using System.Threading.Tasks;
@@ -190,15 +190,15 @@ import org.apache.commons.csv.*;
 
 ## <a name="retrieve-data-by-using-a-filter"></a>Filtre kullanarak veri alma
 
-Bir sorgu hızlandırma isteğindeki satır filtresi koşullarını ve sütun projeksiyonlarını belirtmek için SQL 'i kullanabilirsiniz. Aşağıdaki kod, depolama alanındaki bir CSV dosyasını sorgular ve üçüncü sütunun değerle `Hemingway, Ernest`eşleştiği tüm veri satırlarını döndürür. 
+Bir sorgu hızlandırma isteğindeki satır filtresi koşullarını ve sütun projeksiyonlarını belirtmek için SQL 'i kullanabilirsiniz. Aşağıdaki kod, depolama alanındaki bir CSV dosyasını sorgular ve üçüncü sütunun değerle eşleştiği tüm veri satırlarını döndürür `Hemingway, Ernest` . 
 
-- SQL sorgusunda, sorgulanmakta olan dosyayı `BlobStorage` belirtmek için anahtar sözcüğü kullanılır.
+- SQL sorgusunda, `BlobStorage` sorgulanmakta olan dosyayı belirtmek için anahtar sözcüğü kullanılır.
 
-- Sütun başvuruları, ilk sütunun `_N` bulunduğu konum olarak belirtilir `_1`. Kaynak dosya bir başlık satırı içeriyorsa, üst bilgi satırında belirtilen ada göre sütunlara başvurabilirsiniz. 
+- Sütun başvuruları, `_N` ilk sütunun bulunduğu konum olarak belirtilir `_1` . Kaynak dosya bir başlık satırı içeriyorsa, üst bilgi satırında belirtilen ada göre sütunlara başvurabilirsiniz. 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Async yöntemi `BlobQuickQueryClient.QueryAsync` sorguyu sorgu hızlandırma API 'sine gönderir ve ardından sonuçları bir [Stream](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8) nesnesi olarak uygulamaya geri akış sağlar.
+Async yöntemi sorguyu `BlobQuickQueryClient.QueryAsync` sorgu HıZLANDıRMA API 'sine gönderir ve ardından sonuçları bir [Stream](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8) nesnesi olarak uygulamaya geri akış sağlar.
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)
@@ -260,7 +260,7 @@ class ProgressHandler : IProgress<long>
 
 ### <a name="java"></a>[Java](#tab/java)
 
-Yöntemi `BlobQuickQueryClient.openInputStream()` sorguyu sorgu hızlandırma API 'sine gönderir ve ardından sonuçları başka bir InputStream nesnesi gibi okuyabilen bir `InputStream` nesne olarak uygulamaya geri gönderir.
+Yöntemi sorguyu `BlobQuickQueryClient.openInputStream()` sorgu HıZLANDıRMA API 'sine gönderir ve ardından sonuçları `InputStream` başka bir InputStream nesnesi gibi okuyabilen bir nesne olarak uygulamaya geri gönderir.
 
 ```java
 static void QueryHemingway(BlobClient blobClient) {
@@ -316,7 +316,7 @@ static void DumpQueryCsv(BlobClient blobClient, String query, Boolean headers) {
 
 Sonuçlarınızı bir sütun alt kümesiyle kapsamını belirleyebilirsiniz. Bu şekilde, yalnızca belirli bir hesaplamayı gerçekleştirmek için gereken sütunları elde edersiniz. Bu, uygulama performansını geliştirir ve ağ üzerinden daha az veri aktarıldığından maliyeti azaltır. 
 
-Bu kod, veri kümesindeki `PublicationYear` tüm kitaplar için yalnızca sütunu alır. Ayrıca, sorgudaki sütunlara başvurmak için kaynak dosyasındaki üst bilgi satırındaki bilgileri de kullanır.
+Bu kod, `PublicationYear` veri kümesindeki tüm kitaplar için yalnızca sütunu alır. Ayrıca, sorgudaki sütunlara başvurmak için kaynak dosyasındaki üst bilgi satırındaki bilgileri de kullanır.
 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)

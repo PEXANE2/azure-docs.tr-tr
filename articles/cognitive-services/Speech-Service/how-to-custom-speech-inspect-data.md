@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 60b415f69800885f37ee53cc4f090098f5ebf1f1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7a8fec876556d943d29756a38ffc27ae8095e3c4
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74806088"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466247"
 ---
 # <a name="inspect-custom-speech-data"></a>Özel Konuşma verilerini inceleme
 
 > [!NOTE]
 > Bu sayfa, [özel konuşma tanıma için test verilerini hazırlama](how-to-custom-speech-test-data.md) okuduğunuzu ve İnceleme için bir veri kümesi yüklediğinizi varsayar.
 
-Özel Konuşma Tanıma, ses verilerini karşılık gelen tanıma sonucuyla karşılaştırarak bir modelin tanınma kalitesini görsel olarak incelemenize olanak sağlayan araçlar sağlar. [Özel konuşma tanıma portalından](https://speech.microsoft.com/customspeech)karşıya yüklenen sesi kayıttan yürütebilir ve belirtilen tanınma sonucunun doğru olup olmadığını belirleyebilirsiniz. Bu araç, herhangi bir ses verisi almak zorunda kalmadan Microsoft 'un temel konuşma konuşmadan metin modeli veya eğitilen özel bir modelin kalitesini hızlıca incelemenizi sağlar.
+Özel Konuşma Tanıma, ses verilerini karşılık gelen tanıma sonucuyla karşılaştırarak bir modelin tanınma kalitesini görsel olarak incelemenize olanak sağlayan araçlar sağlar. [Özel konuşma tanıma portalından](https://speech.microsoft.com/customspeech)karşıya yüklenen sesi kayıttan yürütebilir ve belirtilen tanınma sonucunun doğru olup olmadığını belirleyebilirsiniz. Bu araç, Microsoft 'un temel konuşma konuşmadan metin modelinin kalitesini incelemenize, eğitilen özel bir modeli incelemenize veya iki model ile döküm karşılaştırmanıza yardımcı olur.
 
 Bu belgede, daha önce karşıya yüklediğiniz eğitim verilerini kullanarak bir modelin kalitesini görsel olarak incelemeyi öğreneceksiniz.
 
@@ -39,22 +39,23 @@ Bir test oluşturmak için aşağıdaki yönergeleri izleyin:
 5. Test etmek istediğiniz en fazla iki model seçin.
 6. **Oluştur**' a tıklayın.
 
-Bir test başarıyla oluşturulduktan sonra modelleri yan yana karşılaştırabilirsiniz.
+Bir test başarıyla oluşturulduktan sonra, bir modelin belirttiğiniz ses veri kümesini nasıl oluşturduğunu veya iki modelden gelen sonuçları yan yana nasıl karşılaştırabileceğiniz hakkında bilgi alabilirsiniz.
 
 [!INCLUDE [service-pricing-advisory](includes/service-pricing-advisory.md)]
 
 ## <a name="side-by-side-model-comparisons"></a>Yan yana model karşılaştırmaları
 
-Test durumu _başarılı_olduğunda testin ayrıntılarını görmek için test öğesi adına tıklayın. Bu ayrıntı sayfasında, veri kümenizdeki tüm bildirimler listelenir. Bu, gönderilen veri kümesinden gelen döküm ile birlikte iki modelin tanınma sonuçlarını gösterir.
+Test durumu _başarılı_olduğunda testin ayrıntılarını görmek için test öğesi adına tıklayın. Bu ayrıntı sayfasında, veri kümenizdeki tüm bildirimler listelenir ve karşılaştırdığınız iki modelin tanınma sonuçları gösterilir.
 
 Yan yana karşılaştırmayı incelemeye yardımcı olması için ekleme, silme ve değiştirme gibi çeşitli hata türlerini değiştirebilirsiniz. Her sütunda ses dinlemek ve tanıma sonuçlarını karşılaştırmak yoluyla (insan tarafından etiketlenmiş bir konum ve iki konuşmadan metne ait sonuçları gösterir), hangi modelin ihtiyaçlarınıza uygun olduğunu ve iyileştirmelerin gerekli olduğunu belirtebilirsiniz.
 
-Bir konuşma tanıma uç noktası kalitesinin bir uygulama için yeterli olup olmadığını doğrulamak için kalite testi inceleniyor yararlı olur. Bir doğruluğun bir amaç ölçüsü için, daha fazla ses kullanılmasını gerektiren [doğruluğu değerlendir](how-to-custom-speech-evaluate-data.md)bölümünde bulunan yönergeleri izleyin.
+Yan yana model testi, bir uygulama için en uygun konuşma tanıma modelini doğrulamak için kullanışlıdır. Bir doğruluğun bir amaç ölçüsü için, daha fazla ses kullanılmasını gerektiren [doğruluğu değerlendir](how-to-custom-speech-evaluate-data.md)bölümünde bulunan yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Verilerinizi değerlendirin](how-to-custom-speech-evaluate-data.md)
 - [Modelinizi eğitme](how-to-custom-speech-train-model.md)
+- [Modelinizi geliştirme](how-to-custom-speech-improve-accuracy.md)
 - [Modelinizi dağıtın](how-to-custom-speech-deploy-model.md)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
