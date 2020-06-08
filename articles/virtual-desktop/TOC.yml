@@ -50,8 +50,8 @@
           href: create-fslogix-profile-container.md
         - name: Azure Dosyalar’ı ve Azure AD DS’yi kullanma
           href: create-profile-container-adds.md
-    - name: Profil kapsayıcısı dosya paylaşımları oluşturma
-      href: create-file-share.md
+        - name: Azure Dosyalar’ı ve AD DS’yi kullanma
+          href: create-file-share.md
     - name: Konak havuzu ayarlarını yapılandırma
       items:
         - name: RDP özellikleri
@@ -110,7 +110,7 @@
       href: troubleshoot-set-up-overview.md
     - name: Sorunları belirleme ve tanılama
       href: diagnostics-role-service.md
-    - name: Kiracı ve ana bilgisayar havuzu oluşturma
+    - name: Konak havuzu oluşturma
       href: troubleshoot-set-up-issues.md
     - name: Oturum ana bilgisayarı sanal makine yapılandırması
       href: troubleshoot-vm-configuration.md

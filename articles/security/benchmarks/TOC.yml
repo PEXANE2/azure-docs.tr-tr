@@ -35,6 +35,8 @@
       href: security-baselines-overview.md
     - name: API Management güvenlik temeli
       href: ../../api-management/security-baseline.md
+    - name: Application Gateway güvenlik temeli
+      href: ../../application-gateway/security-baseline.md
     - name: Redis için Azure Cache güvenlik temeli
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Yedekleme güvenlik temeli
@@ -47,8 +49,12 @@
       href: ../../container-registry/security-baseline.md
     - name: Cosmos DB güvenlik temeli
       href: ../../cosmos-db/security-baseline.md
+    - name: Müşteri Kasası güvenlik temeli
+      href: ../fundamentals/customer-lockbox-security-baseline.md
     - name: Veri Gezgini güvenlik temeli
       href: /azure/data-explorer/security-baseline
+    - name: Data Factory güvenlik temeli
+      href: /azure/data-factory/security-baseline
     - name: Databricks güvenlik temeli
       href: ../../azure-databricks/security-baseline.md
     - name: Event Hubs güvenlik temeli
@@ -67,5 +73,7 @@
       href: ../../postgresql/security-baseline.md
     - name: SQL Veritabanı güvenlik temeli
       href: ../../sql-database/security-baseline.md
+    - name: Stream Analytics temeli
+      href: ../../stream-analytics/security-baseline.md
     - name: Depolama güvenlik temeli
       href: ../../storage/common/security-baseline.md

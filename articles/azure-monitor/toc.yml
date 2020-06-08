@@ -622,6 +622,10 @@
                   href: app/javascript.md
                 - name: JavaScript için kaynak haritası
                   href: app/source-map-support.md
+                - name: Sorun giderme
+                  items:
+                    - name: SDK yükleme hatası
+                      href: app/javascript-sdk-load-failure.md
             - name: Application Insights API özeti
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
@@ -743,6 +747,8 @@
               href: app/profiler-settings.md
             - name: Profil Oluşturma İsteklerini İzleme
               href: app/profiler-trackrequests.md
+            - name: BYOS’u (Kendi Depolama Alanını Getir) yapılandırma
+              href: app/profiler-bring-your-own-storage.md
             - name: Profiler Sorunlarını Giderme
               href: app/profiler-troubleshooting.md
         - name: Anlık Görüntü Hata Ayıklayıcı
@@ -756,6 +762,8 @@
               href: app/snapshot-debugger-vm.md
             - name: Snapshot Debugger'ı yükseltme
               href: app/snapshot-debugger-upgrade.md
+            - name: BYOS’u (Kendi Depolama Alanını Getir) yapılandırma
+              href: app/profiler-bring-your-own-storage.md
             - name: Snapshot Debugger sorunlarını giderme
               displayname: 'troubleshoot, troubleshooting'
               href: app/snapshot-debugger-troubleshoot.md

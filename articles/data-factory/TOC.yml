@@ -162,6 +162,10 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Tümleştirme çalışma zamanı
       href: concepts-integration-runtime.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: Veri akışları
       items:
         - name: Eşleme veri akışlarıyla verileri dönüştürme

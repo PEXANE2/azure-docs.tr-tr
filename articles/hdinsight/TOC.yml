@@ -59,8 +59,6 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: Küme kapasitesi planlama
           href: ./hdinsight-capacity-planning.md
-        - name: CPU çekirdeği kotası için artış isteme
-          href: ./quota-increase-request.md
         - name: Küme yönetimi için en iyi yöntemler
           href: ./cluster-management-best-practices.md
         - name: Kullanılabilirlik ve güvenilirlik
@@ -239,6 +237,8 @@
               href: ./cluster-availability-monitor-logs.md
         - name: Sorun giderme
           items:
+            - name: CPU çekirdeği kotası için artış isteme
+              href: ./quota-increase-request.md
             - name: Betik eylemlerindeki sorunları giderme
               href: ./troubleshoot-script-action.md
             - name: Kaynak oluşturma hataları

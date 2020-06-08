@@ -11,6 +11,8 @@
       href: whats-new.md
     - name: Microsoft 365 Kamu’daki yenilikler
       href: whats-new-microsoft-365-government.md
+    - name: Azure AD'deki yenilikler arşivi
+      href: whats-new-archive.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
@@ -51,6 +53,8 @@
       items:
         - name: 'Dağıtım 30, 90 ve sonrası'
           href: active-directory-deployment-checklist-p2.md
+        - name: Azure Active Directory dağıtım planları
+          href: active-directory-deployment-plans.md
     - name: Veri depolama
       items:
         - name: Avrupa müşterileri için kimlik verileri depolama
@@ -100,6 +104,8 @@
           href: active-directory-groups-settings-azure-portal.md
         - name: Grup sahibi ekleme veya kaldırma
           href: active-directory-accessmanagement-managing-group-owners.md
+        - name: Gruplar ile kaynaklara erişimi yönetme
+          href: active-directory-manage-groups.md
     - name: Kullanıcılar
       items:
         - name: Yeni kullanıcı ekleme veya silme
@@ -114,14 +120,10 @@
           href: license-users-groups.md
         - name: Silinen bir kullanıcıyı geri yükleme
           href: active-directory-users-restore.md
-- name: Kaynaklar
+- name: Sorun giderme
   expanded: true
   items:
     - name: Azure Active Directory için destek alma
       href: active-directory-troubleshooting-support-howto.md
     - name: Azure Active Directory ile ilgili SSS
       href: active-directory-faq.md
-    - name: Azure Active Directory dağıtım planları
-      href: active-directory-deployment-plans.md
-    - name: Azure AD'deki yenilikler arşivi
-      href: whats-new-archive.md

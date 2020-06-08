@@ -1,0 +1,159 @@
+### YamlMime:Hub
+title: Mobil geliştiricileri için Azure belgeleri
+summary: Azure’da mobil uygulamalar geliştirmek için ihtiyacınız olan bilgileri bulma
+brand: azure
+metadata:
+  title: Mobil geliştiricileri için Azure
+  description: Azure’da mobil uygulamalar geliştirmek için ihtiyacınız olan bilgileri bulma
+  services: mobile-services
+  ms.service: mobile-services
+  ms.topic: hub-page
+  author: codemillmatt
+  ms.author: masoucou
+  ms.date: 06/01/2020
+  ms.openlocfilehash: 470928c43d0e80887ed0f3f8af1a92cadc29c05c
+  ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 06/05/2020
+  ms.locfileid: "84449908"
+highlightedContent:
+  items:
+  - title: Mobil geliştirme çerçevelerini seçme
+    itemType: architecture
+    url: concepts/front-end-development-platform.md
+  - title: Azure mobil uygulama geliştirmede aşamaları
+    itemType: architecture
+    url: concepts/stages-overview.md
+  - title: Azure ile eksiksiz bir mobil uygulama oluşturma
+    itemType: video
+    url: https://channel9.msdn.com/Shows/Partly-Cloudy
+  - title: Xamarin.Forms ile mobil uygulamalar oluşturma
+    itemType: learn
+    url: https://docs.microsoft.com/learn/paths/build-mobile-apps-with-xamarin-forms/
+conceptualContent:
+  title: başlarken
+  summary: Buluta bağlı mobil uygulamalar oluşturmak için Azure kullanma
+  items:
+  - title: Web hizmetlerini çağırma
+    links:
+    - url: concepts/serverless-compute.md
+      itemType: concept
+      text: Azure İşlevleri ve diğer hizmetler ile sunucusuz mobil uygulama arka ucu oluşturma
+    - url: /xamarin/xamarin-forms/data-cloud/azure-services/azure-functions.md
+      itemType: quickstart
+      text: /xamarin/xamarin-forms/data-cloud/azure-services/azure-functions.md
+    - url: /learn/modules/consume-rest-services.md
+      itemType: learn
+      text: Xamarin ile RESTful Web Hizmeti kullanma
+    - url: /xamarin/xamarin-forms/data-cloud/azure-services/azure-signalr.md
+      itemType: concept
+      text: Xamarin.Forms ile Azure SignalR Hizmeti
+    - url: ../api-management/api-management-key-concepts.md
+      itemType: overview
+      text: Azure API Management’a Genel Bakış
+    - url: concepts/real-time.md
+      itemType: overview
+      text: Azure SignalR Hizmeti ile gerçek zamanlı uygulamalar oluşturma
+  - title: Verileri kaydetme
+    links:
+    - url: concepts/data-storage.md
+      itemType: concept
+      text: Buluttaki mobil uygulama verilerini depolama, eşitleme ve sorgulama
+    - url: ../cosmos-db/create-sql-api-xamarin-dotnet.md
+      itemType: quickstart
+      text: Azure Cosmos DB ile verileri kaydetme
+    - url: ../cosmos-db/create-mongodb-xamarin.md
+      itemType: quickstart
+      text: MongoDB için .NET SDK ve Azure Cosmos DB API’si ile Xamarin.Forms uygulaması oluşturma
+    - url: concepts/azure-storage.md
+      itemType: overview
+      text: Azure Depolama ile yüksek oranda güvenilir, dayanıklı ve ölçeklenebilir bulut depolama alanı
+    - url: ../storage/blobs/storage-quickstart-blobs-xamarin.md
+      itemType: quickstart
+      text: Blob depolama ile çalışma
+    - url: concepts/azure-cdn.md
+      itemType: overview
+      text: Azure Content Delivery Network ile içerik dağıtımı
+  - title: Anında iletme bildirimleri gönderme
+    links:
+    - url: concepts/push-notifications.md
+      itemType: overview
+      text: Anında iletme bildirimleri göndererek uygulama kullanıcılarınızla etkileşim kurma
+    - url: ../notification-hubs/create-notification-hub-portal.md
+      itemType: quickstart
+      text: Azure portalında Azure bildirim merkezi oluşturma
+    - url: ../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md
+      itemType: tutorial
+      text: Android cihazlarına anında iletme bildirimleri gönderme
+    - url: ../notification-hubs/push-notifications-android-specific-devices-firebase-cloud-messaging.md
+      itemType: tutorial
+      text: Notification Hubs ve Google Firebase Cloud Messaging kullanarak belirli cihazlara bildirimler gönderme
+    - url: ../notification-hubs/notification-hubs-aspnet-backend-ios-apple-push-notification-service-apns-rich.md
+      itemType: how-to-guide
+      text: Cihazlara zengin içerik gönderme
+  - title: Kullanıcıların kimliklerini doğrulama
+    links:
+    - url: concepts/authentication.md
+      itemType: overview
+      text: Mobil uygulamalarınıza kimlik doğrulaması ekleme ve bunlarda kullanıcı kimliklerini yönetme
+    - url: ../active-directory/develop/tutorial-v2-android.md
+      itemType: tutorial
+      text: Android uygulamasından kullanıcıların oturumunu açma ve Microsoft Graph’i çağırma
+    - url: ../active-directory-b2c/add-native-application.md
+      itemType: how-to-guide
+      text: Azure Active Directory B2C kiracınıza yerel istemci uygulaması ekleme
+    - url: ../active-directory/develop/msal-authentication-flows.md
+      itemType: concept
+      text: Microsoft Authentication Library (MSAL) ile desteklenen kimlik doğrulaması akışları
+    - url: https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal
+      itemType: sample
+      text: Swift iOS uygulamasıyla kullanıcıların oturumunu açma
+  - title: DevOps
+    links:
+    - url: concepts/continuous-delivery.md
+      itemType: concept
+      text: Sürekli teslim hizmetleriyle mobil uygulamalarınızın dağıtımını ve kullanıma sunulmasını otomatikleştirme
+    - url: concepts/continuous-integration.md
+      itemType: concept
+      text: Sürekli derleme ve tümleştirme ile uygulamalarınızın yaşam döngüsünü otomatikleştirme
+    - url: /azure/devops/pipelines/get-started/key-pipelines-concepts.md
+      itemType: concept
+      text: Yeni Azure Pipelines kullanıcılarına yönelik temel kavramlar
+    - url: /appcenter/distribution/uploading.md
+      itemType: how-to-guide
+      text: App Center bir derlemeyi kullanıma sunma
+    - url: /appcenter/distribution/codepush.md
+      itemType: overview
+      text: App Center CodePush
+  - title: Analiz ve kilitlenme raporlaması
+    links:
+    - url: concepts/analytics.md
+      itemType: concept
+      text: Mobil uygulama kullanımını analiz etme ve anlama
+    - url: /appcenter/analytics/overview.md
+      itemType: overview
+      text: App Center Analizi
+    - url: /appcenter/diagnostics/enabling-diagnostics.md
+      itemType: how-to-guide
+      text: Uygulamada tanılamaları etkinleştirme
+    - url: concepts/diagnostics.md
+      itemType: concept
+      text: Mobil uygulamanızda hataları gerçek zamanlı bir şekilde izleme
+    - url: /appcenter/analytics/log-flow.md
+      itemType: tutorial
+      text: Gerçek zamanlı analizler alma
+additionalContent:
+  sections:
+  - title: Azure Mobil SDK’ları
+    summary: 'Aşağıdakiler, Azure mobil istemci SDK’larından bazılarıdır:'
+    items:
+    - title: iOS
+      summary: Microsoft Azure için iOS istemci SDK’ları
+      url: https://github.com/Azure/azure-sdk-for-ios
+    - title: Android
+      summary: Microsoft Azure için Android istemci SDK’ları
+      url: https://github.com/Azure/azure-sdk-for-android
+    - title: .NET / Xamarin
+      summary: .NET ve Xamarin için Azure SDK
+      url: https://azure.github.io/azure-sdk/releases/latest/dotnet.html

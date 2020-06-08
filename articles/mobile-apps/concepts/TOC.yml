@@ -1,0 +1,55 @@
+- name: Azure ile mobil uygulamalar belgeleri
+  href: index.md
+- name: Genel Bakış
+  expanded: true
+  items:
+    - name: Mobil geliştirme çerçevesini seçme
+      href: front-end-development-platform.md
+    - name: Mobil uygulama bulut geliştirme aşamaları
+      href: stages-overview.md
+- name: Kavramlar
+  items:
+    - name: Kimlik Doğrulaması
+      href: authentication.md
+    - name: Veriler
+      items:
+        - name: Veri depolama
+          href: data-storage.md
+        - name: Azure Storage
+          href: azure-storage.md
+        - name: Azure Content Delivery Network
+          href: azure-cdn.md
+    - name: İşlem
+      items:
+        - name: Sunucusuz işlem
+          href: serverless-compute.md
+        - name: Gerçek zamanlı uygulamalar
+          href: real-time.md
+    - name: Kaynak denetimi
+      href: code-hosting-services.md
+    - name: DevOps
+      items:
+        - name: DevOps nedir?
+          href: devops.md
+        - name: Sürekli derleme ve tümleştirme
+          href: continuous-integration.md
+        - name: Gerçek cihazlarda test etme
+          href: test.md
+        - name: Sürekli teslim
+          href: continuous-delivery.md
+    - name: Telemetri
+      items:
+        - name: Kullanımı ve kullanıcı davranışını analiz etme
+          href: analytics.md
+        - name: Gerçek zamanlı hata raporlama
+          href: diagnostics.md
+    - name: Anında iletme bildirimleri
+      href: push-notifications.md
+    - name: Makine öğrenimi
+      items:
+        - name: Azure Bilişsel Hizmetler
+          href: cognitive-services.md
+        - name: Azure Haritalar
+          href: azure-maps.md
+        - name: Azure Bilişsel Arama
+          href: azure-search.md

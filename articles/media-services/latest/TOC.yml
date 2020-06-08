@@ -195,6 +195,19 @@
         - name: Akış
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-streaming.md
+    - name: Sorun giderme
+      items:
+        - name: Sık sorulan sorular
+          displayName: faqs
+          href: frequently-asked-questions.md
+        - name: Hata kodları
+          items:
+            - name: Akış uç noktası hata kodları
+              href: streaming-endpoint-error-codes.md
+            - name: Canlı etkinlik hata kodları
+              href: live-event-error-codes.md
+            - name: İş hata kodları
+              href: job-error-codes.md
     - name: v2’den v3’e geçiş
       items:
         - name: v2 ile v3 karşılaştırması
@@ -340,19 +353,6 @@
           href: download-results-howto.md
         - name: Sinyal açıklayıcı ses
           href: signal-descriptive-audio-howto.md
-    - name: Sorun giderme
-      items:
-        - name: Sık sorulan sorular
-          displayName: faqs
-          href: frequently-asked-questions.md
-        - name: Hata kodları
-          items:
-            - name: Akış uç noktası hata kodları
-              href: streaming-endpoint-error-codes.md
-            - name: Canlı etkinlik hata kodları
-              href: live-event-error-codes.md
-            - name: İş hata kodları
-              href: job-error-codes.md
 - name: Başvuru
   items:
     - name: OpenAPI Belirtimi (Swagger)

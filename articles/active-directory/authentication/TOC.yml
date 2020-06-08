@@ -80,6 +80,8 @@
           href: howto-mfa-userstates.md
         - name: Kimlik doğrulaması sağlayıcılarını yapılandırma
           href: concept-mfa-authprovider.md
+        - name: Uygulama parolalarını kullanma
+          href: howto-mfa-app-passwords.md
         - name: Dizin Federasyonu
           items:
             - name: Windows Server 2016 AD FS Bağdaştırıcısı
@@ -169,6 +171,8 @@
           href: howto-mfaserver-deploy-userportal.md
         - name: Mobil Uygulama Web Hizmeti
           href: howto-mfaserver-deploy-mobileapp.md
+        - name: Ayarları yapılandırma
+          href: howto-mfa-server-settings.md
         - name: Yüksek kullanılabilirliği yapılandırma
           href: howto-mfaserver-deploy-ha.md
         - name: MFA Sunucusu’nu yükseltme

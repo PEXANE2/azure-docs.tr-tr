@@ -195,7 +195,13 @@
 - name: Nasıl yapılır kılavuzları
   items:
     - name: 'Sistem konularını oluşturma, görüntüleme ve yönetme'
-      href: create-view-manage-system-topics.md
+      items:
+        - name: Azure portal
+          href: create-view-manage-system-topics.md
+        - name: Azure CLI
+          href: create-view-manage-system-topics-cli.md
+        - name: Azure Resource Manager şablonu
+          href: create-view-manage-system-topics-arm.md
     - name: Özel konuya gönderme
       href: post-to-custom-topic.md
     - name: Auth0 olaylarına abone olun
