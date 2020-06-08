@@ -106,6 +106,8 @@
       href: train-clustering-model.md
     - name: Model Eğitme
       href: train-model.md
+    - name: PyTorch Modelini eğitme
+      href: train-pytorch-model.md
     - name: Model Hiper Parametrelerini Ayarlama
       href: tune-model-hyperparameters.md
 - name: Model puanlama ve değerlendirmesi
@@ -118,6 +120,8 @@
       href: cross-validate-model.md
     - name: Modeli Değerlendirme
       href: evaluate-model.md
+    - name: Görüntü Modelini Puanlama
+      href: score-image-model.md
     - name: Modeli Puanlama
       href: score-model.md
 - name: Python dili
@@ -142,6 +146,20 @@
       href: preprocess-text.md
     - name: Görünmeyen Dirichlet Ayırması
       href: latent-dirichlet-allocation.md
+- name: Görüntü işleme
+  items:
+    - name: Görüntü Dönüşümü Uygulama
+      href: apply-image-transformation.md
+    - name: Görüntü Dizinine Dönüştürme
+      href: convert-to-image-directory.md
+    - name: Init Görüntü Dönüşümü
+      href: init-image-transformation.md
+    - name: Görüntü Dizinini Bölme
+      href: split-to-image-directory.md
+    - name: DenseNet
+      href: densenet.md
+    - name: ResNet
+      href: resnet.md
 - name: Öneri
   items:
     - name: Önereni Değerlendirme

@@ -31,6 +31,8 @@
           href: understand-cost-mgt-data.md
         - name: Kapsamları anlama ve bunlarla çalışma
           href: understand-work-scopes.md
+        - name: Otomasyon ile maliyetleri yönetme
+          href: manage-automation.md
         - name: EA'dan MCA API'lerine geçiş
           href: migrate-cost-management-api.md
     - name: Nasıl yapılır kılavuzları
