@@ -5,17 +5,17 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 06/02/2020
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c2ffd22c8b3e3ca1786e0a1f905cd07d0568fcf2
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 9210787c674e825c8728e3b79e261b184fbc42fa
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296366"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484645"
 ---
-# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma
+# <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Azure NetApp Files ve AD DS bir profil kapsayıcısı oluşturun
 
 FSLogix profil kapsayıcılarını [Windows sanal masaüstü hizmeti](overview.md)için bir kullanıcı profili çözümü olarak kullanmanızı öneririz. FSLogix profil kapsayıcıları, tam bir kullanıcı profilini tek bir kapsayıcıda depolar ve profilleri Windows sanal masaüstü gibi kalıcı olmayan uzak bilgi işlem ortamlarında dolaşımda kullanılmak üzere tasarlanmıştır. Oturum açtığınızda kapsayıcı, yerel olarak desteklenen bir sanal sabit disk (VHD) ve Hyper-V sanal sabit diski (VHDX) kullanarak bilgi işlem ortamına dinamik olarak eklenir. Bu gelişmiş filtre sürücü teknolojileri, Kullanıcı profilinin hemen kullanılabilir olmasını ve sistemde tam olarak yerel bir kullanıcı profili gibi gösterilmesini sağlar. FSLogix profil kapsayıcıları hakkında daha fazla bilgi edinmek için bkz. [Fslogix profil kapsayıcıları ve Azure dosyaları](fslogix-containers-azure-files.md).
 
@@ -33,7 +33,7 @@ Bu kılavuzdaki yönergeler özellikle Windows sanal masaüstü kullanıcıları
 >[!NOTE]
 >Azure 'daki farklı FSLogix profili kapsayıcı depolama seçenekleri hakkında daha fazla bilgi arıyorsanız, bkz. [FSLogix profil kapsayıcıları Için depolama seçenekleri](store-fslogix-profile.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir konak havuzu için bir FSLogix profil kapsayıcısı oluşturabilmeniz için öncelikle şunları yapmanız gerekir:
 

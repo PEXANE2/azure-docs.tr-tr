@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 72dcf95c8ae8d8da34532fa96e3bf0371f5112fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 244fe0d7be92cc2d8ce4c892d8f90b6b58b32408
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370925"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484803"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>PostgreSQL için Azure veritabanı için özel bağlantı oluşturma ve yönetme-portalı kullanarak tek sunucu
 
@@ -32,7 +32,7 @@ Bu bölümde, özel bağlantı kaynağına (Azure 'da bir PostgreSQL sunucusu) e
 ### <a name="create-the-virtual-network"></a>Sanal ağı oluşturma
 Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi barındırmak için bir sanal ağ ve alt ağ oluşturacaksınız.
 
-1. Ekranın sol üst kısmında **kaynak** > oluştur**ağ** > **sanal ağ**' ı seçin.
+1. Ekranın sol üst kısmında **kaynak oluştur**  >  **ağ**  >  **sanal ağ**' ı seçin.
 2. **Sanal ağ oluştur**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
@@ -49,7 +49,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 
 ### <a name="create-virtual-machine"></a>Sanal makine oluştur
 
-1. Azure Portal ekranın sol üst tarafında **kaynak** > oluştur**işlem** > **sanal makinesi**' ni seçin.
+1. Azure Portal ekranın sol üst tarafında **kaynak oluştur**  >  **işlem**  >  **sanal makinesi**' ni seçin.
 
 2. **Sanal makine oluşturma-temel bilgiler**bölümünde, bu bilgileri girin veya seçin:
 
@@ -95,11 +95,15 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 
 1. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
 
+> [!NOTE]
+> Bazı durumlarda PostgreSQL için Azure veritabanı ve sanal ağ alt ağı farklı aboneliklerde bulunur. Bu durumlarda, aşağıdaki yapılandırmalardan emin olmanız gerekir:
+> - Her iki abonelikte da **Microsoft. DBforPostgreSQL** kaynak sağlayıcısının kayıtlı olduğundan emin olun. Daha fazla bilgi için [Resource-Manager-kayıt][resource-manager-portal] bölümüne bakın
+
 ## <a name="create-an-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure veritabanı tek sunucu oluşturma
 
 Bu bölümde, Azure 'da PostgreSQL için Azure veritabanı sunucusu oluşturacaksınız. 
 
-1. Azure Portal**Databases** > ekranın sol üst tarafında, **kaynak** > oluştur ' u seçin.**PostgreSQL için Azure veritabanı**.
+1. Azure Portal ekranın sol üst tarafında, **kaynak oluştur**' u seçin  >  **Databases**  >  .**PostgreSQL için Azure veritabanı**.
 
 1. **PostgreSQL Için Azure veritabanı dağıtım seçeneğinde** **tek sunucu** ' yı seçin ve şu bilgileri sağlayın:
 
@@ -108,7 +112,7 @@ Bu bölümde, Azure 'da PostgreSQL için Azure veritabanı sunucusu oluşturacak
     | **Proje ayrıntıları** | |
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
-    | **Sunucu Ayrıntıları** |  |
+    | **Sunucu ayrıntıları** |  |
     |Sunucu adı  | *Sunucum*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun.|
     | Yönetici Kullanıcı adı| Tercih etmek için bir yönetici adı girin. |
     | Parola | Seçtiğiniz bir parolayı girin. Parola en az 8 karakter uzunluğunda olmalı ve tanımlanan gereksinimleri karşılamalıdır. |
@@ -126,7 +130,7 @@ Bu bölümde, Azure 'da PostgreSQL için Azure veritabanı sunucusu oluşturacak
 
 Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ekleyeceksiniz. 
 
-1. Azure Portal ekranın sol üst tarafında, **kaynak** > oluştur**ağ** > **özel bağlantısı**' nı seçin.
+1. Azure Portal ekranın sol üst tarafında, **kaynak oluştur**  >  **ağ**  >  **özel bağlantısı**' nı seçin.
 2. **Özel bağlantı merkezi 'Ne genel bakış**' da, **bir hizmete özel bağlantı oluşturma**seçeneğinde, **Başlat**' ı seçin.
 
     ![Özel bağlantıya genel bakış](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
@@ -166,6 +170,9 @@ Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ek
     |Özel DNS bölgesi |Seçin *(yeni) Privatelink. Postgres. Database. Azure. com* |
     |||
 
+    > [!Note] 
+    > [Azure HIZMETLERI DNS bölge yapılandırması](../private-link/private-endpoint-dns.md)' na bakın.
+
 1. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
 2. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin. 
 
@@ -192,7 +199,7 @@ Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ek
     1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
         > [!NOTE]
-        > VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için > **farklı bir hesap kullan**' **ı seçmeniz gerekebilir**.
+        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
 1. **Tamam**’ı seçin.
 
@@ -204,7 +211,7 @@ Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ek
 
 1.  *Myvm*uzak masaüstünde PowerShell ' i açın.
 
-2. Girin `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com`. 
+2. Girin  `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com` . 
 
     Şuna benzer bir ileti alacaksınız:
     ```azurepowershell
@@ -223,12 +230,12 @@ Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ek
     | ------- | ----- |
     | Sunucu türü| **PostgreSQL**' i seçin.|
     | Sunucu adı| *Mydemopostgresserver.Privatelink.Postgres.Database.Azure.com* seçin |
-    | Kullanıcı adı | PostgreSQL sunucusu oluşturma sırasında belirtilen kullanıcı adını username@servername girin. |
+    | Kullanıcı adı | username@servernamePostgreSQL sunucusu oluşturma sırasında belirtilen kullanıcı adını girin. |
     |Parola |PostgreSQL sunucusu oluşturma sırasında bir parola girin. |
     |SSL|**Gerekli**' yi seçin.|
     ||
 
-5. Bağlan’ı seçin.
+5. Bağlan'ı seçin.
 
 6. Sol menüden veritabanlarına gözatamazsınız.
 
@@ -239,10 +246,13 @@ Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ek
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Özel uç nokta, PostgreSQL sunucusu ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin:
 
-1. Portalın üst kısmındaki **arama** kutusuna *myresourcegroup* yazın ve arama sonuçlarından *myresourcegroup* öğesini seçin.
+1.  *myResourceGroup*   Portalın üst kısmındaki **arama** kutusuna myresourcegroup yazın ve arama sonuçlarından *myresourcegroup*öğesini seçin   .
 2. **Kaynak grubunu sil**'i seçin.
 3. **Kaynak grubu adını yazın** ve **Sil**' i seçmek için myresourcegroup girin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu nasıl yapılır, bir sanal ağ üzerinde bir VM oluşturdunuz, PostgreSQL için Azure veritabanı-tek sunucu ve özel erişim için özel bir uç nokta. İnternet 'ten bir VM 'ye bağlanırsınız ve özel bağlantı kullanarak PostgreSQL sunucusuna güvenli bir şekilde iletisiniz. Özel uç noktalar hakkında daha fazla bilgi için bkz. [Azure özel uç noktası nedir?](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

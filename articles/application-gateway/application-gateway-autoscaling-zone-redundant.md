@@ -5,15 +5,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: ab2165cb6b48e58a7adca7093f7ff82d10495066
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: df68bec859a3c2456dd1cf5f69387e8affb4b3e2
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196474"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484536"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
 
@@ -32,7 +32,7 @@ Yeni v2 SKU 'SU aşağıdaki geliştirmeleri içerir:
 - **Performans iyileştirmeleri**: v2 SKU 'Su, standart/WAF SKU 'su ile karşılaştırıldığında daha ıyı bir TLS yük boşaltma performansı sunar.
 - **Daha hızlı dağıtım ve güncelleştirme zamanı** V2 SKU 'SU, standart/WAF SKU 'suna kıyasla daha hızlı dağıtım ve güncelleştirme süresi sağlar. Bu, WAF yapılandırma değişikliklerini de içerir.
 
-![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
+![Otomatik ölçeklendirme bölgesi diyagramı.](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 

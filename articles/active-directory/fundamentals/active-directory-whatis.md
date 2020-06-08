@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: overview
-ms.date: 07/31/2019
+ms.date: 06/05/2020
 ms.author: ajburnle
-ms.custom: it-pro, seodec18, seo-update-azuread-jan
+ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd7b412e99526935738c2494d31a16fded7101a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2a6b7d40512fe3537610efa42ccc33c9f8e80212
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240789"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484381"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory nedir?
 
@@ -24,9 +24,9 @@ Azure Active Directory (Azure AD), Microsoft 'un bulut tabanlı kimlik ve erişi
 
 - Microsoft Office 365, Azure portal ve binlerce diğer SaaS uygulaması gibi dış kaynaklar.
 
-- Şirket ağınızdaki ve intranetinizdeki uygulamalar gibi iç kaynaklar, kendi kuruluşunuz tarafından geliştirilen tüm bulut uygulamalarıyla birlikte.
+- Şirket ağınızdaki ve intranetinizdeki uygulamalar gibi iç kaynaklar, kendi kuruluşunuz tarafından geliştirilen tüm bulut uygulamalarıyla birlikte. Kuruluşunuz için kiracı oluşturma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Active Directory yeni kiracı oluşturma](active-directory-access-create-new-tenant.md).
 
-Azure, Azure AD ve Office 365 ' deki temel kimlik hizmetlerini daha iyi anlamak için [kuruluş mimarları serisi](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity) posterleri için çeşitli Microsoft bulut kullanabilirsiniz.
+Azure AD ve Active Directory Domain Services arasındaki farkı öğrenmek için bkz. [Azure Active Directory Active Directory karşılaştırma](active-directory-compare-azure-ad-to-ad.md). Ayrıca, Azure, Azure AD ve Office 365 ' deki temel kimlik hizmetlerini daha iyi anlamak için [kuruluş mimarları serisi](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity) posterleri için çeşitli Microsoft bulut de kullanabilirsiniz.
 
 ## <a name="who-uses-azure-ad"></a>Azure AD 'yi kimler kullanıyor?
 
@@ -57,28 +57,7 @@ Azure AD uygulamanızı geliştirmek için, Azure Active Directory Premium P1 ve
 
 - **"Kullandıkça öde" özelliği lisansları.** Azure Active Directory Işletmeden müşteriye (B2C) gibi ek özellik lisansları da alabilirsiniz. B2C, müşterilere yönelik uygulamalarınız için kimlik ve erişim yönetimi çözümleri sağlamanıza yardımcı olabilir. Daha fazla bilgi için bkz. [Azure Active Directory B2C belgeleri](../../active-directory-b2c/index.yml).
 
-Azure aboneliğini Azure AD 'ye ilişkilendirme hakkında daha fazla bilgi için bkz. [nasıl yapılır: Azure aboneliğini ilişkilendirme veya ekleme Azure Active Directory](active-directory-how-subscriptions-associated-directory.md) ve kullanıcılarınıza lisans atama hakkında daha fazla bilgi için bkz. [nasıl yapılır: Azure Active Directory lisansları atama veya kaldırma](license-users-groups.md).
-
-## <a name="terminology"></a>Terminoloji
-
-Azure AD ve belgelerini daha iyi anlamak için aşağıdaki koşulları gözden geçiririz.
-
-|Terim veya kavram|Açıklama|
-|---------------|-----------|
-|Kimlik| Kimliği doğrulanmış bir şey. Kimlik, Kullanıcı adı ve parola içeren bir kullanıcı olabilir. Kimlikler Ayrıca gizli anahtarlar veya sertifikalar aracılığıyla kimlik doğrulaması gerektirebilecek uygulamaları veya diğer sunucuları da içerir.|
-|Hesap| Kendisiyle ilişkili verilerin bulunduğu bir kimlik. Kimliği olmayan bir hesabınız olamaz.|
-|Azure AD hesabı| Azure AD veya Office 365 gibi başka bir Microsoft bulut hizmeti aracılığıyla oluşturulmuş bir kimlik. Kimlikler Azure AD 'de depolanır ve kuruluşunuzun bulut hizmeti aboneliklerinde erişilebilir. Bu hesaba bazen Iş veya okul hesabı da denir.|
-|Azure aboneliği| Azure bulut hizmetleri için ödeme yapmak üzere kullanılır. Birçok aboneliğiniz olabilir ve bunlar kredi kartıyla bağlantılıdır.|
-|Azure kiracısı| Kuruluşunuz, Microsoft Azure, Microsoft Intune veya Office 365 gibi bir Microsoft bulut hizmeti aboneliğine kaydolduğunda otomatik olarak oluşturulan adanmış ve güvenilir bir Azure AD örneğidir. Azure kiracısı tek kuruluşu temsil eder.|
-|Tek kiracılı| Ayrılmış bir ortamdaki diğer hizmetlere erişen Azure kiracılar tek kiracı olarak kabul edilir.|
-|Çok Kiracılı| Birden çok kuruluşta paylaşılan bir ortamdaki diğer hizmetlere erişen Azure kiracılar çok kiracılı olarak değerlendirilir.|
-|Azure AD dizini|Her Azure kiracının adanmış ve güvenilen bir Azure AD dizini vardır. Azure AD dizini, kiracının kullanıcılarını, gruplarını ve uygulamalarını içerir ve kiracı kaynakları için kimlik ve erişim yönetimi işlevleri gerçekleştirmek üzere kullanılır.|
-|Özel etki alanı|Her yeni Azure AD dizini, domainname.onmicrosoft.com ilk etki alanı adı ile gelir. Bu başlangıç adının yanı sıra, iş için kullandığınız adları ve kullanıcılarınızın kuruluşunuzun kaynaklarına erişmek için kullandığı adları içeren kuruluşunuzun etki alanı adlarını da ekleyebilirsiniz. Özel etki alanı adları eklemek, kullanıcılarınıza bildiğiniz Kullanıcı adlarını (örneğin,) oluşturmanıza yardımcı olur alain@contoso.com.|
-|Hesap Yöneticisi|Bu klasik abonelik Yöneticisi rolü, kavramsal olarak bir aboneliğin fatura sahibidir. Bu rolün [Azure Hesap Merkezi](https://account.azure.com/Subscriptions) erişimi vardır ve bir hesaptaki tüm abonelikleri yönetmenizi sağlar. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rol tabanlı erişim denetimi (RBAC) rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Hizmet Yöneticisi|Bu klasik abonelik Yöneticisi rolü, erişim dahil olmak üzere tüm Azure kaynaklarını yönetmenizi sağlar. Bu rol, abonelik kapsamında sahip rolü atanan bir kullanıcıya eşdeğer erişime sahiptir. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure RBAC rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Sahip|Bu rol, erişim de dahil olmak üzere tüm Azure kaynaklarını yönetmenize yardımcı olur. Bu rol, Azure kaynaklarına ayrıntılı erişim yönetimi sağlayan, rol tabanlı erişim denetimi (RBAC) adlı yeni bir yetkilendirme sistemi üzerine kurulmuştur. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure RBAC rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Azure AD Genel yöneticisi|Bu yönetici rolü, Azure AD kiracısı tarafından oluşturulan çoğuna 'e otomatik olarak atanır. Genel Yöneticiler, Azure AD 'ye yönelik tüm yönetim işlevlerini ve Exchange Online, SharePoint Online ve Skype Kurumsal Çevrimiçi sürümü gibi Azure AD 'ye federe Hizmetleri gerçekleştirebilir. Birden çok genel yöneticisi olabilir, ancak yalnızca genel Yöneticiler yönetici rollerini (diğer genel yöneticileri atama dahil) kullanıcılara atayabilirler.<br><br>**Notun**<br>Bu yönetici rolü Azure portal genel yönetici olarak adlandırılır, ancak Microsoft Graph API ve Azure AD PowerShell 'de **Şirket Yöneticisi** olarak adlandırılır.<br><br>Çeşitli yönetici rolleri hakkında daha fazla bilgi için [Azure Active Directory Içindeki yönetici rolü izinleri](../users-groups-roles/directory-assign-admin-roles.md)bölümüne bakın.|
-|Microsoft hesabı (da denir, MSA)|Müşteri odaklı Microsoft ürünlerine ve Outlook, OneDrive, Xbox LIVE veya Office 365 gibi bulut hizmetlerine erişim sağlayan kişisel hesaplar. Microsoft hesabı, Microsoft tarafından çalıştırılan Microsoft tüketici kimliği hesap sisteminde oluşturulur ve depolanır.|
+Azure aboneliğini Azure AD 'ye ilişkilendirme hakkında daha fazla bilgi için bkz. [Azure Active Directory Için Azure aboneliği ilişkilendirme veya ekleme](active-directory-how-subscriptions-associated-directory.md) ve kullanıcılarınıza lisans atama hakkında daha fazla bilgi için bkz. [nasıl yapılır: Azure Active Directory lisansları atama veya kaldırma](license-users-groups.md).
 
 ## <a name="which-features-work-in-azure-ad"></a>Azure AD 'de hangi özellikler çalışıyor?
 
@@ -88,10 +67,10 @@ Azure AD lisansınızı seçtikten sonra, kuruluşunuz için aşağıdaki özell
 |-------|-----------|
 |Uygulama yönetimi|Uygulama proxy 'Si, çoklu oturum açma, Uygulamalarım portalı (erişim paneli olarak da bilinir) ve hizmet olarak yazılım (SaaS) uygulamaları kullanarak bulutunuzu ve şirket içi uygulamalarınızı yönetin. Daha fazla bilgi için bkz. Şirket [içi uygulamalara güvenli uzaktan erişim sağlama](../manage-apps/application-proxy.md) ve [uygulama yönetimi belgeleri](../manage-apps/index.yml).|
 |Kimlik Doğrulaması|Azure Active Directory self servis parola sıfırlama, Multi-Factor Authentication, özel yasaklanmış parola listesi ve akıllı kilitleme 'yi yönetin. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulaması belgeleri](../authentication/index.yml).|
+|Geliştiriciler için Azure Active Directory|Tüm Microsoft kimliklerinde oturum açma, Microsoft Graph, diğer Microsoft API 'Leri veya özel API 'Leri çağırmak için belirteçleri alan uygulamalar oluşturun. Daha fazla bilgi için bkz. [Microsoft Identity platform (geliştiriciler için Azure Active Directory)](../develop/index.yml).|
 |İşletmeden İşletmeye (B2B)|Konuk kullanıcılarınızı ve dış iş ortaklarınızı yönetin ve kendi şirket verileriniz üzerinde denetimi koruyun. Daha fazla bilgi için bkz. [Azure ACTIVE DIRECTORY B2B belgeleri](../b2b/index.yml).|
 |İşletmeden Müşteriye (B2C)|Uygulamalarınızı kullanırken kullanıcıların nasıl kaydolma, oturum açma ve profillerini yönetme şeklini özelleştirin ve denetleyin. Daha fazla bilgi için bkz. [Azure Active Directory B2C belgeleri](../../active-directory-b2c/index.yml).|
 |Koşullu Erişim|Bulut uygulamalarınıza erişimi yönetin. Daha fazla bilgi için bkz. [Azure AD koşullu erişim belgeleri](../conditional-access/index.yml).|
-|Geliştiriciler için Azure Active Directory|Tüm Microsoft kimliklerinde oturum açma, Microsoft Graph, diğer Microsoft API 'Leri veya özel API 'Leri çağırmak için belirteçleri alan uygulamalar oluşturun. Daha fazla bilgi için bkz. [Microsoft Identity platform (geliştiriciler için Azure Active Directory)](../develop/index.yml).|
 |Aygıt Yönetimi|Buluttaki veya şirket içindeki cihazlarınızın kurumsal verilerinize erişimini yönetin. Daha fazla bilgi için bkz. [Azure AD cihaz yönetimi belgeleri](../devices/index.yml).|
 |Etki alanı hizmetleri|Azure sanal makinelerini etki alanı denetleyicileri kullanmadan bir etki alanına ekleyin. Daha fazla bilgi için bkz. [Azure AD Domain Services belgeleri](../../active-directory-domain-services/index.yml).|
 |Kurumsal kullanıcılar|Grupları ve yönetici rollerini kullanarak lisans atamasını yönetin, uygulamalara erişin ve temsilcileri ayarlayın. Daha fazla bilgi için bkz. [Kullanıcı yönetimi belgelerini Azure Active Directory](../users-groups-roles/index.yml).|
@@ -102,12 +81,31 @@ Azure AD lisansınızı seçtikten sonra, kuruluşunuz için aşağıdaki özell
 |Privileged identity management (PIM)|Kuruluşunuzun içindeki erişimi yönetin, denetleyin ve izleyin. Bu özellik, Azure AD ve Azure 'daki kaynaklara ve Office 365 veya Intune gibi diğer Microsoft çevrimiçi hizmetlerine erişimi içerir. Daha fazla bilgi için bkz. [Azure AD Privileged Identity Management](../privileged-identity-management/index.yml).|
 |Raporlar ve izleme|Ortamınızdaki güvenlik ve kullanım desenleriyle ilgili Öngörüler elde edin. Daha fazla bilgi için bkz. [Azure Active Directory raporları ve izleme](../reports-monitoring/index.yml).|
 
+## <a name="terminology"></a>Terminoloji
+
+Azure AD ve belgelerini daha iyi anlamak için aşağıdaki koşulları gözden geçiririz.
+
+|Terim veya kavram|Açıklama|
+|---------------|-----------|
+|Kimlik| Kimliği doğrulanmış bir şey. Kimlik, Kullanıcı adı ve parola içeren bir kullanıcı olabilir. Kimlikler Ayrıca gizli anahtarlar veya sertifikalar aracılığıyla kimlik doğrulaması gerektirebilecek uygulamaları veya diğer sunucuları da içerir.|
+|Hesap| Kendisiyle ilişkili verilerin bulunduğu bir kimlik. Kimliği olmayan bir hesabınız olamaz.|
+|Azure AD hesabı| Azure AD veya Office 365 gibi başka bir Microsoft bulut hizmeti aracılığıyla oluşturulmuş bir kimlik. Kimlikler Azure AD 'de depolanır ve kuruluşunuzun bulut hizmeti aboneliklerinde erişilebilir. Bu hesaba bazen Iş veya okul hesabı da denir.|
+|Hesap Yöneticisi|Bu klasik abonelik Yöneticisi rolü, kavramsal olarak bir aboneliğin fatura sahibidir. Bu rolün [Azure Hesap Merkezi](https://account.azure.com/Subscriptions) erişimi vardır ve bir hesaptaki tüm abonelikleri yönetmenizi sağlar. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rol tabanlı erişim denetimi (RBAC) rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Hizmet Yöneticisi|Bu klasik abonelik Yöneticisi rolü, erişim dahil olmak üzere tüm Azure kaynaklarını yönetmenizi sağlar. Bu rol, abonelik kapsamında sahip rolü atanan bir kullanıcıya eşdeğer erişime sahiptir. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure RBAC rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Sahip|Bu rol, erişim de dahil olmak üzere tüm Azure kaynaklarını yönetmenize yardımcı olur. Bu rol, Azure kaynaklarına ayrıntılı erişim yönetimi sağlayan, rol tabanlı erişim denetimi (RBAC) adlı yeni bir yetkilendirme sistemi üzerine kurulmuştur. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure RBAC rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Azure AD Genel yöneticisi|Bu yönetici rolü, Azure AD kiracısı tarafından oluşturulan çoğuna 'e otomatik olarak atanır. Genel Yöneticiler, Azure AD 'ye yönelik tüm yönetim işlevlerini ve Exchange Online, SharePoint Online ve Skype Kurumsal Çevrimiçi sürümü gibi Azure AD 'ye federe Hizmetleri gerçekleştirebilir. Birden çok genel yöneticisi olabilir, ancak yalnızca genel Yöneticiler yönetici rollerini (diğer genel yöneticileri atama dahil) kullanıcılara atayabilirler. Bu yönetici rolünün Azure portal genel yönetici olarak adlandırıldığına, ancak Microsoft Graph API ve Azure AD PowerShell 'de **Şirket Yöneticisi** olarak adlandırıldığına bakın. çeşitli yönetici rolleri hakkında daha fazla bilgi için, bkz. [Azure Active Directory yönetici rolü izinleri](../users-groups-roles/directory-assign-admin-roles.md).|
+|Azure aboneliği| Azure bulut hizmetleri için ödeme yapmak üzere kullanılır. Birçok aboneliğiniz olabilir ve bunlar kredi kartıyla bağlantılıdır.|
+|Azure kiracısı| Kuruluşunuz, Microsoft Azure, Microsoft Intune veya Office 365 gibi bir Microsoft bulut hizmeti aboneliğine kaydolduğunda otomatik olarak oluşturulan adanmış ve güvenilir bir Azure AD örneğidir. Azure kiracısı tek kuruluşu temsil eder.|
+|Tek kiracılı| Ayrılmış bir ortamdaki diğer hizmetlere erişen Azure kiracılar tek kiracı olarak kabul edilir.|
+|Çok Kiracılı| Birden çok kuruluşta paylaşılan bir ortamdaki diğer hizmetlere erişen Azure kiracılar çok kiracılı olarak değerlendirilir.|
+|Azure AD dizini|Her Azure kiracının adanmış ve güvenilen bir Azure AD dizini vardır. Azure AD dizini, kiracının kullanıcılarını, gruplarını ve uygulamalarını içerir ve kiracı kaynakları için kimlik ve erişim yönetimi işlevleri gerçekleştirmek üzere kullanılır.|
+|Özel etki alanı|Her yeni Azure AD dizini, domainname.onmicrosoft.com ilk etki alanı adı ile gelir. Bu başlangıç adının yanı sıra, iş için kullandığınız adları ve kullanıcılarınızın kuruluşunuzun kaynaklarına erişmek için kullandığı adları içeren kuruluşunuzun etki alanı adlarını da ekleyebilirsiniz. Özel etki alanı adları eklemek, kullanıcılarınıza bildiğiniz Kullanıcı adlarını (örneğin,) oluşturmanıza yardımcı olur alain@contoso.com .|
+|Microsoft hesabı (da denir, MSA)|Müşteri odaklı Microsoft ürünlerine ve Outlook, OneDrive, Xbox LIVE veya Office 365 gibi bulut hizmetlerine erişim sağlayan kişisel hesaplar. Microsoft hesabı, Microsoft tarafından çalıştırılan Microsoft tüketici kimliği hesap sisteminde oluşturulur ve depolanır.|
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Active Directory Premium'a kaydolma](active-directory-get-started-premium.md)
 
 - [Azure aboneliğini Azure Active Directory ilişkilendir](active-directory-how-subscriptions-associated-directory.md)
-
-- [Azure Active Directory erişin ve yeni bir kiracı oluşturun](active-directory-access-create-new-tenant.md)
 
 - [Azure Active Directory Premium P2 özelliği dağıtım denetim listesi](active-directory-deployment-checklist-p2.md)

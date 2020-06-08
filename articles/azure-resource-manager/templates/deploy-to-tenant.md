@@ -3,12 +3,12 @@ title: Kaynakları kiracıya dağıtma
 description: Azure Resource Manager şablonundaki kiracı kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: d72b4a63e564732a9a4baaf8b8cd94d0f165e12a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 46e8db865b022e4fa1294c96843553a0480e559f
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653341"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485455"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Kiracı düzeyinde kaynaklar oluşturma
 
@@ -72,7 +72,7 @@ Azure CLı için [az Deployment Tenant Create](/cli/azure/deployment/tenant?view
 az deployment tenant create \
   --name demoTenantDeployment \
   --location WestUS \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
 Azure PowerShell için [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment)kullanın.
@@ -81,7 +81,7 @@ Azure PowerShell için [New-AzTenantDeployment](/powershell/module/az.resources/
 New-AzTenantDeployment `
   -Name demoTenantDeployment `
   -Location "West US" `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
 REST API için dağıtımları kullanın [-kiracı kapsamında oluşturun veya güncelleştirin](/rest/api/resources/deployments/createorupdateattenantscope).
@@ -117,7 +117,7 @@ Kiracı dağıtımları için, Şablon işlevleri kullanılırken bazı önemli 
 
 ## <a name="create-management-group"></a>Yönetim grubu oluşturma
 
-[Aşağıdaki şablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/new-mg) bir yönetim grubu oluşturur.
+[Aşağıdaki şablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/new-mg) bir yönetim grubu oluşturur.
 
 ```json
 {
@@ -143,7 +143,7 @@ Kiracı dağıtımları için, Şablon işlevleri kullanılırken bazı önemli 
 
 ## <a name="assign-role"></a>Rol ata
 
-[Aşağıdaki şablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/tenant-role-assignment) , kiracı kapsamına bir rol atar.
+[Aşağıdaki şablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/tenant-role-assignment) , kiracı kapsamına bir rol atar.
 
 ```json
 {

@@ -8,22 +8,22 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 331d0cd4a20cb4351a1bc9a204c500386c499ada
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 40ff6c6c76e255945681e678ef296ffcf9978f61
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220154"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485181"
 ---
-# <a name="azcopy-bench"></a>azcopy ortamı
+# <a name="azcopy-benchmark"></a>AzCopy kıyaslaması
 
 Test verilerini belirtilen hedefe yükleyerek bir performans kıyaslaması çalıştırır. Test verileri otomatik olarak oluşturulur.
 
 Kıyaslama komutu, ' kopya ' olarak aynı karşıya yükleme işlemini çalıştırır, ancak şunları hariç:
 
-  - Kaynak parametre yok.  Komut yalnızca bir hedef URL gerektirir. Geçerli sürümde, bu hedef URL bir blob kapsayıcısına başvurmalıdır.
+  - Kaynak parametre yok.  Komut yalnızca bir hedef URL gerektirir. 
   
-  - Yük, kaç dosyanın otomatik olarak oluşturulduğunu ve ne kadar büyük olduğunu denetleyen komut satırı parametreleriyle açıklanır. Oluşturma işlemi tamamen bellekte gerçekleşir. Disk kullanılmıyor.
+  - Yük, kaç dosya otomatik olarak oluşturulduğunu ve bunların boyutunu denetleyen komut satırı parametreleriyle açıklanmıştır. Oluşturma işlemi tamamen bellekte gerçekleşir. Disk kullanılmıyor.
   
   - Kopyalama komutu için kullanılabilen isteğe bağlı parametrelerin yalnızca birkaçı desteklenir.
   
@@ -31,25 +31,25 @@ Kıyaslama komutu, ' kopya ' olarak aynı karşıya yükleme işlemini çalışt
   
   - Varsayılan olarak, aktarılan veriler Test çalıştırmasının sonunda silinir.
 
-Kıyaslama modu, en yüksek aktarım hızını sağlayan paralel TCP bağlantısı sayısına otomatik olarak ayarlanır. Bu numara sonda görüntülenir. Otomatik ayarlamayı engellemek için AZCOPY_CONCURRENCY_VALUE ortam değişkenini belirli sayıda bağlantı olarak ayarlayın.
+Kıyaslama modu, en yüksek aktarım hızını sağlayan paralel TCP bağlantısı sayısına otomatik olarak ayarlanır. Bu numara sonda görüntülenir. Oto ayarlamayı engellemek için AZCOPY_CONCURRENCY_VALUE ortam değişkenini belirli sayıda bağlantı olarak ayarlayın.
 
 Tüm olağan kimlik doğrulama türleri desteklenir. Ancak, sınama için en kullanışlı yaklaşım genellikle SAS belirteciyle boş bir kapsayıcı oluşturmak ve SAS kimlik doğrulamasını kullanmaktır.
 
 ## <a name="examples"></a>Örnekler
 
 ```azcopy
-azcopy bench [destination] [flags]
+azcopy benchmark [destination] [flags]
 ```
 
 Varsayılan parametrelerle bir kıyaslama testi çalıştırın (ağları 1 GB/sn 'ye kadar sınama için uygun): '
 
 - AzCopy tezgahtır "https://[hesap]. blob. Core. Windows. net/[Container]? <SAS> "
 
-100 dosyalarını karşıya yükleyen bir kıyaslama testi çalıştırın, her 2 GiB boyutu: (hızlı bir ağda, örneğin 10 Gbps) için bir değerlendirme için uygundur: '
+100 dosyalarını karşıya yükleyen bir kıyaslama testi çalıştırın, her 2 GiB boyutu: (hızlı bir ağda (örneğin, 10 Gbps) bir değerlendirme için uygundur): '
 
 - AzCopy tezgahtır "https://[hesap]. blob. Core. Windows. net/[Container]? <SAS> " --File-Count 100--dosya başına
 
-Yukarıdaki gibi aynıdır, ancak 50.000 dosya kullanın, her 8 MIB bir boyut kullanır ve MD5 karmalarını hesaplar (--put-MD5 bayrağıyla bunu kopyalama komutunda yapar). Değerlendirme sırasında--put-MD5 amacı, MD5 hesaplamasının seçili dosya sayısı ve boyutu için üretilen iş üretimini etkileyip etkilemediğini test etsağlamaktır:
+Bir kıyaslama testi çalıştırın ancak 50.000 dosya kullanın, her 8 MIB bir boyut kullanır ve MD5 karmalarına göre işlem `--put-md5` yapar (Bu, bayrağın Copy komutunda bunu yaparken olduğu şekilde). `--put-md5`Değerlendirme zaman amacı, MD5 hesaplamasının seçili dosya sayısı ve boyutu için üretilen işi etkileyip etkilemediğini test etsağlamaktır:
 
 - AzCopy tezgahtır "https://[hesap]. blob. Core. Windows. net/[Container]? <SAS> " --File-Count 50000--dosya başına boyutu 8Dk--put-MD5
 
@@ -81,4 +81,4 @@ Yukarıdaki gibi aynıdır, ancak 50.000 dosya kullanın, her 8 MIB bir boyut ku
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [AzCopy](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

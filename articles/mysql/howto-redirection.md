@@ -5,20 +5,24 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 608206ed1c1ffe1015f579d69868385ebd32208c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 6/5/2020
+ms.openlocfilehash: 7f43e47975b797b68b250399ee31bf56e0f01d21
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660265"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483379"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Yönlendirme ile MySQL için Azure veritabanı 'na bağlanma
 
 Bu konuda, MySQL için Azure veritabanı sunucusuna yeniden yönlendirme moduyla bir uygulamanın nasıl bağlanacağı açıklanmaktadır. Uygulamaların doğrudan arka uç sunucu düğümlerine bağlanmasına izin vererek istemci uygulamaları ve MySQL sunucuları arasındaki ağ gecikmesini azaltmak için amaçlar 'yi yeniden yönlendirme.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-[Azure portalında](https://portal.azure.com) oturum açın. Altyapı sürümü 5,6, 5,7 veya 8,0 olan MySQL için Azure veritabanı sunucusu oluşturun. Ayrıntılar için [Portal 'Dan MySQL Için Azure veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-portal.md) veya [CLI kullanarak MySQL için Azure veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-cli.md)bölümüne bakın.
+[Azure Portal](https://portal.azure.com) oturum açın. Altyapı sürümü 5,6, 5,7 veya 8,0 olan MySQL için Azure veritabanı sunucusu oluşturun. Ayrıntılar için [Portal 'Dan MySQL Için Azure veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-portal.md) veya [CLI kullanarak MySQL için Azure veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-cli.md)bölümüne bakın.
+
+## <a name="enable-redirection"></a>Yeniden yönlendirmeyi etkinleştir
+
+MySQL için Azure veritabanı sunucusunda, `redirect_enabled` parametresini `ON` yeniden yönlendirme moduyla bağlantılara izin verecek şekilde yapılandırın. Bu sunucu parametresini güncelleştirmek için [Azure Portal](howto-server-parameters.md) veya [Azure CLI](howto-configure-server-parameters-using-cli.md)kullanın.
 
 ## <a name="php"></a>PHP
 
@@ -48,7 +52,7 @@ Belgenin sonraki bölümlerinde, `mysqlnd_azure` Bu parametrenin değerini nası
 
 ### <a name="ubuntu-linux"></a>Ubuntu Linux
 
-#### <a name="prerequisites"></a>Önkoşullar 
+#### <a name="prerequisites"></a>Ön koşullar 
 - PHP sürümleri 7.2.15 + ve 7.3.2 +
 - PHP PEAR 
 - PHP-MySQL
@@ -87,7 +91,7 @@ Belgenin sonraki bölümlerinde, `mysqlnd_azure` Bu parametrenin değerini nası
 
 ### <a name="windows"></a>Windows
 
-#### <a name="prerequisites"></a>Önkoşullar 
+#### <a name="prerequisites"></a>Ön koşullar 
 - PHP sürümleri 7.2.15 + ve 7.3.2 +
 - PHP-MySQL
 - MySQL için Azure veritabanı sunucusu

@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 12bbb070-9b3c-4faf-8588-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 6f8ed02659f1720435df3ff98817233a5a46dbcb
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: e45726cfc54963c546274e0777dd0a10d89da72d
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450993"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483319"
 ---
 # <a name="cloud-storage-for-highly-secure-durable-scalable-apps-with-azure-storage"></a>Azure depolama ile yüksek oranda güvenli, dayanıklı ve ölçeklenebilir uygulamalar için bulut depolama
 [Azure depolama](https://azure.microsoft.com/services/storage/) , Microsoft 'un veri nesneleri için büyük ölçüde ölçeklenebilir nesne deposu, bulut için bir dosya sistemi hizmeti, güvenilir mesajlaşma için bir mesajlaşma deposu ve bir NoSQL deposu sunan modern uygulamalara yönelik bulut depolama çözümüdür. Azure Depolama şu özelliklere sahiptir:
@@ -36,7 +36,7 @@ Mobil uygulamalarınızda bulut depolamayı etkinleştirmek için aşağıdaki h
 **Başvurular**
 - [Azure portal](https://portal.azure.com)
 - [Azure Blob depolama belgeleri](/azure/storage/blobs/storage-blobs-introduction)
-- [Hızlı Başlangıçlar](/azure/storage/blobs/storage-quickstart-blobs-portal)
+- [Hızlı başlangıçlar](/azure/storage/blobs/storage-quickstart-blobs-portal)
 - [Örnekler](/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 ## <a name="azure-table-storage"></a>Azure Tablo depolama
@@ -52,22 +52,7 @@ Yapılandırılmış ve ilişkisel olmayan verilerin büyük kümelerini depolam
 - [Azure portal](https://portal.azure.com)
 - [Azure Tablo depolama belgeleri](/azure/storage/tables/table-storage-overview)
 - [Örnekler](/azure/cosmos-db/tutorial-develop-table-dotnet?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fstorage%2Ftables%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
-- [Hızlı Başlangıçlar](/azure/storage/tables/table-storage-quickstart-portal)
-
-## <a name="azure-files"></a>Azure Dosyaları
-[Azure dosyaları](https://azure.microsoft.com/services/storage/files/)ile, standart sunucu ileti bloğu (SMB) protokolü kullanılarak erişilebilen yüksek oranda kullanılabilir ağ dosya paylaşımları ayarlayabilirsiniz. Aynı dosyaları hem okuma hem de yazma erişimiyle paylaşabilir. Ayrıca REST arabirimini veya depolama istemci kitaplıklarını kullanarak dosyaları okuyabilirsiniz. Dosyaya işaret eden ve paylaşılan erişim Imzası (SAS) belirteci içeren bir URL kullanarak dünyanın her yerinden dosyalara erişebilirsiniz. SAS belirteçleri oluşturabilirsiniz. Belirli bir süre için özel bir varlığa belirli bir erişim izni verir.
-
-Azure dosya paylaşımları şunları yapmak için kullanılabilir:
-- Şirket **içi dosya sunucularını değiştirme veya bunlara ek ekleme:** Windows, macOS ve Linux gibi popüler işletim sistemleri, dünyanın her yerindeki Azure dosya paylaşımlarını doğrudan bağlayabilir. Azure dosya paylaşımları ayrıca verilerin kullanıldığı yerde performanslı ve dağıtılmış bir şekilde önbelleğe alınması için Azure Dosya Eşitleme ile şirket içi veya bulut üzerindeki Windows Server’larda çoğaltılabilir.
-- **Uygulamaları kaldırma ve kaydırma:** Dosya uygulamasının veya Kullanıcı verilerinin depolanması için bir dosya paylaşımının beklediği uygulamaları buluta geçirin.
-- **Bulut geliştirmeyi basitleştirme:** Azure dosyaları, yeni bulut geliştirme projelerini basitleştirecek çeşitli yollarla da kullanılabilir. Örneğin:
-    - **Paylaşılan uygulama ayarları:** Dağıtılmış uygulamalar için ortak bir model, yapılandırma dosyalarının birçok uygulama örneklerinden erişilebilecekleri merkezi bir konumda olmasını sağlar. Uygulama örnekleri, yapılandırmalarını Dosya REST API aracılığıyla yükleyebilir. Kullanıcılar, SMB paylaşımının yerel olarak bağlanması için bunlara gereken şekilde erişebilirler.
-    - **Tanılama paylaşma:** Azure dosya paylaşma, bulut uygulamalarının günlük, ölçüm ve kilitlenme dökümlerinin yazabilmesi için uygun bir yerdir. Günlükler Dosya REST API aracılığıyla uygulama örnekleri tarafından yazılabilir. Geliştiriciler, dosya paylaşımının yerel makinesine bağlanarak bunlara erişebilir. Bu özellik harika esneklik sağlar. Geliştiriciler, bu mevcut araçları öğrenmelerine gerek kalmadan bulut geliştirmeyi çok fazla ayarlayabilir.
-
-**Başvurular**
-- [Azure portal](https://portal.azure.com)
-- [Azure Dosyalar belgeleri](/azure/storage/files/storage-files-introduction)
-- [Hızlı Başlangıçlar](/azure/storage/files/storage-files-quick-create-use-windows)
+- [Hızlı başlangıçlar](/azure/storage/tables/table-storage-quickstart-portal)
 
 ## <a name="azure-queue-storage"></a>Azure Kuyruk Depolama
 [Azure kuyruk depolama](https://azure.microsoft.com/services/storage/queues/) , çok sayıda iletiyi depolamaya yönelik bir hizmettir. HTTP veya HTTPS kullanarak, dünyanın her yerindeki iletilere kimliği doğrulanmış çağrılar aracılığıyla erişirsiniz. Kuyruk iletisi boyutu 64 KB 'ye kadar olabilir. Bir kuyruk, depolama hesabının toplam kapasite sınırına kadar milyonlarca ileti içerebilir. Kuyruklar genellikle zaman uyumsuz olarak işlenecek iş biriktirme listesi oluşturmak için kullanılır.
@@ -75,5 +60,5 @@ Azure dosya paylaşımları şunları yapmak için kullanılabilir:
 **Başvurular**
 - [Azure portal](https://portal.azure.com)
 - [Azure Kuyruk depolama belgeleri](/azure/storage/queues/)
-- [Hızlı Başlangıçlar](/azure/storage/queues/storage-quickstart-queues-portal)
+- [Hızlı başlangıçlar](/azure/storage/queues/storage-quickstart-queues-portal)
 - [Örnekler](/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)

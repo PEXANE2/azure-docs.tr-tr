@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 34a8a070-9b3c-4faf-8588-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: ebe07ec76e5b852dbe7d030ad8859d59ce5cd074
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 6895944e4ca5cb115725814e9d27cb1f5fa04cfa
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84451063"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484848"
 ---
 # <a name="analyze-and-understand-mobile-application-use"></a>Mobil uygulama kullanımını analiz edin ve anlayın
 Kullanıcılarınızın uygulamalarınızı nasıl kullandığını ne kadar iyi anlamış olursunuz? Uygulamanızda kaç tane etkin kullanıcı var ve kullanım zaman içinde nasıl değişiyor? Hangi özellikleri kullanıyor ve hangilerinin en çok kullanıldığı. Bu kullanıcılar nerede? Uygulamanın en son sürümünü kaç Kullanıcı kullanıyor? Bu soruların tümü, uygulamanızı başarılı bir işletmeye dönüştürmek için anlaşılması önemlidir. Bu tür kullanım analizi sorularını yanıtlamak için, uygulamalarınızdan kullanım verilerini toplamanız gerekir.
@@ -74,4 +74,4 @@ Azure Izleyici, performansı en üst düzeye çıkarmak ve mobil uygulamanızı 
 **Başvurular**
 - [PlayFab portalı](https://developer.playfab.com/en-US/sign-up)
 - [Analiz](/gaming/playfab/#pivot=documentation&panel=analytics)
-- [Hızlı Başlangıçlar](/gaming/playfab/#pivot=documentation&panel=quickstarts) 
+- [Hızlı başlangıçlar](/gaming/playfab/#pivot=documentation&panel=quickstarts) 

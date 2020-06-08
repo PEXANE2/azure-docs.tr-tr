@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 4216abdf8cc8aae00e3ba0c57961c4b8b7403672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2ed81972cd89856d0bcde689c3d1f61c5534c96
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371690"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485042"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure veritabanı için özel bağlantı-tek sunucu
 
@@ -46,6 +46,10 @@ Bu kurulumun sonunda, Azure VM yalnızca Batı ABD bölgesindeki PostgreSQL içi
 Şirket içi makinelerden ortak uç noktaya bağlandığınızda, IP adresinizin sunucu düzeyinde bir güvenlik duvarı kuralı kullanılarak IP tabanlı güvenlik duvarına eklenmesi gerekir. Bu model geliştirme veya test iş yükleri için bireysel makinelere erişim sağlamak için iyi bir şekilde çalıştığından, bir üretim ortamında yönetilmesi zordur.
 
 Özel bağlantı ile, [Express Route](https://azure.microsoft.com/services/expressroute/) (er), özel eşleme veya [VPN tüneli](https://docs.microsoft.com/azure/vpn-gateway/)kullanarak özel uç noktaya şirket içi erişimi etkinleştirebilirsiniz. Daha sonra, genel uç nokta aracılığıyla tüm erişimi devre dışı bırakabilir ve IP tabanlı güvenlik duvarını kullanmaz.
+
+> [!NOTE]
+> Bazı durumlarda PostgreSQL için Azure veritabanı ve sanal ağ alt ağı farklı aboneliklerde bulunur. Bu durumlarda, aşağıdaki yapılandırmalardan emin olmanız gerekir:
+> - Her iki abonelikte da **Microsoft. DBforPostgreSQL** kaynak sağlayıcısının kayıtlı olduğundan emin olun. Daha fazla bilgi için [Resource-Manager-kayıt][resource-manager-portal] bölümüne bakın
 
 ## <a name="configure-private-link-for-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure veritabanı tek sunucu için özel bağlantıyı yapılandırma
 
@@ -129,3 +133,6 @@ PostgreSQL için Azure veritabanı tek sunuculu güvenlik özellikleri hakkında
 * PostgreSQL için Azure veritabanı tek sunuculu bir sanal ağ hizmeti uç noktası yapılandırma hakkında bilgi edinmek için bkz. [sanal ağlardan erişimi yapılandırma](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet).
 
 * PostgreSQL için Azure veritabanı 'na tek sunucu bağlantısı hakkında genel bakış için bkz. [PostgreSQL Için Azure veritabanı bağlantı mimarisi](https://docs.microsoft.com/azure/postgresql/concepts-connectivity-architecture)
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

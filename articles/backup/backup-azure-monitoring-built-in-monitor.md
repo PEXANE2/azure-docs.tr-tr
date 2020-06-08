@@ -4,12 +4,12 @@ description: Bu makalede, Azure portal kullanarak Azure Backup iş yükleri içi
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 8c72c192f3bd12169703b70cbee76599b15eb560
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: f4b91302723119e707d12a86480bbaff2eb4bec5
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247062"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485099"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup iş yüklerini izleme
 
@@ -77,7 +77,7 @@ Yukarıdaki özel durumlar, bu işlemlerin sonucunun (öncelikli olarak kullanı
 Uyarı önem derecesine bağlı olarak, uyarılar üç tür halinde tanımlanabilir:
 
 - **Kritik**: prensibi, herhangi bir yedekleme veya Kurtarma hatası (zamanlanmış veya Kullanıcı tarafından tetiklenen), bir uyarının oluşturulmasına ve kritik bir uyarı olarak ve ayrıca yedekleme silme gibi bozucu işlemlere neden olarak gösterilmelidir.
-- **Uyarı**: yedekleme işlemi başarılı olur, ancak birkaç uyarı varsa uyarı uyarıları olarak listelenir.
+- **Uyarı**: yedekleme işlemi başarılı olur, ancak birkaç uyarı varsa uyarı uyarıları olarak listelenir. Uyarı uyarıları Şu anda yalnızca Azure Backup aracı yedeklemeleri için kullanılabilir.
 - **Bilgilendirici**: şu anda Azure Backup hizmeti tarafından bir bilgilendirme uyarısı üretilmez.
 
 ## <a name="notification-for-backup-alerts"></a>Yedekleme uyarıları için bildirim

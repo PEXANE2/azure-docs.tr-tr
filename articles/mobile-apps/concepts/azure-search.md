@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 34a8a070-0123-8982-8345-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 33ef251f60a833721e17d36d8df01a6095434af5
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 424284799e5a823601473853aece3a598c50513b
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84451000"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483287"
 ---
 # <a name="ai-powered-cloud-service-with-azure-cognitive-search"></a>Azure Bilişsel Arama ile yapay zeka destekli bulut hizmeti
 [Azure bilişsel arama](https://azure.microsoft.com/services/search/) , Web, mobil ve kurumsal uygulamalarda özel, heterojen içerik üzerine zengin bir arama deneyimi eklemeye yönelik geliştiricilere API 'ler ve araçlar sağlayan bir hizmet olarak arama bulut çözümüdür. Özel kodunuz, bir dizin oluşturmak ve yüklemek için veri alımı (Dizin oluşturma) çağırır. Diğer taraftan, uygulama kodunuz sorgu istekleri yayınlar ve yanıtları işler. Arama deneyimi, kuruluşunuzda oluşturduğunuz, sahip olduğunuz kalıcı bir dizin üzerinde sorgu yürütme ile Azure Bilişsel Arama işlevleri kullanılarak tanımlanır.
@@ -36,6 +36,6 @@ Azure Bilişsel Arama [özellikleriyle](/azure/search/search-what-is-azure-searc
 - [Azure Bilişsel Arama belgeleri](/azure/search/)
 - [Geliştirici kılavuzu](https://azure.microsoft.com/resources/iot-developers-guide/)
 - [Azure Bilişsel Arama kullanma](/azure/search/search-what-is-azure-search#how-to-use-azure-cognitive-search)
-- [Hızlı Başlangıçlar](/azure/search/search-create-service-portal)
+- [Hızlı başlangıçlar](/azure/search/search-create-service-portal)
 
  

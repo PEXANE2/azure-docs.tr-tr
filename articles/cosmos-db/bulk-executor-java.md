@@ -6,21 +6,21 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: f5c6562c6def1fa588724b3bc5da502536b16aa9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad9c0f29ee10197c4dafe6ca24ee4df7b7afdb88
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985652"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485374"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Azure Cosmos DB verilerinde toplu işlemler yapmak için toplu yürütücü Java kitaplığını kullanma
 
 Bu öğretici, Azure Cosmos DB belgelerini içeri aktarmak ve güncelleştirmek için Azure Cosmos DB toplu yürütücü Java Kitaplığı kullanma hakkında yönergeler sağlar. Toplu yürütücü Kitaplığı hakkında bilgi edinmek ve büyük/veya depolama özelliğinden yararlanarak nasıl yardım alabileceğinizi öğrenmek için bkz. [toplu yürütücü kitaplığı genel bakış](bulk-executor-overview.md) makalesi. Bu öğreticide, rastgele belgeler üreten ve bunlar bir Azure Cosmos kapsayıcısına toplu olarak içeri aktarılan bir Java uygulaması oluşturacaksınız. İçeri aktardıktan sonra bir belgenin bazı özelliklerini toplu olarak güncelleştirebilirsiniz. 
 
-Şu anda, toplu yürütücü kitaplığı yalnızca Azure Cosmos DB SQL API ve Gremlin API hesapları tarafından desteklenir. Bu makalede, SQL API hesaplarıyla toplu yürütücü Java kitaplığı 'nın nasıl kullanılacağı açıklanır. Gremlin API ile toplu yürütücü .NET kitaplığı 'nı kullanma hakkında bilgi edinmek için bkz. [Azure Cosmos DB Gremlin API 'de toplu işlemler gerçekleştirme](bulk-executor-graph-dotnet.md).
+Şu anda, toplu yürütücü kitaplığı yalnızca Azure Cosmos DB SQL API ve Gremlin API hesapları tarafından desteklenir. Bu makalede, SQL API hesaplarıyla toplu yürütücü Java kitaplığı 'nın nasıl kullanılacağı açıklanır. Gremlin API ile toplu yürütücü .NET kitaplığı 'nı kullanma hakkında bilgi edinmek için bkz. [Azure Cosmos DB Gremlin API 'de toplu işlemler gerçekleştirme](bulk-executor-graph-dotnet.md). Açıklanan toplu yürütücü kitaplığı, Java SDK 2. x sürümünü kullanan uygulamalar için kullanılabilir. Bu, şu anda 3. x, 4. x veya daha yüksek SDK sürümleri için kullanılamaz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -118,8 +118,8 @@ Kopyalanmış depo, "\azure-cosmosdb-bulkexecutor-Java-getting-started\samples\b
    |int getNumberOfDocumentsImported ()  |   Toplu içeri aktarma API çağrısına sağlanan belgelerden başarıyla içeri aktarılmış belgelerin toplam sayısı.      |
    |Double Gettotalrequestunitstüketilen ()   |  Toplu içeri aktarma API çağrısı tarafından tüketilen toplam istek birimi (RU).       |
    |Süre getTotalTimeTaken ()   |    Yürütmeyi tamamlamaya yönelik toplu içeri aktarma API çağrısı tarafından alınan toplam süre.     |
-   |>\<GetErrors () özel durumunu listeleyin |  Toplu içeri aktarma API 'SI çağrısına sağlanan toplu iş dışında bazı belgeler eklenmeden başarısız olursa hata listesini alır.       |
-   |Getbadınputdocuments ()> nesne listesi\<  |    Toplu içeri aktarma API çağrısında başarıyla içeri aktarılmayan hatalı biçimli belgelerin listesi. Kullanıcı döndürülen belgeleri düzelttikten sonra içeri aktarmayı yeniden dener. Hatalı biçimli belgeler, ID değeri dize olmayan belgeleri içerir (null veya başka bir veri türü geçersiz olarak kabul edilir).     |
+   |\<Exception>GetErrors () listesini |  Toplu içeri aktarma API 'SI çağrısına sağlanan toplu iş dışında bazı belgeler eklenmeden başarısız olursa hata listesini alır.       |
+   |\<Object>Getbadınputdocuments () listesini listeleyin  |    Toplu içeri aktarma API çağrısında başarıyla içeri aktarılmayan hatalı biçimli belgelerin listesi. Kullanıcı döndürülen belgeleri düzelttikten sonra içeri aktarmayı yeniden dener. Hatalı biçimli belgeler, ID değeri dize olmayan belgeleri içerir (null veya başka bir veri türü geçersiz olarak kabul edilir).     |
 
 5. Toplu alma uygulamasını hazırlayın, ' MVN Clean Package ' komutunu kullanarak kaynaktan komut satırı aracını oluşturun. Bu komut hedef klasörde bir jar dosyası oluşturur:  
 
@@ -182,7 +182,7 @@ Mevcut belgeleri BulkUpdateAsync API kullanarak güncelleştirebilirsiniz. Bu ö
    |int getNumberOfDocumentsUpdated ()  |   Toplu güncelleştirme API 'SI çağrısına sağlanan belgelerden başarıyla güncelleştirilmiş toplam belge sayısı.      |
    |Double Gettotalrequestunitstüketilen () |  Toplu güncelleştirme API çağrısı tarafından tüketilen toplam istek birimi (RU).       |
    |Süre getTotalTimeTaken ()  |   Yürütmeyi tamamlamaya yönelik toplu güncelleştirme API çağrısı tarafından alınan toplam süre.      |
-   |>\<GetErrors () özel durumunu listeleyin   |       Toplu güncelleştirme API 'SI çağrısına sağlanan toplu iş dışında bazı belgeler eklenmeden başarısız olursa hata listesini alır.      |
+   |\<Exception>GetErrors () listesini   |       Toplu güncelleştirme API 'SI çağrısına sağlanan toplu iş dışında bazı belgeler eklenmeden başarısız olursa hata listesini alır.      |
 
 3. Toplu güncelleştirme uygulamasını hazırlayın, ' MVN Clean Package ' komutunu kullanarak kaynaktan komut satırı aracını oluşturun. Bu komut hedef klasörde bir jar dosyası oluşturur:  
 

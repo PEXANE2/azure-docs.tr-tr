@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 06/06/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f18f44208b97ab5bc8d9cd9ff01d604c62deb963
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a7cb964064e229ee29591ca14aa8ef33e393a7d
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678155"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484178"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler
 
@@ -25,7 +25,7 @@ ms.locfileid: "81678155"
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>Kullanıcı akışlarını ve özel ilkeleri karşılaştırma
 
-| | Kullanıcı akışları | Özel ilkeler |
+| Bağlam | Kullanıcı akışları | Özel ilkeler |
 |-|-------------------|-----------------|
 | Hedef kullanıcılar | Kimlik uzmanlığına sahip veya olmayan tüm uygulama geliştiricileri. | Kimlik uzmanları, sistem tümleştiricileri, danışmanları ve şirket içi kimlik takımları. OpenID Connect akışlarıyla rahat ve kimlik sağlayıcılarını ve talep tabanlı kimlik doğrulamasını anlayın. |
 | Yapılandırma yöntemi | Kullanıcı dostu Kullanıcı arabirimi (UI) ile Azure portal. | XML dosyalarını doğrudan düzenleyip Azure portal karşıya yükleyin. |

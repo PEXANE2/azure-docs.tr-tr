@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 01/15/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: cd4cc90fb102d517a47ba458619e22b8921dd498
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aed015b67aa36e7678b31d7f2f047cb1e77c6a3d
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75495334"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485311"
 ---
 # <a name="fail-back-vmware-vms-to-on-premises-site"></a>VMware VM 'lerini şirket içi siteye geri dönme
 
@@ -29,7 +29,7 @@ Bu makalede, Azure sanal makinelerinin [Azure Site Recovery](site-recovery-overv
 
 ## <a name="run-a-failover-to-fail-back"></a>Yük devretme işlemini yeniden çalıştırmak için çalıştırma
 
-1. Azure VM 'lerinin yeniden korunduğundan ve şirket içi siteye çoğaltıldığından emin olun. 
+1. Azure VM 'lerinin yeniden korunduğundan ve şirket içi siteye çoğaltıldığından emin olun.
     - Bir VM 'nin yeniden başlatılması için en az bir kurtarma noktası olması gerekir.
     - Bir kurtarma planını yeniden devretmek, plandaki tüm makinelerin en az bir kurtarma noktası olması gerekir.
 2. Kasada **çoğaltılan öğeleri**> VM 'yi seçin. **Planlanmamış yük devretme**> VM 'ye sağ tıklayın.

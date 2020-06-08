@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c51863cd95deff5e460707b004206f6fde54cac4
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: a8ea97d7a2aa5fdc18d11e952eafe65b167b3397
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337759"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483915"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Oturum açma olaylarının güvenliğini sağlamak için kullanıcı başına Azure Multi-Factor Authentication’ı etkinleştirme
 
@@ -84,7 +84,7 @@ Kullanıcı durumunu [Azure AD PowerShell](/powershell/azure/overview)kullanarak
 * *Uygulandı*
 * *Devre dışı*  
 
-Kullanıcıları doğrudan *Zorlanmış* duruma taşımayın. Bunu yaparsanız, tarayıcı tabanlı olmayan uygulamalar çalışmayı durdurur çünkü Kullanıcı Azure Multi-Factor Authentication kaydı ve bir [uygulama parolası](howto-mfa-mfasettings.md#app-passwords)elde eder.
+Kullanıcıları doğrudan *Zorlanmış* duruma taşımayın. Bunu yaparsanız, tarayıcı tabanlı olmayan uygulamalar çalışmayı durdurur çünkü Kullanıcı Azure Multi-Factor Authentication kaydı ve bir [uygulama parolası](howto-mfa-app-passwords.md)elde eder.
 
 Başlamak için, [Install-Module](/powershell/module/powershellget/install-module) kullanarak *MSOnline* modülünü aşağıdaki gibi çalıştırın:
 

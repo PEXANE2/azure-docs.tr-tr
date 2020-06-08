@@ -4,17 +4,17 @@ description: Veri toplama modüllerini etkinleştirin veya devre dışı bırak�
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
-ms.openlocfilehash: 3375c24739da8663aa6a40deeb53e02e65d1f9bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dde2cbf227f085b751f6ad22e1f2fa95f38c5915
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537568"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485127"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config veya .xml ile Application Insights SDK yapılandırma
 Application Insights .NET SDK 'Sı bazı NuGet paketlerinden oluşur. [Çekirdek paket](https://www.nuget.org/packages/Microsoft.ApplicationInsights) , Application Insights telemetri göndermek için API sağlar. [Ek paketler](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) , uygulama ve bağlamınızdan Telemetriyi otomatik olarak izlemek için telemetri *modülleri* ve *başlatıcılar* sağlar. Yapılandırma dosyasını ayarlayarak telemetri modüllerini ve başlatıcıları etkinleştirebilir veya devre dışı bırakabilir ve bunların bazıları için parametreler ayarlayabilirsiniz.
 
-Yapılandırma dosyası, uygulamanızın türüne `ApplicationInsights.config` göre `ApplicationInsights.xml`veya olarak adlandırılır. [SDK 'nın birçok sürümünü yüklediğinizde][start]projenize otomatik olarak eklenir. Varsayılan olarak, **> ekleme Application Insights telemetri**destekleyen Visual Studio şablon projelerinden otomatik deneyim kullanılırken, ApplicationInsights. config dosyası proje kök klasöründe oluşturulur ve bu dosya, bilgi kutusu klasörüne karmaşıklu şekilde kopyalanır. Ayrıca bir [IIS sunucusundaki durum İzleyicisi][redfield]tarafından bir Web uygulamasına da eklenir. Azure [Web sitesi için uzantı](azure-web-apps.md) veya [Azure VM için uzantı ve sanal makine ölçek kümesi](azure-vm-vmss-apps.md) kullanılıyorsa yapılandırma dosyası yok sayılır.
+Yapılandırma dosyası `ApplicationInsights.config` `ApplicationInsights.xml` , uygulamanızın türüne göre veya olarak adlandırılır. [SDK 'nın birçok sürümünü yüklediğinizde][start]projenize otomatik olarak eklenir. Varsayılan olarak, **> ekleme Application Insights telemetri**destekleyen Visual Studio şablon projelerinden otomatik deneyim kullanılırken, ApplicationInsights. config dosyası proje kök klasöründe oluşturulur ve bu dosya, bilgi kutusu klasörüne karmaşıklu şekilde kopyalanır. Ayrıca bir [IIS sunucusundaki durum İzleyicisi][redfield]tarafından bir Web uygulamasına da eklenir. Azure [Web sitesi için uzantı](azure-web-apps.md) veya [Azure VM için uzantı ve sanal makine ölçek kümesi](azure-vm-vmss-apps.md) kullanılıyorsa yapılandırma dosyası yok sayılır.
 
 [Bir Web sayfasında SDK 'yı][client]denetlemek için eşdeğer bir dosya yok.
 
@@ -45,7 +45,7 @@ IIS yüklemelerinden CPU, bellek ve ağ yükü gibi [sistem performansı sayaçl
 * [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) NuGet paketi.
 
 ### <a name="application-insights-diagnostics-telemetry"></a>Application Insights tanılama telemetrisi
-Application Insights `DiagnosticsTelemetryModule` izleme kodundaki hataları raporlar. Örneğin, kod performans sayaçlarına erişemiyorsa veya bir `ITelemetryInitializer` özel durum oluşturursa. Bu modül tarafından izlenen izleme telemetrisi, [Tanılama aramasında][diagnostic]görüntülenir.
+`DiagnosticsTelemetryModule`Application Insights izleme kodundaki hataları raporlar. Örneğin, kod performans sayaçlarına erişemiyorsa veya bir `ITelemetryInitializer` özel durum oluşturursa. Bu modül tarafından izlenen izleme telemetrisi, [Tanılama aramasında][diagnostic]görüntülenir.
 
 ```
 * `Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule`
@@ -53,7 +53,7 @@ Application Insights `DiagnosticsTelemetryModule` izleme kodundaki hataları rap
 ```
 
 ### <a name="developer-mode"></a>Geliştirici modu
-`DeveloperModeWithDebuggerAttachedTelemetryModule`uygulama işlemine bir `TelemetryChannel` hata ayıklayıcı eklendiğinde, tek seferde bir telemetri öğesi olan Application Insights verileri hemen gönderecek şekilde zorlar. Bu, uygulamanızın Telemetriyi izlediği ve Application Insights portalında göründüğü süre arasındaki süreyi azaltır. CPU ve ağ bant genişliğinden önemli ölçüde ek yüke neden olur.
+`DeveloperModeWithDebuggerAttachedTelemetryModule``TelemetryChannel`uygulama işlemine bir hata ayıklayıcı eklendiğinde, tek seferde bir telemetri öğesi olan Application Insights verileri hemen gönderecek şekilde zorlar. Bu, uygulamanızın Telemetriyi izlediği ve Application Insights portalında göründüğü süre arasındaki süreyi azaltır. CPU ve ağ bant genişliğinden önemli ölçüde ek yüke neden olur.
 
 * `Microsoft.ApplicationInsights.WindowsServer.DeveloperModeWithDebuggerAttachedTelemetryModule`
 * [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet paketi
@@ -69,7 +69,7 @@ HTTP isteklerinin [yanıt süresini ve sonuç kodunu](../../azure-monitor/app/as
 
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
 * [Microsoft. ApplicationInsights. Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet paketi
-* `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule`- [gözlemlenen görev özel durumlarını](https://blogs.msdn.com/b/pfxteam/archive/2011/09/28/task-exception-handling-in-net-4-5.aspx)izler.
+* `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule`-gözlemlenen görev özel durumlarını izler
 * `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule`-çalışan rolleri, Windows Hizmetleri ve konsol uygulamaları için işlenmemiş özel durumları izler.
 * [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet paketi.
 
@@ -106,28 +106,28 @@ Standart başlatıcıların tümü Web veya WindowsServer NuGet paketleri taraf�
 
 * `AccountIdTelemetryInitializer`AccountId özelliğini ayarlar.
 * `AuthenticatedUserIdTelemetryInitializer`Kimlik doğrulayan Teduserıd özelliğini JavaScript SDK 'Sı tarafından ayarlanmış olarak ayarlar.
-* `AzureRoleEnvironmentTelemetryInitializer`Azure çalışma `RoleName` zamanı `RoleInstance` ortamından ayıklanan bilgilerle `Device` tüm telemetri öğeleri için bağlamın ve özelliklerini güncelleştirir.
-* `BuildInfoConfigComponentVersionTelemetryInitializer`Tüm telemetri `Version` öğeleri için `Component` bağlam özelliğini MS Build tarafından üretilen `BuildInfo.config` dosyadan ayıklanan değerle güncelleştirir.
-* `ClientIpHeaderTelemetryInitializer`isteğin `Ip` `X-Forwarded-For` http üstbilgisine göre `Location` tüm telemetri öğelerinin bağlamının Updates özelliği.
-* `DeviceTelemetryInitializer`Tüm telemetri öğeleri için `Device` bağlamın aşağıdaki özelliklerini güncelleştirir.
+* `AzureRoleEnvironmentTelemetryInitializer``RoleName` `RoleInstance` `Device` Azure çalışma zamanı ortamından ayıklanan bilgilerle tüm telemetri öğeleri için bağlamın ve özelliklerini güncelleştirir.
+* `BuildInfoConfigComponentVersionTelemetryInitializer``Version` `Component` Tüm telemetri öğeleri için bağlam özelliğini `BuildInfo.config` MS Build tarafından üretilen dosyadan ayıklanan değerle güncelleştirir.
+* `ClientIpHeaderTelemetryInitializer``Ip` `Location` isteğin HTTP üstbilgisine göre tüm telemetri öğelerinin bağlamının Updates özelliği `X-Forwarded-For` .
+* `DeviceTelemetryInitializer``Device`Tüm telemetri öğeleri için bağlamın aşağıdaki özelliklerini güncelleştirir.
   * `Type`"PC" olarak ayarlandı
   * `Id`, Web uygulamasının çalıştığı bilgisayarın etki alanı adına ayarlanır.
-  * `OemName`, WMI kullanılarak `Win32_ComputerSystem.Manufacturer` alandan ayıklanan değere ayarlanır.
-  * `Model`, WMI kullanılarak `Win32_ComputerSystem.Model` alandan ayıklanan değere ayarlanır.
-  * `NetworkType`, `NetworkInterface`öğesinden ayıklanan değere ayarlanır.
-  * `Language`, `CurrentCulture`adına ayarlanır.
-* `DomainNameRoleInstanceTelemetryInitializer`Tüm telemetri `RoleInstance` öğeleri için `Device` bağlam özelliğini, Web uygulamasının çalıştığı bilgisayarın etki alanı adı ile güncelleştirir.
-* `OperationNameTelemetryInitializer`, `RequestTelemetry` http yöntemine ve ASP.NET MVC denetleyicisinin `Name` adlarına ve isteği `Operation` işlemek için çağrılan eyleme göre tüm telemetri öğelerinin bağlamı ve özelliğinin `Name` özelliğini günceller.
-* `OperationIdTelemetryInitializer`ya `OperationCorrelationTelemetryInitializer` da otomatik `Operation.Id` olarak oluşturulan `RequestTelemetry.Id`bir istek işlenirken izlenen tüm telemetri öğelerinin bağlam özelliğini güncelleştirir.
-* `SessionTelemetryInitializer`kullanıcının tarayıcısında `Id` çalışan ApplicationInsights `Session` JavaScript izleme kodu tarafından oluşturulan `ai_session` tanımlama bilgisinden ayıklanan değere sahip tüm telemetri öğeleri için bağlam özelliğini güncelleştirir.
-* `SyntheticTelemetryInitializer`ya `SyntheticUserAgentTelemetryInitializer` da bir `User`kullanılabilirlik `Session`testi veya `Operation` arama motoru bot gibi yapay bir kaynaktan gelen bir isteği işlerken izlenen tüm telemetri öğelerinin özelliklerini güncelleştirir. [Ölçüm Gezgini](../../azure-monitor/platform/metrics-charts.md) , varsayılan olarak yapay telemetri göstermez.
+  * `OemName`, `Win32_ComputerSystem.Manufacturer` WMI kullanılarak alandan ayıklanan değere ayarlanır.
+  * `Model`, `Win32_ComputerSystem.Model` WMI kullanılarak alandan ayıklanan değere ayarlanır.
+  * `NetworkType`, öğesinden ayıklanan değere ayarlanır `NetworkInterface` .
+  * `Language`, adına ayarlanır `CurrentCulture` .
+* `DomainNameRoleInstanceTelemetryInitializer``RoleInstance` `Device` Tüm telemetri öğeleri için bağlam özelliğini, Web uygulamasının çalıştığı bilgisayarın etki alanı adı ile güncelleştirir.
+* `OperationNameTelemetryInitializer``Name`, `RequestTelemetry` `Name` `Operation` http yöntemine ve ASP.NET MVC denetleyicisinin adlarına ve isteği işlemek için çağrılan eyleme göre tüm telemetri öğelerinin bağlamı ve özelliğinin özelliğini günceller.
+* `OperationIdTelemetryInitializer`ya da `OperationCorrelationTelemetryInitializer` `Operation.Id` otomatik olarak oluşturulan bir istek işlenirken izlenen tüm telemetri öğelerinin bağlam özelliğini güncelleştirir `RequestTelemetry.Id` .
+* `SessionTelemetryInitializer``Id` `Session` `ai_session` kullanıcının tarayıcısında çalışan ApplicationInsights JavaScript izleme kodu tarafından oluşturulan tanımlama bilgisinden ayıklanan değere sahip tüm telemetri öğeleri için bağlam özelliğini güncelleştirir.
+* `SyntheticTelemetryInitializer`ya da `SyntheticUserAgentTelemetryInitializer` `User` `Session` `Operation` bir kullanılabilirlik testi veya arama motoru bot gibi yapay bir kaynaktan gelen bir isteği işlerken izlenen tüm telemetri öğelerinin özelliklerini güncelleştirir. [Ölçüm Gezgini](../../azure-monitor/platform/metrics-charts.md) , varsayılan olarak yapay telemetri göstermez.
 
-    İsteklerin `<Filters>` tanımlayıcı özelliklerini ayarla.
-* `UserTelemetryInitializer`kullanıcının tarayıcısında `Id` çalıştırılan `AcquisitionDate` Application Insights JavaScript `User` izleme kodu tarafından oluşturulan `ai_user` tanımlama bilgisinden ayıklanan değerler içeren tüm telemetri öğeleri için bağlamın ve özelliklerini güncelleştirir.
+    `<Filters>`İsteklerin tanımlayıcı özelliklerini ayarla.
+* `UserTelemetryInitializer``Id` `AcquisitionDate` `User` `ai_user` kullanıcının tarayıcısında çalıştırılan Application Insights JavaScript izleme kodu tarafından oluşturulan tanımlama bilgisinden ayıklanan değerler içeren tüm telemetri öğeleri için bağlamın ve özelliklerini güncelleştirir.
 * `WebTestTelemetryInitializer`[kullanılabilirlik testlerinden](../../azure-monitor/app/monitor-web-app-availability.md)gelen http istekleri IÇIN Kullanıcı kimliği, oturum kimliği ve yapay kaynak özelliklerini ayarlar.
-  İsteklerin `<Filters>` tanımlayıcı özelliklerini ayarla.
+  `<Filters>`İsteklerin tanımlayıcı özelliklerini ayarla.
 
-Service Fabric çalışan .NET uygulamaları için `Microsoft.ApplicationInsights.ServiceFabric` NuGet paketini dahil edebilirsiniz. Bu paket, telemetri `FabricTelemetryInitializer`öğelerine Service Fabric özellikleri ekleyen bir içerir. Daha fazla bilgi için, bu NuGet paketi tarafından eklenen özellikler hakkında [GitHub sayfasına](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md) bakın.
+Service Fabric çalışan .NET uygulamaları için `Microsoft.ApplicationInsights.ServiceFabric` NuGet paketini dahil edebilirsiniz. Bu paket `FabricTelemetryInitializer` , telemetri öğelerine Service Fabric özellikleri ekleyen bir içerir. Daha fazla bilgi için, bu NuGet paketi tarafından eklenen özellikler hakkında [GitHub sayfasına](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md) bakın.
 
 ## <a name="telemetry-processors-aspnet"></a>Telemetri Işlemcileri (ASP.NET)
 Telemetri Işlemcileri SDK 'dan portala gönderilmeden hemen önce her bir telemetri öğesini filtreleyebilir ve değiştirebilir.
@@ -207,7 +207,7 @@ _V 2.6.0 'dan başlayarak kullanılabilir_
 
 Bu sağlayıcının amacı, bir Izleme anahtarına göre bir uygulama KIMLIĞI aramak için kullanılır. Uygulama KIMLIĞI Requesttelemetri ve Dependencytelemetri 'e dahildir ve portalda bağıntıyı belirlemede kullanılır.
 
-Bu, kodda ya da `TelemetryConfiguration.ApplicationIdProvider` config içinde ayarlanarak kullanılabilir.
+Bu, `TelemetryConfiguration.ApplicationIdProvider` kodda ya da config içinde ayarlanarak kullanılabilir.
 
 ### <a name="interface-iapplicationidprovider"></a>Arabirim: ıapplicationıdprovider
 
@@ -219,7 +219,7 @@ public interface IApplicationIdProvider
 ```
 
 
-[Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) SDK 'sı: `ApplicationInsightsApplicationIdProvider` ve `DictionaryApplicationIdProvider`' de iki uygulama sağlıyoruz.
+[Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) SDK 'sı: ve ' de iki uygulama sağlıyoruz `ApplicationInsightsApplicationIdProvider` `DictionaryApplicationIdProvider` .
 
 ### <a name="applicationinsightsapplicationidprovider"></a>ApplicationInsightsApplicationIdProvider
 
@@ -227,9 +227,9 @@ Bu, profil API 'imizin etrafındaki bir sarmalayıcıdır. İstekleri ve önbell
 
 Bu sağlayıcı, [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) veya [Microsoft. ApplicationInsights. Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 'i yüklediğinizde yapılandırma dosyanıza eklenir
 
-Bu sınıfın isteğe bağlı bir özelliği `ProfileQueryEndpoint`vardır.
-Varsayılan olarak, bu olarak ayarlanır `https://dc.services.visualstudio.com/api/profiles/{0}/appId`.
-Bu yapılandırma için bir ara sunucu yapılandırmanız gerekiyorsa, temel adresi ve "/api/Profiles/{0}/AppID" dahil olmak üzere proxy 'yi kullanmanızı öneririz. '{0}', İzleme anahtarı ile istek başına çalışma zamanında değiştirilir.
+Bu sınıfın isteğe bağlı bir özelliği vardır `ProfileQueryEndpoint` .
+Varsayılan olarak, bu olarak ayarlanır `https://dc.services.visualstudio.com/api/profiles/{0}/appId` .
+Bu yapılandırma için bir ara sunucu yapılandırmanız gerekiyorsa, temel adresi ve "/api/Profiles//AppID" dahil olmak üzere proxy 'yi kullanmanızı öneririz {0} . ' {0} ', Izleme anahtarı ile istek başına çalışma zamanında değiştirilir.
 
 #### <a name="example-configuration-via-applicationinsightsconfig"></a>ApplicationInsights. config aracılığıyla örnek yapılandırma:
 ```xml
@@ -251,9 +251,9 @@ TelemetryConfiguration.Active.ApplicationIdProvider = new ApplicationInsightsApp
 
 Bu, yapılandırılmış Izleme anahtarınız/uygulama KIMLIĞI çiftlerine bağlı olan statik bir sağlayıcıdır.
 
-Bu sınıf, bir sözlük `Defined`<dize, uygulama kimliği çiftlerine yönelik izleme anahtarının dize> olan bir özelliğe sahiptir.
+Bu sınıf `Defined` , bir sözlük<dize, uygulama kimliği çiftlerine yönelik Izleme anahtarının dize> olan bir özelliğe sahiptir.
 
-Bu sınıf, yapılandırmanızda bulunmayan bir `Next` izleme anahtarı istendiğinde kullanmak üzere başka bir sağlayıcıyı yapılandırmak için kullanılabilen isteğe bağlı bir özelliğe sahiptir.
+Bu sınıf, `Next` yapılandırmanızda bulunmayan bir Izleme anahtarı istendiğinde kullanmak üzere başka bir sağlayıcıyı yapılandırmak için kullanılabilen isteğe bağlı bir özelliğe sahiptir.
 
 #### <a name="example-configuration-via-applicationinsightsconfig"></a>ApplicationInsights. config aracılığıyla örnek yapılandırma:
 ```xml

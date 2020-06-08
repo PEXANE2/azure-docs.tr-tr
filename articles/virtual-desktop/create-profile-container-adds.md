@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 916d34abfaf8223e3cf29977e13dfddf15a3fbf9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 7159eac0e71819fd75abef07cae979d5425fc07c
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607291"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484625"
 ---
-# <a name="create-an-fslogix-profile-container-with-azure-files"></a>Azure dosyaları ile FSLogix profil kapsayıcısı oluşturma
+# <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Azure dosyaları ve Azure AD DS bir profil kapsayıcısı oluşturma
 
 Bu makalede, Azure dosyaları ve Azure Active Directory Domain Services (AD DS) ile bir FSLogix profil kapsayıcısı oluşturma gösterilmektedir.
 
@@ -73,7 +73,7 @@ Kullanıcılara erişim izinleri atamak için:
 
 6. Hedef Azure Active Directory kimliği için bir ad veya e-posta adresi seçin.
 
-7. **Kaydet**’i seçin.
+7. **Kaydet**'i seçin.
 
 ## <a name="get-the-storage-account-access-key"></a>Depolama hesabı erişim anahtarını al
 
@@ -103,10 +103,10 @@ Depolama hesabı erişim anahtarını almak için:
      net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
      ```
 
-    - Tercih `<desired-drive-letter>` ettiğiniz bir sürücü harfiyle değiştirin (örneğin, `y:`).
+    - `<desired-drive-letter>`Tercih ettiğiniz bir sürücü harfiyle değiştirin (örneğin, `y:` ).
     - Öğesinin tüm örneklerini, `<storage-account-name>` daha önce belirttiğiniz depolama hesabının adıyla değiştirin.
-    - Daha `<share-name>` önce oluşturduğunuz paylaşımın adıyla değiştirin.
-    - Azure `<storage-account-key>` 'daki depolama hesabı anahtarıyla değiştirin.
+    - `<share-name>`Daha önce oluşturduğunuz paylaşımın adıyla değiştirin.
+    - `<storage-account-key>`Azure 'daki depolama hesabı anahtarıyla değiştirin.
 
     Örneğin:  
   
@@ -120,8 +120,8 @@ Depolama hesabı erişim anahtarını almak için:
      icacls <mounted-drive-letter>: /grant <user-email>:(f)
      ```
 
-    - Kullanıcının `<mounted-drive-letter>` kullanmasını istediğiniz sürücünün harfiyle değiştirin.
-    - Oturum `<user-email>` ana bilgisayar VM 'lerine erişmek için bu profili kullanacak olan kullanıcının UPN 'si ile değiştirin.
+    - `<mounted-drive-letter>`Kullanıcının kullanmasını istediğiniz sürücünün harfiyle değiştirin.
+    - `<user-email>`Oturum ana bilgisayar VM 'lerine erişmek için bu profili kullanacak olan kullanıcının UPN 'si ile değiştirin.
 
     Örneğin:
      
@@ -137,20 +137,20 @@ FSLogix profil kapsayıcısını yapılandırmak için:
 
 1. Bu makalenin başlangıcında yapılandırdığınız oturum ana bilgisayarında oturum açın, ardından [FSLogix aracısını indirip yükleyin](/fslogix/install-ht/).
 
-2. İndirdiğiniz fslogix aracı dosyasını açın ve **x64** > **sürümleri**' ne gidin ve ardından **fslogixappssetup. exe**' yi açın.
+2. İndirdiğiniz fslogix aracı dosyasını açın ve **x64**  >  **sürümleri**' ne gidin ve ardından **fslogixappssetup. exe**' yi açın.
 
 3. Yükleyici başlatıldıktan sonra **Lisans hüküm ve koşullarını kabul** ediyorum ' u seçin. Uygulanabiliyorsa, yeni bir anahtar sağlayın.
 
-4. **Yükle**’yi seçin.
+4. **Yükle**'yi seçin.
 
-5. Fslogix aracısının düzgün yüklendiğinden emin olmak için **sürücü C**'yi açın ve **Program Files** > **fslogix** > **uygulamalarına** gidin.
+5. **Drive C** **Program Files**  >  **FSLogix**  >  Fslogix aracısının düzgün yüklendiğinden emin olmak için sürücü C 'yi açın ve Program Files fslogix**uygulamalarına** gidin.
 
      >[!NOTE]
      > Konak havuzunda birden çok VM varsa, her VM için 1 ile 5 arasındaki adımları tekrarlamanız gerekir.
 
 6. **Kayıt defteri Düzenleyicisi 'ni** (regedit) yönetici olarak çalıştırın.
 
-7. **Bilgisayar** > **HKEY_LOCAL_MACHINE**HKEY_LOCAL_MACHINE > **software**yazılım > **fslogix**' e gidin, **fslogix**öğesine sağ tıklayın, **Yeni**' yi seçin ve ardından **anahtar**' ı seçin.
+7. **Bilgisayar**  >  **HKEY_LOCAL_MACHINE**  >  **yazılım**  >  **fslogix**' e gidin, **fslogix**öğesine sağ tıklayın, **Yeni**' yi seçin ve ardından **anahtar**' ı seçin.
 
 8. **Profiller**adlı yeni bir anahtar oluşturun.
 
@@ -158,7 +158,7 @@ FSLogix profil kapsayıcısını yapılandırmak için:
 
     ![Profiller anahtarının ekran görüntüsü. REG_DWORD dosyası vurgulanır ve veri değeri 1 olarak ayarlanır.](media/dword-value.png)
 
-10. **Profiller**' e sağ tıklayın, **Yeni**' yi seçin ve sonra **çok dizeli değer**' i seçin. Değer **Vhdkonumlarını** adlandırın ve veri değeri olarak Azure dosya paylaşımının `\\fsprofile.file.core.windows.net\share` URI 'sini girin.
+10. **Profiller**' e sağ tıklayın, **Yeni**' yi seçin ve sonra **çok dizeli değer**' i seçin. Değer **Vhdkonumlarını** adlandırın ve `\\fsprofile.file.core.windows.net\share` veri değeri olarak Azure dosya paylaşımının URI 'sini girin.
 
     ![VHDLocations dosyasını gösteren profiller anahtarının ekran görüntüsü. Veri değeri, Azure dosya paylaşımının URI 'sini gösterir.](media/multi-string-value.png)
 
@@ -197,7 +197,7 @@ Kullanıcıları atamak için:
      Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
      ```
 
-    Önceki cmdlet 'ler gibi,, ve `<your-wvd-tenant>` `<wvd-pool>` `<user-principal>` değerlerini de ilgili değerlerle değiştirdiğinizden emin olun.
+    Önceki cmdlet 'ler gibi,, `<your-wvd-tenant>` `<wvd-pool>` ve değerlerini de ilgili değerlerle değiştirdiğinizden emin olun `<user-principal>` .
 
     Örneğin:
 
@@ -231,7 +231,7 @@ Profilinizi doğrulamak için:
 
 6. **Dosyalar** simgesini seçin, sonra paylaşımınızı genişletin.
 
-    Her şey doğru şekilde ayarlandıysa, şöyle biçimlendirilen bir ada sahip bir **Dizin** görmeniz gerekir: `<user SID>-<username>`.
+    Her şey doğru şekilde ayarlandıysa, şöyle biçimlendirilen bir ada sahip bir **Dizin** görmeniz gerekir: `<user SID>-<username>` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

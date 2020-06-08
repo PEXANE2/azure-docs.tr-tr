@@ -5,23 +5,23 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 06/02/2020
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f8b31b97752a39724a4b1b7073c2d4282bc54763
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 4723c2a8fa66e4ed2c4b40975179d7d4d2b281d6
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344858"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484652"
 ---
-# <a name="create-an-azure-files-file-share-with-a-domain-controller"></a>Bir etki alanı denetleyicisi ile Azure dosyaları dosya paylaşma oluşturma
+# <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Azure dosyaları ve AD DS bir profil kapsayıcısı oluşturun
 
 Bu makalede, var olan bir Windows sanal masaüstü konak havuzunda bir etki alanı denetleyicisi tarafından kimlik doğrulaması yapılan bir Azure dosya paylaşımının nasıl oluşturulacağını öğreneceksiniz. Bu dosya paylaşımından depolama profillerini depolamak için kullanabilirsiniz.
 
 Bu işlem, bir şirket içi dizin hizmeti olan Active Directory Domain Services (AD DS) kullanır. Azure AD DS ile FSLogix profil kapsayıcısı oluşturma hakkında bilgi arıyorsanız bkz. [Azure dosyaları Ile fslogix profil kapsayıcısı oluşturma](create-profile-container-adds.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, etki alanı denetleyicinizin Azure ile eşitlendiğinden ve oturum konaklarınızın bağlı olduğu Azure sanal ağı 'ndan (VNET) çözümleneceğinden emin olun.
 
@@ -178,7 +178,7 @@ NTFS izinlerinizi yapılandırmak için:
      - <bağlı sürücü harfi> sürücüyü eşlemek için kullandığınız sürücünün harfiyle değiştirin.
      - Kullanıcı-e-posta> <, paylaşıma erişim gerektirecek kullanıcıları içeren Kullanıcı veya Active Directory grubunun UPN 'si ile değiştirin.
 
-     Örnek:
+     Örneğin:
 
      ```powershell
      icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)

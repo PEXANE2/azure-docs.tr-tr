@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
-ms.openlocfilehash: 78cd5945e394219be0551bbe97afef07f18b61f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4a836ae195674556c486592a421c188f7c40e3f0
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78945478"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484340"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>GitHub eylemlerinde Key Vault Azure Spring Cloud kimlik doğrulaması yapma
 Anahtar Kasası, anahtarları depolamak için güvenli bir yerdir. Kurumsal kullanıcıların, denetdukları kapsamdaki CI/CD ortamları için kimlik bilgilerini depolaması gerekir. Anahtar kasasındaki kimlik bilgilerini almak için gereken anahtar, kaynak kapsamıyla sınırlı olmalıdır.  Azure kapsamının tamamına değil yalnızca Anahtar Kasası kapsamına erişebilir. Yalnızca bir binadaki tüm kapıları açan bir ana anahtar olmayan güçlü bir kutuyu açan bir anahtar gibidir. Bir CICD iş akışında yararlı olan başka bir anahtarla anahtar almanın bir yoludur. 
@@ -21,7 +21,7 @@ Anahtar kasasına erişmek için bir anahtar oluşturmak üzere yerel makinenizd
 ```
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.KeyVault/vaults/<KEY_VAULT> --sdk-auth
 ```
-`--scopes` Parametresi tarafından belirtilen kapsam, kaynağa yönelik anahtar erişimini sınırlandırır.  Yalnızca güçlü kutuya erişebilir.
+Parametresi tarafından belirtilen kapsam, `--scopes` kaynağa yönelik anahtar erişimini sınırlandırır.  Yalnızca güçlü kutuya erişebilir.
 
 Sonuçlarla:
 ```
@@ -42,11 +42,11 @@ Ardından, [GitHub deponuzu ayarlama ve Azure ile kimlik doğrulama](./spring-cl
 ## <a name="add-access-policies-for-the-credential"></a>Kimlik bilgileri için erişim Ilkeleri ekleme
 Yukarıda oluşturduğunuz kimlik bilgileri, depoladığı içeriklerle değil Key Vault hakkında yalnızca genel bilgileri alabilir.  Key Vault depolanan gizli dizileri almak için kimlik bilgisi için erişim ilkeleri ayarlamanız gerekir.
 
-Azure portal **Key Vault** panosuna gidin, **erişim denetim** menüsüne tıklayın ve ardından **rol atamaları** sekmesini açın. **tür** için `This resource` **uygulamalar** ve **kapsam**için seçin.  Önceki adımda oluşturduğunuz kimlik bilgisini görmeniz gerekir:
+Azure portal **Key Vault** panosuna gidin, **erişim denetim** menüsüne tıklayın ve ardından **rol atamaları** sekmesini açın. **tür** için **uygulamalar** ve `This resource` **kapsam**için seçin.  Önceki adımda oluşturduğunuz kimlik bilgisini görmeniz gerekir:
 
  ![Erişim ilkesini ayarla](./media/github-actions/key-vault1.png)
 
-Kimlik bilgisi adını (örneğin, `azure-cli-2020-01-19-04-39-02`) kopyalayın. **Erişim ilkeleri** menüsünü açın, **+ erişim ilkesi Ekle** bağlantısı ' na tıklayın.  Şablon `Secret Management` için **Template**' i seçin ve ardından **sorumlu**' ı seçin. Kimlik bilgisi adını **asıl öğe**/**Seç** giriş kutusuna yapıştırın:
+Kimlik bilgisi adını (örneğin,) kopyalayın `azure-cli-2020-01-19-04-39-02` . **Erişim ilkeleri** menüsünü açın, **+ erişim ilkesi Ekle** bağlantısı ' na tıklayın.  `Secret Management` **Şablon**için ' i seçin ve ardından **sorumlu**' ı seçin. Kimlik bilgisi adını **asıl öğe** / **Seç** giriş kutusuna yapıştırın:
 
  ![Şunu seçin:](./media/github-actions/key-vault2.png)
 
@@ -73,7 +73,7 @@ Yine, sonuçlar:
     "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-Tüm JSON dizesini kopyalayın.  Kutuyu **Key Vault** panoya geri dönün. **Gizli** diziler menüsünü açın ve ardından **Oluştur/al** düğmesine tıklayın. Gizli adı girin, örneğin `AZURE-CRENDENTIALS-FOR-SPRING`. JSON kimlik bilgisi dizesini **değer** giriş kutusuna yapıştırın. Değer giriş kutusunun çok satırlı bir metin alanı yerine tek satırlık bir metin alanı olduğunu fark edebilirsiniz.  Tüm JSON dizesini buraya yapıştırabilirsiniz.
+Tüm JSON dizesini kopyalayın.  Kutuyu **Key Vault** panoya geri dönün. **Gizli** diziler menüsünü açın ve ardından **Oluştur/al** düğmesine tıklayın. Gizli adı girin, örneğin `AZURE-CREDENTIALS-FOR-SPRING` . JSON kimlik bilgisi dizesini **değer** giriş kutusuna yapıştırın. Değer giriş kutusunun çok satırlı bir metin alanı yerine tek satırlık bir metin alanı olduğunu fark edebilirsiniz.  Tüm JSON dizesini buraya yapıştırabilirsiniz.
 
  ![Tam kapsam kimlik bilgisi](./media/github-actions/key-vault3.png)
 
@@ -92,7 +92,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}           # Strong box key you generated in the first step
     - uses: Azure/get-keyvault-secrets@v1.0
       with:
-        keyvault: "zlhe-test"
+        keyvault: "<Your Key Vault Name>"
         secrets: "AZURE-CREDENTIALS-FOR-SPRING"           # Master key to open all doors in the building
       id: keyvaultaction
     - uses: azure/login@v1

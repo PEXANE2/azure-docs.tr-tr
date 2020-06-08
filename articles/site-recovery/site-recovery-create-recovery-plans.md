@@ -3,12 +3,12 @@ title: Azure Site Recovery kurtarma planlarını oluşturma/özelleştirme
 description: Azure Site Recovery hizmetini kullanarak olağanüstü durum kurtarma için kurtarma planları oluşturmayı ve özelleştirmeyi öğrenin.
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 6540317324a9f0d9bccc046ecf95824d4128bd09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76705845"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485334"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Kurtarma planlarını oluşturma ve özelleştirme
 
@@ -16,7 +16,7 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md)'de yük devretme i
 
 ## <a name="create-a-recovery-plan"></a>Kurtarma planı oluşturma
 
-1. Kurtarma Hizmetleri kasasında **kurtarma planları (Site Recovery)** > **+ kurtarma planı**' nı seçin.
+1. Kurtarma Hizmetleri kasasında **kurtarma planları (Site Recovery)**  >  **+ kurtarma planı**' nı seçin.
 2. **Kurtarma planı oluştur**' da plan için bir ad belirtin.
 3. Plandaki makinelere göre bir kaynak ve hedef seçin ve dağıtım modeli için **Kaynak Yöneticisi** ' yi seçin. Kaynak konumu, yük devretme ve kurtarma için etkinleştirilen makinelere sahip olmalıdır. 
 
@@ -29,9 +29,9 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md)'de yük devretme i
    Hyper-V (VMM tarafından yönetilen) Azure 'a  | VMM sunucusunu seçin | Azure 'ı seçin
   
     Şunlara dikkat edin:
-    -  Yalnızca kaynak konumdan Azure 'a yük devretme için bir kurtarma planı kullanabilirsiniz. Azure 'dan yeniden çalışma için bir kurtarma planı kullanamazsınız.
-    - Kaynak konumu, yük devretme ve kurtarma için etkinleştirilen makinelere sahip olmalıdır. 
-    - Bir kurtarma planı aynı kaynak ve hedefe sahip makineler içerebilir. 
+    - Azure 'a yük devretme ve Azure 'dan yeniden çalışma için bir kurtarma planı kullanabilirsiniz.
+    - Kaynak konumu, yük devretme ve kurtarma için etkinleştirilen makinelere sahip olmalıdır.
+    - Bir kurtarma planı aynı kaynak ve hedefe sahip makineler içerebilir.
     - VMM tarafından yönetilen VMware VM 'leri ve Hyper-V VM 'lerini aynı planda ekleyebilirsiniz.
     - VMware VM 'Leri ve fiziksel sunucuları aynı planda olabilir.
 
@@ -76,7 +76,7 @@ Bir komut dosyası veya el ile eylem ekleyerek bir kurtarma planını özelleşt
     1. Eylem için bir ad yazın ve eylem yönergeleri yazın. Yük devretmeyi çalıştıran kişi bu yönergeleri görür.
     1. Tüm yük devretme türleri için el ile eylem eklemek isteyip istemediğinizi belirtin (test, yük devretme, planlı yük devretme (ilgiliyse)). Ardından **Tamam**'a tıklayın.
 4. Bir betik eklemek istiyorsanız, aşağıdakileri yapın:
-    1. VMM betiği ekliyorsanız, **VMM betiğine yük devretme**' yı seçin ve **betik yolu** ' nda, paylaşımın göreli yolunu yazın. Örneğin, paylaşım vmmservername> \msscvmmlibrary\rpscripts dizininde \\ \<bulunuyorsa: \rpscripts\rpscript.exe. ps1yolunu belirtin.
+    1. VMM betiği ekliyorsanız, **VMM betiğine yük devretme**' yı seçin ve **betik yolu** ' nda, paylaşımın göreli yolunu yazın. Örneğin, paylaşım \\ \<VMMServerName> \Msscvmmlibrary\rpscripts dizininde bulunuyorsa: \Rpscripts\rpscript.exe. ps1yolunu belirtin.
     1. Bir Azure Otomasyonu çalıştırma defteri ekliyorsanız, runbook 'un bulunduğu **Azure Otomasyonu hesabını** belirtin ve uygun **Azure runbook betiğini**seçin.
 5. Komut dosyasının beklendiği gibi çalıştığından emin olmak için kurtarma planının test yük devretmesini çalıştırın.
 

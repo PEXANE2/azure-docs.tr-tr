@@ -4,20 +4,20 @@ description: Azure Cosmos DB için SQL ORDER BY yan tümcesi hakkında bilgi edi
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/17/2020
+ms.date: 06/06/2020
 ms.author: tisande
-ms.openlocfilehash: 70702ee4a77e8b3c46de4354f3394bca4080d837
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4ae66884602989284a427bdc33de7612bd9a8df
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641389"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484333"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB ORDER BY yan tümcesi
 
 İsteğe bağlı `ORDER BY` yan tümce, sorgu tarafından döndürülen sonuçlar için sıralama düzenini belirtir.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql  
 ORDER BY <sort_specification>  
@@ -25,15 +25,15 @@ ORDER BY <sort_specification>
 <sort_expression> ::= {<scalar_expression> [ASC | DESC]} [ ,...n ]  
 ```  
 
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
   
 - `<sort_specification>`  
   
    Sorgu sonuç kümesinin sıralaması yapılacak bir özellik veya ifade belirtir. Bir sıralama sütunu, ad veya özellik diğer adı olarak belirtilebilir.  
   
-   Birden çok özellik belirtilebilir. Özellik adları benzersiz olmalıdır. `ORDER BY` Yan tümcesindeki sıralama özelliklerinin sırası, sıralanmış sonuç kümesinin organizasyonunu tanımlar. Diğer bir deyişle, sonuç kümesi ilk özelliğe göre sıralanır ve ardından sıralı liste ikinci özelliğe göre sıralanır ve bu şekilde devam eder.  
+   Birden çok özellik belirtilebilir. Özellik adları benzersiz olmalıdır. Yan tümcesindeki sıralama özelliklerinin sırası, `ORDER BY` sıralanmış sonuç kümesinin organizasyonunu tanımlar. Diğer bir deyişle, sonuç kümesi ilk özelliğe göre sıralanır ve ardından sıralı liste ikinci özelliğe göre sıralanır ve bu şekilde devam eder.  
   
-   `ORDER BY` Yan tümcesinde başvurulan özellik adları, select listesindeki bir özelliğe ya da herhangi bir belirsizlikleri olmadan `FROM` yan tümcesinde belirtilen koleksiyonda tanımlanan bir özelliğe karşılık gelmelidir.  
+   Yan tümcesinde başvurulan özellik adları, `ORDER BY` Select listesindeki bir özelliğe ya da `FROM` herhangi bir belirsizlikleri olmadan yan tümcesinde belirtilen koleksiyonda tanımlanan bir özelliğe karşılık gelmelidir.  
   
 - `<sort_expression>`  
   
@@ -49,7 +49,7 @@ ORDER BY <sort_specification>
   
 ## <a name="remarks"></a>Açıklamalar  
   
-   `ORDER BY` Yan tümcesi, dizin oluşturma ilkesinin sıralanmakta olan alanlar için bir dizin içermesini gerektirir. Azure Cosmos DB sorgusu çalışma zamanı, hesaplanan özelliklere karşı değil, özellik adına göre sıralamayı destekler. Azure Cosmos DB birden çok `ORDER BY` özelliği destekler. Bir sorguyu birden çok sıra özellikleriyle çalıştırmak için, sıralanan alanlarda bir [bileşik dizin](index-policy.md#composite-indexes) tanımlamanız gerekir.
+   `ORDER BY`Yan tümcesi, dizin oluşturma ilkesinin sıralanmakta olan alanlar için bir dizin içermesini gerektirir. Azure Cosmos DB sorgusu çalışma zamanı, hesaplanan özelliklere karşı değil, özellik adına göre sıralamayı destekler. Azure Cosmos DB birden çok `ORDER BY` özelliği destekler. Bir sorguyu birden çok sıra özellikleriyle çalıştırmak için, sıralanan alanlarda bir [bileşik dizin](index-policy.md#composite-indexes) tanımlamanız gerekir.
 
 > [!Note]
 > Sıralanan özellikler bazı belgeler için tanımsız olabilir ve bunları bir SıRALAMA sorgusuna almak istiyorsanız, bu yolu dizine açıkça eklemeniz gerekir. Varsayılan dizin oluşturma ilkesi, sıralama özelliğinin tanımsız olduğu belgelerin alınmasına izin vermez. [Bazı eksik alanları olan belgelerde örnek sorguları gözden geçirin](#documents-with-missing-fields).
@@ -79,7 +79,7 @@ Sonuçlar:
     ]
 ```
 
-Aşağıdaki sorgu, öğe oluşturma `id`tarihleri sırasına göre aile öğelerini alır. Öğe `creationDate` , *Dönem süresini*temsil eden bir sayı veya 1 Ocak 1970 ' den beri saniye cinsinden geçen süreyi temsil eder.
+Aşağıdaki sorgu, `id` öğe oluşturma tarihleri sırasına göre aile öğelerini alır. Öğe, `creationDate` *Dönem süresini*temsil eden bir sayı veya 1 Ocak 1970 ' den beri saniye cinsinden geçen süreyi temsil eder.
 
 ```sql
     SELECT f.id, f.creationDate
@@ -110,13 +110,13 @@ Ayrıca, birden çok özelliğe göre sıralama yapabilirsiniz. Birden çok öze
     ORDER BY f.address.city ASC, f.creationDate DESC
 ```
 
-Bu sorgu, ailenizi `id` şehir adının artan sırasına göre alır. Birden çok öğe aynı şehir adına sahip ise, sorgu azalan sırada sıraya `creationDate` alınır.
+Bu sorgu, ailenizi `id` Şehir adının artan sırasına göre alır. Birden çok öğe aynı şehir adına sahip ise, sorgu `creationDate` azalan sırada sıraya alınır.
 
 ## <a name="documents-with-missing-fields"></a>Eksik alanları olan belgeler
 
-`ORDER BY` Varsayılan dizin oluşturma ilkesiyle kapsayıcılara karşı çalıştırılan sorgular, Sort özelliğinin tanımsız olduğu belgeleri döndürmeyecektir. Sıralama özelliğinin tanımsız olduğu belgeleri eklemek isterseniz, bu özelliği dizin oluşturma ilkesine açıkça eklemeniz gerekir.
+`ORDER BY`Varsayılan dizin oluşturma ilkesiyle kapsayıcılara karşı çalıştırılan sorgular, Sort özelliğinin tanımsız olduğu belgeleri döndürmeyecektir. Sıralama özelliğinin tanımsız olduğu belgeleri eklemek isterseniz, bu özelliği dizin oluşturma ilkesine açıkça eklemeniz gerekir.
 
-Örneğin, `"/*"`aşağıdaki gibi herhangi bir yolu açıkça içermeyen bir dizin oluşturma ilkesiyle bir kapsayıcı aşağıda verilmiştir:
+Örneğin, aşağıdaki gibi herhangi bir yolu açıkça içermeyen bir dizin oluşturma ilkesiyle bir kapsayıcı aşağıda verilmiştir `"/*"` :
 
 ```json
 {
@@ -131,9 +131,9 @@ Bu sorgu, ailenizi `id` şehir adının artan sırasına göre alır. Birden ço
 }
 ```
 
-Yan tümcesine dahil `lastName` olan bir sorgu çalıştırırsanız, sonuçlar yalnızca tanımlanmış bir `lastName` özelliği olan belgeleri dahil eder. `Order By` İçin `lastName` açıkça eklenen bir yol tanımlamadık, `lastName` bu nedenle, olmayan tüm belgeler sorgu sonuçlarında görünmeyecek.
+Yan tümcesine dahil olan bir sorgu çalıştırırsanız `lastName` `Order By` , sonuçlar yalnızca tanımlanmış bir özelliği olan belgeleri dahil eder `lastName` . İçin açıkça eklenen bir yol tanımlamadık `lastName` , bu nedenle, olmayan tüm belgeler `lastName` sorgu sonuçlarında görünmeyecek.
 
-Aşağıda, biri `lastName` tanımlanmış olmayan iki belgeye `lastName` göre sıralama yapan bir sorgu verilmiştir:
+Aşağıda `lastName` , biri tanımlanmış olmayan iki belgeye göre sıralama yapan bir sorgu verilmiştir `lastName` :
 
 ```sql
     SELECT f.id, f.lastName
@@ -141,7 +141,7 @@ Aşağıda, biri `lastName` tanımlanmış olmayan iki belgeye `lastName` göre 
     ORDER BY f.lastName
 ```
 
-Sonuçlar yalnızca tanımlı `lastName`bir belgeyi içerir:
+Sonuçlar yalnızca tanımlı bir belgeyi içerir `lastName` :
 
 ```json
     [
@@ -152,9 +152,9 @@ Sonuçlar yalnızca tanımlı `lastName`bir belgeyi içerir:
     ]
 ```
 
-Kapsayıcının dizin oluşturma ilkesini için `lastName`açıkça bir yol içerecek şekilde güncelleştirdiğimiz takdirde sorgu sonuçlarında tanımsız sıralama özelliğine sahip belgeler dahil edeceğiz. Bu skaler değere (ve bundan sonra değil) yol açacak yolu açıkça tanımlamanız gerekir. Özelliği `lastName` açıkça dizinlemesini `?` ve bundan sonra başka iç içe yol olmamasını sağlamak için dizin oluşturma ilkesinde yol tanımınızdaki karakteri kullanmanız gerekir. `Order By` Sorgunuz [bileşik bir dizin](index-policy.md#composite-indexes)kullanıyorsa, sonuçlar her zaman sorgu sonuçlarında tanımsız bir sıralama özelliği olan belgeleri içerecektir.
+Kapsayıcının dizin oluşturma ilkesini için açıkça bir yol içerecek şekilde güncelleştirdiğimiz takdirde `lastName` sorgu sonuçlarında tanımsız sıralama özelliğine sahip belgeler dahil edeceğiz. Bu skaler değere (ve bundan sonra değil) yol açacak yolu açıkça tanımlamanız gerekir. `?`Özelliği açıkça dizinlemesini `lastName` ve bundan sonra başka iç içe yol olmamasını sağlamak için dizin oluşturma ilkesinde yol tanımınızdaki karakteri kullanmanız gerekir. `Order By`Sorgunuz [bileşik bir dizin](index-policy.md#composite-indexes)kullanıyorsa, sonuçlar her zaman sorgu sonuçlarında tanımsız bir sıralama özelliği olan belgeleri içerecektir.
 
-Sorgu sonuçlarında tanımsız `lastName` bir belge olmasına izin veren örnek bir dizin oluşturma ilkesi aşağıda verilmiştir:
+Sorgu sonuçlarında tanımsız bir belge olmasına izin veren örnek bir dizin oluşturma ilkesi aşağıda verilmiştir `lastName` :
 
 ```json
 {
@@ -172,7 +172,7 @@ Sorgu sonuçlarında tanımsız `lastName` bir belge olmasına izin veren örnek
 }
 ```
 
-Aynı sorguyu yeniden çalıştırırsanız, eksik `lastName` olan belgeler sorgu sonuçlarında önce görünür:
+Aynı sorguyu yeniden çalıştırırsanız, eksik olan belgeler `lastName` sorgu sonuçlarında önce görünür:
 
 ```sql
     SELECT f.id, f.lastName
@@ -194,7 +194,7 @@ Sonuçlar:
 ]
 ```
 
-Sıralama düzenini olarak `DESC`değiştirirseniz, eksik `lastName` olan belgeler sorgu sonuçlarında son görünür:
+Sıralama düzenini olarak değiştirirseniz `DESC` , eksik olan belgeler `lastName` sorgu sonuçlarında son görünür:
 
 ```sql
     SELECT f.id, f.lastName
@@ -215,6 +215,11 @@ Sonuçlar:
     }
 ]
 ```
+
+> [!Note]
+> Yalnızca .NET SDK sürümü 3.4.0 veya üzeri, karışık türlerle SıRALAMAYı destekler. Bu nedenle, tanımsız ve tanımlanmış değerlerin birleşimine göre sıralama yapmak istiyorsanız, bu sürümü (veya üzeri) kullanmanız gerekir.
+
+Sonuçlarda farklı türlerin görünme sırasını kontrol edebilirsiniz. Yukarıdaki örnekte, tanımsız değerlerin dize değerlerinden önce nasıl sıralanacağını gösterdi. Bunun yerine, tanımsız değerlerin sıralama düzeni üzerinde daha fazla denetime sahip olmak istiyorsanız, herhangi bir tanımsız özelliği bir "aaaaaaaaa" veya "zzzzzzzz" dize değerinin ilk veya son olması için atayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

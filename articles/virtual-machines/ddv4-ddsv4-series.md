@@ -8,16 +8,16 @@ ms.custom: mimckitt
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 23644736370d4a875d1f9c0e65f3097fcffa07f6
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 691584f46059032ecd02a10964b819598d1b3b09
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338711"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484581"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4 ve Ddsv4 serisi
 
-Ddv4 ve Ddsv4 serisi, &reg; &reg; bir hiper iş yükleri için daha iyi bir değer teklifi sağlayan, bir hiper iş parçacığı yapılandırmasındaki Intel Xeon Platinum 8272CL (Cascade Lake) işlemcilerde çalışır. 3,4 GHz, [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; hiper iş parçacığı teknolojisi](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve [Intel &reg; Gelişmiş vektör Uzantıları 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)için tüm çekirdek Turbo saat hızını sürekli olarak sunar. Bu yeni VM boyutları %50 daha büyük yerel depolamaya sahip olacak ve [Gen2 VM 'leri](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)ile [Dv3/Dsv3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series) boyutlarına kıyasla hem okuma hem de yazma için daha iyi yerel disk IOPS olacaktır.
+Ddv4 ve Ddsv4 serisi, &reg; &reg; bir hiper iş yükleri için daha iyi bir değer teklifi sağlayan, bir hiper iş parçacığı yapılandırmasındaki Intel Xeon Platinum 8272CL (Cascade Lake) işlemcilerde çalışır. 3,4 GHz, [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; hiper iş parçacığı teknolojisi](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve [Intel &reg; Gelişmiş vektör Uzantıları 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)için tüm çekirdek Turbo saat hızını sürekli olarak sunar. Ayrıca, [Intel &reg; derin öğrenme artışı](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)'nı destekler. Bu yeni VM boyutları %50 daha büyük yerel depolamaya sahip olacak ve [Gen2 VM 'leri](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)ile [Dv3/Dsv3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series) boyutlarına kıyasla hem okuma hem de yazma için daha iyi yerel disk IOPS olacaktır.
 
 D Serisi Kullanım örnekleri arasında kurumsal düzeyde uygulamalar, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz bulunur.
 
@@ -66,7 +66,7 @@ Dinamik Geçiş: destekleniyor
 
 Güncelleştirmeleri koruyan bellek: desteklenir
 
-| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps (GiB 'de önbellek) | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_D2ds_v4 | 2 | 8 | 75 | 4 | 19000/120 (50) | 3000/48 | 2/1000 |
 | Standard_D4ds_v4 | 4 | 16 | 150 | 8 | 38500/242 (100) | 6400/96 | 2/2000 |

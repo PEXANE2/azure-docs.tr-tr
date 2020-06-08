@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 06/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc75b300704ef7f8218134c9d384b0718fca1e97
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: b7b551fcace5289b9ffd9fb131b5ba1120b3fdd2
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220710"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483665"
 ---
-# <a name="configure-authentication-session-management-with-conditional-access"></a>Koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma
+# <a name="configure-authentication-session-management-with-conditional-access"></a>Erişim Denetimi ile kimlik doğrulama oturum yönetimini yapılandırma
 
 Karmaşık dağıtımlarda, kuruluşların kimlik doğrulama oturumlarını kısıtlama gereksinimi olabilir. Bazı senaryolarda şunlar bulunabilir:
 
@@ -54,6 +54,8 @@ Oturum açma sıklığı ayarı, standartlara göre OAUTH2 veya OıDC protokolle
 ### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>Kullanıcı oturum açma sıklığı ve Multi-Factor Authentication
 
 Daha önce Azure AD 'ye katılmış olan, karma Azure AD 'ye katılmış ve Azure AD 'ye kayıtlı cihazlarda yalnızca birinci faktör kimlik doğrulamasına uygulanan oturum açma sıklığı. Müşterilerimizin bu cihazlarda Multi Factor Authentication 'ı (MFA) yeniden zorlaması için kolay bir yol yoktu. Müşteri geri bildirimlerine dayalı olarak oturum açma sıklığı, MFA için de geçerlidir.
+
+[![Oturum açma sıklığı ve MFA](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart-small.png)](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart.png#lightbox)
 
 ### <a name="user-sign-in-frequency-and-device-identities"></a>Kullanıcı oturum açma sıklığı ve cihaz kimlikleri
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 838a4123bd5007f987f27674862409445967a2d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/3/2020
+ms.openlocfilehash: 05bc0f1ae50f74cc7c8ab2b236d73bdb4a6fe787
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79528107"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484682"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı’ndaki Performans Önerileri
 
@@ -29,24 +29,25 @@ Performans Önerileri özelliğini kullanarak analiz çalıştırmak için **Sah
 
 MariaDB sunucunuzun Azure portal sayfasındaki menü çubuğunun **akıllı performans** bölümünde **performans önerilerini** açın.
 
-![Performans Önerileri giriş sayfası](./media/concepts-performance-recommendations/performance-recommendations-page.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="Performans Önerileri giriş sayfası":::
 
 **Çözümle** ' yi seçin ve analiz işlemini başlatmak için bir veritabanı seçin. İş yükünüze bağlı olarak, çözümlemenin tamamlanması birkaç dakika sürebilir. Analiz tamamlanınca portalda bir bildirim olur. Analiz, veritabanınızı ayrıntılı bir şekilde inceleme işlemini gerçekleştirir. Yoğun olmayan dönemler sırasında analiz gerçekleştirmenizi öneririz.
 
 **Öneriler** penceresi, varsa önerilerin bir listesini ve bu öneriyi oluşturan ılgılı sorgu kimliğini gösterir. Sorgu KIMLIĞIYLE, sorgu hakkında daha fazla bilgi edinmek için [MySQL. query_store](concepts-query-store.md#mysqlquery_store) görünümünü kullanabilirsiniz.
 
-![Performans önerileri yeni sayfa](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Performans önerileri yeni sayfa":::
 
 Öneriler otomatik olarak uygulanmaz. Öneriyi uygulamak için, sorgu metnini kopyalayın ve tercih ettiğiniz istemciden çalıştırın. Öneriyi değerlendirmek için sınamayı ve izlemeyi unutmayın.
 
 ## <a name="recommendation-types"></a>Öneri türleri
 
-Şu anda yalnızca *Dizin önerileri oluşturma* desteklenir.
-
-### <a name="create-index-recommendations"></a>Dizin önerileri oluşturma
+### <a name="index-recommendations"></a>Dizin önerileri
 
 *Dizin önerilerini oluşturma* , iş yükünde en sık çalıştırılan veya zaman alan sorguları hızlandırmak için yeni dizinler önerir. Bu öneri türü, [sorgu deposunun](concepts-query-store.md) etkinleştirilmesini gerektirir. Sorgu deposu sorgu bilgilerini toplar ve çözümlemenin öneriyi yapmak için kullandığı ayrıntılı sorgu çalışma zamanı ve sıklık istatistiklerini sağlar.
 
+### <a name="query-recommendations"></a>Sorgu önerileri
+
+Sorgu önerileri, iş yükünde sorgular için iyileştirmeleri ve yeniden yazar önerir. MariaDB sorgu düzenlerini tanımlayarak ve bunları sözdizimsel olarak düzelterek, zaman alan sorguların performansı artırılabilir. Bu öneri türü, sorgu deposunun etkinleştirilmesini gerektirir. Sorgu deposu sorgu bilgilerini toplar ve çözümlemenin öneriyi yapmak için kullandığı ayrıntılı sorgu çalışma zamanı ve sıklık istatistiklerini sağlar.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - MariaDB için Azure veritabanı 'nda [izleme ve ayarlama](concepts-monitoring.md) hakkında daha fazla bilgi edinin.

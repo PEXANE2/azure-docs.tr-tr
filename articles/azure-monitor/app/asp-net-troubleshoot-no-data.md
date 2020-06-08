@@ -3,12 +3,12 @@ title: Veri bulunmama sorunlarını giderme - .NET için Application Insights
 description: Azure Application Insights verileri görmüyor musunuz? Buradan deneyin.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 882081f28a53e347612a4b30374e294bb7352796
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 59543adaf01a8e19f0e3eefd167234f6c5d18deb
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835147"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485164"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>.NET/.NET Core için veri Application Insights sorunlarını giderme
 
@@ -158,7 +158,6 @@ Durum İzleyicisi 'ni ve [Azure Cloud Services](../../azure-monitor/app/app-insi
 * Windows Server 2008: şu güncelleştirmeleri yüklediğinizden emin olun: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>Verileri görmek için kullandım, ancak durdu
-* [Durum blogunu](https://blogs.msdn.com/b/applicationinsights-status/)denetleyin.
 * Aylık veri noktaları kotasına ulaştınız misiniz? Bulmak için ayarları/kotayı ve fiyatlandırmayı açın. Bu durumda, planınızı yükseltebilir veya ek kapasite için ödeme yapabilirsiniz. [Fiyatlandırma şemasına](https://azure.microsoft.com/pricing/details/application-insights/)bakın.
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>Beklediğiniz tüm verileri göremiyorum

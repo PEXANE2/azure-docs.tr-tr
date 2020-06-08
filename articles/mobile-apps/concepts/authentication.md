@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 34a8a070-2222-4faf-9090-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: ce7fcbb9f8386f2d3455168a78d6c0a9ab33a24d
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: dabf97b4eb1b3c07883f0bd42835c94ce8df44e4
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84451021"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484855"
 ---
 # <a name="add-authentication-and-manage-user-identities-in-your-mobile-apps"></a>Mobil uygulamalarınızdaki kimlik doğrulaması ve Kullanıcı kimliklerini yönetme
 
@@ -35,7 +35,7 @@ Mobil uygulamalarınızda Kullanıcı kimlik doğrulamasını etkinleştirmek i�
 **Başvurular**
 - [Azure portal](https://portal.azure.com/)
 - [Azure AD B2C belgeleri](/azure/active-directory-b2c/)
-- [Hızlı Başlangıçlar](/azure/active-directory-b2c/active-directory-b2c-quickstarts-web-app)
+- [Hızlı başlangıçlar](/azure/active-directory-b2c/active-directory-b2c-quickstarts-web-app)
 - [Örnekler](/azure/active-directory-b2c/code-samples)
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
@@ -53,4 +53,4 @@ Mobil uygulamalarınızda Kullanıcı kimlik doğrulamasını etkinleştirmek i�
 - [Azure portal](https://portal.azure.com/)
 - [Azure AD nedir?](/azure/active-directory/fundamentals/active-directory-whatis)
 - [Azure Active Directory ile çalışmaya başlama](/azure/active-directory/fundamentals/active-directory-whatis)
-- [Hızlı Başlangıçlar](/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [Hızlı başlangıçlar](/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)

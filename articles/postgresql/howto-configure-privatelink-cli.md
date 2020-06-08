@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: a6baf8b4609382be4a5a31d12cac581da2c17de6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bb3d95760910868fb113c90a246d5c1c7c27c91
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81011676"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484955"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>For PostgreSQL için Azure veritabanı-CLı kullanarak tek sunucu için özel bağlantı oluşturma ve yönetme
 
@@ -28,7 +28,7 @@ Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Bunun yerine Azure CLı 'yı yüklemek ve kullanmak isterseniz, bu hızlı başlangıç, Azure CLı sürüm 2.0.28 veya sonraki bir sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version`. Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
+Bunun yerine Azure CLı 'yı yüklemek ve kullanmak isterseniz, bu hızlı başlangıç, Azure CLı sürüm 2.0.28 veya sonraki bir sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version` . Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -49,7 +49,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>Alt ağ özel uç nokta ilkelerini devre dışı bırak 
-Azure, bir sanal ağ içindeki bir alt ağa kaynak dağıtır, bu nedenle özel uç nokta ağ ilkelerini devre dışı bırakmak için alt ağ oluşturmanız veya güncelleştirmeniz gerekir. [Az Network VNET subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)Ile *mysubnet* adlı bir alt ağ yapılandırmasını güncelleştirin:
+Azure, bir sanal ağ içindeki bir alt ağa kaynak dağıtır, bu nedenle özel uç nokta [ağ ilkelerini](../private-link/disable-private-endpoint-network-policy.md)devre dışı bırakmak için alt ağ oluşturmanız veya güncelleştirmeniz gerekir. [Az Network VNET subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)Ile *mysubnet* adlı bir alt ağ yapılandırmasını güncelleştirin:
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -82,8 +82,6 @@ az postgres server create \
 --sku-name GP_Gen5_2
 ```
 
-PostgreSQL sunucu KIMLIĞININ bir sonraki adımda PostgreSQL sunucu KIMLIĞINI kullanacağınızı göz önünde bulunanlara benzer ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/servername.``` . 
-
 ## <a name="create-the-private-endpoint"></a>Özel uç nokta oluşturma 
 Sanal ağınızdaki PostgreSQL sunucusu için özel bir uç nokta oluşturun: 
 ```azurecli-interactive
@@ -92,7 +90,7 @@ az network private-endpoint create \
     --resource-group myResourceGroup \  
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
-    --private-connection-resource-id "<PostgreSQL Server ID>" \  
+    --private-connection-resource-id "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.DBforPostgreSQL/servers/$Servername" \  
     --group-ids postgresqlServer \  
     --connection-name myConnection  
  ```
@@ -124,6 +122,10 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 > [!NOTE] 
 > Müşteri DNS ayarındaki FQDN, yapılandırılan özel IP 'ye çözümlenmez. [Burada](../dns/dns-operations-recordsets-portal.md)gösterildiği gibi, yapılandırılmış FQDN IÇIN bir DNS bölgesi oluşturmanız gerekir.
 
+> [!NOTE]
+> Bazı durumlarda PostgreSQL için Azure veritabanı ve sanal ağ alt ağı farklı aboneliklerde bulunur. Bu durumlarda, aşağıdaki yapılandırmalardan emin olmanız gerekir:
+> - Her iki abonelikte da **Microsoft. DBforPostgreSQL** kaynak sağlayıcısının kayıtlı olduğundan emin olun. Daha fazla bilgi için [Resource-Manager-kayıt][resource-manager-portal] bölümüne bakın
+
 ## <a name="connect-to-a-vm-from-the-internet"></a>İnternet'ten bir sanal makineye bağlanma
 
 Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
@@ -141,7 +143,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
     1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
         > [!NOTE]
-        > VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için > **farklı bir hesap kullan**' **ı seçmeniz gerekebilir**.
+        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
 1. **Tamam**’ı seçin.
 
@@ -172,12 +174,12 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
     | ------- | ----- |
     | Sunucu türü| **PostgreSQL**' i seçin.|
     | Sunucu adı| *Mydemopostgresserver.Privatelink.Postgres.Database.Azure.com* seçin |
-    | Kullanıcı adı | PostgreSQL sunucusu oluşturma sırasında belirtilen kullanıcı adını username@servername girin. |
+    | Kullanıcı adı | username@servernamePostgreSQL sunucusu oluşturma sırasında belirtilen kullanıcı adını girin. |
     |Parola |PostgreSQL sunucusu oluşturma sırasında bir parola girin. |
     |SSL|**Gerekli**' yi seçin.|
     ||
 
-5. Bağlan’ı seçin.
+5. Bağlan'ı seçin.
 
 6. Sol menüden veritabanlarına gözatamazsınız.
 
@@ -194,3 +196,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure özel uç noktası nedir?](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) hakkında daha fazla bilgi edinin
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

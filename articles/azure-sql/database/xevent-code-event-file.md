@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
-ms.date: 03/12/2019
-ms.openlocfilehash: f409a4c27e2b69993406f95301d21f05b547aed6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/06/2020
+ms.openlocfilehash: 7c451deb04c9fd8b394512979668ad266cadf02d
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047009"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485477"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL veritabanı 'nda genişletilmiş olaylar için olay dosyası hedef kodu
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,6 @@ Bu konuda, iki aşamalı bir kod örneği sunulmaktadır:
 
 - PowerShell, bulutta bir Azure depolama kapsayıcısı oluşturmak için.
 - Transact-SQL:
-  
   - Azure depolama kapsayıcısını bir olay dosyası hedefine atamak için.
   - Olay oturumu oluşturmak ve başlatmak için ve bu şekilde devam edin.
 
@@ -71,7 +70,7 @@ Betik, bir önceki çalıştırıldıktan sonra temizlik komutları ile başlar 
 
    - Oturumunuzu kesintiye uğratmadan betiği yeniden çalıştırırsanız, **Add-AzureAccount** komutunu açıklama eklemek uygun bir seçeneğe sahip olursunuz.
 
-![Azure modülü yüklü olan PowerShell ıSE, betiği çalıştırmaya hazırlanıyor.][30_powershell_ise]
+![Azure modülü yüklü olan PowerShell ıSE, betiği çalıştırmaya hazırlanıyor.](./media/xevent-code-event-file/event-file-powershell-ise-b30.png)
 
 ### <a name="powershell-code"></a>PowerShell kodu
 
@@ -232,6 +231,15 @@ Now shift to the Transact-SQL portion of the two-part code sample!';
 ```
 
 PowerShell betiğinin bittiği sırada yazdırdığı birkaç adlandırılmış değeri unutmayın. Bu değerleri, Aşama 2 olarak takip eden Transact-SQL betiğine düzenlemeniz gerekir.
+
+<!--
+TODO:   Consider whether the preceding PowerShell code example deserves to be updated to the latest package (AzureRM.SQL?).
+2020/June/06   Adding the !NOTE below about "ADLS Gen2 storage accounts".
+Related to   https://github.com/MicrosoftDocs/azure-docs/issues/56520
+-->
+
+> [!NOTE]
+> Önceki PowerShell kod örneğinde, SQL genişletilmiş olayları ADLS 2. depolama hesaplarıyla uyumlu değildir.
 
 ## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>2. Aşama: Azure Storage kapsayıcısını kullanan Transact-SQL kodu
 
@@ -514,6 +522,3 @@ Azure depolama hizmetindeki hesaplar ve kapsayıcılar hakkında daha fazla bilg
 - [1. ders: bir Azure kapsayıcısında depolanan erişim ilkesi ve paylaşılan erişim imzası oluşturma](https://msdn.microsoft.com/library/dn466430.aspx)
   - [2. ders: paylaşılan erişim imzası kullanarak SQL Server kimlik bilgileri oluşturma](https://msdn.microsoft.com/library/dn466435.aspx)
 - [Microsoft SQL Server için genişletilmiş olaylar](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
-
-<!-- Image references. -->
-[30_powershell_ise]: ./media/xevent-code-event-file/event-file-powershell-ise-b30.png

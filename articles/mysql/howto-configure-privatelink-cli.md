@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: f83f52f1c1800803c5e1d47f1931f7b13b2c11de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db4161379c844506b3f50b162979ad6fa312e0bd
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79368052"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485429"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>CLı kullanarak MySQL için Azure veritabanı için özel bağlantı oluşturma ve yönetme
 
@@ -24,7 +24,7 @@ ms.locfileid: "79368052"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Bunun yerine Azure CLı 'yı yüklemek ve kullanmak isterseniz, bu hızlı başlangıç, Azure CLı sürüm 2.0.28 veya sonraki bir sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version`. Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
+Bunun yerine Azure CLı 'yı yüklemek ve kullanmak isterseniz, bu hızlı başlangıç, Azure CLı sürüm 2.0.28 veya sonraki bir sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version` . Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -45,7 +45,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>Alt ağ özel uç nokta ilkelerini devre dışı bırak 
-Azure, bir sanal ağ içindeki bir alt ağa kaynak dağıtır, bu nedenle özel uç nokta ağ ilkelerini devre dışı bırakmak için alt ağ oluşturmanız veya güncelleştirmeniz gerekir. [Az Network VNET subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)Ile *mysubnet* adlı bir alt ağ yapılandırmasını güncelleştirin:
+Azure, bir sanal ağ içindeki bir alt ağa kaynak dağıtır, bu nedenle özel uç nokta [ağ ilkelerini](../private-link/disable-private-endpoint-network-policy.md)devre dışı bırakmak için alt ağ oluşturmanız veya güncelleştirmeniz gerekir. [Az Network VNET subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)Ile *mysubnet* adlı bir alt ağ yapılandırmasını güncelleştirin:
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -78,7 +78,9 @@ az mysql server create \
 --sku-name GP_Gen5_2
 ```
 
-MySQL Server KIMLIĞI, bir sonraki adımda MySQL ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/servername.``` sunucu kimliğini kullanacak şekilde benzerdir. 
+> [!NOTE]
+> Bazı durumlarda, MySQL için Azure veritabanı ve VNet alt ağı farklı aboneliklerde bulunur. Bu durumlarda, aşağıdaki yapılandırmalardan emin olmanız gerekir:
+> - Her iki abonelikte da **Microsoft. Dbformyısql** kaynak sağlayıcısının kayıtlı olduğundan emin olun. Daha fazla bilgi için [Resource-Manager-kayıt][resource-manager-portal] bölümüne bakın
 
 ## <a name="create-the-private-endpoint"></a>Özel uç nokta oluşturma 
 Sanal ağınızdaki MySQL sunucusu için özel bir uç nokta oluşturun: 
@@ -88,7 +90,7 @@ az network private-endpoint create \
     --resource-group myResourceGroup \  
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
-    --private-connection-resource-id "<MySQL Server ID>" \  
+    --private-connection-resource-id "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.DBforMySQL/servers/$Servername" \    
     --group-ids mysqlServer \  
     --connection-name myConnection  
  ```
@@ -137,7 +139,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
     1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
         > [!NOTE]
-        > VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için > **farklı bir hesap kullan**' **ı seçmeniz gerekebilir**.
+        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
 1. **Tamam**’ı seçin.
 
@@ -169,11 +171,11 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
     | ------- | ----- |
     | Bağlantı Adı| Seçtiğiniz bağlantı adını seçin.|
     | Ana Bilgisayar Adı | *Mydemoserver.Privatelink.MySQL.Database.Azure.com* seçin |
-    | Kullanıcı adı | MySQL sunucusu oluşturma *username@servername* sırasında belirtilen kullanıcı adını girin. |
+    | Kullanıcı adı | *username@servername*MySQL sunucusu oluşturma sırasında belirtilen kullanıcı adını girin. |
     | Parola | MySQL sunucusu oluşturma sırasında bir parola girin. |
     ||
 
-5. Bağlan’ı seçin.
+5. Bağlan'ı seçin.
 
 6. Sol menüden veritabanlarına gözatamazsınız.
 
@@ -190,3 +192,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure özel uç noktası nedir?](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) hakkında daha fazla bilgi edinin
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

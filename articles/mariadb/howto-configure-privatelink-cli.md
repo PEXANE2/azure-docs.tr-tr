@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: c28c5494c1cff2c198a94ea6b92003ae74ee2c8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45233fd869a664844a9378af66892a74bea8c7f2
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371809"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485058"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>CLı kullanarak MariaDB için Azure veritabanı için özel bağlantı oluşturma ve yönetme
 
@@ -28,7 +28,7 @@ Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Bunun yerine Azure CLı 'yı yüklemek ve kullanmak isterseniz, bu hızlı başlangıç, Azure CLı sürüm 2.0.28 veya sonraki bir sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version`. Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
+Bunun yerine Azure CLı 'yı yüklemek ve kullanmak isterseniz, bu hızlı başlangıç, Azure CLı sürüm 2.0.28 veya sonraki bir sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version` . Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -49,7 +49,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>Alt ağ özel uç nokta ilkelerini devre dışı bırak 
-Azure, bir sanal ağ içindeki bir alt ağa kaynak dağıtır, bu nedenle özel uç nokta ağ ilkelerini devre dışı bırakmak için alt ağ oluşturmanız veya güncelleştirmeniz gerekir. [Az Network VNET subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)Ile *mysubnet* adlı bir alt ağ yapılandırmasını güncelleştirin:
+Azure, bir sanal ağ içindeki bir alt ağa kaynak dağıtır, bu nedenle özel uç nokta [ağ ilkelerini](../private-link/disable-private-endpoint-network-policy.md)devre dışı bırakmak için alt ağ oluşturmanız veya güncelleştirmeniz gerekir. [Az Network VNET subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)Ile *mysubnet* adlı bir alt ağ yapılandırmasını güncelleştirin:
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -82,7 +82,9 @@ az mariadb server create \
 --sku-name GP_Gen5_2
 ```
 
-MariaDB sunucu KIMLIĞI, sonraki adımda bulunan MariaDB sunucu KIMLIĞINI kullanmanıza benzer ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.DBforMariaDB/servers/servername.``` . 
+> [!NOTE]
+> Bazı durumlarda, MariaDB için Azure veritabanı ve sanal ağ alt ağı farklı aboneliklerdedir. Bu durumlarda, aşağıdaki yapılandırmalardan emin olmanız gerekir:
+> - Her iki abonelikte da **Microsoft. Dbformarıdb** kaynak sağlayıcısının kayıtlı olduğundan emin olun. Daha fazla bilgi için [Resource-Manager-kayıt][resource-manager-portal] bölümüne bakın
 
 ## <a name="create-the-private-endpoint"></a>Özel uç nokta oluşturma 
 Sanal ağınızdaki MariaDB sunucusu için özel bir uç nokta oluşturun: 
@@ -92,7 +94,7 @@ az network private-endpoint create \
     --resource-group myResourceGroup \  
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
-    --private-connection-resource-id "<MariaDB Server ID>" \  
+    --private-connection-resource-id "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.DBforMariaDB/servers/$Servername" \  
     --group-ids mariadbServer \  
     --connection-name myConnection  
  ```
@@ -141,7 +143,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
     1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
         > [!NOTE]
-        > VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için > **farklı bir hesap kullan**' **ı seçmeniz gerekebilir**.
+        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
 1. **Tamam**’ı seçin.
 
@@ -172,7 +174,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
     | ------- | ----- |
     | Bağlantı Adı| Seçtiğiniz bağlantı adını seçin.|
     | Ana Bilgisayar Adı | *Mydemoserver.Privatelink.MariaDB.Database.Azure.com* seçin |
-    | Kullanıcı adı | MariaDB *username@servername* sunucu oluşturma sırasında belirtilen kullanıcı adını girin. |
+    | Kullanıcı adı | *username@servername*MariaDB sunucu oluşturma sırasında belirtilen kullanıcı adını girin. |
     | Parola | MariaDB sunucu oluşturma sırasında bir parola girin. |
     ||
 
@@ -191,3 +193,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure özel uç noktası nedir?](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) hakkında daha fazla bilgi edinin
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

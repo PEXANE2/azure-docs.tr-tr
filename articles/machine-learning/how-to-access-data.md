@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: d0f37d32b7d2306865d435bc68ea12c9bb95651c
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: ffb0cd65ed8c904098a1099540a5c3a55f605d36
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434718"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485073"
 ---
 # <a name="connect-to-azure-storage-services"></a>Azure Storage Services 'a bağlanma
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ Bu makalede, Azure Machine Learning veri depoları aracılığıyla Azure Storag
 
 [Bu Azure depolama çözümlerinden](#matrix)veri depoları oluşturabilirsiniz. Desteklenmeyen depolama çözümleri için ve Machine Learning denemeleri sırasında veri çıkış maliyetini kaydetmek için, verilerinizi desteklenen Azure depolama çözümlerine [taşımanızı](#move) öneririz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Gerekenler:
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
@@ -102,6 +102,9 @@ Yöntemi Azure portal doldurmanız için gereken bilgileri bulabilirsiniz `regis
 
 * Kimlik doğrulaması için bir hizmet ilkesi kullanmayı planlıyorsanız, **uygulama kayıtları** gidin ve kullanmak istediğiniz uygulamayı seçin. 
     * Kendisine karşılık gelen **genel bakış** sayfası, Kiracı kimliği ve istemci kimliği gibi gerekli bilgileri içerir.
+
+> [!IMPORTANT]
+> Güvenlik nedenleriyle, bir Azure depolama hesabı (hesap anahtarı veya SAS belirteci) için erişim anahtarlarınızı değiştirmeniz gerekebilir. Bunu yaparken, yeni kimlik bilgilerini çalışma alanım ve ona bağlı veri depolarıyla eşitlediğinizden emin olun. Güncelleştirilmiş kimlik bilgilerinizi [Bu adımlarla](how-to-change-storage-access-key.md)eşitlemeyi öğrenin. 
 
 Aşağıdaki örneklerde bir Azure Blob kapsayıcısının, Azure dosya paylaşımının ve Azure Data Lake Storage nesil 2 ' nin bir veri deposu olarak nasıl kaydedileceği gösterilmektedir. Bu örneklerde belirtilen parametreler, bir veri deposu oluşturmak ve kaydettirmek için **gereken parametrelerdir** . 
 
@@ -193,6 +196,9 @@ Formu [Azure Portal](https://portal.azure.com)doldurmanız için gereken bilgile
 
 * Kiracı KIMLIĞI ve istemci KIMLIĞI gibi hizmet sorumlusu öğeleri için **uygulama kayıtları** gidin ve kullanmak istediğiniz uygulamayı seçin. Buna karşılık gelen **genel bakış** sayfası, bu öğeleri içerir. 
 
+> [!IMPORTANT]
+> Güvenlik nedenleriyle, bir Azure depolama hesabı (hesap anahtarı veya SAS belirteci) için erişim anahtarlarınızı değiştirmeniz gerekebilir. Bunu yaparken, yeni kimlik bilgilerini çalışma alanım ve ona bağlı veri depolarıyla eşitlediğinizden emin olun. Güncelleştirilmiş kimlik bilgilerinizi [Bu adımlarla](how-to-change-storage-access-key.md)eşitlemeyi öğrenin. 
+
 Aşağıdaki örnek, bir Azure blob veri deposu oluştururken formun nasıl göründüğünü göstermektedir: 
     
 ![Yeni veri deposu için form](media/how-to-access-data/new-datastore-form.png)
@@ -283,7 +289,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 Azure Machine Learning, modellerinizi Puanlama için kullanmanın birkaç yolunu sağlar. Bu yöntemlerin bazıları veri depolarına erişim sağlamaz. Puanlama sırasında veri depolarına erişmenize izin veren yöntemleri anlamak için aşağıdaki tabloyu kullanın:
 
-| Yöntem | Veri deposu erişimi | Description |
+| Yöntem | Veri deposu erişimi | Açıklama |
 | ----- | :-----: | ----- |
 | [Toplu tahmin](how-to-use-parallel-run-step.md) | ✔ | Büyük miktarlarda verileri zaman uyumsuz olarak tahmin edin. |
 | [Web hizmeti](how-to-deploy-and-where.md) | &nbsp; | Modelleri bir Web hizmeti olarak dağıtın. |

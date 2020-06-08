@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 34a8a070-0123-4678-8588-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 7986d740eb8e963fbede19637e8e691459b742c5
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: cff95c38500a32b9b8ddc3f303ae218926bd59bd
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84451014"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483368"
 ---
 # <a name="content-delivery-network-on-azure-with-azure-content-delivery-network"></a>Azure 'da Azure 'da içerik teslim ağı Content Delivery Network
 [Azure Content Delivery Network](https://azure.microsoft.com/services/cdn/) geliştiricilere videoları, resimleri veya statik dosyaları gibi yüksek bant genişliğine sahip içeriği dünyanın her yerindeki bir dünya çapındaki varlığına önbelleğe alarak hızla sunmaya yönelik genel bir çözüm sunar. Content Delivery Network Ayrıca, önbelleğe alınmamış dinamik içeriği hızlandırarak yükleme sürelerini azaltabilir, bant genişliğini kaydedebilir ve yanıt hızını artırabilir. Bu avantajları, Web siteleri veya mobil uygulamalar geliştirip yönettiğinizde ya da akış medyası, oyun yazılımı, üretici yazılımı güncelleştirmeleri veya IoT uç noktaları ile kodlayıp dağıtmanıza göre elde edersiniz.
@@ -32,5 +32,5 @@ ms.locfileid: "84451014"
   - [Azure portal](https://portal.azure.com)
   - [Azure Content Delivery Network belgeleri](/azure/cdn/)
   - [Azure Content Delivery Network kullanmaya başlama](/azure/cdn/cdn-create-new-endpoint)
-  - [Hızlı Başlangıçlar](/azure/cdn/cdn-create-new-endpoint)
+  - [Hızlı başlangıçlar](/azure/cdn/cdn-create-new-endpoint)
 

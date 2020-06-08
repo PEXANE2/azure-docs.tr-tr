@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 5/12/2020
-ms.openlocfilehash: cba07b84a1ddc2b9362c818ae2d3747b98379f2e
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.date: 6/3/2020
+ms.openlocfilehash: 6f41863f45bdc90cb9fe589ba0a5011dea84a67c
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402637"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485232"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’ndaki Performans Önerileri
 
@@ -29,23 +29,25 @@ Performans Önerileri özelliğini kullanarak analiz çalıştırmak için **Sah
 
 MySQL sunucunuzun Azure portal sayfasındaki menü çubuğunun **akıllı performans** bölümünde **performans önerilerini** açın.
 
-![Performans Önerileri giriş sayfası](./media/concepts-performance-recommendations/performance-recommendations-page.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="Performans Önerileri giriş sayfası":::
 
 **Çözümle** ' yi seçin ve analiz işlemini başlatmak için bir veritabanı seçin. İş yükünüze bağlı olarak, çözümlemenin tamamlanması birkaç dakika sürebilir. Analiz tamamlanınca portalda bir bildirim olur. Analiz, veritabanınızı ayrıntılı bir şekilde inceleme işlemini gerçekleştirir. Yoğun olmayan dönemler sırasında analiz gerçekleştirmenizi öneririz.
 
 **Öneriler** penceresi, varsa önerilerin bir listesini ve bu öneriyi oluşturan ılgılı sorgu kimliğini gösterir. Sorgu KIMLIĞIYLE, sorgu hakkında daha fazla bilgi edinmek için [MySQL. query_store](concepts-query-store.md#mysqlquery_store) görünümünü kullanabilirsiniz.
 
-![Performans önerileri yeni sayfa](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Performans önerileri yeni sayfa":::
 
 Öneriler otomatik olarak uygulanmaz. Öneriyi uygulamak için, sorgu metnini kopyalayın ve tercih ettiğiniz istemciden çalıştırın. Öneriyi değerlendirmek için sınamayı ve izlemeyi unutmayın.
 
 ## <a name="recommendation-types"></a>Öneri türleri
 
-Şu anda yalnızca *Dizin önerileri oluşturma* desteklenir.
-
-### <a name="create-index-recommendations"></a>Dizin önerileri oluşturma
+### <a name="index-recommendations"></a>Dizin önerileri
 
 *Dizin önerilerini oluşturma* , iş yükünde en sık çalıştırılan veya zaman alan sorguları hızlandırmak için yeni dizinler önerir. Bu öneri türü, [sorgu deposunun](concepts-query-store.md) etkinleştirilmesini gerektirir. Sorgu deposu sorgu bilgilerini toplar ve çözümlemenin öneriyi yapmak için kullandığı ayrıntılı sorgu çalışma zamanı ve sıklık istatistiklerini sağlar.
+
+### <a name="query-recommendations"></a>Sorgu önerileri
+
+Sorgu önerileri, iş yükünde sorgular için iyileştirmeleri ve yeniden yazar önerir. MySQL sorgu düzenlerini tanımlayarak ve bunları sözdizimsel olarak düzelterek, zaman alan sorguların performansı artırılabilir. Bu öneri türü, sorgu deposunun etkinleştirilmesini gerektirir. Sorgu deposu sorgu bilgilerini toplar ve çözümlemenin öneriyi yapmak için kullandığı ayrıntılı sorgu çalışma zamanı ve sıklık istatistiklerini sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - MySQL için Azure veritabanı 'nda [izleme ve ayarlama](concepts-monitoring.md) hakkında daha fazla bilgi edinin.

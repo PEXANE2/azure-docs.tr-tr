@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 2/5/2019
+ms.date: 06/06/2020
 ms.author: absha
-ms.openlocfilehash: a4770b3ae7c52b9a05ff704915a3e9f401fd1741
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: bf02bdc4d824a47bdaad4821ffc9562b9fe2dd40
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889622"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84482625"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway ölçümleri
 
@@ -24,7 +24,7 @@ Application Gateway, Application Gateway ve arka uç örneklerinizin performans�
 
 Application Gateway, istek ve Yanıtla ilgili, hepsi milisaniye cinsinden ölçülen çeşitli yerleşik zamanlama ölçümleri sağlar. 
 
-![](./media/application-gateway-metrics/application-gateway-metrics.png)
+![Application Gateway için zamanlama ölçümlerinin diyagramı.](./media/application-gateway-metrics/application-gateway-metrics.png)
 
 > [!NOTE]
 >
@@ -72,11 +72,11 @@ Benzer şekilde, *uygulama ağ geçidinin toplam süresi* bir ani, ancak *arka u
 
 Application Gateway için aşağıdaki ölçümler kullanılabilir:
 
-- **Alınan Bayt**
+- **Alınan bayt**
 
    İstemcilerden Application Gateway tarafından alınan bayt sayısı
 
-- **Gönderilen Bayt**
+- **Gönderilen bayt**
 
    Application Gateway istemciye gönderilen bayt sayısı
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 3f421cad64caf91b898bb1ec13dc909b93b7f72d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0cf4663e8c1b0d1c859cd62c63ab40ae4dceae22
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370347"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484948"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Portal kullanarak MariaDB için Azure veritabanı için özel bağlantı oluşturma ve yönetme
 
@@ -32,7 +32,7 @@ Bu bölümde, özel bağlantı kaynağına (Azure 'da bir MariaDB sunucusu) eri�
 ### <a name="create-the-virtual-network"></a>Sanal ağı oluşturma
 Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi barındırmak için bir sanal ağ ve alt ağ oluşturacaksınız.
 
-1. Ekranın sol üst kısmında **kaynak** > oluştur**ağ** > **sanal ağ**' ı seçin.
+1. Ekranın sol üst kısmında **kaynak oluştur**  >  **ağ**  >  **sanal ağ**' ı seçin.
 2. **Sanal ağ oluştur**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
@@ -49,7 +49,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 
 ### <a name="create-virtual-machine"></a>Sanal makine oluştur
 
-1. Azure Portal ekranın sol üst tarafında **kaynak** > oluştur**işlem** > **sanal makinesi**' ni seçin.
+1. Azure Portal ekranın sol üst tarafında **kaynak oluştur**  >  **işlem**  >  **sanal makinesi**' ni seçin.
 
 2. **Sanal makine oluşturma-temel bilgiler**bölümünde, bu bilgileri girin veya seçin:
 
@@ -99,7 +99,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 
 Bu bölümde, Azure 'da bir MariaDB sunucusu için Azure veritabanı oluşturacaksınız. 
 
-1. Azure Portal ekranın sol üst tarafında, **kaynak** > oluştur**veritabanları** > ' nı**MariaDB için Azure veritabanı**' nı seçin.
+1. Azure Portal ekranın sol üst tarafında, **kaynak oluştur**  >  **veritabanları**' nı  >  **MariaDB için Azure veritabanı**' nı seçin.
 
 1. **MariaDB Için Azure veritabanı** 'nda şu bilgileri sağlayın:
 
@@ -108,7 +108,7 @@ Bu bölümde, Azure 'da bir MariaDB sunucusu için Azure veritabanı oluşturaca
     | **Proje ayrıntıları** | |
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
-    | **Sunucu Ayrıntıları** |  |
+    | **Sunucu ayrıntıları** |  |
     |Sunucu adı  | *Sunucum*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun.|
     | Yönetici Kullanıcı adı| Tercih etmek için bir yönetici adı girin. |
     | Parola | Seçtiğiniz bir parolayı girin. Parola en az 8 karakter uzunluğunda olmalı ve tanımlanan gereksinimleri karşılamalıdır. |
@@ -116,17 +116,21 @@ Bu bölümde, Azure 'da bir MariaDB sunucusu için Azure veritabanı oluşturaca
     |Sürüm  | Gerekli olan MariaDB sunucusunun veritabanı sürümünü seçin.|
     | İşlem + depolama| İş yüküne göre sunucu için gereken fiyatlandırma katmanını seçin. |
     |||
- 
+
 7. **Tamam**’ı seçin. 
 8. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
 9. Doğrulama başarılı iletisini gördüğünüzde **Oluştur**' u seçin. 
 10. Doğrulama başarılı iletisini gördüğünüzde oluştur ' u seçin. 
 
+> [!NOTE]
+> Bazı durumlarda, MariaDB için Azure veritabanı ve sanal ağ alt ağı farklı aboneliklerdedir. Bu durumlarda, aşağıdaki yapılandırmalardan emin olmanız gerekir:
+> - Her iki abonelikte da **Microsoft. Dbformarıdb** kaynak sağlayıcısının kayıtlı olduğundan emin olun. Daha fazla bilgi için [Resource-Manager-kayıt][resource-manager-portal] bölümüne bakın
+
 ## <a name="create-a-private-endpoint"></a>Özel uç nokta oluşturma
 
 Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız. 
 
-1. Azure Portal ekranın sol üst tarafında, **kaynak** > oluştur**ağ** > **özel bağlantısı**' nı seçin.
+1. Azure Portal ekranın sol üst tarafında, **kaynak oluştur**  >  **ağ**  >  **özel bağlantısı**' nı seçin.
 2. **Özel bağlantı merkezi 'Ne genel bakış**' da, **bir hizmete özel bağlantı oluşturma**seçeneğinde, **Başlat**' ı seçin.
 
     ![Özel bağlantıya genel bakış](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
@@ -166,6 +170,9 @@ Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız.
     |Özel DNS bölgesi |Seçin *(yeni) Privatelink. MariaDB. Database. Azure. com* |
     |||
 
+    > [!Note] 
+    > [Azure HIZMETLERI DNS bölge yapılandırması](../private-link/private-endpoint-dns.md)' na bakın.
+
 1. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
 2. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin. 
 
@@ -192,7 +199,7 @@ Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız.
     1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
         > [!NOTE]
-        > VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için > **farklı bir hesap kullan**' **ı seçmeniz gerekebilir**.
+        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
 1. **Tamam**’ı seçin.
 
@@ -204,7 +211,7 @@ Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız.
 
 1.  *Myvm*uzak masaüstünde PowerShell ' i açın.
 
-2. Girin `nslookup mydemomserver.privatelink.mariadb.database.azure.com`. 
+2. Girin  `nslookup mydemomserver.privatelink.mariadb.database.azure.com` . 
 
     Şuna benzer bir ileti alacaksınız:
     ```azurepowershell
@@ -224,7 +231,7 @@ Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız.
     | ------- | ----- |
     | Sunucu türü| **MariaDB**öğesini seçin.|
     | Sunucu adı| *Mydemoserver.Privatelink.MariaDB.Database.Azure.com* seçin |
-    | Kullanıcı adı | MariaDB username@servername sunucu oluşturma sırasında belirtilen kullanıcı adını girin. |
+    | Kullanıcı adı | username@servernameMariaDB sunucu oluşturma sırasında belirtilen kullanıcı adını girin. |
     |Parola |MariaDB sunucu oluşturma sırasında bir parola girin. |
     |SSL|**Gerekli**' yi seçin.|
     ||
@@ -238,10 +245,13 @@ Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız.
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Özel uç nokta, MariaDB sunucusu ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin:
 
-1. Portalın üst kısmındaki **arama** kutusuna *myresourcegroup* yazın ve arama sonuçlarından *myresourcegroup* öğesini seçin.
+1.  *myResourceGroup*   Portalın üst kısmındaki **arama** kutusuna myresourcegroup yazın ve arama sonuçlarından *myresourcegroup*öğesini seçin   .
 2. **Kaynak grubunu sil**'i seçin.
 3. **Kaynak grubu adını yazın** ve **Sil**' i seçmek için myresourcegroup girin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu nasıl yapılır, bir sanal ağ üzerinde bir VM oluşturdunuz, MariaDB için Azure veritabanı ve özel erişim için özel bir uç nokta. İnternet 'ten bir VM 'ye bağlandınız ve özel bağlantı kullanarak MariaDB sunucusuna güvenli bir şekilde iletilecaksınız. Özel uç noktalar hakkında daha fazla bilgi için bkz. [Azure özel uç noktası nedir?](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

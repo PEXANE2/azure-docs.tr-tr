@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 5ade4701c53287de5d5815531f12850b3dc839de
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 840c0157713e9758092ca5cc51ee2745428ae568
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169857"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483535"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Hızlı başlangıç: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -70,56 +70,32 @@ Bu hızlı başlangıç, hem iOS hem de macOS uygulamaları için geçerlidir. B
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Zaten yapılandırılmış](media/quickstart-v2-ios/green-check.png) Uygulamanız bu özniteliklerle yapılandırılmış
-
-#### <a name="step-2-download-the-sample-project"></a>2. Adım: örnek projeyi Indirme
-
-- [İOS için kod örneğini indirin](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
-- [MacOS için kod örneğini indirin](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
+> 
+> #### <a name="step-2-download-the-sample-project"></a>2. Adım: örnek projeyi Indirme
+> > [!div id="autoupdate_ios" class="nextstepaction"]
+> > [İOS için kod örneğini indirin]()
+> 
+> > [!div id="autoupdate_macos" class="nextstepaction"]
+> > [MacOS için kod örneğini indirin]()
+> [!div renderon="docs"]
+> #### <a name="step-2-download-the-sample-project"></a>2. Adım: örnek projeyi Indirme
+> 
+> - [İOS için kod örneğini indirin](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
+> - [MacOS için kod örneğini indirin](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
 #### <a name="step-3-install-dependencies"></a>3. Adım: bağımlılıkları yüklemeyi
 
 Bir Terminal penceresinde indirilen kod örneğini içeren klasöre gidin ve `pod install` en son msal kitaplığını yüklemek için çalıştırın.
 
-#### <a name="step-4-configure-your-project"></a>4. Adım: projenizi yapılandırma
-
-> [!div renderon="docs"]
-> Yukarıdaki 1. seçeneği belirlediyseniz, bu adımları atlayabilirsiniz.
-
 > [!div renderon="portal" class="sxs-lookup"]
-> 1. Zip dosyasını ayıklayın ve projeyi XCode’da açın.
-> 1. **ViewController. Swift** 'u düzenleyin ve ' Let Kclitıd ' ile başlayan satırı aşağıdaki kod parçacığı ile değiştirin. Uygulamanızı, hızlı başlangıçta portala kaydettiğinizde `kClientID` kaydettiğiniz ISTEMCI kimliği ile ilgili değeri güncelleştirmeyi unutmayın:
->    ```swift
->    let kClientID = "Enter_the_Application_Id_Here"
->    ```
-> 1. **ViewController. Swift** 'u düzenleyin ve ' Let kAuthority ' ile başlayan satırı aşağıdaki kod parçacığı ile değiştirin:
->    ```swift
->    let kAuthority = "Enter_the_Authority_Endpoint_Host_HereEnter_the_Tenant_Info_Here"
->    ```
-> 1. **ViewController. Swift** 'u düzenleyin ve ' Let kGraphEndpoint ' ile başlayan satırı aşağıdaki kod parçacığı ile değiştirin:
->    ```swift
->    let kGraphEndpoint = "Enter_the_MS_Graph_Endpoint_Host_Here"
->    ```
-> 1. Proje ayarlarını açın. **Kimlik** bölümünde, portala girdiğiniz **paket kimliğini** girin.
-> 1. Yalnızca iOS için, **Info. plist** ' i sağ tıklatın ve **Open As**  >  **kaynak kodu**aç ' ı seçin.
-> 1. Yalnızca iOS için, dict kök düğümünün altında, öğesini `CFBundleURLSchemes` portalda girdiğiniz ***paket kimliğiyle*** değiştirin.
->
->    ```xml
->    <key>CFBundleURLTypes</key>
->    <array>
->       <dict>
->          <key>CFBundleURLSchemes</key>
->          <array>
->             <string>msauth.Enter_the_Bundle_Id_Here</string>
->          </array>
->       </dict>
->    </array>
->    ```
-> 1. Uygulamayı oluşturun & çalıştırın!
-> [!div class="sxs-lookup" renderon="portal"]
-> > [!NOTE]
+> #### <a name="step-4-your-app-is-configured-and-ready-to-run"></a>4. Adım: uygulamanız yapılandırıldı ve çalıştırılmaya hazırlanıyor
+> Projenizi uygulamanızın özelliklerinin değerleriyle yapılandırdık ve çalıştırılmaya hazırlanıyor.
+> >  [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
+
 > [!div renderon="docs"]
->
+>#### <a name="step-4-configure-your-project"></a>4. Adım: projenizi yapılandırma
+> Yukarıdaki 1. seçeneği belirlediyseniz, bu adımları atlayabilirsiniz.
 > 1. Zip dosyasını ayıklayın ve projeyi XCode’da açın.
 > 1. **ViewController. Swift** 'u düzenleyin ve ' Let Kclitıd ' ile başlayan satırı aşağıdaki kod parçacığı ile değiştirin. `kClientID`Uygulamanızı bu hızlı başlangıçta daha önce portala kaydettiğinizde kaydettiğiniz ClientID değeriyle güncelleştirmeyi unutmayın:
 >    ```swift
@@ -136,8 +112,8 @@ Bir Terminal penceresinde indirilen kod örneğini içeren klasöre gidin ve `po
 >     let kAuthority = "https://login.microsoftonline.de/common"
 >     ```
 > 1. Proje ayarlarını açın. **Kimlik** bölümünde, portala girdiğiniz **paket kimliğini** girin.
-> 1. Yalnızca iOS için, **Info. plist** ' i sağ tıklatın ve **Open As**  >  **kaynak kodu**aç ' ı seçin.
-> 1. Yalnızca iOS için, dict kök düğümünün altında, `Enter_the_bundle_Id_Here` Portal 'da kullandığınız ***paket kimliğiyle*** değiştirin.
+> 1. **Info. plist** ' e sağ tıklayıp kaynak **kodu olarak aç**' ı seçin  >  **Source Code**.
+> 1. Dict kök düğümünün altında, öğesini `Enter_the_bundle_Id_Here` portalda kullandığınız ***paket kimliğiyle*** değiştirin.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>

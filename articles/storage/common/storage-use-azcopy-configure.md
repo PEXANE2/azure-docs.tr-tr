@@ -8,12 +8,12 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 6066cd4f347ef05e6fcdb67bb1223ffbc0cae46b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 30244a426b6f934ef66261c6dccbb46e72f28488
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341021"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485206"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy 'i yapılandırma, iyileştirme ve sorun giderme
 
@@ -34,7 +34,7 @@ AzCopy ara sunucu ayarlarını yapılandırmak için `https_proxy` ortam değiş
 |--------|-----------|
 | **Windows** | Komut isteminde şunu kullanın:`set https_proxy=<proxy IP>:<proxy port>`<br> PowerShell kullanımı:`$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
-| **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **macOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
 Şu anda AzCopy, NTLM veya Kerberos ile kimlik doğrulaması gerektiren proxy 'leri desteklemiyor.
 
@@ -63,23 +63,23 @@ Bu bölüm, bu iyileştirme görevlerini gerçekleştirmenize yardımcı olur:
 
 ### <a name="run-benchmark-tests"></a>Kıyaslama testlerini Çalıştır
 
-Genel performans istatistiklerini görüntülemek ve kimlik performans sorunlarını gidermek için belirli blob kapsayıcıları üzerinde bir performans kıyaslama testi çalıştırabilirsiniz. 
+Genel performans istatistiklerini görüntülemek ve kimlik performans sorunlarını gidermek için, belirli blob kapsayıcıları veya dosya paylaşımlarında performans kıyaslama testini çalıştırabilirsiniz. 
 
 Bir performans kıyaslama testi çalıştırmak için aşağıdaki komutu kullanın.
 
 |    |     |
 |--------|-----------|
-| **Sözdizimi** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
-| **Örneğinde** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
+| **Sözdizimi** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Örneğinde** | `azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
 > Bu örnek tek tırnak (' ') ile yol bağımsız değişkenlerini barındırır. Windows komut kabuğu (cmd. exe) dışında tüm komut kabukleriyle tek tırnak işaretleri kullanın. Bir Windows komut kabuğu (cmd. exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak (' ') yerine çift tırnak işareti ("") içine alın.
 
 Bu komut test verilerini belirtilen bir hedefe yükleyerek bir performans kıyaslaması çalıştırır. Test verileri bellekte oluşturulur, hedefe yüklenir ve ardından test tamamlandıktan sonra hedefteki silinir. İsteğe bağlı komut parametrelerini kullanarak oluşturulacak dosya sayısını ve bunların kaç boyutunu istediğinizi belirtebilirsiniz.
 
-Ayrıntılı başvuru belgeleri için bkz. [AzCopy tezgahtır](storage-ref-azcopy-bench.md).
+Ayrıntılı başvuru belgeleri için bkz. [AzCopy kıyaslaması](storage-ref-azcopy-bench.md).
 
-Bu komutla ilgili ayrıntılı yardım kılavuzunu görüntülemek için yazın `azcopy bench -h` ve ENTER tuşuna basın.
+Bu komutla ilgili ayrıntılı yardım kılavuzunu görüntülemek için yazın `azcopy benchmark -h` ve ENTER tuşuna basın.
 
 ### <a name="optimize-throughput"></a>Aktarım hızını iyileştirme
 
@@ -97,7 +97,7 @@ Bilgisayarınızda 5 ' ten az CPU varsa, bu değişkenin değeri olarak ayarlan�
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
-| **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
+| **macOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
 `azcopy env`Bu değişkenin geçerli değerini denetlemek için öğesini kullanın. Değer boşsa, herhangi bir AzCopy günlük dosyasının başlangıcına bakarak hangi değerin kullanıldığını okuyabilirsiniz. Seçili değer ve seçildiği neden burada raporlanır.
 
@@ -112,7 +112,7 @@ Bu değeri gigabayt (GB) cinsinden ifade edin.
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
-| **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
+| **macOS** | `export AZCOPY_BUFFER_GB=<value>` |
 
 ### <a name="optimize-file-synchronization"></a>Dosya eşitlemesini iyileştirme
 
@@ -193,9 +193,9 @@ Bu komutlardan herhangi birini kullanın.
 
 | İşletim sistemi | Komut  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Windows** | PowerShell`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> Komut isteminde şunu kullanın::`set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **macOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
 `azcopy env`Bu değişkenin geçerli değerini denetlemek için öğesini kullanın. Değer boşsa, plan dosyaları varsayılan konuma yazılır.
 
@@ -205,9 +205,9 @@ Bu komutlardan herhangi birini kullanın.
 
 | İşletim sistemi | Komut  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
+| **Windows** | PowerShell`$env:AZCOPY_LOG_LOCATION="<value>"` <br> Komut isteminde şunu kullanın::`set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
+| **macOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 
 `azcopy env`Bu değişkenin geçerli değerini denetlemek için öğesini kullanın. Değer boşsa, günlükler varsayılan konuma yazılır.
 

@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
-ms.openlocfilehash: 559c894a2212466761de820de7486ae203337802
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a0624c01a3bb75c1a7b07b130345776417cf482
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77538473"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484315"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>GitHub eylemleri ile Azure yay bulut CI/CD
 
@@ -75,7 +75,7 @@ az spring-cloud app create --name account-service
 ```
 
 ### <a name="deploy-with-azure-cli-directly"></a>Doğrudan Azure CLı ile dağıtma
-`.github/workflow/main.yml` Dosyayı depoda oluşturun:
+`.github/workflow/main.yml`Dosyayı depoda oluşturun:
 
 ```
 name: AzureSpringCloud
@@ -99,7 +99,7 @@ jobs:
     
     - name: maven build, clean
       run: |
-        mvn clean package -D skipTests
+        mvn clean package -DskipTests
     
     - name: Azure Login
       uses: azure/login@v1
@@ -118,7 +118,7 @@ jobs:
         az spring-cloud app deploy -n auth-service --jar-path ${{ github.workspace }}/auth-service/target/auth-service.jar
 ```
 ### <a name="deploy-with-azure-cli-action"></a>Azure CLı eylemiyle Dağıtma eylemi
-Az `run` komut en son Azure CLI sürümünü kullanacaktır. Büyük değişiklikler varsa, Azure/CLı `action`ile belirli BIR Azure CLI sürümünü de kullanabilirsiniz. 
+Az `run` komut en son Azure CLI sürümünü kullanacaktır. Büyük değişiklikler varsa, Azure/CLı ile belirli bir Azure CLı sürümünü de kullanabilirsiniz `action` . 
 
 > [!Note] 
 > Bu komut yeni bir kapsayıcıda çalışacak, bu nedenle `env` çalışmayacak ve çapraz işlem dosya erişimi ek kısıtlamalara sahip olabilir.
@@ -142,7 +142,7 @@ jobs:
     
     - name: maven build, clean
       run: |
-        mvn clean package -D skipTests
+        mvn clean package -DskipTests
         
     - name: Azure Login
       uses: azure/login@v1
@@ -183,7 +183,7 @@ jobs:
     
     - name: maven build, clean
       run: |
-        mvn clean package -D skipTests
+        mvn clean package -DskipTests
         
     # Maven plugin can cosume this authentication method automatically
     - name: Azure Login
@@ -198,7 +198,7 @@ jobs:
 ```
 
 ## <a name="run-the-workflow"></a>İş akışını çalıştırma
-GitHub **Actions** 'a gönderim `.github/workflow/main.yml` yapıldıktan sonra GitHub eylemleri otomatik olarak etkinleştirilmelidir. Yeni bir işleme gönderdiğinizde bu eylem tetiklenir. Bu dosyayı tarayıcıda oluşturursanız, eyleminiz zaten çalıştırılmış olmalıdır.
+GitHub 'a gönderim yapıldıktan sonra GitHub **eylemleri** otomatik olarak etkinleştirilmelidir `.github/workflow/main.yml` . Yeni bir işleme gönderdiğinizde bu eylem tetiklenir. Bu dosyayı tarayıcıda oluşturursanız, eyleminiz zaten çalıştırılmış olmalıdır.
 
 Eylemin etkinleştirildiğini doğrulamak için GitHub Deposu sayfasında **Eylemler** sekmesi ' ne tıklayın:
 
@@ -211,4 +211,4 @@ Eylemleriniz hatada çalışıyorsa, örneğin, Azure kimlik bilgisini ayarlamad
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Spring Cloud GitHub eylemleri için Key Vault](./spring-cloud-github-actions-key-vault.md)
 * [Hizmet sorumlularını Azure Active Directory](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)
-* [Azure için GitHub eylemleri](https://github.com/Azure/actions/)
+* [Azure için GitHub Actions](https://github.com/Azure/actions/)

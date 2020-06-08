@@ -8,16 +8,16 @@ ms.custom: mimckitt
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: d6f70e00bc33430cba13895b6d0c9a0aac5ef246
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c94f46566fe2e56d81c6f4ba87450878ccfb4263
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338694"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484559"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 ve Edsv4 serisi
 
-Edv4 ve Edsv4 serisi, &reg; &reg; hiper iş parçacıklı bir yapılandırmadaki Intel Xeon Platinum 8272CL (Cascade Lake) işlemcilerde çalışır ve 504 gib 'A kadar RAM, [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; hiper Iş parçacığı teknolojisi](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve Intel [ &reg; Gelişmiş vektör Uzantıları 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)için idealdir. Bu yeni VM boyutları %50 daha büyük yerel depolamaya sahip olacak ve [Gen2 VM](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) 'lerle [Ev3/Esv3](https://docs.microsoft.com/azure/virtual-machines/ev3-esv3-series) boyutlarına kıyasla hem okuma hem de yazma için daha iyi yerel disk IOPS 'si sağlar
+Edv4 ve Edsv4 serisi, &reg; &reg; hiper iş parçacıklı bir yapılandırmadaki Intel Xeon Platinum 8272CL (Cascade Lake) işlemcilerde çalışır ve 504 gib 'A kadar RAM, [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; hiper Iş parçacığı teknolojisi](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve Intel [ &reg; Gelişmiş vektör Uzantıları 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)için idealdir. Ayrıca, [Intel &reg; derin öğrenme artışı](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)'nı destekler. Bu yeni VM boyutları %50 daha büyük yerel depolamaya sahip olacak ve [Gen2 VM](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) 'lerle [Ev3/Esv3](https://docs.microsoft.com/azure/virtual-machines/ev3-esv3-series) boyutlarına kıyasla hem okuma hem de yazma için daha iyi yerel disk IOPS 'si sağlar
 
 ## <a name="edv4-series"></a>Edv4 serisi
 
@@ -59,7 +59,7 @@ Dinamik Geçiş: destekleniyor
 
 Güncelleştirmeleri koruyan bellek: desteklenir
 
-| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps (GiB 'de önbellek) | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_E2ds_v4  | 2 | 16 | 75 | 4 | 19000/120 (50) | 3200/48 | 2/1000 |
 | Standard_E4ds_v4  | 4 | 32 | 150 | 8 | 38500/242 (100) | 6400/96 | 2/2000 |

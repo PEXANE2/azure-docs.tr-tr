@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5751a7c5eac9386ecd52e172b40aacbef5247dd1
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 2db6134d49ccd73c32339fe51814d915ae88604a
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434633"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484476"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -200,7 +200,7 @@ Her otomatik makine öğrenimi denemesinde, verileriniz, farklı ölçeklerde bu
 
 Denemeleri 'nizi yapılandırırken `AutoMLConfig` , ayarı etkinleştirebilir/devre dışı bırakabilirsiniz `featurization` . Aşağıdaki tabloda, [oto Mlconfig sınıfında](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)fealeştirme için kabul edilen ayarlar gösterilmektedir.
 
-|Korleştirme yapılandırması | Description |
+|Korleştirme yapılandırması | Açıklama |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Ön işleme 'nin bir parçası olarak, [veri guardı ve korleştirme adımlarının](how-to-configure-auto-features.md#featurization) otomatik olarak gerçekleştirileceğini belirtir. **Varsayılan ayar**|
 |`"featurization": 'off'`| Korleştirme adımının otomatik olarak yapılmayacağını gösterir.|
@@ -344,6 +344,8 @@ Denemenizin sona erdirmek için tanımlayabileceğiniz birkaç seçenek vardır.
 ### <a name="explore-model-metrics"></a>Model ölçümlerini keşfet
 
 Bir not defteriniz varsa, eğitim sonuçlarınızı bir pencere öğesinde veya satır içi olarak görüntüleyebilirsiniz. Daha fazla ayrıntı için bkz. [modelleri izleme ve değerlendirme](how-to-track-experiments.md#view-run-details) .
+
+Bir Web hizmetine dağıtım için bir modeli indirme veya kaydetme hakkında daha fazla bilgi için bkz. [bir modelin nasıl ve ne şekilde dağıtılacağı](how-to-deploy-and-where.md).
 
 ## <a name="understand-automated-ml-models"></a>Otomatik ML modellerini anlama
 

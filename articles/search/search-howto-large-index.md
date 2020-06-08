@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/05/2020
-ms.openlocfilehash: 915243fb4dbc6bb274e26261bc5741811ef24592
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: e544e720f024b265e957e67d5bd2ee8af91f5c7f
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82925992"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484572"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Azure Bilişsel Arama büyük veri kümelerini dizin oluşturma
 
@@ -102,7 +102,7 @@ Ağ veri aktarım hızları, verileri dizinlerken sınırlayıcı bir faktör ol
 
 ### <a name="batch-size"></a>Toplu İş Boyutu
 
-Push API 'sinde olduğu gibi, Dizin oluşturucular, toplu iş başına öğe sayısını yapılandırmanıza izin verir. [Create Indexer REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)temel alan Dizin oluşturucular için, bu ayarı özelleştirmek `batchSize` üzere bağımsız değişkenini, verilerinizin özellikleriyle daha iyi eşleşecek şekilde ayarlayabilirsiniz. 
+Push API 'sinde olduğu gibi, Dizin oluşturucular, toplu iş başına öğe sayısını yapılandırmanıza izin verir. [Create Indexer REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)temel alan Dizin oluşturucular için, `batchSize` Bu ayarı özelleştirmek üzere bağımsız değişkenini, verilerinizin özellikleriyle daha iyi eşleşecek şekilde ayarlayabilirsiniz. 
 
 Varsayılan toplu işlem boyutları veri kaynağına özeldir. Azure SQL veritabanı ve Azure Cosmos DB varsayılan toplu iş boyutu 1000 ' dir. Buna karşılık, Azure Blob dizinlemesi, 10 belge üzerinde toplu iş boyutunu daha büyük ortalama belge boyutunu tanımaya göre ayarlar. 
 
@@ -139,7 +139,7 @@ Dizin oluşturucular için, işlem kapasitesi, arama hizmetiniz tarafından kull
 
 1. [Azure Portal](https://portal.azure.com), arama hizmeti panonuz **genel bakış** sayfasında, **fiyatlandırma katmanını** denetleyerek Paralel dizin oluşturma işleminin uyumlu olduğunu doğrulayın. Hem temel hem de Standart katmanlar birden çok çoğaltma sunar.
 
-2. **Ayarlar** > **ölçeği**' nde, paralel işleme için [çoğaltmaları artırın](search-capacity-planning.md) : her bir dizin oluşturucu iş yükü için bir ek çoğaltma. Mevcut sorgu birimi için yeterli bir sayı bırakın. Dizin oluşturma için sorgu iş yüklerinin Fede iyi bir zorunluluğunu getirir değildir.
+2. Hizmetinizde arama birimi sayısı olarak paralel olarak çok sayıda Dizin Oluşturucu çalıştırabilirsiniz. **Ayarlar**  >  **ölçeği**' nde, paralel işleme için [çoğaltmaları](search-capacity-planning.md) veya bölümleri artırın: her bir dizin oluşturucu iş yükü için bir ek çoğaltma veya bölüm. Mevcut sorgu birimi için yeterli bir sayı bırakın. Dizin oluşturma için sorgu iş yüklerinin Fede iyi bir zorunluluğunu getirir değildir.
 
 3. Azure Bilişsel Arama dizin oluşturucularının ulaşabileceği bir düzeyde verileri birden çok kapsayıcıya dağıtın. Bu, Azure SQL veritabanı 'nda birden çok tablo, Azure Blob depolamada birden çok kapsayıcı veya birden çok koleksiyon olabilir. Her tablo veya kapsayıcı için bir veri kaynağı nesnesi tanımlayın.
 

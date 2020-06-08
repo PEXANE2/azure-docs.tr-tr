@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/06/2020
-ms.openlocfilehash: f4ae4890d28236db493909243d66e28d308e2002
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 0444ffd27b3a261268f04f0077cca3116521e6f7
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434638"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484523"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Depolama hesabı erişim anahtarlarını yeniden oluştur
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ Azure Machine Learning tarafından kullanılan Azure depolama hesapları için e
 
 Güvenlik nedeniyle, bir Azure depolama hesabının erişim anahtarlarını değiştirmeniz gerekebilir. Erişim anahtarını yeniden oluşturduğunuzda Azure Machine Learning yeni anahtarı kullanmak için güncelleştirilmeleri gerekir. Azure Machine Learning, hem model depolama hem de bir veri deposu olarak depolama hesabı kullanıyor olabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
 
@@ -105,27 +105,35 @@ Yeni anahtarı kullanmak üzere Azure Machine Learning güncelleştirmek için a
 
         Bu komut, çalışma alanı tarafından kullanılan Azure depolama hesabı için yeni anahtarları otomatik olarak eşitler.
 
-1. Depolama hesabını kullanan veri depolarınızı yeniden kaydettirmek için, [güncelleştirilmesi gereken](#whattoupdate) Özellikler bölümünde bulunan değerleri ve adım 1 ' deki anahtarı aşağıdaki kodla kullanın:
-
-    ```python
-    # Re-register the blob container
-    ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+1. Depolama hesabını kullanan veri depolarımı SDK veya [Azure Machine Learning Studio](https://ml.azure.com)aracılığıyla yeniden kaydedebilirsiniz.
+    1. **Veri depolarını Python SDK aracılığıyla yeniden kaydetmek için**, [güncelleştirilmesi gereken](#whattoupdate) Özellikler bölümünde bulunan değerleri ve adım 1 ' deki anahtarı aşağıdaki kodla kullanın. 
+    
+        `overwrite=True`Belirtildiği için, bu kod var olan kaydın üzerine yazar ve yeni anahtarı kullanacak şekilde günceller.
+    
+        ```python
+        # Re-register the blob container
+        ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+                                                  datastore_name='your datastore name',
+                                                  container_name='your container name',
+                                                  account_name='your storage account name',
+                                                  account_key='new storage account key',
+                                                  overwrite=True)
+        # Re-register file shares
+        ds_file = Datastore.register_azure_file_share(workspace=ws,
                                               datastore_name='your datastore name',
-                                              container_name='your container name',
+                                              file_share_name='your container name',
                                               account_name='your storage account name',
                                               account_key='new storage account key',
                                               overwrite=True)
-    # Re-register file shares
-    ds_file = Datastore.register_azure_file_share(workspace=ws,
-                                          datastore_name='your datastore name',
-                                          file_share_name='your container name',
-                                          account_name='your storage account name',
-                                          account_key='new storage account key',
-                                          overwrite=True)
+        
+        ```
     
-    ```
-
-    `overwrite=True`Belirtildiği için, bu kod var olan kaydın üzerine yazar ve yeni anahtarı kullanacak şekilde günceller.
+    1. **Veri depolarını Studio aracılığıyla yeniden kaydetmek için**, Studio 'nun sol bölmesindeki **veri depoları** ' nı seçin. 
+        1. Güncelleştirmek istediğiniz veri deposunu seçin.
+        1. Sol üstteki **kimlik bilgilerini güncelleştir** düğmesini seçin. 
+        1. Formu doldurmak için adım 1 ' deki yeni erişim anahtarınızı kullanın ve **Kaydet**' e tıklayın.
+        
+            **Varsayılan veri deposu**için kimlik bilgilerini güncelleştiriyorsanız, bu adımı tamamlayarak yeni anahtarınızı çalışma alanının varsayılan veri deposu ile yeniden eşitleyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

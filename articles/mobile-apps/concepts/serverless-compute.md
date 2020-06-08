@@ -5,14 +5,14 @@ author: codemillmatt
 ms.service: mobile-services
 ms.assetid: 444f0959-aa7f-472c-a6c7-9eecea3a34b9
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 06eb757955f403b91ae38602f4dc8ccc3fa52f26
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: f27ef3868cb53c76ecd3ba5d3b24cd075f8a5531
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450979"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485295"
 ---
 # <a name="build-mobile-back-end-components-with-compute-services"></a>İşlem hizmetleri ile mobil arka uç bileşenleri oluşturun
 Her mobil uygulamanın, veri depolama, iş mantığı ve güvenlik açısından sorumlu bir arka ucu olması gerekir. Altyapıyı ana bilgisayar ve yürütmeye yönelik olarak yönetmek, birden çok sunucuyu yazmanızı, sağlamanızı ve ölçeklendirmenizi gerektirir. Ayrıca, işletim sistemi güncelleştirmelerini ve ilgili donanımı yönetmeniz ve güvenlik düzeltme eklerini uygulamanız gerekir. Bu durumda, performans, kullanılabilirlik ve hataya dayanıklılık için bu altyapı bileşenlerinin tümünü izlemeniz gerekir. 
@@ -46,7 +46,7 @@ Mobil uygulamalarınızda sunucusuz işlem yeteneklerini etkinleştirmek için a
 - [Azure portal](https://portal.azure.com)
 - [Azure İşlevleri belgeleri](/azure/azure-functions/)
 - [Azure İşlevleri geliştirici kılavuzu](/azure/azure-functions/functions-reference)
-- [Hızlı Başlangıçlar](/azure/azure-functions/functions-create-first-function-vs-code)
+- [Hızlı başlangıçlar](/azure/azure-functions/functions-create-first-function-vs-code)
 - [Örnekler](/samples/browse/?products=azure-functions&languages=csharp)
 
 ## <a name="azure-app-service"></a>Azure App Service
@@ -64,7 +64,7 @@ Mobil uygulamalarınızda sunucusuz işlem yeteneklerini etkinleştirmek için a
 **Başvurular**
 - [Azure portal](https://portal.azure.com/)
 - [Azure App Service belgeleri](/azure/app-service/)
-- [Hızlı Başlangıçlar](/azure/app-service/app-service-web-get-started-dotnet)
+- [Hızlı başlangıçlar](/azure/app-service/app-service-web-get-started-dotnet)
 - [Örnekler](/azure/app-service/samples-cli)
 - [Öğreticiler](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
 
@@ -82,7 +82,7 @@ Mobil uygulamalarınızda sunucusuz işlem yeteneklerini etkinleştirmek için a
 **Başvurular**
 - [Azure portal](https://portal.azure.com/)
 - [Azure Kubernetes hizmeti belgeleri](/azure/aks/)
-- [Hızlı Başlangıçlar](/azure/aks/kubernetes-walkthrough-portal)
+- [Hızlı başlangıçlar](/azure/aks/kubernetes-walkthrough-portal)
 - [Öğreticiler](/azure/aks/tutorial-kubernetes-prepare-app)
 
 ## <a name="azure-container-instances"></a>Azure Container Instances
@@ -99,6 +99,6 @@ Mobil uygulamalarınızda sunucusuz işlem yeteneklerini etkinleştirmek için a
 **Başvurular**
 - [Azure portal](https://portal.azure.com/)
 - [Azure Container Instances belgeleri](/azure/container-instances/)
-- [Hızlı Başlangıçlar](/azure/container-instances/container-instances-quickstart-portal)
+- [Hızlı başlangıçlar](/azure/container-instances/container-instances-quickstart-portal)
 - [Örnekler](https://azure.microsoft.com/resources/samples/?sort=0&term=aci)
 - [Öğreticiler](/azure/container-instances/container-instances-tutorial-prepare-app)

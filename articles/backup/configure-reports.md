@@ -3,12 +3,12 @@ title: Azure Backup raporlarını yapılandırma
 description: Log Analytics ve Azure çalışma kitaplarını kullanarak Azure Backup raporlarını yapılandırma ve görüntüleme
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: e0c7418d7141a3b12f367f1b12ee740eaac64703
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 20dcf7f3f9bbc5626c4a05ef064203b3ae5020cd
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797540"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484969"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
@@ -22,7 +22,7 @@ Bugün Azure Backup [Azure izleyici günlüklerini](https://docs.microsoft.com/a
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-- Yedekleme raporları Azure VM 'leri, Azure sanal makinelerinde SQL, Azure VM 'lerinde SAP HANA, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı, Microsoft Azure Backup sunucu (MABS) ve System Center Data Protection Manager (DPM) için desteklenir. Azure dosya paylaşma yedeklemesi için veriler şu anda yedekleme raporlarında görünmüyor.
+- Yedekleme raporları Azure VM 'leri, Azure sanal makinelerinde SQL, Azure VM 'lerinde SAP HANA, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı, Microsoft Azure Backup sunucu (MABS) ve System Center Data Protection Manager (DPM) için desteklenir. Azure dosya paylaşma yedeklemesi için veriler, 1. ve sonrasında oluşturulan tüm kayıtlar için görüntülenir, 2020.
 - DPM iş yükleri için yedekleme raporları, DPM sürüm 5.1.363.0 ve üzeri ve aracı sürümü 2.0.9127.0 ve üzeri için desteklenir.
 - MABS iş yükleri için yedekleme raporları, MABS sürümü 13.0.415.0 ve üzeri ve aracı sürümü 2.0.9170.0 ve üzeri için desteklenir.
 - Yedekleme raporları, verileri kullanıcının erişimi olan bir Log Analytics çalışma alanına gönderildiği sürece tüm yedekleme öğeleri, kasa, abonelik ve bölgelerde görüntülenebilir. Bir kasa kümesinin raporlarını görüntülemek için, yalnızca kasaların verilerini gönderdiği Log Analytics çalışma alanına okuyucu erişiminizin olması gerekir. Bireysel kasaların erişimine sahip olmanız gerekmez.

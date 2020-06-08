@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d28f93f316ac2a63be6b3a8eb0b80678bd7607f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa25cffd84ee9255fed8bbaa0f2fb6adf762b47e
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81271412"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483793"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication hakkında sık sorulan sorular
 
@@ -163,7 +163,7 @@ Yetkisiz erişimi engellemek için kullanıcının tüm uygulama parolalarını 
 
 ### <a name="what-if-a-user-cant-sign-in-to-non-browser-apps"></a>Kullanıcı tarayıcı olmayan uygulamalarda oturum açamaz ne olursa?
 
-Kuruluşunuz hala eski istemcileri kullanıyorsa ve [uygulama parolalarının kullanımına izin](howto-mfa-mfasettings.md#app-passwords)verildiyse, kullanıcılarınız Kullanıcı adı ve parolasıyla bu eski istemcilerde oturum açamaz. Bunun yerine, [uygulama parolalarını ayarlamaları](../user-help/multi-factor-authentication-end-user-app-passwords.md)gerekir. Kullanıcılarınızın kendi oturum açma bilgilerini temizleme (silme), uygulamayı yeniden başlatması ve sonra kendi Kullanıcı adı ve *uygulama parolalarıyla* normal parolaları yerine oturum açması gerekir.
+Kuruluşunuz hala eski istemcileri kullanıyorsa ve [uygulama parolalarının kullanımına izin](howto-mfa-app-passwords.md)verildiyse, kullanıcılarınız Kullanıcı adı ve parolasıyla bu eski istemcilerde oturum açamaz. Bunun yerine, [uygulama parolalarını ayarlamaları](../user-help/multi-factor-authentication-end-user-app-passwords.md)gerekir. Kullanıcılarınızın kendi oturum açma bilgilerini temizleme (silme), uygulamayı yeniden başlatması ve sonra kendi Kullanıcı adı ve *uygulama parolalarıyla* normal parolaları yerine oturum açması gerekir.
 
 Kuruluşunuzda eski istemciler yoksa, kullanıcılarınızın uygulama parolaları oluşturmalarına izin vermemelisiniz.
 
@@ -257,4 +257,4 @@ Sorunuz burada yanıtlanmazsa aşağıdaki destek seçenekleri mevcuttur:
 * [Microsoft desteği bilgi bankasında](https://support.microsoft.com) , yaygın teknik sorunların çözümlerini arayın.
 * Topluluğlardan Teknik sorular ve yanıtlar arayın ve bunları inceleyin veya [Azure Active Directory soru-cevap&bir](https://docs.microsoft.com/answers/topics/azure-active-directory.html)soru sorun.
 * [Azure Multi-Factor Authentication sunucusu desteği](https://support.microsoft.com/oas/default.aspx?prid=14947)aracılığıyla Microsoft Professional ile iletişim kurun. Bizimle iletişim kurarken, sorun hakkında mümkün olduğunca fazla bilgi dahil edebiliyorsanız bu yararlı olur. Sağlayabileceğiniz bilgiler, hatayı gördüğünüz sayfayı, belirli hata kodunu, belirli oturum KIMLIĞINI ve hatayı seçen kullanıcının KIMLIĞINI içerir.
-* Eski bir PhoneFactor müşterisiyseniz ve sorularınız varsa veya bir parolayı sıfırlamayla ilgili yardıma ihtiyacınız varsa, bir destek talebi [phonefactorsupport@microsoft.com](mailto:phonefactorsupport@microsoft.com) açmak için e-posta adresini kullanın.
+* Eski bir PhoneFactor müşterisiyseniz ve sorularınız varsa veya bir parolayı sıfırlamayla ilgili yardıma ihtiyacınız varsa, [phonefactorsupport@microsoft.com](mailto:phonefactorsupport@microsoft.com) bir destek talebi açmak için e-posta adresini kullanın.

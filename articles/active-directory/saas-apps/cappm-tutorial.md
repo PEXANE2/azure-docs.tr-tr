@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: CA PPM ile Azure Active Directory tümleştirme | Microsoft Docs'
-description: Azure Active Directory ve CA PPM arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: açıklık ile Azure Active Directory tümleştirme | Microsoft Docs'
+description: Azure Active Directory ve açıklık arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,191 +11,144 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/12/2019
+ms.date: 06/05/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc1808b2368400bb13283b0b1c16a24b928179ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 89700ccac8e197b393cb1e96cdbf5e04877c4a44
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157579"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484610"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ca-ppm"></a>Öğretici: CA PPM ile Azure Active Directory tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-clarity"></a>Öğretici: açıklık ile Azure Active Directory tümleştirme
 
-Bu öğreticide CA PPM Azure Active Directory (Azure AD) ile nasıl tümleştirileceğini öğreneceksiniz.
-CA PPM 'yı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
+Bu öğreticide, netliği Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Netmeyi Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de, CA PPM 'a erişimi olan denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla CA PPM (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
+* Azure AD 'de açıklık erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla birlikte otomatik olarak oturum açmalarına olanak tanıyın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini CA PPM ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* CA PPM çoklu oturum açma etkin aboneliği
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Çoklu oturum açma (SSO) özellikli abonelik netliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* CA PPM, **IDP** tarafından başlatılan SSO 'yu destekler
+* Açıklık, **IDP** tarafından başlatılan SSO 'yu destekler
+* Netriyi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-ca-ppm-from-the-gallery"></a>Galeriden CA ekleme PPM
+## <a name="adding-clarity-from-the-gallery"></a>Galeriden açıklık ekleme
 
-CA PPM ile Azure AD arasındaki tümleştirmeyi yapılandırmak için, Galeri 'den yönetilen SaaS uygulamaları listenize CA PPM 'yı eklemeniz gerekir.
+Açıklık tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize açıklık eklemeniz gerekir.
 
-**Galeriden CA PPM eklemek için aşağıdaki adımları uygulayın:**
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **açıklık** yazın.
+1. Sonuçlar panelinden **netlik** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-clarity"></a>Azure AD çoklu oturum açmayı bir açıklık için yapılandırın ve test edin
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu netle yapılandırın ve test edin. SSO 'nun çalışması için bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
-
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
-
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
-
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
-
-4. Arama kutusuna **CA ppm**yazın, sonuç PANELINDEN **CA ppm** ' yı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
-
-     ![Sonuç listesinde CA PPM](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
-
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, CA ppm Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
-Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve CA 'daki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
-
-Azure AD çoklu oturum açmayı CA PPM ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+Azure AD SSO 'yu netle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[CA 'Yı yapılandırma ppm çoklu oturum](#configure-ca-ppm-single-sign-on)** açma, uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Sertifika yetkilisi oluştur, kullanıcının Azure AD gösterimine bağlı olan CA 'da Britta Simon 'a sahip olmak için **[Test kullanıcısını test et](#create-ca-ppm-test-user)** .
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+2. **[Netme çoklu oturum açmayı yapılandırma](#configure-clarity-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırma.
+    1. En **[netme testi Kullanıcı oluşturma](#create-clarity-test-user)** -kullanıcının Azure AD gösterimine bağlı bir netme için B. Simon 'un bir karşılığı.
 6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
+## <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-Azure AD çoklu oturum açmayı CA PPM ile yapılandırmak için aşağıdaki adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/), **CA 'nın** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
-
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+1. [Azure Portal](https://portal.azure.com/), **netlik** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+2. **Çoklu oturum açma yöntemi seç** Iletişim kutusunda **SAML**' yi seçin.
+3.  **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki adımları uygulayın:
-
-    ![CA PPM etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://ca.ondemand.saml.20.post.<companyname>`
 
     b. **Yanıt URL 'si** metin kutusuna şunu yazın:`https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer`
 
     > [!NOTE]
-    > Bu değer gerçek değil. Bu değeri gerçek tanımlayıcıyla güncelleştirin. Bu değeri almak için [CA ppm istemci desteği ekibine](mailto:catechnicalsupport@ca.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değer gerçek değil. Bu değeri gerçek tanımlayıcıyla güncelleştirin. Bu değeri almak için [açıklık istemci destek ekibine](mailto:catechnicalsupport@ca.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+5. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-6. **CA 'Yı ayarla ppm** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
+6. **Açıklık ayarla** bölümünde, uygun URL 'leri gereksiniminize göre kopyalayın.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL’si
-
-    b. Azure AD tanımlayıcısı
-
-    c. Oturum kapatma URL 'SI
-
-### <a name="configure-ca-ppm-single-sign-on"></a>CA PPM çoklu oturum açmayı yapılandırma
-
-**CA ppm** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den CA ve uygun şekilde kopyalanmış URL 'leri, e-posta [ppm desteği ekibine](mailto:catechnicalsupport@ca.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
-
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
-    Örneğin, BrittaSimon@contoso.com
-
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**' a tıklayın.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, CA PPM 'ya erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
+Bu bölümde, netlik erişimine izin vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı SEÇIN ve ardından **CA ppm**' yi seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **netlik**' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-2. Uygulamalar listesinde **CA ppm**' yı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Uygulamalar listesinde CA PPM bağlantısı](common/all-applications.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın
 
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+## <a name="configure-clarity-single-sign-on"></a>Açıklık çoklu oturum açmayı yapılandırma
 
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+**Netme** tarafında çoklu oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den daha uygun kopyalanmış URL 'leri [netlik desteği ekibine](mailto:catechnicalsupport@ca.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+### <a name="create-clarity-test-user"></a>Açıklık testi kullanıcısı oluşturma
 
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+Bu bölümde, nette B. Simon adlı bir Kullanıcı oluşturacaksınız. Netlik platformunda kullanıcıları eklemek için [açıklık destek ekibi](mailto:catechnicalsupport@ca.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
-
-### <a name="create-ca-ppm-test-user"></a>CA oluştur test kullanıcısı
-
-Bu bölümde, CA PPM 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. CA ile çalışma, kullanıcıların CA PPM platformunda kullanıcıları eklemek için [destek ekibi](mailto:catechnicalsupport@ca.com) . Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
-
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
+## <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde CA PPM kutucuğunu tıklattığınızda, SSO 'yu ayarladığınız CA PPM 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde açıklık kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız açıklık için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+## <a name="additional-resources"></a>Ek kaynaklar
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Gelişmiş görünürlük ve denetimlerle netliği koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

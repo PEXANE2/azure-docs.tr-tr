@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: a2083de1ddf400b368815877725d3b8dd446156b
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 3733989ad6eed113e37c87eb7da6748cec10e34d
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82844571"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485757"
 ---
 Azure sanal makinelerini (VM 'Ler) bir ölçekte tutarlı bir şekilde oluşturmak ve yönetmek için, bazı Otomasyon formları genellikle istenir. Azure altyapı dağıtımı ve yönetim yaşam döngüsünün tamamını otomatikleştirmenize imkan tanıyan birçok araç ve çözüm vardır. Bu makalede, Azure 'da kullanabileceğiniz bazı altyapı Otomasyonu araçları tanıtılmaktadır. Bu araçlar, genellikle aşağıdaki yaklaşımlardan birine uyum sağlar:
 
@@ -52,7 +52,7 @@ Azure sanal makinelerini (VM 'Ler) bir ölçekte tutarlı bir şekilde oluşturm
 
 
 ## <a name="cloud-init"></a>Cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io), Linux VM’sini ilk kez önyüklendiğinde özelleştirmeyi sağlayan, sık kullanılan bir yaklaşımdır. cloud-init’i paket yükleme, dosyalara yazma ve kullanıcılar ile güvenliği yapılandırma işlemleri için kullanabilirsiniz. İlk önyükleme işlemi sırasında Cloud-init çağrıldığından, yapılandırmanızı uygulamak için başka bir adım veya gerekli aracı yoktur.  `#cloud-config` Dosyalarınızı düzgün şekilde biçimlendirme hakkında daha fazla bilgi için bkz. [Cloud-init belgeleri sitesi](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config`dosyalar, Base64 olarak kodlanmış metin dosyalarıdır.
+[Cloud-init](https://cloudinit.readthedocs.io), Linux VM’sini ilk kez önyüklendiğinde özelleştirmeyi sağlayan, sık kullanılan bir yaklaşımdır. cloud-init’i paket yükleme, dosyalara yazma ve kullanıcılar ile güvenliği yapılandırma işlemleri için kullanabilirsiniz. İlk önyükleme işlemi sırasında Cloud-init çağrıldığından, yapılandırmanızı uygulamak için başka bir adım veya gerekli aracı yoktur.  Dosyalarınızı düzgün şekilde biçimlendirme hakkında daha fazla bilgi için `#cloud-config` bkz. [Cloud-init belgeleri sitesi](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config`dosyalar, Base64 olarak kodlanmış metin dosyalarıdır.
 
 Cloud-init, dağıtımlar arasında da çalışır. Örneğin, bir paket yüklemek için **apt-get install** veya **yum install** kullanmazsınız. Bunun yerine, yüklenecek paketlerin listesini tanımlayabilirsiniz. Cloud-init, seçtiğiniz dağıtım için yerel paket yönetim aracını otomatik olarak kullanır.
 
@@ -100,7 +100,7 @@ Betikler, Azure Storage 'dan veya GitHub deposu gibi genel bir konumdan indirile
 
 Şunları nasıl yapacağınızı öğrenin:
 
-- [Azure Ile Terrayform 'U yükleyip yapılandırın](/azure/developer/terraform/install-configure).
+- [Azure Ile Terrayform 'U yükleyip yapılandırın](/azure/developer/terraform/getting-started-cloud-shell).
 - [Terrayform ile bir Azure altyapısı oluşturun](/azure/developer/terraform/create-linux-virtual-machine-with-infrastructure).
 
 

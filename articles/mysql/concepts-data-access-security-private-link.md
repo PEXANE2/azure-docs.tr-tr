@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: c2cc4986542404281424286882c046dec39f5daf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a42148bb9610b27f2c0874ffa74d9e517c2063a
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371299"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84482590"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı için özel bağlantı
 
@@ -46,6 +46,10 @@ Bu kurulumun sonunda, Azure VM yalnızca Batı ABD bölgesindeki MySQL için Azu
 Şirket içi makinelerden ortak uç noktaya bağlandığınızda, IP adresinizin sunucu düzeyinde bir güvenlik duvarı kuralı kullanılarak IP tabanlı güvenlik duvarına eklenmesi gerekir. Bu model geliştirme veya test iş yükleri için bireysel makinelere erişim sağlamak için iyi bir şekilde çalıştığından, bir üretim ortamında yönetilmesi zordur.
 
 Özel bağlantı ile, [Express Route](https://azure.microsoft.com/services/expressroute/) (er), özel eşleme veya [VPN tüneli](https://docs.microsoft.com/azure/vpn-gateway/)kullanarak özel uç noktaya şirket içi erişimi etkinleştirebilirsiniz. Daha sonra, genel uç nokta aracılığıyla tüm erişimi devre dışı bırakabilir ve IP tabanlı güvenlik duvarını kullanmaz.
+
+> [!NOTE]
+> Bazı durumlarda, MySQL için Azure veritabanı ve VNet alt ağı farklı aboneliklerde bulunur. Bu durumlarda, aşağıdaki yapılandırmalardan emin olmanız gerekir:
+> - Her iki abonelikte da **Microsoft. Dbformyısql** kaynak sağlayıcısının kayıtlı olduğundan emin olun. Daha fazla bilgi için [Resource-Manager-kayıt][resource-manager-portal] bölümüne bakın
 
 ## <a name="configure-private-link-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı için özel bağlantı yapılandırma
 
@@ -129,3 +133,6 @@ MySQL için Azure veritabanı güvenlik özellikleri hakkında daha fazla bilgi 
 * MySQL için Azure veritabanınız için bir sanal ağ hizmeti uç noktası yapılandırma hakkında bilgi edinmek için bkz. [sanal ağlardan erişimi yapılandırma](https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet).
 
 * MySQL bağlantısı için Azure veritabanı 'na genel bakış için bkz. [MySQL Için Azure veritabanı bağlantı mimarisi](https://docs.microsoft.com/azure/mysql/concepts-connectivity-architecture)
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

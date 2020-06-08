@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 34a8a070-0123-4faf-8588-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 0837d709559c8970271e8a2c2e9f69222ddedbdf
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: c4426b7d1abd7e8f5cc1fe8e0896510ac007496f
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450909"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483142"
 ---
 # <a name="cognitive-services-helps-to-solve-business-problems-by-using-ai"></a>Bilişsel hizmetler, AI kullanarak iş sorunlarını çözmeye yardımcı olur
 [Azure](https://azure.microsoft.com/services/cognitive-services/) bilişsel hizmetler, verilerinizi yapay zeka (AI) ile dönüştürmek üzere kullanıcılarınızın ihtiyaçlarını görmek, dinlemek, konuşmak, anlamak ve yorumlamak için akıllı algoritmalarla birlikte kullanmak üzere güçlü hizmetler sunar. Mobil uygulamalarınızı kullanıcılarınız için akıllı, ilgi çekici ve bağlamsal olarak uygun hale getirebilirsiniz. Geliştiriciler, kendi tekliflerine AI eklemek ve doğrudan AI veya veri bilimi becerileri olmadan akıllı uygulamalar oluşturmaya yardımcı olmak için API 'Leri, SDK 'Ları ve hizmetleri kullanabilir.
@@ -57,6 +57,6 @@ ms.locfileid: "84450909"
  ## <a name="references"></a>Başvurular
    - [Azure portal](https://portal.azure.com) 
    - [Bilişsel Hizmetler belgeleri](/azure/cognitive-services/welcome)
-   - [Hızlı Başlangıçlar](/azure/cognitive-services/cognitive-services-apis-create-account)
+   - [Hızlı başlangıçlar](/azure/cognitive-services/cognitive-services-apis-create-account)
    - [Kapsayıcı desteği](/azure/cognitive-services/cognitive-services-container-support)
-   - [Hızlı Başlangıçlar](/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows)
+   - [Hızlı başlangıçlar](/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows)
