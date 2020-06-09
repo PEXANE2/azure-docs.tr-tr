@@ -7,12 +7,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
-ms.openlocfilehash: 0cf8705cf2567a60129681c2db41b0868f8fe182
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 4078edcadf3985e3b4dd392f726ca2e8d171b8b1
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75392131"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559073"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Hızlı başlangıç: Python kullanarak Azure Işlevleri ve SignalR hizmeti ile sohbet odası oluşturma
 
@@ -52,7 +53,7 @@ Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında ot
 
 1. Kod Düzenleyicinizde, kopyalanmış depodaki *src/chat/Python* klasörünü açın.
 
-1. Python işlevlerini yerel olarak geliştirmek ve test etmek için bir Python 3,6 veya 3,7 ortamında çalışmanız gerekir. Adlı `.venv`bir sanal ortam oluşturmak ve etkinleştirmek için aşağıdaki komutları çalıştırın.
+1. Python işlevlerini yerel olarak geliştirmek ve test etmek için bir Python 3,6 veya 3,7 ortamında çalışmanız gerekir. Adlı bir sanal ortam oluşturmak ve etkinleştirmek için aşağıdaki komutları çalıştırın `.venv` .
 
     **Linux veya macOS:**
 
@@ -72,7 +73,7 @@ Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında ot
 
 1. **local.settings.json** dosyasının içinde bağlantı dizesini **AzureSignalRConnectionString** ayarının değerine yapıştırın. Dosyayı kaydedin.
 
-1. Python işlevleri klasörler halinde düzenlenir. Her bir klasörde iki dosya vardır: *function. JSON* işlevde kullanılan bağlamaları tanımlar ve * \_ \_init\_\_. Kopyala* işlevinin gövdesidir. Bu işlev uygulamasında iki adet HTTP ile tetiklenen işlev vardır:
+1. Python işlevleri klasörler halinde düzenlenir. Her bir klasörde iki dosya vardır: *function. JSON* işlevde kullanılan bağlamaları tanımlar ve * \_ \_ init \_ \_ . Kopyala* işlevinin gövdesidir. Bu işlev uygulamasında iki adet HTTP ile tetiklenen işlev vardır:
 
     - **negotiate** - Geçerli bağlantı bilgileri döndürmek için *SignalRConnectionInfo* giriş bağlamasını kullanır.
     - **messages** - İstek gövdesinde bir sohbet iletisi alır ve iletiyi bağlı olan tüm istemci uygulamalara yaymak için *SignalR* çıkış bağlamasını kullanır.

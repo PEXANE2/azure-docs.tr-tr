@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/16/2020
-ms.openlocfilehash: bd0a867cce9b2a9ad793b491b9042034ef5810f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6e4ff494ee79428f7d9e6a55d184b877c0d58e4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605149"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554947"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda sunucu parametrelerini yapılandırma
 
@@ -29,50 +29,14 @@ MySQL için Azure veritabanı bazı sunucu parametrelerinin yapılandırılması
 5. Parametreler için yeni değerler kaydettiyseniz, **Tümünü Sıfırla**' yı seçerek her şeyi varsayılan değerlere geri döndürebilirsiniz.
 ![Tümünü Varsayılana sıfırla](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="list-of-configurable-server-parameters"></a>Yapılandırılabilir sunucu parametrelerinin listesi
-
-Desteklenen sunucu parametrelerinin listesi sürekli olarak büyüyordur. Tanım almak ve uygulama gereksinimlerinize göre sunucu parametrelerini yapılandırmak için Azure portal içindeki sunucu parametreleri sekmesini kullanın.
-
-## <a name="non-configurable-server-parameters"></a>Yapılandırılamayan sunucu parametreleri
-
-InnoDB arabellek havuzu boyutu yapılandırılamaz ve [fiyatlandırma katmanınıza](concepts-service-tiers.md)bağlı değildir.
-
-|**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**MB <br>cinsinden InnoDB arabellek havuzu boyutu (4 TB 'a kadar depolama alanı destekleyen sunucular)**| **MB <br>cinsinden InnoDB arabellek havuzu boyutu (16 TB 'a kadar depolama alanı destekleyen sunucular)**|
-|:---|---:|---:|---:|
-|Temel| 1| 832| |
-|Temel| 2| 2560| |
-|Genel Amaçlı| 2| 3584| 7168|
-|Genel Amaçlı| 4| 7680| 15360|
-|Genel Amaçlı| 8| 15360| 30720|
-|Genel Amaçlı| 16| 31232| 62464|
-|Genel Amaçlı| 32| 62976| 125952|
-|Genel Amaçlı| 64| 125952| 251904|
-|Bellek İçin İyileştirilmiş| 2| 7168| 14336|
-|Bellek İçin İyileştirilmiş| 4| 15360| 30720|
-|Bellek İçin İyileştirilmiş| 8| 30720| 61440|
-|Bellek İçin İyileştirilmiş| 16| 62464| 124928|
-|Bellek İçin İyileştirilmiş| 32| 125952| 251904|
-
-Bu ek sunucu parametreleri sistemde yapılandırılamaz:
-
-|**Parametre**|**Sabit değer**|
-| :------------------------ | :-------- |
-|Temel katmanda innodb_file_per_table|KAPALI|
-|innodb_flush_log_at_trx_commit|1|
-|sync_binlog|1|
-|innodb_log_file_size|6/E|
-|innodb_log_files_in_group|2|
-
-Burada listelenmeyen diğer sunucu parametreleri, [5,7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) ve [5,6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html)sürümleri için MySQL varsayılan değerlerine ayarlanır.
-
 ## <a name="working-with-the-time-zone-parameter"></a>Saat dilimi parametresiyle çalışma
 
 ### <a name="populating-the-time-zone-tables"></a>Saat dilimi tablolarını doldurma
 
-Sunucunuzdaki saat dilimi tabloları, MySQL komut satırı veya MySQL çalışma ekranı gibi `mysql.az_load_timezone` bir araçtan saklı yordam çağırarak doldurulabilir.
+Sunucunuzdaki saat dilimi tabloları, `mysql.az_load_timezone` MySQL komut satırı veya MySQL çalışma ekranı gibi bir araçtan saklı yordam çağırarak doldurulabilir.
 
 > [!NOTE]
-> MySQL çalışma modundan `mysql.az_load_timezone` komutunu çalıştırıyorsanız, önce kullanarak `SET SQL_SAFE_UPDATES=0;`güvenli güncelleştirme modunu kapatmanız gerekebilir.
+> `mysql.az_load_timezone`MySQL çalışma modundan komutunu çalıştırıyorsanız, önce kullanarak güvenli güncelleştirme modunu kapatmanız gerekebilir `SET SQL_SAFE_UPDATES=0;` .
 
 ```sql
 CALL mysql.az_load_timezone();
@@ -95,7 +59,7 @@ Genel düzey saat dilimi Azure portal **sunucu parametreleri** sayfasından ayar
 
 ### <a name="setting-the-session-level-time-zone"></a>Oturum düzeyi saat dilimini ayarlama
 
-Oturum düzeyi saat dilimi, MySQL komut satırı veya MySQL çalışma `SET time_zone` ekranı gibi bir araçtan komutu çalıştırılarak ayarlanabilir. Aşağıdaki örnek saat dilimini **ABD/Pasifik** saati dilimine göre ayarlar.
+Oturum düzeyi saat dilimi, `SET time_zone` MySQL komut satırı veya MySQL çalışma ekranı gibi bir araçtan komutu çalıştırılarak ayarlanabilir. Aşağıdaki örnek saat dilimini **ABD/Pasifik** saati dilimine göre ayarlar.
 
 ```sql
 SET time_zone = 'US/Pacific';

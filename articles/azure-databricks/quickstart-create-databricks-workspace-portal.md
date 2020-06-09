@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.workload: big-data
 ms.topic: quickstart
 ms.date: 03/23/2020
-ms.custom: mvc
-ms.openlocfilehash: d6af521238a034bc22612335119f08284b87eb4b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 6c7226a56d5811438ec9d0703e0b8242df13e17b
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80132700"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559295"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portalını kullanarak Databricks üzerinde bir Spark işi çalıştırma
 
@@ -37,7 +37,7 @@ Bu hızlı başlangıçta, bir Apache Spark kümesiyle Azure Databricks çalış
 
 Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı oluşturursunuz.
 
-1. Azure Portal, **kaynak** > **Analizi** > oluştur**Azure Databricks**' u seçin.
+1. Azure Portal, **kaynak**  >  **Analizi**oluştur  >  **Azure Databricks**' u seçin.
 
     ![Azure portal databricks](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Azure portal databricks")
 
@@ -51,7 +51,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
     |---------|---------|
     |**Çalışma alanı adı**     | Databricks çalışma alanınız için bir ad sağlayın        |
     |**Abonelik**     | Açılan listeden Azure aboneliğinizi seçin.        |
-    |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümü için ilgili kaynakları bir arada tutan kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../azure-resource-manager/management/overview.md). |
+    |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümüne ilişkin kaynakları tutan bir kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../azure-resource-manager/management/overview.md). |
     |**Konum**     | **Batı ABD 2**'yi seçin. Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).        |
     |**Fiyatlandırma Katmanı**     |  **Standart**, **Premium**veya **deneme**arasında seçim yapın. Bu katmanlar hakkında daha fazla bilgi için bkz. [Databricks fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/databricks/).       |
 
@@ -80,7 +80,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
    * Küme için bir ad girin.
    * Bu makalede, **5,3** çalışma zamanına sahip bir küme oluşturun.
-   * Süre **etkinlik süresi dolduktan \_ \_ sonra Sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
+   * Süre ** \_ \_ etkinlik süresi dolduktan sonra Sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
     
      **Küme oluştur**’u seçin. Küme çalışmaya başladıktan sonra kümeye not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
@@ -98,7 +98,7 @@ Databricks içinde bir not defteri oluşturmak, Not defterini Azure açık veri 
 
     ![Databricks 'te Not defteri oluşturma](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Databricks 'te Not defteri oluşturma")
 
-    **Oluştur**’u seçin.
+    **Oluştur**'u seçin.
 
 3. Bu adımda, [Azure açık veri kümelerinde](https://azure.microsoft.com/services/open-datasets/catalog/boston-safety-data/#AzureDatabricks)Boston Güvenlik verileriyle bir Spark dataframe oluşturun ve verileri sorgulamak için SQL kullanın.
 
@@ -151,7 +151,7 @@ Databricks içinde bir not defteri oluşturmak, Not defterini Azure açık veri 
    * **Toplama**’yı **SAYI** olarak ayarlayın.
    * **Görüntü türünü** **pasta grafik**olarak ayarlayın.
 
-     **Uygula**’ya tıklayın.
+     **Uygula**'ya tıklayın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -159,7 +159,7 @@ Makaleyi tamamladıktan sonra kümeyi sonlandırabilirsiniz. Bunu yapmak için A
 
 ![Databricks kümesini durdurma](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-Küme oluşturma sırasında **işlem yapılmadan dakika \_ \_ sonra Sonlandır** onay kutusunu seçtiğiniz takdirde otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
+Küme oluşturma sırasında ** \_ \_ işlem yapılmadan dakika sonra Sonlandır** onay kutusunu seçtiğiniz takdirde otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

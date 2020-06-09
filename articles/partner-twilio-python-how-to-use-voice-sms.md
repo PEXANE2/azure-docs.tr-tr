@@ -12,12 +12,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
-ms.openlocfilehash: edbc9eef6b5f0af2e70152b66228cdf09ef31110
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 4722e8adadf59f8a4ad7b36a73fad5a6cff3370f
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72242195"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560891"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Python 'da ses ve SMS özellikleri için Twilio kullanma
 Bu kılavuzda, Azure 'da Twilio API hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Kapsanan senaryolar, telefon araması yapmayı ve kısa mesaj hizmeti (SMS) iletisi göndermeyi içerir. Twilio hakkında daha fazla bilgi edinmek ve uygulamalarınızda sesli ve SMS kullanma hakkında daha fazla bilgi için [sonraki adımlar](#NextSteps) bölümüne bakın.
@@ -40,21 +41,21 @@ Twilio API 'si, uygulamalar için ses ve SMS işlevselliği sağlayan bir Restst
 Twilio API 'sinin önemli yönleri, Twilio Verbs ve Twilio Markup Language (TwiML).
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio fiilleri
-API, Twilio fiillerini kullanır; Örneğin, Twilio, bir çağrıda bir iletiyi sessiz olarak göndermek için ** &lt;söyleyin&gt; ** .
+API, Twilio fiillerini kullanır; Örneğin, Twilio, bir çağrıda bir iletiyi sessiz olarak göndermek için ** &lt; söyleyin &gt; ** .
 
 Aşağıda, Twilio fiillerinin bir listesi verilmiştir. [Twilio biçimlendirme dili belgeleri][twiml]aracılığıyla diğer fiiller ve yetenekler hakkında bilgi edinin.
 
-* Çevir: çağrıyı başka bir telefona bağlar. ** &lt;&gt;**
-* Topla: telefon tuş takımında girilen sayısal rakamları toplar. ** &lt;&gt;**
-* Kapat: bir çağrıyı sonlandırır. ** &lt;&gt;**
-* Duraklat: belirtilen saniye sayısı için sessizce bekler. ** &lt;&gt;**
-* Oynat: bir ses dosyası çalar. ** &lt;&gt;**
-* Kuyruk: ' i çağıranlar kuyruğuna ekleyin. ** &lt;&gt;**
-* Kayıt: arayanın sesini kaydeder ve kaydı içeren bir dosyanın URL 'sini döndürür. ** &lt;&gt;**
-* **Yeniden yönlendir&gt;: bir çağrının veya SMS denetiminin denetimini, farklı bir URL 'de twiml 'ye &lt;** aktarır.
-* Reddet: size faturalandırma olmadan Twilio numaranız için gelen çağrıyı reddeder. ** &lt;&gt;**
-* Deyin: bir çağrıda yapılan metni konuşmaya dönüştürür. ** &lt;&gt;**
-* SMS: SMS iletisi gönderir. ** &lt;&gt;**
+* ** &lt; Çevir &gt; **: çağrıyı başka bir telefona bağlar.
+* ** &lt; Topla &gt; **: telefon tuş takımında girilen sayısal rakamları toplar.
+* ** &lt; Kapat &gt; **: bir çağrıyı sonlandırır.
+* ** &lt; Duraklat &gt; **: belirtilen saniye sayısı için sessizce bekler.
+* ** &lt; Oynat &gt; **: bir ses dosyası çalar.
+* ** &lt; Kuyruk &gt; **: ' i çağıranlar kuyruğuna ekleyin.
+* ** &lt; Kayıt &gt; **: arayanın sesini kaydeder ve kaydı içeren bir dosyanın URL 'sini döndürür.
+* ** &lt; Yeniden &gt; yönlendir**: bir çağrının veya SMS denetiminin DENETIMINI, farklı bir URL 'de twiml 'ye aktarır.
+* ** &lt; Reddet &gt; **: size faturalandırma olmadan Twilio numaranız için gelen çağrıyı reddeder.
+* ** &lt; Deyin &gt; **: bir çağrıda yapılan metni konuşmaya dönüştürür.
+* ** &lt; SMS &gt; **: SMS iletisi gönderir.
 
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 TwiML, bir çağrıyı veya SMS 'yi nasıl işleyebileceğini bilgilendirmek için Twilio fiillerini temel alan XML tabanlı yönergelerin bir kümesidir.
@@ -76,7 +77,7 @@ Bir Twilio hesabı almaya hazırsanız, [TRY Twilio][try_twilio]' de kaydolun. �
 Bir Twilio hesabı için kaydolduğunuzda, bir hesap SID 'SI ve bir kimlik doğrulama belirteci alırsınız. Twilio API çağrıları yapmak için her ikisi de gerekecektir. Hesabınıza yetkisiz erişimi engellemek için kimlik doğrulama belirtecinizi güvende tutun. Hesap SID 'SI ve kimlik doğrulama belirteciniz, sırasıyla **Hesap SID 'si** ve **kimlik doğrulama belirteci**etiketli alanlarda [Twilio konsolunda][twilio_console]görüntülenebilir.
 
 ## <a name="create-a-python-application"></a><a id="create_app"></a>Python uygulaması oluşturma
-Twilio hizmetini kullanan ve Azure 'da çalışan bir Python uygulaması, Twilio hizmetini kullanan diğer hiçbir Python uygulamasından farklı değildir. Twilio Hizmetleri REST tabanlı olduğundan ve Python 'dan birkaç şekilde çağrılabilecek olsa da, bu makale [GitHub 'Dan Python Için Twilio kitaplığı][twilio_python]ile Twilio hizmetlerinin nasıl kullanılacağına odaklanacaktır. Python için Twilio kitaplığını kullanma hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/libraries/python][twilio_lib_docs]..
+Twilio hizmetini kullanan ve Azure 'da çalışan bir Python uygulaması, Twilio hizmetini kullanan diğer hiçbir Python uygulamasından farklı değildir. Twilio Hizmetleri REST tabanlı olduğundan ve Python 'dan birkaç şekilde çağrılabilecek olsa da, bu makale [GitHub 'Dan Python Için Twilio kitaplığı][twilio_python]ile Twilio hizmetlerinin nasıl kullanılacağına odaklanacaktır. Python için Twilio kitaplığını kullanma hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/libraries/python][twilio_lib_docs] ..
 
 İlk olarak, yeni Python web uygulamanız için bir konak görevi gören [yeni bir Azure Linux VM 'yi ayarlama] [azure_vm_setup]. Sanal makine çalışmaya başladıktan sonra, uygulamanızı aşağıda açıklandığı gibi genel bir bağlantı noktasında kullanıma sunacaksınız.
 
@@ -90,7 +91,7 @@ Twilio hizmetini kullanan ve Azure 'da çalışan bir Python uygulaması, Twilio
   2. Sanal makinenize karşılık gelen genel IP 'yi seçin.
   3. **Yapılandırma** bölümünde **DNS adı etiketini** ayarlayın. Bu örnekte, *-Domain-Label*. centralus.cloudapp.Azure.com gibi bir şey görünür
 
-Sanal makineye SSH üzerinden bağlantı kurabildikten sonra tercih ettiğiniz Web çerçevesini ( [Flask](http://flask.pocoo.org/) ve [Docgo](https://www.djangoproject.com)olan Python 'da en iyi şekilde bilinen ikisi) yükleyebilirsiniz. Yalnızca `pip install` komutunu çalıştırarak bunlardan birini yükleyebilirsiniz.
+Sanal makineye SSH üzerinden bağlantı kurabildikten sonra tercih ettiğiniz Web çerçevesini ( [Flask](http://flask.pocoo.org/) ve [Docgo](https://www.djangoproject.com)olan Python 'da en iyi şekilde bilinen ikisi) yükleyebilirsiniz. Yalnızca komutunu çalıştırarak bunlardan birini yükleyebilirsiniz `pip install` .
 
 Sanal makineyi yalnızca bağlantı noktası 80 üzerinde trafiğe izin verecek şekilde yapılandırdığımızda aklınızda bulundurun. Bu nedenle, uygulamayı bu bağlantı noktasını kullanacak şekilde yapılandırdığınızdan emin olun.
 
@@ -103,7 +104,7 @@ Uygulamanızı Python için Twilio kitaplığını iki şekilde kullanacak şeki
 
     -VEYA-
 
-* GitHub ([https://github.com/twilio/twilio-python][twilio_python]) öğesinden Python için Twilio kitaplığını indirin ve şu şekilde yükleyin:
+* GitHub () öğesinden Python için Twilio kitaplığını indirin [https://github.com/twilio/twilio-python][twilio_python] ve şu şekilde yükleyin:
 
         $ python setup.py install
 
@@ -150,7 +151,7 @@ Aşağıda, giden bir çağrının nasıl yapılacağı gösterilmektedir. Bu ko
 Belirtildiği gibi, bu kod TwiML yanıtını döndürmek için Twilio tarafından sağlanmış bir site kullanır. Bunun yerine, TwiML yanıtı sağlamak için kendi sitenizi kullanabilirsiniz; daha fazla bilgi için, [kendi web sitenizde TwiML yanıtları sağlama](#howto_provide_twiml_responses)konusuna bakın.
 
 ## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>Nasıl yapılır: SMS iletisi gönderme
-Aşağıdaki, `TwilioRestClient` SıNıFıNı kullanarak SMS iletisinin nasıl gönderileceğini göstermektedir. **From_number** numarası, deneme hesaplarının SMS iletilerini gönderebilmesi için Twilio tarafından sağlanır. Kodu çalıştırmadan önce Twilio hesabınız için **to_number** numarası doğrulanmalıdır.
+Aşağıdaki, sınıfını kullanarak SMS iletisinin nasıl gönderileceğini göstermektedir `TwilioRestClient` . **From_number** numarası, deneme hesaplarının SMS iletilerini gönderebilmesi için Twilio tarafından sağlanır. Kodu çalıştırmadan önce Twilio hesabınız için **to_number** numarası doğrulanmalıdır.
 
     # Import the Twilio Python Client.
     from twilio.rest import TwilioRestClient
@@ -172,7 +173,7 @@ Aşağıdaki, `TwilioRestClient` SıNıFıNı kullanarak SMS iletisinin nasıl g
                                      body=message)
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>Nasıl yapılır: kendi web sitenizde TwiML yanıtları sağlama
-Uygulamanız Twilio API 'sine bir çağrı başlattığında, Twilio isteği TwiML yanıtı döndürmesi beklenen bir URL 'ye gönderir. Yukarıdaki örnek Twilio tarafından sağlanmış URL 'YI [https://twimlets.com/message][twimlet_message_url]kullanır. (TwiML, Twilio tarafından kullanılmak üzere tasarlanırken tarayıcıda görüntüleyebilirsiniz. Örneğin, boş `<Response>` bir [https://twimlets.com/message][twimlet_message_url] öğeyi görmek için tıklayın; başka bir örnek olarak, [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] bir `<Say>` öğesi içeren `<Response>` bir öğeyi görmek için öğesine tıklayın.)
+Uygulamanız Twilio API 'sine bir çağrı başlattığında, Twilio isteği TwiML yanıtı döndürmesi beklenen bir URL 'ye gönderir. Yukarıdaki örnek Twilio tarafından sağlanmış URL 'YI kullanır [https://twimlets.com/message][twimlet_message_url] . (TwiML, Twilio tarafından kullanılmak üzere tasarlanırken tarayıcıda görüntüleyebilirsiniz. Örneğin, boş bir [https://twimlets.com/message][twimlet_message_url] öğeyi görmek için öğesine tıklayın `<Response>` ; başka bir örnek olarak, [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] bir öğesi içeren bir öğeyi görmek için tıklayın `<Response>` `<Say>` .)
 
 Twilio tarafından sağlanmış URL 'ye güvenmek yerine, HTTP yanıtlarını döndüren kendi sitenizi oluşturabilirsiniz. Siteyi, XML yanıtları döndüren herhangi bir dilde oluşturabilirsiniz; Bu konu başlığı altında, TwiML 'yi oluşturmak için Python kullanacağınız varsayılır.
 
@@ -193,7 +194,7 @@ Docgo ile:
         xml = '<Response><Say>Hello world.</Say></Response>'
         return HttpResponse(xml, content_type='text/xml')
 
-Yukarıdaki örnekte görebileceğiniz gibi, TwiML yanıtı yalnızca bir XML belgesidir. Python için Twilio kitaplığı, sizin için TwiML oluşturacak sınıfları içerir. Aşağıdaki örnek yukarıda gösterildiği gibi eşdeğer yanıtı üretir, ancak Python için Twilio kitaplığındaki `twiml` modülü kullanır:
+Yukarıdaki örnekte görebileceğiniz gibi, TwiML yanıtı yalnızca bir XML belgesidir. Python için Twilio kitaplığı, sizin için TwiML oluşturacak sınıfları içerir. Aşağıdaki örnek yukarıda gösterildiği gibi eşdeğer yanıtı üretir, ancak `twiml` Python Için Twilio kitaplığındaki modülü kullanır:
 
     from twilio import twiml
 
@@ -201,9 +202,9 @@ Yukarıdaki örnekte görebileceğiniz gibi, TwiML yanıtı yalnızca bir XML be
     response.say("Hello world.")
     print(str(response))
 
-TwiML hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/api/twiml][twiml_reference]..
+TwiML hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/api/twiml][twiml_reference] ..
 
-Python uygulamanızı TwiML yanıtları sağlamak üzere ayarladıktan sonra, `client.calls.create` YÖNTEME geçirilen URL olarak uygulamanın URL 'sini kullanın. Örneğin, Azure 'da barındırılan bir hizmete dağıtılan **Mytwiml** adlı bir Web uygulamanız varsa, aşağıdaki örnekte gösterildiği gibi URL 'sini Web kancası olarak kullanabilirsiniz:
+Python uygulamanızı TwiML yanıtları sağlamak üzere ayarladıktan sonra, yönteme geçirilen URL olarak uygulamanın URL 'sini kullanın `client.calls.create` . Örneğin, Azure 'da barındırılan bir hizmete dağıtılan **Mytwiml** adlı bir Web uygulamanız varsa, aşağıdaki örnekte gösterildiği gibi URL 'sini Web kancası olarak kullanabilirsiniz:
 
     from twilio.rest import TwilioRestClient
 

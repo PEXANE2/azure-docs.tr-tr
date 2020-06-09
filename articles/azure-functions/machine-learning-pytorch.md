@@ -5,12 +5,13 @@ author: gvashishtha
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: gopalv
-ms.openlocfilehash: 2dd911eff1ba98341451ef9826b8053bc8059047
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.custom: tracking-python
+ms.openlocfilehash: 399a5bf40cff673f96aea46997bc639865619571
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82581512"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560790"
 ---
 # <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>Öğretici: PyTorch ile Azure Işlevlerine önceden eğitilen bir görüntü sınıflandırma modeli dağıtın
 
@@ -31,8 +32,8 @@ Bu makalede, bir görüntüyü içeriğine göre sınıflandırmak için öncede
 
 ### <a name="prerequisite-check"></a>Önkoşul denetimi
 
-1. Bir Terminal veya komut penceresinde, Azure Functions Core Tools sürüm `func --version` 2.7.1846 veya üzeri olduğunu denetlemek için komutunu çalıştırın.
-1. Python `python --version` sürüm raporlarınızı 3.7. x olarak denetlemek `py --version` Için (Linux/MacOS) veya (Windows) öğesini çalıştırın.
+1. Bir Terminal veya komut penceresinde, `func --version` Azure Functions Core Tools sürüm 2.7.1846 veya üzeri olduğunu denetlemek için komutunu çalıştırın.
+1. `python --version` `py --version` Python sürüm raporlarınızı 3.7. x olarak denetlemek için (Linux/MacOS) veya (Windows) öğesini çalıştırın.
 
 ## <a name="clone-the-tutorial-repository"></a>Öğretici deposunu Kopyala
 
@@ -55,7 +56,7 @@ Bu makalede, bir görüntüyü içeriğine göre sınıflandırmak için öncede
 
 ## <a name="create-and-activate-a-python-virtual-environment"></a>Python sanal ortamı oluşturma ve etkinleştirme
 
-*Başlangıç* klasörüne gidin ve adlı `.venv`bir sanal ortam oluşturmak ve etkinleştirmek için aşağıdaki komutları çalıştırın.
+*Başlangıç* klasörüne gidin ve adlı bir sanal ortam oluşturmak ve etkinleştirmek için aşağıdaki komutları çalıştırın `.venv` .
 
 
 # <a name="bash"></a>[Bash](#tab/bash)
@@ -90,12 +91,12 @@ py -m venv .venv
 
 ---
 
-Bu etkinleştirilmiş sanal ortamda sonraki tüm komutları çalıştırırsınız. (Sanal ortamdan çıkmak için, öğesini çalıştırın `deactivate`.)
+Bu etkinleştirilmiş sanal ortamda sonraki tüm komutları çalıştırırsınız. (Sanal ortamdan çıkmak için, öğesini çalıştırın `deactivate` .)
 
 
 ## <a name="create-a-local-functions-project"></a>Yerel işlevler projesi oluşturma
 
-Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye yanıt verdiği bir veya daha fazla bağımsız işlev için bir kapsayıcıdır. Projedeki tüm işlevler aynı yerel ve barındırma yapılandırmalarına sahiptir. Bu bölümde, HTTP uç noktası sağlayan adlı `classify` tek bir ortak işlevi içeren bir işlev projesi oluşturacaksınız. Daha sonraki bir bölüme daha özel kod eklersiniz.
+Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye yanıt verdiği bir veya daha fazla bağımsız işlev için bir kapsayıcıdır. Projedeki tüm işlevler aynı yerel ve barındırma yapılandırmalarına sahiptir. Bu bölümde, `classify` http uç noktası sağlayan adlı tek bir ortak işlevi içeren bir işlev projesi oluşturacaksınız. Daha sonraki bir bölüme daha özel kod eklersiniz.
 
 1. *Başlangıç* klasöründe, bir Python işlev uygulamasını başlatmak için Azure Functions Core Tools kullanın:
 
@@ -114,7 +115,7 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
     func new --name classify --template "HTTP trigger"
     ```
 
-    Bu komut, işlevin adıyla eşleşen bir klasör oluşturur, *sınıflandır*. Bu klasörde iki dosya vardır: * \_ \_işlev kodunu\_\_içeren init.* ger ve işlevin tetikleyicisini ve giriş ve çıkış bağlamalarını açıklayan *function. JSON*. Bu dosyaların içeriğiyle ilgili ayrıntılar için bkz. Python hızlı başlangıçta [Dosya Içeriğini İnceleme](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents) .
+    Bu komut, işlevin adıyla eşleşen bir klasör oluşturur, *sınıflandır*. Bu klasörde iki dosya vardır: işlev kodunu içeren * \_ \_ init \_ \_ .* ger ve işlevin tetikleyicisini ve giriş ve çıkış bağlamalarını açıklayan *function. JSON*. Bu dosyaların içeriğiyle ilgili ayrıntılar için bkz. Python hızlı başlangıçta [Dosya Içeriğini İnceleme](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents) .
 
 
 ## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
@@ -125,14 +126,14 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
     func start
     ```
 
-1. `classify` Uç noktanın çıktıda GÖRÜNDÜĞÜNÜ gördüğünüzde URL 'ye gidin ```http://localhost:7071/api/classify?name=Azure```. "Merhaba Azure!" iletisi çıktıda görünmelidir.
+1. `classify`Uç noktanın çıktıda göründüğünü gördüğünüzde URL 'ye gidin ```http://localhost:7071/api/classify?name=Azure``` . "Merhaba Azure!" iletisi çıktıda görünmelidir.
 
-1. Konağı durdurmak için **CTRL**-**C** 'yi kullanın.
+1. **Ctrl** - Konağı durdurmak için CTRL**C** 'yi kullanın.
 
 
 ## <a name="import-the-pytorch-model-and-add-helper-code"></a>PyTorch modelini içeri aktarın ve yardımcı kodu ekleyin
 
-Bir görüntüyü içeriğine `classify` göre sınıflandırmak için işlevi değiştirmek üzere, önceden eğitilen bir [ResNet](https://arxiv.org/abs/1512.03385) modeli kullanın. [Pytorch](https://pytorch.org/hub/pytorch_vision_resnet/)'den gelen, önceden eğitilen model, bir görüntüyü 1 1000 [imagenet sınıflarında](https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a)sınıflandırır. Daha sonra projenize bazı yardımcı kod ve bağımlılıklar eklersiniz.
+`classify`Bir görüntüyü içeriğine göre sınıflandırmak için işlevi değiştirmek üzere, önceden eğitilen bir [ResNet](https://arxiv.org/abs/1512.03385) modeli kullanın. [Pytorch](https://pytorch.org/hub/pytorch_vision_resnet/)'den gelen, önceden eğitilen model, bir görüntüyü 1 1000 [imagenet sınıflarında](https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a)sınıflandırır. Daha sonra projenize bazı yardımcı kod ve bağımlılıklar eklersiniz.
 
 1. *Başlangıç* klasöründe, tahmin kodunu ve etiketleri *sınıflandır* klasörüne kopyalamak için aşağıdaki komutu çalıştırın.
 
@@ -180,26 +181,26 @@ Bir görüntüyü içeriğine `classify` göre sınıflandırmak için işlevi d
 
 Yükleme işlemi birkaç dakika sürebilir. bu sırada, sonraki bölümde işlevini değiştirmeye devam edebilirsiniz.
 > [!TIP]
-> >Windows 'da, "bir EnvironmentError nedeniyle paketler yüklenemedi: [errno 2] böyle bir dosya veya dizin yok:" arkasından *sharded_mutable_dense_hashtable. CPython-37. PYC*gibi bir dosyaya uzun bir yol adı gelmelidir. Genellikle, bu hata, klasör yolunun derinliği çok uzun hale geldiği için oluşur. Bu durumda, uzun yolları etkinleştirmek için kayıt `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem@LongPathsEnabled` defteri `1` anahtarını olarak ayarlayın. Alternatif olarak, Python yorumlayıcının nereye yüklendiğini kontrol edin. Bu konumda uzun bir yol varsa, daha kısa bir yola sahip bir klasöre yeniden yüklemeyi deneyin.
+> >Windows 'da, "bir EnvironmentError nedeniyle paketler yüklenemedi: [errno 2] böyle bir dosya veya dizin yok:" arkasından *sharded_mutable_dense_hashtable. CPython-37. PYC*gibi bir dosyaya uzun bir yol adı gelmelidir. Genellikle, bu hata, klasör yolunun derinliği çok uzun hale geldiği için oluşur. Bu durumda, `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem@LongPathsEnabled` `1` uzun yolları etkinleştirmek için kayıt defteri anahtarını olarak ayarlayın. Alternatif olarak, Python yorumlayıcının nereye yüklendiğini kontrol edin. Bu konumda uzun bir yol varsa, daha kısa bir yola sahip bir klasöre yeniden yüklemeyi deneyin.
 
 ## <a name="update-the-function-to-run-predictions"></a>Tahminleri çalıştırmak için işlevi güncelleştirin
 
-1. *Sınıflandırma/\_\_\_init\_.* düzenleyene bir metin düzenleyicisinde açın ve standart JSON kitaplığını ve *tahmin* eden yardımcıları içeri `import` aktarmak için mevcut deyimlerden sonra aşağıdaki satırları ekleyin:
+1. *Sınıflandırma/ \_ \_ init \_ \_ .* düzenleyene BIR metin düzenleyicisinde açın ve `import` Standart JSON kitaplığını ve *tahmin* eden yardımcıları içeri aktarmak için mevcut deyimlerden sonra aşağıdaki satırları ekleyin:
 
     :::code language="python" source="~/functions-pytorch/end/classify/__init__.py" range="1-6" highlight="5-6":::
 
-1. `main` İşlevin tüm içeriğini aşağıdaki kodla değiştirin:
+1. İşlevin tüm içeriğini `main` aşağıdaki kodla değiştirin:
 
     :::code language="python" source="~/functions-pytorch/end/classify/__init__.py" range="8-19":::
 
-    Bu işlev, adlı `img`bir sorgu dizesi parametresinde bir görüntü URL 'si alır. Daha sonra, `predict_image_from_url` PyTorch modelini kullanarak görüntüyü indirmek ve sınıflandırmak için yardımcı kitaplıktan çağrı yapılır. İşlev daha sonra sonuçlarıyla bir HTTP yanıtı döndürür.
+    Bu işlev, adlı bir sorgu dizesi parametresinde bir görüntü URL 'SI alır `img` . Daha sonra `predict_image_from_url` , PyTorch modelini kullanarak görüntüyü indirmek ve sınıflandırmak için yardımcı kitaplıktan çağrı yapılır. İşlev daha sonra sonuçlarıyla bir HTTP yanıtı döndürür.
 
     > [!IMPORTANT]
-    > Bu HTTP uç noktası, başka bir etki alanında barındırılan bir Web sayfası tarafından çağrıldığından, yanıt, tarayıcının `Access-Control-Allow-Origin` çıkış noktaları arası kaynak PAYLAŞıMı (CORS) gereksinimlerini karşılamak için bir üst bilgi içerir.
+    > Bu HTTP uç noktası, başka bir etki alanında barındırılan bir Web sayfası tarafından çağrıldığından, yanıt, `Access-Control-Allow-Origin` tarayıcının çıkış noktaları arası kaynak paylaşımı (CORS) gereksinimlerini karşılamak için bir üst bilgi içerir.
     >
-    > Bir üretim uygulamasında, ek güvenlik `*` için Web sayfasının belirli bir kaynağına geçiş yapın.
+    > Bir üretim uygulamasında, `*` ek güvenlik için Web sayfasının belirli bir kaynağına geçiş yapın.
 
-1. Yaptığınız değişiklikleri kaydedin, sonra bağımlılıkların yükleme tamamlandığını varsayarak, yerel işlev konağını ile `func start`yeniden başlatın. Konağı, sanal ortamın etkinleştirildiği *Başlangıç* klasöründe çalıştırdığınızdan emin olun. Aksi takdirde konak başlar, ancak işlevi çağırırken hata görürsünüz.
+1. Yaptığınız değişiklikleri kaydedin, sonra bağımlılıkların yükleme tamamlandığını varsayarak, yerel işlev konağını ile yeniden başlatın `func start` . Konağı, sanal ortamın etkinleştirildiği *Başlangıç* klasöründe çalıştırdığınızdan emin olun. Aksi takdirde konak başlar, ancak işlevi çağırırken hata görürsünüz.
 
     ```
     func start
@@ -241,7 +242,7 @@ Yükleme işlemi birkaç dakika sürebilir. bu sırada, sonraki bölümde işlev
     py -m http.server
     ```
 
-1. Bir tarayıcıda öğesine `localhost:8000`gidin ve ardından metin kutusuna aşağıdaki fotoğraf URL 'lerinden birini girin veya herkese açık olarak erişilebilen herhangi BIR görüntünün URL 'sini kullanın.
+1. Bir tarayıcıda öğesine gidin ve `localhost:8000` ardından metin kutusuna aşağıdaki fotoğraf URL 'lerinden birini girin veya herkese açık olarak erişilebilen herhangi bir görüntünün URL 'sini kullanın.
 
     - `https://raw.githubusercontent.com/Azure-Samples/functions-python-pytorch-tutorial/master/resources/assets/Bernese-Mountain-Dog-Temperament-long.jpg`
     - `https://github.com/Azure-Samples/functions-python-pytorch-tutorial/blob/master/resources/assets/bald-eagle.jpg?raw=true`
@@ -251,7 +252,7 @@ Yükleme işlemi birkaç dakika sürebilir. bu sırada, sonraki bölümde işlev
 
     ![Tamamlanmış projenin ekran görüntüsü](media/machine-learning-pytorch/screenshot.png)
 
-    Görüntü URL 'sini gönderdiğinizde tarayıcıda bir hata bildirirse, işlev uygulamasını çalıştırmakta olduğunuz terminali kontrol edin. "Modül bulunamadı" PIL ' "gibi bir hata görürseniz, önce daha önce oluşturduğunuz sanal ortamı etkinleştirmeden önce, işlev uygulamasını *Başlangıç* klasöründe başlatmış olabilirsiniz. Hala hata görüyorsanız, sanal ortam etkinleştirildikten `pip install -r requirements.txt` sonra yeniden çalıştırın ve hata olup olmadığına bakın.
+    Görüntü URL 'sini gönderdiğinizde tarayıcıda bir hata bildirirse, işlev uygulamasını çalıştırmakta olduğunuz terminali kontrol edin. "Modül bulunamadı" PIL ' "gibi bir hata görürseniz, önce daha önce oluşturduğunuz sanal ortamı etkinleştirmeden önce, işlev uygulamasını *Başlangıç* klasöründe başlatmış olabilirsiniz. Hala hata görüyorsanız, `pip install -r requirements.txt` sanal ortam etkinleştirildikten sonra yeniden çalıştırın ve hata olup olmadığına bakın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

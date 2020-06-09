@@ -9,12 +9,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: b832831a2483b11a7a3c1942dd79065e8be65bf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 93e120a0519e1fc61a716e606e088801fdf508dd
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75360727"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84556354"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Visual Studio için Python web ve çalışan rolleri içeren Python Araçları
 
@@ -323,7 +324,7 @@ Yapılandırma ayarları bittiğinde **Yayımla**’ya tıklayın.
 Dağıtımın tamamlanması birkaç dakika sürer, ardından web ve/veya çalışan rolleri Azure üzerinde çalışır!
 
 ### <a name="investigate-logs"></a>Günlükleri araştırma
-Bulut hizmeti sanal makinesi başlatılıp Python’u yükledikten sonra herhangi bir hata iletisini bulmak için günlüklere bakabilirsiniz. Bu Günlükler **C:\resources\directory\\{role} \LogFiles** klasöründe bulunur. Betiğin Python’un yüklü olup olmadığını algılamaya çalışmasından itibaren **PrepPython.err.txt** dosyasında en az bir hata olur ve **PipInstaller.err.txt** eskimiş bir pip sürümünü şikayet edebilir.
+Bulut hizmeti sanal makinesi başlatılıp Python’u yükledikten sonra herhangi bir hata iletisini bulmak için günlüklere bakabilirsiniz. Bu Günlükler **C:\resources\directory \\ {role} \LogFiles** klasöründe bulunur. Betiğin Python’un yüklü olup olmadığını algılamaya çalışmasından itibaren **PrepPython.err.txt** dosyasında en az bir hata olur ve **PipInstaller.err.txt** eskimiş bir pip sürümünü şikayet edebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Visual Studio için Python Araçları’ndaki web ve çalışan rolleri ile çalışma hakkında daha ayrıntılı bilgi için PTVS belgelerine bakın:

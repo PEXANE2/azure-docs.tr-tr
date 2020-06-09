@@ -7,18 +7,19 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 8daf7380e859cd2f9b5890c716f7b7d95e6c3fe4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: c5ab718fdccfebe852c1522a0cb07303a541a3dd
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061357"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554252"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Hızlı başlangıç: Python V12 SDK ile Blobları yönetme
 
 Bu hızlı başlangıçta, Python kullanarak blob 'ları yönetmeyi öğreneceksiniz. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri gibi büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Blobları karşıya yükleyebilir, indirebilir ve listetireceksiniz ve kapsayıcı oluşturup sileceksiniz.
 
-[API başvurusu belge](/python/api/azure-storage-blob) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) | [paketi (Python paket dizini)](https://pypi.org/project/azure-storage-blob/) | [örnekleri](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+[API başvuru belgeleri](/python/api/azure-storage-blob)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob)  |  [Paket (Python paket dizini)](https://pypi.org/project/azure-storage-blob/)  |  [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -59,7 +60,7 @@ Bu bölümde, bir projeyi Python için Azure Blob Storage istemci kitaplığı V
 
 ### <a name="install-the-package"></a>Paketi yükler
 
-Hala uygulama dizininde, `pip install` komutunu kullanarak Python paketi Için Azure Blob depolama istemci kitaplığı 'nı yükleyebilirsiniz.
+Hala uygulama dizininde, komutunu kullanarak Python paketi için Azure Blob depolama istemci kitaplığı 'nı yükleyebilirsiniz `pip install` .
 
 ```console
 pip install azure-storage-blob
@@ -72,7 +73,7 @@ Bu komut, Python paketi için Azure Blob depolama istemci kitaplığını ve ba�
 Proje dizininden:
 
 1. Kod Düzenleyicinizde yeni bir metin dosyası açın
-1. Deyim `import` Ekle
+1. `import`Deyim Ekle
 1. Temel özel durum işleme dahil olmak üzere programın yapısını oluşturma
 
     Kod şu şekildedir:
@@ -107,9 +108,9 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 
 Şu kaynaklarla etkileşim kurmak için aşağıdaki Python sınıflarını kullanın:
 
-* [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient): sınıfı `BlobServiceClient` , Azure depolama kaynaklarını ve BLOB kapsayıcılarını değiştirmenize olanak sağlar.
-* [Containerclient](/python/api/azure-storage-blob/azure.storage.blob.containerclient): sınıfı `ContainerClient` , Azure depolama kapsayıcılarını ve bunların bloblarını değiştirmenize olanak sağlar.
-* [Blobclient](/python/api/azure-storage-blob/azure.storage.blob.blobclient): sınıfı `BlobClient` , Azure Storage bloblarını değiştirmenize izin verir.
+* [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient): `BlobServiceClient` sınıfı, Azure depolama kaynaklarını ve BLOB kapsayıcılarını değiştirmenize olanak sağlar.
+* [Containerclient](/python/api/azure-storage-blob/azure.storage.blob.containerclient): `ContainerClient` sınıfı, Azure depolama kapsayıcılarını ve bunların bloblarını değiştirmenize olanak sağlar.
+* [Blobclient](/python/api/azure-storage-blob/azure.storage.blob.blobclient): `BlobClient` sınıfı, Azure Storage bloblarını değiştirmenize izin verir.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -126,7 +127,7 @@ Bu örnek kod parçacıkları, Python için Azure Blob depolama istemci kitaplı
 
 Aşağıdaki kod, depolama [bağlantı dizesini yapılandırma](#configure-your-storage-connection-string) bölümünde oluşturulan ortam değişkeninden depolama hesabının bağlantı dizesini alır.
 
-Bu kodu `try` bloğunun içine ekleyin:
+Bu kodu bloğunun içine ekleyin `try` :
 
 ```python
 # Retrieve the connection string for use with the application. The storage
@@ -147,7 +148,7 @@ Yeni kapsayıcı için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğunda
 
 [From_connection_string](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient#from-connection-string-conn-str--credential-none----kwargs-) yöntemini çağırarak [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient) sınıfının bir örneğini oluşturun. Ardından, depolama hesabınızda kapsayıcıyı gerçekten oluşturmak için [create_container](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient#create-container-name--metadata-none--public-access-none----kwargs-) yöntemini çağırın.
 
-Bu kodu `try` bloğunun sonuna ekleyin:
+Bu kodu bloğunun sonuna ekleyin `try` :
 
 ```python
 # Create the BlobServiceClient object which will be used to create a container client
@@ -168,7 +169,7 @@ Aşağıdaki kod parçacığı:
 1. [Kapsayıcı oluşturma](#create-a-container) bölümünde [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient) üzerinde [Get_blob_client](/python/api/azure-storage-blob/azure.storage.blob.containerclient#get-blob-client-blob--snapshot-none-) yöntemini çağırarak bir [blobclient](/python/api/azure-storage-blob/azure.storage.blob.blobclient) nesnesine bir başvuru alır.
 1. [Upload_blob](/python/api/azure-storage-blob/azure.storage.blob.blobclient#upload-blob-data--blob-type--blobtype-blockblob---blockblob----length-none--metadata-none----kwargs-) yöntemini çağırarak yerel metin dosyasını bloba yükler.
 
-Bu kodu `try` bloğunun sonuna ekleyin:
+Bu kodu bloğunun sonuna ekleyin `try` :
 
 ```python
 # Create a file in local data directory to upload and download
@@ -195,7 +196,7 @@ with open(upload_file_path, "rb") as data:
 
 [List_blobs](/python/api/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-) yöntemini çağırarak kapsayıcıdaki Blobları listeleyin. Bu durumda, kapsayıcıya yalnızca bir blob eklenmiş, bu nedenle listeleme işlemi yalnızca bir BLOB döndürüyor.
 
-Bu kodu `try` bloğunun sonuna ekleyin:
+Bu kodu bloğunun sonuna ekleyin `try` :
 
 ```python
 print("\nListing blobs...")
@@ -210,7 +211,7 @@ for blob in blob_list:
 
 [Download_blob](/python/api/azure-storage-blob/azure.storage.blob.blobclient#download-blob-offset-none--length-none----kwargs-) yöntemini çağırarak önceden oluşturulmuş blobu indirin. Örnek kod, yerel dosya sisteminde her iki dosyayı da görebilmeniz için dosya adına "ındır" adlı bir sonek ekler.
 
-Bu kodu `try` bloğunun sonuna ekleyin:
+Bu kodu bloğunun sonuna ekleyin `try` :
 
 ```python
 # Download the blob to a local file
@@ -226,9 +227,9 @@ with open(download_file_path, "wb") as download_file:
 
 Aşağıdaki kod, [delete_container](/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) yöntemi kullanılarak kapsayıcının tamamını kaldırarak uygulamanın oluşturduğu kaynakları temizler. Ayrıca, isterseniz yerel dosyaları silebilirsiniz.
 
-Uygulama, blob, kapsayıcı ve yerel dosyaları `input()` silmeden önce çağırarak kullanıcı girişi için duraklatılır. Bu, kaynakların silinmeden önce doğru bir şekilde oluşturulduğunu doğrulamak iyi bir şansınız olur.
+Uygulama, `input()` BLOB, kapsayıcı ve yerel dosyaları silmeden önce çağırarak kullanıcı girişi için duraklatılır. Bu, kaynakların silinmeden önce doğru bir şekilde oluşturulduğunu doğrulamak iyi bir şansınız olur.
 
-Bu kodu `try` bloğunun sonuna ekleyin:
+Bu kodu bloğunun sonuna ekleyin `try` :
 
 ```python
 # Clean up
@@ -249,7 +250,7 @@ print("Done")
 
 Bu uygulama yerel klasörünüzde bir sınama dosyası oluşturur ve BLOB depolamaya yükler. Örnek daha sonra kapsayıcıdaki Blobları listeler ve eski ve yeni dosyaları karşılaştırabilmeniz için dosyayı yeni bir adla indirir.
 
-*BLOB-QuickStart-v12.py* dosyasını içeren dizine gidin ve uygulamayı çalıştırmak için aşağıdaki `python` komutu yürütün.
+*BLOB-QuickStart-v12.py* dosyasını içeren dizine gidin ve `python` uygulamayı çalıştırmak için aşağıdaki komutu yürütün.
 
 ```console
 python blob-quickstart-v12.py

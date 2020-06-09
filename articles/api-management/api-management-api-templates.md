@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 467d8b89ef5c114d647a257053ed3367d6336bdc
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265967"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559331"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API Management API şablonları
 
@@ -30,7 +31,7 @@ Bu bölümdeki şablonlar, geliştirici portalındaki API sayfalarının içeri�
 -   [İşlem](#Product)  
 -   [Kod örnekleri](#CodeSamples)  
     -   [Kıvr](#Curl)  
-    -   [, #](#CSharp)  
+    -   [C#](#CSharp)  
     -   [Java](#Stub)  
     -   [JavaScript](#JavaScript)  
     -   [Amaç C](#ObjectiveC)  
@@ -81,7 +82,7 @@ Bu bölümdeki şablonlar, geliştirici portalındaki API sayfalarının içeri�
 ```  
   
 ### <a name="controls"></a>Denetimler  
- `API list` Şablon aşağıdaki [sayfa denetimlerini](api-management-page-controls.md)kullanabilir.  
+ `API list`Şablon aşağıdaki [sayfa denetimlerini](api-management-page-controls.md)kullanabilir.  
   
 -   [sayfalama denetimi](api-management-page-controls.md#paging-control)  
   
@@ -89,7 +90,7 @@ Bu bölümdeki şablonlar, geliştirici portalındaki API sayfalarının içeri�
   
 ### <a name="data-model"></a>Veri modeli  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
 |`apis`|[API Özet](api-management-template-data-model-reference.md#APISummary) varlıklarının koleksiyonu.|Geçerli kullanıcıya görünür olan API 'Ler.|  
   
@@ -340,13 +341,13 @@ Bu bölümdeki şablonlar, geliştirici portalındaki API sayfalarının içeri�
 ```  
   
 ### <a name="controls"></a>Denetimler  
- `Operation` Şablon herhangi bir [sayfa denetiminin](api-management-page-controls.md)kullanılmasına izin vermez.  
+ `Operation`Şablon herhangi bir [sayfa denetiminin](api-management-page-controls.md)kullanılmasına izin vermez.  
   
 ### <a name="data-model"></a>Veri modeli  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`apiId`|string|Geçerli API 'nin KIMLIĞI.|  
+|`apiId`|dize|Geçerli API 'nin KIMLIĞI.|  
 |`apiName`|string|API 'nin adı.|  
 |`apiDescription`|string|API 'nin açıklaması.|  
 |`api`|[API Özet](api-management-template-data-model-reference.md#APISummary) varlığı.|Geçerli API.|  
@@ -650,7 +651,7 @@ Bu bölümdeki şablonlar, geliştirici portalındaki API sayfalarının içeri�
   
 -   [Kıvr](#Curl)  
   
--   [, #](#CSharp)  
+-   [C#](#CSharp)  
   
 -   [Java](#Stub)  
   
@@ -717,7 +718,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-### <a name="c"></a><a name="CSharp"></a>, #  
+### <a name="c"></a><a name="CSharp"></a> C#  
  **Belgetasamplescsharp** şablonu, bu kod örneğini, işlem sayfasının kod örnekleri bölümünde özelleştirmenize olanak sağlar.  
   
 #### <a name="default-template"></a>Varsayılan şablon  
@@ -1283,7 +1284,7 @@ catch (HttpException $ex)
 }  
 ```  
   
-### <a name="python"></a><a name="Python"></a>Python  
+### <a name="python"></a><a name="Python"></a> Python  
  **DocumentationSamplesPython** şablonu, işlem sayfasının kod örnekleri bölümünde bu kod örneğini özelleştirmenizi sağlar.  
   
 #### <a name="default-template"></a>Varsayılan şablon  

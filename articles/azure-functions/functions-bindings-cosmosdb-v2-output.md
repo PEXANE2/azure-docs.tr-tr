@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: 743bd21a4fd974654760402a639c661fe086d2d5
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.custom: tracking-python
+ms.openlocfilehash: b58924607f002af27d21343389404fcc66d1f35d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735020"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561659"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Azure Işlevleri için çıkış bağlamasını Azure Cosmos DB 2. x
 
@@ -20,14 +21,14 @@ Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakı
 
 <a id="example" name="example"></a>
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Bu bölüm aşağıdaki örnekleri içerir:
 
 * [Kuyruk tetikleyicisi, bir belge yaz](#queue-trigger-write-one-doc-c)
 * [Kuyruk tetikleyicisi, ıasynccollector kullanarak belge yazma](#queue-trigger-write-docs-using-iasynccollector-c)
 
-Örnekler basit `ToDoItem` bir türe başvurur:
+Örnekler basit bir `ToDoItem` türe başvurur:
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -189,9 +190,9 @@ C# betik kodu aşağıda verilmiştir:
 
 ### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Kuyruk tetikleyicisi, ıasynccollector kullanarak belge yazma
 
-Birden çok belge oluşturmak için, desteklenen türlerden biri `ICollector<T>` `T` olan `IAsyncCollector<T>` veya ' ye bağlayabilirsiniz.
+Birden çok belge oluşturmak için, `ICollector<T>` `IAsyncCollector<T>` `T` desteklenen türlerden biri olan veya ' ye bağlayabilirsiniz.
 
-Bu örnek bir basit `ToDoItem` tür anlamına gelir:
+Bu örnek bir basit tür anlamına gelir `ToDoItem` :
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -306,7 +307,7 @@ JavaScript kodu aşağıda verilmiştir:
 
 Aşağıdaki örnek, bir işlevin çıktısı olarak bir Azure CosmosDB veritabanına nasıl bir belge yazılacağını gösterir.
 
-Bağlama tanımı, *türünün* olarak `cosmosDB`ayarlandığı *function. JSON* içinde tanımlanır.
+Bağlama tanımı, *türünün* olarak ayarlandığı *function. JSON* içinde tanımlanır `cosmosDB` .
 
 ```json
 {
@@ -340,7 +341,7 @@ Bağlama tanımı, *türünün* olarak `cosmosDB`ayarlandığı *function. JSON*
 }
 ```
 
-Veritabanına yazmak için, veritabanı parametresinin `set` yöntemine bir belge nesnesi geçirin.
+Veritabanına yazmak için, veritabanı parametresinin yöntemine bir belge nesnesi geçirin `set` .
 
 ```python
 import azure.functions as func
@@ -387,7 +388,7 @@ public String cosmosDbQueryById(
 
 #### <a name="http-trigger-save-one-document-to-database-via-return-value"></a>HTTP tetikleyicisi, bir belgeyi veritabanına dönüş değeri aracılığıyla Kaydet
 
-Aşağıdaki örnek, imzasına açıklama eklenmiş olan ```@CosmosDBOutput``` ve türünde ```String```dönüş değeri olan bir Java işlevini gösterir. İşlevin döndürdüğü JSON belgesi, ilgili CosmosDB koleksiyonuna otomatik olarak yazılır.
+Aşağıdaki örnek, imzasına açıklama eklenmiş olan ```@CosmosDBOutput``` ve türünde dönüş değeri olan bir Java işlevini gösterir ```String``` . İşlevin döndürdüğü JSON belgesi, ilgili CosmosDB koleksiyonuna otomatik olarak yazılır.
 
 ```java
     @FunctionName("WriteOneDoc")
@@ -426,7 +427,7 @@ Aşağıdaki örnek, imzasına açıklama eklenmiş olan ```@CosmosDBOutput``` v
 
 ### <a name="http-trigger-save-one-document-to-database-via-outputbinding"></a>HTTP tetikleyicisi, OutputBinding aracılığıyla bir belgeyi veritabanına kaydetme
 
-Aşağıdaki örnek, bir ```OutputBinding<T>``` çıktı parametresi aracılığıyla cosmosdb 'ye bir belge yazan bir Java işlevini gösterir. Bu örnekte, ```outputItem``` parametresinin işlev imzasıyla değil, ile ```@CosmosDBOutput```açıklanması gerekir. Kullanmak ```OutputBinding<T>``` , işlevinizin, bir JSON veya XML belgesi gibi, işleve farklı bir değer döndürmeye izin verirken bir belgeyi cosmosdb 'ye yazmak için bağlamadan faydalanmasını sağlar.
+Aşağıdaki örnek, bir çıktı parametresi aracılığıyla CosmosDB 'ye bir belge yazan bir Java işlevini gösterir ```OutputBinding<T>``` . Bu örnekte, ```outputItem``` parametresinin ```@CosmosDBOutput``` işlev imzasıyla değil, ile açıklanması gerekir. Kullanmak ```OutputBinding<T>``` , işlevinizin, BIR JSON veya XML belgesi gibi, işleve farklı bir değer döndürmeye izin verirken bir belgeyi CosmosDB 'ye yazmak için bağlamadan faydalanmasını sağlar.
 
 ```java
     @FunctionName("WriteOneDocOutputBinding")
@@ -472,7 +473,7 @@ Aşağıdaki örnek, bir ```OutputBinding<T>``` çıktı parametresi aracılığ
 
 ### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding"></a>HTTP tetikleyicisi, OutputBinding aracılığıyla birden çok belgeyi veritabanına kaydetme
 
-Aşağıdaki örnek, bir ```OutputBinding<T>``` çıkış parametresi aracılığıyla cosmosdb 'ye birden çok belge yazan bir Java işlevini gösterir. Bu örnekte, ```outputItem``` parametresi işlev imzasıyla değil, ile ```@CosmosDBOutput```açıklama eklenir. Output parametresi, ```outputItem``` şablon parametresi türü olarak ```ToDoItem``` nesnelerin bir listesini içerir. Kullanmak ```OutputBinding<T>``` , işlevinizin, bir JSON veya XML belgesi gibi, işleve farklı bir değer döndürmeye Izin verirken cosmosdb 'ye belge yazmak için bağlamadan faydalanmasını sağlar.
+Aşağıdaki örnek, bir çıkış parametresi aracılığıyla CosmosDB 'ye birden çok belge yazan bir Java işlevini gösterir ```OutputBinding<T>``` . Bu örnekte, ```outputItem``` parametresi ```@CosmosDBOutput``` işlev imzasıyla değil, ile açıklama eklenir. Output parametresi, ```outputItem``` ```ToDoItem``` şablon parametresi türü olarak nesnelerin bir listesini içerir. Kullanmak ```OutputBinding<T>``` , işlevinizin, BIR JSON veya XML belgesi gibi, işleve farklı bir değer döndürmeye izin verirken CosmosDB 'ye belge yazmak için bağlamadan faydalanmasını sağlar.
 
 ```java
     @FunctionName("WriteMultipleDocsOutputBinding")
@@ -519,17 +520,17 @@ Aşağıdaki örnek, bir ```OutputBinding<T>``` çıkış parametresi aracılı�
     }
 ```
 
-[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, Cosmos DB yazılacak `@CosmosDBOutput` parametrelerde ek açıklamayı kullanın.  Ek açıklama parametre türü olmalıdır ```OutputBinding<T>```; burada T, yerel bir Java türü ya da Pojo.
+[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, `@CosmosDBOutput` Cosmos DB yazılacak parametrelerde ek açıklamayı kullanın.  Ek açıklama parametre türü olmalıdır ```OutputBinding<T>``` ; burada T, yerel bir Java türü ya da POJO.
 
 ---
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [C# sınıf kitaplıklarında](functions-dotnet-class-library.md) [cosmosdb](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/dev/test/WebJobs.Extensions.CosmosDB.Tests) özniteliğini kullanın.
 
-Özniteliğin Oluşturucusu, veritabanı adını ve koleksiyon adını alır. Yapılandırabileceğiniz bu ayarlar ve diğer özellikler hakkında daha fazla bilgi için bkz. [çıkış-yapılandırma](#configuration). Bir yöntem imzasında `CosmosDB` bir öznitelik örneği aşağıda verilmiştir:
+Özniteliğin Oluşturucusu, veritabanı adını ve koleksiyon adını alır. Yapılandırabileceğiniz bu ayarlar ve diğer özellikler hakkında daha fazla bilgi için bkz. [çıkış-yapılandırma](#configuration). `CosmosDB`Bir yöntem imzasında bir öznitelik örneği aşağıda verilmiştir:
 
 ```csharp
     [FunctionName("QueueToDocDB")]
@@ -555,33 +556,33 @@ Aşağıdaki örnek, bir ```OutputBinding<T>``` çıkış parametresi aracılı�
 
 # <a name="java"></a>[Java](#tab/java)
 
-`CosmosDBOutput` Ek açıklama Cosmos DB verileri yazmak için kullanılabilir. Ek açıklamayı işleve veya bağımsız bir işlev parametresine uygulayabilirsiniz. İşlev yönteminde kullanıldığında, işlevin dönüş değeri Cosmos DB için yazıldığı şeydir. Ek açıklamayı bir parametresiyle birlikte kullanırsanız, parametrenin türü yerel `OutputBinding<T>` `T` BIR Java türü veya Pojo olarak bildirilmelidir.
+`CosmosDBOutput`Ek açıklama Cosmos DB verileri yazmak için kullanılabilir. Ek açıklamayı işleve veya bağımsız bir işlev parametresine uygulayabilirsiniz. İşlev yönteminde kullanıldığında, işlevin dönüş değeri Cosmos DB için yazıldığı şeydir. Ek açıklamayı bir parametresiyle birlikte kullanırsanız, parametrenin türü `OutputBinding<T>` `T` yerel bir Java türü veya Pojo olarak bildirilmelidir.
 
 ---
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `CosmosDB` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `CosmosDB` .
 
-|function. JSON özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
-|**türüyle**     | yok | Olarak `cosmosDB`ayarlanmalıdır.        |
-|**Görünüm**     | yok | Olarak `out`ayarlanmalıdır.         |
+|**tür**     | yok | Olarak ayarlanmalıdır `cosmosDB` .        |
+|**Görünüm**     | yok | Olarak ayarlanmalıdır `out` .         |
 |**ada**     | yok | İşlevdeki belgeyi temsil eden bağlama parametresinin adı.  |
 |**Dosyasında** | **Dosyasında**|Belgenin oluşturulduğu koleksiyonu içeren veritabanı.     |
 |**Ma** |**CollectionName**  | Belgenin oluşturulduğu koleksiyonun adı. |
 |**Createıfnotexists çağırmanız**  |**Createıfnotexists çağırmanız**    | Koleksiyonun mevcut olmadığında oluşturulup oluşturulmayacağını belirten bir Boole değeri. Varsayılan değer *false* 'dur çünkü yeni koleksiyonlar, maliyet etkilerine sahip olan ayrılmış aktarım hızı ile oluşturulmuştur. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/cosmos-db/).  |
-|**partitionKey**|**PartitionKey** |Doğru `CreateIfNotExists` olduğunda, oluşturulan koleksiyon için bölüm anahtarı yolunu tanımlar.|
-|**Collectionverimlilik**|**Collectionverimlilik**| Doğru `CreateIfNotExists` olduğunda, oluşturulan koleksiyonun [verimini](../cosmos-db/set-throughput.md) tanımlar.|
+|**partitionKey**|**PartitionKey** |`CreateIfNotExists`Doğru olduğunda, oluşturulan koleksiyon için bölüm anahtarı yolunu tanımlar.|
+|**Collectionverimlilik**|**Collectionverimlilik**| `CreateIfNotExists`Doğru olduğunda, oluşturulan koleksiyonun [verimini](../cosmos-db/set-throughput.md) tanımlar.|
 |**connectionStringSetting**    |**ConnectionStringSetting** |Azure Cosmos DB Bağlantı dizenizi içeren uygulama ayarının adı.        |
 |**preferredLocations**| **PreferredLocations**| Seçim Azure Cosmos DB hizmetindeki coğrafi olarak çoğaltılan veritabanı hesapları için tercih edilen konumları (bölgeleri) tanımlar. Değerler virgülle ayrılmalıdır. Örneğin, "Doğu ABD, Orta Güney ABD, Kuzey Avrupa". |
-|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| Seçim İle `PreferredLocations`birlikte olarak `true` ayarlandığında, Azure Cosmos DB hizmetindeki [çok bölgeli yazmaları](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions) kullanabilir. |
+|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| Seçim `true`İle birlikte olarak ayarlandığında `PreferredLocations` , Azure Cosmos DB hizmetindeki [çok bölgeli yazmaları](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions) kullanabilir. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Kullanım
 
-Varsayılan olarak, işlevinizdeki çıkış parametresine yazdığınızda, veritabanınızda bir belge oluşturulur. Bu belgede, belge KIMLIĞI olarak otomatik olarak oluşturulan bir GUID bulunur. Çıktı parametresine geçirilen JSON nesnesindeki `id` özelliği belirterek çıktı BELGESININ belge kimliğini belirtebilirsiniz.
+Varsayılan olarak, işlevinizdeki çıkış parametresine yazdığınızda, veritabanınızda bir belge oluşturulur. Bu belgede, belge KIMLIĞI olarak otomatik olarak oluşturulan bir GUID bulunur. Çıktı `id` parametresine GEÇIRILEN JSON nesnesindeki özelliği belirterek çıktı belgesinin belge kimliğini belirtebilirsiniz.
 
 > [!Note]
 > Mevcut bir belgenin KIMLIĞINI belirttiğinizde, yeni çıktı belgesiyle üzerine yazılır.
@@ -613,7 +614,7 @@ Bu bölümde, sürüm 2. x içinde bu bağlama için kullanılabilen genel yapı
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------|
 |GatewayMode|Ağ geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve`Gateway`|
 |Protokol|'Dir|Azure Cosmos DB hizmetine bağlantı sırasında işlev tarafından kullanılan bağlantı protokolü.  [Her iki modun açıklaması için buraya](../cosmos-db/performance-tips.md#networking) okuyun|

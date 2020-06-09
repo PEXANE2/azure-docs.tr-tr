@@ -6,12 +6,13 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: c72dbf24df850d8b0f7e5f26a873b78f5664c9e0
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.custom: tracking-python
+ms.openlocfilehash: 89d91a3c5c8a4209489ed427067a90e7e2d0b880
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82200948"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561172"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Azure Cosmos DB Öykünücü sertifikalarını Java, Python ve Node.js ile kullanmak için dışarı aktarma
 
@@ -70,7 +71,7 @@ Azure Cosmos DB Yerel Öykünücüsündeki sertifikalar öykünücü ilk kez ça
 
 ## <a name="how-to-use-the-certificate-in-java"></a>Java içinde sertifika kullanma
 
-Java istemcisini kullanan Java uygulamalarını veya MongoDB uygulamalarını çalıştırırken, bu sertifikayı, `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` bayrakları geçirmeden Java varsayılan sertifika deposuna yüklemek daha kolaydır. Örneğin, dahil edilen Java demo uygulaması (`https://localhost:8081/_explorer/index.html`) varsayılan sertifika deposuna bağlıdır.
+Java istemcisini kullanan Java uygulamalarını veya MongoDB uygulamalarını çalıştırırken, bu sertifikayı, bayrakları geçirmeden Java varsayılan sertifika deposuna yüklemek daha kolaydır `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` . Örneğin, dahil edilen Java demo uygulaması ( `https://localhost:8081/_explorer/index.html` ) varsayılan sertifika deposuna bağlıdır.
 
 X.509 sertifikasını varsayılan Java sertifika deposuna içeri aktarmak için, [Java CA Sertifika Deposuna Sertifika Ekleme](https://docs.microsoft.com/azure/java-add-certificate-ca-store) bölümündeki yönergeleri izleyin. Anahtar aracını çalıştırırken %JAVA_HOME% dizininde çalışacağınıza dikkat edin.
 

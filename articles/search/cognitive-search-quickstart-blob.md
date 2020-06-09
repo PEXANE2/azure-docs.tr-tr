@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: Azure portal bir beceri oluşturma'
+title: Azure portal bir beceri oluşturma
 titleSuffix: Azure Cognitive Search
 description: Bu portal hızlı başlangıçta, Azure Bilişsel Arama 'te bir dizin oluşturma işlem hattına bilişsel beceriler eklemek için veri alma Sihirbazı ' nı nasıl kullanacağınızı öğrenin. Yetenekler arasında optik karakter tanıma (OCR) ve doğal dil işleme sayılabilir.
 manager: nitinme
@@ -7,35 +7,44 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/20/2019
-ms.openlocfilehash: e2e17ba6af60fa495a03e7d46a07cfe6b66f4e68
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/07/2020
+ms.openlocfilehash: db9e8f71787026abea74fbbfeed51a227a295601
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77472426"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488962"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama bilişsel bir beceri oluşturma
 
-Beceri, büyük ölçekli metinden veya resim dosyalarından bilgi ve yapıyı çıkaran ve Azure Bilişsel Arama tam metin arama sorguları için dizinlenebilir ve aranabilir hale getiren bir AI özelliğidir. 
+Beceri, büyük ölçekli metin veya resim dosyalarından bilgi ve yapı çıkaran ve Azure Bilişsel Arama hem dizine eklenebilir hem de aranabilir içeriğin bulunduğu AI tabanlı bir özelliktir. 
 
-Bu hızlı başlangıçta, beceri oluşturmak için Azure bulutundaki Hizmetleri ve verileri birleştirebilirsiniz. Her şey oluşturulduktan sonra, portalda **verileri Içeri aktarma** Sihirbazı 'nı çalıştırarak tümünü bir araya getirin. Nihai sonuç, AI işleme tarafından oluşturulan verilerle doldurulan ve portalda ([Arama Gezgini](search-explorer.md)) sorgulayabilmeniz için aranabilir bir dizindir.
+Bu hızlı başlangıçta, beceri oluşturmak için Azure bulutundaki Hizmetleri ve verileri birleştirebilirsiniz. Her şey olduktan sonra, Azure portal **verileri Içeri aktarma** Sihirbazı 'nı bir araya getirin. Nihai sonuç, AI işleme tarafından oluşturulan verilerle doldurulan ve portalda ([Arama Gezgini](search-explorer.md)) sorgulayabilmeniz için aranabilir bir dizindir.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+## <a name="prerequisites"></a>Ön koşullar
 
-## <a name="create-services-and-load-data"></a>Hizmet oluşturma ve veri yükleme
+Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
-Bu hızlı başlangıç, AI için Azure Bilişsel Arama, [Azure Blob depolama](https://docs.microsoft.com/azure/storage/blobs/)ve Azure bilişsel [Hizmetler](https://azure.microsoft.com/services/cognitive-services/) 'i kullanır. 
++ Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/).
 
-İş yükü çok küçük olduğu için bilişsel hizmetler, en fazla 20 işlem için ücretsiz işleme sağlamak üzere arka planda dokunduğunda. Bu tür küçük bir veri kümesi için bilişsel hizmetler kaynağı oluşturma veya ekleme işlemini atlayabilirsiniz.
++ Bir Azure Bilişsel Arama hizmeti. Geçerli aboneliğiniz kapsamında [bir hizmet oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
+
++ [BLOB depolama alanı](https://docs.microsoft.com/azure/storage/blobs/)olan bir Azure depolama hesabı.
+
+> [!NOTE]
+> Bu hızlı başlangıç Ayrıca AI için Azure bilişsel [Hizmetler](https://azure.microsoft.com/services/cognitive-services/) 'i de kullanır. İş yükü çok küçük olduğu için bilişsel hizmetler, en fazla 20 işlem için ücretsiz işleme için arka planda dokunduğunda. Bu, ek bir bilişsel hizmetler kaynağı oluşturmak zorunda kalmadan bu Alıştırmayı tamamlayabilmeniz anlamına gelir.
+
+## <a name="set-up-your-data"></a>Verilerinizi kurma
+
+Aşağıdaki adımlarda, heterojen içerik dosyalarını depolamak için Azure depolama 'da bir blob kapsayıcısı ayarlayın.
 
 1. Farklı türlerden oluşan küçük bir dosya kümesini içeren [örnek verileri indirin](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4). Dosyaları sıkıştırmayı açın.
 
 1. [Bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) veya [var olan bir hesabı bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
 
-   Bant genişliği ücretlerinden kaçınmak için Azure Bilişsel Arama ile aynı bölgeyi seçin. 
-   
-   Bilgi deposu özelliğini daha sonra denemek istiyorsanız, başka bir yönergede StorageV2 (genel amaçlı v2) hesap türünü seçin. Aksi takdirde herhangi bir tür seçin.
+   + Bant genişliği ücretlerinden kaçınmak için Azure Bilişsel Arama ile aynı bölgeyi seçin. 
+
+   + Bilgi deposu özelliğini daha sonra denemek istiyorsanız, başka bir yönergede StorageV2 (genel amaçlı v2) hesap türünü seçin. Aksi takdirde herhangi bir tür seçin.
 
 1. Blob Hizmetleri sayfalarını açın ve bir kapsayıcı oluşturun. Varsayılan genel erişim düzeyini kullanabilirsiniz. 
 
@@ -43,15 +52,15 @@ Bu hızlı başlangıç, AI için Azure Bilişsel Arama, [Azure Blob depolama](h
 
    ![Azure blob depolamadaki kaynak dosyalar](./media/cognitive-search-quickstart-blob/sample-data.png)
 
-1. [Bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz.
-
 Artık veri alma Sihirbazı 'na taşımaya hazırsınız.
 
 ## <a name="run-the-import-data-wizard"></a>Veri alma Sihirbazı 'nı çalıştırma
 
-Arama hizmeti genel bakış sayfasında, komut çubuğunda **verileri Içeri aktar** ' a tıklayarak Bilişsel Zenginleştirme dört adımda ayarlayın.
+1. Azure hesabınızla [Azure portalında](https://portal.azure.com/) oturum açın.
 
-  ![Verileri içeri aktar komutu](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
+1. [Arama hizmetinizi bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) ve genel bakış sayfasında, komut çubuğunda **verileri Içeri aktar** ' a tıklayarak Bilişsel Zenginleştirme dört adımda ayarlayın.
+
+   ![Verileri içeri aktar komutu](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
 ### <a name="step-1---create-a-data-source"></a>1. adım-veri kaynağı oluşturma
 
@@ -87,7 +96,7 @@ Bir dizin, aranabilir içeriğinizi içerir ve **veri Içeri aktarma** Sihirbaz�
 
 Bu hızlı başlangıç, makul varsayılanlar ayarlanması konusunda iyi bir iş çıkarır:  
 
-+ Varsayılan alanlar, mevcut Blobların özelliklerine ve zenginleştirme çıkışı (örneğin `people` `organizations`,,, `locations`) içeren yeni alanlara dayanır. Veri türleri meta verilerden ve veri örneklemesi tarafından algılanır.
++ Varsayılan alanlar, mevcut Blobların özelliklerine ve zenginleştirme çıkışı (örneğin,,,) içeren yeni alanlara dayanır `people` `organizations` `locations` . Veri türleri meta verilerden ve veri örneklemesi tarafından algılanır.
 
 + Varsayılan belge anahtarı *metadata_storage_path* (alan benzersiz değerler içerdiğinden seçilidir).
 
@@ -95,11 +104,11 @@ Bu hızlı başlangıç, makul varsayılanlar ayarlanması konusunda iyi bir iş
 
   ![Dizin alanları](media/cognitive-search-quickstart-blob/index-fields.png)
 
-Alana göre alınabilir özniteliğinde üstü çizili ve soru işaretine dikkat edin. **Retrievable** `content` Metin açısından ağır blob belgeleri için, `content` alan büyük olasılıkla binlerce satıra çalışan dosyanın toplu kısmını içerir. Bu gibi bir alan, arama sonuçlarında çok daha gerçekçi bir alandır ve bu demo için dışarıda bırakmanız gerekir. 
+Alana göre **alınabilir** özniteliğinde üstü çizili ve soru işaretine dikkat edin `content` . Metin açısından ağır blob belgeleri için, `content` alan büyük olasılıkla binlerce satıra çalışan dosyanın toplu kısmını içerir. Bu gibi bir alan, arama sonuçlarında çok daha gerçekçi bir alandır ve bu demo için dışarıda bırakmanız gerekir. 
 
-Ancak, dosya içeriklerini istemci koduna geçirmeniz gerekirse, bu dosyanın, **alınabilir** olarak seçili kaldığından emin olun. Aksi takdirde, ayıklanan öğeler (örneğin `content` `people` `organizations` `locations`,, vb.) yeterliyse, üzerinde bu özniteliği temizlemeyi göz önünde bulundurun.
+Ancak, dosya içeriklerini istemci koduna geçirmeniz gerekirse, bu dosyanın, **alınabilir** olarak seçili kaldığından emin olun. Aksi takdirde, `content` ayıklanan öğeler (örneğin,, vb `people` `organizations` `locations` .) yeterliyse, üzerinde bu özniteliği temizlemeyi göz önünde bulundurun.
 
-Bir alanı **alınabilir** olarak işaretlemek alanın arama sonuçlarında bulunması *gerektiği* anlamına gelmez. Hangi alanların ekleneceğini belirlemek için **$Select** sorgu parametresini kullanarak arama sonuçları kompozisyonunu kesin bir şekilde denetleyebilirsiniz. Gibi `content`metin açısından ağır alanlar için, **$Select** parametresi, uygulamanızın insan kullanıcılarına yönetilebilir arama sonuçları sağlamaya yönelik çözümünüzde, istemci kodunun **alınabilir** öznitelik aracılığıyla ihtiyaç duyacağı tüm bilgilere erişmesine olanak sağlar.
+Bir alanı **alınabilir** olarak işaretlemek alanın arama sonuçlarında bulunması *gerektiği* anlamına gelmez. Hangi alanların ekleneceğini belirlemek için **$Select** sorgu parametresini kullanarak arama sonuçları kompozisyonunu kesin bir şekilde denetleyebilirsiniz. Gibi metin açısından ağır alanlar için `content` , **$Select** parametresi, uygulamanızın insan kullanıcılarına yönetilebilir arama sonuçları sağlamaya yönelik çözümünüzde, istemci kodunun **alınabilir** öznitelik aracılığıyla ihtiyaç duyacağı tüm bilgilere erişmesine olanak sağlar.
   
 Sonraki sayfaya devam edin.
 
@@ -119,7 +128,7 @@ Bilişsel yetenekler dizin oluşturma işlemi, genellikle OCR ve resim analizind
 
   ![Azure Bilişsel Arama bildirimi](./media/cognitive-search-quickstart-blob/indexer-notification.png)
 
-Uyarılar, çok çeşitli içerik türleri için normaldir. Bazı içerik türleri bazı beceriler ve alt katmanlarda, [Dizin Oluşturucu limitleriyle](search-limits-quotas-capacity.md#indexer-limits)ilgili yaygın olarak geçerli değildir. Örneğin, 32.000 karakterlik kesme bildirimleri, ücretsiz katmanda bir Dizin Oluşturucu sınırdır. Bu tanıtımı daha yüksek bir katmanda çalıştırdıysanız birçok kesme uyarısı kaybolur.
+Uyarılar, çok çeşitli içerik türleri için normaldir. Bazı içerik türleri belirli beceriler ve daha düşük katmanlarda geçerli değildir, [Dizin Oluşturucu limitleriyle](search-limits-quotas-capacity.md#indexer-limits)karşılaşmanız yaygındır. Örneğin, 32.000 karakterlik kesme bildirimleri, ücretsiz katmanda bir Dizin Oluşturucu sınırdır. Bu tanıtımı daha yüksek bir katmanda çalıştırdıysanız birçok kesme uyarısı kaybolur.
 
 Uyarıları veya hataları denetlemek için, Dizin oluşturucular listesindeki uyarı durumuna tıklayarak yürütme geçmişi sayfasını açın.
 
@@ -139,11 +148,11 @@ Bir dizin oluşturulduktan sonra, sonuçları döndürmek için sorguları çal�
 
 1. Oluşturduğunuz dizini seçmek için üst kısımdaki **Dizini değiştir**'e tıklayın.
 
-1. Dizini sorgulamak için bir arama dizesi girin, örneğin `search=Microsoft&$select=people,organizations,locations,imageTags`.
+1. Dizini sorgulamak için bir arama dizesi girin, örneğin `search=Microsoft&$select=people,organizations,locations,imageTags` .
 
 Sonuçlar, özellikle de Azure Bloblarından kaynaklanan büyük belgelerde ayrıntılı ve okunabilir olabilecek JSON olarak döndürülür. Bu araçta arama için bazı ipuçları aşağıdaki teknikleri içerir:
 
-+ Sonuçlara `$select` hangi alanların ekleneceğini belirtmek için Ekle. 
++ `$select`Sonuçlara hangi alanların ekleneceğini belirtmek için Ekle. 
 + Belirli özellikler veya terimler için JSON içinde arama yapmak için CTRL-F kullanın.
 
 Sorgu dizeleri büyük/küçük harfe duyarlıdır; bu nedenle, bir "bilinmeyen alan" iletisi alırsanız, ad ve durumu doğrulamak için **alanları** veya **DIZIN tanımını (JSON)** denetleyin. 

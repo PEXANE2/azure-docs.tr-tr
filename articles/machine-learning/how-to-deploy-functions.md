@@ -10,12 +10,13 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 03/06/2020
-ms.openlocfilehash: 4725b28ba769ac12f9e25e5c9be77f8bb3eaff46
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: tracking-python
+ms.openlocfilehash: 3afe5d0993f7e647cbae1281cb9e7387df6e2f50
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433871"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560402"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Azure Işlevlerine makine öğrenme modeli dağıtma (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +28,7 @@ Azure Işlevlerinde bir işlev uygulaması olarak Azure Machine Learning bir mod
 
 Azure Machine Learning, eğitilen makine öğrenimi modellerinden Docker görüntüleri oluşturabilirsiniz. Artık Azure Machine Learning, bu makine öğrenimi modellerini [Azure işlevlerine dağıtılabilecek](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies#docker-container)işlev uygulamalarına derlemek için Önizleme işlevselliğine sahiptir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).

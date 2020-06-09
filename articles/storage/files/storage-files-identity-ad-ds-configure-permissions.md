@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/07/2020
 ms.author: rogarana
-ms.openlocfilehash: 6e49201b0574e0a1235cc9e2cb313b40b0563f93
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 436f0ae3e19b2a0591a2727bde48bae66b91a94e
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268495"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509262"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Üçüncü kısım: SMB üzerinden dizin ve dosya düzeyi izinleri yapılandırma 
 
@@ -31,12 +31,22 @@ ACL 'Leri üst Kullanıcı izinleriyle yapılandırmak için, etki alanına kat�
 Aşağıdaki izinler bir dosya paylaşımının kök dizinine dahildir:
 
 - BUILTIN\Administrators: (OI) (CI) (F)
-- NT AUTHORıTY\SYSTEM: (OI) (Cı) (F)
 - BUILTIN\Users: (RX)
 - BUILTIN\Users: (OI) (CI) (GÇ) (GR, GE)
 - NT Authorıty\authenticated users: (OI) (CI) (ı)
+- NT AUTHORıTY\SYSTEM: (OI) (Cı) (F)
 - NT AUTHORıTY\SYSTEM: (F)
 - OLUŞTURAN SAHIBI: (OI) (Cı) (GÇ) (F)
+
+|Kullanıcılar|Tanım|
+|---|---|
+|BUILTIN\Administrators|Şirket içi AD DS ortamının etki alanı yöneticileri olan tüm kullanıcılar.
+|BUILTIN\Users|AD 'de yerleşik güvenlik grubu. Bu, varsayılan olarak NT Authorıty\authenticated kullanıcıları içerir. Geleneksel bir dosya sunucusu için, sunucu başına üyelik tanımını yapılandırabilirsiniz. Azure dosyaları için bir barındırma sunucusu yoktur, bu nedenle BUILTIN\Users NT Authorıty\authenticated Users ile aynı kullanıcı kümesini içerir.|
+|NT AUTHORıTY\SYSTEM|Dosya sunucusunun işletim sisteminin hizmet hesabı. Bu hizmet hesabı Azure dosyaları bağlamında uygulanmaz. Karma senaryolar için Windows dosyaları sunucu deneyimiyle tutarlı olması için kök dizine dahil edilmiştir.|
+|NT Authorıty\authenticated Users|AD içindeki tüm kullanıcılar geçerli bir Kerberos belirteci alabilir.|
+|OLUŞTURAN SAHIBI|Her nesnenin dizin veya dosya o nesnenin sahibine sahip. Bu nesnede "CREATOR OWNER" öğesine atanan ACL 'Ler varsa, bu nesnenin sahibi olan Kullanıcı ACL tarafından tanımlanan nesneye yönelik izinlere sahiptir.|
+
+
 
 ## <a name="mount-a-file-share-from-the-command-prompt"></a>Komut isteminden bir dosya paylaşma bağlama
 
@@ -65,7 +75,7 @@ Kök dizin dahil olmak üzere dosya paylaşımındaki tüm dizinlere ve dosyalar
 1. Yeni Kullanıcı eklemek için istem penceresinde, **Seçilecek nesne adlarını girin** kutusuna izin vermek istediğiniz hedef Kullanıcı adını girin ve hedef kullanıcının tam UPN adını bulmak Için **adları denetle** ' yi seçin.
 1.    **Tamam**’ı seçin.
 1.    **Güvenlik** sekmesinde, yeni kullanıcıya vermek istediğiniz tüm izinleri seçin.
-1.    **Uygula**’yı seçin.
+1.    **Apply** (Uygula) seçeneğini belirleyin.
 
 ### <a name="configure-windows-acls-with-icacls"></a>Windows ACL 'lerini Icacls ile yapılandırma
 

@@ -7,33 +7,35 @@ manager: nitinme
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 02/10/2020
-ms.openlocfilehash: 8324ca0184c508591fa4568175bad0f606f952a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/07/2020
+ms.openlocfilehash: 061907783d21372f0e926e529730e9e82b7a4ddb
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80369465"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488775"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
 > * [Portal](search-get-started-portal.md)
-> * [, #](search-get-started-dotnet.md)
+> * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
 > * [Node.js](search-get-started-nodejs.md)
 > * [PowerShell](search-get-started-powershell.md)
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 
-Kavramları hızlıca hızlandırmak ve dakikalar içinde bir dizine yönelik ilginç sorgular yazmak için portalın **verileri Içeri aktarma** Sihirbazı 'Nı ve **Arama Gezgini** araçları 'nı kullanın.
+**Veri Içeri aktarma** Sihirbazı, bir arama dizini oluşturma işlemi boyunca size kılavuzluk eden bir Azure Portal aracıdır. böylece, dakikalar içinde ilginç sorgular yazabilirsiniz. 
 
-Araçlar çok sınırlandırıyorsa, [.net bilişsel arama Azure 'da programlamaya yönelik kod tabanlı bir giriş](search-howto-dotnet-sdk.md) veya [REST API çağrı yapmak için Postman](search-get-started-postman.md)kullanabilirsiniz. 
-
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
+Ayrıca, görüntü dosyalarından ve yapılandırılmamış metinden metin ve yapı ayıklayabilmeniz için, sihirbazın AI zenginleştirme sayfaları vardır. AI ile içerik işleme, optik karakter tanıma (OCR), anahtar tümceciği ve varlık ayıklama ve görüntü analizi içerir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
+Başlamadan önce aşağıdakilere sahip olmanız gerekir:
+
++ Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/).
+
++ Bir Azure Bilişsel Arama hizmeti. Geçerli aboneliğiniz kapsamında [bir hizmet oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
 
 ### <a name="check-for-space"></a>Alan denetleme
 
@@ -51,15 +53,17 @@ Bu öğreticide, [ **veri alma** Sihirbazı](search-import-data-portal.md)aracı
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>1. adım-veri alma Sihirbazı 'nı başlatın ve bir veri kaynağı oluşturun
 
-1. Azure Bilişsel Arama hizmeti panosunda, bir arama dizini oluşturmak ve doldurmak için komut çubuğunda **verileri Içeri aktar** ' a tıklayın.
+1. Azure hesabınızla [Azure portalında](https://portal.azure.com/) oturum açın.
+
+1. [Arama hizmetinizi bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) ve genel bakış sayfasında, bir arama dizini oluşturmak ve doldurmak için komut çubuğunda **verileri içeri aktar** ' a tıklayın.
 
    ![Verileri içeri aktar komutu](media/search-get-started-portal/import-data-cmd.png)
 
-2. Sihirbazda, **veri** > **örneklerimize** > Bağlan**oteller-örnek**' e tıklayın. Bu veri kaynağı yerleşik olarak bulunur. Kendi veri kaynağınızı oluşturuyorsanız ad, tür ve bağlantı bilgilerini belirtmeniz gerekir. Oluşturulan kaynak, diğer içeri aktarma işlemlerinde yeniden kullanılabilecek bir “mevcut veri kaynağı” olur.
+1. Sihirbazda, **veri**  >  **Samples**  >  **örneklerimize Bağlan oteller-örnek**' e tıklayın. Bu veri kaynağı yerleşik olarak bulunur. Kendi veri kaynağınızı oluşturuyorsanız ad, tür ve bağlantı bilgilerini belirtmeniz gerekir. Oluşturulan kaynak, diğer içeri aktarma işlemlerinde yeniden kullanılabilecek bir “mevcut veri kaynağı” olur.
 
    ![Örnek veri kümesi seçme](media/search-get-started-portal/import-datasource-sample.png)
 
-3. Sonraki sayfaya devam edin.
+1. Sonraki sayfaya devam edin.
 
 ### <a name="step-2---skip-the-enrich-content-page"></a>2. adım-"zenginleştirme içerik" sayfasını atlayın
 
@@ -193,7 +197,7 @@ Model filtreleri arama isteklerine dahil edilir. Sağladığınız model değeri
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Örnek (kapsamı azaltılarak modellenmiş): `search=*&facet=Category&$top=2`
 
 * **search=*** boş bir aramadır. Boş aramalar her şeyi arar. Boş sorgu göndermenin nedenlerinden biri, belge kümesinin tamamını filtrelemek veya görüntülemektir. Örneğin, dizin içindeki tüm otellerden oluşan bir gezinti yapısının olmasını istersiniz.
-* **facet**, bir kullanıcı arabirimi denetimine geçirebileceğiniz bir gezinti yapısı döndürür. Kategorileri ve bir sayımı döndürür. Bu durumda, kategoriler *Kategori*olarak adlandırılan bir alanı temel alır. Azure Bilişsel Arama 'de toplama yoktur, ancak toplama yoluyla `facet`, her kategoride belge sayısı veren bir dizi belge elde edebilirsiniz.
+* **facet**, bir kullanıcı arabirimi denetimine geçirebileceğiniz bir gezinti yapısı döndürür. Kategorileri ve bir sayımı döndürür. Bu durumda, kategoriler *Kategori*olarak adlandırılan bir alanı temel alır. Azure Bilişsel Arama 'de toplama yoktur, ancak toplama yoluyla `facet` , her kategoride belge sayısı veren bir dizi belge elde edebilirsiniz.
 
 * **$top=2** iki belge getirir ve sonuçları azaltmak veya artırmak için `top` kullanabileceğinizi gösterir.
 

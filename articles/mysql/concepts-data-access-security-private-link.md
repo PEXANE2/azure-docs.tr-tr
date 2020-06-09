@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 9a42148bb9610b27f2c0874ffa74d9e517c2063a
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: f780bf946e81e9873a1828f9d697f69c81cef513
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84482590"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509330"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı için özel bağlantı
 
@@ -115,7 +115,7 @@ Farklı bir bölgedeki veya abonelikteki bir Azure VM 'den MySQL için Azure ver
 
 MySQL için Azure veritabanı 'na erişmek üzere yalnızca özel uç noktalara bağlanmak istiyorsanız, veritabanı sunucusunda **ortak ağ erişimini engelle** özelliğini ayarlayarak tüm genel uç noktaları (yani [güvenlik duvarı kuralları](concepts-firewall-rules.md) ve [VNET hizmet uç noktaları](concepts-data-access-and-security-vnet.md)) ayarını devre dışı bırakabilirsiniz. 
 
-Bu ayar *Evet*olarak ayarlandığında, MySQL Için Azure veritabanı 'na yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir. Bu ayar *Hayır*olarak ayarlandığında, istemciler, güvenlik duvarınız veya VNET hizmeti uç noktası ayarlarınıza göre MySQL Için Azure veritabanınıza bağlanabilir. Ayrıca, özel ağ erişiminin değeri ayarlandıktan sonra, mevcut güvenlik duvarı ve VNet hizmeti uç noktası kurallarını ekleyemez ve/veya güncelleştiremezsiniz.
+Bu ayar *Evet*olarak ayarlandığında, MySQL Için Azure veritabanı 'na yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir. Bu ayar *Hayır*olarak ayarlandığında, istemciler, güvenlik duvarınız veya VNET hizmeti uç noktası ayarlarınıza göre MySQL Için Azure veritabanınıza bağlanabilir. Ayrıca, özel ağ erişiminin değeri ayarlandıktan sonra müşteriler var olan ' güvenlik duvarı kurallarını ' ve ' VNet hizmeti uç noktası kuralları ' ekleyemez ve/veya güncelleştiremez.
 
 > [!Note]
 > Bu özellik, PostgreSQL için Azure veritabanı-tek sunucu Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.

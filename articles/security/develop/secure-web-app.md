@@ -16,13 +16,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.custom: has-adal-ref
-ms.openlocfilehash: 690cb37df4a5d195bfce6ee792f7565a6f7f1768
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: has-adal-ref, tracking-python
+ms.openlocfilehash: 857303009b31945b0fe4f5555cb7e545cd16719d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612784"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558883"
 ---
 # <a name="develop-a-secure-web-app"></a>Güvenli web uygulaması geliştirme
 
@@ -180,8 +180,8 @@ Tarayıcı açılır, kimlik bilgilerinizle oturum açın. Oturum açtıktan son
 Dağıtım betikleri `deploy-powershell.ps1` ve `deploy-bash.sh` tüm uygulamayı dağıtan kodu içerir.
 Çözümü dağıtmak için:
 
-1. PowerShell kullanıyorsanız, bölge ve kaynak grubu `deploy-powershell.ps1` adını uygun Azure `./deploy-powershell.ps1 REGION RESOURCE_GROUP_NAME` bölgeleriyle ve kaynak grubu için bir adla değiştirme yazarak dosyayı çalıştırın.
-2. Linux üzerinde çalışıyorsanız `deploy-bash.sh` dosyayı yazarak `/deploy-bash.sh REGION RESOURCE_GROUP_NAME`dosyayı yürütülebilir yapmanız gerekebilir.`chmod +x deploy-bash.sh`
+1. PowerShell kullanıyorsanız, `deploy-powershell.ps1` `./deploy-powershell.ps1 REGION RESOURCE_GROUP_NAME` bölge ve kaynak grubu adını uygun Azure bölgeleriyle ve kaynak grubu için bir adla değiştirme yazarak dosyayı çalıştırın.
+2. Linux üzerinde çalışıyorsanız `deploy-bash.sh` dosyayı yazarak `/deploy-bash.sh REGION RESOURCE_GROUP_NAME` dosyayı yürütülebilir yapmanız gerekebilir.`chmod +x deploy-bash.sh`
 
 Aşağıdaki örneklerde, anahtar bileşenlerinin parçacıkları gösterilmektedir. Dağıtım dosyalarını çalıştırarak örnekleri tek tek veya bileşenlerin geri kalanı ile dağıtabilirsiniz.
 
@@ -309,12 +309,12 @@ Aşağıdaki kod, yukarıdaki Keykasasını dağıtma adımında Azure Keykasas�
    ```
 
 Veritabanını dağıttıktan sonra, kimlik bilgilerini ve bağlantı dizesini Azure Key Vault depolamanız gerekir.
-Betikler klasöründe, çalıştırdığınızda depolanan işlevleri oluşturan PL `functions.sql` /pgsql kodunu içeren bir dosya vardır. Bu dosyayı çalıştırmak, SQL ekleme işlemini sınırlamaya yönelik girişleri sıralar.
+Betikler klasöründe, `functions.sql` çalıştırdığınızda depolanan işlevleri oluşturan pl/pgSQL kodunu içeren bir dosya vardır. Bu dosyayı çalıştırmak, SQL ekleme işlemini sınırlamaya yönelik girişleri sıralar.
 
-PostgreSQL, veritabanına bağlanmak için kullanılan adlı `psql` bir araçla birlikte paketlenmiştir. Çalıştırmak `functions.sql`için yerel makinenizden PostgreSQL Için Azure veritabanı örneğine bağlanmanız ve oradan çalıştırmanız gerekir. Psql aracının yüklenmesi, her işletim sisteminde PostgreSQL için varsayılan yüklemeye dahildir.
+PostgreSQL, veritabanına bağlanmak için kullanılan adlı bir araçla birlikte paketlenmiştir `psql` . Çalıştırmak için `functions.sql` Yerel makinenizden PostgreSQL Için Azure veritabanı örneğine bağlanmanız ve oradan çalıştırmanız gerekir. Psql aracının yüklenmesi, her işletim sisteminde PostgreSQL için varsayılan yüklemeye dahildir.
 Daha fazla bilgi için bkz. [psql belgeleri](https://www.postgresql.org/docs/9.3/app-psql.html).
 
-Azure Cloud Shell `psql` araç da içerir. Cloud Shell simgesini seçerek doğrudan Azure portal Cloud Shell kullanabilirsiniz.
+Azure Cloud Shell araç da içerir `psql` . Cloud Shell simgesini seçerek doğrudan Azure portal Cloud Shell kullanabilirsiniz.
 
 PostgreSQL örneğine uzaktan erişimi etkinleştirmek için PostgreSQL içindeki IP adresini yetkilendirmeniz gerekir.
 **Bağlantı güvenliği** sekmesine giderek, **Istemci IP 'si Ekle**seçeneğini belirleyerek ve yeni ayarları kaydederek bu erişimi etkinleştirirsiniz.
@@ -437,7 +437,7 @@ USER appuser
 ENTRYPOINT ["/usr/local/bin/init.sh"]
 ```
 
-Yukarıdaki Dockerfile, üzerinde Azure Container Registry barındırılan kapsayıcıyı oluşturmak için kullanılır `mcr.microsoft.com/samples/basic-linux-app`.
+Yukarıdaki Dockerfile, üzerinde Azure Container Registry barındırılan kapsayıcıyı oluşturmak için kullanılır `mcr.microsoft.com/samples/basic-linux-app` .
 
 Aşağıdaki kod:
 
@@ -696,7 +696,7 @@ App Service örnekleri, sanal ağlarla tümleştirilebilir. Bu tümleştirme, uy
 
 1. Sonraki sayfada **VNET Ekle (Önizleme)** öğesini seçin.
 
-1. Sonraki menüde, dağıtımda oluşturulan sanal ağı seçin `hello-vnet`. Yeni bir alt ağ oluşturabilir veya var olan bir alt ağı seçebilirsiniz.
+1. Sonraki menüde, dağıtımda oluşturulan sanal ağı seçin `hello-vnet` . Yeni bir alt ağ oluşturabilir veya var olan bir alt ağı seçebilirsiniz.
    Bu durumda yeni bir alt ağ oluşturun. **Adres aralığını** **10.0.3.0/24** olarak ayarlayın ve alt ağ **App-subnet**olarak adlandırın.
 
    ![App Service sanal ağ yapılandırması](./media/secure-web-app/app-vnet-config.png)
@@ -723,7 +723,7 @@ Sanal ağ tümleştirmesini etkinleştirmiş olduğunuza göre, uygulamamıza a�
 
    *NSG 'yi yapılandırma*
 
-4. Ağ Geçidi NSG için giden kuralları ' nda, hizmet etiketini `AppService`hedefleyen bir kural oluşturarak App Service örneğine giden bağlantılara izin veren bir kural ekleyin:
+4. Ağ Geçidi NSG için giden kuralları ' nda, hizmet etiketini hedefleyen bir kural oluşturarak App Service örneğine giden bağlantılara izin veren bir kural ekleyin `AppService` :
 
    ![NSG için giden kuralları ekleme](./media/secure-web-app/nsg-outbound-allowappserviceout.png)
 
@@ -754,7 +754,7 @@ Sanal ağ tümleştirmesini etkinleştirmiş olduğunuza göre, uygulamamıza a�
 Saldırı yüzeyini sınırlandırmak için App Service ağ ayarlarını yalnızca uygulama ağ geçidinin uygulamaya erişmesine izin verecek şekilde değiştirin.
 Bunu, App Service ağı sekmesine giderek, **IP kısıtlamaları** sekmesini seçerek ve yalnızca uygulama ağ geçidi 'nin IP 'si hizmete doğrudan erişmesini sağlayan bir izin verme kuralı oluşturarak yapabilirsiniz.
 
-Ağ geçidinin IP adresini genel bakış sayfasından alabilirsiniz. **IP adresı CIDR** sekmesinde IP adresini şu biçimde girin: `<GATEWAY_IP_ADDRESS>/32`.
+Ağ geçidinin IP adresini genel bakış sayfasından alabilirsiniz. **IP adresı CIDR** sekmesinde IP adresini şu biçimde girin: `<GATEWAY_IP_ADDRESS>/32` .
 
 ![Yalnızca ağ geçidine izin ver](./media/secure-web-app/app-allow-gw-only.png)
 
@@ -783,16 +783,16 @@ Azure portal, uygulamayı gerekli kimlik bilgilerini kullanacak şekilde yapıla
    *Azure AD uygulama kaydını yapılandırma*
 
 4. Kayıtlı uygulamayı ve bilgilerini gösteren bir ekran görüntülenir. Bu bilgileri Azure Key Vault örneğine eklemeniz gerekir.
-   1. Uygulama (istemci) KIMLIĞINI kopyalayın ve Key Vault olarak `CLIENTID`kaydedin.
-   2. Önceki adımda girdiğiniz yeniden yönlendirme URI 'sini kopyalayın ve farklı `REDIRECTURI`kaydedin.
-   3. *Name*. microsoftonline.com biçiminde olan Azure AD varsayılan dizin adını kopyalayın ve Key Vault olarak `TENANT`kaydedin.
-   4. Daha önce oluşturduğunuz Azure AD uygulamasının **sertifikalar & gizlilikler** sekmesine gidin ve aşağıdaki ekran görüntüsünde gösterildiği gibi **yeni istemci parolası**' nı seçin. Bir sona erme tarihi ayarlayın ve ardından oluşturulan değeri kopyalayın ve Key Vault olarak `CLIENTSECRET`kaydedin.
+   1. Uygulama (istemci) KIMLIĞINI kopyalayın ve Key Vault olarak kaydedin `CLIENTID` .
+   2. Önceki adımda girdiğiniz yeniden yönlendirme URI 'sini kopyalayın ve farklı kaydedin `REDIRECTURI` .
+   3. *Name*. microsoftonline.com biçiminde olan Azure AD varsayılan dizin adını kopyalayın ve Key Vault olarak kaydedin `TENANT` .
+   4. Daha önce oluşturduğunuz Azure AD uygulamasının **sertifikalar & gizlilikler** sekmesine gidin ve aşağıdaki ekran görüntüsünde gösterildiği gibi **yeni istemci parolası**' nı seçin. Bir sona erme tarihi ayarlayın ve ardından oluşturulan değeri kopyalayın ve Key Vault olarak kaydedin `CLIENTSECRET` .
 
       ![Azure AD yetkilendirme parolası](./media/secure-web-app/ad-auth-secrets.png)
 
       *Azure AD yetkilendirme parolası*
 
-   5. Herhangi bir komut satırı/çevrimiçi aracı kullanarak güvenli bir rastgele gizli anahtar oluşturun. Key Vault olarak `FLASKSECRETKEY`kaydedin. Uygulama çerçevesi, oturum oluşturmak için bu anahtarı kullanır.
+   5. Herhangi bir komut satırı/çevrimiçi aracı kullanarak güvenli bir rastgele gizli anahtar oluşturun. Key Vault olarak kaydedin `FLASKSECRETKEY` . Uygulama çerçevesi, oturum oluşturmak için bu anahtarı kullanır.
         Gizli anahtar oluşturmayı öğrenmek için bkz. [Flask oturumları](http://flask.pocoo.org/docs/1.0/quickstart/#sessions).
 
 5. Oturum açma 'yı yapılandırdıktan sonra, kaynakta oturum açmalarına olanak tanımak için Azure AD bağlantısına Kullanıcı eklemeniz gerekir. Bunları eklemek için Azure AD 'deki **Kullanıcılar** sekmesine gidin, **tüm kullanıcılar**' ı seçin ve ardından **Yeni Kullanıcı** veya **Yeni Konuk Kullanıcı**' yı seçin. Sınama için, Konuk kullanıcı ekleyebilir ve kullanıcıyı dizine davet edebilirsiniz. Ya da uygulamanın üzerinde çalıştığı etki alanı doğrulandıktan sonra yeni bir kullanıcı ekleyebilirsiniz. Bu örnekte, yalnızca Azure AD kiracısında kayıtlı olan kullanıcılar erişim için kaydedilebilir. Çoklu kiracılı oturum açma erişimi hakkında daha fazla bilgi için belgelerine bakın.
@@ -804,7 +804,7 @@ Azure portal, uygulamayı gerekli kimlik bilgilerini kullanacak şekilde yapıla
 Key Vault için Azure AD yapılandırma ve gizli dizileri ekledikten sonra, kullanıcıların Azure OAuth kimlik doğrulaması kullanılarak uygulama üzerinde kimlik doğrulaması yapılabilir.
 Uygulama kodunda, bu Azure Active Directory kimlik doğrulama kitaplığı (ADAL) tarafından işlenir.
 
-Gizlilikler Key Vault ve uygulamanın gizli dizileri ve veritabanına erişimi varsa, uygulama hizmetine ağ geçidinin uygulama URL 'SI (https:\//GATEWAY_HASH. cloudapp. net) aracılığıyla ulaşılırsa, bu da dikey penceresinden alabilirsiniz.
+Gizlilikler Key Vault ve uygulamanın gizli dizileri ve veritabanına erişimi varsa, uygulama hizmetine ağ geçidinin uygulama URL 'SI (https: \/ /GATEWAY_HASH. cloudapp. net) aracılığıyla ulaşılırsa, bu da dikey penceresinden alabilirsiniz.
 
 Azure AD 'de oturum açtığınızda, "Kullanıcı oturum açmaya çalıştığınız dizinde kayıtlı değil" ifadesini içeren bir hata alırsınız ve Kullanıcı eklemeniz gerekir. Kullanıcı eklemek için, Azure AD 'nin **Kullanıcılar** sekmesine gidin ve Kullanıcı bilgilerini davet ederek kullanıcıyı bir Konuk Kullanıcı olarak e-posta adresini **davet et** dikey penceresinde Azure AD 'ye girerek kullanıcıyı el ile ekleyin.
 
@@ -826,7 +826,7 @@ Dağıtım tamamlandıktan sonra bir Application Insights örneğiniz olur.
 Uygulama öngörüleri örneğini oluşturduktan sonra, uygulamanın buluta Günlükler göndermesini sağlayan izleme anahtarına sahip olması gerekir. Bunu, Application Insights anahtarını alarak ve Azure 'un Application Insights için sağladığı uygulama kitaplıklarında kullanarak yapabilirsiniz. En iyi yöntem, anahtarları ve gizli dizileri güvenli tutmak için Azure Key Vault depokullanmaktır.
 
 Temel örnek uygulama için, Application Insights örneğini oluşturduktan sonra, uygulamanın buluta Günlükler göndermesini sağlayan izleme anahtarına sahip olması gerekir.
-Key Vault ' de bir `APPINSIGHTSKEY` gizli dizi belirleyin ve değerini izleme anahtarı olarak ayarlayın. Bunun yapılması uygulamanın Application Insights Günlükler ve ölçümler göndermesini sağlar.
+Key Vault ' de bir gizli dizi belirleyin `APPINSIGHTSKEY` ve değerini izleme anahtarı olarak ayarlayın. Bunun yapılması uygulamanın Application Insights Günlükler ve ölçümler göndermesini sağlar.
 
 #### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>Azure Active Directory için Multi-Factor Authentication uygulama
 
@@ -921,7 +921,7 @@ Bu çalışma alanını oluşturmak için:
 
       *Application Gateway tanılamayı Ekle*
 
-   4. **Tanılama ayarları** sayfasında, oluşturduğunuz Log Analytics çalışma alanını seçin ve ardından toplamak istediğiniz tüm ölçümleri seçin ve Azure Sentinel 'e gönderin. **Kaydet**’i seçin.
+   4. **Tanılama ayarları** sayfasında, oluşturduğunuz Log Analytics çalışma alanını seçin ve ardından toplamak istediğiniz tüm ölçümleri seçin ve Azure Sentinel 'e gönderin. **Kaydet**'i seçin.
 
         ![Azure Sentinel bağlayıcı ayarları](./media/secure-web-app/sentinel-connector-settings.png)
 
@@ -991,6 +991,6 @@ Güvenlik, bağımlılıkları denetleyen benzer bir uygulamadır. [GitHub](http
 
 Aşağıdaki makaleler güvenli uygulamalar tasarlamanıza, geliştirmenize ve dağıtmanıza yardımcı olabilir.
 
-- [Tasarlama](secure-design.md)
+- [Tasarım](secure-design.md)
 - [Geliştirme](secure-develop.md)
-- [Dağıt](secure-deploy.md)
+- [Dağıtma](secure-deploy.md)

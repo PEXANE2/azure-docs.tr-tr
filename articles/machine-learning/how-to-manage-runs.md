@@ -11,12 +11,13 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
-ms.openlocfilehash: ff3811c69aaa3643e2fce40a3ce26115870a6010
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: tracking-python
+ms.openlocfilehash: c6d2e05104e2801129544b1cc91d3d7a00161f86
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84430360"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560148"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python 'da eğitim çalıştırmalarını başlatın, izleyin ve iptal edin
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +31,7 @@ Bu makalede aşağıdaki görevlerin örnekleri gösterilmektedir:
 * Alt çalıştırmalar oluşturun.
 * Etiket ve bulma çalıştırmaları.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki öğeler gerekir:
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/05/2020
-ms.openlocfilehash: ccf9d0c3eef50c7dfd838f1929e52506e8984879
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/05/2020
+ms.openlocfilehash: e2b4233f8f59a26e7da532fca48aecbb41857b66
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78395266"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488639"
 ---
 # <a name="apply-transformation-module"></a>Dönüştürme modülünü Uygula
 
@@ -32,13 +32,13 @@ Tasarımcı veri dönüştürmelerini diğer işlem hatlarında kullanabilmeniz 
 
 1. **Çıktılar + Günlükler** sekmesini seçin.
 
-1. **Sonuç dönüşümünü**kaydetmek için **Kaydet simgesini** seçin.
+1. Dönüştürme çıkışını bulun ve modül paletinde **veri kümeleri** kategorisi altına bir modül olarak kaydetmek için **kayıt veri kümesini** seçin.
 
 ## <a name="how-to-use-apply-transformation"></a>Dönüştürme uygula kullanımı  
   
 1. İşlem hattınızda **dönüştürme modülünü Uygula** ' yı ekleyin. Bu modülü modül paleti 'nin **model puanlama & değerlendirme** bölümünde bulabilirsiniz. 
   
-1. Modül **paletinde veri** > **kümelerim** altında kullanmak istediğiniz kaydedilen dönüşümü bulun.
+1. Modül paletindeki **veri kümeleri** altında kullanmak istediğiniz kaydedilen dönüşümü bulun.
 
 1. Kaydedilen dönüşümün çıkışını, **uygulama dönüştürme** modülünün sol giriş bağlantı noktasına bağlayın.
 

@@ -1,14 +1,14 @@
 ---
 title: Özel bağlantıyı ayarla
-description: Bir kapsayıcı kayıt defterinde özel bir uç nokta ayarlama ve yerel bir sanal ağdaki özel bir bağlantı üzerinden erişimi etkinleştirme
+description: Bir kapsayıcı kayıt defterinde özel bir uç nokta ayarlayın ve yerel bir sanal ağdaki özel bir bağlantı üzerinden erişimi etkinleştirin. Özel bağlantı erişimi, Premium hizmet katmanının bir özelliğidir.
 ms.topic: article
 ms.date: 05/19/2020
-ms.openlocfilehash: da51a35b66b793294f146c5a0a30b6a91d8aa01b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: f25f7b94a3008b829340cdaaed247d7ab1203c19
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83850054"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509347"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Azure Container Registry için Azure özel bağlantısını yapılandırma 
 
@@ -299,7 +299,7 @@ az acr update --name $REGISTRY_NAME --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Genel erişimi devre dışı bırak-Portal
 
 1. Portalda kapsayıcı Kayıt defterinize gidin ve **ayarlar > ağ**' ı seçin.
-1. **Genel erişim** sekmesinde, **genel ağ erişimine izin ver**' in altında **devre dışı**' yı seçin. Sonra **Kaydet**' i seçin.
+1. **Genel erişim** sekmesinde, **genel ağ erişimine izin ver**' in altında **devre dışı**' yı seçin. Sonra **Kaydet**'i seçin.
 
 ## <a name="validate-private-link-connection"></a>Özel bağlantı bağlantısını doğrula
 

@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 5e2fc8fb06248e2cdad9067c56647da6d9626b50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 0e47078e9f7620e72524ccf91e942d4e15a6b5bb
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78255763"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559115"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Azure DevOps kullanarak sürekli teslim
 
@@ -25,11 +26,11 @@ ms.locfileid: "78255763"
 
 YAML tabanlı bir işlem hattı oluşturmak için, önce uygulamanızı derleyin ve ardından uygulamayı dağıtın.
 
-### <a name="build-your-app"></a>Uygulamanızı oluşturma
+### <a name="build-your-app"></a>Uygulamanızı derleme
 
 Uygulamanızı nasıl derleyebilirsiniz Azure Pipelines uygulamanızın programlama diline bağlıdır. Her dilin bir dağıtım yapıtı oluşturan belirli derleme adımları vardır. Bir dağıtım yapıtı, işlev uygulamanızı Azure 'da dağıtmak için kullanılır.
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[,\#](#tab/csharp)
 
 .NET uygulaması derlemek üzere bir YAML dosyası oluşturmak için aşağıdaki örneği kullanabilirsiniz:
 
@@ -215,7 +216,7 @@ steps:
 
 Azure DevOps 'daki şablonlar, bir uygulamayı oluşturan veya dağıtan önceden tanımlanmış görev gruplarıdır.
 
-### <a name="build-your-app"></a>Uygulamanızı oluşturma
+### <a name="build-your-app"></a>Uygulamanızı derleme
 
 Uygulamanızı nasıl derleyebilirsiniz Azure Pipelines uygulamanızın programlama diline bağlıdır. Her dilin bir dağıtım yapıtı oluşturan belirli derleme adımları vardır. Azure 'da işlev uygulamanızı güncelleştirmek için bir dağıtım yapıtı kullanılır.
 

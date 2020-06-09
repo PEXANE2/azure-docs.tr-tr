@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: ab58d622511e0d5793eb6df312bc3fd6dd15bfd6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 338ebc584cc718fd9d3b587d17ec0895483dfb0c
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75376639"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560448"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure 'da bir Service Fabric kümesini Izleme
 
@@ -124,7 +124,7 @@ ServiceFabricOperationalEvent
 | project EventId, EventName = 'NodeUpOperational', TaskName, Computer, EventMessage, TimeGenerated
 | sort by TimeGenerated 
 ``` 
- 
+
 HealthState = = 3 (hata) ile sistem durumu raporlarını döndürür ve EventMessage alanından ek özellikleri ayıklar:
 
 ```kusto
@@ -210,7 +210,7 @@ Güvenilir aktör olayları benzer bir biçimde görüntülenebilir:
 ServiceFabricReliableActorEvent
 | sort by TimeGenerated desc
 ```
-Güvenilir aktörler için daha ayrıntılı olaylar yapılandırmak üzere, küme şablonundaki tanılama uzantısının `scheduledTransferKeywordFilter` yapılandırmasında öğesini değiştirebilirsiniz. Bunların değerlerinin ayrıntıları, [güvenilir aktör olayları başvurusunda](service-fabric-reliable-actors-diagnostics.md#keywords)bulunur.
+Güvenilir aktörler için daha ayrıntılı olaylar yapılandırmak üzere, `scheduledTransferKeywordFilter` küme şablonundaki tanılama uzantısının yapılandırmasında öğesini değiştirebilirsiniz. Bunların değerlerinin ayrıntıları, [güvenilir aktör olayları başvurusunda](service-fabric-reliable-actors-diagnostics.md#keywords)bulunur.
 
 ```json
 "EtwEventSourceProviderConfiguration": [

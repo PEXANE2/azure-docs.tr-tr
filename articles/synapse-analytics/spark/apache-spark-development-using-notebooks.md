@@ -9,12 +9,13 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.openlocfilehash: 21e3ba8cbf60cbbdc6480719016fc48db4fe390c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.custom: tracking-python
+ms.openlocfilehash: b7ab7abb74701abeeac126b34efdf784beff2d03
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702106"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561816"
 ---
 # <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Azure SYNAPSE Studio (Önizleme) not defterlerini oluşturma, geliştirme ve sürdürme
 
@@ -70,7 +71,7 @@ En üstteki komut çubuğundaki açılan listeden yeni eklenen hücreler için b
 
 Bir hücrenin başlangıcında doğru dil Magic komutunu belirterek, bir not defterinde birden çok dil kullanabilirsiniz. Aşağıdaki tabloda, hücre dillerini değiştirmek için Magic komutları listelenmektedir.
 
-|Magic komutu |Dil | Açıklama |  
+|Magic komutu |Dil | Description |  
 |---|------|-----|
 |%% pyspark| Python | Spark bağlamına karşı bir **Python** sorgusu yürütün.  |
 |%% Spark| Scala | Spark bağlamına yönelik bir **Scala** sorgusu yürütün.  |  

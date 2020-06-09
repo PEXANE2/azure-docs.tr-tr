@@ -3,12 +3,13 @@ title: Azure Işlevleri için Python geliştirici başvurusu
 description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 49577f5ac274b4e34fa07415e5495329ff650aa5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: tracking-python
+ms.openlocfilehash: a8201b1c8443bd99ec9045fdc4b074a4f3eec4f2
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83676185"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553087"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -234,7 +235,7 @@ def main(req: func.HttpRequest,
     return message
 ```
 
-## <a name="logging"></a>Günlüğe kaydetme
+## <a name="logging"></a>Günlüğe Kaydetme
 
 Azure Işlevleri çalışma zamanı günlükçüsü erişimi, işlev uygulamanızda bir kök işleyici aracılığıyla kullanılabilir [`logging`](https://docs.python.org/3/library/logging.html#module-logging) . Bu günlükçü Application Insights bağlıdır ve işlev yürütmesi sırasında uyarıları ve hataları işaretetmenize olanak tanır.
 
@@ -250,7 +251,7 @@ def main(req):
 
 Konsola farklı izleme düzeylerinde yazmanıza izin veren ek günlüğe kaydetme yöntemleri vardır:
 
-| Yöntem                 | Açıklama                                |
+| Yöntem                 | Description                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | Kök günlükçü üzerinde düzeyi KRITIK olan bir ileti yazar.  |
 | **`error(_message_)`**   | Kök günlükçü üzerinde düzey hatası olan bir ileti yazar.    |
@@ -337,7 +338,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölç
 
 Yürütme sırasında bir işlevin çağırma bağlamını almak için, [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) bağımsız değişkenini imzasına ekleyin.
 
-Örnek:
+Örneğin:
 
 ```python
 import azure.functions

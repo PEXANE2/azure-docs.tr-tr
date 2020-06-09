@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: c232ab06d2b3a28dad7ae98a8f22f457778fd3e6
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: b138d93b400c16837c250ede1e264b54a851327c
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83874077"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488758"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics Azure Machine Learning ile tümleştirme (Önizleme)
 
@@ -24,7 +24,7 @@ Machine Learning modelini Stream Analytics işinize bir işlev olarak eklemeden 
 
 1. [Modelinizi bir Web hizmeti olarak dağıtmak](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)için Azure Machine Learning kullanın.
 
-2. Puanlama betiğinizin bir şema belirtimi oluşturmak için Azure Machine Learning tarafından kullanılan [örnek girişler ve çıktılar](../machine-learning/how-to-deploy-and-where.md#example-entry-script) olması gerekir. Stream Analytics, Web hizmetinizin işlev imzasını anlamak için şemayı kullanır.
+2. Puanlama betiğinizin bir şema belirtimi oluşturmak için Azure Machine Learning tarafından kullanılan [örnek girişler ve çıktılar](../machine-learning/how-to-deploy-and-where.md#example-entry-script) olması gerekir. Stream Analytics, Web hizmetinizin işlev imzasını anlamak için şemayı kullanır. Bu [örnek Swagger tanımını](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) , doğru ayarlamış olduğunuzdan emin olmak için bir başvuru olarak kullanabilirsiniz.
 
 3. Web hizmetinizin JSON seri hale getirilmiş verileri kabul ettiğinden ve döndürdüğünden emin olun.
 

@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9c4c1cfdb927cfd2ee607bfe2a951e06c80f9bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a65143394d8e6ee8a385cc5d1737cc976aae47b2
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418550"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558489"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team Data Science süreci: Azure SYNAPSE Analytics 'i kullanma
 Bu öğreticide, genel kullanıma açık bir veri kümesi ( [NYC TAXI gezileri](https://www.andresmh.com/nyctaxitrips/) veri kümesi) Için Azure SYNAPSE Analytics 'i kullanarak bir makine öğrenimi modeli oluşturma ve dağıtma konusunda size kılavuzluk ederiz. Oluşturulan ikili sınıflandırma modeli, seyahat için bir tıp ödenip ödenmediğini tahmin eder.  Modeller birden çok Lass sınıflandırması (bir ipucu olup olmadığına bakılmaksızın) ve gerileme (ücretli ücret miktarları için dağıtım) içerir.
@@ -43,17 +43,17 @@ NYC TAXI seyahat verileri yaklaşık 20 GB sıkıştırılmış CSV dosyasından
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-Seyahat\_verilerini ve seyahat\_tarifeli havayolu birleştirmek için kullanılan **benzersiz anahtar** aşağıdaki üç alandan oluşur:
+Seyahat verilerini ve seyahat tarifeli havayolu birleştirmek için kullanılan **benzersiz anahtar** \_ \_ aşağıdaki üç alandan oluşur:
 
 * medalon,
-* Hack\_lisansı ve
-* çekme\_tarih saati.
+* Hack \_ lisansı ve
+* çekme \_ tarih saati.
 
 ## <a name="address-three-types-of-prediction-tasks"></a><a name="mltasks"></a>Üç tahmin görevi türünü ele edin
-Üç tahmin sorununu, üç tür modelleme görevini göstermek *üzere\_tıp miktarına* göre şekillarız:
+Üç tahmin sorununu, üç tür modelleme görevini göstermek üzere *tıp \_ miktarına* göre şekillarız:
 
-1. **İkili sınıflandırma**: bir ucun seyahat için ödenip ödenmediğini tahmin etmek için, $0 'den büyük bir tıp *\_miktarı* pozitif bir örnektir, ancak bir $0 *\_ipucu miktarı* negatif bir örnektir.
-2. **Birden çok Lass sınıflandırması**: seyahat için ödenen ipucu aralığını tahmin etmek için. *İpucu\_miktarını* beş bölmeye veya sınıfa böyoruz:
+1. **İkili sınıflandırma**: bir ucun seyahat için ödenip ödenmediğini tahmin etmek için, $0 'den büyük bir tıp * \_ miktarı* pozitif bir örnektir, ancak bir $0 *İpucu \_ miktarı* negatif bir örnektir.
+2. **Birden çok Lass sınıflandırması**: seyahat için ödenen ipucu aralığını tahmin etmek için. *İpucu \_ miktarını* beş bölmeye veya sınıfa böyoruz:
 
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
@@ -77,7 +77,7 @@ Azure veri bilimi ortamınızı ayarlamak için aşağıdaki adımları izleyin.
 **Azure SYNAPSE Analytics örneğinizi sağlayın.**
 Azure SYNAPSE Analytics örneği sağlamak için [Azure Portal Azure SQL veri ambarı oluşturma ve sorgulama bölümündeki](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) belgeleri izleyin. Sonraki adımlarda kullanılacak aşağıdaki Azure SYNAPSE Analytics kimlik bilgileri üzerinde gösterimler olduğunuzdan emin olun.
 
-* **Sunucu adı**: \<sunucu adı>. Database.Windows.net
+* **Sunucu adı**: \<server Name> . Database.Windows.net
 * **SQLDW (veritabanı) adı**
 * **Nitelen**
 * **Parola**
@@ -323,7 +323,7 @@ Yinelenen kaynak ve hedef dosyalarınız varsa ne olacağına karar vermeniz ger
 
 ![AzCopy 'tan çıkış][21]
 
-Kendi verilerinizi kullanabilirsiniz. Verileriniz gerçek yaşam uygulamanızdaki şirket içi makinenizde ise, şirket içi verileri özel Azure Blob depolama alanına yüklemek için AzCopy kullanmaya devam edebilirsiniz. Yalnızca, PowerShell betik dosyasının AzCopy komutunda yer `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`alan **kaynak** konumunu, verilerinizi içeren yerel dizine değiştirmeniz gerekir.
+Kendi verilerinizi kullanabilirsiniz. Verileriniz gerçek yaşam uygulamanızdaki şirket içi makinenizde ise, şirket içi verileri özel Azure Blob depolama alanına yüklemek için AzCopy kullanmaya devam edebilirsiniz. Yalnızca, **Source** `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"` PowerShell betik dosyasının AzCopy komutunda yer alan kaynak konumunu, verilerinizi içeren yerel dizine değiştirmeniz gerekir.
 
 > [!TIP]
 > Verileriniz gerçek yaşam uygulamanızda zaten özel Azure Blob depolarlarda varsa, PowerShell betiğine AzCopy adımını atlayabilir ve verileri doğrudan Azure Azure SYNAPSE Analytics 'e yükleyebilirsiniz. Bu, verilerinizin biçimine uyarlamak için betiğin ek düzenlemeleri yapılmasını gerektirir.
@@ -350,7 +350,7 @@ Bu bölümde gerçekleştirilen veri keşif ve özellik oluşturma görevlerinin
 
 * Değişen zaman pencereleri içinde birkaç alanın veri dağıtımlarını araştırma.
 * Boylam ve enlem alanlarının veri kalitesini araştırın.
-* **Tıp\_miktarına**göre ikili ve çoklu sınıf sınıflandırma etiketleri oluşturun.
+* **Tıp \_ miktarına**göre ikili ve çoklu sınıf sınıflandırma etiketleri oluşturun.
 * Özellik oluşturun ve seyahat mesafelerini karşılaştırın.
 * İki tabloyu birleştirin ve modelleri derlemek için kullanılacak rastgele bir örnek ayıklayın.
 
@@ -366,7 +366,7 @@ Bu sorgular, PolyBase 'in paralel toplu içeri aktarması kullanılarak daha ön
 **Çıkış:** 173.179.759 satır ve 14 sütun almalısınız.
 
 ### <a name="exploration-trip-distribution-by-medallion"></a>Araştırma: medtalon tarafından seyahat dağılımı
-Bu örnek sorgu, belirli bir süre içinde 100 ' den fazla dönüşten fazla geçen bir aralıktaki (TAXI numaralarını) bir sorgu tanımlar. Sorgu, **toplama\_tarih/saat değerinin**bölüm şeması tarafından koşullu olduğundan, bölümlenmiş tablo erişiminizden faydalanır. Tam veri kümesini sorgulamak bölümlenmiş tablo ve/veya dizin taramasını de kullanır.
+Bu örnek sorgu, belirli bir süre içinde 100 ' den fazla dönüşten fazla geçen bir aralıktaki (TAXI numaralarını) bir sorgu tanımlar. Sorgu, **toplama \_ Tarih/saat değerinin**bölüm şeması tarafından koşullu olduğundan, bölümlenmiş tablo erişiminizden faydalanır. Tam veri kümesini sorgulamak bölümlenmiş tablo ve/veya dizin taramasını de kullanır.
 
     SELECT medallion, COUNT(*)
     FROM <schemaname>.<nyctaxi_fare>
@@ -540,7 +540,7 @@ SQL sorgunuzda özellikler oluşturmak için bu işlevi çağırmak üzere bir �
 | 3 |40,761456 |-73,999886 |40,766544 |-73,988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>Model oluşturma için verileri hazırlama
-Aşağıdaki sorgu **nyctaxi\_seyahat** ve **nyctaxi\_tarifeli havayolu** tablolarını birleştirir, bir ikili sınıflandırma etiketi olarak **eğimli**, çok sınıflı bir sınıflandırma etiketi **İpucu\_sınıfı**oluşturur ve tam olarak birleştirilmiş veri kümesinden bir örnek ayıklar. Örnekleme zamanına göre dönüşlerin bir alt kümesini alarak örnekleme yapılır.  Bu sorgu, Azure 'daki SQL veritabanı örneğinden doğrudan veri alımı için [Azure Machine Learning Studio (klasik)](https://studio.azureml.net) [içeri aktarma verileri][içeri aktarma-veri] modülünde kopyalanabilir. Sorgu kayıtları yanlış (0, 0) koordinatlarla dışlar.
+Aşağıdaki sorgu **nyctaxi \_ seyahat** ve **nyctaxi \_ tarifeli havayolu** tablolarını birleştirir, bir ikili sınıflandırma etiketi olarak **eğimli**, çok sınıflı bir sınıflandırma etiketi **İpucu \_ sınıfı**oluşturur ve tam olarak birleştirilmiş veri kümesinden bir örnek ayıklar. Örnekleme zamanına göre dönüşlerin bir alt kümesini alarak örnekleme yapılır.  Bu sorgu, Azure 'daki SQL veritabanı örneğinden doğrudan veri alımı için [Azure Machine Learning Studio (klasik)](https://studio.azureml.net) [içeri aktarma verileri][içeri aktarma-veri] modülünde kopyalanabilir. Sorgu kayıtları yanlış (0, 0) koordinatlarla dışlar.
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -675,7 +675,7 @@ Veritabanına bağlantıyı oluşturan bağlantı dizesi aşağıda verilmiştir
 Alınan satır ve sütun sayısı = (1000, 21).
 
 ### <a name="descriptive-statistics"></a>Açıklayıcı istatistikler
-Artık örneklenmiş verileri araştırmaya hazırsınız. **Seyahat\_mesafesi** (veya belirtmek için seçtiğiniz diğer alanlar) için bazı açıklayıcı istatistiklere bakmaya başladık.
+Artık örneklenmiş verileri araştırmaya hazırsınız. **Seyahat \_ mesafesi** (veya belirtmek için seçtiğiniz diğer alanlar) için bazı açıklayıcı istatistiklere bakmaya başladık.
 
     df1['trip_distance'].describe()
 
@@ -718,13 +718,13 @@ ve
 ![Satır çizim çıkışı][4]
 
 ### <a name="visualization-scatterplot-examples"></a>Görselleştirme: dağınık Terçiz örnekleri
-Bir bağıntı olup olmadığını görmek **için\_seyahat\_süresi\_ile saniye cinsinden** seyahat **\_mesafesini** gösteren dağılım çizimi gösteriliyor
+Bir bağıntı olup olmadığını görmek için **seyahat \_ süresi ile \_ \_ saniye cinsinden** seyahat ** \_ mesafesini** gösteren dağılım çizimi gösteriliyor
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
 ![Zaman ve uzaklık arasındaki ilişkinin dağınık terçiz çıkışı][6]
 
-Benzer şekilde, **oran\_kodu** ve **seyahat\_mesafesi**arasındaki ilişkiyi kontrol edebilirsiniz.
+Benzer şekilde, **oran \_ kodu** ve **seyahat \_ mesafesi**arasındaki ilişkiyi kontrol edebilirsiniz.
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
@@ -844,7 +844,7 @@ Bu alıştırmada, Azure SYNAPSE Analytics 'te verileri araştırmış ve sunuyo
 ![Azure ML eğitme][10]
 
 > [!IMPORTANT]
-> Önceki bölümlerde sağlanan modelleme veri ayıklama ve örnekleme sorgusu örneklerinde, **üç modellemeye yönelik tüm Etiketler sorguya dahil**edilmiştir. Modelleme alýþtýrmalarının her birinde önemli (gerekli) bir adım, diğer iki soruna ve diğer **hedef sızıntılara**yönelik gereksiz etiketleri **dışlayamazsınız** . Örneğin, ikili sınıflandırma kullanırken, **eğimli** etiketini kullanın ve alanları **\_ipucu sınıfı**, **tıp\_tutarı**ve **Toplam\_miktarı**hariç tutun. İkincisi, ücretli olduğunu gösterdiğinden bu yana hedef sızıntılardır.
+> Önceki bölümlerde sağlanan modelleme veri ayıklama ve örnekleme sorgusu örneklerinde, **üç modellemeye yönelik tüm Etiketler sorguya dahil**edilmiştir. Modelleme alýþtýrmalarının her birinde önemli (gerekli) bir adım, diğer iki soruna ve diğer **hedef sızıntılara**yönelik gereksiz etiketleri **dışlayamazsınız** . Örneğin, ikili sınıflandırma kullanırken, **eğimli** etiketini kullanın ve alanları **İpucu \_ sınıfı**, **tıp \_ tutarı**ve **Toplam \_ miktarı**hariç tutun. İkincisi, ücretli olduğunu gösterdiğinden bu yana hedef sızıntılardır.
 >
 > Gereksiz sütunları veya hedef sızıntılarını dışlamak için, [veri kümesi modülünde sütunları seç][select-columns] veya [verileri Düzenle][edit-metadata]' yi kullanabilirsiniz. Daha fazla bilgi için bkz. [veri kümesindeki sütunları seçme][select-columns] ve [meta veri][edit-metadata] başvuru sayfalarını düzenleme.
 >

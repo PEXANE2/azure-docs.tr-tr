@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 244fe0d7be92cc2d8ce4c892d8f90b6b58b32408
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 188b8949d6cda12617433783a9d81eec6d8fce97
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484803"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488384"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>PostgreSQL için Azure veritabanı için özel bağlantı oluşturma ve yönetme-portalı kullanarak tek sunucu
 
@@ -143,7 +143,7 @@ Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ek
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
     | **Örnek Ayrıntıları** |  |
-    | Adı | *Myprivateendpoint*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
+    | Name | *Myprivateendpoint*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
     |Bölge|**Batı Avrupa**'yı seçin.|
     |||
 5. **Sonraki: kaynak**' ı seçin.
@@ -171,7 +171,7 @@ Bu bölümde bir PostgreSQL sunucusu oluşturacak ve buna özel bir uç nokta ek
     |||
 
     > [!Note] 
-    > [Azure HIZMETLERI DNS bölge yapılandırması](../private-link/private-endpoint-dns.md)' na bakın.
+    > Hizmetiniz için önceden tanımlanmış özel DNS bölgesini kullanın veya yeni bir tane oluşturun. Ayrıntılar için [Azure HIZMETLERI DNS bölge yapılandırması](../private-link/private-endpoint-dns.md) ' na bakın.
 
 1. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
 2. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin. 

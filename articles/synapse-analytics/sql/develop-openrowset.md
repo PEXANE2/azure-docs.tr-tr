@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3861b981a1083b44e9cc522a01c50cf24f281e91
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 9c2a2d7059e24b37b0f47d0b568a3929f296d8c6
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702039"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560863"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OPENROWSET 'yi isteğe bağlı SQL ile kullanma (Önizleme)
 
@@ -96,7 +96,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 [ , PARSER_VERSION = 'parser_version' ]
 ```
 
-## <a name="arguments"></a>Arguments
+## <a name="arguments"></a>Bağımsız değişkenler
 
 Sorgulamak için hedef verileri içeren giriş dosyaları için iki seçeneğiniz vardır. Geçerli değerler:
 
@@ -107,19 +107,19 @@ Sorgulamak için hedef verileri içeren giriş dosyaları için iki seçeneğini
 **' unstructured_data_path '**
 
 Verilerin yolunu oluşturan unstructured_data_path mutlak veya göreli bir yol olabilir:
-- ' \< Önek>:// \< storage_account_path>/ \< storage_path> ' biçimindeki mutlak yol, kullanıcının dosyaları doğrudan okumasını sağlar.
+- ' \<prefix> ://' Biçimindeki mutlak yol, \<storage_account_path> / \<storage_path> bir kullanıcının dosyaları doğrudan okumasını sağlar.
 - ' <storage_path> ' biçimindeki göreli yol, parametresiyle kullanılması gerekir `DATA_SOURCE` ve <storage_account_path> konum içindeki dosya modelini tanımlar `EXTERNAL DATA SOURCE` . 
 
  Aşağıda, <storage account path> belirli dış veri kaynağınıza bağlanacak ilgili değerleri bulacaksınız. 
 
 | Dış veri kaynağı       | Ön ek | Depolama hesabı yolu                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
-| Azure Blob Depolama         | https  | \<storage_account>. blob.core.windows.net             |
+| Azure Blob Depolama         | https  | \<storage_account>.blob.core.windows.net             |
 | Azure Data Lake Store Gen1 | https  | \<storage_account>. azuredatalakestore.net/webhdfs/v1 |
 | Azure Data Lake Store Gen2 | https  | \<storage_account>. dfs.core.windows.net              |
 ||||
 
-' \< storage_path> '
+'\<storage_path>'
 
  Depolama alanınızı, okumak istediğiniz klasörü veya dosyayı işaret eden bir yolu belirtir. Yol bir kapsayıcıya veya klasöre işaret ediyorsa, tüm dosyalar söz konusu kapsayıcı veya klasörden okunacaktır. Alt klasörlerdeki dosyalar dahil değildir. 
 
@@ -130,7 +130,7 @@ Aşağıda, */CSV/popülasyonu*ile başlayan tüm klasörlerden *popülasyon* il
 Bir klasör olarak unstructured_data_path belirtirseniz, bir SQL isteğe bağlı sorgusu bu klasörden dosyaları alır. 
 
 > [!NOTE]
-> Hadoop ve PolyBase 'in aksine, SQL isteğe bağlı alt klasörler döndürmez. Ayrıca, Hadoop ve PloyBase farklı olarak, SQL isteğe bağlı, dosya adının altı çizili (_) veya nokta (.) ile başladığı dosyaları döndürür.
+> Hadoop ve PolyBase 'in aksine, SQL isteğe bağlı alt klasörler döndürmez. Ayrıca, Hadoop ve PolyBase 'den farklı olarak, SQL isteğe bağlı, dosya adının altı çizili (_) veya nokta (.) ile başladığı dosyaları döndürür.
 
 Aşağıdaki örnekte, unstructured_data_path = ise `https://mystorageaccount.dfs.core.windows.net/webdata/` , BIR SQL isteğe bağlı sorgusu, mydata. txt ve _Hidden. txt ' den satırları döndürür. Bir alt klasörde bulunduğundan mydata2. txt ve mydata3. txt döndürmez.
 

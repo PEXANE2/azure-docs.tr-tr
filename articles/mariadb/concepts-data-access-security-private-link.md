@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 2e54c0c156fde8201e6c5803c2c94f67692a7fd7
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 6f2043b91f8345a638d6fc773230cd182fb0fead
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484767"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508854"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı için özel bağlantı
 
@@ -116,7 +116,7 @@ Farklı bir bölgede veya abonelikte bulunan bir Azure VM 'den MariaDB için Azu
 
 MariaDB için Azure veritabanı 'na erişmek üzere yalnızca özel uç noktalara tamamen ulaşmak istiyorsanız, veritabanı sunucusunda **ortak ağ erişimi reddetme** yapılandırmasını ayarlayarak tüm genel uç noktaları ([güvenlik duvarı kuralları](concepts-firewall-rules.md) ve [VNET hizmet uç noktaları](concepts-data-access-security-vnet.md)) ayarını devre dışı bırakabilirsiniz. 
 
-Bu ayar *Evet*olarak ayarlandığında, MariaDB Için Azure veritabanı ile yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir. Bu ayar *Hayır*olarak ayarlandığında, istemcileri, güvenlik duvarınız veya VNET hizmeti uç noktası ayarlarınıza göre MariaDB Için Azure veritabanınıza bağlanabilir. Ayrıca, özel ağ erişiminin değeri ayarlandıktan sonra, mevcut güvenlik duvarı ve VNet hizmeti uç noktası kurallarını ekleyemez ve/veya güncelleştiremezsiniz.
+Bu ayar *Evet*olarak ayarlandığında, MariaDB Için Azure veritabanı ile yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir. Bu ayar *Hayır*olarak ayarlandığında, istemcileri, güvenlik duvarınız veya VNET hizmeti uç noktası ayarlarınıza göre MariaDB Için Azure veritabanınıza bağlanabilir. Ayrıca, özel ağ erişiminin değeri ayarlandıktan sonra müşteriler var olan ' güvenlik duvarı kurallarını ' ve ' VNet hizmeti uç noktası kuralları ' ekleyemez ve/veya güncelleştiremez.
 
 > [!Note]
 > Bu özellik, PostgreSQL için Azure veritabanı-tek sunucu Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.

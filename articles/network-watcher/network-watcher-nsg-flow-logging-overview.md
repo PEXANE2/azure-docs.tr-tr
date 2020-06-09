@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: ed14d3fb1cd3d9d8af37088811ce62b050778a95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0b25b07e3517bbbf17dce95660f209bd74bcccb
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189812"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561728"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Ağ güvenlik grupları için akış günlüğüne giriş
 
@@ -67,7 +67,7 @@ Akış günlükleri, bulut ortamınızdaki tüm ağ etkinlikleri için Truth kay
 Akış günlükleri aşağıdaki özellikleri içerir:
 
 * etkinliğin günlüğe kaydedildiği **saat**
-* **SystemId** -ağ güvenlik grubu kaynak kimliği.
+* **SystemId** -ağ güvenlik grubu sistem kimliği.
 * **Kategori** -etkinliğin kategorisi. Kategori her zaman **Networksecuritygroupflowevent**
 * **RESOURCEID** -NSG kaynak kimliği
 * **OperationName** -Always NetworkSecurityGroupFlowEvents
@@ -323,7 +323,7 @@ Komut satırı araçları aracılığıyla parametreleri güncelleştirmek için
 
 *Akış günlüklerini okuma ve dışarı aktarma*
 
-- [Portalda &amp; görünüm akışı günlüklerini indirme](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal#download-flow-log)
+- [&amp;Portalda görünüm akışı günlüklerini indirme](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal#download-flow-log)
 - [PowerShell işlevlerini kullanarak akış günlüklerini okuma](https://docs.microsoft.com/azure/network-watcher/network-watcher-read-nsg-flow-logs)
 - [NSG akış günlüklerini splunk 'a dışarı aktarma](https://www.splunk.com/en_us/blog/tips-and-tricks/splunking-microsoft-azure-network-watcher-data.html)
 

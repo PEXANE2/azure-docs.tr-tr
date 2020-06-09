@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 6bfbbacd0b30e206a9c1873c4df204117155e044
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 55ca9232252895dd46ad3da3912f808ebd9b9533
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465244"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559682"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Linux için NVıDıA GPU sürücü uzantısı
 
@@ -72,7 +72,7 @@ Aşağıdaki JSON uzantı için şemayı gösterir.
 
 ### <a name="properties"></a>Özellikler
 
-| Adı | Değer/örnek | Veri Türü |
+| Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | yayımcı | Microsoft. HpcCompute | string |
@@ -83,7 +83,7 @@ Aşağıdaki JSON uzantı için şemayı gösterir.
 
 Tüm ayarlar isteğe bağlıdır. Varsayılan davranış, sürücü yüklemesi için gerekli değilse çekirdeği güncelleştirmemelidir, desteklenen en son sürücüyü ve CUDA araç setini (varsa) yükler.
 
-| Adı | Açıklama | Varsayılan değer | Geçerli Değerler | Veri Türü |
+| Name | Description | Varsayılan değer | Geçerli Değerler | Veri Türü |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | Sürücü yüklemesi için gerekli olmasa bile çekirdeği Güncelleştir | yanlış | doğru, yanlış | boole |
 | driverVersion | NV: GRID sürücü sürümü<br> NC/ND: CUDA araç seti sürümü. Seçilen CUDA için en son sürücüler otomatik olarak yüklenir. | en son | KıLAVUZ: "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | string |
@@ -138,7 +138,7 @@ Set-AzVMExtension
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Aşağıdaki örnekte, yukarıdaki Azure Resource Manager ve PowerShell örnekleri yansıtıdakiler ve varsayılan olmayan sürücü yüklemesi için örnek olarak özel ayarlar da eklenir. Özellikle, işletim sistemi çekirdeğini güncelleştirir ve belirli bir CUDA Araç Seti sürüm sürücüsü yüklenir.
+Aşağıdaki örnek, yukarıdaki Azure Resource Manager ve PowerShell örneklerini yansıtır.
 
 ```azurecli
 az vm extension set \
@@ -146,10 +146,22 @@ az vm extension set \
   --vm-name myVM \
   --name NvidiaGpuDriverLinux \
   --publisher Microsoft.HpcCompute \
-  --version 1.2 \
+  --version 1.3 \
+  }'
+```
+
+Aşağıdaki örnek, varsayılan olmayan sürücü yüklemesi için örnek olarak iki isteğe bağlı özel ayar de ekler. Özellikle, işletim sistemi çekirdeğini en son sürümüne güncelleştirir ve belirli bir CUDA Araç Seti sürüm sürücüsünü kurar. '--Settings ', isteğe bağlı ve varsayılan ' i aklınızda bulunur. Çekirdeği güncelleştirmenin Uzantı yükleme sürelerini artırabileceğini unutmayın. Ayrıca, belirli (eski) CUDA tolkit sürümünü seçmek, her zaman daha yeni çekirdekler ile uyumlu olmayabilir.
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name NvidiaGpuDriverLinux \
+  --publisher Microsoft.HpcCompute \
+  --version 1.3 \
   --settings '{ \
     "updateOS": true, \
-    "driverVersion": "9.1.85" \
+    "driverVersion": "10.0.130" \
   }'
 ```
 
@@ -167,7 +179,7 @@ Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtens
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Uzantı yürütme çıkışı aşağıdaki dosyaya kaydedilir:
+Uzantı yürütme çıkışı aşağıdaki dosyaya kaydedilir. Durumu izlemek için bu dosyaya başvurun (herhangi bir uzun süre çalışan) yükleme ve tüm hata sorunlarını giderme.
 
 ```bash
 /var/log/azure/nvidia-vmext-status

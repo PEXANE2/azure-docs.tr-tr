@@ -13,13 +13,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.custom: seo-python-october2019
-ms.openlocfilehash: acb0b0e84804ecf6025e05590133dee9b0d54c48
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seo-python-october2019, tracking-python
+ms.openlocfilehash: 38e4d4a8677ca88cfe4cf8d9fab19cec6a8874d4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478644"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560068"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Hızlı başlangıç: Python ile Azure Service Bus kuyruklarını kullanma
 
@@ -42,19 +42,19 @@ Python Azure Service Bus kitaplıkları hakkında daha fazla bilgi için bkz. [P
 from azure.servicebus import ServiceBusClient
 ```
 
-**Servicebusclient** nesnesi oluşturmak için aşağıdaki kodu ekleyin. Service Bus `<connectionstring>` birincil bağlantı dizesi değeri ile değiştirin. Bu değeri, [Azure portal][Azure portal]Service Bus ad alanında **paylaşılan erişim ilkeleri** altında bulabilirsiniz.
+**Servicebusclient** nesnesi oluşturmak için aşağıdaki kodu ekleyin. `<connectionstring>`Service Bus birincil bağlantı dizesi değeri ile değiştirin. Bu değeri, [Azure portal][Azure portal]Service Bus ad alanında **paylaşılan erişim ilkeleri** altında bulabilirsiniz.
 
 ```python
 sb_client = ServiceBusClient.from_connection_string('<connectionstring>')
 ```
 
-Aşağıdaki kod, varsayılan ayarlarla `create_queue` adlı `taskqueue` bir sıra oluşturmak için **servicebusclient** yöntemini kullanır:
+Aşağıdaki kod, `create_queue` varsayılan ayarlarla adlı bir sıra oluşturmak Için **Servicebusclient** yöntemini kullanır `taskqueue` :
 
 ```python
 sb_client.create_queue("taskqueue")
 ```
 
-İleti yaşam süresi (TTL) veya en büyük konu boyutu gibi varsayılan sıra ayarlarını geçersiz kılmak için seçeneklerini kullanabilirsiniz. Aşağıdaki kod, en fazla 5 GB `taskqueue` kuyruk boyutu ve 1 dakikalık TTL değeri ile çağrılan bir kuyruk oluşturur:
+İleti yaşam süresi (TTL) veya en büyük konu boyutu gibi varsayılan sıra ayarlarını geçersiz kılmak için seçeneklerini kullanabilirsiniz. Aşağıdaki kod, `taskqueue` en fazla 5 GB kuyruk boyutu ve 1 DAKIKALıK TTL değeri ile çağrılan bir kuyruk oluşturur:
 
 ```python
 sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
@@ -63,7 +63,7 @@ sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
 
 ## <a name="send-messages-to-a-queue"></a>Kuyruğa ileti gönderme
 
-Bir Service Bus kuyruğuna ileti göndermek için, bir uygulama **Servicebusclient** nesnesinde `send` yöntemini çağırır. Aşağıdaki kod örneği bir kuyruk istemcisi oluşturur ve `taskqueue` kuyruğa bir test iletisi gönderir. Service Bus `<connectionstring>` birincil bağlantı dizesi değeri ile değiştirin. 
+Bir Service Bus kuyruğuna ileti göndermek için, bir uygulama `send` **Servicebusclient** nesnesinde yöntemini çağırır. Aşağıdaki kod örneği bir kuyruk istemcisi oluşturur ve kuyruğa bir test iletisi gönderir `taskqueue` . `<connectionstring>`Service Bus birincil bağlantı dizesi değeri ile değiştirin. 
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -84,7 +84,7 @@ Kotalar hakkında daha fazla bilgi için bkz. [Service Bus kotaları][Service Bu
 
 ## <a name="receive-messages-from-a-queue"></a>Kuyruktan ileti alma
 
-Queue Client, `get_receiver` **servicebusclient** nesnesindeki yöntemini kullanarak bir kuyruktan ileti alır. Aşağıdaki kod örneği bir kuyruk istemcisi oluşturur ve `taskqueue` kuyruktan bir ileti alır. Service Bus `<connectionstring>` birincil bağlantı dizesi değeri ile değiştirin. 
+Queue Client, `get_receiver` **Servicebusclient** nesnesindeki yöntemini kullanarak bir kuyruktan ileti alır. Aşağıdaki kod örneği bir kuyruk istemcisi oluşturur ve kuyruktan bir ileti alır `taskqueue` . `<connectionstring>`Service Bus birincil bağlantı dizesi değeri ile değiştirin. 
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -102,11 +102,11 @@ with queue_client.get_receiver() as queue_receiver:
 
 ### <a name="use-the-peek_lock-parameter"></a>Peek_lock parametresini kullanma
 
-İsteğe bağlı `peek_lock` parametresi, `get_receiver` Service Bus okunan iletileri kuyruktan silip silmeyeceğini belirler. İleti alma için varsayılan mod *PeekLock*' dir ya `peek_lock` da **doğru**olarak ayarlanır; Bu, iletileri kuyruktan silmeksizin okur (göz atar) ve kilitler. Her ileti daha sonra kuyruktan kaldırılacak şekilde açıkça tamamlanmalıdır.
+İsteğe bağlı `peek_lock` parametresi, `get_receiver` Service Bus okunan iletileri kuyruktan silip silmeyeceğini belirler. İleti alma için varsayılan mod *PeekLock*' dir ya da `peek_lock` **doğru**olarak ayarlanır; Bu, iletileri kuyruktan silmeksizin okur (göz atar) ve kilitler. Her ileti daha sonra kuyruktan kaldırılacak şekilde açıkça tamamlanmalıdır.
 
 Sıradaki iletileri okurken silmek için, `peek_lock` parametresini `get_receiver` **false**olarak ayarlayabilirsiniz. Alma işleminin bir parçası olarak ileti silme en basit modeldir, ancak yalnızca bir hata oluşursa uygulamanın eksik iletileri kabul edebildiği durumlarda işe yarar. Bu davranışı anlamak için, tüketicinin işlemeden önce bir alma isteği yaptığı ve sonra çöktüğü bir senaryo düşünün. İleti alındığı sırada silinirse, uygulama yeniden başlatıldığında ve iletileri yeniden kullanmaya başladığında, kilitlenmeden önce aldığı iletiyi kaçırmıştır.
 
-Uygulamanız eksik iletileri kabul edemiyorum, alma iki aşamalı bir işlemdir. PeekLock, tüketilen bir sonraki iletiyi bulur, diğer tüketicilerin bunu almasını engellemek için onu kilitler ve uygulamaya döndürür. İleti işlendikten veya depolandıktan sonra uygulama, `complete` **ileti** nesnesine yöntemini çağırarak alma işleminin ikinci aşamasını tamamlar.  `complete` Yöntemi iletiyi tüketildiği gibi işaretler ve kuyruktan kaldırır.
+Uygulamanız eksik iletileri kabul edemiyorum, alma iki aşamalı bir işlemdir. PeekLock, tüketilen bir sonraki iletiyi bulur, diğer tüketicilerin bunu almasını engellemek için onu kilitler ve uygulamaya döndürür. İleti işlendikten veya depolandıktan sonra uygulama, `complete` **ileti** nesnesine yöntemini çağırarak alma işleminin ikinci aşamasını tamamlar.  `complete`Yöntemi iletiyi tüketildiği gibi işaretler ve kuyruktan kaldırır.
 
 ## <a name="handle-application-crashes-and-unreadable-messages"></a>Uygulama kilitlenmelerini ve okunamaz iletileri işle
 
@@ -114,7 +114,7 @@ Service Bus, uygulamanızda gerçekleşen hataları veya ileti işlenirken oluş
 
 Sıra içinde kilitlenen iletiler için de bir zaman aşımı vardır. Bir uygulama, kilit zaman aşımı dolmadan önce bir iletiyi işleyemezse, örneğin, uygulama kilitlenirse, Service Bus otomatik olarak iletinin kilidini açar ve tekrar alınabilmesini sağlar.
 
-Bir uygulama bir ileti işlendikten sonra, ancak `complete` yöntemi çağrılmadan önce kilitlenirse, ileti yeniden başlatıldığında uygulamaya yeniden gönderilir. Bu davranış genellikle *en az bir kez işleme*olarak adlandırılır. Her ileti en az bir kez işlenir, ancak bazı durumlarda aynı ileti yeniden teslim edilebilir. Senaryonuz yinelenen işleme kabul edememesi durumunda, yinelenen ileti teslimini işlemek için teslim denemelerinde sabit olarak kalan ileti **MessageID** özelliğini kullanabilirsiniz. 
+Bir uygulama bir ileti işlendikten sonra, ancak yöntemi çağrılmadan önce kilitlenirse `complete` , ileti yeniden başlatıldığında uygulamaya yeniden gönderilir. Bu davranış genellikle *en az bir kez işleme*olarak adlandırılır. Her ileti en az bir kez işlenir, ancak bazı durumlarda aynı ileti yeniden teslim edilebilir. Senaryonuz yinelenen işleme kabul edememesi durumunda, yinelenen ileti teslimini işlemek için teslim denemelerinde sabit olarak kalan ileti **MessageID** özelliğini kullanabilirsiniz. 
 
 > [!TIP]
 > Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, bir Service Bus ad alanına bağlanmanızı ve mesajlaşma varlıklarını kolayca yönetmenizi sağlar. Araç içeri/dışarı aktarma işlevselliği ve konuları, kuyrukları, abonelikleri, geçiş Hizmetleri, Bildirim Hub 'larını ve Olay Hub 'larını test etme özelliği gibi gelişmiş özellikler sağlar.

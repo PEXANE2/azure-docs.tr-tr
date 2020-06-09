@@ -4,14 +4,14 @@ description: Azure Cosmos DB hesabınızı, veritabanınızı ve Kapsayıcılar�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 3f86468bcafe3d7ce78827aba761bb4e1bf920fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86045ee05e4acb15e2268dce4f68387b1527e4b6
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273639"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509534"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure CLı kullanarak Azure Cosmos kaynaklarını yönetme
 
@@ -19,18 +19,33 @@ Aşağıdaki kılavuzda Azure Cosmos DB hesaplarınız, veritabanlarınız ve ka
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı altında, Azure CLı sürüm 2.6.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
-## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB hesabı oluşturma
+## <a name="azure-cosmos-accounts"></a>Azure Cosmos hesapları
+
+Aşağıdaki bölümlerde aşağıdakiler dahil olmak üzere Azure Cosmos hesabının nasıl yönetileceği gösterilmektedir:
+
+* [Azure Cosmos hesabı oluşturma](#create-an-azure-cosmos-db-account)
+* [Bölge ekleme veya kaldırma](#add-or-remove-regions)
+* [Çok bölgeli yazmaları etkinleştirme](#enable-multiple-write-regions)
+* [Bölgesel yük devretme önceliğini ayarla](#set-failover-priority)
+* [Otomatik yük devretmeyi etkinleştir](#enable-automatic-failover)
+* [El ile yük devretmeyi Tetikle](#trigger-manual-failover)
+* [Hesap anahtarlarını listeleme](#list-account-keys)
+* [Salt okuma hesap anahtarlarını listeleme](#list-read-only-account-keys)
+* [Bağlantı dizelerini listeleme](#list-connection-strings)
+* [Hesap anahtarını yeniden oluştur](#regenerate-account-key)
+
+### <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB hesabı oluşturma
 
 Batı ABD 2 ve Doğu ABD 2 bölgelerinde SQL API 'SI, oturum tutarlılığı Azure Cosmos DB bir hesap oluşturun:
 
 > [!IMPORTANT]
-> Azure Cosmos hesap adı küçük ve 31 karakterden az olmalıdır.
+> Azure Cosmos hesap adı küçük ve 44 karakterden az olmalıdır.
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
-accountName='mycosmosaccount' #needs to be lower case and less than 31 characters
+accountName='mycosmosaccount' #needs to be lower case and less than 44 characters
 
 az cosmosdb create \
     -n $accountName \
@@ -40,18 +55,18 @@ az cosmosdb create \
     --locations regionName='East US 2' failoverPriority=1 isZoneRedundant=False
 ```
 
-## <a name="add-or-remove-regions"></a>Bölge ekleme veya kaldırma
+### <a name="add-or-remove-regions"></a>Bölge ekleme veya kaldırma
 
 İki bölgeyle bir Azure Cosmos hesabı oluşturun, bölge ekleyin ve bölge kaldırın.
 
 > [!NOTE]
-> Azure Cosmos hesabı için aynı anda `locations` bölge ekleyemez veya kaldıramaz ve diğer özellikleri değiştiremezsiniz. Bölgeleri değiştirmek, hesap kaynağında yapılan diğer değişiklikten farklı bir işlem olarak gerçekleştirilmelidir.
+> Azure Cosmos hesabı için aynı anda bölge ekleyemez veya kaldıramaz `locations` ve diğer özellikleri değiştiremezsiniz. Bölgeleri değiştirmek, hesap kaynağında yapılan diğer değişiklikten farklı bir işlem olarak gerçekleştirilmelidir.
 > [!NOTE]
 > Bu komut, bölge eklemenize ve kaldırmanıza izin verir ancak yük devretme önceliklerini değiştirmenize veya el ile yük devretme tetiklemesine izin vermez. Bkz. [Yük devretme önceliğini ayarlama](#set-failover-priority) ve [El Ile yük devretmeyi tetikleme](#trigger-manual-failover).
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
-accountName='mycosmosaccount' # must be lower case and <31 characters
+accountName='mycosmosaccount'
 
 # Create an account with 2 regions
 az cosmosdb create --name $accountName --resource-group $resourceGroupName \
@@ -70,7 +85,7 @@ az cosmosdb update --name $accountName --resource-group $resourceGroupName \
     --locations regionName="East US 2" failoverPriority=1 isZoneRedundant=False
 ```
 
-## <a name="enable-multiple-write-regions"></a>Birden çok yazma bölgesini etkinleştir
+### <a name="enable-multiple-write-regions"></a>Birden çok yazma bölgesini etkinleştir
 
 Cosmos hesabı için çoklu yönetici 'yi etkinleştirme
 
@@ -85,7 +100,7 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 az cosmosdb update --ids $accountId --enable-multiple-write-locations true
 ```
 
-## <a name="set-failover-priority"></a>Yük devretme önceliğini ayarla
+### <a name="set-failover-priority"></a>Yük devretme önceliğini ayarla
 
 Otomatik yük devretme için yapılandırılmış bir Azure Cosmos hesabının yük devretme önceliğini ayarlama
 
@@ -99,10 +114,10 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 
 # Make South Central US the next region to fail over to instead of East US 2
 az cosmosdb failover-priority-change --ids $accountId \
-    --failover-policies 'West US 2'=0 'South Central US'=1 'East US 2'=2
+    --failover-policies 'West US 2=0' 'South Central US=1' 'East US 2=2'
 ```
 
-## <a name="enable-automatic-failover"></a>Otomatik yük devretmeyi etkinleştir
+### <a name="enable-automatic-failover"></a>Otomatik yük devretmeyi etkinleştir
 
 ```azurecli-interactive
 # Enable automatic failover on an existing account
@@ -115,13 +130,13 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 az cosmosdb update --ids $accountId --enable-automatic-failover true
 ```
 
-## <a name="trigger-manual-failover"></a>El ile yük devretmeyi Tetikle
+### <a name="trigger-manual-failover"></a>El ile yük devretmeyi Tetikle
 
 > [!CAUTION]
 > Öncelik = 0 olan bölgenin değiştirilmesi, bir Azure Cosmos hesabı için el ile yük devretmeyi tetikler. Diğer herhangi bir öncelik değişikliği, yük devretmeyi tetiklemez.
 
 ```azurecli-interactive
-# Assume region order is initially 'West US 2'=0 'East US 2'=1 'South Central US'=2 for account
+# Assume region order is initially 'West US 2=0' 'East US 2=1' 'South Central US=2' for account
 resourceGroupName='myResourceGroup'
 accountName='mycosmosaccount'
 
@@ -130,10 +145,10 @@ accountId=$(az cosmosdb show -g $resourceGroupName -n $accountName --query id -o
 
 # Trigger a manual failover to promote East US 2 as new write region
 az cosmosdb failover-priority-change --ids $accountId \
-    --failover-policies 'East US 2'=0 'South Central US'=1 'West US 2'=2
+    --failover-policies 'East US 2=0' 'South Central US=1' 'West US 2=2'
 ```
 
-## <a name="list-all-account-keys"></a><a id="list-account-keys"></a>Tüm hesap anahtarlarını Listele
+### <a name="list-all-account-keys"></a><a id="list-account-keys"></a>Tüm hesap anahtarlarını Listele
 
 Cosmos hesabı için tüm anahtarları alın.
 
@@ -147,7 +162,7 @@ az cosmosdb keys list \
    -g $resourceGroupName
 ```
 
-## <a name="list-read-only-account-keys"></a>Salt okuma hesap anahtarlarını listeleme
+### <a name="list-read-only-account-keys"></a>Salt okuma hesap anahtarlarını listeleme
 
 Cosmos hesabı için salt okuma anahtarları alın.
 
@@ -162,7 +177,7 @@ az cosmosdb keys list \
     --type read-only-keys
 ```
 
-## <a name="list-connection-strings"></a>Bağlantı dizelerini listeleme
+### <a name="list-connection-strings"></a>Bağlantı dizelerini listeleme
 
 Cosmos hesabı için bağlantı dizelerini alın.
 
@@ -177,7 +192,7 @@ az cosmosdb keys list \
     --type connection-strings
 ```
 
-## <a name="regenerate-account-key"></a>Hesap anahtarını yeniden oluştur
+### <a name="regenerate-account-key"></a>Hesap anahtarını yeniden oluştur
 
 Cosmos hesabı için yeni bir anahtar oluşturun.
 
@@ -190,7 +205,16 @@ az cosmosdb keys regenerate \
     --key-kind secondary
 ```
 
-## <a name="create-a-database"></a>Veritabanı oluşturma
+## <a name="azure-cosmos-db-database"></a>Azure Cosmos DB veritabanı
+
+Aşağıdaki bölümlerde aşağıdakiler de dahil olmak üzere Azure Cosmos DB veritabanının nasıl yönetileceği gösterilmektedir:
+
+* [Veritabanı oluşturma](#create-a-database)
+* [Paylaşılan verimlilik ile veritabanı oluşturma](#create-a-database-with-shared-throughput)
+* [Veritabanı aktarım hızını değiştirme](#change-database-throughput)
+* [Bir veritabanındaki kilitleri yönetme](#manage-lock-on-a-database)
+
+### <a name="create-a-database"></a>Veritabanı oluşturma
 
 Cosmos veritabanı oluşturma.
 
@@ -205,7 +229,7 @@ az cosmosdb sql database create \
     -n $databaseName
 ```
 
-## <a name="create-a-database-with-shared-throughput"></a>Paylaşılan verimlilik ile veritabanı oluşturma
+### <a name="create-a-database-with-shared-throughput"></a>Paylaşılan verimlilik ile veritabanı oluşturma
 
 Paylaşılan aktarım hızı ile Cosmos veritabanı oluşturma.
 
@@ -222,7 +246,7 @@ az cosmosdb sql database create \
     --throughput $throughput
 ```
 
-## <a name="change-the-throughput-of-a-database"></a>Bir veritabanının verimini değiştirme
+### <a name="change-database-throughput"></a>Veritabanı aktarım hızını değiştirme
 
 Cosmos veritabanının verimini 1000 RU/s ile artırın.
 
@@ -248,7 +272,48 @@ az cosmosdb sql database throughput update \
     --throughput $newRU
 ```
 
-## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+### <a name="manage-lock-on-a-database"></a>Bir veritabanında kilidi yönetme
+
+Bir veritabanına silme kilidi koyun. Bu şekilde nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için bkz. [SDK 'lardan değişiklikleri önler](role-based-access-control.md#preventing-changes-from-cosmos-sdk).
+
+```azurecli-interactive
+resourceGroupName='myResourceGroup'
+accountName='my-cosmos-account'
+databaseName='myDatabase'
+
+lockType='CanNotDelete' # CanNotDelete or ReadOnly
+databaseParent="databaseAccounts/$accountName"
+databaseLockName="$databaseName-Lock"
+
+# Create a delete lock on database
+az lock create --name $databaseLockName \
+    --resource-group $resourceGroupName \
+    --resource-type Microsoft.DocumentDB/sqlDatabases \
+    --lock-type $lockType \
+    --parent $databaseParent \
+    --resource $databaseName
+
+# Delete lock on database
+lockid=$(az lock show --name $databaseLockName \
+        --resource-group $resourceGroupName \
+        --resource-type Microsoft.DocumentDB/sqlDatabases \
+        --resource $databaseName \
+        --parent $databaseParent \
+        --output tsv --query id)
+az lock delete --ids $lockid
+```
+
+## <a name="azure-cosmos-db-container"></a>Azure Cosmos DB kapsayıcı
+
+Aşağıdaki bölümlerde aşağıdakiler dahil Azure Cosmos DB kapsayıcısının nasıl yönetileceği gösterilmektedir:
+
+* [Bir kapsayıcı oluşturma](#create-a-container)
+* [TTL etkin olan bir kapsayıcı oluşturma](#create-a-container-with-ttl)
+* [Özel dizin ilkesiyle kapsayıcı oluşturma](#create-a-container-with-a-custom-index-policy)
+* [Kapsayıcı verimini değiştirme](#change-container-throughput)
+* [Bir kapsayıcıdaki kilitleri yönetme](#manage-lock-on-a-container)
+
+### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
 Varsayılan dizin ilkesi, bölüm anahtarı ve 400 RU/s ile Cosmos kapsayıcısı oluşturun.
 
@@ -267,7 +332,7 @@ az cosmosdb sql container create \
     -p $partitionKey --throughput $throughput
 ```
 
-## <a name="create-a-container-with-ttl"></a>TTL ile kapsayıcı oluşturma
+### <a name="create-a-container-with-ttl"></a>TTL ile kapsayıcı oluşturma
 
 TTL etkin olan bir Cosmos kapsayıcısı oluşturun.
 
@@ -286,7 +351,7 @@ az cosmosdb sql container update \
     --ttl=86400
 ```
 
-## <a name="create-a-container-with-a-custom-index-policy"></a>Özel dizin ilkesiyle kapsayıcı oluşturma
+### <a name="create-a-container-with-a-custom-index-policy"></a>Özel dizin ilkesiyle kapsayıcı oluşturma
 
 Özel dizin ilkesi, uzamsal dizin, bileşik dizin, bölüm anahtarı ve 400 RU/sn ile Cosmos kapsayıcısı oluşturun.
 
@@ -338,7 +403,7 @@ az cosmosdb sql container create \
 rm -f "idxpolicy-$uniqueId.json"
 ```
 
-## <a name="change-the-throughput-of-a-container"></a>Kapsayıcının verimini değiştirme
+### <a name="change-container-throughput"></a>Kapsayıcı verimini değiştirme
 
 Cosmos kapsayıcısının verimini 1000 RU/s ile artırın.
 
@@ -364,6 +429,39 @@ az cosmosdb sql container throughput update \
     -d $databaseName \
     -n $containerName \
     --throughput $newRU
+```
+
+### <a name="manage-lock-on-a-container"></a>Kapsayıcıda kilidi yönetme
+
+Bir kapsayıcıya silme kilidi koyun. Bu şekilde nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için bkz. [SDK 'lardan değişiklikleri önler](role-based-access-control.md#preventing-changes-from-cosmos-sdk).
+
+```azurecli-interactive
+resourceGroupName='myResourceGroup'
+accountName='my-cosmos-account'
+databaseName='myDatabase'
+containerName='myContainer'
+
+lockType='CanNotDelete' # CanNotDelete or ReadOnly
+databaseParent="databaseAccounts/$accountName"
+containerParent="databaseAccounts/$accountName/sqlDatabases/$databaseName"
+containerLockName="$containerName-Lock"
+
+# Create a delete lock on container
+az lock create --name $containerLockName \
+    --resource-group $resourceGroupName \
+    --resource-type Microsoft.DocumentDB/containers \
+    --lock-type $lockType \
+    --parent $containerParent \
+    --resource $containerName
+
+# Delete lock on container
+lockid=$(az lock show --name $containerLockName \
+        --resource-group $resourceGroupName \
+        --resource-type Microsoft.DocumentDB/containers \
+        --resource-name $containerName \
+        --parent $containerParent \
+        --output tsv --query id)
+az lock delete --ids $lockid
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

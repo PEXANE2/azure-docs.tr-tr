@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01c625bebbcd2e619a8125fdfb92673cd02966b2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: c1dcc91c6a7b823cd89b3ce4bf4d611b9923f87d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583202"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558723"
 ---
 # <a name="conditional-access-grant"></a>Koşullu erişim: ver
 
@@ -28,7 +28,7 @@ Bir yönetici, koşullu erişim ilkesinde, kaynaklara erişim izni vermek veya e
 
 Blok tüm atamaları hesaba ayırır ve koşullu erişim ilkesi yapılandırmasına bağlı olarak erişimi engeller.
 
-Blok, uygun bilgilerle silinmeli güçlü bir denetimdir. Bir yönetici, etkinleştirmeden önce test etmek için [yalnızca rapor modunu](concept-conditional-access-report-only.md) kullanmalıdır.
+Blok, uygun bilgilerle silinmeli güçlü bir denetimdir. Blok deyimlerine sahip ilkeler istenmeden yan etkilere sahip olabilir. Uygun test ve doğrulama, ölçeklendirmeye etkinleştirilmeden önce hayati önem taşır. Yöneticiler, değişiklik yaparken koşullu erişim [yalnızca rapor modu](concept-conditional-access-report-only.md) ve [What If aracı](what-if-tool.md) gibi araçları kullanmalıdır.
 
 ## <a name="grant-access"></a>Erişim verme
 
@@ -62,6 +62,8 @@ Cihazların uyumlu olarak işaretlenmeleri için önce Azure AD 'de kayıtlı ol
 ### <a name="require-hybrid-azure-ad-joined-device"></a>Karma Azure AD 'ye katılmış cihaz gerektir
 
 Kuruluşlar, koşullu erişim ilkesinin bir parçası olarak cihaz kimliğini kullanmayı seçebilir. Kuruluşlar, bu onay kutusu kullanılarak cihazların karma Azure AD 'ye katılmış olmasını gerektirebilir. Cihaz kimlikleri hakkında daha fazla bilgi için, [cihaz kimliği nedir?](../devices/overview.md)makalesine bakın.
+
+[Cihaz kodu OAuth akışını](../develop/v2-oauth2-device-code.md)kullanırken, yönetilen cihaz izin verme denetimi veya cihaz durumu koşulu desteklenmez. Bunun nedeni, kimlik doğrulaması gerçekleştiren cihazın cihaz durumunu cihaza bir kod sağlamak ve belirteçteki cihaz durumunun kimlik doğrulaması gerçekleştiren cihaza kilitli olması nedeniyle oluşur. Bunun yerine Multi-Factor Authentication izin iste denetimini kullanın.
 
 ### <a name="require-approved-client-app"></a>Onaylanan istemci uygulaması gerektir
 

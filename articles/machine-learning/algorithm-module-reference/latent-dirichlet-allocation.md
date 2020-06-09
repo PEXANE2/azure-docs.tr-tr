@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/11/2020
-ms.openlocfilehash: 1384491489c175ffc338f80a99aa8d5050f835d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/05/2020
+ms.openlocfilehash: a75bf458a1c6735de42349de5d5cb6845e9ae464
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80109231"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487976"
 ---
 # <a name="latent-dirichlet-allocation"></a>Görünmeyen Dirichlet Ayırması
 
@@ -68,9 +68,9 @@ Bu modül, ham veya önceden işlenmiş bir metin sütunu içeren bir veri küme
 
 6. Çıktı değerlerini olasılıklara dönüştürmek için **Normalleştir** seçeneğini belirleyin. Bu nedenle, dönüştürülmüş değerleri tamsayılar olarak göstermek yerine, Output ve Feature veri kümesindeki değerler aşağıdaki gibi dönüştürülür:
 
-    + Veri kümesindeki değerler bir olasılık olarak temsil edilir `P(topic|document)`.
+    + Veri kümesindeki değerler bir olasılık olarak temsil edilir `P(topic|document)` .
 
-    + Özellik konu matrisi içindeki değerler bir olasılık olarak temsil edilir `P(word|topic)`.
+    + Özellik konu matrisi içindeki değerler bir olasılık olarak temsil edilir `P(word|topic)` .
 
     > [!NOTE] 
     > Azure Machine Learning tasarımcı 'da (Önizleme), geliştirdiğimiz kitaplık 0,19 sürümünden Normalleştirilmemiş *doc_topic_distr* çıktıyı desteklemediği için, bu modülde, **normalize** parametresi yalnızca **özellik konu matrisi** çıktısına uygulanabilir, **dönüştürülmüş veri kümesi** çıkışı her zaman normalleştirilir.
@@ -79,19 +79,19 @@ Bu modül, ham veya önceden işlenmiş bir metin sütunu içeren bir veri küme
 
     Bu parametreler LDA 'nın scikit-öğrenme uygulamasına özgüdür. Scikit-öğrenme konusunda ve resmi [scikit-öğrenme belgesi](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html)hakkında bazı iyi öğreticiler vardır.
 
-    + **Ro parametresi**. Konu dağıtımları seyrekliği için önceki bir olasılık sağlayın. Sköğren 'in `topic_word_prior` parametresine karşılık gelir. Sözcüklerin dağılımının düz olması beklendiğinde 1 değerini kullanırsınız; Yani, tüm kelimeler eşit kabul edilir. Çoğu sözcüğün çok seyrek görüntülendiğini düşünüyorsanız, bunu çok daha düşük bir değere ayarlayabilirsiniz.
+    + **Ro parametresi**. Konu dağıtımları seyrekliği için önceki bir olasılık sağlayın. Sköğren 'in parametresine karşılık gelir `topic_word_prior` . Sözcüklerin dağılımının düz olması beklendiğinde 1 değerini kullanırsınız; Yani, tüm kelimeler eşit kabul edilir. Çoğu sözcüğün çok seyrek görüntülendiğini düşünüyorsanız, bunu çok daha düşük bir değere ayarlayabilirsiniz.
 
-    + **Alfa parametresi**. Belge başına seyrekliği için bir önceki olasılık belirtin.  Sköğren 'in `doc_topic_prior` parametresine karşılık gelir.
+    + **Alfa parametresi**. Belge başına seyrekliği için bir önceki olasılık belirtin.  Sköğren 'in parametresine karşılık gelir `doc_topic_prior` .
 
-    + **Tahmini belge sayısı**. İşlenecek belge sayısı (satır) için en iyi tahmininizi temsil eden bir sayı yazın. Bu, modülün yeterli büyüklükte bir karma tablosu ayırmasını sağlar.  Scikit `total_samples` -öğren içindeki parametreye karşılık gelir.
+    + **Tahmini belge sayısı**. İşlenecek belge sayısı (satır) için en iyi tahmininizi temsil eden bir sayı yazın. Bu, modülün yeterli büyüklükte bir karma tablosu ayırmasını sağlar.  `total_samples`Scikit-öğren içindeki parametreye karşılık gelir.
 
-    + **Toplu Işin boyutu**. LDA modeline gönderilen her metin toplu işinde kaç satır ekleneceğini belirten bir sayı yazın. Scikit `batch_size` -öğren içindeki parametreye karşılık gelir.
+    + **Toplu Işin boyutu**. LDA modeline gönderilen her metin toplu işinde kaç satır ekleneceğini belirten bir sayı yazın. `batch_size`Scikit-öğren içindeki parametreye karşılık gelir.
 
-    + **Öğrenme güncelleştirme zamanlaması 'nda kullanılan yinelemenin başlangıç değeri**. Çevrimiçi öğrenmedeki Erken yinelemeler için öğrenme oranını aşağı örneklerdeki başlangıç değerini belirtin. Scikit `learning_offset` -öğren içindeki parametreye karşılık gelir.
+    + **Öğrenme güncelleştirme zamanlaması 'nda kullanılan yinelemenin başlangıç değeri**. Çevrimiçi öğrenmedeki Erken yinelemeler için öğrenme oranını aşağı örneklerdeki başlangıç değerini belirtin. `learning_offset`Scikit-öğren içindeki parametreye karşılık gelir.
 
-    + **Güncelleştirmeler sırasında yinelemeye uygulanan güç**. Çevrimiçi güncelleştirmeler sırasında öğrenme oranını denetlemek için yineleme sayısına uygulanan güç düzeyini belirtin. Scikit `learning_decay` -öğren içindeki parametreye karşılık gelir.
+    + **Güncelleştirmeler sırasında yinelemeye uygulanan güç**. Çevrimiçi güncelleştirmeler sırasında öğrenme oranını denetlemek için yineleme sayısına uygulanan güç düzeyini belirtin. `learning_decay`Scikit-öğren içindeki parametreye karşılık gelir.
 
-    + **Veri üzerinden geçen geçiş sayısı**. Algoritmanın verilerin üzerinde kaç kez dolacaktır için en fazla sayıyı belirtin. Scikit `max_iter` -öğren içindeki parametreye karşılık gelir.
+    + **Veri üzerinden geçen geçiş sayısı**. Algoritmanın verilerin üzerinde kaç kez dolacaktır için en fazla sayıyı belirtin. `max_iter`Scikit-öğren içindeki parametreye karşılık gelir.
 
 8. Metin sınıflandırmadan önce, bir ilk geçişte n-gram listesini oluşturmak istiyorsanız, **Ngram sözlüğü** veya **lda öncesinde Ngram**sözlüğü oluştur seçeneğini belirleyin.
 
@@ -116,7 +116,8 @@ Modülün iki çıkışı vardır:
 
 Bu modül ayrıca veri kümesine LDA uygulayan *lda dönüşümünü* verir.
 
-Bu dönüştürmeyi, modülün sağ bölmesindeki **çıktılar + Günlükler** sekmesinden Kaydet ' in altında bulunan veri kümesi ile kaydedebilir ve diğer veri kümeleri için yeniden kullanabilirsiniz. Bu, büyük bir CorpU üzerinde eğitilen ve katsayıları veya kategorileri yeniden kullanmak istediğiniz durumlarda yararlı olabilir.
+Bu dönüştürmeyi farklı veri kümeleri için yeniden kullanabilirsiniz. Bu, büyük bir CorpU üzerinde eğitilen ve katsayıları veya kategorileri yeniden kullanmak istediğiniz durumlarda yararlı olabilir.
+Bu dönüştürmeyi yeniden kullanmak için, LDA modülünün sağ panelindeki **veri kümesini kaydet** simgesine tıklayarak modül listesindeki **veri kümeleri** kategorisi altında bir modül olarak saklayın. Daha sonra, bu dönüştürmeyi yeniden kullanmak için [dönüştürme modülünü uygulamak](apply-transformation.md) üzere bu modülü bağlayabilirsiniz.
 
 ### <a name="refining-an-lda-model-or-results"></a>Bir LDA modelini veya sonuçlarını iyileştirme
 
@@ -177,19 +178,19 @@ Dizin terimi hesaplandıktan sonra, tek tek metin satırları, iki metin parças
 
 ###  <a name="module-parameters"></a>Modül parametreleri
 
-|Adı|Tür|Aralık|İsteğe Bağlı|Varsayılan|Açıklama|  
+|Name|Tür|Aralık|İsteğe Bağlı|Varsayılan|Description|  
 |----------|----------|-----------|--------------|-------------|-----------------|  
 |Hedef sütun (ler)|Sütun seçimi||Gerekli|StringFeature|Hedef sütun adı veya dizini|  
 |Modeledilecek Konu sayısı|Tamsayı|[1; 1000]|Gerekli|5|Belge dağıtımını N konu başlıklarına göre modelleyin|  
 |N-gram|Tamsayı|[1; 10]|Gerekli|2|Karma oluşturma sırasında oluşturulan N-gram sırası|  
 |Normalleştir|Boole|True veya false|Gerekli|true|Çıktıyı olasılıklara normalleştirin.  Dönüştürülmüş veri kümesi P (konu&#124;belge) olur ve özellik konu matrisi P (Word&#124;konu başlığı) olacaktır|  
 |Tüm seçenekleri göster|Boole|True veya false|Gerekli|False|Scikit 'e özgü ek parametreler sunar-çevrimiçi LDA öğrenin|  
-|Ro parametresi|Kayan|[0.00001; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0,01|Önceki konu sözcüğü dağıtım|  
-|Alpha parametresi|Kayan|[0.00001; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0,01|Dağıtım öncesi belge konusu|  
+|Ro parametresi|Float|[0.00001; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0,01|Önceki konu sözcüğü dağıtım|  
+|Alpha parametresi|Float|[0.00001; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0,01|Dağıtım öncesi belge konusu|  
 |Tahmini belge sayısı|Tamsayı|[1; int. Değerini|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|1000|Tahmini belge sayısı (total_samples parametreye karşılık gelir)|  
 |Toplu işin boyutu|Tamsayı|[1; 1024]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|32|Toplu işin boyutu|  
 |Öğrenme oranı güncelleştirme zamanlaması 'nda kullanılan yinelemenin başlangıç değeri|Tamsayı|[0; int. Değerini|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0|Erken yinelemeler için öğrenme oranını aşağı doğru örneklerdeki ilk değer. Learning_offset parametresine karşılık gelir|  
-|Güncelleştirmeler sırasında yinelemeye uygulanan güç|Kayan|[0.0; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0,5|Öğrenme oranını denetlemek için yineleme sayısına güç uygulandı. Learning_decay parametresine karşılık gelir |  
+|Güncelleştirmeler sırasında yinelemeye uygulanan güç|Float|[0.0; 1.0]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|0,5|Öğrenme oranını denetlemek için yineleme sayısına güç uygulandı. Learning_decay parametresine karşılık gelir |  
 |Eğitim yinelemesi sayısı|Tamsayı|[1; 1024]|**Tüm seçenekleri göster** onay kutusu seçildiğinde geçerlidir|25|Eğitim yinelemesi sayısı|  
 |Ngram sözlüğü oluşturma|Boole|True veya false|**Tüm seçenekleri göster** onay *kutusu seçili olmadığında* geçerlidir|True|Bilgi işlem bilmesinden önce Ngram sözlüğü oluşturur. Model İnceleme ve yorumu için yararlı|  
 |Ngram sözlüğünün en büyük boyutu|Tamsayı|[1; int. Değerini|**Ngram 'ın derleme sözlüğü** seçeneği doğru olduğunda geçerlidir|20000|Ngram sözlüğünün en büyük boyutu. Girişte bulunan belirteçlerin sayısı bu boyutu aşarsa, çakışmalar oluşabilir|  

@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
-ms.custom: seodec18
-ms.openlocfilehash: ffb0cd65ed8c904098a1099540a5c3a55f605d36
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 835bcba5e24137377c33c9166b1c3076d19cacc1
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485073"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84552392"
 ---
 # <a name="connect-to-azure-storage-services"></a>Azure Storage Services 'a bağlanma
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -289,7 +289,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 Azure Machine Learning, modellerinizi Puanlama için kullanmanın birkaç yolunu sağlar. Bu yöntemlerin bazıları veri depolarına erişim sağlamaz. Puanlama sırasında veri depolarına erişmenize izin veren yöntemleri anlamak için aşağıdaki tabloyu kullanın:
 
-| Yöntem | Veri deposu erişimi | Açıklama |
+| Yöntem | Veri deposu erişimi | Description |
 | ----- | :-----: | ----- |
 | [Toplu tahmin](how-to-use-parallel-run-step.md) | ✔ | Büyük miktarlarda verileri zaman uyumsuz olarak tahmin edin. |
 | [Web hizmeti](how-to-deploy-and-where.md) | &nbsp; | Modelleri bir Web hizmeti olarak dağıtın. |

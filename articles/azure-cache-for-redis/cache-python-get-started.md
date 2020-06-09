@@ -9,13 +9,14 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - seo-python-october2019
+- tracking-python
 ms.date: 11/05/2019
-ms.openlocfilehash: 6ce3dd1cbb694988af3555765342a1c4ca3850b5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 120708cc72117495e6200f41f13422e94a58c265
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81010860"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84556476"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Hızlı başlangıç: Redsıs için Azure önbelleği kullanan bir Python uygulaması oluşturma
 
@@ -41,7 +42,7 @@ Aşağıdaki örnek, bir yönetici komut isteminden Windows 10 ' da *Reda-Kopyal
 
 ## <a name="read-and-write-to-the-cache"></a>Önbellek üzerinde okuma ve yazma
 
-Komut satırından Python komutunu çalıştırın ve aşağıdaki kodu kullanarak önbelleğinizi test edin. Ve `<Your Host Name>` `<Your Access Key>` değerlerini, Redsıs örneği için Azure önbelleğinizin değerleriyle değiştirin. Ana bilgisayar adınız * \<>. Redis.cache.Windows.net biçiminde DNS adıdır*.
+Komut satırından Python komutunu çalıştırın ve aşağıdaki kodu kullanarak önbelleğinizi test edin. `<Your Host Name>`Ve `<Your Access Key>` değerlerini, redsıs örneği Için Azure önbelleğinizin değerleriyle değiştirin. Ana bilgisayar adınız * \<DNS name> . Redis.cache.Windows.net*biçimindedir.
 
 ```python
 >>> import redis
@@ -58,7 +59,7 @@ b'bar'
 
 ## <a name="create-a-python-sample-app"></a>Python örnek uygulaması oluşturma
 
-Yeni bir metin dosyası oluşturun, aşağıdaki betiği ekleyin ve dosyayı *PythonApplication1.py*olarak kaydedin. Ve `<Your Host Name>` `<Your Access Key>` değerlerini, Redsıs örneği için Azure önbelleğinizin değerleriyle değiştirin. Ana bilgisayar adınız * \<>. Redis.cache.Windows.net biçiminde DNS adıdır*.
+Yeni bir metin dosyası oluşturun, aşağıdaki betiği ekleyin ve dosyayı *PythonApplication1.py*olarak kaydedin. `<Your Host Name>`Ve `<Your Access Key>` değerlerini, redsıs örneği Için Azure önbelleğinizin değerleriyle değiştirin. Ana bilgisayar adınız * \<DNS name> . Redis.cache.Windows.net*biçimindedir.
 
 ```python
 import redis

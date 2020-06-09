@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d4e7077c338586298c5e7f0805c3d47b08a7a108
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 149ac61e4737faa81e55fac3e07133c73bbc00d5
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184342"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488129"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Hızlı başlangıç: yerleşik Azure Sentinel
 
@@ -57,6 +57,9 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
    > - Azure Güvenlik Merkezi tarafından oluşturulan varsayılan çalışma alanları listede görünmez; Azure Sentinel 'i bunlara yükleyemezsiniz.
    > - Azure Sentinel, Çin ve Almanya (Sovereign) bölgeleri hariç Log Analytics herhangi bir [ga bölgesindeki](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) çalışma alanlarında çalıştırılabilir. Azure Sentinel tarafından oluşturulan (olaylar, yer işaretleri ve uyarı kuralları gibi) veriler, bu çalışma alanlarından birinde bulunan bazı müşteri verilerini içeren Avrupa (Avrupa 'da bulunan çalışma alanları için), Avustralya (Avustralya 'da bulunan çalışma alanları için) veya Doğu ABD (diğer bölgelerde bulunan çalışma alanları için).
 
+   >[!IMPORTANT]
+   > - Bir çalışma alanında Azure Sentinel etkinleştirildikten sonra, bu çalışma alanının diğer kaynak gruplarına veya aboneliklerine taşınması desteklenmez. Çalışma alanını taşımanız gerekiyorsa, rehberlik için desteğe başvurun.
+
 1. **Azure Sentinel Ekle**' yi seçin.
   
 
@@ -65,7 +68,7 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
 Azure Sentinel, hizmete bağlanarak ve olayları ve günlükleri Azure Sentinel 'e ileterek hizmet ve uygulamalarla bağlantı kurar. Makineler ve sanal makineler için, günlükleri toplayan ve bunları Azure Sentinel 'e ileten Azure Sentinel Aracısı 'nı yükleyebilirsiniz. Güvenlik duvarları ve proxy 'ler için Azure Sentinel bir Linux Syslog sunucusu kullanır. Aracı üzerine yüklenir ve aracı günlük dosyalarını toplayıp Azure Sentinel 'e iletir. 
  
 1. **Veri bağlayıcıları**' na tıklayın.
-2. Bağlandığınız her veri kaynağı için bir kutucuk vardır.<br>
+1. Bağlandığınız her veri kaynağı için bir kutucuk vardır.<br>
 Örneğin **Azure Active Directory**' ye tıklayın. Bu veri kaynağını bağladığınızda, Azure AD 'deki tüm günlükleri Azure Sentinel 'e akışla alırsınız. Ne tür Günlükler alınacağını seçin-oturum açma günlükleri ve/veya denetim günlükleri. <br>
 Azure Sentinel, en altta, her bağlayıcı için hangi çalışma kitaplarını yükleyeceksiniz? böylece verileriniz genelinde ilginç Öngörüler elde edebilirsiniz. <br> Daha fazla bilgi için yükleme yönergelerini izleyin veya [ilgili bağlantı kılavuzuna bakın](connect-data-sources.md) . Veri bağlayıcıları hakkında daha fazla bilgi için bkz. [Microsoft hizmetlerini bağlama](connect-data-sources.md).
 

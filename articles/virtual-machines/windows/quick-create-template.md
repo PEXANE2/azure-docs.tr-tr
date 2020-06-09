@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 7ae8c21ef12a1233268fda772525e91be9d62bb6
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 6ef929a2934d8480ce6d1eca8bb7ba3b70580110
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84435481"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84551987"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-a-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak Windows sanal makinesi oluşturma
 
@@ -23,9 +23,13 @@ Bu hızlı başlangıçta, Azure 'da bir Windows sanal makinesini (VM) dağıtma
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
+## <a name="prerequisites"></a>Ön koşullar
 
+Yok.
 
-## <a name="review-the-template"></a>Şablonu gözden geçirme
+## <a name="create-a-windows-virtual-machine"></a>Windows sanal makinesi oluşturma
+
+### <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
 
@@ -44,11 +48,11 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 
 
 
-## <a name="deploy-the-template"></a>Şablonu dağıtma
+### <a name="deploy-the-template"></a>Şablonu dağıtma
 
 1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon bir anahtar kasası ve gizli dizi oluşturur.
 
-    [![Azure’a dağıtma](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json)
+    [![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json)
 
 1. Aşağıdaki değerleri seçin veya girin. Kullanılabilir olduğunda varsayılan değerleri kullanın.
 

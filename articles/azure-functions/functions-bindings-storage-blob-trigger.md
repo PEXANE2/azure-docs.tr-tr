@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: c594f269d32bc87b2389c430343f6480e97bc5f6
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.custom: tracking-python
+ms.openlocfilehash: c88ace8693d15a58c78c70ba46001c98e92fc0a6
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142257"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559989"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Blob depolama tetikleyicisi
 
@@ -40,7 +41,7 @@ Blobları işlemeye yönelik başka bir yaklaşım, oluşturulmakta veya değiş
 
 ## <a name="example"></a>Örnek
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnek, kapsayıcıda bir blob eklendiğinde veya güncelleştirilirken bir günlüğü yazan bir [C# işlevini](functions-dotnet-class-library.md) gösterir `samples-workitems` .
 
@@ -196,7 +197,7 @@ public void run(
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [C# sınıf kitaplıklarında](functions-dotnet-class-library.md), bir blob tetikleyicisi yapılandırmak için aşağıdaki öznitelikleri kullanın:
 
@@ -274,7 +275,7 @@ Kullanılacak depolama hesabı aşağıdaki sırayla belirlenir:
 
 Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `BlobTrigger` .
 
-|function. JSON özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** | yok | Olarak ayarlanmalıdır `blobTrigger` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | Olarak ayarlanmalıdır `in` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. [Kullanım](#usage) bölümünde özel durumlar belirtilmiştir. |
@@ -286,7 +287,7 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladı�
 
 ## <a name="usage"></a>Kullanım
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
@@ -352,7 +353,7 @@ Blob, * {20140101} -soundfile. mp3*olarak adlandırılmışsa, `name` işlev kod
 
 ## <a name="metadata"></a>Meta Veriler
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 

@@ -5,13 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.custom: has-adal-ref
-ms.openlocfilehash: 4e3edc9819fc3a282cc707db636c8bb213b13776
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.custom: has-adal-ref, tracking-python
+ms.openlocfilehash: 1203feaf6b400e91e6ab5381df0af245db0a2973
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714483"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559552"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>Öğretici: Python runbook 'u oluşturma
 
@@ -244,9 +244,9 @@ except Exception as detail:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [PowerShell runbook’u oluşturma](automation-tutorial-runbook-textual-powershell.md)
-- [Grafik runbook 'u oluşturma](automation-tutorial-runbook-graphical.md)
-- [PowerShell iş akışı runbook’u oluşturma](automation-tutorial-runbook-textual.md)
-- [Azure Otomasyonu runbook türleri](../automation-runbook-types.md)
-- [Python geliştiricileri için Azure](/azure/python/)
-- [Azure Otomasyonu GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)
+- PowerShell runbook 'larını kullanmaya başlamak için bkz. [PowerShell runbook 'U oluşturma](automation-tutorial-runbook-textual-powershell.md).
+- Grafik runbook 'ları kullanmaya başlamak için bkz. [grafik runbook 'U oluşturma](automation-tutorial-runbook-graphical.md).
+- PowerShell iş akışı runbook 'larını kullanmaya başlamak için bkz. [PowerShell iş akışı runbook 'U oluşturma](automation-tutorial-runbook-textual.md).
+- Runbook türleri, avantajları ve sınırlamaları hakkında daha fazla bilgi için bkz. [Azure Otomasyonu runbook türleri](../automation-runbook-types.md).
+- Python ile Azure için geliştirme hakkında bilgi edinmek için bkz. [Python geliştiricileri Için Azure](/azure/python/).
+- Örnek Python 2 runbook 'larını görüntülemek için bkz. [Azure Otomasyonu GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python).

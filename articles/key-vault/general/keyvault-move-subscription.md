@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 450aa58d4ad9cbb721e621ec3db8b4ca7e914aa1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6fe25efe8f38772162c916c8d0b965267d457c0c
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121210"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488826"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault başka bir aboneliğe taşıma
 
@@ -66,9 +66,8 @@ Azure portal Azure Ilke sayfasına gitdiğinizden emin olun ve geçerli aboneli�
 4. "Taşı" düğmesini seçin
 5. Açılan menüden "başka aboneliğe geçme" seçeneğini belirleyin
 6. Anahtar kasanızı taşımak istediğiniz kaynak grubunu seçin
-7. Anahtar kasanızı taşımak istediğiniz kaynak grubunu seçin
-8. Kaynakları taşıma hakkında uyarı bildirimi
-9. "Tamam" ı seçin
+7. Kaynakları taşıma hakkında uyarı bildirimi
+8. "Tamam" ı seçin
 
 ### <a name="additional-steps-post-move"></a>Ek adımlar (taşıma sonrası)
 

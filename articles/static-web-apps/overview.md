@@ -1,5 +1,5 @@
 ---
-title: Azure statik Web Apps nedir?
+title: Statik Web Uygulamaları nedir?
 description: Azure statik Web Apps 'nin temel özellikleri ve işlevleri.
 services: static-web-apps
 author: craigshoemaker
@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: d416044599535e8acd363d09099e8667bba59a0a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 476b81fc9aceae3f05ed54e7b2b11be381121bd8
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599970"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488928"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi nedir?
 
@@ -30,7 +30,7 @@ Statik Web Apps, statik varlıklar geleneksel bir Web sunucusundan ayrılır ve 
 
 ## <a name="key-features"></a>Önemli özellikler
 
-- HTML, CSS, JavaScript ve görüntüler gibi statik içerik için **ücretsiz web barındırma** .
+- HTML, CSS, JavaScript ve görüntüler gibi statik içerik için **Web barındırma** .
 - Azure Işlevleri tarafından sunulan **TÜMLEŞIK API** desteği.
 - Depo değişikliklerinin derlemeleri ve dağıtımları tetikleyen **birinci taraf GitHub tümleştirmesi** .
 - **Genel olarak dağıtılmış** statik içerik, içeriği kullanıcılarınıza yaklaştırır.

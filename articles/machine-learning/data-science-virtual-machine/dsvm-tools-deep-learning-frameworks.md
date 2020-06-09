@@ -6,16 +6,17 @@ keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
+ms.custom: tracking-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: d8a5cf428f41b130e6faf68ac87a075c15211099
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25ce99d3dced3caf1ec4bcce13b062b28774642d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270075"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557478"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Azure Veri Bilimi VM'si için derin öğrenme ve AI çerçeveleri
 DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
@@ -26,7 +27,7 @@ DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
 | ------------- | ------------- |
 | Desteklenen sürüm (ler) | |
 | Desteklenen DSVM sürümleri      | Linux (Ubuntu)     |
-| DSVM 'de nasıl yapılandırılır/yüklenir?  | Caffe, ' da `/opt/caffe`yüklüdür.   Örnekler içinde `/opt/caffe/examples`.|
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | Caffe, ' da yüklüdür `/opt/caffe` .   Örnekler içinde `/opt/caffe/examples` .|
 | Nasıl çalıştırılır?      | X2Go kullanarak sanal makinenizde oturum açın ve ardından yeni bir Terminal başlatın ve aşağıdakileri girin:<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>Örnek Not defterleri ile yeni bir tarayıcı penceresi açılır. İkililer/seçenek/Caffe/Build/Install/bina 'da yüklenir.<br/><br/>Caffe 'nin yüklü sürümü Python 2,7 gerektirir ve varsayılan olarak etkinleştirilen Python 3,5 ile çalışmaz. Python 2,7 ' ye geçmek için, `source activate root` Anaconda ortamına geçiş yapmak üzere öğesini çalıştırın.|    
 
 ## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
@@ -45,7 +46,7 @@ DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
 | Desteklenen sürüm (ler) | 5,2 |
 | Desteklenen DSVM sürümleri      | Linux (Ubuntu)     |
 | DSVM 'de nasıl yapılandırılır/yüklenir?  | Chainer, Python 3,5 ' ye yüklenir. |
-| Nasıl çalıştırılır?      | Terminal: Python 3,5 ortamını etkinleştirin, çalıştırın `python`ve ardından. `import chainer` <br/> * JupyterHub: [jupyterhub 'A bağlanın](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)ve ardından örnek not defterlerini bulmak Için Chainer dizinine gidin.| 
+| Nasıl çalıştırılır?      | Terminal: Python 3,5 ortamını etkinleştirin, çalıştırın `python` ve ardından `import chainer` . <br/> * JupyterHub: [jupyterhub 'A bağlanın](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)ve ardından örnek not defterlerini bulmak Için Chainer dizinine gidin.| 
 
 ## <a name="cuda-cudnn-nvidia-driver"></a>[CUDA, cuDNN, NVIDIA Sürücüsü](https://developer.nvidia.com/cuda-toolkit)
 
@@ -90,7 +91,7 @@ DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
 | Desteklenen sürüm (ler) | 1.3.0 |
 | Desteklenen DSVM sürümleri      | Windows ve Linux   |
 | DSVM 'de nasıl yapılandırılır/yüklenir?  | MXNet, Windows 'da `C:\dsvm\tools\mxnet` ve `/dsvm/tools/mxnet` Ubuntu 'da yüklüdür. Python bağlamaları [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) ' de Python 3,6 ' ye yüklenir ve [Linux](./dsvm-tools-languages.md#python-linux-edition)üzerinde Python 3,5 ' de bulunur), Ubuntu dsvm 'ye de R bağlamaları dahildir. |
-| Nasıl çalıştırılır?      | Terminal: doğru Conda ortamını etkinleştirip çalıştırın `import mxnet`. <br/>Jupyter: [Jupyter](provision-vm.md#access-the-dsvm) veya [Jupyterhub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)'a bağlanın ve sonra örnekler için `mxnet` dizini açın. |
+| Nasıl çalıştırılır?      | Terminal: doğru Conda ortamını etkinleştirip çalıştırın `import mxnet` . <br/>Jupyter: [Jupyter](provision-vm.md#access-the-dsvm) veya [Jupyterhub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)'a bağlanın ve sonra `mxnet` örnekler için dizini açın. |
 
 ## <a name="mxnet-model-server"></a>[MXNet Model Server](https://github.com/awslabs/mxnet-model-server#quick-start)
 
@@ -99,7 +100,7 @@ DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
 | Desteklenen sürüm (ler) | 1.0.1 |
 | Desteklenen DSVM sürümleri      | Windows ve Linux   |
 | DSVM 'de nasıl yapılandırılır/yüklenir?  | MXNet model sunucusu, [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) ' de Python 3,6 ' de ve [Linux](./dsvm-tools-languages.md#python-linux-edition)üzerinde Python 3,5 ' de yüklüdür) |
-| Nasıl çalıştırılır?      | Terminal: her `sudo systemctl stop jupyterhub` ikisi de aynı bağlantı noktasını dinlemek için, önce JupyterHub hizmetini durdurmak üzere çalıştırın. Ardından, doğru Conda ortamını etkinleştirip çalıştırın`mxnet-model-server --start --models squeezenet=https://s3.amazonaws.com/model-server/model_archive_1.0/squeezenet_v1.1.mar` |
+| Nasıl çalıştırılır?      | Terminal: `sudo systemctl stop jupyterhub` her ikisi de aynı bağlantı noktasını dinlemek için, önce JupyterHub hizmetini durdurmak üzere çalıştırın. Ardından, doğru Conda ortamını etkinleştirip çalıştırın`mxnet-model-server --start --models squeezenet=https://s3.amazonaws.com/model-server/model_archive_1.0/squeezenet_v1.1.mar` |
 
 ## <a name="nvidia-system-management-interface-nvidia-smi"></a>[NVIDIA sistem yönetimi arabirimi (NVIDIA-SMI)](https://developer.nvidia.com/nvidia-system-management-interface)
 
@@ -109,7 +110,7 @@ DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
 | Desteklenen DSVM sürümleri      | Windows ve Linux   |
 | Ne için? | GPU etkinliğini sorgulamak için NVıDıA aracı |
 | DSVM 'de nasıl yapılandırılır/yüklenir?  | `nvidia-smi`sistem yolunda. |
-| Nasıl çalıştırılır?      | **GPU 'nun bulunduğu**bir sanal makinede, bir komut istemi açın (Windows üzerinde) veya bir terminalde (Linux 'ta) ve ardından komutunu çalıştırın `nvidia-smi`. |
+| Nasıl çalıştırılır?      | **GPU 'nun bulunduğu**bir sanal makinede, bir komut istemi açın (Windows üzerinde) veya bir terminalde (Linux 'ta) ve ardından komutunu çalıştırın `nvidia-smi` . |
 
 ## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 

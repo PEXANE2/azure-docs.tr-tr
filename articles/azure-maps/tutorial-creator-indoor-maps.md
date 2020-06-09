@@ -3,17 +3,17 @@ title: Inkapılı haritalar oluşturmak için Oluşturucu kullanma
 description: Inkapılı haritalar oluşturmak için Azure haritalar Oluşturucu kullanın.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4d150135e15fb167a9c2d56c74e7bc4fc91c0953
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c27752d7a4b8e99dd70563cece02a4fd4e67bdc1
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745931"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560358"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Inkapılı haritalar oluşturmak için Oluşturucu kullanma
 
@@ -38,6 +38,9 @@ Inkapısı haritaları oluşturmak için:
 4. [Örnek çizim paketini](https://github.com/Azure-Samples/am-creator-indoor-data-examples)indirin.
 
 Bu öğretici [Postman](https://www.postman.com/) uygulamasını kullanır, ancak farklı bir API geliştirme ortamı seçebilirsiniz.
+
+>[!IMPORTANT]
+> Bu belgedeki API URL 'lerinin, Oluşturucu kaynağınızın konumuna göre ayarlanması gerekebilir. Daha fazla ayrıntı için bkz. [creator hizmetlerine erişim](how-to-manage-creator.md#access-to-creator-services).
 
 ## <a name="upload-a-drawing-package"></a>Bir çizim paketini karşıya yükle
 

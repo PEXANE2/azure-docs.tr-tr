@@ -2,17 +2,17 @@
 title: CloudEvents şemasında olaylarla Azure Event Grid kullanma
 description: Azure Event Grid olaylar için CloudEvents şemasının nasıl kullanılacağını açıklar. Hizmet, bulut olaylarının JSON uygulamasındaki olayları destekler.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.author: babanisa
-ms.openlocfilehash: 127095bef2c67a93097bf90bea54ca1b44b16c58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: femila
+ms.openlocfilehash: 57827b1c5a43a3408d374e8bddb7b91113b2929a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81394390"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560704"
 ---
 # <a name="cloudevents-v10-schema-with-event-grid"></a>Event Grid ile CloudEvents v 1.0 şeması
 
@@ -56,7 +56,7 @@ CloudEvents biçiminde Azure Blob depolama olayına bir örnek aşağıda verilm
 
 Kullanılabilir alanlar, bunların türleri ve CloudEvents v 1.0 içindeki tanımlara ilişkin ayrıntılı bir açıklama [burada bulunabilir](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes).
 
-CloudEvents şemasında teslim edilen olaylar ve Event Grid şeması için üst bilgi değerleri, hariç aynıdır `content-type`. CloudEvents şeması için bu üst bilgi değeri olur `"content-type":"application/cloudevents+json; charset=utf-8"`. Event Grid şeması için bu üst bilgi değeri olur `"content-type":"application/json; charset=utf-8"`.
+CloudEvents şemasında teslim edilen olaylar ve Event Grid şeması için üst bilgi değerleri, hariç aynıdır `content-type` . CloudEvents şeması için bu üst bilgi değeri olur `"content-type":"application/cloudevents+json; charset=utf-8"` . Event Grid şeması için bu üst bilgi değeri olur `"content-type":"application/json; charset=utf-8"` .
 
 ## <a name="event-grid-for-cloudevents"></a>CloudEvents için Event Grid
 

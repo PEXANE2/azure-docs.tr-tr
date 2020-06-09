@@ -6,13 +6,13 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.custom: has-adal-ref
-ms.openlocfilehash: 449159f6857cb2120f4570a8c20cd82fd11016a2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.custom: has-adal-ref, tracking-python
+ms.openlocfilehash: 2a366f3d32039b29f011cba02915fc5c7a211973
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688118"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559770"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Python kullanarak Azure Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması
 > [!div class="op_single_selector"]
@@ -39,8 +39,8 @@ Bu makalede, Azure Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulamas
 Python kullanarak Data Lake Storage 1. çalışmak için üç modül yüklemeniz gerekir.
 
 * `azure-mgmt-resource` modülü, Active Directory gibi şeyler için Azure modüllerini içerir.
-* Data Lake Storage 1. `azure-mgmt-datalake-store` hesap yönetimi işlemlerini içeren modül. Bu modülle ilgili daha fazla bilgi için bkz. [Azure Data Lake Storage 1. Management Module Reference](/python/api/azure-mgmt-datalake-store/).
-* Data Lake Storage 1. `azure-datalake-store` dosya sistemi işlemlerini içeren modül. Bu modülle ilgili daha fazla bilgi için bkz. [Azure-datalake-Store FileSystem Module Reference](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
+* `azure-mgmt-datalake-store`Data Lake Storage 1. hesap yönetimi işlemlerini içeren modül. Bu modülle ilgili daha fazla bilgi için bkz. [Azure Data Lake Storage 1. Management Module Reference](/python/api/azure-mgmt-datalake-store/).
+* `azure-datalake-store`Data Lake Storage 1. dosya sistemi işlemlerini içeren modül. Bu modülle ilgili daha fazla bilgi için bkz. [Azure-datalake-Store FileSystem Module Reference](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
 
 Modülleri yüklemek için aşağıdaki komutları kullanın.
 

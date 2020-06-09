@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 06/08/2020
 ms.author: victorh
-ms.openlocfilehash: d1ec04a0c16feb6d404018ff9538b9572e1d71c2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f8bfc163fbf32a2083b6e9250daaf5ea2629d10a
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649618"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509245"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -88,7 +88,7 @@ Bkz. [Azure Güvenlik Duvarı fiyatlandırması](https://azure.microsoft.com/pri
 
 Azure PowerShell *serbest bırakma* ve *ayırma* yöntemleri kullanabilirsiniz.
 
-Örnek:
+Örneğin:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -211,3 +211,7 @@ TCP ping, aslında hedef FQDN 'ye bağlanmamıştır. Bu durum, Azure Güvenlik 
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>IP grupları tarafından desteklenen IP adresi sayısı için sınırlamalar var mı?
 
 Evet. Daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)
+
+## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>Bir IP grubunu başka bir kaynak grubuna taşıyabilir miyim?
+
+Hayır, bir IP grubunu başka bir kaynak grubuna taşımak Şu anda desteklenmiyor.

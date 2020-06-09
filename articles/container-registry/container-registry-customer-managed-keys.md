@@ -1,15 +1,15 @@
 ---
 title: Müşteri tarafından yönetilen bir anahtarla bekleyen şifreleme
-description: Azure Container Registry 'nizin geri kalanı hakkında bilgi edinin ve kayıt defterinizi Azure Key Vault ' de depolanan müşteri tarafından yönetilen bir anahtarla nasıl şifreleyeceğinizi öğrenin
+description: Azure Container Registry 'nizin geri kalanı hakkında bilgi edinin ve Premium kayıt defterinizi, Azure Key Vault depolanan müşteri tarafından yönetilen bir anahtarla nasıl şifreleyeceğinizi öğrenin
 ms.topic: article
 ms.date: 05/01/2020
 ms.custom: ''
-ms.openlocfilehash: a81305be13fd824e7674346aadcaddb83787322d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 393e51e687e95c1ff4c6a50429dd342005aad296
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683494"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509551"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Müşteri tarafından yönetilen anahtar kullanarak kayıt defterini şifreleme
 
@@ -27,7 +27,7 @@ Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanıla
 * [İçerik güveni](container-registry-content-trust.md) , müşteri tarafından yönetilen bir anahtarla şifrelenen bir kayıt defterinde şu anda desteklenmiyor.
 * Müşteri tarafından yönetilen bir anahtarla şifrelenen bir kayıt defterinde, [ACR görevleri](container-registry-tasks-overview.md) için çalıştırılan Günlükler Şu anda yalnızca 24 saat boyunca saklanır. Daha uzun bir süre için günlükleri tutmanız gerekiyorsa, bkz. [görev çalıştırma günlüklerini dışarı ve depolama](container-registry-tasks-logs.md#alternative-log-storage)Kılavuzu.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki Azure CLı adımlarını kullanmak için Azure CLı sürüm 2.2.0 veya sonraki bir sürümü gerekir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
@@ -449,7 +449,7 @@ Kayıt defterinin sistem tarafından atanan kimliğini portalda etkinleştirmek 
 
 1. Portalda Kayıt defterinize gidin. 
 1. **Ayar**  >   **kimliğini**seçin.
-1. **Sistem atandı**altında **durumu** **Açık**olarak ayarlayın. **Kaydet**’i seçin.
+1. **Sistem atandı**altında **durumu** **Açık**olarak ayarlayın. **Kaydet**'i seçin.
 1. Kimliğin **nesne kimliğini** kopyalayın.
 
 Anahtar kasanıza kimlik erişimi vermek için:

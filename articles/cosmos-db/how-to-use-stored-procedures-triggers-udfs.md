@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: tisande
-ms.openlocfilehash: 2e870e6cbc16fd98d8fccb5bbe3ac5d8be634cf2
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: tracking-python
+ms.openlocfilehash: ea34ec3bd601b784afd5bf0286768bbf5f92d040
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982318"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553022"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB'de saklı yordamları, tetikleyicileri ve kullanıcı tanımlı işlevleri kaydetme ve kullanma
 
@@ -21,7 +22,7 @@ Azure Cosmos DB'de SQL API JavaScript dilinde yazılmış saklı yordamların, t
 
 Saklı yordamlar JavaScript kullanılarak yazılır. Azure Cosmos kapsayıcısı içinde öğeleri oluşturabilir, güncelleştirebilir, okuyabilir, sorgulayabilir ve silebilir. Azure Cosmos DB saklı yordamları yazma hakkında daha fazla bilgi için, bkz. [Azure Cosmos DB makalesinde saklı yordamlar yazma](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures) .
 
-Aşağıdaki örneklerde, Azure Cosmos DB SDK 'Ları kullanılarak saklı yordamın nasıl kaydedileceği ve çağrılacağını gösterilmektedir. Bu saklı yordamın kaynağı olarak `spCreateToDoItem.js`kaydedildiği Için [bir belge oluşturma](how-to-write-stored-procedures-triggers-udfs.md#create-an-item) bölümüne bakın.
+Aşağıdaki örneklerde, Azure Cosmos DB SDK 'Ları kullanılarak saklı yordamın nasıl kaydedileceği ve çağrılacağını gösterilmektedir. Bu saklı yordamın kaynağı olarak kaydedildiği için [bir belge oluşturma](how-to-write-stored-procedures-triggers-udfs.md#create-an-item) bölümüne bakın `spCreateToDoItem.js` .
 
 > [!NOTE]
 > Bölümlenmiş kapsayıcılar için, saklı bir yordam yürütürken, istek seçeneklerinde bir bölüm anahtarı değeri belirtilmelidir. Saklı yordamlar her zaman bir bölüm anahtarına göre kapsamlandırılır. Farklı bir bölüm anahtarı değerine sahip öğeler, saklı yordama görünür olmayacaktır. Bu ayrıca tetikleyicilere de uygulanır.
@@ -197,7 +198,7 @@ client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
 
 ## <a name="how-to-run-pre-triggers"></a><a id="pre-triggers"></a>Ön Tetikleyiciler çalıştırma
 
-Aşağıdaki örneklerde, Azure Cosmos DB SDK 'larını kullanarak bir ön tetikleyiciyi kaydetme ve çağırma gösterilmektedir. Bu ön tetikleyicinin kaynağı olarak `trgPreValidateToDoItemTimestamp.js`kaydedildiği Için, [ön tetikleme örneğine](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers) bakın.
+Aşağıdaki örneklerde, Azure Cosmos DB SDK 'larını kullanarak bir ön tetikleyiciyi kaydetme ve çağırma gösterilmektedir. Bu ön tetikleyicinin kaynağı olarak kaydedildiği için, [ön tetikleme örneğine](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers) bakın `trgPreValidateToDoItemTimestamp.js` .
 
 Yürütme sırasında, ön Tetikleyiciler RequestOptions nesnesine geçirilir `PreTriggerInclude` ve ardından bir liste nesnesi içinde tetikleyicinin adını geçirerek.
 
@@ -355,7 +356,7 @@ client.CreateItem(container_link, item, {
 
 ## <a name="how-to-run-post-triggers"></a><a id="post-triggers"></a>Tetikleyicileri çalıştırma
 
-Aşağıdaki örneklerde, Azure Cosmos DB SDK 'Ları kullanılarak tetikleyiciden nasıl kaydedileceği gösterilmektedir. Bu tetikleyicinin kaynak olarak `trgPostUpdateMetadata.js`kaydedildiği, [tetikleyici sonrası örneğine](how-to-write-stored-procedures-triggers-udfs.md#post-triggers) bakın.
+Aşağıdaki örneklerde, Azure Cosmos DB SDK 'Ları kullanılarak tetikleyiciden nasıl kaydedileceği gösterilmektedir. Bu tetikleyicinin kaynak olarak kaydedildiği, [tetikleyici sonrası örneğine](how-to-write-stored-procedures-triggers-udfs.md#post-triggers) bakın `trgPostUpdateMetadata.js` .
 
 ### <a name="post-triggers---net-sdk-v2"></a>Tetikleyiciler sonrası-.NET SDK v2
 
@@ -502,7 +503,7 @@ client.CreateItem(container_link, item, {
 
 ## <a name="how-to-work-with-user-defined-functions"></a><a id="udfs"></a>Kullanıcı tanımlı işlevlerle çalışma
 
-Aşağıdaki örneklerde, Azure Cosmos DB SDK 'Ları kullanılarak Kullanıcı tanımlı bir işlevin nasıl kaydedileceği gösterilmektedir. Bu tetikleyicinin kaynağı olarak `udfTax.js`kaydedildiği Için bu [Kullanıcı tanımlı işlev örneğine](how-to-write-stored-procedures-triggers-udfs.md#udfs) başvurun.
+Aşağıdaki örneklerde, Azure Cosmos DB SDK 'Ları kullanılarak Kullanıcı tanımlı bir işlevin nasıl kaydedileceği gösterilmektedir. Bu tetikleyicinin kaynağı olarak kaydedildiği için bu [Kullanıcı tanımlı işlev örneğine](how-to-write-stored-procedures-triggers-udfs.md#udfs) başvurun `udfTax.js` .
 
 ### <a name="user-defined-functions---net-sdk-v2"></a>Kullanıcı tanımlı işlevler-.NET SDK v2
 
