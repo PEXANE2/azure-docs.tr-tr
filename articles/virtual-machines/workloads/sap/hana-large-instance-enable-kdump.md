@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 16dc15b4369904643d0138a4b8e5b94c47868d31
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 6d723e95212e457a81eedf7726bf3c5bd2499643
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204942"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488894"
 ---
 # <a name="enable-kdump-service"></a>Kdump hizmetini etkinleştir
 
@@ -30,18 +30,34 @@ Bu belgede, Azure HANA büyük örneği (**tür ı ve tür II**) üzerinde kdump
 |-----------------------------|--------------|-----------------------|-------------|
 |   Tür ı                    |  SuSE        |   SLES 12 SP3         |  S224m      |
 |   Tür ı                    |  SuSE        |   SLES 12 SP4         |  S224m      |
+|   Tür ı                    |  SuSE        |   SLES 12 SP2         |  S72        |
 |   Tür ı                    |  SuSE        |   SLES 12 SP2         |  S72m       |
 |   Tür ı                    |  SuSE        |   SLES 12 SP3         |  S72m       |
 |   Tür ı                    |  SuSE        |   SLES 12 SP2         |  S96        |
 |   Tür ı                    |  SuSE        |   SLES 12 SP3         |  S96        |
+|   Tür ı                    |  SuSE        |   SLES 12 SP2         |  S192       |
+|   Tür ı                    |  SuSE        |   SLES 12 SP3         |  S192       |
+|   Tür ı                    |  SuSE        |   SLES 12 SP4         |  S192       |
+|   Tür ı                    |  SuSE        |   SLES 12 SP2         |  S192m      |
+|   Tür ı                    |  SuSE        |   SLES 12 SP3         |  S192m      |
+|   Tür ı                    |  SuSE        |   SLES 12 SP4         |  S192m      |
+|   Tür ı                    |  SuSE        |   SLES 12 SP2         |  S144       |
+|   Tür ı                    |  SuSE        |   SLES 12 SP3         |  S144       |
+|   Tür ı                    |  SuSE        |   SLES 12 SP2         |  S144m      |
+|   Tür ı                    |  SuSE        |   SLES 12 SP3         |  S144m      |
+|   Tür II                   |  SuSE        |   SLES 12 SP2         |  S384       |
 |   Tür II                   |  SuSE        |   SLES 12 SP3         |  S384       |
-|   Tür II                   |  SuSE        |   SLES 12 SP3         |  S576m      |
+|   Tür II                   |  SuSE        |   SLES 12 SP4         |  S384       |
+|   Tür II                   |  SuSE        |   SLES 12 SP2         |  S384xm     |
 |   Tür II                   |  SuSE        |   SLES 12 SP3         |  S384xm     |
 |   Tür II                   |  SuSE        |   SLES 12 SP4         |  S384xm     |
+|   Tür II                   |  SuSE        |   SLES 12 SP2         |  S576m      |
+|   Tür II                   |  SuSE        |   SLES 12 SP3         |  S576m      |
+|   Tür II                   |  SuSE        |   SLES 12 SP4         |  S576m      |
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Kdump hizmeti, `/var/crash` dökümleri yazmak için dizini kullanır, bu dizine karşılık gelen bölümün dökümlerini barındırmak için yeterli alana sahip olduğundan emin olun.
+- Kdump hizmeti `/var/crash` , dökümleri yazmak için dizini kullanır, bu dizine karşılık gelen bölümün dökümlerini barındırmak için yeterli alana sahip olduğundan emin olun.
 
 ## <a name="setup-details"></a>Kurulum Ayrıntıları
 
@@ -68,13 +84,12 @@ Bu belgede, Azure HANA büyük örneği (**tür ı ve tür II**) üzerinde kdump
 - Çekirdek kilitlenmesinin tetiklenmesi
 
     ```bash
-    echo 1 > /proc/sys/kernel/sysrq
     echo c > /proc/sysrq-trigger
     ```
 
-- Sistem başarıyla yeniden başlatıldıktan sonra çekirdek kilitlenme günlüklerinin `/var/crash` dizinini denetleyin.
+- Sistem başarıyla yeniden başlatıldıktan sonra `/var/crash` çekirdek kilitlenme günlüklerinin dizinini denetleyin.
 
-- `/var/crash` Geçerli tarihi olan dizini varsa, kdump başarıyla etkinleştirilir.
+- `/var/crash`Geçerli tarihi olan dizini varsa, kdump başarıyla etkinleştirilir.
 
 ## <a name="support-issue"></a>Destek sorunu
 

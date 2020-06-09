@@ -10,19 +10,20 @@ ms.author: laobri
 author: lobrien
 manager: cgronlun
 ms.date: 04/28/2020
-ms.openlocfilehash: 94e45e2c5aae1633ce206fe56fe94cb9d03f9f67
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: tracking-python
+ms.openlocfilehash: b9b4f505e7d3bdfec4bb689dcb8e08c82111ba1e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84431438"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558454"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python 'da Azure Machine Learning işlem hattında otomatik ML kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning otomatikleştirilmiş ML özelliği, mümkün olan her yaklaşımı yeniden uygulamadan yüksek performanslı modelleri keşfetmenize yardımcı olur. Azure Machine Learning işlem hatlarında, verileriniz için en uygun algoritmayı hızlı bir şekilde keşfedelebilecek dağıtılabilir iş akışları oluşturabilirsiniz. Bu makalede, bir veri hazırlama adımını otomatik bir ML adımına nasıl verimli bir şekilde katılacaksınız gösterilmektedir. Otomatikleştirilmiş ML, verilerinize en uygun algoritmayı hızlıca bulabilir. bu sırada, işlem hatlarıyla birlikte MLOps ve model yaşam döngüsü için yol üzerine getirme yapabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 

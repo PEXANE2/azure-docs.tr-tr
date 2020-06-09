@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe9c9f44c42ef1e8dd6ff3401ad7201b174aa952
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 53ac540950dc6f64107ee20448b2c24981837b05
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725304"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558502"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -621,7 +621,7 @@ Durum: Ekim 27 2017
 >Bu derleme, Azure AD Connect otomatik yükseltme özelliği aracılığıyla müşteriler tarafından kullanılamaz.
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
-#### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/6814]() sorunu düzeltildi
+#### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/5046]( ) sorunu düzeltildi
 * Azure AD Connect ve Azure AD Connect Health Aracısı arasında sürüm uyumluluğu sorunu düzeltildi (eşitleme için). Bu sorun, 1.1.647.0 sürümüne yerinde yükseltme Azure AD Connect, ancak şu anda sistem durumu Aracısı sürümü 3.0.127.0 olan müşterileri etkiler. Yükseltmeden sonra, sistem durumu Aracısı artık Azure AD Connect eşitleme hizmeti ile Azure AD Sistem Sağlığı Hizmeti arasında sistem durumu verileri gönderemez. Bu düzeltmeyle birlikte Azure AD Connect yerinde yükseltme sırasında durum Aracısı sürümü 3.0.129.0 yüklenir. Sistem Durumu Aracısı sürüm 3.0.129.0 Azure AD Connect sürüm 1.1.649.0 ile uyumluluk sorununa sahip değil.
 
 
@@ -682,7 +682,7 @@ Durum: Ekim 19 2017
 * Daha önce, parola karma eşitlemesini etkinleştirmeye çalıştıysanız Azure AD Connect, AD Bağlayıcısı hesabının şirket içi AD 'den parola karmalarını eşitlemek için gerekli izinlere sahip olup olmadığını doğrulamaz. Şimdi, AD Bağlayıcısı hesabının yeterli izni yoksa Azure AD Connect sihirbaz sizi doğrular ve sizi uyarır.
 
 ### <a name="ad-fs-management"></a>AD FS Yönetimi
-#### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/6814]() sorunu düzeltildi
+#### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/5046]( ) sorunu düzeltildi
 * [MS-DS-ımnbu GUID 'Nin kaynak bağlantısı olarak](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) kullanımıyla ilgili bir sorun düzeltildi. Bu sorun, Kullanıcı oturum açma yöntemi olarak *AD FS Federasyonu* yapılandıran müşterileri etkiler. Sihirbazda *kaynak bağlantısını yapılandır* görevini yürüttüğünüzde, ' Azure AD Connect, ImmutableID için kaynak özniteliği olarak * ms-DS-ımıbu GUID ' i kullanarak geçiş yapar. Bu değişikliğin bir parçası olarak, Azure AD Connect AD FS ImmutableID talep kurallarını güncelleştirmeye çalışır. Ancak, Azure AD Connect AD FS yapılandırmak için gereken yönetici kimlik bilgilerine sahip olmadığı için bu adım başarısız oldu. Bu düzeltmeyle Azure AD Connect, şimdi *kaynak bağlantısını yapılandır* görevini yürüttüğünüzde AD FS için yönetici kimlik bilgilerini girmenizi ister.
 
 
@@ -742,7 +742,7 @@ Durum: Temmuz 23 2017
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
-#### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/6814]() sorunu düzeltildi
+#### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/5046]( ) sorunu düzeltildi
 
 * Kullanıma hazır eşitleme kuralının "AD-Kullanıcı ImmutableID" olarak kaldırılmasına neden olan bir sorun düzeltildi:
 
@@ -782,7 +782,7 @@ Durum: yayınlanmayacak. Bu derlemedeki değişiklikler 1.1.561.0 sürümüne da
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
-#### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/6814]() sorunu düzeltildi
+#### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/5046]( ) sorunu düzeltildi
 
 * OU tabanlı filtreleme yapılandırması güncellendiğinde, "AD-Kullanıcı ImmutableID" olarak kullanıma hazır eşitleme kuralının kaldırılmasına neden olan bir sorun düzeltildi. Bu eşitleme kuralı, [MS-DS-ımnbu GUID, kaynak bağlayıcı özelliği olarak](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)gereklidir.
 
@@ -813,7 +813,7 @@ Durum: Temmuz 2017
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
-#### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/6814]() sorunu düzeltildi
+#### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/5046]( ) sorunu düzeltildi
 * Var olan hizmet bağlantı noktası nesnesi üzerinde yapılandırılan doğrulanmış etki alanının hala geçerli bir etki alanı olsa bile değiştirilmesini sağlayan Initialize-ADSyncDomainJoinedComputerSync cmdlet 'inde bir sorun düzeltildi. Bu sorun, Azure AD kiracınızda hizmet bağlantı noktasını yapılandırmak için kullanılabilecek birden fazla doğrulanmış etki alanı olduğunda oluşur.
 
 #### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
@@ -1055,7 +1055,7 @@ Azure AD Connect Eşitleme
 
 Masaüstü SSO 'SU
 
-* Azure AD Connect Sihirbazı artık doğrudan kimlik doğrulama ve Masaüstü SSO 'yu yapılandırırken ağ üzerinde 9090 bağlantı noktasını açmaya gerek yoktur. Yalnızca 443 numaralı bağlantı noktası gereklidir. 
+* Azure AD Connect Sihirbazı artık doğrudan kimlik doğrulama ve Masaüstü SSO 'yu yapılandırırken ağ üzerinde 9090 bağlantı noktasını açmaya gerek yoktur. Yalnızca 443 numaralı bağlantı noktası gereklidir.
 
 ## <a name="114430"></a>1.1.443.0
 Yayımlanma tarihi: Mart 2017

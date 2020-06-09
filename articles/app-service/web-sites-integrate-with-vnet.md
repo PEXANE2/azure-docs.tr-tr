@@ -4,29 +4,25 @@ description: Uygulamayı Azure sanal ağlarla Azure App Service tümleştirme.
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
-ms.date: 04/16/2020
+ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9b7df06ea7ff07907a292bdcc32e66aafa44ae68
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: ee2c279db7dde0e3e6acadb318c470813dccc7a3
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170792"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488809"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı bir Azure sanal ağıyla tümleştirin
 
-Bu makalede Azure App Service VNet tümleştirme özelliği ve [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)uygulamalarla nasıl ayarlanacağı açıklanır. [Azure sanal ağ][VNETOverview] (VNet) Ile, Azure kaynaklarınızın çoğunu internet 'e yönlendirilemeyen bir ağa yerleştirebilirsiniz.
+Bu makalede Azure App Service VNet tümleştirme özelliği ve [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)uygulamalarla nasıl ayarlanacağı açıklanır. [Azure sanal ağ][VNETOverview] (VNet) Ile, Azure kaynaklarınızın çoğunu internet 'e yönlendirilemeyen bir ağa yerleştirebilirsiniz. VNet tümleştirme özelliği, uygulamalarınızın bir sanal ağ içindeki veya VNet aracılığıyla kaynaklara erişmesine olanak sağlar. VNet tümleştirmesi, uygulamalarınıza özel olarak erişilmesine izin vermez.
 
-Azure App Service iki çeşitlemeye sahiptir:
+Azure App Service, VNet tümleştirme özelliği üzerinde iki çeşitle sahiptir:
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
 ## <a name="enable-vnet-integration"></a>VNet tümleştirmesini etkinleştir
-
-> [!NOTE]
-> Linux uygulamalarınızın menüsünde "ağ" dikey penceresi devre dışıysa (gri renkte), bu özellik şu anda kullanılamıyor demektir.
->
 
 1. App Service portalında **ağ** Kullanıcı arabirimine gidin. **VNET tümleştirmesi**altında, **yapılandırmak Için buraya tıklayın ' ı**seçin.
 
@@ -75,8 +71,8 @@ Ağ Geçidi gerekli VNet tümleştirmesi, başka bir bölgedeki VNet 'e veya kla
 
 Ağ Geçidi için gerekli VNet tümleştirmesini kullanamazsınız:
 
-* Linux uygulamaları ile.
 * Azure ExpressRoute ile bağlantılı bir VNet ile.
+* Bir Linux uygulamasından
 * Hizmet uç noktası güvenliği sağlanmış kaynaklara erişmek için.
 * ExpressRoute ve Noktadan siteye veya siteden siteye VPN 'Leri destekleyen bir birlikte bulunma ağ geçidi ile.
 

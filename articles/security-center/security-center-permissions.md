@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.author: memildin
-ms.openlocfilehash: a4ecc7f0e11712fa3d664d1227eacb39409bd184
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 2552012678300e944a513f9d7167fa582424bf8f
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418220"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558863"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde İzinler
 
@@ -40,15 +40,14 @@ Bu rollere ek olarak iki özel Güvenlik Merkezi rolü vardır:
 
 Aşağıdaki tabloda Güvenlik Merkezi 'nde roller ve izin verilen eylemler görüntülenmektedir.
 
-| Rol | Güvenlik ilkesini Düzenle | Bir kaynak için güvenlik önerilerini uygulama</br> (' hızlı Düzelle! ' ile birlikte) | Uyarıları kapat | Uyarıları ve önerileri görüntüleme |
-|:--- |:---:|:---:|:---:|:---:|
-| Abonelik sahibi | ✔ | ✔ | ✔ | ✔ |
-| Abonelik Katılımcısı | -- | ✔ | ✔ | ✔ |
-| Kaynak grubu sahibi | -- | ✔ | -- | ✔ |
-| Kaynak grubu Katılımcısı | -- | ✔ | -- | ✔ |
-| Okuyucu | -- | -- | -- | ✔ |
-| Güvenlik Yöneticisi | ✔ | -- | ✔ | ✔ |
-| Güvenlik okuyucusu | -- | -- | -- | ✔ |
+|Eylem|Güvenlik okuyucusu/ <br> Okuyucu |Güvenlik Yöneticisi  |Kaynak grubu Katılımcısı/ <br> Kaynak grubu sahibi  |Abonelik Katılımcısı  |Abonelik sahibi  |
+|:--- |:---:|:---:|:---:|:---:|:---:|
+|Güvenlik ilkesini Düzenle|-|✔|-|-|✔|
+|Abonelik fiyatlandırma katmanını Değiştir|-|✔|-|-|-|
+|Otomatik sağlamayı etkinleştir/devre dışı bırak|-|✔|-|-|-|
+|Bir kaynak için güvenlik önerilerini uygulama</br> (ve [hızlı düzelme kullanın!](security-center-remediate-recommendations.md#quick-fix-remediation))|-|-|✔|✔|✔|
+|Uyarıları kapat|-|✔|-|✔|✔|
+|Uyarıları ve önerileri görüntüleme|✔|✔|✔|✔|✔|
 
 > [!NOTE]
 > Kullanıcılara, görevlerini tamamlamak için gereken rolleri en alt seviyede esneklik sunacak şekilde atamanızı öneririz. Örneğin, okuyucu rolünü yalnızca bir kaynağın güvenlik durumu ile ilgili bilgileri görüntülemesi gereken ancak öneri veya ilkeleri Düzenle gibi işlemleri olmayan kullanıcılara atayın.

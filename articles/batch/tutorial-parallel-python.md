@@ -4,13 +4,13 @@ description: Öğretici - Batch Python istemci kitaplığını kullanarak Azure 
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.custom: mvc
-ms.openlocfilehash: 32e42fe04ad8ce55bbbbb90e5aca6356fd1c6f22
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 63515012d10739bb018de34e040465fbe337aa02
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117124"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561270"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Öğretici: Python API’si kullanarak Azure Batch ile paralel iş yükü çalıştırma
 
@@ -102,7 +102,7 @@ Sample end: 11/28/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-Havuz, işlem düğümleri, iş ve görevleri izlemek için Azure portalında Batch hesabınıza gidin. Örneğin, havuzunuzdaki işlem düğümlerinin bir ısı haritasını görmek için **havuzlar** > *LinuxFFmpegPool*' e tıklayın.
+Havuz, işlem düğümleri, iş ve görevleri izlemek için Azure portalında Batch hesabınıza gidin. Örneğin, havuzunuzdaki işlem düğümlerinin bir ısı haritasını görmek için **havuzlar**  >  *LinuxFFmpegPool*' e tıklayın.
 
 Görevler çalıştırılırken ısı haritası aşağıdakine benzer:
 

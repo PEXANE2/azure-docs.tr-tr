@@ -17,12 +17,12 @@ ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7eaeece4b44c0804774a15194e19c34ce200bc80
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60245217"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558520"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Azure AD Connect'i mevcut bir AD Eşitleme veritabanını kullanarak yükleme
 Azure AD Connect, verileri depolamak için SQL Server bir veritabanı gerektirir. Azure AD Connect yüklü olan SQL Server Express LocalDB varsayılan 2012 kullanabilir veya kendi tam SQL sürümünüzü kullanabilirsiniz. Daha önce Azure AD Connect yüklediğinizde, ADSync adlı yeni bir veritabanı her zaman oluşturulmuştur. Azure AD Connect sürüm 1.1.613.0 (veya sonrası) ile, var olan bir ADSync veritabanına işaret ederek Azure AD Connect yükleyebilirsiniz.
@@ -76,19 +76,15 @@ Devam etmeden önce dikkat etmeniz gereken önemli notlar:
 1. **Connect your directories** (Dizinlerinize bağlanın) ekranında dizin eşitlemesi için yapılandırılmış olan mevcut AD ormanı yanında kırmızı bir çarpı işaretiyle listelenir. Şirket içi AD ormanında yapılan değişiklikleri eşitlemek için bir AD DS hesabı kullanmanız gerekir. Kimlik bilgileri şifrelenmiş olduğundan ve şifresi yalnızca önceki Azure AD Connect sunucusu tarafından çözülebildiğinden Azure AD Connect sihirbazı, AD Eşitleme veritabanında depolanan AD DS hesabının kimlik bilgilerini alamaz. AD ormanına ait AD DS hesabını belirtmek için **Change Credentials** (Kimlik Bilgilerini Değiştir) öğesine tıklayın.
    ![Dizinler](./media/how-to-connect-install-existing-database/db6.png)
  
- 
 1. Açılan iletişim kutusunda (i) Kuruluş Yöneticisi kimlik bilgileri belirtip Azure AD Connect'in sizin için bir AD DS hesabı oluşturmasını sağlayabilir veya (ii) AD DS hesabını kendiniz oluşturarak kimlik bilgilerini Azure AD Connect'e girebilirsiniz. Bir seçeneği belirleyip gerekli kimlik bilgilerini girdikten sonra **Tamam**'a tıklayarak açılan iletişim kutusunu kapatın.
    ![Hoş geldiniz](./media/how-to-connect-install-existing-database/db7.png)
  
- 
 1. Kimlik bilgileri girildikten sonra kırmızı çarpı işaretinin yerine yeşil onay işareti görünür. **İleri**’ye tıklayın.
    ![Hoş geldiniz](./media/how-to-connect-install-existing-database/db8.png)
  
- 
 1. **Yapılandırma için hazır** ekranında **Yükle**'ye tıklayın.
    ![Hoş geldiniz](./media/how-to-connect-install-existing-database/db9.png)
  
- 
 1. Yükleme tamamlandıktan sonra Azure AD Connect otomatik olarak Hazırlama Modunda etkinleştirilir. Hazırlama Modunu devre dışı bırakmadan önce sunucu yapılandırmasını ve bekleme durumundaki dışarı aktarma işlemlerini gözden geçirerek beklenmeyen değişikliklerin olup olmadığını kontrol etmeniz önerilir. 
 
 ## <a name="post-installation-tasks"></a>Yükleme sonrası görevler

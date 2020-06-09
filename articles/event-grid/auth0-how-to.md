@@ -2,17 +2,17 @@
 title: Azure Event Grid kullanarak olayları Auth0 'dan Azure 'a gönderme
 description: Azure Event Grid ile Azure hizmetlerine olayları sonlandırma Auth0.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.author: babanisa
-ms.openlocfilehash: 950b17611ba4932cc986d1b6488b904f29fdf04b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.author: femila
+ms.openlocfilehash: bd8cebaad27857dbd2fe3c5ed61be63d3700a688
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691323"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560743"
 ---
 # <a name="integrate-azure-event-grid-with-auth0"></a>Azure Event Grid Auth0 ile tümleştirme
 
@@ -60,7 +60,7 @@ Azure 'da Auth0 konusunun etkinleştirilmesi, olayların Auth0 'ten Azure 'a akm
 1. `Source`Auth0 hesabınızla eşleşen alanı doğrulayın.
 1. Etkinleştir ' e tıklayın.
 
-### <a name="subscribe-to-auth0-events"></a>Auth0 olaylarına abone olma
+### <a name="subscribe-to-auth0-events"></a>Auth0 olaylarına abone olun
 
 #### <a name="create-an-event-handler"></a>Olay işleyicisi oluşturma
 Iş ortağı konu başlığını test etmek için bir olay işleyicisine ihtiyacınız vardır. Azure aboneliğinize gidin ve [Azure işlevi](custom-event-to-function.md)gibi bir [olay işleyicisi](event-handlers.md) olarak desteklenen bir hizmet çalıştırın.

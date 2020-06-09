@@ -3,12 +3,13 @@ title: Azure Service Fabric kapsayıcı uygulaması oluşturma
 description: Azure Service Fabric üzerinde ilk Windows kapsayıcı uygulamanızı oluşturun. Python uygulamasıyla bir Docker görüntüsü oluşturun, görüntüyü bir kapsayıcı kayıt defterine gönderin, sonra kapsayıcıyı derleyin ve Azure Service Fabric 'e dağıtın.
 ms.topic: conceptual
 ms.date: 01/25/2019
-ms.openlocfilehash: 8e1de48874655721f708bfd1dfdda8d975f94c4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: d7076226b63fa3b45eaae82c2964997d3065ed88
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258479"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560658"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturma
 
@@ -35,7 +36,7 @@ Bir Service Fabric kümesindeki Windows kapsayıcısında mevcut olan bir uygula
 
   Bu makalede, Küme düğümleriniz üzerinde çalışan kapsayıcılarla Windows Server 'ın (derleme) sürümü, geliştirme makinmenizle aynı olmalıdır. Bunun nedeni, geliştirme makinenizde Docker görüntüsünü oluşturmanız ve kapsayıcı işletim sisteminin sürümleri ve dağıtıldığı ana bilgisayar IŞLETIM sistemi arasında uyumluluk kısıtlamaları vardır. Daha fazla bilgi için bkz. [Windows Server kapsayıcısı işletim sistemi ve konak işletim sistemi uyumluluğu](#windows-server-container-os-and-host-os-compatibility). 
   
-Kümeniz için gerekli olan kapsayıcılarla Windows Server sürümünü öğrenmek için, geliştirme makinenizde bir Windows komut `ver` isteminden komutunu çalıştırın:
+Kümeniz için gerekli olan kapsayıcılarla Windows Server sürümünü öğrenmek için, `ver` geliştirme makinenizde bir Windows komut isteminden komutunu çalıştırın:
 
 * Sürüm *x. x. 14323. x*içeriyorsa, [bir küme oluştururken](service-fabric-cluster-creation-via-portal.md), Işletim sistemi için *windowsserver 2016-Datacenter-with-containers* ' ı seçin.
   * Sürüm *x. x. 16299. x*içeriyorsa, [bir küme oluştururken](service-fabric-cluster-creation-via-portal.md)Işletim sistemi Için *Windowsserveraltı Datacenter-Core-1709--containers* ' ı seçin.
@@ -142,12 +143,12 @@ Kapsayıcı başladıktan sonra çalışan kapsayıcınıza bir tarayıcıdan ba
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 ```
 
-Bu komut hiçbir şey döndürmezse, aşağıdaki komutu çalıştırın ve IP adresi için **networksettings**->**Networks** öğesini inceleyin:
+Bu komut hiçbir şey döndürmezse, aşağıdaki komutu çalıştırın ve IP adresi için **networksettings** -> **Networks** öğesini inceleyin:
 ```
 docker inspect my-web-site
 ```
 
-Çalışan kapsayıcıya bağlanın. Döndürülen IP adresine işaret eden bir Web tarayıcısı açın (örneğin, "http:\//172.31.194.61"). "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
+Çalışan kapsayıcıya bağlanın. Döndürülen IP adresine işaret eden bir Web tarayıcısı açın (örneğin, "http: \/ /172.31.194.61"). "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
 
 Kapsayıcınızı durdurmak için şu komutu çalıştırın:
 
@@ -166,7 +167,7 @@ docker rm my-web-site
 
 Kapsayıcının geliştirme makinenizde çalıştığını doğruladıktan sonra, görüntüyü Azure Container Registry içindeki kayıt defterinize gönderin.
 
-Kayıt ``docker login`` defteri [kimlik bilgilerinizle](../container-registry/container-registry-authentication.md), kapsayıcı kayıt defterinizde oturum açmak için ' i çalıştırın.
+``docker login`` [Kayıt defteri kimlik bilgilerinizle](../container-registry/container-registry-authentication.md), kapsayıcı kayıt defterinizde oturum açmak için ' i çalıştırın.
 
 Aşağıdaki örnekte, bir Azure Active Directory [hizmet sorumlusunun](../active-directory/develop/app-objects-and-service-principals.md) kimliği ve parolası geçirilmiştir. Örneğin, bir otomasyon senaryosu için kayıt defterinize bir hizmet sorumlusu atamış olabilirsiniz. Ya da kayıt defteri Kullanıcı adınızı ve parolanızı kullanarak oturum açmanız gerekir.
 
@@ -189,7 +190,7 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>Visual Studio’da kapsayıcıya alınmış hizmet oluşturma
 Service Fabric SDK’sı ve araçları, kapsayıcıya alınmış uygulamalar oluşturmanıza yardımcı olan bir hizmet şablonu sağlar.
 
-1. Visual Studio’yu çalıştırın. **Dosya** > **New**yeni > **Proje**' yi seçin.
+1. Visual Studio’yu çalıştırın. **Dosya**  >  **Yeni**  >  **Proje**' yi seçin.
 2. **Service Fabric uygulaması**’nı seçin, "MyFirstContainer" olarak adlandırın ve **Tamam**’a tıklayın.
 3. **Hizmet şablonları** listesinden **Kapsayıcı**’yı seçin.
 4. **Görüntü Adı** alanına, kapsayıcı deponuza gönderdiğiniz görüntünün dizini olan "myregistry.azurecr.io/samples/helloworldapp" değerini girin.
@@ -368,7 +369,7 @@ Kapsayıcıların Service Fabric kümenize doğru şekilde dağıtıldığından
  
 ## <a name="specify-os-build-specific-container-images"></a>İşletim sistemi derlemesine özgü kapsayıcı görüntüleri belirtme 
 
-Windows Server kapsayıcıları, işletim sisteminin farklı sürümleri arasında uyumlu olmayabilir. Örneğin, Windows Server 2016 kullanılarak oluşturulan Windows Server kapsayıcıları, işlem yalıtım modunda Windows Server sürüm 1709 ' de çalışmaz. Bu nedenle, küme düğümleri en son sürüme güncelleniyorsa, işletim sisteminin önceki sürümleri kullanılarak oluşturulan kapsayıcı hizmetleri başarısız olabilir. Bunu, çalışma zamanının sürüm 6,1 ve daha yeni bir sürümü ile aşmak için, kapsayıcı başına birden çok işletim sistemi görüntüsü belirtmeyi ve uygulama bildiriminde işletim sisteminin yapı sürümleriyle etiketlemeyi destekler Service Fabric. İşletim sisteminin yapı sürümünü bir Windows komut isteminde çalıştırarak `winver` edinebilirsiniz. Düğümlerde işletim sistemini güncelleştirmeden önce uygulama bildirimlerini güncelleştirin ve işletim sistemi başına görüntü geçersiz kılmalarını belirtin. Aşağıdaki kod parçacığında, **ApplicationManifest.xml** adlı uygulama bildiriminde nasıl birden çok kapsayıcı görüntüsü belirtileceği gösterilmektedir:
+Windows Server kapsayıcıları, işletim sisteminin farklı sürümleri arasında uyumlu olmayabilir. Örneğin, Windows Server 2016 kullanılarak oluşturulan Windows Server kapsayıcıları, işlem yalıtım modunda Windows Server sürüm 1709 ' de çalışmaz. Bu nedenle, küme düğümleri en son sürüme güncelleniyorsa, işletim sisteminin önceki sürümleri kullanılarak oluşturulan kapsayıcı hizmetleri başarısız olabilir. Bunu, çalışma zamanının sürüm 6,1 ve daha yeni bir sürümü ile aşmak için, kapsayıcı başına birden çok işletim sistemi görüntüsü belirtmeyi ve uygulama bildiriminde işletim sisteminin yapı sürümleriyle etiketlemeyi destekler Service Fabric. İşletim sisteminin yapı sürümünü `winver` bir Windows komut isteminde çalıştırarak edinebilirsiniz. Düğümlerde işletim sistemini güncelleştirmeden önce uygulama bildirimlerini güncelleştirin ve işletim sistemi başına görüntü geçersiz kılmalarını belirtin. Aşağıdaki kod parçacığında, **ApplicationManifest.xml** adlı uygulama bildiriminde nasıl birden çok kapsayıcı görüntüsü belirtileceği gösterilmektedir:
 
 
 ```xml
@@ -496,7 +497,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>Kapsayıcı zorla sonlandırılmadan önceki zaman aralığını yapılandırın
 
-Hizmet silme (veya başka bir düğüme taşıma) başladıktan sonra, çalışma zamanının kapsayıcı kaldırılmadan önce ne kadar bekleyeceğine ilişkin bir zaman aralığı yapılandırabilirsiniz. Zaman aralığını yapılandırma, kapsayıcıya `docker stop <time in seconds>` komutunu gönderir.  Daha ayrıntılı bilgi için bkz. [docker durdurma](https://docs.docker.com/engine/reference/commandline/stop/). Beklenecek zaman aralığı, `Hosting` bölümünde belirtilir. Bölüm `Hosting` , küme oluşturmaya veya daha sonra bir yapılandırma yükseltmesinde eklenebilir. Aşağıdaki küme bildirimi kod parçacığı, bekleme aralığının nasıl ayarlandığını gösterir:
+Hizmet silme (veya başka bir düğüme taşıma) başladıktan sonra, çalışma zamanının kapsayıcı kaldırılmadan önce ne kadar bekleyeceğine ilişkin bir zaman aralığı yapılandırabilirsiniz. Zaman aralığını yapılandırma, kapsayıcıya `docker stop <time in seconds>` komutunu gönderir.  Daha ayrıntılı bilgi için bkz. [docker durdurma](https://docs.docker.com/engine/reference/commandline/stop/). Beklenecek zaman aralığı, `Hosting` bölümünde belirtilir. `Hosting`Bölüm, küme oluşturmaya veya daha sonra bir yapılandırma yükseltmesinde eklenebilir. Aşağıdaki küme bildirimi kod parçacığı, bekleme aralığının nasıl ayarlandığını gösterir:
 
 ```json
 "fabricSettings": [

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 03/30/2020
+ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 5925e3374634dd4db4bdc6855949dc3880d8de7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 013b78e0e8ad47e98b1d192bfc48c5c4a4de0163
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655523"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555137"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Kendi kendini yönetilen Active Directory Domain Services, Azure Active Directory ve yönetilen Azure Active Directory Domain Services karşılaştırın
 
@@ -31,21 +31,25 @@ Uygulamaları, Hizmetleri veya cihazları merkezi bir kimliğe erişim sağlamak
     * Azure AD hakkında daha fazla bilgi için bkz. [Azure Active Directory nedir?][whatis-azuread]
 * **Azure Active Directory Domain Services (Azure AD DS)** -etki alanına katılması, Grup ILKESI, LDAP ve Kerberos/NTLM kimlik doğrulaması gibi tamamen uyumlu geleneksel AD DS özelliklerinin bir alt kümesiyle yönetilen etki alanı Hizmetleri sağlar.
     * Azure AD DS, kendi şirket içi AD DS ortamıyla eşitlenebilir Azure AD ile tümleşir. Bu özellik merkezi kimlik kullanım örneklerini, bir yükseltme ve kaydırma stratejisinin parçası olarak Azure 'da çalışan geleneksel Web uygulamalarına genişletir.
+    * Azure AD ve şirket içi eşitleme hakkında daha fazla bilgi edinmek için bkz. [nesnelerin ve kimlik bilgilerinin yönetilen bir etki alanında nasıl eşitleneceğini][synchronization]öğrenin.
 
 Bu genel bakış makalesinde, bu kimlik çözümlerinin birlikte nasıl çalıştığı veya kuruluşunuzun ihtiyaçlarına bağlı olarak bağımsız olarak nasıl kullanılabileceği karşılaştırılmaktadır.
 
-Başlamak için [Azure Portal kullanarak Azure AD DS yönetilen bir etki alanı oluşturun][tutorial-create].
+> [!div class="nextstepaction"]
+> [Başlamak için Azure portal kullanarak Azure AD DS yönetilen bir etki alanı oluşturun][tutorial-create]
 
 ## <a name="azure-ad-ds-and-self-managed-ad-ds"></a>Azure AD DS ve otomatik olarak yönetilen AD DS
 
 Kerberos veya NTLM gibi geleneksel kimlik doğrulama mekanizmalarına erişmesi gereken uygulama ve hizmetlerinize sahipseniz, bulutta Active Directory Domain Services sağlamanın iki yolu vardır:
 
-* Azure Active Directory Domain Services kullanarak oluşturduğunuz *yönetilen* bir etki alanı (Azure AD DS). Microsoft gerekli kaynakları oluşturur ve yönetir.
+* Azure Active Directory Domain Services kullanarak oluşturduğunuz *yönetilen bir etki alanı* (Azure AD DS). Microsoft gerekli kaynakları oluşturur ve yönetir.
 * Sanal makineler (VM 'Ler), Windows Server Konuk işletim sistemi ve Active Directory Domain Services (AD DS) gibi geleneksel kaynakları kullanarak oluşturduğunuz ve yapılandırdığınız, *otomatik olarak yönetilen* bir etki alanı. Daha sonra bu kaynakları yönetmeye devam edersiniz.
 
 Azure AD DS ile çekirdek hizmet bileşenleri, Microsoft tarafından *yönetilen* etki alanı deneyimi olarak dağıtılır ve korunur. VM 'Ler, Windows Server işletim sistemi veya etki alanı denetleyicileri (DC 'Ler) gibi bileşenler için AD DS altyapısını dağıtmayın, yönetmeyin, yamazsınız ve güvende kalmazsınız.
 
-Azure AD DS, bazı tasarım ve yönetim karmaşıklığını azaltan geleneksel, otomatik olarak yönetilen AD DS ortamına yönelik daha küçük bir özellik alt kümesi sağlar. Örneğin, tasarlamak ve sürdürmek üzere AD Ormanı, etki alanı, siteler ve çoğaltma bağlantıları yoktur. Bulutta çalışan ve Kerberos veya NTLM gibi geleneksel kimlik doğrulama mekanizmalarına erişmesi gereken uygulamalar ve hizmetler için Azure AD DS, en düşük düzeyde yönetim yüküne sahip bir yönetilen etki alanı deneyimi sağlar.
+Azure AD DS, bazı tasarım ve yönetim karmaşıklığını azaltan geleneksel, otomatik olarak yönetilen AD DS ortamına yönelik daha küçük bir özellik alt kümesi sağlar. Örneğin, tasarlamak ve sürdürmek üzere AD Ormanı, etki alanı, siteler ve çoğaltma bağlantıları yoktur. [Azure AD DS ile şirket içi ortamlar arasında (Şu anda önizleme aşamasında) orman güvenleri de oluşturabilirsiniz][create-forest-trust].
+
+Bulutta çalışan ve Kerberos veya NTLM gibi geleneksel kimlik doğrulama mekanizmalarına erişmesi gereken uygulamalar ve hizmetler için Azure AD DS, en düşük düzeyde yönetim yüküne sahip bir yönetilen etki alanı deneyimi sağlar. Daha fazla bilgi için bkz. [Azure AD DS kullanıcı hesapları, parolalar ve yönetim Için yönetim kavramları][administration-concepts].
 
 Kendi kendine yönetilen bir AD DS ortamını dağıtıp çalıştırdığınızda, ilişkili tüm altyapı ve Dizin bileşenlerini korumanız gerekir. Kendi kendine yönetilen bir AD DS ortamıyla ek bakım yükü vardır, ancak daha sonra Şemayı genişletme veya orman güvenleri oluşturma gibi ek görevler gerçekleştirebilirsiniz.
 
@@ -94,7 +98,7 @@ Cihazlar, şirket içi AD DS ortamı içeren karma bir dağıtım olmadan veya A
 
 | **Cihaz türü**                                        | **Cihaz platformları**             | **Mechanism**          |
 |:----------------------------------------------------------| -------------------------------- | ---------------------- |
-| Kişisel cihazlar                                          | Windows 10, iOS, Android, Mac OS | Azure AD kayıtlı    |
+| Kişisel cihazlar                                          | Windows 10, iOS, Android, macOS | Azure AD kayıtlı    |
 | Kuruluşa ait cihaz, şirket içi AD DS katılmadı | Windows 10                       | Azure AD'ye katılanlar        |
 | Kuruluşa ait cihaz, şirket içi AD DS katıldı  | Windows 10                       | Hibrit Azure AD'ye katılmış |
 
@@ -115,6 +119,8 @@ Azure AD DS katılmış cihazlarda, uygulamalar kimlik doğrulaması için Kerbe
 
 Azure AD DS kullanmaya başlamak için [Azure Portal kullanarak bir azure AD DS yönetilen etki alanı oluşturun][tutorial-create].
 
+Ayrıca, [Azure AD DS kullanıcı hesapları, parolaları ve yönetimi için yönetim kavramları][administration-concepts] ve [nesnelerin ve kimlik bilgilerinin yönetilen bir etki alanında nasıl eşitleneceğini][synchronization]öğrenin.
+
 <!-- INTERNAL LINKS -->
 [manage-dns]: manage-dns.md
 [deploy-kcd]: deploy-kcd.md
@@ -124,3 +130,6 @@ Azure AD DS kullanmaya başlamak için [Azure Portal kullanarak bir azure AD DS 
 [tutorial-create]: tutorial-create-instance.md
 [whatis-azuread]: ../active-directory/fundamentals/active-directory-whatis.md
 [overview-adds]: /windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview
+[create-forest-trust]: tutorial-create-forest-trust.md
+[administration-concepts]: administration-concepts.md
+[synchronization]: synchronization.md

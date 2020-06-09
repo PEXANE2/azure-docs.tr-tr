@@ -2,7 +2,6 @@
 title: Eski kullanarak MongoDB 'den veri kopyalama
 description: Azure Data Factory işlem hattındaki kopyalama etkinliğini kullanarak Mongo DB 'den desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
 services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
 manager: shwang
@@ -12,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: 803e34a93e8019cfc2577bfaab3ba13c409c6b01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce1419c7dbb2cdecfd653995707fd1ece7798557
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418176"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558175"
 ---
-# <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory kullanarak MongoDB 'den veri kopyalama
+# <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Azure Data Factory kullanarak MongoDB 'den veri kopyalama (eski)
 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-on-premises-mongodb-connector.md)
@@ -58,7 +57,7 @@ MongoDB bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type |Type özelliği: **MongoDB** olarak ayarlanmalıdır |Yes |
+| tür |Type özelliği: **MongoDB** olarak ayarlanmalıdır |Yes |
 | sunucu |MongoDB sunucusunun IP adresi veya ana bilgisayar adı. |Yes |
 | port |MongoDB sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. |Hayır (varsayılan değer 27017) |
 | Dosyasında |Erişmek istediğiniz MongoDB veritabanının adı. |Yes |
@@ -70,7 +69,7 @@ MongoDB bağlı hizmeti için aşağıdaki özellikler desteklenir:
 | allowSelfSignedServerCert | Sunucudan kendinden imzalı sertifikalara izin verilip verilmeyeceğini belirtir. Varsayılan değer false'tur.  | Hayır |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -101,10 +100,10 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | DataSet 'in Type özelliği: **Mongodbcollection** olarak ayarlanmalıdır | Yes |
+| tür | DataSet 'in Type özelliği: **Mongodbcollection** olarak ayarlanmalıdır | Yes |
 | Ma |MongoDB veritabanındaki koleksiyonun adı. |Yes |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -132,10 +131,10 @@ Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde deste
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği: **Mongodbsource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Mongodbsource** olarak ayarlanmalıdır | Yes |
 | sorgu |Verileri okumak için özel SQL-92 sorgusunu kullanın. Örneğin: select * from MyTable. |Hayır (veri kümesinde "collectionName" belirtilmişse) |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[
@@ -209,14 +208,14 @@ Sanal tablolar, gerçek tablodaki verilere başvurur ve bu da sürücünün, ver
 
 Örneğin, buradaki ExampleTable, her hücrede bir nesne dizisi olan bir sütun içeren bir MongoDB tablosu ve bir sütun skaler türler dizisi olan bir sütundan oluşur.
 
-| _id | Müşteri adı | Faturalar | Hizmet düzeyi | Derecelendirmeler |
+| _id | Müşteri Adı | Faturalar | Hizmet düzeyi | Derecelendirmeler |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: "123", öğe: "Toaster", Price: "456", indirim: "0.2"}, {invoice_id: "124", öğe: "oven", Fiyat: "1235", indirim: "0,2"}] |Silver |[5, 6] |
 | 2222 |XYZ |[{invoice_id: "135", öğe: "Fridge", Price: "12543", indirim: "0,0"}] |Gold |[1, 2] |
 
 Bu tek tabloyu temsil eden sürücü birden çok sanal tablo oluşturur. İlk sanal tablo, örnekte gösterilen "ExampleTable" adlı temel tablodur. Temel tablo özgün tablonun tüm verilerini içerir, ancak dizilerdeki veriler atlanmıştır ve sanal tablolarda genişletilir.
 
-| _id | Müşteri adı | Hizmet düzeyi |
+| _id | Müşteri Adı | Hizmet düzeyi |
 | --- | --- | --- |
 | 1111 |ABC |Silver |
 | 2222 |XYZ |Gold |
@@ -231,8 +230,8 @@ Aşağıdaki tablolarda, örnekteki özgün dizileri temsil eden sanal tablolar 
 
 | _id | ExampleTable_Invoices_dim1_idx | invoice_id | öğe | price | İndirim |
 | --- | --- | --- | --- | --- | --- |
-| 1111 |0 |123 |Toaster |456 |0.2 |
-| 1111 |1 |124 |oven |1235 |0.2 |
+| 1111 |0 |123 |Toaster |456 |0,2 |
+| 1111 |1 |124 |oven |1235 |0,2 |
 | 2222 |0 |135 |buzdolabı |12543 |0,0 |
 
 **"ExampleTable_Ratings" tablosu:**

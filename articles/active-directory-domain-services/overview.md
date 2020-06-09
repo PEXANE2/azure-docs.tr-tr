@@ -8,25 +8,30 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 03/30/2020
+ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 0f5f890b4f32961e00fb30316a1dc7c88ef93a45
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c8a29f95e7b987af2b408ec24bc390a7fd162263
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654835"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554861"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services nedir?
 
-Azure Active Directory Domain Services (Azure AD DS), etki alanına katılması, Grup ilkesi, Hafif Dizin Erişim Protokolü (LDAP) ve Windows Server Active Directory ile tamamen uyumlu Kerberos/NTLM kimlik doğrulaması gibi yönetilen etki alanı Hizmetleri sağlar. Bulutta etki alanı denetleyicileri dağıtma, yönetme ve düzeltme eki uygulama gerekmeden bu etki alanı hizmetlerini kullanırsınız. Azure AD DS, mevcut Azure AD kiracınızla tümleştirilir, bu da kullanıcıların mevcut kimlik bilgilerini kullanarak oturum açmasını olanaklı kılar. Ayrıca, mevcut grupları ve Kullanıcı hesaplarını, kaynaklara erişimi güvenli hale getirmek için de kullanabilirsiniz. Bu, şirket içi kaynakların daha yumuşak bir şekilde daha iyi bir şekilde daha iyi bir şekilde daha iyi bir şekilde
+Azure Active Directory Domain Services (Azure AD DS), etki alanına katılması, Grup ilkesi, Hafif Dizin Erişim Protokolü (LDAP) ve Kerberos/NTLM kimlik doğrulaması gibi yönetilen etki alanı Hizmetleri sağlar. Bulutta etki alanı denetleyicileri dağıtma, yönetme ve düzeltme eki uygulama gerekmeden bu etki alanı hizmetlerini kullanırsınız.
 
-Başlamak için [Azure Portal kullanarak Azure AD DS yönetilen bir etki alanı oluşturun][tutorial-create].
+Azure AD DS, mevcut Azure AD kiracınızla tümleşir. Bu tümleştirme, kullanıcıların, mevcut kimlik bilgilerini kullanarak yönetilen etki alanına bağlı hizmet ve uygulamalar üzerinde oturum açmalarına olanak tanır. Kaynaklara erişimi güvenli hale getirmek için mevcut grupları ve Kullanıcı hesaplarını da kullanabilirsiniz. Bu özellikler, şirket içi kaynakların Azure 'a daha yumuşak bir şekilde daha iyi bir şekilde daha iyi şekilde kaymasını sağlar.
 
-Azure AD DS, Azure AD 'den kimlik bilgilerini çoğalttığından, bu nedenle yalnızca bulutta bulunan veya şirket içi Active Directory Domain Services (AD DS) ortamıyla eşitlenen Azure AD kiracılarıyla birlikte çalışmaktadır. Her iki ortam için de aynı Azure AD DS özellikleri kümesi vardır.
+> [!div class="nextstepaction"]
+> [Başlamak için Azure portal kullanarak Azure AD DS yönetilen bir etki alanı oluşturun][tutorial-create]
 
-* Mevcut bir şirket içi AD DS ortamınız varsa, kullanıcılar için tutarlı bir kimlik sağlamak üzere Kullanıcı hesabı bilgilerini eşzamanlı hale getirebilirsiniz.
+Azure AD DS, Azure AD 'den kimlik bilgilerini çoğalttığından, bu nedenle yalnızca bulutta bulunan veya şirket içi Active Directory Domain Services (AD DS) ortamıyla eşitlenmiş Azure AD kiracılarıyla birlikte çalışacak. Her iki ortam için aynı Azure AD DS özellikleri kümesi vardır.
+
+* Mevcut bir şirket içi AD DS ortamınız varsa, kullanıcılar için tutarlı bir kimlik sağlamak üzere Kullanıcı hesabı bilgilerini eşzamanlı hale getirebilirsiniz. Daha fazla bilgi edinmek için bkz. [nesneleri ve kimlik bilgilerini yönetilen bir etki alanında eşitleme][synchronization].
 * Yalnızca bulut ortamlarında, Azure AD DS merkezi kimlik hizmetlerini kullanmak için geleneksel bir şirket içi AD DS ortamına ihtiyacınız yoktur.
+
+Yönetilen bir etki alanı Yöneticisi hakkında bilgi edinmek için bkz. [Azure AD DS 'de Kullanıcı hesapları, parolalar ve yönetim için yönetim kavramları][administration-concepts].
 
 Aşağıdaki videoda, Bulutta kimlik hizmetleri sağlamak için Azure AD DS uygulamalarınızın ve iş yüklerinizde nasıl tümleştirildiğini gösteren bir genel bakış sunulmaktadır:
 
@@ -51,29 +56,8 @@ Bu yaklaşımlar sayesinde, şirket içi dizine yönelik VPN bağlantıları, uy
 
 Azure AD DS, kimlik hizmetleri sağlamak için şirket içi AD DS ortamına VPN bağlantıları oluşturma veya Azure 'da VM 'Leri çalıştırma ve yönetme gereksinimlerine yönelik alternatifler sunmaktadır. Yönetilen bir hizmet olarak Azure AD DS, hem karma hem de yalnızca bulut ortamları için tümleşik bir kimlik çözümü oluşturma karmaşıklığını azaltır.
 
-## <a name="azure-ad-ds-features-and-benefits"></a>Azure AD DS özellikleri ve avantajları
-
-Bulutta uygulamalara ve sanal makinelere kimlik hizmetleri sağlamak için Azure AD DS, etki alanına katılması, Güvenli LDAP (LDAPS), grup ilkesi, DNS yönetimi ve LDAP bağlama ve okuma desteği gibi işlemler için geleneksel bir AD DS ortamıyla tamamen uyumludur. LDAP yazma desteği, Azure AD DS yönetilen etki alanında oluşturulan nesneler için kullanılabilir, ancak Azure AD 'den eşitlenen kaynaklar için kullanılabilir.
-
-Kimlik seçenekleriniz hakkında daha fazla bilgi edinmek için Azure [AD DS Azure AD ile karşılaştırın, Azure VM 'lerinde Active Directory Domain Services ve şirket içi Active Directory Domain Services][compare].
-
-Azure AD DS dağıtım ve yönetim işlemlerini basitleştirecek aşağıdaki özellikler:
-
-* **Basitleştirilmiş dağıtım deneyimi:** Azure AD DS, Azure portal tek bir sihirbaz kullanılarak Azure AD kiracınız için etkinleştirilmiştir.
-* **Azure AD Ile tümleşik:** Kullanıcı hesapları, grup üyelikleri ve kimlik bilgileri Azure AD kiracınızdan otomatik olarak kullanılabilir. Azure AD kiracınızdan veya şirket içi AD DS ortamınızda bulunan yeni kullanıcılar, gruplar veya özniteliklerde yapılan değişiklikler otomatik olarak Azure AD DS eşitlenir.
-    * Azure AD 'nize bağlı dış dizinlerdeki hesaplar Azure AD DS kullanılamıyor. Bu dış dizinler için kimlik bilgileri kullanılamaz, bu nedenle Azure AD DS yönetilen bir etki alanına eşitlenemez.
-* **Şirket kimlik bilgilerinizi/parolalarınızı kullanın:** Azure AD DS kullanıcılara yönelik parolalar Azure AD kiracınızdaki ile aynıdır. Kullanıcılar, Şirket kimlik bilgilerini etki alanına katmak, etkileşimli olarak veya uzak masaüstü üzerinden oturum açmak ve Azure AD DS yönetilen etki alanında kimlik doğrulaması yapmak için kullanabilir.
-* **NTLM ve Kerberos kimlik doğrulaması:** NTLM ve Kerberos kimlik doğrulaması desteğiyle, Windows ile tümleşik kimlik doğrulamasına dayanan uygulamalar dağıtabilirsiniz.
-* **Yüksek kullanılabilirlik:** Azure AD DS, yönetilen etki alanınız için yüksek kullanılabilirlik sağlayan birden çok etki alanı denetleyicisi içerir. Bu yüksek kullanılabilirlik, hizmet çalışma süresini ve esnekliği hatalara karşı garanti eder.
-    * [Azure kullanılabilirlik alanları][availability-zones]destekleyen bölgelerde, bu etki alanı denetleyicileri ek dayanıklılık için bölgelere da dağıtılır.
-
-Azure AD DS yönetilen bir etki alanının bazı önemli yönleri şunları içerir:
-
-* Azure AD DS yönetilen etki alanı tek başına bir etki alanıdır. Şirket içi bir etki alanının uzantısı değildir.
-    * Gerekirse, Azure AD DS 'den şirket içi AD DS ortamına tek yönlü bir giden orman güveni oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure AD DS Için kaynak ormanı kavramları ve özellikleri][ forest-trusts].
-* BT takımınızın bu Azure AD DS yönetilen etki alanı için etki alanı denetleyicilerini yönetmesi, düzeltme eki uygulama veya izleme yapması gerekmez.
-
-Şirket içinde AD DS çalıştıran hibrit ortamlarda, AD çoğaltmasını Azure AD DS yönetilen etki alanına yönetmeniz gerekmez. Şirket içi dizininizdeki Kullanıcı hesapları, grup üyelikleri ve kimlik bilgileri [Azure AD Connect][azure-ad-connect]aracılığıyla Azure AD ile eşitlenir. Bu Kullanıcı hesapları, grup üyelikleri ve kimlik bilgileri, Azure AD DS yönetilen etki alanı içinde otomatik olarak kullanılabilir.
+> [!div class="nextstepaction"]
+> [Azure AD 'yi Azure AD ile ve Azure VM 'lerde veya şirket içinde otomatik olarak yönetilen AD DS AD DS karşılaştırın][compare]
 
 ## <a name="how-does-azure-ad-ds-work"></a>Azure AD DS nasıl çalışır?
 
@@ -120,6 +104,31 @@ Yalnızca bulutta yer alan bir Azure AD kiracısı, şirket içi kimlik kaynağ�
 * Contoso BT ekibi, Azure AD kiracısının bu veya eşlenmiş bir sanal ağ için Azure AD DS sunar.
 * Azure sanal ağında dağıtılan uygulamalar ve VM 'Ler, etki alanına katılması, LDAP okuma, LDAP bağlama, NTLM ve Kerberos kimlik doğrulaması ve grup ilkesi gibi Azure AD DS özelliklerini kullanabilir.
 
+## <a name="azure-ad-ds-features-and-benefits"></a>Azure AD DS özellikleri ve avantajları
+
+Bulutta uygulamalara ve sanal makinelere kimlik hizmetleri sağlamak için Azure AD DS, etki alanına katılması, Güvenli LDAP (LDAPS), grup ilkesi, DNS yönetimi ve LDAP bağlama ve okuma desteği gibi işlemler için geleneksel bir AD DS ortamıyla tamamen uyumludur. LDAP yazma desteği, Azure AD DS yönetilen etki alanında oluşturulan nesneler için kullanılabilir, ancak Azure AD 'den eşitlenen kaynaklar için kullanılabilir.
+
+Kimlik seçenekleriniz hakkında daha fazla bilgi edinmek için Azure [AD DS Azure AD ile karşılaştırın, Azure VM 'lerinde Active Directory Domain Services ve şirket içi Active Directory Domain Services][compare].
+
+Azure AD DS dağıtım ve yönetim işlemlerini basitleştirecek aşağıdaki özellikler:
+
+* **Basitleştirilmiş dağıtım deneyimi:** Azure AD DS, Azure portal tek bir sihirbaz kullanılarak Azure AD kiracınız için etkinleştirilmiştir.
+* **Azure AD Ile tümleşik:** Kullanıcı hesapları, grup üyelikleri ve kimlik bilgileri Azure AD kiracınızdan otomatik olarak kullanılabilir. Azure AD kiracınızdan veya şirket içi AD DS ortamınızda bulunan yeni kullanıcılar, gruplar veya özniteliklerde yapılan değişiklikler otomatik olarak Azure AD DS eşitlenir.
+    * Azure AD 'nize bağlı dış dizinlerdeki hesaplar Azure AD DS kullanılamıyor. Bu dış dizinler için kimlik bilgileri kullanılamaz, bu nedenle Azure AD DS yönetilen bir etki alanına eşitlenemez.
+* **Şirket kimlik bilgilerinizi/parolalarınızı kullanın:** Azure AD DS kullanıcılara yönelik parolalar Azure AD kiracınızdaki ile aynıdır. Kullanıcılar, Şirket kimlik bilgilerini etki alanına katmak, etkileşimli olarak veya uzak masaüstü üzerinden oturum açmak ve Azure AD DS yönetilen etki alanında kimlik doğrulaması yapmak için kullanabilir.
+* **NTLM ve Kerberos kimlik doğrulaması:** NTLM ve Kerberos kimlik doğrulaması desteğiyle, Windows ile tümleşik kimlik doğrulamasına dayanan uygulamalar dağıtabilirsiniz.
+* **Yüksek kullanılabilirlik:** Azure AD DS, yönetilen etki alanınız için yüksek kullanılabilirlik sağlayan birden çok etki alanı denetleyicisi içerir. Bu yüksek kullanılabilirlik, hizmet çalışma süresini ve esnekliği hatalara karşı garanti eder.
+    * [Azure kullanılabilirlik alanları][availability-zones]destekleyen bölgelerde, bu etki alanı denetleyicileri ek dayanıklılık için bölgelere da dağıtılır.
+
+Azure AD DS yönetilen bir etki alanının bazı önemli yönleri şunları içerir:
+
+* Azure AD DS yönetilen etki alanı tek başına bir etki alanıdır. Şirket içi bir etki alanının uzantısı değildir.
+    * Gerekirse, Azure AD DS 'den şirket içi AD DS ortamına tek yönlü bir giden orman güveni oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure AD DS Için kaynak ormanı kavramları ve özellikleri][ forest-trusts].
+* BT takımınızın bu Azure AD DS yönetilen etki alanı için etki alanı denetleyicilerini yönetmesi, düzeltme eki uygulama veya izleme yapması gerekmez.
+
+Şirket içinde AD DS çalıştıran hibrit ortamlarda, AD çoğaltmasını Azure AD DS yönetilen etki alanına yönetmeniz gerekmez. Şirket içi dizininizdeki Kullanıcı hesapları, grup üyelikleri ve kimlik bilgileri [Azure AD Connect][azure-ad-connect]aracılığıyla Azure AD ile eşitlenir. Bu Kullanıcı hesapları, grup üyelikleri ve kimlik bilgileri, Azure AD DS yönetilen etki alanı içinde otomatik olarak kullanılabilir.
+
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure AD DS diğer kimlik çözümleriyle ve eşitlemenin nasıl çalıştığı hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
@@ -137,3 +146,5 @@ Başlamak için [Azure Portal kullanarak Azure AD DS yönetilen bir etki alanı 
 [password-hash-sync]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md
 [availability-zones]: ../availability-zones/az-overview.md
 [forest-trusts]: concepts-resource-forest.md
+[administration-concepts]: administration-concepts.md
+[synchronization]: synchronization.md

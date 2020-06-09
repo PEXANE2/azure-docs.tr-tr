@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 06/08/2020
 ms.author: dsindona
-ms.openlocfilehash: da2588125b455deaf18110687d54adc04a7dd4c0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: fb2031072ce93fcacdf52f8f0fad68f836049b22
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799855"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560902"
 ---
 # <a name="consulting-service-offers"></a>Danışmanlık hizmeti teklifleri
 
@@ -22,16 +22,7 @@ Danışmanlık hizmeti teklifleri müşterilere özgü görevlendirmelerdir. Yay
 
 ## <a name="compare-consulting-services"></a>Danışmanlık hizmetlerini karşılaştırın
 
-Ticari Market storets, Microsoft AppSource ve Azure Marketi, müşterilerin ihtiyaç duydukları şeyleri bulmasına yardımcı olmak için izleyiciler ve bulut ürünleriyle hizalanır. Her storefront, yayımlama yatırımınızı en üst düzeye çıkarmanıza yardımcı olan özel yayımlama seçeneklerine sahiptir. Aşağıdaki tabloda bu seçenekler özetlenmektedir:
-
-|         |Azure Market  |Microsoft AppSource |
-|---------|---------|---------|
-|Hedef kitle      |BT uzmanları ve bulut geliştiricileri|İş kullanıcıları ve iş kolu karar mekanizmaları|
-|Çözüm ilgisi      |Azure 'da oluşturulan veya oluşturulan teknik uygulamalar|Dynamics 365, Power BI, Office 365, Azure (eklenti veya eklenti tamamlanmış uygulamaları) kullanan veya genişleten iş uygulamaları|
-|Yayımlama seçenekleri      |Azure için benimle, deneme, Transact veya hizmetlerle iletişim kurun|Dynamics 365 ve Power BI için benimle, denemeye veya hizmetlere başvurun|
-|Ürün içi deneyim      |Azure portal|Dynamics 365, Office 365, Office istemci uygulamaları| 
-|Diğer      |Azure Stack aracılığıyla şirket içi yayımlama, Azure için danışmanlık hizmetleri, Azure için yönetilen hizmetler|Dynamics 365 ve Power BI için danışmanlık hizmetleri|
-||
+Ticari Market storets, Microsoft AppSource ve Azure Marketi, müşterilerin ihtiyaç duydukları şeyleri bulmasına yardımcı olmak için izleyiciler ve bulut ürünleriyle hizalanır. Her storefront, yayımlama yatırımınızı en üst düzeye çıkarmanıza yardımcı olan özel yayımlama seçeneklerine sahiptir. İki storefronts arasındaki fark hakkında daha fazla bilgi edinmek için bkz. [Microsoft AppSource ve Azure Marketi karşılaştırması](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).
 
 Dynamics 365, Power Apps ve Power BI temel alan danışmanlık hizmetleri teklifleri AppSource 'ta listelenmeye uygundur. Daha fazla bilgi için [Microsoft AppSource danışmanlık hizmetleri liste yönergeleri](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF dosyasını indirin.
 
@@ -79,7 +70,7 @@ Ek kaynaklar ve destek:
 
 Uzmanlıklar hakkında daha fazla bilgi için [Microsoft iş ortağı ağı yetkinlikleri](https://partner.microsoft.com/membership/competencies) sayfasına gidin.
 
-Sistem Tümleştirici İş ortakları, aşağıdaki 21 ülkede/bölgede Danışmanlık Servisi teklifleri gönderebilir:
+Sistem Tümleştirici İş ortakları, aşağıdaki 20 ülkede/bölgede Danışmanlık Servisi teklifleri gönderebilir:
 
 |   |   |   |   |
 |---------|----------|----------|----------|
@@ -87,8 +78,7 @@ Sistem Tümleştirici İş ortakları, aşağıdaki 21 ülkede/bölgede Danışm
 | Finlandiya  | Fransa | Almanya  | Hindistan   |
 | İtalya    | Japonya  |  Meksika  |  Hollanda  |
 |  Yeni Zelanda  |  Norveç  |  Polonya  | Güney Afrika |
-|  İspanya  | İsveç  | İsviçre  |  Birleşik Devletler  |
-| Birleşik Krallık  |
+|  İsveç  | İsviçre  |  Birleşik Devletler  | Birleşik Krallık  |
 ||
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>Ticari Market 'te danışmanlık hizmetleri için kaydolun

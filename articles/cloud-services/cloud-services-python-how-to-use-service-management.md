@@ -14,12 +14,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: tagore
-ms.openlocfilehash: 135dd92f7af4397f2053ea0bdc15d98dfad93914
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 4101780155ebf45fa2b24facddeeff7779076839
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253365"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84556267"
 ---
 # <a name="use-service-management-from-python"></a>Python 'da hizmet yönetimi kullanma
 Bu kılavuzda, Python 'dan programlı olarak ortak hizmet yönetimi görevlerini nasıl gerçekleştireceğiniz gösterilmektedir. [Python Için Azure SDK](https://github.com/Azure/azure-sdk-for-python) 'Daki **ServiceManagementService** sınıfı, [Azure Portal][management-portal]mevcut olan hizmet yönetimiyle ilgili işlevlerin büyük bölümüne programlı erişimi destekler. Bulut Hizmetleri, dağıtımlar, veri yönetimi hizmetleri ve sanal makineler oluşturmak, güncelleştirmek ve silmek için bu işlevi kullanabilirsiniz. Bu işlevsellik, hizmet yönetimine programlı erişim gerektiren uygulamalar oluşturmak için yararlı olabilir.
@@ -44,17 +45,17 @@ Hizmet yönetimi uç noktasına bağlanmak için Azure abonelik KIMLIĞINIZ ve g
 >
 
 ### <a name="management-certificates-on-windowsmaclinux-openssl"></a>Windows/Mac/Linux (OpenSSL) üzerinde yönetim sertifikaları
-[OpenSSL](https://www.openssl.org/) kullanarak yönetim sertifikanızı oluşturabilirsiniz. Biri sunucu (bir `.cer` dosya) ve bir istemci (bir `.pem` dosya) için olmak üzere iki sertifika oluşturmanız gerekir. `.pem` Dosyayı oluşturmak için şunu yürütün:
+[OpenSSL](https://www.openssl.org/) kullanarak yönetim sertifikanızı oluşturabilirsiniz. Biri sunucu (bir `.cer` dosya) ve bir istemci (bir dosya) için olmak üzere iki sertifika oluşturmanız gerekir `.pem` . Dosyayı oluşturmak için `.pem` şunu yürütün:
 
     openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
 
-`.cer` Sertifikayı oluşturmak için şunu yürütün:
+Sertifikayı oluşturmak için `.cer` şunu yürütün:
 
     openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 
-Azure sertifikaları hakkında daha fazla bilgi için bkz. [azure Cloud Services sertifikalara genel bakış](cloud-services-certs-create.md). OpenSSL parametrelerinin ayrıntılı bir açıklaması için, belgelerine bakın [https://www.openssl.org/docs/apps/openssl.html](https://www.openssl.org/docs/apps/openssl.html).
+Azure sertifikaları hakkında daha fazla bilgi için bkz. [azure Cloud Services sertifikalara genel bakış](cloud-services-certs-create.md). OpenSSL parametrelerinin ayrıntılı bir açıklaması için, belgelerine bakın [https://www.openssl.org/docs/apps/openssl.html](https://www.openssl.org/docs/apps/openssl.html) .
 
-Bu dosyaları oluşturduktan sonra, `.cer` dosyayı Azure 'a yükleyin. [Azure Portal][management-portal], **Ayarlar** sekmesinde **karşıya yükle**' yi seçin. `.pem` Dosyayı kaydettiğiniz yere göz önünde olursunuz.
+Bu dosyaları oluşturduktan sonra, `.cer` dosyayı Azure 'a yükleyin. [Azure Portal][management-portal], **Ayarlar** sekmesinde **karşıya yükle**' yi seçin. Dosyayı kaydettiğiniz yere göz önünde olursunuz `.pem` .
 
 Abonelik KIMLIĞINIZ elde ettikten sonra bir sertifika oluşturun ve `.cer` dosyayı Azure 'a yükleyin, Azure Yönetim uç noktasına bağlanın. Abonelik KIMLIĞINI ve `.pem` dosyanın yolunu **ServiceManagementService**'e geçirerek bağlanın.
 
@@ -69,7 +70,7 @@ Abonelik KIMLIĞINIZ elde ettikten sonra bir sertifika oluşturun ve `.cer` dosy
 Önceki örnekte, `sms` bir **ServiceManagementService** nesnesidir. **ServiceManagementService** sınıfı, Azure hizmetlerini yönetmek için kullanılan birincil sınıftır.
 
 ### <a name="management-certificates-on-windows-makecert"></a>Windows 'daki yönetim sertifikaları (MakeCert)
-Kullanarak `makecert.exe`, makinenizde otomatik olarak imzalanan bir yönetim sertifikası oluşturabilirsiniz. **Yönetici** olarak bir **Visual Studio komut istemi** açın ve aşağıdaki komutu kullanarak *azurecercertificate* öğesini kullanmak istediğiniz sertifika adıyla değiştirin:
+Kullanarak, makinenizde otomatik olarak imzalanan bir yönetim sertifikası oluşturabilirsiniz `makecert.exe` . **Yönetici** olarak bir **Visual Studio komut istemi** açın ve aşağıdaki komutu kullanarak *azurecercertificate* öğesini kullanmak istediğiniz sertifika adıyla değiştirin:
 
     makecert -sky exchange -r -n "CN=AzureCertificate" -pe -a sha1 -len 2048 -ss My "AzureCertificate.cer"
 
@@ -90,7 +91,7 @@ Abonelik KIMLIĞINIZ elde ettikten sonra bir sertifika oluşturun ve `.cer` dosy
 Önceki örnekte, `sms` bir **ServiceManagementService** nesnesidir. **ServiceManagementService** sınıfı, Azure hizmetlerini yönetmek için kullanılan birincil sınıftır.
 
 ## <a name="list-available-locations"></a><a name="ListAvailableLocations"> </a>Kullanılabilir konumları listeleyin
-Barındırma hizmetleri için kullanılabilen konumları listelemek için, **liste\_konumları** yöntemini kullanın.
+Barındırma hizmetleri için kullanılabilen konumları listelemek için, **liste \_ konumları** yöntemini kullanın.
 
     from azure import *
     from azure.servicemanagement import *
@@ -101,7 +102,7 @@ Barındırma hizmetleri için kullanılabilen konumları listelemek için, **lis
     for location in result:
         print(location.name)
 
-Bir bulut hizmeti veya depolama hizmeti oluşturduğunuzda, geçerli bir konum sağlamanız gerekir. **Liste\_konumları** yöntemi her zaman şu anda kullanılabilir konumların güncel bir listesini döndürür. Bu yazma itibariyle, kullanılabilir konumlar şunlardır:
+Bir bulut hizmeti veya depolama hizmeti oluşturduğunuzda, geçerli bir konum sağlamanız gerekir. **Liste \_ konumları** yöntemi her zaman şu anda kullanılabilir konumların güncel bir listesini döndürür. Bu yazma itibariyle, kullanılabilir konumlar şunlardır:
 
 * Batı Avrupa
 * Kuzey Avrupa
@@ -119,7 +120,7 @@ Bir bulut hizmeti veya depolama hizmeti oluşturduğunuzda, geçerli bir konum s
 * Güneydoğu Avustralya
 
 ## <a name="create-a-cloud-service"></a><a name="CreateCloudService"> </a>Bulut hizmeti oluşturma
-Bir uygulama oluşturup Azure 'da çalıştırdığınızda, koda ve yapılandırmaya birlikte bir Azure [bulut hizmeti][cloud service]denir. (Önceki Azure sürümlerindeki barındırılan bir *hizmet* olarak bilinirdi.) **\_Barındırılan\_hizmet oluşturma** yöntemini kullanarak yeni bir barındırılan hizmet oluşturabilirsiniz. Barındırılan bir hizmet adı (Azure 'da benzersiz olması gerekir), bir etiket (base64 olarak otomatik olarak kodlanır), bir açıklama ve bir konum sağlayarak hizmeti oluşturun.
+Bir uygulama oluşturup Azure 'da çalıştırdığınızda, koda ve yapılandırmaya birlikte bir Azure [bulut hizmeti][cloud service]denir. (Önceki Azure sürümlerindeki barındırılan bir *hizmet* olarak bilinirdi.) ** \_ Barındırılan \_ hizmet oluşturma** yöntemini kullanarak yeni bir barındırılan hizmet oluşturabilirsiniz. Barındırılan bir hizmet adı (Azure 'da benzersiz olması gerekir), bir etiket (base64 olarak otomatik olarak kodlanır), bir açıklama ve bir konum sağlayarak hizmeti oluşturun.
 
     from azure import *
     from azure.servicemanagement import *
@@ -133,7 +134,7 @@ Bir uygulama oluşturup Azure 'da çalıştırdığınızda, koda ve yapılandı
 
     sms.create_hosted_service(name, label, desc, location)
 
-Şirket içinde barındırılan Hizmetleri **\_Listele\_** yöntemiyle aboneliğiniz için tüm barındırılan Hizmetleri listeleyebilirsiniz.
+Şirket içinde barındırılan Hizmetleri **Listele \_ \_ ** yöntemiyle aboneliğiniz için tüm barındırılan Hizmetleri listeleyebilirsiniz.
 
     result = sms.list_hosted_services()
 
@@ -143,7 +144,7 @@ Bir uygulama oluşturup Azure 'da çalıştırdığınızda, koda ve yapılandı
         print('Location: ' + hosted_service.hosted_service_properties.location)
         print('')
 
-Belirli bir barındırılan hizmet hakkında bilgi almak için barındırılan hizmet adını **barındırılan\_\_hizmet\_özelliklerini al** metoduna geçirin.
+Belirli bir barındırılan hizmet hakkında bilgi almak için barındırılan hizmet adını ** \_ barındırılan \_ hizmet \_ özelliklerini al** metoduna geçirin.
 
     hosted_service = sms.get_hosted_service_properties('myhostedservice')
 
@@ -151,17 +152,17 @@ Belirli bir barındırılan hizmet hakkında bilgi almak için barındırılan h
     print('Management URL: ' + hosted_service.url)
     print('Location: ' + hosted_service.hosted_service_properties.location)
 
-Bir bulut hizmeti oluşturduktan sonra, **dağıtım oluşturma\_** yöntemiyle kodunuzu hizmete dağıtın.
+Bir bulut hizmeti oluşturduktan sonra, ** \_ dağıtım oluşturma** yöntemiyle kodunuzu hizmete dağıtın.
 
 ## <a name="delete-a-cloud-service"></a><a name="DeleteCloudService"> </a>Bulut hizmetini silme
-Hizmet adını **\_barındırılan\_hizmet** yöntemine geçirerek bir bulut hizmetini silebilirsiniz.
+Hizmet adını ** \_ barındırılan \_ hizmet** yöntemine geçirerek bir bulut hizmetini silebilirsiniz.
 
     sms.delete_hosted_service('myhostedservice')
 
 Bir hizmeti silebilmeniz için önce hizmet için tüm dağıtımların silinmesi gerekir. Daha fazla bilgi için bkz. [bir dağıtımı silme](#DeleteDeployment).
 
 ## <a name="delete-a-deployment"></a><a name="DeleteDeployment"> </a>Bir dağıtımı silme
-Bir dağıtımı silmek için, **dağıtımı Sil\_** yöntemini kullanın. Aşağıdaki örnek adlı `v1`bir dağıtımın nasıl silineceğini göstermektedir:
+Bir dağıtımı silmek için, ** \_ dağıtımı Sil** yöntemini kullanın. Aşağıdaki örnek adlı bir dağıtımın nasıl silineceğini göstermektedir `v1` :
 
     from azure import *
     from azure.servicemanagement import *
@@ -188,9 +189,9 @@ Bir dağıtımı silmek için, **dağıtımı Sil\_** yöntemini kullanın. Aşa
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-Önceki örnekte **, depolama hesabı\_oluşturma işleminin durumu\_** , **depolama\_\_hesabı** **\_oluşturma işlemi\_durum** metoduna döndürülen sonuç alınarak alınabilir. 
+Önceki örnekte **, depolama hesabı oluşturma işleminin durumu \_ \_ ** , ** \_ depolama \_ hesabı oluşturma** işlemi ** \_ \_ durum** metoduna döndürülen sonuç alınarak alınabilir. 
 
-Depolama hesaplarınızı ve bunların özelliklerini **\_liste depolama\_hesapları** yöntemiyle listeleyebilirsiniz.
+Depolama hesaplarınızı ve bunların özelliklerini **liste \_ depolama \_ hesapları** yöntemiyle listeleyebilirsiniz.
 
     from azure import *
     from azure.servicemanagement import *
@@ -204,7 +205,7 @@ Depolama hesaplarınızı ve bunların özelliklerini **\_liste depolama\_hesapl
         print('')
 
 ## <a name="delete-a-storage-service"></a><a name="DeleteStorageService"> </a>Depolama hizmetini silme
-Depolama hizmetini silmek için depolama hizmeti adını **\_\_depolama hesabı silme** metoduna geçirin. Depolama hizmeti silindiğinde, hizmette depolanan tüm veriler (Bloblar, tablolar ve kuyruklar) silinir.
+Depolama hizmetini silmek için depolama hizmeti adını ** \_ depolama \_ hesabı silme** metoduna geçirin. Depolama hizmeti silindiğinde, hizmette depolanan tüm veriler (Bloblar, tablolar ve kuyruklar) silinir.
 
     from azure import *
     from azure.servicemanagement import *
@@ -214,7 +215,7 @@ Depolama hizmetini silmek için depolama hizmeti adını **\_\_depolama hesabı 
     sms.delete_storage_account('mystorageaccount')
 
 ## <a name="list-available-operating-systems"></a><a name="ListOperatingSystems"> </a>Kullanılabilir işletim sistemlerini listeleme
-Barındırma hizmetleri için kullanılabilen işletim sistemlerini listelemek için, **\_\_işletim sistemlerini Listele** yöntemini kullanın.
+Barındırma hizmetleri için kullanılabilen işletim sistemlerini listelemek için, ** \_ işletim \_ sistemlerini Listele** yöntemini kullanın.
 
     from azure import *
     from azure.servicemanagement import *
@@ -228,7 +229,7 @@ Barındırma hizmetleri için kullanılabilen işletim sistemlerini listelemek i
         print('Family: ' + os.family_label)
         print('Active: ' + str(os.is_active))
 
-Alternatif olarak, işletim sistemlerini ailesine **göre\_gruplandıran\_işletim\_sistemi aileleri** yöntemini de kullanabilirsiniz.
+Alternatif olarak, işletim sistemlerini ailesine göre gruplandıran ** \_ işletim \_ sistemi \_ aileleri** yöntemini de kullanabilirsiniz.
 
     result = sms.list_operating_system_families()
 
@@ -241,7 +242,7 @@ Alternatif olarak, işletim sistemlerini ailesine **göre\_gruplandıran\_işlet
         print('')
 
 ## <a name="create-an-operating-system-image"></a><a name="CreateVMImage"> </a>Bir işletim sistemi görüntüsü oluşturma
-Görüntü deposuna bir işletim sistemi görüntüsü eklemek için, **\_\_işletim sistemi görüntüsü Ekle** yöntemini kullanın.
+Görüntü deposuna bir işletim sistemi görüntüsü eklemek için, ** \_ işletim sistemi \_ görüntüsü Ekle** yöntemini kullanın.
 
     from azure import *
     from azure.servicemanagement import *
@@ -258,7 +259,7 @@ Görüntü deposuna bir işletim sistemi görüntüsü eklemek için, **\_\_işl
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-Kullanılabilir işletim sistemi görüntülerini listelemek için **\_\_OS görüntülerini Listele** yöntemini kullanın. Tüm platform görüntülerini ve Kullanıcı görüntülerini içerir.
+Kullanılabilir işletim sistemi görüntülerini listelemek için ** \_ OS \_ görüntülerini Listele** yöntemini kullanın. Tüm platform görüntülerini ve Kullanıcı görüntülerini içerir.
 
     result = sms.list_os_images()
 
@@ -273,7 +274,7 @@ Kullanılabilir işletim sistemi görüntülerini listelemek için **\_\_OS gör
         print('')
 
 ## <a name="delete-an-operating-system-image"></a><a name="DeleteVMImage"> </a>Bir işletim sistemi görüntüsünü silme
-Bir Kullanıcı görüntüsünü silmek için **\_\_OS görüntüsünü silme** yöntemini kullanın.
+Bir Kullanıcı görüntüsünü silmek için ** \_ OS \_ görüntüsünü silme** yöntemini kullanın.
 
     from azure import *
     from azure.servicemanagement import *
@@ -286,7 +287,7 @@ Bir Kullanıcı görüntüsünü silmek için **\_\_OS görüntüsünü silme** 
     print('Operation status: ' + operation_result.status)
 
 ## <a name="create-a-virtual-machine"></a><a name="CreateVM"> </a>Sanal makine oluşturma
-Bir sanal makine oluşturmak için önce bir [bulut hizmeti](#CreateCloudService)oluşturmanız gerekir. Ardından sanal makine dağıtımı **oluşturma\_\_\_** yöntemini kullanarak sanal makine dağıtımını oluşturun.
+Bir sanal makine oluşturmak için önce bir [bulut hizmeti](#CreateCloudService)oluşturmanız gerekir. Ardından sanal makine dağıtımı oluşturma yöntemini kullanarak sanal makine **dağıtımını \_ \_ \_ ** oluşturun.
 
     from azure import *
     from azure.servicemanagement import *
@@ -324,7 +325,7 @@ Bir sanal makine oluşturmak için önce bir [bulut hizmeti](#CreateCloudService
         role_size='Small')
 
 ## <a name="delete-a-virtual-machine"></a><a name="DeleteVM"> </a>Sanal makineyi silme
-Bir sanal makineyi silmek için önce dağıtımı **Sil\_** yöntemini kullanarak dağıtımı silmelisiniz.
+Bir sanal makineyi silmek için önce dağıtımı **Sil \_ ** yöntemini kullanarak dağıtımı silmelisiniz.
 
     from azure import *
     from azure.servicemanagement import *
@@ -334,12 +335,12 @@ Bir sanal makineyi silmek için önce dağıtımı **Sil\_** yöntemini kullanar
     sms.delete_deployment(service_name='myvm',
         deployment_name='myvm')
 
-Bulut hizmeti daha sonra **\_\_barındırılan hizmet silme** yöntemi kullanılarak silinebilir.
+Bulut hizmeti daha sonra ** \_ barındırılan \_ hizmet silme** yöntemi kullanılarak silinebilir.
 
     sms.delete_hosted_service(service_name='myvm')
 
 ## <a name="create-a-virtual-machine-from-a-captured-virtual-machine-image"></a>Yakalanan bir sanal makine görüntüsünden sanal makine oluşturma
-Bir VM görüntüsünü yakalamak için, önce **\_yakalama VM\_görüntüsü** yöntemini çağırmanız gerekir.
+Bir VM görüntüsünü yakalamak için, önce **yakalama \_ VM \_ görüntüsü** yöntemini çağırmanız gerekir.
 
     from azure import *
     from azure.servicemanagement import *
@@ -366,11 +367,11 @@ Bir VM görüntüsünü yakalamak için, önce **\_yakalama VM\_görüntüsü** 
             image
         )
 
-Görüntüyü başarıyla yakaladığınızdan emin olmak için **\_\_VM görüntülerini Listele** API 'sini kullanın. Resminizin sonuçlarda görüntülendiğinden emin olun.
+Görüntüyü başarıyla yakaladığınızdan emin olmak için ** \_ VM \_ görüntülerini Listele** API 'sini kullanın. Resminizin sonuçlarda görüntülendiğinden emin olun.
 
     images = sms.list_vm_images()
 
-Son olarak, yakalanan görüntüyü kullanarak sanal makineyi oluşturmak için, **sanal\_makine\_dağıtımı oluşturma\_** yöntemini daha önce olduğu gibi kullanın, ancak bu zaman bunun yerine vm_image_name geçer.
+Son olarak, yakalanan görüntüyü kullanarak sanal makineyi oluşturmak için, ** \_ sanal \_ makine \_ dağıtımı oluşturma** yöntemini daha önce olduğu gibi kullanın, ancak bu zaman bunun yerine vm_image_name geçer.
 
     from azure import *
     from azure.servicemanagement import *

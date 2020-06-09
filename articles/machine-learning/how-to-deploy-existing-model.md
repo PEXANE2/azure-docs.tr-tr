@@ -10,12 +10,13 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/17/2020
-ms.openlocfilehash: 2cf80a509b1a8100aaa00bf6a2fdeedbbdf143af
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: tracking-python
+ms.openlocfilehash: df569ee4a392bae27431f526e0fbe010feab5a5d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433921"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557377"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>Azure Machine Learning var olan bir modeli kullanın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +32,7 @@ Azure Machine Learning dışında eğitilen bir makine öğrenimi modelinize sah
 >
 > Dağıtım işlemi hakkında genel bilgi için bkz. [modelleri Azure Machine Learning Ile dağıtma](how-to-deploy-and-where.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [çalışma alanı oluşturma](how-to-manage-workspace.md).
 

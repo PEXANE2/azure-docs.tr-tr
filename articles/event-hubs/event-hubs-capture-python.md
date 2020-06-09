@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.custom: seodec18
+ms.custom: seodec18, tracking-python
 ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: 6c830cf871c2ae650bb61e8b3712a664e9e405d4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c726b0d11759d30730046e635c701cf23d130dfc
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77187286"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561560"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>Hızlı başlangıç: Event Hubs Capture izlenecek yol: Python (Azure-eventhub sürüm 1)
 
@@ -80,7 +80,7 @@ Bu betik, 200 olaylarını Olay Hub 'ınıza gönderir. Olaylar JSON ile gönder
 
 1. [Visual Studio Code][Visual Studio Code]gibi en sevdiğiniz Python düzenleyicisini açın.
 2. *Sender.py*adlı yeni bir dosya oluşturun. 
-3. Aşağıdaki kodu *Sender.py*' ye yapıştırın. Event Hubs \<ad alanı>, \<accesskeyname>, \<birincil anahtar değeri> ve \<eventhub> için kendi değerlerinizi yerine koyun.
+3. Aşağıdaki kodu *Sender.py*' ye yapıştırın. Event Hubs,, ve için kendi değerlerinizi yerine koyun \<namespace> \<AccessKeyName> \<primary key value> \<eventhub> .
    
    ```python
    import uuid
@@ -108,7 +108,7 @@ Bu betik, 200 olaylarını Olay Hub 'ınıza gönderir. Olaylar JSON ile gönder
 Bu betik yakalanan dosyaları okur ve yalnızca bu cihaz için verileri yazmak üzere cihazlarınızın her biri için bir dosya oluşturur.
 
 1. Python Düzenleyicinizde *capturereader.py*adlı yeni bir dosya oluşturun. 
-2. Aşağıdaki kodu *capturereader.py*' ye yapıştırın. \<Storageaccount>, \<depolama hesabı erişim anahtarı> ve \<storagecontainer> için kaydedilmiş değerlerinizi yerine koyun.
+2. Aşağıdaki kodu *capturereader.py*' ye yapıştırın. , Ve için kaydettiğiniz değerleri değiştirin \<storageaccount> \<storage account access key> \<storagecontainer> .
    
    ```python
    import os
@@ -164,7 +164,7 @@ Bu betik yakalanan dosyaları okur ve yalnızca bu cihaz için verileri yazmak �
    pip install avro-python3
    ```
    
-   Veya daha önceki bir sürümüne sahipseniz, `--upgrade` seçeneğini kullanmanız gerekebilir. `azure` `azure-storage`
+   Veya daha önceki bir sürümüne sahipseniz `azure-storage` `azure` , seçeneğini kullanmanız gerekebilir `--upgrade` .
    
    Ayrıca, aşağıdaki komutu çalıştırmanız gerekebilir. Bu komutun çalıştırılması çoğu sistemde gerekli değildir. 
    

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8a881f1cbc93d4774e25833a5c57b4727cc2e4be
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: d1b028472785b146a45c22b3d23db7cb241c11da
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594840"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557310"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure sanal makineler SAP NetWeaver için yüksek kullanılabilirlik
 
@@ -238,7 +238,7 @@ Windows Server Yük Devretme Kümelemesi kullandığınızda dört çekirdek mod
 * **Düğüm ve disk çoğunluğu**. Küme depolamadaki her düğüm ve belirlenen bir disk (bir disk tanığı), kullanılabilir olduklarında ve iletişim kutusunda oy verebilir. Küme yalnızca oylarının büyük bir çoğunluğuna sahip olur, yani oyları yarıya kadar büyüktür. Bu mod, çift sayıda düğüm içeren bir küme ortamında mantıklı olur. Düğümlerin ve diskin yarısı çevrimiçiyse, küme sağlıklı durumda kalır.
 * **Düğüm ve dosya paylaşımının çoğunluğu**. Her düğüm ve yönetici tarafından oluşturulan bir dosya paylaşımının (bir dosya paylaşma tanığı), düğümlerin ve dosya paylaşımının kullanılabilir ve iletişim içinde olup olmamasına bakılmaksızın, bu, belirlenen bir dosya paylaşma (dosya paylaşma tanığı). Küme yalnızca oylarının büyük bir çoğunluğuna sahip olur, yani oyları yarıya kadar büyüktür. Bu mod, çift sayıda düğüm içeren bir küme ortamında mantıklı olur. Düğüm ve disk çoğunluğu moduna benzerdir, ancak tanık disk yerine bir tanık dosya paylaşma kullanır. Bu modun uygulanması kolaydır, ancak dosya paylaşımının kendisi yüksek oranda kullanılabilir değilse, tek hata noktası olabilir.
 * **Çoğunluk yok: yalnızca disk**. Bir düğüm varsa ve küme depolamadaki belirli bir diskle iletişim kutusunda kümenin bir çekirdeği vardır. Yalnızca bu diskle iletişim de olan düğümler kümeye katılabilir. Bu modu kullanmanızı öneririz.
- 
+
 
 ## <a name="windows-server-failover-clustering-on-premises"></a><a name="fdfee875-6e66-483a-a343-14bbaee33275"></a>Şirket içi Windows Server Yük Devretme Kümelemesi
 Şekil 1 ' de iki düğümün kümesi gösterilmektedir. Düğümler arasındaki ağ bağlantısı başarısız olursa ve her iki düğüm de çalışır duruma çıkarsa, bir çekirdek disk veya dosya paylaşımında kümenin uygulama ve hizmetlerini sağlamaya devam edecek olan düğüm belirlenir. Çekirdek diskine veya dosya paylaşıma erişimi olan düğüm, hizmetlerin devam etmesini sağlayan düğümdür.
@@ -377,7 +377,7 @@ _**Şekil 9:** SAP yüksek kullanılabilirliğe sahip mimari Şablon 2, yoks/SCS
 
 ### <a name="deployment-scenario-using-architectural-template-3"></a>Mimari şablonu kullanarak dağıtım senaryosu 3
 
-Şekil 10 ' da, &lt;SID1&gt; ve &lt;SID2&gt;Ile **iki** SAP sistemi için Azure 'da SAP NetWeaver yüksek kullanılabilirlik mimarisine bir örnek gösterilmektedir. Bu senaryo aşağıdaki şekilde ayarlanır:
+Şekil 10 ' da, **two** &lt; SID1 &gt; ve SID2 ile Iki SAP SISTEMI Için Azure 'da SAP NetWeaver yüksek kullanılabilirlik mimarisine bir örnek gösterilmektedir &lt; &gt; . Bu senaryo aşağıdaki şekilde ayarlanır:
 
 - SAP ASCS/SCS SID1 örneği *ve* SAP ascs/SCS SID2 örneği (bir küme **) için ayrılmış** bir küme kullanılır.
 - DBMS SID1 için bir adanmış küme kullanılır ve DBMS SID2 (iki küme) için başka bir adanmış küme kullanılır.
@@ -626,7 +626,7 @@ Diğer iki sanal ana bilgisayar adını, **PR1-ascs-SAP** ve **PR1-DBMS-SAP**ve 
 ### <a name="set-static-ip-addresses-for-the-sap-virtual-machines"></a><a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>SAP sanal makineleri için statik IP adresleri ayarlama
 Kümenizde kullanmak üzere sanal makineleri dağıttıktan sonra, tüm sanal makineler için statik IP adresleri ayarlamanız gerekir. Bunu, Konuk işletim sisteminde değil, Azure sanal ağ yapılandırmasında yapın.
 
-1. Azure Portal, **kaynak grubu** > **ağ kartı** > **ayarları** > **IP adresi**' ni seçin.
+1. Azure Portal, **kaynak grubu**  >  **ağ kartı**  >  **ayarları**  >  **IP adresi**' ni seçin.
 2. **IP adresleri** dikey penceresinde **atama**altında **statik**' ı seçin. **IP adresi** kutusuna, kullanmak istediğiniz IP adresini girin.
 
    > [!NOTE]
@@ -737,7 +737,7 @@ Yük dengeleyici **PR1-lb-DBMS** IP ADRESINI, DBMS örneğinin sanal ana BILGISA
 
 SAP ASCS veya SCS örnekleri için farklı numaralar kullanmak istiyorsanız, bağlantı noktalarının adlarını ve değerlerini varsayılan değerlerle değiştirmeniz gerekir.
 
-1. Azure Portal ** < *SID*>-lb-ascs yük dengeleyici** > **Yük Dengeleme kuralları**' nı seçin.
+1. Azure Portal ** < *SID*>-lb-ascs yük dengeleyici**  >  **Yük Dengeleme kuralları**' nı seçin.
 2. SAP ASCS veya SCS örneğine ait olan tüm yük dengeleme kuralları için şu değerleri değiştirin:
 
    * Name
@@ -940,7 +940,7 @@ Küme dosya paylaşımının tanığını yapılandırmak şu görevleri içerir
 
    _**Şekil 36:** Dosya paylaşma tanığını seçin_
 
-4. Dosya paylaşımının UNC yolunu (örneğimizde, \\domcontr-0\FSW) girin. Yapabileceğiniz değişikliklerin listesini görmek için **İleri**' yi seçin.
+4. Dosya paylaşımının UNC yolunu (örneğimizde, \\ domcontr-0\FSW) girin. Yapabileceğiniz değişikliklerin listesini görmek için **İleri**' yi seçin.
 
    ![Şekil 37: tanık paylaşımının dosya paylaşma konumunu tanımlayın][sap-ha-guide-figure-3026]
 
@@ -1132,7 +1132,7 @@ SAP 'yi yüksek kullanılabilirliğe sahip bir ASCS/SCS örneğiyle yüklemek ş
 1. Windows DNS Yöneticisi 'nde, yoks/SCS örneğinin sanal ana bilgisayar adı için bir DNS girişi oluşturun.
 
    > [!IMPORTANT]
-   > Ascs/SCS örneğinin sanal ana bilgisayar adına atadığınız IP adresi, Azure Load Balancer atadığınız IP adresiyle aynı olmalıdır (**<*SID*>-lb-ascs**).  
+   > Ascs/SCS örneğinin sanal ana bilgisayar adına atadığınız IP adresi, Azure Load Balancer atadığınız IP adresiyle aynı olmalıdır (** < *SID*>-lb-ascs**).  
    >
    >
 
@@ -1142,7 +1142,7 @@ SAP 'yi yüksek kullanılabilirliğe sahip bir ASCS/SCS örneğiyle yüklemek ş
 
    _**Şekil 56:** SAP ASCS/SCS kümesi sanal adı ve TCP/IP adresi için DNS girişi tanımlayın_
 
-2. Sanal ana bilgisayar adına atanan IP adresini tanımlamak için **DNS Yöneticisi** > **etki alanı**' nı seçin.
+2. Sanal ana bilgisayar adına atanan IP adresini tanımlamak için **DNS Yöneticisi**  >  **etki alanı**' nı seçin.
 
    ![Şekil 57: SAP Ass/SCS küme yapılandırması için yeni sanal ad ve TCP/IP adresi][sap-ha-guide-figure-3047]
 
@@ -1168,7 +1168,7 @@ Sonraki birkaç görev standart SAP yükleme belgelerinde açıklanmamıştır.
 
 #### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a>ASCS/SCS örneğinin SAP profilini değiştirme
 
-Yeni bir profil parametresi eklemeniz gerekiyor. Profil parametresi, SAP iş işlemleriyle sıraya alma sunucusu arasındaki bağlantıları çok uzun süre boşta kaldığında kapatmadan önler. [SAP ASCS/SCS örneğinin küme düğümlerine kayıt defteri girişleri ekleme][sap-ha-guide-8.11]' de sorun senaryosunu belirttik. Bu bölümde, bazı temel TCP/IP bağlantı parametrelerinde da iki değişiklik yapılmıştır. İkinci bir adımda, bağlantıların Azure iç yük dengeleyicinin boşta eşiğine ulaşmaması için sıraya `keep_alive` alma sunucusunu bir sinyal gönderecek şekilde ayarlamanız gerekir.
+Yeni bir profil parametresi eklemeniz gerekiyor. Profil parametresi, SAP iş işlemleriyle sıraya alma sunucusu arasındaki bağlantıları çok uzun süre boşta kaldığında kapatmadan önler. [SAP ASCS/SCS örneğinin küme düğümlerine kayıt defteri girişleri ekleme][sap-ha-guide-8.11]' de sorun senaryosunu belirttik. Bu bölümde, bazı temel TCP/IP bağlantı parametrelerinde da iki değişiklik yapılmıştır. İkinci bir adımda, `keep_alive` bağlantıların Azure iç yük dengeleyicinin boşta eşiğine ulaşmaması için sıraya alma sunucusunu bir sinyal gönderecek şekilde ayarlamanız gerekir.
 
 YOKS/SCS örneğinin SAP profilini değiştirmek için:
 
@@ -1292,7 +1292,7 @@ Her iki küme düğümünde bir Windows Güvenlik Duvarı araştırma bağlantı
   New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
   ```
 
-**Probeport** **62000**olarak ayarlanır. Artık ** \\\ascsha-clsap\sapmnt** dosya paylaşımıyla, **assha-DBAS**gibi diğer konaklardan erişebilirsiniz.
+**Probeport** **62000**olarak ayarlanır. Artık ** \\ \ascsha-clsap\sapmnt** dosya paylaşımıyla, **assha-DBAS**gibi diğer konaklardan erişebilirsiniz.
 
 ### <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>Veritabanı örneğini yükler
 
@@ -1316,7 +1316,7 @@ PAS 'yi barındırmak için belirlediğiniz sanal makinede *sıd*>-dı-0 <birinc
 
 ### <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a>SAP ek uygulama sunucusunu yükler
 
-SAP uygulama sunucusu örneğini barındırmak için belirlediğiniz tüm sanal makinelere bir SAP ek uygulama sunucusu (AAS) yükleyebilirsiniz. Örneğin, <*sıd*>-dı-1 Ile <*SID*>-dı-&lt;n.&gt;
+SAP uygulama sunucusu örneğini barındırmak için belirlediğiniz tüm sanal makinelere bir SAP ek uygulama sunucusu (AAS) yükleyebilirsiniz. Örneğin, <*sıd*>-dı-1 Ile <*SID*>-dı- &lt; n &gt; .
 
 > [!NOTE]
 > Bu, yüksek kullanılabilirliğe sahip SAP NetWeaver sisteminin yüklenmesini sonlandırır. Sonra, yük devretme testi ile devam edin.

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 11/23/2019
 ms.author: abpati
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: 01d4cb626aabc83117e864b75b49eec63a6c0af0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 2e5df49ea681eefeccaf621739de185767c0aa16
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76699555"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558640"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>Python için MSAL Active Directory Federasyon Hizmetleri (AD FS) desteği
 
@@ -35,7 +35,7 @@ AD FS kimlik doğrulamanın genellikle iki yolu vardır:
 
 Active Directory Federasyon Hizmetleri (AD FS) (AD FS) veya Active Directory aracılığıyla doğrudan bağlanıp bağlanmayacağı aşağıda geçerlidir.
 
-Ya `acquire_token_by_device_flow`da çağırdığınızda `acquire_token_by_authorization_code` , Kullanıcı deneyimi genellikle aşağıdaki gibidir:
+Ya da çağırdığınızda `acquire_token_by_authorization_code` `acquire_token_by_device_flow` , Kullanıcı deneyimi genellikle aşağıdaki gibidir:
 
 1. Kullanıcı hesap KIMLIĞINI girer.
 2. Azure AD, "kuruluşunuzun sayfasına yönlendirilme" iletisini kısaca gösterir ve Kullanıcı kimlik sağlayıcısının oturum açma sayfasına yönlendirilir. Oturum açma sayfası genellikle kuruluşun logosu ile özelleştirilir.
@@ -49,7 +49,7 @@ Bu Federasyon senaryosunda desteklenen AD FS sürümleri şunlardır:
 
 Active Directory Federasyon Hizmetleri (AD FS) (AD FS) veya Active Directory aracılığıyla doğrudan bağlanıp bağlanmayacağı aşağıda geçerlidir.
 
-Kullanarak `acquire_token_by_username_password`bir belirteç aldığınızda, msal Python Kullanıcı adına göre iletişim kurulacak kimlik sağlayıcısını alır. MSAL Python, kimlik sağlayıcısından bir [SAML 1,1 belirteci](reference-saml-tokens.md) alır ve bu, daha sonra JSON Web token (JWT) döndüren Azure AD 'ye sunulur.
+Kullanarak bir belirteç aldığınızda `acquire_token_by_username_password` , msal Python Kullanıcı adına göre iletişim kurulacak kimlik sağlayıcısını alır. MSAL Python, kimlik sağlayıcısından bir [SAML 1,1 belirteci](reference-saml-tokens.md) alır ve bu, daha sonra JSON Web token (JWT) döndüren Azure AD 'ye sunulur.
 
 ## <a name="connecting-directly-to-ad-fs"></a>AD FS doğrudan bağlanma
 

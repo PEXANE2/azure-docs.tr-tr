@@ -1,18 +1,18 @@
 ---
-title: Başvurular
+title: Referanslar
 description: ''
 author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: 717a09d8377a7b95fe24300cc65222f307e7419f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437516"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488044"
 ---
-# <a name="references"></a>Başvurular
+# <a name="references"></a>Referanslar
 
 Bu makalede, Azure Farmtts API 'Leri açıklanmaktadır.
 
@@ -33,7 +33,7 @@ Farmtts API 'Leri Swagger teknik belgelerini içerir. Tüm API 'Ler ve bunların
 
 Aşağıdaki tabloda, Farmrets veri hub 'ında bulunan tüm nesneler ve kaynaklar özetlenmektedir:
 
-| Nesneler ve kaynaklar | Açıklama
+| Nesneler ve kaynaklar | Description
 --- | ---|
 Çiftlik | Grup, Farmtts sistemi içinde ilgilendiğiniz fiziksel bir konuma karşılık gelir. Her grubun bir grup adı ve benzersiz bir grup KIMLIĞI vardır. |
 Cihaz  | Cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir. Her cihazın benzersiz bir cihaz KIMLIĞI vardır. Bir cihaz genellikle Grup KIMLIĞI olan bir gruba sağlanır.
@@ -74,7 +74,7 @@ Azure Farmrets veri hub 'ına bir API çağrısı yaptığınızda belirtmeniz g
 
 **Üst bilgi** | **Açıklama ve örnek**
 --- | ---
-İçerik Türü  | İstek biçimi (Content-Type: Application/<format>). Azure Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Content-Type: Application/JSON
+İçerik Türü  | İstek biçimi (Content-Type: Application/ <format> ). Azure Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Content-Type: Application/JSON
 Yetkilendirme  | API çağrısı yapmak için gereken erişim belirtecini belirtir. Yetkilendirme: taşıyıcı <erişim-belirteç>
 Kabul Et | Yanıt biçimi. Azure Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Kabul et: uygulama/JSON
 
@@ -82,7 +82,7 @@ Kabul Et | Yanıt biçimi. Azure Farmrets veri hub 'ı API 'Leri için, biçim J
 
 REST API bir istek yapmak için HTTP (GET, POST, PUT veya DELETE) yöntemini, API hizmetinin URL 'sini, sorgulanacak bir kaynağa yönelik URI 'yi, veri göndermek, güncelleştirmek veya silmek için bir veya daha fazla HTTP istek üst bilgisi eklemeniz gerekir.
 
-API hizmetinin URL 'SI, veri hub 'ınızın URL 'sidir, örneğin, https://\<yourdatahub-website-Name>. azurewebsites.net.
+API hizmetinin URL 'SI, veri hub 'ınızın URL 'sidir, örneğin, https:// \<yourdatahub-website-name> . azurewebsites.net.
 
 İsteğe bağlı olarak, filtrelemeye yönelik çağrıları al, boyut sınırını sınırla ve yanıtlarındaki verileri sıralamak için sorgu parametreleri ekleyebilirsiniz.
 
@@ -111,7 +111,7 @@ REST GET çağrıları için, istek URI 'sinde bir veya daha fazla sorgu paramet
 
 Azure Farmrets veri hub 'ı API 'Leri, standart HTTP hatalarını döndürür. En yaygın hata kodları şunlardır:
 
- |Hata kodu             | Açıklama |
+ |Hata kodu             | Description |
  |---                    | --- |
  |200                    | Başarılı |
  |201                    | Oluşturma (post) başarılı |
@@ -147,7 +147,7 @@ Bu örnekte, bir grup oluşturulduğunda, giriş yükünde "ad" zorunlu alanı b
 
 Azure Farmtts API 'Lerine, Azure Active Directory bir kullanıcı veya uygulama kaydı tarafından erişilebilir. Azure Active Directory bir uygulama kaydı oluşturmak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com)gidin ve**Yeni kayıt****uygulama kayıtları** >  **Azure Active Directory** > seçin. Alternatif olarak, mevcut bir hesabı kullanabilirsiniz.
+1. [Azure Portal](https://portal.azure.com)gidin ve **Azure Active Directory**  >  **App registrations**  >  **Yeni kayıt**uygulama kayıtları Azure Active Directory seçin. Alternatif olarak, mevcut bir hesabı kullanabilirsiniz.
 2. Yeni bir hesap için aşağıdakileri yapın:
 
     - Bir ad girin.
@@ -162,9 +162,18 @@ Azure Farmtts API 'Lerine, Azure Active Directory bir kullanıcı veya uygulama 
     - **Genel Bakış ' a**geri dönün ve **yerel dizinde uygulamayı Yönet ' in**yanındaki bağlantıyı seçin.
     - **Nesne kimliğini**yakalamak için **Özellikler** ' e gidin.
 
-4. Veri hub Swagger (https://<yourdatahub>. azurewebsites.net/Swagger/index.html) sayfasına gidin ve şunları yapın:
+4. Veri hub Swagger (https:// <yourdatahub> . azurewebsites.net/Swagger/index.html) sayfasına gidin ve şunları yapın:
     - **Roleatama API**'sine gidin.
     - Yeni oluşturduğunuz **nesne kimliği** Için bir **roleatama** NESNESI oluşturmak üzere bir gönderi gerçekleştirin.
+ 
+```json
+{
+  "roleDefinitionId": "a400a00b-f67c-42b7-ba9a-f73d8c67e433",
+  "objectId": "objectId from step 3 above",
+  "objectIdType": "ServicePrincipalId",
+  "tenantId": "tenant id of your Azure subscription"
+}
+```
 
   > [!NOTE]
   > Kullanıcı ekleme ve kayıt Active Directory hakkında daha fazla bilgi için bkz. [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).

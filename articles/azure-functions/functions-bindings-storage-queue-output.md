@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: dd8442c00e2b7685b0dc1a7bd5150c87f2c27b7c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.custom: cc996988-fb4f-47, tracking-python
+ms.openlocfilehash: eb61cad5f505e6895b550adca3e9f156222d6d30
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891446"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559968"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama çıkışı bağlamaları
 
@@ -21,7 +21,7 @@ Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakı
 
 ## <a name="example"></a>Örnek
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnekte, alınan her HTTP isteği için bir kuyruk iletisi oluşturan bir [C# işlevi](functions-dotnet-class-library.md) gösterilmektedir.
 
@@ -87,7 +87,7 @@ public static CustomQueueMessage Run(CustomQueueMessage input, ILogger log)
 }
 ```
 
-Bir `ICollector` veya `IAsyncCollector` parametresini kullanarak bir kerede birden çok ileti gönderebilirsiniz. Burada, biri HTTP istek verileriyle, diğeri ise sabit kodlanmış değerlerle birden çok ileti gönderen C# betik kodu:
+Bir veya parametresini kullanarak bir kerede birden çok ileti gönderebilirsiniz `ICollector` `IAsyncCollector` . Burada, biri HTTP istek verileriyle, diğeri ise sabit kodlanmış değerlerle birden çok ileti gönderen C# betik kodu:
 
 ```cs
 public static void Run(
@@ -142,7 +142,7 @@ module.exports = function (context, input) {
 };
 ```
 
-`myQueueItem` Çıkış bağlaması için bir ileti dizisi tanımlayarak bir kerede birden çok ileti gönderebilirsiniz. Aşağıdaki JavaScript kodu, alınan her HTTP isteği için sabit kodlanmış değerler içeren iki kuyruk iletisi gönderir.
+Çıkış bağlaması için bir ileti dizisi tanımlayarak bir kerede birden çok ileti gönderebilirsiniz `myQueueItem` . Aşağıdaki JavaScript kodu, alınan her HTTP isteği için sabit kodlanmış değerler içeren iki kuyruk iletisi gönderir.
 
 ```javascript
 module.exports = function(context) {
@@ -155,7 +155,7 @@ module.exports = function(context) {
 
 Aşağıdaki örnek, Depolama kuyruklarına tek ve birden çok değerin nasıl alınacağını gösterir. *Function. JSON* için gereken yapılandırma her iki yoldan de aynıdır.
 
-Bir depolama kuyruğu bağlaması, *türünün* olarak `queue`ayarlandığı *function. JSON* içinde tanımlanır.
+Bir depolama kuyruğu bağlaması, *türünün* olarak ayarlandığı *function. JSON* içinde tanımlanır `queue` .
 
 ```json
 {
@@ -187,7 +187,7 @@ Bir depolama kuyruğu bağlaması, *türünün* olarak `queue`ayarlandığı *fu
 }
 ```
 
-Kuyrukta tek bir ileti ayarlamak için `set` yöntemine tek bir değer geçirirsiniz.
+Kuyrukta tek bir ileti ayarlamak için yöntemine tek bir değer geçirirsiniz `set` .
 
 ```python
 import azure.functions as func
@@ -201,7 +201,7 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-Kuyrukta birden çok ileti oluşturmak için, uygun liste türü olarak bir parametre bildirin ve `set` yönteme (liste türüyle eşleşen) bir değer dizisi geçirin.
+Kuyrukta birden çok ileti oluşturmak için, uygun liste türü olarak bir parametre bildirin ve yönteme (liste türüyle eşleşen) bir değer dizisi geçirin `set` .
 
 ```python
 import azure.functions as func
@@ -230,13 +230,13 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
  }
 ```
 
-[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, değeri kuyruk `@QueueOutput` depolamaya yazılacak olan parametrelerde ek açıklamayı kullanın.  Parametre türü olmalıdır `OutputBinding<T>`, burada `T` bir Pojo 'nın yerel Java türüdür.
+[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, `@QueueOutput` değeri kuyruk depolamaya yazılacak olan parametrelerde ek açıklamayı kullanın.  Parametre türü olmalıdır `OutputBinding<T>` , burada `T` BIR Pojo 'Nın yerel Java türüdür.
 
 ---
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [C# sınıf kitaplıklarında](functions-dotnet-class-library.md) [queueattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues/QueueAttribute.cs)kullanın.
 
@@ -251,7 +251,7 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-Aşağıdaki örnekte gösterildiği gibi `Connection` , kullanılacak depolama hesabını belirtmek için özelliğini ayarlayabilirsiniz:
+`Connection`Aşağıdaki örnekte gösterildiği gibi, kullanılacak depolama hesabını belirtmek için özelliğini ayarlayabilirsiniz:
 
 ```csharp
 [FunctionName("QueueOutput")]
@@ -264,7 +264,7 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 
 Tüm örnek için bkz. [çıkış örneği](#example).
 
-Sınıfı, yöntemi veya `StorageAccount` parametre düzeyinde depolama hesabını belirtmek için özniteliğini kullanabilirsiniz. Daha fazla bilgi için bkz. tetikleyici-öznitelikler.
+`StorageAccount`Sınıfı, yöntemi veya parametre düzeyinde depolama hesabını belirtmek için özniteliğini kullanabilirsiniz. Daha fazla bilgi için bkz. tetikleyici-öznitelikler.
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
@@ -280,7 +280,7 @@ Sınıfı, yöntemi veya `StorageAccount` parametre düzeyinde depolama hesabın
 
 # <a name="java"></a>[Java](#tab/java)
 
-`QueueOutput` Ek açıklama, bir işlevin çıktısı olarak bir ileti yazmanızı sağlar. Aşağıdaki örnekte, bir kuyruk iletisi oluşturan HTTP ile tetiklenen bir işlev gösterilmektedir.
+`QueueOutput`Ek açıklama, bir işlevin çıktısı olarak bir ileti yazmanızı sağlar. Aşağıdaki örnekte, bir kuyruk iletisi oluşturan HTTP ile tetiklenen bir işlev gösterilmektedir.
 
 ```java
 package com.function;
@@ -307,36 +307,36 @@ public class HttpTriggerQueueOutput {
 |`queueName`  | Depolama hesabındaki sıra adını bildirir. |
 |`connection` | Depolama hesabı bağlantı dizesine işaret eder. |
 
-Ek açıklamayla ilişkili parametre bir [OutputBinding\<T\> ](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java) örneği olarak yazılır. `QueueOutput`
+`QueueOutput`Ek açıklamayla ilişkili parametre bir [OutputBinding \<T\> ](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java) örneği olarak yazılır.
 
 ---
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `Queue` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Queue` .
 
-|function. JSON özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
-|**türüyle** | yok | Olarak `queue`ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
-|**Görünüm** | yok | Olarak `out`ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
-|**ada** | yok | İşlev kodundaki kuyruğu temsil eden değişkenin adı. `$return` İşlev dönüş değerine başvuracak şekilde ayarlanır.|
+|**tür** | yok | Olarak ayarlanmalıdır `queue` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**Görünüm** | yok | Olarak ayarlanmalıdır `out` . Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
+|**ada** | yok | İşlev kodundaki kuyruğu temsil eden değişkenin adı. `$return`İşlev dönüş değerine başvuracak şekilde ayarlanır.|
 |**Adı** |**Adı** | Kuyruğun adı. |
-|**bağlantı** | **Bağlanma** |Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, "MyStorage" `connection` olarak ayarlarsanız, işlevler çalışma zamanı "Mystorage" adlı bir uygulama ayarı arar. Boş bırakırsanız `connection` , işlevler çalışma zamanı adlı `AzureWebJobsStorage`uygulama ayarında varsayılan depolama bağlantı dizesini kullanır.|
+|**bağlanma** | **Bağlantı** |Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "Mystorage" olarak ayarlarsanız, işlevler çalışma zamanı "MyStorage" adlı bir uygulama ayarı arar. `connection`Boş bırakırsanız, işlevler çalışma zamanı adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır `AzureWebJobsStorage` .|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Kullanım
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-Gibi bir yöntem parametresi kullanarak tek bir kuyruk iletisi yazın `out T paramName`. Bir `out` parametre yerine yöntem dönüş türünü kullanabilir ve `T` aşağıdaki türlerden herhangi biri olabilir:
+Gibi bir yöntem parametresi kullanarak tek bir kuyruk iletisi yazın `out T paramName` . Bir parametre yerine yöntem dönüş türünü kullanabilir `out` ve `T` aşağıdaki türlerden herhangi biri olabilir:
 
 * JSON olarak seri hale getirilebilir bir nesne
 * `string`
 * `byte[]`
 * [CloudQueueMessage] 
 
-' A bağlanıp `CloudQueueMessage` bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
+' `CloudQueueMessage` A bağlanıp bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 
 C# ve C# komut dosyasında, aşağıdaki türlerden birini kullanarak birden çok kuyruk iletisi yazın: 
 
@@ -345,14 +345,14 @@ C# ve C# komut dosyasında, aşağıdaki türlerden birini kullanarak birden ço
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Gibi bir yöntem parametresi kullanarak tek bir kuyruk iletisi yazın `out T paramName`. , `paramName` `name` *Function. JSON*özelliğinde belirtilen değerdir. Bir `out` parametre yerine yöntem dönüş türünü kullanabilir ve `T` aşağıdaki türlerden herhangi biri olabilir:
+Gibi bir yöntem parametresi kullanarak tek bir kuyruk iletisi yazın `out T paramName` . , `paramName` `name` *Function. JSON*özelliğinde belirtilen değerdir. Bir parametre yerine yöntem dönüş türünü kullanabilir `out` ve `T` aşağıdaki türlerden herhangi biri olabilir:
 
 * JSON olarak seri hale getirilebilir bir nesne
 * `string`
 * `byte[]`
 * [CloudQueueMessage] 
 
-' A bağlanıp `CloudQueueMessage` bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
+' `CloudQueueMessage` A bağlanıp bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 
 C# ve C# komut dosyasında, aşağıdaki türlerden birini kullanarak birden çok kuyruk iletisi yazın: 
 
@@ -361,15 +361,15 @@ C# ve C# komut dosyasında, aşağıdaki türlerden birini kullanarak birden ço
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Çıkış kuyruğu öğesi, *function. JSON*içinde `<NAME>` tanımlanan adla eşleşen bir ile `context.bindings.<NAME>` kullanılabilir. Kuyruk öğesi yükü için bir dize veya JSON-serileştirilebilir nesnesi kullanabilirsiniz.
+Çıkış kuyruğu öğesi, `context.bindings.<NAME>` `<NAME>` *function. JSON*içinde tanımlanan adla eşleşen bir ile kullanılabilir. Kuyruk öğesi yükü için bir dize veya JSON-serileştirilebilir nesnesi kullanabilirsiniz.
 
 # <a name="python"></a>[Python](#tab/python)
 
 Bir işlevden bir olay hub 'ı iletisini almak için iki seçenek vardır:
 
-- **Dönüş değeri**: `name` *function. JSON* içindeki özelliği olarak `$return`ayarlayın. Bu yapılandırmayla, işlevin dönüş değeri kuyruk depolama iletisi olarak kalıcıdır.
+- **Dönüş değeri**: `name` *function. JSON* içindeki özelliği olarak ayarlayın `$return` . Bu yapılandırmayla, işlevin dönüş değeri kuyruk depolama iletisi olarak kalıcıdır.
 
-- **Zorunludur**: bir değeri, [Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) türü olarak belirtilen parametresinin [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) yöntemine geçirin. Geçirilen `set` değer kuyruk depolama iletisi olarak kalıcıdır.
+- **Zorunludur**: bir değeri, [Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) türü olarak belirtilen parametresinin [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) yöntemine geçirin. Geçirilen değer `set` kuyruk depolama iletisi olarak kalıcıdır.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -377,7 +377,7 @@ Bir işlevden bir olay hub 'ı iletisini almak için iki seçenek vardır:
 
 - **Dönüş değeri**: ek açıklamanın işleve uygulanması için, işlevin dönüş değeri bir olay hub 'ı iletisi olarak kalıcıdır.
 
-- Zorunlu **: ileti**değerini açıkça ayarlamak için, ek açıklamayı türün [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)belirli bir parametresine uygulayın, burada `T` bir Pojo veya herhangi bir yerel Java türü olur. Bu yapılandırmayla, `setValue` yöntemine bir değer geçirilmesi değeri bir olay hub 'ı iletisi olarak devam ettirir.
+- Zorunlu **: ileti**değerini açıkça ayarlamak için, ek açıklamayı türün belirli bir parametresine uygulayın [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) , burada `T` bir Pojo veya herhangi bir yerel Java türü olur. Bu yapılandırmayla, yöntemine bir değer geçirilmesi `setValue` değeri bir olay hub 'ı iletisi olarak devam ettirir.
 
 ---
 
@@ -413,11 +413,11 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------|
 |Maxpollingınterval|00:00:01|Sıra yoklamaları arasındaki en uzun Aralık. En az 00:00:00.100 (100 ms) ve 00:01:00 (1 dak) artar.  1. x içinde veri türü milisaniyedir ve 2. x ve üzeri bir TimeSpan 'dir.|
 |visibilityTimeout|00:00:00|Bir ileti işlenirken yeniden denemeler arasındaki zaman aralığı başarısız olur. |
-|batchSize|16|Işlevlerin çalışma zamanının aynı anda ve işlemleri paralel olarak aldığı sıra iletilerinin sayısı. İşlenen sayı öğesine `newBatchThreshold`doğru aldığında, çalışma zamanı başka bir Batch alır ve bu iletileri işlemeye başlar. Bu nedenle, işlev başına işlenen en fazla eşzamanlı ileti sayısı artı `batchSize` `newBatchThreshold`olur. Bu sınır, kuyruğa tetiklenen her bir işlev için ayrı olarak uygulanır. <br><br>Bir kuyrukta alınan iletiler için paralel yürütmeyi önlemek istiyorsanız, 1 olarak ayarlayabilirsiniz `batchSize` . Ancak, bu ayar yalnızca işlev uygulamanız tek bir sanal makinede (VM) çalıştığı sürece eşzamanlılık ortadan kaldırır. İşlev uygulaması birden çok VM 'ye ölçekleniyorsa, her VM, her bir kuyruk tetiklenen işlevin bir örneğini çalıştırabilir.<br><br>Maksimum `batchSize` değer 32 ' dir. |
+|batchSize|16|Işlevlerin çalışma zamanının aynı anda ve işlemleri paralel olarak aldığı sıra iletilerinin sayısı. İşlenen sayı öğesine doğru aldığında, `newBatchThreshold` çalışma zamanı başka bir Batch alır ve bu iletileri işlemeye başlar. Bu nedenle, işlev başına işlenen en fazla eşzamanlı ileti sayısı `batchSize` artı olur `newBatchThreshold` . Bu sınır, kuyruğa tetiklenen her bir işlev için ayrı olarak uygulanır. <br><br>Bir kuyrukta alınan iletiler için paralel yürütmeyi önlemek istiyorsanız, `batchSize` 1 olarak ayarlayabilirsiniz. Ancak, bu ayar yalnızca işlev uygulamanız tek bir sanal makinede (VM) çalıştığı sürece eşzamanlılık ortadan kaldırır. İşlev uygulaması birden çok VM 'ye ölçekleniyorsa, her VM, her bir kuyruk tetiklenen işlevin bir örneğini çalıştırabilir.<br><br>Maksimum `batchSize` değer 32 ' dir. |
 |maxDequeueCount|5|Zarar sırasına taşımadan önce bir iletiyi işlemeyi deneme sayısı.|
 |newBatchThreshold|batchSize/2|Aynı anda işlenen ileti sayısı bu sayıya indiğinde, çalışma zamanı başka bir toplu işi alır.|
 

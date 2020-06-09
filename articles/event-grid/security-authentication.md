@@ -2,18 +2,18 @@
 title: Azure Event Grid güvenlik ve kimlik doğrulaması
 description: Bu makalede, Event Grid kaynaklarınıza (Web kancası, abonelikler, özel konular) erişimin kimliklerinin nasıl doğrulanmasıyla ilgili farklı yollar açıklanmaktadır
 services: event-grid
-author: banisadr
+author: femila
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
-ms.author: babanisa
-ms.openlocfilehash: bca450022322db7a7569fa1dc7ce80ec75a9ce69
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.author: femila
+ms.openlocfilehash: 8335d5a41dc2f322623c163e08f8a4a2c1be8360
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774306"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559005"
 ---
 # <a name="authenticating-access-to-azure-event-grid-resources"></a>Azure Event Grid kaynaklarına erişim izni doğrulanıyor
 Bu makalede aşağıdaki senaryolar hakkında bilgi verilmektedir:  

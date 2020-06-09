@@ -5,15 +5,16 @@ description: Ubuntu Veri Bilimi Sanal Makinesi bulunan araçlarla ilgili ayrınt
 author: gvashishtha
 ms.service: machine-learning
 ms.subservice: data-science-vm
+ms.custom: tracking-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 7cfb2001067b70c64274ee1dd3475c142b788c98
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 4c4ac1d332c4348941963b90d25aefb4fdf30ce4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161290"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560215"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Başvuru: Ubuntu (Linux) Veri Bilimi Sanal Makinesi
 
@@ -52,7 +53,7 @@ Bazı örnek Not defterleri jupi Terhub 'da kullanılabilir.
 
 H2O, hızlı, bellek içi, dağıtılmış makine öğrenimi ve tahmine dayalı analiz platformudur. Bir Python paketi hem kök hem de py35 Anaconda ortamlarında yüklüdür. R paketi de yüklenir. 
 
-Komut satırından H2O 'yi açmak için komutunu çalıştırın `java -jar /dsvm/tools/h2o/current/h2o.jar`. Yapılandırmak isteyebileceğiniz çeşitli [komut satırı seçenekleri](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) vardır. Başlamak için ' e `http://localhost:54321` giderek Flow Web Kullanıcı arabirimine erişebilirsiniz. Örnek Not defterleri jupi Terhub 'da da kullanılabilir.
+Komut satırından H2O 'yi açmak için komutunu çalıştırın `java -jar /dsvm/tools/h2o/current/h2o.jar` . Yapılandırmak isteyebileceğiniz çeşitli [komut satırı seçenekleri](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) vardır. Başlamak için ' e giderek Flow Web Kullanıcı arabirimine erişebilirsiniz `http://localhost:54321` . Örnek Not defterleri jupi Terhub 'da da kullanılabilir.
 
 ### <a name="keras"></a>Keras
 
@@ -66,7 +67,7 @@ MXNet, verimlilik ve esneklik için tasarlanan derin bir öğrenme çerçevesidi
 
 RAKAM olarak bilinen NVıDıA derin öğrenme GPU eğitim sistemi, yaygın derin öğrenme görevlerini basitleştirecek bir sistemdir. Bu görevler, verileri yönetmeyi, GPU sistemlerinde sinir ağlarını tasarlamayı ve eğitimini ve gelişmiş görselleştirmede performansı gerçek zamanlı olarak izlemeyi içerir.
 
-Basamaklar, *basamaklar*adlı bir hizmet olarak kullanılabilir. Hizmeti başlatın ve başlamak için öğesine `http://localhost:5000` gidin.
+Basamaklar, *basamaklar*adlı bir hizmet olarak kullanılabilir. Hizmeti başlatın ve başlamak için öğesine gidin `http://localhost:5000` .
 
 Ayrıca, Conda kök ortamında bir Python modülü olarak rakamlar yüklenir.
 
@@ -137,12 +138,12 @@ Grafik arabiriminiz varsa veya X11 iletmeyi ayarladıysanız, Pydüğme Python I
 
 Anaconda dağıtımı, kod ve analiz paylaşmak için bir ortam olan bir Jupyter Not defteri ile de birlikte gelir. Jupyter not defterine JupyterHub üzerinden erişilir. Yerel Linux Kullanıcı adınızı ve parolanızı kullanarak oturum açın.
 
-Jupyter Not defteri sunucusu, Python 2, Python 3 ve R kernels ile önceden yapılandırılmıştır. Tarayıcıyı açmak ve Not defteri sunucusuna erişmek için **Jupyter Notebook** masaüstü simgesini kullanın. Sanal makine ile SSH veya X2Go istemcisi aracılığıyla çalışıyorsanız, Jupyter Not defteri sunucusuna da erişebilirsiniz `https://localhost:8000/`.
+Jupyter Not defteri sunucusu, Python 2, Python 3 ve R kernels ile önceden yapılandırılmıştır. Tarayıcıyı açmak ve Not defteri sunucusuna erişmek için **Jupyter Notebook** masaüstü simgesini kullanın. Sanal makine ile SSH veya X2Go istemcisi aracılığıyla çalışıyorsanız, Jupyter Not defteri sunucusuna da erişebilirsiniz `https://localhost:8000/` .
 
 > [!NOTE]
 > Herhangi bir sertifika uyarısı alırsanız devam edin.
 
-Jupyter Not defteri sunucusuna herhangi bir konaktan erişebilirsiniz. **\<Https://VM DNS adını veya IP adresini\>girin: 8000/**.
+Jupyter Not defteri sunucusuna herhangi bir konaktan erişebilirsiniz. **Https://girin \<VM DNS name or IP address\> : 8000/**.
 
 > [!NOTE]
 > 8000 numaralı bağlantı noktası, VM sağlandığında varsayılan olarak güvenlik duvarında açılır. 
@@ -173,7 +174,7 @@ chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
 systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 ```
 
-' İ çalıştırarak ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```Hadoop ile ilgili hizmetleri durdurabilirsiniz.
+' İ çalıştırarak Hadoop ile ilgili hizmetleri durdurabilirsiniz ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` .
 
 /Dsvm/samples/MRS dizini, uzak Spark bağlamında Microsoft Machine Learning Server geliştirme ve test etme (DSVM 'deki tek başına Spark örneği) hakkında bir örnek sağlar.
 
@@ -254,12 +255,12 @@ R ve Python 'da modellerin Azure Machine Learning içine nasıl dağıtılacağ�
 
 ## <a name="machine-learning-tools"></a>Machine Learning araçları
 
-VM, önceden derlenmiş ve yerel olarak önceden yüklenmiş makine öğrenimi araçları ve algoritmalarıyla birlikte gelir. Bunlar:
+VM, önceden derlenmiş ve yerel olarak önceden yüklenmiş makine öğrenimi araçları ve algoritmalarıyla birlikte gelir. Bu güncelleştirmeler şunlardır:
 
 * **Vowpal Wabbit**: hızlı bir çevrimiçi öğrenme algoritması.
 * **xgboost**: iyileştirilmiş, artırılmış ağaç algoritmaları sağlayan bir araç.
 * **Rattle**: kolay veri araştırması ve modelleme için R tabanlı bir grafik aracıdır.
-* **Python**: Anaconda Python, Scikit-öğren gibi kitaplıklar ile makine öğrenimi algoritmalarıyla birlikte sunulur. `pip install` Komutunu kullanarak diğer kitaplıkları yükleyebilirsiniz.
+* **Python**: Anaconda Python, Scikit-öğren gibi kitaplıklar ile makine öğrenimi algoritmalarıyla birlikte sunulur. Komutunu kullanarak diğer kitaplıkları yükleyebilirsiniz `pip install` .
 * **Lightgbm**: karar ağacı algoritmalarını temel alan hızlı, dağıtılmış ve yüksek performanslı bir gradyan arttırma çerçevesi.
 * **R**: r. önceden yüklenmiş kitaplıklar için, LM, GLM, rasgeleforest ve rpart için zengin bir makine öğrenme işlevleri kitaplığı mevcuttur. Şu komutu çalıştırarak diğer kitaplıkları yükleyebilirsiniz:
   
@@ -338,7 +339,7 @@ Artık bir sekme kümesiyle birlikte bir grafik arabirimi açılır. Örnek bir 
 1. **Değerlendir** sekmesini seçin.
 1. **Risk** seçeneğini belirleyin ve iki **risk (birikmeli)** performans grafiğini göstermek için **Yürüt** ' ü seçin.
 1. Önceki işlemler için oluşturulan R kodunu göstermek üzere **günlük** sekmesini seçin.
-   (Rattle 'in geçerli sürümündeki bir hata nedeniyle bu günlüğü, günlüğün metninde **dışarı aktar** önüne bir **#** karakter eklemeniz gerekir.)
+   (Rattle 'in geçerli sürümündeki bir hata nedeniyle **#** Bu günlüğü, günlüğün metninde **dışarı aktar** önüne bir karakter eklemeniz gerekir.)
 1. Weather_script adlı R betiği dosyasını kaydetmek için **dışarı aktar** düğmesini seçin *. *Ana klasöre R.
 
 Rattle ve R 'den çıkabilirsiniz. Artık oluşturulan R betiğini değiştirebilirsiniz. Ya da, komut dosyasını olduğu gibi kullanın ve Rattle Kullanıcı arabiriminde yapılan her şeyi yinelemek için dilediğiniz zaman çalıştırın. Özellikle R 'deki yeni başlayanlar için bu, bir basit grafik arabiriminde analiz ve makine öğrenimini hızlı bir şekilde yapmanın bir yoludur. böylece, değiştirmek veya öğrenmek için R 'de otomatik olarak kod oluşturma.

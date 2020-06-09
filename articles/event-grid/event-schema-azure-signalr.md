@@ -2,17 +2,17 @@
 title: Event Grid kaynağı olarak Azure SignalR
 description: Azure Event Grid ile Azure SignalR olayları için sunulan özellikleri açıklar
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.author: babanisa
-ms.openlocfilehash: e4ebae9597d750cea6f292655e9f03dd65ccc3f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: femila
+ms.openlocfilehash: 8fbae3fad4aeb85022c804e1ac648060360c6531
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133712"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560623"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>SignalR hizmeti için Azure Event Grid olay şeması
 
@@ -24,7 +24,7 @@ Bu makalede, SignalR hizmeti olaylarına yönelik özellikler ve şema sağlanma
 
 SignalR hizmeti aşağıdaki olay türlerini yayar:
 
-| Olay türü | Açıklama |
+| Olay türü | Description |
 | ---------- | ----------- |
 | Microsoft. SignalRService. ClientConnectionConnected | İstemci bağlantısı bağlandığında tetiklenir. |
 | Microsoft. SignalRService. Clientconnectionconnected | İstemci bağlantısı kesildiğinde tetiklenir. |
@@ -76,20 +76,20 @@ Aşağıdaki örnek, istemci bağlantısı bağlantılı olayının şemasını 
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 | Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
 | Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| id | string | Etkinliğin benzersiz tanımlayıcısı. |
-| veri | object | SignalR hizmeti olay verileri. |
+| kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
+| veri | nesne | SignalR hizmeti olay verileri. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | timestamp | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | hubName | string | İstemci bağlantısının ait olduğu merkez. |

@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: df02c7d2ace6c58d86f4044607eca386f1790e1d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 41124e7237c2c16034fe8cce1fa89fa0132d09b7
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734323"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558930"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Kullanıcı oturumu açan Web uygulaması: oturum açma ve oturum kapatma
 
@@ -33,7 +33,7 @@ Oturum açma iki bölümden oluşur:
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core, Microsoft Identity platform uygulamaları için, **oturum açma** düğmesi ' de `Views\Shared\_LoginPartial.cshtml` gösterilir (bir MVC uygulaması Için) veya `Pages\Shared\_LoginPartial.cshtm` (Razor uygulaması için). Yalnızca kullanıcının kimliği doğrulanmadığı zaman görüntülenir. Diğer bir deyişle, Kullanıcı henüz oturum açmamış veya oturumu kapatmamışsa görüntülenir. Aksine, Kullanıcı zaten oturum açtığında **oturumu** Kapat düğmesi görüntülenir. Hesap denetleyicisinin **Microsoft. Identity. Web. UI** NuGet paketinde, **microsoftıdentity** adlı alanda tanımlandığını unutmayın.
+ASP.NET Core, Microsoft Identity platform uygulamaları için, **oturum açma** düğmesi ' de gösterilir `Views\Shared\_LoginPartial.cshtml` (bir MVC uygulaması için) veya `Pages\Shared\_LoginPartial.cshtm` (Razor uygulaması için). Yalnızca kullanıcının kimliği doğrulanmadığı zaman görüntülenir. Diğer bir deyişle, Kullanıcı henüz oturum açmamış veya oturumu kapatmamışsa görüntülenir. Aksine, Kullanıcı zaten oturum açtığında **oturumu** Kapat düğmesi görüntülenir. Hesap denetleyicisinin **Microsoft. Identity. Web. UI** NuGet paketinde, **microsoftıdentity** adlı alanda tanımlandığını unutmayın.
 
 ```html
 <ul class="navbar-nav">
@@ -57,7 +57,7 @@ ASP.NET Core, Microsoft Identity platform uygulamaları için, **oturum açma** 
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET MVC 'de, oturum kapatma düğmesi ' de `Views\Shared\_LoginPartial.cshtml`kullanıma sunuldu. Yalnızca kimliği doğrulanmış bir hesap olduğunda gösterilir. Diğer bir deyişle, Kullanıcı daha önce oturum açmış olduğu zaman görüntülenir.
+ASP.NET MVC 'de, oturum kapatma düğmesi ' de kullanıma sunuldu `Views\Shared\_LoginPartial.cshtml` . Yalnızca kimliği doğrulanmış bir hesap olduğunda gösterilir. Diğer bir deyişle, Kullanıcı daha önce oturum açmış olduğu zaman görüntülenir.
 
 ```html
 @if (Request.IsAuthenticated)
@@ -112,13 +112,13 @@ def index():
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET ' de, Web uygulamasındaki **oturum açma** düğmesinin seçilmesi, `SignIn` `AccountController` denetleyiciyi denetleyiciye tetikler. ASP.NET Core şablonlarının önceki sürümlerinde, `Account` denetleyici Web uygulamasıyla katıştırılmıştır. Denetleyici artık **Microsoft. Identity. Web. UI** NuGet paketinin bir parçası olduğundan bu durum artık böyle değildir. Ayrıntılar için bkz. [accountcontroller.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) .
+ASP.NET ' de, Web uygulamasındaki **oturum açma** düğmesinin seçilmesi, `SignIn` `AccountController` denetleyiciyi denetleyiciye tetikler. ASP.NET Core şablonlarının önceki sürümlerinde, `Account` Denetleyici Web uygulamasıyla katıştırılmıştır. Denetleyici artık **Microsoft. Identity. Web. UI** NuGet paketinin bir parçası olduğundan bu durum artık böyle değildir. Ayrıntılar için bkz. [accountcontroller.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) .
 
 Bu denetleyici Ayrıca Azure AD B2C uygulamalarını da işler.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET ' de, oturum kapatma bir denetleyicideki `SignOut()` yöntemden tetiklenir (örneğin, [accountcontroller. cs # L16-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)). Bu yöntem, ASP.NET çerçevesinin bir parçası değildir (ASP.NET Core olduğu gibi). Bir yeniden yönlendirme URI 'SI önerdikten sonra bir OpenID oturum açma sınaması gönderir.
+ASP.NET ' de, oturum kapatma `SignOut()` bir denetleyicideki yöntemden tetiklenir (örneğin, [accountcontroller. cs # L16-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)). Bu yöntem, ASP.NET çerçevesinin bir parçası değildir (ASP.NET Core olduğu gibi). Bir yeniden yönlendirme URI 'SI önerdikten sonra bir OpenID oturum açma sınaması gönderir.
 
 ```csharp
 public void SignIn()
@@ -133,7 +133,7 @@ public void SignIn()
 
 # <a name="java"></a>[Java](#tab/java)
 
-Java 'da, oturum kapatma doğrudan Microsoft Identity Platform `logout` uç noktası çağırarak ve `post_logout_redirect_uri` değer sağlanarak işlenir. Ayrıntılar için bkz. [Authpagecontroller. Java # L30-L48](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L30-L48).
+Java 'da, oturum kapatma doğrudan Microsoft Identity Platform `logout` uç noktası çağırarak ve değer sağlanarak işlenir `post_logout_redirect_uri` . Ayrıntılar için bkz. [Authpagecontroller. Java # L30-L48](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L30-L48).
 
 ```Java
 @Controller
@@ -175,7 +175,7 @@ def login():
     return "<a href='%s'>Login with Microsoft Identity</a>" % auth_url
 ```
 
-`_build_msal_app()` Yöntemi [app. Sip # L81-L88](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L81-L88) içinde aşağıdaki gibi tanımlanır:
+`_build_msal_app()`Yöntemi [app. Sip # L81-L88](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L81-L88) içinde aşağıdaki gibi tanımlanır:
 
 ```Python
 def _load_cache():
@@ -211,7 +211,7 @@ Kullanıcı uygulamanızda oturum açtıktan sonra, bunları oturumu kapatmak i�
 ## <a name="sign-out"></a>Oturumu kapatma
 
 Bir Web uygulamasından oturum açmak, Web uygulamasının durumundan oturum açmış hesap hakkındaki bilgileri kaldırmayı kullanmaktan daha fazlasını içerir.
-Web uygulaması oturumu kapatmak için kullanıcıyı Microsoft Identity Platform `logout` uç noktasına yönlendirmelidir.
+Web uygulaması oturumu kapatmak için kullanıcıyı Microsoft Identity platform uç noktasına yönlendirmelidir `logout` .
 
 Web uygulamanız kullanıcıyı `logout` uç noktaya yönlendirirse, bu uç nokta kullanıcının oturumunu tarayıcıdan temizler. Uygulamanız `logout` uç noktaya gitmediyse, Kullanıcı kimlik bilgilerini tekrar girmeden uygulamanızı yeniden dener. Bunun nedeni, Microsoft Identity platform uç noktası ile geçerli bir çoklu oturum açma oturumuna sahip olabileceksiniz.
 
@@ -221,15 +221,15 @@ Daha fazla bilgi edinmek için [Microsoft Identity platform ve OpenID Connect Pr
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Uygulama kaydı sırasında, oturum kapatma sonrası URI 'sini kaydedersiniz. Öğreticimizde, **kimlik doğrulama** sayfasındaki `https://localhost:44321/signout-oidc` **Gelişmiş ayarlar** bölümünün **oturum kapatma URL 'si** alanına kaydolduysanız. Ayrıntılar için bkz. [WebApp uygulamasını kaydetme](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp).
+Uygulama kaydı sırasında, oturum kapatma sonrası URI 'sini kaydedersiniz. Öğreticimizde, `https://localhost:44321/signout-oidc` **kimlik doğrulama** sayfasındaki **Gelişmiş ayarlar** bölümünün **oturum kapatma URL 'si** alanına kaydolduysanız. Ayrıntılar için bkz. [WebApp uygulamasını kaydetme](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp).
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-Uygulama kaydı sırasında, oturum kapatma sonrası URI 'sini kaydedersiniz. Öğreticimizde, **kimlik doğrulama** sayfasındaki `https://localhost:44308/Account/EndSession` **Gelişmiş ayarlar** bölümünün **oturum kapatma URL 'si** alanına kaydolduysanız. Ayrıntılar için bkz. [WebApp uygulamasını kaydetme](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet).
+Uygulama kaydı sırasında, oturum kapatma sonrası URI 'sini kaydedersiniz. Öğreticimizde, `https://localhost:44308/Account/EndSession` **kimlik doğrulama** sayfasındaki **Gelişmiş ayarlar** bölümünün **oturum kapatma URL 'si** alanına kaydolduysanız. Ayrıntılar için bkz. [WebApp uygulamasını kaydetme](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet).
 
 # <a name="java"></a>[Java](#tab/java)
 
-Uygulama kaydı sırasında, oturum kapatma sonrası URI 'sini kaydedersiniz. Öğreticimizde, **kimlik doğrulama** sayfasındaki `http://localhost:8080/msal4jsample/sign_out` **Gelişmiş ayarlar** bölümünün **oturum kapatma URL 'si** alanına kaydolduysanız.
+Uygulama kaydı sırasında, oturum kapatma sonrası URI 'sini kaydedersiniz. Öğreticimizde, `http://localhost:8080/msal4jsample/sign_out` **kimlik doğrulama** sayfasındaki **Gelişmiş ayarlar** bölümünün **oturum kapatma URL 'si** alanına kaydolduysanız.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -265,7 +265,7 @@ ASP.NET ' de, Web uygulamasındaki **oturumu** Kapat düğmesinin seçilmesi `Si
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET MVC 'de, oturum kapatma düğmesi ' de `Views\Shared\_LoginPartial.cshtml`kullanıma sunuldu. Yalnızca kimliği doğrulanmış bir hesap olduğunda gösterilir. Diğer bir deyişle, Kullanıcı daha önce oturum açmış olduğu zaman görüntülenir.
+ASP.NET MVC 'de, oturum kapatma düğmesi ' de kullanıma sunuldu `Views\Shared\_LoginPartial.cshtml` . Yalnızca kimliği doğrulanmış bir hesap olduğunda gösterilir. Diğer bir deyişle, Kullanıcı daha önce oturum açmış olduğu zaman görüntülenir.
 
 ```html
 @if (Request.IsAuthenticated)
@@ -329,17 +329,17 @@ Python hızlı başlangıçta, oturum kapatma düğmesi [Şablonlar/index. html 
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core şablonlarının önceki sürümlerinde, `Account` denetleyici Web uygulamasıyla katıştırılmıştır. Denetleyici artık **Microsoft. Identity. Web. UI** NuGet paketinin bir parçası olduğundan bu durum artık böyle değildir. Ayrıntılar için bkz. [accountcontroller.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) .
+ASP.NET Core şablonlarının önceki sürümlerinde, `Account` Denetleyici Web uygulamasıyla katıştırılmıştır. Denetleyici artık **Microsoft. Identity. Web. UI** NuGet paketinin bir parçası olduğundan bu durum artık böyle değildir. Ayrıntılar için bkz. [accountcontroller.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) .
 
-- Azure AD oturum kapatma işlemini tamamladığında denetleyicinin `/Account/SignedOut` geri çağrılması Için bir OpenID yeniden yönlendirme URI 'si olarak ayarlar.
-- Çağrı `Signout()`, OpenID Connect ara yazılım Microsoft Identity Platform `logout` uç noktasıyla bağlantı sağlar. Bitiş noktası bundan sonra:
+- `/Account/SignedOut`Azure AD oturum kapatma işlemini tamamladığında denetleyicinin geri çağrılması için bir OpenID yeniden yönlendirme URI 'si olarak ayarlar.
+- Çağrı `Signout()` , OpenID Connect ara yazılım Microsoft Identity platform uç noktasıyla bağlantı sağlar `logout` . Bitiş noktası bundan sonra:
 
   - Oturum tanımlama bilgisini tarayıcıdan temizler.
   - Oturum kapatma URL 'sini geri çağırır. Varsayılan olarak, oturum kapatma URL 'SI, oturum açılan görünüm sayfasını [Signeout. html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml)olarak görüntüler. Bu sayfa MIcrosoft. Identity. Web 'in bir parçası olarak da sağlanır.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET ' de, oturum kapatma bir denetleyicideki `SignOut()` yöntemden tetiklenir (örneğin, [accountcontroller. cs # L25-L31](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L25-L31)). Bu yöntem, ASP.NET Core olan ASP.NET Framework 'ün bir parçası değildir. İçerdiği
+ASP.NET ' de, oturum kapatma `SignOut()` bir denetleyicideki yöntemden tetiklenir (örneğin, [accountcontroller. cs # L25-L31](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L25-L31)). Bu yöntem, ASP.NET Core olan ASP.NET Framework 'ün bir parçası değildir. İçerdiği
 
 - Bir OpenID oturum kapatma sınaması gönderir.
 - Önbelleği temizler.
@@ -360,7 +360,7 @@ public void SignOut()
 
 # <a name="java"></a>[Java](#tab/java)
 
-Java 'da, oturum kapatma doğrudan Microsoft Identity Platform `logout` uç noktası çağırarak ve `post_logout_redirect_uri` değer sağlanarak işlenir. Ayrıntılar için bkz. [Authpagecontroller. Java # L50-L60](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L50-L60).
+Java 'da, oturum kapatma doğrudan Microsoft Identity Platform `logout` uç noktası çağırarak ve değer sağlanarak işlenir `post_logout_redirect_uri` . Ayrıntılar için bkz. [Authpagecontroller. Java # L50-L60](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L50-L60).
 
 ```Java
 @RequestMapping("/msal4jsample/sign_out")
@@ -391,13 +391,13 @@ def logout():
 
 ---
 
-### <a name="intercepting-the-call-to-the-logout-endpoint"></a>`logout` Uç nokta çağrısını kesintiye uğratan
+### <a name="intercepting-the-call-to-the-logout-endpoint"></a>Uç nokta çağrısını kesintiye uğratan `logout`
 
 Oturum kapatma sonrası URI, uygulamaların genel oturum açma 'ya katılmasına olanak sağlar.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core OpenID Connect ara yazılımı, uygulamanızın adlı `logout` `OnRedirectToIdentityProviderForSignOut`bir OpenID Connect olayı sağlayarak Microsoft Identity platform uç noktası çağrısını ele almasını sağlar. Bu, Microsoft. Identity. Web tarafından otomatik olarak işlenir (Web uygulamanızın Web API 'lerini çağırdığı durumda hesapları temizler)
+ASP.NET Core OpenID Connect ara yazılımı, uygulamanızın `logout` adlı bir OpenID Connect olayı sağlayarak Microsoft Identity platform uç noktası çağrısını ele almasını sağlar `OnRedirectToIdentityProviderForSignOut` . Bu, Microsoft. Identity. Web tarafından otomatik olarak işlenir (Web uygulamanızın Web API 'lerini çağırdığı durumda hesapları temizler)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

@@ -16,12 +16,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 1ff8c382813654b1dee38a99bf2cc0ca67afbedd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: e94448debe3e846e37dcffa81a6a6a28f0f7d757
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76313836"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561191"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Python 'dan Notification Hubs kullanma
 
@@ -103,7 +104,7 @@ class NotificationHub:
 ### <a name="create-security-token"></a>Güvenlik belirteci oluştur
 
 Güvenlik belirteci oluşturma ayrıntılarına [buradan](https://msdn.microsoft.com/library/dn495627.aspx)ulaşabilirsiniz.
-Geçerli isteğin URI 'sini ve `NotificationHub` bağlantı dizesinden ayıklanan kimlik bilgilerini temel alan belirteci oluşturmak için aşağıdaki yöntemleri sınıfına ekleyin.
+`NotificationHub`Geçerli ISTEĞIN URI 'sini ve bağlantı dizesinden ayıklanan kimlik bilgilerini temel alan belirteci oluşturmak için aşağıdaki yöntemleri sınıfına ekleyin.
 
 ```python
 @staticmethod
@@ -165,7 +166,7 @@ Bu sınıf, yerel bir bildirim gövdesi veya bir şablon bildiriminin özellikle
 
 Kullanılabilir tüm seçenekler için [NOTIFICATION HUBS REST API belgelerine](https://msdn.microsoft.com/library/dn495827.aspx) ve belirli bildirim platformlarına yönelik biçimlere bakın.
 
-Şimdi bu sınıfla, `NotificationHub` sınıfının içine gönder bildirim yöntemlerini yazın.
+Şimdi bu sınıfla, sınıfının içine gönder bildirim yöntemlerini yazın `NotificationHub` .
 
 ```python
 def make_http_request(self, url, payload, headers):
@@ -378,7 +379,7 @@ Python kodunuzu çalıştırmak, hedef cihazınızda bir bildirim göstermelidir
 
 ## <a name="examples"></a>Örnekler
 
-### <a name="enabling-the-debug-property"></a>`debug` Özelliği etkinleştirme
+### <a name="enabling-the-debug-property"></a>Özelliği etkinleştirme `debug`
 
 NotificationHub 'ı başlatırken hata ayıklama bayrağını etkinleştirdiğinizde, ayrıntılı HTTP isteği ve yanıt dökümünü ve aşağıdaki gibi NotificationOutcome görürsünüz. Bu, istekte hangi HTTP üstbilgilerinin geçtiğini ve Bildirim Hub 'ından HTTP yanıtının alındığını anlayabileceğiniz yerdir:
 

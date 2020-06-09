@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: fe58f59147db43b1c15298f83a2945b50766f8a8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 8605fb3c43e625d86fd4d4008ddc49b0e29c8d44
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169211"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509483"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Blob depolamadan verileri dışarı aktarmak için Azure İçeri/Dışarı Aktarma hizmetini kullanma
 
@@ -39,7 +39,7 @@ Azure Blob depolama 'dan verileri aktarmak üzere bir dışarı aktarma işi olu
 
 Azure portal bir dışarı aktarma işi oluşturmak için aşağıdaki adımları gerçekleştirin.
 
-1. Oturum açın https://portal.azure.com/ .
+1. Oturum açın <https://portal.azure.com/> .
 2. **Tüm hizmetlere > depolama > içeri/dışarı aktarma işlerine**gidin.
 
     ![Içeri/dışarı aktarma işlerine git](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
@@ -129,7 +129,11 @@ Dışarı aktarma işlemi tamamlanmıştır.
 
 Waımportexport aracının sürüm 1.4.0.300 kullanıyorsanız, sürücünün kilidini açmak için aşağıdaki komutu kullanın:
 
-   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file> /driveLetter:<Drive letter>`  
+
+Örnek girişe bir örnek aşağıda verilmiştir.
+
+   `WAImportExport.exe Unlock /bk:CAAcwBoAG8AdQBsAGQAIABiAGUAIABoAGkAZABkAGUAbgA= /driveLetter:e`
 
 Aracın önceki sürümlerini kullanıyorsanız sürücünün kilidini açmak için BitLocker iletişim kutusunu kullanın.
 
@@ -143,15 +147,15 @@ Bu *isteğe bağlı* adım, dışa aktarma işi için gereken sürücü sayısı
 2. Varsayılan klasöre ayıklayın `waimportexportv1` . Örneğin, `C:\WaImportExportV1`.
 3. Yönetici ayrıcalıklarına sahip bir PowerShell veya komut satırı penceresi açın. Dizini sıkıştırılmış klasöre dönüştürmek için aşağıdaki komutu çalıştırın:
 
-    `cd C:\WaImportExportV1`
+   `cd C:\WaImportExportV1`
 
 4. Seçili Bloblar için gereken disk sayısını denetlemek için şu komutu çalıştırın:
 
-    `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
+   `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
 
     Parametreler aşağıdaki tabloda açıklanmıştır:
 
-    |Komut satırı parametresi|Açıklama|  
+    |Komut satırı parametresi|Description|  
     |--------------------------|-----------------|  
     |**/logdir:**|İsteğe bağlı. Günlük dizini. Ayrıntılı günlük dosyaları bu dizine yazılır. Belirtilmemişse, geçerli dizin günlük dizini olarak kullanılır.|  
     |**sn**|Gereklidir. Dışarı aktarma işi için depolama hesabının adı.|  
@@ -205,7 +209,7 @@ Number of drives needed:        3
 
 Aşağıdaki tabloda geçerli blob yollarının örnekleri gösterilmektedir:
 
-   | Seçici | Blob yolu | Açıklama |
+   | Seçici | Blob yolu | Description |
    | --- | --- | --- |
    | Ile başlar |/ |Depolama hesabındaki tüm Blobları dışa aktarır |
    | Ile başlar |/$root/ |Kök kapsayıcıdaki tüm Blobları dışa aktarır |

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 367ca77b0f3a142d8aa36143052993d1ed96f052
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 543be2b408d9442c61ae2c052776e63c33206188
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996508"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488945"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Azure sanal makineleri için bölgeyi bölgeye olağanüstü durum kurtarmaya etkinleştirme
 
@@ -20,7 +20,7 @@ Bu makalede, Azure sanal makinelerini aynı Azure bölgesindeki bir kullanılabi
 
 >[!NOTE]
 >
->- Site Recovery Şu anda bölgenin olağanüstü durum kurtarma için kurtarma planlarını desteklemez. 
+>- Site Recovery Şu anda Portal aracılığıyla bölge olağanüstü durum kurtarmaya yönelik kurtarma planlarını desteklememektedir. Bölgenin olağanüstü durum kurtarma için kurtarma planlarından yararlanmak için lütfen PowerShell veya REST API kullanın. 
 >- Bölge için olağanüstü durum kurtarma desteği şu anda iki bölgeyle sınırlı: Güneydoğu Asya ve UK Güney.  
 
 Site Recovery hizmeti, planlı ve plansız kesintiler sırasında iş uygulamalarınızı çalışır durumda tutarak iş sürekliliği ve olağanüstü durum kurtarma stratejinize katkıda bulunur. Bölgesel kesintiler varsa uygulamalarınızın çalışır durumda tutulması için önerilen olağanüstü durum kurtarma seçeneğidir.
@@ -65,7 +65,7 @@ Yukarıda belirtildiği gibi, bölgeye karşı bölge olağanüstü durum kurtar
 
 Sanal makinelerinize bölge olağanüstü durum kurtarmaya dağıtım yapmadan önce, sanal makinede etkinleştirilen diğer özelliklerin bölge olağanüstü durum kurtarma ile birlikte kullanılabildiğinden emin olmak önemlidir.
 
-|Öne çıkan özelliği  | Support bildirisi  |
+|Özellik  | Support bildirisi  |
 |---------|---------|
 |Klasik VM'ler   |     Desteklenmiyor    |
 |ARM VM 'Leri    |    Destekleniyor    |

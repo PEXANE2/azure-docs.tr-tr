@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 06/08/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a3c71534febc3cdb6429d3092225ebc73f6cbe7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ec6e0f7405d29cb89fd8ba701b52678ca939596
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481492"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558708"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Cloud App erişimi için yönetilen cihazlar gerektirme
 
@@ -97,6 +97,8 @@ Uyumlu olarak işaretlenen bir cihaz için şunları varsayabilirsiniz:
 - Cihaz ve uygulamaları, şirket güvenlik gereksinimleriyle uyumludur
 
 ### <a name="known-behavior"></a>Bilinen davranış
+
+[Cihaz kodu OAuth akışını](../develop/v2-oauth2-device-code.md)kullanırken, yönetilen cihaz izin verme denetimi veya cihaz durumu koşulu desteklenmez. Bunun nedeni, kimlik doğrulaması gerçekleştiren cihazın cihaz durumunu cihaza bir kod sağlamak ve belirteçteki cihaz durumunun kimlik doğrulaması gerçekleştiren cihaza kilitli olması nedeniyle oluşur. Bunun yerine Multi-Factor Authentication izin iste denetimini kullanın.
 
 Windows 7, iOS, Android, macOS ve bazı üçüncü taraf web tarayıcılarında, Azure AD, cihaz Azure AD 'ye kaydedildiğinde sağlanan bir istemci sertifikası kullanarak cihazı tanımlar. Kullanıcı tarayıcıda ilk kez oturum açtığında, kullanıcıdan sertifikayı seçmesi istenir. Son Kullanıcı, tarayıcıyı kullanmaya devam edebilmek için bu sertifikayı seçmelidir.
 

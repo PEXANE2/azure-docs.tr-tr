@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: f7208307df51ecefb76f9adaedea59b327cdc19e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee81b391587b994bd79e9f0950d041de70153b5c
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604859"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488808"
 ---
 Bölgesel VNet tümleştirmesini kullanmak, uygulamanızın erişmesini sağlar:
 
@@ -34,7 +34,7 @@ Varsayılan olarak, uygulamanız yalnızca sanal ağınıza RFC1918 trafiği yö
    ![Uygulama ayarı sağla][4]
 
 1. **Tamam**’ı seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Tüm giden trafiğinizi sanal ağınıza yönlendirdiğinizde, tümleştirme alt ağınıza uygulanan NSG 'ler ve UDRs 'ye tabidir. Tüm giden trafiğinizi sanal ağınıza yönlendirdiğinizde, trafiği başka bir yere göndermek için yollar sağlamazsanız, giden adresleriniz hala uygulama özelliklerinde listelenen giden adreslerdir.
 
@@ -56,11 +56,7 @@ Her plan örneği için bir adres kullanılır. Uygulamanızı beş örneğe öl
 
 Farklı bir plandaki uygulamalarınızın, başka bir plandaki uygulamalar tarafından zaten bağlı olan bir VNet 'e ulaşmasını istiyorsanız, önceden var olan VNet tümleştirmesi tarafından kullanılandan farklı bir alt ağ seçin.
 
-Özelliği, Linux için önizlemededir. Özelliğin Linux formu yalnızca RFC 1918 adreslerine çağrı yapmayı destekler (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
-
-### <a name="web-or-function-app-for-containers"></a>Kapsayıcılar için Web veya İşlev Uygulaması
-
-Uygulamanızı Linux 'ta yerleşik görüntülerle barındırdıysanız bölgesel VNet tümleştirmesi ek değişiklik yapılmadan işe yarar. Kapsayıcılar için Web veya İşlev Uygulaması kullanıyorsanız, Docker görüntünüzü VNet tümleştirmesini kullanacak şekilde değiştirmeniz gerekir. Docker yansımanıza, sabit kodlanmış bir bağlantı noktası numarası kullanmak yerine ana Web sunucusunun dinleme bağlantı noktası olarak bağlantı noktası ortam değişkenini kullanın. Bağlantı noktası ortam değişkeni, kapsayıcı başlangıç saatinde platform tarafından otomatik olarak ayarlanır. SSH kullanıyorsanız, SSH arka plan programı, bölgesel VNet tümleştirmesi kullandığınızda SSH_PORT ortam değişkeni tarafından belirtilen bağlantı noktası numarasını dinlemek üzere yapılandırılmalıdır. Linux üzerinde ağ geçidi için gerekli VNet tümleştirmesi desteklenmez.
+Özelliği, hem Windows hem de Linux Web Apps için tam olarak desteklenmektedir. Tüm davranışlar Windows Uygulamaları ve Linux uygulamaları arasında aynı şekilde davranır.
 
 ### <a name="service-endpoints"></a>Hizmet uç noktaları
 

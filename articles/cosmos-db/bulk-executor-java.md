@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: ad9c0f29ee10197c4dafe6ca24ee4df7b7afdb88
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: fec11b930be0487a7fbc0968c3c8a8003a2fb911
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485374"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559275"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Azure Cosmos DB verilerinde toplu işlemler yapmak için toplu yürütücü Java kitaplığını kullanma
 
 Bu öğretici, Azure Cosmos DB belgelerini içeri aktarmak ve güncelleştirmek için Azure Cosmos DB toplu yürütücü Java Kitaplığı kullanma hakkında yönergeler sağlar. Toplu yürütücü Kitaplığı hakkında bilgi edinmek ve büyük/veya depolama özelliğinden yararlanarak nasıl yardım alabileceğinizi öğrenmek için bkz. [toplu yürütücü kitaplığı genel bakış](bulk-executor-overview.md) makalesi. Bu öğreticide, rastgele belgeler üreten ve bunlar bir Azure Cosmos kapsayıcısına toplu olarak içeri aktarılan bir Java uygulaması oluşturacaksınız. İçeri aktardıktan sonra bir belgenin bazı özelliklerini toplu olarak güncelleştirebilirsiniz. 
 
-Şu anda, toplu yürütücü kitaplığı yalnızca Azure Cosmos DB SQL API ve Gremlin API hesapları tarafından desteklenir. Bu makalede, SQL API hesaplarıyla toplu yürütücü Java kitaplığı 'nın nasıl kullanılacağı açıklanır. Gremlin API ile toplu yürütücü .NET kitaplığı 'nı kullanma hakkında bilgi edinmek için bkz. [Azure Cosmos DB Gremlin API 'de toplu işlemler gerçekleştirme](bulk-executor-graph-dotnet.md). Açıklanan toplu yürütücü kitaplığı, Java SDK 2. x sürümünü kullanan uygulamalar için kullanılabilir. Bu, şu anda 3. x, 4. x veya daha yüksek SDK sürümleri için kullanılamaz.
+Şu anda, toplu yürütücü kitaplığı yalnızca Azure Cosmos DB SQL API ve Gremlin API hesapları tarafından desteklenir. Bu makalede, SQL API hesaplarıyla toplu yürütücü Java kitaplığı 'nın nasıl kullanılacağı açıklanır. Gremlin API ile toplu yürütücü .NET kitaplığı 'nı kullanma hakkında bilgi edinmek için bkz. [Azure Cosmos DB Gremlin API 'de toplu işlemler gerçekleştirme](bulk-executor-graph-dotnet.md). Tanımlanan toplu yürütücü kitaplığı yalnızca [Java Sync SDK v2 Azure Cosmos DB](sql-api-sdk-java.md) kullanılabilir ve Java toplu destek için önerilen geçerli çözümdür. Bu, şu anda 3. x, 4. x veya daha yüksek SDK sürümleri için kullanılamaz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

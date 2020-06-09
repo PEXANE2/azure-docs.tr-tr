@@ -3,14 +3,14 @@ title: Azure Otomasyonu Değişiklik İzleme ve envantere genel bakış
 description: Bu makalede, ortamınızdaki yazılım ve Microsoft hizmet değişikliklerini belirlemenize yardımcı olan Değişiklik İzleme ve envanter özelliği açıklanır.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 06/03/2020
+ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: cef323fd5b73b1befec5261e56357751ac72adae
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 2aab90b12cd3844b94b0b7e6e94582d403db2efe
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342927"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555044"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Değişiklik İzleme ve envantere genel bakış
 
@@ -33,22 +33,23 @@ Değişiklik İzleme ve envanter, verileri Azure Izleyici 'den alır. Log Analyt
 
 Değişiklik İzleme ve Inventory Şu anda aşağıdaki öğeleri desteklemiyor:
 
-* Windows kayıt defteri izleme için özyineleme
-* Ağ dosya sistemleri
-* Farklı yükleme yöntemleri
-* *Windows için **. exe** dosyaları
+- Windows kayıt defteri izleme için özyineleme
+- Ağ dosya sistemleri
+- Farklı yükleme yöntemleri
+- *Windows için **. exe** dosyaları
 
 Diğer sınırlamalar:
 
-* **En büyük dosya boyutu** sütunu ve değerleri geçerli uygulamada kullanılmıyor.
-* 30 dakikalık bir toplama döngüsüne 2500 'den fazla dosya topladıysanız, Değişiklik İzleme ve stok performansı düşebilir.
-* Ağ trafiği yüksekse, değişiklik kayıtlarının görüntülenmesi altı saate kadar sürebilir.
-* Bir bilgisayar kapatılırken bir yapılandırmayı değiştirirseniz, bilgisayar önceki yapılandırmaya ait değişiklikleri gönderebilir.
+- **En büyük dosya boyutu** sütunu ve değerleri geçerli uygulamada kullanılmıyor.
+- 30 dakikalık bir toplama döngüsüne 2500 'den fazla dosya topladıysanız, Değişiklik İzleme ve stok performansı düşebilir.
+- Ağ trafiği yüksekse, değişiklik kayıtlarının görüntülenmesi altı saate kadar sürebilir.
+- Bir bilgisayar kapatılırken bir yapılandırmayı değiştirirseniz, bilgisayar önceki yapılandırmaya ait değişiklikleri gönderebilir.
 
 Değişiklik İzleme ve envanter Şu anda aşağıdaki sorunları yaşıyor:
 
-* Düzeltme güncelleştirmeleri Windows Server 2016 Core RS3 makinelerinde toplanmaz.
-* Linux Daemon 'ları, hiçbir değişiklik gerçekleşmese de değiştirilmiş durumu gösterebilir. Bu sorun, `SvcRunLevels` Azure Izleyici [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) günlüğündeki verilerin yakalandığı şekilde ortaya çıkar.
+- Düzeltme güncelleştirmeleri Windows Server 2016 Core RS3 makinelerinde toplanmaz.
+
+- Linux Daemon 'ları, hiçbir değişiklik gerçekleşmese de değiştirilmiş durumu gösterebilir. Bu sorun, `SvcRunLevels` Azure Izleyici [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) günlüğündeki verilerin yakalandığı şekilde ortaya çıkar.
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
@@ -77,12 +78,12 @@ Değişiklik izleme grafiğini ve değişiklik türü ve zaman aralıklarına g�
 
 Ayrıntılarını görüntülemek için bir değişikliğe veya olaya tıklayabilirsiniz. Kullanılabilir değişiklik türleri şunlardır:
 
-* Ekinlikler
-* Daemon 'ları
-* Dosyalar
-* Kayıt Defteri
-* Yazılım
-* Microsoft Hizmetleri
+- Ekinlikler
+- Daemon 'ları
+- Dosyalar
+- Kayıt Defteri
+- Yazılım
+- Microsoft Hizmetleri
 
 Her değişikliği ekleyebilir, değiştirebilir veya kaldırabilirsiniz. Aşağıdaki örnekte, bir hizmetin başlangıç türünde El Ile otomatik olarak bir değişiklik gösterilmektedir.
 
@@ -137,10 +138,13 @@ Değişiklik İzleme ve envanter, Windows kayıt defteri anahtarlarının deği�
 
 Değişiklik İzleme ve envanter özyineleme destekler, bu da dizinler genelinde izlemeyi basitleştirmek için joker karakterler belirtmenize olanak tanır. Özyineleme Ayrıca, birden çok veya dinamik sürücü adına sahip ortamlarda dosyaları izlemenize olanak tanımak için ortam değişkenleri sağlar. Aşağıdaki listede, özyineleme yapılandırılırken bilmeniz gereken yaygın bilgiler yer almaktadır:
 
-* Birden çok dosyayı izlemek için joker karakterler gereklidir.
-* Joker karakterleri yalnızca bir dosya yolunun son kesiminde (örneğin, **arayacak \\ dosyası*** veya **/etc/*. conf**) kullanabilirsiniz.
-* Bir ortam değişkeni geçersiz bir yol içeriyorsa, doğrulama başarılı olur ancak yürütme sırasında yol başarısız olur.
-* Yolu ayarlarken genel yol adlarından kaçının. bu tür bir ayar, çok fazla klasör alınmasına neden olabilir.
+- Birden çok dosyayı izlemek için joker karakterler gereklidir.
+
+- Joker karakterleri yalnızca bir dosya yolunun son kesiminde (örneğin, **arayacak \\ dosyası*** veya **/etc/*. conf**) kullanabilirsiniz.
+
+- Bir ortam değişkeni geçersiz bir yol içeriyorsa, doğrulama başarılı olur ancak yürütme sırasında yol başarısız olur.
+
+- Yolu ayarlarken genel yol adlarından kaçının. bu tür bir ayar, çok fazla klasör alınmasına neden olabilir.
 
 ## <a name="change-tracking-and-inventory-data-collection"></a>Değişiklik İzleme ve envanter verileri toplama
 
@@ -167,7 +171,7 @@ Aşağıdaki tabloda, Değişiklik İzleme ve envanter için makine başına izl
 |Hizmetler|250|
 |Daemon 'ları|250|
 
-Değişiklik İzleme ve envanter kullanan bir makineye yönelik ortalama Log Analytics veri kullanımı ortamınıza bağlı olarak ayda yaklaşık 40 MB 'dir. Log Analytics çalışma alanının kullanım ve tahmini maliyetler özelliği sayesinde, kullanım grafiğinde Değişiklik İzleme ve envanterle alınan verileri görüntüleyebilirsiniz. Veri kullanımınızı değerlendirmek ve faturanızı nasıl etkileyeceğini öğrenmek için bu veri görünümünü kullanın. Bkz. [kullanımınızı anlayın ve maliyetleri tahmin edin](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs). 
+Değişiklik İzleme ve envanter kullanan bir makineye yönelik ortalama Log Analytics veri kullanımı ortamınıza bağlı olarak ayda yaklaşık 40 MB 'dir. Log Analytics çalışma alanının kullanım ve tahmini maliyetler özelliği sayesinde, kullanım grafiğinde Değişiklik İzleme ve envanterle alınan verileri görüntüleyebilirsiniz. Veri kullanımınızı değerlendirmek ve faturanızı nasıl etkileyeceğini öğrenmek için bu veri görünümünü kullanın. Bkz. [kullanımınızı anlayın ve maliyetleri tahmin edin](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Microsoft hizmet verileri
 
@@ -182,13 +186,13 @@ Log Analytics Aracısı, performansı iyileştirmek için yalnızca değişiklik
 
 ## <a name="support-for-alerts-on-configuration-state"></a>Yapılandırma durumunda uyarılar için destek
 
-Değişiklik İzleme ve envanterin önemli bir özelliği, karma ortamınızın yapılandırma durumundaki değişiklikler hakkında uyarı verebilir. Birçok yararlı eylem, uyarılara yanıt olarak tetiklenebilir. Örneğin, Azure işlevleri, Otomasyon Runbook 'ları, Web kancaları ve benzeri eylemler. Bir makine için **c:\Windows\system32\drivers\etc\hosts** dosyasında yapılan değişikliklerle ilgili uyarı verme, değişiklik izleme ve envanter verileri için tek iyi bir uyarı uygulamasıdır. Sonraki tabloda tanımlanan sorgu senaryoları da dahil olmak üzere, uyarı için çok daha fazla senaryo vardır. 
+Değişiklik İzleme ve envanterin önemli bir özelliği, karma ortamınızın yapılandırma durumundaki değişiklikler hakkında uyarı verebilir. Birçok yararlı eylem, uyarılara yanıt olarak tetiklenebilir. Örneğin, Azure işlevleri, Otomasyon Runbook 'ları, Web kancaları ve benzeri eylemler. Bir makine için **c:\Windows\system32\drivers\etc\hosts** dosyasında yapılan değişikliklerle ilgili uyarı verme, değişiklik izleme ve envanter verileri için tek iyi bir uyarı uygulamasıdır. Sonraki tabloda tanımlanan sorgu senaryoları da dahil olmak üzere, uyarı için çok daha fazla senaryo vardır.
 
 |Sorgu  |Description  |
 |---------|---------|
 |ConfigurationChange <br>ConfigChangeType = = "Files" ve Filesystemmpath "c: \\ Windows \\ system32 \\ drivers \\ " içerdiğinde &#124;|Sistem açısından kritik dosyalarda yapılan değişiklikleri izlemek için faydalıdır.|
 |ConfigurationChange <br>Alanlardaki "FileContentChecksum" ve Filesystemmpath = = "c: \\ Windows \\ system32 \\ Drivers ve \\ \\ Konakları" içeren &#124;|Anahtar yapılandırma dosyalarında yapılan değişiklikleri izlemek için faydalıdır.|
-|ConfigurationChange <br>ConfigChangeType = = "Microsoft Services" ve SvcName "W3SVC" ve SvcState = = "durduruldu" içerdiğinde &#124;|Sistem açısından kritik hizmetlerde yapılan değişiklikleri izlemek için faydalıdır.|
+|ConfigurationChange <br>ConfigChangeType = = "WindowsServices" ve SvcName "W3SVC" ve SvcState = = "durduruldu" içerdiğinde &#124;|Sistem açısından kritik hizmetlerde yapılan değişiklikleri izlemek için faydalıdır.|
 |ConfigurationChange <br>&#124; ConfigChangeType = = "Daemon 'ları" ve SvcName "SSH" ve SvcState! = "Running" içerir|Sistem açısından kritik hizmetlerde yapılan değişiklikleri izlemek için faydalıdır.|
 |ConfigurationChange <br>&#124; ConfigChangeType = = "Software" ve ChangeCategory = = "Added"|Kilitli yazılım yapılandırmalarına ihtiyaç duyulan ortamlar için faydalıdır.|
 |ConfigurationData <br>SoftwareName, "Izleme Aracısı" ve CurrentVersion! = "8.0.11081.0" içerdiğinde &#124;|Güncel olmayan veya uyumsuz yazılım sürümünün yüklü olduğu makineleri görmek için faydalıdır. Bu sorgu, son bildirilen yapılandırma durumunu bildirir, ancak değişiklikleri rapor etmez.|
@@ -197,7 +201,10 @@ Değişiklik İzleme ve envanterin önemli bir özelliği, karma ortamınızın 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Otomasyon hesabından özelliği etkinleştirmek için bkz. [Otomasyon hesabından değişiklik izleme ve envanteri etkinleştirme](automation-enable-changes-from-auto-acct.md).
-* Azure portal göz atarak özelliği etkinleştirmek için, bkz. [Azure portal değişiklik izleme ve envanteri etkinleştirme](automation-onboard-solutions-from-browse.md).
-* Bir runbook 'tan özelliği etkinleştirmek için, bkz. [runbook 'tan değişiklik izleme ve envanteri etkinleştirme](automation-enable-changes-from-runbook.md).
-* Özelliği bir Azure VM 'den etkinleştirmek için bkz. [Azure VM 'den değişiklik izleme ve envanteri etkinleştirme](automation-enable-changes-from-vm.md).
+- Otomasyon hesabından özelliği etkinleştirmek için bkz. [Otomasyon hesabından değişiklik izleme ve envanteri etkinleştirme](automation-enable-changes-from-auto-acct.md).
+
+- Azure portal göz atarak özelliği etkinleştirmek için, bkz. [Azure portal değişiklik izleme ve envanteri etkinleştirme](automation-onboard-solutions-from-browse.md).
+
+- Bir runbook 'tan özelliği etkinleştirmek için, bkz. [runbook 'tan değişiklik izleme ve envanteri etkinleştirme](automation-enable-changes-from-runbook.md).
+
+- Özelliği bir Azure VM 'den etkinleştirmek için bkz. [Azure VM 'den değişiklik izleme ve envanteri etkinleştirme](automation-enable-changes-from-vm.md).

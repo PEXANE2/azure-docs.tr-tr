@@ -2,17 +2,17 @@
 title: Azure Event Grid iş ortağı olarak ekleme
 description: Azure Event Grid iş ortağı konu türü olarak ekleme. İş ortağı konuları için kaynak modeli ve yayımlama akışını anlayın.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.author: babanisa
-ms.openlocfilehash: 2a7e2b9f731dbf05dfeb2ac01f1ae258c5250827
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.author: femila
+ms.openlocfilehash: 47576feb7f3e4f2794aa06d52b4f5504c633ce96
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170010"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560323"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Azure Event Grid iş ortağı olarak ekleme
 

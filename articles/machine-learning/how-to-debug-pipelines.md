@@ -9,12 +9,13 @@ ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: bf6a8dd0bfc4ffb9f6b6fa0c9b1d864c4298755a
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: tracking-python
+ms.openlocfilehash: 3eb0cf85dce02595f3679a96b497e286682840bc
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433443"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557428"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Makine öğrenmesi işlem hatlarında hata ayıklama ve sorun giderme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -162,7 +163,7 @@ OpenCensus Python kitaplığını bu şekilde kullanma hakkında daha fazla bilg
 
 Bazı durumlarda, ML ardışık düzeninde kullanılan Python kodunda etkileşimli olarak hata ayıklaması yapmanız gerekebilir. Visual Studio Code (VS Code) ve Visual Studio için Python Araçları (PTVSD) kullanarak, eğitim ortamında çalışırken koda ekleyebilirsiniz.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * __Azure sanal ağını__kullanmak üzere yapılandırılmış bir __Azure Machine Learning çalışma alanı__ .
 * İşlem hattı adımlarının bir parçası olarak Python betikleri kullanan bir __Azure Machine Learning işlem hattı__ . Örneğin, bir PythonScriptStep.

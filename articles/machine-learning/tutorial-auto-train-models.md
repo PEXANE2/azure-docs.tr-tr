@@ -10,12 +10,13 @@ author: aniththa
 ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 97b129bfaa1a8612040e59c6378aa1965c5c49cd
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.custom: tracking-python
+ms.openlocfilehash: 440c2b0f0c9e89cff03e92fb650dabe1e2c88e1f
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118886"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558345"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Öğretici: taksi Fares 'yi tahmin etmek için otomatik makine öğrenimi kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -894,7 +895,7 @@ Bir modeli otomatik olarak eğitmek için aşağıdaki adımları uygulayın:
 
 Eğitim için deneme parametresi ve model ayarlarını tanımlayın. [Ayarların](how-to-configure-auto-train.md)tam listesini görüntüleyin. Denemeyi bu varsayılan ayarlarla göndermek yaklaşık 5-20 dakika sürer, ancak daha kısa bir çalışma süresi istiyorsanız `experiment_timeout_minutes` parametreyi küçültün.
 
-|Özellik| Bu öğreticideki değer |Açıklama|
+|Özellik| Bu öğreticideki değer |Description|
 |----|----|---|
 |**iteration_timeout_minutes**|2|Her yineleme için dakika cinsinden zaman sınırı. Toplam çalışma zamanını azaltmak için bu değeri küçültün.|
 |**experiment_timeout_minutes**|20|Deneme sona ermeden önce tüm yinelemelerin birleştirilebilmesi için geçmesi gereken en uzun süre.|

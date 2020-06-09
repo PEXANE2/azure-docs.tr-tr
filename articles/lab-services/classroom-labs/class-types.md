@@ -71,7 +71,7 @@ Matris Laboratuvarı temsil eden [MATLAB](https://www.mathworks.com/products/mat
 
 Bu tür laboratuvarın nasıl ayarlanacağı hakkında ayrıntılı bilgi için bkz. [bir laboratuvarı, MATLAB öğretmek için](class-type-matlab.md)ayarlama.
 
-## <a name="solidworks-computer-aided-design-cad"></a>Solidçalışmalar bilgisayar destekli tasarım (CAD)
+## <a name="solidworks-computer-aided-design-cad"></a>SolidWorks bilgisayar destekli tasarım (CAD)
 Mühendisler [için mühendislik](https://www.solidworks.com/)öğrencilerine erişim sağlayan bir GPU Laboratuvarı ayarlayabilirsiniz.  Solidçalışmalar, kesintisiz nesneler modellemeye yönelik bir 3B CAD ortamı sağlar.  Solidçalışmalarla mühendisler, tasarımlarını kolayca oluşturabilir, görselleştirin, benzetimini yapabilir ve belgeleyin.
 
 Bu tür laboratuvar kurulumu hakkında ayrıntılı bilgi için bkz. [Solidçalışmalar kullanarak mühendislik sınıfları için laboratuvar ayarlama](class-type-solidworks.md)

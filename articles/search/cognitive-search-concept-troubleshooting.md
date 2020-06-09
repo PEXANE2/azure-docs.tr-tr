@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/08/2020
+ms.openlocfilehash: 25f0e0f15a299ef8b946b3d5fa0eb3eddc2272c2
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245492"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508629"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama AI zenginleştirme ipuçları
 
@@ -58,7 +58,7 @@ Dizin oluşturma sırasında oluşturulan zenginleştirilmiş belgenin anlık g�
 
 Zenginleştirilmiş alan, ifadelerin değerlendirmekte olduğu içeriğin mantıksal şeklini anlamanıza yardımcı olmak için yalnızca hata ayıklama amacıyla hazırlanmıştır. Dizin oluşturma amacıyla bu alana bağlı kullanmamalısınız.
 
-Hata ayıklama ```enriched``` amacıyla dizin tanımınızın bir parçası olarak bir alan ekleyin:
+```enriched```Hata ayıklama amacıyla dizin tanımınızın bir parçası olarak bir alan ekleyin:
 
 #### <a name="request-body-syntax"></a>İstek Gövdesi Sözdizimi
 ```json
@@ -77,11 +77,15 @@ Hata ayıklama ```enriched``` amacıyla dizin tanımınızın bir parçası olar
 }
 ```
 
+### <a name="debug-sessions"></a>Hata ayıklama oturumları
+
+Hata ayıklama oturumları, Azure portal var olan bir beceri ile birlikte çalışarak bir görsel düzenleyicidir. Bir hata ayıklama oturumunda hataları tanımlayabilir ve çözümleyebilir, değişiklikleri doğrulayabilir ve değişiklikleri AI zenginleştirme ardışık düzeninde bir üretim beceri gönderebilirsiniz. Bu bir önizleme özelliğidir ve bir servis talebine göre erişim verilir. [Belgeleri okuyun](https://docs.microsoft.com/azure/search/cognitive-search-debug-session) ve erişim için nasıl uygulanacağını öğrenin.
+
 ## <a name="tip-5-expected-content-fails-to-appear"></a>İpucu 5: beklenen içerik görüntülenemez
 
 Eksik içerik, dizin oluşturma sırasında bırakılan belgelerin sonucu olabilir. Ücretsiz ve temel katmanların belge boyutu üzerinde düşük limitleri vardır. Sınırı aşan herhangi bir dosya dizinleme sırasında bırakılır. Azure portal bırakılan belgeleri kontrol edebilirsiniz. Arama hizmeti panosunda Dizin oluşturucular kutucuğuna çift tıklayın. Dizin oluşturulan başarılı belgelerin oranını gözden geçirin. %100 değilse, daha fazla ayrıntı almak için oranına tıklayabilirsiniz. 
 
-Sorun dosya boyutuyla ilişkiliyse, şöyle bir hata görebilirsiniz: "blob \<dosyası-adı>" \<dosya boyutu> bayt boyutunda, bu da geçerli hizmet katmanınız için belge ayıklama için en büyük boyutu aşıyor. " Dizin Oluşturucu sınırları hakkında daha fazla bilgi için bkz. [hizmet limitleri](search-limits-quotas-capacity.md).
+Sorun dosya boyutuyla ilişkiliyse, şöyle bir hata görebilirsiniz: "blob \<file-name> " \<file-size> bayt boyutunda, geçerli hizmet katmanınız için belge ayıklama için en büyük boyutu aşıyor. " Dizin Oluşturucu sınırları hakkında daha fazla bilgi için bkz. [hizmet limitleri](search-limits-quotas-capacity.md).
 
 İçeriğin görünmesi için ikinci bir neden ilgili giriş/çıkış eşleme hataları olabilir. Örneğin, çıkış hedefi adı "kişiler", ancak dizin alanı adı küçük harfli "insanlar" dır. Sistem, bir alanın boş olduğu durumlarda dizin oluşturma işleminin başarılı olduğunu düşünmenize olanak sağlamak için tüm işlem hattının 201 başarılı iletilerini döndürebilir. 
 
@@ -96,7 +100,7 @@ Zamanlanan Dizin oluşturucular için, dizin oluşturma en son bilinen iyi belge
 > [!NOTE]
 > Bir Dizin Oluşturucu belirli bir zamanlamaya göre ayarlanırsa ancak her çalıştırıldığında aynı belgede tekrar tekrar bir kez başarısız olursa, Dizin Oluşturucu, yeniden ilerleme yapana kadar daha az sıklıkta (en fazla 24 saatte bir) çalışmaya başlar.  Dizin oluşturucunun belirli bir noktada takılmasına neden olan sorunu düzelttiğini düşünüyorsanız, dizin oluşturucunun isteğe bağlı olarak çalıştırılmasını gerçekleştirebilir ve başarıyla ilerleme yapıyorsa, Dizin Oluşturucu ayarlanan zamanlama aralığına yeniden döner.
 
-Portal tabanlı dizin oluşturma için (hızlı başlangıç bölümünde açıklandığı gibi), "bir kez çalıştır" Dizin Oluşturucu seçeneği, işlemeyi 1 saat (`"maxRunTime": "PT1H"`) ile sınırlar. İşleme penceresini daha uzun bir şeye genişletmek isteyebilirsiniz.
+Portal tabanlı dizin oluşturma için (hızlı başlangıç bölümünde açıklandığı gibi), "bir kez çalıştır" Dizin Oluşturucu seçeneği, işlemeyi 1 saat () ile sınırlar `"maxRunTime": "PT1H"` . İşleme penceresini daha uzun bir şeye genişletmek isteyebilirsiniz.
 
 ## <a name="tip-7-increase-indexing-throughput"></a>İpucu 7: Dizin oluşturma verimini artırma
 

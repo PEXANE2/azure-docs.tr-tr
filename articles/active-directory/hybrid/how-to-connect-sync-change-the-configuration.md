@@ -12,12 +12,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9fb43061b42a43755564f825fa01e65dacad3e5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 634c10771751522dba4093fe1c830820926fd621
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827304"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558574"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect eşitleme: Varsayılan yapılandırmada bir değişiklik yapın
 Bu makalenin amacı, Azure Active Directory (Azure AD) Connect Sync 'de varsayılan yapılandırmada değişiklik yapma konusunda size yol gösterir. Bazı yaygın senaryolar için adımlar sağlar. Bu bilgi ile kendi iş kurallarınızı temel alarak kendi yapılandırmanızda basit değişiklikler yapabiliyor olmanız gerekir.
@@ -243,7 +243,7 @@ Tüm Azure AD öznitelikleri şirket içi AD Bağlayıcısı alanına aktarılma
  5. Kaydetmek için **Tamam** ' ı tıklatın.
 ![Şirket içi AD bağlayıcı şemasına kaynak özniteliği Ekle](./media/how-to-connect-sync-change-the-configuration/usertype1.png)
 
-### <a name="step-3-add-the-usertype-to-the-azure-ad-connector-schema"></a>3. Adım: UserType 'ı Azure AD bağlayıcı şemasına ekleme
+### <a name="step-3-add-the-usertype-attribute-to-the-azure-ad-connector-schema"></a>3. Adım: UserType özniteliğini Azure AD bağlayıcı şemasına ekleme
 Varsayılan olarak, UserType özniteliği Azure AD Connect alanına aktarılmaz. UserType özniteliğini içeri aktarılan öznitelikler listesine eklemek için:
 
  1. Synchronization Service Manager **Bağlayıcılar** sekmesine gidin.
@@ -265,7 +265,7 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
     | Öznitelik | Değer | Ayrıntılar |
     | --- | --- | --- |
     | Name | *Bir ad belirtin* | Örneğin, *ad 'Den içinde – Kullanıcı UserType* |
-    | Açıklama | *Bir açıklama girin* |  |
+    | Description | *Bir açıklama girin* |  |
     | Bağlı sistem | *Şirket içi AD bağlayıcısını seçin* |  |
     | Bağlı sistem nesne türü | **Kullanıcı** |  |
     | Meta veri deposu nesne türü | **Kişi** |  |
@@ -307,7 +307,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri kaynağından Azure AD 
     | Öznitelik | Değer | Ayrıntılar |
     | ----- | ------ | --- |
     | Name | *Bir ad belirtin* | Örneğin, *AAD 'ye kadar – Kullanıcı UserType* |
-    | Açıklama | *Bir açıklama girin* ||
+    | Description | *Bir açıklama girin* ||
     | Bağlı sistem | *AAD bağlayıcısını seçin* ||
     | Bağlı sistem nesne türü | **Kullanıcı** ||
     | Meta veri deposu nesne türü | **Kişi** ||
@@ -340,7 +340,7 @@ Tam eşitleme döngüsünü oluşturan adımları el ile çalıştırırken değ
 
 1. Şirket **ıçı ad bağlayıcısında** **tam içeri aktarma** çalıştırın:
 
-   1. Synchronization Service Manager **işlemler** sekmesine gidin.
+   1. Synchronization Service Manager **Bağlayıcılar** sekmesine gidin.
    2. Şirket **ıçı ad Bağlayıcısı** ' na sağ tıklayın ve **Çalıştır**' ı seçin.
    3. Açılır iletişim kutusunda **tam Içeri aktar** ' ı seçin ve ardından **Tamam**' a tıklayın.
    4. İşlemin bitmesini bekleyin.

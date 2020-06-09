@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdf904bb2c0d133ea07cd32274fad5b6601da5d9
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: a9e34b63017eae61a886bcff8faffa2910783f3e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148132"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559126"
 ---
 # <a name="continuous-access-evaluation"></a>Sürekli erişim değerlendirmesi
 
@@ -76,7 +76,7 @@ Erişim belirteci ömrünü, CAE oturumlarında 24 saate artıracağız. İptal 
 1. Kaynak sağlayıcısına bir erişim belirteci sunulur. Kaynak sağlayıcısı belirtecin geçerliliğini değerlendirir ve Kullanıcı için herhangi bir iptal olayı olup olmadığını denetler. Kaynak sağlayıcı, kaynağa erişim izni vermeye karar vermek için bu bilgileri kullanır.
 1. Bu durumda, kaynak sağlayıcısı erişimi reddeder ve istemciye bir 401 + talep sınaması gönderir
 1. CAE özellikli istemci, 401 + talep sınamasını anlamıştır. Önbellekler atlar ve adım 1 ' e döner ve yenileme belirtecini Azure AD 'ye geri talebi ile birlikte gönderir. Daha sonra Azure AD tüm koşulları yeniden değerlendirmenize ve kullanıcıdan bu durumda yeniden kimlik doğrulaması sorması istenir.
- 
+
 ## <a name="faqs"></a>SSS
 
 ### <a name="what-is-the-lifetime-of-my-access-token"></a>Erişim Belirteçlerimin yaşam süresi nedir?

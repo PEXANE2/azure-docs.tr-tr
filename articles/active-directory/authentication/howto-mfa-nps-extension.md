@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f07efc8fd77f1c34ef96d31f55089726942d05df
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: f5c93e35b2a9124ac6d480b3719608ee3b4484a5
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871216"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554834"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Mevcut NPS altyapınızı Azure Multi-Factor Authentication ile tümleştirme
 
@@ -65,6 +65,10 @@ Bu kitaplıklar, uzantısıyla otomatik olarak yüklenir.
 
 Windows PowerShell için Microsoft Azure Active Directory Modülü, zaten mevcut değilse, kurulum sürecinin bir parçası olarak çalıştırdığınız bir yapılandırma betiği aracılığıyla yüklenir. Daha önce yüklenmemişse bu modülü yüklemeye gerek yoktur.
 
+Aşağıdaki kitaplığı el ile yüklemeniz gerekir:
+
+- [Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/download/details.aspx?id=48145)
+
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
 NPS uzantısını kullanan herkesin Azure AD Connect kullanılarak Azure Active Directory eşitlenmesi ve MFA için kayıtlı olması gerekir.
@@ -98,7 +102,7 @@ NPS sunucusu Azure Active Directory bağlanır ve MFA isteklerinin kimliğini do
 1. Sunucunuzda Sunucu Yöneticisi hızlı başlangıç menüsünde **rol ve Özellik Ekleme Sihirbazı** ' nı açın.
 2. Yükleme türü için **rol tabanlı veya özellik tabanlı yükleme** ' yi seçin.
 3. **Ağ İlkesi ve erişim Hizmetleri** sunucu rolünü seçin. Bu rolü çalıştırmak için gerekli özellikleri bilgilendirebilen bir pencere açılır.
-4. Onay sayfasına kadar sihirbaza devam edin. **Yükle**’yi seçin.
+4. Onay sayfasına kadar sihirbaza devam edin. **Yükle**'yi seçin.
 
 Artık NPS için tasarlanmış bir sunucunuz olduğuna göre, bu sunucuyu VPN çözümünün gelen RADIUS isteklerini işleyecek şekilde de yapılandırmanız gerekir.
 
@@ -201,7 +205,7 @@ Yük Dengeleme için ayarlamak istediğiniz tüm ek NPS sunucuları üzerinde bu
 Önceki bilgisayar sertifikanızın süresi dolmuşsa ve yeni bir sertifika oluşturulduysa, süresi geçmiş tüm sertifikaları silmelisiniz. Süre dolma sertifikaları olması, NPS uzantısıyla başlayarak soruna neden olabilir.
 
 > [!NOTE]
-> PowerShell betiği ile sertifika oluşturmak yerine kendi sertifikalarınızı kullanırsanız, NPS adlandırma kuralına göre hizalandıklarından emin olun. Konu adı **CN = \< tenantıd \> , OU = Microsoft NPS uzantısı**olmalıdır. 
+> PowerShell betiği ile sertifika oluşturmak yerine kendi sertifikalarınızı kullanırsanız, NPS adlandırma kuralına göre hizalandıklarından emin olun. Konu adı **CN = \<TenantID\> , OU = Microsoft NPS uzantısı**olmalıdır. 
 
 ### <a name="microsoft-azure-government-additional-steps"></a>Microsoft Azure Kamu ek adımlar
 
@@ -271,7 +275,7 @@ NPS uzantısı sorunlarını giderirken temel sistem durumu denetimi adımların
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Nasıl yaparım? istemci sertifikası 'nın beklendiği şekilde yüklendiğini doğrulayın.
 
-Sertifika deposunda yükleyici tarafından oluşturulan kendinden imzalı sertifikayı bulun ve özel anahtarın Kullanıcı **ağ hizmeti**'ne verilmiş izinlere sahip olup olmadığını denetleyin. Sertifika, **CN \< tenantıd \> , OU = Microsoft NPS uzantısı** konu adına sahiptir
+Sertifika deposunda yükleyici tarafından oluşturulan kendinden imzalı sertifikayı bulun ve özel anahtarın Kullanıcı **ağ hizmeti**'ne verilmiş izinlere sahip olup olmadığını denetleyin. Sertifika, **CN \<tenantid\> , OU = Microsoft NPS uzantısının** konu adına sahiptir
 
 *AzureMfaNpsExtnConfigSetup. ps1* betiği tarafından oluşturulan otomatik olarak imzalanan sertifikaların Ayrıca iki yıla ait geçerlilik ömrü de vardır. Sertifikanın yüklendiği doğrulanırken, sertifikanın sona ermemiş olduğunu da denetlemeniz gerekir.
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: b1eef510e6389b551e128877ffde723955a1084d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: fe4dec0d1223468126723a19d5218d6e93707f50
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734646"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558805"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Kullanıcılara oturum açan Web uygulaması: kod yapılandırması
 
@@ -27,7 +27,7 @@ Kullanıcılara oturum açan Web uygulamanız için kodu yapılandırmayı öğr
 <!-- This section can be in an include for web app and web APIs -->
 Bir Web uygulamasını (ve bir Web API 'SI) korumak için kullanılan kitaplıklar şunlardır:
 
-| Platform | Kitaplık | Açıklama |
+| Platform | Kitaplık | Description |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [.NET için kimlik modeli uzantıları](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Doğrudan ASP.NET ve ASP.NET Core tarafından kullanılan .NET için Microsoft Identity model uzantıları, hem .NET Framework hem de .NET Core üzerinde çalışan bir dll kümesi önerir. Bir ASP.NET veya ASP.NET Core Web uygulamasından belirteç doğrulamayı, **Tokenvalidationparameters** sınıfını (özellikle de bazı iş ortakları senaryolarında) kullanarak kontrol edebilirsiniz. |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java Web uygulamaları için destek |
@@ -65,11 +65,11 @@ Tam uygulama ayrıntıları için bu örneğe başvurmak isteyebilirsiniz.
 
 Microsoft Identity platformunu kullanarak kullanıcıların oturum açmasını sağlayan Web uygulamaları genellikle yapılandırma dosyaları aracılığıyla yapılandırılır. Doldurmanız gereken ayarlar şunlardır:
 
-- Uygulamanızın Ulusal bulutlarda`Instance`çalışmasını istiyorsanız (örneğin,) bulut örneği ()
-- Kiracı KIMLIĞINDEKI (`TenantId`) hedef kitle
-- Uygulamanız için Azure portal kopyalandığı`ClientId`şekılde istemci kimliği ()
+- `Instance`Uygulamanızın Ulusal bulutlarda çalışmasını istiyorsanız (örneğin,) bulut örneği ()
+- Kiracı KIMLIĞINDEKI () hedef kitle `TenantId`
+- `ClientId`Uygulamanız için Azure Portal kopyalandığı şekilde ISTEMCI kimliği ()
 
-Bazen uygulamalar, ve `Authority` `Instance` `TenantId`' nin birleşimi olan parametrized tarafından yapılabilir.
+Bazen uygulamalar, ve ' nin birleşimi olan parametrized tarafından yapılabilir `Authority` `Instance` `TenantId` .
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -100,7 +100,7 @@ ASP.NET Core, bu ayarlar "AzureAd" bölümünde [appSettings. JSON](https://gith
 }
 ```
 
-ASP.NET Core, başka bir dosya ([properties\launchSettings.JSON](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7)), uygulamanız ve çeşitli`applicationUrl`profiller için URL () ve TLS/`sslPort`SSL bağlantı noktasını () içerir.
+ASP.NET Core, başka bir dosya ([properties\launchSettings.JSON](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7)), `applicationUrl` `sslPort` uygulamanız ve çeşitli profiller için URL () ve TLS/SSL bağlantı noktasını () içerir.
 
 ```Json
 {
@@ -132,9 +132,9 @@ ASP.NET Core, başka bir dosya ([properties\launchSettings.JSON](https://github.
 }
 ```
 
-Azure portal, uygulamanız için **kimlik doğrulama** sayfasında kaydolmanız gereken yanıt URI 'Lerinin bu URL 'lerle eşleşmesi gerekir. Önceki iki yapılandırma dosyası için olmaları gerekir `https://localhost:44321/signin-oidc`. Bunun nedeni `applicationUrl` `http://localhost:3110`, ancak `sslPort` belirtilmiştir (44321). `CallbackPath``/signin-oidc`, içinde `appsettings.json`tanımlandığı gibi.
+Azure portal, uygulamanız için **kimlik doğrulama** sayfasında kaydolmanız gereken yanıt URI 'Lerinin bu URL 'lerle eşleşmesi gerekir. Önceki iki yapılandırma dosyası için olmaları gerekir `https://localhost:44321/signin-oidc` . Bunun nedeni, `applicationUrl` `http://localhost:3110` ancak `sslPort` belirtilmiştir (44321). `CallbackPath``/signin-oidc`, içinde tanımlandığı gibi `appsettings.json` .
 
-Aynı şekilde, oturum açma URI 'SI olarak `https://localhost:44321/signout-callback-oidc`ayarlanır.
+Aynı şekilde, oturum açma URI 'SI olarak ayarlanır `https://localhost:44321/signout-callback-oidc` .
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -160,11 +160,11 @@ ASP.NET ' de, uygulama [Web. config](https://github.com/Azure-Samples/ms-identit
   </appSettings>
 ```
 
-Azure portal, uygulamanız için **kimlik doğrulama** sayfasında kaydolmanız gereken yanıt URI 'Lerinin bu URL 'lerle eşleşmesi gerekir. Diğer bir deyişle, olmaları gerekir `https://localhost:44326/`.
+Azure portal, uygulamanız için **kimlik doğrulama** sayfasında kaydolmanız gereken yanıt URI 'Lerinin bu URL 'lerle eşleşmesi gerekir. Diğer bir deyişle, olmaları gerekir `https://localhost:44326/` .
 
 # <a name="java"></a>[Java](#tab/java)
 
-Java 'da, yapılandırma altında `src/main/resources`bulunan [Application. Properties](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/resources/application.properties) dosyasında bulunur.
+Java 'da, yapılandırma altında bulunan [Application. Properties](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/resources/application.properties) dosyasında bulunur `src/main/resources` .
 
 ```Java
 aad.clientId=Enter_the_Application_Id_here
@@ -174,7 +174,7 @@ aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
 aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 ```
 
-Azure portal, uygulamanız için **kimlik doğrulama** sayfasında kaydolmanız gereken yanıt URI 'lerinin, uygulamanın tanımladığı `redirectUri` örneklerle eşleşmesi gerekir. Yani, ve `http://localhost:8080/msal4jsample/secure/aad` `http://localhost:8080/msal4jsample/graph/me`olmalıdır.
+Azure portal, uygulamanız için **kimlik doğrulama** sayfasında kaydolmanız gereken yanıt URI 'lerinin, `redirectUri` uygulamanın tanımladığı örneklerle eşleşmesi gerekir. Yani, `http://localhost:8080/msal4jsample/secure/aad` ve olmalıdır `http://localhost:8080/msal4jsample/graph/me` .
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -206,18 +206,18 @@ Başlatma kodu platforma bağlı olarak farklılık açmış. ASP.NET Core ve AS
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core Web Apps (ve Web API 'Leri) içinde, denetleyicilerde veya denetleyici eylemleriyle ilgili `[Authorize]` bir özniteliğe sahip olduğunuz için uygulama korunur. Bu öznitelik, kullanıcının kimliğinin doğrulandığını denetler. Uygulamayı başlatmakta olan kod *Startup.cs* dosyasında bulunur.
+ASP.NET Core Web Apps (ve Web API 'Leri) içinde, `[Authorize]` denetleyicilerde veya denetleyici eylemleriyle ilgili bir özniteliğe sahip olduğunuz için uygulama korunur. Bu öznitelik, kullanıcının kimliğinin doğrulandığını denetler. Uygulamayı başlatmakta olan kod *Startup.cs* dosyasında bulunur.
 
 Microsoft Identity platform (eski adıyla Azure AD v 2.0) ile kimlik doğrulaması eklemek için aşağıdaki kodu eklemeniz gerekir. Koddaki yorumların kendine açıklayıcı olması gerekir.
 
 > [!NOTE]
-> Projenizi Visual Studio 'da varsayılan ASP.NET Core Web projesi veya ya `dotnet new mvc --auth SingleAuth` `dotnet new webapp --auth SingleAuth`da kullanarak başlatırsanız, aşağıdaki gibi bir kod görürsünüz:. `services.AddAuthentication(AzureADDefaults.AuthenticationScheme).AddAzureAD(options => Configuration.Bind("AzureAd", options));`
+> Projenizi Visual Studio 'da varsayılan ASP.NET Core Web projesi veya ya da kullanarak başlatırsanız `dotnet new mvc --auth SingleAuth` `dotnet new webapp --auth SingleAuth` , aşağıdaki gibi bir kod görürsünüz: `services.AddAuthentication(AzureADDefaults.AuthenticationScheme).AddAzureAD(options => Configuration.Bind("AzureAd", options));` .
 > 
 > Bu kod, bir Azure AD v 1.0 uygulaması oluşturmak için kullanılan eski **Microsoft. AspNetCore. Authentication. AzureAD. UI** NuGet paketini kullanır. Bu makalede, bu kodun yerini alan bir Microsoft Identity platform (Azure AD v 2.0) uygulamasının nasıl oluşturulacağı açıklanmaktadır.
 
 1. Projenize [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) ve [Microsoft. Identity. Web. UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) NuGet paketlerini ekleyin. Varsa Microsoft. AspNetCore. Authentication. AzureAD. UI NuGet paketini kaldırın.
 
-2. ' Deki `ConfigureServices` kodu, `AddSignIn` ve `AddMicrosoftIdentityUI` yöntemlerini kullanacak şekilde güncelleştirin.
+2. ' Deki kodu `ConfigureServices` , ve yöntemlerini kullanacak şekilde güncelleştirin `AddSignIn` `AddMicrosoftIdentityUI` .
 
    ```c#
    public class Startup
@@ -237,7 +237,7 @@ Microsoft Identity platform (eski adıyla Azure AD v 2.0) ile kimlik doğrulamas
      }).AddMicrosoftIdentityUI();
     ```
 
-3. Startup.cs içindeki `Configure` yönteminde, *Startup.cs*kimlik doğrulamasını bir çağrısıyla etkinleştirin`app.UseAuthentication();`
+3. `Configure` *Startup.cs*içindeki yönteminde, kimlik doğrulamasını bir çağrısıyla etkinleştirin`app.UseAuthentication();`
 
    ```c#
    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -251,18 +251,18 @@ Microsoft Identity platform (eski adıyla Azure AD v 2.0) ile kimlik doğrulamas
    ```
 
 Yukarıdaki kodda:
-- `AddSignIn` Uzantı yöntemi **Microsoft. Identity. Web**içinde tanımlanmıştır. İçerdiği
+- `AddSignIn`Uzantı yöntemi **Microsoft. Identity. Web**içinde tanımlanmıştır. İçerdiği
   - Kimlik doğrulama hizmetini ekler.
   - Yapılandırma dosyasını okuma seçeneklerini yapılandırır (burada "AzureAD" bölümünden)
   - OpenID Connect seçeneklerini, yetkilinin Microsoft Identity platform uç noktası olmasını sağlayacak şekilde yapılandırır.
   - Belirtecin vereni doğrular.
-  - Ada karşılık gelen taleplerin KIMLIK belirtecindeki `preferred_username` talepten eşlenmesini sağlar.
+  - Ada karşılık gelen taleplerin `preferred_username` kimlik belirtecindeki talepten eşlenmesini sağlar.
 
-- Yapılandırma nesnesine ek olarak, çağrılırken `AddSignIn`yapılandırma bölümünün adını belirtebilirsiniz. Varsayılan olarak, bu `AzureAd`.
+- Yapılandırma nesnesine ek olarak, çağrılırken yapılandırma bölümünün adını belirtebilirsiniz `AddSignIn` . Varsayılan olarak, bu `AzureAd` .
 
-- `AddSignIn`, gelişmiş senaryolar için başka parametrelere sahiptir. Örneğin, OpenID Connect ara yazılım olaylarını izlemek, kimlik doğrulaması çalışmazsa Web uygulamanızın sorunlarını gidermenize yardımcı olabilir. İsteğe bağlı parametresinin `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` olarak `true` ayarlanması, HTTP yanıtından ' deki `HttpContext.User`kullanıcının kimliğine ilerledikçe, bilgilerin ASP.NET Core ara yazılım tarafından nasıl işlendiğini gösterir.
+- `AddSignIn`, gelişmiş senaryolar için başka parametrelere sahiptir. Örneğin, OpenID Connect ara yazılım olaylarını izlemek, kimlik doğrulaması çalışmazsa Web uygulamanızın sorunlarını gidermenize yardımcı olabilir. İsteğe bağlı parametresinin olarak ayarlanması, `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` `true` HTTP yanıtından ' deki kullanıcının kimliğine ilerledikçe, bilgilerin ASP.NET Core ara yazılım tarafından nasıl işlendiğini gösterir `HttpContext.User` .
 
-- `AddMicrosoftIdentityUI` Genişletme yöntemi **Microsoft. Identity. Web. UI**içinde tanımlanmıştır. Oturumu kapatma işlemek için varsayılan bir denetleyici sağlar.
+- `AddMicrosoftIdentityUI`Genişletme yöntemi **Microsoft. Identity. Web. UI**içinde tanımlanmıştır. Oturumu kapatma işlemek için varsayılan bir denetleyici sağlar.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -292,13 +292,13 @@ Bir ASP.NET Web uygulamasında ve Web API 'Lerinde kimlik doğrulamasıyla ilgil
 
 # <a name="java"></a>[Java](#tab/java)
 
-Java örneği yay çerçevesini kullanır. Her HTTP yanıtını karşılar bir filtre uyguladığınız için uygulama korunur. Java Web uygulamalarına yönelik hızlı başlangıçta bu filtre bulunur `AuthFilter` `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`.
+Java örneği yay çerçevesini kullanır. Her HTTP yanıtını karşılar bir filtre uyguladığınız için uygulama korunur. Java Web uygulamalarına yönelik hızlı başlangıçta bu filtre bulunur `AuthFilter` `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java` .
 
-Filtre, OAuth 2,0 yetkilendirme kodu akışını işler ve kullanıcının kimliğinin doğrulandığını denetler (`isAuthenticated()` Yöntem). Kullanıcının kimliği doğrulanmadıysa, Azure AD yetkilendirme uç noktalarının URL 'sini hesaplar ve tarayıcıyı bu URI 'ye yönlendirir.
+Filtre, OAuth 2,0 yetkilendirme kodu akışını işler ve kullanıcının kimliğinin doğrulandığını denetler ( `isAuthenticated()` Yöntem). Kullanıcının kimliği doğrulanmadıysa, Azure AD yetkilendirme uç noktalarının URL 'sini hesaplar ve tarayıcıyı bu URI 'ye yönlendirir.
 
 Yanıt geldiğinde, yetkilendirme kodunu içeren, MSAL Java kullanarak belirteci alır. Son olarak belirteç uç noktasından (yeniden yönlendirme URI 'sindeki) belirteci aldığında Kullanıcı oturum açmış olur.
 
-Ayrıntılar için bkz. `doFilter()` [AuthFilter. Java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/msal-java-webapp-sample/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java)içindeki yöntemi.
+Ayrıntılar için bkz `doFilter()` . [AuthFilter. Java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/msal-java-webapp-sample/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java)içindeki yöntemi.
 
 > [!NOTE]
 > Kodu `doFilter()` biraz farklı bir düzende yazılır, ancak akış tanımlanan bir sıradır.

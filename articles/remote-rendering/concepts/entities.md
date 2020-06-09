@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7981a28db23ab8c0aed05013dd260ffd97a11c07
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 5f6f7fc52a186117afcb92f6a2f80bf068e50ab9
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758733"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509211"
 ---
 # <a name="entities"></a>Varlıklar
 
@@ -25,6 +25,33 @@ Varlığın kendisinin en önemli yönü hiyerarşinin ve sonuçta elde edilen s
 Bir varlık kendi üst öğesine sahip olduğu anlamına gelir, yani üst öğe ile yok edildiğinde `Entity.Destroy()` , alt öğeleri ve tüm bağlı [Bileşenler](components.md). Bu nedenle, bir modelin sahne alanından kaldırılması `Destroy` , bir modelin kök düğümüne çağırarak `AzureSession.Actions.LoadModelAsync()` veya bunun SAS varyantı tarafından döndürülen bir şekilde gerçekleştirilir `AzureSession.Actions.LoadModelFromSASAsync()` .
 
 Varlıklar, sunucu içerik yüklediğinde veya Kullanıcı sahneye nesne eklemek istediğinde oluşturulur. Örneğin, bir Kullanıcı bir kafesin iç kısmını görselleştirmek için kesilmiş bir düzlem eklemek isterse, Kullanıcı düzlemin mevcut olması gereken bir varlık oluşturabilir ve ardından bu nesneye kesilen düzlemi bileşenini ekler.
+
+## <a name="create-an-entity"></a>Varlık oluşturma
+
+Sahneye yeni bir varlık eklemek için örneğin, modeli yüklemek veya ona bileşenleri eklemek üzere bir kök nesne olarak geçirmek için, aşağıdaki kodu kullanın:
+
+```cs
+Entity CreateNewEntity(AzureSession session)
+{
+    Entity entity = session.Actions.CreateEntity();
+    entity.Position = new LocalPosition(1, 2, 3);
+    return entity;
+}
+```
+
+```cpp
+ApiHandle<Entity> CreateNewEntity(ApiHandle<AzureSession> session)
+{
+    ApiHandle<Entity> entity(nullptr);
+    if (auto entityRes = session->Actions()->CreateEntity())
+    {
+        entity = entityRes.value();
+        entity->Position(Double3{ 1, 2, 3 });
+        return entity;
+    }
+    return entity;
+}
+```
 
 ## <a name="query-functions"></a>Sorgu işlevleri
 

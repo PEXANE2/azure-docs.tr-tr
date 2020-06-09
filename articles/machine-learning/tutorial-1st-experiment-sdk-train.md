@@ -10,12 +10,13 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: c8f259d2d4df46470a042c3f65ac1b8e1f66b1dd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: ec0ff6c5e53d33cf5c07171c2b678fe6857836e0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80546049"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558376"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Öğretici: ilk ML modelinizi eğitme
 
@@ -55,7 +56,7 @@ Tek önkoşul, bu öğreticiden birini, [kurulum ortamını ve çalışma alanı
 > Kodu çalıştırırken okumak istiyorsanız, Jupyter not defterine şimdi geçin. 
 > Bir not defterinde tek bir kod hücresini çalıştırmak için, kod hücresine tıklayın ve **SHIFT + enter**tuşuna basın. Ya da tüm not defteri ' ni üstteki araç çubuğundan **Çalıştır** ' ı seçerek çalıştırın.
 
-`Workspace` Sınıfını içeri aktarın ve bu işlevi `config.json` `from_config().` kullanarak ABONELIK bilgilerinizi varsayılan olarak geçerli dizindeki json dosyasını arar, ancak kullanarak `from_config(path="your/file/path")`dosyayı işaret etmek için bir yol parametresi de belirtebilirsiniz. Bir bulut Not defteri sunucusunda, dosya otomatik olarak kök dizinde bulunur.
+Sınıfını içeri aktarın `Workspace` ve `config.json` Bu işlevi kullanarak abonelik bilgilerinizi `from_config().` Varsayılan olarak geçerli dizindeki json dosyasını arar, ancak kullanarak dosyayı işaret etmek için bir yol parametresi de belirtebilirsiniz `from_config(path="your/file/path")` . Bir bulut Not defteri sunucusunda, dosya otomatik olarak kök dizinde bulunur.
 
 Aşağıdaki kod ek kimlik doğrulaması isterse, bağlantıyı bir tarayıcıya yapıştırmanız ve kimlik doğrulama belirtecini girmeniz yeterlidir.
 
@@ -74,7 +75,7 @@ experiment = Experiment(workspace=ws, name="diabetes-experiment")
 
 ## <a name="load-data-and-prepare-for-training"></a>Veri yükleme ve eğitim için hazırlanma
 
-Bu öğreticide, diabetes ilerlemesini tahmin etmek için Age, cinsiyet ve BMI gibi özellikleri kullanan diabetes veri kümesini kullanırsınız. [Azure Open DataSet](https://azure.microsoft.com/services/open-datasets/) sınıfından verileri yükleyin ve kullanarak `train_test_split()`eğitim ve test kümelerine ayırın. Bu işlev, modeli aşağıdaki eğitimin test edilmesi için kullanılacak görülmeyen verileri içerecek şekilde ayırır.
+Bu öğreticide, diabetes ilerlemesini tahmin etmek için Age, cinsiyet ve BMI gibi özellikleri kullanan diabetes veri kümesini kullanırsınız. [Azure Open DataSet](https://azure.microsoft.com/services/open-datasets/) sınıfından verileri yükleyin ve kullanarak eğitim ve test kümelerine ayırın `train_test_split()` . Bu işlev, modeli aşağıdaki eğitimin test edilmesi için kullanılacak görülmeyen verileri içerecek şekilde ayırır.
 
 
 ```python
@@ -122,29 +123,29 @@ for alpha in alphas:
 
 Yukarıdaki kod şunları gerçekleştirir:
 
-1. `alphas` Dizideki her Alfa hiper parametre değeri için, deneme içinde yeni bir çalıştırma oluşturulur. Alfa değeri, her çalıştırma arasında ayrım yapmak için günlüğe kaydedilir.
+1. Dizideki her Alfa hiper parametre değeri için `alphas` , deneme içinde yeni bir çalıştırma oluşturulur. Alfa değeri, her çalıştırma arasında ayrım yapmak için günlüğe kaydedilir.
 1. Her çalıştırmada, bir Ridge modeli örneği oluşturulur, eğitilmiş ve tahmin çalıştırmaları için kullanılır. Kök-ortalama-kare-hatası, fiili ve tahmin edilen değerler için hesaplanır ve ardından çalıştırmaya kaydedilir. Bu noktada, çalışma için hem alfa değeri hem de rmo doğruluğu için eklenmiş meta veriler vardır.
 1. Ardından, her bir çalıştırmaya ait model serileştirilir ve çalıştırmaya yüklenir. Bu, model dosyasını Studio 'daki çalıştırağından indirmelerini sağlar.
-1. Her yinelemenin sonunda çalıştırma, çağırarak `run.complete()`tamamlanır.
+1. Her yinelemenin sonunda çalıştırma, çağırarak tamamlanır `run.complete()` .
 
-Eğitim tamamlandıktan sonra, Studio 'da deneme için `experiment` bir bağlantı getirmek üzere değişkenini çağırın.
+Eğitim tamamlandıktan sonra, `experiment` Studio 'da deneme için bir bağlantı getirmek üzere değişkenini çağırın.
 
 ```python
 experiment
 ```
 
-<table style="width:100%"><tr><th>Adı</th><th>Çalışma alanı</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure Machine Learning Studio 'ya bağlantı</td><td>Belge bağlantısı</td></tr></table>
+<table style="width:100%"><tr><th>Name</th><th>Çalışma alanı</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure Machine Learning Studio 'ya bağlantı</td><td>Belge bağlantısı</td></tr></table>
 
 ## <a name="view-training-results-in-studio"></a>Studio 'da eğitim sonuçlarını görüntüleme
 
-**Azure Machine Learning Studio bağlantısını** takip etmek sizi ana deneme sayfasına götürür. İşte denemenize ait tüm bireysel çalıştırmaları görürsünüz. Tüm özel günlüğe kaydedilmiş değerler (`alpha_value` ve `rmse`bu durumda) her çalıştırma için alanlar haline gelir ve ayrıca deneme sayfasının en üstündeki grafikler ve kutucuklar için kullanılabilir hale gelir. Bir grafiğe veya kutucuğa günlüğe kaydedilmiş bir ölçüm eklemek için, üzerine gelin, Düzenle düğmesine tıklayın ve özel olarak günlüğe kaydedilen ölçümünüzün bulun.
+**Azure Machine Learning Studio bağlantısını** takip etmek sizi ana deneme sayfasına götürür. İşte denemenize ait tüm bireysel çalıştırmaları görürsünüz. Tüm özel günlüğe kaydedilmiş değerler ( `alpha_value` ve `rmse` Bu durumda) her çalıştırma için alanlar haline gelir ve ayrıca deneme sayfasının en üstündeki grafikler ve kutucuklar için kullanılabilir hale gelir. Bir grafiğe veya kutucuğa günlüğe kaydedilmiş bir ölçüm eklemek için, üzerine gelin, Düzenle düğmesine tıklayın ve özel olarak günlüğe kaydedilen ölçümünüzün bulun.
 
 Eğitim modelleri, yüzlerce ve binlerce ayrı çalıştırma üzerinde ölçeklendirirseniz, Bu sayfa, eğitilen her modeli, özellikle eğitilen ve benzersiz ölçümlerinizin zaman içinde nasıl değiştiğini görmenizi kolaylaştırır.
 
 :::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="Studio 'da ana deneme sayfası.":::
 
 
-Tek bir çalıştırmanın sayfasını görmek için `RUN NUMBER` sütununda bir çalıştırma numarası bağlantısı seçin. Varsayılan sekme **ayrıntıları** , her çalıştırma hakkında daha ayrıntılı bilgi gösterir. **Çıktılar + Günlükler** sekmesine gidin ve her eğitim yinelemesi sırasında çalıştırmaya yüklenmiş `.pkl` olan modele ait dosyayı görürsünüz. Burada, model dosyasını el ile yeniden eğitmek yerine indirebilirsiniz.
+`RUN NUMBER`Tek bir çalıştırmanın sayfasını görmek için sütununda bir çalıştırma numarası bağlantısı seçin. Varsayılan sekme **ayrıntıları** , her çalıştırma hakkında daha ayrıntılı bilgi gösterir. **Çıktılar + Günlükler** sekmesine gidin ve `.pkl` her eğitim yinelemesi sırasında çalıştırmaya yüklenmiş olan modele ait dosyayı görürsünüz. Burada, model dosyasını el ile yeniden eğitmek yerine indirebilirsiniz.
 
 :::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="Studio 'da Ayrıntılar sayfasını çalıştırın.":::
 
@@ -178,7 +179,7 @@ print("Best run_id rmse: " + str(minimum_rmse))
     Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
     Best run_id rmse: 57.234760283951765
 
-Deneme nesnesiyle birlikte `Run` oluşturucuyu kullanarak bireysel çalıştırmayı getirmek için en ıyı çalıştırma kimliğini kullanın. Sonra bu `get_file_names()` çalıştırınızdan yüklenebilecek tüm dosyaları görmek için çağırın. Bu durumda, yalnızca eğitim sırasında her çalıştırma için bir dosya karşıya yüklenir.
+Deneme nesnesiyle birlikte oluşturucuyu kullanarak bireysel çalıştırmayı getirmek için en iyi çalıştırma KIMLIĞINI kullanın `Run` . Sonra `get_file_names()` Bu çalıştırınızdan yüklenebilecek tüm dosyaları görmek için çağırın. Bu durumda, yalnızca eğitim sırasında her çalıştırma için bir dosya karşıya yüklenir.
 
 ```python
 from azureml.core import Run
@@ -188,7 +189,7 @@ print(best_run.get_file_names())
 
     ['model_alpha_0.1.pkl']
 
-Çalıştır `download()` nesnesinde, indirilecek model dosyası adını belirterek çağırın. Varsayılan olarak, bu işlev geçerli dizine indirir.
+`download()`Çalıştır nesnesinde, indirilecek model dosyası adını belirterek çağırın. Varsayılan olarak, bu işlev geçerli dizine indirir.
 
 ```python
 best_run.download_file(name="model_alpha_0.1.pkl")

@@ -9,12 +9,13 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 22f6b2aba36e560e9bd335baa92925fe9846c670
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 96c95efdc8f2154e0586fec59d1af66496acb101
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77162608"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558964"
 ---
 # <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>Hızlı başlangıç: Python kullanarak Event Hubs olay gönderme ve alma (Azure-eventhub sürüm 1)
 Bu hızlı başlangıçta, **Azure-eventhub sürüm 1** Python paketini kullanarak Olay Hub 'ından olayları gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilmektedir. 
@@ -43,11 +44,11 @@ Bu hızlı başlangıcı tamamlayabilmeniz için aşağıdaki önkoşullara sahi
 Olayları bir olay hub 'ına gönderen bir Python uygulaması oluşturmak için:
 
 > [!NOTE]
-> Hızlı başlangıç üzerinden çalışmak yerine, GitHub 'dan [örnek uygulamaları](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) indirebilir ve çalıştırabilirsiniz. `EventHubConnectionString` Ve `EventHubName` dizelerini Olay Hub değerlerinizle değiştirin.
+> Hızlı başlangıç üzerinden çalışmak yerine, GitHub 'dan [örnek uygulamaları](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) indirebilir ve çalıştırabilirsiniz. `EventHubConnectionString`Ve `EventHubName` dizelerini Olay Hub değerlerinizle değiştirin.
 
 1. [Visual Studio Code](https://code.visualstudio.com/) gibi en sevdiğiniz Python düzenleyicisini açın
 2. *Send.py*adlı yeni bir dosya oluşturun. Bu betik, 100 olaylarını Olay Hub 'ınıza gönderir.
-3. Aşağıdaki kodu, Event Hubs \<ad alanını>, \<eventhub>, \<accesskeyname> ve \<birincil anahtar değeri> değerlerinizle değiştirerek *Send.py*içine yapıştırın: 
+3. Aşağıdaki kodu *Send.py*' ye yapıştırın,, ve Event Hubs \<namespace> , \<eventhub> \<AccessKeyName> ve \<primary key value> değerlerini ile değiştirin: 
    
    ```python
    import sys
@@ -110,7 +111,7 @@ Tebrikler! Bir olay hub'ına ileti gönderdiniz.
 Olay Hub 'ından olayları alan bir Python uygulaması oluşturmak için:
 
 1. Python Düzenleyicinizde *recv.py*adlı bir dosya oluşturun.
-2. Aşağıdaki kodu, Event Hubs \<ad alanını>, \<eventhub>, \<accesskeyname> ve \<birincil anahtar değeri> değerlerinizle değiştirerek *recv.py*içine yapıştırın: 
+2. Aşağıdaki kodu *recv.py*' ye yapıştırın,, ve Event Hubs \<namespace> , \<eventhub> \<AccessKeyName> ve \<primary key value> değerlerini ile değiştirin: 
    
    ```python
    import os

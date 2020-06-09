@@ -6,12 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: d6817ac4ebc272747776eab8b11dba62f318e4ed
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.custom: tracking-python
+ms.openlocfilehash: 198cbb9f66ec5c6b84ed3cc4f20898495d8c126f
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690732"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560836"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Işlevleri için çıkış bağlamasını Azure Service Bus
 
@@ -21,7 +22,7 @@ Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakı
 
 ## <a name="example"></a>Örnek
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnek, Service Bus kuyruğu iletisi gönderen bir [C# işlevini](functions-dotnet-class-library.md) gösterir:
 
@@ -142,7 +143,7 @@ module.exports = function (context, myTimer) {
 
 Aşağıdaki örnek, Python 'da Service Bus kuyruğuna nasıl yazılacağını gösterir.
 
-Service Bus bağlama tanımı, *türünün* olarak `serviceBus`ayarlandığı *function. JSON* içinde tanımlanır.
+Service Bus bağlama tanımı, *türünün* olarak ayarlandığı *function. JSON* içinde tanımlanır `serviceBus` .
 
 ```json
 {
@@ -174,7 +175,7 @@ Service Bus bağlama tanımı, *türünün* olarak `serviceBus`ayarlandığı *f
 }
 ```
 
-* _ \__ İnit\_. Kopyala*içinde, `set` yöntemine bir değer geçirerek bir ileti yazabilirsiniz.
+* _ \_ İnit_ \_ . Kopyala*içinde, yöntemine bir değer geçirerek bir ileti yazabilirsiniz `set` .
 
 ```python
 import azure.functions as func
@@ -190,7 +191,7 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Aşağıdaki örnek, bir HTTP isteği tarafından tetiklendiğinde Service Bus kuyruğuna `myqueue` Ileti gönderen Java işlevini gösterir.
+Aşağıdaki örnek, `myqueue` BIR http isteği tarafından tetiklendiğinde Service Bus kuyruğuna ileti gönderen Java işlevini gösterir.
 
 ```java
 @FunctionName("httpToServiceBusQueue")
@@ -204,9 +205,9 @@ public String pushToQueue(
  }
 ```
 
- [Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, değeri Service Bus `@QueueOutput` kuyruğuna yazılacak olan işlev parametrelerinde ek açıklamayı kullanın.  Parametre türü olmalıdır `OutputBinding<T>`; burada T BIR Pojo 'nın herhangi bir yerel Java türüdür.
+ [Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, `@QueueOutput` değeri Service Bus kuyruğuna yazılacak olan işlev parametrelerinde ek açıklamayı kullanın.  Parametre türü olmalıdır `OutputBinding<T>` ; burada T BIR POJO 'nın herhangi bir yerel Java türüdür.
 
-Java işlevleri, bir Service Bus konusuna da yazabilir. Aşağıdaki örnek, çıkış bağlamasının `@ServiceBusTopicOutput` yapılandırmasını anlatmak için ek açıklamasını kullanır. 
+Java işlevleri, bir Service Bus konusuna da yazabilir. Aşağıdaki örnek, `@ServiceBusTopicOutput` Çıkış bağlamasının yapılandırmasını anlatmak için ek açıklamasını kullanır. 
 
 ```java
 @FunctionName("sbtopicsend")
@@ -227,7 +228,7 @@ Java işlevleri, bir Service Bus konusuna da yazabilir. Aşağıdaki örnek, ç�
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [C# sınıf kitaplıklarında](functions-dotnet-class-library.md) [servicebusattribute özniteliğini](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs)kullanın.
 
@@ -242,7 +243,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-Aşağıdaki örnekte gösterildiği gibi `Connection` , kullanmak üzere Service Bus bağlantı dizesi içeren bir uygulama ayarının adını belirtmek için özelliğini ayarlayabilirsiniz:
+`Connection`Aşağıdaki örnekte gösterildiği gibi, kullanmak üzere Service Bus bağlantı dizesi içeren bir uygulama ayarının adını belirtmek için özelliğini ayarlayabilirsiniz:
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -255,7 +256,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 
 Tam bir örnek için bkz. [Çıkış-örnek](#example).
 
-Sınıfı, yöntemi veya `ServiceBusAccount` parametre düzeyinde kullanılacak Service Bus hesabını belirtmek için özniteliğini kullanabilirsiniz.  Daha fazla bilgi için bkz. [tetikleyici-öznitelikler](functions-bindings-service-bus-trigger.md#attributes-and-annotations).
+`ServiceBusAccount`Sınıfı, yöntemi veya parametre düzeyinde kullanılacak Service Bus hesabını belirtmek için özniteliğini kullanabilirsiniz.  Daha fazla bilgi için bkz. [tetikleyici-öznitelikler](functions-bindings-service-bus-trigger.md#attributes-and-annotations).
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
@@ -271,31 +272,31 @@ Sınıfı, yöntemi veya `ServiceBusAccount` parametre düzeyinde kullanılacak 
 
 # <a name="java"></a>[Java](#tab/java)
 
-`ServiceBusQueueOutput` Ve `ServiceBusTopicOutput` ek açıklamaları bir ileti çıkışı olarak bir ileti yazmak için kullanılabilir. Bu ek açıklamalarla birlikte düzenlenmiş parametre, iletinin türüne karşılık gelen `OutputBinding<T>` türde `T` olduğu gibi bildirilmelidir.
+`ServiceBusQueueOutput`Ve `ServiceBusTopicOutput` ek açıklamaları bir ileti çıkışı olarak bir ileti yazmak için kullanılabilir. Bu ek açıklamalarla birlikte düzenlenmiş parametre, `OutputBinding<T>` `T` iletinin türüne karşılık gelen türde olduğu gibi bildirilmelidir.
 
 ---
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `ServiceBus` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `ServiceBus` .
 
-|function. JSON özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** | yok | "ServiceBus" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | "Out" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
 |**ada** | yok | İşlev kodundaki kuyruğu veya konu iletisini temsil eden değişkenin adı. İşlev dönüş değerine başvurmak için "$return" olarak ayarlayın. |
 |**Adı**|**Adı**|Kuyruğun adı.  Bir konu için değil, yalnızca kuyruk iletileri gönderilirken ayarlanır.
 |**topicName**|**TopicName**|Konunun adı. Yalnızca bir sıra için değil konu iletileri gönderirken ayarlanır.|
-|**bağlantı**|**Bağlanma**|Bu bağlama için kullanmak üzere Service Bus bağlantı dizesi içeren bir uygulama ayarı adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, adın yalnızca geri kalanını belirtebilirsiniz. Örneğin, "MyServiceBus `connection` " olarak ayarlarsanız, işlevler çalışma zamanı "AzureWebJobsMyServiceBus" adlı bir uygulama ayarı arar. Boş bırakırsanız `connection` , işlevler çalışma zamanı, "AzureWebJobsServiceBus" adlı uygulama ayarında varsayılan Service Bus bağlantı dizesini kullanır.<br><br>Bir bağlantı dizesi almak için [Yönetim kimlik bilgilerini alma](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)konusunda gösterilen adımları izleyin. Bağlantı dizesi, belirli bir sıra veya konuyla sınırlı olmamak üzere bir Service Bus ad alanı için olmalıdır.|
-|**AccessRights** (yalnızca v1)|**Erişim**|Bağlantı dizesi için erişim hakları. Kullanılabilir değerler ve `manage` ' `listen`dir. Varsayılan değer, `manage`' ın `connection` **Yönet** iznine sahip olduğunu gösterir. **Yönet** iznine sahip olmayan bir bağlantı dizesi kullanıyorsanız, "Dinle" olarak ayarlayın `accessRights` . Aksi halde, Işlevler çalışma zamanı yönetme hakları gerektiren işlemleri gerçekleştirmeye çalışırken başarısız olabilir. Azure Işlevleri sürüm 2. x ve üzeri sürümlerde, bu özellik kullanılamaz çünkü Service Bus SDK 'nın en son sürümü yönetim işlemlerini desteklemez.|
+|**bağlanma**|**Bağlantı**|Bu bağlama için kullanmak üzere Service Bus bağlantı dizesi içeren bir uygulama ayarı adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, adın yalnızca geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyServiceBus" olarak ayarlarsanız, işlevler çalışma zamanı "AzureWebJobsMyServiceBus" adlı bir uygulama ayarı arar. `connection`Boş bırakırsanız, işlevler çalışma zamanı, "AzureWebJobsServiceBus" adlı uygulama ayarında varsayılan Service Bus bağlantı dizesini kullanır.<br><br>Bir bağlantı dizesi almak için [Yönetim kimlik bilgilerini alma](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)konusunda gösterilen adımları izleyin. Bağlantı dizesi, belirli bir sıra veya konuyla sınırlı olmamak üzere bir Service Bus ad alanı için olmalıdır.|
+|**AccessRights** (yalnızca v1)|**Erişim**|Bağlantı dizesi için erişim hakları. Kullanılabilir değerler `manage` ve ' dir `listen` . Varsayılan değer, `manage` ' ın `connection` **Yönet** iznine sahip olduğunu gösterir. **Yönet** iznine sahip olmayan bir bağlantı dizesi kullanıyorsanız, `accessRights` "Dinle" olarak ayarlayın. Aksi halde, Işlevler çalışma zamanı yönetme hakları gerektiren işlemleri gerçekleştirmeye çalışırken başarısız olabilir. Azure Işlevleri sürüm 2. x ve üzeri sürümlerde, bu özellik kullanılamaz çünkü Service Bus SDK 'nın en son sürümü yönetim işlemlerini desteklemez.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Kullanım
 
-Azure Işlevleri 1. x içinde, çalışma zamanı yoksa kuyruğu oluşturur ve olarak `accessRights` `manage`ayarladıysanız. Işlevler sürüm 2. x ve üzeri sürümlerde, kuyruk veya konu zaten var olmalıdır; Mevcut olmayan bir kuyruğu veya konuyu belirtirseniz, işlev başarısız olur. 
+Azure Işlevleri 1. x içinde, çalışma zamanı yoksa kuyruğu oluşturur ve `accessRights` olarak ayarladıysanız `manage` . Işlevler sürüm 2. x ve üzeri sürümlerde, kuyruk veya konu zaten var olmalıdır; Mevcut olmayan bir kuyruğu veya konuyu belirtirseniz, işlev başarısız olur. 
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Çıkış bağlaması için aşağıdaki parametre türlerini kullanın:
 
@@ -304,11 +305,11 @@ Azure Işlevleri 1. x içinde, çalışma zamanı yoksa kuyruğu oluşturur ve o
 * `out byte[]`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz.
 * `out BrokeredMessage`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (1. x Işlevleri için)
 * `out Message`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (2. x ve üzeri Işlevler için)
-* `ICollector<T>`ya `IAsyncCollector<T>` da birden çok ileti oluşturmak için. `Add` Yöntemini çağırdığınızda bir ileti oluşturulur.
+* `ICollector<T>`ya da `IAsyncCollector<T>` birden çok ileti oluşturmak için. Yöntemini çağırdığınızda bir ileti oluşturulur `Add` .
 
 C# işlevleriyle çalışırken:
 
-* Zaman uyumsuz işlevlerin bir dönüş değeri veya `IAsyncCollector` bir `out` parametre yerine olması gerekir.
+* Zaman uyumsuz işlevlerin bir dönüş değeri veya `IAsyncCollector` bir parametre yerine olması gerekir `out` .
 
 * Oturum KIMLIĞINE erişmek için bir [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) türe bağlayın ve `sessionId` özelliğini kullanın.
 
@@ -321,17 +322,17 @@ C# işlevleriyle çalışırken:
 * `out byte[]`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz.
 * `out BrokeredMessage`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (1. x Işlevleri için)
 * `out Message`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (2. x ve üzeri Işlevler için)
-* `ICollector<T>`ya `IAsyncCollector<T>` da birden çok ileti oluşturmak için. `Add` Yöntemini çağırdığınızda bir ileti oluşturulur.
+* `ICollector<T>`ya da `IAsyncCollector<T>` birden çok ileti oluşturmak için. Yöntemini çağırdığınızda bir ileti oluşturulur `Add` .
 
 C# işlevleriyle çalışırken:
 
-* Zaman uyumsuz işlevlerin bir dönüş değeri veya `IAsyncCollector` bir `out` parametre yerine olması gerekir.
+* Zaman uyumsuz işlevlerin bir dönüş değeri veya `IAsyncCollector` bir parametre yerine olması gerekir `out` .
 
 * Oturum KIMLIĞINE erişmek için bir [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) türe bağlayın ve `sessionId` özelliğini kullanın.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Kullanarak `context.bindings.<name from function.json>`kuyruğa veya konuya erişin. ' A bir dize, bir bayt dizisi veya bir JavaScript nesnesi (JSON içine serisi) atayabilirsiniz `context.binding.<name>`.
+Kullanarak kuyruğa veya konuya erişin `context.bindings.<name from function.json>` . ' A bir dize, bir bayt dizisi veya bir JavaScript nesnesi (JSON içine serisi) atayabilirsiniz `context.binding.<name>` .
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -380,9 +381,9 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
     }
 }
 ```
-' A `isSessionsEnabled` ayarlarsanız, `sessionHandlerOptions` kabul edilir. `true`  ' A `isSessionsEnabled` ayarlarsanız, `messageHandlerOptions` kabul edilir. `false`
+`isSessionsEnabled`' A ayarlarsanız `true` , kabul edilir `sessionHandlerOptions` .  `isSessionsEnabled`' A ayarlarsanız `false` , kabul edilir `messageHandlerOptions` .
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------|
 |prefetchCount|0|İleti alıcısının eşzamanlı olarak isteyebildiği ileti sayısını alır veya ayarlar.|
 |maxAutoRenewDuration|00:05:00|İleti kilidinin otomatik olarak yenilenebileceği en uzun süre.|

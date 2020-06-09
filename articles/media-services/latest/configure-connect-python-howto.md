@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: 98a8cdf4120cf56184eb5735249640e3423acdf4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 3e6e421d346925f751595ce2fb2d0891e31dc108
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74888470"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559633"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Media Services v3 API 'sine bağlanma-Python
 
@@ -27,7 +28,7 @@ Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Ser
 ## <a name="prerequisites"></a>Ön koşullar
 
 - [Python.org](https://www.python.org/downloads/) 'ten Python indirin
-- `PATH` Ortam değişkenini ayarladığınızdan emin olun
+- Ortam değişkenini ayarladığınızdan emin olun `PATH`
 - [Media Services hesabı oluşturun](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını unutduğunuzdan emin olun.
 - [Erişim API 'leri](access-api-cli-how-to.md) konusundaki adımları izleyin. Abonelik KIMLIĞI, uygulama KIMLIĞI (istemci KIMLIĞI), kimlik doğrulama anahtarı (gizli) ve sonraki adımda ihtiyacınız olan kiracı KIMLIĞINI kaydedin.
 
@@ -38,8 +39,8 @@ Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Ser
 
 Python kullanarak Azure Media Services çalışmak için bu modülleri yüklemeniz gerekir.
 
-* Active Directory `azure-mgmt-resource` için Azure modüllerini içeren modül.
-* Media Services `azure-mgmt-media` varlıklarını içeren modül.
+* `azure-mgmt-resource`Active Directory Için Azure modüllerini içeren modül.
+* `azure-mgmt-media`Media Services varlıklarını içeren modül.
 
 Bir komut satırı aracı açın ve modülleri yüklemek için aşağıdaki komutları kullanın.
 
@@ -50,7 +51,7 @@ pip3 install azure-mgmt-media==1.1.1
 
 ## <a name="connect-to-the-python-client"></a>Python istemcisine bağlanma
 
-1. `.py` Uzantılı bir dosya oluşturun
+1. Uzantılı bir dosya oluşturun `.py`
 1. Dosyayı en sevdiğiniz düzenleyicide açın
 1. Aşağıdaki kodu dosyaya ekleyin. Kod, gerekli modülleri içeri aktarır ve Media Services bağlanmak için gereken Active Directory kimlik bilgileri nesnesini oluşturur.
 

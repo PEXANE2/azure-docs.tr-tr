@@ -7,46 +7,44 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.openlocfilehash: d7be56fa48887e2ee500f1b253c078bde16d91e6
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 06/05/2020
+ms.openlocfilehash: a7fb5d9274771fb736e9373e343a1d520fdbbe55
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891224"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553134"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure Bilişsel Arama metin işleme için çözümleyiciler
 
-*Çözümleyici* , sorgu dizelerinde ve dizini oluşturulmuş belgelerde metin işlemeden sorumlu [tam metin arama altyapısının](search-lucene-query-architecture.md) bir bileşenidir. Farklı çözümleyiciler, senaryoya bağlı olarak metni farklı şekillerde işleyebilir. Dil Çözümleyicileri, arama kalitesini artırmak için dil kurallarını kullanarak metin işler, diğer çözümleyiciler ise, örneğin, daha küçük harfe dönüştürme gibi daha temel görevler gerçekleştirir. 
+*Çözümleyici* , sorgu dizelerinde ve dizini oluşturulmuş belgelerde metin işlemeden sorumlu [tam metin arama altyapısının](search-lucene-query-architecture.md) bir bileşenidir. İşlemler dönüştürme, aşağıdaki gibi eylemler aracılığıyla bir dizeyi değiştirme:
 
-Aşağıdaki video segmenti, metin işlemenin Azure Bilişsel Arama nasıl çalıştığı hakkında bir açıklamaya hızlı bir şekilde iletir.
++ Gerekli olmayan kelimeleri (stopwords) ve noktalama işaretlerini kaldır
++ Tümcecikleri bölme ve sözcükleri bileşen bölümlerine ayırma
++ Büyük/küçük harf sözcükleri küçük harfe
++ Bir depolama verimliliği için kelimeleri basit kök formlara küçültün ve bu nedenle eşleşmelerin zaman hali ne olursa olsun bulunabilir
+
+Analiz, Dizin yapılandırıldığında dizin oluşturma sırasında ve ardından dizin okuma sırasında sorgu yürütme sırasında gerçekleşir. Her iki işlem için de aynı çözümleyici 'yi kullanıyorsanız, bekleeceğiniz arama sonuçlarını elde etmeniz daha olasıdır.
+
+Metin analizini tanımıyorsanız, metin işlemenin Azure Bilişsel Arama 'de nasıl çalıştığı hakkında kısa bir açıklama için aşağıdaki video klibini dinleyin.
 
 > [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=132&end=189]
 
-
-Dil Çözümleyicileri en sık kullanılan ve bir Azure Bilişsel Arama dizininde her aranabilir alana atanan varsayılan dil Çözümleyicisi vardır. Aşağıdaki dil dönüştürmeleri, metin analizi sırasında tipik bir şekilde yapılır:
-
-+ Önemli olmayan kelimeler (stopwords) ve noktalama işaretleri kaldırılır.
-+ Tümcecikler ve hecelenmiş sözcükler bileşen bölümlerine bölünür.
-+ Büyük harfli kelimeler küçük harfle kaldırılır.
-+ Sözcükler, zaman hali ne olursa olsun bir eşleşme bulunabilmesi için kök formlara düşürülür.
-
-Dil Çözümleyicileri, bir metin girişini, bilgi depolama ve alma açısından verimli bir şekilde temel veya kök formlara dönüştürür. Dizin oluşturma sırasında, Dizin oluşturulduğunda ve sonra arama sırasında, Dizin okunarak bir kez dönüştürme gerçekleşir. Her iki işlem için de aynı çözümleyici 'yi kullanıyorsanız, bekleeceğiniz arama sonuçlarını elde etmeniz daha olasıdır.
-
 ## <a name="default-analyzer"></a>Varsayılan çözümleyici  
 
-Azure Bilişsel Arama, varsayılan olarak [Apache Lucene standart Çözümleyicisi 'ni (Standart Lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) kullanır ve bu, metni ["Unicode metin segmentleme"](https://unicode.org/reports/tr29/) kurallarından sonra öğelere ayırır. Ayrıca, standart çözümleyici tüm karakterleri küçük harf biçimine dönüştürür. Dizini oluşturulmuş belgeler ve arama terimleri, dizin oluşturma ve sorgu işleme sırasında Analize gider.  
+Azure Bilişsel Arama sorgularında, aranabilir olarak işaretlenen tüm dize alanlarında otomatik olarak bir metin Çözümleyicisi çağrılır. 
 
-Bu, aranabilir her alan için otomatik olarak kullanılır. Alan temelinde varsayılan ayarı geçersiz kılabilirsiniz. Alternatif çözümleyiciler, [kullanılabilir çözümleyiciler listesinden](index-add-custom-analyzers.md#AnalyzerTable)bir [dil Çözümleyicisi](index-add-language-analyzers.md), [özel çözümleyici](index-add-custom-analyzers.md)veya önceden tanımlanmış bir çözümleyici olabilir.
+Varsayılan olarak, Azure Bilişsel Arama [Apache Lucene standart Çözümleyicisi 'ni (Standart Lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html)kullanır ve bu, metni ["Unicode metin segmentleme"](https://unicode.org/reports/tr29/) kurallarından sonra öğelere ayırır. Ayrıca, standart çözümleyici tüm karakterleri küçük harf biçimine dönüştürür. Dizini oluşturulmuş belgeler ve arama terimleri, dizin oluşturma ve sorgu işleme sırasında Analize gider.  
 
+Alan temelinde varsayılan ayarı geçersiz kılabilirsiniz. Alternatif çözümleyiciler, dil işleme için [dil Çözümleyicisi](index-add-language-analyzers.md) , [özel bir çözümleyici](index-add-custom-analyzers.md)veya [kullanılabilir çözümleyiciler listesinden](index-add-custom-analyzers.md#AnalyzerTable)önceden tanımlanmış bir çözümleyici olabilir.
 
 ## <a name="types-of-analyzers"></a>Çözümleyiciler türleri
 
 Aşağıdaki listede Azure Bilişsel Arama 'de hangi çözümleyiciler kullanılabildiği açıklanmaktadır.
 
-| Kategori | Açıklama |
+| Kategori | Description |
 |----------|-------------|
-| [Standart Lucene Çözümleyicisi](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Varsayılan. Belirtim veya yapılandırma gerekli değildir. Bu genel amaçlı çözümleyici, çoğu dil ve senaryo için iyi bir performans uygular.|
+| [Standart Lucene Çözümleyicisi](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Varsayılan. Belirtim veya yapılandırma gerekli değildir. Bu genel amaçlı çözümleyici birçok dil ve senaryo için iyi bir performans uygular.|
 | Önceden tanımlanmış çözümleyiciler | Olduğu gibi kullanılması amaçlanan, tamamlanmış bir ürün olarak sunulur. <br/>İki tür vardır: özelleştirilmiş ve dil. Bunları "önceden tanımlanmış" olarak belirlemek, yapılandırma veya özelleştirme olmadan bunlara ada göre başvurmanıza neden olur. <br/><br/>[Özelleştirilmiş (dilden bağımsız) çözümleyiciler](index-add-custom-analyzers.md#AnalyzerTable) , metin girdileri özel işlem veya minimum işleme gerektirdiğinde kullanılır. Dili olmayan önceden tanımlı çözümleyiciler, **Asciifolding**, **anahtar sözcük**, **model**, **Simple**, **stop**, **Whitespace**içerir.<br/><br/>[Dil Çözümleyicileri](index-add-language-analyzers.md) , tek tek diller için zengin dil desteği gerektiğinde kullanılır. Azure Bilişsel Arama, 35 Lucene dil Çözümleyicileri ve 50 Microsoft doğal dil işleme Çözümleyicileri destekler. |
 |[Özel çözümleyiciler](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | , Bir Simgeleştirici (zorunlu) ve isteğe bağlı filtrelerden (char veya token) oluşan, mevcut öğelerin bir birleşiminin Kullanıcı tanımlı yapılandırmasını ifade eder.|
 
@@ -56,7 +54,7 @@ Aşağıdaki listede Azure Bilişsel Arama 'de hangi çözümleyiciler kullanıl
 
 1. (yalnızca özel çözümleyiciler için) Dizin tanımında adlandırılmış bir **çözümleyici** bölümü oluşturun. Daha fazla bilgi için bkz. [Dizin oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-index) ve ayrıca [özel çözümleyiciler ekleme](index-add-custom-analyzers.md).
 
-2. Dizindeki bir [alan tanımında](https://docs.microsoft.com/rest/api/searchservice/create-index) , alanın **çözümleyici** özelliğini bir hedef Çözümleyicisinin adı (örneğin, `"analyzer" = "keyword"`) olarak ayarlayın. Geçerli değerler, dizin şemasında tanımlanmış, önceden tanımlanmış bir çözümleyici, dil Çözümleyicisi veya özel çözümleyici adı içerir. Dizin, hizmette oluşturulmadan önce Dizin tanımı aşamasında Çözümleyicisi atamaya planlayın.
+2. Dizindeki bir [alan tanımında](https://docs.microsoft.com/rest/api/searchservice/create-index) , alanın **çözümleyici** özelliğini bir hedef Çözümleyicisinin adı (örneğin,) olarak ayarlayın `"analyzer" = "keyword"` . Geçerli değerler, dizin şemasında tanımlanmış, önceden tanımlanmış bir çözümleyici, dil Çözümleyicisi veya özel çözümleyici adı içerir. Dizin, hizmette oluşturulmadan önce Dizin tanımı aşamasında Çözümleyicisi atamaya planlayın.
 
 3. İsteğe bağlı olarak, bir **çözümleyici** özelliği yerine, dizin oluşturma ve sorgulama Için **ındexanalyzer** ve **searchAnalyzer** alan parametrelerini kullanarak farklı çözümleyiciler ayarlayabilirsiniz. Veri hazırlama ve alma işlemleri için farklı çözümleyiciler kullanacaksınız ve bu etkinliklerden biri başka bir dönüşüm için gerekli değildir.
 
@@ -88,7 +86,7 @@ Bu bölümde, çözümleyiciler ile nasıl çalışılacağı hakkında önerile
 
 ### <a name="one-analyzer-for-read-write-unless-you-have-specific-requirements"></a>Belirli gereksinimleriniz yoksa okuma-yazma için bir çözümleyici
 
-Azure Bilişsel Arama, dizin oluşturma ve ek **ındexanalyzer** ve **searchAnalyzer** alan parametreleri aracılığıyla arama için farklı çözümleyiciler belirtmenize olanak tanır. Belirtilmemişse, **çözümleyici** özelliği ile ayarlanan çözümleyici, hem dizin oluşturma hem de arama için kullanılır. `analyzer` Belirtilmemişse, varsayılan standart Lucene Çözümleyicisi kullanılır.
+Azure Bilişsel Arama, dizin oluşturma ve ek **ındexanalyzer** ve **searchAnalyzer** alan parametreleri aracılığıyla arama için farklı çözümleyiciler belirtmenize olanak tanır. Belirtilmemişse, **çözümleyici** özelliği ile ayarlanan çözümleyici, hem dizin oluşturma hem de arama için kullanılır. `analyzer`Belirtilmemişse, varsayılan standart Lucene Çözümleyicisi kullanılır.
 
 Genel bir kural, aynı çözümleyici 'yi hem dizin oluşturma hem de sorgulama için, belirli gereksinimler aksini belirtmedikçe kullanır. Kapsamlı olarak test ettiğinizden emin olun. Metin işleme, arama ve dizin oluşturma sırasında farklılık gösterdiğinde, arama ve dizin oluşturma Çözümleyicisi yapılandırmalarının hizalanmamış olması durumunda sorgu terimleri ve dizine alınmış terimler arasında uyumsuzluk riskini çalıştırırsınız.
 
@@ -191,7 +189,7 @@ Bu örnekte izlenecek:
 
 Standart çözümleyici varsayılandır. Varsayılan değerini, model Çözümleyicisi gibi farklı bir önceden tanımlı çözümleyici ile değiştirmek istediğinizi varsayalım. Özel seçenekleri ayarlamadıysanız, yalnızca alan tanımında adıyla belirtmeniz gerekir.
 
-"Analyzer" öğesi, alan temelinde standart çözümleyici 'yi geçersiz kılar. Genel geçersiz kılma yok. Bu örnekte, `text1` model Çözümleyicisi 'ni kullanır ve `text2`bir çözümleyici belirtmeyen, Varsayılanı kullanır.
+"Analyzer" öğesi, alan temelinde standart çözümleyici 'yi geçersiz kılar. Genel geçersiz kılma yok. Bu örnekte, `text1` model Çözümleyicisi 'ni kullanır ve `text2` bir çözümleyici belirtmeyen, Varsayılanı kullanır.
 
 ~~~~
   {

@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: 94cb23b1795a93462a0356fb0af215601edb9d64
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: tracking-python
+ms.openlocfilehash: 46420aeb635bd4cd7b84698b7eb5d522177b443a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664112"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561772"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Azure Cosmos DB C# not defterlerinde yerleşik Not defteri komutlarını ve özelliklerini kullanma (Önizleme)
 
@@ -38,7 +39,7 @@ Aynı hücrede birden çok NuGet paketi yükleyebilirsiniz. Paketler, Azure Cosm
 
 ``CosmosClient``Herhangi BIR SDK işlemini çalıştırmak için örneğini oluşturun. 
 
-Örnek:
+Örneğin:
 
 ```csharp
 // Include usings
@@ -95,7 +96,7 @@ var endpoint = Cosmos.Endpoint;
 ## <a name="print-console-output-in-c-code"></a>Konsol çıktısını C# kodunda Yazdır
 C# kodunuzda, hücreyi çalıştırdığınızda görünecek konsol çıktısına yönelik [dize ilişkilendirme](/dotnet/csharp/language-reference/tokens/interpolated) ile Display. asmarku () sözdizimini kullanabilirsiniz. 
 
-Örnek: 
+Örneğin: 
 
 ```csharp
 // Print text in the output
@@ -133,7 +134,7 @@ Bir değişkeni görüntülemek için yerleşik sözlük görüntüleyicisini ku
 - ``{database_id}``Ve ' i ``{container_id}`` Azure Cosmos hesabınızdaki veritabanı ve kapsayıcının adıyla değiştirin. 
 - ``{url_location_of_file}``JSON dosyanızın konumuyla değiştirin. Dosya geçerli bir JSON nesneleri dizisi olmalıdır ve bu, genel Internet üzerinden erişilebilir olmalıdır.
 
-Örnek:
+Örneğin:
 
 ```csharp
 %%upload --database databaseName --container containerName --url 

@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
+ms.custom: tracking-python
 author: likebupt
 ms.author: keli19
 ms.date: 04/27/2020
-ms.openlocfilehash: 9b2114672db755efba1818505c8f399ac01aea71
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: d25a738a76c955ee11f091bb0f8861bd21cc9f1d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983610"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555874"
 ---
 # <a name="execute-python-script-module"></a>Python betik modülünü Yürüt
 
@@ -228,13 +229,13 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     
     **Python betiği** metin kutusu, açıklamalarda bazı yönergeler ve veri erişimi ve çıktısı için örnek kod ile önceden doldurulur. Bu kodu düzenlemeniz veya değiştirmeniz gerekir. Girintileme ve büyük küçük harf ile ilgili Python kurallarını izlediğinizden emin olun.
 
-    + Betik, bu modül için giriş noktası `azureml_main` olarak adlandırılan bir işlev içermelidir.
-    + Giriş noktası işlevinin iki giriş bağımsız değişkeni olmalıdır: `Param<dataframe1>` ve `Param<dataframe2>`bu bağımsız değişkenler betikte kullanılmıyor olsa bile.
-    + Üçüncü giriş bağlantı noktasına bağlı daraltılmış dosyalar, aynı zamanda Python `.\Script Bundle` `sys.path`'a eklenen dizininde sıkıştırıldı ve dizinde depolanmaktadır. 
+    + Betik, `azureml_main` Bu modül için giriş noktası olarak adlandırılan bir işlev içermelidir.
+    + Giriş noktası işlevinin iki giriş bağımsız değişkeni olmalıdır: `Param<dataframe1>` ve `Param<dataframe2>` Bu bağımsız değişkenler betikte kullanılmıyor olsa bile.
+    + Üçüncü giriş bağlantı noktasına bağlı daraltılmış dosyalar, `.\Script Bundle` aynı zamanda Python 'a eklenen dizininde sıkıştırıldı ve dizinde depolanmaktadır `sys.path` . 
 
-    Bu nedenle, ZIP dosyanız içeriyorsa `mymodule.py`kullanarak `import mymodule`dosyayı içeri aktarın.
+    Bu nedenle, ZIP dosyanız içeriyorsa `mymodule.py` kullanarak dosyayı içeri aktarın `import mymodule` .
 
-    + İki veri kümesi tasarımcıya döndürülebilir ve bu tür `pandas.DataFrame`bir dizi olmalıdır. Python kodunuzda başka çıktılar oluşturabilir ve bunları doğrudan Azure depolama 'ya yazabilirsiniz.
+    + İki veri kümesi tasarımcıya döndürülebilir ve bu tür bir dizi olmalıdır `pandas.DataFrame` . Python kodunuzda başka çıktılar oluşturabilir ve bunları doğrudan Azure depolama 'ya yazabilirsiniz.
 
 6. İşlem hattını gönderme veya modülü seçme ve yalnızca Python betiğini çalıştırmak için **Seçileni Çalıştır** ' a tıklayın.
 

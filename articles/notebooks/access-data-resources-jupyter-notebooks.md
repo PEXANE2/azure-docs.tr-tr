@@ -3,18 +3,19 @@ title: Jupi Not defterlerindeki verilere erişim-Azure Notebooks önizlemesi
 description: Dosyalara, REST API 'Lerine, veritabanlarına ve farklı Azure depolama kaynaklarına bir Jupyter Not defterinden erişmeyi öğrenin.
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 2c7133e9c258c77aa9c242dd7276076625153703
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646356"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554375"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Not defterinde bulut verilerine erişme
 
 Bir Jupyter not defterinde ilgi çekici iş yapmak için veri gerekir. Veriler, aslında Not defterlerinin yaşam bir kan.
 
-Bir dosyayı doğrudan indirmek için bir not defteri içinde `curl` olan komutları kullanarak bile [bir projeye veri dosyalarını içeri aktarabilirsiniz](work-with-project-data-files.md). Ancak REST API 'Leri, ilişkisel veritabanları ve Azure tabloları gibi bulut depolama alanı gibi dosya olmayan kaynaklardan kullanılabilen çok daha kapsamlı verilerle çalışmanız gerekir.
+Bir dosyayı doğrudan indirmek için bir not defteri içinde olan komutları kullanarak bile [bir projeye veri dosyalarını içeri aktarabilirsiniz](work-with-project-data-files.md) `curl` . Ancak REST API 'Leri, ilişkisel veritabanları ve Azure tabloları gibi bulut depolama alanı gibi dosya olmayan kaynaklardan kullanılabilen çok daha kapsamlı verilerle çalışmanız gerekir.
 
 Bu makale, bu farklı seçenekleri kısaca özetler. Veri erişiminin en iyi şekilde görüldüğü için, Azure Notebooks örneklerimizde çalıştırılabilir kodu bulabilirsiniz [-verilerinize erişebilirsiniz](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb).
 

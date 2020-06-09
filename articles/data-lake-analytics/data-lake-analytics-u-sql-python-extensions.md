@@ -9,12 +9,13 @@ ms.reviewer: jasonwhowell
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
-ms.openlocfilehash: 0a49cbdb4caf474d0628fea3679ce712d37886e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: d047fd62e897163bf4ab6bf7e085462b136bf8fe
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60813407"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553334"
 ---
 # <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>U-SQL betiklerini Azure Data Lake Analytics Python kodu ile genişletme
 
@@ -30,10 +31,10 @@ Başlamadan önce, Python uzantılarının Azure Data Lake Analytics hesabınız
 
 U-SQL için Python uzantıları, geliştiricilerin Python kodu üzerinde yüksek düzeyde paralel yürütme gerçekleştirmesini sağlar. Aşağıdaki örnek, temel adımları göstermektedir:
 
-* U- `REFERENCE ASSEMBLY` SQL betiği için Python uzantılarını etkinleştirmek üzere ifadesini kullanın
-* Anahtar üzerinde `REDUCE` giriş verilerini bölümlemek için işlemi kullanma
-* U-SQL için Python uzantıları, Reducer atanan her bir köşede Python kodu`Extension.Python.Reducer`çalıştıran yerleşik bir Reducer () içerir.
-* U-SQL betiği, giriş olarak bir Pandas DataFrame kabul eden adlı `usqlml_main` ve çıkış olarak bir Pandas dataframe döndüren bir işlevi olan gömülü Python kodunu içerir.
+* `REFERENCE ASSEMBLY`U-SQL betiği Için Python uzantılarını etkinleştirmek üzere ifadesini kullanın
+* `REDUCE`Anahtar üzerinde giriş verilerini bölümlemek için işlemi kullanma
+* U-SQL için Python uzantıları, `Extension.Python.Reducer` Reducer atanan her bir köşede Python kodu çalıştıran yerleşik bir Reducer () içerir.
+* U-SQL betiği, `usqlml_main` giriş olarak bir Pandas dataframe kabul eden adlı ve çıkış olarak bir Pandas dataframe döndüren bir işlevi olan gömülü Python kodunu içerir.
 
 --
 
@@ -73,7 +74,7 @@ U-SQL için Python uzantıları, geliştiricilerin Python kodu üzerinde yüksek
 ### <a name="datatypes"></a>Türleriyle
 
 * U-SQL ' den gelen dize ve sayısal sütunlar, Pandas ve U-SQL arasında olduğu gibi dönüştürülür
-* U-SQL null değerleri Pandas `NA` değerlerine ve öğesinden dönüştürülür
+* U-SQL null değerleri Pandas değerlerine ve öğesinden dönüştürülür `NA`
 
 ### <a name="schemas"></a>Şemalar
 

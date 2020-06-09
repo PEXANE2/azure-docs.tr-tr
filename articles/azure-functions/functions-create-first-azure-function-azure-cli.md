@@ -3,13 +3,14 @@ title: Azure 'da HTTP isteklerine yanıt veren bir işlev oluşturma
 description: Komut satırından bir işlev oluşturmayı ve ardından yerel projeyi Azure Işlevleri 'nde sunucusuz barındırma için yayımlamayı öğrenin.
 ms.date: 03/30/2020
 ms.topic: quickstart
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 8098b675e7d0ab4267137521e29b9ca87dacf92c
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 890dc2f7560faa6df302212aebb2fbe006894d3f
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84448929"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559887"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlangıç: Azure 'da HTTP isteklerine yanıt veren bir işlev oluşturma
 
@@ -100,7 +101,7 @@ mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArti
 Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değerleri ister.   
 İstendiğinde aşağıdaki değerleri sağlayın:
 
-| İstem | Değer | Açıklama |
+| İstem | Değer | Description |
 | ------ | ----- | ----------- |
 | **groupId** | `com.fabrikam` | Java için [paket adlandırma kurallarını](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) takip eden tüm projelerde projenizi benzersiz bir şekilde tanımlayan bir değer. |
 | **ArtifactId** | `fabrikam-functions` | Bir sürüm numarası olmadan jar adı olan bir değer. |

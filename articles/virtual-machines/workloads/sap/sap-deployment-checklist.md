@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7b8c1b0bcc74d73f1f869972488ba7c5dfe610d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba229025608d183b886a17346a725bc64dc6b60e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060059"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84556652"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
 
@@ -86,7 +86,7 @@ Bu aşamada, SAP iş yükünüzün geçişini Azure platformuna planlarsınız. 
     - [SAP HANA yükleme](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
 9.  Müşteri, Sistem Tümleştirici, Microsoft ve diğer ilgili taraflar arasında bir normal tasarım ve dağıtım incelemesi temposunda tanımlayın.
 
- 
+
 ## <a name="pilot-phase-strongly-recommended"></a>Pilot aşaması (önemle önerilir)
  
 Pilot uygulamayı, proje planlama ve hazırlık sırasında veya sırasında çalıştırabilirsiniz. Ayrıca, planlama ve hazırlık aşamasında yapılan yaklaşımları ve tasarımları test etmek için pilot aşamasını da kullanabilirsiniz. Ayrıca pilot aşamasını genişleterek gerçek bir kavram kanıtı oluşturabilirsiniz.
@@ -213,7 +213,7 @@ Bu aşamada, genellikle geliştirme sistemlerini, birim testi sistemlerini ve i�
 14. Görevlerin ayrıldığınızdan emin olmak için takımınızın Azure rol tabanlı erişimini, izinlerini ve süreçlerini iyileştirin ve odaklanmak. Aynı zamanda, tüm takımların Azure altyapısında görevlerini gerçekleştirmesini sağlayın.
 15. Personelinizin bu görevleri yürütmesini sağlamak için yüksek kullanılabilirlik ve olağanüstü durum kurtarma yordamlarını uygulayın, test edin ve belgeleyin. Eksiklikleri belirleyip dağıtımlarınızla Tümleştirdiğiniz yeni Azure işlevlerini uyarlayın.
 
- 
+
 ## <a name="production-preparation-phase"></a>Üretim hazırlığı aşaması 
 Bu aşamada, üretim dışı dağıtımlarınız sırasında karşılaştığınız ve öğrendiklerinizi toplayın ve gelecekteki üretim dağıtımlarına uygulayın. Ayrıca, geçerli barındırma konumunuz ile Azure arasında veri aktarımı işini hazırlamanız gerekir.
 

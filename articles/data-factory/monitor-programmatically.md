@@ -10,12 +10,13 @@ ms.date: 01/16/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: d416a4a2bace2aeced6961d4959b0478feb0e650
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 983beb70ef1919dc3230d5daa6d29fb7209f69aa
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81398826"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561228"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programlı olarak bir Azure Data Factory izleme
 
@@ -27,7 +28,7 @@ Bu makalede, farklı yazılım geliştirme setleri (SDK 'lar) kullanılarak bir 
 
 ## <a name="data-range"></a>Veri aralığı
 
-Data Factory yalnızca 45 gün boyunca işlem hattı çalıştırma verilerini depolar. Data Factory işlem hattı çalıştırmaları hakkında daha fazla bilgi için bkz. Örneğin, PowerShell komutu `Get-AzDataFactoryV2PipelineRun` ile isteğe bağlı `LastUpdatedAfter` ve `LastUpdatedBefore` parametreler için en fazla tarih yok. Ancak, bir önceki yıla ait veriler için sorgulama yaparsanız sorgu bir hata döndürmez, ancak yalnızca son 45 günden alınan işlem hattı çalıştırma verilerini döndürür.
+Data Factory yalnızca 45 gün boyunca işlem hattı çalıştırma verilerini depolar. Data Factory işlem hattı çalıştırmaları hakkında daha fazla bilgi için bkz. Örneğin, PowerShell komutu ile `Get-AzDataFactoryV2PipelineRun` isteğe bağlı ve parametreler için en fazla tarih yok `LastUpdatedAfter` `LastUpdatedBefore` . Ancak, bir önceki yıla ait veriler için sorgulama yaparsanız sorgu bir hata döndürmez, ancak yalnızca son 45 günden alınan işlem hattı çalıştırma verilerini döndürür.
 
 İşlem hattı çalıştırma verilerini 45 günden fazla süreyle kalıcı hale getirmek istiyorsanız, [Azure izleyici](monitor-using-azure-monitor.md)ile kendi tanılama günlük kaydını ayarlayın.
 

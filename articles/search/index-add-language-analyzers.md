@@ -2,37 +2,43 @@
 title: Dize alanlarına dil Çözümleyicileri ekleme
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama 'de Ingilizce olmayan sorgular ve dizinler için çok dilli sözlü metin analizi.
+author: HeidiSteen
 manager: nitinme
-author: Yahnoosh
-ms.author: jlembicz
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/10/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/05/2020
+ms.openlocfilehash: 3bb8de76fbf425abc1643633393e5f296b50b386
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283153"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555185"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinindeki dize alanlarına dil Çözümleyicileri ekleme
 
-*Dil çözümleyici* , hedef dilin dil kurallarını kullanarak sözlü analiz gerçekleştiren belirli bir [metin Çözümleyicisi](search-analyzers.md) türüdür. Aranabilir her alanın bir **çözümleyici** özelliği vardır. Dizininiz, Ingilizce ve Çince metin için ayrı alanlar gibi çevrilmiş dizeler içeriyorsa, bu çözümleyicilerin zengin dil özelliklerine erişmek için her bir alanda dil Çözümleyicileri belirtebilirsiniz.  
+*Dil çözümleyici* , hedef dilin dil kurallarını kullanarak sözlü analiz gerçekleştiren belirli bir [metin Çözümleyicisi](search-analyzers.md) türüdür. Aranabilir her alanın bir **çözümleyici** özelliği vardır. İçeriğiniz, Ingilizce ve Çince metin için ayrı alanlar gibi çevrilmiş dizelerinden oluşuyorsa, her bir alanda bu çözümleyiciler için zengin dil özelliklerine erişmek üzere dil Çözümleyicileri belirtebilirsiniz.
 
-Azure Bilişsel Arama, Lucene tarafından desteklenen 35 Çözümleyicileri ve Office ve Bing 'de kullanılan özel Microsoft doğal dil işleme teknolojisi tarafından desteklenen 50 Çözümleyicileri destekler.
+## <a name="when-to-use-a-language-analyzer"></a>Dil Çözümleyicisi ne zaman kullanılır?
 
-## <a name="comparing-analyzers"></a>Çözümleyiciler karşılaştırılıyor
+Sözcük veya tümce yapısının bir değeri, metin ayrıştırmaya değer eklediğinde bir dil Çözümleyicisi göz önünde bulundurmanız gerekir. Yaygın olarak kullanılan bir örnek, düzensiz fiil formlarının ("getir" ve "getirilen) ya da çoğul isimler (" fareler "ve" fare ") ilişkidir. Dil tanıma olmadan, bu dizeler tek başına fiziksel özelliklerle ayrıştırılır ve bu da bağlantıyı yakalayamaz. Büyük metin öbeklerinin bu içeriğe sahip olması daha olası olduğundan, açıklamalardan, incelemelerden veya özetlerden oluşan alanlar bir dil çözümleyici için iyi adaylardır.
+
+Ayrıca, içerik Batı dili olmayan dizeler içeriyorsa dil Çözümleyicileri de göz önünde bulundurmanız gerekir. [Varsayılan çözümleyici](search-analyzers.md#default-analyzer) dilden bağımsız olsa da, dizeleri ayırmak için boşluk ve özel karakterler (tireler ve eğik çizgiler) kullanma kavramı, Batı dillerinin Batı dışındaki dillerde daha uygulanabilir. 
+
+Örneğin, Çince, Japonca, Korece (ÇJK) ve diğer Asya dillerinde, bir boşluk bir sözcük sınırlayıcısı değildir. Aşağıdaki Japonca dizeyi göz önünde bulundurun. Boşluk içermediğinden, dilden bağımsız bir çözümleyici dizenin tamamını bir belirteç olarak analiz eder, aslında dize aslında bir tümceciktir.
+
+```
+これは私たちの銀河系の中ではもっとも重く明るいクラスの球状星団です。
+(This is the heaviest and brightest group of spherical stars in our galaxy.)
+```
+
+Yukarıdaki örnekte, başarılı bir sorgunun tam belirteci içermesi veya bir sonek joker karakteri kullanan kısmi bir belirteç içermesi gerekir, bu, doğal olmayan ve sınırlı arama deneyimine neden olur.
+
+Her bir kelime aramak için daha iyi bir deneyim vardır: 明るい (parlak), 私たちの (), 銀河系 (Galaxy). Bilişsel Arama bulunan Japonca çözümleyiciler kullanmanın, bu çözümleyicilerin metin öbeğini hedef dilde anlamlı sözcüklere bölmek daha iyi donatılmış olduğundan, bu davranışın kilidini açmak daha yüksektir.
+
+## <a name="comparing-lucene-and-microsoft-analyzers"></a>Lucene ve Microsoft Çözümleyicileri karşılaştırması
+
+Azure Bilişsel Arama, Lucene tarafından desteklenen 35 dil Çözümleyicileri ve Office ve Bing 'de kullanılan özel Microsoft doğal dil işleme teknolojisi tarafından desteklenen 50 dil Çözümleyicileri destekler.
 
 Bazı geliştiriciler, Lucene 'in daha tanıdık, basit ve açık kaynaklı çözümünü tercih edebilir. Lucene dil Çözümleyicileri daha hızlıdır, ancak Microsoft Çözümleyicileri, Microsoft çözümleyicilerinin (Almanca, Danca, Felemenkçe, Isveççe, Norveççe, Estonca, son, Macarca, Slovakça) ve varlık tanıma (URL 'Ler, e-postalar, tarihler, sayılar) gibi gelişmiş özellikleri vardır. Mümkünse, hangisinin daha iyi bir şekilde uygun olduğuna karar vermek için hem Microsoft hem de Lucene Çözümleyicileri için karşılaştırmalar çalıştırmalısınız. 
 

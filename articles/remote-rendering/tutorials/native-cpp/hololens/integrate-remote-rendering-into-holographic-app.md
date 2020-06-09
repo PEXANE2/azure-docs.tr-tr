@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: e68cbe664facbd63153171b7d9be2cbf4850b56f
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 75f041d8ec149c67c82744a87e0812b19a22bcb1
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434402"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508531"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>Öğretici: uzaktan Işlemeyi bir HoloLens holographic uygulamasına tümleştirme
 
@@ -26,7 +26,7 @@ Bu öğretici, `Holographic App` Yerel Işlemeyi Azure uzaktan işlemeyle birle�
 > [!TIP]
 > [ARR örnekleri deposu](https://github.com/Azure/azure-remote-rendering) , Bu öğreticinin, kullanıma yönelik bir Visual Studio projesi olarak sonucunu içerir. Ayrıca, Kullanıcı arabirimi sınıfı aracılığıyla doğru hata ve durum raporlama ile zenginleştirilmiş olur `StatusDisplay` . Öğreticide, tüm ARR eklemeleri tarafından kapsamlandırılır `#ifdef USE_REMOTE_RENDERING`  /  `#endif` , bu nedenle uzaktan işleme eklemelerinin belirlenmesi kolaydır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide şunlar gerekir:
 
@@ -490,16 +490,22 @@ HolographicFrame HolographicAppMain::Update()
 
 ### <a name="rendering"></a>İşleme
 
-Yapmanız gereken son şey, uzak içeriğin işlenmesini çağırıyor. Bu çağrıyı, işleme işlem hattının içindeki doğru konumda, işleme hedefi temizledikten sonra gerçekleştirmemiz gerekir. Aşağıdaki kod parçacığını `UseHolographicCameraResources` kilit içinde kilitle işlevine ekleyin `HolographicAppMain::Render` :
+Yapmanız gereken son şey, uzak içeriğin işlenmesini çağırıyor. Bu çağrıyı, işleme işlem hattının tam doğru konumunda, oluşturma hedefinin işaretini temizledikten sonra ve görünüm penceresinin ayarından sonra gerçekleştirmemiz gerekir. Aşağıdaki kod parçacığını `UseHolographicCameraResources` kilit içinde kilitle işlevine ekleyin `HolographicAppMain::Render` :
 
 ```cpp
         ...
         // Existing clear function:
         context->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+        
+        // ...
+
+        // Exiting check to test for valid camera:
+        bool cameraActive = pCameraResources->AttachViewProjectionBuffer(m_deviceResources);
+
 
         // Inject remote rendering: as soon as we are connected, start blitting the remote frame.
         // We do the blitting after the Clear, and before cube rendering.
-        if (m_isConnected)
+        if (m_isConnected && cameraActive)
         {
             m_graphicsBinding->BlitRemoteFrame();
         }

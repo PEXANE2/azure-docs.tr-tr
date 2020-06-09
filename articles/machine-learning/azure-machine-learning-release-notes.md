@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 6bf26a739169c561e95c7376a75166daf9aa9fb0
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 81832e3ccfb3529f94b41b903a8b73fbbe7bbd40
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309994"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553059"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -22,6 +22,69 @@ Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK 
 
 Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen sorunlar listesine](resource-known-issues.md) bakın.
 
+## <a name="2020-06-08"></a>2020-06-08
+
+### <a name="azure-machine-learning-sdk-for-python-v170"></a>Python v 1.7.0 için SDK Azure Machine Learning
+
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + **Azure-CLI-ml**
+    + CLI komutlarını ve paket bağımlılıklarını temizleyerek model profili oluşturma işleminin mir contrib 'den kaldırılması tamamlandı, model profil oluşturma çekirdek içinde kullanılabilir.
+    + En düşük Azure CLI sürümünü 2.3.0 sürümüne yükseltir
+  + **azureml-automl-core**
+    + Özel Transformatör parametreleri nedeniyle fit_transform () adımında daha iyi özel durum iletisi.
+    + Otomatikleştirilmiş ML 'de BERT gibi derin öğrenme transformatörü modelleri için birden çok dil desteği ekleyin.
+    + Kullanım dışı lag_length parametresini belgelerden kaldırın.
+    + Tahmin parametreleri belgeleri geliştirildi. Lag_length parametresi kullanım dışı bırakıldı.
+  + **azureml-automl-runtime**
+    + Tahmin/test sırasında kategorik sütunlardan biri boş olduğunda oluşan hata düzeltildi.
+    + Geri dönüş özellikleri etkinleştirildiğinde ve veriler kısa grasınlar içerdiğinde oluşan çalıştırma başarısızlıklarını düzeltir.
+    + Lags veya sıralı pencereler ' Auto ' olarak ayarlandığında yinelenen zaman dizini hata iletisiyle ilgili sorun düzeltildi.
+    + Geriye doğru özelliklerini içeren veri kümelerinde Prophet ve ARIMA modelleriyle ilgili sorun düzeltildi.
+    + Tahmin görevlerinde 1677-09-21 veya daha sonra tarih ve saat içinde 2262-04-11 öncesi tarih desteği eklendi. Geliştirilmiş hata iletileri.
+    + Tahmin parametreleri belgeleri geliştirildi. Lag_length parametresi kullanım dışı bırakıldı.
+    + Özel Transformatör parametreleri nedeniyle fit_transform () adımında daha iyi özel durum iletisi.
+    + Otomatikleştirilmiş ML 'de BERT gibi derin öğrenme transformatörü modelleri için birden çok dil desteği ekleyin.
+    + Bazı OSErrors ile sonuçlanan önbellek işlemleri Kullanıcı hatası oluşturacak.
+    + Eğitim ve doğrulama verilerinde aynı sayıda ve sütun kümesi olduğundan emin olmak için denetimler eklendi
+    + Veriler tırnak işaretleri içerdiğinde otomatik olarak oluşturulan otomatik ml Puanlama betiği ile ilgili sorun düzeltildi
+    + Prophet modeli içeren, oto ml Prophet ve Ensembled modelleriyle ilgili açıklamaları etkinleştirme.
+    + Son bir müşteri sorunu, sınıf Dengeleme mantığı düzgün bir şekilde etkinleştirilmediğinde bile, mesajların, sınıf dengelemesi ve bir arada olması halinde mesajlar hakkında bir canlı site hatası ortaya çıkardık. Bu PR ile bu Günlükler/iletiler kaldırılıyor.
+  + **azureml-CLI-ortak**
+    + CLI komutlarını ve paket bağımlılıklarını temizleyerek model profili oluşturma işleminin mir contrib 'den kaldırılması tamamlandı, model profil oluşturma çekirdek içinde kullanılabilir.
+  + **azureml-contrib-reinforcementlearning**
+    + Yük testi aracı
+  + **azureml-core**
+    + Script_run_config. Kopyala üzerinde belge değişiklikleri
+    + Çalıştırma gönderme-işlem hattı CLı çıkışını yazdırmayla ilgili bir hatayı düzeltir
+    + Azureml-Core/azureml. Data 'da belge geliştirmeleri
+    + Igetconf komutunu kullanarak depolama hesabı alma sorunu giderilir
+    + Geliştirilmiş register_azure_blob_container ve register_azure_file_share belgeleri
+  + **azureml-datadrift**
+    + Veri kümesi DRFT izleyicileri devre dışı bırakmak ve etkinleştirmek için geliştirilmiş uygulama
+  + **azureml-interpret**
+    + Açıklama istemcisinde, yapıtlardan karşıya yükleme sırasında JSON serileştirmesinden önce NaNs veya INF dosyalarını kaldırın
+    + Birçok özellik ve sınıf ile genel açıklamalar için bellek hatalarını artırmak üzere yorumlama-topluluk ' nin en son sürümüne güncelleştirin
+    + .NET Kullanıcı arabirimindeki ek özellikleri etkinleştirmek için açıklama karşıya yükleme true_ys isteğe bağlı parametre ekleyin
+    + Download_model_explanations () ve list_model_explanations () performansını iyileştirme
+    + Hata ayıklamaya yardımcı olmak için dizüstü bilgisayarlarda küçük tnak 'lar
+  + **azureml-opendatasets**
+    + azureml-OPENDATASET 'ler için azureml-dataprep sürüm 1.4.0 veya üzeri gerekir. Daha düşük sürüm algılanırsa uyarı eklendi
+  + **azureml-pipeline-core**
+    + Bu değişiklik, kullanıcının modül çağrılırken moduleVersion öğesine isteğe bağlı bir runconfig sağlamasına izin verir. Publish_python_script.
+    + Node hesabını etkinleştir, azureml. Pipeline içindeki ParallelRunStep içindeki bir işlem hattı parametresi olabilir. adımlarda
+  + **azureml-pipeline-steps**
+    + Bu değişiklik, kullanıcının modül çağrılırken moduleVersion öğesine isteğe bağlı bir runconfig sağlamasına izin verir. Publish_python_script.
+  + **azureml-train-automl-client**
+    + Otomatikleştirilmiş ML 'de BERT gibi derin öğrenme transformatörü modelleri için birden çok dil desteği ekleyin.
+    + Kullanım dışı lag_length parametresini belgelerden kaldırın.
+    + Tahmin parametreleri belgeleri geliştirildi. Lag_length parametresi kullanım dışı bırakıldı.
+  + **azureml-tren-oto ml-çalışma zamanı**
+    + Prophet modeli içeren, oto ml Prophet ve Ensembled modelleriyle ilgili açıklamaları etkinleştirme.
+    + Azureml-tren-oto ml-* paketlerine yönelik belgeler.
+  + **azureml-train-core**
+    + PyTorch Estimator 'da TensorFlow sürüm 2,1 'i destekleme
+    + Azureml-tren-çekirdek paketindeki geliştirmeler.
+  
 ## <a name="2020-05-26"></a>2020-05-26
 
 ### <a name="azure-machine-learning-sdk-for-python-v160"></a>Python v 1.6.0 için SDK Azure Machine Learning
@@ -122,7 +185,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Uzaktan işlem sırasında eğitilen phrophet ve xgboost modelleriyle kısıtlamalar kaldırılıyor.
     + `azureml-train-automl-runtime`ve `azureml-automl-runtime` için,, ve için bağımlılıklar güncelleştirildi `pytorch` `scipy` `cudatoolkit` . Artık `pytorch==1.4.0` , ve ' yi destekliyoruz `scipy>=1.0.0,<=1.3.1` `cudatoolkit==10.1.243` .
     + Kullanıcılara tahmin oluşturmak için sırasında geride özellikleri ekleme izni veren işlevsellik eklenmiştir.
-  + **azureml-tren-oto ml-çalışma zamanı**
+  + **azureml-train-automl-runtime**
     + Oto ml 'de geliştirilmiş günlük
     + Veri hazırlığı özel durumları için ayrıntılı hata işleme eklendi
     + Uzaktan işlem sırasında eğitilen phrophet ve xgboost modelleriyle kısıtlamalar kaldırılıyor.
@@ -205,7 +268,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Belge, Cmlconfig için düzeltir.
     + Oto Mlconfig içinde cv_split_indices girişte veri türü denetimleri zorlanıyor.
     + Show_output başarısız olan oto ml çalıştırmasına sorun düzeltildi
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + Model indirme zaman aşımını başarıyla iade durumundan çıkarılan yineleme sırasında bir hatayı düzeltme.
   + **azureml-train-core**
     + Azureml. DNN. nccl sınıfında yazım hatası 'ı düzeltir.
@@ -2021,7 +2084,7 @@ Azure Machine Learning Işlem, Python 'da Azure portal veya CLı kullanılarak o
 + **Yeni değişiklikler**
   * `SummaryFunction.N`, olarak yeniden adlandırıldı `SummaryFunction.Count` .
 
-+ **Hata düzeltmeleri**
++ **Hata Düzeltmeleri**
   * Uzak çalışmalardaki veri depolarından okuma ve yazma yaparken en son AML çalıştırma belirtecini kullanın. Daha önce, AML çalıştırma belirteci Python 'da güncelleştirilirse, Data Prep çalışma zamanı güncelleştirilmiş AML çalıştırma belirteciyle güncellenmez.
   * Ek daha net hata iletileri
   * Spark serileştirme kullandığında to_spark_dataframe () artık kilitlenmeyecektir `Kryo`
@@ -2063,7 +2126,7 @@ Azure Machine Learning Işlem, Python 'da Azure portal veya CLı kullanılarak o
 ### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Azure Machine Learning Data Prep SDK v 0.5.1
 
 [Başvuru belgelerini](https://aka.ms/data-prep-sdk)okuyarak veri hazırlığı SDK 'sı hakkında daha fazla bilgi edinin.
-+ **Yeni özellikler**
++ **Yeni Özellikler**
    * DataPrep paketlerini yürütmek ve bir veri kümesi veya veri akışı için veri profilini görüntülemek üzere yeni bir DataPrep CLı oluşturuldu
    * Kullanılabilirliği artırmak için SetColumnType API yeniden tasarlandı
    * Auto_read_file smart_read_file yeniden adlandırıldı
@@ -2074,7 +2137,7 @@ Azure Machine Learning Işlem, Python 'da Azure portal veya CLı kullanılarak o
    * ' İ çağırarak bir veri akışından veya bir veri profilinden tüm sütun veri türlerini alabilir.`.dtypes`
    * ' İ çağırarak bir veri akışından veya bir veri profilinden satır sayısı alabilir.`.row_count`
 
-+ **Hata düzeltmeleri**
++ **Hata Düzeltmeleri**
    * Uzun-Double dönüşümü düzeltildi
    * Herhangi bir sütundan sonra düzeltilen onaylama
    * Belirsizlik Gruplandırmayla ilgili bir sorun düzeltildi ve bazı durumlarda grupları algılayamayacağı

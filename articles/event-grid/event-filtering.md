@@ -61,7 +61,7 @@ Veri alanlarındaki değerlere göre filtrelemek ve karşılaştırma işlecini 
 * anahtar-filtreleme için kullanmakta olduğunuz olay verileri alanı. Bir sayı, Boolean veya dize olabilir.
 * Values-anahtarla karşılaştırılacak değer veya değerler.
 
-Birden çok değer içeren tek bir filtre belirtirseniz, **ya** da bir işlem gerçekleştirilir, bu nedenle anahtar alanının değeri bu değerlerden biri olmalıdır. Örnek aşağıda verilmiştir:
+Birden çok değer içeren tek bir filtre belirtirseniz, **ya** da bir işlem gerçekleştirilir, bu nedenle anahtar alanının değeri bu değerlerden biri olmalıdır. Aşağıda bir örnek verilmiştir:
 
 ```json
 "advancedFilters": [
@@ -76,7 +76,7 @@ Birden çok değer içeren tek bir filtre belirtirseniz, **ya** da bir işlem ge
 ]
 ```
 
-Birden çok farklı filtre belirtirseniz, **ve** bir işlem gerçekleştirilir, bu nedenle her filtre koşulu karşılanmalıdır. Örnek aşağıda verilmiştir: 
+Birden çok farklı filtre belirtirseniz, **ve** bir işlem gerçekleştirilir, bu nedenle her filtre koşulu karşılanmalıdır. Aşağıda bir örnek verilmiştir: 
 
 ```json
 "advancedFilters": [

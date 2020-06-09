@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: 10f4a0012076deef0757743f206f937ab43dc8b8
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c5208edc6038db0f9d45bb8fe10f3a96b5051b4c
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345300"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560564"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde bellek içi teknolojileri kullanarak performansı iyileştirin
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -50,7 +50,7 @@ Daha verimli sorgu ve işlem işleme nedeniyle, bellek içi teknolojiler de mali
 
 Aşağıda, bellek Içi OLTP 'un performansı önemli ölçüde iyileştirmesine yardımcı olacak iki örnek verilmiştir:
 
-- Bellek Içi OLTP kullanarak, [çekirdek Iş çözümleri, %70 oranında DTU 'ları geliştirirken iş yükünü ikiye katırdi](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
+- Bellek Içi OLTP kullanarak, [çekirdek Iş çözümleri, %70 oranında DTU 'ları geliştirirken iş yükünü ikiye katırdi](https://resources.quorumsoftware.com/case-studies/quorum-doubles-key-database-s-workload-while-lowering-dtu).
 - Aşağıdaki videoda örnek bir iş yüküyle kaynak tüketimine ilişkin önemli bir geliştirme gösterilmektedir: [bellek ıçı OLTP videosu](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB). Daha fazla bilgi için bkz. blog gönderisi: [bellek ıçı OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
 > [!NOTE]  
@@ -174,7 +174,7 @@ Kümelenmiş columnstore dizinleri kullandığınızda, temel tablo depolaması 
 
 Örneğin, en fazla 1 terabaytlık (TB) boyutunda bir veritabanınız varsa ve columnstore dizinlerini kullanarak sıkıştırmaya 10 kez ulaşdıysanız, veritabanında toplam 10 TB Kullanıcı verisi kullanabilirsiniz.
 
-Kümelenmemiş columnstore dizinleri kullandığınızda, temel tablo hala geleneksel rowstore biçiminde depolanır. Bu nedenle, depolama tasarrufu, kümelenmiş columnstore dizinleri ile büyük değildir. Ancak, bir dizi geleneksel kümelenmemiş dizini tek bir columnstore diziniyle değiştiriyorsanız, tablo için depolama ayak izine ilişkin genel tasarrufları görmeye devam edebilirsiniz.
+Kümelenmemiş columnstore dizinleri kullandığınızda, temel tablo hala geleneksel rowstore biçiminde depolanır. Bu nedenle, depolama tasarrufu, kümelenmiş columnstore dizinleri gibi önemli değildir. Ancak, bir dizi geleneksel kümelenmemiş dizini tek bir columnstore diziniyle değiştiriyorsanız, tablo için depolama ayak izine ilişkin genel tasarrufları görmeye devam edebilirsiniz.
 
 ### <a name="changing-service-tiers-of-databases-containing-columnstore-indexes"></a>Columnstore dizinleri içeren veritabanlarının hizmet katmanlarını değiştirme
 
@@ -183,7 +183,7 @@ Hedef katmanınız S3 altındaysa, *tek veritabanını temel veya Standart sür�
 **Kümelenmiş** bir columnstore dizininiz varsa, tüm tablo düşürme sonrasında kullanılamaz hale gelir. Bu nedenle, veritabanınızı desteklenmeyen bir katmana veya düzeye indirgeyebilmeniz için tüm *kümelenmiş* columnstore dizinlerini düşürmenizi öneririz.
 
 > [!Note]
-> SQL yönetilen örneği, tüm katmanlarda ColumnStore dizinlerini destekler.
+> SQL yönetilen örneği, tüm katmanlarda columnstore dizinlerini destekler.
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
 

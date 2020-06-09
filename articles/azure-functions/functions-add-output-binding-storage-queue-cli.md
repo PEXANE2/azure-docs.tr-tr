@@ -3,13 +3,14 @@ title: Komut satırı araçlarını kullanarak Azure Işlevlerini Azure depolama
 description: Komut satırı projenize bir çıkış bağlaması ekleyerek Azure Işlevlerini bir Azure depolama kuyruğuna bağlamayı öğrenin.
 ms.date: 02/07/2020
 ms.topic: quickstart
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: f9d9573523083b6355f423b7b3db94b795d8657f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8a5f9cd42d13b7cfb4bc6e95809112a3b7045fe4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673383"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560096"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Komut satırı araçlarını kullanarak Azure Işlevlerini Azure depolama 'ya bağlama
 
@@ -36,7 +37,7 @@ Bağlamaların ayrıntıları hakkında daha fazla bilgi için bkz. [Azure işle
 
 ## <a name="add-code-to-use-the-output-binding"></a>Çıkış bağlamayı kullanmak için kod ekleme
 
-Sıra bağlaması tanımlı ile, artık işlevinizi, `msg` çıkış parametresini alacak ve kuyruğa ileti yazacak şekilde güncelleştirebilirsiniz.
+Sıra bağlaması tanımlı ile, artık işlevinizi, `msg` Çıkış parametresini alacak ve kuyruğa ileti yazacak şekilde güncelleştirebilirsiniz.
 
 ::: zone pivot="programming-language-python"     
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
@@ -79,7 +80,7 @@ Kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için kod *yazmanı
 İşlevin Azure depolama kuyruğuna bir ileti yazdığını doğruladığınıza göre, Azure üzerinde çalışan uç noktayı güncelleştirmek için projenizi yeniden dağıtabilirsiniz.
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp" 
-*Localfunctionsproj* klasöründe, uygulamayı yeniden dağıtmak için [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) komutunu kullanın ve bunu uygulamanızın adıyla değiştirin`<APP_NAME>` .
+*Localfunctionsproj* klasöründe, [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) uygulamayı yeniden dağıtmak için komutunu kullanın ve bunu `<APP_NAME>` uygulamanızın adıyla değiştirin.
 
 ```
 func azure functionapp publish <APP_NAME>
@@ -100,13 +101,13 @@ mvn azure-functions:deploy
 
     # <a name="browser"></a>[Tarayıcı](#tab/browser)
     
-    Yayımla komutunun çıktısında gösterilen tüm **ÇAĞıRMA URL** 'sini, sorgu parametresini `&name=Functions`ekleyerek bir tarayıcı adres çubuğuna kopyalayın. , İşlevi yerel olarak çalıştırdığınızda tarayıcı benzer bir çıktı görüntülemelidir.
+    Yayımla komutunun çıktısında gösterilen tüm **ÇAĞıRMA URL** 'sini, sorgu parametresini ekleyerek bir tarayıcı adres çubuğuna kopyalayın `&name=Functions` . , İşlevi yerel olarak çalıştırdığınızda tarayıcı benzer bir çıktı görüntülemelidir.
 
     ![İşlevin çıktısı Azure üzerinde bir tarayıcıda çalışır](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-browser.png)
 
     # <a name="curl"></a>[kıvr](#tab/curl)
     
-    Parametresini [`curl`](https://curl.haxx.se/) `&name=Functions`ekleyerek **Invoke URL 'si**ile çalıştırın. Komutun çıktısı, "Hello Functions" metni olmalıdır.
+    [`curl`](https://curl.haxx.se/)Parametresini ekleyerek **Invoke URL 'si**ile çalıştırın `&name=Functions` . Komutun çıktısı, "Hello Functions" metni olmalıdır.
     
     ![İşlevin çıktısı, Azure 'da KıVRıMLı kullanılarak çalışır](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-curl.png)
 

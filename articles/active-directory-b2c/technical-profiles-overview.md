@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 125d89301e9d2cc3fc863bffb9b9e6c41e0c129e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 504f8288ad6bf7565a0cae91c11a14ea65b6e160
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229944"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84556461"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde teknik profiller hakkında
 
@@ -49,7 +49,7 @@ Teknik bir profil, bu tür senaryolara izin vermez:
 Tüm teknik profil türleri aynı kavramı paylaşır. Giriş talepleri gönderir, talep dönüşümünü çalıştırır ve bir kimlik sağlayıcısı, REST API ya da Azure AD Dizin Hizmetleri gibi yapılandırılmış tarafla iletişim kurun. İşlem tamamlandıktan sonra teknik profil, çıkış taleplerini döndürür ve çıkış talebi dönüşümünü çalıştırabilir. Aşağıdaki diyagramda, teknik profilde başvurulan dönüşümlerin ve eşlemelerin nasıl işlendiği gösterilmektedir. Teknik profilin ile etkileşimde bulunduğu taraf ne olursa olsun, herhangi bir talep dönüştürme yürütüldükten sonra teknik profilin çıkış talepleri talep paketinde hemen depolanır.
 
 ![Teknik profil akışını gösteren diyagram](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
- 
+
 1. **Çoklu oturum açma (SSO) oturum yönetimi** - [SSO oturumu yönetimi](custom-policy-reference-sso.md)kullanarak teknik profilin oturum durumunu geri yükler.
 1. Giriş talepleri **dönüştürme** -her giriş [talebi dönüşümünün](claimstransformations.md) giriş talepleri, talep çantasından alınır.  Bir giriş talep dönüşümünün çıkış talepleri, sonraki bir giriş talebi dönüşümünün giriş talepleri olabilir.
 1. **Giriş talepleri** -talepler, talep çantasından alınır ve teknik profil için kullanılır. Örneğin, [kendinden onaylanan bir teknik profil](self-asserted-technical-profile.md) , kullanıcının sağladığı çıkış taleplerini önceden doldurmak için giriş taleplerini kullanır. REST API teknik bir profil, giriş parametrelerini REST API uç noktasına göndermek için giriş taleplerini kullanır. Azure Active Directory, hesap okumak, güncelleştirmek veya silmek için benzersiz bir tanımlayıcı olarak giriş talebi kullanır.
@@ -66,9 +66,9 @@ Tüm teknik profil türleri aynı kavramı paylaşır. Giriş talepleri gönderi
 
 ## <a name="technical-profile-inclusion"></a>Teknik profil ekleme
 
-Teknik bir profil, ayarları değiştirmek veya yeni işlevsellik eklemek için başka bir teknik profil içerebilir.  `IncludeTechnicalProfile` Öğesi, bir teknik profilin türetildiği temel teknik profile bir başvurudur. Düzey sayısı için bir sınır yoktur.
+Teknik bir profil, ayarları değiştirmek veya yeni işlevsellik eklemek için başka bir teknik profil içerebilir.  `IncludeTechnicalProfile`Öğesi, bir teknik profilin türetildiği temel teknik profile bir başvurudur. Düzey sayısı için bir sınır yoktur.
 
-Örneğin, **AAD-userreadusingalternativesecurityıd-NoError** teknik profili **AAD-userreadusingalternativesecurityıd**' yi içerir. Bu teknik profil, `RaiseErrorIfClaimsPrincipalDoesNotExist` meta veri öğesini olarak `true`ayarlar ve bir sosyal hesap dizinde yoksa bir hata oluşturur. **AAD-Userreadusingalternativesecurityıd-NoError** bu davranışı geçersiz kılar ve bu hata iletisini devre dışı bırakır.
+Örneğin, **AAD-userreadusingalternativesecurityıd-NoError** teknik profili **AAD-userreadusingalternativesecurityıd**' yi içerir. Bu teknik profil, `RaiseErrorIfClaimsPrincipalDoesNotExist` meta veri öğesini olarak ayarlar `true` ve bir sosyal hesap dizinde yoksa bir hata oluşturur. **AAD-Userreadusingalternativesecurityıd-NoError** bu davranışı geçersiz kılar ve bu hata iletisini devre dışı bırakır.
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId-NoError">
@@ -79,7 +79,7 @@ Teknik bir profil, ayarları değiştirmek veya yeni işlevsellik eklemek için 
 </TechnicalProfile>
 ```
 
-**AAD-Userreadusingalternativesecurityıd** `AAD-Common` teknik profili içerir.
+**AAD-Userreadusingalternativesecurityıd** `AAD-Common` Teknik profili içerir.
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">

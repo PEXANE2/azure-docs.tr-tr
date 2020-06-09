@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 06/08/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c4d14c21174f9631a1ad72489d4c0bafe013572c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 143820eb3c58d2aaac4d4176c4456fca676a0e45
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681342"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554096"
 ---
 # <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -81,7 +81,7 @@ Azure depolama, verilerinizi ikincil bir bölgeye kopyalamak için iki seçenek 
 - **Coğrafi olarak yedekli depolama (GRS)** , LRS kullanarak, birincil bölgedeki tek bir fiziksel konum içinde verilerinizi eşzamanlı olarak üç kez kopyalar. Daha sonra verilerinizi zaman uyumsuz olarak ikincil bölgedeki tek bir fiziksel konuma kopyalar.
 - **Coğrafi bölge yedekli depolama (GZRS)** , ZRS kullanarak birincil bölgedeki üç Azure kullanılabilirlik bölgesi arasında verilerinizi eşzamanlı olarak kopyalar. Daha sonra verilerinizi zaman uyumsuz olarak ikincil bölgedeki tek bir fiziksel konuma kopyalar.
 
-GRS ve GZRS arasındaki birincil fark, verilerin birincil bölgede nasıl çoğaltıladır. İkincil konum içinde, veriler her zaman eş zamanlı olarak LRS kullanılarak çoğaltılır.
+GRS ve GZRS arasındaki birincil fark, verilerin birincil bölgede nasıl çoğaltıladır. İkincil konum içinde, veriler her zaman eş zamanlı olarak LRS kullanılarak çoğaltılır. İkincil bölgedeki LRS, verilerinizi donanım arızalarına karşı korur.
 
 GRS veya GZRS ile ikincil konumdaki veriler, ikincil bölgede bir yük devretme işlemi olmadıkça okuma veya yazma erişimi için kullanılamaz. İkincil konuma okuma erişimi için, depolama hesabınızı Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) veya Okuma Erişimli Coğrafi bölge-yedekli depolama (RA-GZRS) kullanacak şekilde yapılandırın. Daha fazla bilgi için bkz. [İkincil bölgedeki verilere okuma erişimi](#read-access-to-data-in-the-secondary-region).
 
@@ -159,7 +159,7 @@ Aşağıdaki tabloda, depolama hesabınız için hangi artıklık türünün ge�
 | Kesinti senaryosu                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Veri Merkezi içindeki bir düğüm kullanılamaz duruma gelir                                                                 | Yes                             | Yes                              | Yes                                  | Yes                                 |
-| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir                                           | Hayır                              | Yes                              | Evet<sup>1</sup>                                  | Yes                                  |
+| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir                                           | Hayır                              | Evet                              | Evet<sup>1</sup>                                  | Yes                                  |
 | Birincil bölgede bölge genelinde bir kesinti meydana gelir                                                                                     | Hayır                              | Hayır                               | Evet<sup>1</sup>                                  | Evet<sup>1</sup>                                  |
 | Birincil bölge kullanılamaz hale gelirse ikincil bölgeye okuma erişimi kullanılabilir | Hayır                              | Hayır                               | Evet (RA-GRS ile)                                   | Evet (RA-GZRS ile)                                 |
 

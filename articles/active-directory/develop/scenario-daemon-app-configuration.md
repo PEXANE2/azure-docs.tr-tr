@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: ead39343cca9943ba55d66509bd9917402efb8cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 921015d6aa7acd840a4a231a899217daafe3525b
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868982"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558556"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Daemon uygulaması-kod yapılandırması
 
@@ -26,7 +26,7 @@ Web API 'Lerini çağıran Daemon uygulamanız için kodu yapılandırmayı öğ
 
 Bu Microsoft kitaplıkları, Daemon uygulamalarını destekler:
 
-  MSAL kitaplığı | Açıklama
+  MSAL kitaplığı | Description
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework ve .NET Core platformları, Daemon uygulamalarının oluşturulması için desteklenir. (UWP, Xamarin. iOS ve Xamarin. Android desteklenmez çünkü bu platformlar ortak istemci uygulamaları oluşturmak için kullanılır.)
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python 'da Daemon uygulamaları için destek.
@@ -38,7 +38,7 @@ Daemon uygulamaları, temsilci izinleri yerine uygulama izinleri kullanır. Bu n
 
 Bu nedenle, uygulama yapılandırmasında belirtilen yetki kiralanmalıdır (kiracı KIMLIĞI veya kuruluşunuzla ilişkili bir etki alanı adı belirterek).
 
-ISV iseniz ve çok kiracılı bir araç sağlamak istiyorsanız, kullanabilirsiniz `organizations`. Ancak, müşterilere yönetici onayı verme hakkında da dikkat etmeniz gerektiğini unutmayın. Ayrıntılar için bkz. [Tüm kiracı için Izin isteme](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). Ayrıca, MSAL 'de Şu anda bir sınırlama vardır: `organizations` yalnızca istemci kimlik bilgileri bir uygulama gizli anahtarı (sertifika değil) olduğunda izin verilir.
+ISV iseniz ve çok kiracılı bir araç sağlamak istiyorsanız, kullanabilirsiniz `organizations` . Ancak, müşterilere yönetici onayı verme hakkında da dikkat etmeniz gerektiğini unutmayın. Ayrıntılar için bkz. [Tüm kiracı için Izin isteme](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). Ayrıca, MSAL 'de Şu anda bir sınırlama vardır: `organizations` yalnızca istemci kimlik bilgileri bir uygulama gizli anahtarı (sertifika değil) olduğunda izin verilir.
 
 ## <a name="configure-and-instantiate-the-application"></a>Uygulamayı yapılandırma ve oluşturma
 
@@ -69,7 +69,7 @@ Yapılandırma dosyası şunları tanımlar:
 }
 ```
 
-Ya da `ClientSecret` a `CertificateName`sağlarsınız. Bu ayarlar dışlamalı.
+Ya da a sağlarsınız `ClientSecret` `CertificateName` . Bu ayarlar dışlamalı.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -122,7 +122,7 @@ Uygulama kodunuzda MSAL paketine başvurun.
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 Uygulamanıza [Microsoft. ıdentityclient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet paketini ekleyin.
-MSAL.NET ' de, gizli istemci uygulaması `IConfidentialClientApplication` arabirim tarafından temsil edilir.
+MSAL.NET ' de, gizli istemci uygulaması arabirim tarafından temsil edilir `IConfidentialClientApplication` .
 Kaynak kodundaki MSAL.NET ad alanını kullanın.
 
 ```csharp
@@ -239,7 +239,7 @@ ConfidentialClientApplication cca =
                 .build();
 ```
 
-or
+veya
 
 ```Java
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */
@@ -267,7 +267,7 @@ MSAL.NET, gizli istemci uygulamasına imzalı onaylar sağlamak için iki yönte
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-Kullandığınızda `WithClientAssertion`, IMZALı bir JWT sağlamanız gerekir. Bu gelişmiş senaryo, [istemci onaylamaları](msal-net-client-assertions.md)hakkında ayrıntılıdır.
+Kullandığınızda `WithClientAssertion` , imzalı BIR JWT sağlamanız gerekir. Bu gelişmiş senaryo, [istemci onaylamaları](msal-net-client-assertions.md)hakkında ayrıntılıdır.
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -276,7 +276,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-Kullandığınızda `WithClientClaims`, msal.net, Azure AD tarafından beklenen talepleri ve ayrıca göndermek istediğiniz ek istemci taleplerini içeren imzalı bir onaylama işlemi oluşturacaktır.
+Kullandığınızda `WithClientClaims` , msal.net, Azure AD tarafından beklenen talepleri ve ayrıca göndermek istediğiniz ek istemci taleplerini içeren imzalı bir onaylama işlemi oluşturacaktır.
 Bu kod, bunun nasıl yapılacağını gösterir:
 
 ```csharp
@@ -293,7 +293,7 @@ Daha ayrıntılı bilgi için bkz. [istemci onayları](msal-net-client-assertion
 
 # <a name="python"></a>[Python](#tab/python)
 
-MSAL Python 'da, bu `ConfidentialClientApplication`özel anahtar tarafından imzalanacak talepleri kullanarak istemci talepleri sağlayabilirsiniz.
+MSAL Python 'da, bu özel anahtar tarafından imzalanacak talepleri kullanarak istemci talepleri sağlayabilirsiniz `ConfidentialClientApplication` .
 
 ```Python
 config = json.load(open(sys.argv[1]))

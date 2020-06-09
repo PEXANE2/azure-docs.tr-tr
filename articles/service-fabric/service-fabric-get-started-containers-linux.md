@@ -3,12 +3,13 @@ title: Linux 'ta Azure Service Fabric kapsayıcı uygulaması oluşturma
 description: Azure Service Fabric üzerinde ilk Linux kapsayıcı uygulamanızı oluşturun. Uygulamanızla bir Docker görüntüsü oluşturun, görüntüyü bir kapsayıcı kayıt defterine iletin, bir Service Fabric kapsayıcı uygulaması oluşturup dağıtın.
 ms.topic: conceptual
 ms.date: 1/4/2019
-ms.openlocfilehash: f2f8c7884323667f843382b02c73a570e58617f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 07e3682ec1787ceb350ac72c8b80d86eed80b339
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75457965"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560640"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturma
 > [!div class="op_single_selector"]
@@ -113,7 +114,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 *name*, çalışan kapsayıcıya bir ad verir (kapsayıcı kimliği yerine).
 
-Çalışan kapsayıcıya bağlanın. 4000 numaralı bağlantı noktasında döndürülen IP adresini işaret eden bir Web tarayıcısı açın, örneğin "http:\//localhost: 4000". "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
+Çalışan kapsayıcıya bağlanın. 4000 numaralı bağlantı noktasında döndürülen IP adresini işaret eden bir Web tarayıcısı açın, örneğin "http: \/ /localhost: 4000". "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
 
 ![Merhaba Dünya!][hello-world]
 
@@ -132,7 +133,7 @@ docker rm my-web-site
 ## <a name="push-the-image-to-the-container-registry"></a>Görüntüyü kapsayıcı kayıt defterine gönderme
 Uygulamanın Docker'da çalıştığını doğruladıktan sonra, görüntüyü Azure Container Registry'de kayıt defterine gönderin.
 
-Kayıt `docker login` defteri [kimlik bilgilerinizle](../container-registry/container-registry-authentication.md), kapsayıcı kayıt defterinizde oturum açmak için ' i çalıştırın.
+`docker login` [Kayıt defteri kimlik bilgilerinizle](../container-registry/container-registry-authentication.md), kapsayıcı kayıt defterinizde oturum açmak için ' i çalıştırın.
 
 Aşağıdaki örnekte, bir Azure Active Directory [hizmet sorumlusunun](../active-directory/develop/app-objects-and-service-principals.md) kimliği ve parolası geçirilmiştir. Örneğin, bir otomasyon senaryosu için kayıt defterinize bir hizmet sorumlusu atamış olabilirsiniz. Ya da kayıt defteri Kullanıcı adınızı ve parolanızı kullanarak oturum açmanız gerekir.
 
@@ -165,7 +166,7 @@ Bu görüntüde iş yükü giriş noktası tanımlanmış olduğundan, giriş ko
 
 "1" örnek sayısı belirtin.
 
-Bağlantı noktası eşlemesini uygun biçimde belirtin. Bu makalede, bağlantı noktası eşlemesi olarak sağlamanız ```80:4000``` gerekir. Bunu yaparak, ana makinedeki 4000 numaralı bağlantı noktasına gelen tüm gelen isteklerin kapsayıcıda 80 numaralı bağlantı noktasına yönlendirildiğini yapılandırdınız.
+Bağlantı noktası eşlemesini uygun biçimde belirtin. Bu makalede, ```80:4000``` bağlantı noktası eşlemesi olarak sağlamanız gerekir. Bunu yaparak, ana makinedeki 4000 numaralı bağlantı noktasına gelen tüm gelen isteklerin kapsayıcıda 80 numaralı bağlantı noktasına yönlendirildiğini yapılandırdınız.
 
 ![Kapsayıcılar için Service Fabric Yeoman oluşturucusu][sf-yeoman]
 
@@ -174,7 +175,7 @@ Bağlantı noktası eşlemesini uygun biçimde belirtin. Bu makalede, bağlantı
 Kapsayıcı görüntüsü indirme için farklı kimlik doğrulama türlerini nasıl yapılandıracağınızı öğrenmek için bkz. [kapsayıcı deposu kimlik doğrulaması](configure-container-repository-credentials.md).
 
 ## <a name="configure-isolation-mode"></a>Yalıtım modunu yapılandırma
-6,3 çalışma zamanı sürümüyle, sanal makine yalıtımı Linux kapsayıcıları için desteklenir ve bu nedenle kapsayıcılar için iki yalıtım modunu destekler: işlem ve Hyper-V. Hyper-V yalıtım modu ile, çekirdekler her kapsayıcı ve kapsayıcı ana bilgisayar arasında yalıtılır. Hyper-V yalıtımı, [clear kapsayıcıları](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker)kullanılarak uygulanır. Yalıtım modu, uygulama bildirimi dosyasındaki `ServicePackageContainerPolicy` öğesindeki Linux kümeleri için belirtilir. Belirtilebilen yalıtım modları `process`, `hyperv` ve `default` modlarıdır. Varsayılan işlem yalıtım modudur. Aşağıdaki kod parçacığı uygulama bildirimi dosyasında yalıtım modunun nasıl belirtildiğini gösterir.
+6,3 çalışma zamanı sürümüyle, sanal makine yalıtımı Linux kapsayıcıları için desteklenir ve bu nedenle kapsayıcılar için iki yalıtım modunu destekler: işlem ve Hyper-V. Hyper-V yalıtım modu ile, çekirdekler her kapsayıcı ve kapsayıcı ana bilgisayar arasında yalıtılır. Hyper-V yalıtımı, [clear kapsayıcıları](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker)kullanılarak uygulanır. Yalıtım modu, `ServicePackageContainerPolicy` uygulama bildirimi dosyasındaki öğesindeki Linux kümeleri için belirtilir. Belirtilebilen yalıtım modları `process`, `hyperv` ve `default` modlarıdır. Varsayılan işlem yalıtım modudur. Aşağıdaki kod parçacığı uygulama bildirimi dosyasında yalıtım modunun nasıl belirtildiğini gösterir.
 
 ```xml
 <ServiceManifestImport>
@@ -249,16 +250,16 @@ Yerel Service Fabric kümesine bağlanın.
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-Uygulama paketini kümenin görüntü deposuna kopyalamak, uygulama türünü https://github.com/Azure-Samples/service-fabric-containers/ kaydetmek ve uygulamanın bir örneğini oluşturmak için konumundaki şablonlarda belirtilen Install betiğini kullanın.
+https://github.com/Azure-Samples/service-fabric-containers/Uygulama paketini kümenin görüntü deposuna kopyalamak, uygulama türünü kaydetmek ve uygulamanın bir örneğini oluşturmak için konumundaki şablonlarda belirtilen Install betiğini kullanın.
 
 
 ```bash
 ./install.sh
 ```
 
-Bir tarayıcı açın ve http:\//localhost: 19080/Explorer konumundaki Service Fabric Explorer gidin (Mac OS X vagrant kullanılıyorsa, localhost 'u VM 'nin özel IP 'si ile değiştirin). Uygulamalar düğümünü genişletin ve şu anda uygulamanızın türü için bir giriş ve bu türün ilk örneği için başka bir giriş olduğuna dikkat edin.
+Bir tarayıcı açın ve http: \/ /localhost: 19080/Explorer konumundaki Service Fabric Explorer gidin (Mac OS X vagrant kullanılıyorsa, localhost 'U VM 'nin özel IP 'si ile değiştirin). Uygulamalar düğümünü genişletin ve şu anda uygulamanızın türü için bir giriş ve bu türün ilk örneği için başka bir giriş olduğuna dikkat edin.
 
-Çalışan kapsayıcıya bağlanın. 4000 numaralı bağlantı noktasında döndürülen IP adresini işaret eden bir Web tarayıcısı açın, örneğin "http:\//localhost: 4000". "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
+Çalışan kapsayıcıya bağlanın. 4000 numaralı bağlantı noktasında döndürülen IP adresini işaret eden bir Web tarayıcısı açın, örneğin "http: \/ /localhost: 4000". "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
 
 ![Merhaba Dünya!][hello-world]
 

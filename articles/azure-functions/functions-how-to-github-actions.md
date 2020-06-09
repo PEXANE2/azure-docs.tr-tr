@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: cshoe
-ms.openlocfilehash: dedca6912fd9d9e7b6f5089d02de9e4020e4e0ef
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: tracking-python
+ms.openlocfilehash: 1a7cc37f297f902fb5de473303f1dc260cbea9ca
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83122349"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559101"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub eylemini kullanarak sürekli teslim
 
@@ -25,8 +26,8 @@ Azure Işlevleri iş akışı için, dosyanın üç bölümü vardır:
 | Section | Görevler |
 | ------- | ----- |
 | **Kimlik Doğrulaması** | <ol><li>Hizmet sorumlusu tanımlayın.</li><li>Yayımlama profilini indirin.</li><li>GitHub gizli dizisi oluşturun.</li></ol>|
-| **Yapı** | <ol><li>Ortamı ayarlayın.</li><li>İşlev uygulamasını oluşturun.</li></ol> |
-| **Dağıt** | <ol><li>İşlev uygulamasını dağıtın.</li></ol>|
+| **Derleme** | <ol><li>Ortamı ayarlayın.</li><li>İşlev uygulamasını oluşturun.</li></ol> |
+| **Dağıtma** | <ol><li>İşlev uygulamasını dağıtın.</li></ol>|
 
 > [!NOTE]
 > Kimlik doğrulaması için Yayımlama profili kullanmaya karar verirseniz bir hizmet sorumlusu oluşturmanız gerekmez.
@@ -101,7 +102,7 @@ Aşağıdaki örnek, `actions/setup-python` ortamı ayarlamak için eylemi kulla
         python-version: 3.6
 ```
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnek, `actions/setup-dotnet` ortamı ayarlamak için eylemi kullanan iş akışının parçasını gösterir:
 
@@ -169,7 +170,7 @@ Aşağıdaki örnek, dile özgü olan işlev uygulamasını oluşturan iş akı�
         popd
 ```
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'

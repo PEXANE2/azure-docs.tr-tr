@@ -1,14 +1,14 @@
 ---
 title: Azure Container Registry içindeki depoların izinleri
-description: Görüntü çekmek veya göndermek veya başka eylemler gerçekleştirmek için bir kayıt defterindeki belirli depolara kapsamlı izinlere sahip bir belirteç oluşturun
+description: Bir Premium kayıt defterindeki belirli depolara kapsamlı, görüntü çekmek veya göndermek veya başka eylemler gerçekleştirmek için izinler içeren bir belirteç oluşturun
 ms.topic: article
 ms.date: 05/27/2020
-ms.openlocfilehash: 8534c62db862f5c929d0145948fc4049c036d412
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 8661ff2e320788d3899ae16dd3bee7d3ff662caa
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142237"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509415"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Depo kapsamlı izinlerle belirteç oluşturma
 
@@ -20,7 +20,7 @@ Belirteç oluşturma senaryoları şunları içerir:
 * Belirli bir depoya yönelik izinlere sahip bir dış kuruluş sağlayın 
 * Depo erişimini kuruluşunuzdaki farklı kullanıcı gruplarıyla sınırlayın. Örneğin, belirli depoları hedefleyen görüntüler oluşturan geliştiriciler için yazma ve okuma erişimi ve bu depolardan dağıtım yapan takımlara okuma erişimi sağlayın.
 
-Bu özellik **Premium** kapsayıcı kayıt defterlerinde kullanılabilir. Kayıt defteri hizmeti katmanları ve limitleri hakkında bilgi için bkz. [Azure Container Registry hizmet katmanları](container-registry-skus.md).
+Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanılabilir. Kayıt defteri hizmeti katmanları ve limitleri hakkında bilgi için bkz. [Azure Container Registry hizmet katmanları](container-registry-skus.md).
 
 > [!IMPORTANT]
 > Bu özellik şu anda önizleme aşamasındadır ve bazı [sınırlamalar geçerlidir](#preview-limitations). Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
@@ -59,7 +59,7 @@ Aşağıdaki görüntüde belirteçler ve kapsam haritaları arasındaki ilişki
 
 ![Kayıt defteri belirteçleri ve kapsam haritaları](media/container-registry-repository-scoped-permissions/token-scope-map-concepts.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure **CLI** -belirteçleri oluşturmak ve yönetmek IÇIN Azure CLI komutları Azure CLI sürüm 2.0.76 veya sonraki sürümlerinde kullanılabilir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 * **Docker** -görüntüleri çekmek veya göndermek için kayıt defteriyle kimlik doğrulamak için yerel bir Docker yüklemesine ihtiyacınız vardır. Docker, [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms) sistemleri için yükleme yönergeleri sağlar.
@@ -261,7 +261,7 @@ Azure portalında:
 1. Kapsayıcı Kayıt defterinize gidin.
 1. **Depo izinleri**altında **kapsam haritaları ' nı (Önizleme)** seçin ve güncelleştirilecek kapsam eşlemesini seçin.
 1. **Depolar**' ın altında `samples/alpine` , ve **izinler**altında, ve ' ı seçin `content/read` `content/write` . Ardından **+ Ekle**' yi seçin.
-1. **Depolar**' ın altında, `samples/hello-world` **izinler**' i seçin ve sonra seçimini kaldırın `content/write` . Sonra **Kaydet**' i seçin.
+1. **Depolar**' ın altında, `samples/hello-world` **izinler**' i seçin ve sonra seçimini kaldırın `content/write` . Sonra **Kaydet**'i seçin.
 
 Kapsam eşlemesini güncelleştirdikten sonra, şu gönderim başarılı olur:
 

@@ -22,7 +22,7 @@ Azure Kuyruk hizmeti aşağıdaki bileşenleri içerir:
 
 ![Azure Kuyruk hizmeti bileşenleri](./media/storage-queue-concepts-include/azure-queue-service-components.png)
 
-* **URL biçimi:** Kuyruklar şu URL biçimi kullanılarak adreslenebilir: http://`<storage account>`. Queue.Core.Windows.net/`<queue>`
+* **URL biçimi:** Kuyruklar şu URL biçimi kullanılarak adreslenebilir: http:// `<storage account>` . Queue.Core.Windows.net/`<queue>`
   
     Aşağıdaki URL diyagramdaki bir kuyruğun adresini belirtir:  
   

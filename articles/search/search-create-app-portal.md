@@ -7,39 +7,41 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/25/2020
-ms.openlocfilehash: 248ef093601eda7a180a6465ccb97e6fc1c9fe41
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/07/2020
+ms.openlocfilehash: 6c956c937027b16d51141ded4de5ff9b019c37d4
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80369720"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488180"
 ---
 # <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Hızlı başlangıç: portalda bir arama uygulaması oluşturma (Azure Bilişsel Arama)
 
-Tarayıcıda çalışan indirilebilir, "localhost" stilinde bir Web uygulaması oluşturmak için portalın **arama uygulaması oluşturma** Sihirbazı 'nı kullanın. Yapılandırmaya bağlı olarak, oluşturulan uygulama, uzak bir dizine canlı bağlantı ile ilk kullanımda çalışır. Varsayılan bir uygulama bir arama çubuğu, sonuç alanı, kenar çubuğu filtreleri ve typeahead desteği içerebilir.
-
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
+Tarayıcıda çalışan indirilebilir, "localhost" stilinde bir Web uygulaması oluşturmak için Azure portal **arama uygulaması oluşturma** Sihirbazı ' nı kullanın. Yapılandırmaya bağlı olarak, oluşturulan uygulama, uzak bir dizine canlı bağlantı ile ilk kullanımda çalışır. Varsayılan bir uygulama bir arama çubuğu, sonuç alanı, kenar çubuğu filtreleri ve typeahead desteği içerebilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-[En son Microsoft Edge sürümüne](https://www.microsoft.com/edge) yükseltin veya bu hızlı başlangıç için Google 'ın Chrome tarayıcısını kullanın.
+Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
-Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
++ Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/).
 
-Uygulamanızın temeli olarak kullanılacak [bir dizin oluşturun](search-create-index-portal.md) . 
++ Bir Azure Bilişsel Arama hizmeti. Geçerli aboneliğiniz kapsamında [bir hizmet oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
 
-Bu hızlı başlangıç, küçük resimler içerdiğinden (sihirbaz sonuçlar sayfasına görüntü eklemeyi desteklediğinden) yerleşik gerçek örnek verileri ve dizini kullanır. Bu alıştırmada kullanılan dizini oluşturmak için, **veri alma** Sihirbazı ' nı çalıştırarak *reatastate-US-Sample* veri kaynağını seçin.
++ [Microsoft Edge (en son sürüm)](https://www.microsoft.com/edge) veya Google Chrome.
 
-![örnek veriler için veri kaynağı sayfası](media/search-create-app-portal/import-data-realestate.png)
++ Oluşturulan uygulamanızın temeli olarak kullanılacak bir [arama dizini](search-create-index-portal.md) . 
+
+  Bu hızlı başlangıç, küçük resimler içerdiğinden (sihirbaz sonuçlar sayfasına görüntü eklemeyi desteklediğinden) yerleşik gerçek örnek verileri ve dizini kullanır. Bu alıştırmada kullanılan dizini oluşturmak için, **veri alma** Sihirbazı ' nı çalıştırarak *reatastate-US-Sample* veri kaynağını seçin.
+
+  ![örnek veriler için veri kaynağı sayfası](media/search-create-app-portal/import-data-realestate.png)
 
 Dizin kullanıma hazırsa, sonraki adıma geçin.
 
 ## <a name="start-the-wizard"></a>Sihirbazı Başlat
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve [arama hizmetinizi bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
+1. Azure hesabınızla [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. Genel Bakış sayfasında, sayfanın ortasındaki bağlantılardan **dizinler**' i seçin. 
+1. [Arama hizmetinizi bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) ve genel bakış sayfasında, sayfanın ortasındaki bağlantılardan **dizinler**' i seçin. 
 
 1. Var olan dizinler listesinden *reatastate-US-Sample-Index* öğesini seçin.
 
@@ -57,7 +59,7 @@ Sihirbaz, bir küçük resim görüntüsü, başlık ve açıklama için boşluk
 
 1. Açıklama ' da, birisinin belirli bir belgeye tıklamaya karar vermesine yardımcı olabilecek ayrıntılar sağlayan bir alan seçin.
 
-![örnek veriler için veri kaynağı sayfası](media/search-create-app-portal/configure-results.png)
+   ![örnek veriler için veri kaynağı sayfası](media/search-create-app-portal/configure-results.png)
 
 ## <a name="add-a-sidebar"></a>Kenar çubuğu ekle
 

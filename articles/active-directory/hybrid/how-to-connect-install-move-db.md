@@ -11,12 +11,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 742bc307c90ad58b83b7d4c92f9546b87c163c3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e93ffd448113b58589611389b71f5bcbfec7a2e4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77019290"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558535"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect veritabanını SQL Server Express'ten SQL Server'a taşıma 
 
@@ -36,13 +36,13 @@ Azure AD Connect veritabanını uzak SQL Server'a taşımak için aşağıdaki a
 4. Denetim Masası - - Programlar - Programlar ve Özellikler sayfasından Azure AD Connect'i kaldırın.  Microsoft Azure AD Connect'e ve ardından üst taraftaki Kaldır düğmesine tıklayın.
 5. Uzak SQL sunucusunda SQL Server Management Studio'yu açın.
 6. Veritabanları bölümüne sağ tıklayıp Ekle'yi seçin.
-7. **Veritabanı Ekle** ekranında **Ekle**'ye tıklayıp ADSync.mdf dosyasını gösterin.  **Tamam**'a tıklayın.
+7. **Veritabanı Ekle** ekranında **Ekle**'ye tıklayıp ADSync.mdf dosyasını gösterin.  **Tamam** düğmesine tıklayın.
    ![Veritabanı Ekle](media/how-to-connect-install-move-db/move2.png)
 
 8. Veritabanı eklendikten sonra Azure AD Connect sunucusuna gidip Azure AD Connect'i yükleyin.
 9. MSI yüklemesi tamamlandıktan sonra Azure AD Connect sihirbazı Hızlı mod kurulumu açılır. Çıkış simgesine tıklayarak ekranı kapatın.
    ![Hoş geldiniz](./media/how-to-connect-install-move-db/db1.png)
-10. Yeni bir komut istemi veya PowerShell oturumu başlatın. \Program files\Microsoft Azure AD Connect \<> klasör sürücüsüne gidin. Azure AD Connect sihirbazını "Var olan veritabanını kullan" modunda başlatmak için .\AzureADConnect.exe /useexistingdatabase komutunu çalıştırın.
+10. Yeni bir komut istemi veya PowerShell oturumu başlatın. \<drive>\program files\Microsoft Azure AD Connect klasörüne gidin. Azure AD Connect sihirbazını "Var olan veritabanını kullan" modunda başlatmak için .\AzureADConnect.exe /useexistingdatabase komutunu çalıştırın.
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. Azure AD Connect'e Hoş Geldiniz ekranı açılır. Lisans koşullarını ve gizlilik bildirimini kabul ettikten sonra **Devam**'a tıklayın.
     ![Hoş geldiniz](./media/how-to-connect-install-move-db/db3.png)
@@ -55,19 +55,19 @@ Azure AD Connect veritabanını uzak SQL Server'a taşımak için aşağıdaki a
 14. **Connect your directories** (Dizinlerinize bağlanın) ekranında dizin eşitlemesi için yapılandırılmış olan mevcut AD ormanı yanında kırmızı bir çarpı işaretiyle listelenir. Şirket içi AD ormanında yapılan değişiklikleri eşitlemek için bir AD DS hesabı kullanmanız gerekir. Kimlik bilgileri şifrelenmiş olduğundan ve şifresi yalnızca önceki Azure AD Connect sunucusu tarafından çözülebildiğinden Azure AD Connect sihirbazı, AD Eşitleme veritabanında depolanan AD DS hesabının kimlik bilgilerini alamaz. AD ormanına ait AD DS hesabını belirtmek için **Change Credentials** (Kimlik Bilgilerini Değiştir) öğesine tıklayın.
     ![Dizinler](./media/how-to-connect-install-move-db/db6.png)
  
- 
+
 15. Açılan iletişim kutusunda (i) Kuruluş Yöneticisi kimlik bilgileri belirtip Azure AD Connect'in sizin için bir AD DS hesabı oluşturmasını sağlayabilir veya (ii) AD DS hesabını kendiniz oluşturarak kimlik bilgilerini Azure AD Connect'e girebilirsiniz. Bir seçeneği belirleyip gerekli kimlik bilgilerini girdikten sonra **Tamam**'a tıklayarak açılan iletişim kutusunu kapatın.
     ![Hoş geldiniz](./media/how-to-connect-install-move-db/db7.png)
  
- 
+
 16. Kimlik bilgileri girildikten sonra kırmızı çarpı işaretinin yerine yeşil onay işareti görünür. **İleri**’ye tıklayın.
     ![Hoş geldiniz](./media/how-to-connect-install-move-db/db8.png)
  
- 
+
 17. **Yapılandırma için hazır** ekranında **Yükle**'ye tıklayın.
     ![Hoş geldiniz](./media/how-to-connect-install-move-db/db9.png)
  
- 
+
 18. Yükleme tamamlandıktan sonra Azure AD Connect otomatik olarak Hazırlama Modunda etkinleştirilir. Hazırlama Modunu devre dışı bırakmadan önce sunucu yapılandırmasını ve bekleme durumundaki dışarı aktarma işlemlerini gözden geçirerek beklenmeyen değişikliklerin olup olmadığını kontrol etmeniz önerilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar

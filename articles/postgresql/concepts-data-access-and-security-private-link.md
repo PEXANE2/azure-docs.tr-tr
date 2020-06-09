@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: a2ed81972cd89856d0bcde689c3d1f61c5534c96
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 90e0f74f3a17a2c98abfcd886d59344b18619f8c
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485042"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509006"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure veritabanı için özel bağlantı-tek sunucu
 
@@ -115,7 +115,7 @@ Bir PostgreSQL için Azure veritabanı 'na bağlantı kurmak için [VNET-VNET VP
 
 Yalnızca PostgreSQL için Azure veritabanı tek sunucuya erişim için özel uç noktalara erişmek istiyorsanız, veritabanı sunucusunda **ortak ağ erişimini engelle** özelliğini ayarlayarak tüm genel uç noktaları ([güvenlik duvarı kuralları](concepts-firewall-rules.md) ve [VNET hizmet uç noktaları](concepts-data-access-and-security-vnet.md)) ayarlamayı devre dışı bırakabilirsiniz. 
 
-Bu ayar *Evet* olarak ayarlandığında, PostgreSQL Için Azure veritabanı 'na yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir. Bu ayar *hiçbir Istemci yok* olarak ayarlandığında, güvenlik duvarınız veya VNET hizmeti uç noktası ayarına göre PostgreSQL Için Azure veritabanınıza bağlanabilir. Ayrıca, özel ağ erişiminin değeri müşteriler olarak ayarlandığında mevcut ' güvenlik duvarı kuralları ' ve ' VNet hizmeti uç noktası kuralını ekleyemez ve/veya güncelleştiremez
+Bu ayar *Evet* olarak ayarlandığında, PostgreSQL Için Azure veritabanı 'na yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir. Bu ayar *hiçbir Istemci yok* olarak ayarlandığında, güvenlik duvarınız veya VNET hizmeti uç noktası ayarına göre PostgreSQL Için Azure veritabanınıza bağlanabilir. Ayrıca, özel ağ erişiminin değeri ayarlandıktan sonra müşteriler var olan ' güvenlik duvarı kurallarını ' ve ' VNet hizmeti uç noktası kuralları ' ekleyemez ve/veya güncelleştiremez.
 
 > [!Note]
 > Bu özellik, PostgreSQL için Azure veritabanı-tek sunucu Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.

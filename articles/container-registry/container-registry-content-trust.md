@@ -1,14 +1,14 @@
 ---
 title: İmzalı görüntüleri yönetme
-description: Azure Container Registry 'niz için içerik güvenini etkinleştirmeyi ve imzalı görüntüleri gönderme ve çekme hakkında bilgi edinin.
+description: Azure Container Registry 'niz için içerik güvenini etkinleştirmeyi ve imzalı görüntüleri gönderme ve çekme hakkında bilgi edinin. İçerik güveni, Premium hizmet katmanının bir özelliğidir.
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: 72d45301e1d8a5f29eda941bd39217082f5dc6ba
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 74bc61f71fc001d5333fcd3c9ac47fa4dd90218c
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680500"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509568"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry'de içerik güveni
 

@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: lbosq
-ms.openlocfilehash: b1286daaa76c71f88d44ea387a92876a8676783c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: fd266dd4e75915c0710acce1a2a49f24049c4e9d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062258"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559861"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Hızlı başlangıç: Python ve Azure portal kullanarak Azure Cosmos DB grafik veritabanı oluşturma
 
@@ -71,9 +72,9 @@ Bir grafik veritabanı oluşturmadan önce Azure Cosmos DB ile bir Gremlin (Graf
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Kod parçacıkları, *C:\git-samples\azure-Cosmos-DB-Graph-Python-Getting-Started\\ * klasöründeki *Connect.py* dosyasından alınır. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-information) bölümüne atlayabilirsiniz. 
+Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Kod parçacıkları, *C:\git-samples\azure-Cosmos-DB-Graph-Python-Getting-Started \\ * klasöründeki *Connect.py* dosyasından alınır. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-information) bölümüne atlayabilirsiniz. 
 
-* Gremlin `client` , *connect.py*'de satır 104 ' de başlatılır:
+* Gremlin, `client` *Connect.py*'de satır 104 ' de başlatılır:
 
     ```python
     ...
@@ -127,7 +128,7 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
         password="<YOUR_PASSWORD>")
     ```
 
-4. **Anahtarlar** sayfasında, Kopyala DÜĞMESINI kullanarak birincil anahtarı kopyalayın ve `<YOUR_PASSWORD>` `password=<YOUR_PASSWORD>` parametresi üzerine yapıştırın.
+4. **Anahtarlar** sayfasında, Kopyala DÜĞMESINI kullanarak birincil anahtarı kopyalayın ve parametresi üzerine yapıştırın `<YOUR_PASSWORD>` `password=<YOUR_PASSWORD>` .
 
     Tüm `client` nesne tanımı artık şu kod gibi görünmelidir:
     ```python
@@ -185,10 +186,10 @@ Köşeler ve kenarlar eklendikten sonra artık Veri Gezgini geri dönüp grafiğ
 
 5. Aşağıdaki özelliklerden her birini eklemek için **Özellik Ekle** ' yi seçin. Graftaki her kişi için benzersiz özellikler oluşturabileceğinizi görürsünüz. Yalnızca kimliği anahtarı gereklidir.
 
-    anahtar|value|Notlar
+    key|değer|Notlar
     ----|----|----
     ba|/PK| 
-    id|ashley|Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
+    kimlik|ashley|Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
     cinsiyet|kadın| 
     teknoloji | java | 
 
@@ -203,16 +204,16 @@ Köşeler ve kenarlar eklendikten sonra artık Veri Gezgini geri dönüp grafiğ
 
 9. Aşağıdaki özelliklerden her birini eklemek için **Özellik Ekle** ' yi seçin:
 
-    anahtar|value|Notlar
+    key|değer|Notlar
     ----|----|----
     ba|/PK| 
-    id|rakesh|Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
+    kimlik|rakesh|Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
     cinsiyet|erkek| 
     okul|MIT| 
 
 10. **Tamam**’ı seçin. 
 
-11. Grafikteki tüm değerleri göstermek için varsayılan `g.V()` filtreyle **Filtre Uygula** düğmesini seçin. Tüm kullanıcılar **Sonuç listesinde** gösterilir. 
+11. Grafikteki tüm değerleri göstermek için varsayılan filtreyle **Filtre Uygula** düğmesini seçin `g.V()` . Tüm kullanıcılar **Sonuç listesinde** gösterilir. 
 
     Daha fazla veri ekledikçe sonuçlarınızı sınırlamak için filtreleri kullanabilirsiniz. Veri Gezgini, varsayılan olarak bir grafikteki tüm köşeleri almak için `g.V()` kullanır. JSON biçimindeki bir grafikteki tüm köşelerin sayımını döndürmek için, bu değeri `g.V().count()` gibi farklı bir [grafik sorgusu](tutorial-query-graph.md) olarak değiştirebilirsiniz. Filtreyi değiştirdiyseniz, filtreyi olarak `g.V()` yeniden değiştirin ve tüm sonuçları yeniden göstermek Için **Filtreyi Uygula** ' yı seçin.
 

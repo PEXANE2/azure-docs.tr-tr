@@ -2,17 +2,17 @@
 title: Kenarda olay odaklı mimariler — IoT Edge Azure Event Grid
 description: Modüller, uç cihazlar ve bulut arasındaki iletme olayları için IoT Edge bir modül olarak Azure Event Grid kullanın.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: overview
 ms.date: 10/22/2019
-ms.author: babanisa
-ms.openlocfilehash: feac5891734731e6f7377750127958a40a815036
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: femila
+ms.openlocfilehash: d569a4be6c9747dea4280d17ed2f888c3bed9936
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76844674"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561678"
 ---
 # <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Azure IoT Edge Azure Event Grid nedir?
 IoT Edge Event Grid, Azure Event Grid gücünü ve esnekliğini kenara taşır. Aynı cihazda, diğer uç cihazlarda veya buluttaki hizmetlerde modüller olup olmadığı konusunda konular oluşturun, olayları yayımlayın ve birden çok hedefe abone olun.
@@ -80,7 +80,7 @@ Azure Event Grid, başlamanıza izin veren beş kavram vardır:
 IoT Edge Event Grid genel önizleme sırasında ücretsizdir.
 
 ## <a name="issues"></a>Sorunlar
-IoT Edge üzerinde Event Grid kullanma ile ilgili tüm sorunları bildirin [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues).
+IoT Edge üzerinde Event Grid kullanma ile ilgili tüm sorunları bildirin [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

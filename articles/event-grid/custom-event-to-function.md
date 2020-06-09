@@ -3,17 +3,17 @@ title: 'Hızlı başlangıç: Azure Işlevine özel olaylar gönderme-Event Grid
 description: 'Hızlı başlangıç: bir konu yayımlamak ve bu olaya abone olmak için Azure Event Grid ve Azure CLı veya portal kullanın. Uç nokta için bir Azure Işlevi kullanılır.'
 services: event-grid
 keywords: ''
-author: banisadr
-ms.author: babanisa
+author: femila
+ms.author: femila
 ms.date: 11/15/2019
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 5e38571cf84537fd722093b96cd277743e8ce80c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cc429fd38fc3322887affb72e71e0f583823c297
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292161"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557854"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Hızlı başlangıç: Event Grid ile özel olayları Azure Işlevine yönlendirme
 
@@ -54,7 +54,7 @@ Event grid konusu, olaylarınızı göndereceğiniz kullanıcı tanımlı bir u�
     5. **Olay şeması** alanı için varsayılan değer **Event Grid şemayı** tut. 
 
        ![Konu sayfası oluştur](./media/custom-event-to-function/create-custom-topic.png)
-    6. **Oluştur**’u seçin. 
+    6. **Oluştur**'u seçin. 
 
 5. Özel konu oluşturulduktan sonra başarılı bildirim görürsünüz. **Kaynak grubuna git**' i seçin. 
 
@@ -124,7 +124,7 @@ Birinci örnekte, Azure CLI kullanılmaktadır. Özel konunun URL’si ve anahta
 ### <a name="azure-powershell"></a>Azure PowerShell
 İkinci örnek, benzer adımları gerçekleştirmek için PowerShell’i kullanır.
 
-1. Azure portal **Cloud Shell** ' i seçin (alternatif olarak öğesine `https://shell.azure.com/`gidin). Cloud Shell penceresinin sol üst köşesindeki **PowerShell** ' i seçin. Azure CLı bölümünde örnek **Cloud Shell** pencere görüntüsüne bakın.
+1. Azure portal **Cloud Shell** ' i seçin (alternatif olarak öğesine gidin `https://shell.azure.com/` ). Cloud Shell penceresinin sol üst köşesindeki **PowerShell** ' i seçin. Azure CLı bölümünde örnek **Cloud Shell** pencere görüntüsüne bakın.
 2. Aşağıdaki değişkenleri ayarlayın. Her komutu kopyalayıp yapıştırdıktan sonra, komutu çalıştırmadan önce **konu adını** ve **kaynak grubu adını** güncelleştirin:
 
     ```powershell

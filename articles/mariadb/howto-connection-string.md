@@ -6,12 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 74574fb905ae4ebd2552ef97cd0b5430eea6363a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 18e3f2ab7c581a1ff93a65e410e83739564b5be5
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530232"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558294"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı'na uygulama bağlama
 Bu konu, MariaDB için Azure veritabanı tarafından şablonlar ve örneklerle birlikte desteklenen bağlantı dizesi türlerini listeler. Bağlantı dizeniz içinde farklı parametrelere ve ayarlara sahip olabilirsiniz.
@@ -25,7 +26,7 @@ Bu konu, MariaDB için Azure veritabanı tarafından şablonlar ve örneklerle b
 Server={your_host}; Port=3306; Database={your_database}; Uid={username@servername}; Pwd={your_password}; SslMode=Preferred;
 ```
 
-Bu `mydemoserver`örnekte sunucu adı, veritabanı adı `wpdb`, Kullanıcı adı `WPAdmin`ve parola olur. `mypassword!2` Sonuç olarak, bağlantı dizesi şöyle olmalıdır:
+Bu örnekte sunucu adı, `mydemoserver` veritabanı adı, `wpdb` Kullanıcı adı `WPAdmin` ve parola olur `mypassword!2` . Sonuç olarak, bağlantı dizesi şöyle olmalıdır:
 
 ```csharp
 Server= "mydemoserver.mariadb.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@mydemoserver"; Pwd="mypassword!2"; SslMode=Required;
@@ -62,7 +63,7 @@ client = Mysql2::Client.new(username: "{username@servername}", password: {your_p
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Azure portal bağlantı dizesi ayrıntılarını alın
-[Azure Portal](https://portal.azure.com), MariaDB sunucusu Için Azure veritabanı 'na gidin ve sonra, örneğinizin dize listesini almak için **bağlantı dizeleri** ' ne tıklayın: ![Azure Portal bağlantı dizeleri bölmesi](./media/howto-connection-strings/connection-strings-on-portal.png)
+[Azure Portal](https://portal.azure.com), MariaDB sunucusu Için Azure veritabanı 'na gidin ve sonra, örneğinizin dize listesini almak için **bağlantı dizeleri** ' ne tıklayın: ![ Azure Portal bağlantı dizeleri bölmesi](./media/howto-connection-strings/connection-strings-on-portal.png)
 
 Dize, sürücü, sunucu ve diğer veritabanı bağlantı parametreleri gibi ayrıntılar sağlar. Bu örnekleri, veritabanı adı, parola vb. gibi kendi parametrelerinizi kullanacak şekilde değiştirin. Daha sonra bu dizeyi, kodunuzun ve uygulamalarınızdan sunucuya bağlanmak için kullanabilirsiniz.
 

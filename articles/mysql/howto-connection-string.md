@@ -6,18 +6,19 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: ff257e101ca925a554f2343d357e2042d2930b45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 1683fba2d8f085569c7cc62a06d0fe95803d4346
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062388"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559206"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>MySQL için Azure Veritabanına nasıl uygulama bağlanır
 Bu konu, MySQL için Azure veritabanı tarafından şablonlar ve örneklerle birlikte desteklenen bağlantı dizesi türlerini listeler. Bağlantı dizeniz içinde farklı parametrelere ve ayarlara sahip olabilirsiniz.
 
 - Sertifikayı almak için bkz. [SSL 'yi yapılandırma](./howto-configure-ssl.md).
-- {your_host} = \<ServerName>. MySQL.Database.Azure.com
+- {your_host} = \<servername> . MySQL.Database.Azure.com
 - {your_user} @ {ServerName} = kimlik doğrulaması için Kullanıcı kimliği biçimi doğru.  Yalnızca Kullanıcı kimliğini kullanıyorsanız kimlik doğrulaması başarısız olur.
 
 ## <a name="adonet"></a>ADO.NET
@@ -25,7 +26,7 @@ Bu konu, MySQL için Azure veritabanı tarafından şablonlar ve örneklerle bir
 Server={your_host};Port={your_port};Database={your_database};Uid={username@servername};Pwd={your_password};[SslMode=Required;]
 ```
 
-Bu `mydemoserver`örnekte sunucu adı, veritabanı adı `wpdb`, Kullanıcı adı `WPAdmin`ve parola olur. `mypassword!2` Sonuç olarak, bağlantı dizesi şöyle olmalıdır:
+Bu örnekte sunucu adı, `mydemoserver` veritabanı adı, `wpdb` Kullanıcı adı `WPAdmin` ve parola olur `mypassword!2` . Sonuç olarak, bağlantı dizesi şöyle olmalıdır:
 
 ```ado.net
 Server= "mydemoserver.mysql.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@mydemoserver"; Pwd="mypassword!2"; SslMode=Required;
@@ -62,7 +63,7 @@ client = Mysql2::Client.new(username: {username@servername}, password: {your_pas
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Azure portal bağlantı dizesi ayrıntılarını alın
-[Azure Portal](https://portal.azure.com), MySQL Için Azure veritabanı sunucusuna gidin ve ardından **bağlantı dizeleri** ' ne tıklayarak örneğinizin dize listesini alın: ![Azure Portal bağlantı dizeleri bölmesi](./media/howto-connection-strings/connection-strings-on-portal.png)
+[Azure Portal](https://portal.azure.com), MySQL Için Azure veritabanı sunucusuna gidin ve ardından **bağlantı dizeleri** ' ne tıklayarak örneğinizin dize listesini alın: ![ Azure Portal bağlantı dizeleri bölmesi](./media/howto-connection-strings/connection-strings-on-portal.png)
 
 Dize, sürücü, sunucu ve diğer veritabanı bağlantı parametreleri gibi ayrıntılar sağlar. Bu örnekleri, veritabanı adı, parola vb. gibi kendi parametrelerinizi kullanacak şekilde değiştirin. Daha sonra bu dizeyi, kodunuzun ve uygulamalarınızdan sunucuya bağlanmak için kullanabilirsiniz.
 

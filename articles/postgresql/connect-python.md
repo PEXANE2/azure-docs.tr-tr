@@ -4,16 +4,16 @@ description: Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'na b
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, tracking-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 3694c0b74393068538a0c8f496444a1541d88fee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 174c11ba65ccba6389bf3e62d233b1ee56943b97
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76769050"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560929"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Python kullanma-tek sunucu
 
@@ -30,15 +30,15 @@ Bu hızlı başlangıçta, macOS, Ubuntu Linux veya Windows üzerinde Python kul
 - En son [PIP](https://pip.pypa.io/en/stable/installing/) paketi yükleyicisi.
 
 ## <a name="install-the-python-libraries-for-postgresql"></a>PostgreSQL için Python kitaplıklarını yükleme
-[Psycopg2](https://pypi.python.org/pypi/psycopg2/) modülü, bir PostgreSQL veritabanına bağlanma ve sorgulama sağlar ve Linux, MacOS veya Windows [tekerlek](https://pythonwheels.com/) paketi olarak kullanılabilir. Tüm bağımlılıklar dahil olmak üzere modülün ikili sürümünü yükler. Yükleme ve gereksinimler hakkında `psycopg2` daha fazla bilgi için bkz. [yükleme](http://initd.org/psycopg/docs/install.html). 
+[Psycopg2](https://pypi.python.org/pypi/psycopg2/) modülü, bir PostgreSQL veritabanına bağlanma ve sorgulama sağlar ve Linux, MacOS veya Windows [tekerlek](https://pythonwheels.com/) paketi olarak kullanılabilir. Tüm bağımlılıklar dahil olmak üzere modülün ikili sürümünü yükler. Yükleme ve gereksinimler hakkında daha fazla bilgi için `psycopg2` bkz. [yükleme](http://initd.org/psycopg/docs/install.html). 
 
-Yüklemek `psycopg2`için bir Terminal veya komut istemi açın ve komutunu `pip install psycopg2`çalıştırın.
+Yüklemek için `psycopg2` bir Terminal veya komut istemi açın ve komutunu çalıştırın `pip install psycopg2` .
 
 ## <a name="get-database-connection-information"></a>Veritabanı bağlantı bilgilerini al
 PostgreSQL için Azure veritabanı veritabanına bağlanmak için tam sunucu adı ve oturum açma kimlik bilgileri gerekir. Bu bilgileri Azure portal alabilirsiniz.
 
 1. [Azure Portal](https://portal.azure.com/), PostgreSQL Için Azure veritabanı sunucu adı ' nı arayıp seçin. 
-1. Sunucunun **genel bakış** sayfasında, tam **sunucu adı** ve **Yönetici Kullanıcı adı**' nı kopyalayın. Tam **sunucu adı** her zaman * \<My-Server-Name>. Postgres.Database.Azure.com*biçimindedir ve **Yönetici Kullanıcı** adı her zaman * \<My-admin-username> @\<My-Server-Name>* biçiminde olur. 
+1. Sunucunun **genel bakış** sayfasında, tam **sunucu adı** ve **Yönetici Kullanıcı adı**' nı kopyalayın. Tam **sunucu adı** her zaman * \<my-server-name> . Postgres.Database.Azure.com*olur ve **Yönetici Kullanıcı adı** her zaman formundadır *\<my-admin-username>@\<my-server-name>* . 
    
    Yönetici parolanızla de ihtiyacınız vardır. Unutursanız, bu sayfadan sıfırlayabilirsiniz. 
    
@@ -57,7 +57,7 @@ Bu makaledeki her kod örneği için:
    
 1. Dosyayı, *Postgres-insert.py*gibi bir *. Kopyala* uzantısıyla birlikte proje klasörünüze kaydedin. Windows için, dosyayı kaydettiğinizde UTF-8 kodlamasının seçildiğinden emin olun. 
    
-1. Dosyayı çalıştırmak için, bir komut satırı arabirimindeki proje klasörünüze geçin ve ardından dosya adını (örneğin `python` `python postgres-insert.py`,) yazın.
+1. Dosyayı çalıştırmak için, bir komut satırı arabirimindeki proje klasörünüze geçin ve `python` ardından dosya adını (örneğin,) yazın `python postgres-insert.py` .
 
 ## <a name="create-a-table-and-insert-data"></a>Tablo oluşturma ve veri ekleme
 Aşağıdaki kod örneği, [psycopg2. Connect](http://initd.org/psycopg/docs/connection.html) Işlevini kullanarak PostgreSQL Için Azure veritabanı veritabanınıza bağlanır ve VERILERI bir SQL **Insert** ifadesiyle yükler. [Cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) işlevi SQL sorgusunu veritabanına karşı yürütür. 

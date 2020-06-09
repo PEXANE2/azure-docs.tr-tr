@@ -7,13 +7,13 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.custom: seo-python-october2019
-ms.openlocfilehash: 4b0248604b6e9189d5275177a4960e4c352e8215
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seo-python-october2019, tracking-python
+ms.openlocfilehash: 513e3bc2e8625f8ce255f479301b2ed5115708bb
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76906446"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561351"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Hızlı başlangıç: Python v 2.1 SDK ile Blobları yönetme
 
@@ -48,7 +48,7 @@ Uygulamada, `BlockBlobService` nesnesi oluşturmak için depolama hesabı adın�
 
 1. IDE'nizdeki Çözüm Gezgini'nde *example.py* dosyasını açın.
 
-1. `accountname` Ve `accountkey` değerlerini depolama hesabı adınızla ve anahtarınızla değiştirin:
+1. `accountname`Ve `accountkey` değerlerini depolama hesabı adınızla ve anahtarınızla değiştirin:
 
     ```python
     block_blob_service = BlockBlobService(
@@ -94,8 +94,8 @@ Uygulamada, `BlockBlobService` nesnesi oluşturmak için depolama hesabı adın�
 
 1. Devam etmeden önce *Belgeler* klasörünüze gidin ve iki dosyayı kontrol edin.
 
-    * *QuickStart_\<evrensel-benzersiz tanımlayıcı\>*
-    * *QuickStart_\<evrensel-benzersiz tanımlayıcı\>_DOWNLOADED*
+    * *QuickStart_\<universally-unique-identifier\>*
+    * *QuickStart_ \<universally-unique-identifier\> _DOWNLOADED*
 
 1. Dosyaları açarak aynı olduklarını görebilirsiniz.
 
@@ -109,7 +109,7 @@ Artık örnek dosyanın işlevini gördüğünüze göre, koda göz atmak için 
 
 ### <a name="get-references-to-the-storage-objects"></a>Depolama nesneleriyle ilgili başvuruları alma
 
-Bu bölümde nesne örneği ve yeni bir kapsayıcı oluşturacak ve ardından kapsayıcıdaki izinleri bloblar herkese açık olacak şekilde ayarlayacaksınız. Kapsayıcıyı `quickstartblobs`çağıracaksınız. 
+Bu bölümde nesne örneği ve yeni bir kapsayıcı oluşturacak ve ardından kapsayıcıdaki izinleri bloblar herkese açık olacak şekilde ayarlayacaksınız. Kapsayıcıyı çağıracaksınız `quickstartblobs` . 
 
 ```python
 # Create the BlockBlockService that the system uses to call the Blob service for the storage account.
@@ -142,7 +142,7 @@ Blob depolama blok blobları, ekleme bloblarını ve sayfa bloblarını destekle
 
 Bir dosyayı bloba yüklemek için, yerel diskinizdeki dizin adıyla dosya adını birleştirerek dosyanın tam yolunu alın. Sonra, dosyayı belirtilen yola `create_blob_from_path` yöntemiyle yükleyebilirsiniz. 
 
-Örnek kod, sistemin karşıya yükleme ve indirme için kullandığı yerel bir dosya oluşturur, dosyayı *full_path_to_file* olarak sistem karşıya yükleme ve blob adı *local_file_name*olarak depolar. Bu örnek, dosyayı adlı `quickstartblobs`kapsayıcıya yükler:
+Örnek kod, sistemin karşıya yükleme ve indirme için kullandığı yerel bir dosya oluşturur, dosyayı *full_path_to_file* olarak sistem karşıya yükleme ve blob adı *local_file_name*olarak depolar. Bu örnek, dosyayı adlı kapsayıcıya yükler `quickstartblobs` :
 
 ```python
 # Create a file in Documents to test the upload and download.
@@ -167,7 +167,7 @@ Blob depolamayla kullanabileceğiniz çeşitli karşıya yükleme yöntemleri va
 
 ### <a name="list-the-blobs-in-a-container"></a>Blob’ları bir kapsayıcıda listeleme
 
-Aşağıdaki kod, `list_blobs` yöntemi için `generator` bir oluşturur. Kod, kapsayıcıdaki Blobların listesi boyunca döngü sağlar ve adlarını konsola yazdırır.
+Aşağıdaki kod `generator` , yöntemi için bir oluşturur `list_blobs` . Kod, kapsayıcıdaki Blobların listesi boyunca döngü sağlar ve adlarını konsola yazdırır.
 
 ```python
 # List the blobs in the container.
@@ -180,7 +180,7 @@ for blob in generator:
 ### <a name="download-the-blobs"></a>Blobları indirme
 
 
-`get_blob_to_path` Yöntemini kullanarak Blobları yerel diskinize indirin.
+Yöntemini kullanarak Blobları yerel diskinize indirin `get_blob_to_path` .
 Aşağıdaki kod, daha önce karşıya yüklediğiniz blobu indirir. Sistem, her iki dosyayı da yerel diskinizde görebileceğiniz şekilde blob adına *_DOWNLOADED* ekler.
 
 ```python

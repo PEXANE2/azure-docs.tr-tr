@@ -7,25 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/27/2020
-ms.openlocfilehash: 9fb34141d19866a2f49ac164e0d89802cf7818c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/07/2020
+ms.openlocfilehash: 19d46c034d56c1c54f8a00f08a7e3e72e758984f
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80369692"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488214"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Hızlı başlangıç: portalda sorgu çalıştırmak için arama Gezgini 'ni kullanma
 
-**Arama Gezgini** , Azure bilişsel arama 'de arama dizinine karşı sorgu çalıştırmak için kullanılan yerleşik bir sorgu aracıdır. Bu araç sorgu sözdizimini öğrenmeyi, bir sorgu veya filtre ifadesini test yapmayı veya daha yeni içerik olduğunu doğrulayarak bir dizin yenilemenin sonuçlarını onaylamasını kolaylaştırır.
+**Arama Gezgini** , Azure bilişsel arama 'de arama dizinine karşı sorgu çalıştırmak için kullanılan yerleşik bir sorgu aracıdır. Bu araç sorgu söz dizimini öğrenmenizi, bir sorgu veya filtre ifadesini test etmeyi veya dizinde yeni içerik olup olmadığını denetleyerek veri yenilemeyi silmeyi kolaylaştırır.
 
-Bu hızlı başlangıç, arama Gezgini 'ni göstermek için **realestate-US-Sample-Index** kullanır. İstekler, JSON belgeleri olarak döndürülen yanıtları içeren [arama REST API](https://docs.microsoft.com/rest/api/searchservice/)kullanılarak formüle eklenir.
+Bu hızlı başlangıç, arama Gezginini göstermek için mevcut bir dizini kullanır. İstekler, JSON belgeleri olarak döndürülen yanıtları içeren [arama REST API](https://docs.microsoft.com/rest/api/searchservice/)kullanılarak formüle eklenir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-+ Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz.
+Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
-+ Bu hızlı başlangıç için **reatastate-US-Sample-Index** kullanılır. Yerleşik örnekler veri kaynağından dizin oluşturmak için [**verileri Içeri aktarma**](search-import-data-portal.md) Sihirbazı ' nda gezinin.
++ Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/).
+
++ Bir Azure Bilişsel Arama hizmeti. Geçerli aboneliğiniz kapsamında [bir hizmet oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
+
++ Bu hızlı başlangıç için *reatastate-US-Sample-Index* kullanılır. Dizini oluşturmak için [**veri alma**](search-import-data-portal.md) Sihirbazı 'nı kullanın. İlk adımda, veri kaynağı sorulduğunda, **örnekler** ' i seçin ve sonra **reatastate-US-Sample** veri kaynağını seçin. Dizini oluşturmak için sihirbazın varsayılan değerlerini kabul edin.
 
 ## <a name="start-search-explorer"></a>Arama Gezginini Başlat
 
@@ -41,9 +45,9 @@ Bu hızlı başlangıç, arama Gezgini 'ni göstermek için **realestate-US-Samp
 
 ## <a name="unspecified-query"></a>Belirtilmeyen sorgu
 
-İçeriğe ilk bakış için, bir terim sağlanmadıysa **Ara** ' ya tıklayarak boş bir arama yürütün. Boş bir arama ilk sorgu olarak faydalıdır çünkü belge oluşturmayı gözden geçirebilmeniz için tüm belgeleri geri döndürür. Boş bir aramada, Arama derecelendirmesi yoktur ve belgeler rastgele sırada döndürülür (`"@search.score": 1` tüm belgeler için). Varsayılan olarak, 50 belge bir arama isteğinde döndürülür.
+İçeriğe ilk bakış için, bir terim sağlanmadıysa **Ara** ' ya tıklayarak boş bir arama yürütün. Boş bir arama ilk sorgu olarak faydalıdır çünkü belge oluşturmayı gözden geçirebilmeniz için tüm belgeleri geri döndürür. Boş bir aramada, Arama derecelendirmesi yoktur ve belgeler rastgele sırada döndürülür ( `"@search.score": 1` tüm belgeler için). Varsayılan olarak, 50 belge bir arama isteğinde döndürülür.
 
-Boş bir arama için eşdeğer sözdizimi, `*` veya `search=*`.
+Boş bir arama için eşdeğer sözdizimi, `*` veya `search=*` .
    
    ```http
    search=*
@@ -83,7 +87,7 @@ Bir dizinde bulunan eşleşmelerin sayısını almak için **$Count = true** ekl
 
 ## <a name="limit-fields-in-search-results"></a>Arama sonuçlarındaki alanları sınırlama
 
-**Arama Gezgini**'nde daha okunaklı çıkış için sonuçları açıkça adlandırılmış alanlarla sınırlamak üzere [**$Select**](search-query-odata-select.md) ekleyin. Arama dizesini ve **$Count = true**tutmak için, bağımsız değişkenlerini ile **&** öneki. 
+**Arama Gezgini**'nde daha okunaklı çıkış için sonuçları açıkça adlandırılmış alanlarla sınırlamak üzere [**$Select**](search-query-odata-select.md) ekleyin. Arama dizesini ve **$Count = true**tutmak için, bağımsız değişkenlerini ile öneki **&** . 
 
    ```http
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true
