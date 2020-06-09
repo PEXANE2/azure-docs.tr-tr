@@ -2,17 +2,17 @@
 title: Azure Event Grid içindeki olay etki alanları
 description: Bu makalede, çeşitli iş kuruluşlarınız, müşterileriniz veya uygulamalarınız için özel olayların akışını yönetmek üzere olay etki alanlarının nasıl kullanılacağı açıklanır.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
-ms.author: babanisa
+ms.author: femila
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: f6698f91d7659f9fc2c314a9291380301146f8ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 11ecf5c2a7bea8a9ef2047bdabcbfd4d844c5a3a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898859"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559505"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Event Grid yönetmek için olay etki alanlarını anlama
 
@@ -65,7 +65,7 @@ Bir olay etki alanı oluşturduğunuzda, Event Grid ' de bir konu oluşturduysan
 
 Olayları bir olay etki alanında herhangi bir konuya yayımlamak için olayları, [özel konu için yaptığınız gibi](./post-to-custom-topic.md), etki alanının uç noktasına gönderin. Tek fark, etkinliğin teslim edilmesini istediğiniz konuyu belirtmektir.
 
-Örneğin, aşağıdaki olay dizisinin `"id": "1111"` yayımlanması, ile `foo` `"id": "2222"` olayı konuya `bar`gönderilecek şekilde olayı konusuna gönderir:
+Örneğin, aşağıdaki olay dizisinin yayımlanması, `"id": "1111"` `foo` ile olayı konuya gönderilecek şekilde olayı konusuna gönderir `"id": "2222"` `bar` :
 
 ```json
 [{
@@ -105,7 +105,7 @@ Olay etki alanlarıyla ilgili sınırlamalar ve Kotalar aşağıda verilmiştir:
 - 50 etki alanı kapsamı abonelikleri 
 - saniye başına 5.000 olay alma oranı (bir etki alanına)
 
-Bu limitlere uygun değilse, bir destek bileti açarak veya uygulamasına [askgrid@microsoft.com](mailto:askgrid@microsoft.com)bir e-posta göndererek ürün ekibine ulaşın. 
+Bu limitlere uygun değilse, bir destek bileti açarak veya uygulamasına bir e-posta göndererek ürün ekibine ulaşın [askgrid@microsoft.com](mailto:askgrid@microsoft.com) . 
 
 ## <a name="pricing"></a>Fiyatlandırma
 Olay etki alanları, Event Grid ' deki diğer tüm özelliklerin kullandığı aynı [işlem fiyatlandırmasını](https://azure.microsoft.com/pricing/details/event-grid/) kullanır.

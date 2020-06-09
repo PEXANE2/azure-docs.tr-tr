@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f2320f8a005531039a386af9192157c3091f3ac
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4146e6de2ef23f7e12ee6b59c40045f8a678dc13
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221894"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509194"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-anyone-home-crm"></a>Öğretici: herkes ana CRM ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -88,7 +88,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://app.anyonehome.com/webroot/files/simplesamlphp/www/module.php/saml/sp/saml2-acs.php/<Anyone_Home_Provided_Unique_Value>`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, [herkesin ev CRM istemci destek ekibine](mailto:lightson@anyonehome.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, [herkesin ev CRM istemci destek ekibine](mailto:support@anyonehome.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
@@ -126,11 +126,11 @@ Bu bölümde, şirket içi CRM 'ye erişim izni vererek Azure çoklu oturum açm
 
 ## <a name="configure-anyone-home-crm-sso"></a>Ev CRM SSO 'SU yapılandırma
 
-Bir **kişi ana CRM** tarafında çoklu oturum açmayı yapılandırmak Için, **uygulama Federasyon meta veri URL 'Sini** , bir [kişi ana CRM destek ekibine](mailto:lightson@anyonehome.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+Bir **kişi ana CRM** tarafında çoklu oturum açmayı yapılandırmak Için, **uygulama Federasyon meta veri URL 'Sini** , bir [kişi ana CRM destek ekibine](mailto:support@anyonehome.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-anyone-home-crm-test-user"></a>Bir kişi ana CRM test kullanıcısı oluşturun
 
-Bu bölümde, herkes ev CRM 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Kullanıcıları herkes ev CRM platformunda eklemek için [herhangi bir kişi Ile CRM destek ekibi](mailto:lightson@anyonehome.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, herkes ev CRM 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Kullanıcıları herkes ev CRM platformunda eklemek için [herhangi bir kişi Ile CRM destek ekibi](mailto:support@anyonehome.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

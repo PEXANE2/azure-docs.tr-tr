@@ -2,17 +2,17 @@
 title: Event Grid kaynak olarak Azure Uygulama yapılandırması
 description: Bu makalede, Azure Uygulama yapılandırması 'nın Event Grid olay kaynağı olarak nasıl kullanılacağı açıklanır. Bu, şemayı ve öğretici ve nasıl yapılır makalelerini bağlar ve bağlantılar sağlar.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.author: babanisa
-ms.openlocfilehash: adb548ef8531698a2cb075fbc742bb20a02a434b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: femila
+ms.openlocfilehash: e233b5d27df3e25c2d7c1464aea9a1e80dfbffb0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393425"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553162"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>Event Grid kaynağı olarak Azure Uygulama yapılandırması
 Bu makalede, Azure uygulama yapılandırma olayları için özellikler ve şema sağlanmaktadır. Olay şemalarına giriş için bkz. [Azure Event Grid olay şeması](event-schema.md). Ayrıca, Azure Uygulama yapılandırması 'nı olay kaynağı olarak kullanmak için hızlı başlayan ve öğreticilerin bir listesini sağlar.
@@ -23,7 +23,7 @@ Bu makalede, Azure uygulama yapılandırma olayları için özellikler ve şema 
 
 Azure Uygulama yapılandırması aşağıdaki olay türlerini yayar:
 
-| Olay türü | Açıklama |
+| Olay türü | Description |
 | ---------- | ----------- |
 | Microsoft. AppConfiguration. KeyValueModified | Anahtar-değer oluşturulduğunda veya değiştirildiğinde tetiklenir. |
 | Microsoft. AppConfiguration. KeyValueDeleted | Anahtar-değer silindiğinde tetiklenir. |
@@ -72,24 +72,24 @@ Anahtar-değer Deleted olayının şeması benzerdir:
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 | Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
 | Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| Kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
-| veri | object | Uygulama yapılandırma olay verileri. |
+| ID | string | Etkinliğin benzersiz tanımlayıcısı. |
+| veri | nesne | Uygulama yapılandırma olay verileri. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| anahtar | string | Değiştirilen veya silinen anahtar-değer anahtarı. |
+| key | string | Değiştirilen veya silinen anahtar-değer anahtarı. |
 | etiket | string | Değiştirilen veya silinen anahtar-değer etiketi. |
-| özelliği | string | Yeni `KeyValueModified` anahtar-değer ETag için. Silinen `KeyValueDeleted` anahtar değerinin ETag 'i için. |
+| özelliği | string | `KeyValueModified`Yeni anahtar-değer ETag için. `KeyValueDeleted`Silinen anahtar değerinin ETag 'i için. |
 
 ## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
 

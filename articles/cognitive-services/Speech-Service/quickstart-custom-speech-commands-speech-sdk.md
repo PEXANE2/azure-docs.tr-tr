@@ -3,19 +3,19 @@ title: "Hızlı başlangıç: konuşma SDK 'Sı ile özel bir komut uygulamasın
 titleSuffix: Azure Cognitive Services
 description: Bu makalede, özel komutlarla bir konuşma SDK 'Sı istemci uygulaması oluşturacaksınız.
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.author: donkim
-ms.openlocfilehash: 186b684cc7e4442d1a8ce14f06e16c839e117a26
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.author: nitinme
+ms.openlocfilehash: f2e8292ccace38e1a167c3ecdfb924589e4ebf0e
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872504"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508939"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Hızlı başlangıç: konuşma SDK 'Sı ile özel bir komut uygulamasına bağlanma (Önizleme)
 
@@ -41,7 +41,7 @@ Ayrıca şunları da yapmanız gerekir:
 
 ## <a name="optional-get-started-fast"></a>İsteğe bağlı: hızlı başlangıç
 
-Bu hızlı başlangıçta, bir istemci uygulamasını özel komutlar uygulamanıza nasıl bağlayabileceğinizi adım adım açıklar. Hemen ' yi kullanmayı tercih ediyorsanız, bu hızlı başlangıçta kullanılan tam, kullanıma hazır kaynak kodu, `quickstart` klasörü altındakı [konuşma SDK örneklerinde](https://aka.ms/csspeech/samples) bulunur.
+Bu hızlı başlangıçta, bir istemci uygulamasını özel komutlar uygulamanıza nasıl bağlayabileceğinizi adım adım açıklar. Hemen ' yi kullanmayı tercih ediyorsanız, bu hızlı başlangıçta kullanılan tam, kullanıma hazır kaynak kodu, klasörü altındaki [konuşma SDK örneklerinde](https://aka.ms/csspeech/samples) bulunur `quickstart` .
 
 ## <a name="step-1-publish-custom-commands-application"></a>1. Adım: özel komutlar uygulaması yayımlama
 
@@ -120,7 +120,7 @@ Tasarım görünümü, uygulamanın kullanıcı arabirimini gösterecek şekilde
 
 Uygulamanın beklendiği gibi çalışması için arka plan kod kaynağını ekleyin. Arka plan kod kaynağı şunları içerir:
 
-- Ve ad alanları için gerekli `using` `Speech` `Speech.Dialog`
+- `using` `Speech` Ve ad alanları için gerekli `Speech.Dialog` deyimler
 - Bir düğme işleyicisine kablolu, mikrofon erişimi sağlamak için basit bir uygulama
 - Uygulamada ileti ve hata sunmak için temel kullanıcı arabirimi yardımcıları
 - Daha sonra doldurulacak başlatma kodu yolu için bir giriş noktası
@@ -129,7 +129,7 @@ Uygulamanın beklendiği gibi çalışması için arka plan kod kaynağını ekl
 
 Arka plan kod kaynağını aşağıdaki gibi ekleyin:
 
-1. **Çözüm Gezgini**' de, arka plan kod kaynak dosyasını `MainPage.xaml.cs` açın (altında `MainPage.xaml`gruplanır)
+1. **Çözüm Gezgini**' de, arka plan kod kaynak dosyasını açın `MainPage.xaml.cs` (altında gruplanır `MainPage.xaml` )
 
 1. Dosyanın içeriğini aşağıdaki kodla değiştirin: 
 
@@ -321,7 +321,7 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
    connector = new DialogServiceConnector(speechCommandsConfig);
    ```
 
-1. Dize `YourApplicationId` `YourSpeechSubscriptionKey`, konuşma aboneliğiniz ve `YourServiceRegion` [bölgeniz](regions.md) için, ve değerlerini kendi değerlerinizle değiştirin
+1. Dize, `YourApplicationId` `YourSpeechSubscriptionKey` `YourServiceRegion` konuşma aboneliğiniz ve [bölgeniz](regions.md) için, ve değerlerini kendi değerlerinizle değiştirin
 
 1. Aşağıdaki kod parçacığını, öğesinin Yöntem gövdesinin sonuna ekleyin`InitializeDialogServiceConnector`
 
@@ -381,7 +381,7 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
    };
    ```
 
-1. Aşağıdaki kod parçacığını `ListenButton_ButtonClicked` `MainPage` sınıfındaki yönteminin gövdesine ekleyin
+1. Aşağıdaki kod parçacığını `ListenButton_ButtonClicked` sınıfındaki yönteminin gövdesine ekleyin `MainPage`
 
    ```csharp
    // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
@@ -405,13 +405,13 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
    }
    ```
 
-1. Değişikliklerinizi kaydetmek için menü çubuğundan **Dosya** > **Tümünü Kaydet** ' i seçin
+1. Değişikliklerinizi kaydetmek için menü çubuğundan **Dosya**  >  **Tümünü Kaydet** ' i seçin
 
 ## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
 
-1. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.** >  Kodun hatasız derlenmesi gerekir.
+1. Menü çubuğundan **Build**  >  uygulamayı derlemek için derleme**Build Solution** ' ı seçin. Kodun hatasız derlenmesi gerekir.
 
-1. Uygulamayı başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya F5 tuşuna basın). **F5** >  **HelloWorld** penceresi görüntülenir.
+1. **Debug**  >  Uygulamayı başlatmak için hata**ayıklamayı Başlat** ' ı seçin (veya **F5**tuşuna basın). **HelloWorld** penceresi görüntülenir.
 
    ![C# ' de örnek UWP Sanal Yardımcısı uygulaması-hızlı başlangıç](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
@@ -424,8 +424,8 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Nasıl yapılır: konuşma SDK 'sı (Önizleme)](./how-to-custom-speech-commands-fulfill-sdk.md)
-> ile istemcideki komutları yerine getirmek[: özel komut parametrelerine doğrulama ekleme (Önizleme)](./how-to-custom-speech-commands-validations.md)
+> [Nasıl yapılır: konuşma SDK 'sı ile istemcide komutları yerine alma (Önizleme)](./how-to-custom-speech-commands-fulfill-sdk.md) 
+>  [Nasıl yapılır: özel komut parametrelerine doğrulama ekleme (Önizleme)](./how-to-custom-speech-commands-validations.md)
 
 ## <a name="sample-source-code"></a>Örnek kaynak kodu
 [GitHub-Voiceassiste](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant) 'da istemci örnek kodlarımıza göz atın

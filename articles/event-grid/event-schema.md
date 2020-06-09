@@ -2,18 +2,18 @@
 title: Azure Event Grid olay şeması
 description: Tüm olaylar için mevcut olan özellikleri ve şemayı açıklar.Olaylar, beş gerekli dize özelliği ve gerekli bir veri nesnesi kümesinden oluşur.
 services: event-grid
-author: banisadr
+author: femila
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
 ms.date: 01/21/2020
-ms.author: babanisa
-ms.openlocfilehash: 7c45b8f634868024a84f9f3b75bb23031c09b40c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: femila
+ms.openlocfilehash: 3104d29b84b08add89e7c19772dffaaa782755a1
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82114012"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559425"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid olay şeması
 
@@ -86,18 +86,18 @@ Tüm olaylar en üst düzey verilere sahiptir:
 | Konu | string | Yes | Olay konusunun yayımcı tarafından tanımlanan yolu. |
 | Türü | string | Yes | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Yes | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| id | string | Yes | Etkinliğin benzersiz tanımlayıcısı. |
-| veri | object | No | Kaynak sağlayıcısına özel olay verileri. |
+| kimlik | string | Yes | Etkinliğin benzersiz tanımlayıcısı. |
+| veri | nesne | Hayır | Kaynak sağlayıcısına özel olay verileri. |
 | dataVersion | string | Hayır, ancak boş bir değerle damgalı olacak. | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
-| metadataVersion | string | Gerekli değildir, ancak dahil ise Event Grid şeması `metadataVersion` ile tam olarak eşleşmelidir (Şu anda yalnızca `1`). Dahil edilmediğinden, Event Grid olayın üzerine damgası eklenir. | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| metadataVersion | string | Gerekli değildir, ancak dahil ise Event Grid şeması ile `metadataVersion` tam olarak eşleşmelidir (Şu anda yalnızca `1` ). Dahil edilmediğinden, Event Grid olayın üzerine damgası eklenir. | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Veri nesnesindeki özellikler hakkında bilgi edinmek için bkz. olay kaynağı:
 
 * [Azure abonelikleri (yönetim işlemleri)](event-schema-subscriptions.md)
 * [Container Kayıt Defteri](event-schema-container-registry.md)
-* [Blob depolama](event-schema-blob-storage.md)
+* [BLOB depolama](event-schema-blob-storage.md)
 * [Event Hubs](event-schema-event-hubs.md)
-* [IoT Hub](event-schema-iot-hub.md)
+* [IoT Hub’ı](event-schema-iot-hub.md)
 * [Media Services](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 * [Kaynak grupları (yönetim işlemleri)](event-schema-resource-groups.md)
 * [Service Bus](event-schema-service-bus.md)
@@ -106,9 +106,9 @@ Veri nesnesindeki özellikler hakkında bilgi edinmek için bkz. olay kaynağı:
 
 Özel konularda, olay yayımcısı veri nesnesini belirler. En üst düzey veriler standart kaynak tanımlı olaylarla aynı alanlara sahip olmalıdır.
 
-Olayları özel konulara yayımlarken, etkinliklerinizin etkinlikleri oluşturun ve bu da abonelerin olayla ilgilenip ilgilenmediğini bilmesini kolaylaştırır. Aboneler olayları filtrelemek ve yönlendirmek için konuyu kullanır. Örneğin, abonelerin bu yolun segmentlerine göre filtreleyebilmesi için olayın gerçekleştiği yolu sağlamayı düşünün. Yol, abonelerin olayları en dar veya genel olarak filtrelemesine olanak sağlar. Örneğin, konuyla ilgili üç segment yolu `/A/B/C` sağlarsanız, aboneler çok sayıda olayı almak için ilk kesime `/A` göre filtreleyebilirsiniz. Bu aboneler, veya `/A/B/C` `/A/D/E`gibi konularla olayları alır. Diğer aboneler, daha dar `/A/B` bir olay kümesi almak için tarafından filtreleyebilirler.
+Olayları özel konulara yayımlarken, etkinliklerinizin etkinlikleri oluşturun ve bu da abonelerin olayla ilgilenip ilgilenmediğini bilmesini kolaylaştırır. Aboneler olayları filtrelemek ve yönlendirmek için konuyu kullanır. Örneğin, abonelerin bu yolun segmentlerine göre filtreleyebilmesi için olayın gerçekleştiği yolu sağlamayı düşünün. Yol, abonelerin olayları en dar veya genel olarak filtrelemesine olanak sağlar. Örneğin, konuyla ilgili üç segment yolu sağlarsanız `/A/B/C` , aboneler `/A` çok sayıda olayı almak için ilk kesime göre filtreleyebilirsiniz. Bu aboneler, veya gibi konularla olayları `/A/B/C` alır `/A/D/E` . Diğer aboneler, daha `/A/B` dar bir olay kümesi almak için tarafından filtreleyebilirler.
 
-Bazen konusu ne olduğu hakkında daha fazla ayrıntı istiyor. Örneğin, **depolama hesapları** yayımcısı bir kapsayıcıya bir dosya eklendiğinde `/blobServices/default/containers/<container-name>/blobs/<file>` konuyu sağlar. Bir abone, bu kapsayıcının tüm olaylarını `/blobServices/default/containers/testcontainer` almak için yola göre filtreleyip depolama hesabındaki diğer kapsayıcıları değil. Abone Ayrıca yalnızca metin dosyalarıyla çalışacak şekilde sonek `.txt` tarafından filtreleyip yönlendirebilir.
+Bazen konusu ne olduğu hakkında daha fazla ayrıntı istiyor. Örneğin, **depolama hesapları** yayımcısı `/blobServices/default/containers/<container-name>/blobs/<file>` bir kapsayıcıya bir dosya eklendiğinde konuyu sağlar. Bir abone, `/blobServices/default/containers/testcontainer` Bu kapsayıcının tüm olaylarını almak için yola göre filtreleyip depolama hesabındaki diğer kapsayıcıları değil. Abone Ayrıca `.txt` yalnızca metin dosyalarıyla çalışacak şekilde sonek tarafından filtreleyip yönlendirebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

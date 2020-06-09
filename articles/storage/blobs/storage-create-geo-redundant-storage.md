@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.custom: mvc
+ms.custom: mvc, tracking-python
 ms.subservice: blobs
-ms.openlocfilehash: 19812ad8e8b81984bb7a314345d5fd53f917d239
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: f7c3ebb1a68d671f63e3239794266c8c24f5906a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856139"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553194"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma
 
@@ -70,7 +70,7 @@ Okuma Erişimli Coğrafi bölge-yedekli (RA-GZRS) depolama hesabı oluşturmak i
 2. **Yeni** sayfadan **depolama hesabı-blob, dosya, tablo, kuyruk ' ı** seçin.
 4. Aşağıdaki bilgileri kullanarak depolama hesabı formunu alttaki resimde gösterildiği gibi doldurun ve **Oluştur**’u seçin:
 
-   | Ayar       | Örnek değer | Açıklama |
+   | Ayar       | Örnek değer | Description |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Abonelik** | *Aboneliğim* | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.azure.com/Subscriptions). |
    | **Kaynak** | *myResourceGroup* | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
@@ -117,7 +117,7 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 Bu uygulamada, depolama hesabınız için bağlantı dizesi sağlamanız gerekir. Bu bağlantı dizesini uygulamayı çalıştıran yerel makine üzerindeki bir ortam değişkeninde depolayabilirsiniz. Ortam değişkenini oluşturmak için İşletim Sisteminize bağlı olarak aşağıdaki örneklerden birini izleyin.
 
-Azure portalında depolama hesabınıza gidin. Depolama hesabınızdaki **Ayarlar** bölümünde **Erişim anahtarları**’nı seçin. Birincil veya ikincil anahtardaki **bağlantı dizesini** kopyalayın. İşletim sisteminize bağlı olarak aşağıdaki komutlardan birini çalıştırın ve yourconnectionstring \<\> öğesini gerçek bağlantı dizeniz ile değiştirin. Bu komut, yerel makinede bir ortam değişkeni kaydeder. Windows 'da, kullanmakta olduğunuz **komut istemi** veya kabuğu yeniden yükleyene kadar ortam değişkeni kullanılamaz.
+Azure portalında depolama hesabınıza gidin. Depolama hesabınızdaki **Ayarlar** bölümünde **Erişim anahtarları**’nı seçin. Birincil veya ikincil anahtardaki **bağlantı dizesini** kopyalayın. İşletim sisteminize bağlı olarak, \<yourconnectionstring\> gerçek bağlantı dizenizle değiştirerek aşağıdaki komutlardan birini çalıştırın. Bu komut, yerel makinede bir ortam değişkeni kaydeder. Windows 'da, kullanmakta olduğunuz **komut istemi** veya kabuğu yeniden yükleyene kadar ortam değişkeni kullanılamaz.
 
 ### <a name="linux"></a>Linux
 
@@ -135,7 +135,7 @@ setx storageconnectionstring "<yourconnectionstring>"
 
 Uygulamada, depolama hesabı kimlik bilgilerinizi sağlamanız gerekir. Bu bilgileri, uygulamayı çalıştıran yerel makinedeki ortam değişkenlerine kaydedebilirsiniz. Ortam değişkenlerini oluşturmak için Işletim sisteminize bağlı olarak aşağıdaki örneklerden birini izleyin.
 
-Azure portalında depolama hesabınıza gidin. Depolama hesabınızdaki **Ayarlar** bölümünde **Erişim anahtarları**’nı seçin. **Depolama hesabı adını** ve **anahtar** değerlerini aşağıdaki \<komutlara yapıştırarak youraccountname\> ve \<accountkey\> yer tutucularını değiştirin. Bu komut, ortam değişkenlerini yerel makineye kaydeder. Windows 'da, kullanmakta olduğunuz **komut istemi** veya kabuğu yeniden yükleyene kadar ortam değişkeni kullanılamaz.
+Azure portalında depolama hesabınıza gidin. Depolama hesabınızdaki **Ayarlar** bölümünde **Erişim anahtarları**’nı seçin. **Depolama hesabı adını** ve **anahtar** değerlerini aşağıdaki komutlara yapıştırın \<youraccountname\> ve \<youraccountkey\> yer tutucuları değiştirin. Bu komut, ortam değişkenlerini yerel makineye kaydeder. Windows 'da, kullanmakta olduğunuz **komut istemi** veya kabuğu yeniden yükleyene kadar ortam değişkeni kullanılamaz.
 
 ### <a name="linux"></a>Linux
 
@@ -153,7 +153,7 @@ setx accountkey "<youraccountkey>"
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Bu örneği çalıştırmak için, depolama hesabı kimlik bilgilerinizi `.env.example` dosyaya eklemeniz ve sonra olarak `.env`yeniden adlandırmanız gerekir.
+Bu örneği çalıştırmak için, depolama hesabı kimlik bilgilerinizi `.env.example` dosyaya eklemeniz ve sonra olarak yeniden adlandırmanız gerekir `.env` .
 
 ```
 AZURE_STORAGE_ACCOUNT_NAME=<replace with your storage account name>
@@ -162,7 +162,7 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 Bu bilgileri, depolama hesabınıza giderek ve **Ayarlar** bölümünde **erişim anahtarları** ' nı seçerek Azure Portal bulabilirsiniz.
 
-Gerekli bağımlılıkları yükler. Bunu yapmak için bir komut istemi açın, örnek klasöre gidin ve girin `npm install`.
+Gerekli bağımlılıkları yükler. Bunu yapmak için bir komut istemi açın, örnek klasöre gidin ve girin `npm install` .
 
 ---
 
@@ -192,7 +192,7 @@ Depolama nesnesi yeniden deneme işlevi, doğrusal bir yeniden deneme ilkesine a
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Örneği çalıştırmak için bir komut istemi açın, örnek klasöre gidin ve girin `node index.js`.
+Örneği çalıştırmak için bir komut istemi açın, örnek klasöre gidin ve girin `node index.js` .
 
 Örnek, BLOB depolama hesabınızda bir kapsayıcı oluşturur, bu kapsayıcıya **HelloWorld. png** yükler ve sonra kapsayıcının ve görüntünün ikincil bölgeye çoğaltılıp çoğaltılmadığını sürekli olarak denetler. Çoğaltma sonrasında, indirmek veya çıkmak için **D** veya **Q** (sonra ENTER ile) girmenizi ister. Çıktın aşağıdaki örneğe benzer şekilde görünmesi gerekir:
 

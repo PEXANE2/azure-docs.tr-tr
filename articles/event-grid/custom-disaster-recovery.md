@@ -2,17 +2,17 @@
 title: Azure Event Grid özel konularda olağanüstü durum kurtarma
 description: Bu öğreticide, Event Grid hizmeti bir bölgede sağlıksız hale gelirse, olay mimarinizi kurtarmak için nasıl ayarlanacağı konusunda size yol gösterilir.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: tutorial
 ms.date: 01/21/2020
-ms.author: babanisa
-ms.openlocfilehash: 87f8f79e2cf125fa5735653153d8fcaa781f5200
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: femila
+ms.openlocfilehash: d2b6d8f8433d1eef34e554b0e0fccbf8b2cbab94
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76511527"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557791"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Event Grid özel konular için kendi olağanüstü durum kurtarmayı oluşturun
 Olağanüstü durum kurtarma, uygulama işlevselliğinin önemli bir kaybından kurtarılmasına odaklanır. Bu öğretici, Event Grid hizmeti belirli bir bölgede sağlıksız hale gelirse, olay mimarinizi kurtarmak üzere nasıl ayarlayabileceğinizi size yol gösterecektir.
@@ -93,7 +93,7 @@ Bölgesel olarak yedekli konu ve abonelik kurulumuna sahip olduğunuza göre, is
 
 ### <a name="basic-client-side-implementation"></a>Temel istemci tarafı uygulama
 
-Aşağıdaki örnek kod, öncelikle birincil konu başlığında her zaman yayımlamayı deneyecek basit bir .NET yayımcısıdır. Başarılı olmazsa ikincil konunun yükünü devreder. Her iki durumda da, bir GET işlemi gerçekleştirerek diğer konunun Sağlık API 'sini de denetler `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health`. **/Api/Health** uç NOKTASıNDA bir get yapıldığında sağlıklı bir konu, her zaman **200 Tamam** ile yanıt vermelidir.
+Aşağıdaki örnek kod, öncelikle birincil konu başlığında her zaman yayımlamayı deneyecek basit bir .NET yayımcısıdır. Başarılı olmazsa ikincil konunun yükünü devreder. Her iki durumda da, bir GET işlemi gerçekleştirerek diğer konunun Sağlık API 'sini de denetler `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health` . **/Api/Health** uç NOKTASıNDA bir get yapıldığında sağlıklı bir konu, her zaman **200 Tamam** ile yanıt vermelidir.
 
 ```csharp
 using System;

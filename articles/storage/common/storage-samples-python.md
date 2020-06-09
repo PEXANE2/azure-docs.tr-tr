@@ -7,12 +7,13 @@ ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: fc3079d316a252bc5a658017cb6b04fe6ef20c2f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 439e645369cd063e3084b5d975b3d1672e20a73e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77485837"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554023"
 ---
 # <a name="azure-storage-samples-using-v12-python-client-libraries"></a>V12 Python istemci kitaplıklarını kullanan Azure depolama örnekleri
 

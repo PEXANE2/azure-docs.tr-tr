@@ -10,12 +10,12 @@ author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e0788f978fd25356b230a7923def6cbbea3dc305
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 717db5ee9d14074b6bd2fdae78847e0ad0fa2255
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835470"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561453"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>İstek kotası artar ve Azure SYNAPSE Analytics desteği alınır
 
@@ -53,59 +53,89 @@ Azure SYNAPSE Analytics için Azure portal yeni bir destek isteği oluşturmak i
 
    ![Kota türü seçin](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-type.png)
 
-1. **Ayrıntılar** penceresinde, ek bilgi girmek Için **Ayrıntılar sağla** ' yı seçin.
+1. **Ayrıntılar** penceresinde, ek bilgi girmek Için **ayrıntıları girin** ' i seçin.
 
    !["Ayrıntıları sağla" bağlantısı](./media/sql-data-warehouse-get-started-create-support-ticket/provide-details-link.png)
 
 ## <a name="quota-request-types"></a>Kota istek türleri
 
-**Ayrıntıları sağla** 'ya tıkladığınızda ek bilgi eklemenize olanak tanıyan **Kota ayrıntıları** penceresi görüntülenir. Aşağıdaki bölümlerde, Azure SYNAPSE Analytics için kullanılabilen farklı kota istekleri açıklanır.
+**Ayrıntıları gir** ' i seçtiğinizde, ek bilgi eklemenize olanak tanıyan **Kota ayrıntıları** penceresi görüntülenir. Aşağıdaki bölümlerde, Azure SYNAPSE Analytics için kullanılabilen farklı kota istekleri açıklanır.
 
-### <a name="data-warehouse-units-dwus-per-server"></a>Sunucu başına veri ambarı birimleri (DWU)
+### <a name="synapse-sql-pool-data-warehouse-units-dwus-per-server"></a>Sunucu başına SYNAPSE SQL havuzu veri ambarı birimleri (DWUs)
 
 Sunucu başına DWU 'da artış istemek için aşağıdaki adımları kullanın.
 
-1. Sunucu kota türü **başına veri ambarı birimlerini (DTU)** seçin.
+1. **Sunucu başına SYNAPSE SQL havuzunu DWUs** kota türünü seçin.
 
-1. **Kaynak** listesinde, hedeflenecek kaynağı seçin.
+1. Açılan listeyi kullanarak kota artışını uygulamak istediğiniz **kaynağı** seçin.
 
-1. **İstek kotası** alanına istediğiniz yeni DWU limitini girin.
+1. Yeni kotayı **istek kotası** bölümüne girin.
+
+1. **Kaydet ve devam et**’i seçin.
 
    ![DWU kota ayrıntıları](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-dwus.png)
 
+
 ### <a name="servers-per-subscription"></a>Abonelik başına sunucu sayısı
 
-Abonelik başına sunucu sayısında artış istemek için aşağıdaki adımları kullanın.
+Abonelik başına sunucu sayısında artış istemek için aşağıdaki adımları gerçekleştirmeniz gerekir:
 
-1. **Abonelik başına sunucu** kotası türünü seçin.
+1. Kota türü olarak **abonelik başına SQL sunucularını** seçin.
 
 1. **Konum** listesinde, kullanılacak Azure bölgesini seçin. Kota her bölgede abonelik başına olur.
 
-1. **Yeni kota** alanına, bu bölgedeki en fazla sunucu sayısı için isteğinizi girin.
+1. **İstek kotası** alanına, bu bölgedeki en fazla sunucu sayısı için isteğinizi girin.
 
    ![Sunucu kotası ayrıntıları](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-servers.png)
 
+
+
+1. **Kaydet ve devam et**’i seçin.
+
+Bazı teklif türleri her bölgede kullanılamaz. Aşağıdaki hatayı görebilirsiniz:
+
+![Bölge erişimi hatası](./media/sql-data-warehouse-get-started-create-support-ticket/region-access-error.png)
+
 ### <a name="enable-subscription-access-to-a-region"></a>Bir bölgeye abonelik erişimini etkinleştirme
 
-Bazı teklif türleri her bölgede kullanılamaz. Aşağıdakiler gibi bir hata görebilirsiniz:
+Bir abonelik için bölge erişimini etkinleştirmek üzere aşağıdaki adımları gerçekleştirmeniz gerekir:  
 
-`This location is not available for subscription`
+1. **SYNAPSE SQL Havuzu (veri ambarı) bölgesine erişim** kotası türünü seçin.
 
-Aboneliğiniz belirli bir bölgede erişime ihtiyacı varsa, lütfen erişim istemek için **diğer kota isteği** seçeneğini kullanın. İsteğiniz içinde, bölge için etkinleştirmek istediğiniz teklif ve SKU ayrıntılarını belirtin. Teklif ve SKU seçeneklerini araştırmak için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/synapse-analytics/).
+1. Açılan listeden bir **konum** seçerek bölgeyi seçin.
+
+1. DWU performansı gereksinimini **DWU gerekli** bölümünde belirtin.
+
+1. **İş gereksinimlerinin açıklamasını**girin. 
+
+1. **Kaydet ve devam et**’i seçin.
+
+![Bölge erişimi](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-region.png)
+
+
+### <a name="for-other-quota-requests"></a>Diğer kota istekleri için
+
+Diğer kota istek türleri için kota türü açılan menüsünden **diğer kota isteği** ' ni seçin:
 
 ![Diğer kota ayrıntıları](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-whitelisting.png)
 
 ## <a name="submit-your-request"></a>İsteğinizi gönderin
 
-Son adım, SQL veritabanı destek isteğinizin geri kalan ayrıntılarını doldurmasıdır. Ardından şunu seçin: **İleri: Gözden geçir + oluştur >>** . Ardından istek ayrıntılarını gözden geçirip **Oluştur**'a tıklayarak isteği gönderin.
+Son adım, SQL veritabanı destek isteğinizin geri kalan ayrıntılarını doldurmasıdır. Ardından Ileri ' yi seçin **: gözden geçir + oluştur>>**.
+
+![İnceleme ayrıntılarını gözden geçirin](./media/sql-data-warehouse-get-started-create-support-ticket/review-create-details.png)
+
+İstek ayrıntılarını inceledikten sonra, isteği göndermek için **Oluştur** ' u seçin.
+
+![Bilet oluştur](./media/sql-data-warehouse-get-started-create-support-ticket/create-ticket.png)
 
 ## <a name="monitor-a-support-ticket"></a>Destek biletini izleme
 
-Destek isteğini gönderdikten sonra, Azure destek ekibi sizinle iletişim kuracaktır. İstek durumunuzu ve ayrıntılarını kontrol etmek için panoda bulunan **Tüm destek istekleri** kutucuğuna tıklayın.
+Destek isteğini gönderdikten sonra, Azure destek ekibi sizinle iletişim kuracaktır. İstek durumunuzu ve ayrıntılarını denetlemek için panoda **tüm destek istekleri** ' ni seçin.
 
 ![Durumu kontrol etme](./media/sql-data-warehouse-get-started-create-support-ticket/monitor-ticket.png)
 
 ## <a name="other-resources"></a>Diğer kaynaklar
 
-Azure SYNAPSE Analytics Community ile [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) veya [Azure SQL veri ambarı için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)aracılığıyla da bağlanabilirsiniz.
+Azure SYNAPSE Analytics Community ile [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) veya [Azure SYNAPSE Analytics için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)aracılığıyla da bağlanabilirsiniz.
 

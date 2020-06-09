@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 02/04/2020
+ms.date: 06/07/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e170a789727fb0de36705895245cc638d30ee3d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f04e5525610e86f460ab799bedf492381404c9e
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745500"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488656"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>SYNAPSE SQL havuzu kullanarak veri yüklemeye yönelik en iyi uygulamalar
 
@@ -28,8 +28,6 @@ Gecikme süresini en aza indirmek için depolama katmanınızı ve SQL havuzunuz
 
 Verileri ORC Dosya Biçimi’ne aktarırken, verilerde büyük metin sütunları varsa Java belleği yetersiz hatası gibi hatalar alabilirsiniz. Bu sınırlama için bir geçici çözüm olarak, sütunların yalnızca bir alt kümesini dışarı aktarın.
 
-PolyBase 1.000.000 bayttan daha fazla veri içeren satırları yükleyemez. Azure Blob depolama veya Azure Data Lake Store’da verileri metin dosyalarına yerleştirdiğinizde, dosyaların 1.000.000 bayttan daha az veri içermesi gerekir. Bu bayt sınırlaması, tablo şemasından bağımsız olarak geçerlidir.
-
 Tüm dosya biçimleri farklı performans özelliklerine sahiptir. En hızlı yükleme için, sıkıştırılan sınırlandırılmış metin dosyaları kullanın. UTF-8 ve UTF-16 arasındaki performans farkı azdır.
 
 Büyük sıkıştırılmış dosyaları daha küçük sıkıştırılmış dosyalara bölün.
@@ -38,38 +36,47 @@ Büyük sıkıştırılmış dosyaları daha küçük sıkıştırılmış dosya
 
 En yüksek yükleme hızı için aynı anda yalnızca bir yük işi çalıştırın. Bu uygun değilse, eşzamanlı olarak en az sayıda yük çalıştırın. Büyük bir yükleme işi bekleliyorsanız, yüklemeden önce SQL havuzunuzu ölçeklendirmeniz gerekir.
 
-Yükleri uygun işlem kaynaklarıyla çalıştırmak için, yükleri çalıştırmaya ayrılmış yükleme kullanıcıları oluşturun. Her yükleme kullanıcısını belirli bir kaynak sınıfına veya iş yükü grubuna atayın. Yük çalıştırmak için, yükleme kullanıcılarından biri olarak oturum açın ve sonra yükü çalıştırın. Yük, kullanıcının kaynak sınıfıyla çalıştırılır.  
-
-> [!NOTE]
-> Bu yöntem bir kullanıcının kaynak sınıfını geçerli kaynak sınıfının ihtiyacına uygun olarak değiştirmeye çalışmaktan daha basittir.
+Yükleri uygun işlem kaynaklarıyla çalıştırmak için, yükleri çalıştırmaya ayrılmış yükleme kullanıcıları oluşturun. Her yükleme kullanıcısını belirli bir iş yükü grubuna sınıflandırın. Yük çalıştırmak için, yükleme kullanıcılarından biri olarak oturum açın ve sonra yükü çalıştırın. Yük, kullanıcının iş yükü grubuyla çalışır.  
 
 ### <a name="example-of-creating-a-loading-user"></a>Yükleme kullanıcısı oluşturmayla ilgili örnek
 
-Bu örnekte, staticrc20 kaynak sınıfı için bir yükleme kullanıcısı oluşturulmaktadır. İlk adım, **ana öğeye bağlanmak** ve oturum açma bilgisi oluşturmaktır.
+Bu örnek, belirli bir iş yükü grubuna sınıflandırılmış bir yükleme kullanıcısı oluşturur. İlk adım, **ana öğeye bağlanmak** ve oturum açma bilgisi oluşturmaktır.
 
 ```sql
    -- Connect to master
-   CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
+   CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-SQL havuzuna bağlanın ve bir kullanıcı oluşturun. Aşağıdaki kod, mySampleDataWarehouse adlı veritabanına bağlı olduğunuzu varsayar. LoaderRC20 adlı bir kullanıcının nasıl oluşturulacağını gösterir ve bir veritabanında kullanıcı denetimi izni verir. Ardından, kullanıcıyı staticrc20 veritabanı rolünün bir üyesi olarak ekler.  
+SQL havuzuna bağlanın ve bir kullanıcı oluşturun. Aşağıdaki kod, mySampleDataWarehouse adlı veritabanına bağlı olduğunuzu varsayar. Yükleyici adlı bir kullanıcının nasıl oluşturulacağını gösterir ve [Copy ifadesini](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)kullanarak tablo oluşturma ve yükleme izinleri verir. Daha sonra kullanıcıyı en fazla kaynakla birlikte DataLoads iş yükü grubuna sınıflandırır. 
 
 ```sql
-   -- Connect to the database
-   CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
-   GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
-   EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
+   -- Connect to the SQL pool
+   CREATE USER loader FOR LOGIN loader;
+   GRANT ADMINISTER DATABASE BULK OPERATIONS TO loader;
+   GRANT INSERT ON <yourtablename> TO loader;
+   GRANT SELECT ON <yourtablename> TO loader;
+   GRANT CREATE TABLE TO loader;
+   GRANT ALTER ON SCHEMA::dbo TO loader;
+   
+   CREATE WORKLOAD GROUP DataLoads
+   WITH ( 
+      MIN_PERCENTAGE_RESOURCE = 100
+       ,CAP_PERCENTAGE_RESOURCE = 100
+       ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 100
+    );
+
+   CREATE WORKLOAD CLASSIFIER [wgcELTLogin]
+   WITH (
+         WORKLOAD_GROUP = 'DataLoads'
+       ,MEMBERNAME = 'loader'
+   );
 ```
 
-StaticRC20 kaynak sınıfları için kaynaklarla bir yük çalıştırmak için, LoaderRC20 olarak oturum açın ve yükü çalıştırın.
+Yükleme iş yükü grubu için kaynaklarla bir yük çalıştırmak için, yükleyici olarak oturum açın ve yükü çalıştırın.
 
-Yükleri dinamik yerine statik kaynak sınıfları altında çalıştırın. Statik kaynak sınıflarının kullanılması, [veri ambarı birimlerinizde](what-is-a-data-warehouse-unit-dwu-cdwu.md)bağımsız olarak aynı kaynakları garanti eder. Bir dinamik kaynak sınıfı kullanırsanız, kaynaklar hizmet düzeyinize göre değişir.
+## <a name="allowing-multiple-users-to-load-polybase"></a>Birden çok kullanıcının yüklenmesine izin verme (PolyBase)
 
-Dinamik sınıflar için, daha düşük bir hizmet düzeyi, yükleme kullanıcınız için daha büyük bir kaynak sınıfı kullanmanız gerektiğini gösteriyor olabilir.
-
-## <a name="allowing-multiple-users-to-load"></a>Birden çok kullanıcının yüklemesine izin verme
-
-Genellikle birden çok kullanıcının bir SQL havuzuna veri yüklemesi gerekir. [Select (Transact-SQL) olarak Create Table](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ile yükleme, veritabanının denetim izinlerini gerektirir.  CONTROL izinleri tüm şemalara denetim erişimi verir.
+Genellikle birden çok kullanıcının bir SQL havuzuna veri yüklemesi gerekir. [Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (POLYBASE) olarak Create Table ile yükleme, veritabanının denetim izinlerini gerektirir.  CONTROL izinleri tüm şemalara denetim erişimi verir.
 
 Tüm yükleme kullanıcılarının tüm şemalarda denetim erişimine sahip olmasını istemeyebilirsiniz. İzinleri sınırlandırmak için, DENY CONTROL deyimini kullanabilirsiniz.
 
@@ -104,7 +111,7 @@ Bellek baskısı olduğunda, columnstore dizini en yüksek sıkıştırma oranla
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>SqLBulkCopy API veya bcp kullanırken toplu iş boyutunu artır
 
-PolyBase ile yükleme, SQL havuzu ile en yüksek performansı sağlar. Yüklemek için PolyBase 'i kullanamaz ve [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) veya [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanması gerekiyorsa, daha iyi aktarım hızı için toplu iş boyutunu artırmayı göz önünde bulundurmanız gerekir.
+COPY ifadesiyle yükleme, SQL havuzu ile en yüksek aktarım hızını sağlar. Yüklemek için KOPYAYı kullanamaz ve [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) veya [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanması gerekiyorsa, daha iyi aktarım hızı için toplu iş boyutunu artırmayı göz önünde bulundurmanız gerekir.
 
 > [!TIP]
 > 100 K ila 1M satır arasında bir toplu iş boyutu en iyi toplu iş boyutu kapasitesini belirlemek için önerilen temeldir.
@@ -142,7 +149,7 @@ create statistics [Speed] on [Customer_Speed] ([Speed]);
 create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 ```
 
-## <a name="rotate-storage-keys"></a>Depolama anahtarlarını döndürme
+## <a name="rotate-storage-keys-polybase"></a>Depolama anahtarlarını Döndür (PolyBase)
 
 Blob depolamanızın erişim anahtarlarını düzenli olarak değiştirmek iyi bir güvenlik uygulamasıdır. Blob depolama hesabınız için anahtarları geçirmenizi sağlayan iki depolama anahtarınız bulunur.
 
@@ -168,6 +175,6 @@ Temel dış veri kaynaklarında başka bir değişiklik yapılması gerekmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- PolyBase ve Ayıklama, Yükleme ve Dönüştürme (ELT) işlemi hakkında daha fazla bilgi edinmek için, bkz. [SQL Veri Ambarı için ELT Tasarlama](design-elt-data-loading.md).
-- Yükleme öğreticisi için, bkz. [Azure blob depolamadan verileri Azure SQL Veri Ambarı’na yüklemek için PolyBase kullanma](load-data-from-azure-blob-storage-using-polybase.md).
+- Ayıklama, yükleme ve dönüştürme (ELT) işlemi tasarlarken COPY veya PolyBase hakkında daha fazla bilgi edinmek için bkz. [SQL veri ambarı Için DESIGN ELT](design-elt-data-loading.md).
+- Yükleme öğreticisi için, [Azure Blob depolama 'Dan SYNAPSE SQL 'e veri yüklemek üzere Copy Ifadesini kullanın](load-data-from-azure-blob-storage-using-polybase.md).
 - Veri yüklerini izlemek için bkz. [DMV’leri kullanarak iş yükünüzü izleme](sql-data-warehouse-manage-monitor.md).

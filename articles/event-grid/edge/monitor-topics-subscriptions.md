@@ -1,19 +1,19 @@
 ---
 title: Konuları ve olay aboneliklerini izleme-Azure Event Grid IoT Edge | Microsoft Docs
 description: Konuları ve olay aboneliklerini izleme
-author: banisadr
-ms.author: babanisa
+author: femila
+ms.author: femila
 ms.reviewer: spelluru
 ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4fbc5232722bfb08bde9be51d44e8e8d7514570
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77086666"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554348"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>Konuları ve olay aboneliklerini izleme
 
@@ -21,7 +21,7 @@ Event Grid Edge 'de, [Prometheus Exposition biçimindeki](https://prometheus.io/
 
 ## <a name="enable-metrics"></a>Ölçümleri etkinleştir
 
-`metrics__reporterType` Ortam değişkenini kapsayıcı oluşturma seçeneklerinde olarak `prometheus` ayarlayarak ölçümleri yayma için modülü yapılandırın:
+`metrics__reporterType`Ortam değişkenini kapsayıcı oluşturma seçeneklerinde olarak ayarlayarak ölçümleri yayma için modülü yapılandırın `prometheus` :
 
  ```json
         {
@@ -40,7 +40,7 @@ Event Grid Edge 'de, [Prometheus Exposition biçimindeki](https://prometheus.io/
         }
  ```    
 
-Ölçümler, http ve `5888/metrics` `4438/metrics` https için modülünde kullanılabilir olacaktır. Örneğin, `http://<modulename>:5888/metrics?api-version=2019-01-01-preview` http için. Bu noktada, ölçüm modülü bu [örnek mimaride](https://github.com/veyalla/ehm)olduğu gibi ölçümleri toplamak için uç noktayı yoklayabilirler.
+Ölçümler `5888/metrics` , http ve https için modülünde kullanılabilir olacaktır `4438/metrics` . Örneğin, `http://<modulename>:5888/metrics?api-version=2019-01-01-preview` http için. Bu noktada, ölçüm modülü bu [örnek mimaride](https://github.com/veyalla/ehm)olduğu gibi ölçümleri toplamak için uç noktayı yoklayabilirler.
 
 ## <a name="available-metrics"></a>Mevcut ölçümler
 
@@ -48,7 +48,7 @@ Hem konular hem de olay abonelikleri, olay teslimi ve modül performansı hakkı
 
 ### <a name="topic-metrics"></a>Konu ölçümleri
 
-| Ölçüm | Açıklama |
+| Metric | Açıklama |
 | ------ | ----------- |
 | Alınan olayları | Konuya yayınlanan olay sayısı
 | UnmatchedEvents | Konuya yayımlanan ve olay aboneliğiyle eşleşmeyen ve bırakılan olay sayısı
@@ -60,7 +60,7 @@ Hem konular hem de olay abonelikleri, olay teslimi ve modül performansı hakkı
 
 ### <a name="event-subscription-metrics"></a>Olay aboneliği ölçümleri
 
-| Ölçüm | Açıklama |
+| Metric | Açıklama |
 | ------ | ----------- |
 | Deliverybaşarılı sayısı | Yapılandırılmış uç noktaya başarıyla teslim edilen olay sayısı
 | DeliveryFailureCounts | Yapılandırılmış uç noktaya teslim edilemedi olay sayısı

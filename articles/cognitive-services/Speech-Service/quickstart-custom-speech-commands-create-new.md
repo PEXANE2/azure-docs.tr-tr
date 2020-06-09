@@ -3,19 +3,19 @@ title: 'Hızlı başlangıç: özel komutlar önizleme uygulaması oluşturma-ko
 titleSuffix: Azure Cognitive Services
 description: Bu makalede barındırılan özel komutlar önizleme uygulaması oluşturup test edersiniz. Uygulama, utbotları işleyecek.
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.author: donkim
-ms.openlocfilehash: 80111ff370f3a5412b45adc04c82c9dee103c01d
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.author: nitinme
+ms.openlocfilehash: 5b54923bb667053ffc886b335ab9d1b0cf4cb754
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142359"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509364"
 ---
 # <a name="quickstart-create-a-custom-commands-preview-app"></a>Hızlı başlangıç: özel komutlar önizleme uygulaması oluşturma
 
@@ -66,7 +66,7 @@ Uygulama, "TV 'yi açma" gibi, "Tamam, TV 'yi açma" gibi basit bir iletiyle yan
       > [!NOTE]
       > **Kaynak grubu kutusuna kaynak** grubu adı girerek bir kaynak grubu oluşturabilirsiniz. **Oluştur**' u seçtiğinizde kaynak grubu oluşturulur.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 1. Proje oluşturulduktan sonra seçin.
 
     Artık yeni özel komutlar uygulamanıza ilişkin bir genel bakış görmeniz gerekir.
@@ -93,12 +93,12 @@ Tek bir utterlik alacak ve iletiyle yanıt verecek basit bir komut oluşturalım
 
 1. Sol bölmenin en üstünde bulunan **Yeni komut** ' i seçerek bir komut oluşturun. **Yeni komut** penceresi açılır.
 1. **Ad** kutusuna **turnOn**girin.
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 Orta bölmede komutun özellikleri listelenir:
 
 
-| Yapılandırma            | Açıklama                                                                                                                 |
+| Yapılandırma            | Description                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | **Örnek cümleler** | Kullanıcının komutu tetikleyebilmesi için söyleme örnekleri.                                                                 |
 | **Parametreler**       | Komutu tamamlaması için gereken bilgiler.                                                                                |
@@ -130,7 +130,7 @@ Orta bölmede komutun özellikleri listelenir:
 Şimdi aşağıdaki yapılandırmaya sahip bir tamamlama kuralı ekleyin. Bu kural kullanıcıya bir karşılama eyleminin alındığını söyler.
 
 
-| Ayar    | Önerilen değer                          | Açıklama                                        |
+| Ayar    | Önerilen değer                          | Description                                        |
 | ---------- | ---------------------------------------- | -------------------------------------------------- |
 | **Adı**  | **ConfirmationResponse**                  | Kuralın amacını açıklayan bir ad.          |
 | **Koşullar** | Yok                                     | Kuralın ne zaman çalıştırılabilirler olduğunu belirleme koşulları.    |

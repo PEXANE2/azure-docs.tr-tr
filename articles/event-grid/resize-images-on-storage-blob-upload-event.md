@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 77b801837be80749ca73dd4ae5c526a7980e83e0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 92962c376e2b800a327f44c4cad5cd9fdd4cab8d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652731"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560502"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Öğretici: Event Grid kullanarak karşıya yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirme
 
@@ -37,7 +37,7 @@ Var olan bir görüntü yükleme uygulamasına yeniden boyutlandırma işlevini 
 
 ---
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure Depolama hesabı oluşturma
@@ -75,14 +75,19 @@ Azure İşlevleri, genel bir depolama hesabı gerektirir. Önceki öğreticide o
     ```azurecli-interactive
     resourceGroupName="myResourceGroup"
     ```
-2. Azure Işlevlerinin gerektirdiği yeni depolama hesabının adı için bir değişken ayarlayın.
+2. Oluşturulacak kaynakların konumunu tutacak bir değişken ayarlayın. 
+
+    ```azurecli-interactive
+    location="eastus"
+    ```    
+3. Azure Işlevlerinin gerektirdiği yeni depolama hesabının adı için bir değişken ayarlayın.
     ```azurecli-interactive
     functionstorage="<name of the storage account to be used by the function>"
     ```
-3. Azure işlevi için depolama hesabı oluşturun.
+4. Azure işlevi için depolama hesabı oluşturun.
 
     ```azurecli-interactive
-    az storage account create --name $functionstorage --location southeastasia \
+    az storage account create --name $functionstorage --location $location \
     --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
     ```
 
@@ -101,7 +106,7 @@ Aşağıdaki komutta kendi benzersiz işlev uygulamanızın adını sağlayın. 
 
     ```azurecli-interactive
     az functionapp create --name $functionapp --storage-account $functionstorage \
-      --resource-group $resourceGroupName --consumption-plan-location southeastasia \
+      --resource-group $resourceGroupName --consumption-plan-location $location \
       --functions-version 2
     ```
 
@@ -114,7 +119,6 @@ Aşağıdaki komutta kendi benzersiz işlev uygulamanızın adını sağlayın. 
 # <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
 
 ```azurecli-interactive
-blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
 storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
   --name $blobStorageAccount --query connectionString --output tsv)
 
@@ -126,8 +130,6 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
 # <a name="nodejs-v10-sdk"></a>[Node. js Ile v10 arasındaki SDK](#tab/nodejsv10)
 
 ```azurecli-interactive
-blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
-
 blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName \
   -n $blobStorageAccount --query [0].value --output tsv)
 
@@ -204,13 +206,14 @@ Olay aboneliği, belirli bir uç noktaya gönderilmesini istediğiniz, sağlayı
     
     ![Azure portalında işlevden olay aboneliği oluşturma](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
-    | Ayar      | Önerilen değer  | Açıklama                                        |
+    | Ayar      | Önerilen değer  | Description                                        |
     | ------------ | ---------------- | -------------------------------------------------- |
     | **Adı** | imageresizersub | Yeni olay aboneliğinizi tanımlayan ad. |
     | **Konu türü** | Depolama hesapları | Depolama hesabı olay sağlayıcısını seçin. |
     | **Abonelik** | Azure aboneliğiniz | Varsayılan olarak, geçerli Azure aboneliğiniz seçili durumdadır. |
     | **Kaynak grubu** | myResourceGroup | **Var olanı kullan**’ı seçin ve bu öğreticide kullandığınız kaynak grubunu belirleyin. |
     | **Kaynak** | Blob depolama hesabınız | Oluşturduğunuz Blob depolama hesabını seçin. |
+    | **Sistem konu adı** | ımatoragesyıstopic | Sistem konusu için bir ad belirtin. Sistem konuları hakkında bilgi edinmek için bkz. [sistem konularına genel bakış](system-topics.md). |    
     | **Olay türleri** | Oluşturulan blob | **Oluşturulan blob** dışındaki tüm türlerin işaretini kaldırın. Yalnızca `Microsoft.Storage.BlobCreated` türündeki olaylar işleve geçirilir. |
     | **Uç nokta türü** | otomatik oluşturulmuş | **Azure işlevi**olarak önceden tanımlanmış. |
     | **Uç Nokta** | otomatik oluşturulmuş | İşlevin adı. Bu durumda, bunun **küçük resmi**. |

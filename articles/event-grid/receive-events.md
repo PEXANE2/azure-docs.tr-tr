@@ -2,18 +2,18 @@
 title: Azure Event Grid bir HTTP uç noktasına olay alma
 description: Bir HTTP uç noktasının nasıl doğrulanacağını, sonra Azure Event Grid olayların nasıl alınacağını ve seri durumdan kaldırılacağını açıklar
 services: event-grid
-author: banisadr
+author: femila
 manager: darosa
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
-ms.author: babanisa
-ms.openlocfilehash: 7c363fd4e55fdd6fe04a099ac833a256bbfd2eb2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.author: femila
+ms.openlocfilehash: dd7535030ea4f6d6769630e463618faab62944a0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116977"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558464"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>HTTP uç noktasına olayları alma
 
@@ -22,7 +22,7 @@ Bu makalede bir olay aboneliğinden olayları almak ve sonra olayları almak ve 
 > [!NOTE]
 > Event Grid ile bir Azure Işlevi tetiklendiğinde [Event Grid tetikleyicisi](../azure-functions/functions-bindings-event-grid.md) kullanmanız **önemle** önerilir. Burada genel Web kancası tetikleyicisi kullanımı gösterim amaçlıdır ' dir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 HTTP ile tetiklenen bir işlev içeren bir işlev uygulamasına ihtiyacınız vardır.
 

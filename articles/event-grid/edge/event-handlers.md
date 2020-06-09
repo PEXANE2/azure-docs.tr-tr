@@ -1,19 +1,19 @@
 ---
 title: Olay Işleyicileri ve hedefleri-Azure Event Grid IoT Edge | Microsoft Docs
 description: Event Grid uç tarafında olay Işleyicileri ve hedefler
-author: banisadr
-ms.author: babanisa
+author: femila
+ms.author: femila
 ms.reviewer: spelluru
 ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 35bf5af90aa5f0456aa8d68f0e4e8aaacc6cf84f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e144461b80dca2cf02c0cc06d7feee882293848
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76849753"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557629"
 ---
 # <a name="event-handlers-and-destinations-in-event-grid-on-edge"></a>Event Grid uç tarafında olay Işleyicileri ve hedefler
 
@@ -23,7 +23,7 @@ Bu makalede, her birinin nasıl yapılandırılacağı hakkında bilgi verilmekt
 
 ## <a name="webhook"></a>Web kancası
 
-Bir Web kancası uç noktasına yayımlamak için, `endpointType` öğesini olarak `WebHook` ayarlayın ve şunları belirtin:
+Bir Web kancası uç noktasına yayımlamak için, öğesini `endpointType` olarak ayarlayın `WebHook` ve şunları belirtin:
 
 * endpointUrl: Web kancası uç noktası URL 'SI
 
@@ -42,7 +42,7 @@ Bir Web kancası uç noktasına yayımlamak için, `endpointType` öğesini olar
 
 ## <a name="azure-event-grid"></a>Azure Event Grid
 
-Azure Event Grid bulut uç noktasına yayımlamak için, `endpointType` öğesini olarak `eventGrid` ayarlayın ve şunları sağlayın:
+Azure Event Grid bulut uç noktasına yayımlamak için, öğesini olarak ayarlayın `endpointType` `eventGrid` ve şunları sağlayın:
 
 * endpointUrl: Event Grid konu URL 'SI buluta
 * sasKey: Event Grid konunun SAS anahtarı
@@ -65,7 +65,7 @@ Azure Event Grid bulut uç noktasına yayımlamak için, `endpointType` öğesin
 
 ## <a name="iot-edge-hub"></a>IoT Edge hub 'ı
 
-Bir uç hub modülüne yayımlamak için, `endpointType` öğesini olarak `edgeHub` ayarlayın ve şunları belirtin:
+Bir uç hub modülüne yayımlamak için, öğesini olarak ayarlayın `endpointType` `edgeHub` ve şunları belirtin:
 
 * outputName: Event Grid modülünün, bu abonelikle eşleşen olayları edgeHub 'a yönlendireceğini belirten çıktı. Örneğin, aşağıdaki abonelikle eşleşen olaylar/messages/modules/eventgridmodule/outputs/sampleSub4. 'e yazılacak
 
@@ -84,7 +84,7 @@ Bir uç hub modülüne yayımlamak için, `endpointType` öğesini olarak `edgeH
 
 ## <a name="event-hubs"></a>Event Hubs
 
-Bir olay hub 'ına yayımlamak için, öğesini `endpointType` olarak `eventHub` ayarlayın ve şunları belirtin:
+Bir olay hub 'ına yayımlamak için, öğesini `endpointType` olarak ayarlayın `eventHub` ve şunları belirtin:
 
 * connectionString: hedeflediğiniz belirli olay hub 'ı için, paylaşılan erişim Ilkesi aracılığıyla oluşturulmuş bağlantı dizesi.
 
@@ -106,7 +106,7 @@ Bir olay hub 'ına yayımlamak için, öğesini `endpointType` olarak `eventHub`
 
 ## <a name="service-bus-queues"></a>Service Bus Kuyrukları
 
-Service Bus bir sıraya yayımlamak için, `endpointType` öğesini olarak `serviceBusQueue` ayarlayın ve şunları belirtin:
+Service Bus bir sıraya yayımlamak için, öğesini olarak ayarlayın `endpointType` `serviceBusQueue` ve şunları belirtin:
 
 * connectionString: hedeflediğiniz belirli Service Bus kuyruğu için bağlantı dizesi, paylaşılan erişim Ilkesi aracılığıyla üretildi.
 
@@ -128,7 +128,7 @@ Service Bus bir sıraya yayımlamak için, `endpointType` öğesini olarak `serv
 
 ## <a name="service-bus-topics"></a>Service Bus Konuları
 
-Service Bus bir konuya yayımlamak için, `endpointType` öğesini olarak `serviceBusTopic` ayarlayın ve şunları belirtin:
+Service Bus bir konuya yayımlamak için, öğesini olarak ayarlayın `endpointType` `serviceBusTopic` ve şunları belirtin:
 
 * connectionString: bir paylaşılan erişim Ilkesi aracılığıyla hedeflediğiniz özel Service Bus konusu için bağlantı dizesi.
 
@@ -150,7 +150,7 @@ Service Bus bir konuya yayımlamak için, `endpointType` öğesini olarak `servi
 
 ## <a name="storage-queues"></a>Depolama Kuyrukları
 
-Bir depolama kuyruğuna yayımlamak için, `endpointType` öğesini olarak `storageQueue` ayarlayın ve şunları belirtin:
+Bir depolama kuyruğuna yayımlamak için, öğesini olarak ayarlayın `endpointType` `storageQueue` ve şunları belirtin:
 
 * SıraAdı: yayımlamakta olduğunuz depolama kuyruğunun adı.
 * connectionString: depolama sırasının bulunduğu depolama hesabı için bağlantı dizesi.

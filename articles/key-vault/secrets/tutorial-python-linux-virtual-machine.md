@@ -9,13 +9,13 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
-ms.custom: mvc
-ms.openlocfilehash: df089f0338a177c08f4d9e88d55b501fd12f88f2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 6b3fb07322009134a75621a19cd013e2f967972a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81423324"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561610"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Öğretici: Azure Key Vault içinde gizli dizileri depolamak için bir Linux sanal makinesi ve Python uygulaması kullanma
 
@@ -63,7 +63,7 @@ az login
 
 Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
-Aşağıdaki kodla Batı ABD konumundaki `az group create` komutunu kullanarak bir kaynak grubu oluşturun. İstediğiniz `YourResourceGroupName` adla değiştirin.
+`az group create`Aşağıdaki kodla Batı ABD konumundaki komutunu kullanarak bir kaynak grubu oluşturun. `YourResourceGroupName`İstediğiniz adla değiştirin.
 
 ```azurecli-interactive
 # To list locations: az account list-locations --output table
@@ -98,9 +98,9 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 ## <a name="create-a-linux-virtual-machine"></a>Linux sanal makinesi oluşturma
 
-`az vm create` Komutunu kullanarak bir VM oluşturun.
+Komutunu kullanarak bir VM oluşturun `az vm create` .
 
-Aşağıdaki örnek, **myVM** adlı bir VM oluşturur ve **azureuser** adlı bir kullanıcı hesabı ekler. `--generate-ssh-keys` Parametresi otomatik olarak bir SSH anahtarı oluşturur ve varsayılan anahtar konumuna (**~/vb SSH**) koyar. Bunun yerine belirli bir anahtar kümesi oluşturmak için `--ssh-key-value` seçeneğini kullanın.
+Aşağıdaki örnek, **myVM** adlı bir VM oluşturur ve **azureuser** adlı bir kullanıcı hesabı ekler. `--generate-ssh-keys`Parametresi otomatik olarak BIR SSH anahtarı oluşturur ve varsayılan anahtar konumuna (**~/vb SSH**) koyar. Bunun yerine belirli bir anahtar kümesi oluşturmak için `--ssh-key-value` seçeneğini kullanın.
 
 ```azurecli-interactive
 az vm create \
@@ -126,7 +126,7 @@ VM’yi ve destekleyici kaynakları oluşturmak birkaç dakika sürer. Aşağıd
 }
 ```
 
-SANAL makinenizin çıktısında kendinizinkini `publicIpAddress` bir yere iade edin. Bu adresi sonraki adımlarda VM 'ye erişmek için kullanacaksınız.
+SANAL makinenizin çıktısında kendinizinkini bir yere iade edin `publicIpAddress` . Bu adresi sonraki adımlarda VM 'ye erişmek için kullanacaksınız.
 
 ## <a name="assign-an-identity-to-the-vm"></a>VM 'ye bir kimlik atama
 
@@ -145,7 +145,7 @@ Komutun çıktısı aşağıdaki gibidir.
 }
 ```
 
-' İ bir yere unutmayın `systemAssignedIdentity`. Sonraki adımda kullanacaksınız.
+' İ bir yere unutmayın `systemAssignedIdentity` . Sonraki adımda kullanacaksınız.
 
 ## <a name="give-the-vm-identity-permission-to-key-vault"></a>Key Vault için VM kimliği izni verin
 
@@ -210,7 +210,7 @@ Bu öğreticide, Azure Key Vault Linux sanal makinesinde çalışan bir Python u
 
 Artık ihtiyaç kalmadığında kaynak grubunu, sanal makineyi ve tüm ilgili kaynakları silin. Bunu yapmak için VM kaynak grubunu ve **Sil** öğesini seçin.
 
-Şu `az keyvault delete` komutu kullanarak anahtar kasasını silin:
+Şu komutu kullanarak anahtar kasasını silin `az keyvault delete` :
 
 ```azurecli-interactive
 az keyvault delete --name

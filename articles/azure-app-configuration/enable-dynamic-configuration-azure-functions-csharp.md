@@ -15,12 +15,12 @@ ms.date: 11/17/2019
 ms.author: zhenlwa
 ms.custom: azure-functions
 ms.tgt_pltfrm: Azure Functions
-ms.openlocfilehash: ba70d5f186c1424b2019716ab7a87aeae85f8913
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0cd86aa647655f92f4ae1b5de50f506e9aad0f4e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74185453"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558151"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Öğretici: Azure Işlevleri uygulamasında dinamik yapılandırma kullanma
 
@@ -41,14 +41,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="reload-data-from-app-configuration"></a>Uygulama yapılandırmasından verileri yeniden yükleme
 
-1. *Function1.cs*'i açın. `static` `Configuration`Özelliğine ek olarak, işlevler daha sonra çağrılar sırasında `static` yapılandırma `ConfigurationRefresher` güncelleştirmelerini işaret etmek için kullanılacak tek `IConfigurationRefresher` bir örneğini tutmak üzere yeni bir özellik ekleyin.
+1. *Function1.cs*'i açın. Özelliğine ek olarak `static` `Configuration` , `static` `ConfigurationRefresher` `IConfigurationRefresher` işlevler daha sonra çağrılar sırasında yapılandırma güncelleştirmelerini işaret etmek için kullanılacak tek bir örneğini tutmak üzere yeni bir özellik ekleyin.
 
     ```csharp
     private static IConfiguration Configuration { set; get; }
     private static IConfigurationRefresher ConfigurationRefresher { set; get; }
     ```
 
-2. Oluşturucuyu güncelleştirin ve uygulama yapılandırma deposundan `ConfigureRefresh` yenilenecek ayarı belirtmek için yöntemini kullanın. Bir örneği `IConfigurationRefresher` yöntemi kullanılarak `GetRefresher` alınır. İsteğe bağlı olarak, yapılandırma önbelleği sona erme zamanı penceresini varsayılan 30 saniyeden 1 dakika olarak değiştiririz.
+2. Oluşturucuyu güncelleştirin ve `ConfigureRefresh` uygulama yapılandırma deposundan yenilenecek ayarı belirtmek için yöntemini kullanın. Bir örneği `IConfigurationRefresher` yöntemi kullanılarak alınır `GetRefresher` . İsteğe bağlı olarak, yapılandırma önbelleği sona erme zamanı penceresini varsayılan 30 saniyeden 1 dakika olarak değiştiririz.
 
     ```csharp
     static Function1()
@@ -67,7 +67,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     }
     ```
 
-3. Işlev çağrısının `Run` başlangıcında `Refresh` yöntemi kullanarak yapılandırmayı yenilemek için yöntemi ve sinyali güncelleştirin. Önbellek sona erme saati penceresine ulaşılırsa bu işlem yapılmaz. Yapılandırmanın engellenmeden yenilenmesini tercih ediyorsanız `await` işleci kaldırın.
+3. `Run`İşlev çağrısının başlangıcında yöntemi kullanarak yapılandırmayı yenilemek için yöntemi ve sinyali güncelleştirin `TryRefreshAsync` . Önbellek sona erme saati penceresine ulaşılırsa bu işlem yapılmaz. `await`Yapılandırmanın engellenmeden yenilenmesini tercih ediyorsanız işleci kaldırın.
 
     ```csharp
     public static async Task<IActionResult> Run(
@@ -75,7 +75,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
-        await ConfigurationRefresher.Refresh();
+        await ConfigurationRefresher.TryRefreshAsync(); 
 
         string keyName = "TestApp:Settings:Message";
         string message = Configuration[keyName];

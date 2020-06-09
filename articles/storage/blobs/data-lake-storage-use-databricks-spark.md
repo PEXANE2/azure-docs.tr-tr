@@ -8,12 +8,13 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 5889afa033b30606f8981ddb826aa192f24efa10
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 12f5f8b1e1a20675fd08f753e515faef2f7a97ce
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81312906"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560028"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Öğretici: Azure Data Lake Storage 2., Azure Databricks & Spark
 
@@ -65,7 +66,7 @@ Bu öğretici, bir ETL işleminin nasıl gerçekleştirileceğini göstermek iç
 
 Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursunuz.
 
-1. Azure Portal, **kaynak** > **Analizi** > oluştur**Azure Databricks**' u seçin.
+1. Azure Portal, **kaynak**  >  **Analizi**oluştur  >  **Azure Databricks**' u seçin.
 
     ![Azure portal databricks](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Azure portal databricks")
 
@@ -75,7 +76,7 @@ Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursun
     |---------|---------|
     |**Çalışma alanı adı**     | Databricks çalışma alanınız için bir ad sağlayın.  |
     |**Abonelik**     | Açılan listeden Azure aboneliğinizi seçin.        |
-    |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümü için ilgili kaynakları bir arada tutan kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../../azure-resource-manager/management/overview.md). |
+    |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümüne ilişkin kaynakları tutan bir kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../../azure-resource-manager/management/overview.md). |
     |**Konum**     | **Batı ABD 2**'yi seçin. Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).       |
     |**Fiyatlandırma Katmanı**     |  **Standart**' ı seçin.     |
 
@@ -125,11 +126,11 @@ Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursun
    azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
-   * `<csv-folder-path>` Yer tutucu değerini *. csv* dosyasının yoluyla değiştirin.
+   * `<csv-folder-path>`Yer tutucu değerini *. csv* dosyasının yoluyla değiştirin.
 
-   * `<storage-account-name>` Yer tutucu değerini depolama hesabınızın adıyla değiştirin.
+   * `<storage-account-name>`Yer tutucu değerini depolama hesabınızın adıyla değiştirin.
 
-   * Yer tutucusunu `<container-name>` , Depolama hesabınızdaki bir kapsayıcının adıyla değiştirin.
+   * `<container-name>`Yer tutucusunu, Depolama hesabınızdaki bir kapsayıcının adıyla değiştirin.
 
 ## <a name="create-a-container-and-mount-it"></a>Kapsayıcı oluşturma ve bağlama
 
@@ -143,7 +144,7 @@ Bu bölümde, depolama hesabınızda bir kapsayıcı ve bir klasör oluşturacak
 
 3. **Not Defteri Oluştur** iletişim kutusunda, not defterinizin adını girin. Dil olarak **Python** ' ı seçin ve daha önce oluşturduğunuz Spark kümesini seçin.
 
-4. **Oluştur**’u seçin.
+4. **Oluştur**'u seçin.
 
 5. Aşağıdaki kod bloğunu kopyalayıp ilk hücreye yapıştırın, ancak henüz bu kodu çalıştırmayın.
 
@@ -161,7 +162,7 @@ Bu bölümde, depolama hesabınızda bir kapsayıcı ve bir klasör oluşturacak
     extra_configs = configs)
     ```
 
-18. Bu kod bloğunda, bu kod bloğundaki `appId`, `clientSecret` `tenant`, ve `storage-account-name` yer tutucu değerlerini, Bu öğreticinin önkoşullarını tamamlarken topladığınız değerlerle değiştirin. `container-name` Yer tutucu değerini kapsayıcının adıyla değiştirin.
+18. Bu kod bloğunda, bu `appId` `clientSecret` Kod bloğundaki,, `tenant` ve `storage-account-name` yer tutucu değerlerini, Bu öğreticinin önkoşullarını tamamlarken topladığınız değerlerle değiştirin. `container-name`Yer tutucu değerini kapsayıcının adıyla değiştirin.
 
 19. Bu bloktaki kodu çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
@@ -209,7 +210,7 @@ Bir sonraki adımda depolama hesabınıza yüklediğiniz verileri sorgulamaya ba
 
 Veri kaynaklarınız için veri çerçeveleri oluşturmak için aşağıdaki betiği çalıştırın:
 
-* `<csv-folder-path>` Yer tutucu değerini *. csv* dosyasının yoluyla değiştirin.
+* `<csv-folder-path>`Yer tutucu değerini *. csv* dosyasının yoluyla değiştirin.
 
 ```python
 # Copy this into a Cmd cell in your notebook.

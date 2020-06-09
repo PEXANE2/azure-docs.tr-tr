@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: mvc
-ms.openlocfilehash: 3118ca39ec0efd42c9f7b622c91f857034ef4b03
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 8c78913486610b171b7577d0bc239e0e7060038e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333827"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560386"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks (Python) kullanarak elektrik ve yönlendirme
 
@@ -62,7 +62,7 @@ Bu öğreticiyle birlikte izlemek için bir Azure Not defteri projesi oluşturma
  
     ![Yeni proje oluştur bölmesi](./media/tutorial-ev-routing/create-project-window.png)
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 1. Projeniz oluşturulduktan sonra, bu [Jupyter Not defteri belge dosyasını](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) [Azure Maps Jupyter Not defteri deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)indirin.
 
@@ -89,7 +89,7 @@ Kodu Not defterinde çalıştırmak için, aşağıdaki adımları uygulayarak p
     a. İlk açılan listede, **requirements. txt**' yi seçin.  
     b. İkinci açılan listede, *requirements. txt* dosyanızı seçin.  
     c. Üçüncü açılan listede sürüm olarak **Python sürüm 3,6** ' ı seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
     ![Paketleri yükler](./media/tutorial-ev-routing/install-packages.png)
 

@@ -10,18 +10,18 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 5f41330836edab647f379eb43130c078c46cce53
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 31bd6a2680d8c71df6b6030187ff44ca10d09440
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685074"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561039"
 ---
 # <a name="learn-text-moderation-concepts"></a>Metin denetleme kavramlarını öğrenin
 
 Metin içeriğini çözümlemek için Content Moderator metin denetleme modellerini kullanın.
 
-İlkelerinize ve eşiklere göre içeriği engelleyebilir, onaylayabilir veya gözden geçirebilirsiniz (bkz. [incelemeler, iş akışları ve işlere](./review-api.md) , insan incelemelerini ayarlama hakkında bilgi edinin). İş ortakları, çalışanlar ve tüketiciler tarafından metin içeriği üreten ortamların insan yönetimini artırmak için metin denetleme modellerini kullanın. Bu kapsama sohbet odaları, tartışma panoları, sohbet botları, e-ticaret katalogları ve belgeler dahildir. 
+İlkelerinize ve eşiklere göre içeriği engelleyebilir, onaylayabilir veya gözden geçirebilirsiniz (bkz. [incelemeler, iş akışları ve işlere](./review-api.md) , insan incelemelerini ayarlama hakkında bilgi edinin). İş ortakları, çalışanlar ve tüketiciler tarafından metin içeriği üreten ortamların insan yönetimini artırmak için metin denetleme modellerini kullanın. Bu kapsama sohbet odaları, tartışma panoları, sohbet botları, e-ticaret katalogları ve belgeler dahildir.
 
 Hizmet yanıtı aşağıdaki bilgileri içerir:
 

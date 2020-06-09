@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 731ed4664d10d3957be160bf9e8001d5470a6f38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0d05e48cdaf75af5acb09713679d3aa21450b433
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82201419"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509381"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile yerleşik olarak tümleştirme
 
@@ -88,13 +88,12 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![image](common/edit-attribute.png)
 
-1. Yukarıdaki ' a ek olarak, e Intacct uygulaması SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
+1. Yukarıdaki ' a ek olarak, e Intacct uygulaması SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Kullanıcı öznitelikleri & talepler** iletişim kutusunda aşağıdaki tabloda GÖSTERILDIĞI gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
 
-    | Adı  |  Kaynak özniteliği|
+    | Öznitelik adı  |  Kaynak özniteliği|
     | ---------------| --------------- |
     | Şirket Adı | **Şirket Içi şirket KIMLIĞI** |
-    | ad | Değer, öğreticide daha sonra **açıklanacak olan IT Intacct test kullanıcısına**girdiğiniz **nıntacct kullanıcı kimliğiyle**aynı olmalıdır |
-    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` | Değer, öğreticide daha sonra **açıklanacak olan yerleşik bir test kullanıcısı Oluştur bölümünde**girdiğiniz, yerleşik BIR **Federasyon SSO kullanıcı kimliğiyle**aynı olmalıdır |
+    | name | Değer, öğreticide daha sonra **açıklanacak olan IT Intacct test kullanıcısına**girdiğiniz **nıntacct kullanıcı kimliğiyle**aynı olmalıdır |
 
     a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
@@ -104,11 +103,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     d. **Öznitelik**olarak kaynak seçin.
 
-    e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
+    e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın veya seçin.
 
     f. **Tamam 'a** tıklayın
 
-    g. **Kaydet**’e tıklayın.
+    örneğin: **Kaydet**’e tıklayın.
 
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -126,7 +125,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**' a tıklayın.
 
@@ -207,7 +206,7 @@ Azure AD kullanıcılarını, o şekilde çalışır durumda oturum açabilirler
     
     d. Azure AD hesap sahibi bir e-posta alır ve etkin hale gelmeden önce hesaplarını doğrulamak için bir bağlantıyı izler.
 
-1. **Çoklu oturum açma** sekmesi ' ne tıklayın ve aşağıda yer alan **Federasyon SSO kullanıcı kimliğinin** ve Azure Portal içindeki **Kullanıcı öznitelikleri** bölümünde ile `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` eşlenmiş **kaynak öznitelik** değerinin aynı olması gerekir.
+1. **Çoklu oturum açma** sekmesi ' ne tıklayın ve aşağıda yer alan **Federasyon SSO kullanıcı kimliğinin** ve Azure Portal içindeki Kullanıcı öznitelikleri bölümünde ile eşlenmiş **kaynak öznitelik** değerinin `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` aynı olması gerekir. **User Attributes**
 
     ![Kullanıcı bilgileri](./media/intacct-tutorial/ic790044.png "Kullanıcı bilgileri")
 

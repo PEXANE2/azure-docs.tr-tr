@@ -3,19 +3,19 @@ title: 'Hızlı başlangıç: parametreler ile özel komutlar önizleme uygulama
 titleSuffix: Azure Cognitive Services
 description: Bu makalede, bir özel komutlar uygulamasına parametreler ekleyerek birden çok cihazı açıp kapatabilirsiniz.
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.author: donkim
-ms.openlocfilehash: 5461ef9680ab89c8cc9cc2e1166366abb04a6eab
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.author: nitinme
+ms.openlocfilehash: 940b3604487fbef7736c0d8f4f9299563b0b86d5
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142291"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509313"
 ---
 # <a name="quickstart-create-a-custom-commands-preview-application-with-parameters"></a>Hızlı başlangıç: parametrelerle özel komutlar önizleme uygulaması oluşturma
 
@@ -40,7 +40,7 @@ Bu makalede, birden çok cihazı açıp kapatmak için bu uygulamayı parametrel
         ```
         On or Off?
         ```
-   1. **Güncelleştir** seçeneğini belirleyin.
+   1. **Güncelleştir**’i seçin.
 
        > [!div class="mx-imgBorder"]
        > ![Gerekli parametre yanıtı oluştur](media/custom-speech-commands/add-required-on-off-parameter-response.png)
@@ -48,7 +48,7 @@ Bu makalede, birden çok cihazı açıp kapatmak için bu uygulamayı parametrel
 1. Parametresinin geri kalanını aşağıdaki şekilde yapılandırın:
        
 
-    | Yapılandırma      | Önerilen değer     | Açıklama                                                      |
+    | Yapılandırma      | Önerilen değer     | Description                                                      |
     | ------------------ | ----------------| ---------------------------------------------------------------------|
     | **Adı**               | **Mikrofon**           | Parametre için açıklayıcı bir ad.                                                                  |
     | **Geneldir**          | Temizlenen       | Parametrenin bir değerinin uygulamadaki tüm komutlara Global olarak uygulanıp uygulanmadığını belirten bir onay kutusu.|
@@ -68,7 +68,7 @@ Bu makalede, birden çok cihazı açıp kapatmak için bu uygulamayı parametrel
  1. İkinci bir parametre eklemek için yeniden **Ekle** ' yi seçin. Bu parametre, cihazın adını temsil eder. Şu ayarları kullanın:
    
 
-       | Ayar            | Önerilen değer       | Açıklama                                                                                               |
+       | Ayar            | Önerilen değer       | Description                                                                                               |
        | ------------------ | --------------------- | --------------------------------------------------------------------------------------------------------- |
        | **Adı**               | **SubjectDevice**         | Parametre için açıklayıcı bir ad.                                                                     |
        | **Geneldir**          | Temizlenen             | Parametrenin bir değerinin uygulamadaki tüm komutlara Global olarak uygulanıp uygulanmadığını belirten bir onay kutusu. |
@@ -109,7 +109,7 @@ turn something
 
 1. **Koşullar** bölümünde **Koşul Ekle**' yi seçin.
 1. **Yeni koşul** penceresinde, **tür** listesinde, **gerekli parametreler**' i seçin. Listede hem **OnOff** hem de **subjectdevice**' ı seçin.
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 1. **Eylemler** bölümünde, mevcut **konuşma yanıtı gönder** eylemini, eylemin üzerine gelerek ve Düzenle düğmesini seçerek düzenleyin. Bu kez, yeni `OnOff` ve parametrelerini kullanın `SubjectDevice` :
 
     ```

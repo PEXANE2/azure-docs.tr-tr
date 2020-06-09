@@ -5,18 +5,18 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 9/25/2019
+ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: defeacc3f0bc4cd9d77e538f8ceac5ca09a4068a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 46536dcaf5e8565bb621fa3b1c3ff547459816ab
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71272366"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509432"
 ---
-# <a name="azure-cli-samples-for-azure-cosmos-db-sql-core-api"></a>Azure Cosmos DB SQL (Core) API 'SI için Azure CLı örnekleri
+# <a name="azure-cli-samples-for-azure-cosmos-db-core-sql-api"></a>Azure Cosmos DB Core (SQL) API 'SI için Azure CLı örnekleri
 
-Aşağıdaki tabloda Azure Cosmos DB SQL (Core) API 'sine yönelik örnek Azure CLı betikleri bağlantıları yer almaktadır. Tüm Azure Cosmos DB CLı komutlarına yönelik başvuru sayfaları, [Azure CLI başvurusunda](/cli/azure/cosmosdb)bulunabilir. Diğer Azure Cosmos DB API 'Lerine yönelik Azure CLı örnekleri için bkz., [Cassandra API](cli-samples-cassandra.md), [MongoDB API](cli-samples-mongodb.md), [gremlin API](cli-samples-gremlin.md)ve [tablo API'si](cli-samples-table.md). Tüm Azure Cosmos DB CLı betiği örnekleri [Azure Cosmos DB CLI GitHub deposunda](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)bulunabilir.
+Aşağıdaki tabloda Azure Cosmos DB Core (SQL) API 'sine yönelik örnek Azure CLı betikleri bağlantıları yer almaktadır. Tüm Azure Cosmos DB CLı komutlarına yönelik başvuru sayfaları, [Azure CLI başvurusunda](/cli/azure/cosmosdb)bulunabilir. Diğer Azure Cosmos DB API 'Lerine yönelik Azure CLı örnekleri için bkz., [Cassandra API](cli-samples-cassandra.md), [MongoDB API](cli-samples-mongodb.md), [gremlin API](cli-samples-gremlin.md)ve [tablo API'si](cli-samples-table.md). Tüm Azure Cosmos DB CLı betiği örnekleri [Azure Cosmos DB CLI GitHub deposunda](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)bulunabilir.
 
 | |  |
 |---|---|
@@ -27,4 +27,5 @@ Aşağıdaki tabloda Azure Cosmos DB SQL (Core) API 'sine yönelik örnek Azure 
 | [IP güvenlik duvarıyla güvenli hale getirme](scripts/cli/common/ipfirewall.md?toc=%2fcli%2fazure%2ftoc.json)| IP güvenlik duvarı yapılandırılmış bir Cosmos hesabı oluşturun.|
 | [Hizmet uç noktaları ile güvenli yeni hesap](scripts/cli/common/service-endpoints.md?toc=%2fcli%2fazure%2ftoc.json)| Hizmet uç noktaları ile Cosmos hesabı oluşturun ve güvenli hale getirin.|
 | [Mevcut hesabı hizmet uç noktalarıyla güvenli hale getirin](scripts/cli/common/service-endpoints-ignore-missing-vnet.md?toc=%2fcli%2fazure%2ftoc.json)| Alt ağ sonunda yapılandırıldığında hizmet uç noktalarıyla güvenli hale getirmek için Cosmos hesabını güncelleştirin.|
+| [Kaynakları silinmeye karşı kilitle](scripts/cli/sql/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Kaynakların kaynak kilitleri ile silinmesini engelleyin.|
 |||

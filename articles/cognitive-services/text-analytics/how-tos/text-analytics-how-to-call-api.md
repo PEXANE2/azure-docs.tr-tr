@@ -10,18 +10,18 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: afb576c265ccdd4a014ed678331f030a0442a197
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c6fbec35920c8afd08ab60fc380c9f816ae599b0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219307"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561015"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Metin Analizi nasıl çağrılacağını REST API
 
-**Metin Analizi API'si** çağrıları, herhangi bir dilde formülleştirmek IÇIN http post/Get çağrılardır. Bu makalede, önemli kavramları göstermek için REST ve [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) kullanırız.
+**Metin Analizi API'si** çağrıları, herhangi bir dilde formülleştirmek IÇIN http post/Get çağrılardır. Bu makalede, önemli kavramları göstermek için REST ve [Postman](https://www.postman.com/downloads/) kullanırız.
 
-Her isteğin erişim anahtarınızı ve bir HTTP uç noktasını içermesi gerekir. Uç nokta, kaydolma sırasında seçtiğiniz bölgeyi, hizmet URL 'sini ve istekte kullanılan bir kaynağı belirtir `sentiment`:, `keyphrases`, `languages`ve. `entities` 
+Her isteğin erişim anahtarınızı ve bir HTTP uç noktasını içermesi gerekir. Uç nokta, kaydolma sırasında seçtiğiniz bölgeyi, hizmet URL 'sini ve istekte kullanılan bir kaynağı belirtir: `sentiment` , `keyphrases` , `languages` ve `entities` . 
 
 Yönetilecek veri varlığı olmadığından Metin Analizi durum bilgisiz olduğunu hatırlayın. Metniniz karşıya yüklenir, teslim edildiğinde çözümlenir ve sonuçlar çağıran uygulamaya hemen döndürülür.
 
@@ -43,7 +43,7 @@ Giriş, ham yapılandırılmamış metinde JSON olmalıdır. XML desteklenmiyor.
 |---------|--------------|-----------|-------|
 |`id` |Veri türü dizedir, ancak uygulama belge kimlikleri ' nde tam sayı olarak eğilimlidir. | Gerekli | Sistem çıktıyı yapılandırmak için sağladığınız kimlikleri kullanır. İstekteki her bir KIMLIK için dil kodları, anahtar tümceleri ve yaklaşım puanları oluşturulur.|
 |`text` | Yapılandırılmamış ham metin, en fazla 5.120 karakter. | Gerekli | Dil algılama için metin herhangi bir dilde ifade edilebilir. Yaklaşım analizi, anahtar ifade ayıklama ve varlık tanımlama için, metin [desteklenen bir dilde](../text-analytics-supported-languages.md)olmalıdır. |
-|`language` | 2 karakterlik [ıso 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) [desteklenen bir dil](../text-analytics-supported-languages.md) için kod | Değişir | Yaklaşım analizi, anahtar ifade ayıklama ve varlık bağlama için gereklidir; dil algılama için isteğe bağlı. Bunu dışladığınızda bir hata yoktur, ancak analiz bu olmadan zayıflatılmalıdır. Dil kodu, sağladığınız öğesine `text` karşılık gelmelidir. |
+|`language` | 2 karakterlik [ıso 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) [desteklenen bir dil](../text-analytics-supported-languages.md) için kod | Değişir | Yaklaşım analizi, anahtar ifade ayıklama ve varlık bağlama için gereklidir; dil algılama için isteğe bağlı. Bunu dışladığınızda bir hata yoktur, ancak analiz bu olmadan zayıflatılmalıdır. Dil kodu, sağladığınız öğesine karşılık gelmelidir `text` . |
 
 Sınırlamalar hakkında daha fazla bilgi için bkz. [metin analizi genel bakış > veri sınırları](../overview.md#data-limits). 
 
@@ -82,7 +82,7 @@ Hizmet, boyutu 1 MB 'a kadar olan isteği kabul eder. Postman (veya başka bir W
 
   + [Dil algılama](text-analytics-how-to-language-detection.md)  
   + [Anahtar tümceciği ayıklama](text-analytics-how-to-keyword-extraction.md)  
-  + [Yaklaşım analizi](text-analytics-how-to-sentiment-analysis.md)  
+  + [Yaklaşım Analizi](text-analytics-how-to-sentiment-analysis.md)  
   + [Varlık tanıma](text-analytics-how-to-entity-linking.md)  
 
 

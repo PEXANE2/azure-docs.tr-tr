@@ -3,25 +3,25 @@ title: Özel komutlarda doğrulama ekleme önizleme-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: Özel komutlar önizleme uygulamasında bir komut parametresine doğrulama eklemeyi öğrenin.
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.author: donkim
-ms.openlocfilehash: 6686016f109fad4ee8b7f4e494b1374a6003658c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.author: nitinme
+ms.openlocfilehash: eb011510a9f636aea9910a4be445cd094acf0c21
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310419"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509585"
 ---
 # <a name="add-validations-to-a-command-parameter-in-a-custom-commands-preview-application"></a>Özel komutlar önizleme uygulamasında bir komut parametresine doğrulama ekleme
 
 Bu makalede, parametrelere nasıl doğrulama ekleneceğini ve düzeltme istemlerini öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki makalelerdeki adımları uygulayın:
 
@@ -60,7 +60,7 @@ Doğrulamaları göstermek için, kullanıcıların sıcaklık ayarlamasına izi
        > [!div class="mx-imgBorder"]
        > ![Aralık doğrulaması ekle](media/custom-speech-commands/validations-add-temperature.png)
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 1. Örnek cümleler ekleyin.
 
