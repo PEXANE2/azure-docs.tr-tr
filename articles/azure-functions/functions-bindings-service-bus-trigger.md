@@ -6,12 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: b5e7f1b70aca50b4e42d056beb0b17795430091c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.custom: tracking-python
+ms.openlocfilehash: c15fe311b331592a54c61a5cddb29d4b467ca550
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690701"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560816"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Service Bus tetikleyicisi
 
@@ -21,7 +22,7 @@ Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakı
 
 ## <a name="example"></a>Örnek
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnek, [ileti meta verilerini](#message-metadata) okuyan ve bir Service Bus kuyruğu iletisi kaydeden bir [C# işlevini](functions-dotnet-class-library.md) göstermektedir:
 
@@ -119,7 +120,7 @@ module.exports = function(context, myQueueItem) {
 
 Aşağıdaki örnek, bir tetikleyici aracılığıyla Service Bus kuyruğu iletisinin nasıl okunacağını gösterir.
 
-Service Bus bağlama, *türü* olarak `serviceBusTrigger`ayarlandığı *function. JSON* içinde tanımlanır.
+Service Bus bağlama, *türü* olarak ayarlandığı *function. JSON* içinde tanımlanır `serviceBusTrigger` .
 
 ```json
 {
@@ -136,7 +137,7 @@ Service Bus bağlama, *türü* olarak `serviceBusTrigger`ayarlandığı *functio
 }
 ```
 
-* _ \__ İnit\_. Kopyala* içindeki kod, işlevinizdeki sıra iletisini `func.ServiceBusMessage`okumanızı sağlayan olarak bir parametre bildirir.
+* _ \_ İnit_ \_ . Kopyala* içindeki kod, `func.ServiceBusMessage` işlevinizdeki sıra iletisini okumanızı sağlayan olarak bir parametre bildirir.
 
 ```python
 import azure.functions as func
@@ -168,7 +169,7 @@ def main(msg: func.ServiceBusMessage):
 
 # <a name="java"></a>[Java](#tab/java)
 
-Aşağıdaki Java işlevi, bir Service Bus `@ServiceBusQueueTrigger` kuyruğu tetikleyicisinin yapılandırmasını anlatmak için [Java işlevleri çalışma zamanı kitaplığından](/java/api/overview/azure/functions/runtime) ek açıklamayı kullanır. İşlev, iletiyi kuyruğa yerleştirir ve günlüklere ekler.
+Aşağıdaki Java işlevi, `@ServiceBusQueueTrigger` bir Service Bus kuyruğu tetikleyicisinin yapılandırmasını anlatmak Için [Java işlevleri çalışma zamanı kitaplığından](/java/api/overview/azure/functions/runtime) ek açıklamayı kullanır. İşlev, iletiyi kuyruğa yerleştirir ve günlüklere ekler.
 
 ```java
 @FunctionName("sbprocessor")
@@ -182,7 +183,7 @@ Aşağıdaki Java işlevi, bir Service Bus `@ServiceBusQueueTrigger` kuyruğu te
  }
 ```
 
-Service Bus konuya bir ileti eklendiğinde Java işlevleri de tetiklenebilir. Aşağıdaki örnek, tetikleyici yapılandırmasını `@ServiceBusTopicTrigger` anlatmak için ek açıklamasını kullanır.
+Service Bus konuya bir ileti eklendiğinde Java işlevleri de tetiklenebilir. Aşağıdaki örnek, `@ServiceBusTopicTrigger` tetikleyici yapılandırmasını anlatmak için ek açıklamasını kullanır.
 
 ```java
 @FunctionName("sbtopicprocessor")
@@ -203,13 +204,13 @@ Service Bus konuya bir ileti eklendiğinde Java işlevleri de tetiklenebilir. A�
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [C# sınıf kitaplıklarında](functions-dotnet-class-library.md), bir Service Bus tetikleyicisi yapılandırmak için aşağıdaki öznitelikleri kullanın:
 
 * [ServiceBusTriggerAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusTriggerAttribute.cs)
 
-  Özniteliğin Oluşturucusu kuyruğun adını veya konuyu ve aboneliğini alır. Azure Işlevleri sürüm 1. x ' te bağlantının erişim haklarını da belirtebilirsiniz. Erişim hakları belirtmezseniz, varsayılan olur `Manage`. Daha fazla bilgi için [tetikleyici-yapılandırma](#configuration) bölümüne bakın.
+  Özniteliğin Oluşturucusu kuyruğun adını veya konuyu ve aboneliğini alır. Azure Işlevleri sürüm 1. x ' te bağlantının erişim haklarını da belirtebilirsiniz. Erişim hakları belirtmezseniz, varsayılan olur `Manage` . Daha fazla bilgi için [tetikleyici-yapılandırma](#configuration) bölümüne bakın.
 
   Bir dize parametresiyle kullanılan özniteliği gösteren bir örnek aşağıda verilmiştir:
 
@@ -222,7 +223,7 @@ Service Bus konuya bir ileti eklendiğinde Java işlevleri de tetiklenebilir. A�
   }
   ```
 
-  `Connection` Özellik tanımlanmadığı için işlevler, Service Bus bağlantı dizesinin varsayılan adı olan adlı `AzureWebJobsServiceBus`bir uygulama ayarı arar. Ayrıca, aşağıdaki örnekte gösterildiği `Connection` gibi, kullanılacak Service Bus bağlantı dizesini içeren bir uygulama ayarının adını belirtmek için özelliğini de ayarlayabilirsiniz:
+  `Connection`Özellik tanımlanmadığı Için işlevler, `AzureWebJobsServiceBus` Service Bus bağlantı dizesinin varsayılan adı olan adlı bir uygulama ayarı arar. Ayrıca, `Connection` Aşağıdaki örnekte gösterildiği gibi, kullanılacak Service Bus bağlantı dizesini içeren bir uygulama ayarının adını belirtmek için özelliğini de ayarlayabilirsiniz:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -256,10 +257,10 @@ Service Bus konuya bir ileti eklendiğinde Java işlevleri de tetiklenebilir. A�
 
 Kullanılacak Service Bus hesabı aşağıdaki sırayla belirlenir:
 
-* `ServiceBusTrigger` Özniteliğin `Connection` özelliği.
-* Özniteliği `ServiceBusAccount` ile `ServiceBusTrigger` aynı parametreye uygulanan öznitelik.
-* İşleve `ServiceBusAccount` uygulanan öznitelik.
-* Sınıfına `ServiceBusAccount` uygulanan öznitelik.
+* `ServiceBusTrigger`Özniteliğin `Connection` özelliği.
+* Özniteliği `ServiceBusAccount` ile aynı parametreye uygulanan öznitelik `ServiceBusTrigger` .
+* `ServiceBusAccount`İşleve uygulanan öznitelik.
+* `ServiceBusAccount`Sınıfına uygulanan öznitelik.
 * "AzureWebJobsServiceBus" uygulama ayarı.
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
@@ -276,9 +277,9 @@ Kullanılacak Service Bus hesabı aşağıdaki sırayla belirlenir:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Ek `ServiceBusQueueTrigger` açıklama, Service Bus kuyruğu iletisi oluşturulduğunda çalışan bir işlev oluşturmanıza olanak sağlar. Kullanılabilir yapılandırma seçenekleri kuyruk adı ve bağlantı dizesi adını içerir.
+`ServiceBusQueueTrigger`Ek açıklama, Service Bus kuyruğu iletisi oluşturulduğunda çalışan bir işlev oluşturmanıza olanak sağlar. Kullanılabilir yapılandırma seçenekleri kuyruk adı ve bağlantı dizesi adını içerir.
 
-`ServiceBusTopicTrigger` Ek açıklama, işlevi hangi verilerin tetikleyeceğini hedeflemek için bir konu ve abonelik atamanıza olanak tanır.
+`ServiceBusTopicTrigger`Ek açıklama, işlevi hangi verilerin tetikleyeceğini hedeflemek için bir konu ve abonelik atamanıza olanak tanır.
 
 Daha fazla ayrıntı için bkz. tetikleyici [örneği](#example) .
 
@@ -286,9 +287,9 @@ Daha fazla ayrıntı için bkz. tetikleyici [örneği](#example) .
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `ServiceBusTrigger` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `ServiceBusTrigger` .
 
-|function. JSON özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** | yok | "ServiceBusTrigger" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | "In" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
@@ -296,24 +297,24 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve `ServiceBusTrigger` öznit
 |**Adı**|**Adı**|İzlenecek kuyruğun adı.  Bir konu için değil, yalnızca bir kuyruğu izlerken ayarlanır.
 |**topicName**|**TopicName**|İzlenecek konunun adı. Sıra için değil, yalnızca bir konu izlenirken ayarlanır.|
 |**subscriptionName**|**SubscriptionName**|İzlenecek aboneliğin adı. Sıra için değil, yalnızca bir konu izlenirken ayarlanır.|
-|**bağlantı**|**Bağlanma**|Bu bağlama için kullanmak üzere Service Bus bağlantı dizesi içeren bir uygulama ayarı adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, adın yalnızca geri kalanını belirtebilirsiniz. Örneğin, "MyServiceBus `connection` " olarak ayarlarsanız, işlevler çalışma zamanı "AzureWebJobsMyServiceBus" adlı bir uygulama ayarı arar. Boş bırakırsanız `connection` , işlevler çalışma zamanı, "AzureWebJobsServiceBus" adlı uygulama ayarında varsayılan Service Bus bağlantı dizesini kullanır.<br><br>Bir bağlantı dizesi almak için [Yönetim kimlik bilgilerini alma](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)konusunda gösterilen adımları izleyin. Bağlantı dizesi, belirli bir sıra veya konuyla sınırlı olmamak üzere bir Service Bus ad alanı için olmalıdır. |
-|**accessRights**|**Erişim**|Bağlantı dizesi için erişim hakları. Kullanılabilir değerler ve `manage` ' `listen`dir. Varsayılan değer, `manage`' ın `connection` **Yönet** iznine sahip olduğunu gösterir. **Yönet** iznine sahip olmayan bir bağlantı dizesi kullanıyorsanız, "Dinle" olarak ayarlayın `accessRights` . Aksi halde, Işlevler çalışma zamanı yönetme hakları gerektiren işlemleri gerçekleştirmeye çalışırken başarısız olabilir. Azure Işlevleri sürüm 2. x ve üzeri sürümlerde, bu özellik kullanılamaz çünkü Service Bus SDK 'nın en son sürümü yönetim işlemlerini desteklemez.|
+|**bağlanma**|**Bağlantı**|Bu bağlama için kullanmak üzere Service Bus bağlantı dizesi içeren bir uygulama ayarı adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, adın yalnızca geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyServiceBus" olarak ayarlarsanız, işlevler çalışma zamanı "AzureWebJobsMyServiceBus" adlı bir uygulama ayarı arar. `connection`Boş bırakırsanız, işlevler çalışma zamanı, "AzureWebJobsServiceBus" adlı uygulama ayarında varsayılan Service Bus bağlantı dizesini kullanır.<br><br>Bir bağlantı dizesi almak için [Yönetim kimlik bilgilerini alma](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)konusunda gösterilen adımları izleyin. Bağlantı dizesi, belirli bir sıra veya konuyla sınırlı olmamak üzere bir Service Bus ad alanı için olmalıdır. |
+|**accessRights**|**Erişim**|Bağlantı dizesi için erişim hakları. Kullanılabilir değerler `manage` ve ' dir `listen` . Varsayılan değer, `manage` ' ın `connection` **Yönet** iznine sahip olduğunu gösterir. **Yönet** iznine sahip olmayan bir bağlantı dizesi kullanıyorsanız, `accessRights` "Dinle" olarak ayarlayın. Aksi halde, Işlevler çalışma zamanı yönetme hakları gerektiren işlemleri gerçekleştirmeye çalışırken başarısız olabilir. Azure Işlevleri sürüm 2. x ve üzeri sürümlerde, bu özellik kullanılamaz çünkü Service Bus SDK 'nın en son sürümü yönetim işlemlerini desteklemez.|
 |**isSessionsEnabled**|**IsSessionsEnabled**|`true`[oturum kullanan](../service-bus-messaging/message-sessions.md) bir kuyruğa veya aboneliğe bağlanılıyorsa. `false`Aksi takdirde, varsayılan değerdir.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Kullanım
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Sıra veya konu iletisi için aşağıdaki parametre türleri kullanılabilir:
 
 * `string`-İleti metin ise.
 * `byte[]`-İkili veriler için kullanışlıdır.
 * Özel bir tür-ileti JSON içeriyorsa, Azure Işlevleri JSON verilerinin serisini kaldırma girişiminde bulunur.
-* `BrokeredMessage`-Aracı, [aracılı edmessage. GetBody\<T> ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
+* `BrokeredMessage`-, Aracı tarafından [aracılı edmessage. GetBody \<T> ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
 
-Bu parametre türleri Azure Işlevleri sürüm 1. x; içindir. 2. x ve üzeri için yerine kullanın [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) `BrokeredMessage`.
+Bu parametre türleri Azure Işlevleri sürüm 1. x; içindir. 2. x ve üzeri için yerine kullanın [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) `BrokeredMessage` .
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
@@ -322,21 +323,21 @@ Sıra veya konu iletisi için aşağıdaki parametre türleri kullanılabilir:
 * `string`-İleti metin ise.
 * `byte[]`-İkili veriler için kullanışlıdır.
 * Özel bir tür-ileti JSON içeriyorsa, Azure Işlevleri JSON verilerinin serisini kaldırma girişiminde bulunur.
-* `BrokeredMessage`-Aracı, [aracılı edmessage. GetBody\<T> ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
+* `BrokeredMessage`-, Aracı tarafından [aracılı edmessage. GetBody \<T> ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle birlikte seri durumdan çıkarılmış ileti verir.
 
-Bu parametreler Azure Işlevleri sürüm 1. x; içindir. 2. x ve üzeri için yerine kullanın [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) `BrokeredMessage`.
+Bu parametreler Azure Işlevleri sürüm 1. x; içindir. 2. x ve üzeri için yerine kullanın [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) `BrokeredMessage` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Kullanarak `context.bindings.<name from function.json>`kuyruk veya konu iletisine erişin. Service Bus ileti, işleve dize veya JSON nesnesi olarak geçirilir.
+Kullanarak kuyruk veya konu iletisine erişin `context.bindings.<name from function.json>` . Service Bus ileti, işleve dize veya JSON nesnesi olarak geçirilir.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Kuyruk iletisi, işlevi olarak `func.ServiceBusMessage`yazılmış bir parametre yoluyla kullanılabilir. Service Bus ileti, işleve dize veya JSON nesnesi olarak geçirilir.
+Kuyruk iletisi, işlevi olarak yazılmış bir parametre yoluyla kullanılabilir `func.ServiceBusMessage` . Service Bus ileti, işleve dize veya JSON nesnesi olarak geçirilir.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Gelen Service Bus iletisi bir `ServiceBusQueueMessage` veya `ServiceBusTopicMessage` parametresi aracılığıyla kullanılabilir.
+Gelen Service Bus iletisi bir veya parametresi aracılığıyla kullanılabilir `ServiceBusQueueMessage` `ServiceBusTopicMessage` .
 
 [Ayrıntılar için örneğe bakın](#example).
 
@@ -348,7 +349,7 @@ Azure Işlevleri 'nde zehirli ileti işleme denetlenemez veya yapılandırılama
 
 ## <a name="peeklock-behavior"></a>PeekLock davranışı
 
-Işlevler çalışma zamanı [PeekLock modunda](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)bir ileti alır. İşlev başarıyla `Complete` tamamlandığında iletiye çağrı yapılır veya işlev başarısız olursa çağırır `Abandon` . İşlev `PeekLock` zaman aşımından daha uzun çalışırsa, işlev çalıştığı sürece kilit otomatik olarak yenilenir. 
+Işlevler çalışma zamanı [PeekLock modunda](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)bir ileti alır. `Complete`İşlev başarıyla tamamlandığında iletiye çağrı yapılır veya `Abandon` işlev başarısız olursa çağırır. İşlev zaman aşımından daha uzun çalışırsa `PeekLock` , işlev çalıştığı sürece kilit otomatik olarak yenilenir. 
 
 , `maxAutoRenewDuration` [Onmessageoptions. MaxAutoRenewDuration](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet)ile eşleşen *Host. JSON*' da yapılandırılabilir. Bu ayar için izin verilen en yüksek değer, Service Bus belgelerine göre 5 dakikadır, ancak Işlevlerin zaman sınırını varsayılan 5 dakikadan 10 dakikaya artırabilirsiniz. Service Bus yenileme sınırını aştığınız için bunu yapmak istemediğiniz Service Bus işlevleri için.
 
@@ -356,7 +357,7 @@ Işlevler çalışma zamanı [PeekLock modunda](../service-bus-messaging/service
 
 Service Bus tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expressions-patterns.md#trigger-metadata)sağlar. Bu özellikler, diğer bağlamalardaki veya kodunuzda parametre olarak bağlama ifadelerinin bir parçası olarak kullanılabilir. Bu özellikler [ileti](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet) sınıfının üyeleridir.
 
-|Özellik|Tür|Açıklama|
+|Özellik|Tür|Description|
 |--------|----|-----------|
 |`ContentType`|`string`|Uygulamaya özgü mantık için gönderen ve alıcı tarafından kullanılan bir içerik türü tanımlayıcısı.|
 |`CorrelationId`|`string`|Bağıntı KIMLIĞI.|

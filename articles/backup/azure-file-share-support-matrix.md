@@ -4,12 +4,12 @@ description: Azure dosya paylaşımları yedeklenirken destek ayarlarının ve s
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8198c06c1151dd86d99bc64f825764d0a4988287
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 72492ea77534b636d90820c96e36163e6c6efebe
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193858"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488469"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure dosya paylaşma yedeklemesi için destek matrisi
 
@@ -23,7 +23,7 @@ Azure dosya paylaşımları yedeklemesi, **şunlar hariç** tüm bölgelerde kul
 
 ### <a name="supported-regions-for-accidental-delete-protection"></a>Yanlışlıkla silme koruması için desteklenen bölgeler
 
-Orta Batı ABD
+Orta Batı ABD, Avustralya Güney Doğu, Kanada Orta
 
 ## <a name="supported-storage-accounts"></a>Desteklenen depolama hesapları
 
@@ -53,7 +53,7 @@ Orta Batı ABD
 
 | Ayar                                      | Sınır |
 | -------------------------------------------- | ----- |
-| Gün başına en fazla isteğe bağlı yedekleme sayısı | 4     |
+| Gün başına en fazla isteğe bağlı yedekleme sayısı | 10   |
 | Gün başına en fazla zamanlanmış yedekleme sayısı | 1     |
 
 ## <a name="restore-limits"></a>Geri yükleme sınırları

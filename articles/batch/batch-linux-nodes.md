@@ -3,13 +3,13 @@ title: Sanal makine işlem düğümlerinde Linux çalıştırma
 description: Azure Batch içindeki Linux sanal makinelerinin havuzlarında paralel işlem iş yüklerinizi nasıl işleyeceğini öğrenin.
 ms.topic: how-to
 ms.date: 06/01/2018
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd8a39556fb0aec0ddbf6c8e639281d7329228a4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.custom: H1Hack27Feb2017, tracking-python
+ms.openlocfilehash: 6a834e433c86eaa85b6d313d7e49020804cd69de
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726613"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559636"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch havuzlarında Linux işlem düğümleri sağlama
 
@@ -33,7 +33,7 @@ Batch hizmeti, sanal makine yapılandırmasında işlem düğümleri sağlamak i
 
 Bir sanal makine görüntü başvurusunu yapılandırdığınızda, sanal makine görüntüsünün özelliklerini belirtirsiniz. Bir sanal makine görüntü başvurusu oluştururken aşağıdaki özellikler gereklidir:
 
-| **Görüntü başvurusu özellikleri** | **Örnek** |
+| **Görüntü başvurusu özellikleri** | **Örneğinde** |
 | --- | --- |
 | Publisher |Canonical |
 | Sunduğu |UbuntuServer |

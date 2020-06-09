@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: portalda bir arama hizmeti oluşturma'
+title: Portalda arama hizmeti oluşturma
 titleSuffix: Azure Cognitive Search
 description: Bu portal hızlı başlangıcı ' nda, Azure portal Azure Bilişsel Arama kaynağını ayarlamayı öğrenin. Kaynak grupları, bölgeler ve SKU veya fiyatlandırma katmanı seçin.
 manager: nitinme
@@ -7,17 +7,17 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 02/10/2020
-ms.openlocfilehash: 3bc3edcd0e75d8f6e3e4d6f9b200032909318040
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/07/2020
+ms.openlocfilehash: 83b723c815825a255727e9a48d415fedd405c942
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77209367"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488231"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Hızlı başlangıç: portalda bir Azure Bilişsel Arama hizmeti oluşturma
 
-Azure Bilişsel Arama, bir arama deneyimini özel uygulamalara bağlamak için kullanılan tek başına kaynaktır. Azure Bilişsel Arama, diğer Azure hizmetleriyle, ağ sunucularındaki uygulamalarla veya diğer bulut platformlarında çalışan yazılımlarla kolayca tümleştirilir.
+Azure Bilişsel Arama, bir arama deneyimini özel uygulamalara bağlamak için kullanılan tek başına kaynaktır. Bilişsel Arama, diğer Azure hizmetleriyle, ağ sunucularındaki uygulamalarla veya diğer bulut platformlarında çalışan yazılımlarla kolayca tümleştirilir.
 
 Bu makalede [Azure Portal](https://portal.azure.com/)kaynak oluşturmayı öğrenin.
 
@@ -34,8 +34,10 @@ Alternatif olarak, [MSDN abone avantajlarınızı etkinleştirin](https://azure.
 ## <a name="find-azure-cognitive-search"></a>Azure Bilişsel Arama bulun
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Sol üst köşedeki artı işaretine ("+ kaynak oluştur") tıklayın.
-3. "Azure bilişsel arama" bulmak için arama çubuğunu kullanın veya **Web** > **Azure bilişsel arama**üzerinden kaynağa gidin.
+
+1. Sol üst köşedeki artı işaretine ("+ kaynak oluştur") tıklayın.
+
+1. "Azure bilişsel arama" bulmak için arama çubuğunu kullanın veya **Web**  >  **Azure bilişsel arama**üzerinden kaynağa gidin.
 
 ![Portalda kaynak oluşturma](./media/search-create-service-portal/find-search3.png "Portalda kaynak oluşturma")
 
@@ -60,7 +62,7 @@ Zaman içinde, geçerli ve öngörülen maliyetleri tamamen izleyebilir veya tek
 
 ## <a name="name-the-service"></a>Hizmeti adlandırın
 
-Örnek ayrıntıları ' nda **URL** alanında bir hizmet adı belirtin. Ad, API çağrılarının verildiği URL uç noktasının bir parçasıdır: `https://your-service-name.search.windows.net`. Örneğin, uç noktanın olmasını `https://myservice.search.windows.net`istiyorsanız, girmeniz `myservice`gerekir.
+Örnek ayrıntıları ' nda **URL** alanında bir hizmet adı belirtin. Ad, API çağrılarının verildiği URL uç noktasının bir parçasıdır: `https://your-service-name.search.windows.net` . Örneğin, uç noktanın olmasını istiyorsanız `https://myservice.search.windows.net` , girmeniz gerekir `myservice` .
 
 Hizmet adı gereksinimleri:
 
@@ -71,24 +73,30 @@ Hizmet adı gereksinimleri:
 * Her yerde ardışık çizgiler ("--") kullanamazsınız
 
 > [!TIP]
-> Birden çok hizmet kullandığınızı düşünüyorsanız, hizmet adına bölge (veya konum) bir adlandırma kuralı olarak dahil etmenizi öneririz. Aynı bölgedeki hizmetler ücretsiz olarak verileri değiş tokuş edebilir, bu nedenle Azure Bilişsel Arama Batı ABD ve aynı zamanda Batı ABD de başka hizmetleriniz varsa, gibi `mysearchservice-westus` bir ad, kaynakları birleştirme veya iliştirme konusunda karar verirken Özellikler sayfasına seyahat edebilir.
+> Birden çok hizmet kullandığınızı düşünüyorsanız, hizmet adına bölge (veya konum) bir adlandırma kuralı olarak dahil etmenizi öneririz. Aynı bölgedeki hizmetler ücretsiz olarak verileri değiş tokuş edebilir, bu nedenle Azure Bilişsel Arama Batı ABD ve aynı zamanda Batı ABD de başka hizmetleriniz varsa, gibi bir ad, `mysearchservice-westus` kaynakları birleştirme veya iliştirme konusunda karar verirken Özellikler sayfasına seyahat edebilir.
 
-## <a name="choose-a-location"></a>Bir konum seçin
+## <a name="choose-a-location"></a>Konum seçin
 
-Bir Azure hizmeti olarak Azure Bilişsel Arama dünyanın dört bir yanındaki veri merkezlerinde barındırılabilir. Desteklenen bölgelerin listesi [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)bulunabilir. 
-
-Birden fazla hizmet için aynı konumu seçerek bant genişliği ücretlerini en aza indirebilir veya önleyebilirsiniz. Örneğin, başka bir Azure hizmeti (Azure depolama, Azure Cosmos DB, Azure SQL veritabanı) tarafından sağlanmış verileri dizinlendirirken, Azure Bilişsel Arama hizmetinizi aynı bölgede oluşturmak bant genişliği ücretlerini önler (hizmetler aynı bölgedeyse giden veriler için ücret alınmaz).
-
-AI zenginleştirme kullanıyorsanız, arama hizmetinizi bilişsel hizmetler ile aynı bölgede oluşturun. *Azure bilişsel arama ve bilişsel hizmetler 'in aynı bölgedeki birlikte bulunması, AI zenginleştirme için bir gereksinimdir*.
+Azure Bilişsel Arama çoğu bölgede kullanılabilir. Desteklenen bölgelerin listesi [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)bulunabilir.
 
 > [!Note]
-> Orta Hindistan, yeni hizmetler için şu anda kullanılamıyor. Zaten Orta Hindistan olan hizmetler için, kısıtlama olmadan ölçeği ölçeklendirebilirsiniz ve hizmetiniz bu bölgede tam olarak desteklenmektedir. Bu bölgedeki kısıtlama geçicidir ve yalnızca yeni hizmetlerle sınırlıdır. Kısıtlama artık geçerli olmadığında bu notun kaldırılması gerekir.
+> Orta Hindistan ve BAE Kuzey şu anda yeni hizmetlerde kullanılamıyor. Bu bölgelerde zaten bulunan hizmetler için, kısıtlama olmadan ölçeği ölçeklendirebilirsiniz ve hizmetiniz bu bölgede tam olarak desteklenmektedir. Kısıtlamalar geçicidir ve yalnızca yeni hizmetlerle sınırlıdır. Kısıtlamalar artık uygulanmadıysa bu notun kaldırılması gerekir.
+
+### <a name="requirements"></a>Gereksinimler
+
+ AI zenginleştirme kullanıyorsanız, arama hizmetinizi bilişsel hizmetler ile aynı bölgede oluşturun. *Azure bilişsel arama ve bilişsel hizmetler 'in aynı bölgedeki birlikte bulunması, AI zenginleştirme için bir gereksinimdir*.
+
+ İş sürekliliği ve olağanüstü durum kurtarma (BCDR) gereksinimlerinin bulunduğu müşterilerin hizmetlerini [Bölgesel çiftlerde](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs)oluşturması gerekir. Örneğin, Kuzey Amerika çalıştırıyorsanız, her hizmet için Doğu ABD ve Batı ABD ya da Orta Kuzey ABD ve Güney Centra US ' i seçebilirsiniz.
+
+### <a name="recommendations"></a>Öneriler
+
+Birden çok Azure hizmeti kullanıyorsanız, veri veya uygulama hizmetinizi de barındıran bir bölge seçin. Bunun yapılması, giden veriler için bant genişliği ücretlerini en aza indirir veya azaltır (hizmetler aynı bölgedeyse giden veriler için ücret alınmaz).
 
 ## <a name="choose-a-pricing-tier-sku"></a>Fiyatlandırma Katmanı (SKU) seçin
 
 [Azure bilişsel arama şu anda birden çok fiyatlandırma katmanlarında sunulmaktadır](https://azure.microsoft.com/pricing/details/search/): ücretsiz, temel veya standart. Her katmanın kendi [kapasitesi ve sınırları](search-limits-quotas-capacity.md) vardır. Yönergeler için [Fiyatlandırma katmanı veya SKU seçme](search-sku-tier.md) bölümüne bakın.
 
-Temel ve standart, üretim iş yükleri için en yaygın seçimlerdir, ancak çoğu müşteri ücretsiz hizmetle başlar. Katmanlar arasındaki temel farklılıklar bölüm boyutu ve hız, oluşturabileceğiniz nesne sayısı için sınırlar olur.
+Temel ve standart, üretim iş yükleri için en yaygın seçimlerdir, ancak çoğu müşteri ücretsiz hizmetle başlar. Katmanlar arasındaki temel farklılıklar bölüm boyutudur ve hızlardır ve oluşturabileceğiniz nesne sayısı için sınırlar vardır.
 
 Hizmet oluşturulduktan sonra bir fiyatlandırma katmanının değiştirilemeyeceğini unutmayın. Daha yüksek veya daha düşük bir katmana ihtiyacınız varsa, hizmeti yeniden oluşturmanız gerekecektir.
 
@@ -128,7 +136,7 @@ Kaynak eklemek aylık faturanız artırır. [Fiyatlandırma hesaplayıcısı](ht
 > Bir hizmetin [salt okunur SLA için 2 çoğaltması ve okuma/yazma SLA’sı için 3 çoğaltması](https://azure.microsoft.com/support/legal/sla/search/v1_0/) olmalıdır.
 
 1. Azure portalında arama hizmeti sayfanıza gidin.
-2. Sol gezinti bölmesinde **Ayarlar** > **Ölçek**' i seçin.
+2. Sol gezinti bölmesinde **Ayarlar**  >  **Ölçek**' i seçin.
 3. Her iki türdeki kaynakları eklemek için kaydırma çubuğunu kullanın.
 
 ![Kapasite Ekle](./media/search-create-service-portal/settings-scale.png "Çoğaltmalar ve bölümler aracılığıyla kapasite ekleme")
@@ -142,9 +150,11 @@ Kaynak eklemek aylık faturanız artırır. [Fiyatlandırma hesaplayıcısı](ht
 
 Müşterilerin çoğu yalnızca bir hizmet kullansa da, işletim gereksinimleri arasında aşağıdakiler yer alıyorsa hizmet yedekliliği gerekebilir:
 
-* Olağanüstü durum kurtarma (veri merkezi kesintisi). Azure Bilişsel Arama, kesinti durumunda anlık yük devretme sağlamaz. Öneriler ve kılavuz için bkz. [Hizmet yönetim](search-manage.md).
-* Çok kiracılı modelleme araştırması, ek hizmetlerin optimum tasarım olduğunu belirlemiştir. Daha fazla bilgi için bkz. [Çoklu kiracı tasarımı](search-modeling-multitenant-saas-applications.md).
-* Küresel olarak dağıtılan uygulamalarda, uygulamanızın Uluslararası trafiğinin gecikme süresini en aza indirmek için birden çok bölgede Azure Bilişsel Arama örneği gerekebilir.
++ [İş sürekliliği ve olağanüstü durum kurtarma (BCDR)](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Azure Bilişsel Arama, kesinti durumunda anlık yük devretme sağlamaz.
+
++ [Çok kiracılı mimariler](search-modeling-multitenant-saas-applications.md) bazen iki veya daha fazla hizmet için çağrı yapılır.
+
++ Küresel olarak dağıtılan uygulamalar, gecikme süresini en aza indirmek için her Coğrafya içinde arama hizmetleri gerektirebilir.
 
 > [!NOTE]
 > Azure Bilişsel Arama, dizin oluşturma ve sorgulama işlemlerini ayırt edemez; Bu nedenle, ayrılmış iş yükleri için hiçbir şekilde birden çok hizmet oluşturmazsınız. Bir dizin her zaman oluşturulduğu hizmette sorgulanır (bir hizmette bir dizini oluşturup başka bir hizmete kopyalayamazsınız).

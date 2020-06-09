@@ -4,12 +4,12 @@ description: Azure Site Recovery olan ikincil bir bölgeye Azure VM olağanüst�
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: raynew
-ms.openlocfilehash: 9be07290762a7f012417c4442f93f648889c452f
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 13bff6006d38489d576a0cbefbf3e7bab8afab37
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323238"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488911"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure VM olağanüstü durum kurtarma için destek matrisi
 
@@ -28,7 +28,7 @@ Bu makalede, Azure VM 'lerinin bir Azure bölgesinden diğerine olağanüstü du
 
 ## <a name="resource-support"></a>Kaynak desteği
 
-**Kaynak eylemi** | **Ayrıntılar**
+**Kaynak eylemi** | **Bilgileri**
 --- | ---
 **Kaynakları kaynak grupları arasında taşıma** | Desteklenmiyor
 **İşlem/depolama/ağ kaynaklarını kaynak grupları arasında taşıma** | Desteklenmiyor.<br/><br/> VM çoğaltıldıktan sonra bir VM 'yi veya depolama/ağ gibi ilişkili bileşenleri taşırsanız VM için çoğaltmayı devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
@@ -66,7 +66,7 @@ Almanya    | Almanya Orta, Almanya Kuzeydoğu
 
 Bu tablo, çoğaltma sırasında Site Recovery tarafından kullanılan önbellek depolama hesabı desteğini özetler.
 
-**Ayar** | **Destek** | **Ayrıntılar**
+**Ayar** | **Destek** | **Bilgileri**
 --- | --- | ---
 Genel amaçlı v2 depolama hesapları (sık erişimli ve Seyrek Erişimli Katman) | Destekleniyor | V2 için işlem maliyetleri, v1 depolama hesaplarından önemli ölçüde yüksek olduğundan, GPv2 kullanımı önerilmez.
 Premium depolama | Desteklenmiyor | Standart depolama hesapları, maliyetleri iyileştirmenize yardımcı olmak için önbellek depolaması için kullanılır.
@@ -80,7 +80,7 @@ Site Recovery, bu bölümde listelenen işletim sistemlerini çalıştıran Azur
 ### <a name="windows"></a>Windows
 
 
-**İşletim sistemi** | **Ayrıntılar**
+**İşletim sistemi** | **Bilgileri**
 --- | ---
 Windows Server 2019 | Sunucu çekirdeği için desteklenir, masaüstü deneyimi olan sunucu.
 Windows Server 2016  | Desteklenen sunucu çekirdeği, masaüstü deneyimi ile sunucu.
@@ -96,47 +96,49 @@ SP1 ile Windows 7 (x64) sürümleri | Azure VM 'Leri için Mobility hizmeti uzan
 
 #### <a name="linux"></a>Linux
 
-**İşletim sistemi** | **Ayrıntılar**
+**İşletim sistemi** | **Bilgileri**
 --- | ---
 Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6,[7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4564347/), [8,0](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1
 CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7, [7,8](https://support.microsoft.com/help/4564347/), 8,0, 8,1
 Ubuntu 14,04 LTS sunucusu | [Desteklenen çekirdek sürümleri](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Ubuntu 16,04 LTS sunucusu | [Desteklenen çekirdek sürümü](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Parola tabanlı kimlik doğrulaması ve oturum açma kullanan Ubuntu sunucuları ve bulut VM 'Leri yapılandırmak için Cloud-init paketi, yük devretmede (cloudinit yapılandırmasına bağlı olarak) parola tabanlı oturum açma devre dışı kalabilir. Parola tabanlı oturum açma, Azure portal > sorun giderme > ayarları menüsündeki (yük devredilen VM 'nin) parolasını sıfırlayarak sanal makinede yeniden etkinleştirilebilir.
 Ubuntu 18,04 LTS sunucusu | [Desteklenen çekirdek sürümü](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
-Deyi 7 | [Desteklenen çekirdek sürümleri](#supported-debian-kernel-versions-for-azure-virtual-machines)
-Debian 8 | [Desteklenen çekirdek sürümleri](#supported-debian-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4. [(Desteklenen çekirdek sürümleri)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
+Deyi 7 | Tüm 7 desteğini içerir. *x* sürümleri [desteklenen çekirdek sürümleri](#supported-debian-kernel-versions-for-azure-virtual-machines)
+Debian 8 | Tüm 8 desteğini içerir. *x* sürümleri [desteklenen çekirdek sürümleri](#supported-debian-kernel-versions-for-azure-virtual-machines)
+SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4, SP5 [(desteklenen çekirdek sürümleri)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines) </br> (* * SP5, Azure için Azure 'a yönelik en son 9,33 güvenlik düzeltme ekiyle Azure DR senaryosunda kullanılabilir).
 SUSE Linux Enterprise Server 15 | 15 ve 15 SP1. [(Desteklenen çekirdek sürümleri)](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> Makine, SP3 ile SP4'E çoğaltma için yükseltme desteklenmez. Çoğaltılan bir makine yükseltildiyse, çoğaltmayı devre dışı bırakmanız ve yükseltmeden sonra çoğaltmayı yeniden etkinleştirmeniz gerekir.
 SUSE Linux Enterprise Server 11 | MADAN
 Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) <br/><br/> Red Hat uyumlu çekirdek veya ayırıcı kurumsal çekirdek sürümü 3, 4 & 5 (UEK3, UEK4, UEK5) çalıştırılıyor
 
+* * Note: 30 gün içinde en son Linux keritelerini desteklemek Için, Azure Site Recovery en son Mobility Aracısı sürümünün en üstünde etkin düzeltme eki uygulama. Bu düzeltilme iki ana sürüm sürümü arasında kullanıma sunulacaktır. Mobility aracısının en son sürümüne (sık düzeltme eki ekleme) güncelleştirmek için [Bu makalede](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)bahsedilen adımları izleyin. Bu düzeltme eki Şu anda Azure 'da Azure DR senaryosunda kullanılan Mobility aracıları için kullanıma hazır.
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Azure sanal makineleri için desteklenen Ubuntu çekirdek sürümleri
 
-**Yayın** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
+**Sürüm** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
 14,04 LTS | 9,32, [9,33](https://support.microsoft.com/help/4564347/)| 3.13.0-24-genel-3.13.0-170-Generic,<br/>3.16.0-25-Genel-3.16.0-77-Generic,<br/>3.19.0-18-Generic ila 3.19.0-80-Generic,<br/>4.2.0-18-Generic ila 4.2.0-42-Generic,<br/>4.4.0-21-Generic-4.4.0-148-Generic,<br/>4.15.0-1023-Azure to 4.15.0-1045-Azure |
 14,04 LTS | 9,31 | 3.13.0-24-genel-3.13.0-170-Generic,<br/>3.16.0-25-Genel-3.16.0-77-Generic,<br/>3.19.0-18-Generic ila 3.19.0-80-Generic,<br/>4.2.0-18-Generic ila 4.2.0-42-Generic,<br/>4.4.0-21-Generic-4.4.0-148-Generic,<br/>4.15.0-1023-Azure to 4.15.0-1045-Azure |
 14,04 LTS | 9,30 | 3.13.0-24-genel-3.13.0-170-Generic,<br/>3.16.0-25-Genel-3.16.0-77-Generic,<br/>3.19.0-18-Generic ila 3.19.0-80-Generic,<br/>4.2.0-18-Generic ila 4.2.0-42-Generic,<br/>4.4.0-21-Generic-4.4.0-148-Generic,<br/>4.15.0-1023-Azure to 4.15.0-1045-Azure |
 14,04 LTS | 9,29 | 3.13.0-24-genel-3.13.0-170-Generic,<br/>3.16.0-25-Genel-3.16.0-77-Generic,<br/>3.19.0-18-Generic ila 3.19.0-80-Generic,<br/>4.2.0-18-Generic ila 4.2.0-42-Generic,<br/>4.4.0-21-Generic-4.4.0-148-Generic,<br/>4.15.0-1023-Azure to 4.15.0-1045-Azure |
 |||
-16,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.4.0-21-Genel-4.4.0-178-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Generic-4.15.0-99-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1082-Azure|
+16,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.4.0-21-Genel-4.4.0-178-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Generic-4.15.0-99-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1082-Azure </br> 4.15.0-101-Generic & 4.4.0-179-Generic-9,33 sık düzeltme eki uygulama * *|
 16,04 LTS | 9,32 | 4.4.0-21-Generic-4.4.0-171-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Genel-4.15.0-74-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1066-Azure|
 16,04 LTS | 9,31 | 4.4.0-21-Generic-4.4.0-170-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Genel-4.15.0-72-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1063-Azure|
 16,04 LTS | [9,30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.4.0-21-Generic ile 4.4.0-166-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Genel-4.15.0-66-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1061-Azure|
 16,04 LTS | 9,29 | 4.4.0-21-Generic-4.4.0-164-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Generic-4.15.0-64-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1059-Azure|
 |||
-18,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.15.0-20-Generic ila 4.15.0-99-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-47-Generic </br> 5.3.0-19-Generic-5.3.0-51-Generic </br> 4.15.0-1009-Azure-4.15.0-1082-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1036-Azure </br> 5.3.0-1007-Azure-5.3.0-1020-Azure|
+18,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.15.0-20-Generic ila 4.15.0-99-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-47-Generic </br> 5.3.0-19-Generic-5.3.0-51-Generic </br> 4.15.0-1009-Azure-4.15.0-1082-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1036-Azure </br> 5.3.0-1007-Azure-5.3.0-1020-Azure </br> 4.15.0-101-Generic, 5.0.0-48-Generic, 5.3.0-1022-Azure & 5.3.0-53-Generic ile 9,33 sık düzeltme eki uygulama|
 18,04 LTS | 9,32| 4.15.0-20-Genel-4.15.0-74-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-37-Generic </br> 5.3.0-19-Generic-5.3.0-24-genel </br> 4.15.0-1009-Azure-4.15.0-1037-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1028-Azure </br> 5.3.0-1007-Azure-5.3.0-1009-Azure|
 18,04 LTS | 9,31| 4.15.0-20-Genel-4.15.0-72-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-37-Generic </br> 5.3.0-19-Generic-5.3.0-24-genel </br> 4.15.0-1009-Azure-4.15.0-1037-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1025-Azure </br> 5.3.0-1007-Azure|
 18,04 LTS | [9,30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.15.0-20-Genel-4.15.0-66-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-32-Generic </br> 4.15.0-1009-Azure-4.15.0-1037-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1023-Azure|
 18,04 LTS | [9,29](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) | 4.15.0-20-Generic ila 4.15.0-64-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-29-Generic </br> 4.15.0-1009-Azure-4.15.0-1037-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1020-Azure|
 
+* * Note: 30 gün içinde en son Linux keritelerini desteklemek Için, Azure Site Recovery en son Mobility Aracısı sürümünün en üstünde etkin düzeltme eki uygulama. Bu düzeltilme iki ana sürüm sürümü arasında kullanıma sunulacaktır. Mobility aracısının en son sürümüne (sık düzeltme eki ekleme) güncelleştirmek için [Bu makalede](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)bahsedilen adımları izleyin. Bu düzeltme eki Şu anda Azure 'da Azure DR senaryosunda kullanılan Mobility aracıları için kullanıma hazır.
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Azure sanal makineleri için desteklenen de, çekirdek sürümleri
 
-**Yayın** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
+**Sürüm** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
 Deyi 7 | 9.28, 9.29, 9.30, 9.31, 9,32, [9,33](https://support.microsoft.com/help/4564347/) | 3.2.0-4-AMD64-3.2.0-6-AMD64, 3.16.0 -0. BPO. 4-AMD64 |
 |||
@@ -145,16 +147,17 @@ Debian 8 | 9,28 | 3.16.0-4-AMD64-3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-AMD64 ila 4.9
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Azure sanal makineleri için desteklenen SUSE Linux Enterprise Server 12 çekirdek sürümü
 
-**Yayın** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
+**Sürüm** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,32, [9,33](https://support.microsoft.com/help/4564347/) | Tüm hisse senedi SUSE 12 SP1, SP2, SP3, SP4 çekirdekleri desteklenir.</br></br> 4.4.138-4.7-Azure to 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure to 4.12.14-6.34-Azure  |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,33 sık düzeltme eki uygulama | Tüm hisse senedi SUSE 12 SP1, SP2, SP3, SP4 çekirdekleri desteklenir.</br></br> 4.4.138-4.7-Azure to 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure to 4.12.14-6.34-Azure </br> 4.12.14-16.10-Azure to 4.12.14-16,7-Azure: 5  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,31 | Tüm hisse senedi SUSE 12 SP1, SP2, SP3, SP4 çekirdekleri desteklenir.</br></br> 4.4.138-4.7-Azure to 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure to 4.12.14-6.29-Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,30 | Tüm hisse senedi SUSE 12 SP1, SP2, SP3, SP4 çekirdekleri desteklenir.</br></br> 4.4.138-4.7-Azure to 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure to 4.12.14-6.29-Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,29 | Tüm hisse senedi SUSE 12 SP1, SP2, SP3, SP4 çekirdekleri desteklenir.</br></br> 4.4.138-4.7-Azure to 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure to 4.12.14-6.23-Azure  |
 
 #### <a name="supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines"></a>Azure sanal makineleri için desteklenen SUSE Linux Enterprise Server 15 çekirdek sürümü
 
-**Yayın** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
+**Sürüm** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 15 ve 15 SP1 | [9,33](https://support.microsoft.com/help/4564347/) | Varsayılan olarak, tüm [hisse senedi SUSE 15 ve 15 çekirdekler](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.12.14-5,5-Azure to 4.12.14-5.47-Azure </br></br> 4.12.14-8.5-Azure to 4.12.14-8.30-Azure |
 SUSE Linux Enterprise Server 15 ve 15 SP1 | 9,32 | Varsayılan olarak, tüm [hisse senedi SUSE 15 ve 15 çekirdekler](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.12.14-5,5-Azure to 4.12.14-8.22-Azure |
@@ -169,7 +172,7 @@ SUSE Linux Enterprise Server 15 ve 15 SP1 | 9,32 | Varsayılan olarak, tüm [his
 
 ## <a name="replicated-machines---compute-settings"></a>Çoğaltılan makineler-işlem ayarları
 
-**Ayar** | **Destek** | **Ayrıntılar**
+**Ayar** | **Destek** | **Bilgileri**
 --- | --- | ---
 Boyut | En az 2 CPU çekirdeğine ve 1 GB RAM 'e sahip Azure VM boyutu | [Azure sanal makine boyutlarını](../virtual-machines/windows/sizes.md)doğrulayın.
 Kullanılabilirlik kümeleri | Destekleniyor | Varsayılan seçeneklerle bir Azure VM için çoğaltmayı etkinleştirirseniz, kaynak bölge ayarlarına bağlı olarak bir kullanılabilirlik kümesi otomatik olarak oluşturulur. Bu ayarları değiştirebilirsiniz.
@@ -187,7 +190,7 @@ Yakınlık yerleştirme grupları | Desteklenmiyor | Bir yakınlık yerleşimi g
 
 ## <a name="replicated-machines---disk-actions"></a>Çoğaltılan makineler-disk eylemleri
 
-**Eylem** | **Ayrıntılar**
+**Eylem** | **Bilgileri**
 -- | ---
 Çoğaltılan VM 'de diski yeniden boyutlandır | Yük devretmeden önce kaynak VM 'de desteklenir. Çoğaltmayı devre dışı bırakıp yeniden etkinleştirmeye gerek yoktur.<br/><br/> Yük devretmeden sonra kaynak VM 'yi değiştirirseniz, değişiklikler yakalanmaz.<br/><br/> Yük devretmeden sonra Azure VM 'de disk boyutunu değiştirirseniz, değişiklikler Site Recovery tarafından yakalanmaz ve yeniden çalışma özgün VM boyutuna göre yapılır.
 Çoğaltılan bir VM 'ye disk ekleme | Destekleniyor
@@ -200,7 +203,7 @@ Bu tabloda, Azure VM işletim sistemi diski, veri diski ve geçici disk için de
 - Varsayılan ayarlarla dağıtırsanız, Site Recovery kaynak ayarlarına bağlı olarak diskleri ve depolama hesaplarını otomatik olarak oluşturur.
 - ' Yi özelleştirirseniz, yönergeleri izlediğinizden emin olun.
 
-**Bileşen** | **Destek** | **Ayrıntılar**
+**Bileşen** | **Destek** | **Bilgileri**
 --- | --- | ---
 İşletim sistemi diski en büyük boyutu | 2048 GB | VM diskleri hakkında [daha fazla bilgi edinin](../virtual-machines/windows/managed-disks-overview.md) .
 Geçici disk | Desteklenmiyor | Geçici disk her zaman çoğaltmadan çıkarılır.<br/><br/> Kalıcı verileri geçici diskte depolamamayın. [Daha fazla bilgi edinin](../virtual-machines/windows/managed-disks-overview.md).
@@ -257,7 +260,7 @@ Premium P20 veya P30 veya P40 veya P50 disk | 8 KB    | 5 MB/sn | Disk başına 
 Premium P20 veya P30 veya P40 veya P50 disk | 16 KB veya daha büyük |20 MB/sn | disk başına 1684 GB
 
 ## <a name="replicated-machines---networking"></a>Çoğaltılan makineler-ağ
-**Ayar** | **Destek** | **Ayrıntılar**
+**Ayar** | **Destek** | **Bilgileri**
 --- | --- | ---
 NIC | Belirli bir Azure VM boyutu için desteklenen en yüksek sayı | NIC 'ler, yük devretme sırasında VM oluşturulduğunda oluşturulur.<br/><br/> Yük devretme sanal makinesinde bulunan NIC 'lerin sayısı, çoğaltma etkinleştirildiğinde kaynak VM üzerindeki NIC 'lerin sayısına bağlıdır. Çoğaltmayı etkinleştirdikten sonra bir NIC ekler veya kaldırırsanız, yük devretmeden sonra çoğaltılan VM 'deki NIC 'lerin sayısını etkilemez. <br/><br/> Yük devretmeden sonra NIC 'lerin sırası orijinal siparişle aynı olmalıdır. <br/><br/> Hedef bölgede NIC 'Leri, kuruluşunuzun adlandırma kurallarına göre yeniden adlandırabilirsiniz.
 İnternet Yük Dengeleyici | Destekleniyor | Önceden yapılandırılmış yük dengeleyiciyi bir kurtarma planında bir Azure Otomasyonu betiği kullanarak ilişkilendirin.

@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: aa8d7bf4b9c709c5fb7ff32e89f0af6c4e82b3e7
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: f54dd09ac82ddefeb2528462c7131aa921592d2a
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450762"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487959"
 ---
-# <a name="init-image-transformation"></a>Init Image dönüşümü
+# <a name="init-image-transformation"></a>Init Görüntü Dönüşümü
 
 Bu makalede, görüntünün nasıl dönüştürülmesini istediğinizi belirtmek üzere görüntü dönüşümünü başlatmak için Azure Machine Learning tasarımcısında (Önizleme) **Init görüntü dönüştürme** modülünün nasıl kullanılacağı açıklanır.
 
@@ -51,7 +51,6 @@ Bu makalede, görüntünün nasıl dönüştürülmesini istediğinizi belirtmek
 
 14.  **Rastgele perspektif**için, olasılık 0,5 Ile verilen PIL görüntüsünün perspektif dönüştürmesinin yapılıp yapılmayacağını belirtin.
 
-15.  **Rastgele silme**için, görüntüde dikdörtgen bir bölgenin rastgele seçip seçmeyeceğini ve bu nesnenin piksellerini 0,5 olasılık ile silip silmeyeceğinizi belirtin.
 
 16.  Yukarıda belirtilen dönüştürmeyi giriş resmi veri kümesine uygulamak için [görüntü dönüştürme modülünü Uygula](apply-image-transformation.md) ' ya bağlanın.
 
@@ -68,7 +67,7 @@ Dönüştürme tamamlandıktan sonra, [görüntü dönüştürme](apply-image-tr
 
 ###  <a name="module-parameters"></a>Modül parametreleri  
 
-| Adı                    | Aralık   | Tür    | Varsayılan | Açıklama                              |
+| Name                    | Aralık   | Tür    | Varsayılan | Description                              |
 | ----------------------- | ------- | ------- | ------- | ---------------------------------------- |
 | Yeniden boyutlandırma                  | Herhangi biri     | Boole | True    | Giriş PIL görüntüsünü verilen boyuta göre yeniden boyutlandır |
 | Boyut                    | >= 1     | Tamsayı | 256     | İstenen çıkış boyutunu belirtin          |
@@ -94,7 +93,7 @@ Dönüştürme tamamlandıktan sonra, [görüntü dönüştürme](apply-image-tr
 
 ###  <a name="output"></a>Çıktı  
 
-| Adı                        | Tür                    | Açıklama                              |
+| Name                        | Tür                    | Description                              |
 | --------------------------- | ----------------------- | ---------------------------------------- |
 | Çıkış görüntüsü dönüştürme | Dönüştürme Tiondirectory | **Görüntü dönüştürme modülünü uygulamak** için bağlanýlabilen çıkış resmi dönüştürmesi. |
 

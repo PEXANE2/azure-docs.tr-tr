@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7e809def048c95b6688a13ac99783615eb045d11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 53a84bd970d564411ec9a56b54159e5a96717a6e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885198"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558757"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>Tek sayfalı uygulama: oturum açma ve oturum kapatma
 
@@ -25,7 +25,7 @@ Tek sayfalı uygulamanız için koda oturum açma eklemeyi öğrenin.
 Uygulamanızdaki API 'Lere erişim belirteçleri alabilmeniz için önce kimliği doğrulanmış bir Kullanıcı bağlamına ihtiyacınız vardır. MSAL. js ' de uygulamanızdaki kullanıcılara iki şekilde oturum açabilirsiniz:
 
 * [Açılır pencere](#sign-in-with-a-pop-up-window), `loginPopup` yöntemini kullanarak
-* `loginRedirect` Yöntemini kullanarak [yeniden yönlendirin](#sign-in-with-redirect)
+* Yöntemini kullanarak [yeniden yönlendirin](#sign-in-with-redirect) `loginRedirect`
 
 İsteğe bağlı olarak, kullanıcının oturum açma sırasında izin vermesini gerektiren API 'lerin kapsamlarını da geçirebilirsiniz.
 
@@ -45,22 +45,34 @@ Uygulamanızda hem açılır hem de yeniden yönlendirme yöntemlerini kullanama
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-const loginRequest = {
-    scopes: ["https://graph.microsoft.com/User.ReadWrite"]
+
+const config = {
+    auth: {
+        clientId: 'your_app_id',
+        redirectUri: "your_app_redirect_uri", //defaults to application start page
+        postLogoutRedirectUri: "your_app_logout_redirect_uri"
+    }
 }
 
-userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
-    //login success
-    let idToken = loginResponse.idToken;
-}).catch(function (error) {
-    //login failure
-    console.log(error);
-});
+const loginRequest = {
+    scopes: ["User.ReadWrite"]
+}
+
+const myMsal = new userAgentApplication(config);
+
+myMsal.loginPopup(loginRequest)
+    .then(function (loginResponse) {
+        //login success
+        let idToken = loginResponse.idToken;
+    }).catch(function (error) {
+        //login failure
+        console.log(error);
+    });
 ```
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-MSAL angular sarmalayıcısı, yol tanımına ekleyerek `MsalGuard` uygulamanızdaki belirli yolları güvenli hale getirmeye olanak tanır. Bu koruma, bu rotaya erişildiğinde oturum açma yöntemini çağırır.
+MSAL angular sarmalayıcısı, yol tanımına ekleyerek uygulamanızdaki belirli yolları güvenli hale getirmeye olanak tanır `MsalGuard` . Bu koruma, bu rotaya erişildiğinde oturum açma yöntemini çağırır.
 
 ```javascript
 // In app-routing.module.ts
@@ -103,7 +115,7 @@ Açılır pencere deneyimi için `popUp` yapılandırma seçeneğini etkinleşti
             }
         }, {
             popUp: true,
-            consentScopes: ["https://graph.microsoft.com/User.ReadWrite"]
+            consentScopes: ["User.ReadWrite"]
         })
     ]
 })
@@ -117,17 +129,28 @@ Açılır pencere deneyimi için `popUp` yapılandırma seçeneğini etkinleşti
 Yeniden yönlendirme yöntemleri, ana uygulamadan uzağa geçiş nedeniyle Promise döndürmez. Döndürülen belirteçleri işlemek ve erişmek için, yeniden yönlendirme yöntemlerini çağırmadan önce başarı ve hata geri çağırmaları kaydetmeniz gerekir.
 
 ```javascript
+
+const config = {
+    auth: {
+        clientId: 'your_app_id',
+        redirectUri: "your_app_redirect_uri", //defaults to application start page
+        postLogoutRedirectUri: "your_app_logout_redirect_uri"
+    }
+}
+
+const loginRequest = {
+    scopes: ["User.ReadWrite"]
+}
+
+const myMsal = new userAgentApplication(config);
+
 function authCallback(error, response) {
     //handle redirect response
 }
 
-userAgentApplication.handleRedirectCallback(authCallback);
+myMsal.handleRedirectCallback(authCallback);
 
-const loginRequest = {
-    scopes: ["https://graph.microsoft.com/User.ReadWrite"]
-}
-
-userAgentApplication.loginRedirect(loginRequest);
+myMsal.loginRedirect(loginRequest);
 ```
 
 # <a name="angular"></a>[Angular](#tab/angular)
@@ -141,9 +164,9 @@ Buradaki kod, açılır pencere ile oturum açma hakkında bölümünde daha ön
 
 ## <a name="sign-out"></a>Oturumu kapatma
 
-MSAL kitaplığı, tarayıcı depolamada `logout` önbelleği temizleyen ve Azure Active Directory (Azure AD) için bir oturum kapatma isteği gönderen bir yöntem sağlar. Kaydolduktan sonra, kitaplık varsayılan olarak uygulama başlatma sayfasına yeniden yönlendirilir.
+MSAL kitaplığı, `logout` tarayıcı depolamada önbelleği temizleyen ve Azure Active Directory (Azure AD) için bir oturum kapatma isteği gönderen bir yöntem sağlar. Kaydolduktan sonra, kitaplık varsayılan olarak uygulama başlatma sayfasına yeniden yönlendirilir.
 
-' İ ayarlayarak `postLogoutRedirectUri`, oturum kapatıldıktan sonra YENIDEN yönlendirileceği URI 'yi yapılandırabilirsiniz. Bu URI Ayrıca uygulama kaydlarınızın oturum kapatma URI 'SI olarak kaydedilmelidir.
+' İ ayarlayarak, oturum kapatıldıktan sonra yeniden yönlendirileceği URI 'yi yapılandırabilirsiniz `postLogoutRedirectUri` . Bu URI Ayrıca uygulama kaydlarınızın oturum kapatma URI 'SI olarak kaydedilmelidir.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -156,9 +179,9 @@ const config = {
     }
 }
 
-const userAgentApplication = new UserAgentApplication(config);
-userAgentApplication.logout();
+const myMsal = new UserAgentApplication(config);
 
+myMsal.logout();
 ```
 
 # <a name="angular"></a>[Angular](#tab/angular)

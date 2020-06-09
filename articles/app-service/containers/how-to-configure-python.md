@@ -4,19 +4,19 @@ description: Uygulamanız için önceden oluşturulmuş bir Python kapsayıcıs�
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 8a9276f73c1d9bdf0289f41bb59340b29f5a2575
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, seodec18, tracking-python
+ms.openlocfilehash: 96f7684176df35e9ac085dd2d7a0c576b7266883
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80046015"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553246"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service için bir Linux Python uygulaması yapılandırma
 
 Bu makalede, [Azure App Service](app-service-linux-intro.md) Python uygulamalarının nasıl çalıştığı ve gerektiğinde App Service davranışının nasıl özelleştirileceği açıklanır. Python uygulamalarının tüm gerekli [PIP](https://pypi.org/project/pip/) modülleri ile dağıtılması gerekir.
 
-App Service dağıtım altyapısı sanal bir ortamı otomatik olarak etkinleştirir ve bir `pip install -r requirements.txt` [Git deposu](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)dağıtırken sizin için çalışır veya derleme işlemlerine sahip bir [ZIP paketi](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) üzerinde geçiş yapar.
+App Service dağıtım altyapısı sanal bir ortamı otomatik olarak etkinleştirir ve `pip install -r requirements.txt` bir [Git deposu](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)dağıtırken sizin için çalışır veya derleme Işlemlerine sahip bir [ZIP paketi](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) üzerinde geçiş yapar.
 
 Bu kılavuz, App Service içinde yerleşik bir Linux kapsayıcısı kullanan Python geliştiricileri için temel kavramlar ve yönergeler sağlar. Azure App Service hiç kullanmadıysanız, ilk olarak [Python hızlı](quickstart-python.md) başlangıcı ve [Python 'U PostgreSQL öğreticisiyle](tutorial-python-postgresql-app.md) izlemelisiniz.
 
@@ -52,12 +52,12 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 Uygulamanızı, derleme Otomasyonu açıkken git veya ZIP paketleri kullanarak dağıtırsanız, App Service aşağıdaki sırayla Otomasyon adımları oluşturun:
 
-1. Tarafından `PRE_BUILD_SCRIPT_PATH`belirtilmişse özel betiği çalıştırın.
+1. Tarafından belirtilmişse özel betiği çalıştırın `PRE_BUILD_SCRIPT_PATH` .
 1. `pip install -r requirements.txt` öğesini çalıştırın.
-1. Deponun kökünde *Manage.py* bulunursa, *Manage.py collectstatic*' i çalıştırın. `DISABLE_COLLECTSTATIC` Ancak, olarak `true`ayarlandıysa, bu adım atlanır.
-1. Tarafından `POST_BUILD_SCRIPT_PATH`belirtilmişse özel betiği çalıştırın.
+1. Deponun kökünde *Manage.py* bulunursa, *Manage.py collectstatic*' i çalıştırın. Ancak, `DISABLE_COLLECTSTATIC` olarak ayarlandıysa `true` , bu adım atlanır.
+1. Tarafından belirtilmişse özel betiği çalıştırın `POST_BUILD_SCRIPT_PATH` .
 
-`PRE_BUILD_COMMAND`, `POST_BUILD_COMMAND`ve `DISABLE_COLLECTSTATIC` varsayılan olarak boş olan ortam değişkenleridir. Oluşturma öncesi komutları çalıştırmak için, tanımlayın `PRE_BUILD_COMMAND`. Oluşturma sonrası komutları çalıştırmak için, tanımlayın `POST_BUILD_COMMAND`. Docgo uygulamaları oluştururken collectstatic çalıştırmayı devre dışı bırakmak için, `DISABLE_COLLECTSTATIC=true`ayarlayın.
+`PRE_BUILD_COMMAND`, `POST_BUILD_COMMAND` ve `DISABLE_COLLECTSTATIC` Varsayılan olarak boş olan ortam değişkenleridir. Oluşturma öncesi komutları çalıştırmak için, tanımlayın `PRE_BUILD_COMMAND` . Oluşturma sonrası komutları çalıştırmak için, tanımlayın `POST_BUILD_COMMAND` . Docgo uygulamaları oluştururken collectstatic çalıştırmayı devre dışı bırakmak için, ayarlayın `DISABLE_COLLECTSTATIC=true` .
 
 Aşağıdaki örnek, virgülle ayrılmış bir dizi komuta iki değişkeni belirtir.
 
@@ -131,7 +131,7 @@ App Service özel komut dosyası, Django uygulaması veya Flask uygulaması bula
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-Örneğin, ana modülü *Hello.py* olan bir Flask uygulaması varsa ve bu dosyadaki Flask uygulaması nesnesi olarak adlandırılmışsa `myapp`, * \<özel-komut>* aşağıdaki gibidir:
+Örneğin, ana modülü *Hello.py* olan bir Flask uygulamanız varsa ve bu dosyadaki Flask uygulaması nesnesi olarak adlandırılmışsa `myapp` , *\<custom-command>* aşağıdaki gibidir:
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -143,9 +143,9 @@ Ana modülünüz `website` gibi bir alt klasör ise bu klasörü `--chdir` bağ�
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-Ayrıca, gunic, gibi `--workers=4` * \<özel komut>* için ek bağımsız değişkenleri ekleyebilirsiniz. Daha fazla bilgi için bkz. [Gunicorn'u Çalıştırma](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
+Ayrıca, Gunicgınto için ek bağımsız değişkenler ekleyebilirsiniz *\<custom-command>* , örneğin `--workers=4` . Daha fazla bilgi için bkz. [Gunicorn'u Çalıştırma](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
 
-[Aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)gibi gunicbir Server kullanmak için, * \<özel komut>* aşağıdaki gibi bir şekilde değiştirebilirsiniz:
+[Aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)gibi gunicbir Server kullanmak için aşağıdaki gibi bir şekilde değiştirebilirsiniz *\<custom-command>* :
 
 ```bash
 python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -156,7 +156,7 @@ python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
 
 ## <a name="access-environment-variables"></a> Ortam değişkenlerine erişme
 
-App Service, uygulama ayarlarınızı uygulama kodunuzun dışında [ayarlayabilirsiniz](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) . Ardından, standart [OS. Environ](https://docs.python.org/3/library/os.html#os.environ) modelini kullanarak bunlara erişebilirsiniz. Örneğin, adlı `WEBSITE_SITE_NAME`bir uygulama ayarına erişmek için aşağıdaki kodu kullanın:
+App Service, uygulama ayarlarınızı uygulama kodunuzun dışında [ayarlayabilirsiniz](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) . Ardından, standart [OS. Environ](https://docs.python.org/3/library/os.html#os.environ) modelini kullanarak bunlara erişebilirsiniz. Örneğin, adlı bir uygulama ayarına erişmek için `WEBSITE_SITE_NAME` aşağıdaki kodu kullanın:
 
 ```python
 os.environ['WEBSITE_SITE_NAME']
@@ -171,7 +171,7 @@ if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto
 # Do something when HTTPS is used
 ```
 
-Popüler Web çerçeveleri standart uygulama hiyerarşinizdeki `X-Forwarded-*` bilgilere erişmenizi sağlar. [Codeigniter](https://codeigniter.com/)'da, [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) varsayılan `X_FORWARDED_PROTO` olarak değerini denetler.
+Popüler Web çerçeveleri `X-Forwarded-*` Standart uygulama hiyerarşinizdeki bilgilere erişmenizi sağlar. [Codeigniter](https://codeigniter.com/)'da, [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) `X_FORWARDED_PROTO` Varsayılan olarak değerini denetler.
 
 ## <a name="access-diagnostic-logs"></a>Tanılama günlüklerine erişim
 

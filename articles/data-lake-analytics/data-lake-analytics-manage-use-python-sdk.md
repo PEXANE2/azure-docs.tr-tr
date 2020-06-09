@@ -9,12 +9,13 @@ ms.reviewer: jasonwhowell
 ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: d40658e1510c9ae8a2e3e1f865df7ac95f61abfb
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.custom: tracking-python
+ms.openlocfilehash: 34b3801d32720b8512f056ad16e3b3e3a979ee4b
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "68355986"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559257"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Python kullanarak Azure Data Lake Analytics yönetme
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -37,15 +38,15 @@ Aşağıdaki modülleri yükler:
 * **Azure-MGMT-datalake-Store** modülü Azure Data Lake Store hesap yönetimi işlemlerini içerir.
 * **Azure-MGMT-datalake-Analytics** modülü Azure Data Lake Analytics işlemlerini içerir. 
 
-İlk olarak, aşağıdaki komutu çalıştırarak en `pip` son sürüme sahip olduğunuzdan emin olun:
+İlk olarak, aşağıdaki komutu çalıştırarak en son sürüme sahip olduğunuzdan emin olun `pip` :
 
 ```
 python -m pip install --upgrade pip
 ```
 
-Bu belge kullanılarak `pip version 9.0.1`yazılmıştır.
+Bu belge kullanılarak yazılmıştır `pip version 9.0.1` .
 
-Komut satırında modülleri `pip` yüklemek için aşağıdaki komutları kullanın:
+`pip`Komut satırında modülleri yüklemek için aşağıdaki komutları kullanın:
 
 ```
 pip install azure-mgmt-resource
@@ -97,7 +98,7 @@ import time
 
 Modüllerin içeri aktarılabildiğini doğrulamak için bu betiği çalıştırın.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 ### <a name="interactive-user-authentication-with-a-pop-up"></a>Açılır pencere ile etkileşimli kullanıcı kimlik doğrulaması
 

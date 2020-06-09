@@ -3,12 +3,13 @@ title: Azure Notebooks önizlemede bir Jupyter Not defteri oluşturma ve paylaş
 description: Azure Notebooks önizlemede hızlı bir şekilde bir Jupyter Not defteri oluşturup çalıştırın ve ardından bu not defterini başkalarıyla paylaşabilirsiniz.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: d3310444fa28240b8fb1344199514a9601a2c615
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 01d1035f794287e679b6ebc84fa9498b184b4791
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77064453"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561087"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Notebooks önizlemede bir not defteri oluşturma ve paylaşma
 
@@ -21,13 +22,13 @@ Yok.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-1. [Azure Notebooks sitesine gidin (https://notebooks.azure.com) ](https://notebooks.azure.com) ve oturum açın. Ayrıntılar için bkz. [hızlı başlangıç-Azure Notebooks Için oturum açma](quickstart-sign-in-azure-notebooks.md).
+1. [Azure Notebooks sitesine gidin ( https://notebooks.azure.com) ](https://notebooks.azure.com) ve oturum açın. Ayrıntılar için bkz. [hızlı başlangıç-Azure Notebooks Için oturum açma](quickstart-sign-in-azure-notebooks.md).
 
 1. Ortak profil sayfanızda sayfanın en üstündeki **Projelerim** ' nı seçin:
 
     ![Projelerim tarayıcı penceresinin üst kısmında bağlantı](media/quickstarts/my-projects-link.png)
 
-1. **Projelerim** sayfasında **+ Yeni proje** ' yi seçin (klavye kısayolu: n). Düğme yalnızca tarayıcı penceresi dar gibi **+** görünebilir:
+1. **Projelerim** sayfasında **+ Yeni proje** ' yi seçin (klavye kısayolu: n). Düğme yalnızca **+** tarayıcı penceresi dar gibi görünebilir:
 
     ![Projelerim sayfasında yeni proje komutu](media/quickstarts/new-project-command.png)
 
@@ -40,7 +41,7 @@ Yok.
 
      ![Doldurulan ayrıntılarla yeni proje açılan penceresi](media/quickstarts/new-project-popup.png)
 
-1. Birkaç dakika sonra Azure Notebooks yeni projeye götürür. **+ Yeni** açılan listesini seçerek (yalnızca **+** olarak görünebilen) ve ardından **Not defteri**' ni seçerek projeye bir not defteri ekleyin:
+1. Birkaç dakika sonra Azure Notebooks yeni projeye götürür. **+ Yeni** açılan listesini seçerek (yalnızca olarak görünebilen **+** ) ve ardından **Not defteri**' ni seçerek projeye bir not defteri ekleyin:
 
     [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
 
@@ -92,7 +93,7 @@ Yok.
 
     ![Jupyter Not defteri araç çubuğunda Kaydet simgesi](media/quickstarts/hello-results-save-icon.png)
 
-1. Sunucuyu durdurmak ve tarayıcı **penceresini kapatmak için****Kapat ve Durdur** menü komutunu seçin. > 
+1. **File**  >  Sunucuyu durdurmak ve tarayıcı penceresini kapatmak için**Kapat ve Durdur** menü komutunu seçin.
 
 ## <a name="share-the-notebook"></a>Not defterini paylaşma
 

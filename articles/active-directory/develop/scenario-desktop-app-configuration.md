@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: d07add7950da531330fe9f64629299cef9fad1ac
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: f197dd5063f8584968277d8d55298c03d9d71ea6
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734595"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558839"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Web API 'Lerini çağıran masaüstü uygulaması: kod yapılandırması
 
@@ -26,7 +26,7 @@ Uygulamanızı oluşturduğunuza göre, kodun uygulamanın koordinatlarıyla nas
 
 Aşağıdaki Microsoft kimlik doğrulama kitaplıkları (MSALs) masaüstü uygulamalarını destekler.
 
-  Microsoft Authentication Library | Açıklama
+  Microsoft Authentication Library | Description
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | , Linux, Windows ve macOS gibi birden çok platformda masaüstü uygulaması oluşturmayı destekler.
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | , Bir masaüstü uygulamasının birden çok platformda oluşturulmasını destekler.
@@ -39,7 +39,7 @@ Bir görünüm noktasından, masaüstü uygulamaları ortak istemci uygulamalard
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-MSAL.NET `IPublicClientApplication`oluşturmanız ve güncelleştirmeniz gerekir.
+MSAL.NET oluşturmanız ve güncelleştirmeniz gerekir `IPublicClientApplication` .
 
 ![IPublicClientApplication](media/scenarios/public-client-application.png)
 
@@ -107,12 +107,12 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 MSAL.NET masaüstü uygulamasını yapılandırma hakkında daha fazla bilgi edinmek için:
 
-- Üzerinde `PublicClientApplicationBuilder`kullanılabilen tüm değiştiricilerin bir listesi için bkz. Reference documentation [Publicclientapplicationbuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
-- İçinde `PublicClientApplicationOptions`gösterilen tüm seçeneklerin bir açıklaması için başvuru belgelerindeki [Publicclientapplicationoptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) bölümüne bakın.
+- Üzerinde kullanılabilen tüm değiştiricilerin bir listesi için `PublicClientApplicationBuilder` bkz. Reference documentation [Publicclientapplicationbuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
+- İçinde gösterilen tüm seçeneklerin bir açıklaması için `PublicClientApplicationOptions` başvuru belgelerindeki [Publicclientapplicationoptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) bölümüne bakın.
 
 ### <a name="complete-example-with-configuration-options"></a>Yapılandırma seçenekleriyle birlikte tüm örnek
 
-Aşağıdaki `appsettings.json` yapılandırma dosyasına sahip bir .NET Core konsol uygulaması düşünün:
+Aşağıdaki yapılandırma dosyasına sahip bir .NET Core konsol uygulaması düşünün `appsettings.json` :
 
 ```json
 {
@@ -180,7 +180,7 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
            .Build();
 ```
 
-`.Build()` Yönteme çağrıdan önce, daha önce görüldüğü gibi `.WithXXX` yöntemlere yapılan çağrılar ile yapılandırmanızı geçersiz kılabilirsiniz.
+Yönteme çağrıdan önce `.Build()` , `.WithXXX` daha önce görüldüğü gibi yöntemlere yapılan çağrılar ile yapılandırmanızı geçersiz kılabilirsiniz.
 
 # <a name="java"></a>[Java](#tab/java)
 

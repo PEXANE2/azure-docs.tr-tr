@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 191a2246afdc60953d8c353f9ccdc2339130f910
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 67bf19c08d9a9309d8d4b731bf30a6db1091ebf1
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82159344"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558940"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Azure depolama 'da Event Hubs verileri yakalayın ve Python kullanarak okuyun (Azure-eventhub sürüm 5)
 
@@ -89,8 +90,8 @@ Bu bölümde, bir olay hub 'ına 200 olayları (10 cihaz * 20 olay) gönderen bi
     producer.close()
     ```
 4. Betiklerdeki aşağıdaki değerleri değiştirin:  
-    * Event Hubs `EVENT HUBS NAMESPACE CONNECTION STRING` ad alanınız için bağlantı dizesiyle değiştirin.  
-    * Olay `EVENT HUB NAME` hub 'ınızın adıyla değiştirin.  
+    * `EVENT HUBS NAMESPACE CONNECTION STRING`Event Hubs ad alanınız için bağlantı dizesiyle değiştirin.  
+    * `EVENT HUB NAME`Olay Hub 'ınızın adıyla değiştirin.  
 5. Olayları Olay Hub 'ına göndermek için betiği çalıştırın.  
 6. Azure portal, Olay Hub 'ının iletileri aldığını doğrulayabilirsiniz. **Ölçümler** bölümünde **iletiler** görünümüne geçin. Grafiği güncelleştirmek için sayfayı yenileyin. Sayfanın iletilerin alındığını görüntülemesi birkaç saniye sürebilir. 
 
@@ -157,7 +158,7 @@ Bu örnekte yakalanan veriler Azure Blob depolama alanında depolanır. Bu böl�
     
     startProcessing()    
     ```
-3. Azure `AZURE STORAGE CONNECTION STRING` depolama hesabınızın bağlantı dizesiyle değiştirin. Bu hızlı başlangıçta oluşturduğunuz kapsayıcının adı *yakala*. Kapsayıcı için farklı bir ad kullandıysanız, *yakalamayı* depolama hesabındaki kapsayıcının adıyla değiştirin. 
+3. `AZURE STORAGE CONNECTION STRING`Azure depolama hesabınızın bağlantı dizesiyle değiştirin. Bu hızlı başlangıçta oluşturduğunuz kapsayıcının adı *yakala*. Kapsayıcı için farklı bir ad kullandıysanız, *yakalamayı* depolama hesabındaki kapsayıcının adıyla değiştirin. 
 
 ## <a name="run-the-scripts"></a>Betikleri çalıştırma
 1. Yolunda Python içeren bir komut istemi açın ve ardından Python önkoşul paketlerini yüklemek için şu komutları çalıştırın:

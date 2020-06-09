@@ -3,12 +3,13 @@ title: Azure Notebooks önizlemeyi yapılandırın ve yönetin
 description: Azure Notebooks Kullanıcı arabirimi ve doğrudan Terminal erişimi aracılığıyla proje meta verilerini, proje dosyalarını, projenin ortamını ve kurulum adımlarını yönetmeyi öğrenin.
 ms.topic: how-to
 ms.date: 02/28/2020
-ms.openlocfilehash: 1674effda2cb9bda45f49c91ca618225b0a75f0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: df64c9d90252c31118b66943b6a182319e3f1cc2
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280605"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554297"
 ---
 # <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" />Azure Notebooks önizlemede projeleri yönetme ve yapılandırma
 
@@ -37,7 +38,7 @@ Varsayılan olarak, projeler **ücretsiz işlem** katmanında çalışır, bu da
 
 Proje panosunda **proje ayarları**' nı seçin ve ardından aşağıdaki tabloda açıklandığı gibi projenin meta verilerini içeren **bilgi** sekmesini seçin. Proje meta verilerini dilediğiniz zaman değiştirebilirsiniz.
 
-| Ayar | Açıklama |
+| Ayar | Description |
 | --- | --- |
 | Proje adı | Projeniz için Azure Notebooks görüntüleme amacıyla kullanılan kolay bir ad. Örneğin, "Python 'da Merhaba Dünya". |
 | Proje Kimliği | Projeyi paylaşmak için kullandığınız URL 'nin bir parçası haline gelen özel bir tanımlayıcı. Bu KIMLIK yalnızca harf, rakam ve kısa çizgi kullanabilir, 30 karakterle sınırlıdır ve [ayrılmış bir proje kimliği](create-clone-jupyter-notebooks.md#reserved-project-ids)olamaz. Ne kullanacağınızdan emin değilseniz, yaygın olarak kullanılan bir kural, "My-Not-Project" (uzunluk sınırına uyması gerekirse kesildi) gibi boşlukların tire içine açık olduğu, proje adınızın küçük harfli bir sürümünü kullanmaktır. |
@@ -56,7 +57,7 @@ Proje panosu, projenin klasör sisteminin içeriğini gösterir. Bu dosyaları y
 
 **+ New** komutu (klavye kısayolu: n) yeni dosya veya klasör oluşturur. Komutunu kullanırken öncelikle oluşturulacak öğe türünü seçin:
 
-| Öğe türü | Açıklama | Komut davranışı |
+| Öğe türü | Description | Komut davranışı |
 | --- | --- | --- |
 | **Not Defteri** | Jupyter Not defteri | Not defterinin dosya adını ve dilini belirttiğiniz bir açılan pencere görüntüler. |
 | **Klasör** | Bir alt klasör | Projenin dosya listesinde klasör adını girdiğiniz bir düzenleme alanı oluşturur. |
@@ -75,12 +76,12 @@ Projenin dosya listesindeki her öğe, sağ tıklama kısayol menüsü aracılı
 
 | Komut | Klavye kısayolu | Eylem |
 | --- | --- | --- |
-| Çalıştırın | r (veya öğesine tıklayın) | Bir not defteri dosyası çalıştırır. Diğer dosya türleri görüntülenmek üzere açılır.  |
+| Çalıştır | r (veya öğesine tıklayın) | Bir not defteri dosyası çalıştırır. Diğer dosya türleri görüntülenmek üzere açılır.  |
 | Bağlantıyı Kopyala | y | Dosyaya bir bağlantıyı panoya kopyalar. |
 | Jupyıter laboratuvarında Çalıştır | uygulanmaz | JupyterLab içinde, Jupyter 'ın normal olarak sağladığı daha fazla geliştirici odaklı bir arabirim olan bir not defteri çalıştırır. |
 | Önizleme | p | Dosyanın HTML önizlemesini açar; Not defterleri için Önizleme, Not defterini salt okunurdur. Daha fazla bilgi için [Önizleme](#preview) bölümüne bakın. |
 | Dosyayı Düzenle | ı | Dosyayı düzenlenmek üzere açar. |
-| İndirme | d | Dosya veya klasörün içeriğini içeren bir ZIP dosyasını indirir. |
+| İndir | d | Dosya veya klasörün içeriğini içeren bir ZIP dosyasını indirir. |
 | Rename | a | Dosya veya klasör için yeni bir ad ister. |
 | Sil | x | Onay ister, sonra dosyayı projeden kalıcı olarak kaldırır. Silme işlemleri geri alınamaz. |
 | Taşı | m | Bir dosyayı aynı projede farklı bir klasöre taşıın. |
@@ -95,8 +96,8 @@ Bir dosyanın veya Not defterinin önizlemesi, içeriklerin salt okuma görünü
 | --- | --- | --- |
 | Paylaş | s | Bir bağlantı alabileceğiniz, sosyal medya paylaşma, katıştırma için HTML alma ve e-posta gönderme için bir paylaşım açılan penceresini görüntüler. |
 | Kopyalama | c  | Not defterini hesabınıza kopyalayın. |
-| Çalıştırın | r | İzin verildiyse, Not defterini çalıştırır. |
-| İndirme | d | Not defterinin bir kopyasını indirir. |
+| Çalıştır | r | İzin verildiyse, Not defterini çalıştırır. |
+| İndir | d | Not defterinin bir kopyasını indirir. |
 
 ## <a name="configure-the-project-environment"></a>Proje ortamını yapılandırma
 
@@ -126,14 +127,14 @@ Bir adım eklemek için, önce **+ Ekle**' yi seçin ve ardından **işlem** aç
 
 Bundan sonra proje, seçtiğiniz işlem türüne bağlıdır:
 
-- **Requirements. txt**: ikinci açılan listede, projede zaten olan bir *requirements. txt* dosyası seçin. Ardından görüntülenen üçüncü açılan listeden bir Python sürümü seçin. Bir bir not defteri sunucusunu başlatırken Azure Notebooks, *Requirements* . `pip install -r` txt dosyası kullanarak, *requirements. txt* dosyasıyla çalışır. Paketleri Not defterinin içinden açıkça yüklemeniz gerekmez.
+- **Requirements. txt**: ikinci açılan listede, projede zaten olan bir *requirements. txt* dosyası seçin. Ardından görüntülenen üçüncü açılan listeden bir Python sürümü seçin. Bir bir not defteri sunucusunu başlatırken Azure Notebooks, *requirements. txt* dosyası kullanarak, `pip install -r` *requirements. txt* dosyasıyla çalışır. Paketleri Not defterinin içinden açıkça yüklemeniz gerekmez.
 
 - **Kabuk betiği**: ikinci aşağı açılan listede, ortamı başlatmak için çalıştırmak istediğiniz komutları içeren, projede bir bash Shell betiği (genellikle *. sh* uzantılı bir dosya) seçin.
 
 - **Environment. yml**: ikinci açılan listede, bir Conda ortamı kullanarak Python projeleri için bir *ortamlar. yml* dosyası seçin.
 
    > [!WARNING]
-   > Bu bir önizleme hizmeti geliştirildiği için, `Environment.yml` ayarın projenize beklendiği şekilde uygulanamadığı bilinen bir sorun vardır. İçindeki proje ve jupi Not defterleri, belirtilen ortam dosyasını yok olarak yüklemez.
+   > Bu bir önizleme hizmeti geliştirildiği `Environment.yml` için, ayarın projenize beklendiği şekilde uygulanamadığı bilinen bir sorun vardır. İçindeki proje ve jupi Not defterleri, belirtilen ortam dosyasını yok olarak yüklemez.
 
 Adım ekleme işiniz bittiğinde **Kaydet**' i seçin.
 
@@ -144,13 +145,13 @@ Proje panosunda, **Terminal** komutu sunucuya doğrudan erişim sağlayan bir Li
 > [!Note]
 > Projenizin ortamında başlangıç betikleriniz varsa, terminali açmak kurulumun hala devam ettiğini belirten bir ileti görüntüleyebilir.
 
-Terminalde herhangi bir standart Linux komutu verebilirsiniz. Ayrıca, bir sanal `ls` makinede bulunan *anaconda2_501*, *anaconda3_420*, *anaconda3_501*, *ifsharp*ve *R*gibi farklı ortamları, projeyi içeren bir *Proje* klasörüyle birlikte görmek için giriş klasöründe de kullanabilirsiniz:
+Terminalde herhangi bir standart Linux komutu verebilirsiniz. Ayrıca, `ls` bir sanal makinede bulunan *anaconda2_501*, *anaconda3_420*, *anaconda3_501*, *ifsharp*ve *R*gibi farklı ortamları, projeyi içeren bir *Proje* klasörüyle birlikte görmek için giriş klasöründe de kullanabilirsiniz:
 
 ![Azure Notebooks 'de Proje terminali](media/project-terminal.png)
 
 Belirli bir ortamı etkilemek için, önce dizinleri bu ortam klasörüyle değiştirin.
 
-Python ortamları için, her bir ortamın `pip` *bin* klasörünü `conda` bulabilir ve değiştirebilirsiniz. Ortamlar için yerleşik diğer adları da kullanabilirsiniz:
+Python ortamları için, `pip` `conda` her bir ortamın *bin* klasörünü bulabilir ve değiştirebilirsiniz. Ortamlar için yerleşik diğer adları da kullanabilirsiniz:
 
 ```bash
 # Anaconda 2 5.3.0/Python 2.7: python27
@@ -163,10 +164,10 @@ python35 -m pip install <package>
 python36 -m pip install <package>
 ```
 
-Sunucuda yapılan değişiklikler, *Proje* klasöründe oluşturduğunuz dosyalar ve klasörler hariç yalnızca geçerli oturum için geçerlidir. Örneğin, proje klasöründeki bir dosyayı düzenlediğinizde oturumlar arasında kalıcı olur, ancak ile `pip install` paketler değildir.
+Sunucuda yapılan değişiklikler, *Proje* klasöründe oluşturduğunuz dosyalar ve klasörler hariç yalnızca geçerli oturum için geçerlidir. Örneğin, proje klasöründeki bir dosyayı düzenlediğinizde oturumlar arasında kalıcı olur, ancak ile paketler `pip install` değildir.
 
 > [!Note]
-> Veya `python` `python3`kullanıyorsanız, Python 'un sistem tarafından yüklenen sürümlerini Not defterleri için kullanılmayan, çağırır. Her ikisi gibi `pip install` işlemler için izinleriniz yok, bu nedenle sürüme özgü diğer adları kullandığınızdan emin olun.
+> `python`Veya kullanıyorsanız `python3` , Python 'un sistem tarafından yüklenen sürümlerini Not defterleri için kullanılmayan, çağırır. Her ikisi gibi işlemler için izinleriniz yok `pip install` , bu nedenle sürüme özgü diğer adları kullandığınızdan emin olun.
 
 ## <a name="access-notebook-logs"></a>Not defteri günlüklerine erişin
 

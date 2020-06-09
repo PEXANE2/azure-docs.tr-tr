@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yükler
 description: Windows makinelerini yedeklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yüklemeyi öğrenin.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: d3932b66dbc41ff2631e2cccbe716c0877a509d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 767e04e45f88294ac4ffa58ec263a9a6d05eafb6
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422929"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508769"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Azure Backup MARS aracısını yükler
 
@@ -66,7 +66,7 @@ Depolama çoğaltma türünü değiştirmek için:
 Makinenizin internet erişimi sınırlı ise, makinedeki veya proxy 'deki güvenlik duvarı ayarlarının aşağıdaki URL 'Lere ve IP adreslerine izin verildiğinden emin olun:
 
 * URL’ler
-  * `www\.msftncsi.com`
+  * `www.msftncsi.com`
   * `*.Microsoft.com`
   * `*.WindowsAzure.com`
   * `*.microsoftonline.com`
@@ -100,7 +100,7 @@ Daha fazla bilgi için bkz. [ExpressRoute yönlendirme gereksinimleri](https://d
 
 Önceki URL 'Ler ve IP adresleri, 443 numaralı bağlantı noktasında HTTPS protokolünü kullanır.
 
-### <a name="private-endpoints"></a>Özel uç noktalar
+### <a name="private-endpoints"></a>Özel Uç Noktalar
 
 [!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
@@ -129,7 +129,7 @@ Aracıyı herhangi bir makineye zaten yüklediyseniz aracının en son sürümü
 
     ![Kasa kimlik bilgilerini indirme](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-1. **Kaydet**’i seçin. Dosya, Indirmeler klasörünüze indirilir. Kasa kimlik bilgileri dosyasını açamazsınız.
+1. **Kaydet**'i seçin. Dosya, Indirmeler klasörünüze indirilir. Kasa kimlik bilgileri dosyasını açamazsınız.
 
 ## <a name="install-and-register-the-agent"></a>Aracıyı yükleme ve kaydetme
 
@@ -149,7 +149,7 @@ Aracıyı herhangi bir makineye zaten yüklediyseniz aracının en son sürümü
 
 1. **Yükleme**için önkoşulları gözden geçirin ve **yükleme**' yi seçin.
 1. Aracı yüklendikten sonra, **kayda devam et**' i seçin.
-1. **Sunucu kaydetme Sihirbazı** > **kasa kimliği**' nde, indirdiğiniz kimlik bilgileri dosyasına gidin ve seçin. Ardından **İleri**' yi seçin.
+1. **Sunucu kaydetme Sihirbazı**  >  **kasa kimliği**' nde, indirdiğiniz kimlik bilgileri dosyasına gidin ve seçin. Ardından **İleri**' yi seçin.
 
     ![Sunucu kaydetme Sihirbazı 'Nı kullanarak kasa kimlik bilgileri ekleme](./media/backup-configure-vault/register1.png)
 
@@ -158,7 +158,7 @@ Aracıyı herhangi bir makineye zaten yüklediyseniz aracının en son sürümü
     * Parolayı güvenli bir konuma kaydedin. Bir yedeklemeyi geri yüklemeniz gerekir.
     * Parolayı kaybeder veya unutursanız, Microsoft, yedekleme verilerini kurtarmanıza yardımcı olamaz.
 
-1. **Son**' u seçin. Aracı Şimdi yüklendi ve makineniz kasaya kayıtlı. Yedeklemenizi yapılandırıp zamanlamak için hazırsınız.
+1. **Son**'u seçin. Aracı Şimdi yüklendi ve makineniz kasaya kayıtlı. Yedeklemenizi yapılandırıp zamanlamak için hazırsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

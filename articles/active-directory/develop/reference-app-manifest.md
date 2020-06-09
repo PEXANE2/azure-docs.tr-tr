@@ -12,12 +12,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 3338c71d37a176206ff106a8229c3b583209ddd4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9b2368cdd3fbd2699cb3579d922d81ad66efdc91
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737342"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558585"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory uygulama bildirimi
 
@@ -153,7 +153,7 @@ Bir uygulamanın bildirebilen rollerin koleksiyonunu belirtir. Bu roller kullan�
     "appRoles": [
         {
            "allowedMemberTypes": [
-               "User"
+               "User"
            ],
            "description": "Read-only access to device information",
            "displayName": "Read Only",
@@ -622,7 +622,7 @@ Geçerli uygulama için hangi Microsoft hesaplarının desteklendiğini belirtir
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| tags | Dize dizisi  |
+| etiketler | Dize dizisi  |
 
 Uygulamayı kategorilere ayırmak ve tanımlamak için kullanılabilen özel dizeler.
 

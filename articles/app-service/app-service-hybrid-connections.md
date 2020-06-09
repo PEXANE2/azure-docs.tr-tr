@@ -4,27 +4,24 @@ description: Farklı ağlardaki kaynaklara erişmek için Azure App Service ' de
 author: ccompy
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: ec842530f3cae26b869a649617f279d204b98fcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07fc4fbf9305cb2688bae6356f44b80bb6a6c115
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80047769"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488163"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Karma Bağlantılar
 
 Karma Bağlantılar hem Azure 'daki bir hizmettir hem de Azure App Service bir özelliktir. Hizmet olarak, App Service ' de kullanılanların ötesinde kullanımı ve yetenekleri vardır. App Service dışında Karma Bağlantılar ve kullanımları hakkında daha fazla bilgi edinmek için bkz. [Azure Relay karma bağlantılar][HCService].
 
-App Service içinde Karma Bağlantılar, diğer ağlardaki uygulama kaynaklarına erişmek için kullanılabilir. Uygulamadan bir uygulama uç noktasına erişim sağlar. Uygulamanıza erişmek için alternatif bir özellik etkinleştirmez. App Service için kullanıldığında, her karma bağlantı tek bir TCP ana bilgisayarı ve bağlantı noktası bileşimiyle söz konusu. Bu, karma bağlantı uç noktasının bir TCP dinleme bağlantı noktasına eriştiğiniz herhangi bir işletim sisteminde ve herhangi bir uygulamada olabileceği anlamına gelir. Karma Bağlantılar özelliği, uygulama protokolünün ne olduğunu veya ne erişeceğimizi bilmez veya ilgilenmez. Yalnızca ağ erişimi sağlar.  
-
+App Service içinde Karma Bağlantılar, 443 numaralı bağlantı noktası üzerinden Azure 'a giden çağrılar yapabilirler herhangi bir ağdaki uygulama kaynaklarına erişmek için kullanılabilir. Karma Bağlantılar, uygulamanızdan bir TCP uç noktasına erişim sağlar ve uygulamanıza erişmek için yeni bir yol etkinleştirmez. App Service için kullanıldığında, her karma bağlantı tek bir TCP ana bilgisayarı ve bağlantı noktası bileşimiyle söz konusu. Bu, uygulamalarınızın bir TCP uç noktası olması şartıyla, herhangi bir işletim sisteminde bulunan kaynaklara erişmesini sağlar. Karma Bağlantılar özelliği, uygulama protokolünün ne olduğunu veya ne erişeceğimizi bilmez veya ilgilenmez. Yalnızca ağ erişimi sağlar.  
 
 ## <a name="how-it-works"></a>Nasıl çalışır? ##
-Karma Bağlantılar özelliği Azure Service Bus geçişine yönelik iki giden çağrının oluşur. Uygulamanızın App Service çalıştığı konaktaki bir kitaplıktan bağlantı vardır. Ayrıca, Karma Bağlantı Yöneticisi (HCM) ile Service Bus geçişine bir bağlantı vardır. HCM, erişmeye çalıştığınız kaynağı barındıran ağ içinde dağıttığınız bir geçiş hizmetidir. 
-
-İki Birleşik bağlantıyla, uygulamanızın bir sabit ana bilgisayara TCP tüneli vardır: HCM 'nin diğer tarafındaki bağlantı noktası birleşimi. Bağlantı, kimlik doğrulama ve yetkilendirme için güvenlik ve paylaşılan erişim imzası (SAS) anahtarları için TLS 1,2 kullanır.    
+Karma Bağlantılar, hem istenen uç noktaya hem de Azure 'a ulaşabulabileceği bir geçiş aracısının dağıtılmasını gerektirir. Karma Bağlantı Yöneticisi (HCM) geçiş aracısı, 443 numaralı bağlantı noktası üzerinden Azure Relay çağırır. Web uygulaması sitesinden App Service altyapısı uygulamanızın adına Azure Relay da bağlanır. Birleştirilmiş bağlantılar aracılığıyla uygulamanız istenen uç noktaya erişebilir. Bağlantı, kimlik doğrulama ve yetkilendirme için güvenlik ve paylaşılan erişim imzası (SAS) anahtarları için TLS 1,2 kullanır.    
 
 ![Karma bağlantı üst düzey akış diyagramı][1]
 
@@ -40,11 +37,12 @@ Karma Bağlantılar özelliği için aşağıdakiler de dahil olmak üzere birç
 
 - Uygulamalar, şirket içi sistemlere ve hizmetlere güvenli bir şekilde erişebilir.
 - Bu özellik, internet 'ten erişilebilen bir uç nokta gerektirmez.
-- Hızlı ve kolay bir şekilde ayarlanır. 
+- Hızlı ve kolay bir şekilde ayarlanır. Ağ Geçidi gerekli değil
 - Her karma bağlantı tek bir konakla eşleşir: bağlantı noktası birleşimi, güvenlik için yararlıdır.
 - Normalde güvenlik duvarı delikleri gerektirmez. Bağlantılar, standart Web bağlantı noktaları üzerinden giden tüm çıkışlardır.
 - Özelliği ağ düzeyinde olduğundan, uygulamanız tarafından kullanılan dile ve uç nokta tarafından kullanılan teknolojiye belirsiz bir şekilde sahip olur.
 - Tek bir uygulamadan birden çok ağda erişim sağlamak için kullanılabilir. 
+- Windows uygulamaları için GA 'de desteklenir ve Linux uygulamaları için önizleme aşamasındadır.
 
 ### <a name="things-you-cannot-do-with-hybrid-connections"></a>Karma Bağlantılar ile yapaistemediğiniz şeyler ###
 
@@ -54,14 +52,11 @@ Karma Bağlantılar ile yapaistemediğiniz şeyler şunlardır:
 - UDP kullanın.
 - FTP pasif modu veya genişletilmiş Pasif mod gibi dinamik bağlantı noktaları kullanan TCP tabanlı hizmetlere erişin.
 - UDP 'yi gerektirebileceğinden, LDAP 'yi destekler.
-- App Service çalışanına katılabilmeniz için Active Directory destek.
-
-### <a name="prerequisites"></a>Ön koşullar ###
- - Windows App Service gereklidir. Yalnızca Windows 'da kullanılabilir.  
+- App Service çalışanına katılabilmeniz için Active Directory destek. 
 
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>Uygulamanıza Karma Bağlantılar ekleme ve oluşturma ##
 
-Karma bağlantı oluşturmak için [Azure Portal][portal] gidin ve uygulamanızı seçin. **Karma bağlantı uç noktalarınızı** **ağ oluşturma** > ' yı seçin. Burada, uygulamanız için yapılandırılmış Karma Bağlantılar görebilirsiniz.  
+Karma bağlantı oluşturmak için [Azure Portal][portal] gidin ve uygulamanızı seçin. **Networking**  >  **Karma bağlantı uç noktalarınızı**ağ oluşturma ' yı seçin. Burada, uygulamanız için yapılandırılmış Karma Bağlantılar görebilirsiniz.  
 
 ![Karma bağlantı listesinin ekran görüntüsü][2]
 
@@ -99,10 +94,10 @@ App Service Karma Bağlantılar yalnızca temel, standart, Premium ve yalıtılm
 
 | Fiyatlandırma planı | Planda kullanılabilir Karma Bağlantılar sayısı |
 |----|----|
-| Temel | 5 |
-| Standart | 25 |
-| Premium | 200 |
-| Yalıtılmış | 200 |
+| Temel | plan başına 5 |
+| Standart | plan başına 25 |
+| PremiumV2 | Uygulama başına 200 |
+| Yalıtılmış | Uygulama başına 200 |
 
 App Service planı Kullanıcı arabirimi, kaç Karma Bağlantılar kullanıldığını ve hangi uygulamalara göre kullanıldığını gösterir.  
 
@@ -118,7 +113,7 @@ App Service plan SKU gereksinimi olmasının yanı sıra, Karma Bağlantılar ku
 
 ## <a name="hybrid-connection-manager"></a>Karma Bağlantı Yöneticisi ##
 
-Karma Bağlantılar özelliği, karma bağlantı uç noktanızı barındıran ağda bir geçiş aracısı gerektirir. Bu geçiş aracısına Karma Bağlantı Yöneticisi (HCM) denir. [Azure Portal][portal]uygulamanızdaki HCM 'yi indirmek için,**karma bağlantı uç noktalarınızı** **ağ** > yapılandırma ' yı seçin.  
+Karma Bağlantılar özelliği, karma bağlantı uç noktanızı barındıran ağda bir geçiş aracısı gerektirir. Bu geçiş aracısına Karma Bağlantı Yöneticisi (HCM) denir. [Azure Portal][portal]uygulamanızdaki HCM 'yi indirmek için, **Networking**  >  **karma bağlantı uç noktalarınızı ağ yapılandırma**' yı seçin.  
 
 Bu araç Windows Server 2012 ve üzeri sürümlerde çalışır. HCM bir hizmet olarak çalışır ve 443 numaralı bağlantı noktasında giden Azure Relay bağlanır.  
 
@@ -139,7 +134,7 @@ HCM 'nize bir veya daha fazla Karma Bağlantılar eklemek için:
 1. HCM 'nin geçişine istediğiniz Karma Bağlantılar seçin.
 ![Karma Bağlantılar ekran görüntüsü][9]
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Artık eklediğiniz Karma Bağlantılar görebilirsiniz. Ayrıca, ayrıntıları görmek için yapılandırılmış karma bağlantıyı seçebilirsiniz.
 
@@ -171,54 +166,34 @@ Sorunları gidermek veya iyileştirmeler sağlamak için Karma Bağlantı Yönet
 
 ## <a name="adding-a-hybrid-connection-to-your-app-programmatically"></a>Programlı olarak uygulamanıza karma bağlantı ekleme ##
 
-Aşağıda belirtilen API 'Ler, uygulamalarınıza bağlı Karma Bağlantılar yönetmek için doğrudan kullanılabilir. 
+Karma Bağlantılar için Azure CLı desteği vardır. Belirtilen komutlar hem uygulama hem de App Service plan düzeyinde çalışır.  Uygulama düzeyi komutları şunlardır:
 
-    /subscriptions/[subscription name]/resourceGroups/[resource group name]/providers/Microsoft.Web/sites/[app name]/hybridConnectionNamespaces/[relay namespace name]/relays/[hybrid connection name]?api-version=2016-08-01
+    az webapp hybrid-connection
 
-Karma bağlantıyla ilişkili JSON nesnesi şöyle görünür:
+    Group
+        az webapp hybrid-connection : Methods that list, add and remove hybrid-connections from webapps.
+            This command group is in preview. It may be changed/removed in a future release.
+    Commands:
+        add    : Add a hybrid-connection to a webapp.
+        list   : List the hybrid-connections on a webapp.
+        remove : Remove a hybrid-connection from a webapp.
 
-    {
-      "name": "[hybrid connection name]",
-      "type": "Microsoft.Relay/Namespaces/HybridConnections",
-      "location": "[location]",
-      "properties": {
-        "serviceBusNamespace": "[namespace name]",
-        "relayName": "[hybrid connection name]",
-        "relayArmUri": "/subscriptions/[subscription id]/resourceGroups/[resource group name]/providers/Microsoft.Relay/namespaces/[namespace name]/hybridconnections/[hybrid connection name]",
-        "hostName": "[endpoint host name]",
-        "port": [port],
-        "sendKeyName": "defaultSender",
-        "sendKeyValue": "[send key]"
-      }
-    }
+App Service plan komutları, belirli bir karma bağlantının hangi anahtara kullanılacağını ayarlamanıza olanak sağlar. Her karma bağlantıda, birincil ve ikincil olmak üzere iki anahtar kümesi vardır. Aşağıdaki komutlarla birincil veya ikincil anahtarı kullanmayı tercih edebilirsiniz. Bu, anahtarlarınızı düzenli olarak yeniden oluşturmak istediğinizde için anahtarlar yapmanızı sağlar. 
 
-Bu bilgileri kullanmanın bir yolu, [armclient][armclient] GitHub projesinden alabileceğiniz armclient ' dır. Uygulamanıza önceden var olan karma bağlantı ekleme hakkında bir örnek aşağıda verilmiştir. Yukarıdaki şema başına şu şekilde bir JSON dosyası oluşturun:
+    az appservice hybrid-connection --help
 
-    {
-      "name": "relay-demo-hc",
-      "type": "Microsoft.Relay/Namespaces/HybridConnections",
-      "location": "North Central US",
-      "properties": {
-        "serviceBusNamespace": "demo-relay",
-        "relayName": "relay-demo-hc",
-        "relayArmUri": "/subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myrelay-rg/providers/Microsoft.Relay/namespaces/demo-relay/hybridconnections/relay-demo-hc",
-        "hostName": "my-wkstn.home",
-        "port": 1433,
-        "sendKeyName": "defaultSender",
-        "sendKeyValue": "Th9is3is8a82lot93of3774stu887ff122235="
-      }
-    }
-
-Bu API 'yi kullanmak için anahtar gönder ve geçiş kaynak KIMLIĞI gereklidir. Bilgilerinizi hctest. JSON dosya adı ile kaydettiyseniz, karma bağlantınızı uygulamanıza eklemek için bu komutu verin: 
-
-    armclient login
-    armclient put /subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myapp-rg/providers/Microsoft.Web/sites/myhcdemoapp/hybridConnectionNamespaces/demo-relay/relays/relay-demo-hc?api-version=2016-08-01 @hctest.json
+    Group
+        az appservice hybrid-connection : A method that sets the key a hybrid-connection uses.
+            This command group is in preview. It may be changed/removed in a future release.
+    Commands:
+        set-key : Set the key that all apps in an appservice plan use to connect to the hybrid-
+                  connections in that appservice plan.
 
 ## <a name="secure-your-hybrid-connections"></a>Karma Bağlantılar güvenli hale getirin ##
 
 Mevcut bir karma bağlantı, temel Azure Service Bus geçişi üzerinde yeterli izinlere sahip herhangi bir kullanıcı tarafından diğer App Service Web Apps eklenebilir. Bu, başkalarının aynı karma bağlantıyı yeniden kullanmasını engellemeniz gerekiyorsa (örneğin, hedef kaynak yetkisiz erişimi engellemek için ek güvenlik önlemleri olmayan bir hizmettir) Azure Service Bus geçişine erişimi kilitlemeniz gerekir.
 
-Geçişe erişimi `Reader` olan herkes, Azure portalında Web uygulamasına eklemeye çalışırken karma bağlantıyı _görebilir_ , ancak geçiş bağlantısını kurmak için kullanılan bağlantı dizesini alma izinlerine sahip olmadıkları sürece bu bağlantı noktası _ekleyemeyecektir_ . Karma bağlantıyı başarıyla eklemek için, ( `listKeys` `Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`) iznine sahip olmaları gerekir. Bu `Contributor` izni geçiş üzerinde içeren rol veya başka herhangi bir rol, kullanıcıların karma bağlantıyı kullanmasına ve kendi Web Apps eklemesine izin verir.
+Geçişe erişimi olan herkes, `Reader` Azure Portal Web uygulamasına eklemeye çalışırken karma bağlantıyı _görebilir_ , ancak geçiş bağlantısını kurmak için kullanılan bağlantı dizesini alma izinlerine sahip olmadıkları sürece bu bağlantıları _ekleyemeyecektir_ . () Karma bağlantıyı başarıyla eklemek için, `listKeys` () iznine sahip olmaları gerekir `Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action` . `Contributor`Bu Izni geçiş üzerinde içeren rol veya başka herhangi bir rol, kullanıcıların karma bağlantıyı kullanmasına ve kendi Web Apps eklemesine izin verir.
 
 ## <a name="troubleshooting"></a>Sorun giderme ##
 
@@ -229,12 +204,6 @@ Geçişe erişimi `Reader` olan herkes, Azure portalında Web uygulamasına ekle
 App Service, gelişmiş araçlar (kudu) konsolundan, **tcme** komut satırı aracı çağrılabilir. Bu araç, bir TCP uç noktasına erişiminiz varsa size söyleyebilir, ancak karma bağlantı uç noktasına erişiminiz varsa size bilgi vermez. Aracı bir karma bağlantı uç noktasına karşı konsolunda kullandığınızda yalnızca bir konak kullandığını onaylanıyor olursunuz: bağlantı noktası birleşimi.  
 
 Uç noktanız için bir komut satırı istemciniz varsa, bağlantıyı uygulama konsolundan test edebilirsiniz. Örneğin, kıvrımlı kullanarak Web sunucusu uç noktalarına erişimi test edebilirsiniz.
-
-## <a name="biztalk-hybrid-connections"></a>BizTalk Karma Bağlantılar ##
-
-Bu özelliğin erken biçimi BizTalk Karma Bağlantılar olarak adlandırılmıştı. Bu yetenek 31 Mayıs, 2018 ve çevrimdışı işlemlerde yaşam sonu gerçekleşti. BizTalk Karma bağlantıları tüm uygulamalardan kaldırılmıştır ve portal veya API aracılığıyla erişilebilir değildir. Karma Bağlantı Yöneticisi bu eski bağlantılara hala sahipseniz, son olarak bir durum görürsünüz ve en altta bir yaşam sonu açıklaması görüntülenir.
-
-![HCM 'de BizTalk Karma Bağlantılar][12]
 
 
 <!--Image references-->

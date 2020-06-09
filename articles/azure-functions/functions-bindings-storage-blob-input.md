@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 33db9a8d86e02db2076cdb85170d466697930b96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 1dbd3765b691d1ba7b958d765a59f6451f380a2e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633893"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559082"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Işlevleri için Azure Blob depolama girişi bağlama
 
@@ -20,7 +21,7 @@ Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakı
 
 ## <a name="example"></a>Örnek
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnek, bir kuyruk tetikleyicisi ve bir giriş blobu bağlama kullanan bir [C# işlevidir](functions-dotnet-class-library.md) . Kuyruk iletisi Blobun adını içerir ve işlev Blobun boyutunu günlüğe kaydeder.
 
@@ -41,7 +42,7 @@ public static void Run(
 
 Aşağıdaki örnek, bağlamaları kullanan bir *function. JSON* dosyası ve [C# betiği (. CSX)](functions-reference-csharp.md) kodunda blob giriş ve çıkış bağlamalarını gösterir. İşlevi, bir metin blobunun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy*olarak adlandırılmıştır.
 
-*Function. JSON* dosyasında, `queueTrigger` meta veri özelliği, blob adını `path` özelliklerde belirtmek için kullanılır:
+*Function. JSON* dosyasında, `queueTrigger` meta veri özelliği, blob adını özelliklerde belirtmek için kullanılır `path` :
 
 ```json
 {
@@ -90,7 +91,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 
 Aşağıdaki örnek, blob giriş ve çıkış bağlamalarını bir *function. JSON* dosyası ve bağlamaları kullanan [JavaScript kodu](functions-reference-node.md) gösterir. İşlevi bir Blobun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy*olarak adlandırılmıştır.
 
-*Function. JSON* dosyasında, `queueTrigger` meta veri özelliği, blob adını `path` özelliklerde belirtmek için kullanılır:
+*Function. JSON* dosyasında, `queueTrigger` meta veri özelliği, blob adını özelliklerde belirtmek için kullanılır `path` :
 
 ```json
 {
@@ -139,7 +140,7 @@ module.exports = function(context) {
 
 Aşağıdaki örnekte, bir *function. JSON* dosyası ve bağlamaları kullanan [Python kodu](functions-reference-python.md) içindeki blob girişi ve çıkış bağlamaları gösterilmektedir. İşlevi bir Blobun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy*olarak adlandırılmıştır.
 
-*Function. JSON* dosyasında, `queueTrigger` meta veri özelliği, blob adını `path` özelliklerde belirtmek için kullanılır:
+*Function. JSON* dosyasında, `queueTrigger` meta veri özelliği, blob adını özelliklerde belirtmek için kullanılır `path` :
 
 ```json
 {
@@ -195,7 +196,7 @@ Bu bölüm aşağıdaki örnekleri içerir:
 
 #### <a name="http-trigger-look-up-blob-name-from-query-string"></a>HTTP tetikleyicisi, sorgu dizesinden blob adı ara
 
- Aşağıdaki örnek, bir BLOB depolama kapsayıcısında bir dosyanın adını `HttpTrigger` içeren bir parametre almak için ek açıklamayı kullanan bir Java işlevini gösterir. Daha `BlobInput` sonra ek açıklama dosyayı okur ve içeriğini işleve ' a `byte[]`geçirir.
+ Aşağıdaki örnek, `HttpTrigger` bir BLOB depolama kapsayıcısında bir dosyanın adını içeren bir parametre almak için ek açıklamayı kullanan bir Java işlevini gösterir. `BlobInput`Daha sonra ek açıklama dosyayı okur ve içeriğini işleve ' a geçirir `byte[]` .
 
 ```java
   @FunctionName("getBlobSizeHttp")
@@ -220,7 +221,7 @@ Bu bölüm aşağıdaki örnekleri içerir:
 
 #### <a name="queue-trigger-receive-blob-name-from-queue-message"></a>Kuyruk tetikleyicisi, kuyruk iletisinden blob adı Al
 
- Aşağıdaki örnek, bir BLOB depolama kapsayıcısında bir dosyanın adını `QueueTrigger` içeren bir ileti almak için ek açıklamayı kullanan bir Java işlevini gösterir. Daha `BlobInput` sonra ek açıklama dosyayı okur ve içeriğini işleve ' a `byte[]`geçirir.
+ Aşağıdaki örnek, `QueueTrigger` bir BLOB depolama kapsayıcısında bir dosyanın adını içeren bir ileti almak için ek açıklamayı kullanan bir Java işlevini gösterir. `BlobInput`Daha sonra ek açıklama dosyayı okur ve içeriğini işleve ' a geçirir `byte[]` .
 
 ```java
   @FunctionName("getBlobSize")
@@ -240,17 +241,17 @@ Bu bölüm aşağıdaki örnekleri içerir:
   }
 ```
 
-[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, değeri bir `@BlobInput` Blobun geldiği parametrelerde ek açıklamayı kullanın.  Bu ek açıklama, kullanılarak `Optional<T>`yerel Java türleri, POJOs veya null atanabilir değerlerle kullanılabilir.
+[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, `@BlobInput` değeri bir Blobun geldiği parametrelerde ek açıklamayı kullanın.  Bu ek açıklama, kullanılarak yerel Java türleri, POJOs veya null atanabilir değerlerle kullanılabilir `Optional<T>` .
 
 ---
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [C# sınıf kitaplıklarında](functions-dotnet-class-library.md) [blobattribute](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs)kullanın.
 
-Özniteliğin Oluşturucusu, aşağıdaki örnekte gösterildiği gibi, blob 'un yolunu ve `FileAccess` okundu veya yaz belirten bir parametreyi alır:
+Özniteliğin Oluşturucusu, `FileAccess` Aşağıdaki örnekte gösterildiği gibi, blob 'un yolunu ve okundu veya yaz belirten bir parametreyi alır:
 
 ```csharp
 [FunctionName("BlobInput")]
@@ -264,7 +265,7 @@ public static void Run(
 
 ```
 
-Aşağıdaki örnekte gösterildiği gibi `Connection` , kullanılacak depolama hesabını belirtmek için özelliğini ayarlayabilirsiniz:
+`Connection`Aşağıdaki örnekte gösterildiği gibi, kullanılacak depolama hesabını belirtmek için özelliğini ayarlayabilirsiniz:
 
 ```csharp
 [FunctionName("BlobInput")]
@@ -277,7 +278,7 @@ public static void Run(
 }
 ```
 
-Sınıfı, yöntemi veya `StorageAccount` parametre düzeyinde depolama hesabını belirtmek için özniteliğini kullanabilirsiniz. Daha fazla bilgi için bkz. [tetikleyici-öznitelikler ve ek açıklamalar](./functions-bindings-storage-blob-trigger.md#attributes-and-annotations).
+`StorageAccount`Sınıfı, yöntemi veya parametre düzeyinde depolama hesabını belirtmek için özniteliğini kullanabilirsiniz. Daha fazla bilgi için bkz. [tetikleyici-öznitelikler ve ek açıklamalar](./functions-bindings-storage-blob-trigger.md#attributes-and-annotations).
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
@@ -293,28 +294,28 @@ Sınıfı, yöntemi veya `StorageAccount` parametre düzeyinde depolama hesabın
 
 # <a name="java"></a>[Java](#tab/java)
 
-`@BlobInput` Özniteliği, işlevi tetikleyen bloba erişmenizi sağlar. Özniteliği ile bir bayt dizisi kullanırsanız, olarak `dataType` `binary`ayarlayın. Ayrıntılar için [giriş örneğine](#example) bakın.
+`@BlobInput`Özniteliği, işlevi tetikleyen bloba erişmenizi sağlar. Özniteliği ile bir bayt dizisi kullanırsanız, `dataType` olarak ayarlayın `binary` . Ayrıntılar için [giriş örneğine](#example) bakın.
 
 ---
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `Blob` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Blob` .
 
-|function. JSON özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
-|**türüyle** | yok | Olarak `blob`ayarlanmalıdır. |
-|**Görünüm** | yok | Olarak `in`ayarlanmalıdır. [Kullanım](#usage) bölümünde özel durumlar belirtilmiştir. |
+|**türüyle** | yok | Olarak ayarlanmalıdır `blob` . |
+|**Görünüm** | yok | Olarak ayarlanmalıdır `in` . [Kullanım](#usage) bölümünde özel durumlar belirtilmiştir. |
 |**ada** | yok | İşlev kodundaki blobu temsil eden değişkenin adı.|
 |**Yolun** |**Blobpath değerini adıyla** | Blobun yolu. |
-|**bağlantı** |**Bağlanma**| Bu bağlama için kullanılacak [depolama bağlantı dizesini](../storage/common/storage-configure-connection-string.md) içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, "MyStorage" `connection` olarak ayarlarsanız, işlevler çalışma zamanı "AzureWebJobsMyStorage" adlı bir uygulama ayarı arar. Boş bırakırsanız `connection` , işlevler çalışma zamanı adlı `AzureWebJobsStorage`uygulama ayarında varsayılan depolama bağlantı dizesini kullanır.<br><br>Bağlantı dizesi, [yalnızca BLOB depolama hesabı](../storage/common/storage-account-overview.md#types-of-storage-accounts)değil, genel amaçlı bir depolama hesabı için olmalıdır.|
+|**bağlanma** |**Bağlantı**| Bu bağlama için kullanılacak [depolama bağlantı dizesini](../storage/common/storage-configure-connection-string.md) içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyStorage" olarak ayarlarsanız, işlevler çalışma zamanı "AzureWebJobsMyStorage" adlı bir uygulama ayarı arar. `connection`Boş bırakırsanız, işlevler çalışma zamanı adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır `AzureWebJobsStorage` .<br><br>Bağlantı dizesi, [yalnızca BLOB depolama hesabı](../storage/common/storage-account-overview.md#types-of-storage-accounts)değil, genel amaçlı bir depolama hesabı için olmalıdır.|
 |yok | **Erişim** | Okuma veya yazma yapılıp yapılmayacağını belirtir. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Kullanım
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
@@ -324,7 +325,7 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve `Blob` özniteliğinde aya
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Blob verilerine, `context.bindings.<NAME>` WHERE `<NAME>` , *function. JSON*içinde tanımlanan değerle eşleşen verileri erişin.
+Blob verilerine `context.bindings.<NAME>` `<NAME>` , WHERE, *function. JSON*içinde tanımlanan değerle eşleşen verileri erişin.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -332,7 +333,7 @@ Blob verilerine [InputStream](https://docs.microsoft.com/python/api/azure-functi
 
 # <a name="java"></a>[Java](#tab/java)
 
-`@BlobInput` Özniteliği, işlevi tetikleyen bloba erişmenizi sağlar. Özniteliği ile bir bayt dizisi kullanırsanız, olarak `dataType` `binary`ayarlayın. Ayrıntılar için [giriş örneğine](#example) bakın.
+`@BlobInput`Özniteliği, işlevi tetikleyen bloba erişmenizi sağlar. Özniteliği ile bir bayt dizisi kullanırsanız, `dataType` olarak ayarlayın `binary` . Ayrıntılar için [giriş örneğine](#example) bakın.
 
 ---
 

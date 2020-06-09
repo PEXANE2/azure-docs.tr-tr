@@ -2,17 +2,17 @@
 title: Olay etki alanlarıyla olayları Azure Event Grid ile yayımlama
 description: Azure Event Grid ' deki büyük konu kümelerinin nasıl yönetileceğini ve olay etki alanlarını kullanarak bu olaylara olayları nasıl yayımlayacağınızı gösterir.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
-ms.author: babanisa
+ms.author: femila
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: 1d07227249806b7d54523af66817a170c19354ee
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 10a0b138c702d4e4d09608c42959c68e97790f81
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72786548"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560982"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Olay etki alanlarını kullanarak konuları yönetme ve olayları yayımlama
 
@@ -78,16 +78,16 @@ Başarılı oluşturma aşağıdaki değerleri döndürür:
 }
 ```
 
-Etki alanını `endpoint` yönetmek `id` ve olayları yayımlamak için gerekli olduğu gibi, ve değerlerini aklınızda yapın.
+`endpoint` `id` Etki alanını yönetmek ve olayları yayımlamak için gerekli olduğu gibi, ve değerlerini aklınızda yapın.
 
 ## <a name="manage-access-to-topics"></a>Konulara erişimi yönetin
 
 Konuların erişimini yönetme [rol ataması](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)aracılığıyla yapılır. Rol ataması, Azure kaynaklarındaki işlemleri belirli bir kapsamdaki yetkili kullanıcılarla sınırlamak için rol tabanlı erişim denetimi kullanır.
 
-Event Grid, bir etki alanı içindeki çeşitli konularda belirli kullanıcılara erişim atamak için kullanabileceğiniz iki yerleşik rol içerir. Bu roller `EventGrid EventSubscription Contributor (Preview)`, aboneliklerin oluşturulmasına ve silinmesine izin veren ve yalnızca olay abonelikleri listesine `EventGrid EventSubscription Reader (Preview)`izin veren ve ' dir.
+Event Grid, bir etki alanı içindeki çeşitli konularda belirli kullanıcılara erişim atamak için kullanabileceğiniz iki yerleşik rol içerir. Bu roller, `EventGrid EventSubscription Contributor (Preview)` aboneliklerin oluşturulmasına ve silinmesine izin veren ve `EventGrid EventSubscription Reader (Preview)` yalnızca olay abonelikleri listesine izin veren ve ' dir.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
-Aşağıdaki Azure CLı komutu, yalnızca `alice@contoso.com` konu `demotopic1`üzerinde olay abonelikleri oluşturma ve silme sınırlarına sahiptir:
+Aşağıdaki Azure CLı komutu, `alice@contoso.com` Yalnızca konu üzerinde olay abonelikleri oluşturma ve silme sınırlarına sahiptir `demotopic1` :
 
 ```azurecli-interactive
 az role assignment create \
@@ -97,7 +97,7 @@ az role assignment create \
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
-Aşağıdaki PowerShell komutu, yalnızca `alice@contoso.com` konusunda `demotopic1`olay abonelikleri oluşturma ve silme sınırlarına sahiptir:
+Aşağıdaki PowerShell komutu, `alice@contoso.com` yalnızca konusunda olay abonelikleri oluşturma ve silme sınırlarına sahiptir `demotopic1` :
 
 ```azurepowershell-interactive
 New-AzureRmRoleAssignment `
@@ -113,7 +113,7 @@ Event Grid işlemlerine erişimi yönetme hakkında daha fazla bilgi için bkz. 
 
 Event Grid hizmeti bir etki alanında ilgili konuyu, bir etki alanı konusu için olay aboneliği oluşturma çağrısına göre otomatik olarak oluşturur ve yönetir. Bir etki alanında konu oluşturmak için ayrı bir adım yoktur. Benzer şekilde, bir konunun son olay aboneliği silindiğinde, konu da silinir.
 
-Etki alanındaki bir konuya abone olmak, diğer tüm Azure kaynaklarına abone olma ile aynıdır. Kaynak kaynak KIMLIĞI için, daha önce etki alanı oluştururken döndürülen olay etki alanı KIMLIĞINI belirtin. Abone olmak istediğiniz konuyu belirtmek için kaynak kaynak KIMLIĞININ sonuna ekleyin `/topics/<my-topic>` . Etki alanındaki tüm olayları alan bir etki alanı kapsamı olay aboneliği oluşturmak için herhangi bir konu belirtmeden olay etki alanı KIMLIĞINI belirtin.
+Etki alanındaki bir konuya abone olmak, diğer tüm Azure kaynaklarına abone olma ile aynıdır. Kaynak kaynak KIMLIĞI için, daha önce etki alanı oluştururken döndürülen olay etki alanı KIMLIĞINI belirtin. Abone olmak istediğiniz konuyu belirtmek için `/topics/<my-topic>` kaynak kaynak kimliğinin sonuna ekleyin. Etki alanındaki tüm olayları alan bir etki alanı kapsamı olay aboneliği oluşturmak için herhangi bir konu belirtmeden olay etki alanı KIMLIĞINI belirtin.
 
 Genellikle, önceki bölümde erişim izni verdiğiniz kullanıcı aboneliği oluşturur. Bu makaleyi basitleştirmek için aboneliği oluşturursunuz. 
 
@@ -137,7 +137,7 @@ New-AzureRmEventGridSubscription `
 
 ---
 
-Olaylarınızın abone olması için bir test uç noktasına ihtiyacınız varsa, gelen olayları görüntüleyen [önceden oluşturulmuş bir Web uygulamasını](https://github.com/Azure-Samples/azure-event-grid-viewer) her zaman dağıtabilirsiniz. Olaylarınızı ' de `https://<your-site-name>.azurewebsites.net/api/updates`test Web sitenize gönderebilirsiniz.
+Olaylarınızın abone olması için bir test uç noktasına ihtiyacınız varsa, gelen olayları görüntüleyen [önceden oluşturulmuş bir Web uygulamasını](https://github.com/Azure-Samples/azure-event-grid-viewer) her zaman dağıtabilirsiniz. Olaylarınızı ' de test Web sitenize gönderebilirsiniz `https://<your-site-name>.azurewebsites.net/api/updates` .
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
@@ -146,7 +146,7 @@ Bir konu için ayarlanan izinler Azure Active Directory depolanır ve açıkça 
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>Olayları Event Grid etki alanına yayımlama
 
-Olayları bir etki alanına yayımlamak, [özel bir konuya yayımlama](./post-to-custom-topic.md)ile aynıdır. Ancak, özel konuya yayımlamak yerine, tüm olayları etki alanı uç noktasına yayımlarsınız. JSON olay verilerinde, olayların gitmesini istediğiniz konuyu belirtirsiniz. Aşağıdaki olaylar dizisi `"id": "1111"` , olay ile `demotopic1` `"id": "2222"` birlikte olaya gönderilecek bir olaya neden olur: `demotopic2`
+Olayları bir etki alanına yayımlamak, [özel bir konuya yayımlama](./post-to-custom-topic.md)ile aynıdır. Ancak, özel konuya yayımlamak yerine, tüm olayları etki alanı uç noktasına yayımlarsınız. JSON olay verilerinde, olayların gitmesini istediğiniz konuyu belirtirsiniz. Aşağıdaki olaylar dizisi, `"id": "1111"` `demotopic1` olay ile birlikte olaya gönderilecek bir olaya neden olur `"id": "2222"` `demotopic2` :
 
 ```json
 [{

@@ -11,12 +11,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: ebcdb37652e8bdf23e8403e7f152ce1f41607c61
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 10f0079f47e5d2fd99b358fcc5cfb4c80aa9bd91
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263457"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508905"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Bir olaya yanıt olarak bir işlem hattı çalıştıran bir tetikleyici oluşturma
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,7 +50,7 @@ Bu bölümde, Azure Data Factory Kullanıcı arabiriminde nasıl bir olay tetikl
 1. Azure aboneliği açılan listesinden veya depolama hesabı kaynak KIMLIĞINI kullanarak el ile depolama hesabınızı seçin. Olayların gerçekleşmesini istediğiniz kapsayıcıyı seçin. Kapsayıcı seçimi isteğe bağlıdır, ancak tüm kapsayıcıları seçtiğinizde çok sayıda olaya yol açabilir.
 
    > [!NOTE]
-   > Olay tetikleyicisi Şu anda yalnızca Azure Data Lake Storage 2. ve genel amaçlı sürüm 2 depolama hesaplarını desteklemektedir. Depolama accoutn üzerinde en az *sahip* erişiminizin olması gerekir.  Azure Event Grid sınırlaması nedeniyle, Azure Data Factory yalnızca depolama hesabı başına en fazla 500 olay tetikleyicisi destekler.
+   > Olay tetikleyicisi Şu anda yalnızca Azure Data Lake Storage 2. ve genel amaçlı sürüm 2 depolama hesaplarını desteklemektedir. Depolama hesabında en az *sahip* erişiminizin olması gerekir.  Azure Event Grid sınırlaması nedeniyle, Azure Data Factory yalnızca depolama hesabı başına en fazla 500 olay tetikleyicisi destekler.
 
 1. **BLOB yolu ile başlar** ve **BLOB yolu, özellikler ile biter** ve olayları almak istediğiniz kapsayıcıları, klasörleri ve BLOB adlarını belirtmenize olanak tanır. Olay Tetikleyiciniz bu özelliklerden en az birinin tanımlanmasını gerektirir. Her iki **BLOB yolu ile başlar** ve **BLOB yolu** , bu makalenin ilerleyen kısımlarında gösterildiği gibi özellikleriyle biter.
 
@@ -94,7 +94,7 @@ Bu bölümde olay tabanlı tetikleyici ayarlarının örnekleri verilmiştir.
 > [!IMPORTANT]
 > `/blobs/`Her kapsayıcı ve klasör, kapsayıcı ve dosya ya da kapsayıcı, klasör ve dosya belirttiğinizde, aşağıdaki örneklerde gösterildiği gibi yolun segmentini eklemeniz gerekir. **Blobpathbeginswith**için, Data Factory kullanıcı ARABIRIMI, `/blobs/` JSON tetikleyicisi içindeki klasör ve kapsayıcı adı arasına otomatik olarak eklenir.
 
-| Özellik | Örnek | Açıklama |
+| Özellik | Örnek | Description |
 |---|---|---|
 | **Blob yolu şununla başlar** | `/containername/` | Kapsayıcıdaki tüm Bloblar için olayları alır. |
 | **Blob yolu şununla başlar** | `/containername/blobs/foldername/` | Kapsayıcı ve klasördeki Bloblar için olayları alır `containername` `foldername` . |

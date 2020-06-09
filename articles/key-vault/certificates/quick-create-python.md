@@ -7,12 +7,13 @@ ms.date: 3/30/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: 218edb146ee0107803561c6ba52cc42406b69746
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: tracking-python
+ms.openlocfilehash: 6a25f3393a3c99273f12af0c5ff5047dfe373581
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982794"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554906"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Hızlı başlangıç: Python için Azure Key Vault istemci kitaplığı
 
@@ -26,7 +27,7 @@ Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan
 - TLS/SSL sertifikaları için görevleri basitleştirme ve otomatikleştirme.
 - FIPS 140-2 düzey 2 doğrulanan HSM 'leri kullanın.
 
-[API başvurusu belge](/python/api/overview/azure/key-vault?view=azure-python) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [paketi (Python paket dizini)](https://pypi.org/project/azure-keyvault/)
+[API başvuru belgeleri](/python/api/overview/azure/key-vault?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault)  |  [Paket (Python paket dizini)](https://pypi.org/project/azure-keyvault/)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -69,7 +70,7 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 Bulut tabanlı bir .NET uygulamasının kimlik doğrulamasının en kolay yolu, yönetilen bir kimliktir; Ayrıntılar için [Azure Key Vault erişmek üzere App Service yönetilen bir kimlik kullanma](../general/managed-identity.md) konusuna bakın.
 
-Kolaylık sağlaması için, bu hızlı başlangıç, bir hizmet sorumlusu ve bir erişim denetimi ilkesi kullanılmasını gerektiren bir masaüstü uygulaması oluşturur. Hizmet prensibi, "http://&lt;My-Unique-Service-prensibi-Name&gt;" biçiminde benzersiz bir ad gerektirir.
+Kolaylık sağlaması için, bu hızlı başlangıç, bir hizmet sorumlusu ve bir erişim denetimi ilkesi kullanılmasını gerektiren bir masaüstü uygulaması oluşturur. Hizmet prensibi, "http:// &lt; My-Unique-Service-prensibi-Name" biçiminde benzersiz bir ad gerektirir &gt; .
 
 Azure CLı [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir hizmet ilkesi oluşturun:
 
@@ -105,9 +106,9 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 #### <a name="set-environmental-variables"></a>Ortam değişkenlerini ayarlama
 
-Uygulamamızda DefaultAzureCredential yöntemi üç çevresel değişkene dayanır: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`ve. `AZURE_TENANT_ID` Bu değişkenleri `export VARNAME=VALUE` biçimini kullanarak [hizmet sorumlusu oluşturma](#create-a-service-principal) adımında not ettiğiniz ClientID, ClientSecret ve tenantıd değerlerine ayarlayın. (Bu yöntem yalnızca geçerli kabuğunuzun ve kabuktan oluşturulan süreçlerin değişkenlerini ayarlar; bu değişkenleri ortamınıza kalıcı olarak eklemek için `/etc/environment ` dosyanızı düzenleyin.) 
+Uygulamamızda DefaultAzureCredential yöntemi üç çevresel değişkene dayanır: `AZURE_CLIENT_ID` , `AZURE_CLIENT_SECRET` ve `AZURE_TENANT_ID` . Bu değişkenleri biçimini kullanarak [hizmet sorumlusu oluşturma](#create-a-service-principal) adımında not ettiğiniz ClientID, ClientSecret ve tenantıd değerlerine ayarlayın `export VARNAME=VALUE` . (Bu yöntem yalnızca geçerli kabuğunuzun ve kabuktan oluşturulan süreçlerin değişkenlerini ayarlar; bu değişkenleri ortamınıza kalıcı olarak eklemek için `/etc/environment ` dosyanızı düzenleyin.) 
 
-Ayrıca, Anahtar Kasası adınızı adlı `KEY_VAULT_NAME`bir ortam değişkeni olarak kaydetmeniz gerekir.
+Ayrıca, Anahtar Kasası adınızı adlı bir ortam değişkeni olarak kaydetmeniz gerekir `KEY_VAULT_NAME` .
 
 ```console
 export AZURE_CLIENT_ID=<your-clientID>
@@ -170,7 +171,7 @@ az keyvault certificate show --vault-name <your-unique-keyvault-name> --name myC
 retrieved_certificate = client.get_certificate(certificateName)
  ```
 
-Sertifikanız şu şekilde `retrieved_certificate`kaydedilir.
+Sertifikanız şu şekilde kaydedilir `retrieved_certificate` .
 
 ### <a name="delete-a-certificate"></a>Sertifikayı silme
 
