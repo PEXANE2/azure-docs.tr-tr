@@ -35,6 +35,8 @@
           href: manage-automation.md
         - name: EA'dan MCA API'lerine geçiş
           href: migrate-cost-management-api.md
+        - name: Gruplandırma ve filtreleme seçenekleri
+          href: group-filter.md
     - name: Nasıl yapılır kılavuzları
       items:
         - name: Beklenmeyen ücretleri önleme ve analiz etme

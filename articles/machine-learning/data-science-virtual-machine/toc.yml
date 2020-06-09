@@ -15,6 +15,11 @@
       href: provision-vm.md
     - name: Ubuntu Veri Bilimi Sanal Makinesi oluşturma
       href: dsvm-ubuntu-intro.md
+- name: Öğreticiler
+  items:
+    - name: ARM şablonuyla DSVM oluşturma
+      displayName: Resource Manager
+      href: dsvm-tutorial-resource-manager.md
 - name: Kavramlar
   items:
     - name: Derin Öğrenme ve AI çerçeveleri
