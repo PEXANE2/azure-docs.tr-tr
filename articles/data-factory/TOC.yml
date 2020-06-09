@@ -194,6 +194,30 @@
               href: wrangling-data-flow-overview.md
             - name: Desteklenen işlevler
               href: wrangling-data-flow-functions.md
+    - name: Veri gölü ve EDW için veri geçişi
+      items:
+        - name: Neden Azure Data Factory?
+          href: data-migration-guidance-overview.md
+        - name: AWS S3'ten Azure'a verileri geçirme
+          href: data-migration-guidance-s3-azure-storage.md
+        - name: Şirket içi Hadoop kümesinden Azure’a veri geçirme
+          href: data-migration-guidance-hdfs-azure-storage.md
+        - name: Şirket içi Netezza sunucusundan Azure’a veri geçirme
+          href: data-migration-guidance-netezza-azure-sqldw.md
+    - name: Veri akışlarını eşlemeyi kullanarak dönüştürme
+      items:
+        - name: Sabit genişlikli metin dosyalarını işleme
+          href: how-to-fixed-width.md
+        - name: Hata satırı işleme
+          href: how-to-data-flow-error-rows.md
+        - name: Azure SQL DB’den CosmosDB’ye
+          href: how-to-sqldb-to-cosmosdb.md
+    - name: Şirket içinden SSIS’ye geçirme
+      items:
+        - name: SSIS geçişine genel bakış
+          href: scenario-ssis-migration-overview.md
+        - name: SSISDB’den Azure SQL Yönetilen Örnek’e geçirme
+          href: scenario-ssis-migration-ssisdb-mi.md
     - name: Roller ve izinler
       href: concepts-roles-permissions.md
     - name: Adlandırma kuralları
@@ -697,32 +721,6 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Azure-SSIS IR’de Paket Yürütme
           href: ssis-integration-runtime-ssis-activity-faq.md
-- name: Senaryolar
-  items:
-    - name: Veri gölü ve EDW için veri geçişi
-      items:
-        - name: Neden Azure Data Factory?
-          href: data-migration-guidance-overview.md
-        - name: AWS S3'ten Azure'a verileri geçirme
-          href: data-migration-guidance-s3-azure-storage.md
-        - name: Şirket içi Hadoop kümesinden Azure’a veri geçirme
-          href: data-migration-guidance-hdfs-azure-storage.md
-        - name: Şirket içi Netezza sunucusundan Azure’a veri geçirme
-          href: data-migration-guidance-netezza-azure-sqldw.md
-    - name: Veri akışlarını eşlemeyi kullanarak dönüştürme
-      items:
-        - name: Sabit genişlikli metin dosyalarını işleme
-          href: how-to-fixed-width.md
-        - name: Hata satırı işleme
-          href: how-to-data-flow-error-rows.md
-        - name: Azure SQL DB’den CosmosDB’ye
-          href: how-to-sqldb-to-cosmosdb.md
-    - name: Şirket içinden SSIS’ye geçirme
-      items:
-        - name: SSIS geçişine genel bakış
-          href: scenario-ssis-migration-overview.md
-        - name: SSISDB’den Azure SQL Yönetilen Örnek’e geçirme
-          href: scenario-ssis-migration-ssisdb-mi.md
 - name: Başvuru
   items:
     - name: Veri akışı betiği

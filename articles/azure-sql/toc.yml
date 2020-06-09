@@ -447,7 +447,7 @@
             - name: Bağlantı sorunları için Kaynak Durumu kullanma
               href: database/resource-health-to-troubleshoot-connectivity.md
             - name: DTU’yu sanal çekirdeğe geçirme
-              href: database/resource-health-to-troubleshoot-connectivity.md
+              href: database/migrate-dtu-to-vcore.md
             - name: Veritabanı kaynaklarını ölçeklendirme
               href: database/single-database-scale.md
             - name: Havuz kaynaklarını ölçeklendirme
