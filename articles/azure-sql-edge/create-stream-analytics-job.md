@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 323ec00667350917e6b16827f908ac1abeee77d6
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 4b09df3110907d58badda2c389b9ee39a9b02532
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233316"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636198"
 ---
 # <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>Azure SQL Edge 'de Stream Analytics işi oluşturma (Önizleme) 
 
@@ -24,7 +24,7 @@ Bu makalede, Azure SQL Edge 'de (Önizleme) bir T-SQL akış işi oluşturma iş
 2. Akış işi oluşturma işleminin parçası olarak akış işi sorgusunu tanımlayın.
 
 > [!NOTE]
-> Azure SQL Edge 'de T-SQL akış özelliğini etkinleştirmek için, TF 11515 ' i başlangıç seçeneği olarak etkinleştirin veya [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) komutunu kullanın. MSSQL. conf dosyasını kullanarak izleme bayraklarını etkinleştirme hakkında daha fazla bilgi için bkz. [MSSQL. conf dosyasını kullanarak yapılandırma](configure.md#configure-using-mssqlconf-file). Bu gereksinim, gelecekteki Azure SQL Edge güncelleştirmelerinde (Önizleme) kaldırılacaktır.
+> Azure SQL Edge 'de T-SQL akış özelliğini etkinleştirmek için, TF 11515 ' i başlangıç seçeneği olarak etkinleştirin veya [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) komutunu kullanın. MSSQL. conf dosyasını kullanarak izleme bayraklarını etkinleştirme hakkında daha fazla bilgi için bkz. [MSSQL. conf dosyasını kullanarak yapılandırma](configure.md#configure-by-using-an-mssqlconf-file). Bu gereksinim, gelecekteki Azure SQL Edge güncelleştirmelerinde (Önizleme) kaldırılacaktır.
 
 ## <a name="configure-an-external-stream-input-and-output-object"></a>Dış akış girişi ve çıkış nesnesi yapılandırma
 
@@ -44,10 +44,10 @@ Azure SQL Edge Şu anda yalnızca akış girişleri ve çıkışları olarak aş
 
 | Veri Kaynağı Türü | Girdi | Çıktı | Açıklama |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge hub 'ı | Y | Y | Azure IoT Edge hub 'ına akış verilerini okumak/yazmak için veri kaynağı. Azure IoT Edge hub hakkında daha fazla bilgi için [IoT Edge hub 'ına](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub) başvurun|
-| SQL Veritabanı | N | Y | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. SQL veritabanı, yerel bir SQL Edge veritabanı veya uzak SQL Server ya da Azure SQL veritabanı olabilir|
-| Azure Blob Depolama | N | Y | Azure depolama hesabındaki bir bloba veri yazmak için veri kaynağı. |
-| Kafka | Y | N | Bir Kafka konusunun akış verilerini okumak için veri kaynağı. Bu bağdaştırıcı Şu anda yalnızca Azure SQL Edge 'in Intel/AMD sürümünde kullanılabilir ve SQL Edge 'in ARM64 sürümünde kullanılamaz.|
+| Azure IoT Edge hub 'ı | E | E | Azure IoT Edge hub 'ına akış verilerini okumak/yazmak için veri kaynağı. Azure IoT Edge hub hakkında daha fazla bilgi için [IoT Edge hub 'ına](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub) başvurun|
+| SQL Veritabanı | N | E | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. SQL veritabanı, yerel bir SQL Edge veritabanı veya uzak SQL Server ya da Azure SQL veritabanı olabilir|
+| Azure Blob Depolama | N | E | Azure depolama hesabındaki bir bloba veri yazmak için veri kaynağı. |
+| Kafka | E | N | Bir Kafka konusunun akış verilerini okumak için veri kaynağı. Bu bağdaştırıcı Şu anda yalnızca Azure SQL Edge 'in Intel/AMD sürümünde kullanılabilir ve SQL Edge 'in ARM64 sürümünde kullanılamaz.|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>Örnek: Azure IoT Edge hub 'ı için dış akış giriş/çıkış nesnesi oluşturma
 

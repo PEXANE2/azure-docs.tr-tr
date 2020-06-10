@@ -1,7 +1,7 @@
 ---
-title: Öğretici-Veri Bilimi VM'si Kaynak Yöneticisi şablonu oluşturma
+title: "Hızlı başlangıç: Veri Bilimi VM'si Kaynak Yöneticisi şablonu oluşturma"
 titleSuffix: Azure Data Science Virtual Machine
-description: Bu öğreticide, hızlı bir şekilde Veri Bilimi Sanal Makinesi dağıtmak için bir Azure Resource Manager şablonu kullanacaksınız
+description: Bu hızlı başlangıçta, bir Veri Bilimi Sanal Makinesi hızlı bir şekilde dağıtmak için Azure Resource Manager şablonu kullanacaksınız
 services: machine-learning
 author: lobrien
 ms.author: laobri
@@ -9,22 +9,22 @@ ms.custom: subject-armqs
 ms.date: 06/10/2020
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.topic: tutorial
-ms.openlocfilehash: a0bce8a3de7832b589646668b877ce8396d16bc8
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.topic: quickstart
+ms.openlocfilehash: e89f3d85156081106f4e1dbb55ee6c895e7e7a2d
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/09/2020
-ms.locfileid: "84562053"
+ms.locfileid: "84636759"
 ---
 # <a name="tutorial-create-an-ubuntu-data-science-virtual-machine-using-a-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonu kullanarak Ubuntu Veri Bilimi Sanal Makinesi oluşturma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu öğreticide, bir Azure Resource Manager şablonu kullanarak Ubuntu 18,04 Veri Bilimi Sanal Makinesi oluşturma gösterilmektedir. Veri bilimi sanal makineleri, bir veri bilimi ve makine öğrenimi çerçeveleri ve araçları paketiyle önceden yüklenmiş bulut tabanlı sanal makinelerdir. GPU destekli işlem kaynaklarına dağıtıldığında, tüm araçlar ve kitaplıklar GPU 'YU kullanacak şekilde yapılandırılır. 
+Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak Ubuntu 18,04 Veri Bilimi Sanal Makinesi oluşturma gösterilmektedir. Veri bilimi sanal makineleri, bir veri bilimi ve makine öğrenimi çerçeveleri ve araçları paketiyle önceden yüklenmiş bulut tabanlı sanal makinelerdir. GPU destekli işlem kaynaklarına dağıtıldığında, tüm araçlar ve kitaplıklar GPU 'YU kullanacak şekilde yapılandırılır. 
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://aka.ms/AMLFree) oluşturun
 
@@ -94,7 +94,7 @@ echo "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir Azure Resource Manager şablonundan bir Veri Bilimi Sanal Makinesi oluşturdunuz. 
+Bu hızlı başlangıçta, bir Azure Resource Manager şablonundan Veri Bilimi Sanal Makinesi oluşturdunuz. 
 
 > [!div class="nextstepaction"]
 > [Örnek programlar & ML izlenecek yolları](dsvm-samples-and-walkthroughs.md)
