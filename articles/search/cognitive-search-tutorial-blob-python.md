@@ -9,12 +9,13 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: e7708b0043b7f5baf2c12e813306595cc358a01d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 350bc92193a27b595158f65b6ae54edc1c934e35
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78194063"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608800"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Öğretici: Azure Bloblarından aranabilir içerik oluşturmak için Python ve AI kullanma
 
@@ -31,9 +32,9 @@ Bu öğretici aşağıdaki görevleri gerçekleştirmek için Python ve [arama R
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) açın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-+ [Azure depolama](https://azure.microsoft.com/services/storage/)
++ [Azure Depolama](https://azure.microsoft.com/services/storage/)
 + [Anaconda 3,7](https://www.anaconda.com/distribution/#download-section)
 + [Mevcut bir arama hizmeti](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [oluşturun](search-create-service-portal.md) veya bulun 
 
@@ -110,9 +111,9 @@ Azure Blob depolamada olduğu gibi, erişim anahtarını toplamak için biraz za
 
 ### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Azure Bilişsel Arama yönelik bir yönetici API anahtarı ve URL 'SI alın
 
-1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetinize **genel bakış** sayfasında, arama hizmetinizin adını alın. Uç nokta URL 'sini inceleyerek hizmet adınızı doğrulayabilirsiniz. Uç nokta URL 'niz olsaydı `https://mydemo.search.windows.net`, hizmet adınız olur `mydemo`.
+1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetinize **genel bakış** sayfasında, arama hizmetinizin adını alın. Uç nokta URL 'sini inceleyerek hizmet adınızı doğrulayabilirsiniz. Uç nokta URL 'niz olsaydı `https://mydemo.search.windows.net` , hizmet adınız olur `mydemo` .
 
-2. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+2. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
    Sorgu anahtarını da alın. Salt okuma erişimiyle sorgu istekleri vermek en iyi uygulamadır.
 
@@ -164,7 +165,7 @@ Azure Bilişsel Arama 'de, dizin oluşturma (veya veri alımı) sırasında AI i
 
 [Veri kaynağı nesnesi](https://docs.microsoft.com/rest/api/searchservice/create-data-source) , dosyaları içeren blob kapsayıcısına bağlantı dizesi sağlar.
 
-Aşağıdaki betikte,-BLOB-RESOURCE-CONNECTION-STRING yer tutucusunu, önceki adımda oluşturduğunuz Blobun bağlantı dizesiyle değiştirin. Kapsayıcının yer tutucu metnini değiştirin. Ardından, adlı `cogsrch-py-datasource`bir veri kaynağı oluşturmak için betiği çalıştırın.
+Aşağıdaki betikte,-BLOB-RESOURCE-CONNECTION-STRING yer tutucusunu, önceki adımda oluşturduğunuz Blobun bağlantı dizesiyle değiştirin. Kapsayıcının yer tutucu metnini değiştirin. Ardından, adlı bir veri kaynağı oluşturmak için betiği çalıştırın `cogsrch-py-datasource` .
 
 ```python
 # Create a data source
@@ -203,7 +204,7 @@ Bu adımda, verilerinize uygulamak için bir dizi zenginleştirme adımı tanım
 
 + Üst anahtar tümcecikleri çekmek için [Anahtar İfade Ayıklama](cognitive-search-skill-keyphrases.md). 
 
-Çağrılan `cogsrch-py-skillset`bir beceri oluşturmak için aşağıdaki betiği çalıştırın.
+Çağrılan bir beceri oluşturmak için aşağıdaki betiği çalıştırın `cogsrch-py-skillset` .
 
 ```python
 # Create a skillset
@@ -291,9 +292,9 @@ print(r.status_code)
 
 İstek, başarıyı onaylayan 201 durum kodunu döndürmelidir.
 
-Her sayfa için anahtar tümceciği ayıklama yeteneği uygulanır. Bağlamını olarak `"document/pages/*"`ayarlayarak, belge/sayfalar dizisinin her bir üyesi (belgedeki her sayfa için) için bu zengini daha zengin çalıştırırsınız.
+Her sayfa için anahtar tümceciği ayıklama yeteneği uygulanır. Bağlamını olarak ayarlayarak `"document/pages/*"` , belge/sayfalar dizisinin her bir üyesi (belgedeki her sayfa için) için bu zengini daha zengin çalıştırırsınız.
 
-Her beceri, belge içeriğinde yürütülür. İşlem sırasında Azure Bilişsel Arama, farklı dosya biçimlerinden içerik okumak için her belgeyi ister. Kaynak dosyada bulunan metin, her belge için bir `content` alana yerleştirilir. Bu nedenle, girişi olarak `"/document/content"`ayarlayın.
+Her beceri, belge içeriğinde yürütülür. İşlem sırasında Azure Bilişsel Arama, farklı dosya biçimlerinden içerik okumak için her belgeyi ister. Kaynak dosyada bulunan metin `content` , her belge için bir alana yerleştirilir. Bu nedenle, girişi olarak ayarlayın `"/document/content"` .
 
 Beceri kümesinin grafiksel gösterimi aşağıda gösterilmektedir.
 
@@ -309,11 +310,11 @@ Bu bölümde, aranabilir dizine dahil edilecek alanları belirterek ve her bir a
 
 Bu çalışmada aşağıdaki alanlar ve alan türleri kullanılır:
 
-| alan adları: | id         | content   | languageCode | keyPhrases         | organizations     |
+| alan adları: | kimlik         | içerik   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
-Adlı `cogsrch-py-index`dizini oluşturmak için bu betiği çalıştırın.
+Adlı dizini oluşturmak için bu betiği çalıştırın `cogsrch-py-index` .
 
 ```python
 # Create an index
@@ -383,7 +384,7 @@ Bu nesneleri bir dizin oluşturucuda birlikte bağlamak için alan eşlemelerini
 
 Çıkışlara girişlerin takılmasının yanı sıra, veri yapılarını düzleştirmek için alan eşlemelerini de kullanabilirsiniz. Daha fazla bilgi için bkz. [zenginleştirilmiş alanları aranabilir bir dizine eşleme](cognitive-search-output-field-mapping.md).
 
-Adlı `cogsrch-py-indexer`bir dizin oluşturucu oluşturmak için bu betiği çalıştırın.
+Adlı bir dizin oluşturucu oluşturmak için bu betiği çalıştırın `cogsrch-py-indexer` .
 
 ```python
 # Create an indexer
@@ -449,7 +450,7 @@ Betik, `"maxFailedItems"` değerini -1 olarak ayarlayarak dizin oluşturma motor
 
 Ayrıca yapılandırma parametrelerinde `"dataToExtract":"contentAndMetadata"` deyimine de dikkat edin. Bu ifade, Dizin oluşturucudan içeriği farklı dosya biçimlerinden ve her bir dosyayla ilgili meta verilerin ayıklanmasını söyler.
 
-İçerik ayıklandığında, veri kaynağında bulunan görüntülerden metni ayıklamak için `imageAction` değerini ayarlayabilirsiniz. `"imageAction":"generateNormalizedImages"` Yapılandırma, OCR becerisi ve metin birleştirme beceriyle birlikte kullanıldığında, dizin oluşturucunun görüntülerden metin ayıklamasını söyler (örneğin, trafiğin "Durdur" sözcüğünün oturum açmasını durdurur) ve içerik alanının bir parçası olarak katıştırmasını söyler. Bu davranış, belgelerde (PDF içindeki bir görüntünün bir görüntüsünü düşünün) katıştırılmış görüntüler ve veri kaynağında bulunan görüntüler (örneğin, bir JPG dosyası) için geçerlidir.
+İçerik ayıklandığında, veri kaynağında bulunan görüntülerden metni ayıklamak için `imageAction` değerini ayarlayabilirsiniz. `"imageAction":"generateNormalizedImages"`Yapılandırma, OCR becerisi ve metin birleştirme beceriyle birlikte kullanıldığında, dizin oluşturucunun görüntülerden metin ayıklamasını söyler (örneğin, trafiğin "Durdur" sözcüğünün oturum açmasını durdurur) ve içerik alanının bir parçası olarak katıştırmasını söyler. Bu davranış, belgelerde (PDF içindeki bir görüntünün bir görüntüsünü düşünün) katıştırılmış görüntüler ve veri kaynağında bulunan görüntüler (örneğin, bir JPG dosyası) için geçerlidir.
 
 <a name="check-indexer-status"></a>
 
@@ -533,7 +534,7 @@ Silme işlemi başarılı olduğunda durum kodu 204 döndürülür.
 
 Bu öğreticide, veri kaynağı, beceri kümesi, dizin ve dizin oluşturucu gibi bileşen parçalarının oluşturulması yoluyla zenginleştirilmiş bir dizin oluşturma işlem hattı oluşturmaya yönelik temel adımlar gösterilmektedir.
 
-[Yerleşik yetenekler](cognitive-search-predefined-skills.md) , Beceri tanımları ve girişler ve çıktılar aracılığıyla becerileri zincirlemek için bir yol sunulmuştur. Ayrıca, bir Azure `outputFieldMappings` bilişsel arama hizmetinde işlem hattındaki aranabilir bir dizine yönlendirme değerlerini yönlendirme için Dizin Oluşturucu tanımında gerekli olduğunu öğrenmiş olursunuz.
+[Yerleşik yetenekler](cognitive-search-predefined-skills.md) , Beceri tanımları ve girişler ve çıktılar aracılığıyla becerileri zincirlemek için bir yol sunulmuştur. Ayrıca, `outputFieldMappings` bir Azure bilişsel arama hizmetinde işlem hattındaki aranabilir bir dizine yönlendirme değerlerini yönlendirme için Dizin Oluşturucu tanımında gerekli olduğunu öğrenmiş olursunuz.
 
 Son olarak, sonuçları test etme ve daha fazla yineleme için sistemi sıfırlama hakkında öğrenirsiniz. Dizine karşı sorgular düzenlendiğinde, zenginleştirilmiş dizin oluşturma işlem hattı tarafından oluşturulan çıktının döndürüldüğünü öğrendiniz. Bu yayında, iç yapıları (sistem tarafından oluşturulan zenginleştirilmiş belgeler) görüntüleme mekanizması vardır. Ayrıca, bir işlem hattını yeniden çalıştırmadan önce Dizin Oluşturucu durumunu ve hangi nesnelerin silineceğini de öğrenirsiniz.
 

@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 12ca4df6e5dd4ba86ece8469255195e2fa1c155e
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 461c5b1603a4c06e680aab671238a1c8ccd5dacd
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628904"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609089"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy ilgili sorunları giderin
 
@@ -51,8 +51,8 @@ Bunlar, kapsayıcı ve paylaşma adlarıyla ilgili hatalardır.
     - Adlar yalnızca harf, sayı ve kısa çizgi içerebilir.
     - Adlar kısa çizgi ile başlayamaz veya bitemez.
     - Adların ardışık kısa çizgileri olamaz.
-    - Geçerli adların örnekleri: `my-folder-1`,`my-really-extra-long-folder-111`
-    - Geçerli olmayan adların örnekleri `my-folder_1`:, `my`, `--myfolder`,, `myfolder--``myfolder!`
+    - Geçerli adların örnekleri: `my-folder-1` ,`my-really-extra-long-folder-111`
+    - Geçerli olmayan adların örnekleri: `my-folder_1` ,,, `my` `--myfolder` `myfolder--` ,`myfolder!`
 
     Daha fazla bilgi için bkz. [kapsayıcı adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) ve [paylaşma adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)için Azure adlandırma kuralları.
 
@@ -70,8 +70,8 @@ Bunlar, kapsayıcı ve paylaşma adlarıyla ilgili hatalardır.
     - Adlar yalnızca harf, sayı ve kısa çizgi içerebilir.
     - Adlar kısa çizgi ile başlayamaz veya bitemez.
     - Adların ardışık kısa çizgileri olamaz.
-    - Geçerli adların örnekleri: `my-folder-1`,`my-really-extra-long-folder-111`
-    - Geçerli olmayan adların örnekleri `my-folder_1`:, `my`, `--myfolder`,, `myfolder--``myfolder!`
+    - Geçerli adların örnekleri: `my-folder-1` ,`my-really-extra-long-folder-111`
+    - Geçerli olmayan adların örnekleri: `my-folder_1` ,,, `my` `--myfolder` `myfolder--` ,`myfolder!`
 
     Daha fazla bilgi için bkz. [kapsayıcı adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) ve [paylaşma adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)için Azure adlandırma kuralları.
 
@@ -88,8 +88,8 @@ Bunlar, kapsayıcı ve paylaşma adlarıyla ilgili hatalardır.
     - Adlar yalnızca harf, sayı ve kısa çizgi içerebilir.
     - Adlar kısa çizgi ile başlayamaz veya bitemez.
     - Adların ardışık kısa çizgileri olamaz.
-    - Geçerli adların örnekleri: `my-folder-1`,`my-really-extra-long-folder-111`
-    - Geçerli olmayan adların örnekleri `my-folder_1`:, `my`, `--myfolder`,, `myfolder--``myfolder!`
+    - Geçerli adların örnekleri: `my-folder-1` ,`my-really-extra-long-folder-111`
+    - Geçerli olmayan adların örnekleri: `my-folder_1` ,,, `my` `--myfolder` `myfolder--` ,`myfolder!`
 
     Daha fazla bilgi için bkz. [kapsayıcı adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) ve [paylaşma adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)için Azure adlandırma kuralları.
     
@@ -102,7 +102,7 @@ Bunlar, kapsayıcı ve paylaşma adlarıyla ilgili hatalardır.
 - Yerel Web Kullanıcı arabiriminin Bağlan ve Kopyala sayfasında, sorun ile klasör adlarını belirlemek için hata dosyalarını indirin ve gözden geçirin. 
 - Azure adlandırma kurallarıyla uyumlu olduklarından emin olmak için dizini veya kapsayıcıları yeniden adlandırın.
 
-Daha fazla bilgi için bkz. [dizinler](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) ve [kapsayıcılar](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)için Azure adlandırma kuralları.
+Daha fazla bilgi için bkz. [dizinler](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)   ve [kapsayıcılar](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)için Azure adlandırma kuralları.
 
 ## <a name="container-or-share-size-limit-errors"></a>Kapsayıcı veya paylaşma boyut sınırı hataları
 

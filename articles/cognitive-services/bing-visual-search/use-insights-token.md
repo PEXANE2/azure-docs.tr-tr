@@ -10,18 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: 251197c456ece4fe2dbbe264219d52f3502b7492
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: ac704ff7213b08072debf9d56da10a74e8315c68
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67341714"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607050"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Bir görüntü için Öngörüler elde etmek için bir Öngörüler belirteci kullanma
 
-Bing Görsel Arama API’si, verdiğiniz bir görüntü hakkında bilgi döndürür. Bir URL veya bir içgörü belirteci kullanarak ya da karşıya resim yükleyerek görüntüyü verebilirsiniz. Bu seçenekler hakkında daha fazla bilgi için bkz. [Bing Görsel Arama API'si nedir?](overview.md). Bu makalede, bir Öngörüler belirtecinin kullanılması gösterilmektedir. Öngörüleri almak için bir görüntüyü karşıya yüklemeyi gösteren örnekler için bkz. quickbaşlangıçları ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node. js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)).
+Bing Görsel Arama API’si, verdiğiniz bir görüntü hakkında bilgi döndürür. Bir URL veya bir içgörü belirteci kullanarak ya da karşıya resim yükleyerek görüntüyü verebilirsiniz. Bu seçenekler hakkında daha fazla bilgi için bkz. [Bing Görsel Arama API'si nedir?](overview.md). Bu makalede, bir Öngörüler belirtecinin kullanılması gösterilmektedir. Öngörüleri almak için bir görüntüyü karşıya yüklemeyi gösteren örnekler için bkz. quickbaşlangıçları ([C#](quickstarts/csharp.md)  |  [Java](quickstarts/java.md)  |  [Node. js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md)).
 
-Bing Görsel Arama bir görüntü belirteci veya URL gönderirseniz, aşağıda GÖNDERI gövdesine eklemeniz gereken form verileri gösterilir. Form verileri `Content-Disposition` üstbilgiyi içermeli ve `name` parametresini "knowledgeRequest" olarak ayarlamanız gerekir. `imageInfo` Nesneyle ilgili ayrıntılar için bkz. istek:
+Bing Görsel Arama bir görüntü belirteci veya URL gönderirseniz, aşağıda GÖNDERI gövdesine eklemeniz gereken form verileri gösterilir. Form verileri `Content-Disposition` üstbilgiyi içermeli ve `name` parametresini "knowledgeRequest" olarak ayarlamanız gerekir. Nesneyle ilgili ayrıntılar için `imageInfo` bkz. istek:
 
 ```json
 {
@@ -43,7 +44,7 @@ Bing Görsel Arama bir görüntü belirteci veya URL gönderirseniz, aşağıda 
 }
 ```
 
-Bu makaledeki örneklerde, Öngörüler belirtecinin nasıl kullanılacağı gösterilmektedir. Bir/Imate/Search API `Image` yanıtında bulunan bir nesneden Öngörüler belirtecini alırsınız. Öngörüler belirtecini alma hakkında daha fazla bilgi için bkz. [Bing resim arama API'si nedir?](../Bing-Image-Search/overview.md).
+Bu makaledeki örneklerde, Öngörüler belirtecinin nasıl kullanılacağı gösterilmektedir. `Image`Bir/Imate/Search API yanıtında bulunan bir nesneden Öngörüler belirtecini alırsınız. Öngörüler belirtecini alma hakkında daha fazla bilgi için bkz. [Bing resim arama API'si nedir?](../Bing-Image-Search/overview.md).
 
 ```
 --boundary_1234-abcd
@@ -58,7 +59,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-Öngörüler belirtecini kullanan örnekler için bkz. [C#](#use-with-c) | [Java](#use-with-java) | [Node. js](#use-with-nodejs) | [Python](#use-with-python).
+Öngörüler belirtecini kullanan örnekler için bkz. [C#](#use-with-c)  |  [Java](#use-with-java)  |  [Node. js](#use-with-nodejs)  |  [Python](#use-with-python).
 
 ## <a name="use-with-c"></a>C ile kullanma #
 

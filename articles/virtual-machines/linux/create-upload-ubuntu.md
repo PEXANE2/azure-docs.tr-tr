@@ -1,43 +1,40 @@
 ---
 title: Azure 'da bir Ubuntu Linux VHD oluşturma ve karşıya yükleme
 description: Ubuntu Linux işletim sistemi içeren bir Azure sanal sabit diski (VHD) oluşturmayı ve yüklemeyi öğrenin.
-author: gbowerman
+author: danielsollondon
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.date: 06/24/2019
-ms.author: guybo
-ms.openlocfilehash: 5fa3415d8663f358bf0ae48be46ac52b8f8b4b06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/06/2020
+ms.author: danis
+ms.openlocfilehash: 316f5dcb3a5fe0cbf8fb6a2f65c0ab11fc45c146
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066723"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607287"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Azure’da Ubuntu sanal makinesi hazırlama
 
 
-Ubuntu artık, adresinden [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/)indirmek üzere resmi Azure VHD 'leri yayımlar. Azure için kendi özelleştirilmiş Ubuntu görüntünüzü oluşturmanız gerekiyorsa, bu bilinen çalışma VHD 'leri ile başlamanız ve gerektiğinde özelleştirmeniz önerilir. En son görüntü yayınları her zaman aşağıdaki konumlarda bulunabilir:
+Ubuntu artık, adresinden indirmek üzere resmi Azure VHD 'leri yayımlar [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) . Azure için kendi özelleştirilmiş Ubuntu görüntünüzü oluşturmanız gerekiyorsa, bu bilinen çalışma VHD 'leri ile başlamanız ve gerektiğinde özelleştirmeniz önerilir. En son görüntü yayınları her zaman aşağıdaki konumlarda bulunabilir:
 
-* Ubuntu 12.04/kesinlikli: [Ubuntu-12,04-Server-cloudımg-AMD64-Disk1. vhd. zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
-* Ubuntu 14.04/Trusty: [Ubuntu-14,04-Server-cloudimg-AMD64-Disk1. vhd. zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 16.04/Xenial: [Ubuntu-16,04-Server-cloudimg-AMD64-Disk1. vmdk](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk)
 * Ubuntu 18.04/Bionic: [Bionic-Server-cloudimg-AMD64. vmdk](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
-* Ubuntu 18.10/COSMIC: [Cosmic-Server-cloudimg-AMD64. vhd. zip](http://cloud-images.ubuntu.com/releases/cosmic/release/ubuntu-18.10-server-cloudimg-amd64.vhd.zip)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede bir Ubuntu Linux işletim sistemini zaten bir sanal sabit diske yüklediğinizi varsaymış olursunuz. . Vhd dosyaları, örneğin Hyper-V gibi bir sanallaştırma çözümü oluşturmak için birden çok araç vardır. Yönergeler için bkz. [Hyper-V rolünü yükleyip sanal makineyi yapılandırma](https://technet.microsoft.com/library/hh846766.aspx).
 
 **Ubuntu yükleme notları**
 
 * Lütfen Azure için Linux hazırlama hakkında daha fazla ipucu için bkz. [Genel Linux yükleme notları](create-upload-generic.md#general-linux-installation-notes) .
-* VHDX biçimi Azure 'da desteklenmiyor, yalnızca **sabıt VHD**.  Hyper-V Yöneticisi 'Ni veya Convert-VHD cmdlet 'ini kullanarak diski VHD biçimine dönüştürebilirsiniz.
+* VHDX biçimi Azure 'da desteklenmiyor, yalnızca **sabıt VHD**.  Hyper-V Yöneticisi 'Ni veya cmdlet 'ini kullanarak diski VHD biçimine dönüştürebilirsiniz `Convert-VHD` .
 * Linux sistemini yüklerken, LVM yerine standart bölümler kullanmanız önerilir (genellikle çoğu yükleme için varsayılan değer). Bu, özellikle de bir işletim sistemi diskinin sorun gidermeye yönelik başka bir VM 'ye bağlanması gerekiyorsa, kopyalanmış VM 'lerle LVM adı çakışmalarını önler. Tercih edilen durumlarda [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , veri disklerinde kullanılabilir.
-* İşletim sistemi diski üzerinde takas bölümü yapılandırmayın. Linux Aracısı, geçici kaynak diskinde bir takas dosyası oluşturmak için yapılandırılabilir.  Bunun hakkında daha fazla bilgiyi aşağıdaki adımlarda bulabilirsiniz.
+* İşletim sistemi diskinde bir takas bölümü veya Swapfile yapılandırmayın. Cloud-init sağlama Aracısı, geçici kaynak diskinde bir takas dosyası veya takas bölümü oluşturacak şekilde yapılandırılabilir. Bunun hakkında daha fazla bilgiyi aşağıdaki adımlarda bulabilirsiniz.
 * Azure 'daki tüm VHD 'ler, 1 MB 'a hizalanmış bir sanal boyuta sahip olmalıdır. Bir ham diskten VHD 'ye dönüştürme yaparken,, dönüştürmeden önce ham disk boyutunun 1 MB 'ın katı olduğundan emin olmanız gerekir. Daha fazla bilgi için bkz. [Linux yükleme notları](create-upload-generic.md#general-linux-installation-notes) .
 
 ## <a name="manual-steps"></a>El ile adımlar
 > [!NOTE]
-> Azure için kendi özel Ubuntu görüntünüzü oluşturmayı denemeden önce lütfen [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) bunun yerine önceden oluşturulmuş ve test edilmiş görüntüleri kullanmayı göz önünde bulundurun.
+> Azure için kendi özel Ubuntu görüntünüzü oluşturmayı denemeden önce lütfen bunun yerine önceden oluşturulmuş ve test edilmiş görüntüleri kullanmayı göz önünde bulundurun [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) .
 > 
 > 
 
@@ -45,96 +42,116 @@ Bu makalede bir Ubuntu Linux işletim sistemini zaten bir sanal sabit diske yük
 
 2. Sanal makine penceresini açmak için **Bağlan** ' a tıklayın.
 
-3. Görüntüdeki geçerli depoları, Ubuntu 'ın Azure deposunu kullanacak şekilde değiştirin. Adımlar, Ubuntu sürümüne bağlı olarak biraz farklılık gösterir.
+3. Görüntüdeki geçerli depoları, Ubuntu 'ın Azure deposunu kullanacak şekilde değiştirin.
    
-    Düzenlemeden `/etc/apt/sources.list`önce, bir yedekleme yapmanız önerilir:
+    Düzenlemeden önce `/etc/apt/sources.list` , bir yedekleme yapmanız önerilir:
    
         # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
-    Ubuntu 12,04:
+    Ubuntu 16,04 ve Ubuntu 18,04:
    
-        # sudo sed -i 's/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g' /etc/apt/sources.list
+        # sudo sed -i 's/archive\.ubuntu.com/azure\.archive\.ubuntu\.com/g' /etc/apt/sources.list
+        # sed -i 's/[a-z][a-z]\.archive\.ubuntu.com/azure\.archive\.ubuntu\.com/g' /etc/apt/sources.list
         # sudo apt-get update
 
-    Ubuntu 14,04:
-   
-        # sudo sed -i 's/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g' /etc/apt/sources.list
-        # sudo apt-get update
 
-    Ubuntu 16,04:
-   
-        # sudo sed -i 's/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g' /etc/apt/sources.list
-        # sudo apt-get update
+4. Ubuntu Azure görüntüleri artık [Azure tarafından hazırlanmış çekirdeği](https://ubuntu.com/blog/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)kullanıyor. Aşağıdaki komutları çalıştırarak işletim sistemini Azure ile özel en son çekirdeğe güncelleştirin ve Azure Linux araçları 'nı (Hyper-V bağımlılıkları dahil) yükler:
 
-4. Ubuntu Azure görüntüleri artık *donanım etkinleştirme* (Hwe) çekirdeğini takip ediyoruz. Aşağıdaki komutları çalıştırarak işletim sistemini en son çekirdeğe güncelleştirin:
+    Ubuntu 16,04 ve Ubuntu 18,04:
 
-    Ubuntu 12,04:
-   
-        # sudo apt-get update
-        # sudo apt-get install linux-image-generic-lts-trusty linux-cloud-tools-generic-lts-trusty
-        # sudo apt-get install hv-kvp-daemon-init
-        (recommended) sudo apt-get dist-upgrade
-   
-        # sudo reboot
-   
-    Ubuntu 14,04:
-   
-        # sudo apt-get update
-        # sudo apt-get install linux-image-virtual-lts-vivid linux-lts-vivid-tools-common
-        # sudo apt-get install hv-kvp-daemon-init
-        (recommended) sudo apt-get dist-upgrade
-   
+        # sudo apt update
+        # sudo apt install linux-azure linux-image-azure linux-headers-azure linux-tools-common linux-cloud-tools-common linux-tools-azure linux-cloud-tools-azure
+        (recommended) # sudo apt full-upgrade
+
         # sudo reboot
 
-    Ubuntu 16,04:
-   
-        # sudo apt-get update
-        # sudo apt-get install linux-generic-hwe-16.04 linux-cloud-tools-generic-hwe-16.04
-        (recommended) sudo apt-get dist-upgrade
-
-        # sudo reboot
-    
-    Ubuntu 18.04.04:
-    
-        # sudo apt-get update
-        # sudo apt-get install --install-recommends linux-generic-hwe-18.04 xserver-xorg-hwe-18.04
-        # sudo apt-get install --install-recommends linux-cloud-tools-generic-hwe-18.04
-        (recommended) sudo apt-get dist-upgrade
-
-        # sudo reboot
-    
-    **Ayrıca bkz:**
-    - [https://wiki.ubuntu.com/Kernel/LTSEnablementStack](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
-    - [https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack](https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack)
-
-
-5. Grub için çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu bir metin düzenleyicisinde `/etc/default/grub` açmak için, adlı `GRUB_CMDLINE_LINUX_DEFAULT` değişkeni bulun (veya gerekirse ekleyin) ve aşağıdaki parametreleri içerecek şekilde düzenleyin:
+5. Grub için çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu `/etc/default/grub` bir metin düzenleyicisinde açmak için, adlı değişkeni bulun `GRUB_CMDLINE_LINUX_DEFAULT` (veya gerekirse ekleyin) ve aşağıdaki parametreleri içerecek şekilde düzenleyin:
    
         GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300"
 
-    Bu dosyayı kaydedip kapatın ve sonra çalıştırın `sudo update-grub`. Bu, tüm konsol iletilerinin ilk seri bağlantı noktasına gönderilmesini sağlar ve bu da hata ayıklama sorunlarıyla birlikte Azure teknik desteğine yardımcı olabilir.
+    Bu dosyayı kaydedip kapatın ve sonra çalıştırın `sudo update-grub` . Bu, tüm konsol iletilerinin ilk seri bağlantı noktasına gönderilmesini sağlar ve bu da hata ayıklama sorunlarıyla birlikte Azure teknik desteğine yardımcı olabilir.
 
 6. SSH sunucusunun, önyükleme zamanında başlayacak şekilde yüklendiğinden ve yapılandırıldığından emin olun.  Bu genellikle varsayılandır.
 
-7. Azure Linux aracısını yükler:
-   
-        # sudo apt-get update
-        # sudo apt-get install walinuxagent
+7. Cloud-init (sağlama Aracısı) ve Azure Linux Aracısı 'nı (konuk uzantıları işleyicisi) yükler. Cloud-init, sağlama sırasında ve sonraki her önyükleme sırasında sistem ağ yapılandırmasını yapılandırmak için Netplan kullanır.
+
+        # sudo apt update
+        # sudo apt install -y cloud-init netplan.io walinuxagent && systemctl stop walinuxagent
 
    > [!Note]
-   >  `walinuxagent` Paket, yüklüyse `NetworkManager` ve `NetworkManager-gnome` paketlerini kaldırabilir.
+   >  `walinuxagent`Paket, `NetworkManager` yüklüyse ve paketlerini kaldırabilir `NetworkManager-gnome` .
 
+8. Azure 'da Cloud-init sağlama ile çakışabilecek Cloud-init varsayılan yapılandırmalarını ve kalan yapılarını kaldırın:
 
-1. Sanal makinenin sağlamasını kaldırmak ve Azure 'da sağlamak üzere hazırlamak için aşağıdaki komutları çalıştırın:
-   
-        # sudo waagent -force -deprovision
+        # rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg
+        # rm -f /etc/cloud/ds-identify.cfg
+
+9. Cloud-init ' i, Azure veri kaynağını kullanarak sistem sağlamak için yapılandırın:
+
+        # cat > /etc/cloud/cloud.cfg.d/90_dpkg.cfg << EOF
+        datasource_list: [ Azure ]
+        EOF
+
+        # cat > /etc/cloud/cloud.cfg.d/90-azure.cfg << EOF
+        system_info:
+        package_mirrors:
+            - arches: [i386, amd64]
+            failsafe:
+                primary: http://archive.ubuntu.com/ubuntu
+                security: http://security.ubuntu.com/ubuntu
+            search:
+                primary:
+                - http://azure.archive.ubuntu.com/ubuntu/
+                security: []
+            - arches: [armhf, armel, default]
+            failsafe:
+                primary: http://ports.ubuntu.com/ubuntu-ports
+                security: http://ports.ubuntu.com/ubuntu-ports
+        EOF
+
+        # cat > /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg << EOF
+        reporting:
+        logging:
+            type: log
+        telemetry:
+            type: hyperv
+        EOF
+
+10. Sağlamayı gerçekleştirmek için Azure Linux aracısını Cloud-init ' i temel almak üzere yapılandırın. Bu seçenekler hakkında daha fazla bilgi için [Walınuxagent projesine](https://github.com/Azure/WALinuxAgent) göz atın.
+
+        sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+        sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
+        sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+        sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+
+        cat >> /etc/waagent.conf << EOF
+        # For Azure Linux agent version >= 2.2.45, this is the option to configure,
+        # enable, or disable the provisioning behavior of the Linux agent.
+        # Accepted values are auto (default), waagent, cloud-init, or disabled.
+        # A value of auto means that the agent will rely on cloud-init to handle
+        # provisioning if it is installed and enabled, which in this case it will.
+        Provisioning.Agent=auto
+        EOF
+
+11. Cloud-init ve Azure Linux Aracısı çalışma zamanı yapılarını ve günlüklerini Temizleme:
+
+        # sudo cloud-init clean --logs --seed
+        # sudo rm -rf /var/lib/cloud/
+        # sudo systemctl stop walinuxagent.service
+        # sudo rm -rf /var/lib/waagent/
+        # sudo rm -f /var/log/waagent.log
+
+12. Sanal makinenin sağlamasını kaldırmak ve Azure 'da sağlamak üzere hazırlamak için aşağıdaki komutları çalıştırın:
+
+        # sudo waagent -force -deprovision+user
+        # rm -f ~/.bash_history
         # export HISTSIZE=0
         # logout
 
-1. Hyper-V Yöneticisi 'nde **eylem-> kapat** ' a tıklayın. Linux VHD 'niz artık Azure 'a yüklenmeye hazırdır.
+13. Hyper-V Yöneticisi 'nde **eylem-> kapat** ' a tıklayın.
 
-## <a name="references"></a>Başvurular
-[Ubuntu donanım etkinleştirme (HWE) çekirdeği](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
+14. Azure yalnızca sabit boyutlu VHD 'leri kabul eder. VM 'nin işletim sistemi diski sabit boyutlu bir VHD değilse, `Convert-VHD` PowerShell cmdlet 'ini kullanın ve `-VHDType Fixed` seçeneğini belirtin. Lütfen şu belgelere bakın `Convert-VHD` : [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd?view=win10-ps).
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Artık Azure 'da yeni sanal makineler oluşturmak için Ubuntu Linux sanal sabit diskinizi kullanmaya hazırsınız. . Vhd dosyasını ilk kez Azure 'a yüklüyorsanız, bkz. [özel bir diskten LINUX VM oluşturma](upload-vhd.md#option-1-upload-a-vhd).

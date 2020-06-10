@@ -3,12 +3,13 @@ title: 'Hızlı başlangıç: ilk Python sorgunuz'
 description: Bu hızlı başlangıçta, Python için kaynak grafiği kitaplığını etkinleştirmek ve ilk sorgunuzu çalıştırmak için adımları izleyin.
 ms.date: 05/27/2020
 ms.topic: quickstart
-ms.openlocfilehash: cbc545551c650ad3140cbd6a9b40ab7dee1c0f3f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.custom: tracking-python
+ms.openlocfilehash: 58ba931f5d222df8d863a11a25af6563192ef453
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996151"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609956"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>Hızlı başlangıç: Python kullanarak ilk kaynak grafik sorgunuzu çalıştırma
 
@@ -16,7 +17,7 @@ Azure Kaynak Grafiği 'ni kullanmanın ilk adımı, Python için gereken kitapl�
 
 Bu işlemin sonunda, kitaplıkları Python yüklemenize eklemiş ve ilk kaynak Graf sorgunuzu çalıştıracaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 

@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: how-to
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 171fdb033cba422d8ba580da3ab54db88ca20872
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 525417bd83a1d30479fd3effbce690ed04d9af73
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81400826"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608017"
 ---
 # <a name="convert-text-to-speech-using-python"></a>Python kullanarak metin okumayı dönüştürme
 
@@ -23,10 +24,10 @@ Bu makalede, Python ve metin okuma REST API kullanarak metin okumayı nasıl dö
 
 Bu makalede, bir konuşma hizmeti kaynağına sahip bir Azure bilişsel [Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerekir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](get-started.md) kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Python 2.7.x veya 3.x
-* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>, <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>veya sık kullandığınız metin düzenleyiciniz
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio <span class="docon docon-navigate-external x-hidden-focus"></span> </a>, <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"></span> </a>veya sık kullandığınız metin düzenleyiciniz
 * Konuşma hizmeti için bir Azure abonelik anahtarı
 
 ## <a name="create-a-project-and-import-required-modules"></a>Bir proje oluşturun ve gerekli modülleri içeri aktarın
@@ -67,13 +68,13 @@ class TextToSpeech(object):
         self.access_token = None
 ```
 
-, `subscription_key` Azure Portal benzersiz anahtardır. `tts`kullanıcıdan konuşmaya dönüştürülecek metni girmesini ister. Bu giriş bir dize sabit değeri olduğundan karakterlerin kaçışılması gerekmez. Son olarak `timestr` , dosyanızı adlandırmak için kullanacağımız geçerli saati alır.
+, `subscription_key` Azure Portal benzersiz anahtardır. `tts`kullanıcıdan konuşmaya dönüştürülecek metni girmesini ister. Bu giriş bir dize sabit değeri olduğundan karakterlerin kaçışılması gerekmez. Son olarak, `timestr` dosyanızı adlandırmak için kullanacağımız geçerli saati alır.
 
 ## <a name="get-an-access-token"></a>Bir erişim belirteci alma
 
-Metin okuma REST API kimlik doğrulaması için bir erişim belirteci gerektirir. Erişim belirteci almak için bir Exchange gereklidir. Bu örnek, `issueToken` uç noktasını kullanarak bir erişim belirteci için konuşma hizmeti abonelik anahtarınızı değiştirir.
+Metin okuma REST API kimlik doğrulaması için bir erişim belirteci gerektirir. Erişim belirteci almak için bir Exchange gereklidir. Bu örnek, uç noktasını kullanarak bir erişim belirteci için konuşma hizmeti abonelik anahtarınızı değiştirir `issueToken` .
 
-Bu örnek, konuşma hizmeti aboneliğinizin Batı ABD bölgesinde olduğunu varsayar. Farklı bir bölge kullanıyorsanız, değerini güncelleştirin `fetch_token_url`. Tam liste için bkz. [bölgeler](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+Bu örnek, konuşma hizmeti aboneliğinizin Batı ABD bölgesinde olduğunu varsayar. Farklı bir bölge kullanıyorsanız, değerini güncelleştirin `fetch_token_url` . Tam liste için bkz. [bölgeler](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
 Bu kodu `TextToSpeech` sınıfa kopyalayın:
 
@@ -92,11 +93,11 @@ def get_token(self):
 
 ## <a name="make-a-request-and-save-the-response"></a>İstek yapın ve yanıtı kaydedin
 
-Burada, isteği derleyip konuşma yanıtını kaydedecekeceksiniz. İlk olarak, `base_url` ve `path`ayarlamanız gerekir. Bu örnek Batı ABD uç noktasını kullandığınızı varsayar. Kaynağınız farklı bir bölgeye kayıtlıysa, ' yi güncelleştirdiğinizden emin olun `base_url`. Daha fazla bilgi için bkz. [konuşma hizmeti bölgeleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+Burada, isteği derleyip konuşma yanıtını kaydedecekeceksiniz. İlk olarak, ve ayarlamanız gerekir `base_url` `path` . Bu örnek Batı ABD uç noktasını kullandığınızı varsayar. Kaynağınız farklı bir bölgeye kayıtlıysa, ' yi güncelleştirdiğinizden emin olun `base_url` . Daha fazla bilgi için bkz. [konuşma hizmeti bölgeleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
-Sonra, istek için gerekli üst bilgileri eklemeniz gerekir. Kaynağınızın adıyla (Azure portal bulunan `User-Agent` ) güncelleştirdiğinizden ve tercih ettiğiniz ses çıktılarınız için ayarlandığından `X-Microsoft-OutputFormat` emin olun. Çıkış biçimlerinin tam listesi için bkz. [Ses çıkışları](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
+Sonra, istek için gerekli üst bilgileri eklemeniz gerekir. `User-Agent`Kaynağınızın adıyla (Azure Portal bulunan) güncelleştirdiğinizden ve `X-Microsoft-OutputFormat` tercih ettiğiniz ses çıktılarınız için ayarlandığından emin olun. Çıkış biçimlerinin tam listesi için bkz. [Ses çıkışları](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
-Sonra, konuşma birleştirme biçimlendirme dili (SSML) kullanarak istek gövdesini oluşturun. Bu örnek yapıyı tanımlar ve daha önce oluşturduğunuz `tts` girişi kullanır.
+Sonra, konuşma birleştirme biçimlendirme dili (SSML) kullanarak istek gövdesini oluşturun. Bu örnek yapıyı tanımlar ve `tts` daha önce oluşturduğunuz girişi kullanır.
 
 >[!NOTE]
 > Bu örnek, `Guy24kRUS` ses yazı tipini kullanır. Microsoft tarafından sunulan seslerin/dillerin tüm listesi için bkz. [dil desteği](language-support.md).

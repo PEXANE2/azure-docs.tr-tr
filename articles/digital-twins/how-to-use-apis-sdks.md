@@ -1,0 +1,288 @@
+---
+title: Azure dijital TWINS API 'Leri ve SDK 'Larını kullanma
+titleSuffix: Azure Digital Twins
+description: Bkz. SDK ile birlikte Azure dijital TWINS API 'Leri ile çalışma.
+author: baanders
+ms.author: baanders
+ms.date: 06/04/2020
+ms.topic: how-to
+ms.service: digital-twins
+ms.openlocfilehash: cbc79458c1fe68b05a40f476c298d5fe94e86871
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629608"
+---
+# <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure dijital TWINS API 'Leri ve SDK 'Larını kullanma
+
+Azure dijital TWINS, örneğinizi ve onun öğelerini yönetmek için hem **Denetim düzlemi API 'leri** hem de **veri düzlemi API 'leri** ile birlikte sunulur. Bu makale, kullanılabilir API 'Lere ve bunlarla etkileşime yönelik yöntemlere genel bir bakış sunar. REST API 'Leri doğrudan ilişkili Swaggers ile veya bir SDK aracılığıyla kullanabilirsiniz.
+
+## <a name="overview-control-plane-apis"></a>Genel Bakış: denetim düzlemi API 'Leri
+
+Denetim düzlemi API 'Leri, Azure dijital TWINS örneğinizi bir bütün olarak yönetmek için kullanılır, bu nedenle tüm örneğinizi oluşturma veya silme gibi işlemleri kapsar. Bunları, uç noktaları oluşturmak ve silmek için de kullanacaksınız.
+
+Genel önizleme için en güncel Denetim düzlemi API sürümü _**2020-03-01-Preview**_' dır.
+
+Denetim düzlemi API 'Lerini kullanmak için:
+* En son [Swagger klasörüne](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)başvurarak API 'leri doğrudan çağırabilirsiniz. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir.
+* Şu anda [Go](https://github.com/Azure/azure-sdk-for-go/releases)'Daki denetim API 'Leri Için SDK 'lara erişebilirsiniz.
+
+Ayrıca, [Azure Portal](https://portal.azure.com) ve [CLI](how-to-use-cli.md)aracılığıyla Azure dijital TWINS ile etkileşime girerek denetim düzlemi API 'leri uygulayabilirsiniz.
+
+## <a name="overview-data-plane-apis"></a>Genel Bakış: veri düzlemi API 'Leri
+
+Veri düzlemi API 'Leri, Azure dijital TWINS örneğiniz içindeki öğeleri yönetmek için kullanılır. Yollar oluşturma, model yükleme, ilişki oluşturma ve TWINS yönetimi gibi işlemleri içerirler. Bunlar, aşağıdaki kategorilere büyük ölçüde ayrılabilir:
+* **Digitaltwınsmodelleriyle** -digitaltwınsmodel kategorisi, bir Azure dijital TWINS örneğindeki [modelleri](concepts-models.md) yönetmek için API 'ler içerir. Yönetim etkinlikleri, DTDL 'de yazılan modellerin karşıya yükleme, doğrulama, alma ve silme işlemlerini içerir.
+* **Digitaltwins** -digitaltwıns kategorisi, geliştiricilerin bir Azure dijital TWINS örneğinde bulunan [dijital TWINS](concepts-twins-graph.md) ve ilişkilerini oluşturmalarına, değiştirmesine ve silmesine izin veren API 'leri içerir.
+* **Sorgu** -sorgu kategorisi, geliştiricilerin ilişkiler genelinde [ikizi grafiğinde dijital TWINS kümeleri bulmasına](how-to-query-graph.md) olanak tanır.
+* **Eventroutes** -eventroutes kategorisi, verileri sistem ve aşağı akış Hizmetleri aracılığıyla [yönlendiren](concepts-route-events.md)API 'leri içerir.
+
+Genel önizleme için en güncel veri düzlemi API sürümü _**2020-05-31-Preview**_' dir.
+
+Veri düzlemi API 'Lerini kullanmak için:
+* API 'Leri doğrudan çağırabilirsiniz...
+   - en son [Swagger klasörüne](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)başvuruluyor. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir. 
+   - [API başvuru belgelerini](https://docs.microsoft.com/rest/api/azure-digitaltwins/)görüntüleme.
+* .NET (C#) SDK 'SıNı kullanabilirsiniz. Şu anda bu API 'lerle etkileşime yönelik tek yayımlanmış SDK budur. .NET SDK 'Yı kullanmak için...
+   - örnek bir klasör içeren SDK kaynağını GitHub 'da bulabilirsiniz: [.net Için Azure IoT dijital TWINS istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
+   - paketi NuGet: [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core)üzerinde görüntüleyebilirsiniz. 
+   - [SDK başvuru belgelerini](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview)görüntüleyebilirsiniz.
+   - Bu makalenin [.net (C#) SDK (veri düzlemi)](#net-c-sdk-data-plane) bölümüne devam ederek ayrıntılı bilgi ve kullanım örnekleri görebilirsiniz.
+* Diğer bir dil için, oto Rest kullanarak bir SDK oluşturabilirsiniz. [Nasıl yapılır: Azure dijital TWINS için özel SDK 'Lar oluşturma](how-to-create-custom-sdks.md)bölümündeki yönergeleri Izleyerek oto Rest kullanın.
+
+[CLI](how-to-use-cli.md)aracılığıyla Azure dijital TWINS ile etkileşime girerek Tarih düzlemi API 'leri de uygulayabilirsiniz.
+
+## <a name="net-c-sdk-data-plane"></a>.NET (C#) SDK (veri düzlemi)
+
+Azure Digital Twins .NET (C#) SDK 'Sı, .NET için Azure SDK 'sının bir parçasıdır. Açık kaynaktır ve Azure dijital TWINS veri düzlemi API 'Lerini temel alır.
+
+> [!NOTE]
+> SDK tasarımı hakkında ayrıntılı bilgi için bkz. [Azure SDK 'ları için genel tasarım ilkeleri](https://azure.github.io/azure-sdk/general_introduction.html) ve belirli [.net tasarım yönergeleri](https://azure.github.io/azure-sdk/dotnet_introduction.html).
+
+SDK 'yı kullanmak için, projenize **Azure. DigitalTwins. Core** NuGet paketini ekleyin. Ayrıca, **Azure. Identity** paketine da ihtiyacınız olacaktır.
+
+* Visual Studio 'da, NuGet Paket Yöneticisi ( *araçlar > NuGet Paket Yöneticisi aracılığıyla erişilir > çözüm Için NuGet Paketlerini Yönet*) ile paket ekleyebilirsiniz. 
+* .NET komut satırı aracını kullanarak şunları gerçekleştirebilirsiniz:
+
+    ```cmd/sh
+    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.2
+    dotnet add package Azure.identity
+    ```
+
+API 'Leri uygulamada kullanma hakkında ayrıntılı bilgi için bkz. [öğretici: istemci uygulaması kodu](tutorial-code.md). 
+
+### <a name="net-sdk-usage-examples"></a>.NET SDK kullanım örnekleri
+
+.NET SDK 'nın kullanımını gösteren bazı kod örnekleri aşağıda verilmiştir.
+
+Hizmette kimlik doğrulaması yapın:
+
+```csharp
+// Authenticate against the service and create a client
+var credentials = new InteractiveBrowserCredential(tenantId, clientId);
+DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+```
+
+Model ve liste modellerini karşıya yükleyin:
+
+```csharp
+// Upload a model
+var typeList = new List<string>();
+string dtdl = File.ReadAllText("SampleModel.json");
+typeList.Add(dtdl);
+try {
+    await client.CreateModelsAsync(typeList);
+} catch (RequestFailedException rex) {
+    Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
+}
+// Read a list of models back from the service
+AsyncPageable<ModelData> modelDataList = client.GetModelsAsync();
+await foreach (ModelData md in modelDataList)
+{
+    Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
+}
+```
+
+TWINS oluşturma ve sorgulama:
+
+```csharp
+// Initialize twin metadata
+var meta = new Dictionary<string, object>
+{
+    { "$model", "dtmi:com:contoso:SampleModel;1" },
+};
+// Initialize the twin properties
+var initData = new Dictionary<string, object>
+{
+    { "$metadata", meta },
+    { "data", "Hello World!" }
+};
+try {
+    await client.CreateDigitalTwinAsync($"firstTwin", JsonSerializer.Serialize(initData));
+} catch(RequestFailedException rex) {
+    Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
+}
+
+// Run a query    
+AsyncPageable<string> result = client.QueryAsync("Select * From DigitalTwins");
+await foreach (string twin in result)
+{
+    object jsonObj = JsonSerializer.Deserialize<object>(twin);
+    string prettyTwin = JsonSerializer.Serialize(jsonObj, new JsonSerializerOptions { WriteIndented = true });
+    Console.WriteLine(prettyTwin);
+}
+```
+
+Bu örnek uygulama kodundan izlenecek yol için [öğreticiye bakın: istemci uygulamasını kodlayın](tutorial-code.md) . 
+
+[.Net (C#) SDK 'sı Için GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples)deposunda ek örnekler de bulabilirsiniz.
+
+#### <a name="serialization-helpers"></a>Serileştirme yardımcıları
+
+Daha önce açıklandığı gibi, temel SDK yöntemleri ikizi verilerini JSON olarak döndürür. Ancak SDK, serileştirme için yardımcı sınıflar da içerir. Bu yardımcı işlevler, temel bilgilere erişim için hızlı bir şekilde ikizi verileri oluşturmanıza veya seri durumdan çıkarabilmenizi sağlar.
+
+Kullanılabilir yardımcı sınıfları şunlardır:
+* `BasicDigitalTwin`: Bir Digital ikizi 'ın temel verilerini temsil eder
+* `BasicRelationship`: Bir ilişkinin temel verilerini temsil eder
+* `UpdateOperationUtility`: Güncelleştirme çağrılarında kullanılan JSON Patch bilgilerini temsil eder
+* `WriteableProperty`: Özellik meta verilerini temsil eder
+
+##### <a name="deserialize-a-digital-twin"></a>Dijital ikizi serisini kaldırma
+
+Ya da gibi tercih ettiğiniz JSON kitaplığını kullanarak ikizi verilerinin serisini her zaman kaldırabilirsiniz `System.Test.Json` `Newtonsoft.Json` . Bir ikizi temel erişimi için yardımcı sınıflar bunu biraz daha uygun hale getirir.
+
+```csharp
+Response<string> res = client.GetDigitalTwin(twin_id);
+BasicDigitalTwin twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
+```
+
+`BasicDigitalTwin`Yardımcı sınıfı ayrıca, ile ikizi üzerinde tanımlanan özelliklere erişmenizi sağlar `Dictionary<string, object>` . İkizi özelliklerini listelemek için şunu kullanabilirsiniz:
+
+```csharp
+Response<string> res = client.GetDigitalTwin(twin_id);
+BasicDigitalTwin twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
+foreach (string prop in twin.CustomProperties.Keys)
+{
+    if (twin.CustomProperties.TryGetValue(prop, out object value))
+        Console.WriteLine($"Property '{prop}': {value}");
+}
+```
+
+##### <a name="create-a-digital-twin"></a>Dijital ikizi oluşturma
+
+Sınıfını kullanarak `BasicDigitalTwin` , bir ikizi örneği oluşturmak için veri hazırlayacaksınız:
+
+```csharp
+BasicDigitalTwin twin = new BasicDigitalTwin();
+twin.Metadata = new DigitalTwinMetadata();
+twin.Metadata.ModelId = "dtmi:example:Room;1";
+// Initialize properties
+Dictionary<string, object> props = new Dictionary<string, object>();
+props.Add("Temperature", 25.0);
+twin.CustomProperties = props;
+
+client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+```
+
+Yukarıdaki kod, aşağıdaki "el ile" varyanta eşdeğerdir:
+
+```csharp
+Dictionary<string, object> meta = new Dictionary<string, object>()
+{
+    { "$model", "dtmi:example:Room;1"}
+};
+Dictionary<string, object> twin = new Dictionary<string, object>()
+{
+    { "$metadata", meta },
+    { "Temperature", 25.0 }
+};
+client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<Dictionary<string, object>>(twin));
+```
+
+##### <a name="deserialize-a-relationship"></a>İlişki serisini kaldırma
+
+Her zaman, veya gibi tercih ettiğiniz JSON kitaplığını kullanarak ilişki verilerinin serisini kaldırabilirsiniz `System.Test.Json` `Newtonsoft.Json` . Bir ilişkiye temel erişim için yardımcı sınıflar bunu biraz daha uygun hale getirir.
+
+```csharp
+Response<string> res = client.GetRelationship(twin_id, rel_id);
+BasicRelationship rel = JsonSerializer.Deserialize<BasicRelationship>(res.Value);
+Console.WriteLine($"Relationship Name: {rel.Name}");
+```
+
+`BasicRelationship`Yardımcı sınıfı ayrıca, bir ile ilişkisi üzerinde tanımlanan özelliklere erişmenizi sağlar `Dictionary<string, object>` . Özellikleri listelemek için şunları kullanabilirsiniz:
+
+```csharp
+Response<string> res = client.GetRelationship(twin_id, rel_id);
+BasicRelationship rel = JsonSerializer.Deserialize<BasicRelationship>(res.Value);
+Console.WriteLine($"Relationship Name: {rel.Name}");
+foreach (string prop in rel.CustomProperties.Keys)
+{
+    if (twin.CustomProperties.TryGetValue(prop, out object value))
+        Console.WriteLine($"Property '{prop}': {value}");
+}
+```
+
+##### <a name="create-a-relationship"></a>Bir ilişki oluşturma
+
+Sınıfını kullanarak `BasicDigitalTwin` , bir ikizi örneğinde ilişki oluşturmaya yönelik verileri de hazırlayacaksınız:
+
+```csharp
+BasicRelationship rel = new BasicRelationship();
+rel.TargetId = "myTargetTwin";
+rel.Name = "contains"; // a relationship with this name must be defined in the model
+// Initialize properties
+Dictionary<string, object> props = new Dictionary<string, object>();
+props.Add("active", true);
+rel.CustomProperties = props;
+client.CreateRelationship("mySourceTwin", "rel001", JsonSerializer.Serialize<BasicRelationship>(rel));
+```
+
+##### <a name="create-a-patch-for-twin-update"></a>İkizi güncelleştirmesi için bir düzeltme eki oluşturma
+
+TWINS ve ilişkiler için yapılan çağrıları güncelleştirme, [JSON Patch](http://jsonpatch.com/) yapısını kullanır. JSON yama işlemleri listesi oluşturmak için, `UpdateOperationsUtility` sınıfını aşağıda gösterildiği gibi kullanabilirsiniz.
+
+```csharp
+UpdateOperationsUtility uou = new UpdateOperationsUtility();
+uou.AppendAddOp("/Temperature", 25.0);
+uou.AppendAddOp("/myComponent/Property", "Hello");
+// Un-set a property
+uou.AppendRemoveOp("/Humidity");
+client.UpdateDigitalTwin("myTwin", uou.Serialize());
+```
+
+## <a name="general-apisdk-usage-notes"></a>Genel API/SDK kullanım notları
+
+Bu bölüm, API 'Leri ve SDK 'ları kullanmayla ilgili genel bilgileri ve yönergeleri içerir.
+
+* SDK 'yı kullanmak için, sınıfın örneğini oluşturun `DigitalTwinsClient` . Oluşturucu, paketteki çeşitli kimlik doğrulama yöntemleriyle elde edilebilir kimlik bilgileri gerektirir `Azure.Identity` . Daha fazla bilgi için `Azure.Identity` bkz. [ad alanı belgeleri](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet). 
+* Başlarken faydalı olduğunu fark edebilirsiniz `InteractiveBrowserCredential` , ancak [yönetilen kimliğin](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)kimlik bilgileri de dahil olmak üzere, Azure Digital TWINS ['e karşı MSI ile ayarlanan Azure işlevleri](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) kimlik doğrulaması için kullanacağınız diğer birkaç seçenek vardır. Hakkında daha fazla bilgi için `InteractiveBrowserCredential` bkz. [sınıf belgeleri](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet).
+* Tüm hizmet API çağrıları, sınıf üzerinde üye işlevleri olarak gösterilir `DigitalTwinsClient` .
+* Tüm hizmet işlevleri, zaman uyumlu ve zaman uyumsuz sürümlerde bulunur.
+* Tüm hizmet işlevleri, 400 veya üzeri bir dönüş durumu için bir özel durum oluşturur. Çağrıları bir bölüme sardığınızdan `try` ve en azından yakaladığınızdan emin olun `RequestFailedExceptions` . Bu tür özel durum hakkında daha fazla bilgi için [buraya](https://docs.microsoft.com/dotnet/api/azure.requestfailedexception?view=azure-dotnet)bakın.
+* Çoğu hizmet yöntemi döndürür `Response<T>` veya ( `Task<Response<T>>` zaman uyumsuz çağrılar için), burada `T` hizmet çağrısının dönüş nesnesinin sınıfıdır. [`Response`](https://docs.microsoft.com/dotnet/api/azure.response-1?view=azure-dotnet)Sınıfı, hizmet döndürmesini kapsüller ve dönüş değerlerini kendi `Value` alanına sunar.  
+* Disk belleğine alınmış sonuçları olan hizmet yöntemleri, `Pageable<T>` veya `AsyncPageable<T>` sonuçlarını döndürür. Sınıfı hakkında daha fazla bilgi için buraya bakın `Pageable<T>` . hakkında daha fazla bilgi için [here](https://docs.microsoft.com/dotnet/api/azure.pageable-1?view=azure-dotnet-preview) `AsyncPageable<T>` [buraya](https://docs.microsoft.com/dotnet/api/azure.asyncpageable-1?view=azure-dotnet-preview)bakın.
+* Bir döngüsü kullanarak, disk belleğine alınmış sonuçları yineleyebilirsiniz `await foreach` . Bu süreç hakkında daha fazla bilgi için [buraya](https://docs.microsoft.com/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8)bakın.
+* Temel alınan SDK `Azure.Core` . SDK altyapısı ve türleri hakkında başvuru için bkz. [Azure ad alanı belgeleri](https://docs.microsoft.com/dotnet/api/azure?view=azure-dotnet-preview) .
+
+Hizmet yöntemleri mümkün olduğunda kesin türü belirtilmiş nesneler döndürür. Ancak, Azure dijital TWINS, çalışma zamanında Kullanıcı tarafından özel olarak yapılandırılmış modelleri temel aldığı için (hizmete yüklenen DTDL modelleri aracılığıyla), çoğu hizmet API 'Leri JSON biçiminde ikizi verileri alır ve döndürür.
+
+## <a name="monitor-api-metrics"></a>API ölçümlerini izleme
+
+İstekler, gecikme ve başarısızlık oranı gibi API ölçümleri [Azure Portal](https://portal.azure.com/)görüntülenebilir. 
+
+Portal giriş sayfasında, ayrıntılarını almak için Azure dijital TWINS örneğinizi arayın. *Ölçümler* sayfasını açmak Için Azure Digital TWINS örneğinin menüsündeki **ölçümler** seçeneğini belirleyin.
+
+:::image type="content" source="media/how-to-use-apis-sdks/metrics.png" alt-text="Azure portal bir Azure dijital TWINS örneğinin ölçümler sayfası":::
+
+Buradan, örneğiniz için ölçümleri görüntüleyebilir ve özel görünümler oluşturabilirsiniz.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Bkz. Azure dijital TWINS örneği oluşturmak için API 'Leri kullanma:
+* [Nasıl yapılır: Azure dijital TWINS örneği oluşturma](how-to-set-up-instance.md)
+
+Ya da, bu nasıl yapılır: ile aynı şekilde kullanılan bir istemci uygulaması oluşturma adımlarını gözden geçir:
+* [Öğretici: istemci uygulamasını kodlayın](tutorial-code.md)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 7a8fec876556d943d29756a38ffc27ae8095e3c4
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: e871d2c8e0fe00fa7db3144a787447163c82e62d
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466247"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629046"
 ---
 # <a name="inspect-custom-speech-data"></a>Özel Konuşma verilerini inceleme
 
@@ -33,11 +33,11 @@ Bu sayfada, Microsoft 'un temel konuşma konuşmadan metin modeli ve/veya eğiti
 Bir test oluşturmak için aşağıdaki yönergeleri izleyin:
 
 1. [Özel konuşma tanıma portalında](https://speech.microsoft.com/customspeech)oturum açın.
-2. **> konuşmadan metne git Özel Konuşma Tanıma > testi**yapın.
+2. **Test > > [proje adı] Özel Konuşma Tanıma > konuşmadan metne**gidin.
 3. **Test Ekle**' ye tıklayın.
 4. **İnceleme kalitesi (yalnızca ses verileri)** seçeneğini belirleyin. Teste bir ad, açıklama verin ve ses veri kümenizi seçin.
 5. Test etmek istediğiniz en fazla iki model seçin.
-6. **Oluştur**' a tıklayın.
+6. **Oluştur**'a tıklayın.
 
 Bir test başarıyla oluşturulduktan sonra, bir modelin belirttiğiniz ses veri kümesini nasıl oluşturduğunu veya iki modelden gelen sonuçları yan yana nasıl karşılaştırabileceğiniz hakkında bilgi alabilirsiniz.
 

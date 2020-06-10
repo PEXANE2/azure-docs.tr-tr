@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
-ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 483d2152f3af13c82830528ea73e837fe3788ca4
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257829"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629379"
 ---
 # <a name="service-updates-in-site-recovery"></a>Site Recovery hizmet güncelleştirmeleri
 
@@ -48,7 +48,7 @@ Site Recovery süresi geçen bileşenleri (veya e-posta bildirimlerine abone old
 
 E-posta bildirimleri aşağıdaki şekilde gönderilir.
 
-**Işınızda** | **Sıklık**
+**Saat** | **Sıklık**
 --- | ---
 bileşen süre sonu 60 gün önce | İki haftada bir
 Sonraki 53 gün | Haftada bir kez
@@ -90,14 +90,13 @@ Bu senaryoda, [otomatik güncelleştirmeleri etkinleştirmenizi](azure-to-azure-
 - Çoğaltma işlemini etkinleştirin.
 - Kasa içindeki uzantı güncelleştirme ayarlarını ayarlayarak.
 
-Güncelleştirmeleri el ile yönetmek istiyorsanız aşağıdakileri yapın:
+Güncelleştirmeleri el ile yönetmek istiyorsanız, aşağıdaki seçeneklerden birini seçebilirsiniz:
 
-1. Kasaya **çoğaltılan öğeleri**>, ekranın en üstündeki bu bildirime tıklayın: 
+1. Yeni bir aracı güncelleştirmesi kullanılabilir olduğunda, Site Recovery sayfanın üst tarafına doğru olan kasada bir bildirim sağlar. Kasaya **çoğaltılan öğeleri**>, ekranın en üstündeki bu bildirime tıklayın: 
     
-    **Yeni Site Recovery çoğaltma Aracısı güncelleştirmesi var. Yüklemek için tıklayın->**
+    **Yeni Site Recovery çoğaltma Aracısı güncelleştirmesi var. Yüklemek için tıklayın->** <br/><br/>Güncelleştirmeyi uygulamak istediğiniz VM 'Leri seçin ve ardından **Tamam**' a tıklayın.
 
-4. Güncelleştirmeyi uygulamak istediğiniz VM 'Leri seçin ve ardından **Tamam**' a tıklayın.
-
+2. VM olağanüstü durum kurtarma Genel Bakış sayfasında, aracının süresi dolduğunda ' kritik yükseltme ' olacak ' Aracı durumu ' alanını bulacaksınız. Üzerine tıklayın ve sanal makineyi el ile yükseltmek için sonraki yönergeleri izleyin.
 
 ## <a name="vmware-vmphysical-server-disaster-recovery-to-azure"></a>Azure 'da VMware VM/fiziksel sunucu olağanüstü durum kurtarma
 

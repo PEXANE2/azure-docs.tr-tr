@@ -6,14 +6,14 @@ author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 06/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 6f5bd129b175210cd5b9415a65b8db06d904e24d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e6733bdc91ba26d52366de09ed6bc255dcd4ff98
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73718188"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610827"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Öğretici: veri ambarına büyük veri akışı
 Azure [Event Grid](overview.md) , uygulamalardan ve hizmetlerden bildirimleri (olayları) tepki etmenizi sağlayan akıllı bir olay yönlendirme hizmetidir. Örneğin, bir Azure Işlevini Azure Blob depolama alanına veya Azure Data Lake Storage yakalanan Event Hubs verileri işleyecek şekilde tetikleyip verileri diğer veri depolarına geçirebilirler. Bu [Event Hubs ve Event Grid tümleştirme örneği](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) , yakalanan Event Hubs verilerini blob DEPOLAMADAN bir SQL veri ambarına sorunsuzca geçirmek için Event Grid ile Event Hubs nasıl kullanacağınızı gösterir.
@@ -38,7 +38,7 @@ Bu makalede, aşağıdaki adımları uygulayın:
 > * Olay Hub 'ına veri gönderen uygulamayı çalıştırın.
 > * Veri ambarında geçirilen verileri görüntüleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -60,10 +60,10 @@ Bu adımda, gerekli altyapıyı bir [Kaynak Yöneticisi şablonuyla](https://git
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Azure portal Azure Cloud Shell başlatma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 2. Üstteki **Cloud Shell** düğmesini seçin.
 
-    ![Azure portalı](media/event-grid-event-hubs-integration/azure-portal.png)
+    ![Azure portal](media/event-grid-event-hubs-integration/azure-portal.png)
 3. Cloud Shell tarayıcının altında açıldığını görürsünüz.
 
     ![Cloud Shell](media/event-grid-event-hubs-integration/launch-cloud-shell.png) 
@@ -79,15 +79,14 @@ Bu adımda, gerekli altyapıyı bir [Kaynak Yöneticisi şablonuyla](https://git
 ### <a name="use-azure-cli"></a>Azure CLI kullanma
 
 1. Aşağıdaki CLı komutunu çalıştırarak bir Azure Kaynak grubu oluşturun: 
-    1. Aşağıdaki komutu kopyalayıp Cloud Shell penceresine yapıştırın
+    1. Aşağıdaki komutu kopyalayıp Cloud Shell penceresine yapıştırın. İsterseniz kaynak grubu adını ve konumunu değiştirin.
 
         ```azurecli
-        az group create -l eastus -n <Name for the resource group>
+        az group create -l eastus -n rgDataMigration
         ```
-    1. **Kaynak grubu** için bir ad belirtin
     2. **ENTER**tuşuna basın. 
 
-        Örnek aşağıda verilmiştir:
+        Aşağıda bir örnek verilmiştir:
     
         ```azurecli
         user@Azure:~$ az group create -l eastus -n ehubegridgrp
@@ -107,7 +106,7 @@ Bu adımda, gerekli altyapıyı bir [Kaynak Yöneticisi şablonuyla](https://git
 
         ```azurecli
         az group deployment create \
-            --resource-group rgDataMigrationSample \
+            --resource-group rgDataMigration \
             --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json \
             --parameters eventHubNamespaceName=<event-hub-namespace> eventHubName=hubdatamigration sqlServerName=<sql-server-name> sqlServerUserName=<user-name> sqlServerPassword=<password> sqlServerDatabaseName=<database-name> storageName=<unique-storage-name> functionAppName=<app-name>
         ```
@@ -132,7 +131,7 @@ Bu adımda, gerekli altyapıyı bir [Kaynak Yöneticisi şablonuyla](https://git
     1. Aşağıdaki komutu kopyalayıp Cloud Shell penceresine yapıştırın.
 
         ```powershell
-        New-AzResourceGroup -Name rgDataMigration -Location westcentralus
+        New-AzResourceGroup -Name rgDataMigration -Location eastus
         ```
     2. **Kaynak grubu**için bir ad belirtin.
     3. ENTER tuşuna basın. 
@@ -170,11 +169,11 @@ Cloud Shell penceresinin sağ üst köşesindeki Portal (veya) **X** düğmesind
 ### <a name="create-a-table-in-sql-data-warehouse"></a>SQL Veri Ambarında tablo oluşturma
 [Createdatawarehousetable. SQL](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) betiğini çalıştırarak veri Ambarınızda tablo oluşturun. Betiği çalıştırmak için, Visual Studio 'Yu veya portalda sorgu düzenleyicisini kullanabilirsiniz. Aşağıdaki adımlarda sorgu Düzenleyicisi 'nin nasıl kullanılacağı gösterilmektedir: 
 
-1. Kaynak grubundaki kaynak listesinde SQL veri Ambarınızı seçin. 
+1. Kaynak grubundaki kaynak listesinde **SYNAPSE SQL havuzunu (veri ambarı)** seçin. 
 2. SQL veri ambarı sayfasında sol menüdeki **sorgu Düzenleyicisi 'ni (Önizleme)** seçin. 
 
     ![SQL veri ambarı sayfası](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
-2. SQL Server için **Kullanıcı** ve **parola** adını girip **Tamam**' ı seçin. 
+2. SQL Server için **Kullanıcı** ve **parola** adını girip **Tamam**' ı seçin. SQL Server 'da başarılı bir şekilde oturum açmak için istemci IP adresiniz güvenlik duvarınızdan çok ihtiyacınız vardır. 
 
     ![SQL Server kimlik doğrulaması](media/event-grid-event-hubs-integration/sql-server-authentication.png)
 4. Sorgu penceresinde aşağıdaki SQL betiğini kopyalayın ve çalıştırın: 
@@ -193,6 +192,17 @@ Cloud Shell penceresinin sağ üst köşesindeki Portal (veya) **X** düğmesind
     ![SQL sorgusunu Çalıştır](media/event-grid-event-hubs-integration/run-sql-query.png)
 5. Öğreticinin sonunda verilerin oluşturulduğunu doğrulayabilmeniz için bu sekmeyi veya pencereyi açık tutun. 
 
+### <a name="update-the-function-runtime-version"></a>İşlev çalışma zamanı sürümünü Güncelleştir
+
+1. Azure portal Sol menüdeki **kaynak grupları** ' nı seçin.
+2. İşlev uygulamasının bulunduğu kaynak grubunu seçin. 
+3. Kaynak grubundaki kaynak listesinde **App Service** türündeki işlev uygulamasını seçin.
+4. Sol menüdeki **Ayarlar** ' ın altında **yapılandırma** ' yı seçin. 
+5. Sağ bölmedeki **işlev çalışma zamanı ayarları** sekmesine geçin. 
+5. **Çalışma zamanı sürümünü** **~ 3**olarak güncelleştirin. 
+
+    ![İşlev çalışma zamanı sürümünü Güncelleştir](media/event-grid-event-hubs-integration/function-runtime-version.png)
+    
 
 ## <a name="publish-the-azure-functions-app"></a>Azure İşlevleri uygulamasını yayımlama
 
@@ -204,13 +214,20 @@ Cloud Shell penceresinin sağ üst köşesindeki Portal (veya) **X** düğmesind
 4. Aşağıdaki ekranı görürseniz **Başlat**' ı seçin. 
 
    ![Yayımla düğmesini Başlat](media/event-grid-event-hubs-integration/start-publish-button.png) 
-5. **Bir yayımlama hedefi** seçin sayfasında, **Varolanı Seç** seçeneğini belirleyin ve **Profil oluştur**' u seçin. 
+5. **Yayımla** Iletişim kutusunda **hedef**için **Azure** ' u seçin ve **İleri**' yi seçin. 
 
-   ![Yayımlama hedefi seçme](media/event-grid-event-hubs-integration/publish-select-existing.png)
-6. App Service sayfasında, **Azure aboneliğinizi**seçin, kaynak grubunuzda **işlev uygulamasını** seçin ve **Tamam**' ı seçin. 
+   ![Yayımla düğmesini Başlat](media/event-grid-event-hubs-integration/publish-select-azure.png)
+6. **Azure işlev uygulaması (Windows)** öğesini seçin ve **İleri**' yi seçin. 
 
-   ![App Service sayfası](media/event-grid-event-hubs-integration/publish-app-service.png) 
-1. Visual Studio profili yapılandırdığında **Yayımla**’yı seçin.
+   ![Azure İşlev Uygulaması seçin-Windows](media/event-grid-event-hubs-integration/select-azure-function-windows.png)
+7. **İşlevler örneği** sekmesinde Azure aboneliğinizi seçin, kaynak grubunu genişletin ve işlev uygulaması ' nı seçin ve ardından **son**' u seçin. Henüz yapmadıysanız Azure hesabınızda oturum açmanız gerekir. 
+
+   ![İşlev uygulamanızı seçin](media/event-grid-event-hubs-integration/publish-select-function-app.png)
+8. **Hizmet bağımlılıkları** bölümünde **Yapılandır**' ı seçin.
+9. **Bağımlılığı Yapılandır** sayfasında, daha önce oluşturduğunuz depolama hesabını seçin ve ardından **İleri**' yi seçin. 
+10. Bağlantı dizesi adı ve değeri için ayarları tutun ve **İleri**' yi seçin.
+11. Gizli dizileri **depolama** seçeneğini belirleyip **son**' u seçin.  
+8. Visual Studio profili yapılandırdığında **Yayımla**’yı seçin.
 
    ![Yayımla’yı seçme](media/event-grid-event-hubs-integration/select-publish.png)
 
@@ -224,21 +241,24 @@ Cloud Shell penceresinin sağ üst köşesindeki Portal (veya) **X** düğmesind
 4. Listeden kaynak grubunuzu seçin.
 
     ![Kaynak grubunuzu seçin](media/event-grid-event-hubs-integration/select-resource-group.png)
-4. Listeden App Service planı seçin. 
+4. Kaynak grubundaki kaynak listesinde App Service planı (App Service değil) seçin. 
 5. App Service planı sayfasında, sol taraftaki menüden **uygulamalar** ' ı seçin ve işlev uygulamasını seçin. 
 
     ![İşlevler uygulamanızı seçin](media/event-grid-event-hubs-integration/select-function-app-app-service-plan.png)
 6. İşlev uygulamasını genişletin, işlevler ' i genişletin ve ardından işlevinizi seçin. 
+7. Araç çubuğunda **Event Grid aboneliği Ekle** ' yi seçin. 
 
     ![Azure işlevinizi seçin](media/event-grid-event-hubs-integration/select-function-add-button.png)
-7. Araç çubuğunda **Event Grid aboneliği Ekle** ' yi seçin. 
 8. **Event Grid aboneliği oluştur** sayfasında, aşağıdaki işlemleri yapın: 
-    1. **Konu ayrıntıları** bölümünde, aşağıdaki işlemleri yapın:
-        1. Azure aboneliğinizi seçin.
+    1. **Olay ABONELIĞI ayrıntıları** sayfasında, abonelik için bir ad girin (örneğin: captureEventSub) ve **Oluştur**' u seçin. 
+    2. **Konu ayrıntıları** bölümünde, aşağıdaki işlemleri yapın:
+        1. **Konu türleri**Için **Event Hubs ad alanlarını** seçin. 
+        2. Azure aboneliğinizi seçin.
         2. Azure kaynak grubunu seçin.
-        3. Event Hubs ad alanını seçin.
-    2. **Olay ABONELIĞI ayrıntıları** sayfasında, abonelik için bir ad girin (örneğin: captureEventSub) ve **Oluştur**' u seçin. 
-
+        3. Event Hubs ad alanınızı seçin.
+    3. **Olay türleri** bölümünde, **olay türlerine filtre**için **oluşturulan yakalama dosyasının** seçili olduğunu doğrulayın. 
+    4. **Uç nokta ayrıntıları** bölümünde, **uç nokta türünün** **Azure Işlevi** olarak ayarlandığını ve **uç noktanın** Azure işlevi olarak ayarlandığını doğrulayın. 
+    
         ![Event Grid aboneliği oluştur](media/event-grid-event-hubs-integration/create-event-subscription.png)
 
 ## <a name="run-the-app-to-generate-data"></a>Veri oluşturmak için uygulama çalıştırma
@@ -266,7 +286,7 @@ Olay hub’ı, SQL veri ambarı, Azure işlev uygulaması ve olay aboneliğinizi
     ![Sorgu sonuçları](media/event-grid-event-hubs-integration/query-results.png)
 
 ### <a name="event-data-generated-by-the-event-hub"></a>Olay Hub 'ı tarafından oluşturulan olay verileri
-Event Grid, olay verilerini abonelere dağıtır. Aşağıdaki örnek, bir olay hub 'ı üzerinden veri akışı bir blob 'da yakalandıktan sonra oluşturulan olay verilerini gösterir. Özellikle, `fileUrl` `data` nesne içindeki özelliğinin depolama alanındaki blobu işaret ettiğini unutmayın. İşlev uygulaması, yakalanan verilerle blob dosyasını almak için bu URL 'YI kullanır.
+Event Grid, olay verilerini abonelere dağıtır. Aşağıdaki örnek, bir olay hub 'ı üzerinden veri akışı bir blob 'da yakalandıktan sonra oluşturulan olay verilerini gösterir. Özellikle, `fileUrl` nesne içindeki özelliğinin `data` depolama alanındaki blobu işaret ettiğini unutmayın. İşlev uygulaması, yakalanan verilerle blob dosyasını almak için bu URL 'YI kullanır.
 
 ```json
 [

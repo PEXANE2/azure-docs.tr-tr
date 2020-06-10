@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 89de6b3737c8a1e91832aba8f749078806b64e90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c61a7b46a2f1cc6fa518e5001d5e1905946d5e8e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77659329"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610092"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Azure platformu günlüklerine genel bakış
 Platform günlükleri, Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. Bunlar otomatik olarak oluşturulur, ancak korunacak bir veya daha fazla hedefe iletilmek üzere belirli platform günlüklerinin yapılandırılması gerekir. Bu makalede, sağladığı bilgiler ve bunları toplama ve analiz için nasıl yapılandırabileceğiniz dahil olmak üzere platform günlüklerine bir genel bakış sunulmaktadır.
@@ -46,9 +46,9 @@ Farklı Azure platformu günlüklerini görüntülemek ve analiz etmek için far
 
 | Hedef | Senaryo | Başvurular |
 |:---|:---|:---|:---|
-| Log Analytics çalışma alanı | Günlükleri diğer izleme verileriyle çözümleyin ve günlük sorguları ve uyarılar gibi Azure Izleyici özelliklerinden yararlanın. | [Etkinlik günlüğü ve kaynak günlükleri](resource-logs-collect-workspace.md)<br>[Azure etkinlik dizini günlükleri](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
-| Azure Storage | Denetim, statik analiz veya yedekleme için günlükleri arşivleyin. |[Etkinlik günlüğü ve kaynak günlükleri](archive-diagnostic-logs.md)<br>[Azure etkinlik dizini günlükleri](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |
-| Olay hub'ı | Günlükleri üçüncü taraf günlüğe kaydetme ve telemetri sistemlerine akışa alma.  |[Etkinlik günlüğü ve kaynak günlükleri](resource-logs-stream-event-hubs.md)<br>[Azure etkinlik dizini günlükleri](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) |
+| Log Analytics çalışma alanı | Günlükleri diğer izleme verileriyle çözümleyin ve günlük sorguları ve uyarılar gibi Azure Izleyici özelliklerinden yararlanın. | [Etkinlik günlüğü ve kaynak günlükleri](resource-logs-collect-workspace.md)<br>[Azure Active Directory günlükleri](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
+| Azure depolama | Denetim, statik analiz veya yedekleme için günlükleri arşivleyin. |[Etkinlik günlüğü ve kaynak günlükleri](archive-diagnostic-logs.md)<br>[Azure Active Directory günlükleri](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |
+| Olay hub'ı | Günlükleri üçüncü taraf günlüğe kaydetme ve telemetri sistemlerine akışa alma.  |[Etkinlik günlüğü ve kaynak günlükleri](resource-logs-stream-event-hubs.md)<br>[Azure Active Directory günlükleri](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) |
 
 
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 12/17/2019
 ms.custom: has-adal-ref
-ms.openlocfilehash: 57160088c283b1f2c686429168cc858fee58324a
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: e6fd2ba9210aa8f133ed08e850e4ded978682988
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433113"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629249"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -71,9 +71,14 @@ Test ve öğrenme için faydalı olsa da, etkileşimli kimlik doğrulaması otom
 
 Bu işlem, belirli bir Kullanıcı oturum açma işleminden ayrılmış kimlik doğrulamanın etkinleştirilmesi için gereklidir. Bu, otomatik iş akışlarında Azure Machine Learning Python SDK ' da kimlik doğrulaması yapmanıza olanak sağlar. Hizmet sorumlusu kimlik doğrulaması ayrıca [REST API kimlik](#azure-machine-learning-rest-api-auth)doğrulaması yapmanıza izin verir.
 
-Hizmet sorumlusu kimlik doğrulamasını ayarlamak için öncelikle Azure Active Directory ' de bir uygulama kaydı oluşturun ve ardından ML çalışma alanınıza uygulamanızın rol tabanlı erişimini verirsiniz. Bu kurulumu tamamlamaya en kolay yolu, Azure portal [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) . Portalda oturum açtıktan sonra, `>_` kabuğu açmak için adınızın yanındaki sayfanın sağ üst kısmındaki simgeye tıklayın.
+> [!TIP]
+> Hizmet sorumluları, [Azure rol tabanlı erişim denetimi (RBAC)](../role-based-access-control/overview.md)aracılığıyla çalışma alanınıza erişebilmelidir.
+>
+> **Sahip** olmanız veya çalışma alanınıza **katkıda** bulunan yerleşik rollerinin kullanılması, hizmet sorumlusunun model eğitimi, model dağıtma vb. gibi tüm etkinlikleri gerçekleştirmesini sağlar. Rolleri kullanma hakkında daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanına erişimi yönetme](how-to-assign-roles.md).
 
-Cloud Shell 'i Azure hesabınızda kullanmadıysanız, yazılan dosyaları depolamak için bir depolama hesabı kaynağı oluşturmanız gerekir. Genel olarak bu depolama hesabı, daha az bir aylık maliyet doğuracaktır. Ayrıca, daha önce aşağıdaki komutla kullanmadıysanız Machine Learning uzantısını da yükleyebilirsiniz.
+Hizmet sorumlusu kimlik doğrulamasını ayarlamak için öncelikle Azure Active Directory ' de bir uygulama kaydı oluşturun ve ardından uygulamanıza bir rol atayın. Bu kurulumu tamamlamaya en kolay yolu, Azure portal [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) . Portalda oturum açtıktan sonra, `>_` kabuğu açmak için adınızın yanındaki sayfanın sağ üst kısmındaki simgeye tıklayın.
+
+Azure hesabınızda önce Cloud Shell kullanmadıysanız, yazılan dosyaları depolamak için bir depolama hesabı kaynağı oluşturmanız gerekir. Genel olarak bu depolama hesabı, daha az bir aylık maliyet doğuracaktır. Ayrıca, daha önce aşağıdaki komutla kullanmadıysanız Machine Learning uzantısını da yükleyebilirsiniz.
 
 ```azurecli-interactive
 az extension add -n azure-cli-ml
@@ -307,6 +312,9 @@ Belirteç kimlik doğrulamasını denetlemek için, `token_auth_enabled` bir da�
 
 Belirteç kimlik doğrulaması etkinleştirilirse, `get_token` bir JSON Web token (JWT) almak için yöntemini ve bu belirtecin sona erme süresini kullanabilirsiniz:
 
+> [!TIP]
+> Belirteci almak için bir hizmet sorumlusu kullanırsanız ve bir belirteci almak için gereken en az erişime sahip olmasını istiyorsanız, bunu çalışma alanı için **okuyucu** rolüne atayın.
+
 ```python
 token, refresh_by = service.get_token()
 print(token)
@@ -323,5 +331,6 @@ print(token)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Eğitiminde gizli dizileri kullanma](how-to-use-secrets-in-runs.md).
 * [Görüntü sınıflandırma modelini eğitme ve dağıtma](tutorial-train-models-with-aml.md).
 * [Web hizmeti olarak dağıtılan bir Azure Machine Learning modeli](how-to-consume-web-service.md)kullanın.

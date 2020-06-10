@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 6f543b3f5c2bb7d4949c431580771c4b0d965e4d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4bcd8deef28f8e0123e6e2171b3ab24d6ac49292
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125484"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635008"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Azure Key Vault Azure Data Box için müşteri tarafından yönetilen anahtarları kullanın
 
@@ -23,7 +23,7 @@ Müşteri tarafından yönetilen anahtarların bir Azure Key Vault oluşturulmas
 
 Bu makalede, müşteri tarafından yönetilen anahtarların [Azure portal](https://portal.azure.com/)Azure Data Box ile nasıl kullanılacağı gösterilmektedir. Bu makale hem Azure Data Box cihazları hem de Azure Data Box Heavy cihazları için geçerlidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunlardan emin olun:
 
@@ -103,7 +103,7 @@ Azure Data Box için müşteri tarafından yönetilen anahtarı yapılandırmak 
 
 Müşteri tarafından yönetilen anahtarınızla ilgili herhangi bir hata alırsanız, sorunlarını gidermek için aşağıdaki tabloyu kullanın.
 
-| Hata kodu| Hata iletisi| Ayrıntılar|
+| Hata kodu| Hata ayrıntıları| Gider?|
 |-------------|--------------|---------|
 | SsemUserErrorEncryptionKeyDisabled| Müşteri tarafından yönetilen anahtar devre dışı bırakıldığından geçiş anahtarı getirilemedi.| Evet, anahtar sürümünü etkinleştirerek.|
 | Ssemusererrorencryptionkeyerermedi| Müşteri tarafından yönetilen anahtarın süresi geçtiğinden geçiş anahtarı getirilemedi.| Evet, anahtar sürümünü etkinleştirerek.|

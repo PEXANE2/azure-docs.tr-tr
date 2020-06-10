@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Edge 'i yapılandırma (Önizleme)
-description: Azure SQL Edge 'i (Önizleme) yapılandırma hakkında bilgi edinin
+description: Azure SQL Edge 'i (Önizleme) yapılandırma hakkında bilgi edinin.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,54 +9,54 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a28724e00f59fe049d1d9d6dfbcbc5a3f9556124
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: c38bb6100665cc9456b66608660bdca520b934c6
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235157"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636249"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>Azure SQL Edge 'i yapılandırma (Önizleme)
 
 Azure SQL Edge, yapılandırmayı aşağıdaki iki seçenekten biri aracılığıyla destekler:
 
-- Ortam değişkenlerini kullanma.
-- /Var/seçenek/MSSQL klasörüne yerleştirilmiş MSSQL. conf dosyasını kullanma.
+- Ortam değişkenleri
+- /Var/seçenek/MSSQL klasörüne yerleştirilmiş bir MSSQL. conf dosyası
 
 > [!NOTE]
 > Ortam değişkenlerinin ayarlanması, MSSQL. conf dosyasında belirtilen ayarları geçersiz kılar.
 
-## <a name="configure-using-environment-variables"></a>Ortam değişkenlerini kullanarak yapılandırma
+## <a name="configure-by-using-environment-variables"></a>Ortam değişkenlerini kullanarak yapılandırma
 
-Azure SQL Edge, SQL Edge kapsayıcısını yapılandırmak için kullanılabilecek çeşitli farklı ortam değişkenlerini kullanıma sunar. Bu ortam değişkenleri Linux üzerinde SQL Server için kullanılabilir ortam değişkenlerinin bir alt kümesidir. Linux üzerinde SQL Server ortam değişkenleri hakkında daha fazla bilgi için bkz. [ortam değişkenleri](/sql/linux/sql-server-linux-configure-environment-variables/).
+Azure SQL Edge, SQL Edge kapsayıcısını yapılandırmak için kullanılabilecek çeşitli farklı ortam değişkenlerini kullanıma sunar. Bu ortam değişkenleri, Linux üzerinde SQL Server için kullanılabilir olanların bir alt kümesidir. Linux üzerinde SQL Server ortam değişkenleri hakkında daha fazla bilgi için bkz. [ortam değişkenleri](/sql/linux/sql-server-linux-configure-environment-variables/).
 
-Aşağıdaki Linux üzerinde SQL Server ortam değişkenleri Azure SQL Edge için desteklenmez. Bu ortam değişkenleri tanımlanmışsa, kapsayıcı başlatma sırasında yok sayılır.
+Şu Linux üzerinde SQL Server ortam değişkeni Azure SQL Edge için desteklenmiyor. Tanımlandıysa, bu ortam değişkeni kapsayıcı başlatma sırasında yok sayılır.
 
 | Ortam değişkeni | Açıklama |
 |-----|-----|
-| **MSSQL_ENABLE_HADR** | Kullanılabilirlik grubunu etkinleştirin. Örneğin, ' 1 ' etkin ve ' 0 ' devre dışı |
+| **MSSQL_ENABLE_HADR** | Kullanılabilirlik grubunu etkinleştirin. Örneğin, **1** etkindir ve **0** devre dışıdır. |
 
 > [!IMPORTANT]
-> SQL Edge için *MSSQL_PID* ortam değişkeni, geçerli değerler olarak yalnızca **Premium** ve **Geliştirici** kabul eder. Azure SQL Edge, bir ürün anahtarı kullanarak başlatmayı desteklemez.
+> SQL Edge için **MSSQL_PID** ortam değişkeni, geçerli değerler olarak yalnızca **Premium** ve **Geliştirici** kabul eder. Azure SQL Edge, bir ürün anahtarı kullanarak başlatmayı desteklemez.
 
 > [!NOTE]
-> Azure SQL Edge Son Kullanıcı Lisans Sözleşmesi 'ni indirmek için [Son Kullanıcı Lisans Sözleşmesi](https://go.microsoft.com/fwlink/?linkid=2128283)'ne bakın.
+> Azure SQL Edge için [Microsoft yazılımı lisans koşulları](https://go.microsoft.com/fwlink/?linkid=2128283) 'nı indirin.
 
-### <a name="specifying-the-environment-variables"></a>Ortam değişkenlerini belirtme
+### <a name="specify-the-environment-variables"></a>Ortam değişkenlerini belirtin
 
-[Azure Portal](deploy-portal.md)aracılığıyla Azure SQL Edge dağıtıldığında SQL Edge için ortam değişkenleri belirtilebilir. Bu, modül dağıtımının "ortam değişkenleri" bölümünde veya kapsayıcı oluşturma seçeneğinin bir parçası olarak aşağıda açıklandığı gibi eklenebilir.
+Hizmeti [Azure Portal](deploy-portal.md)aracılığıyla dağıtırken SQL Edge için ortam değişkenlerini belirtin. Bunları modül dağıtımının **ortam değişkenleri** bölümünde veya **kapsayıcı oluşturma seçeneklerinin**bir parçası olarak ekleyebilirsiniz.
 
-*Ortam değişkenleri seçeneklerini kullanarak ayarlama*
+**Ortam değişkenlerine**değer ekleyin.
 
-![ortam değişkenleri listesini kullanarak ayarla](media/configure/set-environment-variables.png)
+![Ortam değişkenleri listesini kullanarak ayarla](media/configure/set-environment-variables.png)
 
-*Kapsayıcı oluşturma seçeneklerini kullanarak ayarlama*
+**Kapsayıcı oluşturma seçeneklerinde**değer ekleyin.
 
-![kapsayıcı oluşturma seçeneklerini kullanarak ayarlama](media/configure/set-environment-variables-using-create-options.png)
+![Kapsayıcı oluşturma seçeneklerini kullanarak ayarlama](media/configure/set-environment-variables-using-create-options.png)
 
-## <a name="configure-using-mssqlconf-file"></a>MSSQL. conf dosyasını kullanarak yapılandırma
+## <a name="configure-by-using-an-mssqlconf-file"></a>MSSQL. conf dosyası kullanarak yapılandırma
 
-MSSQL. conf dosyasının el ile yapılandırılması ve SQL Edge modülünde/var/seçenek/MSSQL/klasörüne eşlenmiş kalıcı depolama sürücüsüne yerleştirilmesi gerektiğinden, Azure SQL Edge Linux üzerinde SQL Server, gibi [MSSQL-conf yapılandırma yardımcı programını](/sql/linux/sql-server-linux-configure-mssql-conf/) içermez. Azure Marketi 'nden SQL Edge 'i dağıttığınızda, bu eşleme kapsayıcı oluşturma seçeneğinde * * takal "seçeneği olarak belirtilir
+Azure SQL Edge, Linux üzerinde SQL Server gibi [MSSQL-conf yapılandırma yardımcı programını](/sql/linux/sql-server-linux-configure-mssql-conf/) içermez. MSSQL. conf dosyasını el ile yapılandırmanız ve SQL Edge modülünde/var/seçenek/MSSQL/klasörüne eşlenmiş kalıcı depolama sürücüsüne yerleştirmeniz gerekir. Azure Marketi 'nden SQL Edge 'i dağıttığınızda, bu eşleme **kapsayıcı oluşturma seçeneklerinde** **bağlama** seçeneği olarak belirtilir.
 
 ```json
     {
@@ -76,13 +76,13 @@ Aşağıdaki MSSQL. conf seçenekleri SQL Edge için geçerli değildir:
 |Seçenek|Açıklama|
 |:---|:---|
 |**Müşteri geri bildirimi** | SQL Server Microsoft 'a geri bildirim gönderip göndermediğini seçin. |
-|**Veritabanı Postası profili** | Linux üzerinde SQL Server için varsayılan veritabanı posta profilini ayarlayın. |
+|**Veritabanı posta profili** | Linux üzerinde SQL Server için varsayılan veritabanı posta profilini ayarlayın. |
 |**Yüksek kullanılabilirlik** | Kullanılabilirlik gruplarını etkinleştirin. |
-|**Microsoft Dağıtılmış İşlem Düzenleyicisi** | Linux üzerinde MSDTC 'yi yapılandırma ve sorunlarını giderme. SQL Edge için ek dağıtılmış işlemle ilgili diğer yapılandırma seçenekleri de desteklenmez. Bu ek yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [MSDTC 'Yi yapılandırma](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#msdtc) |
-|**MLServices EULA 'Ları** | Machine Learning Services paketleri için R ve Python EULA 'Ları kabul edin. Yalnızca SQL Server 2019 için geçerlidir.|
+|**Microsoft Dağıtılmış İşlem Düzenleyicisi** | Linux üzerinde MSDTC 'yi yapılandırma ve sorunlarını giderme. SQL Edge için ek dağıtılmış işlem ile ilgili yapılandırma seçenekleri desteklenmez. Bu ek yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [MSDTC 'Yi yapılandırma](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#msdtc). |
+|**MLServices EULA 'Ları** | Azure Machine Learning paketleri için R ve Python EULA 'Ları kabul edin. Yalnızca SQL Server 2019 için geçerlidir.|
 |**outboundnetworkaccess** |[Machine Learning Services](/sql/linux/sql-server-linux-setup-machine-learning/) R, Python ve Java uzantıları için giden ağ erişimini etkinleştirin.|
 
-Aşağıda SQL Edge için uygun olan bir MSSQL. conf dosyası aşağıda verilmiştir. MSSQL. conf dosyasının biçimi hakkında daha fazla bilgi için bkz. [MSSQL. conf biçimi](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format).
+Aşağıdaki örnek MSSQL. conf dosyası SQL Edge için geçerlidir. MSSQL. conf dosyasının biçimi hakkında daha fazla bilgi için bkz. [MSSQL. conf biçimi](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format).
 
 ```ini
 [EULA]
@@ -114,7 +114,7 @@ traceflag1 = 3605
 traceflag2 = 1204
 ```
 
-## <a name="next-step"></a>Sonraki adım
+## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure SQL Edge 'e bağlanma](connect.md)
 - [SQL Edge ile uçtan uca IoT çözümü oluşturma](tutorial-deploy-azure-resources.md)

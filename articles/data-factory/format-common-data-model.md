@@ -7,12 +7,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: daperlov
-ms.openlocfilehash: 0dce717461754ac1259bc666adf4eb9f7ef9d6c2
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 1764036413d6e4f634ed156f7cfb441b4a2bb1e6
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465278"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604975"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory ortak veri modeli biçimi
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -30,9 +30,9 @@ Ortak veri modeli, kaynak ve havuz olarak eşleme verilerinde bir [satır içi](
 
 ### <a name="source-properties"></a>Kaynak özellikleri
 
-Aşağıdaki tabloda bir CDM kaynağı tarafından desteklenen özellikler listelenmiştir.
+Aşağıdaki tabloda bir CDM kaynağı tarafından desteklenen özellikler listelenmiştir. Bu özellikleri **kaynak seçenekleri** sekmesinde düzenleyebilirsiniz.
 
-| Adı | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
+| Name | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Biçimlendir | Biçim olmalıdır`cdm` | evet | `cdm` | biçim |
 | Meta veri biçimi | Verilerin Varlık başvurusunun bulunduğu yer. CDM sürüm 1,0 kullanıyorsanız, bildirim ' ı seçin. 1,0 öncesi bir CDM sürümü kullanıyorsanız, model. json ' ı seçin. | Yes | `'manifest'` veya `'model'` | manifestType |
@@ -49,7 +49,13 @@ Aşağıdaki tabloda bir CDM kaynağı tarafından desteklenen özellikler liste
 | Corpus varlığı | Varlık başvurusunun yolu | evet | Dize | varlık |
 | Dosya bulunamamış izin ver | True ise bir dosya bulunmazsa bir hata oluşturulmaz | hayır | `true` veya `false` | ıgnorenofilesfound |
 
-#### <a name="cdm-source-example"></a>CDM kaynak örneği
+#### <a name="import-schema"></a>Şemayı içeri aktar
+
+CDM yalnızca satır içi veri kümesi olarak kullanılabilir ve varsayılan olarak ilişkili bir şemaya sahip değildir. Sütun meta verilerini almak için **İzdüşüm** sekmesindeki **şemayı içeri aktar** düğmesine tıklayın. Bu, Corpus tarafından belirtilen sütun adlarına ve veri türlerine başvuruda bulunmak için izin verir. Şemayı içeri aktarmak için bir [veri akışı hata ayıklama oturumunun](concepts-data-flow-debug-mode.md) etkin olması gerekir.
+
+![Şemayı içeri aktar](media/format-common-data-model/import-schema-source.png)
+
+### <a name="cdm-source-example"></a>CDM kaynak örneği
 
 Aşağıdaki görüntü, veri akışları eşleme içindeki bir CDM kaynak yapılandırmasına örnektir.
 
@@ -79,12 +85,11 @@ source(output(
     fileSystem: 'data') ~> CDMSource
 ```
 
-
 ### <a name="sink-properties"></a>Havuz özellikleri
 
-Aşağıdaki tabloda bir CDM havuzu tarafından desteklenen özellikler listelenmiştir.
+Aşağıdaki tabloda bir CDM havuzu tarafından desteklenen özellikler listelenmiştir. Bu özellikleri **Ayarlar** sekmesinde düzenleyebilirsiniz.
 
-| Adı | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
+| Name | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Biçimlendir | Biçim olmalıdır`cdm` | evet | `cdm` | biçim |
 | Kök konumu: kapsayıcı | CDM klasörünün kapsayıcı adı | evet | Dize | Biçimlendiri |
@@ -103,7 +108,7 @@ Aşağıdaki tabloda bir CDM havuzu tarafından desteklenen özellikler listelen
 | Sütun sınırlayıcısı | DelimitedText 'e yazıyorsanız sütunları sınırlandırmak | Evet, DelimitedText 'e yazıyorsanız | Dize | columnDelimiter |
 | Üst bilgi olarak ilk satır | DelimitedText kullanılıyorsa, sütun adlarının üst bilgi olarak eklenip eklenmeyeceğini belirtir | hayır | `true` veya `false` | columnNamesAsHeader |
 
-#### <a name="cdm-sink-example"></a>CDM havuz örneği
+### <a name="cdm-sink-example"></a>CDM havuz örneği
 
 Aşağıdaki görüntü, veri akışları eşleme içindeki bir CDM havuz yapılandırması örneğidir.
 

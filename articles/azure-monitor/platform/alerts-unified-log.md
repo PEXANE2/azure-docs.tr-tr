@@ -6,16 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: a6abf4665c27771497037da35f85bb540e6e904e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e81d48f4e709a9a0bb8ebb33c7029d3841167b6
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77665230"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609055"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarıları
 
-Bu makale, [Azure uyarıları](../../azure-monitor/platform/alerts-overview.md) 'nda desteklenen uyarı türlerinden biridir ve kullanıcıların uyarı için temel olarak Azure Analytics platformunu kullanmasına izin verir.
+Günlük uyarıları, [Azure uyarıları](../../azure-monitor/platform/alerts-overview.md)'nda desteklenen uyarı türlerinden biridir. Günlük uyarıları, kullanıcıların Azure Analytics platformunu uyarı için temel olarak kullanmasına izin verir.
 
 Günlük uyarısı, [Azure Izleyici günlükleri](../../azure-monitor/learn/tutorial-viewdata.md) veya [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events)için oluşturulan günlük arama kurallarından oluşur. Kullanımı hakkında daha fazla bilgi edinmek için bkz. [Azure 'da günlük uyarıları oluşturma](../../azure-monitor/platform/alerts-log.md)
 
@@ -132,7 +132,7 @@ Pratik bir örnekle bu davranışı eylemde görelim. [Sonuç türü günlük uy
 Aşağıdaki her aralıkta, Azure uyarıları sistemi *contoso-log uyarısı*için koşulu değerlendirir.
 
 
-| Zaman    | Günlük arama sorgusu tarafından döndürülen kayıt sayısı | Evalution günlük koşulu | Sonuç 
+| Saat    | Günlük arama sorgusu tarafından döndürülen kayıt sayısı | Evalution günlük koşulu | Sonuç 
 | ------- | ----------| ----------| ------- 
 | 1:05 PM | 0 kayıt | 0 > 0 değil, yanlış |  Uyarı başlatılmıyor. Hiçbir eylem çağrılmadı.
 | 1:10 PM | 2 kayıt | 2 > 0 so doğru  | Uyarı ateşlenir ve eylem grupları çağırılır. Uyarı durumu ETKIN.
@@ -147,22 +147,22 @@ Aşağıdaki her aralıkta, Azure uyarıları sistemi *contoso-log uyarısı*iç
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Günlük uyarılarını fiyatlandırma ve faturalama
 
-Günlük uyarıları için geçerli olan fiyatlandırma, [Azure Izleyici fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/) sayfasında belirtilmiştir. Azure faturaları ' nda, günlük uyarıları şöyle bir tür `microsoft.insights/scheduledqueryrules` olarak temsil edilir:
+Günlük uyarıları için geçerli olan fiyatlandırma, [Azure Izleyici fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/) sayfasında belirtilmiştir. Azure faturaları ' nda, günlük uyarıları şöyle bir tür olarak temsil edilir `microsoft.insights/scheduledqueryrules` :
 
 - Kaynak grubu ve uyarı özellikleriyle birlikte tam uyarı adıyla gösterilen Application Insights uyarıları günlüğe kaydet
 - Kaynak grubu ve uyarı özellikleriyle birlikte tam uyarı adıyla gösterilen Log Analytics Uyarıları günlüğe kaydedin; [Scheduledqueryrules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) kullanılarak oluşturulduğunda
 
-[Eski Log Analytics API 'si](../../azure-monitor/platform/api-alerts.md) , Log Analytics kayıtlı aramanın parçası olarak uyarı eylemleri ve zamanlamaları vardır ve uygun [Azure kaynakları](../../azure-resource-manager/management/overview.md)değildir. Bu nedenle, [yenı API 'ye geçiş](../../azure-monitor/platform/alerts-log-api-switch.md) **yapmadan** veya [eski Log Analytics apı 'si](../../azure-monitor/platform/api-alerts.md) aracılığıyla Azure Portal kullanılarak Log Analytics için oluşturulan eski günlük uyarıları Için faturalandırmayı etkinleştirmek için, Azure 'da faturalandırma için ' `microsoft.insights/scheduledqueryrules` de ' de bir daha Kaynak grubu ve uyarı özellikleriyle `microsoft.insights/scheduledqueryrules` `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` birlikte gösterildiği gibi, faturalama için oluşturulan gizli sahte uyarı kuralları.
+[Eski Log Analytics API 'si](../../azure-monitor/platform/api-alerts.md) , Log Analytics kayıtlı aramanın parçası olarak uyarı eylemleri ve zamanlamaları vardır ve uygun [Azure kaynakları](../../azure-resource-manager/management/overview.md)değildir. Bu nedenle, [yenı API 'ye geçiş](../../azure-monitor/platform/alerts-log-api-switch.md) **yapmadan** veya [eski Log Analytics apı 'si](../../azure-monitor/platform/api-alerts.md) aracılığıyla Azure Portal kullanılarak Log Analytics için oluşturulan eski günlük uyarıları Için faturalandırmayı etkinleştirmek için, `microsoft.insights/scheduledqueryrules` Azure 'da faturalandırma için ' de ' de bir daha `microsoft.insights/scheduledqueryrules` `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` Kaynak grubu ve uyarı özellikleriyle birlikte gösterildiği gibi, faturalama için oluşturulan gizli sahte uyarı kuralları.
 
 > [!NOTE]
-> Gibi geçersiz karakterler `<, >, %, &, \, ?, /` varsa, bu değerler gizli sözde uyarı kuralı adıyla ve `_` Bu nedenle de Azure faturasında ile değiştirilirler.
+> Gibi geçersiz karakterler varsa `<, >, %, &, \, ?, /` , `_` Bu değerler gizli sözde uyarı kuralı adıyla ve bu nedenle de Azure faturasında ile değiştirilirler.
 
 [Eski log ANALYTICS API](api-alerts.md)kullanarak uyarı kurallarının faturalandırılması için oluşturulan gizli scheduleQueryRules kaynaklarını kaldırmak için, kullanıcı aşağıdakilerden herhangi birini gerçekleştirebilir:
 
 - Kullanıcı [Log Analytics çalışma alanındaki uyarı kuralları IÇIN API tercihini](../../azure-monitor/platform/alerts-log-api-switch.md) değiştirebilir ve uyarı kurallarının veya izlemenin Azure Resource Manager uyumlu [SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)'sine taşınmasını önler. Böylece faturalandırma için sahte gizli uyarı kuralları yapma gereksinimini ortadan kaldırır.
 - Ya da Kullanıcı API tercihi değiştirmek istemezseniz, kullanıcının [eski log ANALYTICS API](api-alerts.md) 'sini kullanarak özgün zamanlama ve uyarı eylemini **silmesi** veya [özgün günlük uyarı kuralında Azure Portal](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal) silmesi gerekir
 
-Ayrıca, [eski log ANALYTICS API](api-alerts.md)kullanan uyarı kurallarının faturalandırılması için oluşturulan gizli scheduleQueryRules kaynakları IÇIN, put gibi herhangi bir değiştirme işlemi başarısız olur. `microsoft.insights/scheduledqueryrules` Tür sözde kuralları, [eski Log Analytics API](api-alerts.md)kullanılarak oluşturulan uyarı kuralları için de kullanılır. [Eski log ANALYTICS API](api-alerts.md) kullanılarak herhangi bir uyarı kuralı değişikliği yapılmalıdır (veya) Kullanıcı, [Uyarı kuralları için API tercihini,](../../azure-monitor/platform/alerts-log-api-switch.md) bunun yerine [scheduledqueryrules API 'sini](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) kullanacak şekilde değiştirebilir.
+Ayrıca, [eski log ANALYTICS API](api-alerts.md)kullanan uyarı kurallarının faturalandırılması için oluşturulan gizli scheduleQueryRules kaynakları IÇIN, put gibi herhangi bir değiştirme işlemi başarısız olur. `microsoft.insights/scheduledqueryrules`Tür sözde kuralları, [eskı Log Analytics API](api-alerts.md)kullanılarak oluşturulan uyarı kuralları için de kullanılır. [Eski log ANALYTICS API](api-alerts.md) kullanılarak herhangi bir uyarı kuralı değişikliği yapılmalıdır (veya) Kullanıcı, [Uyarı kuralları için API tercihini,](../../azure-monitor/platform/alerts-log-api-switch.md) bunun yerine [scheduledqueryrules API 'sini](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) kullanacak şekilde değiştirebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,15 +6,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 7c14988706ef193ef5da868c55f6c4f55e7d98f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3633a648f551d33fb9cb12021c2c07bbf1a235dc
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260143"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610585"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Azure Data Box Disk veri yükleme sorunlarını gidermek için günlükleri anlama
 
@@ -110,13 +110,13 @@ Aynı sırada bir örneği `_error.xml` aşağıda gösterilmiştir.
 </DriveLog>
 ```
 
-Aşağıda, `_error.xml` siparişin hatalarla tamamlandığı yerde bir örneği gösterilmiştir. 
+`_error.xml`Aşağıda, siparişin hatalarla tamamlandığı yerde bir örneği gösterilmiştir. 
 
-Bu örnekte hata dosyası, tüm dosya düzeyi `Summary` hatalarını içeren bir bölümü ve başka bir bölümü vardır. 
+Bu örnekte hata dosyası, `Summary` tüm dosya düzeyi hatalarını içeren bir bölümü ve başka bir bölümü vardır. 
 
-, `Summary` `ValidationErrors` Ve içerir `CopyErrors`. Bu durumda, 8 dosya veya klasör Azure 'a yüklenmiş ve doğrulama hatası yoktu. Veriler Azure Storage hesabına kopyalanırken, 5 dosya veya klasör başarıyla karşıya yüklenir. Geri kalan 3 dosya veya klasör, Azure Container adlandırma kurallarına göre yeniden adlandırıldı ve Azure 'a başarıyla yüklendi.
+, `Summary` Ve içerir `ValidationErrors` `CopyErrors` . Bu durumda, 8 dosya veya klasör Azure 'a yüklenmiş ve doğrulama hatası yoktu. Veriler Azure Storage hesabına kopyalanırken, 5 dosya veya klasör başarıyla karşıya yüklenir. Geri kalan 3 dosya veya klasör, Azure Container adlandırma kurallarına göre yeniden adlandırıldı ve Azure 'a başarıyla yüklendi.
 
-Dosya düzeyi durumu `BlobStatus` , Blobları karşıya yüklemek için gerçekleştirilen eylemleri açıklar. Bu durumda, verilerin kopyalandığı klasörler kapsayıcılar için Azure adlandırma kurallarıyla uyumlu olmadığı için üç kapsayıcı yeniden adlandırılır. Bu kapsayıcılara yüklenen Bloblar için, yeni kapsayıcı adı, Azure 'daki Blobun yolu, özgün geçersiz dosya yolu ve BLOB boyutu dahildir.
+Dosya düzeyi durumu, `BlobStatus` Blobları karşıya yüklemek için gerçekleştirilen eylemleri açıklar. Bu durumda, verilerin kopyalandığı klasörler kapsayıcılar için Azure adlandırma kurallarıyla uyumlu olmadığı için üç kapsayıcı yeniden adlandırılır. Bu kapsayıcılara yüklenen Bloblar için, yeni kapsayıcı adı, Azure 'daki Blobun yolu, özgün geçersiz dosya yolu ve BLOB boyutu dahildir.
     
 ```xml
  <?xml version="1.0" encoding="utf-8"?>
@@ -168,17 +168,17 @@ Verileri Azure 'a yüklerken oluşturulan hatalar aşağıdaki tabloda özetlenm
 |`ManagedDiskCreationTerminalFailure` | Yönetilen diskler olarak karşıya yüklenemedi. Dosyalar, hazırlama depolama hesabında sayfa Blobları olarak kullanılabilir. Sayfa bloblarını yönetilen disklere el ile dönüştürebilirsiniz.  |
 |`DiskConversionNotStartedTierInfoMissing` | VHD dosyası, önceden oluşturulmuş katman klasörlerinin dışına kopyalandığı için, yönetilen bir disk oluşturulmadı. Dosya, sipariş oluşturma sırasında belirtildiği gibi, hazırlama depolama hesabına Sayfa Blobu olarak yüklenir. Bunu yönetilen diske el ile dönüştürebilirsiniz.|
 |`InvalidWorkitem` | Azure adlandırma ve limit kurallarına uygun olmadığından veriler karşıya yüklenemedi.|
-|`InvalidPageBlobUploadAsBlockBlob` | Ön ekine `databoxdisk-invalid-pb-`sahip bir kapsayıcıda blok Blobları olarak karşıya yüklendi.|
-|`InvalidAzureFileUploadAsBlockBlob` | Ön eki `databoxdisk-invalid-af`olan bir kapsayıcıda blok Blobları olarak karşıya yüklendi.|
-|`InvalidManagedDiskUploadAsBlockBlob` | Ön eki `databoxdisk-invalid-md`olan bir kapsayıcıda blok Blobları olarak karşıya yüklendi.|
-|`InvalidManagedDiskUploadAsPageBlob` |Ön ekine `databoxdisk-invalid-md-`sahip bir kapsayıcıda sayfa Blobları olarak karşıya yüklendi. |
-|`MovedToOverflowShare` |Özgün paylaşımın boyutu en fazla Azure boyut sınırını aştığından dosya yeni bir paylaşıma yüklendi. Yeni dosya paylaşımının adının özgün adı sonekli olarak `-2`düzeltildi.   |
-|`MovedToDefaultAzureShare` |Herhangi bir klasörün parçası olmayan dosyalar varsayılan bir paylaşıma yüklendi. Paylaşma adı ile `databox-`başlar. |
-|`ContainerRenamed` |Bu dosyaların kapsayıcısı Azure adlandırma kurallarına uymuyor ve yeniden adlandırıldı. Yeni ad ile `databox-` başlar ve özgün adın SHA1 karması ile sonekli olur |
-|`ShareRenamed` |Bu dosyaların paylaşılması Azure adlandırma kurallarına uymuyor ve yeniden adlandırıldı. Yeni ad ile `databox-` başlar ve özgün adın SHA1 karması ile son olarak sabitlenir. |
-|`BlobRenamed` |Bu dosyalar Azure adlandırma kurallarına uygun değildi ve yeniden adlandırıldı. Yeni adın `BlobPath` alanını denetleyin. |
-|`FileRenamed` |Bu dosyalar Azure adlandırma kurallarına uygun değildi ve yeniden adlandırıldı. Yeni adın `FileStoragePath` alanını denetleyin. |
-|`DiskRenamed` |Bu dosyalar Azure adlandırma kurallarına uygun değildi ve yeniden adlandırıldı. Yeni adın `BlobPath` alanını denetleyin. |
+|`InvalidPageBlobUploadAsBlockBlob` | Ön ekine sahip bir kapsayıcıda blok Blobları olarak karşıya yüklendi `databoxdisk-invalid-pb-` .|
+|`InvalidAzureFileUploadAsBlockBlob` | Ön eki olan bir kapsayıcıda blok Blobları olarak karşıya yüklendi `databoxdisk-invalid-af` .|
+|`InvalidManagedDiskUploadAsBlockBlob` | Ön eki olan bir kapsayıcıda blok Blobları olarak karşıya yüklendi `databoxdisk-invalid-md` .|
+|`InvalidManagedDiskUploadAsPageBlob` |Ön ekine sahip bir kapsayıcıda sayfa Blobları olarak karşıya yüklendi `databoxdisk-invalid-md-` . |
+|`MovedToOverflowShare` |Özgün paylaşımın boyutu en fazla Azure boyut sınırını aştığından dosya yeni bir paylaşıma yüklendi. Yeni dosya paylaşımının adının özgün adı sonekli olarak düzeltildi `-2` .   |
+|`MovedToDefaultAzureShare` |Herhangi bir klasörün parçası olmayan dosyalar varsayılan bir paylaşıma yüklendi. Paylaşma adı ile başlar `databox-` . |
+|`ContainerRenamed` |Bu dosyaların kapsayıcısı Azure adlandırma kurallarına uymuyor ve yeniden adlandırıldı. Yeni ad ile başlar `databox-` ve özgün ADıN SHA1 karması ile sonekli olur |
+|`ShareRenamed` |Bu dosyaların paylaşılması Azure adlandırma kurallarına uymuyor ve yeniden adlandırıldı. Yeni ad ile başlar `databox-` ve özgün ADıN SHA1 karması ile son olarak sabitlenir. |
+|`BlobRenamed` |Bu dosyalar Azure adlandırma kurallarına uygun değildi ve yeniden adlandırıldı. `BlobPath`Yeni adın alanını denetleyin. |
+|`FileRenamed` |Bu dosyalar Azure adlandırma kurallarına uygun değildi ve yeniden adlandırıldı. `FileStoragePath`Yeni adın alanını denetleyin. |
+|`DiskRenamed` |Bu dosyalar Azure adlandırma kurallarına uygun değildi ve yeniden adlandırıldı. `BlobPath`Yeni adın alanını denetleyin. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

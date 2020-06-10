@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: f710b8bfdd4dcfd3b7a63aa0b457036ab7037016
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27229d36dbe9592b6ad6fc2740f7714f99fd6857
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74806105"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629050"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Özel Konuşma doğruluğunu değerlendirme
 
@@ -33,7 +33,7 @@ Yanlış tanımlanmış kelimeler üç kategoride yer almalıdır:
 * Silme (D): varsayım dökümü 'nde algılanmayan sözcükler
 * Değiştirme (ler): başvuru ve varsayım arasında değiştirilen kelimeler
 
-Bir örneği aşağıda verilmiştir:
+İşte bir örnek:
 
 ![Yanlış tanımlanmış sözcüklerin örneği](./media/custom-speech/custom-speech-dis-words.png)
 
@@ -52,11 +52,11 @@ Microsoft 'un konuşmaya metin taban çizgisi modeli veya eğitilen özel bir mo
 Modelleri yan yana değerlendirmek için:
 
 1. [Özel konuşma tanıma portalında](https://speech.microsoft.com/customspeech)oturum açın.
-2. **> konuşmadan metne git Özel Konuşma Tanıma > testi**yapın.
+2. **Test > > [proje adı] Özel Konuşma Tanıma > konuşmadan metne**gidin.
 3. **Test Ekle**' ye tıklayın.
 4. **Doğruluğu değerlendir**' i seçin. Teste bir ad, açıklama verin ve ses + insan etiketli döküm veri kümenizi seçin.
 5. Test etmek istediğiniz en fazla iki model seçin.
-6. **Oluştur**' a tıklayın.
+6. **Oluştur**'a tıklayın.
 
 Testiniz başarıyla oluşturulduktan sonra sonuçları yan yana karşılaştırabilirsiniz.
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: a386c7d44cf5ba7eda895006cda7ce1fa9b798ac
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a45c8ce820532d11f18758924dc3399818cb9158
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664980"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610245"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>Kopyalama etkinliğinde veri tutarlılığı doğrulama (Önizleme)
 
@@ -34,21 +34,21 @@ Verileri kaynaktan hedef depoya taşıdığınızda, Azure Data Factory kopyalam
 
 ### <a name="source-data-stores"></a>Kaynak veri depoları
 
--   [Azure Blob depolama](connector-azure-blob-storage.md)
+-   [Azure Blob Depolama](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md)
 -   [Azure Dosya Depolama](connector-azure-file-storage.md)
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
--   [Dosya sistemi](connector-file-system.md)
+-   [Dosya Sistemi](connector-file-system.md)
 -   [HDFS](connector-hdfs.md)
 
 ### <a name="destination-data-stores"></a>Hedef veri depoları
 
--   [Azure Blob depolama](connector-azure-blob-storage.md)
+-   [Azure Blob Depolama](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md)
 -   [Azure Dosya Depolama](connector-azure-file-storage.md)
--   [Dosya sistemi](connector-file-system.md)
+-   [Dosya Sistemi](connector-file-system.md)
 
 
 ## <a name="configuration"></a>Yapılandırma
@@ -93,9 +93,8 @@ yol | Günlük dosyalarının yolu. | Günlük dosyalarını depolamak istediği
 
 >[!NOTE]
 >- Hazırlama kopyalama senaryosunda veri tutarlılığı desteklenmez. 
->- Herhangi bir depolama deposundan ikili dosyaları Azure Blob depolama veya Azure Data Lake Storage 2. kopyalama sırasında, kaynak ve hedef mağazalar arasında veri tutarlılığı sağlamak için kopyalama etkinliği dosya boyutu ve MD5 sağlama toplamı doğrulaması yapar. 
->- Herhangi bir depolama deposundan ikili dosyaları Azure Blob depolama veya Azure Data Lake Storage 2. dışındaki depolama depolarına kopyalarken, kaynak ve hedef depo arasında veri tutarlılığı sağlamak için kopyalama etkinliği dosya boyutu doğrulaması yapar.
-
+>- Dosyaları veya Azure Blob veya Azure Data Lake Storage 2. kopyalama sırasında, ADF [Azure Blob API 'si](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) ve [Azure Data Lake Storage 2. API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers)'sinden yararlanarak düzey MD5 sağlama toplamı doğrulamasını engeller. Azure Blob üzerinde ContentMD5 veya veri kaynağı olarak Azure Data Lake Storage 2., ADF dosyaları okuduktan sonra dosya düzeyi MD5 sağlama toplamı doğrulaması yapar. Dosyaları Azure Blob 'a veya veri hedefi olarak Azure Data Lake Storage 2. kopyaladıktan sonra, ADF, veri tutarlılığı doğrulaması için aşağı akış uygulamaları tarafından daha fazla tüketilen Azure Blob veya Azure Data Lake Storage 2. ContentMD5 yazar.
+>- ADF, herhangi bir depolama deposu arasında dosya kopyalarken dosya boyutu doğrulaması yapar.
 
 ## <a name="monitoring"></a>İzleme
 

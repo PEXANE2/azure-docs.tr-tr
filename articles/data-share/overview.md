@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: 363feda1409d2bb54e60d1b2168cba38f2a8a41c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fa90f272a05b7449981ca5d4ccab161fb1e39e9e
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77621863"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636792"
 ---
 # <a name="what-is-azure-data-share"></a>Azure Veri Paylaşımı nedir?
 
@@ -78,15 +78,6 @@ Azure veri paylaşma, veri tüketicilerinin şunları yapmasını sağlar:
 * Artımlı anlık görüntü aracılığıyla verilerin en son kopyasını almak için bir veri paylaşımında abone olun
 
 Yukarıda listelenen tüm temel yetenekler Azure portal veya REST API 'Leri aracılığıyla desteklenir. REST API 'Leri aracılığıyla Azure veri paylaşımının kullanımı hakkında daha fazla bilgi için başvuru belgelerimize göz atın. 
-
-## <a name="security"></a>Güvenlik
-
-Azure veri paylaşımında, Azure 'un bekleyen ve aktarım sırasında verileri korumak için sunduğu temel güvenlik yararlanır. Veriler, temel alınan veri deposu tarafından desteklenerek Rest 'de şifrelenir. Veriler de aktarım sırasında şifrelenir. Veri paylaşımıyla ilgili meta veriler de REST ve aktarım sırasında şifrelenir. 
-
-Erişim denetimleri, yetkilendirilmiş olanlar tarafından erişilebildiğinden emin olmak için Azure veri paylaşımında kaynak düzeyinde ayarlanabilir. 
-
-Azure veri paylaşımında, Azure Active Directory ' de otomatik kimlik yönetimi için Azure kaynakları (önceki adı Mssıs) için Yönetilen kimlikler kullanılır. Azure kaynakları için Yönetilen kimlikler, veri paylaşımı için kullanılmakta olan veri depolarına erişim için yararlanılabilir. Veri sağlayıcısı ve veri tüketicisi arasında kimlik bilgileri değişimi yoktur. Daha fazla bilgi için [Azure kaynakları Için Yönetilen kimlikler sayfasına](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)bakın. 
-
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 

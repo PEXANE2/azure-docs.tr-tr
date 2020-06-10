@@ -6,15 +6,21 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 69686cad20bc4ce70bff2a92a216c9430522c301
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4afcc3fa5366e3e8938f952b4417b19d50693e37
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79278850"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605163"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yönetme
 Bu konu, Redsıs örnekleri için Azure önbelleğiniz için güncelleştirmeleri yeniden [başlatma](#reboot) ve [zamanlama](#schedule-updates) gibi yönetim görevlerinin nasıl gerçekleştirileceğini açıklamaktadır.
+
+> [!NOTE]
+> Sapma ücretsiz iletişim
+>
+> Microsoft, farklı ve üçlü ortamları destekler. Bu makale, _İkincil_sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcük olduğundan, bu makalede tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
+>
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -76,7 +82,7 @@ Evet, PowerShell yönergeleri için bkz. [Reda Için Azure önbelleğini yeniden
 
 Bir bakım penceresi belirtmek için, istenen günleri denetleyin ve her gün için bakım penceresi başlangıç saatini belirtip **Tamam**' a tıklayın. Bakım penceresi saatinin UTC olarak olduğunu unutmayın. 
 
-Güncelleştirmeler için varsayılan ve en düşük bakım penceresi beş saattir. Bu değer Azure portal yapılandırılamaz, ancak [New-Azrediscacheschedutaentry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) cmdlet 'inin `MaintenanceWindow` parametresini kullanarak PowerShell 'de yapılandırabilirsiniz. Daha fazla bilgi için bkz. PowerShell, CLı veya diğer yönetim araçlarını kullanarak zamanlanmış güncelleştirmeleri yönetebilir miyim?
+Güncelleştirmeler için varsayılan ve en düşük bakım penceresi beş saattir. Bu değer Azure portal yapılandırılamaz, ancak `MaintenanceWindow` [New-Azrediscacheschedutaentry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) cmdlet 'Inin parametresini kullanarak PowerShell 'de yapılandırabilirsiniz. Daha fazla bilgi için bkz. PowerShell, CLı veya diğer yönetim araçlarını kullanarak zamanlanmış güncelleştirmeleri yönetebilir miyim?
 
 ## <a name="schedule-updates-faq"></a>Güncelleştirme zamanlama SSS
 * [Güncelleştirmeleri zamanla özelliğini kullandığımda güncelleştirmeler ne zaman oluşur?](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)

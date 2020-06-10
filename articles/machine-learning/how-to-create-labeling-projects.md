@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 40c31d4dd4a6c675691f75d3717f7865d6b847f7
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 45097b948c76413785ca5ec48c31faa83b3883ee
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171576"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629625"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Veri etiketleme projesi ve dışarı aktarma etiketleri oluşturma 
 
@@ -38,8 +38,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 > * Etiketleri dışarı aktarma
 
 
-## <a name="prerequisites"></a>Ön koşullar
-
+## <a name="prerequisites"></a>Önkoşullar
 
 * Yerel dosyalarda veya Azure Blob depolamada etiketlemek istediğiniz veriler.
 * Uygulamak istediğiniz Etiketler kümesi.
@@ -67,6 +66,8 @@ Devam etmeye hazırsanız **İleri ' yi** seçin.
 
 Verilerinizi içeren bir veri kümesi zaten oluşturduysanız, **mevcut bir veri kümesi seçin** açılır listesinden bunu seçin. Ya da mevcut bir Azure veri deposunu kullanmak veya yerel dosyaları karşıya yüklemek için **veri kümesi oluştur** ' u seçin.
 
+> [!NOTE]
+> Proje 500.000 'den fazla görüntü içeremez.  Veri kümeniz daha fazla ise, yalnızca ilk 500.000 resim yüklenecektir.  
 
 ### <a name="create-a-dataset-from-an-azure-datastore"></a>Azure veri deposundan veri kümesi oluşturma
 
@@ -85,8 +86,6 @@ Azure Blob depolamada zaten depoladığınız verilerden veri kümesi oluşturma
 1. **İleri**’yi seçin.
 1. Ayrıntıları onaylayın. Ayarları değiştirmek için **geri** ' yi veya veri kümesini oluşturmak için **Oluştur** ' u seçin.
 
-> [!NOTE]
-> Seçtiğiniz veriler projenize yüklenir.  Proje oluşturulduktan sonra veri deposuna daha fazla veri eklemek bu projede gözükmeyecektir.  
 
 ### <a name="create-a-dataset-from-uploaded-data"></a>Karşıya yüklenen verilerden veri kümesi oluşturma
 
@@ -102,6 +101,19 @@ Verilerinizi doğrudan karşıya yüklemek için:
 1. Ayrıntıları onaylayın. Ayarları değiştirmek için **geri** ' yi veya veri kümesini oluşturmak için **Oluştur** ' u seçin.
 
 Veriler, Machine Learning çalışma alanınızın varsayılan blob deposuna ("Workspace BlobStore") yüklenir.
+
+## <a name="configure-incremental-refresh"></a><a name="incremental-refresh"> </a> Artımlı yenilemeyi yapılandırma
+
+Veri kümenize yeni görüntüler eklemeyi planlıyorsanız, bu yeni görüntüleri projenize eklemek için artımlı yenileme kullanın.   **Artımlı yenileme** etkinleştirildiğinde, veri kümesi, etiketleme tamamlanma hızına bağlı olarak bir projeye eklenecek yeni görüntülerin düzenli aralıklarla denetlenir.   Yeni veri denetimi, proje en fazla 500.000 görüntüsünü içerdiğinde duraklar.
+
+Projenize daha fazla görüntü eklemek için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) kullanarak blob depolamada uygun klasöre yükleyin. 
+
+Projenizin veri deposundaki yeni verileri sürekli olarak izlemesini istediğinizde **artımlı yenilemeyi etkinleştir** kutusunu işaretleyin.
+
+Veri deposunda görüntülenen yeni görüntülerin projenize eklenmesini istemiyorsanız bu kutunun işaretini kaldırın.
+
+Projenizin **Ayrıntılar** sekmesinin **artımlı yenileme** bölümünde en son yenileme için zaman damgasını bulabilirsiniz.
+
 
 ## <a name="specify-label-classes"></a>Etiket sınıfları belirtme
 

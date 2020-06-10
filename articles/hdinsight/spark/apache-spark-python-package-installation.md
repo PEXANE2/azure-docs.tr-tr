@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: seoapr2020
+ms.custom: seoapr2020, tracking-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 317b3cd508ee1ab821838cae56cc5b5c9943ace0
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: f1ed0ae33d1f83fd77adb337aded95605c17f38b
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309892"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607321"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Betik Eylemi kullanarak Azure HDInsight üzerinde Python ortamını güvenli bir şekilde yönetin
 
@@ -33,7 +33,7 @@ Microsoft Azure HDInsight hizmeti Apache Hadoop etrafında oluşturulan açık k
 
 HDInsight hizmetinde bulunan iki tür açık kaynaklı bileşen vardır:
 
-|Bileşen |Description |
+|Bileşen |Açıklama |
 |---|---|
 |Yerleşik|Bu bileşenler HDInsight kümelerinde önceden yüklenir ve kümenin temel işlevlerini sağlar. Örneğin, Apache Hadoop YARN Kaynak Yöneticisi, Apache Hive sorgu dili (HiveQL) ve Mahout kitaplığı bu kategoriye aittir. Tüm küme bileşenleri listesi, [HDInsight tarafından sağlanan Apache Hadoop kümesi sürümlerindeki yenilikler](../hdinsight-component-versioning.md)bölümünde bulunur.|
 |Özel|Kümenin bir kullanıcısı olarak, kuruluşunuzda bulunan veya sizin tarafınızdan oluşturulan herhangi bir bileşeni iş yükünüze yükleyebilir veya kullanabilirsiniz.|
@@ -50,8 +50,8 @@ HDInsight Spark kümesi, Anaconda yüklemesiyle oluşturulur. Kümede, Anaconda 
 | |Python 2,7|Python 3,5|
 |----|----|----|
 |Yol|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Varsayılan olarak 2,7 ayarlanır|Yok|
-|Livy|Varsayılan olarak 2,7 ayarlanır|Yok|
+|Spark|Varsayılan olarak 2,7 ayarlanır|YOK|
+|Livy|Varsayılan olarak 2,7 ayarlanır|YOK|
 |Jupyter|PySpark çekirdeği|PySpark3 çekirdeği|
 
 ## <a name="safely-install-external-python-packages"></a>Dış Python paketlerini güvenle yükler

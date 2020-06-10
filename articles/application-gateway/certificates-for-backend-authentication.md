@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: 20f588639c54b0a8b7cd304f33b5a9d633a73be6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 010ecc234afd745844b5b7868030d3c4e823872f
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80133041"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628920"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Azure Application Gateway arka uca izin vermek için sertifikalar oluşturma
 
@@ -26,7 +26,7 @@ Bu makalede şunları öğreneceksiniz:
 > - Bir arka uç sertifikasından kimlik doğrulama sertifikasını dışarı aktar (v1 SKU 'SU için)
 > - Güvenilen kök sertifikayı bir arka uç sertifikasından dışarı aktar (v2 SKU 'SU için)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Application Gateway ile arka uç örneklerine izin vermek için gereken kimlik doğrulama sertifikalarını veya güvenilir kök sertifikaları oluşturmak için mevcut bir arka uç sertifikası gerekir. Arka uç sertifikası, TLS/SSL sertifikasıyla aynı veya ek güvenlik için farklı olabilir. Application Gateway, size bir TLS/SSL sertifikası oluşturma veya satın alma mekanizması sağlamaz. Test amacıyla, otomatik olarak imzalanan bir sertifika oluşturabilirsiniz, ancak bunu üretim iş yükleri için kullanmamalısınız. 
 
@@ -54,7 +54,7 @@ TLS/SSL sertifikaınızdan ortak anahtar. cer dosyasını (özel anahtarı deği
 
 5. **Dışarı aktarılacak dosya**için, sertifikayı dışarı aktarmak istediğiniz konuma **gidin** . **Dosya adı** alanına, sertifika dosyası için bir ad girin. Ardından **İleri**' ye tıklayın.
 
-   ![Göz at](./media/certificates-for-backend-authentication/browse.png)
+   ![Gözat](./media/certificates-for-backend-authentication/browse.png)
 
 6. Sertifikayı dışarı aktarmak için **Son**'a tıklayın.
 
@@ -74,7 +74,7 @@ TLS/SSL sertifikaınızdan ortak anahtar. cer dosyasını (özel anahtarı deği
 
 ## <a name="export-trusted-root-certificate-for-v2-sku"></a>Güvenilen kök sertifikayı dışarı aktarma (v2 SKU 'SU için)
 
-Güvenilen kök sertifika, Application Gateway v2 SKU 'sunda arka uç örneklerini beyaz listeye almak için gereklidir. Kök sertifika, Base-64 ile kodlanmış bir X. 509.440 (. CER) arka uç sunucu sertifikalarından kök sertifikayı biçimlendirin. Bu örnekte, arka uç sertifikası için bir TLS/SSL sertifikası kullanacağız, ortak anahtarını dışarı aktarıp güvenilir CA 'nın kök sertifikasını Base64 kodlamalı biçimde ortak anahtardan dışarı aktararak güvenilen kök sertifikayı alırsınız. Ara sertifikalar sunucu sertifikasıyla paketlenmiş ve arka uç sunucusuna yüklenmiş olmalıdır.
+Uygulama ağ geçidi v2 SKU 'sunda arka uç örneklerine izin vermek için güvenilen kök sertifika gereklidir. Kök sertifika, Base-64 ile kodlanmış bir X. 509.440 (. CER) arka uç sunucu sertifikalarından kök sertifikayı biçimlendirin. Bu örnekte, arka uç sertifikası için bir TLS/SSL sertifikası kullanacağız, ortak anahtarını dışarı aktarıp güvenilir CA 'nın kök sertifikasını Base64 kodlamalı biçimde ortak anahtardan dışarı aktararak güvenilen kök sertifikayı alırsınız. Ara sertifikalar sunucu sertifikasıyla paketlenmiş ve arka uç sunucusuna yüklenmiş olmalıdır.
 
 Aşağıdaki adımlar, sertifikanız için. cer dosyasını dışarı aktarmaya yardımcı olur:
 
@@ -106,5 +106,5 @@ Aşağıdaki adımlar, sertifikanız için. cer dosyasını dışarı aktarmaya 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık Base-64 ile kodlanmış X. 509.440 () kimlik doğrulama sertifikasına/güvenilen kök sertifikaya sahipsiniz. CER) biçiminde. Arka uç sunucularınızı uçtan uca TLS şifrelemesi için beyaz listeye almak üzere bunu Application Gateway 'e ekleyebilirsiniz. Bkz. [PowerShell ile Application Gateway kullanarak uçtan uca TLS Yapılandırma](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
+Artık Base-64 ile kodlanmış X. 509.440 () kimlik doğrulama sertifikasına/güvenilen kök sertifikaya sahipsiniz. CER) biçiminde. Arka uç sunucularınızın uçtan uca TLS şifrelemesini sağlamak için bunu Application Gateway 'e ekleyebilirsiniz. Bkz. [PowerShell ile Application Gateway kullanarak uçtan uca TLS Yapılandırma](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
 

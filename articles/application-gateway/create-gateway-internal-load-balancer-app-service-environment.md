@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/06/2018
+ms.date: 06/09/2020
 ms.author: genli
-ms.openlocfilehash: 4edeea749ba22bef173c15f3a0855679b784ce33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8861e850e168169762d95c44a54b6a88a036f396
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668570"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628524"
 ---
-# <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Arka uç sunucu sertifikası, bir uygulama ağ geçidi için bir App Service Ortamı ile Iç Load Balancer kullanılarak güvenilir bir şekilde listelenmiyor
+# <a name="back-end-server-certificate-is-not-allow-listed-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Arka uç sunucu sertifikası, bir App Service Ortamı ile Iç Load Balancer kullanan bir uygulama ağ geçidi için listelenmesine izin vermiyor
 
-Bu makale aşağıdaki sorunu giderir: Azure 'da uçtan uca TLS kullanırken arka uçta bir Iç Load Balancer (ıLB) ile birlikte bir App Service Ortamı (ACE) kullanarak bir sertifika ağ geçidi oluşturduğunuzda bir sertifika daha fazla listelenmez.
+Bu makale aşağıdaki sorunu giderir: Azure 'da uçtan uca TLS kullanırken arka uçta bir Iç Load Balancer (ıLB) ile birlikte bir App Service Ortamı (ACE) ile birlikte bir uygulama ağ geçidi oluşturduğunuzda bir sertifika izin vermez.
 
 ## <a name="symptoms"></a>Belirtiler
 
@@ -41,7 +41,7 @@ Arka uçta Ao ile ıLB kullanarak bir uygulama ağ geçidi oluşturduğunuzda, a
 - **Bağlantı noktası:**: 443
 - **Özel araştırma:** Ana bilgisayar adı – test.appgwtestase.com
 - **Kimlik doğrulama sertifikası:** . cer of test.appgwtestase.com
-- **Arka uç sistem durumu:** Sağlıksız – arka uç sunucu sertifikası Application Gateway ile birlikte listelenmez.
+- **Arka uç sistem durumu:** Sağlıksız – arka uç sunucu sertifikası Application Gateway ile listelenmesine izin vermiyor.
 
 **ATıCı yapılandırması:**
 
@@ -68,7 +68,7 @@ ILB 'ye erişmek için tam etki alanı adı (FQDN) kullandığınızda, arka uç
 
 - ILB 'nin IP adresini kullanıyorsanız uygulama ağ geçidi için **App Service kullan** seçeneğini temizleyin.
 
-Ek yükü azaltmak için, araştırma yolunu çalışır hale getirmek üzere HTTP ayarlarına ıLB sertifikasını yükleyebilirsiniz. (Bu adım yalnızca beyaz listeye yöneliktir. Bu, TLS iletişimi için kullanılmaz.) ILB sertifikasını HTTPS üzerindeki tarayıcınızdan IP adresine erişerek, TLS/SSL sertifikasını Base-64 kodlamalı bir CER biçiminde dışarı aktararak ve sertifikayı ilgili HTTP ayarları üzerine yükleyerek alabilirsiniz.
+Ek yükü azaltmak için, araştırma yolunu çalışır hale getirmek üzere HTTP ayarlarına ıLB sertifikasını yükleyebilirsiniz. (Bu adım yalnızca izin verilenler listesi içindir. Bu, TLS iletişimi için kullanılmaz.) ILB sertifikasını HTTPS üzerindeki tarayıcınızdan IP adresine erişerek, TLS/SSL sertifikasını Base-64 kodlamalı bir CER biçiminde dışarı aktararak ve sertifikayı ilgili HTTP ayarları üzerine yükleyerek alabilirsiniz.
 
 ## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun
 

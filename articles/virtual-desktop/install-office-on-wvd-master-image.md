@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b93f26a6799a50868feb1f3350a3dc4a73a0b2e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d53c21af77204a5e83687d3ce893f3f6f45101f2
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127843"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628986"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Ana VHD görüntüsü üzerinde Office yükleme
 
@@ -38,7 +38,7 @@ Office dağıtım aracı bir yapılandırma XML dosyası gerektirir. Aşağıdak
 
 Sağladığımız Bu örnek yapılandırma XML 'i şu işlemleri yapar:
 
-- Office 'i aylık kanaldan yükleyip, yürütüldüğü sırada aylık kanaldan güncelleştirmeleri sunun.
+- • Aylık kurumsal kanaldan Office 'i yükleyip, yürütüldüğü zaman aylık kurumsal kanaldan güncelleştirmeleri sunun.
 - X64 mimarisini kullanın.
 - Otomatik güncelleştirmeleri devre dışı bırakın.
 - Mevcut Office yüklemelerini kaldırın ve ayarlarını geçirin.
@@ -53,7 +53,7 @@ Bu örnek yapılandırma XML 'i şunları yapamayacaklarınız:
 - OneDrive 'ı Kullanıcı başına moda yükleyin. Daha fazla bilgi için bkz. [OneDrive 'ı makine başına moda yükleyin](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
->Paylaşılan bilgisayar etkinleştirme, grup ilkesi nesneleri (GPO 'Lar) veya kayıt defteri ayarları aracılığıyla ayarlanabilir. GPO, **Yönetim Şablonları\\Microsoft Office 2016 (makine\\)\\\\lisanslama ayarlarındaki bilgisayar yapılandırma ilkeleri** ' nde bulunur
+>Paylaşılan bilgisayar etkinleştirme, grup ilkesi nesneleri (GPO 'Lar) veya kayıt defteri ayarları aracılığıyla ayarlanabilir. GPO, ** \\ \\ Yönetim Şablonları \\ Microsoft Office 2016 (makine) \\ lisanslama ayarlarındaki bilgisayar yapılandırma ilkeleri** ' nde bulunur
 
 Office dağıtım aracı Setup. exe dosyasını içerir. Office 'i yüklemek için komut satırında aşağıdaki komutu çalıştırın:
 
@@ -63,11 +63,11 @@ Setup.exe /configure configuration.xml
 
 #### <a name="sample-configurationxml"></a>Örnek Configuration. xml
 
-Aşağıdaki XML örneği aylık sürümü yükler.
+Aşağıdaki XML örneği aylık kurumsal kanal sürümünü yükler.
 
 ```xml
 <Configuration>
-  <Add OfficeClientEdition="64" Channel="Monthly">
+  <Add OfficeClientEdition="64" Channel="MonthlyEnterprise">
     <Product ID="O365ProPlusRetail">
       <Language ID="en-US" />
       <Language ID="MatchOS" />
@@ -116,11 +116,11 @@ OneDrive, normalde Kullanıcı başına yüklenir. Bu ortamda makine başına y�
 
 OneDrive 'ı makine başına modunda yüklemek için şu adımları uygulayın:
 
-1. İlk olarak, OneDrive yükleyicisinin aşamasına kadar bir konum oluşturun. Yerel disk klasörü veya [\\\\UNC] (File://UNC) konumu iyidir.
+1. İlk olarak, OneDrive yükleyicisinin aşamasına kadar bir konum oluşturun. Yerel disk klasörü veya [ \\ \\ UNC] (File://UNC) konumu iyidir.
 
 2. OneDriveSetup. exe dosyasını bu bağlantıyla hazırlanan konumunuza indirin:<https://aka.ms/OneDriveWVD-Installer>
 
-3. Office 'i, ** \<excludeapp ID = "OneDrive"\>** seçeneğini atlayarak OneDrive 'a yüklediyseniz, aşağıdaki komutu çalıştırarak yükseltilmiş bir komut isteminden mevcut OneDrive Kullanıcı başına yüklemelerini kaldırın:
+3. Office 'i yok ederek OneDrive 'a yüklediyseniz **\<ExcludeApp ID="OneDrive" /\>** , aşağıdaki komutu çalıştırarak, var olan tüm OneDrive Kullanıcı başına yüklemelerini yükseltilmiş bir komut isteminden kaldırın:
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall

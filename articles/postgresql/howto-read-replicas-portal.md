@@ -5,55 +5,59 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: dd79618b8d9f016c92166edb9ecdb0bfb113947e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: c7d55a7b10f0c874fd84f32db1dcf21fb60c231f
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76768955"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636671"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>PostgreSQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme-tek sunucu Azure portal
 
 Bu makalede, Azure portal 'tan PostgreSQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturmayı ve yönetmeyi öğreneceksiniz. Okuma çoğaltmaları hakkında daha fazla bilgi edinmek için bkz. [genel bakış](concepts-read-replicas.md).
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 [PostgreSQL Için Azure veritabanı sunucusunun](quickstart-create-server-database-portal.md) ana sunucu olması.
 
+## <a name="azure-replication-support"></a>Azure çoğaltma desteği
+
+[Okuma çoğaltmaları](concepts-read-replicas.md) ve [mantıksal kod çözme](concepts-logical.md) , bilgi Için doğrudan Postgres yazma günlüğüne (Wal) bağlıdır. Bu iki özellik, Postgres 'den farklı günlük düzeylerine sahip olmalıdır. Mantıksal kod çözme, okuma Çoğaltmalarından daha yüksek bir günlüğe kaydetme düzeyine sahip olmalıdır.
+
+Doğru günlük kaydını yapılandırmak için Azure çoğaltma desteği parametresini kullanın. Azure çoğaltma desteğinin üç ayar seçeneği vardır:
+
+* **Kapalı** -en az bilgiyi Wal 'e yerleştirir. Bu ayar, çoğu PostgreSQL için Azure veritabanı sunucuları üzerinde kullanılamaz.  
+* **Çoğaltma** -daha ayrıntılı bir **şekilde.** Bu, [okuma çoğaltmalarının](concepts-read-replicas.md) çalışması için gereken en düşük günlüğe kaydetme düzeyidir. Bu ayar, çoğu sunucuda varsayılandır.
+* **Çoğaltmadan**daha ayrıntılı **mantıksal** . Bu, mantıksal kod çözmenin çalışması için en düşük günlük kayıt düzeyidir. Okuma çoğaltmaları bu ayarda de çalışır.
+
+Bu parametrenin bir değişikliğinden sonra sunucunun yeniden başlatılması gerekiyor. Dahili olarak, bu parametre Postgres parametrelerini, `wal_level` `max_replication_slots` ve ' ı ayarlar `max_wal_senders` .
+
 ## <a name="prepare-the-master-server"></a>Ana sunucuyu hazırlama
-Bu adımların Genel Amaçlı veya bellek için Iyileştirilmiş katmanlarda bir ana sunucu hazırlamak için kullanılması gerekir. Ana sunucu, Azure. replication_support parametresi ayarlanarak çoğaltma için hazırlanır. Çoğaltma parametresi değiştirildiğinde, değişikliğin etkili olması için sunucu yeniden başlatması gerekir. Azure portal, bu iki adım tek bir düğmeyle kapsüllenir, **çoğaltma desteğini etkinleştirir**.
 
-1. Azure portal, ana öğe olarak kullanılacak olan PostgreSQL için Azure veritabanı sunucusunu seçin.
+1. Azure portal, ana sunucu olarak kullanılacak PostgreSQL için mevcut bir Azure veritabanı sunucusu seçin.
 
-2. Sunucu kenar çubuğunda, **Ayarlar**' ın altında, **çoğaltma**' yı seçin.
+2. Sunucu menüsünden **çoğaltma**' yı seçin. Azure çoğaltma desteği en az **çoğaltmaya**ayarlanmışsa, okuma çoğaltmaları oluşturabilirsiniz. 
 
-> [!NOTE] 
-> **Çoğaltma desteğini devre dışı bırak** seçeneğini görürseniz, çoğaltma ayarları varsayılan olarak sunucunuzda zaten ayarlanır. Bir okuma çoğaltması oluşturmak için aşağıdaki adımları atlayabilir ve gidebilirsiniz. 
+3. Azure çoğaltma desteği en az **çoğaltma**olarak ayarlanmamışsa, ayarlayın. **Kaydet**'i seçin.
 
-3. **Çoğaltma desteğini etkinleştir**' i seçin. 
+   ![PostgreSQL için Azure veritabanı-çoğaltma-çoğaltma ayarla ve Kaydet](./media/howto-read-replicas-portal/set-replica-save.png)
 
-   ![Çoğaltma desteğini etkinleştir](./media/howto-read-replicas-portal/enable-replication-support.png)
+4. **Evet**' i seçerek değişikliği uygulamak için sunucuyu yeniden başlatın.
 
-4. Çoğaltma desteğini etkinleştirmek istediğinizi onaylayın. Bu işlem, ana sunucuyu yeniden başlatacak. 
+   ![PostgreSQL için Azure veritabanı-çoğaltma-yeniden başlatmayı Onayla](./media/howto-read-replicas-portal/confirm-restart.png)
 
-   ![Çoğaltma desteğini etkinleştirmeyi Onayla](./media/howto-read-replicas-portal/confirm-enable-replication.png)
-   
 5. İşlem tamamlandıktan sonra iki Azure portal bildirimi alacaksınız. Sunucu parametresini güncelleştirmek için bir bildirim vardır. Sunucu yeniden başlatması için hemen sonraki bir bildirim daha vardır.
 
-   ![Başarı bildirimleri-etkinleştir](./media/howto-read-replicas-portal/success-notifications-enable.png)
+   ![Başarı bildirimleri](./media/howto-read-replicas-portal/success-notifications.png)
 
 6. Çoğaltma araç çubuğunu güncelleştirmek için Azure portal sayfasını yenileyin. Artık bu sunucu için okuma çoğaltmaları oluşturabilirsiniz.
-
-   ![Araç çubuğu güncelleştirildi](./media/howto-read-replicas-portal/updated-toolbar.png)
    
-Çoğaltma desteğinin etkinleştirilmesi, ana sunucu başına tek seferlik bir işlemdir. Kolaylık olması için **çoğaltma desteğini devre dışı bırak** düğmesi sunulmaktadır. Bu ana sunucuda hiçbir şekilde çoğaltma oluşturmamanız gerekmedikçe, çoğaltma desteğinin devre dışı bırakılmasını önermiyoruz. Ana sunucunuzda çoğaltmalar varsa çoğaltma desteğini devre dışı bırakabilirsiniz.
-
 
 ## <a name="create-a-read-replica"></a>Okuma çoğaltması oluşturma
 Bir okuma çoğaltması oluşturmak için aşağıdaki adımları izleyin:
 
-1. Ana sunucu olarak kullanılacak olan PostgreSQL için Azure veritabanı sunucusunu seçin. 
+1. Ana sunucu olarak kullanılacak PostgreSQL için mevcut bir Azure veritabanı sunucusu seçin. 
 
 2. Sunucu kenar çubuğunda, **Ayarlar**' ın altında, **çoğaltma**' yı seçin.
 

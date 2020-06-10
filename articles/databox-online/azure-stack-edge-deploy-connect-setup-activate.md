@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7c8a35b2699035b3ce4f96a94ca970da2cf343c4
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: e0a0d9415cc55c24bb4dc0690c73d9f79fc0ce0e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570611"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608443"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-stack-edge"></a>Öğretici: Azure Stack Edge 'i bağlama, ayarlama ve etkinleştirme 
 
@@ -22,20 +22,21 @@ Bu öğreticide, yerel Web Kullanıcı arabirimini kullanarak Azure Stack Edge c
 
 Kurulum ve etkinleştirme işleminin tamamlanması 20 dakika sürebilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
+>
 > * Fiziksel bir cihaza bağlanma
 > * Fiziksel cihazı ayarlama ve etkinleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Stack Edge cihazınızı yapılandırmadan ve ayarlamadan önce şunları yaptığınızdan emin olun:
 
 * Fiziksel cihazı [yükleme Azure Stack Edge](azure-stack-edge-deploy-install.md)bölümünde ayrıntılı olarak yüklediniz.
 * Azure Stack Edge cihazını yönetmek için oluşturduğunuz Azure Stack Edge hizmetinden etkinleştirme anahtarınız vardır. Daha fazla bilgi için, [Azure Stack Edge dağıtmaya hazırlanma](azure-stack-edge-deploy-prep.md)bölümüne gidin.
 
-## <a name="connect-to-the-local-web-ui-setup"></a>Yerel Web Kullanıcı arabirimi kurulumuna bağlanma 
+## <a name="connect-to-the-local-web-ui-setup"></a>Yerel Web Kullanıcı arabirimi kurulumuna bağlanma
 
 1. Bilgisayarınızda Ethernet bağdaştırıcısını, 192.168.100.5 ve alt ağ 255.255.255.0 statik IP adresiyle Azure Stack Edge cihazına bağlanacak şekilde yapılandırın.
 
@@ -43,11 +44,10 @@ Azure Stack Edge cihazınızı yapılandırmadan ve ayarlamadan önce şunları 
 
     ![Kabloları takılmış bir cihazın arka yüzü](./media/azure-stack-edge-deploy-install/backplane-cabled.png)
 
+3. Bir tarayıcı penceresi açın ve konumundaki cihazın yerel Web Kullanıcı arabirimine erişin `https://192.168.100.10` .  
+    Bu eylem, cihazı etkinleştirdikten sonra birkaç dakika sürebilir.
 
-3. Bir tarayıcı penceresi açın ve konumundaki `https://192.168.100.10`cihazın yerel Web Kullanıcı arabirimine erişin.  
-    Bu eylem, cihazı etkinleştirdikten sonra birkaç dakika sürebilir. 
-
-    Bir hata veya Web sitesinin güvenlik sertifikasıyla ilgili bir sorun olduğunu belirten bir uyarı görürsünüz. 
+    Bir hata veya Web sitesinin güvenlik sertifikasıyla ilgili bir sorun olduğunu belirten bir uyarı görürsünüz.
    
     ![Web sitesi güvenlik sertifikası hata iletisi](./media/azure-stack-edge-deploy-connect-setup-activate/image2.png)
 
@@ -94,14 +94,14 @@ Panonuz fiziksel cihazı Azure Stack Edge hizmeti ile yapılandırmak ve kaydetm
    
    **Web proxy ayarları** sayfasında, aşağıdakileri yapın:
    
-   a. **Web proxy URL 'si** kutusuna URL 'yi şu biçimde girin: `http://host-IP address or FQDN:Port number`. HTTPS URL 'Leri desteklenmez.
+   a. **Web proxy URL 'si** kutusuna URL 'yi şu biçimde girin: `http://host-IP address or FQDN:Port number` . HTTPS URL 'Leri desteklenmez.
 
-   b. **Kimlik doğrulaması**altında **hiçbiri** veya **NTLM**' yi seçin.
+   b. **Kimlik doğrulaması**altında **hiçbiri** veya **NTLM**' yi seçin. İşlem ' ı etkinleştirip Azure Stack Edge cihazınızda IoT Edge modülünü kullanacaksanız, Web proxy kimlik doğrulamasını **none**olarak ayarlamanızı öneririz. **NTLM** desteklenmiyor.
 
    c. Kimlik doğrulaması kullanıyorsanız, bir Kullanıcı adı ve parola girin.
 
    d. Yapılandırılmış Web proxy ayarlarını doğrulamak ve uygulamak için **Ayarları Uygula**' yı seçin.
-   
+
    > [!NOTE]
    > Proxy-otomatik yapılandırma (PAC) dosyaları desteklenmez. PAC dosyası, Web tarayıcılarının ve diğer Kullanıcı aracılarının belirli bir URL 'YI getirmek için uygun proxy sunucusunu (erişim yöntemi) otomatik olarak nasıl seçebileceğini tanımlar.
    > Ara sunucunun sertifikası güvenilir olmadığından, tüm trafiği kesmeye ve okumaya (sonra her şeyi kendi sertifikalarıyla yeniden imzalamaya) yönelik proxy 'ler uyumlu değildir.
@@ -134,7 +134,7 @@ Panonuz fiziksel cihazı Azure Stack Edge hizmeti ile yapılandırmak ve kaydetm
 6. Sol bölmede **bulut ayarları**' nı seçin ve ardından Azure Portal Azure Stack Edge hizmeti ile cihazınızı etkinleştirin.
     
     1. **Etkinleştirme anahtarı** kutusuna Azure Stack Edge için [etkinleştirme anahtarını al](azure-stack-edge-deploy-prep.md#get-the-activation-key) bölümünde aldığınız etkinleştirme anahtarını girin.
-    2. **Uygula**’yı seçin.
+    2. **Apply** (Uygula) seçeneğini belirleyin.
        
         ![Yerel Web Kullanıcı arabirimi "bulut ayarları" sayfası](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-6.png)
 

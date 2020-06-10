@@ -4,12 +4,12 @@ description: Azure Içeri/dışarı aktarma hizmetini kullanarak ağdan veri gö
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 642787e17f347bf8233e50c65d26a1661b08fcfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d448687836842835259fcf7bbad41af815dfb58
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183900"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629294"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup çevrimdışı yedekleme iş akışı
 
@@ -42,10 +42,10 @@ Aşağıdaki Azure Backup özellikleri veya iş yükleri, için çevrimdışı y
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
   > [!NOTE]
-  > Aşağıdaki Önkoşullar ve iş akışı yalnızca [en son Azure kurtarma hizmetleri Aracısı](https://aka.ms/azurebackup_agent)kullanılarak dosya ve klasörlerin çevrimdışı yedeklemesi için geçerlidir. System Center DPM veya Azure Backup Sunucusu kullanarak iş yükleri için çevrimdışı yedeklemeler gerçekleştirmek için bkz. [DPM ve Azure Backup sunucusu Için çevrimdışı yedekleme iş akışı](backup-azure-backup-server-import-export-.md).
+  > Aşağıdaki Önkoşullar ve iş akışı yalnızca [en son Azure kurtarma hizmetleri Aracısı](https://aka.ms/azurebackup_agent)kullanılarak dosya ve klasörlerin çevrimdışı yedeklemesi için geçerlidir. System Center DPM veya Azure Backup Sunucusu kullanarak iş yükleri için çevrimdışı yedeklemeler gerçekleştirmek için bkz. [DPM ve Azure Backup sunucusu Için çevrimdışı yedekleme iş akışı](backup-azure-backup-server-import-export.md).
 
 Çevrimdışı yedekleme iş akışını başlamadan önce, aşağıdaki önkoşulları izleyin:
 
@@ -135,8 +135,8 @@ Bu bölüm, verilerinizin bir Azure veri merkezine teslim edilebilmesi ve Azure 
 
     | Parametre | Açıklama |
     | --- | --- |
-    | s:&lt;*hazırlama konumu yolu*&gt; |Bu zorunlu giriş, "çevrimdışı yedekleme 'yi başlatma" bölümünde iş akışına girdiğiniz hazırlama konumunun yolunu sağlamak için kullanılır. |
-    | p:&lt;*publishsettingsfile yolu*&gt; |Bu isteğe bağlı giriş, "çevrimdışı yedekleme 'yi başlatma" bölümünde iş akışına girdiğiniz Azure yayımlama ayarları dosyasının yolunu sağlamak için kullanılır. |
+    | s: &lt; *hazırlama konumu yolu*&gt; |Bu zorunlu giriş, "çevrimdışı yedekleme 'yi başlatma" bölümünde iş akışına girdiğiniz hazırlama konumunun yolunu sağlamak için kullanılır. |
+    | p: &lt; *PublishSettingsFile yolu*&gt; |Bu isteğe bağlı giriş, "çevrimdışı yedekleme 'yi başlatma" bölümünde iş akışına girdiğiniz Azure yayımlama ayarları dosyasının yolunu sağlamak için kullanılır. |
 
     Komutunu çalıştırdığınızda, yardımcı program, hazırlanması gereken sürücülere karşılık gelen Azure içeri aktarma işinin seçimini ister. Yalnızca tek bir içeri aktarma işi belirtilen hazırlama konumuyla ilişkiliyse, bunun gibi bir sayfa görürsünüz.
 

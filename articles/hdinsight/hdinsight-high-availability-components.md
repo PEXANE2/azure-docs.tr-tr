@@ -7,16 +7,23 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1da26d9067427734d407451bdb53e51ba1e6243
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74069620"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609174"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight tarafından desteklenen yüksek kullanılabilirlik Hizmetleri
 
  Analiz bileşenleriniz için en uygun düzeylerde kullanılabilirlik sağlamak amacıyla, HDInsight, önemli hizmetlerin yüksek kullanılabilirliğini sağlamak için benzersiz bir mimariye geliştirilmiştir. Bu mimarinin bazı bileşenleri, Microsoft tarafından otomatik yük devretme sağlamak üzere geliştirilmiştir. Diğer bileşenler, belirli hizmetleri desteklemek için dağıtılan standart Apache bileşenleridir. Bu makalede, HDInsight 'ta HA hizmeti modelinin mimarisi, HDInsight 'ın HA Hizmetleri için yük devretmeyi nasıl desteklediği ve diğer hizmet kesintilerinden kurtarmak için en iyi uygulamalar açıklanmaktadır.
+ 
+> [!NOTE]
+> Sapma ücretsiz iletişim
+>
+> Microsoft, farklı ve üçlü ortamları destekler. Bu makale, _İkincil_sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcük olduğundan, bu makalede tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
+>
+
 
 ## <a name="high-availability-infrastructure"></a>Yüksek kullanılabilirlik altyapısı
 

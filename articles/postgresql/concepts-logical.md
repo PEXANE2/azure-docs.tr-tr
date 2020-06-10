@@ -5,41 +5,57 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 1213b38f2b67e8fed179cfda4308943808893e1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: ef7c5644ad8ec1e3816f20d4e5db9ad7d39a4609
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80522153"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84634598"
 ---
 # <a name="logical-decoding"></a>Mantıksal kod çözme
  
 [PostgreSQL Içindeki mantıksal kod çözme](https://www.postgresql.org/docs/current/logicaldecoding.html) , dış tüketicilerle veri değişiklikleri akışına olanak sağlar. Mantıksal kod çözme, olay akışı ve değişiklik verilerini yakalama senaryoları için popudöngüsel olarak kullanılır.
 
 Mantıksal kod çözme, Postgres 'nin yazma sonrası günlüğünü (WAL) okunabilir bir biçime dönüştürmek için bir çıktı eklentisi kullanır. PostgreSQL için Azure veritabanı iki çıkış eklentileri sağlar: [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) ve [wal2json](https://github.com/eulerto/wal2json).
- 
 
 > [!NOTE]
 > Mantıksal kod çözme, PostgreSQL için Azure veritabanı-tek sunucu genel önizlemede.
 
 
-## <a name="set-up-your-server"></a>Sunucunuzu ayarlama
-Mantıksal kod çözme 'yı kullanmaya başlamak için sunucunuzun WAL 'yi kaydetmesine ve akışına izin vermek için etkinleştirin. 
+## <a name="set-up-your-server"></a>Sunucunuzu ayarlama 
+Mantıksal kod çözme ve [okuma çoğaltmaları](concepts-read-replicas.md) her ikisi de bilgi Için Postgres yazma ilerme günlüğüne (Wal) bağlıdır. Bu iki özellik, Postgres 'den farklı günlük düzeylerine sahip olmalıdır. Mantıksal kod çözme, okuma Çoğaltmalarından daha yüksek bir günlüğe kaydetme düzeyine sahip olmalıdır.
 
-1. Azure CLı 'yi kullanmak için `logical` azure. replication_support ayarlayın. 
+Doğru günlük kaydını yapılandırmak için Azure çoğaltma desteği parametresini kullanın. Azure çoğaltma desteğinin üç ayar seçeneği vardır:
+
+* **Kapalı** -en az bilgiyi Wal 'e yerleştirir. Bu ayar, çoğu PostgreSQL için Azure veritabanı sunucuları üzerinde kullanılamaz.  
+* **Çoğaltma** -daha ayrıntılı bir **şekilde.** Bu, [okuma çoğaltmalarının](concepts-read-replicas.md) çalışması için gereken en düşük günlüğe kaydetme düzeyidir. Bu ayar, çoğu sunucuda varsayılandır.
+* **Çoğaltmadan**daha ayrıntılı **mantıksal** . Bu, mantıksal kod çözmenin çalışması için en düşük günlük kayıt düzeyidir. Okuma çoğaltmaları bu ayarda de çalışır.
+
+Bu parametrenin bir değişikliğinden sonra sunucunun yeniden başlatılması gerekiyor. Dahili olarak, bu parametre Postgres parametrelerini, `wal_level` `max_replication_slots` ve ' ı ayarlar `max_wal_senders` .
+
+### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
+
+1. Azure. replication_support olarak ayarlayın `logical` .
    ```
    az postgres server configuration set --resource-group mygroup --server-name myserver --name azure.replication_support --value logical
-   ```
+   ``` 
 
-   > [!NOTE]
-   > Okuma çoğaltmaları kullanıyorsanız, Azure. replication_support `logical` kopyaların çalışmasına izin verir. Mantıksal kod çözme kullanmayı durdurursanız, ayarı olarak `replica`değiştirin. 
-
-
-2. Değişiklikleri uygulamak için sunucuyu yeniden başlatın.
+2. Değişikliği uygulamak için sunucuyu yeniden başlatın.
    ```
    az postgres server restart --resource-group mygroup --name myserver
    ```
+
+### <a name="using-azure-portal"></a>Azure portalını kullanma
+
+1. Azure çoğaltma desteğini **mantıksal**olarak ayarlayın. **Kaydet**'i seçin.
+
+   ![PostgreSQL için Azure veritabanı-çoğaltma-Azure çoğaltma desteği](./media/concepts-logical/replication-support.png)
+
+2. **Evet**' i seçerek değişikliği uygulamak için sunucuyu yeniden başlatın.
+
+   ![PostgreSQL için Azure veritabanı-çoğaltma-yeniden başlatmayı Onayla](./media/concepts-logical/confirm-restart.png)
+
 
 ## <a name="start-logical-decoding"></a>Mantıksal kod çözmeyi Başlat
 
@@ -61,7 +77,7 @@ Aşağıdaki örnekte, SQL arabirimini wal2json eklentisi ile kullanıyoruz.
    SELECT * FROM pg_create_logical_replication_slot('test_slot', 'wal2json');
    ```
  
-2. SQL komutları verin. Örneğin:
+2. SQL komutları verin. Örnek:
    ```SQL
    CREATE TABLE a_table (
       id varchar(40) NOT NULL,
@@ -135,13 +151,13 @@ Değerler, geçmiş normal eşiklerini arttırabilmeniz için, *kullanılan depo
 ## <a name="how-to-drop-a-slot"></a>Yuva bırakma
 Bir çoğaltma yuvasını etkin bir şekilde kullanmıyorsanız bırakmalısınız.
 
-SQL kullanılarak adlandırılan `test_slot` bir çoğaltma yuvasını bırakmak için:
+SQL kullanılarak adlandırılan bir çoğaltma yuvasını bırakmak için `test_slot` :
 ```SQL
 SELECT pg_drop_replication_slot('test_slot');
 ```
 
 > [!IMPORTANT]
-> Mantıksal kod çözme kullanmayı durdurursanız, Azure. replication_support öğesini veya `replica` `off`olarak değiştirin. Tarafından `logical` tutulan Wal ayrıntıları daha ayrıntılıdır ve mantıksal kod çözme kullanımda olmadığında devre dışı bırakılmalıdır. 
+> Mantıksal kod çözme kullanmayı durdurursanız, Azure. replication_support öğesini veya olarak değiştirin `replica` `off` . Tarafından tutulan WAL ayrıntıları `logical` daha ayrıntılıdır ve mantıksal kod çözme kullanımda olmadığında devre dışı bırakılmalıdır. 
 
  
 ## <a name="next-steps"></a>Sonraki adımlar

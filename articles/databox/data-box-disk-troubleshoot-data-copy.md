@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 760f5c6c929aa082993683d7a466a71c6484289a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 14c5413939deeedfd7c4e894b1919031062bf13a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67148354"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610619"
 ---
 # <a name="troubleshoot-data-copy-issues-in-azure-data-box-disk"></a>Azure Data Box Disk 'de veri kopyalama sorunlarını giderme
 
@@ -26,7 +26,7 @@ Bu bölümde, verileri disklere kopyalamak için bir Linux istemcisi kullanılı
 
 ### <a name="issue-drive-getting-mounted-as-read-only"></a>Sorun: sürücü, salt okuma olarak bağlandı
  
-**Sağlamak** 
+**Neden** 
 
 Bunun nedeni, temiz olmayan bir dosya sistemi olabilir.
 
@@ -36,18 +36,18 @@ Bir sürücünün okuma-yazma olarak takılması Data Box disklerle birlikte ça
 
 Geri bağlanıcı başarılı olsa da veriler devam etmez.
 
-**Çözünürlük**
+**Çözünürlüğüne**
 
 Linux sisteminizde aşağıdaki adımları uygulayın:
 
-1. Ntfsdüzeltmesini yardımcı programı için `ntfsprogs` paketi yükler.
+1. `ntfsprogs`Ntfsdüzeltmesini yardımcı programı için paketi yükler.
 2. Kilit açma aracı tarafından sürücü için belirtilen bağlama noktalarını çıkarın. Bağlama noktası sayısı sürücüler için farklılık gösterecektir.
 
     ```
     unmount /mnt/DataBoxDisk/mountVol1
     ```
 
-3. İlgili `ntfsfix` yol üzerinde çalıştırın. Vurgulanan sayı adım 2 ile aynı olmalıdır.
+3. `ntfsfix`İlgili yol üzerinde çalıştırın. Vurgulanan sayı adım 2 ile aynı olmalıdır.
 
     ```
     ntfsfix /mnt/DataBoxDisk/bitlockerVol1/dislocker-file
@@ -72,11 +72,11 @@ Linux sisteminizde aşağıdaki adımları uygulayın:
  
 ### <a name="issue-error-with-data-not-persisting-after-copy"></a>Sorun: kopyalama işleminden sonra kalıcı olmayan verilerle ilgili hata
  
-**Sağlamak** 
+**Neden** 
 
 Sürücünün takıldıktan sonra veri olmadığını görürseniz (veriler kendisine kopyalansa da), Sürücü salt okunurdur olarak bağlandıktan sonra bir sürücüyü okuma-yazma olarak yeniden takmış olmanız mümkündür.
 
-**Çözünürlük**
+**Çözünürlüğüne**
  
 Bu durumda, [salt okuma olarak bağlanmış sürücüler](#issue-drive-getting-mounted-as-read-only)için çözünürlüğe bakın.
 

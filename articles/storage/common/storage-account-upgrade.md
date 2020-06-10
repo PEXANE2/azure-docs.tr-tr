@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
-ms.openlocfilehash: 9afbade408d6f95fcd3a61aa1ba65bc09c7a875b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 725c319e4abb6cc65e1e6a900218393ace2d4d16
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80067224"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629574"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Genel amaçlı v2 depolama hesabına yükseltme
 
@@ -26,7 +26,7 @@ Genel amaçlı v1 veya blob depolama hesaplarınızdan genel amaçlı v2 depolam
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Depolama hesabınıza gidin.
 3. **Ayarlar** bölümünde **yapılandırma**' ya tıklayın.
 4. **Hesap türü**altında, **Yükselt**' e tıklayın.
@@ -60,7 +60,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>Blob verileri için bir erişim katmanı belirtin
 
-Genel amaçlı v2 hesapları tüm Azure depolama hizmetleri ve veri nesnelerini destekler, ancak erişim katmanları yalnızca BLOB depolama alanındaki blok Blobları için geçerlidir. Genel amaçlı v2 depolama hesabına yükselttiğinizde, tek bir blob erişim katmanı parametresi belirtilmediyse blob verilerinizin karşıya yükleneceği varsayılan katmanı belirten, varsayılan bir hesap erişim katmanı olan sık erişimli veya seyrek erişimli ' i belirtebilirsiniz.
+Genel amaçlı v2 hesapları tüm Azure depolama hizmetleri ve veri nesnelerini destekler, ancak erişim katmanları yalnızca BLOB depolama alanındaki blok Bloblar için kullanılabilir. Genel amaçlı v2 depolama hesabına yükselttiğinizde, tek bir blob erişim katmanı parametresi belirtilmediyse blob verilerinizin karşıya yükleneceği varsayılan katmanı belirten, varsayılan bir hesap erişim katmanı olan sık erişimli veya seyrek erişimli ' i belirtebilirsiniz.
 
 Blob erişim katmanları, tahmin edilen kullanım desenlerinize göre en düşük maliyetli depolamayı seçmenizi sağlar. Blok Blobları, sık erişimli, seyrek erişimli veya arşiv katmanlarında depolanabilir. Erişim katmanları hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv depolama katmanları](../blobs/storage-blob-storage-tiers.md).
 
@@ -73,7 +73,7 @@ Her iki durumda da ilk öncelik, genel amaçlı v2 depolama hesabında depolanan
 
 ## <a name="pricing-and-billing"></a>Fiyatlandırma ve Faturalama
 
-Bir v1 depolama hesabını genel amaçlı v2 hesabına yükseltmek ücretsizdir. Yükseltme işlemi sırasında istenen hesap katmanını belirtebilirsiniz. Yükseltme sırasında bir hesap katmanı belirtilmemişse, yükseltilen hesabın varsayılan hesap katmanı olur `Hot`. Bununla birlikte, yükseltme sonrasında depolama erişim katmanını değiştirmek faturanızda değişikliklere neden olabilir, böylece yükseltme sırasında yeni hesap katmanının belirtilmesi önerilir.
+Bir v1 depolama hesabını genel amaçlı v2 hesabına yükseltmek ücretsizdir. Yükseltme işlemi sırasında istenen hesap katmanını belirtebilirsiniz. Yükseltme sırasında bir hesap katmanı belirtilmemişse, yükseltilen hesabın varsayılan hesap katmanı olur `Hot` . Bununla birlikte, yükseltme sonrasında depolama erişim katmanını değiştirmek faturanızda değişikliklere neden olabilir, böylece yükseltme sırasında yeni hesap katmanının belirtilmesi önerilir.
 
 Tüm depolama hesapları, blob depolama için her blobun katmanını temel alan bir fiyatlandırma modelini kullanır. Bir depolama hesabını kullanırken aşağıdaki fatura değerlendirmeleri geçerlidir:
 

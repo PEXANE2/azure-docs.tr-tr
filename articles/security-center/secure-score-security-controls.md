@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 0d0e3220d38f9824b9504a0077d6742a62aeb9e8
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 81c14da762e0ff92305456aa89f06949c7039868
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204999"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629285"
 ---
 # <a name="enhanced-secure-score-preview-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde gelişmiş güvenli skor (Önizleme)
 
@@ -71,7 +71,7 @@ Bu denetim için en yüksek puan, sistem güncelleştirmelerini Uygula, her zama
 
 ### <a name="calculations---understanding-your-score"></a>Hesaplamalar-puanınızı anlama
 
-|Ölçüm|Formül ve örnek|
+|Metric|Formül ve örnek|
 |-|-|
 |**Güvenlik denetiminin geçerli puanı**|<br>![Güvenlik denetiminin geçerli Puanını hesaplama denklemi](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Her bireysel güvenlik denetimi güvenlik puanına katkıda bulunur. Denetim içindeki bir öneriden etkilenen her kaynak, denetimin geçerli puanına doğru katkıda bulunur. Her denetim için geçerli *puan, denetimdeki kaynakların durumunun* ölçüsüdür.<br>![Güvenlik denetiminin geçerli puanı hesaplanırken kullanılan değerleri gösteren araç ipuçları](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>Bu örnekte, sağlıklı ve sağlıksız kaynakların toplamı olduğundan, 6 ' nın en fazla puanı 78 olarak bölünür.<br>6/78 = 0,0769<br>Sağlıklı kaynak sayısına (4) göre çarpılması geçerli puanın sonucunu elde ediyor:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Güvenlik puanı**<br>Tek abonelik|<br>![Geçerli güvenli puanı hesaplama denklemi](media/secure-score-security-controls/secure-score-equation.png)<br><br>![Tüm denetimler etkin olan tek abonelik güvenli puanı](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>Bu örnekte, kullanılabilen tüm güvenlik denetimlerine sahip tek bir abonelik vardır (en fazla 60 punto puanı). Puan, olası bir 60 28 noktayı gösterir ve kalan 32 noktaları, güvenlik denetimlerinin "potansiyel puan artışı" biçiminde yansıtılır.<br>![Denetimlerin listesi ve olası puan artışı](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
@@ -106,7 +106,7 @@ Aşağıdaki tabloda, Azure Güvenlik Merkezi 'ndeki güvenlik denetimleri liste
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Güvenli yönetim bağlantı noktaları (en fazla 8 puan)</p></strong>Deneme yanılma saldırısı, bir VM 'ye erişim kazanmak için hedef yönetim bağlantı noktaları sağlar. Bağlantı noktalarının her zaman açık olması gerektiğinden, tek bir risk azaltma stratejisi, tam zamanında ağ erişim denetimleri, ağ güvenlik grupları ve sanal makine bağlantı noktası yönetimi kullanarak bağlantı noktalarında etkilenme olasılığını azaltmaktır.<br>Birçok BT kurumundan giden SSH iletişimini engellemediğinden saldırganlar, virüslü sistemlerdeki RDP bağlantı noktalarının sunucuları denetlemek için saldırgan komutuna geri iletişim kurmasına izin veren şifreli tüneller oluşturabilir. Saldırganlar Windows Uzaktan Yönetimi alt sistemini kullanarak ortamınızda geçici bir şekilde hareket edebilir ve bir ağdaki diğer kaynaklara erişmek için çalınmış kimlik bilgilerini kullanabilir.</td>
-    <td class="tg-lboi"; width=55%>-Tam zamanında ağ erişim denetimi, sanal makinelere uygulanmalıdır<br>-Sanal makineler bir ağ güvenlik grubuyla ilişkilendirilmelidir<br>-Yönetim bağlantı noktaları sanal makinelerinizde kapatılmalıdır</td>
+    <td class="tg-lboi"; width=55%>-Sanal makinelerin yönetim bağlantı noktaları, tam zamanında ağ erişim denetimiyle korunmalıdır<br>-Sanal makineler bir ağ güvenlik grubuyla ilişkilendirilmelidir<br>-Yönetim bağlantı noktaları sanal makinelerinizde kapatılmalıdır</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Sistem güncelleştirmelerini Uygula (en fazla 6 puan)</p></strong>Sistem güncelleştirmeleri, kuruluşlara operasyonel verimliliği koruma, güvenlik açıklarını azaltma ve son kullanıcılar için daha kararlı bir ortam sağlama olanağı sunar. Güncelleştirmelerin uygulanması, düzeltme eki yüklenmemiş güvenlik açıklarını ve saldırılara açık olan ortamlarda sonuçları bırakır. Bu güvenlik açıklarına yararlanılabilir ve veri kaybına, veri ayıklanmasına, fidye ve kaynak kötüye kullanılmasına yol açabilir. Sistem güncelleştirmelerini dağıtmak için, sanal makinelerinize yönelik <a href="https://docs.microsoft.com/azure/automation/automation-update-management">düzeltme eklerini ve güncelleştirmeleri yönetmek üzere güncelleştirme yönetimi çözümünü</a> kullanabilirsiniz. Güncelleştirme yönetimi, yazılım sürümlerinin dağıtımını ve bakımını denetleme işlemidir.</td>

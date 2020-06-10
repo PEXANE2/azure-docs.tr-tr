@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: 0438f573c33c71e0f30b7db1909e3649b21010a7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 78ae393c47de7a9d03d7b3de9b3dcd315d228f05
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82086598"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605434"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -33,7 +33,8 @@ Azure portal kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yap�
 4. Var olan sanal ağları güvenlik duvarları ve sanal ağ kurallarına eklemek için **+ var olan sanal ağları Ekle**' yi seçin.
 5. Açılan yeni dikey pencerede, bu Anahtar Kasası 'na erişime izin vermek istediğiniz aboneliği, sanal ağları ve alt ağları seçin. Seçtiğiniz sanal ağlarda ve alt ağlarda hizmet uç noktaları etkinleştirilmemişse, hizmet uç noktalarını etkinleştirmek istediğinizi onaylayın ve **Etkinleştir**' i seçin. Etkili olması 15 dakika kadar sürebilir.
 6. **IP ağları**altında [CIDR (sınıfsız etki alanları arası yönlendirme) gösteriminde](https://tools.ietf.org/html/rfc4632) veya tek tek IP adreslerinde IPv4 adresi aralıklarını yazarak IPv4 adres aralıkları ekleyin.
-7. **Kaydet**’i seçin.
+7. Microsoft güvenilen hizmetlerin Key Vault güvenlik duvarını atlamasına izin vermek istiyorsanız ' Evet ' seçeneğini belirleyin. Geçerli Key Vault güvenilen hizmetlerin tam listesi için lütfen aşağıdaki bağlantıya bakın. [Güvenilen Hizmetleri Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)
+7. **Kaydet**'i seçin.
 
 Ayrıca yeni sanal ağlar ve alt ağlar ekleyebilir ve ardından **+ Yeni sanal ağ ekle**' yi seçerek yeni oluşturulan sanal ağlar ve alt ağlar için hizmet uç noktalarını etkinleştirebilirsiniz. Ardından istemleri izleyin.
 
@@ -64,12 +65,12 @@ Azure CLı kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yapıl
    az keyvault network-rule add --resource-group "myresourcegroup" --name "mykeyvault" --ip-address "191.10.18.0/24"
    ```
 
-6. Bu anahtar kasasının güvenilir hizmetler tarafından erişilebilir olması gerekiyorsa, olarak `bypass` `AzureServices`ayarlayın.
+6. Bu anahtar kasasının güvenilir hizmetler tarafından erişilebilir olması gerekiyorsa, olarak ayarlayın `bypass` `AzureServices` .
    ```azurecli
    az keyvault update --resource-group "myresourcegroup" --name "mykeyvault" --bypass AzureServices
    ```
 
-7. Varsayılan eylemi olarak `Deny`ayarlayarak ağ kurallarını açın.
+7. Varsayılan eylemi olarak ayarlayarak ağ kurallarını açın `Deny` .
    ```azurecli
    az keyvault update --resource-group "myresourcegroup" --name "mekeyvault" --default-action Deny
    ```
@@ -103,12 +104,12 @@ PowerShell kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yapıl
    Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -IpAddressRange "16.17.18.0/24"
    ```
 
-6. Bu anahtar kasasının güvenilir hizmetler tarafından erişilebilir olması gerekiyorsa, olarak `bypass` `AzureServices`ayarlayın.
+6. Bu anahtar kasasının güvenilir hizmetler tarafından erişilebilir olması gerekiyorsa, olarak ayarlayın `bypass` `AzureServices` .
    ```powershell
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServices
    ```
 
-7. Varsayılan eylemi olarak `Deny`ayarlayarak ağ kurallarını açın.
+7. Varsayılan eylemi olarak ayarlayarak ağ kurallarını açın `Deny` .
    ```powershell
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
    ```

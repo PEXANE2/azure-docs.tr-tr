@@ -1,14 +1,14 @@
 ---
 title: Uyumlu olmayan kaynakları düzeltme
 description: Bu kılavuzda, Azure Ilkesindeki ilkelerle uyumlu olmayan kaynakların düzeltilme adımları gösterilmektedir.
-ms.date: 02/26/2020
+ms.date: 06/09/2020
 ms.topic: how-to
-ms.openlocfilehash: acdb067e888ecbe68e3221944568b202f2510c41
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: be55f16734a94acfcc89d632f4cb79f550fa74d5
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849969"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636317"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Ilkesiyle uyumlu olmayan kaynakları düzelt
 
@@ -17,7 +17,7 @@ Bir **Deployifnotexists** veya **MODIFY** Policy ile uyumlu olmayan kaynaklar, *
 ## <a name="how-remediation-security-works"></a>Düzeltme güvenliğinin nasıl çalıştığı
 
 Azure Ilkesi, şablonu **Deployifnotexists** ilke tanımında çalıştırdığında, bu, [yönetilen bir kimlik](../../../active-directory/managed-identities-azure-resources/overview.md)kullanılarak yapılır.
-Azure Ilkesi, her atama için yönetilen bir kimlik oluşturur, ancak yönetilen kimliğe hangi rollerin verilmek üzere ayrıntıları içermelidir. Yönetilen kimliğin rolleri yoksa, ilke veya girişim ataması sırasında bu hata görüntülenir. Portalı kullanırken, Azure Ilkesi, atama başladıktan sonra listelenen roller için yönetilen kimliğe otomatik olarak izin verir. Yönetilen kimliğin _konumu_ , Azure ilkesi ile çalışmasını etkilemez.
+Azure Ilkesi, her atama için yönetilen bir kimlik oluşturur, ancak yönetilen kimliğe hangi rollerin verilmek üzere ayrıntıları içermelidir. Yönetilen kimliğin rolleri yoksa, ilke veya girişim ataması sırasında bu hata görüntülenir. Portalı kullanırken, Azure Ilkesi, atama başladıktan sonra listelenen roller için yönetilen kimliğe otomatik olarak izin verir. Yönetilen kimliğin _konumu_ , Azure ilkesiyle birlikte çalışmasını etkilemez.
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Yönetilen Kimlik-eksik Roley" border="false":::
 
@@ -51,9 +51,6 @@ Portalı kullanarak bir atama oluştururken, Azure Ilkesi yönetilen kimliği ol
 - SDK kullanılırken (örneğin, Azure PowerShell)
 - Atama kapsamı dışında bir kaynak şablon tarafından değiştirildiğinde
 - Atama kapsamı dışında bir kaynak, şablon tarafından okunmasıyla
-
-> [!NOTE]
-> Azure PowerShell ve .NET şu anda bu özelliği destekleyen tek SDK 'lardır.
 
 ### <a name="create-managed-identity-with-powershell"></a>PowerShell ile yönetilen kimlik oluşturma
 
@@ -183,7 +180,7 @@ Diğer düzeltme cmdlet 'leri ve örnekleri için bkz. [az. Policınsıghts](/po
 
 ### <a name="create-a-remediation-task-during-policy-assignment-in-the-azure-portal"></a>Azure portal ilke ataması sırasında bir düzeltme görevi oluşturma
 
-Bir düzeltme görevi oluşturmanın kolaylaştırılmış bir yolu, bunu ilke ataması sırasında Azure portal. Atanacak ilke tanımı bir **Deployifnotexists** veya bir **değişiklik** efekti ise, **Düzeltme** sekmesindeki sihirbaz bir _remeisti görevi oluşturma_ seçeneği sunar. Bu seçenek belirlendiğinde, ilke atamasıyla aynı anda bir remehiri görevi oluşturulur.
+Bir düzeltme görevi oluşturmanın kolaylaştırılmış bir yolu, bunu ilke ataması sırasında Azure portal. Atanacak ilke tanımı bir **Deployifnotexists** veya bir **değişiklik** efekti ise, **Düzeltme** sekmesindeki sihirbaz bir _Düzeltme görevi oluşturma_ seçeneği sunar. Bu seçenek işaretliyse, ilke atamasıyla aynı anda bir düzeltme görevi oluşturulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

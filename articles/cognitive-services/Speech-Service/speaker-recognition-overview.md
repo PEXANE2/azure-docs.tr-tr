@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: trbye
-ms.openlocfilehash: 2d4ce6f274efbd4d8afe2ac48856b0fc312f0a09
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: cc19844c6407a83233c70048e9eb258a742036fb
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261791"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635178"
 ---
 # <a name="what-is-the-azure-speaker-recognition-service"></a>Azure konuşmacı tanıma hizmeti nedir?
 
@@ -27,7 +27,7 @@ Konuşmacı Doğrulama, kayıtlı konuşmacı kimliğini parola veya serbest bi�
 
 ### <a name="how-does-speaker-verification-work"></a>Konuşmacı Doğrulama nasıl çalışır?
 
-![Konuşmacı doğrulaması nasıl çalışır?](media/speaker-recognition/speaker-rec.png)
+:::image type="content" source="media/speaker-recognition/speaker-rec.png" alt-text="Konuşmacı Doğrulama akış çizelgesi.":::
 
 Konuşmacı doğrulama, metne bağımlı veya metin bağımsız olabilir. **Metne bağlı** doğrulama, hoparlörlerin hem kayıt hem de doğrulama aşamaları sırasında kullanmak üzere aynı parolayı seçmesi gerektiği anlamına gelir. **Metinden bağımsız** doğrulama, hoparlörlerin kayıt ve doğrulama tümceciklerine gündelik dilde konuşabilme anlamına gelir.
 
@@ -59,4 +59,5 @@ Tüm bilişsel hizmetler kaynaklarında olduğu gibi, konuşmacı tanıma hizmet
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
+> * Uygulamalarınızda kullanabileceğiniz yaygın Tasarım desenlerinin bir çalıştırma için konuşmacı tanıma [temel kavramları makalesini](speaker-recognition-basics.md) doldurun.
 > * Metnin bağımsız konuşmacı doğrulaması için [video öğreticisine](https://azure.microsoft.com/resources/videos/speaker-recognition-text-independent-verification-developer-tutorial/) bakın.

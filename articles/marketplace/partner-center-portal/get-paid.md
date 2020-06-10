@@ -5,13 +5,13 @@ author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.openlocfilehash: d34687703506db89b524ad7510d4946df8ac5360
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 06/09/2020
+ms.openlocfilehash: 57a5f3046ce7a1f968bb823a0e13008d076b78c4
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849034"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636572"
 ---
 # <a name="getting-paid-in-the-commercial-marketplace"></a>Ticari Market 'te ücretli olarak edinme
 
@@ -27,21 +27,6 @@ Tekliflerinizin, eklentilerin ve reklam gelirlerine ilişkin ödeme alma hakkın
 Ücretler, [Microsoft Azure Market yayımcı anlaşmasında](https://go.microsoft.com/fwlink/p/?LinkID=699560)resmi olarak tanımlanır. Herhangi bir sorunuz varsa, her zaman bu belgeyi gözden geçirin.
 
 Mağaza ücreti, eklentiler de dahil olmak üzere ticari Market tarafından toplanan tüm teklif satışlarına uygulanır.
-
-## <a name="price-tiers"></a>Fiyat katmanları
-
-Seçtiğiniz fiyat katmanı (ler), teklifinizi dağıtmayı seçtiğiniz tüm ülkelerde/bölgelerde satış fiyatını ayarlar. Farklı pazarlar için farklı fiyatlar seçme gibi ek fiyatlandırma özellikleri de kullanabilirsiniz.
-
-Uygulamanızı ücretsiz olarak sunabilir veya müşterilerin teklifinizi almak için ödeme yapmak zorunda olduğu bir fiyat seçebilirsiniz. Fiyat katmanları, ek artışlarla (1,09 USD, 1,19 ABD, vb.) başlayıp 99 ABD Doları ile başlar. Fiyat katmanları arasındaki artış, fiyat arttıkça artar.
-
-> [!NOTE] 
-> Bu fiyat katmanları, teklifinizin içinden sunduğunuz tüm eklentiler için de geçerlidir.
-
-Her fiyat katmanının, mağaza tarafından sunulan her bir para birimi için karşılık gelen bir değeri vardır. Teklifinizi, dünyanın her yerindeki karşılaştırılabilir bir fiyat noktasında satmanıza yardımcı olması için kullanırız. Ancak, yabancı döviz kurlarındaki değişiklikler nedeniyle, tam satış miktarı bir para biriminden diğerine biraz farklılık gösterebilir.
-
-Ayrıca, belirli bir pazara ait yerel para birimiyle seçtiğiniz bir serbest biçimli fiyat girme seçeneğiniz de vardır. Bunu yaptığınızda, yeni bir fiyatla bir güncelleştirme göndermediğiniz takdirde fiyat ayarlanmaz (dönüştürme ücretleri değişse bile). 
-
-Seçtiğiniz fiyata müşterilerinizin ödemesi gereken satış veya katma değer vergisi dahil olabileceğini göz önünde bulundurun. Ayrıntılar için bkz. [ücretli teklif Için vergi ayrıntıları](tax-details-paid-transactions.md).
 
 ## <a name="payout-reporting"></a>Ödeme raporlama
 

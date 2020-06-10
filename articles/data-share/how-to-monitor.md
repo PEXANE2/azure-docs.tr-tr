@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 15089dd99de0471c244a6c0d93931438442599a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3d13919a54e170d410abba5da66172c2029d9b5
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73490509"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636283"
 ---
 # <a name="monitor-azure-data-share"></a>Azure Veri Paylaşımı’nı izleme  
 
@@ -40,13 +40,17 @@ Gönderilen paylaşımlar-> paylaşma aboneliklerine giderek paylaşım abonelik
 
 ## <a name="snapshot-history"></a>Anlık görüntü geçmişi 
 
-Geçmiş sekmesinde, veri tüketicisinin kiracısına kopyalanmış olan anlık görüntüleri görüntüleyebilirsiniz. Her bir anlık görüntü aralığının sıklığını ve süresini izleyebilirsiniz. 
+Bir paylaşımın **Geçmiş** sekmesinde, verilerin veri sağlayıcısından veri tüketicisinin veri deposuna ne zaman kopyalanacağını görüntüleyebilirsiniz. Her anlık görüntünün sıklığını, süresini ve durumunu izleyebilirsiniz. 
 
 ![Anlık görüntü geçmişi](./media/sent-shares.png "Anlık görüntü geçmişi") 
 
-Çalıştırma başlangıç tarihi ' ne tıklayarak her bir anlık görüntü çalıştırması hakkında daha fazla ayrıntı görüntüleyebilirsiniz. 
+Çalıştırma başlangıç tarihi ' ne tıklayarak her bir anlık görüntü çalıştırması hakkında daha fazla ayrıntı görüntüleyebilirsiniz. Ardından, aktarılan veri miktarını, kopyalanan dosya/kayıt sayısını, anlık görüntü süresini, kullanılan sanal çekirdekleri sayısını ve varsa hata iletisini görüntülemek için her bir veri kümesinin durumuna tıklayın. 
 
-Varsayılan olarak en fazla 30 günlük anlık görüntü geçmişi görüntülenir. 30 günden fazla geçmişi görmeniz gerekiyorsa Izleme-> Tanılama Ayarları ' na gidin ve **Tanılama ayarı Ekle**' yi seçin. Bu günlükleri depolamak için bir depolama hesabı seçmeniz gerekecektir. 
+En fazla 30 günlük anlık görüntü geçmişi görüntülenir. 30 günden fazla geçmişi kaydetmeniz ve görmeniz gerekiyorsa, tanılama ayarından yararlanabilirsiniz.
+
+## <a name="diagnostic-setting"></a>Tanılama ayarı
+
+Günlük verilerini veya olaylarını kaydetmek için tanılama ayarını yapılandırabilirsiniz. Izleme-> Tanılama Ayarları ' na gidin ve **Tanılama ayarı Ekle**' yi seçin. İlgilendiğiniz günlük verilerini veya olayları ve bunları nerede depolamak veya göndermek istediğinizi seçin. 
 
 ![Anlık görüntü geçmişi](./media/diagnostic-settings.png "Tanılama ayarları") 
 

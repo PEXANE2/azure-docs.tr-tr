@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/09/2020
+ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661d4f622dce45aeca1d41ead60f05ccdcfbc9c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0178d95072bec7af60fa500e662abdd9698c72d0
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406873"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635756"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory geçişli kimlik doğrulaması: sık sorulan sorular
 
@@ -44,7 +44,7 @@ Hayır. Doğrudan kimlik doğrulaması yalnızca dünya çapındaki Azure AD ör
 Evet. Azure Multi-Factor Authentication dahil tüm koşullu erişim özellikleri doğrudan kimlik doğrulamasıyla çalışır.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>"UserPrincipalName" yerine Kullanıcı adı olarak "alternatif KIMLIK" olarak geçiş kimlik doğrulamasını destekliyor mu?
-Alternatif bir e-posta gibi UPN olmayan bir değer kullanarak oturum açma, şu anda hem geçişli kimlik doğrulaması (PTA) hem de Parola karması eşitleme (PHS) için özel önizlemede test ediliyor.
+Evet, alternatif bir e-posta gibi UPN olmayan bir değer kullanan oturum açma, hem geçişli kimlik doğrulaması (PTA) hem de Parola karması eşitleme (PHS) için desteklenir. [Alternatif oturum açma kimliği](../authentication/howto-authentication-use-email-signin.md)hakkında daha fazla bilgi için.
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Parola karması eşitlemesi doğrudan kimlik doğrulamasına geri dönüş görevi görür mi?
 
@@ -87,7 +87,7 @@ Evet. Şirket içi ortamınızda Web proxy otomatik bulma (WPAD) etkinleştirili
 Ortamınızda WPAD yoksa, bir geçişli kimlik doğrulama aracısının Azure AD ile iletişim kurmasına izin vermek için proxy bilgilerini (aşağıda gösterildiği gibi) ekleyebilirsiniz:
 - Sunucu üzerinde doğrudan kimlik doğrulama aracısını yüklemeden önce Internet Explorer 'da proxy bilgilerini yapılandırın. Bu, kimlik doğrulama aracısının yüklemesini tamamlamanızı sağlar, ancak yine de yönetici portalında **etkin değil** olarak görünür.
 - Sunucusunda "C:\Program Files\Microsoft Azure AD Connect Authentication Agent" bölümüne gidin.
-- "AzureADConnectAuthenticationAgentService" yapılandırma dosyasını düzenleyin ve aşağıdaki satırları ekleyin ("http\://contosoproxy.com:8080" değerini gerçek proxy adresinizle değiştirin):
+- "AzureADConnectAuthenticationAgentService" yapılandırma dosyasını düzenleyin ve aşağıdaki satırları ekleyin ("http \: //contosoproxy.com:8080" değerini gerçek proxy adresinizle değiştirin):
 
 ```
    <system.net>

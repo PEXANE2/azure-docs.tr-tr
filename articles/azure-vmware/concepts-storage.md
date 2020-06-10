@@ -3,12 +3,12 @@ title: Kavramlar-depolama
 description: Azure VMware Çözüm (AVS) önizleme özel bulutlarındaki anahtar depolama özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 7e58a829a40d590b7936a58ccdc866211a4f5cb4
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 7f92e8f961422f8354e55192ebdddd077d61acd1
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740362"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604125"
 ---
 # <a name="azure-vmware-solution-avs-preview-storage-concepts"></a>Azure VMware çözümü (AVS) önizleme depolama kavramları
 
@@ -32,7 +32,7 @@ vSAN veri depoları varsayılan olarak rest şifreleme kullanır. Şifreleme ç�
 
 ## <a name="scaling"></a>Ölçeklendirme
 
-Yerel küme depolama kapasitesi, bir kümeye ana bilgisayar eklenerek ölçeklendirilir. Ana bilgisayarları kullanan kümeler için, ham küme genelinde kapasite, her ek ana bilgisayar ile 15,4 TB artar. GP konaklarıyla oluşturulan kümelerin ham kapasitesi, her ek konakla 7,7 TB artmıştır. Her iki tür küme içinde, ana bilgisayarların bir kümeye eklenmesi yaklaşık 10 dakika sürer. Kümeleri ölçeklendirmeyle ilgili yönergeler için bkz. [özel bulut öğreticisini ölçeklendirme] [öğretici-ölçek-özel-bulut].
+Yerel küme depolama kapasitesi, bir kümeye ana bilgisayar eklenerek ölçeklendirilir. Ana bilgisayarları kullanan kümeler için, ham küme genelinde kapasite, her ek ana bilgisayar ile 15,4 TB artar. GP konaklarıyla oluşturulan kümelerin ham kapasitesi, her ek konakla 7,7 TB artmıştır. Her iki tür küme içinde, ana bilgisayarların bir kümeye eklenmesi yaklaşık 10 dakika sürer. Kümeleri ölçeklendirmeyle ilgili yönergeler için bkz. [özel bulutu ölçeklendirme öğreticisi][tutorial-scale-private-cloud] .
 
 ## <a name="azure-storage-integration"></a>Azure depolama tümleştirmesi
 
@@ -45,5 +45,5 @@ Bir sonraki adım, [özel bulut kimliği kavramları][concepts-identity]hakkınd
 <!-- LINKS - external-->
 
 <!-- LINKS - internal -->
-[tutorials-scale-private-cloud]: ./tutorials-scale-private-cloud.md
+[tutorial-scale-private-cloud]: ./tutorial-scale-private-cloud.md
 [concepts-identity]: ./concepts-identity.md

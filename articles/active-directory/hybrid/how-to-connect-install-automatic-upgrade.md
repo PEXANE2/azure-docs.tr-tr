@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/01/2020
+ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 232a1b714802ce9531a9932bc2af4c6b6f35dffd
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: db7c0595d109efddb092f5e96babda17038e5e9e
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324224"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635824"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Otomatik yükseltme
 Bu özellik Build 1.1.105.0 ile tanıtılmıştır [(2016 Şubat tarihinde yayımlanmıştır)](reference-connect-version-history.md#111050).  Bu özellik [Build 1.1.561](reference-connect-version-history.md#115610) içinde güncelleştirildi ve artık daha önce desteklenmeyen ek senaryoları destekliyor.
@@ -57,6 +57,10 @@ Connect yüklemenizin kendisi beklendiği gibi yükseltmiyorsa, nelerin yanlış
 
 Bir şeyin doğru olmadığını düşünüyorsanız, `Get-ADSyncAutoUpgrade` Otomatik yükseltmenin etkinleştirildiğinden emin olmak için ilk ' i çalıştırın.
 
+Durum askıya alınırsa, `Get-ADSyncAutoUpgrade -Detail` nedenini görüntülemek için kullanabilirsiniz.  Askıya alma nedeni herhangi bir dize değeri içerebilir, ancak genellikle yükseltilebilir Deresult (veya) dize değerini içerir `UpgradeNotSupportedNonLocalDbInstall` `UpgradeAbortedAdSyncExeInUse` .  Ayrıca, gibi bir bileşik değer de döndürülür `UpgradeFailedRollbackSuccess-GetPasswordHashSyncStateFailed` .
+
+Ayrıca, bir yükseltilebilir Deresult (' AADHealthEndpointNotDefined ' veya ' Dirsyncinplaceyükseldenonlocaldb ') olmayan bir sonuç elde etmek mümkündür.
+
 Ardından, gerekli URL 'Leri ara sunucunuzda veya güvenlik duvarınızda açtığınızdan emin olun. Otomatik güncelleştirme, [genel bakış](#overview)bölümünde açıklandığı gibi Azure AD Connect Health kullanıyor. Proxy kullanıyorsanız, sistem durumunun bir [proxy sunucu](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)kullanacak şekilde yapılandırıldığından emin olun. Ayrıca, Azure AD ile [sistem durumu bağlantısını](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) test edin.
 
 Azure AD 'nin bağlantısının doğrulanması ile Eventlogs 'a bakmamız zaman alabilir. Olay Görüntüleyicisini başlatın ve **uygulama** olay günlüğüne bakın. Kaynak **Azure AD Connect yükseltmesi** ve olay kimliği aralığı **300-399**için bir EventLog filtresi ekleyin.  
@@ -67,7 +71,7 @@ Artık otomatik yükseltme durumuyla ilişkili Eventlogs ' u görebilirsiniz.
 
 Sonuç kodu, duruma genel bakış içeren bir ön eke sahiptir.
 
-| Sonuç kodu öneki | Description |
+| Sonuç kodu öneki | Açıklama |
 | --- | --- |
 | Başarılı |Yükleme başarıyla yükseltildi. |
 | Yükseltme Iptal edildi |Geçici bir koşul yükseltmeyi durdurdu. Yeniden denenecek ve beklenmek, daha sonra başarılı olur. |
@@ -75,7 +79,7 @@ Sonuç kodu, duruma genel bakış içeren bir ön eke sahiptir.
 
 Burada, bulduğunuz en yaygın mesajların bir listesi verilmiştir. Tümünü listelemez, ancak sonuç iletisi sorunun ne olduğu konusunda açık olmalıdır.
 
-| Sonuç Iletisi | Description |
+| Sonuç Iletisi | Açıklama |
 | --- | --- |
 | **Yükseltme Iptal edildi** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Kayıt defterine yazılamadı. |

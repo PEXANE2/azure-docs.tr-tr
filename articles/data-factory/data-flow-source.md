@@ -7,13 +7,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/03/2020
-ms.openlocfilehash: 6da0c56e11b8531192ba77d8f0c27fa16eea5de2
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 06/05/2020
+ms.openlocfilehash: e106f5b615cd667551ef3d597a45b522320eed6e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433293"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610202"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Eşleme veri akışında kaynak dönüştürme 
 
@@ -23,7 +23,7 @@ Kaynak dönüştürmesi veri akışı için veri kaynağınızı yapılandırır
 
 Her veri akışı için en az bir kaynak dönüştürmesi gerekir, ancak veri dönüştürmelerinizi tamamlayabilmeniz için gereken sayıda kaynak ekleyebilirsiniz. Bu kaynakları bir birleştirme, arama veya birleşim dönüşümle birlikte birleştirebilirsiniz.
 
-Her kaynak dönüştürmesi, tam olarak bir Data Factory veri kümesiyle ilişkilendirilir. Veri kümesi, yazmak veya okumak istediğiniz verilerin şeklini ve konumunu tanımlar. Dosya tabanlı veri kümesi kullanılıyorsa, aynı anda birden fazla dosyayla çalışmak için kaynağınızdan joker karakterler ve dosya listelerini kullanabilirsiniz.
+Her kaynak dönüştürmesi, tam olarak bir veri kümesiyle veya bağlı hizmetle ilişkilendirilir. Veri kümesi, yazmak veya okumak istediğiniz verilerin şeklini ve konumunu tanımlar. Dosya tabanlı veri kümesi kullanılıyorsa, aynı anda birden fazla dosyayla çalışmak için kaynağınızdan joker karakterler ve dosya listelerini kullanabilirsiniz.
 
 ## <a name="inline-datasets"></a>Satır içi veri kümeleri
 
@@ -37,22 +37,20 @@ Satır içi veri kümesi kullanmak için, **kaynak türü** seçicideki istenen 
 
 ![Satır içi veri kümesi](media/data-flow/inline-selector.png "Satır içi veri kümesi")
 
-### <a name="supported-inline-dataset-formats"></a>Desteklenen satır içi veri kümesi biçimleri
-
-Şu anda kullanılabilen tek satır içi veri kümesi biçimi, [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md)'Dan okunan [ortak veri modelidir](format-common-data-model.md#source-properties) .
-
-## <a name="supported-source-datasets-in-mapping-data-flow"></a>Eşleme veri akışında desteklenen kaynak veri kümeleri
+##  <a name="supported-source-types"></a><a name="supported-sources"></a>Desteklenen kaynak türleri
 
 Veri akışı eşleme, bir Ayıkla, yükle, Dönüştür (ELT) yaklaşımını izler ve Azure 'da tümü olan *hazırlama* veri kümeleri ile birlikte kullanılır. Şu anda aşağıdaki veri kümeleri bir kaynak dönüşümünde kullanılabilir:
-    
-* [Azure Blob depolama](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, avro, metin, Parquet)
-* [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, avro, metin, Parquet)
-* [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, avro, metin, Parquet)
-* [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
-* [Azure SQL Veritabanı](connector-azure-sql-database.md#mapping-data-flow-properties)
-* [Azure CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
 
-Bu bağlayıcılara özgü ayarlar **kaynak seçenekleri** sekmesinde bulunur. bu ayarlarla ilgili bilgiler bağlayıcı belgelerinde bulunur. 
+| Bağlayıcı | Biçimlendir | Veri kümesi/satır içi |
+| --------- | ------ | -------------- |
+| [Azure Blob Depolama](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  <br> [Ortak veri modeli (Önizleme)](format-common-data-model.md#source-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- <br> -/✓ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL Veritabanı](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure CosmosDB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+
+Bu bağlayıcılara özgü ayarlar, **kaynak seçenekleri** sekmesinde bulunur. bu ayarlarda bilgi ve veri akışı betiği örnekleri bağlayıcı belgelerinde bulunur. 
 
 Azure Data Factory’nin [90’ın üzerinde yerel bağlayıcıya](connector-overview.md) erişimi vardır. Veri akışınız içindeki diğer kaynaklardan verileri dahil etmek için kopyalama etkinliğini kullanarak bu verileri desteklenen hazırlama alanlarından birine yükleyin.
 
@@ -62,6 +60,10 @@ Kaynak eklendikten sonra **kaynak ayarları** sekmesini kullanarak yapılandır�
 
 ![Kaynak ayarları sekmesi](media/data-flow/source1.png "Kaynak ayarları sekmesi")
 
+**Çıkış akışı adı:** Kaynak dönüşümünün adı.
+
+**Kaynak türü:** Satır içi veri kümesi mi yoksa mevcut bir veri kümesi nesnesi mi kullanacağınızı seçin.
+ 
 **Bağlantıyı Sına:** Veri akışının Spark hizmetinin kaynak veri kümenizde kullanılan bağlantılı hizmete başarıyla bağlanıp bağlanamamadığını test edin. Bu özelliğin etkinleştirilmesi için hata ayıklama modunun açık olması gerekir.
 
 **Şema DRFT:** [şema drını](concepts-data-flow-schema-drift.md) , veri akışlarınızda, sütun değişikliklerini açıkça tanımlamaya gerek kalmadan, esnek şemaları yerel olarak işleyebilme yeteneğidir.
@@ -76,12 +78,14 @@ Kaynak eklendikten sonra **kaynak ayarları** sekmesini kullanarak yapılandır�
 
 **Örnekleme:** Kaynağınızdaki satır sayısını sınırlamak için örnekleme 'yi etkinleştirin. Hata ayıklama amacıyla kaynağınızdan verileri test ettiğinizde veya örnekleyebilirsiniz bu ayarı kullanın.
 
-**Çok satırlı satırlar:** Kaynak metin dosyanız birden çok satıra yayılan dize değerleri içeriyorsa (örneğin, bir değer içindeki newlines) çok satırlı satırlar ' ı seçin. Bu ayar yalnızca, DelimitedText veri kümelerinde kullanılabilir.
-
 Kaynağınızın doğru yapılandırıldığını doğrulamak için hata ayıklama modunu açın ve bir veri önizlemesi getirin. Daha fazla bilgi için bkz. [hata ayıklama modu](concepts-data-flow-debug-mode.md).
 
 > [!NOTE]
 > Hata ayıklama modu açıldığında, hata ayıklama ayarlarındaki satır sınırı yapılandırması, veri önizlemesi sırasında kaynaktaki örnekleme ayarının üzerine yazar.
+
+## <a name="source-options"></a>Kaynak seçenekleri
+
+Kaynak seçenekleri sekmesi, seçilen bağlayıcıya ve biçime özgü ayarları içerir. Daha fazla bilgi ve örnek için ilgili [bağlayıcı belgelerine](#supported-sources)başvurun.
 
 ## <a name="projection"></a>Yansıtma
 
@@ -99,26 +103,18 @@ Sütun veri türlerini bir aşağı akış türetilmiş sütunlu dönüşümde d
 
 **Yansıtma** sekmesindeki **şemayı içeri aktar** düğmesi, bir şema projeksiyonu oluşturmak için etkin bir hata ayıklama kümesi kullanmanıza olanak sağlar. Her kaynak türünde kullanılabilir, burada şemanın içeri aktarılması, veri kümesinde tanımlanan yansıtmayı geçersiz kılacaktır. DataSet nesnesi değiştirilmeyecektir.
 
-Bu, karmaşık veri yapılarını destekleyen avro ve CosmosDB gibi veri kümelerinde kullanışlıdır. veri kümesinde şema tanımlarının mevcut olmasını gerektirmez.
+Bu, karmaşık veri yapılarını destekleyen avro ve CosmosDB gibi veri kümelerinde kullanışlıdır. veri kümesinde şema tanımlarının mevcut olmasını gerektirmez. Satır içi veri kümelerinde, şema kayması olmadan sütun meta verilerine başvurmak için tek yol budur.
 
 ## <a name="optimize-the-source-transformation"></a>Kaynak dönüşümünü iyileştirme
 
-Kaynak dönüştürmesi için **en iyileştirme** sekmesinde bir **kaynak** bölüm türü görebilirsiniz. Bu seçenek yalnızca kaynağınız Azure SQL veritabanı olduğunda kullanılabilir. Bunun nedeni, Data Factory SQL veritabanı kaynağınıza karşı büyük sorgular çalıştırmak için bağlantıları paralel hale geçirmeye çalışır.
+**En iyileştirme** sekmesi, her bir dönüştürme adımında bölüm bilgilerinin düzenlenmesine izin verir. Çoğu durumda, **geçerli bölümleme kullan** , bir kaynağın ideal bölümlendirme yapısına yönelik en iyi hale getirir.
+
+Bir Azure SQL veritabanı kaynağından okuyorsanız, özel **kaynak** bölümlendirme büyük olasılıkla verileri en hızlı okuyacaktır. ADF, veritabanınıza yönelik bağlantıları paralel hale getirerek büyük sorguları okur. Bu kaynak bölümleme, bir sütunda veya bir sorgu kullanılarak yapılabilir.
 
 ![Kaynak bölüm ayarları](media/data-flow/sourcepart3.png "leme")
-
-SQL veritabanı kaynağınızdaki verileri bölümlememeniz gerekmez, ancak bölümler büyük sorgularda yararlıdır. Bölümünüzü bir sütun veya sorgu üzerinde temel alabilirsiniz.
-
-### <a name="use-a-column-to-partition-data"></a>Verileri bölümlemek için bir sütun kullanma
-
-Kaynak tablonuzda, bölümlemek için bir sütun seçin. Bölüm sayısını da ayarlayın.
-
-### <a name="use-a-query-to-partition-data"></a>Verileri bölümlemek için bir sorgu kullanma
-
-Bir sorguya bağlı olarak bağlantıları bölümleyebilirsiniz seçeneğini belirleyebilirsiniz. Bir WHERE koşulun içeriğini girin. Örneğin Year > 1980 yazın.
 
 Eşleme veri akışı içinde iyileştirme hakkında daha fazla bilgi için, [optimizasyon sekmesine](concepts-data-flow-overview.md#optimize)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Türetilmiş sütun dönüşümü](data-flow-derived-column.md) ve [seçim dönüştürmesi](data-flow-select.md)oluşturmaya başlayın.
+[Türetilmiş sütun dönüşümünde](data-flow-derived-column.md) ve [seçim dönüşümünde](data-flow-select.md)veri akışınızı oluşturmaya başlayın.
