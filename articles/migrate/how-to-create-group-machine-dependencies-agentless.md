@@ -3,12 +3,12 @@ title: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık an
 description: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık analizini ayarlayın.
 ms.topic: how-to
 ms.date: 2/24/2020
-ms.openlocfilehash: 3259c861b0e64b560eb2a17a832a02b87855bebf
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 68c95c74768f9d9628f92b061754c942b080565c
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449201"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659996"
 ---
 # <a name="set-up-agentless-dependency-visualization"></a>Aracısız bağımlılık görselleştirmesini ayarlama 
 
@@ -103,8 +103,7 @@ Bağımlılık bulmayı başlattıktan sonra altı saat etrafında bağımlılı
 
 Bağımlılık verileri bir CSV biçiminde verilir ve indirilir. İndirilen dosya, bağımlılık analizi için etkinleştirilen tüm makinelerde bağımlılık verilerini içerir. 
 
-    ![Export dependencies](./media/how-to-create-group-machine-dependencies-agentless/export.png)
-
+![Bağımlılıkları dışarı aktar](./media/how-to-create-group-machine-dependencies-agentless/export.png)
 
 ## <a name="stop-dependency-discovery"></a>Bağımlılık bulmayı durdur
 

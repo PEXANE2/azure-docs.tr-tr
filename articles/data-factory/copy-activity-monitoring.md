@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 06/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 47824095e892ca3c919d2d871feb612758ab2308
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ed1a952cb640fcd64808ba49e1a0937d71d769f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417853"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655652"
 ---
 # <a name="monitor-copy-activity"></a>Kopyalama etkinliğini izleme
 
@@ -48,19 +48,19 @@ En son **yürütme ayrıntıları ve süreleri** , kopyalama etkinliğinizin üz
 
 ## <a name="monitor-programmatically"></a>Program aracılığıyla izleme
 
-Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, Kullanıcı arabirimi izleme görünümünü oluşturmak için kullanılan **etkinlik çalıştırma sonucu** > **çıktısını** Kopyala bölümünde de döndürülür. Aşağıda, döndürülebilecek özelliklerin tamamı listelenmiştir. Yalnızca kopyalama senaryonuz için geçerli olan özellikleri görürsünüz. Etkinlik çalışmalarının genel olarak nasıl izleneceği hakkında daha fazla bilgi için bkz. [programlı bir Azure Data Factory 'yi izleme](monitor-programmatically.md).
+Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, **Copy Activity run result**  >  Kullanıcı arabirimi izleme görünümünü oluşturmak için kullanılan etkinlik çalıştırma sonucu**çıktısını** Kopyala bölümünde de döndürülür. Aşağıda, döndürülebilecek özelliklerin tamamı listelenmiştir. Yalnızca kopyalama senaryonuz için geçerli olan özellikleri görürsünüz. Etkinlik çalışmalarının genel olarak nasıl izleneceği hakkında daha fazla bilgi için bkz. [programlı bir Azure Data Factory 'yi izleme](monitor-programmatically.md).
 
-| Özellik adı  | Açıklama | Çıkışdaki birim |
+| Özellik adı  | Description | Çıkışdaki birim |
 |:--- |:--- |:--- |
 | dataRead | Kaynaktaki okunan gerçek veri miktarı. | Int64 değeri, bayt cinsinden |
-| Veri yazıldı | Havuza yazılan/havuza kaydedilen verilerin gerçek bağlaması. Boyut, her veri deposunun verileri `dataRead` nasıl depoladığını birbirleriyle ilişkilendiren şekilde boyutundan farklı olabilir. | Int64 değeri, bayt cinsinden |
+| Veri yazıldı | Havuza yazılan/havuza kaydedilen verilerin gerçek bağlaması. Boyut, `dataRead` her veri deposunun verileri nasıl depoladığını birbirleriyle ilişkilendiren şekilde boyutundan farklı olabilir. | Int64 değeri, bayt cinsinden |
 | Filesoku | Dosya tabanlı kaynaktan okunan dosya sayısı. | Int64 değeri (birim yok) |
 | yazılan Files | Dosya tabanlı havuza yazılan/kaydedilen dosya sayısı. | Int64 değeri (birim yok) |
 | Kaynakcepeakconnections | Kopyalama etkinliği sırasında kaynak veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int64 değeri (birim yok) |
 | sinkPeakConnections | Kopyalama etkinliği sırasında havuz veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int64 değeri (birim yok) |
 | rowsRead | Kaynaktan okunan satır sayısı (ikili kopya için geçerli değildir). | Int64 değeri (birim yok) |
 | rowscop | Havuza kopyalanmış satır sayısı (ikili kopya için geçerli değildir). | Int64 değeri (birim yok) |
-| rowsSkipped | Atlanan uyumsuz satır sayısı. Doğru ayarı `enableSkipIncompatibleRow` yaparak, uyumsuz satırların atlanmasını sağlayabilirsiniz. | Int64 değeri (birim yok) |
+| rowsSkipped | Atlanan uyumsuz satır sayısı. Doğru ayarı yaparak, uyumsuz satırların atlanmasını sağlayabilirsiniz `enableSkipIncompatibleRow` . | Int64 değeri (birim yok) |
 | copyDuration | Kopya çalıştırmasının süresi. | Int32 değeri, saniye cinsinden |
 | aktarım hızı | Veri aktarımı oranı. | Kayan nokta sayısı, KBps cinsinden |
 | Kaynakcepeakconnections | Kopyalama etkinliği sırasında kaynak veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int32 değeri (birim yok) |
@@ -68,10 +68,10 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, Kullan
 | sqlDwPolyBase | Veriler SQL veri ambarı 'na kopyalandığında PolyBase 'in kullanılıp kullanılmayacağını belirtir. | Boole |
 | Redkaydırıcı Tunload | Redshift öğesinden veri kopyalanırken KALDıRMA kullanılıp kullanılmayacağını belirtir. | Boole |
 | hdfsDistcp | Veriler, ne zaman bir sunucudan kopyalanırsa kullanılır. | Boole |
-| Etkilenen bir tümleştirme çalışma zamanı | Etkinlik çalıştırmasının gücü için kullanılan tümleştirme çalışma zamanı (IR) veya çalışma zamanları (biçiminde `<IR name> (<region if it's Azure IR>)`). | Metin (dize) |
+| Etkilenen bir tümleştirme çalışma zamanı | Etkinlik çalıştırmasının gücü için kullanılan tümleştirme çalışma zamanı (IR) veya çalışma zamanları (biçiminde) `<IR name> (<region if it's Azure IR>)` . | Metin (dize) |
 | Useddataıntegrationunits | Kopyalama sırasında etkili veri tümleştirme birimleri. | Int32 değeri |
 | Usedparallelkopyaları | Kopya sırasında etkin Paralellkopyalar. | Int32 değeri |
-| redirectRowPath | `redirectIncompatibleRowSettings` Özellikte yapılandırdığınız blob depolamadaki uyumsuz satırların yolu. Bkz. [hata toleransı](copy-activity-overview.md#fault-tolerance). | Metin (dize) |
+| redirectRowPath | Özellikte yapılandırdığınız blob depolamadaki uyumsuz satırların yolu `redirectIncompatibleRowSettings` . Bkz. [hata toleransı](copy-activity-overview.md#fault-tolerance). | Metin (dize) |
 | executionDetails | Kopyalama etkinliğinin aşamaları hakkında daha fazla ayrıntı ve ilgili adımlar, süreler, konfigürasyonlar vb. Bu bölümü değiştirebileceğinden, bu bölümü ayrıştırmayı önermiyoruz. Kopyalama performansını anlamanıza ve sorunlarını gidermenize nasıl yardımcı olduğunu daha iyi anlamak için, [görsel izleme](#monitor-visually) bölümüne bakın. | Dizi |
 | Perfönerisi | Performans ayarlama ipuçlarını kopyalayın. Ayrıntılar için [performans ayarlama ipuçlarına](copy-activity-performance-troubleshooting.md#performance-tuning-tips) bakın. | Dizi |
 
@@ -153,6 +153,6 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, Kullan
 ## <a name="next-steps"></a>Sonraki adımlar
 Diğer kopyalama etkinliği makalelerine bakın:
 
-\- [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
+\-[Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
 
 \- [Kopyalama etkinliği performansı](copy-activity-performance.md)

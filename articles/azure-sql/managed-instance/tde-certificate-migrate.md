@@ -1,6 +1,6 @@
 ---
 title: TDE sertifikası ile yönetilen örneği geçirme
-description: Azure SQL yönetilen örneği 'ne saydam veri şifrelemesi ile bir veritabanının veritabanı şifreleme anahtarını koruyan sertifikayı geçirme
+description: Azure SQL yönetilen örneği Saydam Veri Şifrelemesi bir veritabanının veritabanı şifreleme anahtarını koruyan bir sertifika geçirme
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,34 +11,34 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
-ms.openlocfilehash: eb8c794f4817c11d30112fbdf7d754081cc29859
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d2f5439874590db0f2775667d91586c51d6c43b3
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045791"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660309"
 ---
-# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-managed-instance"></a>TDE korumalı veritabanının sertifikasını Azure SQL Yönetilen Örneği’ne geçirme
+# <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>TDE korumalı bir veritabanının sertifikasını Azure SQL yönetilen örneği 'ne geçirme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Yerel geri yükleme seçeneği kullanılarak [Saydam veri şifrelemesi](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) tarafından korunan bir VERITABANıNı Azure SQL yönetilen örneğine geçirirken, SQL Server örneğinden karşılık gelen sertifikanın veritabanı geri yüklemeden önce geçirilmesi gerekir. Bu makalede, sertifikayı Azure SQL yönetilen örneği 'ne el ile geçirme işleminde izlenecek yol gösterilmektedir:
+Yerel geri yükleme seçeneğini kullanarak [Saydam veri şifrelemesi (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) ile korunan bir VERITABANıNı Azure SQL yönetilen örneğine geçirdiğinizde, SQL Server örneğinden karşılık gelen sertifikanın veritabanı geri yüklemeden önce geçirilmesi gerekir. Bu makalede, sertifikayı Azure SQL yönetilen örneği 'ne el ile geçirme işleminde izlenecek yol gösterilmektedir:
 
 > [!div class="checklist"]
 >
-> * Sertifikayı Kişisel Bilgi Değişimi (.pfx) dosyası olarak dışarı aktarma
-> * Sertifikayı dosyadan base-64 dizesine ayıklama
-> * PowerShell cmdlet’ini kullanarak bunu karşıya yükleme
+> * Sertifikayı kişisel bilgi değişimi (. pfx) dosyasına dışarı aktarma
+> * Sertifikayı bir dosyadan temel 64 dizeye Ayıkla
+> * PowerShell cmdlet 'ini kullanarak karşıya yükleme
 
-Tam olarak yönetilen hizmeti, hem TDE Protected Database hem de karşılık gelen sertifikanın sorunsuz geçişi için kullanan alternatif bir seçenek için, [Azure veritabanı geçiş hizmeti 'ni kullanarak şirket içi veritabanınızı Azure SQL yönetilen örneği 'ne geçirme](../../dms/tutorial-sql-server-to-managed-instance.md)konusuna bakın.
+Hem TDE korumalı bir veritabanının hem de karşılık gelen sertifikanın sorunsuz geçirilmesi için tam olarak yönetilen bir hizmet kullanan alternatif bir seçenek için, [Azure veritabanı geçiş hizmeti 'ni kullanarak şirket içi veritabanınızı Azure SQL yönetilen örneği 'ne geçirme](../../dms/tutorial-sql-server-to-managed-instance.md)konusuna bakın.
 
 > [!IMPORTANT]
-> Geçirilen sertifika yalnızca TDE korumalı veritabanını geri yüklemek için kullanılır. Geri yükleme işlemi yapıldıktan kısa süre sonra, geçirilen sertifika, örnekte belirlediğiniz saydam veri şifrelemesinin türüne bağlı olarak, hizmet tarafından yönetilen sertifika veya asimetrik anahtar tarafından farklı bir koruyucu ile değiştirilmiştir.
+> Geçirilen bir sertifika yalnızca TDE korumalı veritabanının geri yüklenmesi için kullanılır. Geri yükleme yapıldıktan kısa süre sonra, geçirilen sertifika, örnek üzerinde ayarlamış olduğunuz TDE türüne bağlı olarak, hizmet tarafından yönetilen bir sertifika veya anahtar kasasından asimetrik bir anahtarla değiştirilmiştir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şu önkoşullar gereklidir:
 
-* Şirket içi sunucuya veya dosya olarak dışarı aktarılan sertifikaya erişimi olan başka bir bilgisayara yüklenmiş [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) komut satırı aracı. Pvk2Pfx aracı, tek başına kendi içinde bir komut satırı ortamı olan [Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk)'in bir parçasıdır.
+* Şirket içi sunucuya veya dosya olarak dışarı aktarılan sertifikaya erişimi olan başka bir bilgisayara yüklenmiş [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) komut satırı aracı. Pvk2Pfx Aracı, kendi içinde bulunan bir komut satırı ortamı olan [Kurumsal Windows Sürücü Seti](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk)'nin bir parçasıdır.
 * [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell) sürüm 5.0 veya üstü yüklenmiş olmalıdır.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -66,17 +66,17 @@ Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cl
 
 * * *
 
-## <a name="export-tde-certificate-to-a-personal-information-exchange-pfx-file"></a>TDE sertifikasını Kişisel Bilgi Değişimi (.pfx) dosyasında dışarı aktarma
+## <a name="export-the-tde-certificate-to-a-pfx-file"></a>TDE sertifikasını bir. pfx dosyasına dışarı aktarma
 
-Sertifika doğrudan kaynak SQL Server’dan veya sertifika depolama alanından (burada tutuluyorsa) dışarı aktarılabilir.
+Sertifika, kaynak SQL Server örneğinden veya burada tutuluyorsa sertifika deposundan doğrudan aktarılabilir.
 
-### <a name="export-certificate-from-the-source-sql-server"></a>Sertifikayı kaynak SQL Server’dan dışarı aktarma
+### <a name="export-the-certificate-from-the-source-sql-server-instance"></a>Sertifikayı kaynak SQL Server örneğinden dışarı aktarma
 
-Sertifikayı SQL Server Management Studio ile dışarı aktarmak ve bunu pfx biçimine dönüştürmek için aşağıdaki adımları kullanın. Bu adımlarda sertifikanın dosya adları ve yolları için *TDE_Cert* ve *full_path* genel adları kullanılır. Bunlar gerçek adlarla değiştirilmelidir.
+Sertifikayı SQL Server Management Studio dışarı aktarmak ve. pfx biçimine dönüştürmek için aşağıdaki adımları kullanın. *TDE_Cert* ve *full_path* genel adları, adımlar aracılığıyla sertifika ve dosya adları ve yollar için kullanılmaktadır. Bunlar gerçek adlarla değiştirilmelidir.
 
-1. SSMS’de yeni bir sorgu penceresi açın ve kaynak SQL Server’a bağlanın.
+1. SSMS 'de yeni bir sorgu penceresi açın ve kaynak SQL Server örneğine bağlanın.
 
-1. TDE korumalı veritabanlarını listelemek ve geçirilecek veritabanının şifrelemesini koruyan sertifikanın adını almak için şu betiği kullanın:
+1. TDE korumalı veritabanlarını listelemek ve geçirilecek veritabanının şifrelemesini koruyan sertifikanın adını almak için aşağıdaki betiği kullanın:
 
    ```sql
    USE master
@@ -105,31 +105,31 @@ Sertifikayı SQL Server Management Studio ile dışarı aktarmak ve bunu pfx bi�
    )
    ```
 
-   ![yedek TDE sertifikası](./media/tde-certificate-migrate/backup-onprem-certificate.png)
+   ![Yedekleme TDE sertifikası](./media/tde-certificate-migrate/backup-onprem-certificate.png)
 
-1. Pvk2Pfx aracını kullanarak, sertifika bilgilerini yeni oluşturulmuş dosya çiftinden Kişisel Bilgi Değişimi (.pfx) dosyasına kopyalamak için PowerShell konsolunu kullanın:
+1. Yeni oluşturulan dosyalardan bir çiftin sertifika bilgilerini Pvk2Pfx aracını kullanarak bir. pfx dosyasına kopyalamak için PowerShell konsolunu kullanın:
 
    ```cmd
    .\pvk2pfx -pvk c:/full_path/TDE_Cert.pvk  -pi "<SomeStrongPassword>" -spc c:/full_path/TDE_Cert.cer -pfx c:/full_path/TDE_Cert.pfx
    ```
 
-### <a name="export-certificate-from-certificate-store"></a>Sertifika depolama alanından sertifikayı dışarı aktarma
+### <a name="export-the-certificate-from-a-certificate-store"></a>Sertifikayı bir sertifika deposundan dışarı aktarma
 
-Sertifika SQL Server’ın yerel makine sertifika depolama alanında tutuluyorsa şu adımlar kullanılarak dışarı aktarılabilir:
+Sertifika SQL Server yerel makine sertifika deposunda tutuluyorsa, bu, aşağıdaki adımlar kullanılarak verilebilirler:
 
-1. PowerShell konsolunu açın ve Microsoft Yönetim Konsolu’nun Sertifikalar ek bileşenini açmak için şu komutu yürütün:
+1. PowerShell konsolunu açın ve Microsoft Yönetim Konsolu 'nun Sertifikalar ek bileşenini açmak için aşağıdaki komutu yürütün:
 
    ```cmd
    certlm
    ```
 
-2. Sertifikalar MMC ek bileşeninde, sertifikaların listesini görmek için Kişisel -> Sertifikalar yolunu genişletin
+2. Sertifikalar MMC ek bileşeninde, sertifikaların listesini görmek için kişisel > sertifikaları yolunu genişletin.
 
-3. Sertifikaya sağ tıklayın ve Dışarı Aktar... seçeneğine tıklayın
+3. Sertifikaya sağ tıklayın ve **dışarı aktar**' a tıklayın.
 
-4. Sertifikayı ve özel anahtarı Kişisel Bilgi Değişimi biçiminde dışarı aktarmak için sihirbazı izleyin
+4. Sertifikayı ve özel anahtarı bir. pfx biçimine aktarmak için Sihirbazı izleyin.
 
-## <a name="upload-certificate-to-azure-sql-managed-instance-using-azure-powershell-cmdlet"></a>Azure PowerShell cmdlet’ini kullanarak sertifikayı Azure SQL Yönetilen Örneği’ne yükleyin
+## <a name="upload-the-certificate-to-azure-sql-managed-instance-using-an-azure-powershell-cmdlet"></a>Azure PowerShell cmdlet 'ini kullanarak sertifikayı Azure SQL yönetilen örneği 'ne yükleme
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -160,7 +160,7 @@ Sertifika SQL Server’ın yerel makine sertifika depolama alanında tutuluyorsa
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Önce *. pfx* dosyanız ile [bir Azure Key Vault](/azure/key-vault/key-vault-manage-with-cli2) ayarlamanız gerekir.
+Önce *. pfx* dosyanız Ile [bir Azure Anahtar Kasası ayarlamanız](/azure/key-vault/key-vault-manage-with-cli2) gerekir.
 
 1. PowerShell’deki hazırlık adımlarını başlatın:
 
@@ -184,10 +184,10 @@ Sertifika SQL Server’ın yerel makine sertifika depolama alanında tutuluyorsa
 
 * * *
 
-Sertifika artık belirtilen yönetilen örnek tarafından kullanılabilir ve buna karşılık gelen TDE korumalı veritabanının yedeklemesi başarıyla geri yüklenebilir.
+Sertifika artık belirtilen yönetilen örnek tarafından kullanılabilir ve ilgili TDE korunan veritabanının yedeklemesi başarıyla geri yüklenebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Saydam Veri Şifrelemesi ile veritabanının şifreleme anahtarını koruyarak sertifikayı şirket içi veya IaaS SQL Server’dan Azure SQL Yönetilen Örneği’ne geçirmeyi öğrendiniz.
+Bu makalede, şirket içi veya IaaS SQL Server örneğinden Azure SQL yönetilen örneği 'ne Saydam Veri Şifrelemesi olan bir veritabanının şifreleme anahtarını koruyan bir sertifikayı nasıl geçirebileceğiniz öğrendiniz.
 
-Bir veritabanı yedeklemesini Azure SQL yönetilen örneğine geri yüklemeyi öğrenmek için bkz. [Azure SQL yönetilen örneğine veritabanı yedeklemesini geri yükleme](restore-sample-database-quickstart.md) .
+Bir veritabanı yedeklemesini Azure SQL yönetilen örneği 'ne geri yüklemeyi öğrenmek için bkz. [Azure SQL yönetilen örneği 'ne veritabanı yedeklemesini geri yükleme](restore-sample-database-quickstart.md) .

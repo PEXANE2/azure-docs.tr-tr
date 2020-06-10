@@ -3,16 +3,16 @@ title: SMB kullanarak Linux VM 'lerinde Azure dosya depolamayı bağlama
 description: Azure CLı ile SMB kullanarak Linux VM 'lerinde Azure dosya depolama 'yı bağlama
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 0314095a053087a7d490926c41c6ae386c304919
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ab798ccbbbfc9cfc11ae85fd698ecedcb5e8e73
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066642"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658162"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>SMB kullanarak Linux VM 'lerinde Azure dosya depolamayı bağlama
 
@@ -35,7 +35,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-[Az Storage Account Create](/cli/azure/storage/account)kullanılarak oluşturduğunuz kaynak grubu içinde yeni bir depolama hesabı oluşturun. Bu örnek, *Mystorageacct\<Random Number>* adlı bir depolama hesabı oluşturur ve bu depolama hesabının adını **storageacct**değişkenine koyar. Depolama hesabı adları benzersiz olmalıdır, bu, `$RANDOM` ' ı kullanarak sonuna bir sayı ekler ve benzersiz hale getirir.
+[Az Storage Account Create](/cli/azure/storage/account)kullanılarak oluşturduğunuz kaynak grubu içinde yeni bir depolama hesabı oluşturun. Bu örnek, *Mystorageacct \<random number> * adlı bir depolama hesabı oluşturur ve bu depolama hesabının adını **storageacct**değişkenine koyar. Depolama hesabı adları benzersiz olmalıdır, bu, ' ı kullanarak `$RANDOM` sonuna bir sayı ekler ve benzersiz hale getirir.
 
 ```azurecli
 STORAGEACCT=$(az storage account create \
@@ -93,7 +93,7 @@ Azure dosya paylaşımından yerel dizine bağlayın.
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
-Yukarıdaki komut, [CIFS](https://linux.die.net/man/8/mount.cifs)'ye özgü Azure dosya paylaşımından ve seçeneklerini bağlamak için [Mount](https://linux.die.net/man/8/mount) komutunu kullanır. Özellikle, file_mode ve dir_mode seçenekleri dosya ve dizinleri izin `0777`olarak ayarlar. `0777` İzin, tüm kullanıcılara okuma, yazma ve yürütme izinleri verir. Değerleri diğer [chmod izinleriyle](https://en.wikipedia.org/wiki/Chmod)değiştirerek bu izinleri değiştirebilirsiniz. Ayrıca GID veya Uid gibi diğer [CIFS](https://linux.die.net/man/8/mount.cifs) seçeneklerini de kullanabilirsiniz. 
+Yukarıdaki komut, [CIFS](https://linux.die.net/man/8/mount.cifs)'ye özgü Azure dosya paylaşımından ve seçeneklerini bağlamak için [Mount](https://linux.die.net/man/8/mount) komutunu kullanır. Özellikle, file_mode ve dir_mode seçenekleri dosya ve dizinleri izin olarak ayarlar `0777` . `0777`İzin, tüm kullanıcılara okuma, yazma ve yürütme izinleri verir. Değerleri diğer [chmod izinleriyle](https://en.wikipedia.org/wiki/Chmod)değiştirerek bu izinleri değiştirebilirsiniz. Ayrıca GID veya Uid gibi diğer [CIFS](https://linux.die.net/man/8/mount.cifs) seçeneklerini de kullanabilirsiniz. 
 
 
 ## <a name="persist-the-mount"></a>Bağlama devam ettir

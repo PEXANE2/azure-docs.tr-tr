@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 7c2c14a937b4ef55d0e5f71e7b20214428ecd68c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e04da10d71eed3706b87fc728a13927aeae82826
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158206"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660134"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure Databricks kullanarak Azure IoT Central özel analiz ile genişletme
 
@@ -42,7 +42,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 | Fiyatlandırma planı | Standart |
 | Uygulama şablonu | Mağaza içi analiz – koşul izleme |
 | Uygulama adı | Varsayılanı kabul edin veya kendi adınızı seçin |
-| URL'si | Varsayılanı kabul edin veya kendi benzersiz URL ön ekini seçin |
+| URL | Varsayılanı kabul edin veya kendi benzersiz URL ön ekini seçin |
 | Dizin | Azure Active Directory kiracınız |
 | Azure aboneliği | Azure aboneliğiniz |
 | Bölge | En yakın bölgeniz |
@@ -136,7 +136,7 @@ Kümenizi oluşturmak için aşağıdaki tablodaki bilgileri kullanın:
 | Küme modu | Standart |
 | Databricks Runtime sürümü | 5,5 LTS (Scala 2,11, Spark 2.4.3) |
 | Python sürümü | 3 |
-| Otomatik ölçeklendirmeyi etkinleştir | Hayır |
+| Otomatik ölçeklendirmeyi etkinleştir | No |
 | İşlem yapılmadan dakika sonra Sonlandır | 30 |
 | Çalışan türü | Standard_DS3_v2 |
 | Çalışanlarınız | 1 |
@@ -231,4 +231,4 @@ Bu nasıl yapılır kılavuzunda şunları öğrenirsiniz:
 * *Sürekli veri dışa aktarma*kullanarak bir IoT Central uygulamasından Telemetriyi akışla.
 * Telemetri verilerini analiz etmek ve çizmek için bir Azure Databricks ortamı oluşturun.
 
-Artık özel analizler oluşturmayı bildiğinize göre, önerilen sonraki adım [uygulamanızı nasıl yöneteceğinizi](howto-administer.md)öğrenirsiniz.
+Artık özel analizler oluşturmayı bildiğinize göre, önerilen sonraki adım [Azure IoT Central verilerinizi Power BI panosunda görselleştirmeyi ve çözümlemeyi](howto-connect-powerbi.md)öğrenmektir.

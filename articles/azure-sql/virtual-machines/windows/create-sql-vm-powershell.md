@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell sahip SQL Server VM 'Ler için sağlama kılavuzu | Microsoft Docs
+title: Azure VM 'de SQL Server sağlamak için Azure PowerShell kullanma kılavuzu
 description: SQL Server sanal makine galeri görüntüleri ile Azure VM oluşturmak için adımlar ve PowerShell komutları sağlar.
 services: virtual-machines-windows
 documentationcenter: na
@@ -15,14 +15,15 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 39289740bd1d00a5916db45178f1eb1ef9bc7b12
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: def998c018a90cc288204650ae8d713bf1b4b5bc
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046113"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84656910"
 ---
-# <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Azure PowerShell ile SQL Server sanal makineler sağlama
+# <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server sağlamak için Azure PowerShell kullanma
+
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Bu kılavuzda, Azure PowerShell sahip Windows SQL Server VM 'Leri oluşturma seçenekleriniz açıklanmaktadır. Daha fazla varsayılan değere sahip kolaylaştırılmış Azure PowerShell bir örnek için bkz. [SQL VM Azure PowerShell hızlı başlangıç](sql-vm-create-powershell-quickstart.md).

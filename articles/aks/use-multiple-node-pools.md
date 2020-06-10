@@ -4,19 +4,19 @@ description: Azure Kubernetes Service (AKS) ' de bir küme için birden çok dü
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: bf7e767f1a7b0c657c744c96b308160393e3f326
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d6616c3de86e3115e13c60f9d1b484366a368899
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610930"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658380"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
 Azure Kubernetes hizmeti 'nde (AKS), aynı yapılandırmanın düğümleri *düğüm havuzlarında*birlikte gruplandırılır. Bu düğüm havuzları, uygulamalarınızı çalıştıran temel VM 'Leri içerir. Bir [sistem düğüm havuzu][use-system-pool]oluşturan bir aks kümesi oluşturduğunuzda, ilk düğüm sayısı ve boyutu (SKU) tanımlanmıştır. Farklı işlem veya depolama taleplerine sahip uygulamaları desteklemek için ek *Kullanıcı düğümü havuzları*oluşturabilirsiniz. Sistem düğüm havuzları, CoreDNS ve tunnelfront gibi kritik sistem yığınlarını barındırmanın birincil amacını sunar. Kullanıcı düğümü havuzları, uygulama yığınlarınızı barındırmanın birincil amacını sunar. Ancak, aks kümenizde yalnızca bir havuza sahip olmak istiyorsanız, uygulama Pod 'leri sistem düğüm havuzlarında zamanlanabilir. Kullanıcı düğümü havuzları, uygulamaya özgü yığınlarınızı yerleştirdiğiniz yerdir. Örneğin, işlem yoğunluklu uygulamalar için GPU veya yüksek performanslı SSD depolamaya erişim sağlamak için bu ek Kullanıcı düğümü havuzlarını kullanın.
 
 > [!NOTE]
-> Bu özellik, birden çok düğüm havuzunun oluşturulması ve yönetilmesi üzerinde daha yüksek denetim sağlar. Sonuç olarak, oluşturma/güncelleştirme/silme için ayrı komutlar gerekir. Daha önce, managedCluster `az aks update` API 'yi aracılığıyla veya kullanarak `az aks create` işlem yapın ve denetim düzlemini ve tek bir düğüm havuzunu değiştirmek için tek seçenektir. Bu özellik, agentPool API 'SI aracılığıyla aracı havuzları için ayarlanan ayrı bir işlem sunar ve tek bir düğüm `az aks nodepool` havuzunda işlemleri yürütmek için komut kümesinin kullanılmasını gerektirir.
+> Bu özellik, birden çok düğüm havuzunun oluşturulması ve yönetilmesi üzerinde daha yüksek denetim sağlar. Sonuç olarak, oluşturma/güncelleştirme/silme için ayrı komutlar gerekir. Daha önce `az aks create` `az aks update` , MANAGEDCLUSTER API 'yi aracılığıyla veya kullanarak işlem yapın ve denetim düzlemini ve tek bir düğüm havuzunu değiştirmek için tek seçenektir. Bu özellik, agentPool API 'SI aracılığıyla aracı havuzları için ayarlanan ayrı bir işlem sunar ve `az aks nodepool` tek bir düğüm havuzunda işlemleri yürütmek için komut kümesinin kullanılmasını gerektirir.
 
 Bu makalede bir AKS kümesinde birden çok düğüm havuzu oluşturma ve yönetme konusu gösterilmektedir.
 
@@ -67,7 +67,7 @@ Kümenin oluşturulması birkaç dakika sürer.
 > [!NOTE]
 > Kümenizin güvenilir bir şekilde çalışmasını sağlamak için, bu düğüm havuzunda önemli sistem hizmetleri çalıştığı için varsayılan düğüm havuzunda en az 2 (iki) düğüm çalıştırmalısınız.
 
-Küme kullanıma hazırsa, şu ile `kubectl`kullanılacak küme kimlik bilgilerini almak için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın:
+Küme kullanıma hazırsa, şu ile kullanılacak küme kimlik bilgilerini almak için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın `kubectl` :
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -123,7 +123,7 @@ Aşağıdaki örnek çıktı, düğüm havuzundaki üç düğüm ile *mynodepool
 ```
 
 > [!TIP]
-> Bir düğüm havuzu eklediğinizde hiçbir *VMSize* belirtilmemişse, varsayılan boyut Windows düğüm havuzları için *Standard_DS2_v3* ve Linux düğüm havuzları için *Standard_DS2_v2* . Bir *Orchestratorversion* belirtilmemişse, varsayılan olarak denetim düzlemi ile aynı sürüme ayarlanır.
+> Bir düğüm havuzu eklediğinizde hiçbir *VMSize* belirtilmemişse, varsayılan boyut Windows düğüm havuzları için *Standard_D2s_v3* ve Linux düğüm havuzları için *Standard_DS2_v2* . Bir *Orchestratorversion* belirtilmemişse, varsayılan olarak denetim düzlemi ile aynı sürüme ayarlanır.
 
 ### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>Benzersiz alt ağa sahip bir düğüm havuzu ekleme (Önizleme)
 
@@ -208,7 +208,7 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 Düğümlerin belirtilen sürüme yükseltilmesi birkaç dakika sürer.
 
-En iyi uygulama olarak, bir AKS kümesindeki tüm düğüm havuzlarını aynı Kubernetes sürümüne yükseltmeniz gerekir. Varsayılan davranışı `az aks upgrade` , bu hizalamayı başarmak için tüm düğüm havuzlarını denetim düzlemesiyle birlikte yükseltmekte. Tek tek düğüm havuzlarını yükseltebilme özelliği, yukarıdaki kısıtlamalar dahilinde uygulama çalışma süresini korumak için sıralı yükseltme gerçekleştirmenize ve düğüm havuzları arasında dizin zamanlamauygulamanıza olanak tanır.
+En iyi uygulama olarak, bir AKS kümesindeki tüm düğüm havuzlarını aynı Kubernetes sürümüne yükseltmeniz gerekir. Varsayılan davranışı, `az aks upgrade` Bu hizalamayı başarmak için tüm düğüm havuzlarını denetim düzlemesiyle birlikte yükseltmekte. Tek tek düğüm havuzlarını yükseltebilme özelliği, yukarıdaki kısıtlamalar dahilinde uygulama çalışma süresini korumak için sıralı yükseltme gerçekleştirmenize ve düğüm havuzları arasında dizin zamanlamauygulamanıza olanak tanır.
 
 ## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Birden çok düğümlü havuzlarla küme denetim düzlemi 'ni yükseltme
 
@@ -222,11 +222,11 @@ AKS kümesi, Kubernetes sürümleriyle ilişkili iki küme kaynak nesnesine sahi
 
 Denetim düzlemi bir veya daha fazla düğüm havuzlarıyla eşlenir. Bir yükseltme işleminin davranışı, hangi Azure CLı komutunun kullanıldığına bağlıdır.
 
-AKS denetim düzleminin yükseltilmesi için kullanılması `az aks upgrade`gerekir. Bu komut, denetim düzlemi sürümünü ve kümedeki tüm düğüm havuzlarını yükseltir.
+AKS denetim düzleminin yükseltilmesi için kullanılması gerekir `az aks upgrade` . Bu komut, denetim düzlemi sürümünü ve kümedeki tüm düğüm havuzlarını yükseltir.
 
-`az aks upgrade` Komutun `--control-plane-only` bayrağıyla verilmesi yalnızca küme denetim düzlemini yükseltir. Kümedeki ilişkili düğüm havuzlarının hiçbiri değiştirilmez.
+`az aks upgrade`Komutun `--control-plane-only` bayrağıyla verilmesi yalnızca küme denetim düzlemini yükseltir. Kümedeki ilişkili düğüm havuzlarının hiçbiri değiştirilmez.
 
-Tek tek düğüm havuzlarının yükseltilmesi için `az aks nodepool upgrade`kullanılması gerekir. Bu komut yalnızca hedef düğüm havuzunu belirtilen Kubernetes sürümüyle yükseltir
+Tek tek düğüm havuzlarının yükseltilmesi için kullanılması gerekir `az aks nodepool upgrade` . Bu komut yalnızca hedef düğüm havuzunu belirtilen Kubernetes sürümüyle yükseltir
 
 ### <a name="validation-rules-for-upgrades"></a>Yükseltmeler için doğrulama kuralları
 
@@ -235,7 +235,7 @@ Bir kümenin denetim düzlemi ve düğüm havuzları için geçerli Kubernetes y
 * Düğüm havuzlarını yükseltmek için geçerli sürümlerin kuralları:
    * Düğüm havuzu sürümü, denetim düzlemi ile aynı *ana* sürüme sahip olmalıdır.
    * Düğüm havuzu *İkincil* sürümü, denetim düzlemi *sürümünün iki alt sürümü içinde* olmalıdır.
-   * Düğüm havuzu sürümü, Denetim `major.minor.patch` sürümünden daha büyük olamaz.
+   * Düğüm havuzu sürümü, denetim sürümünden daha büyük olamaz `major.minor.patch` .
 
 * Yükseltme işlemi gönderme kuralları:
    * Denetim düzlemi veya düğüm havuzu Kubernetes sürümü indirgeyemezsiniz.
@@ -354,7 +354,7 @@ Düğümlerin ve düğüm havuzunun silinmesi birkaç dakika sürer.
 
 Aşağıdaki örnekte, *Standard_NC6* VM boyutunu kullanan GPU tabanlı bir düğüm havuzu oluşturun. Bu VM 'Ler NVıDıA Tesla K80 kartı tarafından desteklenir. Kullanılabilir VM boyutları hakkında daha fazla bilgi için bkz. [Azure 'Da Linux sanal makineleri Için boyutlar][vm-sizes].
 
-[Az aks düğüm havuzu Add][az-aks-nodepool-add] komutunu yeniden kullanarak bir düğüm havuzu oluşturun. Bu kez, *gpunodepool*adını belirtin ve *Standard_NC6* boyutunu belirtmek için `--node-vm-size` parametresini kullanın:
+[Az aks düğüm havuzu Add][az-aks-nodepool-add] komutunu yeniden kullanarak bir düğüm havuzu oluşturun. Bu kez, *gpunodepool*adını belirtin ve `--node-vm-size` *Standard_NC6* boyutunu belirtmek için parametresini kullanın:
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -424,7 +424,7 @@ Kubernetes Zamanlayıcı, düğümlerde hangi iş yüklerinin çalıştırılaca
 
 Gelişmiş Kubernetes zamanlanmış özelliklerini kullanma hakkında daha fazla bilgi için bkz. [AKS 'de gelişmiş Zamanlayıcı özellikleri Için en iyi yöntemler][taints-tolerations]
 
-Bu örnekte,--Node-talitre komutunu kullanarak GPU tabanlı düğümünüz için bir Taint uygulayın. Önceki `kubectl get nodes` komutun çıktısından GPU tabanlı düğümünüz adını belirtin. Taınt bir *anahtar = değer* çifti ve sonra bir zamanlama seçeneği olarak uygulanır. Aşağıdaki örnek *SKU = GPU* çiftini kullanır ve pod 'yi tanımlar, aksi takdirde *NoSchedule* özelliğine sahiptir:
+Bu örnekte,--Node-talitre komutunu kullanarak GPU tabanlı düğümünüz için bir Taint uygulayın. Önceki komutun çıktısından GPU tabanlı düğümünüz adını belirtin `kubectl get nodes` . Taınt bir *anahtar = değer* çifti ve sonra bir zamanlama seçeneği olarak uygulanır. Aşağıdaki örnek *SKU = GPU* çiftini kullanır ve pod 'yi tanımlar, aksi takdirde *NoSchedule* özelliğine sahiptir:
 
 ```console
 az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
@@ -432,7 +432,7 @@ az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:No
 
 Aşağıdaki temel örnek YAML bildirimi, Kubernetes Scheduler 'ın GPU tabanlı düğümde bir NGıNX Pod çalıştırmasına izin vermek için bir tolerans kullanır. Daha uygun olan, ancak veri kümesine karşı bir TensorFlow işi çalıştırmak için yoğun zaman tüketen bir örnek için bkz. [AKS üzerinde işlem yoğunluğu yoğun iş yükleri Için GPU 'Ları kullanma][gpu-cluster].
 
-Adlı `gpu-toleration.yaml` bir dosya oluşturun ve aşağıdaki örnekteki YAML 'yi kopyalayın:
+Adlı bir dosya oluşturun `gpu-toleration.yaml` ve aşağıdaki örnekteki YAML 'yi kopyalayın:
 
 ```yaml
 apiVersion: v1
@@ -457,7 +457,7 @@ spec:
     effect: "NoSchedule"
 ```
 
-Şu `kubectl apply -f gpu-toleration.yaml` komutu kullanarak Pod 'u zamanlayın:
+Şu komutu kullanarak Pod 'u zamanlayın `kubectl apply -f gpu-toleration.yaml` :
 
 ```console
 kubectl apply -f gpu-toleration.yaml
@@ -490,7 +490,7 @@ Yalnızca bu toleranlama uygulanmış olan bir düğüm, *gpunodepool*içindeki 
 
 Düğüm havuzu oluştururken, bu düğüm havuzuna litre, Etiketler veya Etiketler ekleyebilirsiniz. Bir taınt, etiket veya etiket eklediğinizde, bu düğüm havuzundaki tüm düğümler o taınt, etiket veya etiketi de alır.
 
-Taint ile bir düğüm havuzu oluşturmak için [az aks nodepool Add][az-aks-nodepool-add]kullanın. *Container TNP* adını belirtin ve bu `--node-taints` parametreyi, Taint için *SKU = GPU: NoSchedule* belirtmek üzere kullanın.
+Taint ile bir düğüm havuzu oluşturmak için [az aks nodepool Add][az-aks-nodepool-add]kullanın. *Container TNP* adını belirtin ve bu parametreyi, `--node-taints` Taint için *SKU = GPU: NoSchedule* belirtmek üzere kullanın.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -530,7 +530,7 @@ Taint bilgileri, düğümlerin zamanlama kurallarını işlemek için Kubernetes
 
 Düğüm havuzu oluşturma sırasında düğüm havuzuna de etiket ekleyebilirsiniz. Düğüm havuzunda ayarlanan Etiketler düğüm havuzundaki her bir düğüme eklenir. Bu Etiketler, düğümlerin zamanlama kurallarını işlemek için [Kubernetes içinde görülebilir][kubernetes-labels] .
 
-Etiketli bir düğüm havuzu oluşturmak için [az aks nodepool Add][az-aks-nodepool-add]kullanın. *Labelnp* adını belirtin ve bu `--labels` parametreyi kullanarak *Bölüm = It* ve *costcenter = 9999* etiketlerini belirtin.
+Etiketli bir düğüm havuzu oluşturmak için [az aks nodepool Add][az-aks-nodepool-add]kullanın. *Labelnp* adını belirtin ve `--labels` Bu parametreyi kullanarak *Bölüm = It* ve *costcenter = 9999* etiketlerini belirtin.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -572,7 +572,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 AKS kümenizdeki düğüm havuzlarına bir Azure etiketi uygulayabilirsiniz. Düğüm havuzuna uygulanan etiketler, düğüm havuzu içindeki her bir düğüme uygulanır ve yükseltmeler aracılığıyla kalıcı hale getirilir. Etiketler, genişleme işlemleri sırasında düğüm havuzuna eklenen yeni düğümlere de uygulanır. Etiket eklemek, ilke izleme veya maliyet tahmini gibi görevlerle yardımcı olabilir.
 
-[Az aks nodepool Add][az-aks-nodepool-add]' i kullanarak bir düğüm havuzu oluşturun. *Tagnodepool* adını belirtin ve bu `--tag` parametreyi kullanarak, Etiketler için *Bölüm = It* ve *costcenter = 9999* parametresini belirtin.
+[Az aks nodepool Add][az-aks-nodepool-add]' i kullanarak bir düğüm havuzu oluşturun. *Tagnodepool* adını belirtin ve `--tag` Bu parametreyi kullanarak, Etiketler için *Bölüm = It* ve *costcenter = 9999* parametresini belirtin.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -585,7 +585,7 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> Ayrıca, `--tags` [az aks nodepool Update][az-aks-nodepool-update] komutunu kullanırken ve küme oluşturma sırasında parametresini de kullanabilirsiniz. Küme oluşturma sırasında `--tags` parametresi, kümeyle oluşturulan ilk düğüm havuzuna etiketi uygular. Tüm etiket adları, [Azure kaynaklarınızı düzenlemek Için kullanılan etiketlerle][tag-limitation]ilgili sınırlamalara uymalıdır. Bir düğüm havuzunu parametresiyle güncelleştirmek, `--tags` var olan tüm etiket değerlerini güncelleştirir ve yeni Etiketler ekler. Örneğin, düğüm havuzunuzun *Bölüm = It* ve *costcenter = 9999* etiketleri varsa ve bunu *Team = dev* ve *costcenter = 111* ile GÜNCELLEŞTIRDIYSENIZ, Etiketler için nodepool, *Bölüm = It*, *costcenter = 111*ve *Team = dev* olur.
+> Ayrıca, `--tags` [az aks nodepool Update][az-aks-nodepool-update] komutunu kullanırken ve küme oluşturma sırasında parametresini de kullanabilirsiniz. Küme oluşturma sırasında parametresi, `--tags` kümeyle oluşturulan ilk düğüm havuzuna etiketi uygular. Tüm etiket adları, [Azure kaynaklarınızı düzenlemek Için kullanılan etiketlerle][tag-limitation]ilgili sınırlamalara uymalıdır. Bir düğüm havuzunu parametresiyle güncelleştirmek, `--tags` var olan tüm etiket değerlerini güncelleştirir ve yeni Etiketler ekler. Örneğin, düğüm havuzunuzun *Bölüm = It* ve *costcenter = 9999* etiketleri varsa ve bunu *Team = dev* ve *costcenter = 111* ile GÜNCELLEŞTIRDIYSENIZ, Etiketler için nodepool, *Bölüm = It*, *costcenter = 111*ve *Team = dev* olur.
 
 [Az aks nodepool List][az-aks-nodepool-list] komutundan aşağıdaki örnek çıktı, *tagnodepool* belirtilen *etikete*sahip düğümleri *oluşturuyor* olduğunu gösterir:
 

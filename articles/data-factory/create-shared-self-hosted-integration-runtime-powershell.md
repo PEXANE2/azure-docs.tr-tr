@@ -10,13 +10,13 @@ ms.author: abnarain
 author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
-ms.date: 10/31/2018
-ms.openlocfilehash: 0f018d6b94d1c5b9d9002a767b3ebceb6c9c746c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/10/2020
+ms.openlocfilehash: 8422d6978c21744696e3d37c34fdd867b014a19e
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106636"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655700"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Azure Data Factory içinde, şirket içinde barındırılan, paylaşılan bir tümleştirme çalışma zamanı oluşturma
 
@@ -28,21 +28,19 @@ Bu kılavuzda, Azure Data Factory paylaşılan bir şirket içinde barındırıl
 
 Azure Data Factory Kullanıcı arabirimini kullanarak, şirket içinde barındırılan, paylaşılan bir IR oluşturmak için aşağıdaki adımları gerçekleştirebilirsiniz:
 
-1. Paylaşılacak olan şirket içinde barındırılan IR 'de, bağlı IR oluşturmak istediğiniz veri fabrikasına izin verin.
+1. Şirket içinde barındırılan IR 'de, **başka bir veri fabrikasına Izin ver** ' i seçin ve "tümleştirme çalışma zamanı kurulumu" sayfasında, bağlı IR oluşturmak istediğiniz veri fabrikasını seçin.
       
-    ![Paylaşım sekmesinde izin verme düğmesi](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
-      
-    ![İzinleri atamaya yönelik seçimler](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)     
+    ![Paylaşım sekmesinde izin verme düğmesi](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)  
     
-2. Paylaşılacak, şirket içinde barındırılan IR 'nin kaynak KIMLIĞINI aklınızda olun.
-      
-   ![Kaynak KIMLIĞININ konumu](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
-    
+2. ' İ ve şirket içinde barındırılan IR 'nin "kaynak KIMLIĞI" ni paylaşılan bir yere kopyalayın.
+         
 3. İzinlerin verildiği veri fabrikasında, yeni bir kendinden konak IR (bağlantılı) oluşturun ve kaynak KIMLIĞINI girin.
       
-   ![Bağlı bir şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma düğmesi](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
-      
-    ![Ad ve kaynak KIMLIĞI için kutular](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
+    ![Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma düğmesi](media/create-self-hosted-integration-runtime/create-linkedir-1.png)
+   
+    ![Bağlı bir şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma düğmesi](media/create-self-hosted-integration-runtime/create-linkedir-2.png) 
+
+    ![Ad ve kaynak KIMLIĞI için kutular](media/create-self-hosted-integration-runtime/create-linkedir-3.png)
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Azure PowerShell kullanarak, şirket içinde barındırılan, paylaşılan bir IR oluşturma
 
@@ -101,7 +99,7 @@ Azure PowerShell kullanarak, şirket içinde barındırılan paylaşılan bir IR
     > [!NOTE]  
     > Bu adım isteğe bağlıdır. Zaten bir veri fabrikanızı varsa, bu adımı atlayın. 
 
-    [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak bir [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek WestEurope konumunda adlı `myResourceGroup` bir kaynak grubu oluşturur: 
+    [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak bir [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek WestEurope konumunda adlı bir kaynak grubu oluşturur `myResourceGroup` : 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName

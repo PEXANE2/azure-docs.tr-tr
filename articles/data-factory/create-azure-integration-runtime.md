@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 901761c8a5dc17cd7f00c3f04153c8e9aa99b648
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: c7880fd7fb687483409ce591059e0f5b2d2e2991
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858009"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659704"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure Integration Runtime oluşturma ve yapılandırma
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -29,7 +29,7 @@ Bu belgede Azure Integration Runtime nasıl oluşturabileceğiniz ve yapılandı
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="default-azure-ir"></a>Varsayılan Azure IR
-Varsayılan olarak, her veri fabrikasının, bulut veri depoları ve işlem hizmetleri ortak ağda işlemleri destekleyen arka uçta Azure IR vardır. Azure IR konumu otomatik olarak çözümlenir. **Connectvia** özelliği bağlantılı hizmet tanımında belirtilmemişse, varsayılan Azure IR kullanılır. Yalnızca IR konumunu açıkça tanımlamak istediğinizde veya yönetim amacıyla farklı IRS üzerinde etkinlik yürütmelerini neredeyse gruplamak istediğinizde, açıkça bir Azure IR oluşturmanız gerekir. 
+Varsayılan olarak, her veri fabrikasının, bulut veri depoları ve işlem hizmetleri ortak ağda işlemleri destekleyen arka uçta Azure IR vardır. Azure IR konumu, oto Çözümle ' dir. **Connectvia** özelliği bağlantılı hizmet tanımında belirtilmemişse, varsayılan Azure IR kullanılır. Yalnızca IR konumunu açıkça tanımlamak istediğinizde veya yönetim amacıyla farklı IRS üzerinde etkinlik yürütmelerini neredeyse gruplamak istediğinizde, açıkça bir Azure IR oluşturmanız gerekir. 
 
 ## <a name="create-azure-ir"></a>Azure IR oluştur
 
@@ -48,13 +48,13 @@ Set-AzDataFactoryV2IntegrationRuntime PowerShell cmdlet 'ini kullanarak konumunu
 ### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Azure Data Factory Kullanıcı arabirimi aracılığıyla Azure IR oluşturma
 Azure Data Factory Kullanıcı arabirimini kullanarak bir Azure IR oluşturmak için aşağıdaki adımları kullanın.
 
-1. Azure Data Factory Kullanıcı arabiriminin **Başlarken** sayfasında sol bölmedeki **Yazar** sekmesini seçin.
+1. Azure Data Factory Kullanıcı arabiriminin **Başlarken** sayfasında, en soldaki bölmeden [Yönet sekmesini](https://docs.microsoft.com/azure/data-factory/author-management-hub) seçin.
 
-   ![Giriş sayfası yazar düğmesi](media/doc-common-process/get-started-page-author-button.png)
+   ![Giriş sayfası Yönet düğmesi](media/doc-common-process/get-started-page-manage-button.png)
 
-1. Sol bölmenin altındaki **Bağlantılar** ' ı seçin ve **Bağlantılar** penceresinde tümleştirme çalışma **zamanları** ' nı seçin. **+ Yeni**seçeneğini belirleyin.
+1. Sol bölmedeki **tümleştirme çalışma zamanları** ' nı seçin ve ardından **+ Yeni**' yi seçin.
 
-   ![Tümleştirme çalışma zamanı oluşturma](media/create-azure-integration-runtime/new-integration-runtime.png)
+   ![Tümleştirme çalışma zamanı oluşturma](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. **Tümleştirme çalışma zamanı kurulumu** sayfasında, **Azure, şirket içinde barındırılan**' ı seçin ve ardından **devam**' ı seçin. 
 

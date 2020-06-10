@@ -1,6 +1,6 @@
 ---
-title: Kullanılabilirlik grubunu farklı bölgelerde yapılandırma
-description: Bu makalede, Azure sanal makinelerinde farklı bir bölgedeki bir çoğaltmayla SQL Server kullanılabilirlik grubunun nasıl yapılandırılacağı açıklanmaktadır.
+title: Farklı bölgelerde SQL Server Always on kullanılabilirlik grubu yapılandırma
+description: Bu makalede, farklı bir bölgedeki bir çoğaltmayla Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grubunun nasıl yapılandırılacağı açıklanmaktadır.
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
@@ -15,14 +15,15 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 996b5a59c5c79a045cd396a24778fe0928682c5a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 00f016dd4a2a713124ef3db2ef6c595f68e9318d
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044293"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84657033"
 ---
-# <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>Farklı bölgelerde Azure SQL Server sanal makinelerde bir kullanılabilirlik grubu yapılandırma
+# <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Farklı Azure bölgelerinde SQL Server Always on kullanılabilirlik grubu yapılandırma
+
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Bu makalede, uzak bir Azure konumundaki Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grubu çoğaltmasının nasıl yapılandırılacağı açıklanmaktadır. Olağanüstü durum kurtarmayı desteklemek için bu yapılandırmayı kullanın.
@@ -133,7 +134,7 @@ Uzak bir veri merkezinde çoğaltma oluşturmak için aşağıdaki adımları uy
 
 1. [PowerShell 'de küme parametrelerini ayarlayın](availability-group-manually-configure-tutorial.md#setparam).
 
-PowerShell betiğini, yeni bölgedeki yük dengeleyicide yapılandırdığınız küme ağ adı, IP adresi ve araştırma bağlantı noktasıyla çalıştırın.
+   PowerShell betiğini, yeni bölgedeki yük dengeleyicide yapılandırdığınız küme ağ adı, IP adresi ve araştırma bağlantı noktasıyla çalıştırın.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # The cluster name for the network in the new region (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name).
@@ -170,16 +171,16 @@ Bağlantı dizelerini değiştiremeyeceğiniz takdirde ad çözümlemesi önbell
 Uzak bölgeye dinleyici bağlantısını test etmek için çoğaltmayı uzak bölgeye devreder. Çoğaltma zaman uyumsuz olsa da, yük devretme olası veri kaybına karşı savunmasız olur. Veri kaybı olmadan yük devretmek için kullanılabilirlik modunu eşzamanlı olarak değiştirin ve yük devretme modunu otomatik olarak ayarlayın. Aşağıdaki adımları kullanın:
 
 1. **Nesne Gezgini**' de, birincil çoğaltmayı barındıran SQL Server örneğine bağlanın.
-1. **AlwaysOn kullanılabilirlik grupları**, **kullanılabilirlik grupları**' nın altında, kullanılabilirlik grubunuza sağ tıklayın ve **Özellikler**' e tıklayın.
+1. **AlwaysOn kullanılabilirlik grupları**, **kullanılabilirlik grupları**' nın altında, kullanılabilirlik grubunuza sağ tıklayıp **Özellikler**' i seçin.
 1. **Genel** sayfasında, **kullanılabilirlik ÇOĞALTMALARı**altında, Dr sitesindeki Ikincil çoğaltmayı, **zaman uyumlu tamamlama** kullanılabilirlik modunu ve **Otomatik** yük devretme modunu kullanacak şekilde ayarlayın.
 1. Yüksek kullanılabilirlik için birincil çoğaltmayla aynı sitede ikincil bir çoğaltmeniz varsa, bu çoğaltmayı **zaman uyumsuz işlemeye** ve **el ile**ayarlayın.
-1. Tamam'a tıklayın.
-1. **Nesne Gezgini**, kullanılabilirlik grubuna sağ tıklayın ve **panoyu göster**' e tıklayın.
+1. Tamam'ı seçin.
+1. **Nesne Gezgini**, kullanılabilirlik grubuna sağ tıklayın ve **panoyu göster**' i seçin.
 1. Panoda, DR sitesindeki çoğaltmanın eşitlendiğinden emin olun.
-1. **Nesne Gezgini**, kullanılabilirlik grubuna sağ tıklayın ve **Yük devretme...** öğesine tıklayın. SQL Server Management Studios, SQL Server yük devretmek için bir sihirbaz açar.  
-1. **İleri**' ye tıklayın ve DR sitesindeki SQL Server örneğini seçin. Tekrar **İleri**'ye tıklayın.
-1. DR sitesindeki SQL Server örneğine bağlanın ve **İleri**' ye tıklayın.
-1. **Özet** sayfasında, ayarları doğrulayın ve **son**' a tıklayın.
+1. **Nesne Gezgini**, kullanılabilirlik grubuna sağ tıklayın ve **Yük devretme...** seçeneğini belirleyin. SQL Server Management Studios, SQL Server yük devretmek için bir sihirbaz açar.  
+1. **İleri**' yi SEÇIN ve DR sitesindeki SQL Server örneğini seçin. **İleri ' yi** tekrar seçin.
+1. DR sitesindeki SQL Server örneğine bağlanın ve **İleri ' yi**seçin.
+1. **Özet** sayfasında, ayarları doğrulayın ve **son**' u seçin.
 
 Bağlantıyı test ettikten sonra birincil çoğaltmayı birincil veri merkezinize geri taşıyın ve kullanılabilirlik modunu normal işletim ayarlarına geri doğru ayarlayın. Aşağıdaki tabloda, bu belgede açıklanan mimarinin normal işletimsel ayarları gösterilmektedir:
 
@@ -197,9 +198,9 @@ Daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 - [Kullanılabilirlik grubunun planlı bir el Ile yük devretmesini gerçekleştirme (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
 - [Kullanılabilirlik grubunun zorla el Ile yük devretmesini gerçekleştirme (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
 
-## <a name="additional-links"></a>Ek bağlantılar
+## <a name="next-steps"></a>Sonraki adımlar
 
 * [Always on kullanılabilirlik grupları](https://msdn.microsoft.com/library/hh510230.aspx)
-* [Azure sanal makineleri](https://docs.microsoft.com/azure/virtual-machines/windows/)
+* [Azure Sanal Makineler](https://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Azure yük dengeleyiciler](availability-group-manually-configure-tutorial.md#configure-internal-load-balancer)
 * [Azure kullanılabilirlik kümeleri](../../../virtual-machines/linux/manage-availability.md)

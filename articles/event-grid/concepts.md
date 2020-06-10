@@ -7,18 +7,18 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 348d82f704b89b97e11a09b8f88e92831901b3bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a1464acf2b4a620bf0e2dc91f362cc1739737176
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393456"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659182"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid kavramlar
 
 Bu makalede Azure Event Grid temel kavramları açıklanmaktadır.
 
-## <a name="events"></a>Olaylar
+## <a name="events"></a>Ekinlikler
 
 Bir olay, sistemde gerçekleşen bir şeyi tam olarak açıklayan en düşük bilgi miktarıdır. Her olayda, olayın kaynağı, olayın gerçekleştiği süre ve benzersiz tanımlayıcı gibi yaygın bilgiler bulunur. Her olay, yalnızca belirli olay türüyle ilgili belirli bilgilere de sahiptir. Örneğin, Azure Depolama'da oluşturulan yeni dosya hakkındaki olayda dosyayla ilgili `lastTimeModified` değeri gibi ayrıntılar vardır. Öte yandan, bir Event Hubs olayında Capture dosyasının URL'si bulunur. 
 
@@ -41,9 +41,9 @@ Desteklenen Event Grid kaynaklarından herhangi birini uygulama hakkında daha f
 
 Olay Kılavuzu konusu, kaynağın olayları gönderdiği bir uç nokta sağlar. Yayımcı, olay Kılavuzu konusunu oluşturur ve bir olay kaynağının bir konu veya birden fazla konu ihtiyacı olup olmadığına karar verir. İlgili olayların toplanması için bir konu kullanılır. Belirli olay türlerine yanıt vermek için, aboneler hangi konuların abone olacağına karar verir.
 
-Sistem konu başlıkları, Azure hizmetleri tarafından sağlanan yerleşik konu başlıklarıdır. Azure aboneliğinizde sistem konu başlıklarını görmezsiniz çünkü konu başlıkları yayımcıya aittir ama siz bunlara abone olabilirsiniz. Abone olmak için, kendisinden olayları almak istediğiniz kaynak hakkında bilgi sağlarsınız. Kaynağa erişiminiz olduğu sürece, o kaynağın olaylarına abone olabilirsiniz.
+Sistem konuları Azure depolama, Azure Event Hubs ve Azure Service Bus gibi Azure hizmetleri tarafından sunulan yerleşik konulardır. Azure aboneliğinizde sistem konuları oluşturabilir ve bunlara abone olabilirsiniz. Daha fazla bilgi için bkz. [sistem konularına genel bakış](system-topics.md). 
 
-Özel konu başlıkları uygulamalar ve üçüncü taraf konu başlıklarıdır. Özel konu başlığı oluşturduğunuzda veya özel konu başlığına erişim için atandığınızda, aboneliğinizde özel konu başlığını görürsünüz.
+Özel konu başlıkları uygulamalar ve üçüncü taraf konu başlıklarıdır. Özel konu başlığı oluşturduğunuzda veya özel konu başlığına erişim için atandığınızda, aboneliğinizde özel konu başlığını görürsünüz. Daha fazla bilgi için bkz. [özel konular](custom-topics.md).
 
 Uygulamanızı tasarlarken, kaç tane konu oluşturacağına karar verirken esneklik elde edersiniz. Büyük çözümler için ilgili olayların her kategorisi için özel bir konu oluşturun. Örneğin, kullanıcı hesaplarını değiştirme ve siparişleri işleme ile ilgili olaylar gönderen bir uygulamayı ele alalım. Herhangi bir olay işleyicisinin her iki olay kategorisini de istemesi pek olası değildir. İki özel konu başlığı oluşturun ve olay işleyicilerinin ilgilendikleri konu başlığına abone olmalarına izin verin. Küçük çözümler için tüm olayları tek bir konuya göndermenizi tercih edebilirsiniz. Olay aboneleri istedikleri olay türlerini filtreleyebilir.
 
@@ -66,7 +66,7 @@ Süre sonu ayarlamanın bir örneği için bkz. [Gelişmiş filtrelerle abone ol
 
 ## <a name="event-handlers"></a>Olay işleyicileri
 
-Bir Event Grid perspektifinden olay işleyicisi, olayın gönderildiği yerdir. İşleyici, olayı işlemek için başka bir eylem gerçekleştirir. Event Grid çeşitli işleyici türlerini destekler. Desteklenen bir Azure hizmetini veya kendi web kancasını işleyici olarak kullanabilirsiniz. İşleyicinin türüne bağlı olarak, Event Grid olayın teslimini güvence altına almak için farklı mekanizmalardan oluşur. HTTP Web kancası olay işleyicileri için, işleyici bir durum kodu döndürene kadar olay yeniden denenir `200 – OK`. Azure depolama kuyruğu için, Kuyruk hizmeti ileti gönderimi sıraya başarıyla işleyerek olaylar yeniden denenir.
+Bir Event Grid perspektifinden olay işleyicisi, olayın gönderildiği yerdir. İşleyici, olayı işlemek için başka bir eylem gerçekleştirir. Event Grid çeşitli işleyici türlerini destekler. Desteklenen bir Azure hizmetini veya kendi web kancasını işleyici olarak kullanabilirsiniz. İşleyicinin türüne bağlı olarak, Event Grid olayın teslimini güvence altına almak için farklı mekanizmalardan oluşur. HTTP Web kancası olay işleyicileri için, işleyici bir durum kodu döndürene kadar olay yeniden denenir `200 – OK` . Azure depolama kuyruğu için, Kuyruk hizmeti ileti gönderimi sıraya başarıyla işleyerek olaylar yeniden denenir.
 
 Desteklenen Event Grid işleyicilerinden herhangi birini uygulama hakkında daha fazla bilgi için, bkz. [Azure Event Grid olay işleyiciler](event-handlers.md).
 

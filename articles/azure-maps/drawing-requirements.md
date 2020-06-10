@@ -3,23 +3,23 @@ title: Azure haritalar Creator 'da paket gereksinimlerini çizme
 description: Azure haritalar dönüştürme hizmeti 'ni kullanarak tesis tasarım dosyalarınızı eşleme verilerine dönüştürmek için çizim paketi gereksinimleri hakkında bilgi edinin
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 5/18/2020
+ms.date: 6/09/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: c0c81f529dfc959916ff7c102b2b903a808b9672
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cb34cb386939fc1160ee5a7db0007cfbf500ccb8
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681895"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660626"
 ---
-# <a name="drawing-package-requirements"></a>Paket gereksinimlerini çizme
+# <a name="drawing-package-requirements"></a>Çizim paketi gereksinimleri
 
 [Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) , karşıya yüklenen çizim paketlerini harita verilerine dönüştürmenize olanak sağlar. Bu makalede, dönüştürme API 'SI için çizim paketi gereksinimleri açıklanmaktadır. Örnek bir paket görüntülemek için örnek [Çizim paketini](https://github.com/Azure-Samples/am-creator-indoor-data-examples)indirebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Çizim paketi, Autodesk 'nin AutoCAD® yazılımının yerel dosya biçimi olan [(Autodesk, Inc](https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use#section12).) bir ticari marka olan, DWG biçiminde kaydedilen çizimleri içerir.
 
@@ -42,7 +42,7 @@ Bu belge içinde kullanılan terimler sözlüğü.
 Bir çizim paketi, aşağıdaki dosyaları içeren bir. zip arşividir:
 
 * AutoCAD DWG dosya biçimindeki DWG dosyaları.
-* Tek bir tesis için _manifest. JSON_ dosyası.
+* Tek bir tesis için dosyada _manifest.js_ .
 
 DWG dosyaları klasör içinde herhangi bir şekilde düzenlenebilir, ancak bildirim dosyası klasörün kök dizininde canlı olmalıdır. Klasör,. zip uzantılı tek bir arşiv dosyasında sıkıştıralınmalıdır. Sonraki bölümlerde, DWG dosyaları, bildirim dosyası ve bu dosyaların içeriği için gereksinimler ayrıntılandırır.  
 
@@ -167,7 +167,7 @@ Bölge etiketi katmanının bir örneği, [örnek çizim PAKETINDEKI](https://gi
 
 ## <a name="manifest-file-requirements"></a>Bildirim dosyası gereksinimleri
 
-ZIP klasörü, dizinin kök düzeyinde bir bildirim dosyası içermeli ve dosyanın **manifest. JSON**olarak adlandırılması gerekir. [Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) 'nin içeriklerini ayrıştırmasına izin vermek için DWG dosyalarını açıklar. Yalnızca bildirimle tanımlanan dosyalar alınır. ZIP klasöründe olan, ancak bildirimde düzgün listelenmeyen dosyalar yok sayılır.
+ZIP klasörü, dizinin kök düzeyinde bir bildirim dosyası içermeli ve dosyanın **manifest.jsolarak**adlandırılması gerekir. [Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) 'nin içeriklerini ayrıştırmasına izin vermek için DWG dosyalarını açıklar. Yalnızca bildirimle tanımlanan dosyalar alınır. ZIP klasöründe olan, ancak bildirimde düzgün listelenmeyen dosyalar yok sayılır.
 
 Bildirim dosyasının **Buildinglevels** nesnesindeki dosya yolları ZIP klasörünün köküne göreli olmalıdır. DWG dosya adı, Tesis düzeyinin adıyla tam olarak eşleşmelidir. Örneğin, "Basement" düzeyi için bir DWG dosyası "Basement. dwg" olacaktır. Düzey 2 için bir DWG dosyası "level_2. dwg" olarak adlandırılır. Düzey adınızın bir alanı varsa alt çizgi kullanın. 
 
@@ -188,14 +188,14 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 | Özellik  | tür | Gerekli | Açıklama |
 |-----------|------|----------|-------------|
-| name      | dize/tamsayı | true   |  Oluşturma adı. |
-| streetAddress|    dize/tamsayı |    yanlış    | Bina adresi. |
-|unit     | dize/tamsayı    |  yanlış    |  Bina birimi. |
-| konum |    dize/tamsayı |    yanlış |    Bir alanın, semtin veya bölgenin adı. Örneğin, "Overlake" veya "Merkezi bölge". Konum, posta adresinin bir parçası değil. |
+| name      | string | true   |  Oluşturma adı. |
+| streetAddress|    string |    yanlış    | Bina adresi. |
+|unit     | string    |  yanlış    |  Bina birimi. |
+| konum |    string |    yanlış |    Bir alanın, semtin veya bölgenin adı. Örneğin, "Overlake" veya "Merkezi bölge". Konum, posta adresinin bir parçası değil. |
 | Adminbölmeler |    Dizelerin JSON dizisi |    yanlış     | Adres göstergeleri (ülke, eyalet, şehir) veya (ülke, tercih Ecture, şehir, Town) içeren bir dizi. ISO 3166 ülke kodlarını ve ISO 3166-2 Eyalet/bölge kodlarını kullanın. |
-| postalCode |    dize/tamsayı    | yanlış    | Posta sıralama kodu. |
+| postalCode |    string    | yanlış    | Posta sıralama kodu. |
 | hoursOfOperation |    string |     yanlış | [OSD açılış saati](https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification) biçimine uyar. |
-| telefon    | dize/tamsayı |    yanlış |    Binanın ilişkilendirildiği telefon numarası. Ülke kodunu içermelidir. |
+| telefon    | string |    yanlış |    Binanın ilişkilendirildiği telefon numarası. Ülke kodunu içermelidir. |
 | web sitesi    | string |    yanlış    | Binanın ilişkilendirildiği Web sitesi. D, http veya https ile başlar. |
 | nonPublic |    bool    | yanlış | Binanın herkese açık olup olmadığını belirten bayrak. |
 | Anchorenlem | sayısal |    yanlış | Bir tesis çıpası (raptiye). |
@@ -209,11 +209,11 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 | Özellik  | Tür | Gerekli | Açıklama |
 |-----------|------|----------|-------------|
-|levelName    |dize/tamsayı    |true |    Açıklayıcı düzey adı. Örneğin: Floor 1, lobide, mavi Park, taban ve benzeri.|
+|levelName    |string    |true |    Açıklayıcı düzey adı. Örneğin: Floor 1, lobide, mavi Park, taban ve benzeri.|
 |numarasını | integer |    true | Sıra sayısı dikey düzeyin sırasını belirlemede kullanılır. Her tesis 0 sıralı bir düzeye sahip olmalıdır. |
 |heightAboveFacilityAnchor | sayısal |    yanlış |    Metrekare cinsinden taban zemin üzerindeki düzey yüksekliği. |
 | Verticalexkatlanmış | sayısal | yanlış | Ölçü cinsinden düzeyin tavan yüksekliğini (kalınlığı) kat. |
-|filename |    dize/tamsayı |    true |    Bir bina düzeyi için CAD çiziminin dosya sistemi yolu. Bu, binanın ZIP dosyasının köküne göreli olmalıdır. |
+|filename |    string |    true |    Bir bina düzeyi için CAD çiziminin dosya sistemi yolu. Bu, binanın ZIP dosyasının köküne göreli olmalıdır. |
 
 ### <a name="georeference"></a>georeference
 
@@ -227,13 +227,13 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 | Özellik  | Tür | Gerekli | Açıklama |
 |-----------|------|----------|-------------|
-|Dış    |Dizeler/litre dizisi|    true|    Dış yapı profilini tanımlayan katman adları.|
-|unit|    Dizeler/litre dizisi|    true|    Birimleri tanımlayan katman (ler) i adları.|
-|Dolg|    Dizeler/litre dizisi    |yanlış|    Duvarları tanımlayan katman (ler) in adları.|
-|ğın    |Dizeler/litre dizisi|    yanlış   | Kapaöğeleri tanımlayan katman adları.|
-|unitLabel    |Dizeler/litre dizisi|    yanlış    |Birimlerin adlarını tanımlayan katman adları.|
-|bölge | Dizeler/litre dizisi    | yanlış    | Bölgeleri tanımlayan katman (ler) in adları.|
-|Bölge etiketi | Dizeler/litre dizisi |     yanlış |    Bölgelerin adlarını tanımlayan katman adları.|
+|Dış    |Dizeler dizisi|    true|    Dış yapı profilini tanımlayan katman adları.|
+|unit|    Dizeler dizisi|    true|    Birimleri tanımlayan katman (ler) i adları.|
+|Dolg|    Dizeler dizisi    |yanlış|    Duvarları tanımlayan katman (ler) in adları.|
+|ğın    |Dizeler dizisi|    yanlış   | Kapaöğeleri tanımlayan katman adları.|
+|unitLabel    |Dizeler dizisi|    yanlış    |Birimlerin adlarını tanımlayan katman adları.|
+|bölge | Dizeler dizisi    | yanlış    | Bölgeleri tanımlayan katman (ler) in adları.|
+|Bölge etiketi | Dizeler dizisi |     yanlış |    Bölgelerin adlarını tanımlayan katman adları.|
 
 ### <a name="unitproperties"></a>unitProperties
 
@@ -241,15 +241,15 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 | Özellik  | Tür | Gerekli | Açıklama |
 |-----------|------|----------|-------------|
-|unitName    |dize/tamsayı    |true    |Bu kayıtla ilişkilendirilecek birimin adı `unitProperty` . Bu kayıt yalnızca katmanda eşleşen bir etiket bulunduğunda geçerlidir `unitName` `unitLabel` . |
-|categoryName|    dize/tamsayı|    yanlış    |Kategori adı. Kategorilerin tüm listesi için [Kategoriler](https://aka.ms/pa-indoor-spacecategories)' e bakın. |
+|unitName    |string    |true    |Bu kayıtla ilişkilendirilecek birimin adı `unitProperty` . Bu kayıt yalnızca katmanda eşleşen bir etiket bulunduğunda geçerlidir `unitName` `unitLabel` . |
+|categoryName|    string|    yanlış    |Kategori adı. Kategorilerin tüm listesi için [Kategoriler](https://aka.ms/pa-indoor-spacecategories)' e bakın. |
 |navigableBy| Dizeler dizisi |    yanlış    |Birimi geçebileceğini gezinme aracılarının türlerini gösterir. Örneğin, "yaya bir". Bu özellik, waybulma yeteneklerini bilgilendirecektir.  İzin verilen değerler,,,,, `pedestrian` `wheelchair` `machine` `bicycle` `automobile` `hiredAuto` , `bus` , `railcar` , `emergency` , `ferry` , `boat` ve `disallowed` .|
 |routeThroughBehavior|    string|    yanlış    |Birim için yönlendirme davranışı. İzin verilen değerler, `disallowed` , `allowed` ve `preferred` . Varsayılan değer `allowed` .|
 |karanlar    |DirectoryInfo nesneleri dizisi |yanlış    |Birim için işanlar listesi. |
-|nameAlt|    dize/tamsayı|    yanlış|    Birimin alternatif adı. |
-|nameSubtitle|    dize/tamsayı    |yanlış|    Birimin alt başlığı. |
-|addressRoomNumber|    dize/tamsayı|    yanlış|    Birimin Oda/birim/grup/paket numarası.|
-|Verticalpenetoytioncategory|    dize/tamsayı|    yanlış| Bu özellik tanımlandığında, elde edilen özellik bir birim yerine dikey bir sızma (VRT) olacaktır. Sanal ağlar, yukarıdaki veya altındaki düzeylerdeki diğer VRT özelliklerine gitmek için kullanılabilir. Dikey Penetasyon [Kategori](https://aka.ms/pa-indoor-spacecategories) adıdır. Bu özellik tanımlanmışsa, categoryName özelliği Verticalpenetdartioncategory ile geçersiz kılınır. |
+|nameAlt|    string|    yanlış|    Birimin alternatif adı. |
+|nameSubtitle|    string    |yanlış|    Birimin alt başlığı. |
+|addressRoomNumber|    string|    yanlış|    Birimin Oda/birim/grup/paket numarası.|
+|Verticalpenetoytioncategory|    string|    yanlış| Bu özellik tanımlandığında, elde edilen özellik bir birim yerine dikey bir sızma (VRT) olacaktır. Sanal ağlar, yukarıdaki veya altındaki düzeylerdeki diğer VRT özelliklerine gitmek için kullanılabilir. Dikey Penetasyon [Kategori](https://aka.ms/pa-indoor-spacecategories) adıdır. Bu özellik tanımlanmışsa, categoryName özelliği Verticalpenetdartioncategory ile geçersiz kılınır. |
 |Verticalpenetoytiondirection|    string|    yanlış    |`verticalPenetrationCategory`Tanımlanmışsa, isteğe bağlı olarak geçerli seyahat yönünü tanımlayın. İzin verilen değerler `lowToHigh` ,, `highToLow` `both` ve `closed` . Varsayılan değer `both` .|
 | nonPublic | bool | yanlış | Birimin herkese açık olup olmadığını gösterir. |
 | IBir yönlendirilebilir | bool | yanlış | Olarak ayarlandığında `false` , birim ' e veya ' a gidildiği zaman. Varsayılan değer `true` . |
@@ -261,10 +261,10 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 | Özellik  | Tür | Gerekli | Açıklama |
 |-----------|------|----------|-------------|
-|ZoneName & lt        |dize/tamsayı    |true    |Kayıtla ilişkilendirilecek bölgenin adı `zoneProperty` . Bu kayıt yalnızca bölgenin katmanında eşleşen bir etiket bulunduğunda geçerlidir `zoneName` `zoneLabel` .  |
-|categoryName|    dize/tamsayı|    yanlış    |Kategori adı. Kategorilerin tüm listesi için [Kategoriler](https://aka.ms/pa-indoor-spacecategories)' e bakın. |
-|Bölge \/alt|    dize/tamsayı|    yanlış    |Bölgenin alternatif adı.  |
-|Bölgesi \ Amesubtitle|    dize/tamsayı |    yanlış    |Bölgenin alt başlığı. |
+|ZoneName & lt        |string    |true    |Kayıtla ilişkilendirilecek bölgenin adı `zoneProperty` . Bu kayıt yalnızca bölgenin katmanında eşleşen bir etiket bulunduğunda geçerlidir `zoneName` `zoneLabel` .  |
+|categoryName|    string|    yanlış    |Kategori adı. Kategorilerin tüm listesi için [Kategoriler](https://aka.ms/pa-indoor-spacecategories)' e bakın. |
+|Bölge \/alt|    string|    yanlış    |Bölgenin alternatif adı.  |
+|Bölgesi \ Amesubtitle|    string |    yanlış    |Bölgenin alt başlığı. |
 
 ### <a name="sample-drawing-package-manifest"></a>Örnek çizim paketi bildirimi
 

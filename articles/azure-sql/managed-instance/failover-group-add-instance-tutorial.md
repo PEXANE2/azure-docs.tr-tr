@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: bir otomatik yük devretme grubuna ekleme'
+title: 'Öğretici: bir yük devretme grubuna SQL yönetilen örneği için yönetilen bir örnek ekleme'
 titleSuffix: Azure SQL Managed Instance
-description: Bu öğreticide, birincil ve ikincil olmak üzere iki Azure SQL yönetilen örneği oluşturacak ve sonra bunları bir otomatik yük devretme grubuna eklemelisiniz.
+description: Bu öğreticide, birincil ve ikincil olarak iki yönetilen örnek oluşturacak ve sonra bunları bir otomatik yük devretme grubuna ekleyecek.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -13,30 +13,30 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: 31dba12023643f96018d1192111a19c80d0ba3ef
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: b822197bbc62ef6bb277d5c71b689a1a5312792f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636215"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659824"
 ---
-# <a name="tutorial-add-a-sql-managed-instance-to-a-failover-group"></a>Öğretici: bir yük devretme grubuna SQL yönetilen örneği ekleme
+# <a name="tutorial-add-a-managed-instance-of-sql-managed-instance-to-a-failover-group"></a>Öğretici: bir yük devretme grubuna SQL yönetilen örneği için yönetilen bir örnek ekleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Yük devretme grubuna Azure SQL yönetilen örneği ekleyin. Bu makalede şunları yapmayı öğreneceksiniz:
+Azure SQL yönetilen örneği 'nin yönetilen örneklerini bir yük devretme grubuna ekleyin. Bu makalede şunları yapmayı öğreneceksiniz:
 
 > [!div class="checklist"]
-> - Birincil SQL yönetilen örneği oluşturma
-> - [Yük devretme grubunun](../database/auto-failover-group-overview.md)bir parçası olarak IKINCIL bir SQL yönetilen örneği oluşturun. 
-> - Yük devretme testi
+> - Birincil yönetilen örnek oluşturun.
+> - Bir [Yük devretme grubunun](../database/auto-failover-group-overview.md)parçası olarak ikincil bir yönetilen örnek oluşturun. 
+> - Yük devretme testi.
 
   > [!NOTE]
   > - Bu öğreticide, kaynaklarınızı [SQL yönetilen örneği için yük devretme grupları ayarlamaya yönelik önkoşullara](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets)göre yapılandırırken emin olun. 
-  > - SQL yönetilen örneği oluşturma, önemli miktarda zaman alabilir. Sonuç olarak, Bu öğreticinin tamamlanması birkaç saat sürebilir. Sağlama süreleri hakkında daha fazla bilgi için bkz. [SQL yönetilen örnek yönetimi işlemleri](sql-managed-instance-paas-overview.md#management-operations). 
-  > - Yük devretme grubuna katılan SQL yönetilen örnekleri, [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) veya ıkı bağlı VPN Ağ Geçidi gerektirir. Bu öğretici, VPN ağ geçitleri oluşturmak ve bağlamak için gereken adımları sağlar. ExpressRoute zaten yapılandırılmışsa bu adımları atlayın. 
+  > - Yönetilen bir örnek oluşturmak, önemli miktarda zaman alabilir. Sonuç olarak, Bu öğreticinin tamamlanması birkaç saat sürebilir. Sağlama süreleri hakkında daha fazla bilgi için bkz. [SQL yönetilen örnek yönetimi işlemleri](sql-managed-instance-paas-overview.md#management-operations). 
+  > - Yük devretme grubuna katılan yönetilen örnekler için [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) veya ıkı bağlı VPN ağ geçidi gerekir. Bu öğretici, VPN ağ geçitleri oluşturmak ve bağlamak için gereken adımları sağlar. ExpressRoute zaten yapılandırılmışsa bu adımları atlayın. 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun: 
@@ -53,34 +53,34 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 ---
 
 
-## <a name="1---create-resource-group-and-primary-sql-mi"></a>1-kaynak grubu ve birincil SQL MI oluştur
+## <a name="1---create-a-resource-group-and-primary-managed-instance"></a>1-kaynak grubu ve birincil yönetilen örnek oluşturma
 
-Bu adımda, Azure portal veya PowerShell 'i kullanarak yük devretme grubunuz için kaynak grubunu ve birincil SQL yönetilen örneğini oluşturacaksınız. 
+Bu adımda, Azure portal veya PowerShell 'i kullanarak yük devretme grubunuz için kaynak grubunu ve birincil yönetilen örneği oluşturacaksınız. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal) 
 
-Azure portal kullanarak kaynak grubunu ve birincil SQL yönetilen örneğinizi oluşturun. 
+Azure portal kullanarak kaynak grubunu ve birincil yönetilen örneğinizi oluşturun. 
 
-1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin, sonra `Azure SQL` Arama kutusuna yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
-1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. Veritabanları kutucuğunda ayrıntıları göster ' i seçerek farklı veritabanları hakkındaki ek bilgileri görüntüleyebilirsiniz.
+1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve `Azure SQL` Arama kutusuna yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
+1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **Veritabanları** kutucuğunda **Ayrıntıları göster** ' i seçerek farklı veritabanları hakkındaki ek bilgileri görüntüleyebilirsiniz.
 1. **SQL yönetilen örnekler** kutucuğunda **Oluştur** ' u seçin. 
 
     ![SQL yönetilen örneği Seç](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
-1. **Azure SQL yönetilen örneği oluştur** sayfasında, **temel bilgiler** sekmesinde
+1. **Azure SQL yönetilen örneği oluştur** sayfasında, **temel bilgiler** sekmesinde:
     1. **Proje ayrıntıları**' nın altında, açılır listeden **aboneliğinizi** seçin ve ardından yeni kaynak grubu **oluşturmayı** seçin. Kaynak grubunuz için gibi bir ad yazın `myResourceGroup` . 
-    1. **SQL yönetilen örnek ayrıntıları**' nın altında, SQL yönetilen örneğinizin adını ve SQL yönetilen örneğinizi dağıtmak istediğiniz bölgeyi girin. **İşlem + depolama alanını** varsayılan değerlerle bırakın. 
+    1. **SQL yönetilen örnek ayrıntıları**' nın altında, yönetilen örneğinizin adını ve yönetilen örneğinizi dağıtmak istediğiniz bölgeyi girin. **İşlem + depolama alanını** varsayılan değerlerle bırakın. 
     1. **Yönetici hesabı**altında, gibi bir yönetici oturum açma `azureuser` ve karmaşık yönetici parolası sağlayın. 
 
-    ![Birincil mı oluştur](./media/failover-group-add-instance-tutorial/primary-sql-mi-values.png)
+    ![Birincil yönetilen örnek oluştur](./media/failover-group-add-instance-tutorial/primary-sql-mi-values.png)
 
 1. Ayarları varsayılan değerlerinde bırakın ve SQL yönetilen örnek ayarlarınızı gözden geçirmek için **gözden geçir + oluştur** ' u seçin. 
-1. Birincil SQL yönetilen örneğinizi oluşturmak için **Oluştur** ' u seçin. 
+1. Birincil yönetilen örneğinizi oluşturmak için **Oluştur** ' u seçin. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell kullanarak kaynak grubunuzu ve birincil SQL yönetilen örneğini oluşturun. 
+PowerShell kullanarak kaynak grubunuzu ve birincil yönetilen örneği oluşturun. 
 
    ```powershell-interactive
    # Connect-AzAccount
@@ -88,12 +88,12 @@ PowerShell kullanarak kaynak grubunuzu ve birincil SQL yönetilen örneğini olu
    $SubscriptionId = '<Subscription-ID>'
    # Create a random identifier to use as subscript for the different resource names
    $randomIdentifier = $(Get-Random)
-   # Set the resource group name and location for your SQL Managed Instance
+   # Set the resource group name and location for SQL Managed Instance
    $resourceGroupName = "myResourceGroup-$randomIdentifier"
    $location = "eastus"
    $drLocation = "eastus2"
    
-   # Set the networking values for your primary SQL Managed Instance
+   # Set the networking values for your primary managed instance
    $primaryVNet = "primaryVNet-$randomIdentifier"
    $primaryAddressPrefix = "10.0.0.0/16"
    $primaryDefaultSubnet = "primaryDefaultSubnet-$randomIdentifier"
@@ -108,7 +108,7 @@ PowerShell kullanarak kaynak grubunuzu ve birincil SQL yönetilen örneğini olu
    $primaryGWConnection = $primaryGWName + "-connection"
    
    
-   # Set the networking values for your secondary SQL Managed Instance
+   # Set the networking values for your secondary managed instance
    $secondaryVNet = "secondaryVNet-$randomIdentifier"
    $secondaryAddressPrefix = "10.128.0.0/16"
    $secondaryDefaultSubnet = "secondaryDefaultSubnet-$randomIdentifier"
@@ -124,11 +124,11 @@ PowerShell kullanarak kaynak grubunuzu ve birincil SQL yönetilen örneğini olu
    
    
    
-   # Set the SQL Managed Instance name for the new SQL Managed Instances
+   # Set the SQL Managed Instance name for the new managed instances
    $primaryInstance = "primary-mi-$randomIdentifier"
    $secondaryInstance = "secondary-mi-$randomIdentifier"
    
-   # Set the admin login and password for your SQL Managed Instance
+   # Set the admin login and password for SQL Managed Instance
    $secpasswd = "PWD27!"+(New-Guid).Guid | ConvertTo-SecureString -AsPlainText -Force
    $mycreds = New-Object System.Management.Automation.PSCredential ("azureuser", $secpasswd)
    
@@ -138,7 +138,7 @@ PowerShell kullanarak kaynak grubunuzu ve birincil SQL yönetilen örneğini olu
    $vCores = 8
    $maxStorage = 256
    $computeGeneration = "Gen5"
-   $license = "LicenseIncluded" #"BasePrice" or LicenseIncluded if you have don't have SQL Server licence that can be used for AHB discount
+   $license = "LicenseIncluded" #"BasePrice" or LicenseIncluded if you have don't have SQL Server license that can be used for AHB discount
    
    # Set failover group details
    $vpnSharedKey = "mi1mi2psk"
@@ -160,15 +160,15 @@ PowerShell kullanarak kaynak grubunuzu ve birincil SQL yönetilen örneğini olu
    # Suppress networking breaking changes warning (https://aka.ms/azps-changewarnings
    Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
    
-   # Set subscription context
+   # Set the subscription context
    Set-AzContext -SubscriptionId $subscriptionId 
    
-   # Create a resource group
+   # Create the resource group
    Write-host "Creating resource group..."
    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -Location $location -Tag @{Owner="SQLDB-Samples"}
    $resourceGroup
    
-   # Configure primary virtual network
+   # Configure the primary virtual network
    Write-host "Creating primary virtual network..."
    $primaryVirtualNetwork = New-AzVirtualNetwork `
                          -ResourceGroupName $resourceGroupName `
@@ -184,7 +184,7 @@ PowerShell kullanarak kaynak grubunuzu ve birincil SQL yönetilen örneğini olu
    $primaryVirtualNetwork
    
    
-   # Configure primary MI subnet
+   # Configure the primary managed instance subnet
    Write-host "Configuring primary MI subnet..."
    $primaryVirtualNetwork = Get-AzVirtualNetwork -Name $primaryVNet -ResourceGroupName $resourceGroupName
    
@@ -194,7 +194,7 @@ PowerShell kullanarak kaynak grubunuzu ve birincil SQL yönetilen örneğini olu
                            -VirtualNetwork $primaryVirtualNetwork
    $primaryMiSubnetConfig
    
-   # Configure network security group management service
+   # Configure the network security group management service
    Write-host "Configuring primary MI subnet..."
    
    $primaryMiSubnetConfigId = $primaryMiSubnetConfig.Id
@@ -205,7 +205,7 @@ PowerShell kullanarak kaynak grubunuzu ve birincil SQL yönetilen örneğini olu
                          -location $location
    $primaryNSGMiManagementService
    
-   # Configure route table management service
+   # Configure the route table management service
    Write-host "Configuring primary MI route table management service..."
    
    $primaryRouteTableMiManagementService = New-AzRouteTable `
@@ -366,7 +366,7 @@ PowerShell kullanarak kaynak grubunuzu ve birincil SQL yönetilen örneğini olu
    Write-host "Primary network route table configured successfully."
    
    
-   # Create primary SQL Managed Instance
+   # Create the primary managed instance
    
    Write-host "Creating primary SQL Managed Instance..."
    Write-host "This will take some time, see https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations or more information."
@@ -401,20 +401,20 @@ PowerShell kullanarak kaynak grubunuzu ve birincil SQL yönetilen örneğini olu
 | [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Bir ağ güvenlik grubunu güncelleştirir.  | 
 | [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Rota tablosuna bir yol ekler. |
 | [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Bir yol tablosunu güncelleştirir.  |
-| [New-Azsqlınstance](/powershell/module/az.sql/new-azsqlinstance) | Azure SQL yönetilen örneği oluşturur.  |
+| [New-Azsqlınstance](/powershell/module/az.sql/new-azsqlinstance) | Yönetilen bir örnek oluşturur.  |
 
 ---
 
 ## <a name="2---create-secondary-virtual-network"></a>2-ikincil sanal ağ oluşturma
 
-SQL yönetilen örneğinizi oluşturmak için Azure portal kullanıyorsanız, birincil ve ikincil SQL yönetilen örneği alt ağının çakışan aralıklar olmadığından, sanal ağı ayrı olarak oluşturmanız gerekecektir. SQL yönetilen örneğinizi yapılandırmak için PowerShell kullanıyorsanız, adım 3 ' e atlayın. 
+Yönetilen örneğinizi oluşturmak için Azure portal kullanıyorsanız, birincil ve ikincil yönetilen örnek alt ağının çakışan aralıklar olmadığından, sanal ağı ayrı olarak oluşturmanız gerekecektir. Yönetilen örneğinizi yapılandırmak için PowerShell kullanıyorsanız, adım 3 ' e atlayın. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal) 
 
 Birincil sanal ağınızın alt ağ aralığını doğrulamak için şu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com), kaynak grubunuza gidin ve birincil örneğiniz için sanal ağı seçin.  
-2. **Ayarlar** altında **alt ağlar** ' ı seçin ve **adres aralığını**aklınızda edin. İkincil SQL yönetilen örneği için sanal ağın alt ağ adres aralığı bu ile çakışamaz. 
+2. **Ayarlar** altında **alt ağlar** ' ı seçin ve **adres aralığını**aklınızda edin. İkincil yönetilen örnek için sanal ağın alt ağ adres aralığı bu ile çakışamaz. 
 
 
    ![Birincil alt ağ](./media/failover-group-add-instance-tutorial/verify-primary-subnet-range.png)
@@ -423,77 +423,78 @@ Bir sanal ağ oluşturmak için aşağıdaki adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com), **kaynak oluştur** ve *sanal ağ*ara ' yı seçin. 
 1. Microsoft tarafından yayımlanan **sanal ağ** seçeneğini seçin ve ardından sonraki sayfada **Oluştur** ' u seçin. 
-1. İkincil SQL yönetilen örneğinizin sanal ağını yapılandırmak için gerekli alanları doldurun ve **Oluştur**' u seçin. 
+1. İkincil yönetilen örneğinizin sanal ağını yapılandırmak için gerekli alanları doldurun ve **Oluştur**' u seçin. 
 
    Aşağıdaki tabloda, ikincil sanal ağ için gereken değerler gösterilmektedir:
 
     | **Alan** | Değer |
     | --- | --- |
-    | **Adı** |  İkincil SQL yönetilen örneği tarafından kullanılacak sanal ağın adı (gibi) `vnet-sql-mi-secondary` . |
+    | **Adı** |  İkincil yönetilen örnek tarafından kullanılacak sanal ağın adı (gibi) `vnet-sql-mi-secondary` . |
     | **Adres alanı** | Sanal ağınız için gibi adres alanı `10.128.0.0/16` . | 
-    | **Abonelik** | Birincil SQL yönetilen örneğinizin ve kaynak grubunuzun bulunduğu abonelik. |
-    | **Geli** | İkincil SQL yönetilen örneğinizi dağıtacağınız konum. |
+    | **Abonelik** | Birincil yönetilen örneğinizin ve kaynak grubunuzun bulunduğu abonelik. |
+    | **Geli** | İkincil yönetilen örneğinizi dağıtacağınız konum. |
     | **Alt ağ** | Alt ağınızın adı. `default`Varsayılan olarak sizin için sağlanır. |
-    | **Adres aralığı**| Alt ağınızın adres aralığı. Bunun gibi, birincil SQL yönetilen örneğinizin sanal ağı tarafından kullanılan alt ağ adres aralığından farklı olması gerekir `10.128.0.0/24` .  |
+    | **Adres aralığı**| Alt ağınızın adres aralığı. Bunun gibi, birincil yönetilen örneğinizin sanal ağı tarafından kullanılan alt ağ adres aralığından farklı olması gerekir `10.128.0.0/24` .  |
     | &nbsp; | &nbsp; |
 
     ![İkincil sanal ağ değerleri](./media/failover-group-add-instance-tutorial/secondary-virtual-network.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Bu adım yalnızca SQL yönetilen örneğinizi dağıtmak için Azure portal kullanıyorsanız gereklidir. PowerShell kullanıyorsanız, adım 3 ' e atlayın. 
+Bu adım yalnızca SQL yönetilen örneği dağıtmak için Azure portal kullanıyorsanız gereklidir. PowerShell kullanıyorsanız, adım 3 ' e atlayın. 
 
 ---
 
-## <a name="3---create-a-secondary-sql-managed-instance"></a>3-ikincil bir SQL yönetilen örneği oluşturma
-Bu adımda, Azure portal bir ikincil SQL yönetilen örneği oluşturacaksınız ve bu iki SQL yönetilen örneği arasında ağ iletişimini de yapılandıracaksınız. 
+## <a name="3---create-a-secondary-managed-instance"></a>3-ikincil bir yönetilen örnek oluşturma
+Bu adımda, Azure portal bir ikincil yönetilen örnek oluşturacaksınız ve bu, iki yönetilen örnek arasında ağ iletişimini de yapılandıracaksınız. 
 
-İkinci SQL yönetilen örneğinizin şunları yapmanız gerekir:
+İkinci yönetilen örneğiniz şunları sağlamalıdır:
 - Boş olmalıdır. 
-- Birincil SQL yönetilen örneğinden farklı bir alt ağa ve IP aralığına sahip olmak. 
+- Birincil yönetilen örnekten farklı bir alt ağa ve IP aralığına sahip olmak. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal) 
 
-Azure portal kullanarak ikincil SQL yönetilen örneğini oluşturun. 
+Azure portal kullanarak ikincil yönetilen örnek oluşturun. 
 
-1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
-1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. Veritabanları kutucuğunda ayrıntıları göster ' i seçerek farklı veritabanları hakkındaki ek bilgileri görüntüleyebilirsiniz.
+1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve `Azure SQL` Arama kutusuna yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
+1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **Veritabanları** kutucuğunda **Ayrıntıları göster** ' i seçerek farklı veritabanları hakkındaki ek bilgileri görüntüleyebilirsiniz.
 1. **SQL yönetilen örnekler** kutucuğunda **Oluştur** ' u seçin. 
 
     ![SQL yönetilen örneği Seç](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
-1. **Azure SQL yönetilen örnek oluştur** sayfasının **temel bilgiler** sekmesinde, ikincil SQL yönetilen örneğinizi yapılandırmak için gerekli alanları doldurun. 
+1. **Azure SQL yönetilen örnek oluştur** sayfasının **temel bilgiler** sekmesinde, ikincil yönetilen örneğinizi yapılandırmak için gerekli alanları doldurun. 
 
-   Aşağıdaki tabloda, ikincil SQL yönetilen örneği için gereken değerler gösterilmektedir:
+   Aşağıdaki tabloda, ikincil yönetilen örnek için gereken değerler gösterilmektedir:
  
     | **Alan** | Değer |
     | --- | --- |
-    | **Abonelik** |  Birincil SQL yönetilen örneğinizin olduğu abonelik. |
-    | **Kaynak grubu**| Birincil SQL yönetilen örneğinizin bulunduğu kaynak grubu. |
-    | **SQL yönetilen örnek adı** | Yeni ikincil SQL yönetilen örneğinizin adı, örneğin`sql-mi-secondary`  | 
-    | **Geli**| İkincil SQL yönetilen örneğinizin konumu.  |
-    | **SQL yönetilen örnek Yöneticisi oturum açma** | Yeni ikincil SQL yönetilen örneğiniz için kullanmak istediğiniz oturum açma gibi `azureuser` . |
-    | **Parola** | Yeni ikincil SQL yönetilen örneği için yönetici oturumu tarafından kullanılacak karmaşık bir parola.  |
+    | **Abonelik** |  Birincil yönetilen örneğinizin bulunduğu abonelik. |
+    | **Kaynak grubu**| Birincil yönetilen örneğinizin bulunduğu kaynak grubu. |
+    | **SQL yönetilen örnek adı** | Yeni ikincil yönetilen örneğinizin adı, örneğin `sql-mi-secondary` .  | 
+    | **Geli**| İkincil yönetilen örneğinizin konumu.  |
+    | **SQL yönetilen örnek Yöneticisi oturum açma** | Yeni ikincil yönetilen örneğiniz için kullanmak istediğiniz oturum açma gibi `azureuser` . |
+    | **Parola** | Yeni ikincil yönetilen örnek için yönetici oturumu tarafından kullanılacak karmaşık bir parola.  |
     | &nbsp; | &nbsp; |
 
-1. **Ağ** sekmesinde, **sanal ağ**IÇIN açılan listeden ikincil SQL yönetilen örneği için oluşturduğunuz sanal ağı seçin.
+1. **Ağ** sekmesinde, **sanal ağ**için, açılan listeden ikincil yönetilen örnek için oluşturduğunuz sanal ağı seçin.
 
    ![İkincil mı ağı](./media/failover-group-add-instance-tutorial/networking-settings-for-secondary-mi.png)
 
-1. **Ek ayarlar** sekmesinde, **coğrafi çoğaltma**için, _Yük devretme Ikincili olarak kullanmak_için **Evet** ' i seçin. Açılan listeden birincil SQL yönetilen örneğini seçin. 
-    1. Harmanlama ve saat diliminin, birincil SQL yönetilen örneği ile eşleştiğinden emin olun. Bu öğreticide oluşturulan birincil SQL yönetilen örneği, `SQL_Latin1_General_CP1_CI_AS` harmanlama ve `(UTC) Coordinated Universal Time` saat dilimi varsayılanını kullanır. 
+1. **Ek ayarlar** sekmesinde, **coğrafi çoğaltma**için, _Yük devretme Ikincili olarak kullanmak_için **Evet** ' i seçin. Açılan listeden birincil yönetilen örneği seçin. 
+    
+   Harmanlama ve saat diliminin, birincil yönetilen örnekle eşleştiğinden emin olun. Bu öğreticide oluşturulan birincil yönetilen örnek, `SQL_Latin1_General_CP1_CI_AS` harmanlama ve `(UTC) Coordinated Universal Time` saat dilimi varsayılanını kullanır. 
 
-   ![İkincil mı ağı](./media/failover-group-add-instance-tutorial/secondary-mi-failover.png)
+   ![İkincil yönetilen örnek ağı](./media/failover-group-add-instance-tutorial/secondary-mi-failover.png)
 
-1. İkincil SQL yönetilen örneğinizin ayarlarını gözden geçirmek için **gözden geçir + oluştur** ' u seçin. 
-1. İkincil SQL yönetilen örneğinizi oluşturmak için **Oluştur** ' u seçin. 
+1. İkincil yönetilen örneğinizin ayarlarını gözden geçirmek için **gözden geçir + oluştur** ' u seçin. 
+1. İkincil yönetilen örneğinizi oluşturmak için **Oluştur** ' u seçin. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell kullanarak ikincil SQL yönetilen örneğini oluşturun. 
+PowerShell kullanarak ikincil yönetilen örnek oluşturun. 
 
    ```powershell-interactive
-   # Configure secondary virtual network
+   # Configure the secondary virtual network
    Write-host "Configuring secondary virtual network..."
    
    $SecondaryVirtualNetwork = New-AzVirtualNetwork `
@@ -509,7 +510,7 @@ PowerShell kullanarak ikincil SQL yönetilen örneğini oluşturun.
                        | Set-AzVirtualNetwork
    $SecondaryVirtualNetwork
    
-   # Configure secondary SQL Managed Instance subnet
+   # Configure the secondary managed instance subnet
    Write-host "Configuring secondary MI subnet..."
    
    $SecondaryVirtualNetwork = Get-AzVirtualNetwork -Name $secondaryVNet `
@@ -520,7 +521,7 @@ PowerShell kullanarak ikincil SQL yönetilen örneğini oluşturun.
                            -VirtualNetwork $SecondaryVirtualNetwork
    $secondaryMiSubnetConfig
    
-   # Configure secondary network security group management service
+   # Configure the secondary network security group management service
    Write-host "Configuring secondary network security group management service..."
    
    $secondaryMiSubnetConfigId = $secondaryMiSubnetConfig.Id
@@ -531,7 +532,7 @@ PowerShell kullanarak ikincil SQL yönetilen örneğini oluşturun.
                          -location $drlocation
    $secondaryNSGMiManagementService
    
-   # Configure secondary route table MI management service
+   # Configure the secondary route table MI management service
    Write-host "Configuring secondary route table MI management service..."
    
    $secondaryRouteTableMiManagementService = New-AzRouteTable `
@@ -691,7 +692,7 @@ PowerShell kullanarak ikincil SQL yönetilen örneğini oluşturun.
                        | Set-AzRouteTable
    Write-host "Secondary network security group configured successfully."
    
-   # Create secondary SQL Managed Instance
+   # Create the secondary managed instance
    
    $primaryManagedInstanceId = Get-AzSqlInstance -Name $primaryInstance -ResourceGroupName $resourceGroupName | Select-Object Id
    
@@ -730,44 +731,44 @@ PowerShell kullanarak ikincil SQL yönetilen örneğini oluşturun.
 | [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Bir ağ güvenlik grubunu güncelleştirir.  | 
 | [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Rota tablosuna bir yol ekler. |
 | [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Bir yol tablosunu güncelleştirir.  |
-| [New-Azsqlınstance](/powershell/module/az.sql/new-azsqlinstance) | Azure SQL yönetilen örneği oluşturur.  |
+| [New-Azsqlınstance](/powershell/module/az.sql/new-azsqlinstance) | Yönetilen bir örnek oluşturur.  |
 
 ---
 
-## <a name="4---create-primary-gateway"></a>4-birincil ağ geçidi oluşturma 
+## <a name="4---create-a-primary-gateway"></a>4-birincil ağ geçidi oluşturma 
 
-Yük devretme grubuna katılacak iki SQL yönetilen örneği için, ağ iletişimine izin vermek üzere iki SQL yönetilen örneğinin sanal ağları arasında yapılandırılmış ExpressRoute veya ağ geçidi olmalıdır. İki VPN ağ geçidini bağlamak yerine [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 'u yapılandırmayı seçerseniz, [adım 7](#7---create-a-failover-group)' ye atlayın.  
+Yük devretme grubuna katılacak iki yönetilen örnek için, ağ iletişimine izin vermek üzere iki yönetilen örneğin sanal ağları arasında bir ExpressRoute ya da bir ağ geçidi olmalıdır. İki VPN ağ geçidini bağlamak yerine [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 'u yapılandırmayı seçerseniz, [adım 7](#7---create-a-failover-group)' ye atlayın.  
 
 Bu makalede, iki VPN ağ geçidini oluşturma ve bunları bağlama adımları sağlanır, ancak bunun yerine ExpressRoute 'u yapılandırdıysanız yük devretme grubunu oluşturmaya devam edebilirsiniz. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portal kullanarak birincil SQL yönetilen örneğinizin sanal ağı için ağ geçidini oluşturun. 
+Azure portal kullanarak, birincil yönetilen örneğinizin sanal ağı için ağ geçidini oluşturun. 
 
 
-1. [Azure Portal](https://portal.azure.com), kaynak grubunuza gidin ve birincil SQL yönetilen örneğiniz için **sanal ağ** kaynağını seçin. 
+1. [Azure Portal](https://portal.azure.com), kaynak grubunuza gidin ve birincil yönetilen örneğiniz için **sanal ağ** kaynağını seçin. 
 1. **Ayarlar** altında **alt ağlar** ' ı seçin ve ardından yeni bir **ağ geçidi alt ağı**eklemeyi seçin. Varsayılan değerleri bırakın. 
 
-   ![Birincil SQL yönetilen örneği için ağ geçidi ekle](./media/failover-group-add-instance-tutorial/add-subnet-gateway-primary-vnet.png)
+   ![Birincil yönetilen örnek için ağ geçidi ekle](./media/failover-group-add-instance-tutorial/add-subnet-gateway-primary-vnet.png)
 
 1. Alt ağ geçidi oluşturulduktan sonra sol gezinti bölmesinden **kaynak oluştur** ' u seçin ve `Virtual network gateway` Arama kutusuna yazın. **Microsoft**tarafından yayınlanan **sanal ağ geçidi** kaynağını seçin. 
 
    ![Yeni bir sanal ağ geçidi oluştur](./media/failover-group-add-instance-tutorial/create-virtual-network-gateway.png)
 
-1. Birincil SQL yönetilen örneğinizin ağ geçidini yapılandırmak için gerekli alanları doldurun. 
+1. Birincil yönetilen örneğiniz için ağ geçidini yapılandırmak üzere gerekli alanları doldurun. 
 
-   Aşağıdaki tabloda, birincil SQL yönetilen örneği için ağ geçidi için gereken değerler gösterilmektedir:
+   Aşağıdaki tabloda, birincil yönetilen örnek için ağ geçidi için gereken değerler gösterilmektedir:
  
     | **Alan** | Değer |
     | --- | --- |
-    | **Abonelik** |  Birincil SQL yönetilen örneğinizin olduğu abonelik. |
+    | **Abonelik** |  Birincil yönetilen örneğinizin bulunduğu abonelik. |
     | **Adı** | Sanal ağ geçidinizin adı, örneğin `primary-mi-gateway` . | 
-    | **Geli** | Birincil SQL yönetilen örneğinizin bulunduğu bölge. |
+    | **Geli** | Birincil yönetilen örneğinizin bulunduğu bölge. |
     | **Ağ geçidi türü** | **VPN**' yi seçin. |
-    | **VPN türü** | **Rota tabanlı** seçin |
+    | **VPN türü** | **Rota tabanlı**' ı seçin. |
     | **SKU**| Varsayılan bırakın `VpnGw1` . |
-    | **Konum**| Birincil SQL yönetilen örneğinizin ve birincil sanal ağınızın bulunduğu konum.   |
+    | **Konum**| Birincil yönetilen örneğinizin ve birincil sanal ağınızın bulunduğu konum.   |
     | **Sanal ağ**| 2. bölümde oluşturulan sanal ağı seçin `vnet-sql-mi-primary` . |
     | **Genel IP adresi**| **Yeni oluştur**’u seçin. |
     | **Genel IP adresi adı**| IP adresiniz için gibi bir ad girin `primary-gateway-IP` . |
@@ -782,10 +783,10 @@ Azure portal kullanarak birincil SQL yönetilen örneğinizin sanal ağı için 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell kullanarak birincil SQL yönetilen örneğinizin sanal ağı için ağ geçidini oluşturun. 
+PowerShell kullanarak birincil yönetilen örneğinizin sanal ağı için ağ geçidini oluşturun. 
 
    ```powershell-interactive
-   # Create primary gateway
+   # Create the primary gateway
    Write-host "Adding GatewaySubnet to primary VNet..."
    Get-AzVirtualNetwork `
                      -Name $primaryVNet `
@@ -824,32 +825,32 @@ PowerShell kullanarak birincil SQL yönetilen örneğinizin sanal ağı için a�
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Bir sanal ağı güncelleştirir.  |
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Bir sanal ağ içindeki bir alt ağı alır. |
 | [New-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) | Genel bir IP adresi oluşturur.  | 
-| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Sanal ağ geçidi için bir IP yapılandırması oluşturur |
-| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Bir sanal ağ geçidi oluşturur |
+| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Bir sanal ağ geçidi için IP yapılandırması oluşturur. |
+| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Bir sanal ağ geçidi oluşturur. |
 
 
 ---
 
 
 ## <a name="5---create-secondary-gateway"></a>5-ikincil ağ geçidi oluşturma 
-Bu adımda, Azure portal kullanarak ikincil SQL yönetilen örneğinizin sanal ağı için ağ geçidini oluşturun, 
+Bu adımda, Azure portal kullanarak ikincil yönetilen örneğinizin sanal ağı için ağ geçidini oluşturun. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure portal kullanarak, ikincil SQL yönetilen örneği için sanal ağ alt ağını ve ağ geçidini oluşturmak üzere önceki bölümdeki adımları yineleyin. İkincil SQL yönetilen örneğiniz için ağ geçidini yapılandırmak üzere gerekli alanları doldurun. 
+Azure portal kullanarak, ikincil yönetilen örnek için sanal ağ alt ağını ve ağ geçidini oluşturmak üzere önceki bölümdeki adımları yineleyin. İkincil yönetilen örneğiniz için ağ geçidini yapılandırmak üzere gerekli alanları doldurun. 
 
-   Aşağıdaki tabloda, ikincil SQL yönetilen örneği için ağ geçidi için gereken değerler gösterilmektedir:
+   Aşağıdaki tabloda, ikincil yönetilen örnek için ağ geçidi için gereken değerler gösterilmektedir:
 
    | **Alan** | Değer |
    | --- | --- |
-   | **Abonelik** |  İkincil SQL yönetilen örneğinizin olduğu abonelik. |
+   | **Abonelik** |  İkincil yönetilen örneğinizin olduğu abonelik. |
    | **Adı** | Sanal ağ geçidinizin adı, örneğin `secondary-mi-gateway` . | 
-   | **Geli** | İkincil SQL yönetilen örneğinizin bulunduğu bölge. |
+   | **Geli** | İkincil yönetilen örneğinizin bulunduğu bölge. |
    | **Ağ geçidi türü** | **VPN**' yi seçin. |
-   | **VPN türü** | **Rota tabanlı** seçin |
+   | **VPN türü** | **Rota tabanlı**' ı seçin. |
    | **SKU**| Varsayılan bırakın `VpnGw1` . |
-   | **Konum**| İkincil SQL yönetilen örneğinizin ve ikincil sanal ağınızın bulunduğu konum.   |
+   | **Konum**| İkincil yönetilen örneğinizin ve ikincil sanal ağınızın bulunduğu konum.   |
    | **Sanal ağ**| 2. bölümde oluşturulan sanal ağı seçin `vnet-sql-mi-secondary` . |
    | **Genel IP adresi**| **Yeni oluştur**’u seçin. |
    | **Genel IP adresi adı**| IP adresiniz için gibi bir ad girin `secondary-gateway-IP` . |
@@ -860,7 +861,7 @@ Azure portal kullanarak, ikincil SQL yönetilen örneği için sanal ağ alt ağ
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell kullanarak ikincil SQL yönetilen örneğinin sanal ağı için ağ geçidini oluşturun. 
+PowerShell kullanarak ikincil yönetilen örneğin sanal ağı için ağ geçidini oluşturun. 
 
    ```powershell-interactive
    # Create the secondary gateway
@@ -905,8 +906,8 @@ PowerShell kullanarak ikincil SQL yönetilen örneğinin sanal ağı için ağ g
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Bir sanal ağı güncelleştirir.  |
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Bir sanal ağ içindeki bir alt ağı alır. |
 | [New-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) | Genel bir IP adresi oluşturur.  | 
-| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Sanal ağ geçidi için bir IP yapılandırması oluşturur |
-| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Bir sanal ağ geçidi oluşturur |
+| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Bir sanal ağ geçidi için IP yapılandırması oluşturur. |
+| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Bir sanal ağ geçidi oluşturur. |
 
 ---
 
@@ -926,8 +927,8 @@ Azure portal kullanarak iki ağ geçidini bağlayın.
 1. **Temel bilgiler** sekmesinde, aşağıdaki değerleri seçip **Tamam**' ı seçin. 
     1. `VNet-to-VNet` **Bağlantı türü**için seçin. 
     1. Açılan listeden aboneliğinizi seçin. 
-    1. Açılan kutuda SQL yönetilen örneğiniz için kaynak grubunu seçin. 
-    1. Açılan listeden birincil SQL yönetilen örneğinizin konumunu seçin 
+    1. Açılan kutuda SQL yönetilen örneği için kaynak grubunu seçin. 
+    1. Açılan listeden birincil yönetilen örneğinizin konumunu seçin. 
 1. **Ayarlar** sekmesinde, aşağıdaki değerleri seçin veya girin ve sonra **Tamam**' ı seçin:
     1. **İlk sanal ağ geçidi**için, gibi birincil ağ geçidini seçin `Primary-Gateway` .  
     1. **İkinci sanal ağ geçidi**için ikincil ağ geçidini (gibi) seçin `Secondary-Gateway` . 
@@ -971,20 +972,20 @@ PowerShell kullanarak iki ağ geçidini bağlayın.
 
 
 ## <a name="7---create-a-failover-group"></a>7-yük devretme grubu oluşturma
-Bu adımda, yük devretme grubunu oluşturacak ve SQL yönetilen örneklerinden her ikisini de ekleyecaksınız. 
+Bu adımda, yük devretme grubunu oluşturacak ve yönetilen örneklerin her ikisini de ekleyecek. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Azure portal kullanarak yük devretme grubunu oluşturun. 
 
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
-1. İlk bölümde oluşturduğunuz birincil SQL yönetilen örneğini (gibi) seçin `sql-mi-primary` . 
-1. **Ayarlar**altında, **örnek yük devretme grupları** ' na gidin ve sonra **örnek yük devretme grubu** sayfasını açmak için **Grup Ekle** ' yi seçin. 
+1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve `Azure SQL` Arama kutusuna yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
+1. İlk bölümde oluşturduğunuz birincil yönetilen örneği (örneğin,) seçin `sql-mi-primary` . 
+1. **Ayarlar**altında, örnek yük **devretme grupları** ' na gidin ve sonra **örnek yük devretme grubu** sayfasını açmak için **Grup Ekle** ' yi seçin. 
 
    ![Yük devretme grubu ekleme](./media/failover-group-add-instance-tutorial/add-failover-group.png)
 
-1. **Örnek yük devretme grubu** sayfasında, gibi yük devretme grubunuzun adını yazın `failovergrouptutorial` ve ardından açılan bir SQL yönetilen örneği (örneğin, açılır) seçin `sql-mi-secondary` . Yük devretme grubunuzu oluşturmak için **Oluştur** ' u seçin. 
+1. **Örnek yük devretme grubu** sayfasında, gibi yük devretme grubunuzun adını yazın `failovergrouptutorial` . Sonra, açılan listeden, gibi ikincil yönetilen örneği seçin `sql-mi-secondary` . Yük devretme grubunuzu oluşturmak için **Oluştur** ' u seçin. 
 
    ![Yük devretme grubu oluştur](./media/failover-group-add-instance-tutorial/create-failover-group.png)
 
@@ -1021,17 +1022,17 @@ Bu adımda, yük devretme grubunuzu ikincil sunucuya devreder ve sonra Azure por
 Azure portal kullanarak yük devretmeyi test edin. 
 
 
-1. [Azure Portal](https://portal.azure.com) içinde _Ikincil_ SQL yönetilen örneğinize gidin ve ayarlar altında **örnek yük devretme grupları** ' nı seçin. 
-1. Hangi SQL yönetilen örneğinin birincil olduğunu ve hangi SQL yönetilen örneğinin ikincil olduğunu gözden geçirin. 
+1. [Azure Portal](https://portal.azure.com) içinde _İkincil_ yönetilen örneğinize gidin ve ayarlar altında **örnek yük devretme grupları** ' nı seçin. 
+1. Hangi yönetilen örnek birincil olduğunu ve hangi yönetilen örnek ikincil olduğunu gözden geçirin. 
 1. **Yük devretme** ' yı seçin ve sonra kesilmekte olan tds oturumlarının uyarısında **Evet** ' i seçin. 
 
    ![Yük devretme grubu yükünü devreder](./media/failover-group-add-instance-tutorial/failover-mi-failover-group.png)
 
-1. Hangi SQL yönetilen örneğinin birincil olduğunu ve hangi SQL yönetilen örneğinin ikincil olduğunu gözden geçirin. Yük devretme başarılı olursa, iki örnek anahtarlamalı rollere sahip olmalıdır. 
+1. Hangi yönetilen örnek birincil olduğunu ve hangi yönetilen örnek ikincil olduğunu gözden geçirin. Yük devretme başarılı olursa, iki örnek anahtarlamalı rollere sahip olmalıdır. 
 
-   ![SQL yönetilen örnekler, yük devretmeden sonra rolleri değiştirdi](./media/failover-group-add-instance-tutorial/mi-switched-after-failover.png)
+   ![Yönetilen örnekler, yük devretmeden sonra rolleri değiştirdi](./media/failover-group-add-instance-tutorial/mi-switched-after-failover.png)
 
-1. Yeni _İkincil_ SQL yönetilen örneğine gidin ve birincil örnek birincil role geri dönmek Için **Yük devretmeyi** bir kez daha seçin. 
+1. Yeni _İkincil_ yönetilen örneğe gidin ve birincil örnek birincil role geri dönmek Için **Yük devretmeyi** bir kez daha seçin. 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -1043,7 +1044,7 @@ PowerShell kullanarak yük devretmeyi test etme.
    Get-AzSqlDatabaseInstanceFailoverGroup -ResourceGroupName $resourceGroupName `
        -Location $location -Name $failoverGroupName
    
-   # Failover the primary SQL Managed Instance to the secondary role
+   # Fail over the primary managed instance to the secondary role
    Write-host "Failing primary over to the secondary location"
    Get-AzSqlDatabaseInstanceFailoverGroup -ResourceGroupName $resourceGroupName `
        -Location $drLocation -Name $failoverGroupName | Switch-AzSqlDatabaseInstanceFailoverGroup
@@ -1051,14 +1052,14 @@ PowerShell kullanarak yük devretmeyi test etme.
    ```
 
 
-Yük devretme grubunu birincil sunucuya geri çevir:
+Yük devretme grubunu birincil sunucuya geri döndürür:
 
    ```powershell-interactive
    # Verify the current primary role
    Get-AzSqlDatabaseInstanceFailoverGroup -ResourceGroupName $resourceGroupName `
        -Location $drLocation -Name $failoverGroupName
    
-   # Fail primary SQL Managed Instance back to primary role
+   # Fail the primary managed instance back to the primary role
    Write-host "Failing primary back to primary role"
    Get-AzSqlDatabaseInstanceFailoverGroup -ResourceGroupName $resourceGroupName `
        -Location $location -Name $failoverGroupName | Switch-AzSqlDatabaseInstanceFailoverGroup
@@ -1081,24 +1082,24 @@ Yük devretme grubunu birincil sunucuya geri çevir:
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Önce SQL yönetilen örneği, ardından sanal küme, kalan kaynaklar ve son olarak kaynak grubu silerek kaynakları temizleyin. 
+Önce yönetilen örnekleri, ardından sanal kümeyi, ardından kalan kaynakları ve son olarak kaynak grubunu silerek kaynakları temizleyin. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 1. [Azure Portal](https://portal.azure.com)kaynak grubunuza gidin. 
-1. SQL yönetilen örneğini seçin ve **Sil**' i seçin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil**' i seçin. Bu işlemin tamamlanması biraz zaman alabilir ve tamamlanana kadar *sanal kümeyi* ya da başka herhangi bir bağımlı kaynağı silemeyeceksiniz. SQL yönetilen örneğinizin silindiğini doğrulamak için etkinlik sekmesindeki silmeyi izleyin. 
-1. SQL yönetilen örneği silindikten sonra, *sanal kümeyi* kaynak grubunuzda seçip **Sil**' i seçerek silin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil**' i seçin. 
+1. Yönetilen örnekleri seçin ve ardından **Sil**' i seçin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil**' i seçin. Bu işlemin tamamlanması biraz zaman alabilir ve tamamlanana kadar *sanal kümeyi* ya da başka herhangi bir bağımlı kaynağı silemeyeceksiniz. Yönetilen örneğinizin silindiğini onaylamak için **etkinlik** sekmesindeki silme işlemini izleyin. 
+1. Yönetilen örnek silindikten sonra, *sanal kümeyi* kaynak grubunuzda seçip **Sil**' i seçerek silin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil**' i seçin. 
 1. Kalan kaynakları silin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil**' i seçin. 
 1. Kaynak grubunu Sil ' i seçerek kaynak **grubunu Sil ' i seçin,** kaynak grubunun adını yazın ve Sil ' i `myResourceGroup` seçin. **Delete** 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Kaynak grubunu iki kez kaldırmanız gerekecektir. Kaynak grubunun ilk kez kaldırılması, SQL yönetilen örneğini ve sanal kümelerini kaldırır, ancak hata iletisiyle başarısız olur `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'.` . Kalan kaynakları ve kaynak grubunu kaldırmak için Remove-AzResourceGroup komutunu ikinci kez çalıştırın.
+Kaynak grubunu iki kez kaldırmanız gerekecektir. Kaynak grubunun ilk kez kaldırılması yönetilen örnekleri ve sanal kümeleri kaldırır, ancak hata iletisiyle başarısız olur `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'` . Kalan kaynakları ve kaynak grubunu kaldırmak için Remove-AzResourceGroup komutunu ikinci kez çalıştırın.
 
 ```powershell-interactive
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 Write-host "Removing SQL Managed Instance and virtual cluster..."
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
-Write-host "Removing residual resources and resouce group..."
+Write-host "Removing residual resources and resource group..."
 ```
 
 Öğreticinin bu bölümü aşağıdaki PowerShell cmdlet 'ini kullanır:
@@ -1132,13 +1133,13 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Bir ağ güvenlik grubunu güncelleştirir.  | 
 | [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Rota tablosuna bir yol ekler. |
 | [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Bir yol tablosunu güncelleştirir.  |
-| [New-Azsqlınstance](/powershell/module/az.sql/new-azsqlinstance) | Azure SQL yönetilen örneği oluşturur.  |
-| [Get-Azsqlınstance](/powershell/module/az.sql/get-azsqlinstance)| Azure SQL yönetilen veritabanı örneği hakkında bilgi döndürür. |
+| [New-Azsqlınstance](/powershell/module/az.sql/new-azsqlinstance) | Yönetilen bir örnek oluşturur.  |
+| [Get-Azsqlınstance](/powershell/module/az.sql/get-azsqlinstance)| Azure SQL yönetilen örneği hakkında bilgi döndürür. |
 | [New-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) | Genel bir IP adresi oluşturur.  | 
-| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Sanal ağ geçidi için bir IP yapılandırması oluşturur |
-| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Bir sanal ağ geçidi oluşturur |
+| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Bir sanal ağ geçidi için IP yapılandırması oluşturur. |
+| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Bir sanal ağ geçidi oluşturur. |
 | [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | İki sanal ağ geçidi arasında bir bağlantı oluşturur.   |
-| [New-Azsqldatabaseınstancefailovergroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Yeni bir Azure SQL yönetilen örnek yük devretme grubu oluşturur.  |
+| [New-Azsqldatabaseınstancefailovergroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Yeni bir SQL yönetilen örnek yük devretme grubu oluşturur.  |
 | [Get-Azsqldatabaseınstancefailovergroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | SQL yönetilen örnek yük devretme gruplarını alır veya listeler.| 
 | [Switch-Azsqldatabaseınstancefailovergroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | SQL yönetilen örnek yük devretme grubunun yük devretmesini yürütür. | 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu kaldırır. | 
@@ -1151,17 +1152,17 @@ Azure portal için kullanılabilir komut yok.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, iki SQL yönetilen örneği arasında bir yük devretme grubu yapılandırdınız. Şunları öğrendiniz:
+Bu öğreticide, iki yönetilen örnek arasında bir yük devretme grubu yapılandırdınız. Şunları öğrendiniz:
 
 > [!div class="checklist"]
-> - Birincil SQL yönetilen örneği oluşturma
-> - [Yük devretme grubunun](../database/auto-failover-group-overview.md)bir parçası olarak IKINCIL bir SQL yönetilen örneği oluşturun. 
-> - Yük devretme testi
+> - Birincil yönetilen örnek oluşturun.
+> - Bir [Yük devretme grubunun](../database/auto-failover-group-overview.md)parçası olarak ikincil bir yönetilen örnek oluşturun. 
+> - Yük devretme testi.
 
-SQL yönetilen örneğinizle bağlantı kurmak ve SQL yönetilen örneğinizle bir veritabanını geri yüklemek için bir sonraki hızlı başlangıca ilerleyin: 
+SQL yönetilen örneğine bağlanma ve bir veritabanını SQL yönetilen örneğine geri yükleme hakkında sonraki hızlı başlangıca ilerleyin: 
 
 > [!div class="nextstepaction"]
-> [SQL yönetilen örneğinize bağlanma](connect-vm-instance-configure.md) 
->  [Veritabanını BIR SQL yönetilen örneğine geri yükleme](restore-sample-database-quickstart.md)
+> [SQL yönetilen örneğine Bağlan](connect-vm-instance-configure.md) 
+>  [VERITABANıNı SQL yönetilen örneğine geri yükleme](restore-sample-database-quickstart.md)
 
 

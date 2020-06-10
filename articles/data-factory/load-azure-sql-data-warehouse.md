@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: 2f3932f3374367e260685ae5145da8858384c3a2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 06/08/2020
+ms.openlocfilehash: a023599cb026a62aee034846dd390cda730d5df4
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194763"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660302"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e veri yükleme
 
@@ -57,7 +57,7 @@ Bu makalede, _Azure SQL veritabanından Azure SYNAPSE Analytics 'e veri yükleme
     * **Sürüm**: **v2**'yi seçin.
     * **Konum**: veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Data Factory tarafından kullanılan veri depoları diğer konumlarda ve bölgelerde olabilir. Bu veri depoları Azure Data Lake Store, Azure depolama, Azure SQL veritabanı vb. içerir.
 
-3. **Oluştur**’u seçin.
+3. **Oluştur**'u seçin.
 4. Oluşturma işlemi tamamlandıktan sonra, veri fabrikanıza gidin. Aşağıdaki görüntüde gösterildiği gibi **Data Factory** giriş sayfasını görürsünüz:
 
    ![Data factory giriş sayfası](./media/doc-common-process/data-factory-home-page.png)
@@ -136,11 +136,13 @@ Bu makalede, _Azure SQL veritabanından Azure SYNAPSE Analytics 'e veri yükleme
 1. **Özet** sayfasında, ayarları gözden geçirin ve **İleri**' yi seçin.
 
     ![Özet sayfası](./media/load-azure-sql-data-warehouse/summary-page.png)
-1. **Dağıtım sayfasında**, işlem hattını (görev) Izlemek için **izleyici** ' yi seçin.
 
-1. Soldaki **İzleyici** sekmesinin otomatik olarak seçildiğine dikkat edin. İşlem hattı çalıştırması başarıyla tamamlandığında, etkinlik çalıştırma ayrıntılarını görüntülemek ve işlem hattını yeniden çalıştırmak için işlem **hattı adı** sütununun altındaki **Copyfromsqltosqldw** bağlantısını seçin.
+1. **Dağıtım** sayfasında, işlem hattını (görev) izlemek için **İzleyici**’yi seçin. 
+ 
+1. Soldaki **İzleyici** sekmesinin otomatik olarak seçildiğine dikkat edin. İşlem hattı çalıştırması başarıyla tamamlandığında, etkinlik çalıştırma ayrıntılarını görüntülemek veya işlem hattını yeniden çalıştırmak için işlem **hattı adı** sütununun altındaki **Copyfromsqltosqldw** bağlantısını seçin.
 
     [![İşlem hattı çalıştırmalarını izleme](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png#lightbox)
+
 1. İşlem hattı çalıştırmaları görünümüne geri dönmek için üstteki **tüm işlem hattı çalıştırmaları** bağlantısını seçin. Listeyi yenilemek için **Yenile**’yi seçin.
 
     ![Etkinlik çalıştırmalarını izleme](./media/load-azure-sql-data-warehouse/activity-monitoring.png)

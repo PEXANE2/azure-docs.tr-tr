@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d6141d48d67dd44c348961c6e09acf4e2531a61e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 512688345c03ea9d5da0e4933cd6a794eaaf597b
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685983"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660764"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure dosya paylaşımlarına geçirme
 
@@ -120,9 +120,9 @@ Aşağıdaki tabloda, Microsoft araçları ve Azure dosya paylaşımları için 
 |![Evet, önerilir](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | Destekleniyor. Azure dosya paylaşımları, ağ sürücüleri olarak takılabilir. | Tam doğruluk. * |
 |![Evet, önerilir](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure Dosya Eşitleme | Azure dosya paylaşımları ile yerel olarak tümleşiktir. | Tam doğruluk. * |
 |![Evet, önerilir](media/storage-files-migration-overview/circle-green-checkmark.png)| Depolama geçiş hizmeti | Dolaylı olarak desteklenir. Azure dosya paylaşımları, SMS hedef sunucularına ağ sürücüleri olarak takılabilir. | Tam doğruluk. * |
+|![Evet, önerilir](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy, sürüm 10,4 veya üzeri| Destekleniyor. | Tam doğruluk. * |
 |![Tam olarak önerilmez](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | Destekleniyor. | Meta verileri kopyalamaz. [Data Box, Azure dosya eşitleme birlikte kullanılabilir](storage-sync-offline-data-transfer.md). |
-|![Önerilmez](media/storage-files-migration-overview/circle-red-x.png)| AzCopy | Destekleniyor. | Meta verileri kopyalamaz. |
-|![Önerilmez](media/storage-files-migration-overview/circle-red-x.png)| Azure Depolama Gezgini | Destekleniyor. | Meta verileri kopyalamaz. |
+|![Tam olarak önerilmez](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Depolama Gezgini, sürüm 1,14 | Destekleniyor. | ACL 'Leri kopyalamaz. Zaman damgalarını destekler.  |
 |![Önerilmez](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Destekleniyor. | Meta verileri kopyalamaz. |
 |||||
 

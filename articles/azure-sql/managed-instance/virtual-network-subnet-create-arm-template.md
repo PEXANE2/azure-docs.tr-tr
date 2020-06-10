@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: 923f8b447b1103284b2c999a981826ef19a1c7d8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4cbcad991da6a7517ca2914cfd99b8517853c0e4
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050754"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84657917"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için sanal ağ oluşturma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,16 +27,16 @@ Bu makalede, Azure SQL yönetilen örneğini dağıtabileceğiniz geçerli bir s
 Azure SQL yönetilen örneğinin bir Azure [sanal ağı](../../virtual-network/virtual-networks-overview.md)içinde dağıtılması gerekir. Bu dağıtım, aşağıdaki senaryolara izin vermez:
 
 - Güvenli özel IP adresi
-- Bir SQL yönetilen örneğine doğrudan şirket içi ağdan bağlanma
+- Şirket içi ağdan doğrudan SQL yönetilen örneğine bağlanma
 - SQL yönetilen örneğini bağlı bir sunucuya veya başka bir şirket içi veri deposuna bağlama
-- SQL yönetilen örneğini Azure kaynaklarına bağlama  
+- SQL yönetilen örneği Azure kaynaklarına bağlama  
 
 > [!NOTE]
 > İlk örneği dağıtmadan önce [SQL yönetilen örneği için alt ağın boyutunu belirlemelisiniz](vnet-subnet-determine-size.md) . Kaynakları içine koyduktan sonra alt ağı yeniden boyutlandıramazsınız.
 >
-> Var olan bir sanal ağı kullanmayı planlıyorsanız, SQL yönetilen örneğinizi kapsayacak şekilde bu ağ yapılandırmasını değiştirmeniz gerekir. Daha fazla bilgi için bkz. [SQL yönetilen örneği için var olan bir sanal ağı değiştirme](vnet-existing-add-subnet.md).
+> Var olan bir sanal ağı kullanmayı planlıyorsanız, SQL yönetilen örneği kapsayacak şekilde bu ağ yapılandırmasını değiştirmeniz gerekir. Daha fazla bilgi için bkz. [SQL yönetilen örneği için var olan bir sanal ağı değiştirme](vnet-existing-add-subnet.md).
 >
-> SQL yönetilen örneği oluşturulduktan sonra, SQL yönetilen örneği veya VNet 'in başka bir kaynak grubuna veya aboneliğe taşınması desteklenmez.  SQL yönetilen örneğinin başka bir alt ağa taşınması de desteklenmez.
+> Yönetilen bir örnek oluşturulduktan sonra, yönetilen örneği veya sanal ağı başka bir kaynak grubuna veya aboneliğe taşıma desteklenmez.  Yönetilen örneği başka bir alt ağa taşımak de desteklenmez.
 >
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
@@ -49,7 +49,7 @@ Bir sanal ağ oluşturmanın ve yapılandırmanın en kolay yolu Azure Resource 
 
    <a target="_blank" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json" rel="noopener" data-linktype="external"> <img src="https://azuredeploy.net/deploybutton.png" data-linktype="external"> </a>
 
-   Bu düğme, SQL yönetilen örneğini dağıtabileceğiniz ağ ortamını yapılandırmak için kullanabileceğiniz bir form açar.
+   Bu düğme, SQL yönetilen örneği dağıtabileceğiniz ağ ortamını yapılandırmak için kullanabileceğiniz bir form açar.
 
    > [!Note]
    > Bu Azure Resource Manager şablonu, iki alt ağa sahip bir sanal ağ dağıtır. **ManagedInstances**adlı bir alt ağ SQL yönetilen örneği için ayrılmıştır ve önceden yapılandırılmış bir yol tablosuna sahiptir. **Varsayılan**olarak adlandırılan diğer alt ağ, SQL yönetilen örneğine (örneğin, Azure sanal makineleri) erişmesi gereken diğer kaynaklar için kullanılır.
@@ -65,5 +65,5 @@ Bir sanal ağ oluşturmanın ve yapılandırmanın en kolay yolu Azure Resource 
 - Genel bakış için bkz. [SQL yönetilen örneği nedir?](sql-managed-instance-paas-overview.md).
 - [SQL yönetilen örneği 'nde bağlantı mimarisi](connectivity-architecture-overview.md)hakkında bilgi edinin.
 - [SQL yönetilen örneği için var olan bir sanal ağı değiştirme](vnet-existing-add-subnet.md)hakkında bilgi edinin.
-- Bir sanal ağ oluşturmayı, bir SQL yönetilen örneği oluşturmayı ve bir veritabanını bir veritabanı yedeklemesinden geri yüklemeyi gösteren bir öğretici için bkz. [Azure SQL yönetilen örneği oluşturma](instance-create-quickstart.md).
+- Bir sanal ağ oluşturmayı, yönetilen bir örnek oluşturmayı ve bir veritabanını bir veritabanı yedeğinden geri yüklemeyi gösteren bir öğretici için bkz. [yönetilen örnek oluşturma](instance-create-quickstart.md).
 - DNS sorunları için bkz. [Özel BIR DNS yapılandırma](custom-dns-configure.md).

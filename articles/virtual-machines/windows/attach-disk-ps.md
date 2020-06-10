@@ -3,16 +3,16 @@ title: Azure 'da PowerShell kullanarak bir Windows sanal makinesine veri diski i
 description: Kaynak Yöneticisi dağıtım modeliyle PowerShell kullanarak yeni veya mevcut bir veri diskini bir Windows VM 'sine bağlama.
 author: roygara
 ms.service: virtual-machines-windows
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: ce995a84d2290845e83416caf9c8b0004242eed4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f16784d89d1f3edec491d5c7ae312dbd46212f1
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267761"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658139"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>PowerShell ile bir Windows sanal makinesine veri diski iliştirme
 
@@ -49,7 +49,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="using-managed-disks-in-an-availability-zone"></a>Bir kullanılabilirlik bölgesinde yönetilen diskleri kullanma
 
-Bir kullanılabilirlik bölgesinde bir disk oluşturmak için, `-Zone` parametresiyle [New-azdiskconfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) komutunu kullanın. Aşağıdaki örnek, bölge *1*' de bir disk oluşturur.
+Bir kullanılabilirlik bölgesinde bir disk oluşturmak için, parametresiyle [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) komutunu kullanın `-Zone` . Aşağıdaki örnek, bölge *1*' de bir disk oluşturur.
 
 ```powershell
 $rgName = 'myResourceGroup'

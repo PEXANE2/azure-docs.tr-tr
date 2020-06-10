@@ -2,25 +2,18 @@
 title: Azure yerleşik rolleri-Azure RBAC
 description: Bu makalede, Azure rol tabanlı erişim denetimi (Azure RBAC) için Azure yerleşik rolleri açıklanmaktadır. Eylemler, NotActions, DataActions ve NotDataActions öğelerini listeler.
 services: active-directory
-documentationcenter: ''
-author: rolyon
-manager: mtillman
-editor: ''
 ms.service: role-based-access-control
-ms.devlang: ''
 ms.topic: reference
-ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 05/04/2020
+author: rolyon
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.custom: it-pro
-ms.openlocfilehash: 0a574ba281a037a06ddda1981ae6fa35b905bca1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 05/04/2020
+ms.openlocfilehash: 909485ea3c4e143ce93579d1bfea5e13cf94c575
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683654"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660038"
 ---
 # <a name="azure-built-in-roles"></a>Azure yerleşik rolleri
 
@@ -28,13 +21,12 @@ ms.locfileid: "83683654"
 
 Bu makalede, her zaman gelişen Azure yerleşik rolleri listelenir. En son rolleri almak için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) veya [az role Definition List](/cli/azure/role/definition#az-role-definition-list)komutunu kullanın. Azure Active Directory (Azure AD) için yönetici rolleri arıyorsanız, [Azure Active Directory Içindeki yönetici rolü izinleri](../active-directory/users-groups-roles/directory-assign-admin-roles.md)bölümüne bakın.
 
+Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz KIMLIĞI verilmiştir. `Actions`Her rolün,, ve listesini görmek için rol adına `NotActions` tıklayın `DataActions` `NotDataActions` . Bu eylemlerin ne anlama geldiğini ve bunların yönetim ve veri düzlemleri için nasıl uygulandığını hakkında bilgi için bkz. [Azure rol tanımlarını anlama](role-definitions.md).
+
 ## <a name="all"></a>Tümü
 
-Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz KIMLIĞI verilmiştir. `Actions`Her rolün,, ve listesini görmek için rol adını `NotActions` seçin `DataActions` `NotDataActions` . Bu eylemlerin ne anlama geldiğini ve bunların yönetim ve veri düzlemleri için nasıl uygulandığını hakkında bilgi için bkz. [Azure rol tanımlarını anlama](role-definitions.md).
-
-
 > [!div class="mx-tableFixed"]
-> | Yerleşik rol | Açıklama | ID |
+> | Yerleşik rol | Description | ID |
 > | --- | --- | --- |
 > | **Genel** |  |  |
 > | [Katkıda Bulunan](#contributor) | Kaynaklara erişim verme dışında her şeyi yönetmenizi sağlar. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -54,6 +46,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Klasik Ağ Katılımcısı](#classic-network-contributor) | Klasik ağları yönetmenize izin verir, ancak bunlara erişemez. | b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
 > | [DNS bölgesi Katılımcısı](#dns-zone-contributor) | Azure DNS, DNS bölgelerini ve kayıt kümelerini yönetmenizi sağlar, ancak bunlara kimlerin erişebileceğini denetlemenize izin vermez. | befefa01-2a29-4197-83a8-272ff33ce314 |
 > | [Ağ Katılımcısı](#network-contributor) | Ağları yönetmenizi sağlar ancak onlara yönelik erişimleri vermez. | 4d97b98b-1d4f-4787-A291-c67834d212e7 |
+> | [Özel DNS bölge Katılımcısı](#private-dns-zone-contributor) | Özel DNS bölge kaynaklarını yönetmenizi sağlar, ancak bağlandıkları sanal ağları yönetemez. | b12aa53e-6015-4669-85d0-8515ebb3ae7f |
 > | [Katkıda bulunan Traffic Manager](#traffic-manager-contributor) | Traffic Manager profillerini yönetmenizi sağlar, ancak bunlara kimlerin erişebileceğini denetlemenize izin vermez. | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
 > | **Depolama** |  |  |
 > | [Avere Katılımcısı](#avere-contributor) | , Bir avere vFXT kümesi oluşturabilir ve yönetebilir. | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
@@ -114,13 +107,15 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [HDInsight etki alanı Hizmetleri Katılımcısı](#hdinsight-domain-services-contributor) | HDInsight için gereken etki alanı Hizmetleri ile ilgili işlemleri okuyabilir, oluşturabilir, değiştirebilir ve silebilir Kurumsal Güvenlik Paketi | 8d8d5a11-05d3-4bdav-A417-a08778121c7c |
 > | [Log Analytics Katkıda Bulunan](#log-analytics-contributor) | Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. İzleme ayarlarını düzenlediğinizde VM 'lere VM uzantısının eklenmesi dahildir; Azure depolama 'dan günlüklerin toplanmasını yapılandırabilmek için depolama hesabı anahtarlarını okuma; Otomasyon hesapları oluşturma ve yapılandırma; çözümler ekleme; ve Azure tanılama 'yı tüm Azure kaynaklarında yapılandırma. | 92aaf0dad-9dadb-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics Okuyucusu](#log-analytics-reader) | Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm Azure kaynaklarında Azure tanılama 'nın yapılandırılmasını görüntüleme dahil olmak üzere izleme ayarlarını görüntüleyebilir. | 73c42c96-874c-492b-b04d-ab87d138a893 |
-> | **Blok zinciri** |  |  |
+> | **Blok Zinciri** |  |  |
 > | [Blok zinciri üye düğümü erişimi (Önizleme)](#blockchain-member-node-access-preview) | Blok zinciri üye düğümlerine erişim sağlar | 31a002a1-acaf-453E-8a5b-297c9ca1ea24 |
 > | **AI + makine öğrenimi** |  |  |
 > | [Bilişsel hizmetler Katılımcısı](#cognitive-services-contributor) | Bilişsel hizmetler için anahtar oluşturma, okuma, güncelleştirme, silme ve yönetme olanağı sağlar. | 25fbc0a9-bd7c-42A3-aa1a-3b75d497ee68 |
 > | [Bilişsel hizmetler veri okuyucu (Önizleme)](#cognitive-services-data-reader-preview) | Bilişsel hizmetler verilerini okumanızı sağlar. | b59867f0-fa02-499b-be73-45a86b5b3e1c |
 > | [Bilişsel hizmetler kullanıcısı](#cognitive-services-user) | Bilişsel hizmetler 'in anahtarlarını okuyup listelemenizi sağlar. | a97b65f3-24c7-4388-baec-2e87135dc908 |
 > | **Karma Gerçeklik** |  |  |
+> | [Uzaktan Işleme Yöneticisi](#remote-rendering-administrator) | Azure uzaktan Işleme için kullanıcıya dönüştürme, oturum yönetme, işleme ve Tanılama özelliklerini sağlar | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
+> | [Uzaktan Işleme Istemcisi](#remote-rendering-client) | Azure uzaktan Işleme için Kullanıcı yönetme, işleme ve tanılama özellikleri sağlar. | d39065c4-c120-43c9-ab0a-63eed9795f0a |
 > | [Uzamsal bağlayıcı hesabı Katılımcısı](#spatial-anchors-account-contributor) | Hesabınızdaki uzamsal bağlantıları yönetmenizi sağlar, ancak onları silmez | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
 > | [Uzamsal bağlayıcı hesap sahibi](#spatial-anchors-account-owner) | Hesabınızdaki uzamsal bağlayıcıları, silme dahil olmak üzere yönetmenizi sağlar | 70bbe301-9835-447d-afdd-19eb3167307c |
 > | [Uzamsal bağlayıcı hesap okuyucu](#spatial-anchors-account-reader) | Hesabınızdaki uzamsal Tutturucuların özelliklerini bulmanıza ve okumanızı sağlar | 5d51204f-EB77-4B1C-b86a-2ec626c49413 |
@@ -136,6 +131,12 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Kayıt sahibini Azure Stack](#azure-stack-registration-owner) | Azure Stack kayıtlarını yönetmenizi sağlar. | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
 > | [EventGrid EventSubscription Katılımcısı](#eventgrid-eventsubscription-contributor) | EventGrid olay aboneliği işlemlerini yönetmenizi sağlar. | 428e0ff0-5e57-4d9c-A221-2c70d0e0a443 |
 > | [EventGrid EventSubscription okuyucusu](#eventgrid-eventsubscription-reader) | EventGrid olay aboneliklerini okumanızı sağlar. | 2414bbcf-6497-4FAF-8c65-045460748405 |
+> | [FHıR verileri Katılımcısı](#fhir-data-contributor) | Rol, Kullanıcı veya sorumlunun FHıR verilerine tam erişimini sağlar | 5a1fc7df-4BF1-4951-a576-89034ee01acd |
+> | [FHıR veri aktarıcı](#fhir-data-exporter) | Rol, kullanıcının veya sorumlunun FHıR verilerini okumasına ve dışa almasına izin verir | 3db33094-8700-4567-8dad5-1501d4e7e843 |
+> | [FHıR veri okuyucu](#fhir-data-reader) | Rol, kullanıcının veya sorumlunun FHıR verilerini okumasına izin verir | 4c8d0bbc-75d3-4935-991F-5f3c56d81508 |
+> | [FHıR veri yazıcısı](#fhir-data-writer) | Rol, kullanıcının veya sorumlunun FHıR verilerini okumasına ve yazmasına izin verir | 3f88fce4-5892-4214-ae73-ba5294559913 |
+> | [Katkıda bulunan Tümleştirme Hizmeti Ortamı](#integration-service-environment-contributor) | Tümleştirme hizmeti ortamlarını yönetmenize izin verir, ancak bunlara erişimi kalmaz. | a41e2c5b-bd99-4a07-88f4-9bf657a760b8 |
+> | [Tümleştirme Hizmeti Ortamı geliştirici](#integration-service-environment-developer) | Geliştiricilerin, tümleştirme hizmeti ortamlarında iş akışları, tümleştirme hesapları ve API bağlantıları oluşturmalarına ve güncelleştirmesine izin verir. | c7aa55d3-1abb-444a-a5ca-5e51e485d6ec |
 > | [Intelligent Systems hesabı Katılımcısı](#intelligent-systems-account-contributor) | Akıllı sistem hesaplarını yönetmenizi sağlar ancak onlara yönelik erişimleri vermez. | 03a6d094-3444-4b3d-88af-7477090a9e5e |
 > | [Mantıksal uygulama Katılımcısı](#logic-app-contributor) | Mantıksal uygulamaları yönetmenize izin verir, ancak bunlara erişimi değiştirmeyin. | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | [Logic App Işleci](#logic-app-operator) | Logic Apps 'i okumanızı, etkinleştirmenizi ve devre dışı bırakmanızı sağlar, ancak bunları düzenleyemez veya güncelleştiremez. | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
@@ -190,6 +191,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Etiket Katılımcısı](#tag-contributor) | Varlıklarda kendilerine erişim sağlamamanıza gerek kalmadan varlıklarda etiketleri yönetmenizi sağlar. | 4a9ae827-6dc8-4573-8ac7-8239d42aa03f |
 > | **Diğer** |  |  |
 > | [BizTalk Katılımcısı](#biztalk-contributor) | BizTalk hizmetlerini yönetmenizi sağlar ancak onlara erişim izni vermez. | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
+> | [Masaüstü Sanallaştırma kullanıcısı](#desktop-virtualization-user) | Kullanıcının uygulama grubundaki uygulamaları kullanmasına izin verir. | 1d18fff3-a72a-46b5-B4A9-0b38a3cd7e63 |
 > | [Zamanlayıcı Iş koleksiyonları Katılımcısı](#scheduler-job-collections-contributor) | Zamanlayıcı iş koleksiyonlarını yönetmenizi sağlar, ancak bunlara erişimi kalmaz. | 188a0f2f-5c9e-469B-ae67-2aa5ce574b94 |
 
 
@@ -198,7 +200,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 
 ### <a name="contributor"></a>Katılımcı
 
-Kaynaklara erişim verme dışında her şeyi yönetmenizi sağlar.
+Kaynaklara erişim verme dışında her şeyi yönetmenizi sağlar. [Daha fazla bilgi edinin](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -206,11 +208,11 @@ Kaynaklara erişim verme dışında her şeyi yönetmenizi sağlar.
 > | **Eylemler** |  |
 > | * | Tüm türlerin kaynaklarını oluşturma ve yönetme |
 > | **NotActions** |  |
-> | Microsoft. Authorization/*/Delete | Rolleri, ilke atamalarını, ilke tanımlarını ve ilke kümesi tanımlarını Sil |
-> | Microsoft. Authorization/*/Write | Roller, rol atamaları, ilke atamaları, ilke tanımları ve ilke kümesi tanımları oluşturun |
-> | Microsoft. Authorization/yükseltir Teaccess/Action | Çağrı yapana kiracı kapsamında Kullanıcı Erişimi Yöneticisi erişim izni verir |
-> | Microsoft. Blueprint/Blueprintasbir/Write | Şema atamalarını oluşturun veya güncelleştirin |
-> | Microsoft. Blueprint/Blueprintasbir/Delete | Tüm şema atamalarını silme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Delete | Rolleri, ilke atamalarını, ilke tanımlarını ve ilke kümesi tanımlarını Sil |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Write | Roller, rol atamaları, ilke atamaları, ilke tanımları ve ilke kümesi tanımları oluşturun |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/yükseltir Teaccess/Action | Çağrı yapana kiracı kapsamında Kullanıcı Erişimi Yöneticisi erişim izni verir |
+> | [Microsoft. BLUEPRINT](resource-provider-operations.md#microsoftblueprint)/Blueprintassignments/Write | Şema atamalarını oluşturun veya güncelleştirin |
+> | [Microsoft. Blueprint](resource-provider-operations.md#microsoftblueprint)/Blueprintassignments/Delete | Tüm şema atamalarını silme |
 > | **Veri eylemleri** |  |
 > | *yok* |  |
 > | **NotDataActions** |  |
@@ -248,7 +250,7 @@ Kaynaklara erişim verme dışında her şeyi yönetmenizi sağlar.
 
 ### <a name="owner"></a>Sahip
 
-Kaynaklara erişim de dahil olmak üzere her şeyi yönetmenizi sağlar.
+Kaynaklara erişim de dahil olmak üzere her şeyi yönetmenizi sağlar. [Daha fazla bilgi edinin](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -288,7 +290,7 @@ Kaynaklara erişim de dahil olmak üzere her şeyi yönetmenizi sağlar.
 
 ### <a name="reader"></a>Okuyucu
 
-Her şeyi görüntülemenize izin verir, ancak hiçbir değişiklik yapmamalıdır.
+Her şeyi görüntülemenize izin verir, ancak hiçbir değişiklik yapmamalıdır. [Daha fazla bilgi edinin](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -328,15 +330,15 @@ Her şeyi görüntülemenize izin verir, ancak hiçbir değişiklik yapmamalıd�
 
 ### <a name="user-access-administrator"></a>Kullanıcı Erişimi Yöneticisi
 
-Azure kaynaklarına Kullanıcı erişimini yönetmenizi sağlar.
+Azure kaynaklarına Kullanıcı erişimini yönetmenizi sağlar. [Daha fazla bilgi edinin](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
 > | */Read | Gizli dizileri hariç tüm türlerin kaynaklarını okuyun. |
-> | Microsoft. Authorization/* | Yetkilendirmeyi Yönetme |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/* | Yetkilendirmeyi Yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -381,23 +383,23 @@ Klasik sanal makineleri yönetmenizi sağlar ancak bunlara yönelik erişimi, ba
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. ClassicCompute/domainNames/* | Klasik işlem etki alanı adları oluşturma ve yönetme |
-> | Microsoft. ClassicCompute/virtualMachines/* | Sanal makine oluşturma ve yönetme |
-> | Microsoft. ClassicNetwork/networkSecurityGroups/JOIN/Action |  |
-> | Microsoft. ClassicNetwork/Rezervedips/bağlantı/eylem | Ayrılmış bir IP 'yi bağlama |
-> | Microsoft. ClassicNetwork/Rezervedips/Read | Ayrılmış IP 'Leri alır |
-> | Microsoft. ClassicNetwork/virtualNetworks/JOIN/Action | Sanal ağı birleştirir. |
-> | Microsoft. ClassicNetwork/virtualNetworks/Read | Sanal ağı alın. |
-> | Microsoft. ClassicStorage/storageAccounts/Disks/Read | Depolama hesabı diskini döndürür. |
-> | Microsoft. ClassicStorage/storageAccounts/Images/Read | Depolama hesabı görüntüsünü döndürür. Kullanım dışı. ' Microsoft. ClassicStorage/storageAccounts/Vmımages ' kullanın) |
-> | Microsoft. ClassicStorage/storageAccounts/listKeys/Action | Depolama hesaplarının erişim anahtarlarını listeler. |
-> | Microsoft. ClassicStorage/storageAccounts/Read | Verilen hesaba sahip depolama hesabını döndürün. |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/DomainNames/* | Klasik işlem etki alanı adları oluşturma ve yönetme |
+> | [Microsoft. ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/Virtual, ines/* | Sanal makine oluşturma ve yönetme |
+> | [Microsoft. ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/Networksecuritygroups/Join/Action |  |
+> | [Microsoft. ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/Rezervedips/link/Action | Ayrılmış bir IP 'yi bağlama |
+> | [Microsoft. ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/Rezervedips/Read | Ayrılmış IP 'Leri alır |
+> | [Microsoft. ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/Virtualnetworks/Join/Action | Sanal ağı birleştirir. |
+> | [Microsoft. ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/Virtualnetworks/Read | Sanal ağı alın. |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/Storageaccounts/Disks/Read | Depolama hesabı diskini döndürür. |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/Storageaccounts/images/Read | Depolama hesabı görüntüsünü döndürür. Kullanım dışı. ' Microsoft. ClassicStorage/storageAccounts/Vmımages ' kullanın) |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/Storageaccounts/ListKeys/Action | Depolama hesaplarının erişim anahtarlarını listeler. |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/Storageaccounts/Read | Verilen hesaba sahip depolama hesabını döndürün. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -447,22 +449,22 @@ Klasik sanal makineleri yönetmenizi sağlar ancak bunlara yönelik erişimi, ba
 
 ### <a name="virtual-machine-administrator-login"></a>Sanal Makine Yöneticisi oturum açma
 
-Portalda sanal makineleri görüntüleme ve yönetici olarak oturum açma
+Portalda sanal makineleri görüntüleyin ve yönetici olarak oturum açın [daha fazla bilgi edinin](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Network/publicIPAddresses/Read | Genel IP adresi tanımını alır. |
-> | Microsoft. Network/virtualNetworks/Read | Sanal ağ tanımını al |
-> | Microsoft. Network/loadBalancers/Read | Yük dengeleyici tanımını alır |
-> | Microsoft. Network/NetworkInterfaces/Read | Bir ağ arabirimi tanımını alır.  |
-> | Microsoft. COMPUTE/virtualMachines/*/Read |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Publicıpaddresses/Read | Genel IP adresi tanımını alır. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Read | Sanal ağ tanımını al |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Loadbalancers/Read | Yük dengeleyici tanımını alır |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/NetworkInterfaces/Read | Bir ağ arabirimi tanımını alır.  |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Virtual, ines/*/Read |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. COMPUTE/virtualMachines/LOGIN/Action | Bir sanal makinede normal kullanıcı olarak oturum açın |
-> | Microsoft. COMPUTE/virtualMachines/loginAsAdmin/Action | Windows yönetici veya Linux kök kullanıcı ayrıcalıklarına sahip bir sanal makinede oturum açma |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Virtual, Ines/Login/Action | Bir sanal makinede normal kullanıcı olarak oturum açın |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Virtualırines/loginasadmin/Action | Windows yönetici veya Linux kök kullanıcı ayrıcalıklarına sahip bir sanal makinede oturum açma |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -499,53 +501,53 @@ Portalda sanal makineleri görüntüleme ve yönetici olarak oturum açma
 
 ### <a name="virtual-machine-contributor"></a>Sanal Makine Katılımcısı
 
-Sanal makineleri yönetmenize izin verir, ancak bunlara bağlı oldukları sanal ağ veya depolama hesabına erişemez.
+Sanal makineleri yönetmenize izin verir, ancak bunlara bağlı oldukları sanal ağ veya depolama hesabına erişemez. [Daha fazla bilgi edinin](../virtual-machines/linux/tutorial-govern-resources.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. COMPUTE/kullanılabilirliği Bilitysets/* | İşlem kullanılabilirlik kümeleri oluşturma ve yönetme |
-> | Microsoft. COMPUTE/Locations/* | İşlem konumları oluşturma ve yönetme |
-> | Microsoft. COMPUTE/virtualMachines/* | Sanal makine oluşturma ve yönetme |
-> | Microsoft. COMPUTE/virtualMachineScaleSets/* | Sanal makine ölçek kümeleri oluşturma ve yönetme |
-> | Microsoft. COMPUTE/Disks/Write | Yeni bir disk oluşturur veya var olan bir diski güncelleştirir |
-> | Microsoft. COMPUTE/Disks/Read | Bir diskin özelliklerini al |
-> | Microsoft. COMPUTE/diskler/Sil | Diski siler |
-> | Microsoft. DevTestLab/zamanlamalar/* |  |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Network/Applicationgateway/Backendavddresspoir/JOIN/Action | Bir uygulama ağ geçidi arka uç adres havuzunu birleştirir. Alertable değil. |
-> | Microsoft. Network/loadBalancers/Backendadddresspoir/JOIN/Action | Yük dengeleyici arka uç adres havuzunu birleştirir. Alertable değil. |
-> | Microsoft. Network/loadBalancers/ınboundnatpools/JOIN/Action | Yük dengeleyici gelen NAT havuzunu birleştirir. Alertable değil. |
-> | Microsoft. Network/loadBalancers/ınboundnatrules/JOIN/Action | Yük dengeleyici gelen NAT kuralına katılır. Alertable değil. |
-> | Microsoft. Network/loadBalancers/araştırmaları/JOIN/Action | Yük dengeleyicinin araştırmalarını sağlar. Örneğin, bu izinle VM Ölçek kümesinin Healtharaştırma özelliği araştırmasına başvurabilir. Alertable değil. |
-> | Microsoft. Network/loadBalancers/Read | Yük dengeleyici tanımını alır |
-> | Microsoft. Network/Locations/* | Ağ konumları oluşturma ve yönetme |
-> | Microsoft. Network/NetworkInterfaces/* | Ağ arabirimlerini oluşturma ve yönetme |
-> | Microsoft. Network/networkSecurityGroups/JOIN/Action | Bir ağ güvenlik grubuna katılır. Alertable değil. |
-> | Microsoft. Network/networkSecurityGroups/Read | Bir ağ güvenlik grubu tanımını alır |
-> | Microsoft. Network/publicIPAddresses/JOIN/Action | Genel bir IP adresini birleştirir. Alertable değil. |
-> | Microsoft. Network/publicIPAddresses/Read | Genel IP adresi tanımını alır. |
-> | Microsoft. Network/virtualNetworks/Read | Sanal ağ tanımını al |
-> | Microsoft. Network/virtualNetworks/alt ağlar/JOIN/Action | Bir sanal ağı birleştirir. Alertable değil. |
-> | Microsoft. RecoveryServices/konumlar/* |  |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/Backupprotectionamacını/Write | Yedekleme koruma hedefi oluşturma |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/*/Read |  |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/Read | Korumalı öğenin nesne ayrıntılarını döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/yazma | Yedekleme korumalı öğesi oluştur |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/Read | Tüm koruma Ilkelerini döndürür |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/Write | Koruma Ilkesi oluşturur |
-> | Microsoft. RecoveryServices/Vaults/okuma | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
-> | Microsoft. RecoveryServices/Kasaults/kullanımlar/okuma | Bir kurtarma hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
-> | Microsoft. RecoveryServices/Vaults/Write | Kasa oluşturma işlemi, ' kasa ' türünde bir Azure kaynağı oluşturur |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. SqlVirtualMachine/* |  |
-> | Microsoft. Storage/storageAccounts/listKeys/Action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
-> | Microsoft. Storage/storageAccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/kullanılabilirliği Bilitysets/* | İşlem kullanılabilirlik kümeleri oluşturma ve yönetme |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Locations/* | İşlem konumları oluşturma ve yönetme |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Virtual, ines/* | Sanal makine oluşturma ve yönetme |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachineScaleSets/* | Sanal makine ölçek kümeleri oluşturma ve yönetme |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Disks/Write | Yeni bir disk oluşturur veya var olan bir diski güncelleştirir |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Disks/Read | Bir diskin özelliklerini al |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Disks/Delete | Diski siler |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Schedules/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Applicationgateways/backendadddresspools/Join/Action | Bir uygulama ağ geçidi arka uç adres havuzunu birleştirir. Alertable değil. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Loadbalancers/backendadddresspools/Join/Action | Yük dengeleyici arka uç adres havuzunu birleştirir. Alertable değil. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Loadbalancers/ınboundnatpools/Join/Action | Yük dengeleyici gelen NAT havuzunu birleştirir. Alertable değil. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Loadbalancers/ınboundnatrules/Join/Action | Yük dengeleyici gelen NAT kuralına katılır. Alertable değil. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Loadbalancers/probes/Join/Action | Yük dengeleyicinin araştırmalarını sağlar. Örneğin, bu izinle VM Ölçek kümesinin Healtharaştırma özelliği araştırmasına başvurabilir. Alertable değil. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Loadbalancers/Read | Yük dengeleyici tanımını alır |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Locations/* | Ağ konumları oluşturma ve yönetme |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/NetworkInterfaces/* | Ağ arabirimlerini oluşturma ve yönetme |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Networksecuritygroups/Join/Action | Bir ağ güvenlik grubuna katılır. Alertable değil. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Networksecuritygroups/Read | Bir ağ güvenlik grubu tanımını alır |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Publicıpaddresses/Join/Action | Genel bir IP adresini birleştirir. Alertable değil. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Publicıpaddresses/Read | Genel IP adresi tanımını alır. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Read | Sanal ağ tanımını al |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Subnets/Join/Action | Bir sanal ağı birleştirir. Alertable değil. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/backupprotectionert/Write | Yedekleme koruma hedefi oluşturma |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/korunabilir Dıtems/*/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/korunabilir Teditems/Read | Korumalı öğenin nesne ayrıntılarını döndürür |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/korunabilir Dıtems/Write | Yedekleme korumalı öğesi oluştur |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backuppolicies/Read | Tüm koruma Ilkelerini döndürür |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backuppolicies/Write | Koruma Ilkesi oluşturur |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Read | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/Read | Bir kurtarma hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Write | Kasa oluşturma işlemi, ' kasa ' türünde bir Azure kaynağı oluşturur |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. SqlVirtualMachine](resource-provider-operations.md#microsoftsqlvirtualmachine)/* |  |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/ListKeys/Action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -619,21 +621,21 @@ Sanal makineleri yönetmenize izin verir, ancak bunlara bağlı oldukları sanal
 
 ### <a name="virtual-machine-user-login"></a>Sanal makine Kullanıcı oturumu açma
 
-Portalda sanal makineleri görüntüleyin ve normal bir kullanıcı olarak oturum açın.
+Portalda sanal makineleri görüntüleyin ve normal bir kullanıcı olarak oturum açın. [Daha fazla bilgi edinin](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Network/publicIPAddresses/Read | Genel IP adresi tanımını alır. |
-> | Microsoft. Network/virtualNetworks/Read | Sanal ağ tanımını al |
-> | Microsoft. Network/loadBalancers/Read | Yük dengeleyici tanımını alır |
-> | Microsoft. Network/NetworkInterfaces/Read | Bir ağ arabirimi tanımını alır.  |
-> | Microsoft. COMPUTE/virtualMachines/*/Read |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Publicıpaddresses/Read | Genel IP adresi tanımını alır. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Read | Sanal ağ tanımını al |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Loadbalancers/Read | Yük dengeleyici tanımını alır |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/NetworkInterfaces/Read | Bir ağ arabirimi tanımını alır.  |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Virtual, ines/*/Read |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. COMPUTE/virtualMachines/LOGIN/Action | Bir sanal makinede normal kullanıcı olarak oturum açın |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Virtual, Ines/Login/Action | Bir sanal makinede normal kullanıcı olarak oturum açın |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -678,14 +680,14 @@ CDN uç noktalarını yönetebilir, ancak diğer kullanıcılara erişim izni ve
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. CDN/edgenodes/okuma |  |
-> | Microsoft. CDN/operationresults/* |  |
-> | Microsoft. CDN/profiller/uç noktaları/* |  |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/edgenodes/Read |  |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/Profiles/endpoints/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -732,14 +734,14 @@ CDN uç noktalarını görüntüleyebilir, ancak değişiklik yapamaz.
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. CDN/edgenodes/okuma |  |
-> | Microsoft. CDN/operationresults/* |  |
-> | Microsoft. CDN/Profiles/uç noktaları/*/Read |  |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/edgenodes/Read |  |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/Profiles/endpoints/*/Read |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -780,20 +782,20 @@ CDN uç noktalarını görüntüleyebilir, ancak değişiklik yapamaz.
 
 ### <a name="cdn-profile-contributor"></a>CDN profili Katılımcısı
 
-CDN profillerini ve uç noktalarını yönetebilir, ancak diğer kullanıcılara erişim izni veremez.
+CDN profillerini ve uç noktalarını yönetebilir, ancak diğer kullanıcılara erişim izni veremez. [Daha fazla bilgi edinin](../cdn/cdn-app-dev-net.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. CDN/edgenodes/okuma |  |
-> | Microsoft. CDN/operationresults/* |  |
-> | Microsoft. CDN/Profiles/* |  |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/edgenodes/Read |  |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/Profiles/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -840,14 +842,14 @@ CDN profillerini ve uç noktalarını görüntüleyebilir, ancak değişiklik ya
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. CDN/edgenodes/okuma |  |
-> | Microsoft. CDN/operationresults/* |  |
-> | Microsoft. CDN/profiller/*/Read |  |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/edgenodes/Read |  |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/Profiles/*/Read |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -888,19 +890,19 @@ CDN profillerini ve uç noktalarını görüntüleyebilir, ancak değişiklik ya
 
 ### <a name="classic-network-contributor"></a>Klasik Ağ Katılımcısı
 
-Klasik ağları yönetmenize izin verir, ancak bunlara erişemez.
+Klasik ağları yönetmenize izin verir, ancak bunlara erişemez. [Daha fazla bilgi edinin](../virtual-network/virtual-network-manage-peering.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. ClassicNetwork/* | Klasik ağları oluşturma ve yönetme |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/* | Klasik ağları oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -940,19 +942,19 @@ Klasik ağları yönetmenize izin verir, ancak bunlara erişemez.
 
 ### <a name="dns-zone-contributor"></a>DNS bölgesi Katılımcısı
 
-Azure DNS, DNS bölgelerini ve kayıt kümelerini yönetmenizi sağlar, ancak bunlara kimlerin erişebileceğini denetlemenize izin vermez.
+Azure DNS, DNS bölgelerini ve kayıt kümelerini yönetmenizi sağlar, ancak bunlara kimlerin erişebileceğini denetlemenize izin vermez. [Daha fazla bilgi edinin](../dns/dns-protect-zones-recordsets.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Network/dnsZones/* | DNS bölgeleri ve kayıtları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Dnsbölgesi es/* | DNS bölgeleri ve kayıtları oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -998,13 +1000,13 @@ Ağları yönetmenizi sağlar ancak onlara yönelik erişimleri vermez.
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Network/* | Ağ oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/* | Ağ oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -1042,6 +1044,64 @@ Ağları yönetmenizi sağlar ancak onlara yönelik erişimleri vermez.
 }
 ```
 
+### <a name="private-dns-zone-contributor"></a>Özel DNS bölge Katılımcısı
+
+Özel DNS bölge kaynaklarını yönetmenizi sağlar, ancak bağlandıkları sanal ağları yönetemez. [Daha fazla bilgi edinin](../dns/dns-protect-private-zones-recordsets.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Eylemler** |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/privateDnsZones/* |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/privateDnsOperationResults/* |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/privateDnsOperationStatuses/* |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Read | Sanal ağ tanımını al |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Join/Action | Bir sanal ağı birleştirir. Alertable değil. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage private DNS zone resources, but not the virtual networks they are linked to.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b12aa53e-6015-4669-85d0-8515ebb3ae7f",
+  "name": "b12aa53e-6015-4669-85d0-8515ebb3ae7f",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Network/privateDnsZones/*",
+        "Microsoft.Network/privateDnsOperationResults/*",
+        "Microsoft.Network/privateDnsOperationStatuses/*",
+        "Microsoft.Network/virtualNetworks/read",
+        "Microsoft.Network/virtualNetworks/join/action",
+        "Microsoft.Authorization/*/read"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Private DNS Zone Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="traffic-manager-contributor"></a>Katkıda bulunan Traffic Manager
 
 Traffic Manager profillerini yönetmenizi sağlar, ancak bunlara kimlerin erişebileceğini denetlemenize izin vermez.
@@ -1050,13 +1110,13 @@ Traffic Manager profillerini yönetmenizi sağlar, ancak bunlara kimlerin erişe
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Network/trafficManagerProfiles/* |  |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/trafficManagerProfiles/* |  |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -1099,37 +1159,37 @@ Traffic Manager profillerini yönetmenizi sağlar, ancak bunlara kimlerin erişe
 
 ### <a name="avere-contributor"></a>Avere Katılımcısı
 
-, Bir avere vFXT kümesi oluşturabilir ve yönetebilir.
+, Bir avere vFXT kümesi oluşturabilir ve yönetebilir. [Daha fazla bilgi edinin](../avere-vfxt/avere-vfxt-deploy-plan.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. COMPUTE/*/Read |  |
-> | Microsoft. COMPUTE/kullanılabilirliği Bilitysets/* |  |
-> | Microsoft. COMPUTE/virtualMachines/* |  |
-> | Microsoft. COMPUTE/Disks/* |  |
-> | Microsoft. Network/*/Read |  |
-> | Microsoft. Network/NetworkInterfaces/* |  |
-> | Microsoft. Network/virtualNetworks/Read | Sanal ağ tanımını al |
-> | Microsoft. Network/virtualNetworks/alt ağlar/okuma | Bir sanal ağ alt ağ tanımını alır |
-> | Microsoft. Network/virtualNetworks/alt ağlar/JOIN/Action | Bir sanal ağı birleştirir. Alertable değil. |
-> | Microsoft. Network/virtualNetworks/alt ağlar/Jodavetli Aserviceendpoint/Action | Depolama hesabı veya SQL veritabanı gibi kaynağı bir alt ağa birleştirir. Alertable değil. |
-> | Microsoft. Network/networkSecurityGroups/JOIN/Action | Bir ağ güvenlik grubuna katılır. Alertable değil. |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. Storage/*/Read |  |
-> | Microsoft. Storage/storageAccounts/* | Depolama hesapları oluşturma ve yönetme |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
-> | Microsoft. resources/abonelikler/resourceGroups/kaynaklar/okuma | Kaynak grubunun kaynaklarını alır. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/*/Read |  |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/kullanılabilirliği Bilitysets/* |  |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Virtual, ines/* |  |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Disks/* |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/*/Read |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/NetworkInterfaces/* |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Read | Sanal ağ tanımını al |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Subnets/Read | Bir sanal ağ alt ağ tanımını alır |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Subnets/Join/Action | Bir sanal ağı birleştirir. Alertable değil. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Subnets/jodavetaserviceendpoint/Action | Depolama hesabı veya SQL veritabanı gibi kaynağı bir alt ağa birleştirir. Alertable değil. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Networksecuritygroups/Join/Action | Bir ağ güvenlik grubuna katılır. Alertable değil. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/*/Read |  |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/* | Depolama hesapları oluşturma ve yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Resources/Read | Kaynak grubunun kaynaklarını alır. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil | Bir blobu silmenin sonucunu döndürür |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/okuma | Blob veya Blobların listesini döndürür |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/yazma | Blob yazma sonucunu döndürür |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Blobs/Delete | Bir blobu silmenin sonucunu döndürür |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Blobs/Read | Blob veya Blobların listesini döndürür |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Blobs/Write | Blob yazma sonucunu döndürür |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -1181,29 +1241,29 @@ Traffic Manager profillerini yönetmenizi sağlar, ancak bunlara kimlerin erişe
 
 ### <a name="avere-operator"></a>Avere Işleci
 
-Kümeyi yönetmek için avere vFXT kümesi tarafından kullanılır
+Kümeyi yönetmek için avere vFXT kümesi tarafından kullanılır [daha fazla bilgi](../avere-vfxt/avere-vfxt-manage-cluster.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. COMPUTE/virtualMachines/okuma | Bir sanal makinenin özelliklerini al |
-> | Microsoft. Network/NetworkInterfaces/Read | Bir ağ arabirimi tanımını alır.  |
-> | Microsoft. Network/NetworkInterfaces/Write | Ağ arabirimi oluşturur veya var olan bir ağ arabirimini güncelleştirir.  |
-> | Microsoft. Network/virtualNetworks/Read | Sanal ağ tanımını al |
-> | Microsoft. Network/virtualNetworks/alt ağlar/okuma | Bir sanal ağ alt ağ tanımını alır |
-> | Microsoft. Network/virtualNetworks/alt ağlar/JOIN/Action | Bir sanal ağı birleştirir. Alertable değil. |
-> | Microsoft. Network/networkSecurityGroups/JOIN/Action | Bir ağ güvenlik grubuna katılır. Alertable değil. |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Delete | Bir kapsayıcıyı silmenin sonucunu döndürür |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/okuma | Kapsayıcıların listesini döndürür |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Write | Put blob kapsayıcısının sonucunu döndürür |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Virtual, Ines/Read | Bir sanal makinenin özelliklerini al |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/NetworkInterfaces/Read | Bir ağ arabirimi tanımını alır.  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/NetworkInterfaces/Write | Ağ arabirimi oluşturur veya var olan bir ağ arabirimini güncelleştirir.  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Read | Sanal ağ tanımını al |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Subnets/Read | Bir sanal ağ alt ağ tanımını alır |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Subnets/Join/Action | Bir sanal ağı birleştirir. Alertable değil. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Networksecuritygroups/Join/Action | Bir ağ güvenlik grubuna katılır. Alertable değil. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Delete | Bir kapsayıcıyı silmenin sonucunu döndürür |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Read | Kapsayıcıların listesini döndürür |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Write | Put blob kapsayıcısının sonucunu döndürür |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil | Bir blobu silmenin sonucunu döndürür |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/okuma | Blob veya Blobların listesini döndürür |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/yazma | Blob yazma sonucunu döndürür |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Blobs/Delete | Bir blobu silmenin sonucunu döndürür |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Blobs/Read | Blob veya Blobların listesini döndürür |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Blobs/Write | Blob yazma sonucunu döndürür |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -1247,53 +1307,53 @@ Kümeyi yönetmek için avere vFXT kümesi tarafından kullanılır
 
 ### <a name="backup-contributor"></a>Yedek Katılımcısı
 
-Yedekleme hizmetini yönetmenizi sağlar, ancak kasaların oluşturamaz ve başkalarına erişim izni verebilir
+Yedekleme hizmetini yönetmenizi sağlar, ancak kasaların oluşturamaz ve başkalarına erişim verebilir [daha fazla bilgi edinin](../backup/backup-rbac-rs-vault.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Network/virtualNetworks/Read | Sanal ağ tanımını al |
-> | Microsoft. RecoveryServices/konumlar/* |  |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/operationResults/* | Yedekleme yönetiminde işlemin sonuçlarını yönetme |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/* | Kurtarma Hizmetleri kasasının yedekleme dokuları içinde yedekleme kapsayıcıları oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/refreshContainers/eylem | Kapsayıcı listesini yeniler |
-> | Microsoft. RecoveryServices/Vaults/backupJobs/* | Yedekleme işleri oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Vaults/backupJobsExport/eylem | Işleri dışarı aktar |
-> | Microsoft. RecoveryServices/Vaults/backupOperationResults/* | Yedekleme yönetimi işlemlerinin sonuçlarını oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/* | Yedekleme ilkeleri oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Vaults/Backupkorunabilir/* | Yedeklenebilir öğeleri oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Vaults/Backupkorunabilir/* | Yedeklenen öğeleri oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Vaults/backupProtectionContainers/* | Yedekleme öğelerini tutan kapsayıcılar oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Vaults/backupSecurityPIN/* |  |
-> | Microsoft. RecoveryServices/Vaults/backupUsageSummaries/Read | Kurtarma Hizmetleri için korumalı öğeler ve korumalı sunucular için özetler döndürür. |
-> | Microsoft. RecoveryServices/Kasaults/sertifikalar/* | Kurtarma Hizmetleri kasasında yedekleme ile ilgili sertifikalar oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Kasaults/Extendedınformation/* | Kasa ile ilgili genişletilmiş bilgileri oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Kasaults/monitoringAlerts/okuma | Kurtarma Hizmetleri Kasası için uyarıları alır. |
-> | Microsoft. RecoveryServices/Vaults/monitoringConfigurations/* |  |
-> | Microsoft. RecoveryServices/Vaults/okuma | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
-> | Microsoft. RecoveryServices/Vaults/registeredIdentities/* | Kayıtlı kimlikler oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Kasaults/kullanımlar/* | Kurtarma Hizmetleri kasasının kullanımını oluşturma ve yönetme |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. Storage/storageAccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
-> | Microsoft. RecoveryServices/Vaults/backupstorageconfig/* |  |
-> | Microsoft. RecoveryServices/Vaults/backupconfig/* |  |
-> | Microsoft. RecoveryServices/Vaults/backupValidateOperation/Action | Korumalı öğe üzerinde Işlemi doğrula |
-> | Microsoft. RecoveryServices/Vaults/Write | Kasa oluşturma işlemi, ' kasa ' türünde bir Azure kaynağı oluşturur |
-> | Microsoft. RecoveryServices/Vaults/backupOperations/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi durumunu döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupEngines/Read | Kasaya kayıtlı tüm yedekleme yönetimi sunucularını döndürür. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/Backupprotectionamaç/* |  |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/korunabilir | Tüm korunabilir kapsayıcıları al |
-> | Microsoft. RecoveryServices/konumlar/backupStatus/Action | Kurtarma Hizmetleri kasaları için yedekleme durumunu denetle |
-> | Microsoft. RecoveryServices/Locations/backupPreValidateProtection/Action |  |
-> | Microsoft. RecoveryServices/Locations/backupValidateFeatures/Action | Özellikleri doğrulama |
-> | Microsoft. RecoveryServices/Vaults/monitoringAlerts/Write | Uyarıyı çözer. |
-> | Microsoft. RecoveryServices/işlemler/okuma | İşlem, bir kaynak sağlayıcısı için Işlem listesini döndürür |
-> | Microsoft. RecoveryServices/konumlar/operationStatus/Read | Belirli bir Işlem için Işlem durumunu alır |
-> | Microsoft. RecoveryServices/Vaults/Backupprotectionhedefleri/okuma | Tüm yedekleme koruma amaçlarını Listele |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Read | Sanal ağ tanımını al |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/operationresults/* | Yedekleme yönetiminde işlemin sonuçlarını yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/* | Kurtarma Hizmetleri kasasının yedekleme dokuları içinde yedekleme kapsayıcıları oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/refreshcontainers/Action | Kapsayıcı listesini yeniler |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupjobs/* | Yedekleme işleri oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupjobsexport/Action | Işleri dışarı aktar |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupoperationresults/* | Yedekleme yönetimi işlemlerinin sonuçlarını oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backuppolicies/* | Yedekleme ilkeleri oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupkorunabilir TableItem/* | Yedeklenebilir öğeleri oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupkorunabilir Teditems/* | Yedeklenen öğeleri oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupprotectioncontainers/* | Yedekleme öğelerini tutan kapsayıcılar oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupsecuritypin/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupusagesummaries/Read | Kurtarma Hizmetleri için korumalı öğeler ve korumalı sunucular için özetler döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Certificates/* | Kurtarma Hizmetleri kasasında yedekleme ile ilgili sertifikalar oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendeınformation/* | Kasa ile ilgili genişletilmiş bilgileri oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringalerts/Read | Kurtarma Hizmetleri Kasası için uyarıları alır. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringconfigurations/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Read | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredidentities/* | Kayıtlı kimlikler oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/* | Kurtarma Hizmetleri kasasının kullanımını oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupstorageconfig/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupconfig/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupvalidateoperation/Action | Korumalı öğe üzerinde Işlemi doğrula |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Write | Kasa oluşturma işlemi, ' kasa ' türünde bir Azure kaynağı oluşturur |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupoperations/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi durumunu döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupengines/Read | Kasaya kayıtlı tüm yedekleme yönetimi sunucularını döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/backupprotectionert/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/korunabilir Tablecontainers/Read | Tüm korunabilir kapsayıcıları al |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/BackupStatus/Action | Kurtarma Hizmetleri kasaları için yedekleme durumunu denetle |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupprevalidateprotection/Action |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupvalidatefeatures/Action | Özellikleri doğrulama |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringalerts/Write | Uyarıyı çözer. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Operations/Read | İşlem, bir kaynak sağlayıcısı için Işlem listesini döndürür |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/OperationStatus/Read | Belirli bir Işlem için Işlem durumunu alır |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupprotectionerts/Read | Tüm yedekleme koruma amaçlarını Listele |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -1367,68 +1427,68 @@ Yedekleme hizmetini yönetmenizi sağlar, ancak kasaların oluşturamaz ve başk
 
 ### <a name="backup-operator"></a>Yedekleme Işletmeni
 
-Yedekleme kaldırma, kasa oluşturma ve başkalarına erişim verme dışında yedekleme hizmetlerini yönetmenizi sağlar
+Yedekleme kaldırma, kasa oluşturma ve [diğer kullanıcılara erişim](../backup/backup-rbac-rs-vault.md) verme dışında yedekleme hizmetlerini yönetmenizi sağlar
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Network/virtualNetworks/Read | Sanal ağ tanımını al |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/operationResults/Read | İşlemin durumunu döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/operationResults/Read | Koruma kapsayıcısında gerçekleştirilen Işlemin sonucunu alır. |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/korunabilir/yedekleme/eylem | Korumalı öğe için yedekleme gerçekleştirir. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/operationResults/Read | Korumalı öğeler üzerinde gerçekleştirilen Işlemin sonucunu alır. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/operationsStatus/Read | Korumalı öğeler üzerinde gerçekleştirilen Işlemin durumunu döndürür. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/Read | Korumalı öğenin nesne ayrıntılarını döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/provisionInstantItemRecovery/eylem | Korumalı öğe için anında öğe kurtarma sağla |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/kurtarma noktaları/okuma | Korumalı öğeler için kurtarma noktalarını alın. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/kurtarma noktaları/geri yükleme/eylem | Korumalı öğeler için kurtarma noktalarını geri yükleyin. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/revokeInstantItemRecovery/eylem | Korumalı öğe için anında öğe kurtarmayı iptal et |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/yazma | Yedekleme korumalı öğesi oluştur |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/okuma | Tüm kayıtlı kapsayıcıları döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/refreshContainers/eylem | Kapsayıcı listesini yeniler |
-> | Microsoft. RecoveryServices/Vaults/backupJobs/* | Yedekleme işleri oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Vaults/backupJobsExport/eylem | Işleri dışarı aktar |
-> | Microsoft. RecoveryServices/Vaults/backupOperationResults/* | Yedekleme yönetimi işlemlerinin sonuçlarını oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/operationResults/Read | Ilke Işleminin sonuçlarını alın. |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/Read | Tüm koruma Ilkelerini döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupkorunabilir/* | Yedeklenebilir öğeleri oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Vaults/Backupkorunabilir/Read | Tüm korumalı öğelerin listesini döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupProtectionContainers/Read | Aboneliğe ait tüm kapsayıcıları döndürür |
-> | Microsoft. RecoveryServices/Vaults/backupUsageSummaries/Read | Kurtarma Hizmetleri için korumalı öğeler ve korumalı sunucular için özetler döndürür. |
-> | Microsoft. RecoveryServices/Vaults/sertifikalar/yazma | Kaynak sertifikası güncelleştirme işlemi kaynak/kasa kimlik bilgisi sertifikasını güncelleştirir. |
-> | Microsoft. RecoveryServices/Kasaults/Extendedınformation/Read | Genişletilmiş bilgileri al işlemi, bir nesnenin,? Kasası türünde Azure kaynağını temsil eden genişletilmiş bilgilerini alır mi? |
-> | Microsoft. RecoveryServices/Kasaults/Extendedınformation/Write | Genişletilmiş bilgileri al işlemi, bir nesnenin,? Kasası türünde Azure kaynağını temsil eden genişletilmiş bilgilerini alır mi? |
-> | Microsoft. RecoveryServices/Kasaults/monitoringAlerts/okuma | Kurtarma Hizmetleri Kasası için uyarıları alır. |
-> | Microsoft. RecoveryServices/Vaults/monitoringConfigurations/* |  |
-> | Microsoft. RecoveryServices/Vaults/okuma | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
-> | Microsoft. RecoveryServices/Vaults/registeredIdentities/operationResults/Read | Işlem sonuçlarını al işlemi, zaman uyumsuz olarak gönderilen işlemin işlem durumunu ve sonucunu almak için kullanılabilir |
-> | Microsoft. RecoveryServices/Vaults/registeredIdentities/Read | Kapsayıcıları al işlemi, bir kaynak için kayıtlı olan kapsayıcıları almak için kullanılabilir. |
-> | Microsoft. RecoveryServices/Vaults/registeredIdentities/Write | Hizmet kapsayıcısını Kaydet işlemi, bir kapsayıcıyı kurtarma hizmeti 'ne kaydetmek için kullanılabilir. |
-> | Microsoft. RecoveryServices/Kasaults/kullanımlar/okuma | Bir kurtarma hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. Storage/storageAccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
-> | Microsoft. RecoveryServices/Vaults/backupstorageconfig/* |  |
-> | Microsoft. RecoveryServices/Vaults/backupValidateOperation/Action | Korumalı öğe üzerinde Işlemi doğrula |
-> | Microsoft. RecoveryServices/Vaults/backupOperations/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi durumunu döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/işlemler/okuma | Ilke Işleminin durumunu alın. |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/Write | Kayıtlı bir kapsayıcı oluşturur |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/sorgu/eylem | Bir kapsayıcı içindeki iş yükleri için sorgulama yap |
-> | Microsoft. RecoveryServices/Vaults/backupEngines/Read | Kasaya kayıtlı tüm yedekleme yönetimi sunucularını döndürür. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/Backupprotectionamacını/Write | Yedekleme koruma hedefi oluşturma |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuların/Backupprotectionamacını/Read | Yedekleme koruması hedefi al |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/korunabilir | Tüm korunabilir kapsayıcıları al |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/öğeler/okuma | Bir kapsayıcıdaki tüm öğeleri Al |
-> | Microsoft. RecoveryServices/konumlar/backupStatus/Action | Kurtarma Hizmetleri kasaları için yedekleme durumunu denetle |
-> | Microsoft. RecoveryServices/Locations/backupPreValidateProtection/Action |  |
-> | Microsoft. RecoveryServices/Locations/backupValidateFeatures/Action | Özellikleri doğrulama |
-> | Microsoft. RecoveryServices/Vaults/monitoringAlerts/Write | Uyarıyı çözer. |
-> | Microsoft. RecoveryServices/işlemler/okuma | İşlem, bir kaynak sağlayıcısı için Işlem listesini döndürür |
-> | Microsoft. RecoveryServices/konumlar/operationStatus/Read | Belirli bir Işlem için Işlem durumunu alır |
-> | Microsoft. RecoveryServices/Vaults/Backupprotectionhedefleri/okuma | Tüm yedekleme koruma amaçlarını Listele |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Read | Sanal ağ tanımını al |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/operationresults/Read | İşlemin durumunu döndürür |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/operationresults/Read | Koruma kapsayıcısında gerçekleştirilen Işlemin sonucunu alır. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/korunabilir Dıtems/Backup/Action | Korumalı öğe için yedekleme gerçekleştirir. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/korunabilir Teditems/operationresults/Read | Korumalı öğeler üzerinde gerçekleştirilen Işlemin sonucunu alır. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/korunabilir Teditems/operationsstatus/Read | Korumalı öğeler üzerinde gerçekleştirilen Işlemin durumunu döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/korunabilir Teditems/Read | Korumalı öğenin nesne ayrıntılarını döndürür |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/Action | Korumalı öğe için anında öğe kurtarma sağla |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/korunabilir Teditems/recoverypoints/Read | Korumalı öğeler için kurtarma noktalarını alın. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/korunabilir Teditems/recoverypoints/restore/Action | Korumalı öğeler için kurtarma noktalarını geri yükleyin. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/Action | Korumalı öğe için anında öğe kurtarmayı iptal et |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/korunabilir Dıtems/Write | Yedekleme korumalı öğesi oluştur |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/Read | Tüm kayıtlı kapsayıcıları döndürür |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/refreshcontainers/Action | Kapsayıcı listesini yeniler |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupjobs/* | Yedekleme işleri oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupjobsexport/Action | Işleri dışarı aktar |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupoperationresults/* | Yedekleme yönetimi işlemlerinin sonuçlarını oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backuppolicies/operationresults/Read | Ilke Işleminin sonuçlarını alın. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backuppolicies/Read | Tüm koruma Ilkelerini döndürür |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupkorunabilir TableItem/* | Yedeklenebilir öğeleri oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupkorunabilir Teditems/Read | Tüm korumalı öğelerin listesini döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupprotectioncontainers/Read | Aboneliğe ait tüm kapsayıcıları döndürür |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupusagesummaries/Read | Kurtarma Hizmetleri için korumalı öğeler ve korumalı sunucular için özetler döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Certificates/Write | Kaynak sertifikası güncelleştirme işlemi kaynak/kasa kimlik bilgisi sertifikasını güncelleştirir. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendeınformation/Read | Genişletilmiş bilgileri al işlemi, bir nesnenin,? Kasası türünde Azure kaynağını temsil eden genişletilmiş bilgilerini alır mi? |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendeınformation/Write | Genişletilmiş bilgileri al işlemi, bir nesnenin,? Kasası türünde Azure kaynağını temsil eden genişletilmiş bilgilerini alır mi? |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringalerts/Read | Kurtarma Hizmetleri Kasası için uyarıları alır. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringconfigurations/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Read | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredidentities/operationresults/Read | Işlem sonuçlarını al işlemi, zaman uyumsuz olarak gönderilen işlemin işlem durumunu ve sonucunu almak için kullanılabilir |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredidentities/Read | Kapsayıcıları al işlemi, bir kaynak için kayıtlı olan kapsayıcıları almak için kullanılabilir. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredidentitıes/Write | Hizmet kapsayıcısını Kaydet işlemi, bir kapsayıcıyı kurtarma hizmeti 'ne kaydetmek için kullanılabilir. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/Read | Bir kurtarma hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupstorageconfig/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupvalidateoperation/Action | Korumalı öğe üzerinde Işlemi doğrula |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupoperations/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi durumunu döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backuppolicies/Operations/Read | Ilke Işleminin durumunu alın. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/Write | Kayıtlı bir kapsayıcı oluşturur |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/inquire/Action | Bir kapsayıcı içindeki iş yükleri için sorgulama yap |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupengines/Read | Kasaya kayıtlı tüm yedekleme yönetimi sunucularını döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/backupprotectionert/Write | Yedekleme koruma hedefi oluşturma |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/backupprotectionert/Read | Yedekleme koruması hedefi al |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/korunabilir Tablecontainers/Read | Tüm korunabilir kapsayıcıları al |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/Item/Read | Bir kapsayıcıdaki tüm öğeleri Al |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/BackupStatus/Action | Kurtarma Hizmetleri kasaları için yedekleme durumunu denetle |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupprevalidateprotection/Action |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupvalidatefeatures/Action | Özellikleri doğrulama |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringalerts/Write | Uyarıyı çözer. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Operations/Read | İşlem, bir kaynak sağlayıcısı için Işlem listesini döndürür |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/OperationStatus/Read | Belirli bir Işlem için Işlem durumunu alır |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupprotectionerts/Read | Tüm yedekleme koruma amaçlarını Listele |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -1517,50 +1577,50 @@ Yedekleme kaldırma, kasa oluşturma ve başkalarına erişim verme dışında y
 
 ### <a name="backup-reader"></a>Yedekleme okuyucusu
 
-Yedekleme hizmetlerini görüntüleyebilir, ancak değişiklik yapamaz
+Yedekleme hizmetlerini görüntüleyebilir, ancak değişiklik yapamaz [daha fazla bilgi edinin](../backup/backup-rbac-rs-vault.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. RecoveryServices/konumlar/allocatedStamp/Read | GetAllocatedStamp, hizmet tarafından kullanılan iç işlemdir |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/operationResults/Read | İşlemin durumunu döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/operationResults/Read | Koruma kapsayıcısında gerçekleştirilen Işlemin sonucunu alır. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/operationResults/Read | Korumalı öğeler üzerinde gerçekleştirilen Işlemin sonucunu alır. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/operationsStatus/Read | Korumalı öğeler üzerinde gerçekleştirilen Işlemin durumunu döndürür. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/Read | Korumalı öğenin nesne ayrıntılarını döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/kurtarma noktaları/okuma | Korumalı öğeler için kurtarma noktalarını alın. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/okuma | Tüm kayıtlı kapsayıcıları döndürür |
-> | Microsoft. RecoveryServices/Vaults/backupJobs/operationResults/Read | Iş Işleminin sonucunu döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupJobs/Read | Tüm Iş nesnelerini döndürür |
-> | Microsoft. RecoveryServices/Vaults/backupJobsExport/eylem | Işleri dışarı aktar |
-> | Microsoft. RecoveryServices/Vaults/backupOperationResults/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi sonucunu döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/operationResults/Read | Ilke Işleminin sonuçlarını alın. |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/Read | Tüm koruma Ilkelerini döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupkorunabilir/Read | Tüm korumalı öğelerin listesini döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupProtectionContainers/Read | Aboneliğe ait tüm kapsayıcıları döndürür |
-> | Microsoft. RecoveryServices/Vaults/backupUsageSummaries/Read | Kurtarma Hizmetleri için korumalı öğeler ve korumalı sunucular için özetler döndürür. |
-> | Microsoft. RecoveryServices/Kasaults/Extendedınformation/Read | Genişletilmiş bilgileri al işlemi, bir nesnenin,? Kasası türünde Azure kaynağını temsil eden genişletilmiş bilgilerini alır mi? |
-> | Microsoft. RecoveryServices/Kasaults/monitoringAlerts/okuma | Kurtarma Hizmetleri Kasası için uyarıları alır. |
-> | Microsoft. RecoveryServices/Vaults/okuma | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
-> | Microsoft. RecoveryServices/Vaults/registeredIdentities/operationResults/Read | Işlem sonuçlarını al işlemi, zaman uyumsuz olarak gönderilen işlemin işlem durumunu ve sonucunu almak için kullanılabilir |
-> | Microsoft. RecoveryServices/Vaults/registeredIdentities/Read | Kapsayıcıları al işlemi, bir kaynak için kayıtlı olan kapsayıcıları almak için kullanılabilir. |
-> | Microsoft. RecoveryServices/Vaults/backupstorageconfig/Read | Kurtarma Hizmetleri Kasası için depolama yapılandırmasını döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupconfig/Read | Kurtarma Hizmetleri Kasası için yapılandırmayı döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupOperations/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi durumunu döndürür. |
-> | Microsoft. RecoveryServices/Vaults/backupPolicies/işlemler/okuma | Ilke Işleminin durumunu alın. |
-> | Microsoft. RecoveryServices/Vaults/backupEngines/Read | Kasaya kayıtlı tüm yedekleme yönetimi sunucularını döndürür. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuların/Backupprotectionamacını/Read | Yedekleme koruması hedefi al |
-> | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/öğeler/okuma | Bir kapsayıcıdaki tüm öğeleri Al |
-> | Microsoft. RecoveryServices/konumlar/backupStatus/Action | Kurtarma Hizmetleri kasaları için yedekleme durumunu denetle |
-> | Microsoft. RecoveryServices/Vaults/monitoringConfigurations/* |  |
-> | Microsoft. RecoveryServices/Vaults/monitoringAlerts/Write | Uyarıyı çözer. |
-> | Microsoft. RecoveryServices/işlemler/okuma | İşlem, bir kaynak sağlayıcısı için Işlem listesini döndürür |
-> | Microsoft. RecoveryServices/konumlar/operationStatus/Read | Belirli bir Işlem için Işlem durumunu alır |
-> | Microsoft. RecoveryServices/Vaults/Backupprotectionhedefleri/okuma | Tüm yedekleme koruma amaçlarını Listele |
-> | Microsoft. RecoveryServices/Kasaults/kullanımlar/okuma | Bir kurtarma hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
-> | Microsoft. RecoveryServices/Locations/backupValidateFeatures/Action | Özellikleri doğrulama |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/allocatedstamp/Read | GetAllocatedStamp, hizmet tarafından kullanılan iç işlemdir |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/operationresults/Read | İşlemin durumunu döndürür |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/operationresults/Read | Koruma kapsayıcısında gerçekleştirilen Işlemin sonucunu alır. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/korunabilir Teditems/operationresults/Read | Korumalı öğeler üzerinde gerçekleştirilen Işlemin sonucunu alır. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/korunabilir Teditems/operationsstatus/Read | Korumalı öğeler üzerinde gerçekleştirilen Işlemin durumunu döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/korunabilir Teditems/Read | Korumalı öğenin nesne ayrıntılarını döndürür |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/korunabilir Teditems/recoverypoints/Read | Korumalı öğeler için kurtarma noktalarını alın. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/Read | Tüm kayıtlı kapsayıcıları döndürür |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupjobs/operationresults/Read | Iş Işleminin sonucunu döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupjobs/Read | Tüm Iş nesnelerini döndürür |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupjobsexport/Action | Işleri dışarı aktar |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupoperationresults/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi sonucunu döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backuppolicies/operationresults/Read | Ilke Işleminin sonuçlarını alın. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backuppolicies/Read | Tüm koruma Ilkelerini döndürür |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupkorunabilir Teditems/Read | Tüm korumalı öğelerin listesini döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupprotectioncontainers/Read | Aboneliğe ait tüm kapsayıcıları döndürür |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupusagesummaries/Read | Kurtarma Hizmetleri için korumalı öğeler ve korumalı sunucular için özetler döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendeınformation/Read | Genişletilmiş bilgileri al işlemi, bir nesnenin,? Kasası türünde Azure kaynağını temsil eden genişletilmiş bilgilerini alır mi? |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringalerts/Read | Kurtarma Hizmetleri Kasası için uyarıları alır. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Read | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredidentities/operationresults/Read | Işlem sonuçlarını al işlemi, zaman uyumsuz olarak gönderilen işlemin işlem durumunu ve sonucunu almak için kullanılabilir |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredidentities/Read | Kapsayıcıları al işlemi, bir kaynak için kayıtlı olan kapsayıcıları almak için kullanılabilir. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupstorageconfig/Read | Kurtarma Hizmetleri Kasası için depolama yapılandırmasını döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupconfig/Read | Kurtarma Hizmetleri Kasası için yapılandırmayı döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupoperations/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi durumunu döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backuppolicies/Operations/Read | Ilke Işleminin durumunu alın. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupengines/Read | Kasaya kayıtlı tüm yedekleme yönetimi sunucularını döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/backupprotectionert/Read | Yedekleme koruması hedefi al |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupfabrics/protectioncontainers/Item/Read | Bir kapsayıcıdaki tüm öğeleri Al |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/BackupStatus/Action | Kurtarma Hizmetleri kasaları için yedekleme durumunu denetle |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringconfigurations/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringalerts/Write | Uyarıyı çözer. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Operations/Read | İşlem, bir kaynak sağlayıcısı için Işlem listesini döndürür |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/OperationStatus/Read | Belirli bir Işlem için Işlem durumunu alır |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupprotectionerts/Read | Tüm yedekleme koruma amaçlarını Listele |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/Read | Bir kurtarma hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupvalidatefeatures/Action | Özellikleri doğrulama |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -1637,13 +1697,13 @@ Klasik depolama hesaplarını yönetmenize izin verir, ancak bunlara erişimi ka
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. ClassicStorage/storageAccounts/* | Depolama hesapları oluşturma ve yönetme |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/Storageaccounts/* | Depolama hesapları oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -1683,14 +1743,14 @@ Klasik depolama hesaplarını yönetmenize izin verir, ancak bunlara erişimi ka
 
 ### <a name="classic-storage-account-key-operator-service-role"></a>Klasik depolama hesabı anahtar operatörü hizmet rolü
 
-Klasik depolama hesabı anahtar Işleçleri klasik depolama hesaplarında anahtarları listeleme ve yeniden oluşturma izni verilir
+Klasik depolama hesabı anahtar Işleçleri klasik depolama hesaplarında anahtarları listeleme ve yeniden oluşturma izni verilir [daha fazla bilgi](../key-vault/secrets/overview-storage-keys.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. ClassicStorage/storageAccounts/ListKeys/Action | Depolama hesaplarının erişim anahtarlarını listeler. |
-> | Microsoft. ClassicStorage/storageAccounts/RegenerateKey/Action | Depolama hesabı için mevcut erişim anahtarlarını yeniden oluşturur. |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/Storageaccounts/ListKeys/Action | Depolama hesaplarının erişim anahtarlarını listeler. |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/Storageaccounts/RegenerateKey/Action | Depolama hesabı için mevcut erişim anahtarlarını yeniden oluşturur. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -1725,18 +1785,18 @@ Klasik depolama hesabı anahtar Işleçleri klasik depolama hesaplarında anahta
 
 ### <a name="data-box-contributor"></a>Katkıda bulunan Data Box
 
-, Diğer kullanıcılara erişim izni hariç Data Box hizmeti altındaki her şeyi yönetmenizi sağlar.
+, Diğer kullanıcılara erişim izni hariç Data Box hizmeti altındaki her şeyi yönetmenizi sağlar. [Daha fazla bilgi edinin](../databox/data-box-logs.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
-> | Microsoft. databox/* |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. databox](resource-provider-operations.md#microsoftdatabox)/* |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -1775,22 +1835,22 @@ Klasik depolama hesabı anahtar Işleçleri klasik depolama hesaplarında anahta
 
 ### <a name="data-box-reader"></a>Data Box okuyucu
 
-Sipariş oluşturma veya düzenleme sırası ayrıntıları ve başkalarına erişim verme dışında Data Box hizmetini yönetmenizi sağlar.
+Sipariş oluşturma veya düzenleme sırası ayrıntıları ve başkalarına erişim verme dışında Data Box hizmetini yönetmenizi sağlar. [Daha fazla bilgi edinin](../databox/data-box-logs.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. databox/*/Read |  |
-> | Microsoft. databox/Jobs/listgizlilikler/Action |  |
-> | Microsoft. databox/Jobs/listcredentials/Action | Siparişle ilgili şifrelenmemiş kimlik bilgilerini listeler. |
-> | Microsoft. databox/Locations/Availablesku 'Lar/eylem | Bu yöntem, kullanılabilir SKU 'ların listesini döndürür. |
-> | Microsoft. databox/Locations/Validategirişlerinde/Action | Bu yöntem, tüm doğrulama türlerini yapar. |
-> | Microsoft. databox/Locations/regionConfiguration/Action | Bu yöntem, bölgenin yapılandırmasını döndürür. |
-> | Microsoft. databox/Locations/validateAddress/Action | Sevkiyat adresini doğrular ve varsa alternatif adresler sağlar. |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. databox](resource-provider-operations.md#microsoftdatabox)/*/Read |  |
+> | [Microsoft. databox](resource-provider-operations.md#microsoftdatabox)/Jobs/listsecrets/Action |  |
+> | [Microsoft. databox](resource-provider-operations.md#microsoftdatabox)/Jobs/listcredentials/Action | Siparişle ilgili şifrelenmemiş kimlik bilgilerini listeler. |
+> | [Microsoft. databox](resource-provider-operations.md#microsoftdatabox)/Locations/availableskus/Action | Bu yöntem, kullanılabilir SKU 'ların listesini döndürür. |
+> | [Microsoft. databox](resource-provider-operations.md#microsoftdatabox)/Locations/ValidateInputs/Action | Bu yöntem, tüm doğrulama türlerini yapar. |
+> | [Microsoft. databox](resource-provider-operations.md#microsoftdatabox)/Locations/regionconfiguration/Action | Bu yöntem, bölgenin yapılandırmasını döndürür. |
+> | [Microsoft. databox](resource-provider-operations.md#microsoftdatabox)/Locations/ValidateAddress/Action | Sevkiyat adresini doğrular ve varsa alternatif adresler sağlar. |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -1833,35 +1893,35 @@ Sipariş oluşturma veya düzenleme sırası ayrıntıları ve başkalarına eri
 
 ### <a name="data-lake-analytics-developer"></a>Data Lake Analytics geliştirici
 
-Kendi işlerinizi göndermenize, izlemenize ve yönetmenize izin verir, ancak Data Lake Analytics Hesapları oluşturamaz veya silemezsiniz.
+Kendi işlerinizi göndermenize, izlemenize ve yönetmenize izin verir, ancak Data Lake Analytics Hesapları oluşturamaz veya silemezsiniz. [Daha fazla bilgi edinin](../data-lake-analytics/data-lake-analytics-manage-use-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft. BigAnalytics/accounts/* |  |
-> | Microsoft. DataLakeAnalytics/accounts/* |  |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | Microsoft. BigAnalytics/hesaplar/Sil |  |
 > | Microsoft. BigAnalytics/hesaplar/Takesahiplik/eylem |  |
 > | Microsoft. BigAnalytics/hesaplar/yazma |  |
-> | Microsoft. DataLakeAnalytics/hesaplar/Sil | Bir DataLakeAnalytics hesabını silin. |
-> | Microsoft. DataLakeAnalytics/hesaplar/Takesahiplik/eylem | Diğer kullanıcılar tarafından gönderilen işleri iptal etmek için izin verin. |
-> | Microsoft. DataLakeAnalytics/hesaplar/yazma | Bir DataLakeAnalytics hesabı oluşturun veya güncelleştirin. |
-> | Microsoft. DataLakeAnalytics/accounts/dataLakeStoreAccounts/Write | Bir DataLakeAnalytics hesabının bağlı DataLakeStore hesabını oluşturun veya güncelleştirin. |
-> | Microsoft. DataLakeAnalytics/accounts/dataLakeStoreAccounts/Delete | Bir DataLakeStore hesabının bir DataLakeAnalytics hesabıyla bağlantısını kaldırın. |
-> | Microsoft. DataLakeAnalytics/hesaplar/storageAccounts/Write | Bir DataLakeAnalytics hesabı için bağlı bir depolama hesabı oluşturun veya güncelleştirin. |
-> | Microsoft. DataLakeAnalytics/hesaplar/storageAccounts/Delete | Bir depolama hesabının bir DataLakeAnalytics hesabından bağlantısını kaldırın. |
-> | Microsoft. DataLakeAnalytics/accounts/firewallRules/Write | Bir güvenlik duvarı kuralı oluşturun veya güncelleştirin. |
-> | Microsoft. DataLakeAnalytics/accounts/firewallRules/Delete | Bir güvenlik duvarı kuralını silin. |
-> | Microsoft. DataLakeAnalytics/accounts/computePolicies/Write | Bir işlem ilkesi oluşturun veya güncelleştirin. |
-> | Microsoft. DataLakeAnalytics/accounts/computePolicies/Delete | İşlem ilkesini silin. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/Delete | Bir DataLakeAnalytics hesabını silin. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/TakeOwnership/Action | Diğer kullanıcılar tarafından gönderilen işleri iptal etmek için izin verin. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/Write | Bir DataLakeAnalytics hesabı oluşturun veya güncelleştirin. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/dataLakeStoreAccounts/Write | Bir DataLakeAnalytics hesabının bağlı DataLakeStore hesabını oluşturun veya güncelleştirin. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/dataLakeStoreAccounts/Delete | Bir DataLakeStore hesabının bir DataLakeAnalytics hesabıyla bağlantısını kaldırın. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/storageaccounts/Write | Bir DataLakeAnalytics hesabı için bağlı bir depolama hesabı oluşturun veya güncelleştirin. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/storageaccounts/Delete | Bir depolama hesabının bir DataLakeAnalytics hesabından bağlantısını kaldırın. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/firewallkurallarını/Write | Bir güvenlik duvarı kuralı oluşturun veya güncelleştirin. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/firewallkurallarını/Delete | Bir güvenlik duvarı kuralını silin. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/computePolicies/Write | Bir işlem ilkesi oluşturun veya güncelleştirin. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/computePolicies/Delete | İşlem ilkesini silin. |
 > | **Veri eylemleri** |  |
 > | *yok* |  |
 > | **NotDataActions** |  |
@@ -1921,9 +1981,9 @@ Her şeyi görüntülemenize izin verir, ancak bir depolama hesabını veya kaps
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Storage/storageAccounts/listKeys/Action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
-> | Microsoft. Storage/storageAccounts/ListAccountSas/eylem | Belirtilen depolama hesabı için hesap SAS belirtecini döndürür. |
-> | Microsoft. Storage/storageAccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/ListKeys/Action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/lıstaccountsas/Action | Belirtilen depolama hesabı için hesap SAS belirtecini döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -1959,21 +2019,21 @@ Her şeyi görüntülemenize izin verir, ancak bir depolama hesabını veya kaps
 
 ### <a name="storage-account-contributor"></a>Depolama Hesabı Katılımcısı
 
-Depolama hesaplarının yönetimine izin verir. Paylaşılan anahtar yetkilendirmesi aracılığıyla verilere erişmek için kullanılabilen hesap anahtarına erişim sağlar.
+Depolama hesaplarının yönetimine izin verir. Paylaşılan anahtar yetkilendirmesi aracılığıyla verilere erişmek için kullanılabilen hesap anahtarına erişim sağlar. [Daha fazla bilgi edinin](../storage/common/storage-auth-aad.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Insights/diagnosticSettings/* | Analiz Sunucusu için tanılama ayarını oluşturur, güncelleştirir veya okur |
-> | Microsoft. Network/virtualNetworks/alt ağlar/Jodavetli Aserviceendpoint/Action | Depolama hesabı veya SQL veritabanı gibi kaynağı bir alt ağa birleştirir. Alertable değil. |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. Storage/storageAccounts/* | Depolama hesapları oluşturma ve yönetme |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Diagnosticsettings/* | Analiz Sunucusu için tanılama ayarını oluşturur, güncelleştirir veya okur |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Subnets/jodavetaserviceendpoint/Action | Depolama hesabı veya SQL veritabanı gibi kaynağı bir alt ağa birleştirir. Alertable değil. |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/* | Depolama hesapları oluşturma ve yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -2015,14 +2075,14 @@ Depolama hesaplarının yönetimine izin verir. Paylaşılan anahtar yetkilendir
 
 ### <a name="storage-account-key-operator-service-role"></a>Depolama hesabı anahtar operatörü hizmet rolü
 
-Depolama hesabı erişim anahtarlarının listelenmesi ve yeniden oluşturulmasına izin verir.
+Depolama hesabı erişim anahtarlarının listelenmesi ve yeniden oluşturulmasına izin verir. [Daha fazla bilgi edinin](../storage/common/storage-account-keys-manage.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Storage/storageAccounts/ListKeys/Action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
-> | Microsoft. Storage/storageAccounts/RegenerateKey/ACTION | Belirtilen depolama hesabı için erişim anahtarlarını yeniden oluşturur. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/ListKeys/Action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/RegenerateKey/Action | Belirtilen depolama hesabı için erişim anahtarlarını yeniden oluşturur. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -2057,23 +2117,23 @@ Depolama hesabı erişim anahtarlarının listelenmesi ve yeniden oluşturulmas�
 
 ### <a name="storage-blob-data-contributor"></a>Depolama Blobu veri Katılımcısı
 
-Azure depolama kapsayıcıları ve bloblarını okuyun, yazın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Azure depolama kapsayıcıları ve bloblarını okuyun, yazın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi edinin](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Delete | Kapsayıcıyı silin. |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/okuma | Bir kapsayıcı veya kapsayıcıların listesini döndürün. |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Write | Kapsayıcının meta verilerini veya özelliklerini değiştirin. |
-> | Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey/Action | Blob hizmeti için Kullanıcı temsili anahtarını döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Delete | Kapsayıcıyı silin. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Read | Bir kapsayıcı veya kapsayıcıların listesini döndürün. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Write | Kapsayıcının meta verilerini veya özelliklerini değiştirin. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/generateuserdelegationkey/Action | Blob hizmeti için Kullanıcı temsili anahtarını döndürür. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil | Bir blobu silin. |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/okuma | Blob veya Blobların listesini döndürün. |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/taşıma/eylem | Blobu bir yoldan diğerine kaydırır |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/yazma | Bir bloba yazın. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Blobs/Delete | Bir blobu silin. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Blobs/Read | Blob veya Blobların listesini döndürün. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Blobs/Move/Action | Blobu bir yoldan diğerine kaydırır |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Blobs/Write | Bir bloba yazın. |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -2111,18 +2171,18 @@ Azure depolama kapsayıcıları ve bloblarını okuyun, yazın ve silin. Belirli
 
 ### <a name="storage-blob-data-owner"></a>Depolama Blobu veri sahibi
 
-, POSIX erişim denetimi atama dahil olmak üzere Azure depolama blob kapsayıcılarına ve verilerine tam erişim sağlar. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+, POSIX erişim denetimi atama dahil olmak üzere Azure depolama blob kapsayıcılarına ve verilerine tam erişim sağlar. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi edinin](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/* | Kapsayıcılarda tam izinler. |
-> | Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey/Action | Blob hizmeti için Kullanıcı temsili anahtarını döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/* | Kapsayıcılarda tam izinler. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/generateuserdelegationkey/Action | Blob hizmeti için Kullanıcı temsili anahtarını döndürür. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/* | Bloblarda tam izinler. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Blobs/* | Bloblarda tam izinler. |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -2155,18 +2215,18 @@ Azure depolama kapsayıcıları ve bloblarını okuyun, yazın ve silin. Belirli
 
 ### <a name="storage-blob-data-reader"></a>Depolama Blobu veri okuyucusu
 
-Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi edinin](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/okuma | Bir kapsayıcı veya kapsayıcıların listesini döndürün. |
-> | Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey/Action | Blob hizmeti için Kullanıcı temsili anahtarını döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Read | Bir kapsayıcı veya kapsayıcıların listesini döndürün. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/generateuserdelegationkey/Action | Blob hizmeti için Kullanıcı temsili anahtarını döndürür. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/blob/okuma | Blob veya Blobların listesini döndürün. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/containers/Blobs/Read | Blob veya Blobların listesini döndürün. |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -2199,13 +2259,13 @@ Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin. Belirli bi
 
 ### <a name="storage-blob-delegator"></a>Depolama Blobu Delegator
 
-Azure AD kimlik bilgileriyle imzalanan bir kapsayıcı veya blob için paylaşılan erişim imzası oluşturmak üzere kullanılabilen bir Kullanıcı temsili anahtarı alın. Daha fazla bilgi için bkz. [Kullanıcı TEMSILI SAS oluşturma](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas).
+Azure AD kimlik bilgileriyle imzalanan bir kapsayıcı veya blob için paylaşılan erişim imzası oluşturmak üzere kullanılabilen bir Kullanıcı temsili anahtarı alın. Daha fazla bilgi için bkz. [Kullanıcı TEMSILI SAS oluşturma](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas). [Daha fazla bilgi edinin](https://docs.microsoft.com/rest/api/storageservices/get-user-delegation-key)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey/Action | Blob hizmeti için Kullanıcı temsili anahtarını döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/blobservices/generateuserdelegationkey/Action | Blob hizmeti için Kullanıcı temsili anahtarını döndürür. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -2239,7 +2299,7 @@ Azure AD kimlik bilgileriyle imzalanan bir kapsayıcı veya blob için paylaşı
 
 ### <a name="storage-file-data-smb-share-contributor"></a>Depolama dosyası veri SMB paylaşımında katkıda bulunan
 
-Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma ve silme erişimine izin verir. Bu rolün Windows dosya sunucularında yerleşik bir eşdeğeri yoktur.
+Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma ve silme erişimine izin verir. Bu rolün Windows dosya sunucularında yerleşik bir eşdeğeri yoktur. [Daha fazla bilgi edinin](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2249,9 +2309,9 @@ Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma ve silme erişimine
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Storage/storageAccounts/fileServices/fileshares/Files/Read | Dosya/klasör veya dosya/klasör listesini döndürür. |
-> | Microsoft. Storage/storageAccounts/fileServices/fileshares/Files/Write | Bir dosya yazmanın veya bir klasör oluşturmanın sonucunu döndürür. |
-> | Microsoft. Storage/storageAccounts/fileServices/fileshares/Files/Delete | Dosya/klasör silmenin sonucunu döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/fıleservices/fileshares/Files/Read | Dosya/klasör veya dosya/klasör listesini döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/fıleservices/fileshares/Files/Write | Bir dosya yazmanın veya bir klasör oluşturmanın sonucunu döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/fileservices/fileshares/Files/Delete | Dosya/klasör silmenin sonucunu döndürür. |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -2283,7 +2343,7 @@ Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma ve silme erişimine
 
 ### <a name="storage-file-data-smb-share-elevated-contributor"></a>Depolama dosyası veri SMB paylaşımında yükseltilmiş katkıda bulunan
 
-Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma, silme ve değiştirme ACL 'Lerine izin verir. Bu rol, Windows dosya sunucularındaki değişikliğin bir dosya paylaşımının ACL 'sine eşdeğerdir.
+Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma, silme ve değiştirme ACL 'Lerine izin verir. Bu rol, Windows dosya sunucularındaki değişikliğin bir dosya paylaşımının ACL 'sine eşdeğerdir. [Daha fazla bilgi edinin](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2293,10 +2353,10 @@ Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma, silme ve değişti
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Storage/storageAccounts/fileServices/fileshares/Files/Read | Dosya/klasör veya dosya/klasör listesini döndürür. |
-> | Microsoft. Storage/storageAccounts/fileServices/fileshares/Files/Write | Bir dosya yazmanın veya bir klasör oluşturmanın sonucunu döndürür. |
-> | Microsoft. Storage/storageAccounts/fileServices/fileshares/Files/Delete | Dosya/klasör silmenin sonucunu döndürür. |
-> | Microsoft. Storage/storageAccounts/fileServices/fileshares/Files/modifypermissions/Action | Bir dosya/klasör üzerinde izin değiştirme sonucunu döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/fıleservices/fileshares/Files/Read | Dosya/klasör veya dosya/klasör listesini döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/fıleservices/fileshares/Files/Write | Bir dosya yazmanın veya bir klasör oluşturmanın sonucunu döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/fileservices/fileshares/Files/Delete | Dosya/klasör silmenin sonucunu döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/fıleservices/fileshares/Files/modifypermissions/Action | Bir dosya/klasör üzerinde izin değiştirme sonucunu döndürür. |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -2329,7 +2389,7 @@ Azure dosya paylaşımlarında dosya/dizinlerde okuma, yazma, silme ve değişti
 
 ### <a name="storage-file-data-smb-share-reader"></a>Depolama dosyası veri SMB paylaşma okuyucusu
 
-Azure dosya paylaşımlarında dosya/dizinlerde okuma erişimine izin verir. Bu rol, Windows dosya sunucularında okunan bir dosya paylaşma ACL 'sine eşdeğerdir.
+Azure dosya paylaşımlarında dosya/dizinlerde okuma erişimine izin verir. Bu rol, Windows dosya sunucularında okunan bir dosya paylaşma ACL 'sine eşdeğerdir. [Daha fazla bilgi edinin](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2339,7 +2399,7 @@ Azure dosya paylaşımlarında dosya/dizinlerde okuma erişimine izin verir. Bu 
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Storage/storageAccounts/fileServices/fileshares/Files/Read | Dosya/klasör veya dosya/klasör listesini döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/fıleservices/fileshares/Files/Read | Dosya/klasör veya dosya/klasör listesini döndürür. |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -2369,21 +2429,21 @@ Azure dosya paylaşımlarında dosya/dizinlerde okuma erişimine izin verir. Bu 
 
 ### <a name="storage-queue-data-contributor"></a>Depolama kuyruğu verileri Katılımcısı
 
-Azure depolama kuyruklarını ve sıra iletilerini okuyun, yazın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Azure depolama kuyruklarını ve sıra iletilerini okuyun, yazın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi edinin](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/Sil | Kuyruğu silme. |
-> | Microsoft. Storage/storageAccounts/queueServices/kuyrukları/okuma | Kuyruğu veya kuyruk listesini döndürün. |
-> | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/Write | Sıra meta verilerini veya özelliklerini değiştirin. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/queueservices/Queues/Delete | Kuyruğu silme. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/queueservices/Queues/Read | Kuyruğu veya kuyruk listesini döndürün. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/queueservices/Queues/Write | Sıra meta verilerini veya özelliklerini değiştirin. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/iletiler/Sil | Bir kuyruktan bir veya daha fazla iletiyi silin. |
-> | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/iletiler/okundu | Bir kuyruktaki bir veya daha fazla iletiyi Peek veya alma. |
-> | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/iletiler/yazma | Bir kuyruğa ileti ekleyin. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/queueservices/Queues/ileti/Delete | Bir kuyruktan bir veya daha fazla iletiyi silin. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/queueservices/Queues/ileti/Read | Bir kuyruktaki bir veya daha fazla iletiyi Peek veya alma. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/queueservices/Queues/ileti/Write | Bir kuyruğa ileti ekleyin. |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -2419,7 +2479,7 @@ Azure depolama kuyruklarını ve sıra iletilerini okuyun, yazın ve silin. Beli
 
 ### <a name="storage-queue-data-message-processor"></a>Depolama kuyruğu veri Iletisi Işlemcisi
 
-Azure depolama kuyruğundan bir iletiyi göz atın, alın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Azure depolama kuyruğundan bir iletiyi göz atın, alın ve silin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi edinin](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2429,8 +2489,8 @@ Azure depolama kuyruğundan bir iletiyi göz atın, alın ve silin. Belirli bir 
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/iletiler/okundu | İletiye göz atın. |
-> | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/iletiler/işlem/eylem | Bir iletiyi alın ve silin. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/queueservices/Queues/ileti/Read | İletiye göz atın. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/queueservices/Queues/ileti/Process/Action | Bir iletiyi alın ve silin. |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -2461,7 +2521,7 @@ Azure depolama kuyruğundan bir iletiyi göz atın, alın ve silin. Belirli bir 
 
 ### <a name="storage-queue-data-message-sender"></a>Depolama kuyruğu veri Iletisi gönderici
 
-Bir Azure depolama kuyruğuna ileti ekleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Bir Azure depolama kuyruğuna ileti ekleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi edinin](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2471,7 +2531,7 @@ Bir Azure depolama kuyruğuna ileti ekleyin. Belirli bir veri işlemi için hang
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/iletiler/ekleme/eylem | Bir kuyruğa ileti ekleyin. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/queueservices/Queues/ileti/Add/Action | Bir kuyruğa ileti ekleyin. |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -2501,17 +2561,17 @@ Bir Azure depolama kuyruğuna ileti ekleyin. Belirli bir veri işlemi için hang
 
 ### <a name="storage-queue-data-reader"></a>Depolama kuyruğu veri okuyucusu
 
-Azure depolama kuyruklarını ve sıra iletilerini okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Azure depolama kuyruklarını ve sıra iletilerini okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Daha fazla bilgi edinin](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Storage/storageAccounts/queueServices/kuyrukları/okuma | Kuyruğu veya kuyruk listesini döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/queueservices/Queues/Read | Kuyruğu veya kuyruk listesini döndürür. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Storage/storageAccounts/queueServices/kuyruklar/iletiler/okundu | Bir kuyruktaki bir veya daha fazla iletiyi Peek veya alma. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/queueservices/Queues/ileti/Read | Bir kuyruktaki bir veya daha fazla iletiyi Peek veya alma. |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -2556,7 +2616,7 @@ Azure haritalar hesabından ilgili harita okuma verilerine erişim izni verir.
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Maps/hesaplar/*/Read |  |
+> | [Microsoft. Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/Read |  |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -2586,19 +2646,19 @@ Azure haritalar hesabından ilgili harita okuma verilerine erişim izni verir.
 
 ### <a name="search-service-contributor"></a>Katkıda bulunan Arama Hizmeti
 
-Arama hizmetlerini yönetmenize izin verir, ancak bunlara erişim izni vermez.
+Arama hizmetlerini yönetmenize izin verir, ancak bunlara erişim izni vermez. [Daha fazla bilgi edinin](../search/search-security-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. Search/searchServices/* | Arama Hizmetleri oluşturma ve yönetme |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. Search](resource-provider-operations.md#microsoftsearch)/Searchservices/* | Arama Hizmetleri oluşturma ve yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -2644,14 +2704,14 @@ Web siteleri için Web planlarını yönetmenizi sağlar, ancak bunlara erişeme
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
-> | Microsoft. Web/Sunucugrupları/* | Sunucu grupları oluşturma ve yönetme |
-> | Microsoft. Web/hostingEnvironments/JOIN/Action | Bir App Service Ortamı birleştirir |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Serverfarms/* | Sunucu grupları oluşturma ve yönetme |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Hostingenvironments/Join/Action | Bir App Service Ortamı birleştirir |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -2698,18 +2758,18 @@ Web sitelerini yönetmenizi sağlar, ancak bunlara erişemez.
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Insights/bileşenler/* | Öngörüler bileşenleri oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
-> | Microsoft. Web/Certificates/* | Web sitesi sertifikaları oluşturma ve yönetme |
-> | Microsoft. Web/listSitesAssignedToHostName/Read | Ana bilgisayar adına atanan sitelerin adlarını alın. |
-> | Microsoft. Web/Sunucugrupları/JOIN/Action |  |
-> | Microsoft. Web/Sunucugrupları/okuma | App Service planında özellikleri al |
-> | Microsoft. Web/Sites/* | Web siteleri oluşturma ve yönetme (site oluşturma, ayrıca ilişkili App Service planına yazma izinleri gerektirir) |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Components/* | Öngörüler bileşenleri oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Certificates/* | Web sitesi sertifikaları oluşturma ve yönetme |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Listsitesassignedtohostname/Read | Ana bilgisayar adına atanan sitelerin adlarını alın. |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Serverfarms/Join/Action |  |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Serverfarms/Read | App Service planında özellikleri al |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Sites/* | Web siteleri oluşturma ve yönetme (site oluşturma, ayrıca ilişkili App Service planına yazma izinleri gerektirir) |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -2757,13 +2817,13 @@ Web sitelerini yönetmenizi sağlar, ancak bunlara erişemez.
 
 ### <a name="acrdelete"></a>AcrDelete
 
-ACR silme
+ACR Delete [daha fazla bilgi](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. ContainerRegistry/kayıt defterleri/yapıtlar/silme | Bir kapsayıcı kayıt defterinde yapıtı silin. |
+> | [Microsoft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/kayıt Tries/Artifacts/Delete | Bir kapsayıcı kayıt defterinde yapıtı silin. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -2797,13 +2857,13 @@ ACR silme
 
 ### <a name="acrimagesigner"></a>Acrimageimzalayan
 
-ACR görüntü imzalayan
+ACR görüntü imzalayan [daha fazla bilgi](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. ContainerRegistry/kayıt defterleri/imzala/yaz | Kapsayıcı kayıt defteri için gönderme/çekme içeriği güven meta verileri. |
+> | [Microsoft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/kayıt Tries/Sign/Write | Kapsayıcı kayıt defteri için gönderme/çekme içeriği güven meta verileri. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -2837,13 +2897,13 @@ ACR görüntü imzalayan
 
 ### <a name="acrpull"></a>AcrPull
 
-ACR çekme
+ACR çekme [daha fazla bilgi](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. ContainerRegistry/kayıt defterleri/çekme/okuma | Bir kapsayıcı kayıt defterinden görüntüleri çekin veya alın. |
+> | [Microsoft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/kayıt Tries/Pull/Read | Bir kapsayıcı kayıt defterinden görüntüleri çekin veya alın. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -2877,14 +2937,14 @@ ACR çekme
 
 ### <a name="acrpush"></a>AcrPush
 
-ACR gönderimi
+ACR Push [daha fazla bilgi](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. ContainerRegistry/kayıt defterleri/çekme/okuma | Bir kapsayıcı kayıt defterinden görüntüleri çekin veya alın. |
-> | Microsoft. ContainerRegistry/kayıt defterleri/gönderme/yazma | Bir kapsayıcı kayıt defterine görüntü gönderin veya yazın. |
+> | [Microsoft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/kayıt Tries/Pull/Read | Bir kapsayıcı kayıt defterinden görüntüleri çekin veya alın. |
+> | [Microsoft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/kayıt Tries/Push/Write | Bir kapsayıcı kayıt defterine görüntü gönderin veya yazın. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -2925,7 +2985,7 @@ ACR karantina veri okuyucusu
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. ContainerRegistry/kayıt defterleri/karantina/okuma | Kapsayıcı kayıt defterinden karantinaya alınmış görüntüleri çekme veya alma |
+> | [Microsoft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/kayıt Tries/Quarantine/Read | Kapsayıcı kayıt defterinden karantinaya alınmış görüntüleri çekme veya alma |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -2965,8 +3025,8 @@ ACR karantina veri yazıcısı
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. ContainerRegistry/kayıt defterleri/karantina/okuma | Kapsayıcı kayıt defterinden karantinaya alınmış görüntüleri çekme veya alma |
-> | Microsoft. ContainerRegistry/kayıt defterleri/karantina/yazma | Karantinaya alınan görüntülerin karantina durumunu yazma/değiştirme |
+> | [Microsoft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/kayıt Tries/Quarantine/Read | Kapsayıcı kayıt defterinden karantinaya alınmış görüntüleri çekme veya alma |
+> | [Microsoft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/kayıt Tries/Quarantine/Write | Karantinaya alınan görüntülerin karantina durumunu yazma/değiştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -3001,14 +3061,14 @@ ACR karantina veri yazıcısı
 
 ### <a name="azure-kubernetes-service-cluster-admin-role"></a>Azure Kubernetes hizmet kümesi yönetici rolü
 
-Küme Yöneticisi kimlik bilgisi eylemini listeleyin.
+Küme Yöneticisi kimlik bilgisi eylemini listeleyin. [Daha fazla bilgi edinin](../aks/control-kubeconfig-access.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. ContainerService/Managedkümeler/listClusterAdminCredential/ACTION | Yönetilen kümenin clusterAdmin kimlik bilgisini listeleyin |
-> | Microsoft. ContainerService/Managedkümeler/accessProfiles/listCredential/Action | Liste kimlik bilgisini kullanarak rol adına göre yönetilen küme erişim profili al |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/Managedclusters/listclusteradmincredential/Action | Yönetilen kümenin clusterAdmin kimlik bilgisini listeleyin |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/Managedclusters/accessprofiles/listcredential/Action | Liste kimlik bilgisini kullanarak rol adına göre yönetilen küme erişim profili al |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -3043,13 +3103,13 @@ Küme Yöneticisi kimlik bilgisi eylemini listeleyin.
 
 ### <a name="azure-kubernetes-service-cluster-user-role"></a>Azure Kubernetes hizmet kümesi Kullanıcı rolü
 
-Küme kullanıcı kimlik bilgilerini Listele eylemi.
+Küme kullanıcı kimlik bilgilerini Listele eylemi. [Daha fazla bilgi edinin](../aks/control-kubeconfig-access.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. ContainerService/Managedkümeler/listClusterUserCredential/Action | Yönetilen kümenin clusterUser kimlik bilgisini listeleyin |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/Managedclusters/listclusterusercredential/Action | Yönetilen kümenin clusterUser kimlik bilgisini listeleyin |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -3086,19 +3146,19 @@ Küme kullanıcı kimlik bilgilerini Listele eylemi.
 
 ### <a name="cosmos-db-account-reader-role"></a>Cosmos DB hesabı okuyucu rolü
 
-Azure Cosmos DB hesabı verilerini okuyabilir. Azure Cosmos DB hesaplarını yönetmek için [DocumentDB hesabı katılımcısı](#documentdb-account-contributor) konusuna bakın.
+Azure Cosmos DB hesabı verilerini okuyabilir. Azure Cosmos DB hesaplarını yönetmek için [DocumentDB hesabı katılımcısı](#documentdb-account-contributor) konusuna bakın. [Daha fazla bilgi edinin](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. DocumentDB/*/Read | Tüm koleksiyonları okuyun |
-> | Microsoft. DocumentDB/databaseAccounts/readonlykeys/Action | Veritabanı hesabı salt okunur anahtarlarını okur. |
-> | Microsoft. Insights/MetricDefinitions/okuma | Ölçüm tanımlarını oku |
-> | Microsoft. Insights/ölçümler/okuma | Ölçümleri oku |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/*/Read | Tüm koleksiyonları okuyun |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/Databaseaccounts/readonlykeys/Action | Veritabanı hesabı salt okunur anahtarlarını okur. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/MetricDefinitions/Read | Ölçüm tanımlarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metrics/Read | Ölçümleri oku |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -3138,25 +3198,25 @@ Azure Cosmos DB hesabı verilerini okuyabilir. Azure Cosmos DB hesaplarını yö
 
 ### <a name="cosmos-db-operator"></a>Cosmos DB Işleci
 
-Azure Cosmos DB hesaplarını yönetmenizi sağlar ancak içerdikleri verilere erişemez. Hesap anahtarlarına ve bağlantı dizelerine erişimi engeller.
+Azure Cosmos DB hesaplarını yönetmenizi sağlar ancak içerdikleri verilere erişemez. Hesap anahtarlarına ve bağlantı dizelerine erişimi engeller. [Daha fazla bilgi edinin](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. DocumentDb/databaseAccounts/* |  |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
-> | Microsoft. Network/virtualNetworks/alt ağlar/Jodavetli Aserviceendpoint/Action | Depolama hesabı veya SQL veritabanı gibi kaynağı bir alt ağa birleştirir. Alertable değil. |
+> | [Microsoft.DocumentDb](resource-provider-operations.md#microsoftdocumentdb)/Databaseaccounts/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Subnets/jodavetaserviceendpoint/Action | Depolama hesabı veya SQL veritabanı gibi kaynağı bir alt ağa birleştirir. Alertable değil. |
 > | **NotActions** |  |
-> | Microsoft. DocumentDB/databaseAccounts/readonlyKeys/* |  |
-> | Microsoft. DocumentDB/databaseAccounts/regenerateKey/* |  |
-> | Microsoft. DocumentDB/databaseAccounts/listKeys/* |  |
-> | Microsoft. DocumentDB/databaseAccounts/listConnectionStrings/* |  |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/Databaseaccounts/readonlykeys/* |  |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/Databaseaccounts/RegenerateKey/* |  |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/Databaseaccounts/ListKeys/* |  |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/listConnectionStrings/* |  |
 > | **Veri eylemleri** |  |
 > | *yok* |  |
 > | **NotDataActions** |  |
@@ -3200,14 +3260,14 @@ Azure Cosmos DB hesaplarını yönetmenizi sağlar ancak içerdikleri verilere e
 
 ### <a name="cosmosbackupoperator"></a>CosmosBackupOperator
 
-Bir Cosmos DB veritabanı veya bir hesabın kapsayıcısı için geri yükleme isteği gönderebilir
+Bir Cosmos DB veritabanı veya bir hesabın kapsayıcısı için geri yükleme isteği gönderebilir [daha fazla bilgi edinin](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. DocumentDB/databaseAccounts/Backup/Action | Yedeklemeyi yapılandırmak için bir istek gönder |
-> | Microsoft. DocumentDB/databaseAccounts/restore/Action | Geri yükleme isteği gönder |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/Databaseaccounts/Backup/Action | Yedeklemeyi yapılandırmak için bir istek gönder |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/Databaseaccounts/restore/Action | Geri yükleme isteği gönder |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -3242,20 +3302,20 @@ Bir Cosmos DB veritabanı veya bir hesabın kapsayıcısı için geri yükleme i
 
 ### <a name="documentdb-account-contributor"></a>DocumentDB hesabı Katılımcısı
 
-, Azure Cosmos DB hesaplarını yönetebilir. Azure Cosmos DB daha önce DocumentDB olarak bilinirdi.
+, Azure Cosmos DB hesaplarını yönetebilir. Azure Cosmos DB daha önce DocumentDB olarak bilinirdi. [Daha fazla bilgi edinin](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. DocumentDb/databaseAccounts/* | Azure Cosmos DB hesapları oluşturma ve yönetme |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
-> | Microsoft. Network/virtualNetworks/alt ağlar/Jodavetli Aserviceendpoint/Action | Depolama hesabı veya SQL veritabanı gibi kaynağı bir alt ağa birleştirir. Alertable değil. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft.DocumentDb](resource-provider-operations.md#microsoftdocumentdb)/Databaseaccounts/* | Azure Cosmos DB hesapları oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Subnets/jodavetaserviceendpoint/Action | Depolama hesabı veya SQL veritabanı gibi kaynağı bir alt ağa birleştirir. Alertable değil. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -3302,13 +3362,13 @@ Redsıs önbellekler yönetmenize izin verir, ancak bunlara erişimi olmaz.
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Cache/reddir/* | Redsıs önbellekler oluşturma ve yönetme |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Cache](resource-provider-operations.md#microsoftcache)/Redis/* | Redsıs önbellekler oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -3348,48 +3408,48 @@ Redsıs önbellekler yönetmenize izin verir, ancak bunlara erişimi olmaz.
 
 ### <a name="sql-db-contributor"></a>SQL DB Katılımcısı
 
-SQL veritabanlarını yönetmenizi sağlar ancak onlara yönelik erişimleri vermez. Ayrıca, güvenlikle ilgili ilkeleri veya bunların üst SQL sunucularını yönetemezsiniz.
+SQL veritabanlarını yönetmenizi sağlar ancak onlara yönelik erişimleri vermez. Ayrıca, güvenlikle ilgili ilkeleri veya bunların üst SQL sunucularını yönetemezsiniz. [Daha fazla bilgi edinin](../data-share/concepts-roles-permissions.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. SQL/konumlar/*/Read |  |
-> | Microsoft. SQL/Servers/veritabanları/* | SQL veritabanı oluşturma ve yönetme |
-> | Microsoft. SQL/Servers/Read | Sunucu listesini döndürün veya belirtilen sunucunun özelliklerini alır. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
-> | Microsoft. Insights/ölçümler/okuma | Ölçümleri oku |
-> | Microsoft. Insights/metricDefinitions/okuma | Ölçüm tanımlarını oku |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Locations/*/Read |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/* | SQL veritabanı oluşturma ve yönetme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Read | Sunucu listesini döndürün veya belirtilen sunucunun özelliklerini alır. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metrics/Read | Ölçümleri oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/MetricDefinitions/Read | Ölçüm tanımlarını oku |
 > | **NotActions** |  |
-> | Microsoft. SQL/ManagedInstances/Databases/currentSensitivityLabels/* |  |
-> | Microsoft. SQL/ManagedInstances/Databases/recommendedSensitivityLabels/* |  |
-> | Microsoft. SQL/ManagedInstances/veritabanları/şemalar/tablolar/sütunlar/sensitivityLabels/* |  |
-> | Microsoft. SQL/ManagedInstances/Databases/Securityalcertpolicies/* |  |
-> | Microsoft. SQL/ManagedInstances/Databases/sensitivityLabels/* |  |
-> | Microsoft. SQL/ManagedInstances/veritabanları/ |  |
-> | Microsoft. SQL/ManagedInstances/Securityalcertpolicies/* |  |
-> | Microsoft. SQL/ManagedInstances/ |  |
-> | Microsoft. SQL/Servers/veritabanları/auditingPolicies/* | Denetim ilkelerini düzenleme |
-> | Microsoft. SQL/Servers/Databases/auditingSettings/* | Denetim ayarlarını Düzenle |
-> | Microsoft. SQL/Servers/veritabanları/auditRecords/okuma | Veritabanı blobu denetim kayıtlarını alma |
-> | Microsoft. SQL/Servers/veritabanları/connectionPolicies/* | Bağlantı ilkelerini düzenleme |
-> | Microsoft. SQL/Servers/veritabanları/currentSensitivityLabels/* |  |
-> | Microsoft. SQL/Servers/veritabanları/dataMaskingPolicies/* | Veri maskeleme ilkelerini düzenleme |
-> | Microsoft. SQL/Servers/Databases/extendedAuditingSettings/* |  |
-> | Microsoft. SQL/Servers/veritabanları/recommendedSensitivityLabels/* |  |
-> | Microsoft. SQL/Servers/veritabanları/şemalar/tablolar/sütunlar/sensitivityLabels/* |  |
-> | Microsoft. SQL/Servers/Databases/Securityalcertpolicies/* | Güvenlik Uyarısı ilkelerini düzenleme |
-> | Microsoft. SQL/Servers/Databases/Securityölçümlerini/* | Güvenlik ölçümlerini düzenleme |
-> | Microsoft. SQL/Servers/veritabanları/sensitivityLabels/* |  |
-> | Microsoft. SQL/Servers/veritabanları/ |  |
-> | Microsoft. SQL/Servers/veritabanları/ |  |
-> | Microsoft. SQL/Servers/veritabanları/ |  |
-> | Microsoft. SQL/Servers/ |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/currentSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/recommendedSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/schemas/Tables/Columns/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/securityAlertPolicies/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/vulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/ManagedInstances/securityalcertpolicies/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/ManagedInstances/sımıyassessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/auditingPolicies/* | Denetim ilkelerini düzenleme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/auditingSettings/* | Denetim ayarlarını Düzenle |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/auditRecords/Read | Veritabanı blobu denetim kayıtlarını alma |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/connectionPolicies/* | Bağlantı ilkelerini düzenleme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/currentSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/dataMaskingPolicies/* | Veri maskeleme ilkelerini düzenleme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/extendedAuditingSettings/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/recommendedSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/schemas/Tables/Columns/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/securityAlertPolicies/* | Güvenlik Uyarısı ilkelerini düzenleme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/securityMetrics/* | Güvenlik ölçümlerini düzenleme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/vulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/vulnerabilityAssessmentScans/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/vulnerabilityAssessmentSettings/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/ |  |
 > | **Veri eylemleri** |  |
 > | *yok* |  |
 > | **NotDataActions** |  |
@@ -3462,20 +3522,20 @@ SQL yönetilen örnekleri ve gerekli ağ yapılandırmasını yönetmenizi sağl
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. Network/networkSecurityGroups/* |  |
-> | Microsoft. Network/routeTables/* |  |
-> | Microsoft. SQL/konumlar/*/Read |  |
-> | Microsoft. SQL/ManagedInstances/* |  |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
-> | Microsoft. Network/virtualNetworks/alt ağları/* |  |
-> | Microsoft. Network/virtualNetworks/* |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Insights/ölçümler/okuma | Ölçümleri oku |
-> | Microsoft. Insights/metricDefinitions/okuma | Ölçüm tanımlarını oku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Networksecuritygroups/* |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Routetables/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Locations/*/Read |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/ManagedInstances/* |  |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Subnets/* |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/* |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metrics/Read | Ölçümleri oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/MetricDefinitions/Read | Ölçüm tanımlarını oku |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -3522,55 +3582,55 @@ SQL yönetilen örnekleri ve gerekli ağ yapılandırmasını yönetmenizi sağl
 
 ### <a name="sql-security-manager"></a>SQL Güvenlik Yöneticisi
 
-, SQL Server ve veritabanlarının güvenlikle ilgili ilkelerini yönetmenizi sağlar, ancak bunlara erişemez.
+, SQL Server ve veritabanlarının güvenlikle ilgili ilkelerini yönetmenizi sağlar, ancak bunlara erişemez. [Daha fazla bilgi edinin](../sql-database/sql-database-advanced-data-security.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Network/virtualNetworks/alt ağlar/Jodavetli Aserviceendpoint/Action | Depolama hesabı veya SQL veritabanı gibi kaynağı bir alt ağa birleştirir. Alertable değil. |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. SQL/ManagedInstances/Databases/currentSensitivityLabels/* |  |
-> | Microsoft. SQL/ManagedInstances/Databases/recommendedSensitivityLabels/* |  |
-> | Microsoft. SQL/ManagedInstances/veritabanları/şemalar/tablolar/sütunlar/sensitivityLabels/* |  |
-> | Microsoft. SQL/ManagedInstances/Databases/Securityalcertpolicies/* |  |
-> | Microsoft. SQL/ManagedInstances/Databases/sensitivityLabels/* |  |
-> | Microsoft. SQL/ManagedInstances/veritabanları/ |  |
-> | Microsoft. SQL/ManagedInstances/Securityalcertpolicies/* |  |
-> | Microsoft. SQL/ManagedInstances/Databases/transparentDataEncryption/* |  |
-> | Microsoft. SQL/ManagedInstances/ |  |
-> | Microsoft. SQL/Servers/auditingPolicies/* | SQL Server denetim ilkeleri oluşturma ve yönetme |
-> | Microsoft. SQL/Servers/auditingSettings/* | SQL Server denetim ayarı oluşturma ve yönetme |
-> | Microsoft. SQL/Servers/extendedAuditingSettings/Read | Belirli bir sunucuda yapılandırılmış genişletilmiş sunucu blobu denetim ilkesinin ayrıntılarını alma |
-> | Microsoft. SQL/Servers/veritabanları/auditingPolicies/* | SQL Server veritabanı denetim ilkeleri oluşturma ve yönetme |
-> | Microsoft. SQL/Servers/Databases/auditingSettings/* | SQL Server veritabanı denetim ayarlarını oluşturma ve yönetme |
-> | Microsoft. SQL/Servers/veritabanları/auditRecords/okuma | Veritabanı blobu denetim kayıtlarını alma |
-> | Microsoft. SQL/Servers/veritabanları/connectionPolicies/* | SQL Server veritabanı bağlantı ilkeleri oluşturma ve yönetme |
-> | Microsoft. SQL/Servers/veritabanları/currentSensitivityLabels/* |  |
-> | Microsoft. SQL/Servers/veritabanları/dataMaskingPolicies/* | SQL Server veritabanı veri maskeleme ilkeleri oluşturma ve yönetme |
-> | Microsoft. SQL/Servers/veritabanları/extendedAuditingSettings/Read | Belirli bir veritabanında yapılandırılan genişletilmiş blob denetim ilkesinin ayrıntılarını alma |
-> | Microsoft. SQL/Servers/veritabanları/okuma | Veritabanlarının listesini döndürün veya belirtilen veritabanının özelliklerini alır. |
-> | Microsoft. SQL/Servers/veritabanları/recommendedSensitivityLabels/* |  |
-> | Microsoft. SQL/Servers/veritabanları/şemalar/okuma | Veritabanı şeması alın. |
-> | Microsoft. SQL/Servers/veritabanları/şemalar/tablolar/sütunlar/okuma | Veritabanı sütunu al. |
-> | Microsoft. SQL/Servers/veritabanları/şemalar/tablolar/sütunlar/sensitivityLabels/* |  |
-> | Microsoft. SQL/Servers/veritabanları/şemalar/tablolar/okuma | Veritabanı tablosu al. |
-> | Microsoft. SQL/Servers/Databases/Securityalcertpolicies/* | SQL Server veritabanı güvenlik uyarısı ilkeleri oluşturma ve yönetme |
-> | Microsoft. SQL/Servers/Databases/Securityölçümlerini/* | SQL Server veritabanı güvenlik ölçümleri oluşturma ve yönetme |
-> | Microsoft. SQL/Servers/veritabanları/sensitivityLabels/* |  |
-> | Microsoft. SQL/Servers/veritabanları/transparentDataEncryption/* |  |
-> | Microsoft. SQL/Servers/veritabanları/ |  |
-> | Microsoft. SQL/Servers/veritabanları/ |  |
-> | Microsoft. SQL/Servers/veritabanları/ |  |
-> | Microsoft. SQL/Servers/firewallRules/* |  |
-> | Microsoft. SQL/Servers/Read | Sunucu listesini döndürün veya belirtilen sunucunun özelliklerini alır. |
-> | Microsoft. SQL/Servers/Securityalcertpolicies/* | SQL Server güvenlik uyarı ilkeleri oluşturma ve yönetme |
-> | Microsoft. SQL/Servers/ |  |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Subnets/jodavetaserviceendpoint/Action | Depolama hesabı veya SQL veritabanı gibi kaynağı bir alt ağa birleştirir. Alertable değil. |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/currentSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/recommendedSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/schemas/Tables/Columns/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/securityAlertPolicies/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/vulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/ManagedInstances/securityalcertpolicies/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/transparentDataEncryption/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/ManagedInstances/sımıyassessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/auditingpolicies/* | SQL Server denetim ilkeleri oluşturma ve yönetme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/auditingsettings/* | SQL Server denetim ayarı oluşturma ve yönetme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/extendedauditingsettings/Read | Belirli bir sunucuda yapılandırılmış genişletilmiş sunucu blobu denetim ilkesinin ayrıntılarını alma |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/auditingPolicies/* | SQL Server veritabanı denetim ilkeleri oluşturma ve yönetme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/auditingSettings/* | SQL Server veritabanı denetim ayarlarını oluşturma ve yönetme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/auditRecords/Read | Veritabanı blobu denetim kayıtlarını alma |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/connectionPolicies/* | SQL Server veritabanı bağlantı ilkeleri oluşturma ve yönetme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/currentSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/dataMaskingPolicies/* | SQL Server veritabanı veri maskeleme ilkeleri oluşturma ve yönetme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/extendedAuditingSettings/Read | Belirli bir veritabanında yapılandırılan genişletilmiş blob denetim ilkesinin ayrıntılarını alma |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/Read | Veritabanlarının listesini döndürün veya belirtilen veritabanının özelliklerini alır. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/recommendedSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/schemas/Read | Veritabanı şeması alın. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/schemas/Tables/Columns/Read | Veritabanı sütunu al. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/schemas/Tables/Columns/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/schemas/Tables/Read | Veritabanı tablosu al. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/securityAlertPolicies/* | SQL Server veritabanı güvenlik uyarısı ilkeleri oluşturma ve yönetme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/securityMetrics/* | SQL Server veritabanı güvenlik ölçümleri oluşturma ve yönetme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/transparentDataEncryption/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/vulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/vulnerabilityAssessmentScans/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/vulnerabilityAssessmentSettings/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/firewallkuralları/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Read | Sunucu listesini döndürün veya belirtilen sunucunun özelliklerini alır. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/securityalcertpolicies/* | SQL Server güvenlik uyarı ilkeleri oluşturma ve yönetme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/ |  |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -3646,51 +3706,51 @@ SQL yönetilen örnekleri ve gerekli ağ yapılandırmasını yönetmenizi sağl
 
 ### <a name="sql-server-contributor"></a>Katkıda bulunan SQL Server
 
-SQL Server ve veritabanlarını yönetmenizi sağlar, ancak bunlara yönelik erişimleri ve güvenlikle ilgili ilkeleri yönetemez.
+SQL Server ve veritabanlarını yönetmenizi sağlar, ancak bunlara yönelik erişimleri ve güvenlikle ilgili ilkeleri yönetemez. [Daha fazla bilgi edinin](../sql-database/sql-database-aad-authentication-configure.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. SQL/konumlar/*/Read |  |
-> | Microsoft. SQL/Servers/* | SQL Server 'lar oluşturma ve yönetme |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
-> | Microsoft. Insights/ölçümler/okuma | Ölçümleri oku |
-> | Microsoft. Insights/metricDefinitions/okuma | Ölçüm tanımlarını oku |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Locations/*/Read |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/* | SQL Server 'lar oluşturma ve yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metrics/Read | Ölçümleri oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/MetricDefinitions/Read | Ölçüm tanımlarını oku |
 > | **NotActions** |  |
-> | Microsoft. SQL/ManagedInstances/Databases/currentSensitivityLabels/* |  |
-> | Microsoft. SQL/ManagedInstances/Databases/recommendedSensitivityLabels/* |  |
-> | Microsoft. SQL/ManagedInstances/veritabanları/şemalar/tablolar/sütunlar/sensitivityLabels/* |  |
-> | Microsoft. SQL/ManagedInstances/Databases/Securityalcertpolicies/* |  |
-> | Microsoft. SQL/ManagedInstances/Databases/sensitivityLabels/* |  |
-> | Microsoft. SQL/ManagedInstances/veritabanları/ |  |
-> | Microsoft. SQL/ManagedInstances/Securityalcertpolicies/* |  |
-> | Microsoft. SQL/ManagedInstances/ |  |
-> | Microsoft. SQL/Servers/auditingPolicies/* | SQL Server denetim ilkelerini düzenleme |
-> | Microsoft. SQL/Servers/auditingSettings/* | SQL Server denetim ayarlarını Düzenle |
-> | Microsoft. SQL/Servers/veritabanları/auditingPolicies/* | SQL Server veritabanı denetim ilkelerini düzenleme |
-> | Microsoft. SQL/Servers/Databases/auditingSettings/* | SQL Server veritabanı denetim ayarlarını Düzenle |
-> | Microsoft. SQL/Servers/veritabanları/auditRecords/okuma | Veritabanı blobu denetim kayıtlarını alma |
-> | Microsoft. SQL/Servers/veritabanları/connectionPolicies/* | SQL Server veritabanı bağlantı ilkelerini düzenleme |
-> | Microsoft. SQL/Servers/veritabanları/currentSensitivityLabels/* |  |
-> | Microsoft. SQL/Servers/veritabanları/dataMaskingPolicies/* | SQL Server veritabanı veri maskeleme ilkelerini düzenleme |
-> | Microsoft. SQL/Servers/Databases/extendedAuditingSettings/* |  |
-> | Microsoft. SQL/Servers/veritabanları/recommendedSensitivityLabels/* |  |
-> | Microsoft. SQL/Servers/veritabanları/şemalar/tablolar/sütunlar/sensitivityLabels/* |  |
-> | Microsoft. SQL/Servers/Databases/Securityalcertpolicies/* | SQL Server veritabanı güvenlik uyarısı ilkelerini düzenleme |
-> | Microsoft. SQL/Servers/Databases/Securityölçümlerini/* | SQL Server veritabanı güvenlik ölçümlerini düzenleme |
-> | Microsoft. SQL/Servers/veritabanları/sensitivityLabels/* |  |
-> | Microsoft. SQL/Servers/veritabanları/ |  |
-> | Microsoft. SQL/Servers/veritabanları/ |  |
-> | Microsoft. SQL/Servers/veritabanları/ |  |
-> | Microsoft. SQL/Servers/extendedAuditingSettings/* |  |
-> | Microsoft. SQL/Servers/Securityalcertpolicies/* | SQL Server güvenlik uyarısı ilkelerini düzenleme |
-> | Microsoft. SQL/Servers/ |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/currentSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/recommendedSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/schemas/Tables/Columns/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/securityAlertPolicies/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Databases/vulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/ManagedInstances/securityalcertpolicies/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/ManagedInstances/sımıyassessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/auditingpolicies/* | SQL Server denetim ilkelerini düzenleme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/auditingsettings/* | SQL Server denetim ayarlarını Düzenle |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/auditingPolicies/* | SQL Server veritabanı denetim ilkelerini düzenleme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/auditingSettings/* | SQL Server veritabanı denetim ayarlarını Düzenle |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/auditRecords/Read | Veritabanı blobu denetim kayıtlarını alma |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/connectionPolicies/* | SQL Server veritabanı bağlantı ilkelerini düzenleme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/currentSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/dataMaskingPolicies/* | SQL Server veritabanı veri maskeleme ilkelerini düzenleme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/extendedAuditingSettings/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/recommendedSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/schemas/Tables/Columns/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/securityAlertPolicies/* | SQL Server veritabanı güvenlik uyarısı ilkelerini düzenleme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/securityMetrics/* | SQL Server veritabanı güvenlik ölçümlerini düzenleme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/vulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/vulnerabilityAssessmentScans/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/vulnerabilityAssessmentSettings/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/extendedauditingsettings/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/securityalcertpolicies/* | SQL Server güvenlik uyarısı ilkelerini düzenleme |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/ |  |
 > | **Veri eylemleri** |  |
 > | *yok* |  |
 > | **NotDataActions** |  |
@@ -3763,17 +3823,17 @@ SQL Server ve veritabanlarını yönetmenizi sağlar, ancak bunlara yönelik eri
 
 ### <a name="azure-event-hubs-data-owner"></a>Azure Event Hubs veri sahibi
 
-Azure Event Hubs kaynaklarına tam erişim sağlar.
+Azure Event Hubs kaynaklarına tam erişim sağlar. [Daha fazla bilgi edinin](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. EventHub/* |  |
+> | [Microsoft. EventHub](resource-provider-operations.md#microsofteventhub)/* |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. EventHub/* |  |
+> | [Microsoft. EventHub](resource-provider-operations.md#microsofteventhub)/* |  |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -3805,17 +3865,17 @@ Azure Event Hubs kaynaklarına tam erişim sağlar.
 
 ### <a name="azure-event-hubs-data-receiver"></a>Azure Event Hubs veri alıcısı
 
-Azure Event Hubs kaynaklarına erişim izni verir.
+Azure Event Hubs kaynaklarına erişim izni verir. [Daha fazla bilgi edinin](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. EventHub/*/eventhubs/consumergroups/Read |  |
+> | [Microsoft. EventHub](resource-provider-operations.md#microsofteventhub)/*/eventhubs/consumergroups/Read |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. EventHub/*/Receive/Action |  |
+> | [Microsoft. EventHub](resource-provider-operations.md#microsofteventhub)/*/Receive/Action |  |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -3847,17 +3907,17 @@ Azure Event Hubs kaynaklarına erişim izni verir.
 
 ### <a name="azure-event-hubs-data-sender"></a>Azure Event Hubs veri gönderici
 
-Azure Event Hubs kaynaklarına erişim gönderilmesine izin verir.
+Azure Event Hubs kaynaklarına erişim gönderilmesine izin verir. [Daha fazla bilgi edinin](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. EventHub/*/eventhubs/Read |  |
+> | [Microsoft. EventHub](resource-provider-operations.md#microsofteventhub)/*/eventhubs/Read |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. EventHub/*/Send/Action |  |
+> | [Microsoft. EventHub](resource-provider-operations.md#microsofteventhub)/*/Send/Action |  |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -3889,21 +3949,21 @@ Azure Event Hubs kaynaklarına erişim gönderilmesine izin verir.
 
 ### <a name="data-factory-contributor"></a>Katkıda bulunan Data Factory
 
-Veri fabrikalarının yanı sıra bunların içindeki alt kaynakları oluşturun ve yönetin.
+Veri fabrikalarının yanı sıra bunların içindeki alt kaynakları oluşturun ve yönetin. [Daha fazla bilgi edinin](../data-factory/concepts-roles-permissions.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. DataFactory/DataFactory/* | Veri fabrikaları ve bunların içinde alt kaynaklar oluşturun ve yönetin. |
-> | Microsoft. DataFactory/Factory/* | Veri fabrikaları ve bunların içinde alt kaynaklar oluşturun ve yönetin. |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
-> | Microsoft. EventGrid/Eventaboneliklerin/Write | EventSubscription oluşturma veya güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. DataFactory](resource-provider-operations.md#microsoftdatafactory)/Datafactories/* | Veri fabrikaları ve bunların içinde alt kaynaklar oluşturun ve yönetin. |
+> | [Microsoft. DataFactory](resource-provider-operations.md#microsoftdatafactory)/Factories/* | Veri fabrikaları ve bunların içinde alt kaynaklar oluşturun ve yönetin. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/EventSubscriptions/Write | EventSubscription oluşturma veya güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -3945,16 +4005,16 @@ Veri fabrikalarının yanı sıra bunların içindeki alt kaynakları oluşturun
 
 ### <a name="data-purger"></a>Veri Takiger
 
-Analiz verilerini temizedebilir
+Analiz verilerini temizedebilir [daha fazla bilgi edinin](../azure-monitor/platform/personal-data-mgmt.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Insights/bileşenler/*/Read |  |
-> | Microsoft. Insights/bileşenler/Temizleme/eylem | Application Insights verileri temizleme |
-> | Microsoft. Operationalınsights/çalışma alanları/*/Read | Log Analytics verilerini görüntüleme |
-> | Microsoft. Operationalınsights/çalışma alanları/temizleme/eylem | Belirtilen verileri çalışma alanından Sil |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Components/*/Read |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Components/Purge/Action | Application Insights verileri temizleme |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Log Analytics verilerini görüntüleme |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Purge/Action | Belirtilen verileri çalışma alanından Sil |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -3991,21 +4051,21 @@ Analiz verilerini temizedebilir
 
 ### <a name="hdinsight-cluster-operator"></a>HDInsight küme operatörü
 
-HDInsight küme yapılandırmasını okuyup değiştirmenize izin verir.
+HDInsight küme yapılandırmasını okuyup değiştirmenize izin verir. [Daha fazla bilgi edinin](../hdinsight/hdinsight-migrate-granular-access-cluster-configurations.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. HDInsight/*/Read |  |
-> | Microsoft. HDInsight/kümeler/getGatewaySettings/Action | HDInsight kümesi için ağ geçidi ayarlarını al |
-> | Microsoft. HDInsight/kümeler/updateGatewaySettings/Action | HDInsight kümesi için ağ geçidi ayarlarını güncelleştirme |
-> | Microsoft. HDInsight/kümeler/konfigürasyonlar/* |  |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. resources/dağıtımlar/işlemler/okuma | Dağıtım işlemlerini alır veya listeler. |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. HDInsight](resource-provider-operations.md#microsofthdinsight)/*/Read |  |
+> | [Microsoft. HDInsight](resource-provider-operations.md#microsofthdinsight)/Clusters/getgatewaysettings/Action | HDInsight kümesi için ağ geçidi ayarlarını al |
+> | [Microsoft. HDInsight](resource-provider-operations.md#microsofthdinsight)/Clusters/updategatewaysettings/Action | HDInsight kümesi için ağ geçidi ayarlarını güncelleştirme |
+> | [Microsoft. HDInsight](resource-provider-operations.md#microsofthdinsight)/Clusters/Configurations/* |  |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/Operations/Read | Dağıtım işlemlerini alır veya listeler. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -4047,15 +4107,15 @@ HDInsight küme yapılandırmasını okuyup değiştirmenize izin verir.
 
 ### <a name="hdinsight-domain-services-contributor"></a>HDInsight etki alanı Hizmetleri Katılımcısı
 
-HDInsight için gereken etki alanı Hizmetleri ile ilgili işlemleri okuyabilir, oluşturabilir, değiştirebilir ve silebilir Kurumsal Güvenlik Paketi
+HDInsight için gereken etki alanı Hizmetleri ile ilgili işlemleri okuyabilir, oluşturabilir, değiştirebilir ve silebilir Kurumsal Güvenlik Paketi [daha fazla bilgi edinin](../hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. AAD/*/Read |  |
-> | Microsoft. AAD/domainServices/*/Read |  |
-> | Microsoft. AAD/domainServices/oucontainer/* |  |
+> | [Microsoft. AAD](resource-provider-operations.md#microsoftaad)/*/Read |  |
+> | [Microsoft. AAD](resource-provider-operations.md#microsoftaad)/DomainServices/*/Read |  |
+> | [Microsoft. AAD](resource-provider-operations.md#microsoftaad)/DomainServices/oucontainer/* |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -4091,26 +4151,26 @@ HDInsight için gereken etki alanı Hizmetleri ile ilgili işlemleri okuyabilir,
 
 ### <a name="log-analytics-contributor"></a>Log Analytics Katkıda Bulunan
 
-Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. İzleme ayarlarını düzenlediğinizde VM 'lere VM uzantısının eklenmesi dahildir; Azure depolama 'dan günlüklerin toplanmasını yapılandırabilmek için depolama hesabı anahtarlarını okuma; Otomasyon hesapları oluşturma ve yapılandırma; çözümler ekleme; ve Azure tanılama 'yı tüm Azure kaynaklarında yapılandırma.
+Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. İzleme ayarlarını düzenlediğinizde VM 'lere VM uzantısının eklenmesi dahildir; Azure depolama 'dan günlüklerin toplanmasını yapılandırabilmek için depolama hesabı anahtarlarını okuma; Otomasyon hesapları oluşturma ve yapılandırma; çözümler ekleme; ve Azure tanılama 'yı tüm Azure kaynaklarında yapılandırma. [Daha fazla bilgi edinin](../azure-monitor/platform/manage-access.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
 > | */Read | Gizli dizileri hariç tüm türlerin kaynaklarını okuyun. |
-> | Microsoft. Automation/automationAccounts/* |  |
-> | Microsoft. ClassicCompute/virtualMachines/Extensions/* |  |
-> | Microsoft. ClassicStorage/storageAccounts/listKeys/Action | Depolama hesaplarının erişim anahtarlarını listeler. |
-> | Microsoft. COMPUTE/virtualMachines/Extensions/* |  |
-> | Microsoft. HybridCompute/makineler/uzantılar/yazma | Bir Azure Arc uzantısını yükleme veya güncelleştirme |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Insights/diagnosticSettings/* | Analiz Sunucusu için tanılama ayarını oluşturur, güncelleştirir veya okur |
-> | Microsoft. Operationalınsights/* |  |
-> | Microsoft. OperationsManagement/* |  |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/ResourceGroups/dağıtımlar/* |  |
-> | Microsoft. Storage/storageAccounts/listKeys/Action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/* |  |
+> | [Microsoft. ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/Virtuallarines/Extensions/* |  |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/Storageaccounts/ListKeys/Action | Depolama hesaplarının erişim anahtarlarını listeler. |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Virtual, Ines/Extensions/* |  |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/larines/Extensions/Write | Bir Azure Arc uzantısını yükleme veya güncelleştirme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Diagnosticsettings/* | Analiz Sunucusu için tanılama ayarını oluşturur, güncelleştirir veya okur |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/* |  |
+> | [Microsoft. OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/* |  |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Deployments/* |  |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/ListKeys/Action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -4157,18 +4217,18 @@ Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını d
 
 ### <a name="log-analytics-reader"></a>Log Analytics Okuyucusu
 
-Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm Azure kaynaklarında Azure tanılama 'nın yapılandırılmasını görüntüleme dahil olmak üzere izleme ayarlarını görüntüleyebilir.
+Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm Azure kaynaklarında Azure tanılama 'nın yapılandırılmasını görüntüleme dahil olmak üzere izleme ayarlarını görüntüleyebilir. [Daha fazla bilgi edinin](../azure-monitor/platform/manage-access.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
 > | */Read | Gizli dizileri hariç tüm türlerin kaynaklarını okuyun. |
-> | Microsoft. Operationalınsights/çalışma alanları/analiz/sorgu/eylem | Yeni altyapıyı kullanarak arama yapın. |
-> | Microsoft. Operationalınsights/çalışma alanları/arama/eylem | Arama sorgusu yürütür |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Analytics/Query/Action | Yeni altyapıyı kullanarak arama yapın. |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Search/Action | Arama sorgusu yürütür |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
-> | Microsoft. Operationalınsights/çalışma alanları/sharedKeys/Read | Çalışma alanının paylaşılan anahtarlarını alır. Bu anahtarlar, Microsoft operasyonel içgörüler aracılarını çalışma alanına bağlamak için kullanılır. |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/sharedKeys/Read | Çalışma alanının paylaşılan anahtarlarını alır. Bu anahtarlar, Microsoft operasyonel içgörüler aracılarını çalışma alanına bağlamak için kullanılır. |
 > | **Veri eylemleri** |  |
 > | *yok* |  |
 > | **NotDataActions** |  |
@@ -4203,22 +4263,22 @@ Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm 
 }
 ```
 
-## <a name="blockchain"></a>Blok zinciri
+## <a name="blockchain"></a>Blok Zinciri
 
 
 ### <a name="blockchain-member-node-access-preview"></a>Blok zinciri üye düğümü erişimi (Önizleme)
 
-Blok zinciri üye düğümlerine erişim sağlar
+Blok zinciri üye düğümlerine erişim sağlar [daha fazla bilgi](../blockchain/service/configure-aad.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Blockzincirini/blockchainMembers/transactionNodes/Read | Varolan blok zinciri üye Işlem düğümlerini alır veya listeler. |
+> | [Microsoft. Blockzinciri](resource-provider-operations.md#microsoftblockchain)/Blockchainmembers/transactionnodes/Read | Varolan blok zinciri üye Işlem düğümlerini alır veya listeler. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Blockzincirini/blockchainMembers/transactionNodes/Connect/ACTION | Bir blok zinciri üye Işlem düğümüne bağlanır. |
+> | [Microsoft. Blockzinciri](resource-provider-operations.md#microsoftblockchain)/Blockchainmembers/transactionnodes/Connect/Action | Bir blok zinciri üye Işlem düğümüne bağlanır. |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -4253,29 +4313,29 @@ Blok zinciri üye düğümlerine erişim sağlar
 
 ### <a name="cognitive-services-contributor"></a>Bilişsel hizmetler Katılımcısı
 
-Bilişsel hizmetler için anahtar oluşturma, okuma, güncelleştirme, silme ve yönetme olanağı sağlar.
+Bilişsel hizmetler için anahtar oluşturma, okuma, güncelleştirme, silme ve yönetme olanağı sağlar. [Daha fazla bilgi edinin](../cognitive-services/cognitive-services-virtual-networks.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Biliveservices/* |  |
-> | Microsoft. Features/Features/Read | Bir aboneliğin özelliklerini alır. |
-> | Microsoft. Özellikler/sağlayıcılar/Özellikler/okuma | Belirli bir kaynak sağlayıcısındaki bir aboneliğin özelliğini alır. |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Insights/diagnosticSettings/* | Analiz Sunucusu için tanılama ayarını oluşturur, güncelleştirir veya okur |
-> | Microsoft. Insights/logDefinitions/okuma | Günlük tanımlarını oku |
-> | Microsoft. Insights/MetricDefinitions/okuma | Ölçüm tanımlarını oku |
-> | Microsoft. Insights/ölçümler/okuma | Ölçümleri oku |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/dağıtımlar/işlemler/okuma | Dağıtım işlemlerini alır veya listeler. |
-> | Microsoft. resources/abonelikler/operationresults/Read | Abonelik işlem sonuçlarını alın. |
-> | Microsoft. resources/abonelikler/okuma | Aboneliklerin listesini alır. |
-> | Microsoft. resources/abonelikler/ResourceGroups/dağıtımlar/* |  |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/* |  |
+> | [Microsoft. Features](resource-provider-operations.md#microsoftfeatures)/Features/Read | Bir aboneliğin özelliklerini alır. |
+> | [Microsoft. Features](resource-provider-operations.md#microsoftfeatures)/Providers/Features/Read | Belirli bir kaynak sağlayıcısındaki bir aboneliğin özelliğini alır. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Diagnosticsettings/* | Analiz Sunucusu için tanılama ayarını oluşturur, güncelleştirir veya okur |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Logdefinitions/Read | Günlük tanımlarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/MetricDefinitions/Read | Ölçüm tanımlarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metrics/Read | Ölçümleri oku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/Operations/Read | Dağıtım işlemlerini alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/Read | Abonelik işlem sonuçlarını alın. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Aboneliklerin listesini alır. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Deployments/* |  |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -4335,7 +4395,7 @@ Bilişsel hizmetler verilerini okumanızı sağlar.
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Biliveservices/*/Read |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/*/Read |  |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -4365,29 +4425,29 @@ Bilişsel hizmetler verilerini okumanızı sağlar.
 
 ### <a name="cognitive-services-user"></a>Bilişsel hizmetler kullanıcısı
 
-Bilişsel hizmetler 'in anahtarlarını okuyup listelemenizi sağlar.
+Bilişsel hizmetler 'in anahtarlarını okuyup listelemenizi sağlar. [Daha fazla bilgi edinin](../cognitive-services/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Biliveservices/*/Read |  |
-> | Microsoft. Biliveservices/accounts/ListKeys/Action | Anahtarları Listele |
-> | Microsoft. Insights/alertRules/Read | Klasik ölçüm uyarısını okuyun |
-> | Microsoft. Insights/diagnosticSettings/Read | Kaynak tanılama ayarını oku |
-> | Microsoft. Insights/logDefinitions/okuma | Günlük tanımlarını oku |
-> | Microsoft. Insights/MetricDefinitions/okuma | Ölçüm tanımlarını oku |
-> | Microsoft. Insights/ölçümler/okuma | Ölçümleri oku |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/işlemler/okuma | Dağıtım işlemlerini alır veya listeler. |
-> | Microsoft. resources/abonelikler/operationresults/Read | Abonelik işlem sonuçlarını alın. |
-> | Microsoft. resources/abonelikler/okuma | Aboneliklerin listesini alır. |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/*/Read |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/ListKeys/Action | Anahtarları Listele |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/Read | Klasik ölçüm uyarısını okuyun |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Diagnosticsettings/Read | Kaynak tanılama ayarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Logdefinitions/Read | Günlük tanımlarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/MetricDefinitions/Read | Ölçüm tanımlarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metrics/Read | Ölçümleri oku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/Operations/Read | Dağıtım işlemlerini alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/Read | Abonelik işlem sonuçlarını alın. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Aboneliklerin listesini alır. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Biliveservices/* |  |
+> | [Microsoft. Biliveservices](resource-provider-operations.md#microsoftcognitiveservices)/* |  |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -4432,9 +4492,9 @@ Bilişsel hizmetler 'in anahtarlarını okuyup listelemenizi sağlar.
 ## <a name="mixed-reality"></a>Karma gerçeklik
 
 
-### <a name="spatial-anchors-account-contributor"></a>Uzamsal bağlayıcı hesabı Katılımcısı
+### <a name="remote-rendering-administrator"></a>Uzaktan Işleme Yöneticisi
 
-Hesabınızdaki uzamsal bağlantıları yönetmenizi sağlar, ancak onları silmez
+Kullanıcıya dönüştürme, oturum yönetme, Azure uzaktan Işleme için işleme ve tanılama özellikleri sağlar [daha fazla bilgi edinin](../remote-rendering/how-tos/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4444,12 +4504,114 @@ Hesabınızdaki uzamsal bağlantıları yönetmenizi sağlar, ancak onları silm
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/Create/ACTION | Uzamsal bağlayıcı oluşturma |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/Discovery/Read | Yakın uzamsal bağlayıcıları bul |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/Özellikler/okuma | Uzamsal Tutturucuların özelliklerini al |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/sorgu/okuma | Uzamsal bağlayıcıları bul |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/submitdiag/Read | Azure uzamsal bağlayıcı hizmeti 'nin kalitesini artırmaya yardımcı olmak için tanılama verileri gönderme |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/Write | Uzamsal Tutturucuların özelliklerini güncelleştirme |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/Remoterenderingaccounts/Convert/Action | Varlık dönüştürmeyi Başlat |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/Remoterenderingaccounts/Convert/Read | Varlık dönüştürme özelliklerini al |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/Remoterenderingaccounts/Convert/Delete | Varlık dönüştürmeyi durdur |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/Remoterenderingaccounts/managesessions/Read | Oturum özelliklerini al |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/Remoterenderingaccounts/managesessions/Action | Başlangıç oturumları |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/Remoterenderingaccounts/managesessions/Delete | Oturumları durdur |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/Remoterenderingaccounts/render/Read | Bir oturuma bağlanma |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/Remoterenderingaccounts/Diagnostic/Read | Uzaktan Işleme denetçisine bağlanma |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Provides user with conversion, manage session, rendering and diagnostics capabilities for Azure Remote Rendering",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/3df8b902-2a6f-47c7-8cc5-360e9b272a7e",
+  "name": "3df8b902-2a6f-47c7-8cc5-360e9b272a7e",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.MixedReality/RemoteRenderingAccounts/convert/action",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/convert/read",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/convert/delete",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/read",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/action",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/delete",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/render/read",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/diagnostic/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Remote Rendering Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="remote-rendering-client"></a>Uzaktan Işleme Istemcisi
+
+Azure uzaktan Işleme için Kullanıcı yönetme, işleme ve tanılama özellikleri sağlar. [Daha fazla bilgi edinin](../remote-rendering/how-tos/authentication.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Eylemler** |  |
+> | *yok* |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/Remoterenderingaccounts/managesessions/Read | Oturum özelliklerini al |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/Remoterenderingaccounts/managesessions/Action | Başlangıç oturumları |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/Remoterenderingaccounts/managesessions/Delete | Oturumları durdur |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/Remoterenderingaccounts/render/Read | Bir oturuma bağlanma |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/Remoterenderingaccounts/Diagnostic/Read | Uzaktan Işleme denetçisine bağlanma |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Provides user with manage session, rendering and diagnostics capabilities for Azure Remote Rendering.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/d39065c4-c120-43c9-ab0a-63eed9795f0a",
+  "name": "d39065c4-c120-43c9-ab0a-63eed9795f0a",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/read",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/action",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/delete",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/render/read",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/diagnostic/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Remote Rendering Client",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="spatial-anchors-account-contributor"></a>Uzamsal bağlayıcı hesabı Katılımcısı
+
+Hesabınızdaki uzamsal bağlantıları yönetmenizi sağlar, ancak onları silmez [daha fazla bilgi edinin](../spatial-anchors/concepts/authentication.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Eylemler** |  |
+> | *yok* |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Create/action | Uzamsal bağlayıcı oluşturma |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Discovery/Read | Yakın uzamsal bağlayıcıları bul |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Properties/Read | Uzamsal Tutturucuların özelliklerini al |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Query/Read | Uzamsal bağlayıcıları bul |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/submitdiag/Read | Azure uzamsal bağlayıcı hizmeti 'nin kalitesini artırmaya yardımcı olmak için tanılama verileri gönderme |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Write | Uzamsal Tutturucuların özelliklerini güncelleştirme |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -4484,7 +4646,7 @@ Hesabınızdaki uzamsal bağlantıları yönetmenizi sağlar, ancak onları silm
 
 ### <a name="spatial-anchors-account-owner"></a>Uzamsal bağlayıcı hesap sahibi
 
-Hesabınızdaki uzamsal bağlayıcıları, silme dahil olmak üzere yönetmenizi sağlar
+Hesabınızdaki uzamsal bağlantıları yönetmenizi sağlar, böylece bunları silme [hakkında daha fazla bilgi edinin](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4494,13 +4656,13 @@ Hesabınızdaki uzamsal bağlayıcıları, silme dahil olmak üzere yönetmenizi
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/Create/ACTION | Uzamsal bağlayıcı oluşturma |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/Delete | Uzamsal bağlayıcıları Sil |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/Discovery/Read | Yakın uzamsal bağlayıcıları bul |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/Özellikler/okuma | Uzamsal Tutturucuların özelliklerini al |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/sorgu/okuma | Uzamsal bağlayıcıları bul |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/submitdiag/Read | Azure uzamsal bağlayıcı hizmeti 'nin kalitesini artırmaya yardımcı olmak için tanılama verileri gönderme |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/Write | Uzamsal Tutturucuların özelliklerini güncelleştirme |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Create/action | Uzamsal bağlayıcı oluşturma |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Delete | Uzamsal bağlayıcıları Sil |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Discovery/Read | Yakın uzamsal bağlayıcıları bul |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Properties/Read | Uzamsal Tutturucuların özelliklerini al |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Query/Read | Uzamsal bağlayıcıları bul |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/submitdiag/Read | Azure uzamsal bağlayıcı hizmeti 'nin kalitesini artırmaya yardımcı olmak için tanılama verileri gönderme |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Write | Uzamsal Tutturucuların özelliklerini güncelleştirme |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -4536,7 +4698,7 @@ Hesabınızdaki uzamsal bağlayıcıları, silme dahil olmak üzere yönetmenizi
 
 ### <a name="spatial-anchors-account-reader"></a>Uzamsal bağlayıcı hesap okuyucu
 
-Hesabınızdaki uzamsal Tutturucuların özelliklerini bulmanıza ve okumanızı sağlar
+Hesabınızdaki uzamsal Tutturucuların özelliklerini bulmanıza ve okumanızı sağlar [daha fazla bilgi edinin](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4546,10 +4708,10 @@ Hesabınızdaki uzamsal Tutturucuların özelliklerini bulmanıza ve okumanızı
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/Discovery/Read | Yakın uzamsal bağlayıcıları bul |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/Özellikler/okuma | Uzamsal Tutturucuların özelliklerini al |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/sorgu/okuma | Uzamsal bağlayıcıları bul |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/submitdiag/Read | Azure uzamsal bağlayıcı hizmeti 'nin kalitesini artırmaya yardımcı olmak için tanılama verileri gönderme |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Discovery/Read | Yakın uzamsal bağlayıcıları bul |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Properties/Read | Uzamsal Tutturucuların özelliklerini al |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Query/Read | Uzamsal bağlayıcıları bul |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/submitdiag/Read | Azure uzamsal bağlayıcı hizmeti 'nin kalitesini artırmaya yardımcı olmak için tanılama verileri gönderme |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -4585,19 +4747,19 @@ Hesabınızdaki uzamsal Tutturucuların özelliklerini bulmanıza ve okumanızı
 
 ### <a name="api-management-service-contributor"></a>API Management hizmet Katılımcısı
 
-Hizmeti ve API 'Leri yönetebilir
+Hizmeti ve API 'Leri yönetebilir [daha fazla bilgi](../api-management/api-management-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Apimanan/hizmet/* | API Management hizmeti oluşturma ve yönetme |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Apimanan](resource-provider-operations.md#microsoftapimanagement)/Service/* | API Management hizmeti oluşturma ve yönetme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -4637,29 +4799,29 @@ Hizmeti ve API 'Leri yönetebilir
 
 ### <a name="api-management-service-operator-role"></a>Hizmet Işletmeni rolü API Management
 
-Hizmeti yönetebilir, ancak API 'Leri yönetemez
+Hizmeti yönetebilir, ancak API 'Leri yönetebilir [daha fazla bilgi edinin](../api-management/api-management-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Apimanayönetimi/hizmeti/*/Read | API Management hizmeti örneklerini oku |
-> | Microsoft. Apimanayönetimi/hizmeti/yedekleme/eylem | API Management hizmetini Kullanıcı tarafından sağlanmış bir depolama hesabında belirtilen kapsayıcıya Yedekle |
-> | Microsoft. Apimanayönetimi/hizmeti/silme | API Management hizmeti örneğini Sil |
-> | Microsoft. Apimanayönetimi/hizmet/managedağıtımlar/eylem | SKU/birimleri değiştirme, API Management hizmetinin bölgesel dağıtımlarını ekleme/kaldırma |
-> | Microsoft. Apimanayönetimi/hizmeti/okuma | API Management hizmet örneği için meta verileri oku |
-> | Microsoft. Apimanayönetimi/hizmeti/geri yükleme/eylem | API Management hizmetini Kullanıcı tarafından sağlanmış bir depolama hesabındaki belirtilen kapsayıcıdan geri yükle |
-> | Microsoft. Apimanayönetimi/hizmet/updatecertificate/Action | API Management hizmeti için TLS/SSL sertifikası yükleme |
-> | Microsoft. Apimanaya/Service/updatehostname/Action | API Management hizmeti için özel etki alanı adlarını kurma, güncelleştirme veya kaldırma |
-> | Microsoft. Apimanayönetimi/hizmeti/yazma | API Management hizmet örneği oluştur veya güncelleştir |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Apimanan](resource-provider-operations.md#microsoftapimanagement)/Service/*/Read | API Management hizmeti örneklerini oku |
+> | [Microsoft. Apimana,](resource-provider-operations.md#microsoftapimanagement)/Service/Backup/Action | API Management hizmetini Kullanıcı tarafından sağlanmış bir depolama hesabında belirtilen kapsayıcıya Yedekle |
+> | [Microsoft. Apimana,](resource-provider-operations.md#microsoftapimanagement)/Service/Delete | API Management hizmeti örneğini Sil |
+> | [Microsoft. Apimana,](resource-provider-operations.md#microsoftapimanagement)/Service/managedeployments/Action | SKU/birimleri değiştirme, API Management hizmetinin bölgesel dağıtımlarını ekleme/kaldırma |
+> | [Microsoft. Apimanaya](resource-provider-operations.md#microsoftapimanagement)/Service/Read | API Management hizmet örneği için meta verileri oku |
+> | [Microsoft. Apimana,](resource-provider-operations.md#microsoftapimanagement)/Service/restore/Action | API Management hizmetini Kullanıcı tarafından sağlanmış bir depolama hesabındaki belirtilen kapsayıcıdan geri yükle |
+> | [Microsoft. Apimana,](resource-provider-operations.md#microsoftapimanagement)/Service/updatecertificate/Action | API Management hizmeti için TLS/SSL sertifikası yükleme |
+> | [Microsoft. Apimana,](resource-provider-operations.md#microsoftapimanagement)/Service/updatehostname/Action | API Management hizmeti için özel etki alanı adlarını kurma, güncelleştirme veya kaldırma |
+> | [Microsoft. Apimanaya](resource-provider-operations.md#microsoftapimanagement)/Service/Write | API Management hizmet örneği oluştur veya güncelleştir |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
-> | Microsoft. Apimanayönetimi/hizmeti/kullanıcıları/anahtarları/okuma | Kullanıcıyla ilişkili anahtarları al |
+> | [Microsoft. Apimanami](resource-provider-operations.md#microsoftapimanagement)/Service/Users/Keys/Read | Kullanıcıyla ilişkili anahtarları al |
 > | **Veri eylemleri** |  |
 > | *yok* |  |
 > | **NotDataActions** |  |
@@ -4707,22 +4869,22 @@ Hizmeti yönetebilir, ancak API 'Leri yönetemez
 
 ### <a name="api-management-service-reader-role"></a>API Management hizmeti okuyucu rolü
 
-Hizmet ve API 'lere salt okuma erişimi
+Hizmet ve API 'lere salt okuma erişimi [daha fazla bilgi](../api-management/api-management-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Apimanayönetimi/hizmeti/*/Read | API Management hizmeti örneklerini oku |
-> | Microsoft. Apimanayönetimi/hizmeti/okuma | API Management hizmet örneği için meta verileri oku |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Apimanan](resource-provider-operations.md#microsoftapimanagement)/Service/*/Read | API Management hizmeti örneklerini oku |
+> | [Microsoft. Apimanaya](resource-provider-operations.md#microsoftapimanagement)/Service/Read | API Management hizmet örneği için meta verileri oku |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
-> | Microsoft. Apimanayönetimi/hizmeti/kullanıcıları/anahtarları/okuma | Kullanıcıyla ilişkili anahtarları al |
+> | [Microsoft. Apimanami](resource-provider-operations.md#microsoftapimanagement)/Service/Users/Keys/Read | Kullanıcıyla ilişkili anahtarları al |
 > | **Veri eylemleri** |  |
 > | *yok* |  |
 > | **NotDataActions** |  |
@@ -4763,7 +4925,7 @@ Hizmet ve API 'lere salt okuma erişimi
 
 ### <a name="app-configuration-data-owner"></a>Uygulama yapılandırma veri sahibi
 
-Uygulama yapılandırma verilerine tam erişim sağlar.
+Uygulama yapılandırma verilerine tam erişim sağlar. [Daha fazla bilgi edinin](../azure-app-configuration/concept-enable-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4773,9 +4935,9 @@ Uygulama yapılandırma verilerine tam erişim sağlar.
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. AppConfiguration/Configurationmağazaları/*/Read |  |
-> | Microsoft. AppConfiguration/Configurationmağazaları/*/Write |  |
-> | Microsoft. AppConfiguration/Configurationmağazaların/*/Delete |  |
+> | [Microsoft. AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/Configurationstores/*/Read |  |
+> | [Microsoft. AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/Configurationstores/*/Write |  |
+> | [Microsoft. AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/Configurationstores/*/Delete |  |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -4807,7 +4969,7 @@ Uygulama yapılandırma verilerine tam erişim sağlar.
 
 ### <a name="app-configuration-data-reader"></a>Uygulama yapılandırma veri okuyucusu
 
-Uygulama yapılandırma verilerine okuma erişimi sağlar.
+Uygulama yapılandırma verilerine okuma erişimi sağlar. [Daha fazla bilgi edinin](../azure-app-configuration/concept-enable-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4817,7 +4979,7 @@ Uygulama yapılandırma verilerine okuma erişimi sağlar.
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. AppConfiguration/Configurationmağazaları/*/Read |  |
+> | [Microsoft. AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/Configurationstores/*/Read |  |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -4847,17 +5009,17 @@ Uygulama yapılandırma verilerine okuma erişimi sağlar.
 
 ### <a name="azure-service-bus-data-owner"></a>Azure Service Bus veri sahibi
 
-Azure Service Bus kaynaklara tam erişim sağlar.
+Azure Service Bus kaynaklara tam erişim sağlar. [Daha fazla bilgi edinin](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. ServiceBus/* |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/* |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. ServiceBus/* |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/* |  |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -4889,19 +5051,19 @@ Azure Service Bus kaynaklara tam erişim sağlar.
 
 ### <a name="azure-service-bus-data-receiver"></a>Azure Service Bus veri alıcısı
 
-Azure Service Bus kaynaklarına erişim izni verir.
+Azure Service Bus kaynaklarına erişim izni verir. [Daha fazla bilgi edinin](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. ServiceBus/*/Queues/Read |  |
-> | Microsoft. ServiceBus/*/topics/Read |  |
-> | Microsoft. ServiceBus/*/topics/Subscriptions/Read |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/Queues/Read |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/Read |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/Subscriptions/Read |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. ServiceBus/*/Receive/Action |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/Receive/Action |  |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -4935,19 +5097,19 @@ Azure Service Bus kaynaklarına erişim izni verir.
 
 ### <a name="azure-service-bus-data-sender"></a>Veri Göndericisini Azure Service Bus
 
-Azure Service Bus kaynaklarına erişim izni verir.
+Azure Service Bus kaynaklarına erişim izni verir. [Daha fazla bilgi edinin](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. ServiceBus/*/Queues/Read |  |
-> | Microsoft. ServiceBus/*/topics/Read |  |
-> | Microsoft. ServiceBus/*/topics/Subscriptions/Read |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/Queues/Read |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/Read |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/Subscriptions/Read |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. ServiceBus/*/Send/Action |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/Send/Action |  |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -4987,9 +5149,9 @@ Azure Stack kayıtlarını yönetmenizi sağlar.
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. AzureStack/kayıtlar/ürünler/*/Action |  |
-> | Microsoft. AzureStack/kayıtlar/ürünler/okuma | Azure Stack Market ürününün özelliklerini alır |
-> | Microsoft. AzureStack/kayıtlar/okuma | Azure Stack kaydın özelliklerini alır |
+> | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/Registrations/Products/*/Action |  |
+> | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/Registrations/Products/Read | Azure Stack Market ürününün özelliklerini alır |
+> | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/Registrations/Read | Azure Stack kaydın özelliklerini alır |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -5025,21 +5187,21 @@ Azure Stack kayıtlarını yönetmenizi sağlar.
 
 ### <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription Katılımcısı
 
-EventGrid olay aboneliği işlemlerini yönetmenizi sağlar.
+EventGrid olay aboneliği işlemlerini yönetmenizi sağlar. [Daha fazla bilgi edinin](../event-grid/security-authorization.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. EventGrid/Eventabonelikleriniz/* |  |
-> | Microsoft. EventGrid/topicTypes/Eventaboneliklerde/okunan | Küresel olay aboneliklerini konu türüne göre Listele |
-> | Microsoft. EventGrid/Locations/Eventaboneliklerde/okunan | Bölgesel olay aboneliklerini listeleme |
-> | Microsoft. EventGrid/Locations/topicTypes/Eventabonelikleri/okuma | TopicType 'a göre bölgesel olay aboneliklerini listeleyin |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/EventSubscriptions/* |  |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/Topictypes/EventSubscriptions/Read | Küresel olay aboneliklerini konu türüne göre Listele |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/Locations/EventSubscriptions/Read | Bölgesel olay aboneliklerini listeleme |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/Locations/topictypes/EventSubscriptions/Read | TopicType 'a göre bölgesel olay aboneliklerini listeleyin |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -5081,18 +5243,18 @@ EventGrid olay aboneliği işlemlerini yönetmenizi sağlar.
 
 ### <a name="eventgrid-eventsubscription-reader"></a>EventGrid EventSubscription okuyucusu
 
-EventGrid olay aboneliklerini okumanızı sağlar.
+EventGrid olay aboneliklerini okumanızı sağlar. [Daha fazla bilgi edinin](../event-grid/security-authorization.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. EventGrid/Eventaboneliklerde/okunan | Bir eventSubscription okuma |
-> | Microsoft. EventGrid/topicTypes/Eventaboneliklerde/okunan | Küresel olay aboneliklerini konu türüne göre Listele |
-> | Microsoft. EventGrid/Locations/Eventaboneliklerde/okunan | Bölgesel olay aboneliklerini listeleme |
-> | Microsoft. EventGrid/Locations/topicTypes/Eventabonelikleri/okuma | TopicType 'a göre bölgesel olay aboneliklerini listeleyin |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/EventSubscriptions/Read | Bir eventSubscription okuma |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/Topictypes/EventSubscriptions/Read | Küresel olay aboneliklerini konu türüne göre Listele |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/Locations/EventSubscriptions/Read | Bölgesel olay aboneliklerini listeleme |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/Locations/topictypes/EventSubscriptions/Read | TopicType 'a göre bölgesel olay aboneliklerini listeleyin |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -5129,6 +5291,260 @@ EventGrid olay aboneliklerini okumanızı sağlar.
 }
 ```
 
+### <a name="fhir-data-contributor"></a>FHıR verileri Katılımcısı
+
+Rol, Kullanıcı veya sorumlunun FHıR verilerine tam erişimini sağlar [daha fazla bilgi edinin](../healthcare-apis/configure-azure-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Eylemler** |  |
+> | *yok* |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | Microsoft. Healthgelişme API 'leri/Hizmetleri/fhır/kaynaklar/* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Role allows user or principal full access to FHIR Data",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/5a1fc7df-4bf1-4951-a576-89034ee01acd",
+  "name": "5a1fc7df-4bf1-4951-a576-89034ee01acd",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.HealthcareApis/services/fhir/resources/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "FHIR Data Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="fhir-data-exporter"></a>FHıR veri aktarıcı
+
+Rol, kullanıcının veya sorumlunun FHıR verilerini okumasına ve dışa almasına izin verir [daha fazla bilgi](../healthcare-apis/configure-azure-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Eylemler** |  |
+> | *yok* |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | Microsoft. Healthgelişme API 'leri/Hizmetleri/fhır/kaynaklar/okuma | FHıR kaynaklarını okuyun (arama ve sürümü tutulan geçmişi içerir).  |
+> | Microsoft. Healthgelişme API 'leri/Hizmetleri/fhır/kaynaklar/dışarı aktarma/eylem | Dışarı aktarma işlemi ($export). |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Role allows user or principal to read and export FHIR Data",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/3db33094-8700-4567-8da5-1501d4e7e843",
+  "name": "3db33094-8700-4567-8da5-1501d4e7e843",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.HealthcareApis/services/fhir/resources/read",
+        "Microsoft.HealthcareApis/services/fhir/resources/export/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "FHIR Data Exporter",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="fhir-data-reader"></a>FHıR veri okuyucu
+
+Rol, kullanıcının veya sorumlunun FHıR verilerini okumasına izin verir [daha fazla bilgi edinin](../healthcare-apis/configure-azure-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Eylemler** |  |
+> | *yok* |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | Microsoft. Healthgelişme API 'leri/Hizmetleri/fhır/kaynaklar/okuma | FHıR kaynaklarını okuyun (arama ve sürümü tutulan geçmişi içerir).  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Role allows user or principal to read FHIR Data",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4c8d0bbc-75d3-4935-991f-5f3c56d81508",
+  "name": "4c8d0bbc-75d3-4935-991f-5f3c56d81508",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.HealthcareApis/services/fhir/resources/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "FHIR Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="fhir-data-writer"></a>FHıR veri yazıcısı
+
+Rol, kullanıcının veya sorumlunun FHıR verilerini okumasına ve yazmasına izin verir [daha fazla bilgi edinin](../healthcare-apis/configure-azure-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Eylemler** |  |
+> | *yok* |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | Microsoft. Healthgelişme API 'leri/Hizmetleri/fhır/kaynaklar/* |  |
+> | **NotDataActions** |  |
+> | Microsoft. Healthgelişme API 'leri/Hizmetleri/fhır/kaynaklar/hardDelete/ACTION | Sabit silme (sürüm geçmişi dahil). |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Role allows user or principal to read and write FHIR Data",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/3f88fce4-5892-4214-ae73-ba5294559913",
+  "name": "3f88fce4-5892-4214-ae73-ba5294559913",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.HealthcareApis/services/fhir/resources/*"
+      ],
+      "notDataActions": [
+        "Microsoft.HealthcareApis/services/fhir/resources/hardDelete/action"
+      ]
+    }
+  ],
+  "roleName": "FHIR Data Writer",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="integration-service-environment-contributor"></a>Katkıda bulunan Tümleştirme Hizmeti Ortamı
+
+Tümleştirme hizmeti ortamlarını yönetmenize izin verir, ancak bunlara erişimi kalmaz. [Daha fazla bilgi edinin](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Eylemler** |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/ıntegrationserviceenvironments/* |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage integration service environments, but not access to them.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/a41e2c5b-bd99-4a07-88f4-9bf657a760b8",
+  "name": "a41e2c5b-bd99-4a07-88f4-9bf657a760b8",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Support/*",
+        "Microsoft.Logic/integrationServiceEnvironments/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Integration Service Environment Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="integration-service-environment-developer"></a>Tümleştirme Hizmeti Ortamı geliştirici
+
+Geliştiricilerin, tümleştirme hizmeti ortamlarında iş akışları, tümleştirme hesapları ve API bağlantıları oluşturmalarına ve güncelleştirmesine izin verir. [Daha fazla bilgi edinin](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Eylemler** |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/ıntegrationserviceenvironments/Read | Tümleştirme hizmeti ortamını okur. |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/ıntegrationserviceenvironments/Join/Action | Tümleştirme Hizmeti Ortamı birleştirir. |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows developers to create and update workflows, integration accounts and API connections in integration service environments.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/c7aa55d3-1abb-444a-a5ca-5e51e485d6ec",
+  "name": "c7aa55d3-1abb-444a-a5ca-5e51e485d6ec",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Support/*",
+        "Microsoft.Logic/integrationServiceEnvironments/read",
+        "Microsoft.Logic/integrationServiceEnvironments/join/action"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Integration Service Environment Developer",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="intelligent-systems-account-contributor"></a>Intelligent Systems hesabı Katılımcısı
 
 Akıllı sistem hesaplarını yönetmenizi sağlar ancak onlara yönelik erişimleri vermez.
@@ -5137,13 +5553,13 @@ Akıllı sistem hesaplarını yönetmenizi sağlar ancak onlara yönelik erişim
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
 > | Microsoft. ıntelligentsystems/accounts/* | Akıllı sistem hesapları oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -5183,33 +5599,33 @@ Akıllı sistem hesaplarını yönetmenizi sağlar ancak onlara yönelik erişim
 
 ### <a name="logic-app-contributor"></a>Mantıksal uygulama Katılımcısı
 
-Mantıksal uygulamaları yönetmenize izin verir, ancak bunlara erişimi değiştirmeyin.
+Mantıksal uygulamaları yönetmenize izin verir, ancak bunlara erişimi değiştirmeyin. [Daha fazla bilgi edinin](../logic-apps/logic-apps-securing-a-logic-app.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. ClassicStorage/storageAccounts/listKeys/Action | Depolama hesaplarının erişim anahtarlarını listeler. |
-> | Microsoft. ClassicStorage/storageAccounts/Read | Verilen hesaba sahip depolama hesabını döndürün. |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Insights/metricAlerts/* |  |
-> | Microsoft. Insights/diagnosticSettings/* | Analiz Sunucusu için tanılama ayarını oluşturur, güncelleştirir veya okur |
-> | Microsoft. Insights/logdefinitions/* | Bu izin, Portal aracılığıyla etkinlik günlüklerine erişmesi gereken kullanıcılar için gereklidir. Etkinlik günlüğündeki günlük kategorilerini listeleyin. |
-> | Microsoft. Insights/metricDefinitions/* | Ölçüm tanımlarını oku (bir kaynak için kullanılabilen ölçüm türlerinin listesi). |
-> | Microsoft. Logic/* | Logic Apps kaynaklarını yönetir. |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/operationresults/Read | Abonelik işlem sonuçlarını alın. |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. Storage/storageAccounts/ListKeys/Action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
-> | Microsoft. Storage/storageAccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
-> | Microsoft. Web/Connectiongateway/* | Bir bağlantı ağ geçidi oluşturun ve yönetir. |
-> | Microsoft. Web/Connections/* | Bir bağlantı oluşturun ve yönetir. |
-> | Microsoft. Web/Customapsıs/* | Özel bir API oluşturur ve yönetir. |
-> | Microsoft. Web/Sunucugrupları/JOIN/Action |  |
-> | Microsoft. Web/Sunucugrupları/okuma | App Service planında özellikleri al |
-> | Microsoft. Web/Sites/Functions/Listgizlilikler/Action | Işlev gizli dizileri listeleyin. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/Storageaccounts/ListKeys/Action | Depolama hesaplarının erişim anahtarlarını listeler. |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/Storageaccounts/Read | Verilen hesaba sahip depolama hesabını döndürün. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metricalerts/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Diagnosticsettings/* | Analiz Sunucusu için tanılama ayarını oluşturur, güncelleştirir veya okur |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/logdefinitions/* | Bu izin, Portal aracılığıyla etkinlik günlüklerine erişmesi gereken kullanıcılar için gereklidir. Etkinlik günlüğündeki günlük kategorilerini listeleyin. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/MetricDefinitions/* | Ölçüm tanımlarını oku (bir kaynak için kullanılabilen ölçüm türlerinin listesi). |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/* | Logic Apps kaynaklarını yönetir. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/Read | Abonelik işlem sonuçlarını alın. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/ListKeys/Action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Connectiongateways/* | Bir bağlantı ağ geçidi oluşturun ve yönetir. |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Connections/* | Bir bağlantı oluşturun ve yönetir. |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/customApis/* | Özel bir API oluşturur ve yönetir. |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Serverfarms/Join/Action |  |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Serverfarms/Read | App Service planında özellikleri al |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Sites/Functions/listsecrets/Action | Işlev gizli dizileri listeleyin. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -5263,29 +5679,29 @@ Mantıksal uygulamaları yönetmenize izin verir, ancak bunlara erişimi değiş
 
 ### <a name="logic-app-operator"></a>Logic App Işleci
 
-Logic Apps 'i okumanızı, etkinleştirmenizi ve devre dışı bırakmanızı sağlar, ancak bunları düzenleyemez veya güncelleştiremez.
+Logic Apps 'i okumanızı, etkinleştirmenizi ve devre dışı bırakmanızı sağlar, ancak bunları düzenleyemez veya güncelleştiremez. [Daha fazla bilgi edinin](../logic-apps/logic-apps-securing-a-logic-app.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/*/Read | Öngörüler uyarı kurallarını okuyun |
-> | Microsoft. Insights/metricAlerts/*/Read |  |
-> | Microsoft. Insights/diagnosticSettings/*/Read | Logic Apps için tanılama ayarlarını alır |
-> | Microsoft. Insights/metricDefinitions/*/Read | Logic Apps için kullanılabilir ölçümleri alır. |
-> | Microsoft. Logic/*/Read | Logic Apps kaynaklarını okur. |
-> | Microsoft. Logic/iş akışları/devre dışı bırakma/eylem | İş akışını devre dışı bırakır. |
-> | Microsoft. Logic/iş akışları/etkinleştir/eylem | İş akışını izin vermez. |
-> | Microsoft. Logic/iş akışları/doğrula/eylem | İş akışını doğrular. |
-> | Microsoft. resources/dağıtımlar/işlemler/okuma | Dağıtım işlemlerini alır veya listeler. |
-> | Microsoft. resources/abonelikler/operationresults/Read | Abonelik işlem sonuçlarını alın. |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
-> | Microsoft. Web/Connectiongateway/*/Read | Bağlantı ağ geçitlerini okuyun. |
-> | Microsoft. Web/Connections/*/Read | Bağlantıları oku. |
-> | Microsoft. Web/Customapsıs/*/Read | Özel API 'YI okuyun. |
-> | Microsoft. Web/Sunucugrupları/okuma | App Service planında özellikleri al |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/*/Read | Öngörüler uyarı kurallarını okuyun |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metricalerts/*/Read |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Diagnosticsettings/*/Read | Logic Apps için tanılama ayarlarını alır |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/MetricDefinitions/*/Read | Logic Apps için kullanılabilir ölçümleri alır. |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/*/Read | Logic Apps kaynaklarını okur. |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/Workflows/Disable/Action | İş akışını devre dışı bırakır. |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/Workflows/Enable/Action | İş akışını izin vermez. |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/Workflows/Validate/Action | İş akışını doğrular. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/Operations/Read | Dağıtım işlemlerini alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/Read | Abonelik işlem sonuçlarını alın. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Connectiongateways/*/Read | Bağlantı ağ geçitlerini okuyun. |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Connections/*/Read | Bağlantıları oku. |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/customApis/*/Read | Özel API 'YI okuyun. |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Serverfarms/Read | App Service planında özellikleri al |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -5338,20 +5754,20 @@ Logic Apps 'i okumanızı, etkinleştirmenizi ve devre dışı bırakmanızı sa
 
 ### <a name="managed-identity-contributor"></a>Yönetilen kimlik Katılımcısı
 
-Kullanıcı tarafından atanan kimlik oluşturma, okuma, güncelleştirme ve silme
+Kullanıcı tarafından atanan kimlik oluşturma, okuma, güncelleştirme ve silme [daha fazla bilgi](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Managedıdentity/Useratandıdentities/Read | Mevcut kullanıcı tarafından atanan kimliği alır |
-> | Microsoft. Managedıdentity/Useratandıdentities/Write | Yeni Kullanıcı tarafından atanmış bir kimlik oluşturur veya var olan bir kullanıcı tarafından atanan kimlikle ilişkili etiketleri güncelleştirir |
-> | Microsoft. Managedıdentity/Useratandıdentities/Delete | Mevcut kullanıcı tarafından atanan bir kimliği siler |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Managedıdentity](resource-provider-operations.md#microsoftmanagedidentity)/Useratandıdentitıes/Read | Mevcut kullanıcı tarafından atanan kimliği alır |
+> | [Microsoft. Managedıdentity](resource-provider-operations.md#microsoftmanagedidentity)/Useratandıdentitıes/Write | Yeni Kullanıcı tarafından atanmış bir kimlik oluşturur veya var olan bir kullanıcı tarafından atanan kimlikle ilişkili etiketleri güncelleştirir |
+> | [Microsoft. Managedıdentity](resource-provider-operations.md#microsoftmanagedidentity)/Useratandıdentitıes/Delete | Mevcut kullanıcı tarafından atanan bir kimliği siler |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -5392,19 +5808,19 @@ Kullanıcı tarafından atanan kimlik oluşturma, okuma, güncelleştirme ve sil
 
 ### <a name="managed-identity-operator"></a>Yönetilen kimlik Işleci
 
-Kullanıcı tarafından atanan kimliği okuma ve atama
+Kullanıcı tarafından atanan kimliği okuma ve atama [daha fazla bilgi](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Managedıdentity/Useratandıdentities/*/Read |  |
-> | Microsoft. Managedıdentity/Useratandıdentities/*/atama/Action |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Managedıdentity](resource-provider-operations.md#microsoftmanagedidentity)/Useratandıdentities/*/Read |  |
+> | [Microsoft. Managedıdentity](resource-provider-operations.md#microsoftmanagedidentity)/Useratandıdentitıes/*/atama/Action |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -5447,26 +5863,26 @@ Kullanıcı tarafından atanan kimliği okuma ve atama
 
 ### <a name="azure-sentinel-contributor"></a>Azure Sentinel Katılımcısı
 
-Azure Sentinel Katılımcısı
+Azure Sentinel katılımcısı [daha fazla bilgi](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Securityınsights/* |  |
-> | Microsoft. Operationalınsights/çalışma alanları/analiz/sorgu/eylem | Yeni altyapıyı kullanarak arama yapın. |
-> | Microsoft. Operationalınsights/çalışma alanları/*/Read | Log Analytics verilerini görüntüleme |
-> | Microsoft. Operationalınsights/çalışma alanları/Savedaramalar/* |  |
-> | Microsoft. OperationsManagement/Solutions/Read | OMS çözümünü çıkmadan al |
-> | Microsoft. Operationalınsights/çalışma alanları/sorgu/okuma | Çalışma alanındaki veriler üzerinde sorgu çalıştırma |
-> | Microsoft. Operationalınsights/çalışma alanları/sorgu/*/okuma |  |
-> | Microsoft. Operationalınsights/çalışma alanları/veri kaynakları/okuma | Bir çalışma alanı altındaki veri kaynaklarını alın. |
-> | Microsoft. Insights/çalışma kitapları/* |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/* |  |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Analytics/Query/Action | Yeni altyapıyı kullanarak arama yapın. |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Log Analytics verilerini görüntüleme |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/savedSearches/* |  |
+> | [Microsoft. OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/Solutions/Read | OMS çözümünü çıkmadan al |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Query/Read | Çalışma alanındaki veriler üzerinde sorgu çalıştırma |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Query/*/Read |  |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/DataSources/Read | Bir çalışma alanı altındaki veri kaynaklarını alın. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/* |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -5513,28 +5929,28 @@ Azure Sentinel Katılımcısı
 
 ### <a name="azure-sentinel-reader"></a>Azure Sentinel okuyucusu
 
-Azure Sentinel okuyucusu
+Azure Sentinel okuyucu [daha fazla bilgi](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Securityınsights/*/Read |  |
-> | Microsoft. Securityınsights/dataConnectorsCheckRequirements/Action | Kullanıcı yetkilendirmesini ve lisansını denetle |
-> | Microsoft. Operationalınsights/çalışma alanları/analiz/sorgu/eylem | Yeni altyapıyı kullanarak arama yapın. |
-> | Microsoft. Operationalınsights/çalışma alanları/*/Read | Log Analytics verilerini görüntüleme |
-> | Microsoft. Operationalınsights/çalışma alanları/LinkedServices/okuma | Belirtilen çalışma alanı altındaki bağlı hizmetleri alın. |
-> | Microsoft. Operationalınsights/çalışma alanları/Savedaramalar/okuma | Kayıtlı bir arama sorgusu alır |
-> | Microsoft. OperationsManagement/Solutions/Read | OMS çözümünü çıkmadan al |
-> | Microsoft. Operationalınsights/çalışma alanları/sorgu/okuma | Çalışma alanındaki veriler üzerinde sorgu çalıştırma |
-> | Microsoft. Operationalınsights/çalışma alanları/sorgu/*/okuma |  |
-> | Microsoft. Operationalınsights/çalışma alanları/veri kaynakları/okuma | Bir çalışma alanı altındaki veri kaynaklarını alın. |
-> | Microsoft. Insights/çalışma kitapları/okuma | Çalışma kitabını okuma |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/*/Read |  |
+> | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/Dataconnectorscheckgereksinims/Action | Kullanıcı yetkilendirmesini ve lisansını denetle |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Analytics/Query/Action | Yeni altyapıyı kullanarak arama yapın. |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Log Analytics verilerini görüntüleme |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/LinkedServices/Read | Belirtilen çalışma alanı altındaki bağlı hizmetleri alın. |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/savedSearches/Read | Kayıtlı bir arama sorgusu alır |
+> | [Microsoft. OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/Solutions/Read | OMS çözümünü çıkmadan al |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Query/Read | Çalışma alanındaki veriler üzerinde sorgu çalıştırma |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Query/*/Read |  |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/DataSources/Read | Bir çalışma alanı altındaki veri kaynaklarını alın. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/Read | Çalışma kitabını okuma |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -5583,30 +5999,30 @@ Azure Sentinel okuyucusu
 
 ### <a name="azure-sentinel-responder"></a>Azure Sentinel Yanıtlayıcısı
 
-Azure Sentinel Yanıtlayıcısı
+Azure Sentinel Yanıtlayıcı [daha fazla bilgi](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Securityınsights/*/Read |  |
-> | Microsoft. Securityınsights/dataConnectorsCheckRequirements/Action | Kullanıcı yetkilendirmesini ve lisansını denetle |
-> | Microsoft. Securityınsights/Cases/* |  |
-> | Microsoft. Securityınsights/olaylar/* |  |
-> | Microsoft. Operationalınsights/çalışma alanları/analiz/sorgu/eylem | Yeni altyapıyı kullanarak arama yapın. |
-> | Microsoft. Operationalınsights/çalışma alanları/*/Read | Log Analytics verilerini görüntüleme |
-> | Microsoft. Operationalınsights/çalışma alanları/veri kaynakları/okuma | Bir çalışma alanı altındaki veri kaynaklarını alın. |
-> | Microsoft. Operationalınsights/çalışma alanları/Savedaramalar/okuma | Kayıtlı bir arama sorgusu alır |
-> | Microsoft. OperationsManagement/Solutions/Read | OMS çözümünü çıkmadan al |
-> | Microsoft. Operationalınsights/çalışma alanları/sorgu/okuma | Çalışma alanındaki veriler üzerinde sorgu çalıştırma |
-> | Microsoft. Operationalınsights/çalışma alanları/sorgu/*/okuma |  |
-> | Microsoft. Operationalınsights/çalışma alanları/veri kaynakları/okuma | Bir çalışma alanı altındaki veri kaynaklarını alın. |
-> | Microsoft. Insights/çalışma kitapları/okuma | Çalışma kitabını okuma |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/*/Read |  |
+> | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/Dataconnectorscheckgereksinims/Action | Kullanıcı yetkilendirmesini ve lisansını denetle |
+> | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/Cases/* |  |
+> | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/* |  |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Analytics/Query/Action | Yeni altyapıyı kullanarak arama yapın. |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Log Analytics verilerini görüntüleme |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/DataSources/Read | Bir çalışma alanı altındaki veri kaynaklarını alın. |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/savedSearches/Read | Kayıtlı bir arama sorgusu alır |
+> | [Microsoft. OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/Solutions/Read | OMS çözümünü çıkmadan al |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Query/Read | Çalışma alanındaki veriler üzerinde sorgu çalıştırma |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Query/*/Read |  |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/DataSources/Read | Bir çalışma alanı altındaki veri kaynaklarını alın. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/Read | Çalışma kitabını okuma |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -5657,21 +6073,21 @@ Azure Sentinel Yanıtlayıcısı
 
 ### <a name="key-vault-contributor"></a>Katkıda bulunan Key Vault
 
-Anahtar kasalarını yönetmenize izin verir, ancak bunlara erişim sağlamaz.
+Anahtar kasalarını yönetmenize izin verir, ancak bunlara erişim sağlamaz. [Daha fazla bilgi edinin](../key-vault/general/secure-your-key-vault.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Keykasası/* |  |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Keykasası](resource-provider-operations.md#microsoftkeyvault)/* |  |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
-> | Microsoft. Keykasası/konumlar/Silinkaults/Temizleme/eylem | Geçici olarak silinen bir anahtar kasasını temizle |
-> | Microsoft. Keykasası/hsmPools/* |  |
+> | [Microsoft. Keykasası](resource-provider-operations.md#microsoftkeyvault)/Locations/deletedVaults/Purge/Action | Geçici olarak silinen bir anahtar kasasını temizle |
+> | [Microsoft. Keykasası](resource-provider-operations.md#microsoftkeyvault)/hsmPools/* |  |
 > | **Veri eylemleri** |  |
 > | *yok* |  |
 > | **NotDataActions** |  |
@@ -5711,23 +6127,23 @@ Anahtar kasalarını yönetmenize izin verir, ancak bunlara erişim sağlamaz.
 
 ### <a name="security-admin"></a>Güvenlik Yöneticisi
 
-Güvenlik Merkezi için izinleri görüntüleyin ve güncelleştirin. Güvenlik okuyucu rolüyle aynı izinler ve ayrıca güvenlik ilkesini güncelleştirebilir ve uyarıları ve önerileri kapatabilir.
+Güvenlik Merkezi için izinleri görüntüleyin ve güncelleştirin. Güvenlik okuyucu rolüyle aynı izinler ve ayrıca güvenlik ilkesini güncelleştirebilir ve uyarıları ve önerileri kapatabilir. [Daha fazla bilgi edinin](../security-center/security-center-permissions.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Authorization/Poliyasatamaları/* | İlke atamaları oluşturma ve yönetme |
-> | Microsoft. Authorization/policyDefinitions/* | İlke tanımları oluşturma ve yönetme |
-> | Microsoft. Authorization/policySetDefinitions/* | İlke kümeleri oluşturma ve yönetme |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Management/managementGroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
-> | Microsoft. Operationalınsights/çalışma alanları/*/Read | Log Analytics verilerini görüntüleme |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. Security/* | Güvenlik bileşenleri ve ilkeleri oluşturma ve yönetme |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/Policyassignments/* | İlke atamaları oluşturma ve yönetme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/PolicyDefinitions/* | İlke tanımları oluşturma ve yönetme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/Policysetdefinitions/* | İlke kümeleri oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/Managementgroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Log Analytics verilerini görüntüleme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/* | Güvenlik bileşenleri ve ilkeleri oluşturma ve yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -5777,7 +6193,7 @@ Değerlendirmelere Güvenlik Merkezi 'ne gönderim olanağı sağlar
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Security/değerlendirmeleri/yazma | Aboneliğinizde güvenlik değerlendirmeleri oluşturun veya güncelleştirin |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/assessments/Write | Aboneliğinizde güvenlik değerlendirmeleri oluşturun veya güncelleştirin |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -5817,16 +6233,16 @@ Bu eski bir roldür. Lütfen bunun yerine Güvenlik Yöneticisi 'ni kullanın.
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. ClassicCompute/*/Read | Yapılandırma bilgileri klasik sanal makineler 'i okuyun |
-> | Microsoft. ClassicCompute/virtualMachines/*/Write | Klasik sanal makineler için yazma yapılandırması |
-> | Microsoft. ClassicNetwork/*/Read | Klasik ağla ilgili yapılandırma bilgilerini okuyun |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. Security/* | Güvenlik bileşenleri ve ilkeleri oluşturma ve yönetme |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/*/Read | Yapılandırma bilgileri klasik sanal makineler 'i okuyun |
+> | [Microsoft. ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/Virtual, ines/*/Write | Klasik sanal makineler için yazma yapılandırması |
+> | [Microsoft. ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/*/Read | Klasik ağla ilgili yapılandırma bilgilerini okuyun |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/* | Güvenlik bileşenleri ve ilkeleri oluşturma ve yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -5869,20 +6285,20 @@ Bu eski bir roldür. Lütfen bunun yerine Güvenlik Yöneticisi 'ni kullanın.
 
 ### <a name="security-reader"></a>Güvenlik okuyucusu
 
-Güvenlik Merkezi için izinleri görüntüleyin. Önerileri, uyarıları, güvenlik ilkesini ve güvenlik durumlarını görüntüleyebilir, ancak değişiklik yapamaz.
+Güvenlik Merkezi için izinleri görüntüleyin. Önerileri, uyarıları, güvenlik ilkesini ve güvenlik durumlarını görüntüleyebilir, ancak değişiklik yapamaz. [Daha fazla bilgi edinin](../security-center/security-center-permissions.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Operationalınsights/çalışma alanları/*/Read | Log Analytics verilerini görüntüleme |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. Security/*/Read | Güvenlik bileşenlerini ve ilkelerini okuyun |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
-> | Microsoft. Management/managementGroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Log Analytics verilerini görüntüleme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/*/Read | Güvenlik bileşenlerini ve ilkelerini okuyun |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/Managementgroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -5926,46 +6342,46 @@ Güvenlik Merkezi için izinleri görüntüleyin. Önerileri, uyarıları, güve
 
 ### <a name="devtest-labs-user"></a>DevTest Labs kullanıcısı
 
-Azure DevTest Labs sanal makinelerinizi bağlamanıza, başlatmanıza, yeniden başlatmanıza ve kapatımanıza olanak sağlar.
+Azure DevTest Labs sanal makinelerinizi bağlamanıza, başlatmanıza, yeniden başlatmanıza ve kapatımanıza olanak sağlar. [Daha fazla bilgi edinin](../lab-services/devtest-lab-add-devtest-user.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. COMPUTE/kullanılabilirliği Bilitysets/Read | Bir kullanılabilirlik kümesinin özelliklerini al |
-> | Microsoft. COMPUTE/virtualMachines/*/Read | Bir sanal makinenin özelliklerini okuyun (VM boyutları, çalışma zamanı durumu, VM uzantıları vb.) |
-> | Microsoft. COMPUTE/virtualMachines/serbest bırakma/eylem | Sanal makineyi güçlendirir ve işlem kaynaklarını serbest bırakır |
-> | Microsoft. COMPUTE/virtualMachines/okuma | Bir sanal makinenin özelliklerini al |
-> | Microsoft. COMPUTE/virtualMachines/yeniden Başlat/eylem | Sanal makineyi yeniden başlatır |
-> | Microsoft. COMPUTE/virtualMachines/Başlat/eylem | Sanal makineyi başlatır |
-> | Microsoft. DevTestLab/*/Read | Laboratuvarın özelliklerini okuyun |
-> | Microsoft. DevTestLab/Labs/claimAnyVm/eylem | Laboratuvarda rastgele bir çakışan sanal makine talep edin. |
-> | Microsoft. DevTestLab/Labs/createEnvironment/eylem | Laboratuvarda sanal makineler oluşturun. |
-> | Microsoft. DevTestLab/Labs/ensureCurrentUserProfile/Action | Geçerli kullanıcının laboratuvarda geçerli bir profile sahip olduğundan emin olun. |
-> | Microsoft. DevTestLab/Labs/formüller/Sil | Formülleri silin. |
-> | Microsoft. DevTestLab/Labs/formüller/okuma | Formülleri okuyun. |
-> | Microsoft. DevTestLab/Labs/formüller/yazma | Formüller ekleme veya değiştirme. |
-> | Microsoft. DevTestLab/Labs/policySets/evaluatePolicies/Action | Laboratuvar ilkesini değerlendirir. |
-> | Microsoft. DevTestLab/Labs/virtualMachines/talep/eylem | Mevcut bir sanal makinenin sahipliğini al |
-> | Microsoft. DevTestLab/Labs/virtualmachines/Listapperepblezamanlamalar/eylem | Varsa, geçerli başlatma/durdurma zamanlamalarını listeler. |
-> | Microsoft. DevTestLab/Labs/virtualMachines/getRdpFileContents/Action | Sanal makine için RDP dosyasının içeriğini temsil eden bir dize alır |
-> | Microsoft. Network/loadBalancers/Backendadddresspoir/JOIN/Action | Yük dengeleyici arka uç adres havuzunu birleştirir. Alertable değil. |
-> | Microsoft. Network/loadBalancers/ınboundnatrules/JOIN/Action | Yük dengeleyici gelen NAT kuralına katılır. Alertable değil. |
-> | Microsoft. Network/NetworkInterfaces/*/Read | Bir ağ arabiriminin özelliklerini okuyun (örneğin, ağ arabiriminin bir parçası olduğu tüm yük dengeleyiciler) |
-> | Microsoft. Network/NetworkInterfaces/JOIN/Action | Bir sanal makineyi bir ağ arabirimine birleştirir. Alertable değil. |
-> | Microsoft. Network/NetworkInterfaces/Read | Bir ağ arabirimi tanımını alır.  |
-> | Microsoft. Network/NetworkInterfaces/Write | Ağ arabirimi oluşturur veya var olan bir ağ arabirimini güncelleştirir.  |
-> | Microsoft. Network/publicIPAddresses/*/Read | Genel IP adresinin özelliklerini okuyun |
-> | Microsoft. Network/publicIPAddresses/JOIN/Action | Genel bir IP adresini birleştirir. Alertable değil. |
-> | Microsoft. Network/publicIPAddresses/Read | Genel IP adresi tanımını alır. |
-> | Microsoft. Network/virtualNetworks/alt ağlar/JOIN/Action | Bir sanal ağı birleştirir. Alertable değil. |
-> | Microsoft. resources/dağıtımlar/işlemler/okuma | Dağıtım işlemlerini alır veya listeler. |
-> | Microsoft. resources/dağıtımlar/okuma | Dağıtımları alır veya listeler. |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. Storage/storageAccounts/listKeys/Action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/kullanılabilirliği Bilitysets/Read | Bir kullanılabilirlik kümesinin özelliklerini al |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Virtual, ines/*/Read | Bir sanal makinenin özelliklerini okuyun (VM boyutları, çalışma zamanı durumu, VM uzantıları vb.) |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Virtual, Ines/anlaşlocate/Action | Sanal makineyi güçlendirir ve işlem kaynaklarını serbest bırakır |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Virtual, Ines/Read | Bir sanal makinenin özelliklerini al |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachines/restart/Action | Sanal makineyi yeniden başlatır |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Virtual, Ines/start/Action | Sanal makineyi başlatır |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/*/Read | Laboratuvarın özelliklerini okuyun |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/claimanyvm/Action | Laboratuvarda rastgele bir çakışan sanal makine talep edin. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/createenvironment/Action | Laboratuvarda sanal makineler oluşturun. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/ensurecurrentuserprofile/Action | Geçerli kullanıcının laboratuvarda geçerli bir profile sahip olduğundan emin olun. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/formüls/Delete | Formülleri silin. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/formüls/okuma | Formülleri okuyun. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/formüls/Write | Formüller ekleme veya değiştirme. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/policySets/evaluatePolicies/Action | Laboratuvar ilkesini değerlendirir. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/virtuallarines/Claim/Action | Mevcut bir sanal makinenin sahipliğini al |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/virtualmachines/listApplicableSchedules/Action | Varsa, geçerli başlatma/durdurma zamanlamalarını listeler. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/virtualMachines/getRdpFileContents/Action | Sanal makine için RDP dosyasının içeriğini temsil eden bir dize alır |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Loadbalancers/backendadddresspools/Join/Action | Yük dengeleyici arka uç adres havuzunu birleştirir. Alertable değil. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Loadbalancers/ınboundnatrules/Join/Action | Yük dengeleyici gelen NAT kuralına katılır. Alertable değil. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/NetworkInterfaces/*/Read | Bir ağ arabiriminin özelliklerini okuyun (örneğin, ağ arabiriminin bir parçası olduğu tüm yük dengeleyiciler) |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/NetworkInterfaces/Join/Action | Bir sanal makineyi bir ağ arabirimine birleştirir. Alertable değil. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/NetworkInterfaces/Read | Bir ağ arabirimi tanımını alır.  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/NetworkInterfaces/Write | Ağ arabirimi oluşturur veya var olan bir ağ arabirimini güncelleştirir.  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Publicıpaddresses/*/Read | Genel IP adresinin özelliklerini okuyun |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Publicıpaddresses/Join/Action | Genel bir IP adresini birleştirir. Alertable değil. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Publicıpaddresses/Read | Genel IP adresi tanımını alır. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Subnets/Join/Action | Bir sanal ağı birleştirir. Alertable değil. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/Operations/Read | Dağıtım işlemlerini alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/Read | Dağıtımları alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/ListKeys/Action | Belirtilen depolama hesabı için erişim anahtarlarını döndürür. |
 > | **NotActions** |  |
-> | Microsoft. COMPUTE/virtualMachines/vmSizes/Read | Sanal makinenin güncelleştirileceği kullanılabilir boyutları listeler |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachines/vmSizes/Read | Sanal makinenin güncelleştirileceği kullanılabilir boyutları listeler |
 > | **Veri eylemleri** |  |
 > | *yok* |  |
 > | **NotDataActions** |  |
@@ -6030,21 +6446,21 @@ Azure DevTest Labs sanal makinelerinizi bağlamanıza, başlatmanıza, yeniden b
 
 ### <a name="lab-creator"></a>Laboratuvar Oluşturucu
 
-Azure Laboratuvar hesaplarınız kapsamında yönetilen Laboratuvarlarınızı oluşturmanıza, yönetmenize ve silmenize olanak sağlar.
+Azure Laboratuvar hesaplarınız kapsamında yönetilen Laboratuvarlarınızı oluşturmanıza, yönetmenize ve silmenize olanak sağlar. [Daha fazla bilgi edinin](../lab-services/classroom-labs/add-lab-creator.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. LabServices/labAccounts/*/Read |  |
-> | Microsoft. LabServices/labAccounts/createLab/eylem | Laboratuvar hesabında laboratuvar oluşturun. |
-> | Microsoft. LabServices/labAccounts/boyutlar/getRegionalAvailability/eylem |  |
-> | Microsoft. LabServices/labAccounts/getRegionalAvailability/eylem | Laboratuvar hesabı altında yapılandırılan her boyut kategorisi için bölgesel kullanılabilirlik bilgilerini al |
-> | Microsoft. LabServices/labAccounts/Getpricingandavvailability/eylem | Laboratuvar hesabı için boyut, coğrafi grafik ve işletim sistemi birleşimlerinin fiyatlandırmasını ve kullanılabilirliğini öğrenin. |
-> | Microsoft. LabServices/labAccounts/getRestrictionsAndUsage/Action | Bu abonelik için çekirdek kısıtlamaları ve kullanımı al |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. LabServices](resource-provider-operations.md#microsoftlabservices)/Labaccounts/*/Read |  |
+> | [Microsoft. LabServices](resource-provider-operations.md#microsoftlabservices)/Labaccounts/createlab/Action | Laboratuvar hesabında laboratuvar oluşturun. |
+> | [Microsoft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/sizes/getRegionalAvailability/Action |  |
+> | [Microsoft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getRegionalAvailability/Action | Laboratuvar hesabı altında yapılandırılan her boyut kategorisi için bölgesel kullanılabilirlik bilgilerini al |
+> | [Microsoft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getPricingAndAvailability/Action | Laboratuvar hesabı için boyut, coğrafi grafik ve işletim sistemi birleşimlerinin fiyatlandırmasını ve kullanılabilirliğini öğrenin. |
+> | [Microsoft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getRestrictionsAndUsage/Action | Bu abonelik için çekirdek kısıtlamaları ve kullanımı al |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -6089,21 +6505,21 @@ Azure Laboratuvar hesaplarınız kapsamında yönetilen Laboratuvarlarınızı o
 
 ### <a name="application-insights-component-contributor"></a>Application Insights bileşeni Katılımcısı
 
-Application Insights bileşenlerini yönetebilir
+Application Insights bileşenlerini yönetebilir [daha fazla bilgi](../azure-monitor/app/resources-roles-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. Insights/metricAlerts/* | Yeni uyarı kuralları oluşturma ve yönetme |
-> | Microsoft. Insights/bileşenler/* | Öngörüler bileşenleri oluşturma ve yönetme |
-> | Microsoft. Insights/webtests/* | Öngörüler Web testleri oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik uyarı kuralları oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metricalerts/* | Yeni uyarı kuralları oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Components/* | Öngörüler bileşenleri oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/webtests/* | Öngörüler Web testleri oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -6145,18 +6561,18 @@ Application Insights bileşenlerini yönetebilir
 
 ### <a name="application-insights-snapshot-debugger"></a>Application Insights Snapshot Debugger
 
-Application Insights Snapshot Debugger ile toplanan hata ayıklama anlık görüntülerini görüntülemek ve indirmek için kullanıcıya izin verir. Bu izinlerin [sahip](#owner) veya [katkıda](#contributor) bulunan rollerine dahil edilmediğini unutmayın. Kullanıcılara Application Insights Snapshot Debugger rolü verirken, rolü doğrudan kullanıcıya vermeniz gerekir. Rol, özel bir role eklendiğinde tanınmaz. 
+Application Insights Snapshot Debugger ile toplanan hata ayıklama anlık görüntülerini görüntülemek ve indirmek için kullanıcıya izin verir. Bu izinlerin [sahip](#owner) veya [katkıda](#contributor) bulunan rollerine dahil edilmediğini unutmayın. Kullanıcılara Application Insights Snapshot Debugger rolü verirken, rolü doğrudan kullanıcıya vermeniz gerekir. Rol, özel bir role eklendiğinde tanınmaz. [Daha fazla bilgi edinin](../azure-monitor/app/snapshot-debugger.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Insights/bileşenler/*/Read |  |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Components/*/Read |  |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -6195,43 +6611,43 @@ Application Insights Snapshot Debugger ile toplanan hata ayıklama anlık görü
 
 ### <a name="monitoring-contributor"></a>Katkıda bulunan izleniyor
 
-Tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles).
+Tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles). [Daha fazla bilgi edinin](../azure-monitor/platform/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
 > | */Read | Gizli dizileri hariç tüm türlerin kaynaklarını okuyun. |
-> | Microsoft. AlertsManagement/uyarılar/* |  |
-> | Microsoft. AlertsManagement/alertsSummary/* |  |
-> | Microsoft. Insights/actiongroups/* |  |
-> | Microsoft. Insights/activityLogAlerts/* |  |
-> | Microsoft. Insights/AlertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Insights/bileşenler/* | Öngörüler bileşenleri oluşturma ve yönetme |
-> | Microsoft. Insights/DiagnosticSettings/* | Analiz Sunucusu için tanılama ayarını oluşturur, güncelleştirir veya okur |
-> | Microsoft. Insights/eventTypes/* | Bir abonelikteki etkinlik günlüğü olaylarını (yönetim olayları) listeleyin. Bu izin, etkinlik günlüğüne hem programlı hem de portala erişim için geçerlidir. |
-> | Microsoft. Insights/LogDefinitions/* | Bu izin, Portal aracılığıyla etkinlik günlüklerine erişmesi gereken kullanıcılar için gereklidir. Etkinlik günlüğündeki günlük kategorilerini listeleyin. |
-> | Microsoft. Insights/metricalerts/* |  |
-> | Microsoft. Insights/MetricDefinitions/* | Ölçüm tanımlarını oku (bir kaynak için kullanılabilen ölçüm türlerinin listesi). |
-> | Microsoft. Insights/ölçümler/* | Bir kaynak için ölçümleri okuyun. |
-> | Microsoft. Insights/Register/ACTION | Microsoft Insights sağlayıcısını kaydedin |
-> | Microsoft. Insights/scheduledqueryrules/* |  |
-> | Microsoft. Insights/webtests/* | Öngörüler Web testleri oluşturma ve yönetme |
-> | Microsoft. Insights/çalışma kitapları/* |  |
-> | Microsoft. Insights/privateLinkScopes/* |  |
-> | Microsoft. Insights/Privatelinkscopeoperationdurumlarının/* |  |
-> | Microsoft. Operationalınsights/çalışma alanları/yazma | Mevcut çalışma alanından müşteri kimliğini sağlayarak yeni bir çalışma alanı veya mevcut bir çalışma alanına bağlantılar oluşturur. |
-> | Microsoft. Operationalınsights/Workspaces/ıntelligencepacks/* | Log Analytics çözüm paketlerini okuma/yazma/silme. |
-> | Microsoft. Operationalınsights/çalışma alanları/Savedaramalar/* | Log Analytics kayıtlı aramalarını okuma/yazma/silme. |
-> | Microsoft. Operationalınsights/çalışma alanları/arama/eylem | Arama sorgusu yürütür |
-> | Microsoft. Operationalınsights/Workspaces/sharedKeys/Action | Çalışma alanının paylaşılan anahtarlarını alır. Bu anahtarlar, Microsoft operasyonel içgörüler aracılarını çalışma alanına bağlamak için kullanılır. |
-> | Microsoft. Operationalınsights/Workspaces/storageınsiizconfigs/* | Log Analytics depolama öngörülerini okuma/yazma/silme. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
-> | Microsoft. WorkloadMonitor/izleyicileri/* |  |
-> | Microsoft. WorkloadMonitor/notificationSettings/* |  |
-> | Microsoft. AlertsManagement/smartDetectorAlertRules/* |  |
-> | Microsoft. AlertsManagement/actionRules/* |  |
-> | Microsoft. AlertsManagement/smartGroups/* |  |
+> | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/Alerts/* |  |
+> | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/alertsSummary/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/actiongroups/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Activitylogalerts/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Components/* | Öngörüler bileşenleri oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Diagnosticsettings/* | Analiz Sunucusu için tanılama ayarını oluşturur, güncelleştirir veya okur |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/eventTypes/* | Bir abonelikteki etkinlik günlüğü olaylarını (yönetim olayları) listeleyin. Bu izin, etkinlik günlüğüne hem programlı hem de portala erişim için geçerlidir. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Logdefinitions/* | Bu izin, Portal aracılığıyla etkinlik günlüklerine erişmesi gereken kullanıcılar için gereklidir. Etkinlik günlüğündeki günlük kategorilerini listeleyin. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/metricalerts/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/MetricDefinitions/* | Ölçüm tanımlarını oku (bir kaynak için kullanılabilen ölçüm türlerinin listesi). |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metrics/* | Bir kaynak için ölçümleri okuyun. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Register/Action | Microsoft Insights sağlayıcısını kaydedin |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/scheduledquerykurallarını/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/webtests/* | Öngörüler Web testleri oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Privatelinkscopes/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Privatelinkscopeoperationkara ses/* |  |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Write | Mevcut çalışma alanından müşteri kimliğini sağlayarak yeni bir çalışma alanı veya mevcut bir çalışma alanına bağlantılar oluşturur. |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/intelligencepacks/* | Log Analytics çözüm paketlerini okuma/yazma/silme. |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/savedSearches/* | Log Analytics kayıtlı aramalarını okuma/yazma/silme. |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Search/Action | Arama sorgusu yürütür |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/sharedKeys/Action | Çalışma alanının paylaşılan anahtarlarını alır. Bu anahtarlar, Microsoft operasyonel içgörüler aracılarını çalışma alanına bağlamak için kullanılır. |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/storageinsightconfigs/* | Log Analytics depolama öngörülerini okuma/yazma/silme. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/monitors/* |  |
+> | [Microsoft. WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/Notificationsettings/* |  |
+> | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/Smartdetectoralertrules/* |  |
+> | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/Actionkurallarını/* |  |
+> | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/Smartgroups/* |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -6295,19 +6711,19 @@ Tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. Ayrıc
 
 ### <a name="monitoring-metrics-publisher"></a>Ölçüm yayımcısını izleme
 
-Azure kaynaklarında ölçüm yayımlamaya izin vermez
+Azure kaynaklarında ölçüm yayımlamaya izin verebilir [daha fazla bilgi](../azure-monitor/insights/container-insights-update-metrics.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Insights/Register/ACTION | Microsoft Insights sağlayıcısını kaydedin |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Register/Action | Microsoft Insights sağlayıcısını kaydedin |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Insights/ölçümler/yazma | Ölçümleri yaz |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metrics/Write | Ölçümleri yaz |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -6341,15 +6757,15 @@ Azure kaynaklarında ölçüm yayımlamaya izin vermez
 
 ### <a name="monitoring-reader"></a>İzleme okuyucusu
 
-Tüm izleme verilerini okuyabilir (ölçümler, Günlükler vb.). Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles).
+Tüm izleme verilerini okuyabilir (ölçümler, Günlükler vb.). Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles). [Daha fazla bilgi edinin](../azure-monitor/platform/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
 > | */Read | Gizli dizileri hariç tüm türlerin kaynaklarını okuyun. |
-> | Microsoft. Operationalınsights/çalışma alanları/arama/eylem | Arama sorgusu yürütür |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Operationalınsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Search/Action | Arama sorgusu yürütür |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -6385,15 +6801,15 @@ Tüm izleme verilerini okuyabilir (ölçümler, Günlükler vb.). Ayrıca bkz. [
 
 ### <a name="workbook-contributor"></a>Çalışma kitabı Katılımcısı
 
-, Paylaşılan çalışma kitaplarını kaydedebilir.
+, Paylaşılan çalışma kitaplarını kaydedebilir. [Daha fazla bilgi edinin](../sentinel/tutorial-monitor-your-data.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Insights/çalışma kitapları/yazma | Çalışma kitabı oluşturma veya güncelleştirme |
-> | Microsoft. Öngörüler/çalışma kitapları/silme | Bir çalışma kitabını silme |
-> | Microsoft. Insights/çalışma kitapları/okuma | Çalışma kitabını okuma |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/Write | Çalışma kitabı oluşturma veya güncelleştirme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/Delete | Bir çalışma kitabını silme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/Read | Çalışma kitabını okuma |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -6429,13 +6845,13 @@ Tüm izleme verilerini okuyabilir (ölçümler, Günlükler vb.). Ayrıca bkz. [
 
 ### <a name="workbook-reader"></a>Çalışma kitabı okuyucusu
 
-, Çalışma kitaplarını okuyabilir.
+, Çalışma kitaplarını okuyabilir. [Daha fazla bilgi edinin](../sentinel/tutorial-monitor-your-data.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Insights/çalışma kitapları/okuma | Çalışma kitabını okuma |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/Read | Çalışma kitabını okuma |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -6472,25 +6888,25 @@ Tüm izleme verilerini okuyabilir (ölçümler, Günlükler vb.). Ayrıca bkz. [
 
 ### <a name="automation-job-operator"></a>Automation Iş Işleci
 
-Otomasyon Runbook 'Larını kullanarak Iş oluşturun ve yönetin.
+Otomasyon Runbook 'Larını kullanarak Iş oluşturun ve yönetin. [Daha fazla bilgi edinin](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Automation/automationAccounts/hybridRunbookWorkerGroups/Read | Karma runbook çalışanı kaynaklarını okur |
-> | Microsoft. Automation/automationAccounts/Jobs/okuma | Bir Azure Otomasyonu işini alır |
-> | Microsoft. Automation/automationAccounts/Jobs/sürdürülecek/Action | Bir Azure Otomasyonu işini sürdürür |
-> | Microsoft. Automation/automationAccounts/Jobs/durdur/eylem | Bir Azure Otomasyonu işini durduruyor |
-> | Microsoft. Automation/automationAccounts/Jobs/akışlar/okuma | Bir Azure Otomasyonu iş akışı alır |
-> | Microsoft. Automation/automationAccounts/Jobs/beklet/eylem | Bir Azure Otomasyonu işini askıya alır |
-> | Microsoft. Automation/automationAccounts/Jobs/Write | Azure Otomasyonu işi oluşturur |
-> | Microsoft. Automation/automationAccounts/Jobs/output/Read | Bir işin çıkışını alır |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/hybridrunbookworkergroups/Read | Karma runbook çalışanı kaynaklarını okur |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/Jobs/Read | Bir Azure Otomasyonu işini alır |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/Jobs/Resume/Action | Bir Azure Otomasyonu işini sürdürür |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/Jobs/stop/Action | Bir Azure Otomasyonu işini durduruyor |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/Jobs/streamms/Read | Bir Azure Otomasyonu iş akışı alır |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Jobs/Suspend/Action | Bir Azure Otomasyonu işini askıya alır |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/Jobs/Write | Azure Otomasyonu işi oluşturur |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/Jobs/output/Read | Bir işin çıkışını alır |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -6536,33 +6952,33 @@ Otomasyon Runbook 'Larını kullanarak Iş oluşturun ve yönetin.
 
 ### <a name="automation-operator"></a>Otomasyon Operatörü
 
-Automation Işleçleri, işleri başlatabilir, durdurabilir, askıya alabilir ve sürdürebilir
+Automation Işleçleri, işleri başlatabilir, durdurabilir, askıya alabilir ve sürdürebilir [daha fazla bilgi edinin](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Automation/automationAccounts/hybridRunbookWorkerGroups/Read | Karma runbook çalışanı kaynaklarını okur |
-> | Microsoft. Automation/automationAccounts/Jobs/okuma | Bir Azure Otomasyonu işini alır |
-> | Microsoft. Automation/automationAccounts/Jobs/sürdürülecek/Action | Bir Azure Otomasyonu işini sürdürür |
-> | Microsoft. Automation/automationAccounts/Jobs/durdur/eylem | Bir Azure Otomasyonu işini durduruyor |
-> | Microsoft. Automation/automationAccounts/Jobs/akışlar/okuma | Bir Azure Otomasyonu iş akışı alır |
-> | Microsoft. Automation/automationAccounts/Jobs/beklet/eylem | Bir Azure Otomasyonu işini askıya alır |
-> | Microsoft. Automation/automationAccounts/Jobs/Write | Azure Otomasyonu işi oluşturur |
-> | Microsoft. Automation/automationAccounts/Jobzamanlamalar/okuma | Bir Azure Otomasyonu iş zamanlaması alır |
-> | Microsoft. Automation/automationAccounts/Jobzamanlamalar/yazma | Bir Azure Otomasyonu iş zamanlaması oluşturur |
-> | Microsoft. Automation/automationAccounts/linkedWorkspace/Read | Otomasyon hesabına bağlı çalışma alanını alır |
-> | Microsoft. Automation/automationAccounts/Read | Bir Azure Otomasyonu hesabını alır |
-> | Microsoft. Automation/automationAccounts/runbook 'lar/okuma | Bir Azure Otomasyonu runbook 'unu alır |
-> | Microsoft. Automation/automationAccounts/zamanlamalar/okuma | Bir Azure Otomasyonu zamanlama varlığını alır |
-> | Microsoft. Automation/automationAccounts/zamanlamalar/yazma | Bir Azure Otomasyonu zamanlama varlığı oluşturur veya güncelleştirir |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. Automation/automationAccounts/Jobs/output/Read | Bir işin çıkışını alır |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/hybridrunbookworkergroups/Read | Karma runbook çalışanı kaynaklarını okur |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/Jobs/Read | Bir Azure Otomasyonu işini alır |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/Jobs/Resume/Action | Bir Azure Otomasyonu işini sürdürür |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/Jobs/stop/Action | Bir Azure Otomasyonu işini durduruyor |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/Jobs/streamms/Read | Bir Azure Otomasyonu iş akışı alır |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Jobs/Suspend/Action | Bir Azure Otomasyonu işini askıya alır |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/Jobs/Write | Azure Otomasyonu işi oluşturur |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/jobSchedules/Read | Bir Azure Otomasyonu iş zamanlaması alır |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/jobSchedules/Write | Bir Azure Otomasyonu iş zamanlaması oluşturur |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/linkedworkspace/Read | Otomasyon hesabına bağlı çalışma alanını alır |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/Read | Bir Azure Otomasyonu hesabını alır |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/runbooks/Read | Bir Azure Otomasyonu runbook 'unu alır |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Schedules/Read | Bir Azure Otomasyonu zamanlama varlığını alır |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Schedules/Write | Bir Azure Otomasyonu zamanlama varlığı oluşturur veya güncelleştirir |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/Jobs/output/Read | Bir işin çıkışını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -6616,18 +7032,18 @@ Automation Işleçleri, işleri başlatabilir, durdurabilir, askıya alabilir ve
 
 ### <a name="automation-runbook-operator"></a>Otomasyon Runbook Işleci
 
-Runbook 'un Işlerini oluşturabilmek için Runbook özelliklerini okuyun.
+Runbook 'un Işlerini oluşturabilmek için Runbook özelliklerini okuyun. [Daha fazla bilgi edinin](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Automation/automationAccounts/runbook 'lar/okuma | Bir Azure Otomasyonu runbook 'unu alır |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/Automationaccounts/runbooks/Read | Bir Azure Otomasyonu runbook 'unu alır |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -6666,15 +7082,15 @@ Runbook 'un Işlerini oluşturabilmek için Runbook özelliklerini okuyun.
 
 ### <a name="azure-connected-machine-onboarding"></a>Azure bağlı makine ekleme
 
-, Azure bağlantılı makineler ekleyebilir.
+, Azure bağlantılı makineler ekleyebilir. [Daha fazla bilgi edinin](../azure-arc/servers/onboard-service-principal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. HybridCompute/makineler/okuma | Tüm Azure Arc makinelerini okuyun |
-> | Microsoft. HybridCompute/makineler/yazma | Bir Azure Arc makinesi yazar |
-> | Microsoft. GuestConfiguration/Guestconfigurationatamaları/okuma | Konuk yapılandırma atamasını al. |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/, ines/Read | Tüm Azure Arc makinelerini okuyun |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/, ines/Write | Bir Azure Arc makinesi yazar |
+> | [Microsoft. GuestConfiguration](resource-provider-operations.md#microsoftguestconfiguration)/Guestconfigurationatamaments/Read | Konuk yapılandırma atamasını al. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -6716,12 +7132,12 @@ Azure bağlı makinelerini okuyabilir, yazabilir, silebilir ve yeniden ekleyebil
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. HybridCompute/makineler/okuma | Tüm Azure Arc makinelerini okuyun |
-> | Microsoft. HybridCompute/makineler/yazma | Bir Azure Arc makinesi yazar |
-> | Microsoft. HybridCompute/makineler/Sil | Azure yay makinelerini siler |
-> | Microsoft. HybridCompute/makineler/yeniden bağlan/eylem | Bir Azure yay makinelerini yeniden bağlar |
-> | Microsoft. HybridCompute/makineler/uzantılar/yazma | Bir Azure Arc uzantısını yükleme veya güncelleştirme |
-> | Microsoft. HybridCompute/*/Read |  |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/, ines/Read | Tüm Azure Arc makinelerini okuyun |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/, ines/Write | Bir Azure Arc makinesi yazar |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/, ines/Delete | Azure yay makinelerini siler |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/, ines/reconnect/Action | Bir Azure yay makinelerini yeniden bağlar |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/larines/Extensions/Write | Bir Azure Arc uzantısını yükleme veya güncelleştirme |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/*/Read |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -6760,19 +7176,19 @@ Azure bağlı makinelerini okuyabilir, yazabilir, silebilir ve yeniden ekleyebil
 
 ### <a name="billing-reader"></a>Faturalama Okuyucusu
 
-Faturalandırma verilerine okuma erişimi sağlar
+Faturalandırma verilerine okuma erişimi sağlar [daha fazla bilgi](../cost-management-billing/manage/manage-billing-access.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. faturalandırma/*/Read | Fatura bilgilerini okuyun |
-> | Microsoft. Commerce/*/Read |  |
-> | Microsoft. tüketim/*/Read |  |
-> | Microsoft. Management/managementGroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
-> | Microsoft. CostManagement/*/Read |  |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. faturalandırma](resource-provider-operations.md#microsoftbilling)/*/Read | Fatura bilgilerini okuyun |
+> | [Microsoft. Commerce](resource-provider-operations.md#microsoftcommerce)/*/Read |  |
+> | [Microsoft. tüketim](resource-provider-operations.md#microsoftconsumption)/*/Read |  |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/Managementgroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
+> | [Microsoft. CostManagement](resource-provider-operations.md#microsoftcostmanagement)/*/Read |  |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -6812,17 +7228,17 @@ Faturalandırma verilerine okuma erişimi sağlar
 
 ### <a name="blueprint-contributor"></a>Blueprint Katılımcısı
 
-Şema tanımlarını yönetebilir, ancak atamazsınız.
+Şema tanımlarını yönetebilir, ancak atamazsınız. [Daha fazla bilgi edinin](../governance/blueprints/overview.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Blueprint/planlar/* | Şema tanımlarını veya şema yapılarını oluşturun ve yönetin. |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Blueprint](resource-provider-operations.md#microsoftblueprint)/Blueprints/* | Şema tanımlarını veya şema yapılarını oluşturun ve yönetin. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -6860,17 +7276,17 @@ Faturalandırma verilerine okuma erişimi sağlar
 
 ### <a name="blueprint-operator"></a>Blueprint Işleci
 
-Varolan yayımlanmış şemaları atayabilir, ancak yeni şemaları oluşturamaz. Bu, yalnızca atama Kullanıcı tarafından atanan yönetilen bir kimlikle yapıldığında işe yarar.
+Varolan yayımlanmış şemaları atayabilir, ancak yeni şemaları oluşturamaz. Bu, yalnızca atama Kullanıcı tarafından atanan yönetilen bir kimlikle yapıldığında işe yarar. [Daha fazla bilgi edinin](../governance/blueprints/overview.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Blueprint/Blueprintasbir/* | Şema atamaları oluşturun ve yönetin. |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Blueprint](resource-provider-operations.md#microsoftblueprint)/Blueprintassignments/* | Şema atamaları oluşturun ve yönetin. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -6908,21 +7324,21 @@ Varolan yayımlanmış şemaları atayabilir, ancak yeni şemaları oluşturamaz
 
 ### <a name="cost-management-contributor"></a>Maliyet yönetimi Katılımcısı
 
-Maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir (örn. bütçeler, dışarı aktarmalar)
+Maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir (örn. bütçeler, dışarı aktarmalar) [daha fazla bilgi edinin](../cost-management-billing/costs/understand-work-scopes.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. tüketim/* |  |
-> | Microsoft. CostManagement/* |  |
-> | Microsoft. faturalandırma/Billingdönemler/okuma |  |
-> | Microsoft. resources/abonelikler/okuma | Aboneliklerin listesini alır. |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
-> | Microsoft. danışman/yapılandırma/okuma | Yapılandırma al |
-> | Microsoft. Advisor/öneriler/okuma | Önerileri okur |
-> | Microsoft. Management/managementGroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
+> | [Microsoft. tüketim](resource-provider-operations.md#microsoftconsumption)/* |  |
+> | [Microsoft. CostManagement](resource-provider-operations.md#microsoftcostmanagement)/* |  |
+> | [Microsoft. faturalandırma](resource-provider-operations.md#microsoftbilling)/billingPeriods/Read |  |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Aboneliklerin listesini alır. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)/Configurations/Read | Yapılandırma al |
+> | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)/Recommendations/Read | Önerileri okur |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/Managementgroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -6964,21 +7380,21 @@ Maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir (ö
 
 ### <a name="cost-management-reader"></a>Maliyet yönetimi okuyucusu
 
-Maliyet verilerini ve yapılandırmayı görüntüleyebilir (örneğin, bütçeler, dışarı aktarmalar)
+Maliyet verilerini ve yapılandırmayı görüntüleyebilir (örneğin, bütçeler, dışarı aktarmalar) [daha fazla bilgi edinin](../cost-management-billing/costs/understand-work-scopes.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. tüketim/*/Read |  |
-> | Microsoft. CostManagement/*/Read |  |
-> | Microsoft. faturalandırma/Billingdönemler/okuma |  |
-> | Microsoft. resources/abonelikler/okuma | Aboneliklerin listesini alır. |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
-> | Microsoft. danışman/yapılandırma/okuma | Yapılandırma al |
-> | Microsoft. Advisor/öneriler/okuma | Önerileri okur |
-> | Microsoft. Management/managementGroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
+> | [Microsoft. tüketim](resource-provider-operations.md#microsoftconsumption)/*/Read |  |
+> | [Microsoft. CostManagement](resource-provider-operations.md#microsoftcostmanagement)/*/Read |  |
+> | [Microsoft. faturalandırma](resource-provider-operations.md#microsoftbilling)/billingPeriods/Read |  |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Aboneliklerin listesini alır. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)/Configurations/Read | Yapılandırma al |
+> | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)/Recommendations/Read | Önerileri okur |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/Managementgroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -7026,8 +7442,8 @@ Kullanıcıların hiyerarşi ayarlarını düzenlemesine ve silmesine izin verir
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Management/managementGroups/Settings/Write | Yönetim grubu hiyerarşisi ayarlarını oluşturur veya güncelleştirir. |
-> | Microsoft. Management/managementGroups/Settings/Delete | Yönetim grubu hiyerarşisi ayarlarını siler. |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/Managementgroups/Settings/Write | Yönetim grubu hiyerarşisi ayarlarını oluşturur veya güncelleştirir. |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/Managementgroups/Settings/Delete | Yönetim grubu hiyerarşisi ayarlarını siler. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -7069,10 +7485,10 @@ Yönetilen uygulama kaynakları oluşturulmasına izin verir.
 > | --- | --- |
 > | **Eylemler** |  |
 > | */Read | Gizli dizileri hariç tüm türlerin kaynaklarını okuyun. |
-> | Microsoft. Solutions/Applications/* |  |
-> | Microsoft. Solutions/Register/ACTION | Çözümlere kaydolun. |
-> | Microsoft. resources/abonelikler/resourceGroups/* |  |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. Solutions](resource-provider-operations.md#microsoftsolutions)/Applications/* |  |
+> | [Microsoft. Solutions](resource-provider-operations.md#microsoftsolutions)/Register/Action | Çözümlere kaydolun. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/* |  |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -7117,8 +7533,8 @@ Yönetilen uygulama kaynakları üzerinde işlemleri okuyup gerçekleştirmenize
 > | --- | --- |
 > | **Eylemler** |  |
 > | */Read | Gizli dizileri hariç tüm türlerin kaynaklarını okuyun. |
-> | Microsoft. Solutions/Applications/Read | Uygulamaların bir listesini alır. |
-> | Microsoft. Solutions/*/Action |  |
+> | [Microsoft. Solutions](resource-provider-operations.md#microsoftsolutions)/Applications/Read | Uygulamaların bir listesini alır. |
+> | [Microsoft. Solutions](resource-provider-operations.md#microsoftsolutions)/*/Action |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -7161,8 +7577,8 @@ Yönetilen bir uygulamadaki kaynakları okumanızı ve JıT erişimi isteğinizi
 > | --- | --- |
 > | **Eylemler** |  |
 > | */Read | Gizli dizileri hariç tüm türlerin kaynaklarını okuyun. |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. Solutions/Jrequests/* |  |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. Solutions](resource-provider-operations.md#microsoftsolutions)/Jımrequests/* |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -7198,15 +7614,15 @@ Yönetilen bir uygulamadaki kaynakları okumanızı ve JıT erişimi isteğinizi
 
 ### <a name="managed-services-registration-assignment-delete-role"></a>Yönetilen hizmetler kayıt ataması rol silme
 
-Yönetilen hizmetler kayıt ataması silme rolü, kiracı kullanıcılarının kiracıya atanan kayıt atamasını silmesine izin verir.
+Yönetilen hizmetler kayıt ataması silme rolü, kiracı kullanıcılarının kiracıya atanan kayıt atamasını silmesine izin verir. [Daha fazla bilgi edinin](../lighthouse/how-to/remove-delegation.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. ManagedServices/Registrationatamaları/okuma | Yönetilen hizmetler kayıt atamalarının bir listesini alır. |
-> | Microsoft. ManagedServices/Registrationatamaları/silme | Yönetilen hizmetler kayıt atamasını kaldırır. |
-> | Microsoft. ManagedServices/Operationdurumlar/okuma | Kaynak için işlem durumunu okur. |
+> | [Microsoft. ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/Registrationatama/okuma | Yönetilen hizmetler kayıt atamalarının bir listesini alır. |
+> | [Microsoft. ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/Registrationatamasıns/Delete | Yönetilen hizmetler kayıt atamasını kaldırır. |
+> | [Microsoft. ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/Operationkara ses/Read | Kaynak için işlem durumunu okur. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -7242,17 +7658,17 @@ Yönetilen hizmetler kayıt ataması silme rolü, kiracı kullanıcılarının k
 
 ### <a name="management-group-contributor"></a>Yönetim grubu Katılımcısı
 
-Yönetim grubu katılımcısı rolü
+Yönetim grubu katkıda bulunan rolü [daha fazla bilgi](../governance/management-groups/overview.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Management/managementGroups/Delete | Yönetim grubunu silin. |
-> | Microsoft. Management/managementGroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
-> | Microsoft. Management/managementGroups/abonelikler/Sil | Aboneliği yönetim grubundan kaldır. |
-> | Microsoft. Management/managementGroups/abonelikler/Write | Mevcut aboneliği yönetim grubuyla ilişkilendirir. |
-> | Microsoft. Management/managementGroups/Write | Bir yönetim grubu oluşturun veya güncelleştirin. |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/Managementgroups/Delete | Yönetim grubunu silin. |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/Managementgroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/Managementgroups/Subscriptions/Delete | Aboneliği yönetim grubundan kaldır. |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/Managementgroups/Subscriptions/Write | Mevcut aboneliği yönetim grubuyla ilişkilendirir. |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/Managementgroups/Write | Bir yönetim grubu oluşturun veya güncelleştirin. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -7296,7 +7712,7 @@ Yönetim grubu okuyucusu rolü
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Management/managementGroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/Managementgroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -7336,12 +7752,12 @@ New Relic Application Performance Management hesaplarını ve uygulamaları yön
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | Newrelik. APM/hesaplar/* |  |
 > | **NotActions** |  |
 > | *yok* |  |
@@ -7382,20 +7798,20 @@ New Relic Application Performance Management hesaplarını ve uygulamaları yön
 
 ### <a name="policy-insights-data-writer-preview"></a>İlke öngörüleri veri yazıcısı (Önizleme)
 
-Kaynak ilkelerine okuma erişimine ve kaynak bileşen ilkesi olaylarına yazma erişimine izin verir.
+Kaynak ilkelerine okuma erişimine ve kaynak bileşen ilkesi olaylarına yazma erişimine izin verir. [Daha fazla bilgi edinin](../governance/policy/concepts/policy-for-kubernetes.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/poliyasatamaları/okuma | İlke atama hakkında bilgi alın. |
-> | Microsoft. Authorization/PolicyDefinitions/Read | Bir ilke tanımı hakkında bilgi alın. |
-> | Microsoft. Authorization/policysetdefinitions/Read | İlke kümesi tanımı hakkında bilgi alın. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/Read | İlke atama hakkında bilgi alın. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/PolicyDefinitions/Read | Bir ilke tanımı hakkında bilgi alın. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/Read | İlke kümesi tanımı hakkında bilgi alın. |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Policınghts/Checkdatapolicyuyumluluk/eylem | Veri ilkelerine karşı belirli bir bileşenin uyumluluk durumunu kontrol edin. |
-> | Microsoft. Poliyeleghts/policyEvents/logDataEvents/eylem | Kaynak bileşen ilkesi olaylarını günlüğe kaydedin. |
+> | [Microsoft. Poliyeleghts](resource-provider-operations.md#microsoftpolicyinsights)/checkDataPolicyCompliance/Action | Veri ilkelerine karşı belirli bir bileşenin uyumluluk durumunu kontrol edin. |
+> | [Microsoft. Poliyeleghts](resource-provider-operations.md#microsoftpolicyinsights)/Policyevents/logdataevents/Action | Kaynak bileşen ilkesi olaylarını günlüğe kaydedin. |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -7430,18 +7846,18 @@ Kaynak ilkelerine okuma erişimine ve kaynak bileşen ilkesi olaylarına yazma e
 
 ### <a name="resource-policy-contributor"></a>Kaynak İlkesine Katkıda Bulunan
 
-Kaynak ilkesi oluşturma/değiştirme, destek bileti oluşturma ve kaynakları/hiyerarşisi okuma haklarına sahip kullanıcılar.
+Kaynak ilkesi oluşturma/değiştirme, destek bileti oluşturma ve kaynakları/hiyerarşisi okuma haklarına sahip kullanıcılar. [Daha fazla bilgi edinin](../governance/policy/overview.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
 > | */Read | Gizli dizileri hariç tüm türlerin kaynaklarını okuyun. |
-> | Microsoft. Authorization/poliyasatamaları/* | İlke atamaları oluşturma ve yönetme |
-> | Microsoft. Authorization/PolicyDefinitions/* | İlke tanımları oluşturma ve yönetme |
-> | Microsoft. Authorization/policysetdefinitions/* | İlke kümeleri oluşturma ve yönetme |
-> | Microsoft. Poliyeleghts/* |  |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/* | İlke atamaları oluşturma ve yönetme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/PolicyDefinitions/* | İlke tanımları oluşturma ve yönetme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/* | İlke kümeleri oluşturma ve yönetme |
+> | [Microsoft. Poliyelei](resource-provider-operations.md#microsoftpolicyinsights)/* |  |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -7480,40 +7896,40 @@ Kaynak ilkesi oluşturma/değiştirme, destek bileti oluşturma ve kaynakları/h
 
 ### <a name="site-recovery-contributor"></a>Katkıda bulunan Site Recovery
 
-Kasa oluşturma ve rol atama dışında Site Recovery hizmetini yönetmenizi sağlar
+Kasa oluşturma ve [rol atama dışında](../site-recovery/site-recovery-role-based-linked-access-control.md) Site Recovery hizmetini yönetmenizi sağlar
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Network/virtualNetworks/Read | Sanal ağ tanımını al |
-> | Microsoft. RecoveryServices/konumlar/allocatedStamp/Read | GetAllocatedStamp, hizmet tarafından kullanılan iç işlemdir |
-> | Microsoft. RecoveryServices/Locations/Allocatedamga/eylem | AllocateStamp, hizmet tarafından kullanılan iç işlemdir |
-> | Microsoft. RecoveryServices/Vaults/sertifikalar/yazma | Kaynak sertifikası güncelleştirme işlemi kaynak/kasa kimlik bilgisi sertifikasını güncelleştirir. |
-> | Microsoft. RecoveryServices/Kasaults/Extendedınformation/* | Kasa ile ilgili genişletilmiş bilgileri oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Vaults/okuma | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
-> | Microsoft. RecoveryServices/Vaults/refreshContainers/Read |  |
-> | Microsoft. RecoveryServices/Vaults/registeredIdentities/* | Kayıtlı kimlikler oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Vaults/replicationAlertSettings/* | Çoğaltma uyarı ayarlarını oluşturma veya güncelleştirme |
-> | Microsoft. RecoveryServices/kasaults/replicationEvents/okuma | Tüm olayları okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuların/* | Çoğaltma yapıları oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Vaults/replicationJobs/* | Çoğaltma işleri oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Vaults/replicationPolicies/* | Çoğaltma ilkeleri oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Vaults/Replicationrecoveryplan/* | Kurtarma planlarını oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Vaults/storageConfig/* | Kurtarma Hizmetleri kasasının depolama yapılandırmasını oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/Vaults/TokenInfo/Read |  |
-> | Microsoft. RecoveryServices/Kasaults/kullanımlar/okuma | Bir kurtarma hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
-> | Microsoft. RecoveryServices/Vaults/vaultTokens/Read | Kasa düzeyi arka uç işlemlerine ait kasa belirteci almak için kasa belirteci işlemi kullanılabilir. |
-> | Microsoft. RecoveryServices/Vaults/monitoringAlerts/* | Kurtarma Hizmetleri Kasası için uyarıları okuyun |
-> | Microsoft. RecoveryServices/Vaults/monitoringConfigurations/notificationConfiguration/Read |  |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. Storage/storageAccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
-> | Microsoft. RecoveryServices/Vaults/replicationOperationStatus/Read | Tüm kasa çoğaltma Işlemi durumunu okuyun |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Read | Sanal ağ tanımını al |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/allocatedstamp/Read | GetAllocatedStamp, hizmet tarafından kullanılan iç işlemdir |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/allocatestamp/Action | AllocateStamp, hizmet tarafından kullanılan iç işlemdir |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Certificates/Write | Kaynak sertifikası güncelleştirme işlemi kaynak/kasa kimlik bilgisi sertifikasını güncelleştirir. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendeınformation/* | Kasa ile ilgili genişletilmiş bilgileri oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Read | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/refreshcontainers/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredidentities/* | Kayıtlı kimlikler oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationalertsettings/* | Çoğaltma uyarı ayarlarını oluşturma veya güncelleştirme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationevents/Read | Tüm olayları okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/* | Çoğaltma yapıları oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationjobs/* | Çoğaltma işleri oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationpolicies/* | Çoğaltma ilkeleri oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationRecoveryPlans/* | Kurtarma planlarını oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageconfig/* | Kurtarma Hizmetleri kasasının depolama yapılandırmasını oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/TokenInfo/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/Read | Bir kurtarma hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/vaulttokens/Read | Kasa düzeyi arka uç işlemlerine ait kasa belirteci almak için kasa belirteci işlemi kullanılabilir. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringalerts/* | Kurtarma Hizmetleri Kasası için uyarıları okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringconfigurations/notificationconfiguration/Read |  |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationoperationstatus/Read | Tüm kasa çoğaltma Işlemi durumunu okuyun |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -7574,70 +7990,70 @@ Kasa oluşturma ve rol atama dışında Site Recovery hizmetini yönetmenizi sa�
 
 ### <a name="site-recovery-operator"></a>Site Recovery Işleci
 
-Yük devretme ve yeniden çalışma ve diğer Site Recovery yönetim işlemlerini gerçekleştirmenize izin verir
+Yük devretme ve yeniden çalışma yapmanıza izin verir ancak diğer Site Recovery yönetim işlemlerini gerçekleştirmenize [daha fazla bilgi](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. Network/virtualNetworks/Read | Sanal ağ tanımını al |
-> | Microsoft. RecoveryServices/konumlar/allocatedStamp/Read | GetAllocatedStamp, hizmet tarafından kullanılan iç işlemdir |
-> | Microsoft. RecoveryServices/Locations/Allocatedamga/eylem | AllocateStamp, hizmet tarafından kullanılan iç işlemdir |
-> | Microsoft. RecoveryServices/Kasaults/Extendedınformation/Read | Genişletilmiş bilgileri al işlemi, bir nesnenin,? Kasası türünde Azure kaynağını temsil eden genişletilmiş bilgilerini alır mi? |
-> | Microsoft. RecoveryServices/Vaults/okuma | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
-> | Microsoft. RecoveryServices/Vaults/refreshContainers/Read |  |
-> | Microsoft. RecoveryServices/Vaults/registeredIdentities/operationResults/Read | Işlem sonuçlarını al işlemi, zaman uyumsuz olarak gönderilen işlemin işlem durumunu ve sonucunu almak için kullanılabilir |
-> | Microsoft. RecoveryServices/Vaults/registeredIdentities/Read | Kapsayıcıları al işlemi, bir kaynak için kayıtlı olan kapsayıcıları almak için kullanılabilir. |
-> | Microsoft. RecoveryServices/Vaults/replicationAlertSettings/Read | Tüm uyarı ayarlarını okuyun |
-> | Microsoft. RecoveryServices/kasaults/replicationEvents/okuma | Tüm olayları okuyun |
-> | Microsoft. RecoveryServices/kasaults/Replicationdokuların/Checktutarlılığı/eylemi | Dokunun tutarlılığını denetler |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/okuma | Tüm yapıları okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuların/yeniden Ilişkilendirilmesi/eylem | Ağ geçidini yeniden ilişkilendir |
-> | Microsoft. RecoveryServices/kasaults/Replicationyapılar/yenilenebilir sertifika/eylem | Doku için Sertifikayı Yenile |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokular/replicationNetworks/Read | Tüm ağları okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationNetworks/replicationNetworkMappings/Read | Tüm ağ eşlemelerini okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Read | Tüm koruma kapsayıcılarını okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir | Korunabilir öğeleri oku |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/applyRecoveryPoint/Action | Kurtarma noktası Uygula |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/işlem | Yük devretme yürütmesi |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Plannedyük devretme/eylem | Planlı Yük Devretme |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Read | Tüm korumalı öğeleri okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/recoveryPoints/Read | Tüm çoğaltma kurtarma noktalarını okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/\ çoğaltma/eylem | Çoğaltmayı Onar |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorudıtems/reProtect/ACTION | Korumalı öğeyi yeniden koru |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/switchprotection/eylem | Koruma kapsayıcısını Değiştir |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/TEMS/testFailover/ACTION | Test Yük Devretmesi |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/test Failovercleanup/Action | Yük devretme sınamasını Temizleme |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/unplannedFailover/ACTION | Yük devretme |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Updatebir Dıtems/Update, Ityservice/Action | Mobility hizmetini Güncelleştir |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/replicationProtectionContainerMappings/Read | Tüm koruma kapsayıcısı eşlemelerini okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationRecoveryServicesProviders/Read | Tüm kurtarma hizmetleri sağlayıcılarını okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationRecoveryServicesProviders/refreshProvider/Action | Sağlayıcıyı Yenile |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/Replicationstorageclassıfler/okuma | Tüm depolama sınıflandırmalarını okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuların/Replicationstorageclassıflıya/Replicationstorageclassıficationmappings/Read | Tüm depolama sınıflandırması eşlemelerini okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationvCenters/Read | Tüm sanal merkezleri okuyun |
-> | Microsoft. RecoveryServices/Vaults/replicationJobs/* | Çoğaltma işleri oluşturma ve yönetme |
-> | Microsoft. RecoveryServices/kasaults/replicationPolicies/okuma | Tüm Ilkeleri okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationrecoveryplan/Failovercommıt/Action | Yük devretme yürütmesi kurtarma planı |
-> | Microsoft. RecoveryServices/Vaults/Replicationrecoveryplan/plannedFailover/ACTION | Planlı Yük devretme kurtarma planı |
-> | Microsoft. RecoveryServices/Vaults/Replicationrecoveryplan/okuma | Tüm kurtarma planlarını okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationrecoveryplan/yeniden koruma/eylem | Kurtarma planını yeniden koru |
-> | Microsoft. RecoveryServices/Vaults/Replicationrecoveryplan/testFailover/Action | Yük devretme kurtarma planını sına |
-> | Microsoft. RecoveryServices/Vaults/Replicationrecoveryplan/testFailoverCleanup/Action | Sınama yük devretmesi Temizleme kurtarma planı |
-> | Microsoft. RecoveryServices/Vaults/Replicationrecoveryplan/unplannedFailover/ACTION | Yük devretme kurtarma planı |
-> | Microsoft. RecoveryServices/Vaults/monitoringAlerts/* | Kurtarma Hizmetleri Kasası için uyarıları okuyun |
-> | Microsoft. RecoveryServices/Vaults/monitoringConfigurations/notificationConfiguration/Read |  |
-> | Microsoft. RecoveryServices/Vaults/storageConfig/Read |  |
-> | Microsoft. RecoveryServices/Vaults/TokenInfo/Read |  |
-> | Microsoft. RecoveryServices/Kasaults/kullanımlar/okuma | Bir kurtarma hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
-> | Microsoft. RecoveryServices/Vaults/vaultTokens/Read | Kasa düzeyi arka uç işlemlerine ait kasa belirteci almak için kasa belirteci işlemi kullanılabilir. |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. Storage/storageAccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Virtualnetworks/Read | Sanal ağ tanımını al |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/allocatedstamp/Read | GetAllocatedStamp, hizmet tarafından kullanılan iç işlemdir |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/allocatestamp/Action | AllocateStamp, hizmet tarafından kullanılan iç işlemdir |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendeınformation/Read | Genişletilmiş bilgileri al işlemi, bir nesnenin,? Kasası türünde Azure kaynağını temsil eden genişletilmiş bilgilerini alır mi? |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Read | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/refreshcontainers/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredidentities/operationresults/Read | Işlem sonuçlarını al işlemi, zaman uyumsuz olarak gönderilen işlemin işlem durumunu ve sonucunu almak için kullanılabilir |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredidentities/Read | Kapsayıcıları al işlemi, bir kaynak için kayıtlı olan kapsayıcıları almak için kullanılabilir. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationalertsettings/Read | Tüm uyarı ayarlarını okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationevents/Read | Tüm olayları okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/checkmı \ eylem | Dokunun tutarlılığını denetler |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/Read | Tüm yapıları okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/ilişkilendirme Ategateway/Action | Ağ geçidini yeniden ilişkilendir |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/renewcertificate/Action | Doku için Sertifikayı Yenile |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationnetworks/Read | Tüm ağları okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationnetworks/replicationnetworkmappings/Read | Tüm ağ eşlemelerini okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/Read | Tüm koruma kapsayıcılarını okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/replicationkorunabilir Tabloıtem/Read | Korunabilir öğeleri oku |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/replicationkorunabilir Dıtems/applyrecoverypoint/Action | Kurtarma noktası Uygula |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/replicationkorunabilir Dıtems/failovercommit/Action | Yük devretme yürütmesi |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/replicationkorunabilir Dıtems/PlannedFailOver/Action | Planlı Yük Devretme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/replicationkorunabilir Dıtems/Read | Tüm korumalı öğeleri okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/replicationkorunabilir Dıtems/recoverypoints/Read | Tüm çoğaltma kurtarma noktalarını okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/replicationkorunabilir Dıtems/repairreplication/Action | Çoğaltmayı Onar |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/reProtect/Action | Korumalı öğeyi yeniden koru |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/switchprotection/Action | Koruma kapsayıcısını Değiştir |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/replicationkorunabilir Dıtems/testfailover/Action | Test Yük Devretmesi |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/replicationkorunabilir Dıtems/testfailovercleanup/Action | Yük devretme sınamasını Temizleme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/replicationkorunabilir Dıtems/unplannedfailover/Action | Yük devretme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/replicationkorunabilir Dıtems/updatedraityservice/Action | Mobility hizmetini Güncelleştir |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/replicationprotectioncontainermappings/Read | Tüm koruma kapsayıcısı eşlemelerini okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationrecoveryservicesproviders/Read | Tüm kurtarma hizmetleri sağlayıcılarını okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationrecoveryservicesproviders/refreshprovider/Action | Sağlayıcıyı Yenile |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationstorageclassıfications/Read | Tüm depolama sınıflandırmalarını okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationstorageclassıfications/replicationstorageclassıficationmappings/Read | Tüm depolama sınıflandırması eşlemelerini okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationvcenters/Read | Tüm sanal merkezleri okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationjobs/* | Çoğaltma işleri oluşturma ve yönetme |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationpolicies/Read | Tüm Ilkeleri okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationrecoveryplans/failovercommit/Action | Yük devretme yürütmesi kurtarma planı |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationrecoveryplans/PlannedFailOver/Action | Planlı Yük devretme kurtarma planı |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationrecoveryplans/Read | Tüm kurtarma planlarını okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationRecoveryPlans/reProtect/Action | Kurtarma planını yeniden koru |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationrecoveryplans/testfailover/Action | Yük devretme kurtarma planını sına |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationrecoveryplans/testfailovercleanup/Action | Sınama yük devretmesi Temizleme kurtarma planı |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationrecoveryplans/unplannedfailover/Action | Yük devretme kurtarma planı |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringalerts/* | Kurtarma Hizmetleri Kasası için uyarıları okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringconfigurations/notificationconfiguration/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageconfig/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/TokenInfo/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/Read | Bir kurtarma hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/vaulttokens/Read | Kasa düzeyi arka uç işlemlerine ait kasa belirteci almak için kasa belirteci işlemi kullanılabilir. |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/Storageaccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -7728,43 +8144,43 @@ Yük devretme ve yeniden çalışma ve diğer Site Recovery yönetim işlemlerin
 
 ### <a name="site-recovery-reader"></a>Site Recovery okuyucu
 
-Site Recovery durumunu görüntülemenize izin verir, ancak diğer yönetim işlemlerini gerçekleştirmenize izin vermez
+Site Recovery durumunu görüntülemenize izin verir ancak diğer yönetim işlemlerini gerçekleştirmenize [daha fazla bilgi edinin](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. RecoveryServices/konumlar/allocatedStamp/Read | GetAllocatedStamp, hizmet tarafından kullanılan iç işlemdir |
-> | Microsoft. RecoveryServices/Kasaults/Extendedınformation/Read | Genişletilmiş bilgileri al işlemi, bir nesnenin,? Kasası türünde Azure kaynağını temsil eden genişletilmiş bilgilerini alır mi? |
-> | Microsoft. RecoveryServices/Kasaults/monitoringAlerts/okuma | Kurtarma Hizmetleri Kasası için uyarıları alır. |
-> | Microsoft. RecoveryServices/Vaults/monitoringConfigurations/notificationConfiguration/Read |  |
-> | Microsoft. RecoveryServices/Vaults/okuma | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
-> | Microsoft. RecoveryServices/Vaults/refreshContainers/Read |  |
-> | Microsoft. RecoveryServices/Vaults/registeredIdentities/operationResults/Read | Işlem sonuçlarını al işlemi, zaman uyumsuz olarak gönderilen işlemin işlem durumunu ve sonucunu almak için kullanılabilir |
-> | Microsoft. RecoveryServices/Vaults/registeredIdentities/Read | Kapsayıcıları al işlemi, bir kaynak için kayıtlı olan kapsayıcıları almak için kullanılabilir. |
-> | Microsoft. RecoveryServices/Vaults/replicationAlertSettings/Read | Tüm uyarı ayarlarını okuyun |
-> | Microsoft. RecoveryServices/kasaults/replicationEvents/okuma | Tüm olayları okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/okuma | Tüm yapıları okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokular/replicationNetworks/Read | Tüm ağları okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationNetworks/replicationNetworkMappings/Read | Tüm ağ eşlemelerini okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Read | Tüm koruma kapsayıcılarını okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir | Korunabilir öğeleri oku |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Read | Tüm korumalı öğeleri okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/recoveryPoints/Read | Tüm çoğaltma kurtarma noktalarını okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/replicationProtectionContainerMappings/Read | Tüm koruma kapsayıcısı eşlemelerini okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationRecoveryServicesProviders/Read | Tüm kurtarma hizmetleri sağlayıcılarını okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/Replicationstorageclassıfler/okuma | Tüm depolama sınıflandırmalarını okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuların/Replicationstorageclassıflıya/Replicationstorageclassıficationmappings/Read | Tüm depolama sınıflandırması eşlemelerini okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationvCenters/Read | Tüm sanal merkezleri okuyun |
-> | Microsoft. RecoveryServices/kasaults/replicationJobs/okuma | Tüm Işleri okuyun |
-> | Microsoft. RecoveryServices/kasaults/replicationPolicies/okuma | Tüm Ilkeleri okuyun |
-> | Microsoft. RecoveryServices/Vaults/Replicationrecoveryplan/okuma | Tüm kurtarma planlarını okuyun |
-> | Microsoft. RecoveryServices/Vaults/storageConfig/Read |  |
-> | Microsoft. RecoveryServices/Vaults/TokenInfo/Read |  |
-> | Microsoft. RecoveryServices/Kasaults/kullanımlar/okuma | Bir kurtarma hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
-> | Microsoft. RecoveryServices/Vaults/vaultTokens/Read | Kasa düzeyi arka uç işlemlerine ait kasa belirteci almak için kasa belirteci işlemi kullanılabilir. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/allocatedstamp/Read | GetAllocatedStamp, hizmet tarafından kullanılan iç işlemdir |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendeınformation/Read | Genişletilmiş bilgileri al işlemi, bir nesnenin,? Kasası türünde Azure kaynağını temsil eden genişletilmiş bilgilerini alır mi? |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringalerts/Read | Kurtarma Hizmetleri Kasası için uyarıları alır. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringconfigurations/notificationconfiguration/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Read | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/refreshcontainers/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredidentities/operationresults/Read | Işlem sonuçlarını al işlemi, zaman uyumsuz olarak gönderilen işlemin işlem durumunu ve sonucunu almak için kullanılabilir |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredidentities/Read | Kapsayıcıları al işlemi, bir kaynak için kayıtlı olan kapsayıcıları almak için kullanılabilir. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationalertsettings/Read | Tüm uyarı ayarlarını okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationevents/Read | Tüm olayları okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/Read | Tüm yapıları okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationnetworks/Read | Tüm ağları okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationnetworks/replicationnetworkmappings/Read | Tüm ağ eşlemelerini okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/Read | Tüm koruma kapsayıcılarını okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/replicationkorunabilir Tabloıtem/Read | Korunabilir öğeleri oku |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/replicationkorunabilir Dıtems/Read | Tüm korumalı öğeleri okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/replicationkorunabilir Dıtems/recoverypoints/Read | Tüm çoğaltma kurtarma noktalarını okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationprotectioncontainers/replicationprotectioncontainermappings/Read | Tüm koruma kapsayıcısı eşlemelerini okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationrecoveryservicesproviders/Read | Tüm kurtarma hizmetleri sağlayıcılarını okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationstorageclassıfications/Read | Tüm depolama sınıflandırmalarını okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationstorageclassıfications/replicationstorageclassıficationmappings/Read | Tüm depolama sınıflandırması eşlemelerini okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationfabrics/replicationvcenters/Read | Tüm sanal merkezleri okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationjobs/Read | Tüm Işleri okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationpolicies/Read | Tüm Ilkeleri okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationrecoveryplans/Read | Tüm kurtarma planlarını okuyun |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageconfig/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/TokenInfo/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/Read | Bir kurtarma hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/vaulttokens/Read | Kasa düzeyi arka uç işlemlerine ait kasa belirteci almak için kasa belirteci işlemi kullanılabilir. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -7828,15 +8244,15 @@ Site Recovery durumunu görüntülemenize izin verir, ancak diğer yönetim işl
 
 ### <a name="support-request-contributor"></a>Destek Isteği Katılımcısı
 
-Destek istekleri oluşturmanızı ve yönetmenizi sağlar
+Destek istekleri oluşturmanızı ve yönetmenizi sağlar [daha fazla bilgi](../azure-portal/supportability/how-to-create-azure-support-request.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -7872,20 +8288,20 @@ Destek istekleri oluşturmanızı ve yönetmenizi sağlar
 
 ### <a name="tag-contributor"></a>Etiket Katılımcısı
 
-Varlıklarda kendilerine erişim sağlamamanıza gerek kalmadan varlıklarda etiketleri yönetmenizi sağlar.
+Varlıklarda kendilerine erişim sağlamamanıza gerek kalmadan varlıklarda etiketleri yönetmenizi sağlar. [Daha fazla bilgi edinin](../azure-resource-manager/management/tag-resources.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. resources/abonelikler/resourceGroups/kaynaklar/okuma | Kaynak grubunun kaynaklarını alır. |
-> | Microsoft. resources/abonelikler/kaynaklar/okuma | Bir aboneliğin kaynaklarını alır. |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
-> | Microsoft. resources/Tags/* |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Resources/Read | Kaynak grubunun kaynaklarını alır. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Resources/Read | Bir aboneliğin kaynaklarını alır. |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Tags/* |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -7935,13 +8351,13 @@ BizTalk hizmetlerini yönetmenizi sağlar ancak onlara erişim izni vermez.
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
 > | Microsoft. BizTalkServices/BizTalk/* | BizTalk Hizmetleri oluşturma ve yönetme |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -7979,6 +8395,46 @@ BizTalk hizmetlerini yönetmenizi sağlar ancak onlara erişim izni vermez.
 }
 ```
 
+### <a name="desktop-virtualization-user"></a>Masaüstü Sanallaştırma kullanıcısı
+
+Kullanıcının uygulama grubundaki uygulamaları kullanmasına izin verir. [Daha fazla bilgi edinin](../virtual-desktop/delegated-access-virtual-desktop.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Eylemler** |  |
+> | *yok* |  |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | Microsoft. DesktopVirtualization/applicationGroups/useApplications/Action | ApplicationGroup kullanma |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows user to use the applications in an application group.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/1d18fff3-a72a-46b5-b4a9-0b38a3cd7e63",
+  "name": "1d18fff3-a72a-46b5-b4a9-0b38a3cd7e63",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DesktopVirtualization/applicationGroups/useApplications/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Desktop Virtualization User",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="scheduler-job-collections-contributor"></a>Zamanlayıcı Iş koleksiyonları Katılımcısı
 
 Zamanlayıcı iş koleksiyonlarını yönetmenizi sağlar, ancak bunlara erişimi kalmaz.
@@ -7987,13 +8443,13 @@ Zamanlayıcı iş koleksiyonlarını yönetmenizi sağlar, ancak bunlara erişim
 > |  |  |
 > | --- | --- |
 > | **Eylemler** |  |
-> | Microsoft. Authorization/*/Read | Rolleri ve rol atamalarını oku |
-> | Microsoft. Insights/alertRules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
-> | Microsoft. ResourceHealth/kullanılabilirlik Bilitydurumlar/okuma | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
-> | Microsoft. resources/dağıtımlar/* | Dağıtım oluşturma ve yönetme |
-> | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. Scheduler/jobcollections/* | İş koleksiyonları oluşturma ve yönetme |
-> | Microsoft. support/* | Destek bileti oluşturma ve güncelleştirme |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Alertrules/* | Klasik ölçüm uyarısı oluşturma ve yönetme |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/kullanılabilirliği bilitykara ses/Read | Belirtilen kapsamdaki tüm kaynaklar için Kullanılabilirlik durumlarını alır |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
+> | [Microsoft. Scheduler](resource-provider-operations.md#microsoftscheduler)/jobcollections/* | İş koleksiyonları oluşturma ve yönetme |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |

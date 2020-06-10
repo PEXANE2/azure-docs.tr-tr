@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 03/13/2020
-ms.openlocfilehash: 705c35570484f604e9281b9c19ceb734180ba3e1
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.date: 06/09/2020
+ms.openlocfilehash: 23563074bc8bbf02b36e86ff6c78acf3034670a6
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418271"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655880"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma
 
@@ -36,7 +36,7 @@ Bu makalede, kendinden konak IR oluşturma ve yapılandırma açıklanmaktadır.
 
 ### <a name="create-a-self-hosted-ir-via-azure-powershell"></a>Azure PowerShell aracılığıyla kendinden konak IR oluşturma
 
-1. Bu görev için Azure PowerShell kullanabilirsiniz. Örnek aşağıda verilmiştir:
+1. Bu görev için Azure PowerShell kullanabilirsiniz. Aşağıda bir örnek verilmiştir:
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
@@ -56,13 +56,13 @@ Bu makalede, kendinden konak IR oluşturma ve yapılandırma açıklanmaktadır.
 
 Azure Data Factory Kullanıcı arabirimini kullanarak şirket içinde barındırılan bir IR oluşturmak için aşağıdaki adımları kullanın.
 
-1. Azure Data Factory Kullanıcı arabiriminin **Başlarken** sayfasında, en soldaki bölmedeki **Yazar** sekmesini seçin.
+1. Azure Data Factory Kullanıcı arabiriminin **Başlarken** sayfasında, en soldaki bölmeden [Yönet sekmesini](https://docs.microsoft.com/azure/data-factory/author-management-hub) seçin.
 
-   ![Giriş sayfası yazar düğmesi](media/doc-common-process/get-started-page-author-button.png)
+   ![Giriş sayfası Yönet düğmesi](media/doc-common-process/get-started-page-manage-button.png)
 
-1. Sol bölmenin altındaki **bağlantıları** seçin ve **Bağlantılar** penceresinde **tümleştirme çalışma zamanları** ' nı seçin. **+ Yeni**seçeneğini belirleyin.
+1. Sol bölmedeki **tümleştirme çalışma zamanları** ' nı seçin ve ardından **+ Yeni**' yi seçin.
 
-   ![Tümleştirme çalışma zamanı oluşturma](media/create-self-hosted-integration-runtime/new-integration-runtime.png)
+   ![Tümleştirme çalışma zamanı oluşturma](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. **Tümleştirme çalışma zamanı kurulumu** sayfasında, **Azure, şirket içinde barındırılan**' ı seçin ve ardından **devam**' ı seçin. 
 
@@ -97,7 +97,7 @@ Azure Data Factory Kullanıcı arabirimini kullanarak şirket içinde barındır
 
 Şirket içinde barındırılan mevcut bir IR kurmak veya yönetmek için komut satırını kullanabilirsiniz. Bu kullanım özellikle, şirket içinde barındırılan IR düğümlerinin yüklenmesinin ve kaydının otomatikleştirilmesine yardımcı olabilir.
 
-Dmgcmd. exe, şirket içinde barındırılan yükleyicide bulunur. Genellikle C:\Program Files\Microsoft Integration Runtime\4.0\Shared\ klasöründe bulunur. Bu uygulama, çeşitli parametreleri destekler ve otomasyon için Batch betikleri kullanılarak bir komut satırı aracılığıyla çağrılabilir.
+Dmgcmd.exe, şirket içinde barındırılan yükleyicide bulunur. Genellikle C:\Program Files\Microsoft Integration Runtime\4.0\Shared\ klasöründe bulunur. Bu uygulama, çeşitli parametreleri destekler ve otomasyon için Batch betikleri kullanılarak bir komut satırı aracılığıyla çağrılabilir.
 
 Uygulamayı aşağıdaki gibi kullanın:
 
@@ -153,7 +153,7 @@ Uygulamanın parametrelerinin ve özelliklerinin ayrıntıları şunlardır:
 - Veri deposu bir Azure hizmet olarak altyapı (IaaS) sanal makinesi üzerinde bulutta olsa bile, şirket içinde barındırılan tümleştirme çalışma zamanını kullanın.
 - Görevler, FIPS uyumlu şifreleme etkin olan bir Windows Server 'a yüklediğiniz şirket içinde barındırılan tümleştirme çalışma zamanında başarısız olabilir. Bu sorunu geçici olarak çözmek için sunucuda FIPS uyumlu şifrelemeyi devre dışı bırakın. FIPS uyumlu şifrelemeyi devre dışı bırakmak için, aşağıdaki kayıt defteri alt anahtarının değerini 1 (etkin) iken 0 (devre dışı) olarak değiştirin: `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Desteklenen Windows sürümleri şunlardır:
   + Windows 7 Service Pack 1
@@ -352,8 +352,8 @@ Yapılandırıldığında, şirket içinde barındırılan tümleştirme çalı�
 Üç yapılandırma seçeneği vardır:
 
 - **Proxy kullanma**: şirket içinde barındırılan tümleştirme çalışma zamanı, bulut hizmetlerine bağlanmak için hiçbir proxy 'yi açık olarak kullanmaz.
-- **Sistem proxy 'Si kullan**: şirket içinde barındırılan tümleştirme çalışma zamanı diahost. exe. config ve diawp. exe. config içinde yapılandırılan proxy ayarını kullanır. Bu dosyalar hiçbir proxy yapılandırması belirtmeyecekse, şirket içinde barındırılan tümleştirme çalışma zamanı, bir ara sunucuya geçmeden doğrudan bulut hizmetine bağlanır.
-- **Özel proxy kullan**: diahost. exe. config ve diawp. exe. config içinde yapılandırma kullanmak yerine, şirket içinde barındırılan tümleştirme çalışma zamanı IÇIN kullanılacak http proxy ayarını yapılandırın. **Adres** ve **bağlantı noktası** değerleri gereklidir. Proxy 'nin kimlik doğrulama ayarına bağlı olarak, **Kullanıcı adı** ve **parola** değerleri isteğe bağlıdır. Tüm ayarlar, şirket içinde barındırılan tümleştirme çalışma zamanı üzerinde Windows DPAPI ile şifrelenir ve makinede yerel olarak depolanır.
+- **Sistem proxy 'Si kullan**: şirket içinde barındırılan tümleştirme çalışma zamanı, diahost.exe.config ve diawp.exe.config yapılandırılan proxy ayarını kullanır. Bu dosyalar hiçbir proxy yapılandırması belirtmeyecekse, şirket içinde barındırılan tümleştirme çalışma zamanı, bir ara sunucuya geçmeden doğrudan bulut hizmetine bağlanır.
+- **Özel proxy kullan**: diahost.exe.config ve diawp.exe.config yapılandırmaların kullanılması yerine, şirket içinde barındırılan tümleştirme çalışma zamanı IÇIN kullanılacak http proxy ayarını yapılandırın. **Adres** ve **bağlantı noktası** değerleri gereklidir. Proxy 'nin kimlik doğrulama ayarına bağlı olarak, **Kullanıcı adı** ve **parola** değerleri isteğe bağlıdır. Tüm ayarlar, şirket içinde barındırılan tümleştirme çalışma zamanı üzerinde Windows DPAPI ile şifrelenir ve makinede yerel olarak depolanır.
 
 Tümleştirme çalışma zamanı konak hizmeti, güncelleştirilmiş proxy ayarlarını kaydettikten sonra otomatik olarak yeniden başlatılır.
 
@@ -373,11 +373,11 @@ HTTP proxy 'sini görüntülemek ve güncelleştirmek için Configuration Manage
 
 ### <a name="configure-proxy-server-settings"></a>Proxy sunucusu ayarlarını yapılandırma
 
-HTTP proxy için **sistem proxy kullan** seçeneğini belirlerseniz, şirket içinde barındırılan tümleştirme çalışma zamanı, diahost. exe. config ve diawp. exe. config dosyasındaki proxy ayarlarını kullanır. Bu dosyalar proxy belirtmeksizin, şirket içinde barındırılan tümleştirme çalışma zamanı, bir ara sunucuya geçmeden doğrudan bulut hizmetine bağlanır. Aşağıdaki yordam diahost. exe. config dosyasını güncelleştirmek için yönergeler sağlar:
+HTTP proxy için **sistem proxy 'Si kullan** seçeneğini belirlerseniz, şirket içinde barındırılan tümleştirme çalışma zamanı diahost.exe.config ve diawp.exe.config içindeki proxy ayarlarını kullanır. Bu dosyalar proxy belirtmeksizin, şirket içinde barındırılan tümleştirme çalışma zamanı, bir ara sunucuya geçmeden doğrudan bulut hizmetine bağlanır. Aşağıdaki yordam diahost.exe.config dosyasını güncelleştirmek için yönergeler sağlar:
 
-1. Dosya Gezgini 'nde, özgün dosyanın bir yedeklemesi olarak C:\Program Files\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config ' ın güvenli bir kopyasını oluşturun.
+1. Dosya Gezgini 'nde, özgün dosyanın bir yedeklemesi olarak C:\Program Files\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config 'ın güvenli bir kopyasını oluşturun.
 1. Yönetici olarak çalışan Not defteri 'Ni açın.
-1. Not defteri 'nde C:\Program Files\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config. metin dosyasını açın.
+1. Not defteri 'nde C:\Program Files\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config metin dosyasını açın.
 1. Varsayılan **System.net** etiketini aşağıdaki kodda gösterildiği gibi bulun:
 
     ```xml
@@ -407,7 +407,7 @@ HTTP proxy için **sistem proxy kullan** seçeneğini belirlerseniz, şirket iç
    Hizmet başlatılmazsa, büyük olasılıkla düzenlediğiniz uygulama yapılandırma dosyasında yanlış XML etiketi söz dizimi eklemiş olursunuz.
 
 > [!IMPORTANT]
-> Hem diahost. exe. config hem de diawp. exe. config ' i güncelleştirmeyi unutmayın.
+> Hem diahost.exe.config hem de diawp.exe.config güncelleştirmeyi unutmayın.
 
 Ayrıca, Microsoft Azure şirketinizin izin verilenler listesinde olduğundan emin olmanız gerekir. Geçerli Azure IP adreslerinin listesini [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=41653)' nden indirebilirsiniz.
 

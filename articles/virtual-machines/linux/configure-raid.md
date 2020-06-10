@@ -3,16 +3,16 @@ title: Linux VM 'de yazılım RAID yapılandırma
 description: Azure 'da Linux üzerinde RAID yapılandırmak için mdaddm 'yi nasıl kullanacağınızı öğrenin.
 author: rickstercdn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 122abda51b907491b322908c3c2c689bc1723e87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3471ccfa0899f73969c511dea283c2d0d7051af8
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250263"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659795"
 ---
 # <a name="configure-software-raid-on-linux"></a>Linux 'ta yazılım RAID yapılandırma
 Azure 'daki Linux sanal makinelerinde yazılım RAID 'i kullanarak birden çok bağlı veri diskini tek bir RAID cihazı olarak sunmak için yaygın bir senaryodur. Genellikle bu, performansı artırmak ve yalnızca tek bir disk kullanılmasına kıyasla İyileştirilmiş işleme sağlamak için kullanılabilir.
@@ -43,7 +43,7 @@ RAID cihazını yapılandırmak için iki veya daha fazla boş veri diski gerekl
 ## <a name="create-the-disk-partitions"></a>Disk bölümleri oluşturma
 Bu örnekte,/dev/sdc'de tek bir disk bölümü oluşturacağız. Yeni disk bölümü/dev/sdc1olarak adlandırılacaktır.
 
-1. Bölüm `fdisk` oluşturmaya başlamaya başlayın
+1. `fdisk`Bölüm oluşturmaya başlamaya başlayın
 
     ```bash
     sudo fdisk /dev/sdc
@@ -77,14 +77,14 @@ Bu örnekte,/dev/sdc'de tek bir disk bölümü oluşturacağız. Yeni disk böl�
     Partition number (1-4): 1
     ```
 
-1. Yeni bölümün başlangıç noktasını seçin veya bölümü sürücüdeki boş alanın başına `<enter>` yerleştirmek için varsayılanı kabul etmek üzere tuşuna basın:
+1. Yeni bölümün başlangıç noktasını seçin veya `<enter>` bölümü sürücüdeki boş alanın başına yerleştirmek için varsayılanı kabul etmek üzere tuşuna basın:
 
     ```bash   
     First cylinder (1-1305, default 1):
     Using default value 1
     ```
 
-1. Bölüm boyutunu seçin, örneğin 10 gigabayt bölüm oluşturmak için ' + 10G ' yazın. Ya da tüm `<enter>` sürücüyü kapsayan tek bir bölüm oluştur ' a basın:
+1. Bölüm boyutunu seçin, örneğin 10 gigabayt bölüm oluşturmak için ' + 10G ' yazın. Ya da `<enter>` tüm sürücüyü kapsayan tek bir bölüm oluştur ' a basın:
 
     ```bash   
     Last cylinder, +cylinders or +size{K,M,G} (1-1305, default 1305): 
@@ -107,7 +107,7 @@ Bu örnekte,/dev/sdc'de tek bir disk bölümü oluşturacağız. Yeni disk böl�
     ```
 
 ## <a name="create-the-raid-array"></a>RAID dizisi oluşturma
-1. Aşağıdaki örnek, üç ayrı veri diskinde bulunan (sdc1, sdd1, sde1) üç bölümden oluşan "Stripe" (RAID düzey 0).  Bu komutu çalıştırdıktan sonra **/dev/MD127** adlı yenı bir RAID cihazı oluşturulur. Ayrıca, bu veri disklerinin daha önce başka bir işlevsiz RAID dizisinin parçası olduğunu, `--force` parametreyi `mdadm` komuta eklemek için gerekli olabileceğini unutmayın:
+1. Aşağıdaki örnek, üç ayrı veri diskinde bulunan (sdc1, sdd1, sde1) üç bölümden oluşan "Stripe" (RAID düzey 0).  Bu komutu çalıştırdıktan sonra **/dev/MD127** adlı yenı bir RAID cihazı oluşturulur. Ayrıca, bu veri disklerinin daha önce başka bir işlevsiz RAID dizisinin parçası olduğunu, parametreyi komuta eklemek için gerekli olabileceğini unutmayın `--force` `mdadm` :
 
     ```bash  
     sudo mdadm --create /dev/md127 --level 0 --raid-devices 3 \
@@ -149,7 +149,7 @@ Bu örnekte,/dev/sdc'de tek bir disk bölümü oluşturacağız. Yeni disk böl�
     ```bash
     sudo mkdir /data
     ```
-1. /Etc/fstab düzenlenirken, **UUID** 'nin cihaz adı yerine dosya sistemine başvurması için kullanılması gerekir.  Yeni dosya `blkid` sisteminin UUID 'sini öğrenmek için yardımcı programını kullanın:
+1. /Etc/fstab düzenlenirken, **UUID** 'nin cihaz adı yerine dosya sistemine başvurması için kullanılması gerekir.  `blkid`Yeni dosya SISTEMININ UUID 'sini öğrenmek için yardımcı programını kullanın:
 
     ```bash   
     sudo /sbin/blkid
@@ -191,7 +191,7 @@ Bu örnekte,/dev/sdc'de tek bir disk bölümü oluşturacağız. Yeni disk böl�
    
     **fstab yapılandırması**
    
-    Birçok dağıtım,/etc/fstab dosyasına `nobootwait` eklenebilen `nofail` veya bağlama parametrelerini içerir. Bu parametreler, belirli bir dosya sistemini bağladığınızda ve Linux sisteminin, RAID dosya sistemini düzgün bir şekilde bağlamasa bile önyüklemeye devam etmesine izin veren hatalara izin verir. Bu parametrelerle ilgili daha fazla bilgi için, dağıtım belgelerine bakın.
+    Birçok dağıtım, `nobootwait` `nofail` /etc/fstab dosyasına eklenebilen veya bağlama parametrelerini içerir. Bu parametreler, belirli bir dosya sistemini bağladığınızda ve Linux sisteminin, RAID dosya sistemini düzgün bir şekilde bağlamasa bile önyüklemeye devam etmesine izin veren hatalara izin verir. Bu parametrelerle ilgili daha fazla bilgi için, dağıtım belgelerine bakın.
    
     Örnek (Ubuntu):
 
@@ -201,26 +201,26 @@ Bu örnekte,/dev/sdc'de tek bir disk bölümü oluşturacağız. Yeni disk böl�
 
     **Linux önyükleme parametreleri**
    
-    Yukarıdaki parametrelere ek olarak, "`bootdegraded=true`" çekirdek PARAMETRESI, RAID hasarlı veya düşürülmüş olarak algılansa bile sistemin önyüklemesine izin verebilir, örneğin, bir veri sürücüsü yanlışlıkla sanal makineden kaldırılırsa. Bu, varsayılan olarak önyüklenebilir olmayan bir sisteme neden olabilir.
+    Yukarıdaki parametrelere ek olarak, "" çekirdek parametresi, `bootdegraded=true` RAID hasarlı veya düşürülmüş olarak algılansa bile sistemin önyüklemesine izin verebilir, örneğin, bir veri sürücüsü yanlışlıkla sanal makineden kaldırılırsa. Bu, varsayılan olarak önyüklenebilir olmayan bir sisteme neden olabilir.
    
-    Çekirdek parametrelerini düzgün bir şekilde düzenlemek için lütfen dağıtım belgelerine bakın. Örneğin, birçok dağıtımda (CentOS, Oracle Linux, SLES 11), bu parametreler "`/boot/grub/menu.lst`" dosyasına elle eklenebilir.  Ubuntu 'da, bu parametre "/etc/default/grub" üzerindeki `GRUB_CMDLINE_LINUX_DEFAULT` değişkene eklenebilir.
+    Çekirdek parametrelerini düzgün bir şekilde düzenlemek için lütfen dağıtım belgelerine bakın. Örneğin, birçok dağıtımda (CentOS, Oracle Linux, SLES 11), bu parametreler " `/boot/grub/menu.lst` " dosyasına elle eklenebilir.  Ubuntu 'da, bu parametre `GRUB_CMDLINE_LINUX_DEFAULT` "/etc/default/grub" üzerindeki değişkene eklenebilir.
 
 
 ## <a name="trimunmap-support"></a>KESME/eşlemeyi kaldır desteği
 Bazı Linux çekirdekler, diskteki kullanılmayan blokları atmak için kesme/eşlemeyi Kaldır işlemlerini destekler. Bu işlemler, Azure 'un silinen sayfaların artık geçerli olmadığını ve yoksayılabilir olduğunu bildirmek için öncelikle standart depolamada yararlı olur. Sayfaların atılması, büyük dosyalar oluşturup bunları silerseniz maliyeti kaydedebilir.
 
 > [!NOTE]
-> Dizi için öbek boyutu varsayılandan daha az (512KB) ayarlandıysa, RAID, atma komutları yayınlamayabilir. Bunun nedeni, konaktaki ayrıntı düzeyi, ana bilgisayar üzerindeki eşlemeyi de 512 KB 'dir. Dizinin öbek boyutunu mdaddm 'nin `--chunk=` parametresi aracılığıyla DEĞIŞTIRDIYSENIZ, kesme/eşlemesini Kaldır istekleri çekirdek tarafından yoksayılabilir.
+> Dizi için öbek boyutu varsayılandan daha az (512KB) ayarlandıysa, RAID, atma komutları yayınlamayabilir. Bunun nedeni, konaktaki ayrıntı düzeyi, ana bilgisayar üzerindeki eşlemeyi de 512 KB 'dir. Dizinin öbek boyutunu mdaddm 'nin parametresi aracılığıyla değiştirdiyseniz `--chunk=` , kesme/eşlemesini Kaldır istekleri çekirdek tarafından yoksayılabilir.
 
 Linux sanal makinenizde KıRPMA desteğini etkinleştirmenin iki yolu vardır. Her zamanki gibi, önerilen yaklaşım için dağıtıma başvurun:
 
-- İçindeki `discard` `/etc/fstab`bağlama seçeneğini kullanın, örneğin:
+- `discard`İçindeki bağlama seçeneğini kullanın `/etc/fstab` , örneğin:
 
     ```bash
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults,discard  0  2
     ```
 
-- Bazı durumlarda, `discard` seçeneğinde performans olumsuz etkileri olabilir. Alternatif olarak, komut satırından `fstrim` komutu el ile çalıştırabilir veya bunları düzenli olarak çalıştırmak için crontab 'ize ekleyebilirsiniz:
+- Bazı durumlarda, `discard` seçeneğinde performans olumsuz etkileri olabilir. Alternatif olarak, komut `fstrim` satırından komutu el ile çalıştırabilir veya bunları düzenli olarak çalıştırmak için crontab 'ize ekleyebilirsiniz:
 
     **Ubuntu**
 

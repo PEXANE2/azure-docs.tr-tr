@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e432f599196a6948633d7150e1a747fbe626e1f4
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: f22b7eca6db55f886dbd4fea563d993bbee11ecb
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84464666"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661122"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 
@@ -146,7 +146,7 @@ Yalnızca NTFS birimleri desteklenir; ReFS, FAT, FAT32 ve diğer dosya sistemler
 
 Aşağıdaki tabloda NTFS dosya sistemi özelliklerinin birlikte çalışma durumu gösterilmektedir: 
 
-| Özellik | Destek durumu | Notlar |
+| Öne çıkan özelliği | Destek durumu | Notlar |
 |---------|----------------|-------|
 | Erişim denetim listeleri (ACL’ler) | Tam olarak destekleniyor | Windows stili isteğe bağlı erişim denetim listeleri Azure Dosya Eşitleme tarafından korunur ve sunucu uç noktalarında Windows Server tarafından zorlanır. Azure dosya paylaşımının doğrudan bağlanması sırasında ACL 'Ler de zorlanabilir, ancak bunun için ek yapılandırma gerekir. Daha fazla bilgi için [kimlik bölümüne](#identity) bakın. |
 | Sabit bağlantılar | Atlandı | |
@@ -163,7 +163,7 @@ Aşağıdaki tabloda NTFS dosya sistemi özelliklerinin birlikte çalışma duru
 | Dosya/klasör | Not |
 |-|-|
 | pagefile.sys | Sisteme özel dosya |
-| Desktop. ini | Sisteme özel dosya |
+| Desktop.ini | Sisteme özel dosya |
 | thumbs. db | Küçük resimler için geçici dosya |
 | ehThumbs. db | Medya küçük resimleri için geçici dosya |
 | ~$\*.\* | Office geçici dosyası |
@@ -356,7 +356,7 @@ Mevcut bir Windows dosya sunucunuz varsa, verileri yeni bir sunucuya taşımaya 
 
 Ayrıca, verileri bir Azure Dosya Eşitleme dağıtımına geçirmek için Data Box kullanmak da mümkündür. Çoğu zaman, müşteriler verileri almak için Data Box kullanmak istediklerinde, bunların dağıtım hızını artıracağından veya kısıtlanmış bant genişliği senaryolarında yardımcı olacağı için bu şekilde yapılır. Azure Dosya Eşitleme dağıtımınıza verileri almak için bir Data Box kullanmanın, bant genişliği kullanımını düşürmesi doğru olsa da, yukarıda açıklanan yöntemlerden biri aracılığıyla çevrimiçi bir veri yüklemesi yapmak için büyük olasılıkla daha hızlı bir hale gelir. Azure Dosya Eşitleme dağıtımınıza verileri almak için Data Box kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure Data Box ile verileri Azure dosya eşitleme 'A geçirme](storage-sync-offline-data-transfer.md).
 
-Müşterilerin yeni Azure Dosya Eşitleme dağıtımına veri geçirirken, verileri Windows dosya sunucuları yerine doğrudan Azure dosya paylaşımında kopyalaması, yaygın bir hata olur. Azure Dosya Eşitleme, Azure dosya paylaşımındaki tüm yeni dosyaları tanımlatacak ve bunları Windows dosya paylaşımlarınıza eşitlese de, bu, verileri Windows dosya sunucusu üzerinden yüklemeden önemli ölçüde daha yavaştır. AzCopy gibi birçok Azure Copy aracının, zaman damgası ve ACL 'Ler gibi bir dosyanın tüm önemli meta verilerini kopyalamadığına ek bir örnek vardır.
+Müşterilerin yeni Azure Dosya Eşitleme dağıtımına veri geçirirken, verileri Windows dosya sunucuları yerine doğrudan Azure dosya paylaşımında kopyalaması, yaygın bir hata olur. Azure Dosya Eşitleme, Azure dosya paylaşımındaki tüm yeni dosyaları tanımlatacak ve bunları Windows dosya paylaşımlarınıza eşitlese de, bu, verileri Windows dosya sunucusu üzerinden yüklemeden önemli ölçüde daha yavaştır. AzCopy gibi Azure kopyalama araçlarını kullanırken, en son sürümü kullanmak önemlidir. Zaman damgaları ve ACL 'Ler gibi bir dosyanın tüm önemli meta verilerini kopyalayabilmeniz için Azure kopyalama araçlarına genel bir bakış almak üzere [dosya kopyalama araçları tablosuna](storage-files-migration-overview.md#file-copy-tools) bakın.
 
 ## <a name="antivirus"></a>Virüsten Koruma
 Virüsten koruma, bilinen kötü amaçlı kod için dosyaları tarayarak çalıştığından, bir virüsten koruma ürünü katmanlı dosyaların geri çekmesine neden olabilir. Azure Dosya Eşitleme aracısının 4,0 ve üzeri sürümlerinde katmanlı dosyalar, güvenli Windows özniteliği FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS ayarlanmış olmalıdır. Bu öznitelik kümesi ile dosya okumayı atlamak üzere çözümlerini nasıl yapılandıracağınızı öğrenmek için yazılım satıcınıza danışmanız önerilir (birçok şey otomatik olarak yapılır). 

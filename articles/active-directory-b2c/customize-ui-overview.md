@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37ddf57057b736cd76a74276e5593a865e7df8cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ebbf789d804ab903489c809fc96f1514d6c4f577
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80666861"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658094"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı arabirimini özelleştirme
 
@@ -100,7 +100,7 @@ Kullanıcı arabirimini özelleştirmek için kendi HTML ve CSS dosyalarınızı
 
 Bu yönergeleri izleyerek, Kullanıcı deneyimi sayfalarınızda kendi HTML ve CSS 'nizi kullanmaya başlayın.
 
-- İçinde herhangi bir yerde bulunan boş `<div id="api"></div>` bir öğeyle düzgün biçimlendirilmiş HTML içeriği oluşturun. `<body>` Bu öğe Azure AD B2C içeriğin nereye ekleneceğini işaretler. Aşağıdaki örnek, en az bir sayfa göstermektedir:
+- İçinde herhangi bir yerde bulunan boş bir öğeyle düzgün biçimlendirilmiş HTML içeriği oluşturun `<div id="api"></div>` `<body>` . Bu öğe Azure AD B2C içeriğin nereye ekleneceğini işaretler. Aşağıdaki örnek, en az bir sayfa göstermektedir:
 
     ```html
     <!DOCTYPE html>
@@ -146,7 +146,7 @@ Bu yönergeleri izleyerek, Kullanıcı deneyimi sayfalarınızda kendi HTML ve C
 
 ### <a name="html-fragments-from-azure-ad-b2c"></a>Azure AD B2C HTML parçaları
 
-Aşağıdaki tabloda, Azure AD B2C içeriklerde bulunan `<div id="api"></div>` öğe ile birleştirmekte olan HTML parçaları listelenmektedir.
+Aşağıdaki tabloda, Azure AD B2C içeriklerde bulunan öğe ile birleştirmekte olan HTML parçaları listelenmektedir `<div id="api"></div>` .
 
 | Sayfa ekleniyor | HTML açıklaması |
 | ------------- | ------------------- |
@@ -154,7 +154,7 @@ Aşağıdaki tabloda, Azure AD B2C içeriklerde bulunan `<div id="api"></div>` �
 | Yerel hesap kaydı | Bir e-posta adresine veya Kullanıcı adına göre yerel hesap kaydolma için bir form içerir. Form, metin girişi kutusu, parola giriş kutusu, radyo düğmesi, tek seçim açılan kutuları ve çoklu seçim onay kutuları gibi farklı giriş denetimleri içerebilir. |
 | Sosyal hesap kaydolma | Facebook veya Google gibi bir sosyal kimlik sağlayıcısından mevcut bir hesap kullanılarak kaydolurken görünebilir. Bir kaydolma formu kullanılarak müşteriden ek bilgiler toplandığında kullanılır. |
 | Birleşik kaydolma veya oturum açma | Facebook, Google veya yerel hesaplar gibi sosyal kimlik sağlayıcılarını kullanabilecek müşterilerin hem kaydolma hem de oturum açma sürümlerini işler. |
-| Çok faktörlü kimlik doğrulaması | Müşteriler, kaydolma veya oturum açma sırasında telefon numaralarını (metin veya ses kullanarak) doğrulayabilirler. |
+| Multi-factor authentication | Müşteriler, kaydolma veya oturum açma sırasında telefon numaralarını (metin veya ses kullanarak) doğrulayabilirler. |
 | Hata | Müşteriye hata bilgilerini sağlar. |
 
 ## <a name="company-branding-preview"></a>Şirket markası (Önizleme)
@@ -169,7 +169,7 @@ Kullanıcı akış sayfalarınızı özelleştirmek için önce Azure Active Dir
 
 **Şirket markalaması**içinde başlık logosunu, arka plan görüntüsünü ve arka plan rengini ayarlayarak başlayın.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
 1. **Yönet**altında **Şirket markalaması**' nı seçin.
@@ -190,7 +190,7 @@ Kullanıcı akış sayfalarınızı özelleştirmek için önce Azure Active Dir
 1. Şirket markasını etkinleştirmek istediğiniz kullanıcı akışını seçin. Şirket markası, *oturum açma v1* ve *profil düzenlemesi v1* Kullanıcı akış türleri için **desteklenmez** .
 1. **Özelleştir**altında **sayfa düzenleri**' ni seçin ve ardından marka yapmak istediğiniz düzeni seçin. Örneğin **Birleşik kaydolma veya oturum açma sayfası**' nı seçin.
 1. **Sayfa düzeni sürümü (Önizleme)** için sürüm **1.2.0** veya üzerini seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 Kullanıcı akışındaki tüm sayfaları markalaştırmak isterseniz, Kullanıcı akışındaki her sayfa düzeni için sayfa düzeni sürümünü ayarlayın.
 
@@ -202,7 +202,7 @@ Bu açıklamalı örnek, okyanus şablonu kullanan bir *kaydolma ve oturum açma
 
 ### <a name="use-company-branding-assets-in-custom-html"></a>Özel HTML 'de Şirket marka varlıklarını kullanma
 
-Şirket marka varlıklarınızı özel HTML 'de kullanmak için aşağıdaki etiketleri `<div id="api">` etiketin dışına ekleyin:
+Şirket marka varlıklarınızı özel HTML 'de kullanmak için aşağıdaki etiketleri etiketin dışına ekleyin `<div id="api">` :
 
 ```HTML
 <img data-tenant-branding-background="true" />
@@ -213,9 +213,9 @@ Görüntü kaynağı arka plan resminin ve başlık logosunun yerine konur. [Öz
 
 ## <a name="localize-content"></a>İçeriği yerelleştirin
 
-Azure AD B2C kiracınızda [dil özelleştirmesini](user-flow-language-customization.md) etkinleştirerek HTML içeriğinizi yerelleştirebilirsiniz. Bu özelliği etkinleştirmek Azure AD B2C, OpenID Connect parametresini `ui-locales` uç noktanıza iletmesine izin verir. İçerik sunucunuz, dile özgü HTML sayfaları sağlamak için bu parametreyi kullanabilir.
+Azure AD B2C kiracınızda [dil özelleştirmesini](user-flow-language-customization.md) etkinleştirerek HTML içeriğinizi yerelleştirebilirsiniz. Bu özelliği etkinleştirmek Azure AD B2C, OpenID Connect parametresini uç noktanıza iletmesine izin verir `ui_locales` . İçerik sunucunuz, dile özgü HTML sayfaları sağlamak için bu parametreyi kullanabilir.
 
-İçerik, kullanılan yerel ayara bağlı olarak farklı yerlerden çekeklenebilir. CORS etkin uç noktanıza, belirli diller için içerik barındırmak üzere bir klasör yapısı ayarlarsınız. Joker karakter değerini `{Culture:RFC5646}`kullanırsanız, doğru olanı çağıracaksınız.
+İçerik, kullanılan yerel ayara bağlı olarak farklı yerlerden çekeklenebilir. CORS etkin uç noktanıza, belirli diller için içerik barındırmak üzere bir klasör yapısı ayarlarsınız. Joker karakter değerini kullanırsanız, doğru olanı çağıracaksınız `{Culture:RFC5646}` .
 
 Örneğin, özel sayfa URI 'niz şöyle görünebilir:
 

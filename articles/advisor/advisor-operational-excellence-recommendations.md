@@ -3,12 +3,12 @@ title: Azure Danışmanı ile Azure abonelikleriniz için operasyonel bir işlem
 description: Azure abonelikleriniz için en üstün işlemsel mükemmellik sağlamak için Advisor 'ı kullanın
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 4133fbe40c0fc1bdaf9c3f734bc19f94437c9acb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 861b12c2267ffa89985ff11357de92da5a4ac870
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187425"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658462"
 ---
 # <a name="achieve-operational-excellence-with-azure-advisor"></a>Azure Danışmanı ile işlemsel üstün üstün ulaşın
 
@@ -18,6 +18,7 @@ Azure Advisor operasyonel üstün öneriler, işlem ve iş akışı verimliliği
 
 Azure hizmet sorunları sizi etkiliyorsa bildirim almak için Azure hizmet durumu uyarılarını ayarlamayı öneririz. [Azure hizmet durumu](https://azure.microsoft.com/features/service-health/) , bir Azure hizmet sorunundan etkilendiğiniz zaman kişiselleştirilmiş rehberlik ve destek sağlayan ücretsiz bir hizmettir. Advisor, uyarıları yapılandırılmamış ve bir tane oluşturulmasını öneren abonelikleri tanımlar.
 
+
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Maksimum abonelik sınırına vurmasını engellemek için depolama hesaplarınızı tasarlayın
 
 Bir Azure bölgesi, abonelik başına en fazla 250 depolama hesabını destekleyebilir. Sınıra ulaşıldığında, bu bölgede/abonelik birleşiminde daha fazla depolama hesabı oluşturmayacak. Danışman, aboneliklerinizi ve yüzey önerilerinizi, en yüksek sınıra ulaşılmaya yakın olan herhangi biri için daha az depolama hesabı tasarlamanızı denetlayacaktır.
@@ -25,6 +26,10 @@ Bir Azure bölgesi, abonelik başına en fazla 250 depolama hesabını destekley
 ## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>İhtiyacınız olduğunda Azure bulut uzmanlarıyla erişime sahip olduğunuzdan emin olun
 
 İş açısından kritik bir iş yükü çalıştırırken, gerektiğinde teknik desteğe erişebilmek önemlidir. Danışman destek planına dahil olmayan ve teknik destek içeren bir seçeneğe yükseltmeyi öneren potansiyel iş açısından kritik abonelikleri tanımlar.
+
+## <a name="delete-and-recreate-your-pool-to-remove-a-deprecated-internal-component"></a>Kullanım dışı bırakılmış iç bileşeni kaldırmak için havuzunuzu silin ve yeniden oluşturun
+
+Havuzunuzda kullanım dışı bırakılmış bir iç bileşen kullanılıyor. Kararlılığı ve performansı geliştirmek için havuzunuzu silin ve yeniden oluşturun.
 
 ## <a name="repair-invalid-log-alert-rules"></a>Geçersiz günlük uyarısı kurallarını Onar
 
@@ -43,7 +48,7 @@ Azure İlkesi, ilkelerinizi oluşturmak, atamak ve yönetmek için kullandığı
 
 Danışman önerileri hakkında daha fazla bilgi edinmek için bkz.:
 * [Advisor 'a giriş](advisor-overview.md)
-* [Kullanmaya başlayın](advisor-get-started.md)
+* [Başlarken](advisor-get-started.md)
 * [Danışman maliyet önerileri](advisor-cost-recommendations.md)
 * [Advisor performans önerileri](advisor-performance-recommendations.md)
 * [Danışman yüksek kullanılabilirlik önerileri](advisor-high-availability-recommendations.md)

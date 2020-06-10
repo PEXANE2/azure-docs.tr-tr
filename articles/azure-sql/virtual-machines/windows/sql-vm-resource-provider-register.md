@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 768b71aae66a73cea4ef50a00db5a35f1f6588d4
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c6e40842235f0070d283974eaded25390e3555e7
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342364"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661137"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider"></a>SQL VM kaynak sağlayıcısı ile Azure 'da bir SQL Server VM kaydetme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -53,7 +53,7 @@ Azure portal üzerinden SQL Server VM Azure Marketi görüntüsünün dağıtım
 
 SQL VM kaynak sağlayıcısını kullanmak için, önce [aboneliğinizi kaynak sağlayıcısına kaydetmeniz](#register-a-subscription-with-the-resource-provider)gerekir, bu da kaynak sağlayıcısına söz konusu abonelik içinde kaynak oluşturma yeteneği verir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 SQL Server VM kaynak sağlayıcısına kaydetmek için şunlar gerekir: 
 
@@ -380,7 +380,7 @@ Evet. Müşteriler, Azure Marketi 'nden bir SQL Server görüntüsü kullanmayan
 
 **SQL Server VM SQL Server IaaS uzantısı zaten yüklüyse SQL VM kaynak sağlayıcısına kaydolmalı mı?**
 
-SQL Server VM kendi kendine yüklenmiş ve Azure Marketi 'ndeki SQL Server görüntülerden sağlanmamışsa, SQL Server IaaS uzantısını yüklemiş olsanız bile SQL VM kaynak sağlayıcısına kaydolmanız gerekir. SQL VM kaynak sağlayıcısına kaydolmak, Microsoft. SqlVirtualMachines türünde yeni bir kaynak oluşturur. SQL Server IaaS uzantısının yüklenmesi bu kaynağı oluşturmaz.
+SQL Server VM kendi kendine yüklenmiş ve Azure Marketi 'ndeki SQL Server görüntülerden sağlanmamışsa, SQL Server IaaS uzantısını yüklemiş olsanız bile SQL VM kaynak sağlayıcısına kaydolmanız gerekir. SQL VM kaynak sağlayıcısına kaydolmak, Microsoft. SqlVirtualMachine türünde yeni bir kaynak oluşturur. SQL Server IaaS uzantısının yüklenmesi bu kaynağı oluşturmaz.
 
 **SQL VM kaynak sağlayıcısına kaydolurken varsayılan yönetim modu nedir?**
 

@@ -4,15 +4,15 @@ description: Bölgeler arasında Azure yönetilen diskini karşıya yüklemeyi, 
 author: roygara
 ms.author: rogarana
 ms.date: 09/25/2019
-ms.topic: article
+ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 525a427bf10d3a9076abda278b74a54db4b0a4f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e640afe48cbbe55bd6eb39f8082314dc1d1efa07
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78970322"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659101"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>Azure yönetilen disklerini yönetmek için Azure Depolama Gezgini kullanma
 [!INCLUDE [disks-upload-vhd-to-managed-disk-storage-explorer](../../../includes/disks-upload-vhd-to-managed-disk-storage-explorer.md)]

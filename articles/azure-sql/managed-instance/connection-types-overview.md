@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
-ms.openlocfilehash: cee913e846ebfef174a3cd6383401eace89187f0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 347f9522bacc768265027f1a2070ac4605ade158
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044342"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655675"
 ---
 # <a name="azure-sql-managed-instance-connection-types"></a>Azure SQL yönetilen örnek bağlantı türleri
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -31,24 +31,24 @@ Azure SQL yönetilen örneği aşağıdaki iki bağlantı türünü destekler:
 
 ## <a name="redirect-connection-type"></a>Yeniden yönlendirme bağlantı türü
 
-Yeniden yönlendirme bağlantı türü, TCP oturumu SQL altyapısına kurulduktan sonra, istemci oturumu yük dengeleyiciden sanal küme düğümünün hedef sanal IP 'sini edinir. Sonraki paketler, ağ geçidini atlayarak doğrudan sanal küme düğümüne akar. Aşağıdaki diyagramda bu trafik akışı gösterilmektedir.
+Yönlendirme bağlantısı türünde, TCP oturumu SQL altyapısına kurulduktan sonra, istemci oturumu yük dengeleyiciden sanal küme düğümünün hedef sanal IP 'sini edinir. Sonraki paketler, ağ geçidini atlayarak doğrudan sanal küme düğümüne akar. Aşağıdaki diyagramda bu trafik akışı gösterilmektedir.
 
-![yeniden yönlendirme. png](./media/connection-types-overview/redirect.png)
+![redirect.png](./media/connection-types-overview/redirect.png)
 
 > [!IMPORTANT]
-> Yeniden yönlendirme bağlantı türü şu anda yalnızca özel uç nokta için çalışıyor. Bağlantı türü ayarından bağımsız olarak, genel uç nokta üzerinden gelen bağlantılar bir ara sunucu üzerinden olur.
+> Yeniden yönlendirme bağlantı türü şu anda yalnızca özel bir uç nokta için çalışıyor. Bağlantı türü ayarından bağımsız olarak, genel uç nokta üzerinden gelen bağlantılar bir ara sunucu üzerinden olur.
 
 ## <a name="proxy-connection-type"></a>Proxy bağlantı türü
 
-Ara sunucu bağlantı türü, TCP oturumunun ağ geçidi kullanılarak kurulduğu ve sonraki tüm paketlerin üzerinden akış yaptığı anlamına gelir. Aşağıdaki diyagramda bu trafik akışı gösterilmektedir.
+Ara sunucu bağlantı türünde TCP oturumu, ağ geçidi kullanılarak oluşturulur ve sonraki tüm paketler üzerinden akar. Aşağıdaki diyagramda bu trafik akışı gösterilmektedir.
 
-![Proxy. png](./media/connection-types-overview/proxy.png)
+![proxy.png](./media/connection-types-overview/proxy.png)
 
 ## <a name="script-to-change-connection-type-settings-using-powershell"></a>PowerShell kullanarak bağlantı türü ayarlarını değiştirme betiği
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Aşağıdaki PowerShell betiği, bir SQL yönetilen örneği için bağlantı türünün olarak nasıl değiştirileceğini gösterir `Redirect` .
+Aşağıdaki PowerShell betiği, yönetilen bir örnek için bağlantı türünün olarak nasıl değiştirileceğini gösterir `Redirect` .
 
 ```powershell
 Install-Module -Name Az
@@ -60,13 +60,13 @@ Connect-AzAccount
 Get-AzSubscription
 # Use your SubscriptionId in place of {subscription-id} below
 Select-AzSubscription -SubscriptionId {subscription-id}
-# Replace {rg-name} with the resource group for your SQL Managed Instance, and replace {mi-name} with the name of your SQL Managed Instance
+# Replace {rg-name} with the resource group for your managed instance, and replace {mi-name} with the name of your managed instance
 $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi = $mi | Set-AzSqlInstance -ProxyOverride "Redirect" -force
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Veritabanını bir SQL yönetilen örneğine geri yükleme](restore-sample-database-quickstart.md)
+- [Veritabanını SQL yönetilen örneğine geri yükleme](restore-sample-database-quickstart.md)
 - [SQL yönetilen örneği üzerinde genel uç nokta yapılandırmayı](public-endpoint-configure.md) öğrenin
 - [SQL yönetilen örnek bağlantı mimarisi](connectivity-architecture-overview.md) hakkında bilgi edinin

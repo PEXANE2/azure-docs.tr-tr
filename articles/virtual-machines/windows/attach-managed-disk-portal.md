@@ -3,16 +3,16 @@ title: Bir Windows VM 'ye yönetilen veri diski iliştirme-Azure
 description: Azure portal kullanarak bir Windows VM 'ye yönetilen veri diski iliştirme.
 author: roygara
 ms.service: virtual-machines-windows
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0fe04941821de2ac6e4e873e8d073c3e9b9d9508
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8fd330fdb6e0c7d857ea99f6d51b05436c17d1a
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77919388"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84657173"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Azure portal kullanarak bir Windows VM 'sine yönetilen veri diski iliştirme
 
@@ -26,7 +26,7 @@ Bu makalede, Azure portal kullanarak yeni bir yönetilen veri diskini bir Window
 3. **Sanal makine** sayfasında, **diskler**' i seçin.
 4. **Diskler** sayfasında, **veri diski Ekle**' yi seçin.
 5. Yeni diskin açılan penceresinde **disk oluştur**' u seçin.
-6. **Yönetilen disk oluştur** sayfasında, disk için bir ad yazın ve diğer ayarları gerektiği gibi ayarlayın. İşiniz bittiğinde **Oluştur**’u seçin.
+6. **Yönetilen disk oluştur** sayfasında, disk için bir ad yazın ve diğer ayarları gerektiği gibi ayarlayın. İşiniz bittiğinde **Oluştur**'u seçin.
 7. **Diskler** sayfasında, sanal makine için yeni disk yapılandırmasını kaydetmek üzere **Kaydet** ' i seçin.
 8. Azure diski oluşturduktan ve sanal makineye iliştirdikten sonra, yeni disk, **veri diskleri**altındaki sanal makinenin disk ayarlarında listelenir.
 

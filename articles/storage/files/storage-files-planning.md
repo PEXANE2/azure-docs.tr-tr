@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5356ff0ac165deefc5053cf4faa40c1159e98678
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d1d36c6f6413a9438063c6fe30403af095ed9a6b
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856871"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659643"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 [Azure dosyaları](storage-files-introduction.md) , iki ana şekilde dağıtılabilir: doğrudan sunucusuz Azure dosya paylaşımlarını bağlayarak veya Azure dosya eşitleme kullanarak şirket içi Azure dosya paylaşımlarını önbelleğe alarak. Seçtiğiniz dağıtım seçeneği, dağıtımınız için planlarken göz önünde bulundurmanız gereken şeyleri değiştirir. 
@@ -57,7 +57,7 @@ Technical perspektifinden, Azure dosya paylaşımlarınızı genel uç nokta ara
 
 - **ExpressRoute, siteden siteye veya noktadan sıteye VPN kullanarak ağ tüneli**: bir sanal ağa tünel oluşturma, 445 bağlantı noktası engellense bile şirket içi Azure dosya paylaşımlarına erişim sağlar.
 - **Özel uç**noktalar: özel uç noktalar, depolama hesabınıza sanal ağın adres alanından ayrılmış bir IP adresi sağlar. Bu, Azure depolama kümelerinin sahip olduğu tüm IP adresi aralıklarına kadar şirket içi ağları açmaya gerek kalmadan ağ tünelini sağlar. 
-- **DNS iletimi**: ŞIRKET içi DNS 'nizi, Özel uç NOKTALARıNıZıN IP adresini çözümlemek üzere depolama hesabınızın adını ( `storageaccount.file.core.windows.net` genel bulut bölgeleri için) çözümlemek üzere yapılandırın.
+- **DNS iletimi**: ŞIRKET içi DNS 'nizi, `storageaccount.file.core.windows.net` Özel uç noktalarınızın IP adresini çözümlemek üzere depolama hesabınızın adını (genel bulut bölgeleri için) çözümlemek üzere yapılandırın.
 
 Azure dosya paylaşımının dağıtımıyla ilişkili ağı planlamak için bkz. [Azure dosyaları ağ iletişimi konuları](storage-files-networking-overview.md).
 
@@ -94,7 +94,7 @@ Genel olarak, Azure dosyaları özellikleri ve diğer hizmetlerle birlikte çal�
     - Standart dosya paylaşımları her Azure bölgesinde kullanılabilir.
 - Azure Kubernetes hizmeti (AKS), sürüm 1,13 ve üzeri sürümlerde Premium dosya paylaşımlarını destekler.
 
-Bir dosya paylaşımının Premium veya standart dosya paylaşımında oluşturulması durumunda, otomatik olarak diğer katmana dönüştüremezsiniz. Başka katmana geçmek istiyorsanız, o katmanda yeni bir dosya paylaşma oluşturmanız ve verileri özgün paylaşımınızdan oluşturduğunuz yeni paylaşıma el ile kopyalamanız gerekir. Bu kopyayı gerçekleştirmek `robocopy` için Windows veya `rsync` MacOS ve Linux için kullanmanızı öneririz.
+Bir dosya paylaşımının Premium veya standart dosya paylaşımında oluşturulması durumunda, otomatik olarak diğer katmana dönüştüremezsiniz. Başka katmana geçmek istiyorsanız, o katmanda yeni bir dosya paylaşma oluşturmanız ve verileri özgün paylaşımınızdan oluşturduğunuz yeni paylaşıma el ile kopyalamanız gerekir. `robocopy` `rsync` Bu kopyayı gerçekleştirmek için Windows veya MacOS ve Linux için kullanmanızı öneririz.
 
 ### <a name="understanding-provisioning-for-premium-file-shares"></a>Premium dosya paylaşımları için sağlamayı anlama
 Premium dosya paylaşımları, sabit bir GiB/ıOPS/verimlilik oranına göre sağlanır. Sağlanan her GiB için, paylaşıma tek bir ıOPS ve 0,1 MIB/s aktarım hızı, her bir paylaşıma göre en fazla sınırlara verilecek. İzin verilen en düşük sağlama, minimum ıOPS/aktarım hızı ile 100 GiB 'dir.
@@ -160,17 +160,12 @@ Yeni dosya paylaşımları, veri bloğu demetini içinde tam kredi sayısı ile 
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
 ## <a name="migration"></a>Geçiş
-Çoğu durumda, kuruluşunuz için bir ağ yeni dosya paylaşımının kurulması ve bunun yerine, mevcut bir dosya paylaşımının şirket içi bir dosya sunucusundan veya NAS cihazından Azure dosyalarına geçirilmesi gerekir. Hem Microsoft hem de 3. taraflar tarafından bir dosya paylaşımında geçiş yapmak için sunulan birçok araç vardır ancak Bunlar kabaca iki kategoriye ayrılabilir:
+Çoğu durumda, kuruluşunuz için bir ağ yeni dosya paylaşımının kurulması ve bunun yerine, mevcut bir dosya paylaşımının şirket içi bir dosya sunucusundan veya NAS cihazından Azure dosyalarına geçirilmesi gerekir. Senaryonuza yönelik doğru geçiş stratejisi ve aracının seçilmesi, geçişinizin başarısı için önemlidir. 
 
-- **ACL 'ler ve zaman damgaları gibi dosya sistemi özniteliklerinin bakımını gösteren araçlar**:
-    - **[Azure dosya eşitleme](storage-sync-files-planning.md)**: Azure dosya eşitleme, istenen son dağıtım şirket içi bir varlığı sürdürmek olmasa bile, verileri bir Azure dosya paylaşımında almak için bir yöntem olarak kullanılabilir. Azure Dosya Eşitleme var olan Windows Server 2012 R2, Windows Server 2016 ve Windows Server 2019 dağıtımları üzerine yüklenebilir. Alma mekanizması olarak Azure Dosya Eşitleme kullanmanın bir avantajı, son kullanıcıların mevcut dosya paylaşımının yerinde kullanılmasına devam edemelerdir; Azure dosya paylaşımının, verilerin tümünün arka planda karşıya yüklenmesi tamamlandıktan sonra oluşması gerekebilir.
-    - **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)**: Robocopy, Windows ve Windows Server ile birlikte gelen iyi bilinen bir kopyalama aracıdır. Robocopy, dosya paylaşımının yerel olarak bağlanması ve ardından Robocopy komutunda hedef olarak bağlı konumu kullanarak Azure dosyalarına veri aktarmak için kullanılabilir.
-
-- **Dosya sistemi özniteliklerini korumayan araçlar**:
-    - **Data Box**: Data Box Azure 'a fiziksel veri göndermek için çevrimdışı bir veri aktarma mekanizması sağlar. Bu yöntem, aktarım hızını artırmak ve bant genişliğini kaydetmek için tasarlanmıştır, ancak şu anda zaman damgaları ve ACL 'Ler gibi dosya sistemi özniteliklerini desteklemez.
-    - **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)**: AzCopy, Azure dosyalarını ve Azure Blob Storage 'a veri kopyalamak için tasarlanan bir komut satırı yardımcı programıdır ve en iyi performansla basit komutlar kullanmaktır.
+[Geçişe genel bakış makalesi](storage-files-migration-overview.md) , temel bilgileri kısaca kapsar ve senaryonuzu kapsayan geçiş kılavuzlarını size yönlendiren bir tablo içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Dosya Eşitleme dağıtımı için planlama yapma](storage-sync-files-planning.md)
 * [Azure dosyalarını dağıtma](storage-files-deployment-guide.md)
 * [Azure Dosya Eşitleme dağıtma](storage-sync-files-deployment-guide.md)
+* [Senaryonuza yönelik geçiş kılavuzunu bulmak için geçişe genel bakış makalesine göz atın](storage-files-migration-overview.md)

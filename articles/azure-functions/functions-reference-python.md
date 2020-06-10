@@ -4,12 +4,12 @@ description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
-ms.openlocfilehash: a8201b1c8443bd99ec9045fdc4b074a4f3eec4f2
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1d9289b6304a9c9e93afeddd98b3a229dae91797
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553087"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660588"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -21,7 +21,7 @@ Python 'da tek başına Işlev örnek projeleri için bkz. [Python işlevleri ö
 
 Azure Işlevleri, bir işlevin girişi işleyen ve çıkış üreten Python betikinizde durum bilgisiz bir yöntem olmasını bekler. Varsayılan olarak, çalışma zamanı metodun dosyada çağrılan genel bir yöntem olarak uygulanması beklenir `main()` `__init__.py` . Ayrıca, [alternatif bir giriş noktası da belirtebilirsiniz](#alternate-entry-point).
 
-Tetikleyiciler ve bağlamalardan alınan veriler, Function `name` *. JSON* dosyasında tanımlanan özelliği kullanarak Yöntem öznitelikleri aracılığıyla işleve bağlanır. Örneğin, aşağıdaki _function. JSON_ ADLı bir http isteği tarafından tetiklenen basit bir işlevi anlatmaktadır `req` :
+Tetikleyicilerden ve bağlamalardan alınan veriler, `name` *function.js* dosyasında tanımlanan özelliği kullanarak Yöntem öznitelikleri aracılığıyla işleve bağlıdır. Örneğin, aşağıdaki _function.js_ ADLı bir http isteği tarafından tetiklenen basit bir işlevi anlatmaktadır `req` :
 
 :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
@@ -48,7 +48,7 @@ Yöntemlerinizi giriş ve çıkışları bağlamak için [Azure. Functions. *](/
 
 ## <a name="alternate-entry-point"></a>Alternatif giriş noktası
 
-İsteğe bağlı olarak `scriptFile` `entryPoint` *function. JSON* dosyasında ve özelliklerini belirterek bir işlevin varsayılan davranışını değiştirebilirsiniz. Örneğin, aşağıdaki _function. JSON_ , çalışma zamanına `customentry()` Azure işlevinizin giriş noktası olarak _Main.py_ dosyasındaki yöntemini kullanmasını söyler.
+İsteğe bağlı olarak, `scriptFile` `entryPoint` *function.js* dosyadaki ve özelliklerini belirterek bir işlevin varsayılan davranışını değiştirebilirsiniz. Örneğin, aşağıdaki _function.js_ çalışma zamanına, `customentry()` Azure işlevinizin giriş noktası olarak _Main.py_ dosyasındaki yöntemi kullanmasını söyler.
 
 ```json
 {
@@ -83,14 +83,14 @@ Python Işlevleri projesi için önerilen klasör yapısı aşağıdaki örneğe
 ```
 Ana proje klasörü ( \_ \_ uygulama \_ \_ ) aşağıdaki dosyaları içerebilir:
 
-* *Local. Settings. JSON*: yerel olarak çalışırken uygulama ayarlarını ve bağlantı dizelerini depolamak için kullanılır. Bu dosya Azure 'da yayınlanmıyor. Daha fazla bilgi için bkz. [Local. Settings. File](functions-run-local.md#local-settings-file).
-* *requirements. txt*: sistemin Azure 'a yayımlarken yüklediği paketlerin listesini içerir.
-* *Host. JSON*: bir işlev uygulamasındaki tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu dosya Azure 'da yayımlanır. Yerel olarak çalışırken tüm seçenekler desteklenmez. Daha fazla bilgi için bkz. [Host. JSON](functions-host-json.md).
+* *local.settings.json*: yerel olarak çalışırken uygulama ayarlarını ve bağlantı dizelerini depolamak için kullanılır. Bu dosya Azure 'da yayınlanmıyor. Daha fazla bilgi için bkz. [Local. Settings. File](functions-run-local.md#local-settings-file).
+* *requirements.txt*: Azure 'a yayımlarken sistemin yüklediği paketlerin listesini içerir.
+* *host.js*:: bir işlev uygulamasındaki tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu dosya Azure 'da yayımlanır. Yerel olarak çalışırken tüm seçenekler desteklenmez. Daha fazla bilgi için bkz. [host.json](functions-host-json.md).
 * *. funcignore*: (isteğe bağlı) Azure 'da yayımlanmaması gereken dosyaları bildirir.
-* *. gitignore*: (isteğe bağlı) yerel. Settings. JSON gibi bir git deposundan dışlanan dosyaları bildirir.
+* *. gitignore*: (isteğe bağlı) bir git deposundan dışlanan dosyaları bildirir (örneğin, local.settings.js).
 * *Dockerfile*: (isteğe bağlı) projenizi [özel kapsayıcıda](functions-create-function-linux-custom-image.md)yayımlarken kullanılır.
 
-Her işlevin kendi kod dosyası ve bağlama yapılandırma dosyası (Function. JSON) vardır.
+Her işlevin kendi kod dosyası ve bağlama yapılandırma dosyası (function.js) vardır.
 
 Projenizi Azure 'daki bir işlev uygulamasına dağıttığınızda, ana proje (* \_ \_ uygulama \_ \_ *) klasörünün tüm içeriği pakete dahil edilmelidir, ancak klasörün kendisi değil. Bu örnekte, testlerinizi proje klasöründen ayrı bir klasörde tutmanızı öneririz `tests` . Bu, uygulamanıza test kodu dağıtmanızı önler. Daha fazla bilgi için bkz. [birim testi](#unit-testing).
 
@@ -338,7 +338,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölç
 
 Yürütme sırasında bir işlevin çağırma bağlamını almak için, [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) bağımsız değişkenini imzasına ekleyin.
 
-Örneğin:
+Örnek:
 
 ```python
 import azure.functions
@@ -391,7 +391,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info(f'My app setting value:{my_app_setting_value}')
 ```
 
-Yerel geliştirme için, uygulama ayarları [yerel. Settings. json dosyasında tutulur](functions-run-local.md#local-settings-file).
+Yerel geliştirme için uygulama ayarları [dosyada local.settings.jstutulur](functions-run-local.md#local-settings-file).
 
 ## <a name="python-version"></a>Python sürümü
 
@@ -424,14 +424,14 @@ pip install -r requirements.txt
 
 ## <a name="publishing-to-azure"></a>Azure’da yayımlama
 
-Yayımlamaya hazır olduğunuzda, tüm genel kullanıma açık bağımlılıklarınızın, proje dizininizin kökünde bulunan requirements. txt dosyasında listelendiğinden emin olun.
+Yayımlamaya hazır olduğunuzda, tüm genel kullanım bağımlılıklarınızın, proje dizininizin kökünde bulunan requirements.txt dosyasında listelendiğinden emin olun.
 
 Sanal ortam klasörü de dahil olmak üzere, yayımlamanın dışında tutulan proje dosyaları ve klasörler. funcignore dosyasında listelenir.
 
 Python projenizi Azure 'da yayımlamak için desteklenen üç derleme eylemi vardır:
 
-+ Uzak derleme: bağımlılıklar, requirements. txt dosyasının içeriğine göre uzaktan alınır. [Uzaktan derleme](functions-deployment-technologies.md#remote-build) önerilen derleme yöntemidir. Uzak Ayrıca Azure Araçları 'nın varsayılan derleme seçeneğidir.
-+ Yerel derleme: bağımlılıklar, requirements. txt dosyasının içeriğine göre yerel olarak alınır.
++ Uzak derleme: bağımlılıklar, requirements.txt dosyanın içeriğine göre uzaktan alınır. [Uzaktan derleme](functions-deployment-technologies.md#remote-build) önerilen derleme yöntemidir. Uzak Ayrıca Azure Araçları 'nın varsayılan derleme seçeneğidir.
++ Yerel derleme: bağımlılıklar, requirements.txt dosyanın içeriğine göre yerel olarak alınır.
 + Özel bağımlılıklar: projeniz, araçlarımız için herkese açık olarak kullanılamayan paketler kullanır. (Docker gerektirir.)
 
 Bağımlılıklarınızı derlemek ve sürekli teslim (CD) sistemi kullanarak yayımlamak için [Azure Pipelines kullanın](functions-how-to-azure-devops.md).
@@ -458,7 +458,7 @@ func azure functionapp publish <APP_NAME> --build local
 
 `<APP_NAME>`Azure 'daki işlev uygulamanızın adıyla değiştirmeyi unutmayın.
 
-Seçeneğini kullanarak `--build local` , Proje bağımlılıkları requirements. txt dosyasından okunurdur ve bu bağımlı paketler yerel olarak indirilir ve yüklenir. Proje dosyaları ve bağımlılıklar yerel bilgisayarınızdan Azure 'a dağıtılır. Bu, daha büyük bir dağıtım paketinin Azure 'a yüklenmasına neden olur. Bir nedenden dolayı, requirements. txt dosyanızdaki bağımlılıklar temel araçlar tarafından alınamadığından, yayımlamak için özel bağımlılıklar seçeneğini kullanmanız gerekir.
+Seçeneğini kullanarak `--build local` , Proje bağımlılıkları requirements.txt dosyasından okunurdur ve bu bağımlı paketler yerel olarak indirilir ve yüklenir. Proje dosyaları ve bağımlılıklar yerel bilgisayarınızdan Azure 'a dağıtılır. Bu, daha büyük bir dağıtım paketinin Azure 'a yüklenmasına neden olur. Bazı nedenlerle requirements.txt dosyanızdaki bağımlılıklar temel araçlar tarafından alınamadığından, yayımlamak için özel bağımlılıklar seçeneğini kullanmanız gerekir.
 
 ### <a name="custom-dependencies"></a>Özel bağımlılıklar
 
@@ -630,6 +630,44 @@ from os import listdir
 
 Testlerinizi proje klasöründen ayrı bir klasörde tutmanızı öneririz. Bu, uygulamanıza test kodu dağıtmanızı önler.
 
+## <a name="preinstalled-libraries"></a>Önceden yüklenmiş kitaplıklar
+
+Python Işlevleri çalışma zamanına birkaç kitaplık gelir.
+
+### <a name="python-standard-library"></a>Python Standart Kitaplığı
+
+Python Standart Kitaplığı, her Python dağıtımına gönderilen yerleşik Python modüllerinin bir listesini içerir. Bu kitaplıkların çoğu, dosya g/ç gibi sistem işlevlerine erişmenize yardımcı olur. Windows sistemlerinde, bu kitaplıklar Python ile yüklenir. UNIX tabanlı sistemlerde bunlar paket koleksiyonları tarafından sağlanırlar.
+
+Bu kitaplıkların listesinin tüm ayrıntılarını görüntülemek için lütfen aşağıdaki bağlantıları ziyaret edin:
+
+* [Python 3,6 Standart Kitaplığı](https://docs.python.org/3.6/library/)
+* [Python 3,7 Standart Kitaplığı](https://docs.python.org/3.7/library/)
+* [Python 3,8 Standart Kitaplığı](https://docs.python.org/3.8/library/)
+
+### <a name="azure-functions-python-worker-dependencies"></a>Azure Işlevleri Python çalışan bağımlılıkları
+
+Python Worker Işlevleri için belirli bir kitaplık kümesi gerekir. İşlevlerinizin bu kitaplıklarını da kullanabilirsiniz, ancak Python standardının bir parçası değildir. İşlevleriniz bu kitaplıkların herhangi birine bağımlı ise, Azure Işlevleri dışında çalışırken kodunuz için kullanılamayabilir. [Setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282) dosyasında, **Install \_ gerektiriyor** bölümünde bağımlılıkların ayrıntılı bir listesini bulabilirsiniz.
+
+### <a name="azure-functions-python-library"></a>Azure Işlevleri Python kitaplığı
+
+Her Python Worker güncelleştirmesi [Azure Işlevleri Python kitaplığı 'nın (Azure. Functions)](https://github.com/Azure/azure-functions-python-library)yeni bir sürümünü içerir. Çalışma zamanı kitaplığı sürümü Azure tarafından düzeltildi ve requirements.txt tarafından geçersiz kılınamaz. `azure-functions`requirements.txt giriş yalnızca, ve müşteri tanıma için geçerlidir.
+
+Bu kararı verme nedeni, Azure Işlevleri Python uygulamalarında sürekli güncelleştirme kolaylığı içindir. Her güncelleştirme geriye dönük olarak uyumlu olduğundan, Python kitaplığının güncelleştirilmesi müşterinin farkında olmalıdır. Kitaplık sürümünün bir listesi, [Azure-Functions PyPi](https://pypi.org/project/azure-functions/#history)'de bulunabilir.
+
+Çalışma zamanında Python Işlevleri kitaplığının gerçek sürümünü aşağıdaki satırla izleyebilirsiniz:
+
+```python
+getattr(azure.functions, '__version__', '< 1.2.1')
+```
+
+### <a name="runtime-system-libraries"></a>Çalışma zamanı sistem kitaplıkları
+
+Python çalışan Docker görüntülerinde önceden yüklenmiş sistem kitaplıklarının listesi için lütfen aşağıdaki bağlantıları izleyin:
+|  İşlevler çalışma zamanı  | Deni sürümü | Python sürümleri |
+|------------|------------|------------|
+| Sürüm 2. x | Uzat  | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
+| Sürüm 3. x | Buster | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3,8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+
 ## <a name="cross-origin-resource-sharing"></a>Çıkış noktaları arası kaynak paylaşma
 
 [!INCLUDE [functions-cors](../../includes/functions-cors.md)]
@@ -638,7 +676,7 @@ CORS, Python işlev uygulamaları için tam olarak desteklenmektedir.
 
 ## <a name="known-issues-and-faq"></a>Bilinen sorunlar ve SSS
 
-Değerli geri bildiriminiz sayesinde, yaygın sorunlara yönelik sorun giderme kılavuzlarının bir listesini koruyabiliriz:
+Aşağıda, yaygın sorunlara yönelik sorun giderme kılavuzlarının bir listesi verilmiştir:
 
 * [Modulenotfoun, ımporterror](recover-module-not-found.md)
 

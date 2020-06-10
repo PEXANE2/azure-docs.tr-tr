@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: how-to
 ms.date: 05/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 5ece7beaea709c9b1e52cf2130484663da0aa4ac
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: db86f22247b757ed2f1cc2c168421346ad90a1fc
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664553"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84657649"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Azure Service Bus bir ad alanının mesajlaşma birimlerini otomatik olarak güncelleştir 
 Bu makalede, kaynak (CPU veya bellek) kullanımı temel alınarak bir Service Bus ad alanının [mesajlaşma birimlerini](service-bus-premium-messaging.md) otomatik olarak nasıl güncelleştirebilmeniz gösterilmektedir. 
@@ -75,10 +75,10 @@ Adım adım yönergeler için bkz. modül [galerisinden modül Içeri aktarma](.
         if ($schemaId -eq "AzureMonitorMetricAlert") {
 
             # Get the resource group name from the alert context
-            $resourceGroupName = $AlertContext.resourceGroupName
+            $resourceGroupName = $WebhookBody.resourceGroupName
             
             # Get the namespace name from the alert context
-            $namespaceName = $AlertContext.resourceName
+            $namespaceName = $WebhookBody.resourceName
         }
     }
     

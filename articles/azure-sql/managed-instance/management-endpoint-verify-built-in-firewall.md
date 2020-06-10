@@ -11,17 +11,17 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: 04a630e51a68fab8f6c60262fbd14fad2e4aef1c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 561aba31bfd1cc37173f3ee41625ba3687f5e657
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045077"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660905"
 ---
 # <a name="verify-the-azure-sql-managed-instance-built-in-firewall"></a>Azure SQL yönetilen örneği yerleşik güvenlik duvarını doğrulama
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Azure SQL yönetilen örnek [zorunlu gelen güvenlik kuralları](connectivity-architecture-overview.md#mandatory-inbound-security-rules) , yönetim bağlantı noktalarını 9000, 9003, 1438, 1440, 1452 ' i ağ güvenlik grubundaki (NSG) SQL yönetilen örneği koruyan **herhangi bir kaynaktan** açık olmasını gerektirir. Bu bağlantı noktaları NSG düzeyinde açık olsa da, yerleşik güvenlik duvarı tarafından ağ düzeyinde korunur.
+Azure SQL yönetilen örnek [zorunlu gelen güvenlik kuralları](connectivity-architecture-overview.md#mandatory-inbound-security-rules) , yönetim bağlantı noktalarını 9000, 9003, 1438, 1440 ve 1452 ' yi, ağ güvenlik grubundaki (NSG) SQL yönetilen örneğini koruyan **herhangi bir kaynaktan** açık olmasını gerektirir. Bu bağlantı noktaları NSG düzeyinde açık olsa da, yerleşik güvenlik duvarı tarafından ağ düzeyinde korunur.
 
 ## <a name="verify-firewall"></a>Güvenlik duvarını doğrulama
 
@@ -31,4 +31,4 @@ Bu bağlantı noktalarını doğrulamak için, bu bağlantı noktalarını sına
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL yönetilen örnekler ve bağlantı hakkında daha fazla bilgi için bkz. [Azure SQL yönetilen örnek bağlantısı mimarisi](connectivity-architecture-overview.md).
+SQL yönetilen örneği ve bağlantısı hakkında daha fazla bilgi için bkz. [Azure SQL yönetilen örnek bağlantısı mimarisi](connectivity-architecture-overview.md).

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 048224a55c2bbcbc99281d070d88d34e2dc77168
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 295738ee5943a6cf54bc7e1e3ce4bba621dbe29f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309766"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658692"
 ---
 # <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için Kullanıcı ayarlarını yönetme
 
@@ -26,11 +26,15 @@ Azure Multi-Factor Authentication kullanıcılarının yönetilmesine yardımcı
 
 *Kimlik doğrulama Yöneticisi* rolüne atandıysanız, kullanıcıların parolalarını SıFıRLAMALARıNı, MFA için yeniden kaydolmayı veya mevcut MFA oturumlarını kullanıcı nesnesinden iptal etmeyi isteyebilirsiniz. Kullanıcı ayarlarını yönetmek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Sol tarafta **Azure Active Directory** > **Kullanıcılar** > **tüm kullanıcılar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Sol tarafta **Azure Active Directory**  >  **Kullanıcılar**  >  **tüm kullanıcılar**' ı seçin.
 1. Üzerinde bir eylem gerçekleştirmek istediğiniz kullanıcıyı seçin ve **kimlik doğrulama yöntemleri**' ni seçin. Pencerenin üst kısmında, Kullanıcı için aşağıdaki seçeneklerden birini belirleyin:
    - **Parola sıfırlama** Kullanıcı parolasını sıfırlar ve sonraki oturum açma sırasında değiştirilmesi gereken geçici bir parola atar.
    - **MFA 'Yı yeniden kaydettirme** , Kullanıcı bir sonraki sefer oturum açtığında yenı bir MFA kimlik doğrulama yöntemi ayarlaması istenmesini sağlar.
+   
+      > [!NOTE]
+      > Yönetici MFA için yeniden kayıt gerektirdiğinde kullanıcının şu anda kayıtlı kimlik doğrulama yöntemleri silinmez. Bir Kullanıcı MFA için yeniden kaydolduktan sonra, güvenlik bilgilerini gözden geçirmelerini ve artık kullanılamayan önceden kaydedilmiş kimlik doğrulama yöntemlerini silmenizi öneririz.
+   
    - **MFA oturumlarını Iptal etme** , kullanıcının HATıRLANAN MFA oturumlarını temizler ve cihazdaki ilke için bir sonraki ihtiyaç DUYULıŞıNDA MFA gerçekleştirmesini gerektirir.
 
    ![Azure portal kimlik doğrulama yöntemlerini yönetin](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
@@ -41,11 +45,11 @@ Gerekirse, bir kullanıcının oluşturduğu tüm uygulama parolalarını silebi
 
 Bir kullanıcının uygulama parolalarını silmek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Sol tarafta **Azure Active Directory** > **Kullanıcılar** > **tüm kullanıcılar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Sol tarafta **Azure Active Directory**  >  **Kullanıcılar**  >  **tüm kullanıcılar**' ı seçin.
 1. **Multi-Factor Authentication**seçin. Bu menü seçeneğini görmek için sağa kaydırmanız gerekebilir. Tam Azure portal pencere ve menü konumunu görmek için aşağıdan örnek ekran görüntüsünü seçin:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Azure AD 'de kullanıcılar penceresinden Multi-Factor Authentication seçin")](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Yönetmek istediğiniz kullanıcı veya kullanıcıların yanındaki kutuyu işaretleyin. Sağ tarafta hızlı adım seçeneklerinin bir listesi görüntülenir.
-1. **Kullanıcı ayarlarını yönet**' i seçin, sonra aşağıdaki örnekte gösterildiği gibi **Seçilen kullanıcılar tarafından oluşturulan mevcut tüm uygulama parolalarını Sil**kutusunu işaretleyin. ![var olan tüm uygulama parolalarını Sil](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+1. **Kullanıcı ayarlarını yönet**' i seçin, sonra aşağıdaki örnekte gösterildiği gibi **Seçilen kullanıcılar tarafından oluşturulan mevcut tüm uygulama parolalarını Sil**kutusunu işaretleyin. ![ var olan tüm uygulama parolalarını Sil](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 1. **Kaydet**' i ve ardından **Kapat**' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

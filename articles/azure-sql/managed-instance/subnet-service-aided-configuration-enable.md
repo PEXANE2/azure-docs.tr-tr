@@ -10,12 +10,12 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.date: 03/12/2020
-ms.openlocfilehash: c8531af9e8d43dfe1279306cea57a93cf89ded90
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 88fffc083b918157857c5c170cddda2016944c89
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045798"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660336"
 ---
 # <a name="enabling-service-aided-subnet-configuration-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için hizmet destekli alt ağ yapılandırması etkinleştiriliyor
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,7 +27,7 @@ Otomatik olarak yapılandırılan ağ güvenlik grupları ve yol tablosu kuralla
 Kaynak sağlayıcısı için [alt ağ temsilcisini](../../virtual-network/subnet-delegation-overview.md) etkinleştirdikten sonra hizmet destekli yapılandırma otomatik olarak etkinleştirilir `Microsoft.Sql/managedInstances` .
 
 > [!IMPORTANT] 
-> Alt ağ-temsili açık olduktan sonra, alt ağdan son sanal kümeyi kaldırana kadar devre dışı bırakabilirsiniz. Sanal kümeyi silme hakkında daha fazla bilgi için aşağıdaki [makaleye](virtual-cluster-delete.md#delete-virtual-cluster-from-the-azure-portal)bakın.
+> Alt ağ-temsili açık olduktan sonra, alt ağdan son sanal kümeyi kaldırana kadar devre dışı bırakabilirsiniz. Sanal kümeyi silme hakkında daha fazla bilgi için aşağıdaki [makaleye](virtual-cluster-delete.md#delete-a-virtual-cluster-from-the-azure-portal)bakın.
 
 > [!NOTE] 
 > Hizmet destekli alt ağ yapılandırması SLA 'yı sürdürmek için gerekli bir özelliktir. 1 Mayıs 2020 tarihinden itibaren, yönetilen örnek kaynak sağlayıcısı için temsilci olmayan alt ağlarda yönetilen örnekleri dağıtmak mümkün olmayacaktır. 1 Temmuz 2020 ' de, yönetilen örnekler içeren tüm alt ağlar otomatik olarak yönetilen örnek kaynak sağlayıcısına devredilecektir. 

@@ -4,12 +4,12 @@ description: Özel görüntüler, işlem düğümlerini toplu iş yüklerinizi �
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.custom: tracking-python
-ms.openlocfilehash: bd71983a5c932b515a7d41a680a55772567694ca
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8e81d0954d391210563641531b4c572325ae946f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561265"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84656602"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Özel bir havuz oluşturmak için paylaşılan görüntü galerisini kullanma
 
@@ -44,6 +44,8 @@ Senaryonuz için yapılandırılmış paylaşılan bir görüntünün kullanılm
 
 > [!NOTE]
 > Paylaşılan görüntünüz Batch hesabıyla aynı abonelikte olmalıdır. Görüntü, Batch hesabınızla aynı bölgede çoğaltmalar olduğu sürece farklı bölgelerde olabilir.
+
+Paylaşılan görüntü Galerisi görüntüsüne sahip özel bir görüntü havuzu oluşturmak için bir Azure AD uygulaması kullanıyorsanız, bu uygulamaya paylaşılan görüntüye erişim sağlayan bir [Azure yerleşik rolü](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) verilmiş olmalıdır. Paylaşılan görüntüye gidip, **erişim denetimi (IAM)** seçeneğini belirleyerek ve uygulama için bir rol ataması ekleyerek Azure Portal bu erişime izin verebilirsiniz.
 
 ## <a name="prepare-a-custom-image"></a>Özel görüntü hazırlama
 

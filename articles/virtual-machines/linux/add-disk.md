@@ -4,16 +4,16 @@ description: Azure CLı ile Linux VM 'nize kalıcı bir veri diski eklemeyi öğ
 author: roygara
 manager: twooley
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/13/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: a80a1fe21ba0b40aebf9e426e3d49f499c2d2a21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb18207c15007820bf93254886ab38a43bc5b48f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250419"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658341"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM'ye disk ekleme
 Bu makalede, VM 'niz bakım veya yeniden boyutlandırma nedeniyle yeniden sağlansa bile verilerinizi koruyabilmeniz için sanal makinenize kalıcı bir disk nasıl iliştirilebileceğiniz gösterilmektedir.
@@ -21,7 +21,7 @@ Bu makalede, VM 'niz bakım veya yeniden boyutlandırma nedeniyle yeniden sağla
 
 ## <a name="attach-a-new-disk-to-a-vm"></a>VM 'ye yeni bir disk iliştirme
 
-VM 'nize yeni, boş bir veri diski eklemek istiyorsanız, `--new` parametresiyle [az VM disk Attach](/cli/azure/vm/disk?view=azure-cli-latest) komutunu kullanın. VM 'niz bir kullanılabilirlik Bölgeindeyse, disk VM ile aynı bölgede otomatik olarak oluşturulur. Daha fazla bilgi için bkz. [kullanılabilirlik alanları genel bakış](../../availability-zones/az-overview.md). Aşağıdaki örnek, 50 GB boyutundaki *mydatadisk* adlı bir disk oluşturur:
+VM 'nize yeni, boş bir veri diski eklemek istiyorsanız, parametresiyle [az VM disk Attach](/cli/azure/vm/disk?view=azure-cli-latest) komutunu kullanın `--new` . VM 'niz bir kullanılabilirlik Bölgeindeyse, disk VM ile aynı bölgede otomatik olarak oluşturulur. Daha fazla bilgi için bkz. [kullanılabilirlik alanları genel bakış](../../availability-zones/az-overview.md). Aşağıdaki örnek, 50 GB boyutundaki *mydatadisk* adlı bir disk oluşturur:
 
 ```azurecli
 az vm disk attach \
@@ -50,7 +50,7 @@ Linux sanal makinenizin kullanabilmesi için yeni diskinizi bölümlemek, biçim
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
-Sanal makinenize bağlandıktan sonra bir disk eklemeye hazırsınız demektir. İlk olarak, kullanarak `dmesg` diski bulun (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, *SCSI* disklerinde filtrelemek için dmesg kullanır:
+Sanal makinenize bağlandıktan sonra bir disk eklemeye hazırsınız demektir. İlk olarak, kullanarak diski bulun `dmesg` (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, *SCSI* disklerinde filtrelemek için dmesg kullanır:
 
 ```bash
 dmesg | grep SCSI
@@ -69,13 +69,13 @@ dmesg | grep SCSI
 > [!NOTE]
 > Kendi oluşturduğunuz en son Fdisk sürümlerini kullanmanız veya uygulamanız için uygun olması önerilir.
 
-Burada, *SDC* , istediğimiz disktir. Diski ile `parted`bölümlemek, disk boyutu 2 tebibayt (Tib) veya daha büyükse GPT bölümlendirme kullanmanız gerekir, bu durumda MBR veya GPT bölümlendirme kullanabilirsiniz. MBR bölümlemeyi kullanıyorsanız, kullanabilirsiniz `fdisk`. Bölüm 1 ' de bir birincil disk oluşturun ve diğer varsayılanları kabul edin. Aşağıdaki örnek, */dev/SDC*üzerinde `fdisk` işlemi başlatır:
+Burada, *SDC* , istediğimiz disktir. Diski ile bölümlemek `parted` , disk boyutu 2 tebibayt (Tib) veya daha büyükse GPT bölümlendirme kullanmanız gerekir, bu durumda MBR veya GPT bölümlendirme kullanabilirsiniz. MBR bölümlemeyi kullanıyorsanız, kullanabilirsiniz `fdisk` . Bölüm 1 ' de bir birincil disk oluşturun ve diğer varsayılanları kabul edin. Aşağıdaki örnek, `fdisk` */dev/SDC*üzerinde işlemi başlatır:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-Yeni bölüm eklemek için `n` komutunu kullanın. Bu örnekte, birincil bölüm için de `p` seçim yaptık ve varsayılan değerlerin geri kalanını kabul ediyoruz. Çıkış aşağıdaki örneğe benzeyecektir:
+Yeni bölüm eklemek için `n` komutunu kullanın. Bu örnekte, `p` birincil bölüm için de seçim yaptık ve varsayılan değerlerin geri kalanını kabul ediyoruz. Çıkış aşağıdaki örneğe benzeyecektir:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -97,7 +97,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Bölüm tablosunu yazarak `p` ve ardından tabloyu diske yazmak ve `w` çıkmak için kullanarak yazdırın. Çıktı aşağıdaki örneğe benzer şekilde görünmelidir:
+Bölüm tablosunu yazarak `p` ve ardından `w` tabloyu diske yazmak ve çıkmak için kullanarak yazdırın. Çıktı aşağıdaki örneğe benzer şekilde görünmelidir:
 
 ```bash
 Command (m for help): p
@@ -123,7 +123,7 @@ Syncing disks.
 partprobe 
 ```
 
-Şimdi, `mkfs` komutunu kullanarak bölüme bir dosya sistemi yazın. Dosya sistemi türünü ve cihaz adını belirtin. Aşağıdaki örnek, önceki adımlarda oluşturulan */dev/sdc1* bölümünde bir *ext4* FileSystem oluşturur:
+Şimdi, komutunu kullanarak bölüme bir dosya sistemi yazın `mkfs` . Dosya sistemi türünü ve cihaz adını belirtin. Aşağıdaki örnek, önceki adımlarda oluşturulan */dev/sdc1* bölümünde bir *ext4* FileSystem oluşturur:
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
@@ -154,13 +154,13 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 
-Şimdi, kullanarak `mkdir`dosya sistemini bağlamak için bir dizin oluşturun. Aşağıdaki örnek, */datadrive*dizininde bir dizin oluşturur:
+Şimdi, kullanarak dosya sistemini bağlamak için bir dizin oluşturun `mkdir` . Aşağıdaki örnek, */datadrive*dizininde bir dizin oluşturur:
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-Daha `mount` sonra dosya sistemini bağlamak için kullanın. Aşağıdaki örnek */dev/sdc1* bölümünü */datadrive* bağlama noktasına bağlar:
+`mount`Daha sonra dosya sistemini bağlamak için kullanın. Aşağıdaki örnek */dev/sdc1* bölümünü */datadrive* bağlama noktasına bağlar:
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
@@ -207,12 +207,12 @@ Bazı Linux çekirdekler, diskteki kullanılmayan blokları atmak için kesme/e�
 
 Linux sanal makinenizde KıRPMA desteğini etkinleştirmenin iki yolu vardır. Her zamanki gibi, önerilen yaklaşım için dağıtıma başvurun:
 
-* /Etc/fstab içindeki `discard` bağlama seçeneğini kullanın */etc/fstab*, örneğin:
+* `discard` */Etc/fstab*içindeki bağlama seçeneğini kullanın, örneğin:
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* Bazı durumlarda, `discard` seçeneğinde performans olumsuz etkileri olabilir. Alternatif olarak, komut satırından `fstrim` komutu el ile çalıştırabilir veya bunları düzenli olarak çalıştırmak için crontab 'ize ekleyebilirsiniz:
+* Bazı durumlarda, `discard` seçeneğinde performans olumsuz etkileri olabilir. Alternatif olarak, komut `fstrim` satırından komutu el ile çalıştırabilir veya bunları düzenli olarak çalıştırmak için crontab 'ize ekleyebilirsiniz:
 
     **Ubuntu**
 

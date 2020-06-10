@@ -3,12 +3,12 @@ title: Azure Advisor ile Azure uygulamalarının performansını geliştirme
 description: Azure dağıtımlarınızın performansını iyileştirmek için Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 230466c7c0e8de2681737bbf9d74341dea7f7b8f
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: d0b309fd35fa0a78685017e25eea0caf3f97da03
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196408"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658418"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Azure Advisor ile Azure uygulamalarının performansını geliştirme
 
@@ -58,6 +58,11 @@ Veri eğriltme, iş yükünüzü çalıştırırken gereksiz veri hareketine vey
 ## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Sorgu performansını artırmak için SQL veri ambarı tablonuzda geçmiş tablo istatistiklerini oluşturun veya güncelleştirin
 
 Danışman güncel [tablo istatistiklerine](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) sahip olmayan tabloları tanımlar ve tablo istatistiklerini oluşturmayı veya güncelleştirmeyi önerir. SQL veri ambarı sorgu iyileştiricisi, sorgu iyileştiricinin en hızlı performans için yüksek kaliteli bir sorgu planı oluşturmasını sağlayan sorgu sonucundaki kardinalite veya satır sayısını tahmin etmek için güncel statikler kullanır.
+
+## <a name="improve-mysql-connection-management"></a>MySQL bağlantı yönetimini geliştirme
+
+Advisor analizine, MySQL sunucusuna bağlanan uygulamanızın bağlantıları verimli bir şekilde yönetmediğinden emin olmanıza yardımcı olur. Bunun sonucunda gereksiz kaynak kullanımı ve bir bütün olarak yüksek uygulama gecikmesi ortaya çıkabilir. Bağlantı yönetimini geliştirmek için, kısa süreli bağlantıların sayısını azaltmanızı ve boşta kalmış gereksiz bağlantıları kaldırmanızı öneririz. Bunu yapmak için ProxySQL gibi bir sunucu tarafı bağlantı havuzu oluşturucu yapılandırılabilir.
+
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Sorgu performansını artırmak için SQL veri ambarı tablolarınızdaki önbellek kullanımını iyileştirmek üzere ölçeği büyütün
 
@@ -144,4 +149,4 @@ Danışman önerileri hakkında daha fazla bilgi edinmek için bkz.:
 * [Danışman maliyet önerileri](advisor-cost-recommendations.md)
 * [Danışman yüksek kullanılabilirlik önerileri](advisor-high-availability-recommendations.md)
 * [Danışman güvenlik önerileri](advisor-security-recommendations.md)
-* [Danışman Işletimsel üstün öneriler](advisor-operational-excellence-recommendations.md)
+* [Danışman işletimsel üstün öneriler](advisor-operational-excellence-recommendations.md)

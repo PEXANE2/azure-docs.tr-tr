@@ -1,6 +1,6 @@
 ---
-title: Node. js ' den Azure kuyruk depolaması kullanma-Azure depolama
-description: Kuyrukları oluşturmak ve silmek için Azure Kuyruk hizmeti kullanmayı ve iletileri ekleme, alma ve silme hakkında bilgi edinin. Node. js içinde yazılan örnekler.
+title: Azure kuyruk depolama Node.js-Azure Storage 'ı kullanma
+description: Kuyrukları oluşturmak ve silmek için Azure Kuyruk hizmeti kullanmayı ve iletileri ekleme, alma ve silme hakkında bilgi edinin. Node.js yazılan örnekler.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/08/2016
@@ -9,30 +9,33 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: c7b5e679fa47437e7019884317d0ab14792055f3
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 878c4a5028b114ad10d19c03c0239c9d7a8bc6ce
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465431"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659568"
 ---
-# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Node. js ' den kuyruk oluşturmak ve silmek için Azure kuyruk hizmeti 'ni kullanma
+# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Node.js kuyrukları oluşturmak ve silmek için Azure kuyruk hizmetini kullanın
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-check-out-samples-all](../../../includes/storage-check-out-samples-all.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Bu kılavuzda, Microsoft Azure Kuyruk hizmeti kullanarak nasıl yaygın senaryolar gerçekleştirebileceğiniz gösterilmektedir. Örnekler Node. js API 'SI kullanılarak yazılır. Kapsanan senaryolar sıra iletilerini **ekleme**, göz **atma**, **alma**ve **silme** , Ayrıca kuyruk **oluşturma ve silme**içerir.
+Bu kılavuzda, Microsoft Azure Kuyruk hizmeti kullanarak nasıl yaygın senaryolar gerçekleştirebileceğiniz gösterilmektedir. Örnekler Node.js API kullanılarak yazılır. Kapsanan senaryolar sıra iletilerini **ekleme**, göz **atma**, **alma**ve **silme** , Ayrıca kuyruk **oluşturma ve silme**içerir.
+
+> [!IMPORTANT]
+> Bu makale, JavaScript için Azure Storage istemci kitaplığı 'nın eski sürümüne başvurur. En son sürümü kullanmaya başlamak için lütfen bkz [. hızlı başlangıç: JavaScript Için Azure kuyruk depolama istemci kitaplığı](storage-quickstart-queues-nodejs.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="create-a-nodejs-application"></a>Node. js uygulaması oluşturma
-Boş bir Node. js uygulaması oluşturun. Bir Node. js uygulaması oluşturma yönergeleri için, bkz. [Azure App Service bir Node. js web uygulaması oluşturma](../../app-service/app-service-web-get-started-nodejs.md), Windows PowerShell kullanarak bir [Azure bulut hizmetinde Node. js uygulaması oluşturma ve dağıtma](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) veya [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial).
+## <a name="create-a-nodejs-application"></a>Node.js uygulaması oluşturma
+Boş bir Node.js uygulaması oluşturun. Node.js uygulaması oluşturma yönergeleri için bkz. [Azure App Service 'da Node.js Web uygulaması oluşturma](../../app-service/app-service-web-get-started-nodejs.md), Windows PowerShell kullanarak bir [Azure bulut hizmetinde bir Node.js uygulaması derleme ve dağıtma](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) , veya [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial).
 
 ## <a name="configure-your-application-to-access-storage"></a>Uygulamanızı depolamaya erişecek şekilde yapılandırma
-Azure Storage 'ı kullanmak için, depolama REST hizmetleriyle iletişim kuran bir dizi kullanışlı kitaplık içeren node. js için Azure depolama SDK 'sına ihtiyacınız vardır.
+Azure Storage 'ı kullanmak için, depolama REST hizmetleriyle iletişim kuran bir dizi kullanışlı kitaplık içeren Node.js için Azure depolama SDK 'sına ihtiyacınız vardır.
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Paketi edinmek için düğüm Paket Yöneticisi 'Ni (NPM) kullanın
 1. **PowerShell** (Windows,) **Terminal** (Mac,) veya **Bash** (Unix) gibi bir komut satırı arabirimi kullanın, örnek uygulamanızı oluşturduğunuz klasöre gidin.
@@ -54,7 +57,7 @@ Azure Storage 'ı kullanmak için, depolama REST hizmetleriyle iletişim kuran b
 3. Bir **düğüm \_ modülleri** klasörünün oluşturulduğunu doğrulamak için **ls** komutunu el ile çalıştırabilirsiniz. Bu klasörün içinde, depolama alanına erişmek için ihtiyaç duyduğunuz kitaplıkları içeren **azure-storage** paketini bulacaksınız.
 
 ### <a name="import-the-package"></a>Paketi içeri aktarma
-Not defteri veya başka bir metin düzenleyicisi kullanarak aşağıdakini, depolamayı kullanmayı düşündüğünüz uygulamanın **Server. js** dosyasına ekleyin:
+Not defteri veya başka bir metin düzenleyicisi kullanarak aşağıdakini, depolamayı kullanmayı düşündüğünüz uygulamanın **server.js** dosyasına ekleyin:
 
 ```javascript
 var azure = require('azure-storage');
