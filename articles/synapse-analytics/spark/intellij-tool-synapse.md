@@ -8,14 +8,14 @@ ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 4d1fafa131a39ab72f6fc09663c7eb5b06107539
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b344ae50d921c33a5e8ddd344e08ec86179668e9
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644851"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608766"
 ---
-# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-spark-pools-preview"></a>Öğretici: Spark havuzları için Apache Spark uygulamalar oluşturmak için Azure Toolkit for IntelliJ kullanma (Önizleme)
+# <a name="tutorial-create-apache-spark-applications-with-intellij-using-synapse-synapse-analytics-workspaces-preview"></a>Öğretici: SYNAPSE SYNAPSE Analytics (çalışma alanları Önizleme) kullanarak IntelliJ ile Apache Spark uygulamalar oluşturma
 
 Bu öğreticide, Azure Toolkit for IntelliJ eklentisinin, [Scala](https://www.scala-lang.org/)'da yazılan Apache Spark uygulamaları geliştirme ve sonra doğrudan IntelliJ tümleşik geliştirme ORTAMıNDAN (IDE) bir Spark havuzuna (Önizleme) göndermesi gösterilmektedir. Eklentiyi birkaç şekilde kullanabilirsiniz:
 
@@ -30,7 +30,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > - Apache Spark uygulamaları geliştirme
 > - Uygulamayı Spark havuzlarına gönder
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [IntelliJ fikir topluluk sürümü](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC).
 - Azure araç seti eklentisi 3.27.0-2019.2 – [IntelliJ eklenti deposundan](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) Install
@@ -66,7 +66,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
     ![Apache Spark SDK 'sını seçme](./media/intellij-tool-synapse/create-synapse-application02.png)
 
-7. **Son**' u seçin. Projenin kullanılabilir hale gelmesi birkaç dakika sürebilir.
+7. **Son**'u seçin. Projenin kullanılabilir hale gelmesi birkaç dakika sürebilir.
 8. Spark projesi sizin için otomatik olarak bir yapı oluşturur. Yapıtı görüntülemek için aşağıdaki işletim sistemlerini yapın:
 
    a. Menü çubuğundan **Dosya**  >  **projesi yapısına git...**.

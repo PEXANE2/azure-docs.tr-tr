@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 03/25/2020
 ms.author: v-grpr
-ms.openlocfilehash: 974bcc657b811a10e28b41150439e83d26a208d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e4aa492567f3357867a3a3f385e8339ada093e9
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767045"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608951"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>StorSimple 8000 serisinden veri geçirme seçenekleri
 
@@ -40,6 +40,12 @@ Azure Dosya Eşitleme verileri geçirme hakkında daha fazla bilgi için, [Azure
 StorSimple 5000-7000 Serisi ve StorSimple 8000 serisi müşteriler, verilerini Azure 'da tutmak için Panzura özgürlüğü 'e geçiş yapmak için seçim yapabilir. Panzura özgürlük çözümü, veri merkezlerini, ofislerini, ortak ve özel bulutları kapsayan bir NAS çözümü sağlar. Bu çözüm, NFS, SMB ve mobil istemciler için yerel, karma ve bulut içi veri iş akışlarını mümkün bir şekilde sunar.
 
 Bu geçiş, Panzura tarafından desteklenir ve müşteriler [panzura Web sitesinden](https://panzura.com/migrate-storsimple-panzura/)geçiş desteği isteyerek çalışmaya başlayabilir.
+
+#### <a name="migrate-to-nasuni"></a>Nasuni 'ya geçiş
+
+StorSimple ortamınızın tamamını kararlı, güvenli, yüksek performanslı bir dosya hizmetleri platformuna taşımak Nasuni ile çok kolay. Nasuni, Azure 'un ölçeklenebilirlik ve dayanıklılık ile birleştirilirken şirket içi dosya depolamanın güvenlik ve performansını sunar.  Önde gelen bir Azure bağımsız yazılım satıcısı (ISV) olarak, Nasuni, StorSimple verilerinizi birden çok konumdaki dosyalarınıza paylaşmanıza ve bunlarla işbirliği yapmanızı sağlayan modern bir platforma taşımak için gereken tüm araçları getirir.
+
+Bugün kullanmaya başlayın: [Nasuni Web sitesi](https://info.nasuni.com/storsimple8000-webinar).
 
 <!-- 04/09/2020 v-grpr (priestlg) - As per request, commenting out this section because the information that will go into this section is forthcoming
 #### Migrate to Cohesity

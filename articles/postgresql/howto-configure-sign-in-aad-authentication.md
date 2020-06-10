@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 81d02b32bc1eb6edf22845a4d02ba2ba02536855
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: cbec7843b16298abfb9da683fc4dcec1e0a63a9d
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236330"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636011"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
@@ -54,7 +54,7 @@ Azure AD tümleştirmesini, Azure AD Aware olmayan ve yalnızca PostgreSQL 'e ba
 
 Bu adımlar, bir kullanıcı/uygulamanın, aşağıda açıklanan Azure AD ile kimlik doğrulaması yapmak için gereken adımlardır:
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Azure Cloud Shell, bir Azure VM veya yerel makinenizde da izleyebilirsiniz. [Azure CLI 'nin yüklü](/cli/azure/install-azure-cli)olduğundan emin olun.
 
@@ -131,6 +131,15 @@ Artık şu şekilde, PostgreSQL için Azure veritabanı ile bir bağlantı başl
 psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
 
+Bağlanırken dikkat edilmesi gereken önemli noktalar:
+
+* `user@tenant.onmicrosoft.com`, bağlanmaya çalıştığınız Azure AD kullanıcısının veya grubunun adıdır
+* Azure AD Kullanıcı/Grup adından sonra sunucu adını her zaman Ekle (örn. `@mydb` )
+* Azure AD Kullanıcı veya grup adının tam yolunu kullandığınızdan emin olun
+* Azure AD Kullanıcı ve grup adları büyük/küçük harfe duyarlıdır
+* Grup olarak bağlanırken, yalnızca Grup adını kullanın (ör. `GroupName@mydb` )
+* Ad boşluk içeriyorsa, `\` kaçış için her alandan önce kullanın
+
 Artık Azure AD kimlik doğrulaması kullanarak PostgreSQL sunucunuza kimlik doğrulamış olursunuz.
 
 ## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nda Azure AD kullanıcıları oluşturma
@@ -142,7 +151,7 @@ PostgreSQL için Azure veritabanı veritabanınıza bir Azure AD kullanıcısı 
 3. `<user>@yourtenant.onmicrosoft.com`PostgreSQL Için Azure veritabanı 'nda rol oluştur.
 4. `<user>@yourtenant.onmicrosoft.com`Azure_ad_user rolün bir üyesini oluşturun. Bu yalnızca Azure AD kullanıcılarına verilmelidir.
 
-**Örnek:**
+**Örneğinde**
 
 ```sql
 CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
@@ -155,7 +164,7 @@ CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
 
 Veritabanınıza erişim için bir Azure AD grubunu etkinleştirmek üzere, kullanıcılar için aynı mekanizmayı kullanın, bunun yerine grup adını belirtin:
 
-**Örnek:**
+**Örneğinde**
 
 ```sql
 CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;

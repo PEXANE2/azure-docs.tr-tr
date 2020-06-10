@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
-ms.custom: mvc
-ms.openlocfilehash: c5fe0a577ead9d8c6408d4268d21465a7b762b6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 3acb8b2ac75753a36097cb94a9294860c3f14354
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77920629"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608987"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Hızlı başlangıç: Python sağlama hizmeti SDK 'sını kullanarak cihaz sağlama hizmeti 'ne IoT Hub TPM cihazı kaydetme
 
@@ -22,7 +22,7 @@ ms.locfileid: "77920629"
 
 Bu hızlı başlangıçta, örnek Python uygulamasının yardımıyla Python sağlama hizmeti SDK 'sını kullanarak Azure IoT Hub cihaz sağlama hizmeti 'nde bir TPM cihazı için tek bir kayıt oluşturursunuz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [IoT Hub cihaz sağlama hizmetini Azure Portal Ile ayarlama](./quick-setup-auto-provision.md)işlemi tamamlandı.
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
@@ -62,7 +62,7 @@ Bu bölümde örnek koda TPM cihazınızın sağlama ayrıntılarını nasıl ek
 
 1. Metin düzenleyicisi kullanarak yeni bir **TpmEnrollment.py** dosyası oluşturun.
 
-1. Aşağıdaki `import` deyimlerini ve değişkenlerini **TpmEnrollment.py** dosyasının başlangıcına ekleyin. Ardından, `dpsConnectionString` **Azure Portal** **cihaz sağlama hizmetinizdeki** **paylaşılan erişim ilkeleri** altında bulunan bağlantı dizenizle değiştirin. `endorsementKey` öğesini, daha önce [Ortamı hazırlama](quick-enroll-device-tpm-python.md#prepareenvironment) konusunda belirtilen değerle değiştirin. Son olarak, benzersiz bir `registrationid` oluşturun ve yalnızca küçük harf alfasayısal karakterler ve kısa çizgiler içerdiğinden emin olun.  
+1. Aşağıdaki `import` deyimlerini ve değişkenlerini **TpmEnrollment.py** dosyasının başlangıcına ekleyin. Ardından `dpsConnectionString` , **Azure Portal** **cihaz sağlama hizmetinizdeki** **paylaşılan erişim ilkeleri** altında bulunan bağlantı dizenizle değiştirin. `endorsementKey` öğesini, daha önce [Ortamı hazırlama](quick-enroll-device-tpm-python.md#prepareenvironment) konusunda belirtilen değerle değiştirin. Son olarak, benzersiz bir `registrationid` oluşturun ve yalnızca küçük harf alfasayısal karakterler ve kısa çizgiler içerdiğinden emin olun.  
    
     ```python
     from provisioningserviceclient import ProvisioningServiceClient

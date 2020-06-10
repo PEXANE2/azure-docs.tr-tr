@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: a3d533080af373ca209a9b393d02d1606d7cb22d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4622ae1fa87a47915094b7ab90390c753b82dbb
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461744"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609123"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Azure Data Box için bir destek bileti açın
 
@@ -57,7 +57,7 @@ Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
 
    1. **İletişim seçeneklerinde**tercih ettiğiniz iletişim yönteminizi (telefon veya e-posta) ve dili girin. Yanıt süresi, abonelik planınıza göre otomatik olarak seçilir.
    2. **İletişim bilgilerinde**adınızı, e-postanızı, isteğe bağlı iletişim, ülke/bölge ' yi belirtin. **Gelecekteki destek istekleri için kişi değişikliklerini kaydet**' i seçin.
-   3. **Oluştur**' a tıklayın.
+   3. **Oluştur**'a tıklayın.
 
        ![İletişim bilgileri](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 

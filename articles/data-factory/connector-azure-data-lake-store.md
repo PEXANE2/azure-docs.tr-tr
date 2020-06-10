@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
-ms.openlocfilehash: a39aae31223fd6413932bc5121a1171d960c26f7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ed454acfd4b05113945b24f4dd11c3b67a256cc6
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649685"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608834"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Data Lake Storage 1. veri kopyalama
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Data Factory sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-azure-datalake-connector.md)
-> * [Geçerli sürüm](connector-azure-data-lake-store.md)
+> * [Güncel sürüm](connector-azure-data-lake-store.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -47,7 +47,7 @@ Bu Azure Data Lake Storage 1. Bağlayıcısı aşağıdaki etkinlikler için des
 > [!IMPORTANT]
 > Şirket içinde barındırılan tümleştirme çalışma zamanını kullanarak verileri kopyalarsanız, şirket güvenlik duvarını `<ADLS account name>.azuredatalakestore.net` `login.microsoftonline.com/<tenant>/oauth2/token` 443 numaralı bağlantı noktasına giden trafiğe izin verecek şekilde yapılandırın. İkincisi, tümleştirme çalışma zamanının erişim belirtecini almak için iletişim kurması gereken Azure Güvenlik belirteci hizmetidir.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 > [!TIP]
 > Azure Data Lake Store bağlayıcısını nasıl kullanacağınızı öğrenmek için bkz. [Azure Data Lake Store verileri yükleme](load-azure-data-lake-store.md).
@@ -348,7 +348,13 @@ Data Lake Storage 1. 'den Data Lake Storage 2. sürümüne yükselttiğinizde er
 
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
 
-Eşleme veri akışındaki verileri dönüştürürken JSON, avro, sınırlandırılmış metin veya Parquet biçimindeki Azure Data Lake Storage 1. dosyaları okuyabilir ve yazabilirsiniz. Daha fazla bilgi için bkz. veri akışı eşleme özelliğinde [kaynak dönüştürme](data-flow-source.md) ve [Havuz dönüştürme](data-flow-sink.md) .
+Veri akışlarındaki verileri dönüştürürken, aşağıdaki biçimlerde Azure Data Lake Storage 1. dosyaları okuyabilir ve yazabilirsiniz:
+* [JSON](format-json.md#mapping-data-flow-properties)
+* [Avro](format-avro.md#mapping-data-flow-properties)
+* [Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties)
+* [Parquet](format-parquet.md#mapping-data-flow-properties).
+
+Biçimlendirme özel ayarları, bu biçimdeki belgelerde bulunur. Daha fazla bilgi için bkz. eşleme veri akışı ve [Havuz dönüşümünde](data-flow-sink.md) [kaynak dönüştürme](data-flow-source.md) veri akışında.
 
 ### <a name="source-transformation"></a>Kaynak dönüştürme
 

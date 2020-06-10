@@ -8,12 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: fc69761a05ea381d39d58d5ebf0046e0d9874961
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 7945b3b0aeba7f5135665f4413d304eb225ac749
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77210474"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604703"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Örnek: Python kullanarak özel bir yetenek oluşturma
 
@@ -21,7 +22,7 @@ Bu Azure Bilişsel Arama Beceri örneğinde, Python ve Visual Studio Code kullan
 
 Özel beceri tasarım tarafından basittir (iki dizeyi birleştirir), böylece Python 'da özel beceri geliştirme için kullanılan araçlara ve teknolojilere odaklanırsınız. Basit bir beceriyle başarılı olduktan sonra daha karmaşık senaryolara sahip olabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Özel bir yeteneğin uygulanması gereken giriş/çıkış arabirimine giriş için [özel beceri arabirimini](cognitive-search-custom-skill-interface.md) gözden geçirin.
 
@@ -41,7 +42,7 @@ Bu örnek, bir Web API 'SI barındırma kavramını göstermek için bir Azure I
 
 Visual Studio Code'daki Azure İşlevleri proje şablonu, Azure'daki bir işlev uygulamasında yayımlanabilen bir proje oluşturur. İşlev uygulaması, kaynakların yönetilmesi, dağıtılması ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanıza olanak tanır.
 
-1. Visual Studio Code ' de, F1 tuşuna basarak komut paletini açın. Komut paletinde, araması yapın ve seçin `Azure Functions: Create new project...`.
+1. Visual Studio Code ' de, F1 tuşuna basarak komut paletini açın. Komut paletinde, araması yapın ve seçin `Azure Functions: Create new project...` .
 
 1. Proje çalışma alanınız için bir dizin konumu seçin ve **Seç**' i seçin.
 
@@ -57,7 +58,7 @@ Visual Studio Code'daki Azure İşlevleri proje şablonu, Azure'daki bir işlev 
 
 Visual Studio Code işlev uygulaması projesini yeni bir çalışma alanında oluşturur. Bu proje [host.json](../azure-functions/functions-host-json.md) ve [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) yapılandırma dosyaları ve tüm dile özgü proje dosyalarını içerir. 
 
-İşlev uygulaması projesinin **Concatenator** klasöründe yenı bir http tetiklemeli işlev de oluşturulur. Bunun içinde, bu içerikle birlikte "\_\_init__. Kopyala" adlı bir dosya olacaktır:
+İşlev uygulaması projesinin **Concatenator** klasöründe yenı bir http tetiklemeli işlev de oluşturulur. Bunun içinde \_ \_ , bu içerikle birlikte "init__. Kopyala" adlı bir dosya olacaktır:
 
 ```py
 import logging
@@ -231,7 +232,7 @@ Bu örnek, işlevi yerel ortamda çalıştırırken daha önce gördüğünüz s
 
 ## <a name="connect-to-your-pipeline"></a>İşlem hattınızla bağlantı kurmak
 
-Artık yeni bir özel beceriye sahip olduğunuza göre, Beceri 'e ekleyebilirsiniz. Aşağıdaki örnekte, belgenin başlığını ve yazarını merged_title_author çağırdığımız tek bir alana birleştirme beceriye nasıl çağrılacağını gösterilmektedir. Yeni `[your-function-url-here]` Azure IŞLEVINIZIN URL 'siyle değiştirin.
+Artık yeni bir özel beceriye sahip olduğunuza göre, Beceri 'e ekleyebilirsiniz. Aşağıdaki örnekte, belgenin başlığını ve yazarını merged_title_author çağırdığımız tek bir alana birleştirme beceriye nasıl çağrılacağını gösterilmektedir. `[your-function-url-here]`Yeni Azure işlevinizin URL 'siyle değiştirin.
 
 ```json
 {

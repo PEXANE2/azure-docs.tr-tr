@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 09867d6739998902ea0fd11281d1b975866c1242
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: bf9209e0c256412ccb06ea62a197046a7b012e00
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722635"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629016"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Özel Konuşma için modeli eğitme
 
-Konuşmaya metin modeli eğitimi, Microsoft 'un temel modeli için tanıma doğruluğunu iyileştirebilir. Model, insan etiketli döküm ve ilgili metin kullanılarak eğitilir. Daha önce karşıya yüklenen ses verileriyle birlikte bu veri kümeleri, sözcükleri, tümceleri, kısaltmaları, adları ve ürüne özgü diğer koşulları tanımak üzere konuşmayı metne dönüştürme ve eğitim için kullanılır. Sağladığınız daha fazla etki alanı veri kümesi (kullanıcıların söyledikleri ve tanımak istediğiniz veriler ile ilgili veriler), modelinizin daha doğru olur ve bu da daha iyi bir tanıma sonucu elde edilir. İlgisiz verileri eğitimlere besleyerek, modelinize ait doğruluğu azaltabilir veya zarar verebilir.
+Konuşmaya metin modeli eğitimi, Microsoft 'un temel modeli için tanıma doğruluğunu iyileştirebilir. Model, insan etiketli döküm ve ilgili metin kullanılarak eğitilir. Bu veri kümeleri, daha önce karşıya yüklenen ses verileriyle birlikte, konuşma-metin modelini iyileştirmek ve eğleştirmek için kullanılır.
 
 ## <a name="use-training-to-resolve-accuracy-issues"></a>Doğruluk sorunlarını gidermek için eğitim kullanma
 
@@ -39,7 +39,7 @@ Modelinize yönelik tanınma sorunlarıyla karşılaşdıysanız, insan etiketli
 Bir modeli eğiten ilk adım eğitim verilerini karşıya yüklemedir. İnsan etiketli onayları ve ilgili metinleri (dıklılık ve söylenişleri) hazırlamak için [verilerinizi hazırlama ve test](how-to-custom-speech-test-data.md) etme adımları için adım adım yönergeler kullanın. Eğitim verilerini karşıya yükledikten sonra modelinize eğitime başlamak için aşağıdaki yönergeleri izleyin:
 
 1. [Özel konuşma tanıma portalında](https://speech.microsoft.com/customspeech)oturum açın.
-2. **Konuşmayı metne > Özel Konuşma Tanıma > eğitimi**'ne gidin.
+2. **Konuşmayı metne > Özel Konuşma Tanıma > [proje adı] eğitim >**.
 3. **Modeli eğitme**' ye tıklayın.
 4. Ardından, eğitime bir **ad** ve **Açıklama**sağlayın.
 5. **Senaryo ve taban çizgisi modeli** açılan menüsünde, etki alanına en uygun senaryoyu seçin. Hangi senaryonun seçeceğinizden emin değilseniz, **genel**' i seçin. Temel model, eğitimin başlangıç noktasıdır. En son model genellikle en iyi seçenektir.

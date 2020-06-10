@@ -9,20 +9,20 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/03/2020
-ms.openlocfilehash: 2c57ddd88046044cccd13b0ade23144cd5649455
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 143c94527b947495709d2e94f107dc578e7f2866
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433325"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610211"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Eşleme veri akışında havuz dönüştürme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Verilerinizi dönüştürdükten sonra, verileri bir hedef veri kümesine havuza alabilirsiniz. Her veri akışı için en az bir havuz dönüştürmesi gerekir, ancak dönüştürme akışınızı tamamlaması için gereken sayıda havuz yazabilirsiniz. Ek havuzlar yazmak için yeni dallar ve koşullu bölmeler aracılığıyla yeni akışlar oluşturun.
+Verilerinizi dönüştürmeyi tamamladıktan sonra havuz dönüşümünü kullanarak bir hedef depoya yazın. Her veri akışı için en az bir havuz dönüştürmesi gerekir, ancak dönüştürme akışınızı tamamlaması için gereken sayıda havuz yazabilirsiniz. Ek havuzlar yazmak için yeni dallar ve koşullu bölmeler aracılığıyla yeni akışlar oluşturun.
 
-Her havuz dönüştürmesi, tam olarak bir Data Factory veri kümesiyle ilişkilendirilir. Veri kümesi, yazmak istediğiniz verilerin şeklini ve konumunu tanımlar.
+Her havuz dönüştürmesi, tam olarak bir Azure Data Factory veri kümesi nesnesiyle veya bağlı hizmetle ilişkilendirilir. Havuz dönüştürmesi, yazmak istediğiniz verilerin şeklini ve konumunu belirler.
 
 ## <a name="inline-datasets"></a>Satır içi veri kümeleri
 
@@ -36,30 +36,28 @@ Satır içi veri kümesi kullanmak için, **Havuz türü** seçicisinde istediğ
 
 ![Satır içi veri kümesi](media/data-flow/inline-selector.png "Satır içi veri kümesi")
 
-### <a name="supported-inline-dataset-formats"></a>Desteklenen satır içi veri kümesi biçimleri
+##  <a name="supported-sink-types"></a><a name="supported-sinks"></a>Desteklenen havuz türleri
 
-Şu anda kullanılabilen tek satır içi veri kümesi biçimi, [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md)'Dan okunan [ortak veri modelidir](format-common-data-model.md#sink-properties) .
+Veri akışı eşleme, bir Ayıkla, yükle, Dönüştür (ELT) yaklaşımını izler ve Azure 'da tümü olan *hazırlama* veri kümeleri ile birlikte kullanılır. Şu anda aşağıdaki veri kümeleri bir kaynak dönüşümünde kullanılabilir:
 
-## <a name="supported-sink-connectors-in-mapping-data-flow"></a>Eşleme veri akışında desteklenen havuz bağlayıcıları
+| Bağlayıcı | Biçimlendir | Veri kümesi/satır içi |
+| --------- | ------ | -------------- |
+| [Azure Blob Depolama](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  <br> [Ortak veri modeli (Önizleme)](format-common-data-model.md#sink-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- <br> -/✓ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL Veritabanı](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure CosmosDB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
 
-Şu anda aşağıdaki veri kümeleri bir havuz dönüşümünde kullanılabilir:
-    
-* [Azure Blob depolama](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, avro, metin, Parquet)
-* [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, avro, metin, Parquet)
-* [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, avro, metin, Parquet)
-* [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
-* [Azure SQL Veritabanı](connector-azure-sql-database.md#mapping-data-flow-properties)
-* [Azure CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
+Bu bağlayıcılara özgü ayarlar, **Ayarlar** sekmesinde bulunur. bu ayarlarda bilgi ve veri akışı betiği örnekleri bağlayıcı belgelerinde bulunur. 
 
-Bu bağlayıcılara özgü ayarlar, **Ayarlar** sekmesinde bulunur. bu ayarlarla ilgili bilgiler bağlayıcı belgelerinde bulunur. 
-
-Azure Data Factory’nin [90’ın üzerinde yerel bağlayıcıya](connector-overview.md) erişimi vardır. Veri akışınızdan diğer bağlayıcılara veri yazmak için kopyalama etkinliğini kullanarak veri akışınızı tamamladıktan sonra desteklenen hazırlama alanlarından birindeki verileri yükleyin.
+Azure Data Factory’nin [90’ın üzerinde yerel bağlayıcıya](connector-overview.md) erişimi vardır. Veri akışınızdan diğer kaynaklara veri yazmak için kopyalama etkinliğini kullanarak bu verileri desteklenen bir alıcıdan yükleyin.
 
 ## <a name="sink-settings"></a>Havuz ayarları
 
 Havuz ekledikten sonra, **Havuz** sekmesi aracılığıyla yapılandırın. Burada, havuzlarınızın yazdığı veri kümesini seçebilir veya oluşturabilirsiniz. Aşağıda, metin ile ayrılmış dosya türleri için birçok farklı havuz seçeneği açıklayan bir video verilmiştir:
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tf7T]
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 
 ![Havuz ayarları](media/data-flow/sink-settings.png "Havuz ayarları")
 

@@ -13,12 +13,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 781d8b89dd1b7fa6b2ed9707f6d4c485b4abdf20
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: f9f80cf0c42bdc6e45d62cac930c0bce4b20ee60
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220673"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605468"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Bir koşullu erişim ilkesinde konum koşulunu kullanma 
 
@@ -34,7 +34,7 @@ Kuruluşlar, aşağıdaki gibi yaygın görevler için bu ağ konumunu kullanabi
 Ağ konumu, istemcinin Azure Active Directory için sağladığı genel IP adresi tarafından belirlenir. Koşullu erişim ilkeleri, varsayılan olarak tüm IPv4 ve IPv6 adresleri için geçerlidir. 
 
 > [!TIP]
-> IPV6 aralıkları yalnızca **[adlandırılmış konum (Önizleme)](#preview-features)** arabiriminde desteklenir. 
+> IPv6 aralıkları yalnızca **[adlandırılmış konum (Önizleme)](#preview-features)** arabiriminde desteklenir. 
 
 ## <a name="named-locations"></a>Adlandırılmış konumlar
 
@@ -50,7 +50,7 @@ Yapılandırabileceğiniz adlandırılmış konumların sayısı, Azure AD 'de i
 - Her birine bir IP aralığı atanmış en fazla 90 adlandırılmış konum.
 
 > [!TIP]
-> IPV6 aralıkları yalnızca **[adlandırılmış konum (Önizleme)](#preview-features)** arabiriminde desteklenir. 
+> IPv6 aralıkları yalnızca **[adlandırılmış konum (Önizleme)](#preview-features)** arabiriminde desteklenir. 
 
 ### <a name="trusted-locations"></a>Güvenilen konumlar
 
@@ -65,7 +65,7 @@ Bu seçenek, örneğin, güvenilir bir ağ konumundan Multi-Factor Authenticatio
 Bazı kuruluşlar, tüm ülkelerin veya bölgelerin IP sınırlarının koşullu erişim ilkeleri için adlandırılmış konumlar olarak tanımlanması tercih edebilir. Bu konumlar, geçerli kullanıcıların, Kuzey Kore gibi bir konumdan hiçbir zaman gelmeyeceğinden gereksiz trafiği engellediği durumlarda bu konumları kullanabilirler. IP adresinin ülkeye olan bu eşlemeleri düzenli aralıklarla güncelleştirilir. 
 
 > [!NOTE]
-> Ülkeler IPv6 adres aralıklarını, yalnızca bilinen IPv4 adres aralıklarını içermez.
+> Ülkeler IPv6 adres aralıklarını, yalnızca bilinen IPv4 adresi aralıklarını içermez ve güvenilir olarak işaretlenemez.
 
 ![Azure portal yeni bir ülke veya bölge tabanlı konum oluşturma](./media/location-condition/new-named-location-country-region.png)
 
@@ -102,7 +102,7 @@ Adlandırılmış Konum önizlemesi sayesinde,
 
 - En fazla 195 adlandırılmış konum yapılandırın
 - Adlandırılmış Konum başına en fazla 2000 IP aralığı yapılandırın
-- IPv6 adreslerini yapılandırma
+- IPv6 adreslerini IPv4 adresleriyle birlikte yapılandırma
 
 Yanlış yapılandırmanın değiştirilmesini azaltmaya yardımcı olmak için bazı ek denetimler de ekledik.
 
@@ -115,7 +115,7 @@ Yanlış yapılandırmanın değiştirilmesini azaltmaya yardımcı olmak için 
 - **IP aralıkları konumu**
 
 > [!NOTE]
-> Ülkeler IPv6 adres aralıklarını, yalnızca bilinen IPv4 adres aralıklarını içermez.
+> Ülkeler IPv6 adres aralıklarını, yalnızca bilinen IPv4 adresi aralıklarını içermez ve güvenilir olarak işaretlenemez.
 
 ![Adlandırılmış konumlar önizleme arabirimi](./media/location-condition/named-location-preview.png)
 

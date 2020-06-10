@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: a171dc795e685655b5a3c73d088d3963c2aaa4ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 308098bd1ac49510afccf0a7964face726906332
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312313"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628684"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>App Service gibi çok kiracılı arka uçlar için Application Gateway desteği
 
@@ -42,7 +42,7 @@ Bu özellik sayesinde müşteriler, HTTP ayarları ve özel araştırmalardaki s
 
 ### <a name="tls-termination-and-end-to-end-tls-with-multi-tenant-services"></a>Çok kiracılı hizmetlerle TLS sonlandırma ve uçtan uca TLS
 
-Hem TLS sonlandırması hem de uçtan uca TLS şifrelemesi, çok kiracılı hizmetler ile desteklenir. Uygulama ağ geçidinde TLS sonlandırması için, uygulama ağ geçidi dinleyicisine eklenmek üzere TLS sertifikası gerekir. Bununla birlikte, uçtan uca TLS, Azure App Service Web Apps gibi güvenilen Azure Hizmetleri, uygulama ağ geçidinde arka uçların beyaz listeye alınmasını gerektirmez. Bu nedenle, herhangi bir kimlik doğrulama sertifikası eklemeniz gerekmez. 
+Hem TLS sonlandırması hem de uçtan uca TLS şifrelemesi, çok kiracılı hizmetler ile desteklenir. Uygulama ağ geçidinde TLS sonlandırması için, uygulama ağ geçidi dinleyicisine eklenmek üzere TLS sertifikası gerekir. Bununla birlikte, uçtan uca TLS, Azure App Service Web Apps gibi güvenilen Azure Hizmetleri, uygulama ağ geçidinde arka uçlara izin vermeyi gerektirmez. Bu nedenle, herhangi bir kimlik doğrulama sertifikası eklemeniz gerekmez. 
 
 ![uçtan uca TLS](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
 

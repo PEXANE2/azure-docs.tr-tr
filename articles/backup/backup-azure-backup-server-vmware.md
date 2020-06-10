@@ -2,13 +2,13 @@
 title: Azure Backup Sunucusu ile VMware VM 'lerini yedekleme
 description: Bu makalede, VMware vCenter/ESXi sunucusunda çalışan VMware VM 'lerini yedeklemek için Azure Backup Sunucusu nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
-ms.date: 12/11/2018
-ms.openlocfilehash: c4bf61e2a02200b2e6af814ef4509081649e202d
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.date: 05/24/2020
+ms.openlocfilehash: deb72ad1f2b9b18368ef5134ecc23048b483f3f8
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204727"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628466"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Sunucusu ile VMware VM 'lerini yedekleme
 
@@ -371,6 +371,21 @@ Yedekleme için VMware VM 'Leri ekleyin. Koruma grupları birden çok VM toplar 
 
     ![Koruma grubu üyesi ve ayar Özeti](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
+## <a name="vmware-parallel-backups"></a>VMware paralel yedeklemeleri
+
+>[!NOTE]
+> Bu özellik MABS v3 UR1 için geçerlidir.
+
+MABS 'nin önceki sürümlerinde, paralel yedeklemeler yalnızca koruma grupları arasında gerçekleştirildi. MABS v3 UR1 ile, tek bir koruma grubundaki tüm VMWare VM yedeklemeleriniz paralel ve daha hızlı VM yedeklerine göre önde olur. Tüm VMWare Delta çoğaltma işleri paralel olarak çalışır. Varsayılan olarak, paralel olarak çalıştırılacak işlerin sayısı 8 ' e ayarlanır.
+
+İş sayısını aşağıda gösterildiği gibi kayıt defteri anahtarını kullanarak değiştirebilirsiniz (varsayılan olarak mevcut değildir, eklemeniz gerekir):
+
+**Anahtar yolu**:`Software\Microsoft\Microsoft Data Protection Manager\Configuration\ MaxParallelIncrementalJobs\VMWare`<BR>
+**Anahtar türü**: DWORD (32-bit) değeri.
+
+> [!NOTE]
+> İşlerin sayısını daha yüksek bir değere değiştirebilirsiniz. İş numarasını 1 olarak ayarlarsanız, çoğaltma işleri işlem temelli olarak çalışır. Sayıyı daha yüksek bir değere yükseltmek için VMWare performansını göz önünde bulundurmanız gerekir. Kullanımdaki kaynak sayısını ve VMWare vSphere sunucusunda gereken ek kullanımı göz önünde bulundurun ve paralel olarak çalıştırılacak Delta çoğaltma işlerinin sayısını saptayın. Ayrıca, bu değişiklik yalnızca yeni oluşturulan koruma gruplarını etkiler. Mevcut koruma grupları için, koruma grubuna geçici olarak başka bir VM eklemeniz gerekir. Bu, koruma grubu yapılandırmasını uygun şekilde güncelleştirmelidir. Bu VM 'yi, yordam tamamlandıktan sonra koruma grubundan kaldırabilirsiniz.
+
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6,7
 
 VSphere 6,7 'yi yedeklemek için aşağıdakileri yapın:
@@ -400,6 +415,126 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
 "SystemDefaultTlsVersions"=dword:00000001
 "SchUseStrongCrypto"=dword:00000001
+```
+
+## <a name="exclude-disk-from-vmware-vm-backup"></a>Diski VMware VM yedeğinden hariç tut
+
+> [!NOTE]
+> Bu özellik MABS v3 UR1 için geçerlidir.
+
+MABS v3 UR1 ile, belirli bir diski VMware VM yedeğinden dışlayabilirsiniz. **Excludedisk. ps1** yapılandırma betiği içinde bulunur `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` .
+
+Disk dışlamayı yapılandırmak için aşağıdaki adımları izleyin:
+
+### <a name="identify-the-vmware-vm-and-disk-details-to-be-excluded"></a>Dışlanacak VMWare VM ve disk ayrıntılarını tanımla
+
+  1. VMware konsolunda, diski dışlamak istediğiniz VM ayarları ' na gidin.
+  2. Dışlamak istediğiniz diski seçin ve bu diskin yolunu unutmayın.
+
+        Örneğin, TestVM4 sabit disk 2 ' den dışlamak için, sabit disk 2 yolu **[datastore1] TestVM4/TestVM4 \_ 1. vmdk**olur.
+
+        ![Dışlanacak sabit disk](./media/backup-azure-backup-server-vmware/test-vm.png)
+
+### <a name="configure-mabs-server"></a>MABS sunucusunu yapılandırma
+
+Disk dışlamayı yapılandırmak için VMware VM 'sinin koruma için yapılandırıldığı MABS sunucusuna gidin.
+
+  1. MABS sunucusunda korunan VMware konağının ayrıntılarını alın.
+
+        ```powershell
+        $psInfo = get-DPMProductionServer
+        $psInfo
+        ```
+
+        ```output
+        ServerName   ClusterName     Domain            ServerProtectionState
+        ----------   -----------     ------            ---------------------
+        Vcentervm1                   Contoso.COM       NoDatasourcesProtected
+        ```
+
+  2. VMware konağını seçin ve VMware konağının VM korumasını listeleyin.
+
+        ```powershell
+        $vmDsInfo = get-DPMDatasource -ProductionServer $psInfo[0] -Inquire
+        $vmDsInfo
+        ```
+
+        ```output
+        Computer     Name     ObjectType
+        --------     ----     ----------
+        Vcentervm1  TestVM2      VMware
+        Vcentervm1  TestVM1      VMware
+        Vcentervm1  TestVM4      VMware
+        ```
+
+  3. Diski dışlamak istediğiniz VM 'yi seçin.
+
+        ```powershell
+        $vmDsInfo[2]
+        ```
+
+        ```output
+        Computer     Name      ObjectType
+        --------     ----      ----------
+        Vcentervm1   TestVM4   VMware
+        ```
+
+  4. Diski dışlamak için, `Bin` klasöre gidin ve şu parametrelerle *excludedisk. ps1* betiğini çalıştırın:
+
+        > [!NOTE]
+        > Bu komutu çalıştırmadan önce, MABS sunucusunda DPMRA hizmetini durdurun. Aksi halde, komut dosyası başarı döndürür, ancak dışlama listesini güncelleştirmez. Hizmeti durdurmadan önce devam eden bir iş bulunmadığından emin olun.
+
+     **Diski dışlamaya eklemek/kaldırmak için aşağıdaki komutu çalıştırın:**
+
+      ```powershell
+      ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-Add|Remove] "[Datastore] vmdk/vmdk.vmdk"
+      ```
+
+     **Örnek**:
+
+     TestVM4 için disk dışlamasını eklemek için aşağıdaki komutu çalıştırın:
+
+       ```powershell
+      C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Add "[datastore1] TestVM4/TestVM4\_1.vmdk"
+       ```
+
+      ```output
+       Creating C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\excludedisk.xml
+       Disk : [datastore1] TestVM4/TestVM4\_1.vmdk, has been added to disk exclusion list.
+      ```
+
+  5. Diskin dışlama için eklendiğini doğrulayın.
+
+     **Belirli sanal makinelerin mevcut dışlamasını görüntülemek için aşağıdaki komutu çalıştırın:**
+
+        ```powershell
+        ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-view]
+        ```
+
+     **Örnek**
+
+        ```powershell
+        C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -view
+        ```
+
+        ```output
+        <VirtualMachine>
+        <UUID>52b2b1b6-5a74-1359-a0a5-1c3627c7b96a</UUID>
+        <ExcludeDisk>[datastore1] TestVM4/TestVM4\_1.vmdk</ExcludeDisk>
+        </VirtualMachine>
+        ```
+
+     Bu VM için korumayı yapılandırdıktan sonra, dışlanan disk koruma sırasında listelenmez.
+
+        > [!NOTE]
+        > Zaten korunan bir VM için bu adımları uyguluyorsanız, diski dışlama için ekledikten sonra tutarlılık denetimini el ile çalıştırmanız gerekir.
+
+### <a name="remove-the-disk-from-exclusion"></a>Diski dışlamaya kaldır
+
+Diskin dışlamasını kaldırmak için aşağıdaki komutu çalıştırın:
+
+```powershell
+C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Remove "[datastore1] TestVM4/TestVM4\_1.vmdk"
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

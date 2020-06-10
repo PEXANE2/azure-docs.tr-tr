@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 9d607f0ad1ab9d9924cd05ce1a66bee34e4ff18d
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: db7bfbef7435c47aa011c5f19e8c52d013c88dc3
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84229855"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636691"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
@@ -57,7 +57,7 @@ Ayrıca, en yaygın uygulama sürücülerini test ettik, bu sayfanın sonundaki 
 
 Bu adımlar, bir kullanıcı/uygulamanın, aşağıda açıklanan Azure AD ile kimlik doğrulaması yapmak için gereken adımlardır:
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Azure Cloud Shell, bir Azure VM veya yerel makinenizde da izleyebilirsiniz. [Azure CLI 'nin yüklü](/cli/azure/install-azure-cli)olduğundan emin olun.
 
@@ -124,6 +124,15 @@ mysql -h mydb.mysql.database.azure.com \
   --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
 ```
 
+Bağlanırken dikkat edilmesi gereken önemli noktalar:
+
+* `user@tenant.onmicrosoft.com`, bağlanmaya çalıştığınız Azure AD kullanıcısının veya grubunun adıdır
+* Azure AD Kullanıcı/Grup adından sonra sunucu adını her zaman Ekle (örn. `@mydb` )
+* Azure AD Kullanıcı veya grup adının tam yolunu kullandığınızdan emin olun
+* Azure AD Kullanıcı ve grup adları büyük/küçük harfe duyarlıdır
+* Grup olarak bağlanırken, yalnızca Grup adını kullanın (ör. `GroupName@mydb` )
+* Ad boşluk içeriyorsa, `\` kaçış için her alandan önce kullanın
+
 "Enable-şifresiz-Plugin" ayarını unutmayın. belirtecin karma kalmadan sunucuya gönderilmesini sağlamak için diğer istemcilerle benzer bir yapılandırma kullanmanız gerekir.
 
 Artık Azure AD kimlik doğrulaması kullanarak MySQL sunucunuza kimliğiniz doğrulanır.
@@ -136,7 +145,7 @@ MySQL veritabanı için Azure veritabanı 'na bir Azure AD kullanıcısı ekleme
 2. MySQL için Azure veritabanı örneğinde Azure AD Yönetici kullanıcısı olarak oturum açın.
 3. `<user>@yourtenant.onmicrosoft.com`MySQL Için Azure veritabanı 'nda kullanıcı oluşturun.
 
-**Örnek:**
+**Örneğinde**
 
 ```sql
 CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
@@ -157,7 +166,7 @@ CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShor
 
 Veritabanınıza erişim için bir Azure AD grubunu etkinleştirmek üzere, kullanıcılar için aynı mekanizmayı kullanın, bunun yerine grup adını belirtin:
 
-**Örnek:**
+**Örneğinde**
 
 ```sql
 CREATE AADUSER 'Prod_DB_Readonly';

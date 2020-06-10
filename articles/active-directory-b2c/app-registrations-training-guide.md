@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e60e8452b5cd3750a7b3478c860de95d8992528d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 6b6294abe986115d86826fee8aad09f468b3d651
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300151"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628002"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için yeni Uygulama kayıtları deneyimi
 
-Azure Active Directory Azure AD B2C (Azure AD B2C) için yeni **[uygulama kayıtları](https://aka.ms/b2cappregistrations)** deneyimi artık genel kullanıma sunulmuştur. "Eski deneyim" olarak adlandırılan Azure AD B2C **uygulamaları kaydetme** hakkında daha fazla bilginiz varsa, bu kılavuz yeni deneyimi kullanmaya başlamanızı sağlar.
+Azure Active Directory B2C (Azure AD B2C) için yeni **[uygulama kayıtları](https://aka.ms/b2cappregistrations)** deneyimi artık genel kullanıma sunulmuştur. "Eski deneyim" olarak adlandırılan Azure AD B2C **uygulamaları kaydetme** hakkında daha fazla bilginiz varsa, bu kılavuz yeni deneyimi kullanmaya başlamanızı sağlar.
 
 ## <a name="overview"></a>Genel Bakış
 Daha önce, Azure AD B2C tüketiciye yönelik uygulamalarınızı eski deneyimi kullanarak uygulamalarınızın geri kalanından ayrı olarak yönetmeniz gerekiyordu. Bu, Azure 'daki farklı yerlerde farklı uygulama oluşturma deneyimleri sunmaktır.

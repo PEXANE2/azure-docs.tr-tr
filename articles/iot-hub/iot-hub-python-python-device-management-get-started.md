@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: f376831175840284fdfd15f367542d33ad9f7177
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: mqtt, tracking-python
+ms.openlocfilehash: 3e48e52294884294a2e4649e8fc0e0b9c42e0c0a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759764"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608545"
 ---
 # <a name="get-started-with-device-management-python"></a>Cihaz yönetimini kullanmaya başlama (Python)
 
@@ -36,7 +36,7 @@ Bu öğreticinin sonunda iki Python konsol uygulamanız vardır:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
@@ -77,7 +77,7 @@ Bu bölümde şunları yapacaksınız:
     from azure.iot.device import IoTHubDeviceClient, MethodResponse
     ```
 
-4. **CONNECTION_STRING** değişkenini ekleyin. Yer tutucu `{deviceConnectionString}` değerini, cihaz bağlantı dizeniz ile değiştirin. Daha önce Bu bağlantı dizesini [IoT Hub 'ına yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub)bölümünde kopyaladınız.  
+4. **CONNECTION_STRING** değişkenini ekleyin. `{deviceConnectionString}`Yer tutucu değerini, cihaz bağlantı dizeniz ile değiştirin. Daha önce Bu bağlantı dizesini [IoT Hub 'ına yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub)bölümünde kopyaladınız.  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -170,7 +170,7 @@ Bu bölümde, doğrudan bir yöntemi kullanarak bir cihazda Uzaktan yeniden baş
     from azure.iot.hub.models import CloudToDeviceMethod, CloudToDeviceMethodResult, Twin
     ```
 
-4. Aşağıdaki değişken bildirimlerini ekleyin. Yer tutucu `{IoTHubConnectionString}` değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)' da daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin. Yer tutucu `{deviceId}` değerini, [IoT Hub 'ına yeni bir cihaz kaydetme](#register-a-new-device-in-the-iot-hub)bölümünde kaydettiğiniz cihaz kimliğiyle değiştirin.
+4. Aşağıdaki değişken bildirimlerini ekleyin. `{IoTHubConnectionString}`Yer tutucu değerini, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)' da daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin. `{deviceId}`Yer tutucu değerini, [IoT Hub 'ına yeni bir cihaz kaydetme](#register-a-new-device-in-the-iot-hub)bölümünde kaydettiğiniz cihaz kimliğiyle değiştirin.
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"

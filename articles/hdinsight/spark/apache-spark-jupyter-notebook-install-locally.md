@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,seoapr2020
+ms.custom: hdinsightactive,seoapr2020, tracking-python
 ms.date: 04/23/2020
-ms.openlocfilehash: b2394c580b871105fee84d63c478c3c490b56a0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2084bf136300126e56414599caa63d24c98f4542
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191932"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604244"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Not defterini bilgisayarınıza yükleyip HDInsight üzerinde Apache Spark bağlanın
 
@@ -28,7 +28,7 @@ Jupyıter yükleme ve HDInsight üzerinde Apache Spark bağlanma konusunda dört
 
 Özel çekirdekler ve Spark Magic hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Spark Linux kümeleri olan Jupyter Not defterleri için sunulan çekirdekler](apache-spark-jupyter-notebook-kernels.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md). Yerel Not defteri HDInsight kümesine bağlanır.
 
@@ -49,7 +49,7 @@ Platformunuz için [Anaconda yükleyicisini](https://www.anaconda.com/download/)
     |v 3.6 ve v 3.5 |`pip install sparkmagic==0.13.1`|
     |v 3.4|`pip install sparkmagic==0.2.3`|
 
-1. Aşağıdaki `ipywidgets` komutu çalıştırarak emin olun:
+1. `ipywidgets`Aşağıdaki komutu çalıştırarak emin olun:
 
     ```cmd
     jupyter nbextension enable --py --sys-prefix widgetsnbextension
@@ -57,7 +57,7 @@ Platformunuz için [Anaconda yükleyicisini](https://www.anaconda.com/download/)
 
 ## <a name="install-pyspark-and-spark-kernels"></a>Pyspark ve Spark çekirdekler 'i yükler
 
-1. Aşağıdaki komutu `sparkmagic` girerek nerede yükleneceğini belirler:
+1. `sparkmagic`Aşağıdaki komutu girerek nerede yükleneceğini belirler:
 
     ```cmd
     pip show sparkmagic
@@ -90,7 +90,7 @@ Bu bölümde, daha önce yüklediğiniz Spark Magic 'i bir Apache Spark kümesin
     python
     ```
 
-2. Jupyıter yapılandırma bilgileri genellikle kullanıcılar giriş dizininde depolanır. Giriş dizinini tanımlamak ve ** \.mini sihirli**adlı bir klasör oluşturmak için aşağıdaki komutu girin.  Tam yol silinecek.
+2. Jupyıter yapılandırma bilgileri genellikle kullanıcılar giriş dizininde depolanır. Giriş dizinini tanımlamak ve ** \. mini sihirli**adlı bir klasör oluşturmak için aşağıdaki komutu girin.  Tam yol silinecek.
 
     ```python
     import os
@@ -100,7 +100,7 @@ Bu bölümde, daha önce yüklediğiniz Spark Magic 'i bir Apache Spark kümesin
     exit()
     ```
 
-3. Klasörü `.sparkmagic`içinde, **config. JSON** adlı bir dosya oluşturun ve içine aşağıdaki JSON kod parçacığını ekleyin.  
+3. Klasörü içinde `.sparkmagic` , **config. JSON** adlı bir dosya oluşturun ve içine aşağıdaki JSON kod parçacığını ekleyin.  
 
     ```json
     {
@@ -130,15 +130,15 @@ Bu bölümde, daha önce yüklediğiniz Spark Magic 'i bir Apache Spark kümesin
 
     |Şablon değeri | Yeni değer |
     |---|---|
-    |NITELEN|Küme oturumu açma, varsayılan `admin`.|
+    |NITELEN|Küme oturumu açma, varsayılan `admin` .|
     |CLUSTERDNSNAME|Küme adı|
-    |{BASE64ENCODEDPASSWORD}|Gerçek parolanız için Base64 olarak kodlanmış bir parola.  ' De Base64 parolası oluşturabilirsiniz [https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/).|
-    |`"livy_server_heartbeat_timeout_seconds": 60`|Kullanılıyorsa koruyun `sparkmagic 0.12.7` (kümeler v 3.5 ve v 3.6).  Kullanıyorsanız `sparkmagic 0.2.3` (kümeler v 3.4), ile `"should_heartbeat": true`değiştirin.|
+    |{BASE64ENCODEDPASSWORD}|Gerçek parolanız için Base64 olarak kodlanmış bir parola.  ' De Base64 parolası oluşturabilirsiniz [https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/) .|
+    |`"livy_server_heartbeat_timeout_seconds": 60`|Kullanılıyorsa koruyun `sparkmagic 0.12.7` (kümeler v 3.5 ve v 3.6).  Kullanıyorsanız `sparkmagic 0.2.3` (kümeler v 3.4), ile değiştirin `"should_heartbeat": true` .|
 
     [Örnek config. JSON](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)dosyasında tam bir örnek dosyası görebilirsiniz.
 
    > [!TIP]  
-   > Sinyaller, oturumların sızmasını sağlamak için gönderilir. Bir bilgisayar uyku moduna geçtiğinde veya kapatıldığında, sinyal gönderilmez ve bu da oturum temizlenmelidir. Kümeler v 3.4 için, bu davranışı devre dışı bırakmak istiyorsanız, Savy yapılandırmasını `livy.server.interactive.heartbeat.timeout` , ambarı kullanıcı arabiriminden olarak `0` ayarlayabilirsiniz. Kümeler v 3.5 için, yukarıdaki 3,5 yapılandırmasını ayarlanmamışsa oturum silinmez.
+   > Sinyaller, oturumların sızmasını sağlamak için gönderilir. Bir bilgisayar uyku moduna geçtiğinde veya kapatıldığında, sinyal gönderilmez ve bu da oturum temizlenmelidir. Kümeler v 3.4 için, bu davranışı devre dışı bırakmak istiyorsanız, Savy yapılandırmasını, `livy.server.interactive.heartbeat.timeout` `0` ambarı kullanıcı arabiriminden olarak ayarlayabilirsiniz. Kümeler v 3.5 için, yukarıdaki 3,5 yapılandırmasını ayarlanmamışsa oturum silinmez.
 
 5. Jupyıter 'ı başlatın. Komut isteminden aşağıdaki komutu kullanın.
 
@@ -153,7 +153,7 @@ Bu bölümde, daha önce yüklediğiniz Spark Magic 'i bir Apache Spark kümesin
     ![Jupyter not defterinde kullanılabilir çekirdekler](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jupyter not defterinde kernels")
 
     > [!IMPORTANT]  
-    > **Yeni** seçildikten sonra, herhangi bir hata için kabuğunuz gözden geçirin.  Hatayı `TypeError: __init__() got an unexpected keyword argument 'io_loop'` görürseniz, belirli bir Tornado sürümü ile ilgili bilinen bir sorunla karşılaşmış olabilirsiniz.  Bu durumda, çekirdeği durdurun ve ardından aşağıdaki komutla Tornado yüklemenizi indirgemeniz gerekir: `pip install tornado==4.5.3`.
+    > **Yeni** seçildikten sonra, herhangi bir hata için kabuğunuz gözden geçirin.  Hatayı görürseniz, `TypeError: __init__() got an unexpected keyword argument 'io_loop'` belirli bir Tornado sürümü ile ilgili bilinen bir sorunla karşılaşmış olabilirsiniz.  Bu durumda, çekirdeği durdurun ve ardından aşağıdaki komutla Tornado yüklemenizi indirgemeniz gerekir: `pip install tornado==4.5.3` .
 
     b. Aşağıdaki kod parçacığını çalıştırın.
 
@@ -170,7 +170,7 @@ Bu bölümde, daha önce yüklediğiniz Spark Magic 'i bir Apache Spark kümesin
 
 Bilgisayarınıza Jupyter 'yı yüklemeye ve sonra HDInsight 'ta bir Apache Spark kümesine bağlamaya neden olan nedenler:
 
-* , Not defterlerinizi yerel olarak oluşturma, uygulamanızı çalışan bir kümede test etme ve sonra not defterlerini kümeye yükleme seçeneği sunar. Not defterlerini kümeye yüklemek için, veya kümesi çalıştıran Jupyter Not defterini kullanarak bunları karşıya yükleyebilir ya da onları kümeyle ilişkili depolama hesabındaki `/HdiNotebooks` klasöre kaydedebilirsiniz. Not defterlerinin kümede nasıl depolandığı hakkında daha fazla bilgi için bkz. [nerede jupi Not defteri depolanıyor](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)?
+* , Not defterlerinizi yerel olarak oluşturma, uygulamanızı çalışan bir kümede test etme ve sonra not defterlerini kümeye yükleme seçeneği sunar. Not defterlerini kümeye yüklemek için, veya kümesi çalıştıran Jupyter Not defterini kullanarak bunları karşıya yükleyebilir ya da onları `/HdiNotebooks` kümeyle ilişkili depolama hesabındaki klasöre kaydedebilirsiniz. Not defterlerinin kümede nasıl depolandığı hakkında daha fazla bilgi için bkz. [nerede jupi Not defteri depolanıyor](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)?
 * Yerel olarak kullanılabilir olan Not defterleri sayesinde, uygulama gereksiniminize göre farklı Spark kümelerine bağlanabilirsiniz.
 * GitHub kullanarak bir kaynak denetim sistemi uygulayabilir ve Not defterleri için sürüm denetimine sahip olabilirsiniz. Aynı zamanda birden çok kullanıcının aynı not defteriyle çalışılabilecek işbirliği ortamınıza sahip olabilirsiniz.
 * Bir kümeye sahip olmaksızın, Not defterlerle yerel olarak çalışabilirsiniz. Not defterlerinizi veya bir geliştirme ortamını el ile yönetmek için not defterlerinizi test etmek üzere bir kümeye ihtiyacınız vardır.

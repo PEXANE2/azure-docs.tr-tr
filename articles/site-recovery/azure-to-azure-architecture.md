@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: a9468f437a89a85f28b6ce869b948ca2a4aff7bf
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: d941f3e13e99accadc59c5836d88a824182329b9
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983338"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629675"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure'dan Azure'a olağanüstü durum kurtarma mimarisi
 
@@ -34,7 +34,7 @@ Azure VM 'Leri için olağanüstü durum kurtarma ile ilgili bileşenler aşağ�
 **Önbellek depolama hesabı** | Kaynak ağda bir önbellek depolama hesabı gerekir. Çoğaltma sırasında, VM değişiklikleri hedef depolamaya gönderilmeden önce önbellekte depolanır.  Önbellek depolama hesaplarının standart olması gerekir.<br/><br/> Önbellek kullanmak, bir VM 'de çalışan üretim uygulamaları üzerinde en düşük etkiyi sağlar.<br/><br/> Önbellek depolama gereksinimleri hakkında [daha fazla bilgi edinin](azure-to-azure-support-matrix.md#cache-storage) . 
 **Hedef kaynaklar** | Hedef kaynaklar çoğaltma sırasında ve bir yük devretme gerçekleştiğinde kullanılır. Site Recovery, varsayılan olarak hedef kaynağı ayarlayabilir veya bunları oluşturabilir/özelleştirebilirsiniz.<br/><br/> Hedef bölgede, VM 'Ler oluşturabiliyor ve aboneliğinizin hedef bölgede gerekli olacak VM boyutlarını desteklemek için yeterli kaynağa sahip olup olmadığını denetleyin. 
 
-![Kaynak ve hedef çoğaltma](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
+![Kaynak ve hedef çoğaltma](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>Hedef kaynaklar
 
@@ -62,7 +62,7 @@ Hedef kaynakları aşağıdaki şekilde yönetebilirsiniz:
 
 Azure VM çoğaltmasını etkinleştirdiğinizde, varsayılan olarak Site Recovery tabloda özetlenen varsayılan ayarlarla yeni bir çoğaltma ilkesi oluşturur.
 
-**İlke ayarı** | **Bilgileri** | **Varsayılanını**
+**İlke ayarı** | **Bilgileri** | **Varsayılan**
 --- | --- | ---
 **Kurtarma noktası bekletme** | Site Recovery kurtarma noktalarını ne kadar süreyle tutacağını belirtir | 24 saat
 **Uygulamayla tutarlı anlık görüntü sıklığı** | Site Recovery ne sıklıkta uygulamayla tutarlı bir anlık görüntü alır. | Her dört saatte bir
@@ -116,7 +116,7 @@ Azure VM için çoğaltmayı etkinleştirdiğinizde aşağıdakiler olur:
 4. Site Recovery önbellekteki verileri işler ve hedef depolama hesabına veya çoğaltma ile yönetilen disklere gönderir.
 5. Veriler işlendikten sonra, kilitlenme tutarlı kurtarma noktaları beş dakikada bir oluşturulur. Uygulamayla tutarlı kurtarma noktaları, çoğaltma ilkesinde belirtilen ayara göre oluşturulur.
 
-![Çoğaltma işlemini etkinleştirme, 2. adım](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
+![Çoğaltma işlemini etkinleştirme, 2. adım](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **Çoğaltma işlemi**
 
@@ -146,9 +146,9 @@ Ağ bağlantısı gereksinimlerinin ayrıntılarının [ağ teknik incelemesi](a
 
 **Kural** |  **Bilgileri** | **Hizmet etiketi**
 --- | --- | --- 
-HTTPS giden izin ver: bağlantı noktası 443 | Kaynak bölgedeki depolama hesaplarına karşılık gelen aralıklara izin ver | Depo. \<bölge adı>
+HTTPS giden izin ver: bağlantı noktası 443 | Kaynak bölgedeki depolama hesaplarına karşılık gelen aralıklara izin ver | Depo.\<region-name>
 HTTPS giden izin ver: bağlantı noktası 443 | Azure Active Directory karşılık gelen aralıklara izin ver (Azure AD)  | AzureActiveDirectory
-HTTPS giden izin ver: bağlantı noktası 443 | Hedef bölgedeki Olay Hub 'ına karşılık gelen aralıklarına izin verin. | EventsHub. \<bölge adı>
+HTTPS giden izin ver: bağlantı noktası 443 | Hedef bölgedeki Olay Hub 'ına karşılık gelen aralıklarına izin verin. | EventsHub.\<region-name>
 HTTPS giden izin ver: bağlantı noktası 443 | Azure Site Recovery karşılık gelen aralıklara izin ver  | Azuresterecovery
 HTTPS giden izin ver: bağlantı noktası 443 | Azure Key Vault karşılık gelen aralıklara izin ver (Bu yalnızca Portal aracılığıyla ADE özellikli sanal makinelerin çoğaltılmasını etkinleştirmek için gereklidir) | AzureKeyVault
 HTTPS giden izin ver: bağlantı noktası 443 | Azure Otomasyonu denetleyicisine karşılık gelen aralıklara izin ver (Bu yalnızca, Portal aracılığıyla çoğaltılan bir öğe için Mobility aracısının otomatik yükseltmesini etkinleştirmek üzere gereklidir) | GuestAndHybridManagement
@@ -157,9 +157,9 @@ HTTPS giden izin ver: bağlantı noktası 443 | Azure Otomasyonu denetleyicisine
 
 **Kural** |  **Bilgileri** | **Hizmet etiketi**
 --- | --- | --- 
-HTTPS giden izin ver: bağlantı noktası 443 | Hedef bölgedeki depolama hesaplarına karşılık gelen aralıklara izin ver | Depo. \<bölge adı>
+HTTPS giden izin ver: bağlantı noktası 443 | Hedef bölgedeki depolama hesaplarına karşılık gelen aralıklara izin ver | Depo.\<region-name>
 HTTPS giden izin ver: bağlantı noktası 443 | Azure AD 'ye karşılık gelen aralıklara izin ver  | AzureActiveDirectory
-HTTPS giden izin ver: bağlantı noktası 443 | Kaynak bölgedeki Olay Hub 'ına karşılık gelen aralıklara izin verin. | EventsHub. \<bölge adı>
+HTTPS giden izin ver: bağlantı noktası 443 | Kaynak bölgedeki Olay Hub 'ına karşılık gelen aralıklara izin verin. | EventsHub.\<region-name>
 HTTPS giden izin ver: bağlantı noktası 443 | Azure Site Recovery karşılık gelen aralıklara izin ver  | Azuresterecovery
 HTTPS giden izin ver: bağlantı noktası 443 | Azure Key Vault karşılık gelen aralıklara izin ver (Bu yalnızca Portal aracılığıyla ADE özellikli sanal makinelerin çoğaltılmasını etkinleştirmek için gereklidir) | AzureKeyVault
 HTTPS giden izin ver: bağlantı noktası 443 | Azure Otomasyonu denetleyicisine karşılık gelen aralıklara izin ver (Bu yalnızca, Portal aracılığıyla çoğaltılan bir öğe için Mobility aracısının otomatik yükseltmesini etkinleştirmek üzere gereklidir) | GuestAndHybridManagement
@@ -191,7 +191,7 @@ Site Recovery [giden bağlantı](azure-to-azure-about-networking.md#outbound-con
 
 Yük devretme başlattığınızda VM 'Ler hedef kaynak grubunda, hedef sanal ağda, hedef alt ağda ve hedef kullanılabilirlik kümesinde oluşturulur. Yük devretme sırasında, herhangi bir kurtarma noktası kullanabilirsiniz.
 
-![Yük devretme işlemi](./media/concepts-azure-to-azure-architecture/failover.png)
+![Yük devretme işlemi](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

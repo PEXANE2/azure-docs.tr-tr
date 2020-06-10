@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 0bb1371de827fbb68afd5d114f49afa4acec0deb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: mqtt, tracking-python
+ms.openlocfilehash: 142ac150e863b69a4580812478828062c1f5c6c6
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759725"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605604"
 ---
 # <a name="get-started-with-device-twins-python"></a>Cihaz ikizlerini kullanmaya başlama (Python)
 
@@ -28,7 +28,7 @@ Bu öğreticinin sonunda iki Python konsol uygulamanız olacaktır:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
@@ -69,7 +69,7 @@ Bu bölümde, **{DEVICE ID}** ile ilişkili cihaz ikizi konum meta verilerini ek
    from azure.iot.hub.models import Twin, TwinProperties, QuerySpecification, QueryResult
    ```
 
-4. Aşağıdaki kodu ekleyin. `[IoTHub Connection String]` [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin. `[Device Id]` [Yeni bir cihazı IoT Hub 'ına kaydetmek](#register-a-new-device-in-the-iot-hub)için kaydettiğiniz cihaz kimliğiyle değiştirin.
+4. Aşağıdaki kodu ekleyin. `[IoTHub Connection String]` [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin. `[Device Id]` [Yeni bir cihazı IoT Hub 'ına kaydetmek](#register-a-new-device-in-the-iot-hub)IÇIN kaydettiğiniz cihaz kimliğiyle değiştirin.
   
     ```python
     IOTHUB_CONNECTION_STRING = "[IoTHub Connection String]"
@@ -158,7 +158,7 @@ Bu bölümde, hub 'ınıza **{CIHAZ kimliğiniz}** olarak bağlanan bir Python k
     from azure.iot.device import IoTHubModuleClient
     ```
 
-4. Aşağıdaki kodu ekleyin. Yer tutucu `[IoTHub Device Connection String]` değerini, [IoT Hub 'ına yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub)' de kopyaladığınız cihaz bağlantı dizesiyle değiştirin.
+4. Aşağıdaki kodu ekleyin. `[IoTHub Device Connection String]`Yer tutucu değerini, [IoT Hub 'ına yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub)' de kopyaladığınız cihaz bağlantı dizesiyle değiştirin.
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"

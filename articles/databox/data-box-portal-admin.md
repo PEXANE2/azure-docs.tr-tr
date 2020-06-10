@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: alkohli
-ms.openlocfilehash: 581f95bd813445d2cc9bd83d91917ea83f0bf04f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 22fd67797bbec516317aadaa4b33371c5d335b36
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260000"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609463"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy yönetmek için Azure portal kullanın
 
@@ -48,7 +48,7 @@ Siparişi kopyalamak için aşağıdaki adımları gerçekleştirin.
 
     ![Siparişi kopyalama 1](media/data-box-portal-admin/clone-order1.png)
 
-2.  Siparişin tüm ayrıntıları aynı şekilde korunur. Siparişin adı, özgün siparişin adına *-Kopya* eklenerek oluşturulur. Gizlilik bilgilerini gözden geçirdiğinizi onaylamak için onay kutusunu seçin. **Oluştur**' a tıklayın.
+2.  Siparişin tüm ayrıntıları aynı şekilde korunur. Siparişin adı, özgün siparişin adına *-Kopya* eklenerek oluşturulur. Gizlilik bilgilerini gözden geçirdiğinizi onaylamak için onay kutusunu seçin. **Oluştur**'a tıklayın.
 
 Kopya sipariş birkaç dakikada oluşturulur ve portal yeni siparişi gösterecek şekilde güncelleştirilir.
 
@@ -65,7 +65,7 @@ Yalnızca tamamlanan veya iptal edilen siparişleri silebilirsiniz. Siparişi si
 
     ![Data Box siparişini silme 1](media/data-box-portal-admin/delete-order1.png)
 
-3. Siparişi silme işlemini onaylamanız istendiğinde siparişin adını girin. **Sil**' e tıklayın.
+3. Siparişi silme işlemini onaylamanız istendiğinde siparişin adını girin. **Sil**'e tıklayın.
 
 ## <a name="download-shipping-label"></a>Sevkiyat etiketini indirme
 

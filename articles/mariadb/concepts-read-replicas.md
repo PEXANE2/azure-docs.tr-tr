@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 5/4/2020
-ms.openlocfilehash: e3615286150723308f861456bfe2bbb0cff81707
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 9e168387afce4fb623c89bffddb72eeda5a3d80b
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321674"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84606182"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -20,6 +20,12 @@ Okuma amaçlı çoğaltma özelliği, MariaDB için Azure Veritabanı’ndan sal
 Çoğaltmalar, yönettiğiniz yeni sunuculardır ve bu sunucular, MariaDB sunucuları için normal Azure veritabanı ile benzerdir. Her okuma çoğaltması için, sanal çekirdekler ve depolama biriminde GB/ay içinde sağlanan işlem için faturalandırılırsınız.
 
 GTıD çoğaltma hakkında daha fazla bilgi için bkz. [MariaDB çoğaltma belgeleri](https://mariadb.com/kb/en/library/gtid/).
+
+> [!NOTE]
+> Sapma ücretsiz iletişim
+>
+> Microsoft, farklı ve üçlü ortamları destekler. Bu makale, _İkincil_sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcük olduğundan, bu makalede tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
+>
 
 ## <a name="when-to-use-a-read-replica"></a>Okuma çoğaltması ne zaman kullanılır?
 

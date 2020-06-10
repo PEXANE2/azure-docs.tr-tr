@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/09/2020
 tags: connectors
-ms.openlocfilehash: 33075173385a6e36829199c5bda854c78a4424fc
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 23c6a555909d43f640fb5089fb60da8bac065886
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325125"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609546"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps 'den HTTP veya HTTPS üzerinden hizmet uç noktalarını çağır
 
@@ -33,41 +33,6 @@ Bu makalede mantıksal uygulamanızın iş akışına bir HTTP tetikleyicisi vey
 * [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)hakkında temel bilgi. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-apps-overview.md)olduğunu gözden geçirin.
 
 * Hedef uç noktayı çağırmak istediğiniz mantıksal uygulama. HTTP tetikleyicisiyle başlamak için [boş bir mantıksal uygulama oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md). HTTP eylemini kullanmak için mantıksal uygulamanızı istediğiniz tetikleyiciyle başlatın. Bu örnek, ilk adım olarak HTTP tetikleyicisini kullanır.
-
-<a name="tls-support"></a>
-
-## <a name="transport-layer-security-tls"></a>Aktarım Katmanı Güvenliği (TLS)
-
-Hedef uç noktanın özelliği temel alınarak, giden çağrılar daha önce Güvenli Yuva Katmanı (SSL), sürüm 1,0, 1,1 ve 1,2 olan Aktarım Katmanı Güvenliği 'ni (TLS) destekler. Logic Apps, uç nokta ile mümkün olan en yüksek desteklenen sürümü kullanarak görüşür.
-
-Örneğin, uç nokta 1,2 destekliyorsa, HTTP Bağlayıcısı önce 1,2 ' i kullanır. Aksi halde, bağlayıcı desteklenen bir sonraki en yüksek sürümü kullanır.
-
-<a name="self-signed"></a>
-
-## <a name="self-signed-certificates"></a>Otomatik olarak imzalanan sertifikalar
-
-* Genel, çok kiracılı Azure ortamındaki Logic Apps için, HTTP Bağlayıcısı kendinden imzalı TLS/SSL sertifikalarına izin vermez. Mantıksal uygulamanız sunucuya HTTP çağrısı yapar ve bir TLS/SSL otomatik olarak imzalanan sertifika sunduğunda, HTTP çağrısı hata vererek başarısız olur `TrustFailure` .
-
-* Bir [tümleştirme hizmeti ortamındaki (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için http BAĞLAYıCıSı, TLS/SSL el sıkışmaları için otomatik olarak imzalanan sertifikalara izin verir. Ancak, önce Logic Apps REST API kullanarak mevcut bir ıSE veya yeni bir ıSE için [otomatik olarak imzalanan sertifika desteğini etkinleştirmeniz](../logic-apps/create-integration-service-environment-rest-api.md#request-body) ve ortak sertifikayı konuma yüklemeniz gerekir `TrustedRoot` .
-
-## <a name="known-issues"></a>Bilinen sorunlar
-
-### <a name="omitted-http-headers"></a>Atlanan HTTP üstbilgileri
-
-Bir HTTP tetikleyicisi veya eylemi bu üstbilgileri içeriyorsa Logic Apps, bu üst bilgileri herhangi bir uyarı veya hata görüntülenmeden oluşturulan istek iletisinden kaldırır:
-
-* `Accept-*`
-* `Allow`
-* `Content-*`Bu özel durumlarla birlikte: `Content-Disposition` , `Content-Encoding` ve`Content-Type`
-* `Cookie`
-* `Expires`
-* `Host`
-* `Last-Modified`
-* `Origin`
-* `Set-Cookie`
-* `Transfer-Encoding`
-
-Logic Apps, bu üst bilgilerle bir HTTP tetikleyicisi veya eylemi kullanan mantıksal uygulamaları kaydetmenizi durdurmasa da, Logic Apps bu üst bilgileri yoksayar.
 
 <a name="http-trigger"></a>
 
@@ -131,6 +96,22 @@ Bu yerleşik eylem, bir uç nokta için belirtilen URL 'ye HTTP çağrısı yapa
 
 1. İşiniz bittiğinde mantıksal uygulamanızı kaydetmeyi unutmayın. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
+<a name="tls-support"></a>
+
+## <a name="transport-layer-security-tls"></a>Aktarım Katmanı Güvenliği (TLS)
+
+Hedef uç noktanın özelliği temel alınarak, giden çağrılar daha önce Güvenli Yuva Katmanı (SSL), sürüm 1,0, 1,1 ve 1,2 olan Aktarım Katmanı Güvenliği 'ni (TLS) destekler. Logic Apps, uç nokta ile mümkün olan en yüksek desteklenen sürümü kullanarak görüşür.
+
+Örneğin, uç nokta 1,2 destekliyorsa, HTTP Bağlayıcısı önce 1,2 ' i kullanır. Aksi halde, bağlayıcı desteklenen bir sonraki en yüksek sürümü kullanır.
+
+<a name="self-signed"></a>
+
+## <a name="self-signed-certificates"></a>Otomatik olarak imzalanan sertifikalar
+
+* Genel, çok kiracılı Azure ortamındaki Logic Apps için, HTTP Bağlayıcısı kendinden imzalı TLS/SSL sertifikalarına izin vermez. Mantıksal uygulamanız sunucuya HTTP çağrısı yapar ve bir TLS/SSL otomatik olarak imzalanan sertifika sunduğunda, HTTP çağrısı hata vererek başarısız olur `TrustFailure` .
+
+* Bir [tümleştirme hizmeti ortamındaki (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için http BAĞLAYıCıSı, TLS/SSL el sıkışmaları için otomatik olarak imzalanan sertifikalara izin verir. Ancak, önce Logic Apps REST API kullanarak mevcut bir ıSE veya yeni bir ıSE için [otomatik olarak imzalanan sertifika desteğini etkinleştirmeniz](../logic-apps/create-integration-service-environment-rest-api.md#request-body) ve ortak sertifikayı konuma yüklemeniz gerekir `TrustedRoot` .
+
 ## <a name="content-with-multipartform-data-type"></a>Multipart/form veri türü olan içerik
 
 HTTP isteklerinde türü olan içeriği işlemek için `multipart/form-data` , `$content-type` `$multipart` Bu biçimi kullanarak http isteğinin gövdesine ve ÖZNITELIKLERINI içeren bir JSON nesnesi ekleyebilirsiniz.
@@ -177,6 +158,90 @@ Aşağıda, temel alınan iş akışı tanımında HTTP eyleminin JSON tanımın
 }
 ```
 
+<a name="asynchronous-pattern"></a>
+
+## <a name="asynchronous-request-response-behavior"></a>Zaman uyumsuz istek-yanıt davranışı
+
+Varsayılan olarak, Azure Logic Apps içindeki tüm HTTP tabanlı eylemler standart [zaman uyumsuz işlem modelini](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)izler. Bu model bir HTTP eylemi bir uç nokta, hizmet, sistem veya API 'ye bir istek çağırdıktan sonra, alıcı hemen ["202 kabul edildi"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) yanıtı döndürdüğünü belirtir. Bu kod, alıcının isteği kabul ettiğini ancak işlemeyi bitirmediğini onaylar. Yanıt, `location` çağıran işlemeyi durdurmadan ve ["200 Tamam"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) başarı yanıtını ya da 202 olmayan diğer yanıtı döndürünceye kadar, çağıranın zaman uyumsuz isteğin durumunu yoklamak veya denetlemek için kullanabileceği, URL 'YI ve yenileme kimliğini belirten bir üst bilgi içerebilir. Ancak çağıranın işlemin tamamlanmasını beklemek zorunda değildir ve sonraki eylemi çalıştırmaya devam edebilir. Daha fazla bilgi için bkz. [zaman uyumsuz mikro hizmet tümleştirmesi mikro hizmet bağımsız çalışma sınırı zorlar](https://docs.microsoft.com/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging).
+
+* Mantıksal uygulama tasarımcısında, HTTP eyleminin, ancak tetiklemenin, varsayılan olarak etkinleştirilen bir **zaman uyumsuz model** ayarı vardır. Bu ayar, çağıranın işlemin bitmesini beketmediğini ve bir sonraki eyleme geçebilir ancak işlem duraklarına kadar durumu denetlemeye devam edebilir. Devre dışı bırakılırsa, bu ayar çağıranın bir sonraki eyleme geçmeden önce işlemin tamamlanmasını beklediğini belirtir.
+
+  Bu ayarı bulmak için şu adımları izleyin:
+
+  1. HTTP eyleminin başlık çubuğunda, eylemin ayarlarını açan üç nokta (**...**) düğmesini seçin.
+
+  1. **Zaman uyumsuz model** ayarını bulun.
+
+     !["Zaman uyumsuz model" ayarı](./media/connectors-native-http/asynchronous-pattern-setting.png)
+
+* HTTP eyleminin temel alınan JavaScript Nesne Gösterimi (JSON) tanımı, zaman uyumsuz işlem modelini örtülü olarak izler.
+
+<a name="disable-asynchronous-operations"></a>
+
+## <a name="disable-asynchronous-operations"></a>Zaman uyumsuz işlemleri devre dışı bırak
+
+Bazen, örneğin, aşağıdakileri yapmak istediğinizde, belirli senaryolarda HTTP eyleminin zaman uyumsuz davranışına isteyebilirsiniz:
+
+* [Uzun süre çalışan görevler için HTTP zaman aşımlarını önleyin](#avoid-http-timeouts)
+* [Konum üst bilgilerini denetlemeyi devre dışı bırak](#disable-location-header-check)
+
+<a name="turn-off-asynchronous-pattern-setting"></a>
+
+### <a name="turn-off-asynchronous-pattern-setting"></a>**Zaman uyumsuz model** ayarını kapat
+
+1. Mantıksal uygulama Tasarımcısı ' nda, HTTP eyleminin başlık çubuğunda, eylemin ayarlarını açan üç nokta (**...**) düğmesini seçin.
+
+1. **Zaman uyumsuz model** ayarını bulun, etkinleştirilirse ayarı **devre dışı** bırakın ve **bitti**' yi seçin.
+
+   !["Zaman uyumsuz model" ayarını devre dışı bırak](./media/connectors-native-http/disable-asynchronous-pattern-setting.png)
+
+<a name="add-disable-async-pattern-option"></a>
+
+### <a name="disable-asynchronous-pattern-in-actions-json-definition"></a>Eylemin JSON tanımında zaman uyumsuz kalıbı devre dışı bırak
+
+HTTP eyleminin temel alınan JSON tanımında [ `"DisableAsyncPattern"` işlem seçeneğini](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options) eylemin tanımına ekleyerek eylemin yerine eşzamanlı işlem modelini takip edin. Daha fazla bilgi için bkz. Ayrıca, [zaman uyumlu bir işlem modelinde eylemleri çalıştırma](../logic-apps/logic-apps-workflow-actions-triggers.md#disable-asynchronous-pattern).
+
+<a name="avoid-http-timeouts"></a>
+
+## <a name="avoid-http-timeouts-for-long-running-tasks"></a>Uzun süre çalışan görevler için HTTP zaman aşımlarını önleyin
+
+HTTP isteklerinin [zaman aşımı sınırı](../logic-apps/logic-apps-limits-and-config.md#http-limits)vardır. Bu sınır nedeniyle zaman aşımına uğramadan uzun süre çalışan bir HTTP eyleminiz varsa, şu seçeneklere sahip olursunuz:
+
+* Eylemin sürekli olarak yoklama yapması veya isteğin durumunu denetlemesi için [http eyleminin zaman uyumsuz işlem modelini devre dışı bırakın](#disable-asynchronous-operations) . Bunun yerine, eylem, isteğin işlemeyi bitirdikten sonra alıcının durum ve sonuçlarla yanıt vermesini bekler.
+
+* HTTP eylemini, isteğin işlemeyi bitirdikten sonra alıcının durum ve sonuçlarla yanıt vermesini bekleyen [http Web kancası eylemiyle](../connectors/connectors-native-webhook.md)değiştirin.
+
+<a name="disable-location-header-check"></a>
+
+## <a name="disable-checking-location-headers"></a>Konum üst bilgilerini denetlemeyi devre dışı bırak
+
+Bazı uç noktalar, hizmetler, sistemler veya API 'Ler, üst bilgisi olmayan bir "202 kabul EDILDI" yanıtı döndürür `location` . Üst bilgi mevcut olmadığında HTTP eyleminin sürekli olarak istek durumunu denetlemesini önlemek için `location` şu seçeneklere sahip olabilirsiniz:
+
+* Eylemin sürekli olarak yoklama yapması veya isteğin durumunu denetlemesi için [http eyleminin zaman uyumsuz işlem modelini devre dışı bırakın](#disable-asynchronous-operations) . Bunun yerine, eylem, isteğin işlemeyi bitirdikten sonra alıcının durum ve sonuçlarla yanıt vermesini bekler.
+
+* HTTP eylemini, isteğin işlemeyi bitirdikten sonra alıcının durum ve sonuçlarla yanıt vermesini bekleyen [http Web kancası eylemiyle](../connectors/connectors-native-webhook.md)değiştirin.
+
+## <a name="known-issues"></a>Bilinen sorunlar
+
+<a name="omitted-headers"></a>
+
+### <a name="omitted-http-headers"></a>Atlanan HTTP üstbilgileri
+
+Bir HTTP tetikleyicisi veya eylemi bu üstbilgileri içeriyorsa Logic Apps, bu üst bilgileri herhangi bir uyarı veya hata görüntülenmeden oluşturulan istek iletisinden kaldırır:
+
+* `Accept-*`
+* `Allow`
+* `Content-*`Bu özel durumlarla birlikte: `Content-Disposition` , `Content-Encoding` ve`Content-Type`
+* `Cookie`
+* `Expires`
+* `Host`
+* `Last-Modified`
+* `Origin`
+* `Set-Cookie`
+* `Transfer-Encoding`
+
+Logic Apps, bu üst bilgilerle bir HTTP tetikleyicisi veya eylemi kullanan mantıksal uygulamaları kaydetmenizi durdurmasa da, Logic Apps bu üst bilgileri yoksayar.
+
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
 Tetikleyici ve eylem parametreleri hakkında daha fazla bilgi için aşağıdaki bölümlere bakın:
@@ -188,14 +253,14 @@ Tetikleyici ve eylem parametreleri hakkında daha fazla bilgi için aşağıdaki
 
 Bu bilgileri döndüren bir HTTP tetikleyicisinden veya eylemden çıktılar hakkında daha fazla bilgi bulabilirsiniz:
 
-| Özellik adı | Tür | Description |
-|---------------|------|-------------|
-| bilgisinde | nesne | İstekten gelen üstbilgiler |
-| body | nesne | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |
-| durum kodu | int | İstekteki durum kodu |
+| Özellik | Tür | Açıklama |
+|----------|------|-------------|
+| `headers` | JSON nesnesi | İstekten gelen üstbilgiler |
+| `body` | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |
+| `status code` | Tamsayı | İstekteki durum kodu |
 |||
 
-| Durum kodu | Description |
+| Durum kodu | Açıklama |
 |-------------|-------------|
 | 200 | Tamam |
 | 202 | Kabul edildi |

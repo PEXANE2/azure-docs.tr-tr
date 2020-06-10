@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: 0d1aa15c572f8ddec38cef913b170ed795ba1505
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: dda71869411cbb37a24c2d39ef1d78563cfe6cab
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84297930"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604108"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM 'Leri için Zamanlanan Olaylar
 
@@ -78,7 +78,7 @@ Azure portal, API, CLı veya PowerShell aracılığıyla Kullanıcı tarafından
 
 Bir sanal makineyi yeniden başlatmak, türünde bir olay zamanlar `Reboot` . Bir sanal makineyi yeniden dağıtmak, türünde bir olay zamanlar `Redeploy` .
 
-## <a name="using-the-api"></a>API 'YI kullanma
+## <a name="using-the-api"></a>API'yi kullanma
 
 ### <a name="headers"></a>Üst Bilgiler
 Metadata Service sorgulayıp, `Metadata:true` isteğin istem dışı olarak yeniden yönlendirilmediğinden emin olmak için üstbilgiyi sağlamanız gerekir. `Metadata:true`Üst bilgi tüm zamanlanmış olaylar istekleri için gereklidir. Üst bilgiyi istek içine dahil etme hatası, Metadata Service hatalı Istek yanıtı oluşmasına neden olur.
@@ -121,7 +121,7 @@ Documentınnation bir ETag ' dir ve olayların yükünün son sorgudan bu yana d
 | Kaynaklar| Bu olayın etkilediği kaynakların listesi. Bu, en çok bir [güncelleştirme etki alanındaki](manage-availability.md)makineler bulundur, ancak ud 'deki tüm makineleri içermeyebilir. <br><br> Örnek: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Olay durumu | Bu olayın durumu. <br><br> Değerler: <ul><li>`Scheduled`: Bu olay, özellikte belirtilen süreden sonra başlayacak şekilde zamanlandı `NotBefore` .<li>`Started`: Bu olay başlatıldı.</ul> Hiç `Completed` veya benzer bir durum sağlanmamıştır; olay tamamlandığında olay artık döndürülmeyecektir.
 | NotBefore| Bu olayın başlayabileceği zaman. <br><br> Örnek: <br><ul><li> Mon, 19 Eyl 2016 18:29:47 GMT  |
-| Description | Bu olayın açıklaması. <br><br> Örnek: <br><ul><li> Ana bilgisayar sunucusu bakımda. |
+| Açıklama | Bu olayın açıklaması. <br><br> Örnek: <br><ul><li> Ana bilgisayar sunucusu bakımda. |
 | EventSource | Olayın Başlatıcısı. <br><br> Örnek: <br><ul><li> `Platform`: Bu olay, platfrom tarafından başlatılır. <li>`User`: Bu olay kullanıcı tarafından başlatılır. |
 
 ### <a name="event-scheduling"></a>Olay zamanlaması
@@ -142,10 +142,18 @@ Her olay, gelecekte olay türüne göre en az bir süre zamanlanır. Bu zaman, b
 Zamanlanan olaylar şu şekilde dağıtılır:
  - Tek başına sanal makineler.
  - Bir bulut hizmetindeki tüm sanal makineler.     
- - Bir kullanılabilirlik kümesindeki tüm sanal makineler.     
+ - Bir kullanılabilirlik kümesindeki tüm sanal makineler. 
+ - Bir kullanılabilirlik bölgesindeki tüm sanal makineler.
  - Ölçek kümesi yerleştirme grubundaki (Batch dahil) tüm sanal makineler.       
 
-Sonuç olarak, `Resources` hangi VM 'lerin etkilenecek olduğunu belirlemek için olaydaki alanı denetlemeniz gerekir. 
+> [!NOTE]
+> Bir kullanılabilirlik alanında zamanlanan olaylar yalnızca kullanılabilirlik bölgesindeki tek ve etkilenen VM 'lere gider.
+> 
+> Örneğin, bir kullanılabilirlik kümesinde, küme içinde 100 VM varsa ve VM 'lerden birine yönelik bir güncelleştirme varsa, zamanlanan olay kullanılabilirlik kümesindeki tüm 100 sanal makinelere gider.
+>
+> Kullanılabilirlik bölgesinde 100 VM varsa, etkinlik yalnızca etkilenen sanal makineye gider.
+>
+> Sonuç olarak, `Resources` hangi VM 'lerin etkileneceğini belirlemek için olaydaki alanı denetlemeniz gerekir. 
 
 ### <a name="starting-an-event"></a>Olay başlatma 
 

@@ -3,12 +3,12 @@ title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 1ed8db4c7f780af8ac06074c514a602cc1654554
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 5baf9ce63442ee60d212362df92a44d0fa2723fa
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456885"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610313"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -174,8 +174,8 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | Galeriler/resimler/sürümler | image | 32 bit tamsayı | Sayılar ve dönemler. |
 > | images | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi ile biter. |
 > | anlık görüntüler | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi ile biter. |
-> | virtualMachines | kaynak grubu | 1-15 (Windows)<br>1-64 (Linux)<br><br>Aşağıdaki nota bakın. | Şu kullanılamıyor:<br> `\/""[]:|<>+=;,?*@&`<br><br>Alt çizgi ile başlayamaz. Nokta veya kısa çizgi ile bitemez. |
-> | virtualMachineScaleSets | kaynak grubu | 1-15 (Windows)<br>1-64 (Linux)<br><br>Aşağıdaki nota bakın. | Şu kullanılamıyor:<br> `\/""[]:|<>+=;,?*@&`<br><br>Alt çizgi ile başlayamaz. Nokta veya kısa çizgi ile bitemez. |
+> | virtualMachines | kaynak grubu | 1-15 (Windows)<br>1-64 (Linux)<br><br>Aşağıdaki nota bakın. | Şu kullanılamıyor:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Alt çizgi ile başlayamaz. Nokta veya kısa çizgi ile bitemez. |
+> | virtualMachineScaleSets | kaynak grubu | 1-15 (Windows)<br>1-64 (Linux)<br><br>Aşağıdaki nota bakın. | Şu kullanılamıyor:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Alt çizgi ile başlayamaz. Nokta veya kısa çizgi ile bitemez. |
 
 > [!NOTE]
 > Azure sanal makinelerinin iki ayrı adı vardır: kaynak adı ve ana bilgisayar adı. Portalda bir sanal makine oluşturduğunuzda, her iki ad için de aynı değer kullanılır. Yukarıdaki tablodaki kısıtlamalar ana bilgisayar adına yöneliktir. Gerçek kaynak adı en fazla 64 karakter uzunluğunda olabilir.
@@ -542,7 +542,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | çözümler | çalışma alanı | Yok | Microsoft tarafından yazılan çözümler için, adın şu düzende olması gerekir:<br>`SolutionType(WorkspaceName)`<br><br>Üçüncü taraflar tarafından yazılan çözümler için, adın düzende olması gerekir:<br>`SolutionType[WorkspaceName]`<br><br>Örneğin, geçerli bir ad:<br>`AntiMalware(contoso-IT)`<br><br>Çözüm türü, büyük/küçük harfe duyarlıdır. |
+> | çözümler | çalışma alanı | YOK | Microsoft tarafından yazılan çözümler için, adın şu düzende olması gerekir:<br>`SolutionType(WorkspaceName)`<br><br>Üçüncü taraflar tarafından yazılan çözümler için, adın düzende olması gerekir:<br>`SolutionType[WorkspaceName]`<br><br>Örneğin, geçerli bir ad:<br>`AntiMalware(contoso-IT)`<br><br>Çözüm türü, büyük/küçük harfe duyarlıdır. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 

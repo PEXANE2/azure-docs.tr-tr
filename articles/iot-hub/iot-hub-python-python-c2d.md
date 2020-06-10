@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: f0760f6e61904295771ba349f8101e2d6dc6afe3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: mqtt, tracking-python
+ms.openlocfilehash: 12d25fd06ddfa8265dbf046093d3854f7fde4f33
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759752"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609565"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>IoT Hub (Python) ile buluttan cihaza iletileri gönderme
 
@@ -40,7 +40,7 @@ Bu öğreticinin sonunda, iki Python konsol uygulaması çalıştırırsınız:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
@@ -58,7 +58,7 @@ Bu bölümde, IoT Hub 'ından cihazın benzetimini yapmak ve buluttan cihaza ile
 
 1. Bir metin düzenleyicisi kullanarak **SimulatedDevice.py**adlı bir dosya oluşturun.
 
-1. **SimulatedDevice.py** dosyasının başlangıcında `import` aşağıdaki deyimleri ve değişkenleri ekleyin:
+1. `import` **SimulatedDevice.py** dosyasının başlangıcında aşağıdaki deyimleri ve değişkenleri ekleyin:
 
     ```python
     import threading
@@ -68,7 +68,7 @@ Bu bölümde, IoT Hub 'ından cihazın benzetimini yapmak ve buluttan cihaza ile
     RECEIVED_MESSAGES = 0
     ```
 
-1. Aşağıdaki kodu **SimulatedDevice.py** dosyasına ekleyin. `{deviceConnectionString}` Yer tutucu değerini [bir cihazdan IoT Hub 'ına bir cihazdan Telemetriyi gönder](quickstart-send-telemetry-python.md) hızlı başlangıç bölümünde oluşturduğunuz cihaz bağlantı dizesiyle değiştirin:
+1. Aşağıdaki kodu **SimulatedDevice.py** dosyasına ekleyin. `{deviceConnectionString}`Yer tutucu değerini [bir cihazdan IoT Hub 'ına bir cihazdan Telemetriyi gönder](quickstart-send-telemetry-python.md) hızlı başlangıç bölümünde oluşturduğunuz cihaz bağlantı dizesiyle değiştirin:
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -140,7 +140,7 @@ Bu bölümde, sanal cihaz uygulamasına buluttan cihaza iletiler gönderen bir P
 
 1. Bir metin düzenleyicisi kullanarak **SendCloudToDeviceMessage.py**adlı bir dosya oluşturun.
 
-1. **SendCloudToDeviceMessage.py** dosyasının başlangıcında `import` aşağıdaki deyimleri ve değişkenleri ekleyin:
+1. `import` **SendCloudToDeviceMessage.py** dosyasının başlangıcında aşağıdaki deyimleri ve değişkenleri ekleyin:
 
     ```python
     import random
@@ -152,7 +152,7 @@ Bu bölümde, sanal cihaz uygulamasına buluttan cihaza iletiler gönderen bir P
     MSG_TXT = "{\"service client sent a message\": %.2f}"
     ```
 
-1. Aşağıdaki kodu **SendCloudToDeviceMessage.py** dosyasına ekleyin. `{iot hub connection string}` Ve `{device id}` yer tutucu değerlerini daha önce not ettiğiniz IoT Hub bağlantı dizesi ve cihaz kimliği ile değiştirin:
+1. Aşağıdaki kodu **SendCloudToDeviceMessage.py** dosyasına ekleyin. `{iot hub connection string}`Ve `{device id}` yer tutucu değerlerini daha önce not ettiğiniz IoT Hub bağlantı dizesi ve cihaz kimliği ile değiştirin:
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"

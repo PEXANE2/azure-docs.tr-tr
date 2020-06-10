@@ -7,12 +7,13 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ba619cc4e86b997f4e11536e6ea7b9ed906f41e4
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.custom: tracking-python
+ms.openlocfilehash: 30ceed388412f08e31b9c9b0c7ea6fdf2fed143e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417693"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607219"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Öğretici: Azure IoT Central uygulamanıza istemci uygulaması oluşturma ve bağlama (Python)
 
@@ -22,7 +23,7 @@ ms.locfileid: "84417693"
 
 Bu öğreticide, bir cihaz geliştiricisi olarak, bir Python istemci uygulamasını Azure IoT Central uygulamanıza nasıl bağlayabilmeniz gösterilmektedir. Python uygulaması, bir ortam algılayıcısı cihazının davranışını benzetir. IoT Central bir _cihaz şablonu_ oluşturmak için örnek bir _cihaz yetenek modeli_ kullanın. Bir işlecin bir cihazla etkileşime geçmesini sağlamak için cihaz şablonuna görünümler eklersiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Cihaz şablonu oluşturmak için bir cihaz yetenek modeli içeri aktarın.

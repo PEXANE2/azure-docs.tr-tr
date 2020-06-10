@@ -5,7 +5,6 @@ services: storsimple
 documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 116ac5c4efda87b5d16336dd326d516299f6955d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c25955c87899291c599d7055e7213dad955c6816
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "61481975"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84634190"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>StorSimple cihazını devre dışı bırakma ve silme
 
@@ -36,28 +35,29 @@ Bir cihazı devre dışı bıraktıktan sonra, cihazda yerel olarak depolanan ve
 >
 > Fabrika sıfırlama işlemi, cihazınızda yerel olarak depolanan tüm verileri siler. Bu nedenle, bir cihazı devre dışı bırakmadan önce tüm verilerinizin bulut anlık görüntüsünü almalısınız. Bu bulut anlık görüntüsü, daha sonraki bir aşamada tüm verileri kurtarmanızı sağlar.
 
+> [!NOTE]
+>
+> - StorSimple fiziksel cihazını veya bulut gerecini devre dışı bırakmadan önce, silinen birim kapsayıcısından gelen verilerin cihazdan gerçekten silindiğinden emin olun. Bulut tüketim grafiklerini izleyebilir ve sildiğiniz yedeklemeler nedeniyle bulut kullanımı ' nı gördüğünüzde, cihazı devre dışı bırakmaya devam edebilirsiniz. Bu bırakma yapılmadan önce cihazı devre dışı bırakırsanız, veriler depolama hesabı ve tahakkuk ücretleri ' nde kasalar.
+>
+> - StorSimple fiziksel cihazını veya bulut gerecini devre dışı bırakmadan önce, söz konusu cihaza bağlı istemcileri ve Konakları durdurun veya silin.
+>
+> - Depolama hesapları veya birim kapsayıcılarıyla ilişkili depolama hesabındaki kapsayıcılar, verileri cihazdan silmeden önce zaten silinirse, bir hata alırsınız ve verileri silemeymeyebilirsiniz. Depolamadaki depolama hesabı veya kapsayıcılarını silmeden önce Cihazdaki verileri silmenizi öneririz. Ancak, bu durumda, verilerin depolama hesabından zaten kaldırıldığından emin olarak cihaz devre dışı bırakma ve silme işlemine devam etmeniz gerekir.
+
 Bu öğreticiyi okuduktan sonra şunları yapabilirsiniz:
 
-* Bir cihazı devre dışı bırakın ve verileri silin.
-* Bir cihazı devre dışı bırakın ve verileri koruyun.
-
-> [!NOTE]
-> StorSimple fiziksel cihazını veya bulut gerecini devre dışı bırakmadan önce, söz konusu cihaza bağlı istemcileri ve Konakları durdurun veya silin.
-
+- Bir cihazı devre dışı bırakın ve verileri silin.
+- Bir cihazı devre dışı bırakın ve verileri koruyun.
 
 ## <a name="deactivate-and-delete-data"></a>Verileri devre dışı bırakma ve silme
 
 Cihazı tamamen silmek ve Cihazdaki verileri sürdürmek istemiyorsanız, aşağıdaki adımları uygulayın ve ardından aşağıdaki adımları izleyin.
 
-#### <a name="to-deactivate-the-device-and-delete-the-data"></a>Cihazı devre dışı bırakmak ve verileri silmek için
+### <a name="to-deactivate-the-device-and-delete-the-data"></a>Cihazı devre dışı bırakmak ve verileri silmek için
 
-1. Bir cihazı devre dışı bırakmadan önce, cihazla ilişkili tüm birim kapsayıcılarını (ve birimleri) silmeniz gerekir. Birim kapsayıcılarını yalnızca ilişkili yedeklemeleri sildikten sonra silebilirsiniz.
-
-    > [!NOTE]
-    > StorSimple fiziksel cihazını veya bulut gerecini devre dışı bırakmadan önce, silinen birim kapsayıcısından gelen verilerin cihazdan gerçekten silindiğinden emin olun. Bulut tüketim grafiklerini izleyebilir ve sildiğiniz yedeklemeler nedeniyle bulut kullanımı ' nı gördüğünüzde, cihazı devre dışı bırakmaya devam edebilirsiniz. Bu bırakma yapılmadan önce cihazı devre dışı bırakırsanız, veriler depolama hesabı ve tahakkuk ücretleri ' nde kasalar.
+1. Bir cihazı devre dışı bırakmadan önce, cihazla ilişkili tüm birim kapsayıcılarını (ve birimleri) silmeniz gerekir. Birim kapsayıcılarını yalnızca ilişkili yedeklemeleri sildikten sonra silebilirsiniz. StorSimple fiziksel cihazını veya bulut gerecini devre dışı bırakmadan önce yukarıdaki Genel Bakış bölümündeki nota bakın.
 
 2. Cihazı şu şekilde devre dışı bırakın:
-   
+
    1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. **Cihazlar** dikey penceresinde, devre dışı bırakmak istediğiniz cihazı seçin, sağ tıklayın ve ardından **devre dışı bırak**' a tıklayın.
 
         ![StorSimple cihazını devre dışı bırak](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
@@ -79,7 +79,8 @@ Cihazı tamamen silmek ve Cihazdaki verileri sürdürmek istemiyorsanız, aşağ
 
 Cihazı silmek, ancak verileri sürdürmek istiyorsanız aşağıdaki adımları izleyin:
 
-#### <a name="to-deactivate-a-device-and-retain-the-data"></a>Bir cihazı devre dışı bırakmak ve verileri sürdürmek için
+### <a name="to-deactivate-a-device-and-retain-the-data"></a>Bir cihazı devre dışı bırakmak ve verileri sürdürmek için
+
 1. Cihazı devre dışı bırakın. Tüm birim kapsayıcıları ve cihazın anlık görüntüleri kalır.
    
    1. StorSimple Cihaz Yöneticisi hizmetinize gidin ve **Cihazlar**’a tıklayın. **Cihazlar** dikey penceresinde, devre dışı bırakmak istediğiniz cihazı seçin, sağ tıklayın ve ardından **devre dışı bırak**' a tıklayın.
@@ -99,7 +100,6 @@ Cihazı silmek, ancak verileri sürdürmek istiyorsanız aşağıdaki adımları
        ![StorSimple cihazını devre dışı bırak](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
    3. Silme işlemi başarıyla tamamlandıktan sonra size bildirilir. Cihaz listesi ayrıca silme işlemini yansıtacak şekilde güncelleştirilir.
 
-     
 ## <a name="deactivate-and-delete-a-cloud-appliance"></a>Bulut gerecini devre dışı bırakma ve silme
 
 StorSimple Cloud Appliance için portaldan devre dışı bırakma işlemi, sanal makineyi ve sağlandığında oluşturulan kaynakları kaldırır ve siler. Bulut gereci devre dışı bırakıldıktan sonra, önceki durumuna geri yüklenemez.

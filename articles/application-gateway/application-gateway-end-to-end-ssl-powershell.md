@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/8/2019
+ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: 57f2ce1fb8bf6415387eac5c760dadeb04e65648
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2b5d2687ce95ca7db139ae06ab83bc3ecee8cf8a
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648426"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628797"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>PowerShell ile Application Gateway kullanarak uçtan uca TLS Yapılandırma
 
@@ -167,7 +167,7 @@ Tüm yapılandırma öğeleri, uygulama ağ geçidi oluşturulmadan önce ayarla
    > [!NOTE]
    > Varsayılan araştırma, arka ucun IP adresindeki *varsayılan* TLS bağlamasındaki ortak anahtarı alır ve aldığı ortak anahtar değerini burada sağladığınız ortak anahtar değerine karşılaştırır. 
    > 
-   > Arka uçta ana bilgisayar üst bilgileri ve Sunucu Adı Belirtme (SNı) kullanıyorsanız, alınan ortak anahtar trafiğin akabileceği hedeflenen site olmayabilir. Şüpheniz varsa, https://127.0.0.1/ *varsayılan* TLS bağlaması için hangi sertifikanın kullanıldığını doğrulamak üzere arka uç sunucularını ziyaret edin. Bu bölümdeki bu istekten ortak anahtarı kullanın. HTTPS bağlamaları üzerinde ana bilgisayar-üst bilgileri ve SNı kullanıyorsanız ve arka uç sunucularında el ile tarayıcı isteğinden bir yanıt ve sertifika almazsanız, https://127.0.0.1/ bunlar üzerinde varsayılan BIR TLS bağlaması ayarlamanız gerekir. Bunu yapmazsanız, yoklamalar başarısız olur ve arka uç daha fazla listede değildir.
+   > Arka uçta ana bilgisayar üst bilgileri ve Sunucu Adı Belirtme (SNı) kullanıyorsanız, alınan ortak anahtar trafiğin akabileceği hedeflenen site olmayabilir. Şüpheniz varsa, https://127.0.0.1/ *varsayılan* TLS bağlaması için hangi sertifikanın kullanıldığını doğrulamak üzere arka uç sunucularını ziyaret edin. Bu bölümdeki bu istekten ortak anahtarı kullanın. HTTPS bağlamaları üzerinde ana bilgisayar-üst bilgileri ve SNı kullanıyorsanız ve arka uç sunucularında el ile tarayıcı isteğinden bir yanıt ve sertifika almazsanız, https://127.0.0.1/ bunlar üzerinde varsayılan BIR TLS bağlaması ayarlamanız gerekir. Bunu yapmazsanız, yoklamalar başarısız olur ve arka uca izin verilmez.
    
    Application Gateway SNı hakkında daha fazla bilgi için, bkz. [TLS sonlandırmasına genel bakış ve Application Gateway ile uçtan uca TLS](ssl-overview.md).
 
@@ -176,7 +176,7 @@ Tüm yapılandırma öğeleri, uygulama ağ geçidi oluşturulmadan önce ayarla
    ```
 
    > [!NOTE]
-   > Önceki adımda belirtilen sertifika, arka uçta mevcut. PFX sertifikasının ortak anahtarı olmalıdır. Arka uç sunucusunda yüklü sertifikayı (kök sertifikayı değil) talep, kanıt ve düşünme (CER) biçiminde dışarı aktarın ve bu adımda kullanın. Bu adım, Application Gateway ile arka ucu beyaz listeler.
+   > Önceki adımda belirtilen sertifika, arka uçta mevcut. PFX sertifikasının ortak anahtarı olmalıdır. Arka uç sunucusunda yüklü sertifikayı (kök sertifikayı değil) talep, kanıt ve düşünme (CER) biçiminde dışarı aktarın ve bu adımda kullanın. Bu adım, Application Gateway ile arka uca izin verir.
 
    Application Gateway v2 SKU 'SU kullanıyorsanız, kimlik doğrulama sertifikası yerine güvenilen bir kök sertifika oluşturun. Daha fazla bilgi için bkz. [Application Gateway ile uçtan uca TLS 'ye genel bakış](ssl-overview.md#end-to-end-tls-with-the-v2-sku):
 

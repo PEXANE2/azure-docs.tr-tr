@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: f505f8222bd5959a9bb0213dc5c8c48092723bba
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 67c25d7065136f4748b6c0f57a8627db445c1a4e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266636"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610976"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Azure dosya paylaşımları için SMB üzerinden genel bakış-şirket içi Active Directory Domain Services kimlik doğrulaması
 
@@ -37,7 +37,7 @@ SMB üzerinden Azure dosya paylaşımları için AD DS etkinleştirdiğinizde, A
 > - [Şirket içi dosya sunucularını Azure dosyaları ile değiştirme (dosyalar ve AD kimlik doğrulaması için özel bağlantı kurulumu dahil)](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
 > - [Azure dosyalarını Windows sanal masaüstü için profil kapsayıcısı olarak kullanma (AD kimlik doğrulaması ve FsLogix yapılandırmasında kurulum dahil)](https://www.youtube.com/embed/9S5A1IJqfOQ)
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Azure dosya paylaşımları için AD DS kimlik doğrulamasını etkinleştirmeden önce, aşağıdaki önkoşulları tamamladığınızdan emin olun: 
 
@@ -57,7 +57,7 @@ Azure dosya paylaşımları için AD DS kimlik doğrulamasını etkinleştirmede
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-AD DS ile Azure dosyaları kimlik doğrulaması, [tüm genel bölgelerde ve Azure gov bölgelerinde](https://azure.microsoft.com/global-infrastructure/locations/)kullanılabilir.
+AD DS ile Azure dosyaları kimlik doğrulaması, [tüm genel, Azure gov ve Çin bölgelerinde](https://azure.microsoft.com/global-infrastructure/locations/)kullanılabilir.
 
 ## <a name="overview"></a>Genel Bakış
 

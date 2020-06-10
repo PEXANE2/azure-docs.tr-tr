@@ -5,14 +5,14 @@ services: application-gateway
 author: surajmb
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: c51d79d55f77468030100fa10973e2a31148ceae
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 626f52aa8a14cd16d36bef8930cfb75654ef3f32
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648431"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628789"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway arka uç sistem durumu sorunlarını giderme
 ==================================================
@@ -81,7 +81,7 @@ Bir arka uç havuzundaki tüm sunucular için sağlıklı olmayan bir arka uç s
 **Ayrıntılar** sütununda görünen ileti, sorun hakkında daha ayrıntılı öngörüler sağlar ve bunlar temelinde sorun gidermeye başlayabilirsiniz.
 
 > [!NOTE]
-> Varsayılan araştırma isteği, \< \> ://127.0.0.1: Port/protokol biçiminde gönderilir \< \> . Örneğin, http://127.0.0.1:80 80 numaralı bağlantı noktasında http araştırması için. Yalnızca 200 ile 399 arasındaki HTTP durum kodları sağlıklı olarak değerlendirilir. Protokol ve hedef bağlantı noktası HTTP ayarlarından devralınır. Application Gateway farklı bir protokol, ana bilgisayar adı veya yol üzerinde araştırma yapmak ve farklı bir durum kodunu sağlıklı olarak tanımak istiyorsanız, özel bir araştırma yapılandırın ve bunu HTTP ayarları ile ilişkilendirin.
+> Varsayılan araştırma isteği \<protocol\> ://127.0.0.1 biçiminde gönderilir: \<port\> /. Örneğin, http://127.0.0.1:80 80 numaralı bağlantı noktasında http araştırması için. Yalnızca 200 ile 399 arasındaki HTTP durum kodları sağlıklı olarak değerlendirilir. Protokol ve hedef bağlantı noktası HTTP ayarlarından devralınır. Application Gateway farklı bir protokol, ana bilgisayar adı veya yol üzerinde araştırma yapmak ve farklı bir durum kodunu sağlıklı olarak tanımak istiyorsanız, özel bir araştırma yapılandırın ve bunu HTTP ayarları ile ilişkilendirin.
 
 <a name="error-messages"></a>Hata iletileri
 ------------------------
@@ -109,7 +109,7 @@ Zaman aşımı değerini artırmak için aşağıdaki adımları izleyin:
 
 **Neden:** Arka uç havuzu IP adresi/FQDN veya App Service türünde ise, Application Gateway etki alanı adı sistemi (DNS) ile girilen FQDN 'nin IP adresine (özel veya Azure varsayılan) çözülür ve HTTP ayarlarında belirtilen TCP bağlantı noktasındaki sunucuya bağlanmaya çalışır. Ancak bu ileti görüntüleniyorsa Application Gateway, girilen FQDN 'nin IP adresini başarıyla çözümleyemediğini önerir.
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 1.  Arka uç havuzunda girilen FQDN 'nin doğru olduğundan ve ortak bir etki alanı olduğundan emin olun ve ardından yerel makinenizden çözümlemeyi deneyin.
 
@@ -170,7 +170,7 @@ Ayrıca, herhangi bir NSG/UDR/güvenlik duvarının IP 'ye ve bu arka ucun bağl
 
 **İleti:** Arka uç \' s HTTP yanıtının durum kodu araştırma ayarıyla eşleşmedi. Beklenen: {HTTPStatusCode0} alındı: {HTTPStatusCode1}.
 
-**Neden:** TCP bağlantısı kurulduktan ve bir TLS el sıkışması yapıldıktan sonra (TLS etkinse), Application Gateway arka uç sunucusuna bir HTTP GET isteği olarak araştırmaya gönderilir. Daha önce açıklandığı gibi, varsayılan araştırma \< Protokol \> ://127.0.0.1: \< bağlantı noktası/olur \> ve yanıt durum kodlarını, Rage 200 ile 399 arasındaki sağlıklı şekilde kabul eder. Sunucu başka bir durum kodu döndürürse, Bu iletiyle sağlıksız olarak işaretlenir.
+**Neden:** TCP bağlantısı kurulduktan ve bir TLS el sıkışması yapıldıktan sonra (TLS etkinse), Application Gateway arka uç sunucusuna bir HTTP GET isteği olarak araştırmaya gönderilir. Daha önce açıklandığı gibi, varsayılan araştırma \<protocol\> ://127.0.0.1: \<port\> /olur ve yanıt durum kodlarını, Rage 200 ile 399 arasında sağlıklı olarak değerlendirir. Sunucu başka bir durum kodu döndürürse, Bu iletiyle sağlıksız olarak işaretlenir.
 
 **Çözüm:** Arka uç sunucusunun yanıt koduna bağlı olarak, aşağıdaki adımları gerçekleştirebilirsiniz. Yaygın durum kodlarından bazıları aşağıda listelenmiştir:
 
@@ -209,7 +209,7 @@ Ya da yanıtın meşru olduğunu düşünüyorsanız ve Application Gateway diğ
 
 #### <a name="backend-server-certificate-invalid-ca"></a>Arka uç sunucu sertifikası geçersiz CA
 
-**İleti:** Arka uç tarafından kullanılan sunucu sertifikası iyi bilinen bir sertifika yetkilisi (CA) tarafından imzalanmadı. Arka uç tarafından kullanılan sunucu sertifikasının kök sertifikasını karşıya yükleyerek Application Gateway arka ucunu beyaz listeye ekleyin.
+**İleti:** Arka uç tarafından kullanılan sunucu sertifikası iyi bilinen bir sertifika yetkilisi (CA) tarafından imzalanmadı. Arka uç tarafından kullanılan sunucu sertifikasının kök sertifikasını karşıya yükleyerek Application Gateway arka uca izin verin.
 
 **Neden:** Application Gateway v2 ile uçtan uca SSL, sunucunun sağlıklı bir şekilde çıkarılması için arka uç sunucusunun sertifikasının doğrulanmasını gerektirir.
 Bir TLS/SSL sertifikasının güvenilir olması için, arka uç sunucusunun bu sertifikasının Application Gateway güvenilen deposunda bulunan bir CA tarafından verilmesi gerekir. Sertifika, güvenilir bir CA tarafından verilmediyse (örneğin, otomatik olarak imzalanan bir sertifika kullanılmışsa), kullanıcıların sertifikayı verenin sertifikasını Application Gateway yüklemesi gerekir.

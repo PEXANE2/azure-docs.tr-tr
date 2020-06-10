@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: d959f4948d6b848f3b399c1310add06991d72012
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 77573ac4240eeded1f803d88f218aaf4d4c5a929
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74806329"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636135"
 ---
 # <a name="speech-service-for-telephony-data"></a>Telefon verileri için konuşma hizmeti
 
@@ -40,7 +40,7 @@ Konuşma hizmeti özelliklerinin işlevsel yönlerinin ötesinde, birincil amac�
 - Gerçek zamanlı analizler, bu, çağrı gerçekleştiği sırada çeşitli Öngörüler ayıklamaya yönelik ses sinyalinin işlenmesiyle (önemli bir kullanım durumu olması halinde).
 - Sesli yardımcılar (robotlar), müşterinin aracı katılımı olmadan müşterinin sorununu çözme veya aracı yardımcı olmak üzere yapay zeka (AI) protokollerinin uygulaması olan bir girişimle ilgili iletişim kutusunu ortaya sürüş.
 
-Bir Batch senaryosu uygulamasının tipik bir mimari diyagramı, çağrı merkezi döküm mimarisinin altındaki ![resimde gösterilmiştir](media/scenarios/call-center-transcription-architecture.png)
+Bir Batch senaryosu uygulamasının tipik bir mimari diyagramı, çağrı merkezi döküm mimarisinin altındaki resimde gösterilmiştir ![](media/scenarios/call-center-transcription-architecture.png)
 
 ## <a name="speech-analytics-technology-components"></a>Konuşma analizi teknoloji bileşenleri
 
@@ -97,7 +97,7 @@ Tipik bir çözüm bu hizmetleri kullanır:
 - [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/) , her kayıt için paylaşılan erişim IMZALARı (SAS) URI 'si oluşturmak için KULLANıLıR ve http post isteğini bir döküm başlatacak şekilde tetikler. Ayrıca, Azure Işlevleri, toplu Iş dökümü API 'sini kullanarak döküm alma ve silme istekleri oluşturmak için kullanılır.
 
 Dahili olarak, Microsoft Müşteri çağrılarını toplu Iş modunda desteklemek için yukarıdaki teknolojileri kullanıyoruz.
-![Batch mimarisi](media/scenarios/call-center-batch-pipeline.png)
+:::image type="content" source="media/scenarios/call-center-batch-pipeline.png" alt-text="Toplu Iş modunda Microsoft Müşteri çağrılarını desteklemek için kullanılan teknolojiler.":::
 
 ## <a name="real-time-transcription-for-call-center-data"></a>Çağrı merkezi verileri için gerçek zamanlı döküm
 
@@ -125,7 +125,7 @@ Diğer senaryo, oturum başlatma Protokolü (SIP) ile doğrudan tümleştirmedir
 | -------------- | ----- | ----------- |
 | Konuşmayı metne dönüştürme | [Akustik model](how-to-customize-acoustic-models.md) | Her biri belirli kayıt koşullarına sahip bir otomobil veya bir fabrika katında gibi belirli ortamlarda kullanılan uygulamalar, araçlar veya cihazlar için özel bir akustik model oluşturun. Bu örneklere, vurgulu konuşma, belirli arka plan gürültüler veya kayıt için belirli bir mikrofon kullanımı dahildir. |
 |                | [Dil modeli](how-to-customize-language-model.md) | Sektöre özgü sözlük ve dilbilgisinde tıp terminolojisi ya da It jarggibi bir tür dökümü geliştirmek için özel bir dil modeli oluşturun. |
-|                | [Söyleniş modeli](how-to-customize-pronunciation.md) | Özel bir telaffuz modeliyle, fonetik biçimini tanımlayabilir ve bir sözcük veya terim için görüntüleyebilirsiniz. Ürün adları veya kısaltmalar gibi özelleştirilmiş terimleri işlemek için faydalıdır. Kullanmaya başlamak için tek yapmanız gereken basit `.txt` bir dosya olan bir telaffuz dosyasıdır. |
+|                | [Söyleniş modeli](how-to-customize-pronunciation.md) | Özel bir telaffuz modeliyle, fonetik biçimini tanımlayabilir ve bir sözcük veya terim için görüntüleyebilirsiniz. Ürün adları veya kısaltmalar gibi özelleştirilmiş terimleri işlemek için faydalıdır. Kullanmaya başlamak için tek yapmanız gereken basit bir dosya olan bir telaffuz dosyasıdır `.txt` . |
 | Metin okuma | [Ses tipi](how-to-customize-voice-font.md) | Özel ses yazı tipleri, markanız için tanınabilir, tek bir tür sesi oluşturmanızı sağlar. Başlamak için yalnızca az miktarda veri alır. Sağladığınız daha fazla veri, ses yazı tipi daha doğal ve insan gibi bir şekilde gönderilir. |
 
 ## <a name="sample-code"></a>Örnek kod

@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 54f09c4b35f31619c3dcaa027c70444595c4352e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5f3a73ed6c7843c13d35a91a75189fe9dd8d4dbd
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196534"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628369"
 ---
 # <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>Öğretici: çok sınıflı görüntü sınıflandırması için etiketleme projesi (Önizleme) oluşturma 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Bu öğreticide, kediler ve köpekler resimlerini kullanacaksınız.  Her resim 
 > * Verilerinizi etiketleyin.  Siz veya etiketleyiclarınız bu görevi gerçekleştirebilir.
 > * Verileri gözden geçirerek ve dışarı aktararak projeyi doldurun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://aka.ms/AMLFree)oluşturun.
 
@@ -109,6 +109,12 @@ Etiketlenmesini istediğiniz verilere erişiminiz olduğuna göre etiketleme pro
     1. Listedeki veri kümesi adının yanındaki daireyi seçin (örneğin, **eğitim için görüntüler**).
 
 1. Projeyi oluşturmaya devam etmek için **İleri ' yi** seçin.
+
+### <a name="incremental-refresh"></a>Artımlı yenileme
+
+Veri kümenize yeni görüntüler eklemeyi planlıyorsanız, artımlı yenileme, bu yeni görüntüleri bulacak ve projenize ekleyecek.  Bu özelliği etkinleştirdiğinizde, proje yeni görüntüleri düzenli olarak denetler.  Bu öğretici için veri deposuna yeni görüntüler eklememezsiniz, bu yüzden bu özelliği işaretlenmemiş olarak bırakın.
+
+Devam etmek için **İleri**’yi seçin.
 
 ### <a name="label-classes"></a>Etiket sınıfları
 

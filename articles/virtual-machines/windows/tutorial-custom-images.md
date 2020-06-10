@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9061cbbae0b30881fffe1762208216cb8009594a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 1ded745b5a734fd92a8ace851e3ecfc4a7a487d5
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791587"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636402"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>Öğretici: Azure PowerShell ile Windows VM görüntüleri oluşturma
 
@@ -50,11 +50,11 @@ Paylaşılan görüntü Galerisi özelliği birden çok kaynak türüne sahiptir
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell). **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 ## <a name="get-the-vm"></a>VM 'yi al
 
-[Get-azvm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)kullanarak bir kaynak grubunda kullanılabilir olan sanal makinelerin listesini görebilirsiniz. VM adını ve kaynak grubunu öğrendikten sonra, VM nesnesini almak ve daha sonra `Get-AzVM` kullanmak üzere bir değişkende depolamak için yeniden kullanabilirsiniz. Bu örnek, "myResourceGroup" kaynak grubundan *sourcevm* ADLı bir VM 'yi alır ve *$VM*değişkenine atar. 
+[Get-azvm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)kullanarak bir kaynak grubunda kullanılabilir olan sanal makinelerin listesini görebilirsiniz. VM adını ve kaynak grubunu öğrendikten sonra, `Get-AzVM` VM nesnesini almak ve daha sonra kullanmak üzere bir değişkende depolamak için yeniden kullanabilirsiniz. Bu örnek, "myResourceGroup" kaynak grubundan *sourcevm* ADLı bir VM 'yi alır ve *$VM*değişkenine atar. 
 
 ```azurepowershell-interactive
 $sourceVM = Get-AzVM `
@@ -117,7 +117,7 @@ Görüntü sürümü için izin verilen karakterler rakamlardan ve dönemlerdir.
 
 Bu örnekte, görüntü sürümü *1.0.0* ve hem *Doğu ABD* hem de *Orta Güney ABD* veri merkezlerine çoğaltılır. Çoğaltma için hedef bölge seçerken, *kaynak* bölgeyi çoğaltma için hedef olarak eklemeniz gerekir.
 
-VM 'den bir görüntü sürümü oluşturmak için, için kullanın `$vm.Id.ToString()` `-Source`.
+VM 'den bir görüntü sürümü oluşturmak için, için kullanın `$vm.Id.ToString()` `-Source` .
 
 ```azurepowershell-interactive
    $region1 = @{Name='South Central US';ReplicaCount=1}
@@ -140,7 +140,7 @@ Görüntünün tüm hedef bölgelere çoğaltılması biraz zaman alabilir.
 
 ## <a name="create-a-vm"></a>VM oluşturma 
 
-Özelleştirilmiş bir görüntünüz olduktan sonra bir veya daha fazla yeni VM oluşturabilirsiniz. [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 'ini kullanma. Görüntüyü kullanmak için, en son görüntü sürümünü her zaman kullanmak için ' '` and set the `set-Azvmsourceımage-ID ' öğesini görüntü tanımı kimliğine (bu durumda $GalleryImage. ID) kullanın. 
+Özelleştirilmiş bir görüntünüz olduktan sonra bir veya daha fazla yeni VM oluşturabilirsiniz. [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 'ini kullanma. Görüntüyü kullanmak için, öğesini kullanın `Set-AzVMSourceImage` ve `-Id` en son görüntü sürümünü her zaman kullanmak için görüntü tanımı kimliğine (bu durumda $GalleryImage. ID) ayarlayın. 
 
 Kaynak adlarını bu örnekte gereken şekilde değiştirin. 
 

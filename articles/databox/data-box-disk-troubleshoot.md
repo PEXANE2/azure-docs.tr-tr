@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: f8116ec0836623adf803991017950ddc7f960923
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 48a23c483ab4338492a407b60f3a5dfc95c0e680
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67805719"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607338"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Azure Data Box Disk doğrulama sorunlarını gidermek için günlükleri kullanma
 
@@ -21,13 +21,13 @@ Bu makale, Microsoft Azure Data Box Disk için geçerlidir. Makalesinde, bu çö
 
 ## <a name="validation-tool-log-files"></a>Doğrulama aracı günlük dosyaları
 
-[Doğrulama aracını](data-box-disk-deploy-copy-data.md#validate-data)kullanarak disklerdeki verileri doğruladığınızda, hataları günlüğe kaydetmek için bir *Error. xml* oluşturulur. Günlük dosyası sürücünüzün `Drive:\DataBoxDiskImport\logs` klasöründe bulunur. Doğrulama çalıştırdığınızda hata günlüğüne bir bağlantı sağlanır.
+[Doğrulama aracını](data-box-disk-deploy-copy-data.md#validate-data)kullanarak disklerdeki verileri doğruladığınızda, hataları günlüğe kaydetmek için bir *Error. xml* oluşturulur. Günlük dosyası `Drive:\DataBoxDiskImport\logs` sürücünüzün klasöründe bulunur. Doğrulama çalıştırdığınızda hata günlüğüne bir bağlantı sağlanır.
 
 <!--![Validation tool with link to error log](media/data-box-disk-troubleshoot/validation-tool-link-error-log.png)-->
 
 Doğrulama için birden çok oturum çalıştırırsanız, oturum başına bir hata günlüğü oluşturulur.
 
-- Aşağıda, `PageBlob` klasöre yüklenen veriler 512 bayt hizalı olmadığında oluşan hata günlüğü örneği verilmiştir. PageBlob 'a yüklenen tüm veriler 512 bayt hizalı olmalıdır; örneğin, bir VHD veya VHDX. Bu dosyadaki hatalar içindeki `<Errors>` `<Warnings>`ve uyarılardır.
+- Aşağıda, klasöre yüklenen veriler 512 bayt hizalı olmadığında oluşan hata günlüğü örneği verilmiştir `PageBlob` . PageBlob 'a yüklenen tüm veriler 512 bayt hizalı olmalıdır; örneğin, bir VHD veya VHDX. Bu dosyadaki hatalar `<Errors>` içindeki ve uyarılardır `<Warnings>` .
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -48,7 +48,7 @@ Doğrulama için birden çok oturum çalıştırırsanız, oturum başına bir h
         </ErrorLog>
     ```
 
-- Kapsayıcı adı geçerli olmadığında bir hata günlüğü örneği aşağıda verilmiştir. , `PageBlob`, Veya `AzureFile` diskteki klasörler altında `BlockBlob`oluşturduğunuz klasör, Azure depolama hesabınızda bir kapsayıcı haline gelir. Kapsayıcının adı [Azure adlandırma kurallarına](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)uymalıdır.
+- Kapsayıcı adı geçerli olmadığında bir hata günlüğü örneği aşağıda verilmiştir. `BlockBlob`, `PageBlob` , Veya diskteki klasörler altında oluşturduğunuz klasör, `AzureFile` Azure depolama hesabınızda bir kapsayıcı haline gelir. Kapsayıcının adı [Azure adlandırma kurallarına](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)uymalıdır.
 
     ```xml
         <?xml version="1.0" encoding="utf-8"?>

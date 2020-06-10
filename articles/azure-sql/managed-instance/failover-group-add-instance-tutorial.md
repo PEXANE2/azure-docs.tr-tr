@@ -13,12 +13,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: 925e6788035952a4e7b54b8d50b910243a754a09
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 31dba12023643f96018d1192111a19c80d0ba3ef
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041286"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636215"
 ---
 # <a name="tutorial-add-a-sql-managed-instance-to-a-failover-group"></a>Öğretici: bir yük devretme grubuna SQL yönetilen örneği ekleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -36,7 +36,7 @@ Yük devretme grubuna Azure SQL yönetilen örneği ekleyin. Bu makalede şunlar
   > - Yük devretme grubuna katılan SQL yönetilen örnekleri, [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) veya ıkı bağlı VPN Ağ Geçidi gerektirir. Bu öğretici, VPN ağ geçitleri oluşturmak ve bağlamak için gereken adımları sağlar. ExpressRoute zaten yapılandırılmışsa bu adımları atlayın. 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun: 
@@ -458,7 +458,7 @@ Azure portal kullanarak ikincil SQL yönetilen örneğini oluşturun.
 
 1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
 1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. Veritabanları kutucuğunda ayrıntıları göster ' i seçerek farklı veritabanları hakkındaki ek bilgileri görüntüleyebilirsiniz.
-1. **SQL SQL yönetilen örnekler** kutucuğunda **Oluştur** ' u seçin. 
+1. **SQL yönetilen örnekler** kutucuğunda **Oluştur** ' u seçin. 
 
     ![SQL yönetilen örneği Seç](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
@@ -766,7 +766,7 @@ Azure portal kullanarak birincil SQL yönetilen örneğinizin sanal ağı için 
     | **Geli** | Birincil SQL yönetilen örneğinizin bulunduğu bölge. |
     | **Ağ geçidi türü** | **VPN**' yi seçin. |
     | **VPN türü** | **Rota tabanlı** seçin |
-    | **ISTEYIN**| Varsayılan bırakın `VpnGw1` . |
+    | **SKU**| Varsayılan bırakın `VpnGw1` . |
     | **Konum**| Birincil SQL yönetilen örneğinizin ve birincil sanal ağınızın bulunduğu konum.   |
     | **Sanal ağ**| 2. bölümde oluşturulan sanal ağı seçin `vnet-sql-mi-primary` . |
     | **Genel IP adresi**| **Yeni oluştur**’u seçin. |
@@ -848,7 +848,7 @@ Azure portal kullanarak, ikincil SQL yönetilen örneği için sanal ağ alt ağ
    | **Geli** | İkincil SQL yönetilen örneğinizin bulunduğu bölge. |
    | **Ağ geçidi türü** | **VPN**' yi seçin. |
    | **VPN türü** | **Rota tabanlı** seçin |
-   | **ISTEYIN**| Varsayılan bırakın `VpnGw1` . |
+   | **SKU**| Varsayılan bırakın `VpnGw1` . |
    | **Konum**| İkincil SQL yönetilen örneğinizin ve ikincil sanal ağınızın bulunduğu konum.   |
    | **Sanal ağ**| 2. bölümde oluşturulan sanal ağı seçin `vnet-sql-mi-secondary` . |
    | **Genel IP adresi**| **Yeni oluştur**’u seçin. |

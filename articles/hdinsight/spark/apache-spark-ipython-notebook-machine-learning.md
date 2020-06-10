@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive,mvc
+ms.custom: hdinsightactive,mvc, tracking-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 963f5bd4dfdd9dda78a437bdb1111c9eec2795dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0dfdb324013a246010c12d36a50c80b4fbef503e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878451"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607100"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache Spark Machine Learning uygulaması oluşturma
 
@@ -21,11 +21,11 @@ Bu öğreticide, Azure HDInsight için [Apache Spark](./apache-spark-overview.md
 
 [Mllib](https://spark.apache.org/docs/latest/ml-guide.html) , ortak öğrenme algoritmalarından ve yardımcı programlarından oluşan Spark 'ın uyarılmatablosu makine öğrenimi kitaplığı. (Sınıflandırma, regresyon, kümeleme, işbirliğine dayalı filtreleme ve boyutlılık azaltma. Ayrıca, temel iyileştirme temelleri.)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Apache Spark Machine Learning uygulaması geliştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir Apache Spark kümesi. Bkz. [Apache Spark kümesi oluşturma](./apache-spark-jupyter-spark-sql-use-portal.md).
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="understand-the-data-set"></a>Veri kümesini anlamak
 
-Uygulama varsayılan olarak tüm kümelerdeki kullanılabilir örnek **HVAC. csv** verilerini kullanır. Dosya konumunda `\HdiSamples\HdiSamples\SensorSampleData\hvac`bulunur. Veriler, HVAC sistemlerinin yüklü olduğu bazı binaların hedef sıcaklığı ile gerçek sıcaklığını gösterir. **System** sütunu sistem kimliğini, **SystemAge** sütunu ise HVAC sisteminin binada kaç yıldır kullanıldığını ifade eder. Bir binanın, hedef sıcaklığa, sistem KIMLIĞINE ve sistem yaşı temelinde bir bina veya harmanlama olacağını tahmin edebilirsiniz.
+Uygulama varsayılan olarak tüm kümelerdeki kullanılabilir örnek **HVAC. csv** verilerini kullanır. Dosya konumunda bulunur `\HdiSamples\HdiSamples\SensorSampleData\hvac` . Veriler, HVAC sistemlerinin yüklü olduğu bazı binaların hedef sıcaklığı ile gerçek sıcaklığını gösterir. **System** sütunu sistem kimliğini, **SystemAge** sütunu ise HVAC sisteminin binada kaç yıldır kullanıldığını ifade eder. Bir binanın, hedef sıcaklığa, sistem KIMLIĞINE ve sistem yaşı temelinde bir bina veya harmanlama olacağını tahmin edebilirsiniz.
 
 ![Spark Machine Learning örneği için kullanılan verilerin anlık görüntüsü](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Spark Machine Learning örneği için kullanılan verilerin anlık görüntüsü")
 
@@ -186,13 +186,13 @@ Bu uygulama bir belge sınıflandırması yapmak için Spark [ml işlem hattı](
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>Spark makine öğrenimi için Anaconda scikit-learn kitaplığını kullanma
 
-HDInsight’ta Apache Spark kümeleri, Anaconda kitaplıklarını içerir. Ayrıca, makine öğrenimi **scikit-learn** kitaplığını içerir. Kitaplık aynı zamanda, aynı uygulamaları bir Jupyter not defterinden doğrudan derlemek için kullanabileceğiniz çeşitli veri kümeleri içerir. Scikit-öğrenme kitaplığını kullanma örnekleri için bkz [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html)..
+HDInsight’ta Apache Spark kümeleri, Anaconda kitaplıklarını içerir. Ayrıca, makine öğrenimi **scikit-learn** kitaplığını içerir. Kitaplık aynı zamanda, aynı uygulamaları bir Jupyter not defterinden doğrudan derlemek için kullanabileceğiniz çeşitli veri kümeleri içerir. Scikit-öğrenme kitaplığını kullanma örnekleri için bkz [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html) ..
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aşağıdaki adımlarla silin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Üstteki **arama** kutusuna **HDInsight**yazın.
 

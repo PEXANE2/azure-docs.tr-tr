@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, tracking-python
 ms.date: 04/27/2020
-ms.openlocfilehash: 48bd53160c3d2e76dccd1f22723c30c2c7e00d7a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: c67e8a79e2339c4a329e276c52703bd749137037
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559944"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608426"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Machine Learning uygulaması derlemek ve bir veri kümesini çözümlemek için Apache Spark MLlib kullanın
 
@@ -174,13 +174,13 @@ Veri kümesinin neleri içerdiğini bir fikir almaya başlayalım.
     SELECT COUNT(results) AS cnt, results FROM CountResults GROUP BY results
     ```
 
-    Sonra `%%sql` da Magic, `-o countResultsdf` sorgunun çıkışının jupi sunucusunda (genellikle kümenin baş düğümüne) kalıcı olarak kalıcı olmasını sağlar. Çıktı, belirtilen **Countresultsdf**adlı bir [Pandas](https://pandas.pydata.org/) dataframe olarak kalıcıdır. `%%sql` MAGIC ve pyspark çekirdekle sunulan diğer mıknatık hakkında daha fazla bilgi için, [Apache Spark HDInsight kümeleri Ile Jupyter not defterlerinde kullanılabilen çekirdekler](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)bölümüne bakın.
+    `%%sql`Sonra da Magic, `-o countResultsdf` sorgunun çıkışının jupi sunucusunda (genellikle kümenin baş düğümüne) kalıcı olarak kalıcı olmasını sağlar. Çıktı, belirtilen **Countresultsdf**adlı bir [Pandas](https://pandas.pydata.org/) dataframe olarak kalıcıdır. `%%sql`MAGIC ve PySpark çekirdekle sunulan diğer mıknatık hakkında daha fazla bilgi için, [Apache Spark HDInsight kümeleri Ile Jupyter not defterlerinde kullanılabilen çekirdekler](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)bölümüne bakın.
 
     Çıkış şöyle olur:
 
     ![SQL sorgu çıktısı](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL sorgu çıktısı")
 
-3. Ayrıca, bir çizim oluşturmak için veri görselleştirmesini oluşturmak için kullanılan bir kitaplık olan Matplotlib ' ı da kullanabilirsiniz. Çizimin yerel olarak kalıcı **Countresultsdf** dataframe 'den oluşturulması gerektiğinden, kod parçacığının `%%local` Magic ile başlaması gerekir. Bu eylem, kodun Jupyıter sunucusunda yerel olarak çalıştırılmasını sağlar.
+3. Ayrıca, bir çizim oluşturmak için veri görselleştirmesini oluşturmak için kullanılan bir kitaplık olan Matplotlib ' ı da kullanabilirsiniz. Çizimin yerel olarak kalıcı **Countresultsdf** dataframe 'den oluşturulması gerektiğinden, kod parçacığının Magic ile başlaması gerekir `%%local` . Bu eylem, kodun Jupyıter sunucusunda yerel olarak çalıştırılmasını sağlar.
 
     ```PySpark
     %%local
@@ -207,7 +207,7 @@ Veri kümesinin neleri içerdiğini bir fikir almaya başlayalım.
 
      Diğer sonuçlara sahip veriler ("Iş bulunamadı" veya "Iş dışı") yararlı değildir ve yine de sonuçların küçük bir yüzdesini yapar.
 
-4. Varolan veri çerçevesini (`df`) her İnceleme bir etiket ihlalleri çifti olarak temsil edildiği yeni bir veri çerçevesine dönüştürmek için aşağıdaki kodu çalıştırın. Bu durumda, bir etiketi bir hata `0.0` temsil eder, bir etiketi bir başarıyı `1.0` temsil eder ve bir etiketi, bu iki `-1.0` sonucun yanı sıra bazı sonuçları temsil eder.
+4. Varolan veri çerçevesini ( `df` ) her İnceleme bir etiket ihlalleri çifti olarak temsil edildiği yeni bir veri çerçevesine dönüştürmek için aşağıdaki kodu çalıştırın. Bu durumda, bir etiketi `0.0` bir hata temsil eder, bir etiketi bir `1.0` başarıyı temsil eder ve bir etiketi, `-1.0` Bu iki sonucun yanı sıra bazı sonuçları temsil eder.
 
     ```PySpark
     def labelForResults(s):
@@ -288,7 +288,7 @@ Daha önce oluşturduğunuz modeli kullanarak yeni İncelemeleri sonuçlarının
 
    Test veri kümesindeki ilk giriş için bir tahmin vardır.
 
-1. `model.transform()` Yöntemi aynı dönüşümü aynı şemaya sahip tüm yeni verilere uygular ve verilerin sınıflandırılacağı bir tahmine ulaşır. Tahmine dayalı olarak nasıl olduğunu öğrenmek için bazı istatistikler yapabilirsiniz:
+1. `model.transform()`Yöntemi aynı dönüşümü aynı şemaya sahip tüm yeni verilere uygular ve verilerin sınıflandırılacağı bir tahmine ulaşır. Tahmine dayalı olarak nasıl olduğunu öğrenmek için bazı istatistikler yapabilirsiniz:
 
     ```PySpark
     numSuccesses = predictionsDf.where("""(prediction = 0 AND results = 'Fail') OR
@@ -313,7 +313,7 @@ Daha önce oluşturduğunuz modeli kullanarak yeni İncelemeleri sonuçlarının
 
 Artık bu testin sonuçları hakkında neden olacak bir son görselleştirme oluşturabilirsiniz.
 
-1. Daha önce oluşturulan tahmine **dayalı geçici tablodaki farklı tahminleri ve** sonuçları çıkartarak başlayabilirsiniz. Aşağıdaki sorgular çıktıyı *true_positive*, *false_positive*, *true_negative*ve *false_negative*olarak ayırır. Aşağıdaki sorgularda, kullanarak `-q` görselleştirmeyi devre dışı bırakır ve ayrıca (kullanarak `-o`) çıktıyı, daha sonra `%%local` Magic ile kullanılabilecek dataframes olarak kaydeder.
+1. Daha önce oluşturulan tahmine **dayalı geçici tablodaki farklı tahminleri ve** sonuçları çıkartarak başlayabilirsiniz. Aşağıdaki sorgular çıktıyı *true_positive*, *false_positive*, *true_negative*ve *false_negative*olarak ayırır. Aşağıdaki sorgularda, kullanarak görselleştirmeyi devre dışı bırakır `-q` ve ayrıca (kullanarak) çıktıyı, `-o` daha sonra Magic ile kullanılabilecek dataframes olarak kaydeder `%%local` .
 
     ```PySpark
     %%sql -q -o true_positive

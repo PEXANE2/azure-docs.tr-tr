@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 6a123fac9f199fc0b19a3e6af33ad705ce51945c
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 0c9982fd4aa6459cdcbd715077f08092075a9776
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84464462"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610075"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure Izleyici 'de günlük alımı için müşterinin sahip olduğu depolama hesapları
 
-Azure Izleyici, [özel Günlükler](data-sources-custom-logs.md) ve bazı [Azure günlükleri](azure-storage-iis-table.md)gibi bazı veri türlerinin alma işlemindeki depolama hesaplarını kullanır. Alma işlemi sırasında, Günlükler önce bir depolama hesabına gönderilir ve daha sonra Log Analytics veya Application Insights. Alma sırasında verileriniz üzerinde denetim istiyorsanız, hizmet tarafından yönetilen depolama yerine kendi depolama hesaplarınızı kullanabilirsiniz. Kendi depolama hesabınızı kullanmak, alma sırasında günlüklerin erişim, içerik, şifreleme ve bekletme için denetim sağlar. Bu, kendi depolama alanınızı veya KCG 'LERI getir olarak adlandırdık. 
+Azure Izleyici, [özel Günlükler](data-sources-custom-logs.md) ve bazı [Azure günlükleri](azure-storage-iis-table.md)gibi bazı veri türlerinin alma işlemindeki depolama hesaplarını kullanır. Alma işlemi sırasında, Günlükler önce bir depolama hesabına gönderilir ve daha sonra Log Analytics veya Application Insights. Alma sırasında verileriniz üzerinde denetim istiyorsanız, hizmet tarafından yönetilen depolama yerine kendi depolama hesaplarınızı kullanabilirsiniz. Kendi depolama hesabınızı kullanmak, alma sırasında günlüklerin erişim, içerik, şifreleme ve bekletme işlemi üzerinde denetim sahibi olmanızı sağlar. Bu, kendi depolama alanınızı veya KCG 'LERI getir olarak adlandırdık. 
 
 KCG gerektiren bir senaryo, özel bağlantılar aracılığıyla ağ yalıtımına sahiptir. VNet kullanılırken, ağ yalıtımı genellikle gereksinimdir ve genel internet erişimi sınırlıdır. Bu gibi durumlarda, günlük alma için Azure Izleyici hizmeti depolamaya erişmek tamamen engelleniyor veya hatalı bir uygulama olarak kabul edilir. Bunun yerine, günlüklerin VNet içindeki bir müşterinin sahip olduğu veya kolayca erişilebilen bir depolama hesabı aracılığıyla kullanılması gerekir.
 

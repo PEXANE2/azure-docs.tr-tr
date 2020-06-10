@@ -6,20 +6,20 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: 0ec417b3c7a025d2d05bdd74ec683a2891c3b0de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8ad1e1ae2db5c4b2dfcac0bb08fc73b85054416b
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74075171"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628625"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Application Gateway ile App Service yapılandırma
 
 App Service, bir dizi dağıtım yerine çok kiracılı bir hizmet olduğundan, isteği doğru App Service uç noktasına çözümlemek için gelen istekte ana bilgisayar üst bilgisini kullanır. Genellikle uygulamanın DNS adı, App Service 'i kapsayan uygulama ağ geçidi ile ilişkili DNS adıdır, arka uç App Service 'in etki alanı adından farklıdır. Bu nedenle, uygulama ağ geçidi tarafından alınan özgün istekteki ana bilgisayar üst bilgisi, arka uç hizmetinin ana bilgisayar adıyla aynı değildir. Bu nedenle, uygulama ağ geçidindeki istekteki ana bilgisayar üst bilgisi arka uç hizmetinin ana bilgisayar adına değiştirilmediği için, çok kiracılı arka uçlar isteği doğru uç noktaya çözemeyebilir.
 
-Application Gateway, istek Application Gateway arka `Pick host name from backend address` uca yönlendirilmesinde isteğin ana bilgisayar adıyla birlikte istekteki konak üstbilgisini geçersiz kılan bir anahtar sağlar. Bu özellik, Azure App Service ve API Management gibi çok kiracılı arka uçlar için destek sunar. 
+Application Gateway, istek `Pick host name from backend address` Application Gateway arka uca yönlendirilmesinde isteğin ana bilgisayar adıyla birlikte istekteki konak üstbilgisini geçersiz kılan bir anahtar sağlar. Bu özellik, Azure App Service ve API Management gibi çok kiracılı arka uçlar için destek sunar. 
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -28,7 +28,7 @@ Bu makalede şunları öğreneceksiniz:
 > - Bir arka uç havuzu oluşturun ve buna bir App Service ekleyin
 > - "Seçme ana bilgisayar adı" anahtarları etkinken HTTP ayarları ve özel araştırma oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Application Gateway: mevcut bir uygulama ağ geçidiniz yoksa bkz. [uygulama ağ geçidi oluşturma](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
 - App Service: mevcut bir App Service yoksa [App Service belgeleri](https://docs.microsoft.com/azure/app-service/)bölümüne bakın.
@@ -59,13 +59,13 @@ Bu makalede şunları öğreneceksiniz:
 3. Kullanım çalışmanıza göre Protokolü HTTP veya HTTPS olarak seçin. 
 
    > [!NOTE]
-   > HTTPS ' yi seçerseniz, App Service 'ın güvenilen bir Azure hizmeti olduğundan, uygulama hizmeti arka ucunu beyaz listeye almak için herhangi bir kimlik doğrulama sertifikası veya güvenilen kök sertifikası yüklemeniz gerekmez.
+   > HTTPS ' yi seçerseniz, App Service güvenilen bir Azure hizmeti olduğundan, App Service arka ucuna izin vermek için herhangi bir kimlik doğrulama sertifikası veya güvenilen kök sertifikası yüklemeniz gerekmez.
 
 4. **App Service Için kullanım** kutusunu işaretleyin. Anahtarların `Create a probe with pick host name from backend address` ve `Pick host name from backend address` otomatik olarak etkinleştirildiğini unutmayın.`Pick host name from backend address` istek Application Gateway arka uca yönlendirildiğini, istekteki konak üstbilgisini arka ucun ana bilgisayar adıyla geçersiz kılar.  
 
-   `Create a probe with pick host name from backend address`otomatik olarak bir durum araştırması oluşturur ve bu HTTP ayarıyla ilişkilendirir. Bu HTTP ayarı için başka bir sistem durumu araştırması oluşturmanız gerekmez. Bu ada <HTTP Setting name> <Unique GUID> sahip yeni bir araştırmanın sistem durumu araştırmaları listesine eklendiğini ve bu anahtarın zaten anahtara `Pick host name from backend http settings enabled`sahip olduğunu kontrol edebilirsiniz.
+   `Create a probe with pick host name from backend address`otomatik olarak bir durum araştırması oluşturur ve bu HTTP ayarıyla ilişkilendirir. Bu HTTP ayarı için başka bir sistem durumu araştırması oluşturmanız gerekmez. Bu ada sahip yeni bir araştırmanın <HTTP Setting name> <Unique GUID> sistem durumu araştırmaları listesine eklendiğini ve bu anahtarın zaten anahtara sahip olduğunu kontrol edebilirsiniz `Pick host name from backend http settings enabled` .
 
-   App Service için kullanılmakta olan bir veya daha fazla HTTP ayarı zaten varsa ve bu HTTP ayarları, oluşturmakta olduğunuz bir protokol ile aynı protokolü kullanıyorsa, `Create a probe with pick host name from backend address` anahtar yerine, özel araştırmaların birini seçmek için bir açılır liste alırsınız. Bunun nedeni, App Service ile bir HTTP ayarı zaten var olduğundan, bu nedenle anahtara `Pick host name from backend http settings enabled` sahip bir sistem durumu araştırması de var. Açılan listeden özel araştırmayı seçin.
+   App Service için kullanılmakta olan bir veya daha fazla HTTP ayarı zaten varsa ve bu HTTP ayarları, oluşturmakta olduğunuz bir protokol ile aynı protokolü kullanıyorsa, `Create a probe with pick host name from backend address` anahtar yerine, özel araştırmaların birini seçmek için bir açılır liste alırsınız. Bunun nedeni, App Service ile bir HTTP ayarı zaten var olduğundan, bu nedenle anahtara sahip bir sistem durumu araştırması de var `Pick host name from backend http settings enabled` . Açılan listeden özel araştırmayı seçin.
 
 5. HTTP ayarını oluşturmak için **Tamam** ' ı tıklatın.
 

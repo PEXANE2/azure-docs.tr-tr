@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: robinsh
-ms.openlocfilehash: 1d721e89534c09a5572e5674796f28355f652165
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: ea63b4bd40a610227b4315f9e6e858c39ff9ff6a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79527410"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84606471"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>İşleri zamanlama ve yayınlama (Python)
 
@@ -53,7 +54,7 @@ Bu öğreticinin sonunda iki Python uygulamanız vardır:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
@@ -77,7 +78,7 @@ Bu bölümde, bulut tarafından çağrılan doğrudan bir yönteme yanıt veren 
 
 2. Bir metin düzenleyicisi kullanarak çalışma dizininizde yeni bir **simDevice.py** dosyası oluşturun.
 
-3. **SimDevice.py** dosyasının başlangıcında `import` aşağıdaki deyimleri ve değişkenleri ekleyin. Yukarıda `deviceConnectionString` oluşturduğunuz cihazın bağlantı dizesiyle değiştirin:
+3. `import` **SimDevice.py** dosyasının başlangıcında aşağıdaki deyimleri ve değişkenleri ekleyin. `deviceConnectionString`Yukarıda oluşturduğunuz cihazın bağlantı dizesiyle değiştirin:
 
     ```python
     import threading
@@ -113,7 +114,7 @@ Bu bölümde, bulut tarafından çağrılan doğrudan bir yönteme yanıt veren 
             print (patch)
     ```
 
-6. **Kilit kapısı** yöntemi için işleyiciyi kaydetmek üzere aşağıdaki kodu ekleyin. Ayrıca, `main` yordamını da dahil edin:
+6. **Kilit kapısı** yöntemi için işleyiciyi kaydetmek üzere aşağıdaki kodu ekleyin. Ayrıca, yordamını da dahil edin `main` :
 
     ```python
     def iothub_jobs_sample_run():
@@ -162,7 +163,7 @@ Bu makalede, bir cihazda doğrudan yöntem çağıran ve cihazı ikizi güncelle
 
 3. İlke listesinin üstündeki en üstteki menüden **Ekle**' yi seçin.
 
-4. **Paylaşılan erişim Ilkesi Ekle** bölmesinde, ilkeniz için açıklayıcı bir ad girin; Örneğin: *Serviceandregistryreadwrite*. **İzinler**altında **hizmet Connect** ve **kayıt defteri yazma** (kayıt defteri **yazma**seçeneğini belirlediğinizde**kayıt defteri okuma** otomatik olarak seçilir) seçeneğini belirleyin. Ardından **Oluştur**’u seçin.
+4. **Paylaşılan erişim Ilkesi Ekle** bölmesinde, ilkeniz için açıklayıcı bir ad girin; Örneğin: *Serviceandregistryreadwrite*. **İzinler**altında **hizmet Connect** ve **kayıt defteri yazma** (kayıt defteri **yazma**seçeneğini belirlediğinizde**kayıt defteri okuma** otomatik olarak seçilir) seçeneğini belirleyin. Ardından **Oluştur**'u seçin.
 
     ![Yeni bir paylaşılan erişim ilkesinin nasıl ekleneceğini göster](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
 
@@ -186,7 +187,7 @@ Bu bölümde, doğrudan yöntem kullanan bir cihazda uzak **Lockkapısı** Başl
 
 2. Bir metin düzenleyicisi kullanarak çalışma dizininizde yeni bir **scheduleJobService.py** dosyası oluşturun.
 
-3. **ScheduleJobService.py** dosyasının başlangıcında `import` aşağıdaki deyimleri ve değişkenleri ekleyin. Yer tutucusunu `{IoTHubConnectionString}` , [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin. Yer tutucusunu `{deviceId}` , [IoT Hub 'ına yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub)' de kaydettiğiniz cihaz kimliğiyle değiştirin:
+3. `import` **ScheduleJobService.py** dosyasının başlangıcında aşağıdaki deyimleri ve değişkenleri ekleyin. `{IoTHubConnectionString}`Yer tutucusunu, [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde daha önce kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin. `{deviceId}`Yer tutucusunu, [IoT Hub 'ına yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub)' de kaydettiğiniz cihaz kimliğiyle değiştirin:
 
     ```python
     import sys
@@ -254,7 +255,7 @@ Bu bölümde, doğrudan yöntem kullanan bir cihazda uzak **Lockkapısı** Başl
             print ( "Device twin updated." )
     ```
 
-6. İşleri zamanlamak ve iş durumunu güncelleştirmek için aşağıdaki kodu ekleyin. Ayrıca, `main` yordamını da dahil edin:
+6. İşleri zamanlamak ve iş durumunu güncelleştirmek için aşağıdaki kodu ekleyin. Ayrıca, yordamını da dahil edin `main` :
 
     ```python
     def iothub_jobs_sample_run():

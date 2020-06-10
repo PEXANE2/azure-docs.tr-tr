@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: bbe1d651a7d2d2cac1b1aa78b815b2797ad185c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f087a2880c16218905a4410a2f591511a155ffd
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76717319"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629005"
 ---
 # <a name="create-a-custom-voice"></a>Özel bir ses oluşturun
 
@@ -28,7 +28,7 @@ ms.locfileid: "76717319"
 
 ## <a name="upload-your-datasets"></a>Veri kümelerinizi karşıya yükleyin
 
-Verilerinizi karşıya yüklemeye hazırsanız, [özel sesli portala](https://aka.ms/custom-voice-portal)gidin. Özel bir ses projesi oluşturun veya seçin. Projenin, doğru dil/yerel ayar ve cinsiyet özelliklerini, ses eğitimine yönelik olarak kullanmayı istediğiniz verilerle paylaşmalıdır. Örneğin, bir UK `en-GB` vurgusu ile İngilizce 'de ses kayıtlarının gerçekleştirilip yapıllamadığını seçin.
+Verilerinizi karşıya yüklemeye hazırsanız, [özel sesli portala](https://aka.ms/custom-voice-portal)gidin. Özel bir ses projesi oluşturun veya seçin. Projenin, doğru dil/yerel ayar ve cinsiyet özelliklerini, ses eğitimine yönelik olarak kullanmayı istediğiniz verilerle paylaşmalıdır. Örneğin, `en-GB` BIR UK vurgusu Ile İngilizce 'de ses kayıtlarının gerçekleştirilip yapıllamadığını seçin.
 
 **Veri** sekmesine gidin ve **verileri karşıya yükle**' ye tıklayın. Sihirbazda, hazırladığınız verilerle eşleşen doğru veri türünü seçin.
 
@@ -44,7 +44,7 @@ Veri kümeleri, karşıya yükle düğmesine ulaştıktan sonra otomatik olarak 
 
 Aşağıdaki tabloda, içeri aktarılan veri kümeleri için işleme durumları gösterilmektedir:
 
-| Durum | Anlamı |
+| Eyalet | Anlamı |
 | ----- | ------- |
 | İşleniyor | Veri kümeniz alındı ve işleniyor. |
 | Başarılı oldu | Veri kümeniz doğrulandıktan sonra artık bir ses modeli oluşturmak için kullanılabilir. |
@@ -62,13 +62,13 @@ Düşük telaffuz puanlarla veya kötü bir sinyal gürültüsü oranlarına sah
 
 Veri kümeniz doğrulandıktan sonra, özel ses modelinizi oluşturmak için kullanabilirsiniz.
 
-1.  **Metinden konuşmaya > özel sesli > eğitimi**' ne gidin.
+1.  **Metin okuma > özel ses > [proje adı] > eğitimi**' ne gidin.
 
 2.  **Modeli eğitme**' ye tıklayın.
 
 3.  Ardından, bu modeli tanımlamanızı sağlayacak bir **ad** ve **Açıklama** girin.
 
-    Bir adı dikkatle seçin. Buraya girdiğiniz ad, SSML girişinin bir parçası olarak konuşma sensimi için isteğiniz için kullandığınız adı kullanacaktır. Yalnızca harfler, rakamlar ve-, \_, ve (', ') gibi birkaç noktalama karakteri kullanılabilir. Farklı ses modelleri için farklı adlar kullanın.
+    Bir adı dikkatle seçin. Buraya girdiğiniz ad, SSML girişinin bir parçası olarak konuşma sensimi için isteğiniz için kullandığınız adı kullanacaktır. Yalnızca harfler, rakamlar ve-, \_ , ve (', ') gibi birkaç noktalama karakteri kullanılabilir. Farklı ses modelleri için farklı adlar kullanın.
 
     **Description** alanının yaygın bir kullanımı, modeli oluşturmak için kullanılan veri kümelerinin adlarını kaydetmek olur.
 
@@ -86,7 +86,7 @@ Eğitim tablosu, bu yeni oluşturulan modele karşılık gelen yeni bir giriş g
 
 Gösterilen durum, burada gösterildiği gibi, veri kümenizi bir ses modeline dönüştürme sürecini yansıtır.
 
-| Durum | Anlamı |
+| Eyalet | Anlamı |
 | ----- | ------- |
 | İşleniyor | Ses modeliniz oluşturuluyor. |
 | Başarılı oldu | Ses modeliniz oluşturuldu ve dağıtılabilir. |
@@ -106,7 +106,7 @@ Sinir Voice eğitim özelliğini kullanıyorsanız, gerçek zamanlı akış sena
 
 Ses yazı tipi başarıyla derlendikten sonra, kullanım için dağıtılmadan önce test edebilirsiniz.
 
-1.  **Metinden konuşmaya > özel sesli > teste**gidin.
+1.  **Metin okuma > özel ses > [proje adı] test >**' e gidin.
 
 2.  **Test Ekle**' ye tıklayın.
 
@@ -117,7 +117,7 @@ Ses yazı tipi başarıyla derlendikten sonra, kullanım için dağıtılmadan �
     > [!NOTE]
     > Metninizin dili, ses yazı tipinin diliyle aynı olmalıdır. Yalnızca başarılı eğitilen modeller test edilebilir. Bu adımda yalnızca düz metin desteklenir.
 
-5.  **Oluştur**' a tıklayın.
+5.  **Oluştur**'a tıklayın.
 
 Test isteğinizi gönderdikten sonra, sınama sayfasına dönersiniz. Tablo artık yeni isteğinize ve durum sütununa karşılık gelen bir giriş içerir. Konuşmayı senberleştirmek birkaç dakika sürebilir. Durum sütunu **başarılı**olduğunda, sesi yürütebilir veya metin girişi (bir. txt dosyası) ve ses çıkışını (bir. wav dosyası) indirebilir ve daha sonra kalite için daha fazla sesleme yapabilirsiniz.
 

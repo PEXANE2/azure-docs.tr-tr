@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 06/08/2020
 ms.author: mimart
-ms.openlocfilehash: 71c2e3a83c3d63d375935294a25a369ca7e54d80
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 5ccec4174020d8b6586384a71ffe84fccd753640
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593753"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605451"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Kapsam filtreleri ile öznitelik tabanlı uygulama sağlama
 Bu makalenin amacı, bir uygulamaya hangi kullanıcıların sağlandığını belirleyen öznitelik tabanlı kurallar tanımlamak için kapsam filtrelerinin nasıl kullanılacağını açıklamaktır.
@@ -29,7 +29,7 @@ Kapsam filtreleri, sağlama bağlayıcısının türüne göre farklı şekilde 
 * **Azure AD 'Den SaaS uygulamalarına giden sağlama**. Azure AD kaynak sistem olduğunda, [Kullanıcı ve Grup atamaları](../manage-apps/assign-user-or-group-access-portal.md) , hangi kullanıcıların sağlama kapsamında olduğunu belirlemek için en yaygın yöntemdir. Bu atamalar, çoklu oturum açmayı etkinleştirmek ve erişim ve sağlamayı yönetmek için tek bir yöntem sağlamak için de kullanılır. Kapsam filtreleri, kullanıcıların öznitelik değerlerine göre filtreleneceği şekilde, atamaları veya bunların yerine, isteğe bağlı olarak kullanılabilir.
 
     >[!TIP]
-    > **Tüm kullanıcıları ve grupları eşitlemek**için sağlama ayarları altındaki [kapsam](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) menüsündeki ayarları değiştirerek bir kurumsal uygulama için atamaları temel alarak sağlamayı devre dışı bırakabilirsiniz. Bu seçeneğin ve öznitelik tabanlı kapsam filtrelerinin kullanılması, grup tabanlı atamaları kullanmaktan daha hızlı performans sağlar.  
+    > **Tüm kullanıcıları ve grupları eşitlemek**için sağlama ayarları altındaki [kapsam](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) menüsündeki ayarları değiştirerek bir kurumsal uygulama için atamaları temel alarak sağlamayı devre dışı bırakabilirsiniz. 
 
 * **HCM uygulamalarından Azure AD 'ye gelen sağlama ve Active Directory**. [Workday gibi bir HCM uygulaması](../saas-apps/workday-tutorial.md) kaynak sistem olduğunda, kapsam filtreleri hcm uygulamasından Active Directory veya Azure AD 'ye hangi kullanıcıların sağlanması gerektiğini belirlemek için birincil yöntemdir.
 
@@ -60,7 +60,7 @@ Bu kapsam filtresine göre, kullanıcıların sağlanması için aşağıdaki ö
 Kapsam filtreleri, her bir Azure AD Kullanıcı sağlama bağlayıcısının öznitelik eşlemelerinin bir parçası olarak yapılandırılır. Aşağıdaki yordamda, [desteklenen uygulamalardan biri](../saas-apps/tutorial-list.md) için otomatik sağlamayı ayarlamış olduğunuz ve buna kapsam filtresi eklemekte olduğunuz varsayılmaktadır.
 
 ### <a name="create-a-scoping-filter"></a>Kapsam filtresi oluşturma
-1. [Azure Portal](https://portal.azure.com), **Azure Active Directory** > **Enterprise Applications** > **tüm uygulamalar** bölümüne gidin.
+1. [Azure Portal](https://portal.azure.com), **Azure Active Directory**  >  **Enterprise Applications**  >  **tüm uygulamalar** bölümüne gidin.
 
 2. Otomatik sağlamayı yapılandırdığınız uygulamayı seçin: Örneğin, "ServiceNow".
 
@@ -86,7 +86,7 @@ Kapsam filtreleri, her bir Azure AD Kullanıcı sağlama bağlayıcısının öz
 
    f. **null değil**. Değerlendirilen öznitelik boş değilse yan tümce "true" döndürür.
 
-   g. **Regex eşleşiyor**. Değerlendirilen öznitelik bir normal ifade düzeniyle eşleşiyorsa, yan tümce "true" döndürür. Örneğin: ([1-9] [0-9]), 10 ile 99 arasında herhangi bir sayıyla eşleşir.
+   örneğin: **Regex eşleşiyor**. Değerlendirilen öznitelik bir normal ifade düzeniyle eşleşiyorsa, yan tümce "true" döndürür. Örneğin: ([1-9] [0-9]), 10 ile 99 arasında herhangi bir sayıyla eşleşir.
 
    h. **Regex eşleşmiyor**. Değerlendirilen öznitelik bir normal ifade düzeniyle eşleşmezse, yan tümce "true" döndürür.
    
@@ -116,10 +116,10 @@ Kapsam filtreleri, her bir Azure AD Kullanıcı sağlama bağlayıcısının öz
 
 
 ## <a name="common-scoping-filters"></a>Ortak kapsam filtreleri
-| Target özniteliği| İşleç | Değer | Açıklama|
+| Target özniteliği| Operatör | Değer | Açıklama|
 |----|----|----|----|
-|userPrincipalName|REGEX EŞLEŞMESI|.\*@domain.com |Etki alanı @domain.com olan UserPrincipal 'a sahip tüm kullanıcılar sağlama kapsamında olacaktır|
-|userPrincipalName|REGEX EŞLEŞMIYOR|.\*@domain.com|Etki alanı @domain.com olan UserPrincipal 'a sahip tüm kullanıcılar, sağlama için kapsam dışı olacaktır|
+|userPrincipalName|REGEX EŞLEŞMESI|.\*@domain.com |Etki alanı olan userPrincipal 'a sahip tüm kullanıcılar @domain.com sağlama kapsamında olacaktır|
+|userPrincipalName|REGEX EŞLEŞMIYOR|.\*@domain.com|Etki alanı olan userPrincipal 'a sahip tüm kullanıcılar, @domain.com sağlama için kapsam dışı olacaktır|
 |bölüm|EŞITTIR|Sales|Satış departmanından tüm kullanıcılar sağlama kapsamındadır|
 |Workerıd|REGEX EŞLEŞMESI|(1 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9])| 1000000 ve 2000000 arasında Workerıd 'Leri olan tüm çalışanlar sağlama kapsamındadır.|
 

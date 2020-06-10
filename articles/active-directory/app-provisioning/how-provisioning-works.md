@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 533e38206b9a85b449880d88c9ff969c051fac53
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: ca8285eb9553e0c69a024714c2f5a258bd9b0ba0
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712239"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628195"
 ---
 # <a name="how-provisioning-works"></a>Sağlama nasıl çalışır?
 
@@ -172,7 +172,7 @@ Kullanıcı sağlama hizmeti tarafından çalıştırılan tüm işlemler, Azure
 
 Azure AD sağlama hizmeti, kullanıcıların artık erişim sahibi olmaması gerektiğinde, kaynak ve hedef sistemleri, hesapları serbest bırakma ile eşitlenmiş halde tutar. 
 
-Azure AD sağlama hizmeti, uygulama suupports geçici olarak silindiğinde (etkin = false ile güncelleştirme isteği) ve aşağıdaki olaylardan herhangi biri gerçekleştiğinde bir uygulamadaki kullanıcıyı geçici olarak siler:
+Azure AD sağlama hizmeti, uygulama geçici silmeleri desteklediğinde (etkin = false ile güncelleştirme isteği) ve aşağıdaki olaylardan herhangi biri gerçekleştiğinde, bir uygulamadaki kullanıcıyı geçici olarak siler:
 
 * Kullanıcı hesabı Azure AD 'de silinir
 *   Kullanıcı, uygulamadan atanmamış

@@ -6,12 +6,12 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: a7b4de3b1d2998a1b6083283c3f397fc77fe9670
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: e0daa2b02c16d8d5a65b5e7e0f983a4f47181d40
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167596"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635977"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure veri paylaşımında desteklenen veri depoları
 
@@ -26,7 +26,7 @@ Aşağıdaki tabloda, Azure veri paylaşımında desteklenen veri kaynaklarını
 | Veri deposu | Anlık görüntü tabanlı paylaşım | Yerinde paylaşım 
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob depolama |✓ | |
-| Azure Data Lake Storage 1. Nesil |✓ | |
+| Azure Data Lake Storage Gen1 |✓ | |
 | Azure Data Lake Storage Gen2 |✓ ||
 | Azure SQL Veritabanı |Genel Önizleme | |
 | Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) |Genel Önizleme | |
@@ -38,16 +38,17 @@ Azure veri paylaşımında, ' deki verileri kabul etmek için bir veri deposunda
 
 Aşağıdaki tabloda veri tüketicilerinin veri payını kabul edip yapılandırırken kullandığı farklı birleşimler ve seçimler ayrıntılı olarak verilmiştir. Veri kümesi eşlemelerini yapılandırma hakkında daha fazla bilgi için bkz. [veri kümesi eşlemelerini yapılandırma](how-to-configure-mapping.md).
 
-|  | Azure Blob Depolama | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Veritabanı | Azure Synapse Analytics 
-|:--- |:--- |:--- |:--- |:--- |:--- |
-| Azure Blob depolama | ✓ || ✓|
-| Azure Data Lake Storage 1. Nesil | ✓ | | ✓|
-| Azure Data Lake Storage Gen2 | ✓ | | ✓|
-| Azure SQL Veritabanı | ✓ | | ✓| ✓| ✓|
-| Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) | ✓ | | ✓| ✓| ✓|
+|  | Azure Blob Depolama | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Veritabanı | Azure Synapse Analytics | Azure Veri Gezgini
+|:--- |:--- |:--- |:--- |:--- |:--- |:--- |
+| Azure Blob depolama | ✓ || ✓ ||
+| Azure Data Lake Storage Gen1 | ✓ | | ✓ ||
+| Azure Data Lake Storage Gen2 | ✓ | | ✓ ||
+| Azure SQL Veritabanı | ✓ | | ✓ | ✓ | ✓ ||
+| Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) | ✓ | | ✓ | ✓ | ✓ ||
+| Azure Veri Gezgini |||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>Depolama hesabından paylaşma
-Azure veri paylaşımı, dosya, klasör ve dosya sistemlerinin Azure Data Lake gen1 ve Azure Data Lake Gen2 ' den paylaşılmasını destekler. Ayrıca, Azure Blob depolamadan blob, klasör ve kapsayıcı paylaşımını da destekler. Şu anda yalnızca Blok Blobu destekleniyor. Klasörler anlık görüntü tabanlı paylaşımda paylaşıldığında, veri tüketicisi paylaşma verilerinin tam bir kopyasını yapmayı seçebilir veya yalnızca yeni veya güncelleştirilmiş dosyaları kopyalamak için Artımlı anlık görüntü özelliğinden yararlanın. Aynı ada sahip varolan dosyaların üzerine yazılacak.
+Azure veri paylaşımı, dosya, klasör ve dosya sistemlerinin Azure Data Lake gen1 ve Azure Data Lake Gen2 ' den paylaşılmasını destekler. Ayrıca, Azure Blob depolamadan blob, klasör ve kapsayıcı paylaşımını da destekler. Şu anda yalnızca Blok Blobu destekleniyor. Dosya sistemleri, kapsayıcılar veya klasörler anlık görüntü tabanlı paylaşımda paylaşıldığında, veri tüketicisi paylaşma verilerinin tam bir kopyasını yapmayı seçebilir veya yalnızca yeni veya güncelleştirilmiş dosyaları kopyalamak için Artımlı anlık görüntü özelliğinden yararlanın. Artımlı anlık görüntü, dosyaların son değiştirilme saatini temel alır. Aynı ada sahip varolan dosyaların üzerine yazılacak.
 
 ## <a name="share-from-a-sql-based-source"></a>SQL tabanlı bir kaynaktan paylaşma
 Azure veri paylaşımı, Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) tabloları veya görünümlerinin paylaşılmasını destekler. Veri tüketicileri, verileri Azure Data Lake Store Gen2 veya Azure Blob depolama alanına CSV veya Parquet dosyası olarak kabul edebilir. Varsayılan olarak, dosya biçimlerinin CSV olduğunu unutmayın. Veri TÜKETİCİSİNDE, isterseniz verileri Parquet biçiminde almayı tercih edebilirsiniz. Bu, verileri alırken veri kümesi eşleme ayarlarında yapılabilir. 

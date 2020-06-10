@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a4d0c22318399370b9ec11046c33a4eb5460eb3
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 8c9c9a7d1845875fd80471ad2380a1ec7933cfb3
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860129"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607678"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>PowerShell ile ana bilgisayar havuzu oluşturma
 
@@ -25,7 +25,7 @@ ms.locfileid: "83860129"
 
 Konak havuzları, Windows sanal masaüstü kiracı ortamlarında bir veya daha fazla özdeş sanal makine koleksiyonudur. Her konak havuzu birden çok RemoteApp grubuyla, bir masaüstü uygulama grubuyla ve birden çok oturum ana bilgisayarıyla ilişkilendirilebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, [PowerShell modülünü ayarlama](powershell-module.md)bölümündeki yönergeleri zaten takip ettiğiniz varsayılmaktadır.
 
@@ -114,7 +114,7 @@ Windows sanal masaüstü aracılarını kaydettirmek için, her bir sanal makine
 1. Sanal makineyi oluştururken girdiğiniz kimlik bilgileriyle [sanal makineye bağlanın](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) .
 2. Windows sanal masaüstü aracısını indirip yükleyin.
    - [Windows sanal masaüstü aracısını](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv)indirin.
-   - Yükleyiciyi çalıştırın. Yükleyici kayıt belirtecini istediğinde, **Export-AzWVDRegistrationInfo** cmdlet 'inden aldığınız değeri girin.
+   - Yükleyiciyi çalıştırın. Yükleyici kayıt belirtecini istediğinde, **Get-AzWvdRegistrationInfo** cmdlet 'inden aldığınız değeri girin.
 3. Windows sanal masaüstü Aracısı önyükleme yükleyicisine indirin ve yükleyin.
    - [Windows sanal masaüstü Aracısı önyükleme yükleyicisine](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH)indirin.
    - Yükleyiciyi çalıştırın.

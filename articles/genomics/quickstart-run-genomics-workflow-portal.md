@@ -8,18 +8,19 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
-ms.openlocfilehash: 05b94ca9bd14392bad5288882a80f5c75590ef7b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 167bcf4364b88529256b79574c6b8c03098fed02
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76931774"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607134"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Hızlı Başlangıç: Microsoft Genomiks hizmeti üzerinden iş akışı çalıştırma
 
 Bu hızlı başlangıçta, giriş verilerini bir Azure Blob depolama hesabına yükler ve Python Genomiks istemcisini kullanarak Microsoft Genomiks hizmeti aracılığıyla bir iş akışı çalıştırırsınız. Microsoft Genomiks, ham okumalardan başlayarak hizalanmış okumalar ve varyant ilanları üreten, bir genomu hızlı bir şekilde işleyebilen ikincil analize yönelik ölçeklenebilir ve güvenli bir hizmettir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - [Python 2.7.12 +](https://www.python.org/downloads/release/python-2714/), `pip` yüklü ve `python` sistem yolunuzda. Microsoft Genomiks istemcisi Python 3 ile uyumlu değildir. 
@@ -49,7 +50,7 @@ Microsoft Genomiks hakkında daha fazla bilgi için bkz. [Microsoft Genomiks ned
 
 Hem Python hem de Microsoft Genomiks Python istemcisini yerel ortamınıza yüklemeniz gerekir. 
 
-### <a name="install-python"></a>Python'ı yükleme
+### <a name="install-python"></a>Python'ı Yükleme
 
 Microsoft Genomiks Python istemcisi Python 2.7.12 veya sonraki bir 2.7. xx sürümü ile uyumludur. 2.7.14 önerilen sürümdür. Dosyayı [buradan](https://www.python.org/downloads/release/python-2714/) indirebilirsiniz. 
 
@@ -58,15 +59,15 @@ Microsoft Genomiks Python istemcisi Python 2.7.12 veya sonraki bir 2.7. xx sür�
 
 ### <a name="install-the-microsoft-genomics-client"></a>Microsoft Genomiks istemcisini yükleme
 
-Microsoft Genomiks istemcisini `pip` `msgen`yüklemek için Python kullanın. Aşağıdaki talimatlarda Python uygulamasının sistem yolunuzda olduğu kabul edilmektedir. Yüklemele ilgili `pip` olarak bilinen sorunlarla karşılaşırsanız, sistem yolunuza Python ve Scripts alt klasörünü eklemeniz gerekir.
+`pip`Microsoft Genomiks istemcisini yüklemek Için Python kullanın `msgen` . Aşağıdaki talimatlarda Python uygulamasının sistem yolunuzda olduğu kabul edilmektedir. Yüklemele ilgili olarak bilinen sorunlarla karşılaşırsanız `pip` , sistem yolunuza Python ve Scripts alt klasörünü eklemeniz gerekir.
 
 ```
 pip install --upgrade --no-deps msgen
 pip install msgen
 ```
 
-Sistem genelindeki bir ikili olarak yüklemek `msgen` ve sistem genelinde Python paketlerini değiştirmek istemiyorsanız, `–-user` bayrağını ile `pip`kullanın.
-Paket tabanlı yükleme veya setup.py dosyasını kullandığınızda gerekli tüm paketler yüklenir. Aksi takdirde, için `msgen` temel gerekli paketler şunlardır 
+`msgen`Sistem genelindeki bir ikili olarak yüklemek ve sistem genelinde Python paketlerini değiştirmek istemiyorsanız, `–-user` bayrağını ile kullanın `pip` .
+Paket tabanlı yükleme veya setup.py dosyasını kullandığınızda gerekli tüm paketler yüklenir. Aksi takdirde, için temel gerekli paketler `msgen` şunlardır 
 
  * [Azure-Storage](https://pypi.python.org/pypi/azure-storage). 
  * [İstekleri](https://pypi.python.org/pypi/requests). 
@@ -125,9 +126,9 @@ Genomiks hesabınızdan indirdiğiniz *config. txt* dosyasını açın. Belirtme
 
 ![Genomiks yapılandırması](./media/quickstart-run-genomics-workflow-portal/genomics-config.png "Genomiks yapılandırması")
 
-GATK4 çalıştırmak istiyorsanız `process_name` parametresini olarak `gatk4`ayarlayın.
+GATK4 çalıştırmak istiyorsanız `process_name` parametresini olarak ayarlayın `gatk4` .
 
-Varsayılan olarak, Genomiks hizmeti VCF dosyalarını çıktı. Bir VCF çıkışı yerine bir gVCF çıkışı isterseniz (GATK 3. x `-emitRefConfidence` içinde ve `emit-ref-confidence` GATK 4. x içinde), `emit_ref_confidence` parametresini *config. txt* dosyasına ekleyin ve önceki şekilde gösterildiği gibi olarak ayarlayın. `gvcf`  VCF çıktısına geri dönmek için, *config. txt* dosyasından kaldırın ya da `emit_ref_confidence` parametresini olarak `none`ayarlayın. 
+Varsayılan olarak, Genomiks hizmeti VCF dosyalarını çıktı. Bir VCF çıkışı yerine bir gVCF çıkışı isterseniz ( `-emitRefConfidence` GATK 3. x içinde ve `emit-ref-confidence` GATK 4. x içinde), `emit_ref_confidence` parametresini *config. txt* dosyasına ekleyin ve `gvcf` Önceki şekilde gösterildiği gibi olarak ayarlayın.  VCF çıktısına geri dönmek için, *config. txt* dosyasından kaldırın ya da `emit_ref_confidence` parametresini olarak ayarlayın `none` . 
 
 ### <a name="submit-your-workflow-to-the-microsoft-genomics-service-the-microsoft-genomics-client"></a>İş akışınızı Microsoft Genomiks hizmetine ve Microsoft Genomiks istemcisine gönderme
 
@@ -145,4 +146,4 @@ msgen list -f c:\temp\config.txt
 İş akışınız tamamlandığında, Azure Depolama hesabınızdaki çıktı dosyalarını yapılandırdığınız çıkış kapsayıcısında görüntüleyebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, Azure depolama 'ya örnek giriş verileri yüklediniz ve `msgen` Python Istemcisi üzerinden Microsoft Genomiks hizmetine bir iş akışı gönderdiniz. Microsoft Genomiks hizmeti ile kullanılabilecek diğer giriş dosya türleri hakkında daha fazla bilgi edinmek için şu sayfalara bakın: [eşleştirilmiş fastq](quickstart-input-pair-FASTQ.md) | [BAE](quickstart-input-BAM.md) | [birden çok fastq veya BAE](quickstart-input-multiple.md). Bu öğreticiyi [Azure not defteri öğreticimizi](https://aka.ms/genomicsnotebook) kullanarak da keşfedebilirsiniz.
+Bu makalede, Azure depolama 'ya örnek giriş verileri yüklediniz ve Python istemcisi üzerinden Microsoft Genomiks hizmetine bir iş akışı gönderdiniz `msgen` . Microsoft Genomiks hizmeti ile kullanılabilecek diğer giriş dosya türleri hakkında daha fazla bilgi edinmek için şu sayfalara bakın: [eşleştirilmiş fastq](quickstart-input-pair-FASTQ.md)  |  [BAE](quickstart-input-BAM.md)  |  [birden çok fastq veya BAE](quickstart-input-multiple.md). Bu öğreticiyi [Azure not defteri öğreticimizi](https://aka.ms/genomicsnotebook) kullanarak da keşfedebilirsiniz.

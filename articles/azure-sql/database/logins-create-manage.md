@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 296bf84c22313723c328e1775f697ee19dcb8f04
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: e56b526dff9e18f19275cb248fd6955dd680324f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220545"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605107"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics 'e veritabanı erişimi verme
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -85,7 +85,7 @@ Bu noktada, sunucunuz veya yönetilen örneğiniz yalnızca tek bir SQL oturum a
 
   - Ana veritabanında ek bir SQL oturum açma oluşturun.
   - [Alter Server role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) deyimini kullanarak [sysadmin sabit sunucu rolüne](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) oturum açma ekleyin. Bu oturum açma tam yönetim izinlerine sahip olacaktır.
-  - Alternatif olarak, [create LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) sözdizimini kullanarak BIR [Azure ad oturum açma](authentication-aad-configure.md)#provision-Azure-AD-admin-SQL-Managed-Instance) oluşturun.
+  - Alternatif olarak, [create LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) sözdizimini kullanarak BIR [Azure AD oturum açma bilgisi](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) oluşturun.
 
 - **SQL veritabanı 'nda, sınırlı yönetim izinleriyle SQL oturumları oluşturun**
 

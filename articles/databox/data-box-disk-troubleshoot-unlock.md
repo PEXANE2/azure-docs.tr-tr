@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 02cbf64261bbfbf50561e1b7466b46b27b688e0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e06cf07809d3eca208fc18f4ee6022538400d315
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67148289"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610602"
 ---
 # <a name="troubleshoot-disk-unlocking-issues-in-azure-data-box-disk"></a>Azure Data Box Disk disk kilit açma sorunlarını giderme
 
@@ -47,17 +47,17 @@ Bu bölümde, veri kopyalama için bir Windows istemcisi kullanılırken Data Bo
 
 ### <a name="issue-could-not-unlock-drive-from-bitlocker"></a>Sorun: Sürücünün kilidi BitLocker 'dan kaldırılamadı
  
-**Sağlamak** 
+**Neden** 
 
 BitLocker iletişim kutusunda parolayı kullandınız ve BitLocker 'ın kilit açma sürücüleri iletişim kutusu aracılığıyla diskin kilidini açmaya çalışıyorsunuz. Bu çalışmaz.
 
-**Çözünürlük**
+**Çözünürlüğüne**
 
 Data Box disklerinin kilidini açmak için Data Box Disk unlock aracını kullanmanız ve parolayı Azure portal sağlamanız gerekir. Daha fazla bilgi için bkz. [öğretici: Unpack, Connect ve unlock Azure Data Box disk](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey).
  
 ### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>Sorun: bazı birimler kilidi açılamadı veya doğrulanamadı. Microsoft Desteği'ne başvurun.
  
-**Sağlamak**
+**Neden**
 
 Hata günlüğünde aşağıdaki hatayı görebilir ve bazı birimleri kilitleyip doğrulayamayabilir.
 
@@ -65,7 +65,7 @@ Hata günlüğünde aşağıdaki hatayı görebilir ve bazı birimleri kilitleyi
  
 Bu, büyük olasılıkla Windows istemciniz üzerinde Windows PowerShell 'in uygun sürümü eksik olduğunu gösterir.
 
-**Çözünürlük**
+**Çözünürlüğüne**
 
 [Windows PowerShell v 5,0](https://www.microsoft.com/download/details.aspx?id=54616) 'yi yükleyip işlemi yeniden deneyin.
  

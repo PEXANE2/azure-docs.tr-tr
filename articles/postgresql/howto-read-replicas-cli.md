@@ -5,44 +5,53 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: b10ac3b4bc9dacd723b8b1265911df721b781189
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: e9be14548704557b4bdd39119294671852040348
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76774798"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636589"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Azure CLı 'dan okuma çoğaltmaları oluşturun ve yönetin REST API
 
 Bu makalede, Azure CLı ve REST API kullanarak PostgreSQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturmayı ve yönetmeyi öğreneceksiniz. Okuma çoğaltmaları hakkında daha fazla bilgi edinmek için bkz. [genel bakış](concepts-read-replicas.md).
 
+## <a name="azure-replication-support"></a>Azure çoğaltma desteği
+[Okuma çoğaltmaları](concepts-read-replicas.md) ve [mantıksal kod çözme](concepts-logical.md) , bilgi Için doğrudan Postgres yazma günlüğüne (Wal) bağlıdır. Bu iki özellik, Postgres 'den farklı günlük düzeylerine sahip olmalıdır. Mantıksal kod çözme, okuma Çoğaltmalarından daha yüksek bir günlüğe kaydetme düzeyine sahip olmalıdır.
+
+Doğru günlük kaydını yapılandırmak için Azure çoğaltma desteği parametresini kullanın. Azure çoğaltma desteğinin üç ayar seçeneği vardır:
+
+* **Kapalı** -en az bilgiyi Wal 'e yerleştirir. Bu ayar, çoğu PostgreSQL için Azure veritabanı sunucuları üzerinde kullanılamaz.  
+* **Çoğaltma** -daha ayrıntılı bir **şekilde.** Bu, [okuma çoğaltmalarının](concepts-read-replicas.md) çalışması için gereken en düşük günlüğe kaydetme düzeyidir. Bu ayar, çoğu sunucuda varsayılandır.
+* **Çoğaltmadan**daha ayrıntılı **mantıksal** . Bu, mantıksal kod çözmenin çalışması için en düşük günlük kayıt düzeyidir. Okuma çoğaltmaları bu ayarda de çalışır.
+
+Bu parametrenin bir değişikliğinden sonra sunucunun yeniden başlatılması gerekiyor. Dahili olarak, bu parametre Postgres parametrelerini, `wal_level` `max_replication_slots` ve ' ı ayarlar `max_wal_senders` .
+
 ## <a name="azure-cli"></a>Azure CLI
 Azure CLı kullanarak okuma çoğaltmaları oluşturabilir ve yönetebilirsiniz.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - [Azure CLI 2.0’ı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [PostgreSQL Için Azure veritabanı sunucusunun](quickstart-create-server-up-azure-cli.md) ana sunucu olması.
 
 
 ### <a name="prepare-the-master-server"></a>Ana sunucuyu hazırlama
-Bu adımların Genel Amaçlı veya bellek için Iyileştirilmiş katmanlarda bir ana sunucu hazırlamak için kullanılması gerekir.
 
-`azure.replication_support` Parametrenin ana sunucuda **çoğaltma** olarak ayarlanması gerekir. Bu statik parametre değiştirildiğinde, değişikliğin etkili olması için sunucu yeniden başlatması gerekir.
+1. Ana sunucunun `azure.replication_support` değerini denetleyin. Okuma çoğaltmalarının çalışması için en az çoğaltma olmalıdır.
 
-1. ÇOĞALTMA `azure.replication_support` olarak ayarlayın.
+   ```azurecli-interactive
+   az postgres server configuration show --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support
+   ```
+
+2. `azure.replication_support`En az çoğaltma değilse, ayarlayın. 
 
    ```azurecli-interactive
    az postgres server configuration set --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support --value REPLICA
    ```
 
-> [!NOTE]
-> Azure CLı 'yi replication_support ayarlamaya çalışırken "geçersiz değer verildi" hatasını alırsanız, sunucunuzun varsayılan olarak zaten çoğaltma kümesi vardır. Bir hata bu ayarın, ÇOĞALTMANıN iç varsayılan olduğu yeni sunuculara doğru şekilde yansıtılmasını engellemektedir. <br><br>
-> Ana işlemleri hazırla adımlarını atlayabilir ve çoğaltmayı oluşturmaya gidebilirsiniz. <br><br>
-> Sunucunuzun bu kategoride olduğunu doğrulamak istiyorsanız, Azure portal sunucunun çoğaltma sayfasını ziyaret edin. "Çoğaltmayı devre dışı bırak" ayarı gri kalır ve araç çubuğunda "çoğaltma ekle" etkin olur.
-
-2. Değişikliği uygulamak için sunucuyu yeniden başlatın.
+3. Değişikliği uygulamak için sunucuyu yeniden başlatın.
 
    ```azurecli-interactive
    az postgres server restart --name mydemoserver --resource-group myresourcegroup
@@ -55,8 +64,8 @@ Bu adımların Genel Amaçlı veya bellek için Iyileştirilmiş katmanlarda bir
 | Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
 | resource-group | myresourcegroup |  Çoğaltma sunucusunun oluşturulacağı kaynak grubu.  |
-| ad | mydemoserver-çoğaltma | Oluşturulan yeni çoğaltma sunucusunun adı. |
-| source-server | mydemoserver | Çoğaltılacak var olan ana sunucunun adı veya kaynak KIMLIĞI. |
+| name | mydemoserver-çoğaltma | Oluşturulan yeni çoğaltma sunucusunun adı. |
+| source-server | mydemoserver | Çoğaltılacak var olan ana sunucunun adı veya kaynak KIMLIĞI. Çoğaltmanın ve ana sunucunun kaynak gruplarının farklı olmasını istiyorsanız kaynak KIMLIĞI ' ni kullanın. |
 
 Aşağıdaki CLı örneğinde, çoğaltma, ana öğe ile aynı bölgede oluşturulur.
 
@@ -73,7 +82,7 @@ az postgres server replica create --name mydemoserver-replica --source-server my
 > [!NOTE]
 > İçinde bir çoğaltma oluşturabileceğiniz bölgeler hakkında daha fazla bilgi edinmek için [çoğaltma kavramlarını oku makalesini](concepts-read-replicas.md)ziyaret edin. 
 
-Parametreyi Genel Amaçlı veya bellek için Iyileştirilmiş ana sunucuda çoğaltma olarak ayarlamadıysanız ve sunucuyu yeniden başlattıktan sonra bir hata alırsınız. **REPLICA** `azure.replication_support` Bir çoğaltma oluşturmadan önce bu iki adımı uygulayın.
+`azure.replication_support`Parametreyi genel amaçlı veya bellek Için iyileştirilmiş ana sunucuda **çoğaltma** olarak ayarlamadıysanız ve sunucuyu yeniden başlattıktan sonra bir hata alırsınız. Bir çoğaltma oluşturmadan önce bu iki adımı uygulayın.
 
 Bir çoğaltma, ana öğe ile aynı işlem ve depolama ayarları kullanılarak oluşturulur. Bir çoğaltma oluşturulduktan sonra, birden fazla ayar ana sunucudan bağımsız olarak değiştirilebilir: işlem oluşturma, sanal çekirdek, depolama ve yedekleme saklama süresi. Fiyatlandırma Katmanı, temel katmandan veya dışında bağımsız olarak da değiştirilebilir.
 
@@ -109,11 +118,14 @@ az postgres server delete --name myserver --resource-group myresourcegroup
 [Azure REST API](/rest/api/azure/)kullanarak okuma çoğaltmaları oluşturabilir ve yönetebilirsiniz.
 
 ### <a name="prepare-the-master-server"></a>Ana sunucuyu hazırlama
-Bu adımların Genel Amaçlı veya bellek için Iyileştirilmiş katmanlarda bir ana sunucu hazırlamak için kullanılması gerekir.
 
-`azure.replication_support` Parametrenin ana sunucuda **çoğaltma** olarak ayarlanması gerekir. Bu statik parametre değiştirildiğinde, değişikliğin etkili olması için sunucu yeniden başlatması gerekir.
+1. Ana sunucunun `azure.replication_support` değerini denetleyin. Okuma çoğaltmalarının çalışması için en az çoğaltma olmalıdır.
 
-1. ÇOĞALTMA `azure.replication_support` olarak ayarlayın.
+   ```http
+   GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/configurations/azure.replication_support?api-version=2017-12-01
+   ```
+
+2. `azure.replication_support`En az çoğaltma değilse, ayarlayın.
 
    ```http
    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/configurations/azure.replication_support?api-version=2017-12-01
@@ -153,7 +165,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 > [!NOTE]
 > İçinde bir çoğaltma oluşturabileceğiniz bölgeler hakkında daha fazla bilgi edinmek için [çoğaltma kavramlarını oku makalesini](concepts-read-replicas.md)ziyaret edin. 
 
-Parametreyi Genel Amaçlı veya bellek için Iyileştirilmiş ana sunucuda çoğaltma olarak ayarlamadıysanız ve sunucuyu yeniden başlattıktan sonra bir hata alırsınız. **REPLICA** `azure.replication_support` Bir çoğaltma oluşturmadan önce bu iki adımı uygulayın.
+`azure.replication_support`Parametreyi genel amaçlı veya bellek Için iyileştirilmiş ana sunucuda **çoğaltma** olarak ayarlamadıysanız ve sunucuyu yeniden başlattıktan sonra bir hata alırsınız. Bir çoğaltma oluşturmadan önce bu iki adımı uygulayın.
 
 Bir çoğaltma, ana öğe ile aynı işlem ve depolama ayarları kullanılarak oluşturulur. Bir çoğaltma oluşturulduktan sonra, birden fazla ayar ana sunucudan bağımsız olarak değiştirilebilir: işlem oluşturma, sanal çekirdek, depolama ve yedekleme saklama süresi. Fiyatlandırma Katmanı, temel katmandan veya dışında bağımsız olarak da değiştirilebilir.
 

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 81ed10f0b3b2a8042f0766f89bb99d7cad950fca
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 04fb080d09b1945add7340db081ab49dd017731d
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140965"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84637504"
 ---
 > [!NOTE]
 > Algılamak için `PHI` , `domain=phi` parametresini ve model sürümünü `2020-04-01` veya üstünü kullanın.
@@ -40,8 +40,8 @@ Uç noktaya istek gönderilirken aşağıdaki varlık kategorileri döndürülü
 | DateTime | Tarih | Takvim tarihleri. | `2019-10-01` | İle de döndürülür `domain=phi` . |
 | Miktar | YOK | Sayılar ve sayısal miktarlar. | `2019-10-01` |  |
 | Miktar | Yaş | Geçirir. | `2019-10-01` | | |
-| Derinlemesine bir uluslararası sınıflandırma (ICD-10-CM) | YOK | Uluslararası sınıflandırmayla ilgili varlıklar, dokuzuncu düzeltme.   | `2020-04-01` | İle de döndürülür `domain=phi` . |
-| Derinlemesine bir uluslararası sınıflandırma (ICD-10-CM) | YOK | Uluslararası sınıflandırmayla ilgili varlıklar, onuncu düzeltme.    | `2020-04-01` | İle de döndürülür `domain=phi` . |
+| Derinlemesine bir uluslararası sınıflandırma (ICD-10-CM) | YOK | Uluslararası sınıflandırmayla ilgili varlıklar, dokuzuncu düzeltme.   | `2020-04-01` | |
+| Derinlemesine bir uluslararası sınıflandırma (ICD-10-CM) | YOK | Uluslararası sınıflandırmayla ilgili varlıklar, onuncu düzeltme.    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Azure bilgileri
 

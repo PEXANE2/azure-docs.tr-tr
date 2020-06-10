@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: e0b25b07e3517bbbf17dce95660f209bd74bcccb
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: bedc0f6a457fe27d7358aea1219126427c924e1d
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561728"
+ms.locfileid: "84627911"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Ağ güvenlik grupları için akış günlüğüne giriş
 
@@ -59,6 +59,9 @@ Akış günlükleri, bulut ortamınızdaki tüm ağ etkinlikleri için Truth kay
 - Bir ağ güvenlik grubu (NSG), bağlı olduğu kaynaklarda ağ trafiğine izin veren veya reddeden _güvenlik kurallarının_ bir listesini içerir. NSG 'Ler, VM 'lere bağlı olan alt ağlar, tek VM 'Ler veya tek ağ arabirimleri (NIC) ile ilişkilendirilebilir (Kaynak Yöneticisi). Daha fazla bilgi için bkz. [ağ güvenlik grubuna genel bakış](https://docs.microsoft.com/azure/virtual-network/security-overview?toc=%2Fazure%2Fnetwork-watcher%2Ftoc.json).
 - Ağınızdaki tüm trafik akışları, geçerli NSG kuralları kullanılarak değerlendirilir.
 - Bu değerlendirmelerinin sonucu NSG akış günlüklerinizi de kaydeder. Akış günlükleri Azure platformu aracılığıyla toplanır ve müşteri kaynaklarında herhangi bir değişiklik yapılmasını gerektirmez.
+- Note: kurallar iki türden oluşur-sonlandırma & Sonlandırılmamış, her biri farklı günlüğe kaydetme yetki kaldırıldığında davranışlar.
+- - NSG reddetme kuralları sonlandırılıyor. Trafiği reddetme NSG 'si, bu durumda akış günlüklerinde ve işlenmek üzere trafiği reddettikten sonra durur. 
+- - NSG Izin verme kuralları Sonlandırılmamış, yani bir NSG izin veriyorsa, işleme sonraki NSG 'ye devam eder. Son NSG trafiğe izin veren trafiği akış günlüklerine kaydeder.
 - NSG akış günlükleri, erişilebilen depolama hesaplarına yazılır.
 - TA, splunk, Grafana, Stealthwatch gibi araçları kullanarak akış günlüklerini dışa aktarabilir, işleyebilir, çözümleyebilir ve görselleştirebilirsiniz.
 
@@ -351,9 +354,9 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Akış günlüğü maliyetleri**: NSG akış günlüğü, üretilen günlüklerin hacminde faturalandırılır. Yüksek trafik hacmi, büyük akış günlüğü hacmine ve ilişkili maliyetlere yol açabilir. NSG akış günlüğü fiyatlandırması, depolamanın temel maliyetlerini içermez. NSG akış günlüğü ile bekletme ilkesi özelliğinin kullanılması, uzun süreli depolama maliyetlerinin gerçek zamanlı olarak ayrılması anlamına gelir. Bekletme İlkesi özelliği gerektirmiyorsa, bu değeri 0 olarak ayarlamanızı öneririz. Daha fazla bilgi için bkz. [ağ Izleyicisi fiyatlandırması](https://azure.microsoft.com/pricing/details/network-watcher/) ve [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/) ek ayrıntılar için.
 
-**Internet IP 'lerinden ortak IP Içermeyen VM 'lere kaydedilen gelen akışlar**: bir genel IP adresi, örnek DÜZEYI genel IP olarak NIC ile ilişkili bir genel IP adresi aracılığıyla atanmamış veya temel bir yük dengeleyici arka uç havuzunun parçası olan VM 'ler, [varsayılan SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) 'yi kullanın ve giden bağlantıyı kolaylaştırmak için Azure tarafından atanmış bir IP adresine sahip olmalıdır. Sonuç olarak, akış, SNAT için atanan bağlantı noktası aralığındaki bir bağlantı noktasına gidiyor ise internet IP adreslerinden akışlar için akış günlüğü girişleri görebilirsiniz. Azure bu akışlara sanal makineye izin vermediğinden, deneme günlüğe kaydedilir ve tasarıma göre ağ Izleyicisi 'nin NSG akış günlüğünde görüntülenir. İstenmeyen gelen internet trafiğinin NSG ile açıkça engellenmesini öneririz.
+**Gelen akışlar Için yanlış bayt ve paket sayısı**: [ağ güvenlik grupları (NSG 'Ler)](https://docs.microsoft.com/azure/virtual-network/security-overview) , [durum bilgisi olan bir güvenlik duvarı](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)olarak uygulanır. Ancak, platform sınırlamaları nedeniyle, gelen akışları denetleyen kurallar durum bilgisiz bir biçimde uygulanır. Bu baytlar ve paket sayısı bu akışlar için kaydedilmez. Sonuç olarak, NSG akış günlüklerinde (ve Trafik Analizi) raporlanan bayt ve paketlerin sayısı gerçek numaralardan farklı olabilir. Ayrıca, gelen akışlar artık Sonlandırılmamış. Bu sınırlama, Aralık 2020 ile düzeltilmek üzere zamanlanır.
 
-**Durum bilgisi olmayan akışlar Için yanlış bayt ve paket sayısı**: [ağ güvenlik grupları (NSG 'Ler)](https://docs.microsoft.com/azure/virtual-network/security-overview) [durum bilgisi içeren bir güvenlik duvarı](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)olarak uygulanır. Ancak trafik akışını denetleyen birçok varsayılan/iç kural durum bilgisiz bir biçimde uygulanır. Platform sınırlamaları nedeniyle, bayt ve paketlerin sayısı durum bilgisiz akışlar için kaydedilmez (yani trafik akışı durum bilgisiz kurallarından geçer), yalnızca durum bilgisi olan akışlar için kaydedilir. Sonuç olarak, NSG akış günlüklerinde (ve Trafik Analizi) raporlanan bayt ve paketlerin sayısı gerçek akışlardan farklı olabilir. Bu sınırlama, Haziran 2020 ' den itibaren düzeltilmek üzere zamanlanır.
+**Internet IP 'lerinden ortak IP Içermeyen VM 'lere kaydedilen gelen akışlar**: bir genel IP adresi, örnek DÜZEYI genel IP olarak NIC ile ilişkili bir genel IP adresi aracılığıyla atanmamış veya temel bir yük dengeleyici arka uç havuzunun parçası olan VM 'ler, [varsayılan SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) 'yi kullanın ve giden bağlantıyı kolaylaştırmak için Azure tarafından atanmış bir IP adresine sahip olmalıdır. Sonuç olarak, akış, SNAT için atanan bağlantı noktası aralığındaki bir bağlantı noktasına gidiyor ise internet IP adreslerinden akışlar için akış günlüğü girişleri görebilirsiniz. Azure bu akışlara sanal makineye izin vermediğinden, deneme günlüğe kaydedilir ve tasarıma göre ağ Izleyicisi 'nin NSG akış günlüğünde görüntülenir. İstenmeyen gelen internet trafiğinin NSG ile açıkça engellenmesini öneririz.
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 

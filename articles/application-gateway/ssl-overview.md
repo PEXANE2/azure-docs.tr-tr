@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/13/2020
 ms.author: victorh
-ms.openlocfilehash: adaf3dea5855a4af75977cb820ae12675c7f2ced
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3f8dcf4858d69f33ea50d473f6261cf45a6b7fa5
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648126"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629227"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Application Gateway ile TLS sonlandırmasına ve uçtan uca TLS 'ye Genel Bakış
 
@@ -68,7 +68,7 @@ Application Gateway ve WAF v1 SKU 'SU için TLS ilkesi hem ön uç hem de arka u
 
 Application Gateway ve WAF v2 SKU 'SU için, TLS ilkesi yalnızca ön uç trafiği için geçerlidir ve tüm şifrelemeler, el sıkışma sırasında belirli şifreleme ve TLS sürümünü seçme denetimi olan arka uç sunucusuna sunulur.
 
-Application Gateway, yalnızca Application Gateway sertifikası olan veya sertifikaları iyi bilinen CA yetkilileri tarafından imzalanmış veya sertifikanın CN 'si, HTTP arka uç ayarlarındaki ana bilgisayar adıyla eşleşen arka uç sunucularıyla iletişim kurar. Bunlara Azure App Service/Web Apps ve Azure API Management gibi güvenilir Azure hizmetleri dahildir.
+Application Gateway, yalnızca Application Gateway sertifikası listelenmesine izin veren ya da sertifikaları iyi bilinen CA yetkilileri tarafından imzalanmış veya sertifikanın CN 'si, HTTP arka uç ayarlarındaki ana bilgisayar adıyla eşleşen arka uç sunucularıyla iletişim kurar. Bunlara Azure App Service/Web Apps ve Azure API Management gibi güvenilir Azure hizmetleri dahildir.
 
 Arka uç havuzundaki üyelerin sertifikaları iyi bilinen CA yetkilileri tarafından imzalanmamışsa, arka uç havuzundaki her bir örnek için uçtan uca TLS etkinleştirilir, güvenli iletişime izin veren bir sertifikayla yapılandırılmalıdır. Sertifikayı eklemek, Application Gateway 'in yalnızca bilinen arka uç örnekleriyle iletişim kuracağını sağlar. Bu, uçtan uca iletişimin güvenliğini sağlar.
 
@@ -80,9 +80,9 @@ Arka uç havuzundaki üyelerin sertifikaları iyi bilinen CA yetkilileri tarafı
 
 Bu örnekte, TLS 1.2 kullanan istekler, uçtan uca TLS kullanılarak Pool1 içinde arka uç sunucularına yönlendirilir.
 
-## <a name="end-to-end-tls-and-whitelisting-of-certificates"></a>Uçtan uca TLS ve sertifikaların beyaz listesi
+## <a name="end-to-end-tls-and-allow-listing-of-certificates"></a>Uçtan uca TLS ve sertifika listesine izin ver
 
-Application Gateway, yalnızca uygulama ağ geçidi ile sertifikaları beyaz listelenmiş bilinen arka uç örnekleriyle iletişim kurar. Uçtan uca TLS kurulum işleminde kullanılan Application Gateway sürümüne göre bazı farklılıklar vardır. Aşağıdaki bölümde ayrı ayrı açıklanmaktadır.
+Application Gateway, yalnızca uygulama ağ geçidiyle sertifikası listelenenlere izin veren bilinen arka uç örnekleriyle iletişim kurar. Uçtan uca TLS kurulum işleminde kullanılan Application Gateway sürümüne göre bazı farklılıklar vardır. Aşağıdaki bölümde ayrı ayrı açıklanmaktadır.
 
 ## <a name="end-to-end-tls-with-the-v1-sku"></a>V1 SKU 'SU ile uçtan uca TLS
 
@@ -90,7 +90,7 @@ Arka uç sunucularıyla uçtan uca TLS 'yi etkinleştirmek ve istekleri bunlara 
 
 HTTPS sistem durumu araştırmaları için Application Gateway v1 SKU 'SU, HTTP ayarlarına yüklenecek kimlik doğrulama sertifikasıyla (kök sertifika için ortak anahtar) tam eşleşmeyi kullanır.
 
-Bunun ardından, yalnızca bilinen ve güvenilir listeye alınmış arka uçlara yönelik bağlantılara izin verilir. Geri kalan arka uçlar sistem durumu araştırmalarının sağlıksız olduğu kabul edilir. Otomatik olarak imzalanan sertifikalar, yalnızca test amaçlarına yöneliktir ve üretim iş yükleri için önerilmez. Bu tür sertifikalar, kullanılmadan önce önceki adımlarda açıklandığı şekilde uygulama ağ geçidiyle beyaz listeye eklenmelidir.
+Yalnızca bilinen ve izin verilen arka uçlara bağlantılara izin verilir. Geri kalan arka uçlar sistem durumu araştırmalarının sağlıksız olduğu kabul edilir. Otomatik olarak imzalanan sertifikalar, yalnızca test amaçlarına yöneliktir ve üretim iş yükleri için önerilmez. Bu tür sertifikalar, kullanılmadan önce yukarıdaki adımlarda açıklandığı şekilde uygulama ağ geçidiyle listelenmesine izin vermelidir.
 
 > [!NOTE]
 > Azure App Service gibi güvenilir Azure hizmetleri için kimlik doğrulaması ve güvenilen kök sertifika kurulumu gerekli değildir. Bunlar varsayılan olarak güvenilir olarak değerlendirilir.
@@ -138,10 +138,10 @@ Senaryo | v1 | v2 |
 Senaryo | v1 | v2 |
 | --- | --- | --- |
 | SNı (server_name) TLS anlaşması sırasında FQDN olarak üst bilgi | Arka uç havuzundan FQDN olarak ayarlayın. [RFC 6066](https://tools.ietf.org/html/rfc6066)' ye kadar, SNI ana bilgisayar adı 'Nda değişmez IPv4 ve IPv6 adreslerine izin verilmez. <br> **Note:** Arka uç havuzundaki FQDN DNS, arka uç sunucusunun IP adresine (genel veya özel) çözümlenmelidir | SNı üstbilgisi (server_name), HTTP ayarlarına eklenen özel araştırmanın ana bilgisayar adı olarak ayarlanır (yapılandırıldıysa), aksi takdirde, arka uç havuzunda belirtilen FQDN 'den Aksi halde HTTP ayarlarında belirtilen ana bilgisayar adı. Öncelik sırası, HTTP ayarları > arka uç havuzu > özel araştırmanız. <br> **Note:** HTTP ayarlarında yapılandırılan ana bilgisayar adları ve özel yoklama farklıysa, önceliğe göre SNı, özel araştırmadaki ana bilgisayar adı olarak ayarlanır.
-| Arka uç havuzu adresi bir IP adresi (v1) ise veya özel araştırma ana bilgisayar adı IP adresi (v2) olarak yapılandırılmışsa | SNı (server_name) ayarlanmayacak. <br> **Note:** Bu durumda, arka uç sunucusu bir varsayılan/geri dönüş sertifikası döndürebilmelidir ve bu, kimlik doğrulama sertifikası altındaki HTTP ayarları 'nda beyaz listeye eklenmelidir. Arka uç sunucusunda yapılandırılmış bir varsayılan/geri dönüş sertifikası yoksa ve SNı bekleniyorsa, sunucu bağlantıyı sıfırlayabilir ve araştırma hatalarına neden olur | Daha önce bahsedilen öncelik sırasına göre IP adresi ana bilgisayar adı ise, SNı, [RFC 6066](https://tools.ietf.org/html/rfc6066)' e göre ayarlanmayacaktır. <br> **Note:** Özel bir araştırma yapılandırılmamışsa ve HTTP ayarları veya arka uç havuzunda ana bilgisayar adı ayarlanmamışsa SNı v2 araştırmasına de ayarlanmayacaktır |
+| Arka uç havuzu adresi bir IP adresi (v1) ise veya özel araştırma ana bilgisayar adı IP adresi (v2) olarak yapılandırılmışsa | SNı (server_name) ayarlanmayacak. <br> **Note:** Bu durumda, arka uç sunucusu varsayılan bir/geri dönüş sertifikası döndürebilmelidir ve bu, kimlik doğrulama sertifikası altındaki HTTP ayarları 'nda listelenmiş olmalıdır. Arka uç sunucusunda yapılandırılmış bir varsayılan/geri dönüş sertifikası yoksa ve SNı bekleniyorsa, sunucu bağlantıyı sıfırlayabilir ve araştırma hatalarına neden olur | Daha önce bahsedilen öncelik sırasına göre IP adresi ana bilgisayar adı ise, SNı, [RFC 6066](https://tools.ietf.org/html/rfc6066)' e göre ayarlanmayacaktır. <br> **Note:** Özel bir araştırma yapılandırılmamışsa ve HTTP ayarları veya arka uç havuzunda ana bilgisayar adı ayarlanmamışsa SNı v2 araştırmasına de ayarlanmayacaktır |
 
 > [!NOTE] 
-> Özel bir araştırma yapılandırılmamışsa Application Gateway bu biçimde varsayılan bir araştırma gönderir- \< Protokol \> ://127.0.0.1: \< bağlantı noktası \> /. Örneğin, varsayılan bir HTTPS araştırması için, olarak gönderilir https://127.0.0.1:443/ . Burada bahsedilen 127.0.0.1 yalnızca HTTP ana bilgisayar üst bilgisi olarak kullanıldığını ve RFC 6066 ' e göre, SNı üstbilgisi olarak kullanılmayacağını unutmayın. Durum araştırma hataları hakkında daha fazla bilgi için [arka uç sistem durumu sorun giderme kılavuzunu](application-gateway-backend-health-troubleshooting.md)denetleyin.
+> Özel bir araştırma yapılandırılmamışsa, Application Gateway bu biçimde varsayılan bir araştırma gönderir- \<protocol\> ://127.0.0.1: \<port\> /. Örneğin, varsayılan bir HTTPS araştırması için, olarak gönderilir https://127.0.0.1:443/ . Burada bahsedilen 127.0.0.1 yalnızca HTTP ana bilgisayar üst bilgisi olarak kullanıldığını ve RFC 6066 ' e göre, SNı üstbilgisi olarak kullanılmayacağını unutmayın. Durum araştırma hataları hakkında daha fazla bilgi için [arka uç sistem durumu sorun giderme kılavuzunu](application-gateway-backend-health-troubleshooting.md)denetleyin.
 
 #### <a name="for-live-traffic"></a>Canlı trafik için
 

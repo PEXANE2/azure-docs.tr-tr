@@ -3,18 +3,18 @@ title: Kavramlar-ağ bağlantısı
 description: Azure VMware çözümünde (AVS), ağ ve bağlantı durumları hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 1d869601110266f7ad16e23b66453c44793cdf31
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 35d886fe0f6a68e522d7f2cf20b450b5d9afc199
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457091"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629203"
 ---
 # <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware çözümü (AVS) önizleme ağı ve karşılıklı bağlantı kavramları
 
 Azure VMware çözümünüz (AVS) özel bulutları ve şirket içi ortamlar ya da Azure 'daki sanal ağlar arasındaki ağ bağlantısı, özel bulutunuzun erişimine ve kullanılmasına olanak sağlar. Bu makalede, karşılıklı bağlantının temelini oluşturan birkaç anahtar ağ ve birbirine bağlı kavramlar açıklanmaktadır.
 
-Karşılıklı bağlantı üzerinde yararlı bir perspektif, iki tür AVS özel bulut uygulaması olarak dikkate alınmaktadır. Temel Azure ile yalnızca birbirine bağlı olan ve şirket içinde tam olarak şirket içi ve özel bulut bağlantısı olan uygulamalarla uygulamalar.
+Birbirine bağlı bir perspektifle, iki tür AVS özel bulut uygulaması vardır: temel Azure ile şirket içi uygulamalar ve yalnızca şirket içinde tam olarak şirket içi ve özel bulut bağlantılarını içeren uygulamalar.
 
 AVS özel bulutları için kullanım örnekleri şunları içerir:
 - buluttaki yeni VMware VM iş yükleri
@@ -25,7 +25,7 @@ AVS özel bulutları için kullanım örnekleri şunları içerir:
 
  AVS hizmeti için tüm kullanım örnekleri, şirket içi ve özel bulut bağlantısı ile etkinleştirilir. Temel ınterbağlantı modeli, AVS değerlendirmeleri veya şirket içi ortamlarından erişim gerektirmeyen uygulamalar için idealdir.
 
-İki tür AVS özel bulut bağlantısı aşağıdaki bölümlerde açıklanmıştır.  En temel karşılıklı bağlantı "Azure sanal ağ bağlantısı" olur ve özel bulutunuzu yalnızca Azure 'daki tek bir sanal ağla yönetmenizi ve kullanmanızı sağlar. "Şirket içi bağlantı" bölümünde açıklanan bağlantı, sanal ağ bağlantısını, şirket içi ortamlar ve AVS özel bulutları arasında birbirine bağlı olarak da kapsayacak şekilde genişletir.
+İki tür AVS özel bulut bağlantısı aşağıdaki bölümlerde açıklanmıştır.  En temel karşılıklı bağlantı "Azure sanal ağ bağlantısı" ' dır. Azure 'da yalnızca tek bir sanal ağ ile özel bulutunuzu yönetmenizi ve kullanmanızı sağlar. "Şirket içi bağlantı" bölümünde açıklanan bağlantı, sanal ağ bağlantısını, şirket içi ortamlar ve AVS özel bulutları arasında birbirine bağlı olarak da kapsayacak şekilde genişletir.
 
 ## <a name="azure-virtual-network-interconnectivity"></a>Azure sanal ağ bağlantısı
 

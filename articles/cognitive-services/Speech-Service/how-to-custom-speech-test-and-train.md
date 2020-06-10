@@ -10,16 +10,35 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: bc79dabe82ab02166e3aa60a378ff394bca25028
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: f43f7894c46a75894eb648f02ec378f3a8b2633d
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725559"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628047"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Özel Konuşma için verileri hazırlama
 
-Microsoft konuşma tanımanın doğruluğunu test ederken veya özel modellerinizi eğitmek için ses ve metin verileri gerekir. Bu sayfada, veri türlerini ve bunların nasıl kullanılacağını ve bunların nasıl yönetileceğini ele aldık.
+Microsoft konuşma tanımanın doğruluğunu test ederken veya özel modellerinizi eğitmek için ses ve metin verileri gerekir. Bu sayfada, özel bir konuşma modeli gerektiren veri türlerini ele aldık.
+
+## <a name="data-diversity"></a>Veri çeşitliliği
+
+Özel bir modeli test etmek ve eğitmek için kullanılan metin ve ses, modelinizin tanıması gereken farklı bir hoparlör ve senaryo kümesinden örnek içermelidir.
+Özel model testi ve eğitimi için veri toplanırken bu faktörleri göz önünde bulundurun:
+
+* Metin ve konuşma ses verilerinin, kullanıcılarınızın modelinizle etkileşim kurarken yapacağız izin türlerini kapsaması gerekir. Örneğin, insanların bu tür değişiklikleri talep etmek için yapması gerekebilecek deyimler için sıcaklığın bir eğitimi oluşturan ve alçaltır.
+* Verilerinizin, modelinizin tanıması gereken tüm konuşma farklarını içermesi gerekir. Birçok etken, vurgulu, dialet, dil karıştırma, yaş, cinsiyet, ses kullanımı, stres düzeyi ve günün saati dahil olmak üzere konuşmayı farklılık gösterebilir.
+* Modelinizin kullanılacağı farklı ortamların (ınkapısı, dış mek, yol gürültüsü) örneklerini dahil etmeniz gerekir.
+* Ses, üretim sisteminin kullanacağı donanım cihazları kullanılarak toplanmalıdır. Modeliniz, farklı kalitedeki cihazları kaydetmek için kaydedilen konuşmayı tanımlamak istiyorsanız, modelinize eğitebilmeniz için sağladığınız ses verileri de bu farklı senaryoları temsil etmelidir.
+* Daha sonra modelinize daha fazla veri ekleyebilirsiniz, ancak veri kümesini proje gereksinimlerinize göre farklı ve temsilciyle aynı tutmaya özen gösterin.
+* Özel model tanıma gereksinimleriniz içinde *olmayan* verilerin dahil edilmesi, tanınma kalitesini genelleyebilir, bu nedenle modelinizin vermesi gerekmeyen verileri eklemeyin.
+
+Senaryoların bir alt kümesi üzerinde eğitilen bir model yalnızca bu senaryolarda iyi bir şekilde gerçekleştirilebilir. Özel modelinize yönelik olarak tanımak için gereken tüm senaryolar kapsamını belirten verileri dikkatle seçin.
+
+> [!TIP]
+> Modelinize ve Acoustics ile eşleşen küçük örnek veri kümeleri ile başlayın.
+> Örneğin, aynı donanımda ve modelinizin üretim senaryolarında bulabileceği aynı akustik ortamda daha küçük ancak temsili bir ses örneği kaydedin.
+> Eğitim için çok daha büyük veri kümeleri toplamayı yatırmadan önce, temsilci verilerinin küçük veri kümelerinde sorunlar ortaya çıkabilir.
 
 ## <a name="data-types"></a>Veri türleri
 
@@ -27,9 +46,9 @@ Bu tabloda, kabul edilen veri türleri, her veri türü ne zaman kullanılmalı 
 
 | Veri türü | Test için kullanılan | Önerilen miktar | Eğitim için kullanılır | Önerilen miktar |
 |-----------|-----------------|----------|-------------------|----------|
-| [Ses](#audio-data-for-testing) | Evet<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
-| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Evet<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Evet | 1-1000 saat ses |
-| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Evet | 1-200 MB ilgili metin |
+| [Ses](#audio-data-for-testing) | Yes<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | YOK |
+| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Yes | 1-1000 saat ses |
+| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Yes | 1-200 MB ilgili metin |
 
 Dosyalar bir veri kümesine türlerine göre gruplanmalı ve bir. zip dosyası olarak karşıya yüklenir. Her veri kümesi yalnızca tek bir veri türü içerebilir.
 
