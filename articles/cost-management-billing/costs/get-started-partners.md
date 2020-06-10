@@ -3,17 +3,17 @@ title: İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 description: Bu makalede iş ortaklarının Azure Maliyet Yönetimi özelliklerini nasıl kullanacağı ve müşterileri için Maliyet Yönetimi'ni nasıl etkinleştirebilecekleri anlatılmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 06/08/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 8dea0da44ebfb35165daa7096296dada55e78e99
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 08037cbd3723604720a273722bd5dbee3fb79b8e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997137"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554567"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 
@@ -152,7 +152,7 @@ RBAC kapsamlarındaki ayrılmış örneklere ait amorti edilmiş görünümler v
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Maliyet analizindeki maliyetleri analiz etme
 
-İş ortağı kiracısındaki faturalama kapsamlarına erişim sahibi olan iş ortakları farklı müşterilere, tek bir müşteriye veya bir faturaya ait olan faturalandırılmış maliyetleri maliyet analizinde keşfedebilir ve analiz edebilir. [Maliyet analizi](quick-acm-cost-analysis.md) görünümünde ayrıca [görünümleri kaydedebilir](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) ve verileri [CSV ve PNG dosyaları](quick-acm-cost-analysis.md#automation-and-offline-analysis) olarak dışarı aktarabilirsiniz.
+İş ortağı kiracısındaki faturalama kapsamlarına erişim sahibi olan iş ortakları farklı müşterilere, tek bir müşteriye veya bir faturaya ait olan faturalandırılmış maliyetleri maliyet analizinde keşfedebilir ve analiz edebilir. [Maliyet analizi](quick-acm-cost-analysis.md) görünümünde ayrıca [görünümleri kaydedebilir](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) ve verileri [CSV ve PNG dosyaları](quick-acm-cost-analysis.md#download-usage-data) olarak dışarı aktarabilirsiniz.
 
 Müşteri kiracısındaki aboneliğe erişim sahibi olan RBAC kullanıcıları da müşteri kiracısındaki abonelikler için perakende maliyetlerini analiz edebilir, görünümleri kaydedebilir ve verileri CSV ve PNG dosyaları olarak dışarı aktarabilir.
 

@@ -10,12 +10,13 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c88a60fdc6d064fba91f4b6d79e1637f45bf2716
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: tracking-python
+ms.openlocfilehash: 90a404ca25d4b5512b508fe150ba4a2f6ec61139
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403210"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610952"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Hızlı başlangıç: yüz REST API ve Python kullanarak görüntüdeki yüzeyleri algılama
 
@@ -26,7 +27,7 @@ Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Yüz Tanıma API'si abonelik anahtarı. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=face-api)'den ücretsiz bir deneme aboneliği anahtarı edinebilirsiniz. Ya da Yüz Tanıma API'si hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
 
@@ -43,7 +44,7 @@ Alternatif olarak, komut satırından aşağıdaki adımlarla bu hızlı başlan
 1. Aşağıdaki kodu bir metin düzenleyicisine kopyalayın.
 1. Gerektiğinde kodda aşağıdaki değişiklikleri yapın:
     1. `subscription_key` değerini abonelik anahtarınızla değiştirin.
-    1. Değerini, Yüz Tanıma API'si kaynağınız `face_api_url` için uç nokta URL 'sini içerecek şekilde düzenleyin.
+    1. Değerini, `face_api_url` Yüz Tanıma API'si kaynağınız için uç nokta URL 'sini içerecek şekilde düzenleyin.
     1. İsteğe bağlı olarak `image_url` değerini, analiz etmek istediğiniz başka bir görüntünün URL’si ile değiştirin.
 1. Kodu, `.py` uzantısıyla bir dosya olarak kaydedin. Örneğin, `detect-face.py`.
 1. Bir komut istemi penceresi açın.

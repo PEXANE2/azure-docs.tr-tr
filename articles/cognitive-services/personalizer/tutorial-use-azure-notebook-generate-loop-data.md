@@ -10,12 +10,13 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 1f004fe1dae58faaded0b872dcdebdb4e9af66aa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: tracking-python
+ms.openlocfilehash: 30897e1bdd5d139d3a11980430cbcc6b10052ecc
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193012"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608494"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Öğretici: Azure not defterinde kişiselleştirici kullanma
 
@@ -64,7 +65,7 @@ Sistem isteği alır, daha sonra bu tahminle aynı gün ve hava durumu için kul
 > Bu bir simülasyonu olduğundan, ödül için algoritma basittir. Gerçek dünyada bir senaryoda, algoritma iş mantığını kullanmalıdır, bu da müşterinin deneyiminin çeşitli yönlerine yönelik ağırlıklarla birlikte, ödül puanı tespit etmelidir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir [Azure Not defteri](https://notebooks.azure.com/) hesabı.
 * Bir [Azure kişiselleştirici kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).
@@ -91,12 +92,12 @@ Bu öğreticideki değişiklikleri göstermek için bu değerlerin çok kısa bi
 
 ## <a name="set-up-the-azure-notebook"></a>Azure Not defteri 'ni ayarlama
 
-1. Çekirdeğini olarak `Python 3.6`değiştirin.
+1. Çekirdeğini olarak değiştirin `Python 3.6` .
 1. `Personalizer.ipynb` dosyasını açın.
 
 ## <a name="run-notebook-cells"></a>Not defteri hücrelerini Çalıştır
 
-Her yürütülebilir hücreyi çalıştırın ve döndürülmesini bekleyin. Hücrenin yanındaki köşeli ayraçlar, yerine bir sayı görüntülerne zaman yapılacağını bilirsiniz `*`. Aşağıdaki bölümlerde, her hücrenin programlı olarak ne olduğu ve çıktı için ne beklendikleri açıklanmaktadır.
+Her yürütülebilir hücreyi çalıştırın ve döndürülmesini bekleyin. Hücrenin yanındaki köşeli ayraçlar, yerine bir sayı görüntülerne zaman yapılacağını bilirsiniz `*` . Aşağıdaki bölümlerde, her hücrenin programlı olarak ne olduğu ve çıktı için ne beklendikleri açıklanmaktadır.
 
 ### <a name="include-the-python-modules"></a>Python modüllerini dahil et
 
@@ -113,7 +114,7 @@ import uuid
 
 ### <a name="set-personalizer-resource-key-and-name"></a>Kişiselleştirici kaynak anahtarını ve adını ayarla
 
-Azure portal, kişiselleştirici kaynağınızın **hızlı başlangıç** sayfasında anahtarınızı ve uç noktayı bulun. Değerini, kişiselleştirici `<your-resource-name>` kaynağınızın adı olarak değiştirin. Değerini `<your-resource-key>` , kişiselleştirici anahtarınızla değiştirin.
+Azure portal, kişiselleştirici kaynağınızın **hızlı başlangıç** sayfasında anahtarınızı ve uç noktayı bulun. Değerini, `<your-resource-name>` kişiselleştirici kaynağınızın adı olarak değiştirin. Değerini, `<your-resource-key>` kişiselleştirici anahtarınızla değiştirin.
 
 ```python
 # Replace 'personalization_base_url' and 'resource_key' with your valid endpoint values.
@@ -135,7 +136,7 @@ def currentDateTime():
 
 ### <a name="get-the-last-model-update-time"></a>Son model güncelleştirme zamanını al
 
-İşlevi `get_last_updated`çağrıldığında, işlev, modelin güncelleştirildiği son değiştirilme tarihini ve saatini yazdırır.
+İşlevi `get_last_updated` çağrıldığında, işlev, modelin güncelleştirildiği son değiştirilme tarihini ve saatini yazdırır.
 
 Bu hücrelerde çıkış yok. İşlevi çağrıldığında son model eğitim tarihini çıktı olarak yapar.
 
@@ -200,7 +201,7 @@ Bu hücre
 * çağrı `get_last_updated` metodu-öğrenme ilkesi örnek çıktıda kaldırılmıştır
 * çaðrý `get_service_settings` yöntemi
 
-Hücrede, `get_last_updated` ve `get_service_settings` işlevlerine yapılan çağrıdan çıktı vardır.
+Hücrede, ve işlevlerine yapılan çağrıdan çıktı vardır `get_last_updated` `get_service_settings` .
 
 ```python
 # build URLs
@@ -262,7 +263,7 @@ Coffee count 4
 
 ### <a name="troubleshooting-the-first-rest-call"></a>İlk REST çağrısının sorunlarını giderme
 
-Bu önceki hücre, Kişiselleştiriciye çağıran ilk hücredir. Çıktıda REST durum kodunun olduğundan emin olun `<Response [200]>`. 404 gibi bir hata alırsanız ancak kaynak anahtarınızın ve adınızın doğru olduğundan emin olun, Not defterini yeniden yükleyin.
+Bu önceki hücre, Kişiselleştiriciye çağıran ilk hücredir. Çıktıda REST durum kodunun olduğundan emin olun `<Response [200]>` . 404 gibi bir hata alırsanız ancak kaynak anahtarınızın ve adınızın doğru olduğundan emin olun, Not defterini yeniden yükleyin.
 
 Kahve ve kullanıcı sayısının her ikisi de 4 olduğundan emin olun. Bir hata alırsanız, tüm 3 JSON dosyalarını karşıya yüklediğinize bakın.
 
@@ -348,7 +349,7 @@ def add_random_user_and_contextfeatures(namesoption, weatheropt, timeofdayopt, r
 
 Bu işlev, derece isteğine gönderilmek üzere bir kahve listesinin tamamını JSON nesnesine ekler.
 
-Hücrede çıkış yok. İşlev çağrıldığında değiştirilir `rankjsonobj` .
+Hücrede çıkış yok. İşlev `rankjsonobj` çağrıldığında değiştirilir.
 
 
 Tek bir kahve özelliklerinin örneği şunlardır:
@@ -389,9 +390,9 @@ def get_reward_from_simulated_data(name, weather, timeofday, prediction):
 
 Sonraki hücre, dizüstü bilgisayarın _ana_ çalışmadır, rastgele bir Kullanıcı alma, kahve listesini alma, her Ikisini de derecelendirme API 'sine gönderme. Kullanıcının bilinen tercihleriyle tahmine göre karşılaştırma yapın ve ardından kişiselleştirici hizmetine geri dönme gönderilmesini sağlar.
 
-Döngü süreler boyunca `num_requests` çalışır. Kişiselleştirici, bir model oluşturmak için birkaç bin çağrıya ihtiyaç duyuyor.
+Döngü süreler boyunca çalışır `num_requests` . Kişiselleştirici, bir model oluşturmak için birkaç bin çağrıya ihtiyaç duyuyor.
 
-Sıralama API 'sine gönderilen JSON örneği aşağıdadır. Breçekimi için kahve listesi tamamlanmamış. Kahve için tüm JSON 'yi `coffee.json`görebilirsiniz.
+Sıralama API 'sine gönderilen JSON örneği aşağıdadır. Breçekimi için kahve listesi tamamlanmamış. Kahve için tüm JSON 'yi görebilirsiniz `coffee.json` .
 
 Sıralama API 'sine gönderilen JSON:
 
@@ -548,7 +549,7 @@ jsonTemplate = rankactionsjsonobj
 
 ## <a name="chart-results-to-see-improvement"></a>Gelişimi görmek için grafik sonuçları
 
-`count` Ve ' `rewards`den bir grafik oluşturun.
+Ve ' den bir grafik `count` oluşturun `rewards` .
 
 ```python
 def createChart(x, y):
@@ -560,7 +561,7 @@ def createChart(x, y):
 
 ## <a name="run-chart-for-10000-rank-requests"></a>10.000 derecelendirme isteği için grafik Çalıştır
 
-`createChart` İşlevi çalıştırın.
+İşlevi çalıştırın `createChart` .
 
 ```python
 createChart(count,rewards)
@@ -641,7 +642,7 @@ jsonTemplate2 = rankactionsjsonobj
 
 ## <a name="run-chart-for-2000-rank-requests"></a>2.000 derecelendirme isteği için grafik Çalıştır
 
-`createChart` İşlevi çalıştırın.
+İşlevi çalıştırın `createChart` .
 
 ```python
 createChart(count2,rewards2)

@@ -7,13 +7,14 @@ ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 04/27/2020
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 3cc678a214f10450ee382d3ad3dba7e3f98b3d38
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 71eab722cbf00714954a16840f5ecbeb4ff29c22
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82134134"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609378"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk"></a>Hızlı başlangıç: Özel Görüntü İşleme SDK ile görüntü sınıflandırma projesi oluşturma
 
