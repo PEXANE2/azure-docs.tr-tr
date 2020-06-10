@@ -1,5 +1,7 @@
 - name: Örnek modeller
   href: sample-model.md
+- name: Azure Remote Rendering Varlık Aracı
+  href: azure-remote-rendering-asset-tool.md
 - name: Unity gösterim uygulaması
   href: showcase-app.md
 - name: Örnek PowerShell betikleri

@@ -219,8 +219,12 @@
           href: sap-hana-db-manage.md
     - name: Azure Backup Sunucusu (MABS)
       items:
-        - name: Azure Backup Sunucusu koruma matrisi
-          href: backup-mabs-protection-matrix.md
+        - name: Koruma matrisleri
+          items:
+            - name: MABS V3 UR1 koruma matrisi
+              href: backup-mabs-protection-matrix.md
+            - name: MABS V3 RTM koruma matrisi
+              href: microsoft-azure-backup-server-protection-v3.md
         - name: Yükleme veya yükseltme
           items:
             - name: Azure Backup Sunucusu’nu yükleme
@@ -229,7 +233,7 @@
               href: backup-mabs-add-storage.md
             - name: MABS’deki yenilikler nelerdir?
               href: backup-mabs-whats-new-mabs.md
-            - name: MABS V3 sürüm notları
+            - name: Sürüm notları MABS
               href: backup-mabs-release-notes-v3.md
             - name: Katılımsız yükleme
               href: backup-mabs-unattended-install.md
@@ -284,7 +288,9 @@
         - name: İçeri/Dışarı Aktarma ile Çevrimdışı Yedekleme (MARS)
           href: backup-azure-backup-import-export.md
         - name: İçeri/Dışarı Aktarma ile Çevrimdışı Yedekleme (DPM/MABS)
-          href: backup-azure-backup-server-import-export-.md
+          href: backup-azure-backup-server-import-export.md
+        - name: DPM ve MABS (önceki sürümler) için Çevrimdışı Yedekleme
+          href: offline-backup-server-previous-versions.md
     - name: İzleme ve Uyarılar
       items:
         - name: Yedekleme Gezgini’ni kullanma

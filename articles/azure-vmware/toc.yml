@@ -36,6 +36,12 @@
       href: manage-dhcp.md
     - name: Olağanüstü durum kurtarma
       href: disaster-recovery.md
+    - name: AVS için Azure Backup Sunucusu
+      items:
+        - name: AVS için Azure Backup Sunucusu ayarlama
+          href: set-up-mabs-for-avs.md
+        - name: Azure Backup Sunucusu ile AVS VM’lerini yedekleme
+          href: backup-avs-vms-with-mabs.md
 - name: Başvuru
   items: null
 - name: Kaynaklar

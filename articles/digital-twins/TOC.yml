@@ -1,60 +1,130 @@
 - name: Azure Digital Twins
   href: index.yml
 - name: Genel Bakış
-- name: Hızlı Başlangıçlar
-  expanded: true
+  items:
+    - name: Azure Digital Twins Hakkında
+      href: overview.md
+    - name: Önceki sürüme göre farklılıklar
+      href: overview-differences.md
 - name: Öğreticiler
   items:
-    - name: Digital Twins ile bir binayı izleme
+    - name: Bir istemci uygulaması kodlama
+      href: tutorial-code.md
+    - name: Örnek bir istemci uygulamasıyla temel kavramları inceleme
+      href: tutorial-command-line-app.md
+    - name: Uçtan uca çözüme bağlanma
+      href: tutorial-end-to-end.md
 - name: Kavramlar
   items:
-    - name: Güvenlik
+    - name: Özel modeller
+      href: concepts-models.md
+    - name: Dijital ikizler ve ikiz grafiği
+      href: concepts-twins-graph.md
+    - name: Sorgu dili
+      href: concepts-query-language.md
+    - name: Diğer hizmetlerle tümleştirme
+      href: concepts-integration.md
+    - name: Olay yolları
+      href: concepts-route-events.md
+    - name: Azure Digital Twins çözümleri için güvenlik
+      href: concepts-security.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Digital Twins API’lerini sorgulama
+    - name: Azure Digital Twins CLI’sini kullanma
+      href: how-to-use-cli.md
+    - name: API’leri ve SDK’ları kullanma
+      href: how-to-use-apis-sdks.md
+    - name: AutoRest ile özel SDK oluşturma
+      href: how-to-create-custom-sdks.md
+    - name: Azure Digital Twins örneği oluşturma
+      href: how-to-set-up-instance.md
+    - name: Bir istemci uygulamasının kimliğini doğrulama
+      href: how-to-authenticate-client.md
+    - name: Modelleri ayrıştırma ve doğrulama
+      href: how-to-use-parser.md
+    - name: İkizi modelini yönetme
+      href: how-to-manage-model.md
+    - name: Dijital ikizi yönetme
+      href: how-to-manage-twin.md
+    - name: İlişkileri olan bir ikizi grafiğini yönetme
+      href: how-to-manage-graph.md
+    - name: İkiz grafiğini sorgulama
+      href: how-to-query-graph.md
+    - name: Uç noktaları ve yolları yönetme
+      href: how-to-manage-routes.md
+    - name: Olay verilerini yorumlama
+      href: how-to-interpret-event-data.md
+    - name: Veri işleme için bir Azure işlevi ayarlama
+      href: how-to-create-azure-function.md
+    - name: IoT Hub’dan telemetri alma
+      href: how-to-ingest-iot-hub-data.md
 - name: Başvuru
+  items:
+    - name: Digital Twins REST API’leri
+      href: 'https://docs.microsoft.com/rest/api/azure-digitaltwins/'
+    - name: 'Digital Twins .NET (C#) SDK’sı'
+      href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core'
+    - name: Digital Twins hizmet sınırları
+      href: reference-service-limits.md
+    - name: DTDL v2 belirtimi
+      href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
+    - name: DTMI belirtimi
+      href: 'https://github.com/Azure/digital-twin-model-identifier'
+    - name: Azure CLI
+      href: /cli/azure/iot
+    - name: Azure IoT CLI uzantısı
+      href: /cli/azure/ext/azure-iot/iot?view=azure-cli-latest
+    - name: Azure Cloud Shell
+      href: 'https://shell.azure.com'
+    - name: Azure PowerShell
+      href: '/powershell/module/az.iothub#iot'
+    - name: Azure portal
+      href: 'https://portal.azure.com'
+    - name: Azure RBAC belgeleri
+      href: /role-based-access-control/overview
 - name: Kaynaklar
   items:
-    - name: Geliştirici kaynakları
-      items:
-        - name: Azure Digital Twins Graf Görüntüleyicisi
-          href: 'https://github.com/Azure/azure-digital-twins-graph-viewer'
-        - name: 'C# (.NET) için Azure Digital Twins örnekleri'
-          href: 'https://github.com/Azure-Samples/digital-twins-samples-csharp'
-        - name: Azure Digital Twins REST API
-          href: 'https://docs.westcentralus.azuresmartspaces.net/management/swagger'
+    - name: VS Code için DTDL uzantısı
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
+    - name: Destek ve yardım seçenekleri
+      href: /azure/iot-fundamentals/iot-support-help
+    - name: Müşteri hikayeleri
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
+    - name: Channel 9 videoları
+      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
+    - name: Müşteri verisi istekleri
+      href: resources-customer-data-requests.md
     - name: Fiyatlandırma ve kullanılabilirlik
       items:
         - name: Fiyatlandırma
-          href: 'https://azure.microsoft.com/pricing/details/digital-twins/'
-        - name: Fiyatlandırma hesaplayıcı
-          href: 'https://azure.microsoft.com/pricing/calculator/'
-        - name: Bölge kullanılabilirliği
-          href: 'https://azure.microsoft.com/regions/services/'
-    - name: Destek ve yardım seçenekleri
+          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
+        - name: Bölgeler ve kullanılabilirlik
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
+- name: İlgili
+  items:
+    - name: Çözümler
       items:
-        - name: Azure destek seçenekleri
-          href: 'https://azure.microsoft.com/support/options/'
-        - name: Azure IoT desteği ve yardım seçenekleri
-          href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-digital-twins'
-        - name: Microsoft Soru-Cevap soru sayfası
-          href: 'https://docs.microsoft.com/answers/topics/azure-digital-twins.html'
-        - name: Azure IoT kod örnekleri
-          href: 'https://docs.microsoft.com/samples/browse/?term=iot'
-    - name: Geri bildirim ve forumlar
+        - name: IoT çözüm hızlandırıcıları
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: /azure/iot-central/iot-support-help
+    - name: Platform hizmetleri
       items:
-        - name: Microsoft Soru-Cevap soru sayfası
-          href: 'https://docs.microsoft.com/answers/topics/azure-digital-twins.html'
-        - name: Ürün istekleri ve öneriler
-          href: 'https://feedback.azure.com/forums/916621-azure-digital-twins'
-    - name: Müşteri hikayeleri
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
-    - name: Azure videoları
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=digital-twins&sort=newest'
-    - name: Channel 9 videoları
-      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
-    - name: Azure IoT güncelleştirmeleri
-      href: 'https://azure.microsoft.com/roadmap/?category=iot'
-  expanded: true
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Tak Çalıştır
+          href: /azure/iot-pnp
+        - name: IoT Hub Cihazı Sağlama Hizmeti
+          href: /azure/iot-dps
+        - name: Haritalar
+          href: /azure/azure-maps
+        - name: Hizmet SDK'ları
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Edge çözümleri
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT Cihaz SDK'ları
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

@@ -624,7 +624,7 @@
           href: ../extensions/agent-windows.md
         - name: Kurgusal yürütmeyi azaltma
           href: mitigate-se.md
-        - name: Meta verileri izleme
+        - name: Azure Instance Metadata Service
           href: instance-metadata-service.md
         - name: İç içe yerleştirilmiş sanallaştırmayı etkinleştirme
           href: nested-virtualization.md

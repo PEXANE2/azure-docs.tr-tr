@@ -1,75 +1,81 @@
 ### YamlMime:Landing
 title: Azure Digital Twins Önizleme Belgeleri
-summary: Kişileri, mekanları ve nesneleri birbirine bağlamak ve uzamsal zekaya sahip IoT çözümleri oluşturmak için Azure Digital Twins’i kullanmayı öğrenin. Hızlı Başlangıç ve Öğreticileri inceleyerek hayali bir akıllı binayı izleyin, derin kavramları öğrenin ve fiziksel ortamınızdan yola çıkarak son model bir IoT çözümü oluşturun.
+summary: Gerçek dünyayı modelleyen yeni nesil IoT çözümleri hazırlamak üzere varlıklarınızın, ortamlarınızın ve iş sistemlerinizin dijital bir temsilini oluşturmak için Azure Digital Twins’i nasıl kullanacağınızı öğrenin.
 metadata:
   title: Azure Digital Twins Önizleme Belgeleri - Öğreticiler, API Başvurusu | Microsoft Docs
   description: Kişileri, mekanları ve nesneleri birbirine bağlamak, uzamsal zekaya sahip IoT çözümleri oluşturmak için Azure Digital Twins’i kullanmayı öğrenin.
-  services: digital-twins
   ms.service: digital-twins
-  ms.subservice: digital-twins
   ms.topic: landing-page
   ms.collection: collection
-  author: KingdomOfEnds
-  ms.author: v-adgera
-  ms.date: 02/07/2020
-  ms.openlocfilehash: e5d66ffb35cb0ce50aa7898cad30bf9fd0bf57ac
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  author: philmea
+  ms.author: philmea
+  ms.date: 02/12/2020
+  ms.openlocfilehash: 93bfe0db668e3aaa78e7f58b715490dfe26fbe7a
+  ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77110580"
+  ms.lasthandoff: 06/09/2020
+  ms.locfileid: "84610041"
 landingContent:
 - title: Azure Digital Twins Hakkında
   linkLists:
   - linkListType: overview
     links:
     - text: Azure Digital Twins nedir?
-      url: about-digital-twins.md
-  - linkListType: concept
-    links:
-    - text: Digital Twins nesne modelini ve uzamsal zeka grafını anlama
-      url: concepts-objectmodel-spatialgraph.md
-  - linkListType: video
-    links:
-    - text: Azure Digital Twins'e giriş
-      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Digital-Twins-Introduction
-- title: başlarken
+      url: overview.md
+- title: Öğreticilerle çalışmaya başlama
   linkLists:
-  - linkListType: quickstart
-    links:
-    - text: Uygun odaları bulma
-      url: quickstart-view-occupancy-dotnet.md
   - linkListType: tutorial
     links:
-    - text: Dağıtma ve yapılandırma
-      url: tutorial-facilities-setup.md
-    - text: Koşulları sağlama ve izleme
-      url: tutorial-facilities-udf.md
-    - text: Logic Apps ile bildirme
-      url: tutorial-facilities-events.md
-    - text: Time Series Insights ile olayları görselleştirme
-      url: tutorial-facilities-analyze.md
-- title: Azure Digital Twins ile geliştirme
+    - text: Bir istemci uygulaması kodlama
+      url: tutorial-code.md
+  - linkListType: tutorial
+    links:
+    - text: Örnek bir istemci uygulamasıyla temel kavramları inceleme
+      url: tutorial-command-line-app.md
+  - linkListType: tutorial
+    links:
+    - text: Uçtan uca çözüme bağlanma
+      url: tutorial-end-to-end.md
+- title: Öğrenin
   linkLists:
   - linkListType: concept
     links:
-    - text: Cihaz bağlantısı ve telemetri sorunları
-      url: concepts-device-ingress.md
-    - text: Veri işleme ve kullanıcı tanımlı işlevleri
-      url: concepts-user-defined-functions.md
+    - text: Özel modeller
+      url: concepts-models.md
+  - linkListType: concept
+    links:
+    - text: Dijital ikizler ve ikiz grafiği
+      url: concepts-twins-graph.md
+  - linkListType: concept
+    links:
+    - text: Sorgu dili
+      url: concepts-query-language.md
+- title: Geliştirme
+  linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Postman’i ayarlama
-      url: how-to-configure-postman.md
-    - text: Kullanıcı tanımlı işlevler oluşturma
-      url: how-to-user-defined-functions.md
+    - text: Azure Digital Twins CLI’sini kullanma
+      url: how-to-use-cli.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Digital Twins örneği oluşturma
+      url: how-to-set-up-instance.md
+  - linkListType: how-to-guide
+    links:
+    - text: Bir istemci uygulamasının kimliğini doğrulama
+      url: how-to-authenticate-client.md
 - title: API başvurusu
   linkLists:
-  - linkListType: reference
-    links:
-    - text: Kullanıcı tanımlı işlevler istemci kitaplığı
-      url: reference-user-defined-functions-client-library.md
   - linkListType: how-to-guide
     links:
-    - text: Digital Twins Swagger’ı kullanma
-      url: how-to-use-swagger.md
+    - text: Azure Digital Twins API’lerini ve SDK’larını kullanma
+      url: how-to-use-apis-sdks.md
+  - linkListType: how-to-guide
+    links:
+    - text: AutoRest ile özel SDK oluşturma
+      url: how-to-create-custom-sdks.md
+  - linkListType: reference
+    links:
+    - text: REST API'leri
+      url: https://docs.microsoft.com/rest/api/azure-digitaltwins/

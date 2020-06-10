@@ -462,6 +462,8 @@
       items:
         - name: Konuşmacı Tanıma nedir?
           href: speaker-recognition-overview.md
+        - name: Konuşmacı Tanıma hakkındaki temel bilgiler
+          href: speaker-recognition-basics.md
     - name: Başvuru
       items:
         - name: REST API'leri
