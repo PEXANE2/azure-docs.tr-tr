@@ -10,13 +10,13 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 998558192891e1e7cbd24acd229f963925d3715f
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: seodec2018, tracking-python
+ms.openlocfilehash: c4dd2de53f0222b687a05690727f0aa9e25c7d53
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873797"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608681"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>Hızlı Başlangıç: Bing Web Araması API’sini çağırmak için Python kullanma  
 
@@ -26,7 +26,7 @@ Bu örnek [MyBinder](https://mybinder.org) üzerinde bir Jupyter notebook olarak
 
 [![Bağlayıcısı](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingWebSearchAPI.ipynb)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Python 2. x veya 3. x](https://www.python.org/)
 

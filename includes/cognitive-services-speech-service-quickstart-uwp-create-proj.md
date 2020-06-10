@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 23c4e18ae3e4111c179c1b98320af8c5659fa10c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5ab0b9abd32ef2e5eb7ea02d6118e387ef753348
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673110"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609340"
 ---
 Evrensel Windows Platformu (UWP) geliştirme için Visual Studio projesi oluşturmak üzere Visual Studio geliştirme seçeneklerini ayarlamanız, projeyi oluşturmanız, hedef mimariyi seçmeniz, ses yakalamayı ayarlamanız ve konuşma SDK 'sını yüklemeniz gerekir.
 
@@ -100,8 +100,8 @@ Son olarak, [konuşma SDK 'Sı NuGet paketini](https://aka.ms/csspeech/nuget)yü
 
 1. Arama sonuçlarının yanındaki paket durumu bölmesinde **HelloWorld** projenizi seçin.
 
-1. **Yükle**’yi seçin.
+1. **Yükle**'yi seçin.
 
 1. **Değişiklikleri Önizle** Iletişim kutusunda **Tamam**' ı seçin.
 
-1. **Lisans kabulü** iletişim kutusunda, lisansı görüntüleyin ve **kabul ediyorum**' u seçin. Paket yüklemesi başlar ve yükleme tamamlandığında **Çıkış** bölmesinde şu metne benzer bir ileti görüntülenir: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.12.0' to helloworld` .
+1. **Lisans kabulü** iletişim kutusunda, lisansı görüntüleyin ve **kabul ediyorum**' u seçin. Paket yüklemesi başlar ve yükleme tamamlandığında **Çıkış** bölmesinde şu metne benzer bir ileti görüntülenir: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.12.1' to helloworld` .

@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: b22ba1df6eeddfaf04d11e542acb4f2b8ab00d76
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 428542010e592dcc1e50308b7a133eda051670c9
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673127"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84637575"
 ---
 Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](../conversation-transcription-service.md) cihazı olarak kullanmak için Windows Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz. Konuşma için yalnızca [Azure Kinect dk](https://azure.microsoft.com/services/kinect-dk/) desteklenir. Diğer konuşma için, bir Microphone dizi geometrisi sağlayan doğrusal mik dizileri kullanın.
 
@@ -20,7 +20,7 @@ Bu kılavuzda, bir konuşma hizmeti kaynağına sahip bir Azure bilişsel [Hizme
 
 [Örnek uygulamanın](https://aka.ms/sdsdk-download-JRE) kaynak kodu, konuşma cihazları SDK 'sına dahildir. [GitHub 'da da kullanılabilir](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıç şunları gerektirir:
 * [Azure Kinect dk](https://azure.microsoft.com/services/kinect-dk/) gibi bir mikrofon dizisi
 * [Tutulma Java IDE](https://www.eclipse.org/downloads/)
 * Yalnızca [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) veya [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) .
-* [Microsoft Visual C++ Yeniden Dağıtılabilir](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+* [Microsoft Visual C++ Redistributable](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 * Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz bir tane alın](../get-started.md).
 * Java için [konuşma cihazları SDK 'sının](https://aka.ms/sdsdk-download-JRE) en son sürümünü indirin ve. zip dosyasını çalışma dizininize ayıklayın.
    > [!NOTE]
@@ -50,11 +50,11 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 1. Çakışan Küreler menü çubuğunda **Dosya**  >  **Yeni**  >  **Java projesi**' ni seçerek yeni bir proje oluşturun. Kullanılabilir değilse **Proje** ' yi ve ardından **Java projesi**' ni seçin.
 
-1. **Yeni Java proje** Sihirbazı başlatılır. Örnek projenin konumuna **gözatın** . **Son**' u seçin.
+1. **Yeni Java proje** Sihirbazı başlatılır. Örnek projenin konumuna **gözatın** . **Son**'u seçin.
 
    ![Yeni Java Projesi sihirbazının ekran görüntüsü](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
-1. **Paket Gezgini**' nde projenize sağ tıklayın. **Configure**  >  Bağlam menüsünden**Maven projesine dönüştürmeyi** Yapılandır ' ı seçin. **Son**' u seçin.
+1. **Paket Gezgini**' nde projenize sağ tıklayın. **Configure**  >  Bağlam menüsünden**Maven projesine dönüştürmeyi** Yapılandır ' ı seçin. **Son**'u seçin.
 
    ![Paket gezgininin ekran görüntüsü](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -74,7 +74,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.12.0</version>
+             <version>1.12.1</version>
         </dependency>
     </dependencies>
    ```

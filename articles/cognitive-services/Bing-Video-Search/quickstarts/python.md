@@ -10,12 +10,13 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 28d9726bfa1e195fa87b41914841083c56dbc844
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.custom: tracking-python
+ms.openlocfilehash: 33a4e31be04e5a205322bb3040d3694525c4515c
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849595"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605995"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Hızlı başlangıç: Bing Video Arama REST API ve Python kullanarak video arama
 
@@ -28,7 +29,7 @@ Bu örneği, [myciltçi](https://mybinder.org) üzerinde bir Jupyter Not defteri
 [![Bağlayıcısı](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Python [2. x veya 3. x](https://python.org)
 

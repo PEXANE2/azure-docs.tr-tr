@@ -10,13 +10,13 @@ ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 6cdee6dd30c1af44b321b12c96f3e2ecdcd0d2b3
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: seodec2018, tracking-python
+ms.openlocfilehash: c913e6a8f1acf6603fad7a0b93758e5a7678f9a5
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871963"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609208"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Hızlı başlangıç: Bing Resim Arama REST API ve Python kullanarak görüntü arama
 
@@ -30,7 +30,7 @@ Bu örneği [myciltçi](https://mybinder.org)üzerinde bir Jupyter Not defteri o
 Bu örneğe ilişkin kaynak kodu, ek hata işleme ve ek açıklama ile [GitHub 'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingImageSearchv7.py) kullanılabilir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Python 2. x veya 3. x](https://www.python.org/)
 * [Python görüntüleme kitaplığı (PIL)](https://pillow.readthedocs.io/en/stable/index.html)

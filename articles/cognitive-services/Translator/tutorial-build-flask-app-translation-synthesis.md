@@ -10,12 +10,13 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 991a31898bb010dab3db7a545cd115a60bfe3ed1
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.custom: tracking-python
+ms.openlocfilehash: 6621967584ee79dd514b6d9d4a9d0e2d240e7905
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995725"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608120"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Öğretici: Azure bilişsel hizmetler ile bir Flask uygulaması derleme
 
@@ -44,7 +45,7 @@ Bu öğreticinin ne kadar ayrıntılı olmasını istediğiniz, birkaç faydalı
 * [Flask belgeleri](http://flask.pocoo.org/)
 * [Flask, Dummies için bir başlangıç kılavuzu](https://codeburst.io/flask-for-dummies-a-beginners-guide-to-flask-part-uno-53aec6afc5b1)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici için ihtiyacınız olan yazılım ve abonelik anahtarlarını gözden geçirelim.
 
@@ -182,7 +183,7 @@ Bu kod, bir Kullanıcı `http://your-web-app.com/about` `about.html` dosyanın i
 
 Bu örnekler, bir kullanıcı için HTML sayfalarının nasıl işleneceğini gösterir, ancak bir düğmeye basıldığında API 'Leri çağırmak için yollar kullanılabilir veya giriş sayfasından uzaklaşmak zorunda kalmadan istediğiniz sayıda eylem yapabilirsiniz. Çeviri, yaklaşım ve konuşma senkiyle ilgili yollar oluştururken bunu eylemde görürsünüz.
 
-### <a name="get-started"></a>Kullanmaya başlayın
+### <a name="get-started"></a>başlarken
 
 1. Projeyi IDE 'de açın, sonra çalışma dizininizin kökünde adlı bir dosya oluşturun `app.py` . Sonra, bu kodu içine kopyalayın `app.py` ve kaydedin:
 

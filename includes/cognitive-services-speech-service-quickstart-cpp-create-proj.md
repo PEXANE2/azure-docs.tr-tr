@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: e3ee175e521fe37c99fcb3650ce7480f3f503a08
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 53c9931e84a2338af2f51fc3a9937034e7f395a3
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673280"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609344"
 ---
 C++ masaüstü geliştirmesi için Visual Studio projesi oluşturmak üzere Visual Studio geliştirme seçeneklerini ayarlamanız, projeyi oluşturmanız, hedef mimariyi seçmeniz ve konuşma SDK 'sını yüklemeniz gerekir.
 
@@ -73,8 +73,8 @@ Son olarak, [konuşma SDK 'Sı NuGet paketini](https://aka.ms/csspeech/nuget)yü
 
 1. Arama sonuçlarının yanındaki paket durumu bölmesinde **HelloWorld** projenizi seçin.
 
-1. **Yükle**’yi seçin.
+1. **Yükle**'yi seçin.
 
 1. **Değişiklikleri Önizle** Iletişim kutusunda **Tamam**' ı seçin.
 
-1. **Lisans kabulü** iletişim kutusunda, lisansı görüntüleyin ve **kabul ediyorum**' u seçin. Paket yüklemesi başlar ve yükleme tamamlandığında **Çıkış** bölmesinde şu metne benzer bir ileti görüntülenir: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.12.0' to helloworld` .
+1. **Lisans kabulü** iletişim kutusunda, lisansı görüntüleyin ve **kabul ediyorum**' u seçin. Paket yüklemesi başlar ve yükleme tamamlandığında **Çıkış** bölmesinde şu metne benzer bir ileti görüntülenir: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.12.1' to helloworld` .

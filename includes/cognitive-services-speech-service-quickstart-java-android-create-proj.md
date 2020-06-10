@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: travisw
-ms.openlocfilehash: 29086acb1fe4dd3167434f795d09da05ee594722
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d59381c220d7118724db7685740af76ba3776034
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673178"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609342"
 ---
 1. Android Studio başlatın ve **hoş geldiniz** penceresinde **Yeni bir Android Studio projesi Başlat** ' ı seçin.
 
@@ -27,7 +27,7 @@ Android Studio’nun yeni Android projenizi hazırlaması biraz zaman alır. Dah
 
 [!INCLUDE [License notice](cognitive-services-speech-service-license-notice.md)]
 
-Bilişsel hizmetler konuşma SDK 'sının geçerli sürümü 1.12.0.
+Bilişsel hizmetler konuşma SDK 'sının geçerli sürümü 1.12.1.
 
 Android için konuşma SDK 'Sı, gerekli kitaplıkları ve gerekli Android izinlerini içeren bir [AAR (Android kitaplığı)](https://developer.android.com/studio/projects/android-library)olarak paketlenmiştir.
 Bu, https:/csspeechstorage.blob.core.windows.net/maven/konumundaki bir Maven deposunda barındırılır \/ .
@@ -42,7 +42,7 @@ Konuşma SDK’sını kullanmak için projenizi ayarlayın. Android Studio menü
 
    ![Kitaplık bağımlılığının ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. Görüntülenen pencerede, Android için konuşma SDK 'sının adını ve sürümünü girin, *com. Microsoft. biliveservices. Speech: Client-SDK: 1.12.0*. Sonra **Tamam**’ı seçin.
+1. Görüntülenen pencerede, Android için konuşma SDK 'sının adını ve sürümünü girin, *com. Microsoft. biliveservices. Speech: Client-SDK: 1.12.1*. Sonra **Tamam**’ı seçin.
    Konuşma SDK 'Sı şu şekilde gösterildiği gibi bağımlılıklar listesine eklenmelidir:
 
    ![Bağımlılıklar listesinde konuşma SDK 'sının ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)

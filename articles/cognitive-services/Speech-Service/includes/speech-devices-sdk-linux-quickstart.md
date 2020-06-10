@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: d62917b7c3b2029df21ed29ccfd7f64269196362
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bae1ff0ff3bb7f81b2a56fb5cb9fa71c0e07885f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673161"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84637583"
 ---
 Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](../conversation-transcription-service.md) cihazı olarak kullanmak için Linux Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz. Şu anda yalnızca [Azure Kinect dk](https://azure.microsoft.com/services/kinect-dk/) destekleniyor.
 
@@ -20,7 +20,7 @@ Bu kılavuzda, bir konuşma hizmeti kaynağına sahip bir Azure bilişsel [Hizme
 
 [Örnek uygulamanın](https://aka.ms/sdsdk-download-JRE) kaynak kodu, konuşma cihazları SDK 'sına dahildir. [GitHub 'da da kullanılabilir](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 
@@ -76,11 +76,11 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
 
 1. Çakışan Küreler menü çubuğunda **Dosya**  >  **Yeni**  >  **Java projesi**' ni seçerek yeni bir proje oluşturun. Kullanılabilir değilse **Proje** ' yi ve ardından **Java projesi**' ni seçin.
 
-1. **Yeni Java proje** Sihirbazı başlatılır. Örnek projenin konumuna **gözatın** . **Son**' u seçin.
+1. **Yeni Java proje** Sihirbazı başlatılır. Örnek projenin konumuna **gözatın** . **Son**'u seçin.
 
    ![Yeni Java Projesi sihirbazının ekran görüntüsü](../media/speech-devices-sdk/eclipse-new-java-project-linux.png)
 
-1. **Paket Gezgini**' nde projenize sağ tıklayın. **Configure**  >  Bağlam menüsünden**Maven projesine dönüştürmeyi** Yapılandır ' ı seçin. **Son**' u seçin.
+1. **Paket Gezgini**' nde projenize sağ tıklayın. **Configure**  >  Bağlam menüsünden**Maven projesine dönüştürmeyi** Yapılandır ' ı seçin. **Son**'u seçin.
 
    ![Paket gezgininin ekran görüntüsü](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -100,7 +100,7 @@ Hedefleri kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (LUA
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.12.0</version>
+             <version>1.12.1</version>
         </dependency>
     </dependencies>
    ```
