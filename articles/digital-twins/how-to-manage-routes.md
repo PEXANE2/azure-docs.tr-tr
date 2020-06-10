@@ -138,7 +138,7 @@ Bir filtre eklemek için, aşağıdaki gövdeyi kullanarak *https://{YourHost}/E
 
 Desteklenen yol filtreleri aşağıda verilmiştir.
 
-| Filtre adı | Açıklama | Filtre şeması | Desteklenen değerler | 
+| Filtre adı | Description | Filtre şeması | Desteklenen değerler | 
 | --- | --- | --- | --- |
 | Tür | Dijital ikizi örneğiniz aracılığıyla akan [olay türü](./concepts-route-events.md#types-of-event-messages) | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Edge.Create`<br>`Microsoft.DigitalTwins.Edge.Update`<br> `Microsoft.DigitalTwins.Edge.Delete` <br> `microsoft.iot.telemetry`  |
 | Kaynak | Azure dijital TWINS örneğinin adı | `"filter" : "source = '<hostname>'"`|  **Bildirimler için:**`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Telemetri için:**`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/ digitaltwins/<twinId>`|

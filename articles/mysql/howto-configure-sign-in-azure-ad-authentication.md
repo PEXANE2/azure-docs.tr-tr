@@ -205,7 +205,7 @@ MySQL için Azure veritabanı 'nda Azure AD kimlik doğrulaması, kullanıcını
 * Perl
   * DBD:: MySQL: destekleniyor
   * Net:: MySQL: desteklenmiyor
-* Başlayın
+* Go
   * Go-SQL-Driver: desteklenir, `?tls=true&allowCleartextPasswords=true` bağlantı dizesine ekleyin
 
 ## <a name="next-steps"></a>Sonraki adımlar

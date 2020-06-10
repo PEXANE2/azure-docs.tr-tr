@@ -42,7 +42,7 @@ Ayrıca, SQL Edge (veya SQL Server, Azure SQL) bir çıkış akışı olarak kul
 
 Azure SQL Edge Şu anda yalnızca akış girişleri ve çıkışları olarak aşağıdaki veri kaynaklarını destekler.
 
-| Veri Kaynağı Türü | Girdi | Çıktı | Açıklama |
+| Veri Kaynağı Türü | Girdi | Çıktı | Description |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub 'ı | E | E | Azure IoT Edge hub 'ına akış verilerini okumak/yazmak için veri kaynağı. Azure IoT Edge hub hakkında daha fazla bilgi için [IoT Edge hub 'ına](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub) başvurun|
 | SQL Veritabanı | N | E | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. SQL veritabanı, yerel bir SQL Edge veritabanı veya uzak SQL Server ya da Azure SQL veritabanı olabilir|

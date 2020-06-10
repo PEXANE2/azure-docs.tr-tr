@@ -31,12 +31,12 @@ Aşağıdaki tabloda, geçerli önizlemede Azure dijital TWINS 'in işlevsel sı
 | --- | --- | --- | --- |
 | Azure kaynağı | Bir bölgedeki Azure dijital TWINS örneği sayısı, abonelik başına | 10 | Yes |
 | Dijital TWINS | Bir Azure dijital TWINS örneğindeki TWINS sayısı | 200,000 | Yes |
-| Yönlendirme | Tek bir Azure dijital TWINS örneği için uç nokta sayısı | 6 | Hayır |
+| Yönlendirme | Tek bir Azure dijital TWINS örneği için uç nokta sayısı | 6 | No |
 | Yönlendirme | Tek bir Azure dijital TWINS örneği için yol sayısı | 6 | Yes |
 | Modeller | Tek bir Azure dijital TWINS örneği içindeki model sayısı | 10,000 | Yes |
-| Modeller | Tek bir API çağrısında karşıya yüklenebilen model sayısı | 250 | Hayır |
-| Modeller | Tek bir sayfada döndürülen öğelerin sayısı | 100 | Hayır |
-| Sorgu | Tek bir sayfada döndürülen öğelerin sayısı | 100 | Hayır |
+| Modeller | Tek bir API çağrısında karşıya yüklenebilen model sayısı | 250 | No |
+| Modeller | Tek bir sayfada döndürülen öğelerin sayısı | 100 | No |
+| Sorgu | Tek bir sayfada döndürülen öğelerin sayısı | 100 | No |
 | Sorgu | `AND`  /  `OR` Sorgudaki ifade sayısı | 50 | Yes |
 | Sorgu | Bir `IN`  /  `NOT IN` yan tümcedeki dizi öğelerinin sayısı | 50 | Yes |
 | Sorgu | Sorgudaki karakter sayısı | 8,000 | Yes |
