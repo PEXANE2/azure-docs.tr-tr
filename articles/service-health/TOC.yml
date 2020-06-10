@@ -30,8 +30,6 @@
       href: service-health-alert-webhook-pagerduty.md
     - name: OpsGenie’ye uyarılar gönderme
       href: service-health-alert-webhook-opsgenie.md
-    - name: REST ile sistem durumu olayları alma
-      href: service-health-rest.md
     - name: Kaynak durumu olayları için uyarıları yapılandırma
       href: resource-health-alert-arm-template-guide.md
 - name: Başvuru

@@ -155,6 +155,8 @@
           displayname: VM
     - name: Yönetme ve yapılandırma
       items:
+        - name: Büyük ölçekte dağıtma
+          href: platform/deploy-scale.md
         - name: Rol izinleri ve güvenlik
           href: platform/roles-permissions-security.md
         - name: IP adresleri

@@ -19,8 +19,6 @@
       href: terminology.md
     - name: Roller ve gereksinimler
       href: concepts-roles-permissions.md
-    - name: Olağanüstü durum kurtarma
-      href: disaster-recovery.md
 - name: Örnekler
   items:
     - name: Kod örnekleri
@@ -43,6 +41,10 @@
       href: how-to-delete-invitation.md
     - name: Paylaşım aboneliğini iptal etme
       href: how-to-revoke-share-subscription.md
+    - name: Güvenlik
+      href: security.md
+    - name: Olağanüstü durum kurtarma
+      href: disaster-recovery.md
 - name: Başvuru
   items:
     - name: .NET
