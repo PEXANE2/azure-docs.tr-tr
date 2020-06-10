@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 2/10/2020
-ms.openlocfilehash: d32670ba79bd526c8f53438bf348323084f99928
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 7552cb3889b73604563758a97ae8a59960f6a906
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258581"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658029"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -229,9 +229,9 @@ Uygulamanız veri katmanı olarak SQL yönetilen örneği kullanıyorsa, iş sü
 Yük devretmeden sonra birincil SQL yönetilen örneğine kesintiye uğramayan bağlantıyı sağlamak için hem birincil hem de ikincil örneklerin aynı DNS bölgesinde olması gerekir. Aynı çoklu etki alanı (SAN) sertifikasının, yük devretme grubundaki iki örneklerden birine yönelik istemci bağlantılarının kimliğini doğrulamak için kullanılabilir olmasını garanti eder. Uygulamanız üretim dağıtımı için hazırsanız, farklı bir bölgede ikincil bir SQL yönetilen örneği oluşturun ve DNS bölgesini birincil SQL yönetilen örneğiyle paylaştığından emin olun. `DNS Zone Partner`Azure Portal, PowerShell veya REST API kullanarak isteğe bağlı parametreyi belirterek bunu yapabilirsiniz.
 
 > [!IMPORTANT]
-> Alt ağda oluşturulan ilk SQL yönetilen örneği, aynı alt ağdaki sonraki tüm örnekler için DNS bölgesini belirler. Diğer bir deyişle, aynı alt ağdaki iki örnek farklı DNS bölgelerine ait olamaz.
+> Alt ağda oluşturulan ilk yönetilen örnek, aynı alt ağdaki sonraki tüm örnekler için DNS bölgesini belirler. Diğer bir deyişle, aynı alt ağdaki iki örnek farklı DNS bölgelerine ait olamaz.
 
-İkincil SQL yönetilen örneğini birincil örnekle aynı DNS bölgesinde oluşturma hakkında daha fazla bilgi için bkz. [İkincil yönetilen örnek oluşturma](../managed-instance/failover-group-add-instance-tutorial.md#3---create-a-secondary-sql-managed-instance).
+İkincil SQL yönetilen örneğini birincil örnekle aynı DNS bölgesinde oluşturma hakkında daha fazla bilgi için bkz. [İkincil yönetilen örnek oluşturma](../managed-instance/failover-group-add-instance-tutorial.md#3---create-a-secondary-managed-instance).
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>İki örnek arasında çoğaltma trafiği etkinleştiriliyor
 
@@ -404,7 +404,7 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-| Cmdlet | Açıklama |
+| Cmdlet | Description |
 | --- | --- |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Bu komut bir yük devretme grubu oluşturur ve hem birincil hem de ikincil sunuculara kaydeder|
 | [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Yük devretme grubunu sunucudan kaldırır |
@@ -415,7 +415,7 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Komut | Açıklama |
+| Komut | Description |
 | --- | --- |
 | [az SQL yük devretme-Grup oluşturma](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Bu komut bir yük devretme grubu oluşturur ve hem birincil hem de ikincil sunuculara kaydeder|
 | [az SQL yük devretme-Grup silme](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Yük devretme grubunu sunucudan kaldırır |
@@ -425,7 +425,7 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 # <a name="rest-api"></a>[REST API 'SI](#tab/rest-api)
 
-| API | Açıklama |
+| API | Description |
 | --- | --- |
 | [Yük devretme grubu oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Yük devretme grubu oluşturur veya güncelleştirir |
 | [Yük devretme grubunu sil](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Yük devretme grubunu sunucudan kaldırır |
@@ -442,7 +442,7 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-| Cmdlet | Açıklama |
+| Cmdlet | Description |
 | --- | --- |
 | [New-Azsqldatabaseınstancefailovergroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Bu komut bir yük devretme grubu oluşturur ve hem birincil hem de ikincil örneklere kaydeder|
 | [Set-Azsqldatabaseınstancefailovergroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Bir yük devretme grubunun yapılandırmasını değiştirir|
@@ -453,7 +453,7 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Komut | Açıklama |
+| Komut | Description |
 | --- | --- |
 | [az SQL yük devretme-Grup oluşturma](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Bu komut bir yük devretme grubu oluşturur ve hem birincil hem de ikincil sunuculara kaydeder|
 | [az SQL yük devretme-Grup silme](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Yük devretme grubunu sunucudan kaldırır |
@@ -463,7 +463,7 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 
 # <a name="rest-api"></a>[REST API 'SI](#tab/rest-api)
 
-| API | Açıklama |
+| API | Description |
 | --- | --- |
 | [Yük devretme grubu oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Bir yük devretme grubunun yapılandırmasını oluşturur veya güncelleştirir |
 | [Yük devretme grubunu sil](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Yük devretme grubunu örnekten kaldırır |

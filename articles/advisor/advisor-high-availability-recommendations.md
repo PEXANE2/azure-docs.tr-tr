@@ -3,12 +3,12 @@ title: Azure Danışmanı ile uygulamanızın kullanılabilirliğini geliştirme
 description: Azure dağıtımlarınızın yüksek oranda kullanılabilirliğini geliştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 5e38a1fb5e07e3811c53e24a5e324575d6774a75
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: bed092a51b5a4aba1dfa64c17f5ed3d6f72212da
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788034"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658473"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Azure Danışmanı ile uygulamanızın kullanılabilirliğini geliştirme
 
@@ -29,7 +29,7 @@ Uygulamanıza yedeklilik sağlamak için bir kullanılabilirlik kümesinde iki v
 
 Depolama hesaplarını veya depolama ölçek birimlerini paylaşan diskler içeren bir kullanılabilirlik kümesindeki sanal makineler, kesintiler sırasında tek depolama ölçek birimi hatalarıyla dayanıklı değildir. Danışman, bu kullanılabilirlik kümelerini tanımlar ve Azure yönetilen disklere geçiş yapmanızı önerir. Bu, kullanılabilirlik kümesindeki farklı sanal makinelerin disklerinin tek bir hata noktası oluşmasını önlemek için yeterince yalıtılmış olmasını sağlar. 
 
-## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>Check Point ağ sanal gereç görüntüsü sürümünde bilinen sorun
+## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>Check Point Ağ Sanal Gereci görüntü sürümüyle ilgili bilinen sorun
 
 Danışman, sanal makinenizin bir platform bakım işlemi durumunda ağ bağlantısını kaybetmesinin bilinen bir denetim noktası görüntüsü sürümü çalıştırıyor olup olmadığını tanımlayabilir. Danışman önerisi, görüntünün bu sorunu gideren daha yeni bir sürümüne yükseltmenize yardımcı olur. Bu, daha iyi ağ bağlantısı aracılığıyla iş sürekliliği sağlayacaktır.
 
@@ -93,6 +93,14 @@ Azure Advisor, Java SDK 'sının eski sürümlerini kullanan Azure Cosmos DB hes
 
 Azure Advisor, Cosmos DB Spark bağlayıcısının eski sürümlerini kullanan Azure Cosmos DB hesaplarını belirler ve en son düzeltmeler, performans iyileştirmeleri ve yeni özellik özellikleri için Maven 'nin en son sürümüne yükseltme yapmanızı önerir. [Cosmos DB Spark Bağlayıcısı hakkında daha fazla bilgi edinin](https://aka.ms/cosmosdb/spark-connector)
 
+## <a name="upgrade-recommendation-for-deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>HDInsight 4,0 Kafka kümesi 'nde Kafka 1,1 ' un kullanımdan kaldırılması için yükseltme önerisi
+
+1 Temmuz 2020’den sonra müşteriler HDInsight 4.0’da Kafka 1.1 ile yeni Kafka kümeleri oluşturamayacak. Mevcut kümeler Microsoft desteği olmadan, olduğu gibi çalıştırılacak. Olası sistem/destek kesintilerini önlemek için 30 Haziran 2020’ye kadar HDInsight 4.0’da Kafka 2.1’e geçmeyi göz önünde bulundurun.
+
+## <a name="upgrade-recommendation-for-deprecation-of-older-spark-versions-in-hdinsight-spark-cluster"></a>HDInsight Spark kümesindeki eski Spark sürümlerinin kullanımdan kaldırılması için yükseltme önerisi
+
+1 Temmuz 2020’den sonra müşteriler HDInsight 3.6’da Spark 2.1 ve 2.2 ile ve HDInsight 4.0’da Spark 2.3 ile yeni Spark kümeleri oluşturamayacak. Mevcut kümeler Microsoft desteği olmadan, olduğu gibi çalıştırılacak. ",
+
 ## <a name="enable-virtual-machine-replication"></a>Sanal makine çoğaltmasını etkinleştirme
 Başka bir bölgeye çoğaltma özelliği etkinleştirilmemiş sanal makineler, bölgesel kesintilere dayanıklı değildir. Sanal makinelerin çoğaltılması, Azure bölge kesintisi sırasında olumsuz iş etkisini azaltır. Danışman, çoğaltma etkinleştirilmemiş olan VM 'Leri algılar ve bir kesinti olması durumunda sanal makinelerinizi uzak bir Azure bölgesinde hızlı bir şekilde getirebilmeniz için çoğaltmayı etkinleştirmeyi önerir. [Sanal makine çoğaltma hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
@@ -105,9 +113,9 @@ Başka bir bölgeye çoğaltma özelliği etkinleştirilmemiş sanal makineler, 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Danışman önerileri hakkında daha fazla bilgi için bkz.
-* [Azure Advisor 'a giriş](advisor-overview.md)
-* [Danışman’ı kullanmaya başlama](advisor-get-started.md)
+* [Advisor 'a giriş](advisor-overview.md)
+* [Danışman'ı kullanmaya başlama](advisor-get-started.md)
 * [Danışman maliyet önerileri](advisor-cost-recommendations.md)
 * [Advisor performans önerileri](advisor-performance-recommendations.md)
 * [Danışman güvenlik önerileri](advisor-security-recommendations.md)
-* [Danışman Işletimsel üstün öneriler](advisor-operational-excellence-recommendations.md)
+* [Danışman işletimsel üstün öneriler](advisor-operational-excellence-recommendations.md)

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
-ms.openlocfilehash: 2fac5e07f9646c4fc0fac7b1be53b5a5ac1ea803
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e3501ea8bc327f0dd906a42702194abce18c5fd
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245934"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84656589"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>API tarafından üretilen Video Indexer çıkışını inceleyin
 
@@ -38,11 +38,11 @@ Bu makalede, **video dizini Al** API 'si tarafından döndürülen JSON içeriğ
 
 ## <a name="root-elements"></a>Kök öğeleri
 
-|Adı|Açıklama|
+|Name|Description|
 |---|---|
 |accountId|Çalma listesinin VI hesap KIMLIĞI.|
-|id|Çalma listesinin KIMLIĞI.|
-|ad|Çalma listesinin adı.|
+|kimlik|Çalma listesinin KIMLIĞI.|
+|name|Çalma listesinin adı.|
 |açıklama|Şarkı listesinin açıklaması.|
 |userName|Çalma listesini oluşturan kullanıcının adı.|
 |yaratıl|Çalma listesinin oluşturulma zamanı.|
@@ -80,8 +80,8 @@ Bu bölümde öngörülerin özeti gösterilmektedir.
 
 |Öznitelik | Açıklama|
 |---|---|
-|ad|Videonun adı. Örneğin, Azure Izleyici.|
-|id|Videonun KIMLIĞI. Örneğin, 63c6d532ff.|
+|name|Videonun adı. Örneğin, Azure Izleyici.|
+|kimlik|Videonun KIMLIĞI. Örneğin, 63c6d532ff.|
 |privacyMode|Dökümde şu modlardan biri olabilir: **Private**, **Public**. **Genel** -video, hesabınızdaki herkese ve videoya bağlantısı olan herkese görünür. **Özel** -video, hesabınızdaki herkes tarafından görülebilir.|
 |süre|Bir öngörüden oluşan zamanı açıklayan bir süre içerir. Süre saniye cinsinden.|
 |thumbnailVideoId|Küçük resmin alındığı videonun KIMLIĞI.
@@ -89,7 +89,7 @@ Bu bölümde öngörülerin özeti gösterilmektedir.
 |leri|Sıfır veya daha fazla yüz içerebilir. Daha ayrıntılı bilgi için bkz. [yüzler](#faces).|
 |anahtar sözcükler|Sıfır veya daha fazla anahtar sözcük içerebilir. Daha ayrıntılı bilgi için bkz. [anahtar sözcükler](#keywords).|
 |yaklaşımları|Sıfır veya daha fazla duygu içerebilir. Daha ayrıntılı bilgi için bkz. [yaklaşımları](#sentiments).|
-|audioEffects| Sıfır veya daha fazla Audioefekt içerebilir. Daha ayrıntılı bilgi için bkz. [Audioeffects](#audioEffects).|
+|audioEffects| Sıfır veya daha fazla Audioefekt içerebilir. Daha ayrıntılı bilgi için bkz. [Audioeffects](#audioeffects).|
 |etikete| Sıfır veya daha fazla etiket içerebilir. Daha ayrıntılı bilgi için bkz. [Etiketler](#labels).|
 |markaları| Sıfır veya daha fazla markaya sahip olabilir. Daha ayrıntılı bilgi için bkz. [markalar](#brands).|
 |girecek | Daha ayrıntılı bilgi için bkz. [İstatistikler](#statistics).|
@@ -98,11 +98,11 @@ Bu bölümde öngörülerin özeti gösterilmektedir.
 
 ## <a name="videos"></a>videolar
 
-|Adı|Açıklama|
+|Name|Description|
 |---|---|
 |accountId|Videonun VI hesap KIMLIĞI.|
-|id|Videonun KIMLIĞI.|
-|ad|Videonun adı.
+|kimlik|Videonun KIMLIĞI.|
+|name|Videonun adı.
 |durum|Videonun durumu (karşıya yüklenen, işlenen, işlenen, başarısız, karantinaya alındı).|
 |processingProgress|İşlem sırasında işleme ilerlemesi (örneğin, %20).|
 |failureCode|İşlem başarısız olursa hata kodu (örneğin, ' UnsupportedFileType ').|
@@ -166,7 +166,7 @@ Bir yüz KIMLIĞI, bir ad, küçük resim, diğer meta veriler ve bunun zamana b
 |etikete|[Etiketler](#labels) öngörüleri.|
 |görüntüleri|[Anlık görüntüleri](#shots) öngörüleri.|
 |markaları|[Markalar](#brands) öngörüleri.|
-|audioEffects|[Audioeffects](#audioEffects) öngörüleri.|
+|audioEffects|[Audioeffects](#audioeffects) öngörüleri.|
 |yaklaşımları|Yaklaşım [öngörüleri](#sentiments) .|
 |Visualcontentdenetlemesi|[Visualcontentdenetlemesi](#visualcontentmoderation) öngörüleri.|
 |Textualcontentdenetlemesi|[Textualcontentdenetlemesi](#textualcontentmoderation) öngörüleri.|
@@ -198,14 +198,14 @@ Bir yüz KIMLIĞI, bir ad, küçük resim, diğer meta veriler ve bunun zamana b
 
 Öznitelik | Açıklama
 ---|---
-id|Bloğun KIMLIĞI.|
+kimlik|Bloğun KIMLIĞI.|
 larında|Bu bloktaki zaman aralıklarının listesi.|
 
 #### <a name="transcript"></a>döküm
 
-|Adı|Açıklama|
+|Name|Description|
 |---|---|
-|id|Satır KIMLIĞI.|
+|kimlik|Satır KIMLIĞI.|
 |metin|Dökümü.|
 |language|Döküm dili. Her satırın farklı bir dile sahip olduğu yazılı betiği desteklemeye yöneliktir.|
 |larında|Bu satırın göründüğü zaman aralıklarının listesi. Örnek TRANSCRIPT ise, yalnızca 1 örneğe sahip olur.|
@@ -241,9 +241,9 @@ larında|Bu bloktaki zaman aralıklarının listesi.|
 
 #### <a name="ocr"></a>OCR
 
-|Adı|Açıklama|
+|Name|Description|
 |---|---|
-|id|OCR satır KIMLIĞI.|
+|kimlik|OCR satır KIMLIĞI.|
 |metin|OCR metni.|
 |güvenilirlik|Tanıma güvenilirliği.|
 |language|OCR dili.|
@@ -276,9 +276,9 @@ larında|Bu bloktaki zaman aralıklarının listesi.|
 
 #### <a name="keywords"></a>anahtar sözcükler
 
-|Adı|Açıklama|
+|Name|Description|
 |---|---|
-|id|Anahtar sözcük KIMLIĞI.|
+|kimlik|Anahtar sözcük KIMLIĞI.|
 |metin|Anahtar sözcük metni.|
 |güvenilirlik|Anahtar sözcüğünün tanıma güvenilirliği.|
 |language|Anahtar sözcük dili (çevrildiğinde).|
@@ -307,10 +307,10 @@ larında|Bu bloktaki zaman aralıklarının listesi.|
 
 #### <a name="faces"></a>leri
 
-|Adı|Açıklama|
+|Name|Description|
 |---|---|
-|id|Yüz KIMLIĞI.|
-|ad|Yüzün adı. ' Bilinmeyen #0, tanımlı bir ünlüde veya müşterinin eğitilen kişi olabilir.|
+|kimlik|Yüz KIMLIĞI.|
+|name|Yüzün adı. ' Bilinmeyen #0, tanımlı bir ünlüde veya müşterinin eğitilen kişi olabilir.|
 |güvenilirlik|Yüz tanıma kimlik güveni.|
 |açıklama|Ünlüğün açıklaması. |
 |thumbnailId|Bu yüzün küçük resminin KIMLIĞI.|
@@ -352,10 +352,10 @@ larında|Bu bloktaki zaman aralıklarının listesi.|
 
 #### <a name="labels"></a>etikete
 
-|Adı|Açıklama|
+|Name|Description|
 |---|---|
-|id|Etiket KIMLIĞI.|
-|ad|Etiket adı (örneğin, ' bilgisayar ', ' TV ').|
+|kimlik|Etiket KIMLIĞI.|
+|name|Etiket adı (örneğin, ' bilgisayar ', ' TV ').|
 |language|Etiket adı dili (çevrildiğinde). BCP-47|
 |larında|Bu etiketin göründüğü zaman aralıklarının listesi (bir etiket birden çok kez görünebilir). Her örneğin bir güvenirlik alanı vardır. |
 
@@ -411,9 +411,9 @@ larında|Bu bloktaki zaman aralıklarının listesi.|
 
 #### <a name="scenes"></a>sahne
 
-|Adı|Açıklama|
+|Name|Description|
 |---|---|
-|id|Sahne KIMLIĞI.|
+|kimlik|Sahne KIMLIĞI.|
 |larında|Bu sahnenin zaman aralıklarının listesi (bir sahnenin yalnızca 1 örneği olabilir).|
 
 ```json
@@ -444,9 +444,9 @@ larında|Bu bloktaki zaman aralıklarının listesi.|
 
 #### <a name="shots"></a>görüntüleri
 
-|Adı|Açıklama|
+|Name|Description|
 |---|---|
-|id|Görüntü KIMLIĞI.|
+|kimlik|Görüntü KIMLIĞI.|
 |Gezen|Görüntüsündeki ana karelerin bir listesi (her birinin bir KIMLIĞI ve bir örnek zaman aralığı listesi vardır). Her ana kare örneğinin, ana karenin küçük resim KIMLIĞINI tutan bir thumbnailId alanı vardır.|
 |larında|Bu görüntüsündeki zaman aralıklarının listesi (bir görüntü yalnızca 1 örneğe sahip olabilir).|
 
@@ -494,12 +494,12 @@ larında|Bu bloktaki zaman aralıklarının listesi.|
 
 Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka adları. Bu, markaların veya amblem algılamanın görsel olarak tanınmasını kapsamaz.
 
-|Adı|Açıklama|
+|Name|Description|
 |---|---|
-|id|Marka KIMLIĞI.|
-|ad|Markalar adı.|
-|Referenceıd | Vikipedi URL 'sinin son eki. Örneğin, "Target_Corporation" öğesinin [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation)sonekidir.
-|referenceUrl | Varsa, markasının Vikipi URL 'si. Örneğin, [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
+|kimlik|Marka KIMLIĞI.|
+|name|Markalar adı.|
+|Referenceıd | Vikipedi URL 'sinin son eki. Örneğin, "Target_Corporation" öğesinin sonekidir [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) .
+|referenceUrl | Varsa, markasının Vikipi URL 'si. Örneğin, [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) .
 |açıklama|Markalar açıklaması.|
 |etiketler|Bu markala ilişkili önceden tanımlanmış etiketlerin listesi.|
 |güvenilirlik|Video Indexer marka algılayıcısının güvenirlik değeri (0-1).|
@@ -553,7 +553,7 @@ Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka
 
 #### <a name="statistics"></a>girecek
 
-|Adı|Açıklama|
+|Name|Description|
 |---|---|
 |Yazışma sayısı|Videodaki yazışma sayısı.|
 |Hoparlörlü Kerwordsayısı|Konuşmacı başına sözcük sayısı.|
@@ -561,12 +561,12 @@ Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka
 |SpeakerLongestMonolog|Hoparlörün en uzun monolog. Konuşmacı, monolog içinde susraysa dahil edilmiştir. Monolog 'in başındaki ve sonundaki sessizlik kaldırılır.| 
 |Hoparlörkertalktolistenratio|Hesaplama, konuşmacının monolog harcanan zamanına (arasında sessizlik olmadan), videonun toplam süresine göre bölünür. Saat, üçüncü ondalık noktaya yuvarlanır.|
 
-#### <a name="audioeffects"></a><a id="audioEffects"/>audioEffects
+#### <a name="audioeffects"></a>audioEffects
 
-|Adı|Açıklama|
+|Name|Description|
 |---|---|
-|id|Ses efekti KIMLIĞI.|
-|type|Ses efekti türü (örneğin, hareketli, konuşma, sessizlik).|
+|kimlik|Ses efekti KIMLIĞI.|
+|tür|Ses efekti türü (örneğin, hareketli, konuşma, sessizlik).|
 |larında|Bu ses efektinin göründüğü zaman aralıklarının bir listesi.|
 
 ```json
@@ -592,9 +592,9 @@ Konuşmadan metin dökümü ve/veya video OCR 'de algılanan iş ve ürün marka
 
 Sentiments, sentimentType alanı tarafından toplanır (pozitif/nötr/negatif). Örneğin, 0-0.1, 0,1-0.2.
 
-|Adı|Açıklama|
+|Name|Description|
 |---|---|
-|id|Yaklaşım KIMLIĞI.|
+|kimlik|Yaklaşım KIMLIĞI.|
 |averageScore |Bu yaklaşım türünün tüm örneklerinin ortalaması-pozitif/nötr/negatif|
 |larında|Bu yaklaşım görüntülenen zaman aralıklarının bir listesi.|
 |sentimentType |Tür ' pozitif ', ' Nötr ' veya ' negative ' olabilir.|
@@ -631,9 +631,9 @@ Visualcontentmoderblock blok, büyük olasılıkla yetişkinlere yönelik içeri
 
 Yetişkin veya kcy içeriği içeren videolar yalnızca özel görünüm için kullanılabilir olabilir. Kullanıcılar, içeriğin insan incelemesi için bir istek gönderme seçeneğine sahiptir ve bu durumda Isyetişkin özniteliği insan incelemesi sonucunu içerecektir.
 
-|Adı|Açıklama|
+|Name|Description|
 |---|---|
-|id|Görsel içerik denetleme KIMLIĞI.|
+|kimlik|Görsel içerik denetleme KIMLIĞI.|
 |adultScore|Yetişkin puanı (İçerik Yöneticisi 'nden).|
 |Oycyscore|Yağanın puanı (içerik denetleme).|
 |larında|Bu görsel içerik denetimi 'nin göründüğü zaman aralıklarının listesi.|
@@ -667,9 +667,9 @@ Yetişkin veya kcy içeriği içeren videolar yalnızca özel görünüm için k
 
 #### <a name="textualcontentmoderation"></a>Textualcontentdenetlemesi 
 
-|Adı|Açıklama|
+|Name|Description|
 |---|---|
-|id|Metinsel içerik denetleme KIMLIĞI.|
+|kimlik|Metinsel içerik denetleme KIMLIĞI.|
 |bannedWordsCount |Yasaklanmış sözcüklerin sayısı.|
 |bannedWordsRatio |Toplam sözcük sayısından oranı.|
 
@@ -677,10 +677,10 @@ Yetişkin veya kcy içeriği içeren videolar yalnızca özel görünüm için k
 
 Video Indexer konuşmayı ve ses ipuçlarını temel alarak tanımlar. Tanımlanan duygu: Joy, sadyeti, Anger veya Fear olabilir.
 
-|Adı|Açıklama|
+|Name|Description|
 |---|---|
-|id|Duygu KIMLIĞI.|
-|type|Konuşma ve ses ipuçları temelinde tanımlanan duygu. Duygu: Joy, sadyeti, Anger veya Fear olabilir.|
+|kimlik|Duygu KIMLIĞI.|
+|tür|Konuşma ve ses ipuçları temelinde tanımlanan duygu. Duygu: Joy, sadyeti, Anger veya Fear olabilir.|
 |larında|Bu duygu tanıma 'ın göründüğü zaman aralıklarının listesi.|
 
 ```json
@@ -767,10 +767,10 @@ Video Indexer konuşmayı ve ses ipuçlarını temel alarak tanımlar. Tanımlan
 
 Video Indexer, döküm dosyalarından Ana konuların çıkarımını yapar. Mümkün olduğunda 2. düzey [IPTC](https://iptc.org/standards/media-topics/) taksonomi dahil edilir. 
 
-|Adı|Açıklama|
+|Name|Description|
 |---|---|
-|id|Konu KIMLIĞI.|
-|ad|Konu adı, örneğin: "Ilaç".|
+|kimlik|Konu KIMLIĞI.|
+|name|Konu adı, örneğin: "Ilaç".|
 |Referenceıd|İçerik haritaları, konu hiyerarşisini yansıtır. Örneğin: "Sağlık ve welltısalları/Ilaç ve sağlık/Ilaç ve Alticals".|
 |güvenilirlik|[0, 1] aralığındaki Güvenirlik puanı. Daha yüksek olan daha emin.|
 |language|Konusunda kullanılan dil.|

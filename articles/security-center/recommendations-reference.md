@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 90a058b7702dd51d3f93a83ae3e3d85f534808f3
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 6bf218f14b0fc783bead5183b22e4abcefe87b5a
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552217"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660016"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Güvenlik önerileri-bir başvuru kılavuzu
 
@@ -92,6 +92,9 @@ Güvenli puanınız, tamamladığınız Güvenlik Merkezi önerilerinin sayısı
 |**RootManageSharedAccessKey hariç tüm yetkilendirme kuralları Service Bus ad alanından kaldırılmalıdır**|Service Bus istemcileri, bir ad alanındaki tüm kuyruklara ve konulara erişim sağlayan bir ad alanı düzeyinde erişim ilkesi kullanmamalıdır. En az ayrıcalık güvenlik modeliyle uyum sağlamak için, yalnızca belirli varlığa erişim sağlamak üzere kuyruklar ve konular için varlık düzeyinde erişim ilkeleri oluşturmanız gerekir.<br>(İlgili ilke: RootManageSharedAccessKey hariç tüm yetkilendirme kuralları Service Bus ad alanından kaldırılmalıdır)|Düşük|N|İşlem kaynakları (hizmet veri yolu)|
 |**RootManageSharedAccessKey hariç tüm yetkilendirme kuralları, Olay Hub 'ı ad alanından kaldırılmalıdır**|Olay Hub 'ı istemcileri, bir ad alanındaki tüm kuyruklara ve konulara erişim sağlayan bir ad alanı düzeyinde erişim ilkesi kullanmamalıdır. En az ayrıcalık güvenlik modeliyle uyum sağlamak için, yalnızca belirli varlığa erişim sağlamak üzere kuyruklar ve konular için varlık düzeyinde erişim ilkeleri oluşturmanız gerekir.<br>(İlgili ilke: RootManageSharedAccessKey hariç tüm yetkilendirme kuralları, Olay Hub 'ı ad alanından kaldırılmalıdır)|Düşük|N|İşlem kaynakları (Olay Hub 'ı)|
 |**Olay Hub 'ı varlığındaki yetkilendirme kuralları tanımlanmalıdır**|En az ayrıcalıklı erişim sağlamak için Olay Hub 'ı varlığındaki yetkilendirme kurallarını denetleyin.<br>(İlgili ilke: Olay Hub 'ı varlığındaki yetkilendirme kuralları tanımlanmalıdır)|Düşük|N|İşlem kaynakları (Olay Hub 'ı)|
+|**İzleme aracısını sanal makinelerinize yükler**|Her makinede veri toplamayı, güncelleştirme taramayı, temel taramayı ve Endpoint Protection 'ı etkinleştirmek için Izleme aracısını yükler.<br>(İlgili ilke yok)|Yüksek|**E**|Makine|
+|**Konuk yapılandırma uzantısının Windows sanal makinelerinde yüklü olması gerekir (Önizleme)**|Konuk yapılandırma aracısını, örneğin işletim sisteminin yapılandırması, uygulama yapılandırması veya varlığı, ortam ayarları gibi bir makine içinde denetim ayarlarını etkinleştirmek için yükler. Yüklendikten sonra, Konuk içi ilkeler ' Windows Exploit Guard etkinleştirilmelidir ' gibi kullanıma sunulacaktır.<br>(İlgili ilke: Windows VM 'lerde Konuk yapılandırma ilkelerini etkinleştirmek için önkoşulları denetleme)|Yüksek|**E**|Makine|
+|**Makinelerinizde Windows Defender Exploit Guard etkinleştirilmelidir (Önizleme)**|Windows Defender Exploit Guard, Azure Ilke Konuk yapılandırma aracısından yararlanır. Exploit Guard, kuruluşların güvenlik riskini ve üretkenlik gereksinimlerini (yalnızca Windows) dengeleyebilmesini sağlarken, cihazları birçok farklı saldırı vektörü ve çok sayıda kötü amaçlı yazılım saldırılarında yaygın olarak kullanılan blok davranışlarına karşı kilitlemek için tasarlanan dört bileşene sahiptir.<br>(İlgili ilke: Windows Defender Exploit Guard 'ın etkin olmadığı Windows sanal makinelerini denetle)|Orta|N|Makine|
 |**İzleme aracısını sanal makinelerinize yükler**|Her makinede veri toplamayı, güncelleştirme taramayı, temel taramayı ve Endpoint Protection 'ı etkinleştirmek için Izleme aracısını yükler.<br>(İlgili ilke yok)|Yüksek|**E**|Makine|
 |**İzleme Aracısı sistem durumu sorunları makinelerinizde çözümlenmelidir**|Tam Güvenlik Merkezi koruması için, sorun giderme kılavuzundaki yönergeleri izleyerek makinelerinizdeki izleme Aracısı sorunlarını çözün<br>("Sanal makinelerinize izleme Aracısı 'nı yükler" üzerine bağlı ilke yok|Orta|N|Makine|
 |**Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir**|Azure 'da bulunan VM 'leriniz üzerinde hangi uygulamaların çalıştırılabileceği denetlemek için uygulama denetimini etkinleştirin. Bu, VM 'lerinizi kötü amaçlı yazılımlara karşı korumanıza yardımcı olur. Güvenlik Merkezi, her bir VM 'de çalışan uygulamaları çözümlemek için makine öğrenimini kullanır ve bu zekası kullanarak izin verme kuralları uygulamanıza yardımcı olur. Bu özellik, uygulama izin verme kurallarını yapılandırma ve sürdürme sürecini basitleştirir.<br>(İlgili ilke: sanal makinelerde Uyarlamalı uygulama denetimleri etkinleştirilmelidir)|Yüksek|N|Makine|

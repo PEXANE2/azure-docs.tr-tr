@@ -6,23 +6,23 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 7b163c65c0bf781a068abcd6434d75149a1de20b
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: d33207639ebef912307a3c594ec274fd9609bd67
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324768"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84656545"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Logic Apps kullanarak bir tümleştirme hizmeti ortamı (ıSE) oluşturun REST API
 
-Bu makalede, mantıksal uygulamalarınızın ve tümleştirme hesaplarınızın bir [Azure sanal ağına](../virtual-network/virtual-networks-overview.md)erişmesi gereken senaryolar için Logic Apps REST API aracılığıyla bir [ *tümleştirme hizmeti ortamının* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) nasıl oluşturulacağı gösterilmektedir. ISE, "Global" çok kiracılı Logic Apps hizmetinden ayrı tutulan adanmış depolama ve diğer kaynakları kullanan yalıtılmış bir ortamdır. Bu ayrım Ayrıca diğer Azure kiracılarının uygulamalarınızın performansı üzerinde sahip olabileceği etkileri azaltır. ISE, size kendi statik IP adreslerinizi de sağlar. Bu IP adresleri, genel, çok kiracılı hizmette Logic Apps tarafından paylaşılan statik IP adreslerinden ayrıdır.
+Bu makalede, mantıksal uygulamalarınızın ve tümleştirme hesaplarınızın bir [Azure sanal ağına](../virtual-network/virtual-networks-overview.md)erişmesi gereken senaryolar için Logic Apps REST API aracılığıyla bir [ *tümleştirme hizmeti ortamının* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) nasıl oluşturulacağı gösterilmektedir. ISE, "Global" çok kiracılı Logic Apps hizmetinden ayrı tutulan adanmış depolama ve diğer kaynakları kullanan adanmış bir ortamdır. Bu ayrım Ayrıca diğer Azure kiracılarının uygulamalarınızın performansı üzerinde sahip olabileceği etkileri azaltır. ISE, size kendi statik IP adreslerinizi de sağlar. Bu IP adresleri, genel, çok kiracılı hizmette Logic Apps tarafından paylaşılan statik IP adreslerinden ayrıdır.
 
 Ayrıca, [örnek Azure Resource Manager hızlı başlangıç şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) kullanarak veya [Azure Portal](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)kullanarak bir Ise oluşturabilirsiniz.
 
 > [!IMPORTANT]
 > Logic Apps, yerleşik Tetikleyiciler, yerleşik Eylemler ve ıSE 'de çalışan bağlayıcılar, tüketim tabanlı fiyatlandırma planından farklı bir fiyatlandırma planı kullanır. Fiyatlandırma ve faturalandırma işinin nasıl sesleri olduğunu öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](../logic-apps/logic-apps-pricing.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure portal bir ıSE oluşturduğunuzda, [Ise için erişimi etkinleştirmek için](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) aynı [Önkoşullar](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) ve gereksinimler
 

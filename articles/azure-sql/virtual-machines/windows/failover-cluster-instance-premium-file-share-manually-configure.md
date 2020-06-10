@@ -14,14 +14,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 01787fbf3339a7e079b705fb4be27ba1e30aee1b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 6929f6a8ca79c63d6d6d6fc2f3eee1b22ec49d39
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342890"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84656903"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Azure sanal makinelerinde Premium dosya paylaşımıyla SQL Server yük devretme kümesi örneği yapılandırma
+
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Bu makalede, [Premium dosya paylaşma](../../../storage/files/storage-how-to-create-premium-fileshare.md)kullanılarak Azure sanal makinelerinde bir SQL Server yük devretme kümesi örneği (FCI) oluşturma işlemi açıklanmaktadır.
@@ -47,6 +48,8 @@ Ayrıca, bu teknolojilerin genel olarak anlaşılmasına de sahip olmanız gerek
 
 > [!IMPORTANT]
 > Şu anda Azure sanal makinelerinde SQL Server yük devretme kümesi örnekleri yalnızca [SQL Server IaaS aracı uzantısının](sql-server-iaas-agent-extension-automate-management.md) [basit yönetim moduyla](sql-vm-resource-provider-register.md#management-modes) desteklenir. Tam uzantı modundan hafif olarak geçiş yapmak için, karşılık gelen VM 'Ler için **SQL sanal makine** kaynağını silin ve ardından bunları basıt modda SQL VM kaynak sağlayıcısı 'na kaydedin. Azure portal kullanarak **SQL sanal makine** kaynağını silerken, **doğru sanal makinenin yanındaki onay kutusunu temizleyin**. Tam uzantı otomatik yedekleme, düzeltme eki uygulama ve gelişmiş Portal yönetimi gibi özellikleri destekler. Aracı hafif yönetim modunda yeniden yüklendikten sonra bu özellikler SQL VM 'Leri için çalışmaz.
+> 
+
 
 Premium dosya paylaşımları, birçok iş yükünün ihtiyaçlarını karşılayacak ıOPS ve aktarım hızı kapasitesi sağlar. GÇ yoğun iş yükleri için, yönetilen Premium disklere veya ultra disklere göre [SQL Server yük devretme kümesi örneklerini depolama alanları doğrudan ile](failover-cluster-instance-storage-spaces-direct-manually-configure.md)düşünün.  
 
@@ -64,7 +67,7 @@ Kullandıkça Öde lisanslaması sayesinde, Azure sanal makinelerinde SQL Server
 
 Yazılım güvencesi içeren Kurumsal Anlaşma sahipseniz, her etkin düğüm için bir ücretsiz pasif FCı düğümü kullanabilirsiniz. Azure 'da Bu avantajdan faydalanmak için, KLG VM görüntülerini kullanın ve FCı 'nin hem etkin hem de pasif düğümlerinde aynı lisansı kullanın. Daha fazla bilgi için bkz. [Kurumsal Anlaşma](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx).
 
-Azure sanal makinelerinde SQL Server için Kullandıkça öde ve KLG lisanslamayı karşılaştırmak için bkz. [SQL VM 'leri kullanmaya başlama](sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms).
+Azure VM 'de SQL Server Kullandıkça öde ve KLG lisanslamayı karşılaştırmak için bkz. [SQL Server VM 'leri kullanmaya başlama](sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms).
 
 Lisanslama SQL Server hakkında tüm bilgiler için bkz. [fiyatlandırma](https://www.microsoft.com/sql-server/sql-server-2017-pricing).
 
@@ -72,18 +75,18 @@ Lisanslama SQL Server hakkında tüm bilgiler için bkz. [fiyatlandırma](https:
 
 Premium dosya paylaşımıyla yük devretme kümesi için FILESTREAM desteklenmez. FILESTREAM kullanmak için [depolama alanları doğrudan](failover-cluster-instance-storage-spaces-direct-manually-configure.md)kullanarak kümenizi dağıtın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlamadan önce, zaten şunları yapmalısınız:
 
 - Microsoft Azure aboneliği.
 - Azure sanal makinelerinde bir Windows etki alanı.
 - Hem Azure sanal makinelerinde hem de Active Directory nesne oluşturma izinlerine sahip olan bir etki alanı kullanıcı hesabı.
-- SQL Server hizmetini çalıştırmak için bir etki alanı kullanıcı hesabı ve dosya paylaşımının bağlanırken sanal makinede oturum açabildiğinizden emin olmanız gerekir.  
+- SQL Server hizmetini çalıştırmak için bir etki alanı kullanıcı hesabı ve dosya paylaşımından bağlama sırasında sanal makinede oturum açmak için kullanabilirsiniz. 
 - Bu bileşenler için yeterli IP adresi alanına sahip bir Azure sanal ağı ve alt ağı:
-   - İki sanal makine.
-   - Yük devretme kümesi IP adresi.
-   - Her FCı için bir IP adresi.
+   - İki sanal makine
+   - Yük devretme kümesi IP adresi
+   - Her FCı için bir IP adresi
 - Etki alanı denetleyicilerine işaret eden Azure ağı üzerinde yapılandırılmış DNS.
 - Veri dosyalarınız için veritabanınızın depolama kotasına bağlı olarak, kümelenmiş sürücü olarak kullanılacak bir [Premium dosya paylaşımıdır](../../../storage/files/storage-how-to-create-premium-fileshare.md) .
 - Windows Server 2012 R2 ve daha eski bir sürümü kullanıyorsanız, Cloud tanıkları Windows 2016 ve daha yeni bir sürüm için desteklendiğinden dosya paylaşma tanığı olarak kullanmak için başka bir dosya paylaşımının olması gerekir. Başka bir Azure dosya paylaşımından kullanabilirsiniz veya ayrı bir sanal makinede bir dosya paylaşma kullanabilirsiniz. Başka bir Azure dosya paylaşımından kullanacaksanız, kümelenmiş sürücünüz için kullanılan Premium dosya paylaşımıyla aynı işlem ile bağlayabilirsiniz. 
@@ -125,19 +128,21 @@ Bu önkoşulları yerine, yük devretme kümenizi oluşturmaya başlayabilirsini
 
       >[!IMPORTANT]
       >Bir sanal makineyi oluşturduktan sonra kullanılabilirlik kümesini ayarlayamazsınız veya değiştiremezsiniz.
+      >
 
    Azure Marketi 'nden bir görüntü seçin. Windows Server ve SQL Server içeren bir Azure Market görüntüsü kullanabilir veya yalnızca Windows Server içeren bir tane kullanabilirsiniz. Ayrıntılar için bkz. [Azure sanal makinelerinde SQL Server genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md).
 
    Azure galerisindeki resmi SQL Server görüntüleri yüklü bir SQL Server örneği, SQL Server yükleme yazılımını ve gerekli anahtarı içerir.
 
-   >[!IMPORTANT]
+   > [!IMPORTANT]
    > Sanal makineyi oluşturduktan sonra, önceden yüklenmiş tek başına SQL Server örneğini kaldırın. Yük devretme kümesini ve Premium dosya paylaşımından depolama alanı olarak ayarladıktan sonra SQL Server FCı oluşturmak için önceden yüklenmiş SQL Server medyasını kullanacaksınız.
+   > 
 
    Alternatif olarak, yalnızca işletim sistemini içeren Azure Marketi görüntülerini kullanabilirsiniz. Bir **Windows Server 2016 Datacenter** görüntüsü seçin ve yük devretme kümesini ve Premium dosya paylaşımından depolama olarak ayarladıktan sonra SQL Server FCI 'yi kurun. Bu görüntüde SQL Server yükleme medyası yok. SQL Server yükleme medyasını her sunucu için çalıştırabileceğiniz bir konuma yerleştirin.
 
-1. Azure sanal makinelerinizi oluşturduktan sonra, RDP kullanarak her birine bağlanın.
+1. Azure sanal makinelerinizi oluşturduktan sonra, Uzak Masaüstü Protokolü (RDP) kullanarak her birine bağlanın.
 
-   RDP kullanarak bir sanal makineye ilk kez bağlandığınızda, bir istem, BILGISAYARıN ağda bulunabilir olmasını isteyip istemediğinizi sorar. **Evet**' i seçin.
+   RDP ile bir sanal makineye ilk kez bağlandığınızda, bir istem, BILGISAYARıN ağda keşfedilmesini sağlamak isteyip istemediğinizi sorar. **Evet**' i seçin.
 
 1. SQL Server tabanlı sanal makine görüntülerinden birini kullanıyorsanız, SQL Server örneğini kaldırın.
 
@@ -185,10 +190,11 @@ Sanal makineleri oluşturup yapılandırdıktan sonra, Premium dosya paylaşım�
   > [!IMPORTANT]
   > - Bu paylaşımın ıOPS ve alan kapasitesini veri ve günlük dosyaları için kaydetmek üzere yedekleme dosyaları için ayrı bir dosya paylaşma kullanmayı düşünün. Yedekleme dosyaları için Premium veya standart dosya paylaşımından birini kullanabilirsiniz.
   > - Windows 2012 R2 ve daha eski bir sürümle çalışıyorsanız, dosya paylaşma tanığı olarak kullanacağınız dosya paylaşımınızı bağlamak için aynı adımları izleyin. 
+  > 
 
 ## <a name="step-3-configure-the-failover-cluster"></a>3. Adım: yük devretme kümesini yapılandırma
 
-Bir sonraki adım, yük devretme kümesini yapılandırmaktır. Bu adımda, aşağıdaki alt adımları tamamlayacaksınız:
+Şimdi yük devretme kümesini yapılandırırsınız. Bu bölümde, aşağıdaki adımları tamamlayadınız:
 
 1. Windows Server Yük Devretme Kümelemesi özelliğini ekleyin.
 1. Kümeyi doğrulayın.
@@ -246,8 +252,9 @@ Kümeyi doğruladıktan sonra, yük devretme kümesini oluşturun.
 ### <a name="create-the-failover-cluster"></a>Yük devretme kümesini oluşturma
 
 Yük devretme kümesini oluşturmak için şunlar gerekir:
+
 - Küme düğümleri olacak sanal makinelerin adları.
-- Yük devretme kümesi için bir ad
+- Yük devretme kümesi için bir ad.
 - Yük devretme kümesi için bir IP adresi. Küme düğümleri ile aynı Azure sanal ağı ve alt ağı üzerinde kullanılmayan bir IP adresi kullanabilirsiniz.
 
 #### <a name="windows-server-2012-through-windows-server-2016"></a>Windows Server 2016 ile Windows Server 2012
@@ -267,9 +274,9 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 ```
 
 
-### <a name="create-a-cloud-witness-win-2016-"></a>Bulut tanığı oluşturma (Win 2016 +)
+### <a name="create-a-cloud-witness-win-2016-and-later"></a>Bulut tanığı oluşturma (Win 2016 ve üzeri)
 
-Windows Server 2016 ve üzeri bir sürümü kullanıyorsanız, bir bulut tanığı oluşturmanız gerekecektir. Bulut tanığı, bir Azure Depolama Blobu içinde depolanan yeni bir küme çekirdeği tanığı türüdür. Bu, bir tanık paylaşımının barındırıp veya ayrı bir dosya paylaşımının kullanıldığı ayrı bir VM gereksinimini ortadan kaldırır.
+Windows Server 2016 ve sonraki bir sürümü kullanıyorsanız, bir bulut tanığı oluşturmanız gerekecektir. Bulut tanığı, bir Azure Depolama Blobu içinde depolanan yeni bir küme çekirdeği tanığı türüdür. Bu, bir tanık paylaşımının barındırıp veya ayrı bir dosya paylaşımının kullanıldığı ayrı bir VM gereksinimini ortadan kaldırır.
 
 1. [Yük devretme kümesi için bir bulut tanığı oluşturun](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness).
 
@@ -304,7 +311,7 @@ Yük devretme kümesini yapılandırdıktan sonra, SQL Server FCı 'yi oluştura
 
 1. **Yeni SQL Server yük devretme kümesi yüklemesi ' ni**seçin. SQL Server FCı 'yi yüklemek için sihirbazdaki yönergeleri izleyin.
 
-   FCı veri dizinlerinin Premium dosya paylaşımında olması gerekir. Paylaşımın tam yolunu şu biçimde girin: `\\storageaccountname.file.core.windows.net\filesharename\foldername` . Veri dizini olarak bir dosya sunucusu belirtmiş olduğunu söyleyen bir uyarı görüntülenir. Bu uyarı beklenmektedir. Dosya paylaşımından kalıcı hale geldiğinde RDP ettiğiniz Kullanıcı hesabının sanal makinede bulunan Kullanıcı hesabının, SQL Server hizmetin olası hatalardan kaçınmak için kullandığı hesapla aynı olduğundan emin olun.
+   FCı veri dizinlerinin Premium dosya paylaşımında olması gerekir. Paylaşımın tam yolunu şu biçimde girin: `\\storageaccountname.file.core.windows.net\filesharename\foldername` . Veri dizini olarak bir dosya sunucusu belirtmiş olduğunu söyleyen bir uyarı görüntülenir. Bu uyarı beklenmektedir. Dosya paylaşımından kalıcı hale geldiğinde, sanal makineye RDP aracılığıyla erişmek için kullandığınız kullanıcı hesabının, SQL Server hizmetin olası hatalardan kaçınmak için kullandığı hesapla aynı olduğundan emin olun.
 
    :::image type="content" source="media/manually-configure-failover-cluster-instance-premium-file-share/use-file-share-as-data-directories.png" alt-text="Dosya paylaşımının SQL veri dizinleri olarak kullanılması":::
 
@@ -318,6 +325,7 @@ Yük devretme kümesini yapılandırdıktan sonra, SQL Server FCı 'yi oluştura
 
    >[!NOTE]
    >SQL Server ile bir Azure Marketi Galeri görüntüsü kullandıysanız, görüntüye SQL Server Araçlar eklenmiştir. Bu görüntülerden birini kullanmıyorsanız, SQL Server araçlarını ayrı olarak yükleyebilirsiniz. Bkz. [Download SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
+   >
 
 ## <a name="step-6-create-the-azure-load-balancer"></a>6. Adım: Azure Yük dengeleyiciyi oluşturma
 
@@ -429,6 +437,7 @@ Aşağıdaki listede, güncelleştirmeniz gereken değerler açıklanmaktadır:
 
 >[!IMPORTANT]
 >Küme parametresinin alt ağ maskesi TCP IP yayını adresi olmalıdır: `255.255.255.255` .
+>
 
 Küme araştırmasını ayarladıktan sonra, PowerShell 'de tüm küme parametrelerini görebilirsiniz. Şu betiği çalıştırın:
 
@@ -456,10 +465,12 @@ Bağlantıyı sınamak için aynı sanal ağdaki başka bir sanal makinede oturu
 
 >[!NOTE]
 >Gerekirse, [SQL Server Management Studio indirebilirsiniz](https://msdn.microsoft.com/library/mt238290.aspx).
+>
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Azure sanal makineleri, Windows Server 2019 üzerinde, kümelenmiş paylaşılan birimler (CSV) ve [Standart yük dengeleyici](../../../load-balancer/load-balancer-standard-overview.md)üzerinde depolama ile Microsoft Dağıtılmış işlem DÜZENLEYICISI (MSDTC) destekler.
+Azure sanal makineleri, kümelenmiş paylaşılan birimlerde (CSV) ve [Standart yük dengeleyicide](../../../load-balancer/load-balancer-standard-overview.md)depolama Ile Windows Server 2019 ' de Microsoft Dağıtılmış işlem DÜZENLEYICISI (MSDTC) ' i destekler.
+
 
 Azure sanal makinelerde, Windows Server 2016 veya önceki sürümlerde MSDTC desteklenmez çünkü:
 

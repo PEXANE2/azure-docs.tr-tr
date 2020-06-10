@@ -4,15 +4,15 @@ description: Windows VM 'yi, Kaynak Yöneticisi dağıtım modelinde PowerShell 
 author: roygara
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: d8069b174b7a69cc2e6c47171159569c56a15563
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6173f2f60f5dd0b2b06c415bbf55ed31bacbe8b7
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081957"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658186"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows sanal makinesini yönetilmeyen disklerden yönetilen disklere dönüştürme
 
@@ -35,7 +35,7 @@ Yönetilmeyen diskler kullanan mevcut Windows sanal makinelerinizi (VM) varsa, [
 ## <a name="convert-single-instance-vms"></a>Tek örnekli VM 'Leri dönüştürme
 Bu bölümde, tek örnekli Azure VM 'lerinin yönetilmeyen disklerden yönetilen disklere nasıl dönüştürüleceği ele alınmaktadır. (Sanal makinelerleriniz bir kullanılabilirlik kümesinde ise, sonraki bölüme bakın.) 
 
-1. [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) cmdlet 'ini kullanarak VM 'yi serbest bırakın. Aşağıdaki örnek, adlı `myVM` `myResourceGroup`kaynak grubunda adlı VM 'yi kaldırır: 
+1. [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) cmdlet 'ini kullanarak VM 'yi serbest bırakın. Aşağıdaki örnek, adlı kaynak grubunda adlı VM 'yi kaldırır `myVM` `myResourceGroup` : 
 
    ```azurepowershell-interactive
    $rgName = "myResourceGroup"
@@ -55,7 +55,7 @@ Bu bölümde, tek örnekli Azure VM 'lerinin yönetilmeyen disklerden yönetilen
 
 Yönetilen disklere dönüştürmek istediğiniz VM 'Ler bir kullanılabilirlik kümesinde ise, önce kullanılabilirlik kümesini yönetilen bir kullanılabilirlik kümesine dönüştürmeniz gerekir.
 
-1. [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) cmdlet 'ini kullanarak kullanılabilirlik kümesini dönüştürün. Aşağıdaki örnek, adlı `myAvailabilitySet` `myResourceGroup`kaynak grubunda adlı kullanılabilirlik kümesini güncelleştirir:
+1. [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) cmdlet 'ini kullanarak kullanılabilirlik kümesini dönüştürün. Aşağıdaki örnek, adlı kaynak grubunda adlı kullanılabilirlik kümesini güncelleştirir `myAvailabilitySet` `myResourceGroup` :
 
    ```azurepowershell-interactive
    $rgName = 'myResourceGroup'
@@ -65,7 +65,7 @@ Yönetilen disklere dönüştürmek istediğiniz VM 'Ler bir kullanılabilirlik 
    Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned 
    ```
 
-   Kullanılabilirlik kümesi 'nin bulunduğu bölge yalnızca 2 yönetilen hata etki alanına sahipse, ancak yönetilmeyen hata etki alanlarının sayısı 3 ise, bu komut "belirtilen hata etki alanı sayısı 3 ' e kadar 2 ' ye denk gelmelidir" hatasıyla benzer bir hata gösterir. Hatayı gidermek için, hata etki alanını 2 ' ye güncelleştirin ve aşağıdaki `Sku` `Aligned` gibi güncelleştirin:
+   Kullanılabilirlik kümesi 'nin bulunduğu bölge yalnızca 2 yönetilen hata etki alanına sahipse, ancak yönetilmeyen hata etki alanlarının sayısı 3 ise, bu komut "belirtilen hata etki alanı sayısı 3 ' e kadar 2 ' ye denk gelmelidir" hatasıyla benzer bir hata gösterir. Hatayı gidermek için, hata etki alanını 2 ' ye güncelleştirin ve `Sku` `Aligned` aşağıdaki gibi güncelleştirin:
 
    ```azurepowershell-interactive
    $avSet.PlatformFaultDomainCount = 2
@@ -95,7 +95,7 @@ Dönüştürmeden önce, tüm VM uzantılarının ' sağlama başarılı ' durum
 
 Azure portal kullanarak, yönetilmeyen diskleri yönetilen disklere de dönüştürebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Portaldaki VM 'Ler listesinden VM 'yi seçin.
 3. VM 'nin dikey penceresinde, menüden **diskler** ' i seçin.
 4. **Diskler** dikey penceresinin üst kısmında, **yönetilen disklere geçir**' i seçin.

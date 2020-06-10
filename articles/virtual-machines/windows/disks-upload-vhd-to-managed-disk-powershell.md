@@ -4,16 +4,16 @@ description: Bir VHD 'yi Azure yönetilen diskine yüklemeyi ve Azure PowerShell
 author: roygara
 ms.author: rogarana
 ms.date: 03/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 6242baf5a541231d367d456450388ef455312780
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 153bbc39ceba52548d667fa4c83d0edc867fcb93
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182523"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660612"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Bir VHD 'yi Azure 'a yükleme veya yönetilen bir diski başka bir bölgeye kopyalama-Azure PowerShell
 
@@ -38,15 +38,15 @@ Bu tür yönetilen disklerin iki benzersiz durumu vardır:
 - ActiveUpload, bu, diskin karşıya yükleme almaya ve SAS üretilmeye hazırlanmasıdır.
 
 > [!NOTE]
-> Bu durumlardan birinde, yönetilen disk, gerçek disk türünden bağımsız olarak [Standart HDD fiyatlandırmasına](https://azure.microsoft.com/pricing/details/managed-disks/)göre faturalandırılır. Örneğin, bir P10 S10 olarak faturalandırılacaktır. Bu, diski bir VM `revoke-access` 'ye eklemek için gerekli olan yönetilen diskte çağrılana kadar doğru olacaktır.
+> Bu durumlardan birinde, yönetilen disk, gerçek disk türünden bağımsız olarak [Standart HDD fiyatlandırmasına](https://azure.microsoft.com/pricing/details/managed-disks/)göre faturalandırılır. Örneğin, bir P10 S10 olarak faturalandırılacaktır. Bu, `revoke-access` diski BIR VM 'ye eklemek için gerekli olan yönetilen diskte çağrılana kadar doğru olacaktır.
 
 ## <a name="create-an-empty-managed-disk"></a>Boş bir yönetilen disk oluşturma
 
-Karşıya yüklemek üzere boş bir standart HDD oluşturabilmeniz için önce, yüklemek istediğiniz VHD 'nin bayt cinsinden dosya boyutu gerekir. Örnek kod, sizin tarafınızdan sizin için bunu sizin için kullanabilirsiniz `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`. Bu değer **-uploadsizeınbytes** parametresini belirtirken kullanılır.
+Karşıya yüklemek üzere boş bir standart HDD oluşturabilmeniz için önce, yüklemek istediğiniz VHD 'nin bayt cinsinden dosya boyutu gerekir. Örnek kod, sizin tarafınızdan sizin için bunu sizin için kullanabilirsiniz `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length` . Bu değer **-uploadsizeınbytes** parametresini belirtirken kullanılır.
 
 Şimdi, yerel kabuğunuzun içinde, **-createoption** parametresindeki **karşıya yükleme** ayarını ve [New-azdiskconfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) cmdlet 'inde **-uploadsizeınbytes** PARAMETRESINI belirterek karşıya yüklemek üzere boş bir standart HDD oluşturun. Ardından, diski oluşturmak için [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) ' i çağırın.
 
-`<yourdiskname>`, `<yourresourcegroupname>`Ve `<yourregion>` ardından aşağıdaki komutları çalıştırın:
+`<yourdiskname>`, `<yourresourcegroupname>` Ve `<yourregion>` ardından aşağıdaki komutları çalıştırın:
 
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length
@@ -60,7 +60,7 @@ Premium SSD veya standart SSD yüklemek isterseniz, **Standard_LRS** **Premium_L
 
 Karşıya yükleme işlemi için yapılandırılmış boş bir yönetilen disk oluşturduğunuza göre, buna bir VHD yükleyebilirsiniz. Bir VHD 'yi diske yüklemek için, bir yazılabilir SAS gerekir, bu sayede karşıya yüklemenizin hedefi olarak başvurabilirsiniz.
 
-Boş yönetilen diskinizin yazılabilir bir SAS oluşturmak için, ve ' ı `<yourdiskname>`değiştirin `<yourresourcegroupname>`ve ardından aşağıdaki komutları kullanın:
+Boş yönetilen diskinizin yazılabilir bir SAS oluşturmak için, `<yourdiskname>` ve `<yourresourcegroupname>` ' ı değiştirin ve ardından aşağıdaki komutları kullanın:
 
 ```powershell
 $diskSas = Grant-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<yourdiskname>' -DurationInSecond 86400 -Access 'Write'
@@ -82,7 +82,7 @@ AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlo
 
 Karşıya yükleme tamamlandıktan sonra ve diske daha fazla veri yazmanıza gerek kalmadığında, SAS 'yi iptal edin. SAS iptal edildiğinde, yönetilen diskin durumu değişir ve diski bir VM 'ye eklemenize olanak tanır.
 
-Ve `<yourdiskname>`öğesini `<yourresourcegroupname>`değiştirin ve ardından aşağıdaki komutu çalıştırın:
+`<yourdiskname>`Ve öğesini değiştirin ve `<yourresourcegroupname>` ardından aşağıdaki komutu çalıştırın:
 
 ```powershell
 Revoke-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<yourdiskname>'
@@ -97,7 +97,7 @@ Doğrudan karşıya yükleme, yönetilen bir disk kopyalama işlemini de basitle
 > [!IMPORTANT]
 > Azure 'dan yönetilen bir diskin bayt cinsinden disk boyutunu sağlarken 512 sapmasını eklemeniz gerekir. Bunun nedeni, Azure 'un disk boyutunu döndürürken alt bilgiyi atatmesinden kaynaklanır. Bunu yapmazsanız kopya başarısız olur. Aşağıdaki komut dosyası sizin için zaten bunu yapar.
 
-`<sourceResourceGroupHere>` `<sourceDiskNameHere>`, `<targetDiskNameHere>`,, `<targetResourceGroupHere>`, `<yourOSTypeHere>` Ve `<yourTargetLocationHere>` (bir konum değeri örneği uswest2) değerlerini değerleriyle değiştirin, ardından yönetilen bir diski kopyalamak için aşağıdaki betiği çalıştırın.
+,, `<sourceResourceGroupHere>` , `<sourceDiskNameHere>` `<targetDiskNameHere>` `<targetResourceGroupHere>` , `<yourOSTypeHere>` Ve (bir `<yourTargetLocationHere>` konum değeri örneği uswest2) değerlerini değerleriyle değiştirin, ardından yönetilen bir diski kopyalamak için aşağıdaki betiği çalıştırın.
 
 ```powershell
 

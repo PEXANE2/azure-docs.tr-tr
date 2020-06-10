@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: ac9d9fddc45abbcbe4890d1060dcc2c931c72182
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3724392cc50e910c5caf4a3f6cba85070a6d107f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84265174"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661090"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Dosyalar hakkında sık sorulan sorular (SSS)
 [Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -109,7 +109,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
    
     \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
 
-    Örneğin, CompanyReport-CentralServer. docx ' in ilk çakışması, merkezileştirme sunucusu daha eski yazmanın gerçekleştiği yerdir. İkinci çakışma CompanyReport-CentralServer-1. docx olarak adlandırılır. Azure Dosya Eşitleme dosya başına 100 çakışma dosyasını destekler. Çakışma dosyası sayısı üst sınırına ulaşıldığında, çakışma dosyası sayısı 100 ' den az olana kadar dosya eşitleme başarısız olur.
+    Örneğin, CompanyReport.docx ilk çakışması, merkezileştirme sunucusu eski yazmanın gerçekleştiği yerdir CompanyReport-CentralServer.docx hale gelir. İkinci çakışma CompanyReport-CentralServer-1.docx olarak adlandırılır. Azure Dosya Eşitleme dosya başına 100 çakışma dosyasını destekler. Çakışma dosyası sayısı üst sınırına ulaşıldığında, çakışma dosyası sayısı 100 ' den az olana kadar dosya eşitleme başarısız olur.
 
 * <a id="afs-storage-redundancy"></a>
   **Azure Dosya Eşitleme için coğrafi olarak yedekli depolama destekleniyor mu?**  
@@ -160,7 +160,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 * <a id="afs-ntfs-acls"></a>
   **Dizin/dosya düzeyinde NTFS ACL 'Lerini Azure dosyalarında depolanan verilerle birlikte Azure Dosya Eşitleme korur.**
 
-    24 Şubat, 2020 itibariyle Azure dosya eşitleme tarafından katmanlı yeni ve mevcut ACL 'Ler NTFS biçiminde kalıcı hale getirilir ve doğrudan Azure dosya paylaşımında yapılan ACL değişiklikleri, eşitleme grubundaki tüm sunucularla eşitlenir. Azure dosyalarına yapılan ACL 'lerdeki tüm değişiklikler, Azure dosya eşitleme aracılığıyla eşitlenir. Azure dosyalarına veri kopyalarken, paylaşıma erişmek ve ACL 'larınızı korumak için SMB kullandığınızdan emin olun. AzCopy veya Depolama Gezgini gibi mevcut REST tabanlı araçlar, ACL 'Leri kalıcı hale getirme.
+    24 Şubat, 2020 itibariyle Azure dosya eşitleme tarafından katmanlı yeni ve mevcut ACL 'Ler NTFS biçiminde kalıcı hale getirilir ve doğrudan Azure dosya paylaşımında yapılan ACL değişiklikleri, eşitleme grubundaki tüm sunucularla eşitlenir. Azure dosyalarına yapılan ACL 'lerdeki tüm değişiklikler, Azure dosya eşitleme aracılığıyla eşitlenir. Verileri Azure dosyalarına kopyalarken, SMB veya REST aracılığıyla öznitelikleri, zaman damgalarını ve ACL 'Leri bir Azure dosya paylaşımında kopyalamak için gerekli "uygunluğu" nı destekleyen bir kopyalama aracı kullandığınızdan emin olun. AzCopy gibi Azure kopyalama araçlarını kullanırken, en son sürümü kullanmak önemlidir. Bir dosyanın tüm önemli meta verilerini kopyalayabilmeniz için Azure kopyalama araçlarına genel bir bakış almak için [dosya kopyalama araçları tablosuna](storage-files-migration-overview.md#file-copy-tools) bakın.
 
     Dosya eşitleme yönetilen dosya paylaşımlarınız üzerinde Azure Backup etkinleştirdiyseniz, dosya ACL 'Leri yedekleme geri yükleme iş akışının bir parçası olarak geri yüklemeye devam edebilir. Bu, tüm paylaşımın veya tek tek dosyalar/dizinler için geçerlidir.
 

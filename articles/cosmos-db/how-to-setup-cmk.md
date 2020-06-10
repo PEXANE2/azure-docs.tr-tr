@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: thweiss
-ms.openlocfilehash: d551f05dd0700a93a94c6b836b896a99d7f5d96c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 31681397961045da02add7ccb37f29f6c835c08d
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267095"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659884"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault ile Azure Cosmos hesabınız için müşteri tarafından yönetilen anahtarları yapılandırma
 
@@ -30,9 +30,9 @@ Müşteri tarafından yönetilen anahtarları [Azure Key Vault](../key-vault/gen
 
    ![Sol menüden "kaynak sağlayıcıları" girdisi](./media/how-to-setup-cmk/portal-rp.png)
 
-1. **Microsoft. DocumentDB** kaynak sağlayıcısı için arama yapın. Kaynak sağlayıcının zaten kayıtlı olarak işaretlendiğinden emin olun. Aksi takdirde, kaynak sağlayıcısını seçip **Kaydet**' i seçin:
+1. **Microsoft.DocumentDB** kaynak sağlayıcısını arayın. Kaynak sağlayıcının zaten kayıtlı olarak işaretlendiğinden emin olun. Aksi takdirde, kaynak sağlayıcısını seçip **Kaydet**' i seçin:
 
-   ![Microsoft. DocumentDB kaynak sağlayıcısını kaydetme](./media/how-to-setup-cmk/portal-rp-register.png)
+   ![Microsoft.DocumentDB kaynak sağlayıcısını kaydetme](./media/how-to-setup-cmk/portal-rp-register.png)
 
 ## <a name="configure-your-azure-key-vault-instance"></a>Azure Key Vault örneğinizi yapılandırma
 
@@ -59,7 +59,7 @@ Mevcut bir Azure Key Vault örneğini kullanıyorsanız, Azure portal **Özellik
 
    ![Doğru izinleri seçme](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
 
-1. **Asıl seçin**altında **hiçbiri seçili**' i seçin. Ardından, **Azure Cosmos DB** sorumlusu arayıp seçin (bulmayı kolaylaştırmak için, asıl kimliğin `a232010e-820c-4083-83bb-3ace5fc29d0b` bulunduğu Azure Kamu bölgeleri dışında herhangi bir Azure BÖLGESI için sorumlu kimliğe göre de arama yapabilirsiniz `57506a73-e302-42a9-b869-6f12d9ec29e9` ). Son olarak, en altta **Seç** ' i seçin. **Azure Cosmos DB** sorumlusu listede yoksa, bu makalenin [kaynak sağlayıcısını kaydetme](#register-resource-provider) bölümünde açıklandığı gibi **Microsoft. DocumentDB** kaynak sağlayıcısını yeniden kaydetmeniz gerekebilir.
+1. **Asıl seçin**altında **hiçbiri seçili**' i seçin. Ardından, **Azure Cosmos DB** sorumlusu arayıp seçin (bulmayı kolaylaştırmak için, asıl kimliğin `a232010e-820c-4083-83bb-3ace5fc29d0b` bulunduğu Azure Kamu bölgeleri dışında herhangi bir Azure BÖLGESI için sorumlu kimliğe göre de arama yapabilirsiniz `57506a73-e302-42a9-b869-6f12d9ec29e9` ). Son olarak, en altta **Seç** ' i seçin. **Azure Cosmos DB** sorumlusu listede yoksa, bu makalenin [kaynak sağlayıcısını kaydetme](#register-resource-provider) bölümünde açıklandığı gibi **Microsoft.Documentdb** kaynak sağlayıcısını yeniden kaydetmeniz gerekebilir.
 
    ![Azure Cosmos DB sorumlusu seçin](./media/how-to-setup-cmk/portal-akv-add-ap.png)
 
@@ -220,6 +220,31 @@ az cosmosdb show \
     --query keyVaultKeyUri
 ```
 
+## <a name="key-rotation"></a>Anahtar döndürme
+
+Azure Cosmos hesabınız tarafından kullanılan müşteri tarafından yönetilen anahtarı döndürmek, iki şekilde yapılabilir.
+
+- Azure Key Vault Şu anda kullanılan anahtarın yeni bir sürümünü oluşturun:
+
+  ![Yeni bir anahtar sürümü oluştur](./media/how-to-setup-cmk/portal-akv-rot.png)
+
+- Hesabınızın özelliğini güncelleştirerek, şu anda kullanılan anahtarı tamamen farklı bir anahtarla değiştirin `keyVaultKeyUri` . PowerShell 'de nasıl yapılır:
+
+    ```powershell
+    $resourceGroupName = "myResourceGroup"
+    $accountName = "mycosmosaccount"
+    $newKeyUri = "https://<my-vault>.vault.azure.net/keys/<my-new-key>"
+    
+    $account = Get-AzResource -ResourceGroupName $resourceGroupName -Name $accountName `
+        -ResourceType "Microsoft.DocumentDb/databaseAccounts"
+    
+    $account.Properties.keyVaultKeyUri = $newKeyUri
+    
+    $account | Set-AzResource -Force
+    ```
+
+Önceki anahtar veya anahtar sürümü 24 saat sonra devre dışı bırakılabilir veya [Azure Key Vault denetim günlükleri](../key-vault/general/logging.md) artık bu anahtar veya anahtar sürümünde Azure Cosmos DB etkinliği göstermez.
+    
 ## <a name="error-handling"></a>Hata işleme
 
 Azure Cosmos DB içinde müşteri tarafından yönetilen anahtarlar (CMK) kullanılırken, herhangi bir hata oluşursa Azure Cosmos DB, yanıtta bir HTTP alt durum kodu ile birlikte hata ayrıntılarını döndürür. Sorunun kök nedenini ayıklamak için bu alt durum kodunu kullanabilirsiniz. Desteklenen HTTP alt durum kodlarının listesini almak için [Azure Cosmos DB Için http durum kodları](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) makalesine bakın.
@@ -267,14 +292,6 @@ Azure Cosmos hesabınızın ayrıntılarını programlı bir şekilde getirip ö
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>Müşteri tarafından yönetilen anahtarlar yedeklemeyi nasıl etkiler?
 
 Azure Cosmos DB, hesabınızda depolanan verilerin [düzenli ve otomatik yedeklemelerini](./online-backup-and-restore.md) alır. Bu işlem şifrelenmiş verileri yedekler. Geri yüklenen yedeklemeyi kullanmak için, yedekleme sırasında kullandığınız şifreleme anahtarı gereklidir. Bu, hiçbir iptali yapılmadığı ve yedeklemenin yapıldığı sırada kullanılan anahtarın sürümünün etkinleştirilmeyeceği anlamına gelir.
-
-### <a name="how-do-i-rotate-an-encryption-key"></a>Nasıl yaparım? bir şifreleme anahtarı mi döndürün?
-
-Anahtar döndürme, Azure Key Vault ' de anahtarın yeni bir sürümü oluşturularak gerçekleştirilir:
-
-![Yeni bir anahtar sürümü oluştur](./media/how-to-setup-cmk/portal-akv-rot.png)
-
-Önceki sürüm 24 saat sonra devre dışı bırakılabilir veya [Azure Key Vault denetim günlükleri](../key-vault/general/logging.md) artık bu sürümdeki Azure Cosmos DB etkinliği göstermez.
 
 ### <a name="how-do-i-revoke-an-encryption-key"></a>Nasıl yaparım? bir şifreleme anahtarı iptal edilsin mi?
 

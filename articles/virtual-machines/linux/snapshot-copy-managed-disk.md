@@ -5,16 +5,16 @@ author: roygara
 manager: twooley
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f2d905d041198bd35c4657052bf18d981904dc44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f4489b3073462a93319886ee5560ed5a6660111
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758409"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659956"
 ---
 # <a name="create-a-snapshot"></a>Anlık görüntü oluşturma 
 
@@ -58,14 +58,14 @@ az snapshot list \
 
 ## <a name="use-azure-portal"></a>Azure portalı kullanma 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol üst taraftan başlayarak **kaynak oluştur ' a** tıklayın ve **anlık görüntü**arayın. Arama sonuçlarından **anlık görüntü** ' i seçin.
 3. **Anlık görüntü** dikey penceresinde **Oluştur**' a tıklayın.
 4. Anlık görüntü için bir **ad** girin.
 5. Var olan bir kaynak grubunu seçin veya yeni bir kaynak grubu adı yazın. 
 7. **Kaynak disk**için, anlık görüntü yapılacak yönetilen diski seçin.
 8. Anlık görüntüyü depolamak için kullanılacak **hesap türünü** seçin. Yüksek performanslı bir SSD üzerinde depolanmış olması gerekmedikçe **Standart HDD** kullanın.
-9. **Oluştur**' a tıklayın.
+9. **Oluştur**'a tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/15/2020
 ms.author: apimpm
-ms.openlocfilehash: fefa5ff5d112b479110d484ee0ea4c358b5c88a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c9257c50320497a11a6cd1dbfdd1c709e2d9800
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335906"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658421"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management geliştirici portalına genel bakış
 
@@ -34,7 +34,7 @@ Bu makalede, API Management 'de geliştirici portalının şirket içinde barın
 
 Geliştirici portalınızı iki şekilde oluşturabilirsiniz:
 
-- **Yönetilen sürüm** -API Management örneğiniz içinde yerleşik olan ve URL `<your-api-management-instance-name>.developer.azure-api.net`aracılığıyla erişilebilen portalı düzenleyerek ve özelleştirerek. Yönetilen portala erişme ve bunları özelleştirme hakkında bilgi edinmek için [Bu belge makalesine](api-management-howto-developer-portal-customize.md) başvurun.
+- **Yönetilen sürüm** -API Management örneğiniz içinde yerleşik olan ve URL aracılığıyla erişilebilen portalı düzenleyerek ve özelleştirerek `<your-api-management-instance-name>.developer.azure-api.net` . Yönetilen portala erişme ve bunları özelleştirme hakkında bilgi edinmek için [Bu belge makalesine](api-management-howto-developer-portal-customize.md) başvurun.
 - **Şirket içinde barındırılan sürüm** -portalınızın bir API Management örneği dışında dağıtıp barındırılmasına göre. Bu yaklaşım, portalın kod temelini düzenlemenizi ve sunulan temel işlevselliği genişletmenizi sağlar; örneğin, üçüncü taraf sistemlerle Tümleştirmeler için özel pencere öğeleri uygulayın. Bu senaryoda, portalın bakımını ve portalı en son sürüme yükseltmekten siz sorumlusunuz. Ayrıntılar ve yönergeler için, [portalın kaynak koduyla GitHub deposuna][1] ve [pencere öğesi uygulama hakkında öğreticiye][3]bakın. [Yönetilen sürüme yönelik öğretici](api-management-howto-developer-portal-customize.md) , portalın yönetim panelinde, yönetilen ve şirket içinde barındırılan sürümler için ortak bir adım adım yol gösterir.
 
 ## <a name="portal-architectural-concepts"></a>Portal mimari kavramları
@@ -68,7 +68,7 @@ Portal, [Paperbits çerçevesinin](https://paperbits.io/)uyarbir çatalını tem
 
 Bu bölümde, genel doğası olan geliştirici portalı hakkında sık sorulan soruları yanıtlarız. Şirket içinde barındırılan sürüme özgü sorular için [GitHub deposunun wiki bölümüne](https://github.com/Azure/api-management-developer-portal/wiki)bakın.
 
-### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/>Portalın önizleme sürümünden nasıl geçiş yapabilirim?
+### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"></a>Portalın önizleme sürümünden nasıl geçiş yapabilirim?
 
 Geliştirici portalının önizleme sürümünü kullanarak, API Management hizmetinizde önizleme içeriğini sağlamış olursunuz. Varsayılan içerik, daha iyi kullanıcı deneyimi için genel kullanıma sunulan sürümde önemli ölçüde değiştirilmiştir. Ayrıca yeni pencere öğeleri içerir.
 
@@ -76,7 +76,7 @@ Yönetilen sürümü kullanıyorsanız, **işlemler** menüsü bölümünde **i�
 
 ![Portal içeriğini sıfırlama](media/api-management-howto-developer-portal/reset-content.png)
 
-Şirket içinde barındırılan sürümü kullanıyorsanız, mevcut içeriği kaldırmak ve yeni içerik `scripts/cleanup.bat` sağlamak `scripts/generate.bat` için GitHub deposundan ve ' yi kullanın. Portalınızın kodunu önceden GitHub deposundan en son sürüme yükseltdiğinizden emin olun.
+Şirket içinde barındırılan sürümü kullanıyorsanız, `scripts/cleanup.bat` `scripts/generate.bat` mevcut içeriği kaldırmak ve yeni içerik sağlamak için GitHub deposundan ve ' yi kullanın. Portalınızın kodunu önceden GitHub deposundan en son sürüme yükseltdiğinizden emin olun.
 
 Portalın içeriğini sıfırlamak istemiyorsanız, sayfalarınızın tamamında yeni kullanılabilir pencere öğelerini kullanmayı düşünebilirsiniz. Mevcut pencere öğeleri, en son sürümlere otomatik olarak güncelleştirildi.
 
@@ -116,7 +116,7 @@ Hayır.
 
 Çoğu durumda-Hayır.
 
-API Management hizmetiniz bir iç VNet içindeyse, geliştirici portalınızın yalnızca ağ içinden erişilebilir olması gerekir. Yönetim uç noktasının ana bilgisayar adı, portalın yönetim arabirimine erişmek için kullandığınız makineden hizmetin iç VIP 'sine çözümlenmelidir. Yönetim uç noktasının DNS 'de kayıtlı olduğundan emin olun. Yanlış yapılandırma durumunda bir hata görürsünüz: `Unable to start the portal. See if settings are specified correctly in the configuration (...)`.
+API Management hizmetiniz bir iç VNet içindeyse, geliştirici portalınızın yalnızca ağ içinden erişilebilir olması gerekir. Yönetim uç noktasının ana bilgisayar adı, portalın yönetim arabirimine erişmek için kullandığınız makineden hizmetin iç VIP 'sine çözümlenmelidir. Yönetim uç noktasının DNS 'de kayıtlı olduğundan emin olun. Yanlış yapılandırma durumunda bir hata görürsünüz: `Unable to start the portal. See if settings are specified correctly in the configuration (...)` .
 
 API Management hizmetiniz bir iç sanal ağda ise ve bu ağa Internet 'ten Application Gateway üzerinden erişiyorsanız, geliştirici portalına ve API Management yönetim uç noktalarına bağlantıyı etkinleştirdiğinizden emin olun.
 
@@ -150,8 +150,8 @@ CORS 'yi el ile de etkinleştirebilirsiniz.
 
 1. Oluşturulan ilke kodunu görmek için **genel düzey bağlantısına el ile Uygula** ' ya tıklayın.
 2. Azure portal API Management hizmetinizin **API 'leri** bölümünde **tüm API** 'lere gidin.
-3. **Gelen işleme** bölümündeki **</>** simgeye tıklayın.
-4. İlkeyi XML dosyasının **<inbound>** bölümüne ekleyin. **<origin>** Değerin geliştirici portalının etki alanı ile eşleştiğinden emin olun.
+3. **</>** **Gelen işleme** bölümündeki simgeye tıklayın.
+4. İlkeyi **<inbound>** XML dosyasının bölümüne ekleyin. **<origin>** Değerin geliştirici portalının etki alanı ile eşleştiğinden emin olun.
 
 > [!NOTE]
 > 
@@ -163,11 +163,11 @@ CORS 'yi el ile de etkinleştirebilirsiniz.
 
 ### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>Geliştirici portalını düzenlemek için hangi izinlere ihtiyacım var?
 
-Portalı yönetim modunda açtığınızda `Oops. Something went wrong. Please try again later.` hata görüyorsanız, gerekli IZINLERE (RBAC) gerek duyulmayabilir.
+`Oops. Something went wrong. Please try again later.`Portalı yönetim modunda açtığınızda hata görüyorsanız, gerekli izinlere (RBAC) gerek duyulmayabilir.
 
-Eski portallar, Kullanıcı yöneticisinin portallara erişmesine izin vermek için`/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>`hizmet kapsamında () izni `Microsoft.ApiManagement/service/getssotoken/action` gerektirdi. Yeni Portal kapsamda `Microsoft.ApiManagement/service/users/token/action` `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1`izin gerektirir.
+Eski portallar, `Microsoft.ApiManagement/service/getssotoken/action` `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>` Kullanıcı yöneticisinin portallara erişmesine izin vermek için hizmet kapsamında () izni gerektirdi. Yeni Portal kapsamda izin gerektirir `Microsoft.ApiManagement/service/users/token/action` `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1` .
 
-Gerekli izne sahip bir rol oluşturmak için aşağıdaki PowerShell betiğini kullanabilirsiniz. `<subscription-id>` Parametresini değiştirmeyi unutmayın. 
+Gerekli izne sahip bir rol oluşturmak için aşağıdaki PowerShell betiğini kullanabilirsiniz. Parametresini değiştirmeyi unutmayın `<subscription-id>` . 
 
 ```PowerShell
 #New Portals Admin Role 
@@ -185,7 +185,7 @@ $customRole.AssignableScopes.Add('/subscriptions/<subscription-id>')
 New-AzRoleDefinition -Role $customRole 
 ```
  
-Rol oluşturulduktan sonra, Azure portal **Access Control (IAM)** bölümünde herhangi bir kullanıcıya verilebilir. Bu rolün bir kullanıcıya atanması, bu izni hizmet kapsamında atayacaktır. Kullanıcı, hizmette *herhangi bir* Kullanıcı adına SAS belirteçleri üretebilecektir. En azından, bu rolün hizmetin yöneticisine atanması gerekir. Aşağıdaki PowerShell komutu, kullanıcıya gereksiz izinler vermekten kaçınmak için rolün en düşük `user1` kapsamdaki bir kullanıcıya nasıl atanacağını gösterir: 
+Rol oluşturulduktan sonra, Azure portal **Access Control (IAM)** bölümünde herhangi bir kullanıcıya verilebilir. Bu rolün bir kullanıcıya atanması, bu izni hizmet kapsamında atayacaktır. Kullanıcı, hizmette *herhangi bir* Kullanıcı adına SAS belirteçleri üretebilecektir. En azından, bu rolün hizmetin yöneticisine atanması gerekir. Aşağıdaki PowerShell komutu, `user1` kullanıcıya gereksiz izinler vermekten kaçınmak için rolün en düşük kapsamdaki bir kullanıcıya nasıl atanacağını gösterir: 
 
 ```PowerShell
 New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM New Portal Admin" -Scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1" 
@@ -193,9 +193,9 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 
 İzinler bir kullanıcıya verildikten sonra, yeni izinlerin etkili olması için kullanıcının oturumu kapatıp Azure portal yeniden oturum açması gerekir.
 
-### <a name="im-seeing-the-unable-to-start-the-portal-see-if-settings-are-specified-correctly--error"></a>`Unable to start the portal. See if settings are specified correctly (...)` Hatayı görüyorum
+### <a name="im-seeing-the-unable-to-start-the-portal-see-if-settings-are-specified-correctly--error"></a>`Unable to start the portal. See if settings are specified correctly (...)`Hatayı görüyorum
 
-Bu hata, `GET` çağrısı `https://<management-endpoint-hostname>/subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.ApiManagement/service/xxx/contentTypes/document/contentItems/configuration?api-version=2018-06-01-preview` başarısız olduğunda gösterilir. Bu çağrı tarayıcıdan portalın yönetim arabirimi tarafından verilir.
+Bu hata, `GET` çağrısı başarısız olduğunda gösterilir `https://<management-endpoint-hostname>/subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.ApiManagement/service/xxx/contentTypes/document/contentItems/configuration?api-version=2018-06-01-preview` . Bu çağrı tarayıcıdan portalın yönetim arabirimi tarafından verilir.
 
 API Management hizmetiniz VNet 'deyse, yukarıdaki VNet bağlantı sorusuna başvurun.
 
@@ -208,7 +208,7 @@ API Management hizmetiniz VNet 'deyse, yukarıdaki VNet bağlantı sorusuna baş
 | Apple Safari                | Evet<sup>1</sup> |
 | Google Chrome               | Evet<sup>1</sup> |
 | Microsoft Edge              | Evet<sup>1</sup> |
-| Microsoft Internet Explorer | Hayır              |
+| Microsoft Internet Explorer | No              |
 | Mozilla Firefox             | Evet<sup>1</sup> |
 
  <small><sup>1</sup> en son iki üretim sürümünde desteklenir.</small>

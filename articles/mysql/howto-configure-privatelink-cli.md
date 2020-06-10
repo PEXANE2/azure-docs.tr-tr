@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: a9c9afc6e1730e2b370cf3b1ae32393250d83178
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: ec705a247dceeb06c1fc0a802a8a61d582fa43dc
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84634821"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84656786"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>CLı kullanarak MySQL için Azure veritabanı için özel bağlantı oluşturma ve yönetme
 
@@ -20,7 +20,7 @@ ms.locfileid: "84634821"
 > [!NOTE]
 > Bu özellik, MySQL için Azure veritabanı 'nın Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarını desteklediği tüm Azure bölgelerinde kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -68,7 +68,7 @@ VM 'nin genel IP adresini aklınızda edin. Sonraki adımda İnternet 'ten VM 'y
 Az MySQL Server Create komutunu kullanarak MySQL için Azure veritabanı oluşturun. MySQL sunucunuzun adının Azure genelinde benzersiz olması gerektiğini unutmayın, bu nedenle yer tutucu değerini köşeli ayraç içinde kendi benzersiz bir değer ile değiştirin: 
 
 ```azurecli-interactive
-# Create a logical server in the resource group 
+# Create a server in the resource group 
 az mysql server create \
 --name mydemoserver \
 --resource-group myResourcegroup \
@@ -84,13 +84,20 @@ az mysql server create \
 
 ## <a name="create-the-private-endpoint"></a>Özel uç nokta oluşturma 
 Sanal ağınızdaki MySQL sunucusu için özel bir uç nokta oluşturun: 
+
+Sunucunun kaynak kimliğini al
 ```azurecli-interactive
+$resourceid = $(az resource show -g myResourcegroup -n mydemoserver --resource-type "Microsoft.DBforMySQL/servers" --query "id")
+```
+
+```azurecli-interactive
+#Use the resourceid defined above
 az network private-endpoint create \  
     --name myPrivateEndpoint \  
     --resource-group myResourceGroup \  
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
-    --private-connection-resource-id "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.DBforMySQL/servers/$Servername" \    
+    --private-connection-resource-id $resourceid \    
     --group-id mysqlServer \  
     --connection-name myConnection  
  ```

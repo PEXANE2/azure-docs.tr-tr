@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: rogarana
-ms.openlocfilehash: 4423067fde70728a5449485434cc40c5c3d3ee8f
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 759b80ff3cf20bee1dd909cba59e67f5d36023b2
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324105"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660784"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Birinci kısım: Azure dosya paylaşımlarınız için AD DS kimlik doğrulamasını etkinleştirme 
 
@@ -20,23 +20,21 @@ Active Directory Domain Services (AD DS) kimlik doğrulamasını etkinleştirmed
 
 Bu makalede, depolama hesabınızda Active Directory Domain Services (AD DS) kimlik doğrulamasını etkinleştirmek için gereken işlem açıklanmaktadır. Özelliği etkinleştirdikten sonra, Azure dosya paylaşımınızda kimlik doğrulaması yapmak için AD DS kimlik bilgilerini kullanmak üzere depolama hesabınızı ve AD DS yapılandırmanız gerekir. Azure dosya paylaşımları için SMB üzerinden AD DS kimlik doğrulamasını etkinleştirmek için, depolama hesabınızı AD DS kaydetmeniz ve ardından depolama hesabında gerekli etki alanı özelliklerini ayarlamanız gerekir. Depolama hesabında özellik etkinleştirildiğinde, hesaptaki tüm yeni ve var olan dosya paylaşımları için geçerli olur.
 
-## <a name="option-one-recommended-use-the-script"></a>Seçenek One (önerilen): betiği kullanın
+## <a name="option-one-recommended-use-azfileshybrid-powershell-module"></a>Seçenek One (önerilir): AzFilesHybrid PowerShell modülünü kullanın
 
-Bu makaledeki komut dosyası gerekli değişiklikleri yapar ve özelliği sizin için sağlar. Betiğin bazı kısımları şirket içi AD DS etkileşimde bulunduğundan, değişikliklerin uyumluluk ve güvenlik ilkeleriniz ile uyumlu olup olmadığını belirlemek ve betiği yürütmek için uygun izinlere sahip olduğunuzdan emin olmak için betiğin ne yaptığını açıkladık. Komut dosyasını kullanmanızı öneririz, ancak bunu yapasağlamazsanız, el ile gerçekleştirebileceğiniz adımları sağlıyoruz.
+AzFilesHybrid PowerShell modülündeki cmdlet 'ler gerekli değişiklikleri yapar ve özelliği sizin için sağlar. Cmdlet 'lerin bazı kısımları şirket içi AD DS etkileşimde bulunduğundan, bu cmdlet 'in ne yaptığını anladık, böylece değişikliklerin uyumluluk ve güvenlik ilkelerinizle uyumlu olup olmadığını belirleyebilir ve cmdlet 'leri yürütmek için uygun izinlere sahip olduğunuzdan emin olun. AzFilesHybrid modülünü kullanmanızı öneririz, ancak bunu yapasağlamazsanız, el ile gerçekleştirebileceğiniz adımları sağlıyoruz.
 
-### <a name="script-prerequisites"></a>Betik önkoşulları
+### <a name="download-azfileshybrid-module"></a>AzFilesHybrid modülünü indir
 
-- [AzFilesHybrid modülünü indirme ve sıkıştırmayı aç](https://github.com/Azure-Samples/azure-files-samples/releases)
+- [AzFilesHybrid modülünü indir ve sıkıştırmayı](https://github.com/Azure-Samples/azure-files-samples/releases) aç (GA modülü: v 0.2.0 +)
 - Bir hizmet oturum açma hesabı veya hedef AD 'de bilgisayar hesabı oluşturma izinlerine sahip AD DS kimlik bilgileri ile şirket içi AD DS etki alanına katılmış bir cihaza modül yükleyip yürütün.
 -  Azure AD 'niz ile eşitlenen şirket içi AD DS kimlik bilgilerini kullanarak betiği çalıştırın. Şirket içi AD DS kimlik bilgisinin depolama hesabı sahibi ya da katkıda bulunan RBAC rolü izinleri olmalıdır.
 
-### <a name="offline-domain-join"></a>Çevrimdışı etki alanına ekleme
+### <a name="run-join-azstorageaccountforauth"></a>JOIN-AzStorageAccountForAuth komutunu çalıştırın
 
 `Join-AzStorageAccountForAuth`Cmdlet 'i, belirtilen depolama hesabı adına bir çevrimdışı etki alanına birleştirmenin eşdeğerini gerçekleştirir. Betik, bir [bilgisayar hesabı](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (varsayılan) veya bir [hizmet oturum açma hesabı](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)olan ad etki alanında bir hesap oluşturmak için cmdlet 'ini kullanır. Komutu el ile çalıştırmayı seçerseniz, ortamınız için en uygun hesabı seçmeniz gerekir.
 
 Cmdlet tarafından oluşturulan AD DS hesabı depolama hesabını temsil eder. AD DS hesabı parola süre sonunu zorlayan bir kuruluş birimi (OU) altında oluşturulduysa, en fazla parola geçerlilik süresi dolmadan parolayı güncelleştirmeniz gerekir. Bu ağ geçidi, Azure dosya paylaşımlarına erişirken kimlik doğrulama hatalarıyla sonuçlanmadan önce hesap parolasını güncelleştiremedi. Parolayı güncelleştirme hakkında bilgi edinmek için bkz. [AD DS hesabı parolasını güncelleştirme](storage-files-identity-ad-ds-update-password.md).
-
-### <a name="use-the-script-to-enable-ad-ds-authentication"></a>AD DS kimlik doğrulamasını etkinleştirmek için betiği kullanın
 
 Yer tutucu değerlerini, PowerShell 'de yürütmeden önce aşağıdaki parametrelerde kendi değerlerinizle değiştirmeyi unutmayın.
 > [!IMPORTANT]
@@ -66,20 +64,20 @@ Select-AzSubscription -SubscriptionId $SubscriptionId
 
 # Register the target storage account with your active directory environment under the target OU (for example: specify the OU with Name as "UserAccounts" or DistinguishedName as "OU=UserAccounts,DC=CONTOSO,DC=COM"). 
 # You can use to this PowerShell cmdlet: Get-ADOrganizationalUnit to find the Name and DistinguishedName of your target OU. If you are using the OU Name, specify it with -OrganizationalUnitName as shown below. If you are using the OU DistinguishedName, you can set it with -OrganizationalUnitDistinguishedName. You can choose to provide one of the two names to specify the target OU.
-# You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account, depends on the AD permission you have and preference. 
+# You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account (default parameter value), depends on the AD permission you have and preference. 
 # Run Get-Help Join-AzStorageAccountForAuth for more details on this cmdlet.
 
 Join-AzStorageAccountForAuth `
         -ResourceGroupName $ResourceGroupName `
         -Name $StorageAccountName `
-        -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" ` #Default set to "ComputerAccount" if parameter is omitted
+        -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" `
         -OrganizationalUnitName "<ou-name-here>" #You can also use -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>" instead. If you don't provide the OU name as an input parameter, the AD identity that represents the storage account will be created under the root directory.
 
 #You can run the Debug-AzStorageAccountAuth cmdlet to conduct a set of basic checks on your AD configuration with the logged on AD user. This cmdlet is supported on AzFilesHybrid v0.1.2+ version. For more details on the checks performed in this cmdlet, see Azure Files Windows troubleshooting guide.
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 ```
 
-## <a name="option-2-manually-perform-the-script-actions"></a>2. seçenek: betik eylemlerini el Ile gerçekleştirme
+## <a name="option-2-manually-perform-the-enablement-actions"></a>2. seçenek: etkinleştirme eylemlerini el Ile gerçekleştirme
 
 `Join-AzStorageAccountForAuth`Betiği başarıyla yukarıdaki bir şekilde yürütülürse, [özelliğin etkin olduğunu onaylayın](#confirm-the-feature-is-enabled) bölümüne gidin. Aşağıdaki adımları el ile gerçekleştirmeniz gerekmez.
 
@@ -126,7 +124,7 @@ Set-AzStorageAccount `
         -ActiveDirectoryAzureStorageSid "<your-storage-account-sid>"
 ```
 
-### <a name="debugging"></a>Hata Ayıklama
+### <a name="debugging"></a>Hata ayıklama
 
 Oturum açmış AD kullanıcısı ile AD yapılandırmanızda temel denetimler kümesi yürütmek için Debug-AzStorageAccountAuth cmdlet 'ini çalıştırabilirsiniz. Bu cmdlet, AzFilesHybrid v0.1.2+ sürümünde desteklenir. Bu cmdlet 'te gerçekleştirilen denetimler hakkında daha fazla bilgi için bkz. Windows için sorun giderme kılavuzunda [Azure dosyaları ad kimlik bilgileriyle bağlama](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials) .
 

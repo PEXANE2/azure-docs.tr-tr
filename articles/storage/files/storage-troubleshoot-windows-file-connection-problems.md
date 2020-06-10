@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 40b8616f40f2ce33332fc42ec68532e4ae0ecdb0
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 2b49598d51fb785872fccec966ac11a95ef3cede
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267826"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84657740"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows’ta Azure Dosyalar sorunlarını giderme
 
@@ -167,7 +167,7 @@ Azure dosya paylaşımının bulunduğu depolama hesabına gidin, **erişim dene
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Azure dosya paylaşımında dosya veya dizin silinemiyor
 Bir dosyayı silmeye çalıştığınızda şu hatayı alabilirsiniz:
 
-Belirtilen kaynak bir SMB istemcisi tarafından silinmek üzere işaretlendi.
+Belirtilen kaynak SMB istemcisi tarafından silinmek üzere işaretlendi.
 
 ### <a name="cause"></a>Nedeni
 Bu sorun genellikle dosya veya dizinde açık bir tanıtıcı varsa oluşur. 
@@ -330,7 +330,7 @@ Hata ' sistem hatası 1359 oluştu. Bir iç hata ', bir sayısal karakterle baş
 ### <a name="self-diagnostics-steps"></a>Kendi kendine Tanılama adımları
 İlk olarak, [Azure dosyaları ad kimlik doğrulamasını etkinleştirmek](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable)için tüm dört adımı izlediğinizden emin olun.
 
-İkinci olarak, [depolama hesabı anahtarıyla Azure dosya paylaşımının bağlanmasını](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)deneyin. Bağlama işlemi başarısız olursa, istemci çalıştıran istemciyi doğrulamanıza yardımcı olması için [Azfilediagnostics. ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) Indirin, Azure dosyaları için erişim hatasına neden olacak uyumsuz istemci yapılandırmasını tespit edin, kendi kendine düzeltmeyle ilgili yönergeler sağlar ve tanılama izlemelerini toplayın.
+İkinci olarak, [depolama hesabı anahtarıyla Azure dosya paylaşımının bağlanmasını](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)deneyin. Bağlama işlemi başarısız olursa, istemciyi çalıştıran istemciyi doğrulamanıza yardımcı olmak üzere [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) Indirin, Azure dosyaları için erişim hatasına neden olacak uyumsuz istemci yapılandırmasını tespit edin, kendi kendine düzeltmeyle ilgili yönergeler verir ve tanılama izlemelerini toplayın.
 
 Üçüncü olarak, oturum açmış AD kullanıcısı ile AD yapılandırmanızda basit denetimler kümesi yürütmek için Debug-AzStorageAccountAuth cmdlet 'ini çalıştırabilirsiniz. Bu cmdlet, [AzFilesHybrid v0.1.2+ sürümünde](https://github.com/Azure-Samples/azure-files-samples/releases) desteklenir. Bu cmdlet'i hedef depolama hesabında sahip izinlerine sahip bir AD kullanıcısıyla çalıştırmanız gerekir.  
 ```PowerShell
@@ -345,9 +345,9 @@ Cmdlet bu denetimleri sırayla gerçekleştirir ve hatalara yönelik rehberlik s
 3. CheckADObject: oturum açan kullanıcının depolama hesabının ilişkilendirildiği AD etki alanında geçerli bir temsili olduğunu onaylayın
 4. CheckGetKerberosTicket: depolama hesabına bağlanmak için bir Kerberos bileti almayı deneyin 
 5. Checkadobjectpasswordecorrect: depolama hesabını temsil eden AD kimliği üzerinde yapılandırılan parolanın, depolama hesabı Kerb anahtarıyla eşleşen olduğundan emin olun
-6. Checksıdhasaaduser: oturum açan AD kullanıcısının Azure AD ile eşitlendiğinden emin olun
-
-Daha iyi sorun giderme kılavuzu sağlamak için bu tanılama cmdlet 'ini genişletme üzerinde etkin bir şekilde çalışıyoruz.
+6. Checksıdhasaaduser: oturum açan AD kullanıcısının Azure AD ile eşitlendiğinden emin olun. Belirli bir AD kullanıcısının Azure AD ile eşitlenip eşitlenmediğini aramak isterseniz, giriş parametrelerinde-UserName ve-Domain öğesini belirtebilirsiniz.
+7. CheckAadUserHasSid: bir Azuer AD kullanıcısının AD 'de SID 'ye sahip olup olmadığını denetleyin, kullanıcının Azure AD kullanıcısının nesne kimliğini-ObjectID ile girmesini gerektir. 
+8. Checkstorageaccountdomainkatılmış: depolama hesabını göstermek için AD 'de bir kimlik kaydedilip kaydedilmediğini denetleyin. 
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Windows Dosya Gezgini ile dizin/dosya düzeyi izinleri (Windows ACL 'Leri) yapılandırılamıyor
 

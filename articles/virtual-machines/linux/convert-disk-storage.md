@@ -3,16 +3,16 @@ title: Standart ve Premium SSD arasında yönetilen diskleri depolamayı dönü�
 description: Azure yönetilen diskler depolama alanını standart iken Premium veya Premium 'a Azure CLı kullanarak dönüştürme.
 author: roygara
 ms.service: virtual-machines-linux
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: cd9bb92b3ed86c3a57b5fc70411a4593335acedb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 51ebecf784b7a3ec38f84703a74e96d277afa70c
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75431500"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658202"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Azure yönetilen diskler depolamasını standart 'ten Premium veya Premium 'a standart olarak dönüştürme
 
@@ -131,7 +131,7 @@ az vm start --ids $vmId
 
 Şu adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Sanal makineler**listesinden VM 'yi seçin.
 3. VM durdurulmamışsa, VM **'ye genel bakış** bölmesinin üst kısmında **Durdur** ' u seçin ve VM 'nin durdurulmasını bekleyin.
 4. VM 'nin bölmesinde, menüden **diskler** ' i seçin.

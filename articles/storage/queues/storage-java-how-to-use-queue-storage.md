@@ -8,23 +8,21 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: cbrooks
-ms.openlocfilehash: 23ab1bc5e3c9af59a6f1564a3c5f67a63f90baa1
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 8360d78c8c33f99fa34cfe78e8b9882ee55a5c48
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465397"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655609"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Java’dan Kuyruk depolama kullanma
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
-[!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
-
 Bu kılavuzda, Azure kuyruk depolama hizmetini kullanarak genel senaryoları nasıl gerçekleştireceğiniz gösterilmektedir. Örnekler Java dilinde yazılır ve [Java için Azure Depolama SDK’sı][Azure Storage SDK for Java] kullanır. Kapsanan senaryolar sıra iletilerini **ekleme**, göz **atma**, **alma**ve **silme** , Ayrıca kuyruk **oluşturma** ve **silme** içerir. Kuyruklar hakkında daha fazla bilgi için [sonraki adımlar](#next-steps) bölümüne bakın.
 
-> [!NOTE]
-> Android cihazlarda Azure Depolama kullanan geliştiriciler için bir SDK mevcuttur. Daha fazla bilgi için bkz. [Android için Azure Depolama SDK’sı][Azure Storage SDK for Android].
+> [!IMPORTANT]
+> Bu makale, Java için Azure Storage istemci kitaplığı 'nın eski sürümüne başvurur. En son sürümü kullanmaya başlamak için lütfen bkz [. hızlı başlangıç: Java Için Azure kuyruk depolama istemci kitaplığı](storage-quickstart-queues-java.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -390,6 +388,11 @@ catch (Exception e)
     e.printStackTrace();
 }
 ```
+
+[!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
+
+> [!NOTE]
+> Android cihazlarda Azure Depolama kullanan geliştiriciler için bir SDK mevcuttur. Daha fazla bilgi için bkz. [Android için Azure Depolama SDK’sı][Azure Storage SDK for Android].
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sıra depolamanın temellerini öğrendiğinize göre, daha karmaşık depolama görevleri hakkında bilgi edinmek için bu bağlantıları izleyin.

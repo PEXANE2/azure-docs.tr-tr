@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/22/2020
-ms.openlocfilehash: 1418b26a2a498c43ff61f42b2761c59cbca5d0f4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.date: 06/09/2020
+ms.openlocfilehash: 6b26db522db246add48941da9af4784ed2942a0a
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837153"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661023"
 ---
 # <a name="create-an-automation-account-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Otomasyon hesabı oluşturma
 
@@ -35,8 +35,8 @@ Aşağıdaki tabloda, bu örnekte kullanılan kaynakların API sürümü listele
 
 | Kaynak | Kaynak türü | API sürümü |
 |:---|:---|:---|
-| Çalışma alanı | çalışma alanı | 2017-03-15-Önizleme |
-| Otomasyon hesabı | automation | 2015-10-31 | 
+| Çalışma alanı | çalışma alanı | 2020-03-01-Önizleme |
+| Otomasyon hesabı | automation | 2018-06-30 | 
 
 ## <a name="before-you-use-the-template"></a>Şablonu kullanmadan önce
 
@@ -48,14 +48,14 @@ JSON şablonu şunları isteyecek şekilde yapılandırılır:
 
 * Çalışma alanının adı.
 * Çalışma alanının oluşturulacağı bölge.
+* Kaynak veya çalışma alanı izinlerini etkinleştirmek için.
 * Otomasyon hesabının adı.
-* Hesabın oluşturulacağı bölge.
+* Otomasyon hesabının oluşturulacağı bölge.
 
 Şablondaki aşağıdaki parametreler, Log Analytics çalışma alanı için varsayılan bir değerle ayarlanır:
 
 * *SKU* , Nisan 2018 fiyatlandırma MODELINDE yayınlanan GB başına fiyatlandırma katmanını varsayılan olarak alır.
 * *Dataretention* varsayılan değer 30 gündür.
-* *capacityReservationLevel* varsayılan olarak 100 GB olur.
 
 >[!WARNING]
 >Nisan 2018 fiyatlandırma modelini kabul eden bir abonelikte Log Analytics çalışma alanı oluşturmak veya yapılandırmak istiyorsanız, geçerli Log Analytics fiyatlandırma katmanı yalnızca *PerGB2018*olur.
@@ -63,7 +63,7 @@ JSON şablonu şunları isteyecek şekilde yapılandırılır:
 
 JSON şablonu, ortamınızda standart bir yapılandırma olarak kullanılacak diğer parametreler için varsayılan bir değer belirtir. Şablonu kuruluşunuzda paylaşılan erişim için bir Azure depolama hesabında saklayabilirsiniz. Şablonlarla çalışma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynak dağıtma](../azure-resource-manager/templates/deploy-cli.md).
 
-Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapılandırma ayrıntılarını anlamanız önemlidir. Yeni otomasyon hesabınıza bağlı bir Log Analytics çalışma alanı oluşturmaya, yapılandırmaya ve kullanmaya çalıştığınızda hatalardan kaçınmanıza yardımcı olabilirler. 
+Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapılandırma ayrıntılarını anlamanız önemlidir. Yeni otomasyon hesabınıza bağlı bir Log Analytics çalışma alanı oluşturmaya, yapılandırmaya ve kullanmaya çalıştığınızda hatalardan kaçınmanıza yardımcı olabilirler.
 
 * Erişim denetimi modu, fiyatlandırma katmanı, bekletme ve kapasite ayırma düzeyi gibi çalışma alanı yapılandırma seçeneklerini tam olarak anlamak için [ek ayrıntıları](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) gözden geçirin.
 
@@ -107,14 +107,7 @@ Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapıl
             "minValue": 7,
             "maxValue": 730,
             "metadata": {
-                "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can have only 7 days."
-            }
-        },
-        "immediatePurgeDataOn30Days": {
-            "type": "bool",
-            "defaultValue": "[bool('false')]",
-            "metadata": {
-                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This applies only when retention is being set to 30 days."
+                "description": "Number of days to retain data."
             }
         },
         "location": {
@@ -122,6 +115,12 @@ Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapıl
             "metadata": {
                 "description": "Specifies the location in which to create the workspace."
             }
+        },
+        "resourcePermissions": {
+              "type": "bool",
+              "metadata": {
+                "description": "true to use resource or workspace permissions. false to require workspace permissions."
+              }
         },
         "automationAccountName": {
             "type": "string",
@@ -176,13 +175,11 @@ Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapıl
         {
         "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2017-03-15-preview",
+            "apiVersion": "2020-03-01-preview",
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-                    "Name": "[parameters('sku')]",
-                    "name": "CapacityReservation",
-                    "capacityReservationLevel": 100
+                    "name": "[parameters('sku')]",
                 },
                 "retentionInDays": "[parameters('dataRetention')]",
                 "features": {
@@ -194,7 +191,7 @@ Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapıl
         "resources": [
         {
             "type": "Microsoft.Automation/automationAccounts",
-            "apiVersion": "2015-01-01-preview",
+            "apiVersion": "2018-06-30",
             "name": "[parameters('automationAccountName')]",
             "location": "[parameters('automationAccountLocation')]",
             "dependsOn": [
@@ -209,7 +206,7 @@ Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapıl
             "resources": [
                     {
                         "type": "runbooks",
-                        "apiVersion": "2015-01-01-preview",
+                        "apiVersion": "2018-06-30",
                         "name": "[parameters('sampleGraphicalRunbookName')]",
                         "location": "[parameters('automationAccountLocation')]",
                         "dependsOn": [
@@ -229,7 +226,7 @@ Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapıl
                     },
                     {
                         "type": "runbooks",
-                        "apiVersion": "2015-01-01-preview",
+                        "apiVersion": "2018-06-30",
                         "name": "[parameters('samplePowerShellRunbookName')]",
                         "location": "[parameters('automationAccountLocation')]",
                         "dependsOn": [
@@ -249,7 +246,7 @@ Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapıl
                     },
                     {
                         "type": "runbooks",
-                        "apiVersion": "2015-01-01-preview",
+                        "apiVersion": "2018-06-30",
                         "name": "[parameters('samplePython2RunbookName')]",
                         "location": "[parameters('automationAccountLocation')]",
                         "dependsOn": [
@@ -270,10 +267,10 @@ Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapıl
                 ]
         },
         {
-            "apiVersion": "2015-11-01-preview",
+            "apiVersion": "2020-03-01-preview",
             "type": "Microsoft.OperationalInsights/workspaces/linkedServices",
             "name": "[concat(parameters('workspaceName'), '/' , 'Automation')]",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]",
                 "[concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))]"
@@ -290,7 +287,7 @@ Azure Otomasyonu ve Azure Izleyici 'de yeni başladıysanız aşağıdaki yapıl
 
 2. Gereksinimlerinizi karşılayacak şekilde şablonu düzenleyin. Parametreleri satır içi değerler olarak geçirmek yerine bir [Kaynak Yöneticisi parametre dosyası](../azure-resource-manager/templates/parameter-files.md) oluşturmayı düşünün.
 
-3. Bu dosyayı yerel bir klasöre deployAzAutomationAccttemplate. JSON olarak kaydedin.
+3. Bu dosyayı yerel bir klasöre deployAzAutomationAccttemplate.jsolarak kaydedin.
 
 4. Bu şablonu dağıtmaya hazırsınız. PowerShell veya Azure CLı kullanabilirsiniz. Bir çalışma alanı ve Otomasyon hesabı adı istendiğinde, tüm Azure aboneliklerinizde genel olarak benzersiz bir ad sağlayın.
 

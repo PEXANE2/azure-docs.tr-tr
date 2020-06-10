@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 4fccf7b786de91c8bcce0b2073e0519ef6c1f2ab
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: 0aa09ffe5b5dd9dd0f49204495ecdd7179a0f36f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424421"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660035"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -145,6 +145,12 @@ Bu sınırlama kutusuyla ilgili olarak görünmeyen geometriye yol açabilecek i
 Azure uzaktan Işleme, video ile çerçeve oluşturmayı ve yeniden projeksiyonu yapmak için Unity işleme ardışık düzenine takılır. Bu kancalarının mevcut olduğunu doğrulamak için menüsünü açın *:::no-loc text="Window > Analysis > Frame debugger":::* . Bunu etkinleştirin ve `HolographicRemotingCallbackPass` ardışık düzende ' ın iki girişi olduğundan emin olun:
 
 ![Unity çerçevesi hata ayıklayıcısı](./media/troubleshoot-unity-pipeline.png)
+
+## <a name="the-rendered-image-in-unity-is-upside-down"></a>Unity 'de işlenen görüntü, baş aşağı
+
+[Proje kurulum kılavuzunu](../tutorials/unity/project-setup.md) tam olarak izlediğinizden emin olun. Ters bir görüntü, Unity 'nin bir ekran oluşturma hedefi oluşturmak için gerekli olduğunu gösterir. Bu davranış Şu anda desteklenmiyor ve HoloLens 2 ' de büyük bir performans etkisi oluşturuyor.
+
+Bu sorunun nedenleri MSAA, HDR veya post işlemini etkinleştirme olabilir. Düşük kaliteli profilin seçildiğinden ve Unity 'de varsayılan olarak ayarlandığından emin olun. Bunu yapmak için *> proje ayarlarını Düzenle... > kalite*' ye gidin.
 
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>Uzaktan Işleme API 'sini kullanan Unity kodu derlenmiyor
 

@@ -3,12 +3,12 @@ title: Azure Backup destek matrisi
 description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: faf7abf23d196b389531803c519368b5d474aeb3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4946a4627d037053e441152182278c26b4f693fe
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659391"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655630"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -28,7 +28,7 @@ Azure Backup yedeklemeleri düzenlemek ve yönetmek için kurtarma hizmetleri ka
 
 Aşağıdaki tabloda, kurtarma hizmetleri kasalarının özellikleri açıklanmaktadır:
 
-**Öne çıkan özelliği** | **Ayrıntılar**
+**Özellik** | **Bilgileri**
 --- | ---
 **Abonelikte kasa** | Tek bir abonelikte en fazla 500 kurtarma hizmeti Kasası.
 **Kasadaki makineler** | Tek bir kasada en fazla 1.000 Azure VM.<br/><br/> 50 MABS sunucusuna kadar tek bir kasada kayıt yapılabilir.
@@ -54,7 +54,7 @@ Aşağıdaki tabloda, kurtarma hizmetleri kasalarının özellikleri açıklanma
 
 ### <a name="azure-vm-limits"></a>Azure VM sınırları
 
-**Sınırlı** | **Ayrıntılar**
+**Sınırlı** | **Bilgileri**
 --- | ---
 **Azure VM veri diskleri** | Bkz. [Azure VM yedeklemesi için destek matrisi](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support).
 **Azure VM veri diski boyutu** | Tek bir disk boyutu 32 TB 'a kadar ve bir VM 'deki tüm diskler için en fazla 256 TB olabilir.
@@ -101,14 +101,14 @@ Azure Backup, geçiş sırasında ve bekleyen veriler için şifrelemeyi destekl
 
 - Sunuculardan kurtarma hizmetleri kasasına yedekleme trafiği Gelişmiş Şifreleme Standardı 256 kullanılarak şifrelenir.
 - Yedekleme verileri güvenli bir HTTPS bağlantısı üzerinden gönderilir.
+
+### <a name="data-security"></a>Veri güvenliği
+
 - Yedekleme verileri, kurtarma hizmetleri kasasında şifrelenmiş biçimde depolanır.
 - Yalnızca bu verilerin kilidini açmak için bir parola vardır. Microsoft, herhangi bir noktada yedekleme verilerinin şifresini çözemez.
 
     > [!WARNING]
     > Kasayı ayarladıktan sonra yalnızca şifreleme anahtarına erişiminiz vardır. Microsoft hiçbir şekilde kopya korumaz ve anahtara erişemez. Anahtar yanlış olursa Microsoft, yedekleme verilerini kurtaramaz.
-
-### <a name="data-security"></a>Veri güvenliği
-
 - Azure VM 'lerini yedekliyorsanız, sanal makine *içinde* şifrelemeyi ayarlamanız gerekir.
 - Azure Backup, Windows sanal makinelerde BitLocker, Linux sanal makinelerde ise **dm-crypt** kullanan Azure Disk Şifrelemesi özelliğini destekler.
 - Arka uçta Azure Backup, bekleyen verileri koruyan [Azure depolama hizmeti şifrelemesi](../storage/common/storage-service-encryption.md)kullanır.
@@ -152,9 +152,9 @@ Azure Backup, veri kullanılabilirliği ve dayanıklılık özelliğini güçlen
 | Yedekleme yönetimi türü | Destekleniyor                                                    | Desteklenen bölgeler |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Evet.   4 TB 'den az diski olan şifrelenmiş VM 'ler ve VM 'Ler için desteklenir | Tüm Azure ortak bölgeleri.  |
-| MARS Aracısı/şirket içi | Hayır                                                           | Yok               |
-| SQL/SAP HANA          | Hayır                                                           | Yok               |
-| 'Nın                    | Hayır                                                           | Yok               |
+| MARS Aracısı/şirket içi | No                                                           | YOK               |
+| SQL/SAP HANA          | No                                                           | YOK               |
+| 'Nın                    | No                                                           | YOK               |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
