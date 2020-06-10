@@ -10,12 +10,13 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 684aba561dc50b64dd7cc564cff8e55229ce1429
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: tracking-python
+ms.openlocfilehash: fd632e267e087c6489567c51e731d81cf9511ccb
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80239039"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84606709"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Hızlı başlangıç: anomali algılayıcısı REST API ve Python kullanarak zaman serisi verilerinizde bozukluklar Algıla
 
@@ -28,7 +29,7 @@ Bu hızlı başlangıcı kullanarak, zaman serisi verilerinizde bozukluklar olup
 
  Bu uygulama Python 'da yazıldığı sırada API, çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir. Bu hızlı başlangıç için kaynak kodunu [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/python-detect-anomalies.py)'da bulabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Python 2. x veya 3. x](https://www.python.org/downloads/)
 - Anomali algılayıcı anahtarı ve uç noktası
@@ -56,37 +57,37 @@ Bu hızlı başlangıcı kullanarak, zaman serisi verilerinizde bozukluklar olup
 
     [!code-python[initial endpoint and key variables](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=vars)]
 
-3. JSON veri dosyasında dosyayı açıp kullanarak `json.load()`okuyun.
+3. JSON veri dosyasında dosyayı açıp kullanarak okuyun `json.load()` .
 
     [!code-python[Open JSON file and read in the data](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=fileLoad)]
 
 ## <a name="create-a-function-to-send-requests"></a>İstek göndermek için bir işlev oluşturma
 
-1. Yukarıda oluşturulan değişkenleri alan adlı `send_request()` yeni bir işlev oluşturun. Ardından aşağıdaki adımları gerçekleştirin.
+1. Yukarıda oluşturulan değişkenleri alan adlı yeni bir işlev oluşturun `send_request()` . Ardından aşağıdaki adımları gerçekleştirin.
 
-2. İstek üstbilgileri için bir sözlük oluşturun. ' I ' olarak ayarlayın ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin. `Content-Type` `application/json`
+2. İstek üstbilgileri için bir sözlük oluşturun. `Content-Type` `application/json` ' I ' olarak ayarlayın ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin.
 
-3. Kullanarak `requests.post()`isteği gönderin. Tam istek URL 'si için uç nokta ve anomali algılama URL 'nizi birleştirip üst bilgilerinizi ve json istek verilerini ekleyin. Ardından yanıtı geri döndürün.
+3. Kullanarak isteği gönderin `requests.post()` . Tam istek URL 'si için uç nokta ve anomali algılama URL 'nizi birleştirip üst bilgilerinizi ve json istek verilerini ekleyin. Ardından yanıtı geri döndürün.
 
     [!code-python[request method](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=request)]
 
 ## <a name="detect-anomalies-as-a-batch"></a>Bir toplu iş olarak anomali algılama
 
-1. Veri genelinde bir toplu `detect_batch()` iş olarak bozukluklar tespit etmek için adlı bir yöntem oluşturun. Uç nokta `send_request()` , URL, abonelik anahtarı ve JSON verileriniz ile yukarıda oluşturulan yöntemi çağırın.
+1. `detect_batch()`Veri genelinde bir toplu iş olarak bozukluklar tespit etmek için adlı bir yöntem oluşturun. `send_request()`Uç nokta, URL, abonelik anahtarı ve JSON verileriniz ile yukarıda oluşturulan yöntemi çağırın.
 
-2. Bunu `json.dumps()` biçimlendirmek için sonucu çağırın ve konsola yazdırın.
+2. `json.dumps()`Bunu biçimlendirmek için sonucu çağırın ve konsola yazdırın.
 
-3. Yanıt alanı içeriyorsa `code` , hata kodunu ve hata iletisini yazdırın.
+3. Yanıt `code` alanı içeriyorsa, hata kodunu ve hata iletisini yazdırın.
 
-4. Aksi takdirde, veri kümesindeki anormalilerin konumlarını bulabilirsiniz. Yanıtın `isAnomaly` alanı, belirli bir veri noktasının bir anomali olup olmadığı ile ilgili bir Boole değeri içerir. Listede yineleme yapın ve herhangi bir `True` değerin dizinini yazdırın. Bu değerler, varsa anormal veri noktalarının dizinine karşılık gelir.
+4. Aksi takdirde, veri kümesindeki anormalilerin konumlarını bulabilirsiniz. Yanıtın alanı, `isAnomaly` belirli bir veri noktasının bir anomali olup olmadığı ile ilgili bir Boole değeri içerir. Listede yineleme yapın ve herhangi bir değerin dizinini yazdırın `True` . Bu değerler, varsa anormal veri noktalarının dizinine karşılık gelir.
 
     [!code-python[detection as a batch](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectBatch)]
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>En son veri noktasının anomali durumunu Algıla
 
-1. Zaman serinizdeki en `detect_latest()` son veri noktasının bir anomali olup olmadığını anlamak için adlı bir yöntem oluşturun. Uç nokta `send_request()` , URL, abonelik anahtarı ve JSON verileri ile yukarıdaki yöntemi çağırın. 
+1. `detect_latest()`Zaman serinizdeki en son veri noktasının bir anomali olup olmadığını anlamak için adlı bir yöntem oluşturun. `send_request()`Uç nokta, URL, abonelik anahtarı ve JSON verileri ile yukarıdaki yöntemi çağırın. 
 
-2. Bunu `json.dumps()` biçimlendirmek için sonucu çağırın ve konsola yazdırın.
+2. `json.dumps()`Bunu biçimlendirmek için sonucu çağırın ve konsola yazdırın.
 
     [!code-python[Latest point detection](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectLatest)]
 

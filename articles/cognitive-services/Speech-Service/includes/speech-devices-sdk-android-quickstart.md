@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 57244c2022d06d8f1768dbe8bcc971aa59acd6a9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 04c31a12348fe0059bcfd417682647676dbc8948
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673144"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84637595"
 ---
 Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](../conversation-transcription-service.md) cihazı olarak kullanmak için Android Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz.
 
@@ -18,7 +18,7 @@ Bu kılavuzda, bir konuşma hizmeti kaynağına sahip bir Azure bilişsel [Hizme
 
 Örnek uygulamanın kaynak kodu, konuşma cihazları SDK 'sına dahildir. [GitHub 'da da kullanılabilir](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Konuşma cihazları SDK 'sını kullanmaya başlamadan önce şunları yapmanız gerekir:
 
@@ -58,7 +58,7 @@ Konuşma cihazları SDK 'sını kullanmaya başlamadan önce şunları yapmanız
    >
    > ![Vysor dosya klasörü](../media/speech-devices-sdk/qsg-10.png)
    >
-   > **Ayarlar**' ı seçin. "MAC adresi" araması yapın ve ardından **Mac adresi**  >  **Gelişmiş WLAN**' ı seçin. İletişim kutusunun alt kısmına yakın görünen MAC adresini yazın.
+   > **Ayarlar**'ı seçin. "MAC adresi" araması yapın ve ardından **Mac adresi**  >  **Gelişmiş WLAN**' ı seçin. İletişim kutusunun alt kısmına yakın görünen MAC adresini yazın.
    >
    > ![Vysor MAC adresi](../media/speech-devices-sdk/qsg-11.png)
    >
@@ -96,7 +96,7 @@ Geliştirme Seti kurulumunuzu doğrulamak için örnek uygulamayı derleyin ve k
     Bu satırı bağımlılıklar bölümüne ekleyerek **Build. Gradle (Module: App)** öğesini güncelleştirin. 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.12.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.12.1'
     ```
     
 1. Konuşma abonelik anahtarınızı kaynak koda ekleyin. Amaç tanımayı denemek istiyorsanız, [Language Understanding hizmeti](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonelik anahtarınızı ve uygulama kimliğinizi da ekleyin.
