@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 05/28/2020
-ms.openlocfilehash: a59fafccecaf2fc266a6c7864174c477e1831186
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/08/2020
+ms.openlocfilehash: 4e39d4e106a399f0105ee4ec3f3606354f113165
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561164"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661056"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Azure portal Azure Data Factory kullanarak birden çok tabloyu toplu olarak kopyalama
 
@@ -92,7 +92,7 @@ Bu ayarı doğrulamak ve etkinleştirmek için, sunucunuza > güvenlik > güvenl
      Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
 1. **Sürüm** için **V2**'yi seçin.
 1. Data factory için **konum** seçin. Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
-1. **Oluştur**' a tıklayın.
+1. **Oluştur**'a tıklayın.
 1. Oluşturma işlemi tamamlandıktan sonra **Data Factory** sayfasına gitmek Için **Kaynağa Git** ' i seçin. 
    
 1. Data Factory kullanıcı arabirimi uygulamasını ayrı bir sekmede açmak için **Author & Monitor** (Oluştur ve İzle) kutucuğuna tıklayın.
@@ -108,13 +108,16 @@ Bu öğreticide, Azure SQL veritabanı, Azure SYNAPSE Analytics (eski adıyla SQ
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>Kaynak Azure SQL Veritabanı bağlı hizmetini oluşturma
 Bu adımda, Azure SQL veritabanınızı veri fabrikasına bağlamak için bağlı bir hizmet oluşturursunuz. 
 
-1. Pencerenin alt kısmındaki **Bağlantılar** ' a tıklayın ve araç çubuğunda **+ Yeni** ' ye tıklayın (**Bağlantılar** düğmesi, **fabrika kaynakları**altındaki sol sütunun altında bulunur). 
+1. Sol bölmedeki [Yönet sekmesini](https://docs.microsoft.com/azure/data-factory/author-management-hub) açın.
 
+1. Bağlı hizmetler sayfasında **+ Yeni** ' yi seçerek yeni bir bağlı hizmet oluşturun.
+
+   ![Yeni bağlı hizmet](./media/doc-common-process/new-linked-service.png)
 1. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde **Azure SQL Veritabanı**’nı seçip **Devam**’a tıklayın. 
 1. **Yeni bağlı hizmet (Azure SQL veritabanı)** penceresinde aşağıdaki adımları uygulayın: 
 
     a. **Ad** için **AzureSqlDatabaseLinkedService** adını girin.
-    
+
     b. **Sunucu adı** için sunucunuzu seçin
     
     c. **Veritabanı adı** için Azure SQL veritabanınızı seçin. 
@@ -146,7 +149,7 @@ Bu adımda, Azure SQL veritabanınızı veri fabrikasına bağlamak için bağl�
      
     f. Belirtilen bilgileri kullanarak Azure SQL veritabanına bağlantıyı test etmek için, **Bağlantıyı sına**'ya tıklayın.
      
-    örneğin: **Oluştur**' a tıklayın.
+    örneğin: **Oluştur**'a tıklayın.
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>Hazırlama Azure Depolama bağlı hizmetini oluşturma
 Bu öğreticide Azure Blob depolamayı daha iyi bir kopyalama performansı için PolyBase’i etkinleştiren geçici bir hazırlama alanı olarak kullanırsınız.
@@ -158,8 +161,7 @@ Bu öğreticide Azure Blob depolamayı daha iyi bir kopyalama performansı için
     a. **Ad** için **AzureStorageLinkedService** adını girin.                                                 
     b. **Depolama hesabı adı**Için **Azure depolama hesabınızı** seçin.
     
-    c. **Oluştur**' a tıklayın.
-
+    c. **Oluştur**'a tıklayın.
 
 ## <a name="create-datasets"></a>Veri kümeleri oluşturma
 Bu öğreticide, verilerin depolandığı konumu belirten kaynak ve havuz veri kümelerini oluşturacaksınız. 

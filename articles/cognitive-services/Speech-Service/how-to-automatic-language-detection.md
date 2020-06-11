@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-nineteen
-ms.openlocfilehash: 311c85e254711a219ac93424b77f35c2662008b7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a9fac89f529cfefbb8a8d82135838bb96e2689db
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658457"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669826"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Konuşmayı metne dönüştürme için otomatik dil algılama
 
@@ -29,7 +29,7 @@ Bu makalede, `AutoDetectSourceLanguageConfig` bir `SpeechRecognizer` nesnesi olu
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Konuşma SDK 'Sı ile otomatik dil algılama
 
-Otomatik dil algılama 'nın Şu anda algılama başına iki dilin hizmet tarafı sınırı vardır. Nesnenizin oluşturulması sırasında bu sınırlamayı aklınızda bulundurun `AudoDetectSourceLanguageConfig` . Aşağıdaki örneklerde bir oluşturacak `AutoDetectSourceLanguageConfig` ve bunu bir oluşturmak için kullanacaksınız `SpeechRecognizer` .
+Otomatik dil algılama 'nın Şu anda algılama başına dört dilin hizmet tarafı sınırı vardır. Nesnenizin oluşturulması sırasında bu sınırlamayı aklınızda bulundurun `AudoDetectSourceLanguageConfig` . Aşağıdaki örneklerde bir oluşturacak `AutoDetectSourceLanguageConfig` ve bunu bir oluşturmak için kullanacaksınız `SpeechRecognizer` .
 
 > [!TIP]
 > Ayrıca, metinde konuşma yaparken kullanılacak özel bir model de belirtebilirsiniz. Daha fazla bilgi için bkz. [Otomatik dil algılama için özel model kullanma](#use-a-custom-model-for-automatic-language-detection).

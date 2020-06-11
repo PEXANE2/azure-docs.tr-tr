@@ -2,13 +2,13 @@
 title: Varlık türleri-LUSıS
 description: Bir varlık, tahmin çalışma zamanında bir Kullanıcı noktasından verileri ayıklar. _İsteğe bağlı_, ikincil amaç, varlığı bir özellik olarak kullanarak amaç veya diğer varlıkların tahminini de artırır.
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: a5e4812eab84650401dd19b0f8d7b361a5135dd3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/10/2020
+ms.openlocfilehash: 61dc0688cd304a672321f846a3ae5798c271345d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682181"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676497"
 ---
 # <a name="extract-data-with-entities"></a>Varlıkları olan verileri ayıklama
 
@@ -41,7 +41,9 @@ Varlıkların, bir modeldeki her amaç için tüm eğitimlere sürekli olarak et
 
 Uygulamanız geliştirdiğinden ve veriler için yeni bir gereksinim belirlendiğinde, daha sonra LUO modelinize uygun varlıkları ekleyebilirsiniz.
 
-## <a name="entity-compared-to-intent"></a>Amaca kıyasla varlık
+<a name="entity-compared-to-intent"></a>
+
+## <a name="entity-represents-data-extraction"></a>Varlık, veri ayıklamayı temsil eder
 
 Varlık _, söylenişi içindeki_bir veri kavramını temsil eder. Amaç, _Tüm söyliği_sınıflandırır.
 
@@ -53,6 +55,10 @@ Aşağıdaki dört kuralı göz önünde bulundurun:
 |Bir şey gönder|Sendbir şey|-|Ayıklanacak bir şey yok. Modelin bu bağlamda Ayıklanacak gerekli bir özelliği yok `something` ve belirtilen alıcı yok.|
 |Emre 'yi mevcut gönder|Sendbir şey|`Bob`, `present`|Model, `Bob` önceden oluşturulmuş varlığın gerekli bir özelliğini ekleyerek ayıklar `personName` . Ayıklamak için bir makine öğrenimi varlığı kullanılmıştır `present` .|
 |Emre 'nin bir çikolata kutusunu Gönder|Sendbir şey|`Bob`, `box of chocolates`|İki önemli veri parçası `Bob` ve, `box of chocolates` makine öğrenimi varlıkları tarafından ayıklanır.|
+
+## <a name="label-entities-in-all-intents"></a>Tüm amaçlar için varlıkları etiketleme
+
+Varlıklar, tahmin edilen amacına bakılmaksızın verileri ayıklar. Tüm amaçlar için _Tüm_ örnek dıklarınızı etiketlediğinizden emin olun. `None`Diğer amaçlar için çok daha fazla eğitim elde olsa bile, amaç eksik olan Varlık etiketleme karışıklığına neden olur.
 
 ## <a name="design-entities-for-decomposition"></a>Ayrıştırma için varlıkları tasarlama
 

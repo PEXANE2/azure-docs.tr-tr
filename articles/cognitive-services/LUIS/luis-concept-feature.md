@@ -2,29 +2,70 @@
 title: Özellikler-LUSıS
 description: Etiketlemek veya sınıflandırmak istediğiniz girişin nasıl tanınılacağı hakkında ipuçları sağlamak için bir dil modeline özellikler ekleyin.
 ms.topic: conceptual
-ms.date: 05/14/2020
-ms.openlocfilehash: c4f19ceed2e48f3f6ec2ed0958bccb7a85cff44f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 06/10/2020
+ms.openlocfilehash: 823c51f0b58481e30ff54814dde03285ad094b9e
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742704"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677600"
 ---
 # <a name="machine-learning-ml-features"></a>Makine öğrenimi (ML) özellikleri
 
-Machine Learning 'de, bir **özellik**   sistem engelinizdeki verilerin bir ayırt edici nitelik veya özniteliğidir.
+Machine Learning 'de bir **özellik**,   sistem engellerinizin ve öğrendiği verilerin bir ayırt edici nitelik veya özniteliğidir.
 
 Machine Learning özellikleri, bir kavramı ayırt edecek şeyleri aramak için lu, önemli ipuçları verir. Bu kişiler, LUıN tarafından kullanılabilecek ancak zor kuralları olmayan bir ipuçlardır.  Bu ipuçları, verileri bulmak için etiketlerle birlikte kullanılır.
 
- LUSıS her iki ifade listesini destekler ve diğer varlıkları özellikler olarak kullanmaktır:
+## <a name="what-is-a-feature"></a>Özellik nedir?
+
+Bir özellik, bir işlev olarak açıklanabilir bir ayrım nitelik: f (x) = y. Özelliği, şöyle görüneceğimizi, örneğin ayrım nitelik için kullanılır. Şemanızı oluştururken, nitelik belirten örnek utnaterance hakkında ne bilirsiniz? Yanıtınız, özellik oluşturmak için en iyi kılavuzunuz.
+
+## <a name="types-of-features"></a>Özellik türleri
+
+ LUO, hem tümcecik listelerini hem de modelleri özellikler olarak destekler:
 * Tümcecik listesi özelliği
 * Özellik olarak model (amaç veya varlık)
 
 Özellikler, şema tasarımınızın gerekli bir parçası olarak düşünülmelidir.
 
+## <a name="how-you-find-features-in-your-example-utterances"></a>Örnek aradıklarınızın özelliklerini bulma
+
+LUSıS, dil tabanlı bir uygulama olduğundan, Özellikler metin tabanlı olacaktır. Ayırmak istediğiniz nitelik belirten metni seçin. LUSıS için, metin tabanlı en küçük birim belirtecidir. İngilizce dil için, belirteç ve sayılardan oluşan boşluk veya noktalama işareti olmadan bir belirteç bitişik bir yayılım olur. Boşluk bir belirteç değil.
+
+Boşluklar ve noktalama belirteçleri belirteç olmadığından, özellik olarak kullanabileceğiniz metin ipuçlarına odaklanın. Sözcük çeşitlemelerini dahil etmeyi unutmayın:
+* çoğul formlar
+* fiil zaman hali
+* grubunun
+* Yazım ve hatalı yazma
+
+Metnin, bir ayrım nitelik, şunları yapmanız gerekir:
+* Tam bir sözcük veya tümcecik ile Eşleştir-varlık veya amaca bir özellik olarak bir normal ifade varlığı veya bir liste varlığı eklemeyi düşünün
+* Tarih, saat veya kişi adı gibi bilinen bir kavramı Eşleştir-varlık veya amaç için bir özellik olarak önceden oluşturulmuş bir varlık kullanın
+* Zamana göre yeni örnekler öğrenin-varlık veya amaç için bir özellik olarak kavramın bazı örneklerinin bir tümcecik listesini kullanın
+
+## <a name="combine-features"></a>Özellikleri Birleştir
+
+Nitelik 'in nasıl açıklandığına ilişkin birkaç seçenek olduğundan, bu nitelik veya kavramı açıklamaya yardımcı olan birden fazla özellik kullanabilirsiniz. Ortak eşleştirme, bir tümcecik listesi özelliğini ve genellikle özellikler olarak kullanılan varlık türlerinden birini kullanmaktır: önceden oluşturulmuş varlık, normal ifade varlığı veya liste varlığı.
+
+### <a name="ticket-booking-entity-example"></a>Bilet ayırma varlığı örneği
+
+İlk örnek olarak, uçuş rezervasyonu hedefi ve bilet kayıt varlığı ile bir uçuş için bir uygulama düşünün.
+
+Bilet kayıt varlığı, uçuş hedefi için makine tarafından öğrenilen bir varlıktır. Konumu ayıklamaya yardımcı olmak için şu iki özelliği kullanın:
+* İlgili sözcüklerin,,,,,,,,, `plane` `flight` `reservation``ticket`
+* `geographyV2`Varlığa özellik olarak önceden oluşturulmuş varlık
+
+### <a name="pizza-entity-example"></a>Pizza varlık örneği
+
+Başka bir örnek olarak, bir pizza sırası oluşturma amacı ve bir pizza varlığı içeren bir uygulamayı düşünün.
+
+Pizza varlığı, pizza ayrıntıları için makine tarafından öğrenilen bir varlıktır. Ayrıntıları ayıklamaya yardımcı olmak için iki özelliği kullanın:
+* İlgili sözcüklerin,,,,,,,,, `cheese` `crust` `pepperoni``pineapple`
+* `number`Varlığa özellik olarak önceden oluşturulmuş varlık
+
 ## <a name="a-phrase-list-for-a-particular-concept"></a>Belirli bir kavram için tümcecik listesi
 
-Tümcecik listesi, belirli bir kavramı kapsülleyen sözcüklerin veya tümceciklerin listesidir.
+Tümcecik listesi, belirli bir kavramı kapsülleyen sözcüklerin veya deyimlerin listesidir ve belirteç düzeyinde büyük/küçük harfe duyarsız eşleşme olarak uygulanır.
 
 Tümcecik listesi eklerken, özelliği şu şekilde ayarlayabilirsiniz:
 * **[Genel](#global-features)**. Genel bir özellik tüm uygulama için geçerlidir.
@@ -55,6 +96,18 @@ Tıp şartlarını ayıklamak istiyorsanız:
 * İlk olarak bu söyleyler dahilinde örnek bir örnek oluşturun ve tıbbi terimleri etiketleyin.
 * Ardından, konu etki alanında yer alan koşullara örnek olarak bir tümcecik listesi oluşturun. Bu tümcecik listesi, etiketlediğiniz gerçek terimi ve aynı kavramı tanımlayan diğer terimleri içermelidir.
 * Tümcecik listesini, tümcecik listesinde kullanılan kavramı çıkaran varlığa veya alt varlığa ekleyin. En yaygın senaryo, makine öğrenimi varlığının bir bileşenidir (alt öğesidir). Tümcecik listesinin tüm amaçlar veya varlıklar üzerinde uygulanması gerekiyorsa, tümcecik listesini genel ifade listesi olarak işaretleyin. `enabledForAllModels`Bayrak, bu model KAPSAMıNı API 'de denetler.
+
+### <a name="token-matches-for-a-phrase-list"></a>Tümcecik listesi için belirteç eşleşmeleri
+
+Tümcecik listesi, büyük/küçük harfe bakılmaksızın belirteç düzeyinde geçerlidir. Aşağıdaki grafikte, sözcüğü içeren bir tümcecik listesinin `Ann` Bu sırada aynı karakterlerin çeşitlemelerine nasıl uygulandığı gösterilmektedir.
+
+
+| Belirteç çeşitlemesi`Ann` | Belirteç bulunduğunda tümcecik listesi eşleşiyor |
+|--------------------------|---------------------------------------|
+| N<br>n<br>           | Evet-belirteç`Ann`                  |
+| Ann 'ın                    | Evet-belirteç`Ann`                  |
+| Gamze                     | Belirteç yok`Anne`                  |
+
 
 <a name="how-to-use-phrase-lists"></a>
 <a name="how-to-use-a-phrase-lists"></a>

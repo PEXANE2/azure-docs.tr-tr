@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2061d69fdfd13683ee722951cc7aaedcb1e1750a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5c76e45f09a0f432d2775eb19d3dcaa668294e6f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745362"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672672"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Language Understanding (LUSıS) kapsayıcı sınırlamaları
 
@@ -49,6 +49,7 @@ LUSıS kapsayıcıları, LUYA tarafından [desteklenen dillerin](luis-language-s
 | Dil | Yerel Ayar | Önceden oluşturulmuş etki alanı | Önceden oluşturulmuş varlık | Tümcecik listesi önerileri | **[Metin Analizi](../text-analytics/language-support.md)<br>(Yaklaşım ve<br>Lerimi|
 |--|--|:--:|:--:|:--:|:--:|
 | İngilizce (ABD) | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
+| Arapça (Önizleme-modern Standart Arapça) |`ar-AR`|❌|❌|❌|❌|
 | *[Çince](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
 | Fransızca (Fransa) |`fr-FR` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Fransızca (Kanada) |`fr-CA` | ❌ | ❌ | ❌ | ✔️ |
@@ -56,9 +57,12 @@ LUSıS kapsayıcıları, LUYA tarafından [desteklenen dillerin](luis-language-s
 | Hintçe | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
 | İtalyanca |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Korece |`ko-KR` | ✔️ | ❌ | ❌ | Yalnızca *anahtar tümceciği* |
+| Marathi | `mr-IN`|❌|❌|❌|❌|
 | Portekizce (Brezilya) |`pt-BR` | ✔️ | ✔️ | ✔️ | tüm alt kültürler değil |
 | İspanyolca (İspanya) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
 | İspanyolca (Meksika)|`es-MX` | ❌ | ❌ |✔️|✔️|
+| Tamil dili | `ta-IN`|❌|❌|❌|❌|
+| Telugu dili | `te-IN`|❌|❌|❌|❌|
 | Türkçe | `tr-TR` |✔️| ❌ | ❌ | *Yalnızca yaklaşım* |
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: trbye
-ms.openlocfilehash: 4181491053dd1f8d66afcd5f1df7cb96313011da
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b1e84f9acb439324317ed2f0d11ed06eb3e43ad8
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650594"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678078"
 ---
 # <a name="what-is-speech-to-text"></a>Konuşmayı metne dönüştürme nedir?
 
@@ -25,7 +25,7 @@ Konuşma tanıma olarak da bilinen konuşma hizmetindeki konuşma metni, ses ak�
 
 Konuşmadan metne hizmet varsayılan olarak evrensel dil modelini kullanmaktır. Bu model, Microsoft 'a ait veriler kullanılarak eğitildi ve buluta dağıtıldı. Konuşma ve dikte senaryoları için idealdir. Benzersiz bir ortamda tanıma ve döküm için konuşmayı metne dönüştürme özelliğini kullanırken özel akustik, dil ve telaffuz modeller oluşturup eğitebilirsiniz. Özelleştirme, çevresel gürültü veya sektöre özgü sözlük adreslemeye yardımcı olur.
 
-Giriş olarak ek başvuru metniyle birlikte, konuşmadan metne hizmet, konuşma söylenişini değerlendirmek ve konuşmaların doğruluğu ve akıcı olması ile konuşmacıya geri bildirimde bulunmak için [de sunar.](rest-speech-to-text.md#pronunciation-assessment-parameters) Telaffuz değerlendirmesi sayesinde, konuşma, anında geri bildirim alabilir ve telaffuz hale gelecek ve güvenle sunabilmeleri için söylenişlerini geliştirebilirler. Eğitimciler, birden çok konuşmacıdaki söylenişi gerçek zamanlı olarak değerlendirmek için özelliğini kullanabilir. Özelliği şu anda Amerikan Ingilizcesi 'ni destekliyor ve uzmanlar tarafından gerçekleştirilen konuşma değerlendirmelerinden yüksek oranda.
+Giriş olarak ek başvuru metniyle birlikte, konuşmadan metne hizmet, konuşma söylenişini değerlendirmek ve konuşmaların doğruluğu ve akıcı olması ile konuşmacıya geri bildirimde bulunmak için [de sunar.](rest-speech-to-text.md#pronunciation-assessment-parameters) Telaffuz değerlendirmesi sayesinde, konuşma, anında geri bildirim alabilir ve telaffuz hale gelecek ve güvenle sunabilmeleri için söylenişlerini geliştirebilirler. Eğitimciler, birden çok konuşmacıdaki söylenişi gerçek zamanlı olarak değerlendirmek için özelliğini kullanabilir. Özelliği şu anda ABD Ingilizcesi 'ni destekliyor ve uzmanlar tarafından gerçekleştirilen konuşma değerlendirmelerinden yüksek oranda.
 
 > [!NOTE]
 > Bing Konuşma, 15 Ekim 2019 ' de kullanımdan çıkarıldı. Uygulamalarınız, araçlarınız veya ürünleriniz Bing Konuşma API 'Leri kullanıyorsa, konuşma hizmetine geçiş yapmanıza yardımcı olacak kılavuzlar oluşturduk.

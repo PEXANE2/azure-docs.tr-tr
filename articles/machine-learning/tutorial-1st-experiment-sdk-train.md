@@ -11,12 +11,12 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.custom: tracking-python
-ms.openlocfilehash: ec0ff6c5e53d33cf5c07171c2b678fe6857836e0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e82ed66240144f94e18c3343dc0559f47722a2c4
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558376"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667121"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Öğretici: ilk ML modelinizi eğitme
 
@@ -138,7 +138,7 @@ experiment
 
 ## <a name="view-training-results-in-studio"></a>Studio 'da eğitim sonuçlarını görüntüleme
 
-**Azure Machine Learning Studio bağlantısını** takip etmek sizi ana deneme sayfasına götürür. İşte denemenize ait tüm bireysel çalıştırmaları görürsünüz. Tüm özel günlüğe kaydedilmiş değerler ( `alpha_value` ve `rmse` Bu durumda) her çalıştırma için alanlar haline gelir ve ayrıca deneme sayfasının en üstündeki grafikler ve kutucuklar için kullanılabilir hale gelir. Bir grafiğe veya kutucuğa günlüğe kaydedilmiş bir ölçüm eklemek için, üzerine gelin, Düzenle düğmesine tıklayın ve özel olarak günlüğe kaydedilen ölçümünüzün bulun.
+**Azure Machine Learning Studio bağlantısını** takip etmek sizi ana deneme sayfasına götürür. İşte denemenize ait tüm bireysel çalıştırmaları görürsünüz. Tüm özel günlüğe kaydedilmiş değerler ( `alpha_value` ve `rmse` Bu durumda) her çalıştırma için alanlar olur ve grafikler için kullanılabilir hale gelir. Günlüğe kaydedilmiş ölçüm içeren yeni bir grafik çizmek için, ' grafik Ekle ' düğmesine tıklayın ve çizdirmek istediğiniz ölçümü seçin.
 
 Eğitim modelleri, yüzlerce ve binlerce ayrı çalıştırma üzerinde ölçeklendirirseniz, Bu sayfa, eğitilen her modeli, özellikle eğitilen ve benzersiz ölçümlerinizin zaman içinde nasıl değiştiğini görmenizi kolaylaştırır.
 

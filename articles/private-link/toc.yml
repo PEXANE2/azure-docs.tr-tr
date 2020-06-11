@@ -13,6 +13,7 @@
     - name: Özel Uç Nokta oluşturma - Azure CLI
       href: create-private-endpoint-cli.md
     - name: Özel Uç Nokta oluşturma - ARM şablonu
+      displayName: Resource Manager
       href: create-private-endpoint-template.md
     - name: Özel Bağlantı Hizmeti oluşturma - Portal
       href: create-private-link-service-portal.md
@@ -21,6 +22,7 @@
     - name: Özel Bağlantı Hizmeti oluşturma - Azure CLI
       href: create-private-link-service-cli.md
     - name: Özel Bağlantı hizmeti oluşturma - ARM şablonu
+      displayName: Resource Manager
       href: create-private-link-service-template.md
 - name: Kavramlar
   items:

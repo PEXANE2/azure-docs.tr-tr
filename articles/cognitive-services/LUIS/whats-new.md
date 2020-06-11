@@ -3,18 +3,24 @@ title: Yenilikler-Language Understanding (LUSıS)
 description: Bu makale, Azure bilişsel hizmetler Language Understanding API hakkındaki haberlerle düzenli olarak güncelleştirilir.
 ms.topic: overview
 ms.date: 05/19/2020
-ms.openlocfilehash: b4d287c8d1ddbeeee63390fb397718de1234c93e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 45bfe4e703942a7fa38329bd0905833e904e0ab1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675948"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678758"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding yenilikleri
 
 Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notlarını, Videoları, blog gönderilerini ve diğer bilgi türlerini içerir. Hizmette güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.
 
 ## <a name="release-notes"></a>Sürüm notları
+
+### <a name="june-2020"></a>Haziran 2020
+
+* [Preview 3,0 yazma](luis-migration-authoring-entities.md) 'Sının
+    * Sürüm 3.2.0-Önizleme. 3- [.net-NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)
+    * Sürüm 4.0.0-Önizleme. 3- [js-NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)
 
 ### <a name="may-2020---build"></a>Mayıs 2020-/sürümü
 

@@ -8,14 +8,14 @@ ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: b344ae50d921c33a5e8ddd344e08ec86179668e9
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 3971d49befd228c111b1a8da5fce44e25abfaa65
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608766"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84657841"
 ---
-# <a name="tutorial-create-apache-spark-applications-with-intellij-using-synapse-synapse-analytics-workspaces-preview"></a>Öğretici: SYNAPSE SYNAPSE Analytics (çalışma alanları Önizleme) kullanarak IntelliJ ile Apache Spark uygulamalar oluşturma
+# <a name="tutorial-create-an-apache-spark-applications-with-intellij-using-a-synapse-workspace"></a>Öğretici: SYNAPSE çalışma alanı kullanarak IntelliJ ile Apache Spark uygulamaları oluşturma
 
 Bu öğreticide, Azure Toolkit for IntelliJ eklentisinin, [Scala](https://www.scala-lang.org/)'da yazılan Apache Spark uygulamaları geliştirme ve sonra doğrudan IntelliJ tümleşik geliştirme ORTAMıNDAN (IDE) bir Spark havuzuna (Önizleme) göndermesi gösterilmektedir. Eklentiyi birkaç şekilde kullanabilirsiniz:
 
@@ -30,7 +30,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > - Apache Spark uygulamaları geliştirme
 > - Uygulamayı Spark havuzlarına gönder
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [IntelliJ fikir topluluk sürümü](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC).
 - Azure araç seti eklentisi 3.27.0-2019.2 – [IntelliJ eklenti deposundan](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) Install
@@ -38,7 +38,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 - Scala eklentisi – [IntelliJ eklenti deposundan](/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea)Install.
 - Bu önkoşul yalnızca Windows kullanıcılarına yöneliktir.
 
-  Yerel Spark Scala uygulamasını bir Windows bilgisayarında çalıştırırken [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)' de açıklandığı gibi bir özel durum alabilirsiniz. Windows 'da WinUtils. exe eksik olduğu için özel durum oluşur.
+  Yerel Spark Scala uygulamasını bir Windows bilgisayarında çalıştırırken [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)' de açıklandığı gibi bir özel durum alabilirsiniz. Windows 'da WinUtils.exe eksik olduğu için özel durum oluşur.
   Bu hatayı çözmek için [Winutils yürütülebilirini](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) **C:\Win, \ bin**gibi bir konuma indirin. Ardından **HADOOP_HOME**ortam değişkenini ekleyin ve değişkenin değerini **c:\winutils**olarak ayarlayın.
 
 ## <a name="create-a-spark-scala-application-for-a-spark-pool"></a>Spark havuzu için Spark Scala uygulaması oluşturma
@@ -169,9 +169,9 @@ Apache Spark işiniz için yerel çalıştırmayı ve yerel hata ayıklamayı ay
 
     ![IntelliJ hata ayıklama yapılandırmalarının yerel çalıştırma Çalıştır](./media/intellij-tool-synapse/local-run-synapse.png)
 
-    - Ortam değişkenleri ve WinUtils. exe konumu yalnızca Windows kullanıcılarına yöneliktir.
+    - Ortam değişkenleri ve WinUtils.exe konumu yalnızca Windows kullanıcılarına yöneliktir.
     - Ortam değişkenleri: sistem ortam değişkeni, daha önce ayarladıysanız ve el ile eklemesi gerekmiyorsa otomatik olarak algılanabilir.
-    - [Winutils. exe konumu](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe): sağdaki klasör simgesine tıklayarak winutils konumunu belirtebilirsiniz.
+    - [WinUtils.exe konumu](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe): sağdaki klasör simgesine tıklayarak winutils konumunu belirtebilirsiniz.
 
 2. Sonra yerel Oynat düğmesine tıklayın.
 
@@ -210,7 +210,7 @@ Spark yerel konsolu 'Nu (Scala) çalıştırabilir veya Spark Livy etkileşimli 
 
 ### <a name="spark-local-console-scala"></a>Spark yerel Konsolu (Scala)
 
-WINUTILS ' i karşıladığınızı doğrulayın. EXE önkoşulu.
+WINUTILS.EXE önkoşulu karşılatığınızdan emin olun.
 
 1. Menü çubuğundan **Çalıştır**  >  **yapılandırma yapılandırma...**' ya gidin.
 2. **Çalıştır/hata ayıkla yapılandırma** penceresinde, sol bölmede **SYNAPSE**  >  **[Spark on SYNAPSE] MyApp**' de Apache Spark ' a gidin.
@@ -220,7 +220,7 @@ WINUTILS ' i karşıladığınızı doğrulayın. EXE önkoşulu.
     |Özellik |Değer |
     |----|----|
     |Ortam değişkenleri|HADOOP_HOME değerinin doğru olduğundan emin olun.|
-    |WINUTILS. exe konumu|Yolun doğru olduğundan emin olun.|
+    |WINUTILS.exe konumu|Yolun doğru olduğundan emin olun.|
 
     ![Yerel konsol kümesi yapılandırması](./media/intellij-tool-synapse/local-console-synapse01.png)
 

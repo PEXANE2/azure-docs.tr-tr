@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/30/2020
 ms.topic: tutorial
-ms.openlocfilehash: 7901f12763cb97fa76c0908e76755247ae934a20
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c05daa998829c4ac0687f75ae5678695127a50b0
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300598"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659907"
 ---
 # <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>Öğretici: sıfırdan Unity projesi ayarlama
 
@@ -25,7 +25,7 @@ Bu öğreticide şunları öğreneceksiniz:
 > * Modeller bir işleme oturumuna yükleniyor.
 > * Bağlantı istatistikleri gösteriliyor.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide şunlar gerekir:
 
@@ -105,6 +105,7 @@ Aşağıdaki adımlarda, projenizin uzaktan işleme paketinin en son sürümün�
 
 1. *> proje ayarlarını Düzenle 'yi aç...*
 1. Sol taraftaki listede kalite ' yi seçin.
+1. **Etkin kalite düzeyini** , seçerek *düşük* olarak değiştirin
 1. **Varsayılan kalite düzeyini** *düşük* olarak değiştirme
 
     ![Proje kalitesi ayarlarını değiştir](media/settings-quality.png)

@@ -11,19 +11,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 03/03/2020
-ms.openlocfilehash: a0ed57657a461e4af8e58931b133437e5897796a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/08/2020
+ms.openlocfilehash: 2165efd6b522d3809dba285cf2c3050fc50b2d28
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022070"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660970"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak Azure Blob depolamadan SQL veritabanına veri kopyalama
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory hizmetinin sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [Geçerli sürüm](tutorial-copy-data-tool.md)
+> * [Güncel sürüm](tutorial-copy-data-tool.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -101,7 +101,7 @@ Bu adımları gerçekleştirerek BLOB depolama alanınızı ve SQL veritabanın�
 
 1. **Sürüm** bölümünde **V2**'yi seçin.
 1. **Konum** bölümünde veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikanız tarafından kullanılan veri depoları (örneğin, Azure Depolama ve SQL Veritabanı) ve işlemler (örneğin, Azure HDInsight) başka konumlarda ve bölgelerde olabilir.
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 1. Oluşturma işlemi tamamlandıktan sonra **Data Factory** giriş sayfası görüntülenir.
 
@@ -156,11 +156,13 @@ Bu adımları gerçekleştirerek BLOB depolama alanınızı ve SQL veritabanın�
     ![Sütun eşleme sayfası](./media/tutorial-copy-data-tool/column-mapping.png)
 
 1. **Ayarlar** sayfasında **İleri**’yi seçin.
-1. **Özet** sayfasında ayarları gözden geçirin ve **İleri**’yi seçin.
-1. **Dağıtım** sayfasında, işlem hattını (görev) izlemek için **İzleyici**’yi seçin.
- 
-    ![İşlem hattını izleme](./media/tutorial-copy-data-tool/monitor-pipeline.png)
 
+1. **Özet** sayfasında ayarları gözden geçirin ve **İleri**’yi seçin.
+
+1. **Dağıtım** sayfasında, işlem hattını (görev) izlemek için **İzleyici**’yi seçin.
+
+    ![İşlem hattını izleme](./media/tutorial-copy-data-tool/monitor-pipeline.png)
+    
 1. İşlem hattı çalıştırmaları sayfasında, Listeyi yenilemek için **Yenile** ' yi seçin. Etkinlik çalıştırma ayrıntılarını görüntülemek veya işlem hattını yeniden çalıştırmak için işlem **hattı adı** altındaki bağlantıya tıklayın. 
     ![İşlem hattı çalıştırması](./media/tutorial-copy-data-tool/pipeline-run.png)
 
@@ -168,9 +170,7 @@ Bu adımları gerçekleştirerek BLOB depolama alanınızı ve SQL veritabanın�
 
     ![Etkinlik çalıştırmalarını izleme](./media/tutorial-copy-data-tool/activity-monitoring.png)
 
-
 1. Verilerin SQL veritabanınızdaki **dbo.** , tablosuna eklendiğini doğrulayın.
-
 
 1. Düzenleyici moduna geçmek için soldaki **Yazar** sekmesini seçin. Düzenleyici kullanılarak araç üzerinden oluşturulan bağlı hizmetleri, veri kümelerini ve işlem hatlarını güncelleştirebilirsiniz. Bu varlıkları Data Factory kullanıcı arabiriminde düzenlemeyle ilgili ayrıntılar için [bu öğreticinin Azure portalı sürümüne](tutorial-copy-data-portal.md) bakın.
 

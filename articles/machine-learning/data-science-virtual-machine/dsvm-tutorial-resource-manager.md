@@ -10,21 +10,21 @@ ms.date: 06/10/2020
 ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: e89f3d85156081106f4e1dbb55ee6c895e7e7a2d
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 7e3e45d96839be06deec238deccdc9873492d68f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636759"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660256"
 ---
-# <a name="tutorial-create-an-ubuntu-data-science-virtual-machine-using-a-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonu kullanarak Ubuntu Veri Bilimi Sanal Makinesi oluşturma
+# <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-a-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak Ubuntu Veri Bilimi Sanal Makinesi oluşturma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak Ubuntu 18,04 Veri Bilimi Sanal Makinesi oluşturma gösterilmektedir. Veri bilimi sanal makineleri, bir veri bilimi ve makine öğrenimi çerçeveleri ve araçları paketiyle önceden yüklenmiş bulut tabanlı sanal makinelerdir. GPU destekli işlem kaynaklarına dağıtıldığında, tüm araçlar ve kitaplıklar GPU 'YU kullanacak şekilde yapılandırılır. 
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://aka.ms/AMLFree) oluşturun
 
@@ -34,7 +34,7 @@ Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak Ubuntu
 
 ### <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/). Bu makale için tam şablon burada görüntülenemeyecek kadar uzun. Tüm şablonu görüntülemek için, bkz. [azuredeploy. JSON](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json). DSVM 'nin özelliklerini tanımlayan bölüm burada gösterilmektedir:
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/). Bu makale için tam şablon burada görüntülenemeyecek kadar uzun. Tüm şablonu görüntülemek için bkz. [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json). DSVM 'nin özelliklerini tanımlayan bölüm burada gösterilmektedir:
 
 :::code language="json" source="~/quickstart-templates/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json" range="235-276":::
 

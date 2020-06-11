@@ -2,15 +2,15 @@
 title: Öğretici-& dağıtım şablonu oluşturma
 description: İlk Azure Resource Manager şablonunuzu oluşturun. Öğreticide, şablon dosyası söz dizimi ve depolama hesabı dağıtma hakkında bilgi edineceksiniz.
 author: mumian
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dff1dd15f7f161f25ef7de54e36fa83e3e0036d2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: e2419e8ee9f8648ae8f929638ac2c85ea8b67a0f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235223"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676157"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma
 
@@ -34,9 +34,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 Ayrıca, şablonu dağıtmak için Azure PowerShell ya da Azure CLı gerekir. Azure CLı kullanıyorsanız, en son sürüme sahip olmanız gerekir. Yükleme yönergeleri için bkz.:
 
-- [Azure PowerShell yüklensin](/powershell/azure/install-az-ps)
+- [Azure PowerShell'i yükleme](/powershell/azure/install-az-ps)
 - [Windows'da Azure CLI'yi yükleme](/cli/azure/install-azure-cli-windows)
 - [Linux 'ta Azure CLı 'yı yükler](/cli/azure/install-azure-cli-linux)
+- [macOS’ta Azure CLI'yi yükleme](/cli/azure/install-azure-cli-macos)
 
 Azure PowerShell veya Azure CLı yükledikten sonra, ilk kez oturum açarak emin olun. Yardım için bkz. [oturum açma-PowerShell](/powershell/azure/install-az-ps#sign-in) veya [Oturum Açma-Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in).
 
@@ -50,7 +51,7 @@ Tamam, şablonlar hakkında öğrenmeye başlamaya hazırsınız.
 1. Kaynak Yöneticisi Araçları uzantısı yüklü Visual Studio Code açın.
 1. **Dosya** menüsünde **yeni dosya** ' yı seçerek yeni bir dosya oluşturun.
 1. **Dosya** menüsünde **farklı kaydet**' i seçin.
-1. Dosyayı **azuredeploy** olarak adlandırın ve **JSON** dosya uzantısını seçin. **Azuredeploy. JSON**dosyasının tüm adı.
+1. Dosyayı **azuredeploy** olarak adlandırın ve **JSON** dosya uzantısını seçin. Dosyanın tamamının adı **azuredeploy.js**.
 1. Dosyayı iş istasyonunuza kaydedin. Daha sonra şablonu dağıttığınızda bu yolu sağlayacağından, anımsanması kolay bir yol seçin.
 1. Aşağıdaki JSON dosyasını kopyalayıp dosyaya yapıştırın:
 
@@ -182,7 +183,7 @@ Dağıtım komutu sonuçları döndürür. `ProvisioningState`Dağıtımın baş
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Sol menüden **kaynak grupları**' nı seçin.
 

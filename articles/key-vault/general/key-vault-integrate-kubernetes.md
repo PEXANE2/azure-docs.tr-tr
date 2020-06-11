@@ -1,17 +1,17 @@
 ---
-title: Kubernetes ile Azure Key Vault tümleştirme
+title: Azure Key Vault’u Kubernetes ile tümleştirme
 description: Bu öğreticide, daha sonra Kubernetes pods içine bağlamak için gizli dizi (container Storage Interface) sürücüsünü kullanarak Azure Key Vault gizli dizileri erişir ve bu bilgileri alacaksınız.
 author: taytran0
 ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: e945a30ca1fcd62fdfccd16d4e853540dbf73d8a
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 27d602f22aa3915f39f21ac924afa42b98e70720
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637171"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667173"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-secret-store-csi-driver-on-kubernetes"></a>Öğretici: Kubernetes üzerinde gizli depo CSı sürücüsü için Azure Key Vault sağlayıcısını yapılandırın ve çalıştırın
 
@@ -20,14 +20,15 @@ Bu öğreticide, daha sonra Kubernetes pods içine bağlamak için gizli dizi (c
 Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Hizmet sorumlusu oluşturma
-> * Azure Kubernetes hizmet kümesi dağıtma
+> * Hizmet sorumlusu oluşturma veya yönetilen kimlikleri kullanma
+> * Azure CLı kullanarak bir Azure Kubernetes hizmet kümesi dağıtma
 > * Held ve gizlilikler deposunun CSı sürücüsünü yükler
 > * Azure Key Vault oluşturma ve gizli dizileri ayarlama
 > * Kendi SecretProviderClass nesneniz oluşturma
+> * Hizmet sorumlunuzu atayın veya yönetilen kimlikler kullanın
 > * Pod 'nizi Key Vault bağlı gizli dosyalarla dağıtın
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -62,8 +63,8 @@ Bu [Kılavuzu](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough) izle
 az aks create -n contosoAKSCluster -g contosoResourceGroup --kubernetes-version 1.16.9 --node-count 1 --enable-managed-identity
 ```
 
-1. [Path ortam değişkeninizi](https://www.java.com/en/download/help/path.xml) indirilen "kubectl. exe" dosyasına ayarlayın.
-1. Aşağıdaki komutu kullanarak Kubernetes sürümünüzü kontrol edin. Bu komut, istemci ve sunucu sürümünün çıktısını alacak. Sunucu sürümü, kümenizin üzerinde çalıştığı Azure Kubernetes hizmetleri olduğunda, istemci sürümü yüklediğiniz "kubectl. exe" dir.
+1. [Path ortam değişkeninizi](https://www.java.com/en/download/help/path.xml) indirilen "kubectl.exe" dosyası olarak ayarlayın.
+1. Aşağıdaki komutu kullanarak Kubernetes sürümünüzü kontrol edin. Bu komut, istemci ve sunucu sürümünün çıktısını alacak. Sunucu sürümü, kümenizin üzerinde çalıştığı Azure Kubernetes hizmetleri olduğunda, istemci sürümü yüklediğiniz "kubectl.exe" dir.
     ```azurecli
     kubectl version
     ```
@@ -78,7 +79,7 @@ az aks create -n contosoAKSCluster -g contosoResourceGroup --kubernetes-version 
 
     Bu, her iki parametrenin de vurgulandığı çıktıdır.
     
-    ![Görüntü ](../media/kubernetes-key-vault-5.png) ![ resmi](../media/kubernetes-key-vault-6.png)
+    ![Görüntü ](../media/kubernetes-key-vault-2.png) ![ resmi](../media/kubernetes-key-vault-3.png)
     
 ## <a name="install-helm-and-secrets-store-csi-driver"></a>Held ve gizlilikler deposunun CSı sürücüsünü yükler
 
@@ -157,7 +158,7 @@ spec:
 ```
 Aşağıda, ilgili vurgulanan meta verilerle "az keykasa Show--Name contosoKeyVault5" için konsol çıktısı verilmiştir:
 
-![Görüntü](../media/kubernetes-key-vault-2.png)
+![Görüntü](../media/kubernetes-key-vault-4.png)
 
 ## <a name="assign-your-service-principal-or-use-managed-identities"></a>Hizmet sorumlunuzu atayın veya yönetilen kimlikler kullanın
 
@@ -172,7 +173,7 @@ Hizmet sorumlusu kullanılıyorsa. Key Vault erişmek ve gizli dizileri almak i�
 
     Komutun çıktısı aşağıda verilmiştir: 
 
-    ![Görüntü](../media/kubernetes-key-vault-3.png)
+    ![Görüntü](../media/kubernetes-key-vault-5.png)
 
 1. Gizli dizileri almak için hizmet sorumlusu izni verin:
     ```azurecli
@@ -206,19 +207,19 @@ Yönetilen kimlikler kullanılıyorsa, oluşturduğunuz AKS kümesine belirli ro
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     ```
 
-1. Azure Active Directory (Azure AD) kimliğini AKS 'e yükler.
+1. Azure Active Directory (AAD) kimliğini AKS 'e yükler.
     ```azurecli
     helm repo add aad-pod-identity https://raw.githubusercontent.com/Azure/aad-pod-identity/master/charts
 
     helm install pod-identity aad-pod-identity/aad-pod-identity
     ```
 
-1. Bir Azure AD kimliği oluşturun. **ClientID** ve **PrincipalId**değerini kopyalayın.
+1. AAD kimliği oluşturma. **ClientID** ve **PrincipalId**değerini kopyalayın.
     ```azurecli
     az identity create -g $resourceGroupName -n $identityName
     ```
 
-1. Key Vault için yeni oluşturduğunuz Azure AD kimliğine okuyucu rolünü atayın. Daha sonra Key Vault, kimlik bilgilerinizi, parolaları almak için izin verin. Yeni oluşturduğunuz Azure kimliğinden **ClientID** ve **PrincipalId** ' i kullanacaksınız.
+1. Key Vault için yeni oluşturduğunuz AAD kimliğine okuyucu rolünü atayın. Daha sonra Key Vault, kimlik bilgilerinizi, parolaları almak için izin verin. Yeni oluşturduğunuz Azure kimliğinden **ClientID** ve **PrincipalId** ' i kullanacaksınız.
     ```azurecli
     az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
 
@@ -309,7 +310,7 @@ Pod uygulamanızın durumunu denetlemek için şu komutu kullanın:
 kubectl describe pod/nginx-secrets-store-inline
 ```
 
-![Görüntü](../media/kubernetes-key-vault-4.png)
+![Görüntü](../media/kubernetes-key-vault-6.png)
 
 Dağıtılan Pod, "çalışıyor" durumunda olmalıdır. En alttaki "olaylar" bölümünde, sol taraftaki tüm olay türleri "normal" olarak sınıflandırılır.
 Pod 'un çalıştığını doğruladıktan sonra, Pod 'larınızın Key Vault gizli dizileri olduğunu doğrulayabilirsiniz.

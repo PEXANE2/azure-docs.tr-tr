@@ -5,16 +5,16 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: mimart
-ms.openlocfilehash: e37419b5d568b0f60e4c6a0c8fed26eb418f501e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c1628894205754c1b8f1fc954796009afbdc8ed4
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84297504"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84680275"
 ---
-#### <a name="app-registrations-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/) 
 
-1. **Uygulama kayıtları (Önizleme)** öğesini seçin ve ardından API 'ye erişimi olması gereken Web uygulamasını seçin. Örneğin, *WebApp1*.
+1. **Uygulama kayıtları**' yi seçin ve ardından API 'ye erişmesi gereken Web uygulamasını seçin. Örneğin, *WebApp1*.
 1. **Yönet**altında **API izinleri**' ni seçin.
 1. **Yapılandırılan izinler**altında **izin Ekle**' yi seçin.
 1. **API 'Lerim** sekmesini seçin.
@@ -26,9 +26,9 @@ ms.locfileid: "84297504"
 1. **Evet**' i seçin.
 1. **Yenile**' yi seçin ve ardından "verilen..." öğesini doğrulayın Her iki kapsam için **durum** altında görünür.
 
-#### <a name="applications"></a>[Uygulamalar](#tab/applications/)
+#### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
-1. **Uygulamalar**' ı seçin ve ardından API erişimi olması gereken Web uygulamasını seçin. Örneğin, *WebApp1*.
+1. Uygulamalar ' ı **(eski)** seçin ve ardından API 'ye erişmesi gereken Web uygulamasını seçin. Örneğin, *WebApp1*.
 1. **API erişimi**' ni seçin ve ardından **Ekle**' yi seçin.
 1. **API Seç** açılan menüsünde, Web uygulamasına erişim IZNI verilecek API 'yi seçin. Örneğin, *webapi1*.
 1. **Kapsamları Seç** açılan menüsünde, daha önce tanımladığınız kapsamları seçin. Örneğin, *demo. Read* ve *demo. Write*.
