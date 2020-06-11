@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0effb6bb6e3d3f80775a3cee1ad8a63013a78805
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 87da588806908566bd1980da4c3120c0d4537b4a
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585851"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673148"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Azure Active Directory B2B’de konuk kullanıcı erişimi nedir?
 
@@ -44,7 +44,7 @@ Azure AD B2B ile ortaklar kendi kimlik yönetimi çözümlerini kullanır; bu ne
 
 ## <a name="invite-guest-users-with-a-simple-invitation-and-redemption-process"></a>Basit bir davet ve kullanım işlemiyle konuk kullanıcıları davet etme
 
-Konuk kullanıcılar, kendi iş, okul veya sosyal kimlikleriyle uygulama ve hizmetlerinizde oturum açar. Konuk kullanıcının bir Microsoft hesabı veya bir Azure AD hesabı yoksa, kullanıcılar davetlerini kullandığında kendileri için bir hesap oluşturulur. 
+Konuk kullanıcılar, kendi iş, okul veya sosyal kimlikleriyle uygulama ve hizmetlerinizde oturum açar. Konuk kullanıcının bir Microsoft hesabı veya bir Azure AD hesabı yoksa, daveti kullandıklarında bir tane oluşturulur. 
 
 - Kendi tercih ettikleri e-posta kimliğini kullanarak konuk kullanıcıları davet edin.
 - Bir uygulamaya doğrudan bağlantı gönderin veya konuk kullanıcının kendi Erişim Paneline bir davet gönderin.
@@ -84,7 +84,7 @@ Uygulama sahiplerinin, Microsoft uygulaması olsun olmasın, paylaşmak istedikl
 
 ## <a name="customize-the-onboarding-experience-for-b2b-guest-users"></a>B2B Konuk kullanıcıları için ekleme deneyimini özelleştirme
 
-Kuruluşunuzun gereksinimlerine göre özelleştirilmiş şekilde şirket dışındaki ortaklar ekleyin.
+Dış iş ortaklarınızı, kuruluşunuzun ihtiyaçlarına göre özelleştirilmiş yollarla Pano 'ya taşıyın.
 
 - [Dış kullanıcılara erişimi yöneten](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users)ilkeleri yapılandırmak IÇIN [Azure AD Yetkilendirme Yönetimi](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) 'ni kullanın.
 - Ekleme deneyimlerinizi özelleştirmek için [B2B işbirliği davetiyesi API 'lerini](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) kullanın.
@@ -98,7 +98,8 @@ Azure AD, Facebook, Microsoft hesapları, Google veya kurumsal kimlik sağlayıc
 
 ## <a name="create-a-self-service-sign-up-user-flow-preview"></a>Self Servis kaydolma Kullanıcı akışı oluşturma (Önizleme)
 
-Self Servis kaydolma Kullanıcı akışıyla, uygulamalarınıza erişmek isteyen dış kullanıcılar için bir kaydolma deneyimi oluşturabilirsiniz. Kaydolma akışının bir parçası olarak, farklı sosyal veya kurumsal kimlik sağlayıcılarının seçeneklerini sağlayabilir ve Kullanıcı hakkında bilgi toplayabilirsiniz. Self Servis kaydolma ve nasıl ayarlanacağı hakkında bilgi edinin.
+Self Servis kaydolma Kullanıcı akışıyla, uygulamalarınıza erişmek isteyen dış kullanıcılar için bir kaydolma deneyimi oluşturabilirsiniz. Kaydolma akışının bir parçası olarak, farklı sosyal veya kurumsal kimlik sağlayıcılarının seçeneklerini sağlayabilir ve Kullanıcı hakkında bilgi toplayabilirsiniz. [Self servis kaydolma ve nasıl ayarlanacağı](self-service-sign-up-overview.md)hakkında bilgi edinin.
+<!-- You can also use [API connectors](api-connectors-overview.md) to integrate your user flows with external systems, for example user approval systems, user input validation systems, or custom business logic. -->
 
 ![Kullanıcı akışları sayfasını gösteren ekran görüntüsü](media/what-is-b2b/self-service-sign-up-user-flow-overview.png)
 

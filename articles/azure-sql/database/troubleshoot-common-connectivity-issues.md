@@ -9,16 +9,15 @@ ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
-manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 4aa8d35e48c28cadecb6acc1f56ca6c44a145719
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: b7cf4ab817f222f3a36a047e1e4d379f5bd6b73e
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266976"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668415"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>SQL veritabanı ve SQL yönetilen örneği 'nde geçici bağlantı hatalarıyla ilgili sorunları giderme
 
@@ -150,7 +149,7 @@ Bu testi pratik hale getirmek için programınız programın şunları yapmasın
 **ConnectRetryCount** ve **ConnectRetryInterval** parametreleri, **SqlConnection** nesnenizin, programınız için denetim döndüren veya bothering olmadan Connect işlemini yeniden denemesini sağlar. Yeniden denemeler aşağıdaki durumlarda oluşabilir:
 
 - mySqlConnection. Open Yöntem çağrısı
-- mySqlConnection. Execute yöntemi çağrısı
+- mySqlConnection.Exeşirin Yöntem çağrısı
 
 Bir alt tcellik vardır. *Sorgunuz* yürütülürken geçici bir hata oluşursa, **SqlConnection** nesneniz bağlantı işlemini yeniden denemez. Sorgunuzu kesinlikle yeniden denemez. Ancak, **SqlConnection** yürütme için sorgunuzu göndermeden önce bağlantıyı çok hızlı denetler. Hızlı denetim bir bağlantı sorunu algılarsa, **SqlConnection** bağlantı işlemini yeniden dener. Yeniden deneme başarılı olursa, sorgunuz yürütme için gönderilir.
 
@@ -227,7 +226,7 @@ Programınız SQL veritabanı 'nda veritabanınıza bağlanamıyorsa, tek bir ta
 
 Herhangi bir Windows bilgisayarında, bu yardımcı programları deneyebilirsiniz:
 
-- ADO.NET kullanarak bağlanan SQL Server Management Studio (SSMS. exe)
+- ADO.NET kullanarak bağlanan SQL Server Management Studio (ssms.exe)
 - `sqlcmd.exe`, [ODBC](https://msdn.microsoft.com/library/jj730308.aspx) kullanarak bağlanan
 
 Programınız bağlandıktan sonra, kısa bir SQL SELECT sorgusunun çalışıp çalışmadığını test edin.
@@ -243,7 +242,7 @@ Linux 'ta aşağıdaki yardımcı programlar yararlı olabilir:
 - `netstat -nap`
 - `nmap -sS -O 127.0.0.1`: Örnek değeri IP adresiniz olacak şekilde değiştirin.
 
-Windows 'da, [PortQry. exe](https://www.microsoft.com/download/details.aspx?id=17148) yardımcı programı yararlı olabilir. Aşağıda SQL veritabanı 'ndaki ve bir dizüstü bilgisayarda çalışan bir veritabanında bağlantı noktası durumu sorgulanan örnek bir yürütme verilmiştir:
+Windows 'da [PortQry.exe](https://www.microsoft.com/download/details.aspx?id=17148) yardımcı programı yararlı olabilir. Aşağıda SQL veritabanı 'ndaki ve bir dizüstü bilgisayarda çalışan bir veritabanında bağlantı noktası durumu sorgulanan örnek bir yürütme verilmiştir:
 
 ```cmd
 [C:\Users\johndoe\]
@@ -277,7 +276,7 @@ Enterprise Library 6 (EntLib60), günlüğe kaydetmeye yardımcı olacak .NET y�
 
 Hata günlüklerini ve diğer bilgileri sorgulayan bazı Transact-SQL SELECT deyimleri aşağıda verilmiştir.
 
-| Günlük sorgusu | Açıklama |
+| Günlük sorgusu | Description |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[Sys. event_log](https://msdn.microsoft.com/library/dn270018.aspx) görünümü, geçici hatalara veya bağlantı hatalarına neden olabilecek bazı olaylar hakkında bilgi sunar.<br/><br/>İdeal olarak, **start_time** veya **end_time** değerlerini, istemci programınızın sorun yaşadığında ilgili bilgilerle ilişkilendirebiliriz.<br/><br/>Bu sorguyu çalıştırmak için *ana* veritabanına bağlanmanız gerekir. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[Sys. database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) görünümü, ek Tanılamalar için toplanan olay türleri sayısını sunar.<br/><br/>Bu sorguyu çalıştırmak için *ana* veritabanına bağlanmanız gerekir. |

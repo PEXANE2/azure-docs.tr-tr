@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f0702c09d2803507f07f74d97767c781825bf34f
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 9dffa4d32980a16377f33a4ddb23987b3c2f3dd5
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778553"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678604"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Application Insights ile canlı Azure App Service uygulamalar profili
 
@@ -21,13 +21,13 @@ ASP.NET üzerinde profil oluşturucuyu ve temel hizmet katmanını veya üstün�
 Bir uygulama için profil oluşturucuyu etkinleştirmek üzere aşağıdaki yönergeleri izleyin. Farklı bir Azure hizmeti türü çalıştırıyorsanız, desteklenen diğer platformlarda profil oluşturucuyu etkinleştirme talimatları aşağıda verilmiştir:
 * [Bulut Hizmetleri](../../azure-monitor/app/profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Service Fabric uygulamalar](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Sanal makineler](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Sanal Makineler](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 Application Insights Profiler, App Services çalışma zamanının bir parçası olarak önceden yüklenir. Aşağıdaki adımlarda, App Service için nasıl etkinleştirileceği gösterilmektedir. Application Insights SDK 'sını uygulamanıza derleme zamanında dahil etseniz bile bu adımları izleyin.
 
-1. App Service için "Always On" ayarını etkinleştirin. Ayarları, genel ayarlar altında App Service yapılandırma sayfasında güncelleştirebilirsiniz.
-1. Azure portal **App Services** bölmesine gidin.
-1. **Ayarlar > Application Insights** bölmesine gidin.
+1. App Service için Azure Denetim Masası ' na gidin.
+1. App Service için "Always On" ayarını etkinleştirin. Bu ayarı **Ayarlar**, **yapılandırma** sayfası (bir sonraki adımda ekran görüntüsüne bakın) altında bulabilir ve **Genel ayarlar** sekmesine tıklayabilirsiniz.
+1. **Ayarlar > Application Insights** sayfasına gidin.
 
    ![App Services portalında App Insights 'ı etkinleştirme](./media/profiler/AppInsights-AppServices.png)
 

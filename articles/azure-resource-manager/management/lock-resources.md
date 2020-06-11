@@ -2,13 +2,13 @@
 title: Değişiklikleri engellemek için kaynakları kilitle
 description: Kullanıcıların, tüm kullanıcılar ve roller için bir kilit uygulayarak kritik Azure kaynaklarını güncelleştirmesini veya silmelerini önleyin.
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 6d6617b7e13ebf7a58cdbbf9356eac1d035a1f73
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.date: 06/10/2020
+ms.openlocfilehash: cf5e2c7d19b9b90be3e9ca9e64e832794cd70c92
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84483476"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678044"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Beklenmeyen değişiklikleri önlemek için kaynakları kilitleme
 
@@ -35,9 +35,11 @@ Kilitleri uygulamak, kaynağı değiştirmeyen bazı işlemler gerçekten kilit 
 
 * Bir **sanal makine** içeren bir **kaynak grubundaki** salt okunurdur bir kilit, tüm kullanıcıların sanal makineyi başlatmasını veya yeniden başlatmasını önler. Bu işlemler bir POST isteği gerektirir.
 
-* Bir **abonelikte** salt okunurdur bir kilit **Azure Advisor** 'ın düzgün çalışmasını engeller. Danışman, sorgularının sonuçlarını depolayamadı.
+* Bir **kaynak grubundaki** bir Delete kilidi, Azure Resource Manager [otomatik olarak geçmiş dağıtımlar silmesini](../templates/deployment-history-deletions.md) engeller. Geçmişte 800 dağıtıma ulaşırsanız, dağıtımlarınız başarısız olur.
 
 * **Azure Backup hizmeti** tarafından oluşturulan **kaynak grubundaki** bir Delete kilidi, yedeklemelerin başarısız olmasına neden olur. Hizmet en fazla 18 geri yükleme noktasını destekler. Kilitlendiğinde, yedekleme hizmeti geri yükleme noktalarını temizleyemiyor. Daha fazla bilgi için bkz. [sık sorulan sorular-Azure sanal makinelerini yedekleme](../../backup/backup-azure-vm-backup-faq.md).
+
+* Bir **abonelikte** salt okunurdur bir kilit **Azure Advisor** 'ın düzgün çalışmasını engeller. Danışman, sorgularının sonuçlarını depolayamadı.
 
 ## <a name="who-can-create-or-delete-locks"></a>Kilitleri kimler oluşturabilir veya silebilir
 

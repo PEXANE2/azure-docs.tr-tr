@@ -7,18 +7,16 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: c0dd5c8cd61d1c7abf11d97e858fdc30d774e456
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 444c3afefcf4cfdafc817af3b7bc6ce4463853c1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259125"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678367"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Azure sanal makinelerinde özel veriler ve Cloud-Init
 
-## <a name="what-is-custom-data"></a>Özel veriler nedir?
-
-Müşteriler genellikle, sağlama zamanında bir Microsoft Azure sanal makinesine bir betiği veya diğer meta verileri nasıl ekleyebilecekleri hakkında sorun.  Diğer bulutlarda, bu kavram genellikle kullanıcı verileri olarak adlandırılır.  Microsoft Azure, özel veri adlı benzer bir özelliktir. 
+Sağlama zamanında bir Microsoft Azure sanal makinesine bir betik veya diğer meta veri eklemeniz gerekebilir.  Diğer bulutlarda, bu kavram genellikle kullanıcı verileri olarak adlandırılır.  Microsoft Azure, özel veri adlı benzer bir özelliktir. 
 
 Özel veriler yalnızca ilk önyükleme/ilk kurulum sırasında VM için kullanılabilir hale getirilir, bu ' sağlama ' işlemini çağıracağız. Sağlama, sanal makine oluşturma parametrelerinin (örneğin, ana bilgisayar adı, Kullanıcı adı, parola, sertifikalar, özel veriler, anahtarlar vb.) VM için kullanılabilir hale getirilme işlemidir ve [Linux Aracısı](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) ve [Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init)gibi bir sağlama Aracısı tarafından işlenir. 
 
@@ -65,12 +63,12 @@ VM 'lerde yüklü olan sağlama aracıları, platformla ve dosya sistemine yerle
 Özel veriler bir ikili dosya olarak *%SYSTEMDRIVE%\AzureData\CustomData.bin* 'e yerleştirilir, ancak işlenmemiştir. Bu dosyayı işlemek isterseniz, özel bir görüntü oluşturmanız ve CustomData. bin işlemek için kod yazmanız gerekir.
 
 ### <a name="linux"></a>Linux  
-Linux IŞLETIM sisteminde, özel veriler VM 'ye, sağlama sırasında */var/lib/waagent* dizinine kopyalanmış olan ovf-env. xml dosyası aracılığıyla geçirilir.  Microsoft Azure Linux aracısının daha yeni sürümleri, Base64 kodlamalı verileri de */var/lib/waagent/CustomData dizinine* kopyalar ve kolaylık sağlar.
+Linux IŞLETIM sisteminde, özel veriler, sağlama sırasında */var/lib/waagent* dizinine kopyalanmış ovf-env.xml dosyası aracılığıyla sanal makineye geçirilir.  Microsoft Azure Linux aracısının daha yeni sürümleri, Base64 kodlamalı verileri de */var/lib/waagent/CustomData dizinine* kopyalar ve kolaylık sağlar.
 
 Azure Şu anda iki sağlama aracısını desteklemektedir:
 * Linux Aracısı-varsayılan olarak aracı özel verileri işlemez, etkin olan özel bir görüntü oluşturmanız gerekir. [Belgelere](https://github.com/Azure/WALinuxAgent#configuration) göre ilgili ayarlar şunlardır:
     * . DecodeCustomData sağlama
-    * Sağlama. ExecuteCustomData
+    * CuteCustomData Provisioning.Exe
 
 Özel verileri etkinleştirdiğinizde ve bir betiği yürüttüğünüzde, bu, hazırlama işlemi olan VM raporlanmasını erteleyebilir veya komut dosyası tamamlanana kadar sağlama başarılı olur. Betik 40 dakikalık toplam VM sağlama süresi indirimini aşarsa, VM oluşturma başarısız olur. Not, komut dosyası yürütülemezse veya yürütme sırasında hatalar ortaya çıkarsa, önemli bir sağlama hatası kabul edilmez, betiğin tamamlanma durumu için sizi uyarmak üzere bir bildirim yolu oluşturmanız gerekecektir.
 

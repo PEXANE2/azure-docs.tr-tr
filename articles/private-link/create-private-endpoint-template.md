@@ -4,17 +4,18 @@ description: Azure özel bağlantısı hakkında bilgi edinin
 services: private-link
 author: mblanco77
 ms.service: private-link
-ms.topic: article
+ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: a91415e7e3d91c2950cc4df2235c3d58df284cc0
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: af00119f1da3368b8592e020eee1ebb2a39a8501
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235976"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669962"
 ---
-# <a name="create-a-private-endpoint---resource-manager-template"></a>Özel uç nokta Kaynak Yöneticisi şablonu oluşturma
+# <a name="quickstart-create-a-private-endpoint---resource-manager-template"></a>Hızlı başlangıç: özel uç nokta Kaynak Yöneticisi şablonu oluşturma
 
 Bu hızlı başlangıçta özel uç nokta oluşturmak için bir Kaynak Yöneticisi şablonu kullanırsınız.
 
@@ -32,22 +33,22 @@ Bu şablon, bir Azure SQL Server için özel bir uç nokta oluşturur.
 
 ### <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/101-private-endpoint-sql/azuredeploy.json)
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-private-endpoint-sql/).
 
 :::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json" range="001-295" highlight="131-156":::
 
 Şablonda birden çok Azure kaynağı tanımlanmış:
 
+- [**Microsoft. SQL/Servers**](/azure/templates/microsoft.sql/servers) : örnek veritabanıyla Azure SQL Server
+- [**Microsoft. SQL/Servers/veritabanları**](/azure/templates/microsoft.sql/servers/databases) : örnek veritabanı
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks) : özel uç noktanın dağıtıldığı sanal ağ
 - [**Microsoft. Network/privateEndpoints**](/azure/templates/microsoft.network/privateendpoints) : özel olarak Azure SQL Server 'a erişmek için özel uç nokta
 - [**Microsoft. Network/privateDnsZones**](/azure/templates/microsoft.network/privatednszones) : özel uç nokta IP adresini çözümlemek için kullanılır
 - [**Microsoft. Network/privateDnsZones/virtualNetworkLinks**](/azure/templates/microsoft.network/privatednszones/virtualnetworklinks)
 - Özel uç noktayı özel bir DNS bölgesi ile ilişkilendirmek için [**Microsoft. Network/privateEndpoints/privateDnsZoneGroups**](/azure/templates/microsoft.network/privateendpoints/privateDnsZoneGroups) :
-- [**Microsoft. SQL/Servers**](/azure/templates/microsoft.sql/servers) : örnek veritabanıyla Azure SQL Server
-- [**Microsoft. SQL/Servers/veritabanları**](/azure/templates/microsoft.sql/servers/databases) : örnek veritabanı
-- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks) : özel uç noktanın dağıtıldığı sanal ağ
 - [**Microsoft. Network/Publicıpaddresses**](/azure/templates/microsoft.network/publicIpAddresses) : sanal makineye erişmek IÇIN genel IP adresi
-- [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines) : özel uç noktadan Azure SQL Server 'a özel bağlantıyı test etmek için sanal makine
 - [**Microsoft. Network/NetworkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : sanal makine Için ağ arabirimi
+- [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines) : özel uç noktadan Azure SQL Server 'a özel bağlantıyı test etmek için sanal makine
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 

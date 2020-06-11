@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: efb450f4da58c73c134d9f6b6aad6193f786912d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08f117e2fc4939eee1458c0807cac5a292785608
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415000"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669894"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak Marketo 'dan veri kopyalama (Önizleme)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,7 +35,7 @@ Bu Marketo Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
 Marketo 'dan, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
+Şu anda, dış CRM ile tümleştirilmiş olan Marketo örneği desteklenmez.
 
 >[!NOTE]
 >Bu Marketo Bağlayıcısı REST API Marketo 'nın üzerine kurulmuştur. Marketo 'nın hizmet tarafında [eşzamanlı istek sınırına](https://developers.marketo.com/rest-api/) sahip olduğunu unutmayın. "REST API kullanılmaya çalışılırken hata oluştu:" 100 "en yüksek hız sınırı ' 20 ' saniye (606) ile aşıldı" veya "REST API kullanılmaya çalışılırken hata oluştu: eşzamanlı erişim sınırı ' 10 ' değerine ulaşıldı (615)", hizmete gönderilen isteklerin sayısını azaltmak için eşzamanlı kopyalama etkinliği çalıştırmalarını azaltmayı göz önünde bulundurun.
@@ -52,13 +52,13 @@ Aşağıdaki özellikler Marketo bağlantılı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği: **Marketo** olarak ayarlanmalıdır | Yes |
+| tür | Type özelliği: **Marketo** olarak ayarlanmalıdır | Yes |
 | endpoint | Marketo sunucusunun uç noktası. (örn. 123-ABC-321.mktorest.com)  | Yes |
 | clientId | Marketo hizmetinizin istemci kimliği.  | Yes |
 | clientSecret | Marketo hizmetinizin istemci gizli anahtarı. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
-| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
+| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | No |
+| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | No |
 
 **Örneğinde**
 
@@ -87,10 +87,10 @@ Marketo 'dan veri kopyalamak için, veri kümesinin Type özelliğini **menkul T
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **menkul, ToObject** | Yes |
+| tür | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **menkul, ToObject** | Yes |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
-**Örneğinde**
+**Örnek**
 
 ```json
 {
@@ -117,7 +117,7 @@ Marketo 'dan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **menkul tosource** | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **menkul tosource** | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM Activitiy_Types"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örneğinde**

@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
 ms.date: 1/23/2020
-ms.openlocfilehash: e5dfdd41d3770cc49ed7a1e40ad6fbb12e5b10ea
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 74d8d05ba3c7a061bc78dc4c24a24d6a6275525d
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827244"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659627"
 ---
 # <a name="azure-iot-support-and-help-options"></a>Azure IoT desteği ve yardım seçenekleri
 
@@ -29,35 +29,43 @@ Azure IoT çözümlerinizi geliştirirken yardım alabileceğiniz öneriler aşa
 * [Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Birleşik Devletler kamu Azure portal](https://portal.azure.us)
 
+## <a name="post-a-question-on-microsoft-qa"></a>Microsoft Q&A 'da soru gönderin
+
+Microsoft mühendisleri, Azure en değerli uzmanlar (MVP) veya uzman topluluğumuza ait teknik ürün sorularınız hakkında hızlı ve güvenilir yanıtlar için, Azure 'un topluluk desteği için tercih edilen hedefi olan [Microsoft Q&A](https://aka.ms/azureqa)'da bize katılın. 
+
+Arama kullanarak sorununuz için bir yanıt bulamazsanız, Microsoft Q&A 'ya yeni bir soru gönderin. Sorunuzu sorduğunuz zaman aşağıdaki etiketlerden birini kullanın:
+
+- [Azure IoT](https://docs.microsoft.com/answers/topics/azure-iot.html)
+- [Azure IoT Central](https://docs.microsoft.com/answers/topics/azure-iot-central.html)
+- [Azure IoT Edge](https://docs.microsoft.com/answers/topics/azure-iot-edge.html)
+- [Azure IoT Hub](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)
+- [Azure IoT Hub Cihazı Sağlama Hizmeti (DPS)](https://docs.microsoft.com/answers/topics/azure-iot-dps.html)
+- [Azure IoT SDK’ları](https://docs.microsoft.com/answers/topics/azure-iot-sdk.html)
+- [Azure Digital Twins](https://docs.microsoft.com/answers/topics/azure-digital-twins.html)
+- [Azure RTOS](https://docs.microsoft.com/answers/topics/azure-rtos.html)
+- [Azure Sphere](https://docs.microsoft.com/answers/topics/azure-sphere.html)
+- [Azure Zaman Serisi Görüşleri](https://docs.microsoft.com/answers/topics/azure-time-series-insights.html)
+- [Azure Haritalar](https://docs.microsoft.com/answers/topics/azure-maps.html)
+
 ## <a name="post-a-question-on-stack-overflow"></a>Stack Overflow soru gönderin
 
 <div class='icon is-large'>
     <img alt='Stack Overflow' src='https://docs.microsoft.com/media/logos/logo_stackoverflow.svg'>
 </div>
 
-Topluluktaki anında yanıt almak için Stack Overflow bakın. Stack Overflow, **geliştirmeyle ilgili sorular**için tercih edilen kanaldır. Bu, topluluk ve Microsoft ekip üyelerinin üyelerinin, sorunlarınızı çözmenize yardımcı olmak için doğrudan dahil olduğu yerdir.
+En büyük topluluk geliştiricisi ekosisteminden geliştirici sorularınıza yanıt almak için sorunuzu Stack Overflow isteyin.
 
-Arama yoluyla sorununuz için bir yanıt bulamazsanız, Stack Overflow için yeni bir soru gönderin. Soruyu seçerken aşağıdaki etiketlerden birini kullanın:
+Stack Overflow için yeni bir soru gönderirseniz, soruyu oluştururken lütfen aşağıdaki etiketlerden birini veya daha fazlasını kullanın:
 
- - [Azure Digital Twins](https://stackoverflow.com/questions/tagged/azure-digital-twins)
  - [Azure IoT Central](https://stackoverflow.com/questions/tagged/azure-iot-central)
  - [Azure IoT Edge](https://stackoverflow.com/questions/tagged/azure-iot-edge)
  - [Azure IoT Hub](https://stackoverflow.com/questions/tagged/azure-iot-hub)
- - [Azure Haritalar](https://stackoverflow.com/questions/tagged/azure-maps)
  - [Azure IoT SDK’ları](https://stackoverflow.com/questions/tagged/azure-iot-sdk)
+ - [Azure Digital Twins](https://stackoverflow.com/questions/tagged/azure-digital-twins)
+ - [Azure RTOS](https://stackoverflow.com/questions/tagged/azure-rtos)
+ - [Azure Sphere](https://stackoverflow.com/questions/tagged/azuresphere)
  - [Azure Zaman Serisi Görüşleri](https://stackoverflow.com/questions/tagged/azure-timeseries-insights)
-
-## <a name="start-a-conversation-on-the-msdn-forums"></a>MSDN forumlarında konuşma başlatma
-
-IoT çözümleri oluşturmaya yönelik Azure teknolojilerini ve hizmetlerini tartışmak için. MSDN, **çözümle ilgili sorular**için tercih edilen kanaldır. Bu, topluluk ve Microsoft ekip üyelerinin üyelerinin, projeniz için doğru çözümü seçmenize yardımcı olmak için doğrudan dahil olduğu yerdir.
-
-Arama yoluyla sorununuz için bir yanıt bulamazsanız, hizmetle ilgili forumda MSDN 'ye yeni bir soru gönderin:
-
-- [Microsoft soru&Azure dijital TWINS için soru sayfası](https://docs.microsoft.com/answers/topics/azure-digital-twins.html)
-- [Microsoft Q&Azure IoT Hub soru sayfası](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)
-- [Microsoft Q&Azure IoT Edge için soru sayfası](https://docs.microsoft.com/answers/topics/azure-iot-edge.html)
-- [Microsoft Q&Azure Maps için soru sayfası](https://docs.microsoft.com/answers/topics/azure-maps.html)
-- [Microsoft Q&Azure Time Series Insights için soru sayfası](https://docs.microsoft.com/answers/topics/azure-time-series-insights.html)
+ - [Azure Haritalar](https://stackoverflow.com/questions/tagged/azure-maps)
 
 ## <a name="submit-feedback-on-azure-feedback"></a>Azure geri bildirimi hakkında geri bildirim gönderin
 
@@ -77,6 +85,7 @@ Yeni özellikler istemek için Azure geri bildirimlerine gönderin. Azure IoT hi
 | Azure Haritalar                 | https://feedback.azure.com/forums/909172-azure-maps |
 | Azure Zaman Serisi Görüşleri | https://feedback.azure.com/forums/906859-azure-time-series-insights |
 | Azure Digital Twins | https://feedback.azure.com/forums/916621-azure-digital-twins |
+| Azure Sphere | https://feedback.azure.com/forums/915433-azure-sphere |
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>Güncelleştirmeler ve yeni sürümlerden haberdar olun
 

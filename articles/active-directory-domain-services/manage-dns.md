@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: iainfou
-ms.openlocfilehash: f4bd3f75c3246cb11e88dbaae817eba8ac76b394
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c0ae6a96a303c1c9d2887e6ed4dfb0d1fed4453
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603528"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672587"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanında DNS 'yi yönetme ve koşullu ileticiler oluşturma
 
@@ -58,7 +58,7 @@ Azure AD DS 'de DNS kayıtları oluşturmak ve değiştirmek için, DNS sunucusu
 
     ![Kullanılabilir rol yönetim araçları listesinden DNS sunucusu araçlarını yüklemeyi seçin](./media/manage-dns/install-dns-tools.png)
 
-1. **Onay** sayfasında, **yükler**' i seçin. Grup ilkesi yönetim araçlarını yüklemek bir dakika veya iki dakika sürebilir.
+1. **Onay** sayfasında, **yükler**' i seçin. DnsGroup Ilke yönetimi araçları 'nı yüklemek bir veya iki dakika sürebilir.
 1. Özellik yüklemesi tamamlandığında, **rol ve özellik ekleme** Sihirbazı 'ndan çıkmak için **Kapat** ' ı seçin.
 
 ## <a name="open-the-dns-management-console-to-administer-dns"></a>DNS 'yi yönetmek için DNS Yönetim konsolunu açın
@@ -96,7 +96,7 @@ Azure AD DS yönetilen etki alanında koşullu bir iletici oluşturmak için aş
 
 1. **Bu koşullu ileticiyi Active Directory ' de depola**kutusunu işaretleyin ve aşağıdaki örnekte gösterildiği gibi *Bu etkı alanındaki tüm DNS sunucuları*için seçeneği belirleyin:
 
-    ![DNS konsolu-etki alanını yönetme](./media/manage-dns/store-in-domain.png)
+    ![DNS konsolu-bu etki alanındaki tüm DNS sunucularını seçin](./media/manage-dns/store-in-domain.png)
 
     > [!IMPORTANT]
     > Koşullu iletici *etki alanı*yerine *ormanda* depolanıyorsa, koşullu iletici başarısız olur.

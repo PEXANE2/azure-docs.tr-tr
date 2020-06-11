@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: 9853a3decc8d145fee58d1da526926e224ee2030
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/10/2020
+ms.openlocfilehash: 6683dd445b4d209a6420c7490216b8e325b34c91
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064254"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669979"
 ---
 # <a name="edit-metadata-module"></a>Meta veri modülünü Düzenle
 
@@ -34,7 +34,7 @@ Tipik meta veri değişiklikleri şunları içerebilir:
   
 + Sütunları yeniden adlandırma.
   
- Genellikle bir aşağı akış modülünün gereksinimlerini karşılamak için, bir sütunun tanımını değiştirmeniz gereken her zaman meta verileri Düzenle ' yi kullanın. Örneğin, bazı modüller yalnızca belirli veri türleriyle çalışır veya sütunlarında, `IsFeature` veya `IsCategorical`gibi bayraklar gerektirir.  
+ Genellikle bir aşağı akış modülünün gereksinimlerini karşılamak için, bir sütunun tanımını değiştirmeniz gereken her zaman meta verileri Düzenle ' yi kullanın. Örneğin, bazı modüller yalnızca belirli veri türleriyle çalışır veya sütunlarında, veya gibi bayraklar gerektirir `IsFeature` `IsCategorical` .  
   
  Gerekli işlemi gerçekleştirdikten sonra, meta verileri özgün durumuna sıfırlayabilirsiniz.
   
@@ -55,7 +55,8 @@ Tipik meta veri değişiklikleri şunları içerebilir:
     + Meta verileri düzenleme işlemini gerçekleştirdikten sonra sütun türü ve değerler değişecektir. Sütun veri türünü sıfırlamak için meta verileri Düzenle ' i kullanarak, özgün veri türünü dilediğiniz zaman kurtarabilirsiniz.  
 
     > [!NOTE]
-    > Herhangi bir sayı türünü **DateTime** türüne değiştirirseniz, **DateTime biçim** alanını boş bırakın. Şu anda hedef veri biçimini belirtmek mümkün değildir.  
+        > **DateTime biçimi** [Python yerleşik tarih saat biçimini](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior)izler.  
+        > Herhangi bir sayı türünü **DateTime** türüne değiştirirseniz, **DateTime biçim** alanını boş bırakın. Şu anda hedef veri biçimini belirtmek mümkün değildir.
 
 1. Seçili olan sütunlardaki değerlerin kategori olarak değerlendirilip değerlendirilmeyeceğini belirtmek için **kategorik** seçeneğini belirleyin.
 

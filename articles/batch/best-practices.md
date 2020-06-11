@@ -3,12 +3,12 @@ title: En iyi uygulamalar
 description: Azure Batch çözümünüzü geliştirmeye yönelik en iyi yöntemleri ve yararlı ipuçlarını öğrenin.
 ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0fa6c5e1d7e770468a14c66af9b99b32a7827eb1
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 1d482eeb8b3da94e8af0a597ade1a1d834ccf6a0
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871352"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677790"
 ---
 # <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
 
@@ -171,13 +171,17 @@ Kullanıcı tanımlı yollar (UDRs) için, bu adresler zaman içinde değişdikl
 
 ### <a name="honoring-dns"></a>DNS 'i manlama
 
-Sistemlerinizin Batch hesabı hizmet URL 'niz için DNS yaşam süresi (TTL) olduğundan emin olun. Ek olarak, Batch hizmeti istemcilerinizin ve Batch hizmetine yönelik diğer bağlantı mekanizmalarının IP adreslerine dayanmadığından emin olun.
+Sistemlerinizin Batch hesabı hizmet URL 'niz için DNS yaşam süresi (TTL) olduğundan emin olun. Ayrıca, Batch hizmeti istemcilerinizin ve Batch hizmetine yönelik diğer bağlantı mekanizmalarının IP adreslerine dayanmadığından emin olun (veya aşağıda açıklandığı gibi [statik genel IP adreslerine sahip bir havuz oluşturun](create-pool-public-ip.md) ).
 
 İstekleriniz 5 xx düzeyinde HTTP yanıtı alıyorsa ve yanıtta bir "bağlantı: kapatma" üst bilgisi varsa, Batch hizmeti istemciniz var olan bağlantıyı kapatarak öneriyi gözlemlemelidir, Batch hesabı hizmet URL 'SI için DNS 'i yeniden çözümleyip yeni bir bağlantı isteği gerçekleştirmeye devam etmelidir.
 
-### <a name="retrying-requests-automatically"></a>İstekleri otomatik olarak yeniden deneniyor
+### <a name="retry-requests-automatically"></a>İstekleri otomatik olarak yeniden dene
 
 Batch hizmeti istemcilerinizde, normal işlem sırasında bile isteklerinizi otomatik olarak yeniden denemek için uygun yeniden deneme ilkelerine sahip olduğundan emin olun. Bu yeniden deneme ilkeleri, en az 5 dakikalık bir aralığı kapsamalıdır. Otomatik yeniden deneme özellikleri, [.net RetryPolicyProvider sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet)gibi çeşitli Batch SDK 'leriyle sağlanır.
+
+### <a name="static-public-ip-addresses"></a>Statik genel IP adresleri
+
+Genellikle, bir Batch havuzundaki sanal makinelere, havuzun kullanım ömrü boyunca değişebilir genel IP adresleri üzerinden erişilir. Bu, belirli IP adreslerine erişimi sınırlayan bir veritabanı veya başka bir dış hizmetle etkileşim kurmayı zorlaştırır. Havuzunuzdaki genel IP adreslerinin beklenmedik şekilde değişmemesini sağlamak için, denetlediğiniz bir statik genel IP adresleri kümesini kullanarak bir havuz oluşturabilirsiniz. Daha fazla bilgi için bkz. [belirtilen genel IP adreslerine sahip bir Azure Batch havuzu oluşturma](create-pool-public-ip.md).
 
 ## <a name="batch-node-underlying-dependencies"></a>Toplu düğüm temel alınan bağımlılıklar
 

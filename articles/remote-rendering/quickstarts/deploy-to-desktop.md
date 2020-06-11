@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 59b235a32ae9363cc5fc804385867e140be502e2
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 4e9ddeddf616c581b116d48738e110dd8cdac2d3
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759005"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659930"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>Hızlı başlangıç: Unity örneğini masaüstüne dağıtma
 
@@ -46,7 +46,7 @@ Kimlik bilgilerinizin sahneye doğru şekilde kaydedildiğinden emin olun ve Uni
 ## <a name="build-the-sample-project"></a>Örnek projeyi oluşturma
 
 1. *Dosya > derleme ayarları*'nı açın.
-1. *Platformu* **Evrensel Windows platformu** değiştirin (**PC standalone** de desteklenir ancak burada kullanılmaz).
+1. *Platformu* **Evrensel Windows platformu** olarak değiştirin (**PC standalone** de desteklenir ancak burada kullanılmaz, bkz. [Platform sınırlamaları](../reference/limits.md#platform-limitations)).
 1. *Hedef cihazı* **bilgisayar**olarak ayarlayın.
 1. *Mimariyi* **x86**olarak ayarlayın.
 1. *Yapı türünü* **D3D projesi**olarak ayarlayın.
@@ -60,7 +60,7 @@ Kimlik bilgilerinizin sahneye doğru şekilde kaydedildiğinden emin olun ve Uni
 1. Çözümü oluşturun (F7).
 
 > [!WARNING]
-> **X86**' yı seçtiğinizden emin olun. **x64** Şu anda desteklenmiyor, bkz. [Platform sınırlamaları](../reference/limits.md#platform-limitations).
+> **X86**' yı seçtiğinizden emin olun. **UWP/x64** Şu anda desteklenmiyor, bkz. [Platform sınırlamaları](../reference/limits.md#platform-limitations).
 
 ## <a name="launch-the-sample-project"></a>Örnek projeyi başlatma
 

@@ -3,12 +3,12 @@ title: Üst kaynak hataları
 description: Azure Resource Manager şablonunda bir üst kaynakla çalışırken hataların nasıl çözümleneceğini açıklar.
 ms.topic: troubleshooting
 ms.date: 08/01/2018
-ms.openlocfilehash: f1847389d60ddf3c6abc70bc3309940c2246084e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 474cb85d16382136e24e5502b87ba8a1a65488ef
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76154049"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673669"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>Üst kaynaklar için hataları çözümleme
 
@@ -25,7 +25,7 @@ Message=Can not perform requested operation on nested resource. Parent resource 
 
 ## <a name="cause"></a>Nedeni
 
-Bir kaynak başka bir kaynağın alt öğesi olduğunda, alt kaynak oluşturulmadan önce üst kaynağın mevcut olması gerekir. Alt kaynağın adı üst kaynakla bağlantıyı tanımlar. Alt kaynağın adı biçimindedir `<parent-resource-name>/<child-resource-name>`. Örneğin, bir SQL veritabanı şöyle tanımlanabilir:
+Bir kaynak başka bir kaynağın alt öğesi olduğunda, alt kaynak oluşturulmadan önce üst kaynağın mevcut olması gerekir. Alt kaynağın adı üst kaynakla bağlantıyı tanımlar. Alt kaynağın adı biçimindedir `<parent-resource-name>/<child-resource-name>` . Örneğin, bir SQL veritabanı şöyle tanımlanabilir:
 
 ```json
 {
@@ -52,7 +52,7 @@ Hem sunucu hem de veritabanını aynı şablonda dağıtırsanız ancak sunucuda
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "sqlServerName": {

@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 05/20/2020
-ms.openlocfilehash: dc93121d7565b95b9bd604160028659f3a741b0c
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 9038630a2623a8b20ddfcf98899ce9a89f16bdc1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860503"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673369"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper sunucusu Azure HDInsight 'ta çekirdek oluşturmuyor
 
@@ -27,7 +27,7 @@ Bu makalede, Azure HDInsight kümelerinde zookeepers ile ilgili sorunlar için s
 
 ## <a name="sample-log"></a>Örnek günlük
 
-Şuna benzer bir hata iletisi görebilirsiniz:
+Yarn günlüklerinde aşağıdakine benzer bir hata iletisi görebilirsiniz (Bu durum, headnodes üzerinde/var/log/Hadoop-Yarn/Yarn/Yarn-yarn *. log):
 
 ```output
 2020-05-05 03:17:18.3916720|Lost contact with Zookeeper. Transitioning to standby in 10000 ms if connection is not reestablished.
@@ -116,6 +116,7 @@ Node count: 133212
 
 ## <a name="cancelledkeyexception-in-the-zookeeper-server-log-doesnt-require-snapshot-cleanup"></a>Zookeeper sunucu günlüğündeki CancelledKeyException, anlık görüntü Temizleme gerektirmez
 
+* Bu özel durum Zookeeper sunucularında (/var/log/Zookeeper/Zookeeper-Zookeeper-* veya/var/log/hdinsight-Zookeeper/Zookeeper * dosyaları) görünür
 * Bu özel durum genellikle istemcinin artık etkin olmadığı ve sunucunun ileti gönderemediği anlamına gelir
 * Bu özel durum ayrıca Zookeeper istemcisinin oturumu erken sonlandırdığını gösterir
 * Bu belgede özetlenen diğer belirtileri arayın

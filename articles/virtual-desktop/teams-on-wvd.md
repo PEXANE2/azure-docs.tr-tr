@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3a14ffc9f103e58681418eacbb35b72b704f2d61
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 8b065a79abe4a4f5c23e28be111b09e51e5e6484
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267146"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667055"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma
 
@@ -32,7 +32,7 @@ Microsoft ekipleri için medya iyileştirmesi sayesinde, Windows Masaüstü iste
 Windows sanal masaüstü 'nde Microsoft ekipleri kullanabilmeniz için şu işlemleri yapmanız gerekir:
 
 - [Ağınızı](/microsoftteams/prepare-network/) Microsoft ekipleri için hazırlayın.
-- Windows [masaüstü istemcisini](connect-windows-7-and-10.md) , Windows [bilgisayardaki takımlar için Microsoft ekipleri donanım gereksinimlerini](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)karşılayan bir Windows 10 cihazına yükler.
+- Windows [masaüstü istemcisini](connect-windows-7-and-10.md) , Windows [Bilgisayarı üzerindeki takımlar için Microsoft ekipleri donanım gereksinimlerini](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)karşılayan bir Windows 10 veya Windows 10 IoT kurumsal cihazına yükler.
 - Windows 10 çoklu oturum veya Windows 10 Enterprise sanal makinesine (VM) bağlanın.
 - Makine başına yükleme kullanarak takımlar masaüstü uygulamasını konağa yükleme. Microsoft ekipleri için medya iyileştirmesi, takımlar masaüstü uygulaması sürüm 1.3.00.4461 veya üzerini gerektirir.
 
@@ -53,7 +53,7 @@ Ekipte makine başına yüklemeyi etkinleştirmek için konakta aşağıdaki kay
 
 ### <a name="install-the-teams-websocket-service"></a>Takımlar WebSocket hizmetini yükler
 
-[WebSocket HIZMETINI](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vkL6) VM yansımanıza yükler. Yükleme hatasıyla karşılaşırsanız, yeniden [dağıtılabilir en son Microsoft Visual C++](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) yükleyip yeniden deneyin.
+[WebSocket HIZMETINI](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj0i) VM yansımanıza yükler. Yükleme hatasıyla karşılaşırsanız, yeniden [dağıtılabilir en son Microsoft Visual C++](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) yükleyip yeniden deneyin.
 
 ### <a name="install-microsoft-teams"></a>Microsoft ekipleri 'nı yükler
 
@@ -131,9 +131,9 @@ Takımlar [UserVoice sitesindeki](https://microsoftteams.uservoice.com/)Windows 
 
 ## <a name="collect-teams-logs"></a>Takımlar günlüklerini topla
 
-Windows sanal masaüstü ortamınızda takımlar masaüstü uygulamasıyla ilgili sorunlarla karşılaşırsanız, konak VM 'de **%AppData%\microsoft\teams\logs.txt** altında istemci günlüklerini toplayın.
+Windows sanal masaüstü ortamınızda takımlar masaüstü uygulamasıyla ilgili sorunlarla karşılaşırsanız, konak VM üzerinde **% AppData% \Microsoft\Teams\logs.txt** altında istemci günlüklerini toplayın.
 
-Çağrılar ve toplantılar ile ilgili sorunlarla karşılaşırsanız, takımlar Web istemci günlüklerini, **CTRL**  +  **alt**  +  **SHIFT**  +  **1**tuş bileşimiyle toplayın. Günlükler, konak VM 'sindeki **%userprofile%\downloads\msteams tanılama günlüğü DATE_TIME. txt** dosyasına yazılır.
+Çağrılar ve toplantılar ile ilgili sorunlarla karşılaşırsanız, takımlar Web istemci günlüklerini, **CTRL**  +  **alt**  +  **SHIFT**  +  **1**tuş bileşimiyle toplayın. Günlükler, konak VM 'sindeki **%userprofile%\downloads\msteams tanılama günlüğü DATE_TIME.txt** yazılır.
 
 ## <a name="contact-microsoft-teams-support"></a>Microsoft ekipleri desteğiyle iletişim kurun
 

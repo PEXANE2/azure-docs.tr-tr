@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2ef259bf76815fdf8672b696d2260fe6a143b798
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9d5eae4ef926a5c05265b91526d03a17ca57781
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730167"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674963"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>IoT Hub 'ınızdaki kimlik kayıt defterini anlayın
 
@@ -106,11 +106,11 @@ Daha karmaşık bir uygulama, [Azure izleyici](../azure-monitor/index.yml) 'deki
 
 IoT Hub, yaşam döngüsü bildirimleri göndererek bir kimlik oluşturulduğunda veya silindiğinde IoT çözümünüze bildirimde bulunabilir. Bunu yapmak için, IoT çözümünüzün bir rota oluşturması ve veri kaynağını *DeviceLifecycleEvents* veya *ModuleLifecycleEvents*' e eşit olarak ayarlaması gerekir. Varsayılan olarak, yaşam döngüsü bildirimleri gönderilmez, diğer bir deyişle, böyle bir yol önceden mevcut değildir. Bildirim iletisi özellikleri ve gövdesi içerir.
 
-Özellikler: Ileti sistemi özelliklerine `$` sembol ön eki eklenir.
+Özellikler: Ileti sistemi özelliklerine sembol ön eki eklenir `$` .
 
 Cihaz için bildirim iletisi:
 
-| Adı | Değer |
+| Name | Değer |
 | --- | --- |
 |$content türü | uygulama/json |
 |$iothub-enqueuedtime |  Bildirimin gönderildiği zaman |
@@ -146,7 +146,7 @@ Gövde: Bu bölüm JSON biçimindedir ve oluşturulan cihaz kimliğinin ikizi te
 ```
 Modül için bildirim iletisi:
 
-| Adı | Değer |
+| Name | Değer |
 | --- | --- |
 $content türü | uygulama/json |
 $iothub-enqueuedtime |  Bildirimin gönderildiği zaman |
@@ -186,9 +186,9 @@ Gövde: Bu bölüm JSON biçimindedir ve oluşturulan modül kimliğinin ikizi t
 
 Cihaz kimlikleri aşağıdaki özelliklerle JSON belgeleri olarak temsil edilir:
 
-| Özellik | Seçenekler | Açıklama |
+| Özellik | Seçenekler | Description |
 | --- | --- | --- |
-| deviceId |gerekli, güncelleştirmeler üzerinde salt okunurdur |ASCII 7 bit alfasayısal karakter ve belirli özel karakterler için büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda) `- . + % _ # * ? ! ( ) , = @ $ '`:. |
+| deviceId |gerekli, güncelleştirmeler üzerinde salt okunurdur |ASCII 7 bit alfasayısal karakter ve belirli özel karakterler için büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda): `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | GenerationID |gerekli, salt okunurdur |128 karakter uzunluğunda bir IoT Hub 'ı tarafından üretilen, büyük/küçük harfe duyarlı dize. Bu değer, silinen ve yeniden oluşturulduğu zaman, cihazları aynı **DeviceID**ile ayırt etmek için kullanılır. |
 | özelliği |gerekli, salt okunurdur |[RFC7232](https://tools.ietf.org/html/rfc7232)başına cihaz kimliği Için zayıf ETag 'i temsil eden bir dize. |
 | 'u |isteğe bağlı |Kimlik doğrulama bilgilerini ve güvenlik malzemelerini içeren bileşik bir nesne. |
@@ -210,10 +210,10 @@ Cihaz kimlikleri aşağıdaki özelliklerle JSON belgeleri olarak temsil edilir:
 
 Modül kimlikleri aşağıdaki özelliklerle JSON belgeleri olarak temsil edilir:
 
-| Özellik | Seçenekler | Açıklama |
+| Özellik | Seçenekler | Description |
 | --- | --- | --- |
-| deviceId |gerekli, güncelleştirmeler üzerinde salt okunurdur |ASCII 7 bit alfasayısal karakter ve belirli özel karakterler için büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda) `- . + % _ # * ? ! ( ) , = @ $ '`:. |
-| Modül kimliği |gerekli, güncelleştirmeler üzerinde salt okunurdur |ASCII 7 bit alfasayısal karakter ve belirli özel karakterler için büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda) `- . + % _ # * ? ! ( ) , = @ $ '`:. |
+| deviceId |gerekli, güncelleştirmeler üzerinde salt okunurdur |ASCII 7 bit alfasayısal karakter ve belirli özel karakterler için büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda): `- . + % _ # * ? ! ( ) , : = @ $ '` . |
+| Modül kimliği |gerekli, güncelleştirmeler üzerinde salt okunurdur |ASCII 7 bit alfasayısal karakter ve belirli özel karakterler için büyük/küçük harfe duyarlı bir dize (en fazla 128 karakter uzunluğunda): `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | GenerationID |gerekli, salt okunurdur |128 karakter uzunluğunda bir IoT Hub 'ı tarafından üretilen, büyük/küçük harfe duyarlı dize. Bu değer, silinen ve yeniden oluşturulduğu zaman, cihazları aynı **DeviceID**ile ayırt etmek için kullanılır. |
 | özelliği |gerekli, salt okunurdur |[RFC7232](https://tools.ietf.org/html/rfc7232)başına cihaz kimliği Için zayıf ETag 'i temsil eden bir dize. |
 | 'u |isteğe bağlı |Kimlik doğrulama bilgilerini ve güvenlik malzemelerini içeren bileşik bir nesne. |
@@ -226,7 +226,7 @@ Modül kimlikleri aşağıdaki özelliklerle JSON belgeleri olarak temsil edilir
 | lastActivityTime |salt okunur |Cihazın bağlandığı, aldığı veya ileti gönderdiği tarihi ve son saati gösteren zamana bağlı bir gösterge. |
 
 > [!NOTE]
-> Şu anda cihaz SDK 'Ları `+` , **DeviceID** ve **ModuleID**içindeki ve `#` karakterlerinin kullanımını desteklemez.
+> Şu anda cihaz SDK 'Ları, `+` `#` **DeviceID** ve **ModuleID**içindeki ve karakterlerinin kullanımını desteklemez.
 
 ## <a name="additional-reference-material"></a>Ek başvuru malzemeleri
 

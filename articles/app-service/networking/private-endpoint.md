@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 15b3f2e48b78036c02ef86446f2ab920f22f7c76
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 92fdb48f11d4d8753706d61fab9fd32e2b06f488
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295448"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668194"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Azure Web App için özel uç noktaları kullanma (Önizleme)
 
@@ -45,7 +45,7 @@ Web uygulamanız için özel bir uç nokta oluşturduğunuzda, özel ağınızda
 Özel uç noktayı Web uygulamasından farklı bir bölgede da dağıtabilirsiniz. 
 
 > [!Note]
->VNet tümleştirme özelliği özel uç noktadan aynı alt ağı kullanamaz, bu, VNet tümleştirme özelliğinin bir sınırlamasıdır.
+>VNet tümleştirme özelliği özel uç nokta ile aynı alt ağı kullanamaz, bu, VNet tümleştirme özelliğinin bir sınırlamasıdır.
 
 Bir güvenlik perspektifinden:
 

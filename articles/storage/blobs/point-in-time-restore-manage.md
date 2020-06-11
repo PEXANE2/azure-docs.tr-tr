@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 06/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fe98e04c37172dc6b91c86fab8200022ed860d4f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d55c6b514f6401e60891f0713cb1b4135bb62ab6
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170112"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676005"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Blok Blobları için noktadan noktaya geri yüklemeyi etkinleştirin ve yönetin (Önizleme)
 
@@ -30,35 +30,19 @@ Daha fazla bilgi edinmek ve önizlemeye nasıl kaydolacağınızı öğrenmek i�
 
 ## <a name="install-the-preview-module"></a>Önizleme modülünü yükler
 
-Azure 'un anında yükleme zaman yüklemesini PowerShell ile yapılandırmak için, ilk yükleme sürümü [1.14.1-](https://www.powershellgallery.com/packages/Az.Storage/1.14.1-preview) daha az. Storage PowerShell modülünün önizlemesini yükleyin. Önizleme modülünü yüklemek için aşağıdaki adımları izleyin:
+Azure 'un anında yükleme zamanında yüklemesini PowerShell ile yapılandırmak için önce az. Storage Preview Module sürüm 1.14.1-Preview veya sonrasını yükleyin. En son önizleme sürümünü kullanmanız önerilir, ancak bir noktadan noktaya geri yükleme 1.14.1-Preview ve üzeri sürümlerde desteklenir. Az. Storage modülünün diğer sürümlerini kaldırın.
 
-1. **Ayarlar**altındaki **uygulamalar & Özellikler** ayarını kullanarak Windows 'un önceki Azure PowerShell yüklemelerini kaldırın.
+Aşağıdaki komut az. Storage [2.0.1'i-Preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) modülünü yüklüyor:
 
-1. PowerShellGet 'in en son sürümüne sahip olduğunuzdan emin olun. Bir Windows PowerShell penceresi açın ve en son sürümü yüklemek için aşağıdaki komutu çalıştırın:
-
-    ```powershell
-    Install-Module PowerShellGet –Repository PSGallery –Force
-    ```
-
-1. PowerShellGet yükledikten sonra PowerShell penceresini kapatın ve yeniden açın.
-
-1. Azure PowerShell en son sürümünü yükler:
-
-    ```powershell
-    Install-Module Az –Repository PSGallery –AllowClobber
-    ```
-
-1. Az. Storage Preview modülünü Install:
-
-    ```powershell
-    Install-Module Az.Storage -Repository PSGallery -RequiredVersion 1.14.1-preview -AllowPrerelease -AllowClobber -Force
-    ```
+```powershell
+Install-Module -Name Az.Storage -RequiredVersion 2.0.1-preview -AllowPrerelease
+```
 
 Azure PowerShell yükleme hakkında daha fazla bilgi için bkz. [PowerShellGet Ile yükleme Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>Zaman içinde nokta geri yüklemeyi etkinleştirme ve yapılandırma
 
-Zaman içinde nokta geri yüklemeyi etkinleştirmeden ve yapılandırmadan önce, önkoşullarını etkinleştirin: geçici silme, akış değiştirme ve BLOB sürümü oluşturma. Bu özelliklerin her birini etkinleştirme hakkında daha fazla bilgi için şu makalelere bakın:
+Zaman içinde nokta geri yüklemeyi etkinleştirmeden ve yapılandırmadan önce, depolama hesabı için önkoşulları etkinleştirin: geçici silme, akış değiştirme ve BLOB sürümü oluşturma. Bu özelliklerin her birini etkinleştirme hakkında daha fazla bilgi için şu makalelere bakın:
 
 - [Bloblar için geçici silmeyi etkinleştir](soft-delete-enable.md)
 - [Değişiklik akışını etkinleştirme ve devre dışı bırakma](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
@@ -99,7 +83,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 ## <a name="perform-a-restore-operation"></a>Geri yükleme işlemi gerçekleştirme
 
-Geri yükleme işlemini başlatmak için restore-AzStorageBlobRange komutunu çağırın ve geri yükleme noktasını UTC **Tarih saat** değeri olarak belirtin. Geri yüklemek için lexıgrafik aralıklarını belirtebilir veya depolama hesabındaki tüm kapsayıcılardaki tüm Blobları geri yüklemek için bir aralığı atlayabilirsiniz. Geri yükleme işlemi başına en fazla 10 lexıgraf aralığı desteklenir. Geri yükleme işleminin tamamlanması birkaç dakika sürebilir.
+Geri yükleme işlemini başlatmak için restore **-AzStorageBlobRange** komutunu çağırın ve geri yükleme noktasını UTC **Tarih saat** değeri olarak belirtin. Geri yüklemek için lexıgrafik aralıklarını belirtebilir veya depolama hesabındaki tüm kapsayıcılardaki tüm Blobları geri yüklemek için bir aralığı atlayabilirsiniz. Geri yükleme işlemi başına en fazla 10 lexıgraf aralığı desteklenir. Geri yükleme işleminin tamamlanması birkaç dakika sürebilir.
 
 Geri yüklenecek bir blob aralığı belirtirken aşağıdaki kuralları aklınızda bulundurun:
 
@@ -115,7 +99,7 @@ Geri yüklenecek bir blob aralığı belirtirken aşağıdaki kuralları aklın�
 
 ### <a name="restore-all-containers-in-the-account"></a>Hesaptaki tüm kapsayıcıları geri yükle
 
-Depolama hesabındaki tüm kapsayıcıları ve Blobları geri yüklemek için, parametresini atlayarak restore-AzStorageBlobRange komutunu çağırın `-BlobRestoreRange` . Aşağıdaki örnek, depolama hesabındaki kapsayıcıları, mevcut andan önceki durumuna 12 saat öncesine geri yükler:
+Depolama hesabındaki tüm kapsayıcıları ve Blobları geri yüklemek için, parametresini atlayarak **restore-AzStorageBlobRange** komutunu çağırın `-BlobRestoreRange` . Aşağıdaki örnek, depolama hesabındaki kapsayıcıları, mevcut andan önceki durumuna 12 saat öncesine geri yükler:
 
 ```powershell
 # Specify -TimeToRestore as a UTC value
@@ -126,7 +110,7 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 
 ### <a name="restore-a-single-range-of-block-blobs"></a>Blok bloblarının tek bir aralığını geri yükleme
 
-Blob 'ların bir aralığını geri yüklemek için restore-AzStorageBlobRange komutunu çağırın ve parametresi için bir lexicografik aralığı ve BLOB adı belirtin `-BlobRestoreRange` . Aralığın başlangıcı dahil değildir ve aralığın sonu özeldir.
+Blob 'ların bir aralığını geri yüklemek için **restore-AzStorageBlobRange** komutunu çağırın ve parametresi için bir lexicografik aralığı ve BLOB adı belirtin `-BlobRestoreRange` . Aralığın başlangıcı dahil değildir ve aralığın sonu özeldir.
 
 Örneğin, blob 'ları *örnek kapsayıcı*adlı tek bir kapsayıcıda geri yüklemek için *örnek kapsayıcla* başlayan ve *örnek-kapsayıcı1*ile biten bir Aralık belirtebilirsiniz. Başlangıç ve bitiş aralıklarında adlı kapsayıcılar için bir gereksinim yok. Aralığın sonu özel olduğundan, depolama hesabı *Sample-kapsayıcı1*adlı bir kapsayıcı içerse bile, yalnızca *örnek kapsayıcı* adlı kapsayıcı geri yüklenecek:
 
@@ -140,7 +124,7 @@ Geri yüklenecek bir kapsayıcıdaki Blobların bir alt kümesini belirtmek içi
 $range = New-AzStorageBlobRangeToRestore -StartRange sample-container/d -EndRange sample-container/g
 ```
 
-Ardından, geri yükleme-AzStorageBlobRange komutuna olan aralığı belirtin. Parametre için bir UTC **Tarih saat** değeri sağlayarak geri yükleme noktasını belirtin `-TimeToRestore` . Aşağıdaki örnek, belirtilen aralıktaki Blobları mevcut andan 3 güne geri yükler:
+Ardından, **geri yükleme-AzStorageBlobRange** komutuna olan aralığı belirtin. Parametre için bir UTC **Tarih saat** değeri sağlayarak geri yükleme noktasını belirtin `-TimeToRestore` . Aşağıdaki örnek, belirtilen aralıktaki Blobları mevcut andan 3 güne geri yükler:
 
 ```powershell
 # Specify -TimeToRestore as a UTC value
@@ -155,13 +139,31 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 Blok bloblarının birden çok aralığını geri yüklemek için, parametre için bir Aralık dizisi belirtin `-BlobRestoreRange` . Geri yükleme işlemi başına en fazla 10 Aralık desteklenir. Aşağıdaki örnek, *kapsayıcı1* ve *container4*' nin tüm içeriğini geri yüklemek için iki aralığı belirtir:
 
 ```powershell
+# Specify a range that includes the complete contents of container1.
 $range1 = New-AzStorageBlobRangeToRestore -StartRange container1 -EndRange container2
+# Specify a range that includes the complete contents of container4.
 $range2 = New-AzStorageBlobRangeToRestore -StartRange container4 -EndRange container5
 
 Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -TimeToRestore (Get-Date).AddMinutes(-30) `
     -BlobRestoreRange @($range1, $range2)
+```
+
+### <a name="restore-block-blobs-asynchronously"></a>Blok bloblarını zaman uyumsuz geri yükleme
+
+Geri yükleme işlemini zaman uyumsuz olarak çalıştırmak için, `-AsJob` **geri yükleme-AzStorageBlobRange** öğesine yapılan çağrıya parametreyi ekleyin ve çağrının sonucunu bir değişkende depolayın. **Restore-AzStorageBlobRange** komutu, **AzureLongRunningJob**türünde bir nesne döndürür. Geri yükleme işleminin tamamlanıp tamamlanmadığını anlamak için bu nesnenin **durum** özelliğini kontrol edebilirsiniz. **Durum** özelliğinin değeri **çalışıyor** veya **tamamlanmış**olabilir.
+
+Aşağıdaki örnek, bir geri yükleme işleminin zaman uyumsuz olarak nasıl çağrılacağını göstermektedir:
+
+```powershell
+$job = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
+    -StorageAccountName $accountName `
+    -TimeToRestore (Get-Date).AddMinutes(-5) `
+    -AsJob
+
+# Check the state of the job.
+$job.State
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

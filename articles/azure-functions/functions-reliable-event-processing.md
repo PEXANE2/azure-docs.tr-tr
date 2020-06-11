@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: e4f35495d8a01146068cffb9159c29c46c3c0d29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe5efd2bf4c235688aad90ae37b54268d290540c
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75561876"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676140"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Işlevleri güvenilir olay işleme
 
@@ -91,7 +91,7 @@ Bir olay işleminde devre kesici uygulamak için iki parça gereklidir:
 
 Uygulama ayrıntıları farklılık gösterebilir, ancak örnekler arasında durum paylaşmak için bir depolama mekanizmanız gerekir. Durumu Azure Storage 'da, Redsıs önbelleğinde veya bir işlevler koleksiyonu tarafından erişilebilen başka bir hesaba depolamayı seçebilirsiniz.
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) veya [dayanıklı varlıklar](./durable/durable-functions-overview.md) , iş akışını ve devre durumunu yönetmek için doğal bir uyum sağlar. Diğer hizmetler de yalnızca çalışabilir, ancak bu örnek için Logic Apps kullanılır. Logic Apps 'i kullanarak, bir işlevin yürütmesini duraklatabilir ve yeniden başlatarak devre kesici düzeninin uygulanması için gerekli denetimi yapabilirsiniz.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) veya [dayanıklı işlevler](./durable/durable-functions-overview.md) , iş akışını ve devre durumunu yönetmek için doğal bir uyum sağlar. Diğer hizmetler de yalnızca çalışabilir, ancak bu örnek için Logic Apps kullanılır. Logic Apps 'i kullanarak, bir işlevin yürütmesini duraklatabilir ve yeniden başlatarak devre kesici düzeninin uygulanması için gerekli denetimi yapabilirsiniz.
 
 ### <a name="define-a-failure-threshold-across-instances"></a>Örnekler arasında bir hata eşiği tanımlayın
 
@@ -123,7 +123,7 @@ Bu yaklaşımı kullanarak hiçbir ileti kaybedilmez, tüm iletiler sırayla iş
 ## <a name="resources"></a>Kaynaklar
 
 - [Güvenilir olay işleme örnekleri](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
-- [Azure Dayanıklı İşlevler devre kesici](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
+- [Azure dayanıklı varlık devre kesici](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4476502896705c2133b09b203bea0d6f5d74f121
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ccb5543fbeae4d4fe9c0104d873cd9776ea45a5a
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681403"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672961"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Cloud App erişimi için uygulama koruma ilkesi ve onaylanan istemci uygulaması gerektirme
 
@@ -37,7 +37,7 @@ Uygun istemci uygulamalarının listesi için bkz. [Uygulama koruma ilkesi gerek
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>Senaryo 1: Office 365 uygulamaları, uygulama koruma ilkeleriyle onaylanan uygulamalar gerektirir
 
-Contoso, bu senaryoda, Office 365 kaynaklarına yönelik tüm mobil erişimin, erişim almadan önce bir uygulama koruma ilkesi tarafından korunan Outlook Mobile, OneDrive ve Microsoft ekipleri gibi onaylanan istemci uygulamaları kullanması gerektiğini kararmıştır. Tüm kullanıcıları Azure AD kimlik bilgileriyle oturum açın ve bunlara Azure AD Premium P1 veya P2 ve Microsoft Intune içeren lisanslar atanır.
+Bu senaryoda, contoso, Office 365 kaynaklarına yönelik tüm mobil erişimin, erişim almadan önce bir uygulama koruma ilkesiyle korunan Outlook Mobile ve OneDrive gibi onaylanan istemci uygulamaları kullanması gerektiğini kararmıştır. Tüm kullanıcıları Azure AD kimlik bilgileriyle oturum açın ve bunlara Azure AD Premium P1 veya P2 ve Microsoft Intune içeren lisanslar atanır.
 
 Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda kullanılmasını gerektirmek için aşağıdaki adımları tamamlamalıdır.
 
@@ -176,5 +176,5 @@ Android ve iOS için uygulama koruma ilkeleri oluşturma adımları için [Uygul
 
 [Koşullu erişim bileşenleri](concept-conditional-access-policies.md)
 
-[Ortak koşullu erişim ilkeleri](concept-conditional-access-policy-common.md)
+[Sık kullanılan Koşullu Erişim İlkeleri](concept-conditional-access-policy-common.md)
 

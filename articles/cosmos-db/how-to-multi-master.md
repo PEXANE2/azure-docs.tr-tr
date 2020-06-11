@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.custom: tracking-python
-ms.openlocfilehash: 70b9f1aaeaedd7968aeaf09aebe4e53682a60019
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 792b0ef3f31bfb9dd26c153d5bb0eeab6ba8baf9
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629361"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677993"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB kullanan uygulamalarınızda çoklu yönetici yapılandırma
 
@@ -56,18 +56,17 @@ CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-s
 CosmosClient client = cosmosClientBuilder.Build();
 ```
 
-## <a name="java-v4-sdk"></a>Java v4 SDK 'Sı
+## <a name="java-v4-sdk"></a><a id="java4-multi-master"></a>Java v4 SDK 'Sı
 
 Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için, `.multipleWriteRegionsEnabled(true)` ve `.preferredRegions(preferredRegions)` `preferredRegions` `List` uygulamanın dağıtıldığı bölge olan ve Cosmos DB çoğaltılacağı bölgenin bulunduğu bir öğe olan istemci Oluşturucu ' ya çağrı yapın:
 
-### <a id="java4-multi-master"></a>
-#### <a name="async"></a>[Eş](#tab/api-async)
+# <a name="async"></a>[Eş](#tab/api-async)
 
    [Java SDK v4](sql-api-sdk-java-v4.md) (Maven [com. Azure:: Azure-Cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) zaman uyumsuz API
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ConfigureMultimasterAsync)]
 
-#### <a name="sync"></a>[Eşitle](#tab/api-sync)
+# <a name="sync"></a>[Eşitle](#tab/api-sync)
 
    [Java SDK v4](sql-api-sdk-java-v4.md) (Maven [com. Azure:: Azure-Cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) eşitleme API 'si
 
@@ -75,9 +74,9 @@ Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için, `.multipleWr
 
 --- 
 
-## <a name="async-java-v2-sdk-maven-commicrosoftazureazure-cosmosdb"></a><a id="java"></a>[Async Java v2 SDK](sql-api-sdk-async-java.md) (Maven [com. Microsoft. Azure:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
+## <a name="async-java-v2-sdk"></a><a id="java2-milti-master"></a>Zaman uyumsuz Java v2 SDK
 
-Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için, ayarlayın `policy.setUsingMultipleWriteLocations(true)` ve `policy.setPreferredLocations` uygulamanın dağıtıldığı bölgeyi ve Cosmos DB nerede çoğaltıldığından ayarlayın:
+Java v2 SDK 'Sı Maven [com. Microsoft. Azure:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)'yi kullandı. Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için, ayarlayın `policy.setUsingMultipleWriteLocations(true)` ve `policy.setPreferredLocations` uygulamanın dağıtıldığı bölgeyi ve Cosmos DB nerede çoğaltıldığından ayarlayın:
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -92,7 +91,7 @@ AsyncDocumentClient client =
         .withConnectionPolicy(policy).build();
 ```
 
-## <a name="nodejs-javascript-and-typescript-sdks"></a><a id="javascript"></a>Node. js, JavaScript ve TypeScript SDK 'Ları
+## <a name="nodejs-javascript-and-typescript-sdks"></a><a id="javascript"></a>Node.js, JavaScript ve TypeScript SDK 'Ları
 
 Uygulamanızda çoklu yönetici özelliğini etkinleştirmek için `connectionPolicy.UseMultipleWriteLocations` olarak ayarlayın `true` . Ayrıca, `connectionPolicy.PreferredLocations` uygulamanın dağıtıldığı bölgeye ve Cosmos DB nerede çoğaltıldığına ayarlanır:
 

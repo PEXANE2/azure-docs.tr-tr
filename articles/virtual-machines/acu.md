@@ -1,24 +1,20 @@
 ---
-title: Azure Işlem birimine genel bakış | Microsoft Docs
+title: Azure Işlem birimine genel bakış
 description: Azure işlem birimleri kavramına genel bakış. ACU, Azure SKU 'Larında CPU performansını karşılaştırmak için bir yol sağlar.
-services: virtual-machines
-documentationcenter: ''
 author: mimckitt
-manager: vashan
-editor: ''
-tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
-ms.devlang: na
+ms.subservice: sizes
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 738ce8dad7237f9703d3ccb998c221ffec29dc17
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.reviewer: davberg
+ms.openlocfilehash: 3fda339b234b83bae9cbf0b6614cb75c66031f71
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629108"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678537"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure işlem birimi (ACU)
 

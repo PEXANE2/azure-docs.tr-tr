@@ -1,18 +1,18 @@
 ---
 title: HBv2-Series-Azure sanal makineleri
 description: HBv2 serisi VM 'Ler için Özellikler.
-services: virtual-machines
 author: vermagit
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: amverma
-ms.openlocfilehash: eea649610ca53ccbb98b5ca361555280dcd3dafe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 730065333fde7431b7018ef0a6e614e12727d7ed
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78164806"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673862"
 ---
 # <a name="hbv2-series"></a>HBv2 serisi
 
@@ -26,7 +26,7 @@ Güncelleştirmeleri koruyan bellek: desteklenmiyor
 
 | Boyut | Sanal işlemci | İşlemci | Bellek (GB) | Bellek bant genişliği GB/sn | Taban CPU sıklığı (GHz) | Tüm çekirdekler sıklığı (GHz, tepe) | Tek çekirdekli sıklık (GHz, tepe) | RDMA performansı (GB/sn) | MPı desteği | Geçici depolama (GB) | Maksimum veri diskleri | En fazla Ethernet NIC |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HB120rs_v2 | 120 | AMD EPYıC 7V12 | 480 | 350 | 2.45 | 3.1 | 3.3 | 200 | Tümü | 480 + 960 | 8 | 1 |
+| Standard_HB120rs_v2 | 120 | AMD EPYıC 7V12 | 480 | 350 | 2.45 | 3,1 | 3.3 | 200 | Tümü | 480 + 960 | 8 | 1 |
 
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]

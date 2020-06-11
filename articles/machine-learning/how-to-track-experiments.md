@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: how-to
 ms.date: 03/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: bbe4cfe2cce70735e765601e46cb62cd3939c693
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 426c79c19b599127e2235f61e8c917062ede3b79
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433089"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675211"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML deneme çalıştırmaları ve ölçümlerini izleme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -127,6 +127,8 @@ Tasarımcı denemeleri günlük mantığını eklemek için __Python betiği yü
         run.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
 
         # Log the mean absolute error to the parent run to see the metric in the run details page.
+        # Note: 'run.parent.log()' should not be called multiple times because of performance issues.
+        # If repeated calls are necessary, cache 'run.parent' as a local variable and call 'log()' on that variable.
         run.parent.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
     
         return dataframe1,
@@ -207,9 +209,11 @@ Model eğitimi ve izleme arka planda gerçekleşirken diğer görevleri beklerke
 
 Bir deneme çalışmayı tamamladığında, kaydedilen deneme çalıştırması kaydına gidebilirsiniz. [Azure Machine Learning Studio](https://ml.azure.com)'dan geçmişe erişebilirsiniz.
 
-Denemeleri sekmesine gidin ve denemenizin seçimini yapın. Her çalıştırma için günlüğe kaydedilen izlenen ölçümleri ve grafikleri görebileceğiniz deneme çalıştırması panosuna yönlendirilirsiniz. Bu durumda, MSE ve Alfa değerlerini günlüğe verdik.
+Denemeleri sekmesine gidin ve denemenizin seçimini yapın. Her çalıştırma için günlüğe kaydedilen izlenen ölçümleri ve grafikleri görebileceğiniz deneme çalıştırması panosuna yönlendirilirsiniz. 
 
-  ![Azure Machine Learning Studio 'da ayrıntıları çalıştırma](./media/how-to-track-experiments/experiment-dashboard.png)
+Çalışma listesi tablosunu, çalıştırmalarınız için en son, en düşük veya en büyük günlüğe kaydedilmiş değeri görüntüleyecek şekilde düzenleyebilirsiniz. Çalıştırma listesinde birden çok çalıştırma seçebilir veya seçimden seçim yapabilirsiniz ve seçilen çalıştırmalar, grafikleri verilerinize göre dolduracaktır. Günlüğe kaydedilen ölçümleri (en düşük, en yüksek, son veya tüm değerler) birden çok çalıştırma arasında karşılaştırmak için yeni grafikler ekleyebilir veya grafikleri düzenleyebilirsiniz. Verilerinizi daha verimli bir şekilde araştırmak için, grafiklerinizi de en üst düzeye çıkarabilirsiniz.
+
+:::image type="content" source="media/how-to-track-experiments/experimentation-tab.gif" alt-text="Azure Machine Learning Studio 'da ayrıntıları çalıştırma":::
 
 Belirli bir çalıştırmaya gidebilir ya da çıktılarını veya günlüklerini görüntüleyebilir ya da deneme klasörünü başkalarıyla paylaşabileceğiniz şekilde gönderdiğiniz deneyinin anlık görüntüsünü indirebilirsiniz.
 

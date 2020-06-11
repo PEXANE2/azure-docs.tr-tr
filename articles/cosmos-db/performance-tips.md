@@ -1,35 +1,43 @@
 ---
-title: .NET için Azure Cosmos DB performans ipuçları
-description: Azure Cosmos DB performansını geliştirmek için istemci yapılandırma seçeneklerini öğrenin.
+title: .NET SDK v2 için Azure Cosmos DB performans ipuçları
+description: .NET v2 SDK performansını Azure Cosmos DB iyileştirecek istemci yapılandırma seçeneklerini öğrenin.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.author: sngun
-ms.openlocfilehash: b8d55e5096f3af8d91027eec090cf1f9240a82cb
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 07ca4674c1b8dafc9c02ff8fdf82de330862de73
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84432108"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674032"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
+# <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB ve .NET SDK v2 için performans ipuçları
 
 > [!div class="op_single_selector"]
-> * [Async Java](performance-tips-async-java.md)
-> * [Java](performance-tips-java.md)
-> * [.NET](performance-tips.md)
-> 
+> * [.NET SDK V3](performance-tips-dotnet-sdk-v3-sql.md)
+> * [.NET SDK v2](performance-tips.md)
+> * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
+> * [Zaman uyumsuz Java SDK v2](performance-tips-async-java.md)
+> * [Zaman uyumlu Java SDK v2](performance-tips-java.md)
 
 Azure Cosmos DB, garantili gecikme ve verimlilik ile sorunsuz bir şekilde ölçeklenen hızlı ve esnek bir dağıtılmış veritabanıdır. Veritabanınızı Azure Cosmos DB ölçeklendirmek için önemli mimari değişiklikler yapmanız veya karmaşık kod yazmanız gerekmez. Ölçeği artırma ve azaltma, tek bir API çağrısı yapmak kadar kolaydır. Daha fazla bilgi edinmek için bkz. [kapsayıcı verimini sağlama](how-to-provision-container-throughput.md) veya [veritabanı verimini sağlama](how-to-provision-database-throughput.md). Ancak Azure Cosmos DB ağ çağrıları üzerinden erişildiği için, [SQL .NET SDK](sql-api-sdk-dotnet-standard.md)kullandığınızda en yüksek performansa ulaşmak için kullanabileceğiniz istemci tarafı iyileştirmeler vardır.
 
 Bu nedenle, veritabanı performansını artırmaya çalışıyorsanız şu seçenekleri göz önünde bulundurun:
 
+## <a name="upgrade-to-the-net-v3-sdk"></a>.NET v3 SDK 'ya yükseltme
+[.Net v3 SDK](https://github.com/Azure/azure-cosmos-dotnet-v3) yayımlandı. .NET v3 SDK kullanıyorsanız, aşağıdaki bilgiler için [.net v3 performans Kılavuzu 'na](performance-tips-dotnet-sdk-v3-sql.md) bakın:
+- Varsayılan olarak doğrudan TCP modu
+- Akış API 'SI desteği
+- Kullanım System.Text.JSizin vermek için özel seri hale getirici desteği
+- Tümleşik toplu iş ve toplu destek
+
 ## <a name="hosting-recommendations"></a>Barındırma önerileri
 
 **Sorgu yoğunluğu yoğun iş yükleri için Linux veya Windows 32 bit ana bilgisayar işlemesi yerine Windows 64-bit kullanın**
 
-Gelişmiş performans için Windows 64 bit ana bilgisayar işlemesini öneririz. SQL SDK, sorguları yerel olarak ayrıştırmak ve iyileştirmek için yerel Serviceınterop. dll dosyasını içerir. Serviceınterop. dll yalnızca Windows x64 platformunda desteklenir. Serviceınterop. dll ' nin kullanılamadığı Linux ve diğer desteklenmeyen platformlar için, iyileştirilmiş sorguyu almak üzere ağ geçidine ek bir ağ çağrısı yapılır. Aşağıdaki uygulama türleri varsayılan olarak 32 bitlik ana bilgisayar işlemeyi kullanır. Ana bilgisayar işlemesini 64-bit işleme olarak değiştirmek için, uygulamanızın türüne göre aşağıdaki adımları izleyin:
+Gelişmiş performans için Windows 64 bit ana bilgisayar işlemesini öneririz. SQL SDK, sorguları yerel olarak ayrıştırmak ve iyileştirmek için yerel bir ServiceInterop.dll içerir. ServiceInterop.dll yalnızca Windows x64 platformunda desteklenir. ServiceInterop.dll kullanılamadığı Linux ve diğer desteklenmeyen platformlar için, iyileştirilmiş sorguyu almak üzere ağ geçidine ek bir ağ çağrısı yapılır. Aşağıdaki uygulama türleri varsayılan olarak 32 bitlik ana bilgisayar işlemeyi kullanır. Ana bilgisayar işlemesini 64-bit işleme olarak değiştirmek için, uygulamanızın türüne göre aşağıdaki adımları izleyin:
 
 - Yürütülebilir uygulamalar için, **Yapı** sekmesindeki **Proje özellikleri** penceresinde [Platform hedefini](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) **x64** olarak ayarlayarak ana bilgisayar işlemesini değiştirebilirsiniz.
 
@@ -41,7 +49,7 @@ Gelişmiş performans için Windows 64 bit ana bilgisayar işlemesini öneririz.
 
 > [!NOTE] 
 > Varsayılan olarak, yeni Visual Studio projeleri **herhangi BIR CPU**'ya ayarlanır. Projenizi **x86**'ya geçiş yapmak için **x64** olarak ayarlamanızı öneririz. **Herhangi BIR CPU** 'ya ayarlanmış bir proje, yalnızca x86 bağımlılığı eklendiyse, kolayca **x86** 'ya geçiş yapabilir.<br/>
-> Serviceınterop. dll ' nin, SDK DLL 'inin yürütüldüğü klasörde olması gerekir. Bu, yalnızca dll 'Leri el ile kopyalarsanız veya özel derleme/dağıtım sistemlerine sahipseniz sorun olması gerekir.
+> ServiceInterop.dll SDK DLL 'inin yürütüldüğü klasörde olması gerekir. Bu, yalnızca dll 'Leri el ile kopyalarsanız veya özel derleme/dağıtım sistemlerine sahipseniz sorun olması gerekir.
     
 **Sunucu tarafı atık toplamayı aç (GC)**
 
@@ -61,15 +69,15 @@ Yüksek aktarım hızı düzeylerinde (50.000 RU/sn 'den fazla) test ediyorsanı
 
 İstemcinin Azure Cosmos DB 'e bağlanması, özellikle de gözlemlenen istemci tarafı gecikme süresi için önemli performans etkilerine sahiptir. İstemci bağlantı ilkesini yapılandırmak için kullanılabilecek iki temel yapılandırma ayarı vardır: bağlantı *modu* ve bağlantı *Protokolü*.  Kullanılabilir iki mod şunlardır:
 
-   * Ağ geçidi modu
+   * Ağ Geçidi modu (varsayılan)
       
-     Ağ Geçidi modu tüm SDK platformlarında desteklenir ve [Microsoft. Azure. DocumentDB SDK 'sı](sql-api-sdk-dotnet.md)için yapılandırılmış varsayılandır. Uygulamanız, katı güvenlik duvarı kısıtlamalarına sahip bir kurumsal ağda çalışıyorsa, standart HTTPS bağlantı noktasını ve tek bir uç noktayı kullandığından, ağ geçidi modu en iyi seçimdir. Ancak performans zorunluluğunu getirir, ağ geçidi modunun, verilerin Azure Cosmos DB her okunışında veya üzerine yazıldığı her seferinde ek bir ağ atlaması içerir. Bu nedenle, daha az ağ atlaması olduğundan doğrudan mod daha iyi performans sunar. Ayrıca, sınırlı sayıda soket bağlantısı olan ortamlarda uygulamalar çalıştırdığınızda ağ geçidi bağlantı modunu da öneririz.
+     Ağ Geçidi modu tüm SDK platformlarında desteklenir ve [Microsoft.Azure.DocumentDB SDK 'sı](sql-api-sdk-dotnet.md)için varsayılan olarak yapılandırılır. Uygulamanız, katı güvenlik duvarı kısıtlamalarına sahip bir kurumsal ağda çalışıyorsa, standart HTTPS bağlantı noktasını ve tek bir uç noktayı kullandığından, ağ geçidi modu en iyi seçimdir. Ancak performans zorunluluğunu getirir, ağ geçidi modunun, verilerin Azure Cosmos DB her okunışında veya üzerine yazıldığı her seferinde ek bir ağ atlaması içerir. Bu nedenle, daha az ağ atlaması olduğundan doğrudan mod daha iyi performans sunar. Ayrıca, sınırlı sayıda soket bağlantısı olan ortamlarda uygulamalar çalıştırdığınızda ağ geçidi bağlantı modunu da öneririz.
 
      Azure Işlevlerinde SDK kullandığınızda, özellikle [Tüketim planında](../azure-functions/functions-scale.md#consumption-plan), [bağlantılardaki geçerli limitlerin](../azure-functions/manage-connections.md)farkında olun. Bu durumda, Azure Işlevleri uygulamanızdaki diğer HTTP tabanlı istemcilerle de çalışıyorsanız ağ geçidi modu daha iyi olabilir.
 
    * Doğrudan mod
 
-     Doğrudan mod, TCP protokolü ile bağlantıyı destekler ve [Microsoft. Azure. Cosmos/. net v3 SDK](sql-api-sdk-dotnet-standard.md)kullanıyorsanız varsayılan bağlantı modudur.
+     Doğrudan mod, TCP protokolü üzerinden bağlantıyı destekler.
 
 Ağ Geçidi modunda, Azure Cosmos DB MongoDB için Azure Cosmos DB API kullandığınızda 443 bağlantı noktasını ve 10250, 10255 ve 10256 bağlantı noktalarını kullanır. 10250 numaralı bağlantı noktası, coğrafi çoğaltma olmadan bir varsayılan MongoDB örneğiyle eşlenir. 10255 ve 10256 bağlantı noktaları, coğrafi çoğaltma içeren MongoDB örneğiyle eşlenir.
      
@@ -82,19 +90,7 @@ Doğrudan modda TCP kullandığınızda, ağ geçidi bağlantı noktalarına ek 
 
 Azure Cosmos DB, HTTPS üzerinden basit ve açık bir yeniden programlama modeli sunar. Ayrıca, bu, iletişim modelinde da daha da fazla olan ve .NET istemci SDK 'Sı aracılığıyla kullanılabilen etkin bir TCP protokolünü sunmaktadır. TCP protokolü ilk kimlik doğrulaması ve trafiği şifreleme için TLS kullanır. En iyi performans için, mümkün olduğunda TCP protokolünü kullanın.
 
-SDK V3 için, içinde örneğini oluştururken bağlantı modunu yapılandırırsınız `CosmosClient` `CosmosClientOptions` . Doğrudan modunun varsayılan olduğunu unutmayın.
-
-```csharp
-var serviceEndpoint = new Uri("https://contoso.documents.net");
-var authKey = "your authKey from the Azure portal";
-CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
-new CosmosClientOptions
-{
-    ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
-});
-```
-
-Microsoft. Azure. DocumentDB SDK 'Sı için, parametresini kullanarak, örneği oluşturma sırasında bağlantı modunu yapılandırırsınız `DocumentClient` `ConnectionPolicy` . Doğrudan modu kullanırsanız, `Protocol` parametresini kullanarak da ayarlayabilirsiniz `ConnectionPolicy` .
+Microsoft.Azure.DocumentDB SDK 'Sı için, parametresini kullanarak, örneği oluşturma sırasında bağlantı modunu yapılandırırsınız `DocumentClient` `ConnectionPolicy` . Doğrudan modu kullanırsanız, `Protocol` parametresini kullanarak da ayarlayabilirsiniz `ConnectionPolicy` .
 
 ```csharp
 var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -140,15 +136,9 @@ Azure Cosmos DB çağrıları ağ üzerinden yapıldığından, istemci uygulama
 
 Azure Cosmos DB SDK 'Ları, en iyi performansı sağlamak için sürekli geliştirilmiştir. En son SDK 'Yı öğrenmek ve geliştirmeleri gözden geçirmek için [Azure Cosmos DB SDK](sql-api-sdk-dotnet-standard.md) sayfalarına bakın.
 
-**Stream API 'Lerini kullanma**
-
-[.NET SDK V3](sql-api-sdk-dotnet-standard.md) , verileri seri hale getirmeksizin alıp döndürebilirler. 
-
-Yanıtları doğrudan SDK 'dan tüketmeyen, ancak bunları diğer uygulama katmanlarına geçirmeyen orta katmanlı uygulamalar, Stream API 'Lerinden faydalanabilir. Akış işleme örnekleri için bkz. [öğe yönetimi](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement) örnekleri.
-
 **Uygulamanızın ömrü boyunca tek bir Azure Cosmos DB istemcisi kullanın**
 
-Her `DocumentClient` ve `CosmosClient` örnek iş parçacığı açısından güvenlidir ve doğrudan modda çalışırken verimli bağlantı yönetimi ve adres önbelleği gerçekleştirir. Etkili bağlantı yönetimine ve daha iyi SDK istemci performansına izin vermek için, `AppDomain` uygulamanın kullanım ömrü boyunca tek bir örnek kullanmanızı öneririz.
+Her `DocumentClient` örnek iş parçacığı açısından güvenlidir ve doğrudan modda çalışırken verimli bağlantı yönetimi ve adres önbelleği gerçekleştirir. Etkili bağlantı yönetimine ve daha iyi SDK istemci performansına izin vermek için, `AppDomain` uygulamanın kullanım ömrü boyunca tek bir örnek kullanmanızı öneririz.
 
    <a id="max-connection"></a>
 
@@ -164,7 +154,7 @@ SQL .NET SDK 1.9.0 ve üzeri, bölümlenmiş bir koleksiyonu paralel olarak sorg
 
 ***Paralellik derecesi ayarlama***
 
-Paralel sorgu birden çok bölümü paralel olarak sorgulayarak işe yarar. Ancak tek bir bölümden alınan veriler sorguya göre işlem içine alınır. `MaxDegreeOfParallelism` [SDK v2](sql-api-sdk-dotnet.md) veya `MaxConcurrency` [SDK V3](sql-api-sdk-dotnet-standard.md) sürümünde bölüm sayısının en iyi performansı elde etmek, diğer tüm sistem koşullarının aynı kalmasını sağlamak için en iyi performansa sahip olan sorgunun en iyi şansınız olur. Bölüm sayısını bilmiyorsanız paralellik derecesini yüksek bir sayı olarak ayarlayabilirsiniz. Sistem paralellik derecesi olarak en az (bölüm sayısını, Kullanıcı tarafından girilen girişi) seçer.
+Paralel sorgu birden çok bölümü paralel olarak sorgulayarak işe yarar. Ancak tek bir bölümden alınan veriler sorguya göre işlem içine alınır. `MaxDegreeOfParallelism` [SDK v2](sql-api-sdk-dotnet.md) 'nin bölüm sayısına en iyi şekilde ayarlanması, diğer tüm sistem koşullarının aynı kalması şartıyla en iyi performansı elde etmek için en iyi şansınız vardır. Bölüm sayısını bilmiyorsanız paralellik derecesini yüksek bir sayı olarak ayarlayabilirsiniz. Sistem paralellik derecesi olarak en az (bölüm sayısını, Kullanıcı tarafından girilen girişi) seçer.
 
 Verilerin sorguya göre tüm bölümler arasında eşit bir şekilde dağıtılması halinde paralel sorgular en avantaja neden olduğunu unutmayın. Bölümlenmiş koleksiyon, bir sorgu tarafından döndürülen verilerin tümünün veya çoğu birkaç bölümde yoğunlaşarak (bir bölüm en kötü durumdur), bu bölümlerin sorgunun performansını performans sorunlarına neden olur.
 
@@ -180,7 +170,7 @@ Performans testi sırasında, küçük bir istek hızı kısıtlanana kadar yük
 
 Yeniden deneme ilkesi desteği Bu SDK 'lara dahildir:
 - [SQL için .NET SDK](sql-api-sdk-dotnet.md) ve [SQL için Java SDK](sql-api-sdk-java.md) 'nın sürüm 1.8.0 ve üzeri
-- [SQL Için Node. js SDK](sql-api-sdk-node.md) ve [SQL için Python SDK](sql-api-sdk-python.md) 'nın sürümü 1.9.0 ve üzeri
+- [SQL içinNode.js SDK](sql-api-sdk-node.md) ve [SQL için Python SDK](sql-api-sdk-python.md) 'nın sürümü 1.9.0 ve üzeri
 - [.NET Core](sql-api-sdk-dotnet-core.md) SDK 'larının tüm desteklenen sürümleri 
 
 Daha fazla bilgi için bkz. [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).

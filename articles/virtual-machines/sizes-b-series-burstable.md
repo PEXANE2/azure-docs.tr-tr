@@ -2,18 +2,18 @@
 title: B serisi Burstable-Azure sanal makineleri
 description: Koyu Azure VM boyutlarının B serisini açıklar.
 services: virtual-machines
+ms.subservice: sizes
 author: ayshakeen
-manager: gwallace
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 5121ef8eb3123d830233e91968c69b331d255bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e7411f30ac0ef03ecd621f4cf6db5cd9350201b
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78161089"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678554"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B serisi Burstable sanal makine boyutları
 
@@ -58,7 +58,7 @@ Taban çizgisi: %270
 
 ![Saatlik trafik verileri grafiği](./media/b-series-burstable/office-workload.png)
 
-| Senaryo | Zaman | CPU kullanımı (%) | Birikmiş jenerik<sup>1</sup> | Kredi var |
+| Senaryo | Saat | CPU kullanımı (%) | Birikmiş jenerik<sup>1</sup> | Kredi var |
 | --- | --- | --- | --- | --- |
 | B16ms dağıtımı | Dağıtım | Dağıtım  | 480 (ilk krediler) | 480 |
 | Trafik yok | 0:00 | 0 | 162 | 642 |
@@ -86,7 +86,7 @@ Taban çizgisi: %270
 | Trafik yok | 22:00 | 0 | 162 | 642 |
 | Trafik yok | 23:00 | 0 | 162 | 804 |
 
-<sup>1</sup> bir saat içinde kullanılan birikmiş krediler, şu şekilde eşdeğerdir: `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes`.  
+<sup>1</sup> bir saat içinde kullanılan birikmiş krediler, şu şekilde eşdeğerdir: `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes` .  
 
 16 vCPU ve 64 GiB belleğe sahip bir D16s_v3 için saatlik ücret saat başına $0,936 (aylık $673,92) ve 16 vCPU ve 64 GiB belleği ile B16ms için Fiyat, saat başına ' dir (aylık $0,794). <b>Bu durum %15 tasarruf sonucu!</b>
 

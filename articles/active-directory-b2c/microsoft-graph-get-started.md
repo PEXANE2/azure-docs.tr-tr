@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b62f30f428a0aaf5a564e2f2d2ad8d753dff7767
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: fd4ed98383d38be8528bafd6ec7d149381386fac
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298950"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672553"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C yönetme
 
@@ -46,7 +46,15 @@ OAuth 2,0 istemci kimlik bilgileri verme akışı şu anda Azure AD B2C kimlik d
 
 Komut dosyalarınız ve uygulamalarınızın Azure AD B2C kaynaklarını yönetmek için [MICROSOFT Graph API][ms-graph-api] 'siyle etkileşime girebilmesi için, Azure AD B2C kiracınızda gerekli API izinlerini veren bir uygulama kaydı oluşturmanız gerekir.
 
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
+1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
+1. **Uygulama kayıtları**öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
+1. Uygulama için bir **ad** girin. Örneğin, *managementapp1*.
+1. **Yalnızca bu kuruluş dizininde hesaplar '** ı seçin.
+1. **İzinler**altında, *openıd ve offline_access izinleri Için yönetici izni ver* onay kutusunu temizleyin.
+1. **Kaydol**’u seçin.
+1. Uygulamaya Genel Bakış sayfasında görüntülenen **uygulama (istemci) kimliğini** kaydedin. Bu değeri sonraki bir adımda kullanırsınız.
 
 ### <a name="grant-api-access"></a>API erişimi verme
 
@@ -72,7 +80,7 @@ Uygulamanızın veya betiğinizin kullanıcıları silmesi veya parolalarını g
 1. **Kullanıcı Yöneticisi** rolünü seçin.
 1. **Atama Ekle**' yi seçin.
 1. Metin **Seç** kutusuna daha önce kaydettiğiniz uygulamanın adını girin, örneğin, *managementapp1*. Arama sonuçlarında göründüğünde uygulamanızı seçin.
-1. **Add (Ekle)** seçeneğini belirleyin. İzinlerin tam olarak yayılması birkaç dakika sürebilir.
+1. **Ekle**'yi seçin. İzinlerin tam olarak yayılması birkaç dakika sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Yönetim uygulamanızı kaydoldığınıza ve gerekli izinleri vermiş olduğunuza göre, uygulama ve hizmetleriniz (örneğin, Azure Pipelines) Microsoft Graph API 'siyle etkileşim kurmak için kimlik bilgilerini ve izinlerini kullanabilir. 

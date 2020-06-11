@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Edge 'e bağlanma ve sorgulama (Önizleme)
-description: Azure SQL Edge 'i bağlama ve sorgulama hakkında bilgi edinin (Önizleme)
+description: Azure SQL Edge 'e bağlanma ve sorgulama hakkında bilgi edinin (Önizleme).
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,35 +9,35 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: e7034c3f664eeba802341510b109ba9cc57845a8
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 7c6dbd628b4c271815c0210f93d776338cb01275
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235126"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669690"
 ---
 # <a name="connect-and-query-azure-sql-edge-preview"></a>Azure SQL Edge 'e bağlanma ve sorgulama (Önizleme)
 
-Azure SQL Edge kapsayıcısını dağıttıktan sonra, aşağıdaki konumlardan herhangi birinden SQL veritabanı altyapısına bağlanabilirsiniz.
+Azure SQL Edge 'de, bir kapsayıcıyı dağıttıktan sonra aşağıdaki konumlardan herhangi birinden SQL veritabanı altyapısına bağlanabilirsiniz:
 
 - Kapsayıcının içinde
-- Aynı konakta çalışan başka bir Docker kapsayıcısında.
+- Aynı konakta çalışan başka bir Docker kapsayıcısından
 - Ana makineden
-- Ağ üzerindeki herhangi bir diğer istemci makineden.
+- Ağdaki herhangi bir diğer istemci makineden
 
 ## <a name="tools-to-connect-to-azure-sql-edge"></a>Azure SQL Edge 'e bağlanmak için Araçlar
 
-Azure SQL Edge örneğine bağlantılar aşağıda bahsedilen ortak araçlardan herhangi birinden yapılabilir.
+Azure SQL Edge örneği örneğine, bu ortak araçlardan herhangi birinden bağlanabilirsiniz:
 
-* [sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) -sqlcmd istemci araçları, Azure SQL Edge kapsayıcı görüntüsüne zaten dahil edilmiştir. Etkileşimli bash kabuğu ile çalışan bir kapsayıcıya eklerseniz, araçları yerel olarak çalıştırabilirsiniz.
+* [sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools): sqlcmd istemci araçları, Azure SQL Edge 'in kapsayıcı görüntüsüne zaten dahil edilmiştir. Etkileşimli bash kabuğu ile çalışan bir kapsayıcıya eklerseniz, araçları yerel olarak çalıştırabilirsiniz.
 * [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)
 * [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)
 * [Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode)
 
-Bir ağ makinesinden Azure SQL Edge veritabanı altyapısına bağlanmak için aşağıdakiler gerekir
+Bir ağ makinesinden Azure SQL Edge veritabanı altyapısına bağlanmak için şunlar gerekir:
 
-- *Konak makinenin IP adresi veya ağ adı* -bu, Azure SQL Edge kapsayıcısının çalıştığı ana makinedir.
-- *Azure SQL Edge kapsayıcı ana bilgisayar bağlantı noktası eşleme* -bu, Docker kapsayıcı bağlantı noktası için konaktaki bağlantı noktası eşleştirmesinin bağlantı noktasıdır. Kapsayıcı SQL Edge içinde her zaman 1433 numaralı bağlantı noktasına eşlenir. Bu, Azure SQL Edge dağıtımının bir parçası olarak değiştirilebilir. Bağlantı noktası numarasını değiştirmek için, Azure IoT Edge SQL Edge modülünün "kapsayıcı oluşturma seçeneklerini" güncelleştirin. Aşağıda belirtilen örnekte, kapsayıcıda bağlantı noktası 1433, konaktaki bağlantı noktası 1600 ile eşleştirilir.
+- **Konak makinenin IP adresi veya ağ adı**: Bu, Azure SQL Edge kapsayıcısının çalıştığı ana makinedir.
+- **Azure SQL Edge kapsayıcı ana bilgisayar bağlantı noktası eşlemesi**: Bu, Docker kapsayıcı bağlantı noktasının konaktaki bir bağlantı noktasına yönelik eşlemedir. Kapsayıcı içinde Azure SQL Edge her zaman bağlantı noktası 1433 ' e eşlenir. İsterseniz bunu değiştirebilirsiniz. Bağlantı noktası numarasını değiştirmek için Azure IoT Edge Azure SQL Edge modülü için **kapsayıcı oluşturma seçeneklerini** güncelleştirin. Aşağıdaki örnekte, kapsayıcıda 1433 numaralı bağlantı noktası konaktaki bağlantı noktası 1600 ile eşleştirilir.
 
     ```JSON
     {
@@ -51,20 +51,20 @@ Bir ağ makinesinden Azure SQL Edge veritabanı altyapısına bağlanmak için a
     }
     ```
 
-- *SQL Edge örneği Için sa parolası* -bu, SQL Edge dağıtımı sırasında **SA_PASSWORD** ortam değişkeni için belirtilen değerdir.
+- **Azure SQL Edge örneği Için sa parolası**: Bu, `SA_PASSWORD` Azure SQL Edge dağıtımı sırasında ortam değişkeni için belirtilen değerdir.
 
-## <a name="connecting-to-the-database-engine-from-within-the-container"></a>Kapsayıcı içinden veritabanı altyapısına bağlanma
+## <a name="connect-to-the-database-engine-from-within-the-container"></a>Kapsayıcı içinden veritabanı altyapısına bağlanma
 
-[SQL Server komut satırı araçları](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) , Azure SQL Edge kapsayıcı görüntüsüne dahildir. Etkileşimli bir komut istemiyle kapsayıcıya eklerseniz, araçları yerel olarak çalıştırabilirsiniz.
+[SQL Server komut satırı araçları](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) , Azure SQL Edge 'in kapsayıcı görüntüsüne dahildir. Kapsayıcıyı etkileşimli bir komut istemiyle birlikte eklerseniz, araçları yerel olarak çalıştırabilirsiniz.
 
-1. `docker exec -it`Çalışan kapsayıcının içinde etkileşimli bir bash kabuğu başlatmak için komutunu kullanın. Aşağıdaki örnekte `e69e056c702d` KAPSAYıCı kimliğidir.
+1. `docker exec -it`Çalışan kapsayıcının içinde etkileşimli bir bash kabuğu başlatmak için komutunu kullanın. Aşağıdaki örnekte, `e69e056c702d` KAPSAYıCı kimliğidir.
 
     ```bash
-    docker exec -it <Azure SQL Edge container id or name> /bin/bash
+    docker exec -it <Azure SQL Edge container ID or name> /bin/bash
     ```
 
     > [!TIP]
-    > Her zaman kapsayıcı kimliğinin tamamını belirtmeniz gerekmez. Benzersiz bir şekilde tanımlamak için yeterli karakter belirtmeniz yeterlidir. Bu nedenle, bu örnekte, `e6` tam kimlik yerine veya kullanmak yeterli olabilir `e69` .
+    > Her zaman kapsayıcı KIMLIĞININ tamamını belirtmeniz gerekmez. Benzersiz bir şekilde tanımlamak için yeterli karakter belirtmeniz yeterlidir. Bu nedenle, bu örnekte, `e6` tam kimlik yerine veya kullanmak yeterli olabilir `e69` .
 
 2. Kapsayıcının içindeyken sqlcmd ile yerel olarak bağlanın. Sqlcmd, varsayılan olarak yolda değildir, bu nedenle tam yolu belirtmeniz gerekir.
 
@@ -76,9 +76,9 @@ Bir ağ makinesinden Azure SQL Edge veritabanı altyapısına bağlanmak için a
 
 4. Etkileşimli komut istemiyle işiniz bittiğinde yazın `exit` . Etkileşimli bash kabuğu 'ndan çıktıktan sonra Kapsayıcınız çalışmaya devam eder.
 
-## <a name="connect-to-sql-edge-from-another-container-on-the-same-host"></a>Aynı konaktaki başka bir kapsayıcıdan SQL Edge 'e bağlanma
+## <a name="connect-to-azure-sql-edge-from-another-container-on-the-same-host"></a>Aynı konaktaki başka bir kapsayıcıdan Azure SQL Edge 'e bağlanma
 
-Aynı konakta çalışan iki kapsayıcı aynı Docker ağı üzerinde olduğundan, hizmet için kapsayıcı adı ve bağlantı noktası adresi kullanılarak kolayca erişilebilir. Örneğin, aynı konaktaki başka bir Python modülünden (container) SQL Edge örneğine bağlanıyorsanız aşağıdakine benzer bir bağlantı dizesi kullanabilirsiniz. Aşağıdaki örnekte, SQL Edge 'in varsayılan bağlantı noktasında dinlemek için yapılandırıldığı varsayılır.
+Aynı konakta çalışan iki kapsayıcı aynı Docker ağı üzerinde olduğundan, hizmete ait kapsayıcı adını ve bağlantı noktası adresini kullanarak kolayca erişebilirsiniz. Örneğin, aynı konaktaki başka bir Python modülünden (container) Azure SQL Edge örneğine bağlanıyorsanız aşağıdakine benzer bir bağlantı dizesi kullanabilirsiniz. (Bu örnekte, Azure SQL Edge 'in varsayılan bağlantı noktasında dinlemek üzere yapılandırıldığı varsayılır.)
 
 ```python
 
@@ -92,9 +92,9 @@ conn = pyodbc.connect(db_connection_string, autocommit=True)
 
 ```
 
-## <a name="connect-to-sql-edge-from-another-network-machine"></a>Başka bir ağ makinesinden SQL Edge 'e Bağlan
+## <a name="connect-to-azure-sql-edge-from-another-network-machine"></a>Başka bir ağ makinesinden Azure SQL Edge 'e bağlanma
 
-Ağ üzerindeki başka bir makineden SQL Edge örneğine bağlanmak için, Docker konağının IP adresini ve SQL Edge kapsayıcısının eşlendiği ana bilgisayar bağlantı noktasını kullanmanız gerekir. Örneğin, Docker konağının IP adresi * xxx.xxx.xxx.xxx "ve SQL Edge kapsayıcısı ana bilgisayar bağlantı noktası *1600*' e eşlenmişse, SQL Edge örneği için sunucu adresi xxx. xxx. **xxx. xxx, 1600**olur. Güncelleştirilmiş Python betiği
+Ağ üzerindeki başka bir makineden Azure SQL Edge örneğine bağlanmak isteyebilirsiniz. Bunu yapmak için, Docker konağının IP adresini ve Azure SQL Edge kapsayıcısının eşlendiği ana bilgisayar bağlantı noktasını kullanın. Örneğin, Docker konağının IP adresi *xxx.xxx.xxx.xxx*Ise ve Azure SQL Edge kapsayıcısı, ana bilgisayar bağlantı noktası *1600*' e eşlenmişse, Azure SQL Edge örneği için sunucu adresi xxx. xxx *. xxx. xxx, 1600*olur. Güncelleştirilmiş Python betiği:
 
 ```python
 
@@ -108,13 +108,13 @@ conn = pyodbc.connect(db_connection_string, autocommit=True)
 
 ```
 
-Bir Windows makinesinde çalışan SQL Server Management Studio kullanarak bir SQL Edge örneğine bağlanmak için, [SQL Server Management Studio](https://docs.microsoft.com/sql/linux/sql-server-linux-manage-ssms)başvurun.
+Bir Windows makinesinde çalışan SQL Server Management Studio kullanarak Azure SQL Edge örneğine bağlanmak için bkz. [SQL Server Management Studio](https://docs.microsoft.com/sql/linux/sql-server-linux-manage-ssms).
 
-Bir Windows, Mac veya Linux makinesinde Visual Studio Code kullanarak bir SQL Edge örneğine bağlanmak için [Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode)başvurun.
+Bir Windows, Mac veya Linux makinesinde Visual Studio Code kullanarak Azure SQL Edge örneğine bağlanmak için bkz. [Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode).
 
-Windows, Mac veya Linux makinesinde Azure Data Studio kullanarak bir SQL Edge örneğine bağlanmak için [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-server)başvurun.
+Bir Windows, Mac veya Linux makinesinde Azure Data Studio kullanarak Azure SQL Edge örneğine bağlanmak için bkz. [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-server).
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Bağlanma ve sorgulama](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-docker#connect-and-query)
 

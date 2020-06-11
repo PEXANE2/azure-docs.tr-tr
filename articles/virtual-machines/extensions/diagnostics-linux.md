@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 4c34996cb47b1f09f47454f162674248820ce975
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 4033437db5c14abcd0376fbfeca22cca915908d2
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118547"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677194"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama Uzantısı’nı kullanma
 
@@ -451,7 +451,7 @@ Günlük dosyalarının yakalanmasını denetler. LAD, dosyaya yazıldığı ve 
 
 Öğe | Değer
 ------- | -----
- dosyası | İzlenen ve yakalanan günlük dosyasının tam yol adı. Yol adının tek bir dosya adı olmalıdır; bir dizini veya joker karakter içeremez.
+ dosyası | İzlenen ve yakalanan günlük dosyasının tam yol adı. Yol adının tek bir dosya adı olmalıdır; bir dizini veya joker karakter içeremez. ' Omsagent ' Kullanıcı hesabının dosya yoluna okuma erişimi olmalıdır.
 tablo | seçim Belirtilen depolama hesabında (korumalı yapılandırmada belirtildiği gibi), dosyanın "Tail" içindeki yeni satırların yazıldığı Azure Storage tablosu.
 yapma | seçim Günlük satırlarının gönderildiği ek havuz adlarının virgülle ayrılmış bir listesi.
 
@@ -566,7 +566,7 @@ Tüm diskler genelinde toplanmış değerler ayarıyla elde edilebilir `"conditi
 
 ## <a name="installing-and-configuring-lad-30-via-cli"></a>CLI üzerinden LAD 3.0'ı yükleme ve yapılandırma
 
-Korunan ayarlarınızın PrivateConfig. json dosyasında olduğunu ve ortak yapılandırma bilgilerinizin PublicConfig. json dosyasında olduğunu varsayarsak, şu komutu çalıştırın:
+Korunan ayarlarınızın dosyada PrivateConfig.jsolduğu varsayıldığında ve genel yapılandırma bilgileriniz üzerinde PublicConfig.js, şu komutu çalıştırın:
 
 ```azurecli
 az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Azure.Diagnostics '3.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json
@@ -578,7 +578,7 @@ Bu komut, Azure CLı 'nın Azure Kaynak yönetimi modunu (ARM) kullandığınız
 
 Önceki tanımları temel alarak, bazı açıklamayla örnek bir LAD 3,0 uzantı yapılandırması aşağıda verilmiştir. Bu örneği çalışmanıza uygulamak için kendi depolama hesabı adınızı, hesap SAS belirtecinizi ve EventHubs SAS belirteçlerini kullanmanız gerekir.
 
-### <a name="privateconfigjson"></a>PrivateConfig. JSON
+### <a name="privateconfigjson"></a>Üzerinde PrivateConfig.js
 
 Bu özel ayarlar yapılandırılır:
 
@@ -628,7 +628,7 @@ Bu özel ayarlar yapılandırılır:
 }
 ```
 
-### <a name="publicconfigjson"></a>PublicConfig. JSON
+### <a name="publicconfigjson"></a>Üzerinde PublicConfig.js
 
 Bu genel ayarlar, LAD 'ye neden olur:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d46d5618d7e3dc26775401f4a90d0c98d75ea31a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 8a60d34c73eed5d71599a90e463138186e21fdf7
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929222"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677908"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Yeni oturum Konakları ile mevcut bir konak havuzunu Genişlet
 
@@ -50,7 +50,7 @@ Sanal makineler ekleyerek konak havuzunuzu genişletmek için:
 
 3. Ekranın sol tarafındaki menüde **konak havuzları**' nı seçin ve ardından sanal makineleri eklemek istediğiniz konak havuzunun adını seçin.
 
-4. Ekranın sol tarafındaki menüden **sanal makineler** ' i seçin.
+4. Ekranın sol tarafındaki menüden **oturum Konakları** ' nı seçin.
 
 5. Ana bilgisayar havuzunuzu oluşturmaya başlamak için **+ Ekle** ' yi seçin.
 

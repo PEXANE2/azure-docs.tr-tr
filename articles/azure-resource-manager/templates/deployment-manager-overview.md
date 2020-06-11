@@ -4,12 +4,12 @@ description: Azure Dağıtım Yöneticisi ile birçok bölge üzerinden bir hizm
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 424cd79a6c63200e1f101cf178b1fd2c9083161e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a91623d22a921b6285723af2b4ca1411b9cf0bab
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76152536"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677891"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Azure Dağıtım Yöneticisi ile güvenli dağıtım uygulamalarını etkinleştirme (Genel Önizleme)
 
@@ -193,7 +193,7 @@ Dağıtım şablonunda, hizmete dağıtmanız gereken ikili dosyalar için bir y
 
 ### <a name="steps"></a>Adımlar
 
-Dağıtım işleminizi daha önce veya sonra gerçekleştirmek üzere bir adım tanımlayabilirsiniz. Şu anda yalnızca `wait` adım ve ' healthcheck ' adımı kullanılabilir.
+Dağıtım işleminizi daha önce veya sonra gerçekleştirmek üzere bir adım tanımlayabilirsiniz. Şu anda yalnızca `wait` adım ve ' healthCheck ' adımı kullanılabilir.
 
 Bekleme adımı devam etmeden önce dağıtımı duraklatır. Sonraki hizmet birimini dağıtılmadan önce hizmetinizin beklendiği gibi çalıştığını doğrulamanızı sağlar. Aşağıdaki örnek, bir bekleme adımının Genel biçimini gösterir.
 
@@ -268,9 +268,9 @@ Daha fazla bilgi için bkz. [piyasaya çıkarma Template Reference](/azure/templ
 
 ## <a name="containerroot-variable"></a>containerRoot değişkeni
 
-Sürümlü dağıtımlar ile, yapıtlarınızın yolu her yeni sürümle değişir. Bir dağıtımı ilk kez çalıştırdığınızda yol olabilir `https://<base-uri-blob-container>/binaries/1.0.0.0`. İkinci kez olabilir `https://<base-uri-blob-container>/binaries/1.0.0.1`. Dağıtım Yöneticisi, `$containerRoot` değişkeni kullanarak geçerli dağıtım için doğru kök yolu almayı basitleştirir. Bu değer her sürümle birlikte değişir ve dağıtımdan önce bilinmez.
+Sürümlü dağıtımlar ile, yapıtlarınızın yolu her yeni sürümle değişir. Bir dağıtımı ilk kez çalıştırdığınızda yol olabilir `https://<base-uri-blob-container>/binaries/1.0.0.0` . İkinci kez olabilir `https://<base-uri-blob-container>/binaries/1.0.0.1` . Dağıtım Yöneticisi, değişkeni kullanarak geçerli dağıtım için doğru kök yolu almayı basitleştirir `$containerRoot` . Bu değer her sürümle birlikte değişir ve dağıtımdan önce bilinmez.
 
-Azure kaynaklarını `$containerRoot` dağıtmak için şablon için parametre dosyasındaki değişkenini kullanın. Dağıtım zamanında bu değişken, piyasaya geçen gerçek değerlerle değiştirilmiştir.
+`$containerRoot`Azure kaynaklarını dağıtmak için şablon için parametre dosyasındaki değişkenini kullanın. Dağıtım zamanında bu değişken, piyasaya geçen gerçek değerlerle değiştirilmiştir.
 
 Örneğin, dağıtım sırasında ikili yapıtlar için bir yapıt kaynağı oluşturursunuz.
 
@@ -294,13 +294,13 @@ Azure kaynaklarını `$containerRoot` dağıtmak için şablon için parametre d
 },
 ```
 
-`artifactRoot` Ve `sasUri` özelliklerine dikkat edin. Yapıt kökü, gibi `binaries/1.0.0.0`bir değere ayarlanabilir. SAS URI 'si, erişim için SAS belirtecine sahip depolama kapsayıcılarınızın URI 'sidir. Dağıtım Yöneticisi, `$containerRoot` değişkenin değerini otomatik olarak oluşturur. Bu değerleri biçiminde `<container>/<artifactRoot>`birleştirir.
+`artifactRoot`Ve özelliklerine dikkat edin `sasUri` . Yapıt kökü, gibi bir değere ayarlanabilir `binaries/1.0.0.0` . SAS URI 'si, erişim için SAS belirtecine sahip depolama kapsayıcılarınızın URI 'sidir. Dağıtım Yöneticisi, değişkenin değerini otomatik olarak oluşturur `$containerRoot` . Bu değerleri biçiminde birleştirir `<container>/<artifactRoot>` .
 
-Şablon ve parametre dosyanızın sürümlenmiş ikilileri almak için doğru yolu bilmeleri gerekir. Örneğin, bir Web uygulaması için dosyaları dağıtmak için, $containerRoot değişkeniyle aşağıdaki parametre dosyasını oluşturun. İlk kaçış karakteri olduğu için yol`\\`için iki ters eğik çizgi () kullanmanız gerekir.
+Şablon ve parametre dosyanızın sürümlenmiş ikilileri almak için doğru yolu bilmeleri gerekir. Örneğin, bir Web uygulaması için dosyaları dağıtmak için, $containerRoot değişkeniyle aşağıdaki parametre dosyasını oluşturun. `\\`İlk kaçış karakteri olduğu için yol için iki ters eğik çizgi () kullanmanız gerekir.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "deployPackageUri": {

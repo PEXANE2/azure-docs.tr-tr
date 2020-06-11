@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/24/2020
-ms.openlocfilehash: 0a83117d6d58f45d6ee1de2b8d61c2157738fc75
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.date: 06/10/2020
+ms.openlocfilehash: feb1cc132bf5463550a2e7921f347c8f2f48260e
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831000"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668007"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Güncelleştirme Yönetimi’ni etkinleştirme
 
@@ -23,12 +23,9 @@ Kaynak grubunuzda Azure Otomasyonu Güncelleştirme Yönetimi özelliğini etkin
 * Zaten bağlı değilse, Otomasyon hesabını Log Analytics çalışma alanına bağlama.
 * Güncelleştirme Yönetimi etkinleştiriliyor.
 
-Şablon bir veya daha fazla Azure veya Azure dışı VM 'nin etkinleştirilmesini otomatik hale getirir.
+Şablon, bir veya daha fazla Azure veya Azure dışı VM üzerinde Güncelleştirme Yönetimi etkinleştirmeyi otomatik hale getirmiyor.
 
-Aboneliğinizde desteklenen bir bölgede dağıtılmış bir Log Analytics çalışma alanı ve Otomasyon hesabı zaten varsa, bunlar bağlanmaz. Çalışma alanında zaten Güncelleştirme Yönetimi etkin değil. Bu şablonu kullanmak bağlantıyı başarıyla oluşturur ve sanal makinelerinize Güncelleştirme Yönetimi dağıtır. 
-
->[!NOTE]
->Linux üzerinde Güncelleştirme Yönetimi bir parçası olarak etkinleştirilen **nxautomation** kullanıcısı yalnızca imzalı runbook 'ları yürütür.
+Aboneliğinizde desteklenen bir bölgede dağıtılmış bir Log Analytics çalışma alanı ve Otomasyon hesabı zaten varsa, bunlar bağlanmaz. Bu şablonu kullanmak bağlantıyı başarıyla oluşturur ve Güncelleştirme Yönetimi dağıtır.
 
 ## <a name="api-versions"></a>API sürümleri
 
@@ -36,8 +33,8 @@ Aşağıdaki tabloda, bu şablonda kullanılan kaynakların API sürümleri list
 
 | Kaynak | Kaynak türü | API sürümü |
 |:---|:---|:---|
-| Çalışma alanı | çalışma alanı | 2017-03-15-Önizleme |
-| Otomasyon hesabı | automation | 2015-10-31 | 
+| Çalışma alanı | çalışma alanı | 2020-03-01-Önizleme |
+| Otomasyon hesabı | automation | 2018-06-30 | 
 | Çözüm | çözümler | 2015-11-01-Önizleme |
 
 ## <a name="before-using-the-template"></a>Şablonu kullanmadan önce
@@ -48,10 +45,11 @@ CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CL
 
 JSON şablonu şunları isteyecek şekilde yapılandırılır:
 
-* Çalışma alanının adı
-* Çalışma alanının oluşturulacağı bölge
-* Otomasyon hesabının adı
-* Hesabın oluşturulacağı bölge
+* Çalışma alanının adı.
+* Çalışma alanının oluşturulacağı bölge.
+* Kaynak veya çalışma alanı izinlerini etkinleştirmek için.
+* Otomasyon hesabının adı.
+* Hesabın oluşturulacağı bölge.
 
 JSON şablonu, ortamınızda standart bir yapılandırma için kullanılabilecek olabilecek diğer parametreler için varsayılan bir değer belirtir. Şablonu kuruluşunuzda paylaşılan erişim için bir Azure depolama hesabında saklayabilirsiniz. Şablonlarla çalışma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynak dağıtma](../azure-resource-manager/templates/deploy-cli.md).
 
@@ -59,7 +57,6 @@ JSON şablonu, ortamınızda standart bir yapılandırma için kullanılabilecek
 
 * SKU-Nisan 2018 fiyatlandırma modelinde yayınlanan yeni GB başına fiyatlandırma katmanına varsayılan olarak sahiptir
 * veri saklama-varsayılan olarak otuz gün
-* Kapasite ayırma-varsayılan olarak 100 GB olur
 
 >[!WARNING]
 >Yeni Nisan 2018 fiyatlandırma modelini kabul eden bir abonelikte Log Analytics çalışma alanı oluşturuyor veya yapılandırıyorsanız, geçerli Log Analytics fiyatlandırma katmanı yalnızca **PerGB2018**olur.
@@ -114,18 +111,17 @@ Yeni otomasyon hesabınıza bağlı bir Log Analytics çalışma alanı oluştur
                 "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can only have 7 days."
             }
         },
-        "immediatePurgeDataOn30Days": {
-            "type": "bool",
-            "defaultValue": "[bool('false')]",
-            "metadata": {
-                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
-            }
-        },
         "location": {
             "type": "string",
             "metadata": {
                 "description": "Specifies the location in which to create the workspace."
             }
+        },
+        "resourcePermissions": {
+              "type": "bool",
+              "metadata": {
+                "description": "true to use resource or workspace permissions. false to require workspace permissions."
+              }
         },
         "automationAccountName": {
             "type": "string",
@@ -150,13 +146,11 @@ Yeni otomasyon hesabınıza bağlı bir Log Analytics çalışma alanı oluştur
         {
         "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2017-03-15-preview",
+            "apiVersion": "2020-03-01-preview",
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-                    "Name": "[parameters('sku')]",
-                    "name": "CapacityReservation",
-                    "capacityReservationLevel": 100
+                    "name": "[parameters('sku')]",
                 },
                 "retentionInDays": "[parameters('dataRetention')]",
                 "features": {
@@ -168,7 +162,7 @@ Yeni otomasyon hesabınıza bağlı bir Log Analytics çalışma alanı oluştur
             "resources": [
                 {
                     "apiVersion": "2015-11-01-preview",
-                    "location": "[resourceGroup().location]",
+                    "location": "[parameters('location')]",
                     "name": "[variables('Updates').name]",
                     "type": "Microsoft.OperationsManagement/solutions",
                     "id": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.OperationsManagement/solutions/', variables('Updates').name)]",
@@ -189,7 +183,7 @@ Yeni otomasyon hesabınıza bağlı bir Log Analytics çalışma alanı oluştur
         },
         {
             "type": "Microsoft.Automation/automationAccounts",
-            "apiVersion": "2015-01-01-preview",
+            "apiVersion": "2018-06-30",
             "name": "[parameters('automationAccountName')]",
             "location": "[parameters('automationAccountLocation')]",
             "dependsOn": [],
@@ -201,10 +195,10 @@ Yeni otomasyon hesabınıza bağlı bir Log Analytics çalışma alanı oluştur
             },
         },
         {
-            "apiVersion": "2015-11-01-preview",
+            "apiVersion": "2020-03-01-preview",
             "type": "Microsoft.OperationalInsights/workspaces/linkedServices",
             "name": "[concat(parameters('workspaceName'), '/' , 'Automation')]",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]",
                 "[concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))]"
@@ -219,7 +213,7 @@ Yeni otomasyon hesabınıza bağlı bir Log Analytics çalışma alanı oluştur
 
 2. Gereksinimlerinizi karşılayacak şekilde şablonu düzenleyin. Parametreleri satır içi değerler olarak geçirmek yerine bir [Kaynak Yöneticisi Parameters dosyası](../azure-resource-manager/templates/parameter-files.md) oluşturmayı düşünün.
 
-3. Bu dosyayı **Deployumsolutiontemplate. JSON**olarak yerel bir klasöre kaydedin.
+3. Bu dosyayı **deployUMSolutiontemplate.js**olarak yerel bir klasöre kaydedin.
 
 4. Bu şablonu dağıtmaya hazırsınız. PowerShell veya Azure CLı kullanabilirsiniz. Bir çalışma alanı ve Otomasyon hesabı adı istendiğinde, tüm Azure abonelikleri genelinde genel olarak benzersiz bir ad sağlayın.
 
@@ -242,8 +236,7 @@ Yeni otomasyon hesabınıza bağlı bir Log Analytics çalışma alanı oluştur
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * VM 'Ler için Güncelleştirme Yönetimi kullanmak için bkz. [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md).
+
 * Artık Log Analytics çalışma alanına ihtiyacınız yoksa, [güncelleştirme yönetimi için çalışma alanının Otomasyon hesabından bağlantısını kaldır](automation-unlink-workspace-update-management.md)' daki yönergelere bakın.
+
 * VM 'Leri Güncelleştirme Yönetimi silmek için bkz. [güncelleştirme yönetimi VM 'Leri kaldırma](automation-remove-vms-from-update-management.md).
-* Genel Güncelleştirme Yönetimi hatalarıyla ilgili sorunları gidermek için bkz. [güncelleştirme yönetimi sorunlarını giderme](troubleshoot/update-management.md).
-* Windows Update Aracısı sorunlarını gidermek için bkz. [Windows Update Aracısı sorunlarını giderme](troubleshoot/update-agent-issues.md).
-* Linux Güncelleştirme Aracısı sorunlarını gidermek için bkz.[Linux Güncelleştirme Aracısı sorunlarını giderme](troubleshoot/update-agent-issues-linux.md).

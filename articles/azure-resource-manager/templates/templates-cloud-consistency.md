@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: c5095efef5d4bef44993bdd9cd52dbdef17378a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 459a34d104e01dca2cdf997c6aedd6f54f3adbaa
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156115"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677687"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>Bulut tutarlılığı için ARM şablonları geliştirme
 
@@ -51,7 +51,7 @@ Azure Resource Manager tanıtılan yeni şablon işlevleri, sogeign bulutlarınd
 
 Azure Resource Manager özellikleri her zaman genel Azure 'a sunulacaktır. Yeni sunulan şablon işlevlerinin Azure Stack de kullanılabilir olup olmadığını doğrulamak için aşağıdaki PowerShell betiğini kullanabilirsiniz:
 
-1. GitHub deposunun bir kopyasını oluşturun: [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions).
+1. GitHub deposunun bir kopyasını oluşturun: [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions) .
 
 1. Deponun yerel bir kopyasını aldıktan sonra, PowerShell ile hedefin Azure Resource Manager bağlayın.
 
@@ -106,7 +106,7 @@ Platformlar arası dağıtımlar için daha iyi bir yöntem, bağlı şablonlar�
 
 Her buluttaki blob depolaması farklı bir uç nokta tam etki alanı adı (FQDN) kullandığından, şablonu bağlantılı şablonların konumuyla birlikte iki parametre ile yapılandırın. Parametreler, dağıtım zamanında Kullanıcı girişini kabul edebilir. Şablonlar genellikle birden çok kişi tarafından yazılır ve paylaşılır, bu nedenle en iyi yöntem bu parametreler için standart bir ad kullanmaktır. Adlandırma kuralları, şablonların bölgeler, bulutlar ve yazarlar arasında daha yeniden kullanılabilir olmasını sağlamaya yardımcı olur.
 
-Aşağıdaki kodda, `_artifactsLocation` dağıtımla ilgili tüm yapıtları içeren tek bir konuma işaret etmek için kullanılır. Varsayılan bir değer sağlandığını unutmayın. Dağıtım zamanında, için `_artifactsLocation`bir giriş değeri belirtilmemişse, varsayılan değer kullanılır. `_artifactsLocationSasToken` , İçin giriş olarak kullanılır `sasToken`. Varsayılan değer, güvenli `_artifactsLocation` olmadığı senaryolar için bir boş dize olmalıdır; örneğin, genel bir GitHub deposu.
+Aşağıdaki kodda, `_artifactsLocation` dağıtımla ilgili tüm yapıtları içeren tek bir konuma işaret etmek için kullanılır. Varsayılan bir değer sağlandığını unutmayın. Dağıtım zamanında, için bir giriş değeri belirtilmemişse `_artifactsLocation` , varsayılan değer kullanılır. , `_artifactsLocationSasToken` İçin giriş olarak kullanılır `sasToken` . Varsayılan değer, güvenli olmadığı senaryolar için bir boş dize olmalıdır `_artifactsLocation` ; Örneğin, genel bir GitHub deposu.
 
 ```json
 "parameters": {
@@ -127,13 +127,13 @@ Aşağıdaki kodda, `_artifactsLocation` dağıtımla ilgili tüm yapıtları i�
 }
 ```
 
-Şablon boyunca bağlantılar, temel URI 'yi ( `_artifactsLocation` parametresinden) yapıt göreli yolu ve ile birleştirerek oluşturulur. `_artifactsLocationSasToken` Aşağıdaki kod, URI şablonu işlevi kullanılarak iç içe şablon bağlantısının nasıl ekleneceğini gösterir:
+Şablon boyunca bağlantılar, temel URI 'yi ( `_artifactsLocation` parametresinden) yapıt göreli yolu ve ile birleştirerek oluşturulur `_artifactsLocationSasToken` . Aşağıdaki kod, URI şablonu işlevi kullanılarak iç içe şablon bağlantısının nasıl ekleneceğini gösterir:
 
 ```json
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2015-01-01",
+    "apiVersion": "2019-10-01",
     "name": "shared",
     "properties": {
       "mode": "Incremental",
@@ -146,11 +146,11 @@ Aşağıdaki kodda, `_artifactsLocation` dağıtımla ilgili tüm yapıtları i�
 ]
 ```
 
-Bu yaklaşımı kullanarak, `_artifactsLocation` parametresi için varsayılan değer kullanılır. Bağlantılı şablonların farklı bir konumdan alınması gerekiyorsa, parametre girişi dağıtım zamanında varsayılan değeri geçersiz kılmak için kullanılabilir — şablonda değişiklik yapılması gerekmez.
+Bu yaklaşımı kullanarak, parametresi için varsayılan değer `_artifactsLocation` kullanılır. Bağlantılı şablonların farklı bir konumdan alınması gerekiyorsa, parametre girişi dağıtım zamanında varsayılan değeri geçersiz kılmak için kullanılabilir — şablonda değişiklik yapılması gerekmez.
 
 ### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>_ArtifactsLocation kullan bağlantı yerine
 
-İç içe geçmiş şablonlar için kullanılmanın yanı sıra, `_artifactsLocation` parametresindeki URL bir dağıtım şablonunun ilgili tüm yapıtları için temel olarak kullanılır. Bazı VM uzantıları, şablon dışında depolanan bir betiğin bağlantısını içerir. Bu uzantılar için bağlantıları hiçbir şekilde kodkullanmamalısınız. Örneğin, özel betik ve PowerShell DSC uzantıları, aşağıda gösterildiği gibi, GitHub 'daki bir dış komut dosyasına bağlantı verebilir:
+İç içe geçmiş şablonlar için kullanılmanın yanı sıra, `_artifactsLocation` PARAMETRESINDEKI URL bir dağıtım şablonunun ilgili tüm yapıtları için temel olarak kullanılır. Bazı VM uzantıları, şablon dışında depolanan bir betiğin bağlantısını içerir. Bu uzantılar için bağlantıları hiçbir şekilde kodkullanmamalısınız. Örneğin, özel betik ve PowerShell DSC uzantıları, aşağıda gösterildiği gibi, GitHub 'daki bir dış komut dosyasına bağlantı verebilir:
 
 ```json
 "properties": {
@@ -168,7 +168,7 @@ Bu yaklaşımı kullanarak, `_artifactsLocation` parametresi için varsayılan d
 
 Komut dosyasının bağlantılarını sorunsuz bir şekilde kodlamak, şablonun başka bir konuma başarıyla dağıtılmasını önler. VM kaynağının yapılandırması sırasında, VM içinde çalışan VM Aracısı, VM uzantısına bağlı tüm betiklerin indirilmesini başlatır ve ardından betikleri VM 'nin yerel diskine depolar. Bu yaklaşım, "iç içe yerleştirilmiş şablonları bölgeler arasında kullanma" bölümünde açıklanan iç içe geçmiş şablon bağlantıları gibi çalışır.
 
-Kaynak Yöneticisi, çalışma zamanında iç içe geçmiş şablonlar alır. VM uzantıları için, herhangi bir dış yapıtların alınması VM Aracısı tarafından gerçekleştirilir. Yapıt alımı farklı başlatıcısının yanı sıra, şablon tanımındaki çözüm de aynıdır. _ArtifactsLocation parametresini, tüm yapıtların depolandığı temel yolun varsayılan değeri ile (VM Uzantısı betikleri dahil) ve sasToken girişi için `_artifactsLocationSasToken` parametresiyle kullanın.
+Kaynak Yöneticisi, çalışma zamanında iç içe geçmiş şablonlar alır. VM uzantıları için, herhangi bir dış yapıtların alınması VM Aracısı tarafından gerçekleştirilir. Yapıt alımı farklı başlatıcısının yanı sıra, şablon tanımındaki çözüm de aynıdır. _ArtifactsLocation parametresini, tüm yapıtların depolandığı temel yolun varsayılan değeri ile (VM Uzantısı betikleri dahil) ve `_artifactsLocationSasToken` sasToken girişi için parametresiyle kullanın.
 
 ```json
 "parameters": {
@@ -231,7 +231,7 @@ Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, Re
 
 ### <a name="verify-the-version-of-all-resource-types"></a>Tüm kaynak türlerinin sürümünü doğrulama
 
-Bir dizi özellik tüm kaynak türleri için ortaktır, ancak her kaynak kendi kendine özgü özelliklerine de sahiptir. Yeni özellikler ve ilgili özellikler, yeni bir API sürümü aracılığıyla mevcut kaynak türlerine zaman eklenir. Şablondaki bir kaynağın kendi API sürümü özelliği vardır `apiVersion`. Bu sürüm oluşturma, bir şablondaki mevcut bir kaynak yapılandırmasının, platformda yapılan değişikliklerden etkilenmemesini sağlar.
+Bir dizi özellik tüm kaynak türleri için ortaktır, ancak her kaynak kendi kendine özgü özelliklerine de sahiptir. Yeni özellikler ve ilgili özellikler, yeni bir API sürümü aracılığıyla mevcut kaynak türlerine zaman eklenir. Şablondaki bir kaynağın kendi API sürümü özelliği vardır `apiVersion` . Bu sürüm oluşturma, bir şablondaki mevcut bir kaynak yapılandırmasının, platformda yapılan değişikliklerden etkilenmemesini sağlar.
 
 Global Azure 'daki mevcut kaynak türlerine sunulan yeni API sürümleri, tüm bölgelerde, sogeign bulutlarında veya Azure Stack hemen kullanılamayabilir. Bir bulut için kullanılabilir kaynak sağlayıcılarının, kaynak türlerinin ve API sürümlerinin bir listesini görüntülemek için Azure portal Kaynak Gezgini kullanabilirsiniz. Tüm hizmetler menüsünde Kaynak Gezgini araması yapın. Tüm kullanılabilir kaynak sağlayıcılarını, kaynak türlerini ve bu buluttaki API sürümlerini döndürmek için Kaynak Gezgini sağlayıcılar düğümünü genişletin.
 
@@ -295,13 +295,13 @@ Bu şablon işleviyle, daha önce bölge adlarını bilmeden bile şablonunuzu h
 
 ### <a name="track-versions-using-api-profiles"></a>API profillerini kullanarak sürümleri izleme
 
-Azure Stack mevcut olan tüm kaynak sağlayıcılarını ve ilgili API sürümlerini izlemek çok zor olabilir. Örneğin, yazma sırasında, Azure 'daki **Microsoft. COMPUTE/kullanılabilirliği Bilitysets** için en son API sürümü, Azure 'da `2018-04-01`ortak olan kullanılabilir API sürümü ve Azure Stack olur. `2016-03-30` Tüm Azure ve Azure Stack konumları `2016-01-01`arasında paylaşılan **Microsoft. Storage/storageaccounts** için ortak API sürümü, Azure 'daki en son API sürümü olduğu `2018-02-01`sürece.
+Azure Stack mevcut olan tüm kaynak sağlayıcılarını ve ilgili API sürümlerini izlemek çok zor olabilir. Örneğin, yazma sırasında, Azure 'daki **Microsoft. COMPUTE/kullanılabilirliği Bilitysets** için en son API sürümü, Azure 'da ortak olan `2018-04-01` kullanılabilir apı sürümü ve Azure Stack olur `2016-03-30` . Tüm Azure ve Azure Stack konumları arasında paylaşılan **Microsoft. Storage/storageAccounts** IÇIN ortak API sürümü, `2016-01-01` Azure 'DAKI en son API sürümü olduğu sürece `2018-02-01` .
 
-Bu nedenle Kaynak Yöneticisi, API profillerinin, şablonlara kavram kavramını sunmuştur. API profilleri olmadan, şablondaki her kaynak söz konusu kaynak için API sürümünü `apiVersion` açıklayan bir öğe ile yapılandırılır.
+Bu nedenle Kaynak Yöneticisi, API profillerinin, şablonlara kavram kavramını sunmuştur. API profilleri olmadan, şablondaki her kaynak `apiVersion` söz konusu kaynak IÇIN API sürümünü açıklayan bir öğe ile yapılandırılır.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -338,11 +338,11 @@ Bu nedenle Kaynak Yöneticisi, API profillerinin, şablonlara kavram kavramını
 }
 ```
 
-Bir API profili sürümü, Azure ve Azure Stack ortak kaynak türüne göre tek bir API sürümü için bir diğer ad görevi görür. Şablondaki her kaynak için bir API sürümü belirtmek yerine yalnızca API profili sürümünü adlı `apiProfile` yeni bir kök öğede belirtirsiniz ve tek tek kaynaklar için `apiVersion` öğeyi atlayabilirsiniz.
+Bir API profili sürümü, Azure ve Azure Stack ortak kaynak türüne göre tek bir API sürümü için bir diğer ad görevi görür. Şablondaki her kaynak için bir API sürümü belirtmek yerine yalnızca API profili sürümünü adlı yeni bir kök öğede belirtirsiniz `apiProfile` ve `apiVersion` tek tek kaynaklar için öğeyi atlayabilirsiniz.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "apiProfile": "2018–03-01-hybrid",
     "parameters": {
@@ -380,11 +380,11 @@ Bir API profili sürümü, Azure ve Azure Stack ortak kaynak türüne göre tek 
 
 API profili, API sürümlerinin konumlar arasında kullanılabilmesini sağlar, bu nedenle belirli bir konumda bulunan apiVersions 'leri el ile doğrulamanız gerekmez. API profiliniz tarafından başvurulan API sürümlerinin Azure Stack bir ortamda mevcut olduğundan emin olmak için, Azure Stack işleçleri, destek ilkesini temel alarak çözümü güncel tutmalıdır. Bir sistem altı aydan uzun bir süre güncel değilse, uyumsuz olarak kabul edilir ve ortam güncelleştirilmeleri gerekir.
 
-API profili bir şablonda gerekli bir öğe değil. Öğesi ekseniz bile, bu yalnızca No `apiVersion` belirtilmemiş kaynaklar için kullanılacaktır. Bu öğe, aşamalı değişikliklere izin verir ancak mevcut şablonlarda herhangi bir değişiklik yapılmasını gerektirmez.
+API profili bir şablonda gerekli bir öğe değil. Öğesi ekseniz bile, bu yalnızca No belirtilmemiş kaynaklar için kullanılacaktır `apiVersion` . Bu öğe, aşamalı değişikliklere izin verir ancak mevcut şablonlarda herhangi bir değişiklik yapılmasını gerektirmez.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "apiProfile": "2018–03-01-hybrid",
     "parameters": {
@@ -456,7 +456,7 @@ Depolama hesabı uç noktasının sabit kodlanmış değerini `reference` şablo
 
 ### <a name="refer-to-existing-resources-by-unique-id"></a>Benzersiz KIMLIĞE göre mevcut kaynaklara bakın
 
-Aynı bulutta aynı kiracı dahilinde aynı veya başka bir kaynak grubundaki aynı veya başka bir abonelik içinde de var olan bir kaynağa de başvurabilirsiniz. Kaynak özelliklerini almak için kaynağın kendisi için benzersiz tanımlayıcıyı kullanmanız gerekir. `resourceId` Şablon işlevi, aşağıdaki kodun gösterdiği gibi SQL Server gibi bir KAYNAĞıN benzersiz kimliğini alır:
+Aynı bulutta aynı kiracı dahilinde aynı veya başka bir kaynak grubundaki aynı veya başka bir abonelik içinde de var olan bir kaynağa de başvurabilirsiniz. Kaynak özelliklerini almak için kaynağın kendisi için benzersiz tanımlayıcıyı kullanmanız gerekir. `resourceId`Şablon işlevi, aşağıdaki kodun gösterdiği gibi SQL Server gibi bir kaynağın BENZERSIZ kimliğini alır:
 
 ```json
 "outputs": {
@@ -467,7 +467,7 @@ Aynı bulutta aynı kiracı dahilinde aynı veya başka bir kaynak grubundaki ay
 }
 ```
 
-Daha sonra bir veritabanının özelliklerini `resourceId` almak için `reference` şablon işlevinin içindeki işlevi kullanabilirsiniz. Return nesnesi tam bitiş noktası `fullyQualifiedDomainName` değerini tutan özelliği içerir. Bu değer çalışma zamanında alınır ve bulut ortamına özgü uç nokta ad alanını sağlar. Uç nokta ad alanını kodlamadan bağlantı dizesini tanımlamak için, aşağıda gösterildiği gibi, dönüş nesnesinin özelliğine doğrudan bağlantı dizesinde başvurabilirsiniz:
+Daha sonra `resourceId` `reference` bir veritabanının özelliklerini almak için şablon işlevinin içindeki işlevi kullanabilirsiniz. Return nesnesi `fullyQualifiedDomainName` tam bitiş noktası değerini tutan özelliği içerir. Bu değer çalışma zamanında alınır ve bulut ortamına özgü uç nokta ad alanını sağlar. Uç nokta ad alanını kodlamadan bağlantı dizesini tanımlamak için, aşağıda gösterildiği gibi, dönüş nesnesinin özelliğine doğrudan bağlantı dizesinde başvurabilirsiniz:
 
 ```json
 "[concat('Server=tcp:', reference(resourceId('sql', 'Microsoft.Sql/servers', parameters('test')), '2015-05-01-preview').fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('database'),';User ID=', parameters('username'), ';Password=', parameters('pass'), ';Encrypt=True;')]"
@@ -487,7 +487,7 @@ Bir konumdaki kullanılabilir VM görüntülerinin listesini almak için şu Azu
 az vm image list -all
 ```
 
-[Get-Azurermvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher) Azure PowerShell cmdlet 'i ile aynı listeyi alabilir ve `-Location` parametresiyle istediğiniz konumu belirtebilirsiniz. Örneğin:
+[Get-Azurermvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher) Azure PowerShell cmdlet 'i ile aynı listeyi alabilir ve parametresiyle istediğiniz konumu belirtebilirsiniz `-Location` . Örnek:
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage
@@ -532,7 +532,7 @@ Kullanılabilir hizmetlerin tam listesi için bkz. [bölgelere göre kullanılab
 
 Yönetilen diskler, bir Azure kiracısı için depolamayı işler. Bir depolama hesabı açıkça oluşturmak ve bir sanal sabit disk (VHD) için URI 'yi belirtmek yerine, bir VM dağıtırken bu işlemleri örtük olarak gerçekleştirmek için yönetilen diskleri kullanabilirsiniz. Yönetilen diskler, aynı Kullanılabilirlik kümesindeki VM 'lerden tüm diskleri farklı depolama birimlerine yerleştirerek kullanılabilirliği artırır. Ayrıca, var olan VHD 'ler, çok daha az kapalı kalma süresine sahip standart 'ten Premium depolamaya dönüştürülebilir.
 
-Yönetilen diskler Azure Stack yol haritasında olsa da, bunlar şu anda desteklenmemektedir. Olana kadar, sanal makine kaynağı için şablondaki `vhd` öğesini kullanarak VHD 'leri açıkça belirterek Azure Stack için buluta tutarlı şablonlar geliştirebilirsiniz, burada gösterildiği gibi:
+Yönetilen diskler Azure Stack yol haritasında olsa da, bunlar şu anda desteklenmemektedir. Olana kadar, `vhd` sanal makine kaynağı için şablondaki öğesini kullanarak VHD 'leri açıkça belirterek Azure Stack için buluta tutarlı şablonlar geliştirebilirsiniz, burada gösterildiği gibi:
 
 ```json
 "storageProfile": {
@@ -584,13 +584,13 @@ Bulut tutarlılığı için başka bir değerlendirme, [sanal makine uzantılar�
 
 Birçok VM uzantısı türü vardır. Bulut tutarlılığı için şablon geliştirirken, yalnızca şablonun hedeflediği tüm bölgelerde bulunan uzantıları kullandığınızdan emin olun.
 
-Belirli bir bölge için kullanılabilen VM uzantılarının listesini almak için (Bu örnekte, `myLocation`) AŞAĞıDAKI Azure CLI komutunu çalıştırın:
+Belirli bir bölge için kullanılabilen VM uzantılarının listesini almak için (Bu örnekte, `myLocation` ) aşağıdaki Azure CLI komutunu çalıştırın:
 
 ```azurecli-interactive
 az vm extension image list --location myLocation
 ```
 
-Ayrıca Azure PowerShell, [Get-Azurermvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher) cmdlet 'ini yürütebilir ve sanal makine `-Location` görüntüsünün konumunu belirtmek için öğesini kullanabilirsiniz. Örneğin:
+Ayrıca Azure PowerShell, [Get-Azurermvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher) cmdlet 'ini yürütebilir ve `-Location` sanal makine görüntüsünün konumunu belirtmek için öğesini kullanabilirsiniz. Örnek:
 
 ```azurepowershell-interactive
 Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version
@@ -623,7 +623,7 @@ Sanal makine ölçek kümelerinde da VM uzantıları 'nı kullanabilirsiniz. Ayn
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachineScaleSets/extensions"}
 ```
 
-Her belirli uzantı da sürümlüdür. Bu sürüm, VM uzantısının `typeHandlerVersion` özelliğinde gösterilir. Şablonun VM uzantılarının `typeHandlerVersion` öğesinde belirtilen sürümün, şablonu dağıtmayı planladığınız konumlarda bulunduğundan emin olun. Örneğin, aşağıdaki kod sürüm 1,7 ' i belirtir:
+Her belirli uzantı da sürümlüdür. Bu sürüm, `typeHandlerVersion` VM uzantısının özelliğinde gösterilir. `typeHandlerVersion`ŞABLONUN VM uzantılarının öğesinde belirtilen sürümün, şablonu dağıtmayı planladığınız konumlarda bulunduğundan emin olun. Örneğin, aşağıdaki kod sürüm 1,7 ' i belirtir:
 
 ```json
 {

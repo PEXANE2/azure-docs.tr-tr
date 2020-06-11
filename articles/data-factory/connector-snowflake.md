@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
-ms.openlocfilehash: fd067a0a0e99291dd4cea924a15c1157bc3b9f9f
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: 74e2c452d229373d271225dcbb28359b6af1524d
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84425505"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84670506"
 ---
 # <a name="copy-data-from-and-to-snowflake-by-using-azure-data-factory"></a>Azure Data Factory kullanarak kar/veya kar tanesi arasında veri kopyalama
 
@@ -52,7 +52,7 @@ Aşağıdaki özellikler, bir kar tanesi bağlantılı hizmeti için desteklenir
 | Dizisi | [Tam hesap adını](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (bölge ve bulut platformunu tanımlayan ek segmentler dahil), Kullanıcı adını, parolayı, veritabanını ve ambarı yapılandırın. Kar tanesi örneğine bağlanmak için JDBC bağlantı dizesini belirtin. Parolayı Azure Key Vault de yerleştirebilirsiniz. Daha ayrıntılı bilgi için tablonun altındaki örneklere ve [Azure Key Vault makalesindeki kimlik bilgileri deposuna](store-credentials-in-key-vault.md) bakın.| Yes      |
 | connectVia       | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolubir özel ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | No       |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -108,7 +108,7 @@ Aşağıdaki özellikler, kar tanesi veri kümesi için desteklenir:
 | manızı | Şemanın adı. |Kaynak için Hayır, havuz için Evet  |
 | tablo | Tablo/görünüm adı. |Kaynak için Hayır, havuz için Evet  |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -144,7 +144,7 @@ Verileri kar 'lerden kopyalamak için, etkinlik **kaynağını** kopyalama böl�
 | Özellik                     | Açıklama                                                  | Gerekli |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | tür                         | Kopyalama etkinliği kaynağının Type özelliği **SnowflakeSource**olarak ayarlanmalıdır. | Yes      |
-| sorgu          | Kar tanesi 'nden verileri okumak için SQL sorgusunu belirtir. | No       |
+| sorgu          | Kar tanesi 'nden verileri okumak için SQL sorgusunu belirtir.<br>Saklı yordamın yürütülmesi desteklenmiyor. | No       |
 | exportSettings | Kar tanesi 'nden verileri almak için kullanılan gelişmiş ayarlar. ADF 'yi çağırdığınızda, ADF 'nin geçileye COPY komutuyla desteklenen olanları yapılandırabilirsiniz. | No       |
 | ***Altında `exportSettings` :*** |  |  |
 | tür | Dışa aktarma komutunun türü, **kar Keexportcopycommand**olarak ayarlanır. | Yes |
@@ -168,7 +168,7 @@ Havuz veri deprenizin ve formatı bu bölümde açıklanan ölçütlere uyuyorsa
 3. Kopyalama etkinliği kaynağı ' nda `additionalColumns` belirtilmedi.
 4. Sütun eşleme belirtilmedi.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -220,7 +220,7 @@ Bu özelliği kullanmak için, Azure depolama hesabına ara hazırlama olarak ba
 >
 > Hazırlama Azure Blob bağlı hizmetinin, kar tanesi kopyalama komutu için gereken şekilde paylaşılan erişim imzası kimlik doğrulamasını kullanması gerekir. 
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -301,7 +301,7 @@ Kaynak veri deprenizin ve formatı bu bölümde açıklanan ölçütlere uyuyors
    - Kaynağınız bir klasörse, `recursive` true olarak ayarlanmalıdır.
    - `prefix`, `modifiedDateTimeStart` , `modifiedDateTimeEnd` belirtilmedi.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -352,7 +352,7 @@ Bu özelliği kullanmak için, Azure depolama hesabına ara hazırlama olarak ba
 >
 > Hazırlama Azure Blob bağlı hizmetinin, kar tanesi kopyalama komutu için gereken şekilde paylaşılan erişim imzası kimlik doğrulamasını kullanması gerekir.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[

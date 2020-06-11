@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 5d0543a3a43d53e462a6406312faddf37d2653c6
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 3ef0f89d7011da1f86032202f408aaae83dcf160
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795589"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675263"
 ---
 # <a name="add-health-probes-to-your-service"></a>Hizmetinize sistem durumu araştırmaları ekleyin
 Varsayılan olarak, giriş denetleyicisi, sunulan pods 'ler için bir HTTP GET araştırması sağlayacak.
-Araştırma özellikleri `deployment` / `pod` , [belirtilinizin için bir hazırlık veya bir araştırma](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) eklenerek özelleştirilebilir.
+Araştırma özellikleri, [belirtilinizin için bir hazırlık veya bir araştırma](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) eklenerek özelleştirilebilir `deployment` / `pod` .
 
-## <a name="with-readinessprobe-or-livenessprobe"></a>Veya `readinessProbe` ile`livenessProbe`
+## <a name="with-readinessprobe-or-livenessprobe"></a>`readinessProbe`Veya ile`livenessProbe`
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -47,20 +47,20 @@ spec:
 
 Kubernetes API başvurusu:
 * [Kapsayıcı araştırmaları](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes)
-* [HttpGet eylemi](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.14/#httpgetaction-v1-core)
+* [HttpGet eylemi](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#httpgetaction-v1-core)
 
 > [!NOTE]
-> * `readinessProbe`ve `livenessProbe` ile `httpGet`yapılandırıldığında desteklenir.
+> * `readinessProbe`ve `livenessProbe` ile yapılandırıldığında desteklenir `httpGet` .
 > * Pod üzerinde açığa çıkarılan bir bağlantı noktasında araştırma Şu anda desteklenmiyor.
-> * `HttpHeaders`, `InitialDelaySeconds`, `SuccessThreshold` , desteklenmez.
+> * `HttpHeaders`, `InitialDelaySeconds` ,, `SuccessThreshold` desteklenmez.
 
-##  <a name="without-readinessprobe-or-livenessprobe"></a>Veya `readinessProbe` olmadan`livenessProbe`
-Yukarıdaki yoklamalar sağlanmamışsa, giriş denetleyicisi, hizmetin `Path` ek açıklama için `backend-path-prefix` belirtilen veya hizmet `path` `ingress` tanımında belirtilen bir varsayımını yapar.
+##  <a name="without-readinessprobe-or-livenessprobe"></a>`readinessProbe`Veya olmadan`livenessProbe`
+Yukarıdaki yoklamalar sağlanmamışsa, giriş denetleyicisi, hizmetin `Path` `backend-path-prefix` ek açıklama için belirtilen veya `path` `ingress` hizmet tanımında belirtilen bir varsayımını yapar.
 
 ## <a name="default-values-for-health-probe"></a>Sistem durumu araştırması için varsayılan değerler
 Hazırlık/lizlilik araştırması tarafından çıkarsanmayan tüm özellikler için varsayılan değerler ayarlanır.
 
-| Application Gateway araştırma özelliği | Varsayılan Değer |
+| Application Gateway araştırma özelliği | Varsayılan değer |
 |-|-|
 | `Path` | / |
 | `Host` | localhost |

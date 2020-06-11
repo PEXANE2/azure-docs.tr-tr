@@ -1,18 +1,18 @@
 ---
-title: Eav4-Series ve Easv4 serisi-Azure sanal makineleri
+title: Eav4-Series ve Easv4 serisi
 description: Eav4 ve Easv4 serisi VM 'Ler için Özellikler.
-services: virtual-machines
 author: migerdes
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: ab45298dbcb8988da7d0211fcbde3087d0099038
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: 230809f4fe42ce0fc8b8c85024b42926a27e699f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437073"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678248"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 ve Easv4 serisi
 
@@ -34,15 +34,15 @@ Eav4 serisi Boyutlar, 3.35 GHz 'nin en yüksek frekansını ve Premium SSD 'yi k
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | En fazla NIC/beklenen ağ bant genişliği (MBps) |
 | -----|-----|-----|-----|-----|-----|-----|
-| Standart\_E2a\_v4|2|16|50|4|3000/46/23|2 / 1000 |
-| Standart\_E4a\_v4|4|32|100|8|6000/93/46|2 / 2000 |
-| Standart\_E8a\_v4|8|64|200|16|12000/187/93|4 / 4000 |
-| Standart\_E16a\_v4|16|128|400|32|24000/375/187|8 / 8000 |
-| Standart\_E20a\_v4|20|160|500|32|30000/468/234|8 / 10000 |
-| Standart\_E32a\_v4|32|256|800|32|48000/750/375|8 / 16000 |
-| Standart\_E48a\_v4|48|384|1200|32|96000/1000 (500)|8 / 24000 |
-| Standart\_E64a\_v4|64|512|1600|32|96000/1000 (500)|8 / 30000 |
-| Standart\_E96a\_v4|96|672|2400|32|96000/1000 (500)|8 / 30000 |
+| Standart \_ E2a \_ v4|2|16|50|4|3000/46/23|2 / 1000 |
+| Standart \_ E4a \_ v4|4|32|100|8|6000/93/46|2 / 2000 |
+| Standart \_ E8a \_ v4|8|64|200|16|12000/187/93|4 / 4000 |
+| Standart \_ E16a \_ v4|16|128|400|32|24000/375/187|8 / 8000 |
+| Standart \_ E20a \_ v4|20|160|500|32|30000/468/234|8 / 10000 |
+| Standart \_ E32a \_ v4|32|256|800|32|48000/750/375|8 / 16000 |
+| Standart \_ E48a \_ v4|48|384|1200|32|96000/1000 (500)|8 / 24000 |
+| Standart \_ E64a \_ v4|64|512|1600|32|96000/1000 (500)|8 / 30000 |
+| Standart \_ E96a \_ v4|96|672|2400|32|96000/1000 (500)|8 / 30000 |
 
 ## <a name="easv4-series"></a>Easv4 serisi
 

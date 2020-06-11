@@ -1,29 +1,29 @@
 ---
 title: Kaynak bulunamadı hataları
-description: Azure Resource Manager şablonuyla dağıtıldığında bir kaynak bulunamadığında hataların nasıl çözümleneceğini açıklar.
+description: Bir kaynak bulunamadığında hataların nasıl çözümleneceğini açıklar. Bir Azure Resource Manager şablonu dağıtıldığında veya yönetim eylemleri yapılırken hata oluşabilir.
 ms.topic: troubleshooting
-ms.date: 06/01/2020
-ms.openlocfilehash: 5d827f68ec97cfa77fb69a34284bd572286641a4
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.date: 06/10/2020
+ms.openlocfilehash: 224af4ce0fe5053201f25d8207f4ca8cdc73e638
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259363"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667956"
 ---
-# <a name="resolve-not-found-errors-for-azure-resources"></a>Azure kaynakları için bulunamadı hatalarını çözümleme
+# <a name="resolve-resource-not-found-errors"></a>Kaynak bulunamadı hatalarını çözümle
 
-Bu makalede, dağıtım sırasında bir kaynak bulunamadığında görebileceğiniz hatalar açıklanır.
+Bu makalede bir işlem sırasında bir kaynak bulunamadığında gördüğünüz hata açıklanmaktadır. Genellikle, kaynakları dağıttığınızda bu hatayı görürsünüz. Ayrıca, yönetim görevleri gerçekleştirirken ve Azure Resource Manager gerekli kaynağı bulamadığınızda bu hatayı da görürsünüz. Örneğin, mevcut olmayan bir kaynağa Etiketler eklemeye çalışırsanız, bu hatayı alırsınız.
 
 ## <a name="symptom"></a>Belirti
 
-Şablonunuz çözülemeyen bir kaynağın adını içerdiğinde şuna benzer bir hata alırsınız:
+Kaynağın bulunamadığını belirten iki hata kodu vardır. **NotFound** hatası şuna benzer bir sonuç döndürüyor:
 
 ```
 Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-[Başvuru](template-functions-resource.md#reference) veya [ListKeys](template-functions-resource.md#listkeys) işlevlerini çözülemeyen bir kaynakla birlikte kullanırsanız, şu hatayı alırsınız:
+**Resourcenotfound** hatası şuna benzer bir sonuç döndürüyor:
 
 ```
 Code=ResourceNotFound;
@@ -33,11 +33,23 @@ group {resource group name} was not found.
 
 ## <a name="cause"></a>Nedeni
 
-Kaynak Yöneticisi bir kaynağın özelliklerini alması gerekiyor, ancak aboneliğinizde kaynağı tanımlayamıyor.
+Kaynak Yöneticisi bir kaynağın özelliklerini alması gerekir, ancak aboneliklerinizde kaynağı bulamaz.
 
-## <a name="solution-1---set-dependencies"></a>Çözüm 1-bağımlılıkları ayarlama
+## <a name="solution-1---check-resource-properties"></a>Çözüm 1-kaynak özelliklerini denetleme
 
-Şablonda eksik kaynağı dağıtmaya çalışıyorsanız, bir bağımlılık eklemeniz gerekip gerekmediğini kontrol edin. Kaynak Yöneticisi, mümkün olduğunda, paralel olarak kaynakları oluşturarak dağıtımı iyileştirir. Bir kaynak başka bir kaynaktan sonra dağıtılması gerekiyorsa, şablonunuzda **Bağımlıdson** öğesini kullanmanız gerekir. Örneğin, bir Web uygulaması dağıtıldığında App Service planının mevcut olması gerekir. Web uygulamasının App Service planına bağlı olduğunu belirtmediyse Kaynak Yöneticisi her iki kaynak de aynı anda oluşturulur. Yalnızca Web uygulamasında bir özellik ayarlamaya çalışırken mevcut olmadığından App Service planı kaynağının bulunamadığını belirten bir hata alırsınız. Web uygulamasındaki bağımlılığı ayarlayarak bu hatayı önleyebilirsiniz.
+Bir yönetim görevi gerçekleştirirken bu hatayı aldığınızda, kaynak için sağladığınız değerleri kontrol edin. Denetlenecek üç değer şunlardır:
+
+* Kaynak adı
+* Kaynak grubu adı
+* Abonelik
+
+PowerShell veya Azure CLı kullanıyorsanız, komutunu kaynağı içeren abonelikte çalıştırıp çalıştırmadığını kontrol edin. Aboneliği [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) veya [az Account set](/cli/azure/account#az-account-set)ile değiştirebilirsiniz. Birçok komut, geçerli bağlamdan farklı bir abonelik belirtmenize imkan tanıyan bir abonelik parametresi de sağlar.
+
+Özellikleri doğrularken sorun yaşıyorsanız [portalda](https://portal.azure.com)oturum açın. Kullanmaya çalıştığınız kaynağı bulun ve kaynak adı, kaynak grubu ve aboneliği inceleyin.
+
+## <a name="solution-2---set-dependencies"></a>Çözüm 2-bağımlılıkları ayarlama
+
+Bir şablonu dağıttığınızda bu hatayı alırsanız, bir bağımlılık eklemeniz gerekebilir. Kaynak Yöneticisi, mümkün olduğunda, paralel olarak kaynakları oluşturarak dağıtımı iyileştirir. Bir kaynak başka bir kaynaktan sonra dağıtılması gerekiyorsa, şablonunuzda **Bağımlıdson** öğesini kullanmanız gerekir. Örneğin, bir Web uygulaması dağıtıldığında App Service planının mevcut olması gerekir. Web uygulamasının App Service planına bağlı olduğunu belirtmediyse Kaynak Yöneticisi her iki kaynak de aynı anda oluşturulur. Yalnızca Web uygulamasında bir özellik ayarlamaya çalışırken mevcut olmadığından App Service planı kaynağının bulunamadığını belirten bir hata alırsınız. Web uygulamasındaki bağımlılığı ayarlayarak bu hatayı önleyebilirsiniz.
 
 ```json
 {
@@ -70,23 +82,19 @@ Bağımlılık sorunlarını gördüğünüzde, kaynak dağıtımının sırası
 
    ![sıralı dağıtım](./media/error-not-found/deployment-events-sequence.png)
 
-## <a name="solution-2---get-resource-from-different-resource-group"></a>Çözüm 2-farklı kaynak grubundan kaynak al
+## <a name="solution-3---get-external-resource"></a>Çözüm 3-dış kaynak al
 
-Kaynak, dağıtılmasından farklı bir kaynak grubunda mevcut olduğunda, kaynağın tam adını almak için [RESOURCEID işlevini](template-functions-resource.md#resourceid) kullanın.
+Bir şablonu dağıtmakta ve farklı bir abonelikte veya kaynak grubunda bulunan bir kaynağı almanız gerektiğinde [RESOURCEID işlevini](template-functions-resource.md#resourceid)kullanın. Bu işlev, kaynağın tam adını almak için döndürür.
+
+RESOURCEID işlevindeki abonelik ve kaynak grubu parametreleri isteğe bağlıdır. Bunları sağlamazsanız, bunlar varsayılan olarak geçerli abonelik ve kaynak grubuna göre yapılır. Farklı bir kaynak grubunda veya abonelikte bulunan bir kaynakla çalışırken, bu değerleri sağladığınızdan emin olun.
+
+Aşağıdaki örnek, farklı bir kaynak grubunda bulunan bir kaynağın kaynak KIMLIĞINI alır.
 
 ```json
 "properties": {
   "name": "[parameters('siteName')]",
   "serverFarmId": "[resourceId('plangroup', 'Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
 }
-```
-
-## <a name="solution-3---check-reference-function"></a>Çözüm 3-başvuru işlevini denetle
-
-[Başvuru](template-functions-resource.md#reference) işlevini içeren bir ifade arayın. Sağladığınız değerler, kaynağın aynı şablonda, kaynak grubunda ve abonelikte olup olmadığına göre farklılık gösterir. Senaryonuz için gerekli parametre değerlerini sağlayıp sağlamadığınızı iki kez denetleyin. Kaynak farklı bir kaynak grubsunda, tam kaynak KIMLIĞI sağlayın. Örneğin, başka bir kaynak grubundaki bir depolama hesabına başvurmak için şunu kullanın:
-
-```json
-"[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
 ```
 
 ## <a name="solution-4---get-managed-identity-from-resource"></a>Çözüm 4-kaynaktan yönetilen kimliği al
@@ -116,4 +124,12 @@ Ya da bir sanal makine ölçek kümesine uygulanan bir yönetilen kimliğin kira
 
 ```json
 "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), 2019-12-01, 'Full').Identity.tenantId]"
+```
+
+## <a name="solution-5---check-functions"></a>Çözüm 5-işlevleri denetle
+
+Bir şablonu dağıttığınızda, [başvuru](template-functions-resource.md#reference) veya [ListKeys](template-functions-resource.md#listkeys) işlevlerini kullanan ifadeler ' i arayın. Sağladığınız değerler, kaynağın aynı şablonda, kaynak grubunda ve abonelikte olup olmadığına göre farklılık gösterir. Senaryonuz için gerekli parametre değerlerini sağladığınızdan emin olun. Kaynak farklı bir kaynak grubsunda, tam kaynak KIMLIĞI sağlayın. Örneğin, başka bir kaynak grubundaki bir depolama hesabına başvurmak için şunu kullanın:
+
+```json
+"[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
 ```

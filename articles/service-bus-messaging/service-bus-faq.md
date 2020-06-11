@@ -7,14 +7,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 06/10/2020
 ms.author: aschhab
-ms.openlocfilehash: 3cd4e69481fb452391e6dc027cb41fd6dae71b7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38187bef1d9c73b20c3b1930f97e7dae2468c889
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76760258"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673454"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus-sık sorulan sorular (SSS)
 
@@ -65,7 +65,7 @@ Bağlantılarınız için beyaz listeye doğru IP adreslerini bulmak için şu a
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. ' De `Non-authoritative answer`döndürülen IP adresini aklınızda edin. Bu IP adresi statiktir. Ad alanını farklı bir kümeye geri yükledikten sonra değişikliğin değiştirileceği tek zaman nokta.
+2. ' De döndürülen IP adresini aklınızda edin `Non-authoritative answer` . Bu IP adresi statiktir. Ad alanını farklı bir kümeye geri yükledikten sonra değişikliğin değiştirileceği tek zaman nokta.
 
 Ad alanınız için bölge yedekliliği kullanırsanız, birkaç ek adım yapmanız gerekir: 
 
@@ -123,25 +123,18 @@ Bunların yeni ücretler olmadığına dikkat edin, yani önceki faturalandırma
 
 Service Bus limitlerin ve kotaların listesi için bkz. [Service Bus kotalara genel bakış][Quotas overview].
 
-### <a name="does-service-bus-have-any-usage-quotas"></a>Service Bus kullanım kotası var mı?
-Varsayılan olarak, herhangi bir bulut hizmeti için Microsoft, tüm müşteri abonelikleri genelinde hesaplanan bir toplu aylık kullanım kotası ayarlar. Bu limitlerden daha fazlasına ihtiyacınız varsa, gereksinimlerinizi anlamak ve bu limitleri uygun şekilde ayarlamak için istediğiniz zaman müşteri hizmetlerine başvurabilirsiniz. Service Bus için, toplam kullanım kotası ayda 5.000.000.000 ileti olur.
-
-Microsoft, belirli bir ayda kullanım kotalarını aşan bir müşteri hesabını devre dışı bırakma hakkını saklı tutarken, e-posta bildirimleri gönderilir ve herhangi bir eylemde bulunulmadan önce bir müşteriyle iletişim kurmak için birden çok girişim yapılır. Bu kotaları aşan müşteriler, kotaları aşan ücretlerden de sorumludur.
-
-Azure 'daki diğer hizmetlerde olduğu gibi, kaynakların kullanıma açık olmasını sağlamak için belirli bir kotalar kümesini zorlar Service Bus. [Service Bus kotaları genel][Quotas overview]görünümünde bu kotalarla ilgili daha fazla ayrıntı bulabilirsiniz.
-
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>> 1 MB boyutundaki iletiler nasıl ele alınacağını?
 Service Bus mesajlaşma hizmetleri (kuyruklar ve konular/abonelikler), uygulamanın 256 KB 'ye (Standart katmana) veya 1 MB 'a (Premium katman) kadar mesaj göndermesini sağlar. 1 MB 'tan büyük boyuttaki iletilerle uğraşıyorsanız, [Bu blog gönderisine](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)göre açıklanan talep denetimi modelini kullanın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Neden bir ad alanını başka bir abonelikten sildikten sonra oluşturamadım? 
-Bir aboneliğden bir ad alanını sildiğinizde, başka bir abonelikte aynı adla yeniden oluşturmadan önce 4 saat bekleyin. Aksi takdirde, aşağıdaki hata iletisini alabilirsiniz: `Namespace already exists`. 
+Bir aboneliğden bir ad alanını sildiğinizde, başka bir abonelikte aynı adla yeniden oluşturmadan önce 4 saat bekleyin. Aksi takdirde, aşağıdaki hata iletisini alabilirsiniz: `Namespace already exists` . 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Azure Service Bus API 'Leri ve önerilen eylemleri tarafından oluşturulan özel durumlar nelerdir?
 Olası Service Bus özel durumların listesi için bkz. [özel durumlara genel bakış][Exceptions overview].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Paylaşılan erişim Imzası nedir ve hangi dillerin imza oluşturulmasını destekler?
-Paylaşılan erişim Imzaları, SHA-256 güvenli karmaları veya URI 'Leri temel alan bir kimlik doğrulama mekanizmasıdır. Node. js, PHP, Java, Python ve C# ' de kendi imzalarınızı oluşturma hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları][Shared Access Signatures] makalesi.
+Paylaşılan erişim Imzaları, SHA-256 güvenli karmaları veya URI 'Leri temel alan bir kimlik doğrulama mekanizmasıdır. Node.js, PHP, Java, Python ve C# ' de kendi imzalarınızı oluşturma hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları][Shared Access Signatures] makalesi.
 
 ## <a name="subscription-and-namespace-management"></a>Abonelik ve ad alanı yönetimi
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Bir ad alanını başka bir Azure aboneliğine geçirmek Nasıl yaparım? mı?

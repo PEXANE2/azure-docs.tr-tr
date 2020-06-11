@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: e61ce629e723f56524ee22d8b127243f9568a835
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 7b90748ae29a98038d96e5e3a827413637a98d47
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196500"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668245"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -338,11 +338,31 @@ Hayır,. pfx dosya parolanda yalnızca alfasayısal karakterler kullanın.
 Kubernetes `deployment` , ve kaynak oluşturulmasına izin verir `service` . Aynı hizmeti dışarıdan göstermek için, [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) Yük Dengeleme, TLS sonlandırma ve ad tabanlı sanal barındırma sağlayan bir kaynak tanımlanmıştır.
 Bu kaynağı karşılamak için `Ingress` , kaynaklarda yapılan tüm değişiklikleri dinleyen `Ingress` ve yük dengeleyici ilkelerini yapılandıran bir giriş denetleyicisi gerekir.
 
-Application Gateway giriş denetleyicisi, [azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) 'nin bir aks kümesi olarak da bilinen bir [Azure Kubernetes hizmeti](https://azure.microsoft.com/services/kubernetes-service/) için giriş olarak kullanılmasına izin verir.
+Application Gateway giriş denetleyicisi (AGIC), [azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) 'nin bir aks kümesi olarak da bilinen bir [Azure Kubernetes hizmeti](https://azure.microsoft.com/services/kubernetes-service/) için giriş olarak kullanılmasına olanak tanır.
 
 ### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>Tek bir giriş denetleyicisi örneği birden çok uygulama ağ geçidini yönetebilir mi?
 
 Şu anda bir giriş denetleyicisi örneği yalnızca bir Application Gateway ilişkilendirilebilir.
+
+### <a name="why-is-my-aks-cluster-with-kubenet-not-working-with-agic"></a>Kubernetes kullanan ile AKS kümelerim, AGIC ile çalışmıyor mu?
+
+AGIC, yol tablosu kaynağını Application Gateway alt ağıyla otomatik olarak ilişkilendirmeyi dener, ancak bu durum, AGIC 'ten izin olmaması nedeniyle başarısız olabilir. AGIC, yol tablosunu Application Gateway alt ağıyla ilişkilendiremez, AGIC günlüklerinde bir hata olacaktır. Bu durumda, AKS kümesi tarafından oluşturulan yol tablosunu Application Gateway alt ağına el ile ilişkilendirmeniz gerekir. Daha fazla bilgi için [buradaki](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)yönergelere bakın.
+
+### <a name="can-i-connect-my-aks-cluster-and-application-gateway-in-separate-virtual-networks"></a>AKS kümemi ve Application Gateway ayrı sanal ağlarda bağlanabilir miyim? 
+
+Evet, sanal ağlar eşlendikleri ve çakışan adres alanları olmadığı sürece. Kubenet ile AKS çalıştırıyorsanız, AKS tarafından oluşturulan yol tablosunu Application Gateway alt ağıyla ilişkilendirdiğinizden emin olun. 
+
+### <a name="what-features-are-not-supported-on-the-agic-add-on"></a>AGIC eklentisi üzerinde hangi özellikler desteklenmez? 
+
+Lütfen bu arada bir AKS eklentisi olarak dağıtılan Held aracılığıyla dağıtılan AGIC arasındaki farklara bakın [here](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)
+
+### <a name="when-should-i-use-the-add-on-versus-the-helm-deployment"></a>Bu eklentiyi, Helm dağıtımına karşı ne zaman kullanmalıyım? 
+
+Bu [, özellikle](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)de bir aks eklentisi olarak dağıtılmış olan Held aracılığıyla dağıtılan AGC 'ler arasındaki farklılıklara bakın. Bu, özellikle de BIR aks eklentisi yerine helg aracılığıyla dağıtılan her senaryoyu belgeleme. Genel olarak, Held aracılığıyla dağıtmak, resmi bir sürümden önce beta özelliklerini ve sürüm adaylarını test edebilmeniz için izin verir. 
+
+### <a name="can-i-control-which-version-of-agic-will-be-deployed-with-the-add-on"></a>Eklentiye hangi AGIC sürümünün dağıtılacağını denetleyebilir miyim?
+
+Hayır, AGIC eklentisi, Microsoft 'un eklentiyi otomatik olarak en son kararlı sürüme güncelleştirmiş olabileceği bir yönetilen hizmettir. 
 
 ## <a name="diagnostics-and-logging"></a>Tanılama ve günlüğe kaydetme
 

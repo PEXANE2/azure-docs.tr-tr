@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 423597da44a74afb60e69c4e32cbd6353f81e726
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 7fce1fc529f3af71cac17d8011fe065c6381a419
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344042"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677177"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft &reg; kesintisiz akış Istemci taşıma kiti lisanslama 
 ## <a name="overview"></a>Genel Bakış
@@ -113,57 +113,46 @@ Ara ve nihai SSPK lisanslamamaları, konusunda teknik sorular gönderebilir [smo
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft Kesintisiz Akış Client son ürün sözleşmesi lisans sahipleri
 * Gelişmiş dijital yayın SA
 * AirTies Kablosuz Iletism SanayiVe Dis Ticaret A.S.
-* Albümde Technologies Ltd.
-* Amazon Digital Services, Inc.
-* AmTRAN Technology Co., Ltd.
 * Arcadyan teknoloji şirketi
-* Ariyon Technology, Inc.
-* ATMACA ELEKTRONIK SAN. VE TIC. A. Ş
-* İngiliz gök yayını sınırlı
-* Kalepal Technology Inc., Shenzhen
+* Arcelik A. S
 * Compal elektroniği, Inc.
-* Dongguan Digital AV Technology Corp., Ltd.
-* Yankı Star satın alma şirketi
-* Enseo, Inc.
-* FilmFlex filmleri sınırlı
+* HıZLı ŞANSLAR TEKNOLOJISI SıNıRLı
 * Floendo G.A.
 * FUNAı ELEKTRIK CO., LTD
-* Aşson buluşları sınırlı
-* Haier Information Applicantion S. R. L
-* HANDAN geniş Infocom Co., Ltd.
 * HiSense International Co., Ltd. 
-* Homecast Co., Ltd
-* Hon Hai Precision sektör Co., Ltd.
-* Infomir GMBH
+* HKC Corporation sınırlı
+* Hong Kong konka Ltd
+* Innolux Corporation
+* Innopia Technologies, Inc
 * Kaonmedia Co., Ltd.
 * KDDı Corporation
+* Mega Fame Elektronik Co. Limited
+* IRC elektroniği sınırlı
 * Ni do Co., Ltd.
-* Turuncu SA
-* Saffron dijital sınırlı
-* Sagemcom geniş bant SAS
+* ONEPLUS ELEKTRONIĞI (SHENZHEN) CO., LTD.
+* Panasonic Corporation
+* Qingdao Haier Optronics Co., Ltd.
+* Shenzhen ATEKO fotoğraf Elektrik Co., Ltd.
 * Shenzhen Chuangwei-RGB Electronics Co., Ltd.
-* Shenzhen Conakliye Electronics CO., LTD
 * Shenzhen Jiuzhou Elektrik Co., Ltd
 * Shenzhen KTC Technology Co., Ltd. 
+* Shenzhen Maxhazırlayan Technology Co., Ltd
+* Shenzhen MTC Co., Ltd
 * Kıenzhen ufuk, dijital teknoloji Co., Ltd
 * Sichuan Changhong Elektrik Co., Ltd.
 * Skardın Endüstriyel Corp.
 * Sky Deutschland Fernsehen GmbH & Co. KG
-* SmarDTV G.A.
+* SMARDTV KÜRESEL SAS
 * SoftAtHome
 * Sony Corporation
 * Teknisyen teslim teknolojileri, SAS
-* Tongfang genel Ltd.
 * En popüler zafer yatırımları, Ltd.
-* Toshiba yaşam stil ürünleri & Services Corporation
-* Evrensel medya şirketi/Slovakia/s.r.o.
-* VIZIO, Inc.
-* Wistron Corporation
+* UMC Polonya Sp. z. o.o.
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

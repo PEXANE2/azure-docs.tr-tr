@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b6294abe986115d86826fee8aad09f468b3d651
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 2344b339575c7338049bfa74c2fc72911e39a362
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628002"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672179"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için yeni Uygulama kayıtları deneyimi
 
@@ -58,7 +58,7 @@ Yeni deneyimde, aşağıdaki seçeneklerden bir destek hesabı türü seçersini
 
 Farklı hesap türlerini anlamak için, oluşturma deneyiminde seçmeme **Yardım** et ' i seçin. 
 
-Eski deneyimde uygulamalar her zaman müşteriye yönelik uygulamalar olarak oluşturulmuştur. Bu uygulamalar için, hesap türü **herhangi bir kuruluş dizininde veya herhangi bir kimlik sağlayıcısında hesaplar olarak ayarlanır. Azure AD B2C kullanıcıları kimlik doğrulaması için.**. 
+Eski deneyimde uygulamalar her zaman müşteriye yönelik uygulamalar olarak oluşturulmuştur. Bu uygulamalar için, hesap türü **herhangi bir kuruluş dizininde veya herhangi bir kimlik sağlayıcısında hesaplar olarak ayarlanır. Azure AD B2C kullanıcıları kimlik doğrulaması için**.
 > [!NOTE]
 > Bu uygulama için kullanıcıların kimliğini doğrulamak üzere Kullanıcı akışlarını Azure AD B2C çalıştırabilmek için bu seçenek gereklidir. [Kullanıcı akışlarla kullanım için bir uygulamayı kaydetmeyi öğrenin.](tutorial-register-applications.md)
 
@@ -72,29 +72,29 @@ Bu izinlerin birçoğu Azure B2C tüketicisi kullanıcıları için uygulanmadı
 ## <a name="admin-consent-and-offline_accessopenid-scopes"></a>Yönetici onayı ve offline_access + OpenID kapsamları  
 <!-- Azure AD B2C doesn't support user consent. That is, when a user signs into an application, the user doesn't see a screen requesting consent for the application permissions. All permissions have to be granted through admin consent.  -->
 
-Azure AD B2C bir uygulamada kullanıcıları imzalayabilmesi için **OpenID** kapsamı gereklidir. **Offline_access** kapsamı, bir kullanıcı için yenileme belirteçleri vermek üzere gereklidir. Bu kapsamlar daha önce eklendi ve varsayılan olarak yönetici onayı verildi. Şimdi, oluşturma işlemi sırasında bu kapsamlar için izinleri kolayca ekleyerek, **OpenID 'ye yönetici Izni verme ve offline_access izinleri** seçeneğinin seçili olduğundan emin olabilirsiniz. Aksi takdirde, mevcut bir uygulama için **API izinleri** ayarlarında yönetici onayı ile Microsoft Graph izinleri eklenebilir.
+Azure AD B2C bir uygulamada kullanıcıları imzalayabilmesi için **OpenID** kapsamı gereklidir. **Offline_access** kapsamı, bir kullanıcı için yenileme belirteçleri vermek üzere gereklidir. Bu kapsamlar daha önce eklendi ve varsayılan olarak yönetici onayı verildi. Şimdi, oluşturma işlemi sırasında bu kapsamlar için izinleri kolayca ekleyerek, **OpenID 'ye yönetici Izni ver ve offline_access izinleri** seçeneğinin seçili olduğundan emin olabilirsiniz. Aksi takdirde, mevcut bir uygulama için **API izinleri** ayarlarında yönetici onayı ile Microsoft Graph izinleri eklenebilir.
 
 [İzinler ve izin](../active-directory/develop/v2-permissions-and-consent.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformlar/kimlik doğrulaması: yanıt URL 'Leri/yeniden yönlendirme URI 'leri
 Eski deneyimde, çeşitli platform türleri Web uygulamaları/API 'ler için yanıt URL 'leri ve yerel istemciler için yeniden yönlendirme URI **'si olarak yönetilir** . "Yerel istemciler" Ayrıca "ortak istemci" olarak da bilinir ve iOS, macOS, Android ve diğer mobil ve Masaüstü uygulama türlerine yönelik uygulamalar içerir. 
 
-Yeni deneyimde, yanıt URL 'Leri ve yeniden yönlendirme URI 'lerinin her ikisi de yeniden yönlendirme URI 'Leri olarak adlandırılır ve bir uygulamanın **kimlik doğrulama** bölümünde bulunabilir. Uygulama kayıtları, bir Web uygulaması/API 'SI ya da yerel bir uygulama ile sınırlı değildir. İlgili yeniden yönlendirme URI 'Lerini kaydederek bu platform türleri için aynı uygulama kaydını kullanabilirsiniz. 
+Yeni deneyimde, yanıt URL 'Leri ve yeniden yönlendirme URI 'lerinin her ikisi de yeniden yönlendirme URI 'Leri olarak adlandırılır ve bir uygulamanın **kimlik doğrulama** bölümünde bulunabilir. Uygulama kayıtları, bir Web uygulaması veya yerel bir uygulama ile sınırlı değildir. İlgili yeniden yönlendirme URI 'Lerini kaydederek bu platform türleri için aynı uygulama kaydını kullanabilirsiniz. 
 
 Yeniden yönlendirme URI 'Lerinin, Web veya public (mobil ve Masaüstü) bir uygulama türüyle ilişkilendirilmesi gerekir. [Yeniden yönlendirme URI 'Leri hakkında daha fazla bilgi](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
 
-Bir uygulamanın ortak istemci olarak değerlendirilip değerlendirilmeyeceği, mümkünse yeniden yönlendirme URI platformu türünden çalışma zamanında algılanır. **Uygulamayı ortak istemci olarak değerlendir** AYARı, ropc akışları gibi bir yeniden yönlendirme URI 'si kullanmayan akışlar için *Evet* olarak ayarlanmalıdır.
+<!-- Whether an application should be treated as a public client is inferred at run-time from the Redirect URI platform type, if possible. The **Treat application as a public client** setting should be set to **Yes** for flows that might not use a redirect URI, such as ROPC flows. -->
 
 **İOS/macOS** ve **Android** platformları, bir genel istemci türüdür. İOS/macOS veya Android uygulamalarını MSAL ile kullanılmak üzere karşılık gelen yeniden yönlendirme URI 'leriyle yapılandırmanın kolay bir yolunu sağlar. [Uygulama yapılandırma seçenekleri](../active-directory/develop/msal-client-applications.md)hakkında daha fazla bilgi edinin.
 
 
 ## <a name="application-certificates--secrets"></a>Uygulama sertifikaları & gizlilikler
 
-Yeni deneyimde **anahtarlar**yerine, sertifikaları ve gizli dizileri yönetmek için **Sertifikalar & gizlilikler** dikey penceresini kullanırsınız. Kimlik bilgileri, uygulamaların bir Web adreslenebilir konumda (HTTPS şeması kullanarak) belirteçleri alırken kendilerini kimlik doğrulama hizmetine tanımlamasına olanak tanır. Azure AD 'de kimlik doğrulanırken istemci kimlik bilgisi senaryoları için istemci parolası yerine bir sertifika kullanmanızı öneririz. Sertifikalar Azure AD B2C karşı kimlik doğrulaması yapmak için kullanılamaz.
+Yeni deneyimde **anahtarlar**yerine, sertifikaları ve gizli dizileri yönetmek için **Sertifikalar & gizlilikler** dikey penceresini kullanırsınız. Sertifikalar & gizlilikler, uygulamaların bir Web adreslenebilir konumda (HTTPS şeması kullanarak) belirteçleri alırken kendilerini kimlik doğrulama hizmetine tanımlamasına olanak tanır. Azure AD 'de kimlik doğrulanırken istemci kimlik bilgisi senaryoları için istemci parolası yerine bir sertifika kullanmanızı öneririz. Sertifikalar Azure AD B2C karşı kimlik doğrulaması yapmak için kullanılamaz.
 
 
-## <a name="features-not-available-in-azure-ad-b2c-tenants"></a>Azure AD B2C kiracılarda kullanılamayan özellikler
-Aşağıdaki Azure AD uygulama kayıt özellikleri Azure AD B2C kiracılar için geçerli değildir:
+## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Azure AD B2C kiracılarda geçerli değil Özellikler
+Aşağıdaki Azure AD uygulama kayıt özellikleri Azure AD B2C kiracılarda geçerli değildir veya kullanılabilir değildir:
 - **Roller ve yöneticiler** -bu, Azure AD B2C için geçerli olmayan Azure AD Premium P1 veya P2 lisansı gerektirir.
 - **Marka** -UI/UX özelleştirmesi, **Şirket markası** deneyiminde veya bir Kullanıcı akışının parçası olarak yapılandırılmıştır. [Azure Active Directory B2C içinde Kullanıcı arabirimini özelleştirmeyi](customize-ui-overview.md)öğrenin.
 - **Yayımcı etki alanı doğrulaması** -uygulamanız, doğrulanmış bir etki alanı olmayan *. onmicrosoft.com*tarihinde kaydedilir. Ayrıca, yayımcı etki alanı birincil olarak Kullanıcı izni vermek için kullanılır ve bu, Kullanıcı kimlik doğrulaması için Azure AD B2C uygulamalar için geçerlidir. [Yayımcı etki alanı hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain).
@@ -112,9 +112,9 @@ Yeni deneyim aşağıdaki sınırlamalara sahiptir:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Yeni uygulama kayıt deneyimini kullanmaya başlamak için:
-* [Bir Web uygulamasını nasıl kaydedeceğinizi](tutorial-register-applications.md) öğrenin
-* [Bir Web API 'sini kaydetmeyi](add-web-api-application.md) öğrenin
-* [Yerel istemci uygulamasını nasıl kaydedeceğinizi](add-native-application.md) öğrenin
+* [Bir Web uygulamasını nasıl kaydedeceğinizi](tutorial-register-applications.md)öğrenin.
+* [Bir Web API 'sini kaydetmeyi](add-web-api-application.md)öğrenin.
+* [Yerel istemci uygulamasını nasıl kaydedeceğinizi](add-native-application.md)öğrenin.
 * [Azure AD B2C kaynaklarını yönetmek için Microsoft Graph uygulamasını nasıl kaydedeceğinizi](microsoft-graph-get-started.md)öğrenin.
 * [SAML hizmet sağlayıcısı olarak Azure AD B2C kullanmayı öğrenin.](identity-provider-adfs2016-custom.md)
-* [Uygulama türleri](application-types.md) hakkında bilgi edinin
+* [Uygulama türleri](application-types.md)hakkında bilgi edinin.

@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: danis
-ms.openlocfilehash: 316f5dcb3a5fe0cbf8fb6a2f65c0ab11fc45c146
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: abd357808cd0213e92eaba478fb861110bcf9f39
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607287"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84666732"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Azure’da Ubuntu sanal makinesi hazırlama
 
@@ -21,7 +21,7 @@ Ubuntu artık, adresinden indirmek üzere resmi Azure VHD 'leri yayımlar [https
 * Ubuntu 16.04/Xenial: [Ubuntu-16,04-Server-cloudimg-AMD64-Disk1. vmdk](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk)
 * Ubuntu 18.04/Bionic: [Bionic-Server-cloudimg-AMD64. vmdk](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makalede bir Ubuntu Linux işletim sistemini zaten bir sanal sabit diske yüklediğinizi varsaymış olursunuz. . Vhd dosyaları, örneğin Hyper-V gibi bir sanallaştırma çözümü oluşturmak için birden çok araç vardır. Yönergeler için bkz. [Hyper-V rolünü yükleyip sanal makineyi yapılandırma](https://technet.microsoft.com/library/hh846766.aspx).
 
 **Ubuntu yükleme notları**
@@ -50,8 +50,8 @@ Bu makalede bir Ubuntu Linux işletim sistemini zaten bir sanal sabit diske yük
 
     Ubuntu 16,04 ve Ubuntu 18,04:
    
-        # sudo sed -i 's/archive\.ubuntu.com/azure\.archive\.ubuntu\.com/g' /etc/apt/sources.list
-        # sed -i 's/[a-z][a-z]\.archive\.ubuntu.com/azure\.archive\.ubuntu\.com/g' /etc/apt/sources.list
+        # sudo sed -i 's/http:\/\/archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
+        # sudo sed -i 's/http:\/\/[a-z][a-z]\.archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
         # sudo apt-get update
 
 
@@ -67,7 +67,9 @@ Bu makalede bir Ubuntu Linux işletim sistemini zaten bir sanal sabit diske yük
 
 5. Grub için çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu `/etc/default/grub` bir metin düzenleyicisinde açmak için, adlı değişkeni bulun `GRUB_CMDLINE_LINUX_DEFAULT` (veya gerekirse ekleyin) ve aşağıdaki parametreleri içerecek şekilde düzenleyin:
    
-        GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300"
+    ```
+    GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300 quiet splash"
+    ```
 
     Bu dosyayı kaydedip kapatın ve sonra çalıştırın `sudo update-grub` . Bu, tüm konsol iletilerinin ilk seri bağlantı noktasına gönderilmesini sağlar ve bu da hata ayıklama sorunlarıyla birlikte Azure teknik desteğine yardımcı olabilir.
 
@@ -76,46 +78,49 @@ Bu makalede bir Ubuntu Linux işletim sistemini zaten bir sanal sabit diske yük
 7. Cloud-init (sağlama Aracısı) ve Azure Linux Aracısı 'nı (konuk uzantıları işleyicisi) yükler. Cloud-init, sağlama sırasında ve sonraki her önyükleme sırasında sistem ağ yapılandırmasını yapılandırmak için Netplan kullanır.
 
         # sudo apt update
-        # sudo apt install -y cloud-init netplan.io walinuxagent && systemctl stop walinuxagent
+        # sudo apt install cloud-init netplan.io walinuxagent && systemctl stop walinuxagent
 
    > [!Note]
    >  `walinuxagent`Paket, `NetworkManager` yüklüyse ve paketlerini kaldırabilir `NetworkManager-gnome` .
 
-8. Azure 'da Cloud-init sağlama ile çakışabilecek Cloud-init varsayılan yapılandırmalarını ve kalan yapılarını kaldırın:
+8. Azure 'da Cloud-init sağlama ile çakışabilecek Cloud-init varsayılan yapılandırmalarını ve kalan Netplan yapıtları kaldırın:
 
         # rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg
         # rm -f /etc/cloud/ds-identify.cfg
+        # rm -f /etc/netplan/*.yaml
 
 9. Cloud-init ' i, Azure veri kaynağını kullanarak sistem sağlamak için yapılandırın:
 
-        # cat > /etc/cloud/cloud.cfg.d/90_dpkg.cfg << EOF
-        datasource_list: [ Azure ]
-        EOF
+    ```
+    # cat > /etc/cloud/cloud.cfg.d/90_dpkg.cfg << EOF
+    datasource_list: [ Azure ]
+    EOF
 
-        # cat > /etc/cloud/cloud.cfg.d/90-azure.cfg << EOF
-        system_info:
-        package_mirrors:
-            - arches: [i386, amd64]
-            failsafe:
-                primary: http://archive.ubuntu.com/ubuntu
-                security: http://security.ubuntu.com/ubuntu
-            search:
-                primary:
-                - http://azure.archive.ubuntu.com/ubuntu/
-                security: []
-            - arches: [armhf, armel, default]
-            failsafe:
-                primary: http://ports.ubuntu.com/ubuntu-ports
-                security: http://ports.ubuntu.com/ubuntu-ports
-        EOF
+    # cat > /etc/cloud/cloud.cfg.d/90-azure.cfg << EOF
+    system_info:
+       package_mirrors:
+         - arches: [i386, amd64]
+           failsafe:
+             primary: http://archive.ubuntu.com/ubuntu
+             security: http://security.ubuntu.com/ubuntu
+           search:
+             primary:
+               - http://azure.archive.ubuntu.com/ubuntu/
+             security: []
+         - arches: [armhf, armel, default]
+           failsafe:
+             primary: http://ports.ubuntu.com/ubuntu-ports
+             security: http://ports.ubuntu.com/ubuntu-ports
+    EOF
 
-        # cat > /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg << EOF
-        reporting:
-        logging:
-            type: log
-        telemetry:
-            type: hyperv
-        EOF
+    # cat > /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg << EOF
+    reporting:
+      logging:
+        type: log
+      telemetry:
+        type: hyperv
+    EOF
+    ```
 
 10. Sağlamayı gerçekleştirmek için Azure Linux aracısını Cloud-init ' i temel almak üzere yapılandırın. Bu seçenekler hakkında daha fazla bilgi için [Walınuxagent projesine](https://github.com/Azure/WALinuxAgent) göz atın.
 
@@ -142,6 +147,12 @@ Bu makalede bir Ubuntu Linux işletim sistemini zaten bir sanal sabit diske yük
         # sudo rm -f /var/log/waagent.log
 
 12. Sanal makinenin sağlamasını kaldırmak ve Azure 'da sağlamak üzere hazırlamak için aşağıdaki komutları çalıştırın:
+
+    > [!NOTE]
+    > `sudo waagent -force -deprovision+user`Komut, sistemi temizlemeye çalışır ve yeniden sağlama için uygun hale getirir. `+user`Seçeneği, son sağlanan kullanıcı hesabını ve ilişkili verileri siler.
+
+    > [!WARNING]
+    > Yukarıdaki komutu kullanarak sağlamayı kaldırma, görüntünün tüm hassas bilgileri temizleneceğini ve yeniden dağıtım için uygun olduğunu garanti etmez.
 
         # sudo waagent -force -deprovision+user
         # rm -f ~/.bash_history

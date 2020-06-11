@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d53c21af77204a5e83687d3ce893f3f6f45101f2
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 2c62fdb41cdd19e34062124564ace9645df1dde6
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628986"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672706"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Ana VHD görüntüsü üzerinde Office yükleme
 
@@ -55,13 +55,13 @@ Bu örnek yapılandırma XML 'i şunları yapamayacaklarınız:
 >[!NOTE]
 >Paylaşılan bilgisayar etkinleştirme, grup ilkesi nesneleri (GPO 'Lar) veya kayıt defteri ayarları aracılığıyla ayarlanabilir. GPO, ** \\ \\ Yönetim Şablonları \\ Microsoft Office 2016 (makine) \\ lisanslama ayarlarındaki bilgisayar yapılandırma ilkeleri** ' nde bulunur
 
-Office dağıtım aracı Setup. exe dosyasını içerir. Office 'i yüklemek için komut satırında aşağıdaki komutu çalıştırın:
+Office dağıtım aracı setup.exe içerir. Office 'i yüklemek için komut satırında aşağıdaki komutu çalıştırın:
 
 ```batch
 Setup.exe /configure configuration.xml
 ```
 
-#### <a name="sample-configurationxml"></a>Örnek Configuration. xml
+#### <a name="sample-configurationxml"></a>Örnek configuration.xml
 
 Aşağıdaki XML örneği aylık kurumsal kanal sürümünü yükler.
 
@@ -118,7 +118,7 @@ OneDrive 'ı makine başına modunda yüklemek için şu adımları uygulayın:
 
 1. İlk olarak, OneDrive yükleyicisinin aşamasına kadar bir konum oluşturun. Yerel disk klasörü veya [ \\ \\ UNC] (File://UNC) konumu iyidir.
 
-2. OneDriveSetup. exe dosyasını bu bağlantıyla hazırlanan konumunuza indirin:<https://aka.ms/OneDriveWVD-Installer>
+2. OneDriveSetup.exe, bu bağlantıyla hazırlanan konumunuza indirin:<https://aka.ms/OneDriveWVD-Installer>
 
 3. Office 'i yok ederek OneDrive 'a yüklediyseniz **\<ExcludeApp ID="OneDrive" /\>** , aşağıdaki komutu çalıştırarak, var olan tüm OneDrive Kullanıcı başına yüklemelerini yükseltilmiş bir komut isteminden kaldırın:
     
@@ -156,9 +156,11 @@ OneDrive 'ı makine başına modunda yüklemek için şu adımları uygulayın:
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
     ```
 
-## <a name="teams-and-skype"></a>Takımlar ve Skype
+## <a name="microsoft-teams-and-skype-for-business"></a>Microsoft ekipleri ve Skype Kurumsal
 
-Windows sanal masaüstü, Skype Kurumsal ve ekiplerini desteklemez.
+Windows sanal masaüstü, Skype Kurumsal 'ı desteklemez.
+
+Microsoft ekipleri yükleme konusunda yardım için bkz. [Windows sanal masaüstü üzerinde Microsoft ekipleri kullanma](teams-on-wvd.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

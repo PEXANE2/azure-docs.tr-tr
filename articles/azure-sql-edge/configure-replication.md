@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Edge 'e çoğaltmayı yapılandırma (Önizleme)
-description: Azure SQL Edge 'e çoğaltmayı yapılandırma hakkında bilgi edinin (Önizleme)
+description: Azure SQL Edge (Önizleme) için çoğaltmayı yapılandırma hakkında bilgi edinin.
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,52 +9,50 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6249d72ba43bf59a2862595f40adf2d1ac5a6346
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: a33933e63cc7c15de7d60430521f810f8546988c
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235161"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667888"
 ---
 # <a name="configure-replication-to-azure-sql-edge-preview"></a>Azure SQL Edge 'e çoğaltmayı yapılandırma (Önizleme) 
 
-Azure SQL Edge örneği, tek yönlü bir işlem çoğaltması veya anlık görüntü çoğaltması için anında iletme abonesi olarak yapılandırılabilir. Azure SQL Edge örneği, bir işlem çoğaltma yapılandırması için yayımcı veya dağıtıcı olarak çalışamaz. Birleştirme çoğaltması, P2P çoğaltma, Oracle yayımlaması Azure SQL Edge 'de desteklenmez.
+Azure SQL Edge 'in bir örneğini, tek yönlü işlem çoğaltması veya anlık görüntü çoğaltması için anında iletme abonesi olarak yapılandırabilirsiniz. Bu örnek, bir işlem çoğaltma yapılandırması için yayımcı veya dağıtıcı olarak çalışamaz. Azure SQL Edge 'in birleştirme çoğaltmasını, eşler arası çoğaltmayı veya Oracle yayımlamasını desteklemediğini unutmayın.
 
-## <a name="supported-configurations"></a>**Desteklenen konfigürasyonlar**:
+## <a name="supported-configurations"></a>Desteklenen yapılandırmalar
   
-- Azure SQL Edge örneği, yayımcı için bir anında iletme abonesi olmalıdır.
-- Yayımcı ve dağıtıcı şunlardan biri olabilir
-   - Şirket içinde çalışan bir SQL Server örneği veya bir Azure sanal makinesinde çalışan bir SQL Server örneği. Daha fazla bilgi için bkz. [Azure sanal makinelerine genel bakış SQL Server](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-infrastructure-services/). SQL Server örneklerin SQL Server 2016 ' den büyük bir sürümü kullanıyor olması gerekir.
-   - Azure SQL yönetilen örneği örneği. Yönetilen örnek, Yayımcı, dağıtıcı ve abone veritabanlarını barındırabilirler. Daha fazla bilgi için bkz. [SQL veritabanı yönetilen örneği Ile çoğaltma](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/).
+- Azure SQL Edge örneği, yayımcı için bir itme abonesi olmalıdır.
+- Yayımcı ve dağıtıcı şunlardan biri olabilir:
+   - Şirket içinde çalışan bir SQL Server örneği veya bir Azure sanal makinesinde çalışan bir SQL Server örneği. Daha fazla bilgi için bkz. [Azure sanal makinelerine genel bakış SQL Server](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-infrastructure-services/). SQL Server örneklerin SQL Server 2016 ' den sonraki bir sürümü kullanıyor olması gerekir.
+   - Azure SQL yönetilen örneği örneği. SQL yönetilen örneği, Yayımcı, dağıtıcı ve abone veritabanlarını barındırabilirler. Daha fazla bilgi için bkz. [SQL veritabanı yönetilen örneği Ile çoğaltma](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/).
 
 - Dağıtım veritabanı ve çoğaltma aracıları bir Azure SQL Edge örneğine yerleştirilemez.  
 
 > [!NOTE]
-> Desteklenmeyen bir sürüm kullanılarak çoğaltmayı yapılandırma denemesi, hata numarası MSSQL_REPL20084 (işlem aboneye bağlanamaz.) ve MSSQL_REPL40532 ( \<name> oturum açma tarafından istenen sunucu açılamıyor. Oturum açılamadı.).  
-
-Azure SQL Edge 'in tüm özelliklerini kullanmak için, en son [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) ve [SQL Server veri araçları](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)sürümlerini kullanıyor olmanız gerekir.  
+> Çoğaltmayı desteklenmeyen bir sürümü kullanarak yapılandırmayı denerseniz, şu iki hatayı alabilirsiniz: MSSQL_REPL20084 ("işlem aboneye bağlanamadı.") ve MSSQL_REPL40532 (" \<name> oturum açma tarafından istenen sunucuyu açamıyor. Oturum açılamadı. ").  
 
 ## <a name="remarks"></a>Açıklamalar
 
-- Çoğaltma, [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) kullanılarak veya SQL Server Management Studio veya [Azure veritabanı Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio) kullanılarak YAYıMCıDA Transact-SQL deyimleri yürütülerek yapılandırılabilir
-- Çoğaltma, Azure SQL Edge örneğine bağlanmak için yalnızca SQL Server kimlik doğrulaması oturum açma bilgilerini kullanabilir.
+Aşağıdaki gereksinimler ve en iyi yöntemler, çoğaltmayı yapılandırırken anlaşılması açısından önemlidir:
+
+- [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)kullanarak çoğaltmayı yapılandırabilirsiniz. Ayrıca, SQL Server Management Studio veya [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)kullanarak yayımcıda Transact-SQL deyimlerini çalıştırarak da bunu yapabilirsiniz.
+- Azure SQL Edge örneğine çoğaltmak için, oturum açmak için SQL Server kimlik doğrulaması kullanmanız gerekir.
 - Çoğaltılan tablolarda birincil anahtar olmalıdır.
 - SQL Server tek bir yayını hem Azure SQL Edge hem de SQL Server (Şirket içi ve SQL Server bir Azure sanal makinesinde) abonelerine destekleyebilir.  
 - Çoğaltma yönetimi, izleme ve sorun giderme SQL Server örneğinden gerçekleştirilmelidir.  
 - Yalnızca Azure SQL Edge 'e yönelik gönderme abonelikleri desteklenir.  
-- Yalnızca `@subscriber_type = 0` Azure SQL Edge için **sp_addsubscription** desteklenir.  
-- Azure SQL Edge, çift yönlü, anında, güncelleştirilebilir veya eşler arası çoğaltmayı desteklemez.
-- Azure SQL Edge, bir veya daha fazla desteklenmeyen özellik içeren bir veritabanını (veya veritabanı içindeki nesneleri) çoğaltma girişimi nedeniyle yalnızca SQL Server veya SQL yönetilen örneği 'nde kullanılabilen özelliklerin bir alt kümesini destekler. Örneğin, uzamsal veri türlerine sahip nesneler içeren bir veritabanını çoğaltma girişimi bir hatayla sonuçlanır. Azure SQL Edge tarafından desteklenen özellikler hakkında daha fazla bilgi için bkz. [Azure SQL Edge 'In desteklenen özellikleri](features.md).
+- Yalnızca `@subscriber_type = 0` `sp_addsubscription` Azure SQL Edge için saklı yordamda desteklenir.  
+- Azure SQL Edge, iki yönlü, anında, güncelleştirilebilir veya eşler arası çoğaltmayı desteklemez.
+- Azure SQL Edge yalnızca SQL Server veya SQL yönetilen örneği 'nde kullanılabilen özelliklerin bir alt kümesini destekler. Desteklenmeyen bir veya daha fazla özellik içeren bir veritabanını (veya veritabanı içindeki nesneleri) çoğaltmaya çalışırsanız, deneme başarısız olur. Örneğin, uzamsal veri türlerine sahip nesneler içeren bir veritabanını çoğaltmaya çalışırsanız bir hata alırsınız. Daha fazla bilgi için bkz. [Azure SQL Edge 'In desteklenen özellikleri](features.md).
 
-## <a name="scenarios"></a>Senaryolar  
+## <a name="initialize-reference-data-on-an-instance-of-azure-sql-edge"></a>Azure SQL Edge örneğinde başvuru verilerini başlatma
 
-### <a name="initializing-reference-data-on-an-edge-instance"></a>Bir kenar örneğinde başvuru verilerini başlatma
-
-Zaman içinde değişen başvuru verileriyle kenar örneğini başlatmak için gerekli olan, çoğaltmanın yararlı olduğu yaygın bir senaryodur. Örneğin, bir SQL Server örneği üzerinde eğitilen kenar örneğindeki ML modellerini güncelleştirme.
+Örneğinizi, zaman içinde değişen başvuru verileriyle birlikte başlatmak isteyebilirsiniz. Örneğin, Azure SQL Edge örneğinizin bir SQL Server örneği üzerinde eğitilen bir örnek üzerinde makine öğrenimi modellerini güncelleştirmek isteyebilirsiniz. Aşağıda bu tür bir senaryoda örneğinizi nasıl başlataöğreneceksiniz:
 
 1. SQL Server veritabanında bir işlem çoğaltma yayını oluşturun.  
 2. SQL Server örneğinde, Azure SQL Edge 'e yönelik bir aboneliğe gönderim oluşturmak için **yeni abonelik Sihirbazı 'nı** veya Transact-SQL deyimlerini kullanın.  
-3. Azure SQL Edge 'deki çoğaltılan veritabanı, anlık görüntü Aracısı tarafından oluşturulan ve Dağıtım Aracısı tarafından dağıtılan ve sunulan bir anlık görüntü kullanılarak veya yayımcının bir veritabanı yedeklemesi kullanılarak başlatılabilir. Bir kez daha, veritabanı yedeklemesi Azure SQL Edge tarafından desteklenmeyen nesneler/özellikler içeriyorsa geri yükleme işlemi başarısız olur.
+3. Azure SQL Edge 'de çoğaltılan veritabanını, anlık görüntü Aracısı tarafından oluşturulan ve Dağıtım Aracısı tarafından dağıtılan ve sunulan bir anlık görüntü kullanarak başlatabilirsiniz. Alternatif olarak, yayımcıdan bir veritabanının yedeğini kullanarak da başlatabilirsiniz. Veritabanı yedeklemesi Azure SQL Edge tarafından desteklenmeyen nesneler veya özellikler içeriyorsa geri yükleme işleminin başarısız olduğunu unutmayın.
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -74,8 +72,8 @@ Azure SQL Edge abonelikleri için aşağıdaki seçenekler desteklenmez:
 - Filtrelenmiş dizinleri Kopyala  
 - Veri sıkıştırma özniteliğini Kopyala  
 - Seyrek sütun özniteliğini Kopyala  
-- FILESTREAM, HierarchyId veya uzamsal veri türlerini kopyalayın.
-- HierarchyId 'yi MAX veri türlerine Dönüştür  
+- FILESTREAM, `hierarchyid` veya uzamsal veri türlerini Kopyala
+- `hierarchyid`Maks. veri türlerine Dönüştür  
 - Uzamsal değeri en fazla veri türlerine Dönüştür  
 - Genişletilmiş özellikleri Kopyala  
 - İzinleri Kopyala  
@@ -85,13 +83,13 @@ Azure SQL Edge abonelikleri için aşağıdaki seçenekler desteklenmez:
 Yayın ve gönderme temelli bir abonelik oluşturun. Daha fazla bilgi için bkz.
   
 - [Yayın oluşturma](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- Abone olarak Azure SQL Edge sunucu adı/IP 'si (örneğin **, Myedgeınstance, 1433**) ve Azure SQL Edge örneğindeki hedef veritabanı (örneğin **AdventureWorks**) olarak bir veritabanı adı kullanarak [bir anında iletme aboneliği oluşturun](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) .  
+- Azure SQL Edge sunucu adı ve IP 'si (örneğin, **Myedgeınstance, 1433**) ve Azure SQL Edge örneğindeki hedef veritabanı (örneğin, **AdventureWorks**) olarak bir veritabanı adı kullanarak [bir anında iletme aboneliği oluşturun](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) .  
 
-## <a name="see-also"></a>Ayrıca bkz.  
+## <a name="next-steps"></a>Sonraki adımlar  
 
 - [Yayın oluşturma](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Itme aboneliği oluşturma](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [Çoğaltma Türleri](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
+- [İtme aboneliği oluşturma](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
+- [Çoğaltma türleri](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
 - [İzleme (çoğaltma)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
 - [Abonelik başlatma](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
 

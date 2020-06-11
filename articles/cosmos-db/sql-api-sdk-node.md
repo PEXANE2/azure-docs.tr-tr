@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB: SQL Node. js API 'SI, SDK & kaynakları"
-description: Sürüm tarihleri, kullanımdan kaldırma tarihleri ve Azure Cosmos DB Node. js SDK 'sının her sürümü arasında yapılan değişiklikler dahil olmak üzere SQL Node. js API 'SI ve SDK hakkında bilgi edinin.
+title: 'Azure Cosmos DB: SQL Node.js API, SDK & kaynakları'
+description: Sürüm tarihleri, emeklilik tarihleri ve Azure Cosmos DB Node.js SDK 'nın her sürümü arasında yapılan değişiklikler dahil olmak üzere SQL Node.js API 'SI ve SDK hakkında bilgi edinin.
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,18 +8,19 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 66597f0807e27e421d5f7001550533090d5936c0
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: b0d9b0bd520b3bfca57f2bf7f306ebddd15cc3e5
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171608"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677670"
 ---
-# <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Node. js SDK Azure Cosmos DB: sürüm notları ve kaynakları
+# <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Azure Cosmos DB Node.js SDK: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET değişiklik akışı](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK V3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET değişiklik akışı SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)
@@ -28,7 +29,7 @@ ms.locfileid: "84171608"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST Kaynak Sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Toplu yürütücü-.NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Toplu yürütücü-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Toplu yürütücü-Java](sql-api-sdk-bulk-executor-java.md)
 
 |Kaynak  |Bağlantı  |
@@ -37,20 +38,20 @@ ms.locfileid: "84171608"
 |API belgeleri  |  [JavaScript SDK başvuru belgeleri](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |SDK yükleme yönergeleri  |  [Yükleme yönergeleri](https://github.com/Azure/azure-cosmos-js#installation)
 |SDK 'ya katkıda bulunma | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
-| Örnekler | [Node. js kod örnekleri](sql-api-nodejs-samples.md)
+| Örnekler | [Node.js kodu örnekleri](sql-api-nodejs-samples.md)
 | Başlangıç Öğreticisi | [JavaScript SDK 'sını kullanmaya başlama](sql-api-nodejs-get-started.md)
-| Web uygulaması öğreticisi | [Azure Cosmos DB kullanarak bir Node. js web uygulaması oluşturma](sql-api-nodejs-application.md)
-| Desteklenen geçerli platform | [Node. js v12. x](https://nodejs.org/en/blog/release/v12.7.0/) -SDK sürüm 3. x. x<br/>[Node. js ile v10 arasındaki. x](https://nodejs.org/en/blog/release/v10.6.0/) -SDK sürüm 3. x. x<br/>[Node. js V8. x](https://nodejs.org/en/blog/release/v8.16.0/) -SDK sürüm 3. x. x<br/>[Node. js V6. x](https://nodejs.org/en/blog/release/v6.10.3/) -SDK sürüm 2. x. x<br/>[Node. js v 4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)-SDK sürüm 1. x. x<br/> [Node. js v 0.12](https://nodejs.org/en/blog/release/v0.12.0/)-SDK sürüm 1. x. x<br/> [Node. js v 0.10](https://nodejs.org/en/blog/release/v0.10.0/)-SDK sürüm 1. x. x
+| Web uygulaması öğreticisi | [Azure Cosmos DB kullanarak Node.js Web uygulaması oluşturma](sql-api-nodejs-application.md)
+| Desteklenen geçerli platform | [Node.js v12. x](https://nodejs.org/en/blog/release/v12.7.0/) -SDK sürüm 3. x. x<br/>[Node.js ile v10 arasındaki. x](https://nodejs.org/en/blog/release/v10.6.0/) -SDK sürüm 3. x. x<br/>[Node.js V8. x](https://nodejs.org/en/blog/release/v8.16.0/) -SDK sürüm 3. x. x<br/>[Node.js V6. x](https://nodejs.org/en/blog/release/v6.10.3/) -SDK sürüm 2. x. x<br/>[Node.js v 4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)-SDK sürüm 1. x. x<br/> [Node.js v 0.12](https://nodejs.org/en/blog/release/v0.12.0/)-SDK sürüm 1. x. x<br/> [Node.js v 0.10](https://nodejs.org/en/blog/release/v0.10.0/)-SDK sürüm 1. x. x
 
 ## <a name="release-notes"></a>Sürüm notları
 
 ### <a name="310"></a><a name="3.1.0"></a>3.1.0
-* Varsayılan Responsecontinuationtokenlimitınkb değerini 1kb olarak ayarlayın. Varsayılan olarak, uzun üstbilgileri önlemek için bunu 1 KB 'lık 'ye kadık (node. js ' nin genel üst bilgi boyutu sınırı vardır). Bir Kullanıcı bu alanı daha uzun üst bilgiler için izin verecek şekilde ayarlayabilir, bu da arka ucun sorgu yürütmesini iyileştirmenize yardımcı olabilir.
+* Varsayılan Responsecontinuationtokenlimitınkb değerini 1kb olarak ayarlayın. Varsayılan olarak, uzun başlıkları önlemek için bunu 1 KB 'lık 'ye kadık (Node.js bir genel üst bilgi boyutu sınırına sahiptir). Bir Kullanıcı bu alanı daha uzun üst bilgiler için izin verecek şekilde ayarlayabilir, bu da arka ucun sorgu yürütmesini iyileştirmenize yardımcı olabilir.
 * Disablessldoğrulaması 'nı kaldırın. Bu seçeneğin [#388](https://github.com/Azure/azure-cosmos-js/pull/388) açıklanan yeni alternatifleri vardır
 
 ### <a name="304"></a><a name="3.0.4"></a>3.0.4
 * Initialheaders 'in bölüm anahtarı üst bilgisini açıkça ayarlamaya izin ver
-* Gereksiz dosyaların yayımlanmasını engellemek için Package. JSON # dosyalarını kullanın
+* Gereksiz dosyaların yayımlanmasını engellemek için # Files üzerinde package.jskullanın
 * Daha eski node + V8 sürümünde yönlendirme Haritası sıralama hatasını çözme
 * Kullanıcı kısmi yeniden deneme seçenekleri sağlarsa hatayı düzeltir
 
@@ -101,7 +102,7 @@ V2 'de bir sorgudan sonuçları yinelemek veya almak için birçok farklı yol v
 
 * Yineleyici. Next () ve yineleyici. Current () öğesini kaldırın. Sonuçların sayfalarını almak için fetchNext () kullanın.
 * Yineleyici. forEach () öğesini kaldırın. Bunun yerine zaman uyumsuz yineleyiciler kullanın.
-* Yineleyici. executeNext () Yineleyici. fetchNext () olarak yeniden adlandırıldı
+* iterator.executeNext () Yineleyici. fetchNext () olarak yeniden adlandırıldı
 * Yineleyici. toArray () Yineleyici. fetchAll () olarak yeniden adlandırıldı
 * Sayfalar artık düz JS nesneleri yerine doğru yanıt nesneleridir
 * const Container = Client. Database (DBID). Container (Containerıd)
@@ -150,7 +151,7 @@ Başarısız istekler artık doğru hata veya hata alt sınıfları oluşturur. 
 
 #### <a name="new-features"></a>Yeni özellikler
 ##### <a name="user-cancelable-requests"></a>Kullanıcı tarafından iptal edilebilen istekler
-Dahili olarak getirilecek taşıma, Kullanıcı tarafından iptal edilebilen işlemleri desteklemek için AbortController API 'sini kullanmamızı sağlar. Birden çok isteğin devam ettiği (çapraz bölüm sorguları gibi) işlemler söz konusu olduğunda, işlem için tüm istekler iptal edilir. Modern tarayıcı kullanıcıları, zaten AbortController 'a sahip olur. Node. js kullanıcılarının polyfill kitaplığı kullanması gerekir
+Dahili olarak getirilecek taşıma, Kullanıcı tarafından iptal edilebilen işlemleri desteklemek için AbortController API 'sini kullanmamızı sağlar. Birden çok isteğin devam ettiği (çapraz bölüm sorguları gibi) işlemler söz konusu olduğunda, işlem için tüm istekler iptal edilir. Modern tarayıcı kullanıcıları, zaten AbortController 'a sahip olur. Node.js kullanıcıların polyfill kitaplığı kullanması gerekir
 
 ``` js
  const controller = new AbortController()
@@ -181,7 +182,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 ```
 
 #### <a name="improved-browser-experience"></a>Geliştirilmiş tarayıcı deneyimi
-Tarayıcıda v2 SDK kullanılması mümkün olsa da ideal bir deneyim değildir. Çeşitli Node. js yerleşik kitaplıklarını çoklu olarak doldurmanız ve WebPack veya paket gibi bir paketler kullanmanız gerekir. V3 SDK, kullanıma hazır deneyimin, tarayıcı kullanıcıları için çok daha iyi olmasını sağlar.
+Tarayıcıda v2 SDK kullanılması mümkün olsa da ideal bir deneyim değildir. Birden çok node.js yerleşik kitaplığı çoklu olarak doldurmanız ve WebPack veya paket gibi bir paketler kullanmanız gerekir. V3 SDK, kullanıma hazır deneyimin, tarayıcı kullanıcıları için çok daha iyi olmasını sağlar.
 
 * İstek iç yapıları Fetch ile değiştirme (#245)
 * Arabellek kullanımını Kaldır (#330)
@@ -218,7 +219,7 @@ Her zaman en görünür değişiklikler değildir, ancak ekibimizin daha hızlı
 * Yeniden deneme ilkesi içinde bölgesel yük devretmeyi Düzeltme
 * ChangeFeed hasMoreResults özelliğini düzeltir
 * Geliştirme bağımlılığı güncelleştirmeleri
-* Policheckdışlamalar. txt ekleyin
+* PolicheckExclusions.txt Ekle
 
 ### <a name="213"></a><a name="2.1.3"></a>2.1.3
 * Dizeden sayıya _ts türü Değiştir

@@ -5,12 +5,12 @@ ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: aa1999df83c3a3926f3410ea7ee48af75b2dd515
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: ceab81f4dd9089acc2d902f80e7acc95e9f9cb11
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84231623"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676463"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Hızlı başlangıç: Visual Studio 'Yu kullanarak Azure 'da ilk işlevinizi oluşturma
 
@@ -40,7 +40,7 @@ Visual Studio, HTTP tetikleyici işlev türü için ortak kod içeren bir proje 
 
 1. Kodda, Işlev1 sınıfını ' HttpExample ' olarak yeniden adlandırın.
 
-1. `HttpTrigger`Adlı yöntemde `run` , `FunctionName` yöntemi özniteliğini olarak yeniden adlandırın `HttpExample` .
+1. `HttpTrigger`Adlı yöntemde `Run` , `FunctionName` yöntemi özniteliğini olarak yeniden adlandırın `HttpExample` .
 
 Artık işlevi yeniden adlandırdığınıza göre, bunu yerel bilgisayarınızda test edebilirsiniz.
 

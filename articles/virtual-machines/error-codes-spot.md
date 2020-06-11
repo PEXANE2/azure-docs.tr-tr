@@ -4,15 +4,15 @@ description: Spot VM 'Leri ve ölçek kümesi örneklerini kullanırken görebil
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 5a34dc2b9468c6c5af4af0e0addfd8b9ebb7e792
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4625a0fa75f992ac18eeb91629af373a426aa955
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80547807"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676582"
 ---
 # <a name="error-messages-for-spot-vms-and-scale-sets"></a>Spot VM 'Ler ve ölçek kümeleri için hata iletileri
 
@@ -21,17 +21,17 @@ Spot VM 'Leri ve ölçek kümelerini kullanırken alacağınız bazı olası hat
 
 | Anahtar | İleti | Açıklama |
 |-----|---------|-------------|
-| SkuNotAvailable | '\<\>Resource ' kaynağı için istenen katman Şu anda '\<\>\<SubscriptionID\>' aboneliğinin ' Location ' konumunda kullanılamıyor. Lütfen başka bir katman deneyin veya farklı bir konuma dağıtın. | Bu konumda VM veya ölçek kümesi örneğinizi oluşturmak için yeterli sayıda Azure nokta kapasitesi yok. |
+| SkuNotAvailable | ' ' Kaynağı için istenen katman \<resource\> Şu anda ' ' \<location\> aboneliği için ' ' konumunda kullanılamıyor \<subscriptionID\> . Lütfen başka bir katman deneyin veya farklı bir konuma dağıtın. | Bu konumda VM veya ölçek kümesi örneğinizi oluşturmak için yeterli sayıda Azure nokta kapasitesi yok. |
 | EvictionPolicyCanBeSetOnlyOnAzureSpotVirtualMachines  |  Çıkarma ilkesi yalnızca Azure spot sanal makinelerinde ayarlanabilir. | Bu VM bir spot VM değil, çıkarma ilkesini ayarlayamazsınız. |
 | AzureSpotVMNotSupportedInAvailabilitySet  |  Azure spot sanal makinesi kullanılabilirlik kümesi 'nde desteklenmiyor. | Bir spot VM kullanmayı veya bir VM 'yi bir kullanılabilirlik kümesinde kullanmayı seçmeniz gerekir, her ikisini de seçemezsiniz. |
 | AzureSpotFeatureNotEnabledForSubscription  |  Abonelik, Azure spot özelliği ile etkin değil. | Spot VM 'Leri destekleyen bir abonelik kullanın. |
-| VMPriorityCannotBeApplied  |  Belirtilen '{0}' öncelik değeri, sanal makine oluşturulduğunda hiçbir öncelik belirtilmediğinden '{1}' sanal makinesine uygulanamıyor. | VM oluşturulduğunda önceliği belirtin. |
-| SpotPriceGreaterThanProvidedMaxPrice  |  Belirtilen en büyük fiyat '{0}{1} USD ', '{2} {3}' Azure spot VM boyutu için geçerli olan ' USD ' nokta fiyatından düşük olduğundan ' ' işlemi gerçekleştirilemiyor. | En yüksek fiyat ' ı seçin. Daha fazla bilgi için bkz. [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) veya [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)için fiyatlandırma bilgileri.|
+| VMPriorityCannotBeApplied  |  Belirtilen ' ' öncelik değeri, {0} {1} sanal makine oluşturulduğunda hiçbir öncelik belirtilmediğinden ' ' sanal makinesine uygulanamıyor. | VM oluşturulduğunda önceliği belirtin. |
+| SpotPriceGreaterThanProvidedMaxPrice  |  {0}Belirtilen en büyük fiyat ' {1} USD ', ' {2} ' Azure spot VM boyutu için geçerli olan ' USD ' nokta fiyatından düşük olduğundan ' ' işlemi gerçekleştirilemiyor {3} . | En yüksek fiyat ' ı seçin. Daha fazla bilgi için bkz. [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) veya [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)için fiyatlandırma bilgileri.|
 | Maxpricevaluegeçersizdir  |  Geçersiz en yüksek fiyat değeri. En yüksek fiyat için desteklenen değerler-1 veya sıfırdan büyük bir ondalık. -1 ' in Max Price değeri, Azure spot sanal makinesinin fiyat nedenleriyle çıkarılmayacağını gösterir. | Geçerli bir en yüksek fiyat girin. Daha fazla bilgi için bkz. [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) veya [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)fiyatlandırması. |
-| Maxpricechangenotallodilimforallocatedvms | '{0}' Sanal makinesi şu anda ayrıldığınızda en yüksek fiyat değişikliğine izin verilmez. Lütfen serbest bırakın ve yeniden deneyin. | En fazla fiyata değişiklik yapabilmeniz için VM 'yi serbest bırakın. |
+| Maxpricechangenotallodilimforallocatedvms | ' ' Sanal makinesi {0} Şu anda ayrıldığınızda en yüksek fiyat değişikliğine izin verilmez. Lütfen serbest bırakın ve yeniden deneyin. | En fazla fiyata değişiklik yapabilmeniz için VM 'yi serbest bırakın. |
 | MaxPriceChangeNotAllowed | En fazla fiyat değişikliğine izin verilmez. | Bu VM için en yüksek fiyatı değiştiremezsiniz. |
 | AzureSpotIsNotSupportedForThisAPIVersion  |  Azure spot, bu API sürümü için desteklenmiyor. | API sürümünün 2019-03-01 olması gerekir. |
-| AzureSpotIsNotSupportedForThisVMSize  |  Azure spot, bu VM boyutu {0}için desteklenmiyor. | Başka bir VM boyutu seçin. Daha fazla bilgi için bkz. [sanal makineleri spot](./linux/spot-vms.md). |
+| AzureSpotIsNotSupportedForThisVMSize  |  Azure spot, bu VM boyutu için desteklenmiyor {0} . | Başka bir VM boyutu seçin. Daha fazla bilgi için bkz. [sanal makineleri spot](./linux/spot-vms.md). |
 | MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  En yüksek fiyat yalnızca Azure spot sanal makineler için desteklenir. | Daha fazla bilgi için bkz. [sanal makineleri spot](./linux/spot-vms.md). |
 | MoveResourcesWithAzureSpotVMNotSupported  |  Kaynakları taşıma isteği bir Azure spot sanal makinesi içerir. Bu şu anda desteklenmiyor. Lütfen sanal makine kimlikleri için hata ayrıntılarını kontrol edin. | Spot VM 'Leri taşıyamazsınız. |
 | MoveResourcesWithAzureSpotVmssNotSupported  |  Kaynakları taşıma isteği bir Azure spot sanal makine ölçek kümesi içerir. Bu şu anda desteklenmiyor. Lütfen sanal makine ölçek kümesi kimlikleri için hata ayrıntılarını kontrol edin. | Nokta ölçeği kümesi örneklerini taşıyamazsınız. |

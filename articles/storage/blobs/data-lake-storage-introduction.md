@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 2f920e29fafdc55478e0e2c16d683bd1c3bc81d8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ee9f2f0366cc680c874c6748d27e02dcadb82e35
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78942926"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673318"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. giriş
 
@@ -37,13 +37,13 @@ Ayrıca, düşük maliyetli [Azure Blob depolama](storage-blobs-introduction.md)
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake Storage 2. temel özellikleri
 
--   **Hadoop uyumlu erişim**: Data Lake Storage 2., verileri [Hadoop Dağıtılmış dosya sistemi (bir)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)ile yaptığınız gibi yönetmenizi ve erişmenize olanak tanır. Yeni [ABFS sürücüsü](data-lake-storage-abfs-driver.md) , Data Lake Storage 2. depolanan verilere erişmek için [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)*,* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index)ve [SQL veri ambarı](https://docs.microsoft.com/azure/sql-data-warehouse/) dahil olmak üzere tüm Apache Hadoop ortamlarında kullanılabilir.
+-   **Hadoop uyumlu erişim**: Data Lake Storage 2., verileri [Hadoop Dağıtılmış dosya sistemi (bir)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)ile yaptığınız gibi yönetmenizi ve erişmenize olanak tanır. Yeni [ABFS sürücüsü](data-lake-storage-abfs-driver.md) , Data Lake Storage 2. depolanan verilere erişmek için [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)*,* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index)ve [Azure SYNAPSE Analytics](https://docs.microsoft.com/azure/synapse-analytics) dahil olmak üzere tüm Apache Hadoop ortamlarında kullanılabilir.
 
 -   **POSIX Izinlerinin bir üst kümesi**: Data Lake Gen2 için güvenlik modeli, Data Lake Storage 2. özgü bazı ayrıntı düzeyi Ile birlikte ACL 'LERI ve POSIX izinlerini destekler. Ayarlar, Depolama Gezgini veya Hive ve Spark gibi çerçeveler aracılığıyla yapılandırılabilir.
 
 -   Uygun **maliyetli**: Data Lake Storage 2. düşük maliyetli depolama kapasitesi ve işlemler sunar. Tam yaşam döngüsü boyunca veri geçişleri olarak faturalandırma ücretleri, [Azure Blob depolama yaşam döngüsü](storage-lifecycle-management-concepts.md)gibi yerleşik özellikler aracılığıyla maliyetleri en düşük düzeyde tutmaya göre değişir.
 
--   **İyileştirilmiş sürücü**: ABFS sürücüsü özellikle büyük veri analizi için [iyileştirilmiştir](data-lake-storage-abfs-driver.md) . Karşılık gelen REST API 'Leri uç noktadan `dfs.core.windows.net`geliyor.
+-   **İyileştirilmiş sürücü**: ABFS sürücüsü özellikle büyük veri analizi için [iyileştirilmiştir](data-lake-storage-abfs-driver.md) . Karşılık gelen REST API 'Leri uç noktadan geliyor `dfs.core.windows.net` .
 
 ### <a name="scalability"></a>Ölçeklenebilirlik
 
@@ -61,7 +61,7 @@ Data Lake Storage 2., Azure Blob depolama alanı üzerinde oluşturulmuş, büy�
 
 Aşağıdakiler, farklı kavramlarla açıklandığı gibi eşdeğer varlıklardır. Aksi belirtilmedikçe, bu varlıklar doğrudan eş anlamlı değildir:
 
-| Kavram                                | Üst düzey kuruluş | Alt düzey kuruluş                                            | Veri kapsayıcısı |
+| Konsept                                | Üst düzey kuruluş | Alt düzey kuruluş                                            | Veri kapsayıcısı |
 |----------------------------------------|------------------------|---------------------------------------------------------------------|----------------|
 | Blob 'lar – genel amaçlı nesne depolaması | Kapsayıcı              | Sanal dizin (yalnızca SDK – atomik düzenleme sağlamaz) | Blob           |
 | Azure Data Lake Storage 2. – analiz depolaması          | Kapsayıcı            | Dizin                                                           | Dosya           |

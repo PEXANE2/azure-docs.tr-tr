@@ -3,12 +3,12 @@ title: Şablon işlevleri-karşılaştırma
 description: Değerleri karşılaştırmak için Azure Resource Manager şablonda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 15afc4d721c6577de9fe3e78483fdbfae5b493c6
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 01d66f43cf73dcc9228118db5a9b6149b19ee66d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203786"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677840"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM şablonları için karşılaştırma işlevleri
 
@@ -18,7 +18,7 @@ Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonlarınıza karşılaşt�
 * [equals](#equals)
 * [büyüktür](#greater)
 * [greaterOrEquals](#greaterorequals)
-* [daha az](#less)
+* [büyüktür](#less)
 * [lessOrEquals](#lessorequals)
 
 ## <a name="coalesce"></a>Coalesce
@@ -29,10 +29,10 @@ Parametrelerden null olmayan ilk değeri döndürür. Boş dizeler, boş diziler
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |int, String, array veya Object |Null için sınanacak ilk değer. |
-| ek bağımsız değişkenler |Hayır |int, String, array veya Object |Null için sınanacak ek değerler. |
+| ek bağımsız değişkenler |No |int, String, array veya Object |Null için sınanacak ek değerler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -44,7 +44,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "objectToTest": {
@@ -88,7 +88,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Adı | Tür | Değer |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | stringOutput | Dize | default |
 | ıntoutput | int | 1 |
@@ -104,7 +104,7 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |int, String, array veya Object |Eşitlik için denetlenecek ilk değer. |
 | arg2 |Yes |int, String, array veya Object |Eşitlik için denetlenecek ikinci değer. |
@@ -115,7 +115,7 @@ Değerler eşitse **true** değerini döndürür; Aksi takdirde, **false**.
 
 ### <a name="remarks"></a>Açıklamalar
 
-Eşittir işlevi genellikle bir kaynağın dağıtılıp dağıtılmadığını `condition` test etmek için öğesiyle birlikte kullanılır.
+Eşittir işlevi genellikle `condition` bir kaynağın dağıtılıp dağıtılmadığını test etmek için öğesiyle birlikte kullanılır.
 
 ```json
 {
@@ -138,7 +138,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -199,7 +199,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Adı | Tür | Değer |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | Iadeler | Bool | True |
 | checkStrings | Bool | True |
@@ -210,7 +210,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
     ],
@@ -225,7 +225,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekteki çıktı:
 
-| Adı | Tür | Değer |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | Checttequals | Bool | True |
 
@@ -237,7 +237,7 @@ Yukarıdaki örnekteki çıktı:
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |int veya String |Daha büyük karşılaştırma için ilk değer. |
 | arg2 |Yes |int veya String |Daha büyük karşılaştırma için ikinci değer. |
@@ -252,7 +252,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -289,7 +289,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Adı | Tür | Değer |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | Iadeler | Bool | False |
 | checkStrings | Bool | True |
@@ -302,7 +302,7 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |int veya String |Daha büyük veya eşit karşılaştırma için ilk değer. |
 | arg2 |Yes |int veya String |Daha büyük veya eşit karşılaştırma için ikinci değer. |
@@ -317,7 +317,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -354,7 +354,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Adı | Tür | Değer |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | Iadeler | Bool | False |
 | checkStrings | Bool | True |
@@ -367,7 +367,7 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |int veya String |Daha az karşılaştırma için ilk değer. |
 | arg2 |Yes |int veya String |Daha az karşılaştırma için ikinci değer. |
@@ -382,7 +382,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -419,7 +419,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Adı | Tür | Değer |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | Iadeler | Bool | True |
 | checkStrings | Bool | False |
@@ -432,7 +432,7 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |int veya String |Less veya eşittir karşılaştırması için ilk değer. |
 | arg2 |Yes |int veya String |Less veya eşittir karşılaştırması için ikinci değer. |
@@ -447,7 +447,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -484,7 +484,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Adı | Tür | Değer |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | Iadeler | Bool | True |
 | checkStrings | Bool | False |

@@ -6,19 +6,17 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
 ms.custom: sqldbrb=2
-ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
-manager: craigg
 ms.date: 06/04/2020
-ms.openlocfilehash: fc2c8ea232004488664bc7f15b1d1bb3b83f2e7b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 41df5190f2a7435ad91de94cb6f407037e1783a2
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609616"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667837"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Otomatik yedeklemeler-SQL yönetilen örnek & Azure SQL veritabanı
 
@@ -76,18 +74,6 @@ Diğer bir deyişle, bekletme süresi boyunca herhangi bir zaman için, bekletme
 > [!NOTE]
 > Ara ' yı etkinleştirmek için, ek yedeklemeler yapılandırılmış saklama süresinden daha uzun bir haftaya kadar saklanır. Yedekleme depolaması tüm yedeklemeler için aynı hızda ücretlendirilir. 
 
-Tek veritabanları için bu denklem toplam yedekleme depolama kullanımını hesaplamak için kullanılır:
-
-`Total backup storage size = (size of full backups + size of differential backups + size of log backups) – maximum data storage`
-
-Havuza alınmış veritabanları için toplam yedekleme depolama boyutu havuz düzeyinde toplanır ve aşağıdaki şekilde hesaplanır:
-
-`Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - maximum pool data storage`
-
-Yönetilen örnekler için toplam yedekleme depolama boyutu örnek düzeyinde toplanır ve aşağıdaki şekilde hesaplanır:
-
-`Total backup storage size = (total size of full backups + total size of differential backups + total size of log backups) – maximum instance data storage`
-
 Artık gerekli olmayan yedeklemeler otomatik olarak silinir. Fark yedeklemeleri ve günlük yedeklemeleri, daha önce bir tam yedeklemenin geri yüklenebilir olmasını gerektirdiğinden, üç yedekleme türünün tümü haftalık kümeler halinde temizlenir.
 
 [Şifrelenen](transparent-data-encryption-tde-overview.md) veritabanları da dahil olmak üzere tüm veritabanları için yedeklemeler, yedekleme depolama sıkıştırması ve maliyetlerini azaltmak için sıkıştırılır. Ortalama yedekleme sıkıştırma oranı 3-4 zamandır, ancak verilerin doğasına ve veri sıkıştırmasının veritabanında kullanılıp kullanılmasından bağımsız olarak önemli ölçüde daha yüksek olabilir.
@@ -144,9 +130,21 @@ DTU modelinde, veritabanları ve elastik havuzlar için yedekleme depolaması i�
 
 SQL veritabanı 'ndaki tek veritabanları için, veritabanı için en fazla veri depolama boyutunun yüzde 100 ' una eşit bir yedekleme depolama miktarı, ek ücret ödemeden sağlanır. Esnek havuzlar ve yönetilen örnekler için, havuz için maksimum veri depolama alanının yüzde 100 ' una eşit bir yedekleme depolama miktarı veya sırasıyla en büyük örnek depolama boyutu, ek ücret ödemeden sunulmaktadır. 
 
-Yedekleme depolamanın ek tüketimi, varsa, GB/ay olarak ücretlendirilir. Bu ek tüketim, bireysel veritabanlarının, elastik havuzların ve yönetilen örneklerin iş yüküne ve boyutuna bağlı olarak değişir. Yoğun olarak değiştirilmiş veritabanlarının boyutu daha büyük farklar ve günlük yedeklemeleri olduğundan, bu yedeklemelerin boyutu veri değişikliği miktarıyla orantılıdır. Bu nedenle, bu tür veritabanları daha yüksek yedekleme ücretlerine sahip olur.
+Tek veritabanları için bu denklem, faturalandırılabilir toplam yedekleme depolama kullanımını hesaplamak için kullanılır:
 
-SQL veritabanı ve SQL yönetilen örneği toplam yedekleme depolama alanınızı tüm yedekleme dosyalarında birikimli bir değer olarak hesaplar. Bu değer, her saat sonunda yedekleme depolama tüketiminizi almak için bu saatlik kullanımı toplayan Azure Faturalandırma işlem hattına bildirilir. Bir veritabanı silinirse, eski yedeklemeler yaşaşımına uğrar ve silindikçe yedekleme depolama alanı tüketimi yavaş yavaş azalır. Fark yedeklemeleri ve günlük yedeklemeleri, daha önce bir tam yedeklemenin geri yüklenebilir olmasını gerektirdiğinden, üç yedekleme türünün tümü haftalık kümeler halinde temizlenir. Tüm yedeklemeler silindikten sonra faturalandırma duraklar. 
+`Total billable backup storage size = (size of full backups + size of differential backups + size of log backups) – maximum data storage`
+
+Havuza alınmış veritabanları için, faturalandırılabilir toplam yedekleme depolama boyutu havuz düzeyinde toplanır ve şu şekilde hesaplanır:
+
+`Total billable backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - maximum pool data storage`
+
+Yönetilen örnekler için, faturalandırılabilir toplam yedekleme depolama boyutu örnek düzeyinde toplanır ve aşağıdaki şekilde hesaplanır:
+
+`Total billable backup storage size = (total size of full backups + total size of differential backups + total size of log backups) – maximum instance data storage`
+
+Toplam faturalanabilir yedekleme depolama alanı, varsa GB/ay olarak ücretlendirilecektir. Bu yedekleme depolama alanı tüketimi, bireysel veritabanlarının, elastik havuzların ve yönetilen örneklerin iş yüküne ve boyutuna bağlı olarak değişir. Yoğun olarak değiştirilmiş veritabanlarının boyutu daha büyük farklar ve günlük yedeklemeleri olduğundan, bu yedeklemelerin boyutu veri değişikliği miktarıyla orantılıdır. Bu nedenle, bu tür veritabanları daha yüksek yedekleme ücretlerine sahip olur.
+
+SQL veritabanı ve SQL yönetilen örneği toplam faturalandırılabilir yedekleme depolama alanınızı tüm yedekleme dosyalarında birikimli bir değer olarak hesaplar. Bu değer, her saat sonunda yedekleme depolama tüketiminizi almak için bu saatlik kullanımı toplayan Azure Faturalandırma işlem hattına bildirilir. Bir veritabanı silinirse, eski yedeklemeler yaşaşımına uğrar ve silindikçe yedekleme depolama alanı tüketimi yavaş yavaş azalır. Fark yedeklemeleri ve günlük yedeklemeleri, daha önce bir tam yedeklemenin geri yüklenebilir olmasını gerektirdiğinden, üç yedekleme türünün tümü haftalık kümeler halinde temizlenir. Tüm yedeklemeler silindikten sonra faturalandırma duraklar. 
 
 Basitleştirilmiş bir örnek olarak, veritabanı tamamen boşta olduğu için bir veritabanının 744 GB 'lık yedekleme depolama alanı olduğunu ve bu miktarın tüm bir ay boyunca sabit kalacağını varsayalım. Bu toplu depolama tüketimini saatlik kullanıma dönüştürmek için, 744,0 (ayda 31 gün * günde 24 saat) ayırın. SQL veritabanı, veritabanının her saat 1 GB 'lık yedekleme ve sabit bir hızda tükettiği Azure Faturalandırma işlem hattına rapor eder. Azure Faturalandırma, bu tüketimi toplar ve tüm ay için 744 GB kullanımını gösterir. Maliyet, bölgenizdeki tutara/GB/ay oranına göre yapılır.
 

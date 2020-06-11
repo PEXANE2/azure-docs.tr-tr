@@ -3,12 +3,12 @@ title: Şablonla gizli Key Vault
 description: Dağıtım sırasında anahtar kasasından bir parametre olarak bir parolanın nasıl geçirileceğini gösterir.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: d21a7d727091b427fee59e22db6a77a495a4eab7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb57e680090a38a5be725daa7b3a118039aa35f6
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458275"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677874"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma
 
@@ -18,7 +18,7 @@ Bu makale, bir şablon parametresi olarak ' de hassas bir değer geçirme senary
 
 ## <a name="deploy-key-vaults-and-secrets"></a>Anahtar kasaları ve gizli dizileri dağıtma
 
-Şablon dağıtımı sırasında bir anahtar kasasına erişmek için, anahtar `enabledForTemplateDeployment` kasasında öğesini olarak `true`ayarlayın.
+Şablon dağıtımı sırasında bir anahtar kasasına erişmek için, `enabledForTemplateDeployment` anahtar kasasında öğesini olarak ayarlayın `true` .
 
 Zaten bir Key Vault varsa, şablon dağıtımlarının izin verdiğinden emin olun.
 
@@ -95,11 +95,11 @@ Anahtar kasaları oluşturma ve gizli dizileri ekleme hakkında daha fazla bilgi
 - [PowerShell kullanarak bir gizli dizi ayarlama ve alma](../../key-vault/secrets/quick-create-powershell.md)
 - [Portalı kullanarak bir gizli dizi ayarlama ve alma](../../key-vault/secrets/quick-create-portal.md)
 - [.NET kullanarak bir gizli dizi ayarlama ve alma](../../key-vault/secrets/quick-create-net.md)
-- [Node. js kullanarak bir gizli dizi ayarlama ve alma](../../key-vault/secrets/quick-create-node.md)
+- [Node.jskullanarak gizli dizi ayarlama ve alma](../../key-vault/secrets/quick-create-node.md)
 
 ## <a name="grant-access-to-the-secrets"></a>Gizli dizileri için erişim izni verme
 
-Şablonu dağıtan kullanıcının, kaynak grubunun ve anahtar kasasının kapsamı için `Microsoft.KeyVault/vaults/deploy/action` izne sahip olması gerekir. [Sahip](../../role-based-access-control/built-in-roles.md#owner) ve [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) rollerinin her ikisi de bu erişimi verir. Anahtar Kasası oluşturduysanız, izninizin olması gerekir.
+Şablonu dağıtan kullanıcının, `Microsoft.KeyVault/vaults/deploy/action` kaynak grubunun ve anahtar kasasının kapsamı için izne sahip olması gerekir. [Sahip](../../role-based-access-control/built-in-roles.md#owner) ve [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) rollerinin her ikisi de bu erişimi verir. Anahtar Kasası oluşturduysanız, izninizin olması gerekir.
 
 Aşağıdaki yordamda, en düşük izinle bir rol oluşturma ve kullanıcının nasıl atanacağı gösterilmektedir
 
@@ -163,7 +163,7 @@ Aşağıdaki şablon, yönetici parolası içeren bir SQL Server dağıtır. Pas
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminLogin": {
@@ -201,7 +201,7 @@ Aşağıdaki parametre dosyasında, Anahtar Kasası parolasının zaten mevcut o
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "adminLogin": {
@@ -267,7 +267,7 @@ Aşağıdaki şablon Anahtar Kasası KIMLIĞINI dinamik olarak oluşturur ve bir
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "location": {
@@ -314,7 +314,7 @@ Aşağıdaki şablon Anahtar Kasası KIMLIĞINI dinamik olarak oluşturur ve bir
           "scope": "inner"
         },
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {
             "adminLogin": {

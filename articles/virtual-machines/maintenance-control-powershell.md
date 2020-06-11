@@ -3,16 +3,16 @@ title: PowerShell kullanarak Azure sanal makineleri için bakım denetimi
 description: Bakım denetimini ve PowerShell 'i kullanarak Azure VM 'lerinize bakım uygulandığını nasıl denetleyeceğinizi öğrenin.
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 834ff39b0ffd8ee38156e468008c332971b742d0
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: e0bb3586d637c9399db057b7cd3225bf8cd36e2f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996468"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675852"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Bakım denetimi ve Azure PowerShell güncelleştirmeleri denetleme
 
@@ -20,13 +20,13 @@ Bakım denetimi, yalıtılmış sanal makinelerinize ve Azure adanmış ana bilg
  
 ## <a name="enable-the-powershell-module"></a>PowerShell modülünü etkinleştir
 
-Güncel olduğundan `PowerShellGet` emin olun.    
+Güncel olduğundan emin olun `PowerShellGet` .    
 
 ```azurepowershell-interactive  
 Install-Module -Name PowerShellGet -Repository PSGallery -Force 
 ``` 
 
-`Az.Maintenance` PowerShell modülünü yükler.     
+`Az.Maintenance`PowerShell modülünü yükler.     
 
 ```azurepowershell-interactive  
 Install-Module -Name Az.Maintenance
@@ -34,7 +34,7 @@ Install-Module -Name Az.Maintenance
 
 Yerel olarak yüklüyorsanız, PowerShell komut dosyanızı yönetici olarak açtığınızdan emin olun.
 
-Ayrıca, *Güvenilmeyen bir depodan*yüklemek istediğinizi onaylamanız istenebilir. Modülünü `Y` yüklemek için yazın veya **Evet** ' i seçin.
+Ayrıca, *Güvenilmeyen bir depodan*yüklemek istediğinizi onaylamanız istenebilir. `Y`Modülünü yüklemek için yazın veya **Evet** ' i seçin.
 
 
 ## <a name="create-a-maintenance-configuration"></a>Bakım yapılandırması oluşturma
@@ -57,7 +57,7 @@ $config = New-AzMaintenanceConfiguration `
    -Location  eastus
 ```
 
-Kullanımı `-MaintenanceScope host` , bakım yapılandırmasının konaktaki güncelleştirmeleri denetlemek için kullanılmasını sağlar.
+Kullanımı, `-MaintenanceScope host` bakım yapılandırmasının konaktaki güncelleştirmeleri denetlemek için kullanılmasını sağlar.
 
 Aynı ada sahip bir yapılandırma oluşturmaya çalışırsanız, ancak farklı bir konumda hata alırsınız. Yapılandırma adları, aboneliğiniz için benzersiz olmalıdır.
 
@@ -73,7 +73,7 @@ Yapılandırmayı yalıtılmış sanal makinenize veya Azure adanmış ana bilgi
 
 ### <a name="isolated-vm"></a>Yalıtılmış VM
 
-Yapılandırma KIMLIĞINI kullanarak yapılandırmayı bir VM 'ye uygulayın. İçin `-ResourceType VirtualMachines` VM `-ResourceName`'nin adını ve VM 'nin kaynak grubunu belirtin ve sağlayın `-ResourceGroupName`. 
+Yapılandırma KIMLIĞINI kullanarak yapılandırmayı bir VM 'ye uygulayın. İçin `-ResourceType VirtualMachines` VM 'nin adını `-ResourceName` ve VM 'nin kaynak grubunu belirtin ve sağlayın `-ResourceGroupName` . 
 
 ```azurepowershell-interactive
 New-AzConfigurationAssignment `
@@ -88,7 +88,7 @@ New-AzConfigurationAssignment `
 
 ### <a name="dedicated-host"></a>Ayrılmış konak
 
-Bir yapılandırmayı adanmış bir konağa uygulamak için, konak grubu adı `-ResourceType hosts` `-ResourceParentName` ile birlikte da dahil etmeniz gerekir. `-ResourceParentType hostGroups` 
+Bir yapılandırmayı adanmış bir konağa uygulamak için, `-ResourceType hosts` `-ResourceParentName` konak grubu adı ile birlikte da dahil etmeniz gerekir `-ResourceParentType hostGroups` . 
 
 
 ```azurepowershell-interactive
@@ -106,7 +106,7 @@ New-AzConfigurationAssignment `
 
 ## <a name="check-for-pending-updates"></a>Bekleyen güncelleştirmeleri denetle
 
-Bekleyen güncelleştirmeler olup olmadığını görmek için [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) kullanın. Oturum `-subscription` açmış olduğunuz SUNUCUDAN farklıysa VM 'nin Azure aboneliğini belirtmek için kullanın.
+Bekleyen güncelleştirmeler olup olmadığını görmek için [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) kullanın. `-subscription`Oturum açmış olduğunuz sunucudan FARKLıYSA VM 'Nin Azure aboneliğini belirtmek için kullanın.
 
 Gösterilecek güncelleştirme yoksa, bu komut hiçbir şey döndürmez. Aksi takdirde, bir PSApplyUpdate nesnesi döndürür:
 
@@ -166,7 +166,7 @@ New-AzApplyUpdate `
    -ProviderName Microsoft.Compute
 ```
 
-Bu komut başarılı olduğunda bir `PSApplyUpdate` nesne döndürür. Güncelleştirme durumunu denetlemek için `Get-AzApplyUpdate` komutundaki Name özniteliğini kullanabilirsiniz. Bkz. [güncelleştirme durumunu denetleme](#check-update-status).
+Bu komut başarılı olduğunda bir `PSApplyUpdate` nesne döndürür. `Get-AzApplyUpdate`Güncelleştirme durumunu denetlemek için komutundaki Name özniteliğini kullanabilirsiniz. Bkz. [güncelleştirme durumunu denetleme](#check-update-status).
 
 ### <a name="dedicated-host"></a>Ayrılmış konak
 
@@ -183,7 +183,7 @@ New-AzApplyUpdate `
 ```
 
 ## <a name="check-update-status"></a>Güncelleştirme durumunu denetle
-Bir güncelleştirmenin durumunu denetlemek için [Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) kullanın. Aşağıda gösterilen komutlar, `default` `-ApplyUpdateName` parametresi için kullanılarak en son güncelleştirmenin durumunu gösterir. Belirli bir güncelleştirmenin durumunu almak için, güncelleştirmenin adını ( [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) komutu tarafından döndürülen) kullanabilirsiniz.
+Bir güncelleştirmenin durumunu denetlemek için [Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) kullanın. Aşağıda gösterilen komutlar, parametresi için kullanılarak en son güncelleştirmenin durumunu gösterir `default` `-ApplyUpdateName` . Belirli bir güncelleştirmenin durumunu almak için, güncelleştirmenin adını ( [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) komutu tarafından döndürülen) kullanabilirsiniz.
 
 ```text
 Status         : Completed

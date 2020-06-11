@@ -3,12 +3,12 @@ title: Şablon kaynak konumu
 description: Azure Resource Manager şablonunda kaynak konumunun nasıl ayarlanacağını açıklar.
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: a8324dac1232eecd5624e5f1dc0e6656295c0a10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0bf0ac79c7e304a61561808dc2290ceb4a379e6
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156438"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672689"
 ---
 # <a name="set-resource-location-in-arm-template"></a>ARM şablonunda kaynak konumunu ayarlama
 
@@ -38,13 +38,13 @@ az provider show \
 
 ## <a name="use-location-parameter"></a>Konum parametresini kullan
 
-Şablonunuzun dağıtımı sırasında esneklik sağlamak için, kaynakların konumunu belirtmek için bir parametre kullanın. Parametresinin varsayılan değerini olarak `resourceGroup().location`ayarlayın.
+Şablonunuzun dağıtımı sırasında esneklik sağlamak için, kaynakların konumunu belirtmek için bir parametre kullanın. Parametresinin varsayılan değerini olarak ayarlayın `resourceGroup().location` .
 
 Aşağıdaki örnekte, parametresi olarak belirtilen bir konuma dağıtılan bir depolama hesabı gösterilmektedir:
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "storageAccountType": {

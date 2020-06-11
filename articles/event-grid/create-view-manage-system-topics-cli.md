@@ -7,15 +7,29 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: spelluru
-ms.openlocfilehash: c361e7303f73aee1d2e60bd4dd0b9ed0d0e4746f
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 19a22a0a3b528a9a72fdd51c589e42bf2fba5ce7
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457466"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669945"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-using-azure-cli"></a>Azure CLı kullanarak Event Grid sistem konuları oluşturma, görüntüleme ve yönetme
 Bu makalede, Azure CLı kullanarak sistem konuları oluşturma ve yönetme işlemlerinin nasıl yapılacağı gösterilir. Sistem konularına genel bakış için bkz. [sistem konuları](system-topics.md).
+
+## <a name="install-extension-for-azure-cli"></a>Azure CLı için uzantıyı yükler
+Azure CLı için [Event Grid uzantıya](/cli/azure/azure-cli-extensions-list)ihtiyacınız vardır.
+
+CloudShell içinde:
+
+- Uzantıyı daha önce yüklediyseniz, güncelleştirin:`az extension update -n eventgrid`
+- Uzantıyı daha önce yüklemediyseniz, yükleme:`az extension add -n eventgrid`
+
+Yerel yükleme için:
+
+1. [Azure CLI 'Yı yükler](/cli/azure/install-azure-cli). En son sürüme sahip olduğunuzdan emin olun; az--Version ile kontrol edin.
+2. Uzantının önceki sürümlerini kaldırın:`az extension remove -n eventgrid`
+3. Eventgrid uzantısını şu şekilde yükler`az extension add -n eventgrid`
 
 ## <a name="create-a-system-topic"></a>Bir sistem konusu oluşturun
 

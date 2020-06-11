@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: e05256d26da2c061559bcc8e50e9ecce6d8425a0
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 39bb129d6edba168ed1ed45b1de205a206c83ed2
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248218"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678180"
 ---
 # <a name="export-your-application"></a>Uygulamanızı dışarı aktarma
 
@@ -59,7 +59,6 @@ Bir uygulama şablonu oluşturduğunuzda, bu, aşağıdaki öğeleri içermez:
 
 - Cihazlar
 - Kullanıcılar
-- İş tanımları
 - Sürekli veri dışa aktarma tanımları
 
 Bu öğeleri bir uygulama şablonundan oluşturulan tüm uygulamalara el ile ekleyin.

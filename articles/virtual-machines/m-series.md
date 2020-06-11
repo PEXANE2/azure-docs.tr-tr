@@ -1,24 +1,24 @@
 ---
 title: A serisi-Azure sanal makineleri
 description: D serisi VM 'Ler için Özellikler.
-services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 7b84537693b3ffc3f7398c6eb84615a96bf8e7df
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 4050a74dfef1fb31939ba716cfbaf78577f1aaef
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744693"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675953"
 ---
 # <a name="m-series"></a>M serisi
 
-M serisi, yüksek bir vCPU sayısı (128 vCPU kadar) ve büyük miktarda bellek (3,8 TiB 'ye kadar) sunar. Son derece büyük veritabanları veya yüksek sanal CPU sayılarından ve büyük miktarda bellekten faydalanabilir diğer uygulamalar için de idealdir. Her ikisi de&reg; Intel Xeon&reg; CPU E7-8890 v3 @ 2.50 GHz ve Intel&reg; Xeon&reg; Platinum 8280(Cascade Lake) üzerinde desteklenir.
+M serisi, yüksek bir vCPU sayısı (128 vCPU kadar) ve büyük miktarda bellek (3,8 TiB 'ye kadar) sunar. Son derece büyük veritabanları veya yüksek sanal CPU sayılarından ve büyük miktarda bellekten faydalanabilir diğer uygulamalar için de idealdir. Her ikisi de Intel &reg; Xeon &reg; CPU E7-8890 v3 @ 2.50 GHz ve Intel &reg; Xeon &reg; Platinum 8280(Cascade Lake) üzerinde desteklenir.
 
-A serisi VM 'nin özelliği Intel&reg; hiper Iş parçacığı teknolojisi.
+A serisi VM 'nin özelliği Intel &reg; hiper Iş parçacığı teknolojisi.
 
 ACU: 160-180
 

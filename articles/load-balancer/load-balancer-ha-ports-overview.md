@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: d3bd1156de4aed7d1ea5c530605697f2dc80d63c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e60d44278bb568b1aaaf416fddf35d02596a5ee2
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476984"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674661"
 ---
 # <a name="high-availability-ports-overview"></a>Yüksek kullanılabilirlik bağlantı noktalarına genel bakış
 
@@ -89,13 +89,10 @@ Senaryonuz aynı arka uç havuzu için birden fazla HA bağlantı noktası ön u
 
 Arka uç kaynakları için *bir* genel standart Load Balancer KAYNAĞıNı, ha bağlantı noktalarıyla tek bir iç standart Load Balancer birlikte yapılandırabilirsiniz.
 
->[!NOTE]
->Bu özellik şu anda Azure Resource Manager şablonları aracılığıyla kullanılabilir, ancak Azure portal aracılığıyla kullanılamaz.
-
 ## <a name="limitations"></a>Sınırlamalar
 
 - HA bağlantı noktaları Yük Dengeleme kuralları yalnızca iç Standart Load Balancer için kullanılabilir.
-- Bir HA bağlantı noktaları Yük Dengeleme kuralının birleştirilmesi ve HA olmayan bir bağlantı noktaları, aynı arka uç IP 'leri işaret eden bir yük dengeleme kuralı desteklenmez.
+- Aynı arka uç IP yapılandırmasına işaret eden bir HA bağlantı noktaları Yük Dengeleme kuralı ve HA olmayan bir bağlantı noktası yük dengeleme kuralı, her ikisinde de kayan IP etkin olmadığı müddetçe desteklenmez.
 - Mevcut IP parçaları, ilk paket ile aynı hedefe HA bağlantı noktaları Yük Dengeleme kuralları tarafından iletilir.  IP fragmenting bir UDP veya TCP paketi desteklenmez.
 - Akış simetrileri (öncelikli olarak NVA senaryolarında), yalnızca Yukarıdaki diyagramda gösterildiği gibi kullanıldığında ve HA bağlantı noktaları Yük Dengeleme kuralları kullanıldığında, arka uç örneği ve tek bir NIC (ve tek IP yapılandırması) ile desteklenir. Başka hiçbir senaryoda sağlanmaz. Bu, iki veya daha fazla Load Balancer kaynağı ve ilgili kuralları bağımsız kararlar verirken ve hiçbir şekilde koordine etmediği anlamına gelir. Bkz. [ağ sanal cihazları](#nva)için açıklama ve diyagram. Birden çok NIC kullandığınızda veya bir ortak ve dahili Load Balancer arasında NVA 'yı kullanarak, Flow simetri kullanılamıyor.  Yanıtların aynı NVA 'ya ulaşmasına izin vermek için, giriş akışını gereç IP 'si ile çözmek için kaynak tarafından geçici bir çözüm bulabilirsiniz.  Ancak, tek bir NIC kullanmanız ve Yukarıdaki diyagramda gösterilen başvuru mimarisini kullanmanız önemle önerilir.
 

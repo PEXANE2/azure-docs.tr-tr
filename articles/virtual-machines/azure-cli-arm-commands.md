@@ -2,18 +2,17 @@
 title: Azure klasik CLı komutları
 description: Kaynakları yönetmek için Azure komut satırı arabirimi (CLı) komutları.
 author: cynthn
-manager: gwallace
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: ad213cc02f707609a837ea66b79e51c6f2a617f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3e5fd1a6934d246463e3fd5ad24db7079ca088d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250887"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678435"
 ---
 # <a name="azure-classic-cli-commands"></a>Azure klasik CLı komutları 
 
@@ -25,11 +24,11 @@ Bu makalede, Azure kaynakları oluşturmak ve yönetmek için sık kullandığı
 
 Başlamak için ilk olarak [Azure klasık CLI 'yı yükledikten](../cli-install-nodejs.md) sonra [Azure aboneliğinize bağlanın](/cli/azure/authenticate-azure-cli).
 
-Kaynak Yöneticisi modundaki komut satırındaki geçerli komut sözdizimi ve seçenekleri için, belirli bir komut için `azure help` Yardımı göstermek üzere veya yazın `azure help [command]`. Ayrıca, belirli Azure hizmetlerini oluşturmak ve yönetmek için belgelerde CLı örnekleri de bulabilirsiniz.
+Kaynak Yöneticisi modundaki komut satırındaki geçerli komut sözdizimi ve seçenekleri için, `azure help` belirli bir komut için Yardımı göstermek üzere veya yazın `azure help [command]` . Ayrıca, belirli Azure hizmetlerini oluşturmak ve yönetmek için belgelerde CLı örnekleri de bulabilirsiniz.
 
-İsteğe bağlı parametreler köşeli ayraç içinde gösterilir (örneğin, `[parameter]`). Diğer tüm parametreler gereklidir.
+İsteğe bağlı parametreler köşeli ayraç içinde gösterilir (örneğin, `[parameter]` ). Diğer tüm parametreler gereklidir.
 
-Burada belgelenen komuta özgü isteğe bağlı parametrelerin yanı sıra, istek seçenekleri ve durum kodları gibi ayrıntılı çıktıyı göstermek için kullanılabilecek üç isteğe bağlı parametre vardır. `-v` Parametresi ayrıntılı çıkış sağlar ve `-vv` parametresi daha ayrıntılı ayrıntılı çıkış sağlar. `--json` Seçeneği sonucunda ham JSON biçiminde çıkış yapılır.
+Burada belgelenen komuta özgü isteğe bağlı parametrelerin yanı sıra, istek seçenekleri ve durum kodları gibi ayrıntılı çıktıyı göstermek için kullanılabilecek üç isteğe bağlı parametre vardır. `-v`Parametresi ayrıntılı çıkış sağlar ve `-vv` parametresi daha ayrıntılı ayrıntılı çıkış sağlar. `--json`Seçeneği sonucunda ham JSON biçiminde çıkış yapılır.
 
 ## <a name="setting-the-resource-manager-mode"></a>Kaynak Yöneticisi modunu ayarlama
 Azure CLı Kaynak Yöneticisi modu komutlarını etkinleştirmek için aşağıdaki komutu kullanın.
@@ -125,7 +124,7 @@ Azure abonelik bilgileriniz, araç tarafından hesabınıza bağlanmak için kul
 
     config set <name> <value>
 
-**Azure CLı çalışma modunu ya da `arm` olarak ayarlar`asm`**
+**Azure CLı çalışma modunu ya da olarak ayarlar `arm``asm`**
 
     config mode [options] <modename>
 
@@ -1696,7 +1695,7 @@ Parametre seçenekleri:
 
     tag show [options] [name]
 
-## <a name="virtual-machines"></a>Virtual Machines
+## <a name="virtual-machines"></a>Sanal Makineler
 **VM oluşturma**
 
     vm create [options] <resource-group> <name> <location> <os-type>
@@ -1706,7 +1705,7 @@ Parametre seçenekleri:
     vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password
 
 > [!TIP]
-> CLı sürüm 0,10 ' den başlayarak, bazı popüler Market görüntüleri `image-urn` Için "UbuntuLTS" veya "Win2012R2Datacenter" gibi bir kısa ad sağlayabilirsiniz. Seçenekler `azure help vm quick-create` için çalıştırın. Ayrıca, sürüm 0,10 ' den itibaren `azure vm quick-create` , seçili bölgede varsa, varsayılan olarak Premium depolama kullanır.
+> CLı sürüm 0,10 ' den başlayarak, `image-urn` bazı popüler Market görüntüleri için "UbuntuLTS" veya "Win2012R2Datacenter" gibi bir kısa ad sağlayabilirsiniz. `azure help vm quick-create`Seçenekler için çalıştırın. Ayrıca, sürüm 0,10 ' den itibaren, `azure vm quick-create` Seçili bölgede varsa, varsayılan olarak Premium depolama kullanır.
 > 
 > 
 

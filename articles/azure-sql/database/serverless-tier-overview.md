@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 5/13/2020
-ms.openlocfilehash: 3d3eee7dc57a2438ccf726851025c700824a5e3a
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.date: 6/10/2020
+ms.openlocfilehash: 00c60a0ff20c67b63b2ca93f9e5997e78a283f26
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322082"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667599"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL veritabanı sunucusuz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -66,7 +66,7 @@ Aşağıdaki tabloda sunucusuz bilgi işlem katmanı ve sağlanan işlem katman�
 
 | | **Sunucusuz işlem** | **Sağlanan işlem** |
 |:---|:---|:---|
-|**Veritabanı kullanım deseninin**| Zaman içinde daha düşük ortalama işlem kullanımı ile öngörülemeyen kullanım |  Zamana göre daha fazla ortalama işlem kullanımı veya elastik havuzlar kullanan birden çok veritabanı içeren daha düzenli kullanım düzenleri.|
+|**Veritabanı kullanım deseninin**| Zaman içinde daha düşük ortalama işlem kullanımı ile öngörülemeyen kullanım | Zamana göre daha fazla ortalama işlem kullanımı veya elastik havuzlar kullanan birden çok veritabanı içeren daha düzenli kullanım düzenleri.|
 | **Performans yönetimi çabaları** |Lower|Daha yüksek|
 |**İşlem ölçekleme**|Automatic|El ile|
 |**İşlem yanıtlama hızı**|Etkin olmayan dönemlerden sonra düşük|Hemen|
@@ -127,7 +127,7 @@ Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeni
 
 |Öne çıkan özelliği|Oto özgeçmişi tetikleyicisi|
 |---|---|
-|Kimlik doğrulaması ve yetkilendirme|Oturum aç|
+|Kimlik doğrulama ve yetkilendirme|Oturum aç|
 |Tehdit algılama|Veritabanı veya sunucu düzeyinde tehdit algılama ayarlarını etkinleştirme/devre dışı bırakma.<br>Tehdit algılama ayarlarını veritabanı veya sunucu düzeyinde değiştirme.|
 |Veri bulma ve sınıflandırma|Duyarlılık etiketlerini ekleme, değiştirme, silme veya görüntüleme|
 |Denetim|Denetim kayıtlarını görüntüleme.<br>Denetim ilkesini güncelleştirme veya görüntüleme.|
@@ -161,19 +161,8 @@ Bir sunucusuz veritabanını oto Resume ve oto duraklatma gecikmesi genellikle 1
 
 Yeni bir veritabanı oluşturmak veya var olan bir veritabanını sunucusuz bir işlem katmanına taşımak, sağlanan işlem katmanında yeni bir veritabanı oluşturma ile aynı kalıbı izler ve aşağıdaki iki adımı içerir.
 
-1. Hizmet hedefini belirtin. Hizmet hedefi, hizmet katmanını, donanım üretimini ve maks. sanal çekirdekleri bir bütün olarak kullanıma önerir. Aşağıdaki tabloda hizmet hedefi seçenekleri gösterilmektedir:
+1. Hizmet hedefini belirtin. Hizmet hedefi, hizmet katmanını, donanım üretimini ve maks. sanal çekirdekleri bir bütün olarak kullanıma önerir. Hizmet hedefi seçenekleri için bkz. [sunucusuz kaynak limitleri](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)
 
-   |Hizmet hedefi adı|Hizmet katmanı|Donanım oluşturma|En fazla sanal çekirdek|
-   |---|---|---|---|
-   |GP_S_Gen5_1|Genel Amaçlı|5. nesil|1|
-   |GP_S_Gen5_2|Genel Amaçlı|5. nesil|2|
-   |GP_S_Gen5_4|Genel Amaçlı|5. nesil|4|
-   |GP_S_Gen5_6|Genel Amaçlı|5. nesil|6|
-   |GP_S_Gen5_8|Genel Amaçlı|5. nesil|8|
-   |GP_S_Gen5_10|Genel Amaçlı|5. nesil|10|
-   |GP_S_Gen5_12|Genel Amaçlı|5. nesil|12|
-   |GP_S_Gen5_14|Genel Amaçlı|5. nesil|14|
-   |GP_S_Gen5_16|Genel Amaçlı|5. nesil|16|
 
 2. İsteğe bağlı olarak, varsayılan değerlerini değiştirmek için en düşük sanal çekirdekleri ve oto duraklatma gecikmesini belirtin. Aşağıdaki tabloda bu parametreler için kullanılabilir değerler gösterilmektedir.
 

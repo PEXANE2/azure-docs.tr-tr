@@ -4,7 +4,6 @@ description: Azure 'da SQL Server sanal makinenize nasıl bağlanacağınızı �
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
@@ -14,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c014799cc0e6a2c985bb6df5872d65880e7d2a26
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: aa0fdddbf31cadad55582f4d45c8e536ce74acd9
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219391"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667443"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Azure 'da SQL Server sanal makinesine bağlanma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,7 +39,7 @@ Azure portal SQL Server VM sağlarsanız, **SQL bağlantısı**türünü belirtm
 
 Bağlantı seçenekleriniz şunlardır:
 
-| Seçenek | Açıklama |
+| Seçenek | Description |
 |---|---|
 | **Geneldir** | İnternet üzerinden SQL Server 'e bağlanın. |
 | **Özelleştirme** | Aynı sanal ağda SQL Server bağlanın. |
@@ -136,7 +135,7 @@ Portal otomatik olarak bağlantı yapılandırma seçenekleri sağlasa da, bağl
 
 Aşağıdaki tabloda, Azure VM 'de SQL Server bağlanma gereksinimleri listelenmektedir.
 
-| Gereksinim | Açıklama |
+| Gereksinim | Description |
 |---|---|
 | [SQL Server kimlik doğrulama modunu etkinleştir](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | Sanal ağ üzerinde Active Directory yapılandırmadığınız takdirde VM 'ye uzaktan bağlanmak için SQL Server kimlik doğrulaması gerekir. |
 | [SQL oturum açma oluştur](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | SQL kimlik doğrulaması kullanıyorsanız, hedef veritabanınıza yönelik izinlere de sahip olan bir Kullanıcı adı ve parolayla SQL oturum açma gerekir. |
