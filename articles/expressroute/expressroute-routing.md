@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8c86e88f481c6ad27f551a87afae7547c32a331
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273052"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676260"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute yönlendirme gereksinimleri
 Microsoft bulut hizmetlerine ExpressRoute kullanarak bağlanmak için yönlendirmeyi ayarlamanız ve yönetmeniz gerekir. Bazı bağlantı sağlayıcıları yönlendirme ayarlama ve yönetimini yönetilen bir hizmet olarak sunar. Bu hizmetin sunulup sunulmadığını öğrenmek için bağlantı sağlayıcınıza başvurun. Bu hizmet sağlanmıyorsa aşağıdaki gereksinimlere uymalısınız:
@@ -220,17 +220,18 @@ Yukarıdakilerin yanı sıra Microsoft, ön ekleri ait oldukları hizmet göre e
 
 | **Hizmet** | **BGP topluluk değeri** |
 | --- | --- |
-| Exchange Online * * | 12076:5010 |
-| SharePoint Online * * | 12076:5020 |
-| Skype Kurumsal Çevrimiçi | 12076:5030 |
-| CRM Online * * * |12076:5040 |
-| Azure küresel hizmetler * | 12076:5050 |
+| Exchange Online\*\* | 12076:5010 |
+| SharePoint Online\*\* | 12076:5020 |
+| Skype Kurumsal Çevrimiçi\*\*/\*\*\* | 12076:5030 |
+| CRM Online\*\*\*\* |12076:5040 |
+| Azure küresel hizmetler\* | 12076:5050 |
 | Azure Active Directory |12076:5060 |
 | Diğer Office 365 çevrimiçi hizmetleri * * | 12076:5100 |
 
-* Azure küresel hizmetler şu anda yalnızca Azure DevOps içerir. \
-* * Microsoft 'un yetkilendirmesi gereken yetkilendirme, [Microsoft eşlemesi için yol filtrelerini yapılandırma](how-to-routefilter-portal.md) konusuna bakın\
-CRM Online, Dynamics v 8.2 ve daha fazlasını destekler. Daha yüksek sürümler için, Dynamics dağıtımlarınız için bölgesel topluluğu seçin.
+\*Azure küresel hizmetler şu anda yalnızca Azure DevOps içerir. \
+\*\*Microsoft 'un yetkilendirmesi gereken yetkilendirme, [Microsoft eşlemesi için rota filtrelerini yapılandırma](how-to-routefilter-portal.md) konusuna bakın\
+\*\*\*Bu topluluk, Microsoft ekipleri Hizmetleri için gerekli yolları da yayımlar. \
+\*\*\*\*CRM Online, Dynamics v 8.2 ve daha fazlasını destekler. Daha yüksek sürümler için, Dynamics dağıtımlarınız için bölgesel topluluğu seçin.
 
 > [!NOTE]
 > Microsoft, Microsoft'a tanıtılan yollar üzerinde ayarladığınız hiçbir BGP topluluk değerini dikkate almaz.
@@ -241,7 +242,7 @@ CRM Online, Dynamics v 8.2 ve daha fazlasını destekler. Daha yüksek sürümle
 
 | **Ulusal Bulutlar Azure Bölgesi**| **BGP topluluk değeri** |
 | --- | --- |
-| **ABD Devleti** |  |
+| **ABD devleti** |  |
 | US Gov Arizona | 12076:51106 |
 | US Gov Iowa | 12076:51109 |
 | US Gov Virginia | 12076:51105 |
@@ -252,7 +253,7 @@ CRM Online, Dynamics v 8.2 ve daha fazlasını destekler. Daha yüksek sürümle
 
 | **Ulusal Bulutlardaki Hizmet** | **BGP topluluk değeri** |
 | --- | --- |
-| **ABD Devleti** |  |
+| **ABD devleti** |  |
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Skype Kurumsal Çevrimiçi Sürüm |12076:5130 |

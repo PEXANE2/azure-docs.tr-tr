@@ -6,12 +6,12 @@ author: brahmnes
 ms.author: bfung
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8af688e38003e0613a06d7d8622ce279a3838589
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6928da704236c4bb5492f99a4a5327bf297a323d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298264"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676860"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Azure App Service .NET uygulamaları için Snapshot Debugger etkinleştirme
 
@@ -28,12 +28,12 @@ Bir uygulama için Snapshot Debugger etkinleştirmek üzere aşağıdaki yönerg
 
 Application Insights Snapshot Debugger, App Services çalışma zamanının bir parçası olarak önceden yüklenir, ancak App Service uygulamanız için anlık görüntüler almak üzere açmanız gerekir. Bir uygulamayı dağıttıktan sonra, kaynak koda Application Insights SDK eklemiş olsanız bile, anlık görüntü hata ayıklayıcıyı etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. Azure portal **App Services** bölmesine gidin.
-2. **Ayarlar > Application Insights** bölmesine gidin.
+1. App Service için Azure Denetim Masası ' na gidin.
+2. **Ayarlar > Application Insights** sayfasına gidin.
 
    ![App Services portalında App Insights 'ı etkinleştirme](./media/snapshot-debugger/applicationinsights-appservices.png)
 
-3. Uygulamanızı izlemek üzere yeni bir kaynak oluşturmak veya var olan bir Application Insights kaynağını seçmek için bölmedeki yönergeleri izleyin. Ayrıca Snapshot Debugger için her iki **anahtar de bulunduğundan emin olun.**
+3. Uygulamanızı izlemek üzere yeni bir kaynak oluşturmak veya var olan bir Application Insights kaynağını seçmek için sayfadaki yönergeleri izleyin. Ayrıca Snapshot Debugger için her iki **anahtar de bulunduğundan emin olun.**
 
    ![App Insights site uzantısı Ekle][Enablement UI]
 

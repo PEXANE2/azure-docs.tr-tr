@@ -4,7 +4,6 @@ description: Bu makalede, Azure sanal makinelerinde SQL Server yönelik uygulama
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: jroth
 editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 41863c8d-f3a3-4584-ad86-b95094365e05
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mathoma
-ms.openlocfilehash: 0c70e4aa29f987ab718a12bdba6b7d7631233c9b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: b77756f81eb5085b9c1d386b7c59d5aae03d1fb8
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343736"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669503"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server için uygulama desenleri ve geliştirme stratejileri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

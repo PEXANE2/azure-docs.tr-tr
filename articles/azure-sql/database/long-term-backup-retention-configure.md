@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 04/14/2020
-ms.openlocfilehash: 57b0c6286cbf40d1694d1f7fda08bc9b02641658
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: debcc890e7040a21eeb53ac1f38dc2526ace18de
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324275"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669673"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL veritabanı uzun süreli yedekleme bekletmesini yönetme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -72,7 +71,7 @@ Bir LTR ilkesiyle belirli bir veritabanı için tutulan yedeklemeleri görüntü
 > [!NOTE]
 > Buradan [var olan veritabanına kopyalamak için geri yüklenen veritabanından veri ayıklama veya var olan veritabanını silerek geri yüklenen veritabanının adını var olan veritabanının adıyla değiştirme](recovery-using-backups.md#point-in-time-restore) gibi görevleri gerçekleştirmek için SQL Server Management Studio kullanarak geri yüklenen veritabanına bağlanabilirsiniz.
 
-## <a name="using-powershell"></a>PowerShell'i kullanma
+## <a name="using-powershell"></a>PowerShell’i kullanma
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

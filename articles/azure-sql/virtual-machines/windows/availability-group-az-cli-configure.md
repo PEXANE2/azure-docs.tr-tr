@@ -4,7 +4,6 @@ description: Windows Yük devretme kümesi, kullanılabilirlik grubu dinleyicisi
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.topic: article
@@ -14,12 +13,12 @@ ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 23667e8a50d2ef3a7a31aeb165c0b5d43bcf3eca
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 3366438012ecc3395e7f4ae3774316ef1ddcd3b9
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219616"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669350"
 ---
 # <a name="use-the-azure-cli-to-configure-an-always-on-availability-group-for-sql-server-on-azure-vm"></a>Azure sanal makinesinde SQL Server için her zaman açık kullanılabilirlik grubu yapılandırmak için Azure CLı 'yi kullanma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -129,7 +128,7 @@ Kullanılabilirlik grubunu el ile oluşturduktan sonra [az SQL VM AG-Listener](/
    1. [Azure Portal](https://portal.azure.com)kaynak grubunuza gidin. 
    1. Sanal ağ kaynağını seçin. 
    1. **Ayarlar** bölmesinde **Özellikler** ' i seçin. 
-   1. Sanal ağın kaynak KIMLIĞINI belirleyip `/subnets/<subnetname>` alt ağ kaynak kimliği oluşturmak için sonuna ekleyin. Örneğin:
+   1. Sanal ağın kaynak KIMLIĞINI belirleyip `/subnets/<subnetname>` alt ağ kaynak kimliği oluşturmak için sonuna ekleyin. Örnek:
       - Sanal ağ kaynak KIMLIĞINIZ:`/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet`
       - Alt ağ adınız:`default`
       - Bu nedenle, alt ağ kaynak KIMLIĞINIZ:`/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet/subnets/default`

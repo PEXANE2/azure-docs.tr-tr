@@ -4,17 +4,18 @@ description: Özel bağlantı hizmeti ARM şablonu
 services: private-link
 author: mblanco77
 ms.service: private-link
-ms.topic: article
+ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
-ms.openlocfilehash: 93a66057ddb0034f7ac9ac62578292ca38f2d2fe
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 304ee8c1180c318dd6e99b6e81eb964e264951d1
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84237132"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667038"
 ---
-# <a name="create-a-private-link-service---resource-manager-template"></a>Özel bağlantı hizmeti oluşturma-Kaynak Yöneticisi şablonu
+# <a name="quickstart-create-a-private-link-service---resource-manager-template"></a>Hızlı başlangıç: özel bağlantı hizmeti oluşturma-Kaynak Yöneticisi şablonu
 
 Bu hızlı başlangıçta, bir özel bağlantı hizmeti oluşturmak için bir Kaynak Yöneticisi şablonu kullanırsınız.
 
@@ -32,20 +33,20 @@ Bu şablon bir özel bağlantı hizmeti oluşturur.
 
 ### <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/101-privatelink-service/azuredeploy.json)
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-privatelink-service/).
 
 :::code language="json" source="~/quickstart-templates/101-privatelink-service/azuredeploy.json" range="001-432" highlight="263-289":::
 
 Şablonda birden çok Azure kaynağı tanımlanmış:
 
-- [**Microsoft. Network/privateLinkServices**](/azure/templates/microsoft.network/privateLinkServices) : özel olarak hizmeti kullanıma sunmak için özel bağlantı hizmeti
-- [**Microsoft. Network/privateendpoints**](/azure/templates/microsoft.network/privateendpoints) : özel olarak hizmete erişmek için özel uç nokta
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks) : her bir sanal makine için bir tane
 - [**Microsoft. Network/loadBalancers**](/azure/templates/microsoft.network/loadBalancers) : hizmeti barındıran sanal makineleri kullanıma sunan yük dengeleyici
+- [**Microsoft. Network/NetworkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : her bir sanal makine için bir tane olmak üzere 2 ağ arabirimi
 - [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines) : hizmeti barındıran 2 sanal makine ve özel uç nokta bağlantısını test etmek için
 - [**Microsoft. COMPUTE/virtualMachines/Extensions**](/azure/templates/Microsoft.Compute/virtualMachines/extensions) : Web sunucusu yükleyen uzantı
-- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks) : her bir sanal makine için bir tane
+- [**Microsoft. Network/privateLinkServices**](/azure/templates/microsoft.network/privateLinkServices) : özel olarak hizmeti kullanıma sunmak için özel bağlantı hizmeti
 - Her sanal makine için bir tane olmak üzere [**Microsoft. Network/Publicıpaddresses**](/azure/templates/microsoft.network/publicIpAddresses) : 2 genel IP adresi
-- [**Microsoft. Network/NetworkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : her bir sanal makine için bir tane olmak üzere 2 ağ arabirimi
+- [**Microsoft. Network/privateendpoints**](/azure/templates/microsoft.network/privateendpoints) : özel olarak hizmete erişmek için özel uç nokta
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 

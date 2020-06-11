@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd94fffded8c0e5d7b120993f069b042c2b19b6c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: aadbe07c5bb22c23ac32e46fdf7f102cdd33989a
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712358"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673112"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Bir uygulamaya self servis kaydolma Kullanıcı akışı ekleme (Önizleme)
 |     |
@@ -74,19 +74,19 @@ Ardından, self servis kaydolma için Kullanıcı akışı oluşturacak ve uygul
 
    ![Yeni bir Kullanıcı akış sayfası oluştur](media/self-service-sign-up-user-flow/create-user-flow.png)
 
-8. **Oluştur**’u seçin.
+8. **Oluştur**'u seçin.
 9. Yeni Kullanıcı akışı, **Kullanıcı akışları (Önizleme)** listesinde görünür. Gerekirse, sayfayı yenileyin.
 
 ## <a name="select-the-layout-of-the-attribute-collection-form"></a>Öznitelik koleksiyonu formunun yerleşimini seçin
 
 Kaydolma sayfasında özniteliklerin görüntülenme sırasını seçebilirsiniz. 
 
-1. [Azure portal](https://portal.azure.com) **Azure Active Directory**' ni seçin.
+1. [Azure portalda](https://portal.azure.com)**Azure Active Directory**'yi seçin.
 2. **Dış kimlikler**' i seçin, **Kullanıcı akışları ' nı (Önizleme)** seçin.
 3. Listeden self servis kaydolma Kullanıcı akışını seçin.
 4. **Özelleştir**altında **sayfa düzenleri**' ni seçin.
 5. Toplamayı seçtiğiniz öznitelikler listelenir. Görüntüleme sırasını değiştirmek için bir öznitelik seçin ve ardından **yukarı**taşı, **aşağı taşı**, **üste**taşı veya **en alta taşı**' yı seçin.
-6. **Kaydet**’i seçin.
+6. **Kaydet**'i seçin.
 
 ## <a name="add-applications-to-the-self-service-sign-up-user-flow"></a>Self Servis kaydolma Kullanıcı akışına uygulama ekleme
 
@@ -109,3 +109,5 @@ Artık uygulamaları Kullanıcı akışıyla ilişkilendirebilirsiniz.
 
 - [Sosyal kimlik sağlayıcıları listenize Google ekleyin](google-federation.md)
 - [Sosyal kimlik sağlayıcıları listenize Facebook ekleyin](facebook-federation.md)
+<!-- - [Use API connectors to customize and extend your user flows via web APIs](api-connectors-overview.md) -->
+<!-- - [Add custom approval to your user flow](self-service-sign-up-add-approvals.md) -->

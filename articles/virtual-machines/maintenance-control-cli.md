@@ -3,16 +3,16 @@ title: CLı kullanarak Azure sanal makineleri için bakım denetimi
 description: Bakım denetimi ve CLı kullanarak Azure VM 'lerinize bakım uygulandığını nasıl denetleyeceğinizi öğrenin.
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 4843b4769e31748fd5f624005792c604db18f11e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56f9873828e2f93008498beed986827a01872bf1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137510"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675868"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Bakım denetimi ve Azure CLı ile güncelleştirmeleri denetleme
 
@@ -20,7 +20,7 @@ Bakım denetimi, yalıtılmış sanal makinelerinize ve Azure adanmış ana bilg
 
 ## <a name="create-a-maintenance-configuration"></a>Bakım yapılandırması oluşturma
 
-Bakım `az maintenance configuration create` yapılandırması oluşturmak için kullanın. Bu örnek, konakta *MyConfig* adlı bir bakım yapılandırması oluşturur. 
+`az maintenance configuration create`Bakım yapılandırması oluşturmak için kullanın. Bu örnek, konakta *MyConfig* adlı bir bakım yapılandırması oluşturur. 
 
 ```azurecli-interactive
 az group create \
@@ -35,11 +35,11 @@ az maintenance configuration create \
 
 Daha sonra kullanmak için çıktıdan yapılandırma KIMLIĞINI kopyalayın.
 
-Kullanarak `--maintenanceScope host` , bakım yapılandırmasının konaktaki güncelleştirmeleri denetlemek için kullanılmasını sağlar.
+Kullanarak, `--maintenanceScope host` bakım yapılandırmasının konaktaki güncelleştirmeleri denetlemek için kullanılmasını sağlar.
 
 Aynı ada sahip bir yapılandırma oluşturmaya çalışırsanız, ancak farklı bir konumda hata alırsınız. Yapılandırma adları, aboneliğiniz için benzersiz olmalıdır.
 
-Kullanarak `az maintenance configuration list`kullanılabilir bakım yapılandırması için sorgulama yapabilirsiniz.
+Kullanarak kullanılabilir bakım yapılandırması için sorgulama yapabilirsiniz `az maintenance configuration list` .
 
 ```azurecli-interactive
 az maintenance configuration list --query "[].{Name:name, ID:id}" -o table 
@@ -47,11 +47,11 @@ az maintenance configuration list --query "[].{Name:name, ID:id}" -o table
 
 ## <a name="assign-the-configuration"></a>Yapılandırmayı ata
 
-Yapılandırmayı `az maintenance assignment create` yalıtılmış sanal makinenize veya Azure adanmış konağa atamak için kullanın.
+`az maintenance assignment create`Yapılandırmayı YALıTıLMıŞ sanal makinenize veya Azure adanmış konağa atamak için kullanın.
 
 ### <a name="isolated-vm"></a>Yalıtılmış VM
 
-Yapılandırma KIMLIĞINI kullanarak yapılandırmayı bir VM 'ye uygulayın. İçin `--resource-type virtualMachines` sanal makinenin `--resource-name`adını ve içindeki `--resource-group`VM 'ye yönelik kaynak grubunu ve VM 'nin konumunu belirtin ve sağlayın. `--location` 
+Yapılandırma KIMLIĞINI kullanarak yapılandırmayı bir VM 'ye uygulayın. İçin `--resource-type virtualMachines` sanal makinenin adını `--resource-name` ve içindeki VM 'ye yönelik kaynak grubunu `--resource-group` ve VM 'nin konumunu belirtin ve sağlayın `--location` . 
 
 ```azurecli-interactive
 az maintenance assignment create \
@@ -66,9 +66,9 @@ az maintenance assignment create \
 
 ### <a name="dedicated-host"></a>Ayrılmış konak
 
-Bir yapılandırmayı adanmış bir konağa uygulamak için, konak grubunun adı ve `--resource-type hosts` `--resource-parent-name` `--resource-parent-type hostGroups`ile birlikte dahil etmeniz gerekir. 
+Bir yapılandırmayı adanmış bir konağa uygulamak için, `--resource-type hosts` `--resource-parent-name` konak grubunun adı ve ile birlikte dahil etmeniz gerekir `--resource-parent-type hostGroups` . 
 
-Parametresi `--resource-id` , konağın kimliğidir. Adanmış ana makinenizin KIMLIĞINI almak için [az VM Host Get-instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view) ' i kullanabilirsiniz.
+Parametresi, `--resource-id` KONAĞıN kimliğidir. Adanmış ana makinenizin KIMLIĞINI almak için [az VM Host Get-instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view) ' i kullanabilirsiniz.
 
 ```azurecli-interactive
 az maintenance assignment create \
@@ -85,7 +85,7 @@ az maintenance assignment create \
 
 ## <a name="check-configuration"></a>Yapılandırmayı denetle
 
-Yapılandırmanın doğru şekilde uygulandığını doğrulayabilirsiniz veya hangi yapılandırmanın geçerli olarak uygulandığını görmek için kontrol edin `az maintenance assignment list`.
+Yapılandırmanın doğru şekilde uygulandığını doğrulayabilirsiniz veya hangi yapılandırmanın geçerli olarak uygulandığını görmek için kontrol edin `az maintenance assignment list` .
 
 ### <a name="isolated-vm"></a>Yalıtılmış VM
 
@@ -116,9 +116,9 @@ az maintenance assignment list \
 
 ## <a name="check-for-pending-updates"></a>Bekleyen güncelleştirmeleri denetle
 
-Bekleyen `az maintenance update list` güncelleştirmeler olup olmadığını görmek için kullanın. Güncelleştirme--VM 'yi içeren aboneliğin KIMLIĞI olacak abonelik.
+`az maintenance update list`Bekleyen güncelleştirmeler olup olmadığını görmek için kullanın. Güncelleştirme--VM 'yi içeren aboneliğin KIMLIĞI olacak abonelik.
 
-Güncelleştirme yoksa, komut, şu metni içeren bir hata iletisi döndürür: `Resource not found...StatusCode: 404`.
+Güncelleştirme yoksa, komut, şu metni içeren bir hata iletisi döndürür: `Resource not found...StatusCode: 404` .
 
 Güncelleştirmeler varsa, bekleyen birden çok güncelleştirme olsa bile yalnızca bir tane döndürülür. Bu güncelleştirmenin verileri bir nesnesinde döndürülür:
 
@@ -166,7 +166,7 @@ az maintenance update list \
 
 ## <a name="apply-updates"></a>Güncelleştirme uygulama
 
-Bekleyen `az maintenance apply update` güncelleştirmeleri uygulamak için kullanın. Başarı durumunda bu komut, güncelleştirmenin ayrıntılarını içeren JSON döndürür.
+`az maintenance apply update`Bekleyen güncelleştirmeleri uygulamak için kullanın. Başarı durumunda bu komut, güncelleştirmenin ayrıntılarını içeren JSON döndürür.
 
 ### <a name="isolated-vm"></a>Yalıtılmış VM
 
@@ -199,9 +199,9 @@ az maintenance applyupdate create \
 
 ## <a name="check-the-status-of-applying-updates"></a>Güncelleştirmelerin uygulama durumunu denetleyin 
 
-' İ kullanarak `az maintenance applyupdate get`güncelleştirmelerin ilerlemesini kontrol edebilirsiniz. 
+' İ kullanarak güncelleştirmelerin ilerlemesini kontrol edebilirsiniz `az maintenance applyupdate get` . 
 
-Son güncelleştirmenin sonuçlarını `default` görmek için güncelleştirme adı olarak veya öğesini çalıştırdığınızda `myUpdateName` `az maintenance applyupdate create`döndürülen güncelleştirmenin adıyla değiştirin.
+`default`Son güncelleştirmenin sonuçlarını görmek için güncelleştirme adı olarak veya öğesini `myUpdateName` çalıştırdığınızda döndürülen güncelleştirmenin adıyla değiştirin `az maintenance applyupdate create` .
 
 ```text
 Status         : Completed
@@ -245,7 +245,7 @@ az maintenance applyupdate get \
 
 ## <a name="delete-a-maintenance-configuration"></a>Bakım yapılandırmasını silme
 
-Bakım `az maintenance configuration delete` yapılandırmasını silmek için kullanın. Yapılandırma silindiğinde, bakım denetimi ilişkili kaynaklardan kaldırılır.
+`az maintenance configuration delete`Bakım yapılandırmasını silmek için kullanın. Yapılandırma silindiğinde, bakım denetimi ilişkili kaynaklardan kaldırılır.
 
 ```azurecli-interactive
 az maintenance configuration delete \

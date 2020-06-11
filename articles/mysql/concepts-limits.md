@@ -5,16 +5,23 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/5/2020
-ms.openlocfilehash: 8e2b6f43dcbf38e0e412b817937721d44a65308b
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 6/10/2020
+ms.openlocfilehash: 9b808eb69a013cb513de4ef15f112d7392dfe36e
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559221"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669887"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı sınırlamaları
 Aşağıdaki bölümlerde kapasiteyi, depolama altyapısı desteğini, ayrıcalık desteğini, veri işleme ekstresi desteğini ve veritabanı hizmetindeki işlev sınırlarını anlatmaktadır. Ayrıca bkz. MySQL veritabanı altyapısı için geçerli olan [genel sınırlamalar](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) .
+
+## <a name="server-parameters"></a>Sunucu parametreleri
+
+> [!NOTE]
+> Ve gibi sunucu parametreleri için Min/Max değerlerini arıyorsanız `max_connections` `innodb_buffer_pool_size` , bu bilgiler **[sunucu parametreleri](./concepts-server-parameters.md)** makalesine taşınır.
+
+MySQL için Azure veritabanı, sunucu parametrelerinin değerlerini ayarlamayı destekler. Bazı parametrelerin en küçük ve en büyük değeri (örn. `max_connections`, `join_buffer_size` , `query_cache_size` ), sunucunun fiyatlandırma katmanı ve sanal çekirdekleri tarafından belirlenir. Bu sınırlar hakkında daha fazla bilgi için [sunucu parametrelerine](./concepts-server-parameters.md) bakın. 
 
 ## <a name="storage-engine-support"></a>Depolama altyapısı desteği
 
@@ -35,8 +42,6 @@ Aşağıdaki bölümlerde kapasiteyi, depolama altyapısı desteğini, ayrıcal�
 - Süper ayrıcalık: benzer [süper ayrıcalık](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) da kısıtlıdır.
 - DEFINER: oluşturmak için süper ayrıcalıklar gerektirir ve kısıtlıdır. Bir yedekleme kullanarak veri içeri aktardıysanız, `CREATE DEFINER` komutları el ile veya `--skip-definer` bir mysqldump gerçekleştirirken komutunu kullanarak kaldırın.
 
-## <a name="server-parameters"></a>Sunucu parametreleri
-MySQL için Azure veritabanı, sunucu parametrelerinin değerlerini ayarlamayı destekler. Bazı parametrelerin min ve Max değerleri, sunucunun fiyatlandırma katmanı ve sanal çekirdekleri tarafından belirlenir. Bu sınırlar hakkında daha fazla bilgi için [sunucu parametrelerine](./concepts-server-parameters.md) bakın. 
 
 ## <a name="data-manipulation-statement-support"></a>Veri işleme ekstresi desteği
 

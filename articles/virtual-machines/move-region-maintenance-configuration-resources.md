@@ -1,19 +1,17 @@
 ---
 title: Bakım yapılandırmasıyla ilişkili kaynakları başka bir bölgeye taşıma
 description: Bir VM bakım yapılandırmasıyla ilişkili kaynakları başka bir Azure bölgesine taşımayı öğrenin
-services: virtual-machines
 author: shants123
 ms.service: virtual-machines
-ms.topic: article
-ms.tgt_pltfrm: vm
+ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 3e271e2467b495e79a93ce5eab5edee36e65e619
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: baf7201176fc3d6c70881817ff21b44c2615241a
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78304452"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676900"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>Bakım denetim yapılandırmasındaki kaynakları başka bir bölgeye taşıma
 
@@ -42,7 +40,7 @@ Bir bakım denetimi yapılandırmasıyla ilişkili kaynakları taşımaya başla
 
 1. Başlamadan önce bu değişkenleri tanımlayın. Her biri için bir örnek sağladık.
 
-    **Değişken** | **Bilgileri** | **Örneğinde**
+    **Değişken** | **Bilgileri** | **Örnek**
     --- | ---
     $subId | Bakım yapılandırmasını içeren aboneliğin KIMLIĞI | "bizim-abonelik KIMLIĞI"
     $rsrcGroupName | Kaynak grubu adı (Azure VM) | "VMResourceGroup"

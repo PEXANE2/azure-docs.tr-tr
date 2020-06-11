@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: a58fd7c6f50cd46ac3c34cd7e5bd329c0007e5f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7b98bb446fc400007e4061d09db8084960702943
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260199"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668296"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Azure CDN için geçerli POP IP listesini al
 
@@ -39,7 +39,7 @@ Microsoft 'un arka uç IP adresi alanından ve Azure 'un altyapı hizmetlerinden
 * Microsoft 'un IPv4 arka uç IP alanından Azure CDN: 147.243.0.0/16
 * Microsoft 'un IPv6 arka uç IP alanından Azure CDN: 2a01:111:2050::/44
 
-Microsoft Hizmetleri için IP aralıkları ve hizmet etiketleri [burada](https://www.microsoft.com/download/details.aspx?id=56519) bulunabilir
+Hizmet etiketlerini Microsoft 'tan Azure CDN kullanmak için lütfen Azure ön kapısı etiketini kullanın. Microsoft Hizmetleri için IP aralıkları ve hizmet etiketleri [burada](https://www.microsoft.com/download/details.aspx?id=56519) bulunabilir
 
 
 ## <a name="typical-use-case"></a>Tipik kullanım örneği

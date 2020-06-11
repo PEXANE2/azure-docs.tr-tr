@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: overview
-ms.date: 03/24/2020
+ms.date: 06/10/2020
 ms.author: victorh
-ms.openlocfilehash: 70014b5ab37a07e01eaa2db3d729b7d8af520842
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dd6ec2057ede076511b567c013fc1b6fa12d8281
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81311770"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669741"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Azure Application Gateway 'daki yenilikler nelerdir?
 
@@ -25,8 +25,9 @@ Azure Application Gateway, sürekli olarak güncelleştirilir. En son gelişmele
 
 ## <a name="new-features"></a>Yeni özellikler
 
-|Özellik  |Açıklama  |Eklenme tarihi  |
+|Öne çıkan özelliği  |Description  |Eklenme tarihi  |
 |---------|---------|---------|
+| Application Gateway giriş denetleyicisi (AGIC) AKS eklentisi (Önizleme) |Application Gateway giriş denetleyicisi artık Azure CLı aracılığıyla tek bir satırda yerel bir AKS eklentisi olarak dağıtılabilir. AKS eklentisi olması, AGC 'nin tamamen yönetilen bir hizmet olmasına, ancak müşterinin AKS kümesinde çalışmaya devam etmesine olanak tanır. Daha fazla bilgi için bkz. [agic eklenti farkları](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on). |Haziran 2020 |
 | V2 'de Kullanıcı tanımlı yollar (UDR) (Önizleme) |Kullanıcı tanımlı yollar artık Application Gateway v2 SKU 'Larında bazı senaryolarda desteklenmektedir. Daha fazla bilgi için bkz. [Application Gateway yapılandırmasına genel bakış](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet). |Mart 2020 |
 |Benzeşim tanımlama bilgisi değişiklikleri |Tanımlama bilgisi tabanlı benzeşim etkinleştirildiğinde, mevcut Applicationgatewaybenzeşim tanımlama bilgisine ek olarak *Applicationgatewayaffinitycors* adlı başka bir özdeş tanımlama bilgisini Application Gateway çıkartır. *Applicationgatewayaffinitycors* öğesine eklenmiş iki özniteliğe sahiptir (*SameSite = None; Güvenli*), geçici oturumlar için de yapışkan oturumların korunmasını sağlamak üzere. Daha fazla bilgi için bkz. [Application Gateway tanımlama bilgisi tabanlı benzeşim](configuration-overview.md#cookie-based-affinity) . |Şubat 2020 |
 |Araştırma geliştirmeleri |Application Gateway v2 SKU 'sunda özel araştırma geliştirmeleriyle, [araştırma yapılandırması](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#create-probe-for-application-gateway-v2-sku)basitleştik ve [isteğe bağlı arka uç durumu testlerini](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#test-backend-health-with-the-probe) kolaylaştırdık ve arka uç sistem durumu sorunlarını gidermenize yardımcı olmak için [daha fazla tanılama bilgisi](https://docs.microsoft.com/azure/application-gateway/application-gateway-backend-health-troubleshooting#error-messages) ekledik.  |Ekim 2019 |

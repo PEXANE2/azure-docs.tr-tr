@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f187cc47d9c64c8257cc097734fa41e10629f1c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0b0acd84112e9fd997cb0d60a914da9528cffd9a
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597453"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673046"
 ---
 # <a name="define-custom-attributes-for-user-flows-preview"></a>Kullanıcı akışları için özel öznitelikler tanımlayın (Önizleme)
 |     |
@@ -25,13 +25,13 @@ ms.locfileid: "83597453"
 
 Her uygulama için, kayıt sırasında toplamak istediğiniz bilgiler için farklı gereksinimlerinize sahip olabilirsiniz. Azure AD, belirli ad, soyadı, şehir ve posta kodu gibi özniteliklerde depolanan yerleşik bir bilgi kümesiyle gelir. Azure AD ile, dış Kullanıcı Kullanıcı akışından kaydolduğunda Konuk hesapta depolanan özniteliklerin kümesini genişletebilirsiniz.
 
-Azure portal özel öznitelikler oluşturabilir ve bunları self servis kaydolma Kullanıcı akışlarınızda kullanabilirsiniz. Ayrıca, [MICROSOFT Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api)'sini kullanarak bu öznitelikleri okuyabilir ve yazabilirsiniz. Microsoft Graph API, uzantı öznitelikleri olan bir kullanıcının oluşturulmasını ve güncelleştirilmesini destekler. Graph API uzantı öznitelikleri, kuralı kullanılarak adlandırılır `extension_<Application-client-id>_attributename` . Örnek:
+Azure portal özel öznitelikler oluşturabilir ve bunları self servis kaydolma Kullanıcı akışlarınızda kullanabilirsiniz. Ayrıca, [MICROSOFT Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api)'sini kullanarak bu öznitelikleri okuyabilir ve yazabilirsiniz. Microsoft Graph API, uzantı öznitelikleri olan bir kullanıcının oluşturulmasını ve güncelleştirilmesini destekler. Graph API uzantı öznitelikleri, kuralı kullanılarak adlandırılır `extension_<aad-extensions-app-id>_attributename` . Örnek:
 
 ```JSON
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 
-Öğesini `<Application-client-id>` **uygulama (ISTEMCI) kimliği**' nin yanındaki **uygulama kayıtları** sayfasında bulabilirsiniz. Bu KIMLIK, kiracınıza özeldir.
+, `<aad-extensions-app-id>` Kiracınıza özeldir. Bu tanımlayıcıyı bulmak için, tüm uygulamaları > Uygulama kayıtları Azure Active Directory > gidin. "AAD-Extensions-App" ile başlayan uygulamayı arayın ve seçin. Uygulamanın genel bakış sayfasında, uygulama (istemci) KIMLIĞI ' ne göz atın.
 
 ## <a name="create-a-custom-attribute"></a>Özel öznitelik oluştur
 
@@ -51,11 +51,11 @@ Azure portal özel öznitelikler oluşturabilir ve bunları self servis kaydolma
 
    ![Öznitelik ekleme](media/user-flow-add-custom-attributes/add-an-attribute.png)
 
-7. **Oluştur**’u seçin.
+7. **Oluştur**'u seçin.
 
 Özel öznitelik artık Kullanıcı öznitelikleri listesinde ve Kullanıcı akışlarınızda kullanılmak üzere kullanılabilir. Özel bir öznitelik, Kullanıcı öznitelikleri listesine eklediğinizde değil, yalnızca herhangi bir Kullanıcı akışında kullanıldığı zaman oluşturulur.
 
-Yeni oluşturulan özel özniteliği kullanan bir Kullanıcı akışı kullanarak yeni bir kullanıcı oluşturduktan sonra, nesne [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)'da sorgulanabilir. Şimdi kayıt yolculuğu sırasında toplanan öznitelikler listesinde **Showesize** ' i görmeniz ve uygulamanıza geri gönderilen belirteçte onu görmeniz gerekir. Bu talepleri uygulamanıza geri gönderilen belirtece ekleme hakkında daha fazla bilgi için bkz. [dizin uzantısı isteğe bağlı taleplerini yapılandırma](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims#configuring-directory-extension-optional-claims)
+Yeni oluşturulan özel özniteliği kullanan bir Kullanıcı akışı kullanarak yeni bir kullanıcı oluşturduktan sonra, nesne [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)'da sorgulanabilir. Artık kullanıcı nesnesine kaydolma yolculuğunda toplanan öznitelikler listesinde **Showesize** ' i görmeniz gerekir. Kullanıcı nesnesine eklendikten sonra bu öznitelikten verileri almak için uygulamanızdan Graph API çağırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

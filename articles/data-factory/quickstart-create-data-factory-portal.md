@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 05/28/2020
+ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: d6191a5f4dcfc3d25072e0cfa00418fb64311773
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 39f2dad088f3f3eb4a99aa17c1bdde5fe2a2f79c
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248541"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655835"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Hızlı başlangıç: Azure Data Factory Kullanıcı arabirimini kullanarak veri fabrikası oluşturma
 
@@ -42,8 +42,6 @@ Bu videoyu izlemeniz, Data Factory kullanıcı arabirimini anlamanıza yardımc�
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
 1. [Azure Portal](https://portal.azure.com)gidin. 
 1. Azure portal menüsünde **kaynak oluştur**' u seçin.
-   
-   ![Azure portal menüsünden kaynak oluştur ' u seçin](./media/doc-common-process/create-a-resource.png)
 1. **Analiz**' i ve ardından **Data Factory**' yi seçin. 
    
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
@@ -64,7 +62,7 @@ Bu videoyu izlemeniz, Data Factory kullanıcı arabirimini anlamanıza yardımc�
 
    Listede yalnızca Data Factory tarafından desteklenen ve Azure Data Factory meta verilerinizin depolanacağı konumlar gösterilir. Data Factory kullanımı ile ilişkili veri depoları (Azure depolama ve Azure SQL veritabanı gibi) ve bu işlemler (Azure HDInsight gibi) başka bölgelerde çalıştırılabilir.
 
-1. **Oluştur**’u seçin. Oluşturma işlemi tamamlandıktan sonra **Data Factory** sayfasına gitmek Için **Kaynağa Git** ' i seçin. 
+1. **Oluştur**'u seçin. Oluşturma işlemi tamamlandıktan sonra **Data Factory** sayfasına gitmek Için **Kaynağa Git** ' i seçin. 
 
 1. Azure Data Factory kullanıcı arabirimi (UI) uygulamasını ayrı bir sekmede başlatmak için **Yazar ve İzleyici** kutucuğunu seçin.
    
@@ -80,8 +78,12 @@ Bu videoyu izlemeniz, Data Factory kullanıcı arabirimini anlamanıza yardımc�
 ## <a name="create-a-linked-service"></a>Bağlı hizmet oluşturma
 Bu yordamda, Azure depolama hesabınızı veri fabrikasına bağlamak için bağlı bir hizmet oluşturursunuz. Bağlı hizmetler, Data Factory hizmetinin bunlara bağlanmak için çalışma zamanında kullandığı bağlantı bilgilerini içerir.
 
-1. **Bağlantılar**' ı seçin ve ardından araç çubuğunda **Yeni** düğmesini seçin (**Bağlantılar** düğmesi, **fabrika kaynakları**altındaki sol sütunun altında bulunur). 
+1. Sol bölmedeki [Yönet sekmesini](https://docs.microsoft.com/azure/data-factory/author-management-hub) açın.
 
+1. Bağlı hizmetler sayfasında **+ Yeni** ' yi seçerek yeni bir bağlı hizmet oluşturun.
+
+   ![Yeni bağlı hizmet](./media/doc-common-process/new-linked-service.png)
+   
 1. **Yeni Bağlı Hizmet** sayfasında **Azure Blob Depolama**’yı seçip **Devam**’ı seçin. 
 
 1. Yeni bağlı hizmet (Azure Blob depolama) sayfasında, aşağıdaki adımları izleyin: 
@@ -123,7 +125,7 @@ Bağlı hizmet ayarlarında, kaynak verileri içeren Azure Depolama hesabını b
 
     c. **Dosya yolu** için **Gözat** düğmesini seçin.
 
-    d. **Bir dosya veya klasör seçin** penceresinde, **adföğreticisi** kapsayıcısındaki **giriş** klasörüne gidin, sonra da **. txt** dosyasını seçin ve ardından **Tamam**' ı seçin.
+    d. **Bir dosya veya klasör seçin** penceresinde, **adföğreticisi** kapsayıcısındaki **giriş** klasörüne gidin, **emp.txt** dosyasını seçin ve ardından **Tamam**' ı seçin.
     
     e. **Tamam**’ı seçin.   
 

@@ -3,12 +3,12 @@ title: Dağıtım için şablonları bağlama
 description: Modüler şablon çözümü oluşturmak için Azure Resource Manager şablonda bağlantılı şablonların nasıl kullanılacağını açıklar. Parametre değerlerinin nasıl geçirileceğini, bir parametre dosyası ve dinamik olarak oluşturulan URL 'Leri gösterir.
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: f71d8cc62daf68b158bed444da1446e016194b56
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 6594386fd2d8c8ab9d9c1414d7e04f4352a3f086
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609315"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678282"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure kaynaklarını dağıtırken bağlı ve iç içe şablonları kullanma
 
@@ -69,7 +69,7 @@ Aşağıdaki örnek, iç içe geçmiş bir şablon aracılığıyla bir depolama
       "properties": {
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "resources": [
             {
@@ -96,7 +96,7 @@ Aşağıdaki örnek, iç içe geçmiş bir şablon aracılığıyla bir depolama
 
 İç içe geçmiş bir şablon kullanırken, şablon ifadelerinin üst şablon kapsamında mi yoksa iç içe yerleştirilmiş şablon içinde mi değerlendirileceğini belirtebilirsiniz. Kapsam, parametrelerin, değişkenlerin ve [resourceGroup](template-functions-resource.md#resourcegroup) ve [abonelik](template-functions-resource.md#subscription) gibi işlevlerin nasıl çözümlendiğini belirler.
 
-Kapsamını `expressionEvaluationOptions` özelliği aracılığıyla ayarlarsınız. Varsayılan olarak, `expressionEvaluationOptions` özelliği olarak `outer`ayarlanır, yani üst şablon kapsamını kullanır. İfadenin, iç içe `inner` geçmiş şablonun kapsamı içinde değerlendirilmesini sağlamak için değerini olarak ayarlayın.
+Kapsamını özelliği aracılığıyla ayarlarsınız `expressionEvaluationOptions` . Varsayılan olarak, `expressionEvaluationOptions` özelliği olarak ayarlanır, yani `outer` üst şablon kapsamını kullanır. `inner`İfadenin, iç içe geçmiş şablonun kapsamı içinde değerlendirilmesini sağlamak için değerini olarak ayarlayın.
 
 ```json
 {
@@ -110,7 +110,7 @@ Kapsamını `expressionEvaluationOptions` özelliği aracılığıyla ayarlarsı
   ...
 ```
 
-Aşağıdaki şablon, şablon ifadelerinin kapsama göre nasıl çözümlendiğini gösterir. Hem üst şablonda hem de `exampleVar` iç içe yerleştirilmiş şablonda tanımlı adlı bir değişken içerir. Değişkenin değerini döndürür.
+Aşağıdaki şablon, şablon ifadelerinin kapsama göre nasıl çözümlendiğini gösterir. `exampleVar`Hem üst şablonda hem de iç içe yerleştirilmiş şablonda tanımlı adlı bir değişken içerir. Değişkenin değerini döndürür.
 
 ```json
 {
@@ -132,7 +132,7 @@ Aşağıdaki şablon, şablon ifadelerinin kapsama göre nasıl çözümlendiği
         },
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "variables": {
             "exampleVar": "from nested template"
@@ -158,18 +158,18 @@ Aşağıdaki şablon, şablon ifadelerinin kapsama göre nasıl çözümlendiği
 }
 ```
 
-`scope` İçindeki `expressionEvaluationOptions`özelliğinin değerine `exampleVar` bağlı olarak değişir. Aşağıdaki tabloda her iki kapsamın sonuçları gösterilmektedir.
+`exampleVar`İçindeki özelliğinin değerine bağlı olarak değişir `scope` `expressionEvaluationOptions` . Aşağıdaki tabloda her iki kapsamın sonuçları gösterilmektedir.
 
 | `expressionEvaluationOptions` `scope` | Çıktı |
 | ----- | ------ |
 | Dahili | iç içe şablondan |
 | dış (veya varsayılan) | üst şablondan |
 
-Aşağıdaki örnek, bir SQL Server dağıtır ve parola için kullanılacak bir Anahtar Kasası gizli anahtarı alır. Kapsam, Anahtar Kasası KIMLIĞINI `inner` dinamik olarak oluşturduğundan (dış şablonlarda `adminPassword.reference.keyVault` `parameters`bkz.) olarak ayarlanır ve bunu iç içe geçmiş şablona bir parametre olarak geçirir.
+Aşağıdaki örnek, bir SQL Server dağıtır ve parola için kullanılacak bir Anahtar Kasası gizli anahtarı alır. Kapsam, `inner` anahtar KASASı kimliğini dinamik olarak oluşturduğundan ( `adminPassword.reference.keyVault` dış şablonlarda bkz `parameters` .) olarak ayarlanır ve bunu iç içe geçmiş şablona bir parametre olarak geçirir.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -232,7 +232,7 @@ Aşağıdaki örnek, bir SQL Server dağıtır ve parola için kullanılacak bir
           }
         },
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {
             "adminLogin": {
@@ -277,7 +277,7 @@ Aşağıdaki örnek, bir SQL Server dağıtır ve parola için kullanılacak bir
 
 > [!NOTE]
 >
-> Kapsam olarak `outer`ayarlandığında, iç içe yerleştirilmiş şablonda dağıttığınız bir `reference` kaynak için iç içe şablonun çıktılar bölümünde işlevini kullanamazsınız. Dağıtılan bir kaynağın değerlerini iç içe geçmiş bir şablonda döndürmek için kapsam kullanın `inner` veya iç içe geçmiş şablonunuzu bağlı bir şablona dönüştürün.
+> Kapsam olarak ayarlandığında `outer` , `reference` iç içe yerleştirilmiş şablonda dağıttığınız bir kaynak için iç içe şablonun çıktılar bölümünde işlevini kullanamazsınız. Dağıtılan bir kaynağın değerlerini iç içe geçmiş bir şablonda döndürmek için `inner` kapsam kullanın veya iç içe geçmiş şablonunuzu bağlı bir şablona dönüştürün.
 
 ## <a name="linked-template"></a>Bağlantılı şablon
 
@@ -308,11 +308,11 @@ Bir şablonu bağlamak için ana şablonunuza bir [dağıtımlar kaynağı](/azu
 }
 ```
 
-Bağlı bir şablona başvururken, değeri `uri` yerel bir dosya veya yerel ağınızda bulunan bir dosya olmamalıdır. **Http** veya **https**olarak indirilebilir bir URI değeri sağlamanız gerekir. 
+Bağlı bir şablona başvururken, değeri `uri` yerel bir dosya veya yerel ağınızda bulunan bir dosya olmamalıdır. **Http** veya **https**olarak indirilebilir bir URI değeri sağlamanız gerekir.
 
 > [!NOTE]
 >
-> Son olarak, **http** veya **https**kullanan bir şeyi kullanarak, örneğin, şöyle bir `_artifactsLocation` parametre kullanarak şablonlara başvurabilirsiniz:`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
+> Son olarak, **http** veya **https**kullanan bir şeyi kullanarak, örneğin, şöyle bir parametre kullanarak şablonlara başvurabilirsiniz `_artifactsLocation` :`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
 
 
 
@@ -365,11 +365,11 @@ Parametre değerlerini satır içi olarak geçirmek için **Parameters** özelli
 ]
 ```
 
-Hem satır içi parametreleri hem de bir parametre dosyası bağlantısını kullanamazsınız. Hem hem de `parametersLink` `parameters` belirtildiğinde dağıtım bir hata ile başarısız olur.
+Hem satır içi parametreleri hem de bir parametre dosyası bağlantısını kullanamazsınız. Hem hem de belirtildiğinde dağıtım bir hata ile başarısız olur `parametersLink` `parameters` .
 
 ## <a name="contentversion"></a>contentVersion
 
-`templateLink` Veya `parametersLink` özelliği için `contentVersion` özelliği sağlamanız gerekmez. Bir `contentVersion`sağlamazsanız, şablonun geçerli sürümü dağıtılır. İçerik sürümü için bir değer sağlarsanız, bu bağlantı bağlantılı şablondaki sürümle eşleşmelidir; Aksi takdirde, dağıtım hata vererek başarısız olur.
+`contentVersion`Veya özelliği için özelliği sağlamanız gerekmez `templateLink` `parametersLink` . Bir sağlamazsanız `contentVersion` , şablonun geçerli sürümü dağıtılır. İçerik sürümü için bir değer sağlarsanız, bu bağlantı bağlantılı şablondaki sürümle eşleşmelidir; Aksi takdirde, dağıtım hata vererek başarısız olur.
 
 ## <a name="using-variables-to-link-templates"></a>Şablonları bağlamak için değişkenleri kullanma
 
@@ -393,7 +393,7 @@ Ayrıca, geçerli şablonun temel URL 'sini almak için [Deployment ()](template
 }
 ```
 
-Sonuç olarak, değişkenini bir `uri` `templateLink` özelliğin özelliğinde kullanırsınız.
+Sonuç olarak, değişkenini `uri` bir özelliğin özelliğinde kullanırsınız `templateLink` .
 
 ```json
 "templateLink": {
@@ -425,7 +425,7 @@ Aşağıdaki örnek şablon, kopyalamanın iç içe geçmiş bir şablonla nası
     "scope": "inner"
     },
     "template": {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
       {
@@ -453,7 +453,7 @@ Aşağıdaki örnek şablon, kopyalamanın iç içe geçmiş bir şablonla nası
 
 ## <a name="get-values-from-linked-template"></a>Bağlı şablondan değerleri alma
 
-Bağlı bir şablondan çıkış değeri almak için, özellik değerini şu şekilde olan sözdizimiyle alın: `"[reference('deploymentName').outputs.propertyName.value]"`.
+Bağlı bir şablondan çıkış değeri almak için, özellik değerini şu şekilde olan sözdizimiyle alın: `"[reference('deploymentName').outputs.propertyName.value]"` .
 
 Bağlantılı şablondan çıkış özelliği alınırken, özellik adı bir tire içermemelidir.
 
@@ -461,7 +461,7 @@ Aşağıdaki örneklerde, bağlantılı bir şablona nasıl başvurulacağını 
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {},
@@ -479,7 +479,7 @@ Ana şablon, bağlantılı şablonu dağıtır ve döndürülen değeri alır. D
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {},
@@ -512,7 +512,7 @@ Aşağıdaki örnek, genel bir IP adresi dağıtan ve bu genel IP için Azure ka
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "publicIPAddresses_name": {
@@ -543,11 +543,11 @@ Aşağıdaki örnek, genel bir IP adresi dağıtan ve bu genel IP için Azure ka
 }
 ```
 
-Yük dengeleyici dağıtma sırasında önceki şablondaki genel IP adresini kullanmak için, şablona bağlayın ve `Microsoft.Resources/deployments` kaynak üzerinde bir bağımlılık bildirin. Yük dengeleyicideki genel IP adresi, bağlantılı şablondan çıkış değerine ayarlanır.
+Yük dengeleyici dağıtma sırasında önceki şablondaki genel IP adresini kullanmak için, şablona bağlayın ve kaynak üzerinde bir bağımlılık bildirin `Microsoft.Resources/deployments` . Yük dengeleyicideki genel IP adresi, bağlantılı şablondan çıkış değerine ayarlanır.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "loadBalancers_name": {
@@ -620,7 +620,7 @@ Bu ayrı girdileri, dağıtımdan sonra çıkış değerlerini almak için geçm
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "publicIPAddresses_name": {
@@ -658,7 +658,7 @@ Aşağıdaki şablon önceki şablona bağlantı sağlar. Üç genel IP adresi o
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   },
@@ -725,7 +725,7 @@ Aşağıdaki örnek, bir şablona bağlanırken bir SAS belirtecinin nasıl geç
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   "containerSasToken": { "type": "securestring" }
@@ -787,7 +787,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 Aşağıdaki örneklerde, bağlantılı şablonların yaygın kullanımları gösterilmektedir.
 
-|Ana şablon  |Bağlantılı şablon |Açıklama  |
+|Ana şablon  |Bağlantılı şablon |Description  |
 |---------|---------| ---------|
 |[Merhaba Dünya](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[bağlantılı şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Bağlantılı şablondan dize döndürür. |
 |[Genel IP adresi ile Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[bağlantılı şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Bağlı şablondan ortak IP adresini döndürür ve yük dengeleyicide bu değeri ayarlar. |

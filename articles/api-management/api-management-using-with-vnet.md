@@ -10,15 +10,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/02/2020
+ms.date: 06/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 970c20edd3a24594f22ff7e72cd4275118193845
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 76107a3713a7570bc3bbca15aa1b47e76560bf66
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323799"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674287"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlar ile Azure API Management’ı kullanma
 Azure Sanal Ağları (VNET’ler) Azure kaynaklarınızdan herhangi birini, erişimini denetlediğiniz İnternet tabanlı olmayan ve yönlendirilebilir bir ağa yerleştirmenizi sağlar. Bu ağlar daha sonra, çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure sanal ağları hakkında daha fazla bilgi edinmek için buradaki bilgilerle başlayın: [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
@@ -32,7 +32,7 @@ Azure API Management, sanal ağ (VNET) içinde dağıtılabilir ve bu sayede ağ
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız gerekir:
 
@@ -118,8 +118,8 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
 | */1433                     | Giden           | TCP                | VIRTUAL_NETWORK/SQL                 | **Azure SQL uç noktalarına erişim**                           | Dış & Iç  |
 | */5671, 5672, 443          | Giden           | TCP                | VIRTUAL_NETWORK/EventHub            | [Olay Hub 'ı ilkesine](api-management-howto-log-event-hubs.md) ve Izleme aracısına günlük bağımlılığı | Dış & Iç  |
 | */445                      | Giden           | TCP                | VIRTUAL_NETWORK/depolama             | [GIT](api-management-configuration-repository-git.md) Için Azure dosya paylaşımında bağımlılık                      | Dış & Iç  |
-| */1886                     | Giden           | TCP                | VIRTUAL_NETWORK/Azurecyüksek            | Kaynak Durumu sistem durumu yayımlamak için gereklidir          | Dış & Iç  |
-| */443                     | Giden           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | [Tanılama günlüklerini ve ölçümlerini](api-management-howto-use-azure-monitor.md) yayımlama                       | Dış & Iç  |
+| */443                     | Giden           | TCP                | VIRTUAL_NETWORK/Azurecyüksek            | Durum ve Izleme uzantısı         | Dış & Iç  |
+| */1886, 443                     | Giden           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | [Tanılama günlüklerini ve ölçümleri](api-management-howto-use-azure-monitor.md) yayımlama ve [kaynak durumu](../service-health/resource-health-overview.md)                     | Dış & Iç  |
 | */25, 587, 25028                       | Giden           | TCP                | VIRTUAL_NETWORK/INTERNET            | E-posta göndermek için SMTP geçişine Bağlan                    | Dış & Iç  |
 | */6381-6383              | Gelen & giden | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Makineler arasındaki [önbellek](api-management-caching-policies.md) Ilkeleri için Redsıs hizmetine erişme         | Dış & Iç  |
 | */4290              | Gelen & giden | UDP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Makineler arasındaki [hız limiti](api-management-access-restriction-policies.md#LimitCallRateByKey) ilkeleri Için eşitleme sayaçları         | Dış & Iç  |
@@ -203,7 +203,7 @@ Her ek ölçek birimi API Management için iki IP adresi gerekir.
 
 IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin verilmesi durumunda **genel** Ile işaretlenen IP adresinin, **bölgeye** özgü IP adresiyle birlikte beyaz listelenmesi gerekir.
 
-| **Azure ortamı**|   **Bölge**|  **IP adresi**|
+| **Azure ortamı**|   **Geli**|  **IP adresi**|
 |-----------------|-------------------------|---------------|
 | Azure Genel| Orta Güney ABD (genel)| 104.214.19.224|
 | Azure Genel| Orta Kuzey ABD (genel)| 52.162.110.80|
