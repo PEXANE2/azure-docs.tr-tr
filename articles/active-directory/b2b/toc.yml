@@ -52,6 +52,8 @@
           href: identity-providers.md
         - name: Self servis kaydolma için kullanıcı akışları (Önizleme)
           href: self-service-sign-up-overview.md
+        - name: Self servis kaydolma için API bağlayıcıları (Önizleme)
+          href: api-connectors-overview.md
         - name: Azure AD yetkilendirme yönetimi
           href: self-service-portal.md
         - name: Geçerli sınırlamalar
@@ -95,6 +97,10 @@
               href: user-flow-add-custom-attributes.md
             - name: Kullanıcı akış dilini özelleştirme
               href: user-flow-customize-language.md
+            - name: API bağlayıcısı ekleme
+              href: self-service-sign-up-add-api-connector.md
+            - name: Özel bir onay sistemi ekleme
+              href: self-service-sign-up-add-approvals.md
         - name: Konuk hesaplarını yönetme
           items:
             - name: Bir role B2B kullanıcısı ekleme

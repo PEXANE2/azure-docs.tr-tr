@@ -1,5 +1,5 @@
 ---
-title: include dosyası
+title: dosya dahil etme
 description: " dosyası"
 author: anbene
 ms.author: mingshen

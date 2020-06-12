@@ -138,6 +138,8 @@
 - name: Kaynaklar
   expanded: true
   items:
+    - name: Destek ve yardım seçenekleri
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Müşteri verisi istekleri
       href: time-series-insights-customer-data-requests.md
     - name: Geliştirici kaynakları
@@ -158,22 +160,6 @@
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Bölge kullanılabilirliği
           href: 'https://azure.microsoft.com/regions/services/'
-    - name: Destek ve yardım seçenekleri
-      items:
-        - name: Azure destek seçenekleri
-          href: 'https://azure.microsoft.com/support/options/'
-        - name: Azure IoT desteği ve yardım seçenekleri
-          href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
-        - name: Microsoft Soru-Cevap soru sayfası
-          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
-    - name: Geri bildirim ve forumlar
-      items:
-        - name: Microsoft Soru-Cevap soru sayfası
-          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
-        - name: Ürün istekleri ve öneriler
-          href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
     - name: Azure videoları
       href: 'https://azure.microsoft.com/resources/videos/index/?services=time-series-insights'
     - name: Channel 9 videoları

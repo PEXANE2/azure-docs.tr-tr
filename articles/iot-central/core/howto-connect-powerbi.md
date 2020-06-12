@@ -29,7 +29,7 @@ IoT cihazlarınızın performansını izlemek üzere güçlü bir Power BI panos
 
 Bu çözüm, [sürekli veri dışa aktarma](howto-export-data-blob-storage.md) Azure Blob Storage hesabınızdan verileri okuyan bir işlem hattı oluşturur. İşlem hattı, verileri işlemek ve dönüştürmek için Azure Işlevleri, Azure Data Factory ve Azure SQL veritabanı 'nı kullanır. verileri, bir PBIX dosyası olarak yüklediğiniz bir Power BI raporunda görselleştirebilir ve çözümleyebilirsiniz. Tüm kaynaklar Azure aboneliğinizde oluşturulur, böylece her bileşeni gereksinimlerinize uyacak şekilde özelleştirebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için etkin bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 

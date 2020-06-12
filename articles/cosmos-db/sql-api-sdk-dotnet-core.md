@@ -37,7 +37,7 @@ ms.locfileid: "84678503"
 |**SDK indirmesi**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)|
 |**API belgeleri**|[.NET API başvuru belgeleri](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
 |**Örnekler**|[.NET kod örnekleri](sql-api-dotnet-samples.md)|
-|**başlarken**|[Azure Cosmos DB .NET ile çalışmaya başlama](sql-api-sdk-dotnet.md)|
+|**Kullanmaya başlayın**|[Azure Cosmos DB .NET ile çalışmaya başlama](sql-api-sdk-dotnet.md)|
 |**Web uygulaması öğreticisi**|[Azure Cosmos DB ile Web uygulaması geliştirme](sql-api-dotnet-application.md)|
 |**Desteklenen geçerli çerçeve**|[.NET Standard 1,6 ve .NET Standard 1,5](https://www.nuget.org/packages/NETStandard.Library)|
 

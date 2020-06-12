@@ -71,6 +71,8 @@
           href: ../active-directory/develop/howto-authenticate-service-principal-powershell.md
         - name: Sunucu yöneticisi rolüne hizmet sorumlusu ekleme
           href: analysis-services-addservprinc-admins.md
+        - name: Bölgeler arasında taşıma
+          href: move-between-regions.md
     - name: Model
       items:
         - name: Tablosal modelleme

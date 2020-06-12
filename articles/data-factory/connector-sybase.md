@@ -42,7 +42,7 @@ Verileri Sybase veritabanından desteklenen herhangi bir havuz veri deposuna kop
 
 Sybase IQ ve ATıCı desteklenmez. Bunun yerine, genel ODBC bağlayıcısını Sybase sürücüsüyle birlikte kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu Sybase bağlayıcısını kullanmak için şunları yapmanız gerekir:
 

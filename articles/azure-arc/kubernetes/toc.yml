@@ -14,11 +14,11 @@
           href: use-gitops-connected-cluster.md
         - name: Helm ile GitOps kullanma
           href: use-gitops-with-helm.md
-        - name: Azure İlkesi kullanma
+        - name: Azure İlkesi’ni kullanarak GitOps uygulama
           href: use-azure-policy.md
         - name: Kapsayıcılar için Azure İzleyici
           href: deploy-azure-monitor-for-containers.md
-        - name: Azure İlkesi eklentisini yükleme
+        - name: Azure İlkesi kullanarak giriş denetimi ilkeleri
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: IoT iş yüklerini dağıtma
           href: deploy-azure-iot-edge-workloads.md
