@@ -51,9 +51,12 @@
         - name: 'Kullanıcılar, gruplar ve roller'
           tocHref: /azure/active-directory/users-groups-roles/
           topicHref: /azure/active-directory/users-groups-roles/
-        - name: Kimlik İdaresi
+        - name: Identity Governance
           tocHref: /azure/active-directory/governance/
           topicHref: /azure/active-directory/governance/
+        - name: Uygulama sağlama
+          tocHref: /azure/active-directory/app-provisioning/
+          topicHref: /azure/active-directory/app-provisioning/
         - name: Uygulama yönetimi
           tocHref: /azure/active-directory/manage-apps/
           topicHref: /azure/active-directory/manage-apps/

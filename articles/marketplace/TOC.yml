@@ -378,8 +378,6 @@
               href: ./partner-center-portal/offer-creation-checklist.md
             - name: SaaS teklifi oluşturma
               href: ./partner-center-portal/create-new-saas-offer.md
-            - name: SaaS ölçülen faturalaması
-              href: ./partner-center-portal/saas-metered-billing.md
             - name: SaaS gerçekleştirme API'leri
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
@@ -391,6 +389,8 @@
                   href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
                 - name: SaaS gerçekleştirme API’leri - SSS
                   href: ./partner-center-portal/saas-fulfillment-apis-faq.md
+            - name: SaaS ölçülen faturalaması
+              href: ./partner-center-portal/saas-metered-billing.md
         - name: Müşteri Adayına Genel Bakış
           href: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
           items:
