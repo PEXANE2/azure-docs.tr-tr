@@ -44,7 +44,7 @@ Azure VM 'de SQL Server Azure Hibrit Avantajı kullanımını ve uyumlu olduğun
 
 SQL Server lisans türü, VM sağlandığında veya daha sonra dilediğiniz zaman yapılandırılabilir. Lisans modelleri arasında geçiş kesinti olmaz, VM 'yi veya SQL Server hizmetini yeniden başlatmaz, hiçbir ek maliyet eklemez ve hemen geçerli olur. Aslında Azure Hibrit Avantajı etkinleştirilmesi maliyeti *azaltır* .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SQL Server VM lisanslama modelinin değiştirilmesi aşağıdaki gereksinimlere sahiptir: 
 

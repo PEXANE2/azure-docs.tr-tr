@@ -111,6 +111,8 @@
           href: howto-create-custom-rules.md
         - name: Databricks ile özel analizler oluşturma
           href: howto-create-custom-analytics.md
+        - name: Power BI’da verilerinizi görselleştirme
+          href: howto-connect-powerbi.md
     - name: Yönetim
       items:
         - name: Uygulamanızı yönetme

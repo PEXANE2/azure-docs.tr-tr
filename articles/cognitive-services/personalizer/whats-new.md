@@ -8,20 +8,24 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 04/23/2020
+ms.date: 06/10/2020
 ms.author: diberry
-ms.openlocfilehash: 55153cc7fc125c97a5b73084f83dd320240ca256
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 973a8b7eb8dad66568a5beb45adea9740dd0402a
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342127"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700643"
 ---
 # <a name="whats-new-in-personalizer"></a>Kişiselleştirici 'daki yenilikler
 
 Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notlarını, Videoları, blog gönderilerini ve diğer bilgi türlerini içerebilir. Hizmetle güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.
 
 ## <a name="release-notes"></a>Sürüm notları
+
+### <a name="june-2020"></a>Haziran 2020
+
+* Yeni öğretici- [bir Web uygulamasında kişiselleştirici kullanma](tutorial-use-personalizer-web-app.md)
 
 ### <a name="may-2020---build-conference"></a>Mayıs 2020-/sürümü Konferansı
 

@@ -58,6 +58,8 @@
       href: how-to-create-azure-function.md
     - name: IoT Hub’dan telemetri alma
       href: how-to-ingest-iot-hub-data.md
+    - name: Azure Haritalar ile tümleştirme
+      href: how-to-integrate-maps.md
 - name: Başvuru
   items:
     - name: Digital Twins REST API’leri

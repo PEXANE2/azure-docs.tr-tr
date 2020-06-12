@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines

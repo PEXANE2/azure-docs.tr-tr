@@ -30,6 +30,10 @@
       href: tutorial-url-redirect-cli.md
     - name: Otomatik ölçeklendirme ve bölgesel olarak yedeklilik
       href: tutorial-autoscale-ps.md
+    - name: AKS için Giriş Denetleyicisi Eklentisi (Greenfield)
+      href: tutorial-ingress-controller-add-on-new.md
+    - name: AKS için Giriş Denetleyicisi Eklentisi (Brownfield)
+      href: tutorial-ingress-controller-add-on-existing.md
 - name: Örnekler
   items:
     - name: Azure PowerShell
@@ -136,10 +140,12 @@
               href: application-gateway-configure-ssl-policy-powershell.md
     - name: AKS için giriş
       items:
-        - name: Mevcut Application Gateway ile ayarlama
+        - name: Helm aracılığıyla AKS için giriş (Brownfield)
           href: ingress-controller-install-existing.md
-        - name: Yeni Application Gateway ile ayarlama
+        - name: Helm aracılığıyla AKS için giriş (Greenfield)
           href: ingress-controller-install-new.md
+        - name: AKS Giriş Denetleyicisi Eklentisi’ni devre dışı bırakma ve yeniden etkinleştirme
+          href: ingress-controller-disable-addon.md
         - name: Tanımlama bilgisi benzeşimini etkinleştirme
           href: ingress-controller-cookie-affinity.md
         - name: Birden çok ad alanı desteğini etkinleştirme

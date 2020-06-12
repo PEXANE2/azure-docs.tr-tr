@@ -17,7 +17,7 @@ ms.locfileid: "84670177"
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid konuları veya etki alanları için tanılama günlüklerini etkinleştirme
 Tanılama ayarları Event Grid kullanıcıların bir depolama hesabında, Olay Hub 'ında veya bir Log Analytics çalışma alanında **Yayımlama ve teslim hatası** günlüklerini yakalayıp görüntülemesine olanak tanır. Bu makalede, Event Grid konu başlığında bu ayarları etkinleştirmek için adım adım yönergeler sağlanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Sağlanan olay Kılavuzu konusu
 - Tanılama günlüklerini yakalamak için sağlanan hedef. Bu, olay Kılavuzu konusu ile aynı konumdaki aşağıdaki hedefden biri olabilir:
