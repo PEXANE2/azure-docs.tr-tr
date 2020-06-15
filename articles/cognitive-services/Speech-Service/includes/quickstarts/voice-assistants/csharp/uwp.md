@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: 62c317843c275531286eeb2ae616d79ad76c6f99
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 548d324a67b1bbee4741724faf2cf27ec6c3c3c1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671362"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84754619"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -32,7 +32,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 Projemiz için bir çatı olarak çalışacak bir kod ekleyelim.
 
-1. **Çözüm Gezgini**' de, `MainPage.xaml`öğesini açın.
+1. **Çözüm Gezgini**' de, öğesini açın `MainPage.xaml` .
 
 1. Tasarımcının XAML görünümünde, tüm içeriği bir ilkel Kullanıcı arabirimini tanımlayan aşağıdaki kod parçacığına değiştirin:
 
@@ -83,9 +83,9 @@ Projemiz için bir çatı olarak çalışacak bir kod ekleyelim.
 
 Tasarım görünümü, uygulamanın kullanıcı arabirimini gösterecek şekilde güncelleştirilir.
 
-1. **Çözüm Gezgini**' de, arka plan kod kaynak dosyasını `MainPage.xaml.cs`açın. (Altında `MainPage.xaml`gruplandırılır.) Bu dosyanın içeriğini aşağıdaki gibi değiştirin:
+1. **Çözüm Gezgini**' de, arka plan kod kaynak dosyasını açın `MainPage.xaml.cs` . (Altında gruplandırılır `MainPage.xaml` .) Bu dosyanın içeriğini aşağıdaki gibi değiştirin:
 
-- `using``Speech` ve `Speech.Dialog` ad alanları için deyimler
+- `using``Speech`ve `Speech.Dialog` ad alanları için deyimler
 - Bir düğme işleyicisine kablolu, mikrofon erişimi sağlamak için basit bir uygulama
 - Uygulamada ileti ve hata sunmak için temel kullanıcı arabirimi yardımcıları
 - Daha sonra doldurulacak başlatma kodu yolu için bir giriş noktası
@@ -259,16 +259,16 @@ Tasarım görünümü, uygulamanın kullanıcı arabirimini gösterecek şekilde
         }
     }
     ```
-1. Aşağıdaki kod parçacığını öğesinin `InitializeDialogServiceConnector`yöntem gövdesine ekleyin. Bu kod, `DialogServiceConnector` abonelik bilgilerinizi içeren öğesini oluşturur.
+1. Aşağıdaki kod parçacığını öğesinin yöntem gövdesine ekleyin `InitializeDialogServiceConnector` . Bu kod, `DialogServiceConnector` Abonelik bilgilerinizi içeren öğesini oluşturur.
 
     ```csharp
     // Create a BotFrameworkConfig by providing a Speech service subscription key
-    // the RecoLanguage property is optional (default en-US)
+    // the botConfig.Language property is optional (default en-US)
     const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
     const string region = "YourServiceRegion"; // Your subscription service region.
 
     var botConfig = BotFrameworkConfig.FromSubscription(speechSubscriptionKey, region);
-    botConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-US");
+    botConfig.Language = "en-US";
     connector = new DialogServiceConnector(botConfig);
     ```
 
@@ -278,9 +278,9 @@ Tasarım görünümü, uygulamanın kullanıcı arabirimini gösterecek şekilde
    > [!NOTE]
    > Botunuzu yapılandırma hakkında daha fazla bilgi için, [doğrudan hat konuşma kanalının](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)bot Framework belgelerine bakın.
 
-1. Dizeleri `YourSpeechSubscriptionKey` ve `YourServiceRegion` , konuşma aboneliğiniz ve [bölgeniz](~/articles/cognitive-services/speech-service/regions.md)için kendi değerlerinizle değiştirin.
+1. Dizeleri ve, `YourSpeechSubscriptionKey` `YourServiceRegion` konuşma aboneliğiniz ve [bölgeniz](~/articles/cognitive-services/speech-service/regions.md)için kendi değerlerinizle değiştirin.
 
-1. Yöntemi gövdesinin sonuna aşağıdaki kod parçacığını ekleyin `InitializeDialogServiceConnector`. Bu kod, bot etkinlikleri, konuşma tanıma sonuçları ve diğer `DialogServiceConnector` bilgilerle iletişim kurmak için tarafından güvendiği olaylar için işleyicileri ayarlar.
+1. Yöntemi gövdesinin sonuna aşağıdaki kod parçacığını ekleyin `InitializeDialogServiceConnector` . Bu kod, `DialogServiceConnector` bot etkinlikleri, konuşma tanıma sonuçları ve diğer bilgilerle iletişim kurmak için tarafından güvendiği olaylar için işleyicileri ayarlar.
 
     ```csharp
     // ActivityReceived is the main way your bot will communicate with the client 
@@ -335,7 +335,7 @@ Tasarım görünümü, uygulamanın kullanıcı arabirimini gösterecek şekilde
     };
     ```
 
-1. Aşağıdaki kod parçacığını `ListenButton_ButtonClicked` `MainPage` sınıfındaki yönteminin gövdesine ekleyin. Yapılandırmayı zaten kurup olay `DialogServiceConnector` işleyicilerini kaydettirdiğiniz için bu kod dinlemek üzere ayarlanır.
+1. Aşağıdaki kod parçacığını `ListenButton_ButtonClicked` sınıfındaki yönteminin gövdesine ekleyin `MainPage` . `DialogServiceConnector`Yapılandırmayı zaten kurup olay işleyicilerini kaydettirdiğiniz için bu kod dinlemek üzere ayarlanır.
 
     ```csharp
     if (connector == null)
@@ -368,9 +368,9 @@ Tasarım görünümü, uygulamanın kullanıcı arabirimini gösterecek şekilde
 
 Artık uygulamanızı oluşturmaya ve konuşma hizmetini kullanarak özel ses yardımcınızı test etmeye hazır olursunuz.
 
-1. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.** >  Kodun artık hatasız derlenmesi gerekir.
+1. Menü çubuğundan **Build**  >  uygulamayı derlemek için derleme**Build Solution** ' ı seçin. Kodun artık hatasız derlenmesi gerekir.
 
-1. Uygulamayı başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya F5 tuşuna basın). **F5** >  **HelloWorld** penceresi görüntülenir.
+1. **Debug**  >  Uygulamayı başlatmak için hata**ayıklamayı Başlat** ' ı seçin (veya **F5**tuşuna basın). **HelloWorld** penceresi görüntülenir.
 
    ![C# ' de örnek UWP ses Yardımcısı uygulaması-hızlı başlangıç](~/articles/cognitive-services/Speech-Service/media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 

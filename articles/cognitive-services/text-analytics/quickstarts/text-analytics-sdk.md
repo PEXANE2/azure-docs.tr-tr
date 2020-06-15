@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/25/2020
+ms.date: 06/11/2020
 ms.author: aahi
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: be9b82b411d8ba76f0b592cb25e7ff70917b934f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: c475c17e5d196c0eedf38df83f782309143ad979
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605485"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735599"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Hızlı başlangıç: Metin Analizi istemci kitaplığını kullanma
 
@@ -33,7 +33,7 @@ Metin Analizi istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek
 ::: zone pivot="programming-language-csharp"
 
 > [!IMPORTANT]
-> * Metin Analizi istemci kitaplığının en son kararlı sürümü `3.0` .
+> * Metin Analizi API'si en son kararlı sürümü `3.0` .
 >    * Yalnızca kullandığınız sürüme ait yönergeleri izlediğinizden emin olun.
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Üretim senaryolarında, performans ve ölçeklenebilirlik için toplu zaman uyumsuz yöntemleri kullanmanızı öneririz. Aşağıdaki başvuru belgelerine bakın.
 
@@ -44,7 +44,7 @@ Metin Analizi istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek
 ::: zone pivot="programming-language-java"
 
 > [!IMPORTANT]
-> * Metin Analizi istemci kitaplığının en son kararlı sürümü `3.0` .
+> * Metin Analizi API'si en son kararlı sürümü `3.0` .
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Üretim senaryolarında, performans ve ölçeklenebilirlik için toplu zaman uyumsuz yöntemleri kullanmanızı öneririz. Aşağıdaki başvuru belgelerine bakın.
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
@@ -54,7 +54,7 @@ Metin Analizi istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek
 ::: zone pivot="programming-language-javascript"
 
 > [!IMPORTANT]
-> * Metin Analizi istemci kitaplığının en son kararlı sürümü `3.0` .
+> * Metin Analizi API'si en son kararlı sürümü `3.0` .
 >    * Yalnızca kullandığınız sürüme ait yönergeleri izlediğinizden emin olun.
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Üretim senaryolarında, performans ve ölçeklenebilirlik için toplu zaman uyumsuz yöntemleri kullanmanızı öneririz. Aşağıdaki başvuru belgelerine bakın.
 > * Metin Analizi istemci kitaplığı 'nın bu sürümünü [tarayıcınızda](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md)de çalıştırabilirsiniz.
@@ -66,7 +66,7 @@ Metin Analizi istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek
 ::: zone pivot="programming-language-python"
 
 > [!IMPORTANT]
-> * Metin Analizi istemci kitaplığının en son kararlı sürümü `3.0` .
+> * Metin Analizi API'si en son kararlı sürümü `3.0` .
 >    * Yalnızca kullandığınız sürüme ait yönergeleri izlediğinizden emin olun.
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Üretim senaryolarında, performans ve ölçeklenebilirlik için toplu zaman uyumsuz yöntemleri kullanmanızı öneririz. Aşağıdaki başvuru belgelerine bakın. 
 

@@ -7,12 +7,12 @@ ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: a2430e29acb83945e9893ca4c6e2e0110ef6e007
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: eefd4a9ddf2150728578a4e058686a3204e34930
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298168"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456564"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA portalı yönetimi
 
@@ -76,7 +76,7 @@ Kullanıcı rolleri hakkında daha fazla bilgi için bkz. [Kurumsal kullanıcı 
 
 Azure EA hesabı, Azure EA portalındaki bir kuruluş birimidir. Hem abonelikleri yönetmek için hem de raporlama amacıyla kullanılır. Azure hizmetlerine erişmek için bir hesap oluşturmanız ve sizin için oluşturulmuş bir hesap olması gerekir.
 
-Azure hesapları hakkında daha fazla bilgi için bkz. Hesap ekleme.
+Azure hesapları hakkında daha fazla bilgi için bkz. [Hesap ekleme](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#add-an-account).
 
 ## <a name="enterprise-devtest-offer"></a>Kurumsal Geliştirme ve Test Teklifi
 

@@ -5,14 +5,14 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 05/29/2020
 ms.author: banders
-ms.openlocfilehash: 4dab11afb2ddd910a4d6619d088031279ebf3172
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6f571d323a06b64f79c3f97ae8717be7eb8968d3
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238015"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434538"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure portalındaki faturalama hesapları ve kapsamlar
 
@@ -22,9 +22,9 @@ Azure portal aşağıdaki ödeme hesapları türünü destekler:
 
 - **Microsoft Online Services Programı**: Azure web sitesi üzerinden Azure’a kaydolduğunuzda, Microsoft Online Services Programı için bir ödeme hesabı oluşturulur. Örneğin, bir [Ücretsiz Azure Hesabına](https://azure.microsoft.com/offers/ms-azr-0044p/), [kullandıkça öde fiyatlarına tabi hesaba](https://azure.microsoft.com/offers/ms-azr-0003p/) veya [Visual Studio abonesi](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/) olarak kaydolduğunuzda.
 
-- **Kurumsal Anlaşma**: Kuruluşunuz Azure’ı kullanmak için bir [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) imzaladığında Kurumsal Anlaşma için bir ödeme hesabı oluşturulur.
+- **Kurumsal Anlaşma**: Kuruluşunuz Azure’ı kullanmak için bir [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) imzaladığında Kurumsal Anlaşma için bir ödeme hesabı oluşturulur. Kurumsal Anlaşma kapsamında en fazla 500 aboneliğiniz olabilir.
 
-- **Microsoft Müşteri Sözleşmesi**: Kuruluşunuz bir Microsoft Müşteri Sözleşmesi imzalamak için Microsoft temsilcisiyle çalıştığında Microsoft Müşteri Sözleşmesi için bir ödeme hesabı oluşturulur. Azure web sitesinden [kullandıkça öde fiyatlarına tabi hesaba](https://azure.microsoft.com/offers/ms-azr-0003p/) veya [Ücretsiz Azure Hesabına](https://azure.microsoft.com/offers/ms-azr-0044p/) kaydolan belirli bölgelerdeki bazı müşterilerin Microsoft Müşteri Sözleşmesi için ödeme hesabı da olabilir. Daha fazla bilgi için bkz. [Microsoft Müşteri Sözleşmesi için ödeme hesabınızı kullanmaya başlama](../understand/mca-overview.md).
+- **Microsoft Müşteri Sözleşmesi**: Kuruluşunuz bir Microsoft Müşteri Sözleşmesi imzalamak için Microsoft temsilcisiyle çalıştığında Microsoft Müşteri Sözleşmesi için bir ödeme hesabı oluşturulur. Azure web sitesinden [kullandıkça öde fiyatlarına tabi hesaba](https://azure.microsoft.com/offers/ms-azr-0003p/) veya [Ücretsiz Azure Hesabına](https://azure.microsoft.com/offers/ms-azr-0044p/) kaydolan belirli bölgelerdeki bazı müşterilerin Microsoft Müşteri Sözleşmesi için ödeme hesabı da olabilir. Microsoft Müşteri Sözleşmesi kapsamında en fazla 20 aboneliğiniz olabilir. Daha fazla bilgi için bkz. [Microsoft Müşteri Sözleşmesi için ödeme hesabınızı kullanmaya başlama](../understand/mca-overview.md).
 
 - **Microsoft İş Ortağı Sözleşmesi**: Müşterilerini yeni ticaret deneyiminde yönetmelerine olanak tanımak için Bulut Çözümü Sağlayıcısı (CSP) iş ortakları için bir Microsoft İş Ortağı Sözleşmesi’ne yönelik faturalama hesabı oluşturulur. Azure portalındaki faturalama hesabını yönetmek için iş ortaklarının en az bir müşterisi olan bir [Azure planına](https://docs.microsoft.com/partner-center/purchase-azure-plan) sahip olması gerekir. Daha fazla bilgi için bkz. [Microsoft İş Ortağı Sözleşmesi için ödeme hesabınızı kullanmaya başlama](../understand/mpa-overview.md).
 
@@ -35,7 +35,7 @@ Kapsam, faturalamayı görüntülemek ve yönetmek için kullandığınız ödem
 
 ### <a name="microsoft-online-services-program"></a>Microsoft Online Services Programı
 
- ![MOSP hiyerarşisini gösteren ekran görüntüsü](./media/view-all-accounts/mosp-hierarchy.png)
+![MOSP hiyerarşisini gösteren ekran görüntüsü](./media/view-all-accounts/mosp-hierarchy.png)
 
 |Kapsam  |Tanım  |
 |---------|---------|

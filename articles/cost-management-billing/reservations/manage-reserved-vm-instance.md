@@ -5,14 +5,14 @@ ms.service: cost-management-billing
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 06/04/2020
 ms.author: banders
-ms.openlocfilehash: 1084e8687cc709b5e31a9ef2c903638dd3d8f62c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 187bfeb7f9e4be47fb44a1ad0cf97be757865ab9
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020005"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434189"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure kaynakları için Rezervasyonları yönetme
 
@@ -20,6 +20,7 @@ Azure rezervasyonu satın aldıktan sonra rezervasyonu farklı bir aboneliğe uy
 
 Azure Ayrılmış Sanal Makine Örnekleri satın aldıysanız rezervasyon için iyileştirme ayarını değiştirebilirsiniz. Rezervasyon indirimi aynı serideki VM'lere uygulanabilir veya veri merkezi kapasitesini belirli bir VM boyutu için ayırabilirsiniz. Ayrıca tamamen kullanılmalarını sağlamak için rezervasyonları iyileştirmeyi denemelisiniz.
 
+*Bir rezervasyonu yönetmek için gereken izin, abonelik izninden farklıdır.*
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -55,10 +56,9 @@ Kapsam yalnızca kullandıkça öde fiyatının geçerliği olduğu tek tek abon
 
 Rezervasyon siparişindeki veya rezervasyondaki rollere kullanıcı ekleyerek bir rezervasyonun yönetimi için temsilciler belirleyebilirsiniz. Varsayılan olarak rezervasyonu sipariş eden kişi ve hesap yöneticisi, rezervasyon siparişinde ve rezervasyonda Sahip rolüne atanır.
 
-Rezervasyon siparişlerine ve rezervasyonlara erişimi, rezervasyon indirimini alan aboneliklerden bağımsız olarak yönetebilirsiniz. Birine rezervasyon siparişini veya rezervasyonu yönetme izinleri verdiğinizde, ona aboneliği yönetme izni vermiş olmazsınız. Benzer biçimde birine rezervasyon kapsamında aboneliği yönetme izinleri verirseniz, o kişi rezervasyon siparişini veya rezervasyonu yönetme hakları almış olmaz.
+Rezervasyon siparişlerine ve rezervasyonlara erişimi, rezervasyon indirimini alan *aboneliklerden bağımsız olarak* yönetebilirsiniz. Birine rezervasyon siparişini veya rezervasyonu yönetme izinleri verdiğinizde, ona aboneliği yönetme izni vermiş olmazsınız. Benzer biçimde birine rezervasyon kapsamında aboneliği yönetme izinleri verirseniz, o kişi rezervasyon siparişini veya rezervasyonu yönetme hakları almış olmaz.
 
 Değiştirme veya para iadesi yapmak için kullanıcının rezervasyon siparişine erişimi olmalıdır. Birine izinler verirken, rezervasyona değer rezervasyon siparişine izinler vermek daha iyi olabilir.
-
 
 Rezervasyona yönetim erişimi temsilcisi atamak için:
 
