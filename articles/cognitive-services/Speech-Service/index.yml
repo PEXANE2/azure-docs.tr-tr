@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 58cc82cdbcda3f32e6188c3de608a8eb7f27d145
-  ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+  ms.openlocfilehash: ab947791b6aec9b0b729161b4325fe0b9ca68361
+  ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 06/01/2020
-  ms.locfileid: "84258836"
+  ms.lasthandoff: 06/12/2020
+  ms.locfileid: "84736875"
 highlightedContent:
   items:
   - title: Konuşma tanıma hizmeti nedir?
@@ -138,7 +138,7 @@ conceptualContent:
     - itemType: overview
       text: Speech Studio hakkında (özelleştirmeler)
       url: https://speech.microsoft.com
-  - title: Barındırma
+  - title: Hosting
     links:
     - itemType: how-to-guide
       text: Konuşma hizmeti kapsayıcıları
@@ -211,6 +211,8 @@ additionalContent:
         url: https://signature.centralus.cts.speech.microsoft.com/UI/index.html
     - title: Kaynaklar
       links:
+      - text: Docs’taki yenilikler?
+        url: whats-new.md
       - text: Fiyatlandırma
         url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
       - text: Bölgeler

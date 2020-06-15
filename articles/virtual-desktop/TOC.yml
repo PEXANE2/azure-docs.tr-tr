@@ -4,6 +4,8 @@
   items:
     - name: Windows Sanal Masaüstü nedir?
       href: overview.md
+    - name: Yenilikler
+      href: whats-new.md
     - name: Sonbahar 2019 Sürümü belgeleri
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: Öğreticiler
@@ -82,6 +84,8 @@
       href: teams-on-wvd.md
     - name: Azure Multi-Factor Authentication’ı ayarlama
       href: set-up-mfa.md
+    - name: Otomatik güncelleştirmeleri yapılandırma
+      href: configure-automatic-updates.md
     - name: Dil paketlerini yükleme
       href: language-packs.md
 - name: Kavramlar

@@ -59,6 +59,8 @@
           href: drawing-conversion-error-codes.md
     - name: Kapsam
       items:
+        - name: Kapsam
+          href: geographic-coverage.md
         - name: Coğrafi kodlama kapsamı
           href: geocoding-coverage.md
         - name: Trafik kapsamı

@@ -36,6 +36,9 @@
           href: tutorial-desktop-app.md
         - name: Tek sayfa
           href: tutorial-single-page-app.md
+        - name: Python
+          href: tutorial-web-app-python.md
+          displayName: flask
     - name: API erişimi verme
       items:
         - name: ASP.NET

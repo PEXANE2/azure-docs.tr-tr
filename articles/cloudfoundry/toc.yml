@@ -10,9 +10,9 @@
     - name: Azure üzerinde CF oluşturma
       href: /azure/cloudfoundry/create-cloud-foundry-on-azure
     - name: CF Uygulamasını Azure’a dağıtma
-      href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
+      href: /azure/cloudfoundry/cloudfoundry-deploy-your-first-app
     - name: Azure üzerinde CloudFoundry
-      href: /azure/virtual-machines/linux/cloudfoundry-get-started
+      href: /azure/cloudfoundry/cloudfoundry-get-started
     - name: CF OMS Nozzle dağıtma
       href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
     - name: Cloud Foundry ile Azure’ı tümleştirme

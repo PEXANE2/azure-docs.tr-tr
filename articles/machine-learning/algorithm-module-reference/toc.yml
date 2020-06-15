@@ -166,8 +166,12 @@
       href: evaluate-recommender.md
     - name: SVD Önerenini Puanlama
       href: score-svd-recommender.md
+    - name: Geniş ve Derin Öneren Puanlandırması
+      href: score-wide-and-deep-recommender.md
     - name: SVD Önerenini Eğitme
       href: train-svd-recommender.md
+    - name: Geniş ve Derin Öneren Eğitme
+      href: train-wide-and-deep-recommender.md
 - name: Anomali Algılama
   items:
     - name: PCA Tabanlı Anomali Algılama

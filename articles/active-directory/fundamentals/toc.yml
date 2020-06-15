@@ -86,6 +86,8 @@
           href: add-custom-domain.md
         - name: Şirket markası ekleme
           href: customize-branding.md
+        - name: “DevOps oturumunu açık bırakılsın mı?” yapılandırması
+          href: keep-me-signed-in.md
         - name: Azure aboneliği ilişkilendirme
           href: active-directory-how-subscriptions-associated-directory.md
         - name: Gizlilik bilgilerinizi ekleme

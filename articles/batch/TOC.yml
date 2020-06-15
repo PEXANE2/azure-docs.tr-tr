@@ -95,6 +95,8 @@
           href: batch-management-dotnet.md
         - name: Maliyet analizi ve bütçeler
           href: budget.md
+        - name: Batch hesapları ile özel uç noktaları kullanma
+          href: private-connectivity.md
     - name: Azure AD ile kimlik doğrulaması
       items:
         - name: Batch hizmeti ile Azure AD

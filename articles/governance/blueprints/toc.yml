@@ -37,16 +37,8 @@
       displayName: 'list, examples'
       href: ./samples/index.md
     - name: Azure Güvenlik Karşılaştırması
-      items:
-        - name: Genel Bakış
-          displayName: 'standards, azure, benchmark'
-          href: ./samples/azure-security-benchmark/index.md
-        - name: Denetim eşlemesi
-          displayName: 'standards, azure, benchmark'
-          href: ./samples/azure-security-benchmark/control-mapping.md
-        - name: Dağıtım adımları
-          displayName: 'standards, azure, benchmark'
-          href: ./samples/azure-security-benchmark/deploy.md
+      displayName: 'standards, azure, benchmark'
+      href: ./samples/azure-security-benchmark.md
     - name: ISM İLE KORUNAN Avustralya Kamu
       items:
         - name: Denetim eşlemesi
@@ -64,16 +56,8 @@
           displayName: 'standards, canada, federal, pbmm'
           href: ./samples/canada-federal-pbmm/deploy.md
     - name: CIS Microsoft Azure Foundations Benchmark
-      items:
-        - name: Genel Bakış
-          displayName: 'standards, cis'
-          href: ./samples/cis-azure-1.1.0/index.md
-        - name: Öneri eşlemesi
-          displayName: 'standards, cis'
-          href: ./samples/cis-azure-1.1.0/control-mapping.md
-        - name: Dağıtım adımları
-          displayName: 'standards, cis'
-          href: ./samples/cis-azure-1.1.0/deploy.md
+      displayName: 'standards, cis'
+      href: ./samples/cis-azure-1-1-0.md
     - name: DoD Etki Düzeyi 4
       items:
         - name: Genel Bakış
@@ -173,17 +157,9 @@
         - name: Dağıtım adımları
           displayName: 'standards, Media'
           href: ./samples/media/deploy.md
-    - name: NIST SP 800-53 Rev4
-      items:
-        - name: Genel Bakış
-          displayName: 'standards, nist, 800-53, rev 4'
-          href: ./samples/nist-sp-800-53-rev4/index.md
-        - name: Denetim eşlemesi
-          displayName: 'standards, nist, 800-53, rev 4'
-          href: ./samples/nist-sp-800-53-rev4/control-mapping.md
-        - name: Dağıtım adımları
-          displayName: 'standards, nist, 800-53, rev 4'
-          href: ./samples/nist-sp-800-53-rev4/deploy.md
+    - name: NIST SP 800-53 R4
+      displayName: 'standards, nist, 800-53, rev 4'
+      href: ./samples/nist-sp-800-53-r4.md
     - name: PCI-DSS v3.2.1
       items:
         - name: Genel Bakış

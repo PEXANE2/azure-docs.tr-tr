@@ -36,8 +36,12 @@
           href: virtual-wan-locations-partners.md
         - name: İş ortaklarına yönelik otomasyon yönergeleri
           href: virtual-wan-configure-automation-providers.md
-    - name: IPsec ilkeleri
-      href: virtual-wan-ipsec.md
+    - name: Siteden siteye
+      items:
+        - name: IPsec ilkeleri hakkında
+          href: virtual-wan-ipsec.md
+        - name: Birden çok ISP bağlantısı - Azure yol seçimi
+          href: path-selection-multiple-links.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Sanal ağ geçidini Sanal WAN'a bağlama
@@ -58,8 +62,6 @@
       items:
         - name: Siteden siteye bağlantı oluşturma
           href: virtual-wan-site-to-site-portal.md
-        - name: Birden çok ISP bağlantısı - Azure yol seçimi
-          href: path-selection-multiple-links.md
     - name: Kullanıcı VPN (noktadan siteye)
       items:
         - name: Kullanıcı VPN bağlantısı oluşturma

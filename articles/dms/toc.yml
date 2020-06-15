@@ -5,82 +5,137 @@
     - name: Azure Veritabanı Geçiş Hizmeti nedir?
       href: dms-overview.md
 - name: Hızlı Başlangıçlar
+  expanded: true
   items:
     - name: Hizmet oluşturma - Portal
       href: quickstart-create-data-migration-service-portal.md
     - name: Karma modda hizmet oluşturma - Portal
       href: quickstart-create-data-migration-service-hybrid-portal.md
-- name: Öğreticiler
+- name: Kavramlar
   items:
-    - name: SQL Server'ı Azure SQL Veritabanı tek veritabanına çevrimdışı geçirme
-      href: tutorial-sql-server-to-azure-sql.md
-    - name: SQL Server'ı Azure SQL Veritabanı tek veritabanına çevrimiçi geçirme
-      href: tutorial-sql-server-azure-sql-online.md
-    - name: SQL Server’ı Azure SQL DB yönetilen örneğine çevrimdışı geçirme
-      href: tutorial-sql-server-to-managed-instance.md
-    - name: SQL Server’ı Azure SQL DB yönetilen örneğine çevrimiçi geçirme
-      href: tutorial-sql-server-managed-instance-online.md
-    - name: RDS SQL Server'ı Azure SQL Veritabanı tek veritabanına veya Azure SQL DB yönetilen örneğine çevrimiçi geçirme
-      href: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
-    - name: MySQL’i MySQL için Azure DB’ye çevrimiçi geçirme
-      href: tutorial-mysql-azure-mysql-online.md
-    - name: RDS MySQL’i MySQL için Azure DB’ye çevrimiçi geçirme
-      href: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
-    - name: PostgreSQL’i PostgreSQL için Azure DB’ye portal üzerinden çevrimiçi geçirme
-      href: tutorial-postgresql-azure-postgresql-online-portal.md
-    - name: PostgreSQL’i PostgreSQL için Azure DB’ye CLI üzerinden çevrimiçi geçirme
-      href: tutorial-postgresql-azure-postgresql-online.md
-    - name: RDS PostgreSQL’i çevrimiçi ortamda PostgreSQL için Azure DB‘ye geçirme
-      href: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
-    - name: MongoDB'yi çevrimdışı ortamda Azure Cosmos DB Mongo API'sine geçirme
-      href: tutorial-mongodb-cosmos-db.md
-    - name: MongoDB'yi çevrimiçi ortamda Azure Cosmos DB Mongo API'sine geçirme
-      href: tutorial-mongodb-cosmos-db-online.md
-    - name: Oracle’ı PostgreSQL için Azure DB’ye geçirme - Çevrimiçi tek sunucu
-      href: tutorial-oracle-azure-postgresql-online.md
-- name: Nasıl yapılır kılavuzları
-  items:
-    - name: SQL Server’ı Azure SQL DB tek veritabanına geçirmek için PowerShell kullanma
-      href: howto-sql-server-to-azure-sql-powershell.md
-    - name: SQL Server’ı Azure SQL DB yönetilen örneğine geçirmek için PowerShell kullanma
-      href: howto-sql-server-to-azure-sql-mi-powershell.md
-    - name: Geçiş etkinliğini izleme
-      href: how-to-monitor-migration-activity.md
-    - name: SSIS paketlerini Azure SQL DB tek veritabanına yeniden dağıtma
-      href: how-to-migrate-ssis-packages.md
-    - name: SSIS paketlerini Azure SQL DB yönetilen örneğine yeniden dağıtma
-      href: how-to-migrate-ssis-packages-managed-instance.md
-- name: Kaynaklar
-  expanded: true
-  items:
+    - name: Ön koşullar
+      href: pre-reqs.md
     - name: Veritabanı geçiş senaryosunun durumu
       href: resource-scenario-status.md
-    - name: Önkoşullara genel bakış
-      href: pre-reqs.md
-    - name: Azure SQL DB MI geçişlerinin ağ topolojileri
-      href: resource-network-topologies.md
-    - name: SQL Server'dan Azure SQL DB MI'ye çevrimiçi geçişler için özel roller
-      href: resource-custom-roles-sql-db-managed-instance.md
+    - name: SQL Yönetilen Örnek’e geçme
+      items:
+        - name: Ağ topolojileri
+          href: resource-network-topologies.md
+        - name: Özel roller
+          href: resource-custom-roles-sql-db-managed-instance.md
+- name: Öğreticiler
+  expanded: true
+  items:
+    - name: SQL Server’ı geçirme
+      items:
+        - name: Azure SQL Veritabanı’na (çevrimdışı)
+          href: tutorial-sql-server-to-azure-sql.md
+        - name: Azure SQL Veritabanı’na (çevrimiçi)
+          href: tutorial-sql-server-azure-sql-online.md
+        - name: Azure SQL Yönetilen Örnek’e (çevrimdışı)
+          href: tutorial-sql-server-to-managed-instance.md
+        - name: Azure SQL Yönetilen Örnek’e (çevrimiçi)
+          href: tutorial-sql-server-managed-instance-online.md
+    - name: RDS SQL Server’ı geçirme
+      items:
+        - name: Azure SQL Veritabanı veya SQL Yönetilen Örnek’e
+          href: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
+    - name: MySQL’i geçirme
+      items:
+        - name: MySQL için Azure Veritabanı’na
+          href: tutorial-mysql-azure-mysql-online.md
+    - name: RDS MySQL’i geçirme
+      items:
+        - name: MySQL için Azure Veritabanı’na
+          href: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
+    - name: PostgreSQL’i geçirme
+      items:
+        - name: PostgreSQL için Azure DB’ye (Portal)
+          href: tutorial-postgresql-azure-postgresql-online-portal.md
+        - name: PostgreSQL için Azure DB’ye (Az CLI)
+          href: tutorial-postgresql-azure-postgresql-online.md
+    - name: RDS PostgreSQL’i geçirme
+      items:
+        - name: PostgreSQL için Azure DB’ye
+          href: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
+    - name: MongoDB’yi geçirme
+      items:
+        - name: Azure Cosmos DB Mongo API'sine (çevrimdışı)
+          href: tutorial-mongodb-cosmos-db.md
+        - name: Azure Cosmos DB Mongo API'sine (çevrimiçi)
+          href: tutorial-mongodb-cosmos-db-online.md
+    - name: Oracle’ı geçirme
+      items:
+        - name: PostgreSQL için Azure DB–Tek sunucu çevrimiçi
+          href: tutorial-oracle-azure-postgresql-online.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Geçiş etkinliğini izleme
+      href: how-to-monitor-migration-activity.md
+    - name: Geçiş için PowerShell kullanma
+      items:
+        - name: SQL Server’dan SQL Veritabanı’na
+          href: howto-sql-server-to-azure-sql-powershell.md
+        - name: SQL Server’dan SQL Yönetilen Örnek’e
+          href: howto-sql-server-to-azure-sql-mi-powershell.md
+    - name: SSIS paketini yeniden dağıtma
+      items:
+        - name: Azure SQL Veritabanı
+          href: how-to-migrate-ssis-packages.md
+        - name: Azure SQL Yönetilen Örnek
+          href: how-to-migrate-ssis-packages-managed-instance.md
+- name: Kaynaklar
+  items:
+    - name: Sık sorulan sorular
+      href: faq.md
+    - name: Geri Bildirim
+      href: 'https://feedback.azure.com/forums/906100-azure-database-migration-service'
+    - name: Fiyatlandırma
+      href: 'https://aka.ms/dms-pricing'
+    - name: Hizmet güncelleştirmeleri
+      href: 'https://azure.microsoft.com/updates/?product=database-migration'
+    - name: Azure Yol Haritası
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Araçlar ve rehberlik
+      items:
+        - name: Veri geçişi senaryolarında kullanılabilen hizmetler ve araçlar
+          href: dms-tools-matrix.md
+        - name: Azure Veritabanı Geçiş Kılavuzu
+          href: 'https://aka.ms/datamigration'
+        - name: Data Migration Yardımcısı
+          href: 'https://aka.ms/dma'
+        - name: SQL Server Geçiş Yardımcısı
+          href: 'https://aka.ms/ssma'
+        - name: Veritabanı Yükseltme Deneyimi Yardımcısı
+          href: 'https://aka.ms/dea-docs'
+        - name: Veri Erişimi Geçiş Araç Seti
+          href: 'https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit'
     - name: Sorun çözümü ve bilinen sorunlar
       items:
-        - name: Kaynak veritabanı bağlantı sorunlarını giderme
-          href: known-issues-troubleshooting-dms-source-connectivity.md
-        - name: Genel sorunların ve hataların çözümü
-          href: known-issues-troubleshooting-dms.md
-        - name: Bilinen Sorunlar - Azure SQL DB tek veritabanına çevrimiçi geçiş
-          href: known-issues-azure-sql-online.md
-        - name: Bilinen Sorunlar - Azure SQL DB yönetilen örneğine çevrimiçi geçiş
-          href: known-issues-azure-sql-db-managed-instance-online.md
-        - name: Bilinen Sorunlar - MySQL için Azure DB’ye çevrimiçi geçiş
-          href: known-issues-azure-mysql-online.md
-        - name: Bilinen Sorunlar - PostgreSQL’den PostgreSQL için Azure DB’ye çevrimiçi geçiş
-          href: known-issues-azure-postgresql-online.md
-        - name: Bilinen Sorunlar - Oracle'dan PostgreSQL için Azure DB – Tek sunucuya çevrimiçi geçiş
-          href: known-issues-oracle-azure-postgresql-online.md
-        - name: 'Bilinen Sorunlar: MongoDB’den MongoDB için Azure Cosmos DB API’sine geçiş'
-          href: known-issues-mongo-cosmos-db.md
-        - name: Bilinen Sorunlar - Karma modu kullanma
-          href: known-issues-dms-hybrid-mode.md
+        - name: Sorun giderme
+          items:
+            - name: Sık karşılaşılan hatalar
+              href: known-issues-troubleshooting-dms.md
+            - name: Kaynak veritabanı bağlantısı
+              href: known-issues-troubleshooting-dms-source-connectivity.md
+        - name: Bilinen sorunlar
+          items:
+            - name: Hibrit modu kullanma
+              href: known-issues-dms-hybrid-mode.md
+        - name: Bilinen geçiş sorunları
+          items:
+            - name: SQL Veritabanı’a
+              href: known-issues-azure-sql-online.md
+            - name: SQL Yönetilen Örnek
+              href: known-issues-azure-sql-db-managed-instance-online.md
+            - name: MySQL için Azure DB’ye
+              href: known-issues-azure-mysql-online.md
+            - name: PostgreSQL’den PostgreSQL için Azure DB’ye
+              href: known-issues-azure-postgresql-online.md
+            - name: Oracle’dan PostgreSQL için Azure DB’ye
+              href: known-issues-oracle-azure-postgresql-online.md
+            - name: MongoDB’den MongoDB için Azure Cosmos DB API'sine
+              href: known-issues-mongo-cosmos-db.md
     - name: Videolar
       items:
         - name: Veritabanı Geçiş Kılavuzu’nu kullanma
@@ -99,27 +154,3 @@
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/'
         - name: MongoDB’yi Azure Cosmos DB’ye geçirme
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/'
-    - name: Araçlar ve rehberlik
-      items:
-        - name: Veri geçişi senaryolarında kullanılabilen hizmetler ve araçlar
-          href: dms-tools-matrix.md
-        - name: Azure Veritabanı Geçiş Kılavuzu
-          href: 'https://aka.ms/datamigration'
-        - name: Data Migration Yardımcısı
-          href: 'https://aka.ms/dma'
-        - name: SQL Server Geçiş Yardımcısı
-          href: 'https://aka.ms/ssma'
-        - name: Veritabanı Yükseltme Deneyimi Yardımcısı
-          href: 'https://aka.ms/dea-docs'
-        - name: Veri Erişimi Geçiş Araç Seti
-          href: 'https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit'
-    - name: Sık Sorulan Sorular
-      href: faq.md
-    - name: UserVoice Geri Bildirimi
-      href: 'https://feedback.azure.com/forums/906100-azure-database-migration-service'
-    - name: Fiyatlandırma
-      href: 'https://aka.ms/dms-pricing'
-    - name: Hizmet güncelleştirmeleri
-      href: 'https://azure.microsoft.com/updates/?product=database-migration'
-    - name: Azure Yol Haritası
-      href: 'https://azure.microsoft.com/roadmap/'

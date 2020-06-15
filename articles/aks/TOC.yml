@@ -256,12 +256,10 @@
           href: limit-egress-traffic.md
         - name: Azure Active Directory tümleştirmesini etkinleştirme
           items:
-            - name: Azure AD’yi tümleştirme (önizleme)
+            - name: AKS tarafından yönetilen AAD (önizleme)
               href: managed-aad.md
             - name: Azure CLI kullanma
               href: azure-ad-integration-cli.md
-            - name: Azure portalı kullanma
-              href: azure-ad-integration.md
         - name: Azure AD tümleştirmesiyle Kubernetes RBAC kullanma
           href: azure-ad-rbac.md
           maintainContext: true

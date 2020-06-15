@@ -22,6 +22,9 @@
           href: functions-create-your-first-function-visual-studio.md
         - name: Komut satırı
           href: functions-create-first-azure-function-azure-cli.md
+        - name: ARM şablonu
+          displayName: Resource Manager
+          href: functions-create-first-function-resource-manager.md
     - name: Depolamaya bağlanma
       items:
         - name: Visual Studio Code
