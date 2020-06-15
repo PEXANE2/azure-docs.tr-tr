@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 3fb5f1df0eb4473483c9298cdbf36909b75065e7
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4ec153a9c770b0001888c972dc44414470e3ddbf
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927216"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730314"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>Konuşma cihazları SDK 'Sı nedir?
 
@@ -37,7 +37,11 @@ Konuşma cihazları SDK 'Sı, [sesli yardımcılar](https://aka.ms/bots/speech/v
 
 ### <a name="android"></a>Android
 
-Android için cihazlar, [Android konuşma cihazları SDK 'sının](https://aka.ms/sdsdk-download-android)en son sürümünü indirir.
+Android için konuşma cihazları SDK 'Sı [Roobo v1](speech-devices-sdk-roobo-v1.md) ve eşdeğer cihazları destekler, bu, [Android konuşma cihazları SDK 'sının](https://aka.ms/sdsdk-download-android)en son sürümünü indirir.
+
+
+Telefon veya mobil gibi farklı bir Android cihazınız varsa, [Android konuşma SDK 'sını](speech-sdk.md) kullanmaya başlayın
+
 
 ### <a name="windows"></a>Windows
 

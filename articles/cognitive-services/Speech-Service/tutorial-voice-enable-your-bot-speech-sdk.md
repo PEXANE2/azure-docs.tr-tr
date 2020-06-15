@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 69046772b81f0b5b597cce8e86aca9cbf27c49f8
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: a96ddfe2023fbddd6a4a25c97001875e0dddc7f3
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457108"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753194"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Öğretici: konuşma SDK 'sını kullanarak bot uygulamanızı etkinleştirin
 
@@ -71,7 +71,7 @@ Bu öğreticide oluşturacağınız istemci uygulaması, el ile Azure hizmetleri
    * **Kaynak grubunuz**için bir ad girin. **SpeechEchoBotTutorial-ResourceGroup**önerilir.
    * **Bölge** açılır listesinden **Batı ABD**' yi seçin.
 1. **Gözden geçir ve oluştur**’a tıklayın. Okuma **doğrulamasının geçtiğini**belirten bir başlık görmeniz gerekir.
-1. **Oluştur**' a tıklayın. Kaynak grubunun oluşturulması birkaç dakika sürebilir.
+1. **Oluştur**'a tıklayın. Kaynak grubunun oluşturulması birkaç dakika sürebilir.
 1. Bu öğreticide daha sonra oluşturacağınız kaynaklarda olduğu gibi, kolay erişim için bu kaynak grubunu panonuza sabitlemek iyi bir fikirdir. Bu kaynak grubunu sabitlemek istiyorsanız panonun sağ üst köşesindeki sabitleme simgesine tıklayın.
 
 ### <a name="choosing-an-azure-region"></a>Azure bölgesi seçme
@@ -104,7 +104,7 @@ Bir konuşma kaynağı oluşturmak için aşağıdaki yönergeleri izleyin:
 
 Bu noktada, kaynak grubunuzun (**SpeechEchoBotTutorial-ResourceGroup**) bir konuşma kaynağına sahip olup olmadığını kontrol edin:
 
-| Adı | Tür  | Konum |
+| Name | Tür  | Konum |
 |------|-------|----------|
 | SpeechEchoBotTutorial-konuşma | Bilişsel Hizmetler | Batı ABD |
 
@@ -121,11 +121,11 @@ Sonraki adım App Service bir plan oluşturmaktır. App Service planı, bir web 
    * **Bölge**için **Batı ABD**' yi seçin.
    * **Fiyatlandırma katmanı**Için **Standart S1** ' in seçildiğinden emin olun. Bu, varsayılan değer olmalıdır. Değilse, **Işletim sistemini** yukarıda açıklandığı gibi **Windows** 'a ayarladığınızdan emin olun.
 5. **Gözden geçir ve oluştur**’a tıklayın. Okuma **doğrulamasının geçtiğini**belirten bir başlık görmeniz gerekir.
-6. **Oluştur**' a tıklayın. Kaynak grubunun oluşturulması birkaç dakika sürebilir.
+6. **Oluştur**'a tıklayın. Kaynak grubunun oluşturulması birkaç dakika sürebilir.
 
 Bu noktada, kaynak grubunuz (**SpeechEchoBotTutorial-ResourceGroup**) iki kaynak olduğunu kontrol edin:
 
-| Adı | Tür  | Konum |
+| Name | Tür  | Konum |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service Planı | Batı ABD |
 | SpeechEchoBotTutorial-konuşma | Bilişsel Hizmetler | Batı ABD |
@@ -164,7 +164,7 @@ Bazı kaynaklar oluşturduğunuza göre artık bir bot oluşturalım. Adın gös
 1. [Bot Framework öykünücü](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) sürümü 4.3.0 veya üstünü yükler
 2. Bot Framework öykünücüsünü başlatın ve botunuzu açın:
    * **Dosya**  ->  **Bot 'ı açın**.
-3. Bot 'unuzun URL 'sini girin. Örneğin:
+3. Bot 'unuzun URL 'sini girin. Örnek:
 
    ```
    http://localhost:3978/api/messages
@@ -208,7 +208,7 @@ Sonraki adım, yankı bot 'ı Azure 'a dağıtmaktır. Bir bot dağıtmanın bir
 1. Varsayılan tarayıcınızın açılması ve "bot 'Niz hazır!" yazan bir sayfa görüntülemesi gerekir.
 1. Bu noktada, Azure portal kaynak grubunuzu **SpeechEchoBotTutorial-ResourceGroup** ' u kontrol edin ve üç kaynak olduğunu onaylayın:
 
-| Adı | Tür  | Konum |
+| Name | Tür  | Konum |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | Batı ABD |
 | SpeechEchoBotTutorial-AppServicePlan | App Service planı | Batı ABD |
@@ -249,7 +249,7 @@ Botunuzu barındırmak için bir Azure App Service oluşturduğunuza göre, sonr
 
 Bu noktada, Azure portal kaynak grubunuzu **SpeechEchoBotTutorial-ResourceGroup** ' u kontrol edin. Şimdi dört kaynak göstermesi gerekir:
 
-| Adı | Tür  | Konum |
+| Name | Tür  | Konum |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | Batı ABD |
 | SpeechEchoBotTutorial-AppServicePlan | App Service planı | Batı ABD |
@@ -265,7 +265,7 @@ Azure bot kanalları kayıt sayfasında, **bot Management**altında **Web sohbet
 
 1. [Azure Portal](https://portal.azure.com) **yankı Botöğreticisi-botkayıt-# # # #** kaynağını bulup açın
 1. **Bot yönetimi** gezinmede **Ayarlar**' ı seçin. **Microsoft uygulama kimliği** altındaki değeri kopyalayın
-1. Visual Studio Yankıbot çözümünü açın. Çözüm Gezgini ' nde, **appSettings. JSON** ' ı bulup çift tıklayın
+1. Visual Studio Yankıbot çözümünü açın. Çözüm Gezgini 'nde, üzerinde **appsettings.js** bulun ve çift tıklayın
 1. JSON dosyasında, kopyalanmış KIMLIK değeri ile **Microsoftappıd** yanındaki boş dizeyi değiştirin
 1. Azure portal geri dönüp, **bot yönetimi** gezinmede **Ayarlar**' ı SEÇIN ve **Microsoft uygulama kimliği** ' nin yanındaki **(Yönet)** seçeneğine tıklayın.
 1. **Yeni istemci parolası**' na tıklayın. Bir açıklama ekleyin (örn. "Web sohbeti") ve **Ekle**' ye tıklayın. Yeni parolayı Kopyala
@@ -323,13 +323,16 @@ Ana uygulama pencerenizde bir hata iletisi alırsanız, hatayı belirlemek ve gi
 
 | Hata | Ne yapmanız gerekir? |
 |-------|----------------------|
-|Hata AuthenticationFailure: WebSocket yükseltmesi bir kimlik doğrulama hatasıyla başarısız oldu (401). Doğru abonelik anahtarını (veya yetkilendirme belirtecini) ve bölge adını denetleyin| Uygulamanın Ayarlar sayfasında, konuşma abonelik anahtarını ve bölgesini doğru şekilde girdiğinizden emin olun.<br>Konuşma anahtarınızın ve anahtar bölgenizin doğru girildiğinden emin olun. |
-|ConnectionFailure hatası: bağlantı uzak ana bilgisayar tarafından kapatıldı. Hata kodu: 1011. Hata ayrıntıları: İleti göndermeden önce bot 'a bağlanamıyoruz | ["Akış uç noktasını etkinleştir"](#register-the-direct-line-speech-channel) kutusunu ve/veya [ **Web yuvalarını** ](#enable-web-sockets) açık olarak iade ettiğinizden emin olun.<br>Azure App Service çalıştığından emin olun. Varsa App Service yeniden başlatmayı deneyin.|
-|ConnectionFailure hatası: bağlantı uzak ana bilgisayar tarafından kapatıldı. Hata kodu: 1011. Hata ayrıntıları: yanıt durum kodu başarıyı göstermiyor: 500 (ınternalservererror)| Bot, çıkış etkinliği [konuş](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) alanında bir sinir sesi belirtti, ancak konuşma abonelik anahtarınızla ilişkili Azure bölgesi sinir seslerini desteklemez. Bkz. [Standart ve sinir sesleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).|
-|ConnectionFailure hatası: bağlantı uzak ana bilgisayar tarafından kapatıldı. Hata kodu: 1000. Hata ayrıntıları: maksimum Web yuvası bağlantısı boşta kalma süresi aşıldı (> 300000 MS)| Bu, kanalla bir bağlantı açık bırakıldığında ve beş dakikadan uzun süre boyunca etkin olmadığında beklenen bir hatadır. |
+|Hata (AuthenticationFailure): WebSocket yükseltmesi bir kimlik doğrulama hatasıyla başarısız oldu (401). Doğru abonelik anahtarını (veya yetkilendirme belirtecini) ve bölge adını denetleyin| Uygulamanın Ayarlar sayfasında, konuşma abonelik anahtarını ve bölgesini doğru şekilde girdiğinizden emin olun.<br>Konuşma anahtarınızın ve anahtar bölgenizin doğru girildiğinden emin olun. |
+|Hata (ConnectionFailure): bağlantı uzak ana bilgisayar tarafından kapatıldı. Hata kodu: 1011. Hata ayrıntıları: İleti göndermeden önce bot 'a bağlanamıyoruz | ["Akış uç noktasını etkinleştir"](#register-the-direct-line-speech-channel) kutusunu ve/veya [ **Web yuvalarını** ](#enable-web-sockets) açık olarak iade ettiğinizden emin olun.<br>Azure App Service çalıştığından emin olun. Varsa App Service yeniden başlatmayı deneyin.|
+|Hata (ConnectionFailure): bağlantı uzak ana bilgisayar tarafından kapatıldı. Hata kodu: 1002. Hata ayrıntıları: ' 101 ' durum kodu beklenirken sunucu ' 503 ' durum kodunu döndürdü | ["Akış uç noktasını etkinleştir"](#register-the-direct-line-speech-channel) kutusunu ve/veya [ **Web yuvalarını** ](#enable-web-sockets) açık olarak iade ettiğinizden emin olun.<br>Azure App Service çalıştığından emin olun. Varsa App Service yeniden başlatmayı deneyin.|
+|Hata (ConnectionFailure): bağlantı uzak ana bilgisayar tarafından kapatıldı. Hata kodu: 1011. Hata ayrıntıları: yanıt durum kodu başarıyı göstermiyor: 500 (ınternalservererror)| Bot, çıkış etkinliği [konuş](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) alanında bir sinir sesi belirtti, ancak konuşma abonelik anahtarınızla ilişkili Azure bölgesi sinir seslerini desteklemez. Bkz. [Standart ve sinir sesleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).|
 
-Sorununuz tabloda giderilmemişse, bkz. [sesli Yardımcılar: sık sorulan sorular](faq-voice-assistants.md).
+Sorununuz tabloda giderilmemişse, bkz. [sesli Yardımcılar: sık sorulan sorular](faq-voice-assistants.md). Bu öğreticideki tüm adımları tamamladıktan sonra sorununuzu çözemezseniz, lütfen [sesli yardım GitHub sayfasında](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues)yeni bir sorun girin.
 
+#### <a name="a-note-on-connection-time-out"></a>Bağlantı zaman aşımı üzerine bir göz atın
+
+Bir bot 'a bağlıysanız ve son 5 dakika içinde hiçbir etkinlik gerçekleştiyse, hizmet, istemci ve bot ile WebSocket bağlantısını otomatik olarak kapatır. Bu tasarım gereğidir. Alt çubukta bir ileti görüntülenir: *"etkin bağlantı zaman aşımına uğradı ancak isteğe bağlı olarak yeniden bağlanmaya hazır"*. "Yeniden bağlan" düğmesine basmanız gerekmez. mikrofon düğmesine basmanız ve konuşmaya başlamak, bir kısa mesaj yazmanız veya (etkinse) anahtar sözcüğünü söylemek yeterlidir. Bağlantı otomatik olarak yeniden yüklenecek.  
 ### <a name="view-bot-activities"></a>Bot etkinliklerini görüntüle
 
 Her bot **etkinlik** iletilerini gönderir ve alır. Windows Voice Yardımcısı Istemcisinin **etkinlik günlüğü** penceresinde, istemcinin bot 'tan aldığı her bir etkinlikle birlikte zaman damgalınılan Günlükler görürsünüz. Ayrıca, istemcinin, yöntemini kullanarak bot 'a gönderdiği etkinlikleri görebilirsiniz [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync) . Bir günlük öğesini seçtiğinizde, ilişkili etkinliğin ayrıntılarını JSON olarak gösterir.

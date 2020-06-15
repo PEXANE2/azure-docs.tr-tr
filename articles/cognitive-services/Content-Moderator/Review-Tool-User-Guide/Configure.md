@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220132"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689852"
 ---
 # <a name="configure-the-review-tool"></a>Gözden Geçirme aracını yapılandırma
 
@@ -25,7 +25,7 @@ ms.locfileid: "79220132"
 
 ## <a name="manage-team-and-subteams"></a>Ekip ve alt takımları yönetme
 
-**Takım** sekmesi, belirli [insan İncelemeleri](../review-api.md#reviews) başlatıldığında, takımınızı ve&mdash;diğer ekiplere ait Kullanıcı gruplarını yönetmenize olanak sağlar. Yalnızca bir ekibiniz olabilir (gözden geçirme aracıyla kaydolduğunuzda oluşturursunuz), ancak birden çok alt takım oluşturabilirsiniz. Ekip Yöneticisi üyeleri davet edebilir, izinlerini ayarlayabilir ve bunları farklı alt takımlara atayabilir.
+**Takım** sekmesi, &mdash; belirli [insan İncelemeleri](../review-api.md#reviews) başlatıldığında, takımınızı ve diğer ekiplere ait Kullanıcı gruplarını yönetmenize olanak sağlar. Yalnızca bir ekibiniz olabilir (gözden geçirme aracıyla kaydolduğunuzda oluşturursunuz), ancak birden çok alt takım oluşturabilirsiniz. Ekip Yöneticisi üyeleri davet edebilir, izinlerini ayarlayabilir ve bunları farklı alt takımlara atayabilir.
 
 ![Araç takımı ayarlarını gözden geçirme](images/settings-2-team.png)
 
@@ -66,7 +66,7 @@ Birden fazla alt ekibin üyesiyseniz, sizin için görüntülenen içerik incele
 
 ## <a name="tags"></a>Etiketler
 
-**Etiketler** sekmesi, iki varsayılan denetim&mdash;**etiketlerinin (** **a**) ve **isracy** (**r**) yanı sıra özel denetleme etiketleri tanımlamanıza olanak sağlar. Özel bir etiket oluşturduğunuzda, bu, varsayılan etiketlerin yanı sıra incelemelerde kullanılabilir hale gelir. Görünürlük ayarlarını değiştirerek, gözden geçirmeler halinde hangi etiketlerin gösterileceğini değiştirebilirsiniz.
+**Etiketler** sekmesi, iki varsayılan denetim etiketlerinin ( &mdash; **a**) ve **isracy** (**r**) yanı sıra özel**denetleme etiketleri tanımlamanıza** olanak sağlar. Özel bir etiket oluşturduğunuzda, bu, varsayılan etiketlerin yanı sıra incelemelerde kullanılabilir hale gelir. Görünürlük ayarlarını değiştirerek, gözden geçirmeler halinde hangi etiketlerin gösterileceğini değiştirebilirsiniz.
 
 !["Görünür" onay kutuları dahil olmak üzere etiket görünümü](images/tags-4-disable.png)
 
@@ -95,7 +95,7 @@ Bir iş akışı oluşturduğunuzda varsayılan bağlayıcı Content Moderator b
 [İnceleme aracında](./human-in-the-loop.md) aşağıdaki bağlayıcılar bulunur:
 
 - Duygu Tanıma
-- Yüz
+- Yüz Tanıma
 - PhotoDNA bulut hizmeti
 - Metin Analizi
 
@@ -105,13 +105,13 @@ Bir bağlayıcı eklemek için (ve içerik [iş akışlarında](../review-api.md
 
 ![Content Moderator bağlayıcı ayarları](images/settings-4-connectors.png)
 
-## <a name="workflows"></a>İş Akışları
+## <a name="workflows"></a>İş akışları
 
 **İş** akışları sekmesi, [iş](../review-api.md#workflows)akışlarınızı yönetmenizi sağlar. İş akışları, içerik için bulut tabanlı filtrelerdir ve içeriği farklı yollarla sıralamak ve uygun işlemleri yapmak için bağlayıcılarla birlikte çalışırlar. Burada, iş akışlarınızı tanımlayabilir, düzenleyebilir ve test edebilirsiniz. Bunun nasıl yapılacağını gösteren yönergeler için bkz. [iş akışlarını tanımlama ve kullanma](Workflows.md) .
 
 ![Content Moderator Iş akışı ayarları](images/settings-5-workflows.png)
 
-## <a name="credentials"></a>Kimlik Bilgileri
+## <a name="credentials"></a>Kimlik bilgileri
 
 **Kimlik bilgileri** sekmesi, bir rest çağrısından veya istemci SDK 'sına ait denetleme hizmetlerinden birine erişmeniz gereken Content moderator abonelik anahtarınız için hızlı erişim sağlar.
 

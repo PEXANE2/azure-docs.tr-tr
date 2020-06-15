@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
 ms.openlocfilehash: 72b00d78d19ed0e963b4dad01b82033c659e1efd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219615"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704718"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Azure komut satırı arabirimi 'ni (CLı) kullanarak bilişsel hizmetler kaynağı oluşturma
 
@@ -60,7 +60,7 @@ az account list-locations \
 
 Azure konumunuz olduktan sonra, [az Group Create](/cli/azure/group#az-group-create) komutunu kullanarak Azure CLI 'de yeni bir kaynak grubu oluşturun.
 
-Aşağıdaki örnekte, Azure konumunu `westus2` , aboneliğiniz Için kullanılabilen Azure konumlarından biriyle değiştirin.
+Aşağıdaki örnekte, Azure konumunu, `westus2` aboneliğiniz için kullanılabilen Azure konumlarından biriyle değiştirin.
 
 ```azurecli-interactive
 az group create \
@@ -82,7 +82,7 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 
 
 > [!NOTE]
-> Aşağıdaki bilişsel hizmetler 'in çoğunda hizmeti denemek için kullanabileceğiniz ücretsiz bir katman vardır. Ücretsiz katmanı kullanmak için, kaynağınız için `F0` SKU olarak kullanın.
+> Aşağıdaki bilişsel hizmetler 'in çoğunda hizmeti denemek için kullanabileceğiniz ücretsiz bir katman vardır. Ücretsiz katmanı kullanmak için, `F0` kaynağınız için SKU olarak kullanın.
 
 ### <a name="vision"></a>Görsel
 
@@ -91,11 +91,11 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 | Görüntü İşleme            | `ComputerVision`          |
 | Özel Görüntü İşleme tahmin | `CustomVision.Prediction` |
 | Özel Görüntü İşleme-eğitim   | `CustomVision.Training`   |
-| Yüz                       | `Face`                    |
+| Yüz Tanıma                       | `Face`                    |
 | Form Tanıma            | `FormRecognizer`          |
 | Mürekkep Tanıma             | `InkRecognizer`           |
 
-### <a name="search"></a>Arama
+### <a name="search"></a>Arayın
 
 | Hizmet            | Tip                  |
 |--------------------|-----------------------|
@@ -140,7 +140,7 @@ az cognitiveservices account list-kinds
 
 Yeni bir bilişsel hizmetler kaynağı oluşturup abone olmak için [az biliveservices hesabı oluştur](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create) komutunu kullanın. Bu komut, daha önce oluşturulan kaynak grubuna yeni bir faturalanabilir kaynak ekler. Yeni kaynağınızı oluştururken, kullanmak istediğiniz hizmetin "tür" değerini, fiyatlandırma katmanını (veya SKU 'su) ve bir Azure konumunu bilmeniz gerekir:
 
-Anomali algılayıcısı için aşağıdaki komutla adlandırılmış `anomaly-detector-resource` bir F0 (ücretsiz) kaynağı oluşturabilirsiniz.
+Anomali algılayıcısı için aşağıdaki komutla adlandırılmış bir F0 (ücretsiz) kaynağı oluşturabilirsiniz `anomaly-detector-resource` .
 
 ```azurecli-interactive
 az cognitiveservices account create \

@@ -12,11 +12,11 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
 ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219725"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686639"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>LUSıS modelinizde kültür başına varlık
 
@@ -53,7 +53,7 @@ Aşağıdaki varlıklar desteklenir:
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
@@ -75,7 +75,7 @@ Aşağıdaki varlıklar desteklenir:
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
@@ -97,7 +97,7 @@ Aşağıdaki varlıklar desteklenir:
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2, V3   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    V2, V3   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
@@ -119,7 +119,7 @@ Aşağıdaki varlıklar desteklenir:
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
@@ -141,7 +141,7 @@ Aşağıdaki varlıklar desteklenir:
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
@@ -163,7 +163,7 @@ Aşağıdaki varlıklar desteklenir:
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
@@ -187,7 +187,7 @@ Aşağıdaki varlıklar desteklenir:
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
@@ -209,7 +209,7 @@ Aşağıdaki varlıklar desteklenir:
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2,-   |
+[Sayı](luis-reference-prebuilt-number.md)   |    V2,-   |
 [Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2,-   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2,-   |
@@ -231,7 +231,7 @@ Aşağıdaki varlıklar desteklenir:
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    -   |
+[Sayı](luis-reference-prebuilt-number.md)   |    -   |
 [Numarasını](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    -   |
@@ -253,7 +253,7 @@ Aşağıdaki varlıklar desteklenir:
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
@@ -275,7 +275,7 @@ Aşağıdaki varlıklar desteklenir:
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Numarasını](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
@@ -297,7 +297,7 @@ Aşağıdaki varlıklar desteklenir:
 [E-posta](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Sayısından](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Sayı](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Numarasını](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Yüzde](luis-reference-prebuilt-percentage.md)   |    -   |
@@ -308,7 +308,7 @@ Aşağıdaki varlıklar desteklenir:
 
 [Kullanım dışı bırakılan varlıklarda](luis-reference-prebuilt-deprecated.md) notlara bakın
 
-KeyPhrase, Portekizce (Brezilya)- ```pt-BR```tüm alt kültürleri için kullanılamaz.
+KeyPhrase, Portekizce (Brezilya)-tüm alt kültürleri için kullanılamaz ```pt-BR``` .
 
 ## <a name="turkish-entity-support"></a>Türkçe varlık desteği
 

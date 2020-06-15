@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 43476f3e3f125bc338ba25e8cce0e96baa76262b
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 36b653fb3c3a24f3d19408aa2c87b3b764d04ec1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636113"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730331"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -27,8 +27,6 @@ Dil desteği, konuşma hizmeti işlevselliğine göre farklılık gösterir. Aş
 Hem Microsoft konuşma SDK 'Sı hem de REST API aşağıdaki dilleri (yerel ayarlar) destekler. 
 
 Doğruluğu artırmak için, bir dilin bir alt kümesi için, **Ses + insan etiketli yazılı** döküm veya **Ilgili metin: cümleler**karşıya yüklenirken özelleştirme sunulur. Özelleştirme hakkında daha fazla bilgi için bkz. [özel konuşma tanıma kullanmaya başlama](how-to-custom-speech.md).
-
-Telaffuz geliştirme hakkında daha fazla bilgi için bkz. [özel konuşma tanıma modeli geliştirme](how-to-custom-speech-improve-accuracy.md#add-new-words-with-pronunciation).
 
 <!--
 To get the AM and ML bits:

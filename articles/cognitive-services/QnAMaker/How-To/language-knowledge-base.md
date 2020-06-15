@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 38701e8bbef1c5d78eca2242105e81fe7261c0f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220638"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693099"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Soru-Cevap Oluşturma için Bilgi Bankası içeriğinin dil desteği
 
@@ -25,7 +25,7 @@ Dil, Kullanıcı sorgularına yanıt olarak Soru-Cevap Oluşturma sonuçların u
 
 ## <a name="one-language-for-all-knowledge-bases-in-resource"></a>Kaynaktaki tüm bilgi tabanları için bir dil
 
-Soru-Cevap Oluşturma, birinci Bilgi Bankası oluşturma sırasında QnA hizmetinizin dilini seçmenizi sağlar. Bir Soru-Cevap Oluşturma kaynaktaki tüm bilgi tabanları için, hepsi aynı dilde olmalıdır. Bu dil değiştirilemez.
+Soru-Cevap Oluşturma ile ilk bilgi bankanızı oluştururken Soru-Cevap hizmetinizin dilini seçebilirsiniz. Aynı Soru-Cevap Oluşturma kaynağındaki tüm bilgi bankaları aynı dilde olmalıdır. Bu dil değiştirilemez.
 
 Tek bir kaynakta farklı dillerde bilgi tabanları oluşturmak, Kullanıcı sorgularına yanıt olarak Soru-Cevap Oluşturma sonuçların uygunluğunu olumsuz şekilde etkiler.
 

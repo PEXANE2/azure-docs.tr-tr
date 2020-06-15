@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: c14376cc80373371ec5fcb8f22a00584a6b2f714
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220220"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710176"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Bing Özel Arama deneyiminizi yapılandırın
 
@@ -27,7 +27,7 @@ Web 'in dilimlerinizi tanımlarken aşağıdakileri kullanın:
 
 | Dilim adı | Açıklama                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domain     | Bir etki alanı dilimi, bir İnternet etki alanı içinde bulunan tüm içeriği içerir. Örneğin, `www.microsoft.com`. Yok `www.` etmek, Bing 'in etki alanının alt etki alanlarını da aramasına neden olur. Örneğin, öğesini belirtirseniz `microsoft.com`, Bing Ayrıca veya `support.microsoft.com` `technet.microsoft.com`içindeki sonuçları da döndürür. |
+| Domain     | Bir etki alanı dilimi, bir İnternet etki alanı içinde bulunan tüm içeriği içerir. Örneğin, `www.microsoft.com`. Yok `www.` etmek, Bing 'in etki alanının alt etki alanlarını da aramasına neden olur. Örneğin, öğesini belirtirseniz `microsoft.com` , Bing Ayrıca veya içindeki sonuçları da döndürür `support.microsoft.com` `technet.microsoft.com` . |
 | Sayfaya    | Alt sayfa dilimi, alt sayfa ve altındaki yollarda bulunan tüm içeriği içerir. Yolda en fazla iki alt sayfaların sayısını belirtebilirsiniz. Örneğin, `www.microsoft.com/en-us/windows/`                                                                                                                       |
 | Web    | Bir Web sayfası dilimi yalnızca özel bir aramada bu Web sayfasını içerebilir. İsteğe bağlı olarak, alt sayfaların eklenip eklenmeyeceğini belirtebilirsiniz.                                                                                                                                                                                  |
 

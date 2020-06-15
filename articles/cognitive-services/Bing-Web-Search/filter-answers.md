@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220275"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696720"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Arama yanıtının içerdiği yanıtları filtreleme  
 
@@ -53,13 +53,13 @@ Bing tarafından döndürülen yanıtları filtrelemek için API 'yi çağırır
 
 Bir yanıtın virgülle ayrılmış listesi olan [Responsefilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) sorgu parametresini kullanarak, Bing 'in yanıt (örneğin, görüntüler, videolar ve Haberler) içerdiği yanıt türlerini filtreleyebilirsiniz. Bir yanıt, Bing buna ait ilgili içeriği bulursa yanıta dahil edilir. 
 
-Görüntüler gibi yanıtlardan belirli yanıtları dışlamak için, yanıt türüne bir `-` karakter ekleyin. Örneğin:
+Görüntüler gibi yanıtlardan belirli yanıtları dışlamak için, `-` Yanıt türüne bir karakter ekleyin. Örnek:
 
 ```
 &responseFilter=-images,-videos
 ```
 
-Aşağıda, yelbilerin görüntülerini `responseFilter` , Videoları ve haberleri istemek için nasıl kullanılacağı gösterilmektedir. Sorgu dizesini kodlarken, virgüller% 2C olarak değişir.  
+Aşağıda, `responseFilter` yelbilerin görüntülerini, Videoları ve haberleri istemek için nasıl kullanılacağı gösterilmektedir. Sorgu dizesini kodlarken, virgüller% 2C olarak değişir.  
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&responseFilter=images%2Cvideos%2Cnews&mkt=en-us HTTP/1.1  
@@ -98,11 +98,11 @@ Aşağıda, bir önceki sorgunun yanıtı gösterilmektedir. Bing ilgili video v
 
 Bing, önceki yanıtta video ve haber sonuçları döndürmese de, video ve haber içeriği yok demektir. Yalnızca sayfanın bu sayfada yer almamasıdır. Bununla birlikte, daha fazla sonuç [elde ederseniz,](./paging-webpages.md) sonraki sayfalar büyük olasılıkla bunları içerebilir. Ayrıca, [VIDEO arama API](../bing-video-search/search-the-web.md) ve [Haber Arama API](../bing-news-search/search-the-web.md) uç noktalarını doğrudan çağırırsanız, yanıt muhtemelen sonuçlar içerebilir.
 
-Tek bir API 'den sonuçları `responseFilter` almak için kullanmanız önerilmez. Tek bir Bing API 'den içerik istiyorsanız, bu API 'YI doğrudan çağırın. Örneğin, yalnızca görüntüleri almak için Resim Arama API uç noktasına `https://api.cognitive.microsoft.com/bing/v7.0/images/search` veya diğer [görüntü](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) uç noktalarından birine bir istek gönderin. Tek bir API 'nin çağrılması yalnızca performans nedenleriyle değil önemlidir, ancak içeriğe özgü API 'Ler daha zengin sonuçlar sunar. Örneğin, sonuçları filtrelemek için Web Araması API 'SI tarafından kullanılamayan filtreler kullanabilirsiniz.  
+`responseFilter`Tek BIR API 'den sonuçları almak için kullanmanız önerilmez. Tek bir Bing API 'den içerik istiyorsanız, bu API 'YI doğrudan çağırın. Örneğin, yalnızca görüntüleri almak için Resim Arama API uç noktasına `https://api.cognitive.microsoft.com/bing/v7.0/images/search` veya diğer [görüntü](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) uç noktalarından birine bir istek gönderin. Tek bir API 'nin çağrılması yalnızca performans nedenleriyle değil önemlidir, ancak içeriğe özgü API 'Ler daha zengin sonuçlar sunar. Örneğin, sonuçları filtrelemek için Web Araması API 'SI tarafından kullanılamayan filtreler kullanabilirsiniz.  
 
 ### <a name="site"></a>Site
 
-Belirli bir etki alanındaki arama sonuçlarını almak için sorgu dizesine `site:` sorgu parametresini ekleyin.  
+Belirli bir etki alanındaki arama sonuçlarını almak için sorgu `site:` dizesine sorgu parametresini ekleyin.  
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us
@@ -119,7 +119,7 @@ Web yanıt sonuçlarını, Bing 'in belirli bir dönemde bulduğu web sayfaları
 * `Week`— Son 7 gün içinde Bing tarafından bulunan Web sayfalarını döndürün
 * `Month`— Son 30 gün içinde bulunan Web sayfalarını geri döndür
 
-Bu parametreyi Ayrıca formunda özel bir tarih aralığına da ayarlayabilirsiniz `YYYY-MM-DD..YYYY-MM-DD`. 
+Bu parametreyi Ayrıca formunda özel bir tarih aralığına da ayarlayabilirsiniz `YYYY-MM-DD..YYYY-MM-DD` . 
 
 `https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-01..2019-05-30`
 
@@ -131,7 +131,7 @@ Sonuçlar, Bing filtre ölçütlerinizle eşleşen Web sayfası sayısı istedi�
 
 ## <a name="limiting-the-number-of-answers-in-the-response"></a>Yanıttaki yanıt sayısını sınırlandırma
 
-Bing, JSON yanıtında birden çok yanıt türü döndürebilir. Örneğin, *yelkenler + Dinghies*'yi sorgulayıp Bing,,, `webpages`ve `images` `relatedSearches`döndürebilir `videos`.
+Bing, JSON yanıtında birden çok yanıt türü döndürebilir. Örneğin, *yelkenler + Dinghies*'yi sorgulayıp Bing,,, `webpages` `images` ve döndürebilir `videos` `relatedSearches` .
 
 ```json
 {
@@ -159,7 +159,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Yanıt yalnızca `webPages` ve `images`içerir.
+Yanıt yalnızca ve içerir `webPages` `images` .
 
 ```json
 {
@@ -173,7 +173,7 @@ Yanıt yalnızca `webPages` ve `images`içerir.
 }
 ```
 
-`responseFilter` Sorgu parametresini önceki sorguya ekler ve bunları Web sayfası ve haberlere ayarlarsanız, yanıt yalnızca Web sayfalarını içerir çünkü Haberler derecelendirilir.
+`responseFilter`Sorgu parametresini önceki sorguya ekler ve bunları Web sayfası ve haberlere ayarlarsanız, yanıt yalnızca Web sayfalarını içerir çünkü Haberler derecelendirilir.
 
 ```json
 {
@@ -215,8 +215,8 @@ Yukarıdaki isteğin yanıtı aşağıda verilmiştir. Bing, en iyi iki yanıtı
 }
 ```
 
-Haberler olarak ayarlarsanız `promote` , bir derecelendirilmiş yanıt&mdash;olmadığından, yanıt yalnızca derecelendirilmiş yanıtları yükseltebileceğiniz için haber yanıtı dahil değildir.
+`promote`Haberler olarak ayarlarsanız, bir derecelendirilmiş yanıt olmadığından, yanıt &mdash; yalnızca derecelendirilmiş yanıtları yükseltebileceğiniz için haber yanıtı dahil değildir.
 
-Yükseltmek istediğiniz yanıtlar `answerCount` sınıra göre sayılmaz. Örneğin, derecelendirilen yanıtlar Haberler, Resimler ve videolar ise ve 1 ve `answerCount` `promote` haberlere ayarlarsanız, yanıt Haberler ve görüntüler içerir. Ya da, derecelendirilen yanıtlar videolar, görüntüler ve Haberler ise, yanıt Videoları ve haberleri içerir.
+Yükseltmek istediğiniz yanıtlar sınıra göre sayılmaz `answerCount` . Örneğin, derecelendirilen yanıtlar Haberler, Resimler ve videolar ise ve `answerCount` 1 ve `promote` haberlere ayarlarsanız, yanıt Haberler ve görüntüler içerir. Ya da, derecelendirilen yanıtlar videolar, görüntüler ve Haberler ise, yanıt Videoları ve haberleri içerir.
 
-Yalnızca `answerCount` sorgu parametresini `promote` belirtirseniz kullanabilirsiniz.
+`promote`Yalnızca `answerCount` sorgu parametresini belirtirseniz kullanabilirsiniz.
