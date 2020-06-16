@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: trbye
-ms.openlocfilehash: cc19844c6407a83233c70048e9eb258a742036fb
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: a333a61a28fabddc2e8101fdf3290c52f3db59ae
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84635178"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84780894"
 ---
 # <a name="what-is-the-azure-speaker-recognition-service"></a>Azure konuşmacı tanıma hizmeti nedir?
 
@@ -55,6 +55,20 @@ Konuşmacı kayıt verileri, kayıt için konuşma sesi ve ses imza özellikleri
 Verilerin ne kadar süreyle bekletileceği kontrol edersiniz. API çağrıları aracılığıyla ayrı konuşmalara yönelik kayıt verilerini oluşturabilir, güncelleştirebilir ve silebilirsiniz. Abonelik silindiğinde, abonelikle ilişkili tüm konuşmacı kaydı verileri de silinir. 
 
 Tüm bilişsel hizmetler kaynaklarında olduğu gibi, konuşmacı tanıma hizmetini kullanan geliştiriciler Microsoft 'un müşteri verileri ilkelerine dikkat etmeniz gerekir. Konuşmacı Tanıma için kullanıcılardan uygun izinleri aldığınızdan emin olmanız gerekir. Daha fazla bilgi için Microsoft Güven Merkezi ' nde bilişsel [Hizmetler sayfasına](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)bakın   . 
+
+## <a name="common-questions-and-solutions"></a>Sık sorulan sorular ve çözümler
+
+| Soru | Çözüm |
+|---------|----------|
+| Konuşmacı tanıma hangi senaryolarda kullanılamıyor? | Çağrı merkezi müşteri doğrulaması, sesli tabanlı hasta iade etme, Toplantı dökümü, çok kullanıcılı cihaz kişiselleştirmesi|
+| Tanımlama ve doğrulama arasındaki fark nedir? | Tanımlama, bir konuşmacı grubundan hangi üyenin konuşuyor olduğunu tespit etme işlemidir. Doğrulama, konuşmacının bilinen veya **kayıtlı** bir sesle eşleştiğini onaylama işlemidir.|
+| Metne bağlı ve metinden bağımsız doğrulama arasındaki fark nedir? | Metne bağlı doğrulama, hem kayıt hem de tanıma için belirli bir geçiş ifadesi gerektirir. Metnin bağımsız doğrulaması, kayıt için daha uzun bir ses örneği gerektirir, ancak tanıma sırasında da dahil olmak üzere her şeyi söyleyebilirsiniz.|
+| Hangi diller destekleniyor? | İngilizce, Fransızca, Ispanyolca, Çince, Almanca, Italyanca, Japonca ve Portekizce |
+| Hangi Azure bölgeleri destekleniyor? | Konuşmacı Tanıma bir önizleme hizmetidir ve şu anda yalnızca Batı ABD bölgede kullanılabilir.|
+| Hangi ses biçimleri destekleniyor? | Mono 16 bit, 16kHz PCM kodlamalı WAV |
+| Yanıtları **kabul etme** ve **reddetme** doğru değil, eşiği nasıl ayarlayabilirim? | En iyi eşik, senaryolarla yüksek oranda farklılık gösterdiğinden, API varsayılan 0,5 eşiğini temel alarak "kabul et" veya "Reddet" i belirler. Gelişmiş kullanıcılardan, varsayılan kararı geçersiz kılması ve sonucun kendi senaryonuz temelinde ince ayar yapılması önerilir. |
+| Bir konuşmacıyı birden çok kez kaydedebilir misiniz? | Evet, metne bağlı doğrulama için konuşmacıyı 50 kez kaydedebilirsiniz. Metinden bağımsız doğrulama veya konuşmacı tanımlama için, 300 saniyelik sesle kaydolabilirsiniz. |
+| Azure 'da hangi veriler depolanır? | Kayıt sesi, Ses profili [silinene](speaker-recognition-basics.md#deleting-voice-profile-enrollments)kadar hizmette depolanır. Tanıma ses örnekleri korunmaz veya depolanmaz. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

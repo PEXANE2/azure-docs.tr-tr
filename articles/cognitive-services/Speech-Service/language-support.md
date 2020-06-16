@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 36b653fb3c3a24f3d19408aa2c87b3b764d04ec1
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 3e32c7d7da918eb58de47d8fc9b7688a189cb022
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84730331"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783104"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -312,6 +312,27 @@ Sinir seslerini nasıl yapılandıracağınızı ve ayarlayabileceğinizi öğre
 | Vietnamca              | `vi`          |
 | Galce                   | `cy`          |
 | Yucatec Maya            | `yua`         |
+
+## <a name="speaker-recognition"></a>Konuşmacı Tanıma
+
+Çeşitli konuşmacı tanıma API 'Leri için desteklenen diller için aşağıdaki tabloya bakın. Konuşmacı Tanıma hakkında daha fazla bilgi için bkz. [genel bakış](speaker-recognition-overview.md) .
+
+| Yerel Ayar | Dil | Metne bağımlı doğrulama | Metnin bağımsız doğrulaması | Metnin bağımsız tanımlayıcısı |
+|----|----|----|----|----|
+| tr-TR | İngilizce (ABD) | evet | evet | evet |
+|zh-CN  |Çince (Mandarin, Basitleştirilmiş)|    yok|    evet|    evet|
+|de-DE  |Almanca (Almanya)   |yok    |evet    |evet|
+|en-GB  |İngilizce (UK)   |yok    |evet    |evet|
+|fr-FR  |Fransızca (Fransa)    |yok    |evet    |evet|
+|En-AU  |İngilizce (Avustralya)    |yok    |evet    |evet|
+|en-CA  |İngilizce (Kanada)   |yok|   evet|    evet|
+|fr-CA  |Fransızca (Kanada)    |yok    |evet|   evet|
+|it-IT  |İtalyanca|   yok |evet|   evet|
+|es-ES| İspanyolca (İspanya) |yok    |evet|   evet|
+|es-MX  |İspanyolca (Meksika)   |yok|   evet|    evet|
+|ja-JP| Japonca    |yok    |evet    |evet|
+|pt-BR| Portekizce (Brezilya)|    yok|    evet|    evet|
+|ko-KR| Korece  |yok    |evet|   evet|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
