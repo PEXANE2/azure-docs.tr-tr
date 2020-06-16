@@ -107,3 +107,13 @@
               href: pim-resource-roles-perform-access-review.md
             - name: Erişim gözden geçirmesi tamamlama
               href: pim-resource-roles-complete-access-review.md
+- name: Başvuru
+  items:
+    - name: Graph API
+      href: 'https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/azure_ad_overview'
+    - name: Azure AD CLI
+      href: 'https://docs.microsoft.com/cli/azure/ad'
+    - name: Graph için Azure AD PowerShell
+      href: 'https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0'
+    - name: Azure AD hizmet sınırlamaları
+      href: ../users-groups-roles/directory-service-limits-restrictions.md
