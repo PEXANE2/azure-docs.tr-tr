@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 05/19/2020
+ms.date: 06/15/2020
 ms.author: diberry
-ms.openlocfilehash: e1ac608d064e3ad60fb98f35abab61e453d20edd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 285f68b4f0d7284740867f83311135d6c3efa90f
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654805"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791223"
 ---
 # <a name="whats-new-in-qna-maker"></a>Soru-Cevap Oluşturma yenilikleri
 
@@ -24,6 +24,10 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler notları, Videoları, blo
 ## <a name="release-notes"></a>Sürüm notları
 
 Soru-Cevap Oluşturma yenilikleri öğrenin.
+
+### <a name="june-2020"></a>Haziran 2020
+
+* Daha hızlı ve daha kolay adımlar için [Power Virtual Agent](tutorials/integrate-with-power-virtual-assistant-fallback-topic.md) öğreticisi güncelleştirildi
 
 ### <a name="may-2020"></a>Mayıs 2020
 

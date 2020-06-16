@@ -198,8 +198,6 @@
       href: security-center-features-retirement-july2019.md
     - name: Uç nokta koruma değerlendirmesi ve önerileri
       href: security-center-endpoint-protection.md
-    - name: Güvenlik puanı (eski)
-      href: security-center-secure-score.md
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin

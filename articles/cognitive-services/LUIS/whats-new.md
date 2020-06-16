@@ -2,13 +2,13 @@
 title: Yenilikler-Language Understanding (LUSıS)
 description: Bu makale, Azure bilişsel hizmetler Language Understanding API hakkındaki haberlerle düzenli olarak güncelleştirilir.
 ms.topic: overview
-ms.date: 05/19/2020
-ms.openlocfilehash: 45bfe4e703942a7fa38329bd0905833e904e0ab1
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.date: 06/15/2020
+ms.openlocfilehash: d178ee2f5db74949f4a8ad68df93bf3c4407c58a
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678758"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789217"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding yenilikleri
 
@@ -21,6 +21,14 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notlarını, Vide
 * [Preview 3,0 yazma](luis-migration-authoring-entities.md) 'Sının
     * Sürüm 3.2.0-Önizleme. 3- [.net-NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)
     * Sürüm 4.0.0-Önizleme. 3- [js-NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)
+* LUSıS ile DevOps uygulamalarını uygulama
+    * Kavramlar
+        * [LUSıS için DevOps uygulamaları](luis-concept-devops-sourcecontrol.md)
+        * [LUSıS DevOps için sürekli tümleştirme ve sürekli teslim iş akışları](luis-concept-devops-automation.md)
+        * [LUSıS DevOps için test etme](luis-concept-devops-testing.md)
+    * Nasıl yapılır
+        * [GitHub eylemlerini kullanarak LUSıS uygulama geliştirmeye DevOps uygulama](luis-how-to-devops-with-github.md)
+    * [Komple kod GitHub deposu](https://github.com/Azure-Samples/LUIS-DevOps-Template)
 
 ### <a name="may-2020---build"></a>Mayıs 2020-/sürümü
 

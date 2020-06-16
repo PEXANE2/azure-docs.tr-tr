@@ -70,7 +70,7 @@
 - name: Başvuru
   items:
     - name: Azure Red Hat OpenShift CLI
-      href: /cli/azure/openshift
+      href: /cli/azure/aro
     - name: Azure Red Hat OpenShift REST API'leri
       href: /rest/api/openshift
 - name: Kaynaklar
