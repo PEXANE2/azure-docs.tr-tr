@@ -493,6 +493,8 @@
               href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Azure CLI kullanma
               href: image-builder.md
+            - name: Azure PowerShell kullanma
+              href: image-builder-powershell.md
             - name: Görüntü galerileri için derleme
               href: image-builder-gallery.md
             - name: Mevcut görüntüyü güncelleştirme

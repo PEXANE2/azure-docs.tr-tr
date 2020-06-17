@@ -946,14 +946,14 @@
               href: insights/container-insights-enable-new-cluster.md
             - name: Mevcut AKS kümesi için etkinleştirme
               href: insights/container-insights-enable-existing-clusters.md
+            - name: Arc etkin küme için etkinleştirme
+              href: insights/container-insights-enable-arc-enabled-clusters.md
             - name: Karma küme için etkinleştirme
               href: insights/container-insights-hybrid-setup.md
             - name: Azure Red Hat OpenShift v3 için etkinleştirme
               href: insights/container-insights-azure-redhat-setup.md
             - name: Azure Red Hat OpenShift v4 için etkinleştirme
               href: insights/container-insights-azure-redhat4-setup.md
-            - name: Arc etkin küme için etkinleştirme
-              href: insights/container-insights-enable-arc-enabled-clusters.md
             - name: Bölge eşlemeleri
               href: insights/container-insights-region-mapping.md
         - name: Performansı izleme
