@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 879834567b6905a070aada3dae2a41a672635c6c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 5b1471cc43fc506ca798e81ac8e35a5051278ee0
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267248"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907389"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Modern Okuyucu SDK 'Sı başvuru kılavuzu
 
@@ -80,7 +80,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Parametreler
 
-| Name | Tür | Açıklama |
+| Name | Tür | Description |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | RenderButtons işlevinin belirli davranışlarını yapılandırmaya yönelik seçenekler. İsteğe bağlı. |
 
@@ -111,7 +111,7 @@ Tam ekran okuyucu Içeriğine geçirilecek tek bir veri öbeği.
 
 ### <a name="launchresponse"></a>LaunchResponse
 
-Çağrısının yanıtını içerir `ImmersiveReader.launchAsync` .
+Çağrısının yanıtını içerir `ImmersiveReader.launchAsync` . `iframe`Ile modern okuyucuyu içeren bir başvuruya aracılığıyla erişilebileceğini unutmayın `container.firstChild` .
 
 ```typescript
 {
@@ -130,12 +130,12 @@ enum CookiePolicy { Disable, Enable }
 
 #### <a name="supported-mime-types"></a>Desteklenen MIME türleri
 
-| MIME Türü | Açıklama |
+| MIME Türü | Description |
 | --------- | ----------- |
 | metin/düz | Düz metin. |
 | text/html | HTML içeriği. [Daha fazla bilgi edinin](#html-support)|
 | Application/MathML + XML | Matematik biçimlendirme dili (MathML). [Daha fazla bilgi edinin](./how-to/display-math.md).
-| application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Microsoft Word. docx biçim belgesi.
+| Uygulama/vnd.openxmlformats-officedocument.wordprocessingml.document | Microsoft Word. docx biçim belgesi.
 
 ### <a name="html-support"></a>HTML desteği
 
@@ -188,7 +188,7 @@ Hata hakkındaki bilgileri içerir.
 
 #### <a name="error-codes"></a>Hata kodları
 
-| Kod | Açıklama |
+| Kod | Description |
 | ---- | ----------- |
 | BadArgument | Sağlanan bağımsız değişken geçersiz, `message` Ayrıntılar için bkz.. |
 | Zaman aşımı | Tam ekran okuyucusu belirtilen zaman aşımı süresi içinde yüklenemedi. |

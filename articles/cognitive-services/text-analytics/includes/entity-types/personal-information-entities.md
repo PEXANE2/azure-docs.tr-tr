@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 04fb080d09b1945add7340db081ab49dd017731d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 637c2bb1bc37d26dcdf1a169b2f5d20766d0a27f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637504"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84902682"
 ---
 > [!NOTE]
 > Algılamak için `PHI` , `domain=phi` parametresini ve model sürümünü `2020-04-01` veya üstünü kullanın.
@@ -22,7 +22,7 @@ ms.locfileid: "84637504"
  
 Uç noktaya istek gönderilirken aşağıdaki varlık kategorileri döndürülür `/v3.1-preview.1/entities/recognition/pii` .
 
-| Kategori   | Subcategory | Açıklama                          | Model sürümü başlatılıyor | Notlar |
+| Kategori   | Subcategory | Description                          | Model sürümü başlatılıyor | Notlar |
 |------------|-------------|--------------------------------------|------------------------|---|
 | Kişi     | YOK         | Kişilerin adları.  | `2019-10-01`  | İle de döndürülür `domain=phi` . |
 | Kişilik türü | YOK         | Bir kişi tarafından tutulan iş türleri veya roller. | `2020-02-01` | |
@@ -40,14 +40,14 @@ Uç noktaya istek gönderilirken aşağıdaki varlık kategorileri döndürülü
 | DateTime | Tarih | Takvim tarihleri. | `2019-10-01` | İle de döndürülür `domain=phi` . |
 | Miktar | YOK | Sayılar ve sayısal miktarlar. | `2019-10-01` |  |
 | Miktar | Yaş | Geçirir. | `2019-10-01` | | |
-| Derinlemesine bir uluslararası sınıflandırma (ICD-10-CM) | YOK | Uluslararası sınıflandırmayla ilgili varlıklar, dokuzuncu düzeltme.   | `2020-04-01` | |
+| Derinlemesine bir uluslararası sınıflandırma (ICD-9-CM) | YOK | Uluslararası sınıflandırmayla ilgili varlıklar, dokuzuncu düzeltme.   | `2020-04-01` | |
 | Derinlemesine bir uluslararası sınıflandırma (ICD-10-CM) | YOK | Uluslararası sınıflandırmayla ilgili varlıklar, onuncu düzeltme.    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Azure bilgileri
 
 Bu varlık kategorisi, kimlik doğrulama bilgileri ve bağlantı dizeleri dahil olmak üzere tanımlanabilir Azure bilgilerini içerir. Model sürümünden itibaren kullanılabilir `2019-10-01` . `domain=phi`Parametresiyle döndürülmedi.
 
-| Subcategory                           | Açıklama                                                                 |
+| Subcategory                           | Description                                                                 |
 |---------------------------------------|-----------------------------------------------------------------------------|
 | Azure DocumentDB kimlik doğrulama anahtarı             | Azure DocumentDB sunucusu için yetkilendirme anahtarı.                           |
 | Azure ıAAS veritabanı bağlantı dizesi ve Azure SQL bağlantı dizesi | Bir Azure hizmet olarak altyapı (IaaS) veritabanı ve SQL bağlantı dizesi için bağlantı dizesi. |

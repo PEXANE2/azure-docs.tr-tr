@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 7ddf556be584603ce3e7cb4a97eb4cc9ff63ec68
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 4e4200e291db81ff759e21eac5b1a9b785b5657f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718453"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888295"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Metin ve konuşma çevirisi için dil ve bölge desteği
 
@@ -186,7 +186,7 @@ Alfabede bulunan yöntem aşağıdaki dilleri destekler. "To/from", "<-->", dili
 | Dil    | Dil kodu | Komut Dosyası | Hedef/Kaynak | Komut Dosyası|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arapça | `ar` | Arapça`Arab` | <--> | Tin`Latn` |
-|Bangla  | `bn` | Bengali`Beng` | <--> | Tin`Latn` |
+| Bangla  | `bn` | Bengali`Beng` | <--> | Tin`Latn` |
 | Basitleştirilmiş Çince | `zh-Hans` | Basitleştirilmiş Çince`Hans`| <--> | Tin`Latn` |
 | Basitleştirilmiş Çince | `zh-Hans` | Basitleştirilmiş Çince`Hans`| <--> | Geleneksel Çince`Hant`|
 | Geleneksel Çince | `zh-Hant` | Geleneksel Çince`Hant`| <--> | Tin`Latn` |
@@ -198,7 +198,7 @@ Alfabede bulunan yöntem aşağıdaki dilleri destekler. "To/from", "<-->", dili
 | Kannada dili | `kn` | Kannada dili`Knda` | --> | Tin`Latn` |
 | Malayalam dili | `ml` | Malayalam dili`Mlym` | --> | Tin`Latn` |
 | Marathi | `mr` | Devanagari`Deva` | --> | Tin`Latn` |
-| Oriya | `or` | Oriya`Orya` | <--> | Tin`Latn` |
+| Odia | `or` | Oriya`Orya` | <--> | Tin`Latn` |
 | Pencap dili | `pa` | Gurmukhi`Guru`  | <--> | Tin`Latn`  |
 | Sırpça (Kiril) | `sr-Cyrl` | V`Cyrl`  | --> | Tin`Latn` |
 | Sırpça (Latin) | `sr-Latn` | Tin`Latn` | --> | V`Cyrl`|
