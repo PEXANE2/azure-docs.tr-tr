@@ -1,3 +1,5 @@
+- name: VM boyutları
+  href: vm-sizes.md
 - name: Model biçimleri için malzeme eşleme
   href: material-mapping.md
 - name: Bölgeler
@@ -10,5 +12,7 @@
   href: 'https://github.com/Azure/azure-remote-rendering'
 - name: Azure Karma Gerçeklik Kaynak Yönetimi REST API’si
   href: 'https://docs.microsoft.com/rest/api/mixedreality/'
-- name: 'C# API belgeleri'
+- name: C# API belgeleri
   href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.RemoteRendering'
+- name: C++ API belgeleri
+  href: 'https://docs.microsoft.com/cpp/api/remote-rendering'

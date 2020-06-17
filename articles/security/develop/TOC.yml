@@ -1,20 +1,6 @@
 - name: Geliştirme Belgelerinin Güvenliğini Sağlama
   href: index.yml
-- name: Örnek uygulamalar
-  expanded: true
-  items:
-    - name: Güvenli geliştirmedeki yenilikler
-      items:
-        - name: Linux kapsayıcısında web uygulaması
-          href: secure-web-app.md
-        - name: Azure Active Directory ile web uygulaması
-          href: secure-aad-app.md
-    - name: Endüstride uyumlu çözümler
-      items:
-        - name: Ödeme kartı endüstrisi
-          href: secure-pci-web-app.md
 - name: Kavramlar
-  expanded: true
   items:
     - name: En iyi uygulamalar
       items:
@@ -26,8 +12,8 @@
           href: secure-develop.md
         - name: Güvenli uygulamalar dağıtma
           href: secure-deploy.md
-- name: Kaynaklar
   expanded: true
+- name: Kaynaklar
   items:
     - name: Microsoft Güvenlik Kodu Analizi
       items:
@@ -95,3 +81,4 @@
               href: threat-modeling-tool-sensitive-data.md
             - name: Oturum yönetimi
               href: threat-modeling-tool-session-management.md
+  expanded: true

@@ -24,7 +24,7 @@
       href: secured-virtual-hub.md
     - name: Genel dağıtım işlemi
       href: deployment-overview.md
-    - name: Güvenilen güvenlik iş ortakları
+    - name: Güvenlik iş ortağı sağlayıcıları
       href: trusted-security-partners.md
     - name: Kural işleme mantığı
       href: rule-processing.md
@@ -32,7 +32,7 @@
       href: vhubs-and-vnets.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Güvenilen güvenlik iş ortaklarını dağıtma
+    - name: Güvenlik iş ortağı sağlayıcılarını dağıtma
       href: deploy-trusted-security-partner.md
     - name: Güvenlik Duvarı ilkesine geçme - PowerShell
       href: migrate-to-policy.md

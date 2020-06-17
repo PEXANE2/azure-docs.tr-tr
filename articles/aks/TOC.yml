@@ -222,6 +222,9 @@
               href: http-application-routing.md
             - name: İç ağ kullanma
               href: ingress-internal-ip.md
+            - name: Mevcut bir AKS kümesi için AGIC eklentisini etkinleştirme
+              href: ../application-gateway/tutorial-ingress-controller-add-on-existing.md
+              maintainContext: true
             - name: TLS’yi kendi sertifikalarınızla kullanma
               href: ingress-own-tls.md
             - name: TLS’yi Let’s Encrypt ile kullanma
@@ -416,7 +419,7 @@
     - name: REST
       href: /rest/api/aks
     - name: PowerShell
-      href: '/powershell/module/az.aks#aks'
+      href: /powershell/module/az.aks#aks
     - name: .NET
       href: /dotnet/api/overview/azure/containerservice
     - name: Python

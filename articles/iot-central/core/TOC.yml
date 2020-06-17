@@ -10,6 +10,10 @@
       href: overview-iot-central-developer.md
     - name: Son güncelleştirmeler
       items:
+        - name: Mayıs 2020 güncelleştirmeleri
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-updates/'
+        - name: Mayıs 2020 pano güncelleştirmeleri
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-dashboard-updates/'
         - name: Nisan 2020 yeni özellikler
           href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
         - name: Nisan 2020 güncelleştirmeleri
@@ -182,9 +186,9 @@
     - name: Azure IoT SDK’ları
       items:
         - name: IoT Hizmet SDK’ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT Cihaz SDK'ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: IoT Central API başvurusu
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: Müşteri verisi istekleri
