@@ -6,6 +6,8 @@
       href: overview.md
     - name: Desteklenen sürümler ve özellikler
       href: features.md
+    - name: Sürüm notları
+      href: release-notes.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

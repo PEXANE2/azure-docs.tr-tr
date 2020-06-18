@@ -41,10 +41,10 @@
           href: mca-section-invoice.md
         - name: Microsoft Müşteri Sözleşmesi faturalandırma hesabı oluşturma
           href: mca-setup-account.md
-        - name: Office 365 hesabıyla kaydolma
-          href: office-365-account-for-azure-subscription.md
-        - name: Azure hesabı ile Office 365 için kaydolma
-          href: azure-account-for-office-365-subscription.md
+        - name: Microsoft 365 hesabıyla kaydolma
+          href: microsoft-365-account-for-azure-subscription.md
+        - name: Azure hesabıyla Microsoft 365’e kaydolma
+          href: azure-account-for-microsoft-365-subscription.md
         - name: Güçlü müşteri kimlik doğrulamasını kullanarak ödeme
           href: open-banking-strong-customer-authentication.md
     - name: Abonelikleri yönetme

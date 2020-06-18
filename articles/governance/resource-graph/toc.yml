@@ -10,19 +10,22 @@
   items:
     - name: İlk sorgunuzu çalıştırma - Azure portal
       displayName: 'portal, resource, graph, explorer'
-      href: first-query-portal.md
+      href: ./first-query-portal.md
     - name: İlk sorgunuzu çalıştırma - Azure CLI
       displayName: 'extension, docker'
-      href: first-query-azurecli.md
-    - name: İlk sorgunuzu çalıştırma - PowerShell
+      href: ./first-query-azurecli.md
+    - name: İlk sorgunuzu çalıştırma - Azure PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
-      href: first-query-powershell.md
+      href: ./first-query-powershell.md
+    - name: İlk sorgunuzu çalıştırma - Go
+      displayName: 'package, sdk, golang'
+      href: ./first-query-go.md
     - name: İlk sorgunuzu çalıştırma - Python
       displayName: 'library, azure-mgmt, cli'
-      href: first-query-python.md
+      href: ./first-query-python.md
     - name: Paylaşılan sorguyu dağıtma - ARM şablonu
       displayName: 'resource manager, queries'
-      href: shared-query-template.md
+      href: ./shared-query-template.md
 - name: Öğreticiler
   items:
     - name: Azure portalında sorgu oluşturma ve paylaşma

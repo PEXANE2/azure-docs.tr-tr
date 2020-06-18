@@ -1,8 +1,14 @@
-- name: Unity ile model işleme
-  href: render-model.md
-- name: Unity örneğini HoloLens’e dağıtma
-  href: deploy-to-hololens.md
-- name: Unity örneğini Masaüstüne dağıtma
-  href: deploy-to-desktop.md
+- name: Unity
+  items:
+    - name: Unity ile model işleme
+      href: render-model.md
+    - name: Unity örneğini HoloLens’e dağıtma
+      href: deploy-to-hololens.md
+    - name: Unity örneğini Masaüstüne dağıtma
+      href: deploy-to-desktop.md
+- name: Yerel C++
+  items:
+    - name: Yerel C++ örneğini HoloLens’e dağıtma
+      href: native-cpp/hololens/deploy-native-cpp-tutorial.md
 - name: Modeli işlenmek üzere dönüştürme
   href: convert-model.md

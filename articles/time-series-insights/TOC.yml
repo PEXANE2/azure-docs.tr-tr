@@ -41,9 +41,9 @@
           items:
             - name: Kimlik doğrulama ve yetkilendirme
               href: time-series-insights-authentication-and-authorization.md
-            - name: 'C# kullanarak verileri sorgulama'
+            - name: C# kullanarak verileri sorgulama
               href: time-series-insights-query-data-csharp.md
-            - name: 'C# içinde başvuru verilerini yönetme'
+            - name: C# içinde başvuru verilerini yönetme
               href: time-series-insights-manage-reference-data-csharp.md
             - name: Özel görünüm paylaşma
               href: time-series-insights-parameterized-urls.md
@@ -65,7 +65,7 @@
           items:
             - name: Kimlik doğrulama ve yetkilendirme
               href: time-series-insights-authentication-and-authorization.md
-            - name: 'C# kullanarak verileri sorgulama'
+            - name: C# kullanarak verileri sorgulama
               href: time-series-insights-update-query-data-csharp.md
             - name: Power BI tümleştirme
               href: concepts-power-bi.md
@@ -111,6 +111,12 @@
           href: time-series-insights-update-how-to-shape-events.md
         - name: Power BI'a bağlanma
           href: how-to-connect-power-bi.md
+- name: Hataya Neden Olan Değişiklikler
+  items:
+    - name: Azure Time Series Insights Önizleme
+      items:
+        - name: Uzun Veri Türü için Destek ekleme
+          href: time-series-insights-long-data-type.md
 - name: Başvuru
   items:
     - name: Time Series Insights

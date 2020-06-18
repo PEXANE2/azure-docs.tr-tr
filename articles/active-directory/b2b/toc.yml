@@ -23,6 +23,8 @@
           href: b2b-tutorial-require-mfa.md
     - name: Örnekler
       items:
+        - name: Self servis kaydolma örnekleri
+          href: code-samples-self-service-sign-up.md
         - name: Kod ve Azure PowerShell örnekleri
           href: code-samples.md
     - name: Kavramlar
