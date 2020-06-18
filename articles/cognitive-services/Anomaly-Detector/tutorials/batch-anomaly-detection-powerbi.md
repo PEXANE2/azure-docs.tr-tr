@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 03/05/2020
+ms.date: 06/17/2020
 ms.author: aahi
-ms.openlocfilehash: 1b486aaf0ce33e31433c2c3d0f7a1ff2c7089132
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 67a17373bb161e54493974ebf01e785bb1329087
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78402654"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944823"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Öğretici: toplu algılama ve Power BI kullanarak anomali görselleştirin
 
@@ -29,11 +29,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Beklenen ve görülen değerler ve anomali algılama sınırları dahil olmak üzere verilerinizde bulunan anormallikleri görselleştirin.
 
 ## <a name="prerequisites"></a>Ön koşullar
-* Bir [Azure aboneliği](https://azure.microsoft.com/free/)
+* [Azure aboneliği](https://azure.microsoft.com/free/)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/)ücretsiz olarak kullanılabilir.
 * Zaman serisi veri noktaları içeren bir Excel dosyası (. xlsx). Bu hızlı başlangıçta örnek veriler [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962) 'da bulunabilir
-* Azure aboneliğiniz olduktan <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="sonra, anahtarınızı ve uç noktanızı almak için"  target="_blank">Azure Portal bir metin analizi kaynağı <span class="docon docon-navigate-external x-hidden-focus"></span> </a> oluşturun metin analizi bir kaynak oluşturun. 
-    * Uygulamanızı Metin Analizi API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Bunu daha sonra hızlı başlangıçta yapacaksınız.
+* Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtar ve uç noktanıza ulaşmak için Azure Portal bir anomali algılayıcı kaynağı oluşturun. 
+    * Uygulamanızı anomali algılayıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Bunu daha sonra hızlı başlangıçta yapacaksınız.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
 
@@ -68,7 +68,7 @@ Yeni sorgunuzun seçili olduğundan emin olun ve ardından **Gelişmiş Düzenle
 
 ![Power BI içindeki "Gelişmiş Düzenleyici" düğmesinin görüntüsü](../media/tutorials/advanced-editor-screen.png)
 
-Gelişmiş Düzenleyici içinde, tablodaki sütunları ayıklamak ve API 'ye göndermek için aşağıdaki Power Query a kod parçacığını kullanın. Daha sonra sorgu, JSON yanıtından bir tablo oluşturur ve döndürür. `apiKey` Değişkeni geçerli anomali algılayıcı API anahtarınızla ve `endpoint` uç noktanızla değiştirin. Sorguyu Gelişmiş Düzenleyici girdikten sonra **bitti**' ye tıklayın.
+Gelişmiş Düzenleyici içinde, tablodaki sütunları ayıklamak ve API 'ye göndermek için aşağıdaki Power Query a kod parçacığını kullanın. Daha sonra sorgu, JSON yanıtından bir tablo oluşturur ve döndürür. `apiKey`Değişkeni geçerli anomali ALGıLAYıCı API anahtarınızla ve uç noktanızla değiştirin `endpoint` . Sorguyu Gelişmiş Düzenleyici girdikten sonra **bitti**' ye tıklayın.
 
 ```M
 (table as table) => let
@@ -112,7 +112,7 @@ Gelişmiş Düzenleyici içinde, tablodaki sütunları ayıklamak ve API 'ye gö
  in results
 ```
 
-Aşağıdaki `Sheet1` **parametre girin**' i seçerek veri sayfanızda sorguyu çağırın ve **çağır**' a tıklayın. 
+Aşağıdaki parametre girin ' i seçerek veri sayfanızda sorguyu `Sheet1` çağırın **Enter Parameter**ve **çağır**' a tıklayın. 
 
 !["Gelişmiş Düzenleyici" düğmesinin görüntüsü](../media/tutorials/invoke-function-screenshot.png)
 
@@ -160,11 +160,11 @@ Power BI penceresinin sağ tarafında, **alanlar** bölmesinin altında, **çağ
 
 ![Yeni hızlı ölçü ekranının görüntüsü](../media/tutorials/new-quick-measure.png)
 
-Görüntülenen ekranda, hesaplama olarak **filtrelenmiş değer** ' i seçin. **Taban değerini** olarak `Sum of Value`ayarlayın. Ardından, `IsAnomaly` **çağrılan işlev** alanlarından **filtrelemek**için sürükleyin. Filtre `True` açılan menüsünden **Filter** seçim yapın.
+Görüntülenen ekranda, hesaplama olarak **filtrelenmiş değer** ' i seçin. **Taban değerini** olarak ayarlayın `Sum of Value` . Ardından `IsAnomaly` , **çağrılan Işlev** alanlarından **filtrelemek**için sürükleyin. `True` **Filtre** açılan menüsünden seçim yapın.
 
 ![Yeni hızlı ölçü ekranının görüntüsü](../media/tutorials/new-quick-measure-2.png)
 
-**Tamam**' a tıkladıktan sonra, alanlarınızın `Value for True` listesinin en altında bulunan bir alana sahip olursunuz. Sağ tıklayın ve **anomali**olarak yeniden adlandırın. Bunu grafiğin **değerlerine**ekleyin. Daha sonra **Biçim** aracını seçin ve X ekseni türünü **kategorik**olarak ayarlayın.
+**Tamam**' a tıkladıktan sonra, `Value for True` alanlarınızın listesinin en altında bulunan bir alana sahip olursunuz. Sağ tıklayın ve **anomali**olarak yeniden adlandırın. Bunu grafiğin **değerlerine**ekleyin. Daha sonra **Biçim** aracını seçin ve X ekseni türünü **kategorik**olarak ayarlayın.
 
 ![Yeni hızlı ölçü ekranının görüntüsü](../media/tutorials/format-x-axis.png)
 

@@ -1,2 +1,4 @@
 - name: ArrInspector inceleme aracı
   href: arr-inspector.md
+- name: Azure Remote Rendering Varlık Aracı
+  href: ../../samples/azure-remote-rendering-asset-tool.md

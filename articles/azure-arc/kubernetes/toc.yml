@@ -4,6 +4,10 @@
   items:
     - name: Azure Arc özellikli Kubernetes hakkında
       href: overview.md
+- name: Örnekler
+  items:
+    - name: Azure İlkesi yerleşik ilkeler
+      href: ./policy-samples.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Küm işlemleri
