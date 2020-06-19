@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: ab3f596000216e8555bb84d0d47aff9a6e969eeb
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d52f4ad7be6ce31fd2d01208536945c1f9ab2d7d
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169893"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986720"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Örnek: Gerçek Zamanlı Videoları Analiz Etme
 
@@ -26,7 +26,7 @@ Bu kılavuzda, canlı video akışından alınan karelerde nasıl gerçek zamanl
 - Bu kareleri API’ye gönderme
 - API çağrısından döndürülen her analiz sonucunu kullanma
 
-Bu örnekler C# dilinde yazılmıştır ve kod GitHub 'da buradan bulunabilir: [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/).
+Bu örnekler C# dilinde yazılmıştır ve kod GitHub 'da buradan bulunabilir: [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) .
 
 ## <a name="the-approach"></a>Yaklaşım
 
@@ -138,7 +138,7 @@ while (true)
 
 ### <a name="getting-started"></a>Başlarken
 
-Uygulamanızı mümkün olduğunca hızlı bir şekilde çalışır duruma getirmek için yukarıda açıklanan sistemin esnek bir uygulamasını kullanacaksınız. Koda erişmek için adresine gidin [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis).
+Uygulamanızı mümkün olduğunca hızlı bir şekilde çalışır duruma getirmek için yukarıda açıklanan sistemin esnek bir uygulamasını kullanacaksınız. Koda erişmek için adresine gidin [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis) .
 
 Kitaplık, bir web kamerasından gelen video karelerini işlemek için yukarıda açıklanan üretici-tüketici sistemini uygulayan FrameGrabber sınıfını içerir. Kullanıcı, API çağrısının tam biçimini belirtebilir ve sınıf, çağıran kodun yeni bir çerçeve edinildiği veya yeni bir analiz sonucunun kullanılabildiği bir şekilde bilmesini sağlamak için olayları kullanır.
 
@@ -201,13 +201,12 @@ namespace VideoFrameConsoleApplication
 
 Bu örneği kullanmaya başlamak için şu adımları izleyin:
 
-1. [Abonelikler](https://azure.microsoft.com/try/cognitive-services/)’den Görüntü İşleme API’leri için API anahtarlarını alın. Video karesi analizi için geçerli API’ler şunlardır:
-    - [Görüntü İşleme API'si](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [Yüz Tanıma API'si](https://docs.microsoft.com/azure/cognitive-services/face/overview)
-
-2. [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub deposunu kopyalayın
-
-3. Visual Studio 2015 ' de örneği açın ve örnek uygulamaları derleyin ve çalıştırın:
+1. Bir [Azure hesabı](https://azure.microsoft.com/free/cognitive-services/)oluşturun. Zaten varsa, bir sonraki adıma geçebilirsiniz.
+2. Anahtarınızı ve uç noktanızı almak için Azure portal Görüntü İşleme ve yüz için kaynaklar oluşturun. Kurulum sırasında ücretsiz katmanı (F0) seçtiğinizden emin olun.
+   - [Görüntü İşleme](https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)
+   - [Yüz](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) Kaynaklar dağıtıldıktan sonra, her kaynak için anahtarınızı ve uç noktayı toplamak için **Kaynağa Git** ' e tıklayın. 
+3. Bilişsel [örnekler-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub deposunun klonlayın.
+4. Visual Studio 'da örneği açın ve örnek uygulamaları derleyin ve çalıştırın:
     - BasicConsoleSample için yüz tuşu, doğrudan [basicconsolesample/program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs)içinde sabit olarak kodlanmıştır.
     - LiveCameraSample için anahtarlar, uygulamanın Ayarlar bölmesine girilmelidir. Oturumlarda kullanıcı verileri olarak kalıcı duruma getirilir.
         
@@ -216,7 +215,7 @@ Tümleştirmeye hazırsanız, **kendi projelerinizden VideoFrameAnalyzer kitapl�
 
 ## <a name="summary"></a>Özet
 
-Bu kılavuzda, yüz, Görüntü İşleme ve Emotion API 'Leri kullanarak canlı video akışları üzerinde neredeyse gerçek zamanlı analizler çalıştırmayı ve örnek kodumuzu kullanmaya başlamak için nasıl kullanılacağını öğrendiniz. Azure bilişsel [Hizmetler kayıt sayfasında](https://azure.microsoft.com/try/cognitive-services/), ücretsiz API anahtarlarıyla uygulamanızı oluşturmaya başlayabilirsiniz. 
+Bu kılavuzda, yüz, Görüntü İşleme ve Emotion API 'Leri kullanarak canlı video akışları üzerinde neredeyse gerçek zamanlı analizler çalıştırmayı ve örnek kodumuzu kullanmaya başlamak için nasıl kullanılacağını öğrendiniz.
 
  [UserVoice sitemizdeki](https://cognitive.uservoice.com/) [GitHub deposunda](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) veya daha geniş API geri bildirimleri için geri bildirim ve öneriler sağlamayı ücretsiz olarak hissetmekten çekinmeyin.
 

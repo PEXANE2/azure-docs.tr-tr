@@ -11,28 +11,29 @@ ms.topic: quickstart
 ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 379f74ce673dcae6f300b4eb23d1f2d9b46f2591
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 94e8901a0526c0e771ad570f4271937a87e83aea
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677669"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986773"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-javascript"></a>Hızlı başlangıç: Görüntü İşleme REST API ve JavaScript kullanarak küçük resim oluşturma
 
 Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden küçük resim oluşturacaksınız. Giriş görüntüsünden en boy oranına göre farklılık gösterebilen yükseklik ve genişlik belirtirsiniz. Görüntü İşleme, ilgilendiğiniz alanı saptamak ve bu bölgeye göre kırpma koordinatları oluşturmak için akıllı kırpma kullanır.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) oluşturun.
-
 ## <a name="prerequisites"></a>Ön koşullar
 
-Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Abonelik anahtarınızı ve uç nokta URL 'nizi geçici bir konuma kaydedin.
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+    * Uygulamanızı Görüntü İşleme hizmetine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 
 ## <a name="create-and-run-the-sample"></a>Örnek oluşturma ve çalıştırma
 
 Örneği oluşturup çalıştırmak için aşağıdaki adımları uygulayın:
 
-1. _Get-Thumbnail. html_adlı bir dosya oluşturun, dosyayı bir metin düzenleyicisinde açın ve içine aşağıdaki kodu kopyalayın.
+1. _get-thumbnail.html_adlı bir dosya oluşturun, dosyayı bir metin düzenleyicisinde açın ve içine aşağıdaki kodu kopyalayın.
 1. İsteğe bağlı olarak, `value` denetimin özniteliğinin değerini, çözümlemek istediğiniz `inputImage` farklı bır görüntünün URL 'siyle değiştirin.
 1. Tarayıcı penceresini açın.
 1. Tarayıcıda dosyayı tarayıcı penceresine sürükleyip bırakın.

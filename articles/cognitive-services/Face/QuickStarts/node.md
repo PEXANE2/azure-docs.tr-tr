@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Azure REST API ve Node. js ile görüntüdeki yüzeyleri algılama'
+title: 'Hızlı başlangıç: Azure REST API ve Node.js bir görüntüdeki yüzeyleri algılayın'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri algılamak için Node. js ile REST API Azure yüz kullanacaksınız.
+description: Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri algılamak için Node.js ile Azure yüz REST API kullanacaksınız.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,35 +10,38 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: b88959d1dd936df0315d7365513ab0c0c5b7df17
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: acb198cb727c8a6871bb329be9178f100c0bf6ed
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81402933"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986540"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Hızlı başlangıç: yüz REST API ve Node. js kullanarak görüntüdeki yüzeyleri algılama
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Hızlı başlangıç: yüz REST API ve Node.js kullanarak görüntüdeki yüzeyleri algılama
 
-Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için Node. js ile Azure yüz REST API kullanacaksınız.
+Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için Node.js ile Azure yüz REST API kullanacaksınız.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Yüz abonelik anahtarı. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=face-api)'den ücretsiz bir deneme aboneliği anahtarı edinebilirsiniz. Ya da yüz hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" bir yüz kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtar ve uç noktanıza ulaşmak için bir yüz kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+    * Uygulamanızı Yüz Tanıma API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 - [Visual Studio Code](https://code.visualstudio.com/download) gibi bir kod Düzenleyicisi
 
 ## <a name="set-up-the-node-environment"></a>Düğüm ortamını ayarlama
 
-Projenizi oluşturmak istediğiniz klasöre gidin ve yeni bir dosya oluşturun, *facedetection. js*. Ardından `requests` modülü bu projeye yükler. Bu, betiklerinizin HTTP istekleri yapmasına olanak sağlar.
+Projenizi oluşturmak istediğiniz klasöre gidin ve *facedetection.js*yeni bir dosya oluşturun. Ardından `requests` modülü bu projeye yükler. Bu, betiklerinizin HTTP istekleri yapmasına olanak sağlar.
 
 ```shell
 npm install request --save
 ```
 
-## <a name="write-the-nodejs-script"></a>Node. js betiğini yazma
+## <a name="write-the-nodejs-script"></a>Node.js betiği yaz
 
-Aşağıdaki kodu *facedetection. js*dosyasına yapıştırın. Bu alanlar yüz hizmetine bağlanmayı ve giriş verilerinin nereden alınacağını belirtir. `subscriptionKey` Alanı abonelik anahtarınızın değeriyle güncelleştirmeniz gerekir ve `uriBase` dizeyi doğru uç nokta dizesini içerecek şekilde değiştirmeniz gerekir. `imageUrl` Alanı kendi giriş görüntünüzü gösterecek şekilde değiştirmek isteyebilirsiniz.
+Aşağıdaki kodu *facedetection.js*yapıştırın. Bu alanlar yüz hizmetine bağlanmayı ve giriş verilerinin nereden alınacağını belirtir. `subscriptionKey`Alanı abonelik anahtarınızın değeriyle güncelleştirmeniz gerekir ve `uriBase` dizeyi doğru uç nokta dizesini içerecek şekilde değiştirmeniz gerekir. `imageUrl`Alanı kendi giriş görüntünüzü gösterecek şekilde değiştirmek isteyebilirsiniz.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -59,7 +62,7 @@ const imageUrl =
     'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
 ```
 
-Ardından, Yüz Tanıma API'si çağırmak ve giriş görüntüsünden yüz öznitelik verilerini almak için aşağıdaki kodu ekleyin. Alan `returnFaceAttributes` , alınacak yüz özniteliklerini belirtir. Bu dizeyi, amaçlanan kullanım yönteminize bağlı olarak değiştirmek isteyebilirsiniz.
+Ardından, Yüz Tanıma API'si çağırmak ve giriş görüntüsünden yüz öznitelik verilerini almak için aşağıdaki kodu ekleyin. `returnFaceAttributes`Alan, alınacak yüz özniteliklerini belirtir. Bu dizeyi, amaçlanan kullanım yönteminize bağlı olarak değiştirmek isteyebilirsiniz.
 
 
 ```javascript
@@ -283,7 +286,7 @@ Konsol penceresinde JSON verileri olarak görünen yüz bilgilerini görmeniz ge
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri tespit etmek ve özniteliklerini döndürmek için Azure yüz hizmeti 'ni çağıran bir Node. js betiği yazdı. Daha fazla bilgi edinmek için Yüz Tanıma API'si başvuru belgelerini inceleyin.
+Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri tespit etmek ve özniteliklerini döndürmek için Azure yüz hizmetini çağıran bir Node.js betiği yazdı. Daha fazla bilgi edinmek için Yüz Tanıma API'si başvuru belgelerini inceleyin.
 
 > [!div class="nextstepaction"]
 > [Yüz Tanıma API'si](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

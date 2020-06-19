@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
-ms.openlocfilehash: fd0e7079b3b70a6a6b8166cc7fc7518070e7153d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ab03e68acf96928922959ed939c0accc1f8290a5
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120819"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986671"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Yüz verilerinizi farklı bir yüz aboneliğine geçirin
 
-Bu kılavuzda, farklı bir Azure bilişsel hizmetler aboneliğine sahip kayıtlı bir PersonGroup nesnesi gibi yüz verilerinin, yüzlü bir Azure bilişsel hizmet aboneliğine nasıl taşınacağı gösterilmektedir. Verileri taşımak için anlık görüntü özelliğini kullanın. Bu şekilde, işlemlerinizi taşırken veya genişlettiğinizde bir PersonGroup veya çok yönlü liste nesnesi oluşturup eğmenize gerek kalmadan kaçınabilirsiniz. Örneğin, ücretsiz bir deneme aboneliği kullanarak bir PersonGroup nesnesi oluşturdunuz ve şimdi bunu ücretli aboneliğinize geçirmek istiyorsunuz. Ya da büyük bir kurumsal işlem için farklı bölgelerdeki abonelikler arasında yüz verileri eşitlemeniz gerekebilir.
+Bu kılavuzda, farklı bir Azure bilişsel hizmetler aboneliğine sahip kayıtlı bir PersonGroup nesnesi gibi yüz verilerinin, yüzlü bir Azure bilişsel hizmet aboneliğine nasıl taşınacağı gösterilmektedir. Verileri taşımak için anlık görüntü özelliğini kullanın. Bu şekilde, işlemlerinizi taşırken veya genişlettiğinizde bir PersonGroup veya çok yönlü liste nesnesi oluşturup eğmenize gerek kalmadan kaçınabilirsiniz. Örneğin, belki de ücretsiz bir abonelikle bir PersonGroup nesnesi oluşturdunuz ve şimdi bunu ücretli aboneliğinize geçirmek istiyorsunuz. Ya da büyük bir kurumsal işlem için farklı bölgelerdeki abonelikler arasında yüz verileri eşitlemeniz gerekebilir.
 
 Aynı geçiş stratejisi LargePersonGroup ve Largecelist nesneleri için de geçerlidir. Bu kılavuzdaki kavramlarla ilgili bilgi sahibi değilseniz, [yüz tanıma kavramları](../concepts/face-recognition.md) kılavuzundaki tanımları bölümüne bakın. Bu kılavuzda, C# ile yüz .NET istemci kitaplığı kullanılmaktadır.
 

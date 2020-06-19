@@ -18,6 +18,8 @@
           href: ./servers/onboard-dsc.md
     - name: Yönetme
       items:
+        - name: Azure VM uzantılarını yönetme ve kullanma
+          href: ./servers/manage-vm-extensions.md
         - name: Aracıyı yönetme
           href: ./servers/manage-agent.md
 - name: Örnekler

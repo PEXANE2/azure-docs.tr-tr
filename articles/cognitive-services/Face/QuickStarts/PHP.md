@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: f2584892bb349d126b73c3f8df211f745a362bd8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f4d848eae23023d55ad41b7893610f246eddefd9
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403357"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987812"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Hızlı Başlangıç: REST API ve PHP kullanarak bir görüntüdeki yüzleri algılama
 
@@ -23,14 +23,17 @@ Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Yüz abonelik anahtarı. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=face-api)'den ücretsiz bir deneme aboneliği anahtarı edinebilirsiniz. Ya da yüz hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
-- [Visual Studio Code](https://code.visualstudio.com/download)gibi bir kod Düzenleyicisi.
-- PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) paketi.
-- PHP özellikli bir Web tarayıcısı. Bu ayarı yaptıysanız, makinenizde [XAMPP](https://www.apachefriends.org/) 'yi yükleyip kurarak bunu yapabilirsiniz.
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" bir yüz kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtar ve uç noktanıza ulaşmak için bir yüz kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+    * Uygulamanızı Yüz Tanıma API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+* [Visual Studio Code](https://code.visualstudio.com/download)gibi bir kod Düzenleyicisi.
+* PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) paketi.
+* PHP özellikli bir Web tarayıcısı. Bu ayarı yaptıysanız, makinenizde [XAMPP](https://www.apachefriends.org/) 'yi yükleyip kurarak bunu yapabilirsiniz.
 
 ## <a name="initialize-the-html-file"></a>HTML dosyasını başlatma
 
-Yeni bir HTML dosyası oluşturun, *detectFaces. html*ve aşağıdaki kodu ekleyin.
+Yeni bir HTML dosyası oluşturun, *detectFaces.html*ve aşağıdaki kodu ekleyin.
 
 ```html
 <html>
@@ -43,7 +46,7 @@ Yeni bir HTML dosyası oluşturun, *detectFaces. html*ve aşağıdaki kodu ekley
 
 ## <a name="write-the-php-script"></a>PHP betiğini yazma
 
-Aşağıdaki kodu belgenin `body` öğesi içine ekleyin. Bu kod, bir URL alanı, bir çözüm **Çözümle** düğmesi, yanıt bölmesi ve görüntü görüntü bölmesi ile temel bir kullanıcı arabirimi ayarlar.
+Aşağıdaki kodu belgenin öğesi içine ekleyin `body` . Bu kod, bir URL alanı, bir çözüm **Çözümle** düğmesi, yanıt bölmesi ve görüntü görüntü bölmesi ile temel bir kullanıcı arabirimi ayarlar.
 
 ```php
 <?php
@@ -99,7 +102,7 @@ catch (HttpException $ex)
 ?>
 ```
 
-`subscriptionKey` Alanı abonelik anahtarınızın değeriyle güncelleştirmeniz gerekir ve `uriBase` dizeyi doğru uç nokta dizesini içerecek şekilde değiştirmeniz gerekir. Alan `returnFaceAttributes` , alınacak yüz özniteliklerini belirtir; Bu dizeyi, amaçlanan kullanım yönteminize bağlı olarak değiştirmek isteyebilirsiniz.
+`subscriptionKey`Alanı abonelik anahtarınızın değeriyle güncelleştirmeniz gerekir ve `uriBase` dizeyi doğru uç nokta dizesini içerecek şekilde değiştirmeniz gerekir. `returnFaceAttributes`Alan, alınacak yüz özniteliklerini belirtir; bu dizeyi amaçlanan kullanıma bağlı olarak değiştirmek isteyebilirsiniz.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

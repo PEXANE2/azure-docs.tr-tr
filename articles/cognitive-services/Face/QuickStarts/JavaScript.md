@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 3cb583502f1ccf3d88cf8307bb62ab5ed261ce03
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e94dc53fa5c0a6f44417324c9a7d7c1496d18f17
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403373"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986630"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Hızlı Başlangıç: REST API ve JavaScript kullanarak bir görüntüdeki yüzleri algılama
 
@@ -23,12 +23,15 @@ Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Yüz abonelik anahtarı. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=face-api)'den ücretsiz bir deneme aboneliği anahtarı edinebilirsiniz. Ya da yüz hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
-- [Visual Studio Code](https://code.visualstudio.com/download) gibi bir kod Düzenleyicisi
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" bir yüz kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtar ve uç noktanıza ulaşmak için bir yüz kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+    * Uygulamanızı Yüz Tanıma API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+* [Visual Studio Code](https://code.visualstudio.com/download) gibi bir kod Düzenleyicisi
 
 ## <a name="initialize-the-html-file"></a>HTML dosyasını başlatma
 
-Yeni bir HTML dosyası oluşturun, *detectFaces. html*ve aşağıdaki kodu ekleyin.
+Yeni bir HTML dosyası oluşturun, *detectFaces.html*ve aşağıdaki kodu ekleyin.
 
 ```html
 <!DOCTYPE html>
@@ -41,7 +44,7 @@ Yeni bir HTML dosyası oluşturun, *detectFaces. html*ve aşağıdaki kodu ekley
 </html>
 ```
 
-Ardından, belgenin `body` öğesi içine aşağıdaki kodu ekleyin. Bu kod, bir URL alanı, bir çözüm **Çözümle** düğmesi, yanıt bölmesi ve görüntü görüntü bölmesi ile temel bir kullanıcı arabirimi ayarlar.
+Ardından, belgenin öğesi içine aşağıdaki kodu ekleyin `body` . Bu kod, bir URL alanı, bir çözüm **Çözümle** düğmesi, yanıt bölmesi ve görüntü görüntü bölmesi ile temel bir kullanıcı arabirimi ayarlar.
 
 ```html
 <h1>Detect Faces:</h1>
@@ -65,7 +68,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="write-the-javascript-script"></a>JavaScript betiğini yazma
 
-Aşağıdaki kodu, belgenizin hemen üstüne `h1` ekleyin. Bu kod, Yüz Tanıma API'si çağıran JavaScript kodunu ayarlar.
+Aşağıdaki kodu, belgenizin hemen üstüne ekleyin `h1` . Bu kod, Yüz Tanıma API'si çağıran JavaScript kodunu ayarlar.
 
 ```html
 <script type="text/javascript">
@@ -124,13 +127,13 @@ Aşağıdaki kodu, belgenizin hemen üstüne `h1` ekleyin. Bu kod, Yüz Tanıma 
 </script>
 ```
 
-`subscriptionKey` Alanı abonelik anahtarınızın değeriyle güncelleştirmeniz gerekir ve `uriBase` dizeyi doğru uç nokta dizesini içerecek şekilde değiştirmeniz gerekir. Alan `returnFaceAttributes` , alınacak yüz özniteliklerini belirtir; Bu dizeyi, amaçlanan kullanım yönteminize bağlı olarak değiştirmek isteyebilirsiniz.
+`subscriptionKey`Alanı abonelik anahtarınızın değeriyle güncelleştirmeniz gerekir ve `uriBase` dizeyi doğru uç nokta dizesini içerecek şekilde değiştirmeniz gerekir. `returnFaceAttributes`Alan, alınacak yüz özniteliklerini belirtir; bu dizeyi amaçlanan kullanıma bağlı olarak değiştirmek isteyebilirsiniz.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="run-the-script"></a>Betiği çalıştırın
 
-Tarayıcınızda *detectFaces. html* dosyasını açın. **Yüzü çözümle** düğmesine tıkladığınızda, UYGULAMANıN verilen URL 'den görüntüyü görüntülemesi ve bir JSON veri dizesini yazdırması gerekir.
+*detectFaces.html* 'yi tarayıcınızda açın. **Yüzü çözümle** düğmesine tıkladığınızda, UYGULAMANıN verilen URL 'den görüntüyü görüntülemesi ve bir JSON veri dizesini yazdırması gerekir.
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 

@@ -114,6 +114,8 @@
         - name: Günlük verisi alımı zamanı
           displayname: latency
           href: platform/data-ingestion-time.md
+        - name: Event Hubs’a veri akışı sağlama
+          href: platform/stream-monitoring-data-event-hubs.md
     - name: Insights
       href: insights/insights-overview.md
     - name: Veri güvenliği
@@ -299,36 +301,12 @@
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/platform-logs-overview.md
         - name: Etkinlik günlüğü
-          items:
-            - name: Azure portalında görüntüleme
-              displayName: 'Platform logs, Activity log'
-              href: platform/activity-log-view.md
-            - name: Toplama ve analiz etme
-              displayName: 'Platform logs, Activity log'
-              href: platform/activity-log-collect.md
-            - name: Dışarı aktarma (eski)
-              displayname: Activity log
-              href: platform/activity-log-export.md
-        - name: Log Analytics çalışma alanına gönderme
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-collect-workspace.md
-        - name: Azure Depolama’ya gönderme
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-collect-storage.md
-        - name: Event Hubs’a gönderme
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-stream-event-hubs.md
-        - name: Tanılama ayarı oluşturma
+          href: platform/activity-log.md
+        - name: Kaynak günlükleri
+          href: platform/resource-logs.md
+        - name: Tanılama ayarları
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/diagnostic-settings.md
-        - name: Kaynak Yöneticisi ile tanılama ayarı oluşturma
-          displayName: 'diagnostic setting, Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings-template.md
-        - name: Blob depolama biçimiyle değiştirme
-          displayname: Diagnostic settings
-          href: platform/resource-logs-blob-format.md
-        - name: Event Hubs’a veri akışı sağlama
-          href: platform/stream-monitoring-data-event-hubs.md
     - name: Log Analytics
       items:
         - name: Günlük sorgusuna genel bakış
@@ -1015,6 +993,8 @@
           href: insights/storage-insights-overview.md
         - name: Kaynak grupları
           href: insights/resource-group-insights.md
+        - name: İçgörülerle ilgili sorunları giderme
+          href: insights/troubleshoot-workbooks.md
     - name: Çözümler
       items:
         - name: Genel Bakış
@@ -1185,12 +1165,12 @@
           href: platform/alerts-metric-near-real-time.md
     - name: Platform günlükleri
       items:
-        - name: Desteklenen kaynak günlüğü türleri ve kategorileri
-          href: platform/resource-logs-categories.md
-        - name: Kaynak günlüğü şemaları
-          href: platform/resource-logs-schema.md
         - name: Etkinlik günlüğü şeması
           href: platform/activity-log-schema.md
+        - name: Kaynak günlüğü şemaları
+          href: platform/resource-logs-schema.md
+        - name: Desteklenen kaynak günlüğü kategorileri
+          href: platform/resource-logs-categories.md
     - name: Tanılama uzantısı şemaları
       items:
         - name: Windows tanılama uzantısı
@@ -1277,6 +1257,9 @@
           href: platform/oms-portal-transition.md
         - name: Disk ölçümleri kullanımdan kaldırıldı
           href: platform/portal-disk-metrics-deprecation.md
+        - name: Blob depolama biçimiyle değiştirme
+          displayname: Diagnostic settings
+          href: platform/resource-logs-blob-format.md
 - name: Kaynaklar
   items:
     - name: Azure Yol Haritası

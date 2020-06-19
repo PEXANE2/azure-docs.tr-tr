@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 10bd2e4722751b290263fc0599890ca92cd743c9
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a25a34db99a4c1550ed78b5f084501fb8badfacf
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995658"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791291"
 ---
 # <a name="understand-cost-management-data"></a>Maliyet Yönetimi verilerini anlama
 
@@ -122,6 +122,7 @@ Maliyet Yönetimi'nde belirli bir etiketi göremiyorsanız şu durumları değer
 - Etiketin uygulanmasının üzerinden 24 saat geçti mi? Bkz. [Maliyet ile kullanım verilerinin güncelleştirilmesi ve saklama](#cost-and-usage-data-updates-and-retention)
 - Kaynak türü etiketleri destekliyor mu? Aşağıdaki kaynak türleri 1 Aralık 2019 tarihinden itibaren kullanım verilerinde etiketleri desteklememektedir. Desteklenen türlerin tam listesi için bkz. [Azure kaynakları için etiket desteği](../../azure-resource-manager/tag-support.md).
     - Azure Active Directory B2C Dizinleri
+    - Azure Bastion
     - Azure Güvenlik Duvarları
     - Azure NetApp Files
     - Data Factory
