@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: b76690cfbe0eb4851bdd1e4316235a7a9092c86e
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: e120eb20d247ce2def7f7c322ead3066c1d4386e
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84781217"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974662"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Konuşma hizmeti kapsayıcılarını (Önizleme) yükleyip çalıştırın
 
@@ -28,10 +28,10 @@ Konuşma kapsayıcıları, müşterilerin hem güçlü bulut özellikleri hem de
 
 | İşlev | Özellikler | En son |
 |--|--|--|
-| Konuşmayı metne dönüştürme | , Yaklaşım ve sürekli gerçek zamanlı konuşma veya toplu ses kayıtlarını ara sonuçlarla analiz eder.  | 2.2.0 |
-| Özel Konuşma Tanıma metin | [Özel konuşma tanıma portalından](https://speech.microsoft.com/customspeech)özel bir model kullanarak, sürekli gerçek zamanlı konuşmayı veya toplu ses kayıtlarını, ara sonuçlarla birlikte metne ekleyin. | 2.2.0 |
-| Metin okuma | Düz metin girişi veya konuşma birleştirme biçimlendirme dili (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.4.0 |
-| Özel metin okuma | [Özel ses portalından](https://aka.ms/custom-voice-portal)özel bir model kullanarak, düz metin girişi veya konuşma birleştirme biçimlendirme DILI (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.4.0 |
+| Konuşmayı metne dönüştürme | , Yaklaşım ve sürekli gerçek zamanlı konuşma veya toplu ses kayıtlarını ara sonuçlarla analiz eder.  | 2.3.1 |
+| Özel Konuşma Tanıma metin | [Özel konuşma tanıma portalından](https://speech.microsoft.com/customspeech)özel bir model kullanarak, sürekli gerçek zamanlı konuşmayı veya toplu ses kayıtlarını, ara sonuçlarla birlikte metne ekleyin. | 2.3.1 |
+| Metin okuma | Düz metin girişi veya konuşma birleştirme biçimlendirme dili (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.5.0 |
+| Özel metin okuma | [Özel ses portalından](https://aka.ms/custom-voice-portal)özel bir model kullanarak, düz metin girişi veya konuşma birleştirme biçimlendirme DILI (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.5.0 |
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -165,7 +165,7 @@ Dışındaki tüm Etiketler `latest` aşağıdaki biçimdedir ve büyük/küçü
 Aşağıdaki etiket, biçiminin bir örneğidir:
 
 ```
-2.2.0-amd64-en-us-preview
+2.3.1-amd64-en-us-preview
 ```
 
 **Konuşmadan metne** kapsayıcının desteklenen tüm yerel ayarları Için lütfen [konuşmadan metne görüntü etiketleri](../containers/container-image-tags.md#speech-to-text)bölümüne bakın.
@@ -194,7 +194,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 ```
 
 > [!IMPORTANT]
-> `latest`Etiket, `en-US` yerel ayarı ve `jessarus` sesi çeker. Daha fazla yerel ayar için bkz. [metin okuma yerel ayarları](#text-to-speech-locales).
+> `latest`Etiket, `en-US` yerel ayarı ve `ariarus` sesi çeker. Daha fazla yerel ayar için bkz. [metin okuma yerel ayarları](#text-to-speech-locales).
 
 #### <a name="text-to-speech-locales"></a>Metinden konuşmaya yerel ayarlar
 
@@ -207,13 +207,13 @@ Dışındaki tüm Etiketler `latest` aşağıdaki biçimdedir ve büyük/küçü
 Aşağıdaki etiket, biçiminin bir örneğidir:
 
 ```
-1.3.0-amd64-en-us-jessarus-preview
+1.5.0-amd64-en-us-ariarus-preview
 ```
 
 Desteklenen tüm yerel ayarlar ve **metin okuma** kapsayıcısının karşılık gelen sesleri için bkz. [metin okuma görüntü etiketleri](../containers/container-image-tags.md#text-to-speech).
 
 > [!IMPORTANT]
-> *Standart bir metinden konuşmaya* http gönderisi oluştururken, [konuşma sen, biçimlendirme dili (SSML)](speech-synthesis-markup.md) iletisi için bir `voice` özniteliği olan bir öğesi gerekir `name` . Değer, ["kısa ad"](language-support.md#standard-voices)olarak da bilinen karşılık gelen kapsayıcı yerel ayarı ve sestir. Örneğin, `latest` etiketinin bir ses adı olacaktır `en-US-JessaRUS` .
+> *Standart bir metinden konuşmaya* http gönderisi oluştururken, [konuşma sen, biçimlendirme dili (SSML)](speech-synthesis-markup.md) iletisi için bir `voice` özniteliği olan bir öğesi gerekir `name` . Değer, ["kısa ad"](language-support.md#standard-voices)olarak da bilinen karşılık gelen kapsayıcı yerel ayarı ve sestir. Örneğin, `latest` etiketinin bir ses adı olacaktır `en-US-AriaRUS` .
 
 # <a name="custom-text-to-speech"></a>[Özel metin okuma](#tab/ctts)
 

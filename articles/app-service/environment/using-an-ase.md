@@ -62,7 +62,7 @@ AS 'de bir uygulama oluşturmak için:
 
     f. Çalışma zamanı yığını seçin.
 
-    g. **Linux** veya **Windows**'u seçin. 
+    örneğin: **Linux** veya **Windows**'u seçin. 
 
     h. **Bölge** açılır listesinden Ao 'nizi seçin. 
 
