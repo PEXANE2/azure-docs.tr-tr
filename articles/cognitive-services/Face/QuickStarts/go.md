@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: b3e6f5746df6197938d3a91de5ff11b1a311d762
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8de043e9ae79c29d1c6d7e4f59ac7494eeb2d4f8
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81402960"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985580"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Hızlı Başlangıç: REST API ve Go kullanarak bir görüntüdeki yüzleri algılama
 
@@ -23,7 +23,10 @@ Bu hızlı başlangıçta, görüntüde insan yüzlerini saptamak için Azure y�
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Yüz abonelik anahtarı. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=face-api)'den ücretsiz bir deneme aboneliği anahtarı edinebilirsiniz. Ya da yüz hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" bir yüz kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtar ve uç noktanıza ulaşmak için bir yüz kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+    * Uygulamanızı Yüz Tanıma API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 - [Visual Studio Code](https://code.visualstudio.com/download) gibi bir kod Düzenleyicisi
 
 ## <a name="write-the-script"></a>Betiği yaz
@@ -108,11 +111,11 @@ func main() {
 }
 ```
 
-`subscriptionKey` Değeri abonelik anahtarınızla güncelleştirmeniz ve `uriBase` dizeyi doğru uç nokta dizesini içerecek şekilde değiştirmeniz gerekir.
+`subscriptionKey`Değeri abonelik anahtarınızla güncelleştirmeniz ve `uriBase` dizeyi doğru uç nokta dizesini içerecek şekilde değiştirmeniz gerekir.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-Ayrıca, `imageUrl` alanı kendi giriş görüntünüzü işaret etmek üzere değiştirmek isteyebilirsiniz. Alınacak yüz özniteliklerini belirten `returnFaceAttributes` alanı da değiştirmek isteyebilirsiniz.
+Ayrıca, `imageUrl` alanı kendi giriş görüntünüzü işaret etmek üzere değiştirmek isteyebilirsiniz. `returnFaceAttributes`Alınacak yüz özniteliklerini belirten alanı da değiştirmek isteyebilirsiniz.
 
 ## <a name="run-the-script"></a>Betiği çalıştırın
 

@@ -188,6 +188,8 @@
       items:
         - name: Cihaz geri yazmayı etkinleştirme
           href: how-to-connect-device-writeback.md
+        - name: Grup geri yazmayı etkinleştirme
+          href: how-to-connect-group-writeback.md
         - name: Cihaz seçenekleri
           href: how-to-connect-device-options.md
         - name: Azure AD Connect’teki ek özellikler

@@ -56,12 +56,8 @@
       href: tutorial-azure-devops-blue-green-strategy.md
     - name: 15d - Azure Pipelines (YAML) ile CI/CD
       href: tutorial-build-deploy-azure-pipelines.md
-    - name: 16a - LAMP yığını oluşturma
+    - name: 16 - LAMP yığını oluşturma
       href: tutorial-lamp-stack.md
-    - name: 16b - LEMP yığını oluşturma
-      href: tutorial-lemp-stack.md
-    - name: 16c - MEAN yığını oluşturma
-      href: tutorial-mean-stack.md
     - name: 17 - SSL ile web sunucusunun güvenliğini sağlama
       href: tutorial-secure-web-server.md
 - name: Örnekler
@@ -207,6 +203,8 @@
               href: ../dav4-dasv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Ddv4 ve Ddsv4 serisi
               href: ../ddv4-ddsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv4 ve Dsv4 serisi
+              href: ../dv4-dsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: İşlem için iyileştirilmiş
           items:
             - name: Genel Bakış
@@ -226,6 +224,8 @@
               href: ../eav4-easv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Edv4 ve Edsv4 serisi
               href: ../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Ev4 ve Esv4 serisi
+              href: ../ev4-esv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: M serisi
               href: ../m-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Mv2 serisi
@@ -288,6 +288,8 @@
         - name: Spot VM'ler
           href: spot-vms.md
           displayName: 'pre-empt, preempt'
+        - name: Geçici diski olmayan Azure VM’leri
+          href: ../azure-vms-no-temp-disk.md
         - name: Önceki nesiller
           href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Yalıtılmış boyutlar
@@ -657,7 +659,7 @@
               href: update-agent.md
         - name: Kurgusal yürütmeyi azaltma
           href: mitigate-se.md
-        - name: Azure Instance Metadata Service
+        - name: Meta verileri izleme
           href: instance-metadata-service.md
         - name: REST ile kullanım ölçümleri alma
           href: metrics-vm-usage-rest.md
@@ -693,7 +695,7 @@
             - name: Aracılara genel bakış
               href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: SSS
-              href: '../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#agents'
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#agents
             - name: Azure Tanılama uzantısı
               items:
                 - name: Genel Bakış
@@ -750,7 +752,7 @@
             - name: Genel Kullanılabilirlik Hakkında SSS
               href: ../../azure-monitor/insights/vminsights-ga-release-faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: SSS
-              href: '../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#azure-monitor-for-vms'
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#azure-monitor-for-vms
             - name: İzlemeyi etkinleştirme
               items:
                 - name: İzlemeyi etkinleştirmeye genel bakış

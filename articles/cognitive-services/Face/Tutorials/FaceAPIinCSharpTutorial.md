@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: b4458920ec8b3e0c302f6e0654891b83ed07264f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 633404b59581a86dc3c115f132b06d8c8165d13a
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81402905"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986509"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Öğretici: bir görüntüde yüz verileri göstermek için bir Windows Presentation Framework (WPF) uygulaması oluşturma
 
@@ -34,13 +34,17 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 Örnek kodun tamamı GitHub 'daki bilişsel [yüz CSharp örnek](https://github.com/Azure-Samples/Cognitive-Face-CSharp-sample) deposunda mevcuttur.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. 
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun. 
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Yüz abonelik anahtarı. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=face-api)'den ücretsiz bir deneme aboneliği anahtarı edinebilirsiniz. Ya da yüz hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla ve `FACE_SUBSCRIPTION_KEY` `FACE_ENDPOINT`olarak adlandırılan anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
-- [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/)'nin herhangi bir sürümü.
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" bir yüz kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtar ve uç noktanıza ulaşmak için bir yüz kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+    * Uygulamanızı Yüz Tanıma API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+* Sırasıyla ve olarak adlandırılan anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `FACE_SUBSCRIPTION_KEY` `FACE_ENDPOINT` .
+- Herhangi bir [Visual Studio](https://www.visualstudio.com/downloads/)sürümü.
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio projesini oluşturma
 
@@ -57,7 +61,7 @@ Bu bölümde, uygulamanın temel çerçevesini, yüz özgü özellikleri olmadan
 
 ### <a name="create-the-ui"></a>Kullanıcı arabirimini oluşturma
 
-*MainWindow. xaml* ' i açın ve içeriği aşağıdaki kodla&mdash;değiştirin. Bu kod, UI penceresini oluşturur. Ve `FacePhoto_MouseMove` `BrowseButton_Click` yöntemleri, daha sonra tanımlayacaksınız olay işleyicileridir.
+*MainWindow. xaml* ' i açın ve içeriği aşağıdaki kodla değiştirin &mdash; . Bu kod, UI penceresini oluşturur. `FacePhoto_MouseMove`Ve `BrowseButton_Click` yöntemleri, daha sonra tanımlayacaksınız olay işleyicileridir.
 
 [!code-xaml[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml?name=snippet_xaml)]
 
@@ -75,7 +79,7 @@ Ardından **MainWindow** oluşturucuyu ekleyin. Uç nokta URL dizenizi denetleyi
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_constructor)]
 
-Son olarak, **BrowseButton_Click** ve **FacePhoto_MouseMove** yöntemlerini sınıfına ekleyin. Bu yöntemler, *MainWindow. xaml*içinde belirtilen olay işleyicilerine karşılık gelir. **BrowseButton_Click** yöntemi, kullanıcının bir. jpg görüntüsü seçmesini sağlayan bir **OpenFileDialog**oluşturur. Sonra, görüntüyü ana pencerede görüntüler. Daha sonraki adımlarda **BrowseButton_Click** ve **FacePhoto_MouseMove** için kalan kodu eklersiniz. Ayrıca, `faceList` başvuruya yönelik&mdash; **bir dizi nesnenin listesine** başvurun. Bu başvuru, uygulamanızın gerçek yüz verilerini depolayacağı ve çağıracağı yerdir.
+Son olarak, **BrowseButton_Click** ve **FacePhoto_MouseMove** yöntemlerini sınıfına ekleyin. Bu yöntemler, *MainWindow. xaml*içinde belirtilen olay işleyicilerine karşılık gelir. **BrowseButton_Click** yöntemi, kullanıcının bir. jpg görüntüsü seçmesini sağlayan bir **OpenFileDialog**oluşturur. Sonra, görüntüyü ana pencerede görüntüler. Daha sonraki adımlarda **BrowseButton_Click** ve **FacePhoto_MouseMove** için kalan kodu eklersiniz. Ayrıca, `faceList` başvuruya &mdash; yönelik bir dizi nesnenin **DetectedFace** listesine başvurun. Bu başvuru, uygulamanızın gerçek yüz verilerini depolayacağı ve çağıracağı yerdir.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_start)]
 
@@ -101,7 +105,7 @@ Aşağıdaki yöntemi, **FacePhoto_MouseMove** yönteminin altında **MainWindow
 
 ## <a name="draw-rectangles-around-faces"></a>Yüzler etrafında dikdörtgenler çizme
 
-Sonra, görüntüde algılanan her bir yüzey etrafında bir dikdörtgen çizmek için kodu ekleyeceksiniz. **MainWindow** sınıfında, **BrowseButton_Click** yönteminin sonuna, `FacePhoto.Source = bitmapSource` satırdan sonra aşağıdaki kodu ekleyin. Bu kod, algılanan yüzlerin bir listesini **UploadAndDetectFaces**çağrısından doldurur. Ardından, her bir yüzey etrafında bir dikdörtgen çizer ve değiştirilen görüntüyü ana pencerede görüntüler.
+Sonra, görüntüde algılanan her bir yüzey etrafında bir dikdörtgen çizmek için kodu ekleyeceksiniz. **MainWindow** sınıfında, **BrowseButton_Click** yönteminin sonuna, satırdan sonra aşağıdaki kodu ekleyin `FacePhoto.Source = bitmapSource` . Bu kod, algılanan yüzlerin bir listesini **UploadAndDetectFaces**çağrısından doldurur. Ardından, her bir yüzey etrafında bir dikdörtgen çizer ve değiştirilen görüntüyü ana pencerede görüntüler.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_mid)]
 
@@ -113,7 +117,7 @@ Aşağıdaki yöntemi **MainWindow** sınıfına, **UploadAndDetectFaces** yönt
 
 ## <a name="display-the-face-description"></a>Yüz açıklamasını görüntüleme
 
-**FacePhoto_MouseMove** yöntemine aşağıdaki kodu ekleyin. Bu olay işleyicisi, imleç algılanan bir yüz dikdörtgeninin `faceDescriptionStatusBar` üzerine geldiğinde içindeki yüz açıklaması dizesini görüntüler.
+**FacePhoto_MouseMove** yöntemine aşağıdaki kodu ekleyin. Bu olay işleyicisi `faceDescriptionStatusBar` , imleç algılanan bir yüz dikdörtgeninin üzerine geldiğinde içindeki yüz açıklaması dizesini görüntüler.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mousemove_mid)]
 

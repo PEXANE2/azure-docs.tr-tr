@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 2e5b32421a04e09bd32d2bba21ff4faf920d84dd
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 9fb2f3374d635d8086bac5fe02ecf3b7f819ea65
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221850"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100875"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Form tanıyıcı modellerinizi yedekleme ve kurtarma
 
@@ -45,7 +45,7 @@ Uygulamanız veya işiniz, form tanıyıcı özel modelinin kullanımına bağı
 Aşağıdaki HTTP isteği hedef kaynaktan kopya yetkilendirmesi alır. Hedef kaynağınızın uç noktasını ve anahtarını üstbilgiler olarak girmeniz gerekir.
 
 ```
-POST https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/copyAuthorization HTTP/1.1
+POST https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/copyAuthorization HTTP/1.1
 Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -53,7 +53,7 @@ Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}
 
 ```
 HTTP/1.1 201 Created
-Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d
+Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d
 {"modelId":"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d","accessToken":"1855fe23-5ffc-427b-aab2-e5196641502f","expirationDateTimeTicks":637233481531659440}
 ```
 
@@ -62,7 +62,7 @@ Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0
 Aşağıdaki HTTP isteği, kaynak kaynakta kopyalama işlemini başlatır. Kaynak kaynağınızın uç noktasını ve anahtarını üstbilgiler olarak girmeniz gerekir. İstek URL 'SI, kopyalamak istediğiniz kaynak modelin model KIMLIĞINI içerir.
 
 ```
-POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copy HTTP/1.1
+POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copy HTTP/1.1
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -76,19 +76,29 @@ Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 }
 ```
 
+> [!NOTE]
+> Kopya API 'SI, [AEK/CMK](https://msazure.visualstudio.com/Cognitive%20Services/_wiki/wikis/Cognitive%20Services.wiki/52146/Customer-Managed-Keys) özelliğini saydam olarak destekler. Bu, özel bir işleme gerektirmez, ancak şifrelenmemiş bir kaynak arasında şifrelenmiş bir kaynağa kopyalama yapıyorsanız, istek üst bilgisini eklemeniz gerektiğini unutmayın `x-ms-forms-copy-degrade: true` . Bu üst bilgi dahil edilmediğinden kopyalama işlemi başarısız olur ve döndürür `DataProtectionTransformServiceError` .
+
 `202\Accepted`Işlem konumu üst bilgisi ile bir yanıt alırsınız. Bu değer, işlemin ilerlemesini izlemek için kullanacağınız URL 'dir. Sonraki adım için geçici bir konuma kopyalayın.
 
 ```
 HTTP/1.1 202 Accepted
-Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1
+Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1
 ```
+
+### <a name="common-errors"></a>Sık karşılaşılan hatalar
+
+|Hata|Çözüm|
+|:--|:--|
+| 400/ile hatalı Istek`"code:" "1002"` | Doğrulama hatasını veya hatalı oluşturulmuş kopyalama isteğini gösterir. Genel sorunlar şunlardır: a) geçersiz veya değiştirilmiş `copyAuthorization` Yük. b) belirtecin süresi dolma değeri `expirationDateTimeTicks` ( `copyAuhtorization` Yük 24 saat için geçerlidir). c) geçersiz veya desteklenmiyor `targetResourceRegion` . d) geçersiz veya hatalı biçimlendirilmiş `targetResourceId` dize.
+|
 
 ## <a name="track-copy-progress"></a>Kopyalama ilerlemesini izle
 
 Kaynak kaynak uç noktasına karşı **kopya modeli sonucunu al** API 'sini sorgulayarak ilerlemenizi izleyin.
 
 ```
-GET https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1 HTTP/1.1
+GET https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1 HTTP/1.1
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -100,12 +110,22 @@ Content-Type: application/json; charset=utf-8
 {"status":"succeeded","createdDateTime":"2020-04-23T18:18:01.0275043Z","lastUpdatedDateTime":"2020-04-23T18:18:01.0275048Z","copyResult":{}}
 ```
 
+### <a name="common-errors"></a>Sık karşılaşılan hatalar
+
+|Hata|Çözüm|
+|:--|:--|
+|"hatalar": [{"Code": "AuthorizationError",<br>"ileti": "hata nedeniyle yetkilendirme hatası <br>yetkilendirme talepleri eksik veya geçersiz. "}]   | `copyAuthorization`Yük veya içerik API tarafından döndürülmeden değiştirildiğinde gerçekleşir `copyAuthorization` . Yükün önceki çağrıdan döndürülen içeriğin aynısını içerdiğinden emin olun `copyAuthorization` .|
+|"hatalar": [{"Code": "AuthorizationError",<br>"ileti": "yetkilendirme alınamadı <br>veriyi. Bu sorun devam ederse, farklı bir <br>Kopyalanacak hedef model. "}] | `copyAuthorization`Yükün bir kopyalama isteğiyle yeniden kullanıldığını belirtir. Başarılı olan bir kopya isteği, aynı yükü kullanan başka isteklere izin vermez `copyAuthorization` . Ayrı bir hata (aşağıda belirtilen olanlar gibi) ve daha sonra aynı yetkilendirme yüküyle kopyayı yeniden denemeye çalışırsanız, bu hata oluşur. Çözüm, yeni bir `copyAuthorization` Yük oluşturmak ve sonra kopyalama isteğini yeniden yayımladı.|
+|"hatalar": [{"Code": "DataProtectionTransformServiceError",<br>"ileti": "veri aktarımı isteğine izin verilmiyor <br>daha az güvenli bir veri koruma şemasına indirgendiğinden. Belgelere bakın veya hizmet yöneticinize başvurun <br>Ayrıntılar için. "}]    | `AEK`Etkin bir kaynak arasında etkin olmayan bir kaynağa kopyalanırken oluşur `AEK` . Şifrelenmiş modelin hedefe şifrelenmemiş olarak kopyalanmasını sağlamak için `x-ms-forms-copy-degrade: true` kopyalama isteğiyle üst bilgi belirtin.|
+|"hatalar": [{"Code": "ResourceResolverError",<br>"ileti": "kimliği '... ' olan bilişsel kaynak için bilgi getirilemedi. Kaynağın geçerli olduğundan ve belirtilen ' westus2 ' bölgesinde mevcut olduğundan emin olun.. "}] | Tarafından belirtilen Azure kaynağının `targetResourceId` geçerli bir bilişsel kaynak olmadığını veya mevcut olmadığını gösterir. Bu sorunu çözmek için kopyalama isteğini doğrulayın ve yeniden yayımlayın.|
+
+
 ### <a name="optional-track-the-target-model-id"></a>Seçim Hedef model KIMLIĞINI izleme 
 
 Hedef modeli sorgulayarak işlemin durumunu izlemek için **özel model al** API 'sini de kullanabilirsiniz. İlk adımda kopyaladığınız hedef model KIMLIĞINI kullanarak bu API 'YI çağırın.
 
 ```
-GET https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d HTTP/1.1
+GET https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d HTTP/1.1
 Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -124,19 +144,19 @@ Aşağıdaki kod parçacıkları, yukarıdaki adımlarda açıklanan API çağr�
 ### <a name="generate-copy-authorization-request"></a>Kopya yetkilendirme isteği oluştur
 
 ```bash
-curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/copyAuthorization" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" 
+curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/copyAuthorization" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" 
 ```
 
 ### <a name="start-copy-operation"></a>Kopyalama işlemini Başlat
 
 ```bash
-curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/copyAuthorization" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" --data-ascii "{ \"targetResourceId\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_ID}\",   \"targetResourceRegion\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_REGION_NAME}\", \"copyAuthorization\": "{\"modelId\":\"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d\",\"accessToken\":\"1855fe23-5ffc-427b-aab2-e5196641502f\",\"expirationDateTimeTicks\":637233481531659440}"}"
+curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/copyAuthorization" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" --data-ascii "{ \"targetResourceId\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_ID}\",   \"targetResourceRegion\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_REGION_NAME}\", \"copyAuthorization\": "{\"modelId\":\"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d\",\"accessToken\":\"1855fe23-5ffc-427b-aab2-e5196641502f\",\"expirationDateTimeTicks\":637233481531659440}"}"
 ```
 
 ### <a name="track-copy-progress"></a>Kopyalama ilerlemesini izle
 
 ```bash
-curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v2.0-preview/custom/models/{SOURCE_MODELID}/copyResults/{RESULT_ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}"
+curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v2.0/custom/models/{SOURCE_MODELID}/copyResults/{RESULT_ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}"
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

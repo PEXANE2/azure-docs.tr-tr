@@ -9,12 +9,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: 59e066974f690bda2384504cc27af5aa94b7b75b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4fc816c3894120a5d1b356d91ebebbc56f21b530
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372342"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052705"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>Bekleyen verilerin hizmet şifrelemesini Language Understanding
 
@@ -38,13 +38,11 @@ Müşteri tarafından yönetilen anahtarlarınızın depolanması için Azure Ke
 
 Müşteri tarafından yönetilen anahtarları kullanma yeteneği istemek için, [Lusıs hizmeti müşteri tarafından yönetilen anahtar Isteği formunu](https://aka.ms/cogsvc-cmk)doldurun ve iletin. İsteğinizin durumunu öğrenmek yaklaşık 3-5 iş günü sürer. Talebe bağlı olarak, bir kuyruğa yerleştirilmiş ve alan kullanılabilir olduğunda onaylanmış olabilir. LUSıS ile CMK kullanmaya onaylandıktan sonra, Azure portal yeni bir Language Understanding kaynak oluşturmanız ve fiyatlandırma katmanı olarak E0 ' ı seçmeniz gerekir. Yeni SKU, CMK hariç zaten kullanılabilir olan F0 SKU 'SU ile aynı işlevi görür. Kullanıcılar F0 'den yeni E0 SKU 'suna yükseltemez.
 
-E0 kaynakları yalnızca yazma hizmeti için kullanılabilir ve E0 katmanının başlangıçta yalnızca Batı ABD bölgesinde desteklenecek.
-
 ![LUSıS abonelik görüntüsü](../media/cognitive-services-encryption/luis-subscription.png)
 
 ### <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-Müşteri tarafından yönetilen anahtarlar Şu anda **Batı ABD** bölgesinde kullanılabilir.
+Müşteri tarafından yönetilen anahtarlar tüm [yazma bölgelerinde](luis-reference-regions.md)kullanılabilir. 
 
 ### <a name="limitations"></a>Sınırlamalar
 

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 3ec6eb60a7325eb87ca637541c5f4222eab98053
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e355ccdaf89d7f0ff63e3137def50792b171a4cc
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403174"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985601"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Hızlı Başlangıç: REST API ve Ruby kullanarak bir görüntüdeki yüzleri algılama
 
@@ -23,8 +23,11 @@ Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini saptamak için Az
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Yüz abonelik anahtarı. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=face-api)'den ücretsiz bir deneme aboneliği anahtarı edinebilirsiniz. Ya da yüz hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
-- [Visual Studio Code](https://code.visualstudio.com/download) gibi bir kod Düzenleyicisi
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" bir yüz kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtar ve uç noktanıza ulaşmak için bir yüz kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+    * Uygulamanızı Yüz Tanıma API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+* [Visual Studio Code](https://code.visualstudio.com/download) gibi bir kod Düzenleyicisi
 
 ## <a name="write-the-script"></a>Betiği yaz
 
@@ -60,11 +63,11 @@ end
 puts response.body
 ```
 
-`request['Ocp-Apim-Subscription-Key']` Değeri abonelik anahtarınızla güncelleştirmeniz ve `uri` dizeyi doğru uç noktayı içerecek şekilde değiştirmeniz gerekir.
+`request['Ocp-Apim-Subscription-Key']`Değeri abonelik anahtarınızla güncelleştirmeniz ve `uri` dizeyi doğru uç noktayı içerecek şekilde değiştirmeniz gerekir.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-Ayrıca, `imageUri` alanı kendi giriş görüntünüzü işaret etmek üzere değiştirmek isteyebilirsiniz. Ayrıca, alınacak yüz özniteliklerini belirten `returnFaceAttributes` alanını da değiştirmek isteyebilirsiniz.
+Ayrıca, `imageUri` alanı kendi giriş görüntünüzü işaret etmek üzere değiştirmek isteyebilirsiniz. Ayrıca `returnFaceAttributes` , alınacak yüz özniteliklerini belirten alanını da değiştirmek isteyebilirsiniz.
 
 ## <a name="run-the-script"></a>Betiği çalıştırın
 

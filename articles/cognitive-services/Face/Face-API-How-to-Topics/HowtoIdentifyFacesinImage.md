@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 0b1cf99fe6e2aa4d7fcb12c3fb96b10b42c7c0b7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 248bae81db1bc8cb69bac4618bd7593658336636
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169908"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986714"
 ---
 # <a name="example-identify-faces-in-images"></a>Örnek: görüntülerdeki yüzeyleri tanımla
 
@@ -41,7 +41,7 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 &subscription-key=<Subscription key>
 ```
 
-Alternatif olarak, HTTP istek üst bilgisi **OCP-apim-Subscription-Key &lt;: abonelik anahtarı&gt;**' nda abonelik anahtarını belirtin.
+Alternatif olarak, HTTP istek üst bilgisi **OCP-apim-Subscription-Key: &lt; abonelik anahtarı &gt; **' nda abonelik anahtarını belirtin.
 Bir istemci kitaplığı kullandığınızda, abonelik anahtarı FaceClient sınıfının Oluşturucusu aracılığıyla geçirilir. Örneğin:
  
 ```csharp 
@@ -50,7 +50,11 @@ private readonly IFaceClient faceClient = new FaceClient(
             new System.Net.Http.DelegatingHandler[] { });
 ```
  
-Abonelik anahtarını almak için Azure portal Azure Marketi 'ne gidin. Daha fazla bilgi için bkz. [abonelikler](https://azure.microsoft.com/try/cognitive-services/).
+Bir anahtar almak için bu yönergeleri izleyin.
+
+1. Bir [Azure hesabı](https://azure.microsoft.com/free/cognitive-services/)oluşturun. Zaten varsa, bir sonraki adıma geçebilirsiniz.
+2. Anahtarınızı almak için Azure portal [yüz kaynağı](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) oluşturun. Kurulum sırasında ücretsiz katmanı (F0) seçtiğinizden emin olun. 
+3. Kaynaklar dağıtıldıktan sonra, anahtarınızı toplamak için **Kaynağa Git** ' e tıklayın. 
 
 ## <a name="step-2-create-the-persongroup"></a>2. Adım: PersonGroup oluşturma
 
