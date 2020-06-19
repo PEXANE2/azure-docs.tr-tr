@@ -3,12 +3,12 @@ title: Limit-LUSıS
 description: Bu makale, Azure bilişsel hizmetler Language Understanding (LUSıS) 'nin bilinen sınırlarını içerir. LUO 'NUN birkaç sınır alanı vardır. Model sınırı denetim amaçları, varlıklar ve LUSıS 'deki Özellikler. Anahtar türüne göre kota sınırları. Klavye birleşimi LUSıS Web sitesini denetler.
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: aa4362fba09834758d47f3ef063068c1854b9280
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: fce4aab0221cf050ce175c582f21de58b6e27eac
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449507"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976991"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUSıS modeliniz ve anahtarlarınız için sınırlar
 LUO 'NUN birkaç sınır alanı vardır. Birincisi, LUSıS 'deki amaçları, varlıkları ve özellikleri denetleyen [model limiti](#model-limits)olur. İkinci alan, anahtar türüne göre [Kota sınırlamalarıdır](#key-limits) . Limitlerin üçüncü alanı, LUSıS Web sitesini denetlemeye yönelik [klavye birleşimidir](#keyboard-controls) . Bir dördüncü alan, LUıS Authoring Web sitesi ve LUıS [uç nokta](luis-glossary.md#endpoint) API 'leri arasındaki [Dünya bölgesi eşlemesidir](luis-reference-regions.md) .
@@ -37,7 +37,7 @@ Uygulamanız LUSıS model sınırlarını aşarsa, bir [lusıs dağıtım](luis-
 | [Önceden oluşturulmuş varlıklar](./luis-prebuilt-entities.md) | sınır yok|
 | [Normal ifade varlıkları](./luis-concept-entity-types.md)|20 varlık<br>en fazla 500 karakter. normal ifade varlık düzenine göre|
 | [Roller](luis-concept-roles.md)|Uygulama başına 300 rol. varlık başına 10 rol|
-| [İfade][utterances] | 500 karakter<br><br>Bu karakter sınırından daha uzun bir metin varsa, luya girişi için bir değer ve yanıtları buna uygun şekilde birleştirmeniz gerekir. Noktalama işaretleri ve konuşma için uzun duraklama gibi birlikte çalıştığınız açık kesmeler vardır.|
+| [İfade][utterances] | 500 karakter<br><br>Bu karakter sınırından daha uzun bir metin varsa, LUYA girişi yapmadan önce uttertans segmentlendirilecektir ve her segment için tek bir amaç yanıtı alırsınız. Noktalama işaretleri ve konuşma için uzun duraklama gibi birlikte çalıştığınız açık kesmeler vardır.|
 | [Utterance örnekleri][utterances] | Uygulama başına 15.000-amaç başına düşen sayıda sınır yoktur<br><br>Uygulamayı daha fazla örnekle eğmeniz gerekiyorsa, bir [dağıtım](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) modeli yaklaşımı kullanın. Tek bir veya daha fazla amaç ile ayrı bir LUSıS uygulamasını (alt uygulamalar olarak bilinir), bir veya daha fazla amaç ile eğitebilirsiniz ve ardından her bir alt LUP uygulamasının, tahmin isteğini doğru alt uygulamaya yönlendirecek bir dağıtım uygulaması eğitin. |
 | [Sürümler](luis-concept-version.md)| Uygulama başına 100 sürüm |
 | [Sürüm adı][luis-how-to-manage-versions] | 128 karakter |
@@ -106,7 +106,7 @@ Yaklaşım bilgilerini sağlayan yaklaşım [Analizi tümleştirmesi](luis-how-t
 
 ## <a name="keyboard-controls"></a>Klavye denetimleri
 
-|Klavye girişi | Açıklama |
+|Klavye girişi | Description |
 |--|--|
 |Denetim + E|utterslar listesindeki belirteçler ve varlıklar arasında geçiş yapar|
 

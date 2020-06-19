@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 4a96f0e887bb04aea6d451e08bd5d26d1cc6edca
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 887b9fa62b89c500ef3b2b0164ba0281f911621e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82587805"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073376"
 ---
 Go için yüz istemci kitaplığı ile çalışmaya başlayın. Kitaplığı yüklemek için bu adımları izleyin ve temel görevler için örneklerimizi deneyin. Yüz tanıma hizmeti, görüntülerdeki insan yüzlerini algılayıp tanımayı sağlayan gelişmiş algoritmalara erişmenizi sağlar.
 
@@ -28,68 +28,16 @@ Git için yüz hizmeti istemci kitaplığını kullan:
 
 [Başvuru belgeleri](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face)  |  [SDK indirmesi](https://github.com/Azure/azure-sdk-for-go)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * En son [Go](https://golang.org/dl/) sürümü
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" bir yüz kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtar ve uç noktanıza ulaşmak için bir yüz kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+    * Uygulamanızı Yüz Tanıma API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+* Anahtar ve uç nokta aldıktan sonra, ve sırasıyla adlı anahtar ve uç nokta için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `FACE_SUBSCRIPTION_KEY` `FACE_ENDPOINT` .
 
-## <a name="set-up"></a>Kurulum
-
-### <a name="create-a-face-azure-resource"></a>Yüz Azure kaynağı oluşturma 
-
-Azure kaynağı oluşturarak yüz hizmetini kullanmaya başlayın. Sizin için doğru kaynak türünü seçin:
-
-* [Deneme kaynağı](https://azure.microsoft.com/try/cognitive-services/#decision) (Azure aboneliği gerekmez): 
-    * Ücretsiz olarak yedi gün için geçerlidir. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)bir deneme anahtarı ve uç noktası kullanılabilir olacaktır. 
-    * Yüz hizmetini denemek, ancak bir Azure aboneliğiniz yoksa bu harika bir seçenektir.
-* [Yüz hizmeti kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace):
-    * Kaynak silininceye kadar Azure portal ile kullanılabilir.
-    * Ücretsiz fiyatlandırma katmanını kullanarak hizmeti deneyin ve daha sonra üretime yönelik ücretli bir katmana yükseltin.
-* [Çoklu hizmet kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
-    * Kaynak silininceye kadar Azure portal ile kullanılabilir.  
-    * Birden çok bilişsel hizmetler genelinde uygulamalarınız için aynı anahtarı ve uç noktayı kullanın.
-
-### <a name="create-an-environment-variable"></a>Ortam değişkeni oluşturma
-
->[!NOTE]
-> 1 Temmuz 2019 ' den sonra oluşturulan deneme olmayan kaynaklar için uç noktalar aşağıda gösterilen özel alt etki alanı biçimini kullanır. Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
-
-Oluşturduğunuz kaynaktan anahtarınızı ve uç noktayı kullanarak, kimlik doğrulama için iki ortam değişkeni oluşturun:
-* `FACE_SUBSCRIPTION_KEY`-İsteklerinizin kimliğini doğrulamak için kaynak anahtarı.
-* `FACE_ENDPOINT`-API istekleri göndermek için kaynak uç noktası. Şöyle görünür: 
-  * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
-
-İşletim sisteminiz için yönergeleri kullanın.
-<!-- replace the below endpoint and key examples -->
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx FACE_SUBSCRIPTION_KEY <replace-with-your-product-name-key>
-setx FACE_ENDPOINT <replace-with-your-product-name-endpoint>
-```
-
-Ortam değişkenini ekledikten sonra konsol penceresini yeniden başlatın.
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
-export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
-```
-
-Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source ~/.bashrc` çalıştırın.
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-Hesabınızı düzenleyin `.bash_profile` ve ortam değişkenini ekleyin:
-
-```bash
-export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
-export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
-```
-
-Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source .bash_profile` çalıştırın.
-***
+## <a name="setting-up"></a>Ayarlanıyor
 
 ### <a name="create-a-go-project-directory"></a>Go proje dizini oluştur
 
@@ -251,7 +199,7 @@ Aşağıdaki kod, birden çok yüzü olan bir görüntü alır ve görüntüdeki
 
 ### <a name="get-a-test-image"></a>Test görüntüsü al
 
-Aşağıdaki kod, _Test-image-Person-Group. jpg_ görüntüsü için projenizin köküne bakar ve program belleğine yükler. Bu görüntüyü, [bir kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group)bölümünde kullanılan görüntülerle aynı depoda bulabilirsiniz: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
+Aşağıdaki kod, bir görüntü _test-image-person-group.jpg_ projenizin köküne bakar ve program belleğine yükler. Bu görüntüyü, [bir kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group)bölümünde kullanılan görüntülerle aynı depoda bulabilirsiniz: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id_source_get)]
 
@@ -301,13 +249,13 @@ Aşağıdaki kod, kaynak görüntülerinin her birini hedef görüntüye karşı
 
 ## <a name="take-a-snapshot-for-data-migration"></a>Veri geçişi için bir anlık görüntü alın
 
-Anlık görüntüler özelliği, eğitilen **Grup**gibi kayıtlı yüz verilerinizi farklı bir Azure bilişsel hizmetler aboneliğine taşımanızı sağlar. Örneğin, ücretsiz bir deneme aboneliği kullanarak bir **Persongroup** nesnesi oluşturduysanız ve şimdi bunu ücretli bir aboneliğe geçirmek istiyorsanız bu özelliği kullanabilirsiniz. Anlık görüntüler özelliğine geniş bir genel bakış için [yüz verilerinizi geçirme](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) konusuna bakın.
+Anlık görüntüler özelliği, eğitilen **Grup**gibi kayıtlı yüz verilerinizi farklı bir Azure bilişsel hizmetler aboneliğine taşımanızı sağlar. Örneğin, ücretsiz bir abonelik kullanarak bir **Persongroup** nesnesi oluşturduysanız ve şimdi bunu ücretli bir aboneliğe geçirmek istiyorsanız bu özelliği kullanabilirsiniz. Anlık görüntüler özelliğine geniş bir genel bakış için [yüz verilerinizi geçirme](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) konusuna bakın.
 
 Bu örnekte, [bir kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group)bölümünde oluşturduğunuz **persongroup grubunu** geçirirsiniz. Önce bu bölümü tamamlayabilir ya da kendi yüz veri yapısını kullanabilirsiniz.
 
 ### <a name="set-up-target-subscription"></a>Hedef aboneliği ayarla
 
-İlk olarak, yüz kaynağına sahip ikinci bir Azure aboneliğine sahip olmanız gerekir; Bunu, [Kurulum](#set-up) bölümündeki adımları tekrarlayarak yapabilirsiniz. 
+İlk olarak, yüz kaynağına sahip ikinci bir Azure aboneliğine sahip olmanız gerekir; Bunu, [Kurulum](#setting-up) bölümündeki adımları tekrarlayarak yapabilirsiniz. 
 
 Ardından, **ana** yönteminizin en üstüne yakın olan aşağıdaki değişkenleri oluşturun. Ayrıca, Azure hesabınızın abonelik KIMLIĞI için yeni ortam değişkenleri ve yeni (hedef) hesabınızın anahtar, uç noktası ve abonelik KIMLIĞI için de oluşturmanız gerekir.
 

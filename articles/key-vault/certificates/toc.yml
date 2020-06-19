@@ -34,10 +34,14 @@
       href: create-certificate-scenarios.md
     - name: Sertifika oluşturma yöntemleri
       href: create-certificate.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Key Vault’u DigiCert CA ile tümleştirme
+      href: how-to-integrate-certificate-authority.md
 - name: Başvuru
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
+      href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
     - name: Azure CLI
       href: /cli/azure/keyvault
     - name: .NET

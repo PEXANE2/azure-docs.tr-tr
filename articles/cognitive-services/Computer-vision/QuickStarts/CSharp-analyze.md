@@ -11,23 +11,25 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ed003e83d8343d2da0f1b11c6d82581b76d3168d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1ece80ce5337304d1b0d51e5e334cd64cc133619
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83679887"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84984407"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Hızlı başlangıç: Görüntü İşleme REST API ve C kullanarak yerel bir görüntüyü çözümleme #
 
 Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak görsel özellikleri ayıklamak için yerel olarak depolanmış bir görüntüyü analiz edersiniz. [Görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) yöntemiyle, görüntü içeriğinden görsel özellik bilgilerini ayıklayabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) oluşturun.
-
 ## <a name="prerequisites"></a>Ön koşullar
 
-- [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) veya üzerine sahip olmanız gerekir.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla ve olarak adlandırılan anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
+* [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) veya sonraki bir sürümü olmalıdır
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+    * Uygulamanızı Görüntü İşleme hizmetine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+* Sırasıyla ve olarak adlandırılan anahtar ve uç nokta URL 'SI için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
 
 ## <a name="create-and-run-the-sample-application"></a>Örnek uygulamayı oluşturma ve çalıştırma
 
@@ -36,8 +38,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. Visual C# konsol uygulaması (.NET Core Framework) şablonunu kullanarak Visual Studio 'da yeni bir Visual Studio çözümü/projesi oluşturun.
 1. Newtonsoft.Json NuGet paketini yükleyin.
     1. Menüde **Araçlar**’a tıklayın, **NuGet Paket Yöneticisi**’ni ve ardından **Çözüm için NuGet Paketlerini Yönet**’i seçin.
-    1. **Araştır** sekmesine tıklayın ve **arama** kutusuna "Newtonsoft. JSON" (henüz görüntülenmiyorsa) yazın.
-    1. **Newtonsoft. JSON**' ı seçin, ardından Proje adınızın yanındaki onay kutusuna tıklayın **ve ' ı tıklatın.**
+    1. **Araştır** sekmesine tıklayın ve **arama** kutusuna "Newtonsoft.Json" (henüz görüntülenmiyorsa) yazın.
+    1. **Newtonsoft.Js**' i seçin, sonra proje adınızın yanındaki onay kutusuna **tıklayın ve '** ı tıklatın.
 1. Örnek kod parçacığını Program.cs dosyanıza kopyalayın/yapıştırın. Ad alanı adını, oluşturduğunuz sunucudan farklıysa ayarlayın.
 1. Seçtiğiniz bir görüntüsünü bin/Debug/netcoreappX. X klasörünüze ekleyin ve ardından görüntü adını (uzantılı) ' ımagefilepath ' değişkenine ekleyin.
 1. Programı çalıştırın.

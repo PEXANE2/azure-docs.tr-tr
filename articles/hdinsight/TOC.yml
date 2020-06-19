@@ -219,10 +219,6 @@
               href: ./hadoop/apache-hadoop-visual-studio-tools-get-started.md
             - name: VSCode için Spark ve Hive Araçları
               href: ./hdinsight-for-vscode.md
-            - name: Hortonworks Korumalı Alanı ile IntelliJ için HDInsight Araçları
-              href: ./hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md
-            - name: Hortonworks Korumalı Alanı ile Data Lake Araçları
-              href: ./hdinsight-hadoop-emulator-visual-studio.md
         - name: İzleme
           items:
             - name: Azure İzleyici günlüklerini kullanma
@@ -501,7 +497,7 @@
                   href: ./hadoop/apache-hadoop-run-samples-linux.md
                 - name: Özel Apache Hadoop MapReduce programları çalıştırma
                   href: ./hadoop/apache-hadoop-run-custom-programs.md
-                - name: 'C# ile MapReduce akış programları geliştirme'
+                - name: C# ile MapReduce akış programları geliştirme
                   href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
                 - name: Java MapReduce programları geliştirme
                   href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
@@ -758,7 +754,7 @@
           items:
             - name: JSON belgelerini işleme ve çözümleme
               href: ./hadoop/using-json-in-hive.md
-            - name: 'Kullanıcı tanımlı C# işlevlerini kullanma'
+            - name: Kullanıcı tanımlı C# işlevlerini kullanma
               href: ./hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
             - name: Apache Hive ve Apache Pig ile Python kullanma
               href: ./hadoop/python-udf-hdinsight.md
@@ -893,7 +889,7 @@
                   href: ./storm/apache-storm-develop-java-topology.md
                 - name: Python kullanarak topolojileri geliştirme
                   href: ./storm/apache-storm-develop-python-topology.md
-                - name: 'C# kullanarak topoloji geliştirme'
+                - name: C# kullanarak topoloji geliştirme
                   href: ./storm/apache-storm-develop-csharp-visual-studio-topology.md
                 - name: SCP.NET programlama kılavuzu
                   href: ./storm/apache-storm-scp-programming-guide.md
@@ -901,7 +897,7 @@
                   href: ./storm/apache-storm-example-topology.md
             - name: Akış işlem hatları
               items:
-                - name: 'Event Hubs ve Apache Storm (C# ve Java)'
+                - name: Event Hubs ve Apache Storm (C# ve Java)
                   href: ./storm/apache-storm-develop-csharp-event-hub-topology.md
         - name: Yönetme
           items:

@@ -99,6 +99,8 @@
           href: unresponsive-vm-apply-windows-update.md
         - name: Grup ilkesi uygulanırken VM yanıt vermiyor
           href: unresponsive-vm-apply-group-policy.md
+        - name: Güvenlik ilkesi uygulanırken VM yanıt vermiyor
+          href: unresponsive-vm-apply-security-policy.md
 - name: Sanal makineme bağlanılamıyor
   items:
     - name: RDP

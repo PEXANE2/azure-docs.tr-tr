@@ -140,20 +140,6 @@
               href: ../sql-database/transparent-data-encryption-azure-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Kendi anahtarını getir ile TDE
               href: ../sql-database/transparent-data-encryption-byok-azure-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Gelişmiş Veri Güvenliği
-          items:
-            - name: SQL havuzu
-              items:
-                - name: Genel Bakış
-                  href: ../sql-database/sql-database-advanced-data-security.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Veri bulma ve sınıflandırma
-                  href: ../sql-database/sql-database-data-discovery-and-classification.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Güvenlik açığı değerlendirmesi
-                  href: ../sql-database/sql-vulnerability-assessment.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Gelişmiş Tehdit Koruması
-                  href: ../sql-database/sql-database-threat-detection-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Denetim
-                  href: ../sql-database/sql-database-auditing.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Tümleştirme ve düzenleme
       items:
         - name: İşlem hattı ve etkinlik
@@ -426,6 +412,8 @@
               href: data-integration/data-integration-data-lake.md
     - name: Verileri dönüştürme ve analiz etme
       items:
+        - name: Dizileri ve iç içe yapıları çözümleme
+          href: how-to-analyze-complex-schema.md
         - name: Synapse Link
           items:
             - name: Synapse Link’i yapılandırma

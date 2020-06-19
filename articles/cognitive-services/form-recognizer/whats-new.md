@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: e3bf279142383ccdb3e82ffee49bd593640bb937
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8b6cad548c9fdc5b5157c842d6302c8635e21a15
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996831"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099326"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Tanıma'daki yenilikler
 
@@ -22,6 +22,17 @@ Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirm
 
 > [!NOTE]
 > Form tanıyıcı için hızlı başlangıç ve kılavuzlar, belirtilmediği takdirde her zaman API 'nin en son sürümünü kullanır.
+
+## <a name="june-2020"></a>Haziran 2020
+
+### <a name="new-features"></a>Yeni özellikler
+* **Istemci SDK 'Larına Copymodel API 'si eklendi** Artık bir abonelikten diğerine model kopyalamak için istemci SDK 'larını kullanabilirsiniz. Bu özellikle ilgili genel bilgiler için bkz. [yedekleme ve kurtarma modelleri](./disaster-recovery.md) .
+* **Azure Active Directory tümleştirme** Artık SDK 'larda form tanıyıcı istemci nesnelerinizin kimliğini doğrulamak için AAD kimlik bilgilerinizi kullanabilirsiniz.
+* **SDK 'ya özgü değişiklikler** Bu, hem küçük özellik eklemeleri hem de son değişiklikleri içerir. Daha fazla bilgi için bkz. SDK changelog.
+  * [C# SDK Preview 3 CHANGELOG](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/formrecognizer/Azure.AI.FormRecognizer/CHANGELOG.md)
+  * [Python SDK Preview 3 CHANGELOG](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
+  * [Java SDK Preview 3 CHANGELOG](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
+  * [JavaScript SDK Preview 3 CHANGELOG](https://github.com/Azure/azure-sdk-for-js/blob/%40azure/ai-form-recognizer_1.0.0-preview.3/sdk/formrecognizer/ai-form-recognizer/CHANGELOG.md)
 
 ## <a name="april-2020"></a>Nisan 2020
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
-ms.openlocfilehash: 550579b40470d7a1ad02031b8140e7d0a7164f46
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: ca6bff4c1e99bb8e63db212ca57693870afc30e7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310606"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080648"
 ---
 # <a name="long-audio-api-preview"></a>Uzun ses API 'SI (Önizleme)
 
@@ -56,7 +56,7 @@ Giriş içeriği hazırlandıktan sonra, isteği göndermek için [uzun biçimli
 
 **Http durum kodları** yaygın hataları gösterir.
 
-| API | HTTP durum kodu | Description | Teklif |
+| API | HTTP durum kodu | Açıklama | Teklif |
 |-----|------------------|-------------|----------|
 | Oluştur | 400 | Ses birleştirme bu bölgede etkin değil. | Konuşma abonelik anahtarını desteklenen bir bölge ile değiştirin. |
 |        | 400 | Bu bölge için yalnızca **Standart** konuşma aboneliği geçerlidir. | Konuşma abonelik anahtarını "standart" fiyatlandırma katmanıyla değiştirin. |
@@ -66,7 +66,7 @@ Giriş içeriği hazırlandıktan sonra, isteği göndermek için [uzun biçimli
 |        | 400 | Ses birleştirme yalnızca, bayt sırası işaretleyicisi ile UTF-8 Kodlamadaki metin dosyasını destekler. | Giriş dosyalarının, bayt sırası işaretleyicisi ile UTF-8 kodlaması içinde olduğundan emin olun. |
 |        | 400 | Ses senssıs isteğinde yalnızca geçerli SSML girdilerine izin verilir. | Giriş SSML ifadelerinin doğru olduğundan emin olun. |
 |        | 400 | Giriş dosyasında {voiceName} ses adı bulunamadı. | SSML ses adı girdisi model KIMLIĞIYLE hizalı değil. |
-|        | 400 | Giriş dosyasındaki paragraf miktarı 10.000 ' den az olmalıdır. | Dosyadaki paragrafın 10.000 ' dan küçük olduğundan emin olun. |
+|        | 400 | Giriş dosyasındaki paragraf sayısı 10.000 ' den az olmalıdır. | Dosyadaki paragraf sayısının 10.000 ' den küçük olduğundan emin olun. |
 |        | 400 | Giriş dosyası 400 karakterden uzun olmalıdır. | Giriş dosyanızın 400 karakteri aştığından emin olun. |
 |        | 404 | Voice sensııd tanımında belirtilen model bulunamıyor: {ModelId}. | {ModelId} ' ın doğru olduğundan emin olun. |
 |        | 429 | Etkin ses sensimi sınırını aşıyor. Lütfen bazı isteklerin bitmesini bekleyin. | Sunucunun her bir Azure hesabı için en fazla 120 istek çalıştırmasına ve sıraya alma yapmasına izin verilir. Lütfen bekleyin ve bazı istekler tamamlanana kadar yeni istek gönderilmesini önleyin. |

@@ -330,6 +330,8 @@
               href: ./partner-center-portal/azure-vm-create-offer.md
             - name: Azure VM teknik varlığı oluşturma
               items:
+                - name: Sanal makine sertifikasyonu - sorunlar ve çözümler
+                  href: ./partner-center-portal/vm-certification-issues-solutions.md
                 - name: Azure VM teknik varlığı oluşturma
                   href: ./partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Azure VM teknik varlığı oluşturma hakkında SSS
