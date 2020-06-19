@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b492d8e3bdcf6d9a41df3eb79ef159985cc715cf
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4445fd893027f21adfcf6a273d1ba6360087ec49
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76168873"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983623"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Örnek: C ile görüntü işleme uygulamasını araştırma #
 
@@ -33,11 +33,14 @@ Optik karakter tanıma (OCR) gerçekleştirmek, akıllı kırpılan küçük res
 Örnek uygulamayı araştırmadan önce, aşağıdaki önkoşulları karşılatığınızdan emin olun:
 
 * [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) veya üzerine sahip olmanız gerekir.
-* Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Hizmet uç noktası URL 'sini de göz atın.
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+    * Uygulamanızı Görüntü İşleme hizmetine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 
 ## <a name="get-the-sample-app"></a>Örnek uygulamayı alma
 
-Görüntü İşleme örnek uygulama, `Microsoft/Cognitive-Vision-Windows` depodan GitHub 'da kullanılabilir. Bu depo Ayrıca `Microsoft/Cognitive-Common-Windows` depoyu bir git alt modülü olarak içerir. Bu depoyu, alt modül dahil, komut satırından `git clone --recurse-submodules` komutunu kullanarak veya GitHub Desktop kullanarak yinelemeli olarak kopyalayabilirsiniz.
+Görüntü İşleme örnek uygulama, depodan GitHub 'da kullanılabilir `Microsoft/Cognitive-Vision-Windows` . Bu depo Ayrıca `Microsoft/Cognitive-Common-Windows` depoyu bir git alt modülü olarak içerir. Bu depoyu, alt modül dahil, komut `git clone --recurse-submodules` satırından komutunu kullanarak veya GitHub Desktop kullanarak yinelemeli olarak kopyalayabilirsiniz.
 
 Örneğin, Görüntü İşleme örnek uygulaması için depoyu bir komut isteminden yinelemeli olarak kopyalamak için aşağıdaki komutu çalıştırın:
 
@@ -50,7 +53,7 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Vision-Win
 
 ### <a name="get-optional-sample-images"></a>İsteğe bağlı örnek görüntüleri al
 
-İsteğe bağlı olarak, `Microsoft/Cognitive-Face-Windows` depoda GitHub 'Da bulunan [yüz](../../Face/Overview.md) örnek uygulamasıyla birlikte bulunan örnek görüntüleri kullanabilirsiniz. Bu örnek uygulama, birden çok kişinin `/Data`görüntüsünü içeren bir klasör içerir. Bu depoyu Ayrıca, Görüntü İşleme örnek uygulama için açıklanan yöntemlerle yinelemeli olarak kopyalayabilirsiniz.
+İsteğe bağlı olarak, depoda GitHub 'da bulunan [yüz](../../Face/Overview.md) örnek uygulamasıyla birlikte bulunan örnek görüntüleri kullanabilirsiniz `Microsoft/Cognitive-Face-Windows` . Bu örnek uygulama, `/Data` birden çok kişinin görüntüsünü içeren bir klasör içerir. Bu depoyu Ayrıca, Görüntü İşleme örnek uygulama için açıklanan yöntemlerle yinelemeli olarak kopyalayabilirsiniz.
 
 Örneğin, yüz örnek uygulaması için depoyu bir komut isteminden yinelemeli olarak kopyalamak için aşağıdaki komutu çalıştırın:
 
@@ -62,13 +65,13 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
 
 Örnek uygulamayı çalıştırmadan veya araştırmadan önce, Visual Studio 'Nun bağımlılıkları çözebilmesi için öncelikle örnek uygulamayı oluşturmanız gerekir. Örnek uygulamayı açmak ve derlemek için aşağıdaki adımları uygulayın:
 
-1. Visual Studio çözüm dosyasını `/Sample-WPF/VisionAPI-WPF-Samples.sln`Visual Studio 'da açın.
+1. Visual Studio çözüm dosyasını `/Sample-WPF/VisionAPI-WPF-Samples.sln` Visual Studio 'da açın.
 1. Visual Studio çözümünün iki proje içerdiğinden emin olun:  
 
    * SampleUserControlLibrary
    * VisionAPI-WPF-örnekler  
 
-   SampleUserControlLibrary projesi kullanılamıyorsa, `Microsoft/Cognitive-Vision-Windows` depoyu özyinelemeli olarak Klonladığınız onaylayın.
+   SampleUserControlLibrary projesi kullanılamıyorsa, depoyu özyinelemeli olarak Klonladığınız onaylayın `Microsoft/Cognitive-Vision-Windows` .
 1. Visual Studio 'da, CTRL + SHIFT + B tuşlarına basın ya da şerit menüsünden **Oluştur** ' u seçin ve çözümü derlemek Için **çözüm oluştur** ' u seçin.
 
 ## <a name="run-and-interact-with-the-sample-app"></a>Çalıştırma ve örnek uygulamayla etkileşim kurma
@@ -80,12 +83,11 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
    ![Abonelik anahtarı yönetim sayfası](../Images/Vision_UI_Subscription.PNG)  
 1. Abonelik anahtarınızı **abonelik anahtarı**' na girin.
 1. Uç noktada Endpoint URL 'sini **girin.**  
-   Örneğin, Görüntü İşleme ücretsiz deneme sürümünden abonelik anahtarını kullanıyorsanız, aşağıdaki uç nokta URL 'sini girin:`https://westcentralus.api.cognitive.microsoft.com`  
    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. Örnek uygulamayı bir sonraki çalıştırışınızda abonelik anahtarınızı ve uç nokta URL 'sini girmek istemiyorsanız, abonelik anahtarını ve uç nokta URL 'sini bilgisayarınıza kaydetmek için **ayarı kaydet** ' i seçin. Önceden kaydedilmiş abonelik anahtarınızı ve uç nokta URL 'sini silmek istiyorsanız, **ayarı Sil**' i seçin.
 
    > [!NOTE]
-   > Örnek uygulama, abonelik anahtarınızı ve uç nokta `System.IO.IsolatedStorage`URL 'nizi depolamak için yalıtılmış depolamayı kullanır.
+   > Örnek uygulama, `System.IO.IsolatedStorage` abonelik anahtarınızı ve uç nokta URL 'nizi depolamak için yalıtılmış depolamayı kullanır.
 
 1. Gezinti bölmesinde **bir senaryo seçin** ' in altında şu anda örnek uygulamaya dahil olan senaryolardan birini seçin:  
 
@@ -139,9 +141,9 @@ Görüntü İşleme örnek uygulaması için Visual Studio çözümü iki proje 
 
 ### <a name="explore-the-sample-code"></a>Örnek kodu keşfet
 
-Örnek kodun önemli kısımları, örnek uygulamayı keşfetmenizi kolaylaştırmak için ile başlayan `KEY SAMPLE CODE STARTS HERE` ve ile `KEY SAMPLE CODE ENDS HERE`biten açıklama bloklarıyla çerçeveedilir. Örnek kodun bu temel bölümleri, çeşitli görevleri yapmak için Görüntü İşleme API'si istemci kitaplığını kullanmayı öğrenmeyle ilgili en önemli kodu içerir. Görüntü İşleme örnek uygulamasındaki kodun `KEY SAMPLE CODE STARTS HERE` en ilgili bölümleri arasında gezinmek Için Visual Studio 'da arama yapabilirsiniz. 
+Örnek kodun önemli kısımları `KEY SAMPLE CODE STARTS HERE` `KEY SAMPLE CODE ENDS HERE` , örnek uygulamayı keşfetmenizi kolaylaştırmak için ile başlayan ve ile biten açıklama bloklarıyla çerçeveedilir. Örnek kodun bu temel bölümleri, çeşitli görevleri yapmak için Görüntü İşleme API'si istemci kitaplığını kullanmayı öğrenmeyle ilgili en önemli kodu içerir. `KEY SAMPLE CODE STARTS HERE`Görüntü işleme örnek uygulamasındaki kodun en ilgili bölümleri arasında gezinmek Için Visual Studio 'da arama yapabilirsiniz. 
 
-Örneğin, aşağıdaki ve `UploadAndAnalyzeImageAsync` analiz zepage. xaml ' de yer alan yöntemi, `ComputerVisionClient.AnalyzeImageInStreamAsync` yöntemini çağırarak bir yerel görüntüyü çözümlemek için istemci kitaplığının nasıl kullanılacağını gösterir.
+Örneğin, `UploadAndAnalyzeImageAsync` aşağıdaki ve analiz Zepage. xaml ' de yer alan yöntemi, yöntemini çağırarak bir yerel görüntüyü çözümlemek için istemci kitaplığının nasıl kullanılacağını gösterir `ComputerVisionClient.AnalyzeImageInStreamAsync` .
 
 ```csharp
 private async Task<ImageAnalysis> UploadAndAnalyzeImageAsync(string imageFilePath)
@@ -178,9 +180,9 @@ private async Task<ImageAnalysis> UploadAndAnalyzeImageAsync(string imageFilePat
 
 ### <a name="explore-the-client-library"></a>İstemci kitaplığını keşfet
 
-Bu örnek uygulama, Azure bilişsel hizmetler 'de Görüntü İşleme API'si için bir ince C# istemci sarmalayıcısı olan Görüntü İşleme API'si istemci kitaplığını kullanır. İstemci kitaplığı, [Microsoft. Azure. Biliveservices. Vision. ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) paketindeki NuGet 'ten kullanılabilir. Visual Studio uygulamasını yapılandırdığınızda, istemci kitaplığını ilgili NuGet paketinden alırsınız. Ayrıca, istemci kitaplığının kaynak kodunu `/ClientLibrary` `Microsoft/Cognitive-Vision-Windows` deponun klasöründe görüntüleyebilirsiniz.
+Bu örnek uygulama, Azure bilişsel hizmetler 'de Görüntü İşleme API'si için bir ince C# istemci sarmalayıcısı olan Görüntü İşleme API'si istemci kitaplığını kullanır. İstemci kitaplığı, [Microsoft. Azure. Biliveservices. Vision. ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) paketindeki NuGet 'ten kullanılabilir. Visual Studio uygulamasını yapılandırdığınızda, istemci kitaplığını ilgili NuGet paketinden alırsınız. Ayrıca, istemci kitaplığının kaynak kodunu `/ClientLibrary` deponun klasöründe görüntüleyebilirsiniz `Microsoft/Cognitive-Vision-Windows` .
 
-`ComputerVisionClient` İstemci kitaplığının işlevselliği `Microsoft.Azure.CognitiveServices.Vision.ComputerVision` , ad alanında, sınıf tarafından kullanılan modellerden, ad alanında görüntü işleme etkileşimde bulunduğunda `ComputerVisionClient` sınıf tarafından kullanılan modeller bulunur. `Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models` Örnek uygulamayla birlikte bulunan çeşitli XAML senaryo sayfalarında, bu ad alanları için aşağıdaki `using` yönergeleri bulacaksınız:
+İstemci kitaplığının işlevselliği, ad alanında, sınıf `ComputerVisionClient` `Microsoft.Azure.CognitiveServices.Vision.ComputerVision` tarafından kullanılan modellerden, ad alanında `ComputerVisionClient` görüntü işleme etkileşimde bulunduğunda sınıf tarafından kullanılan modeller bulunur `Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models` . Örnek uygulamayla birlikte bulunan çeşitli XAML senaryo sayfalarında, `using` Bu ad alanları için aşağıdaki yönergeleri bulacaksınız:
 
 ```csharp
 // -----------------------------------------------------------------------
@@ -194,119 +196,119 @@ using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 // -----------------------------------------------------------------------
 ```
 
-Görüntü İşleme örnek uygulamasına dahil olan senaryoları keşfederken, `ComputerVisionClient` sınıfa dahil edilen çeşitli yöntemler hakkında daha fazla bilgi edineceksiniz.
+`ComputerVisionClient`Görüntü işleme örnek uygulamasına dahil olan senaryoları keşfederken, sınıfa dahil edilen çeşitli yöntemler hakkında daha fazla bilgi edineceksiniz.
 
 ## <a name="explore-the-analyze-image-scenario"></a>Görüntüyü çözümle senaryosunu keşfet
 
 Bu senaryo, analiz Zepage. xaml sayfası tarafından yönetilir. Analiz için görsel özellikleri ve dili seçebilir ve hem görüntüyü hem de sonuçları görebilirsiniz. Senaryo sayfası, görüntünün kaynağına bağlı olarak aşağıdaki yöntemlerden birini kullanarak bunu yapar:
 
 * Uploadandanaliz Zeımageasync  
-  Bu yöntem, görüntünün bir `Stream` olarak kodlanması ve `ComputerVisionClient.AnalyzeImageInStreamAsync` yöntemi çağırarak görüntü işleme gönderilmesi gereken yerel görüntüler için kullanılır.
+  Bu yöntem, görüntünün bir olarak kodlanması `Stream` ve yöntemi çağırarak görüntü işleme gönderilmesi gereken yerel görüntüler için kullanılır `ComputerVisionClient.AnalyzeImageInStreamAsync` .
 * AnalyzeUrlAsync  
-  Bu yöntem, bir `ComputerVisionClient.AnalyzeImageAsync` yöntemi çağırarak görüntünün URL 'sinin görüntü işleme gönderildiği uzak görüntüler için kullanılır.
+  Bu yöntem, bir yöntemi çağırarak görüntünün URL 'sinin Görüntü İşleme gönderildiği uzak görüntüler için kullanılır `ComputerVisionClient.AnalyzeImageAsync` .
 
-`UploadAndAnalyzeImageAsync` Yöntemi, belirtilen abonelik anahtarını `ComputerVisionClient` ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Örnek uygulama yerel bir görüntüyü analiz ettiğinden, bu görüntünün içeriğini Görüntü İşleme göndermelidir. Bir `imageFilePath` `Stream`olarak okumak için belirtilen yerel dosyayı açar, sonra senaryo sayfasında seçilen görsel özellikleri ve dili alır. `ComputerVisionClient.AnalyzeImageInStreamAsync` Yöntemini çağırır, dosyayı, görsel özellikleri `Stream` ve dili geçirerek bir `ImageAnalysis` örnek olarak sonucunu döndürür. `ImageScenarioPage` Sınıfından devralınan Yöntemler, döndürülen sonuçları senaryo sayfasında sunar.
+`UploadAndAnalyzeImageAsync`Yöntemi `ComputerVisionClient` , belirtilen abonelik anahtarını ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Örnek uygulama yerel bir görüntüyü analiz ettiğinden, bu görüntünün içeriğini Görüntü İşleme göndermelidir. `imageFilePath`Bir olarak okumak için belirtilen yerel dosyayı açar `Stream` , sonra senaryo sayfasında seçilen görsel özellikleri ve dili alır. `ComputerVisionClient.AnalyzeImageInStreamAsync`Yöntemini çağırır, `Stream` dosyayı, görsel özellikleri ve dili geçirerek bir örnek olarak sonucunu döndürür `ImageAnalysis` . Sınıfından devralınan Yöntemler, `ImageScenarioPage` döndürülen sonuçları senaryo sayfasında sunar.
 
-`AnalyzeUrlAsync` Yöntemi, belirtilen abonelik anahtarını `ComputerVisionClient` ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Senaryo sayfasında seçilen görsel özellikleri ve dili alır. `ComputerVisionClient.AnalyzeImageInStreamAsync` Yöntemi çağırır, görüntü URL 'si, görsel özellikler ve dil geçirerek bir `ImageAnalysis` örnek olarak sonucunu döndürür. `ImageScenarioPage` Sınıfından devralınan Yöntemler, döndürülen sonuçları senaryo sayfasında sunar.
+`AnalyzeUrlAsync`Yöntemi `ComputerVisionClient` , belirtilen abonelik anahtarını ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Senaryo sayfasında seçilen görsel özellikleri ve dili alır. `ComputerVisionClient.AnalyzeImageInStreamAsync`Yöntemi çağırır, görüntü URL 'si, görsel özellikler ve dil geçirerek bir örnek olarak sonucunu döndürür `ImageAnalysis` . Sınıfından devralınan Yöntemler, `ImageScenarioPage` döndürülen sonuçları senaryo sayfasında sunar.
 
 ## <a name="explore-the-analyze-image-with-domain-model-scenario"></a>Görüntüyü etki alanı modeliyle çözümle senaryosunu keşfet
 
-Bu senaryo, analiz Zeindomainpage. xaml sayfası tarafından yönetilir. Görüntünün etki alanına özgü analizini gerçekleştirmek için `celebrities` veya `landmarks`gibi bir etki alanı modeli seçebilir ve hem görüntüyü hem de sonuçları görebilirsiniz. Senaryo sayfası, görüntünün kaynağına bağlı olarak aşağıdaki yöntemleri kullanır:
+Bu senaryo, analiz Zeindomainpage. xaml sayfası tarafından yönetilir. `celebrities` `landmarks` Görüntünün etki alanına özgü analizini gerçekleştirmek için veya gibi bir etki alanı modeli seçebilir ve hem görüntüyü hem de sonuçları görebilirsiniz. Senaryo sayfası, görüntünün kaynağına bağlı olarak aşağıdaki yöntemleri kullanır:
 
 * GetAvailableDomainModelsAsync  
-  Bu yöntem, Görüntü İşleme ' dan kullanılabilir etki alanı modellerinin listesini alır ve `_domainModelComboBox` `ComputerVisionClient.ListModelsAsync` yöntemi kullanarak sayfadaki ComboBox denetimini doldurur.
+  Bu yöntem, Görüntü İşleme ' dan kullanılabilir etki alanı modellerinin listesini alır ve `_domainModelComboBox` yöntemi kullanarak sayfadaki ComboBox denetimini doldurur `ComputerVisionClient.ListModelsAsync` .
 * Uploadandanalzeındomainımageasync  
-  Bu yöntem, görüntünün bir `Stream` olarak kodlanması ve `ComputerVisionClient.AnalyzeImageByDomainInStreamAsync` yöntemi çağırarak görüntü işleme gönderilmesi gereken yerel görüntüler için kullanılır.
+  Bu yöntem, görüntünün bir olarak kodlanması `Stream` ve yöntemi çağırarak görüntü işleme gönderilmesi gereken yerel görüntüler için kullanılır `ComputerVisionClient.AnalyzeImageByDomainInStreamAsync` .
 * AnalyzeInDomainUrlAsync  
-  Bu yöntem, bir `ComputerVisionClient.AnalyzeImageByDomainAsync` yöntemi çağırarak görüntünün URL 'sinin görüntü işleme gönderildiği uzak görüntüler için kullanılır.
+  Bu yöntem, bir yöntemi çağırarak görüntünün URL 'sinin Görüntü İşleme gönderildiği uzak görüntüler için kullanılır `ComputerVisionClient.AnalyzeImageByDomainAsync` .
 
-`UploadAndAnalyzeInDomainImageAsync` Yöntemi, belirtilen abonelik anahtarını `ComputerVisionClient` ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Örnek uygulama yerel bir görüntüyü analiz ettiğinden, bu görüntünün içeriğini Görüntü İşleme göndermelidir. Bir `imageFilePath` `Stream`olarak okumak için belirtilen yerel dosyayı açar, sonra senaryo sayfasında seçilen dili alır. `ComputerVisionClient.AnalyzeImageByDomainInStreamAsync` Yöntemini çağırır, dosyayı `Stream` için geçirerek, etki alanı modelinin adı ve dili, sonra da sonucu bir `DomainModelResults` örnek olarak döndürür. `ImageScenarioPage` Sınıfından devralınan Yöntemler, döndürülen sonuçları senaryo sayfasında sunar.
+`UploadAndAnalyzeInDomainImageAsync`Yöntemi `ComputerVisionClient` , belirtilen abonelik anahtarını ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Örnek uygulama yerel bir görüntüyü analiz ettiğinden, bu görüntünün içeriğini Görüntü İşleme göndermelidir. `imageFilePath`Bir olarak okumak için belirtilen yerel dosyayı açar `Stream` , sonra senaryo sayfasında seçilen dili alır. `ComputerVisionClient.AnalyzeImageByDomainInStreamAsync`Yöntemini çağırır, dosyayı için geçirerek, `Stream` etki alanı modelinin adı ve dili, sonra da sonucu bir örnek olarak döndürür `DomainModelResults` . Sınıfından devralınan Yöntemler, `ImageScenarioPage` döndürülen sonuçları senaryo sayfasında sunar.
 
-`AnalyzeInDomainUrlAsync` Yöntemi, belirtilen abonelik anahtarını `ComputerVisionClient` ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Senaryo sayfasında seçilen dili alır. `ComputerVisionClient.AnalyzeImageByDomainAsync` Yöntemi çağırır, görüntü URL 'si, görsel özellikler ve dil geçirerek bir `DomainModelResults` örnek olarak sonucunu döndürür. `ImageScenarioPage` Sınıfından devralınan Yöntemler, döndürülen sonuçları senaryo sayfasında sunar.
+`AnalyzeInDomainUrlAsync`Yöntemi `ComputerVisionClient` , belirtilen abonelik anahtarını ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Senaryo sayfasında seçilen dili alır. `ComputerVisionClient.AnalyzeImageByDomainAsync`Yöntemi çağırır, görüntü URL 'si, görsel özellikler ve dil geçirerek bir örnek olarak sonucunu döndürür `DomainModelResults` . Sınıfından devralınan Yöntemler, `ImageScenarioPage` döndürülen sonuçları senaryo sayfasında sunar.
 
 ## <a name="explore-the-describe-image-scenario"></a>Görüntüyü açıkla senaryosunu keşfet
 
 Bu senaryo, DescribePage. xaml sayfası tarafından yönetilir. Görüntünün okunabilir bir açıklamasını oluşturmak için bir dil seçebilirsiniz ve hem görüntüyü hem de sonuçları görebilirsiniz. Senaryo sayfası, görüntünün kaynağına bağlı olarak aşağıdaki yöntemleri kullanır:
 
 * Uploadanddescribeımageasync  
-  Bu yöntem, görüntünün bir `Stream` olarak kodlanması ve `ComputerVisionClient.DescribeImageInStreamAsync` yöntemi çağırarak görüntü işleme gönderilmesi gereken yerel görüntüler için kullanılır.
+  Bu yöntem, görüntünün bir olarak kodlanması `Stream` ve yöntemi çağırarak görüntü işleme gönderilmesi gereken yerel görüntüler için kullanılır `ComputerVisionClient.DescribeImageInStreamAsync` .
 * DescribeUrlAsync  
-  Bu yöntem, bir `ComputerVisionClient.DescribeImageAsync` yöntemi çağırarak görüntünün URL 'sinin görüntü işleme gönderildiği uzak görüntüler için kullanılır.
+  Bu yöntem, bir yöntemi çağırarak görüntünün URL 'sinin Görüntü İşleme gönderildiği uzak görüntüler için kullanılır `ComputerVisionClient.DescribeImageAsync` .
 
-`UploadAndDescribeImageAsync` Yöntemi, belirtilen abonelik anahtarını `ComputerVisionClient` ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Örnek uygulama yerel bir görüntüyü analiz ettiğinden, bu görüntünün içeriğini Görüntü İşleme göndermelidir. Bir `imageFilePath` `Stream`olarak okumak için belirtilen yerel dosyayı açar, sonra senaryo sayfasında seçilen dili alır. `ComputerVisionClient.DescribeImageInStreamAsync` Yöntemini çağırır, dosyayı `Stream` için, en fazla aday sayısı (Bu durumda 3) ve dili geçirerek bir `ImageDescription` örnek olarak sonucunu döndürür. `ImageScenarioPage` Sınıfından devralınan Yöntemler, döndürülen sonuçları senaryo sayfasında sunar.
+`UploadAndDescribeImageAsync`Yöntemi `ComputerVisionClient` , belirtilen abonelik anahtarını ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Örnek uygulama yerel bir görüntüyü analiz ettiğinden, bu görüntünün içeriğini Görüntü İşleme göndermelidir. `imageFilePath`Bir olarak okumak için belirtilen yerel dosyayı açar `Stream` , sonra senaryo sayfasında seçilen dili alır. `ComputerVisionClient.DescribeImageInStreamAsync`Yöntemini çağırır, `Stream` dosyayı için, en fazla aday sayısı (Bu durumda 3) ve dili geçirerek bir örnek olarak sonucunu döndürür `ImageDescription` . Sınıfından devralınan Yöntemler, `ImageScenarioPage` döndürülen sonuçları senaryo sayfasında sunar.
 
-`DescribeUrlAsync` Yöntemi, belirtilen abonelik anahtarını `ComputerVisionClient` ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Senaryo sayfasında seçilen dili alır. `ComputerVisionClient.DescribeImageAsync` Yöntemi çağırır, görüntü URL 'sini, en fazla aday sayısını (Bu durumda 3) ve dili geçirerek bir `ImageDescription` örnek olarak sonucunu döndürür. `ImageScenarioPage` Sınıfından devralınan Yöntemler, döndürülen sonuçları senaryo sayfasında sunar.
+`DescribeUrlAsync`Yöntemi `ComputerVisionClient` , belirtilen abonelik anahtarını ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Senaryo sayfasında seçilen dili alır. `ComputerVisionClient.DescribeImageAsync`Yöntemi çağırır, görüntü URL 'sini, en fazla aday sayısını (Bu durumda 3) ve dili geçirerek bir örnek olarak sonucunu döndürür `ImageDescription` . Sınıfından devralınan Yöntemler, `ImageScenarioPage` döndürülen sonuçları senaryo sayfasında sunar.
 
 ## <a name="explore-the-generate-tags-scenario"></a>Etiket oluştur senaryosunu keşfet
 
 Bu senaryo, TagsPage. xaml sayfası tarafından yönetilir. Bir görüntünün görsel özelliklerini etiketlemek için bir dil seçebilirsiniz ve hem görüntüyü hem de sonuçları görebilirsiniz. Senaryo sayfası, görüntünün kaynağına bağlı olarak aşağıdaki yöntemleri kullanır:
 
 * Uploadandgettagsforımageasync  
-  Bu yöntem, görüntünün bir `Stream` olarak kodlanması ve `ComputerVisionClient.TagImageInStreamAsync` yöntemi çağırarak görüntü işleme gönderilmesi gereken yerel görüntüler için kullanılır.
+  Bu yöntem, görüntünün bir olarak kodlanması `Stream` ve yöntemi çağırarak görüntü işleme gönderilmesi gereken yerel görüntüler için kullanılır `ComputerVisionClient.TagImageInStreamAsync` .
 * GenerateTagsForUrlAsync  
-  Bu yöntem, bir `ComputerVisionClient.TagImageAsync` yöntemi çağırarak görüntünün URL 'sinin görüntü işleme gönderildiği uzak görüntüler için kullanılır.
+  Bu yöntem, bir yöntemi çağırarak görüntünün URL 'sinin Görüntü İşleme gönderildiği uzak görüntüler için kullanılır `ComputerVisionClient.TagImageAsync` .
 
-`UploadAndGetTagsForImageAsync` Yöntemi, belirtilen abonelik anahtarını `ComputerVisionClient` ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Örnek uygulama yerel bir görüntüyü analiz ettiğinden, bu görüntünün içeriğini Görüntü İşleme göndermelidir. Bir `imageFilePath` `Stream`olarak okumak için belirtilen yerel dosyayı açar, sonra senaryo sayfasında seçilen dili alır. `ComputerVisionClient.TagImageInStreamAsync` Yöntemini çağırır, dosyayı ve dili `Stream` için geçirerek bir `TagResult` örnek olarak sonucunu döndürür. `ImageScenarioPage` Sınıfından devralınan Yöntemler, döndürülen sonuçları senaryo sayfasında sunar.
+`UploadAndGetTagsForImageAsync`Yöntemi `ComputerVisionClient` , belirtilen abonelik anahtarını ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Örnek uygulama yerel bir görüntüyü analiz ettiğinden, bu görüntünün içeriğini Görüntü İşleme göndermelidir. `imageFilePath`Bir olarak okumak için belirtilen yerel dosyayı açar `Stream` , sonra senaryo sayfasında seçilen dili alır. `ComputerVisionClient.TagImageInStreamAsync`Yöntemini çağırır, `Stream` dosyayı ve dili için geçirerek bir örnek olarak sonucunu döndürür `TagResult` . Sınıfından devralınan Yöntemler, `ImageScenarioPage` döndürülen sonuçları senaryo sayfasında sunar.
 
-`GenerateTagsForUrlAsync` Yöntemi, belirtilen abonelik anahtarını `ComputerVisionClient` ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Senaryo sayfasında seçilen dili alır. `ComputerVisionClient.TagImageAsync` Yöntemi çağırır, görüntü URL 'sini ve dilini geçirerek bir `TagResult` örnek olarak sonucunu döndürür. `ImageScenarioPage` Sınıfından devralınan Yöntemler, döndürülen sonuçları senaryo sayfasında sunar.
+`GenerateTagsForUrlAsync`Yöntemi `ComputerVisionClient` , belirtilen abonelik anahtarını ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Senaryo sayfasında seçilen dili alır. `ComputerVisionClient.TagImageAsync`Yöntemi çağırır, görüntü URL 'sini ve dilini geçirerek bir örnek olarak sonucunu döndürür `TagResult` . Sınıfından devralınan Yöntemler, `ImageScenarioPage` döndürülen sonuçları senaryo sayfasında sunar.
 
 ## <a name="explore-the-recognize-text-ocr-scenario"></a>Metin Tanıma (OCR) senaryosunu keşfet
 
 Bu senaryo, OCRPage. xaml sayfası tarafından yönetilir. Bir görüntüden yazdırılmış metni tanımak ve ayıklamak için bir dil seçebilirsiniz ve hem görüntüyü hem de sonuçları görebilirsiniz. Senaryo sayfası, görüntünün kaynağına bağlı olarak aşağıdaki yöntemleri kullanır:
 
 * Uploadandrecognizeımageasync  
-  Bu yöntem, görüntünün bir `Stream` olarak kodlanması ve `ComputerVisionClient.RecognizePrintedTextInStreamAsync` yöntemi çağırarak görüntü işleme gönderilmesi gereken yerel görüntüler için kullanılır.
+  Bu yöntem, görüntünün bir olarak kodlanması `Stream` ve yöntemi çağırarak görüntü işleme gönderilmesi gereken yerel görüntüler için kullanılır `ComputerVisionClient.RecognizePrintedTextInStreamAsync` .
 * RecognizeUrlAsync  
-  Bu yöntem, bir `ComputerVisionClient.RecognizePrintedTextAsync` yöntemi çağırarak görüntünün URL 'sinin görüntü işleme gönderildiği uzak görüntüler için kullanılır.
+  Bu yöntem, bir yöntemi çağırarak görüntünün URL 'sinin Görüntü İşleme gönderildiği uzak görüntüler için kullanılır `ComputerVisionClient.RecognizePrintedTextAsync` .
 
-`UploadAndRecognizeImageAsync` Yöntemi, belirtilen abonelik anahtarını `ComputerVisionClient` ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Örnek uygulama yerel bir görüntüyü analiz ettiğinden, bu görüntünün içeriğini Görüntü İşleme göndermelidir. Bir `imageFilePath` `Stream`olarak okumak için belirtilen yerel dosyayı açar, sonra senaryo sayfasında seçilen dili alır. Yönlendirmenin algılanmadığını `ComputerVisionClient.RecognizePrintedTextInStreamAsync` ve dosyayı ve dili `Stream` için geçtiğini ve sonra bir `OcrResult` örnek olarak sonucunu döndürdüğünü belirten yöntemini çağırır. `ImageScenarioPage` Sınıfından devralınan Yöntemler, döndürülen sonuçları senaryo sayfasında sunar.
+`UploadAndRecognizeImageAsync`Yöntemi `ComputerVisionClient` , belirtilen abonelik anahtarını ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Örnek uygulama yerel bir görüntüyü analiz ettiğinden, bu görüntünün içeriğini Görüntü İşleme göndermelidir. `imageFilePath`Bir olarak okumak için belirtilen yerel dosyayı açar `Stream` , sonra senaryo sayfasında seçilen dili alır. `ComputerVisionClient.RecognizePrintedTextInStreamAsync`Yönlendirmenin algılanmadığını ve `Stream` dosyayı ve dili için geçtiğini ve sonra bir örnek olarak sonucunu döndürdüğünü belirten yöntemini çağırır `OcrResult` . Sınıfından devralınan Yöntemler, `ImageScenarioPage` döndürülen sonuçları senaryo sayfasında sunar.
 
-`RecognizeUrlAsync` Yöntemi, belirtilen abonelik anahtarını `ComputerVisionClient` ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Senaryo sayfasında seçilen dili alır. Yönlendirmenin algılanmadığını `ComputerVisionClient.RecognizePrintedTextAsync` ve görüntü URL 'sini ve dilini geçirmediğini ve sonra sonucu bir `OcrResult` örnek olarak döndürdüğünü belirten yöntemini çağırır. `ImageScenarioPage` Sınıfından devralınan Yöntemler, döndürülen sonuçları senaryo sayfasında sunar.
+`RecognizeUrlAsync`Yöntemi `ComputerVisionClient` , belirtilen abonelik anahtarını ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Senaryo sayfasında seçilen dili alır. `ComputerVisionClient.RecognizePrintedTextAsync`Yönlendirmenin algılanmadığını ve görüntü URL 'sini ve dilini geçirmediğini ve sonra sonucu bir örnek olarak döndürdüğünü belirten yöntemini çağırır `OcrResult` . Sınıfından devralınan Yöntemler, `ImageScenarioPage` döndürülen sonuçları senaryo sayfasında sunar.
 
 ## <a name="explore-the-recognize-text-v2-english-scenario"></a>Metin Tanıma v2 (Ingilizce) senaryosunu keşfet
 
 Bu senaryo, TextRecognitionPage. xaml sayfası tarafından yönetilir. Bir görüntüden yazılı veya el yazısı metinleri zaman uyumsuz olarak tanıyacak ve ayıklayabileceğiniz tanıma modunu ve dilini seçebilir ve hem görüntüyü hem de sonuçları görebilirsiniz. Senaryo sayfası, görüntünün kaynağına bağlı olarak aşağıdaki yöntemleri kullanır:
 
 * Uploadandrecognizeımageasync  
-  Bu yöntem, bir, yöntemi çağırarak `Stream` `RecognizeAsync` ve `ComputerVisionClient.RecognizeTextInStreamAsync` yöntemi için parametreli bir temsilci geçirerek, görüntünün bir olarak kodlanması ve görüntü işleme gönderilmesi gereken yerel görüntüler için kullanılır.
+  Bu yöntem, bir, yöntemi `Stream` çağırarak `RecognizeAsync` ve yöntemi için parametreli bir temsilci geçirerek, görüntünün bir olarak kodlanması ve görüntü işleme gönderilmesi gereken yerel görüntüler için kullanılır `ComputerVisionClient.RecognizeTextInStreamAsync` .
 * RecognizeUrlAsync  
-  Bu yöntem, yöntemi çağırarak `RecognizeAsync` ve `ComputerVisionClient.RecognizeTextAsync` yöntemi için parametreli bir temsilci geçirerek, görüntünün URL 'sinin görüntü işleme gönderildiği uzak görüntüler için kullanılır.
-* RecognizeAsync bu yöntem hem `UploadAndRecognizeImageAsync` hem de yöntemlerinin zaman uyumsuz çağrılmasını ve `RecognizeUrlAsync` `ComputerVisionClient.GetTextOperationResultAsync` yöntemi çağırarak sonuçları yoklamayı işler.
+  Bu yöntem, yöntemi çağırarak `RecognizeAsync` ve yöntemi için parametreli bir temsilci geçirerek, görüntünün URL 'sinin görüntü işleme gönderildiği uzak görüntüler için kullanılır `ComputerVisionClient.RecognizeTextAsync` .
+* RecognizeAsync bu yöntem hem hem de yöntemlerinin zaman uyumsuz çağrılmasını `UploadAndRecognizeImageAsync` ve `RecognizeUrlAsync` yöntemi çağırarak sonuçları yoklamayı işler `ComputerVisionClient.GetTextOperationResultAsync` .
 
 Görüntü İşleme örnek uygulamasına dahil edilen diğer senaryolardan farklı olarak, bu senaryo zaman uyumsuzdur, ancak bu yöntem, işlemi başlatmak için çağrılır, ancak durumu denetlemek ve bu işlemin sonuçlarını döndürmek için farklı bir yöntem çağırılır. Bu senaryodaki mantıksal akış, diğer senaryolardan biraz farklıdır.
 
-`UploadAndRecognizeImageAsync` Yöntemi, olarak okumak `imageFilePath` için belirtilen yerel dosyayı açar `Stream`, sonra `RecognizeAsync` yöntemi çağırır, geçirme:
+`UploadAndRecognizeImageAsync`Yöntemi, olarak okumak için belirtilen yerel dosyayı açar `imageFilePath` `Stream` , sonra `RecognizeAsync` yöntemi çağırır, geçirme:
 
-* `ComputerVisionClient.RecognizeTextInStreamAsync` Yönteminin parametreli zaman uyumsuz temsilcisi için bir lambda ifadesi; dosya ve tanıma modu `Stream` için, içinde `GetHeadersAsyncFunc`parametresi olarak.
-* İçinde `Operation-Location` `GetOperationUrlFunc`yanıt üst bilgisi değerini almak için bir temsilci için lambda ifadesi.
+* Yönteminin parametreli zaman uyumsuz temsilcisi için bir lambda ifadesi; `ComputerVisionClient.RecognizeTextInStreamAsync` `Stream` dosya ve tanıma modu için, içinde parametresi olarak `GetHeadersAsyncFunc` .
+* `Operation-Location`İçinde yanıt üst bilgisi değerini almak için bir temsilci için lambda ifadesi `GetOperationUrlFunc` .
 
-`RecognizeUrlAsync` Yöntemi `RecognizeAsync` yöntemini çağırır, geçirme:
+`RecognizeUrlAsync`Yöntemi `RecognizeAsync` yöntemini çağırır, geçirme:
 
-* `ComputerVisionClient.RecognizeTextAsync` Yönteminin parametreli zaman uyumsuz temsilcisi için, uzak görüntünün URL 'si ve içindeki `GetHeadersAsyncFunc`parametreler olarak tanıma modu ile ilgili lambda ifadesi.
-* İçinde `Operation-Location` `GetOperationUrlFunc`yanıt üst bilgisi değerini almak için bir temsilci için lambda ifadesi.
+* Yönteminin parametreli zaman uyumsuz temsilcisi için `ComputerVisionClient.RecognizeTextAsync` , uzak görüntünün URL 'si ve içindeki parametreler olarak tanıma modu ile ilgili lambda ifadesi `GetHeadersAsyncFunc` .
+* `Operation-Location`İçinde yanıt üst bilgisi değerini almak için bir temsilci için lambda ifadesi `GetOperationUrlFunc` .
 
-`RecognizeAsync` Yöntem tamamlandığında, hem hem de `UploadAndRecognizeImageAsync` `RecognizeUrlAsync` yöntemleri sonucu bir `TextOperationResult` örnek olarak döndürür. `ImageScenarioPage` Sınıfından devralınan Yöntemler, döndürülen sonuçları senaryo sayfasında sunar.
+`RecognizeAsync`Yöntem tamamlandığında, hem hem de `UploadAndRecognizeImageAsync` `RecognizeUrlAsync` yöntemleri sonucu bir örnek olarak döndürür `TextOperationResult` . Sınıfından devralınan Yöntemler, `ImageScenarioPage` döndürülen sonuçları senaryo sayfasında sunar.
 
-`RecognizeAsync` Yöntemi, geçirilen `ComputerVisionClient.RecognizeTextInStreamAsync` ya `ComputerVisionClient.RecognizeTextAsync` da yöntemi için parametreli temsilciyi çağırır `GetHeadersAsyncFunc` ve yanıt bekler. Yöntemi sonra, yanıt üst bilgisi değerini yanıttan `GetOperationUrlFunc` almak `Operation-Location` için geçirilen temsilciyi çağırır. Bu değer, Görüntü İşleme geçirilen `GetHeadersAsyncFunc` yöntemin sonuçlarını almak IÇIN kullanılan URL 'dir.
+`RecognizeAsync`Yöntemi, geçirilen ya da yöntemi için parametreli temsilciyi `ComputerVisionClient.RecognizeTextInStreamAsync` çağırır `ComputerVisionClient.RecognizeTextAsync` `GetHeadersAsyncFunc` ve yanıt bekler. Yöntemi sonra, yanıt `GetOperationUrlFunc` `Operation-Location` üst bilgisi değerini yanıttan almak için geçirilen temsilciyi çağırır. Bu değer, Görüntü İşleme geçirilen yöntemin sonuçlarını almak için kullanılan URL 'dir `GetHeadersAsyncFunc` .
 
-Daha `RecognizeAsync` sonra yöntemi, geçirilen `ComputerVisionClient.GetTextOperationResultAsync` yöntemin durumunu ve sonucunu almak için `Operation-Location` yanıt üst bilgisinden alınan URL 'yi geçirerek yöntemini çağırır `GetHeadersAsyncFunc`. Durum, yöntemin tamamlandığını, başarıyla veya başarısız olduğunu belirtmezse, çağrılar arasında 3 saniye `RecognizeAsync` bekledikten sonra `ComputerVisionClient.GetTextOperationResultAsync` Yöntem 3 kez daha fazla çağrı yapmaz. `RecognizeAsync` Yöntemi, sonuçları çağıran metoda döndürür.
+`RecognizeAsync`Daha sonra yöntemi, `ComputerVisionClient.GetTextOperationResultAsync` `Operation-Location` geçirilen yöntemin durumunu ve sonucunu almak için yanıt üst bilgisinden alınan URL 'yi geçirerek yöntemini çağırır `GetHeadersAsyncFunc` . Durum, yöntemin tamamlandığını, başarıyla veya başarısız olduğunu belirtmezse, `RecognizeAsync` `ComputerVisionClient.GetTextOperationResultAsync` çağrılar arasında 3 saniye bekledikten sonra Yöntem 3 kez daha fazla çağrı yapmaz. `RecognizeAsync`Yöntemi, sonuçları çağıran metoda döndürür.
 
 ## <a name="explore-the-get-thumbnail-scenario"></a>Küçük resim al senaryosunu keşfet
 
 Bu senaryo ThumbnailPage. xaml sayfası tarafından yönetilir. Akıllı kırpma kullanıp kullanmayacağınızı belirtebilir, bir görüntüden küçük resim oluşturmak için istenen yükseklik ve genişlik belirtmenize ve hem görüntüyü hem de sonuçları görmenizi sağlayabilirsiniz. Senaryo sayfası, görüntünün kaynağına bağlı olarak aşağıdaki yöntemleri kullanır:
 
 * UploadAndThumbnailImageAsync  
-  Bu yöntem, görüntünün bir `Stream` olarak kodlanması ve `ComputerVisionClient.GenerateThumbnailInStreamAsync` yöntemi çağırarak görüntü işleme gönderilmesi gereken yerel görüntüler için kullanılır.
+  Bu yöntem, görüntünün bir olarak kodlanması `Stream` ve yöntemi çağırarak görüntü işleme gönderilmesi gereken yerel görüntüler için kullanılır `ComputerVisionClient.GenerateThumbnailInStreamAsync` .
 * ThumbnailUrlAsync  
-  Bu yöntem, bir `ComputerVisionClient.GenerateThumbnailAsync` yöntemi çağırarak görüntünün URL 'sinin görüntü işleme gönderildiği uzak görüntüler için kullanılır.
+  Bu yöntem, bir yöntemi çağırarak görüntünün URL 'sinin Görüntü İşleme gönderildiği uzak görüntüler için kullanılır `ComputerVisionClient.GenerateThumbnailAsync` .
 
-`UploadAndThumbnailImageAsync` Yöntemi, belirtilen abonelik anahtarını `ComputerVisionClient` ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Örnek uygulama yerel bir görüntüyü analiz ettiğinden, bu görüntünün içeriğini Görüntü İşleme göndermelidir. Olarak okumak `imageFilePath` için belirtilen yerel dosyayı açar `Stream`. `ComputerVisionClient.GenerateThumbnailInStreamAsync` Yöntemini çağırır, genişliği, yüksekliği, dosyası `Stream` için ve akıllı kırpma kullanılıp kullanılmayacağını, sonra da sonucunu döndürür `Stream`. `ImageScenarioPage` Sınıfından devralınan Yöntemler, döndürülen sonuçları senaryo sayfasında sunar.
+`UploadAndThumbnailImageAsync`Yöntemi `ComputerVisionClient` , belirtilen abonelik anahtarını ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. Örnek uygulama yerel bir görüntüyü analiz ettiğinden, bu görüntünün içeriğini Görüntü İşleme göndermelidir. Olarak okumak için belirtilen yerel dosyayı açar `imageFilePath` `Stream` . `ComputerVisionClient.GenerateThumbnailInStreamAsync`Yöntemini çağırır, genişliği, yüksekliği, `Stream` dosyası için ve akıllı kırpma kullanılıp kullanılmayacağını, sonra da sonucunu döndürür `Stream` . Sınıfından devralınan Yöntemler, `ImageScenarioPage` döndürülen sonuçları senaryo sayfasında sunar.
 
-`RecognizeUrlAsync` Yöntemi, belirtilen abonelik anahtarını `ComputerVisionClient` ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. `ComputerVisionClient.GenerateThumbnailAsync` Yöntemi çağırır, genişliği, yüksekliği, resmin URL 'sini geçirerek ve akıllı kırpma kullanılıp kullanılmayacağını, sonra sonucunu bir `Stream`olarak döndürür. `ImageScenarioPage` Sınıfından devralınan Yöntemler, döndürülen sonuçları senaryo sayfasında sunar.
+`RecognizeUrlAsync`Yöntemi `ComputerVisionClient` , belirtilen abonelik anahtarını ve uç nokta URL 'sini kullanarak yeni bir örnek oluşturur. `ComputerVisionClient.GenerateThumbnailAsync`Yöntemi çağırır, genişliği, yüksekliği, resmin URL 'sini geçirerek ve akıllı kırpma kullanılıp kullanılmayacağını, sonra sonucunu bir olarak döndürür `Stream` . Sınıfından devralınan Yöntemler, `ImageScenarioPage` döndürülen sonuçları senaryo sayfasında sunar.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, `Microsoft/Cognitive-Vision-Windows` depoyu Klonladığınız klasörü silin. Örnek görüntüleri kullanmayı tercih ettiyseniz, `Microsoft/Cognitive-Face-Windows` depoyu Klonladığınız klasörü de silin.
+Artık gerekli değilse, depoyu Klonladığınız klasörü silin `Microsoft/Cognitive-Vision-Windows` . Örnek görüntüleri kullanmayı tercih ettiyseniz, depoyu Klonladığınız klasörü de silin `Microsoft/Cognitive-Face-Windows` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

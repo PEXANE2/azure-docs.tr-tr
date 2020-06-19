@@ -10,36 +10,31 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: d8f40ab57ee2569b2cb5bf62f391919476b8ab17
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 40796951fe356fcf950b83c6ac771a0ca98ffd5a
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80136017"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073217"
 ---
 <a name="HOLTop"></a>
 
-[Başvuru belge](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/computervision) | [paketi](https://github.com/Azure/azure-sdk-for-go)
+[Başvuru belgeleri](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/computervision)  |  [Paket](https://github.com/Azure/azure-sdk-for-go)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * En son [Go](https://golang.org/dl/) sürümü
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+    * Uygulamanızı Görüntü İşleme hizmetine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+* Sırasıyla ve olarak adlandırılan anahtar ve uç nokta URL 'SI için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
-### <a name="create-a-computer-vision-azure-resource"></a>Görüntü İşleme Azure kaynağı oluşturma
-
-Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak görüntü işleme için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
-
-* Ücretsiz olarak yedi gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/#decision) alın. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.  
-* [Azure Portal](https://portal.azure.com/)kaynağı görüntüleyin.
-
-Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, ve `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT`sırasıyla adlı anahtar ve uç nokta URL 'si için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
-
 ### <a name="create-a-go-project-directory"></a>Go proje dizini oluştur
 
-Konsol penceresinde (cmd, PowerShell, Terminal, Bash), go projeniz için adlı `my-app`yeni bir çalışma alanı oluşturun ve buna gidin.
+Konsol penceresinde (cmd, PowerShell, Terminal, Bash), go projeniz için adlı yeni bir çalışma alanı oluşturun `my-app` ve buna gidin.
 
 ```
 mkdir -p my-app/{src, bin, pkg}  
@@ -48,12 +43,12 @@ cd my-app
 
 Çalışma alanınız üç klasör içerir:
 
-* **src** -bu dizin, kaynak kodu ve paketleri içerir. `go get` Komutuyla yüklenen tüm paketler bu dizine gider.
+* **src** -bu dizin, kaynak kodu ve paketleri içerir. Komutuyla yüklenen tüm paketler `go get` Bu dizine gider.
 * **pkg** -bu dizin, derlenmiş go paketi nesnelerini içerir. Bu dosyaların hepsi bir `.a` uzantısı vardır.
-* **bin** -bu dizin, çalıştırdığınızda `go install`oluşturulan ikili yürütülebilir dosyaları içerir.
+* **bin** -bu dizin, çalıştırdığınızda oluşturulan ikili yürütülebilir dosyaları içerir `go install` .
 
 > [!TIP]
-> Go çalışma alanının yapısı hakkında daha fazla bilgi edinmek için [Go Language belgelerine](https://golang.org/doc/code.html#Workspaces)bakın. Bu kılavuz, ve `$GOPATH` `$GOROOT`ayarları hakkında bilgi içerir.
+> Go çalışma alanının yapısı hakkında daha fazla bilgi edinmek için [Go Language belgelerine](https://golang.org/doc/code.html#Workspaces)bakın. Bu kılavuz, ve ayarları hakkında bilgi içerir `$GOPATH` `$GOROOT` .
 
 ### <a name="install-the-client-library-for-go"></a>Go için istemci kitaplığını yükler
 
@@ -71,14 +66,14 @@ dep ensure -add https://github.com/Azure/azure-sdk-for-go/tree/master/services/c
 
 ### <a name="create-a-go-application"></a>Go uygulaması oluşturma
 
-Sonra, **src** dizininde adlı `sample-app.go`bir dosya oluşturun:
+Sonra, **src** dizininde adlı bir dosya oluşturun `sample-app.go` :
 
 ```bash
 cd src
 touch sample-app.go
 ```
 
-Tercih `sample-app.go` ettiğiniz IDE veya metin düzenleyicide açın. Ardından, paket adını ekleyin ve aşağıdaki kitaplıkları içeri aktarın:
+`sample-app.go`Tercih ETTIĞINIZ IDE veya metin düzenleyicide açın. Ardından, paket adını ekleyin ve aşağıdaki kitaplıkları içeri aktarın:
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_imports)]
 
@@ -92,7 +87,7 @@ Daha sonra, farklı Görüntü İşleme işlemleri gerçekleştirmek için kod e
 
 Aşağıdaki sınıflar ve arabirimler Görüntü İşleme go SDK 'sının bazı önemli özelliklerini işler.
 
-|Adı|Açıklama|
+|Name|Açıklama|
 |---|---|
 | [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) | Bu sınıf, görüntü analizi ve metin okuma gibi tüm Görüntü İşleme işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve birçok görüntü işlemini yapmak için kullanırsınız.|
 |[Imageanalysis](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ImageAnalysis)| Bu tür, bir **analiz Zeımage** işlev çağrısının sonuçlarını içerir. Kategoriye özgü işlevlerin her biri için benzer türler vardır.|
@@ -110,7 +105,7 @@ Bu kod parçacıkları, Go için Görüntü İşleme istemci kitaplığı ile a�
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
 > [!NOTE]
-> Bu adım, ve `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` sırasıyla adlı görüntü işleme anahtarınız ve uç noktanız için [ortam değişkenleri oluşturduğunuzu](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) varsayar.
+> Bu adım, ve sırasıyla adlı Görüntü İşleme anahtarınız ve uç noktanız için [ortam değişkenleri oluşturduğunuzu](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) varsayar `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
 
 Bir `main` işlev oluşturun ve uç noktanıza ve anahtarınıza sahip bir istemci örneği oluşturmak için aşağıdaki kodu ekleyin.
 
@@ -122,7 +117,7 @@ Aşağıdaki kod, uzak bir görüntüyü çözümlemek ve sonuçları konsola ya
 
 ### <a name="set-up-test-image"></a>Test görüntüsünü ayarla
 
-Önce, çözümlemek istediğiniz görüntünün URL 'sine bir başvuru kaydedin. Bunu işlevinizin `main` içine koyun.
+Önce, çözümlemek istediğiniz görüntünün URL 'sine bir başvuru kaydedin. Bunu `main` işlevinizin içine koyun.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_analyze_url)]
 
@@ -163,7 +158,7 @@ Aşağıdaki işlev görüntüdeki ortak nesneleri algılar ve konsola yazdırı
 
 Aşağıdaki kod görüntüde kurumsal markaların ve logoları algılar ve bunları konsola yazdırır. Daha fazla bilgi için [marka algılama](../../concept-brand-detection.md).
 
-İlk olarak, işlevinizin `main` içindeki yeni bir görüntüye bir başvuru bildirin.
+İlk olarak, işlevinizin içindeki yeni bir görüntüye bir başvuru bildirin `main` .
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_brand_url)]
 
@@ -203,15 +198,15 @@ Aşağıdaki kod görüntüde algılanan yer işaretleriyle ilgili verileri ayr�
 
 ### <a name="get-the-image-type"></a>Görüntü türünü al
 
-Aşağıdaki işlev, küçük resim veya çizgi çizimi gibi görüntü&mdash;türü hakkında bilgi yazdırır.
+Aşağıdaki işlev, &mdash; küçük resim veya çizgi çizimi gibi görüntü türü hakkında bilgi yazdırır.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_type)]
 
 ## <a name="read-printed-and-handwritten-text"></a>Yazdırılmış ve el yazısı metin oku
 
-Görüntü İşleme görüntüdeki görünür metni okuyabilir ve bunu bir karakter akışına dönüştürebilir. Bu bölümdeki kod, görüntüde yazdırılmış veya el yazısı `RecognizeTextReadAPIRemoteImage`metinleri algılamak ve ayıklamak için istemci nesnesini kullanan bir işlevi tanımlar.
+Görüntü İşleme görüntüdeki görünür metni okuyabilir ve bunu bir karakter akışına dönüştürebilir. Bu bölümdeki kod, `RecognizeTextReadAPIRemoteImage` görüntüde yazdırılmış veya el yazısı metinleri algılamak ve ayıklamak için istemci nesnesini kullanan bir işlevi tanımlar.
 
-İşlevinizdeki `main` örnek resim başvurusunu ve işlev çağrısını ekleyin.
+İşlevinizdeki örnek resim başvurusunu ve işlev çağrısını ekleyin `main` .
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_readinmain)]
 
@@ -220,7 +215,7 @@ Görüntü İşleme görüntüdeki görünür metni okuyabilir ve bunu bir karak
 
 ### <a name="call-the-read-api"></a>Okuma API 'sini çağırma
 
-Metni okumak için yeni işlevi tanımlayın, `RecognizeTextReadAPIRemoteImage`. Belirtilen görüntü için **Batchreadfile** yöntemini çağıran aşağıdaki kodu ekleyin. Bu yöntem bir işlem KIMLIĞI döndürür ve görüntünün içeriğini okumak için zaman uyumsuz bir işlem başlatır.
+Metni okumak için yeni işlevi tanımlayın, `RecognizeTextReadAPIRemoteImage` . Belirtilen görüntü için **Batchreadfile** yöntemini çağıran aşağıdaki kodu ekleyin. Bu yöntem bir işlem KIMLIĞI döndürür ve görüntünün içeriğini okumak için zaman uyumsuz bir işlem başlatır.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_read_call)]
 
@@ -238,7 +233,7 @@ Alınan metin verilerini ayrıştırmak ve göstermek için aşağıdaki kodu ek
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı `go run` komut ile uygulama dizininizden çalıştırın.
+Uygulamayı komut ile uygulama dizininizden çalıştırın `go run` .
 
 ```bash
 go run sample-app.go

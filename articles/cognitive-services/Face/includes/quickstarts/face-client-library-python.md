@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 7270d05fa7668278db285336c45b5d5c1fb39c77
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b4cc6e046b3d6442526df40cad574dbdb9159d5f
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82149364"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073356"
 ---
 Python için yüz istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Yüz tanıma hizmeti, görüntülerdeki insan yüzlerini algılayıp tanımayı sağlayan gelişmiş algoritmalara erişmenizi sağlar.
 
@@ -27,24 +27,22 @@ Python için yüz istemci kitaplığını kullanarak şunları yapın:
 * Yüzeyleri doğrula
 * Veri geçişi için bir anlık görüntü alın
 
-[Başvuru belge](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [paketi (pipy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [örnekleri](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
+[Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face)  |  [Paket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/)  |  [Örnekler](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" bir yüz kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtar ve uç noktanıza ulaşmak için bir yüz kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+    * Uygulamanızı Yüz Tanıma API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+* Anahtar ve uç nokta aldıktan sonra, ve sırasıyla adlı anahtar ve uç nokta için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `FACE_SUBSCRIPTION_KEY` `FACE_ENDPOINT` .
 
 ## <a name="setting-up"></a>Ayarlanıyor
-
-### <a name="create-a-face-azure-resource"></a>Yüz Azure kaynağı oluşturma
-
-Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak yüz için bir kaynak oluşturun. Ayrıca, ücretsiz olarak yedi gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/#decision) edinebilirsiniz. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.  
-
-Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, ve `FACE_SUBSCRIPTION_KEY` `FACE_ENDPOINT`sırasıyla adlı anahtar ve uç nokta için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
  
 ### <a name="create-a-new-python-application"></a>Yeni Python uygulaması oluşturma
 
-Örneğin, yeni bir Python&mdash;betiği oluşturun*QuickStart-File.py*. Ardından bunu tercih ettiğiniz düzenleyicide veya IDE 'de açın ve aşağıdaki kitaplıkları içeri aktarın.
+Örneğin, yeni bir Python betiği oluşturun &mdash; *QuickStart-File.py*. Ardından bunu tercih ettiğiniz düzenleyicide veya IDE 'de açın ve aşağıdaki kitaplıkları içeri aktarın.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_imports)]
 
@@ -67,7 +65,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 Aşağıdaki sınıflar ve arabirimler, yüz Python istemci kitaplığının önemli özelliklerinden bazılarını işler.
 
-|Adı|Açıklama|
+|Name|Açıklama|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | Bu sınıf, yüz hizmetini kullanma yetkinizi temsil eder ve tüm yüz işlevleri için buna ihtiyacınız vardır. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız. |
 |[Çok yönlü Işlemler](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|Bu sınıf, insan yüzeyleri ile gerçekleştirebileceğiniz temel algılama ve tanıma görevlerini işler. |
@@ -92,7 +90,7 @@ Bu kod parçacıkları, Python için yüz istemci kitaplığıyla aşağıdaki g
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
 > [!NOTE]
-> Bu hızlı başlangıçta adlı `FACE_SUBSCRIPTION_KEY`yüz anahtarınız için [bir ortam değişkeni oluşturdunuz](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) varsayılır.
+> Bu hızlı başlangıçta adlı yüz anahtarınız için [bir ortam değişkeni oluşturdunuz](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) varsayılır `FACE_SUBSCRIPTION_KEY` .
 
 Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir [Biliveservicescredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) nesnesi oluşturun ve bir [faceclient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
 
@@ -140,9 +138,9 @@ Aşağıdaki kod, üç farklı **kişi** nesnesi Ile bir **persongroup** oluştu
 
 ### <a name="create-persongroup"></a>Kişilik grubu oluştur
 
-Bu senaryoda ilerlemek için aşağıdaki görüntüleri projenizin kök dizinine kaydetmeniz gerekir: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
+Bu senaryoda ilerlemek için aşağıdaki görüntüleri projenizin kök dizinine kaydetmeniz gerekir: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
-Bu görüntü grubu üç farklı kişiye karşılık gelen üç yüz görüntüsü kümesini içerir. Kod, üç **kişi** nesnesini tanımlar ve bunları, `woman` `man`ve `child`ile başlayan resim dosyalarıyla ilişkilendirir.
+Bu görüntü grubu üç farklı kişiye karşılık gelen üç yüz görüntüsü kümesini içerir. Kod, üç **kişi** nesnesini tanımlar ve bunları, ve ile başlayan resim dosyalarıyla ilişkilendirir `woman` `man` `child` .
 
 Görüntülerinizi ayarladıktan sonra, oluşturduğunuz **Persongroup** nesnesi için betiğinizin en üstünde bir etiket tanımlayın.
 
@@ -173,7 +171,7 @@ Aşağıdaki kod, birden çok yüzü olan bir görüntü alır ve görüntüdeki
 
 ### <a name="get-a-test-image"></a>Test görüntüsü al
 
-Aşağıdaki kod, _Test-image-Person-Group. jpg_ görüntüsü için projenizin köküne bakar ve görüntüdeki yüzeyleri algılar. Bu görüntüyü, **Persongroup** Management için kullanılan görüntülerle bulabilirsiniz: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
+Aşağıdaki kod, bir görüntü _test-image-person-group.jpg_ projenizin köküne bakar ve görüntüdeki yüzeyleri algılar. Bu görüntüyü, **Persongroup** Management için kullanılan görüntülerle bulabilirsiniz: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify_testimage)]
 
@@ -211,7 +209,7 @@ Aşağıdaki kod, kaynak görüntülerinin her birini hedef görüntüye karşı
 
 ## <a name="take-a-snapshot-for-data-migration"></a>Veri geçişi için bir anlık görüntü alın
 
-Anlık görüntüler özelliği, eğitilen **Grup**gibi kayıtlı yüz verilerinizi farklı bir Azure bilişsel hizmetler aboneliğine taşımanızı sağlar. Örneğin, ücretsiz bir deneme aboneliği kullanarak bir **Persongroup** nesnesi oluşturduysanız ve şimdi bunu ücretli bir aboneliğe geçirmek istiyorsanız bu özelliği kullanmak isteyebilirsiniz. Anlık görüntüler özelliğine geniş bir genel bakış için [yüz verilerinizi geçirme](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) konusuna bakın.
+Anlık görüntüler özelliği, eğitilen **Grup**gibi kayıtlı yüz verilerinizi farklı bir Azure bilişsel hizmetler aboneliğine taşımanızı sağlar. Örneğin, ücretsiz bir abonelik kullanarak bir **Persongroup** nesnesi oluşturduysanız ve şimdi bunu ücretli bir aboneliğe geçirmek istiyorsanız bu özelliği kullanmak isteyebilirsiniz. Anlık görüntüler özelliğine geniş bir genel bakış için [yüz verilerinizi geçirme](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) konusuna bakın.
 
 Bu örnekte, [bir kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group)bölümünde oluşturduğunuz **persono grubunu** geçirirsiniz. Önce bu bölümü tamamlayabilir ya da kendi yüz veri yapısını kullanabilirsiniz.
 
@@ -241,7 +239,7 @@ Anlık görüntü işlemlerinin geri kalanı zaman uyumsuz bir işlev içinde ge
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait)]
 
-    Bu kod, ayrı olarak tanımlamanız `wait_for_operation` gereken işlevini kullanır:
+    Bu kod, `wait_for_operation` ayrı olarak tanımlamanız gereken işlevini kullanır:
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_waitforop)]
 
@@ -249,7 +247,7 @@ Anlık görüntü işlemlerinin geri kalanı zaman uyumsuz bir işlev içinde ge
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_apply)]
 
-1. Daha sonra, işlem `wait_for_operation` TAMAMLANANA kadar kimliği sorgulamak için işlevini kullanın.
+1. Daha sonra, `wait_for_operation` işlem tamamlanana kadar kimliği sorgulamak için işlevini kullanın.
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait2)]
 
@@ -257,7 +255,7 @@ Bu adımları tamamladıktan sonra, yeni (hedef) aboneliğinizden yüz veri yap�
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı hızlı başlangıç dosyanızdaki `python` komutla çalıştırın.
+Uygulamayı `python` hızlı başlangıç dosyanızdaki komutla çalıştırın.
 
 ```console
 python quickstart-file.py
