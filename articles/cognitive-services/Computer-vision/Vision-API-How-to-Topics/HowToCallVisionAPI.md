@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 298228eedb73298f00654f4f72c201d9ed671090
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 44e5823ed3989dc092104d75d415524dac2c9622
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72177056"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983454"
 ---
 # <a name="call-the-computer-vision-api"></a>Görüntü İşleme API’sini çağırma
 
@@ -25,14 +25,6 @@ Bu makalede, REST API kullanılarak Görüntü İşleme API'si nasıl çağrıla
 - Etiketler, bir açıklama ve Kategoriler alma
 - Etki alanına özgü bilgileri veya "ünlüleri" alma
 
-## <a name="prerequisites"></a>Ön koşullar
-
-- Yerel olarak depolanmış görüntünün bir resim URL 'SI veya yolu
-- Desteklenen giriş yöntemleri: bir uygulama/sekizli akış veya bir görüntü URL 'SI biçiminde Ham görüntü ikilisi
-- Desteklenen görüntü dosyası biçimleri: JPEG, PNG, GIF ve BMP
-- Görüntü dosyası boyutu: 4 MB veya daha az
-- Resim boyutları: 50 &times; 50 piksel veya daha büyük
-  
 Bu makaledeki örneklerde aşağıdaki özellikler gösterilmektedir:
 
 * Bir resim dizisini ve açıklamayı döndürmek için bir görüntüyü analiz etme
@@ -42,14 +34,22 @@ Bu makaledeki örneklerde aşağıdaki özellikler gösterilmektedir:
 
 - **Seçenek 1**: kapsamlı analiz-yalnızca belirtilen modeli çözümle
 - **Seçenek 2**: gelişmiş analiz- [86-Categories taksonomi](../Category-Taxonomy.md) kullanarak ek ayrıntılar sağlamak için çözümleyin
+
+## <a name="prerequisites"></a>Ön koşullar
+
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+    * Uygulamanızı Görüntü İşleme hizmetine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
+    * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+* Yerel olarak depolanmış görüntünün bir resim URL 'SI veya yolu
+* Desteklenen giriş yöntemleri: bir uygulama/sekizli akış veya bir görüntü URL 'SI biçiminde Ham görüntü ikilisi
+* Desteklenen görüntü dosyası biçimleri: JPEG, PNG, GIF ve BMP
+* Görüntü dosyası boyutu: 4 MB veya daha az
+* Resim boyutları: 50 &times; 50 piksel veya daha büyük
   
 ## <a name="authorize-the-api-call"></a>API çağrısını yetkilendir
 
 Görüntü İşleme API’sine yapılan her çağrı için bir abonelik anahtarı gerekir. Bu anahtar, bir sorgu dizesi parametresi aracılığıyla geçirilmelidir veya istek üstbilgisinde belirtilmelidir.
-
-Ücretsiz deneme anahtarı almak için aşağıdakilerden birini yapın:
-* Bilişsel [Hizmetler 'ı deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) sayfasına gidin. 
-* Görüntü İşleme abone olmak için bilişsel [Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) sayfasına gidin.
 
 Aşağıdakilerden birini yaparak abonelik anahtarını geçirebilirsiniz:
 
@@ -148,7 +148,7 @@ Bu durumda, tüm v1 sorgu parametreleri aynı şekilde davranır. VisualFeatures
 
 ## <a name="retrieve-and-understand-the-json-output-for-analysis"></a>Analiz için JSON çıkışını alma ve anlama
 
-Bir örneği aşağıda verilmiştir:
+İşte bir örnek:
 
 ```json
 {  
@@ -180,12 +180,12 @@ Bir örneği aşağıda verilmiştir:
 Alan | Tür | İçerik
 ------|------|------|
 Etiketler  | `object` | Bir etiket dizisi için en üst düzey nesne.
-tags[].Name | `string`  | Etiketler sınıflandırıcıdan anahtar sözcüğü.
-tags[].Score    | `number`  | Güvenirlik puanı, 0 ile 1 arasındadır.
-açıklama  | `object` | Bir açıklama için en üst düzey nesne.
+tags[].Name | `string`    | Etiketler sınıflandırıcıdan anahtar sözcüğü.
+tags[].Score    | `number`    | Güvenirlik puanı, 0 ile 1 arasındadır.
+açıklama     | `object`    | Bir açıklama için en üst düzey nesne.
 description.tags[] |    `string`    | Etiketlerin listesi.  Bir resim yazısı üretebilme özelliği için yeterli güven yoksa, Etiketler çağıranın kullanabildiği tek bilgiler olabilir.
-description.captions[].text | `string`  | Görüntüyü açıklayan bir ifadedir.
-description.captions[].confidence   | `number`  | İfadenin Güvenirlik puanı.
+description.captions[].text    | `string`    | Görüntüyü açıklayan bir ifadedir.
+description.captions[].confidence    | `number`    | İfadenin Güvenirlik puanı.
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Etki alanına özgü modellerin JSON çıkışını alma ve anlama
 
@@ -239,12 +239,12 @@ Seçenek 2 (gelişmiş analiz) kullanan alana özgü modeller için, aşağıdak
 
 Kategoriler alanı, orijinal taksonominin bir veya daha fazla [86 kategorisinin](../Category-Taxonomy.md) listesidir. Alt çizgi ile biten Kategoriler, bu kategori ve alt öğeleri ile eşleşir (örneğin, "people_" veya "people_group," Ünlüler modeli için).
 
-Alan   | Tür  | İçerik
+Alan    | Tür    | İçerik
 ------|------|------|
-kategoriler | `object`   | Üst düzey nesne.
-categories[].name    | `string` | 86-kategori taksonomi listesindeki addır.
-categories[].score  | `number`  | Güvenirlik puanı, 0 ile 1 arasındadır.
-categories[].detail  | `object?`      | Seçim Ayrıntı nesnesi.
+kategoriler | `object`    | Üst düzey nesne.
+categories[].name     | `string`    | 86-kategori taksonomi listesindeki addır.
+categories[].score    | `number`    | Güvenirlik puanı, 0 ile 1 arasındadır.
+categories[].detail     | `object?`      | Seçim Ayrıntı nesnesi.
 
 Birden çok kategori eşleşiyorsa (örneğin, 86 kategori Sınıflandırıcısı hem "people_" hem de "people_young" için bir puan döndürürse, model = ünlüler), ayrıntılar en genel düzey eşleştirmeye (Bu örnekte "people_,") eklenir.
 

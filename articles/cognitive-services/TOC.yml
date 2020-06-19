@@ -9,8 +9,6 @@
       href: cognitive-services-and-machine-learning.md
     - name: Bilişsel Hizmetler’e yönelik özel alt etki alanları
       href: cognitive-services-custom-subdomains.md
-    - name: Bilişsel Hizmetler’i sınırlama işlemi
-      href: cognitive-services-gating-process.md
     - name: Dil desteği
       href: language-support.md
 - name: Hızlı Başlangıçlar
@@ -21,6 +19,13 @@
       href: cognitive-services-apis-create-account-cli.md
     - name: Tanılama günlüğüne kaydetme
       href: diagnostic-logging.md
+    - name: ARM şablonu
+      displayName: Resource Manager
+      href: resource-manager-template.md
+- name: Örnekler
+  items:
+    - name: Azure İlkesi yerleşik ilkeler
+      href: ./policy-samples.md
 - name: Güvenlik
   items:
     - name: Bilişsel Hizmetler güvenliği

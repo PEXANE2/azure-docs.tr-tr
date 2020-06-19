@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 0962afb360df0ec6a414f676a2c280b3837c687d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2bd17e10e6123c48087116e947dc21f4cf788ef3
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403659"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987860"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Öğretici: kamera resimlerde Azure hizmet logolarını tanıma
 
@@ -28,7 +28,7 @@ Bu öğreticide şunları nasıl yapacağınızı gösterilecek:
 > - Uygulamanızı Azure Görüntü İşleme ve Özel Görüntü İşleme bağlayın.
 > - Uygulamadan Azure hizmetlerini dağıtmak için bir Azure hizmet sorumlusu hesabı oluşturun.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. 
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -131,7 +131,7 @@ Başarıyla tamamlandıktan sonra, gerekli kimlik bilgileri de dahil olmak üzer
 }
 ```
 
-`clientId` Ve `tenantId` değerlerini bir yere göz atın. Bunları *Source\visualprovision\appsettings.cs* dosyasındaki uygun alanlara ekleyin.
+Ve değerlerini bir yere göz atın `clientId` `tenantId` . Bunları *Source\visualprovision\appsettings.cs* dosyasındaki uygun alanlara ekleyin.
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_serviceprincipal)]
 
@@ -175,7 +175,7 @@ Uygulamayı çalıştırmak için aşağıdaki adımları izleyin:
 
 Bu senaryonun tüm adımlarını izlediyseniz ve Azure hizmetlerini hesabınıza dağıtmak için uygulamayı kullandıysanız, [Azure Portal](https://ms.portal.azure.com/)gidin. Burada, kullanmak istemediğiniz Hizmetleri iptal edin.
 
-Özel Görüntü İşleme ile kendi nesne algılama projenizi oluşturmayı planlıyorsanız, bu öğreticide oluşturduğunuz logo algılama projesini silmek isteyebilirsiniz. Özel Görüntü İşleme ücretsiz deneme sürümü yalnızca iki proje için izin verir. Logo algılama projesini silmek için, [özel görüntü işleme web sitesinde](https://customvision.ai) **Projeler** ' i açın ve **yeni projem**altında çöp kutusu simgesini seçin.
+Özel Görüntü İşleme ile kendi nesne algılama projenizi oluşturmayı planlıyorsanız, bu öğreticide oluşturduğunuz logo algılama projesini silmek isteyebilirsiniz. Özel Görüntü İşleme ücretsiz bir abonelik yalnızca iki proje için izin verir. Logo algılama projesini silmek için, [özel görüntü işleme web sitesinde](https://customvision.ai) **Projeler** ' i açın ve **yeni projem**altında çöp kutusu simgesini seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
