@@ -30,9 +30,9 @@
     - name: REST API'lerini kullanma
       items:
         - name: Amaç alma
-          href: luis-get-started-get-intent-from-rest.md
+          href: luis-get-started-rest-get-intent.md
         - name: Model değiştirme
-          href: get-started-get-model-rest-apis.md
+          href: luis-get-started-rest-get-model.md
 - name: Öğreticiler
   items:
     - name: Parçalanabilir uygulama oluşturma
@@ -226,6 +226,12 @@
           href: luis-migration-api-v3.md
         - name: V2 API’ye geçiş
           href: luis-migration-api-v1-to-v2.md
+    - name: REST API'lerini kullanma
+      items:
+        - name: Amaç alma
+          href: luis-get-started-get-intent-from-rest.md
+        - name: Model değiştirme
+          href: get-started-get-model-rest-apis.md
     - name: Kapsayıcıları kullanma
       items:
         - name: Kapsayıcıları yükleme ve çalıştırma

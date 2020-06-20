@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/08/2020
 ms.author: pafarley
-ms.openlocfilehash: c24f82d48a1452cdb272abca178a9ba924aacc20
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 0d8c498199d238f2414d4d9268cf466cd2d6b82d
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997591"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85112011"
 ---
 [Başvuru belgeleri](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer?view=azure-node-preview)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/ai-form-recognizer)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
 
@@ -22,7 +22,7 @@ ms.locfileid: "83997591"
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim veri kümesini birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları kullanabilirsiniz.
-* [Node. js](https://nodejs.org/) ' nin geçerli sürümü
+* [Node.js](https://nodejs.org/) geçerli sürümü
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -101,9 +101,9 @@ const apiKey = process.env["FORM_RECOGNIZER_KEY"] || "<api key>";
 Daha sonra tanımladığınız abonelik değişkenlerini kullanarak bir istemci nesnesinin kimliğini doğrulayın. Gerektiğinde, API anahtarını yeni istemci nesneleri oluşturmadan güncelleştirebilmeniz için bir **AzureKeyCredential** nesnesi kullanacaksınız. Ayrıca bir eğitim istemci nesnesi de oluşturacaksınız.
 
 ```javascript
-const client = new FormRecognizerClient(endpoint, new AzureKeyCredential(apiKey));
+const trainingClient = new FormTrainingClient(endpoint, new AzureKeyCredential(apiKey));
 
-const trainingClient = client.getFormTrainingClient();
+const client = new FormRecognizerClient(endpoint, new AzureKeyCredential(apiKey));
 ```
 
 ### <a name="call-client-specific-functions"></a>İstemciye özgü işlevleri çağırma
@@ -182,44 +182,37 @@ async function AnalyzeReceipt( client, receiptUri)
     const response = poller.getResult();
 
 
-    const usReceipt = response.receipts[0];
+    const receipt = receipts[0];
     console.log("First receipt:");
-    console.log(`Receipt type: ${usReceipt.receiptType}`);
-    console.log(
-        `Merchant Name: ${usReceipt.merchantName.value} (confidence: ${usReceipt.merchantName.confidence})`
-    );
-    console.log(
-        `Transaction Date: ${usReceipt.transactionDate.value} (confidence: ${usReceipt.transactionDate.confidence})`
-    );
-    console.log("Receipt items:");
-    console.log(`  name\tprice\tquantity\ttotalPrice`);
+    // For supported fields recognized by the service, please refer to https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult.
+    const receiptTypeField = receipt.recognizedForm.fields["ReceiptType"];
+    if (receiptTypeField.valueType === "string") {
+        console.log(`  Receipt Type: '${receiptTypeField.value || "<missing>"}', with confidence of ${receiptTypeField.confidence}`);
+    }
+    const merchantNameField = receipt.recognizedForm.fields["MerchantName"];
+    if (merchantNameField.valueType === "string") {
+        console.log(`  Merchant Name: '${merchantNameField.value || "<missing>"}', with confidence of ${merchantNameField.confidence}`);
+    }
+    const transactionDate = receipt.recognizedForm.fields["TransactionDate"];
+    if (transactionDate.valueType === "date") {
+        console.log(`  Transaction Date: '${transactionDate.value || "<missing>"}', with confidence of ${transactionDate.confidence}`);
+    }
 ```
 
 Sonraki kod bloğu, alış irsaliyesinde algılanan bireysel öğeler arasında yinelenir ve ayrıntılarını konsola yazdırır.
 
-```csharp
-    for (const item of usReceipt.items) {
-        const name = `${optionalToString(item.name.value)} (confidence: ${optionalToString(
-            item.name.confidence
-        )})`;
-        const price = `${optionalToString(item.price.value)} (confidence: ${optionalToString(
-            item.price.confidence
-        )})`;
-        const quantity = `${optionalToString(item.quantity.value)} (confidence: ${optionalToString(
-            item.quantity.confidence
-        )})`;
-        const totalPrice = `${optionalToString(item.totalPrice.value)} (confidence: ${optionalToString(
-            item.totalPrice.confidence
-        )})`;
-        console.log(`  ${name}\t${price}\t${quantity}\t${totalPrice}`);
-    }
-```
-
-Bu işlev bir yardımcı işlevi kullanır `optionalToString` . Bu işlevi betiğinizin kökünde tanımlayın:
-
 ```javascript
-function optionalToString(value) {
-  return `${value || "<missing>"}`;
+    const itemsField = receipt.recognizedForm.fields["Items"];
+    if (itemsField.valueType === "array") {
+        for (const itemField of itemsField.value || []) {
+            if (itemField.valueType === "object") {
+                const itemNameField = itemField.value["Name"];
+                if (itemNameField.valueType === "string") {
+                    console.log(`    Item Name: '${itemNameField.value || "<missing>"}', with confidence of ${itemNameField.confidence}`);
+                }
+            }
+        }
+    }
 }
 ```
 
@@ -254,15 +247,15 @@ async function TrainModel(trainingClient, trainingDataUrl)
     
     console.log(`Model ID: ${response.modelId}`);
     console.log(`Status: ${response.status}`);
-    console.log(`Created on: ${response.createdOn}`);
-    console.log(`Last modified: ${response.lastModified}`);
+    console.log(`Created on: ${response.requestedOn}`);
+    console.log(`Last modified: ${response.completedOn}`);
 ```
 
 Döndürülen **Customformmodel** nesnesi, modelin tanıyabileceği form türleri ve her form türünden ayıklayabileceği alanlar hakkında bilgiler içerir. Aşağıdaki kod bloğu bu bilgileri konsola yazdırır.
 
 ```javascript
-    if (response.models) {
-        for (const submodel of response.models) {
+    if (response.submodels) {
+        for (const submodel of response.submodels) {
             // since the training data is unlabeled, we are unable to return the accuracy of this model
             console.log("We have recognized the following fields");
             for (const key in submodel.fields) {
@@ -282,7 +275,7 @@ Son olarak, bu yöntem modelin benzersiz KIMLIĞINI döndürür.
 
 ### <a name="train-a-model-with-labels"></a>Etiketler içeren bir modeli eğitme
 
-Ayrıca, eğitim belgelerini el ile etiketleyerek özel modeller de eğitebilirsiniz. Etiketlerle eğitim, bazı senaryolarda daha iyi performansa yol açar. Etiketlerle eğitebilmeniz için, eğitim belgelerinin yanı sıra BLOB depolama kabınızda özel etiket bilgi dosyalarına (* \<filename\> . PDF. Labels. JSON*) sahip olmanız gerekir. [Form tanıyıcı örnek etiketleme aracı](../../quickstarts/label-tool.md) , bu etiket dosyalarını oluşturmanıza yardımcı olmak için bir kullanıcı arabirimi sağlar. Bunları aldıktan sonra, *uselabels* parametresi olarak ayarlanan **begineğitim** yöntemini çağırabilirsiniz `true` .
+Ayrıca, eğitim belgelerini el ile etiketleyerek özel modeller de eğitebilirsiniz. Etiketlerle eğitim, bazı senaryolarda daha iyi performansa yol açar. Etiketlerle eğitebilmeniz için, eğitim belgelerinin yanı sıra BLOB depolama kapsayıcıda özel etiket bilgi dosyalarına (* \<filename\>.pdf.labels.jsaçık*) sahip olmanız gerekir. [Form tanıyıcı örnek etiketleme aracı](../../quickstarts/label-tool.md) , bu etiket dosyalarını oluşturmanıza yardımcı olmak için bir kullanıcı arabirimi sağlar. Bunları aldıktan sonra, *uselabels* parametresi olarak ayarlanan **begineğitim** yöntemini çağırabilirsiniz `true` .
 
 ```javascript
 async function TrainModelWithLabelsAsync(
@@ -305,13 +298,13 @@ Bu bölümde, kendi formlarınız ile eğitilen modeller kullanılarak özel for
 > [!IMPORTANT]
 > Bu senaryoyu uygulamak için, KIMLIĞINI aşağıdaki yönteme geçirebilmeniz için zaten bir model eğitilmeniz gerekir. [Modeli eğitme](#train-a-model-without-labels) bölümüne bakın.
 
-**Beginrecognizeformsfromurl** metodunu kullanacaksınız. Döndürülen değer, gönderilen belgedeki her sayfa için bir tane olan **Recognizedform** nesnelerinin bir koleksiyonudur:
+**Beginrecognizecustomformsfromurl** metodunu kullanacaksınız. Döndürülen değer, gönderilen belgedeki her sayfa için bir tane olan **Recognizedform** nesnelerinin bir koleksiyonudur:
 
 ```javascript
 // Analyze PDF form document at an accessible URL
 async function AnalyzePdfForm(client, modelId, formUrl)
 {    
-    const poller = await client.beginRecognizeFormsFromUrl(modelId, formUrl, {
+    const poller = await client.beginRecognizeCustomFormsFromUrl(modelId, formUrl, {
         onProgress: (state) => {
             console.log(`status: ${state.status}`);
         }
@@ -351,7 +344,7 @@ Aşağıdaki kod bloğu, form tanıyıcı hesabınıza kaç modelin kaydedildiğ
     // First, we see how many custom models we have, and what our limit is
     const accountProperties = await trainingClient.getAccountProperties();
     console.log(
-        `Our account has ${accountProperties.count} custom models, and we can have at most ${accountProperties.limit} custom models`
+        `Our account has ${accountProperties.customModelCount} custom models, and we can have at most ${accountProperties.customModelLimit} custom models`
     );
 ```
 
@@ -361,7 +354,7 @@ Aşağıdaki kod bloğu, hesabınızdaki geçerli modelleri listeler ve ayrınt�
 
 ```javascript
     // Next, we get a paged async iterator of all of our custom models
-    const result = trainingClient.listModels();
+    const result = trainingClient.listCustomModels();
 
     // We could print out information about first ten models
     // and save the first model id for later use

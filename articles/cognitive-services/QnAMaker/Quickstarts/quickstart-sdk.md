@@ -2,19 +2,19 @@
 title: "Hızlı başlangıç: Bilgi Bankası oluşturmak ve yönetmek için SDK 'Yı kullanma-Soru-Cevap Oluşturma"
 description: Bu hızlı başlangıçta, istemci SDK 'sını kullanarak bilgi bankaınızı oluşturma ve yönetme işlemlerinin nasıl yapılacağı gösterilir.
 ms.topic: quickstart
-ms.date: 06/11/2020
+ms.date: 06/18/2020
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: f80e791435d4bf9093b07842430e678b93843311
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: f158fd0f9bfa6b2580e36b6588626afa05d1c19f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765156"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114560"
 ---
-# <a name="quickstart-qna-maker-client-library-for-net"></a>Hızlı başlangıç: .NET için Soru-Cevap Oluşturma istemci kitaplığı
+# <a name="quickstart-qna-maker-client-library"></a>Hızlı başlangıç: Soru-Cevap Oluşturma istemci kitaplığı
 
-.NET için Soru-Cevap Oluşturma istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
+Soru-Cevap Oluşturma istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Get intent with C# and REST](../includes/quickstart-sdk-csharp.md)]

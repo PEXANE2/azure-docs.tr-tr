@@ -953,6 +953,9 @@
                 - name: Sürüm
                   displayName: 'change, modify, update'
                   href: virtual-machines/windows/change-sql-server-edition.md
+                - name: Sürüm
+                  displayName: 'change, modify, update'
+                  href: virtual-machines/windows/change-sql-server-version.md
                 - name: Yedekleme ve geri yükleme için Azure Depolama
                   href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
             - name: Geçiş

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 05/07/2020
+ms.date: 06/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 1a2c5bfb2866e2cc28c013be60dbe791edeb9ac1
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: fafb16d1f8c37eab7ebaaeacb3a3e9b218347a04
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997598"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85112006"
 ---
 [Başvuru belgeleri](https://docs.microsoft.com/python/api/overview/azure/formrecognizer?view=azure-python-preview)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Paket (Pypı)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
@@ -58,7 +58,7 @@ key = os.environ["FORM_RECOGNIZER_KEY"]
 Python yükledikten sonra, ile istemci kitaplığını yükleyebilirsiniz:
 
 ```console
-pip install azure-ai-formrecognizer
+pip install azure_ai_formrecognizer
 ```
 
 <!-- 
@@ -161,14 +161,20 @@ poller = form_recognizer_client.begin_recognize_receipts_from_url(receiptUrl)
 receipts = poller.result()
 ```
 
-Döndürülen değer bir **Usmakbuz** nesneleri koleksiyonudur: gönderilen belgedeki her sayfa için bir tane. Aşağıdaki kod bloğu, temel alındı bilgilerini konsola yazdırır.
+Döndürülen değer, gönderilen belgedeki her sayfa için bir tane olan bir **Recognizedmakbuz** nesneleri koleksiyonudur: Aşağıdaki kod bloğu, temel alındı bilgilerini konsola yazdırır.
 
 ```python
 for idx, receipt in enumerate(receipts):
     print("--------Recognizing receipt #{}--------".format(idx))
-    print("Receipt Type: {} has confidence: {}".format(receipt.receipt_type.type, receipt.receipt_type.confidence))
-    print("Merchant Name: {} has confidence: {}".format(receipt.merchant_name.value, receipt.merchant_name.confidence))
-    print("Transaction Date: {} has confidence: {}".format(receipt.transaction_date.value, receipt.transaction_date.confidence))
+    receipt_type = receipt.fields.get("ReceiptType")
+    if receipt_type:
+        print("Receipt Type: {} has confidence: {}".format(receipt_type.value, receipt_type.confidence))
+    merchant_name = receipt.fields.get("MerchantName")
+    if merchant_name:
+        print("Merchant Name: {} has confidence: {}".format(merchant_name.value, merchant_name.confidence))
+    transaction_date = receipt.fields.get("TransactionDate")
+    if transaction_date:
+        print("Transaction Date: {} has confidence: {}".format(transaction_date.value, transaction_date.confidence))
 ```
 
 Sonraki kod bloğu, alış irsaliyesinde algılanan bireysel öğeler arasında yinelenir ve ayrıntılarını konsola yazdırır.
@@ -176,20 +182,37 @@ Sonraki kod bloğu, alış irsaliyesinde algılanan bireysel öğeler arasında 
 
 ```python
     print("Receipt items:")
-    for item in receipt.receipt_items:
-        print("...Item Name: {} has confidence: {}".format(item.name.value, item.name.confidence))
-        print("...Item Quantity: {} has confidence: {}".format(item.quantity.value, item.quantity.confidence))
-        print("...Individual Item Price: {} has confidence: {}".format(item.price.value, item.price.confidence))
-        print("...Total Item Price: {} has confidence: {}".format(item.total_price.value, item.total_price.confidence))
+    for idx, item in enumerate(receipt.fields.get("Items").value):
+        print("...Item #{}".format(idx))
+        item_name = item.value.get("Name")
+        if item_name:
+            print("......Item Name: {} has confidence: {}".format(item_name.value, item_name.confidence))
+        item_quantity = item.value.get("Quantity")
+        if item_quantity:
+            print("......Item Quantity: {} has confidence: {}".format(item_quantity.value, item_quantity.confidence))
+        item_price = item.value.get("Price")
+        if item_price:
+            print("......Individual Item Price: {} has confidence: {}".format(item_price.value, item_price.confidence))
+        item_total_price = item.value.get("TotalPrice")
+        if item_total_price:
+            print("......Total Item Price: {} has confidence: {}".format(item_total_price.value, item_total_price.confidence))
 ```
 
 Son olarak, kod bloğu, geri kalan ana makbuz ayrıntılarını yazdırır.
 
 ```python
-    print("Subtotal: {} has confidence: {}".format(receipt.subtotal.value, receipt.subtotal.confidence))
-    print("Tax: {} has confidence: {}".format(receipt.tax.value, receipt.tax.confidence))
-    print("Tip: {} has confidence: {}".format(receipt.tip.value, receipt.tip.confidence))
-    print("Total: {} has confidence: {}".format(receipt.total.value, receipt.total.confidence))
+    subtotal = receipt.fields.get("Subtotal")
+    if subtotal:
+        print("Subtotal: {} has confidence: {}".format(subtotal.value, subtotal.confidence))
+    tax = receipt.fields.get("Tax")
+    if tax:
+        print("Tax: {} has confidence: {}".format(tax.value, tax.confidence))
+    tip = receipt.fields.get("Tip")
+    if tip:
+        print("Tip: {} has confidence: {}".format(tip.value, tip.confidence))
+    total = receipt.fields.get("Total")
+    if total:
+        print("Total: {} has confidence: {}".format(total.value, total.confidence))
     print("--------------------------------------")
 ```
 
@@ -205,25 +228,25 @@ Bu bölümde, bir modelin kendi verilerinize nasıl eğulacağı gösterilmekted
 
 Eğitim belgelerini el ile etiketlemeden özel modellerinizde bulunan tüm alanları ve değerleri tanımak için özel modeller eğitme.
 
-Aşağıdaki kod, belirli bir belge kümesi üzerinde bir modeli eğitmek için **begin_train_model** işleviyle eğitim istemcisini kullanır.
+Aşağıdaki kod, belirli bir belge kümesi üzerinde bir modeli eğitmek için **begin_training** işleviyle eğitim istemcisini kullanır.
 
 ```python
-poller = form_training_client.begin_train_model(self.trainingDataUrl)
+poller = form_training_client.begin_training(self.trainingDataUrl, use_training_labels=False)
 model = poller.result()
 ```
 
-Döndürülen **Customformmodel** nesnesi, modelin tanıyabileceği form türleri ve her form türünden ayıklayabileceği alanlar hakkında bilgiler içerir. Aşağıdaki kod bloğu bu bilgileri konsola yazdırır.
+Döndürülen **Customformalt model** nesnesi, modelin tanıyabileceği form türleri ve her form türünden ayıklayabileceği alanlar hakkında bilgiler içerir. Aşağıdaki kod bloğu bu bilgileri konsola yazdırır.
 
 ```python
 # Custom model information
 print("Model ID: {}".format(model.model_id))
 print("Status: {}".format(model.status))
-print("Created on: {}".format(model.created_on))
-print("Last modified: {}".format(model.last_modified))
+print("Created on: {}".format(model.requested_on))
+print("Last modified: {}".format(model.completed_on))
 
 print("Recognized fields:")
 # Looping through the submodels, which contains the fields they were trained on
-for submodel in model.models:
+for submodel in model.submodels:
     print("...The submodel has form type '{}'".format(submodel.form_type))
     for name, field in submodel.fields.items():
         print("...The model found field '{}' to have label '{}'".format(
@@ -236,14 +259,14 @@ for submodel in model.models:
 Ayrıca, eğitim belgelerini el ile etiketleyerek özel modeller de eğitebilirsiniz. Etiketlerle eğitim, bazı senaryolarda daha iyi performansa yol açar. 
 
 > [!IMPORTANT]
-> Etiketlerle eğitebilmeniz için, eğitim belgelerinin yanı sıra BLOB depolama kabınızda özel etiket bilgi dosyalarına (* \<filename\> . PDF. Labels. JSON*) sahip olmanız gerekir. [Form tanıyıcı örnek etiketleme aracı](../../quickstarts/label-tool.md) , bu etiket dosyalarını oluşturmanıza yardımcı olmak için bir kullanıcı arabirimi sağlar. Bunu yaptıktan sonra, *use_labels* parametresi olarak ayarlanmış **begin_train_model** işlevini çağırabilirsiniz `true` .
+> Etiketlerle eğitebilmeniz için, eğitim belgelerinin yanı sıra BLOB depolama kapsayıcıda özel etiket bilgi dosyalarına (* \<filename\>.pdf.labels.jsaçık*) sahip olmanız gerekir. [Form tanıyıcı örnek etiketleme aracı](../../quickstarts/label-tool.md) , bu etiket dosyalarını oluşturmanıza yardımcı olmak için bir kullanıcı arabirimi sağlar. Bunu yaptıktan sonra, *use_training_labels* parametresi olarak ayarlanmış **begin_training** işlevini çağırabilirsiniz `true` .
 
 ```python
-poller = form_training_client.begin_train_model(self.trainingDataUrl, use_labels=True)
+poller = form_training_client.begin_training(self.trainingDataUrl, use_training_labels=True)
 model = poller.result()
 ```
 
-Döndürülen **Customformmodel** modeli, modelin ayıklayabileceğiniz alanları, her alandaki tahmini doğruluğunu gösterir. Aşağıdaki kod bloğu bu bilgileri konsola yazdırır.
+Döndürülen **Customformalt** modeli, her bir alanda bulunan tahmini doğrulukla birlikte modelin ayıklayabileceğiniz alanları gösterir. Aşağıdaki kod bloğu bu bilgileri konsola yazdırır.
 
 ```python
 # Custom model information
@@ -255,7 +278,7 @@ print("Last modified: {}".format(model.last_modified))
 print("Recognized fields:")
 # looping through the submodels, which contains the fields they were trained on
 # The labels are based on the ones you gave the training document.
-for submodel in model.models:
+for submodel in model.submodels:
     print("...The submodel with form type {} has accuracy '{}'".format(submodel.form_type, submodel.accuracy))
     for name, field in submodel.fields.items():
         print("...The model found field '{}' to have name '{}' with an accuracy of {}".format(
@@ -275,7 +298,7 @@ Bu bölümde, kendi formlarınız ile eğitilen modeller kullanılarak özel for
 ```python
 # Make sure your form's type is included in the list of form types the custom model can recognize
 poller = form_recognizer_client.begin_recognize_custom_forms_from_url(
-    model_id=model.model_id, url=formUrl)
+    model_id=model.model_id, form_url=formUrl)
 forms = poller.result()
 ```
 
@@ -325,7 +348,7 @@ Aşağıdaki kod bloğu, hesabınızdaki geçerli modelleri listeler ve ayrınt�
 
 ```python
 # Next, we get a paged list of all of our custom models
-custom_models = form_training_client.list_model_infos()
+custom_models = form_training_client.list_custom_models()
 
 print("We have models with the following ids:")
 
@@ -345,8 +368,8 @@ Aşağıdaki kod bloğu, önceki bölümden kaydedilen model KIMLIĞINI kullanı
 custom_model = form_training_client.get_custom_model(model_id=first_model.model_id)
 print("Model ID: {}".format(custom_model.model_id))
 print("Status: {}".format(custom_model.status))
-print("Created on: {}".format(custom_model.created_on))
-print("Last modified: {}".format(custom_model.last_modified))
+print("Created on: {}".format(custom_model.requested_on))
+print("Last modified: {}".format(custom_model.completed_on))
 ```
 
 ### <a name="delete-a-model-from-the-resource-account"></a>Kaynak hesabındaki bir modeli silme
