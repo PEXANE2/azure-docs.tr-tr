@@ -38,9 +38,11 @@
 - name: Örnekler
   items:
     - name: İlkeler
-      href: policy-samples.md
+      href: ./policies/index.md
     - name: Azure PowerShell
       href: powershell-samples.md
+    - name: Azure İlkesi yerleşik ilkeler
+      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Terminoloji
