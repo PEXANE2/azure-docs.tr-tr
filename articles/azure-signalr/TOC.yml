@@ -25,10 +25,6 @@
   items:
     - name: Kimlik doğrulama özelliklerine sahip sunucusuz gerçek zamanlı uygulama derleme
       href: signalr-tutorial-authenticate-azure-functions.md
-    - name: İzleme
-      items:
-        - name: SignalR Service'i izlemek için tanılama günlüklerini kullanma
-          href: signalr-tutorial-diagnostic-logs.md
 - name: Örnekler
   items:
     - name: Kod örnekleri
@@ -91,6 +87,12 @@
           href: signalr-concept-azure-functions.md
         - name: Event Grid tümleştirmesi
           href: signalr-howto-event-grid-integration.md
+    - name: İzleme
+      items:
+        - name: SignalR Service'i izlemek için tanılama günlüklerini kullanma
+          href: signalr-howto-diagnostic-logs.md
+        - name: Azure İlkesi kullanarak uyumluluğu denetleme
+          href: signalr-howto-azure-policy.md
 - name: Başvurular
   items:
     - name: Azure CLI
