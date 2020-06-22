@@ -51,6 +51,8 @@
           href: signalr-concept-serverless-development-config.md
         - name: Azure İşlevleri için SignalR Hizmeti bağlamaları başvurusu
           href: ../azure-functions/functions-bindings-signalr-service.md
+        - name: Yukarı akış ayarları
+          href: concept-upstream.md
     - name: Yüksek kullanılabilirlik
       items:
         - name: Dayanıklılık ve olağanüstü durum kurtarma
@@ -81,6 +83,8 @@
           href: howto-private-endpoints.md
         - name: Ağ erişim denetimini yönetme
           href: howto-network-access-control.md
+        - name: Yönetilen kimlik kullanma
+          href: howto-use-managed-identity.md
     - name: Tümleştirme
       items:
         - name: Azure İşlevleri bağlamaları

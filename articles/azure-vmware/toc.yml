@@ -36,6 +36,8 @@
       href: manage-dhcp.md
     - name: Olağanüstü durum kurtarma
       href: disaster-recovery.md
+    - name: AVS dağıtım veya sağlama hatalarıyla ilgili yardım alma
+      href: fix-deployment-provisioning-failures.md
     - name: AVS için Azure Backup Sunucusu
       items:
         - name: AVS için Azure Backup Sunucusu ayarlama

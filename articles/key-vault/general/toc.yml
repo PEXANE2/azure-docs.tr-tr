@@ -19,6 +19,10 @@
       items:
         - name: Azure Key Vault’u Kubernetes ile tümleştirme
           href: key-vault-integrate-kubernetes.md
+    - name: Azure Databricks
+      items:
+        - name: Azure Databricks ve Azure Key Vault'u kullanarak Azure Blob Depolama'ya erişme
+          href: integrate-databricks-blob-storage.md
     - name: Key Vault’u yönetilen kimlik ve .NET ile Web Uygulamasına bağlama
       href: tutorial-net-create-vault-azure-web-app.md
 - name: Örnekler
@@ -129,13 +133,13 @@
     - name: Azure CLI
       href: /cli/azure/keyvault
     - name: .NET
-      href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+      href: /dotnet/api/overview/azure/keyvault/management?view=azure-dotnet
     - name: Java
       href: /java/api/overview/azure/keyvault?view=azure-java-stable
     - name: Node.js
       href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
     - name: Python
-      href: /python/api/overview/azure/key-vault?view=azure-python
+      href: /python/api/overview/azure/keyvault/management?view=azure-python
     - name: REST
       href: /rest/api/keyvault
     - name: Resource Manager şablonu

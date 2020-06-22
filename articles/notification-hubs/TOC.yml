@@ -60,6 +60,12 @@
           href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
         - name: iOS cihazlara yerelleştirilmiş anında iletme bildirimleri gönderme
           href: notification-hubs-ios-xplat-localized-apns-push-notification.md
+    - name: Platformlar Arası
+      items:
+        - name: Arka uç hizmeti aracılığıyla anında iletme bildirimi gönderme
+          items:
+            - name: Xamarin.Forms
+              href: notification-hubs-backend-service-xamarin-forms.md
     - name: Windows Phone
       items:
         - name: Uygulamalara anında iletme bildirimleri gönderme

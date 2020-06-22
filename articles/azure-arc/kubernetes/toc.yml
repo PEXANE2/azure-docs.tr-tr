@@ -20,8 +20,8 @@
           href: use-gitops-with-helm.md
         - name: Azure İlkesi’ni kullanarak GitOps uygulama
           href: use-azure-policy.md
-        - name: Kapsayıcılar için Azure İzleyici
-          href: deploy-azure-monitor-for-containers.md
+        - name: Kapsayıcılar için Azure İzleyici ile izleme
+          href: ../../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md
         - name: Azure İlkesi kullanarak giriş denetimi ilkeleri
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: IoT iş yüklerini dağıtma

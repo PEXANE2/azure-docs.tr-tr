@@ -34,6 +34,8 @@
       href: create-certificate-scenarios.md
     - name: Sertifika oluşturma yöntemleri
       href: create-certificate.md
+    - name: Sertifika imzalama isteği oluşturma
+      href: create-certificate-signing-request.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Key Vault’u DigiCert CA ile tümleştirme

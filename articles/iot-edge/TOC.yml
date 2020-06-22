@@ -27,11 +27,11 @@
               href: tutorial-c-module.md
             - name: Windows cihazları için C modülleri
               href: tutorial-c-module-windows.md
-        - name: 'C#'
+        - name: C#
           items:
-            - name: 'Linux cihazları için C# modülleri'
+            - name: Linux cihazları için C# modülleri
               href: tutorial-csharp-module.md
-            - name: 'Windows cihazları için C# modülleri'
+            - name: Windows cihazları için C# modülleri
               href: tutorial-csharp-module-windows.md
         - name: Java
           href: tutorial-java-module.md
@@ -199,6 +199,12 @@
           href: how-to-store-data-blob.md
         - name: Blob depolama modüllerini dağıtma
           href: how-to-deploy-blob.md
+    - name: IoT Edge üzerine Uç Cihazlar için Azure SQL
+      items:
+        - name: Uç cihazlarda Azure SQL'i anlama
+          href: ../azure-sql-edge/overview.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
+        - name: Uç Cihazlar için Azure SQL modüllerini dağıtma
+          href: ../azure-sql-edge/deploy-portal.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
     - name: DevOps araçlarıyla yönetme
       items:
         - name: Azure DevOps Projeleri
@@ -238,12 +244,12 @@
     - name: Azure IoT SDK’ları
       items:
         - name: IoT Hizmet SDK’ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT Cihaz SDK'ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Azure IoT örnekleri
       items:
-        - name: 'C# (.NET)'
+        - name: C# (.NET)
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
         - name: Node.js
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'

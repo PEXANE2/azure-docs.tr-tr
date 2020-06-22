@@ -244,7 +244,7 @@
           href: troubleshoot-errors.md
         - name: Abonelik doğrulama sorunlarını giderme
           href: troubleshoot-subscription-validation.md
-        - name: Ölçümleri görüntüleme ve uyarıları ayarlama
+        - name: Ölçümleri görüntüleme ve uyarıları oluşturma
           href: monitor-event-delivery.md
 - name: Başvuru
   items:

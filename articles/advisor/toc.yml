@@ -10,7 +10,7 @@
       href: advisor-get-started.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Azure uygulamasının kullanılabilirliğini geliştirme
+    - name: Azure uygulamasının güvenilirliğini geliştirme
       href: advisor-high-availability-recommendations.md
     - name: Kaynakları daha güvenli hale getirme
       href: advisor-security-recommendations.md

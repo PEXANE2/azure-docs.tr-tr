@@ -18,6 +18,11 @@
     - name: Portal ve OBS ile canlı etkinlik
       displayName: 'live, event, portal, obs'
       href: live-events-obs-quickstart.md
+    - name: 'Portal kullanarak içeriği karşıya yükleme, kodlama ve akışını yapma'
+      href: manage-assets-quickstart.md
+    - name: Portal kullanarak içeriği şifreleme
+      displayName: 'protect, drm, aes'
+      href: encrypt-content-quickstart.md
 - name: Öğreticiler
   items:
     - name: Uzak dosyayı kodlama ve video akışı yapma
@@ -378,6 +383,8 @@
       href: /azure/templates/microsoft.media/allversions
     - name: Standart Kodlayıcı şemaları
       items:
+        - name: Giriş meta verileri
+          href: input-metadata-schema.md
         - name: Çıkış meta verileri
           href: output-metadata-schema.md
 - name: Kaynaklar

@@ -423,6 +423,8 @@
       href: /dotnet/api/microsoft.azure.devices.client
     - name: .NET (Hizmet)
       href: /dotnet/api/microsoft.azure.devices
+    - name: .NET (Yönetim)
+      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/iot/management'
     - name: Java (Cihaz)
       href: /java/api/com.microsoft.azure.sdk.iot.device
     - name: Java (Hizmet)
@@ -431,6 +433,14 @@
       href: 'https://docs.microsoft.com/javascript/api/azure-iot-device/'
     - name: Node.js (Hizmet)
       href: 'https://docs.microsoft.com/javascript/api/azure-iothub/'
+    - name: Node.js (Yönetim)
+      href: 'https://docs.microsoft.com/javascript/api/overview/azure/iothub/management'
+    - name: Python (Cihaz)
+      href: 'https://docs.microsoft.com/python/api/azure-iot-device'
+    - name: Python (Hizmet)
+      href: 'https://docs.microsoft.com/python/api/azure-iot-hub'
+    - name: Python (Yönetim)
+      href: 'https://docs.microsoft.com/python/api/azure-mgmt-iothub'
     - name: C cihaz SDK’sı
       href: 'https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/'
     - name: REST (Cihaz)

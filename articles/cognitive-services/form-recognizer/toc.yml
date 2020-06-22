@@ -60,7 +60,7 @@
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: Kapsayıcı örnekleri kullanma
           href: deploy-form-recognizer-on-container-instances.md
-    - name: Olağanüstü durum kurtarma için modelleri kopyalama
+    - name: Modelleri yedekleme ve kurtarma
       href: disaster-recovery.md
 - name: Başvuru
   items:

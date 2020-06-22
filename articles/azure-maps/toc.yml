@@ -91,6 +91,17 @@
           href: how-to-manage-account-keys.md
         - name: Kimlik doğrulamasını yönetme
           href: how-to-manage-authentication.md
+          items:
+            - name: Daemon uygulamasının güvenliğini sağlama
+              href: how-to-secure-daemon-app.md
+            - name: Tek sayfalı uygulamada etkileşimli oturum açma bilgilerinin güvenliğini sağlama
+              href: how-to-secure-spa-users.md
+            - name: Web uygulamasının güvenliğini sağlama
+              href: how-to-secure-webapp-users.md
+            - name: Tek sayfalı uygulamada etkileşimli olmayan oturum açma bilgilerinin güvenliğini sağlama
+              href: how-to-secure-spa-app.md
+            - name: Giriş kısıtlaması olan uygulamanın güvenliğini sağlama
+              href: how-to-secure-device-code.md
         - name: Fiyatlandırma katmanını yönetme
           href: how-to-manage-pricing-tier.md
         - name: Creator’u yönetme
@@ -318,9 +329,9 @@
     - name: Azure IoT SDK’ları
       items:
         - name: IoT Hizmet SDK’ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT Cihaz SDK'ları
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Azure Haritalar kullanım koşulları
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure Haritalar fiyatlandırması

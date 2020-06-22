@@ -26,8 +26,10 @@
       href: capacity-limits.md
     - name: Senaryolar
       items:
-        - name: Sınıfları yönetmek için laboratuvarları kullanma
+        - name: Sınıfları yönetmek Laboratuvar Servislerini kullanma
           href: classroom-labs-scenarios.md
+        - name: Hackathon için Laboratuvar Servislerini kullanma
+          href: hackathon-labs.md
         - name: Sınıf laboratuvarları - sınıf türleri
           items:
             - name: Sınıf türlerine genel bakış

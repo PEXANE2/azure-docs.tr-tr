@@ -34,6 +34,8 @@
       href: log-analytics-samples.md
 - name: Kavramlar
   items:
+    - name: Azure Güvenlik Duvarı özellikleri
+      href: features.md
     - name: FQDN etiketleri
       href: fqdn-tags.md
     - name: Altyapı FQDN'leri
