@@ -193,6 +193,8 @@
           items:
             - name: Yapılandırma seçenekleri
               href: concepts-hyperscale-configuration-options.md
+            - name: Ayrılmış kapasite için ön ödeme yapma
+              href: concepts-hyperscale-reserved-pricing.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Tek sunucu

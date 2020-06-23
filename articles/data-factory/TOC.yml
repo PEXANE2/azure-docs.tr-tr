@@ -194,30 +194,6 @@
               href: wrangling-data-flow-overview.md
             - name: Desteklenen işlevler
               href: wrangling-data-flow-functions.md
-    - name: Veri gölü ve EDW için veri geçişi
-      items:
-        - name: Neden Azure Data Factory?
-          href: data-migration-guidance-overview.md
-        - name: AWS S3'ten Azure'a verileri geçirme
-          href: data-migration-guidance-s3-azure-storage.md
-        - name: Şirket içi Hadoop kümesinden Azure’a veri geçirme
-          href: data-migration-guidance-hdfs-azure-storage.md
-        - name: Şirket içi Netezza sunucusundan Azure’a veri geçirme
-          href: data-migration-guidance-netezza-azure-sqldw.md
-    - name: Veri akışlarını eşlemeyi kullanarak dönüştürme
-      items:
-        - name: Sabit genişlikli metin dosyalarını işleme
-          href: how-to-fixed-width.md
-        - name: Hata satırı işleme
-          href: how-to-data-flow-error-rows.md
-        - name: Azure SQL DB’den CosmosDB’ye
-          href: how-to-sqldb-to-cosmosdb.md
-    - name: Şirket içinden SSIS’ye geçirme
-      items:
-        - name: SSIS geçişine genel bakış
-          href: scenario-ssis-migration-overview.md
-        - name: SSISDB’den Azure SQL Yönetilen Örnek’e geçirme
-          href: scenario-ssis-migration-ssisdb-mi.md
     - name: Roller ve izinler
       href: concepts-roles-permissions.md
     - name: Adlandırma kuralları
@@ -612,7 +588,7 @@
         - name: Tümleştirme çalışma zamanını izleme
           href: monitor-integration-runtime.md
         - name: Azure-SSIS tümleştirme çalışma zamanını izleme
-          href: 'monitor-integration-runtime.md#azure-ssis-integration-runtime'
+          href: monitor-integration-runtime.md#azure-ssis-integration-runtime
         - name: Azure-SSIS tümleştirmesi çalışma zamanını yeniden yapılandırma
           href: manage-azure-ssis-integration-runtime.md
         - name: Veri fabrikasını kopyalama
@@ -683,6 +659,32 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: Atlayan pencere tetikleyici bağımlılığı oluşturma
           href: tumbling-window-trigger-dependency.md
+    - name: Senaryolar
+      items:
+        - name: Veri gölü ve EDW için veri geçişi
+          items:
+            - name: Neden Azure Data Factory?
+              href: data-migration-guidance-overview.md
+            - name: AWS S3'ten Azure'a verileri geçirme
+              href: data-migration-guidance-s3-azure-storage.md
+            - name: Şirket içi Hadoop kümesinden Azure’a veri geçirme
+              href: data-migration-guidance-hdfs-azure-storage.md
+            - name: Şirket içi Netezza sunucusundan Azure’a veri geçirme
+              href: data-migration-guidance-netezza-azure-sqldw.md
+        - name: Veri akışlarını eşlemeyi kullanarak dönüştürme
+          items:
+            - name: Sabit genişlikli metin dosyalarını işleme
+              href: how-to-fixed-width.md
+            - name: Hata satırı işleme
+              href: how-to-data-flow-error-rows.md
+            - name: Azure SQL DB’den CosmosDB’ye
+              href: how-to-sqldb-to-cosmosdb.md
+        - name: Şirket içinden SSIS’ye geçirme
+          items:
+            - name: SSIS geçişine genel bakış
+              href: scenario-ssis-migration-overview.md
+            - name: SSISDB’den Azure SQL Yönetilen Örnek’e geçirme
+              href: scenario-ssis-migration-ssisdb-mi.md
     - name: Şablonlar
       items:
         - name: Şablonlara genel bakış
