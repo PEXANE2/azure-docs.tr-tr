@@ -240,6 +240,8 @@
       items:
         - name: Çizim paketi gereksinimleri
           href: drawing-requirements.md
+        - name: Dinamik haritalar StylesObject
+          href: schema-stateset-stylesobject.md
         - name: Araç kullanım modeli
           href: consumption-model.md
         - name: GeoJSON biçimini genişletme
