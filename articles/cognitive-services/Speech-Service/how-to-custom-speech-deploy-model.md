@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 9d48f09fe5d5c736f65b6a76211dd3fec85479ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7f03027abf7f3c5e330e5cd95075cce1152a7d9
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402190"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130424"
 ---
 # <a name="deploy-a-custom-model"></a>Özel bir modeli dağıtma
 
@@ -39,6 +39,8 @@ Uç noktanız dağıtıldıktan sonra, uç nokta adı bir bağlantı olarak gör
 ## <a name="view-logging-data"></a>Günlük verilerini görüntüleme
 
 Günlüğe kaydetme verileri, **uç nokta > ayrıntıları**altında indirilebilir.
+> [!NOTE]
+>Günlüğe kaydetme verileri Microsoft 'un sahip olduğu depolamada 30 gün boyunca kullanılabilir ve daha sonra kaldırılacaktır. Müşterinin sahip olduğu bir depolama hesabının bilişsel hizmetler aboneliğine bağlı olması durumunda günlüğe kaydetme verileri otomatik olarak silinmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
