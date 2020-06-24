@@ -11,22 +11,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/21/2020
+ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 81c14da762e0ff92305456aa89f06949c7039868
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 46b78ca6f385f62d265210b41e634bbbd9a2041c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629285"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262727"
 ---
-# <a name="enhanced-secure-score-preview-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde gelişmiş güvenli skor (Önizleme)
+# <a name="enhanced-secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde gelişmiş güvenli puan
 
 ## <a name="introduction-to-secure-score"></a>Güvenli puana giriş
 
 Azure Güvenlik Merkezi 'nin iki ana hedefi vardır: geçerli güvenlik durumunuzu anlamanıza ve güvenliği verimli ve etkili bir şekilde iyileştirmenize yardımcı olmak için. Güvenlik Merkezi 'nin bu hedeflere ulaşmanızı sağlayan merkezi bir yönü güvenli puanı.
 
-Güvenlik Merkezi, güvenlik sorunları için kaynaklarınızı, aboneliklerinizi ve kuruluşunuzu sürekli olarak değerlendirir. Daha sonra her türlü bulguları tek bir puanın içinde toplar, böylece bir bakışta geçerli güvenlik durumunuza göre daha yüksek puan, belirtilen risk düzeyini azaltır. Kuruluşunuzdaki güvenlik çalışmalarını ve projelerini izlemek için puanı kullanın. 
+Güvenlik Merkezi, güvenlik sorunları için kaynaklarınızı, aboneliklerinizi ve kuruluşunuzu sürekli olarak değerlendirir. Daha sonra her türlü bulguları tek bir puanın içinde toplar, böylece bir bakışta geçerli güvenlik durumunuza göre daha yüksek puan, belirtilen risk düzeyini azaltır.
 
 Güvenlik Merkezi 'nin güvenli skor sayfasında şunları içerir:
 
@@ -38,19 +38,32 @@ Güvenlik Merkezi 'nin güvenli skor sayfasında şunları içerir:
 
     Kuruluşunuzun her bir saldırı yüzeyini ne kadar iyi güvenlik altına almak için her güvenlik denetiminin puanlarını gözden geçirin.
 
-    Daha fazla bilgi için bkz. [güvenli Puanlama aşağıda nasıl hesaplanır](secure-score-security-controls.md#how-the-secure-score-is-calculated) . 
+    Daha fazla bilgi için bkz. [güvenli puanınızın aşağıda nasıl hesaplandığı](secure-score-security-controls.md#how-your-secure-score-is-calculated) . 
 
 
 >[!TIP]
 > Güvenlik Merkezi 'nin önceki sürümleri, öneri düzeyinde puan elde eder: tek bir kaynak için bir öneri belirlediğinizde, güvenli puanınız geliştirilmiştir. Bugün, skor yalnızca bir denetim içindeki tek bir kaynak için *Tüm* önerileri düzeltmenizi artırdıysanız gelişir. Bu nedenle, puanınız yalnızca bir kaynağın güvenliğini artırdığınızda geliştirilir.
-> Bu gelişmiş sürüm hala önizlemede olduğundan, önceki güvenli puan deneyimi Azure portalından bir seçenek olarak kullanılabilir. 
 
 
-## <a name="locating-your-secure-score"></a>Güvenli puanınızı bulma
+## <a name="accessing-your-secure-score"></a>Güvenli puanına erişme
 
-Güvenlik Merkezi puanınızı göze çarpacak şekilde görüntüler: Genel Bakış sayfasında gösterilen ilk şey. Adanmış güvenli puan sayfasına tıkladığınızda, puanı aboneliğe göre aşağı doğru görürsünüz. Önceliklendirilmiş önerilerin ayrıntılı listesini görmek için tek bir aboneliğe tıklayın ve bu bilgilerin, aboneliğin puanına ait olduğunu belirten olası etkileri görebilirsiniz.
+Azure Güvenlik Merkezi REST API ile Azure portal veya program aracılığıyla aracılığıyla genel güvenli puanınızın yanı sıra abonelik başına puanınızı bulabilirsiniz.
 
-## <a name="how-the-secure-score-is-calculated"></a>Güvenli puan nasıl hesaplanır 
+### <a name="getting-your-secure-score-from-the-portal"></a>Portaldan güvenli puanınızı alma
+
+Güvenlik Merkezi, puanınızı portalda göze çarpacak şekilde görüntüler: Genel Bakış sayfasında gösterilen ilk şey. Adanmış güvenli puan sayfasına tıkladığınızda, puanı aboneliğe göre aşağı doğru görürsünüz. Önceliklendirilmiş önerilerin ayrıntılı listesini görmek için tek bir aboneliğe tıklayın ve bu bilgilerin, aboneliğin puanına ait olduğunu belirten olası etkileri görebilirsiniz.
+
+![Portalda gösterildiği gibi genel güvenli puan](media/secure-score-security-controls/single-secure-score-via-ui.png)
+
+### <a name="getting-your-secure-score-from-the-rest-api"></a>REST API güvenli puanınızı alma
+
+Puanınızı [güvenli Puanlama API 'si](https://docs.microsoft.com/rest/api/securitycenter/securescores/) (Şu anda önizleme aşamasında) aracılığıyla erişebilirsiniz. API yöntemleri, verileri sorgulama ve zaman içinde güvenli Puanlarınızın kendi raporlama mekanizmanızı oluşturma esnekliğini sağlar. Örneğin, belirli bir aboneliğin Puanını almak için **güvenli puanlar** API 'sini kullanabilirsiniz. Ayrıca, güvenlik denetimlerini ve aboneliklerinizin geçerli Puanını listelemek için **güvenli puan denetimleri** API 'sini de kullanabilirsiniz.
+
+![API aracılığıyla tek bir güvenli puan alma](media/secure-score-security-controls/single-secure-score-via-api.png)
+
+Güvenli Puanlama API 'sinin üzerine inşa eden araçların örnekleri için bkz. [GitHub topluluğumuz güvenli Puanlama alanı](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score). 
+
+## <a name="how-your-secure-score-is-calculated"></a>Güvenli puanınızın hesaplanması 
 
 Her güvenlik denetiminin genel güvenli puana doğru katkısı, öneriler sayfasında net bir şekilde gösterilir.
 
@@ -71,7 +84,7 @@ Bu denetim için en yüksek puan, sistem güncelleştirmelerini Uygula, her zama
 
 ### <a name="calculations---understanding-your-score"></a>Hesaplamalar-puanınızı anlama
 
-|Metric|Formül ve örnek|
+|Ölçüm|Formül ve örnek|
 |-|-|
 |**Güvenlik denetiminin geçerli puanı**|<br>![Güvenlik denetiminin geçerli Puanını hesaplama denklemi](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Her bireysel güvenlik denetimi güvenlik puanına katkıda bulunur. Denetim içindeki bir öneriden etkilenen her kaynak, denetimin geçerli puanına doğru katkıda bulunur. Her denetim için geçerli *puan, denetimdeki kaynakların durumunun* ölçüsüdür.<br>![Güvenlik denetiminin geçerli puanı hesaplanırken kullanılan değerleri gösteren araç ipuçları](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>Bu örnekte, sağlıklı ve sağlıksız kaynakların toplamı olduğundan, 6 ' nın en fazla puanı 78 olarak bölünür.<br>6/78 = 0,0769<br>Sağlıklı kaynak sayısına (4) göre çarpılması geçerli puanın sonucunu elde ediyor:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Güvenlik puanı**<br>Tek abonelik|<br>![Geçerli güvenli puanı hesaplama denklemi](media/secure-score-security-controls/secure-score-equation.png)<br><br>![Tüm denetimler etkin olan tek abonelik güvenli puanı](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>Bu örnekte, kullanılabilen tüm güvenlik denetimlerine sahip tek bir abonelik vardır (en fazla 60 punto puanı). Puan, olası bir 60 28 noktayı gösterir ve kalan 32 noktaları, güvenlik denetimlerinin "potansiyel puan artışı" biçiminde yansıtılır.<br>![Denetimlerin listesi ve olası puan artışı](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
@@ -84,6 +97,7 @@ Güvenli puanınızı iyileştirmek için, öneriler listenizden güvenlik öner
 
 >[!IMPORTANT]
 > Yalnızca yerleşik önerilerin güvenli puanı üzerinde etkisi vardır.
+
 
 ## <a name="security-controls-and-their-recommendations"></a>Güvenlik denetimleri ve önerileri
 
@@ -110,7 +124,7 @@ Aşağıdaki tabloda, Azure Güvenlik Merkezi 'ndeki güvenlik denetimleri liste
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Sistem güncelleştirmelerini Uygula (en fazla 6 puan)</p></strong>Sistem güncelleştirmeleri, kuruluşlara operasyonel verimliliği koruma, güvenlik açıklarını azaltma ve son kullanıcılar için daha kararlı bir ortam sağlama olanağı sunar. Güncelleştirmelerin uygulanması, düzeltme eki yüklenmemiş güvenlik açıklarını ve saldırılara açık olan ortamlarda sonuçları bırakır. Bu güvenlik açıklarına yararlanılabilir ve veri kaybına, veri ayıklanmasına, fidye ve kaynak kötüye kullanılmasına yol açabilir. Sistem güncelleştirmelerini dağıtmak için, sanal makinelerinize yönelik <a href="https://docs.microsoft.com/azure/automation/automation-update-management">düzeltme eklerini ve güncelleştirmeleri yönetmek üzere güncelleştirme yönetimi çözümünü</a> kullanabilirsiniz. Güncelleştirme yönetimi, yazılım sürümlerinin dağıtımını ve bakımını denetleme işlemidir.</td>
-    <td class="tg-lboi"; width=55%>-İzleme Aracısı sistem durumu sorunları makinelerinizde çözümlenmelidir<br>-İzleme Aracısı sanal makine ölçek kümelerine yüklenmelidir<br>-İzleme Aracısı makinelerinizde yüklü olmalıdır<br>-Bulut hizmeti rolleriniz için işletim sistemi sürümü güncellenmelidir<br>-Sanal makine ölçek kümelerindeki sistem güncelleştirmeleri yüklenmelidir<br>-Sistem güncelleştirmelerinin makinelerinizde yüklü olması gerekir<br>-Sistem güncelleştirmelerinin uygulanabilmesi için makineleriniz yeniden başlatılmalıdır<br>-Kubernetes Hizmetleri, güvenlik açığı olmayan bir Kubernetes sürümüne yükseltilmelidir<br>-İzleme Aracısı sanal makinelerinizde yüklü olmalıdır</td>
+    <td class="tg-lboi"; width=55%>-İzleme Aracısı sistem durumu sorunları makinelerinizde çözümlenmelidir<br>-İzleme Aracısı sanal makine ölçek kümelerine yüklenmelidir<br>-İzleme Aracısı makinelerinizde yüklü olmalıdır<br>-Bulut hizmeti rolleriniz için işletim sistemi sürümü güncellenmelidir<br>-Sanal makine ölçek kümelerindeki sistem güncelleştirmeleri yüklenmelidir<br>-Sistem güncelleştirmelerinin makinelerinizde yüklü olması gerekir<br>-Sistem güncelleştirmelerinin uygulanabilmesi için makineleriniz yeniden başlatılmalıdır<br>-Kubernetes Hizmetleri, güvenlik açığı olmayan bir Kubernetes sürümüne yükseltilmelidir<br>-İzleme Aracısı sanal makinelerinizde yüklü olmalıdır<br>-Log Analytics Aracısı Windows tabanlı Azure Arc makinelerinizde yüklü olmalıdır (Önizleme)<br>-Log Analytics Aracısı, Linux tabanlı Azure yay makinelerinizde yüklü olmalıdır (Önizleme)</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Güvenlik açıklarını düzelt (en fazla 6 puan)</p></strong>Bir güvenlik açığı, bir tehdit aktörün bir kaynağın gizliliğini, kullanılabilirliğini veya bütünlüğünü tehlikeye atabilecek bir zayıflığa sahiptir. <a href="https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt">Güvenlik açıklarını yönetmek</a> kuruluş pozlamasını, Hardens uç nokta yüzey alanını azaltır, kurumsal esnekliği artırır ve kaynaklarınızın saldırı yüzeyini azaltır. Tehdit ve güvenlik açığı yönetimi, yazılım ve güvenlik yapılandırması hataları hakkında görünürlük sağlar ve azaltmaları için öneriler sağlar.</td>
@@ -130,7 +144,7 @@ Aşağıdaki tabloda, Azure Güvenlik Merkezi 'ndeki güvenlik denetimleri liste
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Güvenlik yapılandırmasını düzeltme (maks. puan 4)</p></strong>Yanlış yapılandırılmış BT varlıklarının saldırıya uğramakta olma riski daha yüksektir. Varlıklar dağıtıldığında ve son tarihler karşılanıyorsa, temel sağlamlaştırma eylemleri genellikle unutulur. Güvenlik yapılandırması hataları altyapıdaki herhangi bir düzeyde olabilir: işletim sistemleri ve ağ gereçlerden bulut kaynaklarına.<br>Azure Güvenlik Merkezi, kaynaklarınızın yapılandırmalarını endüstri standartları, yönetmelikler ve kıyaslamalar ile sürekli olarak karşılaştırır. Kuruluşunuza göre ilgili "uyumluluk paketlerini" (standartlar ve temeller) yapılandırdığınızda, tüm boşluklar CCEıD ve olası güvenlik etkisi hakkında bir açıklama içeren güvenlik önerilerine neden olur.<br>Yaygın olarak kullanılan paketler, <a href="https://docs.microsoft.com/azure/security/benchmarks/introduction">Azure Güvenlik kıyaslaması</a> ve <a href="https://www.cisecurity.org/benchmark/azure/">CIS Microsoft Azure temelleri kıyaslama sürümü 1.1.0</a></td>
-    <td class="tg-lboi"; width=55%>-Pod güvenlik Ilkeleri Kubernetes hizmetlerinde tanımlanmalıdır<br>-Kapsayıcı güvenlik yapılandırmalarında güvenlik açıkları düzeltilmelidir<br>-Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir<br>-Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir<br>-İzleme Aracısı sanal makinelerinizde yüklü olmalıdır<br>-İzleme Aracısı makinelerinizde yüklü olmalıdır<br>-İzleme Aracısı sanal makine ölçek kümelerine yüklenmelidir<br>-İzleme Aracısı sistem durumu sorunları makinelerinizde çözümlenmelidir</td>
+    <td class="tg-lboi"; width=55%>-Pod güvenlik Ilkeleri Kubernetes hizmetlerinde tanımlanmalıdır<br>-Kapsayıcı güvenlik yapılandırmalarında güvenlik açıkları düzeltilmelidir<br>-Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir<br>-Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir<br>-İzleme Aracısı sanal makinelerinizde yüklü olmalıdır<br>-İzleme Aracısı makinelerinizde yüklü olmalıdır<br>-Log Analytics Aracısı Windows tabanlı Azure Arc makinelerinizde yüklü olmalıdır (Önizleme)<br>-Log Analytics Aracısı, Linux tabanlı Azure yay makinelerinizde yüklü olmalıdır (Önizleme)<br>-İzleme Aracısı sanal makine ölçek kümelerine yüklenmelidir<br>-İzleme Aracısı sistem durumu sorunları makinelerinizde çözümlenmelidir</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Yetkisiz ağ erişimini kısıtla (maks. puan 4)</p></strong>Kuruluş içindeki uç noktalar, sanal ağınızdan desteklenen Azure hizmetlerine doğrudan bağlantı sağlar. Bir alt ağdaki sanal makineler tüm kaynaklarla iletişim kurabilir. Bir alt ağ içindeki kaynaklarla ve bu kaynaklardan gelen iletişimi sınırlandırmak için bir ağ güvenlik grubu oluşturun ve alt ağ ile ilişkilendirin. Kuruluşlar, gelen ve giden kurallar oluşturarak yetkisiz trafiğe karşı sınırlayabilir ve koruyabilir.</td>
@@ -138,7 +152,7 @@ Aşağıdaki tabloda, Azure Güvenlik Merkezi 'ndeki güvenlik denetimleri liste
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Uyarlamalı uygulama denetimi Uygula (en fazla skor 3)</p></strong>Uyarlamalı uygulama denetimi (AAC), Azure ve Azure dışı makinelerde hangi uygulamaların çalıştırılacağını denetlemenize olanak tanıyan akıllı, otomatik, uçtan uca bir çözümdür. Ayrıca makinelerinizi kötü amaçlı yazılımlara karşı sağlamlaştırmanıza de yardımcı olur.<br>Güvenlik Merkezi, bir makine grubu için bilinen güvenli uygulamaların beyaz bir listesini oluşturmak üzere makine öğrenimini kullanır.<br>Bu uygulama beyaz listesine yönelik yenilikçi yaklaşım, yönetim karmaşıklığı olmadan güvenlik avantajlarını sağlar.<br>AAC, özellikle belirli bir uygulama kümesini çalıştırması gereken amaç oluşturulmuş sunucular için geçerlidir.</td>
-    <td class="tg-lboi"; width=55%>-Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir<br>-İzleme Aracısı sanal makinelerinizde yüklü olmalıdır<br>-İzleme Aracısı makinelerinizde yüklü olmalıdır<br>-İzleme Aracısı sistem durumu sorunları makinelerinizde çözümlenmelidir</td>
+    <td class="tg-lboi"; width=55%>-Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir<br>-İzleme Aracısı sanal makinelerinizde yüklü olmalıdır<br>-İzleme Aracısı makinelerinizde yüklü olmalıdır<br>-Log Analytics Aracısı Windows tabanlı Azure Arc makinelerinizde yüklü olmalıdır (Önizleme)<br>-Log Analytics Aracısı, Linux tabanlı Azure yay makinelerinizde yüklü olmalıdır (Önizleme)<br>-İzleme Aracısı sistem durumu sorunları makinelerinizde çözümlenmelidir</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Veri sınıflandırması Uygula (maks. puan 2)</p></strong>Kuruluşunuzun verilerini duyarlığa göre sınıflandırın ve iş etkisi, verilere değer belirlemenize ve bu verileri atamanıza olanak tanır ve idare için strateji ve temel sağlar.<br><a href="https://docs.microsoft.com/azure/information-protection/what-is-information-protection">Azure Information Protection</a> , veri sınıflandırmasına yardımcı olabilir. Verileri korumak ve veri erişimini kısıtlamak için şifreleme, kimlik ve yetkilendirme ilkelerini kullanır. Microsoft tarafından kullanılan bazı sınıflandırmalar iş dışı, genel, genel, gizli ve çok gizli.</td>
@@ -150,7 +164,7 @@ Aşağıdaki tabloda, Azure Güvenlik Merkezi 'ndeki güvenlik denetimleri liste
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Endpoint Protection 'ı etkinleştir (en fazla puan 2)</p></strong>Uç noktalarınızın kötü amaçlı yazılımlardan korunmasını sağlamak için, davranış algılayıcıları, uç noktalarınızın işletim sistemlerinden veri toplayıp işleyin ve bu verileri analiz için özel buluta gönderir. Güvenlik analizi, tehditlere yönelik yanıtları önermek için büyük veri, makine öğrenimi ve diğer kaynaklardan faydalanır. Örneğin, <a href="https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection">Microsoft Defender ATP</a> , saldırı bilgilerini belirlemek ve güvenlik uyarıları oluşturmak için tehdit zekasını kullanır.<br>Güvenlik Merkezi aşağıdaki Endpoint Protection çözümlerini destekler: Windows Defender, System Center Endpoint Protection, Trend Micro, Symantec v 12.1.1.1100, Windows için McAfee ile v10 arasındaki, Linux için McAfee ile v10 arasındaki ve Linux için Sophos v9. Güvenlik Merkezi bu çözümlerin herhangi birini algılarsa, Endpoint Protection 'ı yüklemenin önerisi artık görünmez.</td>
-    <td class="tg-lboi"; width=55%>-Endpoint Protection sistem durumu hatalarının sanal makine ölçek kümelerinde düzeltilmelidir<br>-Endpoint Protection sistem durumu sorunları makinelerinizde çözümlenmelidir<br>-Uç nokta koruma çözümü, sanal makine ölçek kümelerine yüklenmelidir<br>-Uç nokta koruma çözümünü sanal makinelere yükler<br>-İzleme Aracısı sistem durumu sorunları makinelerinizde çözümlenmelidir<br>-İzleme Aracısı sanal makine ölçek kümelerine yüklenmelidir<br>-İzleme Aracısı makinelerinizde yüklü olmalıdır<br>-İzleme Aracısı sanal makinelerinizde yüklü olmalıdır<br>-Makinelerinize Endpoint Protection çözümünü yükler</td>
+    <td class="tg-lboi"; width=55%>-Endpoint Protection sistem durumu hatalarının sanal makine ölçek kümelerinde düzeltilmelidir<br>-Endpoint Protection sistem durumu sorunları makinelerinizde çözümlenmelidir<br>-Uç nokta koruma çözümü, sanal makine ölçek kümelerine yüklenmelidir<br>-Uç nokta koruma çözümünü sanal makinelere yükler<br>-İzleme Aracısı sistem durumu sorunları makinelerinizde çözümlenmelidir<br>-İzleme Aracısı sanal makine ölçek kümelerine yüklenmelidir<br>-İzleme Aracısı makinelerinizde yüklü olmalıdır<br>-İzleme Aracısı sanal makinelerinizde yüklü olmalıdır<br>-Log Analytics Aracısı Windows tabanlı Azure Arc makinelerinizde yüklü olmalıdır (Önizleme)<br>-Log Analytics Aracısı, Linux tabanlı Azure yay makinelerinizde yüklü olmalıdır (Önizleme)<br>-Makinelerinize Endpoint Protection çözümünü yükler</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Denetim ve günlüğü etkinleştir (en fazla puan 1)</p></strong>Günlüğe kaydetme verileri, geçmiş sorunlara yönelik öngörüler sağlar, olası olanları önler, uygulama performansını iyileştirebilir ve aksi takdirde el ile gerçekleştirilen eylemleri otomatikleştirebilme yeteneği sağlar.<br>- <strong>Denetim ve yönetim günlükleri</strong> <a href="https://docs.microsoft.com/azure/azure-resource-manager/management/overview">Azure Resource Manager</a> işlemler hakkında bilgi sağlar.<br>- <strong>Veri düzlemi günlükleri</strong> , Azure Kaynak kullanımının bir parçası olarak oluşturulan olaylar hakkında bilgi sağlar.<br>- <strong>İşlenen olaylar</strong> , işlenmiş olan çözümlenen olaylar/uyarılar hakkında bilgi sağlar.</td>
@@ -158,7 +172,7 @@ Aşağıdaki tabloda, Azure Güvenlik Merkezi 'ndeki güvenlik denetimleri liste
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">En iyi güvenlik uygulamalarını uygulayın (en fazla puan 0)</p></strong>Modern güvenlik uygulamaları, ağ çevre ' ün ihlal olduğunu varsayar. Bu nedenle, bu denetimdeki en iyi uygulamalardan birçoğu kimlikleri yönetmeye odaklanmaktadır.<br>Anahtar ve kimlik bilgilerinin kaybolması yaygın bir sorundur. Anahtarları,. pfx dosyalarını ve parolaları şifreleyerek anahtarları ve gizli dizileri <a href="https://docs.microsoft.com/azure/key-vault/key-vault-overview">Azure Key Vault</a> korur.<br>Sanal özel ağlar (VPN 'Ler), sanal makinelerinize erişmenin güvenli bir yoludur. VPN 'Ler kullanılamıyorsa, karmaşık parola ve <a href="https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks">Azure Multi-Factor Authentication</a>gibi iki öğeli kimlik doğrulaması kullanın. İki öğeli kimlik doğrulaması, yalnızca Kullanıcı adları ve parolalara bağlı olan zayıf yanları önler.<br>Güçlü kimlik doğrulama ve yetkilendirme platformlarının kullanılması, başka bir en iyi uygulamadır. Federal kimliklerin kullanılması, kuruluşların yetkili kimliklerin yönetimini temsilciliğini sağlar. Bu, çalışanlar sonlandırıldığı ve erişiminin iptal edilmesi gereken durumlarda da önemlidir.</td>
-    <td class="tg-lboi"; width=55%>-Aboneliğiniz için en fazla 3 sahip belirtilmelidir<br>-Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir<br>-MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir<br>-Güvenlik Duvarı ve sanal ağ yapılandırmalarına sahip depolama hesaplarına erişim kısıtlı olmalıdır<br>-RootManageSharedAccessKey hariç tüm yetkilendirme kuralları, Olay Hub 'ı ad alanından kaldırılmalıdır<br>-SQL sunucuları için bir Azure Active Directory Yöneticisi sağlanmalıdır<br>-Olay Hub 'ı örneğindeki yetkilendirme kuralları tanımlanmalıdır<br>-Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir<br>-Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir<br>-SQL veritabanı için gelişmiş veri güvenliği ayarları, güvenlik uyarılarını almak için bir e-posta adresi içermelidir<br>-Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir<br>-SQL yönetilen örnek gelişmiş veri güvenliği ayarları 'nda tüm gelişmiş tehdit koruması türleri etkinleştirilmelidir<br>-SQL Server Gelişmiş veri güvenliği ayarları 'nda Yöneticiler ve abonelik sahiplerine e-posta bildirimleri etkinleştirilmelidir<br>-Gelişmiş tehdit koruması türleri SQL Server Gelişmiş veri güvenliği ayarları 'nda ' tümü ' olarak ayarlanmalıdır<br>-Alt ağlar bir ağ güvenlik grubuyla ilişkilendirilmelidir<br>-Sunucunuzun SQL veritabanı gelişmiş veri güvenliği ayarlarındaki tüm gelişmiş tehdit koruması türleri etkinleştirilmelidir<br>-Önizle Windows Exploit Guard etkinleştirilmelidir <br>-Önizle Konuk yapılandırma aracısının yüklü olması gerekir</td>
+    <td class="tg-lboi"; width=55%>-Aboneliğiniz için en fazla 3 sahip belirtilmelidir<br>-Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir<br>-MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir<br>-Güvenlik Duvarı ve sanal ağ yapılandırmalarına sahip depolama hesaplarına erişim kısıtlı olmalıdır<br>-RootManageSharedAccessKey hariç tüm yetkilendirme kuralları, Olay Hub 'ı ad alanından kaldırılmalıdır<br>-SQL sunucuları için bir Azure Active Directory Yöneticisi sağlanmalıdır<br>-Olay Hub 'ı örneğindeki yetkilendirme kuralları tanımlanmalıdır<br>-Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir<br>-Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir<br>-SQL veritabanı için gelişmiş veri güvenliği ayarları, güvenlik uyarılarını almak için bir e-posta adresi içermelidir<br>-Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir<br>-SQL yönetilen örnek gelişmiş veri güvenliği ayarları 'nda tüm gelişmiş tehdit koruması türleri etkinleştirilmelidir<br>-SQL Server Gelişmiş veri güvenliği ayarları 'nda Yöneticiler ve abonelik sahiplerine e-posta bildirimleri etkinleştirilmelidir<br>-Gelişmiş tehdit koruması türleri SQL Server Gelişmiş veri güvenliği ayarları 'nda ' tümü ' olarak ayarlanmalıdır<br>-Alt ağlar bir ağ güvenlik grubuyla ilişkilendirilmelidir<br>-Sunucunuzun SQL veritabanı gelişmiş veri güvenliği ayarlarındaki tüm gelişmiş tehdit koruması türleri etkinleştirilmelidir<br>-Önizle Windows Exploit Guard etkinleştirilmelidir <br>-Önizle Konuk yapılandırma aracısının yüklü olması gerekir<br>-İnternet 'e yönelik olmayan sanal makineler ağ güvenlik gruplarıyla korunmalıdır</td>
   </tr>
 </tbody>
 </table>
@@ -172,13 +186,13 @@ Aşağıdaki tabloda, Azure Güvenlik Merkezi 'ndeki güvenlik denetimleri liste
 ## <a name="secure-score-faq"></a>Güvenli puan SSS
 
 ### <a name="why-has-my-secure-score-gone-down"></a>Neden güvenli puanım çalışmıyor?
-Güvenlik Merkezi, puanın hesaplandığı şekilde değişiklikler içeren gelişmiş bir güvenli puana (Şu anda önizleme durumunda) geçti. Şimdi, bir kaynağın noktaları almasını sağlamak için tüm önerisi çözmeniz gerekir. Puanlar Ayrıca 0-10 ölçeğine de dönüştürülür.
+Güvenlik Merkezi, puanın hesaplandığı şekilde değişiklikler içeren gelişmiş bir güvenli puana geçti. Şimdi, bir kaynağın noktaları almasını sağlamak için tüm önerisi çözmeniz gerekir. Puanlar Ayrıca 0-10 ölçeğine de dönüştürülür.
 
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>Bir güvenlik denetimindeki dört önerimin yalnızca üç tanesi ele alıyorsa, güvenli puanımı değişmem gerekir mi?
 Hayır. Tek bir kaynağın tüm önerilerini düzeltene kadar değişmez. Bir denetim için en fazla puanı almak üzere tüm kaynaklar için tüm önerileri düzeltmeniz gerekir.
 
 ### <a name="is-the-previous-experience-of-the-secure-score-still-available"></a>Güvenli puanın önceki deneyimi hala kullanılabilir mi? 
-Evet. Bir süre boyunca geçişi kolaylaştırmak için yan yana çalışır. Önceki modelin zaman içinde kullanıma hazır olmasını bekler. 
+Hayır. Geçişi kolaylaştırmak için yan yana çalışır. Önceki model artık kullanım dışıdır. 
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>Öneri bana uygulanabilir değilse ve ilkede devre dışı bıraktıktan sonra güvenlik denetimin yerine getirilmesi ve güvenli puanım güncellenmem gerekir mi?
 Evet. Ortamınızda uygulandıklarında önerilerin devre dışı bırakılmasını öneririz. Belirli bir öneriyi devre dışı bırakma hakkında yönergeler için bkz. [güvenlik Ilkelerini devre dışı bırakma](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies).

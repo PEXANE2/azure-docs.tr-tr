@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d848b92da5d4181832adff8499b3531d020c30c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e31560126919e4c61b176a6eaa62ee7f9b4a624
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78155442"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85112046"
 ---
 Geçici işletim sistemi diskleri, yerel sanal makine (VM) depolama alanı üzerinde oluşturulur ve uzak Azure depolama 'ya kaydedilmez. Kısa ömürlü işletim sistemi diskleri, uygulamaların tek tek VM hatalarından dayanıklı olduğu, ancak VM dağıtım zamanından daha fazla etkilediği veya tek tek sanal makine örneklerinin yeniden oluşturulduğu durum bilgisiz iş yükleri için iyi çalışır. Kısa ömürlü IŞLETIM sistemi diski ile işletim sistemi diskine daha hızlı okuma/yazma gecikme süresi ve daha hızlı VM yeniden görüntüsü alırsınız. 
  
@@ -44,19 +44,22 @@ Kalıcı ve kısa ömürlü işletim sistemi diskleri arasındaki önemli farkl�
 
 ## <a name="size-requirements"></a>Boyut gereksinimleri
 
-VM ve örnek görüntülerini VM önbelleğinin boyutuna kadar dağıtabilirsiniz. Örneğin, marketten standart Windows Server görüntüleri 127 GiB hakkında, bu da 127 GiB 'den daha büyük bir önbelleğe sahip bir VM boyutuna ihtiyacınız olduğu anlamına gelir. Bu durumda [Standard_DS2_v2](~/articles/virtual-machines/dv2-dsv2-series.md) , yeterince büyük olmayan 86 gib önbellek boyutuna sahiptir. Standard_DS3_v2, yeterince büyük olan 172 GiB önbellek boyutuna sahiptir. Bu durumda Standard_DS3_v2, bu görüntüyle kullanabileceğiniz DSv2 serisinde en küçük boyutdir. Market ve Windows Server görüntülerinde, tarafından `[smallsize]` belirtilen temel Linux görüntüleri 30 gib etrafında olur ve kullanılabilir VM boyutlarının çoğunu kullanabilir.
+VM ve örnek görüntülerini VM önbelleğinin boyutuna kadar dağıtabilirsiniz. Örneğin, marketten standart Windows Server görüntüleri 127 GiB hakkında, bu da 127 GiB 'den daha büyük bir önbelleğe sahip bir VM boyutuna ihtiyacınız olduğu anlamına gelir. Bu durumda [Standard_DS2_v2](~/articles/virtual-machines/dv2-dsv2-series.md) , yeterince büyük olmayan 86 gib önbellek boyutuna sahiptir. Standard_DS3_v2, yeterince büyük olan 172 GiB önbellek boyutuna sahiptir. Bu durumda Standard_DS3_v2, bu görüntüyle kullanabileceğiniz DSv2 serisinde en küçük boyutdir. Market ve Windows Server görüntülerinde, tarafından belirtilen temel Linux görüntüleri `[smallsize]` 30 GiB etrafında olur ve KULLANILABILIR VM boyutlarının çoğunu kullanabilir.
 
-Kısa ömürlü diskler Ayrıca, VM boyutunun Premium depolamayı desteklemesini gerektirir. Boyutlar genellikle (her zaman değil), DSv2 ve `s` EsV3 gibi bir ada sahiptir. Daha fazla bilgi için bkz. [Azure VM boyutları](../articles/virtual-machines/linux/sizes.md) , hangi boyutlarda Premium depolamayı destekledikleri hakkındaki ayrıntılar için.
+Kısa ömürlü diskler Ayrıca, VM boyutunun Premium depolamayı desteklemesini gerektirir. Boyutlar genellikle (her zaman değil) `s` , DSv2 ve EsV3 gibi bir ada sahiptir. Daha fazla bilgi için bkz. [Azure VM boyutları](../articles/virtual-machines/linux/sizes.md) , hangi boyutlarda Premium depolamayı destekledikleri hakkındaki ayrıntılar için.
+
+## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>Önizleme-kısa ömürlü işletim sistemi diskleri artık geçici disklere depolanabilir
+Kısa ömürlü işletim sistemi diskleri artık VM önbelleğine ek olarak VM geçici/kaynak diskine depolanabilir. Bu nedenle, artık önbelleğe sahip olmayan veya önbelleği olmayan, ancak Dav3, Dav4, Eav4 ve Eav3 gibi kısa ömürlü işletim sistemi diskini depolamak için bir geçici/kaynak diskine sahip olan VM ile kısa ömürlü işletim sistemi diskleri kullanabilirsiniz. Bir VM 'de yeterli önbellek ve geçici alan varsa, Ayrıca, [Dağıtılmış Diskyerleştirmesi](https://docs.microsoft.com/rest/api/compute/virtualmachines/list#diffdiskplacement)adlı yeni bir özellik kullanarak kısa ömürlü Işletim sistemi diskini nerede depolamak istediğinizi de belirtebilirsiniz. Bu özellik şu anda önizleme sürümündedir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Başlamak için [erişim isteyin](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u).
 
 ## <a name="powershell"></a>PowerShell
 
-PowerShell VM dağıtımı için kısa ömürlü bir disk kullanmak istiyorsanız, VM yapılandırmanızda [set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) ' i kullanın. ' İ ve ' `-Caching` olarak ayarlayın `ReadOnly` `-DiffDiskSetting` `Local`     
+PowerShell VM dağıtımı için kısa ömürlü bir disk kullanmak istiyorsanız, VM yapılandırmanızda [set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) ' i kullanın. `-DiffDiskSetting` `Local` ' İ ve ' olarak ayarlayın `-Caching` `ReadOnly` .     
 
 ```powershell
 Set-AzVMOSDisk -DiffDiskSetting Local -Caching ReadOnly
 ```
 
-Ölçek kümesi dağıtımları için, yapılandırmanızda [set-AzVmssStorageProfile](/powershell/module/az.compute/set-azvmssstorageprofile) cmdlet 'ini kullanın. ' İ ve ' `-Caching` olarak ayarlayın `ReadOnly` `-DiffDiskSetting` `Local`
+Ölçek kümesi dağıtımları için, yapılandırmanızda [set-AzVmssStorageProfile](/powershell/module/az.compute/set-azvmssstorageprofile) cmdlet 'ini kullanın. `-DiffDiskSetting` `Local` ' İ ve ' olarak ayarlayın `-Caching` `ReadOnly` .
 
 
 ```powershell
@@ -65,7 +68,7 @@ Set-AzVmssStorageProfile -DiffDiskSetting Local -OsDiskCaching ReadOnly
 
 ## <a name="cli"></a>CLI
 
-CLı VM dağıtımı için kısa ömürlü bir disk kullanmak `--ephemeral-os-disk` istiyorsanız, [az VM Create](/cli/azure/vm#az-vm-create) olarak parametresini `true` ve `--os-disk-caching` parametresini olarak `ReadOnly`ayarlayın.
+CLı VM dağıtımı için kısa ömürlü bir disk kullanmak istiyorsanız, `--ephemeral-os-disk` [az VM Create](/cli/azure/vm#az-vm-create) olarak parametresini `true` ve `--os-disk-caching` parametresini olarak ayarlayın `ReadOnly` .
 
 ```azurecli-interactive
 az vm create \
@@ -78,7 +81,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Ölçek Kümeleri için, `--ephemeral-os-disk true` [az-VMSS-Create](/cli/azure/vmss#az-vmss-create) parametresini kullanın ve `--os-disk-caching` parametresini olarak `ReadOnly`ayarlayın.
+Ölçek Kümeleri için, `--ephemeral-os-disk true` [az-VMSS-Create](/cli/azure/vmss#az-vmss-create) parametresini kullanın ve `--os-disk-caching` parametresini olarak ayarlayın `ReadOnly` .
 
 ## <a name="portal"></a>Portal   
 
@@ -93,7 +96,7 @@ Ayrıca, Portal 'ı kullanarak kısa ömürlü işletim sistemi diskleri ile öl
 ![Ölçek kümesi için kısa ömürlü bir işletim sistemi diski kullanmayı seçme radyo düğmesini gösteren ekran görüntüsü](./media/virtual-machines-common-ephemeral/scale-set.png)
 
 ## <a name="scale-set-template-deployment"></a>Ölçek kümesi şablonu dağıtımı  
-Kısa ömürlü işletim sistemi diski kullanan bir ölçek kümesi oluşturma işlemi, `diffDiskSettings` özelliği şablondaki `Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` kaynak türüne eklemektir. Ayrıca, önbelleğe alma ilkesi, kısa ömürlü işletim `ReadOnly` sistemi diski için olarak ayarlanmalıdır. 
+Kısa ömürlü işletim sistemi diski kullanan bir ölçek kümesi oluşturma işlemi, `diffDiskSettings` özelliği `Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` şablondaki kaynak türüne eklemektir. Ayrıca, önbelleğe alma ilkesi, `ReadOnly` kısa ömürlü işletim sistemi diski için olarak ayarlanmalıdır. 
 
 
 ```json
@@ -137,7 +140,7 @@ Kısa ömürlü işletim sistemi diski kullanan bir ölçek kümesi oluşturma i
 ```
 
 ## <a name="vm-template-deployment"></a>VM şablonu dağıtımı 
-Bir şablonu kullanarak, kısa ömürlü işletim sistemi diski ile bir VM dağıtabilirsiniz. Kısa ömürlü işletim sistemi diskleri kullanan bir VM oluşturma işlemi, `diffDiskSettings` özelliği şablondaki Microsoft. COMPUTE/virtualmachines kaynak türüne eklemektir. Ayrıca, önbelleğe alma ilkesi, kısa ömürlü işletim `ReadOnly` sistemi diski için olarak ayarlanmalıdır. 
+Bir şablonu kullanarak, kısa ömürlü işletim sistemi diski ile bir VM dağıtabilirsiniz. Kısa ömürlü işletim sistemi diskleri kullanan bir VM oluşturma işlemi, `diffDiskSettings` özelliği şablondaki Microsoft. COMPUTE/virtualMachines kaynak türüne eklemektir. Ayrıca, önbelleğe alma ilkesi, `ReadOnly` kısa ömürlü işletim sistemi diski için olarak ayarlanmalıdır. 
 
 ```json
 { 
@@ -198,7 +201,24 @@ Y: Evet, kısa ömürlü işletim sistemi diski kullanan bir VM 'ye yönetilen b
 
 **S: tüm VM boyutları, kısa ömürlü işletim sistemi diskleri için desteklenecek mi?**
 
-Y: Hayır, tüm Premium depolama VM boyutları, B serisi, N serisi ve H serisi boyutları dışında, desteklenir (DS, ES, FS, GS ve M).  
+Y: Hayır, en Premium depolama VM boyutları desteklenir (DS, ES, FS, GS, d, vb.). Belirli bir VM boyutunun kısa ömürlü işletim sistemi disklerini destekleyip desteklemediğini bilmek için şunları yapabilirsiniz:
+
+`Get-AzComputeResourceSku`PowerShell cmdlet 'ini çağırma
+```azurepowershell-interactive
+ 
+$vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 
+
+foreach($vmSize in $vmSizes)
+{
+   foreach($capability in $vmSize.capabilities)
+   {
+       if($capability.Name -eq 'EphemeralOSDiskSupported' -and $capability.Value -eq 'true')
+       {
+           $vmSize
+       }
+   }
+}
+```
  
 **S: kısa ömürlü işletim sistemi diski var olan sanal makinelere ve ölçek kümelerine uygulanabilir mi?**
 

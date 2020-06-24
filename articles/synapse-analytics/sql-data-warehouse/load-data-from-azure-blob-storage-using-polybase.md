@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 5f2d1d517db9ab0e4ccfbfff1cef3a5a0de738c9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: c4dbc63e8829d8a9ca3a3820fbb6675da4fad357
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267784"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207558"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Öğretici: New York Taxicab veri kümesini yükleme
 
@@ -56,7 +56,7 @@ Boş bir veritabanı oluşturmak için bu adımları izleyin.
 
 3. Formu aşağıdaki bilgilerle doldurun:
 
-   | Ayar            | Önerilen değer       | Açıklama                                                  |
+   | Ayar            | Önerilen değer       | Description                                                  |
    | ------------------ | --------------------- | ------------------------------------------------------------ |
    | *Ada**            | mySampleDataWarehouse | Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). |
    | **Abonelik**   | Aboneliğiniz     | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.windowsazure.com/Subscriptions). |
@@ -67,7 +67,7 @@ Boş bir veritabanı oluşturmak için bu adımları izleyin.
 
 4. Yeni veritabanınız için yeni bir sunucu oluşturup yapılandırmak üzere **Sunucu**’yu seçin. **Yeni sunucu formu**’nu aşağıdaki bilgilerle doldurun:
 
-    | Ayar                | Önerilen değer          | Açıklama                                                  |
+    | Ayar                | Önerilen değer          | Description                                                  |
     | ---------------------- | ------------------------ | ------------------------------------------------------------ |
     | **Sunucu adı**        | Genel olarak benzersiz bir ad | Geçerli sunucu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
     | **Sunucu Yöneticisi oturum açma** | Geçerli bir ad           | Geçerli oturum açma adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). |
@@ -143,11 +143,11 @@ Bu bölüm, sunucunuza bağlantı kurmak için [SQL Server Management Studio](/s
 
 2. **Sunucuya Bağlan** iletişim kutusuna şu bilgileri girin:
 
-    | Ayar        | Önerilen değer                            | Açıklama                                                  |
+    | Ayar        | Önerilen değer                            | Description                                                  |
     | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
     | Sunucu türü    | Veritabanı altyapısı                            | Bu değer gereklidir                                       |
     | Sunucu adı    | Tam sunucu adı            | Ad şuna benzer olmalıdır: **MyNewServer-20180430.Database.Windows.net**. |
-    | Kimlik Doğrulaması | SQL Server Kimlik Doğrulaması                  | Bu öğreticide yapılandırdığımız tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
+    | Kimlik doğrulaması | SQL Server Kimlik Doğrulaması                  | Bu öğreticide yapılandırdığımız tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
     | Oturum aç          | Sunucu yöneticisi hesabı                   | Bu, sunucuyu oluştururken belirttiğiniz hesaptır. |
     | Parola       | Sunucu yöneticisi hesabınızın parolası | Bu, sunucuyu oluştururken belirttiğiniz paroladır. |
 

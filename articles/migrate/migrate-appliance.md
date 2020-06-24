@@ -3,12 +3,12 @@ title: Azure Geçişi gereci
 description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 8d385e956aaa2888d72d711571fa8e7cb91da772
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: a57ca67c89078143eba42d94e8d96e004200041a
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323816"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106563"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -47,8 +47,8 @@ Aşağıdaki tabloda, VMware için Azure geçişi gereç gereksinimleri özetlen
 **Desteklenen Dağıtım** | OVA şablonunu kullanarak VMware VM olarak dağıtın.<br/><br/> PowerShell yükleme betiği kullanarak VMware VM veya fiziksel makine olarak dağıtın.
 **Proje desteği** |  Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
 **Bulma sınırları** | Bir gereç, vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.<br/> Bir gereç, tek bir vCenter Server bağlanabilir.
-**OVA şablonu** | Portalından veya sürümünden indirin https://aka.ms/migrate/appliance/vmware .<br/><br/> İndirme boyutu 11,2 GB 'dir.<br/><br/> İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
-**PowerShell betiği** | Betik [indirme](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> 
+**OVA şablonu** | Portalından veya sürümünden indirin https://aka.ms/migrate/appliance/vmware .<br/><br/> İndirme boyutu 10,9 GB 'dir.<br/><br/> İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
+**PowerShell betiği** | Bu [makaleye](https://docs.microsoft.com/azure/migrate/deploy-appliance-script#set-up-the-appliance-for-vmware)başvurun.<br/><br/> 
 **Yazılım/donanım** |  Gereç, Windows Server 2016, 32-GB RAM, 8 vCPU ve 80 GB disk depolaması ve harici bir sanal anahtar ile makine üzerinde çalışmalıdır.<br/> Gereç doğrudan veya bir ara sunucu üzerinden internet erişimi gerektirir.<br/><br/> Gereci bir VMware VM üzerinde çalıştırırsanız, gereksinimleri karşılayan bir VM 'yi ayırmak için vCenter Server yeterli kaynaklara sahip olmanız gerekir.<br/><br/> Gereci fiziksel bir makinede çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun.
 **VMware gereksinimleri** | Gereci bir VMware VM 'si olarak dağıtırsanız, sürüm 5,5 veya sonraki bir sürümünü çalıştıran bir ESXi konağına dağıtılması gerekir.<br/><br/> 5,5, 6,0, 6,5 veya 6,7 vCenter Server çalışıyor.
 **VDDK (aracısız geçiş)** | Gereci bir VMware sanal makinesi olarak dağıtırsanız ve aracısız bir geçiş çalıştırıyorsanız, VMware vSphere VDDK 'nin gereç sanal makinesine yüklenmesi gerekir.
@@ -68,8 +68,8 @@ Aşağıdaki tabloda, VMware için Azure geçişi gereç gereksinimleri özetlen
 **Proje desteği** |  Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
 **Bulma sınırları** | Bir gereç, 5000 adede kadar Hyper-V VM 'Leri bulabilir.<br/> Bir gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
 **VHD şablonu** | VHD dahil olmak üzere daraltılmış klasör. Portalından veya sürümünden indirin https://aka.ms/migrate/appliance/hyperv .<br/><br/> İndirme boyutu 10 GB 'tır.<br/><br/> İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
-**PowerShell betiği** | Betik [indirme](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> 
-**Yazılım/donanım***   |  Gereç, Windows Server 2016, 32-GB RAM, 8 vCPU ve 80 GB disk depolaması ve harici bir sanal anahtar ile makine üzerinde çalışmalıdır.<br/> Gereç statik veya dinamik bir IP adresine gerek duyar ve doğrudan ya da bir proxy üzerinden internet erişimi gerektirir.<br/><br/> Gereci bir Hyper-V VM 'si olarak çalıştırırsanız, Hyper-V konağında, 16 GB RAM, 8 vCPU, 80 GB depolama alanı etrafında ve gereç VM 'si için bir harici anahtar ayırmak üzere yeterli kaynaklara sahip olmanız gerekir.<br/><br/> Gereci fiziksel bir makinede çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun. 
+**PowerShell betiği** | Bu [makaleye](https://docs.microsoft.com/azure/migrate/deploy-appliance-script#set-up-the-appliance-for-hyper-v)başvurun.<br/><br/> 
+**Yazılım/donanım***   |  Gereç, Windows Server 2016, 16 GB RAM, 8 vCPU, 80 GB disk depolaması ve harici bir sanal anahtar ile makine üzerinde çalışmalıdır.<br/> Gereç statik veya dinamik bir IP adresine gerek duyar ve doğrudan ya da bir proxy üzerinden internet erişimi gerektirir.<br/><br/> Gereci bir Hyper-V VM 'si olarak çalıştırırsanız, Hyper-V konağında, 16 GB RAM, 8 vCPU, 80 GB depolama alanı etrafında ve gereç VM 'si için bir harici anahtar ayırmak üzere yeterli kaynaklara sahip olmanız gerekir.<br/><br/> Gereci fiziksel bir makinede çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun. 
 **Hyper-V gereksinimleri** | Gereci VHD şablonuyla dağıtırsanız, Azure geçişi tarafından sunulan gereç sanal makinesi, Hyper-V VM sürüm 5,0 ' dir.<br/><br/> Hyper-V konağı Windows Server 2012 R2 veya üstünü çalıştırmalıdır. 
 **Karma değeri-VHD** | VHD şablonu karma değerlerini [doğrulayın](tutorial-assess-hyper-v.md#verify-security) .
 **Karma değeri-PowerShell betiği** | PowerShell betiği karma değerlerini [doğrulayın](deploy-appliance-script.md#verify-file-security) .
@@ -83,9 +83,9 @@ Aşağıdaki tabloda, VMware için Azure geçişi gereç gereksinimleri özetlen
 **Gereç bileşenleri** | Gereç aşağıdaki bileşenlere sahiptir: <br/><br/> - **Yönetim uygulaması**: Bu, Gereç dağıtımı sırasında Kullanıcı girişi için bir Web uygulamasıdır. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/> - **Keşif Aracısı**: aracı makine yapılandırma verilerini toplar. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/>- **Değerlendirme Aracısı**: aracı performans verilerini toplar. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/>- **Otomatik güncelleştirme hizmeti**: gereç bileşenlerini güncelleştirir (24 saatte bir çalışır).
 **Desteklenen Dağıtım** | PowerShell yükleme betiği kullanarak adanmış fiziksel makine veya VM olarak dağıtın. Betik, portaldan indirilebilir.
 **Proje desteği** |  Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
-**Bulma sınırları** | Bir gereç, en fazla 250 fiziksel sunucu bulabilir.
-**PowerShell betiği** | Kodu (AzureMigrateInstaller. ps1) portaldan daraltılmış bir klasöre indirin. [Daha fazla bilgi edinin](tutorial-assess-physical.md#set-up-the-appliance). Alternatif olarak, [doğrudan indirin](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> İndirme boyutu 59,7 MB 'tır.
-**Yazılım/donanım** |  Gereç, Windows Server 2016, 32-GB RAM, 8 vCPU ve 80 GB disk depolaması ve harici bir sanal anahtar ile makine üzerinde çalışmalıdır.<br/> Gereç statik veya dinamik bir IP adresine gerek duyar ve doğrudan ya da bir proxy üzerinden internet erişimi gerektirir.<br/><br/> Gereci fiziksel bir makinede çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun.<br/> Gereci Windows Server 2019 ile bir makinede çalıştırmak desteklenmez.
+**Bulma sınırları** | Bir gereç, en fazla 1000 fiziksel sunucu bulabilir.
+**PowerShell betiği** | Betiği (AzureMigrateInstaller.ps1) portaldan sıkıştırılmış bir klasöre indirin. [Daha fazla bilgi edinin](tutorial-assess-physical.md#set-up-the-appliance). Alternatif olarak, [doğrudan indirin](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> İndirme boyutu 63,1 MB 'tır.
+**Yazılım/donanım** |  Gereç, Windows Server 2016, 16 GB RAM, 8 vCPU, 80 GB disk depolaması ve harici bir sanal anahtar ile makine üzerinde çalışmalıdır.<br/> Gereç statik veya dinamik bir IP adresine gerek duyar ve doğrudan ya da bir proxy üzerinden internet erişimi gerektirir.<br/><br/> Gereci fiziksel bir makinede çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun.<br/> Gereci Windows Server 2019 ile bir makinede çalıştırmak desteklenmez.
 **Karma değeri** | PowerShell betiği karma değerlerini [doğrulayın](deploy-appliance-script.md#verify-file-security) .
 
 ## <a name="url-access"></a>URL erişimi
@@ -139,7 +139,7 @@ download.microsoft.com/download | Microsoft Download 'ten indirmelere izin ver.
 
 Gereç meta verileri, performans verilerini ve bağımlılık analizi verilerini (aracısız [bağımlılık Analizi](concepts-dependency-visualization.md) kullanılıyorsa) toplar.
 
-### <a name="metadata"></a>Meta Veriler
+### <a name="metadata"></a>Meta veri
 
 Azure geçişi gereci tarafından bulunan meta veriler, makinelerin ve uygulamaların Azure 'a geçiş için hazır olup olmadığını, makine ve uygulamaları doğru boyuta getirmek, planlama maliyetlerini ve uygulama bağımlılıklarını analiz etmenize yardımcı olur. Microsoft bu verileri hiçbir lisans uyumluluğu denetimine kullanmaz.
 
@@ -148,18 +148,18 @@ Bu, gerecin topladığı ve Azure 'a gönderdiği VMware VM meta verilerinin tam
 **VERILERI** | **SAYAÇ**
 --- | --- 
 **Makine ayrıntıları** | 
-VM Kimliği | 'nin. Config. ınstanceuuıd 
-VM adı | 'nin. Config.Name
+VM Kimliği | vm.Config. Instanceuuıd 
+VM adı | vm.Config. Ada
 vCenter Server KIMLIĞI | VMwareClient. Instance. UUID
-VM açıklaması | 'nin. Summary. config. Annotation
+VM açıklaması | vm.Summary.Config. Ek açıklama
 Lisans ürün adı | 'nin. Client. ServiceContent. about. LicenseProductName
 İşletim sistemi türü | 'nin. SummaryConfig. GuestFullName
-Önyükleme türü | 'nin. Config. bellenim
-Çekirdek sayısı | 'nin. Config. Hardware. NumCPU
-Bellek (MB) | 'nin. Config. Hardware. MemoryMB
-Disk sayısı | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk). Count
-Disk boyutu listesi | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk)
-Ağ bağdaştırıcıları listesi | 'nin. Config. Hardware. Device. ToList (). FindAll (x = > Virtualalethernet). Count
+Önyükleme türü | vm.Config. Yazılımında
+Çekirdek sayısı | vm.Config. Hardware. NumCPU
+Bellek (MB) | vm.Config. Hardware. MemoryMB
+Disk sayısı | vm.Config. Hardware. Device. ToList (). FindAll (x => VirtualDisk). Count
+Disk boyutu listesi | vm.Config. Hardware. Device. ToList (). FindAll (x => VirtualDisk)
+Ağ bağdaştırıcıları listesi | vm.Config. Hardware. Device. ToList (). FindAll (x => Virtualalethernet). Count
 CPU kullanımı | CPU. Usage. Average
 Bellek kullanımı |mem. kullanım. Ortalama
 **Disk başına Ayrıntılar** | 
@@ -322,7 +322,7 @@ Uygulama adı | dpkg veya rpm
 
 Gereç meta verileri, performans verilerini ve bağımlılık analizi verilerini (aracısız [bağımlılık Analizi](concepts-dependency-visualization.md) kullanılıyorsa) toplar.
 
-### <a name="metadata"></a>Meta Veriler
+### <a name="metadata"></a>Meta veri
 Azure geçişi gereci tarafından bulunan meta veriler, makinelerin ve uygulamaların Azure 'a geçiş için hazır olup olmadığını, makine ve uygulamaları doğru boyuta getirmek, planlama maliyetlerini ve uygulama bağımlılıklarını analiz etmenize yardımcı olur. Microsoft bu verileri hiçbir lisans uyumluluğu denetimine kullanmaz.
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği Hyper-V VM meta verilerinin tam listesidir.
@@ -505,16 +505,16 @@ Denetim masasını denetlemek için:
 
 Bileşenlerden herhangi biri için daha eski bir sürüm çalıştırıyorsanız, hizmeti kaldırmanız ve en son sürüme el ile güncelleştirmeniz gerekir.
 
-1. En son gereç hizmeti sürümlerini denetlemek için LatestComponents. json dosyasını [indirin](https://aka.ms/latestapplianceservices) .
-2.    İndirdikten sonra, Not defteri 'nde LatestComponents. json dosyasını açın.
-3. Dosyadaki en son hizmet sürümünü ve bunun için karşıdan yükleme bağlantısını bulun. Örnek:
+1. En son gereç hizmeti sürümlerini denetlemek için dosyadaki LatestComponents.js[indirin](https://aka.ms/latestapplianceservices) .
+2.    İndirdikten sonra dosyayı Not defteri 'nde LatestComponents.jsaçın.
+3. Dosyadaki en son hizmet sürümünü ve bunun için karşıdan yükleme bağlantısını bulun. Örneğin:
 
     "Ad": "ASRMigrationWebApp", "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 
 4.    Güncel olmayan bir hizmetin, dosyadaki indirme bağlantısını kullanarak en son sürümünü indirin.
 5. İndirdikten sonra, indirilen MSI bütünlüğünü doğrulamak için yönetici komut penceresinde aşağıdaki komutu çalıştırın.
 
-    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Örneğin: C: \> certutil-HashFile C:\USERS\PUBLIC\DOWNLOADS\MICROSOFTAZUREAPPLIANCECONFIGURATIONMANAGER.MSI MD5
+    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Örneğin: C: \> certutil-HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5
 
 5. Komut çıktısının dosyadaki hizmet için karma değer girdisiyle eşleşip eşleşmediğini denetleyin (örneğin, yukarıdaki MD5 karma değeri).
 6. Şimdi, hizmeti yüklemek için MSI 'yi çalıştırın. Bu sessiz bir yüklemedir ve yükleme penceresi bittikten sonra kapanır.

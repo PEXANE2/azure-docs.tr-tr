@@ -3,8 +3,8 @@ title: Galeri dışı bir uygulama için Federasyon çoklu oturum açmayı yapı
 description: Azure AD ile tümleştirilen özel galeri dışı bir uygulama için Federasyon çoklu oturum açmayı yapılandırma
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1d49ec5ef80b284aa6b1a305b037d19dae34870
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 28af2a51119cd8328f9fa29000ead1622ae5f5e4
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74274586"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763559"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Galeri dışı bir uygulama için Federasyon çoklu oturum açmayı yapılandırma
 
@@ -79,7 +79,7 @@ Azure AD galerisinde olmayan bir uygulama için çoklu oturum açmayı yapıland
 
     2. Kaydet ' e tıklayın **.** Yeni özniteliği tabloda görürsünüz.
 
-14. uygulamada çoklu oturum açmayı yapılandırma hakkında belgeye erişmek için **uygulama adını &lt;&gt; Yapılandır** ' a tıklayın. Ayrıca, Azure AD URL 'Leri ve uygulama için gereken sertifikaya sahip olursunuz.
+14. uygulamada çoklu oturum açmayı yapılandırma hakkında belgeye erişmek için ** &lt; uygulama &gt; adını Yapılandır** ' a tıklayın. Ayrıca, Azure AD URL 'Leri ve uygulama için gereken sertifikaya sahip olursunuz.
 
 15. [Kullanıcılara uygulama atama.](#assign-users-to-the-application)
 
@@ -140,7 +140,7 @@ Azure AD 'den uygulama meta verilerini veya sertifikasını indirmek için aşa�
 
 8. **SAML Imzalama sertifikası** bölümüne gidin ve ardından sütun değerini **İndir** ' e tıklayın. Uygulamanın çoklu oturum açmayı yapılandırma ihtiyacı olduğuna bağlı olarak, meta veri XML 'sini veya sertifikayı indirme seçeneğini görürsünüz.
 
-Azure AD, meta verileri almak için de bir URL sağlar. Uygulamaya özel meta veri URL 'sini almak için bu düzene uyun: `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`.
+Azure AD, meta verileri almak için de bir URL sağlar. Uygulamaya özel meta veri URL 'sini almak için bu düzene uyun: `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>` .
 
 ## <a name="assign-users-to-the-application"></a>Uygulamaya kullanıcı atama
 

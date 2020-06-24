@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 022942778b714d5d66ce6eeb2c29351b11c66e40
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 79b6d7f84cd54979421357efa94c5c6de38fb4f1
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996253"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261401"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>SSS-veri toplama, aracılar ve çalışma alanları hakkında sorular
 
@@ -39,6 +39,25 @@ Fiyatlandırma hakkında daha fazla bilgi için bkz. [Güvenlik Merkezi fiyatlan
 > Güvenlik Merkezi tarafından oluşturulan çalışma alanlarının Log Analytics fiyatlandırma katmanı, güvenlik merkezi faturalandırmasını etkilemez.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+
+## <a name="what-is-the-log-analytics-agent"></a>Log Analytics Aracısı nedir?
+
+Azure Güvenlik Merkezi, güvenlik açıklarını ve tehditleri izlemek için [Log Analytics aracısına](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) bağlıdır. Bu, Azure İzleyici hizmeti tarafından kullanılan aracıdır. 
+
+Aracı bazen Microsoft Monitoring Agent (veya "MMA") olarak adlandırılır. 
+
+Aracı, bağlantılı makinelerden güvenlikle ilgili çeşitli yapılandırma ayrıntılarını ve olay günlüklerini toplar ve daha fazla analiz için verileri Log Analytics çalışma alanınıza kopyalar. Bu verilere örnek olarak şunlar verilebilir: işletim sistemi türü ve sürümü, işletim sistemi günlükleri (Windows olay günlükleri), çalışan süreçler, makine adı, IP adresleri ve oturum açmış kullanıcı.
+
+Aşağıdaki sayfalarda açıklandığı gibi makinelerinizin aracının desteklenen işletim sistemlerinden birini çalıştırdığından emin olun:
+
+* [Windows tarafından desteklenen işletim sistemleri için Log Analytics Aracısı](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)
+
+* [Linux tarafından desteklenen işletim sistemleri için Log Analytics Aracısı](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)
+
+[Log Analytics Aracısı tarafından toplanan veriler](security-center-enable-data-collection.md)hakkında daha fazla bilgi edinin.
+
+
 
 
 ## <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-log-analytics-agent-installation"></a>Log Analytics Aracısı yüklemesinin otomatik olarak sağlanması için bir VM nitelendirir mi?

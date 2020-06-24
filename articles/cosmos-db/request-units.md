@@ -6,14 +6,14 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: a0058bf309e0ff4fbe687731d676e907d1c3fd82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3378b442c80758c4a5dca02b33f92ba3823f33ed
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246597"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113660"
 ---
-# <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB istek birimleri
+# <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB'de İstek birimleri
 
 Azure Cosmos DB ile sağladığınız aktarım hızı ve tükettiğiniz depolama için saat temelinde ödeme yaparsınız. Azure Cosmos veritabanında her zaman yeterli sistem kaynaklarının kullanılabildiğinden emin olmak için aktarım hızının sağlanması gerekir. [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)'larını karşılamak veya aşmak için yeterli kaynak gereklidir.
 
@@ -25,7 +25,7 @@ Tüm veritabanı işlemlerinin maliyeti Azure Cosmos DB normalleştirilerek, *Is
 
 Aşağıdaki resimde üst düzey RU yaklaşımı gösterilir:
 
-![Veritabanı işlemleri Istek birimlerini tüketir](./media/request-units/request-units.png)
+:::image type="content" source="./media/request-units/request-units.png" alt-text="Veritabanı işlemleri Istek birimlerini tüketir" border="false":::
 
 Kapasiteyi yönetmek ve planlamak için, Azure Cosmos DB belirli bir veri kümesi üzerinde belirli bir veritabanı işleminde RU sayısının belirleyici olmasını sağlar. Herhangi bir veritabanı işleminde tüketilen RU sayısını izlemek için yanıt üst bilgisini inceleyebilirsiniz. RU ücretlerini ve uygulamanızın aktarım hızı gereksinimlerini [etkileyen faktörleri](request-units.md#request-unit-considerations) anladığınızda, uygulama maliyetinizi etkin bir şekilde çalıştırabilirsiniz.
 

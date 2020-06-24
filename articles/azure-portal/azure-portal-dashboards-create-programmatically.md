@@ -7,17 +7,17 @@ author: adamabmsft
 manager: mtillman
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 9ec9a4daad139a4930174ba9e3445e1cda1f8c54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdaf1261e9945aa862157f7e43a44387e14d3657
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461319"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764052"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Program aracılığıyla Azure panoları oluşturma
 
@@ -387,7 +387,7 @@ Bu örnek, bu makaleyle birlikte takip ettiğiniz ve neleri görmeniz gerektiği
 
 ### <a name="template-representation-of-our-example-dashboard"></a>Örnek panonuzun şablon temsili
 
-Panonun şablon sürümü,, ve `virtualMachineName` `virtualMachineResourceGroup` `dashboardName`adlı üç parametre tanımladı.  Parametreler, her dağıttığınız zaman bu panoyu farklı bir Azure sanal makinesinde işaret etmenize olanak tanır. Bu pano programlı bir şekilde yapılandırılıp dağıtılabilir ve herhangi bir Azure sanal makinesini işaret edebilir. Bu özelliği test etmek için, aşağıdaki şablonu kopyalayın ve [Azure Portal şablonu dağıtım sayfasına](https://portal.azure.com/#create/Microsoft.Template)yapıştırın.
+Panonun şablon sürümü,, ve adlı üç parametre tanımladı `virtualMachineName` `virtualMachineResourceGroup` `dashboardName` .  Parametreler, her dağıttığınız zaman bu panoyu farklı bir Azure sanal makinesinde işaret etmenize olanak tanır. Bu pano programlı bir şekilde yapılandırılıp dağıtılabilir ve herhangi bir Azure sanal makinesini işaret edebilir. Bu özelliği test etmek için, aşağıdaki şablonu kopyalayın ve [Azure Portal şablonu dağıtım sayfasına](https://portal.azure.com/#create/Microsoft.Template)yapıştırın.
 
 Bu örnek, bir panoyu kendisine dağıtır, ancak şablon dili birden fazla kaynak dağıtmanıza ve yan yana bir veya daha fazla pano paketlemenize olanak tanır.
 

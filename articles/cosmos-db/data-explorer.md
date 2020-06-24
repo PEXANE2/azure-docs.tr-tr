@@ -3,15 +3,15 @@ title: Verilerinizi yönetmek için Azure Cosmos DB gezginini kullanın
 description: Azure Cosmos DB Explorer, Azure Cosmos DB depolanan verileri görüntülemenize ve yönetmenize olanak tanıyan tek başına bir Web tabanlı arabirimdir.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: dech
-ms.openlocfilehash: 57ba647ade45928f03cd7fb2b037642d5e4d52cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 918f5a4a572f5518e5ae1b08db3d88d559571ed7
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79096806"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261894"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Azure Cosmos gezginini kullanarak verilerle çalışma 
 
@@ -29,7 +29,7 @@ Azure Cosmos DB Explorer, Azure Cosmos DB depolanan verileri görüntülemenize 
 
 2. **Tüm kaynaklardan**Azure Cosmos DB hesabınıza gidin, anahtarlar ' ı seçin ve **birincil bağlantı dizesini**kopyalayın.  
 
-3. Adresine gidin https://cosmos.azure.com/, bağlantı dizesini yapıştırın ve **Bağlan**' ı seçin. Bağlantı dizesini kullanarak, Azure Cosmos DB Gezgini 'ne herhangi bir zaman sınırlaması olmadan erişebilirsiniz.  
+3. Adresine gidin https://cosmos.azure.com/ , bağlantı dizesini yapıştırın ve **Bağlan**' ı seçin. Bağlantı dizesini kullanarak, Azure Cosmos DB Gezgini 'ne herhangi bir zaman sınırlaması olmadan erişebilirsiniz.  
 
    Diğer kullanıcıların Azure Cosmos DB hesabınıza geçici olarak erişmesini sağlamak istiyorsanız, okuma-yazma ve okuma erişimi URL 'Lerini kullanarak bunu yapabilirsiniz. 
 
@@ -41,7 +41,7 @@ Azure Cosmos DB Explorer, Azure Cosmos DB depolanan verileri görüntülemenize 
 
    Hesabı açmak istediğiniz erişim türünü seçin ve **Aç**' a tıklayın. Gezgin 'i açtıktan sonra, deneyim, Azure portal Veri Gezgini sekmesi ile aynı olur.   
 
-   ![Azure Cosmos DB Gezginini aç](./media/data-explorer/open-data-explorer-with-access-url.png)
+   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Azure Cosmos DB Gezginini aç":::
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 

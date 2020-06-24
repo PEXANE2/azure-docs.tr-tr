@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 440f23afcd08326261be30432ad1f0ecb16f55fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4cc8f2c90e74b5b3ab6df3169df0524f1134b66e
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74873514"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113611"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>Sağlanan aktarım hızını küresel olarak ölçeklendirme 
 
 Azure Cosmos DB, sağlanan aktarım hızı, istek birimi/saniye (RU/s ya da çoğul biçim) olarak temsil edilir. Ru, aşağıdaki görüntüde gösterildiği gibi, Cosmos kapsayıcısında hem okuma hem de yazma işlemlerinin maliyetini ölçer:
 
-![İstek Birimleri](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
+:::image type="content" source="./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png" alt-text="İstek birimleri" border="false":::
 
 Bir Cosmos kapsayıcısına veya Cosmos veritabanına RUs sağlayabilirsiniz. Kapsayıcıda sağlanan RUs, bu kapsayıcıda gerçekleştirilen işlemler için özel olarak kullanılabilir. Bir veritabanında sağlanan RUs, bu veritabanındaki tüm kapsayıcılar arasında paylaşılır (yalnızca özel olarak atanmış bir kapsayıcılar hariç).
 

@@ -8,11 +8,11 @@ ms.date: 03/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: aaa3a6d128fe7dd466f6f60ab515f05fa38ba63b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252811"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690385"
 ---
 # <a name="monitor-server-metrics"></a>Sunucu ölçümlerini izleme
 
@@ -37,7 +37,7 @@ Daha ayrıntılı tanılama gerçekleştirmek, performansı izlemek ve bir kayna
 
 İzleme senaryolarınız için hangi ölçümlerin en iyi olduğunu anlamak için bu tabloyu kullanın. Aynı grafikte yalnızca aynı birimin ölçümleri görüntülenebilir.
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|
 |---|---|---|---|---|
 |CommandPoolJobQueueLength|Komut havuzu Iş kuyruğu uzunluğu|Sayı|Ortalama|Komut iş parçacığı havuzu sırasındaki iş sayısı.|
 |CurrentConnections|Bağlantı: geçerli bağlantılar|Sayı|Ortalama|Kurulan istemci bağlantılarının geçerli sayısı.|

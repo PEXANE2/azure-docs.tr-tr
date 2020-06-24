@@ -4,23 +4,23 @@ description: PowerShell ile Windows sanal masaüstü uygulama gruplarını yöne
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 531c7a819bf83edff2756fe1e62859bcb8fef459
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c286a3795cc7cb4c1925ff06b3da19952e7f0b43
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615272"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209343"
 ---
 # <a name="manage-app-groups-using-powershell"></a>PowerShell kullanarak uygulama gruplarını yönetme
 
 >[!IMPORTANT]
 >Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/manage-app-groups-2019.md)bakın.
 >
-> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
+> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Yeni bir Windows sanal masaüstü konak havuzu için oluşturulan varsayılan uygulama grubu, tam masaüstünü de yayımlar. Ayrıca, konak havuzu için bir veya daha fazla RemoteApp uygulama grubu oluşturabilirsiniz. Bir RemoteApp uygulama grubu oluşturmak ve tek tek **Başlat** menüsü uygulamalarını yayımlamak için bu öğreticiyi izleyin.
@@ -54,43 +54,43 @@ PowerShell ile bir RemoteApp grubu oluşturmak için:
 3. Konak havuzunun sanal makine görüntüsündeki **Başlat** menüsü uygulamalarının listesini almak için aşağıdaki cmdlet 'i çalıştırın. Dosya **FilePath**, **IPath**, **IIndex**ve yayımlamak istediğiniz uygulama için diğer önemli bilgilerin değerlerini yazın.
 
    ```powershell
-   Get-AzWvdStartMenuItem -ApplicationGroupName <appgroupname> -ResourceGroupName <resourcegroupname> | Format-List | more 
+   Get-AzWvdStartMenuItem -ApplicationGroupName <appgroupname> -ResourceGroupName <resourcegroupname> | Format-List | more
    ```
 
    Çıktı, tüm Başlat menüsü öğelerini şöyle bir biçimde göstermelidir:
 
    ```powershell
    AppAlias            : access
-   CommandLineArgument : 
-   FilePath            : C:\Program Files\Microsoft Office\root\Office16\MSACCESS.EXE 
-   FriendlyName        : 
-   IconIndex           : 0 
-   IconPath            : C:\Program Files\Microsoft Office\Root\VFS\Windows\Installer\{90160000-000F-0000-1000-0000000FF1CE}\accicons.exe 
-   Id                  : /subscriptions/resourcegroups/providers/Microsoft.DesktopVirtualization/applicationgroups/startmenuitems/Access 
-   Name                : 0301RAG/Access 
+   CommandLineArgument :
+   FilePath            : C:\Program Files\Microsoft Office\root\Office16\MSACCESS.EXE
+   FriendlyName        :
+   IconIndex           : 0
+   IconPath            : C:\Program Files\Microsoft Office\Root\VFS\Windows\Installer\{90160000-000F-0000-1000-0000000FF1CE}\accicons.exe
+   Id                  : /subscriptions/resourcegroups/providers/Microsoft.DesktopVirtualization/applicationgroups/startmenuitems/Access
+   Name                : 0301RAG/Access
    Type                : Microsoft.DesktopVirtualization/applicationgroups/startmenuitems
-   
-   AppAlias            : charactermap 
-   CommandLineArgument : 
-   FilePath            : C:\windows\system32\charmap.exe 
-   FriendlyName        : 
-   IconIndex           : 0 
-   IconPath            : C:\windows\system32\charmap.exe 
-   Id                  : /subscriptions/resourcegroups/providers/Microsoft.DesktopVirtualization/applicationgroups/startmenuitems/Character Map 
-   Name                : 0301RAG/Character Map 
-   Type                : Microsoft.DesktopVirtualization/applicationgroups/startmenuitems 
+
+   AppAlias            : charactermap
+   CommandLineArgument :
+   FilePath            : C:\windows\system32\charmap.exe
+   FriendlyName        :
+   IconIndex           : 0
+   IconPath            : C:\windows\system32\charmap.exe
+   Id                  : /subscriptions/resourcegroups/providers/Microsoft.DesktopVirtualization/applicationgroups/startmenuitems/Character Map
+   Name                : 0301RAG/Character Map
+   Type                : Microsoft.DesktopVirtualization/applicationgroups/startmenuitems
    ```
-   
-4. Uygulamasına göre uygulamayı yüklemek için aşağıdaki cmdlet 'i çalıştırın `AppAlias`. `AppAlias`3. adımdaki çıktıyı çalıştırdığınızda görünür hale gelir.
+
+4. Uygulamasına göre uygulamayı yüklemek için aşağıdaki cmdlet 'i çalıştırın `AppAlias` . `AppAlias`3. adımdaki çıktıyı çalıştırdığınızda görünür hale gelir.
 
    ```powershell
-   New-AzWvdApplication -AppAlias <appalias> -GroupName <appgroupname> -Name <remoteappname> -ResourceGroupName <resourcegroupname> -CommandLineSetting <DoNotAllow|Allow|Require> 
+   New-AzWvdApplication -AppAlias <appalias> -GroupName <appgroupname> -Name <remoteappname> -ResourceGroupName <resourcegroupname> -CommandLineSetting <DoNotAllow|Allow|Require>
    ```
 
 5. Seçim Yeni bir RemoteApp programını adım 1 ' de oluşturulan uygulama grubuna yayımlamak için aşağıdaki cmdlet 'i çalıştırın.
 
    ```powershell
-   New-AzWvdApplication -GroupName <appgroupname> -Name <remoteappname> -ResourceGroupName <resourcegroupname> -Filepath <filepath> -IconPath <iconpath> -IconIndex <iconindex> -CommandLineSetting <DoNotAllow|Allow|Require> 
+   New-AzWvdApplication -GroupName <appgroupname> -Name <remoteappname> -ResourceGroupName <resourcegroupname> -Filepath <filepath> -IconPath <iconpath> -IconIndex <iconindex> -CommandLineSetting <DoNotAllow|Allow|Require>
    ```
 
 6. Uygulamanın yayımlandığını doğrulamak için aşağıdaki cmdlet 'i çalıştırın.

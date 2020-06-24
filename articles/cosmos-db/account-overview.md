@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 1e08c449f5da81f38c4134cfceceecab2b08150d
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: a68207b3e5390a26e8d62ee6b725b0768ea565a4
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672162"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116086"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Azure Cosmos hesabıyla çalışma
 
@@ -29,7 +29,7 @@ Azure Cosmos kapsayıcısı, temel ölçeklenebilirlik birimidir. Kapsayıcıda 
 
 Şu anda, bir Azure aboneliği altında en fazla 100 Azure Cosmos hesabı oluşturabilirsiniz. Tek bir Azure Cosmos hesabı, sınırsız miktarda veriyi ve sağlanan aktarım hızını neredeyse yönetebilir. Verilerinizi ve sağlanan aktarım hızını yönetmek için, hesabınız altında ve bu veritabanı içinde bir veya daha fazla Azure Cosmos veritabanı oluşturabilir, bir veya daha fazla kapsayıcı oluşturabilirsiniz. Aşağıdaki görüntüde, bir Azure Cosmos hesabındaki öğelerin hiyerarşisi gösterilmektedir:
 
-![Azure Cosmos hesabının hiyerarşisi](./media/account-overview/hierarchy.png)
+:::image type="content" source="./media/account-overview/hierarchy.png" alt-text="Azure Cosmos hesabının hiyerarşisi" border="false":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

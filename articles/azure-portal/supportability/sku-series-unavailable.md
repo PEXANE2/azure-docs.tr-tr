@@ -4,15 +4,15 @@ description: Bu bölge için seçili abonelik için bazı SKU serisi kullanılam
 services: Azure Supportability
 author: stevendotwang
 ms.service: azure-supportability
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: 6a88cb4ff2385edd3c867c84774df1d0e21422be
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 87533b2e0c1397d0b8b2e9a89450a80a75c5e348
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835997"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763831"
 ---
 # <a name="region-or-sku-unavailable"></a>Bölge veya SKU kullanılamıyor
 
@@ -82,6 +82,6 @@ Uygun bir bölge veya SKU bulamıyorsanız, şu adımları izleyerek bir **Abone
 
 Her zaman geri bildirim ve önerilerle karşılaşıyoruz! [Önerilerinizi](https://feedback.azure.com/forums/266794-support-feedback)bize gönderin. Ayrıca, [Twitter](https://twitter.com/azuresupport) 'Da veya [Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/products/azure)bizimle iletişim sağlayabilirsiniz.
 
-## <a name="learn-more"></a>Daha fazlasını öğrenin
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
 [Azure desteği SSS](https://azure.microsoft.com/support/faq)

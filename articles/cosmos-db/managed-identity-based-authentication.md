@@ -3,16 +3,16 @@ title: Azure Cosmos DB verilerine erişmek için sistem tarafından atanan yöne
 description: Azure Cosmos DB anahtarlara erişmek için bir Azure Active Directory (Azure AD) sistem tarafından atanan yönetilen kimliğin (yönetilen hizmet kimliği) nasıl yapılandırılacağını öğrenin.
 author: j-patrick
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: 8136ad7a1fe29bc3394e959c10aafc52988c0a23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b277ae91dbdd747aba012d6e7302ed6cba61d938
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641199"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262276"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Azure Cosmos DB verilerine erişmek için sistem tarafından atanan Yönetilen kimlikler kullanın
 
@@ -28,19 +28,19 @@ Bu adımda, işlev uygulamanıza sistem tarafından atanmış bir yönetilen kim
 
 1. [Azure Portal](https://portal.azure.com/) **Azure işlev** bölmesini açın ve işlev uygulamanıza gidin. 
 
-1. **Platform özellikleri** > **kimlik** sekmesini açın: 
+1. **Platform özellikleri**  >  **kimlik** sekmesini açın: 
 
-   ![İşlev uygulaması için platform özelliklerini ve kimlik seçeneklerini gösteren ekran görüntüsü.](./media/managed-identity-based-authentication/identity-tab-selection.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-selection.png" alt-text="İşlev uygulaması için platform özelliklerini ve kimlik seçeneklerini gösteren ekran görüntüsü.":::
 
 1. **Kimlik** sekmesinde, sistem kimliği durumunu **açın ve** **Kaydet**' **Status** i seçin. **Kimlik** bölmesi aşağıdaki gibi görünmelidir:  
 
-   ![Sistem kimliği durumunun açık olarak ayarlandığını gösteren ekran görüntüsü.](./media/managed-identity-based-authentication/identity-tab-system-managed-on.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="Sistem kimliği durumunun açık olarak ayarlandığını gösteren ekran görüntüsü.":::
 
 ## <a name="grant-access-to-your-azure-cosmos-account"></a>Azure Cosmos hesabınıza erişim izni verin
 
 Bu adımda, işlev uygulamasının sistem tarafından atanan yönetilen kimliğine bir rol atayacaksınız. Azure Cosmos DB yönetilen kimliğe atayabilmeniz için birden çok yerleşik rol içerir. Bu çözüm için aşağıdaki iki rolü kullanacaksınız:
 
-|Yerleşik rol  |Açıklama  |
+|Yerleşik rol  |Description  |
 |---------|---------|
 |[DocumentDB hesabı Katılımcısı](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|, Azure Cosmos DB hesaplarını yönetebilir. Okuma/yazma anahtarlarının alınmasına izin verir. |
 |[Cosmos DB hesabı okuyucusu](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB hesabı verilerini okuyabilir. Okuma anahtarlarının alınmasına izin verir. |
@@ -55,19 +55,19 @@ Bu senaryoda, işlev uygulaması Aquarium 'un sıcaklığını okur ve sonra bu 
 
 1. Azure portal oturum açın ve Azure Cosmos DB hesabınıza gidin. **Erişim denetimi (IAM)** bölmesini ve ardından **rol atamaları** sekmesini açın:
 
-   ![Erişim denetim bölmesini ve rol atamaları sekmesini gösteren ekran görüntüsü.](./media/managed-identity-based-authentication/cosmos-db-iam-tab.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="Erişim denetim bölmesini ve rol atamaları sekmesini gösteren ekran görüntüsü.":::
 
-1. **+** > **Rol Ekle ataması**Ekle ' yi seçin.
+1. **+ Ekle** > **Rol ataması ekle**’yi seçin.
 
 1. **Rol ataması Ekle** paneli sağ tarafta açılır:
 
-   ![Rol ataması Ekle bölmesini gösteren ekran görüntüsü.](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="Rol ataması Ekle bölmesini gösteren ekran görüntüsü.":::
 
    * **Rol**: **DocumentDB hesabı katılımcısı** seçin
    * **Erişim ata**: **sistem tarafından atanan yönetilen kimlik Seç** alt bölümünün altında **işlev uygulaması**' yi seçin.
    * **Seç**: bölmesi, aboneliğinizdeki **yönetilen sistem kimliğine**sahip tüm işlev uygulamalarıyla doldurulur. Bu durumda **FishTankTemperatureService** işlev uygulamasını seçin: 
 
-      ![Örnek ile doldurulmuş rol atama Ekle bölmesini gösteren ekran görüntüsü.](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png)
+      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="Örnek ile doldurulmuş rol atama Ekle bölmesini gösteren ekran görüntüsü.":::
 
 1. İşlev uygulamanızı seçtikten sonra **Kaydet**' i seçin.
 
@@ -80,7 +80,7 @@ Bu örnek Azure Cosmos DB hesap Anahtarlarınıza erişmek için [liste anahtarl
 > [!IMPORTANT] 
 > [Cosmos DB hesap okuyucusu rolünü atamak](#grant-access-to-your-azure-cosmos-account) Istiyorsanız, [salt okuma anahtarları API 'sini](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys)kullanmanız gerekir. Bu, yalnızca salt okunurdur tuşları doldurur.
 
-Liste anahtarları API 'SI `DatabaseAccountListKeysResult` nesneyi döndürür. Bu tür C# kitaplıklarında tanımlı değildir. Aşağıdaki kod bu sınıfın uygulamasını gösterir:  
+Liste anahtarları API 'SI nesneyi döndürür `DatabaseAccountListKeysResult` . Bu tür C# kitaplıklarında tanımlı değildir. Aşağıdaki kod bu sınıfın uygulamasını gösterir:  
 
 ```csharp 
 namespace Monitor 
@@ -112,7 +112,7 @@ namespace Monitor
 }
 ```
 
-Sistem tarafından atanan yönetilen kimlik belirtecini almak için [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) kitaplığını kullanacaksınız. Belirteci almanın ve `Microsoft.Azure.Service.AppAuthentication` kitaplık hakkında daha fazla bilgi bulmanın diğer yollarını öğrenmek Için, [hizmetten hizmete kimlik doğrulama](../key-vault/general/service-to-service-authentication.md) makalesine bakın.
+Sistem tarafından atanan yönetilen kimlik belirtecini almak için [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) kitaplığını kullanacaksınız. Belirteci almanın ve kitaplık hakkında daha fazla bilgi bulmanın diğer yollarını öğrenmek için `Microsoft.Azure.Service.AppAuthentication` , [hizmetten hizmete kimlik doğrulama](../key-vault/general/service-to-service-authentication.md) makalesine bakın.
 
 
 ```csharp

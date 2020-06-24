@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 19e4c61ba930bb9b127e2401174bcea3fd240dce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 57417a80ea83005c01b6f2a17206d46e6c049719
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234239"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85112787"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB'de bölümleme ve yatay ölçeklendirme
 
@@ -19,11 +19,11 @@ Bu makalede, mantıksal ve fiziksel bölümler arasındaki ilişki açıklanmakt
 
 ## <a name="logical-partitions"></a>Mantıksal bölümler
 
-Mantıksal bir bölüm, aynı bölüm anahtarına sahip bir öğe kümesinden oluşur. Örneğin, yiyecek ile ilgili verileri içeren bir kapsayıcıda, tüm öğeler bir `foodGroup` özellik içerir. Kapsayıcı için bölüm `foodGroup` anahtarı olarak ' i kullanabilirsiniz. `Beef Products`,`Baked Products`Ve gibi belirli değerlere `Sausages and Luncheon Meats` `foodGroup`sahip öğe grupları, ve gibi mantıksal bölümler oluşturur. Temel alınan veriler silindiğinde mantıksal bir bölümü silme konusunda endişelenmeniz gerekmez.
+Mantıksal bir bölüm, aynı bölüm anahtarına sahip bir öğe kümesinden oluşur. Örneğin, yiyecek ile ilgili verileri içeren bir kapsayıcıda, tüm öğeler bir `foodGroup` özellik içerir. `foodGroup`Kapsayıcı için bölüm anahtarı olarak ' i kullanabilirsiniz. , Ve gibi belirli değerlere sahip öğe grupları, `foodGroup` ve gibi `Beef Products` `Baked Products` `Sausages and Luncheon Meats` mantıksal bölümler oluşturur. Temel alınan veriler silindiğinde mantıksal bir bölümü silme konusunda endişelenmeniz gerekmez.
 
 Mantıksal bir bölüm ayrıca veritabanı işlemlerinin kapsamını tanımlar. Bir mantıksal bölüm içindeki öğeleri, [anlık görüntü yalıtımıyla bir işlem](database-transactions-optimistic-concurrency.md)kullanarak güncelleştirebilirsiniz. Bir kapsayıcıya yeni öğeler eklendiğinde, yeni mantıksal bölümler sistem tarafından saydam olarak oluşturulur.
 
-Kapsayıcıınızda mantıksal bölüm sayısı için bir sınır yoktur. Her mantıksal bölüm, 20 GB 'a kadar veri saklayabilir. İyi bölüm anahtarı seçimleri çok sayıda olası değer aralığına sahiptir. Örneğin, tüm öğelerin bir `foodGroup`özelliği içerdiği bir kapsayıcıda, `Beef Products` mantıksal bölümdeki veriler 20 GB 'a kadar büyüyebilir. Çok sayıda olası değeri olan [bir bölüm anahtarını seçmek](partitioning-overview.md#choose-partitionkey) kapsayıcının ölçeklenmesini sağlar.
+Kapsayıcıınızda mantıksal bölüm sayısı için bir sınır yoktur. Her mantıksal bölüm, 20 GB 'a kadar veri saklayabilir. İyi bölüm anahtarı seçimleri çok sayıda olası değer aralığına sahiptir. Örneğin, tüm öğelerin bir özelliği içerdiği bir kapsayıcıda `foodGroup` , `Beef Products` mantıksal bölümdeki veriler 20 GB 'a kadar büyüyebilir. Çok sayıda olası değeri olan [bir bölüm anahtarını seçmek](partitioning-overview.md#choose-partitionkey) kapsayıcının ölçeklenmesini sağlar.
 
 ## <a name="physical-partitions"></a>Fiziksel bölümler
 
@@ -40,11 +40,11 @@ Bir kapsayıcı için sağlanan aktarım hızı fiziksel bölümler arasında e�
 
 Kapsayıcının fiziksel bölümlerinin Azure portal **ölçüm dikey** penceresinin **depolama** bölümünde görebilirsiniz:
 
-[![Fiziksel bölüm](./media/partition-data/view-partitions-zoomed-out.png) sayısını görüntüleme](./media/partition-data/view-partitions-zoomed-in.png#lightbox)
+:::image type="content" source="./media/partition-data/view-partitions-zoomed-out.png" alt-text="Fiziksel bölüm sayısını görüntüleme" lightbox="./media/partition-data/view-partitions-zoomed-in.png" ::: 
 
-Bölüm anahtarımız olarak seçtiğiniz `/foodGroup` Bu örnek kapsayıcıda, üç dikdörtgenin her biri fiziksel bir bölümü temsil eder. Görüntüde, **bölüm anahtar aralığı** fiziksel bir bölümle aynıdır. Seçilen fiziksel bölüm üç mantıksal bölüm içerir: `Beef Products`, `Vegetable and Vegetable Products`, ve. `Soups, Sauces, and Gravies`
+Bölüm anahtarımız olarak seçtiğiniz bu örnek kapsayıcıda `/foodGroup` , üç dikdörtgenin her biri fiziksel bir bölümü temsil eder. Görüntüde, **bölüm anahtar aralığı** fiziksel bir bölümle aynıdır. Seçilen fiziksel bölüm üç mantıksal bölüm içerir: `Beef Products` , `Vegetable and Vegetable Products` , ve `Soups, Sauces, and Gravies` .
 
-Saniyede 18.000 istek birimi (RU/sn) aktarım hızı sağladığımızda, üç fiziksel bölümün her biri, sağlanan toplam üretilen iş üretiminin 1/3 ' i kullanabilir. Seçilen fiziksel bölümde, mantıksal bölüm anahtarları `Beef Products` `Vegetable and Vegetable Products`ve `Soups, Sauces, and Gravies` toplu olarak, fiziksel bölümün 6.000 tarafından sağlanan ru/s 'yi kullanabilir. Sağlanan aktarım hızı kapsayıcının fiziksel bölümlerine eşit olarak bölündüğü için [doğru mantıksal bölüm anahtarını seçerek](partitioning-overview.md#choose-partitionkey)işleme tüketimini eşit bir şekilde dağıtan bir bölüm anahtarı seçmeniz önemlidir. Mantıksal bölümlerde üretilen iş tüketimini eşit bir şekilde dağıtan bir bölüm anahtarı seçerseniz, fiziksel bölümlerde üretilen iş tüketiminin dengelenmesi güvence altına alınır.
+Saniyede 18.000 istek birimi (RU/sn) aktarım hızı sağladığımızda, üç fiziksel bölümün her biri, sağlanan toplam üretilen iş üretiminin 1/3 ' i kullanabilir. Seçilen fiziksel bölümde, mantıksal bölüm anahtarları `Beef Products` `Vegetable and Vegetable Products` ve `Soups, Sauces, and Gravies` toplu olarak, fiziksel bölümün 6.000 tarafından sağlanan ru/s 'yi kullanabilir. Sağlanan aktarım hızı kapsayıcının fiziksel bölümlerine eşit olarak bölündüğü için [doğru mantıksal bölüm anahtarını seçerek](partitioning-overview.md#choose-partitionkey)işleme tüketimini eşit bir şekilde dağıtan bir bölüm anahtarı seçmeniz önemlidir. Mantıksal bölümlerde üretilen iş tüketimini eşit bir şekilde dağıtan bir bölüm anahtarı seçerseniz, fiziksel bölümlerde üretilen iş tüketiminin dengelenmesi güvence altına alınır.
 
 ## <a name="replica-sets"></a>Çoğaltma kümeleri
 
@@ -54,7 +54,7 @@ Her fiziksel bölüm, [*çoğaltma kümesi*](global-dist-under-the-hood.md)olara
 
 Aşağıdaki görüntüde, mantıksal bölümlerin küresel olarak dağıtılan fiziksel bölümlerle nasıl eşlendiği gösterilmektedir:
 
-![Azure Cosmos DB bölümleme gösteren bir görüntü](./media/partition-data/logical-partitions.png)
+:::image type="content" source="./media/partition-data/logical-partitions.png" alt-text="Azure Cosmos DB bölümleme gösteren bir görüntü" border="false":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

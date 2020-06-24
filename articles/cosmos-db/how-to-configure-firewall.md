@@ -3,15 +3,15 @@ title: Azure Cosmos DB hesabınız için bir IP güvenlik duvarı yapılandırı
 description: Azure Cosmos hesaplarında güvenlik duvarı desteği için IP erişim denetim ilkelerini yapılandırmayı öğrenin.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1c24782285ac9b06d5499351eebe1693ade07297
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1f1ac9e7c5d44fd5cf6e7d692a71f5cf34b48df
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78162953"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261690"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB 'de IP güvenlik duvarını yapılandırma
 
@@ -25,7 +25,7 @@ IP güvenlik duvarlarını kullanarak Azure Cosmos DB hesabınızda depolanan ve
 
 Azure portal IP erişim denetimi ilkesini ayarlamak için, Azure Cosmos DB hesabı sayfasına gidin ve gezinti menüsünde **güvenlik duvarı ve sanal ağlar** ' ı seçin. Değerden **erişime Izin ver** ' i **Seçili ağlara**değiştirin ve ardından **Kaydet**' i seçin.
 
-![Azure portal güvenlik duvarı sayfasının nasıl açılacağını gösteren ekran görüntüsü](./media/how-to-configure-firewall/azure-portal-firewall.png)
+:::image type="content" source="./media/how-to-configure-firewall/azure-portal-firewall.png" alt-text="Azure portal güvenlik duvarı sayfasının nasıl açılacağını gösteren ekran görüntüsü":::
 
 IP erişim denetimi açıldığında, Azure portal IP adresleri, IP adresi aralıkları ve anahtarlar belirtme olanağı sağlar. Anahtarlar, diğer Azure hizmetlerine ve Azure portal erişimi etkinleştirir. Aşağıdaki bölümlerde bu anahtarlarla ilgili ayrıntılar verilmektedir.
 
@@ -45,15 +45,15 @@ Bir IP erişim denetimi ilkesini programlı bir şekilde etkinleştirdiğinizde,
 
 Aşağıdaki ekran görüntüsünde gösterildiği gibi, **Azure Portal erişime Izin ver** seçeneğini belirleyerek Azure Portal erişim isteklerini etkinleştirebilirsiniz:
 
-![Azure portal erişimin nasıl etkinleştirileceğini gösteren ekran görüntüsü](./media/how-to-configure-firewall/enable-azure-portal.png)
+:::image type="content" source="./media/how-to-configure-firewall/enable-azure-portal.png" alt-text="Azure portal erişimin nasıl etkinleştirileceğini gösteren ekran görüntüsü":::
 
 ### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>Azure içinde küresel Azure veri merkezlerinden veya başka kaynaklardan gelen isteklere izin verme
 
 Azure Cosmos DB hesabınıza statik IP (örneğin, Azure Stream Analytics ve Azure Işlevleri) sağlamayan hizmetlerden eriştiğinizde, erişimi kısıtlamak için IP güvenlik duvarını kullanmaya devam edebilirsiniz. Aşağıdaki ekran görüntüsünde gösterildiği gibi Azure **veri merkezleri içinden bağlantıları kabul et** seçeneğini belirleyerek Azure 'daki diğer kaynaklardan erişimi etkinleştirebilirsiniz:
 
-![Azure portal güvenlik duvarı sayfasının nasıl açılacağını gösteren ekran görüntüsü](./media/how-to-configure-firewall/enable-azure-services.png)
+:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="Azure portal güvenlik duvarı sayfasının nasıl açılacağını gösteren ekran görüntüsü":::
 
-Bu seçeneği etkinleştirdiğinizde, IP adresi `0.0.0.0` ızın verilen IP adresleri listesine eklenir. IP `0.0.0.0` adresi, istekleri Azure VERI merkezi ıp aralığından Azure Cosmos DB hesabınıza kısıtlar. Bu ayar Azure Cosmos DB hesabınıza başka hiçbir IP aralığından erişime izin vermez.
+Bu seçeneği etkinleştirdiğinizde, IP adresi `0.0.0.0` izin VERILEN IP adresleri listesine eklenir. `0.0.0.0`IP adresi, Istekleri Azure veri MERKEZI IP aralığından Azure Cosmos DB hesabınıza kısıtlar. Bu ayar Azure Cosmos DB hesabınıza başka hiçbir IP aralığından erişime izin vermez.
 
 > [!NOTE]
 > Bu seçenek, Azure 'da dağıtılan diğer müşterilerin aboneliklerinden gelen istekler dahil olmak üzere güvenlik duvarını Azure 'daki tüm isteklere izin verecek şekilde yapılandırır. Bu seçenek tarafından izin verilen IP 'lerin listesi geniştir, bu nedenle bir güvenlik duvarı ilkesinin verimliliğini kısıtlar. Bu seçeneği yalnızca istekleriniz sanal ağlardaki statik IP 'lerden veya alt ağlardan kaynaklanmıyorsanız kullanın. Azure portal Azure 'da dağıtıldığından, bu seçeneğin belirlenmesi otomatik olarak Azure portal erişimine izin verir.
@@ -64,9 +64,9 @@ Azure portal geliştirmeyi basitleştirmek için, istemci makinenizin IP 'sini b
 
 Portal, istemci IP adresini otomatik olarak algılar. Makinenizin istemci IP adresi veya ağ geçidinizin IP adresi olabilir. İş yüklerinizi üretime almadan önce bu IP adresini kaldırdığınızdan emin olun.
 
-Geçerli IP 'nizi IP listesine eklemek için **GEÇERLI IP 'Yi Ekle**' yi seçin. Sonra **Kaydet**' i seçin.
+Geçerli IP 'nizi IP listesine eklemek için **GEÇERLI IP 'Yi Ekle**' yi seçin. Sonra **Kaydet**'i seçin.
 
-![Geçerli IP için güvenlik duvarı ayarlarının nasıl yapılandırılacağını gösteren ekran görüntüsü](./media/how-to-configure-firewall/enable-current-ip.png)
+:::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="Geçerli IP için güvenlik duvarı ayarlarının nasıl yapılandırılacağını gösteren ekran görüntüsü":::
 
 ### <a name="requests-from-cloud-services"></a>Bulut hizmetlerinden gelen istekler
 
@@ -74,7 +74,7 @@ Azure 'da bulut Hizmetleri, Azure Cosmos DB kullanarak orta katman hizmet mantı
 
 Aşağıdaki ekran görüntüsünde gösterildiği gibi, Azure portal bulut hizmetlerinizin IP adreslerini alabilirsiniz:
 
-![Azure portal gösterilen bir bulut hizmeti için genel IP adresini gösteren ekran görüntüsü](./media/how-to-configure-firewall/public-ip-addresses.png)
+:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses.png" alt-text="Azure portal gösterilen bir bulut hizmeti için genel IP adresini gösteren ekran görüntüsü":::
 
 Rol örnekleri ekleyerek bulut hizmetinizi ölçeklendirirseniz, aynı bulut hizmetinin bir parçası olduklarından, bu yeni örnekler otomatik olarak Azure Cosmos DB hesaba erişebilir.
 
@@ -84,7 +84,7 @@ Azure Cosmos DB kullanarak orta katmanlı Hizmetleri barındırmak için [sanal 
 
 Aşağıdaki ekran görüntüsünde gösterildiği gibi Azure portal sanal makinelerin IP adreslerini alabilirsiniz:
 
-![Azure portal gösterilen bir sanal makinenin genel IP adresini gösteren ekran görüntüsü](./media/how-to-configure-firewall/public-ip-addresses-dns.png)
+:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses-dns.png" alt-text="Azure portal gösterilen bir sanal makinenin genel IP adresini gösteren ekran görüntüsü":::
 
 Gruba sanal makine örnekleri eklediğinizde Azure Cosmos DB hesabınıza otomatik olarak erişim elde edersiniz.
 
@@ -94,7 +94,7 @@ Azure Cosmos DB hesabınıza Internet 'teki bir bilgisayardan eriştiğinizde, h
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>Kaynak Yöneticisi şablonu kullanarak bir IP güvenlik duvarı yapılandırma
 
-Azure Cosmos DB hesabınıza erişim denetimini yapılandırmak için, Kaynak Yöneticisi şablonunun izin verilen IP aralıkları listesi ile **ipRangeFilter** özniteliğini belirttiğinden emin olun. IP güvenlik duvarını zaten dağıtılmış bir Cosmos hesabına yapılandırıyorsanız, `locations` dizinin şu anda dağıtılmış olan ile eşleştiğinden emin olun. `locations` Diziyi ve diğer özellikleri eşzamanlı olarak değiştiremezsiniz. Azure Cosmos DB için Azure Resource Manager şablonlarının daha fazla bilgi ve örnekleri için bkz. [Azure Resource Manager şablonları Azure Cosmos DB](resource-manager-samples.md)
+Azure Cosmos DB hesabınıza erişim denetimini yapılandırmak için, Kaynak Yöneticisi şablonunun izin verilen IP aralıkları listesi ile **ipRangeFilter** özniteliğini belirttiğinden emin olun. IP güvenlik duvarını zaten dağıtılmış bir Cosmos hesabına yapılandırıyorsanız, `locations` dizinin şu anda dağıtılmış olan ile eşleştiğinden emin olun. `locations`Diziyi ve diğer özellikleri eşzamanlı olarak değiştiremezsiniz. Azure Cosmos DB için Azure Resource Manager şablonlarının daha fazla bilgi ve örnekleri için bkz. [Azure Resource Manager şablonları Azure Cosmos DB](resource-manager-samples.md)
 
 ```json
 {

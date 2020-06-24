@@ -3,15 +3,15 @@ title: Azure Cosmos hesabı için sanal ağ tabanlı erişimi yapılandırma
 description: Bu belgede Azure Cosmos DB için bir sanal ağ hizmeti uç noktası ayarlamak için gereken adımlar açıklanmaktadır.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/04/2020
 ms.author: mjbrown
-ms.openlocfilehash: 904b976b5e5c811912df9421dc64be1617b30b44
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: a061676714c35b4e8868ce3df9c71be05297ba99
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84431725"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261673"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Sanal ağlardan (VNet) erişimi yapılandırma
 
@@ -42,11 +42,11 @@ Aşağıdaki bölümlerde, bir Azure Cosmos DB hesabı için sanal ağ hizmeti u
 
 1. Azure sanal ağını eklemek istediğiniz **aboneliği** seçin. Azure Cosmos DB hesabınıza erişim sağlamak istediğiniz Azure **sanal ağlarını** ve **alt ağlarını** seçin. Sonra, "Microsoft. Azu, Smosdb" için hizmet uç noktalarına sahip seçili ağları etkinleştirmek üzere **Etkinleştir** ' i seçin. Tamamlandıktan sonra **Ekle**' yi seçin.
 
-   ![Sanal ağ ve alt ağ seçin](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png" alt-text="Sanal ağ ve alt ağ seçin":::
 
 1. Azure Cosmos DB hesabı bir sanal ağdan erişim için etkinleştirildikten sonra, yalnızca bu seçili alt ağdan gelen trafiğe izin verir. Eklediğiniz sanal ağ ve alt ağ aşağıdaki ekran görüntüsünde gösterildiği gibi görünmelidir:
 
-   ![Sanal ağ ve alt ağ başarıyla yapılandırıldı](./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png" alt-text="Sanal ağ ve alt ağ başarıyla yapılandırıldı":::
 
 > [!NOTE]
 > Sanal ağ hizmet uç noktalarını etkinleştirmek için aşağıdaki Abonelik izinlerine sahip olmanız gerekir:
@@ -66,7 +66,7 @@ Aboneliği kaynak sağlayıcısına kaydetme yönergeleri aşağıda verilmişti
 
 1. Yeni bir sanal ağ oluşturmak için gereken ayrıntıları girip **Oluştur**' u seçin. Alt ağ "Microsoft. Azu, Smosdb" etkin bir hizmet uç noktası ile oluşturulur.
 
-   ![Yeni bir sanal ağ için bir sanal ağ ve alt ağ seçin](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="Yeni bir sanal ağ için bir sanal ağ ve alt ağ seçin":::
 
 Azure Cosmos DB hesabınız Azure Bilişsel Arama gibi diğer Azure hizmetleri tarafından kullanılıyorsa veya Stream Analytics veya Power BI 'e erişildiğinde, **Genel Azure veri merkezlerinden gelen bağlantıları kabul et**' i seçerek erişime izin verebilirsiniz.
 
@@ -80,7 +80,7 @@ Portaldan Azure Cosmos DB ölçümlerine erişiminizin olduğundan emin olmak i�
 
 1. Bir sanal ağ veya alt ağ kuralını kaldırmak için, sanal ağ veya alt ağın yanındaki **...** öğesini seçin ve **Kaldır**' ı seçin.
 
-   ![Sanal ağı kaldır](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png" alt-text="Sanal ağı kaldır":::
 
 1. Değişikliklerinizi uygulamak için **Kaydet**’i seçin.
 

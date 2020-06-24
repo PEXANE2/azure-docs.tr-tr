@@ -4,15 +4,15 @@ description: Bu makalede, verilerinizi Qlik Sense ve görselleştirmeye Azure Co
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3a955060eb5f19544860c1c97abe1577084bef24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 986db85ddbf741dc459625dbd763b9cbbba1c429
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67985539"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263356"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Verilerinizi Azure Cosmos DB ve görselleştirmek için Qlik Sense bağlama
 
@@ -54,7 +54,7 @@ Bu makaledeki yönergeleri uygulamadan önce, aşağıdaki kaynakların size haz
 
 1. Qlik Sense açın ve **Yeni uygulama oluştur**' u seçin. Uygulamanız için bir ad girin ve **Oluştur**' u seçin.
 
-   ![Yeni bir Qlik Sense uygulaması oluşturma](./media/visualize-qlik-sense/create-new-qlik-sense-app.png)
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-qlik-sense-app.png" alt-text="Yeni bir Qlik Sense uygulaması oluşturma":::
 
 2. Yeni uygulama başarıyla oluşturulduktan sonra, **uygulamayı aç** ' ı seçin ve **dosyalardan ve diğer kaynaklardan veri Ekle**' yi seçin. 
 
@@ -62,15 +62,15 @@ Bu makaledeki yönergeleri uygulamadan önce, aşağıdaki kaynakların size haz
 
 4. **Kullanıcı DSN** ' ye geçin ve daha önce oluşturduğunuz ODBC bağlantısını seçin. Bağlantı için bir ad girin ve **Oluştur**' u seçin. 
 
-   ![Yeni bağlantı oluşturma](./media/visualize-qlik-sense/create-new-connection.png)
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="Yeni bağlantı oluştur":::
 
 5. Bağlantıyı oluşturduktan sonra, video oyun verilerinin bulunduğu veritabanını, koleksiyonu ve ardından Önizleme seçeneğini belirleyebilirsiniz.
 
-   ![Veritabanını ve koleksiyonu seçin](./media/visualize-qlik-sense/choose-database-and-collection.png) 
+   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="Veritabanını ve koleksiyonu seçin"::: 
 
 6. Sonra verileri Qlik Sense 'e yüklemek için **veri Ekle** ' yi seçin. Verileri Qlik Sense 'e yükledikten sonra öngörüler oluşturabilir ve veriler üzerinde analiz gerçekleştirebilirsiniz. Öngörüleri kullanabilir veya kendi uygulamanızı derleyebilir ve video oyunları satışları araştırın. Aşağıdaki görüntüde gösterilmektedir 
 
-   ![Verileri görselleştirme](./media/visualize-qlik-sense/visualize-data.png)
+   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="Verileri görselleştirme":::
 
 ### <a name="limitations-when-connecting-with-odbc"></a>ODBC ile bağlantı kurulurken sınırlamalar 
 

@@ -4,15 +4,15 @@ description: Bu makalede, Kullanıcı düzenlerini anlamak, gerçek zamanlı ver
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: c0c1a28dc399d3f176f92e656621fec1bc92dbfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ade688c3fe339db864994923d0ff40dfe41b7cb7
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76513518"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263016"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Gerçek zamanlı veri analizlerini görselleştirmek için Azure Cosmos DB değişiklik akışını kullanın
 
@@ -28,7 +28,7 @@ Bu makalede, Kullanıcı düzenlerini anlamak, gerçek zamanlı veri analizi ve 
 ## <a name="solution-components"></a>Çözüm bileşenleri
 Aşağıdaki diyagram, çözüme dahil olan veri akışını ve bileşenlerini temsil eder:
 
-![Proje görseli](./media/changefeed-ecommerce-solution/project-visual.png)
+:::image type="content" source="./media/changefeed-ecommerce-solution/project-visual.png" alt-text="Proje görseli" border="false":::
  
 1. **Veri oluşturma:** Veri simülatörü, bir kullanıcının bir öğeyi görüntüleme, sepetine bir öğe ekleme ve bir öğe satın alma gibi olayları temsil eden perakende verileri oluşturmak için kullanılır. Veri oluşturucuyu kullanarak büyük örnek veri kümesi oluşturabilirsiniz. Oluşturulan örnek veriler aşağıdaki biçimdeki belgeleri içerir:
    
@@ -78,9 +78,9 @@ Aşağıdaki diyagram, çözüme dahil olan veri akışını ve bileşenlerini t
    Set-ExecutionPolicy Unrestricted 
    ```
 
-2. Önceki adımda indirdiğiniz GitHub deposundan **Azure Resource Manager** klasörüne gidin ve **Parameters. JSON** dosyası adlı dosyayı açın.  
+2. Önceki adımda indirdiğiniz GitHub deposundan **Azure Resource Manager** klasörüne gidin ve dosya **üzerindeparameters.js** adlı dosyayı açın.  
 
-3. **Parameters. JSON** dosyasında gösterildiği gibi cosmosdbaccount_name, eventhubnamespace_name, storageaccount_name, parametreleri için değerler sağlayın. Kaynaklarınızın her birine verdiğiniz adları daha sonra kullanmanız gerekir.  
+3. Dosyadaki **parameters.js** gösterildiği gibi cosmosdbaccount_name, eventhubnamespace_name, storageaccount_name, parametreleri için değerler sağlayın. Kaynaklarınızın her birine verdiğiniz adları daha sonra kullanmanız gerekir.  
 
 4. **Windows PowerShell**'de **Azure Resource Manager** klasöre gidin ve aşağıdaki komutu çalıştırın:
 
@@ -149,7 +149,7 @@ Yeni bir belge oluşturulduğunda veya Cosmos kapsayıcısında geçerli bir bel
 
 2. **Changefeedlabsolution. sln** adlı dosyaya sağ tıklayın ve **Visual Studio ile aç**' ı seçin.  
 
-3. Visual Studio 'da **Local. Settings. JSON** sayfasına gidin. Ardından, daha önce kaydettiğiniz değerleri kullanarak boş olanları doldurmanız gerekir.  
+3. Visual Studio 'da **local.settings.js** gidin. Ardından, daha önce kaydettiğiniz değerleri kullanarak boş olanları doldurmanız gerekir.  
 
 4. **ChangeFeedProcessor.cs**adresine gidin. **Run** işlevinin parametrelerinde, aşağıdaki eylemleri gerçekleştirin:  
 
@@ -165,11 +165,11 @@ Değişiklik akışı 'nın bir e-ticaret sitesinde yeni eylemleri nasıl işley
 
 1. Dosya Gezgini 'nde depoya geri gidin ve yeni bir Visual Studio penceresinde bir kez daha açmak için **Changefeedfunction. sln** öğesine sağ tıklayın.  
 
-2. **App. config** dosyasına gidin. `<appSettings>` Bloğu içinde, daha önce aldığınız Azure Cosmos DB hesabınızın uç noktasını ve BENZERSIZ **birincil anahtarını** ekleyin.  
+2. **App.config** dosyasına gidin. Bloğu içinde `<appSettings>` , daha önce aldığınız Azure Cosmos DB hesabınızın uç noktasını ve benzersiz **birincil anahtarını** ekleyin.  
 
 3. **Koleksiyonu** ve **veritabanı** adlarını ekleyin. (Bu **Adların, farklı** bir şekilde ad olarak isimsiz olarak isimsiz olarak isimsiz olarak **isimsiz olarak** isimsiz olarak isimsiz bir şekilde
 
-   ![Bağlantı dizelerini Güncelleştir](./media/changefeed-ecommerce-solution/update-connection-string.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="Bağlantı dizelerini Güncelleştir":::
  
 4. Değişiklikleri düzenlenen tüm dosyalar üzerinde kaydedin.  
 
@@ -179,7 +179,7 @@ Değişiklik akışı 'nın bir e-ticaret sitesinde yeni eylemleri nasıl işley
 
 7. [Azure Portal](https://portal.azure.com/) ' a ve ardından kaynak grubunuzdaki Cosmos DB hesaba giderek **Veri Gezgini**istiyorsanız, değişiklik yaptığınız rastgele verileri **changefeedlabcollection** içinde görürsünüz.
  
-   ![Portalda oluşturulan veriler](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="Portalda oluşturulan veriler":::
 
 ## <a name="set-up-a-stream-analytics-job"></a>Stream Analytics işini ayarlama
 
@@ -189,7 +189,7 @@ Azure Stream Analytics, akış verilerinin gerçek zamanlı işlemesi için tam 
 
 2. Aşağıda gösterildiği gibi **girdileri** seçin.  
 
-   ![Giriş oluştur](./media/changefeed-ecommerce-solution/create-input.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Giriş oluştur":::
 
 3. **+ Akış girişi Ekle**' yi seçin. Ardından açılan menüden **Olay Hub 'ını** seçin.  
 
@@ -221,7 +221,7 @@ Azure Stream Analytics, akış verilerinin gerçek zamanlı işlemesi için tam 
 
 8. Ardından **streamjob1** adresine dönün ve **Sorguyu Düzenle**' yi seçin.
 
-   ![Sorguyu düzenle](./media/changefeed-ecommerce-solution/edit-query.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Sorguyu Düzenle":::
  
 9. Sorgu penceresine aşağıdaki sorguyu yapıştırın. **Ortalama fiyat** sorgusu, kullanıcılar tarafından görüntülenen tüm öğelerin ortalama fiyatını, kullanıcıların HTS öğelerine eklenen tüm öğelerin ortalama fiyatını ve kullanıcılar tarafından satın alınan tüm öğelerin ortalama fiyatını hesaplar. Bu ölçüm, e-ticaret şirketlerinin, ne kadar madde satacağına ve hangi envanterde yatırmaya karar vermesine yardımcı olabilir. Örneğin, görüntülenen öğelerin ortalama fiyatı satın alınan öğelerin ortalama fiyatından çok daha yüksekse, bir şirket envanterine daha ucuz öğeler eklemeyi tercih edebilir.
 
@@ -314,7 +314,7 @@ Power BI, veri çözümlemek ve öngörü paylaşmak için kullanılan iş anali
 
    Örnek Pano şu grafiklerle nasıl görünür:
 
-   ![görselleştirmeler](./media/changefeed-ecommerce-solution/visualizations.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="görüntüler":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>İsteğe bağlı: bir E-ticaret sitesiyle görselleştirin
 
@@ -322,19 +322,19 @@ Artık gerçek bir e-ticaret sitesiyle bağlantı kurmak için yeni veri analizi
 
 1. [Azure Portal](https://portal.azure.com/), ardından **Cosmos DB hesabınıza**ve ardından **Veri Gezgini**' e gidin.  
 
-   Değişiklik, sabit depolama kapasitesine sahip **changefeedlabdatabase** - **ürünlerinin** ve **kategorilerinin** altına iki koleksiyon ekleyin.
+   Değişiklik, sabit depolama kapasitesine sahip **changefeedlabdatabase**  -  **ürünlerinin** ve **kategorilerinin** altına iki koleksiyon ekleyin.
 
    Bölüm anahtarı olarak, **TopItems** ve **/item** adlı **changefeedlabdatabase** altına başka bir koleksiyon ekleyin.
 
 2. TopItems **topItems** koleksiyonunu seçin ve **ölçek ve ayarlar** ' ın **altında,** TopItems her **30 saniyede bir** güncelleştirilir.
 
-   ![Yaşam süresi](./media/changefeed-ecommerce-solution/time-to-live.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Yaşam süresi":::
 
 3. **TopItems** koleksiyonunu en sık satın alınan öğelerle doldurmak için, **streamjob1** adresine gidin ve yeni bir **Çıkış**ekleyin. **Cosmos DB**seçin.
 
 4. Gerekli alanları aşağıda gösterildiği gibi girin.
 
-   ![Cosmos çıkışı](./media/changefeed-ecommerce-solution/cosmos-output.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Cosmos çıkışı":::
  
 5. Laboratuvarın önceki bölümünde isteğe bağlı Ilk 5 sorgu eklediyseniz, 5A bölümüne ilerleyin. Aksi takdirde, bölüm 5b ' e geçin.
 
@@ -374,15 +374,15 @@ Artık gerçek bir e-ticaret sitesiyle bağlantı kurmak için yeni veri analizi
    FROM arrayselect
    ```
 
-6. **EcommerceWebApp. sln** dosyasını açın ve **Çözüm Gezgini** **Web. config** dosyasına gidin.  
+6. **EcommerceWebApp. sln** dosyasını açın ve **Çözüm Gezgini** **Web.config** dosyasına gidin.  
 
-7. `<appSettings>` Bloğu içinde, daha önce, **URI 'nizi buraya** ve **birincil anahtarınızı**burada belirten, daha önce kaydettiğiniz **URI** ve **birincil anahtarı** ekleyin. Ardından **veritabanı adınızı** ve **koleksiyon adınızı** gösterildiği gibi ekleyin. (Bu adların, farklı şekilde ad olarak isimsiz olarak isimsiz olarak isimsiz olarak isimsiz olarak, **changefeedlabdatabase** ve **changefeed**
+7. Bloğu içinde `<appSettings>` , daha önce, **URI 'nizi buraya** ve **birincil anahtarınızı**burada belirten, daha önce kaydettiğiniz **URI** ve **birincil anahtarı** ekleyin. Ardından **veritabanı adınızı** ve **koleksiyon adınızı** gösterildiği gibi ekleyin. (Bu adların, farklı şekilde ad olarak isimsiz olarak isimsiz olarak isimsiz olarak isimsiz olarak, **changefeedlabdatabase** ve **changefeed**
 
    **Ürün koleksiyonu adı**, **Kategoriler koleksiyonu adı**ve **en üst öğe koleksiyonu adını** gösterildiği gibi girin. (Bu adların, farklı bir şekilde ad olarak isimsiz olarak isimsiz olarak isimsiz olarak mı yoksa **, ürünler ve Topgıtems**  
 
-8. Adresine gidin ve **EcommerceWebApp. sln** Içindeki **kullanıma al klasörünü** açın. Ardından **Web. config** dosyasını bu klasör içinde açın.  
+8. Adresine gidin ve **EcommerceWebApp. sln** Içindeki **kullanıma al klasörünü** açın. Sonra bu klasörde **Web.config** dosyasını açın.  
 
-9. `<appSettings>` Bloğu içinde, daha önce belirtilen yerlerde kaydettiğiniz **URI** ve **birincil anahtarı** ekleyin. Ardından **veritabanı adınızı** ve **koleksiyon adınızı** gösterildiği gibi ekleyin. (Bu adların, farklı şekilde ad olarak isimsiz olarak isimsiz olarak isimsiz olarak isimsiz olarak, **changefeedlabdatabase** ve **changefeed**  
+9. Bloğu içinde `<appSettings>` , daha önce belirtilen yerlerde kaydettiğiniz **URI** ve **birincil anahtarı** ekleyin. Ardından **veritabanı adınızı** ve **koleksiyon adınızı** gösterildiği gibi ekleyin. (Bu adların, farklı şekilde ad olarak isimsiz olarak isimsiz olarak isimsiz olarak isimsiz olarak, **changefeedlabdatabase** ve **changefeed**  
 
 10. Programı çalıştırmak için sayfanın en üstünde bulunan **Başlat** ' a basın.  
 

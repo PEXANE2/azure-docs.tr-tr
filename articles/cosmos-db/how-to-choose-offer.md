@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: b8c4fd3804bfa02b86f62912641eb936ff8cd15e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 94022b9959b6a7f2bc30e31f918f2f5a916ccd8c
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664434"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116817"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>Standart (el ile) ve otomatik ölçeklendirme sağlanan aktarım hızını seçme 
 
@@ -26,7 +26,7 @@ Sağlanan aktarım hızını kullandığınızda, iş yükünüz için gereken s
 
 Aşağıdaki tabloda standart (el ile) ve otomatik ölçeklendirme arasındaki üst düzey bir karşılaştırma gösterilmektedir.
 
-|Açıklama|Standart (el ile)|Otomatik Ölçeklendirme|
+|Description|Standart (el ile)|Otomatik Ölçeklendirme|
 |-------------|------|-------|
 |En uygun|Düzenli veya öngörülebilir trafiğe sahip iş yükleri|Değişken veya öngörülemeyen trafik içeren iş yükleri. Bkz. [Otomatik ölçeklendirme durumlarını kullanma](provision-throughput-autoscale.md#use-cases-of-autoscale).|
 |Nasıl çalışır?|`T`El ile değiştirmediğiniz müddetçe zaman içinde statik olan bir dızı ru/sn sağlayabilirsiniz. Her İkincisi, en fazla `T` ru/sn aktarım hızı kullanabilirsiniz. <br/><br/>Örneğin, standart (el ile) 400 RU/s ayarlarsanız, verimlilik 400 RU/s ' de kalır.|Sistemin aşilmesini istemediğiniz en yüksek veya en büyük RU/sn 'yi ayarlayın `Tmax` . Sistem, aktarım hızını otomatik olarak ölçeklendirir `T` `0.1* Tmax <= T <= Tmax` . <br/><br/>Örneğin, otomatik ölçek, 4000 RU/sn 'nin en yüksek RU/sn 'yi ayarlarsanız, sistem 400-4000 RU/s arasında ölçeklendirecektir.|
@@ -61,7 +61,7 @@ Zaman içinde, üretilen iş türünü seçtikten sonra uygulamanızı izlemeniz
 
 Otomatik ölçeklendirme kullanırken, sağlanan otomatik ölçeklendirme en fazla RU/sn (**Otomatik ölçeklendirme en fazla aktarım hızı**) ve sistem şu anda ölçeklendirildi (**sağlanan aktarım hızı**) için Azure izleyici 'yi kullanın. Aşağıda, otomatik ölçeklendirme kullanan bir değişkene veya öngörülemeyen iş yüküne bir örnek verilmiştir. Herhangi bir trafik olmadığında, sistem RU/s 'yi en fazla RU/sn 'nin en az %10 ' u, bu örnekte sırasıyla 5000 RU/s ve 50.000 RU/s olacak şekilde ölçeklendirir. 
 
-![Otomatik ölçeklendirme kullanan iş yükü örneği](media/how-to-choose-offer/autoscale-metrics-azure-monitor.png)
+:::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="Otomatik ölçeklendirme kullanan iş yükü örneği":::
 
 > [!NOTE]
 > Standart (el ile) sağlanan aktarım hızını kullandığınızda, **sağlanan aktarım hızı** ölçümü, bir kullanıcının ayarlamış olduğu şeyleri gösterir. Otomatik ölçeklendirme üretilen işi kullandığınızda bu ölçüm, sistemin Şu anda ölçeklendirmekte olduğu RU/s 'yi ifade eder.

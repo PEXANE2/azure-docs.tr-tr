@@ -5,15 +5,15 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 44d3b7c2b9e23b90f696162747d9728b18fb7d3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78c15da1ea9fe5f6307ce388e4d64d372e9eb8c8
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623366"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261775"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Azure Cosmos DB'de bölümlenmiş graf kullanma
 
@@ -21,7 +21,7 @@ Azure Cosmos DB Gremlin API 'sinin temel özelliklerinden biri, büyük ölçekl
 
 Kapsayıcının boyutunun 20 GB 'den fazlasını depolaması bekleniyorsa veya saniyede 10.000 ' den fazla istek birimi (ru) ayırmak istiyorsanız **bölümlendirme gerekir** . [Azure Cosmos DB bölümleme mekanizmasından](partition-data.md) aynı genel ilkeler aşağıda açıklanan bazı grafiğe özgü iyileştirmeler ile uygulanır.
 
-![Grafik bölümleme.](./media/graph-partitioning/graph-partitioning.png)
+:::image type="content" source="./media/graph-partitioning/graph-partitioning.png" alt-text="Grafik bölümleme." border="false":::
 
 ## <a name="graph-partitioning-mechanism"></a>Grafik bölümleme mekanizması
 
@@ -29,18 +29,18 @@ Aşağıdaki kılavuzlar Azure Cosmos DB ' de bölümleme stratejisinin nasıl �
 
 - **Her iki köşe ve kenar da JSON belgeleri olarak depolanır**.
 
-- Köşeler **bir bölüm anahtarı gerektirir**. Bu anahtar, bir karma algoritma aracılığıyla köşenin depolanacağı bölümü saptacaktır. Bölüm anahtarı özellik adı, yeni bir kapsayıcı oluşturulurken tanımlanır ve şu biçimdedir: `/partitioning-key-name`.
+- Köşeler **bir bölüm anahtarı gerektirir**. Bu anahtar, bir karma algoritma aracılığıyla köşenin depolanacağı bölümü saptacaktır. Bölüm anahtarı özellik adı, yeni bir kapsayıcı oluşturulurken tanımlanır ve şu biçimdedir: `/partitioning-key-name` .
 
 - **Kenarlar, kaynak köşelerine sahip olacak**. Diğer bir deyişle, her bir köşe için bölüm anahtarı, giden kenarları ile birlikte nerede depolandığını tanımlar. Bu iyileştirme, `out()` grafik sorgularında kardinalite kullanılırken çapraz bölüm sorgularını önlemek için yapılır.
 
-- **Kenarlar işaret ettikleri köşelerin başvurularını içerir**. Tüm kenarlar, işaret ettikleri köşelerin bölüm anahtarları ve kimlikleriyle birlikte depolanır. Bu hesaplama, tüm `out()` yön sorgularının her zaman kapsamlı bölümlenmiş bir sorgu olmasını sağlar ve bu durum, geçici bir çapraz bölümlü sorgu değildir. 
+- **Kenarlar işaret ettikleri köşelerin başvurularını içerir**. Tüm kenarlar, işaret ettikleri köşelerin bölüm anahtarları ve kimlikleriyle birlikte depolanır. Bu hesaplama, tüm `out()` Yön sorgularının her zaman kapsamlı bölümlenmiş bir sorgu olmasını sağlar ve bu durum, geçici bir çapraz bölümlü sorgu değildir. 
 
 - **Grafik sorgularının bir bölüm anahtarı belirtmesi gerekir**. Azure Cosmos DB yatay bölümlemeden tam olarak yararlanmak için, tek bir köşe seçildiğinde, mümkün olduğunda bölüm anahtarı belirtilmelidir. Bölümlenmiş bir grafikte bir veya birden çok köşe seçmek için sorgular aşağıda verilmiştir:
 
-    - `/id`ve `/label` GREMLIN API 'deki bir kapsayıcı için bölüm anahtarı olarak desteklenmez.
+    - `/id`ve `/label` Gremlin API 'deki bir kapsayıcı için bölüm anahtarı olarak desteklenmez.
 
 
-    - KIMLIĞE göre bir köşe seçerek ve ardından **bölüm anahtarı `.has()` özelliğini belirtmek için adımını kullanarak**: 
+    - KIMLIĞE göre bir köşe seçerek ve ardından ** `.has()` bölüm anahtarı özelliğini belirtmek için adımını kullanarak**: 
     
         ```java
         g.V('vertex_id').has('partitionKey', 'partitionKey_value')

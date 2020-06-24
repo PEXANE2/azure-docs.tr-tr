@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 2f62af434a49d11cdc1acfc4a09b5bffbd69140b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 566be788066db54f827bb4d6e46f0d832755ce26
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84316708"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115680"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API bölümleniyor
 
@@ -53,7 +53,7 @@ CREATE TABLE uprofile.user (
 
 Bu tasarımda, `id` alanı birincil anahtar olarak tanımladık. Birincil anahtar, tablodaki kayıt için tanımlayıcı olarak işlev görür ve ayrıca Azure Cosmos DB bölüm anahtarı olarak da kullanılır. Birincil anahtar daha önce açıklanan şekilde tanımlanmışsa, her bölümde yalnızca tek bir kayıt olur. Bu, veritabanına veri yazarken kusursuz bir yatay ve ölçeklenebilir dağıtıma neden olur ve anahtar-değer arama kullanım örnekleri için idealdir. Uygulamanın, okuma performansını en üst düzeye çıkarmak için tablodan verileri okurken birincil anahtar sağlaması gerekir. 
 
-![bölümler](./media/cassandra-partitioning/cassandra-partitioning.png)
+:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning.png" alt-text="bölüme" border="false":::
 
 
 ## <a name="compound-primary-key"></a>Bileşik birincil anahtar
@@ -83,11 +83,11 @@ insert into uprofile.user (user, id, message) values ('theo', 2, 'hello again');
 
 Veriler döndürüldüğünde, Apache Cassandra 'da beklendiği gibi kümeleme anahtarına göre sıralanır:
 
-![bölümler](./media/cassandra-partitioning/select-from-pk.png)
+:::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="bölüme":::
 
 Bu şekilde modellenen verilerle, her bölüme Kullanıcı tarafından gruplanmış birden çok kayıt atanabilir. Bu nedenle, `partition key` `user` belirli bir kullanıcıya ait tüm iletileri almak için (Bu örnekte,) tarafından etkin bir şekilde yönlendirilen bir sorgu yayınlarız. 
 
-![bölümler](./media/cassandra-partitioning/cassandra-partitioning2.png)
+:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning2.png" alt-text="bölüme" border="false":::
 
 
 ## <a name="composite-partition-key"></a>Bileşik bölüm anahtarı

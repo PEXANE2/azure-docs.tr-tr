@@ -3,12 +3,12 @@ title: Resource Manager ve klasik dağıtım
 description: Resource Manager dağıtım modeli ile klasik (veya Hizmet Yönetimi) dağıtım modeli arasındaki farklılıkları açıklar.
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: 85691d562f2b58cdced3264de11f3dd29a7ca168
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2deddfff595feee429aa1be942e2f4651700f54
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064521"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763797"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager ile klasik dağıtım karşılaştırması: Dağıtım modellerini ve kaynaklarınızın durumunu anlama
 
@@ -77,6 +77,8 @@ Yalnızca Resource Manager ile oluşturulan kaynaklar etiketleri destekler. Klas
 Aşağıdaki diyagramda, Resource Manager ile dağıtılan işlem, ağ ve depolama kaynakları gösterilmiştir.
 
 ![Resource Manager mimarisi](./media/deployment-models/arm_arch3.png)
+
+SRP: depolama kaynak sağlayıcısı, CRP: Işlem kaynak sağlayıcısı, NRP: ağ kaynak sağlayıcısı
 
 Kaynaklar arasındaki aşağıdaki ilişkilere dikkat edin:
 

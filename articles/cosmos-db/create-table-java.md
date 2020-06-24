@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 979f93ef19a2c2aec96c51f81f412468070f7b1d
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 88a98c05b09d8e76159199fd5035a15d62bc293b
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218003"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115124"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-table-api-data"></a>Hızlı başlangıç: Azure Cosmos DB Tablo API'si verileri yönetmek için bir Java uygulaması oluşturma
 
@@ -159,7 +159,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda **bağlantı dizesi**' ni seçin. 
 
-   ![Bağlantı dizesi bölmesindeki bağlantı dizesi bilgilerini görüntüleme](./media/create-table-java/cosmos-db-quickstart-connection-string.png)
+   :::image type="content" source="./media/create-table-java/cosmos-db-quickstart-connection-string.png" alt-text="Bağlantı dizesi bölmesindeki bağlantı dizesi bilgilerini görüntüleme":::
 
 2. Sağ taraftaki kopyala düğmesini kullanarak PRIMARY CONNECTION STRING’i kopyalayın.
 

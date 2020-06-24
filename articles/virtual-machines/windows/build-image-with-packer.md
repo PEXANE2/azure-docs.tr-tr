@@ -8,17 +8,17 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 4180f62e589ef79227d8e60ca19661e1c65f0097
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 219685b1f82cea3e85a6d45023e913141345e685
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773330"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106519"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Azure 'da Windows sanal makine görüntüleri oluşturmak için Packer kullanma
 Azure 'daki her sanal makine (VM), Windows Dağıtım ve işletim sistemi sürümünü tanımlayan bir görüntüden oluşturulur. Görüntüler, önceden yüklenmiş uygulamaları ve konfigürasyonları içerebilir. Azure Marketi, en yaygın işletim sistemi ve uygulama ortamları için pek çok birinci ve üçüncü taraf görüntü sağlar veya gereksinimlerinize uygun kendi özel görüntülerinizi de oluşturabilirsiniz. Bu makalede, Azure 'da özel görüntüler tanımlamak ve derlemek için açık kaynaklı araç [Packer](https://www.packer.io/) 'ın nasıl kullanılacağı açıklanır.
 
-Bu makale, [az PowerShell Module](https://docs.microsoft.com/powershell/azure/install-az-ps) Version 1.3.0 ve [Packer](https://www.packer.io/docs/install/index.html) sürüm 1.3.4 kullanılarak 2/21/2019 ' de son test edilmiştir.
+Bu makale, [az PowerShell Module](https://docs.microsoft.com/powershell/azure/install-az-ps) Version 1.3.0 ve [Packer](https://www.packer.io/docs/install) sürüm 1.3.4 kullanılarak 2/21/2019 ' de son test edilmiştir.
 
 > [!NOTE]
 > Azure 'da, kendi özel görüntülerinizi tanımlamak ve oluşturmak için Azure görüntü Oluşturucu (Önizleme) hizmeti artık vardır. Azure Image Builder, Packer üzerine kurulmuştur, bu nedenle mevcut Packer kabuğu hazırlayıcı betikleri ile birlikte kullanabilirsiniz. Azure Image Builder 'ı kullanmaya başlamak için bkz. [Azure Image Builder Ile WINDOWS VM oluşturma](image-builder.md).
@@ -64,7 +64,7 @@ Get-AzSubscription
 ## <a name="define-packer-template"></a>Packer şablonunu tanımla
 Görüntü oluşturmak için JSON dosyası olarak bir şablon oluşturursunuz. Şablonda, gerçek yapı işlemini yürüten oluşturucular ve hazırlayıcılar tanımlarsınız. Packer, Azure [için](https://www.packer.io/docs/builders/azure.html) , önceki adımda oluşturulan hizmet sorumlusu kimlik bilgileri gibi Azure kaynaklarını tanımlamanızı sağlayan bir Oluşturucu içerir.
 
-*Windows. JSON* adlı bir dosya oluşturun ve aşağıdaki içeriği yapıştırın. Aşağıdaki değerleri girin:
+*Üzerindewindows.js* adlı bir dosya oluşturun ve aşağıdaki içeriği yapıştırın. Aşağıdaki değerleri girin:
 
 | Parametre                           | Nereden alınır |
 |-------------------------------------|----------------------------------------------------|

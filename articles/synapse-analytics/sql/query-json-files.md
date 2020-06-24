@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 7a8c9083ecbadbf63cf0ac65dc1803b478e939fe
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 5d02736e9cb0a612e434dc5a79a73d7a62785728
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873396"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207660"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı SQL (Önizleme) kullanarak JSON dosyalarını sorgulama
 
@@ -46,7 +46,7 @@ Aşağıdaki bölümde JSON dosyalarını okumak için örnek betikler yer almak
 
 ## <a name="read-json-files"></a>JSON dosyalarını okuma
 
-JSON_VALUE ve [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)kullanarak JSON dosyalarını işlemek IÇIN, JSON dosyasını depolamadan tek bir sütun olarak okumanız gerekir. Aşağıdaki komut, *Book1. JSON* dosyasını tek bir sütun olarak okur:
+JSON_VALUE ve [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)kullanarak JSON dosyalarını işlemek IÇIN, JSON dosyasını depolamadan tek bir sütun olarak okumanız gerekir. Aşağıdaki betik, dosyadaki *book1.js* tek bir sütun olarak okur:
 
 ```sql
 SELECT

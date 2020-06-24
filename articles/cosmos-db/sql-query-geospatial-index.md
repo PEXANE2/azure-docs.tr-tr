@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/03/2020
 ms.author: tisande
-ms.openlocfilehash: cd96f440c4e8c971d1f1473f667d31e60edef137
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: b06a8737c1ceb538417f966a989ccb39069f4d4c
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839223"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116307"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Azure Cosmos DB Jeo uzamsal verileri dizinle
 
@@ -34,11 +34,11 @@ Azure portal **Coğrafya** ve **geometri** uzamsal türü arasında geçiş yapa
 
 Azure portal içinde **Veri Gezgini** **Jeo-uzamsal yapılandırması** nasıl ayarlanır:
 
-![Jeo-uzamsal yapılandırma ayarlanıyor](./media/sql-query-geospatial-index/geospatial-configuration.png)
+:::image type="content" source="./media/sql-query-geospatial-index/geospatial-configuration.png" alt-text="Jeo-uzamsal yapılandırma ayarlanıyor":::
 
 Ayrıca, `geospatialConfig` **Jeo-uzamsal yapılandırmayı**ayarlamak için .NET SDK 'sında de değişiklik yapabilirsiniz:
 
-Belirtilmemişse, varsayılan olarak Coğrafya `geospatialConfig` veri türü olur. `geospatialConfig`Öğesini değiştirdiğinizde, kapsayıcıdaki tüm mevcut Jeo uzamsal verilerin yeniden dizinlenir.
+Belirtilmemişse, `geospatialConfig` Varsayılan olarak Coğrafya veri türü olur. `geospatialConfig`Öğesini değiştirdiğinizde, kapsayıcıdaki tüm mevcut Jeo uzamsal verilerin yeniden dizinlenir.
 
 İşte, Jeo-uzamsal veri türünü, `geometry` `geospatialConfig` özelliği ayarlanarak ve **sıçrama dingbox**ekleyerek olarak değiştirme örneği:
 
@@ -107,7 +107,7 @@ Aşağıdaki JSON kod parçacığında **Coğrafya** veri türü için etkin bir
 
 ## <a name="geometry-data-indexing-examples"></a>Geometri veri dizin oluşturma örnekleri
 
-Coğrafya veri türü ile benzer olan **geometri** veri türü ile, dizine eklenecek ilgili yolları ve türleri belirtmeniz gerekir. Ayrıca, söz konusu yolun dizine alınması istenen `boundingBox` alanı belirtmek için dizin oluşturma ilkesi içinde de bir de belirtmeniz gerekir. Her Jeo-uzamsal yol kendi`boundingBox`gerektirir.
+Coğrafya veri türü ile benzer olan **geometri** veri türü ile, dizine eklenecek ilgili yolları ve türleri belirtmeniz gerekir. Ayrıca, `boundingBox` söz konusu yolun dizine alınması istenen alanı belirtmek için dizin oluşturma ilkesi içinde de bir de belirtmeniz gerekir. Her Jeo-uzamsal yol kendi gerektirir `boundingBox` .
 
 Sınırlayıcı kutu aşağıdaki özelliklerden oluşur:
 
@@ -120,7 +120,7 @@ Geometrik veriler sonsuz olabilecek bir düzlemi kapladığı için sınırlayı
 
 Verilerinizin tümünü (veya çoğunu) içeren bir sınırlayıcı kutu oluşturun. Yalnızca sınırlayıcı kutunun içindeki nesneler üzerinde hesaplanan işlemler, uzamsal dizin kullanabilir. Sınırlayıcı kutuyu gerekenden büyük hale getirmek, sorgu performansını olumsuz yönde etkiler.
 
-**Geospatialconfig** ile `geometry` **geometri** verilerinin dizinini oluşturan örnek bir dizin oluşturma ilkesi aşağıda verilmiştir:
+**Geospatialconfig** ile **geometri** verilerinin dizinini oluşturan örnek bir dizin oluşturma ilkesi aşağıda verilmiştir `geometry` :
 
 ```json
  {
@@ -159,7 +159,7 @@ Verilerinizin tümünü (veya çoğunu) içeren bir sınırlayıcı kutu oluştu
 Yukarıdaki dizin oluşturma ilkesinde x koordinatları için (-10, 10) bir **sıçrama Dingbox** ve y koordinatları için (-20, 20) vardır. Yukarıdaki dizin oluşturma ilkesiyle kapsayıcı, tamamen bu bölgedeki tüm noktaları, çokgenler, MultiPolygon ve LineStrings dizinini dizinleyecek.
 
 > [!NOTE]
-> Veri türü olan `geography` bir kapsayıcıya **sıçrama dingbox** ile bir dizin oluşturma ilkesi eklemeye çalışırsanız, başarısız olur. Bir **sıçrama kutusu**eklemeden `geometry` önce kapsayıcının **geospatialconfig** ' i değiştirmelisiniz. Veri ekleyebilir ve dizin oluşturma ilkenizin geri kalanını (yollar ve türler gibi), kapsayıcının Jeo uzamsal veri türünü seçmeden önce ya da sonra değiştirebilirsiniz.
+> Veri türü olan bir kapsayıcıya **sıçrama Dingbox** ile bir dizin oluşturma ilkesi eklemeye çalışırsanız `geography` , başarısız olur. Bir sıçrama kutusu eklemeden önce kapsayıcının **Geospatialconfig** ' i değiştirmelisiniz `geometry` . **boundingBox** Veri ekleyebilir ve dizin oluşturma ilkenizin geri kalanını (yollar ve türler gibi), kapsayıcının Jeo uzamsal veri türünü seçmeden önce ya da sonra değiştirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,15 +3,15 @@ title: Bölümlenmemiş Azure Cosmos kapsayıcılarını bölümlenmiş kapsayı
 description: Var olan tüm bölümlenmemiş kapsayıcıları bölümlenmiş kapsayıcılara geçirmeyi öğrenin.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 742ef62895f3ef64e8fa22ab21d2947bee57776b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 619ec7e5510f9d3a5a17dcd5961fbd2182674df4
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623361"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263492"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Bölümlendirilmemiş kapsayıcıları bölümlenmiş kapsayıcılara geçirme
 
@@ -24,7 +24,7 @@ Bölümlenmemiş kapsayıcılar eski ve depolama ve aktarım hızını ölçekle
 
 ## <a name="migrate-container-using-the-system-defined-partition-key"></a>Sistem tanımlı bölüm anahtarını kullanarak kapsayıcıyı geçirme
 
-Azure Cosmos DB geçişi desteklemek için, bölüm anahtarı olmayan tüm kapsayıcılarda adlı `/_partitionkey` sistem tanımlı bir bölüm anahtarı sağlar. Kapsayıcılar geçirildikten sonra bölüm anahtarı tanımını değiştiremezsiniz. Örneğin, bölümlenmiş bir kapsayıcıya geçirilmiş bir kapsayıcının tanımı aşağıdaki gibi olacaktır:
+Azure Cosmos DB geçişi desteklemek için, `/_partitionkey` bölüm anahtarı olmayan tüm kapsayıcılarda adlı sistem tanımlı bir bölüm anahtarı sağlar. Kapsayıcılar geçirildikten sonra bölüm anahtarı tanımını değiştiremezsiniz. Örneğin, bölümlenmiş bir kapsayıcıya geçirilmiş bir kapsayıcının tanımı aşağıdaki gibi olacaktır:
 
 ```json
 {
@@ -38,7 +38,7 @@ Azure Cosmos DB geçişi desteklemek için, bölüm anahtarı olmayan tüm kapsa
 }
 ```
 
-Kapsayıcı geçirildikten sonra, `_partitionKey` özelliği belgenin diğer özellikleriyle birlikte doldurarak belgeler oluşturabilirsiniz. Özelliği `_partitionKey` , belgelerinizin bölüm anahtarını temsil eder.
+Kapsayıcı geçirildikten sonra, `_partitionKey` özelliği belgenin diğer özellikleriyle birlikte doldurarak belgeler oluşturabilirsiniz. `_partitionKey`Özelliği, belgelerinizin bölüm anahtarını temsil eder.
 
 Doğru bölüm anahtarının seçilmesi, sağlanan aktarım hızını en iyi şekilde kullanmak için önemlidir. Daha fazla bilgi için bkz. [bölüm anahtarını seçme](partitioning-overview.md) makalesi.
 
@@ -95,7 +95,7 @@ Tüm örnek için bkz. [.NET örnekleri][1] GitHub deposu.
                       
 ## <a name="migrate-the-documents"></a>Belgeleri geçirme
 
-Kapsayıcı tanımı bir bölüm anahtarı özelliği ile geliştirirken, kapsayıcıdaki belgeler otomatik olarak geçirilmez. Bu, sistem bölümü anahtar özelliği `/_partitionKey` yolunun varolan belgelere otomatik olarak eklenmeyeceği anlamına gelir. Bir bölüm anahtarı olmadan oluşturulmuş belgeleri okuyarak ve bunları belgelerdeki özelliği ile `_partitionKey` yeniden yazarak, varolan belgeleri yeniden bölümlemeniz gerekir.
+Kapsayıcı tanımı bir bölüm anahtarı özelliği ile geliştirirken, kapsayıcıdaki belgeler otomatik olarak geçirilmez. Bu, sistem bölümü anahtar özelliği `/_partitionKey` yolunun varolan belgelere otomatik olarak eklenmeyeceği anlamına gelir. Bir bölüm anahtarı olmadan oluşturulmuş belgeleri okuyarak ve bunları belgelerdeki özelliği ile yeniden yazarak, varolan belgeleri yeniden bölümlemeniz gerekir `_partitionKey` .
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>Bölüm anahtarı olmayan belgelere erişin
 
@@ -122,14 +122,14 @@ Geçirilen bir kapsayıcı SDK 'nın en son/v3 sürümü tarafından tüketiledi
 
 **V3 SDK kullanılarak bölüm anahtarı olmadan eklenen öğelerin sayısını sorgulamak daha yüksek aktarım hızı tüketimine sahip olabilir**
 
-V2 SDK kullanılarak eklenen öğeler için v3 SDK veya parametresi ile `PartitionKey.None` v3 SDK kullanılarak eklenen öğeler için sorgulama yaparsanız, Count sorgusu, `PartitionKey.None` parametre feedolar içinde SAĞLANDıYSA daha fazla ru/s tüketebilir. Bölüm anahtarı ile başka hiçbir öğe eklenmezseniz `PartitionKey.None` parametresini sağlamamız önerilir.
+V2 SDK kullanılarak eklenen öğeler için v3 SDK veya parametresi ile v3 SDK kullanılarak eklenen öğeler için sorgulama yaparsanız `PartitionKey.None` , Count sorgusu, `PartitionKey.None` parametre feedolar içinde sağlandıysa daha fazla ru/s tüketebilir. `PartitionKey.None`Bölüm anahtarı ile başka hiçbir öğe eklenmezseniz parametresini sağlamamız önerilir.
 
-Bölüm anahtarı için farklı değerlerle yeni öğeler eklenirse, içinde `FeedOptions` uygun anahtarı geçirerek bu tür öğe sayılarını sorgulamak herhangi bir sorun olmayacaktır. Bölüm anahtarı ile yeni belgeler eklendikten sonra, bölüm anahtarı değeri olmadan yalnızca belge sayısını sorgulamanızı istiyorsanız, bu sorgu, normal bölümlenmiş koleksiyonlara benzer şekilde daha yüksek RU/s öğesine neden olabilir.
+Bölüm anahtarı için farklı değerlerle yeni öğeler eklenirse, içinde uygun anahtarı geçirerek bu tür öğe sayılarını sorgulamak `FeedOptions` herhangi bir sorun olmayacaktır. Bölüm anahtarı ile yeni belgeler eklendikten sonra, bölüm anahtarı değeri olmadan yalnızca belge sayısını sorgulamanızı istiyorsanız, bu sorgu, normal bölümlenmiş koleksiyonlara benzer şekilde daha yüksek RU/s öğesine neden olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Cosmos DB'de bölümleme](partitioning-overview.md)
-* [Azure Cosmos DB istek birimleri](request-units.md)
+* [Azure Cosmos DB'de İstek birimleri](request-units.md)
 * [Kapsayıcı ve veritabanlarına aktarım hızı sağlama](set-throughput.md)
 * [Azure Cosmos hesabıyla çalışma](account-overview.md)
 

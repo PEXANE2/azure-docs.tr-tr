@@ -4,16 +4,16 @@ description: Windows sanal masaüstü oturumu konaklarının Azure Otomasyonu il
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f659a40cbb9e3ef2d0e7fe4e527518a76507d5ee
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f3a82665f197301fe81c448dd18181f0602bdbef
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745706"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209802"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak oturum ana bilgisayarlarını ölçeklendirme
 
@@ -33,14 +33,14 @@ Bu makalede, Azure Otomasyonu ile derlenen ve Windows sanal masaüstü ortamın�
 Ölçeklendirme Aracı, oturum ana makinesi maliyetlerini iyileştirmek isteyen müşteriler için düşük maliyetli bir Otomasyon seçeneği sağlar.
 
 Ölçeklendirme aracını kullanarak şunları yapabilirsiniz:
- 
+
 - VM 'Leri en yüksek ve en yoğun iş saatlerine göre başlatılacak ve durdurulacak şekilde zamanlayın.
 - CPU çekirdeği başına oturum sayısına göre VM 'Leri ölçeklendirin.
 - Yoğun olmayan saatlerde sanal makinelerin ölçeğini, çalışan en az sayıda oturum ana makinesi VM 'sini bırakarak ölçeklendirin.
 
 Ölçeklendirme Aracı, Azure Otomasyonu PowerShell runbook 'ları, Web kancaları ve Azure Logic Apps işlev birleşimini kullanır. Araç çalıştırıldığında, Azure Otomasyonu runbook 'u başlatmak için bir Web kancası çağırır Azure Logic Apps. Runbook daha sonra bir iş oluşturur.
 
-En yüksek kullanım süresi boyunca iş, her konak havuzu için geçerli çalışan oturum ana bilgisayarının geçerli oturum sayısını ve VM kapasitesini denetler. Çalışan oturum ana bilgisayar VM 'lerinin, **createazurelogicapp. ps1** dosyası Için tanımlanan *Sessionthresholdpercpu* parametresine göre mevcut oturumları destekleyebiliyor olup olmadığını hesaplamak için bu bilgileri kullanır. Oturum Ana bilgisayar VM 'Leri mevcut oturumları destekleyemiyorum, iş konak havuzundaki ek oturum ana bilgisayar VM 'lerini başlatır.
+En yüksek kullanım süresi boyunca iş, her konak havuzu için geçerli çalışan oturum ana bilgisayarının geçerli oturum sayısını ve VM kapasitesini denetler. Çalışan oturum ana bilgisayar VM 'lerinin, **createazurelogicapp.ps1** dosyası Için tanımlanan *Sessionthresholdpercpu* parametresine göre mevcut oturumları destekleyebiliyor olup olmadığını hesaplamak için bu bilgileri kullanır. Oturum Ana bilgisayar VM 'Leri mevcut oturumları destekleyemiyorum, iş konak havuzundaki ek oturum ana bilgisayar VM 'lerini başlatır.
 
 >[!NOTE]
 >*Sessionthresholdpercpu* , sanal makine üzerindeki oturum sayısını kısıtlamaz. Bu parametre yalnızca yeni VM 'Lerin, bağlantıların yük dengelenmesi için ne zaman başlatılması gerektiğini belirler. Oturum sayısını kısıtlamak için, *Maxsessionlimit* parametresini uygun şekilde yapılandırmak için [set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) yönergelerini izlemeniz gerekir.
@@ -67,7 +67,7 @@ Ancak, araç aşağıdaki sınırlamalara de sahiptir:
 - Windows sanal masaüstü hizmeti ile yapılandırılan ve kaydettirilen oturum ana bilgisayar havuzu VM 'Leri
 - Azure aboneliğinde [katkıda bulunan erişimi](../../role-based-access-control/role-assignments-portal.md) olan bir Kullanıcı
 
-Aracı dağıtmak için kullandığınız makine şunları içermelidir: 
+Aracı dağıtmak için kullandığınız makine şunları içermelidir:
 
 - Windows PowerShell 5,1 veya üzeri
 - Microsoft az PowerShell modülü
@@ -162,7 +162,7 @@ Son olarak, Azure Logic App 'i oluşturmanız ve yeni ölçeklendirme aracınız
      Login-AzAccount
      ```
 
-3. Createazurelogicapp. ps1 komut dosyasını yerel makinenize indirmek için aşağıdaki cmdlet 'i çalıştırın.
+3. createazurelogicapp.ps1 betik dosyasını yerel makinenize indirmek için aşağıdaki cmdlet 'i çalıştırın.
 
      ```powershell
      Set-Location -Path "c:\temp"
@@ -180,21 +180,21 @@ Son olarak, Azure Logic App 'i oluşturmanız ve yeni ölçeklendirme aracınız
 
      ```powershell
      $aadTenantId = (Get-AzContext).Tenant.Id
-     
+
      $azureSubscription = Get-AzSubscription | Out-GridView -PassThru -Title "Select your Azure Subscription"
      Select-AzSubscription -Subscription $azureSubscription.Id
      $subscriptionId = $azureSubscription.Id
-     
+
      $resourceGroup = Get-AzResourceGroup | Out-GridView -PassThru -Title "Select the resource group for the new Azure Logic App"
      $resourceGroupName = $resourceGroup.ResourceGroupName
      $location = $resourceGroup.Location
-     
+
      $wvdTenant = Get-RdsTenant | Out-GridView -PassThru -Title "Select your WVD tenant"
      $tenantName = $wvdTenant.TenantName
-     
+
      $wvdHostpool = Get-RdsHostPool -TenantName $wvdTenant.TenantName | Out-GridView -PassThru -Title "Select the host pool you'd like to scale"
      $hostPoolName = $wvdHostpool.HostPoolName
-     
+
      $recurrenceInterval = Read-Host -Prompt "Enter how often you'd like the job to run in minutes, e.g. '15'"
      $beginPeakTime = Read-Host -Prompt "Enter the start time for peak hours in local time, e.g. 9:00"
      $endPeakTime = Read-Host -Prompt "Enter the end time for peak hours in local time, e.g. 18:00"
@@ -204,12 +204,12 @@ Son olarak, Azure Logic App 'i oluşturmanız ve yeni ölçeklendirme aracınız
      $limitSecondsToForceLogOffUser = Read-Host -Prompt "Enter the number of seconds to wait before automatically signing out users. If set to 0, users will be signed out immediately"
      $logOffMessageTitle = Read-Host -Prompt "Enter the title of the message sent to the user before they are forced to sign out"
      $logOffMessageBody = Read-Host -Prompt "Enter the body of the message sent to the user before they are forced to sign out"
-     
+
      $automationAccount = Get-AzAutomationAccount -ResourceGroupName $resourceGroup.ResourceGroupName | Out-GridView -PassThru
      $automationAccountName = $automationAccount.AutomationAccountName
      $automationAccountConnection = Get-AzAutomationConnection -ResourceGroupName $resourceGroup.ResourceGroupName -AutomationAccountName $automationAccount.AutomationAccountName | Out-GridView -PassThru -Title "Select the Azure RunAs connection asset"
      $connectionAssetName = $automationAccountConnection.Name
-     
+
      $webHookURI = Read-Host -Prompt "Enter the URI of the WebHook returned by when you created the Azure Automation Account"
      $maintenanceTagName = Read-Host -Prompt "Enter the name of the Tag associated with VMs you don't want to be managed by this scaling tool"
 

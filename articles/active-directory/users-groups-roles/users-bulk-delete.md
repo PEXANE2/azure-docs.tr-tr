@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca30d5b050a34000fa7c6465356aba206aeaa8e4
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 3fc393279aaa6b293c2eb29099be45385ad08d9a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203376"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84731517"
 ---
 # <a name="bulk-delete-users-in-azure-active-directory"></a>Azure Active Directory Kullanıcıları toplu silme
 
@@ -35,7 +35,7 @@ Azure AD kullanıcılarını toplu olarak başarıyla silmenizi sağlamak için 
 İndirilen bir CSV şablonundaki satırlar aşağıdaki gibidir:
 
 - **Sürüm numarası**: sürüm numarasını içeren ilk satır, KARŞıYA yükleme CSV 'ye eklenmelidir.
-- **Sütun başlıkları**: sütun &lt;başlıklarının biçimi *öğe adı* &gt; [PropertyName] &lt; *gerekli veya boş*&gt;. Örneğin, `User name [userPrincipalName] Required`. Şablonun bazı eski sürümlerinde hafif Çeşitlemeler bulunabilir.
+- **Sütun başlıkları**: sütun başlıklarının biçimi &lt; *öğe adı* &gt; [PropertyName] &lt; *gerekli veya boş* &gt; . Örneğin, `User name [userPrincipalName] Required`. Şablonun bazı eski sürümlerinde hafif Çeşitlemeler bulunabilir.
 - **Örnekler satırı**: şablona her sütun için kabul edilebilir değer örneklerinin bir satırını ekledik. Örnekler satırını kaldırmalı ve kendi girişlerinizin yerine değiştirmelisiniz.
 
 ### <a name="additional-guidance"></a>Ek yönergeler
@@ -48,7 +48,7 @@ Azure AD kullanıcılarını toplu olarak başarıyla silmenizi sağlamak için 
 ## <a name="to-bulk-delete-users"></a>Kullanıcıları toplu olarak silmek için
 
 1. Kuruluşunuzda Kullanıcı Yöneticisi olan bir hesapla [Azure AD kuruluşunuzda oturum açın](https://aad.portal.azure.com) .
-1. Azure AD 'de **Kullanıcılar** > **toplu silme**' yi seçin.
+1. Azure AD 'de **Kullanıcılar**  >  **toplu silme**' yi seçin.
 1. Kullanıcı özelliklerinden oluşan geçerli bir CSV dosyası almak için, **Kullanıcı toplu silme** sayfasında **İndir** ' i seçin.
 
    ![Silmek istediğiniz kullanıcıları listeettiğiniz yerel bir CSV dosyası seçin](./media/users-bulk-delete/bulk-delete.png)
@@ -76,7 +76,7 @@ Bundan sonra, sildiğiniz kullanıcıların Azure AD kuruluşunda Azure portal v
 
 1. Kuruluşta Kullanıcı Yöneticisi olan bir hesapla Azure portal oturum açın.
 1. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
-1. **Yönet** bölümünde **Kullanıcılar**’ı seçin.
+1. **Yönet** bölümünde **Kullanıcılar**'ı seçin.
 1. **Göster**altında yalnızca **tüm kullanıcılar** ' ı seçin ve sildiğiniz kullanıcıların artık listelenmediğini doğrulayın.
 
 ### <a name="verify-deleted-users-with-powershell"></a>Silinen kullanıcıları PowerShell ile doğrulama

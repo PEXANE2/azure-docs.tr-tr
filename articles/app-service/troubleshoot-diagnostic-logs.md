@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: e945fd77c2615e6f5213a9aa4fc996f0c4d2f3dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b415c9582af2303451a8076307f07ee92ac08d0
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769995"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261350"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme
 ## <a name="overview"></a>Genel Bakış
@@ -23,7 +23,7 @@ Bu makalede tanılama günlükleri ile çalışmak için [Azure Portal](https://
 >
 >
 
-|Tür|Platform|Konum|Açıklama|
+|Tür|Platform|Konum|Description|
 |-|-|-|-|
 | Uygulama günlüğüne kaydetme | Windows, Linux | App Service dosya sistemi ve/veya Azure depolama Blobları | Uygulama kodunuz tarafından oluşturulan iletileri günlüğe kaydeder. İletiler seçtiğiniz Web çerçevesi tarafından veya Dilinizdeki standart günlük modelini kullanarak doğrudan uygulama kodunuzda oluşturulabilir. Her ileti şu kategorilerden birine atanır: **kritik**, **hata**, **Uyarı**, **bilgi**, **hata ayıklama**ve **izleme**. Uygulama günlüğünü etkinleştirdiğinizde önem düzeyini ayarlayarak günlüğün ne kadar ayrıntılı olmasını istediğinizi seçebilirsiniz.|
 | Web sunucusu günlüğü| Windows | App Service dosya sistemi veya Azure depolama Blobları| [W3C Genişletilmiş günlük dosyası biçimindeki](/windows/desktop/Http/w3c-logging)ham http istek verileri. Her günlük iletisi HTTP yöntemi, kaynak URI, istemci IP, istemci bağlantı noktası, Kullanıcı Aracısı, yanıt kodu vb. gibi verileri içerir. |
@@ -46,10 +46,10 @@ Bu makalede tanılama günlükleri ile çalışmak için [Azure Portal](https://
 
 **Uygulama günlüğü (dosya sistemi)** veya **uygulama günlüğü (blob)** ya da her ikisi için **Açık** seçeneğini belirleyin. 
 
-**Dosya sistemi** seçeneği geçici hata ayıklama amaçlarıyla yapılır ve 12 saat içinde kendisini kapatır. **BLOB** seçeneği uzun süreli günlüğe kaydetme içindir ve günlükleri yazmak için bir BLOB depolama kapsayıcısı gerekir.  **BLOB** seçeneği Ayrıca günlük iletilerinde (`InstanceId`), iş parçacığı kimliği (`Tid`) ve daha ayrıntılı bir zaman DAMGASıNA ([`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks)) ait kaynak sanal makine örneğinin kimliği gibi ek bilgiler içerir.
+**Dosya sistemi** seçeneği geçici hata ayıklama amaçlarıyla yapılır ve 12 saat içinde kendisini kapatır. **BLOB** seçeneği uzun süreli günlüğe kaydetme içindir ve günlükleri yazmak için bir BLOB depolama kapsayıcısı gerekir.  **BLOB** seçeneği Ayrıca günlük iletilerinde ( `InstanceId` ), iş parçacığı kimliği ( `Tid` ) ve daha ayrıntılı bir zaman damgasına () ait kaynak sanal makine örneğinin kimliği gibi ek bilgiler içerir [`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks) .
 
 > [!NOTE]
-> Şu anda yalnızca .NET uygulama günlükleri blob depolamaya yazılabilir. Java, PHP, Node. js, Python uygulama günlükleri yalnızca App Service dosya sisteminde depolanabilir (günlükleri dış depolamaya yazmak için kod değişiklikleri olmadan).
+> Şu anda yalnızca .NET uygulama günlükleri blob depolamaya yazılabilir. Java, PHP, Node.js, Python uygulama günlükleri yalnızca App Service dosya sisteminde depolanabilir (günlükleri dış depolamaya yazmak için kod değişiklikleri olmadan).
 >
 > Ayrıca, [depolama hesabınızın erişim anahtarlarını](../storage/common/storage-create-storage-account.md)yeniden oluşturursanız, ilgili günlük yapılandırmasını, güncelleştirilmiş erişim anahtarlarını kullanacak şekilde sıfırlamanız gerekir. Bunu yapmak için:
 >
@@ -62,9 +62,9 @@ Günlüğe kaydedilecek ayrıntı düzeyini veya **düzeyi**seçin. Aşağıdaki
 
 | Düzey | Dahil edilen Kategoriler |
 |-|-|
-|**Devre dışı** | Hiçbiri |
+|**Devre dışı** | Yok |
 |**Hata** | Hata, kritik |
-|**Warning** | Uyarı, hata, kritik|
+|**Uyarı** | Uyarı, hata, kritik|
 |**Bilgi** | Bilgi, uyarı, hata, kritik|
 |**Seçeneini** | Trace, Debug, Info, uyarı, hata, kritik (tüm kategoriler) |
 
@@ -166,12 +166,12 @@ Linux/kapsayıcı uygulamaları için, ZIP dosyası hem Docker konağının hem 
 
 Windows uygulamaları için, ZIP dosyası App Service dosya sistemindeki *D:\home\logfiles* dizininin içeriğini içerir. Aşağıdaki yapıya sahiptir:
 
-| Günlük türü | Dizin | Açıklama |
+| Günlük türü | Dizin | Description |
 |-|-|-|
 | **Uygulama günlükleri** |*/LogFiles/Application/* | Bir veya daha fazla metin dosyası içeriyor. Günlük iletilerinin biçimi kullandığınız günlük sağlayıcısına bağlıdır. |
 | **Başarısız Istek Izlemeleri** | */LogFiles/W3SVC # # # # # # # # #/* | XML dosyalarını ve bir XSL dosyasını içerir. Biçimli XML dosyalarını tarayıcıda görüntüleyebilirsiniz. |
 | **Ayrıntılı hata günlükleri** | */LogFiles/DetailedErrors/* | HTM hata dosyalarını içerir. HTM dosyalarını tarayıcıda görüntüleyebilirsiniz.<br/>Başarısız istek izlemelerini görüntülemenin bir başka yolu da portalda uygulama sayfanıza gitmenin bir yoludur. Sol menüden **Tanıla ve sorunları çöz**' ü seçin, sonra **başarısız istek izleme günlüklerini**arayın ve ardından istediğiniz izlemeye gözatıp görüntülemek için simgeye tıklayın. |
-| **Web sunucusu günlükleri** | */LogFiles/http/RawLogs/* | [W3C Genişletilmiş günlük dosyası biçimi](/windows/desktop/Http/w3c-logging)kullanılarak biçimlendirilen metin dosyalarını içerir. Bu bilgiler, bir metin düzenleyici veya [günlük ayrıştırıcısı](https://go.microsoft.com/fwlink/?LinkId=246619)gibi bir yardımcı program kullanılarak okunabilir.<br/>App Service `s-computername`, `s-ip`, veya `cs-version` alanlarını desteklemez. |
+| **Web sunucusu günlükleri** | */LogFiles/http/RawLogs/* | [W3C Genişletilmiş günlük dosyası biçimi](/windows/desktop/Http/w3c-logging)kullanılarak biçimlendirilen metin dosyalarını içerir. Bu bilgiler, bir metin düzenleyici veya [günlük ayrıştırıcısı](https://go.microsoft.com/fwlink/?LinkId=246619)gibi bir yardımcı program kullanılarak okunabilir.<br/>App Service `s-computername` ,, `s-ip` veya alanlarını desteklemez `cs-version` . |
 | **Dağıtım günlükleri** | */LogFiles/git/* ve */Deployments/* | Ayrıca, iç dağıtım işlemlerine ve git dağıtımları günlüklerine göre oluşturulan günlükleri içerir. |
 
 ## <a name="send-logs-to-azure-monitor-preview"></a>Günlükleri Azure Izleyici 'ye gönderme (Önizleme)
@@ -185,7 +185,7 @@ Yeni [Azure izleyici tümleştirmesiyle](https://aka.ms/appsvcblog-azmon), günl
 
 Aşağıdaki tabloda desteklenen günlük türleri ve açıklamaları gösterilmektedir: 
 
-| Günlük türü | Windows desteği | Linux (Docker) desteği | Açıklama |
+| Günlük türü | Windows desteği | Linux (Docker) desteği | Description |
 |-|-|-|
 | AppServiceConsoleLogs | TBA dili | Yes | Standart çıkış ve standart hata |
 | AppServiceHTTPLogs | Yes | Yes | Web sunucusu günlükleri |
@@ -193,6 +193,8 @@ Aşağıdaki tabloda desteklenen günlük türleri ve açıklamaları gösterilm
 | AppServiceAuditLogs | Yes | Yes | FTP ve kudu aracılığıyla oturum açma etkinliği |
 | AppServiceFileAuditLogs | Yes | TBD | FTP ve kudu aracılığıyla dosya değişiklikleri |
 | AppServiceAppLogs | TBA dili | Java & & Tomcat | Uygulama günlükleri |
+| AppServiceIPSecAuditLogs  | Yes | Yes | IP kurallarından gelen istekler |
+| AppServicePlatformLogs  | TBA dili | Yes | Kapsayıcı günlükleri |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a>Sonraki adımlar
 * [Azure Izleyici ile günlük sorgulama](../azure-monitor/log-query/log-query-overview.md)

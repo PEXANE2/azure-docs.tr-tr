@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: motanv
 ms.openlocfilehash: 4bdb00eec38addc0c9f88eba8b73185ec5721277
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282048"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692589"
 ---
 # <a name="testability-actions"></a>Test edilebilirlik eylemleri
 Güvenilir olmayan bir altyapının benzetimini yapmak için Azure Service Fabric, çeşitli gerçek dünyada hataların ve durum geçişlerinin benzetimini yapmak için kullanabileceğiniz bir geliştirici sağlar. Bunlar, test edilebilirlik eylemleri olarak gösterilir. Eylemler, belirli bir hata ekleme, durum geçişi veya doğrulamaya neden olan alt düzey API 'lerdir. Bu eylemleri birleştirerek hizmetleriniz için kapsamlı test senaryoları yazabilirsiniz.
 
 Service Fabric, bu eylemlerden oluşan bazı yaygın test senaryoları sağlar. Yaygın durum geçişlerini ve hata durumlarını sınamak için dikkatle seçilmiş olan bu yerleşik senaryoları kullanmanızı kesinlikle öneririz. Ancak, henüz yerleşik senaryolar kapsamında olmayan veya uygulamanız için özel olarak uyarlanmış senaryolar için kapsam eklemek istediğinizde, Eylemler, özel test senaryoları oluşturmak için kullanılabilir.
 
-Eylemlerin C# uygulamaları System. Fabric. dll derlemesinde bulunur. System Fabric PowerShell modülü, Microsoft. ServiceFabric. PowerShell. dll derlemesinde bulunur. Çalışma zamanı yüklemesinin bir parçası olarak, Service Fabric PowerShell modülü kullanım kolaylığı sağlamak için yüklenir.
+Eylemlerin C# uygulamaları System.Fabric.dll derlemesinde bulunur. System Fabric PowerShell modülü Microsoft.ServiceFabric.Powershell.dll derlemesinde bulunur. Çalışma zamanı yüklemesinin bir parçası olarak, Service Fabric PowerShell modülü kullanım kolaylığı sağlamak için yüklenir.
 
 ## <a name="graceful-vs-ungraceful-fault-actions"></a>Düzgün olmayan hata eylemleri
 Test edilebilirlik eylemleri iki ana demet halinde sınıflandırılır:
@@ -28,9 +28,9 @@ Test edilebilirlik eylemleri iki ana demet halinde sınıflandırılır:
 Daha iyi kalite doğrulaması için, çeşitli düzgün ve düzgün olmayan hataları gerçekleştirirken hizmeti ve iş yükünü çalıştırın. Düzgün olmayan hatalar, hizmet işleminin bazı iş akışının ortasında aniden çıkılabileceği senaryolar. Bu, hizmet çoğaltması Service Fabric tarafından geri yüklendikten sonra kurtarma yolunu sınar. Bu, veri tutarlılığını test etmenize ve hatalardan sonra hizmet durumunun doğru şekilde tutulup tutulmayacağı konusunda yardımcı olur. Diğer başarısızlık kümesi (düzgün arızalar), hizmetin Service Fabric tarafından taşınmakta olan çoğaltmalara doğru şekilde tepki verdiğini test eder. RunAsync yönteminde iptali işleme testi. Hizmetin, ayarlanan iptal belirtecini denetlemesi, durumunu doğru şekilde kaydetmesi ve RunAsync yönteminden çıkış yapması gerekir.
 
 ## <a name="testability-actions-list"></a>Test edilebilirlik eylemleri listesi
-| Eylem | Açıklama | Yönetilen API | PowerShell cmdlet 'i | Düzgün olmayan/düzgün olmayan hatalar |
+| Eylem | Description | Yönetilen API | PowerShell cmdlet 'i | Düzgün olmayan/düzgün olmayan hatalar |
 | --- | --- | --- | --- | --- |
-| CleanTestState |Test sürücüsünün kötü bir şekilde kapatılmasını durumunda tüm test durumunu kümeden kaldırır. |CleanTestStateAsync |Remove-ServiceFabricTestState |Uygulanamaz |
+| CleanTestState |Test sürücüsünün kötü bir şekilde kapatılmasını durumunda tüm test durumunu kümeden kaldırır. |CleanTestStateAsync |Remove-ServiceFabricTestState |Geçerli değil |
 | Invokedataloss |Bir hizmet bölümüne veri kaybı. |Invokedatalossasync |Invoke-ServiceFabricPartitionDataLoss |Normal |
 | Invokequorumkaybetme |Belirli bir durum bilgisi olan hizmet bölümünü çekirdek kaybına geçirir. |Invokequorumlossasync |Invoke-Servicefabricquorumkaybetme |Normal |
 | MovePrimary |Durum bilgisi olan bir hizmetin belirtilen birincil çoğaltmasını belirtilen küme düğümüne taşımadır. |Moveının Yasync |Move-ServiceFabricPrimaryReplica |Normal |
@@ -40,13 +40,13 @@ Daha iyi kalite doğrulaması için, çeşitli düzgün ve düzgün olmayan hata
 | RestartNode |Bir düğümü yeniden başlatarak Service Fabric küme düğümü hatasına benzetir. |RestartNodeAsync |Restart-ServiceFabricNode |Yaşanmamasını |
 | RestartPartition |Bir bölümün bazı veya tüm çoğaltmalarını yeniden başlatarak bir veri merkezi kesintisi veya küme kararma senaryosunu taklit eder. |RestartPartitionAsync |Restart-ServiceFabricPartition |Normal |
 | RestartReplica |Bir kümede kalıcı bir çoğaltmayı yeniden başlatarak çoğaltmayı kapatıp yeniden açarak bir çoğaltma hatasına benzetim yapar. |RestartReplicaAsync |Restart-Servicefabricreplication |Normal |
-| StartNode |Zaten durdurulmuş bir kümede bir düğüm başlatır. |StartNodeAsync |Start-ServiceFabricNode |Uygulanamaz |
+| StartNode |Zaten durdurulmuş bir kümede bir düğüm başlatır. |StartNodeAsync |Start-ServiceFabricNode |Geçerli değil |
 | StopNode |Bir kümedeki düğümü durdurarak bir düğüm başarısızlığının benzetimini yapar. StartNode çağrılana kadar düğüm aşağı kalacak. |StopNodeAsync |Stop-ServiceFabricNode |Yaşanmamasını |
-| ValidateApplication |Bir uygulamadaki tüm Service Fabric hizmetlerinin kullanılabilirliğini ve sistem durumunu doğrular, genellikle sisteme bazı bir hata alındıktan sonra. |ValidateApplicationAsync |Test-ServiceFabricApplication |Uygulanamaz |
-| ValidateService |Service Fabric bir hizmetin kullanılabilirliğini ve sistem durumunu doğrular ve genellikle sisteme bazı bir hata alındıktan sonra. |ValidateServiceAsync |Test-ServiceFabricService |Uygulanamaz |
+| ValidateApplication |Bir uygulamadaki tüm Service Fabric hizmetlerinin kullanılabilirliğini ve sistem durumunu doğrular, genellikle sisteme bazı bir hata alındıktan sonra. |ValidateApplicationAsync |Test-ServiceFabricApplication |Geçerli değil |
+| ValidateService |Service Fabric bir hizmetin kullanılabilirliğini ve sistem durumunu doğrular ve genellikle sisteme bazı bir hata alındıktan sonra. |ValidateServiceAsync |Test-ServiceFabricService |Geçerli değil |
 
 ## <a name="running-a-testability-action-using-powershell"></a>PowerShell kullanarak bir test edilebilirlik eylemi çalıştırma
-Bu öğreticide, PowerShell kullanarak bir test edilebilirlik eyleminin nasıl çalıştırılacağı gösterilmektedir. Yerel (tek Box) bir kümede veya Azure kümesinde nasıl bir test edilebilir eylemi çalıştırılacağını öğreneceksiniz. Microsoft. Fabric. PowerShell. dll--Service Fabric PowerShell modülü--Microsoft Service Fabric MSI yüklediğinizde otomatik olarak yüklenir. Bir PowerShell istemi açtığınızda modül otomatik olarak yüklenir.
+Bu öğreticide, PowerShell kullanarak bir test edilebilirlik eyleminin nasıl çalıştırılacağı gösterilmektedir. Yerel (tek Box) bir kümede veya Azure kümesinde nasıl bir test edilebilir eylemi çalıştırılacağını öğreneceksiniz. Microsoft.Fabric.Powershell.dll--Service Fabric PowerShell modülü--Microsoft Service Fabric MSI yüklediğinizde otomatik olarak yüklenir. Bir PowerShell istemi açtığınızda modül otomatik olarak yüklenir.
 
 Öğretici segmentleri:
 
@@ -75,7 +75,7 @@ Connect-ServiceFabricCluster $connection
 Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 ```
 
-**Restart-ServiceFabricNode** , bir kümedeki Service Fabric düğümünü yeniden başlatmak için kullanılmalıdır. Bu, bu düğümde barındırılan tüm sistem hizmetini ve Kullanıcı Hizmeti çoğaltmalarını yeniden başlatacak olan Fabric. exe işlemini durdurur. Hizmetinizi test etmek için bu API 'nin kullanılması yük devretme kurtarma yollarında hataları ortaya çıkarabilir. Kümede düğüm hatalarının benzetimini yapmanıza yardımcı olur.
+**Restart-ServiceFabricNode** , bir kümedeki Service Fabric düğümünü yeniden başlatmak için kullanılmalıdır. Bu işlem, bu düğümde barındırılan tüm sistem hizmetini ve Kullanıcı Hizmeti çoğaltmalarını yeniden başlatacak olan Fabric.exe işlemini durdurur. Hizmetinizi test etmek için bu API 'nin kullanılması yük devretme kurtarma yollarında hataları ortaya çıkarabilir. Kümede düğüm hatalarının benzetimini yapmanıza yardımcı olur.
 
 Aşağıdaki ekran görüntüsünde **restart-ServiceFabricNode** teistiki komutu eylemde gösterilmiştir.
 

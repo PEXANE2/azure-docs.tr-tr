@@ -3,15 +3,15 @@ title: Azure Cosmos DB Bağlayıcısı için Power BI öğreticisi
 description: JSON 'u içeri aktarmak, öngörülü raporlar oluşturmak ve Azure Cosmos DB ve Power BI bağlayıcısını kullanarak verileri görselleştirmek için bu Power BI öğreticisini kullanın.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 1dbdd428a54ebf38c7b880bb9530935c0f748226
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89d7e46563182bf7808eb118f4526571c631fa23
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69616818"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262523"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Power BI bağlayıcısını kullanarak Azure Cosmos DB verilerini görselleştirme
 
@@ -46,7 +46,7 @@ Bu Power BI öğreticideki yönergeleri takip etmeden önce aşağıdaki kaynakl
 
       * **Koleksiyon verimlilik:** 1000 
 
-Raporlarınızı PowerBI.com ' de paylaşmak için, PowerBI.com ' de bir hesabınız olmalıdır.  Power BI ve Power BI Pro hakkında daha fazla bilgi edinmek için [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing)bkz..
+Raporlarınızı PowerBI.com ' de paylaşmak için, PowerBI.com ' de bir hesabınız olmalıdır.  Power BI ve Power BI Pro hakkında daha fazla bilgi edinmek için bkz [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing) ..
 
 ## <a name="lets-get-started"></a>Haydi başlayalım
 Bu öğreticide, dünyanın dört bir yanındaki bir tologist verdikcızı olduğunu düşünelim. Volcano verileri bir Azure Cosmos DB hesabında depolanır ve JSON belge biçimi aşağıdaki gibidir:
@@ -120,7 +120,7 @@ Azure Cosmos DB hesabından Volcano verilerini alıp etkileşimli bir Power BI r
     ![Azure Cosmos DB Power BI bağlayıcı koordinatları listesi için Power BI öğreticisi](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
 7. Koordinatları dizisini düzleştirmek için, LatLong adlı **özel bir sütun** oluşturun.  **Sütun Ekle** şeridini seçin ve **özel sütun**' a tıklayın.  **Özel sütun** penceresi görüntülenir.
 8. Yeni sütun için bir ad girin, örneğin, LatLong.
-9. Ardından, yeni sütun için özel formül belirtin.  Bizim örneğimizde, aşağıdaki formül kullanılarak aşağıda gösterildiği gibi bir virgülle ayrılmış Enlem ve boylam değerlerini birleştirilecek: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`. **Tamam**'a tıklayın.
+9. Ardından, yeni sütun için özel formül belirtin.  Bizim örneğimizde, aşağıdaki formül kullanılarak aşağıda gösterildiği gibi bir virgülle ayrılmış Enlem ve boylam değerlerini birleştirilecek: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . **Tamam**'a tıklayın.
    
     DAX işlevleri de dahil olmak üzere veri çözümleme Ifadeleri (DAX) hakkında daha fazla bilgi için lütfen [Power BI Desktop Içindeki Dax temel](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)bilgilerini ziyaret edin.
    
@@ -132,7 +132,7 @@ Azure Cosmos DB hesabından Volcano verilerini alıp etkileşimli bir Power BI r
     
     Yeni sütunda bir hata alırsanız, sorgu ayarları altındaki uygulanan adımların aşağıdaki şekilde eşleştiğinden emin olun:
     
-    ![Uygulanan adımlar kaynak, gezinti, genişletilmiş belge, genişletilmiş belge. location, özel eklendi](./media/powerbi-visualize/power-bi-applied-steps.png)
+    :::image type="content" source="./media/powerbi-visualize/power-bi-applied-steps.png" alt-text="Uygulanan adımlar kaynak, gezinti, genişletilmiş belge, genişletilmiş belge. location, özel eklendi":::
     
     Adımlarınız farklıysa, ek adımları silip özel sütunu yeniden eklemeyi deneyin. 
 
@@ -179,11 +179,11 @@ Artık bir raporunuz olduğuna göre, PowerBI.com 'de paylaşma olanağı sağla
 
 Raporunuzu Power BI Desktop 'den PowerBI.com 'e yayımladığınızda, PowerBI.com kiracınızda bir **rapor** ve **veri kümesi** oluşturur. Örneğin, PowerBI.com 'e **powerbituon** adlı bir rapor yayımladıktan sonra, PowerBI.com 'deki **raporlar** ve **veri kümeleri** bölümlerinde powerbituon ' u görürsünüz.
 
-   ![PowerBI.com içinde yeni raporun ve veri kümesinin ekran görüntüsü](./media/powerbi-visualize/powerbi-reports-datasets.png)
+   :::image type="content" source="./media/powerbi-visualize/powerbi-reports-datasets.png" alt-text="PowerBI.com içinde yeni raporun ve veri kümesinin ekran görüntüsü":::
 
 Paylaşılabilir bir pano oluşturmak için PowerBI.com raporunuzda **canlı sabitleme sayfası** düğmesine tıklayın.
 
-   ![PowerBI.com içinde yeni raporun ve veri kümesinin ekran görüntüsü](./media/powerbi-visualize/power-bi-pin-live-tile.png)
+   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="PowerBI.com içinde yeni raporun ve veri kümesinin ekran görüntüsü":::
 
 Ardından, yeni bir pano oluşturmak için [bir rapordan kutucuk sabitleme](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report) bölümündeki yönergeleri izleyin. 
 
@@ -194,13 +194,13 @@ There are two ways to refresh data, ad hoc and scheduled.
 
 For an ad hoc refresh, simply click on the eclipses (…) by the **Dataset**, e.g. PowerBITutorial. You should see a list of actions including **Refresh Now**. Click **Refresh Now** to refresh the data.
 
-![Screenshot of Refresh Now in PowerBI.com](./media/powerbi-visualize/power-bi-refresh-now.png)
+:::image type="content" source="./media/powerbi-visualize/power-bi-refresh-now.png" alt-text="Screenshot of Refresh Now in PowerBI.com":::
 
 For a scheduled refresh, do the following.
 
 1. Click **Schedule Refresh** in the action list. 
 
-    ![Screenshot of the Schedule Refresh in PowerBI.com](./media/powerbi-visualize/power-bi-schedule-refresh.png)
+    :::image type="content" source="./media/powerbi-visualize/power-bi-schedule-refresh.png" alt-text="Screenshot of the Schedule Refresh in PowerBI.com":::
 2. In the **Settings** page, expand **Data source credentials**. 
 3. Click on **Edit credentials**. 
    

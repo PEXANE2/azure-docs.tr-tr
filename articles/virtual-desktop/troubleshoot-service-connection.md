@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 05/20/2020
+ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7bf05fe039de2ab9e25495f9e2652fde8fac34e1
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 56a31caeefb3589527fdbbac118fa3a544a0d1a1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747693"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208902"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows sanal masaüstü hizmeti bağlantıları
 
@@ -25,7 +25,7 @@ ms.locfileid: "83747693"
 
 Windows sanal masaüstü istemci bağlantılarıyla ilgili sorunları gidermek için bu makaleyi kullanın.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 
 Windows sanal masaüstü [Teknik topluluğu](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)'nda ürün ekibi ve diğer etkin topluluk üyeleriyle geri bildirimde bulunun ve Windows Sanal Masaüstü hizmetini tartışabilirsiniz.
 
@@ -33,15 +33,17 @@ Windows sanal masaüstü [Teknik topluluğu](https://techcommunity.microsoft.com
 
 Kullanıcı, uzak masaüstü istemcileri başlatabilir ve kimlik doğrulaması yapabilir, ancak kullanıcı Web bulma akışında herhangi bir simge görmez.
 
-Bu komut satırını kullanarak, sorunları raporlayan kullanıcının uygulama gruplarına atandığını doğrulayın:
+1. Bu komut satırını kullanarak, sorunları raporlayan kullanıcının uygulama gruplarına atandığını doğrulayın:
 
-```PowerShell
-Get-AzRoleAssignment -SignInName <userupn>
-```
+     ```powershell
+     Get-AzRoleAssignment -SignInName <userupn>
+     ```
 
-Kullanıcının doğru kimlik bilgileriyle oturum açmasını onaylayın.
+2. Kullanıcının doğru kimlik bilgileriyle oturum açmasını onaylayın.
 
-Web istemcisi kullanılıyorsa, önbelleğe alınmış kimlik bilgileri sorunları olduğunu doğrulayın.
+3. Web istemcisi kullanılıyorsa, önbelleğe alınmış kimlik bilgileri sorunları olduğunu doğrulayın.
+
+4. Kullanıcı bir Azure Active Directory (AD) Kullanıcı grubunun parçasıysa, Kullanıcı grubunun bir dağıtım grubu yerine bir güvenlik grubu olduğundan emin olun. Windows sanal masaüstü, Azure AD Dağıtım gruplarını desteklemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

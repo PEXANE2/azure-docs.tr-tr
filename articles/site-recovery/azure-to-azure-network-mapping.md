@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mayg
 ms.openlocfilehash: b8f0512f978f25ca196ad6e9a7a03243c47f0662
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258089"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691212"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>VNET 'ler için Ağ eşlemesini ve IP adresini ayarlama
 
@@ -73,7 +73,7 @@ Hedef sanal makinedeki her NIC için IP adresi şu şekilde yapılandırılır:
 
 ## <a name="ip-address-assignment-during-failover"></a>Yük devretme sırasında IP adresi atama
 
-**Kaynak ve hedef alt ağlar** | **Bilgileri**
+**Kaynak ve hedef alt ağlar** | **Ayrıntılar**
 --- | ---
 Aynı adres alanı | Kaynak VM NIC 'sinin IP adresi, hedef VM NIC IP adresi olarak ayarlanır.<br/><br/> Adres yoksa, bir sonraki kullanılabilir IP adresi hedef olarak ayarlanır.
 Farklı adres alanı | Hedef alt ağdaki bir sonraki kullanılabilir IP adresi hedef VM NIC adresi olarak ayarlanır.
@@ -82,7 +82,7 @@ Farklı adres alanı | Hedef alt ağdaki bir sonraki kullanılabilir IP adresi h
 
 ## <a name="ip-address-assignment-during-test-failover"></a>Yük devretme testi sırasında IP adresi ataması
 
-**Hedef ağ** | **Bilgileri**
+**Hedef ağ** | **Ayrıntılar**
 --- | ---
 Hedef ağ yük devretme VNet | -Hedef IP adresi aynı IP adresiyle statik olacak. <br/><br/>  -Aynı IP adresi zaten atanmışsa, IP adresi alt ağ aralığının sonunda kullanılabilir bir sonraki adrestir. Örneğin: kaynak IP adresi 10.0.0.19 ise ve yük devretme ağı 10.0.0.0/24 aralığını kullanıyorsa, hedef VM 'ye atanan sonraki IP adresi 10.0.0.254 olur.
 Hedef ağ yük devretme VNet değil | -Hedef IP adresi aynı IP adresiyle statik olacak.<br/><br/>  -Aynı IP adresi zaten atanmışsa, IP adresi alt ağ aralığının sonunda kullanılabilir bir sonraki adrestir.<br/><br/> Örneğin: kaynak statik IP adresi 10.0.0.19 ise ve yük devretme, 10.0.0.0/24 aralığına sahip yük devretme ağı olmayan bir ağ üzerinde ise, hedef statik IP adresi varsa 10.0.0.0.19 olur ve aksi takdirde 10.0.0.254 olur.

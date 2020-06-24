@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/06/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9763cc0d93e6731bb42bcc55f9d8bf9463e2b0dd
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: eaa78637a2a88c1fceddf5b7ac9cd928ed8a444a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434670"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261486"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Azure Machine Learning çalışma alanı bir Azure kaynağıdır. Diğer Azure k
 
 | Rol | Erişim düzeyi |
 | --- | --- |
-| **Okuyucu** | Çalışma alanındaki salt okuma eylemleri. Okuyucular bir çalışma alanındaki varlıkları listeleyebilir ve görüntüleyebilir, ancak bu varlıkları oluşturamaz veya güncelleştiremez. |
+| **Okuyucu** | Çalışma alanındaki salt okuma eylemleri. Okuyucular bir çalışma alanında varlıkları ( [veri deposu](how-to-access-data.md) kimlik bilgileri dahil) listeleyebilir ve görüntüleyebilir, ancak bu varlıkları oluşturamaz veya güncelleştiremez. |
 | **Katkıda Bulunan** | Çalışma alanındaki varlıkları görüntüleyin, oluşturun, düzenleyin veya silin (uygulanabilir). Örneğin, katkıda bulunanlar bir deneme oluşturabilir, bir işlem kümesi oluşturabilir veya ekleyebilir, bir çalıştırma gönderebilir ve bir Web hizmeti dağıtabilir. |
 | **Sahibi** | Çalışma alanına, çalışma alanındaki varlıkları görüntüleme, oluşturma, düzenleme veya silme özelliği de dahil olmak üzere tam erişim. Ayrıca, rol atamalarını değiştirebilirsiniz. |
 
@@ -58,6 +58,9 @@ az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_
 ```azurecli-interactive 
 az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
 ```
+
+> [!NOTE]
+> "az ml çalışma alanı paylaşma" komutu, Azure Active Directory B2B tarafından Federal hesap için çalışmıyor. Lütfen komut yerine Azure UI portalını kullanın.
 
 ## <a name="create-custom-role"></a>Özel rol oluştur
 

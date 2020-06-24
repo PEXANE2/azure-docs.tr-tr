@@ -6,15 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 225221635f978e3d70cec4ce7e9d78d6b100b4fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50a9d5e3d3bbb608160ee160c5f1aede8f70e530
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618767"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262676"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Key Vault kullanarak Azure Cosmos anahtarlarının güvenliğini sağlama 
 
@@ -51,7 +51,7 @@ Key Vault Azure Cosmos DB erişim anahtarlarını depolamak ve okumak için aşa
    * Gizli dizi için bir **ad** girin
    * Cosmos DB hesabınızın bağlantı dizesini **değer** alanına girin. Sonra **Oluştur**' u seçin.
 
-   ![Gizli anahtar oluşturma](./media/access-secrets-from-keyvault/create-a-secret.png)
+   :::image type="content" source="./media/access-secrets-from-keyvault/create-a-secret.png" alt-text="Gizli anahtar oluşturma":::
 
 4. Gizli dizi oluşturulduktan sonra açın ve aşağıdaki biçimde olan * * gizli tanımlayıcısını kopyalayın. Sonraki bölümde bu tanımlayıcıyı kullanacaksınız. 
 
@@ -70,11 +70,11 @@ Key Vault Azure Cosmos DB erişim anahtarlarını depolamak ve okumak için aşa
 
 5. Uygulama dağıtıldıktan sonra. Azure portal, dağıttığınız Web uygulamasına gidin ve bu uygulamanın **yönetilen hizmet kimliğini** açın.  
 
-   ![Yönetilen hizmet kimliği](./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png)
+   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="Yönetilen hizmet kimliği":::
 
 Uygulamayı şimdi çalıştıracaksınız, Key Vault bu uygulama için herhangi bir izin vermediğinden aşağıdaki hatayı görürsünüz.
 
-![Uygulama erişim olmadan dağıtıldı](./media/access-secrets-from-keyvault/app-deployed-without-access.png)
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="Uygulama erişim olmadan dağıtıldı":::
 
 ## <a name="register-the-application--grant-permissions-to-read-the-key-vault"></a>& Key Vault okumak için uygulamayı kaydetme izinleri verin
 
@@ -84,11 +84,11 @@ Bu bölümde, uygulamayı Azure Active Directory kaydeder ve uygulamanın Key Va
 
 2. **Erişim ilkelerini**açın, **+ Yeni Ekle** ' yi seçin ve dağıttığınız Web uygulamasını bulun, izinler ' i seçin ve **Tamam**' ı seçin.  
 
-   ![Erişim İlkesi Ekle](./media/access-secrets-from-keyvault/add-access-policy.png)
+   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Erişim İlkesi Ekle":::
 
 Artık uygulamayı çalıştırırsanız, Key Vault gizli anahtarı okuyabilirsiniz.
 
-![Gizli anahtar ile dağıtılan uygulama](./media/access-secrets-from-keyvault/app-deployed-with-access.png)
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="Gizli anahtar ile dağıtılan uygulama":::
  
 Benzer şekilde, anahtar kasasına erişmek için bir kullanıcı ekleyebilirsiniz. **Erişim ilkeleri** ' ni seçerek ve ardından uygulamayı Visual Studio 'dan çalıştırmak için ihtiyacınız olan tüm izinleri vererek kendinizi Key Vault eklemeniz gerekir. Bu uygulama masaüstünüzden çalışırken kimliğinizi alır.
 

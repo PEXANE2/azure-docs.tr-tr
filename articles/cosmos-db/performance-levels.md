@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 40735f91e2ca58cc42f723c7993686d92f0e5ff0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d9e9ed1a65265a119f59edee7da1b8f244e2f7f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623337"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85112744"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>S1, S2 ve S3 performans düzeyleri kullanımdan kaldırılıyor
 
@@ -76,7 +76,7 @@ Bu durumların her birinde, koleksiyonu geçirdikten sonra, verimlilik düzeyini
 
 10 S1 koleksiyonunuz, her biri için 1 GB depolama alanı, ABD Doğu bölgesinde ve bu 10 S1 koleksiyonlarını, 400 RU/sn (en düşük düzeyde) konumundaki 10 tek bölüm koleksiyonuna geçiriyorsanız kabul edersiniz. 10 tek bölümlü koleksiyonları tam bir ay boyunca tutarsanız faturanız aşağıdaki gibi görünür:
 
-![10 koleksiyonların S1 fiyatlandırması, tek bir bölüm koleksiyonu için fiyatlandırma kullanarak 10 koleksiyonla karşılaştırılır](./media/performance-levels/s1-vs-standard-pricing.png)
+:::image type="content" source="./media/performance-levels/s1-vs-standard-pricing.png" alt-text="10 koleksiyonların S1 fiyatlandırması, tek bir bölüm koleksiyonu için fiyatlandırma kullanarak 10 koleksiyonla karşılaştırılır" border="false":::
 
 <a name="more-storage-needed"></a>
 

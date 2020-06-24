@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: cd344b9bebb69af210c482f46af6b2dd7edf7816
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 842a69c27ceb0d56df5a7b49eb9922b88d8d4b32
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311701"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206946"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>LocalConfiguration.json dosyasını anlama - C aracısı
 
@@ -29,7 +29,7 @@ Güvenlik Aracısı, aracıyı başlatma sırasında yapılandırmayı bir kez o
 Yerel yapılandırma dosyasında bulunan yapılandırma, kimlik doğrulama yapılandırması ve aracıyla ilgili diğer yapılandırmaları içerir.
 Dosya, JSON gösteriminde "anahtar-değer" çiftleri içinde yapılandırma içerir ve aracı yüklendiğinde yapılandırma doldurulur.
 
-Varsayılan olarak, dosya şu konumda bulunur:/var/asciotagent/localconfiguration.exe
+Varsayılan olarak, dosya şu konumda bulunur:/var/ASCIoTAgent/LocalConfiguration.js
 
 Yapılandırma dosyasındaki değişiklikler aracı yeniden başlatıldığında gerçekleşir.
 
@@ -40,7 +40,7 @@ Yapılandırma dosyasındaki değişiklikler aracı yeniden başlatıldığında
 | AgentId | GUID | Aracı benzersiz tanımlayıcısı |
 | TriggerdEventsInterval | ISO8601 dizesi | Tetiklenen olaylar koleksiyonu için Zamanlayıcı aralığı |
 | ConnectionTimeout | ISO8601 dizesi | Iothub bağlantısı zaman aşımına uğramadan önce geçen süre |
-| Kimlik Doğrulaması | JsonObject | Kimlik doğrulama yapılandırması. Bu nesne, ıothub 'e göre kimlik doğrulaması için gereken tüm bilgileri içerir |
+| Kimlik doğrulaması | JsonObject | Kimlik doğrulama yapılandırması. Bu nesne, ıothub 'e göre kimlik doğrulaması için gereken tüm bilgileri içerir |
 | Kimlik | "DPS", "SecurityModule", "cihaz" | Kimlik doğrulama kimliği-DPS, kimlik doğrulaması, cihaz kimlik bilgileriyle kimlik doğrulama yapılırsa güvenlik modülü kimlik bilgileri veya cihaz aracılığıyla yapılırsa SecurityModule |
 | AuthenticationMethod | "SasToken", "SelfSignedCertificate" | kimlik doğrulaması için Kullanıcı parolası-gizli anahtar kullan seçeneği bir simetrik anahtaralıysa, sır otomatik olarak imzalanan bir sertifika ise, otomatik olarak imzalanan sertifika seçeneğini belirleyin  |
 | Null | Dosya yolu (dize) | Kimlik doğrulama parolasını içeren dosyanın yolu |
@@ -55,7 +55,7 @@ Yapılandırma dosyasındaki değişiklikler aracı yeniden başlatıldığında
 
 ## <a name="security-agent-configurations-code-example"></a>Güvenlik Aracısı yapılandırma kodu örneği
 
-```JSON
+```json
 {
     "Configuration" : {
         "AgentId" : "b97faf0a-0f57-471f-9dab-46a8e1764946",

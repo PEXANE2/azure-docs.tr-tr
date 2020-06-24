@@ -4,12 +4,12 @@ description: Azure App Service için ilk özel Windows kapsayıcınızı dağıt
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: cd6b78e5fd824cc013cc946d23677237923f485e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0689e46556c4ddfddde073d79886d5cb556fde49
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80047113"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205671"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Azure'da özel Windows kapsayıcısı çalıştırma (Önizleme)
 
@@ -26,8 +26,8 @@ Bu öğreticiyi tamamlamak için:
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Windows kapsayıcılarını çalıştırmak için Docker’a geçiş yapın</a>.
 - **ASP.net ve Web geliştirme** ve **Azure geliştirme** Iş yükleriyle <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> ' i yükledikten sonra. Visual Studio 2019 zaten yüklüyse:
 
-    - **Help** > **Güncelleştirmeler için yardım denetimi**' ni seçerek en son güncelleştirmeleri Visual Studio 'ya yükler.
-    - **Araçlar** > **Al araçlar ve Özellikler ' i**seçerek iş yüklerini Visual Studio 'da ekleyin.
+    - **Help**  >  **Güncelleştirmeler için yardım denetimi**' ni seçerek en son güncelleştirmeleri Visual Studio 'ya yükler.
+    - **Araçlar**  >  **Al araçlar ve Özellikler ' i**seçerek iş yüklerini Visual Studio 'da ekleyin.
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET web uygulaması oluşturma
 
@@ -37,13 +37,13 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
 1. **Yeni proje oluştur**bölümünde C# için **ASP.NET Web uygulaması (.NET Framework)** bulun ve seçin ve ardından **İleri**' yi seçin.
 
-1. **Yeni projenizi yapılandırın**bölümünde, uygulamayı _Myfirstazurewebapp_olarak adlandırın ve ardından **Oluştur**' u seçin.
+1. **Yeni projenizi yapılandırın**bölümünde, uygulamayı _myfirstazurewebapp_olarak adlandırın ve ardından **Oluştur**' u seçin.
 
    ![Web uygulaması projenizi yapılandırma](./media/app-service-web-get-started-windows-container/configure-web-app-project-container.png)
 
 1. Azure’a herhangi bir türde ASP.NET web uygulaması dağıtabilirsiniz. Bu hızlı başlangıç için **MVC** şablonunu seçin.
 
-1. **Docker desteği**' ni seçin ve kimlik doğrulamasının **kimlik doğrulaması yok**olarak ayarlandığından emin olun. **Oluştur**’u seçin.
+1. **Docker desteği**' ni seçin ve kimlik doğrulamasının **kimlik doğrulaması yok**olarak ayarlandığından emin olun. **Oluştur**'u seçin.
 
    ![ASP.NET Web uygulaması oluşturma](./media/app-service-web-get-started-windows-container/select-mvc-template-for-container.png)
 
@@ -51,17 +51,17 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
 1. [Desteklenen bir üst görüntüye](#use-a-different-parent-image)ihtiyacınız vardır. `FROM` satırını aşağıdaki kod ile değiştirerek üst görüntüyü değiştirin ve dosyayı kaydedin:
 
-   ```Dockerfile
+   ```dockerfile
    FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
    ```
 
-1. Web uygulamasını yerel olarak çalıştırmak için Visual Studio **menüsünden hata ayıklama** > **olmadan Başlat** ' ı seçin.
+1. **Debug**  >  Web uygulamasını yerel olarak çalıştırmak için Visual Studio menüsünden hata ayıklama**olmadan Başlat** ' ı seçin.
 
    ![Uygulamayı yerel olarak çalıştırma](./media/app-service-web-get-started-windows-container/local-web-app.png)
 
 ## <a name="publish-to-docker-hub"></a>Docker Hub'da yayımlama
 
-1. **Çözüm Gezgini**, **Myfirstazurewebapp** projesine sağ tıklayın ve **Yayımla**' yı seçin.
+1. **Çözüm Gezgini**, **myfirstazurewebapp** projesine sağ tıklayın ve **Yayımla**' yı seçin.
 
 1. **App Service** seçip **Yayımla**' yı seçin.
 
@@ -121,7 +121,7 @@ Birkaç dakika bekleyin ve varsayılan ASP.NET giriş sayfasını görene kadar 
 
 ## <a name="see-container-start-up-logs"></a>Kapsayıcı başlangıç günlüklerini inceleme
 
-Windows kapsayıcısının yüklenmesi biraz zaman alabilir. İlerleme durumunu görmek için * \<app_name>* uygulamanızın adıyla değiştirerek aşağıdaki URL 'ye gidin.
+Windows kapsayıcısının yüklenmesi biraz zaman alabilir. İlerleme durumunu görmek için uygulamanızın adıyla değiştirerek aşağıdaki URL 'ye gidin *\<app_name>* .
 ```
 https://<app_name>.scm.azurewebsites.net/api/logstream
 ```
@@ -138,22 +138,22 @@ Akışı yapılan günlükler şuna benzer:
 
 ## <a name="update-locally-and-redeploy"></a>Yerel olarak güncelleştirme ve yeniden dağıtma
 
-1. Visual Studio 'da, **Çözüm Gezgini**, **Görünümler** > **ana** > **Dizin. cshtml**dosyasını açın.
+1. Visual Studio 'da, **Çözüm Gezgini**, **Görünümler**  >  **ana**  >  **Dizin. cshtml**dosyasını açın.
 
 1. Üst kısımda `<div class="jumbotron">` HTML etiketini bulun ve tüm öğeyi aşağıdaki kodla değiştirin:
 
-   ```HTML
+   ```html
    <div class="jumbotron">
        <h1>ASP.NET in Azure!</h1>
        <p class="lead">This is a simple app that we've built that demonstrates how to deploy a .NET app to Azure App Service.</p>
    </div>
    ```
 
-1. Azure 'a yeniden dağıtmak için, **Çözüm Gezgini** ' de **Myfirstazurewebapp** projesine sağ tıklayın ve **Yayımla**' yı seçin.
+1. Azure 'a yeniden dağıtmak için, **Çözüm Gezgini** ' de **myfirstazurewebapp** projesine sağ tıklayın ve **Yayımla**' yı seçin.
 
 1. Yayımlama sayfasında **Yayımla**’yı seçin ve yayımlama işleminin tamamlanmasını bekleyin.
 
-1. App Service’in Docker Hub’dan yeni görüntüyü çekmesini istemek için uygulamayı yeniden başlatın. Portalda uygulama sayfasına dönün,**Evet**' **e tıklayın.** > 
+1. App Service’in Docker Hub’dan yeni görüntüyü çekmesini istemek için uygulamayı yeniden başlatın. Portalda uygulama sayfasına dönün, Evet ' **e tıklayın**  >  **Yes**.
 
    ![Azure’da web uygulamasını yeniden başlatma](./media/app-service-web-get-started-windows-container/portal-restart-app.png)
 

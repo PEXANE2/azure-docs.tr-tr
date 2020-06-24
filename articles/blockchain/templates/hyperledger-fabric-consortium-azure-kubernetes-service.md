@@ -2,14 +2,14 @@
 title: Azure Kubernetes Service (AKS) üzerinde hiper muhasebe doku Consortium
 description: Azure Kubernetes hizmetinde hiper muhasebe doku Consortium ağını dağıtma ve yapılandırma
 ms.date: 06/04/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 98d89905c89156d05fd61389693ad8d5765ba9e1
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: e85d8c196afa5535d4d36ffdc03078e2046e4ca1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434344"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209717"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde hiper muhasebe doku Consortium
 

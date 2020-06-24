@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef127d120b32f5344bce0f68d79f48401087f0ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264004"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691073"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Kuruluşunuzda kötü parolaları ortadan kaldırma
 
@@ -111,7 +111,7 @@ Normalleştirme iki bölümden oluşur.  İlk olarak, tüm büyük harfler küç
 | '$'  | üreticinin |
 | '\@'  | 'm |
 
-Örnek: "boş" parolasının yasaklanmış olduğunu ve bir kullanıcının parolasını "Bl@nK" olarak değiştirmeye çalıştığını varsayın. "Bl@nk" Özellikle yasaklanmış olsa da, normalleştirme süreci bu parolayı yasaklanmış bir parola olan "boş" olarak dönüştürür.
+Örnek: "boş" parolasının yasaklanmış olduğunu ve bir kullanıcının parolasını "" olarak değiştirmeye çalıştığını varsayın Bl@nK . " Bl@nk " Özellikle yasaklanmış olsa da, normalleştirme süreci bu parolayı yasaklanmış bir parola olan "boş" olarak dönüştürür.
 
 ### <a name="step-2-check-if-password-is-considered-banned"></a>2. Adım: parolanın yasaklanmış olarak kabul edildiğinden emin olun
 
@@ -147,7 +147,7 @@ Normalleştirme sonrasında bu parola "contosoblank12" olur. Eşleşen işlem bu
 
 [contoso] + [boş] + [1] + [2] = 4 punto bu parola beş (5) Punto altında olduğundan reddedilecek.
 
-Örnek: bir Kullanıcı parolasını "ContoS0Bl@nkf9!" olarak değiştirir.
+Örnek: bir Kullanıcı parolasını " ContoS0Bl@nkf9 !" olarak değiştirir.
 
 Normalleştirme sonrasında bu parola "contosoblankf9!" olur. Eşleşen işlem bu parolanın iki yasaklanmış parola içerdiğini bulur: contoso ve Blank. Bu parolaya daha sonra bir puan verilir:
 

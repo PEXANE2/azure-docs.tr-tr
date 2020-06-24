@@ -3,22 +3,22 @@ title: .NET SDK v2 için Azure Cosmos DB performans ipuçları
 description: .NET v2 SDK performansını Azure Cosmos DB iyileştirecek istemci yapılandırma seçeneklerini öğrenin.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 06/04/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: sngun
-ms.openlocfilehash: 07ca4674c1b8dafc9c02ff8fdf82de330862de73
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: fce6cd441214cff4c76b05f8a2b6cb630613a66f
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84674032"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263441"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB ve .NET SDK v2 için performans ipuçları
 
 > [!div class="op_single_selector"]
 > * [.NET SDK V3](performance-tips-dotnet-sdk-v3-sql.md)
 > * [.NET SDK v2](performance-tips.md)
-> * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
+> * [Java SDK’sı v4](performance-tips-java-sdk-v4-sql.md)
 > * [Zaman uyumsuz Java SDK v2](performance-tips-async-java.md)
 > * [Zaman uyumlu Java SDK v2](performance-tips-java.md)
 
@@ -93,8 +93,8 @@ Azure Cosmos DB, HTTPS üzerinden basit ve açık bir yeniden programlama modeli
 Microsoft.Azure.DocumentDB SDK 'Sı için, parametresini kullanarak, örneği oluşturma sırasında bağlantı modunu yapılandırırsınız `DocumentClient` `ConnectionPolicy` . Doğrudan modu kullanırsanız, `Protocol` parametresini kullanarak da ayarlayabilirsiniz `ConnectionPolicy` .
 
 ```csharp
-var serviceEndpoint = new Uri("https://contoso.documents.net");
-var authKey = "your authKey from the Azure portal";
+Uri serviceEndpoint = new Uri("https://contoso.documents.net");
+string authKey = "your authKey from the Azure portal";
 DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
 new ConnectionPolicy
 {
@@ -105,7 +105,18 @@ new ConnectionPolicy
 
 TCP yalnızca doğrudan modunda desteklendiğinden, ağ geçidi modunu kullanıyorsanız, HTTPS protokolü her zaman ağ geçidiyle iletişim kurmak için kullanılır ve `Protocol` içindeki değeri `ConnectionPolicy` yok sayılır.
 
-![Azure Cosmos DB bağlantı ilkesi](./media/performance-tips/connection-policy.png)
+:::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="Azure Cosmos DB bağlantı ilkesi" border="false":::
+
+**Kısa ömürlü bağlantı noktası tükenmesi**
+
+Örneklerinizi üzerinde yüksek bir bağlantı birimi veya yüksek bağlantı noktası kullanımı görürseniz, önce istemci örneklerinizin tekton olduğunu doğrulayın. Diğer bir deyişle, istemci örneklerinin uygulamanın ömrü için benzersiz olması gerekir.
+
+TCP protokolünde çalışırken, istemci, uzun süreli bağlantıları kullanarak gecikme süresini en iyi duruma getirir ve bu da, 2 dakikadan sonra bağlantıları sonlandırır.
+
+Seyrek erişiminizin olduğu senaryolarda ve ağ geçidi modu erişimiyle karşılaştırıldığında daha yüksek bir bağlantı sayısı fark ederseniz şunları yapabilirsiniz:
+
+* [Connectionpolicy. PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.portreusemode) özelliğini ' e yapılandırın `PrivatePortPool` (Framework sürümü>= 4.6.1 ve .net Core sürümü >= 2,0): Bu özellik SDK 'nın farklı Azure Cosmos DB hedef uç noktaları için kısa ömürlü bağlantı noktası havuzu kullanmasına izin verir.
+* [Connectionpolicy. ıdıdconnectiontimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.idletcpconnectiontimeout) özelliği 10 dakikadan büyük veya buna eşit olmalıdır. Önerilen değerler 20 dakika ile 24 saat arasında.
 
 **İlk istekte başlangıç gecikmesini önlemek için OpenAsync çağrısı yapın**
 
@@ -121,7 +132,8 @@ Varsayılan olarak, ilk isteğin, adres yönlendirme tablosunu getirmesi gerekti
 
 Mümkün olduğunda, Azure Cosmos DB veritabanıyla aynı bölgedeki Azure Cosmos DB çağıran tüm uygulamaları yerleştirin. İşte yaklaşık bir karşılaştırma: aynı bölgedeki Azure Cosmos DB için yapılan çağrılar 1 MS ile 2 ms arasında tamamlanır, ancak ABD 'nin batı ve Doğu yakası arasındaki gecikme 50 MS 'den fazla olur. Bu gecikme, istemciden Azure veri merkezi sınırına geçerken istek tarafından alınan yola bağlı olarak istek üzerine değişiklik gösterebilir. Çağıran uygulamanın, sağlanan Azure Cosmos DB uç noktası ile aynı Azure bölgesinde yer almasını sağlayarak olası en düşük gecikme süresini sağlayabilirsiniz. Kullanılabilir bölgelerin listesi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/#services).
 
-![Azure Cosmos DB bağlantı ilkesi ](./media/performance-tips/same-region.png)<a id="increase-threads"></a>
+:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Azure Cosmos DB bağlantı ilkesi" border="false":::
+   <a id="increase-threads"></a>
 
 **İş parçacığı/görev sayısını artırma**
 
@@ -196,7 +208,7 @@ Tüm geçerli sonuçları almak için gereken ağ gidiş dönüşlerin sayısın
 > [!NOTE] 
 > `maxItemCount`Özelliği yalnızca sayfalandırma için kullanılmamalıdır. Ana kullanımı, tek bir sayfada döndürülen en fazla öğe sayısını azaltarak sorguların performansını artırmaktır.  
 
-Ayrıca, kullanılabilir Azure Cosmos DB SDK 'larını kullanarak sayfa boyutunu ayarlayabilirsiniz. İçindeki [Maxıtemcount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) özelliği, `FeedOptions` sabit listesi işleminde döndürülecek en fazla öğe sayısını ayarlamanıza olanak sağlar. `maxItemCount`-1 olarak ayarlandığında, SDK, belge boyutuna bağlı olarak en uygun değeri otomatik olarak bulur. Örnek:
+Ayrıca, kullanılabilir Azure Cosmos DB SDK 'larını kullanarak sayfa boyutunu ayarlayabilirsiniz. İçindeki [Maxıtemcount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) özelliği, `FeedOptions` sabit listesi işleminde döndürülecek en fazla öğe sayısını ayarlamanıza olanak sağlar. `maxItemCount`-1 olarak ayarlandığında, SDK, belge boyutuna bağlı olarak en uygun değeri otomatik olarak bulur. Örneğin:
     
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });

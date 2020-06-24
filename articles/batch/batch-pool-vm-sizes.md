@@ -2,14 +2,14 @@
 title: Havuzlar için VM boyutlarını seçin
 description: Azure Batch havuzlarda işlem düğümleri için kullanılabilir VM boyutları arasından seçim yapma
 ms.topic: conceptual
-ms.date: 06/02/2020
+ms.date: 06/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1e3bcc51fafe10f4a753bdc79795f9afd00821d7
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: c1621bbbe6676144176636346f3f5c34db169b7a
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323833"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693167"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Bir Azure Batch havuzundaki işlem düğümleri için VM boyutu seçme
 
@@ -37,9 +37,11 @@ Sanal makine yapılandırmasındaki toplu iş havuzları neredeyse tüm VM boyut
 | Dv3, Dsv3 | Tüm Boyutlar |
 | Dav4<sup>1</sup> | Hiçbiri-henüz kullanılamıyor |
 | Dasv4<sup>1</sup> | Standard_D48as_v4, Standard_D64as_v4, Standard_D96as_v4 hariç tüm boyutlar |
+| Ddv4, Ddsv4 |  Hiçbiri-henüz kullanılamıyor |
 | Ev3, Esv3 | E64is_v3 ve E64i_v3 hariç tüm boyutlar |
 | Eav4<sup>1</sup> | Standard_E48a_v4, Standard_E64a_v4, Standard_E96a_v4 hariç tüm boyutlar |
 | Easv4<sup>1</sup> | Standard_E48as_v4, Standard_E64as_v4, Standard_E96as_v4 hariç tüm boyutlar |
+| Edv4, Edsv4 |  Hiçbiri-henüz kullanılamıyor |
 | F, FS | Tüm Boyutlar |
 | Fsv2 | Tüm Boyutlar |
 | G, GS | Tüm Boyutlar |

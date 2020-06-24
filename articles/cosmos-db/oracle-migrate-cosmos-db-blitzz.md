@@ -3,16 +3,16 @@ title: Blitzz kullanarak Oracle 'dan Azure Cosmos DB Cassandra API verileri geç
 description: Blitzz kullanarak Oracle veritabanından Azure Cosmos DB Cassandra API nasıl veri geçirebileceğinizi öğrenin.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 43d15a7252819a3e4f7635e37458b75e9b7ecca7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 882ba7f0b8f896c51e340fe921e53b27dd07ff8a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546279"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262472"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Blitzz kullanarak Oracle 'dan Azure Cosmos DB Cassandra API hesabına veri geçirme
 
@@ -54,11 +54,11 @@ Bu bölümde, Blitzz 'yi kurmak ve verileri Oracle veritabanından Azure Cosmos 
 
 1. OU, blitzz [Web sitesinde](https://www.blitzz.io)bir demo Isteyerek blitzz yüklemesini ve ikili dosyaları alabilir. Alternatif olarak, takıma [e-posta](mailto:success@blitzz.io) da gönderebilirsiniz.
 
-   ![Blitzz Replicant aracı indirmesi](./media/oracle-migrate-cosmos-db-blitzz/blitzz-replicant-download.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/blitzz-replicant-download.png" alt-text="Blitzz Replicant aracı indirmesi":::
 
-   ![Blitzz Replicant dosyaları](./media/oracle-migrate-cosmos-db-blitzz/replicant-files.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz Replicant dosyaları":::
 
-1. CLı terminalinde, kaynak veritabanı yapılandırmasını ayarlayın. Yapılandırma dosyasını komutunu kullanarak **`vi conf/conn/oracle.yml`** açın ve Oracle düğümlerinin, bağlantı noktası numarasının, Kullanıcı adının, parolasının ve diğer gereklı ayrıntıların IP adreslerinin virgülle ayrılmış bir listesini ekleyin. Aşağıdaki kod, örnek bir yapılandırma dosyası göstermektedir:
+1. CLı terminalinde, kaynak veritabanı yapılandırmasını ayarlayın. Yapılandırma dosyasını komutunu kullanarak açın **`vi conf/conn/oracle.yml`** ve Oracle düğümlerinin, bağlantı noktası numarasının, Kullanıcı adının, parolasının ve diğer gerekli AYRıNTıLARıN IP adreslerinin virgülle ayrılmış bir listesini ekleyin. Aşağıdaki kod, örnek bir yapılandırma dosyası göstermektedir:
 
    ```bash
    type: ORACLE
@@ -75,13 +75,13 @@ Bu bölümde, Blitzz 'yi kurmak ve verileri Oracle veritabanından Azure Cosmos 
    use-ssl: false
    ```
 
-   ![Oracle bağlantı düzenleyicisini aç](./media/oracle-migrate-cosmos-db-blitzz/open-connection-editor-oracle.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/open-connection-editor-oracle.png" alt-text="Oracle bağlantı düzenleyicisini aç":::
 
-   ![Oracle bağlantı yapılandırması](./media/oracle-migrate-cosmos-db-blitzz/oracle-connection-configuration.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/oracle-connection-configuration.png" alt-text="Oracle bağlantı yapılandırması":::
 
    Yapılandırma ayrıntılarını doldurduktan sonra dosyayı kaydedin ve kapatın.
 
-1. İsteğe bağlı olarak, kaynak veritabanı filtre dosyasını ayarlayabilirsiniz. Filtre dosyası geçirilecek şemaları veya tabloları belirtir. Komutunu kullanarak **`vi filter/oracle_filter.yml`** yapılandırma dosyasını açın ve aşağıdaki yapılandırma ayrıntılarını girin:
+1. İsteğe bağlı olarak, kaynak veritabanı filtre dosyasını ayarlayabilirsiniz. Filtre dosyası geçirilecek şemaları veya tabloları belirtir. Komutunu kullanarak yapılandırma dosyasını açın **`vi filter/oracle_filter.yml`** ve aşağıdaki yapılandırma ayrıntılarını girin:
 
    ```bash
 
@@ -96,13 +96,13 @@ Bu bölümde, Blitzz 'yi kurmak ve verileri Oracle veritabanından Azure Cosmos 
 
 1. Verileri geçirmeden önce, uygulamanızın hızla geçirilmesi için gereken miktarda kapsayıcı aktarım hızını artırın. Örneğin, aktarım hızını 100000 ru olarak artırabilirsiniz. Geçiş işlemine başlamadan önce üretilen iş verimini ölçeklendirirken verilerinizi daha az zaman geçirmeye yardımcı olur. 
 
-   ![Genelinde Azure Cosmos kapsayıcısını ölçeklendirin](./media/oracle-migrate-cosmos-db-blitzz/scale-throughput.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Genelinde Azure Cosmos kapsayıcısını ölçeklendirin":::
 
    Geçiş işlemi tamamlandıktan sonra aktarım hızını azaltmalısınız. Her işlem için gerekli olan ve RUs veri miktarına bağlı olarak, veri geçişten sonra gereken aktarım hızını tahmin edebilirsiniz. Gerekli olan RUs 'yi tahmin etme hakkında daha fazla bilgi edinmek için bkz. [kapsayıcılar ve veritabanları üzerinde üretilen Iş sağlama](set-throughput.md) ve [Azure Cosmos DB kapasite PLANLAYıCıSı makalelerini kullanarak ru/s 'yi tahmin](estimate-ru-with-capacity-planner.md) etme.
 
 1. **Bağlantı dizesi** bölmesinden Azure Cosmos hesabınızın **Iletişim noktasını, bağlantı noktasını, Kullanıcı adını**ve **birincil parolasını** alın. Yapılandırma dosyasında bu değerleri kullanacaksınız.
 
-1. CLı terminalinde hedef veritabanı yapılandırmasını ayarlayın. Yapılandırma dosyasını komutunu kullanarak **`vi conf/conn/cosmosdb.yml`** açın ve konak URI 'si, bağlantı noktası numarası, Kullanıcı adı, parola ve diğer gerekli parametrelerin virgülle ayrılmış bir listesini ekleyin. Yapılandırma dosyasındaki içeriklerin bir örneği aşağıda verilmiştir:
+1. CLı terminalinde hedef veritabanı yapılandırmasını ayarlayın. Yapılandırma dosyasını komutunu kullanarak açın **`vi conf/conn/cosmosdb.yml`** ve konak URI 'si, bağlantı noktası numarası, Kullanıcı adı, parola ve diğer gerekli parametrelerin virgülle ayrılmış bir listesini ekleyin. Yapılandırma dosyasındaki içeriklerin bir örneği aşağıda verilmiştir:
 
    ```bash
    type: COSMOSDB
@@ -134,7 +134,7 @@ Bu bölümde, Blitzz 'yi kurmak ve verileri Oracle veritabanından Azure Cosmos 
 
    Replicant Kullanıcı arabirimi, çoğaltma ilerlemesini gösterir. Şema geçişi ve anlık görüntü işlemi tamamlandıktan sonra, ilerleme %100 gösterir. Geçiş işlemi tamamlandıktan sonra hedef Azure Cosmos veritabanındaki verileri doğrulayabilirsiniz.
 
-   ![Oracle veri geçiş çıkışı](./media/oracle-migrate-cosmos-db-blitzz/oracle-data-migration-output.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/oracle-data-migration-output.png" alt-text="Oracle veri geçiş çıkışı":::
 
 1. Geçiş için tam modu kullandığınız için, kaynak Oracle veritabanında veri ekleme, güncelleştirme veya silme gibi işlemler gerçekleştirebilirsiniz. Daha sonra, hedef Azure Cosmos veritabanında gerçek zamanlı olarak çoğaltıldıklarından emin olabilirsiniz. Geçişten sonra, Azure Cosmos Kapsayıcınız için yapılandırılmış aktarım hızını azalttığınızdan emin olun.
 

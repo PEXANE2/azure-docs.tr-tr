@@ -19,11 +19,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261573"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692181"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>AD FS'yi Azure AD Connect Health'i kullanarak izleme
 Aşağıdaki belgeler, AD FS altyapınızın Azure AD Connect Health ile izlenmesine ilişkin belgelerdir. Azure AD Connect Health ile Azure AD Connect (eşitleme) izleme hakkında daha fazla bilgi için bkz [Azure AD Connect Health eşitleme Için kullanma](how-to-connect-health-sync.md). Ayrıca, Azure AD Connect Health Active Directory Domain Services izleme hakkında bilgi için, bkz. [Azure AD Connect Health AD DS Ile kullanma](how-to-connect-health-adds.md).
@@ -108,7 +108,7 @@ Grafta şu bilgiler yer alır:
 
 Raporda şu bilgiler yer alır:
 
-| Rapor Öğesi | Açıklama |
+| Rapor Öğesi | Description |
 | --- | --- |
 | Kullanıcı Kimliği |Kullanılan kullanıcı kimliğini gösterir. Bu değer, kullanıcının ne yazdığıyla ilgilidir ve bazı durumlarda yanlış kullanıcı kimliği kullanılır. |
 | Başarısız Denemeler |Belirli bir kullanıcı kimliğine ait başarısız denemelerin toplam sayısını gösterir. Tablo, en fazla deneme sayısından en aza doğru azalan bir düzende sıralanır. |

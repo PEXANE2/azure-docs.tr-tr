@@ -2,25 +2,25 @@
 title: Azure Active Directory için genel uygulama yönetimi senaryoları | Microsoft Docs
 description: Azure AD ile uygulama yönetimini merkezileştirme
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 03/02/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1874a2f2cf96aaa905616bddcc6cb83c60c1d279
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6b81e792d3b3bf491b281e09c00f48a7ad56fa47
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115617"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763644"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Azure AD ile uygulama yönetimini merkezileştirme
 
@@ -40,7 +40,7 @@ Parolalar, hem It nightmhem de dünyanın her yerindeki çalışanlar için bir 
 
 Daha fazla parola yönetilme. Şirket kimlik bilgilerinizle ihtiyacınız olan tüm kaynaklara güvenli bir şekilde erişin. 
 
-|Özellik  | Açıklama | Öneri |
+|Özellik  | Description | Öneri |
 |---------|---------|---------|
 |SSO|Güvenilen sektör standartları kullanarak standartlara dayalı Federasyon SSO 'SU.|Uygulamanız destekliyorsa, SSO 'yu etkinleştirmek için her zaman [SAML/OıDC](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-choose-multi-tenant-federation) kullanın.|
 |Erişim paneli|Kullanıcılarınıza tüm uygulamalarını keşfetmek ve bunlara erişmek için basit bir hub sunun. Uygulamalar ve gruplar için erişim isteğinde bulunma veya diğerleri adına kaynaklara erişimi yönetme gibi self servis özellikleri ile daha üretken olmalarını sağlayın.| Uygulamalarınızı SSO için Azure AD ile tümleştirdikten sonra [erişim panelini](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-deployment-plan) kuruluşunuza dağıtın.|
@@ -51,7 +51,7 @@ Daha fazla parola yönetilme. Şirket kimlik bilgilerinizle ihtiyacınız olan t
 Çoğu uygulama, ihtiyaç duydukları kaynaklara erişmeden önce bir kullanıcının uygulamaya sağlanması gerekir. CSV dosyalarını veya karmaşık betikleri kullanmak maliyetli ve yönetimi zor olabilir. Ayrıca, müşterilerin artık erişimleri olmaması durumunda hesapların kaldırılmasını sağlamak gerekir. Sağlama ve sağlamayı kaldırma işlemlerini otomatikleştirmek için aşağıdaki araçlardan yararlanın. 
 
 
-|Özellik  |Açıklama|Öneri |
+|Özellik  |Description|Öneri |
 |---------|---------|---------|
 |SCıM sağlama|[SCIM](https://aka.ms/SCIMOverview) , Kullanıcı sağlamasını otomatikleştirmek için sektör açısından en iyi uygulamadır. Herhangi bir SCıM uyumlu uygulama, Azure AD ile tümleştirilebilir. CSV dosyalarını, özel betikleri veya şirket içi çözümleri sürdürmek zorunda kalmadan kullanıcı hesaplarını otomatik olarak oluşturun, güncelleştirin ve silin.|Azure AD uygulama galerisinde [önceden tümleştirilmiş](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) uygulamalar listesini gözden geçirin|
 |Microsoft Graph|Azure AD 'nin uygulamanızı, ihtiyaç duyacağı verilerle zenginleştirmesini sağlayan verilerin genişliği ve derinliğine yararlanın.|Microsoft ekosistemi üzerinden veri almak için [Microsoft Graph](https://developer.microsoft.com/graph/) 'tan yararlanın. |
@@ -60,7 +60,7 @@ Daha fazla parola yönetilme. Şirket kimlik bilgilerinizle ihtiyacınız olan t
 ## <a name="scenario-3-secure-your-applications"></a>Senaryo 3: uygulamalarınızın güvenliğini sağlama
 Kimlik, güvenlik için linchpın 'dir. Bir kimlik tehlikeye atılırsa, çok geç olmadan önce Domino efektini durdurmak inanılmaz zordur. Kuruluşların bir güvenliğinin aşılmasına neden olduğunu fark etmeden önce 100 gün üzerinden geçen süre. Uygulamalarınızın güvenlik duruşunu geliştirmek için Azure AD tarafından sunulan araçları kullanın. 
 
-|Özellik  |Açıklama| Öneri |
+|Özellik  |Description| Öneri |
 |---------|---------| ---------|
 |Azure MFA|Azure Multi-Factor Authentication (MFA) Microsoft'un iki adımlı doğrulama çözümüdür. Azure MFA, yönetici onaylı kimlik doğrulama yöntemlerini kullanarak, basit bir oturum açma işlemi talebini karşılarken verilerinize ve uygulamalarınıza erişimi korumaya yardımcı olur.| Kullanıcılarınız için [MFA 'Yı etkinleştirin](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124) .  |
 |Koşullu Erişim|Koşullu erişimle, koşullara göre bulut uygulamalarınıza kimlerin erişebileceği otomatik erişim denetimi kararları uygulayabilirsiniz.| Müşterilerin kullandığı [güvenlik varsayılanlarını](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) ve [ortak ilkeleri](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common) gözden geçirin. | 
@@ -69,7 +69,7 @@ Kimlik, güvenlik için linchpın 'dir. Bir kimlik tehlikeye atılırsa, çok ge
 ## <a name="scenario-4-govern-access-to-your-applications"></a>Senaryo 4: uygulamalarınıza erişimi yönetir
 Kimlik yönetimi, kuruluşların üretkenlik arasında bir denge elde etmesine yardımcı olur ve kuruluşa ne zaman katılabilecekleri gibi bir kişinin ihtiyacı olan uygulamalara ne kadar hızlı erişmesini sağlayabilir? Ve güvenlik-bu kişinin iş durumundaki değişiklikler nedeniyle, zaman içinde erişimin ne zaman içinde değiştirilmesi gerekir? 
 
-|Özellik  |Açıklama|Öneri |
+|Özellik  |Description|Öneri |
 |---------|---------| ---------|
 |KARA|Azure AD Yetkilendirme Yönetimi, kuruluşunuzun içindeki ve dışındaki kullanıcıların uygulamalarına erişimi daha verimli bir şekilde yönetmesine yardımcı olabilir.| Yönetici olmayan uygulamalara erişim [paketleriyle](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-first)erişimi yönetmesine izin verin.|
 |Erişim Gözden Geçirmeleri|Kullanıcıların uygulamalara erişimi, yalnızca doğru kişilerin erişmeye devam ettiğinden emin olmak için düzenli olarak incelenebilir.| En hassas uygulamalarınıza [erişimi gözden geçirin](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview) . |
@@ -79,7 +79,7 @@ Kimlik yönetimi, kuruluşların üretkenlik arasında bir denge elde etmesine y
 ## <a name="scenario-5-hybrid-secure-access"></a>Senaryo 5: karma güvenli erişim
 Kimlik yalnızca bulut ve şirket içi uygulamalardaki her şeyi bağlayabildiği durumlarda denetim düzledir. Eski kimlik doğrulama tabanlı uygulamalara güvenli erişim sağlamak için Azure AD ve iş ortakları tarafından sunulan araçlardan yararlanın.
 
-|Özellik  |Açıklama|Öneri |
+|Özellik  |Description|Öneri |
 |---------|---------|---------|
 |Uygulama Ara Sunucusu|Günümüzde çalışanlar her yerden, her zaman ve tüm cihazlardan çalışmak istemektedir. Bulut ve şirket içi uygulamalarda SaaS uygulamalarına erişmesi gerekir. Azure AD uygulama proxy 'si, pahalı ve karmaşık sanal özel ağlar (VPN) veya sivil bölgeler (DMZs) olmadan bu güçlü erişimi mümkün hale getirmenizi sunar.|Şirket içi uygulamalarınız için [Uzaktan erişim](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) ayarlayın. |
 |F5, Akamai, Zscaler|Mevcut ağ ve teslim denetleyicinizi kullanarak, İş süreçleriniz için hala kritik olan eski uygulamaları kolayca koruyabilir ancak Azure AD ile önce koruyamazsınız. Bu uygulamaları korumaya başlamak için ihtiyacınız olan her şeye zaten sahipsiniz.| Akamai, Citrix, F5 veya Zscaler kullanılıyor mu? [Önceden oluşturulmuş çözümlerimize](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access)göz atın. | 
@@ -89,6 +89,6 @@ Kimlik yalnızca bulut ve şirket içi uygulamalardaki her şeyi bağlayabildiğ
 - [Uygulama yönetimi](https://docs.microsoft.com/azure/active-directory/manage-apps/index)
 - [Uygulama sağlama](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)
 - [Karma güvenli erişim](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access)
-- [Kimlik yönetimi](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
+- [Kimlik idaresi](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
 - [Microsoft kimlik platformu](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
 - [Kimlik güvenliği](https://docs.microsoft.com/azure/active-directory/conditional-access/index)

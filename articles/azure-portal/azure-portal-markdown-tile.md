@@ -6,15 +6,15 @@ keywords: ''
 author: mgblythe
 ms.author: mblythe
 ms.date: 01/08/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 74102423461a56bb6fc19c2eb9874f96a76e34e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 338135561a462fec3b0bfc619a3518cb420908f0
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310722"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764001"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Özel içerik göstermek için Azure panolarında markaşağı kutucuğu kullanın
 
@@ -57,8 +57,8 @@ ms.locfileid: "76310722"
 
 Markaşağı kutucuğunda herhangi bir düz metin, markı sözdizimi ve HTML içeriği birleşimini kullanabilirsiniz. Azure portal, içeriğinizi kutucukta gösterilen HTML 'ye dönüştürmek için _işaretlenen_ adlı açık kaynaklı bir kitaplık kullanır. _İşaretlenen_ tarafından üretilen HTML, portal tarafından işlenmeden önce önceden işlenir. Bu adım, özelleştirmenin güvenlik veya portalın yerleşimini etkilememesini sağlamaya yardımcı olur. Bu ön işleme sırasında, olası bir tehdit oluşturan HTML 'nin herhangi bir bölümü kaldırılır. Portalın şu içerik türlerine izin verilmiyor:
 
-* JavaScript – `<script>` etiketleri ve satır içi JavaScript değerlendirmeleri kaldırılır.
-* iframe 'ler `<iframe>` -Etiketler kaldırılacak.
+* JavaScript – `<script>` etiketleri ve satır Içi JavaScript değerlendirmeleri kaldırılır.
+* iframe 'ler- `<iframe>` Etiketler kaldırılacak.
 * Stil `<style>` etiketleri kaldırılacak. HTML öğelerinde satır içi stil öznitelikleri resmi olarak desteklenmez. Bazı satır içi stil öğelerinin sizin için çalıştığını fark edebilirsiniz, ancak portalın düzenine müdahale ediyorsanız, çalışmayı durdurabilir. Markaşağı kutucuğu, portalın varsayılan stillerini kullanan temel ve statik içeriğe yöneliktir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

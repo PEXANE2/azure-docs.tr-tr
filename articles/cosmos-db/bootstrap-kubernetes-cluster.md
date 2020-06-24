@@ -3,15 +3,15 @@ title: Azure Cosmos DB ile Azure Kubernetes 'i kullanma
 description: Azure 'da Azure Cosmos DB kullanan bir Kubernetes kümesini önyükleme hakkında bilgi edinin (Önizleme)
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: 9dbbc914580d8d80a3f9b7d730574e24b44827c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7e1480d00280fc567a69556f25db8ffab800f70
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70093721"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262642"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Azure Kubernetes 'i Azure Cosmos DB ile kullanma (Önizleme)
 
@@ -33,7 +33,7 @@ Azure Cosmos DB ' de etcd API 'SI hakkında daha fazla bilgi edinmek için [gene
 
    Azure Kubernetes altyapısı (**aks-Engine**), Azure 'Da Kubernetes kümeleri için Azure Resource Manager şablonları oluşturur. Aks-Engine 'e giriş, Orchestrator, Özellikler ve aracılar dahil olmak üzere istenen kümeyi tanımlayan bir küme tanımı dosyasıdır. Giriş dosyalarının yapısı, Azure Kubernetes hizmeti için genel API 'ye benzerdir.
 
-1. Azure Cosmos DB ' deki etcd API 'SI Şu anda önizlemededir. Önizleme sürümünü şu adreste kullanmak için kaydolun: https://aka.ms/cosmosetcdapi-signup. Formu gönderdikten sonra, aboneliğiniz Azure Cosmos etcd API 'sini kullanmak için beyaz listeye alınacaktır. 
+1. Azure Cosmos DB ' deki etcd API 'SI Şu anda önizlemededir. Önizleme sürümünü şu adreste kullanmak için kaydolun: https://aka.ms/cosmosetcdapi-signup . Formu gönderdikten sonra, aboneliğiniz Azure Cosmos etcd API 'sini kullanmak için beyaz listeye alınacaktır. 
 
 ## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>Kümeyi Azure Cosmos DB dağıtma
 
@@ -80,7 +80,7 @@ Azure Cosmos DB ' de etcd API 'SI hakkında daha fazla bilgi edinmek için [gene
    cd "\aks-engine-v0.36.3-windows-amd64\aks-engine-v0.36.3-windows-amd64"
    ```
 
-1. Seçtiğiniz bir metin düzenleyicisini açın ve Azure Kubernetes kümesini Azure Cosmos DB etcd API 'siyle dağıtan bir Kaynak Yöneticisi şablonu tanımlayın. Aşağıdaki JSON tanımını metin düzenleyicinize kopyalayın ve dosyayı şu şekilde `apiModel.json`kaydedin:
+1. Seçtiğiniz bir metin düzenleyicisini açın ve Azure Kubernetes kümesini Azure Cosmos DB etcd API 'siyle dağıtan bir Kaynak Yöneticisi şablonu tanımlayın. Aşağıdaki JSON tanımını metin düzenleyicinize kopyalayın ve dosyayı şu şekilde kaydedin `apiModel.json` :
 
    ```json
 
@@ -140,7 +140,7 @@ Azure Cosmos DB ' de etcd API 'SI hakkında daha fazla bilgi edinmek için [gene
    Azure Kubernetes altyapısı, Azure Kubernetes 'in istenen şeklini, boyutunu ve yapılandırmasını özetleyen bir küme tanımı kullanır. Küme tanımı aracılığıyla etkinleştirilemeyen çeşitli özellikler vardır. Bu örnekte, aşağıdaki parametreleri kullanacaksınız:
 
    * **abonelik kimliği:** Azure Cosmos DB etcd API 'SI etkinleştirilmiş Azure abonelik KIMLIĞI.
-   * **istemci kimliği:** Hizmet sorumlusunun uygulama kimliği. `appId` 4. adımda çıkış olarak döndürüldü.
+   * **istemci kimliği:** Hizmet sorumlusunun uygulama kimliği. `appId`4. adımda çıkış olarak döndürüldü.
    * **İstemci parolası:** Hizmet sorumlusunun parolası veya rastgele oluşturulmuş bir parola. Bu değer, 4. adımdaki ' password ' parametresinde çıkış olarak döndürüldü. 
    * **Dnspredüzeltmesini:** Bölgeye özgü bir DNS adı. Bu değer, ana bilgisayar adının bir kısmını oluşturacak (örnek değerler-myprod1, hazırlama).
    * **Konum:**  Kümenin dağıtılacağı konum, şu anda yalnızca "merkezileştirmiş" destekleniyor.

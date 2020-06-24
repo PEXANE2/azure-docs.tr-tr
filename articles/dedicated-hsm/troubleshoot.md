@@ -13,19 +13,19 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: fc7d4caecb2ca3d35d7b1b8d0cd5f9ff380d7674
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 80a215363a319b9ee082bd6c5e5f8004fc5b715b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310113"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209581"
 ---
 # <a name="troubleshooting"></a>Sorun giderme
 
 Azure ayrılmış HSM hizmeti iki ayrı model içerir. İlk olarak, HSM cihazlarının Azure 'daki kayıt ve dağıtım, temel ağ bileşenleriyle birlikte. İkinci olarak, belirli bir iş yükü veya uygulamayla kullanım/tümleştirme hazırlığı için HSM cihazlarının yapılandırması. Thales Luna ağ HSM cihazları Azure 'da doğrudan Thales 'den satın alırken aynı olsa da, Azure 'da bir kaynak olması, bazı benzersiz hususlar oluşturur. Bu konular ve sonuçta ortaya çıkan sorun giderme öngörüleri veya en iyi yöntemleri, önemli bilgilere yüksek görünürlük ve erişim sağlamak için burada belgelenmiştir. Hizmet kullanımda olduktan sonra doğrudan Microsoft veya Thales 'e yönelik destek istekleri aracılığıyla tanımlayıcı bilgilere erişilebilir. 
 
 > [!NOTE]
-> Yeni dağıtılan bir HSM cihazında herhangi bir yapılandırma gerçekleştirilmeden önce bu, ilgili düzeltme ekleriyle güncelleştirilmeleri gerektiğini not edilmelidir. Bir yeniden başlatma askıda kalma sorununu ele veren Thales destek portalında gerekli olan belirli bir düzeltme [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789) .
+> Yeni dağıtılan bir HSM cihazında herhangi bir yapılandırma gerçekleştirilmeden önce bu, ilgili düzeltme ekleriyle güncelleştirilmeleri gerektiğini not edilmelidir. Belirli bir gerekli düzeltme, sistemin yeniden başlatma sırasında yanıt vermeyen bir sorunu ele veren Thales destek portalında [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789) .
 
 ## <a name="hsm-registration"></a>HSM kaydı
 
@@ -120,7 +120,7 @@ HSM içindeki ağı yapılandırırken dikkatli olun.  HSM 'nin, ExpressRoute a�
 
 ### <a name="hsm-device-reboot"></a>HSM cihazının yeniden başlatılması
 
-Bazı yapılandırma değişiklikleri, HSM 'nin güç ışığını veya yeniden başlatılmasını gerektirir. Azure 'da HSM 'nin Microsoft testi, yeniden başlatmanın yanıt vermemesine neden olduğunu belirledi. Bu, sabit yeniden başlatma isteğinde bulunan Azure portal bir destek isteğinin oluşturulması ve bir Azure veri merkezinde el ile gerçekleştirilen bir işlem olduğunu düşünmeye 48 saat kadar sürebilir.  Bu durumdan kaçınmak için, Thales 'ten doğrudan yeniden başlatma düzeltme ekini dağıttığınızdan emin olun. Yeniden başlatma askıda kalma sorunu için önerilen bir düzeltme eki için Thales Luna ağ HSM 7,2 Indirmelerinde [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) adresine bakın (örneğin, Indirmek Için Thales destek portalına kaydolmanız gerekir).
+Bazı yapılandırma değişiklikleri, HSM 'nin güç ışığını veya yeniden başlatılmasını gerektirir. Azure 'da HSM 'nin Microsoft testi, yeniden başlatmanın yanıt vermemesine neden olduğunu belirledi. Bu, sabit yeniden başlatma isteğinde bulunan Azure portal bir destek isteğinin oluşturulması ve bir Azure veri merkezinde el ile gerçekleştirilen bir işlem olduğunu düşünmeye 48 saat kadar sürebilir.  Bu durumdan kaçınmak için, Thales 'ten doğrudan yeniden başlatma düzeltme ekini dağıttığınızdan emin olun. Sistemin yeniden başlatma sırasında yanıt vermediği bir sorun için önerilen bir düzeltme eki için Thales Luna ağ HSM 7,2 Indirmelerinde [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) adresine bakın (örneğin, Indirmek Için Thales destek portalına kaydolmanız gerekir).
 
 ### <a name="ntls-certificates-out-of-sync"></a>NTLS sertifikaları eşitlenmemiş
 Bir sertifikanın süresi dolarsa veya yapılandırma güncelleştirmeleriyle üzerine yazıldığında, istemci bir HSM bağlantısını kaybedebilir. Sertifika değişimi istemci yapılandırması her HSM ile yeniden uygulanmalıdır.

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 8428e417f5f86edca77edae6ca4b7ef84e5ff425
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b121d7f5f1ad626f80a03ebe6cd47a932c209672
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73827290"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116442"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB ile sosyal olarak çalışmaya devam edin
 
@@ -25,7 +25,7 @@ Bu nedenle, bu verileri nasıl depolayabilirim?
 
 SQL veritabanlarında deneyiminiz olabilir veya bir [ilişkisel veri modelleme](https://en.wikipedia.org/wiki/Relational_model)kavramı vardır. Aşağıdaki gibi bir şey çizmeyi başlatabilirsiniz:
 
-![Göreli bir ilişkisel modeli gösteren diyagram](./media/social-media-apps/social-media-apps-sql.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-sql.png" alt-text="Göreli bir ilişkisel modeli gösteren diyagram" border="false":::
 
 Kusursuz bir normalleştirilmiş ve düzgün veri yapısı... Bu, ölçeklendirmez.
 
@@ -157,7 +157,7 @@ Kullanıcı bilgilerini örnek olarak ele alalım:
 
 Bu bilgilere bakarak, kritik bilgileri ve hangilerinin olmadığını hızlı bir şekilde tespit edebilir ve bu nedenle "el merdivenini" oluşturursunuz:
 
-![Bir el der deseninin diyagramı](./media/social-media-apps/social-media-apps-ladder.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="Bir el der deseninin diyagramı" border="false":::
 
 En küçük adımda, bir kullanıcıyı tanımlayan ve veri çoğaltma için kullanılan en az bilgi parçası olan UserChunk adı verilir. Yinelenen verilerin boyutunu yalnızca "göstereceğiniz" bilgilerle azaltarak, büyük güncelleştirmeler olasılığını azaltabilirsiniz.
 
@@ -188,7 +188,7 @@ Bir gönderi şöyle görünür:
         }
     }
 
-Bir öbek özniteliğinin etkilendiğine ilişkin bir düzenleme yapıldığında, etkilenen belgeleri kolayca bulabilirsiniz. Yalnızca dizinli öznitelikleri `SELECT * FROM posts p WHERE p.createdBy.id == "edited_user_id"`işaret eden sorguları kullanın (gibi) ve ardından öbekleri güncelleştirin.
+Bir öbek özniteliğinin etkilendiğine ilişkin bir düzenleme yapıldığında, etkilenen belgeleri kolayca bulabilirsiniz. Yalnızca dizinli öznitelikleri işaret eden sorguları kullanın (gibi) `SELECT * FROM posts p WHERE p.createdBy.id == "edited_user_id"` ve ardından öbekleri güncelleştirin.
 
 ## <a name="the-search-box"></a>Arama kutusu
 
@@ -230,7 +230,7 @@ Cosmos DB, tüm bölümlerinizde bulunan sorguları ( [toplamalar](https://azure
 
 Zamanla, son olarak trafikte ve kaynak tüketiminize ( [Rus](request-units.md)cinsinden ölçülen veya istek birimlerinde) büyütireceksiniz. Kullanıcı tabanınız büyüdükçe daha sık okuyacaksınız ve yazılacak. Kullanıcı tabanı daha fazla içerik oluşturmaya ve okumaya başlayacaktır. Bu nedenle, **aktarım hızını ölçeklendirmenin** önem taşır. Ru 'nizi kolayca artırabilirsiniz. Azure portal veya [API aracılığıyla komut vererek](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer)bunu birkaç tıklamayla yapabilirsiniz.
 
-![Bölüm anahtarını ölçekleme ve tanımlama](./media/social-media-apps/social-media-apps-scaling.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="Bölüm anahtarını ölçekleme ve tanımlama":::
 
 Şeyler daha iyi devam etmeleri durumunda ne olur? Başka bir bölge, ülke veya kıtaya ait kullanıcıların platformunuzu fark ettiğini ve uygulamayı kullanmaya başlamasını varsayalım. Harika bir sürpriz!
 
@@ -240,13 +240,13 @@ Cosmos DB, verilerinizi birkaç tıklamayla küresel ve şeffaf bir şekilde [ç
 
 Verilerinizi küresel olarak çoğalttığınızda, istemcilerinizin avantajlarından faydalanabildiğinden emin olmanız gerekir. Web ön ucu kullanıyorsanız veya mobil istemcilerden API 'Lere erişiyorsanız, [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) dağıtabilir ve Azure App Service istediğiniz tüm bölgelerde kopyalayabilir ve bu da genişletilmiş küresel kapsamınızı desteklemek için bir performans yapılandırması kullanabilirsiniz. İstemcileriniz ön uç veya API 'lerinize eriştiğinizde, bu, en yakın App Service yönlendirilir ve bu da yerel Cosmos DB çoğaltmasına bağlanır.
 
-![Sosyal platformunuza genel kapsam ekleme](./media/social-media-apps/social-media-apps-global-replicate.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="Sosyal platformunuza genel kapsam ekleme" border="false":::
 
 ## <a name="conclusion"></a>Sonuç
 
 Bu makalede, düşük maliyetli hizmetlerle Azure 'da tamamen sosyal ağlar oluşturma alternatiflerine yönelik bir ışık yer alır. sonuçları, "basamaklı der" adlı çok katmanlı bir depolama çözümünün ve veri dağıtımının kullanımını teşvik göre sunar.
 
-![Sosyal ağ için Azure hizmetleri arasındaki etkileşim diyagramı](./media/social-media-apps/social-media-apps-azure-solution.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="Sosyal ağ için Azure hizmetleri arasındaki etkileşim diyagramı" border="false":::
 
 Truth, bu tür senaryolar için gümüş bir madde işareti yoktur. Harika deneyimler oluşturmamızı sağlayan harika hizmetler birleşimi tarafından oluşturulan sinerjiden bahsederek denemelerini: harika bir sosyal uygulama sağlamak için Azure Cosmos DB hız ve serbestlik, Azure bilişsel arama gibi birinci sınıf arama çözümünün arkasındaki zeka, Azure App Services 'in, büyük miktarlarda veri ve Azure makinenin analitik gücünü depolama ve güçlü arka plan işlemleri ve Azure SQL veritabanı gibi önemli bir şekilde barındırılmasına olanak sağlar. Süreçlerinize geri bildirimde bulunmak ve doğru içeriği doğru kullanıcılara sunmamıza yardımcı olması için bilgi ve zeka oluşturmayı öğreniyor.
 

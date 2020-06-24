@@ -3,16 +3,16 @@ title: Azure Cosmos DB verilerini yedekten geri yükleme
 description: Bu makalede bir yedekten Azure Cosmos DB verilerinin nasıl geri yükleneceği, verilerin geri yüklenmesi için Azure desteği ile iletişim kurma, veriler geri yüklendikten sonra gerçekleştirilecek adımlar açıklanmaktadır.
 author: kanshiG
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 19ca835ca8211202cd358ac2ec3695675183a372
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 1a0075f9b4fc3ff919d4db4bd440a5435d711c83
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70240774"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261741"
 ---
 # <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Azure Cosmos DB bir yedekten veri geri yükleme 
 
@@ -43,11 +43,11 @@ Veri bozulması oluştuğunda ve bir kapsayıcıdaki belgeler değiştirilirse v
 
 Aşağıdaki ekran görüntüsünde, Azure portal kullanarak verileri geri yüklemek için bir kapsayıcı (koleksiyon/grafik/tablo) için bir destek isteği oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir. İsteğin önceliklendirmemize yardımcı olması için veri türü, geri yükleme amacı, verilerin silindiği zaman gibi ek ayrıntılar sağlayın.
 
-![Azure portal kullanarak bir yedekleme destek isteği oluşturun](./media/how-to-backup-and-restore/backup-support-request-portal.png)
+:::image type="content" source="./media/how-to-backup-and-restore/backup-support-request-portal.png" alt-text="Azure portal kullanarak bir yedekleme destek isteği oluşturun":::
 
 ## <a name="post-restore-actions"></a>Geri yükleme sonrası eylemler
 
-Verileri geri yükledikten sonra, yeni hesabın adı (genellikle biçimde `<original-name>-restored1`) ve hesabın geri yüklendiği saat hakkında bir bildirim alırsınız. Geri yüklenen hesap, aynı sağlanmış işleme, dizin oluşturma ilkelerine sahip olacak ve özgün hesapla aynı bölgede. Abonelik Yöneticisi veya coadmin (olan bir Kullanıcı, geri yüklenen hesabı görebilir.
+Verileri geri yükledikten sonra, yeni hesabın adı (genellikle biçimde `<original-name>-restored1` ) ve hesabın geri yüklendiği saat hakkında bir bildirim alırsınız. Geri yüklenen hesap, aynı sağlanmış işleme, dizin oluşturma ilkelerine sahip olacak ve özgün hesapla aynı bölgede. Abonelik Yöneticisi veya coadmin (olan bir Kullanıcı, geri yüklenen hesabı görebilir.
 
 Veriler geri yüklendikten sonra, geri yüklenen hesaptaki verileri inceleyip doğrulamanız ve beklediğiniz sürümü içerdiğinden emin olmanız gerekir. Her şey iyi görünüyorsa, [Azure Cosmos DB değişiklik akışını](change-feed.md) veya [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)kullanarak verileri özgün hesabınıza geri geçirmeniz gerekir.
 

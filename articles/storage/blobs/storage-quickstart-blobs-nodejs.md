@@ -7,27 +7,27 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: e68e91d90846ab77b994b53be7a84a9dd8bc5a25
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 025b2b66ffd6d9f62de6bf6debf7d4067cd52ab4
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241041"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261248"
 ---
-# <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>Hızlı başlangıç: node. js ' de JavaScript V12 SDK ile Blobları yönetme
+# <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>Hızlı başlangıç: Node.js içindeki JavaScript V12 SDK ile Blobları yönetme
 
-Bu hızlı başlangıçta, Node. js kullanarak blob 'ları yönetmeyi öğreneceksiniz. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri gibi büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Blobları karşıya yükleyebilir, indirebilir ve listetireceksiniz ve kapsayıcı oluşturup sileceksiniz.
+Bu hızlı başlangıçta, Node.js kullanarak blob 'ları yönetmeyi öğreneceksiniz. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri gibi büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Blobları karşıya yükleyebilir, indirebilir ve listetireceksiniz ve kapsayıcı oluşturup sileceksiniz.
 
-[API başvurusu belge](/javascript/api/@azure/storage-blob) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [paketi (düğüm paketi Yöneticisi)](https://www.npmjs.com/package/@azure/storage-blob) | [örnekleri](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+[API başvuru belgeleri](/javascript/api/@azure/storage-blob)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)  |  [Paket (düğüm Paket Yöneticisi)](https://www.npmjs.com/package/@azure/storage-blob)  |  [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Azure Depolama hesabı. [Depolama hesabı oluşturun](../common/storage-account-create.md).
-- [Node. js](https://nodejs.org/en/download/).
+- [Node.js](https://nodejs.org/en/download/).
 
 > [!NOTE]
-> Önceki SDK sürümünü kullanmaya başlamak için bkz. [hızlı başlangıç: node. js ' de JavaScript Ile v10 ARASıNDAKI SDK ile Blobları yönetme](storage-quickstart-blobs-nodejs-legacy.md).
+> Önceki SDK sürümünü kullanmaya başlamak için bkz. [hızlı başlangıç: JavaScript Ile v10 ARASıNDAKI SDK ile Blobları yönetme Node.js](storage-quickstart-blobs-nodejs-legacy.md).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -51,7 +51,7 @@ Bu bölümde, bir projeyi, JavaScript için Azure Blob depolama istemci kitaplı
     cd blob-quickstart-v12
     ```
 
-1. *Package. JSON*adlı yeni bir metin dosyası oluşturun. Bu dosya Node. js projesini tanımlar. Bu dosyayı *BLOB-QuickStart-V12* dizinine kaydedin. Dosyanın içeriği aşağıdadır:
+1. *Üzerindepackage.js*adlı yeni bir metin dosyası oluşturun. Bu dosya Node.js projesi tanımlar. Bu dosyayı *BLOB-QuickStart-V12* dizinine kaydedin. Dosyanın içeriği aşağıdadır:
 
     ```json
     {
@@ -72,11 +72,11 @@ Bu bölümde, bir projeyi, JavaScript için Azure Blob depolama istemci kitaplı
     }
     ```
     
-    İsterseniz `author` alanı için kendi adınızı koyabilirsiniz.
+    İsterseniz alanı için kendi adınızı koyabilirsiniz `author` .
    
 ### <a name="install-the-package"></a>Paketi yükler
 
-Hala *BLOB-QuickStart-V12* dizininde, `npm install` komutunu kullanarak JavaScript için Azure Blob Storage istemci kitaplığı 'nı yükleyebilirsiniz. Bu komut *Package. JSON* dosyasını okur ve JavaScript paketi Için Azure Blob Storage istemci kitaplığı V12 ve bağımlı olduğu tüm kitaplıkları kurar.
+Hala *BLOB-QuickStart-V12* dizininde, komutunu kullanarak JavaScript Için Azure Blob Storage istemci kitaplığı 'nı yükleyebilirsiniz `npm install` . Bu komut, dosyadaki *package.js* okur ve JavaScript paketi Için Azure Blob Storage istemci kitaplığı V12 ve bağımlı olduğu tüm kitaplıkları kurar.
 
 ```console
 npm install
@@ -87,7 +87,7 @@ npm install
 Proje dizininden:
 
 1. Kod Düzenleyicinizde başka bir yeni metin dosyası açın
-1. Azure `require` ve Node. js modüllerini yüklemek için çağrılar ekleme
+1. `require`Azure ve Node.js modüllerini yüklemek için çağrılar ekleme
 1. Temel özel durum işleme dahil olmak üzere programın yapısını oluşturma
 
     Kod şu şekildedir:
@@ -104,7 +104,7 @@ Proje dizininden:
     main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
     ```
 
-1. Yeni dosyayı *BLOB-QuickStart-V12* dizinine *BLOB-QuickStart-v12. js* olarak kaydedin.
+1. Yeni dosyayı *BLOB-QuickStart-V12* dizinine *blob-quickstart-v12.js* olarak kaydedin.
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
@@ -122,9 +122,9 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 
 Şu kaynaklarla etkileşim kurmak için aşağıdaki JavaScript sınıflarını kullanın:
 
-* [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient): sınıfı `BlobServiceClient` , Azure depolama kaynaklarını ve BLOB kapsayıcılarını değiştirmenize olanak sağlar.
-* [Containerclient](/javascript/api/@azure/storage-blob/containerclient): sınıfı `ContainerClient` , Azure depolama kapsayıcılarını ve bunların bloblarını değiştirmenize olanak sağlar.
-* [Blobclient](/javascript/api/@azure/storage-blob/blobclient): sınıfı `BlobClient` , Azure Storage bloblarını değiştirmenize izin verir.
+* [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient): `BlobServiceClient` sınıfı, Azure depolama kaynaklarını ve BLOB kapsayıcılarını değiştirmenize olanak sağlar.
+* [Containerclient](/javascript/api/@azure/storage-blob/containerclient): `ContainerClient` sınıfı, Azure depolama kapsayıcılarını ve bunların bloblarını değiştirmenize olanak sağlar.
+* [Blobclient](/javascript/api/@azure/storage-blob/blobclient): `BlobClient` sınıfı, Azure Storage bloblarını değiştirmenize izin verir.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -141,7 +141,7 @@ Bu örnek kod parçacıkları, JavaScript için Azure Blob depolama istemci kita
 
 Aşağıdaki kod, depolama [bağlantı dizesini yapılandırma](#configure-your-storage-connection-string) bölümünde oluşturulan ortam değişkeninden depolama hesabının bağlantı dizesini alır.
 
-Bu kodu `main` işlevin içine ekleyin:
+Bu kodu işlevin içine ekleyin `main` :
 
 ```javascript
 // Retrieve the connection string for use with the application. The storage
@@ -162,11 +162,11 @@ Yeni kapsayıcı için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğunda
 
 [Fromconnectionstring](/javascript/api/@azure/storage-blob/blobserviceclient#fromconnectionstring-string--storagepipelineoptions-) metodunu çağırarak [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient) sınıfının bir örneğini oluşturun. Ardından, bir kapsayıcıya başvuru almak için [Getcontainerclient](/javascript/api/@azure/storage-blob/blobserviceclient#getcontainerclient-string-) metodunu çağırın. Son olarak, depolama hesabınızda kapsayıcıyı gerçekten oluşturmak için [Oluştur](/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) ' u çağırın.
 
-Bu kodu `main` işlevin sonuna ekleyin:
+Bu kodu işlevin sonuna ekleyin `main` :
 
 ```javascript
 // Create the BlobServiceClient object which will be used to create a container client
-const blobServiceClient = await BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
+const blobServiceClient = BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
 
 // Create a unique name for the container
 const containerName = 'quickstart' + uuidv1();
@@ -175,7 +175,7 @@ console.log('\nCreating container...');
 console.log('\t', containerName);
 
 // Get a reference to a container
-const containerClient = await blobServiceClient.getContainerClient(containerName);
+const containerClient = blobServiceClient.getContainerClient(containerName);
 
 // Create the container
 const createContainerResponse = await containerClient.create();
@@ -190,7 +190,7 @@ Aşağıdaki kod parçacığı:
 1. [Kapsayıcı oluşturma](#create-a-container) bölümünde [Containerclient](/javascript/api/@azure/storage-blob/containerclient) üzerinde [getblockblobclient](/javascript/api/@azure/storage-blob/containerclient#getblockblobclient-string-) metodunu çağırarak bir [blockblobclient](/javascript/api/@azure/storage-blob/blockblobclient) nesnesine bir başvuru alır.
 1. [Karşıya yükleme](/javascript/api/@azure/storage-blob/blockblobclient#upload-httprequestbody--number--blockblobuploadoptions-) yöntemini çağırarak metin dizesi verilerini bloba yükler.
 
-Bu kodu `main` işlevin sonuna ekleyin:
+Bu kodu işlevin sonuna ekleyin `main` :
 
 ```javascript
 // Create a unique name for the blob
@@ -211,7 +211,7 @@ console.log("Blob was uploaded successfully. requestId: ", uploadBlobResponse.re
 
 [Listblobsflat](/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) yöntemini çağırarak kapsayıcıdaki Blobları listeleyin. Bu durumda, kapsayıcıya yalnızca bir blob eklenmiş, bu nedenle listeleme işlemi yalnızca bir BLOB döndürüyor.
 
-Bu kodu `main` işlevin sonuna ekleyin:
+Bu kodu işlevin sonuna ekleyin `main` :
 
 ```javascript
 console.log('\nListing blobs...');
@@ -224,9 +224,9 @@ for await (const blob of containerClient.listBlobsFlat()) {
 
 ### <a name="download-blobs"></a>Blob’ları indirme
 
-[Download](/javascript/api/@azure/storage-blob/blockblobclient#download-undefined---number--undefined---number--blobdownloadoptions-) metodunu çağırarak, önceden oluşturulmuş blobu indirin. Örnek kod, bir Node. js okunabilir `streamToString`akışını bir dizeye okumak için kullanılan adlı bir yardımcı işlevi içerir.
+[Download](/javascript/api/@azure/storage-blob/blockblobclient#download-undefined---number--undefined---number--blobdownloadoptions-) metodunu çağırarak, önceden oluşturulmuş blobu indirin. Örnek kod `streamToString` , Node.js okunabilir bir akışı bir dizeye okumak için kullanılan adlı bir yardımcı işlevi içerir.
 
-Bu kodu `main` işlevin sonuna ekleyin:
+Bu kodu işlevin sonuna ekleyin `main` :
 
 ```javascript
 // Get blob content from position 0 to the end
@@ -237,7 +237,7 @@ console.log('\nDownloaded blob content...');
 console.log('\t', await streamToString(downloadBlockBlobResponse.readableStreamBody));
 ```
 
-İşlevden sonra bu yardımcı işlevi ekleyin: *after* `main`
+İşlevden *sonra* bu yardımcı işlevi ekleyin `main` :
 
 ```javascript
 // A helper function used to read a Node.js readable stream into a string
@@ -259,7 +259,7 @@ async function streamToString(readableStream) {
 
 Aşağıdaki kod, [Delete](/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-) yöntemi kullanılarak kapsayıcının tamamını kaldırarak uygulamanın oluşturduğu kaynakları temizler. Ayrıca, isterseniz yerel dosyaları silebilirsiniz.
 
-Bu kodu `main` işlevin sonuna ekleyin:
+Bu kodu işlevin sonuna ekleyin `main` :
 
 ```javascript
 console.log('\nDeleting container...');
@@ -273,7 +273,7 @@ console.log("Container was deleted successfully. requestId: ", deleteContainerRe
 
 Bu uygulama bir metin dizesi oluşturur ve BLOB depolamaya yükler. Örnek daha sonra kapsayıcıdaki Blobları listeler, blobu indirir ve indirilen verileri görüntüler.
 
-Konsol isteminde *BLOB-QuickStart-v12.py* dosyasını içeren dizine gidin ve uygulamayı çalıştırmak için aşağıdaki `node` komutu yürütün.
+Konsol isteminde *BLOB-QuickStart-v12.py* dosyasını içeren dizine gidin ve `node` uygulamayı çalıştırmak için aşağıdaki komutu yürütün.
 
 ```console
 node blob-quickstart-v12.js

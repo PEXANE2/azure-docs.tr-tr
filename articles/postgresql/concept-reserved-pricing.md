@@ -5,22 +5,22 @@ author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 05/02/2020
-ms.openlocfilehash: 7f671e2a77a0a00fd1cc4338e29c14f7b8fca4f2
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.date: 06/16/2020
+ms.openlocfilehash: 9c5d6359ce0e79fce2e80911ff78d19cc88162b1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734731"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208714"
 ---
-# <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip PostgreSQL için Azure veritabanı işlem kaynakları için ön ödeme
+# <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>PostgreSQL için Azure veritabanı-ayrılmış kapasiteye sahip tek sunuculu işlem kaynakları için ön ödeme
 
 PostgreSQL için Azure veritabanı artık, Kullandıkça Öde fiyatlarına kıyasla işlem kaynakları için ön ödeme yaparak paradan tasarruf etmenize yardımcı olur. PostgreSQL için Azure veritabanı ile ayrılmış kapasite ile, işlem maliyetlerine göre önemli bir indirim elde etmek üzere bir veya üç yıllık bir dönem için PostgreSQL sunucusu üzerinde bir ön taahhüt yaparsınız. PostgreSQL için Azure veritabanı 'na ayrılan kapasiteyi satın almak için Azure bölgesini, dağıtım türünü, performans katmanını ve terimi belirtmeniz gerekir. </br>
 
-Ayırmayı, PostgreSQL için belirli Azure veritabanı sunucularına atamanız gerekmez. Zaten PostgreSQL için Azure veritabanı veya yeni dağıtılmış olanlar, ayrılmış fiyatlandırma avantajını otomatik olarak alır. Bir rezervasyon satın alarak, bir veya üç yıllık bir dönem için işlem maliyetleri için ön ödeme yaparsınız. Bir ayırma satın alarak, rezervasyon öznitelikleriyle eşleşen PostgreSQL için Azure veritabanı işlem ücretleri artık Kullandıkça Öde tarifelerine göre ücretlendirilir. Bir ayırma, PostgreSQL veritabanı sunucularıyla ilişkili yazılım, ağ veya depolama ücretlerini kapsamaz. Rezervasyon döneminin sonunda, faturalandırma avantajı sona erer ve PostgreSQL için Azure veritabanı, Kullandıkça Öde fiyatı üzerinden faturalandırılır. Ayırmalar otomatik olarak yenilemez. Fiyatlandırma bilgileri için bkz. [PostgreSQL Için Azure veritabanı ayrılmış kapasite teklifi](https://azure.microsoft.com/pricing/details/postgresql/). </br>
+Ayırmayı, PostgreSQL için belirli Azure veritabanı sunucularına atamanız gerekmez. Zaten PostgreSQL için Azure veritabanı (veya yeni dağıtılmış olanlar), ayrılmış fiyatlandırma avantajını otomatik olarak alır. Bir rezervasyon satın alarak, bir veya üç yıllık bir dönem için işlem maliyetleri için ön ödeme yaparsınız. Bir ayırma satın alarak, rezervasyon öznitelikleriyle eşleşen PostgreSQL için Azure veritabanı işlem ücretleri artık Kullandıkça Öde tarifelerine göre ücretlendirilir. Bir ayırma, PostgreSQL veritabanı sunucularıyla ilişkili yazılım, ağ veya depolama ücretlerini kapsamaz. Rezervasyon döneminin sonunda, faturalandırma avantajı sona erer ve PostgreSQL için Azure veritabanı, Kullandıkça Öde fiyatı üzerinden faturalandırılır. Ayırmalar otomatik olarak yenilemez. Fiyatlandırma bilgileri için bkz. [PostgreSQL Için Azure veritabanı ayrılmış kapasite teklifi](https://azure.microsoft.com/pricing/details/postgresql/). </br>
 
 > [!IMPORTANT]
-> Ayrılmış kapasite fiyatlandırması yalnızca PostgreSQL [Için](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) Azure veritabanı için kullanılabilir ve [hiperscale Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) dağıtımı için kullanılamaz.
+> [Tek sunucu](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) ve [hyperscale Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) dağıtım seçeneklerinde, PostgreSQL için Azure veritabanı için ayrılmış kapasite fiyatlandırması kullanılabilir. Hiper ölçekte RI fiyatlandırması hakkında bilgi için (Citus), [Bu sayfaya](concepts-hyperscale-reserved-pricing.md)bakın.
 
 PostgreSQL için Azure veritabanı 'nın [Azure Portal](https://portal.azure.com/)ayrılmış kapasitesini satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](../cost-management-billing/reservations/monthly-payments-reservations.md) rezervasyon ödemesi yapın. Ayrılmış kapasiteyi satın almak için:
 
@@ -35,7 +35,7 @@ Kurumsal müşterilerin ve kullandıkça öde müşterilerinin, rezervasyon sat�
 
 Ayırma boyutu, belirli bir bölgedeki mevcut veya kısa süreli dağıtılan sunucular tarafından kullanılan ve aynı performans katmanını ve donanım üretimini kullanan toplam işlem miktarına bağlı olmalıdır.</br>
 
-Örneğin, bir genel amaç, 5. nesil – 32 sanal çekirdek PostgreSQL veritabanı ve iki bellek için iyileştirilmiş, 5. nesil – 16 sanal çekirdek PostgreSQL veritabanlarını kullandığınızı varsayalım. Ayrıca, bir sonraki ay içinde, ek bir genel amaç, 5. nesil – 32 sanal çekirdek veritabanı sunucusu ve bir bellek için iyileştirilmiş, 5. nesil – 16 sanal çekirdek veritabanı sunucusu arasında dağıtmayı planladığınızı varsayalım. En az 1 yılda bu kaynaklara ihtiyacınız olacağını bildiğinizi varsayalım. Bu durumda, tek veritabanı belleği için iyileştirilmiş-5. nesil için 64 (2x32) sanal çekirdekleri, tek veritabanı için 1 yıl ayırma genel amaçlı-5. nesil ve 48 (2x16 + 16) sanal çekirdek 1 yıl ayırması satın almalısınız
+Örneğin, bir genel amaçlı 5. nesil – 32 sanal çekirdek PostgreSQL veritabanı ve bellek için iyileştirilmiş iki 5. nesil – 16 sanal çekirdek PostgreSQL veritabanı kullandığınızı varsayalım. Ayrıca, bir sonraki ay içinde, ek bir genel amaçlı 5. nesil – 32 sanal çekirdek veritabanı sunucusu ve bir bellek için iyileştirilmiş 5. nesil – 16 sanal çekirdek veritabanı sunucusu dağıtmayı planlamanız gerekir. Bu kaynaklara en az bir yıl boyunca ihtiyacınız olacağını bildiğinizi varsayalım. Bu durumda, tek veritabanı bellek için iyileştirilmiş-5. nesil için bir yıllık tek veritabanı genel amaçlı-5. nesil ve 48 (2x16 + 16) vCore için bir yıllık 64 (2x32) sanal çekirdek satın almalısınız.
 
 
 ## <a name="buy-azure-database-for-postgresql-reserved-capacity"></a>PostgreSQL için Azure veritabanı ayrılmış kapasitesi satın alın
@@ -43,7 +43,7 @@ Ayırma boyutu, belirli bir bölgedeki mevcut veya kısa süreli dağıtılan su
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Tüm hizmetler** > **Rezervasyonlar**’ı seçin.
 3. **Ekle** ' yi seçin ve ardından satın alma rezervasyonları bölmesinde PostgreSQL **için Azure veritabanı** ' nı seçerek PostgreSQL veritabanlarınız için yeni bir ayırma satın alın.
-4. Gerekli alanları doldur. ' Yi seçtiğiniz özniteliklerle eşleşen mevcut veya yeni veritabanları, ayrılmış kapasite indirimi elde etmek için nitelendir ' ı seçin. İskontoyu alan PostgreSQL için Azure veritabanı sunucularınızın gerçek sayısı, seçilen kapsama ve miktara göre değişir.
+4. Gerekli alanları girin. ' Yi seçtiğiniz özniteliklerle eşleşen mevcut veya yeni veritabanları, ayrılmış kapasite indirimi elde etmek için nitelendir ' ı seçin. İskontoyu alan PostgreSQL için Azure veritabanı sunucularınızın gerçek sayısı, seçilen kapsama ve miktara göre değişir.
 
 
 ![Ayrılmış fiyatlandırmaya genel bakış](media/concepts-reserved-pricing/postgresql-reserved-price.png)
@@ -51,14 +51,14 @@ Ayırma boyutu, belirli bir bölgedeki mevcut veya kısa süreli dağıtılan su
 
 Aşağıdaki tablo gerekli alanları açıklar.
 
-| Alan | Açıklama |
+| Alan | Description |
 | :------------ | :------- |
 | Abonelik   | PostgreSQL için Azure veritabanı için ödeme yapmak üzere kullanılan abonelik ayrılmış kapasite ayırması. Abonelik üzerindeki ödeme yöntemi, PostgreSQL için Azure veritabanı ayrılmış kapasite rezervasyonuna ait ön maliyetlere göre ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) içeren tek bir anlaşma olmalıdır. Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir. Kullandıkça Öde fiyatlandırmasına sahip bireysel bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.
 | Kapsam | VCore rezervasyonunun kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: </br></br> **, Sanal**çekirdek ayırma indirimi, faturalandırma bağlamınızın içindeki aboneliklerde çalışan PostgreSQL sunucuları Için Azure veritabanı 'na uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde abonelikleridir.</br></br> **Tek abonelik**, sanal çekirdek ayırma indirimi Bu abonelikteki PostgreSQL Için Azure veritabanı sunucularına uygulanır. </br></br> **Tek kaynak grubu**, ayırma indirimi seçili abonelikteki PostgreSQL sunucuları Için Azure veritabanı ve bu abonelikteki seçili kaynak grubu için geçerlidir.
 | Bölge | PostgreSQL için Azure veritabanı 'nın kapsamına giren Azure bölgesi ayrılmış kapasite ayırması.
 | Dağıtım türü | Ayırmasını satın almak istediğiniz PostgreSQL için Azure veritabanı kaynak türü.
 | Performans katmanı | PostgreSQL için Azure veritabanı sunucularına yönelik hizmet katmanı.
-| Sözleşme Dönemi | Bir yıl
+| Terim | Bir yıl
 | Miktar | PostgreSQL için Azure veritabanı 'nda satın alınan işlem kaynaklarının miktarı ayrılmış kapasite ayırması. Bu miktar, seçili Azure bölgesindeki ve performans katmanındaki, ayrılan ve fatura iskontosunu alacak olan sanal çekirdekler sayısıdır. Örneğin, Doğu ABD bölgesinde 5. nesil 16 sanal çekirdeklerinin toplam işlem kapasitesine sahip PostgreSQL için Azure veritabanı sunucuları çalıştırıyorsanız veya çalıştırmayı planlıyorsanız, tüm sunucuların avantajını en üst düzeye çıkarmak için miktarı 16 olarak belirtirsiniz.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma
@@ -75,8 +75,7 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VCore RESERVATION Discount, PostgreSQL için Azure veritabanı 'na ayrılmış kapasite ayırma kapsamı ve öznitelikleri ile eşleşen PostgreSQL için Azure veritabanı sunucularının sayısına otomatik olarak uygulanır. PostgreSQL için Azure veritabanı 'nın kapsamını Azure portal, PowerShell, CLı veya API aracılığıyla ayrılmış kapasite ayırma için güncelleştirebilirsiniz. </br></br>
-PostgreSQL için Azure veritabanı 'na ayrılan kapasiteyi yönetme hakkında bilgi edinmek için bkz. PostgreSQL için Azure veritabanını yönetme ayrılmış kapasitesi.
+VCore RESERVATION Discount, PostgreSQL için Azure veritabanı 'na ayrılmış kapasite ayırma kapsamı ve öznitelikleri ile eşleşen PostgreSQL için Azure veritabanı sunucularının sayısına otomatik olarak uygulanır. PostgreSQL için Azure veritabanı 'nın kapsamını Azure portal, PowerShell, CLı veya API aracılığıyla ayrılmış kapasite ayırma için güncelleştirebilirsiniz.
 
 Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 

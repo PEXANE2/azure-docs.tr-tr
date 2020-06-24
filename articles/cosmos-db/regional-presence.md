@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 95b9a9804fe1a9473d226912f178284f701a1547
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78f02c07932c6a058ba4fa27289640b7efd56169
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72753222"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113679"
 ---
 # <a name="regional-presence-with-azure-cosmos-db"></a>Azure Cosmos DB bölgesel varlık
 
 Azure Cosmos DB, Azure 'da temel bir hizmettir ve varsayılan olarak, Azure 'un kullanılabildiği tüm bölgelerde her zaman kullanılabilir. Azure Şu anda dünya çapındaki [54 bölgede](https://azure.microsoft.com/global-infrastructure/regions/) kullanılabilir. 
 
-[![Azure Cosmos DB kullanılabildiği bölgeler](./media/regional-presence/regional-presence.png)](./media/regional-presence/regional-presence.png#lightbox)
+:::image type="content" source="./media/regional-presence/regional-presence.png" alt-text="Azure Cosmos DB kullanılabildiği bölgeler" lightbox="./media/regional-presence/regional-presence.png" border="false":::
 
 Cosmos DB, müşteriler tarafından kullanılabilen beş farklı Azure bulut ortamında kullanılabilir:
 

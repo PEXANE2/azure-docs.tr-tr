@@ -4,15 +4,15 @@ description: Bu makalede, AKS kümeleri için giriş denetleyicisi ile Applicati
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 1f068c9d98a827afd16da01bdc40cbb6ca5dc465
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68d4ff7e4617136e4c58ce672f34de56e46f0229
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79297841"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207796"
 ---
 # <a name="expose-a-websocket-server-to-application-gateway"></a>WebSocket sunucusunu Application Gateway kullanıma sunma
 
@@ -75,10 +75,10 @@ spec:
               servicePort: 80
 ```
 
-Tüm önkoşulların yerine getirildiğini ve AKS 'larınızın bir Kubernetes tarafından denetlenen bir Application Gateway varsa yukarıdaki dağıtım, Application Gateway genel IP ve `ws.contoso.com` etki alanının 80 numaralı bağlantı noktasında kullanıma sunulan bir WebSockets sunucusu ile sonuçlanır.
+Tüm önkoşulların yerine getirildiğini ve AKS 'larınızın bir Kubernetes tarafından denetlenen bir Application Gateway varsa yukarıdaki dağıtım, Application Gateway genel IP ve etki alanının 80 numaralı bağlantı noktasında kullanıma sunulan bir WebSockets sunucusu ile sonuçlanır `ws.contoso.com` .
 
 Aşağıdaki kıvrımlı komutu WebSocket sunucu dağıtımını test edecektir:
-```sh
+```shell
 curl -i -N -H "Connection: Upgrade" \
         -H "Upgrade: websocket" \
         -H "Origin: http://localhost" \
@@ -91,7 +91,7 @@ curl -i -N -H "Connection: Upgrade" \
 ## <a name="websocket-health-probes"></a>WebSocket sistem durumu araştırmaları
 
 Dağıtımınız açıkça sistem durumu araştırmalarını tanımlamıyorsa, Application Gateway WebSocket sunucu uç noktanıza HTTP GET denemesi yapılır.
-Sunucu uygulamasına bağlı olarak ([bir çok sevdiğimiz](https://github.com/gorilla/websocket/blob/master/examples/chat/main.go)) WebSocket 'e özgü üstbilgiler gerekli olabilir (`Sec-Websocket-Version` örneğin).
-Application Gateway WebSocket üst bilgilerini eklemediğinden, Application Gateway 'ın WebSocket sunucusundan gelen sistem durumu araştırma yanıtı muhtemelen büyük olasılıkla olacaktır `400 Bad Request`.
-Sonuç olarak Application Gateway, ayırımlarınızı sağlıksız olarak işaretleyecek ve sonuç olarak WebSocket sunucusunun tüketicilerine `502 Bad Gateway` neden olacak.
-Bundan kaçınmak için, sunucunuza bir sistem durumu denetimi için HTTP GET işleyicisi eklemeniz gerekebilir (`/health` Örneğin, döndüren `200 OK`).
+Sunucu uygulamasına bağlı olarak ([bir çok sevdiğimiz](https://github.com/gorilla/websocket/blob/master/examples/chat/main.go)) WebSocket 'e özgü üstbilgiler gerekli olabilir (örneğin `Sec-Websocket-Version` ).
+Application Gateway WebSocket üst bilgilerini eklemediğinden, Application Gateway 'ın WebSocket sunucusundan gelen sistem durumu araştırma yanıtı muhtemelen büyük olasılıkla olacaktır `400 Bad Request` .
+Sonuç olarak Application Gateway, ayırımlarınızı sağlıksız olarak işaretleyecek ve sonuç olarak `502 Bad Gateway` WebSocket sunucusunun tüketicilerine neden olacak.
+Bundan kaçınmak için, sunucunuza bir sistem durumu denetimi için HTTP GET işleyicisi eklemeniz gerekebilir (örneğin `/health` , döndüren `200 OK` ).

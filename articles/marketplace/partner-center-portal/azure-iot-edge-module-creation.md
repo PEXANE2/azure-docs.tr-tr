@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 14bbbb3cdbaa0074eaedaea81d273331fbd5abcd
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 9129eb905bbdc7d9be24f403f3b3bf318d6d6a6f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672604"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211383"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Azure Marketi 'nde IoT Edge modülü teklifi oluşturma, yapılandırma ve yayımlama
 
@@ -48,7 +48,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 **Teklif genel bakış** sayfasında, bu teklifi yayımlamak için gereken adımların görsel bir gösterimi gösterilir (hem tamamlandı hem de yakında) ve her adımın tamamlanması gereken süre.
 
-Bu sayfa, yaptığınız seçime bağlı olarak bu teklif üzerinde işlem gerçekleştirme bağlantılarını içerir. Örnek:
+Bu sayfa, yaptığınız seçime bağlı olarak bu teklif üzerinde işlem gerçekleştirme bağlantılarını içerir. Örneğin:
 
 - Teklif bir taslak- [silme taslağı tekliftir](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Teklif canlı ise, [teklifi satmaya](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
@@ -111,7 +111,7 @@ Standart sözleşmeyi kullanmak için **Microsoft 'un ticari Market Için standa
 > [!NOTE]
 > Microsoft ticari Market için standart sözleşmeyi kullanarak bir teklifi yayımladıktan sonra, kendi özel hüküm ve koşullarınızı kullanamazsınız. Çözümünüzü standart sözleşme kapsamında ya da kendi hüküm ve koşullarınızın altına sunun.
 
-![Microsoft 'un ticari Market onay kutusu için standart sözleşmeyi kullanmayı gösterir.](./media/iot-edge-module-creation/iot-edge-module-standard-contract-checkbox.png)
+![Microsoft 'un ticari Market onay kutusu için standart sözleşmeyi kullanmayı gösterir.](media//iot-edge-module-standard-contract-checkbox.png)
 
 ##### <a name="your-own-terms-and-conditions"></a>Kendi hüküm ve koşullarınız
 
@@ -165,7 +165,7 @@ Kuruluşunuzun gizlilik ilkesinin Web adresini girin. Teklifinizin gizlilik yasa
 Teklifiniz hakkında ek çevrimiçi belgeler sağlayın. En fazla 25 bağlantı ekleyebilirsiniz. Bir bağlantı eklemek için **+ bağlantı ekle** ' yi seçin ve ardından aşağıdaki alanları doldurun:
 
 - **Başlık** -müşteriler, teklifin ayrıntılar sayfasında başlığı görür.
-- **Bağlantı (URL)** -müşterilerin çevrimiçi belgenizi görüntülemesi için bir bağlantı girin. Bağlantı, http://veya https://ile başlamalıdır.
+- **Bağlantı (URL)** -müşterilerin çevrimiçi belgenizi görüntülemesi için bir bağlantı girin. Bağlantı veya ile başlamalıdır `http://` `https://` .
 
 Belgelerinize en az bir bağlantı ve [Azure IoT cihaz kataloğundan](https://catalog.azureiotsolutions.com/)uyumlu IoT Edge cihazlara bir bağlantı eklediğinizden emin olun.
 
@@ -187,14 +187,14 @@ Teklif listeleri oluşturma hakkında daha fazla bilgi için bkz. [teklif listes
 
 ### <a name="marketplace-images"></a>Market görüntüleri
 
-Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin. png biçiminde olması gerekir. Bulanık görüntüler reddedilir.
+Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir. Bulanık görüntüler reddedilir.
 
 >[!Note]
 >Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-Aşağıdaki dört piksel boyutunda, teklifinizin logosunun. png dosyalarını sağlayın:
+Aşağıdaki dört piksel boyutundan her biri için teklifinizin logosunun PNG dosyalarını sağlayın:
 
 - **Küçük (48 x 48)**
 - **Orta (90 x 90)**
@@ -205,33 +205,63 @@ Dört logo gereklidir ve Market listesindeki farklı yerlerde kullanılır.
 
 #### <a name="screenshots-optional"></a>Ekran görüntüleri (isteğe bağlı)
 
-Teklifinizin nasıl çalıştığını gösteren en fazla beş ekran görüntüsü ekleyin. Her biri, boyut ve. png biçiminde 1280 x 720 piksel olmalıdır.
+Teklifinizin nasıl çalıştığını gösteren en fazla beş ekran görüntüsü ekleyin. Her biri, boyut ve PNG biçiminde 1280 x 720 piksel olmalıdır.
 
 #### <a name="videos-optional"></a>Videolar (isteğe bağlı)
 
-Teklifinizi gösteren en fazla beş video ekleyin. Videonun adını, Web adresini ve videonun küçük resim. png görüntüsünü 1280 x 720 piksel boyutunda girin.
+Teklifinizi gösteren en fazla beş video ekleyin. Videonun adını, Web adresini ve videonun küçük resim PNG görüntüsünü 1280 x 720 piksel boyutunda girin.
 
-#### <a name="offer-examples"></a>Teklif örnekleri
+#### <a name="marketplace--examples"></a>Market örnekleri
 
-Aşağıdaki örneklerde teklif listeleme alanlarının teklifin farklı konumlarında nasıl göründüğü gösterilmektedir.
+Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
 
-Bu ekran görüntüsünde, Azure Marketi 'ndeki **teklif listesi** sayfası gösterilmektedir.
+:::image type="content" source="media/example-iot-azure-marketplace-offer.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-offer-listing-page.png" alt-text="Azure Marketi 'ndeki teklif listesi sayfasını gösterir.":::
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
-Bu ekran görüntüsünde Azure Marketi 'ndeki arama sonuçları gösterilmektedir:
+1. Büyük logo
+2. Kategoriler
+3. Destek adresi (bağlantı)
+4. hüküm ve koşullar
+5. Gizlilik ilkesi adresi (bağlantı)
+6. Name
+7. Özet
+8. Description
+9. Yararlı bağlantılar
+10. Ekran görüntüleri/videolar
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-marketplace-search-results.png" alt-text="Azure Marketi 'ndeki arama sonuçlarını gösterir.":::
+<br>Azure Marketi arama sonuçlarında teklif bilgilerinin nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
 
-Bu ekran görüntüsünde Azure portal **teklif listesi** sayfası gösterilmektedir.
+:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Bu teklifin Azure Marketi arama sonuçlarında nasıl göründüğünü gösterir.":::
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-listing-page-azure-portal.png" alt-text="Azure portal teklif listesi sayfasını gösterir.":::
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
-Bu ekran görüntüsünde Azure portal arama sonuçları gösterilmektedir.
+1. Küçük logo
+2. Teklif adı
+3. Arama sonuçları Özeti
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-azure-portal-search-results.png" alt-text="Azure portal teklif listesi sayfasını gösterir.":::
+<br>Teklif bilgilerinin Azure portal nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
 
-Sonraki bölüme devam etmeden önce **Taslağı kaydet** ' i seçin, önizleme.
+:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Bu teklifin Azure portal nasıl göründüğünü gösterir.":::
+
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
+
+1. Name
+2. Description
+3. Yararlı bağlantılar
+4. Ekran görüntüleri
+
+<br>Teklif bilgilerinin Azure portal arama sonuçlarında nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
+
+:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Bu teklifin Azure portal arama sonuçlarında nasıl göründüğünü gösterir.":::
+
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
+
+1. Küçük logo
+2. Teklif adı
+3. Arama sonuçları Özeti
+
+<br>Sonraki bölüme devam etmeden önce **Taslağı kaydet** ' i seçin, önizleme.
 
 ## <a name="preview"></a>Önizleme
 
@@ -286,18 +316,18 @@ Plana genel bakışta sunulan eylemler planınızın geçerli durumuna bağlı o
 
 Bu sekme, planın hangi bulutlarda kullanılabilir olduğunu yapılandırmanızı sağlar. Bu sekmedeki yanıtlarınız, diğer sekmelerde hangi alanların görüntülendiğini etkiler.
 
-#### <a name="cloud-availability"></a>Bulut kullanılabilirliği
+#### <a name="azure-regions"></a>Azure bölgeleri
 
 IoT Edge modül teklifleri için tüm planlar otomatik olarak **Azure küresel**' te kullanıma sunulmuştur.  Planınız, Market kullanan tüm genel Azure bölgelerinde bulunan müşteriler tarafından kullanılabilir. Ayrıntılar için bkz. [coğrafi kullanılabilirlik ve para birimi desteği](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
 
-Çözümünüzü burada görünmesini sağlamak için [Azure Kamu Bulutu](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) seçeneğini belirleyin. Bu, ABD Federal, eyalet ve yerel ya da üç devlet kurumlarının yanı sıra onlara hizmeti sunmaya uygun iş ortakları için denetimli erişime sahip bir kamu topluluk bulutuna sahiptir. Yayımcı olarak, bu bulut topluluğu için tüm uyumluluk denetimleri, güvenlik ölçüleri ve en iyi uygulamalardan siz sorumlusunuz. Azure Kamu fiziksel olarak yalıtılmış veri merkezleri ve ağlar (yalnızca ABD 'de bulunur) kullanır. Azure Kamu 'da [yayımlamadan](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) önce, sonuçlar farklı olabileceğinden çözümünüzü test edin ve onaylayın. Çözümünüzü hazırlamak ve test etmek için [Microsoft Azure Kamu deneme](https://azure.microsoft.com/global-infrastructure/government/request/)sürümünden bir deneme hesabı isteyin.
+Çözümünüzü burada görünmesini sağlamak için [Azure Kamu](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) seçeneğini belirleyin. Bu, ABD Federal, eyalet ve yerel ya da üç devlet kurumlarının yanı sıra onlara hizmeti sunmaya uygun iş ortakları için denetimli erişime sahip bir kamu topluluk bulutuna sahiptir. Yayımcı olarak, bu bulut topluluğu için tüm uyumluluk denetimleri, güvenlik ölçüleri ve en iyi uygulamalardan siz sorumlusunuz. Azure Kamu fiziksel olarak yalıtılmış veri merkezleri ve ağlar (yalnızca ABD 'de bulunur) kullanır. Azure Kamu 'da [yayımlamadan](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) önce, sonuçlar farklı olabileceğinden çözümünüzü test edin ve onaylayın. Çözümünüzü hazırlamak ve test etmek için [Microsoft Azure Kamu deneme](https://azure.microsoft.com/global-infrastructure/government/request/)sürümünden bir deneme hesabı isteyin.
 
 > [!NOTE]
-> Planınız yayımlandıktan ve belirli bir bulutta kullanılabilir olduktan sonra, bu bulutu kaldıramazsınız.
+> Planınız yayımlandıktan ve belirli bir bölgede kullanılabilir olduktan sonra bu bölgeyi kaldıramazsınız.
 
-#### <a name="azure-government-cloud-certifications"></a>Azure Kamu bulut sertifikaları
+#### <a name="azure-government-certifications"></a>Azure Kamu sertifikaları
 
-Bu seçenek yalnızca **Azure Kamu Bulutu** 'nın **bulut kullanılabilirliği**altında seçilmesi durumunda görünür.
+Bu seçenek yalnızca, **bulut kullanılabilirliği**altında **Azure Kamu** seçilirse görülebilir.
 
 Azure Kamu Hizmetleri, belirli kamu düzenlemelerine ve gereksinimlerine tabi olan verileri işler. Örneğin, Fedrampa, NıST 800,171 (DIB), ıTAR, ıRS 1075, DoD L4 ve CJıS. Bu programların sertifikalarına yönelik olarak bir açıklama getirmek için, sertifikalarınızı tanımlayan en fazla 100 bağlantı sağlayabilirsiniz. Bunlar program üzerinde doğrudan veya kendi web sitenizde yer alan dökümlerinizin bağlantısı olabilir. Bu bağlantılar yalnızca Azure Kamu müşterileri tarafından görülebilir.
 
@@ -307,7 +337,7 @@ Bu sekme, aynı teklif içindeki her farklı plan için belirli bilgileri görü
 
 ### <a name="plan-name"></a>Plan adı
 
-Bu, planınızı oluşturduğunuz sırada verdiğiniz adla önceden doldurulmuştur. Bu adı gerektiği şekilde değiştirebilirsiniz. En fazla 50 karakter uzunluğunda olabilir. Bu ad, Azure Marketi 'nde bu planın başlığı olarak görünür ve Azure portal. Plan kullanılmak üzere hazır olduktan sonra varsayılan modül adı olarak kullanılır.
+Bu, planınızı oluşturduğunuz sırada verdiğiniz adla önceden doldurulmuştur. Bu adı gerektiği şekilde değiştirebilirsiniz. En fazla 50 karakter uzunluğunda olabilir. Bu ad, Azure Marketi 'nde bu planın başlığı ve Azure portal görüntülenir. Plan kullanılmak üzere hazır olduktan sonra varsayılan modül adı olarak kullanılır.
 
 ### <a name="plan-summary"></a>Plan Özeti
 
@@ -321,15 +351,25 @@ Bu alanları tamamladıktan sonra **Taslağı kaydet** ' i seçin.
 
 #### <a name="plan-examples"></a>Plan örnekleri
 
-Aşağıdaki örneklerde plan listeleme alanlarının farklı görünümlerde nasıl göründüğü gösterilmektedir.
+Azure Market planı ayrıntılarına bir örnektir (listelenen tüm fiyatlar yalnızca örnek amaçlıdır ve gerçek maliyetlerin yansıtılmasından sorumlu değildir):
 
-Plan ayrıntılarını görüntülerken Azure Marketi 'ndeki alanlar şunlardır:
+:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Azure Market planı ayrıntılarını gösterir.":::
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-marketplace-plan-details.png" alt-text="Azure Marketi 'nde plan ayrıntılarını görüntülerken gördüğünüz alanları gösterir.":::
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
-Bunlar Azure portal plan ayrıntılardır:
+1. Teklif adı
+2. Plan adı
+3. Plan açıklaması
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-azure-portal-plan-details.png" alt-text="Azure portal plan ayrıntılarını gösterir.":::
+<br>Aşağıda, Azure portal planı ayrıntılarına bir örnek verilmiştir (listelenen tüm fiyatlar yalnızca örnek amaçlıdır ve gerçek maliyetlerin yansıtılmasından sorumlu değildir):
+
+:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Azure portal planı ayrıntılarını gösterir.":::
+
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
+
+1. Teklif adı
+2. Plan adı
+3. Plan açıklaması
 
 ## <a name="availability"></a>Kullanılabilirlik
 
@@ -364,11 +404,21 @@ Birden çok platformu hedefleyebilir ve Etiketler kullanarak modül kapsayıcı 
 
 **Azure Container Registry Için Yönetici Kullanıcı adı**: kapsayıcı görüntünüzü içeren Azure Container Registry ilişkili [Yönetici Kullanıcı adını](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account) sağlayın. Şirketinizin kayıt defterine erişiminin olduğundan emin olmak için Kullanıcı adı ve parola gereklidir. Yönetici Kullanıcı adını ve parolasını almak için, Azure komut satırı arabirimi 'ni (CLı) kullanarak **yönetici özellikli** özelliği **true** olarak ayarlayın. İsteğe bağlı olarak, Azure portal **yönetici kullanıcıyı** **etkinleştirmek** için ayarlayabilirsiniz.
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="Kapsayıcı kayıt defterini Güncelleştir iletişim kutusunu gösterir.":::
+:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Kapsayıcı kayıt defterini Güncelleştir iletişim kutusunu gösterir.":::
 
-**Azure Container Registry parolası**: Azure Container Registry ilişkili Yönetici Kullanıcı adı için parola belirtin ve kapsayıcı görüntünüzü içerir. Şirketinizin kayıt defterine erişiminin olduğundan emin olmak için Kullanıcı adı ve parola gereklidir. Azure Portal parolayı **Container Registry**  >  **erişim anahtarlarına** giderek veya [göster komutunu](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show) kullanarak Azure CLI ile öğrenebilirsiniz.
+#### <a name="call-out-description"></a>Çağrı açıklaması
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-username-password.png" alt-text="Azure portal erişim tuşu ekranını gösterir.":::
+1. Yönetici kullanıcı
+
+<br>**Azure Container Registry parolası**: Azure Container Registry ilişkili Yönetici Kullanıcı adı için parola belirtin ve kapsayıcı görüntünüzü içerir. Şirketinizin kayıt defterine erişiminin olduğundan emin olmak için Kullanıcı adı ve parola gereklidir. Azure Portal parolayı **Container Registry**  >  **erişim anahtarlarına** giderek veya [göster komutunu](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show) kullanarak Azure CLI ile öğrenebilirsiniz.
+
+:::image type="content" source="media/example-iot-access-keys.png" alt-text="Azure portal erişim tuşu ekranını gösterir.":::
+
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
+
+1. Erişim tuşları
+2. Kullanıcı adı
+3. Parola
 
 **Azure Container Registry Içinde Depo adı**. Yansımanıza sahip Azure Container Registry deposunun adını sağlayın. Görüntüyü kayıt defterine gönderdiğinizde deponun adını belirtirsiniz. Deponun adını [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **depoları sayfasına**giderek bulabilirsiniz. Daha fazla bilgi için bkz. [Azure Portal kapsayıcı kayıt defteri depolarını Görüntüleme](https://docs.microsoft.com/azure/container-registry/container-registry-repositories). Ad ayarlandıktan sonra, bunun değiştirilemeyeceğini unutmayın. Hesabınızdaki her teklif için benzersiz bir ad kullanın.
 

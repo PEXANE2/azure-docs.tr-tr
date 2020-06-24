@@ -3,15 +3,15 @@ title: Yalnızca Azure Cosmos DB ile veri işlemlerine Kullanıcı erişimini k�
 description: Yalnızca Azure Cosmos DB ile veri işlemlerine erişimi nasıl kısıtlayacağınızı öğrenin
 author: voellm
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 03cad9e4c3752b5f35be785a6280bf18aaa14860
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88899dc697839b16c2b0cd24ac9233f87da26b41
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74980380"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261231"
 ---
 # <a name="restrict-user-access-to-data-operations-only"></a>Kullanıcı erişimini yalnızca veri işlemleriyle sınırlama
 
@@ -19,7 +19,9 @@ Azure Cosmos DB, veritabanı hizmetiyle etkileşimlerinizi doğrulamak için iki
 - Azure portal etkileşim kurarken Azure Active Directory kimliğinizi kullanarak
 - API 'Ler ve SDK 'lardan çağrı verirken Azure Cosmos DB [anahtarlarını](secure-access-to-data.md#master-keys) veya [kaynak belirteçlerini](secure-access-to-data.md#resource-tokens) kullanma.
 
-Her bir kimlik doğrulama yöntemi, farklı işlem kümelerine erişim verir, bazı örtüşme vardır ![: kimlik doğrulama türü başına işlem ayırma](./media/how-to-restrict-user-data/operations.png)
+Her bir kimlik doğrulama yöntemi, bazı çakışmada farklı işlem kümelerine erişim sağlar:
+
+:::image type="content" source="./media/how-to-restrict-user-data/operations.png" alt-text="Kimlik doğrulama türü başına işlem bölme" border="false":::
 
 Bazı senaryolarda, kuruluşunuzun bazı kullanıcılarını veri işlemlerini (yani CRUD istekleri ve sorguları) gerçekleştirmeye kısıtlamak isteyebilirsiniz. Bu genellikle, kaynak oluşturmak veya silmek zorunda olmayan geliştiriciler veya üzerinde çalıştıkları kapsayıcıların sağlanan verimini değiştirmek zorunda değildir.
 
@@ -36,7 +38,7 @@ Sonraki bölümlerdeki PowerShell betiklerine aşağıdaki yer tutucuları ortam
 - `$MySubscriptionId`-İzinleri sınırlandırmak istediğiniz Azure Cosmos hesabını içeren abonelik KIMLIĞI. Örneğin: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
 - `$MyResourceGroupName`-Azure Cosmos hesabını içeren kaynak grubu. Örneğin: `myresourcegroup`.
 - `$MyAzureCosmosDBAccountName`-Azure Cosmos hesabınızın adı. Örneğin: `mycosmosdbsaccount`.
-- `$MyUserName`-Erişimini sınırlamak istediğinizusername@domainkullanıcının oturum açması (). Örneğin: `cosmosdbuser@contoso.com`.
+- `$MyUserName`-Erişimini sınırlamak istediğiniz kullanıcının oturum açması ( username@domain ). Örneğin: `cosmosdbuser@contoso.com`.
 
 ## <a name="select-your-azure-subscription"></a>Azure aboneliğinizi seçin
 
@@ -51,7 +53,7 @@ Select-AzSubscription $MySubscriptionId
 
 Aşağıdaki betik, Azure Cosmos hesapları için "yalnızca anahtar" erişimine sahip Azure Active Directory bir rol ataması oluşturur. Rol, [Azure kaynakları Için özel rollere](../role-based-access-control/custom-roles.md) ve [Azure Cosmos DB yönelik ayrıntılı eylemlere](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)dayanır. Bu roller ve eylemler `Microsoft.DocumentDB` Azure Active Directory ad alanının bir parçasıdır.
 
-1. İlk olarak, aşağıdaki içerikle adlı `AzureCosmosKeyOnlyAccess.json` bir JSON belgesi oluşturun:
+1. İlk olarak, aşağıdaki içerikle adlı bir JSON belgesi oluşturun `AzureCosmosKeyOnlyAccess.json` :
 
     ```
     {

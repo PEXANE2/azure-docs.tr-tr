@@ -3,15 +3,15 @@ title: Değişiklik akışı işlemcisi kitaplığından .NET v3 SDK Azure Cosmo
 description: Değişiklik akışı işlemcisi kitaplığını kullanarak uygulamanızı Azure Cosmos DB SDK V3 'e geçirmeyi öğrenin
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 9570a8512e3437b12ecce2ef0c708a74a8806482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9640800bb53fe2fd5b27cb6e232e09c72158f8da
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588892"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261418"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Değişiklik akışı işlemcisi kitaplığından .NET v3 SDK Azure Cosmos DB geçirin
 
@@ -21,10 +21,10 @@ Bu makalede, [değişiklik akışı işlemci kitaplığını](https://github.com
 
 .NET v3 SDK 'sının birkaç önemli değişikliği vardır ve uygulamanızı geçirmeye yönelik temel adımlar aşağıda verilmiştir:
 
-1. İzlenen ve `DocumentCollectionInfo` kira kapsayıcıları `Container` için örnekleri başvurulara dönüştürün.
-1. Kullanan özelleştirmeler, `WithProcessorOptions` Aralık için `WithLeaseConfiguration` ve `WithPollInterval` aralıklar için, `WithStartTime` [Başlangıç saati için](how-to-configure-change-feed-start-time.md)ve `WithMaxItems` en fazla öğe sayısını tanımlamak için güncelleştirilmeleri gerekir.
-1. `processorName` Üzerinde yapılandırılan değerle `GetChangeFeedProcessorBuilder` eşleşecek şekilde ' `ChangeFeedProcessorOptions.LeasePrefix`i ayarlayın veya başka bir şekilde `string.Empty` kullanın.
-1. Değişiklikler artık bir `IReadOnlyList<Document>`olarak teslim değildir, bunun yerine `IReadOnlyCollection<T>` `T` tanımlamanız gereken bir tür, artık temel öğe sınıfı yoktur.
+1. `DocumentCollectionInfo` `Container` İzlenen ve kira kapsayıcıları için örnekleri başvurulara dönüştürün.
+1. Kullanan özelleştirmeler `WithProcessorOptions` `WithLeaseConfiguration` `WithPollInterval` , Aralık için ve aralıklar için, `WithStartTime` [Başlangıç saati için](how-to-configure-change-feed-start-time.md)ve `WithMaxItems` en fazla öğe sayısını tanımlamak için güncelleştirilmeleri gerekir.
+1. `processorName`Üzerinde `GetChangeFeedProcessorBuilder` yapılandırılan değerle eşleşecek şekilde ' `ChangeFeedProcessorOptions.LeasePrefix` i ayarlayın veya başka bir şekilde kullanın `string.Empty` .
+1. Değişiklikler artık bir olarak teslim değildir, `IReadOnlyList<Document>` bunun yerine `IReadOnlyCollection<T>` tanımlamanız gereken bir tür, artık `T` temel öğe sınıfı yoktur.
 1. Değişiklikleri işlemek için artık bir uygulamaya ihtiyacınız yoktur, bunun yerine [bir temsilci tanımlamanız](change-feed-processor.md#implementing-the-change-feed-processor)gerekir. Temsilci bir statik Işlev olabilir veya yürütmeler genelinde durum korumanız gerekiyorsa, kendi sınıfınızı oluşturabilir ve temsilci olarak bir örnek yöntemi geçirebilirsiniz.
 
 Örneğin, değişiklik akışı işlemcisini derlemek için özgün kod aşağıdaki gibi görünür:

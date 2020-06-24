@@ -3,21 +3,21 @@ title: Cosmos DB için birden çok bağımsız Azure Işlevleri tetikleyicisi ol
 description: Olay odaklı mimariler oluşturmak için Cosmos DB için birden çok bağımsız Azure Işlev tetikleyicisi yapılandırma hakkında bilgi edinin.
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 32b680acdee29bf97a0e132fee93d5fee3377245
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 695513bb572f5931ee1f0fa54a330cfa0574fc21
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77604951"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261605"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Cosmos DB için birden çok Azure Işlevleri tetikleyicisi oluşturun
 
 Bu makalede Cosmos DB için birden çok Azure İşlevleri tetikleyicisini paralel çalışacak ve değişikliklere bağımsız olarak tepki verecek şekilde nasıl yapılandırabileceğiniz açıklanır.
 
-![Cosmos DB için Azure Işlevleri tetikleyicisiyle çalışan sunucusuz olay tabanlı Işlevler ve kiralamalar kapsayıcısı paylaşma](./media/change-feed-functions/multi-trigger.png)
+:::image type="content" source="./media/change-feed-functions/multi-trigger.png" alt-text="Cosmos DB için Azure Işlevleri tetikleyicisiyle çalışan sunucusuz olay tabanlı Işlevler ve kiralamalar kapsayıcısı paylaşma" border="false":::
 
 ## <a name="event-based-architecture-requirements"></a>Olay tabanlı mimari gereksinimleri
 
@@ -38,13 +38,13 @@ Bu makalenin amacı, ikinci seçeneği gerçekleştirmenize yardımcı olmaktır
 
 ## <a name="configuring-a-shared-leases-container"></a>Paylaşılan kiralamalar kapsayıcısı yapılandırma
 
-Paylaşılan kiralamalar kapsayıcısını yapılandırmak için tetikleyicilerinde yapmanız gereken tek ek yapılandırma, JavaScript kullanıyorsanız C# veya `LeaseCollectionPrefix` [attribute](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) `leaseCollectionPrefix` [öznitelik](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) kullanıyorsanız özniteliği eklemektir. Özniteliğin değeri, belirli bir tetikleyicinin mantıksal tanımlayıcısı olmalıdır.
+Paylaşılan kiralamalar kapsayıcısını yapılandırmak için tetikleyicilerinde yapmanız gereken tek ek yapılandırma, `LeaseCollectionPrefix` JavaScript kullanıyorsanız C# veya öznitelik kullanıyorsanız [özniteliği](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) eklemektir `leaseCollectionPrefix` [attribute](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) . Özniteliğin değeri, belirli bir tetikleyicinin mantıksal tanımlayıcısı olmalıdır.
 
-Örneğin, üç tetikleyici varsa: bir, gerçekleştirilmiş bir görünüm oluşturmak için bir toplama yapan diğeri, başka bir depolama alanına değişiklikleri gönderen bir tane olan e-posta gönderen bir tane, daha sonraki analizler için "e-posta `LeaseCollectionPrefix` ", ikincisine "gerçekleştirilmiş" ve üçüncü birine "analiz" atayabilirsiniz.
+Örneğin, üç tetikleyici varsa: bir, gerçekleştirilmiş bir görünüm oluşturmak için bir toplama yapan diğeri, başka bir depolama alanına değişiklikleri gönderen bir tane olan e-posta gönderen bir tane, daha sonraki analizler için `LeaseCollectionPrefix` "e-posta", ikincisine "gerçekleştirilmiş" ve üçüncü birine "analiz" atayabilirsiniz.
 
 Önemli bölüm, üç tetikleyicinin de **aynı kira kapsayıcı yapılandırmasını** (hesap, veritabanı ve kapsayıcı adı) kullanmasına yönelik bir addır.
 
-C# ' deki `LeaseCollectionPrefix` özniteliği kullanarak çok basit kod örnekleri şöyle görünür:
+C# ' deki özniteliği kullanarak çok basit kod örnekleri şöyle `LeaseCollectionPrefix` görünür:
 
 ```cs
 using Microsoft.Azure.Documents;
@@ -78,7 +78,7 @@ public static void MaterializedViews([CosmosDBTrigger(
 }
 ```
 
-Ve JavaScript için, bu yapılandırmayı `function.json` dosyasına, `leaseCollectionPrefix` özniteliğiyle birlikte uygulayabilirsiniz:
+Ve JavaScript için, bu yapılandırmayı `function.json` dosyasına, özniteliğiyle birlikte uygulayabilirsiniz `leaseCollectionPrefix` :
 
 ```json
 {

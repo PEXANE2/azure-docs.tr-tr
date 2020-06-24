@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 1675d63fd3a65beda46042f4a78535bb4e066e62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c23e659463364c5e1a497ead138abb4c696627a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190226"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207507"
 ---
 # <a name="create-a-data-source"></a>Veri kaynağı oluşturma
 
@@ -22,11 +22,52 @@ Azure Haritalar Web SDK 'Sı verileri veri kaynaklarında depolar. Veri kaynakla
 
 **GeoJSON veri kaynağı**
 
-Coğrafi JSON tabanlı veri kaynağı, `DataSource` sınıfını kullanarak verileri yerel olarak yükler ve depolar. GeoJSON verileri, [Atlas. Data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) ad alanındaki yardımcı sınıflar kullanılarak el ile oluşturulabilir veya oluşturulabilir. Sınıfı `DataSource` , yerel veya uzak coğrafi JSON dosyalarını içeri aktarmak için işlevler sağlar. Uzak GeoJSON dosyaları CORs etkin bir uç noktada barındırılmalıdır. Sınıfı `DataSource` , kümeleme noktası verileri için işlevsellik sağlar. Ve, veriler kolayca eklenebilir, kaldırılabilir ve `DataSource` sınıfla güncellenir.
+Coğrafi JSON tabanlı veri kaynağı, sınıfını kullanarak verileri yerel olarak yükler ve depolar `DataSource` . GeoJSON verileri, [Atlas. Data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) ad alanındaki yardımcı sınıflar kullanılarak el ile oluşturulabilir veya oluşturulabilir. `DataSource`Sınıfı, yerel veya uzak coğrafi JSON dosyalarını içeri aktarmak için işlevler sağlar. Uzak GeoJSON dosyaları CORs etkin bir uç noktada barındırılmalıdır. `DataSource`Sınıfı, kümeleme noktası verileri için işlevsellik sağlar. Ve, veriler kolayca eklenebilir, kaldırılabilir ve `DataSource` sınıfla güncellenir. Aşağıdaki kod, coğrafi JSON verilerinin Azure haritalar 'da nasıl oluşturulagösterdiğini gösterir.
 
+```Javascript
+//Create raw GeoJSON object.
+var rawGeoJson = {
+     "type": "Feature",
+     "geometry": {
+         "type": "Point",
+         "coordinates": [-100, 45]
+     },
+     "properties": {
+         "custom-property": "value"
+     }
+};
+
+//Create GeoJSON using helper classes (less error prone).
+var geoJsonClass = new atlas.data.Feature(new atlas.data.Point([-100, 45]), {
+    "custom-property": "value"
+}); 
+```
+
+Oluşturulduktan sonra veri kaynakları, `map.sources` bir [sourcemanager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager)olan özelliği aracılığıyla haritaya eklenebilir. Aşağıdaki kod, oluşturma ve eşlemeye ekleme işlemlerinin nasıl yapılacağını gösterir `DataSource` .
+
+```javascript
+//Create a data source and add it to the map.
+var dataSource = new atlas.source.DataSource();
+map.sources.add(dataSource);
+```
+
+Aşağıdaki kod, GeoJSON verilerinin bir öğesine eklenebilme yollarını gösterir `DataSource` .
+
+```Javascript
+//GeoJsonData in the following code can be a single or array of GeoJSON features or geometries, a GeoJSON feature colleciton, or a single or array of atlas.Shape objects.
+
+//Add geoJSON object to data source. 
+dataSource.add(geoJsonData);
+
+//Load geoJSON data from URL. URL should be on a CORs enabled endpoint.
+dataSource.importDataFromUrl(geoJsonUrl);
+
+//Overwrite all data in data source.
+dataSource.setShapes(geoJsonData);
+```
 
 > [!TIP]
-> , Bir `DataSource`içindeki tüm verilerin üzerine yazmak istediğinizi varsayalım. `clear` Then `add` işlevlerine çağrılar yaparsanız, eşleme iki kez yeniden işleyebilir ve bu da gecikmeye neden olabilir. Bunun yerine, `setShapes` veri kaynağındaki tüm verileri kaldıracak ve değiştirecek ve yalnızca haritanın tek bir yeniden işlemesini tetikleyeceği işlevini kullanın.
+> , Bir içindeki tüm verilerin üzerine yazmak istediğinizi varsayalım `DataSource` . `clear`Then işlevlerine çağrılar yaparsanız `add` , eşleme iki kez yeniden işleyebilir ve bu da gecikmeye neden olabilir. Bunun yerine, `setShapes` veri kaynağındaki tüm verileri kaldıracak ve değiştirecek ve yalnızca haritanın tek bir yeniden işlemesini tetikleyeceği işlevini kullanın.
 
 **Vektör kutucuk kaynağı**
 
@@ -37,15 +78,7 @@ Vektör kutucuk kaynağı bir vektör kutucuk katmanına nasıl erişebileceğin
  - Yeni stil istemciye uygulanamadığından, vektör eşlemlerdeki verilerin stilini değiştirmek, verilerin yeniden indirilmesini gerektirmez. Buna karşılık, bir raster kutucuk katmanının stilini değiştirmenin genellikle sunucudan kutucukları yükleme ve ardından yeni stili uygulama gerekir.
  - Veriler vektör biçiminde teslim edildiğinden, verileri hazırlamak için daha az sunucu tarafı işleme gerekir. Sonuç olarak, daha yeni veriler daha hızlı kullanılabilir hale getirilebilir.
 
-Vektör kaynağı kullanan tüm katmanların bir `sourceLayer` değer belirtmesi gerekir.
-
-Oluşturulduktan sonra veri kaynakları, bir `map.sources` [sourcemanager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager)olan özelliği aracılığıyla haritaya eklenebilir. Aşağıdaki kod, oluşturma `DataSource` ve eşlemeye ekleme işlemlerinin nasıl yapılacağını gösterir.
-
-```javascript
-//Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
-```
+Vektör kaynağı kullanan tüm katmanların bir değer belirtmesi gerekir `sourceLayer` .
 
 Azure haritalar, açık bir standart olan [Mapbox vektör kutucuk belirtimine](https://github.com/mapbox/vector-tile-spec)uyar.
 

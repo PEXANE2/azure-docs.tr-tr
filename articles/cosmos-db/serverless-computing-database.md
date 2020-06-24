@@ -3,15 +3,15 @@ title: Azure Cosmos DB ve Azure Işlevleri ile sunucusuz veritabanı hesaplama
 description: Azure Cosmos DB ve Azure Işlevlerinin nasıl birlikte kullanılabileceğini, olay odaklı sunucusuz bilgi işlem uygulamaları oluşturmayı öğrenin.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 079c246f87bb8294f3c7ad6dea3391f5c67ba0ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6399da204ba930fad2dd3656d27a807a83b1b13
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985261"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263271"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB ve Azure Işlevleri 'ni kullanarak sunucusuz veritabanı hesaplama
 
@@ -33,7 +33,7 @@ Azure Cosmos DB ve Azure Işlevleri, veritabanlarınızı ve sunucusuz uygulamal
 
 Aşağıdaki diyagramda bu üç tümleştirmelerin her biri gösterilmektedir: 
 
-![Azure Cosmos DB ve Azure Işlevleri nasıl tümleştirilir?](./media/serverless-computing-database/cosmos-db-azure-functions-integration.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-azure-functions-integration.png" alt-text="Azure Cosmos DB ve Azure Işlevleri nasıl tümleştirilir?" border="false":::
 
 Azure Cosmos DB için Azure Işlevleri tetikleyicisi, giriş bağlama ve çıkış bağlaması aşağıdaki bileşimlerde kullanılabilir:
 
@@ -61,7 +61,7 @@ IoT uygulamalarında, bağlı bir otomobilde Check Engine ışığı görüntül
 
 Aşağıdaki görüntüde, bu tetikleyici için Azure portal yazılan kod gösterilmektedir.
 
-![Azure portal Cosmos DB için bir Azure Işlevleri tetikleyicisi oluşturun](./media/serverless-computing-database/cosmos-db-trigger-portal.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Azure portal Cosmos DB için bir Azure Işlevleri tetikleyicisi oluşturun":::
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>Finansal kullanım örneği-Zamanlayıcı tetikleyicisi ve giriş bağlama
 
@@ -75,13 +75,13 @@ Mali uygulamalarda, banka hesabı bakiyesi belirli bir miktarın altına düşt�
 
 Aşağıdaki resimlerde, bu senaryonun Azure portal kodu gösterilmektedir.
 
-![Finansal senaryo için bir Zamanlayıcı tetikleyicisi için Index. js dosyası](./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Finansal senaryo için bir Zamanlayıcı tetikleyicisinin dosyasıIndex.js":::
 
-![Finansal senaryo için bir Zamanlayıcı tetikleyicisi için. CSX dosyasını çalıştır](./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png)
+:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Finansal senaryo için bir Zamanlayıcı tetikleyicisi için. CSX dosyasını çalıştır":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>Oyun kullanım örneği-Cosmos DB için Azure Işlevleri tetikleme ve çıkış bağlama 
 
-Oyun ' de yeni bir kullanıcı oluşturulduğunda, [Azure Cosmos DB Gremlin API](graph-introduction.md)'sini kullanarak bunları bilen diğer kullanıcıları arayabilirsiniz. Daha sonra kolayca almak için sonuçları bir [Azure Cosmos DB SQL veritabanına] yazabilirsiniz.
+Oyun ' de yeni bir kullanıcı oluşturulduğunda, [Azure Cosmos DB Gremlin API](graph-introduction.md)'sini kullanarak bunları bilen diğer kullanıcıları arayabilirsiniz. Daha sonra kolayca almak için sonuçları bir [Azure Cosmos DB veya SQL veritabanına]() yazabilirsiniz.
 
 **Uygulama:** Cosmos DB için bir Azure Işlevleri tetikleyicisi ve çıkış bağlaması kullanın
 

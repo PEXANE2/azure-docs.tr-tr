@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 03/25/2020
-ms.openlocfilehash: 5577a9847ff405397c553028a6dfdf2df80d03fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 065fd166fb2ce82a3338322d55ef1ee5886ac56b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80371832"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210380"
 ---
 # <a name="azure-machine-learning-vs-machine-learning-studio-classic"></a>Azure Machine Learning vs Machine Learning Studio (klasik)
 
@@ -29,7 +29,7 @@ Aşağıdaki tabloda Azure Machine Learning ve Studio arasındaki bazı önemli 
 
 | | Machine Learning Studio (klasik) | Azure Machine Learning |
 |---| --- | --- |
-| Sürükle ve bırak arabirimi | Destekleniyor | Desteklenen- [Azure Machine Learning Tasarımcısı (Önizleme)](concept-designer.md) | 
+| Sürükle ve bırak arabirimi | Destekleniyor | Desteklenen- [Azure Machine Learning Tasarımcısı (Önizleme)](concept-designer.md) <br/>(Kurumsal çalışma alanı gerektirir) | 
 | Deneme | Ölçeklenebilir (10 GB eğitim veri limiti) | İşlem hedefi ile ölçeklendirme |
 | Eğitim işlem hedefleri | Özel işlem hedefi, yalnızca CPU desteği | Geniş kapsamlı özelleştirilebilir [eğitim işlem hedefleri](concept-compute-target.md#train). GPU ve CPU desteği içerir | 
 | Dağıtım işlem hedefleri | Özel Web hizmeti biçimi özelleştirilebilir değil | Geniş kapsamlı özelleştirilebilir [dağıtım işlem hedefleri](concept-compute-target.md#deploy). GPU ve CPU desteği içerir |

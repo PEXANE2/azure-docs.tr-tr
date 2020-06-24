@@ -5,17 +5,17 @@ services: azure-portal
 keywords: ''
 author: santhoshsomayajula
 ms.date: 01/29/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
 ms.author: mblythe
-ms.openlocfilehash: accdfbd939fad73ca7d008450c358d366e7f8b70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 248c643c5f1865451abbe201e7033efedb8a7e39
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76900772"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763950"
 ---
 # <a name="export-or-delete-user-settings"></a>Kullanıcı ayarlarını dışarı aktarma veya silme
 
@@ -33,7 +33,7 @@ Ayarlarınızı silmeden önce dışa ve gözden geçirmek iyi bir fikirdir. Pan
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-1. Portalın üst bilgisinde ayarlar simgesi ![](media/azure-portal-export-delete-settings/settings-icon.png) **Ayarlar**' ı seçin.
+1. Portalın üst bilgisinde ![ Ayarlar simgesi Ayarlar ' ı seçin ](media/azure-portal-export-delete-settings/settings-icon.png) **Settings**.
 
 1. **Tüm ayarları dışarı aktar** veya **tüm ayarları ve özel panoları Sil '** i seçin.
 
@@ -41,7 +41,7 @@ Ayarlarınızı silmeden önce dışa ve gözden geçirmek iyi bir fikirdir. Pan
 
       Aşağıdaki tabloda bu eylemler açıklanmaktadır.
 
-      | Eylem | Açıklama |
+      | Eylem | Description |
       | --- | --- |
       | **Tüm ayarları dışarı aktar** | Renk teması, Sık Kullanılanlar ve özel panolarınız gibi kullanıcı ayarlarınızı içeren bir *. JSON* dosyası oluşturur.|
       | **Tüm ayarları ve özel panoları silme** | Özel panolar ve portalda yaptığınız diğer özel ayarlar için tüm bağlantıları siler. |

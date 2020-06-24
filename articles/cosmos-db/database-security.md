@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 8a0ef4c5abcd4c4137a878adf6a7fff9e80c2764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0c8b984801a0db2af648b0711d95de34bc9386f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273520"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114818"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB’de güvenlik - genel bakış
 
@@ -25,7 +25,7 @@ Bekleyen şifreleme artık tüm Azure bölgelerinde Azure Cosmos DB depolanan be
 
 Veri güvenliği, siz, müşteri ve veritabanı sağlayıcınız arasında paylaşılan bir sorumluluktur. Seçtiğiniz veritabanı sağlayıcısına bağlı olarak, gerçekleştirdiğiniz sorumluluk miktarı farklılık gösterebilir. Şirket içi bir çözüm seçerseniz, uç nokta korumasından her şeyi donanımınızın fiziksel güvenliğine (kolay bir görev olmadan) sağlamanız gerekir. Azure Cosmos DB gibi bir PaaS bulut veritabanı sağlayıcısı seçerseniz, sorun alanı önemli ölçüde küçülür. Microsoft 'un [bulut bilgi işlem teknik incelemesi Için paylaşılan sorumluluklarından](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91) ödünç alınan aşağıdaki görüntüde, sorumluluğun Azure Cosmos DB gibi bir PaaS sağlayıcısıyla nasıl azaldığını gösterir.
 
-![Müşteri ve veritabanı sağlayıcısı sorumlulukları](./media/database-security/nosql-database-security-responsibilities.png)
+:::image type="content" source="./media/database-security/nosql-database-security-responsibilities.png" alt-text="Müşteri ve veritabanı sağlayıcısı sorumlulukları":::
 
 Önceki diyagramda, üst düzey bulut güvenlik bileşenleri gösteriliyor, ancak veritabanı çözümünüz için özel olarak hangi öğeleri merak etmeniz gerekiyor? Çözümleri birbirleriyle nasıl karşılaştırabileceğiniz.
 
@@ -73,13 +73,13 @@ Her birine ayrıntılı bir şekilde bakalım.
 |Saldırılara yanıt verme|Olası bir saldırı bildirmek üzere Azure Destek ile iletişim kurduktan sonra, 5 adımlı bir olay yanıtı işlemi kapatılır. 5 adımlı işlemin amacı, bir sorun saptandıktan ve bir araştırma başladıktan sonra normal hizmet güvenliğini ve işlemlerini mümkün olduğunca hızlı bir şekilde geri yüklemektir.<br><br>[Bulutta Microsoft Azure Güvenlik yanıtı](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)hakkında daha fazla bilgi edinin.|
 |Coğrafi sınırlama|Azure Cosmos DB, evereign bölgeleri için veri yönetimini sağlar (örneğin, Almanya, Çin, US Gov).|
 |Korumalı tesisler|Azure Cosmos DB veriler, SSD 'lerde Azure 'un korunan veri merkezlerinde depolanır.<br><br>[Microsoft Global veri merkezlerinde](https://www.microsoft.com/en-us/cloud-platform/global-datacenters) daha fazla bilgi edinin|
-|HTTPS/SSL/TLS şifrelemesi|Azure Cosmos DB tüm bağlantıları HTTPS 'yi destekler. Azure Cosmos DB ayrıca TLS 1,2 ' i destekler.<br>En düşük TLS sürümü sunucu tarafını zorlamak mümkündür. Bunu yapmak için lütfen iletişim kurun [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com).|
+|HTTPS/SSL/TLS şifrelemesi|Azure Cosmos DB tüm bağlantıları HTTPS 'yi destekler. Azure Cosmos DB ayrıca TLS 1,2 ' i destekler.<br>En düşük TLS sürümü sunucu tarafını zorlamak mümkündür. Bunu yapmak için lütfen iletişim kurun [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com) .|
 |Bekleme sırasında şifreleme|Azure Cosmos DB depolanan tüm veriler, bekleyen bir şekilde şifrelenir. [Rest 'te Azure Cosmos DB şifreleme](./database-encryption-at-rest.md) hakkında daha fazla bilgi edinin|
 |Düzeltme eki uygulanan sunucular|Yönetilen bir veritabanı olarak Azure Cosmos DB, sizin için otomatik olarak gerçekleştirilen sunucuları yönetme ve düzeltme eki uygulama ihtiyacını ortadan kaldırır.|
 |Güçlü parolalara sahip yönetim hesapları|Bu gereksinimimizden de bahseder ve bazı Rakiplerden farklı olarak, Azure Cosmos DB hiçbir parola olmadan bir yönetim hesabı olması olanaksızdır.<br><br> TLS ve HMAC gizli anahtarı tabanlı kimlik doğrulaması ile güvenlik, varsayılan olarak ' de kullanıma hazır.|
 |Güvenlik ve veri koruma sertifikaları| Sertifikaların en güncel listesi için genel [Azure uyumluluk sitesinin](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) yanı sıra tüm sertifikalarla en son [Azure uyumluluk belgesine](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) (Cosmos arama) bakın. Daha fazla odaklanmış bir okuma için, 25 Nisan 2018 sonrası [Azure #CosmosDB: SOCS 1/2 tür 2, HITRUST, PCI DSS Level 1, ISO 27001, HIPAA, Fedratin ve diğer birçok kişi içeren güvenli, özel, uyumlu bir şekilde kullanıma alın.
 
-Aşağıdaki ekran görüntüsünde, hesabınızı izlemek için denetim günlüğü ve etkinlik günlüklerini nasıl kullanabileceğiniz gösterilmektedir: ![Azure Cosmos DB için etkinlik günlükleri](./media/database-security/nosql-database-security-application-logging.png)
+Aşağıdaki ekran görüntüsünde, hesabınızı izlemek için denetim günlüğü ve etkinlik günlüklerini nasıl kullanabileceğiniz gösterilmektedir: :::image type="content" source="./media/database-security/nosql-database-security-application-logging.png" alt-text="Azure Cosmos DB Için etkinlik günlükleri":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

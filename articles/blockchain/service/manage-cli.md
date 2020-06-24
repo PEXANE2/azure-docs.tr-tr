@@ -2,20 +2,20 @@
 title: Azure CLı kullanarak Azure blok zinciri hizmetini yönetme
 description: Azure CLı ile Azure blok zinciri hizmetini yönetme
 ms.date: 11/22/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: ac75be644877905c1517395c1c789b1ea16fd49c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc00bedee5ff55033a1d65c6d5d6bfa766f0f01e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74455589"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208170"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Azure CLı kullanarak Azure blok zinciri hizmetini yönetme
 
 Azure portal ek olarak Azure CLı 'yi kullanarak Azure blok zinciri hizmetinize yönelik blok zinciri üyelerini ve işlem düğümlerini yönetebilirsiniz.
 
-En son [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 'yi yüklediğinizden ve ' de bir Azure hesabında oturum açtığınızdan emin olun `az login`.
+En son [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 'yi yüklediğinizden ve ' de bir Azure hesabında oturum açtığınızdan emin olun `az login` .
 
 Aşağıdaki örneklerde örneği `<parameter names>` kendi değerlerinizle değiştirin.
 
@@ -37,7 +37,7 @@ az resource create \
 | **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının oluşturulduğu kaynak grubu adı. |
 | **ada** | Azure blok zinciri hizmeti blok zinciri üyesini tanımlayan benzersiz bir ad. Ad, genel uç nokta adresi için kullanılır. Örneğin, `myblockchainmember.blockchain.azure.com`. |
 | **konumuna** | Blok zinciri üyesinin oluşturulduğu Azure bölgesi. Örneğin, `eastus`. Kullanıcılarınıza veya diğer Azure uygulamalarınıza en yakın konumu seçin. |
-| **parola** | Üye hesabı parolası. Üye hesabı parolası, blok zinciri üyesinin genel uç noktasında temel kimlik doğrulaması kullanılarak kimlik doğrulaması için kullanılır. Parolanın aşağıdaki dört gereksinimin üç gereksinimini karşılaması gerekir: Uzunluk 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak (\`), çift tırnak ("), tek tırnak ('), tire (-) ve semicolumn (;)) arasında olmalıdır.|
+| **parola** | Üye hesabı parolası. Üye hesabı parolası, blok zinciri üyesinin genel uç noktasında temel kimlik doğrulaması kullanılarak kimlik doğrulaması için kullanılır. Parolanın aşağıdaki dört gereksinimin üç gereksinimini karşılaması gerekir: Uzunluk 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak ( \` ), çift tırnak ("), tek tırnak ('), tire (-) ve semicolumn (;)) arasında olmalıdır.|
 | **Protocol** | Genel Önizleme, çekirdeğini destekler. |
 | **unun** | Katılacak veya oluşturulacak konsorsiyumun adı. |
 | **consortiumManagementAccountPassword** | Konsorsiyum yönetimi parolası. Parola, bir konsorsiya katılmak için kullanılır. |
@@ -63,7 +63,7 @@ az resource update \
 |---------|-------------|
 | **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının oluşturulduğu kaynak grubu adı. |
 | **ada** | Azure blok zinciri hizmeti üyesini tanımlayan ad. |
-| **parola** | Üye hesabı parolası. Parolanın aşağıdaki dört gereksinimin üç gereksinimini karşılaması gerekir: Uzunluk 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak (\`), çift tırnak ("), tek tırnak ('), tire (-) ve noktalı virgül (;) arasında olmalıdır. |
+| **parola** | Üye hesabı parolası. Parolanın aşağıdaki dört gereksinimin üç gereksinimini karşılaması gerekir: Uzunluk 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak ( \` ), çift tırnak ("), tek tırnak ('), tire (-) ve noktalı virgül (;) arasında olmalıdır. |
 
 ## <a name="create-transaction-node"></a>İşlem düğümü oluştur
 
@@ -83,7 +83,7 @@ az resource create \
 | **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının oluşturulduğu kaynak grubu adı. |
 | **ada** | Yeni işlem düğümü adını da içeren Azure blok zinciri hizmeti blok zinciri üyesinin adı. |
 | **konumuna** | Blok zinciri üyesinin oluşturulduğu Azure bölgesi. Örneğin, `eastus`. Kullanıcılarınıza veya diğer Azure uygulamalarınıza en yakın konumu seçin. |
-| **parola** | İşlem düğümü parolası. Parolanın aşağıdaki dört gereksinimin üç gereksinimini karşılaması gerekir: Uzunluk 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak (\`), çift tırnak ("), tek tırnak ('), tire (-) ve noktalı virgül (;) arasında olmalıdır. |
+| **parola** | İşlem düğümü parolası. Parolanın aşağıdaki dört gereksinimin üç gereksinimini karşılaması gerekir: Uzunluk 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak ( \` ), çift tırnak ("), tek tırnak ('), tire (-) ve noktalı virgül (;) arasında olmalıdır. |
 | **ruleName** | Bir IP adresi aralığı için beyaz listeye yönelik kural adı. Güvenlik duvarı kuralları için isteğe bağlı parametre. |
 | **Startıpaddress** | Beyaz listeye yönelik IP adresi aralığının başlangıcı. Güvenlik duvarı kuralları için isteğe bağlı parametre. |
 | **Endıpaddress değerini** | Beyaz listeye yönelik IP adresi aralığının sonu. Güvenlik duvarı kuralları için isteğe bağlı parametre.|
@@ -104,7 +104,7 @@ az resource update \
 |---------|-------------|
 | **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının mevcut olduğu kaynak grubu adı. |
 | **ada** | Yeni işlem düğümü adını da içeren Azure blok zinciri hizmeti blok zinciri üyesinin adı. |
-| **parola** | İşlem düğümü parolası. Parolanın aşağıdaki dört gereksinimin üç gereksinimini karşılaması gerekir: Uzunluk 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak (\`), çift tırnak ("), tek tırnak ('), tire (-) ve noktalı virgül (;) arasında olmalıdır. |
+| **parola** | İşlem düğümü parolası. Parolanın aşağıdaki dört gereksinimin üç gereksinimini karşılaması gerekir: Uzunluk 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak ( \` ), çift tırnak ("), tek tırnak ('), tire (-) ve noktalı virgül (;) arasında olmalıdır. |
 
 ## <a name="change-consortium-management-account-password"></a>Konsorsiyumun yönetim hesabı parolasını değiştirme
 
@@ -123,7 +123,7 @@ az resource update \
 |---------|-------------|
 | **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının oluşturulduğu kaynak grubu adı. |
 | **ada** | Azure blok zinciri hizmeti üyesini tanımlayan ad. |
-| **consortiumManagementAccountPassword** | Konsorsiyum yönetimi hesabı parolası. Parolanın aşağıdaki dört gereksinimin üç gereksinimini karşılaması gerekir: Uzunluk 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak (\`), çift tırnak ("), tek tırnak ('), tire (-) ve noktalı virgül (;) arasında olmalıdır. |
+| **consortiumManagementAccountPassword** | Konsorsiyum yönetimi hesabı parolası. Parolanın aşağıdaki dört gereksinimin üç gereksinimini karşılaması gerekir: Uzunluk 12 & 72 karakter, 1 küçük harf karakter, 1 büyük harf, 1 sayı ve 1 özel karakter (sayı işareti (#), yüzde (%), virgül (,), yıldız (*), arka tırnak ( \` ), çift tırnak ("), tek tırnak ('), tire (-) ve noktalı virgül (;) arasında olmalıdır. |
   
 ## <a name="update-firewall-rules"></a>Güvenlik duvarı kurallarını güncelleştirme
 
@@ -178,7 +178,7 @@ az resource invoke-action \
 |---------|-------------|
 | **kaynak grubu** | Azure blok zinciri hizmeti kaynaklarının mevcut olduğu kaynak grubu adı. |
 | **ada** | Yeni işlem düğümü adını da içeren Azure blok zinciri hizmeti blok zinciri üyesinin adı. |
-| **Işareti** | KeyValue \<\> öğesini KEY1 veya key2 ile değiştirin. |
+| **Işareti** | \<keyValue\>KEY1 veya key2 ile değiştirin. |
 
 ## <a name="delete-a-transaction-node"></a>İşlem düğümünü silme
 

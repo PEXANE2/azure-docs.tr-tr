@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6346c1d2adca697649ebe879b97766672a23ae29
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: cc6451d9be6c125d1b01bc5bb33fd553ce789f31
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613071"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263203"
 ---
 # <a name="dtdl-client-side-parser-library"></a>DTDL istemci tarafı ayrıştırıcı kitaplığı
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure dijital TWINS 'deki [modeller](concepts-models.md) JSON tabanlı dijital TWINS tanım DILI (dtdl) kullanılarak tanımlanır. Modellerinizi ayrıştırmak için yararlı olduğu durumlarda, NuGet.org 'de bir DTDL ayrıştırma kitaplığı, bir istemci tarafı kitaplığı olarak sağlanır: [Microsoft. Azure. DigitalTwins. Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/).
 
@@ -39,7 +42,7 @@ Ayrıştırıcısının özellikleri şunlardır:
 
 ## <a name="use-the-dtdl-validator-sample"></a>DTDL doğrulayıcısı örneğini kullanma
 
-DTDL 'nin geçerli olduğundan emin olmak için model belgelerini doğrulayabilecek örnek kod mevcuttur. DTDL ayrıştırıcısı kitaplığı üzerine kurulmuştur ve dilden bağımsızdır. Buradan bulabilirsiniz: [Dtdl Doğrulayıcı örneği](https://github.com/Azure-Samples/DTDL-Validator).
+DTDL 'nin geçerli olduğundan emin olmak için model belgelerini doğrulayabilecek örnek kod mevcuttur. DTDL ayrıştırıcısı kitaplığı üzerine kurulmuştur ve dilden bağımsızdır. Buradan bulabilirsiniz: [Dtdl Doğrulayıcı örneği](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
 
 Doğrulayıcı örneği, bir DTDL dosyaları dizin ağacını doğrulamak için bir komut satırı yardımcı programı olarak kullanılabilir. Ayrıca etkileşimli bir mod sağlar. Kaynak kodda, ayrıştırıcı kitaplığının nasıl kullanılacağına ilişkin örnekler gösterilmektedir.
 

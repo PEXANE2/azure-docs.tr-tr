@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/06/2019
-ms.openlocfilehash: 42f3c7f3351bddab429489dccf28587549d76e18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45bfba5b0ab25aa9930719f136428ccc0df5014d
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78897840"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263570"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Gremlin SDK ile Azure Cosmos DB kaynak belirteçleri kullanma
 
@@ -24,13 +24,13 @@ Apache TinkerPop Gremlin SDK 'sı, kaynak belirteçleri oluşturmak için kullan
 
 Kaynak belirteçlerinin üzerindeki nesne modeli hiyerarşisi aşağıdaki ana hatlarıyla gösterilmiştir:
 
-- **Azure Cosmos DB hesabı** -kendisiyle ILIŞKILI bir DNS içeren en üst düzey varlık (örneğin, `contoso.gremlin.cosmos.azure.com`).
+- **Azure Cosmos DB hesabı** -kendisiyle ILIŞKILI bir DNS içeren en üst düzey varlık (örneğin, `contoso.gremlin.cosmos.azure.com` ).
   - **Azure Cosmos DB veritabanı**
     - **Kullanıcı**
       - **İzin**
         - **Belirteç** -izin verilen veya reddedilen eylemleri belirten bir izin nesnesi özelliği.
 
-Kaynak belirteci şu biçimi kullanır: `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`. Bu dize, istemciler için opaktır ve değişiklik veya yorum olmadan olduğu gibi kullanılmalıdır.
+Kaynak belirteci şu biçimi kullanır: `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"` . Bu dize, istemciler için opaktır ve değişiklik veya yorum olmadan olduğu gibi kullanılmalıdır.
 
 ```csharp
 // Notice that document client is created against .NET SDK endpoint, rather than Gremlin.

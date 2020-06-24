@@ -3,16 +3,16 @@ title: Azure Cosmos kapsayıcısı için benzersiz anahtarlar tanımlama
 description: Azure portal, PowerShell, .net, Java ve çeşitli diğer SDK 'Ları kullanarak bir Azure Cosmos kapsayıcısı için nasıl benzersiz anahtarlar tanımlanacağını öğrenin.
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
 ms.custom: tracking-python
-ms.openlocfilehash: bb1fc927b52f9b59c1a71cdc4369bdea428f4586
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 056cd77104fe73f19588f3d13e11dc06fd93c3f6
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561131"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261554"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısı için benzersiz anahtarlar tanımlama
 
@@ -34,7 +34,7 @@ Bu makalede, Azure Cosmos kapsayıcısı oluştururken [benzersiz anahtarları](
 
 1. Gerekirse **+ benzersiz anahtar Ekle** ' ye tıklayarak daha fazla benzersiz anahtar girişi ekleyin
 
-    ![Azure portal 'de benzersiz anahtar kısıtlama girişinin ekran görüntüsü](./media/how-to-define-unique-keys/unique-keys-portal.png)
+    :::image type="content" source="./media/how-to-define-unique-keys/unique-keys-portal.png" alt-text="Azure portal 'de benzersiz anahtar kısıtlama girişinin ekran görüntüsü":::
 
 ## <a name="use-powershell"></a>PowerShell 'i kullanma
 
@@ -117,9 +117,9 @@ container.setUniqueKeyPolicy(uniqueKeyPolicy);
 client.createCollection(String.format("/dbs/%s", "database"), container, null);
 ```
 
-## <a name="use-the-nodejs-sdk"></a>Node. js SDK 'sını kullanma
+## <a name="use-the-nodejs-sdk"></a>Node.js SDK 'sını kullanma
 
-[Node. js SDK 'sını](https://www.npmjs.com/package/@azure/cosmos)kullanarak yeni bir kapsayıcı oluştururken, bir `UniqueKeyPolicy` nesne benzersiz anahtar kısıtlamalarını tanımlamak için kullanılabilir.
+[Node.js SDK](https://www.npmjs.com/package/@azure/cosmos)kullanarak yeni bir kapsayıcı oluştururken, bir `UniqueKeyPolicy` nesne benzersiz anahtar kısıtlamalarını tanımlamak için kullanılabilir.
 
 ```javascript
 client.database('database').containers.create({
