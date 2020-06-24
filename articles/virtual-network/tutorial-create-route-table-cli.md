@@ -4,25 +4,25 @@ description: Bu makalede, Azure CLı kullanarak bir yönlendirme tablosu ile ağ
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 5fa94b93e081ab6334c39b848068f50682f5f1f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70f7bd4443602f6f18be54c5bc4ff038e868e58e
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80235062"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703358"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Azure CLı kullanarak bir yönlendirme tablosu ile ağ trafiğini yönlendirme
 
@@ -121,7 +121,7 @@ az network vnet subnet update \
 
 NVA; yönlendirme, güvenlik duvarı oluşturma veya WAN iyileştirmesi gibi ağ işlevlerini gerçekleştiren bir VM'dir.
 
-[Az VM Create](/cli/azure/vm)komutuyla *DMZ* alt ağında bir NVA oluşturun. Bir VM oluşturduğunuzda, Azure varsayılan olarak VM 'ye genel bir IP adresi oluşturur ve atar. `--public-ip-address ""` PARAMETRESI, VM 'nin internet 'ten bağlanması gerektiğinden, Azure 'un VM 'ye genel bir IP adresi oluşturmasını ve atamasını sağlar. SSH anahtarları, varsayılan anahtar konumunda zaten mevcut değilse komut bunları oluşturur. Belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
+[Az VM Create](/cli/azure/vm)komutuyla *DMZ* alt ağında bir NVA oluşturun. Bir VM oluşturduğunuzda, Azure varsayılan olarak VM 'ye genel bir IP adresi oluşturur ve atar. `--public-ip-address ""`Parametresi, VM 'nin internet 'ten bağlanması gerektiğinden, Azure 'un VM 'ye Genel BIR IP adresi oluşturmasını ve atamasını sağlar. SSH anahtarları, varsayılan anahtar konumunda zaten mevcut değilse komut bunları oluşturur. Belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
 
 ```azurecli-interactive
 az vm create \
@@ -162,7 +162,7 @@ Komutun yürütülmesi bir dakika kadar sürebilir.
 
 *Genel* alt ağdan gelen trafiğin, sonraki bir adımda NVA aracılığıyla *özel* alt ağa yönlendirildiğini doğrulayabilmek Için sanal ağda iki VM oluşturun. 
 
-[Az VM Create](/cli/azure/vm)komutuyla *ortak* alt ağda bir VM oluşturun. `--no-wait` Parametresi, bir sonraki komuta devam edebilmeniz için Azure 'un arka planda komutu yürütmesine olanak sağlar. Bu makaleyi kolaylaştırmak için bir parola kullanılır. Anahtarlar genellikle üretim dağıtımlarında kullanılır. Anahtarları kullanıyorsanız, SSH Aracısı iletmeyi da yapılandırmanız gerekir. Daha fazla bilgi için SSH istemcinizin belgelerine bakın. Aşağıdaki `<replace-with-your-password>` komutta yerine, seçtiğiniz parolayla değiştirin.
+[Az VM Create](/cli/azure/vm)komutuyla *ortak* alt ağda bir VM oluşturun. Parametresi, bir `--no-wait` sonraki komuta devam edebilmeniz Için Azure 'un arka planda komutu yürütmesine olanak sağlar. Bu makaleyi kolaylaştırmak için bir parola kullanılır. Anahtarlar genellikle üretim dağıtımlarında kullanılır. Anahtarları kullanıyorsanız, SSH Aracısı iletmeyi da yapılandırmanız gerekir. Daha fazla bilgi için SSH istemcinizin belgelerine bakın. `<replace-with-your-password>`Aşağıdaki komutta yerine, seçtiğiniz parolayla değiştirin.
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"
@@ -210,7 +210,7 @@ Sanal makinenin oluşturulması birkaç dakika sürer. VM oluşturulduktan sonra
 
 ## <a name="route-traffic-through-an-nva"></a>Trafiği NVA üzerinden yönlendirme
 
-*MyVmPrivate* VM Ile bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın. * \<Publicıpaddress>* değerini sanal makinenizin genel IP adresiyle değiştirin. Yukarıdaki örnekte, IP adresi *13.90.242.231*' dir.
+*MyVmPrivate* VM Ile bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın. *\<publicIpAddress>* Sanal makinenizin genel IP adresi ile değiştirin. Yukarıdaki örnekte, IP adresi *13.90.242.231*' dir.
 
 ```bash
 ssh azureuser@<publicIpAddress>

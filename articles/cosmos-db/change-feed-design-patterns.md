@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: abbf5d79da033a696890566d85bd24bb54577d2c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 6101e80131aca94e44bb4e85ee51fe607f47c10f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715707"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118959"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Azure Cosmos DB akış tasarımı desenlerini değiştirme
 
@@ -25,7 +25,7 @@ Azure Cosmos DB IoT, oyun, perakende ve işlemsel günlük uygulamalar için uyg
 
 Azure Cosmos DB değişiklik akışı, aşağıdaki görüntüde gösterildiği gibi, bu desenlerden her biri için etkili ve ölçeklenebilir çözümler oluşturmanıza olanak sağlar:
 
-![Gerçek zamanlı analiz ve olay odaklı bilgi işlem senaryolarına Azure Cosmos DB değişiklik akışını kullanma](./media/change-feed/changefeedoverview.png)
+:::image type="content" source="./media/change-feed/changefeedoverview.png" alt-text="Gerçek zamanlı analiz ve olay odaklı bilgi işlem senaryolarına Azure Cosmos DB değişiklik akışını kullanma" border="false":::
 
 ## <a name="event-computing-and-notifications"></a>Olay bilgi işlem ve bildirimler
 
@@ -38,7 +38,7 @@ Ayrıca, isteğe bağlı olarak bir bildirim tetikleyip belirli ölçütlere gö
 Azure Cosmos DB değişiklik akışı, işlem verilerinde IoT veya gerçek zamanlı analiz işleme için gerçek zamanlı akış işleme için kullanılabilir.
 Örneğin, cihazlardan, sensörlerden, altyapıdan ve uygulamalardan olay verileri alıp saklayabilir ve [Spark](../hdinsight/spark/apache-spark-overview.md)kullanarak bu olayları gerçek zamanlı olarak işleyebilirsiniz. Aşağıdaki görüntüde, değişiklik akışı aracılığıyla Azure Cosmos DB kullanarak bir lambda mimarisini nasıl uygulayabileceğinizi gösterilmektedir:
 
-![Alma ve sorgu için Azure Cosmos DB tabanlı lambda işlem hattı](./media/change-feed/lambda.png)
+:::image type="content" source="./media/change-feed/lambda.png" alt-text="Alma ve sorgu için Azure Cosmos DB tabanlı lambda işlem hattı" border="false":::
 
 Çoğu durumda, akış işleme uygulamaları ilk olarak Azure Event hub veya Apache Kafka gibi geçici bir ileti kuyruğuna yüksek miktarda gelen verileri alır. Değişiklik akışı, Azure Cosmos DB aşırı düşük okuma ve yazma gecikme süresiyle sürekli yüksek oranda veri alımı destekleyebilme nedeniyle harika bir alternatiftir. Azure Cosmos DB değişiklik akışı bir ileti kuyruğu üzerinden avantajları şunları içerir:
 

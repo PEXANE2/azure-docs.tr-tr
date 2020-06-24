@@ -11,16 +11,16 @@ ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: dae0352566e6cb4f8ed1384ca12213e2aaa07f9d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 2f835c270930734bf9963a7c7c3168b873eddaf6
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733879"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791920"
 ---
 # <a name="list-azure-deny-assignments-using-the-rest-api"></a>REST API kullanarak Azure reddetme atamalarını listeleyin
 
@@ -80,7 +80,7 @@ Reddetme atama hakkında bilgi almak için, şunları yapmanız gerekir:
 1. *{Filter}* öğesini reddetme atama listesini filtrelemek için uygulamak istediğiniz koşulla değiştirin.
 
     > [!div class="mx-tableFixed"]
-    > | Filtre | Açıklama |
+    > | Filtre | Description |
     > | --- | --- |
     > | (filtre yok) | Belirtilen kapsamın üzerinde, üzerinde ve altında tüm reddetme atamalarını listeler. |
     > | `$filter=atScope()` | Yalnızca belirtilen kapsam ve yukarıya yönelik atamaları Reddet listeler. , Alt kapsamlardaki reddetme atamalarını içermez. |
@@ -102,7 +102,7 @@ Reddetme atama hakkında bilgi almak için, şunları yapmanız gerekir:
 1. *{Filter}* öğesini reddetme atama listesini filtrelemek için uygulamak istediğiniz koşulla değiştirin. Filtre gerekiyor.
 
     > [!div class="mx-tableFixed"]
-    > | Filtre | Açıklama |
+    > | Filtre | Description |
     > | --- | --- |
     > | `$filter=atScope()` | Yalnızca kök kapsamı için atamaları Reddet listesini listeleyin. , Alt kapsamlardaki reddetme atamalarını içermez. |
     > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | Belirtilen ada sahip atamaları Reddet listesini listeleyin. |

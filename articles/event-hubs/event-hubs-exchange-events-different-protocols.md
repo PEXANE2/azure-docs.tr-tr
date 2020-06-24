@@ -3,22 +3,18 @@ title: Azure Event Hubs-farklı protokoller kullanarak Exchange olayları
 description: Bu makalede, Azure Event Hubs kullanılırken farklı protokoller (AMQP, Apache Kafka ve HTTPS) kullanan tüketiciler ve üreticileri olayları nasıl değiş tokuş edebilir gösterilmektedir.
 services: event-hubs
 documentationcenter: ''
-author: femila
-manager: ''
+author: spelluru
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.custom: seodec18
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/20/2019
-ms.author: femila
-ms.openlocfilehash: 368cc568c40e878338e6b45205e74cba1d0b6378
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: 7ebcf1fc838fbe6b1c70b1fe422f40de3c47e752
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80372207"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296449"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Farklı protokoller kullanan tüketiciler ve üreticileri arasında Exchange olayları: AMQP, Kafka ve HTTPS
 Azure Event Hubs, tüketiciler ve üreticileri için üç protokolü destekler: AMQP, Kafka ve HTTPS. Bu protokollerin her birinin bir iletiyi temsil eden kendi yolu vardır. bu nedenle, bir uygulama bir olay hub 'ına bir protokol ile olayları gönderirse ve farklı bir protokolle kullanırsa, olayın çeşitli parçaları ve değerleri tüketiciye ulaştığında nasıl görünür? Bu makalede, bir olay içindeki değerlerin, tüketen uygulama tarafından doğru şekilde yorumlandığından emin olmak için hem üretici hem de tüketici için en iyi yöntemler açıklanmaktadır.

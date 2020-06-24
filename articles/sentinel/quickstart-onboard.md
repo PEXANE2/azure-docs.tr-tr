@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 149ac61e4737faa81e55fac3e07133c73bbc00d5
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: a581288259a521f8f2f93ff3fbc16f4926486643
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488129"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771181"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Hızlı başlangıç: yerleşik Azure Sentinel
 
@@ -47,7 +47,7 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
 
    ![search](./media/quickstart-onboard/search-product.png)
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**'yi seçin.
 
 1. Kullanmak istediğiniz çalışma alanını seçin veya yeni bir tane oluşturun. Azure Sentinel 'i birden fazla çalışma alanında çalıştırabilirsiniz, ancak veriler tek bir çalışma alanına yalıtılmış olur.
 
@@ -58,7 +58,7 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
    > - Azure Sentinel, Çin ve Almanya (Sovereign) bölgeleri hariç Log Analytics herhangi bir [ga bölgesindeki](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) çalışma alanlarında çalıştırılabilir. Azure Sentinel tarafından oluşturulan (olaylar, yer işaretleri ve uyarı kuralları gibi) veriler, bu çalışma alanlarından birinde bulunan bazı müşteri verilerini içeren Avrupa (Avrupa 'da bulunan çalışma alanları için), Avustralya (Avustralya 'da bulunan çalışma alanları için) veya Doğu ABD (diğer bölgelerde bulunan çalışma alanları için).
 
    >[!IMPORTANT]
-   > - Bir çalışma alanında Azure Sentinel etkinleştirildikten sonra, bu çalışma alanının diğer kaynak gruplarına veya aboneliklerine taşınması desteklenmez. Çalışma alanını taşımanız gerekiyorsa, rehberlik için desteğe başvurun.
+   > - Bir çalışma alanında Azure Sentinel etkinleştirildikten sonra, bu çalışma alanının diğer kaynak gruplarına veya aboneliklerine taşınması desteklenmez. Çalışma alanını taşımanız gerekiyorsa [Azure Sentinel](mailto:AzureSentinel@microsoft.com)'e başvurun.
 
 1. **Azure Sentinel Ekle**' yi seçin.
   

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5146878adf10e452f38fecb115ec40792ffa84f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf732b92c1a208dd4c312ae442969ef958a021b4
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79140006"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791189"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Azure Güvenlik Merkezi’nde uyarı doğrulaması (EICAR test dosyası)
 Bu belge, sisteminizin Azure Güvenlik Merkezi uyarıları için doğru yapılandırılıp yapılandırılmadığını doğrulamayı öğrenmenize yardımcı olur.
@@ -37,9 +37,9 @@ Daha fazla bilgi için bkz. Güvenlik [Merkezi 'Nde güvenlik uyarıları](secur
 
 Güvenlik Merkezi Aracısı bilgisayarınıza yüklendikten sonra, uyarının saldırıya uğrayan kaynak olmasını istediğiniz bilgisayarda bu adımları izleyin:
 
-1. Bir yürütülebilir dosyayı (örneğin, **Calc. exe**) bilgisayarın masaüstüne veya sizin rahatınızın diğer dizinine kopyalayın ve **ASC_AlertTest_662jfi039N. exe**olarak yeniden adlandırın.
+1. Bir yürütülebilir dosyayı (örneğin **calc.exe**) bilgisayarın masaüstüne veya sizin rahatınızın diğer dizinine kopyalayın ve **ASC_AlertTest_662jfi039N.exe**olarak yeniden adlandırın.
 1. Komut istemi ' ni açın ve bu dosyayı aşağıdaki gibi bir bağımsız değişkenle (yalnızca sahte bir bağımsız değişken adı) yürütün:```ASC_AlertTest_662jfi039N.exe -foo```
-1. 5-10 dakika bekleyin ve Güvenlik Merkezi Uyarılarını açın. Aşağıdaki [örneğe](#alert-validate) benzer bir uyarı görüntülenmelidir:
+1. 5-10 dakika bekleyin ve Güvenlik Merkezi Uyarılarını açın. Bir uyarı görüntülenmelidir.
 
 > [!NOTE]
 > Windows için bu test uyarısını gözden geçirirken, alan **bağımsız değişkenlerinin denetim etkin** **olduğundan emin olun.** **Yanlış**ise, komut satırı bağımsız değişken denetimini etkinleştirmeniz gerekir. Etkinleştirmek için aşağıdaki komutu kullanın:
@@ -57,11 +57,7 @@ Güvenlik Merkezi Aracısı bilgisayarınıza yüklendikten sonra, uyarının sa
 
     ```./asc_alerttest_662jfi039n testing eicar pipe```
 
-1. 5-10 dakika bekleyin ve Güvenlik Merkezi Uyarılarını açın. Aşağıdaki [örneğe](#alert-validate) benzer bir uyarı görüntülenmelidir:
-
-### <a name="alert-example"></a>Uyarı örneği<a name="alert-validate"></a>
-
-![Uyarı doğrulama örneği](./media/security-center-alert-validation/security-center-alert-validation-fig2.png) 
+1. 5-10 dakika bekleyin ve Güvenlik Merkezi Uyarılarını açın. Bir uyarı görüntülenmelidir.
 
 
 ## <a name="validate-alerts-on-kubernetes"></a>Kubernetes üzerinde uyarıları doğrulama<a name="validate-kubernetes"></a>

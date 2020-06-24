@@ -3,8 +3,7 @@ title: Akış olaylarını yakala-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs aracılığıyla olayları akışını yakalamanızı sağlayan yakalama özelliğine bir genel bakış sunulmaktadır.
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 editor: ''
 ms.assetid: e53cdeea-8a6a-474e-9f96-59d43c0e8562
 ms.service: event-hubs
@@ -13,14 +12,15 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/20/2020
-ms.author: shvija
-ms.openlocfilehash: b3411b3e138778ca7ca1ffcfe14d8d6e84d76d4e
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: 07d3424b73f8716bfe6f9b5f187714b36ef821a2
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726103"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296619"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Azure Blob depolama veya Azure Data Lake Storage Azure Event Hubs aracılığıyla olayları yakalama
 Azure Event Hubs, bir [Azure Blob depolama](https://azure.microsoft.com/services/storage/blobs/) alanında Event Hubs akış verilerini otomatik olarak yakalamanızı veya tercih ettiğiniz bir zaman veya boyut aralığı belirtme esnekliğine sahip olan [Azure Data Lake Storage Gen 1 veya Gen 2](https://azure.microsoft.com/services/data-lake-store/) hesabı. Yakalama ayarı hızlıdır, çalıştırmak için yönetim maliyeti yoktur ve Event Hubs [üretilen iş birimleriyle](event-hubs-scalability.md#throughput-units)otomatik olarak ölçeklendirilir. Event Hubs yakalama, akış verilerini Azure 'a yüklemenin en kolay yoludur ve veri yakalama yerine veri işlemeye odaklanmanızı sağlar.

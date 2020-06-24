@@ -1,5 +1,5 @@
 ---
-title: Azure dijital TWINS API 'Leri ve SDK 'Larını kullanma
+title: Azure Digital Twins API’lerini ve SDK’larını kullanma
 titleSuffix: Azure Digital Twins
 description: Bkz. SDK ile birlikte Azure dijital TWINS API 'Leri ile çalışma.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cbc79458c1fe68b05a40f476c298d5fe94e86871
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: ebac7fb6cf4addaa43367d27a4926a85770dd595
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629608"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296143"
 ---
-# <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure dijital TWINS API 'Leri ve SDK 'Larını kullanma
+# <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure dijital TWINS, örneğinizi ve onun öğelerini yönetmek için hem **Denetim düzlemi API 'leri** hem de **veri düzlemi API 'leri** ile birlikte sunulur. Bu makale, kullanılabilir API 'Lere ve bunlarla etkileşime yönelik yöntemlere genel bir bakış sunar. REST API 'Leri doğrudan ilişkili Swaggers ile veya bir SDK aracılığıyla kullanabilirsiniz.
 
@@ -26,7 +29,7 @@ Genel önizleme için en güncel Denetim düzlemi API sürümü _**2020-03-01-Pr
 
 Denetim düzlemi API 'Lerini kullanmak için:
 * En son [Swagger klasörüne](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)başvurarak API 'leri doğrudan çağırabilirsiniz. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir.
-* Şu anda [Go](https://github.com/Azure/azure-sdk-for-go/releases)'Daki denetim API 'Leri Için SDK 'lara erişebilirsiniz.
+* [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1), [Python](https://pypi.org/project/azure-mgmt-digitaltwins/)veya [Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/digitaltwins/mgmt/2020-03-01-preview/digitaltwins)Içindeki denetim API 'leri için SDK 'lara Şu anda erişebilirsiniz.
 
 Ayrıca, [Azure Portal](https://portal.azure.com) ve [CLI](how-to-use-cli.md)aracılığıyla Azure dijital TWINS ile etkileşime girerek denetim düzlemi API 'leri uygulayabilirsiniz.
 
@@ -256,6 +259,12 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 ## <a name="general-apisdk-usage-notes"></a>Genel API/SDK kullanım notları
 
 Bu bölüm, API 'Leri ve SDK 'ları kullanmayla ilgili genel bilgileri ve yönergeleri içerir.
+
+> [!NOTE]
+> Önizleme sırasında Azure Digital TWINS 'in, **çıkış noktaları arası kaynak paylaşımını (CORS)** desteklemediğini lütfen unutmayın. Sonuç olarak, bir tarayıcı uygulamasından, bir [API Management (APıM)](../api-management/api-management-key-concepts.md) arabiriminden veya bir [Power Apps](https://docs.microsoft.com/powerapps/powerapps-overview) bağlayıcısından REST API arıyorsanız bir ilke hatası görebilirsiniz.
+> Bu hatayı çözmek için aşağıdakilerden birini yapabilirsiniz:
+> * İletibir bilgisayardan CORS üst bilgisini şerit `Access-Control-Allow-Origin` . Bu üstbilgi yanıtın paylaşılıp paylaşılamayacağını gösterir. 
+> * Alternatif olarak, bir CORS proxy 'si oluşturun ve Azure dijital TWINS REST API isteği üzerinden isteyin. 
 
 * SDK 'yı kullanmak için, sınıfın örneğini oluşturun `DigitalTwinsClient` . Oluşturucu, paketteki çeşitli kimlik doğrulama yöntemleriyle elde edilebilir kimlik bilgileri gerektirir `Azure.Identity` . Daha fazla bilgi için `Azure.Identity` bkz. [ad alanı belgeleri](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet). 
 * Başlarken faydalı olduğunu fark edebilirsiniz `InteractiveBrowserCredential` , ancak [yönetilen kimliğin](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)kimlik bilgileri de dahil olmak üzere, Azure Digital TWINS ['e karşı MSI ile ayarlanan Azure işlevleri](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) kimlik doğrulaması için kullanacağınız diğer birkaç seçenek vardır. Hakkında daha fazla bilgi için `InteractiveBrowserCredential` bkz. [sınıf belgeleri](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet).

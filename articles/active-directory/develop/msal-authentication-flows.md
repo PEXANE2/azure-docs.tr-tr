@@ -9,76 +9,77 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/18/2020
+ms.date: 06/20/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 47978317b1ae914e952b764def854d8a011293e0
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 9a0315fadefac0269a6d9670844ef8c3886eef12
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266619"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975631"
 ---
 # <a name="authentication-flows"></a>Kimlik doğrulama akışları
 
-Bu makalede, Microsoft kimlik doğrulama kitaplığı (MSAL) tarafından sunulan farklı kimlik doğrulama akışları açıklanmaktadır.  Bu akışlar, çeşitli farklı uygulama senaryolarında kullanılabilir.
+Microsoft kimlik doğrulama kitaplığı (MSAL), farklı uygulama senaryolarında kullanılmak üzere çeşitli kimlik doğrulama akışlarını destekler.
 
-| Akış | Açıklama | Kullanıldığı yer|  
-| ---- | ----------- | ------- | 
+| Akış | Description | Kullanıldığı yer|
+| ---- | ----------- | ------- |
 | [LiDE](#interactive) | Bir tarayıcı veya açılır pencere aracılığıyla kullanıcıdan kimlik bilgilerini isteyen etkileşimli bir işlem aracılığıyla belirteci alır. | [Masaüstü uygulamaları](scenario-desktop-overview.md), [mobil uygulamalar](scenario-mobile-overview.md) |
-| [Örtük izin](#implicit-grant) | Uygulamanın arka uç sunucu kimlik bilgisi değişimi gerçekleştirmeden belirteçleri almasına izin verir. Bu, uygulamanın kullanıcıya oturum açmasını, oturum korumasını ve diğer Web API 'Lerine, tüm istemci JavaScript kodu içindeki belirteçleri almasına olanak tanır.| [Tek sayfalı uygulamalar (SPA)](scenario-spa-overview.md) |
-| [Yetkilendirme kodu](#authorization-code) | Web API 'Leri gibi korumalı kaynaklara erişim kazanmak için bir cihaza yüklenen uygulamalarda kullanılır. Bu, mobil ve Masaüstü uygulamalarınıza oturum açma ve API erişimi eklemenize olanak tanır. | [Masaüstü uygulamaları](scenario-desktop-overview.md), [mobil uygulamalar](scenario-mobile-overview.md), [Web uygulamaları](scenario-web-app-call-api-overview.md) | 
+| [Örtük izin](#implicit-grant) | Uygulamanın arka uç sunucu kimlik bilgisi değişimi gerçekleştirmeden belirteçleri almasına izin verir. Uygulamanın kullanıcı tarafından oturum açmasını, oturum korumasını ve diğer Web API 'Lerine belirteç almasını sağlar ve bunların hepsi istemci JavaScript kodu içindedir.| [Tek sayfalı uygulamalar (SPA)](scenario-spa-overview.md) |
+| [Yetkilendirme kodu](#authorization-code) | Web API 'Leri gibi korumalı kaynaklara erişim kazanmak için bir cihaza yüklenen uygulamalarda kullanılır. Mobil ve Masaüstü uygulamalarınıza oturum açma ve API erişimi eklemenize olanak sağlar. | [Masaüstü uygulamaları](scenario-desktop-overview.md), [mobil uygulamalar](scenario-mobile-overview.md), [Web uygulamaları](scenario-web-app-call-api-overview.md) |
 | [Adına-](#on-behalf-of) | Bir uygulama bir hizmet veya Web API 'sini çağırır, bu da başka bir hizmet veya Web API çağrısı gerektirir. Amaç, temsilci kullanıcı kimliğini ve izinleri istek zinciri aracılığıyla yaymanız önerilir. | [Web API'leri](scenario-web-api-call-api-overview.md) |
 | [İstemci kimlik bilgileri](#client-credentials) | Bir uygulamanın kimliğini kullanarak Web 'de barındırılan kaynaklara erişmenizi sağlar. Yaygın olarak, bir kullanıcıyla etkileşim kurmadan, arka planda çalışması gereken sunucu-sunucu etkileşimleri için kullanılır. | [Daemon uygulamaları](scenario-daemon-overview.md) |
 | [Cihaz kodu](#device-code) | Kullanıcıların, akıllı TV, IoT cihazı veya yazıcı gibi giriş kısıtlı cihazlarda oturum açmasına olanak sağlar. | [Masaüstü/mobil uygulamalar](scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser) |
-| [Tümleşik Windows Kimlik Doğrulaması](scenario-desktop-acquire-token.md#integrated-windows-authentication) | Etki alanı veya Azure Active Directory (Azure AD) ile Birleşik bilgisayarlardaki uygulamaların sessizce bir belirteç almasına izin verir (kullanıcıdan herhangi bir kullanıcı ARABIRIMI etkileşimi olmadan).| [Masaüstü/mobil uygulamalar](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
-| [Kullanıcı adı/parola](scenario-desktop-acquire-token.md#username-and-password) | Bir uygulamanın, parolasını doğrudan işleyerek kullanıcının oturum açmasına izin verir. Bu akış önerilmez. | [Masaüstü/mobil uygulamalar](scenario-desktop-acquire-token.md#username-and-password) |
+| [Tümleşik Windows Kimlik Doğrulaması](#integrated-windows-authentication) | Etki alanı veya Azure Active Directory (Azure AD) ile Birleşik bilgisayarlardaki uygulamaların sessizce bir belirteç almasına izin verir (kullanıcıdan herhangi bir kullanıcı ARABIRIMI etkileşimi olmadan).| [Masaüstü/mobil uygulamalar](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
+| [Kullanıcı adı/parola](#usernamepassword) | Bir uygulamanın, parolasını doğrudan işleyerek kullanıcının oturum açmasına izin verir. Bu akış önerilmez. | [Masaüstü/mobil uygulamalar](scenario-desktop-acquire-token.md#username-and-password) |
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>Her akışın belirteçleri ve kodları nasıl yayar
- 
-İstemcinizin nasıl oluşturulduğuna bağlı olarak, Microsoft Identity platform tarafından desteklenen kimlik doğrulama akışlarının birini (veya birkaçını) kullanabilir.  Bu akışlar çeşitli belirteçler (id_tokens, yenileme belirteçleri, erişim belirteçleri) ve yetkilendirme kodlarını oluşturabilir ve bunların çalışmasını sağlamak için farklı belirteçler gerektirebilir. Bu grafik genel bakış sağlar:
- 
-|Akış | Gerektirmeyen | id_token | erişim belirteci | belirteci Yenile | yetkilendirme kodu | 
-|-----|----------|----------|--------------|---------------|--------------------|
-|[Yetkilendirme kodu akışı](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
-|[Örtük akış](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
-|[Karma OıDC akışı](v2-protocols-oidc.md#protocol-diagram-access-token-acquisition)| | x  | |          |            x   |
-|[Belirteç satın alma yenileme](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | belirteci Yenile | x | x | x| |
-|[On-behalf-of akışı](v2-oauth2-on-behalf-of-flow.md) | erişim belirteci| x| x| x| |
-|[Cihaz kod akışı](v2-oauth2-device-code.md) | | x| x| x| |
-|[İstemci kimlik bilgileri](v2-oauth2-client-creds-grant-flow.md) | | | x (yalnızca uygulama)| | |
- 
-Örtülü mod aracılığıyla yayınlanan belirteçlerin, tarayıcıya URL aracılığıyla geri geçirilme nedeniyle bir uzunluk sınırlaması vardır (burada `response_mode` `query` veya `fragment` ).  Bazı tarayıcıların, tarayıcı çubuğuna koyabileceğiniz ve çok uzun olduğunda başarısız olan URL 'nin boyutunda bir sınırı vardır.  Bu nedenle, bu belirteçlerin `groups` veya `wids` talepleri yoktur.
+
+İstemcinizin nasıl oluşturulduğuna bağlı olarak, Microsoft Identity platform tarafından desteklenen bir veya daha fazla kimlik doğrulama akışı kullanabilir. Bu akışlar, birkaç belirteç türü ve yetkilendirme kodu üretebilir ve bunların çalışmasını sağlamak için farklı belirteçler gerektirebilir.
+
+| Akış                                                                               | Gerektirmeyen            | id_token | erişim belirteci | belirteci Yenile | yetkilendirme kodu |
+|------------------------------------------------------------------------------------|:-------------------:|:--------:|:------------:|:-------------:|:------------------:|
+| [Yetkilendirme kodu akışı](v2-oauth2-auth-code-flow.md)                             |                     | x        | x            | x             | x                  |
+| [Örtük akış](v2-oauth2-implicit-grant-flow.md)                                  |                     | x        | x            |               |                    |
+| [Karma OıDC akışı](v2-protocols-oidc.md#protocol-diagram-access-token-acquisition) |                     | x        |              |               | x                  |
+| [Belirteç satın alma yenileme](v2-oauth2-auth-code-flow.md#refresh-the-access-token)   | belirteci Yenile       | x        | x            | x             |                    |
+| [On-behalf-of akışı](v2-oauth2-on-behalf-of-flow.md)                                | erişim belirteci        | x        | x            | x             |                    |
+| [Cihaz kod akışı](v2-oauth2-device-code.md)                                       |                     | x        | x            | x             |                    |
+| [İstemci kimlik bilgileri](v2-oauth2-client-creds-grant-flow.md)                         |                     |          | x (yalnızca uygulama) |               |                    |
+| [Kullanıcı adı/parola](v2-oauth-ropc.md) (ropc)                                       | Kullanıcı adı & parola | x        | x            | x             |                    |
 
 ## <a name="interactive"></a>Etkileşimli
 
-MSAL, kullanıcıdan oturum açmasını etkileşimli olarak isteme ve bu kimlik bilgilerini kullanarak bir belirteç alma özelliğini destekler.
+MSAL, oturum açmak ve bu kimlik bilgilerini kullanarak bir belirteç almak için kullanıcıdan kimlik bilgilerini etkileşimli olarak isteyebilir.
 
 ![Etkileşimli akış diyagramı](media/msal-authentication-flows/interactive.png)
 
-Belirli platformlarda belirteçleri etkileşimli olarak almak için MSAL.NET kullanma hakkında daha fazla bilgi için bkz.:
+Belirli platformlarda belirteçleri etkileşimli olarak alma hakkında daha fazla bilgi için bkz.:
+
+- [Etkileşimli istekleriMSAL.js](msal-js-prompt-behavior.md)
+- [Evrensel Windows Platformu](msal-net-uwp-considerations.md)
 - [Xamarin Android](msal-net-xamarin-android-considerations.md)
 - [Xamarin iOS](msal-net-xamarin-ios-considerations.md)
-- [Evrensel Windows Platformu](msal-net-uwp-considerations.md)
-
-MSAL. js ' deki etkileşimli çağrılar hakkında daha fazla bilgi için bkz. [msal. js etkileşimli Isteklerindeki istem davranışı](msal-js-prompt-behavior.md).
 
 ## <a name="implicit-grant"></a>Örtük izin
 
-MSAL, bir arka uç sunucu kimlik bilgisi alışverişi yapmadan uygulamanın Microsoft Identity platformundan belirteç almasına izin veren [OAuth 2 örtülü izin akışını](v2-oauth2-implicit-grant-flow.md)destekler. Bu, uygulamanın kullanıcıya oturum açmasını, oturum korumasını ve diğer Web API 'Lerine, tüm istemci JavaScript kodu içindeki belirteçleri almasına olanak tanır.
+MSAL, [OAuth 2 örtülü izin](v2-oauth2-implicit-grant-flow.md) akışını destekler. Bu akış, uygulamanın bir arka uç sunucu kimlik bilgisi değişimi gerçekleştirmeden Microsoft Identity platformundan belirteç almasına izin verir. Bu akış, uygulamanın kullanıcıya oturum açmasını, oturum korumasını ve diğer Web API 'Leri için, tüm istemci JavaScript kodu içindeki belirteçleri almasını sağlar.
 
 ![Örtük verme akışı diyagramı](media/msal-authentication-flows/implicit-grant.svg)
 
-Birçok modern web uygulaması, istemci tarafı, tek sayfalı uygulamalar, JavaScript veya angular, Vue. js ve tepki. js gibi bir SPA çerçevesi kullanılarak yazılmış şekilde oluşturulmuştur. Bu uygulamalar bir Web tarayıcısında çalışır ve geleneksel sunucu tarafı Web uygulamalarından farklı kimlik doğrulama özelliklerine sahiptir. Microsoft Identity platformu, tek sayfalı uygulamaların kullanıcılara oturum açmasını sağlar ve dolaylı verme akışını kullanarak arka uç hizmetlerine veya Web API 'Lerine erişim belirteçleri alır. Örtük akış, uygulamanın kimliği doğrulanmış kullanıcıyı temsil etmesi için kimlik belirteçleri almasına izin verir ve ayrıca korumalı API 'Leri çağırmak için gereken belirteçlere erişim sağlar.
+Birçok modern web uygulaması, istemci tarafı, JavaScript 'te yazılmış tek sayfalı uygulamalar (SPA) veya angular, Vue.js ve React.js gibi bir SPA çerçevesi olarak oluşturulmuştur. Bu uygulamalar bir Web tarayıcısında çalışır ve geleneksel sunucu tarafı Web uygulamalarından farklı kimlik doğrulama özelliklerine sahiptir. Microsoft Identity platformu, tek sayfalı uygulamaların kullanıcılara oturum açmasını sağlar ve dolaylı verme akışını kullanarak arka uç hizmetlerine veya Web API 'Lerine erişim belirteçleri alır. Örtük akış, uygulamanın kimliği doğrulanmış kullanıcıyı temsil etmesi için kimlik belirteçleri almasına izin verir ve ayrıca korumalı API 'Leri çağırmak için gereken belirteçlere erişim sağlar.
 
-Bu kimlik doğrulama akışı, yerel platformlarla etkileşim için daha fazla özellik gerektirdiğinden, elektron ve tepki verme gibi platformlar arası JavaScript çerçeveleri kullanan uygulama senaryoları içermez.
+Bu kimlik doğrulama akışı, yerel platformlarla etkileşim için daha fazla özellik gerektirdiğinden, elektron veya yanıt verme gibi platformlar arası JavaScript çerçeveleri kullanan uygulama senaryoları içermez.
+
+Örtük akış modu aracılığıyla verilen belirteçlerin, tarayıcıya URL tarafından döndürüldüğünden (ya da) bir **uzunluk sınırlaması** vardır `response_mode` `query` `fragment` . Bazı tarayıcılar, tarayıcı çubuğundaki URL 'nin uzunluğunu sınırlar ve çok uzunsa başarısız olur. Bu nedenle, bu örtük akış belirteçleri `groups` veya `wids` talep içermez.
 
 ## <a name="authorization-code"></a>Yetkilendirme kodu
 
-MSAL, [OAuth 2 yetkilendirme kodu vermeyi](v2-oauth2-auth-code-flow.md)destekler. Bu izin, Web API 'Leri gibi korumalı kaynaklara erişim kazanmak için bir cihaza yüklenen uygulamalarda kullanılabilir. Bu, mobil ve Masaüstü uygulamalarınıza oturum açma ve API erişimi eklemenize olanak tanır. 
+MSAL, [OAuth 2 yetkilendirme kodu verme](v2-oauth2-auth-code-flow.md) akışını destekler. Bu akış, Web API 'Leri gibi korumalı kaynaklara erişim kazanmak için bir cihaza yüklenen uygulamalarda kullanılabilir. Bu, mobil ve Masaüstü uygulamalarınıza oturum açma ve API erişimi eklemenize olanak tanır.
 
-Kullanıcılar Web uygulamalarında (Web siteleri) oturum açtığında, Web uygulaması bir yetkilendirme kodu alır.  Yetkilendirme kodu, Web API 'Lerini çağırmak için bir belirteç almak üzere kullanılır. ASP.NET ve ASP.NET Core Web Apps 'te tek hedefi, `AcquireTokenByAuthorizationCode` belirteç önbelleğine bir belirteç eklemektir. Belirteç daha sonra uygulama tarafından (genellikle kullanılarak bir API için belirteç almış olan denetleyicilerde `AcquireTokenSilent` ) kullanılabilir.
+Kullanıcılar Web uygulamalarında (Web siteleri) oturum açtığında, Web uygulaması bir yetkilendirme kodu alır. Yetkilendirme kodu, Web API 'Lerini çağırmak için bir belirteç almak üzere kullanılır.
 
 ![Yetkilendirme kod akışı diyagramı](media/msal-authentication-flows/authorization-code.png)
 
@@ -87,17 +88,15 @@ Kullanıcılar Web uygulamalarında (Web siteleri) oturum açtığında, Web uyg
 1. Erişim belirteci için kullanılan bir yetkilendirme kodu ister.
 2. Bir Web API 'sini çağırmak için erişim belirtecini kullanır.
 
-### <a name="considerations"></a>Önemli noktalar
+### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-- Bir belirteci kullanmak için yalnızca bir kez yetkilendirme kodu kullanabilirsiniz. Aynı yetkilendirme koduyla bir belirteci birden çok kez edinmeyi denemeyin (protokol standart belirtimi tarafından açıkça yasaklanmıştır). Kodu kasıtlı olarak birkaç kez kullandıysanız veya bir Framework 'ün sizin için de yaptığı farkında olmadığınız için aşağıdaki hatayı alırsınız:`AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
+- Bir belirteci kullanmak için yalnızca bir kez yetkilendirme kodu kullanabilirsiniz. Protokol standart belirtimi tarafından açıkça yasaklanmış olduğundan, belirteci aynı yetkilendirme koduyla birden çok kez almaya çalışmayın. Kodu kasıtlı olarak veya bir Framework 'ün sizin için de yaptığı farkında olmadığınız durumlarda kodu birkaç kez kullandıysanız şu hatayı alırsınız:
 
-- Bir ASP.NET veya ASP.NET Core uygulaması yazıyorsanız, çerçeveye zaten yetkilendirme kodu kullandığınızı söylüyorsanız bu durum oluşabilir. Bunun için `context.HandleCodeRedemption()` olay işleyicisi yöntemini çağırmanız gerekir `AuthorizationCodeReceived` .
-
-- Erişim belirtecinin ASP.NET ile paylaşılmasından kaçının, bu da artımlı izin doğru şekilde oluşmasını engelleyebilir. Daha fazla bilgi için bkz. [sorun #693](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/693).
+    `AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
 
 ## <a name="on-behalf-of"></a>Adına-
 
-MSAL, [OAuth 2. adına kimlik doğrulama akışını](v2-oauth2-on-behalf-of-flow.md)destekler.  Bu akış, bir uygulama bir hizmet veya Web API 'SI istediğinde kullanılır, bu da başka bir hizmet veya Web API 'SI çağırmalıdır. Amaç, temsilci kullanıcı kimliğini ve izinleri istek zinciri aracılığıyla yaymanız önerilir. Orta katman hizmetin, aşağı akış hizmetine kimliği doğrulanmış istekleri yapması için Kullanıcı adına Microsoft Identity platformundan bir erişim belirtecinin güvenli hale getirme ihtiyacı vardır.
+MSAL, [OAuth 2. adına kimlik doğrulama akışını](v2-oauth2-on-behalf-of-flow.md)destekler. Bu akış, bir uygulama bir hizmetin veya Web API 'sinin başka bir hizmet veya Web API 'si çağırması gereken bir hizmet istediğinde kullanılır. Amaç, temsilci kullanıcı kimliğini ve izinleri istek zinciri aracılığıyla yaymanız önerilir. Orta katman hizmetin, aşağı akış hizmetine kimliği doğrulanmış istekler yapması için, Kullanıcı *adına* Microsoft Identity platformundan bir erişim belirtecinin güvenliğini sağlaması gerekir.
 
 ![Şirket adına akış diyagramı](media/msal-authentication-flows/on-behalf-of.png)
 
@@ -105,19 +104,17 @@ Yukarıdaki diyagramda:
 
 1. Uygulama, Web API 'SI için bir erişim belirteci alır.
 2. İstemci (Web, Masaüstü, mobil veya tek sayfalı uygulama) korumalı bir Web API 'sini çağırır ve erişim belirtecini HTTP isteğinin kimlik doğrulama üstbilgisinde bir taşıyıcı belirteci olarak ekler. Web API 'SI kullanıcının kimliğini doğrular.
-3. İstemci, Web API 'sini çağırdığında, Web API 'SI Kullanıcı adına başka bir belirteç ister.  
-4. Korunan Web API 'si, kullanıcının adına bir aşağı akış Web API 'SI çağırmak için bu belirteci kullanır.  Web API 'SI daha sonra diğer aşağı akış API 'Leri için belirteçler isteyebilir (ancak hala aynı kullanıcı adına).
+3. İstemci, Web API 'sini çağırdığında, Web API 'SI Kullanıcı adına başka bir belirteç ister.
+4. Korunan Web API 'si, kullanıcının adına bir aşağı akış Web API 'SI çağırmak için bu belirteci kullanır. Web API 'SI daha sonra diğer aşağı akış API 'Leri için belirteçler isteyebilir (ancak hala aynı kullanıcı adına).
 
 ## <a name="client-credentials"></a>İstemci kimlik bilgileri
 
-MSAL, [OAuth 2 istemci kimlik bilgileri akışını](v2-oauth2-client-creds-grant-flow.md)destekler. Bu akış, bir uygulamanın kimliğini kullanarak Web 'de barındırılan kaynaklara erişmenizi sağlar. Bu tür bir izin, genellikle bir kullanıcıyla etkileşimde bulunmadan, arka planda çalışması gereken sunucu-sunucu etkileşimleri için kullanılır. Bu tür uygulamalar genellikle Daemon 'ları veya hizmet hesapları olarak adlandırılır. 
+MSAL, [OAuth 2 istemci kimlik bilgileri akışını](v2-oauth2-client-creds-grant-flow.md)destekler. Bu akış, bir uygulamanın kimliğini kullanarak Web 'de barındırılan kaynaklara erişmenizi sağlar. Bu tür bir izin, genellikle bir kullanıcıyla etkileşimde bulunmadan, arka planda çalışması gereken sunucu-sunucu etkileşimleri için kullanılır. Bu tür uygulamalar genellikle Daemon 'ları veya hizmet hesapları olarak adlandırılır.
 
 İstemci kimlik bilgileri verme akışı, bir Web hizmetinin (gizli bir istemci) başka bir Web hizmetini çağırırken kimlik doğrulaması yapmak yerine kendi kimlik bilgilerini kullanmasına izin verir. Bu senaryoda, istemci genellikle bir orta katman Web hizmeti, bir Daemon hizmeti veya bir Web sitesidir. Daha yüksek bir güvence düzeyi için, Microsoft Identity platformu, çağıran hizmetin kimlik bilgileri olarak bir sertifika (paylaşılan gizlilik yerine) kullanmasına de olanak tanır.
 
 > [!NOTE]
-> Gizli istemci akışı, yalnızca genel istemci uygulamalarını destekledikleri için mobil platformlarda (UWP, Xamarin. iOS ve Xamarin. Android) kullanılabilir değildir. Ortak istemci uygulamaları, uygulamanın kimliğini kimlik sağlayıcısına nasıl kanıtlayabileceğinizi bilmez. Bir sertifika dağıtarak Web uygulaması veya Web API 'SI arka uçları üzerinde güvenli bir bağlantı elde edilebilir.
-
-MSAL.NET iki tür istemci kimlik bilgilerini destekler. Bu istemci kimlik bilgilerinin Azure AD 'ye kayıtlı olması gerekir. Kimlik bilgileri kodunuzda gizli istemci uygulamasının oluşturuculara geçirilir.
+> Gizli istemci akışı, yalnızca genel istemci uygulamalarını desteklediklerinden UWP, Xamarin. iOS ve Xamarin. Android gibi mobil platformlarda kullanılabilir değildir. Ortak istemci uygulamaları, uygulamanın kimliğini kimlik sağlayıcısına nasıl kanıtlayabileceğinizi bilmez. Bir sertifika dağıtarak Web uygulaması veya Web API 'SI arka uçları üzerinde güvenli bir bağlantı elde edilebilir.
 
 ### <a name="application-secrets"></a>Uygulama gizli dizileri
 
@@ -138,34 +135,33 @@ MSAL.NET iki tür istemci kimlik bilgilerini destekler. Bu istemci kimlik bilgil
 2. , Kaynak isteklerini yapmak için belirtecini kullanır.
 
 Bu istemci kimlik bilgilerinin olması gerekir:
+
 - Azure AD 'ye kayıtlı.
-- Kodunuzda gizli istemci uygulamasının oluşturulması sırasında geçirilir.
+- Kodunuzda gizli istemci uygulama nesnesi oluşturulurken geçirilir.
 
 ## <a name="device-code"></a>Cihaz kodu
 
-MSAL, kullanıcıların akıllı TV, IoT cihazı veya yazıcı gibi giriş kısıtlı cihazlarda oturum açmasına olanak tanıyan [OAuth 2 cihaz kod akışını](v2-oauth2-device-code.md)destekler. Azure AD ile etkileşimli kimlik doğrulaması için bir Web tarayıcısı gerekir. Cihaz kod akışı, kullanıcının, cihazın veya işletim sisteminin bir Web tarayıcısı sağlamayan etkileşimli olarak oturum açmasını sağlamak için başka bir cihaz (örneğin, başka bir bilgisayar veya cep telefonu) kullanmasına olanak sağlar.
+MSAL, kullanıcıların akıllı televizyonlar, IoT cihazları ve yazıcılar gibi giriş kısıtlı cihazlarda oturum açmasına olanak tanıyan [OAuth 2 cihaz kodu akışını](v2-oauth2-device-code.md) destekler. Azure AD ile etkileşimli kimlik doğrulaması için bir Web tarayıcısı gerekir. Cihazın veya işletim sisteminin bir Web tarayıcısı sunmazsa, cihaz kodu akışı kullanıcının etkileşimli olarak oturum açmak için bir bilgisayar veya cep telefonu gibi başka bir cihazı kullanmasına olanak sağlar.
 
-Uygulama, cihaz kod akışını kullanarak belirteçleri, özellikle bu cihazlar veya işletim sistemleri için tasarlanan iki adımlı bir işlemle edinir. IoT cihazlarında veya komut satırı araçlarında (CLı) çalışan bu uygulamalara örnek olarak verilebilir. 
+Uygulama, cihaz kod akışını kullanarak belirteçleri bu cihazlar ve işletim sistemleri için tasarlanan iki adımlı bir işlemle edinir. Bu tür uygulamalara örnekler, IoT cihazlarında ve komut satırı arabirimi (CLı) araçlarında çalışan bunları içerir.
 
 ![Cihaz kod akışı diyagramı](media/msal-authentication-flows/device-code.png)
 
 Yukarıdaki diyagramda:
 
-1. Kullanıcı kimlik doğrulaması gerekli olduğunda, uygulama bir kod sağlar ve kullanıcıdan bir URL 'ye (örneğin, internet 'e bağlı bir akıllı telefon) gitmesini ister `https://microsoft.com/devicelogin` . Daha sonra kullanıcıya kodu girmesi istenir ve gerekirse onay istemleri ve [çok faktörlü kimlik doğrulaması](../authentication/concept-mfa-howitworks.md) dahil olmak üzere normal bir kimlik doğrulama deneyimi üzerinden ilerler.
-
-2. Başarılı kimlik doğrulamasından sonra, komut satırı uygulaması gerekli belirteçleri bir arka kanal aracılığıyla alır ve bunları, gereken Web API çağrılarını gerçekleştirmek için kullanır.
+1. Kullanıcı kimlik doğrulaması gerekli olduğunda, uygulama bir kod sağlar ve kullanıcıdan bir URL 'YI (örneğin,) ziyaret etmek için internet 'e bağlı bir akıllı telefonu gibi başka bir cihazı kullanmasını ister `https://microsoft.com/devicelogin` . Daha sonra kullanıcıya kodu girmesi istenir ve gerekirse izin istemleri ve [çok faktörlü kimlik doğrulaması](../authentication/concept-mfa-howitworks.md)dahil olmak üzere normal bir kimlik doğrulama deneyimine devam edilir.
+1. Başarılı kimlik doğrulamasından sonra, komut satırı uygulaması gerekli belirteçleri bir arka kanal aracılığıyla alır ve bunları, gereken Web API çağrılarını gerçekleştirmek için kullanır.
 
 ### <a name="constraints"></a>Kısıtlamalar
 
-- Cihaz kodu akışı yalnızca genel istemci uygulamalarında kullanılabilir.
+- Cihaz kod akışı yalnızca genel istemci uygulamalarında kullanılabilir.
 - Ortak istemci uygulamasını oluştururken geçirilen yetkili aşağıdakilerden biri olmalıdır:
-  - Kiracının (, `https://login.microsoftonline.com/{tenant}/` `{tenant}` Kiracı kimliğini temsıl eden GUID veya kiracı ile ilişkili bir etki alanı).
-  - Herhangi bir iş ve okul hesabı ( `https://login.microsoftonline.com/organizations/` ) için.
-- Microsoft kişisel hesapları henüz Azure AD v 2.0 uç noktası tarafından desteklenmiyor ( `/common` veya `/consumers` kiracılar kullanılamıyor).
+  - Kiracıda, `https://login.microsoftonline.com/{tenant}/,` `{tenant}` Kiracı kimliğini temsıl eden GUID veya kiracı ile ilişkili bir etki alanı adı olan biçimindedir.
+  - Formdaki iş ve okul hesapları için `https://login.microsoftonline.com/organizations/` .
 
 ## <a name="integrated-windows-authentication"></a>Tümleşik Windows Kimlik Doğrulaması
 
-MSAL, masaüstü veya etki alanına katılmış veya Azure AD 'ye katılmış Windows bilgisayarında çalışan mobil uygulamalar için tümleşik Windows kimlik doğrulamasını (ıWA) destekler. IWA 'yi kullanarak bu uygulamalar sessizce (kullanıcıdan herhangi bir kullanıcı ARABIRIMI etkileşimi olmadan) belirteç alabilir. 
+MSAL, etki alanına katılmış veya Azure AD 'ye katılmış Windows bilgisayarında çalışan masaüstü ve mobil uygulamalar için tümleşik Windows kimlik doğrulamasını (ıWA) destekler. IWA kullanarak bu uygulamalar kullanıcı ARABIRIMI etkileşimi gerektirmeden sessizce bir belirteç alabilir.
 
 ![Tümleşik Windows kimlik doğrulaması diyagramı](media/msal-authentication-flows/integrated-windows-authentication.png)
 
@@ -176,35 +172,38 @@ MSAL, masaüstü veya etki alanına katılmış veya Azure AD 'ye katılmış Wi
 
 ### <a name="constraints"></a>Kısıtlamalar
 
-IWA yalnızca federe kullanıcıları destekler, bu, Active Directory içinde oluşturulan ve Azure AD tarafından desteklenen anlamına gelir. Active Directory yedekleme (yönetilen kullanıcılar) olmadan doğrudan Azure AD 'de oluşturulan kullanıcılar bu kimlik doğrulama akışını kullanamaz. Bu sınırlama, [Kullanıcı adı/parola akışını](#usernamepassword)etkilemez.
+Tümleşik Windows kimlik doğrulaması (ıWA) *yalnızca* Federal kullanıcıları destekler-Active Directory oluşturulan ve Azure AD tarafından desteklenen kullanıcılar. Active Directory yedekleme (yönetilen kullanıcılar) olmadan doğrudan Azure AD 'de oluşturulan kullanıcılar bu kimlik doğrulama akışını kullanamaz. Bu sınırlama, [Kullanıcı adı/parola akışını](#usernamepassword)etkilemez.
 
-IWA, .NET Framework, .NET Core ve Evrensel Windows Platformu platformları için yazılan uygulamalar içindir.
+IWA .NET Framework, .NET Core ve Evrensel Windows Platformu uygulamalar içindir.
 
 IWA Multi-Factor Authentication 'ı atlamaz. Multi-Factor Authentication yapılandırılırsa, çok faktörlü kimlik doğrulama sınaması gerekliyse ıWA başarısız olabilir. Multi-Factor Authentication Kullanıcı etkileşimi gerektirir.
 
-Kimlik sağlayıcısı 'nın gerçekleştirilecek iki öğeli kimlik doğrulaması istediğinde bunu denetkalmazsınız. Kiracı Yöneticisi. Genellikle, farklı bir ülke/bölgeden oturum açtığınızda iki öğeli kimlik doğrulaması gerekir. bir şirket ağına VPN aracılığıyla bağlı değilseniz ve bazen VPN aracılığıyla bağlandığınızda bile. Azure AD, iki öğeli kimlik doğrulamasının gerekli olup olmadığını sürekli olarak öğrenmek için AI 'yi kullanır. IWA başarısız olursa, bir [etkileşimli kullanıcı istemi] (#interactive) öğesine geri dönebilmelisiniz.
+Kimlik sağlayıcısı 'nın gerçekleştirilecek iki öğeli kimlik doğrulaması istediğinde bunu denetkalmazsınız. Kiracı Yöneticisi. Genellikle, farklı bir ülke/bölgeden oturum açtığınızda iki öğeli kimlik doğrulaması gerekir. bir şirket ağına VPN aracılığıyla bağlı değilseniz ve bazen VPN aracılığıyla bağlandığınızda bile. Azure AD, iki öğeli kimlik doğrulamasının gerekli olup olmadığını sürekli olarak öğrenmek için AI 'yi kullanır. IWA başarısız olursa [etkileşimli bir Kullanıcı istemine](#interactive)geri dönebilmelisiniz.
 
 Ortak istemci uygulamasını oluştururken geçirilen yetkili aşağıdakilerden biri olmalıdır:
-- Kiracının (, `https://login.microsoftonline.com/{tenant}/` `tenant` Kiracı kimliğini temsil eden GUID veya kiracı ile ilişkili bir etki alanı).
-- Herhangi bir iş ve okul hesabı ( `https://login.microsoftonline.com/organizations/` ) için. Microsoft kişisel hesapları desteklenmez ( `/common` veya `/consumers` kiracılar kullanamazsınız).
+
+- Kiracıda, `https://login.microsoftonline.com/{tenant}/,` `{tenant}` Kiracı kimliğini temsıl eden GUID veya kiracı ile ilişkili bir etki alanı adı olan biçimindedir.
+- Herhangi bir iş ve okul hesabı ( `https://login.microsoftonline.com/organizations/` ) için. Microsoft kişisel hesapları (MSA) desteklenmez; `/common`veya `/consumers` kiracılarını kullanamazsınız.
 
 IWA sessiz akış olduğundan, aşağıdakilerden biri doğru olmalıdır:
-- Uygulamanızın kullanıcısının, uygulamayı kullanmak için önceden verilmiş olması gerekir. 
+
+- Uygulamanızın kullanıcısının, uygulamayı kullanmak için önceden verilmiş olması gerekir.
 - Kiracı yöneticisinin uygulamayı kullanabilmesi için Kiracıdaki tüm kullanıcılara daha önce sahip olması gerekir.
 
 Bu, aşağıdakilerden birinin doğru olduğu anlamına gelir:
-- Geliştirici için Azure portal bir **Geliştirici seçmiş olursunuz** .
-- Bir kiracı yöneticisi, uygulamaya yönelik kaydın **API izinleri** sekmesinde **{kiracı etki alanı} Için yönetici izni verme/iptal etme** işlemi seçti (bkz. [Web API 'lerine erişim izinleri ekleme](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)).
-- Kullanıcıların uygulamayı onaylaması için bir yol sağladınız (bkz. [bireysel kullanıcı Izni isteme](v2-permissions-and-consent.md#requesting-individual-user-consent)).
-- Kiracı yöneticisinin uygulamayı kabul etmek için bir yol sağladınız (bkz. [yönetici onayı](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)).
+
+- Bir geliştirici için Azure portal bir geliştirici **seçmiş olursunuz** .
+- Bir kiracı yöneticisi, Azure portal uygulama kaydının **API izinleri** sekmesinde **{kiracı etki alanı} için izin verme/iptal etme onayı** ' nı seçti (bkz. [Web API 'lerine erişim izinleri ekleme](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)).
+- Kullanıcıların uygulamayı kabul etmek için bir yol sağladınız; bkz. [bireysel kullanıcı Izni isteme](v2-permissions-and-consent.md#requesting-individual-user-consent).
+- Kiracı yöneticisinin uygulamayı kabul etmek için bir yol sağladınız; bkz. [yönetici onayı](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
 IWA Flow, .NET Masaüstü, .NET Core ve Windows Evrensel platform uygulamaları için etkinleştirilmiştir. .NET Core 'da, .NET Core işletim sisteminden Kullanıcı adları edinemediği için ıWA için Kullanıcı adı sağlamanız gerekir.
-  
+
 Onay hakkında daha fazla bilgi için bkz. [v 2.0 izinleri ve onayı](v2-permissions-and-consent.md).
 
 ## <a name="usernamepassword"></a>Kullanıcı adı/parola
 
-MSAL, bir uygulamanın kullanıcı parolasını doğrudan işlemesini sağlayarak oturum açmasına izin veren [OAuth 2 kaynak sahibi parolası kimlik bilgileri verme](v2-oauth-ropc.md)'yi destekler. Masaüstü uygulamanızda Kullanıcı adı/parola akışını sessizce bir belirteç elde edebilirsiniz. Uygulama kullanılırken hiçbir Kullanıcı arabirimi gerekli değildir.
+MSAL, bir uygulamanın, parolasını doğrudan işleyerek kullanıcının oturum açmasını sağlayan [OAuth 2 kaynak sahibi parola kimlik bilgileri verme](v2-oauth-ropc.md) (ropc) desteği sağlar. Masaüstü uygulamanızda Kullanıcı adı/parola akışını sessizce bir belirteç elde edebilirsiniz. Uygulama kullanılırken hiçbir Kullanıcı arabirimi gerekli değildir.
 
 ![Kullanıcı adı/parola akışı diyagramı](media/msal-authentication-flows/username-password.png)
 
@@ -214,12 +213,15 @@ MSAL, bir uygulamanın kullanıcı parolasını doğrudan işlemesini sağlayara
 2. Belirtecini kullanarak bir Web API 'SI çağırır.
 
 > [!WARNING]
-> Bu akış önerilmez. Yüksek derecede güven ve Kullanıcı pozlaması gerektirir.  Bu akışı yalnızca diğer, daha güvenli ve akış kullanılabilir olduğunda kullanmanız gerekir. Daha fazla bilgi için, bkz. [parola büyüyen soruna neden olan çözüm nedir?](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). 
+> Bu akış önerilmez. Yüksek derecede güven ve kimlik bilgisi pozlaması gerektirir. Bu akışı *yalnızca* daha güvenli akışlar kullanılmıyorsa kullanmanız gerekir. Daha fazla bilgi için, bkz. [parola büyüyen soruna neden olan çözüm nedir?](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/).
 
-Windows etki alanına katılmış makinelerde sessizce belirteç almak için tercih edilen akış, [Windows kimlik doğrulaması ' nı tümleştirilmiştir](#integrated-windows-authentication). Aksi takdirde, [cihaz kod akışını](#device-code)da kullanabilirsiniz.
+Windows etki alanına katılmış makinelerde sessizce belirteç almak için tercih edilen akış, [Windows kimlik doğrulaması ' nı tümleştirilmiştir](#integrated-windows-authentication). Diğer durumlarda, [cihaz kod akışını](#device-code)kullanın.
 
-Bu, bazı durumlarda (DevOps senaryolarında) yararlı olsa da, kendi Kullanıcı arabiriminizi sağladığınız Etkileşimli senaryolarda Kullanıcı adını/parolayı kullanmak istiyorsanız, kullanmaktan kaçınmaya çalışın. Kullanıcı adı/parola kullanarak:
-- Multi-Factor Authentication yapması gereken kullanıcılar oturum açamaz (hiçbir etkileşim yoktur).
+Kullanıcı adı/parola akışı DevOps gibi bazı senaryolarda yararlı olsa da, kendi Kullanıcı arabiriminizi sağladığınız Etkileşimli senaryolarda Kullanıcı adı/parola kullanmak istiyorsanız bunu önleyin.
+
+Kullanıcı adı/parola kullanarak:
+
+- Çok faktörlü kimlik doğrulaması gerçekleştirmesi gereken kullanıcılar hiçbir etkileşim olmadığından oturum açamaz.
 - Kullanıcılar çoklu oturum açma yapamaz.
 
 ### <a name="constraints"></a>Kısıtlamalar
@@ -230,6 +232,12 @@ Bu, bazı durumlarda (DevOps senaryolarında) yararlı olsa da, kendi Kullanıc�
 - Yalnızca iş ve okul hesaplarında (Microsoft hesapları için değil) çalışır.
 - Flow, .NET masaüstü ve .NET Core 'ta mevcuttur, ancak Evrensel Windows Platformu.
 
-### <a name="azure-ad-b2c-specifics"></a>Azure AD B2C özellikleri
+### <a name="azure-ad-b2c-and-ropc"></a>Azure AD B2C ve ROPC
 
 MSAL.NET ve Azure AD B2C 'de ROPC kullanma hakkında daha fazla bilgi için bkz. [ROPC 'yi Azure AD B2C kullanma](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc).
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Artık Microsoft kimlik doğrulama kitaplığı (MSAL) tarafından desteklenen kimlik doğrulama akışlarını gözden geçirdikten sonra, bu akışlarda kullanılan belirteçleri alma ve önbelleğe alma hakkında bilgi edinin:
+
+[Microsoft kimlik doğrulama kitaplığı (MSAL) kullanarak belirteçleri alma ve önbelleğe alma](msal-acquire-cache-tokens.md)

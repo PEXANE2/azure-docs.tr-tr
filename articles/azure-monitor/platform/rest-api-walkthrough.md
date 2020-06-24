@@ -5,12 +5,12 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1de3afc380c5c3c82a869de0ff2319b013e26438
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 602d11b20e50ec5ba56d0d9c1762292c07d0b67b
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610896"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945350"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure Izleme REST API izlenecek yol
 
@@ -95,7 +95,7 @@ Bir hizmet için kullanılabilen ölçüm listesine erişmek için [Azure Izleyi
 
 **Yöntem**: Get
 
-**İstek URI 'si**: https\/\/: Management.Azure.com/subscriptions/*{SubscriptionID}*/ResourceGroups/*{resourcegroupname}*/Providers/*{resourceprovidernamespace}*/*{ResourceType}*/*{resourceName}*/Providers/Microsoft.insights/metricDefinitions? api-Version =*{apiversion}*
+**İstek URI 'si**: https: \/ \/ Management.Azure.com/subscriptions/*{SubscriptionID}*/ResourceGroups/*{resourcegroupname}*/Providers/*{resourceprovidernamespace}* / *{ResourceType}* / *{resourceName}*/Providers/Microsoft.insights/metricDefinitions? api-Version =*{apiversion}*
 
 Örneğin, bir Azure depolama hesabının ölçüm tanımlarını almak için, istek şu şekilde görünür:
 
@@ -239,7 +239,7 @@ Herhangi bir filtreleme isteği için ölçüm adı ' Value ' değerini (' local
 
 **Yöntem**: Get
 
-**İstek URI 'si**:\:https//*Management.Azure.com/subscriptions/{Subscription-ID}*/ResourceGroups/*{Resource-Group-Name}*/Providers/*{Resource-Provider-Namespace}*/*{Resource-Type}*/*{Resource-Name}*/Providers/Microsoft.insights/Metrics? metricnames =*{Metric}*&TimeSpan =*{StartTime/bitişsaati}*&$Filter =*{Filter}*&ResultType = Metadata&api-Version =*{apiversion}*
+**İstek URI 'si**: \: https//Management.Azure.com/subscriptions/*{Subscription-ID}*/ResourceGroups/*{Resource-Group-Name}*/Providers/*{Resource-Provider-Namespace}* / *{Resource-Type}* / *{Resource-Name}*/Providers/Microsoft.insights/Metrics? metricnames =*{Metric}*&TimeSpan =*{StartTime/bitişsaati}*&$Filter =*{Filter}*&ResultType = Metadata&api-Version =*{apiversion}*
 
 Örneğin, ' Işlemler ' ölçümü için "API adı boyutu", belirtilen zaman aralığı boyunca GeoType Dimension = ' PRIMARY ' olan ' API Name Dimension ' için yayınlanan boyut değerlerinin listesini almak için, istek aşağıdaki gibi olacaktır:
 
@@ -312,7 +312,7 @@ Herhangi bir filtreleme isteği için ölçüm adı ' Value ' değerini (' local
 
 **Yöntem**: Get
 
-**İstek URI 'si**: https\/:/Management.Azure.com/subscriptions/*{Subscription-ID}*/ResourceGroups/*{Resource-Group-Name}*/Providers/*{Resource-Provider-Namespace}*/*{Resource-Type}*/*{Resource-Name}*/Providers/Microsoft.insights/Metrics? metricnames =*{Metric}*&TimeSpan *= {StartTime/bitişsaati}*&$Filter =*{Filter}*&Interval =*{timegre}*&toplama =*{Aggreation}*&api-Version =*{apiversion}*
+**İstek URI 'si**: https \/ :/*Management.Azure.com/subscriptions/{Subscription-ID}*/ResourceGroups/*{Resource-Group-Name}*/Providers/*{Resource-Provider-Namespace}* / *{Resource-Type}* / *{Resource-Name}*/Providers/Microsoft.insights/Metrics? metricnames =*{Metric}*&TimeSpan =*{StartTime/bitişsaati}*&$Filter =*{Filter}*&Interval =*{timegre}*&toplama =*{Aggreation}*&api-Version =*{apiversion}*
 
 Örneğin, en iyi 3 API 'yi azalan değerde, bir 5 dakikalık Aralık sırasında ' Işlem ' sayısına göre, yani GeotType 'ın ' PRIMARY ' olması halinde, istek şu şekildedir:
 
@@ -391,7 +391,7 @@ Bir hizmet için kullanılabilen ölçüm listesine erişmek için [Azure Izleyi
 
 **Yöntem**: Get
 
-**İstek URI 'si**: https\/\/: Management.Azure.com/subscriptions/*{SubscriptionID}*/ResourceGroups/*{resourcegroupname}*/Providers/*{resourceprovidernamespace}*/*{ResourceType}*/*{resourceName}*/Providers/Microsoft.insights/metricDefinitions? api-Version =*{apiversion}*
+**İstek URI 'si**: https: \/ \/ Management.Azure.com/subscriptions/*{SubscriptionID}*/ResourceGroups/*{resourcegroupname}*/Providers/*{resourceprovidernamespace}* / *{ResourceType}* / *{resourceName}*/Providers/Microsoft.insights/metricDefinitions? api-Version =*{apiversion}*
 
 Örneğin, bir Azure mantıksal uygulaması için ölçüm tanımlarını almak üzere, istek şu şekilde görünür:
 
@@ -582,7 +582,7 @@ Elde edilen JSON yanıt gövdesi, aşağıdaki örneğe benzer olacaktır:
 Ek bir yaklaşım, Windows makinenizde [Armclient](https://github.com/projectkudu/armclient) kullanmaktır. ARMClient, Azure AD kimlik doğrulamasını (ve sonuç JWT belirtecini) otomatik olarak işler. Aşağıdaki adımlarda, ölçüm verilerini almak için ARMClient kullanımı ana hatlarıyla verilmiştir:
 
 1. [Chocolatey](https://chocolatey.org/) ve [armclient](https://github.com/projectkudu/armclient)'ı yükler.
-2. Terminal penceresinde *armclient. exe oturum açma*yazın. Bunu yaptığınızda Azure 'da oturum açmanız istenir.
+2. Bir Terminal penceresinde *oturumarmclient.exe*yazın. Bunu yaptığınızda Azure 'da oturum açmanız istenir.
 3. *Armclient Get [your_resource_id]/Providers/Microsoft.insights/MetricDefinitions? api-Version = 2016-03-01* yazın
 4. *Armclient Get [your_resource_id]/Providers/Microsoft.insights/Metrics? api-Version = 2016-09-01* yazın
 
@@ -605,7 +605,7 @@ Aşağıdaki listede çeşitli Azure kaynakları için kaynak KIMLIĞI biçimler
 * **IoT Hub** -/Subscriptions/*{Subscription-ID}*/ResourceGroups/*{Resource-Group-Name}*/Providers/Microsoft.Devices/IotHubs/*{IoT-Hub-Name}*
 * **Elastik SQL havuzu** -/Subscriptions/*{Subscription-ID}*/ResourceGroups/*{Resource-Group-Name}*/Providers/Microsoft.SQL/Servers/*{Pool-DB}*/elakıhavuzs/*{SQL-Pool-Name}*
 * **SQL veritabanı (V12)** -/Subscriptions/*{abonelik-kimliği}*/ResourceGroups/*{Resource-Group-Name}*/Providers/Microsoft.SQL/Servers/*{Server-Name}*/Databases/*{Database-Name}*
-* **Service Bus** -/Subscriptions/*{Subscription-ID}*/ResourceGroups/*{Resource-Group-Name}*/Providers/Microsoft.ServiceBus/*{Namespace}*/*{ServiceBus-Name}*
+* **Service Bus** -/Subscriptions/*{Subscription-ID}*/ResourceGroups/*{Resource-Group-Name}*/Providers/Microsoft.ServiceBus/*{Namespace}* / *{ServiceBus-Name}*
 * **Sanal Makine Ölçek Kümeleri** -/Subscriptions/*{Subscription-ID}*/ResourceGroups/*{Resource-Group-Name}*/Providers/Microsoft.COMPUTE/virtualMachineScaleSets/*{VM-Name}*
 * **VM 'ler** -/Subscriptions/*{Subscription-ID}*/ResourceGroups/*{Resource-Group-Name}*/Providers/Microsoft.COMPUTE/virtualMachines/*{VM-Name}*
 * **Event Hubs** -/Subscriptions/*{Subscription-ID}*/ResourceGroups/*{Resource-Group-Name}*/Providers/Microsoft.EventHub/namespaces/*{EventHub-Namespace}*
@@ -654,7 +654,7 @@ Version        : 08586982649483762729
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLı kullanarak bir Azure depolama hesabının kaynak KIMLIĞINI almak için aşağıdaki örnekte gösterildiği gibi `az storage account show` komutunu yürütün:
+Azure CLı kullanarak bir Azure depolama hesabının kaynak KIMLIĞINI almak için `az storage account show` Aşağıdaki örnekte gösterildiği gibi komutunu yürütün:
 
 ```azurecli
 az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
@@ -705,16 +705,30 @@ Sonuç aşağıdaki örneğe benzer olmalıdır:
 
 ## <a name="retrieve-activity-log-data"></a>Etkinlik günlüğü verilerini alma
 
-Ölçüm tanımlarına ve ilgili değerlere ek olarak Azure Izleyici REST API kullanarak Azure kaynaklarıyla ilgili ek ilginç Öngörüler elde edebilirsiniz. Örnek olarak, [etkinlik günlüğü](https://msdn.microsoft.com/library/azure/dn931934.aspx) verilerini sorgulamak mümkündür. Aşağıdaki örnek, bir Azure aboneliği için belirli bir tarih aralığındaki etkinlik günlüğü verilerini sorgulamak üzere Azure Izleyici REST API kullanmayı göstermektedir:
+Ölçüm tanımlarına ve ilgili değerlere ek olarak Azure Izleyici REST API kullanarak Azure kaynaklarıyla ilgili ek ilginç Öngörüler elde edebilirsiniz. Örnek olarak, [etkinlik günlüğü](https://msdn.microsoft.com/library/azure/dn931934.aspx) verilerini sorgulamak mümkündür. Aşağıdaki örnek istekler, etkinlik günlüğünü sorgulamak için Azure Izleyici REST API kullanır.
 
-```powershell
-$apiVersion = "2015-04-01"
-$filter = "eventTimestamp ge '2017-08-18' and eventTimestamp le '2017-08-19'and eventChannels eq 'Admin, Operation'"
-$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/microsoft.insights/eventtypes/management/values?api-version=${apiVersion}&`$filter=${filter}"
-Invoke-RestMethod -Uri $request `
-    -Headers $authHeader `
-    -Method Get `
-    -Verbose
+Filtre ile etkinlik günlüklerini al:
+
+``` HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2018-01-21T20:00:00Z' and eventTimestamp le '2018-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'
+```
+
+Filtreli etkinlik günlüklerini alın ve şunları seçin:
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2015-01-21T20:00:00Z' and eventTimestamp le '2015-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
+```
+
+Select ile etkinlik günlüklerini al:
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
+```
+
+Filtre olmadan etkinlik günlüklerini Al veya Seç:
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

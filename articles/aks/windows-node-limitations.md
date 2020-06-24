@@ -5,12 +5,12 @@ description: Azure Kubernetes Service 'te (AKS) Windows Server düğüm havuzlar
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: 89cfb42da4433f17298cf2cb68f1a4b3d8f9e549
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: e03343bc0bf8d2b49d2322573e75fe76cc853e32
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433017"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976617"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Windows Server düğüm havuzları ve uygulama iş yükleri için geçerli sınırlamalar
 
@@ -101,7 +101,7 @@ Grup tarafından yönetilen hizmet hesapları (gMSA) desteği şu anda AKS 'de k
 
 ## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Windows düğümleri ve kapsayıcılarıyla kapsayıcılar için Azure Izleyici kullanabilir miyim?
 
-Evet, ancak Azure Izleyici, Windows kapsayıcılarından günlükleri (STDOUT) toplamaz. Yine de bir Windows kapsayıcısından stdout günlüklerinin canlı akışına iliştirebilirsiniz.
+Evet, ancak Azure Izleyici, Windows desteği için bir [sınırlama][azure-monitor] kümesine sahiptir.
 
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Desteklenmeyen bir özelliğe ihtiyacım varsa ne olur?
 
@@ -131,3 +131,4 @@ AKS 'de Windows Server kapsayıcıları kullanmaya başlamak için [AKS 'de Wind
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node
+[azure-monitor]: ../azure-monitor/insights/container-insights-overview.md#what-does-azure-monitor-for-containers-provide

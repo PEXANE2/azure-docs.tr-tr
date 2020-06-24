@@ -4,15 +4,15 @@ description: Bu sayfa ExpressRoute izleme hakkında bilgi sağlar
 services: expressroute
 author: mialdrid
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 268a7e7c94285d3c4fdcb0c5fb91b685c09b58c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6622a6e9f6865dbbafa145d6773440599b0c2777
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75436908"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738915"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute izleme, ölçümler ve uyarılar
 
@@ -39,8 +39,8 @@ Bu makale, Azure Izleyici kullanarak ExpressRoute izlemeyi, ölçümleri ve uyar
 |GlobalReachBitsOutPerSecond|Trafik|<ui><li>Eşlenen devre Skey (hizmet anahtarı)</ui></li>|Global Reach|
 |AdminState|Fiziksel bağlantı|Bağlantı|ExpressRoute Direct|
 |LineProtocol|Fiziksel bağlantı|Bağlantı|ExpressRoute Direct|
-|RxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantısının</ui></li><ui><li>Ödül</ui></li>|ExpressRoute Direct|
-|TxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantısının</ui></li><ui><li>Ödül</ui></li>|ExpressRoute Direct|
+|RxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantı</ui></li><ui><li>Ödül</ui></li>|ExpressRoute Direct|
+|TxLightLevel|Fiziksel bağlantı|<ui><li>Bağlantı</ui></li><ui><li>Ödül</ui></li>|ExpressRoute Direct|
 >[!NOTE]
 >*GlobalGlobalReachBitsInPerSecond* ve *GlobalGlobalReachBitsOutPerSecond* kullanımı yalnızca en az bir Global Reach bağlantısı kurulduysa görünür olur.
 >

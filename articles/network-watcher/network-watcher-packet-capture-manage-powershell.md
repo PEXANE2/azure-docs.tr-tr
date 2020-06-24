@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 06263f85f7d6ad6cc80724baab01124833498739
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 100a8ed1987b2edbc0aea1708c8a60b48bf391b1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79129644"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737929"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>PowerShell kullanarak paket yakalamalarını Azure ağ Izleyicisi ile yönetme
 
@@ -48,11 +48,11 @@ Bu makalede aşağıdaki kaynaklara sahip olduğunuz varsayılır:
 * Paket yakalama uzantısı etkin olan bir sanal makine.
 
 > [!IMPORTANT]
-> Paket yakalama, bir sanal makine uzantısı `AzureNetworkWatcherExtension`gerektirir. Windows VM 'ye uzantı yüklemek için bkz. [Windows Için Azure ağ Izleyicisi Aracısı sanal makine uzantısı](../virtual-machines/windows/extensions-nwa.md) ve Linux VM Için [Azure Ağ İzleyicisi Aracısı sanal makine uzantısı](../virtual-machines/linux/extensions-nwa.md)' nı ziyaret edin.
+> Paket yakalama, bir sanal makine uzantısı gerektirir `AzureNetworkWatcherExtension` . Windows VM 'ye uzantı yüklemek için bkz. [Windows Için Azure ağ Izleyicisi Aracısı sanal makine uzantısı](../virtual-machines/windows/extensions-nwa.md) ve Linux VM Için [Azure Ağ İzleyicisi Aracısı sanal makine uzantısı](../virtual-machines/linux/extensions-nwa.md)' nı ziyaret edin.
 
 ## <a name="install-vm-extension"></a>VM uzantıları yükleme
 
-### <a name="step-1"></a>1. Adım
+### <a name="step-1"></a>1\. Adım
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName testrg -Name VM1
@@ -60,10 +60,10 @@ $VM = Get-AzVM -ResourceGroupName testrg -Name VM1
 
 ### <a name="step-2"></a>2. Adım
 
-Aşağıdaki örnek, `Set-AzVMExtension` cmdlet 'ini çalıştırmak için gereken uzantı bilgilerini alır. Bu cmdlet, paket yakalama aracısını Konuk sanal makinesine kurar.
+Aşağıdaki örnek, cmdlet 'ini çalıştırmak için gereken uzantı bilgilerini alır `Set-AzVMExtension` . Bu cmdlet, paket yakalama aracısını Konuk sanal makinesine kurar.
 
 > [!NOTE]
-> `Set-AzVMExtension` Cmdlet 'inin tamamlanması birkaç dakika sürebilir.
+> `Set-AzVMExtension`Cmdlet 'inin tamamlanması birkaç dakika sürebilir.
 
 Windows sanal makineleri için:
 
@@ -81,7 +81,7 @@ $ExtensionName = "AzureNetworkWatcherExtension"
 Set-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
 ```
 
-Aşağıdaki örnek `Set-AzVMExtension` cmdlet 'i çalıştırdıktan sonra başarılı bir yanıt örneğidir.
+Aşağıdaki örnek cmdlet 'i çalıştırdıktan sonra başarılı bir yanıt örneğidir `Set-AzVMExtension` .
 
 ```
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -123,9 +123,9 @@ ForceUpdateTag          :
 
 Yukarıdaki adımlar tamamlandıktan sonra, paket yakalama Aracısı sanal makineye yüklenir.
 
-### <a name="step-1"></a>1. Adım
+### <a name="step-1"></a>1\. Adım
 
-Sonraki adım, ağ Izleyicisi örneğini almak için kullanılır. Bu değişken, adım 4 ' `New-AzNetworkWatcherPacketCapture` teki cmdlet 'e geçirilir.
+Sonraki adım, ağ Izleyicisi örneğini almak için kullanılır. Bu değişken, `New-AzNetworkWatcherPacketCapture` Adım 4 ' teki cmdlet 'e geçirilir.
 
 ```powershell
 $networkWatcher = Get-AzResource -ResourceType "Microsoft.Network/networkWatchers" | Where {$_.Location -eq "WestCentralUS" }
@@ -153,13 +153,13 @@ $filter2 = New-AzPacketCaptureFilterConfig -Protocol UDP
 
 ### <a name="step-4"></a>4. Adım
 
-Paket yakalama `New-AzNetworkWatcherPacketCapture` işlemini başlatmak için cmdlet 'ini çalıştırın ve önceki adımlarda alınan gerekli değerleri geçirerek.
+`New-AzNetworkWatcherPacketCapture`Paket yakalama işlemini başlatmak için cmdlet 'ini çalıştırın ve önceki adımlarda alınan gerekli değerleri geçirerek.
 ```powershell
 
 New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
 ```
 
-Aşağıdaki örnek `New-AzNetworkWatcherPacketCapture` cmdlet 'i çalıştırmanın beklenen çıktıdır.
+Aşağıdaki örnek cmdlet 'i çalıştırmanın beklenen çıktıdır `New-AzNetworkWatcherPacketCapture` .
 
 ```
 Name                    : PacketCaptureTest
@@ -199,7 +199,7 @@ Filters                 : [
 
 ## <a name="get-a-packet-capture"></a>Paket yakalaması alma
 
-`Get-AzNetworkWatcherPacketCapture` Cmdlet 'ini çalıştırmak, çalışmakta olan veya tamamlanmış bir paket yakalama durumunu alır.
+`Get-AzNetworkWatcherPacketCapture`Cmdlet 'ini çalıştırmak, çalışmakta olan veya tamamlanmış bir paket yakalama durumunu alır.
 
 ```powershell
 Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
@@ -246,7 +246,7 @@ PacketCaptureError      : []
 
 ## <a name="stop-a-packet-capture"></a>Paket yakalamayı durdur
 
-`Stop-AzNetworkWatcherPacketCapture` Cmdlet 'i çalıştırarak bir yakalama oturumu devam ediyorsa, durdurulur.
+`Stop-AzNetworkWatcherPacketCapture`Cmdlet 'i çalıştırarak bir yakalama oturumu devam ediyorsa, durdurulur.
 
 ```powershell
 Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"

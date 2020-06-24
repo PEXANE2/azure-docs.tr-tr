@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/23/2019
+ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 06475b53acf6c9161888e29723feab9cdc4336d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78e3bbfe910ebc3d7f21167c2a15f0c255fdc8ff
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80882735"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84904805"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Web API 'Lerini çağıran bir mobil uygulama yapılandırma
 
@@ -27,7 +27,7 @@ Uygulamanızı oluşturduktan sonra, uygulama kayıt parametrelerini kullanarak 
 
 Aşağıdaki Microsoft kimlik doğrulama kitaplığı (MSAL) türleri mobil uygulamaları destekler.
 
-MSAL | Açıklama
+MSAL | Description
 ------------ | ----------
 ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Taşınabilir uygulamalar geliştirmek için kullanılır. MSAL.NET, mobil uygulama oluşturmak için aşağıdaki platformları destekler: Evrensel Windows Platformu (UWP), Xamarin. iOS ve Xamarin. Android.
 ![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Hedef-C veya Swift kullanarak Yerel iOS uygulamaları geliştirmek için kullanılır.
@@ -37,7 +37,7 @@ MSAL | Açıklama
 
 ### <a name="android"></a>Android
 
-Mobil uygulamalar `PublicClientApplication` sınıfını kullanır. Burada örneği oluşturma:
+Mobil uygulamalar sınıfını kullanır `PublicClientApplication` . Burada örneği oluşturma:
 
 ```Java
 PublicClientApplication sampleApp = new PublicClientApplication(
@@ -47,7 +47,7 @@ PublicClientApplication sampleApp = new PublicClientApplication(
 
 ### <a name="ios"></a>iOS
 
-İOS üzerinde mobil uygulamaların `MSALPublicClientApplication` sınıfının örneğini oluşturması gerekir. Sınıfı oluşturmak için aşağıdaki kodu kullanın. 
+İOS üzerinde mobil uygulamaların sınıfının örneğini oluşturması gerekir `MSALPublicClientApplication` . Sınıfı oluşturmak için aşağıdaki kodu kullanın. 
 
 ```objc
 NSError *msalError = nil;
@@ -76,13 +76,13 @@ var app = PublicClientApplicationBuilder.Create(clientId)
                                         .Build();
 ```
 
-UI `With<Parameter>` üst öğesini ayarlama, varsayılan yetkiyi geçersiz kılma, telemetri için bir istemci adı ve sürümü belirtme, yeniden yönlendirme URI 'si belirtme ve kullanılacak http fabrikasını belirleme ek yöntemler. HTTP fabrikası, örneğin, proxy 'leri işlemek ve telemetri ve günlüğe kaydetme belirtmek için kullanılabilir. 
+`With<Parameter>`UI üst öğesini ayarlama, varsayılan yetkiyi geçersiz kılma, telemetri için bir istemci adı ve sürümü belirtme, yeniden yönlendirme URI 'si belirtme ve kullanılacak http fabrikasını belirleme ek yöntemler. HTTP fabrikası, örneğin, proxy 'leri işlemek ve telemetri ve günlüğe kaydetme belirtmek için kullanılabilir. 
 
 Aşağıdaki bölümlerde, uygulamanın örneğini oluşturma hakkında daha fazla bilgi sağlanmaktadır.
 
 ##### <a name="specify-the-parent-ui-window-or-activity"></a>Üst Kullanıcı arabirimini, pencereyi veya etkinliği belirtin
 
-Android 'de, etkileşimli kimlik doğrulaması yapmadan önce üst etkinliği geçirmeniz gerekir. İOS 'ta, bir aracı kullandığınızda geçiş yapmanız gerekir `ViewController`. UWP 'de aynı şekilde, üst pencereyi geçirmek isteyebilirsiniz. Belirteci aldığınızda bu dosyayı geçirirsiniz. Ancak uygulamayı oluştururken, döndüren `UIParent`bir temsilci olarak geri çağırma de belirtebilirsiniz.
+Android 'de, etkileşimli kimlik doğrulaması yapmadan önce üst etkinliği geçirmeniz gerekir. İOS 'ta, bir aracı kullandığınızda geçiş yapmanız gerekir `ViewController` . UWP 'de aynı şekilde, üst pencereyi geçirmek isteyebilirsiniz. Belirteci aldığınızda bu dosyayı geçirirsiniz. Ancak uygulamayı oluştururken, döndüren bir temsilci olarak geri çağırma de belirtebilirsiniz `UIParent` .
 
 ```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)
@@ -90,7 +90,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
   .Build();
 ```
 
-Android 'de kullanmanızı [`CurrentActivityPlugin`](https://github.com/jamesmontemagno/CurrentActivityPlugin)öneririz. Sonuç `PublicClientApplication` Oluşturucu kodu şu örneğe benzer şekilde görünür:
+Android 'de kullanmanızı öneririz [`CurrentActivityPlugin`](https://github.com/jamesmontemagno/CurrentActivityPlugin) . Sonuç `PublicClientApplication` Oluşturucu kodu şu örneğe benzer şekilde görünür:
 
 ```csharp
 // Requires MSAL.NET 4.2 or above
@@ -102,15 +102,15 @@ var pca = PublicClientApplicationBuilder
 
 ##### <a name="find-more-app-building-parameters"></a>Daha fazla uygulama oluşturma parametresi bulun
 
-Üzerinde `PublicClientApplicationBuilder`kullanılabilen tüm yöntemlerin bir listesi için, bkz. [Yöntemler listesi](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
+Üzerinde kullanılabilen tüm yöntemlerin bir listesi için `PublicClientApplicationBuilder` , bkz. [Yöntemler listesi](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
 
-İçinde `PublicClientApplicationOptions`gösterilen tüm seçeneklerin açıklaması için [başvuru belgelerine](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)bakın.
+İçinde gösterilen tüm seçeneklerin açıklaması için `PublicClientApplicationOptions` [başvuru belgelerine](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)bakın.
 
 ## <a name="tasks-for-xamarin-ios"></a>Xamarin iOS görevleri
 
 Xamarin iOS üzerinde MSAL.NET kullanıyorsanız, aşağıdaki görevleri yapın.
 
-* [İçindeki `OpenUrl` işlevi geçersiz kılın ve uygulayın`AppDelegate`](msal-net-xamarin-ios-considerations.md#implement-openurl)
+* [İçindeki işlevi geçersiz kılın ve uygulayın `OpenUrl``AppDelegate`](msal-net-xamarin-ios-considerations.md#implement-openurl)
 * [Anahtarlık gruplarını etkinleştir](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
 * [Belirteç önbelleği paylaşımını etkinleştir](msal-net-xamarin-ios-considerations.md#enable-token-cache-sharing-across-ios-applications)
 * [Anahtarlık erişimini etkinleştir](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
@@ -121,7 +121,7 @@ Daha fazla bilgi için bkz. [Xamarin iOS konuları](msal-net-xamarin-ios-conside
 
 İOS ve macOS için MSAL kullandığınızda bu görevler gereklidir:
 
-* [`openURL` Geri aramayı Uygula](#brokered-authentication-for-msal-for-ios-and-macos)
+* [`openURL`Geri aramayı Uygula](#brokered-authentication-for-msal-for-ios-and-macos)
 * [Anahtarlık erişim gruplarını etkinleştir](howto-v2-keychain-objc.md)
 * [Tarayıcıları ve WebView’ları özelleştirme](customize-webviews.md)
 
@@ -154,7 +154,7 @@ Android ve iOS 'ta aracılar şunları etkinleştirir:
 
 ### <a name="enable-the-broker-on-xamarin"></a>Xamarin üzerinde aracıyı etkinleştirme
 
-Xamarin üzerinde aracıyı etkinleştirmek için, `WithBroker()` `PublicClientApplicationBuilder.CreateApplication` yöntemini çağırdığınızda parametresini kullanın. Varsayılan olarak, `.WithBroker()` true olarak ayarlanır. 
+Xamarin üzerinde aracıyı etkinleştirmek için, `WithBroker()` yöntemini çağırdığınızda parametresini kullanın `PublicClientApplicationBuilder.CreateApplication` . Varsayılan olarak, `.WithBroker()` true olarak ayarlanır. 
 
 Xamarin. iOS için aracılı kimlik doğrulamasını etkinleştirmek üzere, bu makaledeki [Xamarin. iOS bölümündeki](#enable-brokered-authentication-for-xamarin-ios) adımları izleyin.
 
@@ -174,7 +174,7 @@ Xamarin. iOS uygulamanızın [Microsoft Authenticator](https://itunes.apple.com/
 
 #### <a name="step-1-enable-broker-support"></a>1. Adım: aracı desteğini etkinleştirme
 
-Aracı desteği varsayılan olarak devre dışıdır. Tek `PublicClientApplication` bir sınıf için etkinleştirebilirsiniz. `PublicClientApplication` Sınıfını aracılığıyla `WithBroker()` `PublicClientApplicationBuilder`oluşturduğunuzda parametresini kullanın. `WithBroker()` Parametresi varsayılan olarak true olarak ayarlanır.
+Aracı desteği varsayılan olarak devre dışıdır. Tek bir sınıf için etkinleştirebilirsiniz `PublicClientApplication` . `WithBroker()`Sınıfını aracılığıyla oluşturduğunuzda parametresini kullanın `PublicClientApplication` `PublicClientApplicationBuilder` . `WithBroker()`Parametresi varsayılan olarak true olarak ayarlanır.
 
 ```csharp
 var app = PublicClientApplicationBuilder
@@ -186,7 +186,7 @@ var app = PublicClientApplicationBuilder
 
 #### <a name="step-2-update-appdelegate-to-handle-the-callback"></a>2. Adım: geri aramayı işlemek için AppDelegate 'i güncelleştirme
 
-MSAL.NET aracı çağırdığında, aracı uygulamanıza geri çağrı yapılır. `AppDelegate.OpenUrl` Yöntemini kullanarak geri çağırır. MSAL, aracıdan gelen yanıtı beklediği için uygulamanızın MSAL.NET geri çağırmak için birlikte çalışması gerekir. Aşağıdaki kodda gösterildiği gibi, yöntemini geçersiz kılmak `AppDelegate.cs` için dosyayı güncelleştirerek bu davranışı ayarlarsınız.
+MSAL.NET aracı çağırdığında, aracı uygulamanıza geri çağrı yapılır. Yöntemini kullanarak geri çağırır `AppDelegate.OpenUrl` . MSAL, aracıdan gelen yanıtı beklediği için uygulamanızın MSAL.NET geri çağırmak için birlikte çalışması gerekir. `AppDelegate.cs`Aşağıdaki kodda gösterildiği gibi, yöntemini geçersiz kılmak için dosyayı güncelleştirerek bu davranışı ayarlarsınız.
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url,
@@ -210,15 +210,15 @@ Bu yöntem, uygulama her başlatıldığında çağrılır. Bu, aracıdan gelen 
 
 #### <a name="step-3-set-a-uiviewcontroller"></a>3. Adım: UIViewController () ayarlama
 
-Xamarin iOS için normalde bir nesne penceresi ayarlamanız gerekmez. Ancak bu durumda, bir aracıdan yanıt gönderebilmeniz ve alabilmesi için ayarlamanız gerekir. Bir nesne penceresi ayarlamak için, ' `AppDelegate.cs`de bir `ViewController`ayarlayın.
+Xamarin iOS için normalde bir nesne penceresi ayarlamanız gerekmez. Ancak bu durumda, bir aracıdan yanıt gönderebilmeniz ve alabilmesi için ayarlamanız gerekir. Bir nesne penceresi ayarlamak için, ' de `AppDelegate.cs` bir ayarlayın `ViewController` .
 
 Nesne penceresini ayarlamak için şu adımları izleyin:
 
-1. İçinde `AppDelegate.cs`, `App.RootViewController` öğesini yeni `UIViewController()`olarak ayarlayın. Bu ayar, aracı çağrısının dahil `UIViewController`edilmesini sağlar. Doğru ayarlanmamışsa şu hatayı alabilirsiniz:
+1. İçinde `AppDelegate.cs` , öğesini `App.RootViewController` yeni olarak ayarlayın `UIViewController()` . Bu ayar, aracı çağrısının dahil edilmesini sağlar `UIViewController` . Doğru ayarlanmamışsa şu hatayı alabilirsiniz:
 
     `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker."`
 
-1. `AcquireTokenInteractive` Çağrısında öğesini kullanın `.WithParentActivityOrWindow(App.RootViewController)`. Kullanacağınız nesne penceresinin başvurusunu geçirin. Bir örneği aşağıda verilmiştir:
+1. `AcquireTokenInteractive`Çağrısında öğesini kullanın `.WithParentActivityOrWindow(App.RootViewController)` . Kullanacağınız nesne penceresinin başvurusunu geçirin. İşte bir örnek:
 
     `App.cs` içinde:
     ```csharp
@@ -229,7 +229,7 @@ Nesne penceresini ayarlamak için şu adımları izleyin:
        LoadApplication(new App());
        App.RootViewController = new UIViewController();
     ```
-    `AcquireToken` Çağrıda:
+    `AcquireToken`Çağrıda:
     ```csharp
     result = await app.AcquireTokenInteractive(scopes)
                  .WithParentActivityOrWindow(App.RootViewController)
@@ -242,12 +242,12 @@ MSAL.NET, aracıyı çağırmak için URL 'Ler kullanır ve ardından aracı yan
 
 Uygulamanızın URL şemasını kaydetmek için şu adımları izleyin:
 
-1. İle `CFBundleURLSchemes` `msauth`ön ek. 
-1. Sonuna `CFBundleURLName` ekleyin. Bu düzene uyun: 
+1. İle ön ek `CFBundleURLSchemes` `msauth` . 
+1. `CFBundleURLName`Sonuna ekleyin. Bu düzene uyun: 
 
    `$"msauth.(BundleId)"`
 
-   Burada, `BundleId` cihazınızı benzersiz olarak tanımlar. Örneğin, `BundleId` Ise `yourcompany.xforms`, URL şemanızın olması gerekir. `msauth.com.yourcompany.xforms`
+   Burada, `BundleId` cihazınızı benzersiz olarak tanımlar. Örneğin, ise, `BundleId` `yourcompany.xforms` URL şemanızın olması gerekir `msauth.com.yourcompany.xforms` .
     
    > [!NOTE]
    > Bu URL şeması, aracının yanıtını aldığında uygulamanızı benzersiz bir şekilde tanımlayan yeniden yönlendirme URI 'sinin bir parçası olur.
@@ -272,7 +272,7 @@ Uygulamanızın URL şemasını kaydetmek için şu adımları izleyin:
 
 MSAL, `–canOpenURL:` aracının cihaza yüklenip yüklenmediğini denetlemek için kullanır. İOS 9 ' da, Apple bir uygulamanın sorgulayabilme düzenlerini kilitlemiş.
 
-Aşağıdaki `msauthv2` kod örneğinde `LSApplicationQueriesSchemes` olduğu gibi, `Info.plist` dosyanın bölümüne ekleyin:
+`msauthv2` `LSApplicationQueriesSchemes` `Info.plist` Aşağıdaki kod örneğinde olduğu gibi, dosyanın bölümüne ekleyin:
 
 ```XML 
 <key>LSApplicationQueriesSchemes</key>
@@ -287,7 +287,7 @@ Aracılı kimlik doğrulaması, varsayılan olarak Azure AD senaryolarında etki
 
 #### <a name="step-1-update-appdelegate-to-handle-the-callback"></a>1. Adım: geri aramayı işlemek için AppDelegate 'i güncelleştirme
 
-İOS ve macOS için MSAL, aracıyı çağırdığında, aracı `openURL` yöntemini kullanarak uygulamanıza geri çağrı yapılır. MSAL, aracıdan gelen yanıtı beklediği için, uygulamanızın MSAL geri çağırmak için birlikte çalışması gerekir. Aşağıdaki kod örnekleri gösterdiği gibi, yöntemini `AppDelegate.m` geçersiz kılmak için dosyayı güncelleştirerek bu özelliği ayarlayın.
+İOS ve macOS için MSAL, aracıyı çağırdığında, aracı yöntemini kullanarak uygulamanıza geri çağrı yapılır `openURL` . MSAL, aracıdan gelen yanıtı beklediği için, uygulamanızın MSAL geri çağırmak için birlikte çalışması gerekir. `AppDelegate.m`Aşağıdaki kod örnekleri gösterdiği gibi, yöntemini geçersiz kılmak için dosyayı güncelleştirerek bu özelliği ayarlayın.
 
 ```objc
 - (BOOL)application:(UIApplication *)app
@@ -311,26 +311,26 @@ Aracılı kimlik doğrulaması, varsayılan olarak Azure AD senaryolarında etki
 ```
 
 > [!NOTE]
-> İOS 13 veya `UISceneDelegate` sonraki `scene:openURLContexts:` bir sürümünü BENIMSEDIĞINIZ takdirde, msal geri aramasını yerine öğesinin `UISceneDelegate` içine yerleştirin. MSAL `handleMSALResponse:sourceApplication:` her URL için yalnızca bir kez çağrılmalıdır.
+> `UISceneDelegate`İOS 13 veya sonraki bir sürümünü benimsediğiniz takdirde, msal geri aramasını `scene:openURLContexts:` yerine öğesinin içine yerleştirin `UISceneDelegate` . MSAL `handleMSALResponse:sourceApplication:` her URL için yalnızca bir kez çağrılmalıdır.
 >
 > Daha fazla bilgi için [Apple belgelerine](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)bakın.
 
 #### <a name="step-2-register-a-url-scheme"></a>2. Adım: bir URL düzenini kaydetme
 
-İOS ve macOS için MSAL, aracıyı çağırmak ve ardından aracı yanıtını uygulamanıza döndürmek için URL 'Ler kullanır. Gidiş dönüş işleminin tamamlanabilmesi için, `Info.plist` dosyaya uygulamanız IÇIN bir URL düzeni kaydedin.
+İOS ve macOS için MSAL, aracıyı çağırmak ve ardından aracı yanıtını uygulamanıza döndürmek için URL 'Ler kullanır. Gidiş dönüş işleminin tamamlanabilmesi için, dosyaya uygulamanız için bir URL düzeni kaydedin `Info.plist` .
 
 Uygulamanıza bir düzen kaydetmek için: 
 
-1. Özel URL düzeninizi ile `msauth`önek yapın. 
+1. Özel URL düzeninizi ile önek yapın `msauth` . 
 
 1. Şemanızın sonuna paket tanımlayıcıyı ekleyin. Bu düzene uyun: 
 
    `$"msauth.(BundleId)"`
 
-   Burada, `BundleId` cihazınızı benzersiz olarak tanımlar. Örneğin, `BundleId` Ise `yourcompany.xforms`, URL şemanızın olması gerekir. `msauth.com.yourcompany.xforms`
+   Burada, `BundleId` cihazınızı benzersiz olarak tanımlar. Örneğin, ise, `BundleId` `yourcompany.xforms` URL şemanızın olması gerekir `msauth.com.yourcompany.xforms` .
   
    > [!NOTE]
-   > Bu URL şeması, aracının yanıtını aldığında uygulamanızı benzersiz bir şekilde tanımlayan yeniden yönlendirme URI 'sinin bir parçası olur. Biçimdeki `msauth.(BundleId)://auth` yeniden yönlendirme urı 'sinin [Azure Portal](https://portal.azure.com)uygulamanız için kayıtlı olduğundan emin olun.
+   > Bu URL şeması, aracının yanıtını aldığında uygulamanızı benzersiz bir şekilde tanımlayan yeniden yönlendirme URI 'sinin bir parçası olur. Biçimdeki yeniden yönlendirme URI 'sinin `msauth.(BundleId)://auth` [Azure Portal](https://portal.azure.com)uygulamanız için kayıtlı olduğundan emin olun.
   
    ```XML
    <key>CFBundleURLTypes</key>
@@ -346,12 +346,12 @@ Uygulamanıza bir düzen kaydetmek için:
 
 #### <a name="step-3-add-lsapplicationqueriesschemes"></a>3. Adım: Lsapplicationqueriesşemalarını ekleme
 
-Yüklenmişse `LSApplicationQueriesSchemes` Microsoft Authenticator uygulamasına çağrılara izin vermek için ekleyin.
+`LSApplicationQueriesSchemes`Yüklenmişse Microsoft Authenticator uygulamasına çağrılara izin vermek için ekleyin.
 
 > [!NOTE]
-> Uygulamanızın `msauthv3` Xcode 11 ve üzeri kullanılarak derlenmesi durumunda düzen gereklidir. 
+> `msauthv3`Uygulamanızın Xcode 11 ve üzeri kullanılarak derlenmesi durumunda düzen gereklidir. 
 
-Ekleme `LSApplicationQueriesSchemes`hakkında bir örnek aşağıda verilmiştir:
+Ekleme hakkında bir örnek aşağıda verilmiştir `LSApplicationQueriesSchemes` :
 
 ```XML 
 <key>LSApplicationQueriesSchemes</key>
@@ -363,7 +363,7 @@ Ekleme `LSApplicationQueriesSchemes`hakkında bir örnek aşağıda verilmiştir
 
 ### <a name="brokered-authentication-for-xamarinandroid"></a>Xamarin. Android için aracılı kimlik doğrulaması
 
-MSAL.NET, Android için aracıları desteklemez.
+Android 'de bir aracısının etkinleştirilmesi hakkında daha fazla bilgi için bkz. [Xamarin. Android üzerinde aracılı kimlik doğrulaması](msal-net-use-brokers-with-xamarin-apps.md#brokered-authentication-for-android).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

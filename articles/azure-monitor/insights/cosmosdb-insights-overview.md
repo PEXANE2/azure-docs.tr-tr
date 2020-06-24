@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 05000f4c670860be249d80b0e695a8a8760510be
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 3fd4bcd13b4d92d2c6e61d10ae9e62996b5dfcf5
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797587"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945503"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Izleyicisini keşfet
 
@@ -38,7 +38,7 @@ Bu özellik herhangi bir şeyi etkinleştirmenizi veya yapılandırmanızı gere
 
 Tüm aboneliklerinizde depolama hesaplarınızın kullanımını ve performansını görüntülemek için aşağıdaki adımları gerçekleştirin.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. **İzleme** araması yapın ve **izleyiciyi**seçin.
 
@@ -72,7 +72,7 @@ Sayfanın üst kısmındaki **hataların** yanı sıra çalışma kitabı şablo
 
 ![HTTP istek türüne göre dökümdeki hataların ekran görüntüsü](./media/cosmosdb-insights-overview/failures.png)
 
-| Kod      |  Açıklama       | 
+| Kod      |  Description       | 
 |-----------|:--------------------|
 | `200 OK`  | Aşağıdaki REST işlemlerinden biri başarılı oldu: </br>-Bir kaynağa ULAŞıN. </br> -Bir kaynağa koyun. </br> -Bir kaynakta GÖNDERIN. </br> -Saklı yordamı yürütmek için bir saklı yordam kaynağını GÖNDERIN.|
 | `201 Created` | Kaynak oluşturmak için bir gönderme işlemi başarılı. |
@@ -119,6 +119,10 @@ Bu deneyim, Azure izleyici çalışma kitabı şablonlarının üzerine inşa ed
 Çalışma kitapları, sizin için özel **Raporlarım** bölümünde veya kaynak grubuna erişimi olan herkesin erişebileceği **paylaşılan raporlar** bölümünde bir kaynak grubuna kaydedilir. Özel çalışma kitabını kaydettikten sonra başlatmak için çalışma kitabı galerisine gitmeniz gerekir.
 
 ![Çalışma kitabı galerisini komut çubuğundan Başlat](./media/cosmosdb-insights-overview/gallery.png)
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+Sorun giderme kılavuzu için, adanmış çalışma kitabı tabanlı Öngörüler [sorun giderme makalesine](troubleshoot-workbooks.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

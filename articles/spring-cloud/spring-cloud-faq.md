@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
-ms.openlocfilehash: 95260d9a15fdc32c9fddccbcf63ae9fa564fd36a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3c38a67b13a6b5c12767d38ecf2297d2417ebdb
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176779"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808402"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud hakkında SSS
 
@@ -24,21 +24,6 @@ Bu makalede, Azure Spring Cloud hakkında sık sorulan sorular yanıtlanmaktadı
 Azure Spring Cloud, Spring Cloud geliştiricileri için hizmet olarak platform (PaaS) sağlar. Azure Spring Cloud, uygulama altyapınızı, uygulama kodu ve iş mantığına odaklanabilmeniz için yönetir. Azure yay bulutu 'nda yerleşik olarak bulunan temel özellikler Eureka, config Server, hizmet kayıt defteri sunucusu, özetleme oluşturma hizmeti, mavi-yeşil dağıtımlar ve daha fazlasını içerir. Bu hizmet, geliştiricilerin uygulamalarını Azure Cosmos DB, MySQL için Azure veritabanı ve Redsıs için Azure önbelleği gibi diğer Azure hizmetleriyle bağlamasını da sağlar.
 
 Azure Spring Cloud, Azure Izleyici, Application Insights ve Log Analytics tümleştirerek geliştiriciler ve işleçler için uygulama tanılama deneyimini geliştirir.
-
-### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Azure yay bulutu hangi hizmet planlarını sunuyor?
-
-Azure yay bulutu, önizleme döneminde bir hizmet planı sunar.  Bir yay bulutu dağıtımı 16 vCPU çekirdeği ve 32 gigabayt (GB) bellek içerir.  Bir dağıtım içindeki her mikro hizmet örneği için üst sınır 8 GB bellek içeren 4 vCPU çekirdekdir.
-
-Kaynak | Miktar
-------- | -------
-Yay uygulaması başına uygulama örnekleri | 20
-Azure yay bulut hizmeti örneği başına toplam uygulama örnekleri | 500
-Abonelik başına bölge başına Azure yay bulut hizmeti örnekleri | 10
-Kalıcı birimler | 10 x 50 GBayt
-
-\*_Limiti yükseltmek için bir [destek bileti](https://azure.microsoft.com/support/faq/)açın._
-
-Daha fazla bilgi için bkz. [Azure DESTEĞI SSS](https://azure.microsoft.com/support/faq/).
 
 ### <a name="how-secure-is-azure-spring-cloud"></a>Azure yay bulutu ne kadar güvenlidir?
 
@@ -59,7 +44,10 @@ Doğu ABD, Batı ABD 2, Batı Avrupa ve Güneydoğu Asya.
 * `spring.application.name`, her uygulamayı oluşturmak için kullanılan uygulama adı tarafından geçersiz kılınır.
 * `server.port`Git deposundan yapılandırma dosyasında izin verilmez. Bunu yapılandırma dosyasına eklemek, büyük olasılıkla uygulamanızı diğer uygulamalardan veya internet 'ten ulaşılamaz hale işleyecek.
 * Azure portal ve Azure Resource Manager şablonları uygulama paketlerinin yüklenmesini desteklemez. Uygulama paketlerini yalnızca uygulamayı Azure CLı aracılığıyla dağıtarak yükleyebilirsiniz.
-* Kota sınırlamaları hakkında bilgi edinmek için bkz. [Azure yay bulutu hangi hizmet planlarına sunuyor?](#what-service-plans-does-azure-spring-cloud-offer).
+
+### <a name="what-pricing-tiers-are-available"></a>Hangi fiyatlandırma katmanları kullanılabilir? 
+Hangi birini kullanmalıyım ve her katmandaki sınırlar nelerdir?
+* Azure yay bulutu iki fiyatlandırma katmanı sunar: temel ve standart. Temel katman, geliştirme ve test için hedeflenir ve Azure yay bulutu 'nı deniyor. Standart katman, genel amaçlı üretim trafiği çalıştırmak için iyileştirilmiştir. Sınırlar ve özellik düzeyi karşılaştırması için bkz. [Azure Spring Cloud fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/spring-cloud/) .
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Nasıl geri bildirimde bulunabilirim ve rapor sorunları verebilir?
 
@@ -95,7 +83,7 @@ Evet.
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Azure yay bulut hizmeti örneğini sildiğimde/taşırken, uzantı kaynakları da silinir/taşınır mi?
 
-Bu, uzantı kaynaklarının ait olduğu kaynak sağlayıcılarının günlüğe bağlı olarak değişir. Bir `Microsoft.AppPlatform` örneğin uzantı kaynakları aynı ad alanına ait değildir, bu nedenle davranışlar farklı kaynak sağlayıcılarına göre farklılık gösterir. Örneğin, silme/taşıma işlemi, **Tanılama ayarları** kaynakları için basamaklanmaz. Silinen bir kaynak KIMLIĞIYLE yeni bir Azure yay bulutu örneği sağlandıysa veya önceki Azure yay bulutu örneği geri taşınırsa, önceki **Tanılama ayarları** kaynakları genişlemeye devam eder.
+Bu, uzantı kaynaklarının ait olduğu kaynak sağlayıcılarının günlüğe bağlı olarak değişir. Bir örneğin uzantı kaynakları `Microsoft.AppPlatform` aynı ad alanına ait değildir, bu nedenle davranışlar farklı kaynak sağlayıcılarına göre farklılık gösterir. Örneğin, silme/taşıma işlemi, **Tanılama ayarları** kaynakları için basamaklanmaz. Silinen bir kaynak KIMLIĞIYLE yeni bir Azure yay bulutu örneği sağlandıysa veya önceki Azure yay bulutu örneği geri taşınırsa, önceki **Tanılama ayarları** kaynakları genişlemeye devam eder.
 
 ## <a name="deployment"></a>Dağıtım
 

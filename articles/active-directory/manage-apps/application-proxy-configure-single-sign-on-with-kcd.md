@@ -3,25 +3,25 @@ title: Uygulama proxy 'Si ile çoklu oturum açma | Microsoft Docs
 description: Azure AD Uygulama Ara Sunucusu kullanarak çoklu oturum açma sağlamayı ele alır.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/13/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: H1Hack27Feb2017, it-pro
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 521982a5cf09e0da9c52bca2fe367432a1d29e57
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 69ac1e70684b2c4396bb15a439edab37a7e45040
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583131"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975597"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Uygulama proxy 'Si ile uygulamalarınıza çoklu oturum açma için Kerberos kısıtlanmış temsili
 
@@ -55,9 +55,9 @@ IWA uygulamaları için çoklu oturum açma ile çalışmaya başlamadan önce o
 Active Directory yapılandırması, uygulama proxy bağlayıcısının ve uygulama sunucusunun aynı etki alanında olup olmamasına bağlı olarak değişir.
 
 #### <a name="connector-and-application-server-in-the-same-domain"></a>Aynı etki alanında bağlayıcı ve uygulama sunucusu
-1. Active Directory ' de **Araçlar** > **Kullanıcılar ve bilgisayarlar**' a gidin.
+1. Active Directory ' de **Araçlar**  >  **Kullanıcılar ve bilgisayarlar**' a gidin.
 2. Bağlayıcıyı çalıştıran sunucuyu seçin.
-3. Sağ tıklayıp **Özellikler** > **temsili**' ni seçin.
+3. Sağ tıklayıp **Özellikler**  >  **temsili**' ni seçin.
 4. **Bu bilgisayara yalnızca belirtilen hizmetlere temsilci seçmek için güven**'i seçin. 
 5. **Herhangi bir kimlik doğrulama protokolünü kullan**'ı seçin.
 6. **Bu hesabın Temsilcili kimlik bilgileri Sunsunulabileceği hizmetler** ' in altında, uygulama sunucusunun SPN kimliği için değeri ekleyin. Bu, uygulama proxy bağlayıcısının AD içindeki kullanıcıları listede tanımlanan uygulamalarla taklit etmesine olanak sağlar.
@@ -66,9 +66,9 @@ Active Directory yapılandırması, uygulama proxy bağlayıcısının ve uygula
 
 #### <a name="connector-and-application-server-in-different-domains"></a>Farklı etki alanlarında bağlayıcı ve uygulama sunucusu
 1. Etki alanlarında KCD ile çalışmaya yönelik önkoşulların listesi için bkz. [etki alanları arasında Kerberos kısıtlanmış temsili](https://technet.microsoft.com/library/hh831477.aspx).
-2. Uygulama proxy `principalsallowedtodelegateto` 'sinden (bağlayıcı) Kerberos kimlik doğrulaması temsilcisini etkinleştirmek için Web uygulamasının hizmet hesabının (bilgisayar veya adanmış etki alanı kullanıcı hesabı) özelliğini kullanın. Uygulama sunucusu, bağlamında çalışıyor `webserviceaccount` ve temsilci sunucu. `connectorcomputeraccount` Etki alanındaki bir etki alanı denetleyicisinde (Windows Server 2012 R2 veya üstünü çalıştıran) aşağıdaki komutları çalıştırın `webserviceaccount`. Her iki hesap için düz adlar (UPN olmayan) kullanın.
+2. `principalsallowedtodelegateto`Uygulama proxy 'sinden (bağlayıcı) Kerberos kimlik doğrulaması temsilcisini etkinleştirmek için Web uygulamasının hizmet hesabının (bilgisayar veya adanmış etki alanı kullanıcı hesabı) özelliğini kullanın. Uygulama sunucusu, bağlamında çalışıyor `webserviceaccount` ve temsilci sunucu `connectorcomputeraccount` . Etki alanındaki bir etki alanı denetleyicisinde (Windows Server 2012 R2 veya üstünü çalıştıran) aşağıdaki komutları çalıştırın `webserviceaccount` . Her iki hesap için düz adlar (UPN olmayan) kullanın.
 
-   `webserviceaccount` Bir bilgisayar hesabı ise şu komutları kullanın:
+   `webserviceaccount`Bir bilgisayar hesabı ise şu komutları kullanın:
 
    ```powershell
    $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
@@ -78,7 +78,7 @@ Active Directory yapılandırması, uygulama proxy bağlayıcısının ve uygula
    Get-ADComputer webserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
    ```
 
-   `webserviceaccount` Bir kullanıcı hesabı ise şu komutları kullanın:
+   `webserviceaccount`Bir kullanıcı hesabı ise şu komutları kullanın:
 
    ```powershell
    $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
@@ -93,7 +93,7 @@ Active Directory yapılandırması, uygulama proxy bağlayıcısının ve uygula
 2. Uygulamanız kurumsal uygulamalar listesinde görüntülendikten sonra, seçin ve **Çoklu oturum açma**' ya tıklayın.
 3. Çoklu oturum açma modunu **Tümleşik Windows kimlik doğrulaması**olarak ayarlayın.  
 4. Uygulama sunucusunun **Iç uygulama SPN** 'sini girin. Bu örnekte, yayımlanmış uygulamamız için SPN, http/www. contoso. com ' dır. Bu SPN 'nin, bağlayıcının temsilci kimlik bilgileri sunabildiğinden hizmet listesinde olması gerekir. 
-5. Bağlayıcının Kullanıcı adına kullanması için **yetkilendirilmiş oturum açma kimliğini** seçin. Daha fazla bilgi için bkz. [farklı şirket içi ve bulut kimlikleriyle çalışma](#working-with-different-on-premises-and-cloud-identities)
+5. Bağlayıcıyı kullanıcılar adına kullanmak için **Temsilci Oturum Açma Kimliği**’ni seçin. Daha fazla bilgi için bkz. [farklı şirket içi ve bulut kimlikleriyle çalışma](#working-with-different-on-premises-and-cloud-identities)
 
    ![Gelişmiş uygulama yapılandırması](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 
@@ -119,8 +119,6 @@ SPNEGO 'i etkinleştirmek için:
     net stop WAPCSvc & net start WAPCSvc
     ```
 
-Kerberos hakkında daha fazla bilgi için bkz. [Kerberos kısıtlı temsili (KCD) hakkında bilgi edinmek](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd)istediğiniz.
-
 Windows olmayan uygulamalar, etki alanı e-posta adresleri yerine genellikle Kullanıcı Kullanıcı adları veya SAM hesap adları. Bu durum uygulamalarınız için geçerliyse, bulut kimliklerinizi uygulama kimliklerinizde bağlamak için yetkilendirilmiş oturum açma kimliği alanını yapılandırmanız gerekir. 
 
 ## <a name="working-with-different-on-premises-and-cloud-identities"></a>Farklı şirket içi ve bulut kimlikleriyle çalışma
@@ -128,8 +126,8 @@ Uygulama proxy 'Si, kullanıcıların bulutta ve şirket içinde tam olarak ayn�
 
 Bu özellik, farklı şirket içi ve bulut kimliklerine sahip olan birçok kuruluşun, kullanıcıların farklı Kullanıcı adları ve parolalar girmelerini gerektirmeden, buluttan şirket içi uygulamalara SSO sahip olmasını sağlar. Buna aşağıdaki kuruluşlar dahildir:
 
-* Birden çok etki alanına (joe@us.contoso.com, joe@eu.contoso.com) ve bulutta tek bir etki alanına sahip (joe@contoso.com).
-* Şirket içinde yönlendirilemeyen etki alanı adı (joe@contoso.usa) ve geçerli bir bulut.
+* Birden çok etki alanına ( joe@us.contoso.com , joe@eu.contoso.com ) ve bulutta tek bir etki alanına sahip ( joe@contoso.com ).
+* Şirket içinde yönlendirilemeyen etki alanı adı ( joe@contoso.usa ) ve geçerli bir bulut.
 * Etki alanı adlarını dahili olarak kullanma (ali)
 * Şirket içinde ve bulutta farklı diğer adlar kullanın. Örneğin, joe-johns@contoso.com vs.joej@contoso.com  
 
@@ -144,8 +142,8 @@ Temsil edilen oturum açma kimliği kullanılıyorsa, bu değer kuruluşunuzdaki
    ![Kullanıcıları tanımlama ekran görüntüsü-Kullanıcı asıl adı açılan kutusu](./media/application-proxy-configure-single-sign-on-with-kcd/app_proxy_sso_diff_id_connect_settings.png)  
 2. Değiştirmek istediğiniz uygulamanın uygulama yapılandırma ayarları ' nda, kullanılacak **atanmış oturum açma kimliğini** seçin:
 
-   * Kullanıcı asıl adı (örneğin, joe@contoso.com)
-   * Alternatif Kullanıcı asıl adı (örneğin, joed@contoso.local)
+   * Kullanıcı asıl adı (örneğin, joe@contoso.com )
+   * Alternatif Kullanıcı asıl adı (örneğin, joed@contoso.local )
    * Kullanıcı asıl adının Kullanıcı adı parçası (örneğin, ali)
    * Alternatif Kullanıcı asıl adının Kullanıcı adı bölümü (örneğin, joed)
    * Şirket içi SAM hesap adı (etki alanı denetleyicisi yapılandırmasına bağlıdır)
@@ -158,6 +156,3 @@ Ancak, bazı durumlarda, bu uygulama diğer HTTP yanıtlarına yanıt verdiğind
 
 * [Kerberos kısıtlanmış temsilciyi kullanmak için bir uygulama proxy uygulaması yapılandırma](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Uygulama Ara Sunucusu ile ilgili sorunları giderme](application-proxy-troubleshoot.md)
-
-
-En yeni haberler ve güncelleştirmeler için [Uygulama Ara Sunucusu bloguna](https://blogs.technet.com/b/applicationproxyblog/) göz atın

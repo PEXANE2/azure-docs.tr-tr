@@ -3,16 +3,16 @@ title: Giriş
 description: Azure 'da VMware tabanlı iş yüklerini dağıtmak ve yönetmek için Azure VMware çözümünün (AVS) özelliklerini ve avantajlarını öğrenin.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: e227b6c7c2f25fbf62f11c17dc62293e4fbd5267
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 9e3ab0abfdaa613a08675356bc5b01949e0381ae
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740335"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749687"
 ---
 # <a name="what-is-azure-vmware-solution-avs-preview"></a>Azure VMware çözümü (AVS) önizlemesi nedir?
 
-Azure VMware çözümü (AVS) size Azure 'da özel bulutlar sağlar. Özel bulutlar, adanmış çıplak Azure altyapısından oluşturulan vSphere kümelerini içerir. Özel bulut kümelerini, tek bir özel bulutta birden çok kümeye sahip olacak şekilde 3 ' ten 16 ana bilgisayar arasında ölçeklendirebilirsiniz. Tüm özel bulutlar vCenter Server, VSAN, vSphere ve NSX-T ile sağlanır. Şirket içi ortamlarınızdaki iş yüklerini geçirebilir, yeni sanal makineler oluşturabilir veya dağıtabilir ve özel bulutlarınızdaki Azure hizmetlerini kullanabilirsiniz.
+Azure VMware Çözümü (AVS) size Azure’da özel bulutlar sağlar. Özel bulutlar ayrılmış çıplak Azure altyapısından oluşturulan vSphere kümelerini içerir. Özel bulutları 3 ile 16 konak arasında ölçeklendirebilir ve tek özel bulutta birden fazla küme bulundurabilirsiniz. Tüm özel bulutlar vCenter Server, vSAN, vSphere ve NSX-T ile sağlanır. Şirket içi ortamlarınızdaki iş yükünü geçirebilir, yeni sanal makineler oluşturabilir veya dağıtabilir ve özel bulutlarınızda Azure hizmetlerini kullanabilirsiniz.
 
 AVS, geliştirme ve yükseltmelerin üzerinde doğrulanmasını ve test edilmesine yönelik bir VMware tarafından doğrulanan çözümdür. Özel bulut altyapısı ve yazılımı Microsoft tarafından yönetilir ve sürdürülür ve bu, özel bulutlarınızın iş yüklerini geliştirmeye ve çalıştırmaya odaklanmanızı sağlar.
 

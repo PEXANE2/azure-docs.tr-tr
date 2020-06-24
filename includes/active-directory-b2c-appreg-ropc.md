@@ -26,13 +26,13 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygul
 1. **Yönet**altında **kimlik doğrulaması**' nı seçin.
 1. **Yeni deneyimi deneyin** (gösteriliyorsa) seçeneğini belirleyin.
 1. **Varsayılan istemci türü**altında, uygulamayı ortak istemci olarak değerlendirmek için **Evet** ' i seçin. Bu ayar, ROPC akışı için gereklidir.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 1. Sol taraftaki menüden **bildirim** ' ı seçerek bildirim düzenleyicisini açın. 
 1. **Oauth2AllowImplicitFlow** özniteliğini *true*olarak ayarlayın:
     ```json
     "oauth2AllowImplicitFlow": true,
     ```
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 

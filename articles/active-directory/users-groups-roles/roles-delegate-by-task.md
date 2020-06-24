@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: reference
 ms.date: 05/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4837b654e5b538dda6f55eae9b15ddf0c5604693
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 3bc1546566e5bb79a207899fab7418480e5cfab0
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299477"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117888"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory 'de yönetici görevine göre yönetici rolleri
 
@@ -38,7 +38,7 @@ Uygulama ara sunucusunu devre dışı bırakma | Uygulama Yöneticisi |
 Bağlayıcı hizmetini indir | Uygulama Yöneticisi | 
 Tüm yapılandırmaları Oku | Uygulama Yöneticisi | 
 
-## <a name="b2c"></a>B2C
+## <a name="external-identitiesb2c"></a>Dış kimlikler/B2C
 
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
@@ -47,11 +47,11 @@ B2C uygulamaları oluşturma | Genel Yönetici |
 Kurumsal uygulamalar oluşturma | Bulut Uygulaması Yöneticisi | Uygulama Yöneticisi
 B2C ilkeleri oluşturun, okuyun, güncelleştirin ve silin | B2C ıEF Ilke Yöneticisi | 
 Kimlik sağlayıcıları oluşturun, okuyun, güncelleştirin ve silin | Dış kimlik sağlayıcısı Yöneticisi | 
-Parola sıfırlama Kullanıcı akışlarını oluşturma, okuma, güncelleştirme ve silme | B2C Kullanıcı akış Yöneticisi | 
-Profil düzenlemesi Kullanıcı akışlarını oluşturma, okuma, güncelleştirme ve silme | B2C Kullanıcı akış Yöneticisi | 
-Oturum açma Kullanıcı akışlarını oluşturma, okuma, güncelleştirme ve silme | B2C Kullanıcı akış Yöneticisi | 
-Kaydolma Kullanıcı akışı oluşturun, okuyun, güncelleştirin ve silin |B2C Kullanıcı akış Yöneticisi | 
-Kullanıcı özniteliklerini oluşturma, okuma, güncelleştirme ve silme | B2C Kullanıcı akışı öznitelik Yöneticisi | 
+Parola sıfırlama Kullanıcı akışlarını oluşturma, okuma, güncelleştirme ve silme | Dış KIMLIK Kullanıcı akış Yöneticisi | 
+Profil düzenlemesi Kullanıcı akışlarını oluşturma, okuma, güncelleştirme ve silme | Dış KIMLIK Kullanıcı akış Yöneticisi | 
+Oturum açma Kullanıcı akışlarını oluşturma, okuma, güncelleştirme ve silme | Dış KIMLIK Kullanıcı akış Yöneticisi | 
+Kaydolma Kullanıcı akışı oluşturun, okuyun, güncelleştirin ve silin |Dış KIMLIK Kullanıcı akış Yöneticisi | 
+Kullanıcı özniteliklerini oluşturma, okuma, güncelleştirme ve silme | Dış KIMLIK Kullanıcı akışı öznitelik Yöneticisi | 
 Kullanıcı oluşturun, okuyun, güncelleştirin ve silin | Kullanıcı Yöneticisi
 Tüm yapılandırmaları Oku | Genel okuyucu | 
 B2C denetim günlüklerini oku | Genel okuyucu ([bkz. belgeler](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
@@ -73,6 +73,14 @@ Görev | En az ayrıcalıklı rol | Ek roller
 Şirket özelliklerini yapılandırma | Genel Yönetici | 
 
 ## <a name="connect"></a>Bağlan
+
+Görev | En az ayrıcalıklı rol | Ek roller
+---- | --------------------- | ----------------
+Geçiş kimlik doğrulaması | Genel Yönetici  | 
+Tüm yapılandırmaları Oku | Genel okuyucu | Genel Yönetici  |
+Kesintisiz çoklu oturum açma | Genel Yönetici  | 
+
+## <a name="cloud-provisioning"></a>Bulut sağlama
 
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
@@ -109,7 +117,7 @@ Tüm yapılandırmaları Oku | Dizin okuyucuları | Varsayılan Kullanıcı rol�
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
 Azure AD Domain Services örneği oluştur | Genel Yönetici | 
-Tüm Azure AD Domain Services görevlerini gerçekleştirin | Azure AD DC Administrators grubu ([belgelere bakın](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-an-azure-ad-ds-managed-domain)) | 
+Tüm Azure AD Domain Services görevlerini gerçekleştirin | Azure AD DC Administrators grubu ([belgelere bakın](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
 Tüm yapılandırmaları Oku | Azure aboneliğinde AD DS hizmeti içeren okuyucu | 
 
 ## <a name="devices"></a>Cihazlar

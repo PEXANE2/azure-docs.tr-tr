@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: kumud
-ms.openlocfilehash: f1d4b02731f9e0f22fb1eaba03e55e49f84cd87a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33a3c41f49833d669fd94ccf1e22afed971e544b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76845086"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737980"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Azure REST API kullanarak Azure ağ Izleyicisi ile bağlantı sorunlarını giderme
 
@@ -132,7 +132,7 @@ null
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki yanıt, önceki örnekteki bir örnektir.  Bu yanıtta, `ConnectionStatus` **ulaşılamaz**olur. Tüm yoklamaların başarısız olduğunu görebilirsiniz. Bağlantı noktası 80 ' de gelen trafiği engellemek için yapılandırılmış, Kullanıcı tarafından `NetworkSecurityRule` yapılandırılan adlandırılmış **UserRule_Port80**nedeniyle bağlantı Sanal Gereç üzerinde başarısız oldu. Bu bilgiler, bağlantı sorunlarını araştırmak için kullanılabilir.
+Aşağıdaki yanıt, önceki örnekteki bir örnektir.  Bu yanıtta, `ConnectionStatus` **ulaşılamaz**olur. Tüm yoklamaların başarısız olduğunu görebilirsiniz. `NetworkSecurityRule`Bağlantı noktası 80 ' de gelen trafiği engellemek için yapılandırılmış, Kullanıcı tarafından yapılandırılan adlandırılmış **UserRule_Port80**nedeniyle bağlantı Sanal Gereç üzerinde başarısız oldu. Bu bilgiler, bağlantı sorunlarını araştırmak için kullanılabilir.
 
 ```json
 {
@@ -248,7 +248,7 @@ null
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki örnekte,, `connectionStatus` **ulaşılamaz**olarak gösterilir. `hops` Ayrıntılarda, trafiğin bir `issues` `UserDefinedRoute`nedeniyle engellenmiş olduğunu görebilirsiniz.
+Aşağıdaki örnekte,, `connectionStatus` **ulaşılamaz**olarak gösterilir. `hops`Ayrıntılarda, `issues` trafiğin bir nedeniyle engellenmiş olduğunu görebilirsiniz `UserDefinedRoute` .
 
 ```json
 {

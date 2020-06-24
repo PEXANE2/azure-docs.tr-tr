@@ -1,14 +1,14 @@
 ---
 title: Azure İlkesine Genel Bakış
 description: Azure İlkesi, Azure ortamında ilke tanımlarınızı oluşturmak, atamak ve yönetmek için kullandığınız bir Azure hizmetidir.
-ms.date: 04/21/2020
+ms.date: 06/17/2020
 ms.topic: overview
-ms.openlocfilehash: 4ec09c8a38e22fc14980422bfe9a80a2bf3edda4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e204a4eeff547877a48789eba6f1b8cac017d08e
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097379"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944670"
 ---
 # <a name="what-is-azure-policy"></a>Azure İlkesi nedir?
 
@@ -158,6 +158,8 @@ Bu senaryoda **initiativeC** için girişim parametreleri tanımlanırken üç s
 
 Bir girişim tanımında değer seçenekleri oluştururken, girişim ataması sırasında, listenin bir parçası olmadığından farklı bir değer girmeyebilir.
 
+Girişim tanımlarının yapıları hakkında daha fazla bilgi edinmek için [girişim tanımı yapısını](./concepts/initiative-definition-structure.md)inceleyin.
+
 ### <a name="assignments"></a>Atamalar
 
 Atama, belirli bir kapsamda gerçekleşmesi için atanmış bir ilke tanımıdır veya girişimidir. Bu kapsam bir [Yönetim grubundan](../management-groups/overview.md) tek bir kaynağa kadar değişebilir. _Kapsam_ terimi, tanımın atandığı tüm kaynakları, kaynak grupları, abonelikleri veya Yönetim gruplarını ifade eder. Atamalar tüm alt kaynaklar tarafından devralınır. Bu tasarım, kaynak grubuna uygulanan bir tanımın bu kaynak grubundaki kaynaklara da uygulanacağını gösterir. Ancak, bir alt kapsamı atamadan dışlayabilirsiniz.
@@ -166,7 +168,7 @@ Atama, belirli bir kapsamda gerçekleşmesi için atanmış bir ilke tanımıdı
 
 Başka bir örnekte, yönetim grubu düzeyinde bir kaynak türü izin verilenler listesi tanımına atamak isteyebilirsiniz. Daha sonra bir alt yönetim grubunda veya doğrudan abonelikler üzerinde daha fazla izin veren bir ilke (daha fazla kaynak türüne izin vererek) atarsınız. Ancak, Azure Ilkesi açık bir reddetme sistemi olduğundan bu örnek çalışmaz. Bunun yerine, alt yönetim grubunu veya aboneliğini yönetim grubu düzeyi atamasından çıkarmanız gerekir. Daha sonra, alt yönetim grubu veya abonelik düzeyinde daha fazla izin veren tanımını atayın. Bir kaynağın herhangi bir atama reddedilmesiyle sonuçlanırsa, kaynağa izin vermek için tek yol reddetme atamasını değiştirmektir.
 
-Portal aracılığıyla atamaları ayarlama hakkında daha fazla bilgi için bkz. [Azure ortamınızda uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma](assign-policy-portal.md). [PowerShell](assign-policy-powershell.md) ve [Azure CLI](assign-policy-azurecli.md) adımları da mevcuttur.
+Portal aracılığıyla atamaları ayarlama hakkında daha fazla bilgi için bkz. [Azure ortamınızda uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma](./assign-policy-portal.md). [PowerShell](./assign-policy-powershell.md) ve [Azure CLI](./assign-policy-azurecli.md) adımları da mevcuttur. Atama yapısı hakkında bilgi için bkz. atama [yapısı](./concepts/assignment-structure.md).
 
 ## <a name="maximum-count-of-azure-policy-objects"></a>Maksimum Azure Ilke nesnesi sayısı
 

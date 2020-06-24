@@ -31,7 +31,7 @@ Uygulama kaydı tamamlandıktan sonra, örtük verme akışını etkinleştirin:
 1. **Yönet**altında **kimlik doğrulaması**' nı seçin.
 1. **Yeni deneyimi deneyin** (gösteriliyorsa) seçeneğini belirleyin.
 1. **Örtük izin**' ın altında, **erişim belirteçleri** ve **Kimlik belirteçleri** onay kutularını seçin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
@@ -42,4 +42,4 @@ Uygulama kaydı tamamlandıktan sonra, örtük verme akışını etkinleştirin:
 1. Uygulama için bir ad girin. Örneğin, *testapp1*.
 1. **Web uygulaması/Web API 'si**için **Evet**' i seçin.
 1. **Yanıt URL 'si**için şunu girin`https://jwt.ms`
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.

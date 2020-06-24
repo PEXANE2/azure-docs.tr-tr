@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 03/16/2020
+ms.date: 06/17/2020
 ms.custom: tracking-python
-ms.openlocfilehash: adaf385293d48f76e5daaccf3b42895c4acf5dfc
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8ad3ec9f257289abab1c2d881a798a43a2c1d8ad
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559382"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976770"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Özel bir Docker temel görüntüsü kullanarak model dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -175,7 +175,7 @@ Mevcut görüntüleri bir Azure Container Registry karşıya yükleme hakkında 
 
 Özel bir görüntü kullanmak için aşağıdaki bilgilere ihtiyacınız vardır:
 
-* __Görüntü adı__. Örneğin, `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` Microsoft tarafından sunulan temel bir Docker görüntüsünün yoludur.
+* __Görüntü adı__. Örneğin, `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest` Microsoft tarafından sunulan temel bir Docker görüntüsünün yoludur.
 
     > [!IMPORTANT]
     > Oluşturduğunuz özel görüntüler için görüntüyle birlikte kullanılan tüm etiketleri eklediğinizden emin olun. Örneğin, görüntünüz gibi belirli bir etiketle oluşturulduysa `:v1` . Görüntüyü oluştururken belirli bir etiket kullanmıyorsanız, bir etiketi `:latest` uygulandı.
@@ -205,15 +205,7 @@ ONNX çalışma zamanı temel görüntüleri hakkında daha fazla bilgi için Gi
 > [!TIP]
 > Bu görüntüler genel kullanıma sunulduğundan, bunları kullanırken bir adres, Kullanıcı adı veya parola sağlamanız gerekmez.
 
-Daha fazla bilgi için bkz. [Azure Machine Learning kapsayıcılar](https://github.com/Azure/AzureML-Containers).
-
-> [!TIP]
->__Modelinize Azure Machine Learning işlem üzerinde eğitim varsa__, __sürüm 1.0.22 veya__ Azure Machine Learning SDK 'sının bir üstünü kullanarak eğitim sırasında bir görüntü oluşturulur. Bu görüntünün adını saptamak için kullanın `run.properties["AzureML.DerivedImageName"]` . Aşağıdaki örnek, bu görüntünün nasıl kullanılacağını gösterir:
->
-> ```python
-> # Use an image built during training with SDK 1.0.22 or greater
-> image_config.base_image = run.properties["AzureML.DerivedImageName"]
-> ```
+Daha fazla bilgi için bkz. GitHub 'da [Azure Machine Learning kapsayıcıları](https://github.com/Azure/AzureML-Containers) deposu.
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK ile görüntü kullanma
 
@@ -228,7 +220,7 @@ from azureml.core.environment import Environment
 myenv = Environment(name="myenv")
 # Enable Docker and reference an image
 myenv.docker.enabled = True
-myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
+myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest"
 ```
 
 Çalışma alanınızda olmayan __özel bir kapsayıcı kayıt defterinden__ bir görüntü kullanmak için, `docker.base_image_registry` deponun adresini ve Kullanıcı adını ve parolayı belirtmek için öğesini kullanmanız gerekir:
@@ -289,7 +281,7 @@ Machine Learning CLı kullanarak bir modeli dağıtmadan önce, özel görüntü
         "docker": {
             "arguments": [],
             "baseDockerfile": null,
-            "baseImage": "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda",
+            "baseImage": "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest",
             "enabled": false,
             "sharedVolumes": true,
             "shmSize": null

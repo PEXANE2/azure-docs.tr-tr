@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: d470864dd12f5ded511f9a6e02b3e4cab0ee66d7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 477170cf3c2bab54efc5ef74495f39fb89f62c77
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84346083"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976702"
 ---
 # <a name="azure-blob-storage-reference"></a>Azure Blob depolama başvurusu
 
@@ -67,8 +67,8 @@ Aşağıdaki tabloda, Azure Blob depolama Python API 'Leri için başvuru ve ör
 
 |  Sürüm  | Başvuru belgeleri | Paket | Hızlı Başlangıç |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Python için Azure depolama Blobları istemci kitaplığı](/python/api/overview/azure/storage-blob-readme) | [Paket (Pypı)](https://pypi.org/project/azure-storage-blob/) | [Hızlı başlangıç: Python V12 SDK ile Blobları yönetme](/azure/storage/blobs/storage-quickstart-blobs-python) |
-| 2.x | [Azure-Storage-blob](/python/api/azure-storage-blob/?view=azure-python-previous) | [Paket (Pypı)](https://pypi.org/project/azure-storage-blob/2.1.0/) | [Hızlı başlangıç: Python v 2.1 SDK ile Blobları yönetme](/azure/storage/blobs/storage-quickstart-blobs-python-legacy) |
+| 12. x | [Python için Azure Storage istemci kitaplıkları V12](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [Paket (Pypı)](https://pypi.org/project/azure-storage-blob/) | [Hızlı başlangıç: Python V12 SDK ile Blobları yönetme](/azure/storage/blobs/storage-quickstart-blobs-python) |
+| 2.x | [Python için Azure Storage istemci kitaplıkları v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [Paket (Pypı)](https://pypi.org/project/azure-storage-blob/2.1.0/) | [Hızlı başlangıç: Python v 2.1 SDK ile Blobları yönetme](/azure/storage/blobs/storage-quickstart-blobs-python-legacy) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript istemci kitaplıkları
 
@@ -76,8 +76,8 @@ Aşağıdaki tabloda, Azure Blob depolama JavaScript API 'Leri için başvuru ve
 
 |  Sürüm  | Başvuru belgeleri | Paket | Hızlı Başlangıç |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [JavaScript için Azure Depolama Blobu istemci kitaplığı](/javascript/api/overview/azure/storage-blob-readme) | [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-blob) | [Hızlı başlangıç: node. js ' de JavaScript V12 SDK ile Blobları yönetme](/azure/storage/blobs/storage-quickstart-blobs-nodejs) <br/> [Hızlı başlangıç: tarayıcıda JavaScript V12 SDK ile Blobları yönetme](/azure/storage/blobs/quickstart-blobs-javascript-browser) |
-| 10. x | [@azure/storage-blob](/javascript/api/@azure/storage-blob/?view=azure-node-legacy) | [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0) | [Hızlı başlangıç: node. js ' de JavaScript ile v10 arasındaki SDK ile Blobları yönetme](/azure/storage/blobs/storage-quickstart-blobs-nodejs-legacy) <br/> [Hızlı başlangıç: tarayıcıda JavaScript ile v10 arasındaki SDK ile Blobları yönetme](/azure/storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy)|
+| 12. x | [JavaScript için Azure Depolama Blobu istemci kitaplığı](/javascript/api/overview/azure/storage-blob-readme) | [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-blob) | [Hızlı başlangıç: Node.jsiçindeki JavaScript V12 SDK ile Blobları yönetme](/azure/storage/blobs/storage-quickstart-blobs-nodejs) <br/> [Hızlı başlangıç: tarayıcıda JavaScript V12 SDK ile Blobları yönetme](/azure/storage/blobs/quickstart-blobs-javascript-browser) |
+| 10. x | [@azure/storage-blob](/javascript/api/@azure/storage-blob/?view=azure-node-legacy) | [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0) | [Hızlı başlangıç: Node.jsiçindeki JavaScript ile v10 arasındaki SDK ile Blobları yönetme](/azure/storage/blobs/storage-quickstart-blobs-nodejs-legacy) <br/> [Hızlı başlangıç: tarayıcıda JavaScript ile v10 arasındaki SDK ile Blobları yönetme](/azure/storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy)|
 
 ## <a name="rest-apis"></a>REST API'leri
 
@@ -110,6 +110,6 @@ Aşağıdaki tablo, başvuru içeriğinin en son sürümüne bağlantılar içer
 |  3.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-3.8.0) |
 |  2.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-2.8.0) |
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
 - [Azure CLI](/cli/azure/storage)

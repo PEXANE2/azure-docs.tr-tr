@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 32d978ee766f6dbe95bd7158b8060a0302ef8206
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 48501a2796f4d826a20af559058490a14785b53e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189071"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738643"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Açık kaynaklı araçlar kullanarak sanal makinelerinizden gelen ve giden ağ trafiği düzenlerini görselleştirin
 
@@ -35,7 +35,7 @@ Azure 'daki bir VM üzerinde dağıtılan basit bir Web uygulamanız varsa, akı
 
 ### <a name="install-capanalysis"></a>CapAnalysis 'i yükler
 
-Bir sanal makineye CapAnalysis yüklemek için buradaki https://www.capanalysis.net/ca/how-to-install-capanalysisresmi yönergelere bakabilirsiniz.
+Bir sanal makineye CapAnalysis yüklemek için buradaki resmi yönergelere bakabilirsiniz https://www.capanalysis.net/ca/how-to-install-capanalysis .
 Uzaktan erişim CapAnalysis için, yeni bir gelen güvenlik kuralı ekleyerek sanal makinenizde 9877 numaralı bağlantı noktasını açmanız gerekir. Ağ güvenlik gruplarında kural oluşturma hakkında daha fazla bilgi için, [mevcut BIR NSG 'de kurallar oluşturma](../virtual-network/manage-network-security-group.md#create-a-security-rule)bölümüne bakın. Kural başarıyla eklendikten sonra, CapAnalysis adresinden erişim sağlayabilmelisiniz`http://<PublicIP>:9877`
 
 ### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>Paket yakalama oturumu başlatmak için Azure ağ Izleyicisi 'ni kullanma
@@ -78,13 +78,13 @@ CapAnalysis, her biri farklı bir perspektiften analiz sağlayan, paket yakalama
 
     ![coğrafi Haritayı görmek][8]
 
-1. FilTReleri
+1. Filtreler
 
     CapAnalysis, belirli paketlerin hızlı analizine yönelik bir filtre kümesi sağlar. Örneğin, bu trafik alt kümesiyle ilgili Öngörüler elde etmek için verileri protokole göre filtrelemeyi seçebilirsiniz.
 
     ![filtreler][11]
 
-    Tüm [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about) CapAnalysis ' özellikleri hakkında daha fazla bilgi için ziyaret edin.
+    [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about)Tüm CapAnalysis ' özellikleri hakkında daha fazla bilgi için ziyaret edin.
 
 ## <a name="conclusion"></a>Sonuç
 

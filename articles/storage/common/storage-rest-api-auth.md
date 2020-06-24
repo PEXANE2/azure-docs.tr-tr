@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozge
 ms.subservice: common
-ms.openlocfilehash: f5c6125b850062450516e7fc0b19c2e0d5d6f577
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee37745b35071893ff504c56a4a6883b589f1d0e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77916073"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804631"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>Paylaşılan anahtar yetkilendirmesi ile REST API işlemlerini çağırma
 
@@ -65,7 +65,7 @@ REST API çağrısı, istemci tarafından yapılan bir istekten ve hizmet taraf�
 
 **Istek yöntemi**: get. Bu fiil, istek nesnesinin bir özelliği olarak belirttiğiniz HTTP yöntemidir. Bu fiil için diğer değerler, aradığınız API 'ye bağlı olarak HEAD, PUT ve DELETE ' i içerir.
 
-**İstek URI 'si**: `https://myaccount.blob.core.windows.net/?comp=list`.İstek URI 'SI BLOB depolama hesabı uç `http://myaccount.blob.core.windows.net` noktasından ve kaynak dizeden `/?comp=list`oluşturulur.
+**İstek URI 'si**: `https://myaccount.blob.core.windows.net/?comp=list` .İstek URI 'SI BLOB depolama hesabı uç noktasından `http://myaccount.blob.core.windows.net` ve kaynak dizeden oluşturulur `/?comp=list` .
 
 [URI parametreleri](/rest/api/storageservices/List-Containers2#uri-parameters): listcontainers çağrılırken kullanabileceğiniz ek sorgu parametreleri vardır. Bu parametrelerin birkaç ikisi, filtreleme için kullanılan çağrı (saniye cinsinden) ve *ön ek*için *zaman aşımındır* .
 
@@ -102,14 +102,14 @@ Bir HttpRequestMessage nesnesi olan isteği oluşturmak için Program.cs içinde
 
 İhtiyaç duyduğunuz bazı temel bilgiler:
 
-- ListContainers için **yöntemi** `GET`. Bu değer, istek örneği oluşturulurken ayarlanır.
-- **Kaynak** , hangi API 'nin ÇAĞRıLDıĞıNı belirten URI 'nin sorgu bölümüdür, yani değer `/?comp=list`. Daha önce belirtildiği gibi, kaynak, [Listcontainers API 'si](/rest/api/storageservices/List-Containers2)hakkındaki bilgileri gösteren başvuru belgeleri sayfasında bulunur.
-- URI, bu depolama hesabı için blob hizmeti uç noktası oluşturularak ve kaynağı birleştirerek oluşturulur. **İstek URI 'si** değeri sona erer `http://contosorest.blob.core.windows.net/?comp=list`.
+- ListContainers için **yöntemi** `GET` . Bu değer, istek örneği oluşturulurken ayarlanır.
+- **Kaynak** , hangi API 'nin ÇAĞRıLDıĞıNı belirten URI 'nin sorgu bölümüdür, yani değer `/?comp=list` . Daha önce belirtildiği gibi, kaynak, [Listcontainers API 'si](/rest/api/storageservices/List-Containers2)hakkındaki bilgileri gösteren başvuru belgeleri sayfasında bulunur.
+- URI, bu depolama hesabı için blob hizmeti uç noktası oluşturularak ve kaynağı birleştirerek oluşturulur. **İstek URI 'si** değeri sona erer `http://contosorest.blob.core.windows.net/?comp=list` .
 - ListContainers için **Requestbody** null ve ek **üst bilgi**yok.
 
 Farklı API 'Ler, *IfMatch*gibi geçirilecek başka parametrelere sahip olabilir. PutBlob 'U çağırırken ifMatch 'i kullanmanın bir örneği. Bu durumda, ifMatch öğesini eTag ile ayarlarsınız ve yalnızca sağladığınız eTag, blobdaki geçerli eTag ile eşleşiyorsa blob 'u günceller. ETag 'i almasından bu yana başka biri blobu güncelleştirdiyse, yaptıkları değişiklikler geçersiz kılınmayacaktır.
 
-İlk olarak, `uri` ve öğesini ayarlayın `payload`.
+İlk olarak, `uri` ve öğesini ayarlayın `payload` .
 
 ```csharp
 // Construct the URI. It will look like this:
@@ -121,7 +121,7 @@ String uri = string.Format("http://{0}.blob.core.windows.net?comp=list", storage
 Byte[] requestPayload = null;
 ```
 
-Sonra, isteği örnek oluşturun ve URI 'yi sağlamak için `GET` metodunu olarak ayarlar.
+Sonra, isteği örnek oluşturun ve URI 'yi sağlamak için metodunu olarak ayarlar `GET` .
 
 ```csharp
 // Instantiate the request message with a null payload.
@@ -130,7 +130,7 @@ using (var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri)
 {
 ```
 
-Ve `x-ms-date` `x-ms-version`için istek üst bilgilerini ekleyin. Kodda bu yer, çağrı için gereken ek istek üstbilgilerini de eklediğiniz yerdir. Bu örnekte, ek üst bilgi yok. Ek üstbilgilere geçen bir API örneği, kapsayıcı ACL 'yi ayarlama işlemidir. Bu API çağrısı "x-MS-blob-Public-Access" adlı bir üst bilgi ve erişim düzeyi için değer ekler.
+Ve için istek üst bilgilerini `x-ms-date` ekleyin `x-ms-version` . Kodda bu yer, çağrı için gereken ek istek üstbilgilerini de eklediğiniz yerdir. Bu örnekte, ek üst bilgi yok. Ek üstbilgilere geçen bir API örneği, kapsayıcı ACL 'yi ayarlama işlemidir. Bu API çağrısı "x-MS-blob-Public-Access" adlı bir üst bilgi ve erişim düzeyi için değer ekler.
 
 ```csharp
 // Add the request headers for x-ms-date and x-ms-version.
@@ -149,7 +149,7 @@ httpRequestMessage.Headers.Authorization = AzureStorageAuthenticationHelper.GetA
     storageAccountName, storageAccountKey, now, httpRequestMessage);
 ```
 
-Bu noktada, `httpRequestMessage` yetkilendirme üst bilgileriyle Rest isteği tamamlanma bilgilerini içerir.
+Bu noktada, `httpRequestMessage` Yetkilendirme üst BILGILERIYLE Rest isteği tamamlanma bilgilerini içerir.
 
 ## <a name="send-the-request"></a>İsteği gönder
 
@@ -300,7 +300,7 @@ StringToSign = VERB + "\n" +
                CanonicalizedResource;  
 ```
 
-Bu alanların çoğu nadiren kullanılır. BLOB depolama için, FIIL, MD5, içerik uzunluğu, kurallı üstbilgileri ve kurallı kaynağını belirtirsiniz. Diğerlerinin boş bırakabilmesini sağlayabilirsiniz (ancak `\n` bunları boş olarak bilir).
+Bu alanların çoğu nadiren kullanılır. BLOB depolama için, FIIL, MD5, içerik uzunluğu, kurallı üstbilgileri ve kurallı kaynağını belirtirsiniz. Diğerlerinin boş bırakabilmesini sağlayabilirsiniz (ancak bunları `\n` boş olarak bilir).
 
 CanonicalizedHeaders ve CanonicalizedResource nedir? İyi soru. Aslında kurallı ne anlama geliyor? Microsoft Word bunu bir sözcük olarak tanımaz. Bu işlem, [kurallı kullanım hakkında bilgi](https://en.wikipedia.org/wiki/Canonicalization) *içerir: bilgisayar bilimi 'nde, kurallı kullanım (bazen standartlaştırma veya normalleştirme), birden fazla olası temsili olan verileri "standart", "normal" veya kurallı bir biçimde dönüştürmeye yönelik bir işlemdir.* Normal konuşurken bu, öğelerin listesini (örneğin, kurallı üst bilgileri gibi) almak ve bunları gerekli bir biçimde standartlaştırmanız anlamına gelir. Temel olarak, Microsoft bir biçimde karar vermiştir ve bunu değiştirmeniz gerekir.
 
@@ -308,7 +308,7 @@ Yetkilendirme üst bilgisini oluşturmak için gerektiğinden, bu iki kurallı a
 
 ### <a name="canonicalized-headers"></a>Kurallı üst bilgileri
 
-Bu değeri oluşturmak için "x-MS-" ile başlayan üst bilgileri alın ve bunları sıralayın, sonra bunları tek bir dizede birleştirilmiş bir `[key:value\n]` örnek dizesi olarak biçimlendirin. Bu örnekte, kurallı üstbilgileri şöyle görünür:
+Bu değeri oluşturmak için "x-MS-" ile başlayan üst bilgileri alın ve bunları sıralayın, sonra bunları `[key:value\n]` tek bir dizede birleştirilmiş bir örnek dizesi olarak biçimlendirin. Bu örnekte, kurallı üstbilgileri şöyle görünür:
 
 ```
 x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
@@ -353,7 +353,7 @@ private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMess
 
 ### <a name="canonicalized-resource"></a>Kurallı kaynağı
 
-İmza dizesinin bu bölümü, isteğin hedeflediği depolama hesabını temsil eder. Istek URI 'sinin `<http://contosorest.blob.core.windows.net/?comp=list>`gerçek hesap adıyla (`contosorest` bu durumda) olduğunu unutmayın. Bu örnekte, bu döndürülür:
+İmza dizesinin bu bölümü, isteğin hedeflediği depolama hesabını temsil eder. Istek URI 'sinin `<http://contosorest.blob.core.windows.net/?comp=list>` gerçek hesap adıyla ( `contosorest` Bu durumda) olduğunu unutmayın. Bu örnekte, bu döndürülür:
 
 ```
 /contosorest/\ncomp:list

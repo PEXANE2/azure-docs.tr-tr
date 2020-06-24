@@ -25,9 +25,9 @@ Bu proje aşağıdaki şablonları içerir:
 
 Örneği kullanmak için:
 
-1. Yerel makinenizde depoyu kopyalayın. Bir şablon klasörü `/ocean_blue` veya `/slate_gray`seçin.
-1. Şablon klasörü ve `/assets` klasörü altındaki tüm dosyaları, önceki bölümlerde açıklandığı gibi BLOB depolama alanına yükleyin.
-1. Ardından, her bir `\*.html` dosyayı veya `/ocean_blue` `/slate_gray`kökündeki her birini açın, göreli URL 'lerin tüm örneklerini adım 2 ' de karşıya yüklediğiniz CSS, resim ve yazı tipi dosyalarının URL 'leriyle değiştirin. Örneğin:
+1. Yerel makinenizde depoyu kopyalayın. Bir şablon klasörü `/ocean_blue` veya seçin `/slate_gray` .
+1. Şablon klasörü ve klasörü altındaki tüm dosyaları `/assets` , önceki bölümlerde açıklandığı gibi BLOB depolama alanına yükleyin.
+1. Ardından, her `\*.html` bir dosyayı veya kökündeki her birini açın `/ocean_blue` `/slate_gray` , göreli URL 'lerin tüm örneklerini adım 2 ' de karşıya yüklediğiniz CSS, resim ve yazı tipi dosyalarının URL 'leriyle değiştirin. Örneğin:
     ```html
     <link href="./css/assets.css" rel="stylesheet" type="text/css" />
     ```
@@ -36,6 +36,6 @@ Bu proje aşağıdaki şablonları içerir:
     ```html
     <link href="https://your-storage-account.blob.core.windows.net/your-container/css/assets.css" rel="stylesheet" type="text/css" />
     ```
-1. `\*.html` Dosyaları kaydedin ve BLOB depolamaya yükleyin.
+1. Dosyaları kaydedin `\*.html` ve BLOB depolamaya yükleyin.
 1. Şimdi, daha önce belirtildiği gibi, HTML dosyanıza işaret eden ilkeyi değiştirin.
-1. Eksik yazı tiplerini, görüntüleri veya CSS 'yi görürseniz, uzantılar ilkesinde ve \*. html dosyalarında başvurularınızı kontrol edin.
+1. Eksik yazı tiplerini, görüntüleri veya CSS 'yi görürseniz, uzantılar ilkesinde ve. html dosyalarında başvurularınızı kontrol edin \* .

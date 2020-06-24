@@ -16,7 +16,7 @@ ms.locfileid: "78185853"
 
 JavaScript kullanarak uygulamanızın arabirimini özelleştirirken aşağıdaki yönergeleri izleyin:
 
-- `<a>` HTML öğelerine bir tıklama olayı bağlamayın.
+- HTML öğelerine bir tıklama olayı bağlamayın `<a>` .
 - Azure AD B2C koduna veya açıklamalara bağımlılık almaz.
 - Azure AD B2C HTML öğelerinin sırasını veya hiyerarşisini değiştirmeyin. Kullanıcı arabirimi öğelerinin sırasını denetlemek için bir Azure AD B2C İlkesi kullanın.
 - Şu noktalara sahip herhangi bir yeniden kullanılabilir hizmeti çağırabilirsiniz:
@@ -28,6 +28,6 @@ JavaScript kullanarak uygulamanızın arabirimini özelleştirirken aşağıdaki
     - Azure AD B2C, jQuery 'in belirli bir sürümünü kullanır. JQuery 'in başka bir sürümünü eklemeyin. Aynı sayfada birden fazla sürüm kullanılması sorunlara neden olur.
     - RequireJS kullanmak desteklenmez.
     - Çoğu JavaScript çerçevesi Azure AD B2C tarafından desteklenmez.
-- Azure AD B2C ayarları, `window.CONTENT` geçerli kullanıcı arabirimi dili `window.SETTINGS`gibi nesneler çağırarak okunabilir. Bu nesnelerin değerini değiştirmeyin.
+- Azure AD B2C ayarları `window.SETTINGS` , `window.CONTENT` geçerli kullanıcı arabirimi dili gibi nesneler çağırarak okunabilir. Bu nesnelerin değerini değiştirmeyin.
 - Azure AD B2C hata iletisini özelleştirmek için, bir ilkede yerelleştirme kullanın.
 - Bir ilke kullanılarak herhangi bir şey elde edilebildiği takdirde, genellikle önerilen yoldur.

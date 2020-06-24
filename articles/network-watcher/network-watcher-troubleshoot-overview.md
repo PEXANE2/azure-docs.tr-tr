@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 199b4fc762919c2e3988f477c14d09fc23b0136b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acb7ff5c0862ceff8c73eaca92cc7000220eca41
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840698"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738660"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure ağ Izleyicisi 'nde kaynak sorunlarını gidermeye giriş
 
@@ -47,33 +47,33 @@ Aşağıdaki tablolarda, kullanılabilir olan farklı hata türleri (önceki lis
 
 ### <a name="gateway"></a>Ağ geçidi
 
-| Hata Türü | Neden | Günlük|
+| Hata Türü | Nedeni | Günlük|
 |---|---|---|
 | NoFault | Hiçbir hata algılanmadığında |Yes|
-| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı |Hayır|
-| PlannedMaintenance |  Ağ Geçidi örneği bakımda  |Hayır|
-| UserDrivenUpdate | Bu hata bir kullanıcı güncelleştirmesi devam ederken oluşur. Güncelleştirme bir yeniden boyutlandırma işlemi olabilir. | Hayır |
-| VipUnResponsive | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu yoklama hatası nedeniyle ulaşılamadığında oluşur. | Hayır |
-| PlatformInActive | Platform ile ilgili bir sorun var. | Hayır|
-| ServiceNotRunning | Temel alınan hizmet çalışmıyor. | Hayır|
-| Noconnectionsdökümforgateway | Ağ geçidinde bağlantı yok. Bu hata yalnızca bir uyarıdır.| Hayır|
+| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı |No|
+| PlannedMaintenance |  Ağ Geçidi örneği bakımda  |No|
+| UserDrivenUpdate | Bu hata bir kullanıcı güncelleştirmesi devam ederken oluşur. Güncelleştirme bir yeniden boyutlandırma işlemi olabilir. | No |
+| VipUnResponsive | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu yoklama hatası nedeniyle ulaşılamadığında oluşur. | No |
+| PlatformInActive | Platform ile ilgili bir sorun var. | No|
+| ServiceNotRunning | Temel alınan hizmet çalışmıyor. | No|
+| Noconnectionsdökümforgateway | Ağ geçidinde bağlantı yok. Bu hata yalnızca bir uyarıdır.| No|
 | ConnectionsNotConnected | Bağlantılar bağlı değil. Bu hata yalnızca bir uyarıdır.| Yes|
 | Gatewaycpuusageaşıldı | Geçerli ağ geçidi CPU kullanımı %95 >. | Yes |
 
 ### <a name="connection"></a>Bağlantı
 
-| Hata Türü | Neden | Günlük|
+| Hata Türü | Nedeni | Günlük|
 |---|---|---|
 | NoFault | Hiçbir hata algılanmadığında |Yes|
-| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı |Hayır|
-| PlannedMaintenance | Ağ Geçidi örneği bakımda  |Hayır|
-| UserDrivenUpdate | Bu hata bir kullanıcı güncelleştirmesi devam ederken oluşur. Güncelleştirme bir yeniden boyutlandırma işlemi olabilir.  | Hayır |
-| VipUnResponsive | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu yoklama hatası nedeniyle ulaşılamadığında oluşur. | Hayır |
-| ConnectionEntityNotFound | Bağlantı yapılandırması eksik | Hayır |
-| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlendi |Hayır|
+| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı |No|
+| PlannedMaintenance | Ağ Geçidi örneği bakımda  |No|
+| UserDrivenUpdate | Bu hata bir kullanıcı güncelleştirmesi devam ederken oluşur. Güncelleştirme bir yeniden boyutlandırma işlemi olabilir.  | No |
+| VipUnResponsive | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu yoklama hatası nedeniyle ulaşılamadığında oluşur. | No |
+| ConnectionEntityNotFound | Bağlantı yapılandırması eksik | No |
+| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlendi |No|
 | ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Yes |
 | ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Yes|
-| Kimlik Doğrulaması | Önceden paylaşılmış anahtar uyumsuzluğu | Yes|
+| Kimlik doğrulaması | Önceden paylaşılmış anahtar uyumsuzluğu | Yes|
 | Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Yes|
 | Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Yes|
 | WfpParse hatası | WFP günlüğü ayrıştırılırken bir hata oluştu. |Yes|
@@ -107,12 +107,12 @@ Kaynak sorun giderme günlük dosyaları, kaynak sorunlarını giderme işlemi t
 
 Azure depolama hesaplarından dosya indirme yönergeleri için bkz. [.NET kullanarak Azure Blob depolamayı kullanmaya başlama](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Kullanılabilecek başka bir araç Depolama Gezgini. Depolama Gezgini hakkında daha fazla bilgi aşağıdaki bağlantıda bulunabilir: [Depolama Gezgini](https://storageexplorer.com/)
 
-### <a name="connectionstatstxt"></a>ConnectionStats. txt
+### <a name="connectionstatstxt"></a>ConnectionStats.txt
 
-**Connectionstats. txt** dosyası, giriş ve çıkış baytları, bağlantı durumu ve bağlantının kurulduğu zaman dahil olmak üzere bağlantının genel istatistiklerini içerir.
+**ConnectionStats.txt** dosyası, giriş ve çıkış baytları, bağlantı durumu ve bağlantının kurulduğu zaman dahil olmak üzere bağlantının genel istatistiklerini içerir.
 
 > [!NOTE]
-> Sorun giderme API 'SI çağrısı sağlıklı döndürüyorsa, ZIP dosyasında döndürülen tek şey bir **Connectionstats. txt** dosyasıdır.
+> Sorun giderme API 'SI çağrısı sağlıklı döndürüyorsa, ZIP dosyasında döndürülen tek şey bir **ConnectionStats.txt** dosyasıdır.
 
 Bu dosyanın içeriği aşağıdaki örneğe benzer:
 
@@ -124,19 +124,19 @@ Egress Bytes (Since last connected) : 288 B
 Connected Since : 2/1/2017 8:22:06 PM
 ```
 
-### <a name="cpustatstxt"></a>CPUStats. txt
+### <a name="cpustatstxt"></a>CPUStats.txt
 
-**Cpustats. txt** dosyası, test SıRASıNDA kullanılabilir CPU kullanımı ve bellek içerir.  Bu dosyanın içeriği aşağıdaki örneğe benzer:
+**CPUStats.txt** dosyası, test SıRASıNDA kullanılabilir CPU kullanımı ve bellek içerir.  Bu dosyanın içeriği aşağıdaki örneğe benzer:
 
 ```
 Current CPU Usage : 0 % Current Memory Available : 641 MBs
 ```
 
-### <a name="ikeerrorstxt"></a>Ikeerrors. txt
+### <a name="ikeerrorstxt"></a>IKEErrors.txt
 
-**Ikeerrors. txt** dosyası, izleme sırasında bulunan tüm IKE hatalarını içerir.
+**IKEErrors.txt** dosyası, izleme sırasında bulunan tüm IKE hatalarını içerir.
 
-Aşağıdaki örnek, bir ıkeerrors. txt dosyasının içeriğini gösterir. Sorununuz soruna bağlı olarak farklı olabilir.
+Aşağıdaki örnek, IKEErrors.txt bir dosyanın içeriğini gösterir. Sorununuz soruna bağlı olarak farklı olabilir.
 
 ```
 Error: Authentication failed. Check shared key. Check crypto. Check lifetimes. 
@@ -145,11 +145,11 @@ Error: On-prem device sent invalid payload.
      based on log : IkeFindPayloadInPacket failed with Windows error 13843(ERROR_IPSEC_IKE_INVALID_PAYLOAD)
 ```
 
-### <a name="scrubbed-wfpdiagtxt"></a>Scrubbed-wfpdiag. txt
+### <a name="scrubbed-wfpdiagtxt"></a>Scrubbed-wfpdiag.txt
 
-**Scrubbed-wfpdiag. txt** günlük dosyası WFP günlüğünü içerir. Bu günlük, paket bırakma ve ıKE/AuthIP hatalarının günlüğe kaydedilmesini içerir.
+**Scrubbed-wfpdiag.txt** günlük dosyası WFP günlüğünü içerir. Bu günlük, paket bırakma ve ıKE/AuthIP hatalarının günlüğe kaydedilmesini içerir.
 
-Aşağıdaki örnek, Scrubbed-wfpdiag. txt dosyasının içeriğini gösterir. Bu örnekte, bir bağlantının paylaşılan anahtarı doğru değildi, en alttan üçüncü satırdan görünebilirler. Aşağıdaki örnek, bir günlüğün, soruna bağlı olarak uzun sürebilecek bir bütün bir kod parçacıkdır.
+Aşağıdaki örnek Scrubbed-wfpdiag.txt dosyanın içeriğini gösterir. Bu örnekte, bir bağlantının paylaşılan anahtarı doğru değildi, en alttan üçüncü satırdan görünebilirler. Aşağıdaki örnek, bir günlüğün, soruna bağlı olarak uzun sürebilecek bir bütün bir kod parçacıkdır.
 
 ```
 ...
@@ -178,11 +178,11 @@ Aşağıdaki örnek, Scrubbed-wfpdiag. txt dosyasının içeriğini gösterir. B
 ...
 ```
 
-### <a name="wfpdiagtxtsum"></a>wfpdiag. txt. Sum
+### <a name="wfpdiagtxtsum"></a>wfpdiag.txt. Sum
 
-**Wfpdiag. txt. Sum** dosyası, işlenen arabellekleri ve olayları gösteren bir günlüğe kaydedilir.
+**wfpdiag.txt. Sum** dosyası, işlenen arabellekleri ve olayları gösteren bir günlüğe kaydedilir.
 
-Aşağıdaki örnek bir wfpdiag. txt. Sum dosyasının içeriğidir.
+Aşağıdaki örnek wfpdiag.txt. Sum dosyasının içeriğidir.
 ```
 Files Processed:
     C:\Resources\directory\924336c47dd045d5a246c349b8ae57f2.GatewayTenantWorker.DiagnosticsStorage\2017-02-02T17-34-23\wfpdiag.etl

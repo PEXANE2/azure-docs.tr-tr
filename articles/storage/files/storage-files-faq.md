@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 3724392cc50e910c5caf4a3f6cba85070a6d107f
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 2111ccd65a2944ec5f5ea0526e6e7f577261b213
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84661090"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906828"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Dosyalar hakkında sık sorulan sorular (SSS)
 [Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -105,9 +105,9 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
     Performans, ortam ayarlarınıza, yapılandırmanıza ve bu bir ilk eşitleme veya devam eden bir eşitleme olup olmadığına göre değişir. Daha fazla bilgi için bkz. [Azure dosya eşitleme performans ölçümleri](storage-files-scale-targets.md#azure-file-sync-performance-metrics)
 
 * <a id="afs-conflict-resolution"></a>**Aynı dosya yaklaşık olarak aynı anda iki sunucuda değiştirilirse ne olur?**  
-    Azure Dosya Eşitleme basit bir çakışma çözümü stratejisi kullanır: iki sunucu üzerinde aynı anda değiştirilen dosyalarda her iki değişikliği de tutuyoruz. En son yazılan değişiklik özgün dosya adını tutar. Eski dosyanın "kaynak" makinesi ve bu ada eklenen çakışma numarası vardır. Bu taksonomiyi izler: 
+    Azure Dosya Eşitleme basit bir çakışma çözümü stratejisi kullanır: aynı anda iki uç noktada değiştirilen dosyalarda her iki değişikliği de tutuyoruz. En son yazılan değişiklik özgün dosya adını tutar. Eski dosya (LastWriteTime tarafından belirlenir), dosya adının sonuna bir uç nokta adı ve çakışma numarası içerir. Sunucu uç noktaları için uç nokta adı sunucunun adıdır. Bulut uç noktaları için uç nokta adı **bulut**olur. Ad bu taksonomiyi izler: 
    
-    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
+    \<FileNameWithoutExtension\>-\<endpointName\>\[-#\].\<ext\>  
 
     Örneğin, CompanyReport.docx ilk çakışması, merkezileştirme sunucusu eski yazmanın gerçekleştiği yerdir CompanyReport-CentralServer.docx hale gelir. İkinci çakışma CompanyReport-CentralServer-1.docx olarak adlandırılır. Azure Dosya Eşitleme dosya başına 100 çakışma dosyasını destekler. Çakışma dosyası sayısı üst sınırına ulaşıldığında, çakışma dosyası sayısı 100 ' den az olana kadar dosya eşitleme başarısız olur.
 
@@ -133,6 +133,10 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 * <a id="afs-effective-vfs"></a>
   **Bir birimde birden çok sunucu uç noktası olduğunda *birim boş alanı* nasıl yorumlanır?**  
   Bkz. [bulut katmanlamayı anlama](storage-sync-cloud-tiering.md#afs-effective-vfs).
+  
+* <a id="afs-tiered-files-tiering-disabled"></a>
+  **Bulut katmanlama devre dışı, neden sunucu uç noktası konumunda katmanlı dosyalar var?**  
+  Bkz. [bulut katmanlamayı anlama](storage-sync-cloud-tiering.md#afs-tiering-disabled).
 
 * <a id="afs-files-excluded"></a>
   **Hangi dosya veya klasörler Azure Dosya Eşitleme tarafından otomatik olarak dışlanır?**  

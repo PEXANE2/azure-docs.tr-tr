@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: tracking-python
-ms.openlocfilehash: c5ab718fdccfebe852c1522a0cb07303a541a3dd
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c24b934af17dab4f263de504da81d5ccd22d7fb9
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554252"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975322"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Hızlı başlangıç: Python V12 SDK ile Blobları yönetme
 
@@ -290,5 +290,5 @@ BLOB depolama örnek uygulamalarını görmek için devam edin:
 > [!div class="nextstepaction"]
 > [Azure Blob Storage SDK V12 Python örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
-* Daha fazla bilgi için bkz. [Python Için Azure SDK](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/README.md).
+* Daha fazla bilgi edinmek için bkz. [Python Için Azure Storage istemci kitaplıkları](/azure/developer/python/sdk/storage/overview?view=storage-py-v12).
 * Öğreticiler, örnekler, hızlı başlangıçler ve diğer belgelerde, [Python geliştiricileri Için Azure](/azure/python/)' u ziyaret edin.

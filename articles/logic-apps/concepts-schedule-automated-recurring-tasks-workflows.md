@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 6d00c7d7cc88427a3500b28891ec70bb8a4bbb43
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: a5f01e81564561fe43ef6e55e6e9b3b67d6e1d77
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005196"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945622"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Azure Logic Apps ile yinelenen otomatik görevleri, işlemleri ve iş akışlarını zamanlama ve çalıştırma
 
@@ -52,9 +52,9 @@ Mantıksal uygulama iş akışınızı, belirli bir hizmet veya sistemle ilişki
 
 Bu Tetikleyiciler arasındaki farklılıklar aşağıda verilmiştir:
 
-* **Yinelenme**: iş akışınızı, belirtilen zamanlamanıza göre düzenli zaman aralıklarıyla çalıştırır. Yinelenmeler kaçırıldığında, yinelenme tetikleyicisi atlanan tekrarları işlemez ancak sonraki zamanlanan aralıkla yinelenmeleri yeniden başlatır. Saat dilimini ve bir başlangıç tarihi ve saati de belirtebilirsiniz. "Gün" seçeneğini belirlerseniz saatin gün ve dakikalarının saatini (örneğin, her gün 2:30 ' de) belirtebilirsiniz. "Hafta" seçeneğini belirlerseniz, hafta içinde Çarşamba ve Cumartesi gibi günleri de seçebilirsiniz. Daha fazla bilgi için bkz. [yineleme tetikleyicisi ile yinelenen görevler ve iş akışları oluşturma, zamanlama ve çalıştırma](../connectors/connectors-native-recurrence.md).
+* **Yinelenme**: iş akışınızı, belirtilen zamanlamanıza göre düzenli zaman aralıklarıyla çalıştırır. Örneğin, kesintiler veya devre dışı iş akışları nedeniyle Yinelenmeler kaçırıldığında, yinelenme tetikleyicisi atlanan tekrarları işlemez ancak sonraki zamanlanan aralıkla yinelenmeleri yeniden başlatır. Saat dilimini ve bir başlangıç tarihi ve saati de belirtebilirsiniz. "Gün" seçeneğini belirlerseniz saatin gün ve dakikalarının saatini (örneğin, her gün 2:30 ' de) belirtebilirsiniz. "Hafta" seçeneğini belirlerseniz, hafta içinde Çarşamba ve Cumartesi gibi günleri de seçebilirsiniz. Daha fazla bilgi için bkz. [yineleme tetikleyicisi ile yinelenen görevler ve iş akışları oluşturma, zamanlama ve çalıştırma](../connectors/connectors-native-recurrence.md).
 
-* **Kayan pencere**: iş akışınızı sürekli öbeklerdeki verileri işleyen düzenli zaman aralıklarıyla çalıştırır. Yinelenmeler kaçırıldığında, kayan pencere tetikleyicisi geri döner ve unutulan tekrarları işler. İş akışınızda her yinelemeyi geciktirmek için bir başlangıç tarihi ve saati, saat dilimi ve bir süre belirtebilirsiniz. Bu tetikleyici, örneğin günün belirli saatleri, saatin dakikası ve haftanın günleri gibi gelişmiş zamanlamaları desteklemez. Daha fazla bilgi için bkz. [kayan pencere tetikleyicisiyle yinelenen görevler ve iş akışları oluşturma, zamanlama ve çalıştırma](../connectors/connectors-native-sliding-window.md).
+* **Kayan pencere**: iş akışınızı sürekli öbeklerdeki verileri işleyen düzenli zaman aralıklarıyla çalıştırır. Örneğin, kesintiler veya devre dışı iş akışları nedeniyle Yinelenmeler kaçırıldığında, kayan pencere tetikleyicisi geri döner ve kaçırılan tekrarları işler. İş akışınızda her yinelemeyi geciktirmek için bir başlangıç tarihi ve saati, saat dilimi ve bir süre belirtebilirsiniz. Bu tetikleyici, örneğin günün belirli saatleri, saatin dakikası ve haftanın günleri gibi gelişmiş zamanlamaları desteklemez. Daha fazla bilgi için bkz. [kayan pencere tetikleyicisiyle yinelenen görevler ve iş akışları oluşturma, zamanlama ve çalıştırma](../connectors/connectors-native-sliding-window.md).
 
 <a name="schedule-actions"></a>
 
@@ -93,7 +93,7 @@ Mantıksal uygulama iş akışınızın herhangi bir eyleminden sonra, bir sonra
 
 Geçerli tarih ve saatin 8 Eylül 2017 ile 1:00 PM arasında olduğunu varsayalım. Başlangıç tarihini ve saatini 7 Eylül 2017 itibariyle, geçmişte olan 2:00 PM ve her iki günde bir çalışan bir yinelenme olarak belirtirsiniz.
 
-| Başlangıç saati | Geçerli saat | Yineleme | Zamanlama |
+| Başlangıç saati | Geçerli saat | Yineleme | Zamanla |
 |------------|--------------|------------|----------|
 | 2017-09-**07**T14:00:00Z <br>(2017-09-**07** saat 2:00 PM) | 2017-09-**08**T13:00:00Z <br>(2017-09-**08** , 1:00 PM) | İki günde bir | seçim |
 |||||
@@ -126,7 +126,7 @@ Bu nedenle, başlangıç saatini ne kadar belirttiğinize bakılmaksızın, örn
 
 Seçenekleri destekleyen Tetikleyiciler için ayarlayabileceğiniz çeşitli örnek tekrarları aşağıda verilmiştir:
 
-| Tetikleyici | Yineleme | Interval | Frequency | Başlangıç saati | Şu günlerde | Şu saatlerde | Şu dakikalarda | Not |
+| Tetikleyici | Yineleme | Interval | Sıklık | Başlangıç saati | Şu günlerde | Şu saatlerde | Şu dakikalarda | Not |
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
 | Yinelemeyi <br>Kayan Pencere | Her 15 dakikada bir Çalıştır (başlangıç tarihi ve saati olmadan) | 15 | Dakika | seçim | mıyor | seçim | seçim | Bu zamanlama hemen başlatılır, ardından son çalışma zamanına göre gelecekteki tekrarları hesaplar. |
 | Yinelemeyi <br>Kayan Pencere | Her 15 dakikada bir Çalıştır (başlangıç tarihi ve saati ile) | 15 | Dakika | *StartDate* T*StartTime*Z | mıyor | seçim | seçim | Bu zamanlama, belirtilen başlangıç tarihi ve saatinden daha *önce* başlamaz, son çalışma zamanına göre gelecekteki tekrarları hesaplar. |

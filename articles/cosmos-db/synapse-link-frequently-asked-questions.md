@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB için Azure SYNAPSE bağlantısı hakkında sık sorulan sorular
+title: Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular
 description: Faturalandırma, analitik mağaza, güvenlik ve analitik depoda yaşam süresi gibi alanlarda Azure Cosmos DB için SYNAPSE bağlantısı hakkında sık sorulan soruların yanıtlarını alın.
 author: srchi
 ms.author: srchi
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 36be05f72597ae9864eff812862589cafb1f5b0d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a78b956dad618d827a5f8bef676a7b074bdead9a
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598685"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119520"
 ---
-# <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısı hakkında sık sorulan sorular
+# <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular
 
 Azure Cosmos DB için Azure SYNAPSE bağlantısı Azure Cosmos DB ile Azure SYNAPSE Analytics arasında sıkı bir tümleştirme oluşturur. Müşterilerin, işletimsel iş yüklerinden ve ETL işlem hattı olmadan tam performans yalıtımıyla neredeyse gerçek zamanlı analizler çalıştırmasına olanak sağlar. Bu makalede, Azure Cosmos DB için SYNAPSE bağlantısı hakkında sıkça sorulan sorular yanıtlanmaktadır.
 
@@ -31,7 +31,7 @@ Analitik mağaza desteğiyle çok bölgeli bir Azure Cosmos hesabını yapıland
 Önizleme sürümünde, SYNAPSE link çok bölgeli bir hesap için etkinleştirildiğinde, analitik depo tüm bölgelerde oluşturulur. Temel alınan veriler işlem deposunda işleme ve işlem tutarlılığı için iyileştirilmiştir.
 
 ### <a name="can-i-disable-the-synapse-link-feature-for-my-azure-cosmos-account"></a>Azure Cosmos hesabımın SYNAPSE Link özelliğini devre dışı bırakabilir miyim?
-Şu anda, SYNAPSE bağlantısı özelliği hesap düzeyinde etkinleştirildikten sonra devre dışı bırakılamaz.  Özelliği devre dışı bırakmak istiyorsanız, yeni bir Azure Cosmos hesabını silip yeniden oluşturmanız gerekir.
+Şu an için Synapse Link özelliğini hesap düzeyinde etkinleştirdikten sonra devre dışı bırakmanız mümkün değildir.  Özelliği devre dışı bırakmak istiyorsanız, yeni bir Azure Cosmos hesabını silip yeniden oluşturmanız gerekir.
 
 Hesap düzeyinde SYNAPSE bağlantısı özelliği etkinse ancak analitik depo etkin kapsayıcılar yoksa faturalandırma **etkilerine sahip olmamak** istediğinizi anlayın.
 
@@ -53,10 +53,10 @@ Azure Cosmos DB, işlem ve analitik iş yükleri arasında performans yalıtım�
 Evet, işlem deposundaki verilerin silmeleri ve güncelleştirmeleri analitik depoya yansıtılır. Analitik deponun, analitik TTL ölçütlerine uyan tüm öğelerin tüm sürümlerini tutması için, kapsayıcıda yaşam süresi (TTL) değerini geçmiş verileri içerecek şekilde yapılandırabilirsiniz. Daha fazla ayrıntı için bkz. [ANALITIK TTL 'ye genel bakış](analytical-store-introduction.md#analytical-ttl) .
 
 ### <a name="can-i-connect-to-analytical-store-from-analytics-engines-other-than-azure-synapse-analytics"></a>Azure SYNAPSE Analytics dışındaki analiz altyapılarından analitik depoya bağlanabilir miyim?
-Yalnızca Azure SYNAPSE Analytics tarafından sunulan çeşitli çalışma zamanlarını kullanarak analitik depoya yönelik sorgulara erişebilir ve bunları çalıştırabilirsiniz. Analitik depo, kullanılarak sorgulanabilir ve analiz edilebilir:
+Analiz deposuna erişmek ve sorgu çalıştırmak için Azure Synapse Analytics tarafından sağlanan çeşitli çalışma zamanlarını kullanmanız gerekir. Analiz deposunu sorgulamak ve analiz etmek için şu bileşenleri kullanabilirsiniz:
 
-* Scala, Python, Mini SQL ve C# için tam destekle SYNAPSE spark. SYNAPSE Spark, veri Mühendisliği ve bilimi senaryolarına orta
-* T-SQL diliyle SQL sunucusuz ve tanıdık BI araçları desteği (örneğin, Power BI Premium vb.)
+* Scala, Python, Mini SQL ve C# için tam destekle SYNAPSE spark. Synapse Spark, veri mühendisliği ve veri bilimi senaryolarında temel bir rol oynar.
+* T-SQL dili ve bilindik BI araçları (Power BI Premium gibi) desteğiyle sunucusuz SQL
 
 ### <a name="can-i-connect-to-analytical-store-from-synapse-sql-provisioned"></a>SYNAPSE SQL tarafından sağlanan analitik depoya bağlanabilir miyim?
 Şu anda, SYNAPSE SQL tarafından sağlanan analitik depoya erişilemez.
@@ -71,7 +71,7 @@ Analitik depo, bir Azure Cosmos kapsayıcısında salt bir salt okuma deposudur.
 Kapsayıcıda belirli öğeler [analiz için iyi tanımlanmış şemayı](analytical-store-introduction.md#analytical-schema)ihlal ediyor ise, bu, analitik depoya dahil edilmez. Analiz için iyi tanımlanmış şema ile engellenen senaryolar varsa, yardım için [Azure Cosmos DB ekibine](mailto:cosmosdbsynapselink@microsoft.com) e-posta gönderin.
 
 ### <a name="can-i-partition-the-data-in-analytical-store-differently-from-transactional-store"></a>Analitik depodaki verileri işlem deposundan farklı şekilde bölümleyebilir miyim?
-Analitik depodaki veriler, işlemsel depodaki parçaların yatay bölümlenmesi temelinde bölümlenir. Şu anda analitik depo için farklı bir bölümleme stratejisi seçemezsiniz.
+Analiz deposundaki veriler, işlem deposundaki parçaların yatay bölümlemesi temel alınarak bölümlenir. Şu an için analiz deposunda farklı bir bölümleme stratejisi belirlemek mümkün değildir.
 
 ### <a name="can-i-customize-or-override-the-way-transactional-data-is-transformed-into-columnar-format-in-the-analytical-store"></a>İşlem verilerinin analitik depodaki sütunlu biçime nasıl dönüştürüleceklerini özelleştirebilir veya geçersiz kılabilir miyim?
 Şu anda, işlem deposundan otomatik olarak analitik depoya yayıldığında veri öğelerini dönüştüremiyoruz. Bu sınırlama tarafından engellenen senaryolarınız varsa [Azure Cosmos DB ekibine](mailto:cosmosdbsynapselink@microsoft.com)e-posta gönderin.
@@ -118,11 +118,11 @@ Azure Cosmos DB için Spark yapılandırılmış akış desteği, işlem deposun
 ### <a name="in-the-synapse-studio-how-do-i-recognize-if-im-connected-to-an-azure-cosmos-db-container-with-the-analytics-store-enabled"></a>SYNAPSE Studio 'da, analiz deposu etkinleştirilmiş bir Azure Cosmos DB kapsayıcısına bağlanıp bağlandığımı nasıl anlayabilirim?
 Analitik depo ile etkinleştirilen bir Azure Cosmos DB kapsayıcısı aşağıdaki simgeye sahiptir:
 
-![Analitik depolama ile etkin Azure Cosmos DB kapsayıcısı-simge](./media/synapse-link-frequently-asked-questions/analytical-store-icon.png)
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/analytical-store-icon.png" alt-text="Analitik depolama ile etkin Azure Cosmos DB kapsayıcısı-simge":::
 
 Bir işlem deposu kapsayıcısı aşağıdaki simgeyle temsil edilir:
 
-![İşlem deposu ile etkin Azure Cosmos DB kapsayıcısı-simge](./media/synapse-link-frequently-asked-questions/transactional-store-icon.png)
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="İşlem deposu ile etkin Azure Cosmos DB kapsayıcısı-simge":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-synapse-studio"></a>Azure Cosmos DB kimlik bilgilerini SYNAPSE Studio 'dan nasıl geçitirsiniz?
 Bağlı hizmet, Azure Cosmos DB veritabanlarına erişimi olan kullanıcı tarafından oluşturulurken şu anda Azure Cosmos DB kimlik bilgileri geçirilir. Bu mağazaya erişim, çalışma alanına erişimi olan diğer kullanıcılar tarafından kullanılabilir.

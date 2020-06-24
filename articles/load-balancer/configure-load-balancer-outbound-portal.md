@@ -5,15 +5,15 @@ description: Bu makalede, Standart Load Balancer Azure portal kullanarak yük de
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: allensu
-ms.openlocfilehash: b75f49155991bfc71f788ad88f166c0bec281841
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30d71333bb29720afd82c7dbbde7126b30a7f6d6
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77590019"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803677"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>Standart Load Balancer Azure portal kullanarak yük dengelemeyi ve giden kuralları yapılandırma
 
@@ -35,14 +35,14 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu bölümde, sanal makinelerin yükünü dengelemeye yönelik bir yük dengeleyici oluşturacaksınız. Ortak yük dengeleyici veya iç yük dengeleyici oluşturabilirsiniz. Ortak yük dengeleyici oluşturduğunuzda, yük dengeleyici için ön uç olarak yapılandırılmış yeni bir genel IP adresi oluşturun. Ön uç, varsayılan olarak **Loadbalancerön uç** olarak adlandırılır.
 
-1. Ekranın sol üst kısmında, **kaynak** > oluştur**ağ** > **Load Balancer**' ı seçin.
+1. Ekranın sol üst kısmında, **kaynak oluştur**  >  **ağ**  >  **Load Balancer**' ı seçin.
 2. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde, aşağıdaki bilgileri girin veya seçin:
 
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna **Myresourcegroupslb** yazın.|
-    | Adı                   | **myLoadBalancer**                                   |
+    | Name                   | **myLoadBalancer**                                   |
     | Bölge         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Ortak**seçeneğini belirleyin.                                        |
     | SKU           | **Standart** veya **temel**seçeneğini belirleyin. Microsoft, üretim iş yükleri için standart önerir. |
@@ -135,7 +135,7 @@ Yük dengeleyici giden kuralları arka uç havuzundaki VM 'Ler için giden SNAT 
     | IP türü | **IP adresi**seçin.|
     | Genel IP adresi | **Yeni oluştur**’u seçin. **Genel IP adresi ekle**' de, **Mypublicıpoıb utbağlanacak**' yı girin.  **Tamam**’ı seçin. |
 
-4. **Add (Ekle)** seçeneğini belirleyin.
+4. **Ekle**'yi seçin.
 
 ### <a name="create-an-outbound-backend-pool"></a>Giden arka uç havuzu oluşturma
 
@@ -164,7 +164,7 @@ Yük dengeleyici giden kuralları arka uç havuzundaki VM 'Ler için giden SNAT 
     | Giden bağlantı noktaları-> seçin | **Örnek başına bağlantı noktası** seçin |
     | Giden bağlantı noktaları-örnek başına > bağlantı noktaları | **10.000**girin. |
 
-4. **Add (Ekle)** seçeneğini belirleyin.
+4. **Ekle**'yi seçin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

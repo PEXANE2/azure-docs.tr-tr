@@ -3,17 +3,17 @@ title: Bir VHD 'yi Azure 'a yükleyin veya bir diski bölgeler arasında kopyala
 description: Bir VHD 'yi Azure yönetilen diskine yüklemeyi ve Azure PowerShell kullanarak doğrudan karşıya yükleme yoluyla bir yönetilen diski bölgelere kopyalamayı öğrenin.
 author: roygara
 ms.author: rogarana
-ms.date: 03/27/2020
+ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 153bbc39ceba52548d667fa4c83d0edc867fcb93
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: d03e911b88e6a7729b0519e74941b47d85a97901
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660612"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944636"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Bir VHD 'yi Azure 'a yükleme veya yönetilen bir diski başka bir bölgeye kopyalama-Azure PowerShell
 
@@ -47,6 +47,9 @@ Karşıya yüklemek üzere boş bir standart HDD oluşturabilmeniz için önce, 
 Şimdi, yerel kabuğunuzun içinde, **-createoption** parametresindeki **karşıya yükleme** ayarını ve [New-azdiskconfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) cmdlet 'inde **-uploadsizeınbytes** PARAMETRESINI belirterek karşıya yüklemek üzere boş bir standart HDD oluşturun. Ardından, diski oluşturmak için [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) ' i çağırın.
 
 `<yourdiskname>`, `<yourresourcegroupname>` Ve `<yourregion>` ardından aşağıdaki komutları çalıştırın:
+
+> [!TIP]
+> Bir işletim sistemi diski oluşturuyorsanız, ' <yourGeneration> ' öğesine ' ' ekleyin `New-AzDiskConfig` .
 
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length
@@ -98,6 +101,9 @@ Doğrudan karşıya yükleme, yönetilen bir disk kopyalama işlemini de basitle
 > Azure 'dan yönetilen bir diskin bayt cinsinden disk boyutunu sağlarken 512 sapmasını eklemeniz gerekir. Bunun nedeni, Azure 'un disk boyutunu döndürürken alt bilgiyi atatmesinden kaynaklanır. Bunu yapmazsanız kopya başarısız olur. Aşağıdaki komut dosyası sizin için zaten bunu yapar.
 
 ,, `<sourceResourceGroupHere>` , `<sourceDiskNameHere>` `<targetDiskNameHere>` `<targetResourceGroupHere>` , `<yourOSTypeHere>` Ve (bir `<yourTargetLocationHere>` konum değeri örneği uswest2) değerlerini değerleriyle değiştirin, ardından yönetilen bir diski kopyalamak için aşağıdaki betiği çalıştırın.
+
+> [!TIP]
+> Bir işletim sistemi diski oluşturuyorsanız, ' <yourGeneration> ' öğesine ' ' ekleyin `New-AzDiskConfig` .
 
 ```powershell
 

@@ -5,15 +5,15 @@ description: Bu makalede, Azure Application Gateway TLS Ilkesini yapılandırmak
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 3804059fdd818f10663d14bde72da2c6773fa53f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3109ada2c905a9f11169a462284d22b9e9604494
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312682"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808233"
 ---
 # <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>Application Gateway 'de TLS ilkesi sürümlerini ve şifre paketlerini yapılandırma
 
@@ -23,7 +23,7 @@ Application Gateway 'de TLS/SSL ilke sürümlerinin ve şifre paketlerinin nası
 
 ## <a name="get-available-tls-options"></a>Kullanılabilir TLS seçeneklerini al
 
-`Get-AzApplicationGatewayAvailableSslOptions` Cmdlet 'i, yapılandırılabilen kullanılabilir önceden tanımlanmış ilkelerin, kullanılabilir şifre paketlerinin ve protokol sürümlerinin bir listesini sağlar. Aşağıdaki örnekte cmdlet 'ini çalıştırmanın örnek bir çıkışı gösterilmektedir.
+`Get-AzApplicationGatewayAvailableSslOptions`Cmdlet 'i, yapılandırılabilen kullanılabilir önceden tanımlanmış ilkelerin, kullanılabilir şifre paketlerinin ve protokol sürümlerinin bir listesini sağlar. Aşağıdaki örnekte cmdlet 'ini çalıştırmanın örnek bir çıkışı gösterilmektedir.
 
 ```
 DefaultPolicy: AppGwSslPolicy20150501
@@ -73,9 +73,9 @@ AvailableProtocols:
 
 ## <a name="list-pre-defined-tls-policies"></a>Önceden tanımlanmış TLS Ilkelerini listeleyin
 
-Application Gateway, kullanılabilecek üç önceden tanımlı ilke ile gelir. `Get-AzApplicationGatewaySslPredefinedPolicy` Cmdlet 'i bu ilkeleri alır. Her ilkenin farklı protokol sürümleri ve şifre paketleri etkinleştirilmiştir. Önceden tanımlanmış bu ilkeler, uygulama Ağ geçidinizde bir TLS ilkesini hızlıca yapılandırmak için kullanılabilir. Varsayılan olarak, belirli bir TLS ilkesi tanımlanmamışsa **AppGwSslPolicy20150501** seçilidir.
+Application Gateway, kullanılabilecek üç önceden tanımlı ilke ile gelir. `Get-AzApplicationGatewaySslPredefinedPolicy`Cmdlet 'i bu ilkeleri alır. Her ilkenin farklı protokol sürümleri ve şifre paketleri etkinleştirilmiştir. Önceden tanımlanmış bu ilkeler, uygulama Ağ geçidinizde bir TLS ilkesini hızlıca yapılandırmak için kullanılabilir. Varsayılan olarak, belirli bir TLS ilkesi tanımlanmamışsa **AppGwSslPolicy20150501** seçilidir.
 
-Aşağıdaki çıktı, çalıştırmaya `Get-AzApplicationGatewaySslPredefinedPolicy`bir örnektir.
+Aşağıdaki çıktı, çalıştırmaya bir örnektir `Get-AzApplicationGatewaySslPredefinedPolicy` .
 
 ```
 Name: AppGwSslPolicy20150501
@@ -110,7 +110,7 @@ CipherSuites:
 
 Özel bir TLS ilkesi yapılandırılırken şu parametreleri geçirirsiniz: PolicyType, MinProtocolVersion, CipherSuite ve ApplicationGateway. Diğer parametreleri geçirmeye çalışırsanız, Application Gateway oluştururken veya güncelleştirirken bir hata alırsınız. 
 
-Aşağıdaki örnek, bir uygulama ağ geçidinde özel bir TLS ilkesi ayarlar. En düşük protokol sürümünü olarak `TLSv1_1` ayarlar ve aşağıdaki şifre paketlerini sağlar:
+Aşağıdaki örnek, bir uygulama ağ geçidinde özel bir TLS ilkesi ayarlar. En düşük protokol sürümünü olarak ayarlar `TLSv1_1` ve aşağıdaki şifre paketlerini sağlar:
 
 * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256

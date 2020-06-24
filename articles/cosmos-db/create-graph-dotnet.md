@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: lbosq
-ms.openlocfilehash: bf453587b354b5db3f3ef1a80f974bcb8f8f4e14
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a85df3e437f2c1ec93996cdaacfccadeaa47cc99
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81730029"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118262"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Hızlı başlangıç: Azure Cosmos DB Gremlin API hesabını kullanarak .NET Framework veya çekirdek uygulama oluşturma
 
@@ -91,11 +91,11 @@ Aşağıdaki kod parçacıklarının tamamı, Program.cs dosyasından alınır.
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineQueries":::
 
-* Yukarıda belirtilen parametreleri `GremlinServer` kullanarak `GremlinClient` yeni ve bağlantı nesneleri oluşturun:
+* `GremlinServer` `GremlinClient` Yukarıda belirtilen parametreleri kullanarak yeni ve bağlantı nesneleri oluşturun:
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineClientandServerObjects":::
 
-* Zaman uyumsuz bir görevle `GremlinClient` nesneyi kullanarak her Gremlin sorgusunu yürütün. Önceki adımda tanımlanan sözlükten Gremlin sorgularını okuyabilir ve bunları yürütebilirsiniz. Daha sonra, Newtonsoft. JSON paketinden `JsonSerializer` sınıfını kullanarak sonucu elde edin ve sözlük olarak biçimlendirilen değerleri okuyun:
+* Zaman uyumsuz bir görevle nesneyi kullanarak her Gremlin sorgusunu yürütün `GremlinClient` . Önceki adımda tanımlanan sözlükten Gremlin sorgularını okuyabilir ve bunları yürütebilirsiniz. Daha sonra, sonucu elde edin ve bir sözlük olarak biçimlendirilen değerleri, `JsonSerializer` Newtonsoft.Jspaketteki sınıfı kullanarak kullanın:
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="executeQueries":::
 
@@ -109,9 +109,9 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
    **Gremlin Uç Noktası** - Bu değer, Gremlin.Net kitaplığını kullanarak graf hesabına bağlandığınızda kullanılır.
 
-    ![Uç noktayı kopyalama](./media/create-graph-dotnet/endpoint.png)
+    :::image type="content" source="./media/create-graph-dotnet/endpoint.png" alt-text="Uç noktayı kopyalama":::
 
-   Bu örneği çalıştırmak için, **Gremlin uç noktası** değerini kopyalayın, sonundaki bağlantı noktası numarasını SILIN, URI ise olur `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`. Uç nokta değeri şöyle görünmelidir`testgraphacct.gremlin.cosmosdb.azure.com`
+   Bu örneği çalıştırmak için, **Gremlin uç noktası** değerini kopyalayın, sonundaki bağlantı noktası numarasını SILIN, URI ise olur `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` . Uç nokta değeri şöyle görünmelidir`testgraphacct.gremlin.cosmosdb.azure.com`
 
 1. Sonra, **anahtarlar** sekmesine gidin ve Azure Portal **birincil anahtar** değerini kopyalayın. 
 
@@ -146,7 +146,7 @@ Uygulamayı çalıştırmak için CTRL+F5 tuşlarına basın. Uygulama hem Greml
 
     Grafiği yakınlaştırıp uzaklaştırabilir, grafik görüntüleme alanını genişletebilir, başka köşeler ekleyebilir ve görüntüleme alanında köşeleri taşıyabilirsiniz.
 
-    ![Azure portalındaki Veri Gezgini'nde grafiği görüntüleme](./media/create-graph-dotnet/graph-explorer.png)
+    :::image type="content" source="./media/create-graph-dotnet/graph-explorer.png" alt-text="Azure portalındaki Veri Gezgini'nde grafiği görüntüleme":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure portalında SLA'ları gözden geçirme
 

@@ -1,20 +1,26 @@
 ---
 title: Azure VM boyutları-bellek | Microsoft Docs
-description: Azure 'daki sanal makineler için kullanılabilir olan farklı bellek için iyileştirilmiş boyutları listeler. Bu serideki boyutlarda vCPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkındaki bilgileri listeler.
+description: Azure 'daki sanal makineler için kullanılabilir olan farklı bellek için iyileştirilmiş boyutları listeler. Bu serideki boyutlarda sanal CPU 'lar, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkındaki bilgileri listeler.
+services: virtual-machines
+documentationcenter: ''
 author: mimckitt
+manager: gwallace
+editor: ''
+tags: azure-resource-manager,azure-service-management
 keywords: VM yalıtımı, yalıtılmış VM, yalıtım, yalıtılmış
+ms.assetid: ''
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 6e2486dfeae221e7e3ddadcdcac0d9779d49542c
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 5e920f165232ec79dcced1de632d90f463ff58d9
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678673"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791478"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Bellek için iyileştirilmiş sanal makine boyutları
 
@@ -28,7 +34,9 @@ Bellek için iyileştirilmiş VM boyutları, ilişkisel veritabanı sunucuları,
 
 - [Ev3 ve Esv3-Series](ev3-esv3-series.md) Intel &reg; Xeon &reg; 8171M 2,1 GHz (ufuk Gölü) veya &reg; &reg; bir hiper iş yükleri için ıntel Xeon E5-2673 v4 2,3 GHz (çok iyi) işlemcisi, çoğu genel amaçlı iş yükleri için daha Iyi bir değer teklifi sağlar ve Ev3 diğer birçok bulutun genel amaçlı VM 'leri ile hizalı hale getiriliyor. Bellek ve ağ sınırları, Hyper-Threading ' e geçiş ile hizalamak için, disk ve ağ sınırları her bir çekirdek temelinde ayarlanırken, bellek ve ağ sınırları, her bir çekirdek için bir saniyede ayarlanmışsa (7 GiB/vCPU 'dan 8 GiB Ev3, D/dv2 ailelerinin yüksek bellek sanal makine boyutlarına göre takip edilir.
 
-- [Edv4 ve Edsv4 serisi](edv4-edsv4-series.md) 2. nesil Intel &reg; Xeon &reg; Platinum 8272Cl (Cascade Lake) işlemcileri üzerinde çalışarak, son derece büyük veritabanları veya yüksek vCPU sayıları ve büyük miktarda bellekten faydalanabilecek diğer uygulamalar için idealdir. 3,4 GHz 'nin tüm çekirdek Turbo saat hızına sürekli olarak sahiptir ve [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; hiper iş parçacıklı teknoloji](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve [Intel &reg; Gelişmiş vektör Uzantıları 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)özelliklerine sahiptir. 
+- [Ev4 ve Esv4 serisi](ev4-esv4-series.md) , &reg; &reg; hiper iş parçacıklı bir yapılandırmada 2. nesil Intel Xeon Platinum 8272Cl (Cascade Lake) işlemcileri üzerinde çalışır, bellek açısından yoğun çeşitli kurumsal uygulamalar ve 504 GIB 'a kadar RAM için idealdir. Intel [ &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; hiper iş parçacığı teknolojisi](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve [Intel &reg; Gelişmiş vektör Uzantıları 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)özelliklerine sahiptir.
+
+- [Edv4 ve Edsv4 serisi](edv4-edsv4-series.md) 2. nesil Intel &reg; Xeon &reg; Platinum 8272Cl (Cascade Lake) işlemcileri üzerinde çalışarak, son derece büyük veritabanları veya yüksek vCPU sayıları ve büyük miktarda bellekten faydalanabilecek diğer uygulamalar için idealdir. 3,4 GHz 'nin tüm çekirdek Turbo saat hızına sürekli olarak sahiptir ve [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; hiper iş parçacıklı teknoloji](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve [Intel &reg; Gelişmiş vektör Uzantıları 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)özelliklerine sahiptir.
 
 - [M serisi](m-series.md) , yüksek bir vCPU sayısı (128 vCPU kadar) ve büyük miktarda bellek (3,8 TİB 'ye kadar) sunar. Son derece büyük veritabanları veya yüksek sanal CPU sayılarından ve büyük miktarda bellekten faydalanabilir diğer uygulamalar için de idealdir.
 

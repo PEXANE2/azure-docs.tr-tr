@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 408b0f020be72b8e6b10dd6c97298afda1b91360
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d65b43dad80cb130d582132d21e2d10bd8051dc
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245310"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791393"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik önerileri 
 Bu konu başlığı altında, Azure Güvenlik Merkezi 'nde Azure kaynaklarınızı korumanıza yardımcı olan önerilerin nasıl görüntüleneceği ve anlayabileceği açıklanmaktadır.
@@ -53,7 +53,7 @@ Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için kaynakların
     Önerilere filtre uygulayabilirsiniz. Önerilere filtre uygulamak için **öneriler** dikey penceresinde **filtre** ' yi seçin. **Filtre** dikey penceresi açılır ve görmek istediğiniz önem derecesini ve durum değerlerini seçersiniz.
 
    * **Öneriler**: öneri.
-   * **GÜVENLI puan etkisi**: güvenlik, güvenlik önerilerinizi kullanarak ve her öneriye ne kadar önemli olduğunu anlamak için gelişmiş algoritmalar uygulayarak oluşturulan bir puandır. Daha fazla bilgi için bkz. [güvenli puan hesaplaması](security-center-secure-score.md#secure-score-calculation).
+   * **GÜVENLI puan etkisi**: güvenlik, güvenlik önerilerinizi kullanarak ve her öneriye ne kadar önemli olduğunu anlamak için gelişmiş algoritmalar uygulayarak oluşturulan bir puandır. Daha fazla bilgi için bkz. [güvenli puan hesaplaması](secure-score-security-controls.md#how-your-secure-score-is-calculated).
    * **Kaynak**: Bu önerinin uygulandığı kaynakları listeler.
    * **Durum çubukları**: söz konusu önerinin önem derecesini açıklar:
        * **Yüksek (kırmızı)**: anlamlı bir kaynakta (örneğin, bir uygulama, VM veya ağ güvenlik grubu) bir güvenlik açığı bulunur ve dikkat edilmesi gerekir.

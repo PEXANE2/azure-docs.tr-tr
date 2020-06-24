@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: da7164fbf9148764ef8da0205b147b0fd188de9d
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 2dc7b0447a97cdafc88d2cee4612aba22c1e0eea
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457261"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975801"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Azure PowerShell kullanarak hızlandırılmış ağlarla bir Windows sanal makinesi oluşturma
 
@@ -66,6 +66,10 @@ Hızlandırılmış ağ, iki veya daha fazla sanal CPU (vCPU) ile en genel amaç
 Hiper iş parçacığı destekleyen örneklerde, hızlandırılmış ağ, dört veya daha fazla vCPU içeren VM örneklerinde desteklenir. Desteklenen Seriler: D/Dsv3, D/Dsv4, E/Esv3, EA/Easv4, Fsv2, Lsv2, MS/MMS ve MS/Mmsv2.
 
 VM örnekleri hakkında daha fazla bilgi için bkz. [Azure 'Da Windows sanal makineleri Için boyutlar](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
+### <a name="custom-images"></a>Özel görüntüler
+
+Özel bir görüntü kullanıyorsanız ve görüntünüz hızlandırılmış ağı destekliyorsa, Azure 'da Mellanox ConnectX-3 ve ConnectX-4 LX NIC 'lerle çalışan gerekli sürücülere sahip olduğunuzdan emin olun.
 
 ### <a name="regions"></a>Bölgeler
 
