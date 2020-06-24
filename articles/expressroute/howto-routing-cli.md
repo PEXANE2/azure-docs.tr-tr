@@ -4,16 +4,16 @@ description: Bu makale, bir ExpressRoute devresine ait özel, genel ve Microsoft
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 91a1b6cc877b31fbcef638e34d3147d3377ce85c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cbde41bd79409255e1ebf5145548ea260ac8581d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476126"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727050"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>CLı kullanarak bir ExpressRoute bağlantı hattı için eşleme oluşturma ve değiştirme
 

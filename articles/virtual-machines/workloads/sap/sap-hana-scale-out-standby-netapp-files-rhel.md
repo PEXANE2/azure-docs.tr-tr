@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/24/2020
+ms.date: 06/15/2020
 ms.author: radeltch
-ms.openlocfilehash: 4c86d7c84ba5d7692e010ad95f258b67aa7dcfac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c7b3d58f1ca58c75c31254b03965e7d3707487b
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147635"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809515"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma 
 
@@ -46,7 +46,7 @@ ms.locfileid: "82147635"
 [1900823]:https://launchpad.support.sap.com/#/notes/1900823
 [2292690]:https://launchpad.support.sap.com/#/notes/2292690
 [2455582]:https://launchpad.support.sap.com/#/notes/2455582
-[2593824]:https://launchpad.support.sap.com/#/notes/2455582
+[2593824]:https://launchpad.support.sap.com/#/notes/2593824
 [2009879]:https://launchpad.support.sap.com/#/notes/2009879
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
@@ -94,7 +94,7 @@ Başlamadan önce, aşağıdaki SAP notları ve incelemeleri inceleyin:
 HANA yüksek kullanılabilirliği elde etmek için bir yöntem, konak otomatik yük devretmeyi yapılandırmasıdır. Konak otomatik yük devretmeyi yapılandırmak için, HANA sistemine bir veya daha fazla sanal makine ekler ve bunları bekleme düğümleri olarak yapılandırırsınız. Etkin düğüm başarısız olduğunda, bir bekleme düğümü otomatik olarak alır. Azure sanal makineler ile sunulan yapılandırmada, [Azure NetApp Files üzerinde NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/)kullanarak otomatik yük devretme elde edersiniz.  
 
 > [!NOTE]
-> Bekleme düğümünün tüm veritabanı birimlerine erişmesi gerekir. HANA birimlerinin NFSv4 birimleri olarak bağlanması gerekir. NFSv4 protokolündeki geliştirilmiş dosya Kiralama tabanlı kilitleme mekanizması, balıklığa karşı `I/O` kullanılır. 
+> Bekleme düğümünün tüm veritabanı birimlerine erişmesi gerekir. HANA birimlerinin NFSv4 birimleri olarak bağlanması gerekir. NFSv4 protokolündeki geliştirilmiş dosya Kiralama tabanlı kilitleme mekanizması, balıklığa karşı kullanılır `I/O` . 
 
 > [!IMPORTANT]
 > Desteklenen yapılandırmayı derlemek için, HANA verilerini ve günlük birimlerini NFSv 4.1 birimleri olarak dağıtmanız ve NFSv 4.1 protokolünü kullanarak bağlamanız gerekir. NFSv3 ile HANA konak otomatik yük devretme yapılandırması, bekleme düğümüyle desteklenmez.
@@ -213,14 +213,14 @@ Bu makalede sunulan düzen SAP HANA yapılandırması, Azure NetApp Files Ultra 
 1. VM 'Leri dağıtın. 
 1. Ek ağ arabirimlerini oluşturun ve ağ arabirimlerini ilgili VM 'lere ekleyin.  
 
-   Her sanal makine üç Azure sanal ağ alt ağına (`client` `storage` ve `hana`) karşılık gelen üç ağ arabirimine sahiptir. 
+   Her sanal makine üç Azure sanal ağ alt ağına (ve) karşılık gelen üç ağ arabirimine sahiptir `client` `storage` `hana` . 
 
    Daha fazla bilgi için bkz. [Azure 'da birden çok ağ arabirimi kartı Ile Linux sanal makinesi oluşturma](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics).  
 
 > [!IMPORTANT]
 > SAP HANA iş yükleri için düşük gecikme süresi kritik öneme sahiptir. Düşük gecikme süresi elde etmek için, sanal makinelerin ve Azure NetApp Files birimlerinin yakın bir yerde dağıtıldığından emin olmak için Microsoft temsilcinizle birlikte çalışın. SAP HANA Azure NetApp Files kullanan [yeni SAP HANA sistemi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) eklediğinizde gerekli bilgileri iletin. 
  
-Sonraki yönergelerde, kaynak grubunu, Azure sanal ağını ve üç Azure sanal ağ alt ağını zaten oluşturmuş olduğunuz varsayılmaktadır: `client`, `storage` ve. `hana` VM 'Leri dağıtırken, istemci ağ arabiriminin VM 'lerde birincil arabirim olması için istemci alt ağını seçin. Ayrıca, depolama alt ağı ağ geçidi aracılığıyla Azure NetApp Files atanmış alt ağa açık bir yol yapılandırmanız gerekecektir. 
+Sonraki yönergelerde, kaynak grubunu, Azure sanal ağını ve üç Azure sanal ağ alt ağını zaten oluşturmuş olduğunuz varsayılmaktadır: `client` , `storage` ve `hana` . VM 'Leri dağıtırken, istemci ağ arabiriminin VM 'lerde birincil arabirim olması için istemci alt ağını seçin. Ayrıca, depolama alt ağı ağ geçidi aracılığıyla Azure NetApp Files atanmış alt ağa açık bir yol yapılandırmanız gerekecektir. 
 
 > [!IMPORTANT]
 > Seçtiğiniz işletim sisteminin, kullanmakta olduğunuz belirli VM türlerinde SAP HANA için SAP sertifikalı olduğundan emin olun. Bu türlere yönelik SAP HANA sertifikalı VM türlerinin ve işletim sistemi sürümlerinin listesi için, [SAP HANA sertifikalı IaaS platformları](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) sitesine gidin. Söz konusu türe yönelik SAP HANA tarafından desteklenen işletim sistemi sürümlerinin tam listesini almak için listelenen VM türünün ayrıntılarına tıklayın.  
@@ -237,9 +237,9 @@ Sonraki yönergelerde, kaynak grubunu, Azure sanal ağını ve üç Azure sanal 
 
    Sanal makineleri dağıtırken, ağ arabirimi adı otomatik olarak oluşturulur. Kolaylık sağlaması için Bu yönergelerde, **hanadb1-Client**, **hanadb2-Client**ve **Hanadb3-Client**şeklinde istemci Azure sanal ağ alt ağına eklenen otomatik olarak oluşturulan ağ arabirimlerine başvuracağız. 
 
-3. `storage` Sanal ağ alt ağı için bir tane olmak üzere, her bir sanal makine için bir tane olmak üzere üç ağ arabirimi oluşturun (Bu örnekte, **hanadb1-Storage**, **hanadb2-** Storage ve **hanadb3-Storage**).  
+3. Sanal ağ alt ağı için bir tane olmak üzere, her bir sanal makine için bir tane olmak üzere üç ağ arabirimi oluşturun `storage` (Bu örnekte, **hanadb1-Storage**, **hanadb2-** Storage ve **hanadb3-Storage**).  
 
-4. `hana` Sanal ağ alt ağı için bir tane olmak üzere, her bir sanal makine için bir tane olmak üzere üç ağ arabirimi oluşturun (Bu örnekte, **hanadb1-Hana**, **hanadb2-Hana**ve **hanadb3-Hana**).  
+4. Sanal ağ alt ağı için bir tane olmak üzere, her bir sanal makine için bir tane olmak üzere üç ağ arabirimi oluşturun `hana` (Bu örnekte, **hanadb1-Hana**, **hanadb2-Hana**ve **hanadb3-Hana**).  
 
 5. Aşağıdaki adımları uygulayarak, yeni oluşturulan sanal ağ arabirimlerini karşılık gelen sanal makinelere ekleyin:  
 
@@ -249,19 +249,19 @@ Sonraki yönergelerde, kaynak grubunu, Azure sanal ağını ve üç Azure sanal 
 
     c. **Genel bakış** bölmesinde, sanal makineyi serbest bırakmak için **Durdur** ' u seçin.  
 
-    d. Ağ **' ı**seçin ve ardından ağ arabirimini ekleyin. **Ağ arabirimi Ekle** aşağı açılan listesinde, `storage` ve `hana` alt ağları için önceden oluşturulmuş ağ arabirimlerini seçin.  
+    d. Ağ **' ı**seçin ve ardından ağ arabirimini ekleyin. **Ağ arabirimi Ekle** aşağı açılan listesinde, `storage` ve alt ağları için önceden oluşturulmuş ağ arabirimlerini seçin `hana` .  
     
     e. **Kaydet**’i seçin. 
  
     f. Kalan sanal makineler için b ile e arasındaki adımları yineleyin (bizim örneğimizde, **hanadb2** ve **hanadb3**).
  
-    g. Sanal makineleri şimdilik durdurulmuş durumda bırakın. Daha sonra, yeni eklenen tüm ağ arabirimleri için [hızlandırılmış ağı](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) etkinleştireceğiz.  
+    örneğin: Sanal makineleri şimdilik durdurulmuş durumda bırakın. Daha sonra, yeni eklenen tüm ağ arabirimleri için [hızlandırılmış ağı](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) etkinleştireceğiz.  
 
-6. Aşağıdaki adımları uygulayarak `storage` ve `hana` alt ağları için ek ağ arabirimleri için hızlandırılmış ağı etkinleştirin:  
+6. `storage` `hana` Aşağıdaki adımları uygulayarak ve alt ağları için ek ağ arabirimleri için hızlandırılmış ağı etkinleştirin:  
 
     a. Azure portal [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) açın. [Azure portal](https://portal.azure.com/#home)  
 
-    b. `storage` Ve `hana` alt ağlarına eklenen ek ağ arabirimleri için hızlandırılmış ağı etkinleştirmek üzere aşağıdaki komutları yürütün.  
+    b. `storage`Ve alt ağlarına eklenen ek ağ arabirimleri için hızlandırılmış ağı etkinleştirmek üzere aşağıdaki komutları yürütün `hana` .  
 
     <pre><code>
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-storage</b> --accelerated-networking true
@@ -290,7 +290,7 @@ Sonraki bölümlerdeki yönergelere aşağıdakilerden biri eklenir:
 
 Aşağıdaki adımları uygulayarak işletim sistemini yapılandırın ve hazırlayın:
 
-1. **[A]** sanal makinelerdeki konak dosyalarını koruyun. Tüm alt ağların girdilerini dahil edin. Bu örnek `/etc/hosts` için aşağıdaki girişler eklenmiştir.  
+1. **[A]** sanal makinelerdeki konak dosyalarını koruyun. Tüm alt ağların girdilerini dahil edin. Bu örnek için aşağıdaki girişler eklenmiştir `/etc/hosts` .  
 
     <pre><code>
     # Storage
@@ -309,8 +309,8 @@ Aşağıdaki adımları uygulayarak işletim sistemini yapılandırın ve hazır
 
 3. **[A]** bir ağ yolu ekleyin, böylece Azure NetApp Files iletişim, depolama ağı arabiriminden geçer.  
 
-   Bu örnekte, ek ağ `Networkmanager` yolunu yapılandırmak için kullanılır. Aşağıdaki yönergelerde, depolama ağ arabiriminin olduğu `eth1`varsayılır.  
-   İlk olarak, cihaz `eth1`için bağlantı adını saptayın. Bu örnekte, `eth1` `Wired connection 1`cihaz için bağlantı adı.  
+   Bu örnekte, `Networkmanager` ek ağ yolunu yapılandırmak için kullanılır. Aşağıdaki yönergelerde, depolama ağ arabiriminin olduğu varsayılır `eth1` .  
+   İlk olarak, cihaz için bağlantı adını saptayın `eth1` . Bu örnekte, cihaz için bağlantı adı `eth1` `Wired connection 1` .  
 
     <pre><code>
     # Execute as root
@@ -321,7 +321,7 @@ Aşağıdaki adımları uygulayarak işletim sistemini yapılandırın ve hazır
     #Wired connection 1  4b0789d1-6146-32eb-83a1-94d61f8d60a7  ethernet  eth1
     </code></pre>
 
-   Daha sonra, ile `eth1`Azure NetApp Files temsilci olan ağa ek yol yapılandırın.  
+   Daha sonra, ile Azure NetApp Files temsilci olan ağa ek yol yapılandırın `eth1` .  
 
     <pre><code>
     # Add the following route 
@@ -379,10 +379,10 @@ Aşağıdaki adımları uygulayarak işletim sistemini yapılandırın ve hazır
 
 6. **[A]** Hana yapılandırması Için Red hat.
 
-    RHEL 'yi SAP Note [2292690], [2455582], [2593824] ve <https://access.redhat.com/solutions/2447641>içinde açıklandığı şekilde yapılandırın.
+    RHEL 'yi SAP Note [2292690], [2455582], [2593824] ve içinde açıklandığı şekilde yapılandırın <https://access.redhat.com/solutions/2447641> .
 
     > [!NOTE]
-    > HANA 2,0 SP04 yüklüyorsanız, SAP HANA yükleyebilmek için önce paketi `compat-sap-c++-7` SAP Note [2593824]' de açıklandığı gibi yüklemeniz gerekir. 
+    > HANA 2,0 SP04 yüklüyorsanız `compat-sap-c++-7` , SAP HANA yükleyebilmek için önce PAKETI SAP note [2593824]' de açıklandığı gibi yüklemeniz gerekir. 
 
 ## <a name="mount-the-azure-netapp-files-volumes"></a>Azure NetApp Files birimleri bağlama
 
@@ -416,7 +416,7 @@ Aşağıdaki adımları uygulayarak işletim sistemini yapılandırın ve hazır
 3. **[A]** NFS etki alanı ayarını doğrulayın. Etki alanının varsayılan Azure NetApp Files etki alanı olarak yapılandırıldığından emin olun, yani **`defaultv4iddomain.com`** ve eşleme **hiç kimse**olarak ayarlanmıştır.  
 
     > [!IMPORTANT]
-    > VM 'de `/etc/idmapd.conf` NFS etki alanını Azure NetApp Files ' deki varsayılan etki alanı yapılandırmasıyla eşleşecek şekilde ayarladığınızdan emin olun: **`defaultv4iddomain.com`**. NFS istemcisindeki (yani, VM) ve NFS sunucusunun etki alanı yapılandırması arasında uyuşmazlık varsa (örneğin, Azure NetApp yapılandırması), VM 'Lere bağlı Azure NetApp birimlerinde dosya izinleri olarak `nobody`görüntülenir.  
+    > VM 'de NFS etki alanını `/etc/idmapd.conf` Azure NetApp Files ' deki varsayılan etki alanı yapılandırmasıyla eşleşecek şekilde ayarladığınızdan emin olun: **`defaultv4iddomain.com`** . NFS istemcisindeki (yani, VM) ve NFS sunucusunun etki alanı yapılandırması arasında uyuşmazlık varsa (örneğin, Azure NetApp yapılandırması), VM 'Lere bağlı Azure NetApp birimlerinde dosya izinleri olarak görüntülenir `nobody` .  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -428,7 +428,7 @@ Aşağıdaki adımları uygulayarak işletim sistemini yapılandırın ve hazır
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** doğrula `nfs4_disable_idmapping`. **Y**olarak ayarlanmalıdır. Bulunduğu `nfs4_disable_idmapping` dizin yapısını oluşturmak için Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.  
+4. **[A]** doğrula `nfs4_disable_idmapping` . **Y**olarak ayarlanmalıdır. Bulunduğu dizin yapısını oluşturmak için `nfs4_disable_idmapping` Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -442,7 +442,7 @@ Aşağıdaki adımları uygulayarak işletim sistemini yapılandırın ve hazır
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-   Parametrenin nasıl değiştirileceği `nfs4_disable_idmapping` hakkında daha fazla bilgi için bkz https://access.redhat.com/solutions/1749883..
+   Parametrenin nasıl değiştirileceği hakkında daha fazla bilgi için `nfs4_disable_idmapping` bkz https://access.redhat.com/solutions/1749883 ..
 
 6. **[A]** paylaşılan Azure NetApp Files birimlerini bağlama.  
 
@@ -514,7 +514,7 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
 
 ### <a name="prepare-for-hana-installation"></a>HANA yüklemesine hazırlanma
 
-1. **[A]** Hana yüklemesinden önce kök parolasını ayarlayın. Yükleme tamamlandıktan sonra kök parolayı devre dışı bırakabilirsiniz. Farklı `root` Çalıştır komutu `passwd`.  
+1. **[A]** Hana yüklemesinden önce kök parolasını ayarlayın. Yükleme tamamlandıktan sonra kök parolayı devre dışı bırakabilirsiniz. Farklı Çalıştır `root` komutu `passwd` .  
 
 2. **[1]** bir parola istenmeden **hanadb2** ve **hanadb3**için SSH aracılığıyla oturum açabildiğinizi doğrulayın.  
 
@@ -548,7 +548,7 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
 
 1. **[1]** [SAP HANA 2,0 yükleme ve güncelleştirme kılavuzundaki](https://help.sap.com/viewer/2c1988d620e04368aa4103bf26f17727/2.0.04/en-US/7eb0167eb35e4e2885415205b8383584.html)yönergeleri izleyerek SAP HANA yükleme. Bu örnekte, ana, bir çalışan ve tek bir bekleme düğümüyle SAP HANA genişleme bir şekilde yüklenir.  
 
-   a. HANA yükleme yazılımı dizininden **hdblcm** programını başlatın. `internal_network` Parametresini kullanın ve iç Hana düğümler arası iletişim için kullanılan alt ağ için adres alanını geçirin.  
+   a. HANA yükleme yazılımı dizininden **hdblcm** programını başlatın. Parametresini kullanın `internal_network` ve Iç Hana düğümler arası iletişim için kullanılan alt ağ için adres alanını geçirin.  
 
     <pre><code>
     ./hdblcm --internal_network=10.9.2.0/26
@@ -565,7 +565,7 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
      * **Kök Kullanıcı adı** [root]: varsayılanı kabul etmek için ENTER tuşuna basın
      * Host hanadb2 için roller için: **1** girin (çalışan için)
      * Host hanadb2 için **konak yük devretme grubu** için [varsayılan]: varsayılan değer kabul etmek için ENTER tuşuna basın
-     * Host hanadb2 için **depolama bölüm numarası** [<<assign automatically>>]: varsayılanı kabul etmek için ENTER tuşuna basın
+     * Host hanadb2 için **depolama bölüm numarası** [<<assign automatically>>]: varsayılanı kabul etmek Için ENTER tuşuna basın
      * Host hanadb2 için **çalışan grubu** için [varsayılan]: varsayılan değer kabul etmek için ENTER tuşuna basın
      * Host hanadb3 için **seçme rolleri** için: **2** girin (bekleme için)
      * Host hanadb3 için **konak yük devretme grubu** için [varsayılan]: varsayılan değer kabul etmek için ENTER tuşuna basın
@@ -587,9 +587,9 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
      * **Devam etmek Istiyor musunuz (e/h)**: Özeti doğrulayıp her şey iyi görünüyorsa **y** girin
 
 
-2. **[1]** Global. ini 'yi doğrula  
+2. **[1]** Verify global.ini  
 
-   Global. ini dosyasını görüntüleyin ve iç SAP HANA düğümler arası iletişimin yapılandırmasının yerinde olduğundan emin olun. **İletişim** bölümünü doğrulayın. `hana` Alt ağ için adres alanına sahip olmalıdır ve `listeninterface` olarak `.internal`ayarlanmalıdır. **İnternal_hostname_resolution** bölümünü doğrulayın. Bu, `hana` alt ağa AIT olan Hana sanal makinelerinin IP adreslerine sahip olmalıdır.  
+   global.ini görüntüleyin ve iç SAP HANA düğümler arası iletişimin yapılandırmasının yerinde olduğundan emin olun. **İletişim** bölümünü doğrulayın. Alt ağ için adres alanına sahip olmalıdır `hana` ve `listeninterface` olarak ayarlanmalıdır `.internal` . **İnternal_hostname_resolution** bölümünü doğrulayın. Bu, alt ağa ait olan HANA sanal makinelerinin IP adreslerine sahip olmalıdır `hana` .  
 
    <pre><code>
     sudo cat /usr/sap/<b>HN1</b>/SYS/global/hdb/custom/config/global.ini
@@ -604,7 +604,7 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
     <b>10.9.2.6</b> = <b>hanadb3</b>
    </code></pre>
 
-3. **[1]** istemci IP adreslerinin istemci iletişimi için kullanıldığından emin olmak için konak eşlemesi ekleyin. Bölüm `public_host_resolution`ekleyin ve istemci alt AĞıNDAN ilgili IP adreslerini ekleyin.  
+3. **[1]** istemci IP adreslerinin istemci iletişimi için kullanıldığından emin olmak için konak eşlemesi ekleyin. Bölüm ekleyin `public_host_resolution` ve istemci alt ağından ılgılı IP adreslerini ekleyin.  
 
    <pre><code>
     sudo vi /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
@@ -622,7 +622,7 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
     sudo -u <b>hn1</b>adm /usr/sap/hostctrl/exe/sapcontrol -nr <b>03</b> -function StartSystem HDB
    </code></pre>
 
-5. **[1]** istemci arabiriminin iletişim için `client` alt ağdan IP adreslerini kullandığını doğrulayın.  
+5. **[1]** istemci arabiriminin `client` iletişim IÇIN alt ağdan IP adreslerini kullandığını doğrulayın.  
 
    <pre><code>
     # Execute as hn1adm
@@ -706,20 +706,20 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
 6. Temel Azure NetApp Files depolama SAP HANA iyileştirmek için aşağıdaki SAP HANA parametrelerini ayarlayın:
 
    - `max_parallel_io_requests` **128**
-   - `async_read_submit` **on**
-   - `async_write_submit_active` **on**
+   - `async_read_submit`**üzerinde**
+   - `async_write_submit_active`**üzerinde**
    - `async_write_submit_blocks`**Tümü**
 
    Daha fazla bilgi için [Azure NetApp Files kullanarak Microsoft Azure NetApp SAP uygulamaları][anf-sap-applications-azure]bölümüne bakın. 
 
-   SAP HANA 2,0 sistemlerinden başlayarak, içindeki `global.ini`parametreleri ayarlayabilirsiniz. Daha fazla bilgi için bkz. SAP Note [1999930](https://launchpad.support.sap.com/#/notes/1999930).  
+   SAP HANA 2,0 sistemlerinden başlayarak, içindeki parametreleri ayarlayabilirsiniz `global.ini` . Daha fazla bilgi için bkz. SAP Note [1999930](https://launchpad.support.sap.com/#/notes/1999930).  
    
    SAP HANA 1,0 sistem sürümleri SPS12 ve önceki sürümlerinde, bu parametreler yükleme sırasında SAP Note [2267798](https://launchpad.support.sap.com/#/notes/2267798)' de açıklandığı gibi ayarlanabilir.  
 
 7. Azure NetApp Files tarafından kullanılan depolamanın, 16 terabayta (TB) ait bir dosya boyutu sınırlaması vardır. SAP HANA, depolama sınırlamasından örtük bir şekilde haberdar değildir ve 16 TB 'lık dosya boyutu sınırına ulaşıldığında otomatik olarak yeni bir veri dosyası oluşturmaz. SAP HANA, 16 TB 'ın ötesinde dosyayı büyütmeye çalışırsa, bu girişim hatalara ve sonunda bir dizin sunucusu kilitlenmesine neden olur. 
 
    > [!IMPORTANT]
-   > SAP HANA, depolama alt sisteminin [16 TB sınırının](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits) ötesinde veri dosyalarını büyümeye çalışmasını engellemek için, içinde `global.ini`aşağıdaki parametreleri ayarlayın.  
+   > SAP HANA, depolama alt sisteminin [16 TB sınırının](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits) ötesinde veri dosyalarını büyümeye çalışmasını engellemek için, içinde aşağıdaki parametreleri ayarlayın `global.ini` .  
    > - datavolume_striping = true
    > - datavolume_striping_size_gb = 15000 daha fazla bilgi Için bkz. SAP Note [2400005](https://launchpad.support.sap.com/#/notes/2400005).
    > SAP Note [2631285](https://launchpad.support.sap.com/#/notes/2631285)' i unutmayın. 
@@ -780,7 +780,7 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
    </code></pre>
 
    > [!IMPORTANT]
-   > Bir düğüm çekirdek Panic ile karşılaştığında, *Tüm* Hana sanal makinelerinde 20 saniyeye ayarlayarak `kernel.panic` SAP HANA yük devretmeyle gecikmelerden kaçının. Yapılandırma tarihinde yapılır `/etc/sysctl`. Değişikliği etkinleştirmek için sanal makineleri yeniden başlatın. Bu değişiklik yapılmadıysa, bir düğüm çekirdek Panic ile karşılaşıyorsa yük devretme 10 veya daha fazla dakika sürebilir.  
+   > Bir düğüm çekirdek Panic ile karşılaştığında, `kernel.panic` *Tüm* Hana sanal makinelerinde 20 saniyeye ayarlayarak SAP HANA yük devretmeyle gecikmelerden kaçının. Yapılandırma tarihinde yapılır `/etc/sysctl` . Değişikliği etkinleştirmek için sanal makineleri yeniden başlatın. Bu değişiklik yapılmadıysa, bir düğüm çekirdek Panic ile karşılaşıyorsa yük devretme 10 veya daha fazla dakika sürebilir.  
 
 2. Aşağıdaki işlemleri gerçekleştirerek ad sunucusunu sonlandırın:
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79269737"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708341"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128 dinamik şifreleme ve anahtar dağıtım hizmetini kullanma
 > [!div class="op_single_selector"]
@@ -141,7 +141,7 @@ Akışınızı test etmek için [Azure Media Services Oynatıcısı](https://aka
 Önceki adımda, bir bildirim dosyasına işaret eden URL 'YI inşa edersiniz. Anahtar teslim hizmetine bir istek yapmak için istemciniz, akış bildirim dosyalarından gerekli bilgileri ayıklaması gerekir.
 
 ### <a name="manifest-files"></a>Bildirim dosyaları
-İstemci, bildirim dosyasından URL 'YI (içerik anahtar KIMLIĞI [KID] da içerir) ayıklaması gerekir. İstemci daha sonra anahtar teslim hizmetinden şifreleme anahtarını almaya çalışır. İstemcinin Ayrıca IV değerini ayıklaması ve akışın şifresini çözmek için kullanması gerekir. Aşağıdaki kod parçacığında Kesintisiz Akış bildiriminin `<Protection>` öğesi gösterilmektedir:
+İstemci, bildirim dosyasından URL 'YI (içerik anahtar KIMLIĞI [KID] da içerir) ayıklaması gerekir. İstemci daha sonra anahtar teslim hizmetinden şifreleme anahtarını almaya çalışır. İstemcinin Ayrıca IV değerini ayıklaması ve akışın şifresini çözmek için kullanması gerekir. Aşağıdaki kod parçacığında `<Protection>` kesintisiz akış bildiriminin öğesi gösterilmektedir:
 
 ```xml
     <Protection>
@@ -159,7 +159,7 @@ Akışınızı test etmek için [Azure Media Services Oynatıcısı](https://aka
 
 HLS söz konusu olduğunda, kök bildirimi kesim dosyalarına bozulur. 
 
-Örneğin, kök bildirimi: http:\//test001.Origin.mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest (format = M3U8-AAPL). Segment dosya adlarının bir listesini içerir.
+Örneğin, kök bildirimi: http: \/ /test001.Origin.mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest (format = M3U8-AAPL). Segment dosya adlarının bir listesini içerir.
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -168,7 +168,7 @@ HLS söz konusu olduğunda, kök bildirimi kesim dosyalarına bozulur.
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-Segment dosyalarından birini bir metin düzenleyicisinde açarsanız (örneğin, http:\//test001.Origin.mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels (514369)/manifest (video, biçim = M3U8-AAPL), dosyanın şifrelendiğini belirten #EXT-X anahtarı içerir.
+Segment dosyalarından birini bir metin düzenleyicisinde açarsanız (örneğin, http: \/ /test001.Origin.mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels (514369)/manifest (video, biçim = M3U8-AAPL), dosyanın şifrelendiğini belirten #EXT-X anahtarı içerir.
 
     #EXTM3U
     #EXT-X-VERSION:4
@@ -237,16 +237,16 @@ Aşağıdaki kod, anahtar teslim URI 'Si (bildirimden ayıklanan) ve bir belirte
 
 ### <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio projesi oluşturup yapılandırma
 
-1. Geliştirme ortamınızı ayarlayın ve App. config dosyasını, [.NET ile Media Services geliştirme](media-services-dotnet-how-to-use.md)bölümünde açıklandığı gibi bağlantı bilgileriyle doldurun.
+1. Geliştirme ortamınızı ayarlayın ve app.config dosyasını, [.NET ile Media Services geliştirme](media-services-dotnet-how-to-use.md)bölümünde açıklandığı gibi bağlantı bilgileriyle doldurun.
 
-2. Aşağıdaki öğeleri, App. config dosyanızda tanımlandığı şekilde appSettings 'e ekleyin:
+2. Aşağıdaki öğeleri app.config dosyanızda tanımlandığı şekilde appSettings 'e ekleyin:
 
     ```xml
     <add key="Issuer" value="http://testissuer.com"/>
     <add key="Audience" value="urn:test"/>
     ```
 
-### <a name="example"></a><a id="example"></a>Örneğinde
+### <a name="example"></a><a id="example"></a>Örnek
 
 Bu bölümde gösterilen kodu Program.cs dosyanızdaki kodun üzerine yazın.
  
@@ -260,5 +260,5 @@ Değişkenleri, giriş dosyalarınızın bulunduğu klasörlere işaret edecek �
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67593910"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887715"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Microsoft Azure CDN’de kenar düğümü performansını çözümleme
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -84,14 +84,14 @@ Bu ölçümlerin amacı, önbellek verimliliğinin iyileşip artamayacağını g
   * Azaltılmış işletimsel maliyetler.
 * Daha fazla istek CDN 'den doğrudan sunulacak olduğundan, geliştirilmiş veri teslimi hızlandırma.
 
-| Alan | Açıklama |
+| Alan | Description |
 | --- | --- |
 | Önbellek verimliliği |Önbellekten sunulan aktarılan veri yüzdesini gösterir. Bu ölçüm, istenen içeriğin önbelleğe alınmış bir sürümü doğrudan CDN 'den (uç sunuculardan) istek veripçilerine (ör. Web tarayıcısı) sunulduğunu ölçer. |
 | İsabet oranı |Önbellekten sunulan isteklerin yüzdesini gösterir. Bu ölçüm, istenen içeriğin önbelleğe alınmış bir sürümü doğrudan CDN 'den (uç sunuculardan) istekçilere (ör. Web tarayıcısı) sunulduğunda ölçer. |
 | Uzak baytların yüzdesi-önbellek yapılandırması yok |Kaynak sunuculardan, önbellek özelliği (HTTP kuralları altyapısı) sonucu olarak önbelleğe alınmayacak CDN 'ye (uç sunucular) sunulan trafik yüzdesini gösterir. |
 | Uzak bayt yüzdesi-süre sonu biten önbellek |Eski içerik yeniden doğrulamasının sonucu olarak, kaynak sunuculardan CDN 'ye (uç sunucular) sunulan trafik yüzdesini gösterir. |
 
-#### <a name="usage-metrics"></a>Ölçümleri kullanma
+#### <a name="usage-metrics"></a>Kullanım ölçümleri
 Bu ölçümlerin amacı, aşağıdaki maliyet kesme ölçüleriyle ilgili Öngörüler sağlamaktır:
 
 * CDN aracılığıyla işlem maliyetlerini en aza indirme.
@@ -102,7 +102,7 @@ Bu ölçümlerin amacı, aşağıdaki maliyet kesme ölçüleriyle ilgili Öngö
 > 
 > 
 
-| Alan | Açıklama |
+| Alan | Description |
 | --- | --- |
 | Ortalama çıkış baytları |CDN 'den (uç sunuculardan) sunulan her istek için, istek sahibine (ör. Web tarayıcısı) aktarılan baytların ortalama sayısını belirtir. |
 | Önbellek yapılandırması bayt oranı yok |CDN 'den (uç sunuculardan) sunulan trafik yüzdesini, önbelleği atlama özelliği nedeniyle önbelleğe alınmayacak olan istek sahibine (ör. Web tarayıcısına) gösterir. |
@@ -114,7 +114,7 @@ Bu ölçümlerin amacı, aşağıdaki maliyet kesme ölçüleriyle ilgili Öngö
 #### <a name="performance-metrics"></a>Performans Ölçümleri
 Bu ölçümlerin amacı, trafiğiniz için genel CDN performansını izlemek içindir.
 
-| Alan | Açıklama |
+| Alan | Description |
 | --- | --- |
 | Aktarım hızı |İçeriğin CDN 'den istek sahibine aktarıldığı ortalama oranı gösterir. |
 | Süre |Bir varlığın bir istek sahibine (ör. Web tarayıcısı) teslim edilmesi için geçen milisaniye cinsinden ortalama süreyi belirtir. |
@@ -126,7 +126,7 @@ Bu ölçümlerin amacı, trafiğiniz için genel CDN performansını izlemek iç
 #### <a name="secure-traffic-metrics"></a>Güvenli trafik ölçümleri
 Bu ölçümlerin amacı, HTTPS trafiği için CDN performansını izlemek içindir.
 
-| Alan | Açıklama |
+| Alan | Description |
 | --- | --- |
 | Güvenli önbellek verimliliği |Önbellekten sunulan HTTPS istekleri için aktarılan verilerin yüzdesini gösterir. Bu ölçüm, istenen içeriğin önbelleğe alınmış bir sürümü (ör. Web Browser) ile HTTPS üzerinden doğrudan istek üzerine (örn. Web tarayıcısı) sunulduğunu ölçer. |
 | Güvenli aktarım hızı |İçeriğin CDN 'den (uç sunuculardan), https üzerinden sahiplerini (ör. Web sunucuları) olarak aktarıldığı ortalama oranı gösterir. |
@@ -171,7 +171,7 @@ Bu modüldeki her rapor, farklı türlerde ölçümler için bant genişliği ve
 | Kullanıcı Aracısı |CDN 'imizde içeriğinizi istemek için ilk 10 Kullanıcı aracısının görüntülendiği bir çubuk grafik içerir. Genellikle, bir Kullanıcı Aracısı bir Web tarayıcısı, medya oynatıcı veya cep telefonu tarayıcısıdır. İlk 100 Kullanıcı aracısının istatistikleri doğrudan bu grafiğin altında görüntülenir. |
 | Başvuranları |CDN 'umuzdan erişilen içeriğe en iyi 10 başvuranları görüntüleyen bir çubuk grafik içerir. Genellikle, başvuran Web sayfasının veya içeriğinizi bağlayan kaynağın URL 'sidir. En üstteki 100 başvuranlar için grafiğin altında ayrıntılı bilgiler verilmiştir. |
 | Sıkıştırma türleri |İstenen varlıkları kenar sunucularımızla sıkıştırılıp sıkıştırılmadığını kesen bir halka grafik içerir. Sıkıştırılan varlıkların yüzdesi, kullanılan sıkıştırma türüne göre bölünür. Her bir sıkıştırma türü ve durumu için grafiğin altında ayrıntılı bilgiler verilmiştir. |
-| Dosya türleri |Hesabınız için CDN 'umuz aracılığıyla istenen ilk 10 dosya türünü görüntüleyen bir çubuk grafik içerir. Bu raporun amaçları doğrultusunda, bir dosya türü varlığın dosya adı uzantısı ve Internet medya türü ( \[örn. html metni/HTML\],. htm \[metin/html\],. aspx \[metni/HTML\]vb.) tarafından tanımlanır. Ayrıntılı bilgiler, en üstteki 100 dosya türleri için grafiğin altında verilmiştir. |
+| Dosya türleri |Hesabınız için CDN 'umuz aracılığıyla istenen ilk 10 dosya türünü görüntüleyen bir çubuk grafik içerir. Bu raporun amaçları doğrultusunda, bir dosya türü varlığın dosya adı uzantısı ve Internet medya türü (örn. html \[ Metni/HTML \] ,. htm \[ metin/html \] ,. aspx \[ Metni/HTML vb \] .) tarafından tanımlanır. Ayrıntılı bilgiler, en üstteki 100 dosya türleri için grafiğin altında verilmiştir. |
 | Benzersiz dosyalar |Belirli bir günde belirli bir süre boyunca istenen toplam benzersiz varlık sayısını çizmiş bir grafik içerir. |
 | Belirteç kimlik doğrulama özeti |İstenen varlıkların belirteç tabanlı kimlik doğrulamasıyla korunup korunmayacağı hakkında hızlı bir genel bakış sağlayan bir pasta grafiği içerir. Korunan varlıklar, denendiği kimlik doğrulamasının sonuçlarına göre grafikte görüntülenir. |
 | Belirteç kimlik doğrulaması reddetme ayrıntıları |Belirteç tabanlı kimlik doğrulaması nedeniyle reddedilen ilk 10 isteği görüntülemenize olanak tanıyan bir çubuk grafik içerir. |

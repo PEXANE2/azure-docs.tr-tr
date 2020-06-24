@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 3659070d4ffd4346a8827d2748e67db436fc15b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: 00192ab3663944908f282f601396651cdd319df2
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085748"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987482"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Özel varlık arama Bilişsel Beceri (Önizleme)
 
@@ -36,27 +36,27 @@ Microsoft. yetenekler. Text. CustomEntityLookupSkill
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
-| Parametre adı     | Açıklama |
+| Parametre adı     | Description |
 |--------------------|-------------|
-| entitiesDefinitionUri    | Eşleştirilecek tüm hedef metinleri içeren bir JSON veya CSV dosyasının yolu. Bu varlık tanımı, Dizin Oluşturucu çalıştırmasının başlangıcında okundu. Bu dosya için her türlü güncelleştirme, sonraki Çalışmayana kadar gerçekleştirilmeyecek. Bu yapılandırmaya HTTPS üzerinden erişilebilir olması gerekir. Beklenen CSV veya JSON şeması için aşağıda " [özel varlık tanımı](#custom-entity-definition-format) biçimi" başlığına bakın.|
-|ınlineentitiesdefinition | Satır içi JSON varlık tanımları. Bu parametre, varsa entitiesDefinitionUri parametresinin yerini alır. En fazla 10 KB 'lik yapılandırma satır içi olarak sağlanmayabilir. Beklenen JSON şeması için aşağıdaki [özel varlık tanımına](#custom-entity-definition-format) bakın. |
-|defaultLanguageCode |    Seçim Giriş metnini simgeleştirme ve ayırma için kullanılan giriş metninin dil kodu. Aşağıdaki diller desteklenir: `da, de, en, es, fi, fr, it, ko, pt`. Varsayılan değer English (`en`) ' dir. LanguageCode-CountryCode biçimi geçirirseniz, yalnızca biçimin languageCode kısmı kullanılır.  |
+| `entitiesDefinitionUri`    | Eşleştirilecek tüm hedef metinleri içeren bir JSON veya CSV dosyasının yolu. Bu varlık tanımı, Dizin Oluşturucu çalıştırmasının başlangıcında okundu. Bu dosya için her türlü güncelleştirme, sonraki Çalışmayana kadar gerçekleştirilmeyecek. Bu yapılandırmaya HTTPS üzerinden erişilebilir olması gerekir. Beklenen CSV veya JSON şeması için aşağıda " [özel varlık tanımı](#custom-entity-definition-format) biçimi" başlığına bakın.|
+|`inlineEntitiesDefinition` | Satır içi JSON varlık tanımları. Bu parametre, varsa entitiesDefinitionUri parametresinin yerini alır. En fazla 10 KB 'lik yapılandırma satır içi olarak sağlanmayabilir. Beklenen JSON şeması için aşağıdaki [özel varlık tanımına](#custom-entity-definition-format) bakın. |
+|`defaultLanguageCode` |    Seçim Giriş metnini simgeleştirme ve ayırma için kullanılan giriş metninin dil kodu. Aşağıdaki diller desteklenir: `da, de, en, es, fi, fr, it, ko, pt` . Varsayılan değer English () ' dir `en` . LanguageCode-CountryCode biçimi geçirirseniz, yalnızca biçimin languageCode kısmı kullanılır.  |
 
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Giriş adı      | Açıklama                   |
+| Giriş adı      | Description                   |
 |---------------|-------------------------------|
-| metin          | Çözümlenecek metin.          |
-| languageCode    | İsteğe bağlı. `"en"` varsayılan değerdir.  |
+| `text`          | Çözümlenecek metin.          |
+| `languageCode`    | İsteğe bağlı. `"en"` varsayılan değerdir.  |
 
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
 
-| Çıkış adı      | Açıklama                   |
+| Çıkış adı      | Description                   |
 |---------------|-------------------------------|
-| varlıklar | Bulunan eşleşmeler ve ilgili meta veriler hakkında bilgi içeren bir nesne dizisi. Tanımlanan varlıkların her biri aşağıdaki alanları içerebilir:  <ul> <li> *ad*: tanımlanan en üst düzey varlık. Varlık "normalleştirilmiş" formunu temsil eder. </li> <li> *ID*: "özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık için benzersiz bir tanımlayıcı.</li> <li> *Açıklama*: "özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık açıklaması. </li> <li> *şunu yazın:* "Özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık türü.</li> <li> *alt tür:* "Özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık alt türü.</li>  <li> *eşleşmeler*: kaynak metindeki bu varlık için eşleşmelerin her birini tanımlayan koleksiyon. Her eşleşme aşağıdaki üyelere sahip olacaktır: </li> <ul> <li> *metin*: ham metin, kaynak belgeden eşleşir. </li> <li> *konum*: eşleşmenin metinde bulunduğu konum. </li> <li> *uzunluk*: eşleşen metnin uzunluğu. </li> <li> *eşleşme uzaklığı*: Bu eşleşmenin farklı karakter sayısı, özgün varlık adından veya diğer addan farklıdır.  </li> </ul> </ul>
+| `entities` | Bulunan eşleşmeler ve ilgili meta veriler hakkında bilgi içeren bir nesne dizisi. Tanımlanan varlıkların her biri aşağıdaki alanları içerebilir:  <ul> <li> *ad*: tanımlanan en üst düzey varlık. Varlık "normalleştirilmiş" formunu temsil eder. </li> <li> *ID*: "özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık için benzersiz bir tanımlayıcı.</li> <li> *Açıklama*: "özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık açıklaması. </li> <li> *şunu yazın:* "Özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık türü.</li> <li> *alt tür:* "Özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık alt türü.</li>  <li> *eşleşmeler*: kaynak metindeki bu varlık için eşleşmelerin her birini tanımlayan koleksiyon. Her eşleşme aşağıdaki üyelere sahip olacaktır: </li> <ul> <li> *metin*: ham metin, kaynak belgeden eşleşir. </li> <li> *konum*: eşleşmenin metinde bulunduğu konum. </li> <li> *uzunluk*: eşleşen metnin uzunluğu. </li> <li> *eşleşme uzaklığı*: Bu eşleşmenin farklı karakter sayısı, özgün varlık adından veya diğer addan farklıdır.  </li> </ul> </ul>
   |
 
 ## <a name="custom-entity-definition-format"></a>Özel varlık tanımı biçimi
@@ -143,24 +143,24 @@ JSON tanımının daha karmaşık bir örneği, isteğe bağlı olarak her bir v
 
 Aşağıdaki tablolarda, eşleştirilecek varlıkları tanımlarken ayarlayabileceğiniz farklı yapılandırma parametreleri daha ayrıntılı olarak açıklanır:
 
-|  Alan adı  |        Açıklama  |
+|  Alan adı  |        Description  |
 |--------------|----------------------|
-| ad | En üst düzey varlık tanımlayıcısı. Yetenek çıkışındaki eşleşmeler bu ada göre gruplandırılır ve bulunan metnin "normalleştirilmiş" biçimini temsil etmelidir.  |
-| açıklama  | Seçim Bu alan, eşleşen metinler hakkında özel meta veriler için bir PASSTHROUGH olarak kullanılabilir. Bu alanın değeri, yetenek çıkışında varlığıyla her eşleşimiyle birlikte görüntülenir. |
-| type | Seçim Bu alan, eşleşen metinler hakkında özel meta veriler için bir PASSTHROUGH olarak kullanılabilir. Bu alanın değeri, yetenek çıkışında varlığıyla her eşleşimiyle birlikte görüntülenir. |
-| SubType | Seçim Bu alan, eşleşen metinler hakkında özel meta veriler için bir PASSTHROUGH olarak kullanılabilir. Bu alanın değeri, yetenek çıkışında varlığıyla her eşleşimiyle birlikte görüntülenir. |
-| id | Seçim Bu alan, eşleşen metinler hakkında özel meta veriler için bir PASSTHROUGH olarak kullanılabilir. Bu alanın değeri, yetenek çıkışında varlığıyla her eşleşimiyle birlikte görüntülenir. |
-| caseSensitive | Seçim Varsayılan değer false şeklindedir. Varlık adıyla karşılaştırmaların karakter büyük küçük harfe duyarlı olup olmadığını belirten Boole değeri. "Microsoft" örnek büyük/küçük harf duyarsız eşleşmeleri: Microsoft, microSoft, MICROSOFT |
-| Belirsizlik Zyeditdistance | Seçim Varsayılan değer 0 ' dır. En büyük 5 değeri. Varlık adıyla bir eşleşme oluşturulmasına neden olacak kabul edilebilir sayıda sabit karakter belirtir. Verilen herhangi bir eşleşme için mümkün olan en küçük belirsizlik döndürülür.  Örneğin, düzenleme uzaklığı 3 olarak ayarlandıysa, "Windows 10" yine "Windows", "Windows10" ve "Windows 7" ile eşleşir. <br/> Büyük/küçük harf duyarlılığı yanlış olarak ayarlandığında, büyük/küçük harf farkları belirsizlik toleransına doğru sayılmaz, aksi takdirde bunu yapın. |
-| defaultCaseSensitive | Seçim Bu varlık için varsayılan büyük/küçük harf duyarlılığı değerini değiştirir. Tüm diğer ad caseSensitive değerlerinin varsayılan değerini değiştirmek için kullanılır. |
-| defaultFuzzyEditDistance | Seçim Bu varlık için varsayılan benzer düzenleme uzaklığı değerini değiştirir. Tüm diğer adların belirsizlik değerlerini varsayılan değerini değiştirmek için kullanılabilir. |
-| deyim | Seçim Kök varlık adının alternatif yazılarını veya eşanlamlı türlerini belirtmek için kullanılabilecek karmaşık nesneler dizisi. |
+| `name` | En üst düzey varlık tanımlayıcısı. Yetenek çıkışındaki eşleşmeler bu ada göre gruplandırılır ve bulunan metnin "normalleştirilmiş" biçimini temsil etmelidir.  |
+| `description`  | Seçim Bu alan, eşleşen metinler hakkında özel meta veriler için bir PASSTHROUGH olarak kullanılabilir. Bu alanın değeri, yetenek çıkışında varlığıyla her eşleşimiyle birlikte görüntülenir. |
+| `type` | Seçim Bu alan, eşleşen metinler hakkında özel meta veriler için bir PASSTHROUGH olarak kullanılabilir. Bu alanın değeri, yetenek çıkışında varlığıyla her eşleşimiyle birlikte görüntülenir. |
+| `subtype` | Seçim Bu alan, eşleşen metinler hakkında özel meta veriler için bir PASSTHROUGH olarak kullanılabilir. Bu alanın değeri, yetenek çıkışında varlığıyla her eşleşimiyle birlikte görüntülenir. |
+| `id` | Seçim Bu alan, eşleşen metinler hakkında özel meta veriler için bir PASSTHROUGH olarak kullanılabilir. Bu alanın değeri, yetenek çıkışında varlığıyla her eşleşimiyle birlikte görüntülenir. |
+| `caseSensitive` | Seçim Varsayılan değer false şeklindedir. Varlık adıyla karşılaştırmaların karakter büyük küçük harfe duyarlı olup olmadığını belirten Boole değeri. "Microsoft" örnek büyük/küçük harf duyarsız eşleşmeleri: Microsoft, microSoft, MICROSOFT |
+| `fuzzyEditDistance` | Seçim Varsayılan değer 0 ' dır. En büyük 5 değeri. Varlık adıyla bir eşleşme oluşturulmasına neden olacak kabul edilebilir sayıda sabit karakter belirtir. Verilen herhangi bir eşleşme için mümkün olan en küçük belirsizlik döndürülür.  Örneğin, düzenleme uzaklığı 3 olarak ayarlandıysa, "Windows 10" yine "Windows", "Windows10" ve "Windows 7" ile eşleşir. <br/> Büyük/küçük harf duyarlılığı yanlış olarak ayarlandığında, büyük/küçük harf farkları belirsizlik toleransına doğru sayılmaz, aksi takdirde bunu yapın. |
+| `defaultCaseSensitive` | Seçim Bu varlık için varsayılan büyük/küçük harf duyarlılığı değerini değiştirir. Tüm diğer ad caseSensitive değerlerinin varsayılan değerini değiştirmek için kullanılır. |
+| `defaultFuzzyEditDistance` | Seçim Bu varlık için varsayılan benzer düzenleme uzaklığı değerini değiştirir. Tüm diğer adların belirsizlik değerlerini varsayılan değerini değiştirmek için kullanılabilir. |
+| `aliases` | Seçim Kök varlık adının alternatif yazılarını veya eşanlamlı türlerini belirtmek için kullanılabilecek karmaşık nesneler dizisi. |
 
-| Diğer ad özellikleri | Açıklama |
+| Diğer ad özellikleri | Description |
 |------------------|-------------|
-| metin  | Bir hedef varlık adının alternatif yazımı veya temsili.  |
-| caseSensitive | Seçim Yukarıdaki kök varlık "caseSensitive" parametresiyle aynı şekilde davranır, ancak yalnızca bu diğer ad için geçerlidir. |
-| Belirsizlik Zyeditdistance | Seçim Yukarıdaki "belirsizlik Zyeditdistance" parametresi ile aynı şekilde davranır, ancak yalnızca bu bir diğer ad için geçerlidir. |
+| `text`  | Bir hedef varlık adının alternatif yazımı veya temsili.  |
+| `caseSensitive` | Seçim Yukarıdaki kök varlık "caseSensitive" parametresiyle aynı şekilde davranır, ancak yalnızca bu diğer ad için geçerlidir. |
+| `fuzzyEditDistance` | Seçim Yukarıdaki "belirsizlik Zyeditdistance" parametresi ile aynı şekilde davranır, ancak yalnızca bu bir diğer ad için geçerlidir. |
 
 
 ### <a name="inline-format"></a>Satır içi biçim
@@ -188,7 +188,7 @@ Satır içi biçim kullanan örnek bir yetenek tanımı aşağıda gösterilmiş
       }, 
       { 
         "name" : "Xbox One", 
-        "type": "Harware",
+        "type": "Hardware",
         "subtype" : "Gaming Device",
         "id" : "4e36bf9d-5550-4396-8647-8e43d7564a76",
         "description" : "The Xbox One product"
@@ -208,7 +208,7 @@ Satır içi biçim kullanan örnek bir yetenek tanımı aşağıda gösterilmiş
     ]
   }
 ```
-Alternatif olarak, varlıklar tanım dosyasına bir işaretçi sağlamaya karar verirseniz, entitiesDefinitionUri biçimini kullanan örnek bir yetenek tanımı aşağıda gösterilmiştir:
+Alternatif olarak, varlıklar tanım dosyasına bir işaretçi sağlamaya karar verirseniz, biçimi kullanan örnek bir yetenek tanımı `entitiesDefinitionUri` aşağıda gösterilmiştir:
 
 ```json
   {
@@ -240,7 +240,7 @@ Alternatif olarak, varlıklar tanım dosyasına bir işaretçi sağlamaya karar 
         "recordId": "1",
         "data":
            {
-             "text": "The company microsoft was founded by Bill Gates. Microsoft's gaming console is called Xbox",
+             "text": "The company, Microsoft, was founded by Bill Gates. Microsoft's gaming console is called Xbox",
              "languageCode": "en"
            }
       }

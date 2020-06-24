@@ -4,16 +4,16 @@ description: Bu makalede, Azure portal kullanılarak Microsoft eşlemesi için y
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: f2be9b4e7152c61885b1a41e94ebd328059d437b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54674be0010bd062cfe6263db4167a24805a9e5a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618558"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727135"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Microsoft eşlemesi için yol filtrelerini yapılandırın: Azure portal
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ Rota filtreleri, desteklenen servislerin bir alt kümesini Microsoft eşlemesi a
 
 Exchange Online, SharePoint Online ve Skype Kurumsal gibi Office 365 hizmetlerine ve depolama ve SQL DB gibi Azure hizmetlerine Microsoft eşlemesi aracılığıyla erişilebilir. ExpressRoute bağlantı hattındaki Microsoft eşlemesi yapılandırıldığında, bu hizmetlerle ilgili tüm önekler oluşturulan BGP oturumları aracılığıyla bildirilir. Ön ek aracılığıyla sunulan hizmeti tanımlamak için her ön eke BGP topluluk değeri eklenir. BGP topluluk değerlerinin ve eşlendikleri hizmetlerin listesi için bkz. [BGP toplulukları](expressroute-routing.md#bgp).
 
-Tüm hizmetlere bağlantı gerekiyorsa, BGP aracılığıyla çok sayıda önek tanıtılabilir. Bu, ağınızdaki yönlendiriciler tarafından tutulan yol tablolarının boyutunu önemli ölçüde artırır. Yalnızca Microsoft eşlemesi üzerinden sunulan hizmetlerin bir alt kümesini kullanmak istiyorsanız, yol tablolarınızın boyutunu iki şekilde azaltabilirsiniz. Şunları yapabilirsiniz:
+Tüm hizmetlere bağlantı gerekiyorsa, BGP aracılığıyla çok sayıda önek tanıtılabilir. Bu, ağınızdaki yönlendiriciler tarafından tutulan yol tablolarının boyutunu önemli ölçüde artırır. Yalnızca Microsoft eşlemesi üzerinden sunulan hizmetlerin bir alt kümesini kullanmak istiyorsanız, yol tablolarınızın boyutunu iki şekilde azaltabilirsiniz. Seçenekleriniz şunlardır:
 
 - BGP topluluklarına rota filtreleri uygulayarak istenmeyen önekleri filtreleyin. Bu standart bir ağ uygulamasıdır ve genellikle birçok ağ içinde kullanılır.
 
@@ -86,7 +86,7 @@ Yol filtresinde kullanmak istediğiniz [BGP topluluk değerlerinin](expressroute
 Yol filtresi yalnızca bir kurala sahip olabilir ve kuralın ' Allow ' türünde olması gerekir. Bu kural, kendisiyle ilişkili BGP topluluk değerlerinin bir listesine sahip olabilir.
 
 ### <a name="1-create-a-route-filter"></a>1. yol filtresi oluşturma
-Yeni kaynak oluşturma seçeneğini belirleyerek bir yol filtresi oluşturabilirsiniz. Aşağıdaki görüntüde gösterildiği gibi, **kaynak** > **ağı oluştur ağ** > **routefilter**öğesine tıklayın:
+Yeni kaynak oluşturma seçeneğini belirleyerek bir yol filtresi oluşturabilirsiniz. **Create a resource**  >  **Networking**  >  Aşağıdaki görüntüde gösterildiği gibi, kaynak ağı oluştur ağ**routefilter**öğesine tıklayın:
 
 ![Rota filtresi oluşturma](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
 

@@ -10,15 +10,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/19/2019
 ms.author: allensu
-ms.openlocfilehash: 874ec75fb9173b6cee50bf8880510464fa13e9d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f30943eb0cc72f677785d1228b47b65764c1e7d
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254249"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887865"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Azure CDN önbelleğe alma davranışını önbelleğe alma kurallarıyla denetleme
 
@@ -75,7 +75,7 @@ Genel ve özel önbelleğe alma kuralları için önbelleğin süre sonu süresi
 
 Özel önbellek kuralları için, iki eşleşme koşulu vardır:
  
-- **Yol**: Bu koşul, etki alanı adı hariç olmak üzere URL 'nin yoluyla eşleşir ve joker karakter simgesini (\*) destekler. Örneğin, _/MyFile.exe HTML_, _/My/Folder/*_ ve _/My/images/*. jpg_. En fazla 260 karakter uzunluğunda olur.
+- **Yol**: Bu koşul, etki alanı adı hariç olmak üzere URL 'nin yoluyla eşleşir ve joker karakter simgesini () destekler \* . Örneğin, _/myfile.html_, _/My/Folder/*_ ve _/My/images/*. jpg_. En fazla 260 karakter uzunluğunda olur.
 
 - **Uzantı**: Bu koşul, istenen dosyanın dosya uzantısıyla eşleşiyor. Eşleştirilecek virgülle ayrılmış dosya uzantılarının bir listesini sağlayabilirsiniz. Örneğin, _. jpg_, _. mp3_veya _. png_. En fazla uzantı sayısı 50, uzantı başına en fazla karakter sayısı 16 ' dır. 
 
@@ -103,7 +103,7 @@ Genel ve özel önbelleğe alma kuralları aşağıdaki sırayla işlenir:
    - Önbelleğe alma davranışı: **eksikse ayarla**
    - Önbellek sona erme süresi: 3 gün
 
-Bu kurallar ayarlandığında, bir _ &lt;uç nokta ana bilgisayar&gt;adı_. azureedge.net/Home/index.html için bir istek, şu şekilde ayarlanmış olan #2 özel önbelleğe alma kuralı tetikler: eksik ve 3 gün olarak **ayarlanır** . Bu nedenle, *index. html* dosyası `Cache-Control` veya `Expires` http üstbilgileri varsa bunlar kabul edilir; Aksi takdirde, bu üst bilgiler ayarlanmamışsa, bu dosya 3 gün boyunca önbelleğe alınır.
+Bu kurallar ayarlandığında, _ &lt; uç nokta ana bilgisayar adı &gt; _. azureedge.net/Home/index.html için bir istek özel önbelleğe alma kuralı #2 tetikler: eksik ve 3 gün olarak **ayarlanır** . Bu nedenle, *index.html* dosyası `Cache-Control` veya `Expires` http üstbilgileri varsa, bunlar kabul edilir; Aksi takdirde, bu üst bilgiler ayarlanmamışsa, dosya 3 gün boyunca önbelleğe alınır.
 
 > [!NOTE] 
 > Bir kural değişikliğinden önce önbelleğe alınan dosyalar, kaynak önbellek süresi ayarını korur. Önbellek sürelerini sıfırlamak için [dosyayı temizlemeniz](cdn-purge-endpoint.md)gerekir. 

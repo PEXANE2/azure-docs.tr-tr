@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: allensu
-ms.openlocfilehash: 737803f5b7fcddb07787afbb48354b4ca922e9ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cff355aeb74efc9dec2780840ae57fea4c5764cc
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259757"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888717"
 ---
 # <a name="custom-reports-from-verizon"></a>Verizon 'ten özel raporlar
 
@@ -68,16 +68,16 @@ Tarih aralığını seçtikten sonra, raporu oluşturmak için **Git** ' e tıkl
 
 ## <a name="edge-cnames-custom-report-fields"></a>Edge CNAMES özel rapor alanları
 
-| Alan                     | Açıklama   |
+| Alan                     | Description   |
 |---------------------------|---------------|
 | 2xx                       | Edge CNAME için bir 2xx HTTP durum kodu ile sonuçlanan toplam istek sayısını veya (MB) verileri belirtir (örneğin, 200 Tamam). |
 | 3xx                       | Edge CNAME için bir 3xx HTTP durum kodu ile sonuçlanan toplam istek sayısını veya (MB) verileri belirtir (örneğin, 302 bulundu veya 304 değiştirilmez. |
 | 4xx                       | Edge CNAME için bir 4xx HTTP durum kodu (örneğin, 400 Hatalı Istek, 403 yasaklanmış veya 404 bulunamadı) ile sonuçlanan toplam istek sayısını veya aktarılan verileri gösterir. |
 | 5xx                       | X xx HTTP durum koduna (örneğin, 500 Iç sunucu hatası veya 502 hatalı ağ geçidi) neden olan Edge CNAME için aktarılan toplam istek veya veri sayısını gösterir (MB). |
 | İsabetli önbellek okuması yüzdesi               | Doğrudan önbellekten istek sahibine sunulan önbelleklenebilir isteklerin yüzdesini gösterir. |
-| Önbellek ısabetleri                | Uç CNAME için (örneğin, TCP_EXPIRED_HIT, TCP_HIT veya TCP_PARTIAL_HIT) sonuçlanan toplam istek sayısını veya aktarılan verileri gösterir. İstenen içeriğin önbelleğe alınmış bir sürümü bulunduğunda önbellek okuması oluşur. |
+| İsabetli Önbellek Okuma Sayısı                | Uç CNAME için (örneğin, TCP_EXPIRED_HIT, TCP_HIT veya TCP_PARTIAL_HIT) sonuçlanan toplam istek sayısını veya aktarılan verileri gösterir. İstenen içeriğin önbelleğe alınmış bir sürümü bulunduğunda önbellek okuması oluşur. |
 | Aktarılan veri (MB)     | Sınır CNAME için uç sunuculardan HTTP istemcilerine (Web tarayıcıları) aktarılan toplam veri miktarını (MB) gösterir. Aktarılan veri miktarı, yanıt gövdesine HTTP yanıt üst bilgileri eklenerek hesaplanır. Sonuç olarak, her varlık için aktarılan veri miktarı gerçek dosya boyutundan daha büyük. |
-| Açıklama               | Ana bilgisayar adına göre bir Edge CNAME 'i tanımlar |
+| Description               | Ana bilgisayar adına göre bir Edge CNAME 'i tanımlar |
 | İsabetler                      | Uç CNAME 'e gönderilen toplam istek sayısını gösterir |
 | Kaç                    | Uç CNAME için bir önbellek isabetsizliği (örneğin, TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS veya TCP_MISS) ile sonuçlanan toplam istek veya aktarılan veri sayısını belirtir. İstenen içerik, isteği karşılayan uç sunucuda önbelleğe alınmamışsa önbellek isabetsizliği oluşur. | 
 | Önbellek yok                  | Edge CNAME için CONFIG_NOCACHE önbellek durum kodu ile sonuçlanan toplam istek sayısını veya (MB) verileri gösterir.  |

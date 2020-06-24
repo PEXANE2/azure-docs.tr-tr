@@ -3,25 +3,25 @@ title: Azure Active Directory | Uygulama portallarım için Koleksiyonlar oluşt
 description: Son kullanıcılarınıza yönelik daha basit uygulamalar için uygulamalarımı özelleştirmek üzere uygulama koleksiyonlarımı kullanın. Uygulamaları ayrı sekmeler içeren gruplar halinde düzenleyin.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/10/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c91b9ffc9e3487e492c91cb0f5825d0b725f9410
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61cc4c5d718b9588da97d60b070259d6bc6e3058
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77120089"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84761281"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>Uygulamalarım portalında koleksiyonlar oluşturma
 
@@ -34,7 +34,7 @@ Kullanıcılarınız, erişimi olan bulut tabanlı uygulamaları görüntülemek
 
 1. [**Azure Portal**](https://portal.azure.com/) açın ve Kullanıcı Yöneticisi veya genel yönetici olarak oturum açın.
 
-2. **Azure Active Directory** > **Kullanıcı ayarları**' na gidin.
+2. **Azure Active Directory**  >  **Kullanıcı ayarları**' na gidin.
 
 3. **Kullanıcı özelliği önizlemeleri**altında **Kullanıcı özelliği Önizleme ayarlarını yönet**' i seçin.
 
@@ -43,7 +43,7 @@ Kullanıcılarınız, erişimi olan bulut tabanlı uygulamaları görüntülemek
    * **All** -tüm kullanıcılar için özellikleri etkinleştirilir.
 
 > [!NOTE]
-> Uygulamalar portalı 'nı açmak için, kullanıcılar bağlantısını `https://myapps.microsoft.com` veya kuruluşunuzun gibi özelleştirilmiş bağlantıyı kullanabilir (örneğin,). `https://myapps.microsoft.com/contoso.com` Yeni uygulamalarım deneyimini etkinleştirdikten sonra, **güncelleştirilmiş uygulamalar deneyimimin kullanılabilir olduğu** başlık, uygulamalar sayfasının en üstünde görüntülenir ve kullanıcılar yeni deneyimi görüntülemek için **deneyin** seçeneğini belirleyebilir. Kullanıcılar yeni deneyimi kullanmayı durdurmak için sayfanın üst kısmındaki **yeni deneyim dışında bırak** başlığından **Evet** ' i seçebiliyor.
+> Uygulamalar portalı 'nı açmak için, kullanıcılar bağlantısını `https://myapps.microsoft.com` veya kuruluşunuzun gibi özelleştirilmiş bağlantıyı kullanabilir (örneğin,) `https://myapps.microsoft.com/contoso.com` . Yeni uygulamalarım deneyimini etkinleştirdikten sonra, **güncelleştirilmiş uygulamalar deneyimimin kullanılabilir olduğu** başlık, uygulamalar sayfasının en üstünde görüntülenir ve kullanıcılar yeni deneyimi görüntülemek için **deneyin** seçeneğini belirleyebilir. Kullanıcılar yeni deneyimi kullanmayı durdurmak için sayfanın üst kısmındaki **yeni deneyim dışında bırak** başlığından **Evet** ' i seçebiliyor.
 
 ## <a name="create-a-collection"></a>Koleksiyon oluşturma
 
@@ -51,7 +51,7 @@ Bir koleksiyon oluşturmak için bir Azure AD Premium P1 veya P2 lisansına sahi
 
 1. [**Azure Portal**](https://portal.azure.com/) açın ve Azure AD Premium P1 veya P2 lisansıyla yönetici olarak oturum açın.
 
-2. **Azure Active Directory** > **kurumsal uygulamalara**gidin.
+2. **Azure Active Directory**  >  **kurumsal uygulamalara**gidin.
 
 3. **Yönet**altında **koleksiyonlar**' ı seçin.
 
@@ -85,17 +85,17 @@ Denetim günlükleri, koleksiyon oluşturma Son Kullanıcı eylemleri de dahil o
 * Self Servis uygulama ekleme (Son Kullanıcı)
 * Self Servis uygulama silme (Son Kullanıcı)
 
-Etkinlik bölümündeki **Azure Active Directory** > **Kurumsal uygulamalar** > **Denetim günlükleri** ' ni seçerek [Azure Portal](https://portal.azure.com) denetim günlüklerine erişebilirsiniz. **Hizmet**Için **uygulamalarım**' ı seçin.
+[Azure portal](https://portal.azure.com) Etkinlik bölümündeki **Azure Active Directory**  >  **Kurumsal uygulamalar**  >  **Denetim günlükleri** ' ni seçerek Azure Portal denetim günlüklerine erişebilirsiniz. **Hizmet**Için **uygulamalarım**' ı seçin.
 
 ## <a name="get-support-for-my-account-pages"></a>Hesap Sayfalarım için destek alın
 
-Uygulamalarım sayfasında, bir**Kullanıcı hesap ayarlarını açmak** için **Hesabım görünümmi seçip Hesabım** > seçeneğini belirleyebilir. Azure **ad Hesabım** sayfasında, kullanıcılar güvenlik bilgilerini, cihazlarını, parolalarını ve daha fazlasını yönetebilir. Office hesap ayarlarına de erişebilirler.
+Uygulamalarım sayfasında, bir Kullanıcı hesap ayarlarını açmak için **Hesabım görünümmi seçip Hesabım**seçeneğini belirleyebilir  >  **View my account** . Azure **ad Hesabım** sayfasında, kullanıcılar güvenlik bilgilerini, cihazlarını, parolalarını ve daha fazlasını yönetebilir. Office hesap ayarlarına de erişebilirler.
 
 Azure AD hesabı sayfası veya Office hesabı sayfasında bir sorun için destek isteği göndermeniz gerekiyorsa, isteğiniz doğru şekilde yönlendirilmek için aşağıdaki adımları izleyin: 
 
-* **Azure AD "Hesabım"** sayfasındaki sorunlar için Azure Portal içinden bir destek isteği açın. **Yeni destek isteği****Azure Active Directory** >  **Azure Portal** > gidin.
+* **Azure AD "Hesabım"** sayfasındaki sorunlar için Azure Portal içinden bir destek isteği açın. **Azure portal**  >  **Azure Active Directory**  >  **Yeni destek isteği**Azure Active Directory Azure Portal gidin.
 
-* **Office "Hesabım"** sayfasındaki sorunlar için Microsoft 365 Yönetim Merkezi içinden bir destek isteği açın. **Microsoft 365 Yönetim Merkezi** > **desteği**' ne gidin. 
+* **Office "Hesabım"** sayfasındaki sorunlar için Microsoft 365 Yönetim Merkezi içinden bir destek isteği açın. **Microsoft 365 Yönetim Merkezi**  >  **desteği**' ne gidin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure Active Directory uygulamalar için son kullanıcı deneyimleri](end-user-experiences.md)

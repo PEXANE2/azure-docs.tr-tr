@@ -4,16 +4,16 @@ description: Bu makalede, MongoDB API 'sini kullanarak Azure Cosmos DB Dizin olu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
-ms.topic: conceptual
-ms.date: 04/03/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: fd602f88acf26e821e57e0a844f543aac08dad0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0b14eefcc0b484c92faf1148ae2972f51b04d31
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732700"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260704"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde Dizin oluşturmayı yönetme
 
@@ -21,9 +21,9 @@ MongoDB için Azure Cosmos DB API 'SI, Azure Cosmos DB temel dizin yönetimi ola
 
 ## <a name="indexing-for-mongodb-server-version-36"></a>MongoDB sunucu sürümü 3,6 için dizin oluşturma
 
-Azure Cosmos DB MongoDB Server sürüm 3,6 için API 'SI, `_id` alanı otomatik olarak dizinlenebilir ve bu bırakılamaz. Bu, parça anahtarı başına `_id` alanın benzersizlik düzeyini otomatik olarak zorlar.
+Azure Cosmos DB MongoDB Server sürüm 3,6 için API 'SI `_id` , alanı otomatik olarak dizinlenebilir ve bu bırakılamaz. Bu, parça anahtarı başına alanın benzersizlik düzeyini otomatik olarak zorlar `_id` . MongoDB için Azure Cosmos DB API 'sinde, parçalama ve dizin oluşturma ayrı kavramlardır. Parça anahtarınızı dizinlemek zorunda değilsiniz. Bununla birlikte, belgenizdeki diğer tüm özellikler gibi, bu özellik sorgularda ortak bir filtre ise, parça anahtarını dizinlemeniz önerilir.
 
-Ek alanlara dizin eklemek için MongoDB Dizin Yönetimi komutlarını uygularsınız. MongoDB 'de olduğu gibi, MongoDB için Azure Cosmos DB API 'SI yalnızca `_id` alanı otomatik olarak dizine ekler. Bu varsayılan dizin oluşturma ilkesi, tüm alanları varsayılan olarak dizinleyen Azure Cosmos DB SQL API 'sinden farklıdır.
+Ek alanlara dizin eklemek için MongoDB Dizin Yönetimi komutlarını uygularsınız. MongoDB 'de olduğu gibi, MongoDB için Azure Cosmos DB API 'SI yalnızca alanı otomatik olarak dizine ekler `_id` . Bu varsayılan dizin oluşturma ilkesi, tüm alanları varsayılan olarak dizinleyen Azure Cosmos DB SQL API 'sinden farklıdır.
 
 Bir sorguya sıralama uygulamak için sıralama işleminde kullanılan alanlarda bir dizin oluşturmanız gerekir.
 
@@ -31,7 +31,7 @@ Bir sorguya sıralama uygulamak için sıralama işleminde kullanılan alanlarda
 
 ### <a name="single-field"></a>Tek alan
 
-Tek bir alanda dizinler oluşturabilirsiniz. Tek alan dizininin sıralama düzeni önemi değildir. Aşağıdaki komut, alanında `name`bir dizin oluşturur:
+Tek bir alanda dizinler oluşturabilirsiniz. Tek alan dizininin sıralama düzeni önemi değildir. Aşağıdaki komut, alanında bir dizin oluşturur `name` :
 
 `db.coll.createIndex({name:1})`
 
@@ -41,7 +41,7 @@ Bir sorgu, kullanılabilir yerlerde birden çok tek alan dizini kullanır. Kapsa
 
 Azure Cosmos DB, MongoDB için API, sürüm 3,6 kablo protokolünü kullanan hesaplara yönelik bileşik dizinleri destekler. Bileşik dizine en fazla sekiz alan ekleyebilirsiniz. MongoDB 'nin aksine, yalnızca sorgunuzun aynı anda birden çok alanda etkili bir şekilde sıralanması gerekiyorsa bileşik bir dizin oluşturmanız gerekir. Sıralama gerektirmeyen birden çok filtreye sahip sorgularda tek bir bileşik dizin yerine birden çok tek alan dizini oluşturun.
 
-Aşağıdaki komut, alanlarda `name` bir bileşik dizin oluşturur ve: `age`
+Aşağıdaki komut, alanlarda bir bileşik dizin oluşturur `name` ve `age` :
 
 `db.coll.createIndex({name:1,age:1})`
 
@@ -49,7 +49,7 @@ Aşağıdaki örnekte gösterildiği gibi, aynı anda birden çok alanda etkili 
 
 `db.coll.find().sort({name:1,age:1})`
 
-Yukarıdaki bileşik dizini, tüm alanlarda ters sıralama düzeni ile bir sorguyu etkin bir şekilde sıralamak için de kullanabilirsiniz. Bir örneği aşağıda verilmiştir:
+Yukarıdaki bileşik dizini, tüm alanlarda ters sıralama düzeni ile bir sorguyu etkin bir şekilde sıralamak için de kullanabilirsiniz. İşte bir örnek:
 
 `db.coll.find().sort({name:-1,age:-1})`
 
@@ -63,15 +63,107 @@ Azure Cosmos DB diziler içinde depolanan içeriğe dizin eklemek için çok tu�
 
 ### <a name="geospatial-indexes"></a>Jeo-uzamsal dizinler
 
-Birçok Jeo-uzamsal işleç, Jeo-uzamsal dizinlerden faydalanır. Şu anda, MongoDB için Azure Cosmos DB API 'leri `2dsphere` destekler. API henüz dizinleri desteklemez `2d` .
+Birçok Jeo-uzamsal işleç, Jeo-uzamsal dizinlerden faydalanır. Şu anda, MongoDB için Azure Cosmos DB API 'leri destekler `2dsphere` . API henüz `2d` dizinleri desteklemez.
 
-`location` Alanda Jeo-uzamsal dizin oluşturma örneği aşağıda verilmiştir:
+Alanda Jeo-uzamsal dizin oluşturma örneği aşağıda verilmiştir `location` :
 
 `db.coll.createIndex({ location : "2dsphere" })`
 
 ### <a name="text-indexes"></a>Metin dizinleri
 
 MongoDB için Azure Cosmos DB API 'SI Şu anda metin dizinlerini desteklememektedir. Dizelerde metin arama sorguları için, Azure Cosmos DB ile [Azure bilişsel arama](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) tümleştirmesini kullanmanız gerekir.
+
+## <a name="wildcard-indexes"></a>Joker karakter dizinleri
+
+Bilinmeyen alanlara karşı sorguları desteklemek için joker dizinleri kullanabilirsiniz. Aileler hakkında verileri tutan bir koleksiyonunuz olduğunu düşünelim.
+
+Bu koleksiyondaki örnek bir belgenin parçası aşağıda verilmiştir:
+
+```json
+  "children": [
+     {
+         "firstName": "Henriette Thaulow",
+         "grade": "5"
+     }
+  ]
+```
+
+İşte, bu kez daha az farklı bir özellik kümesine sahip bir örnek `children` :
+
+```json
+  "children": [
+      {
+        "familyName": "Merriam",
+        "givenName": "Jesse",
+        "pets": [
+            { "givenName": "Goofy" },
+            { "givenName": "Shadow" }
+      },
+      {
+        "familyName": "Merriam",
+        "givenName": "John",
+      }
+  ]
+```
+
+Bu koleksiyonda, belgeler birçok farklı özelliğe sahip olabilir. Dizideki tüm verilerin dizinini `children` oluşturmak istiyorsanız iki seçeneğiniz vardır: her bir özellik için ayrı dizinler oluşturun veya tüm dizi için tek bir joker dizin oluşturun `children` .
+
+### <a name="create-a-wildcard-index"></a>Joker karakter oluşturma
+
+Aşağıdaki komut, içindeki herhangi bir özelliklerde bir joker dizin oluşturur `children` :
+
+`db.coll.createIndex({"children.$**" : 1})`
+
+**MongoDB 'Nin aksine, joker karakter dizinleri sorgu koşullarına göre birden çok alanı destekleyebilir**. Her özellik için ayrı bir dizin oluşturmak yerine bir tek joker karakter dizini kullanırsanız sorgu performansında bir farklılık olmayacaktır.
+
+Joker karakter sözdizimini kullanarak aşağıdaki dizin türlerini oluşturabilirsiniz:
+
+- Tek alan
+- Jeo-uzamsal
+
+### <a name="indexing-all-properties"></a>Tüm özellikleri dizine alma
+
+Tüm alanlarda joker karakter oluşturmak için aşağıdaki adımları uygulayın:
+
+`db.coll.createIndex( { "$**" : 1 } )`
+
+Geliştirmeye Başlarken, tüm alanlarda bir joker karakter dizini oluşturmak yararlı olabilir. Bir belgede daha fazla özellik dizinlendiğinden, belgeyi yazma ve güncelleştirme için Istek birimi (RU) ücreti artar. Bu nedenle, yazma ağır bir iş yükünüz varsa, joker dizinleri kullanmanın aksine yolları tek tek dizine almalısınız.
+
+### <a name="limitations"></a>Sınırlamalar
+
+Joker dizinler aşağıdaki dizin türlerinden veya özelliklerden hiçbirini desteklemez:
+
+- İstekteki
+- TTL
+- Benzersiz
+
+**MongoDB 'Nin aksine**, mongodb için Azure Cosmos DB API 'sindeki farklı Joker **dizinleri kullanamazsınız:**
+
+- Birden çok özel alan içeren bir joker karakter dizini oluşturma
+
+`db.coll.createIndex(
+    { "$**" : 1 },
+    { "wildcardProjection " :
+        {
+           "children.givenName" : 1,
+           "children.grade" : 1
+        }
+    }
+)`
+
+- Birden çok belirli alanı dışlayan bir joker karakter dizini oluşturma
+
+`db.coll.createIndex(
+    { "$**" : 1 },
+    { "wildcardProjection" :
+        {
+           "children.givenName" : 0,
+           "children.grade" : 0
+        }
+    }
+)`
+
+Alternatif olarak, birden çok joker dizin oluşturabilirsiniz.
 
 ## <a name="index-properties"></a>Dizin Özellikleri
 
@@ -84,7 +176,7 @@ Aşağıdaki işlemler, hat Protokolü sürüm 3,6 ' a hizmet veren hesaplar ve 
 > [!IMPORTANT]
 > Benzersiz dizinler yalnızca koleksiyon boş olduğunda (belge içermiyorsa) oluşturulabilir.
 
-Aşağıdaki komut, alanında `student_id`benzersiz bir dizin oluşturur:
+Aşağıdaki komut, alanında benzersiz bir dizin oluşturur `student_id` :
 
 ```shell
 globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )
@@ -99,7 +191,7 @@ globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )
 
 Parçalı koleksiyonlar için, benzersiz bir dizin oluşturmak üzere parça (bölüm) anahtarını sağlamanız gerekir. Diğer bir deyişle, parçalı bir koleksiyondaki tüm benzersiz dizinler, alanlardan birinin bölüm anahtarı olduğu bileşik dizinlerdir.
 
-Aşağıdaki ```coll``` komutlar, alanlar ```university``` `student_id` üzerinde benzersiz bir dizin içeren parçalı bir koleksiyon (parça anahtarı) oluşturur: `university`
+Aşağıdaki komutlar, ```coll``` alanlar üzerinde benzersiz bir dizin içeren parçalı bir koleksiyon (parça anahtarı ```university``` ) oluşturur `student_id` `university` :
 
 ```shell
 globaldb:PRIMARY> db.runCommand({shardCollection: db.coll._fullName, key: { university: "hashed"}});
@@ -124,7 +216,7 @@ globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1, "university" : 1 }, {
 
 ### <a name="ttl-indexes"></a>TTL dizinleri
 
-Belirli bir koleksiyonda belge kullanım süresini etkinleştirmek için [yaşam süresi (TTL) dizini](../cosmos-db/time-to-live.md)oluşturmanız gerekir. TTL dizini, bir `_ts` `expireAfterSeconds` değeri olan alan üzerindeki bir dizindir.
+Belirli bir koleksiyonda belge kullanım süresini etkinleştirmek için [yaşam süresi (TTL) dizini](../cosmos-db/time-to-live.md)oluşturmanız gerekir. TTL dizini, bir `_ts` değeri olan alan üzerindeki bir dizindir `expireAfterSeconds` .
 
 Örnek:
 
@@ -139,9 +231,9 @@ Yukarıdaki komut, ```db.coll``` koleksiyonda son 10 saniye içinde değiştiril
 
 ## <a name="track-index-progress"></a>Dizin ilerlemesini izleme
 
-Azure Cosmos DB MongoDB için API 'sinin 3,6 sürümü, `currentOp()` veritabanı örneğindeki dizin ilerlemesini izleme komutunu destekler. Bu komut, bir veritabanı örneği üzerinde devam eden işlemler hakkında bilgi içeren bir belge döndürür. Yerel MongoDB 'de tüm devam eden işlemleri izlemek için `currentOp` komutunu kullanın. MongoDB için Azure Cosmos DB API 'sinde bu komut yalnızca dizin işleminin izlenmesini destekler.
+Azure Cosmos DB MongoDB için API 'sinin 3,6 sürümü, `currentOp()` veritabanı örneğindeki dizin ilerlemesini izleme komutunu destekler. Bu komut, bir veritabanı örneği üzerinde devam eden işlemler hakkında bilgi içeren bir belge döndürür. `currentOp`Yerel MongoDB 'de tüm devam eden işlemleri izlemek için komutunu kullanın. MongoDB için Azure Cosmos DB API 'sinde bu komut yalnızca dizin işleminin izlenmesini destekler.
 
-İşte Dizin ilerlemesini izlemek için `currentOp` komutunun nasıl kullanılacağını gösteren bazı örnekler:
+İşte `currentOp` Dizin ilerlemesini izlemek için komutunun nasıl kullanılacağını gösteren bazı örnekler:
 
 * Bir koleksiyon için Dizin ilerlemesini al:
 
@@ -165,7 +257,7 @@ Azure Cosmos DB MongoDB için API 'sinin 3,6 sürümü, `currentOp()` veritaban�
 
 Dizin ilerleme durumu ayrıntıları geçerli dizin işleminin ilerleme yüzdesini gösterir. Dizin ilerleme durumunun farklı aşamaları için çıkış belgesi biçimini gösteren bir örnek aşağıda verilmiştir:
 
-- "Foo" koleksiyonundaki bir dizin işlemi ve yüzde 60 olan "çubuk" veritabanı aşağıdaki çıktı belgesine sahip olacaktır. `Inprog[0].progress.total` Alan, hedef tamamlanma yüzdesi olarak 100 gösterir.
+- "Foo" koleksiyonundaki bir dizin işlemi ve yüzde 60 olan "çubuk" veritabanı aşağıdaki çıktı belgesine sahip olacaktır. `Inprog[0].progress.total`Alan, hedef tamamlanma yüzdesi olarak 100 gösterir.
 
    ```json
    {
@@ -230,7 +322,7 @@ Yeni bir dizin eklediğinizde, sorgular dizini hemen kullanacaktır. Bu, sorgula
 
 ## <a name="migrate-collections-with-indexes"></a>Koleksiyonları dizinlerle geçirme
 
-Şu anda, koleksiyon belge içermiyorsa yalnızca benzersiz dizinler oluşturabilirsiniz. Popüler MongoDB geçiş araçları, verileri içeri aktardıktan sonra benzersiz dizinler oluşturmaya çalışır. Bu sorunu aşmak için, geçiş aracının denemeye izin vermek yerine, ilgili koleksiyonları ve benzersiz dizinleri el ile oluşturabilirsiniz. (Komut satırındaki ```mongorestore``` `--noIndexRestore` bayrağını kullanarak için bu davranışı elde edebilirsiniz.)
+Şu anda, koleksiyon belge içermiyorsa yalnızca benzersiz dizinler oluşturabilirsiniz. Popüler MongoDB geçiş araçları, verileri içeri aktardıktan sonra benzersiz dizinler oluşturmaya çalışır. Bu sorunu aşmak için, geçiş aracının denemeye izin vermek yerine, ilgili koleksiyonları ve benzersiz dizinleri el ile oluşturabilirsiniz. ( ```mongorestore``` Komut satırındaki bayrağını kullanarak için bu davranışı elde edebilirsiniz `--noIndexRestore` .)
 
 ## <a name="indexing-for-mongodb-version-32"></a>MongoDB sürüm 3,2 için dizin oluşturma
 
@@ -240,7 +332,7 @@ Sürüm 3,2 kullanıyorsanız, bu bölümde sürüm 3,6 ile ilgili önemli farkl
 
 ### <a name="dropping-default-indexes-version-32"></a>Varsayılan dizinler bırakılıyor (sürüm 3,2)
 
-Azure Cosmos DB 3,6 sürümünün MongoDB için API 'sinin aksine, sürüm 3,2 varsayılan olarak her özelliği dizine ekler. Bir koleksiyon (```coll```) için bu varsayılan dizinleri bırakmak üzere aşağıdaki komutu kullanabilirsiniz:
+Azure Cosmos DB 3,6 sürümünün MongoDB için API 'sinin aksine, sürüm 3,2 varsayılan olarak her özelliği dizine ekler. Bir koleksiyon () için bu varsayılan dizinleri bırakmak üzere aşağıdaki komutu kullanabilirsiniz ```coll``` :
 
 ```JavaScript
 > db.coll.dropIndexes()
@@ -253,7 +345,12 @@ Varsayılan dizinleri bırakırken, sürüm 3,6 ' de olduğu gibi daha fazla diz
 
 Bileşik dizinler bir belgenin birden çok alanına başvurular içerir. Bileşik dizin oluşturmak isterseniz, [destek isteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)kaydederek 3,6 sürümüne yükseltin.
 
+### <a name="wildcard-indexes-version-32"></a>Joker karakter dizinleri (sürüm 3,2)
+
+Bir joker karakter dizini oluşturmak istiyorsanız, bir [destek isteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)kaydederek 3,6 sürümüne yükseltin.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Cosmos DB’de dizin oluşturma](../cosmos-db/index-policy.md)
 * [Azure Cosmos DB verileri yaşam süresi ile otomatik olarak sona erer](../cosmos-db/time-to-live.md)
+* Bölümlendirme ve dizin oluşturma arasındaki ilişki hakkında bilgi edinmek için bkz. [Azure Cosmos kapsayıcısını sorgulama](how-to-query-container.md) .

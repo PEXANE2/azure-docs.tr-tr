@@ -4,17 +4,17 @@ description: Azure AD kimlik doğrulaması kullanarak sanal ağınıza bağlanma
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: alzam
-ms.openlocfilehash: 7bc28a03476e773325d14808e1c7ac99103b2d5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b16ee1e55d0b3fa22f348c10d0dd7bfb06ec500c
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80879454"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987729"
 ---
-# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>P2S OpenVPN Protokolü bağlantıları için bir VPN istemcisi yapılandırma: Azure AD kimlik doğrulaması
+# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>P2S OpenVPN protokolü bağlantıları için VPN istemcisi yapılandırma: Azure AD kimlik doğrulaması
 
 Bu makale, bir VPN istemcisini Noktadan siteye VPN ve Azure Active Directory kimlik doğrulaması kullanarak bir sanal ağa bağlanacak şekilde yapılandırmanıza yardımcı olur. Azure AD 'yi kullanarak bağlanabilmek ve kimlik doğrulayabilmeniz için önce Azure AD kiracınızı yapılandırmanız gerekir. Daha fazla bilgi için bkz. [Azure AD kiracısı yapılandırma](openvpn-azure-ad-tenant.md).
 
@@ -56,11 +56,11 @@ Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun serti
 
 1. Dışarı aktarmak istediğiniz VPN istemci profilini vurgulayın, **...** öğesini seçin ve ardından **dışarı aktar**' ı seçin.
 
-    ![dışarı aktar](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![dışarı aktarma](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. Bu profili kaydetmek istediğiniz konumu seçin, dosya adını olduğu gibi bırakın ve **Kaydet** ' i seçerek XML dosyasını kaydedin.
 
-    ![dışarı aktar](./media/openvpn-azure-ad-client/export/export2.jpg)
+    ![dışarı aktarma](./media/openvpn-azure-ad-client/export/export2.jpg)
 
 ### <a name="to-import-a-client-profile"></a><a name="import"></a>İstemci profilini içeri aktarmak için
 
@@ -96,7 +96,7 @@ Sertifika tabanlı bir profille çalışırken, istemci bilgisayarda uygun serti
 
 ## <a name="create-a-connection"></a><a name="connection"></a>Bağlantı oluşturma
 
-1. Sayfasında, ve ardından **+** **+ Ekle**' yi seçin.
+1. Sayfasında **+** , ve ardından **+ Ekle**' yi seçin.
 
     ![bağlantı](./media/openvpn-azure-ad-client/create/create1.jpg)
 
@@ -158,7 +158,7 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>Nasıl yaparım? VPN istemcisine DNS sonekleri eklensin mi?
 
-İndirilen profil XML dosyasını değiştirebilir ve ** \<dnssoneklerini>\<dnssdüzeltmesini> \</dnssudüzeltmesini>\</dnssuffixes>** etiketleri ekleyebilirsiniz
+İndirilen profil XML dosyasını değiştirebilir ve ** \<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes> ** etiketleri ekleyebilirsiniz
 
 ```
 <azvpnprofile>
@@ -176,7 +176,7 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 
 ### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>Nasıl yaparım? VPN istemcisine özel DNS sunucuları eklensin mi?
 
-İndirilen profil XML dosyasını değiştirebilir ve ** \<dnsservers>\< \<DNSServer>/DNSServer>\</dnsservers>** etiketleri ekleyebilirsiniz
+İndirilen profil XML dosyasını değiştirebilir ve ** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> ** etiketleri ekleyebilirsiniz
 
 ```
 <azvpnprofile>
@@ -192,12 +192,12 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 ```
 
 > [!NOTE]
-> OpenVPN Azure AD İstemcisi, DNS ad çözümleme Ilkesi tablosu (NRPT) girdilerini kullanır, bu da DNS sunucularının çıktının altında listelenmeyeceği anlamına gelir `ipconfig /all`. Kullanımdaki DNS ayarlarınızı onaylamak için lütfen PowerShell 'de [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) bölümüne başvurun.
+> OpenVPN Azure AD İstemcisi, DNS ad çözümleme Ilkesi tablosu (NRPT) girdilerini kullanır, bu da DNS sunucularının çıktının altında listelenmeyeceği anlamına gelir `ipconfig /all` . Kullanımdaki DNS ayarlarınızı onaylamak için lütfen PowerShell 'de [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) bölümüne başvurun.
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Nasıl yaparım? VPN istemcisine özel yollar eklensin mi?
 
-İndirilen profil XML dosyasını değiştirebilir ve ** \< \<ıncluderoutes>Route>\<Destination>\<maskesini> \</Destination>\</Mask>\</Route \<>/ıncluderoutes**>etiketleri ekleyebilirsiniz
+İndirilen profil XML dosyasını değiştirebilir ve ** \<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes> ** etiketleri ekleyebilirsiniz
 
 ```
 <azvpnprofile>
@@ -215,7 +215,7 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 
 ### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>VPN istemcisinden gelen yollar engellensin mi (hariç) Nasıl yaparım??
 
-İndirilen profil XML dosyasını değiştirebilir ve ** \<excluderoutes \<>\<Route>Destination>\<maskesini ekleyebilirsiniz> \</Destination>\</Mask>\</Route>\</excluderoutes>** etiketleri
+İndirilen profil XML dosyasını değiştirebilir ve ** \<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes> ** etiketleri ekleyebilirsiniz
 
 ```
 <azvpnprofile>
@@ -233,7 +233,7 @@ Bu adımlar, bağlantınızı her zaman açık ile otomatik olarak bağlanacak �
 
 ### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>Profili bir komut satırı isteminden içeri aktarabilir miyim?
 
-Karşıdan yüklenen **azurevpnconfig. xml** dosyasını **%USERPROFILE%\appdata\local\packages\microsoft. AzureVpn_8wekyb3d8bbwe \localstate** klasörüne yerleştirerek ve aşağıdaki komutu çalıştırarak profili bir komut satırı isteminden içeri aktarabilirsiniz:
+İndirilen **azurevpnconfig.xml** dosyasını **%USERPROFILE%\appdata\local\packages\microsoft. AzureVpn_8wekyb3d8bbwe \localstate** klasörüne yerleştirerek ve aşağıdaki komutu çalıştırarak profili bir komut satırı isteminden içeri aktarabilirsiniz:
 
 ```
 azurevpn -i azurevpnconfig.xml 

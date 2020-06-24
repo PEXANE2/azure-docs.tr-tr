@@ -9,14 +9,14 @@ ms.author: johndeu
 ms.date: 04/16/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 0676b6b183c64dcd0fb15b87de48a4afed3a0011
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 53d68a18c5904b8b7e2f6145ae26221e99395a82
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641796"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749941"
 ---
-# <a name="tested-on-premises-live-streaming-encoders"></a>Sınanan şirket içi canlı akış kodlayıcıları
+# <a name="verified-on-premises-live-streaming-encoders"></a>Doğrulanan şirket içi canlı akış kodlayıcıları
 
 Azure Media Services, canlı bir [olay](https://docs.microsoft.com/rest/api/media/liveevents) (kanal) canlı akış içeriğini işlemek için bir işlem hattını temsil eder. Canlı olay, canlı giriş akışlarını iki şekilde alır.
 
@@ -29,7 +29,7 @@ Azure Media Services, canlı bir [olay](https://docs.microsoft.com/rest/api/medi
  
 * Şirket içi bir Live Encoder, aşağıdaki biçimlerden birinde Media Services ile gerçek zamanlı kodlama gerçekleştirmek için etkinleştirilen canlı olaya tek bit hızlı bir akış gönderir: RTMP veya Kesintisiz Akış (parçalanmış MP4). Canlı etkinlik daha sonra, gelen tek bit hızlı akışın çoklu bit hızında (Uyarlamalı) bir video akışına canlı kodlamasını gerçekleştirir.
 
-Bu makalede, sınanan şirket içi canlı akış kodlayıcıları açıklanmaktadır. Şirket içi Live Encoder ' ı nasıl doğrulayacağınız hakkında yönergeler için bkz. Şirket [içi kodlayıcınızı doğrulama](become-on-premises-encoder-partner.md)
+Bu makalede doğrulanan şirket içi canlı akış kodlayıcıları ele alınmaktadır. Doğrulama, satıcı kendi kendine doğrulama veya müşteri doğrulaması aracılığıyla yapılır. Microsoft Azure Media Services her bir kodlayıcı için tam veya kapsamlı bir test yapmaz ve güncelleştirmelerde sürekli olarak yeniden doğrulama yapmaz. Şirket içi Live Encoder ' ı nasıl doğrulayacağınız hakkında yönergeler için bkz. Şirket [içi kodlayıcınızı doğrulama](become-on-premises-encoder-partner.md)
 
 Media Services ile canlı kodlama hakkında ayrıntılı bilgi için bkz. [Media Services v3 Ile canlı akış](live-streaming-overview.md).
 
@@ -39,33 +39,38 @@ Kodlayıcılar, HTTPS veya RTMPS protokollerini kullanırken TLS 1,2 ' i destekl
 
 ## <a name="live-encoders-that-output-rtmp"></a>RTMP çıkış yapan canlı kodlayıcılar
 
-Media Services, aşağıdaki RTMP çıkışı sağlayan gerçek zamanlı kodlayıcılardan birinin kullanılmasını önerir. Desteklenen URL şemaları `rtmp://` veya `rtmps://`.
+Media Services, aşağıdaki RTMP çıkışı sağlayan gerçek zamanlı kodlayıcılardan birinin kullanılmasını önerir. Desteklenen URL şemaları `rtmp://` veya `rtmps://` .
 
 RTMP üzerinden akış yaparken güvenlik duvarı ve/veya ara sunucu ayarlarını kontrol ederek 1935 ve 1936 numaralı giden TCP bağlantı noktalarının açık olduğundan emin olun.<br/><br/>
 RTMPS üzerinden akış yaparken güvenlik duvarı ve/veya ara sunucu ayarlarını kontrol ederek 2935 ve 2936 numaralı giden TCP bağlantı noktalarının açık olduğundan emin olun.
 
 > [!NOTE]
-> RTMPS protokolleri kullanılırken kodlayıcılar TLS 1,2 ' i desteklemelidir.
+> RTMPS protokollerini kullanırken kodlayıcılar TLS 1,2 ' i desteklemelidir.
 
 - Adobe Flash Media Live Encoder 3.2
+- [BlackICE mini ve ATEM mini PRO](https://www.blackmagicdesign.com/products/atemmini)
 - [Cambrıa canlı 4,3](https://www.capellasystems.net/products/cambria-live/)
 - Elete canlı (sürüm 2.14.15 ve üzeri)
+- [FFmpeg](https://www.ffmpeg.org)
+- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming) Hero 7 ve Hero 8
 - Haivision KB
 - Haivision Makito X HEVC
+- [Restream.io](https://restream.io/)
 - OBS Studio
-- Switcher Studio (iOS)
+- [Streamlabs OBS](https://streamlabs.com/)
+- [Switcher Studio (iOS)](https://www.switcherstudio.com/)
 - Telestream kablolu dönüştürme (TLS 1,2 gereksinimi nedeniyle sürüm 13.0.2 veya üzeri)
-- Telestream kablolu dönüştürme öğeleri (yalnızca RTMP desteklenir)
+- Telestream kablolu yayın öğeleri (yalnızca RTMP desteklenir. TLS 1.2 + eksikliği nedeniyle RTMPS desteği yok
 - Teradek Slice 756
 - VMIX
 - xStream
-- [FFmpeg](https://www.ffmpeg.org)
-- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming) Hero 7 ve Hero 8
-- [Restream.io](https://restream.io/)
 
-## <a name="live-encoders-that-output-fragmented-mp4"></a>Parçalanan MP4 veren canlı kodlayıcılar
+> [!WARNING]
+> Yukarıdaki kodlayıcılar listesi yalnızca bir öneri listesidir. Kodlayıcılar Microsoft tarafından önemli bir şekilde sınanmamıştır veya doğrulanmaz ve güncelleştirme ya da son değişiklikler, bir uyumluluk kesintiye uğraabilecek olan kodlayıcı satıcıları veya açık kaynak projeleri tarafından tanıtılamaz. 
 
-Media Services, çıkış olarak çoklu bit hızına Kesintisiz Akış (parçalanmış MP4) sahip aşağıdaki canlı kodlayıcılardan birini kullanmanızı önerir. Desteklenen URL şemaları `http://` veya `https://`.
+## <a name="live-encoders-that-output-fragmented-mp4-smooth-streaming-ingest"></a>Parçalanmış MP4 (Kesintisiz Akış alma) izleyen canlı kodlayıcılar
+
+Media Services, çıkış olarak çoklu bit hızına Kesintisiz Akış (parçalanmış MP4) sahip aşağıdaki canlı kodlayıcılardan birini kullanmanızı önerir. Desteklenen URL şemaları `http://` veya `https://` .
 
 > [!NOTE]
 > Kodlayıcılar, HTTPS protokollerini kullanırken TLS 1,2 ' i desteklemelidir.
@@ -74,12 +79,15 @@ Media Services, çıkış olarak çoklu bit hızına Kesintisiz Akış (parçala
 - Cisco Digital Media Encoder 2200
 - Dinamik kullanım (TLS 1,2 gereksinimi nedeniyle sürüm 2.14.15 ve üzeri)
 - Envivio 4Caster C4 Gen III 
+- [FFmpeg](https://www.ffmpeg.org)
 - Imagine Communications Selenıo MCP3
 - Media Excel Hero Live ve Hero 4K (UHD/HEVC)
-- [FFmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
 >  Canlı olayları birden çok dilde (örneğin, bir Ingilizce ses izi ve bir Ispanyolca ses izi) akışdıysanız, canlı akışı bir geçişli canlı olaya göndermek üzere yapılandırılmış medya Excel Live Encoder ile bunu yapabilirsiniz.
+
+> [!WARNING]
+> Yukarıdaki kodlayıcılar listesi yalnızca bir öneri listesidir. Kodlayıcılar, Microsoft tarafından sürekli olarak test edilmez veya doğrulanmaz ve destek ya da hatalar, her zaman uyumluluğu kesen kodlayıcı satıcıları veya açık kaynak projeleri tarafından tanıtılamaz. 
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Şirket içi Live Encoder ayarlarını yapılandırma
 
@@ -95,8 +103,10 @@ Canlı olay türleriniz için geçerli olan ayarlar hakkında daha fazla bilgi i
 - Bant genişliği gereksinimlerini belirlerken, akış bit hızları ' nı çift belirleyin. Zorunlu olmasa da bu basit kural, ağ tıkanıklığı etkisini azaltmaya yardımcı olur.
 - Yazılım tabanlı kodlayıcılar kullanırken gereksiz programları kapatın.
 - Kodlayıcı yapılandırmasını başlattıktan sonra dönüştürme işlemi, olayda olumsuz etkilere sahiptir. Yapılandırma değişiklikleri olayın kararsız hale gelmesine neden olabilir. 
+- Azure Media Services için sürekli uyumluluk için Kodlayıcı yazılımının yeni sürümlerini her zaman test edin ve doğrulayın. Microsoft bu listedeki kodlayıcıları yeniden doğrulamaz ve çoğu doğrulama yazılım satıcıları tarafından doğrudan bir "kendi kendine sertifika" olarak gerçekleştirilir.
 - Olaylarınızı ayarlamak için kendinize bir zaman kazandırdığınızdan emin olun. Yüksek ölçekli olaylar için, kurulum 'un etkinlikten bir saat öncesine başlamasını öneririz.
-- H., video ve AAC ses codec çıkışını kullanın.
+- H., uyumlu video ve AAC-LC ses codec çıkışını kullanın.
+- Yayın yaptığınız canlı olay türü için desteklenen çözümlerin ve çerçeve tarifelerinin hızını kontrol edin (örneğin, 60fps Şu anda reddedilir.)
 - Video kalitelerine göre anahtar çerçeve veya GOP zamana bağlı hizalama olduğundan emin olun.
 - Her video kalitesi için benzersiz bir akış adı olduğundan emin olun.
 - En iyi Uyarlamalı bit hızı performansı için önerilen katı CBR kodlamasını kullanın.

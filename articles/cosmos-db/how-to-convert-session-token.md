@@ -3,15 +3,15 @@ title: .NET SDK-Azure Cosmos DB oturum belirteci biçimlerini dönüştürme
 description: Farklı .NET SDK sürümleri arasında uyumluluk sağlamak için oturum belirteci biçimlerini dönüştürmeyi öğrenin
 author: vinhms
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: vitrinh
-ms.openlocfilehash: 377d8e3e923d6a8fa3b1722cee6451a696ce2490
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 1f5609eae106e04928bc2c49bd84aa651b224611
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796908"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261588"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>.NET SDK 'da oturum belirteci biçimlerini dönüştürme
 
@@ -26,8 +26,8 @@ Bu makalede, SDK sürümleri arasında uyumluluk sağlamak için farklı oturum 
 ## <a name="session-token-formats"></a>Oturum belirteci biçimleri
 
 İki oturum belirteci biçimi vardır: **basit** ve **vektör**.  Bu iki biçim de değiştirilemez, bu nedenle, farklı sürümlerle istemci uygulamasına geçiş yaparken biçimin dönüştürülmesi gerekir.
-- **Basit** oturum belirteci BIÇIMI .NET SDK v1 tarafından kullanılır (Microsoft. Azure. DocumentDB-sürüm 1. x)
-- **Vektör** oturum belirteci BIÇIMI .NET SDK v2 (Microsoft. Azure. DocumentDB-sürüm 2. x) tarafından kullanılır
+- **Basit** oturum belirteci BIÇIMI .NET SDK v1 tarafından kullanılır (Microsoft.Azure.DocumentDB-sürüm 1. x)
+- **Vektör** oturum belirteci BIÇIMI .NET SDK V2 (Microsoft.Azure.DocumentDB-sürüm 2. x) tarafından kullanılır
 
 ### <a name="simple-session-token"></a>Basit oturum belirteci
 

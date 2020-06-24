@@ -4,15 +4,15 @@ description: Azure Cosmos DB Gremlin API kullanarak grafik veritabanını modell
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: dc9a5616aa2bb1f7e09045b9cfe4f4d7e9c69be2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea3aab76c8d7eaad46ae1c20f6ddb4547b25b5b7
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898322"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261826"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'SI için grafik veri modelleme
 
@@ -47,11 +47,11 @@ Grafik nesnelerindeki özellikler için en iyi uygulamalar şunlardır:
 
 | Nesne | Özellik | Tür | Notlar |
 | --- | --- | --- |  --- |
-| İzdüşüm | Kimlik | Dize | Bölüm başına benzersiz olarak uygulandı. Ekleme sırasında bir değer sağlanmazsa, otomatik olarak oluşturulan bir GUID depolanır. |
+| İzdüşüm | ID | Dize | Bölüm başına benzersiz olarak uygulandı. Ekleme sırasında bir değer sağlanmazsa, otomatik olarak oluşturulan bir GUID depolanır. |
 | İzdüşüm | etiket | Dize | Bu özellik, köşeyi temsil eden varlık türünü tanımlamak için kullanılır. Değer sağlanmazsa, varsayılan "köşe" değeri kullanılacaktır. |
 | İzdüşüm | properties | Dize, Boolean, sayısal | Her köşede anahtar-değer çiftleri olarak depolanan ayrı özelliklerin listesi. |
 | İzdüşüm | bölüm anahtarı | Dize, Boolean, sayısal | Bu özellik, köşe ve giden kenarlarının depolanacağı yeri tanımlar. [Grafik bölümlendirme](graph-partitioning.md)hakkında daha fazla bilgi edinin. |
-| Edge | Kimlik | Dize | Bölüm başına benzersiz olarak uygulandı. Varsayılan olarak otomatik oluşturulur. Kenarlar genellikle bir KIMLIK tarafından benzersiz bir şekilde alınması gereksinimini içermez. |
+| Edge | ID | Dize | Bölüm başına benzersiz olarak uygulandı. Varsayılan olarak otomatik oluşturulur. Kenarlar genellikle bir KIMLIK tarafından benzersiz bir şekilde alınması gereksinimini içermez. |
 | Edge | etiket | Dize | Bu özellik, iki köşelerin sahip olduğu ilişkinin türünü tanımlamak için kullanılır. |
 | Edge | properties | Dize, Boolean, sayısal | Her bir kenarda anahtar-değer çiftleri olarak depolanan ayrı özelliklerin listesi. |
 
@@ -73,11 +73,11 @@ Bir ortak giriş, tek bir varlığın özelliklerini ayrı köşeler olarak eşm
 
 * **Köşe tabanlı özellikler**: Bu yaklaşımda varlık, özelliklerini anlatmak için üç ayrı köşe ve iki kenar kullanır. Bu yaklaşım artıklığı azaltada, model karmaşıklığını artırır. Model karmaşıklığının artışı, eklenen gecikme süresi, sorgu karmaşıklığı ve hesaplama maliyetine neden olabilir. Bu model, Bölümlemede zorluk de sunabilir.
 
-![Özellikler için köşeleri olan varlık modeli.](./media/graph-modeling/graph-modeling-1.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-1.png" alt-text="Özellikler için köşeleri olan varlık modeli." border="false":::
 
 * **Özelliğe gömülü**köşeler: Bu yaklaşım, bir köşe içindeki varlığın tüm özelliklerini göstermek için anahtar-değer çifti listesinden yararlanır. Bu yaklaşım daha basit sorgulara ve daha düşük maliyetli traversals neden olacak şekilde daha az model karmaşıklığı sağlar.
 
-![Özellikler için köşeleri olan varlık modeli.](./media/graph-modeling/graph-modeling-2.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="Özellikler için köşeleri olan varlık modeli." border="false":::
 
 > [!NOTE]
 > Yukarıdaki örneklerde, yalnızca varlık özelliklerini bölmek için iki yol arasındaki karşılaştırmayı göstermek üzere basitleştirilmiş bir grafik modeli gösterilmektedir.
@@ -90,11 +90,11 @@ Ancak, bir özelliğe başvuruda bulunan senaryolar avantaj sağlayabilir. Örne
 
 Köşeler modellendikten sonra aralarındaki ilişkileri göstermek için kenarlar eklenebilir. Değerlendirilmesi gereken ilk boyut **ilişkinin yönüdür**. 
 
-Edge nesnelerinin, `out()` veya `outE()` işlevi kullanılırken bir çapraz geçiş tarafından izlenen varsayılan bir yönü vardır. Tüm köşeler giden kenarlarıyla depolandığından, bu doğal yönün kullanılması verimli bir işlem ile sonuçlanır. 
+Edge nesnelerinin, veya işlevi kullanılırken bir çapraz geçiş tarafından izlenen varsayılan bir yönü vardır `out()` `outE()` . Tüm köşeler giden kenarlarıyla depolandığından, bu doğal yönün kullanılması verimli bir işlem ile sonuçlanır. 
 
-Ancak, `in()` işlevi kullanılarak bir kenarın ters yönünde geçiş yapmak, her zaman bir çapraz bölüm sorgusuna neden olur. [Grafik bölümlendirme](graph-partitioning.md)hakkında daha fazla bilgi edinin. `in()` İşlevi kullanarak sürekli geçiş yapmanız gerekiyorsa, her iki yönde de kenar eklenmesi önerilir.
+Ancak, işlevi kullanılarak bir kenarın ters yönünde geçiş yapmak, `in()` her zaman bir çapraz bölüm sorgusuna neden olur. [Grafik bölümlendirme](graph-partitioning.md)hakkında daha fazla bilgi edinin. İşlevi kullanarak sürekli geçiş yapmanız gerekiyorsa `in()` , her iki yönde de kenar eklenmesi önerilir.
 
-Gremlin adımında `.to()` veya `.from()` koşullarını kullanarak kenar yönünü belirleyebilirsiniz. `.addE()` Ya da [Gremlin API için toplu yürütücü kitaplığı](bulk-executor-graph-dotnet.md)'nı kullanarak.
+`.to()` `.from()` Gremlin adımında veya koşullarını kullanarak kenar yönünü belirleyebilirsiniz `.addE()` . Ya da [Gremlin API için toplu yürütücü kitaplığı](bulk-executor-graph-dotnet.md)'nı kullanarak.
 
 > [!NOTE]
 > Edge nesnelerinin varsayılan olarak bir yönü vardır.
@@ -105,7 +105,7 @@ Açıklayıcı ilişki etiketlerinin kullanılması, sınır çözümleme işlem
 * Bir ilişkiyi etiketlemek için genel olmayan terimleri kullanın.
 * Kaynak köşesinin etiketini, ilişki adı ile hedef köşe etiketi ile ilişkilendirin.
 
-![İlişki etiketleme örnekleri.](./media/graph-modeling/graph-modeling-3.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="İlişki etiketleme örnekleri." border="false":::
 
 Traverser 'ın kenarları filtrelemesini sağlamak için kullanacağı etiket daha iyidir. Bu karar, sorgu maliyetinde önemli bir etkiye sahip olabilir. Sorgu maliyetini, her zaman [executionProfile adımını kullanarak](graph-execution-profile.md)değerlendirebilirsiniz.
 

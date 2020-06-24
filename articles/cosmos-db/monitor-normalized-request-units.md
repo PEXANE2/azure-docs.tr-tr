@@ -2,22 +2,22 @@
 title: Azure Cosmos kapsayıcısı veya bir hesap için normalleştirilmiş RU/s 'yi izleme
 description: Azure Cosmos DB bir işlemin normalleştirilmiş istek birimi kullanımını nasıl izleyeceğinizi öğrenin. Bir Azure Cosmos DB hesabının sahipleri, hangi işlemlerin daha fazla istek birimi tükettiğini anlayabilir.
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 05/10/2020
-ms.openlocfilehash: 23001bdaab0732dbeb088ebadefa90a27e622b19
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 7a7428d3445d1d5846618bfd84c47121dc9a4bc1
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118795"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262761"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Azure Cosmos kapsayıcısı veya bir hesap için normalleştirilmiş RU/s 'yi izleme
 
 Azure Cosmos DB için Azure Izleyici, hesabınızı izlemek ve panolar oluşturmak için bir ölçüm görünümü sağlar. Azure Cosmos DB ölçümleri varsayılan olarak toplanır, bu özellik açıkça her şeyi etkinleştirmenizi veya yapılandırmanızı gerektirmez.
 
-**NORMALLEŞTIRILMIŞ ru tüketim** ölçümü, çoğaltma birimlerinin, bölüm anahtarı aralıklarında istek birimleri tüketimine ne kadar iyi doygun olduğunu görmek için kullanılır. Azure Cosmos DB, üretilen işi tüm fiziksel bölümler arasında eşit olarak dağıtır. Bu ölçüm, bir çoğaltma kümesi içindeki maksimum üretilen iş kullanımının saniye başına bir görünümünü sağlar. Bu ölçümü kullanarak, istek birimi kullanımının yüksek yüzdesini görürseniz, iş yükünüzün ihtiyaçlarını karşılamak için aktarım hızını artırmanız gerekir.
+**NORMALLEŞTIRILMIŞ ru tüketim** ölçümü, çoğaltmaların, bölüm anahtarı aralıkları genelinde istek birimleri tüketimine göre ne kadar iyi doygun olduğunu görmek için kullanılır. Azure Cosmos DB, üretilen işi tüm fiziksel bölümler arasında eşit olarak dağıtır. Bu ölçüm, bir çoğaltma kümesi içindeki maksimum üretilen iş kullanımının saniye başına bir görünümünü sağlar. Bu ölçümü kullanarak, istek birimi kullanımının yüksek yüzdesini görürseniz, iş yükünüzün ihtiyaçlarını karşılamak için aktarım hızını artırmanız gerekir.
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>Normalleştirilmiş RU/s daha yüksek olduğunda beklenmeli ve yapılacak
 
@@ -33,21 +33,21 @@ Oran sınırlı olan istekleri bulmak için, bu bilgileri tanılama günlükleri
 
 ## <a name="view-the-normalized-request-unit-consumption-metric"></a>Normalleştirilmiş istek birimi tüketim ölçümünü görüntüleyin
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **ölçümler**' i seçin.
 
-   ![Azure Izleyici 'de ölçümler bölmesi](./media/monitor-normalized-request-units/monitor-metrics-blade.png)
+   :::image type="content" source="./media/monitor-normalized-request-units/monitor-metrics-blade.png" alt-text="Azure Izleyici 'de ölçümler bölmesi":::
 
 3. **Ölçümler** bölmesinden > **bir kaynak seçin** > gerekli **aboneliği**ve **kaynak grubunu**seçin. **Kaynak türü**için **Azure Cosmos DB hesapları**' nı seçin, mevcut Azure Cosmos hesaplarınızdan birini seçin ve **Uygula**' yı seçin.
 
-   ![Ölçümleri görüntülemek için bir Azure Cosmos hesabı seçin](./media/monitor-normalized-request-units/select-cosmos-db-account.png)
+   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="Ölçümleri görüntülemek için bir Azure Cosmos hesabı seçin":::
 
 4. Ardından, kullanılabilir ölçümler listesinden bir ölçüm seçebilirsiniz. Talep birimleri, depolama, gecikme, kullanılabilirlik, Cassandra ve diğer kullanıcılara özgü ölçümleri seçebilirsiniz. Bu listedeki tüm kullanılabilir ölçümler hakkında ayrıntılı bilgi edinmek için [kategoriye göre ölçümler](monitor-cosmos-db-reference.md) makalesine bakın. Bu örnekte, **NORMALLEŞTIRILMIŞ ru tüketim** ölçümünü ve **en fazla** toplama değeri olarak bir değer seçelim.
 
    Bu ayrıntılara ek olarak, ölçümlerin **zaman aralığını** ve **zaman parçalı yapısını** da seçebilirsiniz. En fazla, son 30 güne ait ölçümleri görüntüleyebilirsiniz.  Filtreyi uyguladıktan sonra filtreniz temelinde bir grafik görüntülenir.
 
-   ![Azure portal bir ölçüm seçin](./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png)
+   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="Azure portal bir ölçüm seçin":::
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>Normalleştirilmiş istek birimi tüketimi için filtreler
 
@@ -57,7 +57,7 @@ Ayrıca ölçümleri ve belirli bir **CollectionName**, **DatabaseName**, **Part
 
 Her kapsayıcı için normalleştirilmiş istek birimi tüketim ölçümü, aşağıdaki görüntüde gösterildiği gibi görüntülenir:
 
-![Normalleştirilmiş istek birimi tüketim ölçümüne filtre uygulayın](./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png)
+:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="Normalleştirilmiş istek birimi tüketim ölçümüne filtre uygulayın":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

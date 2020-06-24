@@ -3,8 +3,8 @@ title: Azure AD 'de Federasyon sertifikalarını yönetme | Microsoft Docs
 description: Federasyon sertifikalarınız için sona erme tarihini özelleştirmeyi ve yakında süresi dolacak sertifikaların nasıl yenileneceğini öğrenin.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de60dc5095ce4ab4d0219a388c445b08f544e1f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1731d5ea5d8db9ea1c5855a32d2daca0387c0bf5
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77159038"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763219"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Azure Active Directory 'da federe çoklu oturum açma için sertifikaları yönetme
 
@@ -30,7 +30,7 @@ Bu makale yalnızca [Security assertion Markup Language](https://wikipedia.org/w
 
 ## <a name="auto-generated-certificate-for-gallery-and-non-gallery-applications"></a>Galeri ve Galeri olmayan uygulamalar için otomatik olarak oluşturulan sertifika
 
-Galeriden yeni bir uygulama eklediğinizde ve SAML tabanlı bir oturum açma yapılandırdığınızda (uygulamaya genel bakış sayfasından **Çoklu oturum açma** > **SAML** 'yi seçerek), Azure AD, uygulama için üç yıl geçerli bir sertifika oluşturur. Etkin sertifikayı bir güvenlik sertifikası (**. cer**) dosyası olarak indirmek için bu sayfaya (**SAML tabanlı oturum açma**) dönün ve **SAML imzalama sertifikası** başlığından bir indirme bağlantısı seçin. Ham (ikili) sertifika veya Base64 (temel 64-kodlanmış metin) sertifikası arasında seçim yapabilirsiniz. Galeri uygulamaları için bu bölüm, uygulamanın gereksinimine bağlı olarak sertifikayı Federasyon meta verileri XML (bir **. xml** dosyası) olarak indirmek için bir bağlantı da gösterebilir.
+Galeriden yeni bir uygulama eklediğinizde ve SAML tabanlı bir oturum açma yapılandırdığınızda (uygulamaya genel bakış sayfasından **Çoklu oturum açma**  >  **SAML** 'yi seçerek), Azure AD, uygulama için üç yıl geçerli bir sertifika oluşturur. Etkin sertifikayı bir güvenlik sertifikası (**. cer**) dosyası olarak indirmek için bu sayfaya (**SAML tabanlı oturum açma**) dönün ve **SAML imzalama sertifikası** başlığından bir indirme bağlantısı seçin. Ham (ikili) sertifika veya Base64 (temel 64-kodlanmış metin) sertifikası arasında seçim yapabilirsiniz. Galeri uygulamaları için bu bölüm, uygulamanın gereksinimine bağlı olarak sertifikayı Federasyon meta verileri XML (bir **. xml** dosyası) olarak indirmek için bir bağlantı da gösterebilir.
 
 ![SAML etkin imza sertifikası indirme seçenekleri](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
 
@@ -90,7 +90,7 @@ Azure AD, SAML sertifikasının süresi dolmadan 60, 30 ve 7 gün önce bir e-po
 1. Silmek istediğiniz her e-posta adresi için, e-posta adresinin yanındaki **Sil** simgesini (çöp kutusu) seçin.
 1. **Kaydet**’i seçin.
 
-Bildirim e-postasını buradan aadnotification@microsoft.comalacaksınız. E-postaları istenmeyen posta konumunuza karşı önlemek için bu e-postayı kişilerinize ekleyin.
+Bildirim e-postasını buradan alacaksınız aadnotification@microsoft.com . E-postaları istenmeyen posta konumunuza karşı önlemek için bu e-postayı kişilerinize ekleyin.
 
 ## <a name="renew-a-certificate-that-will-soon-expire"></a>Yakında sona erecek bir Sertifikayı Yenile
 
@@ -111,4 +111,4 @@ Bir sertifikanın süresi sona ermek üzereyken, kullanıcılarınız için öne
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri](../saas-apps/tutorial-list.md)
 - [Azure Active Directory ile uygulama yönetimi](what-is-application-management.md)
 - [Azure Active Directory uygulamalarda çoklu oturum açma](what-is-single-sign-on.md)
-- [Azure Active Directory uygulamalarda SAML tabanlı çoklu oturum açma hatalarını ayıklama](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+- [Azure Active Directory'de SAML tabanlı çoklu oturum açma uygulamaları için hata ayıklama](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

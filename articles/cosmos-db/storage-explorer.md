@@ -3,16 +3,16 @@ title: Azure Depolama Gezgini kullanarak Azure Cosmos DB kaynaklarını yönetme
 description: Azure Depolama Gezgini kullanarak Azure Cosmos DB bağlanıp kaynaklarını yönetme hakkında bilgi edinin.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 2cf1ab2b9ec7e1094a0afa34973db3441c22ee5b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: a43e49ab29780e718139b677b780443e5e31e2ab
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982777"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262251"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Azure Depolama Gezgini'ni kullanarak verilerle çalışma
 
@@ -31,23 +31,23 @@ MongoDB için SQL API veya Azure Cosmos DB API 'SI ile Cosmos hesabı. Hesabın�
 
 1. **Azure Depolama Gezgini**yükledikten sonra, aşağıdaki görüntüde gösterildiği gibi soldaki **eklenti** simgesine tıklayın:
 
-   ![Eklenti simgesi](./media/storage-explorer/plug-in-icon.png)
+   :::image type="content" source="./media/storage-explorer/plug-in-icon.png" alt-text="Eklenti simgesi":::
 
 2. **Azure Hesabı Ekle**'yi seçip **Oturum açın**'a tıklayın.
 
-   ![Azure aboneliğine bağlanma](./media/storage-explorer/connect-to-azure-subscription.png)
+   :::image type="content" source="./media/storage-explorer/connect-to-azure-subscription.png" alt-text="Azure aboneliğine bağlanma":::
 
 2. **Azure Oturum Açma** iletişim kutusunda **Oturum aç**’ı seçip Azure kimlik bilgilerinizi girin.
 
-    ![Oturum açma](./media/storage-explorer/sign-in.png)
+    :::image type="content" source="./media/storage-explorer/sign-in.png" alt-text="Oturum aç":::
 
 3. Listeden aboneliğinizi seçip **Uygula**’ya tıklayın.
 
-    ![Uygula](./media/storage-explorer/apply-subscription.png)
+    :::image type="content" source="./media/storage-explorer/apply-subscription.png" alt-text="Uygulayabilirsiniz":::
 
     Gezgin bölmesi güncelleştirilir ve seçili abonelikteki hesapları gösterir.
 
-    ![Hesap listesi](./media/storage-explorer/account-list.png)
+    :::image type="content" source="./media/storage-explorer/account-list.png" alt-text="Hesap listesi":::
 
     **Cosmos DB hesabınızı** Azure aboneliğinize başarıyla bağladınız.
 
@@ -57,11 +57,11 @@ Azure Cosmos DB’ye bağlanmanın alternatif yollarından biri, bağlantı dize
 
 1. Soldaki ağaçtan **Yerel ve Bağlı**’yı bulun ve **Cosmos DB Hesapları**’na sağ tıklayıp **Cosmos DB’ye bağlan...** seçeneğini belirleyin.
 
-    ![Bağlantı dizesiyle Cosmos DB’ye bağlanma](./media/storage-explorer/connect-to-db-by-connection-string.png)
+    :::image type="content" source="./media/storage-explorer/connect-to-db-by-connection-string.png" alt-text="Bağlantı dizesiyle Cosmos DB’ye bağlanma":::
 
 2. Yalnızca SQL ve Tablo API’sini destekler. API seçin, **Bağlantı Dizesini** yapıştırın, **Hesap etiketi** girin, **İleri**’ye tıklayın ve özeti denetleyin, ardından **Bağlan**’a tıklayarak Azure Cosmos DB hesabına bağlanın. Birincil bağlantı dizesini alma hakkında daha fazla bilgi için bkz. [bağlantı dizesini alma](manage-with-powershell.md#list-keys).
 
-    ![Connection-string](./media/storage-explorer/connection-string.png)
+    :::image type="content" source="./media/storage-explorer/connection-string.png" alt-text="Connection-string":::
 
 ## <a name="connect-to-azure-cosmos-db-by-using-local-emulator"></a>Yerel öykünücüyü kullanarak Azure Cosmos DB’ye bağlanma
 
@@ -71,11 +71,11 @@ Azure Cosmos DB’ye bağlanmanın alternatif yollarından biri, bağlantı dize
 
 2. Soldaki ağaçtan **Yerel ve Bağlı**’yı bulun ve **Cosmos DB Hesapları**’na sağ tıklayıp **Cosmos DB Öykünücüsüne bağlan...** seçeneğini belirleyin.
 
-    ![Öykünücü ile Cosmos DB’ye bağlanma](./media/storage-explorer/emulator-entry.png)
+    :::image type="content" source="./media/storage-explorer/emulator-entry.png" alt-text="Öykünücü ile Cosmos DB’ye bağlanma":::
 
 3. Şu anda yalnızca SQL API’si desteklenmektedir. **Bağlantı Dizesini** yapıştırın, **Hesap etiketi** girin, **İleri**’ye tıklayın ve özeti denetleyin, ardından **Bağlan**’a tıklayarak Azure Cosmos DB hesabına bağlanın. Birincil bağlantı dizesini alma hakkında daha fazla bilgi için bkz. [bağlantı dizesini alma](manage-with-powershell.md#list-keys).
 
-    ![Öykünücü ile Cosmos DB’ye bağlan iletişim kutusu](./media/storage-explorer/emulator-dialog.png)
+    :::image type="content" source="./media/storage-explorer/emulator-dialog.png" alt-text="Öykünücü ile Cosmos DB’ye bağlan iletişim kutusu":::
 
 
 ## <a name="azure-cosmos-db-resource-management"></a>Azure Cosmos DB kaynak yönetimi
@@ -95,52 +95,52 @@ Gezgin bölmesindeki bir aboneliğe sağ tıklayarak birçok hızlı eylem göre
 
 * Bir Azure Cosmos DB hesabına veya veritabanına sağ tıklayın; **Portalda Aç**’ı seçerek kaynağı Azure portalında, tarayıcıda yönetebilirsiniz.
 
-     ![Portalda açma](./media/storage-explorer/open-in-portal.png)
+     :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="Portalda açma":::
 
 * Ayrıca, **Hızlı Erişim**’e Azure Cosmos DB hesabı, veritabanı, koleksiyonu ekleyebilirsiniz.
 * **Buradan Arayın** özelliği, seçili yol altında anahtar sözcük aramayı etkinleştirir.
 
-    ![buradan arayın](./media/storage-explorer/search-from-here.png)
+    :::image type="content" source="./media/storage-explorer/search-from-here.png" alt-text="buradan arayın":::
 
 ### <a name="database-and-collection-management"></a>Veritabanı ve koleksiyon yönetimi
 #### <a name="create-a-database"></a>Veritabanı oluşturma
 -   Azure Cosmos DB hesabına sağ tıklayın, **Veritabanı Oluştur**’u seçin, veritabanı adını girin ve işlemi tamamlamak için **Enter** tuşuna basın.
 
-    ![Veritabanı oluşturma](./media/storage-explorer/create-database.png)
+    :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="Veritabanı oluşturma":::
 
 #### <a name="delete-a-database"></a>Veritabanı silme
 - Veritabanına sağ tıklayın, **Veritabanını Sil**’e tıklayıp açılan pencerede **Evet**’e tıklayın. Veritabanı düğümü silinir ve Azure Cosmos DB hesabı otomatik olarak yenilenir.
 
-    ![Veritabanı silme1](./media/storage-explorer/delete-database1.png)
+    :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="Veritabanı silme1":::
 
-    ![Veritabanı silme2](./media/storage-explorer/delete-database2.png)
+    :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="Veritabanı silme2":::
 
 #### <a name="create-a-collection"></a>Koleksiyon oluşturma
 1. Veritabanınıza sağ tıklayın, **koleksiyon oluştur**' u seçin ve ardından **koleksiyon kimliği**, **depolama kapasitesi**vb. gibi aşağıdaki bilgileri sağlayın. **Tamam** ' a tıklayarak işlemi sona erdirin.
 
-    ![Koleksiyon oluşturma1](./media/storage-explorer/create-collection.png)
+    :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="Koleksiyon oluşturma1":::
 
-    ![Koleksiyon oluşturma2](./media/storage-explorer/create-collection2.png)
+    :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="Koleksiyon oluşturma2":::
 
 2. Bölüm anahtarını belirtebilmek için **Sınırsız**’ı seçin ve sonra **Tamam**’a tıklayarak işlemi tamamlayın.
 
     Bir koleksiyon oluşturulurken bölüm anahtarı kullanılırsa, oluşturma işlemi tamamlandıktan sonra koleksiyondaki bölüm anahtarı değeri değiştirilemez.
 
-    ![Bölüm anahtarı](./media/storage-explorer/partitionkey.png)
+    :::image type="content" source="./media/storage-explorer/partitionkey.png" alt-text="Bölüm anahtarı":::
 
 #### <a name="delete-a-collection"></a>Koleksiyon silme
 - Koleksiyona sağ tıklayıp **Koleksiyonu Sil**’e tıklayın ve açılan pencerede **Evet**’e tıklayın.
 
     Koleksiyon düğümü silinir ve veritabanı otomatik olarak yenilenir.
 
-    ![Koleksiyonu silme](./media/storage-explorer/delete-collection.png)
+    :::image type="content" source="./media/storage-explorer/delete-collection.png" alt-text="Koleksiyonu silme":::
 
 ### <a name="document-management"></a>Belge yönetimi
 
 #### <a name="create-and-modify-documents"></a>Belge oluşturma ve değiştirme
 - Yeni bir belge oluşturmak için soldaki pencerede **Belgeler**’i açın, **Yeni Belge**’ye tıklayın, sağ bölmede içeriği düzenleyin ve **Kaydet**’e tıklayın. Ayrıca, mevcut bir belgeyi güncelleştirip **Kaydet**’e tıklayabilirsiniz. Değişiklikler **At** seçeneğine tıklanarak atılabilir.
 
-    ![Belge](./media/storage-explorer/document.png)
+    :::image type="content" source="./media/storage-explorer/document.png" alt-text="Belge":::
 
 #### <a name="delete-a-document"></a>Bir belgeyi silme
 - Seçili belgeyi silmek için **Sil** düğmesine tıklayın.
@@ -148,7 +148,7 @@ Gezgin bölmesindeki bir aboneliğe sağ tıklayarak birçok hızlı eylem göre
 #### <a name="query-for-documents"></a>Belgeler için sorgu
 - Bir [SQL sorgusu](how-to-sql-query.md) girip **Uygula**’ya tıklayarak belge filtresini düzenleyin.
 
-    ![Belge Filtresi](./media/storage-explorer/document-filter.png)
+    :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Belge Filtresi":::
 
 
 
@@ -158,7 +158,7 @@ Gezgin bölmesindeki bir aboneliğe sağ tıklayarak birçok hızlı eylem göre
 1. Yeni bir köşe oluşturmak için sol pencereden **Graf**’ı açın, **Yeni Köşe**’ye tıklayın, ardından **Tamam**’a tıklayın.
 2. Mevcut bir köşeyi değiştirmek için sağ bölmede kalem simgesine tıklayın.
 
-    ![Graf](./media/storage-explorer/vertex.png)
+    :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="Graf":::
 
 #### <a name="delete-a-graph"></a>Graf silme
 - Bir köşeyi silmek için köşe adının yanındaki geri dönüşüm kutusu simgesine tıklayın.
@@ -166,7 +166,7 @@ Gezgin bölmesindeki bir aboneliğe sağ tıklayarak birçok hızlı eylem göre
 #### <a name="filter-for-graph"></a>Grafik filtresi
 - Bir [gremlin sorgusu](gremlin-support.md) girerek grafik filtresini düzenleyin ve sonra **Filtreyi Uygula**’ya tıklayın.
 
-    ![Graf Filtresi](./media/storage-explorer/graph-filter.png)
+    :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="Graf Filtresi":::
 
 ### <a name="table-management"></a>Tablo yönetimi
 
@@ -174,29 +174,29 @@ Gezgin bölmesindeki bir aboneliğe sağ tıklayarak birçok hızlı eylem göre
 1. Yeni bir tablo oluşturmak için, sol pencereden **Varlıklar**’ı açın, **Ekle**’ye tıklayın, **Varlık Ekle** iletişim kutusundaki içeriği düzenleyin, **Özellik Ekle** düğmesine tıklayarak özellik ekleyin ve sonra **Ekle**’ye tıklayın.
 2. Bir tabloyu değiştirmek için **Düzenle**’ye tıklayın, içeriği değiştirin ve sonra **Güncelleştir**’e tıklayın.
 
-    ![Tablo](./media/storage-explorer/table.png)
+    :::image type="content" source="./media/storage-explorer/table.png" alt-text="Tablo":::
 
 #### <a name="import-and-export-table"></a>Tabloyu içeri ve dışarı aktarma
 1. İçeri aktarmak için, **İçeri Aktar** düğmesine tıklayın ve mevcut bir tabloyu seçin.
 2. Dışarı aktarmak için, **Dışarı Aktar** düğmesine tıklayın ve bir hedef seçin.
 
-    ![Tablo İçeri ve Dışarı Aktarma](./media/storage-explorer/table-import-export.png)
+    :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="Tablo İçeri ve Dışarı Aktarma":::
 
 #### <a name="delete-entities"></a>Varlıkları silme
 - Varlıkları seçin ve **Sil** düğmesine tıklayın.
 
-    ![Tablo silme](./media/storage-explorer/table-delete.png)
+    :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="Tablo silme":::
 
 #### <a name="query-table"></a>Sorgu tablosu
 - **Sorgu** düğmesine tıklayın, sorgu koşulunu girin ve sonra **Sorguyu Yürüt** düğmesine tıklayın. **Sorguyu Kapat** düğmesine tıklayarak Sorgu bölmesini kapatın.
 
-    ![Tablo Sorgusu](./media/storage-explorer/table-query.png)
+    :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="Tablo Sorgusu":::
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>Saklı yordamları, tetikleyicileri ve UDF'leri yönetme
 * Saklı yordam oluşturmak için soldaki ağaçta **Saklı Yordam**’a sağ tıklayın, **Saklı Yordam Oluştur**’u seçin, sol tarafa bir ad girin, sağdaki pencerede saklı yordam betiklerini yazın ve sonra **Oluştur**’a tıklayın.
 * Ayrıca, mevcut saklı yordamlara çift tıklayıp güncelleştirmeyi yaptıktan sonra değişikliğinizi **Güncelleştir**’e tıklayarak kaydedebilir veya **At**’a tıklayarak atabilirsiniz.
 
-    ![Saklı yordam](./media/storage-explorer/stored-procedure.png)
+    :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="Saklı yordam":::
 * **Tetikleyicilere** ve **UDF**’ye yönelik işlemler, **Saklı Yordamlara** benzer.
 
 ## <a name="troubleshooting"></a>Sorun giderme
@@ -228,7 +228,7 @@ Depolama Gezgini bu "otomatik olarak imzalanan sertifikalardan" biriyle karşıl
 3. `s_client -showcerts -connect microsoft.com:443` yürütme
 4. Otomatik olarak imzalanan sertifikaları bulun. Hangisinin otomatik olarak imzalandığından emin değilseniz, konu ("s:") ve veren ("i:") aynı olan sertifikaları bulun.
 5.  Otomatik olarak imzalanan bir sertifika bulduktan sonra, **-----BEGIN CERTIFICATE-----** ile **-----END CERTIFICATE-----** arasındaki (bu kısımlar da dahil) her şeyi kopyalayıp yeni bir .cer dosyasına yapıştırın.
-6.  Depolama Gezgini açın ve ardından**SSL sertifikalarını** >  **Düzenle** > **sertifikaları içeri aktar**' a gidin. Dosya seçicisini kullanarak, oluşturduğunuz .cer dosyalarını bulun, seçin ve açın.
+6.  Depolama Gezgini açın ve ardından **Edit**  >  **SSL sertifikalarını**Düzenle  >  **sertifikaları içeri aktar**' a gidin. Dosya seçicisini kullanarak, oluşturduğunuz .cer dosyalarını bulun, seçin ve açın.
 
 Yukarıdaki adımları kullanarak otomatik olarak imzalanan bir sertifika bulamazsanız daha fazla yardım için geri bildirim gönderebilirsiniz.
 
@@ -246,7 +246,7 @@ Başarıyla oturum açtıktan sonra aboneliklerinizi alamıyorsanız:
   - .extaccounts
 - Oturum açarken geliştirici araçları konsolunda (f12) herhangi bir hata iletisi olup olmadığını gözlemleyin
 
-![console](./media/storage-explorer/console.png)
+:::image type="content" source="./media/storage-explorer/console.png" alt-text="konsola":::
 
 #### <a name="unable-to-see-the-authentication-page"></a>Kimlik doğrulaması sayfası görülemiyor
 
@@ -279,19 +279,19 @@ ASE’de http/https ara sunucusunu yapılandırırken sol ağaçta Azure Cosmos 
 
 Soldaki ağaçta "Yerel ve Bağlı" düğümünün altındaki "Geliştirme" düğümüne tıklandıktan sonra bir yanıt yok.  Bu beklenen bir davranıştır. Azure Cosmos DB yerel öykünücüsü, sonraki yayında desteklenecektir.
 
-![Geliştirme düğümü](./media/storage-explorer/development.png)
+:::image type="content" source="./media/storage-explorer/development.png" alt-text="Geliştirme düğümü":::
 
 ### <a name="attaching-azure-cosmos-db-account-in-local-and-attached-node-error"></a>"Yerel ve Bağlı" düğümünde Azure Cosmos DB hesabını ekleme hatası
 
 "Yerel ve Bağlı" düğümünde Azure Cosmos DB hesabını ekledikten sonra aşağıdaki hatayı görürseniz, doğru bağlantı dizesini kullanıp kullanmadığınızı denetleyin.
 
-![Yerel ve Bağlı düğümünde Azure Cosmos DB ekleme hatası](./media/storage-explorer/attached-error.png)
+:::image type="content" source="./media/storage-explorer/attached-error.png" alt-text="Yerel ve Bağlı düğümünde Azure Cosmos DB ekleme hatası":::
 
 ### <a name="expand-azure-cosmos-db-node-error"></a>Azure Cosmos DB düğümünü genişletme hatası
 
 Soldaki ağaç düğümlerini genişletmeye çalışırken aşağıdaki hatayı görebilirsiniz.
 
-![Genişletme Hatası](./media/storage-explorer/expand-error.png)
+:::image type="content" source="./media/storage-explorer/expand-error.png" alt-text="Genişletme Hatası":::
 
 Aşağıdaki önerileri deneyin:
 
@@ -300,7 +300,7 @@ Aşağıdaki önerileri deneyin:
 
 ## <a name="contact-us"></a>Bizimle iletişim kurun
 
-Çözümlerden hiçbiri sizin için işe çalışmadıysanız, sorunları düzeltmek için Azure Cosmos DB dev Tooling ekibine ([cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)) sorun hakkındaki ayrıntıları içeren e-posta gönderin.
+Çözümlerden hiçbiri sizin için işe çalışmadıysanız, sorunları düzeltmek için Azure Cosmos DB dev Tooling ekibine ( [cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com) ) sorun hakkındaki ayrıntıları içeren e-posta gönderin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

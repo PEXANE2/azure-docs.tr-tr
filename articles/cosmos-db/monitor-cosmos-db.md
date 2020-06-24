@@ -4,16 +4,16 @@ description: Azure Cosmos DB performansını ve kullanılabilirliğini izlemeyi 
 author: bwren
 services: cosmos-db
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: a31636e4e56ddeb9f48cd8c955dc4415dacdc178
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 0d675bd53eac728918c951b1db0dae0188f75df1
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234914"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262795"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>İzleme Azure Cosmos DB
 
@@ -27,11 +27,11 @@ Verilerinizi, istemci tarafı ve sunucu tarafı ölçümleriyle izleyebilirsiniz
 
 * **Azure izleyici 'de tanılama günlükleri Ile izleme:** Azure Cosmos hesabınızın günlüklerini izleyebilir ve Azure Izleyici 'den panolar oluşturabilirsiniz. İkinci bir ayrıntı düzeyinde gerçekleşen olaylar ve izlemeler gibi telemetri Günlükler olarak depolanır. Örneğin, bir kapsayıcının üretilen işi değişirse, Cosmos hesabının özellikleri değiştirilir ve bu olaylar Günlükler içinde yakalar. Toplanan verilerde sorgular çalıştırarak bu günlükleri analiz edebilirsiniz. Daha fazla bilgi edinmek için bu makalenin [günlük verilerini çözümleme](#analyze-log-data) bölümüne bakın.
 
-* **SDK 'ları kullanarak program aracılığıyla izleme:** .NET, Java, Python, Node. js SDK 'Ları ve REST API üst bilgilerini kullanarak Azure Cosmos hesabınızı programlama yoluyla izleyebilirsiniz. Daha fazla bilgi edinmek için bu makaledeki [izleme Azure Cosmos DB Programlama](#monitor-cosmosdb-programmatically) bölümüne bakın.
+* **SDK 'ları kullanarak program aracılığıyla izleme:** .NET, Java, Python, Node.js SDK 'Ları ve REST API üst bilgilerini kullanarak Azure Cosmos hesabınızı programlama yoluyla izleyebilirsiniz. Daha fazla bilgi edinmek için bu makaledeki [izleme Azure Cosmos DB Programlama](#monitor-cosmosdb-programmatically) bölümüne bakın.
 
 Aşağıdaki görüntüde Azure Cosmos DB hesabı Azure portal aracılığıyla izlemek için kullanabileceğiniz farklı seçenekler gösterilmektedir:
 
-![Azure portal 'de kullanılabilen izleme seçenekleri](media/monitor-cosmos-db/monitoring-options-portal.png)
+:::image type="content" source="media/monitor-cosmos-db/monitoring-options-portal.png" alt-text="Azure portal 'de kullanılabilen izleme seçenekleri" border="false":::
 
 Azure Cosmos DB kullanırken, istemci tarafında, oluşabilecek herhangi bir sorunu gidermek için istek ücreti, etkinlik KIMLIĞI, özel durum/yığın izleme bilgileri, HTTP durumu/alt durum kodu, tanılama dizesi ayrıntılarını toplayabilirsiniz. Bu bilgiler, Azure Cosmos DB destek ekibine erişmeniz gerekiyorsa de gereklidir.  
 
@@ -62,7 +62,7 @@ Azure Cosmos DB, [Azure kaynaklarından gelen verileri izleme](../azure-monitor/
 
 Her Azure Cosmos veritabanı için Azure portal **genel bakış** sayfası, isteği ve saatlik faturalandırma kullanımı dahil olmak üzere veritabanı kullanımının kısa bir görünümünü içerir. Bu yararlı bir bilgi olmakla kalmaz, yalnızca küçük miktarda izleme verisi kullanılabilir. Bu verilerden bazıları otomatik olarak toplanır ve analiz için kullanılabilir, ancak bazı yapılandırma ile ek veri toplamayı etkinleştirebilirsiniz.
 
-![Genel Bakış sayfası](media/monitor-cosmos-db/overview-page.png)
+:::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Genel Bakış sayfası":::
 
 ## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a>Ölçüm verileri çözümleniyor
 
@@ -82,27 +82,27 @@ Azure Cosmos DB ölçümler ile çalışmak için özel bir deneyim sağlar. Bu 
 
 1. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **ölçümler**' i seçin.
 
-   ![Azure Izleyici 'de ölçümler bölmesi](./media/monitor-cosmos-db/monitor-metrics-blade.png)
+   :::image type="content" source="./media/monitor-cosmos-db/monitor-metrics-blade.png" alt-text="Azure Izleyici 'de ölçümler bölmesi":::
 
 1. **Ölçümler** bölmesinden > **bir kaynak seçin** > gerekli **aboneliği**ve **kaynak grubunu**seçin. **Kaynak türü**için **Azure Cosmos DB hesapları**' nı seçin, mevcut Azure Cosmos hesaplarınızdan birini seçin ve **Uygula**' yı seçin.
 
-   ![Ölçümleri görüntülemek için bir Cosmos DB hesabı seçin](./media/monitor-cosmos-db/select-cosmosdb-account.png)
+   :::image type="content" source="./media/monitor-cosmos-db/select-cosmosdb-account.png" alt-text="Ölçümleri görüntülemek için bir Cosmos DB hesabı seçin":::
 
 1. Ardından, kullanılabilir ölçümler listesinden bir ölçüm seçebilirsiniz. Talep birimleri, depolama, gecikme, kullanılabilirlik, Cassandra ve diğer kullanıcılara özgü ölçümleri seçebilirsiniz. Bu listedeki tüm kullanılabilir ölçümler hakkında ayrıntılı bilgi edinmek için [kategoriye göre ölçümler](monitor-cosmos-db-reference.md) makalesine bakın. Bu örnekte, **istek birimlerini** ve toplama değeri olarak **Ort** ' i seçelim.
 
    Bu ayrıntılara ek olarak, ölçümlerin **zaman aralığını** ve **zaman parçalı yapısını** da seçebilirsiniz. En fazla, son 30 güne ait ölçümleri görüntüleyebilirsiniz.  Filtreyi uyguladıktan sonra filtreniz temelinde bir grafik görüntülenir. Seçili dönem için dakika başına tüketilen ortalama istek birimi sayısını görebilirsiniz.  
 
-   ![Azure portal bir ölçüm seçin](./media/monitor-cosmos-db/metric-types.png)
+   :::image type="content" source="./media/monitor-cosmos-db/metric-types.png" alt-text="Azure portal bir ölçüm seçin":::
 
 ### <a name="add-filters-to-metrics"></a>Ölçümlere filtre ekleme
 
 Ayrıca ölçümleri ve belirli bir **CollectionName**, **DatabaseName**, **OperationType**, **Region**ve **StatusCode**tarafından görüntülenmiş grafik için filtre uygulayabilirsiniz. Ölçümleri filtrelemek için, **Filtre Ekle** ' yi seçin ve **OperationType** gibi gerekli özelliği seçin ve **sorgu**gibi bir değer seçin. Grafik daha sonra seçili dönem için sorgu işlemi için kullanılan istek birimlerini görüntüler. Saklı yordam aracılığıyla yürütülen işlemler, OperationType ölçümü altında kullanılamayacak şekilde günlüğe kaydedilmez.
 
-![Ölçüm ayrıntı düzeyini seçmek için filtre ekleyin](./media/monitor-cosmos-db/add-metrics-filter.png)
+:::image type="content" source="./media/monitor-cosmos-db/add-metrics-filter.png" alt-text="Ölçüm ayrıntı düzeyini seçmek için filtre ekleyin":::
 
 **Bölmeyi Uygula** seçeneğini kullanarak ölçümleri gruplandırabilirsiniz. Örneğin, her işlem türü için istek birimlerini gruplandırabilir ve aşağıdaki görüntüde gösterildiği gibi tüm işlemlerin tek seferde grafiğini görüntüleyebilirsiniz:
 
-![Uygulama bölme filtresi ekle](./media/monitor-cosmos-db/apply-metrics-splitting.png)
+:::image type="content" source="./media/monitor-cosmos-db/apply-metrics-splitting.png" alt-text="Uygulama bölme filtresi ekle":::
 
 ## <a name="analyzing-log-data"></a><a id="analyze-log-data"></a>Günlük verileri çözümleniyor
 

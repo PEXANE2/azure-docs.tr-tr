@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: efb873f8e66c3ab71b5b7345d776629fbe603af3
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2d8d4c369cef8bf996628e8c89a424f04dcdbe71
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193429"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888061"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Blok Blobları için nesne çoğaltma (Önizleme)
 
@@ -44,7 +44,7 @@ Nesne çoğaltmasını yapılandırdıktan sonra Azure depolama, kaynak hesabın
 
 Nesne çoğaltmasını yapılandırdığınızda, Azure depolama kaynak sağlayıcısı aracılığıyla hem kaynak hesapta hem de hedef hesapta bir çoğaltma ilkesi oluşturulur. Çoğaltma İlkesi bir ilke KIMLIĞI tarafından tanımlanır. Çoğaltmanın gerçekleşmesi için kaynak ve hedef hesapların ilke KIMLIĞI aynı olmalıdır.
 
-Bir depolama hesabı, en fazla iki hedef hesap için kaynak hesap olarak görev yapabilir. Kaynak ve hedef hesapların hepsi farklı bölgelerde olabilir. Hedef hesapların her birine veri çoğaltmak için ayrı çoğaltma ilkeleri yapılandırabilirsiniz.
+Bir depolama hesabı, en fazla iki hedef hesap için kaynak hesap olarak görev yapabilir. Ve bir hedef hesabın ikiden fazla kaynak hesabı olamaz. Kaynak ve hedef hesaplar farklı bölgelerde bulunabilir. Hedef hesapların her birine veri çoğaltmak için ayrı çoğaltma ilkeleri yapılandırabilirsiniz.
 
 ### <a name="replication-rules"></a>Çoğaltma kuralları
 
@@ -54,7 +54,7 @@ Bir çoğaltma kuralı oluşturduğunuzda, varsayılan olarak yalnızca kaynak k
 
 Ayrıca, blok bloblarını ön eke göre filtrelemek için bir çoğaltma kuralının bir parçası olarak bir veya daha fazla filtre belirtebilirsiniz. Bir ön ek belirttiğinizde, yalnızca kaynak kapsayıcıda bu önekle eşleşen Bloblar hedef kapsayıcıya kopyalanacaktır.
 
-Kaynak ve hedef kapsayıcıların her ikisi de bir kuralda belirtmeleri için mevcut olmalıdır. Çoğaltma ilkesini oluşturduktan sonra, hedef kapsayıcı salt okunurdur. Hedef kapsayıcıya yazma girişimleri 409 (çakışma) hata koduyla başarısız olur. Ancak, [BLOB katmanını ayarla](/rest/api/storageservices/set-blob-tier) işlemini arşiv katmanına taşımak için hedef kapsayıcıdaki bir blob üzerinde çağırabilirsiniz. Arşiv katmanı hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md#archive-access-tier).
+Kaynak ve hedef kapsayıcıların her ikisi de bir kuralda belirtmeleri için mevcut olmalıdır. Çoğaltma ilkesini oluşturduktan sonra hedef kapsayıcı salt okunur duruma gelir. Hedef kapsayıcıya yazma girişimleri hata kodu 409 (Çakışma) vererek başarısız olur. Ancak, [BLOB katmanını ayarla](/rest/api/storageservices/set-blob-tier) işlemini arşiv katmanına taşımak için hedef kapsayıcıdaki bir blob üzerinde çağırabilirsiniz. Arşiv katmanı hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md#archive-access-tier).
 
 ## <a name="about-the-preview"></a>Önizleme hakkında
 
@@ -71,11 +71,11 @@ Kaynak ve hedef hesapların her ikisi de, nesne çoğaltmasını kullanmak için
 > [!IMPORTANT]
 > Nesne çoğaltma önizlemesi yalnızca üretim dışı kullanım için tasarlanmıştır. Üretim hizmet düzeyi sözleşmeleri (SLA 'Lar) Şu anda kullanılamıyor.
 
-### <a name="prerequisites-for-object-replication"></a>Nesne çoğaltma önkoşulları
+### <a name="prerequisites-for-object-replication"></a>Nesne çoğaltma için önkoşullar
 
 Nesne çoğaltma, aşağıdaki Azure depolama özelliklerinin etkinleştirilmesini gerektirir: 
-- [Akışı Değiştir](storage-blob-change-feed.md)
-- [Sürüm Oluşturma](versioning-overview.md)
+- [Akışı değiştirme](storage-blob-change-feed.md)
+- [Sürüm oluşturma](versioning-overview.md)
 
 Nesne çoğaltmasını yapılandırmadan önce, önkoşullarını etkinleştirin. Kaynak hesapta değişiklik akışı etkinleştirilmelidir ve hem kaynak hem de hedef hesapta blob sürümü oluşturma etkinleştirilmiş olmalıdır. Bu özellikleri etkinleştirme hakkında daha fazla bilgi için şu makalelere bakın:
 

@@ -3,15 +3,15 @@ title: Büyük bölüm anahtarı ile Azure Cosmos kapsayıcıları oluşturma
 description: Azure portal ve farklı SDK 'Ları kullanarak büyük bölüm anahtarı ile Azure Cosmos DB bir kapsayıcı oluşturmayı öğrenin.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3b0a3387fe34a0e1c15109aec877c0654fc1a5b0
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 853d3fa79436d9af0119aada86d283f9970d4ef2
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82870001"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262812"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Büyük bölüm anahtarı ile kapsayıcılar oluşturma
 
@@ -23,7 +23,7 @@ Büyük bölüm anahtarları, karma işlevin gelişmiş bir sürümünün işlev
 
 Büyük bölüm anahtarı oluşturmak için, Azure portal kullanarak yeni bir kapsayıcı oluşturduğunuzda, **bölüm anahtarımın anahtarından 100 daha büyük olduğunu** denetleyin. Büyük bölüm anahtarlarına ihtiyacınız yoksa veya 1,18 'den eski SDK sürümünde çalışan uygulamalarınız varsa onay kutusunun seçimini kaldırın.
 
-![Azure portal kullanarak büyük bölüm anahtarları oluşturma](./media/large-partition-keys/large-partition-key-with-portal.png)
+:::image type="content" source="./media/large-partition-keys/large-partition-key-with-portal.png" alt-text="Azure portal kullanarak büyük bölüm anahtarları oluşturma":::
 
 ## <a name="create-a-large-partition-key-powershell"></a>Büyük bölüm anahtarı oluşturma (PowerShell)
 
@@ -72,14 +72,14 @@ Büyük bölüm anahtarları, SDK 'ların aşağıdaki en düşük sürümleriyl
 |.NET     |    1,18     |
 |Java eşitleme     |   2.4.0      |
 |Java Async   |  2.5.0        |
-| REST API | istek üst bilgisini kullanarak sürümünden daha yüksek `2017-05-03` `x-ms-version`|
-| Resource Manager şablonu | `partitionKey` nesne içindeki `"version":2` özelliğini kullanarak sürüm 2. |
+| REST API | `2017-05-03`istek üst bilgisini kullanarak sürümünden daha yüksek `x-ms-version` .|
+| Resource Manager şablonu | `"version":2`nesne içindeki özelliğini kullanarak sürüm 2 `partitionKey` . |
 
 Şu anda, Power BI ve Azure Logic Apps içinde büyük bölüm anahtarı ile kapsayıcıları kullanamazsınız. Kapsayıcıları, bu uygulamalardan büyük bir bölüm anahtarı olmadan kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Cosmos DB'de bölümleme](partitioning-overview.md)
-* [Azure Cosmos DB istek birimleri](request-units.md)
+* [Azure Cosmos DB'de İstek birimleri](request-units.md)
 * [Kapsayıcı ve veritabanlarına aktarım hızı sağlama](set-throughput.md)
 * [Azure Cosmos hesabıyla çalışma](account-overview.md)

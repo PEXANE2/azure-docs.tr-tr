@@ -3,15 +3,15 @@ title: Azure Işlevleri zamanlayıcısını kullanarak zamanlamaya göre Azure C
 description: PowerShell ve Azure Işlevleri kullanarak Azure Cosmos DB aktarım hızını nasıl ölçeklendireceğinizi öğrenin.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 68ba40ea212c061fa5c8bbddc47ea0dfc6d8caa4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f538b02e81d885e22a6417d7c1f139c22635b0d
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75935174"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262489"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Azure Işlevleri Zamanlayıcı tetikleyicisi kullanarak Azure Cosmos DB aktarım hızını ölçeklendirme
 
@@ -21,7 +21,7 @@ Aktarım hızını, çekirdek (SQL) API hesapları için [Azure Resource Manager
 
 ## <a name="throughput-scheduler-sample-project"></a>Aktarım hızı Zamanlayıcı örnek projesi
 
-Bir zamanlamaya göre Azure Cosmos DB ölçeklendirme sürecini basitleştirmek için [Azure Cosmos üretilen iş Zamanlayıcı](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler)adlı örnek bir proje oluşturduk. Bu proje, "ScaleUpTrigger" ve "ScaleDownTrigger" adlı iki Zamanlayıcı tetikleyicisine sahip bir Azure Işlevleri uygulamasıdır. Tetikleyiciler her bir kaynaktaki `resources.json` dosyada tanımlanan aktarım hızını ayarlayan bir PowerShell betiği çalıştırır. ScaleUpTrigger, 8: UTC 'de çalışacak şekilde yapılandırılmıştır ve ScaleDownTrigger 6 PM UTC 'de çalışacak şekilde yapılandırılmıştır ve bu süreler her tetikleyici için `function.json` dosya içinde kolayca güncelleştirilebilen olabilir.
+Bir zamanlamaya göre Azure Cosmos DB ölçeklendirme sürecini basitleştirmek için [Azure Cosmos üretilen iş Zamanlayıcı](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler)adlı örnek bir proje oluşturduk. Bu proje, "ScaleUpTrigger" ve "ScaleDownTrigger" adlı iki Zamanlayıcı tetikleyicisine sahip bir Azure Işlevleri uygulamasıdır. Tetikleyiciler her bir kaynaktaki dosyada tanımlanan aktarım hızını ayarlayan bir PowerShell betiği çalıştırır `resources.json` . ScaleUpTrigger, 8: UTC 'de çalışacak şekilde yapılandırılmıştır ve ScaleDownTrigger 6 PM UTC 'de çalışacak şekilde yapılandırılmıştır ve bu süreler `function.json` Her tetikleyici için dosya içinde kolayca güncelleştirilebilen olabilir.
 
 Bu projeyi yerel olarak kopyalayabilir, ölçek artırma ve azaltma yapılacak Azure Cosmos DB kaynakları ve çalıştırılacak zamanlamayı belirtmek için bunu değiştirebilirsiniz. Daha sonra bu hizmeti bir Azure aboneliğine dağıtabilir ve Azure Cosmos hesaplarınız üzerinde üretilen işi ayarlamak için "Azure Cosmos DB operatörü" rolüyle [rol tabanlı Access Control](role-based-access-control.md) (RBAC) izinleriyle yönetilen hizmet kimliğini kullanarak güvenli hale getirebilirsiniz.
 

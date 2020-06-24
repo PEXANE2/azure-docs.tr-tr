@@ -4,15 +4,15 @@ description: Kural altyapısı, belirli içerik türlerinin teslimini engelleme,
 services: cdn
 author: asudbring
 ms.service: azure-cdn
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/31/2019
 ms.author: allensu
-ms.openlocfilehash: 2e5e4265f30631f8e68d8f9e7156ea578ae85e7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c61407b2a0c9d0423d1f856101400771e27d846
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253484"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887416"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Verizon Premium kural altyapısından Azure CDN kullanarak HTTP davranışını geçersiz kılın
 
@@ -22,7 +22,7 @@ ms.locfileid: "81253484"
 
 Azure CDN Rules altyapısı, HTTP isteklerinin işlenme biçimini özelleştirmenize olanak sağlar. Örneğin, belirli içerik türlerinin teslimini engelleme, önbelleğe alma ilkesi tanımlama veya bir HTTP üst bilgisini değiştirme. Bu öğreticide, CDN varlıklarının önbelleğe alma davranışını değiştiren bir kuralın nasıl oluşturulacağı gösterilmektedir. Kural altyapısı sözdizimi hakkında daha fazla bilgi için bkz. [Azure CDN kuralları altyapısı başvurusu](cdn-verizon-premium-rules-engine-reference.md).
 
-## <a name="access"></a>Erişim
+## <a name="access"></a>Access
 
 Kural altyapısına erişmek için, önce Azure CDN yönetim sayfasına erişmek üzere **CDN profili** sayfasının en üstünden **Yönet** ' i seçmeniz gerekir. Uç noktanızın dinamik site hızlandırma (DSA) için iyileştirildiğine bağlı olarak, kurallar altyapısına uç nokta türü için uygun kurallar kümesiyle erişirsiniz:
 
@@ -40,7 +40,7 @@ Kural altyapısına erişmek için, önce Azure CDN yönetim sayfasına erişmek
 
     ![DSA için kural altyapısı](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
 
-## <a name="tutorial"></a>Eğitmen
+## <a name="tutorial"></a>Öğretici
 
 1. **CDN profili** sayfasında **Yönet**' i seçin.
    
@@ -73,14 +73,14 @@ Kural altyapısına erişmek için, önce Azure CDN yönetim sayfasına erişmek
    >
    >
 
-5. Yeni bir özellik eklemek için **Özellikler**' in **+** yanındaki düğmeyi seçin.  Sol taraftaki açılan listede, **en yüksek kullanım süresini zorla**' yı seçin.  Görüntülenen metin kutusuna **300**girin. Kalan varsayılan değerleri değiştirmeyin.
+5. Yeni bir özellik eklemek için Özellikler ' in **+** yanındaki düğmeyi seçin **Features**.  Sol taraftaki açılan listede, **en yüksek kullanım süresini zorla**' yı seçin.  Görüntülenen metin kutusuna **300**girin. Kalan varsayılan değerleri değiştirmeyin.
    
    ![CDN kural özelliği](./media/cdn-rules-engine/cdn-new-feature.png)
    
    > [!NOTE]
    > Açılan listede birden çok özellik bulunur. Şu anda seçili olan özellik hakkında daha fazla bilgi için, sol tarafında mavi bilgilendirici simgesini seçin.
    >
-   > **Zorlamalı Iç maksimum yaş**IÇIN, CDN kenar düğümünün varlığı `Cache-Control` kaynaktan `Expires` ne zaman yenilediğine göre denetlemek için varlık ve üstbilgiler geçersiz kılınır. Bu örnekte, CDN Edge düğümü, varlığı kaynağın kaynağından yenilemelerinden önce 300 saniye veya 5 dakika boyunca varlığını önbelleğe alır.
+   > **Zorlamalı Iç maksimum yaş**IÇIN, `Cache-Control` `Expires` CDN kenar düğümünün varlığı kaynaktan ne zaman yenilediğine göre denetlemek için varlık ve üstbilgiler geçersiz kılınır. Bu örnekte, CDN Edge düğümü, varlığı kaynağın kaynağından yenilemelerinden önce 300 saniye veya 5 dakika boyunca varlığını önbelleğe alır.
    >
    > Özelliklerin ayrıntılı bir listesi için bkz. [Rules Engine özellikleri](cdn-verizon-premium-rules-engine-reference-features.md).
    >

@@ -1,131 +1,120 @@
 ---
 title: Şablonla bir Web uygulaması dağıtma-Azure Cosmos DB
-description: Bir Azure Cosmos DB hesabını, Azure App Service Web Apps ve örnek bir Web uygulamasını Azure Resource Manager şablonu kullanarak dağıtmayı öğrenin.
-author: SnehaGunda
+description: Azure Resource Manager şablonu kullanarak bir Azure Cosmos hesabını, Azure App Service Web Apps ve örnek bir Web uygulamasını dağıtmayı öğrenin.
+author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 03/11/2019
-ms.author: sngun
-ms.openlocfilehash: 7d1080abb35e556e97c34e77fdce4d553c169ee9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.topic: how-to
+ms.date: 06/19/2020
+ms.author: mjbrown
+ms.openlocfilehash: 30a80a2e2eb5522768c08a24535b0fb3f8d86a44
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266874"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261996"
 ---
-# <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Web Apps Azure Cosmos DB ve Azure App Service dağıtma
-Bu öğreticide, [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) Web uygulamasını ve örnek bir Web uygulamasını dağıtmak ve bütünleştirmek için bir Azure Resource Manager şablonunun nasıl kullanılacağı gösterilmektedir.
+# <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak GitHub 'dan bir Web uygulamasıyla Azure Cosmos DB ve Azure App Service dağıtma
 
-Azure Resource Manager şablonları kullanarak, Azure kaynaklarınızın dağıtımını ve yapılandırmasını kolayca otomatikleştirebilmeniz gerekir.  Bu öğretici, bir Web uygulamasının nasıl dağıtılacağını ve Azure Cosmos DB hesabı bağlantı bilgilerinin otomatik olarak nasıl yapılandırılacağını gösterir.
+Bu öğreticide, Azure portal bağlantı bilgilerini Azure Cosmos DB ' dan `appsettings.json` veya Azure App Services uygulama ayarlarına kesip yapıştırmaya gerek kalmadan ilk çalıştırmada Azure Cosmos DB bağlanan bir Web uygulamasının "Touch" dağıtımını nasıl yapabileceğiniz gösterilmektedir. Tüm bu eylemler tek bir işlemde bir Azure Resource Manager şablonu kullanılarak gerçekleştirilir. Buradaki örnekte, [Azure Cosmos DB Todo örneğini](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app) bir [Web uygulaması öğreticiden](sql-api-dotnet-application.md)dağıtacağız.
 
-Bu Öğreticiyi tamamladıktan sonra aşağıdaki soruları cevaplayabilirsiniz:  
+Kaynak Yöneticisi şablonlar, oldukça esnektir ve Azure 'daki herhangi bir hizmette karmaşık dağıtımlar oluşturmaya olanak sağlar. Bu, GitHub ve ekleme bağlantı bilgilerini, Azure portal Azure App Service uygulama ayarlarına dağıtmak gibi gelişmiş görevleri içerir. Bu öğretici, tek bir Kaynak Yöneticisi şablonu kullanarak aşağıdaki şeyleri nasıl yapılacağını gösterir.
 
-* Azure App Service ' de bir Azure Cosmos DB hesabı ve bir Web uygulaması dağıtmak ve bütünleştirmek için bir Azure Resource Manager şablonu nasıl kullanabilirim?
-* Bir Azure Cosmos DB hesabını, App Service Web Apps bir Web uygulamasını ve WebDeploy uygulamasını dağıtmak ve bütünleştirmek için bir Azure Resource Manager şablonu nasıl kullanabilirim?
+* Azure Cosmos hesabı dağıtın.
+* Azure App Service barındırma planı dağıtın.
+* Azure App Service dağıtın.
+* Azure Cosmos hesabından bitiş noktasını ve anahtarları Azure portal App Service uygulama ayarlarına ekleyin.
+* Bir GitHub deposundan App Service bir Web uygulaması dağıtın.
 
-<a id="Prerequisites"></a>
+Elde edilen dağıtımda, Azure Cosmos DB uç nokta URL 'sini veya Azure portal kimlik doğrulama anahtarlarını kesip yapıştırmaya gerek kalmadan Azure Cosmos DB bağlanabilir tam işlevli bir Web uygulaması vardır.
 
 ## <a name="prerequisites"></a>Ön koşullar
+
 > [!TIP]
 > Bu öğretici Azure Resource Manager şablonları veya JSON ile önceki deneyimle karşılaşmadığından, başvurulan şablonları veya dağıtım seçeneklerini değiştirmek ister, bu alanların her biri için bilgi gereklidir.
-> 
-> 
 
-Bu öğreticideki yönergeleri takip etmeden önce, Azure aboneliğine sahip olduğunuzdan emin olun. Azure, abonelik tabanlı bir platformdur.  Abonelik edinme hakkında daha fazla bilgi için bkz. [satın alma seçenekleri](https://azure.microsoft.com/pricing/purchase-options/), [üye teklifleri](https://azure.microsoft.com/pricing/member-offers/)veya [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/).
+## <a name="step-1-deploy-the-template"></a>1. Adım: şablonu dağıtma
 
-## <a name="step-1-download-the-template-files"></a><a id="CreateDB"></a>1. Adım: şablon dosyalarını Indirme
-Bu öğreticinin gerektirdiği şablon dosyalarını indirerek başlayalım.
+İlk olarak, bir özel dağıtım oluşturmak için Azure portal açmak üzere aşağıdaki **Azure 'A dağıt** düğmesini seçin. Azure [hızlı başlangıç şablonları galerisinden](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-webapp) Azure Kaynak Yönetimi şablonunu da görüntüleyebilirsiniz
 
-1. **Azure Cosmos DB hesabı oluştur, Web Apps ve bir demo uygulaması örnek** ( `https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json` ) şablonunu yerel bir klasöre (örneğin, C:\azure Cosmos dbtemplates) dağıtın. Bu şablon bir Azure Cosmos DB hesabı, bir App Service Web uygulaması ve bir Web uygulaması dağıtır.  Ayrıca, Web uygulamasını Azure Cosmos DB hesabına bağlanacak şekilde otomatik olarak yapılandırır.
-2. **Azure Cosmos DB hesabı oluştur Web Apps ve örnek** ( `https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json` ) şablonunu yerel bir klasöre indirin (örneğin, C:\azure Cosmos dbtemplates). Bu şablon bir Azure Cosmos DB hesabını, bir App Service Web uygulamasını dağıtır ve site uygulama ayarlarını Azure Cosmos DB bağlantı bilgilerini kolayca yüzey olarak değiştirir, ancak bir Web uygulaması içermez.  
+[![Azure 'A dağıtma](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-webapp%2Fazuredeploy.json)
 
-<a id="Build"></a>
+Azure portal bir kez, dağıtmak istediğiniz aboneliği seçin ve yeni bir kaynak grubu seçin veya oluşturun. Ardından aşağıdaki değerleri girin.
 
-## <a name="step-2-deploy-the-azure-cosmos-db-account-app-service-web-app-and-demo-application-sample"></a>2. Adım: Azure Cosmos DB hesabı, App Service Web uygulaması ve tanıtım uygulaması örneğini dağıtma
-Şimdi ilk şablonunuzu dağıtalım.
+:::image type="content" source="./media/create-website/template-deployment.png" alt-text="Şablon dağıtımı Kullanıcı arabiriminin ekran görüntüsü":::
 
-> [!TIP]
-> Şablon, aşağıdaki şablonda girilen Web uygulaması adı ve Azure Cosmos DB hesap adının geçerli ve b) kullanılabilir olduğunu doğrulamaz.  Dağıtımı göndermeden önce sağlamayı planladığınız adların kullanılabilirliğini doğrulamanız kesinlikle önerilir.
-> 
-> 
+* **Bölge** -bu Kaynak Yöneticisi gereklidir. Kaynaklarınızın bulunduğu konum parametresi tarafından kullanılan bölgeyi girin.
+* **Uygulama adı** -bu ad, bu dağıtımın tüm kaynakları tarafından kullanılır. Mevcut Azure Cosmos DB ve App Service hesaplarıyla çakışmaları önlemek için benzersiz bir ad seçtiğinizden emin olun.
+* **Konum** -kaynaklarınızın dağıtıldığı bölge.
+* **App Service plan katmanı** App Service planının fiyatlandırma katmanı.
+* **App Service plan örnekleri** -App Service planı için çalışan sayısı.
+* **Depo URL 'si** -GitHub 'daki Web uygulamasına yönelik depo.
+* **Dal** -GitHub deposu için dal.
+* **Veritabanı adı** -Azure Cosmos veritabanı adı.
+* **Kapsayıcı adı** -Azure Cosmos kapsayıcı adı.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın, yeni ' ye tıklayın ve "şablon dağıtımı" araması yapın.
-    ![Şablon dağıtımı Kullanıcı arabiriminin ekran görüntüsü](./media/create-website/TemplateDeployment1.png)
-2. Şablon dağıtımı öğesini seçin ve **Create** ![ şablon dağıtımı Kullanıcı arabiriminin ekran görüntüsü oluştur ' a tıklayın.](./media/create-website/TemplateDeployment2.png)
-3. **Şablonu Düzenle**' ye tıklayın, DocDBWebsiteTodo. JSON şablon dosyasının içeriğini yapıştırın ve **Kaydet**' e tıklayın.
-   ![Şablon dağıtımı Kullanıcı arabiriminin ekran görüntüsü](./media/create-website/TemplateDeployment3.png)
-4. **Parametreleri Düzenle**' ye tıklayın, zorunlu parametrelerin her biri için değerler sağlayın ve **Tamam**' a tıklayın.  Parametreler şu şekildedir:
-   
-   1. SITENAME: App Service Web uygulaması adını belirtir ve Web uygulamasına erişmek için kullandığınız URL 'YI oluşturmak için kullanılır (örneğin, "mydemodocdbwebapp" belirtirseniz, Web uygulamasına erişebileceğiniz URL `mydemodocdbwebapp.azurewebsites.net` ).
-   2. HOSTINGPLANNAME: oluşturulacak App Service barındırma planının adını belirtir.
-   3. Konum: Azure Cosmos DB ve Web uygulaması kaynaklarının oluşturulacağı Azure konumunu belirtir.
-   4. DATABASEACCOUNTNAME: oluşturulacak Azure Cosmos DB hesabının adını belirtir.   
-      
-      ![Şablon dağıtımı Kullanıcı arabiriminin ekran görüntüsü](./media/create-website/TemplateDeployment4.png)
-5. Mevcut bir kaynak grubu seçin veya yeni bir kaynak grubu oluşturmak için bir ad girin ve kaynak grubu için bir konum seçin.
-
-    ![Şablon dağıtımı Kullanıcı arabiriminin ekran görüntüsü](./media/create-website/TemplateDeployment5.png)
-6. Dağıtımı başlatmak için **yasal koşulları gözden geçir**, **satın al**' a ve ardından **Oluştur** ' a tıklayın.  Ortaya çıkan dağıtımın Azure portal giriş sayfanızda kolayca görünmesini sağlamak **için panoya sabitle ' yi** seçin.
-   ![Şablon dağıtımı Kullanıcı arabiriminin ekran görüntüsü](./media/create-website/TemplateDeployment6.png)
-7. Dağıtım tamamlandığında, kaynak grubu bölmesi açılır.
-   ![Kaynak grubu bölmesinin ekran görüntüsü](./media/create-website/TemplateDeployment7.png)  
-8. Uygulamayı kullanmak için Web uygulaması URL 'sine gidin (Yukarıdaki örnekte URL 'nin olması gerekir `http://mydemodocdbwebapp.azurewebsites.net` ).  Aşağıdaki Web uygulamasını görürsünüz:
-   
-   ![Örnek ToDo uygulaması](./media/create-website/image2.png)
-9. Devam edin ve Web uygulamasında birkaç görev oluşturun ve ardından Azure portal kaynak grubu bölmesine geri dönün. Kaynaklar listesinde Azure Cosmos DB hesap kaynağına tıklayın ve **Veri Gezgini**' a tıklayın.
-10. "SELECT * FROM c" varsayılan sorgusunu çalıştırın ve sonuçları inceleyin.  Sorgunun, yukarıdaki 7. adımda oluşturduğunuz Todo öğelerinin JSON temsilini alındığını unutmayın.  Sorguları denemekten çekinmeyin; Örneğin, tamamlanmış olarak işaretlenen tüm Todo öğelerini döndürmek için SELECT * FROM c, c. IsAll = true çalıştırmayı deneyin.
-11. Azure Cosmos DB portalı deneyimini keşfetmekten veya örnek Todo uygulamasını değiştirebilirsin.  Hazırsanız, başka bir şablon dağıtalım.
-
-<a id="Build"></a> 
-
-## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>3. Adım: belge hesabını ve Web uygulaması örneğini dağıtma
-Şimdi ikinci şablonunuzu dağıtalım.  Bu şablon, hesap uç noktası ve ana anahtar gibi Azure Cosmos DB bağlantı bilgilerini bir Web uygulamasına uygulama ayarları olarak veya özel bir bağlantı dizesi olarak nasıl ekleyebileceğini göstermek için yararlıdır. Örneğin, bir Azure Cosmos DB hesabıyla dağıtmak istediğiniz kendi Web uygulamanız vardır ve dağıtım sırasında bağlantı bilgilerinin otomatik olarak doldurulmasını sağlayabilirsiniz.
+Değerleri doldurduktan sonra, dağıtımı başlatmak için **Oluştur** düğmesini seçin. Bu adımın tamamlanması 5 ila 10 dakika sürer.
 
 > [!TIP]
-> Şablon, aşağıda girilen Web uygulaması adının ve Azure Cosmos DB hesap adının geçerli ve b) kullanılabilir olduğunu doğrulamaz.  Dağıtımı göndermeden önce sağlamayı planladığınız adların kullanılabilirliğini doğrulamanız kesinlikle önerilir.
-> 
-> 
+> Şablon, şablona girilen Azure App Service adı ve Azure Cosmos hesap adının geçerli ve kullanılabilir olduğunu doğrulamaz. Dağıtımı göndermeden önce sağlamayı planladığınız adların kullanılabilirliğini doğrulamanız kesinlikle önerilir.
 
-1. [Azure portalında](https://portal.azure.com)yeni ' ye tıklayın ve "şablon dağıtımı" araması yapın.
-    ![Şablon dağıtımı Kullanıcı arabiriminin ekran görüntüsü](./media/create-website/TemplateDeployment1.png)
-2. Şablon dağıtımı öğesini seçin ve **Create** ![ şablon dağıtımı Kullanıcı arabiriminin ekran görüntüsü oluştur ' a tıklayın.](./media/create-website/TemplateDeployment2.png)
-3. **Şablonu Düzenle**' ye tıklayın, DocDBWebSite. JSON şablon dosyasının içeriğini yapıştırın ve **Kaydet**' e tıklayın.
-   ![Şablon dağıtımı Kullanıcı arabiriminin ekran görüntüsü](./media/create-website/TemplateDeployment3.png)
-4. **Parametreleri Düzenle**' ye tıklayın, zorunlu parametrelerin her biri için değerler sağlayın ve **Tamam**' a tıklayın.  Parametreler şu şekildedir:
-   
-   1. SITENAME: App Service Web uygulaması adını belirtir ve Web uygulamasına erişmek için kullanacağınız URL 'YI oluşturmak için kullanılır (örneğin, "mydemodocdbwebapp" belirtirseniz, Web uygulamasına erişiminizin URL 'SI mydemodocdbwebapp.azurewebsites.net).
-   2. HOSTINGPLANNAME: oluşturulacak App Service barındırma planının adını belirtir.
-   3. Konum: Azure Cosmos DB ve Web uygulaması kaynaklarının oluşturulacağı Azure konumunu belirtir.
-   4. DATABASEACCOUNTNAME: oluşturulacak Azure Cosmos DB hesabının adını belirtir.   
-      
-      ![Şablon dağıtımı Kullanıcı arabiriminin ekran görüntüsü](./media/create-website/TemplateDeployment4.png)
-5. Mevcut bir kaynak grubu seçin veya yeni bir kaynak grubu oluşturmak için bir ad girin ve kaynak grubu için bir konum seçin.
 
-    ![Şablon dağıtımı Kullanıcı arabiriminin ekran görüntüsü](./media/create-website/TemplateDeployment5.png)
-6. Dağıtımı başlatmak için **yasal koşulları gözden geçir**, **satın al**' a ve ardından **Oluştur** ' a tıklayın.  Ortaya çıkan dağıtımın Azure portal giriş sayfanızda kolayca görünmesini sağlamak **için panoya sabitle ' yi** seçin.
-   ![Şablon dağıtımı Kullanıcı arabiriminin ekran görüntüsü](./media/create-website/TemplateDeployment6.png)
-7. Dağıtım tamamlandığında, kaynak grubu bölmesi açılır.
-   ![Kaynak grubu bölmesinin ekran görüntüsü](./media/create-website/TemplateDeployment7.png)  
-8. Kaynaklar listesinde Web uygulaması kaynağına tıklayın ve ardından kaynak grubunun **uygulama ayarları** ![ ekran görüntüsü ' ne tıklayın.](./media/create-website/TemplateDeployment9.png)  
-9. Azure Cosmos DB uç noktası ve Azure Cosmos DB ana anahtarlarının her biri için nasıl uygulama ayarlarının mevcut olduğunu aklınızda edin.
+## <a name="step-2-explore-the-resources"></a>2. Adım: kaynakları araştırma
 
-    ![Uygulama ayarlarının ekran görüntüsü](./media/create-website/TemplateDeployment10.png)  
-10. Azure portalını araştırmaya devam edebilir veya kendi Azure Cosmos DB uygulamanızı oluşturmak için Azure Cosmos DB [örneklerimizden](https://go.microsoft.com/fwlink/?LinkID=402386) birini takip edebilirsiniz.
+### <a name="view-the-deployed-resources"></a>Dağıtılan kaynakları görüntüleme
 
-<a name="NextSteps"></a>
+Şablon kaynakları dağıttıktan sonra, bunların her birini kaynak grubunuzda görebilirsiniz.
+
+:::image type="content" source="./media/create-website/resource-group.png" alt-text="Kaynak grubu":::
+
+### <a name="view-cosmos-db-endpoint-and-keys"></a>Cosmos DB uç noktası ve anahtarları görüntüleme
+
+Ardından, portalda Azure Cosmos hesabını açın. Aşağıdaki ekran görüntüsünde bir Azure Cosmos hesabı için uç nokta ve anahtarlar gösterilmektedir.
+
+:::image type="content" source="./media/create-website/cosmos-keys.png" alt-text="Cosmos anahtarları":::
+
+### <a name="view-the-azure-cosmos-db-keys-in-application-settings"></a>Uygulama ayarlarındaki Azure Cosmos DB anahtarlarını görüntüleme
+
+Sonra kaynak grubundaki Azure App Service gidin. App Service uygulama ayarlarını görüntülemek için yapılandırma sekmesine tıklayın. Uygulama ayarları, Cosmos DB bağlanmak için gereken Cosmos DB hesabı ve birincil anahtar değerlerini ve şablon dağıtımından geçirilen veritabanı ve kapsayıcı adlarını içerir.
+
+:::image type="content" source="./media/create-website/application-settings.png" alt-text="Uygulama ayarları":::
+
+### <a name="view-web-app-in-deployment-center"></a>Web uygulamasını dağıtım merkezi 'nde görüntüle
+
+Daha sonra App Service için dağıtım merkezine gidin. Burada, şablona geçirilen GitHub deposuna yönelik depo noktalarını görürsünüz. Ayrıca, aşağıdaki durum, uygulamanın başarıyla dağıtıldığını ve başlatıldığını belirten başarılı (etkin) anlamına gelir.
+
+:::image type="content" source="./media/create-website/deployment-center.png" alt-text="Dağıtım Merkezi":::
+
+### <a name="run-the-web-application"></a>Web uygulamasını çalıştırma
+
+Web uygulamasını açmak için dağıtım merkezi 'nin en üstündeki **Araştır** ' a tıklayın. Web uygulaması, giriş ekranına açılır. **Yeni oluştur** ' a tıklayın ve alanlara bazı veriler girip kaydet ' e tıklayın. Elde edilen ekranda Cosmos DB kaydedilen veriler gösterilir.
+
+:::image type="content" source="./media/create-website/app-home-screen.png" alt-text="Ana ekran":::
+
+## <a name="step-3-how-does-it-work"></a>3. Adım: nasıl çalışır?
+
+Bunun çalışması için gereken üç öğe vardır.
+
+### <a name="reading-app-settings-at-runtime"></a>Çalışma zamanında uygulama ayarları okunuyor
+
+İlk olarak, uygulamanın, `Startup` ASP.NET MVC web uygulamasındaki sınıfında Cosmos DB uç noktası ve anahtarı istemesi gerekir. [Cosmos DB örnek](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app) , bağlantı bilgilerini üzerine appsettings.jsgirebileceğiniz yerel olarak çalıştırılabilir. Ancak dağıtıldığında, bu dosya uygulamayla birlikte dağıtılır. Kırmızı renkte bu satırlar, appsettings.js'daki ayarlara erişemeyecektir Azure App Service uygulama ayarlarından çalışacaktır.
+
+:::image type="content" source="./media/create-website/startup.png" alt-text="Başlangıç":::
+
+### <a name="using-special-azure-resource-management-functions"></a>Özel Azure Kaynak yönetimi işlevlerini kullanma
+
+Bu değerlerin dağıtıldığında uygulama için kullanılabilir olması için, Azure Resource Manager şablonu, Cosmos DB hesabından değerleri alan ve uygulama ayarları değerlerine, bu değerleri bir ' {section: Key} ' biçiminde Yukarıdaki [listKeys](../azure-resource-manager/templates/template-functions-resource.md#listkeys) uygulamada kullanılanlarla eşleşen anahtar adlarıyla [eklemek gibi özel](../azure-resource-manager/templates/template-functions-resource.md#reference) Azure kaynak yönetimi işlevleri kullanarak Cosmos DB hesabından bu değerleri isteyebilir. Örneğin, `CosmosDb:Account`.
+
+:::image type="content" source="./media/create-website/template-keys.png" alt-text="Şablon anahtarları":::
+
+### <a name="deploying-web-apps-from-github"></a>GitHub 'dan Web uygulamaları dağıtma
+
+Son olarak, Web uygulamasını GitHub 'dan App Service dağıtmanız gerekir. Bu işlem aşağıdaki JSON kullanılarak yapılır. Bu kaynağa dikkat etmeniz gereken iki şey, bu kaynağın türü ve adıdır. Hem `"type": "sourcecontrols"` hem de `"name": "web"` özellik değerleri sabit kodludur ve değiştirilmemelidir.
+
+:::image type="content" source="./media/create-website/deploy-from-github.png" alt-text="GitHub 'Dan dağıtma":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Tebrikler! Azure Resource Manager şablonları kullanarak Azure Cosmos DB, App Service Web uygulaması ve örnek bir Web uygulaması dağıttınız.
 
-* Azure Cosmos DB hakkında daha fazla bilgi edinmek için [buraya](https://azure.microsoft.com/services/cosmos-db/)tıklayın.
-* Azure App Service Web Apps hakkında daha fazla bilgi edinmek için [buraya](https://go.microsoft.com/fwlink/?LinkId=325362)tıklayın.
-* Azure Resource Manager şablonları hakkında daha fazla bilgi edinmek için [buraya](https://msdn.microsoft.com/library/azure/dn790549.aspx)tıklayın.
+Tebrikler! Azure Cosmos DB, Azure App Service ve bir örnek Web uygulamasını, tek bir işlemde Cosmos DB bağlanmak için gereken bağlantı bilgilerini otomatik olarak ve gizli bilgileri kesip yapıştırmaya gerek kalmadan dağıttık. Bu şablonu bir başlangıç noktası olarak kullanarak, kendi web uygulamalarınızı aynı şekilde dağıtmak için bunu değiştirebilirsiniz.
 
-## <a name="whats-changed"></a>Yapılan değişiklikler
-* Web Sitelerinden App Service’e kadar değiştirme kılavuzu için bkz. [Azure App Service ve Mevcut Azure Hizmetlerine Etkileri](https://go.microsoft.com/fwlink/?LinkId=529714)
-
-> [!NOTE]
-> Azure hesabı için kaydolmadan önce Azure App Service’i kullanmaya başlamak isterseniz, App Service’de hemen kısa süreli bir başlangıç web uygulaması oluşturabileceğiniz [App Service’i Deneyin](https://go.microsoft.com/fwlink/?LinkId=523751) sayfasına gidin. Kredi kartı ve taahhüt gerekmez.
-> 
-> 
-
+* Bu örnek için Azure Resource Manager şablonu için [Azure hızlı başlangıç şablonları galerisine](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-webapp) gidin
+* Örnek uygulamanın kaynak kodu için [GitHub 'Da uygulamayı Cosmos DB](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app)gidin.

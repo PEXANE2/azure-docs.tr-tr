@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 11e133a24ff728cc864e50e898e9db982b186337
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: d6217d9616293cb4d541c9b05511d8cbd318ef20
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597934"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205737"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service’te hazırlık ortamları ayarlama
 <a name="Overview"></a>
@@ -38,7 +38,7 @@ Birden çok dağıtım yuvası etkinleştirebilmeniz için uygulamanın **Standa
     ![Uygulama Hizmetleri arama](./media/web-sites-staged-publishing/search-for-app-services.png)
    
 
-2. Sol bölmede **dağıtım yuvaları** > **yuva Ekle**' yi seçin.
+2. Sol bölmede **dağıtım yuvaları**  >  **yuva Ekle**' yi seçin.
    
     ![Yeni dağıtım yuvası ekleme](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
@@ -58,7 +58,7 @@ Birden çok dağıtım yuvası etkinleştirebilmeniz için uygulamanın **Standa
    
     ![Dağıtım yuvası başlığı](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    Hazırlama yuvasında, tıpkı diğer App Service uygulamaları gibi bir yönetim sayfası vardır. Yuvanın yapılandırmasını değiştirebilirsiniz. Dağıtım yuvasını görüntülediğinizden emin olmak için, uygulama adı ** \<app-name>/\<yuva adı>** olarak gösterilir ve uygulama türü **App Service (yuva)** olur. Ayrıca, yuvası aynı gösterimlerle aynı şekilde kaynak grubunuzda ayrı bir uygulama olarak da görebilirsiniz.
+    Hazırlama yuvasında, tıpkı diğer App Service uygulamaları gibi bir yönetim sayfası vardır. Yuvanın yapılandırmasını değiştirebilirsiniz. Dağıtım yuvasını görüntülemekte olduğunuzu hatırlatmak için, uygulama adı olarak gösterilir **\<app-name>/\<slot-name>** ve uygulama türü **App Service (yuva)** olur. Ayrıca, yuvası aynı gösterimlerle aynı şekilde kaynak grubunuzda ayrı bir uygulama olarak da görebilirsiniz.
 
 6. Yuvanın kaynak sayfasında Uygulama URL 'sini seçin. Dağıtım yuvası kendi ana bilgisayar adına sahiptir ve ayrıca canlı bir uygulamadır. Dağıtım yuvasına genel erişimi sınırlandırmak için bkz. [IP kısıtlamaları Azure App Service](app-service-ip-restrictions.md).
 
@@ -85,7 +85,7 @@ Ayarları farklı bir yuvadan kopyalasanız bile, yeni dağıtım yuvasının i�
 
 1. [Otomatik takas](#Auto-Swap) [özel ısınma](#Warm-up)ile etkinleştirilirse, kaynak yuvasının her örneğindeki uygulama köküne ("/") bir http isteği getirerek [uygulama başlatma](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) tetikleyin.
 
-    `applicationInitialization` Belirtilmezse, her örnekteki kaynak yuvasının uygulama KÖKÜNE bir http isteği tetikleyin. 
+    `applicationInitialization`Belirtilmezse, her örnekteki kaynak yuvasının uygulama köküne BIR http isteği tetikleyin. 
     
     Bir örnek herhangi bir HTTP yanıtı döndürürse, bu, çarpımış olarak kabul edilir.
 
@@ -151,7 +151,7 @@ Değiştirmeyi iptal ederseniz, App Service yapılandırma öğelerini kaynak yu
 
 2. Değiştirmeyi başlatmaya hazırsanız **değiştirmeyi Başlat**' ı seçin.
 
-    1. aşama tamamlandığında, iletişim kutusunda bilgilendirilirsiniz. Kaynak yuvadaki değiştirme 'yi öğesine `https://<app_name>-<source-slot-name>.azurewebsites.net`giderek önizleyin. 
+    1. aşama tamamlandığında, iletişim kutusunda bilgilendirilirsiniz. Kaynak yuvadaki değiştirme 'yi öğesine giderek önizleyin `https://<app_name>-<source-slot-name>.azurewebsites.net` . 
 
 3. Bekleyen değiştirme işlemini tamamlamaya hazırsanız değiştirme **eyleminde** **değiştirmeyi Tamam** ' ı seçin ve **değiştirmeyi Tamam**' ı seçin.
 
@@ -183,7 +183,7 @@ Otomatik takas, uygulamanızı sıfır soğuk başlar ve uygulamanın müşteril
 
 Otomatik değiştirmeyi yapılandırmak için:
 
-1. Uygulamanızın kaynak sayfasına gidin.  >  **Yapılandırma** >  **Deployment slots** > **genel ayarları**>dağıtım yuvaları*\<istenen kaynak yuvası *' nı seçin.
+1. Uygulamanızın kaynak sayfasına gidin. **Dağıtım yuvaları**  >  *\<desired source slot>*  >  **yapılandırma**  >  **genel ayarları**' nı seçin.
    
 2. **Otomatik takas etkin**için **Açık**seçeneğini belirleyin. Ardından, **Otomatik takas dağıtım yuvası**için istenen hedef yuvayı seçin ve komut çubuğunda **Kaydet** ' i seçin. 
    
@@ -197,7 +197,7 @@ Herhangi bir sorununuz varsa bkz. değişiklikleri [giderme](#troubleshoot-swaps
 
 ## <a name="specify-custom-warm-up"></a>Özel ısınma belirtin
 
-Bazı uygulamalar, değiştirme işleminden önce özel ısınma eylemleri gerektirebilir. Web `applicationInitialization` . config dosyasındaki yapılandırma öğesi özel başlatma eylemleri belirtmenize izin verir. [Takas işlemi](#AboutConfiguration) , hedef yuva ile takas etmeden önce bu özel ısınma işleminin bitmesini bekler. Örnek bir Web. config parçası aşağıda verilmiştir.
+Bazı uygulamalar, değiştirme işleminden önce özel ısınma eylemleri gerektirebilir. `applicationInitialization`web.config yapılandırma öğesi özel başlatma eylemleri belirtmenize olanak tanır. [Takas işlemi](#AboutConfiguration) , hedef yuva ile takas etmeden önce bu özel ısınma işleminin bitmesini bekler. Örnek bir web.config parçası aşağıda verilmiştir.
 
     <system.webServer>
         <applicationInitialization>
@@ -206,15 +206,15 @@ Bazı uygulamalar, değiştirme işleminden önce özel ısınma eylemleri gerek
         </applicationInitialization>
     </system.webServer>
 
-`applicationInitialization` Öğesini özelleştirme hakkında daha fazla bilgi için bkz. [en yaygın dağıtım yuvası değiştirme hataları ve nasıl düzeltileceğini öğrenin](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
+Öğesini özelleştirme hakkında daha fazla bilgi için `applicationInitialization` bkz. [en yaygın dağıtım yuvası değiştirme hataları ve nasıl düzeltileceğini öğrenin](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
 
 Ayrıca, aşağıdaki [uygulama ayarlarından](configure-common.md)biri veya her ikisiyle de ısınma davranışını özelleştirebilirsiniz:
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`: Sitenizi ısınma için ping yapılacak yol. Değer olarak eğik çizgiyle başlayan özel bir yol belirterek bu uygulama ayarını ekleyin. `/statuscheck` bunun bir örneğidir. Varsayılan değer: `/`. 
-- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Isınma işlemi için geçerli HTTP yanıt kodları. Bu uygulama ayarını, virgülle ayrılmış bir HTTP kodları listesi ile ekleyin. Örnek olarak `200,202` bir örnektir. Döndürülen durum kodu listede yoksa, ısınma ve takas işlemleri durdurulur. Varsayılan olarak, tüm yanıt kodları geçerlidir.
+- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Isınma işlemi için geçerli HTTP yanıt kodları. Bu uygulama ayarını, virgülle ayrılmış bir HTTP kodları listesi ile ekleyin. Örnek olarak bir örnektir `200,202` . Döndürülen durum kodu listede yoksa, ısınma ve takas işlemleri durdurulur. Varsayılan olarak, tüm yanıt kodları geçerlidir.
 
 > [!NOTE]
-> `<applicationInitialization>` Yapılandırma öğesi her uygulamanın bir parçasıdır, ancak iki ısınma davranışı uygulama ayarları yalnızca yuva takas için geçerlidir.
+> `<applicationInitialization>`Yapılandırma öğesi her uygulamanın bir parçasıdır, ancak iki ısınma davranışı uygulama ayarları yalnızca yuva takas için geçerlidir.
 
 Herhangi bir sorununuz varsa bkz. değişiklikleri [giderme](#troubleshoot-swaps).
 
@@ -224,11 +224,11 @@ Herhangi bir sorununuz varsa bkz. değişiklikleri [giderme](#troubleshoot-swaps
 
 Portalın kaynak sayfasında, sol bölmede **etkinlik günlüğü**' nü seçin.
 
-Günlük sorgusunda bir değiştirme işlemi görüntülenir `Swap Web App Slots`. Bu öğeyi genişletebilir ve ayrıntılarını görmek için alt perations veya hatalardan birini seçebilirsiniz.
+Günlük sorgusunda bir değiştirme işlemi görüntülenir `Swap Web App Slots` . Bu öğeyi genişletebilir ve ayrıntılarını görmek için alt perations veya hatalardan birini seçebilirsiniz.
 
 ## <a name="route-traffic"></a>Trafiği yönlendirme
 
-Varsayılan olarak, uygulamanın üretim URL 'sine (`http://<app_name>.azurewebsites.net`) yönelik tüm istemci istekleri üretim yuvasına yönlendirilir. Trafiğin bir bölümünü başka bir yuvaya yönlendirebilirsiniz. Bu özellik, yeni bir güncelleştirme için Kullanıcı geri bildirimlerine ihtiyacınız varsa, ancak bunu üretime serbest bırakmaya hazırsanız faydalıdır.
+Varsayılan olarak, uygulamanın üretim URL 'sine () yönelik tüm istemci istekleri `http://<app_name>.azurewebsites.net` Üretim yuvasına yönlendirilir. Trafiğin bir bölümünü başka bir yuvaya yönlendirebilirsiniz. Bu özellik, yeni bir güncelleştirme için Kullanıcı geri bildirimlerine ihtiyacınız varsa, ancak bunu üretime serbest bırakmaya hazırsanız faydalıdır.
 
 ### <a name="route-production-traffic-automatically"></a>Üretim trafiğini otomatik olarak yönlendir
 
@@ -242,10 +242,10 @@ Varsayılan olarak, uygulamanın üretim URL 'sine (`http://<app_name>.azurewebs
 
 Ayar kaydedildikten sonra, belirtilen istemci yüzdesi, bir üretim dışı yuvaya rastgele yönlendirilir. 
 
-İstemci belirli bir yuvaya otomatik olarak yönlendirildikten sonra, o istemci oturumunun ömrü için bu yuvaya "sabitlenmiş" olur. İstemci tarayıcısında, HTTP başlıklarınızın `x-ms-routing-name` tanımlama bilgisine bakarak oturumunuzun hangi yuvaya sabitlendiği hakkında bilgi alabilirsiniz. "Hazırlama" yuvasına yönlendirilen bir istek tanımlama bilgisine `x-ms-routing-name=staging`sahiptir. Üretim yuvasına yönlendirilen bir istek tanımlama bilgisine `x-ms-routing-name=self`sahiptir.
+İstemci belirli bir yuvaya otomatik olarak yönlendirildikten sonra, o istemci oturumunun ömrü için bu yuvaya "sabitlenmiş" olur. İstemci tarayıcısında, `x-ms-routing-name` http başlıklarınızın tanımlama bilgisine bakarak oturumunuzun hangi yuvaya sabitlendiği hakkında bilgi alabilirsiniz. "Hazırlama" yuvasına yönlendirilen bir istek tanımlama bilgisine sahiptir `x-ms-routing-name=staging` . Üretim yuvasına yönlendirilen bir istek tanımlama bilgisine sahiptir `x-ms-routing-name=self` .
 
    > [!NOTE]
-   > Azure portal yanında, DevOps işlem hatları veya diğer otomasyon [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) SISTEMLERI gibi CI/CD araçlarından yönlendirme yüzdelerini ayarlamak IÇIN Azure CLI 'daki komutunu da kullanabilirsiniz.
+   > Azure portal yanında, [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) DevOps işlem hatları veya diğer otomasyon sistemleri gıbı CI/CD araçlarından yönlendirme yüzdelerini ayarlamak Için Azure CLI 'daki komutunu da kullanabilirsiniz.
    > 
 
 ### <a name="route-production-traffic-manually"></a>Üretim trafiğini el ile yönlendirin
@@ -254,25 +254,25 @@ Otomatik Trafik yönlendirmeye ek olarak, App Service istekleri belirli bir yuva
 
 Kullanıcıların beta uygulamanızı geri almasına izin vermek için, örneğin bu bağlantıyı Web sayfanıza yerleştirebilirsiniz:
 
-```HTML
+```html
 <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
 ```
 
-Dize `x-ms-routing-name=self` , üretim yuvasını belirtir. İstemci tarayıcısı bağlantıya eriştiğinde, üretim yuvasına yönlendirilir. Sonraki tüm istekler, oturumu `x-ms-routing-name=self` üretim yuvasına sabiteden tanımlama bilgisine sahiptir.
+Dize, `x-ms-routing-name=self` Üretim yuvasını belirtir. İstemci tarayıcısı bağlantıya eriştiğinde, üretim yuvasına yönlendirilir. Sonraki tüm istekler, `x-ms-routing-name=self` oturumu üretim yuvasına sabiteden tanımlama bilgisine sahiptir.
 
-Kullanıcıların beta uygulamanızı kabul etmesine izin vermek için, aynı sorgu parametresini üretim dışı yuva adı olarak ayarlayın. Bir örneği aşağıda verilmiştir:
+Kullanıcıların beta uygulamanızı kabul etmesine izin vermek için, aynı sorgu parametresini üretim dışı yuva adı olarak ayarlayın. İşte bir örnek:
 
 ```
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
 ```
 
-Varsayılan olarak, yeni yuvalara gri olarak gösterilen bir yönlendirme `0%`kuralı verilir. Bu değeri açık olarak `0%` (siyah metinde gösterildiği gibi) ayarlarsanız, kullanıcılarınız hazırlama yuvasına `x-ms-routing-name` sorgu parametresini kullanarak el ile erişebilir. Ancak, yönlendirme yüzdesi 0 olarak ayarlandığı için bunlar otomatik olarak yuvaya yönlendirilmez. Bu, iç ekiplerin yuvalarda değişiklikleri test kurmasına izin verirken, hazırlama yuvalarınızı genel olarak "gizleyebileceğiniz", gelişmiş bir senaryodur.
+Varsayılan olarak, yeni yuvalara gri olarak gösterilen bir yönlendirme kuralı verilir `0%` . Bu değeri açık olarak `0%` (siyah metinde gösterildiği gibi) ayarlarsanız, kullanıcılarınız hazırlama yuvasına sorgu parametresini kullanarak el ile erişebilir `x-ms-routing-name` . Ancak, yönlendirme yüzdesi 0 olarak ayarlandığı için bunlar otomatik olarak yuvaya yönlendirilmez. Bu, iç ekiplerin yuvalarda değişiklikleri test kurmasına izin verirken, hazırlama yuvalarınızı genel olarak "gizleyebileceğiniz", gelişmiş bir senaryodur.
 
 <a name="Delete"></a>
 
 ## <a name="delete-a-slot"></a>Yuva silme
 
-Uygulamanızı arayın ve seçin. > >  **genel bakışı***\<silmek için * **dağıtım yuvaları** > yuvası ' nı seçin. Uygulama türü, bir dağıtım yuvası görüntülemekte olduğunuzu hatırlatmak için **App Service (yuva)** olarak gösterilir. Komut çubuğunda **Sil** ' i seçin.  
+Uygulamanızı arayın ve seçin. **Dağıtım yuvalarına**  >  *\<slot to delete>*  >  **Genel Bakış ' ı**seçin. Uygulama türü, bir dağıtım yuvası görüntülemekte olduğunuzu hatırlatmak için **App Service (yuva)** olarak gösterilir. Komut çubuğunda **Sil** ' i seçin.  
 
 ![Dağıtım yuvasını silme](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -336,11 +336,11 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 [Azure Resource Manager şablonlar](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) , Azure kaynaklarının dağıtımını ve yapılandırmasını otomatik hale getirmek için kullanılan BILDIRIM temelli JSON dosyalarıdır. Kaynak Yöneticisi şablonları kullanarak yuvaları takas etmek için, *Microsoft. Web/Sites/yuvaları* ve *Microsoft. Web/Sites* kaynaklarında iki özellik ayarlayacaksınız:
 
 - `buildVersion`: Bu, yuvada dağıtılan uygulamanın geçerli sürümünü temsil eden bir String özelliğidir. Örneğin: "v1", "1.0.0.1" veya "2019-09-20T11:53:25.2887393-07:00".
-- `targetBuildVersion`: Bu, yuvanın ne `buildVersion` olması gerektiğini belirten bir String özelliğidir. TargetBuildVersion geçerli `buildVersion`değere eşit değilse, bu, belirtilen `buildVersion`yuvayı bularak değiştirme işlemini tetikler.
+- `targetBuildVersion`: Bu, yuvanın ne olması gerektiğini belirten bir String özelliğidir `buildVersion` . TargetBuildVersion geçerli değere eşit değilse `buildVersion` , bu, belirtilen yuvayı bularak değiştirme işlemini tetikler `buildVersion` .
 
 ### <a name="example-resource-manager-template"></a>Örnek Kaynak Yöneticisi şablonu
 
-Aşağıdaki Kaynak Yöneticisi şablonu, hazırlama yuvasının öğesini `buildVersion` güncelleştirecek ve üretim yuvasında ayarlayacaktır `targetBuildVersion` . Bu, iki yuvaları takas eder. Şablon zaten "hazırlama" adlı bir tepsisle oluşturulmuş bir WebApp olduğunu varsayar.
+Aşağıdaki Kaynak Yöneticisi şablonu, `buildVersion` hazırlama yuvasının öğesini güncelleştirecek ve `targetBuildVersion` Üretim yuvasında ayarlayacaktır. Bu, iki yuvaları takas eder. Şablon zaten "hazırlama" adlı bir tepsisle oluşturulmuş bir WebApp olduğunu varsayar.
 
 ```json
 {
@@ -384,7 +384,7 @@ Aşağıdaki Kaynak Yöneticisi şablonu, hazırlama yuvasının öğesini `buil
 }
 ```
 
-Bu Kaynak Yöneticisi şablonu, tekrar tekrar yürütülebileceğini ve yuvaların aynı durumunun ortaya çıkarıdempotent anlamına gelir. İlk yürütmeden sonra, `targetBuildVersion` geçerli `buildVersion`olan ile eşleşir, bu nedenle bir değiştirme tetiklenmeyecektir.
+Bu Kaynak Yöneticisi şablonu, tekrar tekrar yürütülebileceğini ve yuvaların aynı durumunun ortaya çıkarıdempotent anlamına gelir. İlk yürütmeden sonra, `targetBuildVersion` geçerli olan ile eşleşir `buildVersion` , bu nedenle bir değiştirme tetiklenmeyecektir.
 
 <!-- ======== Azure CLI =========== -->
 
@@ -396,7 +396,7 @@ Dağıtım yuvaları için [Azure CLI](https://github.com/Azure/azure-cli) komut
 
 ## <a name="troubleshoot-swaps"></a>Takas sorunlarını giderme
 
-[Yuva değiştirme](#AboutConfiguration)sırasında herhangi bir hata oluşursa, bu, *D:\home\logfiles\eventlog.xml*dosyasına kaydedilir. Ayrıca uygulamaya özgü hata günlüğüne kaydedilir.
+[Yuva değiştirme](#AboutConfiguration)sırasında herhangi bir hata oluşursa, *D:\home\LogFiles\eventlog.xml*oturum açar. Ayrıca uygulamaya özgü hata günlüğüne kaydedilir.
 
 Bazı yaygın değiştirme hataları aşağıda verilmiştir:
 
@@ -404,7 +404,7 @@ Bazı yaygın değiştirme hataları aşağıda verilmiştir:
 
 - Uygulama içeriği yerel önbellek için belirtilen yerel disk kotasını aştığında yerel önbellek başlatma başarısız olabilir. Daha fazla bilgi için bkz. [yerel önbelleğe genel bakış](overview-local-cache.md).
 
-- [Özel ısınma](#Warm-up)sırasında http istekleri dahili olarak yapılır (dış URL 'ye geçmeden). *Web. config*DOSYASıNDAKI belirli URL yeniden yazma kurallarıyla başarısız olabilir. Örneğin, etki alanı adlarını yeniden yönlendirme veya HTTPS zorlama kuralları, uygulama koduna ulaşmasını önler. Bu sorunu geçici olarak çözmek için, aşağıdaki iki koşulu ekleyerek yeniden yazma kurallarınızı değiştirin:
+- [Özel ısınma](#Warm-up)sırasında http istekleri dahili olarak yapılır (dış URL 'ye geçmeden). *Web.config*IÇINDEKI belirli URL yeniden yazma kurallarıyla başarısız olabilir. Örneğin, etki alanı adlarını yeniden yönlendirme veya HTTPS zorlama kuralları, uygulama koduna ulaşmasını önler. Bu sorunu geçici olarak çözmek için, aşağıdaki iki koşulu ekleyerek yeniden yazma kurallarınızı değiştirin:
 
     ```xml
     <conditions>
@@ -421,7 +421,7 @@ Bazı yaygın değiştirme hataları aşağıda verilmiştir:
       ...
     </conditions>
     ```
-- Bazı [IP kısıtlama kuralları](app-service-ip-restrictions.md) değiştirme IŞLEMININ uygulamanıza http istekleri göndermesini engelleyebilir. İle `10.` başlayan ve `100.` dağıtımınıza iç olan IPv4 adresi aralıkları. Uygulamanıza bağlanmasına izin vermeniz gerekir.
+- Bazı [IP kısıtlama kuralları](app-service-ip-restrictions.md) değiştirme IŞLEMININ uygulamanıza http istekleri göndermesini engelleyebilir. İle başlayan `10.` ve dağıtımınıza iç olan IPv4 adresi aralıkları `100.` . Uygulamanıza bağlanmasına izin vermeniz gerekir.
 
 - Yuva değiştirildikten sonra, uygulama beklenmeyen yeniden başlatmalar ile karşılaşabilir. Bunun nedeni, bir değiştirme işleminden sonra, ana bilgisayar adı bağlama yapılandırması eşitlemeden sonra yeniden başlatmalara neden olmaz. Ancak, bazı temel depolama olayları (örneğin, depolama birimi yük devretme işlemleri), bu tutarsızlıkları algılayabilir ve tüm çalışan süreçlerini yeniden başlamaya zorlayabilir. Bu tür yeniden başlatma türlerini en aza indirmek için *Tüm yuvalarda* [ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` uygulama ayarını](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) ayarlayın. Ancak, bu uygulama ayarı Windows Communication Foundation (WCF) *uygulamalarıyla çalışmaz.*
 

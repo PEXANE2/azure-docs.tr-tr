@@ -3,15 +3,15 @@ title: Uygulamanızı Amazon DynamoDB konumundan Azure Cosmos DB geçirin
 description: .NET uygulamanızı Amazon 'ın DynamoDB 'den Azure Cosmos DB 'e geçirmeyi öğrenin
 author: manishmsfte
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
-ms.openlocfilehash: b30ebf7dae1d43b5f841677f98831fc4817a9b5a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cfdeda8ac3957da272ab4c47fb93930c826d55aa
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664896"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261877"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>Uygulamanızı Amazon DynamoDB konumundan Azure Cosmos DB geçirin
 
@@ -23,7 +23,7 @@ Azure Cosmos DB ve DynamoDB arasındaki önemli kavramsal farklılıklar aşağ�
 
 |  DynamoDB | Azure Cosmos DB  |
 |---|---|
-|Uygulanamaz|  Veritabanı |
+|Geçerli değil|  Veritabanı |
 |Tablo      |  Koleksiyon |
 |  Öğe |  Belge |
 |Öznitelik|Alan|

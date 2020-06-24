@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/20/2019
 ms.author: allensu
-ms.openlocfilehash: 22602a1ea64e3dbca34d0c366cf6aa0dc6f35662
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba67ea9455c8d7f077eae87f582f05b5c2672735
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260556"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887624"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>PowerShell ile Azure CDN yönetme
 PowerShell, Azure CDN profillerinizi ve uç noktalarını yönetmek için en esnek yöntemlerden birini sunar.  PowerShell 'i etkileşimli olarak veya yönetim görevlerini otomatikleştirmek için komut dosyaları yazarak kullanabilirsiniz.  Bu öğreticide, Azure CDN profillerinizi ve uç noktalarını yönetmek için PowerShell ile gerçekleştirebileceğiniz en yaygın görevlerden bazıları gösterilmektedir.
@@ -28,15 +28,15 @@ PowerShell, Azure CDN profillerinizi ve uç noktalarını yönetmek için en esn
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-PowerShell 'i Azure CDN profillerinizi ve uç noktalarınızı yönetmek üzere kullanmak için Azure PowerShell modülünün yüklü olması gerekir.  `Connect-AzAccount` Cmdlet 'ini kullanarak Azure PowerShell yüklemeyi ve Azure 'a bağlanmayı öğrenmek için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview).
+PowerShell 'i Azure CDN profillerinizi ve uç noktalarınızı yönetmek üzere kullanmak için Azure PowerShell modülünün yüklü olması gerekir.  Cmdlet 'ini kullanarak Azure PowerShell yüklemeyi ve Azure 'a bağlanmayı öğrenmek için `Connect-AzAccount` bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview).
 
 > [!IMPORTANT]
-> Azure PowerShell cmdlet 'lerini yürütmeden önce `Connect-AzAccount` ile oturum açmalısınız.
+> `Connect-AzAccount`Azure PowerShell cmdlet 'lerini yürütmeden önce ile oturum açmalısınız.
 > 
 > 
 
 ## <a name="listing-the-azure-cdn-cmdlets"></a>Azure CDN cmdlet 'lerini listeleme
-`Get-Command` Cmdlet 'ini kullanarak tüm Azure CDN cmdlet 'lerini listeleyebilirsiniz.
+Cmdlet 'ini kullanarak tüm Azure CDN cmdlet 'lerini listeleyebilirsiniz `Get-Command` .
 
 ```text
 PS C:\> Get-Command -Module Az.Cdn
@@ -80,7 +80,7 @@ Cmdlet          Unpublish-AzCdnEndpointContent                     1.4.0      Az
 ```
 
 ## <a name="getting-help"></a>Yardım alma
-`Get-Help` Cmdlet 'ini kullanarak bu cmdlet 'lerden herhangi biriyle ilgili yardım alabilirsiniz.  `Get-Help`kullanım ve sözdizimi sağlar ve isteğe bağlı olarak örnekleri gösterir.
+Cmdlet 'ini kullanarak bu cmdlet 'lerden herhangi biriyle ilgili yardım alabilirsiniz `Get-Help` .  `Get-Help`kullanım ve sözdizimi sağlar ve isteğe bağlı olarak örnekleri gösterir.
 
 ```text
 PS C:\> Get-Help Get-AzCdnProfile
@@ -111,7 +111,7 @@ REMARKS
 ```
 
 ## <a name="listing-existing-azure-cdn-profiles"></a>Mevcut Azure CDN profillerini listeleme
-Herhangi `Get-AzCdnProfile` bir parametre olmadan cmdlet, mevcut tüm CDN profillerinizi alır.
+`Get-AzCdnProfile`Herhangi bir parametre olmadan cmdlet, mevcut tüm CDN profillerinizi alır.
 
 ```powershell
 Get-AzCdnProfile
@@ -134,7 +134,7 @@ Get-AzCdnProfile -ProfileName CdnDemo -ResourceGroupName CdnDemoRG
 ```
 
 > [!TIP]
-> Farklı kaynak gruplarında oldukları sürece, aynı ada sahip birden çok CDN profili olması mümkündür.  Parametresi atlanırsa `ResourceGroupName` , eşleşen ada sahip tüm profiller döndürülür.
+> Farklı kaynak gruplarında oldukları sürece, aynı ada sahip birden çok CDN profili olması mümkündür.  Parametresi atlanırsa, `ResourceGroupName` eşleşen ada sahip tüm profiller döndürülür.
 > 
 > 
 
@@ -192,7 +192,7 @@ Else { Write-Host "No, that endpoint name is not available." }
 `New-AzCdnCustomDomain`Varolan bir uç noktaya özel bir etki alanı adı ekler.
 
 > [!IMPORTANT]
-> CNAME 'i DNS sağlayıcınızda, [özel etki alanını Content Delivery Network (CDN) uç noktasına eşleme](cdn-map-content-to-custom-domain.md)bölümünde açıklandığı gibi ayarlamanız gerekir.  Kullanarak `Test-AzCdnCustomDomain`uç noktanızı değiştirmeden önce eşlemeyi test edebilirsiniz.
+> CNAME 'i DNS sağlayıcınızda, [özel etki alanını Content Delivery Network (CDN) uç noktasına eşleme](cdn-map-content-to-custom-domain.md)bölümünde açıklandığı gibi ayarlamanız gerekir.  Kullanarak uç noktanızı değiştirmeden önce eşlemeyi test edebilirsiniz `Test-AzCdnCustomDomain` .
 > 
 > 
 
@@ -223,7 +223,7 @@ Set-AzCdnEndpoint -CdnEndpoint $endpoint
 ```
 
 ## <a name="purgingpre-loading-cdn-assets"></a>CDN varlıklarını Temizleme/önceden yükleme
-`Unpublish-AzCdnEndpointContent`önbelleğe alınmış varlıkları temizler, `Publish-AzCdnEndpointContent` ancak varlıkları desteklenen uç noktalara önceden yükler.
+`Unpublish-AzCdnEndpointContent`önbelleğe alınmış varlıkları temizler, ancak `Publish-AzCdnEndpointContent` varlıkları desteklenen uç noktalara önceden yükler.
 
 ```powershell
 # Purge some assets.
@@ -237,7 +237,7 @@ Get-AzCdnProfile | Get-AzCdnEndpoint | Unpublish-AzCdnEndpointContent -PurgeCont
 ```
 
 ## <a name="startingstopping-cdn-endpoints"></a>CDN uç noktaları başlatılıyor/durduruluyor
-`Start-AzCdnEndpoint`ve `Stop-AzCdnEndpoint` , tek uç noktaları veya uç nokta gruplarını başlatmak ve durdurmak için kullanılabilir.
+`Start-AzCdnEndpoint`ve, `Stop-AzCdnEndpoint` tek uç noktaları veya uç nokta gruplarını başlatmak ve durdurmak için kullanılabilir.
 
 ```powershell
 # Stop the cdndocdemo endpoint
@@ -251,7 +251,7 @@ Get-AzCdnProfile | Get-AzCdnEndpoint | Start-AzCdnEndpoint
 ```
 
 ## <a name="creating-standard-rules-engine-policy-and-applying-to-an-existing-cdn-endpoint"></a>Standart kural altyapısı ilkesi oluşturma ve var olan bir CDN uç noktasına uygulama
-`New-AzCdnDeliveryRule`, `New=AzCdnDeliveryRuleCondition`ve `New-AzCdnDeliveryRuleAction` , Microsoft profillerinin Azure CDN üzerinde Azure CDN Standart kurallar altyapısını yapılandırmak için kullanılabilir. 
+`New-AzCdnDeliveryRule`, `New=AzCdnDeliveryRuleCondition` ve, `New-AzCdnDeliveryRuleAction` Microsoft profillerinin Azure CDN üzerinde Azure CDN Standart kurallar altyapısını yapılandırmak için kullanılabilir. 
 
 ```powershell
 # Create a new http to https redirect rule

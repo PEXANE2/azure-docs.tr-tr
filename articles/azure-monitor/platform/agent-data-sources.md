@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249106"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708884"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Azure Izleyici 'de aracı veri kaynakları
 Azure Izleyicisinin aracılardan topladığı veriler, yapılandırdığınız veri kaynakları tarafından tanımlanır.  Aracılardan alınan veriler bir kayıt kümesiyle [günlük verileri](data-platform-logs.md) olarak depolanır.  Her veri kaynağı, her tür kendi özellik kümesine sahip olan belirli bir türün kayıtlarını oluşturur.
@@ -22,7 +22,7 @@ Azure Izleyicisinin aracılardan topladığı veriler, yapılandırdığınız v
 Aşağıdaki tabloda, Azure Izleyici 'de Şu anda kullanılabilir olan aracı veri kaynakları listelenmektedir.  Her birinin, bu veri kaynağı için ayrıntı sağlayan ayrı bir makaleye bağlantısı vardır.   Ayrıca, kendi yöntemi ve koleksiyon sıklığı hakkında bilgi de sağlar. 
 
 
-| Veri kaynağı | Platform | Log Analytics Aracısı | Operations Manager aracısı | Azure Storage | Operations Manager gerekli mi? | Yönetim grubu aracılığıyla gönderilen aracı verileri Operations Manager | Toplama sıklığı |
+| Veri kaynağı | Platform | Log Analytics Aracısı | Operations Manager aracısı | Azure depolama | Operations Manager gerekli mi? | Yönetim grubu aracılığıyla gönderilen aracı verileri Operations Manager | Toplama sıklığı |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Özel günlükler](data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | varış noktasında |
 | [Özel günlükler](data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | varış noktasında |

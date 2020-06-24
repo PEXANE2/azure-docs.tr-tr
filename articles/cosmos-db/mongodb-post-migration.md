@@ -4,15 +4,15 @@ description: Bu belge MongoDB 'den Mongo DB için Azure Cosmos DB API 'sine yön
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: lbosq
-ms.openlocfilehash: ce33651aae64d0a90264dde6da64b4044c6ce132
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 055604c399aa1641e823f24af499102bfff3ed0e
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063602"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263101"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'SI kullanılırken geçiş sonrası en iyi duruma getirme adımları
 
@@ -35,7 +35,7 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 2. [Azure Portal](https://www.portal.azure.com/)sol bölmede **tüm kaynaklar** menüsünü açın ve verilerinizi geçirdiğiniz Azure Cosmos DB hesabı bulun.
 3. **Bağlantı dizesi** dikey penceresini açın. Sağ bölme, hesabınıza başarıyla bağlanmak için gereken tüm bilgileri içerir.
 4. Uygulamanızda MongoDB bağlantısı için Azure Cosmos DB API 'sini yansıtmak için uygulamanızın yapılandırmasındaki (veya diğer ilgili yerlerdeki) bağlantı bilgilerini kullanın.
-![Bağlantı dizesi](./media/mongodb-post-migration/connection-string.png)
+:::image type="content" source="./media/mongodb-post-migration/connection-string.png" alt-text="Bağlantı dizesi":::
 
 Daha fazla ayrıntı için lütfen [MongoDB uygulamasını Azure Cosmos DB sayfasına bağlama](connect-mongodb-account.md) sayfasına bakın.
 
@@ -68,4 +68,4 @@ Azure Cosmos DB, 5 iyi tanımlanmış [tutarlılık düzeyi](consistency-levels.
 * [MongoDB için Azure Cosmos DB API'siyle verilerde süre sonu](mongodb-time-to-live.md)
 * [Azure Cosmos DB 'deki tutarlılık düzeyleri](consistency-levels.md)
 * [Azure Cosmos DB’de dizin oluşturma](index-overview.md)
-* [Azure Cosmos DB istek birimleri](request-units.md)
+* [Azure Cosmos DB'de İstek birimleri](request-units.md)

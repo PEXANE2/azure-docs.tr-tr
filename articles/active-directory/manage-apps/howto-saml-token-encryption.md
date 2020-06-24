@@ -3,9 +3,8 @@ title: Azure Active Directory 'de SAML belirteci şifrelemesi
 description: Azure Active Directory SAML belirteci şifrelemesini yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
-editor: ''
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0082d841faf22745e609d38444f4a97553b3c867
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 779d1b73f45f9be5b4bd00d546987b7c1e0b6a43
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79365875"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763355"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Nasıl yapılır: Azure AD SAML belirteci şifrelemesini yapılandırma
 
@@ -87,7 +86,7 @@ Ortak sertifikayı, Azure portal içindeki uygulama yapılandırmanıza ekleyebi
 
 ## <a name="configure-saml-token-encryption-using-graph-api-powershell-or-app-manifest"></a>Graph API, PowerShell veya uygulama bildirimi kullanarak SAML belirteci şifrelemesini yapılandırma
 
-Şifreleme sertifikaları, Azure AD 'de `encrypt` kullanım etiketi ile uygulama nesnesi üzerinde depolanır. Birden çok şifreleme sertifikası yapılandırabilirsiniz ve belirteçleri şifrelemek için etkin olan bir öznitelik, `tokenEncryptionKeyID` özniteliğiyle tanımlanır.
+Şifreleme sertifikaları, Azure AD 'de kullanım etiketi ile uygulama nesnesi üzerinde depolanır `encrypt` . Birden çok şifreleme sertifikası yapılandırabilirsiniz ve belirteçleri şifrelemek için etkin olan bir `tokenEncryptionKeyID` öznitelik, özniteliğiyle tanımlanır.
 
 Microsoft Graph API veya PowerShell kullanarak belirteç şifrelemesini yapılandırmak için uygulamanın nesne KIMLIĞINE ihtiyacınız olacaktır. Bu değeri programlı bir şekilde veya Azure portal uygulamanın **Özellikler** sayfasına gıdıp **nesne kimliği** değerini belirterek bulabilirsiniz.
 
@@ -147,7 +146,7 @@ Graph, PowerShell veya uygulama bildiriminde bir keyCredential yapılandırdığ
 
 1. Uygulamanın sayfasında, [uygulama bildirimini](../develop/reference-app-manifest.md)düzenlemek için **bildirim** ' ı seçin.
 
-1. `tokenEncryptionKeyId` Özniteliği için değeri ayarlayın.
+1. Özniteliği için değeri ayarlayın `tokenEncryptionKeyId` .
 
     Aşağıdaki örnek, iki şifreleme sertifikası ile yapılandırılmış bir uygulama bildirimini ve Tokenencryptotionkeyıd ' yi kullanarak etkin bir tane olarak seçili olanı gösterir.
 

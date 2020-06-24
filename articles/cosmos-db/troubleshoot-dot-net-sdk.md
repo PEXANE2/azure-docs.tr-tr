@@ -3,22 +3,22 @@ title: Azure Cosmos DB .NET SDK'sını kullanırken karşılaşılan sorunları 
 description: .NET SDK kullanırken Azure Cosmos DB sorunları tanımlamak, tanılamak ve sorunlarını gidermek için istemci tarafı günlüğe kaydetme gibi özellikleri ve diğer üçüncü taraf araçları kullanın.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/06/2020
+ms.date: 06/16/2020
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: c0f40b3c79c16046ef61e89cad72c714346d2674
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: b24c0b045bc7d894496a59eda00f0e8835ea6a8d
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672638"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887376"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK'sını kullanırken karşılaşılan sorunları tanılama ve giderme
 
 > [!div class="op_single_selector"]
-> * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
+> * [Java SDK’sı v4](troubleshoot-java-sdk-v4-sql.md)
 > * [Zaman uyumsuz Java SDK v2](troubleshoot-java-async-sdk.md)
 > * [.NET](troubleshoot-dot-net-sdk.md)
 > 
@@ -113,9 +113,11 @@ Aşağıdaki 401 hata iletisini aldıysanız: "HTTP isteğinde bulunan MAC imzas
 
 1. Anahtar döndürüldü ve [en iyi uygulamaları](secure-access-to-data.md#key-rotation)izmedi. Bu genellikle durumdur. Cosmos DB hesap anahtarı döndürme, Cosmos DB hesap boyutuna bağlı olarak birkaç saniye ile muhtemelen gün arasında bir süre sürebilir.
    1. 401 MAC imzası, anahtar dönüşünün kısa bir süre sonra görülür ve sonuç olarak herhangi bir değişiklik yapılmadan durduruluyor. 
-2. Anahtar, uygulamada, anahtarın hesap ile eşleşmemesi için yanlış yapılandırılmış.
+1. Anahtar, uygulamada, anahtarın hesap ile eşleşmemesi için yanlış yapılandırılmış.
    1. 401 MAC imzası sorunu tutarlı olacak ve tüm çağrılar için gerçekleşir
-3. Kapsayıcı oluşturma ile bir yarış durumu var. Bir uygulama örneği, kapsayıcı oluşturma işlemi tamamlanmadan önce kapsayıcıya erişmeye çalışıyor. Uygulama çalışıyorsa bu için en yaygın senaryo ve uygulama çalışırken kapsayıcı silinip aynı adla yeniden oluşturulur. SDK yeni kapsayıcıyı kullanmayı deneyecek, ancak kapsayıcı oluşturma hala devam ediyor, bu yüzden anahtarlara sahip değil.
+1. Uygulama, yazma işlemleri için [salt okunurdur anahtarlarını](secure-access-to-data.md#master-keys) kullanıyor.
+   1. 401 MAC imzası sorunu yalnızca uygulama yazma istekleri gerçekleştirirken olur, ancak okuma istekleri başarılı olur.
+1. Kapsayıcı oluşturma ile bir yarış durumu var. Bir uygulama örneği, kapsayıcı oluşturma işlemi tamamlanmadan önce kapsayıcıya erişmeye çalışıyor. Uygulama çalışıyorsa bu için en yaygın senaryo ve uygulama çalışırken kapsayıcı silinip aynı adla yeniden oluşturulur. SDK yeni kapsayıcıyı kullanmayı deneyecek, ancak kapsayıcı oluşturma hala devam ediyor, bu yüzden anahtarlara sahip değil.
    1. 401 MAC imzası sorunu bir kapsayıcı oluşturulduktan sonra kısa bir süre sonra görülür ve yalnızca kapsayıcı oluşturma tamamlanana kadar oluşur.
  
  ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>HTTP hatası 400. İstek üst bilgilerinin boyutu çok uzun.

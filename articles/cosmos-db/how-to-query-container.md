@@ -3,15 +3,15 @@ title: Azure Cosmos DB'de kapsayıcıları sorgulama
 description: Bölüm içi ve çapraz bölüm sorgularını kullanarak Azure Cosmos DB kapsayıcıları sorgulama hakkında bilgi edinin
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 299980b67caaea85fbfb40cb1a30ee50fa32d0f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08ac95fe2a6b3e01d6bbcf96b120426f12f4e21c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131389"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261265"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısını sorgulama
 
@@ -21,13 +21,13 @@ Bu makalede, Azure Cosmos DB bir kapsayıcının (koleksiyon, grafik veya tablo)
 
 Kapsayıcılardan veri sorguladığınızda, sorguda bir bölüm anahtarı filtresi belirtilmişse Azure Cosmos DB sorgu otomatik olarak optimize eder. Sorguyu, filtrede belirtilen bölüm anahtarı değerlerine karşılık gelen [fiziksel bölümlere](partition-data.md#physical-partitions) yönlendirir.
 
-Örneğin, aşağıdaki sorguyu üzerinde `DeviceId`bir eşitlik filtresiyle göz önünde bulundurun. Bu sorguyu üzerinde `DeviceId`bölümlenen bir kapsayıcıda çalıştırırsanız, bu sorgu tek bir fiziksel bölüme filtre uygulanır.
+Örneğin, aşağıdaki sorguyu üzerinde bir eşitlik filtresiyle göz önünde bulundurun `DeviceId` . Bu sorguyu üzerinde bölümlenen bir kapsayıcıda çalıştırırsanız `DeviceId` , bu sorgu tek bir fiziksel bölüme filtre uygulanır.
 
 ```sql
     SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
 ```
 
-Önceki örnekte olduğu gibi, bu sorgu da tek bir bölüme filtre de sağlar. Üzerinde `Location` ek filtre ekleme bunu değiştirmez:
+Önceki örnekte olduğu gibi, bu sorgu da tek bir bölüme filtre de sağlar. Üzerinde ek filtre ekleme `Location` bunu değiştirmez:
 
 ```sql
     SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
@@ -41,7 +41,7 @@ Bölüm anahtarında Aralık filtresi bulunan ve tek bir fiziksel bölüm kapsam
 
 ## <a name="cross-partition-query"></a>Bölümler arası sorgu
 
-Aşağıdaki sorguda, Bölüm anahtarında (`DeviceId`) bir filtre yok. Bu nedenle, her bir bölümün dizininde çalıştığı tüm fiziksel bölümlere karşı bir yelpamalıdır:
+Aşağıdaki sorguda, Bölüm anahtarında () bir filtre yok `DeviceId` . Bu nedenle, her bir bölümün dizininde çalıştığı tüm fiziksel bölümlere karşı bir yelpamalıdır:
 
 ```sql
     SELECT * FROM c WHERE c.Location = 'Seattle`
@@ -57,7 +57,7 @@ Azure Cosmos DB SDK 'Ları 1.9.0 ve üzeri paralel sorgu yürütme seçeneklerin
 
 Aşağıdaki parametreleri ayarlayarak paralel sorgu yürütme işlemini yönetebilirsiniz:
 
-- **MaxConcurrency**: kapsayıcının bölümlerine en fazla eşzamanlı ağ bağlantısı sayısını ayarlar. Bu özelliği olarak `-1`AYARLARSANıZ, SDK paralellik derecesini yönetir. Olarak `MaxConcurrency` `0`ayarlanırsa, kapsayıcının bölümlerine tek bir ağ bağlantısı vardır.
+- **MaxConcurrency**: kapsayıcının bölümlerine en fazla eşzamanlı ağ bağlantısı sayısını ayarlar. Bu özelliği olarak ayarlarsanız `-1` , SDK paralellik derecesini yönetir.  `MaxConcurrency`Olarak ayarlanırsa `0` , kapsayıcının bölümlerine tek bir ağ bağlantısı vardır.
 
 - **MaxBufferedItemCount**: Sorgu gecikme süresiyle istemci tarafı bellek kullanımı arasında denge kurar. Bu seçenek atlanırsa veya-1 ' e ayarlanırsa, SDK paralel sorgu yürütme sırasında arabelleğe alınan öğe sayısını yönetir.
 
@@ -83,7 +83,7 @@ Teslim sürücüsü doğru grup karmaşık (fiziksel bölüm) ' i bilmiyor ise, 
 
 ### <a name="cross-partition-query-scoped-to-only-a-few-physical-partitions"></a>Çapraz bölüm sorgusu (yalnızca birkaç fiziksel bölüme kapsamlı)
 
-Teslim sürücüsü, tüm paket alıcılarının belirli bir birkaç grup içinde canlı olduğunu biliyorsa, her biri için bir kez sürücü gerekmez. Birkaç grup oluşturma ile birlikte, yalnızca tek bir bina ziyaret etenden daha fazla iş gerektirecektir, teslim sürücüsü hala önemli bir zaman ve çaba tasarrufu sağlar. Bir sorgu, `IN` anahtar sözcüğü ile filtresinde bölüm anahtarına sahipse, yalnızca ilgili fiziksel bölümün veri dizinlerini kontrol eder.
+Teslim sürücüsü, tüm paket alıcılarının belirli bir birkaç grup içinde canlı olduğunu biliyorsa, her biri için bir kez sürücü gerekmez. Birkaç grup oluşturma ile birlikte, yalnızca tek bir bina ziyaret etenden daha fazla iş gerektirecektir, teslim sürücüsü hala önemli bir zaman ve çaba tasarrufu sağlar. Bir sorgu, anahtar sözcüğü ile filtresinde bölüm anahtarına sahipse `IN` , yalnızca ilgili fiziksel bölümün veri dizinlerini kontrol eder.
 
 ## <a name="avoiding-cross-partition-queries"></a>Bölümler arası sorgulardan kaçınma
 

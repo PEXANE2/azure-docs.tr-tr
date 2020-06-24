@@ -3,15 +3,15 @@ title: Azure Cosmos DB denetim düzlemi işlemlerini denetleme
 description: Bölge ekleme, aktarım hızını güncelleştirme, bölge yük devretme, VNet ekleme, sanal ağ vb. gibi denetim düzlemi işlemlerini nasıl denetleyeceğinizi öğrenin. Azure Cosmos DB
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/23/2020
 ms.author: sngun
-ms.openlocfilehash: a5df7866f7897109dbd7a0ea8a52b857ab671875
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: cb6a27c0f03b7c0c41d8f323609df612363cfd9e
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735360"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262659"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Azure Cosmos DB denetim düzlemi işlemlerini denetleme
 
@@ -27,9 +27,9 @@ Denetim denetim düzlemi işlemlerinin yararlı olduğu bazı örnek senaryolar 
 
 ## <a name="disable-key-based-metadata-write-access"></a>Anahtar tabanlı meta veri yazma erişimini devre dışı bırak
 
-Azure Cosmos DB ' de denetim düzlemi işlemlerini denetetmeden önce, hesabınızda anahtar tabanlı meta veri yazma erişimini devre dışı bırakın. Anahtar tabanlı meta veri yazma erişimi devre dışı bırakıldığında, hesap anahtarları üzerinden Azure Cosmos hesabına bağlanan istemcilerin hesaba erişmesi engellenir. `disableKeyBasedMetadataWriteAccess` Özelliği true olarak ayarlayarak yazma erişimini devre dışı bırakabilirsiniz. Bu özelliği ayarladıktan sonra, herhangi bir kaynakta yapılan değişiklikler, uygun rol tabanlı erişim denetimi (RBAC) rolüne ve kimlik bilgilerine sahip olan bir kullanıcıdan meydana gelebilir. Bu özelliği ayarlama hakkında daha fazla bilgi için bkz. SDK 'larda [değişiklik](role-based-access-control.md#preventing-changes-from-cosmos-sdk) yapma makalesi. 
+Azure Cosmos DB ' de denetim düzlemi işlemlerini denetetmeden önce, hesabınızda anahtar tabanlı meta veri yazma erişimini devre dışı bırakın. Anahtar tabanlı meta veri yazma erişimi devre dışı bırakıldığında, hesap anahtarları üzerinden Azure Cosmos hesabına bağlanan istemcilerin hesaba erişmesi engellenir. Özelliği true olarak ayarlayarak yazma erişimini devre dışı bırakabilirsiniz `disableKeyBasedMetadataWriteAccess` . Bu özelliği ayarladıktan sonra, herhangi bir kaynakta yapılan değişiklikler, uygun rol tabanlı erişim denetimi (RBAC) rolüne ve kimlik bilgilerine sahip olan bir kullanıcıdan meydana gelebilir. Bu özelliği ayarlama hakkında daha fazla bilgi için bkz. SDK 'larda [değişiklik](role-based-access-control.md#preventing-changes-from-cosmos-sdk) yapma makalesi. 
 
-`disableKeyBasedMetadataWriteAccess` Etkinleştirildikten sonra, SDK tabanlı istemciler oluşturma veya güncelleştirme işlemleri çalıştırdıysa, *' ContainerNameorDatabaseName ' kaynağındaki "işlem ' POST ' öğesine Azure Cosmos DB uç noktası üzerinden izin verilmez* . Hesabınız için bu tür işlemlere erişimi açmanız veya Azure Resource Manager, Azure CLı veya Azure PowerShell aracılığıyla oluşturma/güncelleştirme işlemleri gerçekleştirmeniz gerekir. Geri dönmek için, [Cosmos SDK 'dan gelen değişiklikleri](role-based-access-control.md#preventing-changes-from-cosmos-sdk) kısıtlama makalesinde açıklandığı gibi, Azure CLI kullanarak disableKeyBasedMetadataWriteAccess 'i **false** olarak ayarlayın. Değerini doğru yerine false `disableKeyBasedMetadataWriteAccess` olarak değiştirdiğinizden emin olun.
+Etkinleştirildikten sonra `disableKeyBasedMetadataWriteAccess` , SDK tabanlı istemciler oluşturma veya güncelleştirme işlemleri çalıştırdıysa, *' ContainerNameorDatabaseName ' kaynağındaki "Işlem ' Post ' öğesine Azure Cosmos DB uç noktası üzerinden izin verilmez* . Hesabınız için bu tür işlemlere erişimi açmanız veya Azure Resource Manager, Azure CLı veya Azure PowerShell aracılığıyla oluşturma/güncelleştirme işlemleri gerçekleştirmeniz gerekir. Geri dönmek için, [Cosmos SDK 'dan gelen değişiklikleri](role-based-access-control.md#preventing-changes-from-cosmos-sdk) kısıtlama makalesinde açıklandığı gibi, Azure CLI kullanarak disableKeyBasedMetadataWriteAccess 'i **false** olarak ayarlayın. Değerini `disableKeyBasedMetadataWriteAccess` doğru yerine false olarak değiştirdiğinizden emin olun.
 
 Meta veri yazma erişimini kapatırken aşağıdaki noktaları göz önünde bulundurun:
 
@@ -51,7 +51,7 @@ Denetim düzlemi işlemlerinde günlüğe kaydetmeyi etkinleştirmek için aşa�
 
 Günlükleri bir depolama hesabında veya bir olay hub 'ına de kaydedebilirsiniz. Bu makalede, Log Analytics 'e günlüklerin nasıl gönderileceği ve daha sonra sorgulanacağını gösterir. Etkinleştirildikten sonra, tanılama günlüklerinin etkili olması birkaç dakika sürer. Bu noktadan sonra gerçekleştirilen tüm denetim düzlemi işlemleri izlenir. Aşağıdaki ekran görüntüsünde denetim düzlemi günlüklerinin nasıl etkinleştirileceği gösterilmektedir:
 
-![Denetim düzlemi isteklerini günlüğe kaydetmeyi etkinleştir](./media/audit-control-plane-logs/enable-control-plane-requests-logs.png)
+:::image type="content" source="./media/audit-control-plane-logs/enable-control-plane-requests-logs.png" alt-text="Denetim düzlemi isteklerini günlüğe kaydetmeyi etkinleştir":::
 
 ## <a name="view-the-control-plane-operations"></a>Denetim düzlemi işlemlerini görüntüleme
 
@@ -69,17 +69,17 @@ Günlüğe kaydetmeyi etkinleştirdikten sonra, belirli bir hesap için işlemle
 
 Aşağıdaki ekran görüntüleri, bir Azure Cosmos hesabı için tutarlılık düzeyi değiştiğinde günlükleri yakalar:
 
-![VNet eklendiğinde denetim düzlemi günlükleri](./media/audit-control-plane-logs/add-ip-filter-logs.png)
+:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="VNet eklendiğinde denetim düzlemi günlükleri":::
 
 Aşağıdaki ekran görüntüleri, Cassandra tablosunun aktarım hızı güncelleştirilirken günlükleri yakalar:
 
-![Verimlilik güncelleniyorsa denetim düzlemi günlükleri](./media/audit-control-plane-logs/throughput-update-logs.png)
+:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Verimlilik güncelleniyorsa denetim düzlemi günlükleri":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>Belirli bir işlemle ilişkili kimliği tanımlama
 
 Daha fazla hata ayıklamak isterseniz, etkinlik **günlüğünde** etkinlik kimliğini veya işlemin zaman damgasını kullanarak belirli bir işlemi tanımlayabilirsiniz. Zaman damgası, etkinlik KIMLIĞININ açıkça geçirildiği bazı Kaynak Yöneticisi istemcileri için kullanılır. Etkinlik günlüğü, işlemin başlatıldığı kimliğin ayrıntılarını verir. Aşağıdaki ekran görüntüsünde etkinlik KIMLIĞINI kullanma ve etkinlik günlüğünde onunla ilişkili işlemleri bulma işlemi gösterilmektedir:
 
-![Etkinlik KIMLIĞINI kullanın ve işlemleri bulun](./media/audit-control-plane-logs/find-operations-with-activity-id.png)
+:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="Etkinlik KIMLIĞINI kullanın ve işlemleri bulun":::
 
 ## <a name="control-plane-operations-for-azure-cosmos-account"></a>Azure Cosmos hesabı için denetim düzlemi işlemleri
 
@@ -147,7 +147,7 @@ API 'ye özgü işlemler için, işlem aşağıdaki biçimde adlandırılır:
 * ApiKind + Apikınresourcetype + OperationType + Başlat/Tamam
 * ApiKind + Apikınresourcetype + "aktarım hızı" + operationType + start/tamamlamayı
 
-**Örneğinde** 
+**Örnek** 
 
 * CassandraKeyspacesUpdateStart, Cassandrakeyspacesupdatetamamlanmıştır
 * CassandraKeyspacesThroughputUpdateStart, Cassandrakeyspacesthroughputupdatetamamlanmıştır

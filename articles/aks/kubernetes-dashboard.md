@@ -6,30 +6,41 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 40de6f4084630839a0161891ff80f7e4cabc1db7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 1754e166cd5c5a3d7309bc8c6f6459cdd0852396
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345129"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84762913"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile Kubernetes web panosuna erişme
 
 Kubernetes, temel yönetim işlemleri için kullanılabilen bir Web panosu içerir. Bu pano uygulamalarınızın temel sistem durumunu ve ölçümlerini görüntülemenize, hizmetler oluşturmanıza ve dağıtmanıza ve mevcut uygulamaları düzenlemenize olanak tanır. Bu makalede, Azure CLı kullanarak Kubernetes panosuna nasıl erişebileceğiniz gösterilmektedir ve sonra bazı temel Pano işlemlerinde size kılavuzluk eder.
 
-Kubernetes panosu hakkında daha fazla bilgi için bkz. [Kubernetes Web UI panosu][kubernetes-dashboard]. AKS, açık kaynak panonun 2,0 sürümünü ve üstünü kullanır.
+Kubernetes panosu hakkında daha fazla bilgi için bkz. [Kubernetes Web UI panosu][kubernetes-dashboard]. AKS, açık kaynaklı panonun 2,0 sürümünü ve üstünü kullanır.
+
+> [!WARNING]
+> **AKS Pano eklentisi kullanımdan kaldırma için ayarlanmış.** 
+> * Kubernetes panosu, 1,18 'den daha az bir Kubernetes sürümü çalıştıran kümeler için varsayılan olarak etkindir.
+> * Bu pano eklentisi, Kubernetes 1,18 veya üzeri üzerinde oluşturulan tüm yeni kümeler için varsayılan olarak devre dışı bırakılır. 
+ > * Önizleme aşamasında Kubernetes 1,19 ile başlayarak, AKS artık yönetilen kuin-Dashboard eklentisi yüklemesini desteklememektedir. 
+ > * Eklentiyi etkin olan mevcut kümeler etkilenmeyecektir. Kullanıcılar, açık kaynak panosunu Kullanıcı tarafından yüklenen yazılım olarak el ile yüklemeye devam edecektir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu belgede açıklanan adımlarda bir AKS kümesi oluşturduğunuz ve kümeyle bir bağlantı oluşturmuş olduğunuz varsayılmaktadır `kubectl` . AKS kümesi oluşturmanız gerekiyorsa bkz. [aks hızlı][aks-quickstart]başlangıcı.
+Bu belgede açıklanan adımlarda, bir AKS kümesi oluşturduğunuz ve kümeyle bir bağlantı oluşturmuş olduğunuz varsayılmaktadır `kubectl` . AKS kümesi oluşturmanız gerekiyorsa bkz. [aks hızlı][aks-quickstart]başlangıcı.
 
 Ayrıca Azure CLı sürüm 2.6.0 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
-## <a name="start-the-kubernetes-dashboard"></a>Kubernetes panosunu başlatma
+## <a name="disable-the-kubernetes-dashboard"></a>Kubernetes panosunu devre dışı bırakma
 
-> [!WARNING]
-> **Yerleşik Pano eklentisi kullanımdan kaldırılması için ayarlanmıştır.** Şu anda, Kubernetes panosu 1,18 'den daha az bir Kubernetes sürümü çalıştıran tüm kümeler için varsayılan olarak etkindir.
-> Bu pano eklentisi, Kubernetes 1,18 veya üzeri üzerinde oluşturulan tüm yeni kümeler için varsayılan olarak devre dışı bırakılır. Önizleme aşamasında Kubernetes 1,19 kullanılabilirliği ile başlayarak, AKS artık yönetilen kuin-Dashboard eklentisi yüklemesini desteklememektedir. Eklentinin zaten yüklü olduğu mevcut kümeler etkilenmeyecektir. Kullanıcılar, açık kaynak panosunu Kullanıcı tarafından yüklenen yazılım olarak el ile yüklemeye devam edecektir.
+Kuin panosu eklentisi, **K8s 1,18 ' den eski kümeler üzerinde varsayılan olarak etkindir**. Aşağıdaki komut çalıştırılarak eklenti devre dışı bırakılabilir.
+
+``` azure-cli
+az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
+```
+
+## <a name="start-the-kubernetes-dashboard"></a>Kubernetes panosunu başlatma
 
 Bir kümede Kubernetes panosunu başlatmak için [az aks zat][az-aks-browse] komutunu kullanın. Bu komut, Kubernetes 1,18 ' den eski herhangi bir sürümü çalıştıran kümeler üzerinde varsayılan olarak bulunan kuin-Dashboard eklenti yüklemesini gerektirir.
 
@@ -40,6 +51,11 @@ az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
 Bu komut, geliştirme sisteminiz ile Kubernetes API 'niz arasında bir ara sunucu oluşturur ve Kubernetes panosuna bir Web tarayıcısı açar. Bir Web tarayıcısı Kubernetes panosuna açılmazsa, genellikle Azure CLı 'de belirtilen URL adresini kopyalayıp yapıştırın `http://127.0.0.1:8001` .
+
+> [!NOTE]
+> Üzerinde Pano görmüyorsanız, `http://127.0.0.1:8001` aşağıdaki adreslere el ile yönlendirme yapabilirsiniz. 1,16 veya üzeri kümeler HTTPS kullanır ve ayrı bir uç nokta gerektirir.
+> * K8s 1,16 veya üzeri:`http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
+> * K8s 1,15 ve altı:`http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy`
 
 <!--
 ![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
@@ -83,26 +99,42 @@ After you choose a method to sign in, the Kubernetes dashboard is displayed. If 
 > For more information on using the different authentication methods, see the Kubernetes dashboard wiki on [access controls][dashboard-authentication].
 -->
 
-## <a name="login-to-the-dashboard"></a>Panoda oturum açın
+## <a name="sign-in-to-the-dashboard-kubernetes-116"></a>Panoda oturum açma (Kubernetes 1.16 +)
 
 > [!IMPORTANT]
-> [Kubernetes panosunun v 1.10.1](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) itibariyle, [Bu sürümdeki bir güvenlik düzeltmesinin](https://github.com/kubernetes/dashboard/pull/3400)olmaması nedeniyle "Kubernetes-Dashboard" hizmet hesabı artık kaynakları almak için kullanılamaz. Sonuç olarak, kimlik doğrulama bilgileri olmayan istekler 401 Yetkisiz bir hata döndürür. Bir hizmet hesabından alınan bir taşıyıcı belirteci, bu [Kubernetes panosu örneğinde](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui)olduğu gibi hala kullanılabilir, ancak bu, eski sürümlere kıyasla Pano eklentisinin oturum açma akışını etkiler.
+> [Kubernetes panosu](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) veya Kubernetes v 1.16 + ' nin v 1.10.1 itibariyle, [Bu sürümdeki bir güvenlik düzeltme](https://github.com/kubernetes/dashboard/pull/3400)nedeniyle kaynakları almak için "Kubernetes-Dashboard" hizmet hesabı artık kullanılmıyor. Sonuç olarak, kimlik doğrulama bilgileri olmayan istekler 401 Yetkisiz bir hata döndürür. Bir hizmet hesabından alınan bir taşıyıcı belirteci, bu [Kubernetes panosu örneğinde](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui)olduğu gibi hala kullanılabilir, ancak bu, eski sürümlere kıyasla Pano eklentisinin oturum açma akışını etkiler.
+>
+>1,16 ' dan önceki bir sürümü hala çalıştırırsanız, "Kubernetes-Dashboard" hizmet hesabına izin verebilir, ancak bu **önerilmez**:
+> ```console
+> kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
+> ```
 
 Sunulan ilk ekran bir kubeconfig veya Token gerektiriyor. Her iki seçenek de, bu kaynakları panoda göstermek için kaynak izinleri gerektirir.
 
 ![oturum açma ekranı](./media/kubernetes-dashboard/login.png)
 
 **Kubeconfig kullanma**
+
+Hem Azure AD hem de Azure dışı AD özellikli kümeler için bir kubeconfig iletilebilir. Erişim belirteçlerinin geçerli olduğundan emin olun. belirteçlerinizin geçerliliği dolmuşsa, belirteçleri kubectl aracılığıyla yenileyebilirsiniz.
+
 1. Admin kubeconfig 'i ile ayarlama`az aks get-credentials -a --resource-group <RG_NAME> --name <CLUSTER_NAME>`
 1. `Kubeconfig` `Choose kubeconfig file` Dosya seçicisini açmak için seçin ve tıklayın
 1. Kubeconfig dosyanızı seçin (varsayılan olarak $HOME/5kube/config değerini alır)
 1. Şuna tıklayın: `Sign In`
 
 **Belirteç kullanma**
-1. `kubectl config view` öğesini çalıştırın
-1. Kümenizin hesabıyla ilişkili istenen belirteci kopyalayın
-1. Oturum açma sırasında belirteç seçeneğine yapıştırın
+
+1. **Azure DıŞı ad özellikli küme**için, `kubectl config view` kümenizin kullanıcı hesabıyla ilişkili belirteci çalıştırın ve kopyalayın.
+1. Oturum açma sırasında belirteç seçeneğine yapıştırın.    
 1. Şuna tıklayın: `Sign In`
+
+Azure AD etkinleştirilmiş kümeler için aşağıdaki komutla AAD belirtecinizi alın. Komutta kaynak grubu ve küme adını değiştirdiğini doğrulayın.
+
+```
+## Update <RESOURCE_GROUP and <AKS_NAME> with your input.
+
+kubectl config view -o jsonpath='{.users[?(@.name == "clusterUser_<RESOURCE GROUP>_<AKS_NAME>")].user.auth-provider.config.access-token}'
+```
 
 Başarılı olduktan sonra aşağıdakine benzer bir sayfa görüntülenir.
 
@@ -110,7 +142,7 @@ Başarılı olduktan sonra aşağıdakine benzer bir sayfa görüntülenir.
 
 ## <a name="create-an-application"></a>Uygulama oluşturma
 
-Aşağıdaki adımlar birçok kaynak için izinler gerektirir. Bu özellikleri sınarken bir yönetici hesabı kullanmanız önerilir.
+Aşağıdaki adımlarda, kullanıcının ilgili kaynaklar için izinleri olması gerekir. 
 
 Kubernetes panosunun yönetim görevlerinin karmaşıklığını ne şekilde azaltabilmesine bakmak için bir uygulama oluşturalım. Metin girişi, YAML dosyası veya grafik Sihirbazı aracılığıyla Kubernetes panosundan bir uygulama oluşturabilirsiniz.
 

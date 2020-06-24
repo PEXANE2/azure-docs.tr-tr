@@ -3,21 +3,21 @@ title: Azure Cosmos DB hesabınız için müşteri tarafından yönetilen anahta
 description: Azure Cosmos DB hesabınız için müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma hakkında bilgi edinin
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: thweiss
-ms.openlocfilehash: 31681397961045da02add7ccb37f29f6c835c08d
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 229c1307559c0bd452e95a4f833bc68b66bc6299
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659884"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261316"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault ile Azure Cosmos hesabınız için müşteri tarafından yönetilen anahtarları yapılandırma
 
 Azure Cosmos hesabınızda depolanan veriler, Microsoft tarafından yönetilen anahtarlarla otomatik olarak ve sorunsuz bir şekilde şifrelenir (**hizmet tarafından yönetilen anahtarlar**). İsteğe bağlı olarak, yönettiğiniz anahtarlarla ikinci bir şifreleme katmanı eklemeyi tercih edebilirsiniz (**müşteri tarafından yönetilen anahtarlar**).
 
-![Müşteri verileri etrafında şifreleme katmanları](./media/how-to-setup-cmk/cmk-intro.png)
+:::image type="content" source="./media/how-to-setup-cmk/cmk-intro.png" alt-text="Müşteri verileri etrafında şifreleme katmanları":::
 
 Müşteri tarafından yönetilen anahtarları [Azure Key Vault](../key-vault/general/overview.md) depolamanız ve müşterinin yönettiği anahtarlarla etkinleştirilen her bir Azure Cosmos hesabı için bir anahtar sağlamanız gerekir. Bu anahtar, bu hesapta depolanan tüm verileri şifrelemek için kullanılır.
 
@@ -32,7 +32,7 @@ Müşteri tarafından yönetilen anahtarları [Azure Key Vault](../key-vault/gen
 
 1. **Microsoft.DocumentDB** kaynak sağlayıcısını arayın. Kaynak sağlayıcının zaten kayıtlı olarak işaretlendiğinden emin olun. Aksi takdirde, kaynak sağlayıcısını seçip **Kaydet**' i seçin:
 
-   ![Microsoft.DocumentDB kaynak sağlayıcısını kaydetme](./media/how-to-setup-cmk/portal-rp-register.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-rp-register.png" alt-text="Microsoft.DocumentDB kaynak sağlayıcısını kaydetme":::
 
 ## <a name="configure-your-azure-key-vault-instance"></a>Azure Key Vault örneğinizi yapılandırma
 
@@ -40,7 +40,7 @@ Azure Cosmos DB ile müşteri tarafından yönetilen anahtarların kullanılmas�
 
 Yeni bir Azure Key Vault örneği oluşturursanız, oluşturma sırasında bu özellikleri etkinleştirin:
 
-![Yeni bir Azure Key Vault örneği için geçici silme ve Temizleme korumasını etkinleştirme](./media/how-to-setup-cmk/portal-akv-prop.png)
+:::image type="content" source="./media/how-to-setup-cmk/portal-akv-prop.png" alt-text="Yeni bir Azure Key Vault örneği için geçici silme ve Temizleme korumasını etkinleştirme":::
 
 Mevcut bir Azure Key Vault örneğini kullanıyorsanız, Azure portal **Özellikler** bölümüne bakarak bu özelliklerin etkinleştirildiğini doğrulayabilirsiniz. Bu özelliklerden herhangi biri etkinleştirilmemişse, aşağıdaki makalelerden birinde "geçici silme etkinleştiriliyor" ve "Temizleme korumasını etkinleştirme" bölümlerine bakın:
 
@@ -57,11 +57,11 @@ Mevcut bir Azure Key Vault örneğini kullanıyorsanız, Azure portal **Özellik
 
 1. **Anahtar izinleri** aşağı açılan menüsünde **Al**, **sarmalama tuşu**ve **sarmalama anahtarı** izinlerini seçin:
 
-   ![Doğru izinleri seçme](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png" alt-text="Doğru izinleri seçme":::
 
 1. **Asıl seçin**altında **hiçbiri seçili**' i seçin. Ardından, **Azure Cosmos DB** sorumlusu arayıp seçin (bulmayı kolaylaştırmak için, asıl kimliğin `a232010e-820c-4083-83bb-3ace5fc29d0b` bulunduğu Azure Kamu bölgeleri dışında herhangi bir Azure BÖLGESI için sorumlu kimliğe göre de arama yapabilirsiniz `57506a73-e302-42a9-b869-6f12d9ec29e9` ). Son olarak, en altta **Seç** ' i seçin. **Azure Cosmos DB** sorumlusu listede yoksa, bu makalenin [kaynak sağlayıcısını kaydetme](#register-resource-provider) bölümünde açıklandığı gibi **Microsoft.Documentdb** kaynak sağlayıcısını yeniden kaydetmeniz gerekebilir.
 
-   ![Azure Cosmos DB sorumlusu seçin](./media/how-to-setup-cmk/portal-akv-add-ap.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="Azure Cosmos DB sorumlusu seçin":::
 
 1. Yeni erişim ilkesini eklemek için **Ekle** ' yi seçin.
 
@@ -73,13 +73,13 @@ Mevcut bir Azure Key Vault örneğini kullanıyorsanız, Azure portal **Özellik
 
 1. **Oluştur/al**' ı seçin, yeni anahtar için bir ad girin ve bir RSA anahtar boyutu seçin. En iyi güvenlik için en az 3072 önerilir. Sonra **Oluştur**' u seçin.
 
-   ![Yeni anahtar oluştur](./media/how-to-setup-cmk/portal-akv-gen.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-gen.png" alt-text="Yeni anahtar oluştur":::
 
 1. Anahtar oluşturulduktan sonra, yeni oluşturulan anahtarı ve ardından geçerli sürümünü seçin.
 
 1. Son eğik çizgiden sonraki bölüm dışında anahtarın **anahtar tanımlayıcısını**kopyalayın:
 
-   ![Anahtarın anahtar tanımlayıcısı kopyalanıyor](./media/how-to-setup-cmk/portal-akv-keyid.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keyid.png" alt-text="Anahtarın anahtar tanımlayıcısı kopyalanıyor":::
 
 ## <a name="create-a-new-azure-cosmos-account"></a>Yeni bir Azure Cosmos hesabı oluşturun
 
@@ -87,7 +87,7 @@ Mevcut bir Azure Key Vault örneğini kullanıyorsanız, Azure portal **Özellik
 
 Azure portal yeni bir Azure Cosmos DB hesabı oluşturduğunuzda, **şifreleme** adımında **müşteri tarafından yönetilen anahtar** ' ı seçin. **Anahtar URI 'si** alanında, önceki adımdan kopyaladığınız Azure Key Vault anahtarının URI/anahtar tanımlayıcısını yapıştırın:
 
-![Azure portal CMK parametrelerini ayarlama](./media/how-to-setup-cmk/portal-cosmos-enc.png)
+:::image type="content" source="./media/how-to-setup-cmk/portal-cosmos-enc.png" alt-text="Azure portal CMK parametrelerini ayarlama":::
 
 ### <a name="using-azure-powershell"></a><a id="using-powershell"></a>Azure PowerShell kullanma
 
@@ -226,7 +226,7 @@ Azure Cosmos hesabınız tarafından kullanılan müşteri tarafından yönetile
 
 - Azure Key Vault Şu anda kullanılan anahtarın yeni bir sürümünü oluşturun:
 
-  ![Yeni bir anahtar sürümü oluştur](./media/how-to-setup-cmk/portal-akv-rot.png)
+  :::image type="content" source="./media/how-to-setup-cmk/portal-akv-rot.png" alt-text="Yeni bir anahtar sürümü oluştur":::
 
 - Hesabınızın özelliğini güncelleştirerek, şu anda kullanılan anahtarı tamamen farklı bir anahtarla değiştirin `keyVaultKeyUri` . PowerShell 'de nasıl yapılır:
 
@@ -297,11 +297,11 @@ Azure Cosmos DB, hesabınızda depolanan verilerin [düzenli ve otomatik yedekle
 
 Anahtarın en son sürümü devre dışı bırakılarak anahtar iptali yapılır:
 
-![Anahtarın sürümünü devre dışı bırakma](./media/how-to-setup-cmk/portal-akv-rev2.png)
+:::image type="content" source="./media/how-to-setup-cmk/portal-akv-rev2.png" alt-text="Anahtarın sürümünü devre dışı bırakma":::
 
 Alternatif olarak, bir Azure Key Vault örneğinden tüm anahtarları iptal etmek için, Azure Cosmos DB sorumlusuna verilen erişim ilkesini silebilirsiniz:
 
-![Azure Cosmos DB sorumlusu için erişim ilkesi siliniyor](./media/how-to-setup-cmk/portal-akv-rev.png)
+:::image type="content" source="./media/how-to-setup-cmk/portal-akv-rev.png" alt-text="Azure Cosmos DB sorumlusu için erişim ilkesi siliniyor":::
 
 ### <a name="what-operations-are-available-after-a-customer-managed-key-is-revoked"></a>Müşteri tarafından yönetilen anahtar iptal edildikten sonra hangi işlemler kullanılabilir?
 

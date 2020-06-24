@@ -3,16 +3,16 @@ title: Çarpıcı anlık ileti kullanarak verileri Azure Cosmos DB Cassandra API
 description: Bir Oracle veritabanından Azure Cosmos DB Cassandra API hesabına veri geçirmek için nasıl çaba ım kullanacağınızı öğrenin.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 50028e81c4ca130aa3266c164a431dc935a271cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7590d40085c3963a95fd251dd1291cf34fbaf4a0
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730033"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262098"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Çarpıcı anlık ileti kullanarak verileri Azure Cosmos DB Cassandra API hesabına geçirme
 
@@ -28,20 +28,20 @@ Bu makalede, bir **Oracle veritabanından** **Azure Cosmos DB Cassandra API hesa
 
 ## <a name="deploy-the-striim-marketplace-solution"></a>Çarpıcı anlık ileti marketi çözümünü dağıtma
 
-1. [Azure Portal](https://portal.azure.com/)oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. **Kaynak oluştur** ' u seçin ve Azure Marketi 'nde **anlık ileti** araması yapın. İlk seçeneği seçin ve **oluşturun**.
 
-   ![Çarpıcı anlık ileti marketi öğesi bulun](./media/cosmosdb-sql-api-migrate-data-striim/striim-azure-marketplace.png)
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-azure-marketplace.png" alt-text="Çarpıcı anlık ileti marketi öğesi bulun":::
 
 1. Sonra, çaba anlık ileti örneğinin yapılandırma özelliklerini girin. Çalışır durumda anlık ileti ortamı bir sanal makinede dağıtılır. **Temel bilgiler** bölmesinden VM **Kullanıcı adı**' nı, **VM PAROLASıNı** gırın (Bu parola VM 'ye SSH için kullanılır). E-mesajlaşma dağıtmak istediğiniz **abonelik**, **kaynak grubu**ve **konum ayrıntılarınızı** seçin. Tamamlandıktan sonra **Tamam**' ı seçin.
 
-   ![Çarpıcı anlık ileti için temel ayarları yapılandırma](./media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png)
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png" alt-text="Çarpıcı anlık ileti için temel ayarları yapılandırma":::
 
 
 1. **Anlık Ileti kümesi ayarları** bölmesinde, çaba anlık ileti dağıtımı türünü ve sanal makine boyutunu seçin.
 
-   |Ayar | Değer | Açıklama |
+   |Ayar | Değer | Description |
    | ---| ---| ---|
    |Anlık ileti dağıtım türü |Tek Başına | Anlık ileti, **tek başına** veya **küme** dağıtım türlerinde çalıştırılabilir. Tek başına modu, tek bir sanal makineye çok anlık ileti sunucusu dağıtır ve veri biriminize bağlı olarak VM 'lerin boyutunu seçebilirsiniz. Küme modu, her iki veya daha fazla VM üzerinde, bir veya daha fazla sanal makine için, seçilen boyuta sahip 2 ' den fazla düğümü olan küme ortamları otomatik yüksek kullanılabilirlik ve yük devretme sağlar.</br></br> Bu öğreticide tek başına seçeneğini belirleyebilirsiniz. Varsayılan "Standard_F4s" boyut VM 'sini kullanın. | 
    | Çarpıcı anlık ileti kümesinin adı|    <Striim_cluster_Name>|  Çarpıcı anlık ileti kümesinin adı.|
@@ -51,7 +51,7 @@ Bu makalede, bir **Oracle veritabanından** **Azure Cosmos DB Cassandra API hesa
 
 1. **Anlık ileti erişimi ayarları** bölmesinde, **genel IP adresini** (varsayılan değerleri seçin), her şeye **yönelik etki alanı adını**, çarpıcı ım Kullanıcı arabiriminde oturum açmak için kullanmak istediğiniz **yönetici parolasını** yapılandırın. VNET ve alt ağ yapılandırın (varsayılan değerleri seçin). Ayrıntıları doldurduktan sonra devam etmek için **Tamam** ' ı seçin.
 
-   ![Anlık ileti erişim ayarları](./media/cosmosdb-sql-api-migrate-data-striim/striim-access-settings.png)
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-access-settings.png" alt-text="Anlık ileti erişim ayarları":::
 
 1. Azure dağıtımı doğrular ve her şeyin iyi göründüğünden emin olur; doğrulamanın tamamlanmasının birkaç dakika sürer. Doğrulama tamamlandıktan sonra **Tamam**' ı seçin.
   
@@ -71,7 +71,7 @@ Bu bölümde, Azure Cosmos DB Cassandra API hesabını veri taşıma hedefi olar
 
 1. Azure Cosmos hesabınızdaki **Veri Gezgini** bölmesine gidin. Yeni bir kapsayıcı oluşturmak için **Yeni tablo** ' yı seçin. Oracle veritabanından Azure Cosmos DB ' ye *ürün* ve *sipariş* verileri geçirmekte olduğunuz varsayılmaktadır. Siparişler kapsayıcısı ile **Traimdemo** adlı yeni bir anahtar alanı oluşturun. Kapsayıcıyı **1000**ru ile sağlayın (bu örnek 1000 ru kullanır, ancak iş yükünüz için tahmin edilen aktarım hızını kullanmanız gerekir) ve **/Order_Id** birincil anahtar olarak kullanılır. Bu değerler, kaynak verilerinize göre farklılık gösterir. 
 
-   ![Cassandra API hesabı oluştur](./media/cosmosdb-cassandra-api-migrate-data-striim/create-cassandra-api-account.png)
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/create-cassandra-api-account.png" alt-text="Cassandra API hesabı oluştur":::
 
 ## <a name="configure-oracle-to-azure-cosmos-db-data-flow"></a>Oracle 'ı veri akışı Azure Cosmos DB için yapılandırma
 
@@ -79,11 +79,11 @@ Bu bölümde, Azure Cosmos DB Cassandra API hesabını veri taşıma hedefi olar
 
 1. Azure portal dağıttığınız çarpıcı anlık ileti örneğine gidin. Üstteki menü çubuğunda **Bağlan** düğmesini seçin ve **SSH** sekmesinden **VM yerel hesabı alanını kullanarak oturum açma** içindeki URL 'yi kopyalayın.
 
-   ![SSH URL 'sini al](./media/cosmosdb-sql-api-migrate-data-striim/get-ssh-url.png)
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/get-ssh-url.png" alt-text="SSH URL 'sini al":::
 
 1. Yeni bir Terminal penceresi açın ve Azure portal kopyaladığınız SSH komutunu çalıştırın. Bu makale bir MacOS 'ta Terminal kullanır, bir Windows makinesinde PuTTY veya farklı bir SSH istemcisi kullanarak benzer yönergeleri izleyebilirsiniz. İstendiğinde, devam etmek için **Evet** yazın ve önceki adımda sanal makine için ayarladığınız **parolayı** girin.
 
-   ![E-mesajlaşma sanal makinesine bağlanma](./media/cosmosdb-sql-api-migrate-data-striim/striim-vm-connect.png)
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-vm-connect.png" alt-text="E-mesajlaşma sanal makinesine bağlanma":::
 
 1. Şimdi, daha önce indirdiğiniz **ojdbc8. jar** dosyasını kopyalamak için yeni bir Terminal sekmesi açın. Aşağıdaki SCP komutunu kullanarak jar dosyasını yerel makinenizden Azure 'da çalışan Çabaım örneğinin tmp klasörüne kopyalayın:
 
@@ -92,7 +92,7 @@ Bu bölümde, Azure Cosmos DB Cassandra API hesabını veri taşıma hedefi olar
    scp ojdbc8.jar striimdemo@striimdemo.westus.cloudapp.azure.com:/tmp
    ```
 
-   ![Jar dosyasını konum makinesinden, anlık ım 'e kopyalayın](./media/cosmosdb-sql-api-migrate-data-striim/copy-jar-file.png)
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/copy-jar-file.png" alt-text="Jar dosyasını konum makinesinden, anlık ım 'e kopyalayın":::
 
 1. Daha sonra, çarpıcı anlık ileti örneği için SSH yaptığınız ve sudo olarak oturum açmanın bulunduğu pencereye geri gidin. **Ojdbc8. jar** dosyasını **/tmp** dizininden, aşağıdaki komutları kullanarak, diğer anlık ileti örneğinizin **lib** dizinine taşıyın:
 
@@ -103,7 +103,7 @@ Bu bölümde, Azure Cosmos DB Cassandra API hesabını veri taşıma hedefi olar
    chmod +x ojdbc8.jar
    ```
 
-   ![Jar dosyasını LIB klasörüne taşı](./media/cosmosdb-sql-api-migrate-data-striim/move-jar-file.png)
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/move-jar-file.png" alt-text="Jar dosyasını LIB klasörüne taşı":::
 
 
 1. Aynı Terminal penceresinde, aşağıdaki komutları yürüterek Çabaım sunucusunu yeniden başlatın:
@@ -123,37 +123,37 @@ Bu bölümde, Azure Cosmos DB Cassandra API hesabını veri taşıma hedefi olar
 
 1. Şimdi Azure 'a geri gidin ve çarpıcı ım VM 'nizin genel IP adresini kopyalayın. 
 
-   ![Çalışır anlık ileti VM IP adresini kopyala](./media/cosmosdb-sql-api-migrate-data-striim/copy-public-ip-address.png)
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/copy-public-ip-address.png" alt-text="Çalışır anlık ileti VM IP adresini kopyala":::
 
 1. E-postayla Web Kullanıcı arabirimine gitmek için, bir tarayıcıda yeni bir sekme açın ve ardından genel IP 'yi kopyalayın: 9080. **Yönetici** Kullanıcı adını kullanarak, Azure Portal belirttiğiniz yönetici parolasıyla birlikte oturum açın.
 
-   ![Anlık ileti almak için oturum açın](./media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png)
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png" alt-text="Anlık ileti almak için oturum açın":::
 
 1. Şimdi bir ım ana sayfasına ulaşacağız. **Panolar**, **uygulamalar**ve **sourcepreview**olmak üzere üç farklı bölme vardır. Panolar bölmesi, verileri gerçek zamanlı olarak taşımanızı ve görselleştirmenizi sağlar. Uygulamalar bölmesi, akış verileri işlem hatlarınızı veya veri akışlarını içerir. Sayfanın sağ tarafında, verilerinizi taşımadan önce önizlemeniz için SourcePreview bulunur.
 
 1. **Uygulamalar** bölmesini seçin, şimdilik bu bölmeye odaklanacağız. Anlık ileti alma hakkında bilgi edinmek için kullanabileceğiniz çeşitli örnek uygulamalar vardır, ancak bu makalede kendinizuzu oluşturacaksınız. Sağ üst köşedeki **Uygulama Ekle** düğmesini seçin.
 
-   ![Çarpıcı anlık ileti uygulaması ekleme](./media/cosmosdb-sql-api-migrate-data-striim/add-striim-app.png)
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/add-striim-app.png" alt-text="Çarpıcı anlık ileti uygulaması ekleme":::
 
 1. Çarpıcı anlık ileti uygulamaları oluşturmanın birkaç farklı yolu vardır. Bu senaryo için **sıfırdan başla** ' yı seçin.
 
-   ![Uygulamayı sıfırdan Başlat](./media/cosmosdb-cassandra-api-migrate-data-striim/start-app-from-scratch.png)
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/start-app-from-scratch.png" alt-text="Uygulamayı sıfırdan Başlat":::
 
 1. Uygulamanız için **Oratocosmosdb** gibi bir kolay ad verin ve **Kaydet**' i seçin.
 
-   ![Yeni uygulama oluşturma](./media/cosmosdb-cassandra-api-migrate-data-striim/create-new-application.png)
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/create-new-application.png" alt-text="Yeni uygulama oluşturma":::
 
 1. Akış tasarımcılarına ulaşacak ve akış uygulamalarınızı oluşturmak için kutu bağlayıcılarından sürükleme ve bırakma yapabilirsiniz. Arama çubuğuna **Oracle** yazın, **Oracle CDC** kaynağını App Canvas üzerine sürükleyip bırakın.  
 
-   ![Oracle CDC kaynağı](./media/cosmosdb-cassandra-api-migrate-data-striim/oracle-cdc-source.png)
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/oracle-cdc-source.png" alt-text="Oracle CDC kaynağı":::
 
 1. Oracle örneğinizin kaynak yapılandırma özelliklerini girin. Kaynak adı, çok anlık ileti uygulaması için yalnızca bir adlandırma kuralıdır, **src_onPremOracle**gibi bir ad kullanabilirsiniz. Ayrıca bağdaştırıcı türü, bağlantı URL 'SI, Kullanıcı adı, parola, tablo adı gibi diğer ayrıntıları da girin. Devam etmek için **Kaydet** ' i seçin.
 
-   ![Kaynak parametrelerini Yapılandır](./media/cosmosdb-cassandra-api-migrate-data-striim/configure-source-parameters.png)
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/configure-source-parameters.png" alt-text="Kaynak parametrelerini Yapılandır":::
 
 1. Şimdi, hedef Azure Cosmos DB örneğini bağlamak için akışın dalga simgesine tıklayın. 
 
-   ![Hedefe Bağlan](./media/cosmosdb-cassandra-api-migrate-data-striim/connect-to-target.png)
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/connect-to-target.png" alt-text="Hedefe Bağlan":::
 
 1. Hedefi yapılandırmadan önce, bir [Baldaha fazla kök sertifikası](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store#to-add-a-root-certificate-to-the-cacerts-store)eklediğinizden emin olun.
 
@@ -169,24 +169,24 @@ Bu bölümde, Azure Cosmos DB Cassandra API hesabını veri taşıma hedefi olar
 
    * **Tablolar** -hedef tablolarda birincil anahtarlar olmalıdır ve birincil anahtarlar güncelleştirilemiyor.
 
-   ![Hedef özelliklerini yapılandırma](./media/cosmosdb-cassandra-api-migrate-data-striim/configure-target-parameters1.png)
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/configure-target-parameters1.png" alt-text="Hedef özelliklerini yapılandırma":::
 
-   ![Hedef özelliklerini yapılandırma](./media/cosmosdb-cassandra-api-migrate-data-striim/configure-target-parameters2.png)
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/configure-target-parameters2.png" alt-text="Hedef özelliklerini yapılandırma":::
 
 1. Şimdi devam edeceğiz ve iyi anlık ileti uygulamasını çalıştıracağız. Üstteki menü çubuğunda **oluşturulan**' ı ve ardından **uygulama dağıt**' ı seçin. Dağıtım penceresinde, uygulamanızın belirli kısımlarını dağıtım topolojinizin belirli bölümlerinde çalıştırmak istediğinizi belirtebilirsiniz. Azure aracılığıyla basit bir dağıtım topolojisinde çalıştığımız için varsayılan seçeneği kullanacağız.
 
-   ![Uygulamayı dağıtma](./media/cosmosdb-cassandra-api-migrate-data-striim/deploy-the-app.png)
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/deploy-the-app.png" alt-text="Uygulamayı dağıtma":::
 
 
 1. Şimdi de ilerlemenize devam edeceğiz ve akışım üzerinden akan verileri görmek için akışın önizlemesini görüntüleyin. Dalga simgesine tıklayın ve yanındaki göz simgesine tıklayın. Dağıttıktan sonra, veri akışını görmek için akışın önizlemesini görüntüleyebilirsiniz. Yanındaki **dalga** simgesini ve **eyebol** simgesini seçin. Üstteki menü çubuğunda **dağıtılan** düğmesini seçin ve **Uygulamayı Başlat**' ı seçin.
 
-   ![Uygulamayı başlatma](./media/cosmosdb-cassandra-api-migrate-data-striim/start-the-app.png)
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/start-the-app.png" alt-text="Uygulamayı başlatma":::
 
 1. **CDC (değişiklik verilerini yakalama)** okuyucusunu kullanarak, anlık ileti, veritabanında yalnızca yeni değişiklikler seçer. Kaynak Tablolarınızda veri akışı varsa, bunu görürsünüz. Ancak, bu örnek bir tablo olduğundan herhangi bir uygulamaya bağlı olmayan kaynak. Örnek veri Oluşturucu kullanıyorsanız, Oracle veritabanınıza bir olay zinciri ekleyebilirsiniz.
 
 1. Çarpıcı anlık ileti platformunda veri akışını görürsünüz. Anlık ileti, tablonuz ile ilişkili tüm meta verileri de alır ve bu da verileri izlemek ve verilerin doğru hedefte olmasını sağlamak için yararlıdır.
 
-   ![CDC ardışık düzenini ayarlama](./media/cosmosdb-cassandra-api-migrate-data-striim/setup-cdc-pipeline.png)
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/setup-cdc-pipeline.png" alt-text="CDC ardışık düzenini ayarlama":::
 
 1. Son olarak Azure 'da oturum açalım ve Azure Cosmos hesabınıza gitmeniz gerekir. Veri Gezgini yenileyin ve verilerin geldiğini görebilirsiniz. 
 

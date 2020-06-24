@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 1d393055b0ac62198bd5a7239b2b92b7aeff62e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9b2e8148586ec58ea6a7a033099e726920857b6
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145362"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987930"
 ---
 # <a name="url-path-based-routing-overview"></a>URL Yolu Tabanlı Yönlendirmeye genel bakış
 
@@ -24,7 +24,7 @@ Aşağıdaki örnekte, Application Gateway contoso.com için VideoServerPool, Im
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-Http\://contoso.com/video/* Için Istekler VideoServerPool 'a yönlendirilir ve http\://contoso.com/images/*, ımageserverpool 'a yönlendirilir. Yol desenlerinden hiçbiri eşleşmiyorsa DefaultServerPool seçilir.
+Http \: //contoso.com/video/* için Istekler VideoServerPool 'a yönlendirilir ve http \: //contoso.com/images/*, ımageserverpool 'a yönlendirilir. Yol desenlerinden hiçbiri eşleşmiyorsa DefaultServerPool seçilir.
 
 > [!IMPORTANT]
 > V1 SKU 'SU için kurallar portalda listelendikleri sırada işlenir. Temel dinleyici listede ilk sıradaysa ve gelen bir istekle eşleşiyorsa, o dinleyici tarafından işlenir. V2 SKU 'SU için, tam eşleşmeler daha yüksek önceliğe sahiptir. Ancak, temel bir dinleyiciyi yapılandırmadan önce çok siteli dinleyicileri yapılandırmak kesinlikle önerilir. Bu işlem, trafiğin doğru arka uca yönlendirilmesini güvence altına alır.
@@ -75,7 +75,7 @@ Yol kuralları büyük/küçük harfe duyarlıdır.
 |V1 yol kalıbı  |Destekleniyor mu?  |
 |---------|---------|
 |`/images/*`     |evet|
-|`/images*`     |hayır|
+|`/images*`     |evet|
 |`/images/*.jpg`     |hayır|
 |`/*.jpg`     |hayır|
 |`/Repos/*/Comments/*`     |hayır|

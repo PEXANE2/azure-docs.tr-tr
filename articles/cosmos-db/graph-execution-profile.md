@@ -6,21 +6,21 @@ author: luisbosquez
 manager: kfile
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: lbosq
-ms.openlocfilehash: 5705ef4fb6aa895009d554617c968543cc3fcd63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faacaf6700b14ba068d5cf0a48ea851f562e2302
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75441846"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261809"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Gremlin sorgularınızı hesaplamak için yürütme profili adımını kullanma
 
 Bu makale, Azure Cosmos DB Gremlin API’si graf veritabanları için yürütme profilini kullanma adımı için bir genel bakış sunar. Bu adım, sorun giderme ve sorgu iyileştirmeleri için ilgili bilgileri sağlar ve Cosmos DB Gremlin API’si hesabında yürütülebilen tüm Gremlin sorgularıyla uyumludur.
 
-Bu adımı kullanmak için, yalnızca Gremlin sorgusunun sonundaki `executionProfile()` işlev çağrısını ekleyin. **Gremlin sorgunuz yürütülecektir** ve işlemin sonucu sorgu yürütme PROFILIYLE bir JSON yanıt nesnesi döndürür.
+Bu adımı kullanmak için, yalnızca `executionProfile()` Gremlin sorgusunun sonundaki işlev çağrısını ekleyin. **Gremlin sorgunuz yürütülecektir** ve işlemin sonucu sorgu yürütme PROFILIYLE bir JSON yanıt nesnesi döndürür.
 
 Örneğin:
 
@@ -32,7 +32,7 @@ Bu adımı kullanmak için, yalnızca Gremlin sorgusunun sonundaki `executionPro
     g.V('mary').out().executionProfile()
 ```
 
-`executionProfile()` Adımı çağırdıktan sonra, yanıt yürütülen Gremlin adımını, aldığı toplam süreyi ve deyimin sonuçlandığı Cosmos DB çalışma zamanı işleçleri dizisini IÇEREN bir JSON nesnesi olacaktır.
+Adımı çağırdıktan sonra `executionProfile()` , yanıt yürütülen Gremlin adımını, aldığı toplam süreyi ve deyimin sonuçlandığı Cosmos DB çalışma zamanı işleçleri dizisini içeren BIR JSON nesnesi olacaktır.
 
 > [!NOTE]
 > Yürütme profili için bu uygulama Apache Tinkerpop belirtiminde tanımlı değil. Azure Cosmos DB Gremlin API 'sinin uygulamasına özgüdür.
@@ -134,7 +134,7 @@ Aşağıda, döndürülecek çıkışın ek açıklamalı bir örneği verilmiş
 ```
 
 > [!NOTE]
-> ExecutionProfile adımı Gremlin sorgusunu yürütür. Bu, `addV` veya `addE`adımlarını içerir, bu da oluşturma ile sonuçlanır ve sorguda belirtilen değişiklikleri yürütmeyecektir. Sonuç olarak, Gremlin sorgusu tarafından oluşturulan Istek birimleri de ücretlendirilecektir.
+> ExecutionProfile adımı Gremlin sorgusunu yürütür. Bu, `addV` veya adımlarını içerir, bu da `addE` oluşturma ile sonuçlanır ve sorguda belirtilen değişiklikleri yürütmeyecektir. Sonuç olarak, Gremlin sorgusu tarafından oluşturulan Istek birimleri de ücretlendirilecektir.
 
 ## <a name="execution-profile-response-objects"></a>Yürütme profili yanıt nesneleri
 
@@ -149,19 +149,19 @@ Bir executionProfile () işlevinin yanıtı, aşağıdaki yapıyla bir JSON nesn
     - `time`: Belirli bir operatör tarafından geçen süre (milisaniye olarak).
     - `annotations`: Yürütülen işlece özgü ek bilgiler içerir.
     - `annotations.percentTime`: Belirli bir işleci yürütmek için geçen toplam sürenin yüzdesi.
-    - `counts`: Bu işleç tarafından depolama katmanından döndürülen nesne sayısı. Bu, içindeki `counts.resultCount` skaler değerde bulunur.
+    - `counts`: Bu işleç tarafından depolama katmanından döndürülen nesne sayısı. Bu, `counts.resultCount` içindeki skaler değerde bulunur.
     - `storeOps`: Bir veya birden çok bölüme yayılabilen bir depolama işlemini temsil eder.
     - `storeOps.fanoutFactor`: Bu belirli depolama işleminin eriştiği bölüm sayısını temsil eder.
     - `storeOps.count`: Bu depolama işleminin döndürdüğü sonuç sayısını temsil eder.
     - `storeOps.size`: Belirli bir depolama işleminin sonucunun bayt cinsinden boyutunu temsil eder.
 
-Cosmos DB Gremlin çalışma zamanı Işleci|Açıklama
+Cosmos DB Gremlin çalışma zamanı Işleci|Description
 ---|---
 `GetVertices`| Bu adım, kalıcılık katmanından tahmine dayalı bir nesne kümesi edinir. 
 `GetEdges`| Bu adım bir köşe kümesine bitişik olan kenarları elde eder. Bu adım bir veya daha fazla depolama işlemine yol açabilir.
 `GetNeighborVertices`| Bu adım bir kenar kümesine bağlı köşeleri edinir. Kenarlar, hem kaynak hem de hedef köşelerinin bölüm anahtarlarını ve KIMLIĞINI içerir.
-`Coalesce`| Bu adım, `coalesce()` her Gremlin adımı yürütüldüğünde iki işlem değerlendirmesi için hesaplar.
-`CartesianProductOperator`| Bu adım iki veri kümesi arasında bir Kartezyen ürün hesaplar. Genellikle koşullar `to()` veya `from()` her kullanıldığında yürütülür.
+`Coalesce`| Bu adım, her `coalesce()` Gremlin adımı yürütüldüğünde iki işlem değerlendirmesi için hesaplar.
+`CartesianProductOperator`| Bu adım iki veri kümesi arasında bir Kartezyen ürün hesaplar. Genellikle koşullar `to()` veya her kullanıldığında yürütülür `from()` .
 `ConstantSourceOperator`| Bu adım, sonuç olarak sabit bir değer üretmek için bir ifade hesaplar.
 `ProjectOperator`| Bu adım, önceki işlemlerin sonucunu kullanarak bir yanıtı hazırlar ve seri hale getirir.
 `ProjectAggregation`| Bu adım bir toplam işlem için yanıtı hazırlar ve seri hale getirir.
@@ -219,17 +219,17 @@ Aşağıda, yürütme profili yanıtını kullanarak sposıya yönelik genel iyi
 ```
 
 Aşağıdaki ekibinizle şunlardan yapılabilir:
-- Gremlin ifadesinin deseninin `g.V('id')`izlediği için sorgu tek bir kimlik aramadır.
-- `time` Ölçüden sorumlu olan bu sorgunun gecikmesi, [tek bir nokta okuma işlemi için 10ms 'den fazla](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide)olduğundan, bu sorgunun gecikmesi yüksek gibi görünüyor.
-- Nesnesine baktığımızda, olduğunu, yani [5 bölüme](https://docs.microsoft.com/azure/cosmos-db/partition-data) bu işlem `5`tarafından erişildiğini görebiliriz `fanoutFactor` `storeOps`
+- Gremlin ifadesinin deseninin izlediği için sorgu tek bir KIMLIK aramadır `g.V('id')` .
+- `time`Ölçüden sorumlu olan bu sorgunun gecikmesi, [tek bir nokta okuma işlemi için 10ms 'den fazla](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide)olduğundan, bu sorgunun gecikmesi yüksek gibi görünüyor.
+- Nesnesine baktığımızda, olduğunu, yani `storeOps` `fanoutFactor` `5` [5 bölüme](https://docs.microsoft.com/azure/cosmos-db/partition-data) bu işlem tarafından erişildiğini görebiliriz.
 
-Bu çözümlemenin bir sonucu olarak, ilk sorgunun gerekenden daha fazla bölüme erişimi olduğunu belirleyebiliriz. Bu, sorguda bir koşul olarak bölümleme anahtarı belirtilerek çözülebilir. Bu, sorgu başına daha az gecikme süresine ve maliyeti azaltır. [Grafik bölümlendirme](graph-partitioning.md)hakkında daha fazla bilgi edinin. Daha iyi bir sorgu olabilir `g.V('tt0093640').has('partitionKey', 't1001')`.
+Bu çözümlemenin bir sonucu olarak, ilk sorgunun gerekenden daha fazla bölüme erişimi olduğunu belirleyebiliriz. Bu, sorguda bir koşul olarak bölümleme anahtarı belirtilerek çözülebilir. Bu, sorgu başına daha az gecikme süresine ve maliyeti azaltır. [Grafik bölümlendirme](graph-partitioning.md)hakkında daha fazla bilgi edinin. Daha iyi bir sorgu olabilir `g.V('tt0093640').has('partitionKey', 't1001')` .
 
 ### <a name="unfiltered-query-patterns"></a>Filtrelenmemiş sorgu desenleri
 
 Aşağıdaki iki yürütme profili yanıtını karşılaştırın. Kolaylık olması için, bu örnekler tek bir bölümlenmiş grafik kullanır.
 
-Bu ilk sorgu, etikete `tweet` sahip tüm köşeleri alır ve sonra komşu köşeleri edinir:
+Bu ilk sorgu, etikete sahip tüm köşeleri alır `tweet` ve sonra komşu köşeleri edinir:
 
 ```json
 [
@@ -306,7 +306,7 @@ Bu ilk sorgu, etikete `tweet` sahip tüm köşeleri alır ve sonra komşu köşe
 ]
 ```
 
-Bitişik köşeleri araştırmadan önce, aynı sorgunun, ancak artık ek bir filtreye `has('lang', 'en')`sahip profile dikkat edin:
+Bitişik köşeleri araştırmadan önce, aynı sorgunun, ancak artık ek bir filtreye sahip profile dikkat edin `has('lang', 'en')` :
 
 ```json
 [
@@ -384,8 +384,8 @@ Bitişik köşeleri araştırmadan önce, aynı sorgunun, ancak artık ek bir fi
 ```
 
 Bu iki sorgu aynı sonuca ulaştı, ancak, bitişik öğeleri sorgulamadan önce daha büyük bir ilk veri kümesini yinelemek gerektiğinden, ilki daha fazla Istek birimi gerektirir. Her iki yanıtlardan de aşağıdaki parametreleri karşılaştırırken, bu davranışın göstergelerini görebiliriz:
-- `metrics[0].time` Değer ilk yanıtta daha yüksektir ve bu, tek adımın çözülmesi daha uzun sürdüğünü gösterir.
-- Bu `metrics[0].counts.resultsCount` değer, ilk yanıt veri kümesinin daha büyük olduğunu gösteren ilk yanıtın yanı sıra daha yüksektir.
+- `metrics[0].time`Değer ilk yanıtta daha yüksektir ve bu, tek adımın çözülmesi daha uzun sürdüğünü gösterir.
+- `metrics[0].counts.resultsCount`Bu değer, ilk yanıt veri kümesinin daha büyük olduğunu gösteren ilk yanıtın yanı sıra daha yüksektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Azure Cosmos DB [desteklenen Gremlin özellikleri](gremlin-support.md) hakkında bilgi edinin. 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 6deb5714a43d61f5ceb793757d49bd099f09f2b7
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2c16c40ba7ed97f933516811432c3d4768bd0c62
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977675"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888485"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard Load Balancer ve Kullanılabilirlik Bölgeleri
 
@@ -50,7 +50,9 @@ Tek bir ön uç IP adresi bölge hatasını sürdüren. Ön uç IP, bölge ne ol
 
 Ön uç 'nin IP adresi birden çok kullanılabilirlik alanında birden çok bağımsız altyapı dağıtımı tarafından aynı anda sunulur. Herhangi bir yeniden deneme veya yeniden yapılandırma, bölge hatasından etkilenmeyen diğer bölgelerde başarılı olur. 
 
-:::image type="content" source="./media/az-zonal/zone-redundant-lb-1.svg" alt-text="Bölge yedekli" border="true":::
+<p align="center">
+  <img src="./media/az-zonal/zone-redundant-lb-1.svg" width="512" title="Sanal ağ NAT">
+</p>
 
 *Şekil: bölge yedekli yük dengeleyici*
 
@@ -60,7 +62,12 @@ Tek bir bölge için bir ön uç garantisini seçebilirsiniz ve bu da *Bölgesel
 
 Ayrıca, her bir bölgedeki yük dengeli uç noktalar için doğrudan bölgesel ön uçları kullanılması desteklenir. Her bölgeyi tek tek izlemek için, bu yapılandırmayı her bölge için yük dengeli uç nokta başına göstermek üzere kullanabilirsiniz. Ortak uç noktalar için, bunları [Traffic Manager](../traffic-manager/traffic-manager-overview.md) gıbı bir DNS Yük Dengeleme ürünüyle tümleştirilebilir ve tek bir DNS adı kullanabilirsiniz.
 
-:::image type="content" source="./media/az-zonal/zonal-lb-1.svg" alt-text="Bölge yedekli" border="true":::
+
+<p align="center">
+  <img src="./media/az-zonal/zonal-lb-1.svg" width="512" title="Sanal ağ NAT">
+</p>
+
+*Şekil: ZGen yedekli yük dengeleyici*
 
 Bu kavramları karıştırmak istiyorsanız (aynı arka uç için bölgesel olarak yedekli ve bölgesel), [Azure Load Balancer için birden fazla](load-balancer-multivip-overview.md)ön eki gözden geçirin.
 

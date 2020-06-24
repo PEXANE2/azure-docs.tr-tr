@@ -4,16 +4,16 @@ description: Grafik verilerini büyük ölçüde Azure Cosmos DB Gremlin API kap
 author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: adf512fc521ef553f0bbd6ef6dd8ee19e398b37b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86d88787d024029b11d9718f8dbc834ae7217707
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982712"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260653"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'de toplu işlemler gerçekleştirmek için Graph toplu yürütücü .NET kitaplığını kullanma
 
@@ -23,7 +23,7 @@ Bir veritabanına Gremlin sorguları göndermenin aksine, komutun değerlendiril
 
 ## <a name="bulk-operations-with-graph-data"></a>Grafik verileriyle toplu işlemler
 
-[Toplu yürütücü kitaplığı](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) , grafik nesneleri `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` oluşturma ve içeri aktarma işlevselliği sağlayan bir ad alanı içerir. 
+[Toplu yürütücü kitaplığı](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) , `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` grafik nesneleri oluşturma ve içeri aktarma işlevselliği sağlayan bir ad alanı içerir. 
 
 Aşağıdaki işlem, veri geçişinin bir Gremlin API kapsayıcısı için nasıl kullanılabileceğini göstermektedir:
 1. Kayıtları veri kaynağından alın.
@@ -128,7 +128,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 Bu depo, aşağıdaki dosyalara sahip olan GraphBulkExecutor örneğini içerir:
 
-Dosya|Açıklama
+Dosya|Description
 ---|---
 `App.config`|Uygulama ve veritabanına özgü parametreler burada belirtilir. Hedef veritabanına ve koleksiyonlara bağlanmak için bu dosyanın değiştirilmesi gerekir.
 `Program.cs`| Bu dosya, `DocumentClient` koleksiyon oluşturma, temizleme işlemlerini işleme ve toplu yürütücü isteklerini gönderme kavramlarını kapsayan mantığı içerir.
@@ -136,7 +136,7 @@ Dosya|Açıklama
 
 `App.config` dosyasında aşağıdaki yapılandırma değerleri sağlanabilir:
 
-Ayar|Açıklama
+Ayar|Description
 ---|---
 `EndPointUrl`|Bu, Azure Cosmos DB Gremlin API veritabanı hesabınızın Genel Bakış dikey penceresinde bulunan **.NET SDK uç noktanızdır**. `https://your-graph-database-account.documents.azure.com:443/` biçimine sahiptir
 `AuthorizationKey`|Bu, Azure Cosmos DB hesabınızda listelenen Birincil veya İkincil anahtardır. [Azure Cosmos DB verilerine güvenli erişim sağlama](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#master-keys) hakkında daha fazla bilgi edinin

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 837018e3-03e6-4f9c-a23e-4b63d5707a64
 ms.service: azure-cdn
 ms.devlang: multiple
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: 08645fa08bdb19d9a5f29daec4035da0b21a356b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: bded48b59d10e47a9bbf476583fed78b5b97431d
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344501"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887444"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Belirteç kimlik doğrulamasıyla Azure CDN varlıkların güvenliğini sağlama
 
@@ -72,7 +72,7 @@ Aşağıdaki akış çizelgesi, CDN uç noktasında belirteç kimlik doğrulamas
 
       ```rand -hex <key length>```
 
-      Örnek:
+      Örneğin:
 
       ```OpenSSL> rand -hex 32``` 
 

@@ -8,25 +8,25 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c5a483ff7a5a93a6908538fd237cb4cf2dacec6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 0d0d83d3b981968949d558cb7ee5672094b00555
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582680"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727339"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 'de grup tabanlı lisanslama için PowerShell ve Graph örnekleri
 
 Grup tabanlı lisanslama için tam işlevsellik [Azure Portal](https://portal.azure.com)aracılığıyla kullanılabilir ve şu anda PowerShell ve Microsoft Graph desteği salt okuma işlemleriyle sınırlıdır. Ancak, mevcut [MSOnline PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) ve Microsoft Graph kullanılarak gerçekleştirilebilecek bazı yararlı görevler vardır. Bu belge, mümkün olan örneklere örnek sağlar.
 
 > [!NOTE]
-> Cmdlet 'leri çalıştırmaya başlamadan önce `Connect-MsolService`  cmdlet 'ini çalıştırarak kuruluşunuza ilk kez bağlandığınızdan emin olun.
+> Cmdlet 'leri çalıştırmaya başlamadan önce cmdlet 'ini çalıştırarak kuruluşunuza ilk kez bağlandığınızdan emin olun `Connect-MsolService`   .
 
 > [!WARNING]
 > Bu kod, tanıtım amacıyla bir örnek olarak sağlanır. Bunu ortamınızda kullanmak istiyorsanız, önce küçük ölçekte veya ayrı bir test kuruluşunda test etmeyi düşünün. Ortamınızın belirli ihtiyaçlarını karşılamak için kodu ayarlamanız gerekebilir.
@@ -617,7 +617,7 @@ UserId                               OperationResult
 aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipping.
 ```
 > [!NOTE]
-> Yukarıdaki betiği çalıştırmadan önce lütfen değişkenlerin `$skuId` değerlerini güncelleştirin `$groupId`  ve test ortamınız uyarınca doğrudan lisansların kaldırılması hedeflenmekte. 
+> `$skuId`Yukarıdaki betiği çalıştırmadan önce lütfen değişkenlerin değerlerini güncelleştirin ve `$groupId`   Test ortamınız uyarınca doğrudan lisansların kaldırılması hedeflenmekte. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

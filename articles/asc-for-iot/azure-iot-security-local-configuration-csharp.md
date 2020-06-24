@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: adf0d72763e0cb1892d64c68a6dce05abbf6f582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc869a8ab905275c8082c4fd375f8f6d6d48d97e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311672"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205467"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Yerel yapılandırma dosyasını anlama (C# Aracısı)
 
@@ -30,9 +30,9 @@ Güvenlik Aracısı, Aracı başladığında yapılandırma dosyasını bir kez 
 
 C# güvenlik Aracısı birden çok yapılandırma dosyası kullanır:
 
-- **Genel. config** aracıyla ilgili yapılandırma.
-- **Authentication. config** -kimlik doğrulaması ile ilgili yapılandırma (kimlik doğrulama ayrıntıları dahil).
-- **Securityıotınterface. config** -IoT ile ilgili yapılandırma.
+- **General.config** aracıyla ilgili yapılandırma.
+- **Authentication.config** -kimlik doğrulaması ile ilgili yapılandırma (kimlik doğrulama ayrıntıları dahil).
+- **SecurityIotInterface.config** IoT ile ilgili yapılandırma.
 
 Yapılandırma dosyaları varsayılan yapılandırmayı içerir. Kimlik doğrulama yapılandırması aracı yüklemesi sırasında doldurulur ve aracı yeniden başlatıldığında yapılandırma dosyasında yapılan değişiklikler yapılır.
 
@@ -40,13 +40,13 @@ Yapılandırma dosyaları varsayılan yapılandırmayı içerir. Kimlik doğrula
 
 Linux için:
 
-- İşletim sistemi yapılandırma dosyaları konumunda `/var/ASCIoTAgent`bulunur.
+- İşletim sistemi yapılandırma dosyaları konumunda bulunur `/var/ASCIoTAgent` .
 
 Windows için:
 
 - İşletim sistemi yapılandırma dosyaları, güvenlik aracısının dizininde bulunur.
 
-### <a name="generalconfig-configurations"></a>Genel. config yapılandırması
+### <a name="generalconfig-configurations"></a>General.config yapılandırma
 
 | Yapılandırma adı | Olası değerler | Ayrıntılar |
 |:-----------|:---------------|:--------|
@@ -62,9 +62,9 @@ Windows için:
 | logFilePath | Dosya yolu | FileLogLevel > kapalıysa Günlükler bu dosyaya yazılır. |
 | defaultEventPriority | "Yüksek", "düşük", "kapalı" | Varsayılan olay önceliği. |
 
-### <a name="generalconfig-example"></a>General. config örneği
+### <a name="generalconfig-example"></a>General.config örneği
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <General>
   <add key="agentId" value="da00006c-dae9-4273-9abc-bcb7b7b4a987" />
@@ -81,7 +81,7 @@ Windows için:
 </General>
 ```
 
-### <a name="authenticationconfig"></a>Authentication. config
+### <a name="authenticationconfig"></a>Authentication.config
 
 | Yapılandırma adı | Olası değerler | Ayrıntılar |
 |:-----------|:---------------|:--------|
@@ -89,16 +89,16 @@ Windows için:
 | deviceId | string | Cihazın KIMLIĞI (Azure IoT Hub kayıtlı olarak). || schedulerInterval | TimeSpan dizesi | İç Zamanlayıcı aralığı. |
 | gatewayHostname | string | Azure IoT Hub 'ının konak adı. Genellikle <-hub>. azure-devices.net |
 | Null | dize-dosyanın yolu | Kimlik doğrulama parolasını içeren dosyanın yolu.|
-| type | "SymmetricKey", "SelfSignedCertificate" | Kimlik doğrulaması için Kullanıcı parolası. *SymmetricKey* ' i seçin Kullanıcı parolası bir simetrik anahtaralıysa, gizli dizi otomatik olarak imzalanan bir sertifikadır, *otomatik olarak imzalanan sertifika* seçeneğini belirleyin. |
+| tür | "SymmetricKey", "SelfSignedCertificate" | Kimlik doğrulaması için Kullanıcı parolası. *SymmetricKey* ' i seçin Kullanıcı parolası bir simetrik anahtaralıysa, gizli dizi otomatik olarak imzalanan bir sertifikadır, *otomatik olarak imzalanan sertifika* seçeneğini belirleyin. |
 | identity | "DPS", "Module", "cihaz" | Kimlik doğrulaması kimliği-kimlik doğrulama, DPS aracılığıyla yapılırsa, modül kimlik bilgileri kullanılarak kimlik doğrulaması yapıldığında modül veya cihaz kimlik bilgileri kullanılarak kimlik doğrulaması yapılmışsa kullanılır.
 | certificateLocationKind |  "YerelDosya", "Mağaza" | YerelDosya sertifika bir dosyada depolanıyorsa, sertifika bir sertifika deposunda bulunuyorsa mağaza. |
 | idScope | string | DPS KIMLIK kapsamı |
 | RegistrationId | string  | DPS cihaz kayıt KIMLIĞI. |
 |
 
-### <a name="authenticationconfig-example"></a>Authentication. config örneği
+### <a name="authenticationconfig-example"></a>Authentication.config örneği
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Authentication>
   <add key="moduleName" value="azureiotsecurity"/>
@@ -113,16 +113,16 @@ Windows için:
 </Authentication>
 ```
 
-### <a name="securityiotinterfaceconfig"></a>Securityıotınterface. config
+### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface.config
 
 | Yapılandırma adı | Olası değerler | Ayrıntılar |
 |:-----------|:---------------|:--------|
 | transportType | "Ampq" "MQTT" | IoT Hub taşıma türü. |
 |
 
-### <a name="securityiotinterfaceconfig-example"></a>Securityıotınterface. config örneği
+### <a name="securityiotinterfaceconfig-example"></a>SecurityIotInterface.config örneği
 
-```XML
+```xml
 <ExternalInterface>
   <add key="facadeType"  value="Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface, Security.Common" />
   <add key="transportType" value="Amqp"/>

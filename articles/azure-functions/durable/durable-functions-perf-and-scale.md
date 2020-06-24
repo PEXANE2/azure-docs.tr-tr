@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 260811c4ae15b45de6f7bc1b22e3ed6dcea44259
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f8df703030220f2c5a79bdb34e3ffbac8ee84a0
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277914"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84762131"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler'de pe ve ölçek (Azure İşlevleri)
 
@@ -36,7 +36,7 @@ Orchestrator işlevleri ve etkinlik işlevleri, işlev uygulamasının görev hu
 
 ### <a name="the-work-item-queue"></a>İş öğesi kuyruğu
 
-Dayanıklı İşlevler görev hub 'ı başına bir iş öğesi kuyruğu vardır. Bu temel bir sıradır ve Azure Işlevlerinde diğer `queueTrigger` tüm kuyrukla benzer şekilde davranır. Bu kuyruk, tek bir iletiyi aynı anda kuyruktan ayırarak durum bilgisiz *etkinlik işlevlerini* tetiklemek için kullanılır. Bu iletilerin her biri, etkinlik işlevi girişleri ve yürütülecek işlev gibi ek meta veriler içerir. Bir Dayanıklı İşlevler uygulaması birden çok VM 'ye ölçeklenirken, bu VM 'Ler iş öğesi sırasından iş elde etmek için tüm yarışmaya rekabet sağlar.
+Dayanıklı İşlevler görev hub 'ı başına bir iş öğesi kuyruğu vardır. Bu temel bir sıradır ve Azure Işlevlerinde diğer tüm kuyrukla benzer şekilde davranır `queueTrigger` . Bu kuyruk, tek bir iletiyi aynı anda kuyruktan ayırarak durum bilgisiz *etkinlik işlevlerini* tetiklemek için kullanılır. Bu iletilerin her biri, etkinlik işlevi girişleri ve yürütülecek işlev gibi ek meta veriler içerir. Bir Dayanıklı İşlevler uygulaması birden çok VM 'ye ölçeklenirken, bu VM 'Ler iş öğesi sırasından iş elde etmek için tüm yarışmaya rekabet sağlar.
 
 ### <a name="control-queues"></a>Denetim kuyrukları
 
@@ -48,14 +48,21 @@ Denetim kuyrukları çeşitli düzenleme yaşam döngüsü ileti türlerini içe
 
 Dayanıklı görev uzantısı, depolama işlem maliyetlerinde boşta sıra yoklamanın etkisini azaltmak için rastgele bir üstel geri alma algoritması uygular. Bir ileti bulunduğunda, çalışma zamanı hemen başka bir iletiyi denetler; hiçbir ileti bulunamadığında, yeniden denemeden önce bir süre bekler. Sonraki başarısız bir kuyruk iletisi almaya çalıştıktan sonra, bekleme süresi, varsayılan olarak 30 saniye olacak şekilde en fazla bekleme süresine ulaşana kadar artar.
 
-En fazla yoklama gecikmesi `maxQueuePollingInterval` [Host. JSON dosyasındaki](../functions-host-json.md#durabletask)özelliği aracılığıyla yapılandırılabilir. Bu özelliğin daha yüksek bir değere ayarlanması, daha yüksek ileti işleme gecikmeleri oluşmasına neden olabilir. Daha yüksek gecikme süreleri yalnızca işlem yapılmadan sonra beklenmelidir. Bu özelliğin daha düşük bir değere ayarlanması, daha yüksek depolama işlemleri nedeniyle depolama maliyetlerinin artmasına neden olabilir.
+En fazla yoklama gecikmesi `maxQueuePollingInterval` [dosyadakihost.js](../functions-host-json.md#durabletask)özelliği aracılığıyla yapılandırılabilir. Bu özelliğin daha yüksek bir değere ayarlanması, daha yüksek ileti işleme gecikmeleri oluşmasına neden olabilir. Daha yüksek gecikme süreleri yalnızca işlem yapılmadan sonra beklenmelidir. Bu özelliğin daha düşük bir değere ayarlanması, daha yüksek depolama işlemleri nedeniyle depolama maliyetlerinin artmasına neden olabilir.
 
 > [!NOTE]
 > Azure işlevleri tüketim ve Premium planlarında çalışırken, [Azure Işlevleri ölçek denetleyicisi](../functions-scale.md#how-the-consumption-and-premium-plans-work) her bir denetimi ve iş öğesi kuyruğunu her 10 saniyede bir yoklamaya çalışır. Bu ek yoklama, işlev uygulaması örneklerinin ne zaman etkinleştireceğinize karar vermek ve ölçek kararları almak için gereklidir. Yazma sırasında, bu 10 saniyelik Aralık sabittir ve yapılandırılamaz.
 
+### <a name="orchestration-start-delays"></a>Orchestration başlangıç gecikmeleri
+Düzenleme örnekleri `ExecutionStarted` , görev merkezinin denetim kuyruklarından birine bir ileti yerleştirerek başlatılır. Belirli koşullar altında, bir Orchestration 'un çalışmak üzere zamanlandığı zaman ve gerçekten çalışmaya başladığı durumlar arasında çok saniyelik gecikmeler gözlemleyebilirsiniz. Bu zaman aralığı boyunca düzenleme örneği `Pending` durumunda kalır. Bu gecikmenin iki olası nedeni vardır:
+
+1. **Biriktirme listesindeki denetim kuyrukları**: Bu örneğin denetim kuyruğu çok sayıda ileti içeriyorsa, `ExecutionStarted` ileti çalışma zamanı tarafından alınmadan ve işlenmeden önce zaman alabilir. Düzenlemeler aynı anda çok sayıda olayı işlerken ileti biriktirme listeleri gerçekleşebilir. Denetim kuyruğuna gidecek olaylar, düzenleme başlangıç olayları, etkinlik tamamlamalar, dayanıklı zamanlayıcılar, sonlandırma ve dış olayları içerir. Bu gecikme normal koşullarda oluşursa, daha fazla sayıda bölüm içeren yeni bir görev merkezi oluşturmayı düşünün. Daha fazla bölüm yapılandırmak çalışma zamanının yük dağıtımı için daha fazla denetim kuyruğu oluşturmasına neden olur.
+
+2. **Geri dönme yoklama gecikmeleri**: düzenleme gecikmelerinin diğer yaygın nedeni, [Denetim kuyrukları için önceden açıklanan geri dönüş yoklama davranışıdır](#queue-polling). Ancak, bu gecikme yalnızca bir uygulama iki veya daha fazla örneğe göre ölçeklendirildiğinde beklenir. Yalnızca bir uygulama örneği varsa veya Orchestration 'u başlatan uygulama örneği aynı zamanda hedef denetim kuyruğunu yoklayarak aynı örnekten bir sıra yoklama gecikmesi olmaz. Daha önce açıklandığı gibi, ayarlarda **host.js** güncellemeden geri dönme yoklama gecikmeleri azaltılabilir.
+
 ## <a name="storage-account-selection"></a>Depolama hesabı seçimi
 
-Dayanıklı İşlevler tarafından kullanılan kuyruklar, tablolar ve Bloblar yapılandırılmış bir Azure depolama hesabında oluşturulur. Kullanılacak hesap, **Host. JSON** dosyasındaki (veya `durableTask/storageProvider/connectionStringName` `durableTask/azureStorageConnectionStringName` dayanıklı işlevler 1. x) ayarı kullanılarak belirtilebilir.
+Dayanıklı İşlevler tarafından kullanılan kuyruklar, tablolar ve Bloblar yapılandırılmış bir Azure depolama hesabında oluşturulur. Kullanılacak hesap, `durableTask/storageProvider/connectionStringName` `durableTask/azureStorageConnectionStringName` dosyadaki **host.js** (veya dayanıklı işlevler 1. x) ayarı kullanılarak belirtilebilir.
 
 ### <a name="durable-functions-2x"></a>Dayanıklı İşlevler 2. x
 
@@ -87,7 +94,7 @@ Belirtilmemişse, varsayılan `AzureWebJobsStorage` depolama hesabı kullanılı
 
 ## <a name="orchestrator-scale-out"></a>Orchestrator ölçeği genişletme
 
-Etkinlik işlevleri durum bilgisiz ve VM 'Ler eklenerek otomatik olarak ölçeklendirilir. Diğer yandan Orchestrator işlevleri ve varlıkları bir veya daha fazla denetim kuyruğuna göre *bölümlenmiştir* . Denetim sıralarının sayısı **Host. JSON** dosyasında tanımlanmıştır. Aşağıdaki örnek Host. JSON kod parçacığı `durableTask/storageProvider/partitionCount` özelliğini (veya `durableTask/partitionCount` dayanıklı işlevler 1. x) olarak `3`ayarlar.
+Etkinlik işlevleri durum bilgisiz ve VM 'Ler eklenerek otomatik olarak ölçeklendirilir. Diğer yandan Orchestrator işlevleri ve varlıkları bir veya daha fazla denetim kuyruğuna göre *bölümlenmiştir* . Denetim sıralarının sayısı dosyadaki **host.js** tanımlanmıştır. Aşağıdaki örnek kod parçacığında host.js, `durableTask/storageProvider/partitionCount` Özelliği (veya `durableTask/partitionCount` dayanıklı işlevler 1. x) olarak ayarlar `3` .
 
 ### <a name="durable-functions-2x"></a>Dayanıklı İşlevler 2. x
 
@@ -150,7 +157,7 @@ Varlık işlevleri de tek bir iş parçacığında yürütülür ve işlemler te
 
 Azure Işlevleri tek bir uygulama örneği içinde eşzamanlı olarak birden çok işlevin yürütülmesini destekler. Bu eşzamanlı yürütme paralellik arttırmaya yardımcı olur ve tipik bir uygulamanın zaman içinde deneymesinin "soğuk başladığı" sayısını en aza indirir. Ancak, yüksek eşzamanlılık, ağ bağlantıları veya kullanılabilir bellek gibi VM başına sistem kaynaklarını tüketebilir. İşlev uygulamasının ihtiyaçlarına bağlı olarak, yüksek yükleme durumlarında belleğin tükenme olasılığını ortadan kaldırmak için örnek başına eşzamanlılık azaltma gerekebilir.
 
-Etkinlik, Orchestrator ve varlık işlevi eşzamanlılık sınırları, **Host. JSON** dosyasında yapılandırılabilir. İlgili ayarlar `durableTask/maxConcurrentActivityFunctions` , etkinlik işlevlerine ve `durableTask/maxConcurrentOrchestratorFunctions` hem Orchestrator hem de varlık işlevlerine yöneliktir.
+Etkinlik, Orchestrator ve varlık işlevi eşzamanlılık sınırları, **host.jsdosya üzerinde** yapılandırılabilir. İlgili ayarlar, `durableTask/maxConcurrentActivityFunctions` etkinlik işlevlerine ve `durableTask/maxConcurrentOrchestratorFunctions` Hem Orchestrator hem de varlık işlevlerine yöneliktir.
 
 ### <a name="functions-20"></a>İşlevler 2,0
 
@@ -185,7 +192,7 @@ Etkinlik, Orchestrator ve varlık işlevi eşzamanlılık sınırları, **Host. 
 
 Genişletilmiş oturumlar, iletileri işlemeyi bitirdikten sonra bile, bellek içinde ayarları ve varlıkları tutan bir ayardır. Genişletilmiş oturumların etkinleştirilmesinin tipik etkisi, Azure depolama hesabına ve genel olarak geliştirilmiş aktarım hızına karşı g/ç 'yi azaltmıştır.
 
-**Konak. JSON** dosyasında ' ye `true` ayarlayarak `durableTask/extendedSessionsEnabled` genişletilmiş oturumları etkinleştirebilirsiniz. Bu `durableTask/extendedSessionIdleTimeoutInSeconds` ayar, boş bir oturumun bellekte tutulacağı süreyi denetlemek için kullanılabilir:
+Genişletilmiş oturumları `durableTask/extendedSessionsEnabled` `true` dosyadaki **host.js** olarak ayarlayarak etkinleştirebilirsiniz. Bu `durableTask/extendedSessionIdleTimeoutInSeconds` ayar, boş bir oturumun bellekte tutulacağı süreyi denetlemek için kullanılabilir:
 
 **İşlevler 2,0**
 ```json
@@ -214,13 +221,13 @@ Bu ayarın farkında olması için iki olası kenarı vardır:
 1. İşlev uygulaması bellek kullanımında genel bir artış vardır.
 2. Çok sayıda eşzamanlı, kısa süreli Orchestrator veya varlık işlevi yürütmeleri varsa, üretilen iş için genel bir azalma olabilir.
 
-Örnek `durableTask/extendedSessionIdleTimeoutInSeconds` olarak, 30 saniye olarak ayarlandıysa, 1 saniyeden kısa bir süre içinde çalışan kısa süreli bir Orchestrator veya varlık işlevi bölümü 30 saniye boyunca belleği kaplar. Ayrıca, daha önce bahsedilen `durableTask/maxConcurrentOrchestratorFunctions` kotanın üzerinde de sayılır, bu da diğer Orchestrator veya varlık işlevlerinin çalışmasını engelleyebilir.
+Örnek olarak, `durableTask/extendedSessionIdleTimeoutInSeconds` 30 saniye olarak ayarlandıysa, 1 saniyeden kısa bir süre içinde çalışan kısa süreli bir Orchestrator veya varlık işlevi bölümü 30 saniye boyunca belleği kaplar. Ayrıca `durableTask/maxConcurrentOrchestratorFunctions` , daha önce bahsedilen kotanın üzerinde de sayılır, bu da diğer Orchestrator veya varlık işlevlerinin çalışmasını engelleyebilir.
 
 Orchestrator ve Entity işlevlerinde genişletilmiş oturumların belirli etkileri, sonraki bölümlerde açıklanmıştır.
 
 ### <a name="orchestrator-function-replay"></a>Orchestrator işlevi yeniden yürütme
 
-Daha önce belirtildiği gibi, Orchestrator işlevleri **Geçmiş** tablosunun içerikleri kullanılarak yeniden yürütülür. Varsayılan olarak, bir denetim kuyruğundan bir toplu ileti sıralandığında, Orchestrator işlev kodu yeniden yürütülür. Fanı-Out, fan ve tüm görevlerin tamamlanmasını bekliyor olsa da (örneğin, .NET veya `Task.WhenAll` `context.df.Task.all` JavaScript 'te kullanmak), görev yanıtlarının toplu işleri zaman içinde işlendiği için bu durum ortaya çıkar. Genişletilmiş Oturumlar etkinleştirildiğinde, Orchestrator işlev örnekleri bellekte daha uzun tutulur ve yeni iletiler tam geçmiş yeniden yürütme olmadan işlenebilir.
+Daha önce belirtildiği gibi, Orchestrator işlevleri **Geçmiş** tablosunun içerikleri kullanılarak yeniden yürütülür. Varsayılan olarak, bir denetim kuyruğundan bir toplu ileti sıralandığında, Orchestrator işlev kodu yeniden yürütülür. Fanı-Out, fan ve tüm görevlerin tamamlanmasını bekliyor olsa da (örneğin, `Task.WhenAll` .NET veya JavaScript 'te kullanmak `context.df.Task.all` ), görev yanıtlarının toplu işleri zaman içinde işlendiği için bu durum ortaya çıkar. Genişletilmiş Oturumlar etkinleştirildiğinde, Orchestrator işlev örnekleri bellekte daha uzun tutulur ve yeni iletiler tam geçmiş yeniden yürütme olmadan işlenebilir.
 
 Genişletilmiş oturumların performans geliştirmesi en sık aşağıdaki durumlarda gözlemlenmiştir:
 

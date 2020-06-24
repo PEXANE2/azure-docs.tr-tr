@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: c2580aa4ee22996c1bf0fe5c86064a6543450071
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1deffe36df081908294d3c7fe58a17c8a454687
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260182"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887045"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS ile Azure CDN kullanma
 
@@ -35,7 +35,7 @@ Azure CDN ile SAS kullanımı için aşağıdaki üç seçenek önerilir. Tüm s
 ### <a name="prerequisites"></a>Ön koşullar
 Başlamak için bir depolama hesabı oluşturun ve ardından varlığınız için bir SAS oluşturun. İki tür saklı erişim imzası oluşturabilirsiniz: hizmet SAS veya hesap SAS. Daha fazla bilgi için bkz. [paylaşılan erişim Imzaları türleri](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#types-of-shared-access-signatures).
 
-Bir SAS belirteci oluşturduktan sonra, URL 'nize ekleyerek `?sv=<SAS token>` BLOB depolama dosyanıza erişebilirsiniz. Bu URL aşağıdaki biçimdedir: 
+Bir SAS belirteci oluşturduktan sonra, URL 'nize ekleyerek BLOB depolama dosyanıza erişebilirsiniz `?sv=<SAS token>` . Bu URL aşağıdaki biçimdedir: 
 
 `https://<account name>.blob.core.windows.net/<container>/<file>?sv=<SAS token>`
  
@@ -65,7 +65,7 @@ Bu seçenek en basit seçenektir ve Azure CDN kaynak sunucuya geçirilen tek bir
    https://demoendpoint.azureedge.net/container1/demo.jpg/?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
    
-3. Önbellek süresini, önbelleğe alma kurallarını kullanarak veya kaynak sunucuya üstbilgiler ekleyerek `Cache-Control` hassas bir şekilde ayarlayın. Azure CDN, SAS belirtecini düz bir sorgu dizesi olarak değerlendirir, en iyi uygulama olarak SAS süre sonu süresinden veya daha önce süresi dolacak bir önbelleğe alma süresi ayarlamanız gerekir. Aksi takdirde, bir dosya SAS etkin olduğundan daha uzun bir süre önbelleğe alınmışsa, SAS süre sonu süresi dolduktan sonra dosyaya Azure CDN kaynak sunucusundan erişilebilir. Bu durum oluşursa ve önbelleğe alınmış dosyanızı erişilemez hale getirmek istiyorsanız, dosyanın önbellekte temizlemek için bir temizleme işlemi gerçekleştirmeniz gerekir. Azure CDN önbellek süresini ayarlama hakkında daha fazla bilgi için bkz. önbellek [kuralları Ile denetim Azure CDN önbelleğe alma davranışı](cdn-caching-rules.md).
+3. Önbellek süresini, önbelleğe alma kurallarını kullanarak veya kaynak sunucuya üstbilgiler ekleyerek hassas bir şekilde ayarlayın `Cache-Control` . Azure CDN, SAS belirtecini düz bir sorgu dizesi olarak değerlendirir, en iyi uygulama olarak SAS süre sonu süresinden veya daha önce süresi dolacak bir önbelleğe alma süresi ayarlamanız gerekir. Aksi takdirde, bir dosya SAS etkin olduğundan daha uzun bir süre önbelleğe alınmışsa, SAS süre sonu süresi dolduktan sonra dosyaya Azure CDN kaynak sunucusundan erişilebilir. Bu durum oluşursa ve önbelleğe alınmış dosyanızı erişilemez hale getirmek istiyorsanız, dosyanın önbellekte temizlemek için bir temizleme işlemi gerçekleştirmeniz gerekir. Azure CDN önbellek süresini ayarlama hakkında daha fazla bilgi için bkz. önbellek [kuralları Ile denetim Azure CDN önbelleğe alma davranışı](cdn-caching-rules.md).
 
 ### <a name="option-2-hidden-cdn-sas-token-using-a-rewrite-rule"></a>Seçenek 2: bir yeniden yazma kuralı kullanan gizli CDN SAS belirteci
  
@@ -86,8 +86,8 @@ Bu seçenek yalnızca **Verizon profillerden Azure CDN Premium** için kullanıl
    ```
    $1?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
-   ![CDN URL yeniden yazma kuralı-](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
-   ![sol CDN URL yeniden yazma kuralı-sağ](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
+   ![CDN URL yeniden yazma kuralı-sol ](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
+    ![ CDN URL yeniden yazma kuralı-sağ](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
 2. Yeni kural etkin olduktan sonra herkes, URL 'de bir SAS belirteci kullanıp kullanmadıklarından bağımsız olarak, CDN uç noktasındaki belirtilen kapsayıcıdaki dosyalara erişebilir. Biçim şöyledir:`https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
@@ -95,7 +95,7 @@ Bu seçenek yalnızca **Verizon profillerden Azure CDN Premium** için kullanıl
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
        
 
-3. Önbellek süresini, önbelleğe alma kurallarını kullanarak veya kaynak sunucuya üstbilgiler ekleyerek `Cache-Control` hassas bir şekilde ayarlayın. Azure CDN, SAS belirtecini düz bir sorgu dizesi olarak değerlendirir, en iyi uygulama olarak SAS süre sonu süresinden veya daha önce süresi dolacak bir önbelleğe alma süresi ayarlamanız gerekir. Aksi takdirde, bir dosya SAS etkin olduğundan daha uzun bir süre önbelleğe alınmışsa, SAS süre sonu süresi dolduktan sonra dosyaya Azure CDN kaynak sunucusundan erişilebilir. Bu durum oluşursa ve önbelleğe alınmış dosyanızı erişilemez hale getirmek istiyorsanız, dosyanın önbellekte temizlemek için bir temizleme işlemi gerçekleştirmeniz gerekir. Azure CDN önbellek süresini ayarlama hakkında daha fazla bilgi için bkz. önbellek [kuralları Ile denetim Azure CDN önbelleğe alma davranışı](cdn-caching-rules.md).
+3. Önbellek süresini, önbelleğe alma kurallarını kullanarak veya kaynak sunucuya üstbilgiler ekleyerek hassas bir şekilde ayarlayın `Cache-Control` . Azure CDN, SAS belirtecini düz bir sorgu dizesi olarak değerlendirir, en iyi uygulama olarak SAS süre sonu süresinden veya daha önce süresi dolacak bir önbelleğe alma süresi ayarlamanız gerekir. Aksi takdirde, bir dosya SAS etkin olduğundan daha uzun bir süre önbelleğe alınmışsa, SAS süre sonu süresi dolduktan sonra dosyaya Azure CDN kaynak sunucusundan erişilebilir. Bu durum oluşursa ve önbelleğe alınmış dosyanızı erişilemez hale getirmek istiyorsanız, dosyanın önbellekte temizlemek için bir temizleme işlemi gerçekleştirmeniz gerekir. Azure CDN önbellek süresini ayarlama hakkında daha fazla bilgi için bkz. önbellek [kuralları Ile denetim Azure CDN önbelleğe alma davranışı](cdn-caching-rules.md).
 
 ### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>Seçenek 3: CDN güvenlik belirteci kimlik doğrulamasını yeniden yazma kuralıyla kullanma
 
@@ -124,8 +124,8 @@ Azure CDN güvenlik belirteci kimlik doğrulamasını kullanmak için Verizon pr
    ```
    $1&sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
-   ![CDN URL yeniden yazma kuralı-](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
-   ![sol CDN URL yeniden yazma kuralı-sağ](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
+   ![CDN URL yeniden yazma kuralı-sol ](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
+    ![ CDN URL yeniden yazma kuralı-sağ](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
 3. SAS 'Yi yenilemezseniz, URL yeniden yazma kuralını yeni SAS belirteciyle güncelleştirdiğinizden emin olun. 
 
@@ -133,9 +133,9 @@ Azure CDN güvenlik belirteci kimlik doğrulamasını kullanmak için Verizon pr
 
 SAS parametreleri Azure CDN görünür olmadığından, Azure CDN kendisine göre teslim davranışını değiştiremez. Tanımlanan parametre kısıtlamaları, istemciden Azure CDN istekleri için değil, yalnızca kaynak sunucuya Azure CDN istekleri uygular. Bu ayrım, SAS parametrelerini ayarladığınızda göz önünde bulundurmanız önemlidir. Bu gelişmiş yetenekler gerekliyse ve [seçenek 3](#option-3-using-cdn-security-token-authentication-with-a-rewrite-rule)' ü kullanıyorsanız, Azure CDN güvenlik belirtecinde uygun kısıtlamaları ayarlayın.
 
-| SAS parametre adı | Açıklama |
+| SAS parametre adı | Description |
 | --- | --- |
-| Başlat | Azure CDN blob dosyasına erişmeye başlayabileceğiniz zaman. Saat farkı (farklı bileşenler için saat sinyali farklı zamanlara ulaştığında) nedeniyle, varlığın hemen kullanılabilir olmasını istiyorsanız 15 dakika daha erken bir süre seçin. |
+| Başlangıç | Azure CDN blob dosyasına erişmeye başlayabileceğiniz zaman. Saat farkı (farklı bileşenler için saat sinyali farklı zamanlara ulaştığında) nedeniyle, varlığın hemen kullanılabilir olmasını istiyorsanız 15 dakika daha erken bir süre seçin. |
 | End | Azure CDN blob dosyasına artık erişememesi gereken süre. Daha önce Azure CDN önbelleğe alınmış dosyalara hala erişilebilir. Dosya sona erme süresini denetlemek için Azure CDN güvenlik belirtecinde uygun süre sonu saatini ayarlayın veya varlığı temizleyin. |
 | İzin verilen IP adresleri | İsteğe bağlı. **Verizon ' den Azure CDN**kullanıyorsanız, bu parametreyi [VERIZON Edge Server IP aralıklarından Azure CDN](/azure/cdn/cdn-pop-list-api)tanımlanan aralıklar olarak ayarlayabilirsiniz. **Akamai ' den Azure CDN**kullanıyorsanız IP adresleri STATIK olmadığından IP aralıkları parametresini ayarlayamazsınız.|
 | İzin verilen protokoller | Hesap SAS ile yapılan bir istek için izin verilen protokol (ler). HTTPS ayarı önerilir.|

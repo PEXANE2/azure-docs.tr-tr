@@ -13,11 +13,11 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0faaf0394bddc2e443afc194bbd0ecef72625f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79240929"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690957"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Hızlı Başlangıç: PowerShell ile konuk kullanıcı ekleme
 
@@ -75,7 +75,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 
 ## <a name="send-an-invitation"></a>Davet gönderme
 
-1. Test e-posta hesabınıza davetiye göndermek için aşağıdaki PowerShell komutunu çalıştırın ( **"Sanda"** ve **Sanda\@fabrikam.com** öğesini test e-posta hesabınızın adı ve e-posta adresiniz ile değiştirin): 
+1. Test e-posta hesabınıza davetiye göndermek için aşağıdaki PowerShell komutunu çalıştırın ( **"Sanda"** ve **Sanda \@ fabrikam.com** öğesini test e-posta hesabınızın adı ve e-posta adresiniz ile değiştirin): 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.microsoft.com -SendInvitationMessage $true
@@ -91,7 +91,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
    ```powershell
    Get-AzureADUser -Filter "UserType eq 'Guest'"
    ```
-3. Davet ettiğiniz kullanıcının, bir Kullanıcı asıl adı (UPN) ile *emadresi*#EXT #\@*etki*biçiminde listelendiğinden emin olmak için çıktıyı denetleyin. Örneğin, *sanda_fabrikam. com # ext #\@contoso.onmicrosoft.com*, burada contoso.onmicrosoft.com, davetleri gönderdiğiniz kuruluştur.
+3. Davet ettiğiniz kullanıcının, bir Kullanıcı asıl adı (UPN) ile *emadresi*#EXT # etki biçiminde listelendiğinden emin olmak için çıktıyı denetleyin \@ *domain*. Örneğin, *sanda_fabrikam. com # ext # \@ contoso.onmicrosoft.com*, burada contoso.onmicrosoft.com, davetleri gönderdiğiniz kuruluştur.
 
    ![Eklenen konuk kullanıcıyı gösteren PowerShell çıktısı](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 

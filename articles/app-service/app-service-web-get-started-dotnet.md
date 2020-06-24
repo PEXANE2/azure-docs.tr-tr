@@ -5,12 +5,12 @@ ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
 ms.date: 04/22/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 6c7ab1290033792cf356c4882811670011df5efe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b7566260786b6fcfa639f244e2eff0cc8304ed9e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82086054"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205804"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Hızlı başlangıç: Azure 'da ASP.NET Core Web uygulaması oluşturma
 
@@ -26,8 +26,8 @@ Bu hızlı başlangıçta, [Azure App Service](overview.md)için ilk ASP.NET Cor
 
   Visual Studio 2019 zaten yüklüyse:
 
-  - **Help** > **Güncelleştirmeler için yardım denetimi**' ni seçerek en son güncelleştirmeleri Visual Studio 'ya yükler.
-  - **Araçlar** > **Al araçlar ve Özellikler '** i seçerek iş yükünü ekleyin.
+  - **Help**  >  **Güncelleştirmeler için yardım denetimi**' ni seçerek en son güncelleştirmeleri Visual Studio 'ya yükler.
+  - **Araçlar**  >  **Al araçlar ve Özellikler '** i seçerek iş yükünü ekleyin.
 
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core web uygulaması oluşturma
@@ -46,7 +46,7 @@ Aşağıdaki adımları izleyerek Visual Studio 'da bir ASP.NET Core Web uygulam
 
    ![Yeni bir ASP.NET Core Web uygulaması oluşturma](./media/app-service-web-get-started-dotnet/create-aspnet-core-web-app.png) 
    
-1. Web uygulamanızı yerel olarak çalıştırmak için Visual Studio **menüsünden hata ayıklama** > **olmadan Başlat** ' ı seçin.
+1. **Debug**  >  Web uygulamanızı yerel olarak çalıştırmak için Visual Studio menüsünden hata ayıklama**olmadan Başlat** ' ı seçin.
 
    ![Yerel olarak çalışan Web uygulaması](./media/app-service-web-get-started-dotnet/web-app-running-locally.png)
 
@@ -67,7 +67,7 @@ App Service oluşturup Web uygulamanızı yayımlamak için aşağıdaki adımla
 
    ![Yayımlama hedefi seçme](./media/app-service-web-get-started-dotnet/pick-publish-target-vs2019.png)
 
-1. **App Service: Yeni oluştur** iletişim kutusunda varsayılan adı kabul ederek ya da yeni bir ad girerek uygulamanız için genel olarak benzersiz bir **ad** sağlayın. `a-z`Geçerli karakterler: `A-Z`,, `0-9`, ve. `-` Bu **ad** , Web uygulamanızın URL ön eki olarak biçiminde `http://<app_name>.azurewebsites.net`kullanılır.
+1. **App Service: Yeni oluştur** iletişim kutusunda varsayılan adı kabul ederek ya da yeni bir ad girerek uygulamanız için genel olarak benzersiz bir **ad** sağlayın. Geçerli karakterler: `a-z` , `A-Z` , `0-9` , ve `-` . Bu **ad** , Web uygulamanızın URL ön eki olarak biçiminde kullanılır `http://<app_name>.azurewebsites.net` .
 
 1. **Abonelik**için, listelenen aboneliği kabul edin veya açılan listeden yeni bir tane seçin.
 
@@ -77,7 +77,7 @@ App Service oluşturup Web uygulamanızı yayımlamak için aşağıdaki adımla
 
 1. **Barındırma planı: Yeni oluştur** iletişim kutusunda, aşağıdaki tabloda belirtilen değerleri girin:
 
-   | Ayar  | Önerilen Değer | Açıklama |
+   | Ayar  | Önerilen Değer | Description |
    | -------- | --------------- | ----------- |
    | **Barındırma Planı**  | *myFirstAzureWebAppPlan* | App Service planının adı. |
    | **Konum**      | *Batı Avrupa* | Web uygulamasının barındırıldığı veri merkezi. |
@@ -105,11 +105,11 @@ App Service oluşturup Web uygulamanızı yayımlamak için aşağıdaki adımla
 
 Web uygulamanızı güncelleştirmek ve yeniden dağıtmak için aşağıdaki adımları izleyin:
 
-1. **Çözüm Gezgini**' de, projeniz altında, **Sayfalar** > **Index. cshtml**dosyasını açın.
+1. **Çözüm Gezgini**' de, projeniz altında, **Sayfalar**  >  **Index. cshtml**dosyasını açın.
 
 1. Tüm `<div>` etiketi aşağıdaki kodla değiştirin:
 
-   ```HTML
+   ```html
    <div class="jumbotron">
        <h1>ASP.NET in Azure!</h1>
        <p class="lead">This is a simple app that we've built that demonstrates how to deploy a .NET app to Azure App Service.</p>
@@ -150,3 +150,6 @@ Bir .NET Core uygulaması oluşturmayı ve bir SQL veritabanına bağlamayı ö�
 
 > [!div class="nextstepaction"]
 > [SQL Veritabanı ile ASP.NET Core](app-service-web-tutorial-dotnetcore-sqldb.md)
+
+> [!div class="nextstepaction"]
+> [ASP.NET Core uygulamasını yapılandırma](configure-language-dotnetcore.md)

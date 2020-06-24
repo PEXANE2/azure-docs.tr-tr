@@ -3,8 +3,8 @@ title: GPO kullanarak IE için Azure erişim paneli uzantısını dağıtma | Mi
 description: Uygulamalarım portalı için Internet Explorer eklentisini dağıtmak üzere Grup İlkesi 'ni kullanma.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/08/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71c342ede77349b3f6c22093e5877ad5f5ce6549
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 94c434a2892060acfdd56c496a31e41597c21357
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67807677"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763440"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Nasıl yapılır: Grup İlkesi kullanarak Internet Explorer için erişim paneli uzantısını dağıtma
 
@@ -44,12 +44,12 @@ Erişim paneli uzantısı, her biri için yönetici izinleri gerektirmeyen [Chro
 
     ![Açık dosyalar ve depolama hizmetleri](./media/deploy-access-panel-browser-extension/files-services.png)
 
-1. **Paylaşımlar** sekmesine gidin. **Görevler** > **Yeni paylaşma...** öğesine tıklayın.
+1. **Paylaşımlar** sekmesine gidin. **Görevler**  >  **Yeni paylaşma...** öğesine tıklayın.
 
     ![Ekran görüntüsü, görevler ekranından yeni paylaşımın nerede bulunacağını gösterir](./media/deploy-access-panel-browser-extension/shares.png)
 
 1. **Yeni paylaşma sihirbazını** tamamlayıp kullanıcılarınızın makinelerinizden erişilebilmesini sağlamak için izinleri ayarlayın. [Paylaşımlar hakkında daha fazla bilgi edinin.](https://technet.microsoft.com/library/cc753175.aspx)
-1. Şu Microsoft Windows Installer paketini (. msi dosyası) indirin: [erişim paneli uzantısı. msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
+1. Şu Microsoft Windows Installer paketini (. msi dosyası) indirin: [erişim paneli Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 1. Yükleyici paketini paylaşımdaki istenen bir konuma kopyalayın.
 
     ![. Msi dosyasını paylaşıma kopyalayın](./media/deploy-access-panel-browser-extension/copy-package.png)
@@ -59,14 +59,14 @@ Erişim paneli uzantısı, her biri için yönetici izinleri gerektirmeyen [Chro
 ## <a name="step-2-create-the-group-policy-object"></a>2. Adım: Grup İlkesi nesnesini oluşturma
 
 1. Active Directory Domain Services (AD DS) yüklemenizi barındıran sunucuda oturum açın.
-1. Sunucu Yöneticisi **Araçlar** > **Grup İlkesi Yönetim**' e gidin.
+1. Sunucu Yöneticisi **Araçlar**  >  **Grup İlkesi Yönetim**' e gidin.
 
     ![Araçlar > grup ilkesi yönetimine git](./media/deploy-access-panel-browser-extension/tools-gpm.png)
 
 1. **Grup İlkesi Yönetimi** penceresinin sol bölmesinde, kuruluş BIRIMI (OU) hiyerarşinizi görüntüleyin ve grup ilkesini hangi kapsamda uygulamak istediğinizi saptayın. Örneğin, test için birkaç kullanıcıya dağıtmak üzere küçük bir OU seçerek veya tüm kuruluşunuza dağıtmak için en üst düzey bir OU seçmeniz gerekebilir.
 
    > [!NOTE]
-   > Kuruluş birimlerinizi (OU) oluşturmak veya düzenlemek istiyorsanız, Sunucu Yöneticisi geri dönün ve **Araçlar** > **Active Directory Kullanıcılar ve bilgisayarlar**' a gidin.
+   > Kuruluş birimlerinizi (OU) oluşturmak veya düzenlemek istiyorsanız, Sunucu Yöneticisi geri dönün ve **Araçlar**  >  **Active Directory Kullanıcılar ve bilgisayarlar**' a gidin.
 
 1. Bir OU seçtikten sonra, sağ tıklayın ve **Bu etki alanında GPO oluştur ve buraya bağla ' yı seçin...**
 
@@ -83,7 +83,7 @@ Erişim paneli uzantısı, her biri için yönetici izinleri gerektirmeyen [Chro
    * `Computer Configuration/Policies/Software Settings/`
    * `User Configuration/Policies/Software Settings/`
 
-1. **Yazılım yükleme**' ye sağ tıkladıktan sonra **Yeni** > **paket...** ' i seçin.
+1. **Yazılım yükleme**' ye sağ tıkladıktan sonra **Yeni**  >  **paket...** ' i seçin.
 1. [1. Adım: dağıtım noktası oluşturma](#step-1-create-the-distribution-point)' dan yükleyici paketini içeren paylaşılan klasöre gidin,. msi dosyasını seçin ve **Aç**' a tıklayın.
 
    > [!IMPORTANT]

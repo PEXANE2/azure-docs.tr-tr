@@ -2,25 +2,25 @@
 title: Azure Active Directory Access panel dağıtımı planlayın
 description: Azure Active Directory Access panel dağıtma Kılavuzu
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04d8b6c6d40aa81bf56baed59f90417f2147fa56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aeffcfc919a6aeeae61ed79286d613d72c6b183c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897066"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84761179"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Azure Active Directory Access panel dağıtımı planlayın
 
@@ -81,10 +81,10 @@ Bu projeye başlamadan önce aşağıdaki önkoşulları doldurun:
 
 Aşağıdaki tabloda, bir erişim paneli dağıtımı için anahtar kullanım durumları özetlenmektedir:
 
-| Alan| Açıklama |
+| Alan| Description |
 | - | - |
-| Erişim| Şirket ağı içindeki şirket ve kişisel cihazlardan erişim paneli portalına erişilebilir. |
-|Erişim | Şirket ağı dışındaki şirket aygıtlarından erişim paneli portalına erişilebilir. |
+| Access| Şirket ağı içindeki şirket ve kişisel cihazlardan erişim paneli portalına erişilebilir. |
+|Access | Şirket ağı dışındaki şirket aygıtlarından erişim paneli portalına erişilebilir. |
 | Denetim| Kullanım verileri en az 29 günde bir şirket sistemine indirilir. |
 | İdare| Azure AD bağlantılı uygulamalar ve gruplar için Kullanıcı atamalarının yaşam döngüsü tanımlanmıştır ve izlenir. |
 | Güvenlik| Kaynaklara erişim, Kullanıcı ve Grup atamaları aracılığıyla denetlenir. Yalnızca yetkili kullanıcılar, kaynak erişimini yönetebilir. |
@@ -215,7 +215,7 @@ Intune ilkesi (Microsoft Edge veya Intune Managed Browser) ile korunan bir taray
 
 ## <a name="plan-your-my-apps-deployment"></a>Uygulamalarım dağıtımınızı planlayın
 
-Erişim panelinin temeli, uygulama başlatıcısı Uygulamalarım, kullanıcıların erişim ' i [https://myapps.microsoft.com](https://myapps.microsoft.com/). Uygulamalarım sayfaları, kullanıcılara işlerini başlatmak ve gerekli uygulamalarına ulaşmak için tek bir yer sunar. Burada, kullanıcılar çoklu oturum açma erişimine sahip oldukları tüm uygulamaların bir listesini bulur. 
+Erişim panelinin temeli, uygulama başlatıcısı Uygulamalarım, kullanıcıların erişim ' i [https://myapps.microsoft.com](https://myapps.microsoft.com/) . Uygulamalarım sayfaları, kullanıcılara işlerini başlatmak ve gerekli uygulamalarına ulaşmak için tek bir yer sunar. Burada, kullanıcılar çoklu oturum açma erişimine sahip oldukları tüm uygulamaların bir listesini bulur. 
 
 ![Uygulamalar panelinin ekran görüntüsü](media/access-panel-deployment-plan/ap-dp-app-launcher.png)
 
@@ -338,11 +338,11 @@ Azure Active Directory içinde gerekli bir görevi gerçekleştirmek için en az
 
 | Kişilikler| Roller| Azure AD rolü  |
 | - | -| -|
-| Yardım Masası Yöneticisi| Katman 1 desteği| Hiçbiri |
+| Yardım Masası Yöneticisi| Katman 1 desteği| Yok |
 | Kimlik Yöneticisi| Sorunları Azure AD ' i etkileyen yapılandırma ve hata ayıklama| Genel yönetici |
-| Uygulama Yöneticisi| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Hiçbiri |
+| Uygulama Yöneticisi| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Yok |
 | Altyapı Yöneticileri| Sertifika aktarma sahibi| Genel yönetici |
-| İşletme sahibi/paydaş| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Hiçbiri |
+| İşletme sahibi/paydaş| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Yok |
 
 Dizin izinleri olan kullanıcılar için ek denetim, denetim ve erişim incelemesi sağlamak üzere rollerinizi yönetmek için [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) kullanabilirsiniz.
 

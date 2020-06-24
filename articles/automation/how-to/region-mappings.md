@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: process-automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 06/03/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
 manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: 1ccf87bfd387182af269670abf1d86833854834d
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: a8b5f14147ee748f5d32d794f51d5437eeddfb51
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331636"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261197"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Bağlı Log Analytics çalışma alanı için desteklenen bölgeler
 
@@ -30,26 +30,25 @@ Aşağıdaki tabloda desteklenen eşlemeler gösterilmektedir:
 |**ABD**||
 |EastUS<sup>1</sup>|EastUS2|
 |WestUS2|WestUS2|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
+|WestCentralUS|WestCentralUS|
 |**Kanada**||
 |Canadaorta|Canadaorta|
 |**Asya Pasifik**||
 |AustraliaSoutheast|AustraliaSoutheast|
 |Güneydoğu|Güneydoğu|
 |Merkezileştirme Hindistan|Merkezileştirme Hindistan|
-|ChinaEast2<sup>3</sup>|ChinaEast2|
+|ChinaEast2<sup>2</sup>|ChinaEast2|
 |JapanEast|JapanEast|
 |**Avrupa**||
 |UKSouth|UKSouth|
 |WestEurope|WestEurope|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
+|Usgovarizlon2<sup>2</sup>|USGovArizona|
 
 Log Analytics çalışma alanları için <sup>1</sup> EastUS eşlemesi, Otomasyon hesaplarında tam bir bölgeden bölgeye eşleme değildir, ancak doğru eşleme olur.
 
-<sup>2</sup> kapasite depoları nedeniyle, yeni kaynaklar oluştururken bölge kullanılamaz. Bu, Otomasyon hesaplarını ve Log Analytics çalışma alanlarını içerir. Ancak, bölgede önceden var olan bağlı kaynakların çalışmaya devam etmesi gerekir.
-
-<sup>3</sup> Azure Çin 'de yalnızca güncelleştirme yönetimi desteklenir ve değişiklik izleme ve envanter gibi diğer özellikler Şu anda kullanılamaz. 
+<sup>2</sup> bu bölgede yalnızca güncelleştirme yönetimi desteklenir ve değişiklik izleme ve envanter gibi diğer özellikler Şu anda kullanılamaz.
 
 ## <a name="unlink-a-workspace"></a>Çalışma alanının bağlantısını kaldır
 

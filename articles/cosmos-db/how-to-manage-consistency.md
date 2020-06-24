@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB tutarlılığı yönetme
 description: Azure portal, .NET SDK, Java SDK ve çeşitli diğer SDK 'Ları kullanarak Azure Cosmos DB tutarlılık düzeylerini yapılandırma ve yönetme hakkında bilgi edinin
-author: markjbrown
+author: anfeldma-ms
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 04/24/2020
-ms.author: mjbrown
-ms.openlocfilehash: 28266471fb1e440a45e412ee889e0706cfc2ce49
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.topic: how-to
+ms.date: 06/10/2020
+ms.author: anfeldma
+ms.openlocfilehash: e6f63807eeea32a7cce7e028dab5e16114bf9643
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82870082"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261571"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB'deki tutarlılık düzeylerini yönetme
 
@@ -27,7 +27,7 @@ Bu makalede, Azure Cosmos DB ' de tutarlılık düzeylerinin nasıl yönetilece�
 
 Varsayılan tutarlılık düzeyini görüntülemek veya değiştirmek için Azure portal oturum açın. Azure Cosmos hesabınızı bulun ve **varsayılan tutarlılık** bölmesini açın. Yeni varsayılan olarak istediğiniz tutarlılık düzeyini seçin ve ardından **Kaydet**' i seçin. Azure portal Ayrıca, müzik notlarıyla farklı tutarlılık seviyelerinin bir görselleştirmesi sağlar. 
 
-![Azure portal tutarlılık menüsü](./media/how-to-manage-consistency/consistency-settings.png)
+:::image type="content" source="./media/how-to-manage-consistency/consistency-settings.png" alt-text="Azure portal tutarlılık menüsü":::
 
 # <a name="cli"></a>[CLI](#tab/cli)
 
@@ -92,9 +92,27 @@ var response = await client.GetContainer(databaseName, containerName)
 ```
 ---
 
-### <a name="java-sdk"></a><a id="override-default-consistency-java"></a>Java SDK
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK 'Sı
 
-# <a name="java-async-sdk"></a>[Java zaman uyumsuz SDK](#tab/javaasync)
+# <a name="async"></a>[Eş](#tab/api-async)
+
+   Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConsistencyAsync)]
+
+# <a name="sync"></a>[Eşitle](#tab/api-sync)
+
+   Java SDK v4 (Maven com. Azure:: Azure-Cosmos) eşitleme API 'SI
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ManageConsistencySync)]
+
+--- 
+
+### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a>Java v2 SDK 'Ları
+
+# <a name="async"></a>[Eş](#tab/api-async)
+
+Async Java v2 SDK (Maven com. Microsoft. Azure:: Azure-cosmosdb)
 
 ```java
 // Override consistency at the client level
@@ -108,7 +126,9 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-# <a name="java-sync-sdk"></a>[Java eşitleme SDK 'Sı](#tab/javasync)
+# <a name="sync"></a>[Eşitle](#tab/api-sync)
+
+Java v2 SDK 'sını Eşitle (Maven com. Microsoft. Azure:: Azure-DocumentDB)
 
 ```java
 // Override consistency at the client level
@@ -173,9 +193,27 @@ ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(sa
 ```
 ---
 
-### <a name="java-sdk"></a><a id="utilize-session-tokens-java"></a>Java SDK
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK 'Sı
 
-# <a name="java-async-sdk"></a>[Java zaman uyumsuz SDK](#tab/javaasync)
+# <a name="async"></a>[Eş](#tab/api-async)
+
+   Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConsistencySessionAsync)]
+
+# <a name="sync"></a>[Eşitle](#tab/api-sync)
+
+   Java SDK v4 (Maven com. Azure:: Azure-Cosmos) eşitleme API 'SI
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ManageConsistencySessionSync)]
+
+--- 
+
+### <a name="java-v2-sdks"></a><a id="utilize-session-tokens-javav2"></a>Java v2 SDK 'Ları
+
+# <a name="async"></a>[Eş](#tab/api-async)
+
+Async Java v2 SDK (Maven com. Microsoft. Azure:: Azure-cosmosdb)
 
 ```java
 // Get session token from response
@@ -197,7 +235,9 @@ requestOptions.setSessionToken(sessionToken);
 Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
 ```
 
-# <a name="java-sync-sdk"></a>[Java eşitleme SDK 'Sı](#tab/javasync)
+# <a name="sync"></a>[Eşitle](#tab/api-sync)
+
+Java v2 SDK 'sını Eşitle (Maven com. Microsoft. Azure:: Azure-DocumentDB)
 
 ```java
 // Get session token from response
@@ -240,7 +280,7 @@ item = client.ReadItem(doc_link, options)
 
 Ne kadar nihai tutarlılık? Ortalama durumda, sürüm geçmişi ve saatine göre, eskime sınırları sunarız. [**Olasılığa göre sınırlı stalet (PBS)**](https://pbs.cs.berkeley.edu/) ölçümü, eskime olasılığını ölçmenizi ve bunu bir ölçüm olarak gösterir. PBS ölçüsünü görüntülemek için Azure portal Azure Cosmos hesabınıza gidin. **Ölçümler** bölmesini açın ve **tutarlılık** sekmesini seçin. **iş yükünüze göre sağlam tutarlı okuma olasılığı**adlı GRAFIĞE göz atın (bkz. PBS).
 
-![Azure portal PBS grafiği](./media/how-to-manage-consistency/pbs-metric.png)
+:::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Azure portal PBS grafiği":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

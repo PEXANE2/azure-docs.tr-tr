@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 95345ba864d498190186e1a366c8551be97c33f5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 47c504d9359779294c4690059d1958614d863e58
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299727"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260891"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure Izleyici 'ye güvenli bir şekilde bağlamak için Azure özel bağlantısı 'nı kullanın
 
@@ -129,7 +129,7 @@ AMPLS 'yi önce özel uç noktalara, sonra da Azure Izleyici kaynaklarına veya 
  
    d.    Doğrulama geçişine izin verin. 
  
-   e.    **Oluştur**' a tıklayın. 
+   e.    **Oluştur**'a tıklayın. 
 
     ![Create Private Endpoint2 Select ekran görüntüsü](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
@@ -229,6 +229,10 @@ Log Analytics aracısının çözüm paketlerini indirmesini sağlamak için, uy
 |Azure Genel     | scadvisor.blob.core.windows.net         | 443 | Giden
 |Azure Kamu | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Giden
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Giden
+
+### <a name="browser-dns-settings"></a>Tarayıcı DNS ayarları
+
+Azure Izleyici kaynaklarınıza özel bir bağlantı üzerinden bağlanıyorsanız, bu kaynağa giden trafik ağınızda yapılandırılan özel uç noktadan sonra gelmelidir. Özel uç noktayı etkinleştirmek için DNS ayarlarınızı [özel bir uç noktaya bağlanma](#connect-to-a-private-endpoint)bölümünde açıklandığı gibi güncelleştirin. Bazı tarayıcılar, sizin ayarladığınız kullanıcılar yerine kendi DNS ayarlarını kullanır. Tarayıcı, Azure Izleyici genel uç noktalarına bağlanmayı ve özel bağlantıyı tamamen atlamayı deneyebilir. Tarayıcıların ayarlarının eski DNS ayarlarını geçersiz kılmayacağını veya önbelleğe aldığını doğrulayın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

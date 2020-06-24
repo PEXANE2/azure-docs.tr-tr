@@ -3,15 +3,15 @@ title: Azure Cosmos DB içindeki saklı yordamları, Tetikleyicileri ve UDF 'Ler
 description: Saklı yordamları, Tetikleyicileri ve Kullanıcı tanımlı işlevleri Azure Cosmos DB nasıl tanımlayacağınızı öğrenin
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/07/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: tisande
-ms.openlocfilehash: 3c0ac8ac419b3cdd2b154974d3ccbcce6896e847
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: e9ebd8de956437273246d08821fc87838089a256
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982301"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262880"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Saklı yordamları, Tetikleyicileri ve Kullanıcı tanımlı işlevleri Azure Cosmos DB yazma
 
@@ -52,21 +52,42 @@ Saklı yordam kullanarak bir öğe oluşturduğunuzda, öğe Azure Cosmos kapsay
 
 Saklı yordam ayrıca açıklamayı ayarlamak için bir parametre içerir, bu da bir Boole değeridir. Parametresi true olarak ayarlandığında ve açıklama eksik olduğunda, saklı yordam bir özel durum oluşturur. Aksi takdirde, saklı yordamın geri kalanı çalışmaya devam eder.
 
-Aşağıdaki örnek saklı yordam, giriş olarak yeni bir Azure Cosmos öğesi alır, bunu Azure Cosmos kapsayıcısına ekler ve yeni oluşturulan öğenin KIMLIĞINI döndürür. Bu örnekte, [hızlı başlangıç .NET SQL API](create-sql-api-dotnet.md) 'sindeki ToDoList örneğini geliştirdik.
+Aşağıdaki örnek saklı yordam, giriş olarak yeni Azure Cosmos öğelerinin bir dizisini alır, bunu Azure Cosmos kapsayıcısına ekler ve ekli öğelerin sayısını döndürür. Bu örnekte, [hızlı başlangıç .NET SQL API](create-sql-api-dotnet.md) 'sindeki ToDoList örneğini geliştirdik.
 
 ```javascript
-function createToDoItem(itemToCreate) {
+function createToDoItems(items) {
+    var collection = getContext().getCollection();
+    var collectionLink = collection.getSelfLink();
+    var count = 0;
 
-    var context = getContext();
-    var container = context.getCollection();
+    if (!items) throw new Error("The array is undefined or null.");
 
-    var accepted = container.createDocument(container.getSelfLink(),
-        itemToCreate,
-        function (err, itemCreated) {
-            if (err) throw new Error('Error' + err.message);
-            context.getResponse().setBody(itemCreated.id)
-        });
-    if (!accepted) return;
+    var numItems = items.length;
+
+    if (numItems == 0) {
+        getContext().getResponse().setBody(0);
+        return;
+    }
+
+    tryCreate(items[count], callback);
+
+    function tryCreate(item, callback) {
+        var options = { disableAutomaticIdGeneration: false };
+
+        var isAccepted = collection.createDocument(collectionLink, item, options, callback);
+
+        if (!isAccepted) getContext().getResponse().setBody(count);
+    }
+
+    function callback(err, item, options) {
+        if (err) throw err;
+        count++;
+        if (count >= numItems) {
+            getContext().getResponse().setBody(count);
+        } else {
+            tryCreate(items[count], callback);
+        }
+    }
 }
 ```
 
@@ -155,7 +176,7 @@ function tradePlayers(playerId1, playerId2) {
 
 ### <a name="bounded-execution-within-stored-procedures"></a><a id="bounded-execution"></a>Saklı yordamlar içinde sınırlı yürütme
 
-Aşağıda, öğeleri bir Azure Cosmos kapsayıcısına toplu olarak içeri aktaran saklı yordamın bir örneği verilmiştir. Saklı yordam, ' den `createDocument`Boolean dönüş değerini denetleyerek sınırlı yürütmeyi işler ve sonra toplu işlerin ilerlemesini izlemek ve devam ettirmek için saklı yordamın her bir çağrısında yerleştirilen öğe sayısını kullanır.
+Aşağıda, öğeleri bir Azure Cosmos kapsayıcısına toplu olarak içeri aktaran saklı yordamın bir örneği verilmiştir. Saklı yordam, ' den Boolean dönüş değerini denetleyerek sınırlı yürütmeyi işler `createDocument` ve sonra toplu işlerin ilerlemesini izlemek ve devam ettirmek için saklı yordamın her bir çağrısında yerleştirilen öğe sayısını kullanır.
 
 ```javascript
 function bulkImport(items) {
@@ -262,7 +283,7 @@ function async_sample() {
 
 Azure Cosmos DB ön Tetikleyicileri ve Tetikleyicileri destekler. Ön Tetikleyiciler, bir veritabanı öğesi değiştirilmeden önce yürütülür ve bir veritabanı öğesi değiştirildikten sonra Tetikleyiciler yürütülür.
 
-### <a name="pre-triggers"></a><a id="pre-triggers"></a>Ön tetikleyiciler
+### <a name="pre-triggers"></a><a id="pre-triggers"></a>Ön Tetikleyiciler
 
 Aşağıdaki örnek, oluşturulmakta olan bir Azure Cosmos öğesinin özelliklerini doğrulamak için bir ön tetikleyicisinin nasıl kullanıldığını gösterir. Bu örnekte, yeni eklenen bir öğeye bir zaman damgası özelliği eklemek için [hızlı başlangıç .NET SQL API](create-sql-api-dotnet.md)'sindeki ToDoList örneğini geliştirdik.
 
@@ -287,11 +308,11 @@ function validateToDoItemTimestamp() {
 
 Ön tetikleyicilerin hiçbir giriş parametresi olamaz. Tetikleyicide istek nesnesi, işlemle ilişkili istek iletisini işlemek için kullanılır. Önceki örnekte, ön tetikleyici bir Azure Cosmos öğesi oluştururken çalıştırılır ve istek iletisi gövdesi JSON biçiminde oluşturulacak öğeyi içerir.
 
-Tetikleyiciler kaydedildikten sonra, birlikte çalışacağı işlemleri belirtebilirsiniz. Bu tetikleyici, bir `TriggerOperation` değeri ile oluşturulmalıdır `TriggerOperation.Create`, bu da tetikleyiciyi aşağıdaki kodda gösterildiği gibi değiştirme işleminde kullanılması anlamına gelir.
+Tetikleyiciler kaydedildikten sonra, birlikte çalışacağı işlemleri belirtebilirsiniz. Bu tetikleyici, bir değeri ile oluşturulmalıdır `TriggerOperation` , bu da `TriggerOperation.Create` tetikleyiciyi aşağıdaki kodda gösterildiği gibi değiştirme işleminde kullanılması anlamına gelir.
 
 Ön tetikleyiciyi kaydetme ve çağırma örnekleri için bkz. [Tetikleyiciler](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) ve [Tetikleyiciler sonrası](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) makaleler. 
 
-### <a name="post-triggers"></a><a id="post-triggers"></a>Son tetikleyiciler
+### <a name="post-triggers"></a><a id="post-triggers"></a>Tetikleyiciler sonrası
 
 Aşağıdaki örnek, bir tetikleme sonrası göstermektedir. Bu tetikleyici, meta veri öğesi için sorgular ve yeni oluşturulan öğe hakkındaki ayrıntılarla günceller.
 
@@ -366,7 +387,7 @@ Kullanıcı tanımlı bir işlevi kaydetme ve kullanma örnekleri için, bkz. [A
 
 ## <a name="logging"></a>Günlüğe Kaydetme 
 
-Saklı yordam, Tetikleyiciler veya Kullanıcı tanımlı işlevleri kullanırken, `console.log()` komutu kullanarak adımları günlüğe kaydedebilirsiniz. Bu komut, aşağıdaki örnekte gösterildiği gibi true olarak `EnableScriptLogging` ayarlandığında, hata ayıklama için bir dize odaklanacaktır:
+Saklı yordam, Tetikleyiciler veya Kullanıcı tanımlı işlevleri kullanırken, komutu kullanarak adımları günlüğe kaydedebilirsiniz `console.log()` . Bu komut, `EnableScriptLogging` Aşağıdaki örnekte gösterildiği gibi true olarak ayarlandığında, hata ayıklama için bir dize odaklanacaktır:
 
 ```javascript
 var response = await client.ExecuteStoredProcedureAsync(

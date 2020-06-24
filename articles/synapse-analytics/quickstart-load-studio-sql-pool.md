@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 96e79fdfeed5b56a4e0a33229f419f439b20b04c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4ae13dc51b4621dc3d8be39049dcade87c105cbc
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124537"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262625"
 ---
 # <a name="bulk-loading-with-synapse-sql"></a>SYNAPSE SQL ile toplu yükleme
 
@@ -28,7 +28,7 @@ Artık, SYNAPSE Studio içindeki aşağıdaki alanlara basit bir sağ tıklama i
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- ADLS 2. hesaba en azından Depolama Blobu veri katılımcısı RBAC rolüyle çalışma alanına erişiminizin olması gerekir.
+- Bu sihirbaz, authentcation için AAD geçişli geçiş kullanan bir COPY ifadesini oluşturur. AAD kullanıcılarınızın, ADLS 2. hesaba en azından Depolama Blobu veri katılımcısı RBAC rolüyle çalışma alanına [erişimi olmalıdır](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples#d-azure-active-directory-authentication-aad) .
 
 - Uygulamasına yüklenecek yeni bir tablo oluşturuyorsanız COPY ifadesini ve Create Table izinlerini [kullanmak için gerekli izinlere](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#permissions) sahip olmanız gerekir.
 

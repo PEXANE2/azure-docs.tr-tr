@@ -8,17 +8,17 @@ manager: dcscontentpm
 ms.custom: seodoc18
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: b5b2d13c727cd0183bb14341767ee2dee89eb9f8
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 2211747d274282429ed24c7b16ce64230a0674ea
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84604355"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808466"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer sorunlarını giderme
 
@@ -73,8 +73,8 @@ Yukarıdaki tüm nedenler doğru şekilde doğrulanıp çözümlenirse ve arka u
 
 **Doğrulama ve çözümleme**
 
-* Araştırma bağlantı noktası yanıtını sınamak için sanal ağ içindeki diğer VM 'lerden birinden **Psping** kullanın (örnek: .\psping.exe-t 10.0.0.4:3389) ve sonuçları kaydedin. 
-* Araştırma bağlantı noktası yanıtını sınamak için VNet içindeki diğer VM 'lerden birinden **tcpın** kullanın (örnek: .\tcping.exe 10.0.0.4 3389) ve sonuçları kaydedin. 
+* Araştırma bağlantı noktası yanıtını test etmek için VNet içindeki diğer VM 'lerden birinden **Psping** kullanın (örnek: .\psping.exe-t 10.0.0.4:3389) ve sonuçları kaydedin. 
+* Araştırma bağlantı noktası yanıtını sınamak için VNet içindeki diğer VM 'lerden birinden **Tcping** kullanın (örnek: .\tcping.exe 10.0.0.4 3389) ve sonuçları kaydedin. 
 * Bu ping testlerinde yanıt alınmıyorsa,
     - Hedef arka uç havuzu VM 'sinde ve aynı VNet 'ten başka bir test sanal makinesinde eşzamanlı bir Netsh izlemesi çalıştırın. Şimdi bir süre için bir yük testi çalıştırın, bazı ağ izlemelerini toplayın ve ardından testi durdurun. 
     - Ağ yakalamayı çözümleyin ve ping sorgusuyla ilgili hem gelen hem de giden paketlerin olup olmadığını görün. 

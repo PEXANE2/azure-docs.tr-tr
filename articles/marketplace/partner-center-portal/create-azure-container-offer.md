@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 538baee092ea6e11469f7d0331cc1b89eaf9a161
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: cd0c8961cff15385249222986e5fb90ee75e3559
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672723"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887335"
 ---
 # <a name="create-an-azure-container-offer"></a>Azure Container teklifi oluşturma
 
@@ -48,7 +48,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 **Teklif genel bakış** sayfasında, bu teklifi yayımlamak için gereken adımların görsel bir gösterimi gösterilir (hem tamamlandı hem de yakında) ve her adımın tamamlanması gereken süre.
 
-Bu sayfa, teklifin geçerli durumuna bağlı olarak farklı bağlantıları gösterir. Örnek:
+Bu sayfa, teklifin geçerli durumuna bağlı olarak farklı bağlantıları gösterir. Örneğin:
 
 - Teklif bir taslak- [silme taslağı tekliftir](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Teklif canlı ise, [teklifi satmaya](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
@@ -276,20 +276,20 @@ Plana genel bakışta sunulan eylemler planınızın geçerli durumuna bağlı o
 
 Bu sekme, planın kullanılabildiği bulutu seçmenize olanak sağlar. Bu sekmedeki yanıtlarınız, diğer sekmelerde hangi alanların görüntülendiğini etkiler.
 
-#### <a name="cloud-availability"></a>Bulut kullanılabilirliği
+#### <a name="azure-regions"></a>Azure bölgeleri
 
 Azure Container teklifleri için tüm planlar otomatik olarak **Azure genel**'de kullanıma sunulmuştur.  Planınız, ticari Market kullanan tüm genel Azure bölgelerinde bulunan müşteriler tarafından kullanılabilir. Ayrıntılar için bkz. [coğrafi kullanılabilirlik ve para birimi desteği](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
 
-Çözümünüzü burada görünmesini sağlamak için [**Azure Kamu Bulutu**](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) seçeneğini belirleyin. Bu, ABD Federal, eyalet ve yerel ya da üç devlet kurumlarının yanı sıra onlara hizmeti sunmaya uygun iş ortakları için denetimli erişime sahip bir kamu topluluk bulutuna sahiptir. Yayımcı olarak, bu bulut topluluğu için tüm uyumluluk denetimleri, güvenlik ölçüleri ve en iyi uygulamalardan siz sorumlusunuz. Azure Kamu fiziksel olarak yalıtılmış veri merkezleri ve ağlar (yalnızca ABD 'de bulunur) kullanır.
+Çözümünüzü burada görünmesini sağlamak için [**Azure Kamu**](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) seçeneğini belirleyin. Bu, ABD Federal, eyalet ve yerel ya da üç devlet kurumlarının yanı sıra onlara hizmeti sunmaya uygun iş ortakları için denetimli erişime sahip bir kamu topluluk bulutuna sahiptir. Yayımcı olarak, bu bulut topluluğu için tüm uyumluluk denetimleri, güvenlik ölçüleri ve en iyi uygulamalardan siz sorumlusunuz. Azure Kamu fiziksel olarak yalıtılmış veri merkezleri ve ağlar (yalnızca ABD 'de bulunur) kullanır.
 
 Azure Kamu 'da [yayımlamadan](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) önce, sonuçlar farklı olabileceğinden çözümünüzü test edin ve onaylayın. Çözümünüzü oluşturmak ve test etmek için [Microsoft Azure Kamu deneme](https://azure.microsoft.com/global-infrastructure/government/request/)sürümünden bir deneme hesabı isteyin.
 
 > [!NOTE]
-> Planınız yayımlandıktan ve belirli bir bulutta kullanılabilir olduktan sonra, bu bulutu kaldıramazsınız.
+> Planınız yayımlandıktan ve belirli bir bölgede kullanılabilir olduktan sonra bu bölgeyi kaldıramazsınız.
 
-#### <a name="azure-government-cloud-certifications"></a>Azure Kamu bulut sertifikaları
+#### <a name="azure-government-certifications"></a>Azure Kamu sertifikaları
 
-Bu seçenek, yalnızca **Azure Kamu Bulutu** 'nın **bulut kullanılabilirliği**altında seçilmesi durumunda görülebilir.
+Bu seçenek yalnızca, **bulut kullanılabilirliği**altında **Azure Kamu** seçilirse görülebilir.
 
 Azure Kamu Hizmetleri, belirli kamu düzenlemelerine ve gereksinimlerine tabi olan verileri işler. Örneğin, Fedrampa, NıST 800,171 (DIB), ıTAR, ıRS 1075, DoD L4 ve CJıS.
 
@@ -331,7 +331,7 @@ Müşterilerin Market 'te arayabilmesi, gözatmasını veya satın almasını sa
 
 Bu alan şu durumlarda kullanılır:
 
-- Teklif, başka bir uygulama başvurulduğunda dolaylı olarak kullanılmak üzere tasarlanmıştır.
+- Teklif, başka bir uygulama üzerinden başvuruluyorsa dolaylı olarak kullanılmak üzere tasarlanmıştır.
 - Teklif ayrı olarak satın alınmamalıdır.
 - Plan ilk test için kullanıldı ve artık ilgili değil.
 - Plan, geçici veya dönemsel teklifler için kullanıldı ve artık sunulmamalıdır.

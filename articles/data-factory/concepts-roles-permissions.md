@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 3955d3b9370a1cd2ee88c27e42b107f5ae0f87c2
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 923b3fbb617f46ba0551f6b21c384331559da2f9
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833566"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263267"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory için roller ve izinler
 
@@ -82,9 +82,9 @@ Bazen farklı veri fabrikası kullanıcıları için farklı erişim düzeyleri 
   1. Yerleşik **katkıda** bulunan rolünü Veri Fabrikası düzeyinde atayın.
   2. **Microsoft. resources/dağıtımlar/** izniyle özel bir rol oluşturun. Bu özel rolü, kaynak grubu düzeyinde kullanıcıya atayın.
 
-- Kullanıcının yalnızca bağlı bir hizmette bağlantıyı test edebilmesini sağlar
+- Bir kullanıcının bağlantılı hizmette bağlantıyı test edebilmesine veya bir veri kümesindeki verileri önizlemede olmasına izin ver
 
-    Şu eylemler için izinlerle özel bir rol oluşturun: **Microsoft. DataFactory/Factory/getFeatureValue/Read** ve **Microsoft. DataFactory/Factory/getDataPlaneAccess/Read**. Bu özel rolü kullanıcı için Data Factory kaynağına atayın.
+    Şu eylemler için izinlere sahip özel bir rol oluşturun: **Microsoft. DataFactory/Factory/getFeatureValue/Read** ve **Microsoft. DataFactory/Factory/getDataPlaneAccess/Action**. Bu özel rolü kullanıcı için Data Factory kaynağına atayın.
 
 - Bir kullanıcının PowerShell veya SDK 'dan bir veri fabrikasını güncelleştirmesine izin verin, ancak Azure portal.
 

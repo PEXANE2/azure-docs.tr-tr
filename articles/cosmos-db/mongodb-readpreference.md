@@ -6,14 +6,14 @@ ms.author: sivethe
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2019
-ms.openlocfilehash: 579767a0d535605a2316c35bd413a75474b5a3de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: afdbd1c44170344be6edee8b8b2ee38c9853f81c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80409998"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263084"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB MongoDB için API 'sini kullanarak genel olarak okuma dağıtımı
 
@@ -51,7 +51,7 @@ cd mean
 npm install
 node index.js
 ```
-Uygulama bir MongoDB kaynağına bağlanmaya çalışır ve bağlantı dizesi geçersiz olduğundan başarısız olur. Bağlantı dizesini `url`GÜNCELLEŞTIRMEK için Benioku dosyasındaki adımları izleyin. Ayrıca, `readFromRegion` öğesini Cosmos hesabınızdaki bir okuma bölgesine güncelleştirin. Aşağıdaki yönergeler NodeJS örneğinden alınır:
+Uygulama bir MongoDB kaynağına bağlanmaya çalışır ve bağlantı dizesi geçersiz olduğundan başarısız olur. Bağlantı dizesini güncelleştirmek için BENIOKU dosyasındaki adımları izleyin `url` . Ayrıca, öğesini `readFromRegion` Cosmos hesabınızdaki bir okuma bölgesine güncelleştirin. Aşağıdaki yönergeler NodeJS örneğinden alınır:
 
 ```
 * Next, substitute the `url`, `readFromRegion` in App.Config with your Cosmos account's values. 
@@ -110,7 +110,7 @@ Benzer şekilde, aşağıdaki kod parçacığında NodeJS içinde SECONDARY_PREF
   });
 ```
 
-Okuma tercihi, bağlantı dizesi URI 'SI seçeneklerinde parametre `readPreference` olarak geçirerek de ayarlanabilir:
+Okuma tercihi, `readPreference` bağlantı dizesi URI 'si seçeneklerinde parametre olarak geçirerek de ayarlanabilir:
 
 ```javascript
 const MongoClient = require('mongodb').MongoClient;
@@ -136,7 +136,7 @@ MongoClient.connect(url, function(err, client) {
 
 ## <a name="read-using-tags"></a>Etiketleri kullanarak okuma
 
-MongoDB protokolü, okuma tercih moduna ek olarak, okuma işlemlerini yönlendirmek için etiketlerin kullanılmasına izin verir. MongoDB için Cosmos DB API 'sinde, `region` etiket varsayılan olarak `isMaster` yanıtın bir parçası olarak dahil edilir:
+MongoDB protokolü, okuma tercih moduna ek olarak, okuma işlemlerini yönlendirmek için etiketlerin kullanılmasına izin verir. MongoDB için Cosmos DB API 'sinde, `region` etiket varsayılan olarak yanıtın bir parçası olarak dahil edilir `isMaster` :
 
 ```json
 "tags": {

@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: aff2dadee365fcdc7e14070714aa1d2cbba901ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c56564ee6f07c5d208ea5d3089a2c96fd8bbc33
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476432"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888690"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>CDN dosya sıkıştırma sorunlarını giderme
 Bu makale, [CDN dosya sıkıştırması](cdn-improve-performance.md)ile ilgili sorunları gidermenize yardımcı olur.
@@ -30,7 +30,7 @@ Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [
 Uç noktanız için sıkıştırma etkin, ancak dosyalar sıkıştırılmamış olarak döndürülüyor.
 
 > [!TIP]
-> Dosyalarınızın sıkıştırılmış döndürülüp döndürülmediğini denetlemek için [Fiddler](https://www.telerik.com/fiddler) veya tarayıcınızın [Geliştirici Araçları](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)gibi bir araç kullanmanız gerekir.  Önbelleğe alınmış CDN içeriğinizdeki geri döndürülen HTTP yanıt üstbilgilerini denetleyin.  **Gzip**, **bzip2**veya **söndür**değeri `Content-Encoding` ile adlandırılmış bir üst bilgi varsa, içeriğiniz sıkıştırılır.
+> Dosyalarınızın sıkıştırılmış döndürülüp döndürülmediğini denetlemek için [Fiddler](https://www.telerik.com/fiddler) veya tarayıcınızın [Geliştirici Araçları](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)gibi bir araç kullanmanız gerekir.  Önbelleğe alınmış CDN içeriğinizdeki geri döndürülen HTTP yanıt üstbilgilerini denetleyin.  `Content-Encoding` **Gzip**, **bzip2**veya **söndür**değeri ile adlandırılmış bir üst bilgi varsa, içeriğiniz sıkıştırılır.
 > 
 > ![Content-Encoding üst bilgisi](./media/cdn-troubleshoot-compression/cdn-content-header.png)
 > 
@@ -53,7 +53,7 @@ Aşağıdakiler de dahil olmak üzere birkaç olası nedeni vardır:
 ### <a name="verify-the-request"></a>İsteği doğrulama
 İlk olarak, istek üzerinde hızlı bir göz atın.  Gerçekleştirilen istekleri görüntülemek için tarayıcınızın [geliştirici araçlarını](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) kullanabilirsiniz.
 
-* İsteğin noktanıza değil, uç nokta URL `<endpointname>.azureedge.net`'nize gönderildiğini doğrulayın.
+* İsteğin noktanıza değil, uç nokta URL 'nize gönderildiğini doğrulayın `<endpointname>.azureedge.net` .
 * İsteğin bir **Accept-Encoding** üst bilgisi içerdiğini ve bu üstbilginin değeri **gzip**, **söndür**veya **bzip2**içerdiğini doğrulayın.
 
 > [!NOTE]

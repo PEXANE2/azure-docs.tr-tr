@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 5de9fe7c81059c56c99a55ca066e186cbf83c50f
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e1b260b1249af25ac5a8364798c532dcb3885cb9
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796986"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887871"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>Azure CLı ile özel görüntü sürümü kullanarak ölçek kümesi oluşturma
 
-Paylaşılan görüntü galerisinde depolanan [özelleştirilmiş görüntü sürümünden](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) bir ölçek kümesi oluşturun. Genelleştirilmiş görüntü sürümünü kullanarak bir ölçek kümesi oluşturmak istiyorsanız, bkz. [Genelleştirilmiş görüntü sürümünden VM oluşturma](instance-generalized-image-version-cli.md).
+Paylaşılan görüntü galerisinde depolanan [özelleştirilmiş görüntü sürümünden](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) bir ölçek kümesi oluşturun. Genelleştirilmiş görüntü sürümünü kullanarak bir ölçek kümesi oluşturmak istiyorsanız, bkz. [Genelleştirilmiş görüntüden ölçek kümesi oluşturma](instance-generalized-image-version-cli.md).
 
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.4.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
@@ -36,9 +36,9 @@ az sig image-definition list \
    --output tsv
 ```
 
-Görüntünün özelleşmiş bir görüntü olduğunu [`az vmss create`](/cli/azure/vmss#az-vmss-create) göstermek için `--specialized` parametresini kullanarak bir ölçek kümesi oluşturun.
+[`az vmss create`](/cli/azure/vmss#az-vmss-create) `--specialized` Görüntünün özelleşmiş bir görüntü olduğunu göstermek için parametresini kullanarak bir ölçek kümesi oluşturun.
 
-Kullanılabilir görüntünün en son sürümünden ölçek `--image` kümesi örnekleri oluşturmak için görüntü tanımı kimliği ' ni kullanın. Ayrıca, için `--image`görüntü sürümü kimliğini sağlayarak belirli bir sürümden ölçek kümesi örnekleri de oluşturabilirsiniz. Belirli bir görüntü sürümü kullanmanın, belirli görüntü sürümü bölgede silindiği ya da kaldırıldığı için kullanılabilir durumda olmaması durumunda Otomasyon başarısız olduğunu unutmayın. Belirli bir görüntü sürümü gerekli değilse, yeni VM 'nizi oluşturmak için görüntü tanımı KIMLIĞI kullanmanızı öneririz.
+`--image`Kullanılabilir görüntünün en son sürümünden ölçek kümesi örnekleri oluşturmak için görüntü tanımı kimliği ' ni kullanın. Ayrıca, için görüntü sürümü KIMLIĞINI sağlayarak belirli bir sürümden ölçek kümesi örnekleri de oluşturabilirsiniz `--image` . Belirli bir görüntü sürümü kullanmanın, belirli görüntü sürümü bölgede silindiği ya da kaldırıldığı için kullanılabilir durumda olmaması durumunda Otomasyon başarısız olduğunu unutmayın. Belirli bir görüntü sürümü gerekli değilse, yeni VM 'nizi oluşturmak için görüntü tanımı KIMLIĞI kullanmanızı öneririz.
 
 Bu örnekte, *Myımagedefinition* resminin en son sürümünden örnekler oluşturacağız.
 

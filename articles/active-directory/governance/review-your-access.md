@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 04/30/2020
+ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0de10534cb00c66ad914b2c64ac2547b0e3fe03b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 33d946c47a17bb537c7644937547ad479b4637e5
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611140"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85077926"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD erişim incelemeleriyle ilgili grupları veya uygulamaları kendiniz için erişimi gözden geçirin
 
@@ -33,7 +33,7 @@ Bu makalede, bir grup veya uygulamaya kendi erişiminizi nasıl gözden geçibil
 Erişim gözden geçirmesi gerçekleştirmeye yönelik ilk adım, erişim incelemesini bulup açmak.
 
 >[!IMPORTANT]
-> E-posta alınırken gecikmeler olabilir ve bu durum 24 saate kadar sürebilir. Tüm e azure-noreply@microsoft.com -postaları aldığınızdan emin olmak için beyaz liste.
+> E-posta alınırken gecikmeler olabilir ve bu durum 24 saate kadar sürebilir. azure-noreply@microsoft.comTüm e-postaları aldığınızdan emin olmak için beyaz liste.
 
 1. Microsoft 'un, erişimi incelemenizi isteyen bir e-posta bulun. Bir gruba erişiminizi gözden geçirmek için örnek bir e-posta aşağıda verilmiştir.
 
@@ -43,7 +43,7 @@ Erişim gözden geçirmesi gerçekleştirmeye yönelik ilk adım, erişim incele
 
 E-postanız yoksa, bekleyen erişim incelemelerinizi aşağıdaki adımları izleyerek bulabilirsiniz.
 
-1. Konumundaki [https://myapps.microsoft.com](https://myapps.microsoft.com)uygulamalarım portalında oturum açın.
+1. Konumundaki uygulamalarım portalında oturum açın [https://myapps.microsoft.com](https://myapps.microsoft.com) .
 
     ![İzinleriniz olan uygulamaları listeleme uygulamalarım portalı](./media/review-your-access/myapps-access-panel.png)
 
@@ -88,7 +88,7 @@ Yeni deneyimi erişimimde güncelleştirilmiş Kullanıcı arabirimiyle birkaç 
 
 ### <a name="my-apps-portal"></a>Uygulamalarım portalı
 
-1. Konumundaki [https://myapps.microsoft.com](https://myapps.microsoft.com)uygulamalarım portalında oturum açın.
+1. Konumundaki uygulamalarım portalında oturum açın [https://myapps.microsoft.com](https://myapps.microsoft.com) .
 
     ![İzinleriniz olan uygulamaları listeleme uygulamalarım portalı](./media/review-your-access/myapps-access-panel.png)
 
@@ -106,7 +106,7 @@ Yeni deneyimi erişimimde güncelleştirilmiş Kullanıcı arabirimiyle birkaç 
 ### <a name="email"></a>E-posta
 
 >[!IMPORTANT]
-> E-posta alınırken gecikmeler olabilir ve bu durum 24 saate kadar sürebilir. Tüm e azure-noreply@microsoft.com -postaları aldığınızdan emin olmak için beyaz liste.
+> E-posta alınırken gecikmeler olabilir ve bu durum 24 saate kadar sürebilir. azure-noreply@microsoft.comTüm e-postaları aldığınızdan emin olmak için beyaz liste.
 
 1. Microsoft 'un, erişimi incelemenizi isteyen bir e-posta bulun. Aşağıda örnek bir e-posta iletisi görebilirsiniz:
 

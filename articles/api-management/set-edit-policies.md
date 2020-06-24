@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 2df57477ae5270405a1774b7a4f04ed185fea396
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 5670be6d4c45644ac8318702822c37ed82a81caa
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70071694"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205756"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Azure API Management ilkelerini ayarlama veya düzenleme
 
@@ -38,10 +38,10 @@ Bir ilkeyi ayarlamak veya düzenlemek için aşağıdaki adımları izleyin:
 4. Daha önce içeri aktardığınız API'lerden birini seçin.
 5. **Tasarım** sekmesini seçin.
 6. İlkeyi uygulamak istediğiniz bir işlem seçin. İlkeyi tüm işlemlere uygulamak istiyorsanız **tüm işlemler**' i seçin.
-7. **</>** **Gelen işlem** veya **giden işleme** bölümünde (kod düzenleyici) simgesini seçin.
+7. **</>** **Gelen Işlem** veya **giden işleme** bölümünde (kod düzenleyici) simgesini seçin.
 8. İstenen ilke kodunu uygun bloklarından birine yapıştırın.
 
-    ```XML
+    ```xml
     <policies>
         <inbound>
             <base />
@@ -69,7 +69,7 @@ Bir ilkeyi ayarlamak veya düzenlemek için aşağıdaki adımları izleyin:
 3. API kapsamı
 4. İşlem kapsamı
 
-İlkeler içindeki deyimler, varsa `base` öğesinin yerleşimine göre değerlendirilir. Genel ilkenin üst ilkesi yoktur ve `<base>` öğesinde öğesinin kullanılması etkisizdir.
+İlkeler içindeki deyimler, varsa öğesinin yerleşimine göre değerlendirilir `base` . Genel ilkenin üst ilkesi yoktur ve `<base>` öğesinde öğesinin kullanılması etkisizdir.
 
 İlke düzenleyicisinde geçerli kapsamdaki ilkeleri görmek için, **Seçili kapsam için etkin Ilkeyi yeniden hesapla**' ya tıklayın.
 

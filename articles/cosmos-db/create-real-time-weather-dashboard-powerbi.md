@@ -4,15 +4,15 @@ description: Azure Cosmos DB ve Azure Analysis Services kullanarak Power BI canl
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: aac89de936ae709ac825391eb0515e7f36a457a6
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: eda3ee3e9e170469ffb0b9b0e1d7dede181fe3f0
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465805"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262013"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Azure Cosmos DB ve Power BI kullanarak gerçek zamanlı pano oluşturma
 
@@ -53,11 +53,11 @@ Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset/local-
 
 1. **Azure Cosmos hesabını Power BI bağlama** -Power BI Desktop açın ve Azure Cosmos DB bağlayıcısını kullanarak doğru veritabanını ve kapsayıcıyı seçin.
 
-   ![Azure Cosmos DB Power BI bağlayıcısı](./media/create-real-time-weather-dashboard-powerbi/cosmosdb-powerbi-connector.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/cosmosdb-powerbi-connector.png" alt-text="Azure Cosmos DB Power BI bağlayıcısı":::
 
 1. **Artımlı yenilemeyi yapılandırma** -veri kümesi için artımlı yenilemeyi yapılandırmak üzere [Power BI ile artımlı yenileme](/power-bi/service-premium-incremental-refresh) makalesindeki adımları izleyin. **RangeStart** ve **rangeend** parametrelerini aşağıdaki ekran görüntüsünde gösterildiği gibi ekleyin:
 
-   ![Aralık parametrelerini Yapılandır](./media/create-real-time-weather-dashboard-powerbi/configure-range-parameters.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/configure-range-parameters.png" alt-text="Aralık parametrelerini Yapılandır":::
 
    Veri kümesinin metin biçiminde bir tarih sütunu olduğundan, **RangeStart** ve **rangeend** parametrelerinin aşağıdaki filtreyi kullanacak şekilde dönüştürülmesi gerekir. **Gelişmiş Düzenleyici** bölmesinde sorgunuzu değiştirin, satırları RangeStart ve rangeend parametrelerine göre filtrelemek için aşağıdaki metni ekleyin:
 
@@ -77,13 +77,13 @@ Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset/local-
 
 1. **Yenileme Ilkesini tanımlayın** -tablonun **bağlam** menüsündeki **artımlı yenileme** sekmesine giderek yenileme ilkesini tanımlayın. Yenileme ilkesini **her gün** yenilemek ve son ay verilerini depolamak için ayarlayın.
 
-   ![Yenileme ilkesini tanımla](./media/create-real-time-weather-dashboard-powerbi/define-refresh-policy.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/define-refresh-policy.png" alt-text="Yenileme ilkesini tanımla":::
 
    *D sorgusunun katlanacak şekilde onaylanamadığını*belirten uyarıyı yoksayın. Azure Cosmos DB Bağlayıcısı sorguları filtreler.
 
 1. **Verileri yükleme ve raporları oluşturma** -daha önce yüklediğiniz verileri kullanarak sıcaklık ve Korni raporlamak üzere grafikleri oluşturun.
 
-   ![Veri yükle ve rapor oluştur](./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="Veri yükle ve rapor oluştur":::
 
 1. **Raporu Power BI Premium 'A yayımlayın** -artımlı yenileme yalnızca Premium bir özellik olduğundan, Yayımla iletişim kutusu yalnızca Premium kapasitede bir çalışma alanının seçilmesine izin verir. İlk yenilemede geçmiş verilerin içeri aktarılması uzun sürebilir. Sonraki veri yenilemeleri, artımlı yenileme kullandığından çok daha hızlıdır.
 
@@ -100,19 +100,19 @@ Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset/local-
 
 1. **Visual Studio 'da yeni bir Analysis Services tablosal projesi oluşturma**  -   [SQL Server veri araçları (SSDT) yükleyip](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017) Visual Studio 'da bir Analysis Services tablosal projesi oluşturun.
 
-   ![Azure Analysis Services projesi oluştur](./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png" alt-text="Azure Analysis Services projesi oluştur":::
 
    **Tümleşik çalışma alanı** örneğini seçin ve uyumluluk düzeyini **SQL Server 2017/Azure Analysis Services olarak ayarlayın (1400)**
 
-   ![Azure Analysis Services tablolu model Tasarımcısı](./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png" alt-text="Azure Analysis Services tablolu model Tasarımcısı":::
 
 1. **Azure Cosmos DB veri kaynağını ekleyin** - **modeller** >  **veri kaynakları**  >  **Yeni veri kaynağı** ' na gidin ve aşağıdaki ekran görüntüsünde gösterildiği gibi Azure Cosmos DB veri kaynağını ekleyin:
 
-   ![Cosmos DB veri kaynağı Ekle](./media/create-real-time-weather-dashboard-powerbi/add-data-source.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="Cosmos DB veri kaynağı Ekle":::
 
    **Hesap URI 'si**, **veritabanı adı**ve **kapsayıcı adı**sağlayarak Azure Cosmos DB bağlanın. Artık Azure Cosmos kapsayıcısından alınan verileri Power BI olarak görebilirsiniz.
 
-   ![Azure Cosmos DB verilerini Önizle](./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="Azure Cosmos DB verilerini Önizle":::
 
 1. **Analysis Services modelini oluşturun** -sorgu düzenleyicisini açın, yüklenen veri kümesini iyileştirmek için gerekli işlemleri gerçekleştirin:
 
@@ -142,7 +142,7 @@ Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset/local-
 
 1. **Azure Analysis Partitions oluşturma** -veri kümesini bağımsız olarak ve farklı sıklıklardan yenilenebilen mantıksal bölümlere bölmek için Azure Analysis Services bölüm oluşturun. Bu örnekte, veri kümesini en son ayın verilerine ve diğer her şeye bölmek için iki bölüm oluşturursunuz.
 
-   ![Analysis Services bölümleri oluşturma](./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-partitions.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-partitions.png" alt-text="Analysis Services bölümleri oluşturma":::
 
    Azure Analysis Services içinde aşağıdaki iki bölümü oluşturun:
 
@@ -151,20 +151,19 @@ Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset/local-
 
 1. **Modeli Azure Analiz sunucusu dağıtma** -Azure Analysis Services projeye sağ tıklayıp **Dağıt**' ı seçin. Sunucu adını **dağıtım sunucusu Özellikler** bölmesine ekleyin.
 
-   ![Azure Analysis Services modeli dağıt](./media/create-real-time-weather-dashboard-powerbi/analysis-services-deploy-model.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-deploy-model.png" alt-text="Azure Analysis Services modeli dağıt":::
 
-1. **Bölüm yenilemelerini ve birleştirmeleri yapılandırma** -Azure Analysis Services bölümlerin bağımsız işlemesine izin verir. **En son ay** bölümünün en son verilerle sürekli güncelleştirilmesini istiyoruz çünkü yenileme aralığını 5 dakikaya ayarlayın. Geçmiş bölümünde verilerin yenilenmesi gerekli değildir. Ayrıca, en son ay bölümünü geçmiş bölüme birleştirmek ve yeni bir en son ay bölümü oluşturmak için bazı kodlar yazmanız gerekir.
-
+1. **Bölüm yenilemelerini ve birleştirmeleri yapılandırma** -Azure Analysis Services bölümlerin bağımsız işlemesine izin verir. **En son ay** bölümünün en son verilerle sürekli güncelleştirilmesini istiyoruz çünkü yenileme aralığını 5 dakikaya ayarlayın. [REST API](../analysis-services/analysis-services-async-refresh.md), [Azure Otomasyonu](../analysis-services/analysis-services-refresh-azure-automation.md)'Nu veya bir [mantıksal uygulama](../analysis-services/analysis-services-refresh-logic-app.md)ile verileri yenileyebilirsiniz. Geçmiş bölümünde verilerin yenilenmesi gerekli değildir. Ayrıca, en son ay bölümünü geçmiş bölüme birleştirmek ve yeni bir en son ay bölümü oluşturmak için bazı kodlar yazmanız gerekir.
 
 ## <a name="connect-power-bi-to-analysis-services"></a>Power BI Analysis Services bağlama
 
 1. **Azure Analysis Services veritabanı bağlayıcısını kullanarak Azure Analiz sunucusu bağlanma** - **canlı modu** seçin ve aşağıdaki ekran görüntüsünde gösterildiği gibi Azure Analysis Services örneğine bağlanın:
 
-   ![Azure Analysis Services veri al](./media/create-real-time-weather-dashboard-powerbi/analysis-services-get-data.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-get-data.png" alt-text="Azure Analysis Services veri al":::
 
 1. **Verileri yükleme ve rapor oluşturma** -daha önce yüklediğiniz verileri kullanarak sıcaklık ve mainfall hakkında rapor vermek için grafikler oluşturun. Canlı bağlantı oluşturduğunuz için sorgular, önceki adımda dağıttığınız Azure Analysis Services modelinde veriler üzerinde yürütülmelidir. Sıcaklık grafikleri, yeni veriler Azure Cosmos DB ' ye yüklendikten sonra beş dakika içinde güncelleştirilir.
 
-   ![Verileri yükleme ve rapor oluşturma](./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png)
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="Verileri yükleme ve rapor oluşturma":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
