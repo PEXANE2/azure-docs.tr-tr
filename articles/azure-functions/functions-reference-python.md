@@ -4,12 +4,12 @@ description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 1d9289b6304a9c9e93afeddd98b3a229dae91797
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 26da89628360783e4507c83c3aeaddfc2b0510b7
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660588"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730756"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -263,7 +263,7 @@ Günlüğe kaydetme hakkında daha fazla bilgi edinmek için bkz. [Azure Işlevl
 
 ## <a name="http-trigger-and-bindings"></a>HTTP tetikleyicisi ve bağlamaları
 
-HTTP tetikleyicisi, function. Jon dosyasında tanımlanmıştır. `name`Bağlamanın, işlevindeki adlandırılmış parametreyle eşleşmesi gerekir.
+HTTP tetikleyicisi dosyada function.jstanımlanmıştır. `name`Bağlamanın, işlevindeki adlandırılmış parametreyle eşleşmesi gerekir.
 Önceki örneklerde bir bağlama adı `req` kullanılır. Bu parametre bir [HttpRequest] nesnesidir ve bir [HttpResponse] nesnesi döndürülür.
 
 [HttpRequest] nesnesinden istek üst bilgilerini, sorgu parametrelerini, yol parametrelerini ve ileti gövdesini alabilirsiniz.
@@ -338,7 +338,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölç
 
 Yürütme sırasında bir işlevin çağırma bağlamını almak için, [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) bağımsız değişkenini imzasına ekleyin.
 
-Örnek:
+Örneğin:
 
 ```python
 import azure.functions
@@ -650,11 +650,11 @@ Python Worker Işlevleri için belirli bir kitaplık kümesi gerekir. İşlevler
 
 ### <a name="azure-functions-python-library"></a>Azure Işlevleri Python kitaplığı
 
-Her Python Worker güncelleştirmesi [Azure Işlevleri Python kitaplığı 'nın (Azure. Functions)](https://github.com/Azure/azure-functions-python-library)yeni bir sürümünü içerir. Çalışma zamanı kitaplığı sürümü Azure tarafından düzeltildi ve requirements.txt tarafından geçersiz kılınamaz. `azure-functions`requirements.txt giriş yalnızca, ve müşteri tanıma için geçerlidir.
+Her Python Worker güncelleştirmesi [Azure Işlevleri Python kitaplığı 'nın (Azure. Functions)](https://github.com/Azure/azure-functions-python-library)yeni bir sürümünü içerir. Bu yaklaşım, her güncelleştirme geriye dönük olarak uyumlu olduğundan, Python işlev uygulamalarınızın sürekli güncelleştirilmesini kolaylaştırır. Bu kitaplığın sürümlerinin bir listesi, [Azure-Functions PyPi](https://pypi.org/project/azure-functions/#history)'de bulunabilir.
 
-Bu kararı verme nedeni, Azure Işlevleri Python uygulamalarında sürekli güncelleştirme kolaylığı içindir. Her güncelleştirme geriye dönük olarak uyumlu olduğundan, Python kitaplığının güncelleştirilmesi müşterinin farkında olmalıdır. Kitaplık sürümünün bir listesi, [Azure-Functions PyPi](https://pypi.org/project/azure-functions/#history)'de bulunabilir.
+Çalışma zamanı kitaplığı sürümü Azure tarafından düzeltildi ve requirements.txt tarafından geçersiz kılınamaz. `azure-functions`requirements.txt giriş yalnızca, ve müşteri tanıma için geçerlidir. 
 
-Çalışma zamanında Python Işlevleri kitaplığının gerçek sürümünü aşağıdaki satırla izleyebilirsiniz:
+Çalışma zamanında Python Işlevleri kitaplığının gerçek sürümünü izlemek için aşağıdaki kodu kullanın:
 
 ```python
 getattr(azure.functions, '__version__', '< 1.2.1')
@@ -663,6 +663,7 @@ getattr(azure.functions, '__version__', '< 1.2.1')
 ### <a name="runtime-system-libraries"></a>Çalışma zamanı sistem kitaplıkları
 
 Python çalışan Docker görüntülerinde önceden yüklenmiş sistem kitaplıklarının listesi için lütfen aşağıdaki bağlantıları izleyin:
+
 |  İşlevler çalışma zamanı  | Deni sürümü | Python sürümleri |
 |------------|------------|------------|
 | Sürüm 2. x | Uzat  | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |

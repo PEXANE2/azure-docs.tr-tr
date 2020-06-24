@@ -9,33 +9,70 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/27/2020
+ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 3af18eb09fd9906a0caaebda0b786795400467f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 451615ae5a642260a596ee93dc27f04cfa4b644e
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78164938"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298166"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Uygulamaları Microsoft kimlik doğrulama kitaplığı 'na geçirme (MSAL)
 
-Hem Microsoft kimlik doğrulama kitaplığı (MSAL) hem de Azure AD kimlik doğrulama kitaplığı (ADAL), Azure AD varlıklarının kimliğini doğrulamak için kullanılır ve Azure AD 'nin belirteçleri ister. Bu aşamada, çoğu geliştirici Azure AD kimlik doğrulama kitaplığı (ADAL) kullanarak belirteçleri isteyerek Azure AD kimliklerinin (iş ve okul hesapları) kimliğini doğrulamak için Azure AD 'de geliştiriciler platformu (v 1.0) ile çalıştık. MSAL kullanma:
+Birçok geliştirici, etkin Active Directory Authentication Library (ADAL) kullanarak oluşturulmuş ve dağıtılmış uygulamalar vardır. Artık Azure AD varlıklarının kimlik doğrulaması ve yetkilendirmesi için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanmanızı öneririz.
 
-- Microsoft Identity platform uç noktasını kullandığından, daha geniş bir Microsoft kimliği kümesinin (Azure AD kimlikleri ve Microsoft hesapları ve sosyal ve yerel hesaplar Azure AD B2C aracılığıyla) kimlik doğrulaması yapabilirsiniz.
+ADAL yerine MSAL kullanarak:
+
+- Daha geniş bir kimlik kümesinin kimliğini doğrulayabilirsiniz:
+  - Azure AD kimlikleri
+  - Microsoft hesapları
+  - Azure AD B2C kullanarak sosyal ve yerel hesaplar
 - Kullanıcılarınız en iyi çoklu oturum açma deneyimini alacak.
-- Uygulamanız artımlı onayı etkinleştirebilir ve Koşullu erişimin desteklenmesi daha kolay olabilir.
-- Yeniliğin avantajlarından yararlanabilirsiniz.
+- Uygulamanız artımlı onayı etkinleştirebilir.
+- Koşullu erişimin desteklenmesi daha kolay.
+- Yeniliklerden faydalanabilirsiniz. Tüm Microsoft geliştirme çabaları artık MSAL 'e odaklandığından, ADAL içinde yeni bir özellik uygulanmaz.
 
-**Msal artık Microsoft Identity platformu ile kullanmak için önerilen kimlik doğrulama kitaplığıdır**. ADAL üzerinde yeni özellik uygulanmaz. Çabalar MSAL geliştirmeye odaklanılmıştır.
+**Msal, artık Microsoft Identity platformu ile kullanılmak üzere önerilen kimlik doğrulama kitaplığıdır**.
 
-Aşağıdaki makalelerde, MSAL ve ADAL kitaplıkları arasındaki farklar açıklanır ve MSAL 'e geçiş yapmanıza yardımcı olur:
-- [MSAL.NET'e geçirme](msal-net-migration.md)
-- [MSAL.js'ye geçirme](msal-compare-msal-js-and-adal-js.md)
+## <a name="migration-guidance"></a>Geçiş kılavuzu
+
+Aşağıdaki makaleler MSAL 'e geçiş yapmanıza yardımcı olabilir:
+
 - [MSAL.Android’e geçiş](migrate-android-adal-msal.md)
 - [MSAL.iOS / macOS’e Geçiş](migrate-objc-adal-msal.md)
+- [MSAL Java’ya geçiş](migrate-adal-msal-java.md)
+- [MSAL.js'ye geçirme](msal-compare-msal-js-and-adal-js.md)
+- [MSAL.NET'e geçirme](msal-net-migration.md)
 - [MSAL Python’a geçiş](migrate-python-adal-msal.md)
-- [Java için MSAL’ye geçiş](migrate-adal-msal-java.md)
 - [Aracıları kullanarak Xamarin uygulamalarını MSAL.NET’e geçirme](msal-net-migration-ios-broker.md)
+
+## <a name="frequently-asked-questions-faq"></a>Sık sorulan sorular (SSS)
+
+__S: ADAL kullanım dışı mı?__  
+C: Evet. 30 Haziran 2020 ' den itibaren, artık ADAL 'e yeni özellikler ekleyeceğiz. 30 Haziran 2022 ' e kadar ADAL 'e kritik güvenlik düzeltmeleri eklemeye devam edeceğiz.
+
+__S: Nasıl yaparım? uygulamalarımın ADAL kullandığını öğrensin mi?__  
+Y: uygulamanın kaynak koduna sahipseniz, uygulamanın hangi kitaplığı kullandığını ve MSAL 'e nasıl geçireceğinizi belirlemenize yardımcı olması için yukarıdaki geçiş kılavuzlarıyla başvurabilirsiniz. Uygulamanızın kaynak koduna erişiminiz yoksa, kayıtlı uygulamalarınızın ve her uygulamanın kullandığı kitaplığın bir listesini almak için [bir destek isteği açabilirsiniz](developer-support-help-options.md#open-a-support-request) .
+
+__S: var olan ADAL uygulamalarım çalışmaya devam edecek mi?__ Y: mevcut uygulamalarınız değişiklik yapılmadan çalışmaya devam edecektir. 30 Haziran 2022 ' den fazla tutmaya planlandıysanız, bunları güvende tutmak için MSAL olarak güncelleştirmeyi göz önünde bulundurmanız gerekir, ancak MSAL 'e geçiş, mevcut işlevselliği korumak için gerekli değildir.
+
+__S: neden MSAL 'e taşınmalıyım?__  
+Y: MSAL artımlı onay, çoklu oturum açma ve belirteç önbelleği yönetimi dahil olmak üzere ADAL içinde olmayan yeni özellikler içerir. Ayrıca, ADAL 'ın aksine MSAL, 30 Haziran 2022 ' den sonraki güvenlik düzeltme eklerini almaya devam edecektir. [Daha fazla bilgi edinin](msal-overview.md).
+
+__S: uygulamalarımı ADAL 'ten MSAL 'ye taşımaya yardımcı olacak bir araç serbest bıraksın mı?__  
+C: Hayır. Kitaplıklar arasındaki farklılıklar, başka bir şekilde MSAL iyileştirmek için harcanacak olan aracı geliştirme ve bakım için ayrılmış kaynaklar gerektirir. Ancak, uygulamanızda gerekli değişiklikleri yapmanıza yardımcı olmak için önceki geçiş kılavuzu kümesini sağlıyoruz.
+
+__S: MSAL nasıl çalışır? AD FS?__  
+Y: MSAL.NET AD FS 2019 ' de kimlik doğrulaması yapmak için belirli senaryoları destekler. Uygulamanızın AD FS daha önceki bir sürümünden belirteç edinmesi gerekiyorsa, ADAL üzerinde kalabilmelisiniz. [Daha fazla bilgi edinin](msal-net-adfs-support.md).
+
+__S: uygulamamı geçirirken yardım almak Nasıl yaparım??__  
+A: Bu makalenin [Geçiş Kılavuzu](#migration-guidance) bölümüne bakın. Uygulamanızın platformu için kılavuzu okuduktan sonra ek sorularınız varsa, etiketle birlikte Stack Overflow gönderebilir `[adal-deprecation]` veya kitaplığın GitHub deposunda bir sorun açabilirsiniz. Her kitaplığın deposunun bağlantıları için MSAL genel bakış makalesinin [Diller ve çerçeveler](msal-overview.md#languages-and-frameworks) bölümüne bakın.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Uygulamalarınızı Microsoft kimlik doğrulama kitaplığı ve Microsoft Graph API kullanmak üzere güncelleştirme](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)
+- [Microsoft Identity platform (MSAL) hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
+- [MSAL Code örneklerimizi gözden geçirin](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code)

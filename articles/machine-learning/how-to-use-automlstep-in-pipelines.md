@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: laobri
 author: lobrien
 manager: cgronlun
-ms.date: 04/28/2020
+ms.date: 06/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: b9b4f505e7d3bdfec4bb689dcb8e08c82111ba1e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: f162aca8c30d890ecf662a88fb5f2182edb14c9e
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558454"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298251"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python 'da Azure Machine Learning işlem hattında otomatik ML kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -69,7 +69,7 @@ if not 'titanic_ds' in ws.datasets.keys() :
 titanic_ds = Dataset.get_by_name(ws, 'titanic_ds')
 ```
 
-Kod, ilk olarak **config. JSON** içinde tanımlanan Azure Machine Learning çalışma alanında oturum açar (bir açıklama için bkz. [ÖĞRETICI: Python SDK ile ilk ml denemenizi oluşturmaya başlama](tutorial-1st-experiment-sdk-setup.md)). Zaten kayıtlı adlı bir veri kümesi yoksa `'titanic_ds'` , bir tane oluşturur. Kod, Web 'den CSV verilerini indirir, bunları bir örneğini başlatmak için kullanır `TabularDataset` ve sonra veri kümesini çalışma alanına kaydeder. Son olarak, işlevi `Dataset.get_by_name()` öğesine atar `Dataset` `titanic_ds` . 
+Kod ilk olarak **config.jsüzerinde** tanımlanan Azure Machine Learning çalışma alanında oturum açar (bir açıklama için bkz. [ÖĞRETICI: Python SDK ile ilk ml denemenizi oluşturmaya başlama](tutorial-1st-experiment-sdk-setup.md)). Zaten kayıtlı adlı bir veri kümesi yoksa `'titanic_ds'` , bir tane oluşturur. Kod, Web 'den CSV verilerini indirir, bunları bir örneğini başlatmak için kullanır `TabularDataset` ve sonra veri kümesini çalışma alanına kaydeder. Son olarak, işlevi `Dataset.get_by_name()` öğesine atar `Dataset` `titanic_ds` . 
 
 ### <a name="configure-your-storage-and-compute-target"></a>Depolama ve işlem hedefini yapılandırma
 
@@ -111,18 +111,27 @@ Bir sonraki adım, uzaktan eğitim çalıştırmasının eğitim adımları içi
 ```python
 from azureml.core.runconfig import RunConfiguration
 from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core import Environment 
 
 aml_run_config = RunConfiguration()
 # Use just-specified compute target ("cpu-cluster")
 aml_run_config.target = compute_target
-aml_run_config.environment.python.user_managed_dependencies = False
 
-# Add some packages relied on by data prep step
-aml_run_config.environment.python.conda_dependencies = CondaDependencies.create(
-    conda_packages=['pandas','scikit-learn'], 
-    pip_packages=['azureml-sdk[automl,explain]', 'azureml-dataprep[fuse,pandas]'], 
-    pin_sdk_version=False)
+USE_CURATED_ENV = True
+if USE_CURATED_ENV :
+    curated_environment = Environment.get(workspace=ws, name="AzureML-Tutorial")
+    aml_run_config.environment = curated_environment
+else:
+    aml_run_config.environment.python.user_managed_dependencies = False
+    
+    # Add some packages relied on by data prep step
+    aml_run_config.environment.python.conda_dependencies = CondaDependencies.create(
+        conda_packages=['pandas','scikit-learn'], 
+        pip_packages=['azureml-sdk[automl,explain]', 'azureml-dataprep[fuse,pandas]'], 
+        pin_sdk_version=False)
 ```
+
+Yukarıdaki kodda bağımlılıkları işlemek için iki seçenek gösterilmektedir. , İle gösterildiği gibi `USE_CURATED_ENV = True` , yapılandırma, seçkin bir ortama dayalıdır. Seçkin ortamlar, ortak bağımlı kitaplıklar ile "önceden kullanıma hazır" olur ve çevrimiçi hale getirmek için önemli ölçüde daha hızlı olabilir. Seçkin ortamlar [Microsoft Container Registry](https://hub.docker.com/publishers/microsoftowner)önceden oluşturulmuş Docker görüntülerine sahiptir. Olarak değiştirirseniz gerçekleştirilecek yol, `USE_CURATED_ENV` `False` bağımlılıklarınızı açıkça ayarlamaya yönelik bir model gösterir. Bu senaryoda, yeni bir özel Docker görüntüsü oluşturulur ve kaynak grubunuzda bir Azure Container Registry kaydedilir (bkz. [Azure 'da özel Docker kapsayıcısı kayıt defterlerine giriş](https://docs.microsoft.com/azure/container-registry/container-registry-intro)). Bu görüntünün oluşturulması ve kaydedilmesi birkaç dakika sürer. 
 
 ## <a name="prepare-data-for-automated-machine-learning"></a>Otomatik makine öğrenimi için verileri hazırlama
 

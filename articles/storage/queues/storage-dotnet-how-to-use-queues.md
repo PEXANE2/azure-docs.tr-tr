@@ -7,13 +7,13 @@ ms.date: 05/08/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
-ms.reviewer: cbrooks
-ms.openlocfilehash: 90a7f37fb82cfea2f3ee44c31f6d3ef0a61c64c0
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.reviewer: dineshm
+ms.openlocfilehash: b0415542d737fa2ab926eb572855dce5ef81690e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465414"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808828"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>.NET kullanarak Azure Kuyruk Depolamaya başlayın
 
@@ -74,7 +74,7 @@ Bu paketleri edinmek için NuGet kullanabilirsiniz. Şu adımları uygulayın:
 1. **Çözüm Gezgini**' de projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin.
 1. **Gözatmayı** Seç
 1. Çevrimiçi olarak "Azure. Storage. Queues" araması yapın ve depolama istemci kitaplığı 'nı ve bağımlılıklarını yüklemek için **yüklemeyi** seçin. Bu işlem, kuyruk kitaplığının bağımlılıkları olan Azure. Storage. Common ve Azure. Core kitaplıklarını da yükler.
-1. Çevrimiçi olarak "System. Configuration. ConfigurationManager" araması yapın ve Configuration Manager yüklemek için **yüklemeyi** seçin.
+1. Çevrimiçi olarak "System.Configuration.ConfigurationManager" araması yapın ve Configuration Manager yüklemek için **yüklemeyi** seçin.
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
@@ -89,7 +89,7 @@ Bu paketleri edinmek için NuGet kullanabilirsiniz. Şu adımları uygulayın:
 1. **Çözüm Gezgini**' de projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin.
 1. **Gözatmayı** Seç
 1. Çevrimiçi olarak "Microsoft. Azure. Storage. Queue" araması yapın ve depolama istemci kitaplığı 'nı ve bağımlılıklarını yüklemek için **yüklemeyi** seçin. Bu, kuyruk kitaplığının bağımlılığı olan Microsoft. Azure. Storage. Common kitaplığını da yükler.
-1. Çevrimiçi olarak "Microsoft. Azure. ConfigurationManager" ifadesini arayın ve Azure Configuration Manager yüklemek için **yüklemeyi** seçin.
+1. Çevrimiçi olarak "Microsoft.Azure.ConfigurationManager" araması yapın ve Azure Configuration Manager yüklemek için **yüklemeyi** seçin.
 
 ---
 
@@ -128,7 +128,7 @@ Bağlantı dizeleri hakkında daha fazla bilgi için bkz. [Azure depolama için 
 > [!NOTE]
 > Depolama hesabı anahtarınız depolama hesabınızın kök parolasına benzer. Depolama hesabı anahtarınızı korumak için her zaman özen gösterin. Diğer kullanıcılara dağıtmaktan, sabit kodlamaktan ve başkalarının erişebileceği düz metin dosyasına kaydetmekten kaçının. Anahtarınızın tehlikede olduğunu düşünüyorsanız, Azure portalını kullanarak hesap anahtarınızı yeniden oluşturun.
 
-Depolama bağlantı dizenizi korumanın en iyi yolu bir yapılandırma dosyasında tutmaktır. Bağlantı dizenizi yapılandırmak için, Visual Studio 'daki Çözüm Gezgini *app. config* dosyasını açın. `\<appSettings\>` öğesinin içeriğini aşağıda gösterildiği gibi ekleyin. *Bağlantı dizesini* portaldaki depolama hesabınızdan kopyaladığınız değerle değiştirin:
+Depolama bağlantı dizenizi korumanın en iyi yolu bir yapılandırma dosyasında tutmaktır. Bağlantı dizenizi yapılandırmak için Çözüm Gezgini *app.config* dosyasını Visual Studio 'da açın. `\<appSettings\>` öğesinin içeriğini aşağıda gösterildiği gibi ekleyin. *Bağlantı dizesini* portaldaki depolama hesabınızdan kopyaladığınız değerle değiştirin:
 
 ```xml
 <configuration>

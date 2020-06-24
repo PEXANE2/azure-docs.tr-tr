@@ -5,17 +5,17 @@ description: Azure Yapay Zeka Galerisi analiz kaynaklarını ve daha fazlasını
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 882b52b74603465bd0a55a12fd9ef03f7b625046
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf483dadb9e27020095329d948698807a14012af
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204333"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709037"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure Yapay Zeka Galerisi kaynakları paylaşma ve bulma
 
@@ -26,7 +26,7 @@ Galerinin kendi analiz çözümlerinizi geliştirmek için kullanabileceğiniz �
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Galeride neleri bulabilirim?
 
-Azure Yapay Zeka Galerisi, Microsoft tarafından ve veri bilimi topluluğunun üyeleri tarafından katkıda bulunulan sayıda farklı kaynak içerir. Bunlar:
+Azure Yapay Zeka Galerisi, Microsoft tarafından ve veri bilimi topluluğunun üyeleri tarafından katkıda bulunulan sayıda farklı kaynak içerir. Bu güncelleştirmeler şunlardır:
 
 * **Denemeleri** -Galeri Azure Machine Learning Studio (klasik) ' de geliştirilmiş çok çeşitli denemeleri içerir. Bu, belirli bir makine öğrenimi tekniğinin yanı sıra karmaşık makine öğrenimi sorunları için tam olarak geliştirilen çözümlere yönelik olan hızlı prototip denemeleri tarafından görülebilir.
 * **Öğreticiler** -Machine Learning teknolojileri ve kavramları konusunda size yol gösterecek veya çeşitli makine öğrenimi sorunlarını çözmeye yönelik gelişmiş yöntemleri açıklayan birçok öğretici vardır.
@@ -151,16 +151,16 @@ Bir **öğreticiye** , makine öğrenimi kavramlarını açıklayan bir öğreti
 
 1. **Yeni Öğe**’yi seçin.
 
-1. **Açıklama** sayfasında, **öğe türü**için **öğretici** veya **koleksiyon**' ı seçin. Bir ad, kısa bir Özet, ayrıntılı bir açıklama ve diğer kullanıcıların katkılarınızı bulmasına yardımcı olabilecek Etiketler girin. Ardından **İleri**’ye tıklayın.
+1. **Açıklama** sayfasında, **öğe türü**için **öğretici** veya **koleksiyon**' ı seçin. Bir ad, kısa bir Özet, ayrıntılı bir açıklama ve diğer kullanıcıların katkılarınızı bulmasına yardımcı olabilecek Etiketler girin. Ardından **İleri**'ye tıklayın.
 
-1. **Görüntü seçimi** sayfasında katkısıyla görüntülenen bir görüntü seçin. Kendi resim dosyanızı karşıya yükleyebilir veya bir hisse senedi görüntüsü seçebilirsiniz. Kullanıcıların katkıınızın içeriğini ve amacını belirlemesine yardımcı olabilecek bir görüntü seçin. Ardından **İleri**’ye tıklayın.
+1. **Görüntü seçimi** sayfasında katkısıyla görüntülenen bir görüntü seçin. Kendi resim dosyanızı karşıya yükleyebilir veya bir hisse senedi görüntüsü seçebilirsiniz. Kullanıcıların katkıınızın içeriğini ve amacını belirlemesine yardımcı olabilecek bir görüntü seçin. Ardından **İleri**'ye tıklayın.
 
 1. **Ayarlar** sayfasında, **görünürlük**Için, katkınızın **herkese açık** olup olmadığını seçin (herkes tarafından görüntülenebilir) veya **listelenmemiş** (yalnızca doğrudan bağlantı olan kişiler tarafından görüntülenebilir).
 
    > [!TIP]
    > Ortak yayımlamadan önce belgelerinize doğru göründüğünden emin olmak istiyorsanız, önce denemeyi **listelenmemiş**şekilde yayımlayabilirsiniz. Daha sonra, deneme ayrıntıları sayfasında görünürlük ayarını **genel** olarak değiştirebilirsiniz. Bir denemeyi **herkese açık** olarak ayarladıktan sonra bundan sonra **listelenmemiş**olarak değiştiremezsiniz.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 Katkılarınız artık Azure Yapay Zeka Galerisi. Katkılarınız, **öğeler** sekmesindeki hesap sayfanızda listelenir.
 

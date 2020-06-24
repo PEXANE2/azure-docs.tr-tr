@@ -1,19 +1,19 @@
 ---
 title: Azure görüntü Oluşturucu şablonu oluşturma (Önizleme)
 description: Azure Image Builder ile kullanmak üzere şablon oluşturmayı öğrenin.
-author: danis
+author: danielsollondon
 ms.author: danis
-ms.date: 03/24/2020
+ms.date: 06/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: f567114613f484f0765a6e007c3f0ba97480a968
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 44cafd4ce7e36c34082ff3c5498c5bbc35282221
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779341"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263322"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
@@ -29,7 +29,7 @@ Bu, temel şablon biçimidir:
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             }
+     },
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
@@ -88,7 +88,7 @@ Varsayılan olarak, görüntü Oluşturucu bir "Standard_D1_v2" derleme VM 'si k
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-Varsayılan olarak, görüntü Oluşturucu görüntünün boyutunu değiştirmez, kaynak görüntüden boyutu kullanır. İşletim sistemi diskinin boyutunu (Win ve Linux) artırabilirsiniz, bu isteğe bağlıdır ve 0 değeri kaynak görüntüyle aynı boyutu bırakır. 
+Varsayılan olarak, görüntü Oluşturucu görüntünün boyutunu değiştirmez, kaynak görüntüden boyutu kullanır. **Yalnızca** Işletim sistemi diskinin boyutunu (Win ve Linux) artırabilirsiniz, bu isteğe bağlıdır ve 0 değeri kaynak görüntüyle aynı boyutu bırakır. İşletim sistemi diskinin boyutunu kaynak görüntüden daha küçük olacak şekilde azaltamezsiniz.
 
 ```json
  {
@@ -453,7 +453,7 @@ Write-Output '>>> Sysprep complete ...'
 #### <a name="overriding-the-commands"></a>Komutları geçersiz kılma
 Komutları geçersiz kılmak için PowerShell veya Shell betik hazırlayıcılar ' ni kullanarak tam dosya adına sahip komut dosyalarını oluşturun ve bunları doğru dizinlere yerleştirin:
 
-* Windows: C:\deprovisioningscript.exe. ps1
+* Windows: c:\DeprovisioningScript.ps1
 * Linux:/tmp/deprovisioningscript.exe
 
 Görüntü Oluşturucu bu komutları okuyacak, bunlar ' özelleştirme. log ' AıB günlüklerine yazılır. Bkz. günlüklerin nasıl toplanacağı hakkında [sorun giderme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs) .
@@ -521,7 +521,7 @@ Görüntü çıkışı yönetilen bir görüntü kaynağı olacaktır.
  
 Özellikleri dağıtma:
 - **tür** – managedımage 
-- **ImageID** – hedef görüntünün kaynak kimliği; beklenen biçim:/subscriptions/ \< SubscriptionID>/ResourceGroups/ \< destinationresourcegroupname>/Providers/Microsoft.COMPUTE/images/ \< ImageName>
+- **ImageID** – hedef görüntünün kaynak kimliği, beklenen biçim:/Subscriptions/ \<subscriptionId> /ResourceGroups/ \<destinationResourceGroupName> /providers/Microsoft.COMPUTE/images/\<imageName>
 - **konum** -yönetilen görüntünün konumu.  
 - **Runoutputname** : dağıtımı tanımlamak için benzersiz ad.  
 - **Artifacttags** -isteğe bağlı kullanıcı tarafından belirtilen anahtar değer çifti etiketleri.
@@ -561,7 +561,7 @@ Görüntü galerisine dağıtabilmeniz için önce bir galeri ve görüntü tan�
 Paylaşılan görüntü galerilerine yönelik özellikleri dağıtma:
 
 - **tür** -sharedimage  
-- **Gallerımageıd** : paylaşılan görüntü galerisinin kimliği. Biçim:/Subscriptions/ \< subscriptionıd>/resourceGroups/ \< resourcegroupname>/Providers/Microsoft.COMPUTE/Galleries/ \< sharedimagegallername>/Images/ \< ımagegallername>.
+- **Gallerımageıd** : paylaşılan görüntü galerisinin kimliği. Biçim:/Subscriptions/ \<subscriptionId> /ResourceGroups/ \<resourceGroupName> /providers/Microsoft.COMPUTE/Galleries/ \<sharedImageGalleryName> /images/ \<imageGalleryName> .
 - **Runoutputname** : dağıtımı tanımlamak için benzersiz ad.  
 - **Artifacttags** -isteğe bağlı kullanıcı tarafından belirtilen anahtar değer çifti etiketleri.
 - **replicationregion** -çoğaltma için bölgelerin dizisi. Bölgelerden biri, galerinin dağıtıldığı bölge olmalıdır.

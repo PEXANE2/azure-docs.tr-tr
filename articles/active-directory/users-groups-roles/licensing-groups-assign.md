@@ -7,7 +7,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 04/29/2020
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9c61bbc794438c34a4bda27c8048ac0b21f9fc1
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 0524e8756e86771ab555eaa853e3955fe69c8549
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582717"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727662"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Azure Active Directory ' de grup üyeliğine göre kullanıcılara lisans atama
 
@@ -59,7 +59,7 @@ Bir gruba lisans atarken, Azure AD söz konusu grubun tüm mevcut üyelerini iş
 
 ## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>2. Adım: ilk atamanın tamamlandığını doğrulama
 
-1. **Azure Active Directory** > **gruplara**gidin. Lisansın atandığı grubu seçin.
+1. **Azure Active Directory**  >  **gruplara**gidin. Lisansın atandığı grubu seçin.
 
 1. Grup sayfasında, **lisanslar**' ı seçin. Bu, lisansların kullanıcılara tam olarak atandığını ve aramanız gereken herhangi bir hata olup olmadığını hızlı bir şekilde doğrulamanıza olanak sağlar. Aşağıdaki bilgiler kullanılabilir:
 
@@ -71,17 +71,17 @@ Bir gruba lisans atarken, Azure AD söz konusu grubun tüm mevcut üyelerini iş
 
    ![Lisanslama hataları ve lisans durumu](./media/licensing-groups-assign/assignment-errors.png)
 
-1. **Azure Active Directory** > **Kullanıcılar ve gruplar** > *Grup adı* > **Denetim günlükleri**altında lisans işleme hakkında daha ayrıntılı bilgi görüntüleyin. Aşağıdaki etkinlikleri denetleyin:
+1. **Azure Active Directory**  >  **Kullanıcılar ve gruplar**  >  *Grup adı*  >  **Denetim günlükleri**altında lisans işleme hakkında daha ayrıntılı bilgi görüntüleyin. Aşağıdaki etkinlikleri denetleyin:
 
-   - Etkinlik: `Start applying group based license to users`. Bu, sistem gruptaki lisans ataması değişikliğini seçtiğinde günlüğe kaydedilir ve tüm Kullanıcı üyelerine uygulamayı başlatır. Yapılan değişiklik hakkında bilgi içerir.
+   - Etkinlik: `Start applying group based license to users` . Bu, sistem gruptaki lisans ataması değişikliğini seçtiğinde günlüğe kaydedilir ve tüm Kullanıcı üyelerine uygulamayı başlatır. Yapılan değişiklik hakkında bilgi içerir.
 
-   - Etkinlik: `Finish applying group based license to users`. Bu, sistem gruptaki tüm kullanıcıları işlemeyi tamamladığında günlüğe kaydedilir. Kaç kullanıcının başarıyla işlendiğini ve kaç kullanıcıya grup lisansı atanmadığını bir Özet içerir.
+   - Etkinlik: `Finish applying group based license to users` . Bu, sistem gruptaki tüm kullanıcıları işlemeyi tamamladığında günlüğe kaydedilir. Kaç kullanıcının başarıyla işlendiğini ve kaç kullanıcıya grup lisansı atanmadığını bir Özet içerir.
 
    Denetim günlüklerinin, grup tabanlı lisanslama tarafından yapılan değişiklikleri analiz etmek için nasıl kullanılabileceği hakkında daha fazla bilgi edinmek için [Bu bölümü okuyun](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity) .
 
 ## <a name="step-3-check-for-license-problems-and-resolve-them"></a>3. Adım: lisans sorunlarını denetleyin ve çözümleyin
 
-1. **Azure Active Directory** > **gruplar**' a gidin ve Lisansların atandığı grubu bulun.
+1. **Azure Active Directory**  >  **gruplar**' a gidin ve Lisansların atandığı grubu bulun.
 1. Grup sayfasında, **lisanslar**' ı seçin. Sayfanın üst kısmındaki bildirim, lisansların atanabileceği 10 Kullanıcı olduğunu gösterir. Bu grup için bir lisanslama hata durumunda tüm kullanıcıların listesini görmek için onu açın.
 1. **Başarısız atamalar** sütunu, kullanıcılara her iki ürün lisansının atanmayacağını söyler. **Hata sütununun en üstteki nedeni** , hatanın nedenini içerir. Bu durumda, bu **Çakışan hizmet planlarımız**.
 

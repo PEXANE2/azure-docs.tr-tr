@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri kasasını silme
 description: Bu makalede, bağımlılıkları kaldırmayı ve sonra bir Azure Backup Recovery Services kasasını silmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 07e6a0297d131f4a0b7dc93817d9abcf2ae109d2
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 946b199119ee9e03ec9348c4e180f8e4c9b9a776
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447756"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751874"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services kasasını silme
 
@@ -38,7 +38,7 @@ Bir kasayı doğru bir şekilde silmek için şu sırada bulunan adımları izle
 
 - **1. adım**: geçici silme özelliğini devre dışı bırakın. Geçici silme devre dışı bırakma adımları için [buraya bakın](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete) .
 
-- **2. adım**: geçici silmeyi devre dışı bıraktıktan sonra, daha önce, geçici olarak silinen durumunda kalan herhangi bir öğe olup olmadığını denetleyin. Geçici olarak silinen durumda öğeler varsa, bunları *geri* ve *silmeniz* gerekir. Geçici silme öğelerini bulmak ve bunları kalıcı olarak silmek için [aşağıdaki adımları izleyin](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items) .
+- **2. adım**: geçici silmeyi devre dışı bıraktıktan sonra, daha önce geçici olarak silinen durumda kalan herhangi bir öğe olup olmadığını denetleyin. Geçici olarak silinen durumda öğeler varsa, bunları *geri* ve *silmeniz* gerekir. Geçici silme öğelerini bulmak ve bunları kalıcı olarak silmek için [aşağıdaki adımları izleyin](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items) .
 
 - **3. adım**: herhangi bir korumalı öğe olup olmadığını doğrulamak için aşağıdaki üç yeri denetlemeniz gerekir:
 

@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc12e571ca955a0ddc47e1c1dd73c2717161df4b
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 03c5e3fe7fe84b968b59d0668619b3feddacc4f1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739322"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727832"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Grup yönetimi için sürüm 2 cmdlet 'leri Azure Active Directory
 
@@ -64,7 +64,7 @@ Azure AD PowerShell cmdlet 'lerini kullanarak grupları yönetmeye başlayabilme
     PS C:\Windows\system32> Connect-AzureAD
 ```
 
-Cmdlet 'i, dizininize erişmek için kullanmak istediğiniz kimlik bilgilerini ister. Bu örnekte, tanıtım dizinine erişmek karen@drumkit.onmicrosoft.com için kullanıyoruz. Cmdlet, oturumun başarıyla bağlanıp bağlandığına ilişkin bir onay döndürür:
+Cmdlet 'i, dizininize erişmek için kullanmak istediğiniz kimlik bilgilerini ister. Bu örnekte, karen@drumkit.onmicrosoft.com tanıtım dizinine erişmek için kullanıyoruz. Cmdlet, oturumun başarıyla bağlanıp bağlandığına ilişkin bir onay döndürür:
 
 ```powershell
     Account                       Environment Tenant ID
@@ -274,7 +274,7 @@ Yönetici olmayan kullanıcılar için Grup oluşturmayı devre dışı bırakma
    PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
    ```
   
-2. Döndürürse `UsersPermissionToCreateGroupsEnabled : True`yönetici olmayan kullanıcılar grupları oluşturabilir. Bu özelliği devre dışı bırakmak için:
+2. Döndürürse `UsersPermissionToCreateGroupsEnabled : True` yönetici olmayan kullanıcılar grupları oluşturabilir. Bu özelliği devre dışı bırakmak için:
   
    ```powershell 
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False

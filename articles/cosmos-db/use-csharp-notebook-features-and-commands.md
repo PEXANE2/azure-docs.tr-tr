@@ -3,16 +3,16 @@ title: Azure Cosmos DB C# not defterlerinde yerleşik Not defteri komutlarını 
 description: Azure Cosmos DB yerleşik C# not defterlerini kullanarak genel işlemleri yapmak için yerleşik komutları ve özellikleri nasıl kullanacağınızı öğrenin.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
 ms.custom: tracking-python
-ms.openlocfilehash: 46420aeb635bd4cd7b84698b7eb5d522177b443a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d9d48e825adeecd54375ce13c612d4a0c6eaaa18
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561772"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263424"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Azure Cosmos DB C# not defterlerinde yerleşik Not defteri komutlarını ve özelliklerini kullanma (Önizleme)
 
@@ -115,14 +115,14 @@ Yerleşik [nteryasası Veri Gezgini](https://blog.nteract.io/designing-the-ntera
 
 Örneğin, *GetingStarted_Csharp. ipynb* örneğinde, sonuçumuzu kullanarak değişkeni yazdırabiliriz ``telemetryEvents`` . Tüm örnek için [GettingStarted_Csharp. ipynb not defterine](https://github.com/Azure-Samples/cosmos-notebooks/blob/master/CSharp_quickstarts/GettingStarted_CSharp.ipynb) bakın. 
 
-![CSharp sorgu hücresi](media/use-notebook-features-and-commands/csharp-query-cell.png)
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-query-cell.png" alt-text="CSharp sorgu hücresi":::
 
-![nteryasası Veri Gezgini](media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png)
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="nteryasası Veri Gezgini":::
 
 ## <a name="use-built-in-dictionary-viewer"></a>Yerleşik sözlük görüntüleyicisini kullan
 Bir değişkeni görüntülemek için yerleşik sözlük görüntüleyicisini kullanabilirsiniz. Bir hücrede, son satırda görselleştirmek istediğiniz değişkeni koyun ve bu, hücre çalıştırıldığında otomatik olarak görüntülenir.
 
-![Yerleşik sözlük Görüntüleyicisi](media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png)
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="Yerleşik sözlük Görüntüleyicisi":::
 
 ## <a name="upload-json-items-to-a-container"></a>JSON öğelerini bir kapsayıcıya yükleme
 ``%%upload``BIR JSON dosyasındaki verileri belirtilen Azure Cosmos kapsayıcısına yüklemek için Magic komutunu kullanabilirsiniz. Öğeleri karşıya yüklemek için aşağıdaki komutu kullanın:
@@ -160,7 +160,7 @@ Total RUs consumed : 25022.58
 ## <a name="reset-notebooks-workspace"></a>Not defteri çalışma alanını Sıfırla
 Not defteri çalışma alanını varsayılan ayarlara sıfırlamak için komut çubuğundan **çalışma alanını Sıfırla** ' yı seçin. Bu, tüm özel yüklü paketleri kaldıracak ve jupi sunucusunu yeniden başlatacak. Not defterleriniz, dosyalarınız ve Azure Cosmos kaynaklarınızın etkilenmemesi gerekir.  
 
-![Not defteri çalışma alanını Sıfırla](media/use-notebook-features-and-commands/reset-workspace.png)
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Not defteri çalışma alanını Sıfırla":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

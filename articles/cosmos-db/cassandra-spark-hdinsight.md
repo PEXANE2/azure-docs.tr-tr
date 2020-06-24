@@ -6,14 +6,14 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: bef4ee14cb4a7d64d80dc5776d8ecea0f831881a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4848bdceef084d587c839f2af93d1ff5a43c850b
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75887641"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260585"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>HDInsight ile YARN 'de Spark Azure Cosmos DB Cassandra API erişme
 
@@ -116,7 +116,7 @@ Spark kabuğu test/araştırma amaçları için kullanılır.
 
 HDInsight-Spark, Zeppelin ve Jupyter Not defteri hizmetleriyle birlikte gelir. Bunlar, Scala ve Python destekleyen Web tabanlı dizüstü bilgisayar ortamlardır. Not defterleri etkileşimli araştırmacı analizler ve işbirliği için harika, ancak işlemsel/etkili işlemler için tasarlanmamıştır.
 
-Aşağıdaki jupi Not defterleri, HDInsight Spark kümenize yüklenebilir ve Azure Cosmos DB Cassandra API çalışmaya yönelik hazırlık örnekleri sağlayabilir. Azure Cosmos DB Cassandra API bağlanmaya yönelik Spark hizmeti yapılandırmasını `1.0-ReadMe.ipynb` gözden geçirmek için ilk not defterini gözden geçirdiğinizden emin olun.
+Aşağıdaki jupi Not defterleri, HDInsight Spark kümenize yüklenebilir ve Azure Cosmos DB Cassandra API çalışmaya yönelik hazırlık örnekleri sağlayabilir. `1.0-ReadMe.ipynb`Azure Cosmos DB Cassandra API bağlanmaya yönelik Spark hizmeti yapılandırmasını gözden geçirmek için ilk not defterini gözden geçirdiğinizden emin olun.
 
 Bu not defterlerini [Azure-Cosmos-DB-Cassandra-api-Spark-Not defterleri-jupyıter](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-jupyter/blob/master/scala/) altında makinenize indirin.
   

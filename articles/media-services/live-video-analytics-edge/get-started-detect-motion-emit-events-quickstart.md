@@ -1,94 +1,100 @@
 ---
 title: IoT Edge Azure 'da canlı video analiziyle çalışmaya başlama
-description: Bu hızlı başlangıçta IoT Edge 'da canlı video analiziyle çalışmaya başlama ve canlı video akışında hareket algılama gösterilmektedir.
+description: Bu hızlı başlangıçta IoT Edge 'da canlı video analiziyle çalışmaya başlama gösterilmektedir. Canlı video akışında hareket algılamayı öğrenin.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 307a81938be3e25b8a6a07bb3696ca3b7647c0aa
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 98ab333a495c31889bee2a9cddab778a12876af5
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84262017"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816904"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Hızlı başlangıç: IoT Edge kullanmaya başlama-canlı video analizi
 
-Bu hızlı başlangıç, IoT Edge üzerinde canlı video analizlerini kullanmaya başlamanıza yönelik adımlarda size yol gösterir. Bir Azure VM 'yi IoT Edge bir cihaz ve sanal bir canlı video akışı olarak kullanır. Kurulum adımlarını tamamladıktan sonra, bu akıştaki tüm hareketleri algılayan ve raporlayan bir medya grafiğiyle sanal bir canlı video akışı çalıştırabileceksiniz. Aşağıdaki diyagramda, bu medya grafiğinin grafik temsili gösterilmektedir.
+Bu hızlı başlangıç, IoT Edge üzerinde canlı video analizlerini kullanmaya başlamanıza yönelik adımlarda size yol gösterir. Bir Azure VM 'yi IoT Edge bir cihaz olarak kullanır. Ayrıca, sanal bir canlı video akışı kullanır. 
+
+Kurulum adımlarını tamamladıktan sonra, bu akıştaki tüm hareketleri algılayan ve raporlayan bir medya grafiğiyle sanal bir canlı video akışı çalıştırabileceksiniz. Aşağıdaki diyagramda, bu medya grafiği grafik olarak temsil eder.
 
 ![Hareket algılamayı temel alan canlı video analizi](./media/analyze-live-video/motion-detection.png)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Azure IoT araçları uzantısı](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)ile geliştirme makinenizde [Visual Studio Code](https://code.visualstudio.com/) .
-* Geliştirme makinenizin bağlı olduğu ağ, 5671 numaralı bağlantı noktası üzerinden AMQP protokolüne izin vermesi gerekir (Azure IoT araçları 'nın Azure IoT Hub ile iletişim kurabilmesi için).
+* Etkin aboneliği olan bir Azure hesabı. Henüz bir [hesabınız yoksa ücretsiz olarak bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* Geliştirme makinenizde [Visual Studio Code](https://code.visualstudio.com/) . [Azure IoT araçları uzantısına](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)sahip olduğunuzdan emin olun.
+* Geliştirme makinenizin bağlı olduğu ağın bağlantı noktası 5671 üzerinden gelişmiş Ileti sıraya alma Protokolü (AMQP) izin verdiğinden emin olun. Bu kurulum, Azure IoT araçlarının Azure IoT Hub ile iletişim kurmasını sağlar.
 
 > [!TIP]
-> Azure IoT araçları uzantısını yüklerken Docker yüklemeniz istenebilir. Yok saymaktan çekinmeyin.
+> Azure IoT araçları uzantısını yüklerken Docker yüklemeniz istenebilir. İstemi yok saymaktan çekinmeyin.
 
 ## <a name="set-up-azure-resources"></a>Azure kaynakları ayarlama
 
-Bu öğretici için aşağıdaki Azure kaynakları gereklidir.
+Bu öğreticide aşağıdaki Azure kaynakları gereklidir:
 
 * IoT Hub
 * Depolama hesabı
 * Azure Media Services hesabı
-* Azure 'da [IoT Edge Runtime](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) yüklüyken Linux sanal makinesi
+* Azure 'da [IoT Edge çalışma zamanı](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) yüklü bir Linux sanal makinesi
 
-Bu hızlı başlangıçta, Azure aboneliğinizde yukarıda bahsedilen Azure kaynaklarını dağıtmak için [canlı video analizi kaynakları kurulum betiğini](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) kullanmanız önerilir. Bunun için aşağıdaki adımları uygulayın:
+Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıtmak üzere [canlı video analizi kaynakları kurulum betiğini](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) kullanmanızı öneririz. Bunu yapmak için şu adımları uygulayın:
 
-1. https://shell.azure.com adresine gidin.
-1. Cloud Shell ilk kez kullanıyorsanız, bir depolama hesabı ve Microsoft Azure dosya paylaşımının oluşturulması için bir abonelik seçmeniz istenir. Cloud Shell oturum bilgilerinizi depolamak için bir depolama hesabı oluşturmak üzere "depolama alanı oluştur" seçeneğini belirleyin. Bu depolama hesabı, komut dosyasının Azure Media Services hesabınızla birlikte kullanılmak üzere oluşturulacağı bir ayrıdır.
-1. Kabuk penceresinin sol tarafındaki açılan menüdeki ortamınız olarak "Bash" i seçin.
+1. [Azure Cloud Shell](https://shell.azure.com)gidin.
+1. İlk kez Cloud Shell kullanıyorsanız, bir depolama hesabı ve bir Microsoft Azure dosya paylaşımının oluşturulması için bir abonelik seçmeniz istenir. Cloud Shell oturum bilgileriniz için bir depolama hesabı oluşturmak üzere **depolama oluştur** ' u seçin. Bu depolama hesabı, komut dosyasının Azure Media Services hesabınızla kullanılmak üzere oluşturulacağı hesaptan farklıdır.
+1. Cloud Shell penceresinin sol tarafındaki açılan menüde, ortamınız olarak **Bash** ' i seçin.
 
     ![Ortam Seçicisi](./media/quickstarts/env-selector.png)
 
-1. Aşağıdaki komutu çalıştırın
+1. Şu komutu çalıştırın.
 
     ```
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-Betik başarıyla tamamlanırsa, aboneliğinizde yukarıda bahsedilen tüm kaynakları görmeniz gerekir. Betik çıktısının bir parçası olarak, IoT Hub adını listelemek için kaynak tablosu oluşturulacaktır. **"Microsoft. Devices/IotHubs"** kaynak türünü arayın ve adı aklınızda bulun. Bu, bir sonraki adımda gerekli olacaktır. Komut dosyası, ~/CloudDrive/LVA-Sample/Directory içinde birkaç yapılandırma dosyası da oluşturur; Bu işlem hızlı başlangıçta daha sonra gerekecektir.
+Betik başarıyla tamamlanerdiğinde, aboneliğinizdeki tüm gerekli kaynakları görmeniz gerekir. Betik çıktısında, kaynak tablosu IoT Hub adını listeler. Kaynak türünü bulun `Microsoft.Devices/IotHubs` ve adı aklınızda yazın. Sonraki adımda bu ada ihtiyacınız olacaktır. 
+
+Betik, *~/CloudDrive/LVA-Sample/* dizininde birkaç yapılandırma dosyası da oluşturur. Bu dosyalar hızlı başlangıçta daha sonra gerekecektir.
 
 ## <a name="deploy-modules-on-your-edge-device"></a>Sınır cihazınızda modüller dağıtma
 
-Aşağıdaki komutu çalıştırın Cloud Shell
+Cloud Shell ' den aşağıdaki komutu çalıştırın.
 
 ```
 az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device --content ~/clouddrive/lva-sample/edge-deployment/deployment.amd64.json
 ```
 
-Yukarıdaki komut, Edge cihazına (Linux VM) aşağıdaki modülleri dağıtır:
+Bu komut, aşağıdaki modülleri bu durumda Linux VM olan Edge cihazına dağıtır.
 
-* IoT Edge (modül adı "lvaEdge") üzerinde canlı video analizi
-* RTSP simülatör (modül adı "rtspsim")
+* IoT Edge (modül adı) üzerinde canlı video analizi `lvaEdge`
+* Gerçek zamanlı akış protokolü (RTSP) Simülatörü (modül adı `rtspsim` )
 
-RTSP simülatör modülü, [canlı video analizi kaynakları kurulum betiğini](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)çalıştırdığınızda Edge cihazınıza kopyalanmış olan bir video dosyası kullanarak canlı bir video akışının benzetimini yapar. Bu aşamada, modüller dağıtıldı, ancak hiçbir medya grafiği etkin değil.
+RTSP simülatör modülü, [canlı video analizi kaynakları kurulum betiğini](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)çalıştırdığınızda Edge cihazınıza kopyalanmış bir video dosyası kullanarak canlı bir video akışının benzetimini yapar. 
 
-## <a name="configure-azure-iot-tools-extension-in-visual-studio-code"></a>Visual Studio Code 'de Azure IoT araçları uzantısını yapılandırma
+Artık modüller dağıtılır, ancak hiçbir medya grafiği etkin değildir.
 
-Visual Studio Code başlatın ve Azure IoT araçları uzantısını kullanarak Azure IoT Hub bağlanmak için aşağıdaki yönergeleri izleyin.
+## <a name="configure-the-azure-iot-tools-extension"></a>Azure IoT araçları uzantısını yapılandırma
 
-1. **Görünüm**Gezgini aracılığıyla Visual Studio Code gezgin sekmesine gidin  >  **Explorer** veya basitçe (Ctrl + Shift + E) tuşuna basın.
-1. Gezgin sekmesinde, sol alt köşedeki "Azure IoT Hub" öğesine tıklayın.
-1. Daha fazla seçenek simgesine tıklayarak bağlam menüsünü görüntüleyin ve "IoT Hub bağlantı dizesi ayarla" seçeneğini belirleyin.
-1. Bir giriş kutusu açılır ve sonra IoT Hub bağlantı dizenizi girin. IoT Hub için bağlantı dizesini Cloud Shell ~/CloudDrive/LVA-Sample/appSettings.JSON konumundan alabilirsiniz.
-1. Bağlantı başarılı olursa, sınır cihazlarının listesi gösterilir. "LVA-Sample-Device" adlı en az bir cihaz olmalıdır.
-1. Artık IoT Edge cihazlarınızı yönetebilir ve bağlam menüsü aracılığıyla Azure IoT Hub etkileşim kurabilirsiniz.
-1. "LVA-örnek-cihaz" altındaki modüller düğümünü genişleterek, Edge cihazında dağıtılan modülleri görüntüleyebilirsiniz.
+Azure IoT araçları uzantısını kullanarak IoT Hub 'ınıza bağlanmak için bu yönergeleri izleyin.
 
-    ![LVA-örnek-cihaz düğümü](./media/quickstarts/lva-sample-device-node.png)
+1. Visual Studio Code, **Görünüm**  >  **Gezgini**' ni seçin. Ya da CTRL + SHIFT + E ' yi seçin.
+1. **Gezgin** sekmesinin sol alt köşesinde **Azure IoT Hub**' yi seçin.
+1. Bağlam menüsünü görmek için **diğer seçenekler** simgesini seçin. Sonra **IoT Hub bağlantı dizesi ayarla**' yı seçin.
+1. Bir giriş kutusu göründüğünde IoT Hub bağlantı dizenizi girin. Cloud Shell, bağlantı dizesini *~/CloudDrive/LVA-Sample/appsettings.jstarihinde*alabilirsiniz.
+
+Bağlantı başarılı olursa Edge cihazlarının listesi görüntülenir. **LVA-Sample-Device**adlı en az bir cihaz görmeniz gerekir. Artık IoT Edge cihazlarınızı yönetebilir ve bağlam menüsü aracılığıyla Azure IoT Hub etkileşim kurabilirsiniz. Sınır cihazında dağıtılan modülleri görüntülemek için, **LVA-örnek-cihaz**altında **modüller** düğümünü genişletin.
+
+![LVA-örnek-cihaz düğümü](./media/quickstarts/lva-sample-device-node.png)
 
 ## <a name="use-direct-methods"></a>Doğrudan yöntemler kullanma
 
-Doğrudan yöntemleri çağırarak canlı video akışlarını çözümlemek için modülünü kullanabilirsiniz. Modülün sunduğu tüm doğrudan yöntemleri anlamak için [IoT Edge üzerindeki canlı video analizlerine yönelik doğrudan yöntemleri](direct-methods.md) okuyun. 
+Doğrudan yöntemleri çağırarak canlı video akışlarını çözümlemek için modülünü kullanabilirsiniz. Daha fazla bilgi için bkz. [IoT Edge Için doğrudan canlı video analizi yöntemleri](direct-methods.md). 
 
 ### <a name="invoke-graphtopologylist"></a>Graphtopologyılist komutunu çağır
-Bu, modüldeki tüm [grafik topolojilerini](media-graph-concept.md#media-graph-topologies-and-instances) numaralandırır.
 
-1. "LvaEdge" modülüne sağ tıklayıp bağlam menüsünden "modül doğrudan yöntemini çağır" seçeneğini belirleyin.
-1. Visual Studio Code penceresinin üst ortasında bir düzenleme kutusu açılır penceresi görürsünüz. Düzenle kutusuna "Graphtopologyılist" yazın ve ENTER tuşuna basın.
-1. Sonra, aşağıdaki JSON yükünü kopyalayıp düzenleme kutusuna yapıştırın ve ENTER tuşuna basın.
+Modüldeki tüm [grafik topolojilerini](media-graph-concept.md#media-graph-topologies-and-instances) listelemek için:
+
+1. Visual Studio Code, **Lvaedge** modülüne sağ tıklayıp **Modül doğrudan yöntemini çağır**' ı seçin.
+1. Görüntülenen kutuya *Graphtopologyılist*yazın.
+1. Aşağıdaki JSON yükünü kopyalayın ve kutuya yapıştırın. Ardından Enter tuşunu seçin.
 
     ```
     {
@@ -96,7 +102,7 @@ Bu, modüldeki tüm [grafik topolojilerini](media-graph-concept.md#media-graph-t
     }
     ```
 
-    Birkaç saniye içinde, aşağıdaki Yanıt ile Visual Studio Code açılır penceresinde çıkış penceresini görürsünüz
+    Birkaç saniye içinde, **Çıkış** penceresi aşağıdaki yanıtı gösterir.
 
     ```
     [DirectMethod] Invoking Direct Method [GraphTopologyList] to [lva-sample-device/lvaEdge] ...
@@ -109,12 +115,12 @@ Bu, modüldeki tüm [grafik topolojilerini](media-graph-concept.md#media-graph-t
     }
     ```
     
-    Grafik topolojisi oluşturulmadığından yukarıdaki yanıt beklenmez.
+    Grafik topolojisi oluşturulmadığından bu yanıt beklenmektedir.
     
 
 ### <a name="invoke-graphtopologyset"></a>Graphtopologyıset komutunu çağır
 
-Graphtopologyılist ' i çağırmak için özetlenen adımlarla aynı adımları kullanarak, yük olarak aşağıdaki JSON 'u kullanarak bir [Graph topolojisi](media-graph-concept.md#media-graph-topologies-and-instances) ayarlamak Için Graphtopologyıset komutunu çağırabilirsiniz.
+Çağırma adımlarını kullanarak `GraphTopologyList` `GraphTopologySet` bir [Graph topolojisi](media-graph-concept.md#media-graph-topologies-and-instances)ayarlamayı çağırabilirsiniz. Yük olarak aşağıdaki JSON 'ı kullanın.
 
 ```
 {
@@ -185,10 +191,9 @@ Graphtopologyılist ' i çağırmak için özetlenen adımlarla aynı adımları
 
 ```
 
+Bu JSON yükü, üç parametreyi tanımlayan bir grafik topolojisi oluşturur. Bu parametrelerden ikisi varsayılan değerlere sahiptir. Topolojide bir kaynak (RTSP kaynağı) düğümü, bir işlemci (hareket algılama işlemcisi) düğümü ve bir havuz (IoT Hub havuzu) düğümü vardır.
 
-Yukarıdaki JSON yükü, üç parametre tanımlayan (ikisi de varsayılan değerlere sahip) bir grafik topolojisi oluşturulmasına neden olur. Topolojide bir kaynak (RTSP kaynağı) düğümü, bir işlemci (hareket algılama işlemcisi) düğümü ve bir havuz (IoT Hub havuzu) düğümü vardır.
-
-Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görürsünüz:
+Birkaç saniye içinde **Çıkış** penceresinde aşağıdaki yanıtı görürsünüz.
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologySet] to [lva-sample-device/lvaEdge] ...
@@ -268,25 +273,26 @@ Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görürsün�
 }
 ```
 
-Döndürülen durum 201 ' dir ve yeni bir topoloji oluşturulduğunu gösterir. Sonraki adımlar olarak aşağıdakileri deneyin:
+Döndürülen durum 201 ' dir. Bu durum yeni bir topoloji oluşturulduğunu gösterir. 
 
-* Graphtopologyıset komutunu yeniden çağırın ve döndürülen durum kodu 200 olduğunu unutmayın. Durum kodu 200, var olan bir topolojinin başarıyla güncelleştirildiğini gösterir.
-* Graphtopologyıset komutunu yeniden çağırın, ancak açıklama dizesini değiştirin. Yanıt içindeki durum kodu 200, açıklama ise yeni değere güncelleştirilir.
-* Önceki bölümde özetlenen Graphtopologyılist dosyasını çağırın ve artık döndürülen yükün "MotionDetection" topolojisini görebileceğinizi unutmayın.
+Aşağıdaki adımları deneyin:
+
+1. `GraphTopologySet`Yeniden çağırın. Döndürülen durum kodu 200 ' dir. Bu kod, var olan bir topolojinin başarıyla güncelleştirildiğini gösterir.
+1. `GraphTopologySet`Yeniden çağırın, ancak açıklama dizesini değiştirin. Döndürülen durum kodu 200 ' dir ve açıklama yeni değere güncelleştirilir.
+1. `GraphTopologyList`Önceki bölümde özetlenen şekilde çağırın. Artık `MotionDetection` topolojiyi döndürülen yükün içinde görebilirsiniz.
 
 ### <a name="invoke-graphtopologyget"></a>Graphtopologyıget çağırma
 
-Şimdi aşağıdaki yük ile Graphtopologyıget komutunu çağır
+`GraphTopologyGet`Aşağıdaki yükü kullanarak çağırın.
 
 ```
-
 {
     "@apiVersion" : "1.0",
     "name" : "MotionDetection"
 }
 ```
 
-Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görmeniz gerekir:
+Birkaç saniye içinde **Çıkış** penceresinde aşağıdaki yanıtı görürsünüz:
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologyGet] to [lva-sample-device/lvaEdge] ...
@@ -366,16 +372,16 @@ Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görmeniz ge
 }
 ```
 
-Yanıt yükünde aşağıdakileri göz önünde edin:
+Yanıt yükünde, bu ayrıntılara dikkat edin:
 
 * Durum kodu, başarıyı belirten 200 ' dir.
-* Yükün "oluşturma" ve "lastModified" zaman damgası vardır.
+* Yük, `created` zaman damgasını ve `lastModified` zaman damgasını içerir.
 
 ### <a name="invoke-graphinstanceset"></a>Graphınstanceset 'i çağır
 
-Ardından, yukarıdaki grafik topolojisine başvuran bir grafik örneği oluşturun. [Burada](media-graph-concept.md#media-graph-topologies-and-instances)açıklandığı gibi, grafik örnekleri aynı grafik topolojisine sahip birçok kameradan canlı video akışlarını analiz etmenize olanak tanır.
+Önceki grafik topolojisine başvuran bir grafik örneği oluşturun. Grafik örnekleri, aynı grafik topolojisini kullanarak birçok kameradan canlı video akışlarını analiz etmenize olanak tanır. Daha fazla bilgi için bkz. [medya grafiği topolojileri ve örnekleri](media-graph-concept.md#media-graph-topologies-and-instances).
 
-Aşağıdaki yük ile doğrudan yöntem Graphınstanceset öğesini çağırın.
+`GraphInstanceSet`Aşağıdaki yükü kullanarak doğrudan yöntemi çağırın.
 
 ```
 {
@@ -391,12 +397,12 @@ Aşağıdaki yük ile doğrudan yöntem Graphınstanceset öğesini çağırın.
 }
 ```
 
-Şunlara dikkat edin:
+Bu yükün şu olduğuna dikkat edin:
 
-* Yukarıdaki yük, örneğin oluşturulması gereken topoloji adını (MotionDetection) belirtir.
-* Yük, Graph topolojisi yükünde varsayılan bir değere sahip olmayan "rtspUrl" için parametre değeri içeriyor.
+* Örneğin oluşturulması gereken topoloji adını ( `MotionDetection` ) belirtir.
+* `rtspUrl`Grafik topolojisi yükünde varsayılan bir değere sahip olmayan için bir parametre değeri içerir.
 
-Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görürsünüz:
+Birkaç saniye içinde **Çıkış** penceresinde aşağıdaki yanıtı görürsünüz:
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceSet] to [lva-sample-device/lvaEdge] ...
@@ -422,20 +428,20 @@ Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görürsün�
 }
 ```
 
-Yanıt yükünde aşağıdakileri göz önünde edin:
+Yanıt yükünde şunları unutmayın:
 
 * Durum kodu, yeni bir örneğin oluşturulduğunu belirten 201 ' dir.
-* Durum, grafik örneğinin oluşturulduğunu ancak etkinleştirilmediğini gösteren "etkin değil" olarak belirlenir. Daha fazla bilgi için bkz. [medya grafiği durumları](media-graph-concept.md).
+* Durum `Inactive` , grafik örneğinin oluşturulduğunu ancak etkinleştirilmediğini belirtir. Daha fazla bilgi için bkz. [medya grafiği durumları](media-graph-concept.md).
 
-Sonraki adımlar olarak aşağıdakileri deneyin:
+Aşağıdaki adımları deneyin:
 
-* Aynı yük ile Graphınstanceset komutunu yeniden çağırın ve döndürülen durum kodunun artık 200 olduğunu unutmayın.
-* Graphınstanceset komutunu tekrar çağırın, ancak farklı bir açıklama ile, yanıt yükünde güncelleştirilmiş açıklamanın, grafik örneğinin başarıyla güncelleştirildiğini belirten bir açıklama olduğunu unutmayın.
-* Graphınstanceset 'i çağırın, ancak adı "Sample-Graph-2" olarak değiştirin ve yanıt yükünü gözlemleyin. Yeni bir grafik örneği oluşturulduğunu (yani, durum kodu 201 olduğunu) unutmayın.
+1. `GraphInstanceSet`Aynı yükü kullanarak yeniden çağırın. Döndürülen durum kodu 200 olduğunu unutmayın.
+1. `GraphInstanceSet`Yeniden çağırın, ancak farklı bir açıklama kullanın. Yanıt yükünde, grafik örneğinin başarıyla güncelleştirildiğini belirten güncelleştirilmiş açıklamaya dikkat edin.
+1. Çağırın `GraphInstanceSet` , ancak adı olarak değiştirin `Sample-Graph-2` . Yanıt yükünde, yeni oluşturulan grafik örneğine (durum kodu 201) dikkat edin.
 
 ### <a name="invoke-graphinstanceactivate"></a>Graphınstanceactivate çağır
 
-Şimdi, etkin video akışını modül aracılığıyla Başlatan grafik örneğini etkinleştirin. Aşağıdaki yük ile doğrudan yöntem Graphınstanceactivate öğesini çağırın.
+Şimdi, etkin video akışını modül aracılığıyla başlatmak için grafik örneğini etkinleştirin. `GraphInstanceActivate`Aşağıdaki yükü kullanarak doğrudan yöntemi çağırın.
 
 ```
 {
@@ -444,7 +450,7 @@ Sonraki adımlar olarak aşağıdakileri deneyin:
 }
 ```
 
-Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görmeniz gerekir:
+Birkaç saniye içinde **Çıkış** penceresinde aşağıdaki yanıtı görürsünüz.
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceActivate] to [lva-sample-device/lvaEdge] ...
@@ -455,11 +461,11 @@ Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görmeniz ge
 }
 ```
 
-Yanıt yükünde 200 durum kodu, grafik örneğinin başarıyla etkinleştirildiğini gösterir.
+200 durum kodu, grafik örneğinin başarıyla etkinleştirildiğini gösterir.
 
 ### <a name="invoke-graphinstanceget"></a>Graphınstanceget 'i çağır
 
-Şimdi aşağıdaki yük ile Graphınstanceget doğrudan metodunu çağırın:
+Şimdi `GraphInstanceGet` aşağıdaki yükü kullanarak doğrudan yöntemi çağırın.
 
 ```
  {
@@ -468,7 +474,7 @@ Yanıt yükünde 200 durum kodu, grafik örneğinin başarıyla etkinleştirildi
  }
  ```
 
-Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görmeniz gerekir:
+Birkaç saniye içinde **Çıkış** penceresinde aşağıdaki yanıtı görürsünüz.
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceGet] to [lva-sample-device/lvaEdge] ...
@@ -494,22 +500,24 @@ Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görmeniz ge
 }
 ```
 
-Yanıt yükünde aşağıdakileri göz önünde edin:
+Yanıt yükünde aşağıdaki ayrıntılara dikkat edin:
 
 * Durum kodu, başarıyı belirten 200 ' dir.
-* Durum, grafik örneğinin Şu anda "etkin" durumda olduğunu gösteren "etkin" olarak belirlenir.
+* Durum, `Active` grafik örneğinin artık etkin olduğunu gösterir.
 
 ## <a name="observe-results"></a>Sonuçları gözlemleyin
 
-Yukarıda oluşturduğumuz ve etkinleştirildiğimiz grafik örneği, gelen canlı video akışındaki hareketi algılamak ve olayları IoT Hub havuz düğümüne göndermek için hareket algılama işlemcisi düğümünü kullanır. Bu olaylar daha sonra gözlemlenebilir IoT Edge hub 'ınıza aktarılmıştır. Bunu yapmak için şu adımları uygulayın.
+Oluşturduğumuz ve etkinleştirdiğimiz grafik örneği, gelen canlı video akışındaki hareketi algılamak için hareket algılama işlemcisi düğümünü kullanır. IoT Hub havuz düğümüne olayları gönderir. Bu olaylar IoT Edge hub 'ına aktarıltı. 
 
-1. Visual Studio Code Gezgin bölmesini açın ve sol alt köşedeki Azure IoT Hub arayın.
-2. Cihazlar düğümünü genişletin.
-3. LVA-örnek-cihazındaki sağ-Clink ve "yerleşik olay Izlemeyi Izlemeye başla" seçeneğini seçti.
+Sonuçları gözlemlemek için aşağıdaki adımları izleyin.
 
-![IoT Hub olaylarını izlemeye başlama](./media/quickstarts/start-monitoring-iothub-events.png)
+1. Visual Studio Code ' de **Gezgin** bölmesini açın. Sol alt köşede **Azure IoT Hub**' yi arayın.
+2. **Cihazlar** düğümünü genişletin.
+3. **LVA-Sample-Device** ' a sağ tıklayın ve ardından **yerleşik olay izlemeyi izlemeyi Başlat**' ı seçin.
 
-Çıkış penceresinde aşağıdaki iletiler görüntülenir:
+    ![IoT Hub olaylarını izlemeye başlama](./media/quickstarts/start-monitoring-iothub-events.png)
+    
+**Çıkış** penceresinde şu ileti görüntülenir:
 
 ```
 [IoTHubMonitor] [7:44:33 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -551,16 +559,16 @@ Yukarıda oluşturduğumuz ve etkinleştirildiğimiz grafik örneği, gelen canl
 }
 ```
 
-Yukarıdaki iletide aşağıdakilere göz önünde
+Bu ayrıntılara dikkat edin:
 
-* İleti bir "Body" bölümü ve bir "applicationProperties" bölümü içerir. Bu bölümlerin neyi temsil ettiğini anlamak için [IoT Hub oluştur ve oku](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)makalesini okuyun.
-* applicationProperties 'teki "Subject" iletinin oluşturulduğu MediaGraph içindeki düğüme başvurur. Bu durumda, ileti hareket algılama işlemcisinin kaynağı olur.
-* applicationProperties 'teki "eventType" bir analiz olayı olduğunu gösterir.
-* "eventTime" olayın gerçekleştiği saati gösterir.
-* "gövde" analiz olayı hakkındaki verileri içerir. Bu durumda, olay bir çıkarım olayıdır ve bu nedenle gövde "timestamp" ve "ında" verilerini içerir.
-* "ikinci dereceden" bölümü "tür" ın "Motion" olduğunu ve "Motion" olayı hakkında ek verilere sahip olduğunu gösterir.
+* İleti bir `body` bölüm ve bir bölüm içerir `applicationProperties` . Daha fazla bilgi için bkz. [IoT Hub Iletileri oluşturma ve okuma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+* ' De, içindeki `applicationProperties` `subject` `MediaGraph` iletinin oluşturulduğu düğüme başvurur. Bu durumda, ileti hareket algılama işlemcisinden kaynaklanır.
+* `applicationProperties`' De, `eventType` Bu olayın bir analiz olayı olduğunu gösterir.
+* `eventTime`Değer, olayın gerçekleştiği zaman değeridir.
+* `body`Bölüm, analiz olayı hakkındaki verileri içerir. Bu durumda, olay bir çıkarım olayıdır, bu nedenle gövde `timestamp` ve veri içerir `inferences` .
+* Bölümü, olduğunu `inferences` gösterir `type` `motion` . Olayla ilgili ek veriler sağlar `motion` .
 
-MediaGraph 'in bir süre çalışmasına izin verirseniz çıkış penceresinde aşağıdaki iletiyi de görürsünüz:
+Medya grafiğinin bir süre içinde çalışmasına izin verirseniz **Çıkış** penceresinde aşağıdaki iletiyi görürsünüz.
 
 ```
 [IoTHubMonitor] [7:47:45 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -578,19 +586,19 @@ MediaGraph 'in bir süre çalışmasına izin verirseniz çıkış penceresinde 
 }
 ```
 
-Yukarıdaki iletide aşağıdakilere göz önünde
+Bu iletide aşağıdaki ayrıntılara dikkat edin:
 
-* applicationProperties 'teki "Subject" iletisi, iletinin medya grafiğindeki RTSP kaynak düğümünden oluşturulduğunu gösterir.
-* applicationProperties 'teki "eventType", bunun bir tanılama olayı olduğunu gösterir.
-* "gövde" Tanılama olayı hakkındaki verileri içerir. Bu durumda, olay Mediasessionkurulduğu ve bu nedenle gövdedir.
+* `applicationProperties`' De, `subject` iletinin medya grafiğindeki RTSP kaynak düğümünden oluşturulduğunu gösterir.
+* `applicationProperties`' De, `eventType` Bu olayın tanılama olduğunu gösterir.
+* `body`Tanılama olayı hakkındaki verileri içerir. Bu durumda, olay olduğu için ileti gövdesini içerir `MediaSessionEstablished` .
 
 ## <a name="invoke-additional-direct-methods-to-clean-up"></a>Temizlemek için ek doğrudan Yöntemler çağırma
 
-Şimdi, grafik örneğini devre dışı bırakmak ve silmek için doğrudan yöntemleri çağırın (Bu sırada).
+Önce grafik örneğini devre dışı bırakıp doğrudan yöntemleri çağırın ve sonra silin.
 
 ### <a name="invoke-graphinstancedeactivate"></a>Graphınstancedeactivate öğesini çağır
 
-Aşağıdaki yük ile doğrudan yöntem Graphınstancedeactivate öğesini çağırın.
+`GraphInstanceDeactivate`Aşağıdaki yükü kullanarak doğrudan yöntemi çağırın.
 
 ```
 {
@@ -599,7 +607,7 @@ Aşağıdaki yük ile doğrudan yöntem Graphınstancedeactivate öğesini çağ
 }
 ```
 
-Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görmeniz gerekir:
+Birkaç saniye içinde **Çıkış** penceresinde aşağıdaki yanıtı görürsünüz:
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceDeactivate] to [lva-sample-device/lvaEdge] ...
@@ -610,15 +618,13 @@ Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görmeniz ge
 }
 ```
 
-200 durum kodu grafik örneğinin başarıyla devre dışı bırakıldığını gösterir.
+200 durum kodu, grafik örneğinin başarıyla devre dışı bırakıldığını gösterir.
 
-Sonraki adımlarda aşağıdaki adımları deneyin.
-
-* Önceki bölümlerde gösterildiği gibi Graphınstanceget komutunu çağırın ve "durum" değerini gözlemleyin.
+Ardından, `GraphInstanceGet` Bu makalede daha önce belirtildiği gibi çağırma yapmayı deneyin. Değeri gözlemleyin `state` .
 
 ### <a name="invoke-graphinstancedelete"></a>Graphınstancedelete 'i çağır
 
-Aşağıdaki yük ile Graphınstancedelete doğrudan yöntemini çağır
+`GraphInstanceDelete`Aşağıdaki yükü kullanarak doğrudan yöntemi çağırın.
 
 ```
 {
@@ -627,7 +633,7 @@ Aşağıdaki yük ile Graphınstancedelete doğrudan yöntemini çağır
 }
 ```
 
-Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görmeniz gerekir:
+Birkaç saniye içinde **Çıkış** penceresinde aşağıdaki yanıtı görürsünüz:
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceDelete] to [lva-sample-device/lvaEdge] ...
@@ -638,11 +644,11 @@ Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görmeniz ge
 }
 ```
 
-Yanıtta 200 durum kodu, grafik örneğinin başarıyla silindiğini gösterir.
+200 durum kodu, grafik örneğinin başarıyla silindiğini gösterir.
 
 ### <a name="invoke-graphtopologydelete"></a>Graphtopologyıdelete komutunu çağır
 
-Aşağıdaki yük ile doğrudan GraphTopologyDelete yöntemini çağırın:
+`GraphTopologyDelete`Aşağıdaki yükü kullanarak doğrudan yöntemi çağırın.
 
 ```
 {
@@ -651,7 +657,7 @@ Aşağıdaki yük ile doğrudan GraphTopologyDelete yöntemini çağırın:
 }
 ```
 
-Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görmeniz gerekir:
+Birkaç saniye içinde **Çıkış** penceresinde aşağıdaki yanıtı görürsünüz.
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologyDelete] to [lva-sample-device/lvaEdge] ...
@@ -664,16 +670,16 @@ Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görmeniz ge
 
 200 durum kodu grafik topolojisinin başarıyla silindiğini gösterir.
 
-Sonraki adımlar olarak aşağıdakileri deneyin.
+Aşağıdaki adımları deneyin:
 
-* Graphtopologyılist ' i çağırın ve modülde hiç grafik topolojisi olmadığını gözlemleyin.
-* Graphtopologyılist ile aynı yük ile Graphınstancelist öğesini çağırın ve bir grafik örneği numaralandırılmıyor olduğunu gözlemleyin.
+1. `GraphTopologyList`' İ çağırın ve modülün hiçbir Graf topolojisi içerdiğini gözlemleyin.
+1. İle `GraphInstanceList` aynı yükü kullanarak çağırın `GraphTopologyList` . Hiç grafik örneği numaralandırılmıyor ' i gözlemleyin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu uygulamayı kullanmaya devam etmeyecekecekseniz, bu hızlı başlangıçta oluşturulan kaynakları silin.
+Bu uygulamayı kullanmaya devam etmeyecekecekseniz, bu hızlı başlangıçta oluşturduğunuz kaynakları silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* IoT Edge 'da canlı video analizi kullanarak video kaydetmeyi öğrenin
-* Tanılama iletileri hakkında daha fazla bilgi edinin.
+* [IoT Edge üzerindeki canlı video analizlerini kullanarak nasıl video kaydedeceğinizi](continuous-video-recording-tutorial.md)öğrenin.
+* [Tanılama iletileri](monitoring-logging.md)hakkında daha fazla bilgi edinin.

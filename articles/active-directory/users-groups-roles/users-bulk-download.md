@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: daveba
 ms.date: 04/16/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b35163387ed4ce71f7a2019835a1d9fdbff3051
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 00dfac7c3036c4fd457c5d3a6bb4eb7bd4e56998
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81532670"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84731333"
 ---
 # <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>Azure Active Directory portalındaki kullanıcıların listesini indirme
 
@@ -32,7 +32,7 @@ Azure AD Yönetim merkezinden Kullanıcı listesini indirmek için Azure AD 'de 
 
 1. Kuruluştaki bir Kullanıcı Yöneticisi hesabıyla [Azure AD kuruluşunuzda oturum açın](https://aad.portal.azure.com) .
 2. Azure Active Directory > kullanıcılara gidin. Ardından, her kullanıcının yanındaki sol sütundaki kutuyu seçerek karşıdan yüklemeye dahil etmek istediğiniz kullanıcıları seçin. Note: Şu anda, dışarı aktarma için tüm kullanıcıları seçmenin bir yolu yoktur. Her birinin tek tek seçilmiş olması gerekir.
-3. Azure AD 'de kullanıcılar**kullanıcıları indirir**' **ı seçin.** > 
+3. Azure AD **'de kullanıcılar**  >  **kullanıcıları indirir**' ı seçin.
 4. **Kullanıcıları indir** sayfasında, Kullanıcı profili özelliklerini listelemek üzere bir CSV dosyası almak için **Başlat** ' ı seçin. Hatalar varsa, sonuçlar dosyasını toplu işlem sonuçları sayfasında indirebilir ve görüntüleyebilirsiniz. Dosya her hatanın nedenini içerir.
 
    ![Listeden indirmek istediğiniz kullanıcıları seçin](./media/users-bulk-download/bulk-download.png)

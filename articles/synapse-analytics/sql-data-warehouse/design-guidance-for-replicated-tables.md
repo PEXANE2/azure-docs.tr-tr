@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 6f3418d73496ae25782b57a43e3357dc0bc7131a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8328750849f5466c8754499694a41615776ff3da
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660028"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201710"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda çoğaltılan tabloları kullanmaya yönelik tasarım kılavuzu
 
@@ -24,7 +24,7 @@ Bu makale, SYNAPSE SQL havuzu şemanızda çoğaltılan tabloları tasarlamaya y
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, SQL havuzundaki veri dağıtımı ve veri taşıma kavramlarıyla ilgili bilgi sahibi olduğunuz varsayılır.Daha fazla bilgi için bkz. [mimari](massively-parallel-processing-mpp-architecture.md) makalesi.
 
@@ -126,7 +126,7 @@ Yeniden oluşturulup `DimDate` `DimSalesTerritory` çoğaltılan tablolar olarak
 
 SQL havuzu, tablonun ana sürümünü tutarak çoğaltılan bir tablo uygular. Ana sürümü her Işlem düğümündeki ilk dağıtım veritabanına kopyalar. Bir değişiklik olduğunda, önce ana sürüm güncellenir, ardından her bir Işlem düğümündeki tablolar yeniden oluşturulur. Çoğaltılan bir tablonun yeniden oluşturulması, tablonun her bir Işlem düğümüne kopyalanmasını ve sonra dizinlerin oluşturulmasını içerir.  Örneğin, DW2000c üzerindeki çoğaltılan bir tablo, verilerin 5 kopyasını içerir.  Her Işlem düğümündeki bir ana kopya ve tam kopya.  Tüm veriler dağıtım veritabanlarında depolanır. SQL havuzu, daha hızlı veri değiştirme deyimlerini ve esnek ölçeklendirme işlemlerini desteklemek için bu modeli kullanır.
 
-Sonrasında yeniden, gereklidir:
+Zaman uyumsuz yeniden oluşturmanız, çoğaltılan tablodaki ilk sorgu tarafından şu tarihten sonra tetiklenir:
 
 - Veriler yüklendi veya değiştirildi
 - SYNAPSE SQL örneği farklı bir düzeye ölçeklendirilir

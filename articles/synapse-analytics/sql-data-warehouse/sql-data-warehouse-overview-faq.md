@@ -6,16 +6,16 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 8b9a1caa750c7c27b2a6c845843b8bb6b779086d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a0d98a2c58e7629f988d0d3e8015355ba414c07a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561319"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201150"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) sık sorulan sorular
 
@@ -57,9 +57,9 @@ S. Neden Ölçeklendirmeliyim/Duraklat/devam eden uzun sürüyor?
 
 A. Birkaç etken, işlem yönetimi işlemlerinin süresini etkileyebilir. Uzun süre çalışan işlemler için ortak bir durum işlem geri alma işlemi olur. Bir ölçek veya duraklatma işlemi başlatıldığında, tüm gelen oturumlar engellenir ve sorgular kaldırılır. Sistemin kararlı durumda kalmasını sağlamak için, bir işlemin bir işlem yapılmadan önce geri alınması gerekir. İşlemin ne kadar büyük olması ve günlük boyutunun daha büyük olması, işlemin daha uzun olması sistem kararlı duruma geri yüklenmeye karşı daha uzundur.
 
-S: SYNAPSE içinde yayımlanmış bir yapıtı (veri kümesi, Not defteri, SQL betiği vb.) yeniden adlandırma Nasıl yaparım??
+S: Azure SYNAPSE 'de yayımlanmış bir yapıtı (veri kümesi, Not defteri, SQL betiği vb.) yeniden adlandırma Nasıl yaparım??
 
-Y: yayınlanmış bir yapıt dosyasını yeniden adlandırmak Için önce dosyayı kopyalayın ve tercih ettiğiniz yeni dosya adını yeniden adlandırın. Yapıtın tüm başvurularını yeni dosyaya el ile güncelleştirmeniz ve eski olanı silmeniz gerekir.
+Y: yayımlanmış bir yapıt dosyasını yeniden adlandırmak Için, önce dosyayı kopyalayın ve yeni dosyayı tercih ettiğiniz adla yeniden adlandırın. Yapıtın tüm başvurularını yeni dosya adına el ile güncelleştirmeniz ve eski olanı silmeniz gerekir.
 
 ## <a name="user-support"></a>Kullanıcı desteği
 

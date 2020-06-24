@@ -3,15 +3,15 @@ title: Azure Cosmos DB içindeki JavaScript sorgu API 'sini kullanarak saklı yo
 description: Azure Cosmos DB içinde JavaScript sorgu API 'sini kullanarak saklı yordamları ve Tetikleyicileri yazmayı öğrenin
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: tisande
-ms.openlocfilehash: bc92a1276232506d291e367f74a9dcf8d58d7e07
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 620b05b306622a0102a4fd932c013bdb9574c35c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982335"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262863"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>JavaScript sorgu API 'sini kullanarak Azure Cosmos DB saklı yordamları ve Tetikleyicileri yazma
 
@@ -19,10 +19,10 @@ Azure Cosmos DB, saklı yordamları veya Tetikleyicileri yazmak için kullanıla
 
 ## <a name="stored-procedure-using-the-javascript-query-api"></a><a id="stored-procedures"></a>JavaScript sorgu API 'SI kullanılarak saklı yordam
 
-Aşağıdaki kod örneği, JavaScript sorgu API 'sinin saklı yordam bağlamında nasıl kullanıldığına ilişkin bir örnektir. Saklı yordam, bir giriş parametresi tarafından belirtilen bir Azure Cosmos öğesi ekler ve `__.filter()` yöntemi kullanılarak bir meta veri belgesini MinSize, MaxSize ve totalSize giriş öğesinin size özelliğine göre güncelleştirir.
+Aşağıdaki kod örneği, JavaScript sorgu API 'sinin saklı yordam bağlamında nasıl kullanıldığına ilişkin bir örnektir. Saklı yordam, bir giriş parametresi tarafından belirtilen bir Azure Cosmos öğesi ekler ve yöntemi kullanılarak bir meta veri belgesini `__.filter()` MinSize, MaxSize ve totalSize giriş öğesinin size özelliğine göre güncelleştirir.
 
 > [!NOTE]
-> `__`(çift alt çizgi), JavaScript sorgu API `getContext().getCollection()` 'si kullanılırken bir diğer addır.
+> `__`(çift alt çizgi), `getContext().getCollection()` JavaScript sorgu API 'si kullanılırken bir diğer addır.
 
 ```javascript
 /**

@@ -5,25 +5,25 @@ author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: d86a0df5265418a28e1fe68de0dc2cd601e71f61
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9428ad0756fac59f54e7036d26a1b7d6408cab31
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015600"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200979"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Azure 'da bir veritabanının güvenliğini sağlama SYNAPSE
 
 > [!div class="op_single_selector"]
 >
 > * [Güvenliğe genel bakış](sql-data-warehouse-overview-manage-security.md)
-> * [Kimlik Doğrulaması](sql-data-warehouse-authentication.md)
+> * [Kimlik doğrulaması](sql-data-warehouse-authentication.md)
 > * [Şifreleme (portal)](sql-data-warehouse-encryption-tde.md)
 > * [Şifreleme (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
@@ -41,7 +41,7 @@ Azure SYNAPSE Analytics, sunucu düzeyinde IP güvenlik duvarı kuralları kulla
 
 SQL havuzunuza bağlantılar varsayılan olarak şifrelenir.  Şifrelemeyi devre dışı bırakmak için bağlantı ayarlarını değiştirme yok sayılır.
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
 Kimlik doğrulaması, veritabanına bağlanırken kimliğinizi nasıl kanıtlayacağınızı belirtir. SQL havuzu şu anda Kullanıcı adı ve parolayla SQL Server kimlik doğrulamasını destekler ve Azure Active Directory.
 

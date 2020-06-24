@@ -6,15 +6,15 @@ author: euangMS
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
-ms.subservice: ''
+ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 27ec09f1286f4e7999db56acdedaba1a37122aad
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1ec73c07d97a0e400e048e77ba6a30a6a12c0fc4
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656185"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194918"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Hızlı başlangıç: Web araçlarını kullanarak Azure SYNAPSE Analytics 'te Apache Spark Havuzu (Önizleme) oluşturma
 
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
@@ -119,7 +119,7 @@ Yapılandırılmış Sorgu Dili (SQL), verileri sorgulamak ve tanımlamak için 
 6. X ekseni sütun alanında "durum" ı seçin.
 7. Y ekseni sütun alanında "ücret" i seçin.
 8. **Toplama** alanında "Ort" seçeneğini belirleyin.
-9. **Apply** (Uygula) seçeneğini belirleyin.
+9. **Uygula**’yı seçin.
 
    ![Azure SYNAPSE Spark 'da grafik çıkışı](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Azure SYNAPSE Spark 'da grafik çıkışı")
 

@@ -4,15 +4,15 @@ description: Bu makalede, bir savunma konağını oluşturma ve silme hakkında 
 services: bastion
 author: mialdrid
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2020
 ms.author: mialdrid
-ms.openlocfilehash: f98c965ad3b776f3688a716ba28b5367a00c9119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7f80bb7f9be2e01aa24090d7305b1a5d882da04
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619217"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255525"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>Azure CLı kullanarak Azure savunma Konağı oluşturma
 
@@ -26,7 +26,7 @@ Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure aboneliğiniz yoksa [MS
 
 [!INCLUDE [cloudshell cli](../../includes/vpn-gateway-cloud-shell-cli.md)]
 
-## <a name="create-a-bastion-host"></a><a name="createhost"></a>Bastion konağı oluşturma
+## <a name="create-a-bastion-host"></a><a name="createhost"></a>Savunma Konağı oluşturma
 
 Bu bölüm, Azure CLı kullanarak yeni bir Azure savunma kaynağı oluşturmanıza yardımcı olur.
 
@@ -39,7 +39,7 @@ Bu bölüm, Azure CLı kullanarak yeni bir Azure savunma kaynağı oluşturmanı
 2. Azure savunma için genel bir IP adresi oluşturun. Genel IP, RDP/SSH 'ye erişilecek savunma kaynağına genel IP adresidir (443 numaralı bağlantı noktası üzerinden). Genel IP adresi, oluşturmakta olduğunuz savunma kaynağıyla aynı bölgede olmalıdır.
 
    ```azurecli-interactive
-   az network public-ip create -g MyResourceGroup -n MyIp
+   az network public-ip create -g MyResourceGroup -n MyIp --sku Standard
    ```
 
 3. Sanal ağınızın AzureBastionSubnet yeni bir Azure savunma kaynağı oluşturun. Savunma kaynağının oluşturulması ve dağıtılması yaklaşık 5 dakika sürer.

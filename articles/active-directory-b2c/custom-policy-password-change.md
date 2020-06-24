@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2c351f8a95110a32c53c68c5eb6095918578bc5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b978e6335aaf6927fe070285f2255910b31b7ffa
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189183"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202628"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak parola değişikliğini yapılandırma
 
@@ -30,9 +30,9 @@ Azure Active Directory B2C (Azure AD B2C) ' de, yerel bir hesapla oturum açan k
 
 ## <a name="add-the-elements"></a>Öğeleri ekleyin
 
-1. *TrustframeworkExtensions. xml* dosyanızı açın ve aşağıdaki **ClaimType** öğesini `oldPassword` [claimsschema](claimsschema.md) öğesine tanıtıcısı ile ekleyin:
+1. *TrustframeworkExtensions.xml* dosyanızı açın ve aşağıdaki **ClaimType** öğesini `oldPassword` [claimsschema](claimsschema.md) öğesine tanıtıcısı ile ekleyin:
 
-    ```XML
+    ```xml
     <BuildingBlocks>
       <ClaimsSchema>
         <ClaimType Id="oldPassword">
@@ -47,7 +47,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de, yerel bir hesapla oturum açan k
 
 2. Bir [ClaimsProvider](claimsproviders.md) öğesi, kullanıcının kimliğini doğrulayan teknik profili içerir. Aşağıdaki talep sağlayıcılarını **Claimsproviders** öğesine ekleyin:
 
-    ```XML
+    ```xml
     <ClaimsProviders>
       <ClaimsProvider>
         <DisplayName>Local Account SignIn</DisplayName>
@@ -121,11 +121,11 @@ Azure Active Directory B2C (Azure AD B2C) ' de, yerel bir hesapla oturum açan k
     </ClaimsProviders>
     ```
 
-    Önkoşul `IdentityExperienceFrameworkAppId` öğreticisinde oluşturduğunuz IdentityExperienceFramework UYGULAMASıNıN uygulama kimliğiyle değiştirin. Daha `ProxyIdentityExperienceFrameworkAppId` önce oluşturduğunuz ProxyIdentityExperienceFramework UYGULAMASıNıN uygulama kimliğiyle değiştirin.
+    `IdentityExperienceFrameworkAppId`Önkoşul öğreticisinde oluşturduğunuz IdentityExperienceFramework uygulamasının uygulama kimliğiyle değiştirin. `ProxyIdentityExperienceFrameworkAppId`Daha önce oluşturduğunuz ProxyIdentityExperienceFramework uygulamasının uygulama kimliğiyle değiştirin.
 
-3. [Kullanıcıyolculuğu](userjourneys.md) öğesi, uygulamanız ile etkileşim kurarken kullanıcının aldığı yolu tanımlar. Kullanıcı tarafından tanımlanan **Kullanıcı yolculuğu** Ile yoksa `PasswordChange` **userıt neys** öğesini ekleyin:
+3. [Kullanıcıyolculuğu](userjourneys.md) öğesi, uygulamanız ile etkileşim kurarken kullanıcının aldığı yolu tanımlar. Kullanıcı tarafından tanımlanan **Kullanıcı yolculuğu** Ile yoksa **Userıt neys** öğesini ekleyin `PasswordChange` :
 
-    ```XML
+    ```xml
     <UserJourneys>
       <UserJourney Id="PasswordChange">
         <OrchestrationSteps>
@@ -151,17 +151,17 @@ Azure Active Directory B2C (Azure AD B2C) ' de, yerel bir hesapla oturum açan k
     </UserJourneys>
     ```
 
-4. *TrustFrameworkExtensions. xml* ilke dosyasını kaydedin.
-5. Başlangıç paketiyle indirdiğiniz *Profileedit. xml* dosyasını kopyalayın ve *Profileeditpasswordchange. xml*olarak adlandırın.
+4. *TrustFrameworkExtensions.xml* ilke dosyasını kaydedin.
+5. Yüklediğiniz *ProfileEdit.xml* dosyasını başlangıç paketiyle kopyalayın ve *ProfileEditPasswordChange.xml*adlandırın.
 6. Yeni dosyayı açın ve **PolicyId** özniteliğini benzersiz bir değerle güncelleştirin. Bu değer, ilkenizin adıdır. Örneğin, *B2C_1A_profile_edit_password_change*.
-7. ' `<DefaultUserJourney>` Deki **referenceıd** özniteliğini, oluşturduğunuz yenı Kullanıcı yolculuğunun kimliğiyle eşleşecek şekilde değiştirin. Örneğin, *PasswordChange*.
+7. ' Deki **Referenceıd** özniteliğini, `<DefaultUserJourney>` oluşturduğunuz yeni Kullanıcı yolculuğunun kimliğiyle eşleşecek şekilde değiştirin. Örneğin, *PasswordChange*.
 8. Yaptığınız değişiklikleri kaydedin.
 
 Örnek ilkeyi [burada](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change)bulabilirsiniz.
 
 ## <a name="test-your-policy"></a>İlkenizi test etme
 
-Azure AD B2C ' de Uygulamalarınızı sınarken, içindeki talepleri gözden geçirebilmek `https://jwt.ms` için Azure AD B2C belirtecinin geri döndürüldüğünden yararlı olabilir.
+Azure AD B2C ' de Uygulamalarınızı sınarken, `https://jwt.ms` içindeki talepleri gözden geçirebilmek için Azure AD B2C belirtecinin geri döndürüldüğünden yararlı olabilir.
 
 ### <a name="upload-the-files"></a>Dosyaları karşıya yükleme
 
@@ -170,14 +170,14 @@ Azure AD B2C ' de Uygulamalarınızı sınarken, içindeki talepleri gözden ge�
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Kimlik deneyimi çerçevesini**seçin.
 5. Özel Ilkeler sayfasında, **Ilkeyi karşıya yükle**' ye tıklayın.
-6. Varsa **Ilkenin üzerine yaz**' ı seçin ve ardından *TrustframeworkExtensions. xml* dosyasını bulun ve seçin.
+6. Varsa **Ilkenin üzerine yaz**' ı seçin ve ardından *TrustframeworkExtensions.xml* dosyasını arayıp seçin.
 7. **Karşıya Yükle**'ye tıklayın.
-8. Bağlı olan taraf dosyası için *Profileeditpasswordchange. xml*gibi 5 ' ten 7 ' ye kadar olan adımları yineleyin.
+8. *ProfileEditPasswordChange.xml*gibi bağlı olan taraf dosyası için 5 ile 7 arasındaki adımları yineleyin.
 
 ### <a name="run-the-policy"></a>İlkeyi çalıştırma
 
 1. Değiştirdiğiniz ilkeyi açın. Örneğin, *B2C_1A_profile_edit_password_change*.
-2. **Uygulama**için, daha önce kaydetmiş olduğunuz uygulamanızı seçin. Belirteci görmek için, **yanıt URL 'sinin** gösterilmesi `https://jwt.ms`gerekir.
+2. **Uygulama**için, daha önce kaydetmiş olduğunuz uygulamanızı seçin. Belirteci görmek için, **yanıt URL 'sinin** gösterilmesi gerekir `https://jwt.ms` .
 3. **Şimdi çalıştır**’a tıklayın. Daha önce oluşturduğunuz acouyeniden bağlama ile oturum açın. Şimdi parolayı değiştirme fırsatına sahip olmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

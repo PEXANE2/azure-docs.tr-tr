@@ -4,15 +4,15 @@ description: Bu makalede, Cisco ASA cihazlarını Azure VPN ağ geçitlerine ba�
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: 96e5c26ea7b5f1baa33fd8830491ee3aa1e60221
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec370ca3aa8d89111dcb4737701c7ea58cd48195
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75778091"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986104"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Örnek yapılandırma: Cisco ASA cihazı (Ikev2/BGP yok)
 Bu makalede Cisco Uyarlamalı güvenlik gereci (ASA) cihazlarını Azure VPN ağ geçitlerine bağlamak için örnek yapılandırma sağlanmaktadır. Örnek, Sınır Ağ Geçidi Protokolü (BGP) olmadan Ikev2 çalıştıran Cisco ASA cihazları için geçerlidir. 
@@ -27,7 +27,7 @@ Bu makalede Cisco Uyarlamalı güvenlik gereci (ASA) cihazlarını Azure VPN ağ
 | Test edilen model           | ASA 5505                          |
 | Test edilen sürüm         | 9,2                               |
 | IKE sürümü            | IKEv2                             |
-| BGP                    | Hayır                                |
+| BGP                    | No                                |
 | Azure VPN ağ geçidi türü | Rota temelli VPN ağ geçidi           |
 |                        |                                   |
 
@@ -53,7 +53,7 @@ Azure yapılandırmalarının derlenmesi için adım adım yönergeler için bkz
 ### <a name="virtual-network-and-vpn-gateway-information"></a>Sanal ağ ve VPN ağ geçidi bilgileri
 Bu bölümde örnek için parametreler listelenir.
 
-| **Parametre**                | **Deeri**                    |
+| **Parametre**                | **Değer**                    |
 | ---                          | ---                          |
 | Sanal ağ adresi önekleri        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN ağ geçidi IP 'si         | Azure_Gateway_Public_IP      |
@@ -70,7 +70,7 @@ Bu bölümde örnek için parametreler listelenir.
 ### <a name="ipsecike-policy-and-parameters"></a>IPSec/ıKE ilkesi ve parametreleri
 Aşağıdaki tabloda, örnekte kullanılan IPSec/ıKE algoritmaları ve parametreleri listelenmektedir. VPN cihaz modelleriniz ve bellenim sürümleriniz için desteklenen algoritmaların doğrulanması için VPN cihazı belirtimlerine başvurun.
 
-| **IPsec/IKEv2**  | **Deeri**                            |
+| **IPsec/IKEv2**  | **Değer**                            |
 | ---              | ---                                  |
 | IKEv2 Şifrelemesi | AES256                               |
 | IKEv2 Bütünlüğü  | SHA384                               |
@@ -287,13 +287,13 @@ Hata ayıklama amacıyla aşağıdaki ASA komutlarını kullanın:
     debug crypto ikev2 platform <level>
     debug crypto ikev2 protocol <level>
     ```
-    `debug` Komutlar konsolda önemli bir çıktı oluşturabilir.
+    `debug`Komutlar konsolda önemli bir çıktı oluşturabilir.
 
 * Cihazdaki geçerli konfigürasyonları göster:
     ```
     show run
     ```
-    Cihaz `show` yapılandırmasının belirli kısımlarını listelemek için alt komutları kullanın, örneğin:
+    `show`Cihaz yapılandırmasının belirli kısımlarını listelemek için alt komutları kullanın, örneğin:
     ```
     show run crypto
     show run access-list

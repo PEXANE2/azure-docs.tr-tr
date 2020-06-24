@@ -2,16 +2,16 @@
 title: Couşbase 'ten Azure Cosmos DB SQL API 'sine geçiş
 description: Couşbase 'ten Azure Cosmos DB SQL API 'sine geçiş için adım adım yönergeler
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
-ms.openlocfilehash: 248860ad6963fcd04526f0d94e52d6a6181463c5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f7c0cb893f65688145811cbd2a0280c2d232d7a9
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657351"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261928"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Couşbase 'ten Azure Cosmos DB SQL API 'sine geçiş
 
@@ -109,7 +109,7 @@ Aşağıdaki bölümlerde bu SDK 'ların her birinin ne zaman kullanılacağı a
 
 Geçirdiğiniz iş yükü Spring Boot tabanlı SDK 'yı temel alıyorsa aşağıdaki adımları kullanabilirsiniz:
 
-1. Pod. xml dosyasına üst öğe ekleyin:
+1. Üst öğeyi POM.xml dosyasına ekleyin:
 
    ```java
    <parent>
@@ -120,13 +120,13 @@ Geçirdiğiniz iş yükü Spring Boot tabanlı SDK 'yı temel alıyorsa aşağı
    </parent>
    ```
 
-1. Pod. xml dosyasına özellikler ekleyin:
+1. POM.xml dosyasına özellikler ekleyin:
 
    ```java
    <azure.version>2.1.6</azure.version>
    ```
 
-1. Pod. xml dosyasına bağımlılıklar ekleyin:
+1. POM.xml dosyasına bağımlılıklar ekleyin:
 
    ```java
    <dependency>
@@ -200,7 +200,7 @@ N1QL sorgularınızda aşağıdaki değişiklikleri görebilirsiniz:
 
 Zaman uyumsuz Java SDK 'sını aşağıdaki adımlarla kullanın:
 
-1. Pod. xml dosyası üzerinde aşağıdaki bağımlılığı yapılandırın:
+1. POM.xml dosya üzerinde aşağıdaki bağımlılığı yapılandırın:
 
    ```java
    <!-- https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb -->

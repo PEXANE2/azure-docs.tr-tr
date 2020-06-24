@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ddf631601510e725d77cc391ad41192a47ab0cf1
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77526799"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752482"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web uygulaması güvenlik duvarı istek boyutu sınırları ve dışlama listeleri
 
@@ -31,7 +31,6 @@ Aşağıdaki öznitelikler ada göre dışlama listelerine eklenebilir. Seçilen
 * İstek özniteliği adı (args) bir dışlama öğesi olarak eklenebilir, örneğin:
 
    * Form alanı adı
-   * XML varlığı
    * JSON varlığı
    * URL sorgu dizesi bağımsız değişkenleri
 

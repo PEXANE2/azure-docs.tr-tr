@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
 ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244400"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298132"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Azure Blob Depolama kaynaklarını Depolama Gezgini'yle yönetme
 
@@ -188,7 +188,7 @@ Aşağıdaki adımlarda blob kapsayıcısı içindeki Blobların (ve klasörleri
         ![Karşıya dosya yükleme seçenekleri][16]
      3. **BLOB türünün**türünü belirtin. Daha fazla bilgi için bkz. [kapsayıcı oluşturma](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container) .
      4. İsteğe bağlı olarak, seçili dosyaların karşıya yükleneceği bir hedef klasör belirtin. Hedef klasör mevcut değilse, oluşturulur.
-     5. **Karşıya yükle**' yi seçin.
+     5. **Karşıya Yükle**'yi seçin.
    * **Blob kapsayıcısına bir klasör yükleme**
 
      1. Ana bölmedeki araç çubuğunda **karşıya yükle**' yi ve ardından açılan menüden **klasörü karşıya yükle** ' yi seçin.
@@ -199,7 +199,7 @@ Aşağıdaki adımlarda blob kapsayıcısı içindeki Blobların (ve klasörleri
         ![Klasör yükleme seçenekleri][18]
      3. **BLOB türünün**türünü belirtin. Daha fazla bilgi için bkz. [kapsayıcı oluşturma](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container) .
      4. İsteğe bağlı olarak, seçili klasörün içeriklerinin yükleneceği bir hedef klasör belirtin. Hedef klasör mevcut değilse, oluşturulur.
-     5. **Karşıya yükle**' yi seçin.
+     5. **Karşıya Yükle**'yi seçin.
    * **Yerel bilgisayarınıza blob indirme**
 
      1. İndirmek istediğiniz blobu seçin.

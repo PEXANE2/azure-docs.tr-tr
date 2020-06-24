@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 8a69e0bfe172d2cc7a291ee51ffa73ae7b484731
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 30a4e375bc05d939358b54b279228e1696b17e66
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613641"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84729345"
 ---
 # <a name="how-is-the-new-azure-digital-twins-different-from-the-previous-version-2018"></a>Yeni Azure dijital TWINS 'in önceki sürümden (2018) farkı nedir?
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure Digital TWINS 'in ilk genel önizlemesi Ekim 2018 ' de yayımlanmıştır. Bu önceki sürümden temel kavramlar, artık genel önizlemede bulunan yeni hizmete devredilirken, arabirimlerin ve uygulama ayrıntılarının birçoğu hizmeti daha esnek ve erişilebilir hale getirmek için değiştirilmiştir. Bu değişiklikler müşteri geri bildirimleri tarafından görüşmiş.
 

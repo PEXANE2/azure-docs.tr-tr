@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 983699dfbfe3e8fa332da4810d1514a11029077f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261105"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690907"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect Eşitleme: Filtrelemeyi yapılandırma
 Filtreleme kullanarak, şirket içi dizininizden Azure Active Directory (Azure AD) içinde hangi nesnelerin göründüğünü denetleyebilirsiniz. Varsayılan yapılandırma, yapılandırılan ormanlardaki tüm etki alanlarındaki tüm nesneleri alır. Genel olarak, önerilen yapılandırmadır. Exchange Online ve Skype Kurumsal gibi Office 365 iş yüklerini kullanan kullanıcılar, e-posta gönderebilmeleri ve herkes arayabilmesi için tüm genel adres listesinden faydalanır. Varsayılan yapılandırmayla, Exchange veya Lync 'in şirket içi uygulamasıyla aynı deneyim yaşar.
 
-Ancak bazı durumlarda, varsayılan yapılandırmada bazı değişiklikler yapmanız gerekir. İşte bazı örnekler:
+Ancak bazı durumlarda, varsayılan yapılandırmada bazı değişiklikler yapmanız gerekir. Aşağıda bazı örnekler verilmiştir:
 
 * [Çoklu Azure AD dizin topolojisini](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant)kullanmayı planlıyorsunuz. Ardından belirli bir Azure AD dizini ile eşitlenecek nesneleri denetlemek için bir filtre uygulamanız gerekir.
 * Azure veya Office 365 için bir pilot çalıştıralım ve yalnızca Azure AD 'de kullanıcıların bir alt kümesini istiyorsunuz. Küçük pilot sürümünde, işlevselliği göstermek için bir genel adres listesinin tamamen olması önemli değildir.
@@ -61,9 +61,9 @@ Birden fazla ormanınız varsa, bu konuda açıklanan filtreleme yapılandırmal
 Her 30 dakikada bir eşitleme döngüsünü tetikleyen yerleşik zamanlayıcıyı devre dışı bırakmak için şu adımları izleyin:
 
 1. Bir PowerShell istemine gidin.
-2. Zamanlayıcıyı `Set-ADSyncScheduler -SyncCycleEnabled $False` devre dışı bırakmak için ' i çalıştırın.
+2. `Set-ADSyncScheduler -SyncCycleEnabled $False`Zamanlayıcıyı devre dışı bırakmak için ' i çalıştırın.
 3. Bu makalede belgelenen değişiklikleri yapın.
-4. Zamanlayıcıyı `Set-ADSyncScheduler -SyncCycleEnabled $True` yeniden etkinleştirmek için ' i çalıştırın.
+4. `Set-ADSyncScheduler -SyncCycleEnabled $True`Zamanlayıcıyı yeniden etkinleştirmek için ' i çalıştırın.
 
 **1.1.105.0 önce bir Azure AD Connect derlemesi kullanıyorsanız**  
 Her üç saatte bir eşitleme döngüsünü tetikleyen zamanlanmış görevi devre dışı bırakmak için şu adımları izleyin:
@@ -144,7 +144,7 @@ Etki alanı filtrenizi güncelleştirdiyseniz, çalıştırma profillerini de g�
 3. Her profil için **eklenen** ve **kaldırılan** etki alanlarını ayarlayın.
     1. Her beş profilin her biri için, **eklenen** her etki alanı için aşağıdaki adımları uygulayın:
         1. Çalıştır profilini seçin ve **yeni adım**' a tıklayın.
-        2. **Adım Yapılandır** sayfasındaki **tür** açılan menüsünde, yapılandırmakta olduğunuz profille aynı ada sahip adım türünü seçin. Ardından **İleri**’ye tıklayın.  
+        2. **Adım Yapılandır** sayfasındaki **tür** açılan menüsünde, yapılandırmakta olduğunuz profille aynı ada sahip adım türünü seçin. Ardından **İleri**'ye tıklayın.  
         ![Bağlayıcı çalıştırma profilleri 2](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep1.png)  
         3. **Bağlayıcı yapılandırma** sayfasında, **bölüm** açılan menüsünde, etki alanı Filtrenizle eklemiş olduğunuz etki alanının adını seçin.  
         ![Bağlayıcı çalıştırma profilleri 3](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep2.png)  
@@ -270,7 +270,7 @@ Gerekirse, eşitlemeye daha fazla nesne dahil ettiğiniz ilk tür için daha faz
 ### <a name="outbound-filtering"></a>Giden filtreleme
 Bazı durumlarda filtrelemeyi yalnızca, nesneler meta veri deposuna katıldıktan sonra yapmanız gerekir. Örneğin, bir nesnenin eşitlenip eşitlenmeyeceğini anlamak için kaynak ormanından posta özniteliğine ve hesap ormanındaki userPrincipalName özniteliğine bakmak gerekebilir. Bu durumlarda, giden kuralında filtrelemeyi oluşturursunuz.
 
-Bu örnekte, yalnızca hem e-postası hem de userPrincipalName 'i @contoso.com olan kullanıcıların eşitlenmesi için filtrelemeyi değiştirirsiniz:
+Bu örnekte, yalnızca hem e-postası hem de userPrincipalName 'i olan kullanıcıların eşitlenmesi için filtrelemeyi değiştirirsiniz @contoso.com :
 
 1. Azure AD Connect çalıştıran sunucuda, **Adsyncadmins** güvenlik grubunun üyesi olan bir hesap kullanarak oturum açın.
 2. **Başlangıç** menüsünden **eşitleme kuralları düzenleyicisini** başlatın.
@@ -278,7 +278,7 @@ Bu örnekte, yalnızca hem e-postası hem de userPrincipalName 'i @contoso.com o
 4. Kullandığınız bağlantı sürümüne bağlı olarak, **AAD 'ye yönelik** olarak adlandırılan ve AAD 'ye yönelik Kullanıcı JOIN veya **Out-User JOIN soainad**adlı kuralı bulun ve **Düzenle**' ye tıklayın.
 5. Açılır pencerede, kuralın bir kopyasını oluşturmak için **Evet** yanıtını verin.
 6. **Açıklama** sayfasında, **önceliği** 50 gibi kullanılmayan bir değerle değiştirin.
-7. Sol taraftaki **gezinmede kapsam filtresi** ' ne tıklayın ve ardından **yan tümce Ekle**' ye tıklayın. **Öznitelikte**, **posta**' yı seçin. **İşleç**Içinde, **EndsWith**öğesini seçin. **Değer**alanına ** \@contoso.com**yazın ve ardından **yan tümce Ekle**' ye tıklayın. **Özniteliğinde** **userPrincipalName**' i seçin. **İşleç**Içinde, **EndsWith**öğesini seçin. **Değer**alanına ** \@contoso.com**yazın.
+7. Sol taraftaki **gezinmede kapsam filtresi** ' ne tıklayın ve ardından **yan tümce Ekle**' ye tıklayın. **Öznitelikte**, **posta**' yı seçin. **İşleç**Içinde, **EndsWith**öğesini seçin. **Değer**alanına ** \@ contoso.com**yazın ve ardından **yan tümce Ekle**' ye tıklayın. **Özniteliğinde** **userPrincipalName**' i seçin. **İşleç**Içinde, **EndsWith**öğesini seçin. **Değer**alanına ** \@ contoso.com**yazın.
 8. **Kaydet**’e tıklayın.
 9. Yapılandırmayı gerçekleştirmek için **tam eşitleme**çalıştırmanız gerekir. Bölüm uygulama ' yı okumaya devam edin [ve değişiklikleri doğrulayın](#apply-and-verify-changes).
 
@@ -298,11 +298,11 @@ Aşağıdaki adımları uygulayın:
 
 Eşitlemeden sonra tüm değişiklikler verilmek üzere hazırlanır. Azure AD 'de değişiklikleri gerçekten yapmadan önce, tüm bu değişikliklerin doğru olduğunu doğrulamak istiyorsunuz.
 
-1. Bir komut istemi başlatın ve adresine gidin `%ProgramFiles%\Microsoft Azure AD Sync\bin`.
+1. Bir komut istemi başlatın ve adresine gidin `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
 2. `csexport "Name of Connector" %temp%\export.xml /f:x` öğesini çalıştırın.  
    Bağlayıcının adı, eşitleme hizmetidir. Azure AD için "contoso.com – AAD" benzeri bir ada sahiptir.
 3. `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` öğesini çalıştırın.
-4. Artık% TEMP% adlı, Export. csv adlı, Microsoft Excel 'de incelenebilir bir dosyanız var. Bu dosya, verilmek üzere olan tüm değişiklikleri içerir.
+4. Artık% TEMP% adlı, Microsoft Excel 'de incelenebilir export.csv adlı bir dosyanız var. Bu dosya, verilmek üzere olan tüm değişiklikleri içerir.
 5. Veri veya yapılandırmada gerekli değişiklikleri yapın ve dışarı aktarılacak değişiklikler beklediğiniz şeydir, bu adımları yeniden çalıştırın (Içeri aktar, eşitlendiğinde ve Doğrula).
 
 Memnun kaldığınızda, değişiklikleri Azure AD 'ye aktarın.

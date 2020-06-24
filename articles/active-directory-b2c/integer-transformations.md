@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ece25e95bbbe9f1a1fa591c29ea9ffda0fefd369
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 066a6489e6244369453ec5d9f21d5e1e83fcd6c8
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187687"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201759"
 ---
 # <a name="integer-claims-transformations"></a>Tamsayı talebi dönüşümleri
 
@@ -33,9 +33,9 @@ Uzun bir veri türünü dize veri türüne dönüştürür.
 | Inputclaim | ınputclaim | long | Bir dizeye dönüştürülecek ClaimType. |
 | OutputClaim | outputClaim | string | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
 
-Bu örnekte, Long değer `numericUserId` türüne sahip talep, dize değer türüne sahip bir `UserId` talebe dönüştürülür.
+Bu örnekte, `numericUserId` Long değer türüne sahip talep, `UserId` dize değer türüne sahip bir talebe dönüştürülür.
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateUserId" TransformationMethod="ConvertNumberToStringClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="numericUserId" TransformationClaimType="inputClaim" />

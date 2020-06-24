@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b308e5d74f1a87ea1cebed26f602780307c77d35
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 41db591b8abdaaa58461b2782d93f7aa745cfdc6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447926"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202543"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkenizde REST API talep alışverişlerini tümleştirin
 
@@ -131,7 +131,7 @@ Yeniden takip eden talepler sağlayıcısı tarafından ayrıştırılmış çı
 </OutputClaims>
 ```
 
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 Yalnızca kimliği doğrulanmış istemcilerin sizinle iletişim kurabilmesi için REST API uç noktanızı korumanız gerekir. REST API bir HTTPS uç noktası kullanmalıdır. AuthenticationType meta verilerini aşağıdaki kimlik doğrulama yöntemlerinden biri olarak ayarlayın:
 
@@ -145,7 +145,7 @@ REST API, tüm platformları temel alabilir ve her türlü programlama dilinde y
 ## <a name="localize-the-rest-api"></a>REST API yerelleştirin
 Teknik bir teknik profilde, geçerli oturumun dilini/yerel ayarını göndermek ve gerekirse, yerelleştirilmiş bir hata iletisi vermek isteyebilirsiniz. [Talep çözümleyici](claim-resolver-overview.md)'yi kullanarak, Kullanıcı dili gibi bağlamsal bir talep gönderebilirsiniz. Aşağıdaki örnekte, bu senaryoyu gösteren, teknik bir teknik profil gösterilmektedir.
 
-```XML
+```xml
 <TechnicalProfile Id="REST-ValidateUserData">
   <DisplayName>Validate user input data</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -165,7 +165,7 @@ Teknik bir teknik profilde, geçerli oturumun dilini/yerel ayarını göndermek 
 
 ## <a name="handling-error-messages"></a>Hata iletilerini işleme
 
-REST API, "kullanıcının CRM sisteminde bulunamamıştır" gibi bir hata iletisi döndürmesi gerekebilir. Bir hata oluşursa REST API bir HTTP 409 hata iletisi (çakışma yanıtı durum kodu) döndürmelidir. Daha fazla bilgi için bkz. [Restsize teknik profil](restful-technical-profile.md#returning-error-message).
+REST API, "kullanıcının CRM sisteminde bulunamamıştır" gibi bir hata iletisi döndürmesi gerekebilir. Bir hata oluşursa REST API bir HTTP 409 hata iletisi (çakışma yanıtı durum kodu) döndürmelidir. Daha fazla bilgi için bkz. [Restsize teknik profil](restful-technical-profile.md#returning-validation-error-message).
 
 Bu yalnızca bir doğrulama teknik profilinden REST API teknik bir profil çağırarak elde edilebilir. Bu, kullanıcının sayfadaki verileri düzeltmesini ve sayfa gönderimi sırasında doğrulamayı yeniden çalıştırmasını sağlar.
 

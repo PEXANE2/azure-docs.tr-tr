@@ -3,15 +3,15 @@ title: Azure Cosmos DB kapasite planlayıcısını kullanarak maliyetleri tahmin
 description: Azure Cosmos DB kapasite planlayıcısı, iş yükünüz için gereken aktarım hızını (RU/s) ve maliyeti tahmin etmenize olanak tanır. Bu makalede, gereken verimlilik ve maliyeti tahmin etmek için kapasite planlayıcısı 'nın yeni sürümünün nasıl kullanılacağı açıklanır.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: dech
-ms.openlocfilehash: f10ace47f774e31b586f7736f5fb8e5dfea0c948
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 6a30535ac3aaa90dc3553f6901a83ab300546fb5
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68707636"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261860"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>Azure Cosmos DB kapasite planlayıcısını kullanarak RU/s 'yi tahmin etme
 
@@ -30,7 +30,7 @@ Kapasite planlayıcısı iki modda kullanılabilir.
 ## <a name="estimate-provisioned-throughput-and-cost-using-basic-mode"></a>Temel mod kullanarak sağlanan aktarım hızını ve maliyeti tahmin etme
 Temel modu kullanarak iş yükünüz için hızlı bir tahmin sağlamak üzere [Kapasite planlayıcısı](https://cosmos.azure.com/capacitycalculator/)' na gidin. İş yükünüze göre aşağıdaki parametreleri girin: 
 
-|**Girdi**  |**Açıklama**  |
+|**Giriş**  |**Açıklama**  |
 |---------|---------|
 |Bölge sayısı|Azure Cosmos DB tüm Azure bölgelerinde kullanılabilir. İş yükünüz için gereken bölge sayısını seçin. Cosmos hesabınızla istediğiniz sayıda bölgeyi ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. Azure Cosmos DB [genel dağıtım](distribute-data-globally.md) .|
 |Çok bölgeli yazma işlemleri|[Çok bölgeli yazmaları](distribute-data-globally.md#key-benefits-of-global-distribution)etkinleştirirseniz, uygulamanız herhangi bir Azure bölgesini okuyup yazabilir. Çok bölgeli yazmaları devre dışı bırakırsanız, uygulamanız tek bir bölgeye veri yazabilir. <br/><br/> Farklı bölgelerde düşük Gecikmeli yazma işlemleri gerektiren etkin-etkin bir iş yükünüz olmasını beklemeniz durumunda çok bölgeli yazmaları etkinleştirin. Örneğin, farklı bölgelerdeki yüksek hacimde veritabanına veri yazan bir ıOT iş yükü. <br/><br/> Çok bölgeli yazma% 99,999 okuma ve yazma kullanılabilirliğini garanti eder. Çok bölgeli yazma işlemleri, tek yazma bölgeleriyle karşılaştırıldığında daha fazla verimlilik gerektirir. Daha fazla bilgi edinmek için bkz. [Rus, tek ve birden çok yazma bölgesi için nasıl farklıdır](optimize-cost-regions.md) makalesi.|
@@ -41,7 +41,7 @@ Temel modu kullanarak iş yükünüz için hızlı bir tahmin sağlamak üzere [
 
 Gerekli ayrıntıları doldurduktan sonra **Calculate**' yi seçin. **Maliyet tahmini** sekmesi, depolama ve sağlanan aktarım hızı için toplam maliyeti gösterir. Okuma ve yazma istekleri için gereken verimlilik dökümünü almak için bu sekmedeki **Ayrıntıları göster** bağlantısını genişletebilirsiniz. Herhangi bir alanın değerini her değiştirişinizde, tahmini maliyeti yeniden hesaplamak için **Hesapla** ' yı seçin. 
 
-![Kapasite planlayıcısı temel modu](./media/estimate-ru-with-capacity-planner/basic-mode.png)
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/basic-mode.png" alt-text="Kapasite planlayıcısı temel modu":::
 
 ## <a name="estimate-provisioned-throughput-and-cost-using-advanced-mode"></a>Gelişmiş modu kullanarak sağlanan aktarım hızını ve maliyeti tahmin etme
 
@@ -49,7 +49,7 @@ Gelişmiş mod, RU/s tahminini etkileyen daha fazla ayar sağlamanıza olanak ta
 
 Oturum açtıktan sonra, temel moddaki alanlarla karşılaştırılan ek alanlar görebilirsiniz. İş yükünüze göre ek parametreleri girin. 
 
-|**Girdi**  |**Açıklama**  |
+|**Giriş**  |**Açıklama**  |
 |---------|---------|
 |API|Azure Cosmos DB, çok modelli ve çok API olan bir hizmettir. Yeni iş yükleri için SQL (çekirdek) API 'sini seçin. |
 |Bölge sayısı|Azure Cosmos DB tüm Azure bölgelerinde kullanılabilir. İş yükünüz için gereken bölge sayısını seçin. Cosmos hesabınızla istediğiniz sayıda bölgeyi ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. Azure Cosmos DB [genel dağıtım](distribute-data-globally.md) .|
@@ -62,7 +62,7 @@ Oturum açtıktan sonra, temel moddaki alanlarla karşılaştırılan ek alanlar
 
 Geçerli tahmini içeren bir CSV dosyasını indirmek için **tahmin kaydet** düğmesini de kullanabilirsiniz. 
 
-![Kapasite planlayıcısı Gelişmiş modu](./media/estimate-ru-with-capacity-planner/advanced-mode.png)
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="Kapasite planlayıcısı Gelişmiş modu":::
 
 Azure Cosmos DB kapasite planlayıcısı 'nda gösterilen fiyatlar, üretilen iş ve depolama için genel fiyatlandırma ücretlerine göre tahminlerdir. Tüm fiyatlar ABD Doları cinsinden gösterilmiştir. Bölgelere göre tüm oranları görmek için [Azure Cosmos DB fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın.  
 
@@ -70,7 +70,7 @@ Azure Cosmos DB kapasite planlayıcısı 'nda gösterilen fiyatlar, üretilen i�
 
 Azure Cosmos kapasite hesaplayıcı, işaret okumalarının (tek bir öğe, örneğin, KIMLIĞE ve bölüm anahtarı değerine göre) ve iş yükü için yazmaları olduğunu varsayar. Sorgular için gereken aktarım hızını tahmin etmek için sorgunuzu Cosmos kapsayıcısındaki temsili bir veri kümesi üzerinde çalıştırın ve [ru ücreti alın](find-request-unit-charge.md). İstenen toplam RU/sn sayısını almak için saniye başına çalıştırmayı tahmin ettiğiniz sorgu sayısıyla RU ücreti çarpın. 
 
-Örneğin, iş yükünüz bir sorgu gerektiriyorsa, ``SELECT * FROM c WHERE c.id = 'Alice'`` bu saniyede 100 kez çalıştırılır ve sorgunun ru ücreti 10 ru ise, bu isteklere yönelik olarak, toplam olarak 100 sorgu/sn * 10 ru/sorgu = 1000 ru/s gerekir. Bu RU/s 'leri, iş yükünüze yapılan tüm okuma ve yazma işlemleri için gereken RU/s 'ye ekleyin.
+Örneğin, iş yükünüz bir sorgu gerektiriyorsa, bu ``SELECT * FROM c WHERE c.id = 'Alice'`` saniyede 100 kez çalıştırılır ve SORGUNUN ru ücreti 10 ru ise, bu isteklere yönelik olarak, toplam olarak 100 sorgu/sn * 10 ru/sorgu = 1000 ru/s gerekir. Bu RU/s 'leri, iş yükünüze yapılan tüm okuma ve yazma işlemleri için gereken RU/s 'ye ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

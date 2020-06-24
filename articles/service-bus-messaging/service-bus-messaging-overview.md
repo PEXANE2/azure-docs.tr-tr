@@ -12,11 +12,11 @@ ms.date: 11/04/2019
 ms.custom: mvc
 ms.author: aschhab
 ms.openlocfilehash: 49a54491c36ef29209d1a53094cc5baf57057557
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240635"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707899"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus nedir?
 
@@ -31,7 +31,7 @@ Yaygın olarak kullanılan bazı mesajlaşma senaryoları:
 * *Konular ve abonelikler*. Yayımcılar ve aboneler arasındaki 1:*n* ilişkilerini etkinleştirin.
 * *İleti oturumları*. İleti sıralaması veya ileti ertelemeyi gerektiren iş akışlarını uygulayın.
 
-## <a name="namespaces"></a>Ad Alanları
+## <a name="namespaces"></a>Ad alanları
 
 Ad alanı, tüm mesajlaşma bileşenleri için bir kapsayıcıdır. Tek bir ad alanında birden fazla kuyruk ve konu bulunabilir ve ad alanları genellikle uygulama kapsayıcıları olarak görev yapar.
 
@@ -122,7 +122,7 @@ Service Bus, aşağıdaki Azure hizmetleriyle tam olarak tümleşiktir:
 * [Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure İşlevleri](https://azure.microsoft.com/services/functions/)
 * [Dynamics 365](https://dynamics.microsoft.com)
-* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
+* [Azure Akış Analizi](https://azure.microsoft.com/services/stream-analytics/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

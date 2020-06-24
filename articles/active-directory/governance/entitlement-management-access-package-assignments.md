@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12e3b86f41e7188778393ab717554907ef5d44ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 55f17703060d19baebe55ef648cb182cb2c6d00a
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631738"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078835"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketi için atamaları görüntüleme, ekleme ve kaldırma
 
@@ -58,7 +58,7 @@ Azure AD yetkilendirme yönetimini kullanmak ve kullanıcılara paketlere erişi
 
 ### <a name="viewing-assignments-programmatically"></a>Atamaları programlı görüntüleme
 
-Ayrıca, Microsoft Graph kullanarak bir erişim paketindeki atamaları alabilirsiniz.  Temsilci `EntitlementManagement.ReadWrite.All` izni olan bir uygulamayla uygun bir roldeki kullanıcı, [Accesspackageatamaları LISTELEMEK](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta)için API 'yi çağırabilir.
+Ayrıca, Microsoft Graph kullanarak bir erişim paketindeki atamaları alabilirsiniz.  Temsilci izni olan bir uygulamayla uygun bir roldeki kullanıcı, `EntitlementManagement.ReadWrite.All` [Accesspackageatamaları listelemek](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta)için API 'yi çağırabilir.
 
 ## <a name="directly-assign-a-user"></a>Doğrudan kullanıcı atama
 
@@ -90,7 +90,7 @@ Bazı durumlarda, kullanıcıların erişim paketini isteme işlemini istememele
 
 ### <a name="directly-assigning-users-programmatically"></a>Kullanıcı aracılığıyla doğrudan kullanıcı atama
 
-Ayrıca, Microsoft Graph kullanarak bir kullanıcıyı doğrudan bir erişim paketine atayabilirsiniz.  Temsilci `EntitlementManagement.ReadWrite.All` izni olan bir uygulamayla uygun bir roldeki kullanıcı, [bir Accesspackageatamaisteği oluşturmak](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)için API 'yi çağırabilir.
+Ayrıca, Microsoft Graph kullanarak bir kullanıcıyı doğrudan bir erişim paketine atayabilirsiniz.  Temsilci izni olan bir uygulamayla uygun bir roldeki kullanıcı, `EntitlementManagement.ReadWrite.All` [bir Accesspackageatamaisteği oluşturmak](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)için API 'yi çağırabilir.
 
 ## <a name="remove-an-assignment"></a>Atama kaldırma
 

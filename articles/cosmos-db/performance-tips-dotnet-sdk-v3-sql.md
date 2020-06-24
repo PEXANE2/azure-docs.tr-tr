@@ -3,22 +3,22 @@ title: .NET SDK V3 için Azure Cosmos DB performans ipuçları
 description: Azure Cosmos DB .NET v3 SDK performansını geliştirmek için istemci yapılandırma seçeneklerini öğrenin.
 author: j82w
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 06/23/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: 48ab7d0b04a155465f2325179cf5617de7873fd8
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: a10272324a9535a0c2468d63a404f76ca56ce375
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84680206"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263526"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
 
 > [!div class="op_single_selector"]
 > * [.NET SDK V3](performance-tips-dotnet-sdk-v3-sql.md)
 > * [.NET SDK v2](performance-tips.md)
-> * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
+> * [Java SDK’sı v4](performance-tips-java-sdk-v4-sql.md)
 > * [Zaman uyumsuz Java SDK v2](performance-tips-async-java.md)
 > * [Zaman uyumlu Java SDK v2](performance-tips-java.md)
 
@@ -87,9 +87,8 @@ Azure Cosmos DB, HTTPS üzerinden basit ve açık bir yeniden programlama modeli
 SDK V3 için, içinde örneğini oluştururken bağlantı modunu yapılandırırsınız `CosmosClient` `CosmosClientOptions` . Doğrudan modunun varsayılan olduğunu unutmayın.
 
 ```csharp
-var serviceEndpoint = new Uri("https://contoso.documents.net");
-var authKey = "your authKey from the Azure portal";
-CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
+string connectionString = "<your-account-connection-string>";
+CosmosClient client = new CosmosClient(connectionString,
 new CosmosClientOptions
 {
     ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
@@ -98,6 +97,18 @@ new CosmosClientOptions
 
 TCP yalnızca doğrudan modunda desteklendiğinden, ağ geçidi modunu kullanıyorsanız, HTTPS protokolü her zaman ağ geçidiyle iletişim kurmak için kullanılır.
 
+:::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="Azure Cosmos DB bağlantı ilkesi" border="false":::
+
+**Kısa ömürlü bağlantı noktası tükenmesi**
+
+Örneklerinizi üzerinde yüksek bir bağlantı birimi veya yüksek bağlantı noktası kullanımı görürseniz, önce istemci örneklerinizin tekton olduğunu doğrulayın. Diğer bir deyişle, istemci örneklerinin uygulamanın ömrü için benzersiz olması gerekir.
+
+TCP protokolünde çalışırken, istemci, uzun süreli bağlantıları kullanarak gecikme süresini en iyi duruma getirir ve bu da, 2 dakikadan sonra bağlantıları sonlandırır.
+
+Seyrek erişiminizin olduğu senaryolarda ve ağ geçidi modu erişimiyle karşılaştırıldığında daha yüksek bir bağlantı sayısı fark ederseniz şunları yapabilirsiniz:
+
+* [Cosmosclientoptions. PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) özelliğini `PrivatePortPool` (Framework sürümü>= 4.6.1 ve .net Core sürümü >= 2,0) olarak yapılandırın: Bu özellik SDK 'nın farklı Azure Cosmos DB hedef uç noktaları için kısa ömürlü bağlantı noktaları havuzu kullanmasına izin verir.
+* [Cosmosclientoptions. IDbir ConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout) özelliği, 10 dakikadan büyük veya buna eşit olmalıdır. Önerilen değerler 20 dakika ile 24 saat arasında.
 
 <a id="same-region"></a>
 
@@ -105,7 +116,9 @@ TCP yalnızca doğrudan modunda desteklendiğinden, ağ geçidi modunu kullanıy
 
 Mümkün olduğunda, Azure Cosmos DB veritabanıyla aynı bölgedeki Azure Cosmos DB çağıran tüm uygulamaları yerleştirin. İşte yaklaşık bir karşılaştırma: aynı bölgedeki Azure Cosmos DB için yapılan çağrılar 1 MS ile 2 ms arasında tamamlanır, ancak ABD 'nin batı ve Doğu yakası arasındaki gecikme 50 MS 'den fazla olur. Bu gecikme, istemciden Azure veri merkezi sınırına geçerken istek tarafından alınan yola bağlı olarak istek üzerine değişiklik gösterebilir. Çağıran uygulamanın, sağlanan Azure Cosmos DB uç noktası ile aynı Azure bölgesinde yer almasını sağlayarak olası en düşük gecikme süresini sağlayabilirsiniz. Kullanılabilir bölgelerin listesi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/#services).
 
-![Azure Cosmos DB bağlantı ilkesi ](./media/performance-tips/same-region.png)<a id="increase-threads"></a>
+:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Azure Cosmos DB bağlantı ilkesi" border="false":::
+
+   <a id="increase-threads"></a>
 
 **İş parçacığı/görev sayısını artırma**
 

@@ -8,7 +8,7 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 11/08/2019
@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf2f04e1728f94c89bddcc31c287cc017a79020f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 47546ae5ae964d1ed915ee42b1a2cafec58a805a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74025899"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727645"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Azure Active Directory bir kullanıcı veya grup için lisans atamalarını değiştirme
 
@@ -46,7 +46,7 @@ Lisans atamalarını güncelleştirmeden önce, tüm Kullanıcı veya grupların
 **Lisans atamalarını Güncelleştir** sayfasında, bazı onay kutularının kullanılamadığını görürseniz, bir grup lisansından devralındıklarından değiştirilemeyen Hizmetleri gösterir.
 
 1. Azure AD kuruluşunuzda bir lisans yöneticisi hesabı kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
-1. **Azure Active Directory** > **Kullanıcılar**' ı seçin ve ardından bir kullanıcının **profil** sayfasını açın.
+1. **Azure Active Directory**  >  **Kullanıcılar**' ı seçin ve ardından bir kullanıcının **profil** sayfasını açın.
 1. **Lisansları**seçin.
 1. Kullanıcı veya grup için lisans atamasını düzenlemek üzere **atamalar** ' ı seçin. **Atamalar** sayfası, lisans atama çakışmalarını çözebileceğiniz yerdir.
 1. Office 366 E3 onay kutusunu işaretleyin ve kullanıcıya atanmış tüm E1 hizmetlerinin en azından seçili olduğundan emin olun.
@@ -61,7 +61,7 @@ Azure AD, yeni lisansları uygular ve hizmet devamlılığını sağlamak için 
 ## <a name="change-group-license-assignments"></a>Grup lisansı atamalarını değiştirme
 
 1. Azure AD kuruluşunuzda bir lisans yöneticisi hesabı kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
-1. **Azure Active Directory** > **grupları**' nı seçin ve ardından bir grup için **genel bakış** sayfasını açın.
+1. **Azure Active Directory**  >  **grupları**' nı seçin ve ardından bir grup için **genel bakış** sayfasını açın.
 1. **Lisansları**seçin.
 1. Kullanıcı veya grup için lisans atamasını düzenlemek üzere **atamalar** komutunu seçin.
 1. Office 366 E3 onay kutusunu seçin. Hizmetin sürekliliği devam etmek için, kullanıcıya zaten atanmış olan E1 hizmetlerini seçtiğinizden emin olun.

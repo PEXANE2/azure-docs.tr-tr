@@ -4,15 +4,15 @@ description: HTTPS özellikli dinleyicilerine eklenen sunucu sertifikaları içi
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 780f2774cb37e3d6d43ed5137c29119c0f63fd0a
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: a214dae7c80cbc520fc6aff5a492466a77261167
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743707"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255373"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>Key Vault sertifikalarla TLS sonlandırma
 
@@ -52,7 +52,7 @@ Key Vault ile tümleştirme Application Gateway üç adımlı bir yapılandırma
    > [!NOTE]
    > Application Gateway 'i Azure CLı veya PowerShell kullanarak ya da Azure portal dağıtılan bir Azure uygulaması aracılığıyla bir ARM şablonuyla dağıtırsanız, SSL sertifikası anahtar kasasında Base64 kodlamalı PFX dosyası olarak depolanır. [Dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](../azure-resource-manager/templates/key-vault-parameter.md)adımlarını gerçekleştirmeniz gerekir. 
    >
-   > Olarak `enabledForTemplateDeployment` `true`ayarlanması özellikle önemlidir. Sertifika parolasız olabilir veya bir parolası olabilir. Parolası olan bir sertifika söz konusu olduğunda, aşağıdaki örnek, bir uygulama ağ geçidi için ARM şablon yapılandırmasında `sslCertificates` girişi `properties` için olası bir yapılandırma gösterir. Ve değerleri, anahtar kasasından [dınamık kimliğe sahip başvuru gizli](../azure-resource-manager/templates/key-vault-parameter.md#reference-secrets-with-dynamic-id)dizileri bölümünde açıklandığı gibi aranır. `appGatewaySSLCertificatePassword` `appGatewaySSLCertificateData` Aramanın nasıl gerçekleştiğini görmek için `parameters('secretName')` , öğesinden geriye doğru başvuruları izleyin. Sertifika passwordless ise `password` girişi atlayın.
+   > Olarak ayarlanması özellikle önemlidir `enabledForTemplateDeployment` `true` . Sertifika parolasız olabilir veya bir parolası olabilir. Parolası olan bir sertifika söz konusu olduğunda, aşağıdaki örnek, `sslCertificates` `properties` bir uygulama ağ GEÇIDI için ARM şablon yapılandırmasında girişi için olası bir yapılandırma gösterir. Ve değerleri, `appGatewaySSLCertificateData` `appGatewaySSLCertificatePassword` anahtar kasasından [dinamik kimliğe sahip başvuru gizli](../azure-resource-manager/templates/key-vault-parameter.md#reference-secrets-with-dynamic-id)dizileri bölümünde açıklandığı gibi aranır. Aramanın nasıl gerçekleştiğini görmek için, öğesinden geriye doğru başvuruları izleyin `parameters('secretName')` . Sertifika passwordless ise `password` girişi atlayın.
    >   
    > ```
    > "sslCertificates": [

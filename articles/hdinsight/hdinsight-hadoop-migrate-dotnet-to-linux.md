@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.openlocfilehash: 4b402975a151d26e8f335c07930274c156ac52fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272376"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709275"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Windows tabanlı HDInsight için .NET çözümlerini Linux tabanlı HDInsight 'a geçirme
 
-Linux tabanlı HDInsight kümeleri mono kullanır [(https://mono-project.com) ](https://mono-project.com) .NET uygulamalarını çalıştırmak için). Mono, Linux tabanlı HDInsight ile MapReduce uygulamaları gibi .NET bileşenlerini kullanmanıza olanak sağlar. Bu belgede, Windows tabanlı HDInsight kümeleri için oluşturulan .NET çözümlerini, Linux tabanlı HDInsight 'ta Mono ile çalışacak şekilde geçirmeyi öğrenin.
+Linux tabanlı HDInsight kümeleri mono kullanır [( https://mono-project.com) ](https://mono-project.com) .NET uygulamalarını çalıştırmak için). Mono, Linux tabanlı HDInsight ile MapReduce uygulamaları gibi .NET bileşenlerini kullanmanıza olanak sağlar. Bu belgede, Windows tabanlı HDInsight kümeleri için oluşturulan .NET çözümlerini, Linux tabanlı HDInsight 'ta Mono ile çalışacak şekilde geçirmeyi öğrenin.
 
 ## <a name="mono-compatibility-with-net"></a>.NET ile mono uyumluluğu
 
 Tek bir sürüm 4.2.1, HDInsight sürüm 3,6 ' ye dahildir. HDInsight 'ta bulunan mono sürümü hakkında daha fazla bilgi için bkz. [HDInsight bileşen sürümleri](hdinsight-component-versioning.md).
 
-Mono ve .net arasındaki uyumlulukla ilgili daha fazla bilgi için bkz. [mono uyumluluğuhttps://www.mono-project.com/docs/about-mono/compatibility/) (](https://www.mono-project.com/docs/about-mono/compatibility/) belge.
+Mono ve .NET arasındaki uyumlulukla ilgili daha fazla bilgi için bkz. [mono uyumluluğu https://www.mono-project.com/docs/about-mono/compatibility/) (](https://www.mono-project.com/docs/about-mono/compatibility/) belge.
 
 > [!IMPORTANT]  
 > SCP.NET Framework Mono ile uyumludur. Mono ile SCP.NET kullanma hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Storm Için C# topolojileri geliştirmek üzere Visual Studio 'Yu kullanma](storm/apache-storm-develop-csharp-visual-studio-topology.md).
@@ -34,24 +34,24 @@ Mono ve .net arasındaki uyumlulukla ilgili daha fazla bilgi için bkz. [mono uy
 
 1. [.Net taşınabilirlik Çözümleyicisi](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)'ni yükler. Yükleme sırasında, kullanılacak Visual Studio sürümünü seçin.
 
-2. Visual Studio 2015 ' den__taşınabilirlik Çözümleyicisi ayarlarını__ __Çözümle__ > ' yi seçin ve __mono__ bölümünde __4,5__ ' nin işaretli olduğundan emin olun.
+2. Visual Studio 2015 ' den __Analyze__  >  __taşınabilirlik Çözümleyicisi ayarlarını__Çözümle ' yi seçin ve __mono__ bölümünde __4,5__ ' nin işaretli olduğundan emin olun.
 
     ![4,5, çözümleyici ayarları için mono bölümünde işaretlendi](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
 
     Yapılandırmayı kaydetmek için __Tamam ' ı__ seçin.
 
-3.  > Analiz__taşınabilirlik derlemesini__Çözümle ' __yi seçin.__ Çözümünüzü içeren derlemeyi seçin ve ardından Analize Başlamak için __Aç__ ' ı seçin.
+3. Analiz __Analyze__  >  __taşınabilirlik derlemesini__Çözümle ' yi seçin. Çözümünüzü içeren derlemeyi seçin ve ardından Analize Başlamak için __Aç__ ' ı seçin.
 
-4. Analiz tamamlandıktan sonra,__Görünüm analiz raporlarını__analiz __et__ > ' i seçin. __Taşınabilirlik Analizi sonuçlarında__rapor açmak Için __raporu aç__ ' ı seçin.
+4. Analiz tamamlandıktan sonra, __Analyze__  >  __Görünüm analiz raporlarını__analiz et ' i seçin. __Taşınabilirlik Analizi sonuçlarında__rapor açmak Için __raporu aç__ ' ı seçin.
 
     ![Taşınabilirlik Çözümleyicisi sonuçları iletişim kutusu](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 
 > [!IMPORTANT]  
-> Çözümleyici, çözümünüzle ilgili her sorunu yakalayabilir. Örneğin, mono Windows üzerinde çalışıyorsa bir `c:\temp\file.txt` dosya yolu tamam olarak değerlendirilir. Aynı yol bir Linux platformunda geçerli değildir.
+> Çözümleyici, çözümünüzle ilgili her sorunu yakalayabilir. Örneğin, `c:\temp\file.txt` mono Windows üzerinde çalışıyorsa bir dosya yolu tamam olarak değerlendirilir. Aynı yol bir Linux platformunda geçerli değildir.
 
 ## <a name="manual-portability-analysis"></a>El ile taşınabilirlik Analizi
 
-[Uygulama taşınabilirliğihttps://www.mono-project.com/docs/getting-started/application-portability/) ](https://www.mono-project.com/docs/getting-started/application-portability/) içindeki bilgileri kullanarak kodunuzun el ile denetimini gerçekleştirin (belge.
+[Uygulama taşınabilirliği https://www.mono-project.com/docs/getting-started/application-portability/) ](https://www.mono-project.com/docs/getting-started/application-portability/) içindeki bilgileri kullanarak kodunuzun el ile denetimini gerçekleştirin (belge.
 
 ## <a name="modify-and-build"></a>Değiştir ve oluştur
 

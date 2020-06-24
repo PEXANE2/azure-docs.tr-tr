@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faa80bf09113786e35a6ce98157f18639e30d210
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 1c5058e24ee0817ebcc6c5761f7b9e22d1a14203
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582637"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727203"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Azure Active Directory LinkedIn hesabı bağlantılarını tümleştirin
 
@@ -40,7 +40,7 @@ Kuruluşunuzdaki kullanıcıların bazı Microsoft uygulamaları dahilinde Linke
 Tüm kuruluşunuzdan yalnızca kuruluşunuzdaki seçili kullanıcılara kadar, yalnızca erişim sağlamak istediğiniz kullanıcılar için LinkedIn hesap bağlantılarını etkinleştirebilirsiniz.
 
 1. Azure AD kuruluş için genel yönetici olan bir hesapla [Azure AD Yönetim merkezinde](https://aad.portal.azure.com/) oturum açın.
-1. **Kullanıcılar**’ı seçin.
+1. **Kullanıcıları**seçin.
 1. **Kullanıcılar** sayfasında, **Kullanıcı ayarları**' nı seçin.
 1. **LinkedIn hesap bağlantıları**altında, kullanıcıların bazı Microsoft uygulamalarında LinkedIn bağlantılarına erişmek için hesaplarını bağlanmasına izin verin. Kullanıcılar hesaplarını bağlamaya izin verene kadar veri paylaşılmaz.
 
@@ -91,10 +91,10 @@ Grubu Azure AD Yönetim Merkezi 'ndeki LinkedIn hesap bağlantıları ayarında 
 1. [Office 2016 yönetim şablonu dosyalarını (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030) indirin
 1. **ADMX** dosyalarını ayıklayın ve bunları merkezi deponuza kopyalayın.
 1. Açık Grup İlkesi Yönetimi.
-1. Aşağıdaki ayarla bir Grup İlkesi nesnesi oluşturun: **Kullanıcı Yapılandırması** > **Yönetim Şablonları** > **Microsoft Office 2016** > **çeşitli** > **Office uygulamalarında LinkedIn özelliklerini gösterir**.
+1. Aşağıdaki ayarla bir Grup İlkesi nesnesi oluşturun: **Kullanıcı Yapılandırması**  >  **Yönetim Şablonları**  >  **Microsoft Office 2016**  >  **çeşitli**  >  **Office uygulamalarında LinkedIn özelliklerini gösterir**.
 1. **Etkin** veya **devre dışı**seçeneğini belirleyin.
   
-   Durum | Etki
+   Durum | Efekt
    ------ | ------
    **Etkin** | Office 2016 seçeneklerinde **Office uygulamalarında LinkedIn özelliklerini göster** ayarı etkinleştirilmiştir. Kuruluşunuzdaki kullanıcılar, Office 2016 uygulamalarında LinkedIn özelliklerini kullanabilir.
    **Devre dışı** | Office 2016 seçeneklerinde **LinkedIn özelliklerini Office uygulamalarında göster** ayarı devre dışıdır ve son kullanıcılar bu ayarı değiştiremezler. Kuruluşunuzdaki kullanıcılar, Office 2016 uygulamalarında LinkedIn özelliklerini kullanamaz.

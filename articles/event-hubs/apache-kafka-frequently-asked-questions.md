@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/01/2020
+ms.date: 06/23/2020
 ms.author: shvija
-ms.openlocfilehash: 0186b90e1d75c5dba6e1ca26e4ba079a3456cea4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd4306fd4a3b6dd308b0d62945ae264dfb6ce8ff
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606749"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298336"
 ---
 # <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>Sık Sorulan Sorular-Apache Kafka için Event Hubs 
 Bu makalede, Apache Kafka için Event Hubs geçiş hakkında sık sorulan soruların bazılarına yanıtlar verilmektedir.
@@ -39,7 +39,7 @@ Event Hubs üzerinde bir olay hub 'ı Tüketici grubu ve Kafka Tüketici grubu a
 
 - Bunlar, oto olarak oluşturulur.  Kafka grupları Kafka Tüketici grubu API 'Leri aracılığıyla yönetilebilir.
 - Event Hubs hizmetinde uzaklıkları depolayabilirler.
-- Bunlar, etkili bir şekilde bir konum anahtar-değer deposu olan anahtarlar olarak kullanılırlar. Ve `group.id` `topic-partition`' nin benzersiz bir çifti için Azure Storage 'da (3x çoğaltma) bir fark depoluyoruz. Event Hubs kullanıcılar, Kafka farklarını depolamadan daha fazla depolama maliyeti vermez. Uzaklıklar Kafka Tüketici grubu API 'Leri aracılığıyla yapılır, ancak uzaklık depolama *hesapları* doğrudan görünür değildir veya Olay Hub 'ı kullanıcıları için kullanılabilir değildir.  
+- Bunlar, etkili bir şekilde bir konum anahtar-değer deposu olan anahtarlar olarak kullanılırlar. Ve ' nin benzersiz bir çifti için `group.id` `topic-partition` Azure Storage 'da (3x çoğaltma) bir fark depoluyoruz. Event Hubs kullanıcılar, Kafka farklarını depolamadan daha fazla depolama maliyeti vermez. Uzaklıklar Kafka Tüketici grubu API 'Leri aracılığıyla yapılır, ancak uzaklık depolama *hesapları* doğrudan görünür değildir veya Olay Hub 'ı kullanıcıları için kullanılabilir değildir.  
 - Bir ad alanı yayırlar. Birden çok konuda birden çok uygulama için aynı Kafka grubu adının kullanılması, yalnızca tek bir uygulamanın yeniden dengelenmesi gerektiğinde tüm uygulamaların ve Kafka istemcilerinin yeniden dengeleneceği anlamına gelir.  Grup adlarınızı akıllıca seçin.
 - Event Hubs tüketici gruplarından tamamen farklıdır. ' $Default ' **kullanmanız gerekmez veya** AMQP iş yüklerine engel olan Kafka istemcileri hakkında endişelenmeniz gerekmez.
 - Azure portal görüntülenemez. Tüketici grubu bilgilerine Kafka API 'Leri aracılığıyla erişilebilir.

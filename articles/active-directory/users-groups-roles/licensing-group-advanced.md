@@ -7,7 +7,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 11/08/2019
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0af897ca284b1d51867808c2c74496c73e9bdcc3
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: fbdebd8d59034bd16a3199c1304606ccf12ab2c2
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582784"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727679"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory 'de lisanslamayı yönetmek için grupları kullanarak senaryolar, sınırlamalar ve bilinen sorunlar
 
@@ -57,7 +57,7 @@ Kullanıcılar bir lisansa sahip olsa da bir lisansa gerek duyar veya her ikisin
 
 ![Enterprise Mobility + Security lisanslı kullanıcıların ekran görüntüsü](./media/licensing-group-advanced/o365-e5-licensed-users.png)
 
-Bu örnekte, kullanıcının her iki lisansa de sahip olmasını istiyorsanız, bir kullanıcıyı değiştirin `EMS;E5_baseservices;` ve extensionAttribute1 değerini olarak ayarlayın. Bu değişikliği şirket içinde yapabilirsiniz. Değişiklik bulutla eşitlendikten sonra, Kullanıcı her iki gruba da otomatik olarak eklenir ve lisanslar atanır.
+Bu örnekte, kullanıcının `EMS;E5_baseservices;` her iki lisansa de sahip olmasını istiyorsanız, bir kullanıcıyı değiştirin ve extensionAttribute1 değerini olarak ayarlayın. Bu değişikliği şirket içinde yapabilirsiniz. Değişiklik bulutla eşitlendikten sonra, Kullanıcı her iki gruba da otomatik olarak eklenir ve lisanslar atanır.
 
 ![Kullanıcının extensionAttribute1 nasıl ayarlanacağını gösteren ekran görüntüsü](./media/licensing-group-advanced/user-set-extensionAttribute1.png)
 
@@ -128,7 +128,7 @@ Bu işlemin nasıl görünebileceklerini aşağıda görebilirsiniz:
 ## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>Kimin devralınan ve doğrudan lisanslarına sahip olduğunu görmek için PowerShell 'i kullanın
 Kullanıcıların doğrudan atanmış veya gruptan devralınan bir lisansa sahip olup olmadığını denetlemek için bir PowerShell betiği kullanabilirsiniz.
 
-1. Kimlik doğrulaması `connect-msolservice` yapmak ve kuruluşunuza bağlanmak için cmdlet 'ini çalıştırın.
+1. `connect-msolservice`Kimlik doğrulaması yapmak ve kuruluşunuza bağlanmak için cmdlet 'ini çalıştırın.
 
 2. `Get-MsolAccountSku`Azure AD kuruluşunda sağlanan tüm Ürün lisanslarını bulmaya yönelik kullanılabilir.
 
@@ -193,7 +193,7 @@ Bu örnek çıktı, işleme başlangıcını, tüm ortaya çıkan Kullanıcı de
 
 Etkin bir lisansın atandığı bir grubu silmek mümkün değildir. Bir yönetici, lisansların kullanıcılardan kaldırılmasına neden olacağını belirten bir grubu silebilir. bu nedenle, silinmeden önce herhangi bir lisansın önce gruptan kaldırılmasını gerektiririz.
 
-Azure portal bir grubu silmeye çalışırken şu şekilde bir hata bildirimi görebilirsiniz: ![ekran görüntüsü grubu silme başarısız](./media/licensing-group-advanced/groupdeletionfailed.png)
+Azure portal bir grubu silmeye çalışırken şu şekilde bir hata bildirimi görebilirsiniz: ![ ekran görüntüsü grubu silme başarısız](./media/licensing-group-advanced/groupdeletionfailed.png)
 
 Gruptaki **lisanslar** sekmesine gidin ve atanmış herhangi bir lisans olup olmadığını görün. Yanıt Evet ise, bu lisansları kaldırın ve grubu silmeyi yeniden deneyin.
 

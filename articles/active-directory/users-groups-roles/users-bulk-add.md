@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed8c3563f9a17a30e0d5df5f00c35f34510d6029
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 6a2c9500ecefed02b28c066de80137d8f0882fd5
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848932"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84731521"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Azure Active Directory Kullanıcıları toplu olarak oluşturma
 
@@ -80,7 +80,7 @@ Daha sonra, oluşturduğunuz kullanıcıların Azure portal veya PowerShell kull
 
 1. Kuruluşunuzda Kullanıcı Yöneticisi olan bir hesapla [Azure AD Yönetim merkezinde oturum açın](https://aad.portal.azure.com) .
 1. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
-1. **Yönet** bölümünde **Kullanıcılar**’ı seçin.
+1. **Yönet** bölümünde **Kullanıcılar**'ı seçin.
 1. **Göster**altında, **tüm kullanıcılar** ' ı seçin ve oluşturduğunuz kullanıcıların listelendiğini doğrulayın.
 
 ### <a name="verify-users-with-powershell"></a>Kullanıcıları PowerShell ile doğrulama

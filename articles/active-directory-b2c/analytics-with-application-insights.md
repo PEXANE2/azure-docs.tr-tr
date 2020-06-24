@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 25e62e7c6865f91daa242a33a0f491f8015be41a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 688bf4526ad287955231358ab0b64036e5480713
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80672529"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201438"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Application Insights kullanarak Azure Active Directory B2C Kullanıcı davranışını izleme
 
@@ -46,11 +46,11 @@ Azure AD B2C Application Insights kullanırken, tek yapmanız gereken bir kaynak
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip aboneliğinizi içeren dizini seçerek Azure aboneliğinizi içeren dizini kullandığınızdan emin olun. Bu kiracı Azure AD B2C kiracınız değil.
 3. Azure portal, sol üst köşedeki **kaynak oluştur** ' u seçin ve **Application Insights**arayıp seçin.
-4. **Oluştur**' a tıklayın.
+4. **Oluştur**'a tıklayın.
 5. Kaynak için bir **ad** girin.
 6. **Uygulama türü**için **ASP.NET Web uygulaması**' nı seçin.
 7. **Kaynak grubu**için mevcut bir grubu seçin veya yeni bir grup için bir ad girin.
-8. **Oluştur**' a tıklayın.
+8. **Oluştur**'a tıklayın.
 4. Application Insights kaynağını oluşturduktan sonra açın, **temel**bileşenler ' i genişletin ve izleme anahtarını kopyalayın.
 
 ![Application Insights genel bakış ve Izleme anahtarı](./media/analytics-with-application-insights/app-insights.png)
@@ -59,7 +59,7 @@ Azure AD B2C Application Insights kullanırken, tek yapmanız gereken bir kaynak
 
 Bir talep, Azure AD B2C ilkesi yürütmesi sırasında verilerin geçici bir şekilde depolanmasını sağlar. [Talep şeması](claimsschema.md) , taleplerinizi bildirdiğiniz yerdir.
 
-1. İlkenizin uzantıları dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>.
+1. İlkenizin uzantıları dosyasını açın. Örneğin, <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. [Buildingblocks](buildingblocks.md) öğesi için arama yapın. Öğe yoksa, ekleyin.
 1. [Claimsschema](claimsschema.md) öğesini bulun. Öğe yoksa, ekleyin.
 1. Aşağıdaki talepleri **Claimsschema** öğesine ekleyin. 
@@ -107,11 +107,11 @@ Teknik profiller, Azure AD B2C kimlik deneyimi çerçevesinde işlevler olarak k
 | Teknik profil | Görev |
 | ----------------- | -----|
 | Appınsights-ortak | Tüm Azure Insights teknik profillerine dahil edilecek ortak parametre kümesi. |
-| Appınsights-Signınrequest | Bir oturum `SignInRequest` açma isteği alındığında bir talep kümesiyle olay kaydeder. |
-| Appınsights-UserSignUp | Kullanıcı kaydolma `UserSignUp` /oturum açma yolculuğunda oturum açma seçeneğini tetiklediğinde bir olayı kaydeder. |
-| Appınsights-Signcomplete | Bağlı olan `SignInComplete` taraf uygulamasına bir belirteç gönderildiğinde bir kimlik doğrulamasının başarıyla tamamlanmasında bir olay kaydeder. |
+| Appınsights-Signınrequest | Bir `SignInRequest` oturum açma isteği alındığında bir talep kümesiyle olay kaydeder. |
+| Appınsights-UserSignUp | `UserSignUp`Kullanıcı kaydolma/oturum açma yolculuğunda oturum açma seçeneğini tetiklediğinde bir olayı kaydeder. |
+| Appınsights-Signcomplete | `SignInComplete`Bağlı olan taraf uygulamasına bir belirteç gönderildiğinde bir kimlik doğrulamasının başarıyla tamamlanmasında bir olay kaydeder. |
 
-Profilleri, başlatıcı paketinden *TrustFrameworkExtensions. xml* dosyasına ekleyin. Bu öğeleri **Claimsproviders** öğesine ekleyin:
+Profilleri başlangıç paketinden *TrustFrameworkExtensions.xml* dosyasına ekleyin. Bu öğeleri **Claimsproviders** öğesine ekleyin:
 
 ```xml
 <ClaimsProvider>
@@ -163,22 +163,22 @@ Profilleri, başlatıcı paketinden *TrustFrameworkExtensions. xml* dosyasına e
 ```
 
 > [!IMPORTANT]
-> `AppInsights-Common` Teknik profildeki izleme anahtarını Application Insights KAYNAĞıNıZıN sağladığı GUID ile değiştirin.
+> `AppInsights-Common`Teknik profildeki izleme anahtarını Application Insights kaynağınızın SAĞLADıĞı GUID ile değiştirin.
 
 ## <a name="add-the-technical-profiles-as-orchestration-steps"></a>Teknik profilleri düzenleme adımları olarak ekleme
 
-Bir `AppInsights-SignInRequest` oturum açma/kaydolma isteğinin alındığını izlemek için düzenleme adımı 2 olarak çağırın:
+`AppInsights-SignInRequest`Bir oturum açma/kaydolma isteğinin alındığını izlemek için düzenleme adımı 2 olarak çağırın:
 
 ```xml
 <!-- Track that we have received a sign in request -->
-<OrchestrationStep Order="1" Type="ClaimsExchange">
+<OrchestrationStep Order="2" Type="ClaimsExchange">
   <ClaimsExchanges>
     <ClaimsExchange Id="TrackSignInRequest" TechnicalProfileReferenceId="AppInsights-SignInRequest" />
   </ClaimsExchanges>
 </OrchestrationStep>
 ```
 
-Düzenleme adımından hemen *önce* , çağıran `AppInsights-UserSignup`yeni bir adım ekleyin. `SendClaims` Kullanıcı kaydolma/oturum açma yolculuğunda oturum açma düğmesini seçtiğinde tetiklenir.
+*before* `SendClaims` Düzenleme adımından hemen önce, çağıran yeni bir adım ekleyin `AppInsights-UserSignup` . Kullanıcı kaydolma/oturum açma yolculuğunda oturum açma düğmesini seçtiğinde tetiklenir.
 
 ```xml
 <!-- Handles the user clicking the sign up link in the local account sign in page -->
@@ -200,7 +200,7 @@ Düzenleme adımından hemen *önce* , çağıran `AppInsights-UserSignup`yeni b
 </OrchestrationStep>
 ```
 
-`SendClaims` Düzenleme adımından hemen sonra öğesini çağırın `AppInsights-SignInComplete`. Bu adımda başarıyla tamamlanan bir yolculuğun bulunduğu gösterilmektedir.
+`SendClaims`Düzenleme adımından hemen sonra öğesini çağırın `AppInsights-SignInComplete` . Bu adımda başarıyla tamamlanan bir yolculuğun bulunduğu gösterilmektedir.
 
 ```xml
 <!-- Track that we have successfully sent a token -->
@@ -217,10 +217,10 @@ Düzenleme adımından hemen *önce* , çağıran `AppInsights-UserSignup`yeni b
 
 ## <a name="upload-your-file-run-the-policy-and-view-events"></a>Dosyanızı karşıya yükleyin, ilkeyi çalıştırın ve olayları görüntüleyin
 
-*TrustFrameworkExtensions. xml* dosyasını kaydedin ve karşıya yükleyin. Ardından, bağlı olan taraf ilkesini uygulamanızdan çağırın veya Azure portal **Şimdi Çalıştır** ' ı kullanın. Saniyeler içinde, olaylarınız Application Insights kullanılabilir.
+*TrustFrameworkExtensions.xml* dosyasını kaydedin ve karşıya yükleyin. Ardından, bağlı olan taraf ilkesini uygulamanızdan çağırın veya Azure portal **Şimdi Çalıştır** ' ı kullanın. Saniyeler içinde, olaylarınız Application Insights kullanılabilir.
 
 1. Azure Active Directory kiracınızda **Application Insights** kaynağını açın.
-2. **Kullanım** > **olaylarını**seçin.
+2. **Kullanım**  >  **olaylarını**seçin.
 3. **Son saate** **ve** **3 dakikaya** **kadar ayarlayın.**  Sonuçları görüntülemek için **Yenile** ' yi seçmeniz gerekebilir.
 
 ![Application Insights kullanımı-etkinlik öncesi](./media/analytics-with-application-insights/app-ins-graphic.png)
@@ -230,10 +230,10 @@ Düzenleme adımından hemen *önce* , çağıran `AppInsights-UserSignup`yeni b
 Gereksinimlerinize uyacak şekilde Kullanıcı yolculuğuna talep türleri ve olaylar ekleyin. [Talep çözümleyicilerine](claim-resolver-overview.md) veya herhangi bir dize talep türüne, Application Insights olayına bir **giriş talep** öğesi ekleyerek veya appınsights-Common Technical profile ' i kullanarak talepler ekleyebilirsiniz.
 
 - **ClaimTypeReferenceId** , bir talep türüne başvurudur.
-- **Partnerclaimtype** , Azure Insights 'ta görünen özelliğin adıdır. Öğesinin sözdizimini kullanın; `{property:NAME}`burada `NAME` , olaya bir özellik eklenir.
+- **Partnerclaimtype** , Azure Insights 'ta görünen özelliğin adıdır. Öğesinin sözdizimini kullanın; `{property:NAME}` burada, `NAME` olaya bir özellik eklenir.
 - **DefaultValue** herhangi bir dize değeri veya talep çözümleyici kullanır.
 
-```XML
+```xml
 <InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />
 <InputClaim ClaimTypeReferenceId="loyalty_number" PartnerClaimType="{property:loyalty_number}" DefaultValue="{OAUTH-KV:loyalty_number}" />
 <InputClaim ClaimTypeReferenceId="language" PartnerClaimType="{property:language}" DefaultValue="{Culture:RFC5646}" />

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a26f6c5e69ca083335580a0368459e062de3941e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c66ccb8ae9db46ca8e94d9c73e9c61b64119dd0
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187670"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201795"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanım için JavaScript örnekleri
 
@@ -41,16 +41,16 @@ Bu makalede, betik yürütmeyi etkinleştirmek için özel ilkenizi nasıl deği
 
 * Uygulamanızın Kullanıcı arabirimi öğeleri için bir [sayfa düzeni](contentdefinitions.md#select-a-page-layout) seçin.
 
-    JavaScript kullanmayı düşünüyorsanız, özel ilkenizde *Tüm* içerik tanımlarının sayfa `contract` sürümüyle birlikte [bir sayfa düzeni sürümü tanımlamanız](contentdefinitions.md#migrating-to-page-layout) gerekir.
+    JavaScript kullanmayı düşünüyorsanız, özel ilkenizde tüm içerik tanımlarının sayfa sürümüyle birlikte [bir sayfa düzeni sürümü tanımlamanız](contentdefinitions.md#migrating-to-page-layout) gerekir `contract` . *all*
 
 ## <a name="add-the-scriptexecution-element"></a>ScriptExecution öğesini ekleyin
 
 **Scriptexecution** öğesini [RelyingParty](relyingparty.md) öğesine ekleyerek betik yürütmeyi etkinleştirirsiniz.
 
-1. Özel ilke dosyanızı açın. Örneğin, *Signuporsignın. xml*.
+1. Özel ilke dosyanızı açın. Örneğin, *SignUpOrSignin.xml*.
 2. **Scriptexecution** öğesini **RelyingParty**öğesinin **userscripts newydavranışlar** öğesine ekleyin:
 
-    ```XML
+    ```xml
     <RelyingParty>
       <DefaultUserJourney ReferenceId="B2CSignUpOrSignInWithPassword" />
       <UserJourneyBehaviors>
@@ -138,7 +138,7 @@ function addTermsOfUseLink() {
 }
 ```
 
-Kodda, kullanım koşullarınızın `termsOfUseUrl` anlaşmasıyla bağlantı ile değiştirin. Dizininiz için, **termsofuse** adlı yeni bir kullanıcı özniteliği oluşturun ve ardından Kullanıcı özniteliği olarak **termsofuse** ekleyin.
+Kodda, `termsOfUseUrl` kullanım koşullarınızın anlaşmasıyla bağlantı ile değiştirin. Dizininiz için, **termsofuse** adlı yeni bir kullanıcı özniteliği oluşturun ve ardından Kullanıcı özniteliği olarak **termsofuse** ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

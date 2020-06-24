@@ -3,15 +3,15 @@ title: MongoDB için Azure Cosmos DB API 'sindeki verileri yönetmek için Mongo
 description: Bu makalede MongoDB için Azure Cosmos DB API 'sinde depolanan verileri yönetmek üzere MongoDB uzantı komutlarının nasıl kullanılacağı açıklanır.
 author: LuisBosquez
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2020
 ms.author: lbosq
-ms.openlocfilehash: cf35e7d6fac53f6854ac746769a9672f8cea9605
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 7879793cbbb029468e84b14f8e8eee793cf4c530
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248728"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260738"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde depolanan verileri yönetmek için MongoDB uzantı komutlarını kullanma 
 
@@ -42,7 +42,7 @@ Veritabanı uzantısı Oluştur komutu yeni bir MongoDB veritabanı oluşturur. 
 | `offerThroughput` | `int`  | Veritabanında ayarladığınız üretilen iş hacmi. Bu parametre isteğe bağlıdır. |
 | `autoScaleSettings` | `Object` | [Otomatik ölçeklendirme modu](provision-throughput-autoscale.md)için gereklidir. Bu nesne, otomatik ölçeklendirme kapasitesi moduyla ilişkili ayarları içerir. `maxThroughput`Koleksiyonun dinamik olarak artırılabileceği en yüksek Istek birimi miktarını açıklayan değeri ayarlayabilirsiniz. |
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Komut başarılı olursa, şu yanıtı döndürür:
 
@@ -97,7 +97,7 @@ Veritabanı uzantısını Güncelleştir komutu, belirtilen veritabanıyla iliş
 
 Bu komut, oturum bağlamında belirtilen veritabanını kullanır. Bu, komutunda kullandığınız veritabanıdır `use <database>` . Şu anda, veritabanı adı bu komut kullanılarak değiştirilemez.
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Komut başarılı olursa, şu yanıtı döndürür:
 
@@ -145,7 +145,7 @@ Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 |---------|---------|---------|
 |  `customAction`   |   `string`      |   Özel komutun adı. "GetDatabase" olmalıdır|
         
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Komut başarılı olursa, yanıt aşağıdaki alanları içeren bir belge içerir:
 
@@ -218,7 +218,7 @@ Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 | `shardKey` | `string` | Büyük aktarım hızı olan koleksiyonlar için gereklidir | Parçalı koleksiyon için parça anahtarının yolu. İçinde 10.000 RU/sn 'den fazla ayarlarsanız bu parametre gereklidir `offerThroughput` .  Belirtilmişse, ekli tüm belgeler bu anahtar ve değeri gerektirir. |
 | `autoScaleSettings` | `Object` | [Otomatik ölçeklendirme modu](provision-throughput-autoscale.md) için gerekli | Bu nesne, otomatik ölçeklendirme kapasitesi moduyla ilişkili ayarları içerir. `maxThroughput`Koleksiyonun dinamik olarak artırılabileceği en yüksek Istek birimi miktarını açıklayan değeri ayarlayabilirsiniz. |
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Varsayılan özel komut yanıtını döndürür. Çıktıda parametreler için özel komutun [varsayılan çıktısına](#default-output) bakın.
 
@@ -308,7 +308,7 @@ Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 | `offerThroughput` | `int` |   Koleksiyonda ayarlanacak sağlanan aktarım hızı.|
 | `autoScaleSettings` | `Object` | [Otomatik ölçeklendirme modu](provision-throughput-autoscale.md)için gereklidir. Bu nesne, otomatik ölçeklendirme kapasitesi moduyla ilişkili ayarları içerir. `maxThroughput`Değer, koleksiyonun dinamik olarak artırılacakları en yüksek Istek birimi sayısını açıklar. |
 
-## <a name="output"></a>Çıktı
+## <a name="output"></a>Çıkış
 
 Varsayılan özel komut yanıtını döndürür. Çıktıda parametreler için özel komutun [varsayılan çıktısına](#default-output) bakın.
 
@@ -342,7 +342,7 @@ Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 | `customAction`    |   `string`      |   Özel komutun adı. "GetCollection" olmalıdır.      |
 | `collection`    |    `string`     |    Koleksiyonun adı.     |
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Komut başarılı olursa, yanıt aşağıdaki alanları içeren bir belge içerir
 

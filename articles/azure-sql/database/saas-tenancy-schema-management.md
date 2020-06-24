@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: 02b7b7b78e2a5933d9e9cc5931ca2cd2a46a6e9e
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 60c2330578ef4b8e3e40dc3e37a0c8b1eb291e2f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449308"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255560"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL veritabanı ile kiracı başına veritabanı düzenini kullanarak bir SaaS uygulamasında şemayı yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -62,10 +62,10 @@ Uygulama kaynak kodu ve yönetim betikleri [Wingtipbilet ssaas-DbPerTenant](http
 
 Bu öğretici, bir iş Aracısı ve onun yedekleme iş Aracısı veritabanı oluşturmak için PowerShell kullanmanız gerekir. İş Aracısı veritabanı iş tanımlarını, iş durumunu ve geçmişi barındırır. İş Aracısı ve veritabanı oluşturulduktan sonra işleri hemen oluşturabilir ve izleyebilirsiniz.
 
-1. **PowerShell ISE 'de**açın... \\ Öğrenme modülleri \\ Şema Yönetimi \\ *demo-SchemaManagement. ps1*.
+1. **PowerShell ISE 'de**açın... \\ Öğrenme modülleri \\ şema yönetimi \\ *Demo-SchemaManagement.ps1*.
 1. Betiği çalıştırmak için **F5**'e basın.
 
-*Demo-SchemaManagement. ps1* betiği, katalog sunucusunda *osagent* adlı bir SQL veritabanı oluşturmak için *Deploy-SchemaManagement. ps1* betiğini çağırır. Daha sonra bir parametre olarak veritabanını kullanarak iş aracısını oluşturur.
+*Demo-SchemaManagement.ps1* betiği, katalog sunucusunda *osagent* adlı bir veritabanı oluşturmak için *Deploy-SchemaManagement.ps1* betiğini çağırır. Daha sonra bir parametre olarak veritabanını kullanarak iş aracısını oluşturur.
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Tüm kiracılara yeni başvuru verilerini dağıtmak için bir iş oluşturma
 

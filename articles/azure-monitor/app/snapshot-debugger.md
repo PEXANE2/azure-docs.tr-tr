@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: cweining
 ms.openlocfilehash: 18f43ba90157d71ec9488b6858fa9f41b2ee42a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275769"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692028"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET uygulamalarında özel durumlarda anlık görüntü hatalarını ayıklama
-Bir özel durum oluştuğunda, Canlı Web uygulamanızdan otomatik olarak bir hata ayıklama anlık görüntüsü toplayabilirsiniz. Anlık görüntü, kaynak kodu ve değişkenlerin durumunu özel durumun oluşturulduğu anda gösterir. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) Snapshot Debugger Web uygulamanızdan özel durum telemetrisini izler. Üretim aşamasındaki sorunları tanılamak için ihtiyaç duyduğunuz bilgilere sahip olmanız için, en önemli özel durumlarınızın anlık görüntülerini toplar. [Anlık görüntü toplayıcısı NuGet paketini](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) uygulamanıza ekleyin ve isteğe bağlı olarak [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)içinde koleksiyon parametrelerini yapılandırın. Anlık görüntüler Application Insights portalındaki [özel durumlar](../../azure-monitor/app/asp-net-exceptions.md) üzerinde görünür.
+Bir özel durum oluştuğunda, Canlı Web uygulamanızdan otomatik olarak bir hata ayıklama anlık görüntüsü toplayabilirsiniz. Anlık görüntü, kaynak kodu ve değişkenlerin durumunu özel durumun oluşturulduğu anda gösterir. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) Snapshot Debugger Web uygulamanızdan özel durum telemetrisini izler. Üretim aşamasındaki sorunları tanılamak için ihtiyaç duyduğunuz bilgilere sahip olmanız için, en önemli özel durumlarınızın anlık görüntülerini toplar. [Anlık görüntü toplayıcısı NuGet paketini](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) uygulamanıza ekleyin ve isteğe bağlı olarak [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)koleksiyon parametrelerini yapılandırın. Anlık görüntüler Application Insights portalındaki [özel durumlar](../../azure-monitor/app/asp-net-exceptions.md) üzerinde görünür.
 
 Hata ayıklama anlık görüntülerini portalda görüntüleyerek çağrı yığınını görebilir ve her bir çağrı yığını çerçevesinde değişkenleri inceleyebilirsiniz. Kaynak kodla daha güçlü bir hata ayıklama deneyimi sağlamak için, Visual Studio 2019 Enterprise ile anlık görüntüler açın. Visual Studio 'da, bir özel durum beklemeden [anlık görüntüleri etkileşimli olarak almak için de anlık görüntü noktaları ayarlayabilirsiniz](https://aka.ms/snappoint) .
 
@@ -73,9 +73,9 @@ Hata ayıklama anlık görüntüsü görünümünde, bir çağrı yığını ve 
 Anlık görüntüler hassas bilgiler içerebilir ve varsayılan olarak görüntülenemez. Anlık görüntüleri görüntülemek için `Application Insights Snapshot Debugger` rolün size atanmış olması gerekir.
 
 ## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>Visual Studio 2017 Enterprise veya üzeri anlık görüntüleri görüntüleme
-1. Visual Studio Enterprise tarafından açılabilen bir `.diagsession` dosyayı Indirmek Için **anlık görüntüyü indir** düğmesine tıklayın.
+1. Visual Studio Enterprise tarafından açılabilen bir dosyayı indirmek için **anlık görüntüyü indir** düğmesine tıklayın `.diagsession` .
 
-2. `.diagsession` Dosyayı açmak Için Snapshot Debugger Visual Studio bileşeninin yüklü olması gerekir. Snapshot Debugger bileşeni, Visual Studio 'daki ASP.net iş yükünün gerekli bir bileşenidir ve Visual Studio yükleyicisi 'ndeki ayrı bileşen listesinden seçilebilir. Visual Studio 2017 sürüm 15,5 ' den önceki bir Visual Studio sürümü kullanıyorsanız, uzantıyı [Visual Studio Market](https://aka.ms/snapshotdebugger)yüklemeniz gerekecektir.
+2. Dosyayı açmak için `.diagsession` Snapshot Debugger Visual Studio bileşeninin yüklü olması gerekir. Snapshot Debugger bileşeni, Visual Studio 'daki ASP.net iş yükünün gerekli bir bileşenidir ve Visual Studio yükleyicisi 'ndeki ayrı bileşen listesinden seçilebilir. Visual Studio 2017 sürüm 15,5 ' den önceki bir Visual Studio sürümü kullanıyorsanız, uzantıyı [Visual Studio Market](https://aka.ms/snapshotdebugger)yüklemeniz gerekecektir.
 
 3. Snapshot dosyasını açtıktan sonra, Visual Studio 'da mini döküm hata ayıklama sayfası görüntülenir. Anlık görüntüde hata ayıklamayı başlatmak için **yönetilen kodda hata ayıkla** ' ya tıklayın. Anlık görüntü, işlemin geçerli durumunda Hata ayıklayabilmeniz için özel durumun oluşturulduğu kod satırına açılır.
 
@@ -97,9 +97,9 @@ Ana süreç çalışmaya devam eder ve kullanıcılara az kesintiye uğramış o
 > [!TIP]
 > - İşlem anlık görüntüsü, çalışan işlemin askıya alınmış bir kopyadır.
 > - Anlık görüntünün oluşturulması yaklaşık 10 ila 20 milisaniye sürer.
-> - İçin `ThresholdForSnapshotting` varsayılan değer 1 ' dir. Bu aynı zamanda en küçük değerdir. Bu nedenle, uygulamanızın bir anlık görüntü oluşturulmadan aynı özel durumu **iki kez** tetiklemesi gerekir.
-> - Visual `IsEnabledInDeveloperMode` Studio 'da hata ayıklarken anlık görüntü oluşturmak istiyorsanız true olarak ayarlayın.
-> - Anlık görüntü oluşturma hızı `SnapshotsPerTenMinutesLimit` ayarla sınırlıdır. Varsayılan olarak, sınır her on dakikada bir anlık görüntüdür.
+> - İçin varsayılan değer `ThresholdForSnapshotting` 1 ' dir. Bu aynı zamanda en küçük değerdir. Bu nedenle, uygulamanızın bir anlık görüntü oluşturulmadan aynı özel durumu **iki kez** tetiklemesi gerekir.
+> - `IsEnabledInDeveloperMode`Visual Studio 'da hata ayıklarken anlık görüntü oluşturmak istiyorsanız true olarak ayarlayın.
+> - Anlık görüntü oluşturma hızı `SnapshotsPerTenMinutesLimit` Ayarla sınırlıdır. Varsayılan olarak, sınır her on dakikada bir anlık görüntüdür.
 > - Gün başına 50 ' ten fazla anlık görüntü yüklenemez.
 
 ## <a name="limitations"></a>Sınırlamalar
@@ -108,13 +108,13 @@ Varsayılan veri saklama süresi 15 gündür. Her bir Application Insights örne
 
 ### <a name="publish-symbols"></a>Sembolleri Yayımla
 Snapshot Debugger, değişkenleri çözmek ve Visual Studio 'da bir hata ayıklama deneyimi sağlamak için üretim sunucusunda sembol dosyaları gerektirir.
-Visual Studio 2017 sürüm 15,2 (veya üzeri), yayın derlemeleri için App Service yayımlandığında varsayılan olarak sembolleri yayımlar. Önceki sürümlerde, semboller yayın modunda yayınlanabilmesi için Yayımlama profili `.pubxml` dosyanıza aşağıdaki satırı eklemeniz gerekir:
+Visual Studio 2017 sürüm 15,2 (veya üzeri), yayın derlemeleri için App Service yayımlandığında varsayılan olarak sembolleri yayımlar. Önceki sürümlerde, `.pubxml` semboller yayın modunda yayınlanabilmesi için Yayımlama profili dosyanıza aşağıdaki satırı eklemeniz gerekir:
 
 ```xml
     <ExcludeGeneratedDebugSymbol>False</ExcludeGeneratedDebugSymbol>
 ```
 
-Azure Işlem ve diğer türler için, sembol dosyalarının ana uygulama. dll ' de aynı klasörde (genellikle, `wwwroot/bin`) veya geçerli yolda kullanılabilir olduğundan emin olun.
+Azure Işlem ve diğer türler için, sembol dosyalarının ana uygulama. dll ' de aynı klasörde (genellikle, `wwwroot/bin` ) veya geçerli yolda kullanılabilir olduğundan emin olun.
 
 > [!NOTE]
 > Kullanılabilir farklı sembol seçenekleri hakkında daha fazla bilgi için [Visual Studio belgelerine](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output

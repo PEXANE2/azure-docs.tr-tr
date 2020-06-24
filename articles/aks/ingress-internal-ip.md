@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) kümesinde iç, özel ağ için bir 
 services: container-service
 ms.topic: article
 ms.date: 04/27/2020
-ms.openlocfilehash: 749c9904244dd702e41a63e0266c5ff6b1344261
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: ca804849001ec99f077397fb9fbee2aae7bc2e18
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561956"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298574"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde iç sanal ağa giriş denetleyicisi oluşturma
 
@@ -50,10 +50,10 @@ controller:
 Ayrıca giriş denetleyicisinin bir Linux düğümü üzerinde zamanlanması gerekir. Giriş denetleyicisi, Windows Server düğümlerinde çalıştırılmamalıdır. Kubernetes zamanlayıcısına NGINX giriş denetleyicisini Linux tabanlı bir düğümde çalıştırmasını söylemek için `--set nodeSelector` parametresi kullanılarak bir düğüm seçici belirtilir.
 
 > [!TIP]
-> Aşağıdaki örnek, *Giriş-Basic*adlı giriş kaynakları için bir Kubernetes ad alanı oluşturur. Gerektiğinde kendi ortamınız için bir ad alanı belirtin. AKS kümeniz RBAC etkinleştirilmemişse, helk komutlarına ekleyin `--set rbac.create=false` .
+> Aşağıdaki örnek, *Giriş-Basic*adlı giriş kaynakları için bir Kubernetes ad alanı oluşturur. Gerektiğinde kendi ortamınız için bir ad alanı belirtin. AKS kümeniz RBAC etkinleştirilmemişse, `--set rbac.create=false` helk komutlarına ekleyin.
 
 > [!TIP]
-> Kümenizdeki kapsayıcılara yönelik [istemci kaynak IP korumasını][client-source-ip] etkinleştirmek Istiyorsanız, Helm install komutuna ekleyin `--set controller.service.externalTrafficPolicy=Local` . İstemci kaynak IP 'si, *Için X-iletilen-için*istek üstbilgisinde depolanır. İstemci kaynak IP koruması etkinken bir giriş denetleyicisi kullanılırken, TLS geçişi çalışmaz.
+> Kümenizdeki kapsayıcılara yönelik [istemci kaynak IP korumasını][client-source-ip] etkinleştirmek Istiyorsanız, `--set controller.service.externalTrafficPolicy=Local` Helm install komutuna ekleyin. İstemci kaynak IP 'si, *Için X-iletilen-için*istek üstbilgisinde depolanır. İstemci kaynak IP koruması etkinken bir giriş denetleyicisi kullanılırken, TLS geçişi çalışmaz.
 
 ```console
 # Create a namespace for your ingress resources
@@ -68,7 +68,13 @@ helm install nginx-ingress stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-Kubernetes yük dengeleyici hizmeti NGıNX giriş denetleyicisi için oluşturulduğunda, aşağıdaki örnek çıktıda gösterildiği gibi iç IP adresiniz atanır:
+Kubernetes yük dengeleyici hizmeti NGıNX giriş denetleyicisi için oluşturulduğunda, iç IP adresiniz atanır. Genel IP adresini almak için `kubectl get service` komutunu kullanın.
+
+```console
+kubectl get service -l app=nginx-ingress --namespace ingress-basic
+```
+
+Aşağıdaki örnek çıktıda gösterildiği gibi, IP adresinin hizmete atanması birkaç dakika sürer:
 
 ```
 $ kubectl get service -l app=nginx-ingress --namespace ingress-basic
@@ -82,7 +88,7 @@ Henüz giriş kuralı oluşturulmadı, bu nedenle iç IP adresine gözattığın
 
 ## <a name="run-demo-applications"></a>Demo uygulamalarını çalıştırma
 
-Giriş denetleyicisini çalışır durumda görmek için AKS kümenizde iki tanıtım uygulaması çalıştırın. Bu örnekte, basit bir `kubectl apply` *Hello World* uygulamasının iki örneğini dağıtmak için kullanırsınız.
+Giriş denetleyicisini çalışır durumda görmek için AKS kümenizde iki tanıtım uygulaması çalıştırın. Bu örnekte, `kubectl apply` basit bir *Hello World* uygulamasının iki örneğini dağıtmak için kullanırsınız.
 
 Bir *aks-HelloWorld. YAML* dosyası oluşturun ve aşağıdaki örnekte bulunan YAML 'yi kopyalayın:
 
@@ -160,7 +166,7 @@ spec:
     app: ingress-demo
 ```
 
-Kullanarak `kubectl apply`iki demo uygulamayı çalıştırın:
+Kullanarak iki demo uygulamayı çalıştırın `kubectl apply` :
 
 ```console
 kubectl apply -f aks-helloworld.yaml --namespace ingress-basic
@@ -171,9 +177,9 @@ kubectl apply -f ingress-demo.yaml --namespace ingress-basic
 
 Her iki uygulama da artık Kubernetes kümenizde çalışıyor. Trafiği her bir uygulamaya yönlendirmek için bir Kubernetes giriş kaynağı oluşturun. Giriş kaynağı, trafiği iki uygulamadan birine yönlendiren kuralları yapılandırır.
 
-Aşağıdaki örnekte, adrese `http://10.240.0.42/` olan trafik adlı `aks-helloworld`hizmete yönlendirilir. Adrese `http://10.240.0.42/hello-world-two` giden trafik `ingress-demo` hizmete yönlendirilir.
+Aşağıdaki örnekte, adrese `http://10.240.0.42/` olan trafik adlı hizmete yönlendirilir `aks-helloworld` . Adrese giden trafik `http://10.240.0.42/hello-world-two` `ingress-demo` hizmete yönlendirilir.
 
-Adlı `hello-world-ingress.yaml` bir dosya oluşturun ve aşağıdaki örnekteki YAML 'yi kopyalayın.
+Adlı bir dosya oluşturun `hello-world-ingress.yaml` ve aşağıdaki örnekteki YAML 'yi kopyalayın.
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -199,7 +205,13 @@ spec:
         path: /hello-world-two(/|$)(.*)
 ```
 
-`kubectl apply -f hello-world-ingress.yaml` Komutunu kullanarak giriş kaynağını oluşturun.
+Komutunu kullanarak giriş kaynağını oluşturun `kubectl apply -f hello-world-ingress.yaml` .
+
+```console
+kubectl apply -f hello-world-ingress.yaml
+```
+
+Aşağıdaki örnek çıktı, giriş kaynağının oluşturulduğunu gösterir.
 
 ```
 $ kubectl apply -f hello-world-ingress.yaml
@@ -215,19 +227,19 @@ Giriş denetleyicisinin yollarını test etmek için, bir Web istemcisi ile iki 
 kubectl run -it --rm aks-ingress-test --image=debian --namespace ingress-basic
 ```
 
-Şunu `curl` kullanarak `apt-get`Pod 'a yüklensin:
+Şunu `curl` kullanarak Pod 'a yüklensin `apt-get` :
 
 ```console
 apt-get update && apt-get install -y curl
 ```
 
-Şimdi, kullanarak `curl`Kubernetes giriş denetleyicinizin adresine erişin *http://10.240.0.42*. Bu makalenin ilk adımında giriş denetleyicisi 'ni dağıtırken belirtilen kendi iç IP adresini belirtin.
+Şimdi, kullanarak Kubernetes giriş denetleyicinizin adresine erişin `curl` *http://10.240.0.42* . Bu makalenin ilk adımında giriş denetleyicisi 'ni dağıtırken belirtilen kendi iç IP adresini belirtin.
 
 ```console
 curl -L http://10.240.0.42
 ```
 
-Adresle birlikte ek bir yol sağlanmadı, bu nedenle giriş denetleyicisi */* rotayı varsayılan olarak alır. İlk demo uygulaması aşağıdaki sıkıştırılmış örnek çıktıda gösterildiği gibi döndürülür:
+Adresle birlikte ek bir yol sağlanmadı, bu nedenle giriş denetleyicisi rotayı varsayılan olarak alır */* . İlk demo uygulaması aşağıdaki sıkıştırılmış örnek çıktıda gösterildiği gibi döndürülür:
 
 ```
 $ curl -L http://10.240.0.42
@@ -240,7 +252,7 @@ $ curl -L http://10.240.0.42
 [...]
 ```
 
-Şimdi adrese */Hello-World-iki* yolu ekleyin, örneğin *http://10.240.0.42/hello-world-two*. Aşağıdaki sıkıştırılmış örnek çıktıda gösterildiği gibi, özel başlığa sahip ikinci demo uygulaması döndürülür:
+Şimdi adrese */Hello-World-iki* yolu ekleyin, örneğin *http://10.240.0.42/hello-world-two* . Aşağıdaki sıkıştırılmış örnek çıktıda gösterildiği gibi, özel başlığa sahip ikinci demo uygulaması döndürülür:
 
 ```
 $ curl -L -k http://10.240.0.42/hello-world-two
@@ -267,7 +279,13 @@ kubectl delete namespace ingress-basic
 
 ### <a name="delete-resources-individually"></a>Kaynakları tek tek Sil
 
-Alternatif olarak, oluşturulan kaynakları tek tek silmek daha ayrıntılı bir yaklaşımdır. `helm list` Komut Ile Held sürümlerini listeleyin. Aşağıdaki örnek çıktıda gösterildiği gibi *NGINX-ingress* ve *aks-HelloWorld*adlı grafikleri arayın:
+Alternatif olarak, oluşturulan kaynakları tek tek silmek daha ayrıntılı bir yaklaşımdır. Komut ile Held sürümlerini listeleyin `helm list` . 
+
+```console
+helm list --namespace ingress-basic
+```
+
+Aşağıdaki örnek çıktıda gösterildiği gibi *NGINX-ingress* ve *aks-HelloWorld*adlı grafikleri arayın:
 
 ```
 $ helm list --namespace ingress-basic
@@ -276,7 +294,13 @@ NAME                    NAMESPACE       REVISION        UPDATED                 
 nginx-ingress           ingress-basic   1               2020-01-06 19:55:46.358275 -0600 CST    deployed        nginx-ingress-1.27.1    0.26.1  
 ```
 
-`helm uninstall` Komutuyla yayınları kaldırın. Aşağıdaki örnek NGıNX giriş dağıtımını kaldırır.
+Komutuyla yayınları kaldırın `helm uninstall` .
+
+```console
+helm uninstall nginx-ingress --namespace ingress-basic
+```
+
+Aşağıdaki örnek NGıNX giriş dağıtımını kaldırır.
 
 ```
 $ helm uninstall nginx-ingress --namespace ingress-basic
@@ -297,7 +321,7 @@ Trafiği örnek uygulamalara yönlendiren giriş yolunu kaldırın:
 kubectl delete -f hello-world-ingress.yaml
 ```
 
-Son olarak, kendi ad alanını silebilirsiniz. `kubectl delete` Komutunu kullanın ve ad alanı adınızı belirtin:
+Son olarak, kendi ad alanını silebilirsiniz. Komutunu kullanın `kubectl delete` ve ad alanı adınızı belirtin:
 
 ```console
 kubectl delete namespace ingress-basic

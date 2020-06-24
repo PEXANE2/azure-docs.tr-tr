@@ -11,18 +11,18 @@ Customer intent: I want to filter network traffic to virtual machines that perfo
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 72c8b4d57b5064af34665cff1386179e62324938
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b593630d6702f66b1b877c15688b9aea0e227fca
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80235069"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688310"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Azure CLı kullanarak ağ trafiğini ağ güvenlik grubuyla filtreleme
 
@@ -143,9 +143,9 @@ az network vnet subnet create \
 
 Daha sonraki bir adımda trafik filtrelemesini doğrulayabilmek için sanal ağda iki VM oluşturun. 
 
-[az vm create](/cli/azure/vm) ile bir VM oluşturun. Aşağıdaki örnek, web sunucusu olarak görev yapacak bir VM oluşturur. Seçeneği `--asgs myAsgWebServers` , Azure 'un VM Için *Myasgwebservers* uygulama güvenlik grubunun bir üyesi için oluşturduğu ağ arabirimini yapmasına neden olur.
+[az vm create](/cli/azure/vm) ile bir VM oluşturun. Aşağıdaki örnek, web sunucusu olarak görev yapacak bir VM oluşturur. `--asgs myAsgWebServers`Seçeneği, Azure 'un VM Için *Myasgwebservers* uygulama güvenlik grubunun bir üyesi için oluşturduğu ağ arabirimini yapmasına neden olur.
 
-Bu `--nsg ""` seçenek, Azure 'un VM oluşturduğunda Azure tarafından oluşturulan ağ arabirimi için varsayılan bir ağ güvenlik grubu oluşturmasını engellemek üzere belirtilmiştir. Bu makaleyi kolaylaştırmak için bir parola kullanılır. Anahtarlar genellikle üretim dağıtımlarında kullanılır. Anahtarları kullanıyorsanız, diğer adımlar için SSH Aracısı iletmeyi da yapılandırmanız gerekir. Daha fazla bilgi için SSH istemcinizin belgelerine bakın. Aşağıdaki `<replace-with-your-password>` komutta yerine, seçtiğiniz parolayla değiştirin.
+`--nsg ""`Bu seçenek, Azure 'un VM oluşturduğunda Azure tarafından oluşturulan ağ arabirimi için varsayılan bir ağ güvenlik grubu oluşturmasını engellemek üzere belirtilmiştir. Bu makaleyi kolaylaştırmak için bir parola kullanılır. Anahtarlar genellikle üretim dağıtımlarında kullanılır. Anahtarları kullanıyorsanız, diğer adımlar için SSH Aracısı iletmeyi da yapılandırmanız gerekir. Daha fazla bilgi için SSH istemcinizin belgelerine bakın. `<replace-with-your-password>`Aşağıdaki komutta yerine, seçtiğiniz parolayla değiştirin.
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"
@@ -196,7 +196,7 @@ Sanal makinenin oluşturulması birkaç dakika sürer. VM oluşturulduktan sonra
 
 ## <a name="test-traffic-filters"></a>Trafik filtrelerini test etme
 
-*Myvmmgmt* VM Ile bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın. * \<Publicıpaddress>* değerini sanal makinenizin genel IP adresiyle değiştirin. Yukarıdaki örnekte, IP adresi *13.90.242.231*' dir.
+*Myvmmgmt* VM Ile bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın. *\<publicIpAddress>* Sanal makinenizin genel IP adresi ile değiştirin. Yukarıdaki örnekte, IP adresi *13.90.242.231*' dir.
 
 ```bash 
 ssh azureuser@<publicIpAddress>
@@ -230,7 +230,7 @@ Varsayılan bir güvenlik kuralı Internet 'e giden tüm trafiğe izin verdiğin
 curl myVmWeb
 ```
 
-*Myvmmgmt* sanal makinesi oturumu kapatma. Azure dışından *Myvmweb* Web sunucusuna erişebildiğinizden emin olmak için kendi bilgisayarınızdan girin `curl <publicIpAddress>` . Bağlantı noktası 80, Internet 'ten *Myvmweb* VM 'sine bağlı ağ arabiriminin bulunduğu *Myasgwebservers* uygulama güvenlik grubuna izin verildiğinden bağlantı başarılı olur.
+*Myvmmgmt* sanal makinesi oturumu kapatma. Azure dışından *Myvmweb* Web sunucusuna erişebildiğinizden emin olmak için `curl <publicIpAddress>` kendi bilgisayarınızdan girin. Bağlantı noktası 80, Internet 'ten *Myvmweb* VM 'sine bağlı ağ arabiriminin bulunduğu *Myasgwebservers* uygulama güvenlik grubuna izin verildiğinden bağlantı başarılı olur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

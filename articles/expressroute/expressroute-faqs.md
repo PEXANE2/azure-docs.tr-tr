@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 882a94034831b1c710031031918e70bf3581a4a6
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: c9b109fe12b709649adaa05d62b3d1255605986e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266653"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987306"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute SSS
 
@@ -152,7 +152,7 @@ Evet. Her bir ExpressRoute bağlantı hattı, yüksek kullanılabilirlik sağlam
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Özel eşleme üzerinde artıklık Nasıl yaparım? mi?
 
-Farklı eşleme konumlarından birden fazla ExpressRoute devresi, tek bir devrenin kullanılamaz hale gelmesi durumunda yüksek kullanılabilirlik sağlamak için aynı sanal ağa bağlanabilir. Ardından, belirli bir devreyi tercih etmek için yerel bağlantıya [daha yüksek ağırlıklar atayabilirsiniz](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) . Müşterilerin tek hata noktalarından kaçınmak için en az iki ExpressRoute devrenini kurulumu önemle önerilir. 
+Farklı eşleme konumlarından veya aynı eşleme konumundan en fazla dört bağlantı olan birden fazla ExpressRoute devresi, tek bir devrenin kullanılamaz hale gelmesi durumunda yüksek kullanılabilirlik sağlamak için aynı sanal ağa bağlanabilir. Ardından, belirli bir devreyi tercih etmek üzere yerel bağlantılardan birine [daha yüksek ağırlıklar atayabilirsiniz](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) . Müşterilerin tek hata noktalarından kaçınmak için en az iki ExpressRoute devrenini kurulumu önemle önerilir. 
 
 Yüksek [kullanılabilirlik ve olağanüstü](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) durum kurtarma için tasarlamak üzere [buraya](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) bakın.  
 
@@ -164,7 +164,7 @@ Yüksek kullanılabilirlik için tasarlamak üzere [buraya](https://docs.microso
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>ExpressRoute 'a bağlı bir sanal ağ üzerinde yüksek kullanılabilirlik Nasıl yaparım? emin misiniz?
 
-ExpressRoute devreleri farklı eşleme konumlarında (örneğin, Singapur, Singapur2) sanal ağınıza bağlayarak yüksek kullanılabilirlik elde edebilirsiniz. Bir ExpressRoute bağlantı hattı devre dışı bırakılırsa, bağlantı başka bir ExpressRoute devresine yük devreder. Varsayılan olarak, Sanal ağınızı bırakma trafiği, eşit maliyetli çoklu yol yönlendirmesi (ECMP) temelinde yönlendirilir. Bağlantı ağırlığı ' nu kullanarak bir devreyi başka bir şekilde tercih edebilirsiniz. Daha fazla bilgi için bkz. [ExpressRoute yönlendirmeyi iyileştirme](expressroute-optimize-routing.md).
+Aynı eşleme konumunda en fazla dört ExpressRoute devresine sanal ağınıza bağlanarak veya ExpressRoute devreleri farklı eşleme konumlarında (örneğin, Singapur, Singapur2) sanal ağınıza bağlayarak yüksek kullanılabilirlik elde edebilirsiniz. Bir ExpressRoute bağlantı hattı devre dışı bırakılırsa, bağlantı başka bir ExpressRoute devresine yük devreder. Varsayılan olarak, Sanal ağınızı bırakma trafiği, eşit maliyetli çoklu yol yönlendirmesi (ECMP) temelinde yönlendirilir. Bağlantı ağırlığı ' nu kullanarak bir devreyi başka bir şekilde tercih edebilirsiniz. Daha fazla bilgi için bkz. [ExpressRoute yönlendirmeyi iyileştirme](expressroute-optimize-routing.md).
 
 ### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>Nasıl yaparım? Azure depolama ve Azure SQL gibi Azure genel hizmetleri 'ne yönelik yönlendirimin ExpressRoute yolunda tercih edildiği veya ortak eşleme ile ilgili olduğundan emin misiniz?
 
@@ -195,7 +195,7 @@ Hizmet sağlayıcınız her iki sitede de ExpressRoute sunuyorsa, sağlayıcın�
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Aynı metro 'da birden fazla ExpressRoute devresine sahip olabilir miyim? Aynı sanal ağa bağlanabilir miyim?
 
-Evet. Aynı veya farklı hizmet sağlayıcılarına sahip birden fazla ExpressRoute devresine sahip olabilirsiniz. Metro 'da birden fazla ExpressRoute eşleme konumu varsa ve devreler farklı eşleme konumlarında oluşturulduysa, bunları aynı sanal ağa bağlayabilirsiniz. Devreler aynı eşleme konumunda oluşturulduysa, aynı sanal ağa 4 adede kadar bağlantı bağlayabilirsiniz.
+Evet. Aynı veya farklı hizmet sağlayıcılarına sahip birden fazla ExpressRoute devresine sahip olabilirsiniz. Metro 'da birden fazla ExpressRoute eşleme konumu varsa ve devreler farklı eşleme konumlarında oluşturulduysa, bunları aynı sanal ağa bağlayabilirsiniz. Devreler aynı eşleme konumunda oluşturulduysa, aynı sanal ağa dört adede kadar bağlantı bağlayabilirsiniz.
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Sanal ağlarımı bir ExpressRoute devresine bağlama Nasıl yaparım?
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 074a0a39090e22a29f778fc1c99060848c6bfd99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd5ae5c60530890f65f8cc9a98171c29820a7762
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80051502"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202866"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -30,7 +30,7 @@ Kullanıcı arabirimini özelleştirmek için, özelleştirilmiş HTML içeriği
 
 Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımlayıcısı ve tanımı gösterilmektedir:
 
-```XML
+```xml
 <ContentDefinition Id="api.localaccountsignup">
   <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
@@ -46,7 +46,7 @@ Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımla
 
 **Localaccountsignupwithlogonemail** kendi kendini onaylanan teknik profilinin meta verileri, şu şekilde ayarlanan içerik tanımı tanımlayıcı **Contentdefinitionreferenceıd** değerini içerir`api.localaccountsignup`
 
-```XML
+```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>Email signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -67,19 +67,19 @@ Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımla
 
 **ContentDefinition** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | İçerik tanımının HTML5 sayfasının URL 'sini içeren bir dize. |
-| RecoveryUri | 1:1 | İçerik tanımıyla ilgili bir hata görüntülemek için HTML sayfasının URL 'sini içeren bir dize. Şu anda kullanılmıyor, değer olmalıdır `~/common/default_page_error.html`. |
+| RecoveryUri | 1:1 | İçerik tanımıyla ilgili bir hata görüntülemek için HTML sayfasının URL 'sini içeren bir dize. Şu anda kullanılmıyor, değer olmalıdır `~/common/default_page_error.html` . |
 | DataUri | 1:1 | Adım için çağrılacak Kullanıcı deneyimini sağlayan bir HTML dosyasının göreli URL 'sini içeren bir dize. |
-| Meta Veriler | 0:1 | İçerik tanımı tarafından kullanılan meta verileri içeren bir anahtar/değer çiftleri koleksiyonu. |
+| Meta veri | 0:1 | İçerik tanımı tarafından kullanılan meta verileri içeren bir anahtar/değer çiftleri koleksiyonu. |
 | LocalizedResourcesReferences | 0:1 | Yerelleştirilmiş kaynaklar koleksiyonu başvuruları. Bir kullanıcı arabirimi ve talepler özniteliği yerelleştirmesini özelleştirmek için bu öğeyi kullanın. |
 
 ### <a name="datauri"></a>DataUri
 
-**Datauri** öğesi, sayfa tanımlayıcısını belirtmek için kullanılır. Azure AD B2C, Kullanıcı arabirimi öğelerini ve istemci tarafı JavaScript 'i yüklemek ve başlatmak için sayfa tanımlayıcısını kullanır. Değerin biçimi `urn:com:microsoft:aad:b2c:elements:page-name:version`. Aşağıdaki tabloda kullanabileceğiniz sayfa tanımlayıcıları listelenmektedir.
+**Datauri** öğesi, sayfa tanımlayıcısını belirtmek için kullanılır. Azure AD B2C, Kullanıcı arabirimi öğelerini ve istemci tarafı JavaScript 'i yüklemek ve başlatmak için sayfa tanımlayıcısını kullanır. Değerin biçimi `urn:com:microsoft:aad:b2c:elements:page-name:version` . Aşağıdaki tabloda kullanabileceğiniz sayfa tanımlayıcıları listelenmektedir.
 
-| Sayfa tanımlayıcısı | Açıklama |
+| Sayfa tanımlayıcısı | Description |
 | ----- | ----------- |
 | `globalexception` | Bir özel durum veya hata ile karşılaşıldığında bir hata sayfası görüntüler. |
 | `providerselection`, `idpselection` | Kullanıcıların oturum açma sırasında aralarından seçim yapabileceğiniz kimlik sağlayıcılarını listeler.  |
@@ -90,13 +90,13 @@ Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımla
 
 ### <a name="select-a-page-layout"></a>Sayfa düzeni seçin
 
-İle sayfa türü arasına `contract` `elements` ekleyerek [JavaScript istemci tarafı kodunu](javascript-samples.md) etkinleştirebilirsiniz. Örneğin, `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
+İle sayfa türü arasına ekleyerek [JavaScript istemci tarafı kodunu](javascript-samples.md) etkinleştirebilirsiniz `contract` `elements` . Örneğin, `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Öğesinin [Sürüm](page-layout.md) bölümü, ilkenizde Kullanıcı arabirimi ÖĞELERI için HTML, CSS ve JavaScript içeren içerik paketini `DataUri` belirtir. JavaScript istemci tarafı kodunu etkinleştirmek istiyorsanız, JavaScript 'i temel alan öğelerin sabit olması gerekir. Sabit olmadıkları takdirde, herhangi bir değişiklik Kullanıcı sayfalarınızda beklenmeyen davranışlara neden olabilir. Bu sorunları engellemek için, bir sayfa düzeni kullanımını zorunlu tutun ve bir sayfa düzeni sürümü belirtin. Bunun yapılması, JavaScript 'i temel alan tüm içerik tanımlarının sabit olmasını sağlar. JavaScript 'i etkinleştirmeyi amaçlamadığınız halde, sayfalarınız için sayfa düzeni sürümünü de belirtmeniz gerekir.
+Öğesinin [Sürüm](page-layout.md) bölümü, `DataUri` ilkenizde kullanıcı ARABIRIMI öğeleri IÇIN HTML, CSS ve JavaScript içeren içerik paketini belirtir. JavaScript istemci tarafı kodunu etkinleştirmek istiyorsanız, JavaScript 'i temel alan öğelerin sabit olması gerekir. Sabit olmadıkları takdirde, herhangi bir değişiklik Kullanıcı sayfalarınızda beklenmeyen davranışlara neden olabilir. Bu sorunları engellemek için, bir sayfa düzeni kullanımını zorunlu tutun ve bir sayfa düzeni sürümü belirtin. Bunun yapılması, JavaScript 'i temel alan tüm içerik tanımlarının sabit olmasını sağlar. JavaScript 'i etkinleştirmeyi amaçlamadığınız halde, sayfalarınız için sayfa düzeni sürümünü de belirtmeniz gerekir.
 
-Aşağıdaki örnek, `selfasserted` sürümünün `1.2.0` **dataurı** 'sini göstermektedir:
+Aşağıdaki örnek, sürümünün **Dataurı** 'sini göstermektedir `selfasserted` `1.2.0` :
 
 ```xml
 <ContentDefinition Id="api.localaccountpasswordreset">
@@ -111,7 +111,7 @@ Aşağıdaki örnek, `selfasserted` sürümünün `1.2.0` **dataurı** 'sini gö
 
 #### <a name="migrating-to-page-layout"></a>Sayfa düzenine geçiriliyor
 
-Değerin biçimi şu kelimeyi `contract`içermelidir: _urn: com: Microsoft: AAD: B2C: Elements:**anlaşma**:p Age-Name: Version_. Özel ilkeleriniz içinde eski bir **veri URI** değeri kullanan bir sayfa düzeni belirtmek için, yeni biçime geçiş yapmak üzere aşağıdaki tabloyu kullanın.
+Değerin biçimi şu kelimeyi içermelidir: `contract` _urn: com: Microsoft: AAD: B2C: Elements:**anlaşma**:p Age-Name: Version_. Özel ilkeleriniz içinde eski bir **veri URI** değeri kullanan bir sayfa düzeni belirtmek için, yeni biçime geçiş yapmak üzere aşağıdaki tabloyu kullanın.
 
 | Eski DataUri değeri | Yeni DataUri değeri |
 | ----------------- | ----------------- |
@@ -127,11 +127,11 @@ Değerin biçimi şu kelimeyi `contract`içermelidir: _urn: com: Microsoft: AAD:
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
 
-### <a name="metadata"></a>Meta Veriler
+### <a name="metadata"></a>Meta veri
 
 **Meta veri** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | Öğe | 0: n | İçerik tanımıyla ilgili meta veriler. |
 
@@ -147,13 +147,13 @@ Değerin biçimi şu kelimeyi `contract`içermelidir: _urn: com: Microsoft: AAD:
 
 | Anahtar | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| DisplayName | Hayır | İçerik tanımının adını içeren bir dize. |
+| DisplayName | No | İçerik tanımının adını içeren bir dize. |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
 **Localizedresourcesreferences** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1: n | İçerik tanımı için yerelleştirilmiş kaynak başvurularının listesi. |
 
@@ -166,7 +166,7 @@ Değerin biçimi şu kelimeyi `contract`içermelidir: _urn: com: Microsoft: AAD:
 
 Aşağıdaki örnekte, Ingilizce, Fransızca ve Ispanyolca için yerelleştirmeye yönelik bir başvuruya sahip kaydolma veya oturum açma içerik tanımı gösterilmektedir:
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
@@ -188,7 +188,7 @@ Aşağıdaki örnekte, Ingilizce, Fransızca ve Ispanyolca için yerelleştirmey
 
 **ContentDefinition** öğesinin ID özniteliği, içerik tanımıyla ilgili sayfa türünü belirtir. Öğesi, özel bir HTML5/CSS şablonunun uygulanacağı bağlamı tanımlar. Aşağıdaki tabloda, kimlik deneyimi çerçevesi tarafından tanınan içerik tanımı kimlikleri ve bunlarla ilgili sayfa türleri açıklanmaktadır. Rastgele bir KIMLIK ile kendi içerik tanımlarınızı oluşturabilirsiniz.
 
-| Kimlik | Varsayılan şablon | Açıklama |
+| ID | Varsayılan şablon | Description |
 | -- | ---------------- | ----------- |
 | **api. Error** | [Exception. cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hata sayfası** -bir özel durum veya hata ile karşılaşıldığında hata sayfası görüntüler. |
 | **api. ıdpseçimlerin** | [ıdpselector. cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Kimlik sağlayıcısı seçim sayfası** -kullanıcıların oturum açma sırasında seçebileceği kimlik sağlayıcılarını listeler. Seçenekler genellikle kurumsal kimlik sağlayıcılardır, Facebook ve Google + gibi sosyal kimlik sağlayıcılarıdır veya yerel hesaplardır. |

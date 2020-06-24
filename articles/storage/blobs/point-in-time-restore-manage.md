@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/10/2020
+ms.date: 06/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d55c6b514f6401e60891f0713cb1b4135bb62ab6
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 747acc27a5eaf8551e44a3bf52f55b5a380b73ce
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676005"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752626"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Blok Blobları için noktadan noktaya geri yüklemeyi etkinleştirin ve yönetin (Önizleme)
 
@@ -83,7 +83,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 ## <a name="perform-a-restore-operation"></a>Geri yükleme işlemi gerçekleştirme
 
-Geri yükleme işlemini başlatmak için restore **-AzStorageBlobRange** komutunu çağırın ve geri yükleme noktasını UTC **Tarih saat** değeri olarak belirtin. Geri yüklemek için lexıgrafik aralıklarını belirtebilir veya depolama hesabındaki tüm kapsayıcılardaki tüm Blobları geri yüklemek için bir aralığı atlayabilirsiniz. Geri yükleme işlemi başına en fazla 10 lexıgraf aralığı desteklenir. Geri yükleme işleminin tamamlanması birkaç dakika sürebilir.
+Geri yükleme işlemini başlatmak için restore **-AzStorageBlobRange** komutunu çağırın ve geri yükleme noktasını UTC **Tarih saat** değeri olarak belirtin. Geri yüklemek için lexıgrafik aralıklarını belirtebilir veya depolama hesabındaki tüm kapsayıcılardaki tüm Blobları geri yüklemek için bir aralığı atlayabilirsiniz. Geri yükleme işlemi başına en fazla 10 lexıgraf aralığı desteklenir. Sayfa Blobları ve ekleme Blobları geri yüklemeye dahil edilmez. Geri yükleme işleminin tamamlanması birkaç dakika sürebilir.
 
 Geri yüklenecek bir blob aralığı belirtirken aşağıdaki kuralları aklınızda bulundurun:
 
@@ -165,6 +165,15 @@ $job = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 # Check the state of the job.
 $job.State
 ```
+
+Geri yükleme işleminin tamamlanmasından sonra tamamlanmasını beklemek için, aşağıdaki örnekte gösterildiği gibi [wait-Job](/powershell/module/microsoft.powershell.core/wait-job) komutunu çağırın:
+
+```powershell
+$job | Wait-Job
+```
+
+## <a name="known-issues"></a>Bilinen sorunlar
+- Ekleme bloblarının bulunduğu geri yükleme alt kümesi için geri yükleme başarısız olur. Şimdilik, hesapta ekleme Blobları varsa lütfen geri yüklemeler gerçekleştirmeyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

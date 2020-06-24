@@ -3,15 +3,15 @@ title: Azure Cosmos DB içinde yaşam süresi yapılandırma ve yönetme
 description: Bir kapsayıcıda ve Azure Cosmos DB bir öğede yaşam süresi yapılandırma ve yönetme hakkında bilgi edinin
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: 11f5615d44cef4b6717dc9fe2004a64cf2f800ba
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bbddcb8627c78544d603e1ea3ca33bc410419da1
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124134"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263631"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB yaşam süresi yapılandırma
 
@@ -34,7 +34,7 @@ Zaman aşımı olmadan bir kapsayıcıda canlı kalma süresini etkinleştirmek 
    * **Açık (varsayılan)** **seçeneğini belirleyin veya SEÇIN ve bir** TTL değeri ayarlayın
    * Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 
-   ![Azure portal yaşam süresi yapılandırma](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
+   :::image type="content" source="./media/how-to-time-to-live/how-to-time-to-live-portal.png" alt-text="Azure portal yaşam süresi yapılandırma":::
 
 * DefaultTimeToLive null olduğunda canlı kalma süresi kapalıdır
 * DefaultTimeToLive-1 olduğunda yaşam süresi ayarı açık olur (varsayılan değildir)
@@ -53,7 +53,7 @@ Bir kapsayıcıda TTL oluşturmak veya etkinleştirmek için bkz.,
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (Microsoft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // Create a new container with TTL enabled and without any expiration value
@@ -119,7 +119,7 @@ Bir kapsayıcıda yaşam süresi ayarlamak için saniye cinsinden zaman aralığ
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (Microsoft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // Create a new container with TTL enabled and a 90 day expiration
@@ -353,7 +353,7 @@ SalesOrder salesOrder = new SalesOrder(
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (Microsoft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -427,7 +427,7 @@ Bir öğe üzerinde yaşam süresi ayarlandıysa ve artık bu öğenin süresini
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (Microsoft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -502,7 +502,7 @@ Bir kapsayıcıda yaşam süresini devre dışı bırakmak ve arka plan işlemin
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (Microsoft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // Get the container, update DefaultTimeToLive to null

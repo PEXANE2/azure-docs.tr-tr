@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 01/06/2020
-ms.openlocfilehash: 87295278f39f7e7097b1f4d1ce1c729a71599c9f
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.date: 06/23/2020
+ms.openlocfilehash: 7075753049e6ba6f4804d23aa31796cbd5bc9141
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466230"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263237"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Bilişsel Arama nedir?
 
@@ -127,7 +127,7 @@ Müşterilerimiz arasında, Azure Bilişsel Arama ' deki en geniş özelliklerde
 
 Portalda birçok görev gerçekleştirileken, Azure Bilişsel Arama, arama işlevselliğini mevcut uygulamalarla tümleştirmek isteyen geliştiriciler için tasarlanmıştır. Aşağıdaki programlama arabirimleri kullanılabilir.
 
-|Platform |Açıklama |
+|Platform |Description |
 |-----|------------|
 |[REST](/rest/api/searchservice/) | Xamarin, Java ve JavaScript gibi, programlama platformu ve dili tarafından desteklenen HTTP komutları|
 |[.NET SDK](search-howto-dotnet-sdk.md) | REST API’si için .NET sarmalayıcı, C# dilinde ve .NET Framework’ü hedefleyen diğer yönetilen kod dillerinde verimli kodlama sunar |
