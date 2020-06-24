@@ -1,14 +1,14 @@
 ---
 title: 'Öğretici: uyumluluğu zorlamak için ilke oluşturma'
 description: Bu öğreticide, standartları zorlamak, maliyetleri denetlemek, güvenliği korumak ve kurumsal çapta tasarım ilkelerini uygulamak için ilkeleri kullanırsınız.
-ms.date: 03/24/2020
+ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: dcebbbfcc2f86ace7ea4400a2fdb6f1392f4efe6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 90ac6d1c4121b8672e561ff633263775bbad5357
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190835"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781137"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Öğretici: uyumluluğu zorlamak için ilke oluşturma ve yönetme
 
@@ -78,7 +78,7 @@ Azure İlkesi ile uyumluluğu zorlamanın ilk adımı bir ilke tanımı atamakt�
 
 ## <a name="implement-a-new-custom-policy"></a>Yeni bir özel ilke uygulama
 
-Artık bir yerleşik ilke tanımı atadığınıza göre, Azure İlkesi'yle daha fazlasını da yapabilirsiniz. Ardından, ortamınızda oluşturulan VM 'Lerin G serisinde yer aldığı doğrulayarak maliyetleri kaydetmek için yeni bir özel ilke oluşturun. Bu yolla, kuruluşunuzdaki kullanıcılar G serisinden bir sanal makine oluşturmayı her denediğinde istekleri reddedilir.
+Artık bir yerleşik ilke tanımı atadığınıza göre, Azure İlkesi'yle daha fazlasını da yapabilirsiniz. Daha sonra, ortamınızda oluşturulan sanal makinelerin G serisinde yer aldığı doğrulayarak maliyetleri kaydetmek için yeni bir özel ilke oluşturun. Bu şekilde, kuruluşunuzdaki bir Kullanıcı G serisinde bir sanal makine oluşturmak için her seferinde istek reddedilir.
 
 1. Azure Ilkesi sayfasının sol tarafında bulunan **yazma** altındaki **tanımlar** ' ı seçin.
 
@@ -93,8 +93,8 @@ Artık bir yerleşik ilke tanımı atadığınıza göre, Azure İlkesi'yle daha
      > [!NOTE]
      > Bu ilke tanımını birden çok aboneliğe uygulamayı planlıyorsanız, konumun ilkeyi atayacağınız abonelikleri içeren yönetim grubu olması gerekir. Bir girişim tanımı için de aynısı geçerlidir.
 
-   - İlke tanımının adı-_ *_VM SKU 'Larının G serisinden küçük olmasını gerektir_
-   - İlke tanımının yapması amaçlanan Açıklama – _Bu ilke tanımı, bu kapsamda oluşturulan tüm VM 'lerin, maliyeti azaltmak Için G serisinden daha küçük SKU 'lara sahip olmasını zorunlu kılar._
+   - İlke tanımının adı- _VM SKU 'Larını G serisinde değil iste_
+   - İlke tanımının yapması amaçlanan Açıklama – _Bu ilke tanımı, bu kapsamda oluşturulan tüm sanal makinelerin maliyeti azaltmak Için G serisi dışındaki SKU 'lara sahip olmasını zorunlu kılar._
    - Mevcut seçenekler arasından seçim yapın (_İşlem_ gibi) veya bu ilke tanımı için yeni bir kategori oluşturun.
    - Aşağıdaki JSON kodunu kopyalayın ve ardından gereksinimlerinize uygun olarak aşağıdaki öğelerle güncelleştirin:
       - İlke parametreleri.
@@ -278,7 +278,7 @@ PolicyDefinitionId : /providers/Microsoft.Authorization/policyDefinitions/e56962
 
 ## <a name="create-a-policy-definition-with-azure-cli"></a>Azure CLI ile ilke tanımı oluşturma
 
-`az policy definition` Komutuyla Azure CLI kullanarak bir ilke tanımı oluşturabilirsiniz. Satır içi kuralla ilke tanımı oluşturmak için aşağıdaki örneği kullanın:
+Komutuyla Azure CLı kullanarak bir ilke tanımı oluşturabilirsiniz `az policy definition` . Satır içi kuralla ilke tanımı oluşturmak için aşağıdaki örneği kullanın:
 
 ```azurecli-interactive
 az policy definition create --name 'denyCoolTiering' --description 'Deny cool access tiering for storage' --rules '{
@@ -356,7 +356,7 @@ Girişim tanımıyla, çeşitli ilke tanımlarını gruplandırıp kapsamlı bir
 
 1. **Kategori** için mevcut seçenekler arasından seçim yapın veya yeni bir kategori oluşturun.
 
-1. **Kullanılabilir Tanımlar** (**Girişim tanımı** sayfasının sağ yarısı) listesine göz atın ve bu girişime eklemek istediğiniz ilke tanımlarını seçin. **Güvenli al** girişimi için, ilke tanımı bilgisinin **+** yanındaki ' u seçerek veya bir ilke tanımı satırı seçip Ayrıntılar sayfasında **+ Ekle** seçeneğini belirleyerek aşağıdaki yerleşik ilke tanımlarını ekleyin:
+1. **Kullanılabilir Tanımlar** (**Girişim tanımı** sayfasının sağ yarısı) listesine göz atın ve bu girişime eklemek istediğiniz ilke tanımlarını seçin. **Güvenli al** girişimi için, **+** ilke tanımı bilgisinin yanındaki ' u seçerek veya bir ilke tanımı satırı seçip Ayrıntılar sayfasında **+ Ekle** seçeneğini belirleyerek aşağıdaki yerleşik ilke tanımlarını ekleyin:
 
    - İzin verilen konumlar
    - Azure Güvenlik Merkezi 'nde eksik Endpoint Protection izleme
@@ -373,7 +373,7 @@ Girişim tanımıyla, çeşitli ilke tanımlarını gruplandırıp kapsamlı bir
    :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="İzin verilen değerlerden girişim tanımı parametrelerini değiştirme" border="false":::
 
    > [!NOTE]
-   > Bazı `strongType` parametrelerinde değer listesi otomatik olarak belirlenebilir. Böyle durumlarda parametre satırının sağ tarafında üç nokta simgesi görünür. Seçilirse, ' parametre kapsamı (&lt;parametre adı&gt;) ' sayfası açılır. Bu sayfada, değer seçeneklerini sağlamak için kullanılacak aboneliği seçin. Bu parametre kapsamı yalnızca girişim tanımı oluşturma işlemi sırasında kullanılır ve atandığında, ilke değerlendirmesi veya girişim kapsamı üzerinde herhangi bir etkisi olmaz.
+   > Bazı `strongType` parametrelerinde değer listesi otomatik olarak belirlenebilir. Böyle durumlarda parametre satırının sağ tarafında üç nokta simgesi görünür. Seçilirse, ' parametre kapsamı ( &lt; parametre adı &gt; ) ' sayfası açılır. Bu sayfada, değer seçeneklerini sağlamak için kullanılacak aboneliği seçin. Bu parametre kapsamı yalnızca girişim tanımı oluşturma işlemi sırasında kullanılır ve atandığında, ilke değerlendirmesi veya girişim kapsamı üzerinde herhangi bir etkisi olmaz.
 
    ' Izin verilen konumlar ' parametresini ' Doğu ABD 2 ' olarak ayarlayın ve diğerlerini varsayılan ' Auditınotexists ' olarak bırakın.
 
@@ -381,7 +381,7 @@ Girişim tanımıyla, çeşitli ilke tanımlarını gruplandırıp kapsamlı bir
 
 #### <a name="create-a-policy-initiative-definition-with-azure-cli"></a>Azure CLı ile ilke girişim tanımı oluşturma
 
-`az policy set-definition` Komutuyla Azure CLI kullanarak bir ilke girişim tanımı oluşturabilirsiniz. Var olan bir ilke tanımıyla bir ilke girişim tanımı oluşturmak için aşağıdaki örneği kullanın:
+Komutuyla Azure CLı kullanarak bir ilke girişim tanımı oluşturabilirsiniz `az policy set-definition` . Var olan bir ilke tanımıyla bir ilke girişim tanımı oluşturmak için aşağıdaki örneği kullanın:
 
 ```azurecli-interactive
 az policy set-definition create -n readOnlyStorage --definitions '[
@@ -395,7 +395,7 @@ az policy set-definition create -n readOnlyStorage --definitions '[
 
 #### <a name="create-a-policy-initiative-definition-with-azure-powershell"></a>Azure PowerShell ile ilke girişim tanımı oluşturma
 
-`New-AzPolicySetDefinition` Cmdlet ile Azure PowerShell kullanarak bir ilke girişim tanımı oluşturabilirsiniz. Var olan bir ilke tanımıyla bir ilke girişim tanımı oluşturmak için aşağıdaki ilke girişim tanım dosyasını şu şekilde `VMPolicySet.json`kullanın:
+Cmdlet ile Azure PowerShell kullanarak bir ilke girişim tanımı oluşturabilirsiniz `New-AzPolicySetDefinition` . Var olan bir ilke tanımıyla bir ilke girişim tanımı oluşturmak için aşağıdaki ilke girişim tanım dosyasını şu şekilde kullanın `VMPolicySet.json` :
 
 ```json
 [

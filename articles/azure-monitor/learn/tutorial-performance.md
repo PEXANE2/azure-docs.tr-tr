@@ -5,14 +5,14 @@ ms.subservice: application-insights
 ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 08/13/2019
+ms.date: 06/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 98d7c1552a7b1f2b02ae4df1cad24e20f7ac76e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6e344908fff54a06f1885774c88b509096c26e08
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79239598"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783155"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights ile performans sorunlarını bulma ve tanılama
 
@@ -36,7 +36,7 @@ Bu öğreticiyi tamamlamak için:
 - Uygulamanız için [Application Insights profil oluşturucuyu etkinleştirme](../../azure-monitor/app/profiler.md#installation).
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
-Üzerinde [https://portal.azure.com](https://portal.azure.com)Azure Portal oturum açın.
+Üzerinde Azure portal oturum açın [https://portal.azure.com](https://portal.azure.com) .
 
 ## <a name="identify-slow-server-operations"></a>Yavaş sunucu işlemlerini belirleme
 Application Insights, uygulamanızdaki farklı işlemlerin performans ayrıntılarını toplar. Süresi en uzun olan işlemleri belirleyerek olası sorunları veya sürmekte olan geliştirme sürecinizin en iyi hedefini tanılayabilir ve uygulamanın genel performansını geliştirebilirsiniz.
@@ -61,7 +61,7 @@ Application Insights, uygulamanızdaki farklı işlemlerin performans ayrıntıl
     ![İşlem uçtan uca ayrıntıları](media/tutorial-performance/4-end-to-end.png)
     
 
-6.  **Profiler**, işlem için çalıştırılan gerçek kodu ve her adım için gereken süreyi göstererek kod düzeyinde tanılama konusunda size daha fazla yardımcı olur. Profil oluşturucu belirli aralıklarla çalıştığından, bazı işlemlerin izlemesi olmayabilir.  Zamanla daha fazla işlemin izlemesi olmalıdır.  İşlem için profil oluşturucuyu başlatmak için **Profiler izlemeleri**’ne tıklayın.
+6.  [**Profil Oluşturucu**](../../azure-monitor/app/profiler-overview.md) , işlem için çalıştırılan gerçek kodu ve her adım için gereken süreyi göstererek kod düzeyi tanılamalarla daha fazla yararlanmanıza yardımcı olur. Profil oluşturucu belirli aralıklarla çalıştığından, bazı işlemlerin izlemesi olmayabilir.  Zamanla daha fazla işlemin izlemesi olmalıdır.  İşlem için profil oluşturucuyu başlatmak için **Profiler izlemeleri**’ne tıklayın.
 5.  İzlemede her işleme yönelik olaylar tek tek gösterildiğinden, genel işlem süresinin kök nedenini tanılayabilirsiniz.  Üstteki en uzun süreye sahip örneklerden birine tıklayın.
 6.  İşlemin toplam süresine en çok katkıda bulunan olayların belirli yolunu vurgulamak için **etkin yol** ' e tıklayın.  Bu örnekte, en yavaş çağrının *FabrikamFiberAzureStorage.GetStorageTableData* metodundan geldiğini görebilirsiniz. En çok zaman alan bölüm *CloudTable.CreateIfNotExist* metodudur. İşlev her çağrıldığında bu kod satırı yürütülürse gereksiz ağ çağrısı ve CPU kaynağı tüketilir. Kodunuzu düzeltmenin en iyi yolu, bu satırı yalnızca bir kere yürütülen bir başlangıç yöntemine eklemektir.
 
@@ -76,7 +76,7 @@ Application Insights, uygulamanızdaki farklı işlemlerin performans ayrıntıl
 ## <a name="use-logs-data-for-server"></a>Sunucu için günlük verilerini kullan
  Günlükler, Application Insights tarafından toplanan tüm verileri analiz etmenizi sağlayan zengin bir sorgu dili sağlar. Bunu kullanarak istek ve performans verileri üzerinde ayrıntılı analiz gerçekleştirebilirsiniz.
 
-1. İşlem ayrıntısı paneline dönün ve günlüklerde Günlükler simgesi ![görünümü ' ne tıklayın](media/tutorial-performance/app-viewinlogs-icon.png)**(Analiz)**
+1. İşlem ayrıntısı paneline dönün ve günlüklerde ![ Günlükler simgesi görünümü ' ne tıklayın](media/tutorial-performance/app-viewinlogs-icon.png)**(Analiz)**
 
 2. Günlükler, paneldeki her bir görünüm için bir sorgu ile açılır.  Bu sorguları olduğu gibi çalıştırabilir veya gereksinimlerinize göre özelleştirebilirsiniz.  İlk sorgu, zaman içinde bu işlemin süresini gösterir.
 
@@ -97,7 +97,7 @@ Application Insights, iyileştirilecek sunucu işlemlerini belirlemeye ek olarak
 ## <a name="use-logs-data-for-client"></a>İstemci için günlük verilerini kullan
 Sunucu performansı için toplanan veriler gibi Application Insights, tüm istemci verilerinin Günlükler kullanılarak ayrıntılı analiz için kullanılabilir olmasını sağlar.
 
-1. Tarayıcı özetine geri dönün ve Günlükler simgesi ![](media/tutorial-performance/app-viewinlogs-icon.png) **Görünüm günlüklerde (Analiz)** tıklayın
+1. Tarayıcı özetine geri dönün ve Günlükler ![ simgesi ](media/tutorial-performance/app-viewinlogs-icon.png) **Görünüm günlüklerde (Analiz)** tıklayın
 
 2. Günlükler, paneldeki her bir görünüm için bir sorgu ile açılır. İlk sorgu, zaman içinde farklı sayfa görüntüleme işlemlerinin süresini gösterir.
 

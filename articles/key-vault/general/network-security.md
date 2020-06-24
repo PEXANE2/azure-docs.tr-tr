@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: 78ae393c47de7a9d03d7b3de9b3dcd315d228f05
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 19a7cf2ec3a8a7a95952fcebfcf3a127c4dfd013
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605434"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792192"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -22,6 +22,13 @@ Bu makalede, anahtar kasanıza erişimi kısıtlamak için Azure Key Vault güve
 
 > [!IMPORTANT]
 > Güvenlik duvarı kuralları etkin olduktan sonra, kullanıcılar, istekleri izin verilen sanal ağlardan veya IPv4 adres aralıklarından başlatıldığında yalnızca Key Vault [veri düzlemi](secure-your-key-vault.md#data-plane-access-control) işlemleri gerçekleştirebilir. Bu, Azure portal Key Vault erişmek için de geçerlidir. Kullanıcılar Azure portal bir anahtar kasasına gözatabilse de, istemci makineleri izin verilenler listesinde yoksa anahtarları, parolaları veya sertifikaları listelemeyebilir. Bu, diğer Azure hizmetleri tarafından Key Vault seçiciyi de etkiler. Kullanıcılar, güvenlik duvarı kuralları istemci makinesini engelliyorsa, anahtar kasalarının listesini görebilirler, ancak liste anahtarlarını göremez.
+
+> [!NOTE]
+> Aşağıdaki yapılandırma sınırlamalarından haberdar olun:
+> * En fazla 127 sanal ağ kuralına ve 127 IPv4 kuralına izin verilir. 
+> * "/31" veya "/32" ön ek boyutlarını kullanan küçük adres aralıkları desteklenmez. Bunun yerine, tek tek IP adresi kurallarını kullanarak bu aralıkları yapılandırın.
+> * IP ağ kurallarına yalnızca genel IP adresleri için izin verilir. Özel ağlar için ayrılan IP adresi aralıklarına (RFC 1918 ' de tanımlandığı gibi) IP kurallarında izin verilmez. Özel ağlarda **10.**, **172.16-31**ve 192,168 ile başlayan adresler bulunur **.** 
+> * Şu anda yalnızca IPv4 adresleri destekleniyor.
 
 ## <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
@@ -34,7 +41,7 @@ Azure portal kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yap�
 5. Açılan yeni dikey pencerede, bu Anahtar Kasası 'na erişime izin vermek istediğiniz aboneliği, sanal ağları ve alt ağları seçin. Seçtiğiniz sanal ağlarda ve alt ağlarda hizmet uç noktaları etkinleştirilmemişse, hizmet uç noktalarını etkinleştirmek istediğinizi onaylayın ve **Etkinleştir**' i seçin. Etkili olması 15 dakika kadar sürebilir.
 6. **IP ağları**altında [CIDR (sınıfsız etki alanları arası yönlendirme) gösteriminde](https://tools.ietf.org/html/rfc4632) veya tek tek IP adreslerinde IPv4 adresi aralıklarını yazarak IPv4 adres aralıkları ekleyin.
 7. Microsoft güvenilen hizmetlerin Key Vault güvenlik duvarını atlamasına izin vermek istiyorsanız ' Evet ' seçeneğini belirleyin. Geçerli Key Vault güvenilen hizmetlerin tam listesi için lütfen aşağıdaki bağlantıya bakın. [Güvenilen Hizmetleri Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)
-7. **Kaydet**'i seçin.
+7. **Kaydet**’i seçin.
 
 Ayrıca yeni sanal ağlar ve alt ağlar ekleyebilir ve ardından **+ Yeni sanal ağ ekle**' yi seçerek yeni oluşturulan sanal ağlar ve alt ağlar için hizmet uç noktalarını etkinleştirebilirsiniz. Ardından istemleri izleyin.
 
@@ -115,7 +122,7 @@ PowerShell kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yapıl
    ```
 
 ## <a name="references"></a>Başvurular
-
+* ARM şablon başvurusu: [Azure Key Vault ARM şablon başvurusu](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/vaults)
 * Azure CLı komutları: [az keykasa Network-Rule](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
 * Azure PowerShell cmdlet 'leri: [Get-Azkeykasa,](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault) [Add-azkeyvaultnetworkrule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-azkeyvaultnetworkrule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-azkeyvaultnetworkruleset](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 

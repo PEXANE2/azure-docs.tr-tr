@@ -4,19 +4,19 @@ description: Azure geçişi sunucu değerlendirmesi kullanılarak Azure 'a geçi
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 2c4233df6566f3187c8366188b0eb960189b43c5
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 53cf4eea4bfe61951be9975bacf9adb2b3fcf435
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331772"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106484"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Azure geçişi sunucu değerlendirmesi ile Hyper-V VM 'lerini değerlendirin
 
 Bu makalede, şirket içi Hyper-V VM 'lerini [Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracını kullanarak nasıl değerlenbileceğiniz gösterilmektedir.
 
 
-Bu öğretici, Hyper-V VM 'lerinin Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serinin ikinci saniyedir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğretici, Hyper-V VM 'lerinin Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serinin ikinci saniyedir. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir Azure geçişi projesi ayarlayın.
@@ -31,12 +31,12 @@ Bu öğretici, Hyper-V VM 'lerinin Azure 'a nasıl değerlendirileceğini ve ge�
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bu serideki ilk öğreticiyi [doldurun](tutorial-prepare-hyper-v.md) . Bunu yapmazsanız, bu öğreticideki yönergeler çalışmaz.
 - İlk öğreticide yapmanız gerekenler şunlardır:
     - Azure 'u Azure geçişi ile çalışacak şekilde [hazırlayın](tutorial-prepare-hyper-v.md#prepare-azure) .
-    - [Hyper-V](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment) konakları ve VM değerlendirmesi hazırlayın.
+    - [Hyper-V](tutorial-prepare-hyper-v.md#prepare-for-assessment) konakları ve VM değerlendirmesi hazırlayın.
     - Hyper-V değerlendirmesi için Azure geçişi gereci dağıtmak üzere gerekenleri [doğrulayın](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment) .
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure geçişi projesi ayarlama
@@ -96,13 +96,13 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
     - Örnek kullanım: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
 
-3.  En son gereç sürümlerini doğrulayın ve değerleri içerir:
+3.  En son gereç sürümlerini ve karma değerlerini doğrulayın:
 
     - Azure genel bulutu için:
 
         **Senaryo** | **İndir** | **SHA256**
         --- | --- | ---
-        Hyper-V (8,93 MB) | [En son sürüm](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+        Hyper-V (8,93 GB) | [En son sürüm](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
 
     - Azure Kamu için:
 
@@ -174,24 +174,21 @@ Gereci ilk kez ayarlayın.
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>SMB VHD 'leri için temsilci kimlik bilgileri
 
-SMB 'lerde VHD 'ler çalıştırıyorsanız, Gereç üzerinden Hyper-V konaklarına kimlik bilgileri temsilcisini etkinleştirmeniz gerekir. Bunun için aşağıdakiler gereklidir:
-
-- Her konağın gereç için bir temsilci görevi görmesini sağlayabilirsiniz. Öğreticileri sırayla izlediyseniz, değerlendirme ve geçiş için Hyper-V ' yi hazırladığınız zaman önceki öğreticide bunu yaptınız. Konaklar için CredSSP 'yi [el ile](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)veya bunu yapan [bir komut dosyası çalıştırarak](tutorial-prepare-hyper-v.md#prepare-with-a-script) ayarlamanız gerekir.
-- Azure geçişi gerecinin istemci olarak davranabilmesi ve bir konağa kimlik bilgileri temsilciliğini sağlamak için CredSSP temsilcisini etkinleştirin.
+SMB 'lerde VHD 'ler çalıştırıyorsanız, Gereç üzerinden Hyper-V konaklarına kimlik bilgileri temsilcisini etkinleştirmeniz gerekir. Bunu yapmak için, her bir konağın gereç için bir temsilci görevi görmesini sağlayabilirsiniz. Öğreticileri sırayla izlediyseniz, değerlendirme ve geçiş için Hyper-V ' yi hazırladığınız zaman önceki öğreticide bunu yaptınız. Konaklar için CredSSP 'yi [el ile](tutorial-prepare-hyper-v.md#enable-credssp-to-delegate-credentials)veya bunu yapan [bir komut dosyası çalıştırarak](tutorial-prepare-hyper-v.md#run-the-script) ayarlamanız gerekir.
 
 Gereçte aşağıdaki şekilde etkinleştirin:
 
-#### <a name="option-1"></a>Seçenek 1
+#### <a name="option-1"></a>1\. Seçenek
 
 Gereç sanal makinesinde bu komutu çalıştırın. HyperVHost1/HyperVHost2, örnek ana bilgisayar adlarıdır.
 
 ```
-Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
 ```
 
 Örnek: ` Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force `
 
-#### <a name="option-2"></a>2. Seçenek
+#### <a name="option-2"></a>2\. Seçenek
 
 Alternatif olarak, bunu gereç üzerindeki Yerel Grup İlkesi Düzenleyicisi yapın:
 

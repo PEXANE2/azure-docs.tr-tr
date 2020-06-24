@@ -1,6 +1,6 @@
 ---
 title: Azure portal kullanarak Değişiklik İzleme kullanarak verileri artımlı olarak kopyalama
-description: Bu öğreticide, Delta verileri bir SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanı 'na artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız.
+description: Bu öğreticide, Delta verileri bir SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanı 'ndaki bir veritabanına artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 51d8d1c7405622ea8fd3bb847937abcb0e748523
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: cb8d03b853e4e0f4f5f60a144e7a05ef19de1071
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559804"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251854"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Değişiklik izleme bilgilerini kullanarak Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme Azure portal
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu öğreticide, kaynak Azure SQL veritabanındaki **değişiklik izleme** bilgilerine dayanan değişiklik verilerini Azure blob depolamasına yükleyen bir işlem hattına sahip olan bir Azure veri fabrikası oluşturursunuz.  
+Bu öğreticide, Azure SQL veritabanı 'ndaki kaynak veritabanındaki **değişiklik izleme** bilgilerine göre Delta verileri bir Azure Blob depolama alanına yükleyen bir işlem hattı Ile bir Azure Data Factory oluşturacaksınız.  
 
 Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
@@ -45,9 +45,9 @@ Değişiklik İzleme teknolojisini kullanarak verileri artımlı olarak yükleme
 > Hem Azure SQL Veritabanı hem de SQL Server, Değişiklik İzleme teknolojisini destekler. Bu öğreticide, Azure SQL Veritabanını kaynak veri deposu olarak kullanılır. Ayrıca, bir SQL Server örneği de kullanabilirsiniz.
 
 1. **Geçmiş verilerin ilk yüklemesi** (bir kez çalıştır):
-    1. Kaynak Azure SQL veritabanında Değişiklik İzleme teknolojisini etkinleştirin.
-    2. Değiştirilen verileri yakalamanın temeli olarak Azure SQL veritabanındaki ilk SYS_CHANGE_VERSION değerini alın.
-    3. Azure SQL veritabanındaki tüm verileri bir Azure blob depolama alanına yükleyin.
+    1. Azure SQL veritabanı 'nda kaynak veritabanında Değişiklik İzleme teknolojisini etkinleştirin.
+    2. Değiştirilen verileri yakalamaya yönelik taban çizgisi olarak veritabanındaki SYS_CHANGE_VERSION başlangıç değerini alır.
+    3. Kaynak veritabanından bir Azure Blob depolama alanına tam veri yükleyin.
 2. **Değişiklik verilerinin bir zamanlamaya göre artımlı olarak yüklenmesi** (verilerin ilk yüklemesinden sonra düzenli olarak çalıştır):
     1. Eski ve yeni SYS_CHANGE_VERSION değerleri alın.
     3. **sys.change_tracking_tables** yerine **kaynak tablosundaki verilerle** değiştirilen satırların (iki SYS_CHANGE_VERSION değeri arasında) birincil anahtarlarını birleştirerek değişiklik verilerini yükleyin ve ardından değişiklik verilerini hedefe taşıyın.
@@ -70,13 +70,14 @@ Bu öğreticide, aşağıdaki iki işlemi gerçekleştiren iki işlem hattı olu
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
-* **Azure SQL veritabanı**. Veritabanını **kaynak** veri deposu olarak kullanabilirsiniz. Azure SQL Veritabanınız yoksa, oluşturma adımları için [Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) makalesine bakın.
+* **Azure SQL veritabanı**. Veritabanını **kaynak** veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa, oluşturma adımları için [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) makalesine bakın.
 * **Azure depolama hesabı**. Blob depolamayı **Havuz** veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesine bakın. **adftutorial** adlı bir kapsayıcı oluşturun. 
 
-### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Azure SQL veritabanınızda bir veri kaynağı tablosu oluşturma
+### <a name="create-a-data-source-table-in-azure-sql-database"></a>Azure SQL veritabanı 'nda veri kaynağı tablosu oluşturma
+
 1. **SQL Server Management Studio**başlatın ve SQL veritabanı 'na bağlanın.
 2. **Sunucu Gezgini**’nde **veritabanınıza** sağ tıklayın ve **Yeni Sorgu**’yu seçin.
-3. Azure SQL veritabanınızda aşağıdaki SQL komutunu çalıştırarak veri kaynağı deponuz olarak `data_source_table` adlı bir tablo oluşturun.  
+3. Veri kaynağı deposu olarak adlandırılan bir tablo oluşturmak için aşağıdaki SQL komutunu veritabanınızda çalıştırın `data_source_table` .  
 
     ```sql
     create table data_source_table
@@ -97,10 +98,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
         (5, 'eeee', 22);
 
     ```
+
 4. Aşağıdaki SQL sorgusunu çalıştırarak veritabanınızda ve kaynak tabloda (data_source_table) **Değişiklik İzleme** mekanizmasını etkinleştirin:
 
     > [!NOTE]
-    > - &lt;Veri tabanınızın adını&gt; değiştirerek data_source_table tablosuna sahip olan Azure SQL veritabanınızın adını verin.
+    > - &lt;Veritabanı adınızı, &gt; Azure SQL veritabanı 'nda data_source_table olan veritabanının adıyla değiştirin.
     > - Değiştirilen veriler, geçerli örnekte iki gün boyunca saklanır. Değiştirilen verileri üç günlük veya daha uzun aralıklarla yüklerseniz, bazı değiştirilen veriler dahil edilmez.  Bu durumda CHANGE_RETENTION değerini değiştirip daha büyük bir sayı belirlemelisiniz. Alternatif olarak, değiştirilen verilerin iki gün içinde yüklenmesini de sağlayabilirsiniz. Daha fazla bilgi için bkz. [Veritabanı için değişiklik izlemeyi etkinleştirme](/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server#enable-change-tracking-for-a-database)
 
     ```sql
@@ -130,7 +132,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
     > [!NOTE]
     > SQL Veritabanı için değişiklik izlemeyi etkinleştirdikten sonra veriler değiştirilmezse, değişiklik izleme sürümünün değeri 0 olur.
-6. Azure SQL veritabanınızda bir saklı yordam oluşturmak için aşağıdaki sorguyu çalıştırın. İşlem hattı, bu saklı yordamı, bir önceki adımda oluşturduğunuz tablodaki değişiklik izleme sürümünü güncelleştirmeye çağırır.
+6. Veritabanınızda bir saklı yordam oluşturmak için aşağıdaki sorguyu çalıştırın. İşlem hattı, bu saklı yordamı, bir önceki adımda oluşturduğunuz tablodaki değişiklik izleme sürümünü güncelleştirmeye çağırır.
 
     ```sql
     CREATE PROCEDURE Update_ChangeTracking_Version @CurrentTrackingVersion BIGINT, @TableName varchar(50)
@@ -175,7 +177,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 4. **Sürüm** için **V2 (Önizleme)** öğesini seçin.
 5. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 6. **Panoya sabitle**’yi seçin.     
-7. **Oluştur**' a tıklayın.      
+7. **Oluştur**'a tıklayın.      
 8. Panoda şu kutucuğu ve üzerinde şu durumu görürsünüz: **Veri fabrikası dağıtılıyor**.
 
     ![veri fabrikası dağıtılıyor kutucuğu](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
@@ -188,7 +190,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
     ![İşlem hattı oluştur düğmesi](./media/tutorial-incremental-copy-change-tracking-feature-portal/get-started-page.png)
 
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
-Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için veri fabrikasında bağlı hizmetler oluşturursunuz. Bu bölümde, Azure Depolama ve Azure SQL veritabanı hesabınızla bağlı hizmetler oluşturacaksınız.
+Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için veri fabrikasında bağlı hizmetler oluşturursunuz. Bu bölümde, Azure depolama hesabınıza ve Azure SQL veritabanı ' nda veritabanınıza bağlı hizmetler oluşturacaksınız.
 
 ### <a name="create-azure-storage-linked-service"></a>Azure Depolama bağlı hizmeti oluşturma.
 Bu adımda, Azure Depolama Hesabınızı veri fabrikasına bağlarsınız.
@@ -209,7 +211,7 @@ Bu adımda, Azure Depolama Hesabınızı veri fabrikasına bağlarsınız.
 
 
 ### <a name="create-azure-sql-database-linked-service"></a>Azure SQL Veritabanı bağlı hizmeti oluşturun.
-Bu adımda, Azure SQL veritabanınızı veri fabrikasına bağlarsınız.
+Bu adımda, veritabanınızı veri fabrikasına bağlarsınız.
 
 1. **Bağlantılar**’a ve sonra **+ Yeni**’ye tıklayın.
 2. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde **Azure SQL Veritabanı**’nı seçip **Devam**’a tıklayın.
@@ -217,11 +219,11 @@ Bu adımda, Azure SQL veritabanınızı veri fabrikasına bağlarsınız.
 
     1. **Ad** alanına **AzureSqlDatabaseLinkedService** adını girin.
     2. **Sunucu adı** alanı için sunucunuzu seçin.
-    4. **Veritabanı adı** alanı için veritabanınızı seçin.
-    5. **Kullanıcı adı** alanına kullanıcının adını girin.
-    6. **Parola** alanına kullanıcının parolasını girin.
-    7. Bağlantıyı test etmek için **Bağlantıyı sına**’ya tıklayın.
-    8. Bağlı hizmeti kaydetmek için **Kaydet**’e tıklayın.
+    3. **Veritabanı adı** alanı için veritabanınızı seçin.
+    4. **Kullanıcı adı** alanına kullanıcının adını girin.
+    5. **Parola** alanına kullanıcının parolasını girin.
+    6. Bağlantıyı test etmek için **Bağlantıyı sına**’ya tıklayın.
+    7. Bağlı hizmeti kaydetmek için **Kaydet**’e tıklayın.
 
        ![Azure SQL Veritabanı bağlı hizmet ayarları](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-sql-database-linked-service-settings.png)
 
@@ -329,7 +331,7 @@ Bu adımda, kaynak veri deposundaki (Azure SQL Veritabanı) tüm verileri hedef 
 
 ![Tam kopyadan çıkış dosyası](media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-output-file.png)
 
-Dosyada Azure SQL veritabanından veriler olmalıdır:
+Dosya, veritabanınızdaki verileri içermelidir:
 
 ```
 1,aaaa,21
@@ -341,7 +343,7 @@ Dosyada Azure SQL veritabanından veriler olmalıdır:
 
 ## <a name="add-more-data-to-the-source-table"></a>Kaynak tabloya daha fazla veri ekleme
 
-Satır eklemek ve satırı güncelleştirmek için aşağıdaki sorguyu Azure SQL veritabanında çalıştırın.
+Bir satır eklemek ve bir satırı güncelleştirmek için aşağıdaki sorguyu veritabanınıza çalıştırın.
 
 ```sql
 INSERT INTO data_source_table
@@ -452,7 +454,7 @@ Bu adımda, aşağıdaki etkinliklerle bir işlem hattı oluşturursunuz ve bunu
 
 ![Artımlı kopyadan çıkış dosyası](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-output-file.png)
 
-Dosyada yalnızca Azure SQL veritabanındaki değişiklik verileri olmalıdır. `U` bulunan kayıt, veritabanındaki güncelleştirilmiş satırdır ve `I` ise eklenen bir satırdır.
+Dosyanın yalnızca veritabanınızdaki Delta verileri olmalıdır. `U` bulunan kayıt, veritabanındaki güncelleştirilmiş satırdır ve `I` ise eklenen bir satırdır.
 
 ```
 1,update,10,2,U

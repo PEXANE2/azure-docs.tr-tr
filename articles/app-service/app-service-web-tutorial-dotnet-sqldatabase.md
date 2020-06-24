@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: f6c8b388a9d1261e08314b8f8c607e5ee16362ae
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 57701218186266e897e8312d01372fd36ddee715
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84013797"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906132"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Öğretici: Azure SQL veritabanı ile ASP.NET uygulamasını Azure 'a dağıtma
 
@@ -19,7 +19,7 @@ ms.locfileid: "84013797"
 
 ![Azure App Service yayımlanan ASP.NET uygulaması](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -43,7 +43,7 @@ Visual Studio 'yu zaten yüklediyseniz **Araçlar**  >  **ve Özellikler al**' a
 ## <a name="download-the-sample"></a>Örneği indirme
 
 * [Örnek projeyi indirin](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
-* *DotNet-SQLDB-tutorial-Master. zip* dosyasını ayıklayın (sıkıştırmasını açın).
+* *dotnet-sqldb-tutorial-master.zip* dosyasını ayıklayın (sıkıştırmasını açın).
 
 Örnek proje, [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) kullanan temel bir [ASP.NET MVC](https://www.asp.net/mvc) oluşturma-okuma-güncelleştirme-silme (CRUD) uygulaması içerir.
 
@@ -145,7 +145,7 @@ Bir veritabanı oluşturmadan önce, [mantıksal BIR SQL Server](../azure-sql/da
 
     ![Veritabanını yapılandır](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-2. **App Service Oluştur** iletişim kutusunda, yapılandırdığınız kaynaklar gösterilir. **Oluştur**' a tıklayın.
+2. **App Service Oluştur** iletişim kutusunda, yapılandırdığınız kaynaklar gösterilir. **Oluştur**'a tıklayın.
 
    ![oluşturduğunuz kaynaklar](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
@@ -410,3 +410,8 @@ Azure SQL Veritabanı bağlantınızın güvenliğini kolayca iyileştirmeyi ö�
 
 > [!div class="nextstepaction"]
 > [Azure kaynakları için yönetilen kimlikleri kullanarak SQL Veritabanına güvenli bir şekilde erişme](app-service-web-tutorial-connect-msi.md)
+
+Daha fazla kaynak:
+
+> [!div class="nextstepaction"]
+> [ASP.NET uygulamasını yapılandırma](configure-language-dotnet-framework.md)

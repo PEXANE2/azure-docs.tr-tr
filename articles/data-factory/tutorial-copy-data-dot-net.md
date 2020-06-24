@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: ad257d0bea38d03803bf2be44313a3e086e7654c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 182c5b4059874b6e03092481c68b39cf55bc7e62
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118161"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253945"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob’dan Azure SQL Veritabanına veri kopyalama
 
@@ -41,7 +41,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https:
 ## <a name="prerequisites"></a>Ön koşullar
 
 * *Azure depolama hesabı*. Blob depolama alanını *kaynak* veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, bkz. [genel amaçlı depolama hesabı oluşturma](../storage/common/storage-account-create.md).
-* *Azure SQL veritabanı*. Veritabanını *havuz* veri deposu olarak kullanabilirsiniz. Azure SQL veritabanınız yoksa bkz. [Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md).
+* *Azure SQL veritabanı*. Veritabanını *havuz* veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)bölümüne bakın.
 * *Visual Studio*. Bu makaledeki izlenecek yol, Visual Studio 2019 kullanır.
 * *[.Net Için Azure SDK](/dotnet/azure/dotnet-tools)*.
 * *Azure Active Directory Uygulama*. Azure Active Directory uygulamanız yoksa, [nasıl yapılır: Azure AD uygulaması oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md)konusunun [Azure Active Directory uygulama oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) bölümüne bakın. Sonraki adımlarda kullanılmak üzere aşağıdaki değerleri kopyalayın: **uygulama (istemci) kimliği**, **kimlik doğrulama anahtarı**ve **Dizin (kiracı) kimliği**. Aynı makaledeki yönergeleri izleyerek uygulamayı **katkıda bulunan** rolüne atayın.
@@ -54,14 +54,14 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https:
 
 İlk olarak, bir kapsayıcı oluşturup buna bir giriş metin dosyası yükleyerek bir kaynak blobu oluşturun:
 
-1. Not defteri 'Ni açın. Aşağıdaki metni kopyalayın ve *ınputemp. txt*adlı bir dosyaya yerel olarak kaydedin.
+1. Not defteri 'Ni açın. Aşağıdaki metni kopyalayın ve *inputEmp.txt*adlı bir dosyaya yerel olarak kaydedin.
 
     ```inputEmp.txt
     John|Doe
     Jane|Doe
     ```
 
-2. *Adfv2tutorial* kapsayıcısını oluşturmak ve *ınputemp. txt* dosyasını kapsayıcıya yüklemek için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) gibi bir araç kullanın.
+2. *Adfv2tutorial* kapsayıcısını oluşturmak ve *inputEmp.txt* dosyasını kapsayıcıya yüklemek için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) gibi bir araç kullanın.
 
 #### <a name="create-a-sink-sql-table"></a>Havuz SQL tablosu oluşturma
 
@@ -98,7 +98,7 @@ Visual Studio 'yu kullanarak bir C# .NET konsol uygulaması oluşturun.
 1. Visual Studio'yu açın.
 2. **Başlangıç** penceresinde **Yeni proje oluştur**' u seçin.
 3. **Yeni proje oluştur** penceresinde, proje türleri listesinden **konsol uygulamasının C# sürümünü (.NET Framework)** seçin. Ardından **İleri**' yi seçin.
-4. **Yeni projeyi yapılandırın** penceresinde, *ADFv2Tutorial*için bir **Proje adı** girin. **Konum**için, projenin kaydedileceği dizine gidin ve/veya oluşturun. Ardından **Oluştur**’u seçin. Yeni proje, Visual Studio IDE 'de görüntülenir.
+4. **Yeni projeyi yapılandırın** penceresinde, *ADFv2Tutorial*için bir **Proje adı** girin. **Konum**için, projenin kaydedileceği dizine gidin ve/veya oluşturun. Ardından **Oluştur**'u seçin. Yeni proje, Visual Studio IDE 'de görüntülenir.
 
 ## <a name="install-nuget-packages"></a>NuGet paketlerini yükleme
 

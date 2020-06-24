@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: 85ac56eb20eabf308d6686a047d8c5ede914fed9
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: ef1f0c607eb1d0152a5dd5f5acc812bb9364e47a
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966445"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079220"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Öğretici: gönderme API 'SI ile dizin oluşturmayı Iyileştirme
 
@@ -21,7 +21,7 @@ Azure Bilişsel Arama, verileri bir arama dizinine aktarmaya yönelik [iki temel
 
 Bu öğreticide, istek toplu işleme ve bir üstel geri alma yeniden deneme stratejisi kullanılarak [anında iletme modeli](search-what-is-data-import.md#pushing-data-to-an-index) kullanılarak verilerin nasıl verimli bir şekilde dizininin oluşturulduğu açıklanmaktadır. [Uygulamayı indirebilir ve çalıştırabilirsiniz](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing). Bu makalede, verilerin dizininin oluşturulması sırasında göz önünde bulundurulması gereken uygulamanın ve faktörlerin temel yönleri açıklanmaktadır.
 
-Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](https://aka.ms/search-sdk) kullanır:
+Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) kullanır:
 
 > [!div class="checklist"]
 > * Dizin oluşturma
@@ -70,15 +70,15 @@ API çağrıları, hizmet URL 'SI ve erişim anahtarı gerektirir. Her ikisiyle 
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
-1. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+1. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
    ![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
 
 ## <a name="2---set-up-your-environment"></a>2-ortamınızı ayarlama
 
 1. Visual Studio 'Yu başlatın ve **Optimizedataındexing. sln**' i açın.
-1. Çözüm Gezgini, bağlantı bilgilerini sağlamak için **appSettings. JSON** ' u açın.
-1. İçin `searchServiceName`, tam URL "https://my-demo-service.search.windows.net" ise, sağlanacak hizmet adı "My-demo-Service" olur.
+1. Çözüm Gezgini, bağlantı bilgilerini sağlamak için **appsettings.js** açın.
+1. İçin, `searchServiceName` tam URL " https://my-demo-service.search.windows.net " ise, sağlanacak hizmet adı "My-demo-Service" olur.
 
 ```json
 {
@@ -90,7 +90,7 @@ API çağrıları, hizmet URL 'SI ve erişim anahtarı gerektirir. Her ikisiyle 
 
 ## <a name="3---explore-the-code"></a>3-kodu keşfet
 
-*AppSettings. JSON*' ı güncelleştirdiğinizde, **Optimizedataındexing. sln** dosyasındaki örnek program derlenmeye ve çalıştırmaya hazır olmalıdır.
+*appsettings.js*güncelleştirme yaptıktan sonra, **Optimizedataındexing. sln** dosyasındaki örnek program, derleme ve çalıştırmaya hazır olmalıdır.
 
 Bu kod, [C# hızlı](search-get-started-dotnet.md)başlangıcının türetilir. Bu makaledeki .NET SDK ile çalışmanın temelleri hakkında daha ayrıntılı bilgi edinebilirsiniz.
 
@@ -126,7 +126,7 @@ public Address Address { get; set; }
 . . .
 ```
 
-**Program.cs** dosyasında Dizin, `FieldBuilder.BuildForType<Hotel>()` yöntemi tarafından oluşturulan bir ad ve alan koleksiyonuyla tanımlanır ve sonra aşağıdaki gibi oluşturulur:
+**Program.cs** dosyasında Dizin, yöntemi tarafından oluşturulan bir ad ve alan koleksiyonuyla tanımlanır `FieldBuilder.BuildForType<Hotel>()` ve sonra aşağıdaki gibi oluşturulur:
 
 ```csharp
 private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
@@ -233,7 +233,7 @@ public static double EstimateObjectSize(object data)
 }
 ```
 
-İşlev için, her `ISearchIndexClient` bir toplu iş boyutu için test etmek istediğiniz deneme sayısı ve ek olarak gereklidir. Her toplu iş için dizin oluşturma saatlerinde bir değişkenlik olabileceğinden, sonuçların daha istatistiksel olarak önemli olmasını sağlamak için her toplu işi varsayılan olarak üç kez deneyeceğiz.
+İşlev `ISearchIndexClient` için, her bir toplu iş boyutu için test etmek istediğiniz deneme sayısı ve ek olarak gereklidir. Her toplu iş için dizin oluşturma saatlerinde bir değişkenlik olabileceğinden, sonuçların daha istatistiksel olarak önemli olmasını sağlamak için her toplu işi varsayılan olarak üç kez deneyeceğiz.
 
 ```csharp
 await TestBatchSizes(indexClient, numTries: 3);
@@ -269,7 +269,7 @@ Bir hata oluşursa, istekler [üstel geri alma yeniden deneme stratejisi kullan�
 
 Azure Bilişsel Arama .NET SDK, 503s ve diğer başarısız istekleri otomatik olarak yeniden dener, ancak 20 7s 'yi yeniden denemek için kendi mantığınızı uygulamanız gerekir. Yeniden deneme stratejisi uygulamak için, [Polly](https://github.com/App-vNext/Polly) gibi açık kaynaklı araçlar da kullanılabilir. 
 
-Bu örnekte, kendi üstel geri alma stratejinizi uyguladık. Bu stratejiyi uygulamak için, başarısız bir istek `maxRetryAttempts` `delay` için ve başlangıcı dahil bazı değişkenler tanımlayarak başlayacağız:
+Bu örnekte, kendi üstel geri alma stratejinizi uyguladık. Bu stratejiyi uygulamak için, `maxRetryAttempts` `delay` başarısız bir istek için ve başlangıcı dahil bazı değişkenler tanımlayarak başlayacağız:
 
 ```csharp
 // Create batch of documents for indexing
@@ -281,9 +281,9 @@ TimeSpan delay = delay = TimeSpan.FromSeconds(2);
 int maxRetryAttempts = 5;
 ```
 
-Bu özel durumlar, dizin oluşturma işleminin yalnızca kısmen başarılı (207s) olduğunu gösterdiği için [ındexbatchexception](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) 'ın yakalanmasının önem taşımaktadır. Başarısız öğeler, yalnızca başarısız öğeleri içeren `FindFailedActionsToRetry` yeni bir toplu iş oluşturmayı kolaylaştıran yöntemi kullanılarak yeniden denenmelidir.
+Bu özel durumlar, dizin oluşturma işleminin yalnızca kısmen başarılı (207s) olduğunu gösterdiği için [ındexbatchexception](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) 'ın yakalanmasının önem taşımaktadır. Başarısız öğeler, `FindFailedActionsToRetry` yalnızca başarısız öğeleri içeren yeni bir toplu iş oluşturmayı kolaylaştıran yöntemi kullanılarak yeniden denenmelidir.
 
-`IndexBatchException` Dışındaki özel durumlar da yakalanmalıdır ve isteğin tamamen başarısız olduğunu gösterir. Bu özel durumlar, özellikle de 50. otomatik olarak yeniden denemeler yaparken .NET SDK ile daha yaygın olarak yaygındır.
+Dışındaki özel durumlar `IndexBatchException` da yakalanmalıdır ve isteğin tamamen başarısız olduğunu gösterir. Bu özel durumlar, özellikle de 50. otomatik olarak yeniden denemeler yaparken .NET SDK ile daha yaygın olarak yaygındır.
 
 ```csharp
 // Implement exponential backoff
@@ -324,7 +324,7 @@ do
 
 Buradan, kolayca çağrılabilmesi için üstel geri alma kodunu bir işleve sarıyoruz.
 
-Daha sonra etkin iş parçacıklarını yönetmek için başka bir işlev oluşturulur. Kolaylık olması için bu işlev buraya dahil değildir, ancak [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/OptimizeDataIndexing/ExponentialBackoff.cs)içinde bulunabilir. İşlevi, yüklemek `hotels` `1000` istediğimiz veriler nerede, toplu iş boyutu ve `8` eşzamanlı iş parçacığı sayısı olan aşağıdaki komutla çağrılabilir:
+Daha sonra etkin iş parçacıklarını yönetmek için başka bir işlev oluşturulur. Kolaylık olması için bu işlev buraya dahil değildir, ancak [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/OptimizeDataIndexing/ExponentialBackoff.cs)içinde bulunabilir. İşlevi, `hotels` yüklemek istediğimiz veriler nerede, `1000` toplu iş boyutu ve `8` eşzamanlı iş parçacığı sayısı olan aşağıdaki komutla çağrılabilir:
 
 ```csharp
 ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();

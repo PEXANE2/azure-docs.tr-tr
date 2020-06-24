@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: 5b7c7219c15f6c9b687aecd2e9d9f46ea4a71efa
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.date: 06/10/2020
+ms.openlocfilehash: df185f8b75af6a845306fccc18d7d3cce74d0815
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249102"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249185"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal kullanarak bir Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme
+# <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal kullanarak Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu öğreticide, Azure SQL veritabanındaki bir tablodan Azure Blob depolama alanına delta veri yükleyen işlem hattına sahip bir Azure veri fabrikası oluşturacaksınız.
+Bu öğreticide, Azure SQL veritabanındaki bir tablodan Azure Blob depolama alanına Delta verileri yükleyen bir işlem hattı ile Azure Veri Fabrikası oluşturacaksınız.
 
 Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
@@ -65,7 +65,7 @@ Bu çözümü oluşturmak için önemli adımlar şunlardır:
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
-* **Azure SQL veritabanı**. Veritabanını kaynak veri deposu olarak kullanabilirsiniz. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md).
+* **Azure SQL veritabanı**. Veritabanını kaynak veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) .
 * **Azure depolama**. Blob depolamayı havuz veri deposu olarak kullanabilirsiniz. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md). adftutorial adlı bir kapsayıcı oluşturun. 
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>SQL veritabanınızda bir veri kaynağı tablosu oluşturma
@@ -103,6 +103,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
     ```
 
 ### <a name="create-another-table-in-your-sql-database-to-store-the-high-watermark-value"></a>Üst eşik değerini depolamak için SQL veritabanınızda başka bir tablo oluşturma
+
 1. SQL veritabanınızda aşağıdaki SQL komutunu çalıştırarak eşik değerini depolamak için `watermarktable` adlı bir tablo oluşturun:  
 
     ```sql
@@ -169,8 +170,8 @@ END
          
         Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
 6. **Sürüm** için **V2**'yi seçin.
-7. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
-8. **Oluştur**' a tıklayın.      
+7. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Data Factory tarafından kullanılan veri depoları (Azure depolama, Azure SQL veritabanı, Azure SQL yönetilen örneği vb.) ve işlemler (HDInsight, vb.) başka bölgelerde olabilir.
+8. **Oluştur**'a tıklayın.      
 9. Oluşturma işlemi tamamlandıktan sonra, resimde gösterildiği gibi **Data Factory** sayfasını görürsünüz.
 
    ![Data factory giriş sayfası](./media/doc-common-process/data-factory-home-page.png)
@@ -199,7 +200,7 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
     2. **Sunucu adı**için sunucunuzu seçin.
     3. Açılan listeden **veritabanınızın adını** seçin.
     4. **Kullanıcı adı**  &  **parolanızı**girin.
-    5. Azure SQL veritabanı bağlantısını test etmek için **Bağlantıyı sına**’ya tıklayın.
+    5. SQL veritabanınızın bağlantısını test etmek için **Bağlantıyı Sına**' ya tıklayın.
     6. **Son**'a tıklayın.
     7. **Bağlı hizmet**Için **Azuressqldatabaselinkedservice** 'in seçili olduğunu onaylayın.
 
@@ -277,7 +278,7 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Dize | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
-    ![Saklı Yordam Etkinliği - saklı yordam ayarları](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
+        ![Saklı Yordam Etkinliği - saklı yordam ayarları](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. İşlem hattı ayarlarını doğrulamak için araç çubuğunda **Doğrula**’ya tıklayın. Doğrulama hatası olmadığından emin olun. **İşlem Hattı Doğrulama Raporu** penceresini kapatmak için >> seçeneğine tıklayın.   
 
 28. **Tümünü Yayımla** düğmesine tıklayarak varlıkları (bağlı hizmetler, veri kümeleri ve işlem hatları) Azure Data Factory hizmetinde yayımlayın. Yayımlamanın başarılı olduğunu belirten bir ileti görene kadar bekleyin.
@@ -290,9 +291,9 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
 
 ## <a name="monitor-the-pipeline-run"></a>İşlem hattı çalıştırmasını izleme
 
-1. Soldaki **İzleyici** sekmesine geçin. El ile tetikleme işlemi tarafından tetiklenen işlem hattı çalıştırmasının durumunu görebilirsiniz. Listeyi yenilemek için **Yenile** düğmesine tıklayın.
+1. Soldaki **İzleyici** sekmesine geçin. El ile tetikleyici tarafından tetiklenen işlem hattı çalıştırmasının durumunu görürsünüz. Çalışma ayrıntılarını görüntülemek ve işlem hattını yeniden çalıştırmak için işlem **hattı adı** sütununun altındaki bağlantıları kullanabilirsiniz.
 
-2. Bu işlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntülemek için **Eylemler** sütunundaki ilk bağlantıya (**Etkinlik Çalıştırmalarını Görüntüle**) tıklayın. Üst taraftan **İşlem Hatları**’na tıklayarak önceki görünüme dönebilirsiniz. Listeyi yenilemek için **Yenile** düğmesine tıklayın.
+2. İşlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görmek için, işlem **hattı adı** sütununun altındaki bağlantıyı seçin. Etkinlik çalıştırmaları hakkında daha fazla bilgi için **etkınlık adı** sütununun altındaki **Ayrıntılar** bağlantısını (eyegözlük simgesi) seçin. İşlem hattı çalıştırmaları görünümüne dönmek için üstteki **tüm işlem hattı çalıştırmalarını** seçin. Görünümü yenilemek için **Yenile**’yi seçin.
 
 
 ## <a name="review-the-results"></a>Sonuçları gözden geçirin
@@ -322,7 +323,7 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
 
 ## <a name="add-more-data-to-source"></a>Kaynağa daha fazla veri ekleme
 
-Yeni verileri SQL veritabanına (veri kaynağı deposu) ekleyin.
+Veritabanınıza yeni veriler ekleyin (veri kaynağı deposu).
 
 ```sql
 INSERT INTO data_source_table
@@ -332,7 +333,7 @@ INSERT INTO data_source_table
 VALUES (7, 'newdata','9/7/2017 9:01:00 AM')
 ```
 
-SQL veritabanında güncelleştirilmiş veriler:
+Veritabanınızdaki güncelleştirilmiş veriler şunlardır:
 
 ```
 PersonID | Name | LastModifytime
@@ -346,8 +347,8 @@ PersonID | Name | LastModifytime
 7 | newdata | 2017-09-07 09:01:00.000
 ```
 
-
 ## <a name="trigger-another-pipeline-run"></a>Başka bir işlem hattı çalıştırması tetikleme
+
 1. **Düzenle** sekmesine geçin. tasarımcı 'da açılmadıysa ağaç görünümündeki Işlem hattına tıklayın.
 
 2. Araç çubuğunda **tetikleyici Ekle** ' ye tıklayın ve **Şimdi Tetikle**' ye tıklayın.
@@ -355,9 +356,9 @@ PersonID | Name | LastModifytime
 
 ## <a name="monitor-the-second-pipeline-run"></a>İkinci işlem hattı çalıştırmasını izleme
 
-1. Soldaki **İzleyici** sekmesine geçin. El ile tetikleme işlemi tarafından tetiklenen işlem hattı çalıştırmasının durumunu görebilirsiniz. Listeyi yenilemek için **Yenile** düğmesine tıklayın.
+1. Soldaki **İzleyici** sekmesine geçin. El ile tetikleyici tarafından tetiklenen işlem hattı çalıştırmasının durumunu görürsünüz. Etkinlik ayrıntılarını görüntülemek ve işlem hattını yeniden çalıştırmak için işlem **hattı adı** sütununun altındaki bağlantıları kullanabilirsiniz.
 
-2. Bu işlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntülemek için **Eylemler** sütunundaki ilk bağlantıya (**Etkinlik Çalıştırmalarını Görüntüle**) tıklayın. Üst taraftan **İşlem Hatları**’na tıklayarak önceki görünüme dönebilirsiniz. Listeyi yenilemek için **Yenile** düğmesine tıklayın.
+2. İşlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görmek için, işlem **hattı adı** sütununun altındaki bağlantıyı seçin. Etkinlik çalıştırmaları hakkında daha fazla bilgi için **etkınlık adı** sütununun altındaki **Ayrıntılar** bağlantısını (eyegözlük simgesi) seçin. İşlem hattı çalıştırmaları görünümüne dönmek için üstteki **tüm işlem hattı çalıştırmalarını** seçin. Görünümü yenilemek için **Yenile**’yi seçin.
 
 
 ## <a name="verify-the-second-output"></a>İkinci çıkışı doğrulama
@@ -398,7 +399,7 @@ Bu öğreticide aşağıdaki adımları gerçekleştirdiniz:
 > * İkinci işlem hattı çalıştırmasını izleme
 > * İkinci çalıştırmanın sonuçlarını gözden geçirme
 
-Bu öğreticide, işlem hattı SQL veritabanındaki tek bir tablodan Blob depolama alanına veri kopyalamıştır. SQL Server veritabanındaki birden çok tablodan SQL veritabanı 'na veri kopyalama hakkında bilgi edinmek için aşağıdaki öğreticiye ilerleyin.
+Bu öğreticide, işlem hattı SQL veritabanındaki tek bir tablodan blob depolamaya veri kopyaladı. SQL Server veritabanındaki birden çok tablodan SQL veritabanı 'na veri kopyalama hakkında bilgi edinmek için aşağıdaki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
 >[SQL Server’daki birden fazla tablodan Azure SQL Veritabanı’na artımlı olarak veri yükleme](tutorial-incremental-copy-multiple-tables-portal.md)

@@ -4,16 +4,16 @@ description: Bu öğreticide, ASP.NET Core ön ucuyla ve durum bilgisi olan bir 
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: cbfae89ffa446ca3915129fd9add2701ac21d837
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f7bad66d15cc2f9fb1885e440f95e76e12ea458a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75465465"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214035"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Öğretici: ASP.NET Core Web API'si ön uç hizmeti ve durum bilgisi olan bir arka uç hizmetiyle uygulama oluşturma ve dağıtma
 
-Bu öğretici, bir dizinin birinci bölümüdür.  Verileri depolamak için ASP.NET Core Web API'si ön ucu ve durum bilgisi olan bir arka uç hizmetiyle Azure Service Fabric uygulaması oluşturmayı öğreneceksiniz. Bitirdiğinizde, oylama sonuçlarını kümedeki durum bilgisi içeren arka uç hizmetine kaydeden bir ASP.NET Core web ön ucuna sahip oylama uygulaması sağlanır. Oylama uygulamasını el ile oluşturmak istemiyorsanız, tamamlanmış uygulamanın [kaynak kodunu indirebilir](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) ve [Oylama örnek uygulamasında gezinmek](#walkthrough_anchor)için ilerleyebilirsiniz.  İsterseniz, bu öğreticiye ait bir [video kılavuzu](https://channel9.msdn.com/Events/Connect/2017/E100) da izleyebilirsiniz.
+Bu öğretici, bir dizinin birinci bölümüdür.  Verileri depolamak için ASP.NET Core Web API'si ön ucu ve durum bilgisi olan bir arka uç hizmetiyle Azure Service Fabric uygulaması oluşturmayı öğreneceksiniz. Bitirdiğinizde, oylama sonuçlarını kümedeki durum bilgisi içeren arka uç hizmetine kaydeden bir ASP.NET Core web ön ucuna sahip oylama uygulaması sağlanır. Bu öğretici serisi için bir Windows Geliştirici makinesi gereklidir. Oylama uygulamasını el ile oluşturmak istemiyorsanız, tamamlanmış uygulamanın [kaynak kodunu indirebilir](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) ve [Oylama örnek uygulamasında gezinmek](#walkthrough_anchor)için ilerleyebilirsiniz.  İsterseniz, bu öğreticiye ait bir [video kılavuzu](https://channel9.msdn.com/Events/Connect/2017/E100) da izleyebilirsiniz.
 
 ![AngularJS + ASP. NET API ön ucu, Service Fabric üzerinde durum bilgisi olan bir arka uç hizmetine bağlanma](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 
@@ -45,7 +45,7 @@ Başlangıçta, ASP.NET Core kullanarak oylama uygulamasının web ön ucunu olu
 
 1. Visual Studio'yu **yönetici** olarak başlatın.
 
-2. **Dosya**->**Yeni**->**Proje**' ye sahip bir proje oluşturun.
+2. **Dosya** -> **Yeni**proje ' ye sahip bir proje oluşturun -> **Project**.
 
 3. **Yeni Proje** iletişim kutusunda **Bulut > Service Fabric Uygulaması**'nı seçin.
 
@@ -455,7 +455,7 @@ Bu öğreticide, VotingWeb ön uç web hizmetinin arka uç VotingData hizmetiyle
         ],
 ```
 Yerel geliştirme Kümenizde kullanılan ters proxy bağlantı noktasını bulmak için yerel Service Fabric kümesi bildiriminde **HttpApplicationGatewayEndpoint** öğesini görüntüleyin:
-1. Bir tarayıcı penceresi açın ve Service Fabric Explorer aracını açmak için\/http:/localhost: 19080 adresine gidin.
+1. Bir tarayıcı penceresi açın ve \/ Service Fabric Explorer aracını açmak için http:/localhost: 19080 adresine gidin.
 2. **Cluster-> bildirimi**' ni seçin.
 3. HttpApplicationGatewayEndpoint öğesinin bağlantı noktasını not edin. Varsayılan olarak 19081 olmalıdır. 19081 değilse VotesController.cs dosyasındaki kodun aşağıdaki bölümünde GetProxyAddress metodunun bağlantı noktasını değiştirmeniz gerekir.
 

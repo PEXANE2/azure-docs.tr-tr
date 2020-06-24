@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4a5936501f45694febe284d9747bdefdfeae6aeb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ca0af9a34587f8d3a3c0502c77556975b1d8df4e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053336"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253843"
 ---
 # <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Öğretici: Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de tahmine dayalı bir model oluşturma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Bu üç bölümden oluşan öğretici serisinin ikinci bölümünde, R 'de iki tahmine dayalı model oluşturacak ve en doğru modeli seçmelisiniz. Bu serinin bir sonraki bölümünde, bu modeli Azure SQL veritabanı Machine Learning Services (Önizleme) ile bir SQL veritabanında dağıtacaksınız.
+Bu üç bölümden oluşan öğretici serisinin ikinci bölümünde, R 'de iki tahmine dayalı model oluşturacak ve en doğru modeli seçmelisiniz. Bu serinin sonraki bölümünde, bu modeli Azure SQL veritabanı Machine Learning Services (Önizleme) ile Azure SQL veritabanı 'nda bir veritabanında dağıtacaksınız.
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -38,7 +38,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 
 [Birinci bölümde](predictive-model-prepare-data-tutorial.md), örnek bir veritabanını içeri aktarmayı ve ardından R 'deki tahmine dayalı bir modeli eğitmek için kullanılacak verileri oluşturmayı öğrendiniz.
 
-[Üçüncü kısımda](predictive-model-deploy-tutorial.md), modeli bir veritabanında nasıl depolayacağınızı öğrenirsiniz ve sonra bir ve iki bölümde geliştirdiğiniz R betiklerinden saklı yordamlar oluşturabilirsiniz. Saklı yordamlar yeni verilere göre tahmine dayalı hale getirmek için bir SQL veritabanında çalışır.
+[Üçüncü kısımda](predictive-model-deploy-tutorial.md), modeli bir veritabanında nasıl depolayacağınızı öğrenirsiniz ve sonra bir ve iki bölümde geliştirdiğiniz R betiklerinden saklı yordamlar oluşturabilirsiniz. Saklı yordamlar yeni verilere göre tahmine dayalı hale getirmek için bir veritabanında çalışır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

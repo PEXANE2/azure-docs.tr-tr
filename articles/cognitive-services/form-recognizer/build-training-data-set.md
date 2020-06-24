@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 9342d87318eb6a5248c75d2333fb5e2a4cbef8f4
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ffa09293ad2ff02e104ce285b6b0aaca7d4744a2
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873304"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212675"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Özel model için eğitim veri kümesi oluşturma
 
@@ -26,7 +26,7 @@ El ile veri etiketli eğitim verileri kullanmak istiyorsanız, aynı türde en a
 
 ## <a name="training-data-tips"></a>Eğitim verileri ipuçları
 
-Eğitim için en iyi duruma getirilmiş bir veri kümesi kullanılması önemlidir. [Özel modeli eğitme](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) işlemindeki en iyi sonuçları aldığınızdan emin olmak için aşağıdaki ipuçlarını kullanın:
+Eğitim için en iyi duruma getirilmiş bir veri kümesi kullanılması önemlidir. [Özel modeli eğitme](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync) işlemindeki en iyi sonuçları aldığınızdan emin olmak için aşağıdaki ipuçlarını kullanın:
 
 * Mümkünse, görüntü tabanlı belgeler yerine metin tabanlı PDF belgelerini kullanın. Taranan PDF 'Ler görüntü olarak işlenir.
 * Doldurulmuş formlarda, tüm alanlarının doldurulduğu örnekleri kullanın.
@@ -44,11 +44,11 @@ Eğitim verileri ayarlamış olduğunuz tüm form tanıyıcı içeriği için gi
 
 Eğitim için kullanacağınız form belgelerinin bir kümesini birlikte yerleştirdiğinizde, bir Azure Blob depolama kapsayıcısına yüklemeniz gerekir. Bir kapsayıcı ile Azure depolama hesabı oluşturmayı bilmiyorsanız [Azure Portal Için Azure Storage hızlı](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)başlangıcını takip edin.
 
-El ile etiketlenmiş verileri kullanmak istiyorsanız, eğitim belgelerinize karşılık gelen *. Labels. JSON* ve *. OCR. JSON* dosyalarını da yüklemeniz gerekir. Bu dosyaları oluşturmak için [örnek etiketleme aracını](./quickstarts/label-tool.md) (veya kendi Kullanıcı arabiriminizi) kullanabilirsiniz.
+El ile etiketlenmiş verileri kullanmak istiyorsanız eğitim belgelerinize karşılık gelen dosyalara *.labels.js* ve *.ocr.js* yüklemeniz gerekir. Bu dosyaları oluşturmak için [örnek etiketleme aracını](./quickstarts/label-tool.md) (veya kendi Kullanıcı arabiriminizi) kullanabilirsiniz.
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>Verilerinizi alt klasörlerde düzenleme (isteğe bağlı)
 
-Varsayılan olarak, [özel model eğitme](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) API 'si yalnızca depolama kapsayıcının kökünde bulunan form belgelerini kullanacaktır. Ancak, API çağrısında belirtirseniz, alt klasörlerdeki verilerle eğitebilirsiniz. Normal olarak, [eğitme özel model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) çağrısının gövdesi aşağıdaki biçime sahiptir; burada, `<SAS URL>` kapsayıcının paylaşılan erişim imzası URL 'sidir:
+Varsayılan olarak, [özel model eğitme](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync) API 'si yalnızca depolama kapsayıcının kökünde bulunan form belgelerini kullanacaktır. Ancak, API çağrısında belirtirseniz, alt klasörlerdeki verilerle eğitebilirsiniz. Normal olarak, [eğitme özel model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync) çağrısının gövdesi aşağıdaki biçime sahiptir; burada, `<SAS URL>` kapsayıcının paylaşılan erişim imzası URL 'sidir:
 
 ```json
 {

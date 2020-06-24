@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: c1d26fda57d665cc8d83f594f4efeebebc7bf139
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 21771fb1bb041dd2f09f5d82d9def4cfe91794f6
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81456898"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808387"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Öğretici-Azure Key Vault kullanarak blob 'ları şifreleme ve şifre çözme
 
@@ -75,7 +75,7 @@ Install-Package Microsoft.Azure.KeyVault
 Install-Package Microsoft.Azure.KeyVault.Extensions
 ```
 
-App. config öğesine AppSettings ekleyin.
+App.Config AppSettings 'i ekleyin.
 
 ```xml
 <appSettings>
@@ -87,7 +87,7 @@ App. config öğesine AppSettings ekleyin.
 </appSettings>
 ```
 
-Aşağıdaki `using` yönergeleri ekleyin ve projeye System. Configuration başvurusu eklediğinizden emin olun.
+Aşağıdaki yönergeleri ekleyin `using` ve projeye System.Configbir başvuru eklediğinizden emin olun.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;

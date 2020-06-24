@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 83e6498f47c36fa54890131922dc8d452a3d9220
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: edb6846d199470818e07a208feb778aca3021d9e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560496"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253673"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Factory işlem hattında dallanan ve zincirleme etkinlikleri
 
@@ -44,7 +44,7 @@ Bu öğreticide Azure portalı kullanılır. Azure Data Factory ile etkileşim k
 
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 * **Azure depolama hesabı**. Blob depolama alanını **kaynak** veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesine bakın.
-* **Azure SQL veritabanı**. Veritabanını **havuz** veri deposu olarak kullanabilirsiniz. Azure SQL Veritabanınız yoksa, oluşturma adımları için [Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) makalesine bakın.
+* **Azure SQL veritabanı**. Veritabanını **havuz** veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa, oluşturma adımları için [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) makalesine bakın.
 
 ### <a name="create-blob-table"></a>Blob tablosu oluşturma
 
@@ -150,7 +150,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 4. **Sürüm** için **V2**'yi seçin.
 5. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 6. **Panoya sabitle**’yi seçin.     
-7. **Oluştur**' a tıklayın.      
+7. **Oluştur**'a tıklayın.      
 8. Panoda şu kutucuğu ve üzerinde şu durumu görürsünüz: **Veri fabrikası dağıtılıyor**.
 
     ![veri fabrikası dağıtılıyor kutucuğu](media/tutorial-control-flow-portal/deploying-data-factory.png)
@@ -206,6 +206,7 @@ Bu adımda, bir Kopyalama etkinliği ve iki Web etkinliği ile bir işlem hattı
 13. **İşlem hattı** sekmesine geçin (veya) ağaç görünümünde işlem hattına tıklayın. **Kaynak Veri Kümesi** için **SourceBlobDataset**’in seçili olduğundan emin olun.
 
     ![Kaynak veri kümesi](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+
 13. Özellikler penceresinde **Havuz** sekmesine geçin ve **Havuz Veri Kümesi** için **+ Yeni**’ye tıklayın. Bu adımda, kaynak veri kümesi oluştururken olduğu gibi kopyalama etkinliği için bir havuz veri kümesi oluşturursunuz.
 
     ![Yeni havuz veri kümesi düğmesi](./media/tutorial-control-flow-portal/new-sink-dataset-button.png)

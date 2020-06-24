@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 22aad0e601c600e582cbea0cea82dd67a20a2c06
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a89e8bb42bec4323d2189ca93dfe73171c4a128c
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81392685"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887991"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) Kubernetes’i yükseltme
 
@@ -34,15 +34,30 @@ Bu öğreticide, Azure CLı sürüm 2.0.53 veya üstünü çalıştırıyor olma
 Bir kümeyi yükseltmeden önce, [az aks get-upgrades][] komutunu kullanarak hangi Kubernetes sürümlerinin yükseltme için kullanılabilir olduğunu öğrenin:
 
 ```azurecli
-az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
+az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Aşağıdaki örnekte, geçerli sürüm *1.14.8*' dir ve kullanılabilir sürümler *yükseltmeler* sütununda gösterilir.
+Aşağıdaki örnekte, geçerli sürüm *1.15.11*' dir ve kullanılabilir sürümler *yükseltmeler*altında gösterilir.
 
-```
-Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
--------  ---------------  ---------------  -----------------  --------------
-default  myResourceGroup  1.14.8           1.14.8             1.15.5, 1.15.7
+```json
+{
+  "agentPoolProfiles": null,
+  "controlPlaneProfile": {
+    "kubernetesVersion": "1.15.11",
+    ...
+    "upgrades": [
+      {
+        "isPreview": null,
+        "kubernetesVersion": "1.16.8"
+      },
+      {
+        "isPreview": null,
+        "kubernetesVersion": "1.16.9"
+      }
+    ]
+  },
+  ...
+}
 ```
 
 ## <a name="upgrade-a-cluster"></a>Kümeyi yükseltme
@@ -55,16 +70,19 @@ Uygulama çalıştırma kesintisini en aza indirmek için AKS düğümleri dikka
 1. Yeni düğüm hazır olduğunda ve kümeye katıldığında, Kubernetes Zamanlayıcı üzerinde pod çalıştırmaya başlar.
 1. Eski düğüm silinir ve kümedeki bir sonraki düğüm Cordon ve boşalt işlemini başlatır.
 
-AKS kümesini yükseltmek için [az aks upgrade][] komutunu kullanın. Aşağıdaki örnek, kümeyi Kubernetes sürüm *1.14.6*'ye yükseltir.
+AKS kümesini yükseltmek için [az aks upgrade][] komutunu kullanın.
+
+```azurecli
+az aks upgrade \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --kubernetes-version KUBERNETES_VERSION
+```
 
 > [!NOTE]
 > Aynı anda yalnızca bir ikincil sürüm yükseltmesi yapabilirsiniz. Örneğin, *1.14. x* ' den *1.15. x*' e yükseltebilirsiniz, ancak *1.14. x* ' ten doğrudan *1.16. x* ' e yükseltemezsiniz. *1.14. x* ' den *1.16. x*' e yükseltmek için, ilk olarak *1.14. x* ' ten *1.15. x*' e yükseltin, sonra *1.15. x* ' den *1.16.* x ' e yükseltme gerçekleştirin
 
-```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.15.5
-```
-
-Aşağıdaki sıkıştırılmış örnek çıktıda, *Kubernetesversion* artık Reports *1.15.5*raporları gösterilmektedir:
+Aşağıdaki sıkıştırılmış örnek çıktı, *1.16.8*sürümüne yükseltmenin sonucunu gösterir. *Kubernetesversion* 'ın artık *1.16.8*rapordığına dikkat edin:
 
 ```json
 {
@@ -82,7 +100,7 @@ Aşağıdaki sıkıştırılmış örnek çıktıda, *Kubernetesversion* artık 
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.15.5",
+  "kubernetesVersion": "1.16.8",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -97,12 +115,12 @@ Aşağıdaki sıkıştırılmış örnek çıktıda, *Kubernetesversion* artık 
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Aşağıdaki örnek çıktıda, AKS kümesi çalıştırıldığı *Kubernetesversion 1.15.5*gösterilmektedir:
+Aşağıdaki örnek çıktıda, AKS kümesi çalıştırıldığı *Kubernetesversion 1.16.8*gösterilmektedir:
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.15.5               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.16.8               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>Küme silme

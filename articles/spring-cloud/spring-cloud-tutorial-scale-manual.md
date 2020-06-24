@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
-ms.openlocfilehash: f08a3b5d0a03b0e898457bbb783dd5031c4b0f27
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93cefd0c71e2d51187e68c6f5f02777d158e95a4
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76277473"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792073"
 ---
 # <a name="scale-an-application-in-azure-spring-cloud"></a>Azure Spring Cloud 'da bir uygulamayı ölçeklendirme
 
@@ -58,6 +58,9 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 ![Azure portal ölçek hizmeti](media/spring-cloud-tutorial-scale-manual/scale-up-out.png)
 
 Birkaç saniye sonra, yaptığınız değişiklikler, **uygulama örnekleri** sekmesinde daha fazla ayrıntı Ile **genel bakış** sayfasında görüntülenir. ölçeklendirme, herhangi bir kod değişikliği veya yeniden dağıtım gerektirmez.
+
+## <a name="upgrade-to-the-standard-tier"></a>Standart katmana yükseltme
+Temel katmandadır ve bu [limitlerden](spring-cloud-quotas.md)biri veya daha fazlası ile kısıtlanıyor ise Standart katmana yükseltebilirsiniz. Bunu yapmak için, önce Standart katman sütununu ve **Yükselt** düğmesine tıklayarak fiyatlandırma katmanı menüsüne gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

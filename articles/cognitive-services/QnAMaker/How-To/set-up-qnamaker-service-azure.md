@@ -3,12 +3,12 @@ title: Soru-Cevap Oluşturma Hizmeti ayarlama-Soru-Cevap Oluşturma
 description: Herhangi bir Soru-Cevap Oluşturma bilgi tabanı oluşturabilmeniz için önce Azure 'da bir Soru-Cevap Oluşturma Hizmeti ayarlamanız gerekir. Bir abonelikte yeni kaynaklar oluşturmak için yetkilendirmeye sahip olan herkes, Soru-Cevap Oluşturma bir hizmet ayarlayabilir.
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 106796533f42250a2656735d97878ea04d6fa57f
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 0a1b79c91e4e1bd9a57d6dcbb38432125573b9e6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235529"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214137"
 ---
 # <a name="manage-qna-maker-resources"></a>Soru-Cevap Oluşturma kaynaklarını yönetme
 
@@ -60,9 +60,9 @@ Bu yordam, Bilgi Bankası içeriğini yönetmek için gereken Azure kaynakların
     Bilişsel _Hizmetler_ türündeki kaynağın _abonelik_ anahtarları vardır.
 
 
-## <a name="find-subscription-keys-in-the-azure-portal"></a>Azure portal abonelik anahtarlarını bulma
+## <a name="find-authoring-keys-in-the-azure-portal"></a>Azure portal yazma anahtarlarını bulma
 
-Abonelik anahtarlarınızı, Soru-Cevap Oluşturma kaynağı oluşturduğunuz Azure portal görüntüleyebilir ve sıfırlayabilirsiniz.
+Yazma anahtarlarınızı, Soru-Cevap Oluşturma kaynağı oluşturduğunuz Azure portal görüntüleyebilir ve sıfırlayabilirsiniz. Bu anahtarlara abonelik anahtarları denir. 
 
 1. Azure portal Soru-Cevap Oluşturma kaynağına gidin ve bilişsel _Hizmetler_ türünün bulunduğu kaynağı seçin:
 
@@ -72,7 +72,7 @@ Abonelik anahtarlarınızı, Soru-Cevap Oluşturma kaynağı oluşturduğunuz Az
 
     ![Abonelik anahtarı](../media/qnamaker-how-to-key-management/subscription-key.PNG)
 
-## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>Soru-Cevap Oluşturma portalında uç nokta anahtarlarını bulma
+## <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>Soru-Cevap Oluşturma portalında sorgu uç noktası anahtarlarını bulma
 
 Uç nokta anahtarları bilgi tabanına çağrı yapmak için kullanıldığından, uç nokta kaynakla aynı bölgededir.
 

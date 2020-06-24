@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 7746726775cd5230f48842ad9a9260efe0e540b5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fd006e836432ce775be8cbbefea6d9219e8b13b3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022121"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253469"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory işlem hattında dallanma ve zincirleme etkinlikleri
 
@@ -48,7 +48,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 * Azure depolama hesabı. BLOB depolama alanını kaynak veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, bkz. [depolama hesabı oluşturma](../storage/common/storage-account-create.md).
 * Azure Depolama Gezgini. Bu aracı yüklemek için bkz. [Azure Depolama Gezgini](https://storageexplorer.com/).
-* Azure SQL Veritabanı çözümünü karşılaştırabilirsiniz. Veritabanını havuz veri deposu olarak kullanabilirsiniz. Azure SQL veritabanınız yoksa bkz. [Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md).
+* Azure SQL Veritabanı çözümünü karşılaştırabilirsiniz. Veritabanını havuz veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)bölümüne bakın.
 * Visual Studio. Bu makalede Visual Studio 2019 kullanılmaktadır.
 * Azure .NET SDK. [Azure .NET SDK 'sını](https://azure.microsoft.com/downloads/)indirin ve yükleyin.
 
@@ -58,7 +58,7 @@ Data Factory Şu anda kullanılabildiği Azure bölgelerinin listesi için bkz. 
 
 ### <a name="create-a-blob-table"></a>Blob tablosu oluşturma
 
-1. Bir metin düzenleyicisi açın. Aşağıdaki metni kopyalayın ve *input. txt*olarak yerel olarak kaydedin.
+1. Bir metin düzenleyicisi açın. Aşağıdaki metni kopyalayın ve *input.txt*olarak yerel olarak kaydedin.
 
    ```
    Ethel|Berg
@@ -66,7 +66,7 @@ Data Factory Şu anda kullanılabildiği Azure bölgelerinin listesi için bkz. 
    ```
 
 1. Azure Depolama Gezgini açın. Depolama hesabınızı genişletin. **BLOB kapsayıcıları** ' na sağ tıklayın ve **BLOB kapsayıcısı oluştur**' u seçin.
-1. Yeni kapsayıcıyı *adfv2branch* olarak adlandırın ve *input. txt* dosyanızı kapsayıcıya eklemek için **karşıya yükle** ' yi seçin.
+1. Yeni kapsayıcıyı adlandırın *adfv2branch* ve *input.txt* dosyanızı kapsayıcıya eklemek için **karşıya yükle** ' yi seçin.
 
 ## <a name="create-visual-studio-project"></a>Visual Studio projesi oluşturma<a name="create-visual-studio-project"></a>
 
@@ -344,7 +344,7 @@ Bir eylemi ekleyin `Office 365 Outlook – Send an email` . **E-posta gönder** 
 
 ## <a name="fail-email-workflow"></a>Hata e-postası iş akışı
 
-*Copyfailemail*adlı başka bir Logic Apps iş akışı olarak **copyardılsemail** 'i kopyalayın. İstek tetikleyicisinde `Request Body JSON schema` değeri aynıdır. Hata e-postasına uyarlamak için e-postanızın biçimini `Subject` olarak değiştirin. Örnek aşağıda verilmiştir:
+*Copyfailemail*adlı başka bir Logic Apps iş akışı olarak **copyardılsemail** 'i kopyalayın. İstek tetikleyicisinde `Request Body JSON schema` değeri aynıdır. Hata e-postasına uyarlamak için e-postanızın biçimini `Subject` olarak değiştirin. Aşağıda bir örnek verilmiştir:
 
 ![Mantıksal uygulama Tasarımcısı-hata e-postası iş akışı](media/tutorial-control-flow/fail-email-workflow.png)
 

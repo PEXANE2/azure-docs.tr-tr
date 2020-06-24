@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 27afbafcadb4c482e97e1d003706e7d2712e63c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3bb8f0e809ae1acbec1479c20e24c90fd81905d4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117276"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212454"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Örnek etiketleme aracını dağıtma
 
@@ -37,7 +37,7 @@ Başlamadan önce, örnek etiketleme aracını bir Azure Container Instance 'a (
 * [Azure portalını kullanma](#azure-portal)
 * [Azure CLI kullanma](#azure-cli)
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 Azure portal kullanarak yeni bir kaynak oluşturmak için aşağıdaki adımları izleyin: 
 
@@ -89,13 +89,13 @@ Azure portal kullanarak yeni bir kaynak oluşturmak için aşağıdaki adımlar�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure portal kullanmaya alternatif olarak, Azure CLı kullanarak bir kaynak oluşturabilirsiniz. Devam etmeden önce [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)'yı yüklemeniz gerekir. Azure CLı ile zaten çalışıyorsanız bu adımı atlayabilirsiniz. 
+Azure portal kullanmaya alternatif olarak, Azure CLı kullanarak bir kaynak oluşturabilirsiniz. Devam etmeden önce [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)'yı yüklemeniz gerekir. Azure CLı ile zaten çalışıyorsanız bu adımı atlayabilirsiniz. 
 
 Bu komutla ilgili bilmeniz gereken birkaç nokta vardır:
 
 * `DNS_NAME_LABEL=aci-demo-$RANDOM`Rastgele bir DNS adı üretir. 
-* Bu örnek, kaynak oluşturmak için kullanabileceğiniz bir kaynak grubunuz olduğunu varsayar. Aboneliğinizle `<resource_group_name>` ilişkili geçerli bir kaynak grubuyla değiştirin. 
-* Kaynağı oluşturmak istediğiniz yeri belirtmeniz gerekir. Web `<region name>` uygulaması için istediğiniz bölge ile değiştirin. 
+* Bu örnek, kaynak oluşturmak için kullanabileceğiniz bir kaynak grubunuz olduğunu varsayar. `<resource_group_name>`Aboneliğinizle ilişkili geçerli bir kaynak grubuyla değiştirin. 
+* Kaynağı oluşturmak istediğiniz yeri belirtmeniz gerekir. `<region name>`Web uygulaması için istediğiniz bölge ile değiştirin. 
 * Bu komut EULA 'Yı otomatik olarak kabul eder.
 
 Azure CLı 'da, örnek etiketleme aracı için bir Web uygulaması kaynağı oluşturmak üzere şu komutu çalıştırın: 

@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 01/04/2019
 ms.author: tomfitz
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: 2d77dcbd07a67e3ba50d70770515416b45fbc7a3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2caaadd0da9d62128d04962fa1f2ff7eade907b0
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80637918"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254438"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>App Service için Azure Resource Manager Şablonlar
 
@@ -29,7 +29,6 @@ App Services kaynakları için JSON sözdizimi ve özellikleri hakkında bilgi e
 | [Özel dağıtım yuvaları olan uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-custom-deployment-slots)| Özel dağıtım yuvaları/ortamları ile bir App Service uygulaması dağıtır. |
 |**Uygulama yapılandırma**||
 | [Key Vault 'den uygulama sertifikası](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| Bir Azure Key Vault gizli dizi App Service uygulama sertifikası dağıtır ve bunu TLS/SSL bağlaması için kullanır. |
-| [Özel etki alanı olan uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain)| Özel ana bilgisayar adına sahip bir App Service uygulaması dağıtır. |
 | [Özel etki alanı ve SSL içeren uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| , Özel ana bilgisayar adına sahip bir App Service uygulaması dağıtır ve TLS/SSL bağlama için Key Vault bir uygulama sertifikası alır. |
 | [GoLang uzantılı uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| Golang site uzantısıyla bir App Service uygulaması dağıtır. Daha sonra Azure’da Golang üzerinde geliştirilmiş web uygulamalarını çalıştırabilirsiniz. |
 | [Java 8 ve Tomcat 8 ile uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-java-tomcat)| Java 8 ve Tomcat 8 etkin bir App Service uygulaması dağıtır. Daha sonra Azure'da Java uygulamaları çalıştırabilirsiniz. |
@@ -42,7 +41,7 @@ App Services kaynakları için JSON sözdizimi ve özellikleri hakkında bilgi e
 |**Bağlı kaynaklarla uygulama**||
 | [MySQL ile uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-managed-mysql)| Windows üzerinde MySQL için Azure veritabanı ile bir App Service uygulaması dağıtır. |
 | [PostgreSQL ile uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-managed-postgresql)| Windows üzerinde PostgreSQL için Azure veritabanı ile bir App Service uygulaması dağıtır. |
-| [SQL veritabanı ile uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)| Temel hizmet düzeyinde bir App Service uygulaması ve SQL veritabanı dağıtır. |
+| [Azure SQL veritabanı 'nda veritabanı içeren uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)| Temel hizmet düzeyinde Azure SQL veritabanı 'nda bir App Service uygulaması ve veritabanı dağıtır. |
 | [BLOB depolama bağlantısı olan uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection)| Azure Blob depolama bağlantı dizesiyle bir App Service uygulaması dağıtır. Bundan sonra, uygulamadan BLOB depolama alanını kullanabilirsiniz. |
 | [Redsıs için Azure önbelleği olan uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-redis-cache)| Redsıs için Azure önbelleği ile bir App Service uygulaması dağıtır. |
 |**App Service Ortamı**||

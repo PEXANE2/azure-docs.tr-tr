@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 79d8cb4b09ef547bf1c0b01f48872ddcb4f964ee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f883b8527fff97ea3e16e7ffa7637c432dc33c2f
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81616544"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783376"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Key Vault geçici silmeyi PowerShell ile kullanma
 
@@ -31,7 +31,7 @@ Azure Key Vault geçici silme özelliği, silinen kasaların ve kasa nesnelerini
 
 >[!NOTE]
 > Doğru sürüm yerine ortamınıza yüklenebilecek Key Vault PowerShell çıkış biçimlendirme dosyasının **güncel olmayan bir** sürümü var. PowerShell 'in güncelleştirilmiş bir sürümünü, çıkış biçimlendirmesi için gerekli düzeltmeyi içerecek şekilde benimsemeyi bekleme ve bu konuyu bu sırada güncellenecektir. Şu anki geçici çözüm, bu biçimlendirme sorunuyla karşılaşmanız gerekir:
-> - Bu konuda açıklanan geçici silme etkin özelliğini gördüğünüzü fark ederseniz aşağıdaki sorguyu kullanın: `$vault = Get-AzKeyVault -VaultName myvault; $vault.EnableSoftDelete`.
+> - Bu konuda açıklanan geçici silme etkin özelliğini gördüğünüzü fark ederseniz aşağıdaki sorguyu kullanın: `$vault = Get-AzKeyVault -VaultName myvault; $vault.EnableSoftDelete` .
 
 
 PowerShell için Key Vault belirli başvuru bilgileri için bkz. [Azure Key Vault PowerShell Başvurusu](/powershell/module/az.keyvault).
@@ -40,7 +40,7 @@ PowerShell için Key Vault belirli başvuru bilgileri için bkz. [Azure Key Vaul
 
 Key Vault işlemler, rol tabanlı erişim denetimi (RBAC) izinleri aracılığıyla aşağıdaki şekilde ayrı yönetilir:
 
-| İşlem | Açıklama | Kullanıcı izni |
+| Çalışma | Description | Kullanıcı izni |
 |:--|:--|:--|
 |Liste|Silinen anahtar kasalarını listeler.|Microsoft. Keykasası/Silinleults/okuma|
 |Kurtar|Silinen bir anahtar kasasını geri yükler.|Microsoft. Keykasası/Vaults/yazma|
@@ -245,7 +245,7 @@ Aynı değer, Anahtar Kasası için de geçerlidir. Geçici olarak silinen bir a
 
 ### <a name="purging-a-key-vault"></a>Anahtar kasasını Temizleme
 
-Bir Anahtar Kasası temizlendiğinde, anahtarlar, gizlilikler ve Sertifikalar dahil olmak üzere tüm içerikleri kalıcı olarak silinir. Geçici olarak silinen bir anahtar kasasını temizlemek için, seçeneğini `Remove-AzKeyVault` seçeneğiyle `-InRemovedState` ve Silinen anahtar kasasının konumunu `-Location location` bağımsız değişkenle belirterek komutunu kullanın. Silinen bir kasanın konumunu komutunu `Get-AzKeyVault -InRemovedState`kullanarak bulabilirsiniz.
+Bir Anahtar Kasası temizlendiğinde, anahtarlar, gizlilikler ve Sertifikalar dahil olmak üzere tüm içerikleri kalıcı olarak silinir. Geçici olarak silinen bir anahtar kasasını temizlemek için, `Remove-AzKeyVault` seçeneğini seçeneğiyle `-InRemovedState` ve Silinen anahtar kasasının konumunu bağımsız değişkenle belirterek komutunu kullanın `-Location location` . Silinen bir kasanın konumunu komutunu kullanarak bulabilirsiniz `Get-AzKeyVault -InRemovedState` .
 
 ```powershell
 Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
@@ -265,7 +265,7 @@ Silinen Anahtar Kasası nesnelerinin listelenmesi Ayrıca Key Vault tarafından 
 
 ## <a name="enabling-purge-protection"></a>Temizleme korumasını etkinleştirme
 
-Temizleme koruması açık olduğunda, 90 günlük bekletme süresi geçene kadar bir kasa veya silinmiş durumdaki bir nesne kaldırılamaz. Bu kasa veya nesne yine de kurtarılabilir. Bu özellik, bir kasasının veya bir nesnenin Bekletme dönemi geçene kadar hiçbir zaman kalıcı olarak silinebileceğini güvence altına almanızı sağlar.
+Temizleme koruması açık olduğunda, saklama süresi geçene kadar bir kasa veya silinmiş durumdaki bir nesne temizlenemiyor. Bu kasa veya nesne yine de kurtarılabilir. Bu özellik, bir kasasının veya bir nesnenin Bekletme dönemi geçene kadar hiçbir zaman kalıcı olarak silinebileceğini güvence altına almanızı sağlar. Varsayılan saklama süresi 90 gündür ancak Anahtar Kasası oluşturma sırasında, bekletme ilkesi aralığını 7 ile 90 gün arasında bir değere ayarlamak mümkündür. Temizleme koruması bekletme ilkesi aynı aralığı kullanır. Bir kez ayarlandıktan sonra bekletme ilkesi aralığı değiştirilemez.
 
 Temizleme korumasını yalnızca geçici silme de etkinse etkinleştirebilirsiniz. 
 

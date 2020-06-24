@@ -10,12 +10,12 @@ ms.custom:
 - seo-python-october2019
 - cli-validate
 - tracking-python
-ms.openlocfilehash: 4a2f80ea30fc68ae1dfea72983fd2b229d40c711
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 29aeae7683c46b1e10acdf1b2c4a7183c22eb408
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559293"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807326"
 ---
 # <a name="tutorial-deploy-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Öğretici: Azure App Service ' de PostgreSQL ile Python (Docgo) Web uygulaması dağıtma
 
@@ -23,7 +23,7 @@ Bu öğreticide, veri odaklı bir Python (Docgo) Web uygulamasının [Azure App 
 
 ![Azure App Service için Python Docgo Web uygulaması dağıtma](./media/tutorial-python-postgresql-app/deploy-python-django-app-in-azure.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * PostgreSQL için Azure veritabanı veritabanı oluşturma
@@ -62,8 +62,8 @@ App Service için gerekli yapılandırmayı yapan *azuresite/Production. Kopyala
 
 - Tüm ayarları *azuresite/Settings. Kopyala*konumundan devralma.
 - App Service uygulamasının tam etki alanı adını izin verilen konaklara ekleyin. 
-- Docgo varsayılan olarak üretimde statik dosyalar hizmet vermediğinden, üretimde statik dosyalar sunma özelliğini etkinleştirmek için [Whitenoıse](https://whitenoise.evans.io/en/stable/) kullanın. Whitenoıse paketi, *requirements. txt*' ye zaten dahil edilmiştir.
-- PostgreSQL veritabanı için yapılandırma ekleyin. Varsayılan olarak, Docgo veritabanı olarak SQLite3 kullanır, ancak üretim uygulamaları için uygun değildir. [Psycopg2-binary](https://pypi.org/project/psycopg2-binary/) paketi, *requirements. txt*dosyasına zaten dahildir.
+- Docgo varsayılan olarak üretimde statik dosyalar hizmet vermediğinden, üretimde statik dosyalar sunma özelliğini etkinleştirmek için [Whitenoıse](https://whitenoise.evans.io/en/stable/) kullanın. Whitenoıse paketi zaten *requirements.txt*eklenmiştir.
+- PostgreSQL veritabanı için yapılandırma ekleyin. Varsayılan olarak, Docgo veritabanı olarak SQLite3 kullanır, ancak üretim uygulamaları için uygun değildir. [Psycopg2-binary](https://pypi.org/project/psycopg2-binary/) paketi zaten *requirements.txt*eklenmiştir.
 - Postgres yapılandırması ortam değişkenlerini kullanır. Daha sonra, App Service ortam değişkenlerini nasıl ayarlayabileceğinizi öğreneceksiniz.
 
 *azuresite/Production. Kopyala* , depoya kolaylık sağlaması için dahil edilmiştir, ancak henüz uygulama tarafından kullanılmıyor. App Service ayarların kullanıldığından emin olmak için, *Manage.py* ve *azuresite/wsgi. Kopyala*olmak üzere iki dosya yapılandırmanız gerekir.
@@ -220,6 +220,8 @@ cd site/wwwroot
 
 # Activate default virtual environment in App Service container
 source /antenv/bin/activate
+# Install packages
+pip install -r requirements.txt
 # Run database migrations
 python manage.py migrate
 # Create the super user (follow prompts)

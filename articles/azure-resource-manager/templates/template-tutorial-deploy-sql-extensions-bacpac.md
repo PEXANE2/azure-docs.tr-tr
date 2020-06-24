@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 69e2b25a16a984445a32f884fab5caec6651df32
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e17bad915fd913f6e3894ed386e914e65aa46c01
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018404"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250341"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Öğretici: ARM şablonlarıyla SQL BACPAC dosyalarını Içeri aktarma
 
@@ -45,7 +45,7 @@ Bu makaleyi tamamlamak için gerekenler:
 
 ## <a name="prepare-a-bacpac-file"></a>BACPAC dosyası hazırlama
 
-Bir BACPAC dosyası [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac)'da paylaşılır. Kendiniz bir dosya oluşturmak isterseniz bkz. [Azure SQL Veritabanı’nı bir BACPAC dosyasına dışarı aktarma](../../azure-sql/database/database-export.md). Dosyayı kendi belirleyeceğiniz bir konumda yayımlarsanız öğreticinin ilerleyen bölümlerinde şemayı güncelleştirmeniz gerekir.
+Bir BACPAC dosyası [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac)'da paylaşılır. Kendinizinkini oluşturmak için bkz. [Azure SQL veritabanındaki bir veritabanını BACPAC dosyasına aktarma](../../azure-sql/database/database-export.md). Dosyayı kendi belirleyeceğiniz bir konumda yayımlarsanız öğreticinin ilerleyen bölümlerinde şemayı güncelleştirmeniz gerekir.
 
 BACPAC dosyası bir ARM şablonu kullanılarak içeri aktarılmadan önce bir Azure depolama hesabında depolanmalıdır. Aşağıdaki PowerShell betiği BACPAC dosyasını şu adımlarla hazırlar:
 
@@ -116,7 +116,7 @@ Bu öğreticide kullanılan şablon [GitHub](https://raw.githubusercontent.com/A
    * `Microsoft.SQL.servers/databases`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
 
         Özelleştirebilmeniz için önce şablon hakkında bazı temel bilgileri almanız yararlı olur.
-1. Dosyanın **File**  >  bir kopyasını yerel bilgisayarınıza *azuredeploy. JSON*adıyla kaydetmek için dosya**farklı kaydet** ' i seçin.
+1. Dosyanın **File**  >  bir kopyasını yerel bilgisayarınıza *azuredeploy.js*adı ile kaydetmek için dosya**farklı kaydet** ' i seçin.
 
 ## <a name="edit-the-template"></a>Şablonu düzenleme
 
@@ -196,7 +196,7 @@ Bu öğreticide kullanılan şablon [GitHub](https://raw.githubusercontent.com/A
 
         Kaynak tanımını anlamak için bkz. [SQL Veritabanı uzantısı başvurusu](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions). Önemli öğeler şunlardır:
 
-        * **dependsOn**: Uzantı kaynağının SQL veritabanı oluşturulduktan sonra oluşturulması gerekir.
+        * **Bağımlıdson**: uzantı kaynağı veritabanı oluşturulduktan sonra oluşturulmalıdır.
         * **storageKeyType**: kullanılacak depolama anahtarının türünü belirtin. Değer `StorageAccessKey` veya `SharedAccessKey` olabilir. `StorageAccessKey`Bu öğreticide kullanın.
         * **StorageKey**: bacpac dosyasının depolandığı depolama hesabı için anahtarı belirtin. Depolama anahtarı türü ise `SharedAccessKey` , önünde "?" olması gerekir.
         * **Storageuri**: bir depolama hesabında depolanan bacpac dosyasının URL 'sini belirtin.
@@ -241,7 +241,7 @@ Oluşturulan bir parola kullanın. [Ön koşullara](#prerequisites) bakın.
 
 İstemci bilgisayarınızdan sunucuya erişmek için ek bir güvenlik duvarı kuralı eklemeniz gerekir. Daha fazla bilgi için bkz. [IP güvenlik duvarı kuralları oluşturma ve yönetme](../../azure-sql/database/firewall-configure.md#create-and-manage-ip-firewall-rules).
 
-Azure portal, yeni dağıtılan kaynak grubundan SQL veritabanı ' nı seçin. **Sorgu düzenleyicisi (önizleme)** öğesini seçip yönetici kimlik bilgilerini girin. Veritabanına aktarılmış iki tablo görürsünüz.
+Azure portal, yeni dağıtılan kaynak grubundan veritabanını seçin. **Sorgu düzenleyicisi (önizleme)** öğesini seçip yönetici kimlik bilgilerini girin. Veritabanına aktarılmış iki tablo görürsünüz.
 
 ![Sorgu Düzenleyicisi (Önizleme)](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 

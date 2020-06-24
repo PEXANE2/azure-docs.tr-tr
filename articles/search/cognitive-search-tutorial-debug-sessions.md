@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: b84f98bd383c2b90c3291527b336d798e9b9cae9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 14760eaef309ec5695b423b98e59a8ae1ab5cacb
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666141"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886704"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Öğretici: beceri kodunuzda tanılama, onarma ve değişiklikleri yapma
 
@@ -173,12 +173,12 @@ Hata ayıklama oturumu yürütmesi tamamlandığında, hatalar/uyarılar sekmesi
 ## <a name="fix-missing-skill-output-values"></a>Eksik yetenek çıkış değerlerini düzeltir
 
 > [!div class="mx-imgBorder"]
-> ![Hatalar ve uyarılar](media/cognitive-search-debug/warnings-missing-value-locs-orgs.png)
+> ![Hatalar ve uyarılar](media/cognitive-search-debug/warnings-missing-value-locations-organizations.png)
 
 Bir yeteneğin eksik çıkış değerleri var. Beceriyle ilgili hatayı belirlemek için zenginleştirilmiş veri yapısına gidin, değer adını bulun ve kaynak kaynağına bakın. Eksik kuruluşlar ve konumlar değerleri söz konusu olduğunda, Beceri #1 çıktılardır. Her yol için </> Ifade Değerlendiricisi açmak, sırasıyla '/Document/Content/organizasyonlar ' ve '/Document/Content/Locations ' olarak listelenen ifadeleri görüntüler.
 
 > [!div class="mx-imgBorder"]
-> ![İfade değerlendirici kuruluşlar varlığı](media/cognitive-search-debug/expression-eval-missing-value-locs-orgs.png)
+> ![İfade değerlendirici kuruluşlar varlığı](media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png)
 
 Bu varlıkların çıktısı boş ve boş olmamalıdır. Bu sonucu üreten girişler nelerdir?
 
@@ -187,7 +187,7 @@ Bu varlıkların çıktısı boş ve boş olmamalıdır. Bu sonucu üreten giri�
 1. **</>**"Metin" girişi Için Ifade değerlendirici ' ni açın.
 
 > [!div class="mx-imgBorder"]
-> ![Metin beceriye giriş](media/cognitive-search-debug/input-skill-missing-value-locs-orgs.png)
+> ![Metin beceriye giriş](media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png)
 
 Bu giriş için görüntülenmiş sonuç metin girişi gibi görünmüyor. Yeni satırlarla çevrelenen bir görüntü gibi görünüyor. Metnin bulunmaması, hiçbir varlık tanımlanmayacağı anlamına gelir. Beceri hiyerarşisine bakarak içeriğin ilk olarak #6 (OCR) yetenek tarafından işlendiğini ve sonra da #5 (birleştirme) beceriye geçtiğini gösterir. 
 
@@ -195,7 +195,7 @@ Bu giriş için görüntülenmiş sonuç metin girişi gibi görünmüyor. Yeni 
 1. Doğru beceri ayrıntıları bölmesinde **yürütmeler** sekmesini seçin ve **</>** "BIRLEŞTIRIMETIN" çıktıları için ifade değerlendirici ' ni açın.
 
 > [!div class="mx-imgBorder"]
-> ![Birleştirme yeteneği için çıkış](media/cognitive-search-debug/merge-output-detail-missing-value-locs-orgs.png)
+> ![Birleştirme yeteneği için çıkış](media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png)
 
 Burada metin görüntüyle eşleştirilmiş. '/Document/merged_content ' ifadesine bakarak #1 beceriye yönelik "kuruluşlar" ve "konumlar" yollarında hata görünür. '/Document/Content ' kullanmak yerine "metin" girişleri için '/Document/merged_content ' kullanması gerekir.
 
@@ -216,7 +216,7 @@ Dizin oluşturucunun çalışmayı bitirdikten sonra hatalar hala orada kalır. 
 1. **</>**"Kuruluşlar" varlığı Için Ifade değerlendirici ' ni açın.
 
 > [!div class="mx-imgBorder"]
-> ![Kuruluşlar varlığı için çıkış](media/cognitive-search-debug/skill-output-detail-missing-value-locs-orgs.png)
+> ![Kuruluşlar varlığı için çıkış](media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png)
 
 İfadenin sonucunu değerlendirmek, doğru sonucu verir. Yetenek, "kuruluşlar" varlığı için doğru değeri belirlemek üzere çalışmaktadır. Ancak, varlığın yolundaki çıkış eşlemesi hala bir hata üretiliyor. Becerinizdeki çıkış yolunu hatada çıkış yolu ile karşılaştıran, çıkışları, kuruluşları ve/Document/Content düğümü altındaki konumları ele alan beceri. Çıkış alanı eşlemesi, sonuçların/Document/merged_content düğümü altında ana öğe olmasını bekliyor. Önceki adımda, giriş '/Document/Content ' iken '/Document/merged_content ' olarak değiştirildi. Çıkışın doğru içerikle oluşturulduğundan emin olmak için, yetenek ayarlarındaki bağlamın değiştirilmesi gerekir.
 
@@ -228,7 +228,7 @@ Dizin oluşturucunun çalışmayı bitirdikten sonra hatalar hala orada kalır. 
 1. Oturumlar penceresi menüsünde **Çalıştır** ' a tıklayın. Bu, belgeyi kullanarak beceri 'in başka bir yürütmesini de başlatabilir.
 
 > [!div class="mx-imgBorder"]
-> ![Yetenek ayarında bağlam düzeltmesi](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locs-orgs.png)
+> ![Yetenek ayarında bağlam düzeltmesi](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png)
 
 Tüm hatalar çözüldü.
 

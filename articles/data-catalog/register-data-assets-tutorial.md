@@ -6,18 +6,18 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 1c3987e4f2f31dd0c2395f9b40cc40780c40a518
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 10733dc59d7b143657c67e24d45d4a7c920cbd03
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021611"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255203"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Öğretici: Azure Veri Kataloğu 'nda veri varlıklarını kaydetme
 
-Bu öğreticide, katalog ile Azure SQL veritabanı örneğinden veri varlıkları kaydetmek için kayıt aracını kullanırsınız. Kayıt, veri kaynağı ve içerdiği varlıklara ait adlar, türler ve konumlar gibi önemli yapısal meta verilerin ayıklanması ve meta verilerin kataloğa kopyalanması işlemidir. Veri kaynakları ve veri varlıkları olduğu yerde kalır, ancak katalog tarafından daha kolay bulunabilir ve anlaşılabilir hale getirilmeleri için meta veriler kullanılır.
+Bu öğreticide, katalog ile veritabanı örneğinden veri varlıkları kaydetmek için kayıt aracını kullanırsınız. Kayıt, veri kaynağı ve içerdiği varlıklara ait adlar, türler ve konumlar gibi önemli yapısal meta verilerin ayıklanması ve meta verilerin kataloğa kopyalanması işlemidir. Veri kaynakları ve veri varlıkları olduğu yerde kalır, ancak katalog tarafından daha kolay bulunabilir ve anlaşılabilir hale getirilmeleri için meta veriler kullanılır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Veri varlıklarını kaydetme 
 > * Veri varlıkları ara
@@ -39,11 +39,11 @@ Veri Kataloğu 'Nu ayarlamak için bir Azure aboneliğinin sahibi veya ortak sah
 
 ### <a name="register-a-data-source"></a>Veri kaynağını kaydetme
 
-Veri varlıklarını (tablolarını) bir [Azure SQL veritabanı örneğinden](../azure-sql/database/single-database-create-quickstart.md)kaydedersiniz, ancak rolünüz ile ilgili tanıdık ve alakalı verilerle çalışmayı tercih ediyorsanız desteklenen herhangi bir veri kaynağını kullanabilirsiniz. Desteklenen veri kaynaklarının listesi için bkz. [Desteklenen veri kaynakları](data-catalog-dsr.md).
+Veri varlıklarını (tabloları) Azure SQL veritabanı için bir [veritabanı](../azure-sql/database/single-database-create-quickstart.md) örneğinden kaydedersiniz, ancak rolünüz ile ilgili tanıdık ve alakalı verilerle çalışmayı tercih ediyorsanız desteklenen herhangi bir veri kaynağını kullanabilirsiniz. Desteklenen veri kaynaklarının listesi için bkz. [Desteklenen veri kaynakları](data-catalog-dsr.md).
 
-Bu öğreticide kullandığımız Azure SQL veritabanı adı, *Rlstest*' dir.
+Bu öğreticide kullandığımız veritabanı adı, *Rlstest*' dir.
 
-Artık Azure Veri Kataloğu 'nu kullanarak Azure SQL veritabanı örneğinden veri varlıklarını kaydedebilirsiniz.
+Artık, Azure Veri Kataloğu 'nu kullanarak veritabanı örneğinden veri varlıkları kaydedebilirsiniz.
 
 1. [Azure Veri Kataloğu giriş sayfasına](http://azuredatacatalog.com) gidin ve **veri Yayımla**' yı seçin.
 
@@ -61,13 +61,13 @@ Artık Azure Veri Kataloğu 'nu kullanarak Azure SQL veritabanı örneğinden ve
 
     ![Azure Veri Kataloğu--veri kaynakları](media/register-data-assets-tutorial/data-catalog-data-sources.png)
 
-5. Azure SQL veritabanı örneğiniz için SQL Server bağlantı özelliklerini girin ve **Bağlan**' ı seçin.
+5. Azure SQL veritabanı 'nda veritabanı örneğiniz için SQL Server bağlantı özelliklerini girip **Bağlan**' ı seçin.
 
    ![Azure Veri Kataloğu--SQL Server bağlantı ayarları](media/register-data-assets-tutorial/data-catalog-sql-server-connection.png)
 
-6. Veri varlığınızın meta verilerini kaydedin. Bu örnekte, Azure SQL veritabanı örnek ad alanından **ürün** nesnelerini kaydedersiniz:
+6. Veri varlığınızın meta verilerini kaydedin. Bu örnekte, **ürün** nesnelerini örnek ad alanından kaydedersiniz:
 
-    1. **Sunucu hiyerarşisi** ağacında, Azure SQL veritabanı örneğinizi genişletin ve **SalesLT**öğesini seçin.
+    1. **Sunucu hiyerarşisi** ağacında, veritabanı örneğinizi genişletin ve **SalesLT**öğesini seçin.
 
     2. CTRL + SELECT kullanarak **Product**, **ProductCategory**, **ProductDescription**ve **ProductModel** ' i seçin.
 
@@ -85,7 +85,7 @@ Artık Azure Veri Kataloğu 'nu kullanarak Azure SQL veritabanı örneğinden ve
 
           ![Azure Veri Kataloğu öğreticisi--kaydedilecek nesneler](media/register-data-assets-tutorial/data-catalog-objects-register.png)
 
-    8. **Kaydol**' u seçin. Azure Veri Kataloğu seçtiğiniz nesneleri kaydeder. Bu alıştırmada, Azure SQL veritabanı örneğinizdeki seçili nesneler kaydedilir. Kayıt aracı, veri varlığından meta verileri ayıklar ve bu verileri Azure Veri Kataloğu hizmetine kopyalar. Veriler şu anda kalan yerde kalır. Veriler, kaynak sistemin yöneticileri ve ilkeleri denetiminde kalır.
+    8. **Kaydol**' u seçin. Azure Veri Kataloğu seçtiğiniz nesneleri kaydeder. Bu alıştırmada, veritabanı örneğinizdeki seçili nesneler kaydedilir. Kayıt aracı, veri varlığından meta verileri ayıklar ve bu verileri Azure Veri Kataloğu hizmetine kopyalar. Veriler şu anda kalan yerde kalır. Veriler, kaynak sistemin yöneticileri ve ilkeleri denetiminde kalır.
 
           ![Azure Veri Kataloğu--kayıtlı nesneler](media/register-data-assets-tutorial/data-catalog-registered-objects.png)
 
@@ -93,7 +93,7 @@ Artık Azure Veri Kataloğu 'nu kullanarak Azure SQL veritabanı örneğinden ve
 
         ![Azure Veri Kataloğu portalındaki nesneler](media/register-data-assets-tutorial/data-catalog-view-portal.png)
 
-Bu alıştırmada, kuruluşunuzdaki kullanıcılar tarafından kolayca bulunabilmesi için Azure SQL veritabanı örneğinden nesne kaydettiniz.
+Bu alıştırmada, kuruluşunuzdaki kullanıcılar tarafından kolayca bulunabilmesi için Azure SQL veritabanı için veritabanı örneğindeki nesneleri kaydettiniz.
 
 Sonraki alıştırmada, kayıtlı veri varlıklarını nasıl bulacağınızı öğreneceksiniz.
 
@@ -178,7 +178,7 @@ Karşılaştırma işleçleri ile sayısal ve tarih veri türlerine sahip özell
 
 3. **ENTER**tuşuna basın.
 
-4. **Ürün**, **ProductCategory**ve **ProductDescription** TABLOLARıNı ve arama sonuçlarında kaydettiğiniz Azure SQL veritabanını görtığınızdan emin olun.
+4. **Ürün**, **ProductCategory**ve **ProductDescription** tablolarını ve arama sonuçlarında kaydettiğiniz SQL veritabanını görtığınızdan emin olun.
 
     ![Azure Veri Kataloğu--karşılaştırma arama sonuçları](media/register-data-assets-tutorial/data-catalog-comparison-operator-results.png)
 
@@ -251,7 +251,7 @@ Bu alıştırmada bağlantı bilgilerini kullanarak veri varlıklarını tümle�
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
-Bu alıştırmada Azure Veri Kataloğu kullanarak bulunan veri varlıklarına bağlandınız. Azure Veri Kataloğu portalı ile **Şurada Aç** menüsüne tümleştirilmiş istemci uygulamalarını kullanarak doğrudan bağlantı kurabilirsiniz. Ayrıca varlık meta verilerine dahil edilen bağlantı konumu bilgilerini kullanarak seçtiğiniz herhangi bir uygulamayla bağlantı kurabilirsiniz. Örneğin, bu öğreticide kayıtlı veri varlıklarıyla ilgili verilere erişmek için Azure SQL veritabanına bağlanmak üzere SQL Server Management Studio kullanabilirsiniz.
+Bu alıştırmada Azure Veri Kataloğu kullanarak bulunan veri varlıklarına bağlandınız. Azure Veri Kataloğu portalı ile **Şurada Aç** menüsüne tümleştirilmiş istemci uygulamalarını kullanarak doğrudan bağlantı kurabilirsiniz. Ayrıca varlık meta verilerine dahil edilen bağlantı konumu bilgilerini kullanarak seçtiğiniz herhangi bir uygulamayla bağlantı kurabilirsiniz. Örneğin, bu öğreticide kayıtlı veri varlıklarıyla ilgili verilere erişmek için Azure SQL veritabanı 'na bağlanmak üzere SQL Server Management Studio kullanabilirsiniz.
 
 1. **SQL Server Management Studio**açın.
 

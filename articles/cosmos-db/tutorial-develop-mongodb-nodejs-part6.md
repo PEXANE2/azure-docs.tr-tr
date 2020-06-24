@@ -10,16 +10,16 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 103545225b15a74d8c2ea0be5e88caa18f3c31cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: de9e7fd605a1d53d1078523c77cd33065c03ca85
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184784"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118976"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-uygulamaya CRUD işlevleri ekleme
 
-Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış yeni bir uygulama oluşturma ve ardından bunu [MongoDB için Cosmos DB API 'siyle yapılandırılmış Cosmos hesabınıza](mongodb-introduction.md)bağlama işlemlerinin nasıl yapılacağı gösterilmektedir. Öğreticinin 6. bölümünde [5. bölümdeki](tutorial-develop-mongodb-nodejs-part5.md) konular genişletilir ve aşağıdaki görevler yer alır:
+Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni bir uygulama oluşturma ve ardından bunu [MongoDB için Cosmos DB API 'siyle yapılandırılmış Cosmos hesabınıza](mongodb-introduction.md)bağlama işlemlerinin nasıl yapılacağı gösterilmektedir. Öğreticinin 6. bölümünde [5. bölümdeki](tutorial-develop-mongodb-nodejs-part5.md) konular genişletilir ve aşağıdaki görevler yer alır:
 
 > [!div class="checklist"]
 > * Hero hizmeti için Post, Put ve Delete işlevleri oluşturma
@@ -40,7 +40,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış
 
     Routes.js’de 7. satırda, **hero.service.js**’nin 5. satırındaki `getHeroes` işlevinin çağrıldığına dikkat edin.  Post, put ve delete işlevleri için de aynı eşleşmeyi oluşturmamız gerekiyor. 
 
-    ![Visual Studio Code’da routes.js ve hero.service.js](./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png" alt-text="Visual Studio Code’da routes.js ve hero.service.js":::
     
     Hero hizmetini kodlayarak başlayalım. 
 
@@ -88,11 +88,11 @@ Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış
 
 6. Şimdi İnternet tarayıcınıza dönün ve çoğu makinede F12 tuşuna basarak açılan Geliştirici Araçları Ağı sekmesini açın. Ağ üzerinden yapılan çağrıları izlemek için `http://localhost:3000` adresine gidin.
 
-    ![Chrome’da ağ etkinliğini gösteren ağ sekmesi](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Chrome’da ağ etkinliğini gösteren ağ sekmesi":::
 
 7. **Yeni Hero Ekle** düğmesini seçerek yeni bir hero ekleyin. "999" kimliğini, "Fred" adını ve "Hello" ifadesini girin, ardından **Kaydet**’i seçin. Ağ sekmesinde yeni bir hero için POST isteği gönderdiğinizi görmeniz gerekir. 
 
-    ![Get ve Post işlevleri için ağ etkinliğini gösteren Chrome ağ sekmesi](./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Get ve Post işlevleri için ağ etkinliğini gösteren Chrome ağ sekmesi":::
 
     Şimdi geri dönüp uygulamaya Put ve Delete işlevlerini ekleyelim.
 
@@ -177,11 +177,11 @@ Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış
 
     Artık yükü görmek için ağ sekmesinde kimliği seçebilirsiniz. Yükte ifadenin "Bye" olarak ayarlandığını görebilirsiniz.
 
-    ![Heroes uygulaması ve yükü gösteren Ağ sekmesi](./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png) 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="Heroes uygulaması ve yükü gösteren Ağ sekmesi"::: 
 
     Kullanıcı arabiriminde herolardan birini silin ve silme işlemini tamamlamak için gereken süreye bakın. Bunu "Fred" adlı hero için "Sil" düğmesini seçerek deneyebilirsiniz.
 
-    ![Heroes uygulaması ve işlevleri tamamlamak için gereken zamanı gösteren Ağ sekmesi](./media/tutorial-develop-mongodb-nodejs-part6/times.png) 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="Heroes uygulaması ve işlevleri tamamlamak için gereken zamanı gösteren Ağ sekmesi"::: 
 
     Sayfayı yenilerseniz Ağ sekmesi heroları almak için gereken zamanı gösterir. Bu süreler kısa olsa da, büyük ölçüde verilerinizin dünyanın neresinde olduğuna ve kullanıcılarınıza yakın bir konuma coğrafi çoğaltma olanağınıza bağlıdır. Coğrafi çoğaltma hakkında daha fazla bilgiyi, yakında yayınlanacak bir sonraki öğreticide bulabilirsiniz.
 

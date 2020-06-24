@@ -7,23 +7,21 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
-ms.date: 02/27/2020
-ms.openlocfilehash: d323d89b13a89a8dd9f2dac6292a01215bf6068a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/18/2020
+ms.openlocfilehash: 56af098050315e1b2cb0bdde531cc38452db4738
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343804"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079367"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için kullanılabilirlik grupları yapılandırma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
-> Sunulan öğretici **genel önizlemede**. 
->
 > Bu öğreticide RHEL 7,6 ile SQL Server 2017 kullanıyoruz, ancak yüksek kullanılabilirliği yapılandırmak için RHEL 7 veya RHEL 8 ' de SQL Server 2019 kullanmak mümkündür. Kullanılabilirlik grubu kaynaklarını yapılandırma komutları RHEL 8 ' de değişmiştir ve doğru komutlar hakkında daha fazla bilgi için [kullanılabilirlik grubu kaynağı](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) ve RHEL 8 kaynakları oluşturma makalesine bakmak isteyeceksiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > - Yeni bir kaynak grubu, kullanılabilirlik kümesi ve Linux sanal makineleri (VM 'Ler) oluşturma
@@ -365,7 +363,7 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  7. Yeni uygulama kaydınız için **sertifikaları ve gizli** dizileri seçip **yeni istemci parolası** ' na tıklayın.
  8. Yeni anahtar için bir açıklama girin (istemci gizli anahtarı), **hiçbir zaman süre sonu** seçeneğini belirleyip **Ekle** ' ye tıklayın
  9. Gizli dizi değerini yazın. Hizmet sorumlusu için parola olarak kullanılır
-10. **Genel bakış**'ı seçin. Uygulama KIMLIĞINI yazın. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda oturum açma KIMLIĞI) olarak kullanılır
+10. **Genel Bakış**’ı seçin. Uygulama KIMLIĞINI yazın. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda oturum açma KIMLIĞI) olarak kullanılır
  
 ### <a name="create-a-custom-role-for-the-fence-agent"></a>Çit Aracısı için özel bir rol oluşturma
 
@@ -757,7 +755,7 @@ Tüm SQL Server örneklerinde, SQL Server oturum açmak için kullanılan kimlik
 
 1. İkincil çoğaltmalar birleştirildikten sonra, **her zaman yüksek kullanılabilirlik** düğümünü genişleterek onları ssms Nesne Gezgini görebilirsiniz:
 
-    ![Availability-Group-joined. png](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
+    ![availability-group-joined.png](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
 
 ### <a name="add-a-database-to-the-availability-group"></a>Kullanılabilirlik grubuna bir veritabanı ekleme
 

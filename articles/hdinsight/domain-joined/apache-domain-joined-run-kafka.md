@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 6da2537464e39ecb2c613a97b19f2d8f316818af
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d2780b3456a802904800b894f6849544cfee4e61
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677543"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85105949"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Öğretici: HDInsight 'ta Kurumsal Güvenlik Paketi ile Apache Kafka ilkeleri yapılandırma (Önizleme)
 
@@ -48,7 +48,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 1. **Ranger Yönetici Arabirimini** açın.
 
-2. **Kafka**altında ** \< clustername>_kafka** seçin. Bir önceden yapılandırılmış ilke listelenebilir.
+2. **Kafka**altında ** \<ClusterName> _kafka** seçin. Bir önceden yapılandırılmış ilke listelenebilir.
 
 3. **Yeni Ilke Ekle** ' yi seçin ve aşağıdaki değerleri girin:
 
@@ -117,8 +117,8 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 1. Aşağıdaki komutları çalıştırın:
 
    ```bash
-   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create salesevents $KAFKABROKERS
-   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar create salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 
 ## <a name="test-the-ranger-policies"></a>Ranger ilkelerini test etme
@@ -131,13 +131,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
    ssh sales_user1@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-2. Aşağıdaki komutu yürütün:
-
-   ```bash
-   export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf"
-   ```
-
-3. Aşağıdaki ortam değişkenini ayarlamak için önceki bölümdeki aracı adlarını kullanın:
+2. Aşağıdaki ortam değişkenini ayarlamak için önceki bölümdeki aracı adlarını kullanın:
 
    ```bash
    export KAFKABROKERS=<brokerlist>:9092
@@ -145,58 +139,90 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
    Örnek: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
-4. Derleme bölümünde 3. adımı izleyin **ve örneği** öğreticide dağıtın: sales_user için de kullanılabilir olduğundan emin olmak Için [Apache Kafka Producer ve Consumer API 'lerini kullanın](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) `kafka-producer-consumer.jar` . **sales_user**
+3. Derleme bölümünde 3. adımı izleyin **ve örneği** öğreticide dağıtın: sales_user için de kullanılabilir olduğundan emin olmak Için [Apache Kafka Producer ve Consumer API 'lerini kullanın](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) `kafka-producer-consumer.jar` . **sales_user**
 
-> [!NOTE]  
-> Bu öğreticide, lütfen etki alanına katılmış olmayan senaryolar için "Domainkatılmış-Producer-Consumer" projesi altındaki Kafka-Producer-Consumer. jar dosyasını kullanın (Producer-Consumer projesi altında değil).
+   > [!NOTE]  
+   > Bu öğreticide, lütfen etki alanına katılmış olmayan senaryolar için "Domainkatılmış-Producer-Consumer" projesi altındaki Kafka-Producer-Consumer. jar dosyasını kullanın (Producer-Consumer projesi altında değil).
 
-5. **Sales_user1** , aşağıdaki komutu yürüterek konuya üretebildiğini doğrulayın `salesevents` :
+4. **Sales_user1** , aşağıdaki komutu yürüterek konuya üretebildiğini doğrulayın `salesevents` :
 
    ```bash
-   java -jar kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
    ```
 
-6. Aşağıdaki komutu yürütün `salesevents` :
+5. Aşağıdaki komutu yürütün `salesevents` :
 
    ```bash
-   java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
    ```
 
    İletileri okuyabildiğinizi doğrulayın.
 
-7. **Sales_user1** , `marketingspend` aynı SSH penceresinde aşağıdakileri yürüterek konuya bir konu üretebildiğini doğrulayın:
+6. **Sales_user1** , `marketingspend` aynı SSH penceresinde aşağıdakileri yürüterek konuya bir konu üretebildiğini doğrulayın:
 
    ```bash
-   java -jar kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
    ```
 
    Bir yetkilendirme hatası oluşur ve bu yok sayılabilir.
 
-8. **Marketing_user1** konudan tüketediğine dikkat edin `salesevents` .
+7. **Marketing_user1** konudan tüketediğine dikkat edin `salesevents` .
 
-   Yukarıdaki 1-4 adımları yineleyin, ancak bu kez **marketing_user1**.
+   Yukarıdaki 1-3. adımları bu kez **marketing_user1** olarak yineleyin.
 
    Aşağıdaki komutu yürütün `salesevents` :
 
    ```bash
-   java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
    ```
 
    Önceki iletiler görülemez.
 
-9. Ranger kullanıcı arabiriminden denetim erişimi olaylarını görüntüleyin.
+8. Ranger kullanıcı arabiriminden denetim erişimi olaylarını görüntüleyin.
 
    ![Ranger UI ilkesi denetim erişim olayları ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
+   
+## <a name="produce-and-consume-topics-in-esp-kafka-by-using-the-console"></a>Konsolunu kullanarak ESP Kafka ile ilgili konular oluşturun ve kullanın
+
+> [!NOTE]
+> Konular oluşturmak için konsol komutlarını kullanamazsınız. Bunun yerine, önceki bölümde gösterilen Java kodunu kullanmanız gerekir. Daha fazla bilgi için bkz. [ESP Ile Kafka kümesinde konular oluşturma](#create-topics-in-a-kafka-cluster-with-esp).
+
+Konsolunu kullanarak ESP Kafka ile ilgili konular oluşturmak ve kullanmak için:
+
+1. `kinit`Kullanıcının kullanıcı adıyla kullanın. İstendiğinde parolayı girin.
+
+   ```bash
+   kinit sales_user1
+   ```
+
+2. Ortam değişkenlerini ayarlayın:
+
+   ```bash
+   export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf"
+   export KAFKABROKERS=<brokerlist>:9092
+   ```
+
+3. Konuya ileti üretin `salesevents` :
+
+   ```bash
+   /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --topic salesevents --broker-list $KAFKABROKERS --security-protocol SASL_PLAINTEXT
+   ```
+
+4. Konudan iletileri kullan `salesevents` :
+
+   ```bash
+   /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --topic salesevents --from-beginning --bootstrap-server $KAFKABROKERS --security-protocol SASL_PLAINTEXT
+   ```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımlarla oluşturduğunuz Kafka kümesini silin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Üstteki **arama** kutusuna **HDInsight**yazın.
 1. **Hizmetler**altında **HDInsight kümeleri** ' ni seçin.
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** öğesine tıklayın. 
-1. **Sil**' e tıklayın. **Evet**' e tıklayın.
+1. **Sil**'e tıklayın. **Evet**' e tıklayın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 Kafka-Producer-Consumer. jar, etki alanına katılmış bir kümede çalışmazsa, lütfen "Domainkatılmış-Producer-Consumer" projesi altındaki Kafka-Producer-Consumer. jar dosyasını kullandığınızdan emin olun (etki alanına katılmış olmayan senaryolar için, Producer-Consumer projesi altında değil).

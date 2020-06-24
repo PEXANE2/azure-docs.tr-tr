@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 5c828644cb03d83df38265719cd8afabc24cf739
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3d1efc0a116a38686fa929a2058fa88e4c2cfa82
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66242580"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119486"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Verilerinizi Azure Cosmos DB Tablo API'si hesabına geçirme
 
@@ -66,13 +66,13 @@ Azure Tablo Depolama veya Tablo API önizlemesini geçişin kaynağı olarak tan
     /s.Filter: Optional. Filter string to apply
     /s.Projection: Optional. List of columns to select
 
-Azure Tablo depolamadan içeri aktarırken kaynak bağlantı dizesini almak için, Azure Portal açın ve **depolama hesapları** > **Hesap** > **erişim anahtarları**' na tıklayın ve sonra **bağlantı dizesini**kopyalamak için Kopyala düğmesini kullanın.
+Azure Tablo depolamadan içeri aktarırken kaynak bağlantı dizesini almak için, Azure Portal açın ve **depolama hesapları**  >  **Hesap**  >  **erişim anahtarları**' na tıklayın ve sonra **bağlantı dizesini**kopyalamak için Kopyala düğmesini kullanın.
 
-![HBase kaynağı seçeneklerinin ekran görüntüsü](./media/table-import/storage-table-access-key.png)
+:::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="HBase kaynağı seçeneklerinin ekran görüntüsü":::
 
-Azure Cosmos db tablo API'si (Önizleme) hesabından içeri aktarırken kaynak bağlantı dizesini almak için, Azure Portal açın, **Azure Cosmos DB** > **hesabı** > **bağlantı dizesi** ' ne tıklayın ve Kopyala düğmesini kullanarak **bağlantı dizesini**kopyalayın.
+Azure Cosmos db tablo API'si (Önizleme) hesabından içeri aktarırken kaynak bağlantı dizesini almak için, Azure Portal açın, **Azure Cosmos DB**  >  **hesabı**  >  **bağlantı dizesi** ' ne tıklayın ve Kopyala düğmesini kullanarak **bağlantı dizesini**kopyalayın.
 
-![HBase kaynağı seçeneklerinin ekran görüntüsü](./media/table-import/cosmos-connection-string.png)
+:::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="HBase kaynağı seçeneklerinin ekran görüntüsü":::
 
 [Azure Tablo Depolama komutu örneği](#azure-table-storage)
 

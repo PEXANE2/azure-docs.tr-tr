@@ -14,12 +14,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 6ffc1aa6e28bf17d0de3783e5e03b6a2df541e4a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2c3f2ccd80f2f329a7495beda1a002d84d769802
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194639"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253928"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>PowerShell kullanarak Azure Data Factory Azure-SSIS IR ayarlama
 
@@ -55,7 +55,7 @@ Bu öğreticide şunları yapacaksınız:
     - Seçili veritabanı sunucusuna bağlı olarak SSSıSDB, SQL veritabanı 'nda veya SQL yönetilen örneği 'nde veya bir sanal ağa katılarak, sizin adınıza tek bir veritabanı veya bir elastik havuzun bir parçası olarak oluşturulabilir. SSıSDB barındıracak veritabanı sunucusu türünü seçme konusunda rehberlik için bkz. [SQL veritabanı ve SQL yönetilen örneği karşılaştırması](create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance).
     
       SQL veritabanı 'nı bir IP güvenlik duvarı veya sanal ağ hizmet uç noktaları veya SSıSDB barındırmak için özel bir uç noktası olan bir SQL yönetilen örneği kullanıyorsanız veya şirket içinde barındırılan bir IR yapılandırmadan şirket içi verilere erişmeniz gerekiyorsa, Azure-SSIS IR bir sanal ağa katın. Daha fazla bilgi için bkz. [Sanal ağda Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
-    - SQL veritabanı için **Azure hizmetlerine erişime Izin ver** ayarının etkin olduğunu doğrulayın. Bu ayar, IP güvenlik duvarı kuralları veya sanal ağ hizmet uç noktaları ile SQL veritabanı kullandığınızda veya SSıSDB barındırmak için özel bir uç noktası olan bir SQL yönetilen örneği kullandığınızda geçerli değildir. Daha fazla bilgi için bkz. [Azure SQL veritabanınızın güvenliğini sağlama](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules). Bu ayarı PowerShell kullanarak etkinleştirmek için, bkz. [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule).
+    - SQL veritabanı için **Azure hizmetlerine erişime Izin ver** ayarının etkin olduğunu doğrulayın. Bu ayar, IP güvenlik duvarı kuralları veya sanal ağ hizmet uç noktaları ile SQL veritabanı kullandığınızda veya SSıSDB barındırmak için özel bir uç noktası olan bir SQL yönetilen örneği kullandığınızda geçerli değildir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nı güvenli hale getirme](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules). Bu ayarı PowerShell kullanarak etkinleştirmek için, bkz. [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule).
     - SQL veritabanı için güvenlik duvarı ayarlarındaki istemci IP adresi listesine istemci makinenin IP adresini veya istemci makinenin IP adresini içeren IP adresi aralığını ekleyin. Daha fazla bilgi için bkz. [sunucu düzeyi ve veritabanı düzeyinde güvenlik duvarı kuralları](../azure-sql/database/firewall-configure.md).
     - SQL veritabanı veya SQL yönetilen örneğine, veri fabrikanızın yönetilen kimliğiyle Sunucu Yöneticisi kimlik bilgilerinizle veya Azure Active Directory (Azure AD) kimlik doğrulamasıyla SQL kimlik doğrulaması kullanarak bağlanabilirsiniz. Azure AD kimlik doğrulaması için, veri fabrikanızın yönetilen kimliğini veritabanı sunucusuna erişim izinleri olan bir Azure AD grubuna eklemek için bkz. [Azure AD kimlik doğrulamasıyla Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
     - SQL veritabanı veya SQL yönetilen örneğinin zaten bir SSSıSDB 'ye sahip olmadığından emin olun. Azure-SSIS IR ayarlamak, var olan bir SSıSDB kullanımını desteklemez.

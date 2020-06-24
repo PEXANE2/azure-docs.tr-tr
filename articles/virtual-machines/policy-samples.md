@@ -1,24 +1,24 @@
 ---
 title: Azure sanal makineleri için yerleşik ilke tanımları
 description: Azure sanal makineleri için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.custom: subject-policy-samples
-ms.openlocfilehash: b7ea4dc36c5619d6012e4288b7bcdd165369d4b4
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: bf27e31e79e55e0a13b98d86ad0f655a2db691cf
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234274"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84884041"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-virtual-machines"></a>Azure sanal makineler için Azure Ilkesi yerleşik ilke tanımları
+# <a name="azure-policy-built-in-definitions-for-azure-virtual-machines"></a>Azure sanal makineler için Azure Ilkesi yerleşik tanımları
 
 Bu sayfa, Azure sanal makineleri için [Azure ilkesi](../governance/policy/overview.md) yerleşik ilke tanımlarının bir dizinidir. Diğer hizmetlere yönelik diğer Azure Ilkesi için yerleşik olarak [bulunan Azure ilkesi yerleşik tanımları](../governance/policy/samples/built-in-policies.md)bölümüne bakın.
 
-Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda kaynağı görüntülemek için **GitHub** sütunundaki bağlantıyı kullanın.
+Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. Kaynağı [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda görüntülemek için **Sürüm** sütunundaki bağlantıyı kullanın.
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 

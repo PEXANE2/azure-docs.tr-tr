@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d5227fc89d99257f3390820d4930c3d57b63f03d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2a90003c9de2cf0e942b518c6d4e9c3569039caf
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053402"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251429"
 ---
 # <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Öğretici: Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de kümeleme modeli dağıtma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Bu üç bölümden oluşan öğretici serisinin üçüncü kısmında, Azure SQL veritabanı Machine Learning Services (Önizleme) kullanarak R 'de geliştirilen bir kümeleme modelini bir SQL veritabanına dağıtırsınız.
+Bu üç bölümden oluşan öğretici serisinin üçüncü kısmında, R 'de geliştirilen bir kümeleme modelini Azure SQL veritabanı Machine Learning Services (Önizleme) kullanarak Azure SQL veritabanı 'nda bir veritabanına dağıtırsınız.
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -38,7 +38,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 > * SQL veritabanında kümeleme gerçekleştir
 > * Kümeleme bilgilerini kullanma
 
-[Birinci bölümde](clustering-model-prepare-data-tutorial.md), verileri BIR Azure SQL veritabanından kümeleme gerçekleştirmek üzere nasıl hazırlayacağınızı öğrendiniz.
+[Birinci bölümde](clustering-model-prepare-data-tutorial.md), kümeleme gerçekleştirmek üzere bir veritabanından verileri nasıl hazırlayacağınızı öğrendiniz.
 
 [İkinci bölümde](clustering-model-build-tutorial.md), R 'de K-bir kümeleme modeli oluşturmayı ve eğiteyi öğrendiniz.
 

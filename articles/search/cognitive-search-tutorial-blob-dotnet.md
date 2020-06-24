@@ -8,18 +8,18 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: 57cb68726adf8818f9ef0c8804be9c388ea39ff5
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 25df5f37f8aef55bc025b579ec48a2fab7dd6b72
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872312"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080168"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Bloblarından AI tarafından oluşturulan aranabilir içerik
 
 Azure Blob depolamada yapılandırılmamış metin veya görüntü varsa, bir [AI zenginleştirme işlem hattı](cognitive-search-concept-intro.md) bilgileri ayıklayabilir ve tam metin araması veya bilgi araştırma senaryoları için faydalı yeni içerik oluşturabilir. Bu C# öğreticisinde, resimlerde optik karakter tanıma (OCR) uygulayın ve sorgularda, modellerinizde ve filtrelerde kullanabileceğiniz yeni alanlar oluşturmak için doğal dil işleme gerçekleştirin.
 
-Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](https://aka.ms/search-sdk) kullanır:
+Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) kullanır:
 
 > [!div class="checklist"]
 > * Azure Blob depolamada uygulama dosyaları ve görüntüleriyle başlayın.
@@ -32,7 +32,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-+ [Azure Storage](https://azure.microsoft.com/services/storage/)
++ [Azure Depolama](https://azure.microsoft.com/services/storage/)
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 + [Mevcut bir arama hizmeti](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [oluşturun](search-create-service-portal.md) veya bulun 
 
@@ -113,7 +113,7 @@ Azure Bilişsel Arama hizmetiyle etkileşim kurmak için hizmet URL 'SI ve eriş
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
-1. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+1. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
    Sorgu anahtarını da alın. Salt okuma erişimiyle sorgu istekleri vermek en iyi uygulamadır.
 
@@ -127,9 +127,9 @@ Visual Studio 'Yu açıp .NET Core üzerinde çalışabilen yeni bir konsol uygu
 
 ### <a name="install-nuget-packages"></a>NuGet paketlerini yükleme
 
-[Azure bilişsel arama .NET SDK](https://aka.ms/search-sdk) , dizinlerinizi, veri kaynaklarınızı, Dizin Oluşturucularınızı ve becerileri yönetmenizi sağlayan birkaç istemci kitaplığı içerir. Ayrıca, http ve JSON ayrıntıları ile uğraşmak zorunda kalmadan belgeleri karşıya yükleyip yönetebilir ve sorguları yürütmenize imkan tanır. Bu istemci kitaplıklarının hepsi NuGet paketleri olarak dağıtılır.
+[Azure bilişsel arama .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) , dizinlerinizi, veri kaynaklarınızı, Dizin Oluşturucularınızı ve becerileri yönetmenizi sağlayan birkaç istemci kitaplığı içerir. Ayrıca, http ve JSON ayrıntıları ile uğraşmak zorunda kalmadan belgeleri karşıya yükleyip yönetebilir ve sorguları yürütmenize imkan tanır. Bu istemci kitaplıklarının hepsi NuGet paketleri olarak dağıtılır.
 
-Bu proje için `Microsoft.Azure.Search` NuGet paketinin 9 veya sonraki bir sürümünü yüklemelisiniz.
+Bu proje için NuGet paketinin 9 veya sonraki bir sürümünü yüklemelisiniz `Microsoft.Azure.Search` .
 
 1. Bir tarayıcıda [Microsoft. Azure. Search NuGet paketi sayfasına](https://www.nuget.org/packages/Microsoft.Azure.Search)gidin.
 
@@ -137,13 +137,13 @@ Bu proje için `Microsoft.Azure.Search` NuGet paketinin 9 veya sonraki bir sür�
 
 1. Paket Yöneticisi komutunu kopyalayın.
 
-1. Paket Yöneticisi konsolunu açın. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin. 
+1. Paket Yöneticisi konsolunu açın. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' nu seçin. 
 
 1. Önceki adımda kopyaladığınız komutu yapıştırın ve çalıştırın.
 
 Sonra, en son `Microsoft.Extensions.Configuration.Json` NuGet paketini yükler.
 
-1. **Araçlar** > **NuGet Paket Yöneticisi** > **çözüm için NuGet Paketlerini Yönet...** seçeneğini belirleyin. 
+1. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **çözüm için NuGet Paketlerini Yönet...** seçeneğini belirleyin. 
 
 1. **Araştır** ' a tıklayın ve `Microsoft.Extensions.Configuration.Json` NuGet paketini arayın. 
 
@@ -151,9 +151,9 @@ Sonra, en son `Microsoft.Extensions.Configuration.Json` NuGet paketini yükler.
 
 ### <a name="add-service-connection-information"></a>Hizmet bağlantı bilgileri ekleme
 
-1. Çözüm Gezgini projenize sağ tıklayıp yeni öğe **Ekle** > **...** seçeneğini belirleyin. 
+1. Çözüm Gezgini projenize sağ tıklayıp **Add**  >  **Yeni öğe Ekle...** seçeneğini belirleyin. 
 
-1. Dosyayı `appsettings.json` adlandırın ve **Ekle**' yi seçin. 
+1. Dosyayı adlandırın `appsettings.json` ve **Ekle**' yi seçin. 
 
 1. Bu dosyayı çıkış dizininize dahil edin.
     1. Sağ tıklayın `appsettings.json` ve **Özellikler**' i seçin. 
@@ -176,7 +176,7 @@ Arama hizmetinizi ve BLOB depolama hesabı bilgilerinizi ekleyin. Bu bilgileri, 
 
 ### <a name="add-namespaces"></a>Ad alanı Ekle
 
-İçinde `Program.cs`, aşağıdaki ad alanlarını ekleyin.
+İçinde `Program.cs` , aşağıdaki ad alanlarını ekleyin.
 
 ```csharp
 using System;
@@ -190,7 +190,7 @@ namespace EnrichwithAI
 
 ### <a name="create-a-client"></a>İstemci oluşturma
 
-Altında `SearchServiceClient` `Main`sınıfının bir örneğini oluşturun.
+Altında sınıfının bir örneğini oluşturun `SearchServiceClient` `Main` .
 
 ```csharp
 public static void Main(string[] args)
@@ -201,7 +201,7 @@ public static void Main(string[] args)
     SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
 ```
 
-`CreateSearchServiceClient`uygulamanın yapılandırma dosyasında `SearchServiceClient` (appSettings. JSON) depolanan değerleri kullanarak yeni bir oluşturur.
+`CreateSearchServiceClient``SearchServiceClient`uygulamanın yapılandırma dosyasında (appsettings.jsüzerinde) depolanan değerleri kullanarak yeni bir oluşturur.
 
 ```csharp
 private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
@@ -222,7 +222,7 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 
 Bu öğretici, dizin oluşturma işlem hattının her adımını anlamanıza yardımcı olmak için tasarlanmıştır. Programın veri kaynağı, Beceri, dizin veya dizin oluşturucuyu oluşturmasını önleyen kritik bir sorun varsa, sorun anlaşılması ve giderilmesi için, program hata iletisini ve çıkış çıkışını çıktı olarak çıkar.
 
-Programın `ExitProgram` çıkmasına `Main` gerek duyduğu senaryoları işlemek için öğesine ekleyin.
+`ExitProgram` `Main` Programın çıkmasına gerek duyduğu senaryoları işlemek için öğesine ekleyin.
 
 ```csharp
 private static void ExitProgram(string message)
@@ -242,7 +242,7 @@ Azure Bilişsel Arama 'de, dizin oluşturma (veya veri alımı) sırasında AI i
 
 `SearchServiceClient`, `DataSources` özelliğine sahiptir. Bu özellik, Azure Bilişsel Arama veri kaynaklarını oluşturmak, listelemek, güncelleştirmek veya silmek için gereken tüm yöntemleri sağlar.
 
-Çağırarak `DataSource` `serviceClient.DataSources.CreateOrUpdate(dataSource)`yeni bir örnek oluşturun. `DataSource.AzureBlobStorage`veri kaynağı adını, bağlantı dizesini ve BLOB kapsayıcısı adını belirtmenizi gerektirir.
+Çağırarak yeni bir `DataSource` örnek oluşturun `serviceClient.DataSources.CreateOrUpdate(dataSource)` . `DataSource.AzureBlobStorage`veri kaynağı adını, bağlantı dizesini ve BLOB kapsayıcısı adını belirtmenizi gerektirir.
 
 ```csharp
 private static DataSource CreateOrUpdateDataSource(SearchServiceClient serviceClient, IConfigurationRoot configuration)
@@ -271,7 +271,7 @@ private static DataSource CreateOrUpdateDataSource(SearchServiceClient serviceCl
 
 Başarılı bir istek için, yöntem oluşturulan veri kaynağını döndürür. İstekle ilgili bir sorun varsa (geçersiz parametre gibi), yöntem bir özel durum oluşturur.
 
-Şimdi yeni eklediğiniz `CreateOrUpdateDataSource` işlevi çağırmak `Main` için içine bir satır ekleyin.
+Şimdi `Main` yeni eklediğiniz işlevi çağırmak için içine bir satır ekleyin `CreateOrUpdateDataSource` .
 
 ```csharp
 public static void Main(string[] args)
@@ -306,7 +306,7 @@ Bu bölümde, verilerinize uygulamak istediğiniz bir zenginleştirme adımları
 
 + Üst anahtar tümcecikleri çekmek için [Anahtar İfade Ayıklama](cognitive-search-skill-keyphrases.md).
 
-İlk işlem sırasında Azure Bilişsel Arama, farklı dosya biçimlerinden içerik okumak için her bir belgeyi ister. Kaynak dosyadan gelen, bulunan metin, oluşturulan ```content``` alanına her belge için birer birer yerleştirilir. Bu nedenle, girdiyi ```"/document/content"``` bu metni kullanacak şekilde ayarlayın. 
+İlk işlem sırasında Azure Bilişsel Arama, farklı dosya biçimlerinden içerik okumak için her bir belgeyi ister. Kaynak dosyadan gelen, bulunan metin, oluşturulan ```content``` alanına her belge için birer birer yerleştirilir. Bu nedenle, girdiyi ```"/document/content"``` Bu metni kullanacak şekilde ayarlayın. 
 
 Çıktılar bir dizine eşlenebilir, aşağı akış becerisine yönelik giriş olarak kullanılır veya dil kodunda olduğu gibi her iki şekilde de kullanılabilir. Dizinde bir dil kodu, filtreleme için yararlıdır. Giriş olarak dil kodu, sözcük bölünmesiyle ilgili dilbilgisi kurallarını bildirmek için metin analizi becerileri tarafından kullanılır.
 
@@ -314,7 +314,7 @@ Beceri kümesi temelleri hakkında daha fazla bilgi için bkz. [Beceri kümesini
 
 ### <a name="ocr-skill"></a>OCR becerisi
 
-**OCR** becerisi görüntülerden metin ayıklar. Bu beceri bir normalized_images alanının bulunduğunu varsayar. Bu alanı oluşturmak için, öğreticide daha sonra, Dizin Oluşturucu tanımındaki ```"imageAction"``` yapılandırmayı olarak ```"generateNormalizedImages"```ayarlayacağız.
+**OCR** becerisi görüntülerden metin ayıklar. Bu beceri bir normalized_images alanının bulunduğunu varsayar. Bu alanı oluşturmak için, öğreticide daha sonra, ```"imageAction"``` Dizin Oluşturucu tanımındaki yapılandırmayı olarak ayarlayacağız ```"generateNormalizedImages"``` .
 
 ```csharp
 private static OcrSkill CreateOcrSkill()
@@ -405,7 +405,7 @@ private static LanguageDetectionSkill CreateLanguageDetectionSkill()
 
 ### <a name="text-split-skill"></a>Metin bölünmüş yetenek
 
-Aşağıdaki **bölünmüş** Beceri, metni sayfalara göre böler ve sayfa uzunluğu ile `String.Length`4.000 karakter arasında bir şekilde sınırlayacaktır. Algoritma, metni en fazla `maximumPageLength` boyuttaki parçalara bölmeye çalışır. Bu durumda, algoritma bir cümle sınırında tümceyi bölmek en iyi şekilde yapılır, bu nedenle öbek boyutu daha az olabilir `maximumPageLength`.
+Aşağıdaki **bölünmüş** Beceri, metni sayfalara göre böler ve sayfa uzunluğu ile 4.000 karakter arasında bir şekilde sınırlayacaktır `String.Length` . Algoritma, metni en fazla boyuttaki parçalara bölmeye çalışır `maximumPageLength` . Bu durumda, algoritma bir cümle sınırında tümceyi bölmek en iyi şekilde yapılır, bu nedenle öbek boyutu daha az olabilir `maximumPageLength` .
 
 ```csharp
 private static SplitSkill CreateSplitSkill()
@@ -438,9 +438,9 @@ private static SplitSkill CreateSplitSkill()
 
 ### <a name="entity-recognition-skill"></a>Varlık tanıma yeteneği
 
-Bu `EntityRecognitionSkill` örnek kategori türünü `organization`tanımak üzere ayarlanır. **Varlık tanıma** yeteneği de kategori türlerini `person` ve `location`kullanabilirsiniz.
+Bu `EntityRecognitionSkill` örnek kategori türünü tanımak üzere ayarlanır `organization` . **Varlık tanıma** yeteneği de kategori türlerini `person` ve kullanabilirsiniz `location` .
 
-"Bağlam" alanının bir yıldız işaretiyle ayarlanmış ```"/document/pages/*"``` olduğuna ve altındaki ```"/document/pages"```her sayfa için zenginleştirme adımının çağrıldığı anlamına gelir.
+"Bağlam" alanının bir yıldız işaretiyle ayarlanmış olduğuna ```"/document/pages/*"``` ve altındaki her sayfa için zenginleştirme adımının çağrıldığı anlamına gelir ```"/document/pages"``` .
 
 ```csharp
 private static EntityRecognitionSkill CreateEntityRecognitionSkill()
@@ -472,7 +472,7 @@ private static EntityRecognitionSkill CreateEntityRecognitionSkill()
 
 ### <a name="key-phrase-extraction-skill"></a>Anahtar tümceciği ayıklama yeteneği
 
-Yeni oluşturulan `EntityRecognitionSkill` örnek gibi **anahtar ifade ayıklama** Beceri, belgenin her sayfası için çağrılır.
+`EntityRecognitionSkill`Yeni oluşturulan örnek gibi **anahtar ifade ayıklama** Beceri, belgenin her sayfası için çağrılır.
 
 ```csharp
 private static KeyPhraseExtractionSkill CreateKeyPhraseExtractionSkill()
@@ -502,7 +502,7 @@ private static KeyPhraseExtractionSkill CreateKeyPhraseExtractionSkill()
 
 ### <a name="build-and-create-the-skillset"></a>Beceri oluşturma ve oluşturma
 
-Oluşturduğunuz becerileri `Skillset` kullanarak oluşturun.
+`Skillset`Oluşturduğunuz becerileri kullanarak oluşturun.
 
 ```csharp
 private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceClient, IList<Skill> skills)
@@ -529,7 +529,7 @@ private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceCl
 }
 ```
 
-Aşağıdaki satırları öğesine `Main`ekleyin.
+Aşağıdaki satırları öğesine ekleyin `Main` .
 
 ```csharp
     // Create the skills
@@ -560,7 +560,7 @@ Bu bölümde, aranabilir dizine dahil edilecek alanları ve her bir alana ilişk
 
 Bu çalışmada aşağıdaki alanlar ve alan türleri kullanılır:
 
-| alan adları: | `id`       | content   | languageCode | keyPhrases         | organizations     |
+| alan adları: | `id`       | içerik   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
@@ -569,11 +569,11 @@ Bu çalışmada aşağıdaki alanlar ve alan türleri kullanılır:
 
 Bu dizinin alanları bir model sınıfı kullanılarak tanımlanır. Model sınıfının her özelliği karşılık gelen dizin alanının aramayla ilgili davranışlarını belirleyen özniteliklere sahiptir. 
 
-Model sınıfını yeni bir C# dosyasına ekleyeceğiz. Projenize sağ tıklayın ve yeni öğe **Ekle** > **...** seçeneğini belirleyin, "sınıf" seçeneğini belirleyip dosyayı `DemoIndex.cs`adlandırın ve ardından **Ekle**' yi seçin.
+Model sınıfını yeni bir C# dosyasına ekleyeceğiz. Projenize sağ tıklayın ve **Add**  >  **Yeni öğe Ekle...** seçeneğini belirleyin, "sınıf" seçeneğini belirleyip dosyayı adlandırın ve `DemoIndex.cs` ardından **Ekle**' yi seçin.
 
-`Microsoft.Azure.Search` Ve `Microsoft.Azure.Search.Models` ad alanlarından türleri kullanmak istediğinizi belirttiğinizden emin olun.
+`Microsoft.Azure.Search`Ve ad alanlarından türleri kullanmak istediğinizi belirttiğinizden emin olun `Microsoft.Azure.Search.Models` .
 
-Aşağıdaki model sınıfı tanımını öğesine `DemoIndex.cs` ekleyin ve dizini oluşturacağınız aynı ad alanına ekleyin.
+Aşağıdaki model sınıfı tanımını öğesine ekleyin `DemoIndex.cs` ve dizini oluşturacağınız aynı ad alanına ekleyin.
 
 ```csharp
 using Microsoft.Azure.Search;
@@ -606,7 +606,7 @@ namespace EnrichwithAI
 }
 ```
 
-Artık bir model sınıfı tanımladığınıza göre, bir dizin tanımını `Program.cs` oldukça kolay bir şekilde oluşturabilirsiniz. Bu dizinin adı olacaktır `demoindex`. Bu ada sahip bir dizin zaten varsa, silinir.
+Artık bir model sınıfı tanımladığınıza göre, bir `Program.cs` Dizin tanımını oldukça kolay bir şekilde oluşturabilirsiniz. Bu dizinin adı olacaktır `demoindex` . Bu ada sahip bir dizin zaten varsa, silinir.
 
 ```csharp
 private static Index CreateDemoIndex(SearchServiceClient serviceClient)
@@ -640,7 +640,7 @@ private static Index CreateDemoIndex(SearchServiceClient serviceClient)
 
 Sınama sırasında, dizini birden çok kez oluşturmayı denediğinizden emin olabilirsiniz. Bu nedenle, oluşturmak üzere olduğunuz dizinin oluşturmayı denemeden önce zaten var olup olmadığını denetleyin.
 
-Aşağıdaki satırları öğesine `Main`ekleyin.
+Aşağıdaki satırları öğesine ekleyin `Main` .
 
 ```csharp
     // Create the index
@@ -731,7 +731,7 @@ private static Indexer CreateDemoIndexer(SearchServiceClient serviceClient, Data
     return indexer;
 }
 ```
-Aşağıdaki satırları öğesine `Main`ekleyin.
+Aşağıdaki satırları öğesine ekleyin `Main` .
 
 ```csharp
     // Create the indexer, map fields, and execute transformations
@@ -746,11 +746,11 @@ Dizin oluşturucunun oluşturulması için biraz zaman süreceğini beklemeniz g
 
 ### <a name="explore-creating-the-indexer"></a>Dizin oluşturucuyu oluşturmayı keşfet
 
-Kodu-1 ```"maxFailedItems"``` olarak ayarlanır. Bu, dizin oluşturma altyapısının veri içeri aktarma sırasında hataları yoksaymasına olanak verir. Demo veri kaynağında çok az belge olduğundan bu yararlıdır. Daha büyük bir veri kaynağı için değeri, 0’dan daha büyük bir değere ayarlarsınız.
+Kodu ```"maxFailedItems"``` -1 olarak ayarlanır. Bu, dizin oluşturma altyapısının veri içeri aktarma sırasında hataları yoksaymasına olanak verir. Demo veri kaynağında çok az belge olduğundan bu yararlıdır. Daha büyük bir veri kaynağı için değeri, 0’dan daha büyük bir değere ayarlarsınız.
 
-Ayrıca, ```"dataToExtract"``` olarak ```"contentAndMetadata"```ayarlandığını unutmayın. Bu deyim, dizin oluşturucuya, farklı dosya biçimlerinden içeriği ve her bir dosyayla ilgili meta verileri otomatik olarak ayıklamasını bildirir.
+Ayrıca, ```"dataToExtract"``` olarak ayarlandığını unutmayın ```"contentAndMetadata"``` . Bu deyim, dizin oluşturucuya, farklı dosya biçimlerinden içeriği ve her bir dosyayla ilgili meta verileri otomatik olarak ayıklamasını bildirir.
 
-İçerik ayıklandığında, veri kaynağında bulunan görüntülerden metni ayıklamak için `imageAction` değerini ayarlayabilirsiniz. Yapılandırma ```"imageAction"``` olarak ```"generateNormalizedImages"``` ayarlanan, OCR yeteneği ve metin birleştirme beceriyle birlikte, dizin oluşturucunun görüntüden metin ayıklamasını söyler (örneğin, trafiğin "Durdur" sözcüğünün oturum açmasını durdurur) ve içerik alanının bir parçası olarak katıştırmasını söyler. Bu davranış hem belgelerde gömülü olan görüntüler (örneğin, bir PDF’teki görüntü) hem de veri kaynağında bulunan görüntüler (örneğin, bir JPG dosyası) için geçerlidir.
+İçerik ayıklandığında, veri kaynağında bulunan görüntülerden metni ayıklamak için `imageAction` değerini ayarlayabilirsiniz. ```"imageAction"```Yapılandırma olarak ayarlanan ```"generateNormalizedImages"``` , OCR yeteneği ve metin birleştirme beceriyle birlikte, dizin oluşturucunun görüntüden metin ayıklamasını söyler (örneğin, trafiğin "Durdur" sözcüğünün oturum açmasını durdurur) ve içerik alanının bir parçası olarak katıştırmasını söyler. Bu davranış hem belgelerde gömülü olan görüntüler (örneğin, bir PDF’teki görüntü) hem de veri kaynağında bulunan görüntüler (örneğin, bir JPG dosyası) için geçerlidir.
 
 <a name="check-indexer-status"></a>
 
@@ -792,7 +792,7 @@ private static void CheckIndexerOverallStatus(SearchServiceClient serviceClient,
 
 Uyarılar bazı kaynak dosya ve beceri birleşimleri için geneldir ve her zaman bir sorunu belirtmez. Bu öğreticide, uyarılar zararsızdır (örneğin, JPEG dosyalarında bir metin girişi yok).
 
-Aşağıdaki satırları öğesine `Main`ekleyin.
+Aşağıdaki satırları öğesine ekleyin `Main` .
 
 ```csharp
     // Check indexer overall status
@@ -806,7 +806,7 @@ Dizin oluşturma işlemi tamamlandıktan sonra, tek tek alanların içeriğini d
 
 Doğrulama adımı olarak, tüm alanlar için dizini sorgulayın.
 
-Aşağıdaki satırları öğesine `Main`ekleyin.
+Aşağıdaki satırları öğesine ekleyin `Main` .
 
 ```csharp
 DocumentSearchResult<DemoIndex> results;
@@ -829,7 +829,7 @@ catch (Exception e)
 }
 ```
 
-`CreateSearchIndexClient`uygulamanın yapılandırma dosyasında `SearchIndexClient` (appSettings. JSON) depolanan değerleri kullanarak yeni bir oluşturur. Yönetim anahtarı için arama hizmeti sorgu API anahtarının kullanıldığını ve bu anahtarın kullanılmadığını unutmayın.
+`CreateSearchIndexClient``SearchIndexClient`uygulamanın yapılandırma dosyasında (appsettings.jsüzerinde) depolanan değerleri kullanarak yeni bir oluşturur. Yönetim anahtarı için arama hizmeti sorgu API anahtarının kullanıldığını ve bu anahtarın kullanılmadığını unutmayın.
 
 ```csharp
 private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
@@ -842,7 +842,7 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 }
 ```
 
-Aşağıdaki kodu `Main` içine ekleyin. İlk try-catch, her alanın adı, türü ve öznitelikleri ile dizin tanımını döndürür. İkincisi, örneğin `Select` `organizations`sonuçlara dahil edilecek alanları belirten parametreli bir sorgudur. Bir arama dizesi, `"*"` tek bir alanın tüm içeriğini döndürür.
+Aşağıdaki kodu `Main` içine ekleyin. İlk try-catch, her alanın adı, türü ve öznitelikleri ile dizin tanımını döndürür. İkincisi, `Select` örneğin sonuçlara dahil edilecek alanları belirten parametreli bir sorgudur `organizations` . Bir arama dizesi, `"*"` tek bir alanın tüm içeriğini döndürür.
 
 ```csharp
 //Verify content is returned after indexing is finished
@@ -891,7 +891,7 @@ Ayrıca, dizinleri, Dizin oluşturucuyu, veri kaynaklarını ve becerileri silme
 
 Bu öğreticide, bileşen bölümlerinin oluşturulması yoluyla zenginleştirilmiş bir dizin oluşturma işlem hattı oluşturmaya yönelik temel adımlar gösterilmiştir: bir veri kaynağı, Beceri, dizin ve Dizin Oluşturucu.
 
-[Yerleşik yetenekler](cognitive-search-predefined-skills.md) , Beceri tanımıyla birlikte tanıtılmıştır ve giriş ve çıkışlarla becerilerin zincirlerinin bir araya getirilmiştir. Ayrıca, bir Azure `outputFieldMappings` bilişsel arama hizmetinde işlem hattındaki aranabilir bir dizine yönlendirme değerlerini yönlendirme için Dizin Oluşturucu tanımında gerekli olduğunu öğrenmiş olursunuz.
+[Yerleşik yetenekler](cognitive-search-predefined-skills.md) , Beceri tanımıyla birlikte tanıtılmıştır ve giriş ve çıkışlarla becerilerin zincirlerinin bir araya getirilmiştir. Ayrıca, `outputFieldMappings` bir Azure bilişsel arama hizmetinde işlem hattındaki aranabilir bir dizine yönlendirme değerlerini yönlendirme için Dizin Oluşturucu tanımında gerekli olduğunu öğrenmiş olursunuz.
 
 Son olarak, daha fazla yineleme için sonuçların nasıl test edileceğini ve sistemin nasıl sıfırlanacağını öğrendiniz. Dizine karşı sorgular düzenlendiğinde, zenginleştirilmiş dizin oluşturma işlem hattı tarafından oluşturulan çıktının döndürüldüğünü öğrendiniz. Ayrıca dizin oluşturucu durumunun nasıl denetleneceğini ve işlem hattı yeniden çalıştırılmadan önce hangi nesnelerin silineceğini de öğrendiniz.
 

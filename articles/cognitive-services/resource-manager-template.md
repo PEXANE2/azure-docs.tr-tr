@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: 9b2091c7acd42d4c967ec5baef82d970344f9231
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 30e3f901d9feca07902e20c87f4fbf5b6979a11b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85081588"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299492"
 ---
-# <a name="create-a-cognitive-services-resource-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak bilişsel hizmetler kaynağı oluşturma
+# <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak bilişsel hizmetler kaynağı oluşturma
 
 Bir Azure Resource Manager (ARM) şablonu kullanarak bilişsel hizmetler kaynağı oluşturup dağıtmak için bu makaleyi kullanın. Bu çok hizmet kaynağı şunları yapmanızı sağlar:
 * Birden çok Azure bilişsel hizmete tek bir anahtar ve uç nokta ile erişin.
@@ -24,23 +24,24 @@ Bir Azure Resource Manager (ARM) şablonu kullanarak bilişsel hizmetler kaynağ
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
 
-## <a name="prerequisites"></a>Ön koşullar 
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cognitive-services-universalkey%2Fazuredeploy.json)
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
+## <a name="prerequisites"></a>Ön koşullar
 
-## <a name="create-a-cognitive-services-resource"></a>Bilişsel Hizmetler kaynağı oluşturma
+* Azure aboneliğiniz yoksa [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services).
 
-### <a name="review-the-template"></a>Şablonu gözden geçirme
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç ARM şablonlarından](https://azure.microsoft.com/resources/templates/101-cognitive-services-universalkey/).
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-cognitive-services-universalkey/).
 
 :::code language="json" source="~/quickstart-templates/101-cognitive-services-universalkey/azuredeploy.json" highlight="27-41":::
 
 Şablonda bir Azure kaynağı tanımlanmıştır:
 * [Microsoft. Biliveservices/accounts](https://docs.microsoft.com/azure/templates/microsoft.cognitiveservices/accounts): bilişsel hizmetler kaynağı oluşturur.
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 # <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
@@ -50,7 +51,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç ARM ş
 
 2. Aşağıdaki değerleri girin.
     
-    |Değer  |Açıklama  |
+    |Değer  |Description  |
     |---------|---------|
     | **Abonelik** | Bir Azure aboneliği seçin. |
     | **Kaynak grubu** | **Yeni oluştur**' u seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam**' a tıklayın. |
@@ -63,7 +64,6 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç ARM ş
 
 3. **Gözden Geçir ve Oluştur**’u ve sonra **Oluştur**’u seçin. Kaynak başarıyla dağıtımı tamamladıktan sonra **Kaynağa Git** düğmesi vurgulanacaktır.
 
-    
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/CLI)
 
@@ -97,7 +97,7 @@ Dağıtımınız tamamlandığında, yeni kaynağını görmek için **Kaynağa 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/CLI)
 
-Azure CLı 'yı kullanarak aşağıdaki betiği çalıştırın ve daha önce oluşturduğunuz kaynak grubunun adını girin. 
+Azure CLı 'yı kullanarak aşağıdaki betiği çalıştırın ve daha önce oluşturduğunuz kaynak grubunun adını girin.
 
 ```azurecli-interactive
 echo "Enter the resource group where the Cognitive Services resource exists:" &&

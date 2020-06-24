@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 45097b948c76413785ca5ec48c31faa83b3883ee
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: f514c33f2c39e205ac186b70711b478f67fcb4e5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629625"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212021"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Veri etiketleme projesi ve dışarı aktarma etiketleri oluşturma 
 
@@ -38,7 +38,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 > * Etiketleri dışarı aktarma
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Yerel dosyalarda veya Azure Blob depolamada etiketlemek istediğiniz veriler.
 * Uygulamak istediğiniz Etiketler kümesi.
@@ -176,7 +176,10 @@ Bir makine öğrenimi modelinin el ile etiketlendiği veriler üzerinde eğitile
 
 ## <a name="initialize-the-labeling-project"></a>Etiketleme projesini başlatma
 
-Etiketleme projesi başlatıldıktan sonra, projenin bazı yönleri sabittir. Görev türünü veya veri kümesini değiştiremezsiniz. Görev açıklamasının etiketlerini ve URL *'sini değiştirebilirsiniz.* Projeyi oluşturmadan önce ayarları dikkatle gözden geçirin. Projeyi gönderdikten sonra, **veri etiketleme** giriş sayfasına döndürülürsünüz, bu da projeyi **başlatılıyor**olarak gösterir. Bu sayfa otomatik olarak yenilenmez. Bu nedenle, bir duraklama sonrasında, projenin durumunu **oluşturulduğu**şekilde görmek için sayfayı el ile yenileyin.
+Etiketleme projesi başlatıldıktan sonra, projenin bazı yönleri sabittir. Görev türünü veya veri kümesini değiştiremezsiniz. Görev açıklamasının etiketlerini ve URL *'sini değiştirebilirsiniz.* Projeyi oluşturmadan önce ayarları dikkatle gözden geçirin. Projeyi gönderdikten sonra, **veri etiketleme** giriş sayfasına döndürülürsünüz, bu da projeyi **başlatılıyor**olarak gösterir.
+
+> [!NOTE]
+> Bu sayfa otomatik olarak Yenilemeyebilir. Bu nedenle, bir duraklama sonrasında, projenin durumunu **oluşturulduğu**şekilde görmek için sayfayı el ile yenileyin.
 
 ## <a name="run-and-monitor-the-project"></a>Projeyi çalıştırma ve izleme
 

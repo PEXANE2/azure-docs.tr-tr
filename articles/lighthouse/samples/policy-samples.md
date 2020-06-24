@@ -1,21 +1,21 @@
 ---
 title: Azure kathouse için yerleşik ilke tanımları
 description: Azure açılır için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 18187a393739c6b7e757a6d7d5011ce24b92deb2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 88b80fd9e362637250973d108b12b11821ee8ee4
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84229565"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84885099"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-lighthouse"></a>Azure için Azure Ilkesi yerleşik ilke tanımları açık kathouse
+# <a name="azure-policy-built-in-definitions-for-azure-lighthouse"></a>Azure için Azure Ilkesi yerleşik tanımları açık kathouse
 
 Bu sayfa, Azure açık oturum kullanımı için [Azure ilkesi](../../governance/policy/overview.md) yerleşik ilke tanımlarının bir dizinidir. Diğer hizmetlere yönelik diğer Azure Ilkesi için yerleşik olarak [bulunan Azure ilkesi yerleşik tanımları](../../governance/policy/samples/built-in-policies.md)bölümüne bakın.
 
-Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda kaynağı görüntülemek için **GitHub** sütunundaki bağlantıyı kullanın.
+Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. Kaynağı [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda görüntülemek için **Sürüm** sütunundaki bağlantıyı kullanın.
 
 ## <a name="azure-lighthouse"></a>Azure Lighthouse
 

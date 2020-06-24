@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/16/2018
-ms.openlocfilehash: 3c55becb098c9d93688b59f1db4f702acbff3f72
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: bb61f6146e588673038fae9f41b770c4865cefb7
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837493"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945299"
 ---
 # <a name="azure-monitor-cli-samples"></a>Azure Izleyici CLı örnekleri
 Bu makalede, Azure Izleyici özelliklerine erişmenize yardımcı olacak örnek komut satırı arabirimi (CLı) komutları gösterilmektedir. Azure Izleyici, Cloud Services, sanal makineleri ve Web Apps otomatik olarak ve yapılandırılmış telemetri verileri değerlerine göre uyarı bildirimleri göndermenizi veya Web URL 'Lerini çağırmayı sağlar.
@@ -29,51 +29,51 @@ az login
 
 Bu komutu çalıştırdıktan sonra ekrandaki yönergeler aracılığıyla oturum açmanız gerekir. Tüm komutlar varsayılan aboneliğiniz bağlamında çalışır.
 
-Geçerli aboneliğinizin ayrıntılarını listelemek için aşağıdaki komutu kullanın.
+Geçerli aboneliğinizin ayrıntılarını listeleyin.
 
 ```azurecli
 az account show
 ```
 
-Çalışma bağlamını farklı bir aboneliğe değiştirmek için aşağıdaki komutu kullanın.
+Çalışma bağlamını farklı bir aboneliğe değiştirin.
 
 ```azurecli
 az account set -s <Subscription ID or name>
 ```
 
-Desteklenen tüm Azure Izleyici komutlarının listesini görüntülemek için aşağıdaki komutu gerçekleştirin.
+Desteklenen tüm Azure Izleyici komutlarının listesini görüntüleyin.
 
 ```azurecli
 az monitor -h
 ```
 
-## <a name="view-activity-log-for-a-subscription"></a>Abonelik için etkinlik günlüğünü görüntüleme
+## <a name="view-activity-log"></a>Etkinlik günlüğünü görüntüle
 
-Etkinlik günlüğü olaylarının bir listesini görüntülemek için aşağıdaki komutu gerçekleştirin.
+Etkinlik günlüğü olaylarının listesini görüntüleyin.
 
 ```azurecli
 az monitor activity-log list
 ```
 
-Kullanılabilir tüm seçenekleri görüntülemek için aşağıdakileri deneyin.
+Tüm kullanılabilir seçenekleri görüntüleyin.
 
 ```azurecli
 az monitor activity-log list -h
 ```
 
-Günlükleri bir resourceGroup öğesine göre listeleyerek bir örnek aşağıda verilmiştir
+Günlükleri bir resourceGroup öğesine göre listeleyin.
 
 ```azurecli
 az monitor activity-log list --resource-group <group name>
 ```
 
-Günlükleri arayana göre listeleme örneği
+Günlükleri çağırana göre listele.
 
 ```azurecli
 az monitor activity-log list --caller myname@company.com
 ```
 
-Bir tarih aralığı içinde bir kaynak türü üzerinde çağırana göre günlükleri listeleme örneği
+Bir tarih aralığı içinde bir kaynak türü üzerinde çağırana göre günlükleri listeleyin.
 
 ```azurecli
 az monitor activity-log list --resource-provider Microsoft.Web \
