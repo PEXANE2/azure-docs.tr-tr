@@ -4,15 +4,15 @@ description: Bu makalede, ExpressRoute klasik dağıtım modeli devrenizin durum
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: e421a534b04f74d2a2eb0bc06aeffa52684ae17a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f2aac6dd7e073634d4114d33fae6bebd51fe176
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931971"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736331"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell kullanarak bir ExpressRoute devresini değiştirme (klasik)
 
@@ -39,7 +39,7 @@ Bu makalede, ExpressRoute klasik dağıtım modeli devrenizin durumunu denetleme
 
 ## <a name="get-the-status-of-a-circuit"></a>Devrenin durumunu al
 
-Bu bilgileri, `Get-AzureCircuit` cmdlet 'ini kullanarak istediğiniz zaman alabilirsiniz. Hiçbir parametre olmadan çağrının yapılması tüm devreleri listeler.
+Bu bilgileri, cmdlet 'ini kullanarak istediğiniz zaman alabilirsiniz `Get-AzureCircuit` . Hiçbir parametre olmadan çağrının yapılması tüm devreleri listeler.
 
 ```powershell
 Get-AzureDedicatedCircuit

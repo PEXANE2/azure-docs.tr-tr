@@ -4,20 +4,19 @@ description: Platform bildirim sistemi (PNS) ayarlarını kullanarak Azure porta
 services: notification-hubs
 author: sethmanheim
 manager: femila
-editor: dbradish-microsoft
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: quickstart
-ms.date: 02/14/2019
+ms.date: 06/22/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 78afb124ee1d1ab9b212197fb7a7140f88de9940
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: af792ccfe8e00c26abc6aab2e4a96d7ef9ff5122
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80349523"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252058"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Hızlı başlangıç: Bildirim Hub 'ında anında iletme bildirimleri ayarlama
 
@@ -49,7 +48,7 @@ Apple Anında İletilen Bildirim Servisi (APNS) ayarlamak için:
 
      ![Azure portal bir APNS belirteç yapılandırması ekran görüntüsü](./media/configure-notification-hub-portal-pns-settings/notification-hubs-apple-config-token.png)
 
-Daha fazla bilgi için bkz. [Azure Notification Hubs kullanarak iOS 'A anında iletme bildirimleri gönderme](notification-hubs-ios-apple-push-notification-apns-get-started.md).
+Daha fazla bilgi için bkz. [Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri gönderme](ios-sdk-get-started.md).
 
 ## <a name="google-firebase-cloud-messaging-fcm"></a>Google Firebase Cloud Messaging (FCM)
 
@@ -84,7 +83,7 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
    az notification-hub credential gcm update --resource-group spnhubrg --namespace-name spnhubns    --notification-hub-name spfcmtutorial1nhub --google-api-key myKey
    ```
 
-2. Android uygulamasının Bildirim Hub 'ına bağlanmak için bir bağlantı dizesi olması gerekir.  Kullanılabilir erişim ilkelerini listelemek için [az Notification-Hub Authorization-Rule List](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) komutunu kullanın.  Erişim ilkesi bağlantı dizelerini almak için [az Notification-Hub Authorization-Rule List-Keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) komutunu kullanın.  Birincil bağlantı dizesini doğrudan almak için `--query` parametresinde **Primaryconnectionstring** veya **secondaryconnectionstring** öğesini belirtin.
+2. Android uygulamasının Bildirim Hub 'ına bağlanmak için bir bağlantı dizesi olması gerekir.  Kullanılabilir erişim ilkelerini listelemek için [az Notification-Hub Authorization-Rule List](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) komutunu kullanın.  Erişim ilkesi bağlantı dizelerini almak için [az Notification-Hub Authorization-Rule List-Keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) komutunu kullanın.  Birincil bağlantı dizesini doğrudan almak için parametresinde **primaryconnectionstring** veya **secondaryconnectionstring** öğesini belirtin `--query` .
 
    ```azurecli
    #list access policies for a notification hub
@@ -132,7 +131,7 @@ Windows Phone için Microsoft anında Iletme bildirimi hizmeti 'ni (MPNS) ayarla
 1. Azure portal, **Bildirim Hub** 'ı sayfasında sol menüden **Windows Phone (MPNS)** öğesini seçin.
 1. Kimliği doğrulanmamış veya kimliği doğrulanmış anında iletme bildirimlerini etkinleştir:
 
-   a. Kimliği doğrulanmamış > **anında iletme bildirimlerini**etkinleştirmek için, **kimliği doğrulanmamış gönderimi etkinleştir**' i seçin.
+   a. Kimliği doğrulanmamış anında iletme bildirimlerini etkinleştirmek için, **kimliği doğrulanmamış gönderimi etkinleştir**' i seçin  >  **Save**.
 
       ![Kimliği doğrulanmamış anında iletme bildirimlerinin nasıl etkinleştirileceğini gösteren ekran görüntüsü](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 
@@ -166,8 +165,8 @@ Bu hızlı başlangıçta, Azure portal bir Bildirim Hub 'ı için platform bild
 
 Çeşitli platformlara bildirim gönderme hakkında daha fazla bilgi edinmek için şu öğreticilere bakın:
 
--[Push notifications to iOS devices by using Notification Hubs and APNS](notification-hubs-ios-apple-push-notification-apns-get-started.md)
--[Notification Hubs ve Baidu Bulut anında iletme kullanarak](notification-hubs-baidu-china-android-notifications-get-started.md) MPNS
--anında iletme bildirimlerini[kullanarak bir Windows Phone 8 uygulamasına](notification-hubs-windows-mobile-push-notifications-mpns.md)
--[bir Windows cihaz](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
--anında iletme bildirimleri kullanarak,[Notification Hubs Android](notification-hubs-android-push-notification-google-fcm-get-started.md)cihazlarına Notification Hubs ve APNs anında iletme bildirimleri kullanarak iOS cihazlarına anında iletme bildirimleri gönderin.
+* [Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri gönderme](ios-sdk-get-started.md)
+* [Notification Hubs ve Google FCM kullanarak Android cihazlara bildirimler gönderme](notification-hubs-android-push-notification-google-fcm-get-started.md)
+* [Bir Windows cihazında çalışan UWP uygulamasına bildirim gönderme](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
+* [MPNS kullanarak Windows Phone 8 uygulamasına bildirimler gönderme](notification-hubs-windows-mobile-push-notifications-mpns.md)
+* [Notification Hubs ve Baidu bulut anında iletme kullanarak bildirim gönderin](notification-hubs-baidu-china-android-notifications-get-started.md)

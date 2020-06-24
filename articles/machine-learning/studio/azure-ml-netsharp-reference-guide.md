@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: c1912e670a9cf1c178b58cefbd33171f15be2483
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b297a3f975450b7459895ce7c0abc79e9b2fcdea
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79218259"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85129526"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio için net # sinir ağ belirtim diline kılavuzluk (klasik)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 NET #, Microsoft tarafından geliştirilen ve derin sinir ağları ya da rastgele boyutlardaki evler gibi karmaşık sinir ağ mimarilerini tanımlamak için kullanılan bir dildir. Görüntü, video veya ses gibi verilerin öğrenmesini geliştirmek için karmaşık yapıları kullanabilirsiniz.
 
@@ -58,7 +56,7 @@ Ayrıca, net # aşağıdaki dört gelişmiş bağlantı paketi türünü destekl
 
 ## <a name="supported-customizations"></a>Desteklenen özelleştirmeler
 
-Azure Machine Learning Studio (klasik) içinde oluşturduğunuz sinir ağ modellerinin mimarisi, NET # kullanılarak kapsamlı bir şekilde özelleştirilebilir. Şunları yapabilirsiniz:
+Azure Machine Learning Studio (klasik) içinde oluşturduğunuz sinir ağ modellerinin mimarisi, NET # kullanılarak kapsamlı bir şekilde özelleştirilebilir. Seçenekleriniz şunlardır:
 
 + Gizli katmanlar oluşturun ve her katmandaki düğümlerin sayısını denetleyin.
 + Katmanların birbirlerine nasıl bağlandığını belirtin.
@@ -87,7 +85,7 @@ Sinir ağ yapısı belirtimi üç bölümden oluşur: **sabit bildirim**, **Katm
 
 Sabit bir bildirim isteğe bağlıdır. Sinir ağ tanımında başka bir yerde kullanılan değerleri tanımlamak için bir yol sağlar. Bildirim deyimi, ardından eşittir işareti ve değer ifadesi gelen bir tanımlayıcıdan oluşur.
 
-Örneğin, aşağıdaki ifade bir sabiti `x`tanımlar:
+Örneğin, aşağıdaki ifade bir sabiti tanımlar `x` :
 
 `Const X = 28;`
 
@@ -112,7 +110,7 @@ output Result[2] from Hidden all;
 + Boyutların çarpımı, katmandaki düğümlerin sayısıdır. Bu örnekte, iki boyut olan [5, 20] vardır. Bu, katmanda 100 düğüm olduğu anlamına gelir.
 + Katmanlar herhangi bir sırada, tek bir istisna ile bildirilebilecek: birden fazla giriş katmanı tanımlanmışsa, bunların bildirildiği sıra giriş verilerinde özelliklerin sırasıyla aynı olmalıdır.
 
-Bir katmandaki düğümlerin sayısının otomatik olarak belirlendiğini belirtmek için `auto` anahtar sözcüğünü kullanın. `auto` Anahtar sözcüğü katmana bağlı olarak farklı etkilere sahiptir:
+Bir katmandaki düğümlerin sayısının otomatik olarak belirlendiğini belirtmek için `auto` anahtar sözcüğünü kullanın. `auto`Anahtar sözcüğü katmana bağlı olarak farklı etkilere sahiptir:
 
 + Giriş katmanı bildiriminde, düğüm sayısı girdi verilerinde özelliklerin sayısıdır.
 + Gizli katman bildiriminde, düğüm sayısı, **gizli düğümlerin sayısı**için parametre değeri tarafından belirtilen sayıdır.
@@ -147,13 +145,13 @@ Aşağıdaki çıkış işlevleri desteklenir:
 
 ## <a name="connection-declaration"></a>Bağlantı bildirimi
 
-Daha önce, bir katmanı tanımladıktan hemen sonra, tanımladığınız katmanlar arasında bağlantı bildirmeniz gerekir. Bağlantı paketi bildirimi, anahtar sözcüğüyle `from`başlar ve sonra paketin kaynak katmanının adı ve oluşturulacak bağlantı paketi türüdür.
+Daha önce, bir katmanı tanımladıktan hemen sonra, tanımladığınız katmanlar arasında bağlantı bildirmeniz gerekir. Bağlantı paketi bildirimi, anahtar sözcüğüyle başlar `from` ve sonra paketin kaynak katmanının adı ve oluşturulacak bağlantı paketi türüdür.
 
 Şu anda, beş tür bağlantı demeti desteklenir:
 
 + Anahtar sözcüğü ile gösterilen **tam** demeti`all`
-+ **Filtered** Anahtar sözcüğü `where`ve ardından bir koşul ifadesi tarafından belirtilen filtrelenmiş paket
-+ Anahtar sözcüğü `convolve`ve ardından evme öznitelikleri tarafından belirtilen **evsel** paketleri
++ **Filtered** Anahtar sözcüğü ve `where` ardından bir koşul Ifadesi tarafından belirtilen filtrelenmiş paket
++ Anahtar sözcüğü ve ardından evme öznitelikleri tarafından belirtilen **evsel** paketleri `convolve`
 + Anahtar sözcük **en fazla havuz** veya **Ortalama havuz** tarafından belirtilen **Havuz** paketleri
 + Anahtar sözcük **Yanıt norm** tarafından belirtilen **Yanıt normalleştirme** paketleri
 
@@ -171,13 +169,13 @@ hidden ByRow[10, 12] from Pixels where (s,d) => s[0] == d[0];
 hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 ```
 
-+ İçin `ByRow` `s` koşulunda, giriş katmanının `Pixels`düğüm dizisinin dikdörtgen dizisine bir dizin temsil eden bir parametredir, ve `d` gizli katmanın düğüm dizisine bir dizin temsil eden bir parametredir. `ByRow` Hem hem de `s` `d` türü, iki uzunluğunda tamsayıların bir tanımlama dizisidir. Kavramsal olarak `s` , ve ile tüm tamsayı `0 <= s[0] < 10` `0 <= s[1] < 20`çiftleri üzerinde aralıklar ve ve `d` `0 <= d[0] < 10` `0 <= d[1] < 12`ile tüm tamsayı çiftleri üzerinde aralıklar.
++ İçin koşulunda, `ByRow` `s` giriş katmanının düğüm dizisinin dikdörtgen dizisine bir dizin temsil eden bir parametredir, `Pixels` ve `d` gizli katmanın düğüm dizisine bir dizin temsil eden bir parametredir `ByRow` . Hem hem de türü `s` , `d` iki uzunluğunda tamsayıların bir tanımlama dizisidir. Kavramsal olarak, ve ile tüm `s` tamsayı çiftleri üzerinde aralıklar ve `0 <= s[0] < 10` `0 <= s[1] < 20` `d` ve ile tüm tamsayı çiftleri üzerinde aralıklar `0 <= d[0] < 10` `0 <= d[1] < 12` .
 
-+ Koşul ifadesinin sağ tarafında bir koşul vardır. Bu örnekte, her değeri için `s` ve `d` koşulun true olması gibi, kaynak katman düğümünden hedef katman düğümüne bir kenar vardır. Bu nedenle, bu filtre ifadesi, paketin tarafından `s` tanımlanan düğümden, s [0] değerinin d [0] değerine `d` eşit olduğu her durumda tarafından tanımlanan düğüme bir bağlantı içerdiğini belirtir.
++ Koşul ifadesinin sağ tarafında bir koşul vardır. Bu örnekte, her değeri için `s` ve `d` koşulun true olması gibi, kaynak katman düğümünden hedef katman düğümüne bir kenar vardır. Bu nedenle, bu filtre ifadesi, paketin tarafından tanımlanan düğümden, `s` `d` s [0] değerinin d [0] değerine eşit olduğu her durumda tarafından tanımlanan düğüme bir bağlantı içerdiğini belirtir.
 
 İsteğe bağlı olarak, filtrelenmiş bir paket için bir ağırlık kümesi belirtebilirsiniz. **Ağırlıklar** özniteliğinin değeri, paket tarafından tanımlanan bağlantı sayısıyla eşleşen bir uzunluğu olan kayan nokta değerlerinin bir grubu olmalıdır. Varsayılan olarak ağırlıklar rastgele oluşturulur.
 
-Ağırlık değerleri, hedef düğüm dizinine göre gruplandırılır. Diğer bir deyişle, ilk hedef düğümü K kaynak düğümlerine bağlandıysa, **ağırlıkların** kayıt düzeninin ilk `K` öğeleri, kaynak dizin sırası ' nda ilk hedef düğümün ağırlıklardır. Aynı, kalan hedef düğümler için de geçerlidir.
+Ağırlık değerleri, hedef düğüm dizinine göre gruplandırılır. Diğer bir deyişle, ilk hedef düğümü K kaynak düğümlerine bağlandıysa, `K` **ağırlıkların** kayıt düzeninin ilk öğeleri, kaynak dizin sırası ' nda ilk hedef düğümün ağırlıklardır. Aynı, kalan hedef düğümler için de geçerlidir.
 
 Ağırlıkları doğrudan sabit değerler olarak belirtmek mümkündür. Örneğin, daha önce ağırlıkları öğrendiyseniz, bu söz dizimini kullanarak bunları sabitler olarak belirtebilirsiniz:
 
@@ -211,18 +209,18 @@ Doldurmayı denetleyen iki özellik kümesi vardır: birbirini dışlayan Özell
 
     Tek bir Boole değeri, tüm bileşenleri belirtilen değere eşit olan doğru uzunlukta bir tanımlama grubu olacak şekilde genişletilir.
 
-    Bir boyutun değeri doğruysa, kaynak katmanda bu boyuttaki ilk ve son kerinin merkezi düğümleri, kaynak katmandaki bu boyuttaki ilk ve son düğümler olacak şekilde, kaynak, ek çekirdek uygulamalarını desteklemek üzere sıfır değerli hücrelerle mantıksal olarak doldurulur. Bu nedenle, her boyuttaki "kukla" düğümlerin sayısı, doldurulmuş kaynak katmana tam `(InputShape[d] - 1) / Stride[d] + 1` olarak kerklere sığacak şekilde otomatik olarak belirlenir.
+    Bir boyutun değeri doğruysa, kaynak katmanda bu boyuttaki ilk ve son kerinin merkezi düğümleri, kaynak katmandaki bu boyuttaki ilk ve son düğümler olacak şekilde, kaynak, ek çekirdek uygulamalarını desteklemek üzere sıfır değerli hücrelerle mantıksal olarak doldurulur. Bu nedenle, her boyuttaki "kukla" düğümlerin sayısı, doldurulmuş kaynak katmana tam olarak kerklere sığacak şekilde otomatik olarak belirlenir `(InputShape[d] - 1) / Stride[d] + 1` .
 
     Bir boyutun değeri false ise, çekirdekler, bırakılan her bir taraftaki düğümlerin sayısı aynı (1 ' e kadar bir farka kadar) olacak şekilde tanımlanır. Bu özniteliğin varsayılan değeri, tüm bileşenleri false değerine eşit olan bir tanımlama grubu olur.
 
 + **Üsteli panel** ve küçük **panel**: (isteğe bağlı) kullanılacak doldurma miktarı üzerinde daha fazla denetim sağlar. **Önemli:** Bu öznitelikler ve yalnızca yukarıdaki **doldurma** ***özelliği tanımlanmamışsa tanımlanabilir*** . Değerler, paket parametre sayısı olan uzunluklara sahip tamsayı değerli diziler olmalıdır. Bu öznitelikler belirtildiğinde, giriş katmanının her boyutunun alt ve üst uçlarına "kukla" düğümler eklenir. Her boyuttaki alt ve üst uçlarına eklenen düğümlerin sayısı, sırasıyla küçük **panel**[i] ve en büyük **Pad**[i] tarafından belirlenir.
 
     Çekirdekler 'in yalnızca "gerçek" düğümlere karşılık geldiğinden ve "kukla" düğümlere karşılık gelmesini sağlamak için aşağıdaki koşulların karşılanması gerekir:
-  - Küçük **panel** bileşeninin her bileşeni, öğesinden `KernelShape[d]/2`kesinlikle küçük olmalıdır.
-  - Üstün her bileşeni, ' den `KernelShape[d]/2` **büyük olmamalıdır.**
+  - Küçük **panel** bileşeninin her bileşeni, öğesinden kesinlikle küçük olmalıdır `KernelShape[d]/2` .
+  - Üstün her bileşeni, ' den **büyük olmamalıdır** `KernelShape[d]/2` .
   - Bu özniteliklerin varsayılan değeri, tüm bileşenleri 0 ' a eşit olan bir tanımlama grubu olur.
 
-    **Padding** = true ayarı, çekirdeğin "Center" değerini "Real" girişinin içinde tutmak için gereken kadar doldurma sağlar. Bu, çıktı boyutunu bilgi işlem için matematik bir bit olarak değiştirir. Genellikle, çıkış boyutu *D* `D = (I - K) / S + 1`olarak hesaplanır, burada `I` giriş boyutudur `K` , çekirdek boyutudur, `S` ilerdir ve `/` tamsayı bölümü olur (sıfıra yuvarlar). Üstepad = [1, 1] ayarlarsanız, giriş boyutu `I` etkin olarak 29 ve bu nedenle. `D = (29 - 5) / 2 + 1 = 13` Ancak, **Padding** = true olduğunda, temelde `I` , tarafından `K - 1`tamponlanır; Bu `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`nedenle. Üstpanel ve küçük **UpperPad** **panel** değerlerini belirterek, doldurma üzerinde yalnızca **Padding** = true değerini ayarlamış kadar daha fazla denetim sahibi olursunuz.
+    **Padding** = true ayarı, çekirdeğin "Center" değerini "Real" girişinin içinde tutmak için gereken kadar doldurma sağlar. Bu, çıktı boyutunu bilgi işlem için matematik bir bit olarak değiştirir. Genellikle, çıkış boyutu *D* olarak hesaplanır `D = (I - K) / S + 1` , burada `I` giriş boyutudur, `K` çekirdek boyutudur, `S` ilerdir ve `/` tamsayı bölümü olur (sıfıra yuvarlar). Üstepad = [1, 1] ayarlarsanız, giriş boyutu `I` etkin olarak 29 ve bu nedenle `D = (29 - 5) / 2 + 1 = 13` . Ancak, **Padding** = true olduğunda, temelde `I` tarafından tamponlanır `K - 1` ; Bu nedenle `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14` . Üstpanel ve küçük **UpperPad** **panel** değerlerini belirterek, doldurma üzerinde yalnızca **Padding** = true değerini ayarlamış kadar daha fazla denetim sahibi olursunuz.
 
 Evsel ağlar ve uygulamaları hakkında daha fazla bilgi için şu makalelere bakın:
 
@@ -246,10 +244,10 @@ hidden P1 [5, 12, 12]
   }
 ```
 
-+ Paket parametre sayısı 3 ' dir: diğer bir deyişle, ve tanımlama gruplarının `InputShape` `KernelShape`uzunluğu, ve. `Stride`
-+ Kaynak katmandaki düğümlerin sayısı `5 * 24 * 24 = 2880`.
++ Paket parametre sayısı 3 ' dir: diğer bir deyişle, ve tanımlama gruplarının uzunluğu, `InputShape` `KernelShape` ve `Stride` .
++ Kaynak katmandaki düğümlerin sayısı `5 * 24 * 24 = 2880` .
 + Bu, geleneksel bir yerel havuz katmanıdır çünkü **Kernelshape** ve bir **adım** eşit.
-+ Hedef katmandaki düğümlerin sayısı `5 * 12 * 12 = 1440`.
++ Hedef katmandaki düğümlerin sayısı `5 * 12 * 12 = 1440` .
 
 Havuz oluşturma katmanları hakkında daha fazla bilgi için şu makalelere bakın:
 
@@ -261,7 +259,7 @@ Havuz oluşturma katmanları hakkında daha fazla bilgi için şu makalelere bak
 
 **Yanıt normalleştirme** , [derin evsel sinir ağlarla kağıt Imagenet sınıflandırmasında](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)Ilk olarak Geoffey Hinton, et al tarafından tanıtılan yerel bir normalleştirme düzenidir.
 
-Yanıt normalleştirme, sinir ağlarında genelleştirmeye yardımcı olmak için kullanılır. Bir neuron çok yüksek etkinleştirme düzeyinde başlatıldığında, yerel bir yanıt normalleştirme katmanı, çevreleyen eklentilerin etkinleştirme düzeyini bastırır. Bu, üç parametre (`α`, `β`, ve `k`) ve bir evsel yapı (veya komşu şekli) kullanılarak yapılır. Hedef katman **y** içindeki her neuron kaynak katmandaki bir neuron **x** 'e karşılık gelir. **Y** etkinleştirme düzeyi aşağıdaki formül tarafından verilir, burada `f` bir neuron öğesinin etkinleştirme düzeyidir ve `Nx` çekirdek (ya da **x**'in komşuları içindeki neurons 'yi içeren küme) aşağıdaki alt yapı tarafından tanımlandığı şekilde belirlenir:
+Yanıt normalleştirme, sinir ağlarında genelleştirmeye yardımcı olmak için kullanılır. Bir neuron çok yüksek etkinleştirme düzeyinde başlatıldığında, yerel bir yanıt normalleştirme katmanı, çevreleyen eklentilerin etkinleştirme düzeyini bastırır. Bu, üç parametre ( `α` , `β` , ve `k` ) ve bir evsel yapı (veya komşu şekli) kullanılarak yapılır. Hedef katman **y** içindeki her neuron kaynak katmandaki bir neuron **x** 'e karşılık gelir. **Y** etkinleştirme düzeyi aşağıdaki formül tarafından verilir, burada `f` bir neuron öğesinin etkinleştirme düzeyidir ve `Nx` çekirdek (ya da **x**'in komşuları içindeki neurons 'yi içeren küme) aşağıdaki alt yapı tarafından tanımlandığı şekilde belirlenir:
 
 ![Evsel yapı için formül](./media/azure-ml-netsharp-reference-guide/formula_large.png)
 
@@ -274,13 +272,13 @@ Yanıt normalleştirme paketleri, **Paylaşım**, **Mapcount**ve **ağırlıklar
 Yanıt normalleştirme paketleri, hedef düğüm değerini belirlemede önceden tanımlanmış bir işlevi kaynak düğüm değerlerine uygulayarak, hiçbir zaman kaybı yoktur (ağırlık veya Bialar).
 
 > [!NOTE]
-> Hedef katmandaki düğümler, kernels 'in merkezi düğümleri olan neurlanlar 'a karşılık gelir. Örneğin, tek `KernelShape[d]` ise, Merkezi çekirdek düğümüne `KernelShape[d]/2` karşılık gelir. `KernelShape[d]` Bile, merkezi düğüm de olur `KernelShape[d]/2 - 1`. Bu nedenle, `Padding[d]` false ise, ilk ve son `KernelShape[d]/2` düğümlerin hedef katmanda karşılık gelen düğümleri yoktur. Bu durumdan kaçınmak için, **doldurmayı** [true, true,..., true] olarak tanımlayın.
+> Hedef katmandaki düğümler, kernels 'in merkezi düğümleri olan neurlanlar 'a karşılık gelir. Örneğin, `KernelShape[d]` tek ise, `KernelShape[d]/2` Merkezi çekirdek düğümüne karşılık gelir. `KernelShape[d]`Bile, merkezi düğüm de olur `KernelShape[d]/2 - 1` . Bu nedenle, `Padding[d]` false ise, ilk ve son `KernelShape[d]/2` düğümlerin hedef katmanda karşılık gelen düğümleri yoktur. Bu durumdan kaçınmak için, **doldurmayı** [true, true,..., true] olarak tanımlayın.
 
 Daha önce açıklanan dört özniteliğe ek olarak, yanıt normalleştirme paketleri de aşağıdaki öznitelikleri destekler:
 
-+ **Alfa**: (gerekli) önceki formülde karşılık `α` gelen bir kayan nokta değeri belirtir.
-+ **Beta**: (gerekli) önceki formülde karşılık `β` gelen bir kayan nokta değeri belirtir.
-+ **Kaydırma**: (isteğe bağlı) önceki formülde karşılık `k` gelen kayan nokta değerini belirtir. Varsayılan olarak 1 ' dir.
++ **Alfa**: (gerekli) önceki formülde karşılık gelen bir kayan nokta değeri belirtir `α` .
++ **Beta**: (gerekli) önceki formülde karşılık gelen bir kayan nokta değeri belirtir `β` .
++ **Kaydırma**: (isteğe bağlı) önceki formülde karşılık gelen kayan nokta değerini belirtir `k` . Varsayılan olarak 1 ' dir.
 
 Aşağıdaki örnek, bu öznitelikleri kullanarak bir yanıt normalleştirme paketi tanımlar:
 
@@ -382,9 +380,9 @@ output Out [10] sigmoid from H all;
 
 Örnek aşağıda gösterildiği gibi bazı temel komutları göstermektedir:
 
-+ İlk satır giriş katmanını (adlandırılmış `Data`) tanımlar. `auto` Anahtar sözcüğünü kullandığınızda, sinir ağı giriş örneklerinde tüm özellik sütunlarını otomatik olarak ekler.
-+ İkinci satır gizli katmanı oluşturur. Ad `H` , 200 düğümü bulunan gizli katmana atanır. Bu katman, giriş katmanına tam olarak bağlıdır.
-+ Üçüncü satır, 10 çıkış düğümü içeren çıkış katmanını `Out`(adlandırılmış) tanımlar. Sınıflandırma için sinir ağı kullanılıyorsa, sınıf başına bir çıkış düğümü vardır. **Sigmoıd** anahtar sözcüğü çıkış işlevinin çıkış katmanına uygulandığını gösterir.
++ İlk satır giriş katmanını (adlandırılmış `Data` ) tanımlar. `auto`Anahtar sözcüğünü kullandığınızda, sinir ağı giriş örneklerinde tüm özellik sütunlarını otomatik olarak ekler.
++ İkinci satır gizli katmanı oluşturur. Ad, `H` 200 düğümü bulunan gizli katmana atanır. Bu katman, giriş katmanına tam olarak bağlıdır.
++ Üçüncü satır `Out` , 10 çıkış düğümü içeren çıkış katmanını (adlandırılmış) tanımlar. Sınıflandırma için sinir ağı kullanılıyorsa, sınıf başına bir çıkış düğümü vardır. **Sigmoıd** anahtar sözcüğü çıkış işlevinin çıkış katmanına uygulandığını gösterir.
 
 ### <a name="define-multiple-hidden-layers-computer-vision-example"></a>Birden çok gizli katman tanımlayın: görüntü görme örneği
 
@@ -416,11 +414,11 @@ from MetaData all;
 
 Bu örnekte, sinir Networks belirtim dilinin çeşitli özellikleri gösterilmektedir:
 
-+ Yapı iki giriş katmanına sahiptir `Pixels` ve. `MetaData`
-+ `Pixels` Katman, hedef katmanları `ByRow` ve `ByCol`ile iki bağlantı paketi için bir kaynak katmanıdır.
++ Yapı iki giriş katmanına sahiptir `Pixels` ve `MetaData` .
++ `Pixels`Katman, hedef katmanları ve ile iki bağlantı paketi için bir kaynak katmanıdır `ByRow` `ByCol` .
 + Katmanlar `Gather` ve `Result` çok sayıda bağlantı paketinde hedef katmanlardır.
-+ Çıkış katmanı `Result`, iki bağlantı paketinde bir hedef katmanıdır; bir hedef katman olarak ikinci düzey gizli `Gather` katman ve diğeri de hedef katman olarak giriş katmanıyla `MetaData` birlikte.
-+ Gizli katmanlar `ByRow` ve `ByCol`, koşul ifadelerini kullanarak filtrelenmiş bağlantı belirtin. Daha kesin olarak, [x `ByRow` , y] konumundaki düğüm, ilk dizin koordinatına, düğümün `Pixels` ilk koordinatına (x) eşit olan düğümlere bağlıdır. Benzer şekilde, [x `ByCol` , y] konumundaki düğüm, düğüm ikinci koordinatı, y içindeki `Pixels` ikinci dizin koordinasyonu olan içindeki düğümlere bağlıdır.
++ Çıkış katmanı, `Result` iki bağlantı paketinde bulunan bir hedef katmandır; biri hedef katman olarak ikinci düzey gizli katmana `Gather` ve diğeri de hedef katman olarak giriş katmanına sahip olur `MetaData` .
++ Gizli katmanlar `ByRow` ve `ByCol` , koşul ifadelerini kullanarak filtrelenmiş bağlantı belirtin. Daha kesin olarak, `ByRow` [x, y] konumundaki düğüm, `Pixels` ilk dizin koordinatına, düğümün ilk koordinatına (x) eşit olan düğümlere bağlıdır. Benzer şekilde, `ByCol` [x, y] konumundaki düğüm, `Pixels` düğüm ikinci koordinatı, y içindeki ikinci dizin koordinasyonu olan içindeki düğümlere bağlıdır.
 
 ### <a name="define-a-convolutional-network-for-multiclass-classification-digit-recognition-example"></a>Birden çok Lass sınıflandırması için bir evsel ağ tanımlayın: basamak tanıma örneği
 
@@ -448,20 +446,20 @@ hidden Hid3 [100] from Conv2 all;
 output Digit [10] from Hid3 all;
 ```
 
-+ Yapının tek bir giriş katmanı vardır `Image`.
-+ Anahtar sözcüğü `convolve` , ve `Conv1` `Conv2` adlı katmanların evsel katmanlar olduğunu gösterir. Bu katman bildirimlerinin her birine, ardından evme özniteliklerinin bir listesi gelir.
-+ NET, ikinci gizli katmana tamamen bağlı olan `Hid3`üçüncü bir gizli katmana sahiptir `Conv2`.
-+ Çıkış katmanı `Digit`, yalnızca üçüncü gizli katmana bağlanır `Hid3`. Anahtar sözcüğü `all` , çıktı katmanının tam olarak bağlandığını belirtir `Hid3`.
-+ Evin parametre sayısı üç: `InputShape`,, ve `KernelShape` `Stride` `Sharing`tanımlama gruplarının uzunluğu.
-+ Çekirdek başına ağırlık sayısı `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`. Veya `26 * 50 = 1300`.
++ Yapının tek bir giriş katmanı vardır `Image` .
++ Anahtar sözcüğü, `convolve` ve adlı katmanların `Conv1` `Conv2` evsel katmanlar olduğunu gösterir. Bu katman bildirimlerinin her birine, ardından evme özniteliklerinin bir listesi gelir.
++ NET, `Hid3` ikinci gizli katmana tamamen bağlı olan üçüncü bir gizli katmana sahiptir `Conv2` .
++ Çıkış katmanı, `Digit` yalnızca üçüncü gizli katmana bağlanır `Hid3` . Anahtar sözcüğü, `all` çıktı katmanının tam olarak bağlandığını belirtir `Hid3` .
++ Evin parametre sayısı üç:,, ve tanımlama gruplarının uzunluğu `InputShape` `KernelShape` `Stride` `Sharing` .
++ Çekirdek başına ağırlık sayısı `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26` . Veya `26 * 50 = 1300` .
 + Her gizli katmandaki düğümleri aşağıdaki şekilde hesaplayabilirsiniz:
 
     `NodeCount\[0] = (5 - 1) / 1 + 1 = 5` `NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
     `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
 
 + Toplam düğüm sayısı, [50, 5, 5] katmanının belirtilen boyutlılık kullanılarak hesaplanabilir, örneğin:`MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
-+ Yalnızca `Sharing[d]` için `d == 0`false olduğundan, çekirdekler sayısı `MapCount * NodeCount\[0] = 10 * 5 = 50`.
++ `Sharing[d]`Yalnızca için false olduğundan `d == 0` , çekirdekler sayısı `MapCount * NodeCount\[0] = 10 * 5 = 50` .
 
-## <a name="acknowledgements"></a>Bildirimler
+## <a name="acknowledgements"></a>Teşekkürler
 
 Sinir Networks mimarisini özelleştirmeye yönelik net # dili, Microsoft 'ta Shon Katzenberger (mimar, Machine Learning) ve Alexey Kamenev (yazılım mühendisi, Microsoft Research) tarafından geliştirilmiştir. Görüntü algılamada metin analizinden değişen makine öğrenimi projeleri ve uygulamaları için dahili olarak kullanılır. Daha fazla bilgi için bkz. [Azure Machine Learning Studio 'Da sinir ağları-net # 'A giriş](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)

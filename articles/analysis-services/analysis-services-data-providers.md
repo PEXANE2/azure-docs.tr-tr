@@ -4,15 +4,15 @@ description: İstemci uygulamaları ve araçları 'na bağlanmak için gereken i
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 06/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8c02be378febacc4db0b077a3be69339ff9710a0
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 1bdb9c93e5b5a510e6d89f879f0783fe95910c43
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300918"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976600"
 ---
 # <a name="client-libraries-for-connecting-to-analysis-services"></a>Analysis Services bağlantı için istemci kitaplıkları
 
@@ -22,19 +22,21 @@ ms.locfileid: "84300918"
 
 |İndir  |Ürün sürümü  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.42.26    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.42.26       |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   19.2.0.2    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    19.2.0.2     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.44.24    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.44.24       |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   19.4.0.2    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    19.4.0.2     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO ve ADOMD (NuGet paketleri)
 
-Analysis Services Management Objects (AMO) ve ADOMD istemci kitaplıkları, [NuGet.org](https://www.nuget.org/)adresinden yüklenebilen paketler olarak sunulmaktadır. Windows Installer kullanmak yerine NuGet başvurularına geçiş yapmanız önerilir. 
+Analysis Services Management Objects (AMO) ve ADOMD istemci kitaplıkları, [NuGet.org](https://www.nuget.org/)adresinden yüklenebilen paketler olarak sunulmaktadır. Windows Installer kullanmak yerine NuGet başvurularına geçiş yapmanız önerilir. Haziran 2020 ' den itibaren, [.NET Core](https://docs.microsoft.com/dotnet/core/about) paketlerinin amo ve adomd istemci paketlerine eşdeğer bir önizleme sürümü de mevcuttur. Bu .NET Core Preview yalnızca bulut tabanlı sunucuları destekler.
 
 |Paket  | Ürün sürümü  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    19.2.0.2     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   19.2.0.2      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    19.4.0.2     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   19.4.0.2      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.NetCore.retail.amd64/19.4.0.2-Preview/)    |    19.4.0.2 (Önizleme)    | 
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.NetCore.retail.amd64/19.4.0.2-Preview/)     |   19.4.0.2 (Önizleme)      | 
 
 NuGet Paket derlemeleri AssemblyVersion anlam sürümü oluşturma: büyük. Bazı. Düzeltmesi. NuGet başvuruları GAC 'de farklı bir sürüm olsa bile beklenen sürümü yükler (MSI yüklemesi sonucu olur). Her sürüm için düzeltme eki artırılır. AMO ve ADOMD sürümleri eşitlenmiş olarak tutulur.
 
@@ -74,7 +76,7 @@ Power BI Desktop ve Excel gibi Microsoft istemci uygulamaları, her üç istemci
   
 1.  `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` kısmına gidin. Birden fazla klasörünüz varsa, daha yüksek bir sayı seçin.
   
-2.  **MSOLAP. dll**  >  **özellikleri**  >  **ayrıntıları**' na sağ tıklayın. Dosya adı msolap140. dll ise, en son sürümden daha eski ve yükseltilmesi gerekir.
+2.  **msolap.dll**  >  **Özellikler**  >  **ayrıntıları**' na sağ tıklayın. Dosya adı msolap140.dll, en son sürümden daha eski ve yükseltilmesi gerekir.
     
     ![İstemci kitaplığı ayrıntıları](media/analysis-services-data-providers/aas-msolap-details.png)
     

@@ -11,12 +11,12 @@ ms.date: 07/18/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f1f6f4a6a1d48a0f409d5e5aba644a26653aa7df
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 2e1167c92dccdfa7600a4827c0081647c190d7d4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726069"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252143"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub’a erişimi denetleme
 
@@ -60,7 +60,7 @@ Aşağıdaki yollarla [izin](#iot-hub-permissions) verebilirsiniz:
 > [!NOTE]
 > Ayrıntılı bilgi için bkz. [izinler](#iot-hub-permissions) .
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
 Azure IoT Hub, bir belirteci paylaşılan erişim ilkeleri ve kimlik kayıt defteri güvenlik kimlik bilgileri ile doğrulayarak uç noktalara erişim izni verir.
 
@@ -137,7 +137,7 @@ Güvenlik belirtecinin biçimi aşağıdaki biçimdedir:
 
 Beklenen değerler şunlardır:
 
-| Değer | Açıklama |
+| Değer | Description |
 | --- | --- |
 | imza |Şu biçimdeki bir HMAC-SHA256 imza dizesi: `{URL-encoded-resourceURI} + "\n" + expiry` . **Önemli**: anahtarın Base64 olarak kodu çözülür ve HMAC-SHA256 hesaplamayı gerçekleştirmek için anahtar olarak kullanılır. |
 | ResourceURI |Bu belirteçle erişilebilen bitiş noktalarının, IoT Hub 'ın ana bilgisayar adı (protokol yok) ile başlayan URI ön eki (segmente göre). Örneğin, `myHub.azure-devices.net/devices/device1` |
@@ -147,7 +147,7 @@ Beklenen değerler şunlardır:
 
 **Ön eke Not**: URI öneki, karakterle değil, segmente göre hesaplanır. Örneğin `/a/b` , için bir ön ektir `/a/b/c` `/a/bc` .
 
-Aşağıdaki Node. js kod parçacığında, girdilerden belirteç hesaplayan **Generatesastoken** adlı bir işlev gösterilmektedir `resourceUri, signingKey, policyName, expiresInMins` . Sonraki bölümlerde farklı belirteç kullanım durumları için farklı girişlerin nasıl başlatılacağını ayrıntılı olarak anlatılmaktadır.
+Aşağıdaki Node.js kod parçacığında, girdilerden belirteç hesaplayan **Generatesastoken** adlı bir işlev gösterilmektedir `resourceUri, signingKey, policyName, expiresInMins` . Sonraki bölümlerde farklı belirteç kullanım durumları için farklı girişlerin nasıl başlatılacağını ayrıntılı olarak anlatılmaktadır.
 
 ```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
@@ -198,11 +198,6 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
     return 'SharedAccessSignature ' + parse.urlencode(rawtoken)
 ```
 
-Önkoşullar için yükleme yönergeleri aşağıda verilmiştir.
-
-[!INCLUDE [Iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
-
-
 Bir güvenlik belirteci oluşturmak Için C# ' deki işlevler şunlardır:
 
 ```csharp
@@ -235,7 +230,6 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
 ```
 
-
 > [!NOTE]
 > Belirtecin zaman geçerliliği IoT Hub makinelerde doğrulandıktan sonra, belirteci üreten makinenin saatinin en az olması gerekir.
 
@@ -266,7 +260,7 @@ Bir belirteç oluşturmak için bir cihaz kimliğinin simetrik anahtarı kullan�
 * ilke adı yok,
 * herhangi bir süre sonu süresi.
 
-Önceki Node. js işlevini kullanan bir örnek şöyle olabilir:
+Yukarıdaki Node.js işlevini kullanan bir örnek şöyle olacaktır:
 
 ```javascript
 var endpoint ="myhub.azure-devices.net/devices/device1";
@@ -300,7 +294,7 @@ Paylaşılan erişim ilkesi potansiyel olarak herhangi bir cihaz olarak bağlanm
 * ilke adı: `device` ,
 * herhangi bir süre sonu süresi.
 
-Önceki Node. js işlevini kullanan bir örnek şöyle olabilir:
+Yukarıdaki Node.js işlevini kullanan bir örnek şöyle olacaktır:
 
 ```javascript
 var endpoint ="myhub.azure-devices.net/devices/device1";

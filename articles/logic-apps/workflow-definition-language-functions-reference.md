@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: d879429eef68d1bc2448150e2d8eece9cfa35da2
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 4c7e5fd19049001409a7b349685c7e02bfc9875e
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204863"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130730"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps ve güç otomatikleştirme için ifadelerde işlevleri kullanmaya yönelik başvuru kılavuzu
 
@@ -130,8 +130,8 @@ Koşullara göre çalışmak, değerleri ve ifade sonuçlarını karşılaştır
 | [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Her iki değerin de eşdeğer olup olmadığını denetleyin. |
 | [büyüktür](../logic-apps/workflow-definition-language-functions-reference.md#greater) | İlk değerin ikinci değerden büyük olup olmadığını kontrol edin. |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | İlk değerin ikinci değere eşit veya ondan büyük olup olmadığını kontrol edin. |
-| [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | İfadenin true veya false olduğunu denetleyin. Sonuca göre belirtilen değeri döndürün. |
-| [daha az](../logic-apps/workflow-definition-language-functions-reference.md#less) | İlk değerin ikinci değerden küçük olup olmadığını kontrol edin. |
+| [kullandıysanız](../logic-apps/workflow-definition-language-functions-reference.md#if) | İfadenin true veya false olduğunu denetleyin. Sonuca göre belirtilen değeri döndürün. |
+| [büyüktür](../logic-apps/workflow-definition-language-functions-reference.md#less) | İlk değerin ikinci değerden küçük olup olmadığını kontrol edin. |
 | [lessOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | İlk değerin ikinci değere eşit veya ondan küçük olup olmadığını kontrol edin. |
 | [başlatılmadı](../logic-apps/workflow-definition-language-functions-reference.md#not) | İfadenin yanlış olup olmadığını denetleyin. |
 | [veya](../logic-apps/workflow-definition-language-functions-reference.md#or) | En az bir ifadenin doğru olup olmadığını denetleyin. |
@@ -213,7 +213,7 @@ Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workfl
 | [add](../logic-apps/workflow-definition-language-functions-reference.md#add) | İki sayı eklemenin sonucunu döndürür. |
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | İki sayının bölünme sonucunu döndürür. |
 | [Biçimlendir](../logic-apps/workflow-definition-language-functions-reference.md#max) | Sayı veya dizi kümesinden en yüksek değeri döndürün. |
-| [Min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Sayı veya dizi kümesinden en düşük değeri döndürün. |
+| [dk](../logic-apps/workflow-definition-language-functions-reference.md#min) | Sayı veya dizi kümesinden en düşük değeri döndürün. |
 | [alma](../logic-apps/workflow-definition-language-functions-reference.md#mod) | İki sayıdan ayırarak kalanı döndürün. |
 | [MUL](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Ürünü iki sayıdan çarpmadan döndürün. |
 | [ran](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Belirtilen aralıktan rastgele bir tamsayı döndürür. |
@@ -382,7 +382,7 @@ actionBody('<actionName>')
 | <*eylem-gövde-çıkış*> | Dize | `body`Belirtilen eylemden alınan çıkış |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, `body` Twitter eyleminden çıktıyı alır `Get user` :
 
@@ -427,7 +427,7 @@ actionOutputs('<actionName>')
 | <*çıktıların*> | Dize | Belirtilen eylemden alınan çıkış |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, Twitter eyleminden çıktıyı alır `Get user` :
 
@@ -498,7 +498,7 @@ actions('<actionName>').outputs.body.<property>
 | <*eylem-çıkış*> | Dize | Belirtilen eylem veya özelliğin çıktısı |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, `status` çalışma zamanında Twitter eyleminden özellik değerini alır `Get user` :
 
@@ -528,7 +528,7 @@ add(<summand_1>, <summand_2>)
 | <*Sonuç-toplam*> | Tamsayı veya kayan | Belirtilen sayıları eklemenin sonucu |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, belirtilen sayıları ekler:
 
@@ -923,7 +923,7 @@ array('<value>')
 | [<*değeri*>] | Dizi | Belirtilen tek girişi içeren bir dizi |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, "Hello" dizesinden bir dizi oluşturur:
 
@@ -956,7 +956,7 @@ base64('<value>')
 | <*Base64 dizesi*> | Dize | Giriş dizesi için Base64 kodlamalı sürüm |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, "Hello" dizesini Base64 kodlamalı bir dizeye dönüştürür:
 
@@ -989,7 +989,7 @@ base64ToBinary('<value>')
 | <*ikili-for-Base64-dize*> | Dize | Base64 ile kodlanmış dizenin ikili sürümü |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, "aGVsbG8 =" Base64 kodlamalı dizeyi ikili dizeye dönüştürür:
 
@@ -1024,7 +1024,7 @@ base64ToString('<value>')
 | <*kodu çözülmüş-Base64-dize*> | Dize | Base64 ile kodlanmış bir dize için dize sürümü |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, "aGVsbG8 =" Base64 kodlamalı dizeyi yalnızca bir dizeye dönüştürür:
 
@@ -1054,7 +1054,7 @@ binary('<value>')
 | <*-for-Input-Value*> | Dize | Belirtilen dizenin ikili sürümü |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, "Hello" dizesini ikili dizeye dönüştürür:
 
@@ -1088,7 +1088,7 @@ body('<actionName>')
 | <*eylem-gövde-çıkış*> | Dize | `body`Belirtilen eylemden alınan çıkış |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, `body` Twitter eyleminden çıktıyı alır `Get user` :
 
@@ -1133,7 +1133,7 @@ bool(<value>)
 | true veya false | Boole | Belirtilen değer için Boolean sürümü |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnekler, belirtilen değerleri Boole değerlerine dönüştürür:
 
@@ -1168,7 +1168,7 @@ coalesce(<object_1>, <object_2>, ...)
 | <*ilk-null olmayan öğe*> | Herhangi biri | Null olmayan ilk öğe veya değer. Tüm parametreler null ise, bu işlev null değerini döndürür. |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnekler, belirtilen değerlerden null olmayan ilk değeri veya tüm değerler null olduğunda null değerini döndürür:
 
@@ -1204,7 +1204,7 @@ concat('<text1>', '<text2>', ...)
 | <*text1text2...*> | Dize | Birleşik giriş dizelerinden oluşturulan dize |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, "Hello" ve "World" dizelerini birleştirir:
 
@@ -1408,7 +1408,7 @@ createArray('<object1>', '<object2>', ...)
 | [<*object1*>, <*object2*>,...] | Dizi | Tüm giriş öğelerinden oluşturulan dizi |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu girişlerden bir dizi oluşturur:
 
@@ -1438,7 +1438,7 @@ dataUri('<value>')
 | <*veri URI 'si*> | Dize | Giriş dizesi için veri URI 'SI |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, "Hello" dizesi için bir veri URI 'SI oluşturur:
 
@@ -1470,7 +1470,7 @@ dataUriToBinary('<value>')
 | <*-for-Data-Uri*> | Dize | Veri URI 'sinin ikili sürümü |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu veri URI 'SI için bir ikili sürüm oluşturur:
 
@@ -1505,7 +1505,7 @@ dataUriToString('<value>')
 | <*-for-Data-Uri için dize*> | Dize | Veri URI 'SI için dize sürümü |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu veri URI 'SI için bir dize oluşturur:
 
@@ -1535,7 +1535,7 @@ dayOfMonth('<timestamp>')
 | <*ayın günü*> | Tamsayı | Belirtilen zaman damgasından ayın günü |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu zaman damgasından ayın gününün numarasını döndürür:
 
@@ -1565,7 +1565,7 @@ dayOfWeek('<timestamp>')
 | <*Haftanın günü*> | Tamsayı | Pazar 0, Pazartesi 1, vb. belirtilen zaman damgasından haftanın günü |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu zaman damgasından Haftanın gününün numarasını döndürür:
 
@@ -1595,7 +1595,7 @@ dayOfYear('<timestamp>')
 | <*Yılın günü*> | Tamsayı | Belirtilen zaman damgasından yılın günü |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu zaman damgasından yılın gün sayısını döndürür:
 
@@ -1634,7 +1634,7 @@ decodeDataUri('<value>')
 | <*-for-Data-Uri*> | Dize | Bir veri URI dizesinin ikili sürümü |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu veri URI 'SI için ikili sürümü döndürür:
 
@@ -1669,7 +1669,7 @@ decodeUriComponent('<value>')
 | <*kodu çözülmüş-URI*> | Dize | Kodu çözülen kaçış karakterlerine sahip güncelleştirilmiş dize |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu dizedeki kaçış karakterlerinin kodunu kodu çözülmüş sürümleriyle değiştirir:
 
@@ -1701,7 +1701,7 @@ div(<dividend>, <divisor>)
 | <*Bölüm-sonuç*> | Tamsayı | İlk sayının ikinci sayıya bölünme sonucu tamsayı |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Her iki örnek de ilk sayıyı ikinci sayıya böler:
 
@@ -1735,7 +1735,7 @@ encodeUriComponent('<value>')
 | <*kodlanmış URI*> | Dize | Kaçış karakterleri içeren URI kodlamalı dize |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu dize için URI kodlu bir sürüm oluşturur:
 
@@ -1767,7 +1767,7 @@ empty([<collection>])
 | true veya false | Boole | Koleksiyon boş olduğunda true döndürün. Boş olmadığında false döndürün. |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnekler, belirtilen koleksiyonların boş olup olmadığını denetler:
 
@@ -1845,7 +1845,7 @@ equals('<object1>', '<object2>')
 | true veya false | Boole | Her ikisi de eşdeğer olduğunda true döndürün. Eşdeğer olmadığında false döndürün. |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnekler, belirtilen girişlerin eşdeğer olup olmadığını denetler.
 
@@ -1880,7 +1880,7 @@ first([<collection>])
 | <*Birinci koleksiyon-öğe*> | Herhangi biri | Koleksiyondaki ilk öğe |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örneklerde, bu koleksiyonlardaki ilk öğe bulunur:
 
@@ -1915,7 +1915,7 @@ float('<value>')
 | <*float değeri*> | Float | Belirtilen dize için kayan noktalı sayı |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu kayan nokta numarası için bir dize sürümü oluşturur:
 
@@ -1946,7 +1946,7 @@ formatDateTime('<timestamp>', '<format>'?)
 | <*yeniden biçimlendirilmiş-zaman damgası*> | Dize | Belirtilen biçimde güncelleştirilmiş zaman damgası |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bir zaman damgasını belirtilen biçime dönüştürür:
 
@@ -1977,7 +1977,7 @@ formDataMultiValues('<actionName>', '<key>')
 | [<*dizi-anahtar-değerleri*>] | Dizi | Belirtilen anahtarla eşleşen tüm değerleri içeren bir dizi |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, belirtilen işlemin form verileri veya form kodlu çıktısındaki "konu" anahtarının değerinden bir dizi oluşturur:
 
@@ -2009,7 +2009,7 @@ formDataValue('<actionName>', '<key>')
 | <*anahtar-değer*> | Dize | Belirtilen anahtardaki değer  |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, belirtilen işlemin form verileri veya form kodlu çıktısındaki "konu" anahtarının değerinden bir dize oluşturur:
 
@@ -2046,7 +2046,7 @@ formatNumber(<number>, <format>, <locale>?)
 Sayıyı biçimlendirmek istediğinizi varsayalım `1234567890` . Bu örnek, bu sayıyı "1.234.567.890,00" dizesi olarak biçimlendirir.
 
 ```
-formatNumber(1234567890, '{0:0,0.00}', 'en-us')
+formatNumber(1234567890, '0,0.00', 'en-us')
 ```
 
 * Örnek 2 "
@@ -2054,7 +2054,7 @@ formatNumber(1234567890, '{0:0,0.00}', 'en-us')
 Sayıyı biçimlendirmek istediğinizi varsayalım `1234567890` . Bu örnek, sayıyı "1.234.567.890, 00" dizesiyle biçimlendirir.
 
 ```
-formatNumber(1234567890, '{0:0,0.00}', 'is-is')
+formatNumber(1234567890, '0,0.00', 'is-is')
 ```
 
 *Örnek 3*
@@ -2184,7 +2184,7 @@ greater('<value>', '<compareTo>')
 | true veya false | Boole | İlk değer ikinci değerden büyük olduğunda true döndürün. İlk değer ikinci değere eşit veya ondan küçük olduğunda false döndürün. |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnekler, ilk değerin ikinci değerden büyük olup olmadığını denetler:
 
@@ -2221,7 +2221,7 @@ greaterOrEquals('<value>', '<compareTo>')
 | true veya false | Boole | İlk değer ikinci değerden büyük veya bu değere eşit olduğunda true döndürün. İlk değer ikinci değerden küçük olduğunda false döndürün. |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnekler, ilk değerin ikinci değerden büyük veya eşit olup olmadığını denetler:
 
@@ -2261,7 +2261,7 @@ guid('<format>')
 | <*GUID değeri*> | Dize | Rastgele oluşturulmuş bir GUID |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, aynı GUID 'i, kısa çizgi ile ayrılmış ve parantez içine alınmış, 32 basamaklı olarak oluşturur:
 
@@ -2293,7 +2293,7 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 | <*Belirtilen-Return-Value*> | Herhangi biri | İfadenin true veya false olup olmadığına göre döndürülen belirtilen değer |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek `"yes"` , belirtilen ifade true döndürdüğünden döndürür.
 Aksi takdirde, örnek şunu döndürür `"no"` :
@@ -2324,7 +2324,7 @@ indexOf('<text>', '<searchText>')
 | <*Dizin-değer*>| Tamsayı | Belirtilen alt dizenin başlangıç konumu veya dizin değeri. <p>Dize bulunamazsa,-1 sayısını döndürün. |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, "Hello World" dizesindeki "World" alt dizesi için başlangıç dizini değerini bulur:
 
@@ -2354,7 +2354,7 @@ int('<value>')
 | <*tamsayı-sonuç*> | Tamsayı | Belirtilen dize için tamsayı sürümü |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, "10" dizesi için bir tamsayı sürümü oluşturur:
 
@@ -2380,7 +2380,7 @@ item()
 | <*geçerli dizi öğesi*> | Herhangi biri | Eylemin geçerli yinelemesi için dizideki geçerli öğe |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, `body` bir for-each döngüsünün geçerli yinelemesinde "Send_an_email" eylemi için geçerli iletiden öğeyi alır:
 
@@ -2409,7 +2409,7 @@ items('<loopName>')
 | <*maddesinin*> | Herhangi biri | Belirtilen for-each döngüsünde geçerli döngüdeki öğe |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, geçerli öğeyi belirtilen for-each döngüsünden alır:
 
@@ -2437,7 +2437,7 @@ iterationIndexes('<loopName>')
 | <*indeks*> | Tamsayı | Geçerli yinelemenin belirtilen Until döngüsü içindeki dizin değeri | 
 |||| 
 
-*Örneğinde* 
+*Örnek* 
 
 Bu örnek, bir sayaç değişkeni oluşturur ve sayaç değeri beş olana kadar bir Until döngüsü içindeki her yineleme sırasında bu değişkeni bir artırır. Örnek ayrıca her yineleme için geçerli dizini izleyen bir değişken oluşturur. Until döngüsünde, her yineleme sırasında, örnek sayacı artırır ve ardından sayaç değerini geçerli dizin değerine atar ve sonra sayacı artırır. Döngüdeyken Bu örnek, işlevi kullanılarak geçerli yineleme dizinine başvurur `iterationIndexes` :
 
@@ -2610,7 +2610,7 @@ intersection('<collection1>', '<collection2>', ...)
 | <*ortak öğeler*> | Sırasıyla dizi veya nesne | Belirtilen koleksiyonlar genelinde yalnızca ortak öğelere sahip olan bir koleksiyon |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu diziler genelinde ortak öğeleri bulur:
 
@@ -2641,7 +2641,7 @@ join([<collection>], '<delimiter>')
 | <*CHAR1* >< *sınırlayıcı* >< *CHAR2* >< *sınırlayıcı*>... | Dize | Belirtilen dizideki tüm öğelerden oluşturulan elde edilen dize |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu dizideki tüm öğelerden belirtilen karakteri sınırlayıcı olarak bir dize oluşturur:
 
@@ -2672,7 +2672,7 @@ last([<collection>])
 | <*Son koleksiyon öğesi*> | Sırasıyla dize veya dizi | Koleksiyondaki son öğe |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örneklerde, bu koleksiyonlardaki son öğe bulunur:
 
@@ -2708,7 +2708,7 @@ lastIndexOf('<text>', '<searchText>')
 | <*son dizin-değer*> | Tamsayı | Belirtilen alt dizenin son geçtiği konumun başlangıç konumu veya dizin değeri. <p>Dize bulunamazsa,-1 sayısını döndürün. |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, "Hello World" dizesinde "World" alt dizesinin son geçtiği başlangıç dizin değerini bulur:
 
@@ -2739,7 +2739,7 @@ length([<collection>])
 | <*Uzunluk veya sayı*> | Tamsayı | Koleksiyondaki öğelerin sayısı |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnekler, bu koleksiyonlardaki öğelerin sayısını sayar:
 
@@ -2773,7 +2773,7 @@ less('<value>', '<compareTo>')
 | true veya false | Boole | İlk değer ikinci değerden küçük olduğunda true döndürün. İlk değer ikinci değerden daha büyük veya bu değere eşitse false döndürün. |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnekler, ilk değerin ikinci değerden küçük olup olmadığını denetler.
 
@@ -2810,7 +2810,7 @@ lessOrEquals('<value>', '<compareTo>')
 | true veya false  | Boole | İlk değer ikinci değerden küçük veya bu değere eşit olduğunda true döndürün. İlk değer ikinci değerden büyük olduğunda false döndürün. |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnekler, ilk değerin ikinci değerden küçük veya eşit olup olmadığını denetler.
 
@@ -2840,7 +2840,7 @@ listCallbackUrl()
 | <*geri arama-URL*> | Dize | Tetikleyici veya eylem için geri çağırma URL 'SI |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnekte, bu işlevin döndürebileceğini örnek bir geri çağırma URL 'SI gösterilmektedir:
 
@@ -2868,7 +2868,7 @@ max([<number1>, <number2>, ...])
 | <*maksimum değer*> | Tamsayı veya kayan | Belirtilen dizideki veya sayı kümesindeki en yüksek değer |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnekler, sayı ve dizi kümesinden en yüksek değeri alır:
 
@@ -2901,7 +2901,7 @@ min([<number1>, <number2>, ...])
 | <*En düşük değer*> | Tamsayı veya kayan | Belirtilen sayı kümesindeki veya belirtilen dizi üzerinde en düşük değer |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnekler, sayı ve dizi kümesindeki en düşük değeri alır:
 
@@ -2934,7 +2934,7 @@ mod(<dividend>, <divisor>)
 | <*Modül-sonuç*> | Tamsayı veya kayan | İlk sayının ikinci sayıya bölünmesiyle kalanı |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, ilk sayıyı ikinci sayıya böler:
 
@@ -2965,7 +2965,7 @@ mul(<multiplicand1>, <multiplicand2>)
 | <*Ürün-sonuç*> | Tamsayı veya kayan | Ürünün ilk sayıyı ikinci sayı ile çarpılmasıyla |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnekler ikinci sayının ilk numarasını birden çok kez göstermektedir:
 
@@ -3118,7 +3118,7 @@ outputs('<actionName>')
 | <*çıktıların*> | Dize | Belirtilen eylemden alınan çıkış |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, Twitter eyleminden çıktıyı alır `Get user` :
 
@@ -3181,7 +3181,7 @@ parameters('<parameterName>')
 | <*parametre-değer*> | Herhangi biri | Belirtilen parametrenin değeri |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu JSON değerinin olduğunu varsayalım:
 
@@ -3220,7 +3220,7 @@ rand(<minValue>, <maxValue>)
 | <*Rastgele sonuç*> | Tamsayı | Belirtilen aralıktan döndürülen rastgele tamsayı |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, en büyük değer hariç, belirtilen aralıktan rastgele bir tamsayı alır:
 
@@ -3251,7 +3251,7 @@ range(<startIndex>, <count>)
 | [<*Range-sonuç*>] | Dizi | Belirtilen dizinden başlayan tamsayılar içeren dizi |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, belirtilen dizinden başlayan ve belirtilen sayıda tamsayı içeren bir tamsayı dizisi oluşturur:
 
@@ -3283,7 +3283,7 @@ replace('<text>', '<oldText>', '<newText>')
 | <*güncelleştirilmiş-metin*> | Dize | Alt dize değiştirildikten sonra güncelleştirilmiş dize <p>Alt dize bulunamazsa, özgün dizeyi döndürün. |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek "eski" dizesinde "eski" alt dizesini bulur ve "Old" öğesini "New" ile değiştirir:
 
@@ -3410,7 +3410,7 @@ result('<scopedActionName>')
 | <*dizi nesnesi*> | Dizi nesnesi | Belirtilen kapsamlı eylem içinde görünen her bir eylemden giriş ve çıkış dizilerini içeren bir dizi |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, eylem içindeki işlevini kullanarak bir döngü içindeki içindeki HTTP eyleminin her yinelemesinden gelen giriş ve çıkışları döndürür `For_each` `result()` `Compose` :
 
@@ -3624,7 +3624,7 @@ skip([<collection>], <count>)
 | [<*güncelleştirilmiş-koleksiyon*>] | Dizi | Belirtilen öğeler kaldırıldıktan sonra güncelleştirilmiş koleksiyon |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, belirtilen dizinin önüne 0 olan bir öğeyi, 0 sayısını kaldırır:
 
@@ -3655,7 +3655,7 @@ split('<text>', '<delimiter>')
 | [<*substring1*>, <*substring2*>,...] | Dizi | Virgülle ayırarak orijinal dizeden alt dizeler içeren bir dizi |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, belirtilen karakteri sınırlayıcı olarak belirtilen dizeden alt dizeler içeren bir dizi oluşturur:
 
@@ -3686,7 +3686,7 @@ startOfDay('<timestamp>', '<format>'?)
 | <*güncelleştirilmiş-zaman damgası*> | Dize | Belirtilen zaman damgası, ancak günün sıfır saat işaretiyle başlıyor |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu zaman damgası için günün başlangıcını bulur:
 
@@ -3717,7 +3717,7 @@ startOfHour('<timestamp>', '<format>'?)
 | <*güncelleştirilmiş-zaman damgası*> | Dize | Belirtilen zaman damgası, ancak saat için sıfır dakikalık işaretten başlayarak |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu zaman damgası için saatin başlangıcını bulur:
 
@@ -3876,7 +3876,7 @@ sub(<minuend>, <subtrahend>)
 | <*kaynaklanan*> | Tamsayı veya kayan | İkinci sayının ilk sayıdan çıkarılmadan elde edilen sonuç |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, ikinci sayıyı ilk sayıdan çıkartır:
 
@@ -3909,7 +3909,7 @@ substring('<text>', <startIndex>, <length>)
 | <*alt dize-sonuç*> | Dize | Kaynak dizedeki belirtilen dizin konumunda başlayan, belirtilen sayıda karakter içeren bir alt dize |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, 6 dizininden başlayarak belirtilen dizeden beş karakterlik bir alt dize oluşturur:
 
@@ -3985,7 +3985,7 @@ take([<collection>], <count>)
 | <*alt küme*> veya [<*alt kümesi*>] | Sırasıyla dize veya dizi | Özgün koleksiyonun önünden belirtilen sayıda öğe içeren bir dize veya dizi |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örneklerde, bu koleksiyonların önüne belirtilen sayıda öğe alınır:
 
@@ -4039,7 +4039,7 @@ toLower('<text>')
 | <*küçük harfli metin*> | Dize | Özgün dize küçük harfli biçimde |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu dizeyi küçük harfe dönüştürür:
 
@@ -4069,7 +4069,7 @@ toUpper('<text>')
 | <*büyük harfli metin*> | Dize | Büyük harfli özgün dize |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu dizeyi büyük harfe dönüştürür:
 
@@ -4138,7 +4138,7 @@ triggerFormDataMultiValues('<key>')
 | [<*dizi-anahtar-değerleri*>] | Dizi | Belirtilen anahtarla eşleşen tüm değerleri içeren bir dizi |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek bir RSS tetikleyicisinin form verileri veya form kodlu çıktıda "feedUrl" anahtar değerinden bir dizi oluşturur:
 
@@ -4169,7 +4169,7 @@ triggerFormDataValue('<key>')
 | <*anahtar-değer*> | Dize | Belirtilen anahtardaki değer |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek bir RSS tetikleyicisinin form verileri veya form kodlu çıktıda "feedUrl" anahtar değerinden bir dize oluşturur:
 
@@ -4236,7 +4236,7 @@ trim('<text>')
 | <*updatedText*> | Dize | Baştaki veya sondaki boşluk olmadan özgün dize için güncelleştirilmiş bir sürüm |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, "Merhaba Dünya" dizesinden öndeki ve sondaki boşlukları kaldırır:
 
@@ -4268,7 +4268,7 @@ union([<collection1>], [<collection2>], ...)
 | <*updatedCollection*> | Sırasıyla dizi veya nesne | Belirtilen koleksiyonlardaki tüm öğeleri içeren bir koleksiyon-yinelenen yok |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu koleksiyonlardaki *Tüm* öğeleri alır:
 
@@ -4300,7 +4300,7 @@ uriComponent('<value>')
 | <*kodlanmış URI*> | Dize | Kaçış karakterleri içeren URI kodlamalı dize |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu dize için URI kodlu bir sürüm oluşturur:
 
@@ -4330,7 +4330,7 @@ uriComponentToBinary('<value>')
 | <*ikili-for-Encoded-URI*> | Dize | URI kodlamalı dize için ikili sürüm. İkili içerik Base64 kodlandı ve tarafından temsil edilir `$content` . |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, URI kodlamalı bu dize için ikili sürüm oluşturur:
 
@@ -4365,7 +4365,7 @@ uriComponentToString('<value>')
 | <*kodu çözülmüş-URI*> | Dize | URI kodlamalı dize için kodu çözülmüş sürüm |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bu URI kodlu dize için kodu çözülmüş dize sürümünü oluşturur:
 
@@ -4395,7 +4395,7 @@ uriHost('<uri>')
 | <*Konak-değer*> | Dize | `host`BELIRTILEN URI için değer |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, `host` Bu URI için değeri bulur:
 
@@ -4425,7 +4425,7 @@ uriPath('<uri>')
 | <*yol-değer*> | Dize | `path`BELIRTILEN URI için değer. `path`Değer yoksa, "/" karakterini döndürün. |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, `path` Bu URI için değeri bulur:
 
@@ -4455,7 +4455,7 @@ uriPathAndQuery('<uri>')
 | <*yol-sorgu-değer*> | Dize | `path` `query` Belirtilen URI için ve değerleri. `path`Değer belirtmezse, "/" karakterini döndürün. |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, `path` `query` Bu URI için ve değerlerini bulur:
 
@@ -4485,7 +4485,7 @@ uriPort('<uri>')
 | <*bağlantı noktası-değer*> | Tamsayı | `port`BELIRTILEN URI için değer. `port`Değer belirtmezse, protokol için varsayılan bağlantı noktasını döndürün. |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, `port` Bu URI için değeri döndürür:
 
@@ -4515,7 +4515,7 @@ uriQuery('<uri>')
 | <*sorgu-değer*> | Dize | `query`BELIRTILEN URI için değer |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, `query` Bu URI için değeri döndürür:
 
@@ -4545,7 +4545,7 @@ uriScheme('<uri>')
 | <*Düzen-değer*> | Dize | `scheme`BELIRTILEN URI için değer |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, `scheme` Bu URI için değeri döndürür:
 
@@ -4620,7 +4620,7 @@ variables('<variableName>')
 | <*değişken değer*> | Herhangi biri | Belirtilen değişkenin değeri |
 ||||
 
-*Örneğinde*
+*Örnek*
 
 "NumItems" değişkeni için geçerli değerin 20 olduğunu varsayalım.
 Bu örnek, bu değişken için tamsayı değerini alır:
@@ -4646,7 +4646,7 @@ workflow().<property>
 | <*özelliði*> | No | Dize | Değerini istediğiniz iş akışı özelliğinin adı <p>Bir iş akışı nesnesi şu özelliklere sahiptir: **ad**, **tür**, **kimlik**, **konum**ve **Çalıştır**. **Run** özelliği değeri aynı zamanda şu özelliklere sahip bir nesnedir: **ad**, **tür**ve **kimlik**. |
 |||||
 
-*Örneğinde*
+*Örnek*
 
 Bu örnek, bir iş akışının geçerli çalıştırması için ad döndürür:
 

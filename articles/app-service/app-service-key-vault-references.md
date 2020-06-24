@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: dd0a03ea76d517486bb9bda6d9628fb529166dd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ce11e806c514aa4a2074d120cb64ecdce222528
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81453736"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735617"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Key Vault başvurularını kullanma
 
@@ -35,19 +35,23 @@ Key Vault parolaları okumak için bir kasasının oluşturulmuş olması ve uyg
 
 ## <a name="reference-syntax"></a>Başvuru sözdizimi
 
-Key Vault bir başvuru, aşağıdaki seçeneklerden biri `@Microsoft.KeyVault({referenceString})`tarafından değiştirildiği `{referenceString}` biçimdedir:
+Key Vault bir başvuru, `@Microsoft.KeyVault({referenceString})` `{referenceString}` aşağıdaki seçeneklerden biri tarafından değiştirildiği biçimdedir:
 
 > [!div class="mx-tdBreakAll"]
-> | Başvuru dizesi                                                            | Açıklama                                                                                                                                                                                 |
+> | Başvuru dizesi                                                            | Description                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri =_Secreturi_                                                       | **Secreturi** , bir sürüm dahil olmak üzere Key Vault bir parolanın tam veri düzlemi URI 'si olmalıdır, örneğin,https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | VaultName =_vaultname_; SecretName =_secretname_; SecretVersion =_Secretversion_ | **Vaultname** Key Vault kaynağınızın adı olmalıdır. **Secretname** , hedef parolanın adı olmalıdır. **Secretversion** , kullanılacak gizli dizinin sürümü olmalıdır. |
 
-Örneğin, sürüme sahip bir tüm başvuru aşağıdaki gibi görünür:
+> [!NOTE] 
+> Sürümler şu anda gerekli. Gizli dizileri döndürürken, uygulama yapılandırmanızda sürümü güncelleştirmeniz gerekir.
+
+Örneğin, bir bütün başvuru aşağıdaki gibi görünür:
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
+
 Alternatif olarak:
 
 ```
@@ -66,7 +70,7 @@ Bir uygulama ayarı için Key Vault başvurusu kullanmak için, başvuruyu ayar�
 
 ### <a name="azure-resource-manager-deployment"></a>Azure Resource Manager dağıtımı
 
-Kaynak dağıtımlarını Azure Resource Manager şablonları aracılığıyla otomatikleştirmede, bu özelliğin çalışmasını sağlamak için bağımlılıklarınızı belirli bir sırada sıraya almanız gerekebilir. , Site tanımında bir `siteConfig` özellik kullanmak yerine uygulama ayarlarınızı kendi kaynakları olarak tanımlamanız gerekecektir. Bunun nedeni, sitenin, sistem tarafından atanan kimliğin birlikte oluşturulması ve erişim ilkesinde kullanılabilmesi için önce tanımlanması gerekir.
+Kaynak dağıtımlarını Azure Resource Manager şablonları aracılığıyla otomatikleştirmede, bu özelliğin çalışmasını sağlamak için bağımlılıklarınızı belirli bir sırada sıraya almanız gerekebilir. , Site tanımında bir özellik kullanmak yerine uygulama ayarlarınızı kendi kaynakları olarak tanımlamanız gerekecektir `siteConfig` . Bunun nedeni, sitenin, sistem tarafından atanan kimliğin birlikte oluşturulması ve erişim ilkesinde kullanılabilmesi için önce tanımlanması gerekir.
 
 Bir işlev uygulaması için örnek bir psuedo şablonu, aşağıdaki gibi görünebilir:
 
@@ -172,11 +176,11 @@ Bir işlev uygulaması için örnek bir psuedo şablonu, aşağıdaki gibi gör�
 ```
 
 > [!NOTE] 
-> Bu örnekte, kaynak denetimi dağıtımı uygulama ayarlarına bağlıdır. Uygulama ayarı güncelleştirmesi zaman uyumsuz olarak davrandığı için bu durum normalde güvenli olmayan bir davranıştır. Ancak, `WEBSITE_ENABLE_SYNC_UPDATE_SITE` uygulama ayarını dahil ettiğimiz için güncelleştirme zaman uyumludur. Bu, kaynak denetimi dağıtımının yalnızca uygulama ayarları tamamen güncelleştirildikten sonra başlayacağı anlamına gelir.
+> Bu örnekte, kaynak denetimi dağıtımı uygulama ayarlarına bağlıdır. Uygulama ayarı güncelleştirmesi zaman uyumsuz olarak davrandığı için bu durum normalde güvenli olmayan bir davranıştır. Ancak, uygulama ayarını dahil ettiğimiz `WEBSITE_ENABLE_SYNC_UPDATE_SITE` için güncelleştirme zaman uyumludur. Bu, kaynak denetimi dağıtımının yalnızca uygulama ayarları tamamen güncelleştirildikten sonra başlayacağı anlamına gelir.
 
 ## <a name="troubleshooting-key-vault-references"></a>Key Vault başvuruları sorunlarını giderme
 
-Bir başvuru düzgün çözümlenmezse, bunun yerine başvuru değeri kullanılacaktır. Bu, uygulama ayarları için değeri `@Microsoft.KeyVault(...)` sözdizimine sahip bir ortam değişkeni oluşturulacak anlamına gelir. Bu, belirli bir yapının gizli dizisi beklediği için uygulamanın hata oluşturmasına neden olabilir.
+Bir başvuru düzgün çözümlenmezse, bunun yerine başvuru değeri kullanılacaktır. Bu, uygulama ayarları için değeri sözdizimine sahip bir ortam değişkeni oluşturulacak anlamına gelir `@Microsoft.KeyVault(...)` . Bu, belirli bir yapının gizli dizisi beklediği için uygulamanın hata oluşturmasına neden olabilir.
 
 En yaygın olarak, bunun nedeni [Key Vault erişim ilkesinin](#granting-your-app-access-to-key-vault)yanlış yapılandırılmasından kaynaklanır. Bununla birlikte, aynı zamanda bir gizli dizi yok veya başvurunun kendisi bir sözdizimi hatası olabilir.
 

@@ -3,84 +3,103 @@ title: Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 description: Azure dağıtımlarınızın maliyetini iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 99dfec669d8981a557b2e8a8d8979292af74616f
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 8ff4e2d8f778d05e9a0fa271600446e1c24380be
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658565"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130638"
 ---
-# <a name="reduce-service-costs-using-azure-advisor"></a>Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
+# <a name="reduce-service-costs-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 
-Danışman, boşta ve az kullanılan kaynakları tanımlayarak Genel Azure harcamalarınızı iyileştirmenize ve azaltmanıza yardımcı olur.Danışman panosundaki **Maliyet** sekmesinden maliyet önerileri alabilirsiniz.
+Azure Advisor, boşta ve az kullanılan kaynakları tanımlayarak Genel Azure harcamalarınızı iyileştirmenize ve azaltmanıza yardımcı olur.Danışman panosundaki **Maliyet** sekmesinden maliyet önerileri alabilirsiniz.
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Az kullanılan örnekleri yeniden boyutlandırarak veya kapatarak sanal makineyi harcamalarını iyileştirin 
 
-Bazı uygulama senaryoları tasarım tarafından düşük kullanıma yol açabilir, ancak sanal makinelerinizin boyutunu ve sayısını yöneterek paradan tasarruf edebilirsiniz. Danışman gelişmiş değerlendirme modelleri, en yüksek CPU kullanımı değeri olan P95th ' nin en fazla %3 ' ten küçük olması ve ağ kullanımının 7 günlük bir dönemde %2 ' den küçük olması durumunda sanal makineleri kapatma için kabul eder. Sanal makineler, geçerli yükün daha küçük bir SKU 'da (aynı SKU ailesi içinde) sığması mümkün olduğunda doğru boyut olarak kabul edilir veya geçerli yükün Kullanıcı ile ilgili olmayan iş yükleri üzerinde %80 ' un üzerinde olmadığı ve Kullanıcı tarafından kullanıma sunulmadığı zaman %40 ' nin üzerinde olmadığı bir daha küçük sayı olarak değerlendirilir. Burada iş yükünün türü, iş yükünün CPU kullanım özelliklerinin analiz edilmesine göre belirlenir.
+Bazı uygulama senaryoları tasarım tarafından düşük kullanıma yol açabilir, ancak sanal makinelerinizin boyutunu ve sayısını yöneterek paradan tasarruf edebilirsiniz. 
 
-Önerilen Eylemler, için önerilen kaynağa özgü olarak kapatılır veya yeniden boyutlandırılır. Danışman, önerilen eylemler için tahmini maliyet tasarrufu gösterir-yeniden boyutlandır veya kapat. Ayrıca, önerilen eylemi yeniden boyutlandır için, Advisor geçerli ve hedef SKU bilgilerini sağlar. 
+Önerilen Eylemler, değerlendirilen kaynağa özgü olarak kapatılır veya yeniden boyutlandırılır.
 
-Aşırı kullanılan sanal makineleri tanımlamaya daha Agresif olmak istiyorsanız, CPU kullanım kuralını abonelik başına temelinde ayarlayabilirsiniz.
+Bu iki deyimlerden her ikisi de doğru olduğunda, Advisor 'daki gelişmiş değerlendirme modeli sanal makinelerin kapatılmasını kabul eder: 
+- En yüksek CPU kullanımı değeri olan P95th, %3 ' ten az. 
+- Ağ kullanımı, yedi günlük bir dönemde %2 ' den küçük.
+- Bellek baskısı eşik değerlerinden daha düşük
 
-## <a name="optimize-spend-for-mariadb-mysql-and-postgresql-servers-by-right-sizing"></a>MariaDB, MySQL ve PostgreSQL sunucuları için sağ boyutlandırarak harcamayı iyileştirin 
-Danışman, kullanımınızı analiz eder ve en son 7 gün içinde, MariaDB/MySQL/PostgreSQL veritabanı sunucusu kaynaklarınızın uzun bir süre boyunca az kullanılmış olup olmadığını önerir. Düşük kaynak kullanımı istenmeyen harcamalara yol açar ve performans üzerinde önemli bir etki yaratmadan düzeltilebilir. Maliyetlerinizi düşürmek ve kaynaklarınızı verimli yönetmek için işlem boyutunu (sanal çekirdekler) yarıya indirmenizi öneririz.
+Danışman, geçerli yükün daha küçük bir SKU 'da (aynı SKU ailesi içinde) veya daha az sayıda örneğe sığması mümkün olduğunda sanal makinelerin yeniden boyutlandırılmasını kabul eder:
+- Geçerli yük, kullanıcıya yönelik olmayan iş yükleri için %80 Kullanım üzerine gitmiyor. 
+- Yük, Kullanıcı tarafından ilgili iş yükleri için %40 üzerine gitmiyor. 
+
+Burada, Advisor iş yükünün CPU kullanım özelliklerini çözümleyerek iş yükünün türünü belirler.
+
+Advisor önerilen eylem için tahmini maliyet tasarrufunu gösterir: yeniden boyutlandır veya kapat. Yeniden boyutlandırma için, Advisor geçerli ve hedef SKU bilgilerini sağlar.
+
+Az kullanılan sanal makineleri tanımlama hakkında daha agresif bir tercih ediyorsanız, CPU kullanım kuralını abonelik başına temelinde ayarlayabilirsiniz.
+
+## <a name="optimize-spend-for-mariadb-mysql-and-postgresql-servers-by-right-sizing"></a>MariaDB, MySQL ve PostgreSQL sunucuları için, sağ boyutlandırarak harcamayı iyileştirin 
+Danışman, kullanımınızı analiz ve MariaDB, MySQL veya PostgreSQL veritabanı sunucusu kaynaklarınızın son yedi gün içinde uzun süredir kullanılıp kullanılmadığını değerlendirir. Düşük kaynak kullanımı, istenmeyen harcamadan önemli bir performans etkisi olmadan çözüm elde edebilir. Maliyetlerinizi azaltmak ve kaynaklarınızı verimli bir şekilde yönetmek için, işlem boyutunu (Vçekirdeler) yarı kadar azaltmanızı öneririz.
 
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Sağlaması kaldırılan ExpressRoute devreleri ortadan kaldırarak maliyetleri düşürün
 
-Danışman, sağlayıcı durumunda bir aydan daha fazla sağlanmamış olan ExpressRoute devreleri tanımlar ve bağlantı sağlayıcınızla devreyi sağlamayı *planlamadıysanız* devreyi silmeyi önerir.
+Danışman, sağlayıcı durumunda bir aydan fazla süredir **sağlanmayan** Azure ExpressRoute devreleri tanımlar. Bağlantı sağlayıcınızla devreyi sağlamayı planladığınızda, devresini silmeyi önerir.
 
 ## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>Boştaki sanal ağ geçitlerini silerek veya yeniden yapılandırarak maliyetleri azaltın
 
-Advisor 90 gün boyunca boşta olan sanal ağ geçitlerini tanımlar. Bu ağ geçitleri saatlik olarak faturalandırıladıklarından, bunları artık kullanmayı düşünmüyorsanız onları yeniden yapılandırmanızı veya silmeyi düşünmelisiniz. 
+Advisor 90 günden uzun süredir boşta olan sanal ağ geçitlerini tanımlar. Bu ağ geçitleri saatlik olarak faturalandırılacağından, bunları artık kullanmayı düşünmüyorsanız onları yeniden yapılandırmanızı veya silmeyi düşünmelisiniz. 
 
 ## <a name="buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs"></a>Kullandıkça öde maliyetlerinden tasarruf sağlamak için ayrılmış sanal makine örnekleri satın alın
 
-Danışman, son 30 gün içinde sanal makine kullanımınızı inceleyerek bir Azure ayırması satın alarak para tasarrufu sağlayabilmeniz gerektiğini belirlemektir. Danışman size en fazla tasarruf ettiğiniz bölgeleri ve boyutları gösterir ve satın alma rezervasyonlarından Tahmini tasarruf sağlar. Azure ayırmaları sayesinde, sanal makinelerinizin temel maliyetlerini önceden satın alabilirsiniz. İndirimler, ayırmalarıyla aynı boyuta ve bölgeye sahip yeni veya mevcut VM 'lere otomatik olarak uygulanacaktır. [Azure ayrılmış VM örnekleri hakkında daha fazla bilgi edinin.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
+Danışman, sanal makine kullanımınızı son 30 gün içinde inceleyerek, bir Azure ayırması satın alarak para tasarrufu sağlayabileceğini tespit edebilirsiniz. Danışman, tasarruf için olası en yüksek ve satın alma ayırmalarının tahmini tasarruflarının bulunduğu bölgeleri ve boyutları gösterir. Azure ayırmaları sayesinde, sanal makinelerinizin temel maliyetlerini önceden satın alabilirsiniz. İskontolar, ayırmalarıyla aynı boyuta ve bölgeye sahip yeni veya mevcut VM 'lere otomatik olarak uygulanır. [Azure ayrılmış VM örnekleri hakkında daha fazla bilgi edinin.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
 
-Danışman Ayrıca, sonraki 30 gün içinde sona erecektir olan ayrılmış örnekleri size bildirir. Kullandıkça Öde fiyatlandırmasını önlemeyi önlemek için yeni ayrılmış örnekler satın almanızı öneririz.
+Danışman Ayrıca, sonraki 30 gün içinde sona erecektir olan ayrılmış örneklerinizi size bildirir. Kullandıkça Öde fiyatlandırmasını önlemek için yeni ayrılmış örnekler satın almanızı önerir.
 
 ## <a name="buy-reserved-instances-for-several-resource-types-to-save-over-your-pay-as-you-go-costs"></a>Kullandıkça Öde maliyetlerinizi kaydetmek için birkaç kaynak türü için ayrılmış örnekler satın alın
 
-Son 30 gün içinde kaynak listesinin altında kullanım modelini çözümliyoruz ve tasarruf etmenizi en üst düzeye çıkaran ayrılmış kapasite satın alma önerilir. 
-### <a name="cosmos-db-reserved-capacity"></a>Cosmos DB ayrılmış kapasitesi
-Son 30 gün içindeki Cosmos DB kullanımınızı analiz ettik ve maliyetlerinizi iyileştirmek için ayrılmış kapasite satın almanızı öneriyoruz. Ayrılmış kapasite ile Cosmos DB saatlik kullanımlarını önceden satın alabilir ve kullandıkça öde maliyetlerinizden tasarruf edebilirsiniz. Ayrılmış kapasite bir faturalandırma avantajıdır ve yeni veya var olan dağıtımlara otomatik olarak uygulanır. Tahmini tasarruf miktarı, bireysel abonelikler için son 30 günde gözlemlenen kullanım düzenlerinden hareketle 3 yıllık rezervasyon fiyatlandırması kullanılarak hesaplanmıştır. Rezervasyon satın alma deneyiminde sunulan paylaşılan kapsam önerileri sayesinde tasarruf oranı daha da artırılabilir.
+Danışman, aşağıdaki kaynaklar için son 30 güne ait kullanım düzenlerini analiz eder ve maliyetleri en iyileştiren ayrılmış kapasite satın alımları önerir.
+
+### <a name="azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB ayrılmış kapasite
+Danışman, son 30 güne ait Azure Cosmos DB kullanım desenlerinizi analiz eder ve maliyetleri iyileştirmek için ayrılmış kapasite satın alımları önerir. Ayrılmış kapasiteyi kullanarak, saatlik kullanım Azure Cosmos DB ön satın alabilir ve kullandıkça öde maliyetlerinizi kaydedebilirsiniz. Ayrılmış kapasite bir faturalama avantajıdır ve yeni ve mevcut dağıtımlar için otomatik olarak uygulanır. Danışman, 3 yıllık rezervasyon fiyatlandırmasını kullanarak ayrı abonelikler için tasarruf tahminleri hesaplar ve son 30 gün içinde gözlenen kullanım düzenlerini tahmin eder. Paylaşılan kapsam önerileri, ayrılmış kapasite satın alma işlemleri için kullanılabilir ve tasarruf düzeyini artırabilir.
 
 ### <a name="sql-paas-reserved-capacity"></a>SQL PaaS ayrılmış kapasitesi
-Son 30 gün içindeki SQL PaaS elastik havuzları ve yönetilen örnek kullanımınızı analiz ettik ve en üst düzeyde tasarruf etmeniz için ayrılmış kapasite satın almanızı öneriyoruz. Ayrılmış kapasite ile SQL DB saatlik kullanımlarını önceden satın alabilir ve SQL işlem maliyetlerinizden tasarruf edebilirsiniz. SQL lisansı ayrı olarak ücretlendirilir ve rezervasyon indirimi uygulanmaz. Ayrılmış kapasite bir faturalandırma avantajıdır ve yeni veya var olan dağıtımlara otomatik olarak uygulanır. Tahmini tasarruf miktarı, bireysel abonelikler için son 30 günde gözlemlenen kullanım düzenlerinden hareketle 3 yıllık rezervasyon fiyatlandırması kullanılarak hesaplanmıştır. Rezervasyon satın alma deneyiminde sunulan paylaşılan kapsam önerileri sayesinde tasarruf oranı artırılabilir.
+Advisor, son 30 gün içinde SQL PaaS elastik veritabanı havuzlarını ve yönetilen örnek kullanım desenlerini analiz eder. Daha sonra maliyetleri en iyileştiren ayrılmış kapasite satın alımları önerir. Ayrılmış kapasiteyi kullanarak SQL VERITABANı saatlik kullanımını ön satın alabilir ve SQL işlem maliyetlerinizi kaydedebilirsiniz. SQL lisansınız ayrı olarak ücretlendirilir ve rezervasyon tarafından indirimli değildir. Ayrılmış kapasite bir faturalama avantajıdır ve yeni ve mevcut dağıtımlar için otomatik olarak uygulanır. Danışman, 3 yıllık rezervasyon fiyatlandırmasını kullanarak ayrı abonelikler için tasarruf tahminleri hesaplar ve son 30 gün içinde gözlenen kullanım düzenlerini tahmin eder. Paylaşılan kapsam önerileri, ayrılmış kapasite satın alma işlemleri için kullanılabilir ve tasarruf düzeyini artırabilir.
 
 ### <a name="app-service-stamp-fee-reserved-capacity"></a>App Service damga ücreti ayrılmış kapasitesi
-Son 30 gün içinde App Service yalıtılmış ortam damgası ücretleri kullanım modelini çözümliyoruz ve tasarruf etmenizi en üst düzeye çıkaran ayrılmış kapasite satın alma önerilir. Ayrılmış kapasite ile yalıtılmış ortam taban fiyatının saatlik kullanımlarını önceden satın alabilir ve kullandıkça öde maliyetlerinizden tasarruf edebilirsiniz. Ayrılmış kapasitenin yalnızca taban fiyatına uygulandığını ve App Service örneklerine uygulanmadığını unutmayın. Ayrılmış kapasite bir faturalandırma avantajıdır ve yeni veya var olan dağıtımlara otomatik olarak uygulanır. Tahmini tasarruf miktarı, bireysel abonelikler için son 30 günde gözlemlenen kullanım düzenine bağlı olarak 3 yıllık rezervasyon fiyatlandırması kullanılarak hesaplanmıştır.
+Danışman, son 30 gün içinde Azure App Service yalıtılmış ortamınız için damga kullanım modelini analiz eder ve maliyetleri en iyileştiren ayrılmış kapasite satın alımları önerir. Ayrılmış kapasiteyi kullanarak, yalıtılmış ortam damgası ücreti için saatlik kullanım ön satın alabilir ve kullandıkça öde maliyetlerinizi de kaydedebilirsiniz. Ayrılmış kapasitenin yalnızca damga ücreti için geçerli olduğunu ve App Service örneklere uygulanacağını unutmayın. Ayrılmış kapasite bir faturalama avantajıdır ve yeni ve mevcut dağıtımlar için otomatik olarak uygulanır. Danışman, son 30 gün içindeki kullanım desenlerine göre 3 yıllık rezervasyon fiyatlandırmasını kullanarak ayrı abonelikler için tahminleri kaydetmeyi hesaplar.
 
 ### <a name="blob-storage-reserved-capacity"></a>BLOB depolama ayrılmış kapasitesi
-Son 30 gün içinde Azure Blob ve Datalake depolama kullanımınızı analiz ettik ve en tasarruflu seçeneğin ayrılmış kapasite olduğunu hesapladık. Ayrılmış kapasite ile saatlik kullanımları önceden satın alabilir ve şu anki isteğe bağlı maliyetlerinizden tasarruf edebilirsiniz. Blob depolama ayrılmış kapasitesi yalnızca Azure Blob (GPv2) ve Azure Data Lake Storage (2. Nesil) üzerinde depolanan verilere uygulanır. Ayrılmış kapasite bir faturalandırma avantajıdır ve yeni veya var olan dağıtımlara otomatik olarak uygulanır. Tahmini tasarruf miktarı, bireysel abonelikler için son 30 günde gözlemlenen kullanım düzenleri ve 3 yıllık rezervasyon fiyatlandırması kullanılarak hesaplanmıştır. Rezervasyon satın alma deneyiminde sunulan paylaşılan kapsam önerileri sayesinde tasarruf oranı artırılabilir.
+Advisor, Azure Blob depolama alanınızı analiz eder ve son 30 gün içinde depolama kullanımını Azure Data Lake. Ardından, maliyetleri en iyileştiren ayrılmış kapasite satın alımları hesaplanır. Ayrılmış kapasiteyle, saatlik kullanımı önceden satın alabilir ve geçerli isteğe bağlı maliyetlerinizi kaydedebilirsiniz. BLOB depolama ayrılmış kapasitesi yalnızca Azure Blob genel amaçlı v2 ve Azure Data Lake Storage 2. hesaplarında depolanan veriler için geçerlidir. Ayrılmış kapasite bir faturalama avantajıdır ve yeni ve mevcut dağıtımlar için otomatik olarak uygulanır. Danışman, 3 yıllık rezervasyon fiyatlandırmasını ve son 30 gün içinde gözlemlendi kullanım düzenlerini kullanarak ayrı abonelikler için tasarruf tahminleri hesaplar. Paylaşılan kapsam önerileri, ayrılmış kapasite satın alma işlemleri için kullanılabilir ve tasarruf düzeyini artırabilir.
 
 ### <a name="mariadb-mysql-and-postgresql-reserved-capacity"></a>MariaDB, MySQL ve PostgreSQL ayrılmış kapasitesi
-MariaDB, MySQL ve PostgreSQL için Azure veritabanınızı son 30 gün içinde çözümliyoruz ve tasarruf etmenizi en üst düzeye çıkaran ayrılmış kapasite satın alma önerilir. Ayrılmış kapasiteyle, MariaDB, MySQL ve PostgreSQL saatlik kullanımını önceden satın alabilir ve maliyetlerinizi daha fazla tasarruf edebilirsiniz. Ayrılmış kapasite bir faturalandırma avantajıdır ve yeni veya var olan dağıtımlara otomatik olarak uygulanır. Tahmini tasarruf miktarı, bireysel abonelikler için son 30 gündeki kullanım düzenleri ve 3 yıllık rezervasyon fiyatlandırması kullanılarak hesaplanmıştır. Rezervasyon satın alma deneyiminde sunulan paylaşılan kapsam önerileri sayesinde tasarruf oranı artırılabilir.
+Danışman, MariaDB için Azure veritabanı, MySQL için Azure veritabanı ve son 30 gün içinde PostgreSQL için Azure veritabanı kullanım modellerinizi analiz eder. Daha sonra maliyetleri en iyileştiren ayrılmış kapasite satın alımları önerir. Ayrılmış kapasiteyi kullanarak, MariaDB, MySQL ve PostgreSQL saatlik kullanımını ön satın alabilir ve geçerli maliyetlerinizi kaydedebilirsiniz. Ayrılmış kapasite bir faturalama avantajıdır ve yeni ve mevcut dağıtımlar için otomatik olarak uygulanır. Danışman, 3 yıllık rezervasyon fiyatlandırmasını ve son 30 gün içinde gözlemlendi kullanım düzenlerini kullanarak ayrı abonelikler için tasarruf tahminleri hesaplar. Paylaşılan kapsam önerileri, ayrılmış kapasite satın alma işlemleri için kullanılabilir ve tasarruf düzeyini artırabilir.
 
-### <a name="synapse-analytics-formerly-sql-dw-reserved-capacity"></a>SYNAPSE Analytics (eski adıyla SQL DW) ayrılmış kapasitesi
-Azure SYNAPSE Analytics kullanım modelinizi son 30 gün içinde çözümliyoruz ve tasarruf etmenizi en üst düzeye çıkaran ayrılmış kapasite satın alma önerilir. Ayrılmış kapasite ile Synapse Analytics saatlik kullanımları önceden satın alabilir ve isteğe bağlı maliyetlerinizden tasarruf edebilirsiniz. Ayrılmış kapasite bir faturalandırma avantajıdır ve yeni veya var olan dağıtımlara otomatik olarak uygulanır. Tahmini tasarruf miktarı, bireysel abonelikler için son 30 günde gözlemlenen kullanım düzenleri ve 3 yıllık rezervasyon fiyatlandırması kullanılarak hesaplanmıştır. Rezervasyon satın alma deneyiminde sunulan paylaşılan kapsam önerileri sayesinde tasarruf oranı artırılabilir.
+### <a name="synapse-analytics-formerly-sql-data-warehouse-reserved-capacity"></a>SYNAPSE Analytics (eski adıyla SQL veri ambarı) ayrılmış kapasitesi
+Danışman, son 30 gün içinde Azure SYNAPSE Analytics kullanım modellerinizi analiz eder ve maliyetleri en iyileştiren ayrılmış kapasite satın alımları önerir. Ayrılmış kapasiteyi kullanarak, SYNAPSE Analytics saatlik kullanımını ön satın alabilir ve isteğe bağlı maliyetlerinizi kaydedebilirsiniz. Ayrılmış kapasite bir faturalama avantajıdır ve yeni ve mevcut dağıtımlar için otomatik olarak uygulanır. Danışman, 3 yıllık rezervasyon fiyatlandırmasını ve son 30 gün içinde gözlemlendi kullanım düzenlerini kullanarak ayrı abonelikler için tasarruf tahminleri hesaplar. Paylaşılan kapsam önerileri, ayrılmış kapasite satın alma işlemleri için kullanılabilir ve tasarruf düzeyini artırabilir.
 
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>Paradan tasarruf etmek için ilişkilendirilmemiş genel IP adreslerini silin
 
-Danışman, şu anda yük dengeleyiciler veya VM 'Ler gibi Azure kaynaklarıyla ilişkili olmayan genel IP adreslerini tanımlar. Bu genel IP adresleri nominal bir ücret ile gelir. Bunları kullanmayı planlamıyorsanız, bunların silinmesi maliyet tasarruflarına yol açabilir.
+Advisor, yük dengeleyiciler ve sanal makineler gibi Azure kaynaklarıyla ilişkilendirilmemiş genel IP adreslerini tanımlar. Nominal bir ücret, bu genel IP adresleriyle ilişkilidir. Bunları kullanmayı planlamıyorsanız, bunları silerek tasarruf edebilirsiniz.
 
 ## <a name="delete-azure-data-factory-pipelines-that-are-failing"></a>Başarısız olan Azure Data Factory işlem hatlarını silin
 
-Azure Advisor, tekrar tekrar başarısız olan Azure Data Factory işlem hatlarını algılar ve artık gerekli değilse sorunları çözmenize veya başarısız olan işlem hatlarını silmeye önerilir. Bu işlem hatları için, başarısız olduklarında hizmet vermese bile faturalandırılırsınız. 
+Danışman, tekrar tekrar başarısız olan Azure Data Factory işlem hatlarını algılar. Sorunları çözmeniz veya ihtiyacınız yoksa işlem hatlarını silmeniz önerilir. Bu işlem hatları için, başarısız olduklarında hizmet vermese bile faturalandırılırsınız.
 
 ## <a name="use-standard-snapshots-for-managed-disks"></a>Yönetilen diskler için standart anlık görüntüleri kullanma
-%60 maliyet tasarrufu elde etmek için, üst diskin depolama türünden bağımsız olarak anlık görüntülerinizi Standart Depolama’da depolamanızı öneririz. Bu seçenek, yönetilen diskler anlık görüntüleri için varsayılan seçenektir. Azure Danışmanı, Premium Depolama depolanan anlık görüntüleri belirler ve anlık görüntü ortamınızı Premium 'dan standart depolamaya geçirmeyi öneririz. [Yönetilen disk fiyatlandırması hakkında daha fazla bilgi edinin](https://aka.ms/aa_manageddisksnapshot_learnmore)
+Maliyetin %60 ' i kaydetmek için, üst diskin depolama türünden bağımsız olarak anlık görüntülerinizi standart depolamada depolamanızı öneririz. Bu seçenek, yönetilen disk anlık görüntüleri için varsayılan seçenektir. Danışman Premium depolamada depolanan anlık görüntüleri tanımlar ve Premium 'dan standart depolamaya geçiş yapmanızı önerir. [Yönetilen disk fiyatlandırması hakkında daha fazla bilgi edinin.](https://aka.ms/aa_manageddisksnapshot_learnmore)
 
-## <a name="utilize-lifecycle-management"></a>Yaşam Döngüsü Yönetimi'ni Kullanma
-Azure Advisor, bir veya daha fazla depolama hesabınızın, katman verilerine yönelik yaşam döngüsü yönetimini etkinleştirmek için en uygun olup olmadığını algılamak üzere Azure Blob depolama nesne sayısı, toplam boyutu ve işlemleri ile ilgili zeka 'yı kullanır. Verilerinizi, uygulama uyumluluğu için Azure Blob depolama alanındaki verilerinizi korurken depolama maliyetlerinizi iyileştirmek üzere otomatik olarak seyrek erişimli veya arşiv 'e yönelik bir yaşam döngüsü yönetimi kuralları oluşturmanızı ister.
+## <a name="use-lifecycle-management"></a>Yaşam döngüsü yönetimi kullanma
+Azure Blob depolama nesne sayısı, toplam boyut ve işlemler hakkında zeka kullanarak, danışman, depolama hesaplarınızdaki bir veya daha fazla veri katmanı için yaşam döngüsü yönetiminin etkinleştirilip etkinleştirilmeyeceğini algılar. Verilerinizi, uygulama uyumluluğu için Azure Blob depolama alanında korurken depolama maliyetlerinizi iyileştirmek için bir yaşam döngüsü yönetimi kuralları oluşturmanızı ister.
 
 ## <a name="create-an-ephemeral-os-disk-recommendation"></a>Kısa ömürlü işletim sistemi diski oluşturma önerisi
-[Kısa ömürlü işletim sistemi diski](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks)sayesinde müşteriler bu avantajları alırlar: işletim sistemi diski için depolama maliyetini kaydetme. İşletim sistemi diskinde daha düşük okuma/yazma gecikme süresi. İşletim sistemini (ve geçici diski) özgün durumuna sıfırlayarak VM yeniden görüntü oluşturma işlemini hızlandırma. Kısa süreli IaaS VM 'Leri veya durum bilgisiz iş yükleri olan VM 'Ler için kısa ömürlü işletim sistemi diski kullanılması daha tercih edilir. Danışman, kısa ömürlü işletim sistemi diski ile faydalanan kaynaklar için öneride bulunur. 
+[Kısa ömürlü işletim sistemi diski](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks) şunları yapmanıza olanak sağlar: 
+- İşletim sistemi diskleri için depolama maliyetlerinde tasarruf edin. 
+- İşletim sistemi disklerine daha düşük okuma/yazma gecikme süresi alın. 
+- İşletim sistemini (ve geçici diski) özgün durumuna sıfırlayarak daha hızlı sanal makine yeniden görüntüsü işlemleri yapın.
+
+Kısa süreli IaaS VM 'Leri veya durum bilgisiz iş yükleri olan VM 'Ler için kısa ömürlü işletim sistemi diski kullanılması tercih edilir. Danışman, kısa ömürlü işletim sistemi diskinden faydalanabilir kaynaklar için öneriler sağlar.
 
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Azure Danışmanı 'nda maliyet önerilerine erişme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Herhangi bir sayfadan [**danışman**](https://aka.ms/azureadvisordashboard) arayın ve seçin.
 

@@ -1,0 +1,100 @@
+---
+title: Ev4 ve Esv4 serisi-Azure sanal makineleri
+description: Ev4 ve Esv4 serisi VM 'Ler için Özellikler.
+author: brbell
+ms.author: brbell
+ms.reviewer: cynthn
+ms.custom: mimckitt
+ms.service: virtual-machines
+ms.subservice: sizes
+ms.topic: conceptual
+ms.date: 6/8/2020
+ms.openlocfilehash: 967df2022166936df71b30fbe9d49798663ce962
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783606"
+---
+# <a name="ev4-and-esv4-series"></a>Ev4 ve Esv4 serisi
+
+Ev4 ve Esv4 serisi, &reg; &reg; hiper iş parçacıklı bir yapılandırmadaki Intel Xeon Platinum 8272CL (Cascade Lake) işlemcileri üzerinde çalışır, bellek açısından yoğun çeşitli kurumsal uygulamalar için Idealdir ve 50 GB 'A kadar RAM özelliğine sahiptir.
+
+> [!NOTE]
+> Sık sorulan sorular için, [Yerel geçici disk olmadan Azure VM boyutlarına](azure-vms-no-temp-disk.md)bakın.
+
+## <a name="ev4-series"></a>Ev4 serisi
+
+Ev4 serisi boyutlar Intel Xeon &reg; Platinum 8272CL (Cascade Lake) üzerinde çalışır. Ev4 serisi örnekler, bellek açısından yoğun kurumsal uygulamalar için idealdir. Ev4 serisi VM 'Ler özelliği Intel &reg; hiper Iş parçacığı teknolojisi.
+
+Uzak veri diski depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium Depolama disklerini kullanmak için Esv4 boyutlarını kullanın. Esv4 boyutları için fiyatlandırma ve faturalandırma ölçümleri Ev4 serisi ile aynıdır.
+
+> [!IMPORTANT]
+> Bu yeni boyutlar Şu anda yalnızca genel önizleme aşamasındadır. Bu dv4 ve Dsv4 serisi için [buradan](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)kaydolma yapabilirsiniz. 
+
+ACU: 195-210
+
+Premium Depolama: desteklenmiyor
+
+Premium depolama önbelleği: desteklenmiyor
+
+Dinamik Geçiş: destekleniyor
+
+Güncelleştirmeleri koruyan bellek: desteklenir
+
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+|---|---|---|---|---|---|
+| Standard_E2_v4  | 2 | 16   | Yalnızca uzak depolama | 4 | 2/1000  |
+| Standard_E4_v4  | 4 | 32  | Yalnızca uzak depolama | 8 | 2/2000  |
+| Standard_E8_v4  | 8 | 64 | Yalnızca uzak depolama | 16 | 4/4000 |
+| Standard_E16_v4 | 16 | 128 | Yalnızca uzak depolama | 32 | 8/8000 |
+| Standard_E20_v4 | 20 | 160 | Yalnızca uzak depolama | 32 | 8/10000 |
+| Standard_E32_v4 | 32 | 256 | Yalnızca uzak depolama | 32 | 8/16000 |
+| Standard_E48_v4 | 48 | 384 | Yalnızca uzak depolama | 32 | 8/24000 |
+| Standard_E64_v4 | 64 | 504 | Yalnızca uzak depolama | 32| 8/30000 |
+
+
+## <a name="esv4-series"></a>Esv4 serisi
+
+Esv4 serisi boyutlar Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) üzerinde çalışır. Esv4 serisi örnekler, bellek açısından yoğun kurumsal uygulamalar için idealdir. Evs4 serisi VM 'Ler özelliği Intel &reg; hiper Iş parçacığı teknolojisi. Uzak veri diski depolaması, sanal makinelerden ayrı olarak faturalandırılır.
+
+> [!IMPORTANT]
+> Bu yeni boyutlar Şu anda yalnızca genel önizleme aşamasındadır. Bu dv4 ve Dsv4 serisi için [buradan](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)kaydolma yapabilirsiniz. 
+
+ACU: 195-210
+
+Premium Depolama: desteklenir
+
+Premium depolama önbelleği: desteklenir
+
+Dinamik Geçiş: destekleniyor
+
+Güncelleştirmeleri koruyan bellek: desteklenir
+
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Önbelleğe alınan en fazla aktarım hızı: ıOPS/MBps (GiB 'de önbellek boyutu) | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+|---|---|---|---|---|---|---|---|
+| Standard_E2s_v4  | 2 | 16  | Yalnızca uzak depolama | 4 | 19000/120 (50) | 3200/48 | 2/1000  |
+| Standard_E4s_v4  | 4 | 32  | Yalnızca uzak depolama | 8 | 38500/242 (100) | 6400/96 | 2/2000  |
+| Standard_E8s_v4  | 8 | 64  | Yalnızca uzak depolama | 16 | 77000/485 (200) | 12800/192 | 4/4000 |
+| Standard_E16s_v4 | 16 | 128 | Yalnızca uzak depolama | 32 | 154000/968 (400) | 25600/384 | 8/8000 |
+| Standard_E20s_v4 | 20 | 160 | Yalnızca uzak depolama | 32 | 193000/1211 (500) | 32000/480  | 8/10000 |
+| Standard_E32s_v4 | 32 | 256 | Yalnızca uzak depolama | 32 | 308000/1936 (800) | 51200/768  | 8/16000 |
+| Standard_E48s_v4 | 48 | 384 | Yalnızca uzak depolama | 32 | 462000/2904 (1200) | 76800/1152 | 8/24000 |
+| Standard_E64s_v4 <sup>1</sup> | 64 | 504| Yalnızca uzak depolama | 32 | 615000/3872 (1600) | 80000/1200 | 8/30000 |
+
+<sup>1</sup> [kısıtlı çekirdek boyutu var](https://docs.microsoft.com/azure/virtual-machines/windows/constrained-vcpu).
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+## <a name="other-sizes"></a>Diğer boyutlar
+
+- [Genel amaçlı](sizes-general.md)
+- [Bellek için iyileştirilmiş](sizes-memory.md)
+- [Depolama için iyileştirilmiş](sizes-storage.md)
+- [GPU için iyileştirilmiş](sizes-gpu.md)
+- [Yüksek performanslı işlem](sizes-hpc.md)
+- [Önceki nesiller](sizes-previous-gen.md)
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.

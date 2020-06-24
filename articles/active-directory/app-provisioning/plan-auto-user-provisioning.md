@@ -2,21 +2,21 @@
 title: Azure Active Directory için otomatik Kullanıcı sağlama dağıtımı planlayın
 description: Otomatik Kullanıcı sağlamayı planlama ve yürütmeye yönelik kılavuz
 services: active-directory
-author: martincoetzer
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/17/2019
-ms.author: martinco
+ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 4f391a2fce669c2684ac5001e3659247adfeb4f6
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593548"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781642"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Otomatik kullanıcı sağlama dağıtımı planlama
 
@@ -217,7 +217,7 @@ Dağıtım sonrası sorunları azaltmak için aşağıdakileri göz önünde bul
 
 * Uygulamalar, Kullanıcı sağlamanın doğru çalışması için sağlanması gereken belirli kısıtlamalara ve/veya gereksinimlere sahip olabilir. Örneğin, belirli özniteliklerin değerlerini atar. Her bir uygulamaya özgü [Otomatik Kullanıcı sağlama öğreticilerine](../saas-apps/tutorial-list.md) bakın.
 
-* Kaynak ve hedef sistemler arasındaki şema tutarlılığını onaylayın. Genel sorunlar UPN veya posta eşleştirme gibi öznitelikleri içerir. Örneğin, Azure AD 'de ve uygulamada olduğu gibi *john_smith@contoso.com* UPN de vardır *jsmith@contoso.com*. Daha fazla bilgi için bkz. [Kullanıcı ve grup şeması başvurusu](../app-provisioning/use-scim-to-provision-users-and-groups.md).
+* Kaynak ve hedef sistemler arasındaki şema tutarlılığını onaylayın. Genel sorunlar UPN veya posta eşleştirme gibi öznitelikleri içerir. Örneğin, Azure AD 'de ve uygulamada olduğu gibi UPN de vardır *john_smith@contoso.com* *jsmith@contoso.com* . Daha fazla bilgi için bkz. [Kullanıcı ve grup şeması başvurusu](../app-provisioning/use-scim-to-provision-users-and-groups.md).
 
 ## <a name="plan-testing-and-security"></a>Test ve güvenlik planlaması
 

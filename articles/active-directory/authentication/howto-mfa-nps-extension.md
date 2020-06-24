@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f5c93e35b2a9124ac6d480b3719608ee3b4484a5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 681b81fa7f6ce74f7e48eb518a2c951e94c4b00d
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554834"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789541"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Mevcut NPS altyapınızı Azure Multi-Factor Authentication ile tümleştirme
 
@@ -165,7 +165,7 @@ Bir sınama hesabını kullanmaya başlamak için bu adımları kullanın:
 
 1. [NPS uzantısını](https://aka.ms/npsmfa) Microsoft İndirme Merkezi ' nden indirin.
 2. İkiliyi, yapılandırmak istediğiniz ağ Ilkesi sunucusuna kopyalayın.
-3. *Setup. exe* ' yi çalıştırın ve yükleme yönergelerini izleyin. Hatalarla karşılaşırsanız, önkoşul bölümündeki iki kitaplığı başarıyla yüklediğinden emin olun.
+3. *setup.exe* çalıştırın ve yükleme yönergelerini izleyin. Hatalarla karşılaşırsanız, önkoşul bölümündeki iki kitaplığı başarıyla yüklediğinden emin olun.
 
 #### <a name="upgrade-the-nps-extension"></a>NPS uzantısını yükseltme
 
@@ -190,11 +190,20 @@ Kendi sertifikalarınızı kullanmak istemiyorsanız (PowerShell betiğinin olu�
 1. Windows PowerShell 'i yönetici olarak çalıştırın.
 2. Dizinleri değiştirin.
 
-   `cd "C:\Program Files\Microsoft\AzureMfa\Config"`
+   ```powershell
+   cd "C:\Program Files\Microsoft\AzureMfa\Config"
+   ```
 
 3. Yükleyici tarafından oluşturulan PowerShell betiğini çalıştırın.
 
-   `.\AzureMfaNpsExtnConfigSetup.ps1`
+   > [!IMPORTANT]
+   > Azure Kamu veya Azure Çin 21Vianet bulutlarını kullanan müşteriler için öncelikle `Connect-MsolService` *AzureMfaNpsExtnConfigSetup.ps1* betikteki cmdlet 'leri düzenleyerek gerekli bulutun *AzureEnvironment* parametrelerini ekleyin. Örneğin, *-AzureEnvironment Uskamu* veya *-AzureEnvironment AzureChinaCloud*belirtin.
+   >
+   > Daha fazla bilgi için bkz. [Connect-MsolService parametre başvurusu](/powershell/module/msonline/connect-msolservice#parameters).
+
+   ```powershell
+   .\AzureMfaNpsExtnConfigSetup.ps1
+   ```
 
 4. Azure AD 'de yönetici olarak oturum açın.
 5. Kiracı KIMLIĞINIZ için PowerShell istemleri. Önkoşullar bölümündeki Azure portal kopyaladığınız dizin KIMLIĞI GUID 'sini kullanın.
@@ -205,22 +214,30 @@ Yük Dengeleme için ayarlamak istediğiniz tüm ek NPS sunucuları üzerinde bu
 Önceki bilgisayar sertifikanızın süresi dolmuşsa ve yeni bir sertifika oluşturulduysa, süresi geçmiş tüm sertifikaları silmelisiniz. Süre dolma sertifikaları olması, NPS uzantısıyla başlayarak soruna neden olabilir.
 
 > [!NOTE]
-> PowerShell betiği ile sertifika oluşturmak yerine kendi sertifikalarınızı kullanırsanız, NPS adlandırma kuralına göre hizalandıklarından emin olun. Konu adı **CN = \<TenantID\> , OU = Microsoft NPS uzantısı**olmalıdır. 
+> PowerShell betiği ile sertifika oluşturmak yerine kendi sertifikalarınızı kullanırsanız, NPS adlandırma kuralına göre hizalandıklarından emin olun. Konu adı **CN = \<TenantID\> , OU = Microsoft NPS uzantısı**olmalıdır.
 
-### <a name="microsoft-azure-government-additional-steps"></a>Microsoft Azure Kamu ek adımlar
+### <a name="microsoft-azure-government-or-azure-china-21vianet-additional-steps"></a>Microsoft Azure Kamu veya Azure Çin 21Vianet ek adımlar
 
-Azure Kamu Bulutu kullanan müşteriler için, her NPS sunucusunda aşağıdaki ek yapılandırma adımları gereklidir.
+Azure Kamu veya Azure Çin 21Vianet bulutlarını kullanan müşteriler için, her NPS sunucusunda aşağıdaki ek yapılandırma adımları gereklidir.
 
 > [!IMPORTANT]
-> Bu kayıt defteri ayarlarını yalnızca bir Azure Kamu müşterisi iseniz yapılandırın.
+> Yalnızca bir Azure Kamu veya Azure Çin 21Vianet müşterisiyseniz bu kayıt defteri ayarlarını yapılandırın.
 
-1. Azure Kamu müşterisiyseniz, NPS sunucusunda **kayıt defteri Düzenleyicisi** 'ni açın.
-1. `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa` sayfasına gidin. Aşağıdaki anahtar değerlerini ayarlayın:
+1. Azure Kamu veya Azure Çin 21Vianet müşterisiyseniz, NPS sunucusunda **kayıt defteri Düzenleyicisi** 'ni açın.
+1. `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa` sayfasına gidin.
+1. Azure Kamu müşterileri için aşağıdaki anahtar değerlerini ayarlayın.:
 
     | Kayıt defteri anahtarı       | Değer |
     |--------------------|-----------------------------------|
     | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
     | STS_URL            | https://login.microsoftonline.us/ |
+
+1. Azure Çin 21Vianet müşterileri için aşağıdaki anahtar değerlerini ayarlayın:
+
+    | Kayıt defteri anahtarı       | Değer |
+    |--------------------|-----------------------------------|
+    | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.cn   |
+    | STS_URL            | https://login.chinacloudapi.cn/   |
 
 1. Her NPS sunucusu için kayıt defteri anahtarı değerlerini ayarlamak için önceki iki adımı tekrarlayın.
 1. NPS hizmetini her NPS sunucusu için yeniden başlatın.
@@ -269,7 +286,7 @@ Kullanıcılarınız eklenirken bu anahtarı oluşturmayı ve yanlış olarak ay
 
 NPS uzantısı sorunlarını giderirken temel sistem durumu denetimi adımlarını gerçekleştirmek için aşağıdaki komut dosyası kullanılabilir.
 
-[MFA_NPS_Troubleshooter. ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
+[MFA_NPS_Troubleshooter.ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
@@ -277,7 +294,7 @@ NPS uzantısı sorunlarını giderirken temel sistem durumu denetimi adımların
 
 Sertifika deposunda yükleyici tarafından oluşturulan kendinden imzalı sertifikayı bulun ve özel anahtarın Kullanıcı **ağ hizmeti**'ne verilmiş izinlere sahip olup olmadığını denetleyin. Sertifika, **CN \<tenantid\> , OU = Microsoft NPS uzantısının** konu adına sahiptir
 
-*AzureMfaNpsExtnConfigSetup. ps1* betiği tarafından oluşturulan otomatik olarak imzalanan sertifikaların Ayrıca iki yıla ait geçerlilik ömrü de vardır. Sertifikanın yüklendiği doğrulanırken, sertifikanın sona ermemiş olduğunu da denetlemeniz gerekir.
+*AzureMfaNpsExtnConfigSetup.ps1* betiği tarafından oluşturulan otomatik olarak imzalanan sertifikaların Ayrıca iki yıla ait geçerlilik ömrü de vardır. Sertifikanın yüklendiği doğrulanırken, sertifikanın sona ermemiş olduğunu da denetlemeniz gerekir.
 
 ---
 
@@ -285,7 +302,7 @@ Sertifika deposunda yükleyici tarafından oluşturulan kendinden imzalı sertif
 
 PowerShell komut istemi ' ni açın ve aşağıdaki komutları çalıştırın:
 
-``` PowerShell
+```powershell
 import-module MSOnline
 Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1
@@ -295,7 +312,7 @@ Bu komutlar, kiracınızı, PowerShell oturumunuzda NPS uzantısı örneğinizle
 
 Aşağıdaki komut, "C:" sürücünüzde. cer biçiminde "npscercertificate" adlı bir dosya oluşturur.
 
-``` PowerShell
+```powershell
 import-module MSOnline
 Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertificate.cer

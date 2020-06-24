@@ -6,34 +6,30 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 8a7ba3c3b9c19b2084b6892b55ac417da38ab047
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc4426fc08efff44bc46ba37eb6fbc6fe31f356b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76278885"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735447"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Azure yay bulutu için kotalar ve hizmet planları
 
-Tüm Azure Hizmetleri, kaynaklar ve özellikler için varsayılan limitleri ve kotaları ayarlar.  Önizleme dönemi boyunca Azure yay bulutu yalnızca bir hizmet planı sunar.
+Tüm Azure Hizmetleri, kaynaklar ve özellikler için varsayılan limitleri ve kotaları ayarlar.   Azure yay bulutu iki fiyatlandırma katmanı sunar: temel ve standart. Bu makaledeki her iki katmanda da limitleri ayrıntılandıracağız.
 
-Bu makalede, geçerli önizleme döneminde sunulan hizmet kotaları ayrıntılı olarak açıklanır.
+## <a name="azure-spring-cloud-service-tiers-and-limits"></a>Azure yay bulut hizmeti katmanları ve limitleri
 
-## <a name="azure-spring-cloud-service-tiers-and-quotas"></a>Azure yay bulut hizmeti katmanları ve kotaları
+| Kaynak | Temel | Standart
+------- | ------- | -------
+Sanal işlemci | hizmet örneği başına 1 | 4 hizmet örneği başına
+Bellek | hizmet örneği başına 2 GB | hizmet örneği başına 8 GB
+Abonelik başına bölge başına Azure yay bulut hizmeti örnekleri | 10 | 10
+Azure yay bulut hizmeti örneği başına toplam uygulama örnekleri | 25 | 500
+Kalıcı birimler | 1 GB/uygulama x 10 uygulamaları | 50 GB/uygulama x 10 uygulamaları
 
-Önizleme dönemi boyunca Azure yay bulutu yalnızca bir hizmet katmanı sunar.
 
-Kaynak | Miktar
-------- | -------
-Sanal işlemci | 4 hizmet örneği başına
-Bellek | hizmet örneği başına 8 GB
-Abonelik başına bölge başına Azure yay bulut hizmeti örnekleri | 10
-Azure yay bulut hizmeti örneği başına toplam uygulama örnekleri | 500
-Yay uygulaması başına toplam uygulama örneği sayısı | 20
-Kalıcı birimler | 10 x 50 GBayt
-
-Bir kotaya ulaştığınızda, şöyle bir 400 hatası alırsınız: "Kota, *Azure Spring Cloud Service 'in oluşturulduğu*bölge bölgesindeki *aboneliğiniz için* sınırı aşıyor.
+Önizleme dönemi boyunca Azure yay bulutu yalnızca bir hizmet katmanı sunar. Bir sınıra ulaştığınızda, şöyle bir 400 hatası alırsınız: "Kota, *Azure Spring Cloud Service 'in oluşturulduğu*bölge bölgesindeki *aboneliğiniz için* sınırı aşıyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bazı varsayılan limitler ve kotalar artırılabilir. Kaynağınız bir artış gerektiriyorsa, [bir destek isteği oluşturun](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+Bazı varsayılan sınırlar artırılabilir. Kurulum için bir artış gerekiyorsa, [bir destek isteği oluşturun](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).

@@ -4,15 +4,15 @@ description: ExpressRoute bağlantı hattı oluşturma, sağlama, doğrulama, g�
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: ab44d5358154c17622eef68205ac2326e81377a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3a0166a5ffb05cff6a38984549db45dbe71d8d7
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75770977"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736365"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>PowerShell kullanarak ExpressRoute bağlantı hattını oluşturma ve değiştirme
 > [!div class="op_single_selector"]
@@ -52,7 +52,7 @@ Get-AzExpressRouteServiceProvider
 
 Bağlantı sağlayıcınızın orada listelenip listelenmediğini denetleyin. Daha sonra bir devre oluşturduğunuzda ihtiyacınız olan aşağıdaki bilgileri unutmayın:
 
-* Adı
+* Name
 * PeeringLocations
 * BandwidthsOffered
 
@@ -119,7 +119,7 @@ Yanıt aşağıdaki örneğe benzer şekilde görünür:
     ServiceKey                        : **************************************
     Peerings                          : []
 
-Bu bilgileri, `Get-AzExpressRouteCircuit` cmdlet 'ini kullanarak istediğiniz zaman alabilirsiniz. Hiçbir parametre olmadan çağrının yapılması tüm devreleri listeler. Hizmet anahtarınız *ServiceKey* alanında listelenir:
+Bu bilgileri, cmdlet 'ini kullanarak istediğiniz zaman alabilirsiniz `Get-AzExpressRouteCircuit` . Hiçbir parametre olmadan çağrının yapılması tüm devreleri listeler. Hizmet anahtarınız *ServiceKey* alanında listelenir:
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit

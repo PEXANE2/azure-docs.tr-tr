@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/09/2020
+ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: 92b3fd2453a4fb121c97f8f25f1d3ca129826092
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4a9081b3d3c1c925efb4cc80201e6154752dc628
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926978"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734784"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Sık sorulan sorular (SSS)
 
@@ -58,6 +58,8 @@ Evet. Daha fazla bilgi için bkz. [Azure CSP aboneliklerinde Azure AD Domain Ser
 ### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>Azure AD Domain Services federe bir Azure AD dizininde etkinleştirebilir miyim? Parola karmalarını Azure AD ile eşitleyemiyorum. Bu dizin için Azure AD Domain Services etkinleştirebilir miyim?
 Hayır. NTLM veya Kerberos aracılığıyla kullanıcıların kimliğini doğrulamak için Azure AD Domain Services Kullanıcı hesaplarının parola karmalarını erişmesi gerekir. Bir Federasyon dizininde, parola karmaları Azure AD dizininde depolanmaz. Bu nedenle Azure AD Domain Services, bu Azure AD dizinleriyle çalışmaz.
 
+Ancak, Parola karması eşitleme için Azure AD Connect kullanıyorsanız, Parola karması değerleri Azure AD 'de depolandığından Azure AD Domain Services kullanabilirsiniz.
+
 ### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>Azure AD Domain Services Aboneliğimde birden çok sanal ağda kullanılabilir yapabilir miyim?
 Hizmetin kendisi bu senaryoyu doğrudan desteklemez. Yönetilen etki alanınız tek seferde yalnızca bir sanal ağda kullanılabilir. Ancak, diğer sanal ağlara Azure AD Domain Services göstermek için birden çok sanal ağ arasında bağlantı yapılandırabilirsiniz. Daha fazla bilgi için bkz. VPN ağ geçitleri veya [sanal ağ eşlemesi](../virtual-network/virtual-network-peering-overview.md) [kullanarak Azure 'da sanal ağları bağlama](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) .
 
@@ -74,7 +76,7 @@ Hayır. Azure AD Domain Services tarafından belirtilen etki alanı, yönetilen 
 Hayır. Azure [AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) davet Işlemi KULLANıLARAK Azure AD dizininize davet edilen konuk kullanıcılar Azure AD Domain Services yönetilen etki alanınız ile eşitlenir. Ancak, bu kullanıcıların parolaları Azure AD dizininizde depolanmaz. Bu nedenle Azure AD Domain Services, bu kullanıcılar için NTLM ve Kerberos karmalarını yönetilen etki alanınız içinde eşitlememe yolu yoktur. Bu tür kullanıcılar oturum açamaz veya bilgisayarları yönetilen etki alanına katılamaz.
 
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>Mevcut bir Azure AD Domain Services yönetilen etki alanını farklı bir aboneliğe, kaynak grubuna, bölgeye veya sanal ağa taşıyabilir miyim?
-Hayır. Azure AD Domain Services yönetilen bir etki alanı oluşturduktan sonra, örneği farklı bir kaynak grubuna, sanal ağa, aboneliğe vb. taşıyamazsınız. Azure AD DS örneğini dağıtırken en uygun aboneliği, kaynak grubunu, bölgeyi ve sanal ağı seçin.
+Hayır. Azure AD Domain Services yönetilen bir etki alanı oluşturduktan sonra, yönetilen etki alanını farklı bir kaynak grubuna, sanal ağa, aboneliğe vb. taşıyamazsınız. Yönetilen etki alanını dağıtırken en uygun aboneliği, kaynak grubunu, bölgeyi ve sanal ağı seçin.
 
 ### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>Yüksek kullanılabilirlik seçenekleri dahil Azure AD Domain Services mi?
 
@@ -97,7 +99,7 @@ Evet. Her Azure AD Domain Services yönetilen etki alanı iki etki alanı denetl
 Hayır. Uzak Masaüstü 'Nü kullanarak yönetilen etki alanı için etki alanı denetleyicilerine bağlanma izniniz yok. *AAD DC yöneticileri* grubunun üyeleri, Active Directory Yönetim MERKEZI (ADAC) veya ad POWERSHELL gibi ad yönetim araçlarını kullanarak yönetilen etki alanını yönetebilir. Bu araçlar, yönetilen etki alanına katılmış bir Windows Server üzerinde *uzak sunucu yönetim araçları* özelliği kullanılarak yüklenir. Daha fazla bilgi için bkz. [Azure AD Domain Services yönetilen bir etki alanını yapılandırmak ve yönetmek için YÖNETIM VM oluşturma](tutorial-create-management-vm.md).
 
 ### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>Azure AD Domain Services etkinleştirdim. Makinelere bu etki alanına katılması için hangi kullanıcı hesabını kullanabilirim?
-Azure AD DS yönetilen etki alanının parçası olan herhangi bir kullanıcı hesabı bir VM 'ye katılabilir. *AAD DC Administrators* grubunun üyelerine, yönetilen etki alanına katılmış makinelere uzak masaüstü erişimi verilir.
+Yönetilen etki alanının parçası olan herhangi bir kullanıcı hesabı bir VM 'ye katılabilir. *AAD DC Administrators* grubunun üyelerine, yönetilen etki alanına katılmış makinelere uzak masaüstü erişimi verilir.
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>Azure AD Domain Services tarafından belirtilen yönetilen etki alanı için etki alanı yöneticisi ayrıcalıklarına sahip mıyım?
 Hayır. Yönetilen etki alanında yönetim ayrıcalıkları verilmemiş. Etki alanı *Yöneticisi* ve *Kurumsal Yönetici* ayrıcalıkları, etki alanı içinde kullanabilmeniz için kullanılamaz. Şirket içi Active Directory etki alanı yöneticisinin veya kurumsal yönetici gruplarının üyelerine, yönetilen etki alanında etki alanı/kuruluş yöneticisi ayrıcalıkları de verilmez.
@@ -158,4 +160,4 @@ Azure AD Domain Services yapılandırma veya yönetme ile ilgili sık karşıla�
 
 Azure AD Domain Services hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory Domain Services nedir?](overview.md).
 
-Başlamak için bkz. [Azure Active Directory Domain Services örneği oluşturma ve yapılandırma](tutorial-create-instance.md).
+Başlamak için bkz. [Azure Active Directory Domain Services yönetilen etki alanı oluşturma ve yapılandırma](tutorial-create-instance.md).

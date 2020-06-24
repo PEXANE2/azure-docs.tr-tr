@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/13/2020
-ms.openlocfilehash: 4b3a2ed71845b8848c9cb0ac5002e0c69a170410
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/21/2020
+ms.openlocfilehash: dd1c4e724e70507816aa4b6ba652adfb998a8cc0
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83642306"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783410"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Market ölçüm hizmeti kimlik doğrulama stratejileri
 
@@ -25,11 +25,11 @@ Market ölçüm hizmetini kullanarak özel ölçümleri güvenli bir şekilde g�
 
 ## <a name="using-the-azure-ad-security-token"></a>Azure AD güvenlik belirtecini kullanma
 
-Uygun teklif türleri, yönetilen uygulama planı türüne sahip SaaS ve Azure uygulamalardır.  
+Geçerli teklif türleri, yönetilen uygulama planı türüne sahip transactable SaaS ve Azure uygulamalardır.  
 
-Kimlik doğrulaması için önceden tanımlanmış bir sabit uygulama KIMLIĞI kullanarak özel ölçümler gönderebilirsiniz.
+Kimlik doğrulaması için önceden tanımlanmış bir sabit Azure AD uygulama KIMLIĞI kullanarak özel ölçümler gönderebilirsiniz.
 
-SaaS teklifleri için, Azure AD kullanılabilir tek seçenektir.
+SaaS teklifleri için bu tek seçenektir. [SaaS uygulamasını kaydettirme](./pc-saas-registration.md)bölümünde açıklandığı gibi herhangi bir SaaS teklifini yayımlamak için zorunlu bir adımdır.
 
 Yönetilen uygulama planına sahip Azure uygulamaları için, aşağıdaki durumlarda bu stratejiyi kullanmayı göz önünde bulundurmanız gerekir:
 
@@ -68,10 +68,10 @@ Bu belirteçler hakkında daha fazla bilgi için bkz. [Azure Active Directory er
 
 |  **Özellik adı**  |  **Gerekli**  |  **Açıklama**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Grant_type`       |   True         | Verme türü. Varsayılan değer: `client_credentials`. |
+|  `Grant_type`       |   True         | Verme türü. `client_credentials` adresini kullanın. |
 |  `Client_id`        |   True         | Azure AD uygulamasıyla ilişkili istemci/uygulama tanımlayıcısı.|
-|  `client_secret`    |   True         | Azure AD uygulamasıyla ilişkili parola.  |
-|  `Resource`         |   True         | Belirtecin istendiği hedef kaynak. Varsayılan değer: `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`.  |
+|  `client_secret`    |   True         | Azure AD uygulamasıyla ilişkili gizli dizi.  |
+|  `Resource`         |   True         | Belirtecin istendiği hedef kaynak. `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` adresini kullanın. |
 | | | |
 
 #### <a name="response"></a>*Yanıtıyla*
@@ -112,7 +112,7 @@ Yönetilen uygulamanız, sanal makinelerden Azure Işlevlerine kadar farklı kay
 
 1. Yönetilen kimliğin yöntemlerden birini kullanarak yapılandırıldığından emin olun:
     * [Azure portal Kullanıcı arabirimi](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
-    * [CLı](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
+    * [CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
     * [PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
     * [Azure Resource Manager şablonu](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
     * [REST](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm#system-assigned-managed-identity)
@@ -145,7 +145,7 @@ Yönetilen uygulamanız, sanal makinelerden Azure Işlevlerine kadar farklı kay
 
     ```powershell
     # Get resourceUsageId from the managed app
-    $managedAppUrl = "https://management.azure.com/subscriptions/" + $metadata.compute.subscriptionId + "/resourceGroups/" + $metadata.compute.resourceGroupName + "/providers/Microsoft.Solutions/applications/" + $managedappId + "\?api-version=2019-07-01"
+    $managedAppUrl = "https://management.azure.com" + $managedappId + "\?api-version=2019-07-01"
     $ManagedApp = curl $managedAppUrl -H $Headers | Select-Object -Expand Content | ConvertFrom-Json
     # Use this resource ID to emit usage 
     $resourceUsageId = $ManagedApp.properties.billingDetails.resourceUsageId
@@ -156,3 +156,4 @@ Yönetilen uygulamanız, sanal makinelerden Azure Işlevlerine kadar farklı kay
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure uygulama teklifi oluşturma](./create-new-azure-apps-offer.md)
+* [Transactable SaaS teklifi oluşturma](./offer-creation-checklist.md)

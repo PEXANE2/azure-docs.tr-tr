@@ -3,12 +3,12 @@ title: Azure Notebooks önizlemede oturum açın
 description: Kullanıcı hesabınızı bir Microsoft hesabı veya iş/okul hesabı kullanarak Azure Notebooks için yapılandırın.
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 9401a9e483f3f8db5af827f53937cb0f01b27a28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a19803ec0a621b981fa9198766c58376ba50534
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646305"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125847"
 ---
 # <a name="your-user-account-for-azure-notebooks-preview"></a>Azure Notebooks önizlemesi için Kullanıcı hesabınız
 
@@ -43,7 +43,7 @@ Alt hesaplar için Azure Notebooks erişimi varsayılan olarak engellenir. Bir a
 
 Erişimi etkinleştirmek için bir üst öğenin aşağıdaki adımları yapması gerekir:
 
-1. ' `https://account.live.com/mk` İ ziyaret edin ve bir üst hesapla oturum açın.
+1. `https://account.live.com/mk`' İ ziyaret edin ve bir üst hesapla oturum açın.
 1. Söz konusu çocuk için bölümünde, **Bu çocuğun üçüncü taraf uygulamalarına erişimini Yönet**' i seçin.
 1. Sonraki sayfada, **erişimi etkinleştir**' i seçin.
 1. Azure Notebooks oturum açmak için alt hesap bir sonraki kullanıldığında, görüntülenen izinler isteminde **Evet** ' i seçin.
@@ -53,7 +53,7 @@ Erişimi etkinleştirmek için bir üst öğenin aşağıdaki adımları yapmas�
 
 ## <a name="work-or-school-accounts"></a>İş veya okul hesapları
 
-Bir iş veya okul hesabı, kuruluşun bir üyesinin Office 365 gibi Microsoft bulut hizmetlerine ve ayrıca etki alanına katılmış bir bilgisayarda Windows 'da oturum açmak için bir hesap olarak erişmesini sağlamak üzere bir kuruluşun yöneticisi tarafından oluşturulur. Bir iş veya okul hesabı genellikle gibi any-user@contoso.combir kurumsal e-posta adresi kullanır.
+Bir iş veya okul hesabı, kuruluşun bir üyesinin Microsoft 365 gibi Microsoft bulut hizmetlerine erişmesini ve ayrıca etki alanına katılmış bir bilgisayarda Windows 'da oturum açmak için bir hesap olarak oluşturulmasını sağlamak üzere bir kuruluşun yöneticisi tarafından oluşturulur. Bir iş veya okul hesabı genellikle gibi bir kurumsal e-posta adresi kullanır any-user@contoso.com .
 
 Bir iş veya okul hesabıyla Azure Notebooks oturum açmak, Azure Notebooks, hesabın e-posta adresi ve kullanıcının tarayıcı bilgileri gibi bilgileri toplayıp kullanması (ancak açıklamadığı) için yönetici onayı gerektirebilir. (Tarayıcı verileri, popüler kullanıma göre özellikleri iyileştirmek için kullanılır.)
 

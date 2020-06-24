@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ab1d0318464f6b44e1f46bd30dc76272584fde64
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 289cc463732ee6b612b67f6c408d9d7260016137
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929834"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125813"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir? 
 
@@ -22,7 +22,7 @@ Windows sanal masaüstü, bulutta çalışan bir masaüstü ve uygulama sanalla�
 Azure 'da Windows sanal masaüstü 'Nü çalıştırdığınızda şunları yapabilirsiniz:
 
 * Ölçeklenebilirlik ile tam bir Windows 10 sunan çoklu oturum Windows 10 dağıtımı ayarlama
-* Office 365 ProPlus 'ı sanallaştırın ve çoklu Kullanıcı sanal senaryolarında çalıştırmak için iyileştirin
+* Microsoft 365 uygulamalarını kuruluşa sanallaştırın ve bunu çok kullanıcılı sanal senaryolarda çalışacak şekilde iyileştirin
 * Ücretsiz genişletilmiş güvenlik güncelleştirmeleri ile Windows 7 sanal masaüstlerini sağlama
 * Mevcut Uzak Masaüstü Hizmetleri (RDS) ve Windows Server Masaüstlerinizi ve uygulamalarınızı herhangi bir bilgisayara getirme
 * Masaüstlerini ve uygulamaları sanallaştırın
@@ -109,11 +109,11 @@ Aşağıdaki tabloda, Azure sanal makinelerinizin erişebileceği isteğe bağl�
 
 |Adres|Giden TCP bağlantı noktası|Amaç|Hizmet etiketi|
 |---|---|---|---|
-|*.microsoftonline.com|443|MS Online Services ile kimlik doğrulama|Yok|
+|*.microsoftonline.com|443|Microsoft Online Services kimlik doğrulaması|Yok|
 |*. events.data.microsoft.com|443|Telemetri hizmeti|Yok|
 |www.msftconnecttest.com|443|İşletim sisteminin Internet 'e bağlı olup olmadığını algılar|Yok|
 |*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Yok|
-|login.windows.net|443|MS online hizmetlerinde oturum açın, Office 365|Yok|
+|login.windows.net|443|Microsoft Online Services 'da oturum açın Microsoft 365|Yok|
 |*. sfx.ms|443|OneDrive istemci yazılımı güncelleştirmeleri|Yok|
 |*. digicert.com|443|Sertifika iptal denetimi|Yok|
 
@@ -126,7 +126,7 @@ Aşağıdaki tabloda, Azure sanal makinelerinizin erişebileceği isteğe bağl�
 >Hizmet trafiğiyle ilgili URL 'Ler için (*) joker karakterini kullanmanız gerekir. Aracıyla ilgili trafik için * kullanmayı tercih ediyorsanız, joker karakterleri olmayan URL 'Leri bulma hakkında bilgi edinebilirsiniz:
 >
 >1. Sanal makinelerinizi Windows sanal masaüstü ana bilgisayar havuzuna kaydedin.
->2. **Olay Görüntüleyicisi** 'ni açın ve **Windows günlükleri** > **uygulaması** > **WVD-Agent** ' a gidin ve olay kimliği 3702 ' i arayın.
+>2. **Olay Görüntüleyicisi** 'ni açın ve **Windows günlükleri**  >  **uygulaması**  >  **WVD-Agent** ' a gidin ve olay kimliği 3702 ' i arayın.
 >3. Olay KIMLIĞI 3702 altında bulduğunuz URL 'Leri beyaz listeye ekleyin. Olay KIMLIĞI 3702 altındaki URL 'Ler bölgeye özeldir. Beyaz Listeleme işlemini, sanal makinelerinizi dağıtmak istediğiniz her bölge için ilgili URL 'lerle tekrarlamanız gerekecektir.
 
 Windows sanal masaüstü, kullanıcılara ve Microsoft tarafından Azure 'da bir hizmet olarak barındırılan yönetim çözümüne ait olan Windows Masaüstü ve uygulamalarını içerir. Masaüstleri ve uygulamalar, herhangi bir Azure bölgesindeki sanal makinelerde (VM) dağıtılabilir ve bu VM 'Lerin yönetim çözümü ve verileri Birleşik Devletler yer alır. Bu, Birleşik Devletler veri aktarımına neden olabilir.
@@ -186,13 +186,13 @@ Kullanılabilir Otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda göst
 |İşletim sistemi|Azure görüntü Galerisi|El ile VM dağıtımı|Azure Resource Manager şablonu tümleştirmesi|Azure Market 'te konak havuzları sağlama|
 |--------------------------------------|:------:|:------:|:------:|:------:|
 |Windows 10 çoklu oturum, sürüm 1903|Yes|Yes|Yes|Yes|
-|Windows 10 çoklu oturum, sürüm 1809|Yes|Yes|Hayır|Hayır|
+|Windows 10 çoklu oturum, sürüm 1809|Yes|Yes|No|Hayır|
 |Windows 10 Enterprise, sürüm 1903|Yes|Yes|Yes|Yes|
-|Windows 10 Enterprise, sürüm 1809|Yes|Yes|Hayır|Hayır|
-|Windows 7 Enterprise|Yes|Yes|Hayır|Hayır|
-|Windows Server 2019|Yes|Yes|Hayır|Hayır|
+|Windows 10 Enterprise, sürüm 1809|Yes|Yes|No|Hayır|
+|Windows 7 Enterprise|Yes|Yes|No|Hayır|
+|Windows Server 2019|Yes|Yes|No|Hayır|
 |Windows Server 2016|Yes|Yes|Yes|Yes|
-|Windows Server 2012 R2|Yes|Yes|Hayır|Hayır|
+|Windows Server 2012 R2|Yes|Yes|No|Hayır|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

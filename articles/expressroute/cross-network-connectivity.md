@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: rambala
-ms.openlocfilehash: 48ec26cc98310dfeb61aa17018c940b431cfbcee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 646482472caf6aded9142f33fb6bd879938998d3
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75644265"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124962"
 ---
 # <a name="cross-network-connectivity"></a>Ağlar arası bağlantı
 
@@ -20,29 +20,29 @@ Fabrikam Inc. Doğu ABD 'de büyük bir fiziksel varlık ve Azure dağıtımı v
 
 Fabrikam Inc. edinme contoso Ltd. Merger 'u takip eden Fabrikam, ağları bağlamak istemektedir. Aşağıdaki şekilde senaryo gösterilmektedir:
 
- [![1]][1]
+![Uygulama senaryosu](./media/cross-network-connectivity/premergerscenario.png)
 
 Yukarıdaki şeklin ortasındaki kesik çizgili oklar, istenen ağ bağlantılarını gösterir. Özellikle, üç tür çapraz bağlantı istenir: 1) Fabrikam ve contoso VNET çapraz bağlantısı, 2) çapraz bölgesel şirket içi ve VNET çapraz bağlantı (yani fabrikam şirket içi ağı contoso VNet 'e bağlama ve contoso şirket içi ağını fabrikam VNet 'e bağlama) ve 3) Fabrikam ve contoso şirket içi ağ çapraz bağlantı. 
 
 Aşağıdaki tabloda, Merger 'tan önce contoso Ltd. için ExpressRoute 'un özel eşlemesinin yol tablosu gösterilmektedir.
 
-[![2]][2]
+![Merkli olmadan önce contoso ExpressRoute yol tablosu](./media/cross-network-connectivity/contosoexr-rt-premerger.png)
 
-Aşağıdaki tabloda, mermeyen bir sanal makinenin contoso aboneliğindeki etkin yolları gösterilmektedir. Her tablo için, VNet 'teki VM, VNet adres alanını ve contoso şirket içi ağını, varsayılan olanlardan ayrı olarak algılar. 
+Aşağıdaki tabloda, mermeyen bir sanal makinenin contoso aboneliğindeki etkin yolları gösterilmektedir. Her tablo için, VNet 'teki VM, VNet adres alanını ve contoso şirket içi ağını, varsayılan olanlardan ayrı olarak algılar.
 
-[![4]][4]
+![Merkli başlamadan önce contoso VM rotaları](./media/cross-network-connectivity/contosovm-routes-premerger.png)
 
 Aşağıdaki tabloda, Merger 'tan önce fabrikam Inc. için ExpressRoute 'un özel eşlemesinin yol tablosu gösterilmektedir.
 
-[![3]][3]
+![Birleşme öncesinde fabrikam ExpressRoute yol tablosu](./media/cross-network-connectivity/fabrikamexr-rt-premerger.png)
 
 Aşağıdaki tabloda, bir VM 'nin, birleşme öncesinde fabrikam aboneliğindeki etkin yolları gösterilmektedir. Her tablo için, VNet 'teki VM, VNet adres alanını ve Fabrikam şirket içi ağını, varsayılan olanlardan ayrı olarak algılar.
 
-[![5]][5]
+![Birleşme 'tan önce fabrikam VM yolları](./media/cross-network-connectivity/fabrikamvm-routes-premerger.png)
 
 Bu makalede, adım adım ilerleyin ve aşağıdaki Azure ağ özelliklerini kullanarak istenen çapraz bağlantıları nasıl elde ettiğiyle tartışalım:
 
-* [Sanal ağ eşleme][Virtual network peering] 
+* [Sanal ağ eşlemesi][Virtual network peering] 
 * [Sanal ağ ExpressRoute bağlantısı][connection]
 * [Global Reach][Global Reach] 
 
@@ -54,15 +54,15 @@ Contoso ve Fabrikam Azure aboneliklerindeki sanal ağlar arasında küresel VNet
 
 Aşağıdaki resimde genel VNet eşlemesi yapılandırıldıktan sonra ağ mimarisi gösterilmektedir.
 
-[![inç]][6]
+![VNet eşleme sonrası mimari](./media/cross-network-connectivity/vnet-peering.png )
 
 Aşağıdaki tabloda, contoso aboneliği VM 'si tarafından bilinen rotalar gösterilmektedir. Tablonun son girişine dikkat edin. Bu giriş, sanal ağların çapraz bağlantı kurma sonucudur.
 
-[![7@@]][7]
+![VNet eşlemesi sonrasında contoso VM rotaları](./media/cross-network-connectivity/contosovm-routes-peering.png)
 
 Aşağıdaki tabloda fabrikam abonelik VM 'si tarafından bilinen rotalar gösterilmektedir. Tablonun son girişine dikkat edin. Bu giriş, sanal ağların çapraz bağlantı kurma sonucudur.
 
-[![240]][8]
+![Sanal ağ eşlemeden sonra fabrikam VM rotaları](./media/cross-network-connectivity/fabrikamvm-routes-peering.png)
 
 VNet eşlemesi iki sanal ağı doğrudan bağlar (yukarıdaki iki tabloda *Vnetglobaleşleme* girişi için sonraki atlama yok başlığına bakın)
 
@@ -74,23 +74,23 @@ Böylece, sanal ağlar ve şirket içi ağlar arasında çapraz bağlantıyı et
 
 Aşağıdaki resimde, sanal ağlara yönelik ExpressRoute çapraz bağlantısı yapılandırıldıktan sonra ağ mimarisi gösterilmektedir.
 
-[![9]][9]
+![ExpressRoute ile çapraz bağlantı sonrası mimari](./media/cross-network-connectivity/exr-x-connect.png)
 
 Aşağıdaki tabloda, contoso Ltd 'nin ExpressRoute 'un özel eşlemesinin yol tablosu gösterilmektedir. Bu, sanal ağları ExpressRoute aracılığıyla şirket içi ağlara bağladıktan sonra. Yol tablosunun her iki sanal ağa ait yollara sahip olduğunu görün.
 
-[![(]][10]
+![ExR ve sanal ağları çapraz bağladıktan sonra contoso ExpressRoute yol tablosu](./media/cross-network-connectivity/contosoexr-rt-xconnect.png)
 
 Aşağıdaki tabloda, Azure 'un ExpressRoute aracılığıyla sanal ağları şirket içi ağlara bağladıktan sonra, Fabrikam Inc. ExpressRoute 'un özel eşlemesinin yol tablosu gösterilmektedir. Yol tablosunun her iki sanal ağa ait yollara sahip olduğunu görün.
 
-[![üst]][11]
+![ExR ve sanal ağları çapraz bağladıktan sonra fabrikam ExpressRoute yol tablosu](./media/cross-network-connectivity/fabrikamexr-rt-xconnect.png)
 
 Aşağıdaki tabloda, contoso aboneliği VM 'si tarafından bilinen rotalar gösterilmektedir. Tablonun *sanal ağ geçidi* girişlerine dikkat edin. VM, hem şirket içi ağlar için rotalar görür.
 
-[![+]][12]
+![ExR ve sanal ağları çapraz bağladıktan sonra contoso VM rotaları](./media/cross-network-connectivity/contosovm-routes-xconnect.png)
 
 Aşağıdaki tabloda fabrikam abonelik VM 'si tarafından bilinen rotalar gösterilmektedir. Tablonun *sanal ağ geçidi* girişlerine dikkat edin. VM, hem şirket içi ağlar için rotalar görür.
 
-[![hatası]][13]
+![ExR ve sanal ağları çapraz bağladıktan sonra fabrikam VM rotaları](./media/cross-network-connectivity/fabrikamvm-routes-xconnect.png)
 
 >[!NOTE]
 >Fabrikam ve/veya contoso aboneliklerinde, ilgili hub VNet 'e bağlı olan sanal ağlara da sahip olabilirsiniz (bir hub ve bağlı bileşen tasarımı bu makaledeki mimari diyagramlarında gösterilmektedir). Hub VNet ağ geçitleri arasında ExpressRoute 'a çapraz bağlantılar, Doğu ve Batı hub 'ları ile bağlı bileşenleri arasında iletişime da izin verir.
@@ -102,39 +102,21 @@ ExpressRoute Global Reach, farklı ExpressRoute devrelerine bağlı olan şirket
 
 Aşağıdaki resimde Global Reach yapılandırıldıktan sonra ağ mimarisi gösterilmektedir.
 
-[![14]][14]
+![Global Reach yapılandırdıktan sonra mimari](./media/cross-network-connectivity/globalreach.png)
 
 Aşağıdaki tabloda, Global Reach yapılandırıldıktan sonra contoso Ltd. için ExpressRoute 'un özel eşlemesinin yol tablosu gösterilmektedir. Yol tablosunun hem şirket içi ağlara ait yollara sahip olduğunu görün. 
 
-[![15]][15]
+![Global Reach sonrasında contoso ExpressRoute yol tablosu](./media/cross-network-connectivity/contosoexr-rt-gr.png)
 
 Aşağıdaki tabloda, Global Reach yapılandırıldıktan sonra fabrikam Inc. ' nin ExpressRoute 'un özel eşlemesinin yol tablosu gösterilmektedir. Yol tablosunun hem şirket içi ağlara ait yollara sahip olduğunu görün.
 
-[![k]][16]
+![Global Reach sonra fabrikam ExpressRoute yol tablosu]( ./media/cross-network-connectivity/fabrikamexr-rt-gr.png )
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 VNet ve VNet eşlemesi hakkında daha fazla soru için bkz. [sanal ağ hakkında SSS][VNet-FAQ]. ExpressRoute ve sanal ağ bağlantısı hakkında daha fazla soru için bkz. [EXPRESSROUTE SSS][ER-FAQ] .
 
 Global Reach ülkeye/bölgeye göre ülke/bölge bazında alınır. Global Reach, istediğiniz ülkelerde/bölgelerde kullanılabilir olup olmadığını görmek için bkz. [ExpressRoute Global Reach][Global Reach].
-
-<!--Image References-->
-[1]: ./media/cross-network-connectivity/premergerscenario.png "uygulama senaryosu"
-[2]: ./media/cross-network-connectivity/contosoexr-rt-premerger.png "contoso ExpressRoute yol tablosu merkli"
-[3]: ./media/cross-network-connectivity/fabrikamexr-rt-premerger.png "fabrikam ExpressRoute yol tablosu merkli"
-[4]: ./media/cross-network-connectivity/contosovm-routes-premerger.png "birleşme 'tan önce 4 contoso VM rotaları"
-[5]: ./media/cross-network-connectivity/fabrikamvm-routes-premerger.png "birleşme 'tan önce 5 fabrikam VM yolu"
-[6]: ./media/cross-network-connectivity/vnet-peering.png "VNET eşleme sonrası mimari"
-[7]: ./media/cross-network-connectivity/contosovm-routes-peering.png "VNET eşlemeden sonra 7 contoso VM yolları"
-[8]: ./media/cross-network-connectivity/fabrikamvm-routes-peering.png "VNET eşlemeden sonra 8 fabrikam VM yolu"
-[9]: ./media/cross-network-connectivity/exr-x-connect.png "mimariden sonraki mimari çapraz bağlantı"
-[10]: ./media/cross-network-connectivity/contosoexr-rt-xconnect.png "EXR ve VNET 'leri bağladıktan sonra 10 contoso ExpressRoute yol tablosu"
-[11]: ./media/cross-network-connectivity/fabrikamexr-rt-xconnect.png "EXR ve sanal ağları çapraz bağladıktan sonra 11 fabrikam ExpressRoute yol tablosu"
-[12]: ./media/cross-network-connectivity/contosovm-routes-xconnect.png "EXR ve sanal ağları çapraz bağladıktan sonra 12 contoso VM yolları"
-[13]: ./media/cross-network-connectivity/fabrikamvm-routes-xconnect.png "EXR ve sanal ağları çapraz bağladıktan sonra 13 fabrikam VM yolları"
-[14]: ./media/cross-network-connectivity/globalreach.png "Global Reach yapılandırdıktan sonra mimari"
-[15]: ./media/cross-network-connectivity/contosoexr-rt-gr.png "Global Reach sonra 15 contoso ExpressRoute yol tablosu"
-[16]: ./media/cross-network-connectivity/fabrikamexr-rt-gr.png "Global Reach sonra 16 fabrikam ExpressRoute yol tablosu"
 
 <!--Link References-->
 [Virtual network peering]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview

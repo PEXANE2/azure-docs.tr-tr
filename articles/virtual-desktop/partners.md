@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 06/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a6a4712f88a6f5351845233f4179e82e4b473ded
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 332ce90de334a384ee6017a12781d0ddb2ed4158
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266738"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126153"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
@@ -33,12 +33,12 @@ Citrix, Kullanıcı yoğunluğu ve performansını artırmak, isteğe bağlı i�
 
 ![VMware logosu](./media/partners/vmware.png)
 
-Microsoft Azure üzerinde VMware ufuk bulutu, kuruluşlara, sanallaştırılmış Windows Uygulamaları ve masaüstü bilgisayarlar için güvenli, kapsamlı ve bulut tarafından barındırılan bir çözüm oluşturarak, kendi Microsoft Azure örneğini basit, sezgisel ufuk bulutu denetim düzlemine bağlama olanağı sağlar. Windows sanal masaüstü 'Nü kullanarak, VMware, Windows sanal masaüstü 'nin işlevlerini Microsoft Azure ' de ufuk bulutu 'nı kullanan müşterilere genişleten Microsoft ile işbirliği yaptı. Bu işlevsellik, 2019 sonuna kadar teknik önizlemede kullanıma sunulacaktır.
- 
-Onaylanan bir sağlayıcı olarak, Windows sanal masaüstü 'nün avantajları, çok oturum için Windows 10 Enterprise, üç yıla kadar ücretsiz genişletilmiş güvenlik güncelleştirmeleri içeren Windows 7 ve FSLogix gibi Microsoft Azure müşteriler üzerinde VMware ufuk bulutu 'na genişletilir. Ayrıca, müşteriler geniş uç nokta desteği gibi, ufku bulutu 'nın kurumsal sınıf özelliklerini de alır; küresel, buluta iyileştirilmiş aracılı; Esnek masaüstü seçenekleri ve yapılandırması; Kullanıcı ortamı yönetimi; ve karma ortamlar için destek.
+Microsoft Azure üzerinde VMware ufuk bulutu, kuruluşların VMware ufuk 'in tüm özelliklerinden yararlanarak, uzak masaüstlerini ve uygulamaları mevcut Microsoft Azure aboneliklerinden hızlıca dağıtmalarına olanak tanıyan yerel bir bulut hizmetidir. Ufuk bulutu, tüm ufku ortamları için şirket içinde veya bulutta tek bir yönetim arabirimi sağlamak üzere ufuk denetim düzlemi 'ni kullanır. Bu, karma masaüstü sanallaştırmayı sağlar ve müşterilerin iş yüklerini Azure 'a kendi hızda taşımasına olanak tanır.
 
-- [Microsoft Azure 'de ufuk bulutu 'Nın teknik önizlemesine kaydolun](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
+Windows sanal masaüstü tarafından onaylanan bir sağlayıcı olarak, VMware, tümleşik ve kullanımı kolay güç yönetimi, bulut tabanlı izleme ve olağanüstü kullanım protokolü gibi VMware Ufkiyle birlikte gelen ek işlevselliğin hala keyfini çıkarak, Windows sanal masaüstü 'Nü kullanmak isteyen müşterilere yardımcı olabilir. Bu özellikler, düzenli olarak mükemmel bir kullanıcı deneyimi sağlamak için, anında ağ koşullarını değiştirmeyi uyarlar. VMware ufuk bulutu Ayrıca, MALTÝ App Attach ve FSLogix ile çalışan gelişmiş uygulama ve Kullanıcı ortamı yönetim özellikleri ekleyen VMware App Volumes ve dinamik Ortam Yöneticisi ile birlikte gelir.
+
 - [İş ortağı Web sitesine gidin](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
+- [VMware ufuk bulutu teknik belgelerini okuyun](https://techzone.vmware.com/mastering-horizon-cloud-microsoft-azure).
 
 ## <a name="10zig"></a>10ZiG
 
@@ -102,6 +102,28 @@ deviceTRUST, Windows sanal masaüstü 'nün değerini bağlamsal güvenlik tekno
 
 - [İş ortağı Web sitesine gidin](https://devicetrust.com/wvd).
 
+## <a name="ekran-system"></a>Ekran sistemi
+
+![Ekran sistem logosu](./media/partners/ekran.png)
+
+Ekran System bir Windows sanal masaüstü değeridir-BT ekiplerinin Microsoft Azure sanal makinelerde tüm uzak kullanıcı etkinliklerini izlemesini sağlayan iş ortağı ekleyin. Ekran sistemi ile, uygulama adları, etkin pencere başlıkları, ziyaret edilen URL 'Ler ve tuş vuruşları gibi çok sayıda bağlam zengin meta veri toplamada, yayımlanan uygulamalardaki veya sanal masaüstlerindeki her kullanıcı oturumunda ekran etkinliğini kaydedebilirsiniz. Gelişmiş özellikler, ayrıntılı görünürlük ve hızlı olay yanıt süreleri sunarak ekran sistemi verimli bir Insider tehdit yönetimi ve uyumluluk çözümü sağlar.  
+
+Ekran sistem istemcilerinin benzersiz kayan nokta lisansı, dinamik olarak değişen sanal masaüstlerini desteklemek için otomatikleştirilmiştir. Ekran sistemi, silinen kalıcı olmayan sanal masaüstlerinin lisanslarını otomatik olarak atamasını ve bunları veritabanınızdan kaldırmayı sağlar. Ekran System Azure Active Directory ve Azure Sentinel ile sorunsuz bir şekilde tümleşir.
+
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yqY8).
+- [İş ortağı sayfasına gidin](https://www.ekransystem.com/product/supported-platforms/windows-virtual-desktop-monitoring).
+
+## <a name="flexxible-it"></a>Orıo It
+
+![Flexxx BT logosu](./media/partners/flexxible.png)
+
+Bu bir Windows sanal masaüstü değeridir. kuruluşların Windows sanal masaüstü ve Citrix çalışma alanı altyapısını hızla ölçeklendirme, izleme ve verimli bir şekilde yönetme olanağı sunan iş ortağı ekleyin. Flexxıble | SUITE, BT yöneticilerinin şirket içinde Windows sanal masaüstü iş yüklerini akıllıca sağlamasına ve yönetmesine olanak tanır ve Azure 'da barındırılabilir.
+ 
+Teknolojik BT 'nin teknolojisi, altyapı yapılandırması, masaüstü sağlama ve günlük yönetimi kolaylaştırmak için ortak süreçlerini otomatikleştirerek hem yerel Windows sanal masaüstü ve Citrix çalışma alanının değerini genişletir. Karmaşık PowerShell betikleri veya zaman alan el ile işlemlere gerek duymadığına göre, paket ölçeklenebilir masaüstü dağıtımı, kapsamlı izleme ve raporlama ve güvenli Temsilcili yönetim sağlar. Bu özellikler, kullanıcılarınız için gelişmiş hizmet düzeyleri ve kaliteli bir Windows sanal masaüstü deneyimi sunmaya odaklanmanızı sağlar.
+
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7A).
+- [İş ortağı Web sitesine gidin](https://www.flexxible.com/suite-for-windows-virtual-desktop).
+
 ## <a name="hp"></a>HP
 
 ![HP logosu](./media/partners/hp.png)
@@ -127,7 +149,7 @@ ILEK OS, Citrix, Microsoft ve VMware 'den tüm popüler sanal uygulamaları, mas
 
 ![Ivanti logosu](./media/partners/ivanti.png)
 
-Ivantı Kullanıcı çalışma alanı yöneticisi, sorunsuz taşınabilirlik için Kullanıcı verilerini masaüstünden ayırarak masaüstü dağıtımı ve yönetimini kolaylaştırır. Ivanti sayesinde, kullanıcılar Windows 10 ' a geçiş, Office 365 ' i benimseme veya hizmetleri buluta daha hızlı taşıma gibi karmaşık projeler sunabiliyor. 
+Ivantı Kullanıcı çalışma alanı yöneticisi, sorunsuz taşınabilirlik için Kullanıcı verilerini masaüstünden ayırarak masaüstü dağıtımı ve yönetimini kolaylaştırır. Ivanti sayesinde, kullanıcılar Windows 10 ' a geçiş, Microsoft 365 benimseme veya hizmetleri buluta daha hızlı taşıma gibi karmaşık projeler sunabilir. 
 
 Ivantı Kullanıcı çalışma alanı yöneticisi, Windows sanal masaüstü ile kullanıldığında, Kullanıcı masaüstü deneyiminin basit bağlamsal yönetimini sağlayarak, uzun oturum açma sürelerini ortadan kaldırır ve Grup İlkesi nieli Mares 'yi kaldırır. Ivantı Kullanıcı çalışma alanı yöneticisi kullanıma hazır şablonlar, aracılar ve var olan konsol aracılığıyla kullanıcılara yönelik yüklemeyi basitleştirir. Ivantı Kullanıcı çalışma alanı yöneticisi, kullanıcıların sevdiği, sunuculara para tasarrufu, kullanıcıları daha verimli bir şekilde yönetme ve uç nokta güvenlik riskini azaltma konusunda yanıt veren, güvenli masaüstleri sunar. 
 
@@ -163,6 +185,7 @@ Uygulamalar ve hizmet sağlayıcılarının tüm çalışma alanı arka uçları
 
 Sertifikalı tümleştirme ortağı olarak, Liquit, RIP ve değiştirme gecikmesi olmadan buluta geçişi hızlandırmaya yardımcı olur. Windows sanal masaüstü, var olan bir ortama kolayca bağlanabilir, çalışma alanı oluşturabilir ve masaüstünü sunabilir. Daha sonra zamandan eski platformlardan geçiş yapabilir ve kullanıcılarınız yaşıyorsanız olmadan arka uçta değişiklikler yapabilirsiniz. Tutarlı bir son kullanıcı deneyimi, esnek altyapı elde edin ve nerede olurlarsa olsun uygulamalarınızın denetimini koruyun.
 
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yol8).
 - [İş ortağı Web sitesine gidin](https://www.liquit.com/wvd/).
 
 ## <a name="login-vsi"></a>Oturum açma VSI
@@ -235,6 +258,17 @@ RDPSoft, güçlü ve pahalı izleme, yönetim ve raporlama çözümleri sağlaya
 RDPSoft 'in uzak masaüstü Commander Çözümleri Windows sanal masaüstü yönetimi 'ni geliştirir. Premium yönetim özellikleri, uzaktan yardım, Kullanıcı oturumu ve işlem yönetimi sağlayarak masaüstü personelini desteklemek için Windows sanal masaüstü yönetim görevlerinin temsilciliğini basitleştirir. Aynı zamanda, uzak masaüstü Commander Suite, Kullanıcı başına performans ve yükleme, Kullanıcı etkinlikleri ve denetim, Windows sanal masaüstü bağlantısı kalitesi (gecikme süresi ve bant genişliği), lisanslama ve güvenlik hakkında bir merkezi Azure SQL veritabanı örneğine yönelik zengin ölçümler toplar. RDPSoft ile, zengin geçmişe yönelik raporlama ve kapsamlı panolar yalnızca bir tıklama.
 
 - [İş ortağı Web sitesine gidin](https://www.rdpsoft.com/products/remote-desktop-commander/suite/).
+
+## <a name="rimo3"></a>Rimo3
+
+![Rimo3 logosu](./media/partners/rimo3.png)
+
+Rimo3, dağıtımı hızlandırarak ve sürekli değişiklik yönetimini geliştirerek Windows sanal masaüstü deneyimini geliştirir. Rimo3 BT ekiplerini, uygulama iş yüklerinin Azure geçişine yönelik hazırlık için uygulama portföyünüzü desteklemesi gereken bilgilerle donatılmıştır. Kullanıcılar, uygulamaları ve bunları hedef Windows sanal masaüstü çalışma alanında hızlı ve sorunsuz bir şekilde test edebilir. Kullanıcılar yeni uygulamaları ve güncelleştirmeleri kaydettiren her türlü değişikliğin etkisini de etkili bir şekilde anlayabilirler. Son olarak, BT yöneticileri Rimo3's akıllı duman test özelliğinden yararlanabilir ve kullanıcı oturumlarını kesintiye uğramadan işlevsellik testini otomatikleştirebilir.
+
+Rimo3 kullanımı kolay, ölçeklenebilir, otomatik uygulama testi platformu sunar. Bu platform, üç uygulama testi temelleri için özellikleri içerir: uyumluluk, işlevsellik ve performans. Kuruluşların, liderlerin ve takımların iş sürekliliği geliştirmesine, değişikliği daha hızlı benimsemesine ve Kullanıcı deneyimini iyileştirmesine olanak tanır.
+
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7B).
+- [İş ortağı Web sitesine gidin](https://rimo3.com/outcomes/).
 
 ## <a name="sepago"></a>sepago
 

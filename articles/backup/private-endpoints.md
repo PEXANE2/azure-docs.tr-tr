@@ -3,12 +3,12 @@ title: Özel Uç Noktalar
 description: Azure Backup için özel uç noktalar oluşturma sürecini anlayın ve özel uç noktaları kullanmanın kaynaklarınızın güvenliğini sağlamaya yardımcı olur.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 9158ad23bf05bf52f879afb1f1d25d2f4ba42cfb
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 8ce767073e9acfe271e6e57f9e6d1237910b33e0
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323646"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124264"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup için özel uç noktalar
 
@@ -21,10 +21,11 @@ Bu makale, Azure Backup için özel uç noktalar oluşturma sürecini anlamanız
 - Özel uç noktalar yalnızca yeni kurtarma hizmetleri kasaları için oluşturulabilir (kasaya kayıtlı herhangi bir öğe yok). Bu nedenle, herhangi bir öğeyi kasaya korumayı denemeden önce özel uç noktaların oluşturulması gerekir.
 - Bir sanal ağ, birden çok kurtarma hizmetleri Kasası için özel uç noktalar içerebilir. Ayrıca, bir kurtarma hizmetleri kasasında birden çok sanal ağda özel uç noktalar bulunabilir. Ancak, bir kasa için oluşturulabilecek en fazla özel uç nokta sayısı 12 ' dir.
 - Kasa için özel bir uç nokta oluşturulduktan sonra kasa kilitlenir. Kasaların özel bir uç noktasını içeren ağlardan ayrı olarak erişilebilir olmayacaktır (yedeklemeler ve geri yüklemeler için). Kasa için tüm özel uç noktalar kaldırılırsa, kasaya tüm ağlardan erişilebilecektir.
+- Yedekleme için özel bir uç nokta bağlantısı, alt ağınızdaki toplam 11 özel IP 'yi kullanır. Bu sayı, belirli Azure bölgeleri için daha yüksek (15 ' e kadar) olabilir. Bu nedenle, yedekleme için özel uç noktalar oluşturmaya çalıştığınızda yeterli sayıda özel IP 'nin kullanılabilir olmasını öneririz.
 - Bir kurtarma hizmetleri Kasası (her ikisi de) Azure Backup ve Azure Site Recovery tarafından kullanıldığında, bu makalede yalnızca Azure Backup için özel uç noktaların kullanımı ele alınmaktadır.
 - Azure Active Directory şu anda özel uç noktaları desteklemez. Bu nedenle Azure Active Directory bir bölgede çalışması için gereken IP 'Leri ve FQDN 'lerin, Azure VM 'lerinde veritabanlarının yedeklenmesi sırasında ve MARS Aracısı kullanılarak yedeklendiğinden güvenli ağdan giden erişime izin verilmesi gerekir. Ayrıca, geçerli olduğu şekilde Azure AD 'ye erişim izni vermek için NSG etiketlerini ve Azure Güvenlik Duvarı etiketlerini de kullanabilirsiniz.
 - Ağ Ilkelerine sahip sanal ağlar özel uç noktalar için desteklenmez. Devam etmeden önce ağ Ilkelerini devre dışı bırakmanız gerekir.
-- Kurtarma Hizmetleri kaynak sağlayıcısını, aboneliği 1 Mayıs 2020 tarihinden önce kaydettirdiğiniz takdirde yeniden kaydetmeniz gerekir. Sağlayıcıyı yeniden kaydetmek için Azure portal aboneliğinize gidin, sol gezinti çubuğunda **kaynak sağlayıcısı** ' na gidin ve ardından **Microsoft. recoveryservices** ' i seçin ve **yeniden kaydet**' e tıklayın.
+- Kurtarma Hizmetleri kaynak sağlayıcısını, aboneliği 1 2020 Mayıs tarihinden önce kaydettirdiğiniz takdirde yeniden kaydetmeniz gerekir. Sağlayıcıyı yeniden kaydetmek için Azure portal aboneliğinize gidin, sol gezinti çubuğunda **kaynak sağlayıcısı** ' na gidin ve ardından **Microsoft. recoveryservices** ' i seçin ve **yeniden kaydet**' e tıklayın.
 
 ## <a name="recommended-and-supported-scenarios"></a>Önerilen ve desteklenen senaryolar
 
@@ -41,9 +42,6 @@ Bu bölüm, sanal ağlarınızdaki Azure Backup için özel uç noktalar oluştu
 
 >[!IMPORTANT]
 > Bu belgede belirtilen sırada bulunan adımları izlemeniz önemle tavsiye edilir. Bunun başarısız olması, Özel uç noktaları kullanmak ve işlemi yeni bir kasa ile yeniden başlatmanızı gerektiren kasalardan dolayı uyumsuz olarak işlenmesine yol açabilir.
-
->[!NOTE]
-> Azure portal deneyiminin belirli öğeleri şu anda kullanılamıyor olabilir. Bölgenizdeki tam kullanılabilirlik kadar bu senaryolarda lütfen alternatif deneyimlere bakın.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -345,7 +343,7 @@ Gerekli izinlere sahip roller oluşturmak için aşağıdaki yöntemlerden birin
 
 Aşağıdaki JSON dosyalarını oluşturun ve rol oluşturmak için bölümün sonundaki PowerShell komutunu kullanın:
 
-PrivateEndpointContributorRoleDef. JSON
+Üzerinde PrivateEndpointContributorRoleDef.js
 
 ```json
 {
@@ -363,7 +361,7 @@ PrivateEndpointContributorRoleDef. JSON
 }
 ```
 
-Networkınterfacereaderroledef. JSON
+Üzerinde NetworkInterfaceReaderRoleDef.js
 
 ```json
 {
@@ -381,7 +379,7 @@ Networkınterfacereaderroledef. JSON
 }
 ```
 
-PrivateEndpointSubnetContributorRoleDef. JSON
+Üzerinde PrivateEndpointSubnetContributorRoleDef.js
 
 ```json
 {
@@ -545,7 +543,7 @@ Kuyruk hizmeti () için DNS bölgesi `privatelink.queue.core.windows.net` :
 
     ![Kuyruk hizmeti için bir tür kaydı olarak FQDN ve özel IP girdisi ekleme](./media/private-endpoints/add-type-a-record-for-queue.png)
 
-## <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
+## <a name="frequently-asked-questions"></a>Sıkça Sorulan Sorular
 
 S. Var olan bir yedekleme Kasası için özel bir uç nokta oluşturabilir miyim?<br>
 A. Hayır, Özel uç noktalar yalnızca yeni yedekleme kasaları için oluşturulabilir. Bu nedenle kasada hiç öğe korunmamış olmalıdır. Aslında, özel bitiş noktaları oluşturulmadan önce herhangi bir öğeyi kasaya koruma girişimi yapılabilir.
