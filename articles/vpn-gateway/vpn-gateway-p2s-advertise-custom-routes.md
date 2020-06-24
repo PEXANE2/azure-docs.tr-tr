@@ -4,15 +4,15 @@ description: Özel yolları Noktadan siteye istemcilerinize tanıtma adımları
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3588755e2aab1c84d443e917eca8c7fca280b49a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad007514e48ea751257884ba6e9ccb3965442d36
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756889"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987570"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>P2S VPN istemcileri için özel rotalar bildirme
 
@@ -22,7 +22,7 @@ Tüm Noktadan siteye VPN istemcilerinize özel yollar tanıtmak isteyebilirsiniz
 
 ## <a name="to-advertise-custom-routes"></a>Özel yolları tanıtmak için
 
-Özel yolları tanıtmak için öğesini kullanın `Set-AzVirtualNetworkGateway cmdlet`. Aşağıdaki örnekte, [contoso depolama hesabı tabloları](https://contoso.table.core.windows.net)için IP 'nin nasıl tanıtılyapılacağı gösterilmektedir.
+Özel yolları tanıtmak için öğesini kullanın `Set-AzVirtualNetworkGateway cmdlet` . Aşağıdaki örnekte, [contoso depolama hesabı tabloları](https://contoso.table.core.windows.net)için IP 'nin nasıl tanıtılyapılacağı gösterilmektedir.
 
 1. *Contoso.Table.Core.Windows.net* ping YAPıN ve IP adresini aklınızda edin. Örneğin:
 

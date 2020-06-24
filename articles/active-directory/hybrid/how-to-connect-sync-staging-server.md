@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261027"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690634"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: hazırlama sunucusu ve olağanüstü durum kurtarma
 Hazırlama modundaki bir sunucu ile, yapılandırma üzerinde değişiklik yapabilir ve sunucuyu etkin hale gelmeden önce değişiklikleri önizleyebilirsiniz. Ayrıca, bu değişiklikleri üretim ortamınızda yapmadan önce tüm değişikliklerin beklendiğini doğrulamak üzere tam içeri aktarma ve tam eşitleme çalıştırmanızı sağlar.
@@ -74,18 +74,18 @@ Artık Azure AD 'ye ve şirket içi AD 'ye dışarı aktarma değişiklikleri ha
 #### <a name="verify"></a>Doğrulama
 1. Bir komut istemi başlatın ve şuraya gidin`%ProgramFiles%\Microsoft Azure AD Sync\bin`
 2. Çalıştırma: `csexport "Name of Connector" %temp%\export.xml /f:x` bağlayıcının adı, eşitleme hizmeti ' nde bulunabilir. Azure AD için "contoso.com – AAD" benzeri bir ada sahiptir.
-3. Çalıştır: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` % TEMP% adlı, Export. csv adlı, Microsoft Excel 'de incelenebilir bir dosyanız var. Bu dosya, verilmek üzere olan tüm değişiklikleri içerir.
+3. Çalıştır: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` % TEMP% adlı bir dosyanız, Microsoft Excel 'de incelenebilir export.csv. Bu dosya, verilmek üzere olan tüm değişiklikleri içerir.
 4. Veri veya yapılandırmada gerekli değişiklikleri yapın ve dışarı aktarılacak değişiklikler beklenene kadar bu adımları yeniden çalıştırın (Içeri ve dışarı ve Doğrula).
 
-**Export. csv dosyasını anlama** Dosyanın çoğu kendi kendine açıklayıcıdır. İçeriği anlamak için bazı kısaltmalar:
+**export.csv dosyasını anlama** Dosyanın çoğu kendi kendine açıklayıcıdır. İçeriği anlamak için bazı kısaltmalar:
 * OMODT – nesne değiştirme türü. Nesne düzeyindeki işlemin bir Add, Update veya delete olup olmadığını gösterir.
 * AMODT – öznitelik değiştirme türü. Öznitelik düzeyindeki işlemin bir Add, Update veya delete olup olmadığını gösterir.
 
-**Ortak tanımlayıcıları al** Export. csv dosyası dışarı aktarılmek üzere olan tüm değişiklikleri içerir. Her satır, bağlayıcı alanındaki bir nesnenin değişikliğine karşılık gelir ve nesne DN özniteliğiyle tanımlanır. DN özniteliği, bağlayıcı alanındaki bir nesneye atanan benzersiz bir tanıtıcıdır. Export. csv dosyasında analiz edilecek çok sayıda satır/değişiklik olduğunda, değişikliklerin yalnızca DN özniteliğine göre hangi nesneleri olduğunu anlamak zor olabilir. Değişiklikleri çözümleme işlemini basitleştirmek için csanalyzer. ps1 PowerShell betiğini kullanın. Betik, nesnelerin ortak tanımlayıcılarını (örneğin displayName, userPrincipalName) alır. Betiği kullanmak için:
-1. PowerShell betiğini [CSAnalyzer](#appendix-csanalyzer) bölümünden adlı `csanalyzer.ps1`bir dosyaya kopyalayın.
+**Ortak tanımlayıcıları al** export.csv dosyası, verilmek üzere olan tüm değişiklikleri içerir. Her satır, bağlayıcı alanındaki bir nesnenin değişikliğine karşılık gelir ve nesne DN özniteliğiyle tanımlanır. DN özniteliği, bağlayıcı alanındaki bir nesneye atanan benzersiz bir tanıtıcıdır. Analiz etmek için export.csv çok sayıda satır/değişiklik olduğunda, değişikliklerin yalnızca DN özniteliğine göre hangi nesneler için olduğunu anlamak zor olabilir. Değişiklikleri analiz etme işlemini basitleştirmek için csanalyzer.ps1 PowerShell betiğini kullanın. Betik, nesnelerin ortak tanımlayıcılarını (örneğin displayName, userPrincipalName) alır. Betiği kullanmak için:
+1. PowerShell betiğini [CSAnalyzer](#appendix-csanalyzer) bölümünden adlı bir dosyaya kopyalayın `csanalyzer.ps1` .
 2. Bir PowerShell penceresi açın ve PowerShell betiğini oluşturduğunuz klasöre gidin.
 3. Şunu çalıştırın: `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`.
-4. Artık, Microsoft Excel 'de incelenebilir **processedusers1. csv** adlı bir dosyanız vardır. Dosyanın DN özniteliğinden ortak tanımlayıcılara (örneğin, displayName ve userPrincipalName) bir eşleme sağladığını unutmayın. Şu anda, verilmek üzere olan gerçek öznitelik değişikliklerini içermez.
+4. Artık, Microsoft Excel 'de incelenebilir **processedusers1.csv** adlı bir dosyanız vardır. Dosyanın DN özniteliğinden ortak tanımlayıcılara (örneğin, displayName ve userPrincipalName) bir eşleme sağladığını unutmayın. Şu anda, verilmek üzere olan gerçek öznitelik değişikliklerini içermez.
 
 #### <a name="switch-active-server"></a>Etkin sunucuyu Değiştir
 1. Şu anda etkin olan sunucuda, sunucuyu devre dışı bırakın (DirSync/FIM/Azure AD Eşitleme), Azure AD 'ye aktarılmaması veya hazırlama modunda (Azure AD Connect) ayarlanmaması gerekir.

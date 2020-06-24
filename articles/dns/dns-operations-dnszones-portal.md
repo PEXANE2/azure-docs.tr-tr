@@ -4,20 +4,19 @@ description: Azure portal kullanarak DNS bölgelerini yönetebilirsiniz. Bu maka
 services: dns
 documentationcenter: na
 author: rohinkoul
-manager: timlt
 ms.service: dns
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: rohink
-ms.openlocfilehash: 002f210048c18c6dd99dfb5981bacce8666ee563
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b6cac64d2e3def673f6d7c27e80bd64eead9e97
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76936774"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689172"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Azure portal DNS Bölgeleri Yönetme
 
@@ -39,7 +38,7 @@ Bu makalede, Azure portal kullanarak DNS bölgelerinizi nasıl yöneteceğiniz g
 4. **DNS bölgesi oluştur** dikey penceresinde aşağıdaki değerleri girin ve **Oluştur**’a tıklayın:
 
 
-   | **Ayar** | **Deeri** | **Bilgileri** |
+   | **Ayar** | **Değer** | **Ayrıntılar** |
    |---|---|---|
    |**Adı**|contoso.com|DNS bölgesinin adı|
    |**Abonelik**|[Aboneliğiniz]|DNS bölgesini oluşturmak için bir abonelik seçin.|
@@ -51,7 +50,7 @@ Bu makalede, Azure portal kullanarak DNS bölgelerinizi nasıl yöneteceğiniz g
 
 ## <a name="list-dns-zones"></a>DNS bölgelerini listeleme
 
-Azure Portal **daha fazla hizmet** > **ağı** > **DNS bölgesi**' ne gidin. Her DNS bölgesi kendi kaynağıdır ve kayıt kümesi ve ad sunucularının sayısı gibi bilgiler bu görünümden görüntülenebilir. Sütun **adı sunucuları** varsayılan görünümde değil. Eklemek için, **sütunlar**' a tıklayın, **ad sunucuları**' nı seçin ve **bitti**' ye tıklayın.
+Azure Portal **daha fazla hizmet**  >  **ağı**  >  **DNS bölgesi**' ne gidin. Her DNS bölgesi kendi kaynağıdır ve kayıt kümesi ve ad sunucularının sayısı gibi bilgiler bu görünümden görüntülenebilir. Sütun **adı sunucuları** varsayılan görünümde değil. Eklemek için, **sütunlar**' a tıklayın, **ad sunucuları**' nı seçin ve **bitti**' ye tıklayın.
 
 ![DNS bölgelerini listeleme](./media/dns-operations-dnszones-portal/listzones.png)
 

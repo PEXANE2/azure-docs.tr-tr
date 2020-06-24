@@ -10,11 +10,11 @@ ms.topic: overview
 ms.date: 09/17/2019
 ms.author: alkohli
 ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240719"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707693"
 ---
 # <a name="what-is-azure-data-box"></a>Azure Data Box nedir?
 
@@ -56,7 +56,7 @@ Data Box, büyük miktarlarda veriyi ağ bağlantısını çok az etkileyerek ve
 
 Data Box cihazı bu sürümde aşağıdaki özelliklere sahiptir.
 
-| Belirtimler                                          | Açıklama              |
+| Belirtimler                                          | Description              |
 |---------------------------------------------------------|--------------------------|
 | Ağırlık                                                  | < 50 lb                |
 | Boyutlar                                              | Cihaz - Genişlik: 309,0 mm Yükseklik: 430,4 mm Derinlik: 502,0 mm |            

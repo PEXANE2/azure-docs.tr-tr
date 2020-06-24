@@ -9,25 +9,25 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: 00efc2754948d53d4f80a6261dbd4041b358185b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77ea14097538f722569acb5a0371674776aac8e5
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74896369"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687812"
 ---
 # <a name="test-vm-network-latency"></a>VM ağ gecikmesini sınama
 
-En doğru sonuçlara ulaşmak için, Azure sanal makinenizin (VM) ağ gecikmesini görev için tasarlanan bir araçla ölçün. SockPerf (Linux için) ve latte. exe gibi genel kullanıma sunulan araçlar (Windows için), uygulama gecikmesi gibi diğer gecikme türlerini dışlarken ağ gecikmesini yalıtabilir ve ölçebilir. Bu araçlar, uygulama performansını etkileyen ağ trafiği türüne odaklanmaktadır (yani Iletim Denetimi Protokolü [TCP] ve Kullanıcı Datagram Protokolü [UDP] trafiği). 
+En doğru sonuçlara ulaşmak için, Azure sanal makinenizin (VM) ağ gecikmesini görev için tasarlanan bir araçla ölçün. SockPerf (Linux için) ve latte.exe (Windows için) gibi genel kullanıma sunulan araçlar, uygulama gecikmesi gibi diğer gecikme türlerini dışlarken ağ gecikmesini yalıtabilir ve ölçebilir. Bu araçlar, uygulama performansını etkileyen ağ trafiği türüne odaklanmaktadır (yani Iletim Denetimi Protokolü [TCP] ve Kullanıcı Datagram Protokolü [UDP] trafiği). 
 
 Ping gibi diğer yaygın bağlantı araçları gecikme süresini ölçebilir, ancak sonuçları gerçek iş yüklerinde kullanılan ağ trafiğini temsil edemeyebilir. Bunun nedeni, bu araçların çoğu, uygulama trafiğinden farklı davranılan ve sonuçları TCP ve UDP kullanan iş yükleri için uygulanamadığı Internet Denetim Iletisi Protokolü 'Nü (ıCMP) kullanır. 
 
-Çoğu uygulama tarafından kullanılan protokollerin doğru ağ gecikmesi testi için, SockPerf (Linux için) ve latte. exe (Windows için) en ilgili sonuçları üretir. Bu makalede, bu araçların her ikisi de ele alınmaktadır.
+Çoğu uygulama tarafından kullanılan protokollerin doğru ağ gecikmesi testi için, SockPerf (Linux için) ve latte.exe (Windows için) en ilgili sonuçları üretir. Bu makalede, bu araçların her ikisi de ele alınmaktadır.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -45,7 +45,7 @@ Biri gönderici ve diğeri alıcı olarak olmak üzere iki VM kullanarak iki yö
 ### <a name="tools-for-testing"></a>Test araçları
 Gecikme süresini ölçmek için iki farklı araç seçeneğiniz vardır:
 
-* Windows tabanlı sistemler için: [latte. exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+* Windows tabanlı sistemler için: [latte.exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
 * Linux tabanlı sistemler için: [SockPerf (Linux)](https://github.com/mellanox/sockperf)
 
 Bu araçları kullanarak, yalnızca TCP veya UDP yük teslim sürelerinin, uygulamalar tarafından kullanılmayan, ıCMP (ping) veya diğer paket türlerini ölçtüğüyle ve performanslarını etkilemediğinden emin olmanıza yardımcı olursunuz.
@@ -69,29 +69,29 @@ Test sonuçlarını analiz ettiğiniz için aşağıdaki önerileri göz önünd
 
 ## <a name="test-vms-that-are-running-windows"></a>Windows çalıştıran VM 'Leri test etme
 
-### <a name="get-latteexe-onto-the-vms"></a>Sanal makinelere latte. exe dosyasını alın
+### <a name="get-latteexe-onto-the-vms"></a>VM 'lere latte.exe alın
 
-[Latte. exe ' nin en son sürümünü](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)indirin.
+[En son latte.exesürümünü ](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)indirin.
 
-Latte. exe *dosyasını c:\Tools*gibi ayrı bir klasöre yerleştirmeyi düşünün.
+latte.exe, *c:\Tools*gibi ayrı bir klasöre yerleştirmeyi düşünün.
 
-### <a name="allow-latteexe-through-windows-defender-firewall"></a>Windows Defender güvenlik duvarı aracılığıyla latte. exe ' ye izin ver
+### <a name="allow-latteexe-through-windows-defender-firewall"></a>Windows Defender güvenlik duvarı üzerinden latte.exe izin ver
 
-*Alıcının*, latte. exe trafiğinin gelmesini sağlamak Için Windows Defender güvenlik duvarı 'Nda bir izin verme kuralı oluşturun. Gelen belirli TCP bağlantı noktalarına izin vermek yerine, tüm latte. exe programının adına göre kullanılmasına izin vermek en kolay yoldur.
+*Alıcı*üzerinde, latte.exe trafiğinin gelmesini sağlamak Için Windows Defender güvenlik duvarı 'Nda bir izin verme kuralı oluşturun. Gelen belirli TCP bağlantı noktalarına izin vermek yerine latte.exe programın tamamının ada göre izin vermek en kolay yoldur.
 
-Aşağıdaki komutu çalıştırarak Windows Defender güvenlik duvarı aracılığıyla latte. exe ' ye izin verin:
+Aşağıdaki komutu çalıştırarak Windows Defender güvenlik duvarı üzerinden latte.exe izin verin:
 
 ```cmd
 netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY
 ```
 
-Örneğin, latte. exe *dosyasını c:\Tools* klasörüne kopyaladıysanız şu komut olacaktır:
+Örneğin, latte.exe *c:\Tools* klasörüne kopyaladıysanız şu komut olacaktır:
 
 `netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
 ### <a name="run-latency-tests"></a>Gecikme testleri çalıştırma
 
-* *Alıcıda*, latte. exe ' yi başlatın (PowerShell 'den DEĞIL, cmd penceresinden çalıştırın):
+* *Alıcı*üzerinde latte.exe başlatın (PowerShell 'den DEĞIL, cmd penceresinden çalıştırın):
 
     ```cmd
     latte -a <Receiver IP address>:<port> -i <iterations>
@@ -105,13 +105,13 @@ netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protoc
 
     `latte -a 10.0.0.4:5005 -i 65100`
 
-* *Gönderen*üzerinde, latte. exe ' yi başlatın (PowerShell 'den DEĞIL, cmd penceresinden çalıştırın):
+* *Gönderenin*latte.exe başlatın (PowerShell 'den DEĞIL, cmd penceresinden çalıştırın):
 
     ```cmd
     latte -c -a <Receiver IP address>:<port> -i <iterations>
     ```
 
-    Elde edilen komut, bu *istemci*ya da *gönderici*olduğunu göstermek için *-c* ' nin&nbsp;eklenmesi dışında, alıcı ile aynıdır.
+    Elde edilen komut, &nbsp; Bu *istemci*ya da *gönderici*olduğunu göstermek için *-c* ' nin eklenmesi dışında, alıcı ile aynıdır.
 
     `latte -c -a 10.0.0.4:5005 -i 65100`
 

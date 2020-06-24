@@ -1,5 +1,5 @@
 ---
-title: İlişkilerle bir ikizi grafiğini yönetme
+title: İlişkileri olan bir ikizi grafiğini yönetme
 titleSuffix: Azure Digital Twins
 description: Bkz. bir dijital TWINS grafiğini ilişkiler ile bağlayarak yönetme.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 362b5d0f1fee1ca1763cc44f106567c543546eac
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: e332936543cc36e20b88da4ce5cc9115d0890967
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612959"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725707"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>İlişkileri kullanarak dijital TWINS grafiğini yönetme
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure dijital TWINS 'in kalbi, tüm ortamınızı temsil eden [ikizi grafiktir](concepts-twins-graph.md) . İkizi Graph, **ilişkiler**aracılığıyla bağlanan tek tek dijital TWINS 'ten oluşur.
 

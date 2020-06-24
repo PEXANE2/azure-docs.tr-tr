@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c3c2bdd2dcd5fcef62c0a4691160c5457d19f196
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: e96fc9af0aa4f362256a5f0fee9465441a1c3928
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112610"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210635"
 ---
 # <a name="data-warehouse-units-dwus"></a>Veri ambarı birimleri (DWU 'Lar)
 
@@ -108,7 +108,7 @@ Geçerli DWU ayarını görüntülemek için:
 
 1. Visual Studio 'da SQL Server Nesne Gezgini açın.
 2. Mantıksal SQL Server ile ilişkili ana veritabanına bağlanın.
-3. Sys. database_service_objectives dinamik yönetim görünümünden seçin. Örnek aşağıda verilmiştir:
+3. Sys. database_service_objectives dinamik yönetim görünümünden seçin. Aşağıda bir örnek verilmiştir:
 
 ```sql
 SELECT  db.name [Database]

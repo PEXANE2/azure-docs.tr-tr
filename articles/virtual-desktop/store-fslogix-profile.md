@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4bb315991846b115070854b6e81caf16232fef6b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3dfa5d6bc5707679bbe5dada9f28046202e7aae5
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607190"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808525"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows sanal masaüstündeki FSLogix profil kapsayıcıları için depolama seçenekleri
 
-Azure, FSLogix profil kapsayıcınızı depolamak için kullanabileceğiniz birden çok depolama çözümleri sunar. Bu makalede, Azure 'un Windows sanal masaüstü FSLogix Kullanıcı profili kapsayıcıları için sunduğu depolama çözümleri karşılaştırılır.
+Azure, FSLogix profil kapsayıcınızı depolamak için kullanabileceğiniz birden çok depolama çözümleri sunar. Bu makalede, Azure 'un Windows sanal masaüstü FSLogix Kullanıcı profili kapsayıcıları için sunduğu depolama çözümleri karşılaştırılır. FSLogix profil kapsayıcılarını, müşterilerimizin çoğu için Azure dosyalarında depolamanızı öneririz. 
 
 Windows sanal masaüstü, önerilen Kullanıcı profili çözümü olarak FSLogix profil kapsayıcıları sunar. FSLogix, Windows sanal masaüstü gibi uzak bilgi işlem ortamlarında profil dolaşımını yapmak için tasarlanmıştır. Bu kapsayıcı, oturum açma sırasında, yerel olarak desteklenen bir sanal sabit disk (VHD) ve Hyper-V sanal sabit diski (VHDX) kullanılarak bilgi işlem ortamına dinamik olarak eklenir. Kullanıcı profili hemen kullanılabilir olur ve sistemde tam olarak yerel bir kullanıcı profili gibi görünür.
 
@@ -40,7 +40,7 @@ Aşağıdaki tablolar, Windows sanal masaüstü FSLogix profil kapsayıcısı Ku
 
 |Özellikler|Azure Dosyaları|Azure NetApp Files|Doğrudan Depolama Alanları|
 |--------|-----------|------------------|---------------------|
-|Erişim|Bulut, şirket içi ve karma (Azure dosya eşitleme)|Bulut, şirket içi (ExpressRoute aracılığıyla)|Bulut, şirket içi|
+|Access|Bulut, şirket içi ve karma (Azure dosya eşitleme)|Bulut, şirket içi (ExpressRoute aracılığıyla)|Bulut, şirket içi|
 |Backup|Azure Backup anlık görüntü tümleştirmesi|Azure NetApp Files anlık görüntüler|Azure Backup anlık görüntü tümleştirmesi|
 |Güvenlik ve uyumluluk|[Tüm Azure desteklenen sertifikaları](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO tamamlandı|[Tüm Azure desteklenen sertifikaları](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Azure Active Directory tümleştirmesi|[Yerel Active Directory ve Azure Active Directory Domain Services](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview)|[Azure Active Directory Domain Services ve yerel Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Yalnızca yerel Active Directory veya Azure Active Directory Domain Services desteği|

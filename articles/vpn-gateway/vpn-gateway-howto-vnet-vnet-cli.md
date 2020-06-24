@@ -5,15 +5,15 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: a354f8031c26ca86876dc6f3a2092610226cc84b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e93bae91827b2807ef577d7659924a5d37454fa4
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75834567"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987118"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI kullanarak sanal ağlar arası VPN ağ geçidi bağlantısı yapılandırma
 
@@ -292,7 +292,7 @@ Ek bağlantılar oluşturulduğu sırada, yeni sanal ağın IP adresi alanının
 
 ### <a name="step-7---create-and-configure-testvnet5"></a><a name="TestVNet5"></a>7. Adım - TestVNet5'i oluşturma ve yapılandırma
 
-Bu adım, yeni abonelik (5. Abonelik) bağlamında tamamlanmalıdır. Bu kısım, aboneliğin sahibi olan farklı bir kuruluşun yöneticisi tarafından tamamlanabilir. Abonelikler `az account list --all` arasında geçiş yapmak için, hesabınız için kullanılabilen abonelikleri listelemek üzere kullanın ve ardından kullanmak `az account set --subscription <subscriptionID>` istediğiniz aboneliğe geçiş yapmak için kullanın.
+Bu adım, yeni abonelik (5. Abonelik) bağlamında tamamlanmalıdır. Bu kısım, aboneliğin sahibi olan farklı bir kuruluşun yöneticisi tarafından tamamlanabilir. Abonelikler arasında geçiş yapmak için `az account list --all` , hesabınız için kullanılabilen abonelikleri listelemek üzere kullanın ve ardından kullanmak `az account set --subscription <subscriptionID>` istediğiniz aboneliğe geçiş yapmak için kullanın.
 
 1. 5. Aboneliğe bağlı olduğunuzdan emin olun ve bir kaynak grubu oluşturun.
 
@@ -331,7 +331,7 @@ Bu adım, yeni abonelik (5. Abonelik) bağlamında tamamlanmalıdır. Bu kısım
 
 ### <a name="step-8---create-the-connections"></a><a name="connections5"></a>8. Adım - Bağlantıları oluşturma
 
-Bu örnekteki ağ geçitleri farklı aboneliklerde olduğundan, bu adım **[1. Abonelik]** ve **[5. Abonelik]** olarak işaretlenen iki CLI oturumuna ayrılır. Abonelikler `az account list --all` arasında geçiş yapmak için, hesabınız için kullanılabilen abonelikleri listelemek üzere kullanın ve ardından kullanmak `az account set --subscription <subscriptionID>` istediğiniz aboneliğe geçiş yapmak için kullanın.
+Bu örnekteki ağ geçitleri farklı aboneliklerde olduğundan, bu adım **[1. Abonelik]** ve **[5. Abonelik]** olarak işaretlenen iki CLI oturumuna ayrılır. Abonelikler arasında geçiş yapmak için `az account list --all` , hesabınız için kullanılabilen abonelikleri listelemek üzere kullanın ve ardından kullanmak `az account set --subscription <subscriptionID>` istediğiniz aboneliğe geçiş yapmak için kullanın.
 
 1. **[1. Abonelik]** Oturum açın ve 1. Aboneliğe bağlanın. Çıktıdan Ağ Geçidinin adını ve kimliğini almak için şu komutu çalıştırın:
 

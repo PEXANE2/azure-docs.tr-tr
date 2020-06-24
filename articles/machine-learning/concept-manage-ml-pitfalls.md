@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: e1191c01ce3f62f34c351cefd29a5e40aa68bfd3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e9e809eb805e891fdf70a85d42eebc3e17da8902
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658405"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210193"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Otomatik makine öğrenimi ile fazla sığdırma ve ıdengeli verileri önleme
 
@@ -79,11 +79,9 @@ Otomatik ML, aşırı sığdırmayı engellemek için açık **model karmaşıkl
 
 Makine öğrenimi sınıflandırma senaryolarına ilişkin verilerde yaygın olarak imledengeli veriler bulunur ve her sınıfta orantısız oranını içeren verilere başvurur. Bu dengesizlik, bir modelin doğruluğu üzerinde sapma yaptığından, bu durum, eğitim modelinin bu farkı taklit etmek için eğitilmesine neden olacak 
 
-Sınıflandırma algoritmaları genellikle doğrulukla değerlendirildiğinden, bir modelin doğruluk puanı kontrol edilirken, imledengelenmiş verilerden etkilenip etkilenmediğini belirlemek için iyi bir yoldur. Belirli sınıflar için gerçekten yüksek doğruluk veya gerçekten düşük doğruluk mı var?
-
 Ayrıca, otomatik ML çalıştırmaları aşağıdaki grafikleri otomatik olarak oluşturur. Bu, modelinizdeki sınıflandırmaların doğruluğunu anlamanıza yardımcı olabilir ve imdenli verilerden etkilenen modelleri tanımlayabilir.
 
-Grafik| Açıklama
+Grafik| Description
 ---|---
 [Karışıklık matrisi](how-to-understand-automated-ml.md#confusion-matrix)| Doğru sınıflandırılan etiketleri verilerin gerçek etiketlerine göre değerlendirir. 
 [Precision-geri çek](how-to-understand-automated-ml.md#precision-recall-chart)| Doğru etiketlerin oranını, verilerin bulunan etiket örneklerinin oranına göre değerlendirir 
@@ -91,17 +89,19 @@ Grafik| Açıklama
 
 ## <a name="handle-imbalanced-data"></a>İmdengeli verileri işle 
 
-Machine Learning iş akışını basitleştirmenin bir parçası olarak, otomatik ML, gibi imdengelenmiş verilerle başa çıkmanıza yardımcı olmak için yerleşik yeteneklere sahiptir 
+Machine Learning iş akışını basitleştirmenin bir parçası olarak, otomatik ML, gibi imdengelenmiş verilerle başa çıkmanıza yardımcı olmak için **yerleşik yeteneklere sahiptir** 
 
-- **Ağırlık sütunu**: otomatik ml, ağırlıklı bir sütunu giriş olarak destekler, bu da verileri daha fazla veya daha az "önemli" hale getirmek için verilerin ağırlıklı veya aşağı düşmesine neden olabilir.
+- **Ağırlık sütunu**: otomatik ml, bir sınıfı daha fazla veya daha az "önemli" haline getirmek için kullanılabilen verilerin ağırlıklı veya aşağı bir şekilde kalınlığını sağlar.
 
 - Otomatik ML tarafından kullanılan algoritmalar, 20:1 'e kadar dengesizliği doğru şekilde işleyebilir, yani en yaygın sınıf, verilerde en az ortak sınıftan 20 kat daha fazla satıra sahip olabilir.
 
-Aşağıdaki teknikler, otomatik ML dışında imdengeli verileri işlemek için ek seçeneklerdir. 
+- İmdengeli verilerle daha iyi anlaşmalar sağlayan bir performans ölçümü kullanın. Örneğin AUC_weighted, bu sınıfı temsil eden örneklerin göreli sayısına göre her sınıfın katkısını hesaplayan birincil bir ölçümdür, bu nedenle dengesizine karşı daha sağlamdır.
+
+Aşağıdaki teknikler, **OTOMATIK ml dışında**imdengeli verileri işlemek için ek seçeneklerdir. 
 
 - Daha küçük sınıfları örnekleyerek veya daha büyük sınıfları aşağı örnekleyerek sınıf dengesizliği olarak yeniden örnekleme yapın. Bu yöntemler, işlemek ve analiz etmek için uzmanlık gerektirir.
 
-- İmdengeli verilerle daha iyi anlaşmalar sağlayan bir performans ölçümü kullanın. Örneğin, F1 puanı ağırlıklı duyarlık ve geri çağırma ortasıdır. Duyarlık, bir sınıflandırıcının exactness--düşük--, duyarlık değeri, bir sınıflandırıcının bir sınıflandırıcısını ölçer, ancak en düşük düzeyde geri çağırma, çok sayıda yanlış negatiflik olduğunu gösterir. 
+- İmdengelenmiş veriler için performans ölçümlerini gözden geçirin. Örneğin, F1 puanı ağırlıklı duyarlık ve geri çağırma ortasıdır. Duyarlık, bir sınıflandırıcının exactness--düşük--, duyarlık değeri, bir sınıflandırıcının bir sınıflandırıcısını ölçer, ancak en düşük düzeyde geri çağırma, çok sayıda yanlış negatiflik olduğunu gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

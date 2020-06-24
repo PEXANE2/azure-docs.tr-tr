@@ -6,22 +6,22 @@ ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0fb65ceeabca9331130083f8ec5b3fe8acce13b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259194"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707983"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI’yi ayarlama
 Service Fabric ağ komut satırı arabirimi (CLı), kaynakları yerel olarak ve Azure Service Fabric ağı 'nda dağıtmak ve yönetmek için gereklidir. Nasıl ayarlanacağı aşağıda verilmiştir.
 
 Kullanılabilecek üç tür CLı bulunur ve bunlar aşağıdaki tabloda özetlenmiştir.
 
-| CLı modülü | Hedef Ortam |  Açıklama | 
+| CLı modülü | Hedef Ortam |  Description | 
 |---|---|---|
 | az ağ | Azure Service Fabric ağı | Azure Service Fabric kafes ortamında uygulamalarınızı dağıtmanıza ve kaynakları yönetmenize olanak tanıyan birincil CLı. 
 | sfctl | Yerel kümeler | Yerel kümelerdeki Service Fabric kaynaklarının dağıtımına ve test edilmesine izin veren Service Fabric CLı.  
-| Maven CLı | Azure Service Fabric ağ & yerel kümeler | Ve çevresindeki `az mesh` bir sarmalayıcı `sfctl` , Java geliştiricilerinin yerel ve Azure geliştirme deneyimi için tanıdık bir komut satırı deneyimi kullanmasına olanak sağlar.  
+| Maven CLı | Azure Service Fabric ağ & yerel kümeler | Ve çevresindeki bir sarmalayıcı `az mesh` , `sfctl` Java geliştiricilerinin yerel ve Azure geliştirme deneyimi için tanıdık bir komut satırı deneyimi kullanmasına olanak sağlar.  
 
 Önizleme için, Azure Fabric Mesh CLI Azure CLI’nin uzantısı olarak yazılır. Azure Cloud Shell’de veya Azure CLI’nin yerel kurulumunda bunu yükleyebilirsiniz. 
 
@@ -58,7 +58,7 @@ Maven CLı 'yı kullanabilmeniz için, makinenizde aşağıdakiler yüklü olmal
 
 Service Fabric için Maven CLı hala önizlemededir. 
 
-Maven Java uygulamanızda Maven eklentisini kullanmak için, potm. xml dosyanıza aşağıdaki kod parçacığını ekleyin:
+Maven Java uygulamanızda Maven eklentisini kullanmak için, pom.xml dosyanıza aşağıdaki kod parçacığını ekleyin:
 
 ```XML
 <project>

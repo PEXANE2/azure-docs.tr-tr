@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276510"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687659"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Işlevleri Tetikleyicileri ve bağlamaları kavramları
 
@@ -44,13 +44,13 @@ Tetikleyiciler ve bağlamalar, geliştirme yaklaşımına göre farklı şekilde
 | Platform | Tetikleyiciler ve bağlamalar tarafından yapılandırılır... |
 |-------------|--------------------------------------------|
 | C# sınıf kitaplığı | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C# öznitelikleriyle yöntemleri ve parametreleri dekorasyon |
-| Diğerlerinin tümü (Azure portal dahil) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[function. JSON](./functions-reference.md) güncelleştiriliyor ([şema](http://json.schemastore.org/function)) |
+| Diğerlerinin tümü (Azure portal dahil) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function.js([şema](http://json.schemastore.org/function)) [üzerinde](./functions-reference.md) güncelleştiriliyor |
 
 Portal bu yapılandırma için bir kullanıcı arabirimi sağlar, ancak işlevinizin **tümleştirin** sekmesi aracılığıyla bulunan **Gelişmiş düzenleyiciyi** açarak dosyayı doğrudan düzenleyebilirsiniz.
 
-.NET ' te, parametre türü giriş verileri için veri türünü tanımlar. Örneğin, bir kuyruk `string` tetikleyicisinin metnini bağlamak için kullanın, ikili olarak okunacak bir bayt dizisi ve bir nesneye serbest bırakmak için özel bir tür.
+.NET ' te, parametre türü giriş verileri için veri türünü tanımlar. Örneğin, `string` bir kuyruk tetikleyicisinin metnini bağlamak için kullanın, ikili olarak okunacak bir bayt dizisi ve bir nesneye serbest bırakmak için özel bir tür.
 
-JavaScript gibi dinamik olarak yazılan diller için, *function. JSON* dosyasındaki `dataType` özelliğini kullanın. Örneğin, bir HTTP isteğinin içeriğini ikili biçimde okumak için şu şekilde `dataType` `binary`ayarlayın:
+JavaScript gibi dinamik olarak yazılan diller için, `dataType` dosyadaki *function.js* özelliğini kullanın. Örneğin, bir HTTP isteğinin içeriğini ikili biçimde okumak için şu `dataType` şekilde ayarlayın `binary` :
 
 ```json
 {
@@ -61,15 +61,15 @@ JavaScript gibi dinamik olarak yazılan diller için, *function. JSON* dosyasın
 }
 ```
 
-İçin `dataType` diğer seçenekler ve `stream` ' `string`dir.
+İçin diğer seçenekler `dataType` `stream` ve ' dir `string` .
 
 ## <a name="binding-direction"></a>Bağlama yönü
 
-Tüm tetikleyiciler ve bağlamalar `direction` [function. JSON](./functions-reference.md) dosyasında bir özelliğe sahiptir:
+Tüm tetikleyiciler ve bağlamalar `direction` dosyadaki [function.js](./functions-reference.md) bir özelliğe sahiptir:
 
 - Tetikleyiciler için, yön her zaman`in`
 - Giriş ve çıkış bağlamaları kullanımı `in` ve`out`
-- Bazı bağlamalar özel bir yönü `inout`destekler. Kullanıyorsanız `inout`, portalda **tümleştir** sekmesi aracılığıyla yalnızca **Gelişmiş Düzenleyici** kullanılabilir.
+- Bazı bağlamalar özel bir yönü destekler `inout` . Kullanıyorsanız `inout` , portalda **tümleştir** sekmesi aracılığıyla yalnızca **Gelişmiş Düzenleyici** kullanılabilir.
 
 Tetikleyicileri ve bağlamaları yapılandırmak için [bir sınıf kitaplığındaki öznitelikleri](functions-dotnet-class-library.md) kullandığınızda, yön bir öznitelik oluşturucusunda sağlanır veya parametre türünden çıkartılan olur.
 

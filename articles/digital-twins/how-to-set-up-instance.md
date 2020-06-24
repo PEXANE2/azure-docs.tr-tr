@@ -1,5 +1,5 @@
 ---
-title: Azure dijital TWINS örneği oluşturma
+title: Azure Digital Twins örneği oluşturma
 titleSuffix: Azure Digital Twins
 description: Bkz. Azure dijital TWINS hizmeti 'nin bir örneğini ayarlama.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f097861f97e7ec62019fa631e2ac608d2e0c5024
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: bbd7c74fc87b3f7af799637e2288dcd074266843
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612876"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725622"
 ---
 # <a name="set-up-an-azure-digital-twins-instance"></a>Azure dijital TWINS örneği ayarlama
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Bu makale, yeni bir Azure dijital TWINS örneği kurmak için temel adımlarda size yol gösterir. Bu, örneğin örneğini oluşturmayı ve örneğe [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) izinlerinin atanmasını içerir.
 

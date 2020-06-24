@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2020
+ms.date: 06/10/2020
 ms.author: aschhab
-ms.openlocfilehash: 8157efac5ff1fc135659a84b4f4825ff36307480
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6555a1718acb0574640e7b7d5d4d47d84b8a72d0
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297662"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711060"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>AMQP 1,0 ile .NET 'ten Service Bus kullanma
 
@@ -27,13 +27,13 @@ AMQP 1,0 desteği Service Bus paketi sürümü 2,1 veya sonraki bir sürümünde
 
 ## <a name="configure-net-applications-to-use-amqp-10"></a>.NET uygulamalarını AMQP 1,0 kullanacak şekilde yapılandırma
 
-Service Bus .NET istemci kitaplığı, varsayılan olarak, özel bir SOAP tabanlı protokolü kullanarak Service Bus hizmetiyle iletişim kurar. Varsayılan protokol yerine AMQP 1,0 kullanmak için, sonraki bölümde açıklandığı gibi Service Bus bağlantı dizesinde açık yapılandırma gerekir. Bu değişiklik dışında, AMQP 1,0 kullanılırken uygulama kodu değişmeden kalır.
+Service Bus .NET istemci kitaplığı, varsayılan olarak AMQP protokolünü kullanarak Service Bus hizmetiyle iletişim kurar. Ayrıca, aşağıdaki bölümde gösterildiği gibi, aktarım türü olarak AMQP 'yi açıkça belirtebilirsiniz. 
 
 Geçerli sürümde, AMQP kullanılırken desteklenmeyen birkaç API özelliği vardır. Bu desteklenmeyen özellikler, [davranış farklılıkları](#behavioral-differences)bölümünde listelenmiştir. Gelişmiş yapılandırma ayarlarından bazılarının AMQP kullanılırken de farklı bir anlamı vardır.
 
-### <a name="configuration-using-appconfig"></a>App. config kullanarak yapılandırma
+### <a name="configuration-using-appconfig"></a>App.config kullanarak yapılandırma
 
-Uygulamaların ayarları depolamak için App. config yapılandırma dosyasını kullanması iyi bir uygulamadır. Service Bus uygulamalar için, Service Bus bağlantı dizesini depolamak üzere App. config ' i kullanabilirsiniz. Örnek bir App. config dosyası aşağıdaki gibidir:
+Uygulamaların ayarları depolamak için App.config yapılandırma dosyasını kullanması iyi bir uygulamadır. Service Bus uygulamalar için Service Bus bağlantı dizesini depolamak üzere App.config kullanabilirsiniz. Örnek bir App.config dosyası aşağıdaki gibidir:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -45,13 +45,13 @@ Uygulamaların ayarları depolamak için App. config yapılandırma dosyasını 
 </configuration>
 ```
 
-`Microsoft.ServiceBus.ConnectionString` Ayarın değeri, Service Bus bağlantısını yapılandırmak için kullanılan Service Bus bağlantı dizesidir. Bunun biçimi aşağıdaki gibidir:
+Ayarın değeri, `Microsoft.ServiceBus.ConnectionString` Service Bus bağlantısını yapılandırmak için kullanılan Service Bus bağlantı dizesidir. Bunun biçimi aşağıdaki gibidir:
 
 `Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp`
 
-Service Bus `namespace` ad `SAS key` alanı oluşturduğunuz zaman ve [Azure Portal][Azure portal] alınır. Daha fazla bilgi için bkz. [Azure Portal kullanarak Service Bus ad alanı oluşturma][Create a Service Bus namespace using the Azure portal].
+`namespace` `SAS key` Service Bus ad alanı oluşturduğunuz zaman ve [Azure Portal][Azure portal] alınır. Daha fazla bilgi için bkz. [Azure Portal kullanarak Service Bus ad alanı oluşturma][Create a Service Bus namespace using the Azure portal].
 
-AMQP kullanırken, bağlantı dizesini ile `;TransportType=Amqp`ekleyin. Bu gösterim, istemci kitaplığına AMQP 1,0 kullanarak Service Bus bağlantısını yapmasını söyler.
+AMQP kullanırken, bağlantı dizesini ile ekleyin `;TransportType=Amqp` . Bu gösterim, istemci kitaplığına AMQP 1,0 kullanarak Service Bus bağlantısını yapmasını söyler.
 
 ## <a name="message-serialization"></a>İleti serileştirme
 
@@ -100,7 +100,7 @@ Non-.NET istemcilerle birlikte çalışabilirliği kolaylaştırmak için yalnı
 Varsayılan protokolle karşılaştırıldığında AMQP kullanılırken Service Bus .NET API 'SI davranışında bazı küçük farklılıklar vardır:
 
 * [OperationTimeout][OperationTimeout] özelliği yoksayıldı.
-* `MessageReceiver.Receive(TimeSpan.Zero)`olarak `MessageReceiver.Receive(TimeSpan.FromSeconds(10))`uygulanır.
+* `MessageReceiver.Receive(TimeSpan.Zero)`olarak uygulanır `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` .
 * Kilit belirteçlerine göre iletilerin tamamlanması, yalnızca ilk olarak iletileri alan ileti alıcıları tarafından yapılabilir.
 
 ## <a name="control-amqp-protocol-settings"></a>AMQP protokol ayarlarını denetleme
@@ -109,7 +109,7 @@ Varsayılan protokolle karşılaştırıldığında AMQP kullanılırken Service
 
 * **[MessageReceiver. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: bir bağlantıya uygulanan ilk kredisi denetler. Varsayılan değer, 0'dur.
 * **[Messagingfactorysettings. AmqpTransportSettings. MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: bağlantı açma zamanında anlaşma sırasında sunulan en yüksek AMQP çerçeve boyutunu denetler. Varsayılan değer 65.536 bayttır.
-* **[Messagingfactorysettings. AmqpTransportSettings. Batchflushınterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: aktarımlar batchable ise, bu değer, Boşların gönderilmesi için en fazla gecikmeyi belirler. Varsayılan olarak Gönderenler/alıcılar tarafından devralınır. Bireysel gönderici/alıcı varsayılan değer olan 20 milisaniyeyi geçersiz kılabilir.
+* **[MessagingFactorySettings.AmqpTransportSettings.BatChflushınterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: aktarımlar batchable ise, bu değer deklerin gönderilmesi için maksimum gecikme sayısını belirler. Varsayılan olarak Gönderenler/alıcılar tarafından devralınır. Bireysel gönderici/alıcı varsayılan değer olan 20 milisaniyeyi geçersiz kılabilir.
 * **[Messagingfactorysettings. AmqpTransportSettings. UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: AMQP BAĞLANTıLARıNıN bir TLS bağlantısı üzerinden oluşturulup yüklenmediğini denetler. Varsayılan değer **true**'dur.
 
 ## <a name="next-steps"></a>Sonraki adımlar

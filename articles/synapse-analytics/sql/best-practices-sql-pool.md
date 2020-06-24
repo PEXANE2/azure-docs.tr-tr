@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 345794eead05a4ff5e5d1396df78878d2693f405
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 5ad2867ffdea512348002d03ec742af42b535b31
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834994"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750205"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL havuzları için en iyi yöntemler
 
@@ -59,7 +59,7 @@ PolyBase yükleri CTAS veya INSERT INTO ile çalıştırılabilir. CTAS, işlem 
 
 Gzip metin dosyalarını kullanırken üretilen işi en üst düzeye çıkarmak için, yüklerinizin paralelliğini en üst düzeye çıkarmak üzere dosyaları 60 veya daha fazla dosyaya bölün. Toplam hızı artırmak için verilerinizi aynı anda yükleyin. Bu bölümle ilgili konular için ek bilgiler aşağıdaki makalelere eklenmiştir:
 
-- [Veri yükleme](data-loading-overview.md)
+- [Veri yükleme](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [PolyBase’i kullanma kılavuzu](data-loading-best-practices.md)
 - [Azure SQL havuzu yükleme desenleri ve stratejileri](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)
 - [Azure Data Factory ile veri yükleme](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

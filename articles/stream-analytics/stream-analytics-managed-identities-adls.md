@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: 01741ea56b9e6f55c1393e88fc7991d410c33119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254384"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712386"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Yönetilen kimlikleri kullanarak Azure Data Lake Storage 1. Stream Analytics kimlik doğrulama
 
@@ -66,7 +66,7 @@ Bu makalede, Visual Studio için Azure portal, Azure Resource Manager şablon da
 
 ## <a name="stream-analytics-tools-for-visual-studio"></a>Visual Studio için Stream Analytics araçları
 
-1. JobConfig. json dosyasında, **sistem tarafından atanan kimliği kullan** seçeneğini **true**olarak ayarlayın.
+1. JobConfig.jsüzerinde, **sistem tarafından atanan kimliği kullan** ' ı **doğru**olarak ayarlayın.
 
    ![Stream Analytics iş yapılandırması tarafından yönetilen kimlikler](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
 
@@ -166,7 +166,7 @@ Bu makalede, Visual Studio için Azure portal, Azure Resource Manager şablon da
 
    **PrincipalId** , hizmet SORUMLUSUNUN nesne kimliğidir ve hizmet sorumlusu oluşturulduktan sonra Portal ekranında listelenir. İşi Kaynak Yöneticisi Şablon dağıtımı kullanarak oluşturduysanız, nesne KIMLIĞI iş yanıtının Identity özelliğinde listelenir.
 
-   **Örneğinde**
+   **Örnek**
 
    ```powershell
    PS > Set-AzDataLakeStoreItemAclEntry -AccountName "adlsmsidemo" -Path / -AceType

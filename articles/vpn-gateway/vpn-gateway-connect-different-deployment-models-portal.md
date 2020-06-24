@@ -4,15 +4,15 @@ description: VPN Gateway ve portalı kullanarak klasik VNET 'leri Kaynak Yöneti
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5e64cb2db2bd16a881334779a1c6f1ef19296da2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 231fbe3a30cc9507ebb9b401bd2fe07a451c59a9
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152032"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987682"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Portalı kullanarak farklı dağıtım modellerindeki sanal ağları bağlama
 
@@ -84,7 +84,7 @@ Aşağıdaki tabloda, örnek VNET 'lerin ve yerel sitelerin nasıl tanımlandı�
 
 Bu bölümde, klasik VNet, yerel ağ (yerel site) ve sanal ağ geçidi oluşturursunuz. Ekran görüntüleri örnek olarak verilmiştir. Değerleri kendi değerlerinizle değiştirdiğinizden emin olun veya [örnek](#values) değerleri kullanın.
 
-### <a name="1-create-a-classic-vnet"></a>1. <a name="classicvnet"> </a>klasik VNET oluşturma
+### <a name="1-create-a-classic-vnet"></a>1. <a name="classicvnet"></a> Klasik VNET oluşturma
 
 Klasik bir VNet 'iniz yoksa ve bu adımları bir alıştırma olarak çalıştırıyorsanız, [Bu makaleyi](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) ve yukarıdaki [örnek](#values) ayarlar değerlerini kullanarak bir sanal ağ oluşturabilirsiniz.
 
@@ -96,7 +96,7 @@ VPN ağ geçidi olan bir VNet 'iniz zaten varsa, ağ geçidinin dinamik olduğun
 4. Döndürülen listeden ' sanal ağ ' öğesini bulun ve sanal ağ sayfasını açmak için tıklayın. 
 5. Sanal ağ sayfasında, klasik VNet oluşturmak için ' klasik ' seçeneğini belirleyin. Burada varsayılan değer alırsanız bunun yerine bir Kaynak Yöneticisi VNet ile birlikte bir sanal ağa sahip olursunuz.
 
-### <a name="2-configure-the-local-site"></a>2. <a name="local"> </a>yerel siteyi yapılandırma
+### <a name="2-configure-the-local-site"></a>2. <a name="local"></a> yerel siteyi yapılandırma
 
 1. **Tüm kaynaklara** gidin ve listedeki **classicvnet** 'i bulun.
 2. Menüdeki **Ayarlar** bölümünde **ağ geçidi** ' ne tıklayın ve ardından bir ağ geçidi oluşturmak için başlık ' a tıklayın.
@@ -207,7 +207,7 @@ Bu adımlarda, Azure portal kullanarak Kaynak Yöneticisi VNet 'ten klasik VNet 
 2. **Yapılandırma** ' ya tıklayın ve IP adresi değerinin klasik VNET için VPN ağ geçidi olduğunu doğrulayın. Gerekirse güncelleştirin ve ardından **Kaydet**' e tıklayın. Sayfayı kapatın.
 3. **Tüm kaynaklar**' da yerel ağ geçidi ' ne tıklayın.
 4. Bağlantılar sayfasını açmak için **Bağlantılar** ' a tıklayın.
-5. **Bağlantılar** sayfasında bağlantı eklemek için tıklayın **+** .
+5. **Bağlantılar** sayfasında **+** bağlantı eklemek için tıklayın.
 6. **Bağlantı ekle** sayfasında bağlantıyı adlandırın. Örneğin, ' RMtoClassic '.
 7. **Siteden siteye** bu sayfada zaten seçili.
 8. Bu siteyle ilişkilendirmek istediğiniz sanal ağ geçidini seçin.

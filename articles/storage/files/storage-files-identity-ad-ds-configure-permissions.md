@@ -5,18 +5,18 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 06/07/2020
+ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: b8ff58e830d9ca992db4461ee5c75659120c89c1
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 34535cda82ba039ace98b6055e8f7096c5454fda
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629575"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207881"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Üçüncü kısım: SMB üzerinden dizin ve dosya düzeyi izinleri yapılandırma 
 
-Bu makaleye başlamadan önce önceki makaleyi tamamladığınızdan, [bir kimliğe Share-Level Izinleri atadığınızdan](storage-files-identity-ad-ds-assign-permissions.md)emin olun. Paylaşma düzeyi izinlerinizin yapıldığından emin olmak için.
+Bu makaleye başlamadan önce, bir önceki makaleyi tamamladığınızdan emin olun, paylaşma düzeyi izinlerinizin yerinde olduğundan emin olmak için [bir kimliğe Share-Level Izinleri atayın](storage-files-identity-ad-ds-assign-permissions.md) .
 
 RBAC ile paylaşma düzeyi izinleri atadıktan sonra, ayrıntılı erişim denetiminden yararlanmak için kök, dizin veya dosya düzeyinde uygun Windows ACL 'Leri yapılandırmanız gerekir. Bir kullanıcının paylaşıma erişip erişemeyeceğini belirleyen üst düzey ağ geçidi olarak RBAC paylaşma düzeyi izinleri düşünün. Windows ACL 'Leri, kullanıcının dizin veya dosya düzeyinde hangi işlemleri yapabileceğini belirlemek için daha ayrıntılı bir düzeyde çalışır. Bir Kullanıcı bir dosya/dizine erişmeyi denediğinde hem paylaşma düzeyi hem de dosya/dizin düzeyi izinleri zorlanır. bu nedenle, aralarında fark varsa yalnızca en kısıtlayıcı bir değer uygulanır. Örneğin, bir kullanıcının dosya düzeyinde okuma/yazma erişimi varsa ancak yalnızca bir paylaşma düzeyinde salt okunurdur, bu dosyayı yalnızca okuyabilir. Aynı değer, geri çevrilirse ve bir kullanıcının Share-Level ' a okuma/yazma erişimi varsa ancak yalnızca dosya düzeyinde salt okuma yaptığı halde yalnızca dosyayı okuyabilecekleri şekilde true olur.
 
@@ -73,7 +73,7 @@ Kök dizin dahil olmak üzere dosya paylaşımındaki tüm dizinlere ve dosyalar
 1. Yeni Kullanıcı eklemek için istem penceresinde, **Seçilecek nesne adlarını girin** kutusuna izin vermek istediğiniz hedef Kullanıcı adını girin ve hedef kullanıcının tam UPN adını bulmak Için **adları denetle** ' yi seçin.
 1.    **Tamam**’ı seçin.
 1.    **Güvenlik** sekmesinde, yeni kullanıcıya vermek istediğiniz tüm izinleri seçin.
-1.    **Apply** (Uygula) seçeneğini belirleyin.
+1.    **Uygula**’yı seçin.
 
 ### <a name="configure-windows-acls-with-icacls"></a>Windows ACL 'lerini Icacls ile yapılandırma
 

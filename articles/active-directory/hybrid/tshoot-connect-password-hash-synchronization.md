@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253552"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690753"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitleme sorunlarını giderme
 
@@ -60,7 +60,7 @@ Hiçbir parolanın eşitlenmediği sorunları gidermek için:
 
 1. **Yönetici olarak çalıştır** seçeneğiyle Azure AD Connect sunucunuzda yeni bir Windows PowerShell oturumu açın.
 
-2. Veya `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`çalıştırın.
+2. `Set-ExecutionPolicy RemoteSigned`Veya çalıştırın `Set-ExecutionPolicy Unrestricted` .
 
 3. Azure AD Connect Sihirbazı 'nı başlatın.
 
@@ -143,7 +143,7 @@ Belirli bir kullanıcı nesnesi ile ilgili sorunları gidermek için:
 
 1. **Yönetici olarak çalıştır** seçeneğiyle Azure AD Connect sunucunuzda yeni bir Windows PowerShell oturumu açın.
 
-2. Veya `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`çalıştırın.
+2. `Set-ExecutionPolicy RemoteSigned`Veya çalıştırın `Set-ExecutionPolicy Unrestricted` .
 
 3. Azure AD Connect Sihirbazı 'nı başlatın.
 
@@ -193,10 +193,10 @@ Varsayılan olarak, Azure AD Connect yedi gün boyunca Parola karması eşitleme
 
 ## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Eşitlenen parola yok: Tanılama cmdlet 'ini kullanarak sorun giderme
 
-Bir parolanın neden eşitlenmemiş `Invoke-ADSyncDiagnostics` olduğunu anlamak için cmdlet 'ini kullanabilirsiniz.
+Bir `Invoke-ADSyncDiagnostics` parolanın neden eşitlenmemiş olduğunu anlamak için cmdlet 'ini kullanabilirsiniz.
 
 > [!NOTE]
-> `Invoke-ADSyncDiagnostics` Cmdlet 'i yalnızca Azure AD Connect Version 1.1.524.0 veya üzeri için kullanılabilir.
+> `Invoke-ADSyncDiagnostics`Cmdlet 'i yalnızca Azure AD Connect Version 1.1.524.0 veya üzeri için kullanılabilir.
 
 ### <a name="run-the-diagnostics-cmdlet"></a>Tanılama cmdlet 'ini çalıştırma
 
@@ -204,7 +204,7 @@ Hiçbir parolanın eşitlenmediği sorunları gidermek için:
 
 1. **Yönetici olarak çalıştır** seçeneğiyle Azure AD Connect sunucunuzda yeni bir Windows PowerShell oturumu açın.
 
-2. Veya `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`çalıştırın.
+2. `Set-ExecutionPolicy RemoteSigned`Veya çalıştırın `Set-ExecutionPolicy Unrestricted` .
 
 3. `Import-Module ADSyncDiagnostics` öğesini çalıştırın.
 
@@ -214,10 +214,10 @@ Hiçbir parolanın eşitlenmediği sorunları gidermek için:
 
 ## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Bir nesne parolaları eşitlemiyor: Tanılama cmdlet 'ini kullanarak sorun giderme
 
-Bir nesnenin neden parolaları `Invoke-ADSyncDiagnostics` eşitleyeceğini anlamak için cmdlet 'ini kullanabilirsiniz.
+`Invoke-ADSyncDiagnostics`Bir nesnenin neden parolaları eşitleyeceğini anlamak için cmdlet 'ini kullanabilirsiniz.
 
 > [!NOTE]
-> `Invoke-ADSyncDiagnostics` Cmdlet 'i yalnızca Azure AD Connect Version 1.1.524.0 veya üzeri için kullanılabilir.
+> `Invoke-ADSyncDiagnostics`Cmdlet 'i yalnızca Azure AD Connect Version 1.1.524.0 veya üzeri için kullanılabilir.
 
 ### <a name="run-the-diagnostics-cmdlet"></a>Tanılama cmdlet 'ini çalıştırma
 
@@ -225,7 +225,7 @@ Bir kullanıcı için hiçbir parolanın eşitlenmediği sorunları gidermek iç
 
 1. **Yönetici olarak çalıştır** seçeneğiyle Azure AD Connect sunucunuzda yeni bir Windows PowerShell oturumu açın.
 
-2. Veya `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`çalıştırın.
+2. `Set-ExecutionPolicy RemoteSigned`Veya çalıştırın `Set-ExecutionPolicy Unrestricted` .
 
 3. `Import-Module ADSyncDiagnostics` öğesini çalıştırın.
 
@@ -323,7 +323,7 @@ Bir nesnenin durumunu inceleyerek Parola karması eşitleme sorunlarını kolayc
 
     f. Aradığınız kullanıcıyı bulun ve ardından **Özellikler** ' e tıklayarak tüm öznitelikleri görüntüleyin. Kullanıcı arama sonucu değilse, [filtreleme kurallarınızı](how-to-connect-sync-configure-filtering.md) doğrulayın ve uygulamanın Connect 'te görünmesi için [Uygula ve değişiklikleri doğrula](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes) ' yı çalıştırdığınızdan emin olun.
 
-    g. Son hafta için nesnenin parola eşitleme ayrıntılarını görmek için **günlük**' e tıklayın.  
+    örneğin: Son hafta için nesnenin parola eşitleme ayrıntılarını görmek için **günlük**' e tıklayın.  
 
     ![Nesne günlüğü ayrıntıları](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 

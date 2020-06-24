@@ -3,17 +3,18 @@ title: Azure Kubernetes Service (AKS) içindeki sistem düğüm havuzlarını ku
 description: Azure Kubernetes hizmeti 'nde (AKS) sistem düğüm havuzları oluşturmayı ve yönetmeyi öğrenin
 services: container-service
 ms.topic: article
-ms.date: 04/28/2020
-ms.openlocfilehash: 85cc699d6ef8c632663775e91f2b5cad6ca7a7b6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/18/2020
+ms.author: mlearned
+ms.openlocfilehash: 9b6270f81e7af8bd508d29510698e6cf9a5a2010
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125256"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052661"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetindeki (AKS) sistem düğüm havuzlarını yönetme
 
-Azure Kubernetes hizmeti 'nde (AKS), aynı yapılandırmanın düğümleri *düğüm havuzlarında*birlikte gruplandırılır. Düğüm havuzları, uygulamalarınızı çalıştıran temel VM 'Leri içerir. Sistem düğüm havuzları ve Kullanıcı düğümü havuzları, AKS kümeleriniz için iki farklı düğüm havuzu modudur. Sistem düğüm havuzları, CoreDNS ve tunnelfront gibi kritik sistem yığınlarını barındırmanın birincil amacını sunar. Kullanıcı düğümü havuzları, uygulama yığınlarınızı barındırmanın birincil amacını sunar. Ancak, aks kümenizde yalnızca bir havuza sahip olmak istiyorsanız, uygulama Pod 'leri sistem düğüm havuzlarında zamanlanabilir. Her bir AKS kümesi en az bir düğümü olan en az bir sistem düğüm havuzu içermelidir. 
+Azure Kubernetes hizmeti 'nde (AKS), aynı yapılandırmanın düğümleri *düğüm havuzlarında*birlikte gruplandırılır. Düğüm havuzları, uygulamalarınızı çalıştıran temel VM 'Leri içerir. Sistem düğüm havuzları ve Kullanıcı düğümü havuzları, AKS kümeleriniz için iki farklı düğüm havuzu modudur. Sistem düğüm havuzları, CoreDNS ve tunnelfront gibi kritik sistem yığınlarını barındırmanın birincil amacını sunar. Kullanıcı düğümü havuzları, uygulama yığınlarınızı barındırmanın birincil amacını sunar. Ancak, aks kümenizde yalnızca bir havuza sahip olmak istiyorsanız, uygulama Pod 'leri sistem düğüm havuzlarında zamanlanabilir. Her bir AKS kümesi en az bir düğümü olan en az bir sistem düğüm havuzu içermelidir.
 
 > [!Important]
 > Bir üretim ortamında AKS kümeniz için tek bir sistem düğüm havuzu çalıştırırsanız, düğüm havuzu için en az üç düğüm kullanmanızı öneririz.
@@ -29,7 +30,7 @@ Sistem düğüm havuzlarını destekleyen AKS kümelerini oluştururken ve yöne
 * [Azure Kubernetes Service (AKS) Içindeki kotalar, sanal makine boyutu kısıtlamaları ve bölge kullanılabilirliği][quotas-skus-regions]konusuna bakın.
 * AKS kümesi VM türü olarak sanal makine ölçek kümeleri ile oluşturulmalıdır.
 * Düğüm havuzunun adı yalnızca küçük harfli alfasayısal karakterler içerebilir ve küçük harfle başlamalıdır. Linux düğüm havuzları için uzunluk 1 ile 12 karakter arasında olmalıdır. Windows düğüm havuzları için uzunluk 1 ile 6 karakter arasında olmalıdır.
-* Düğüm havuzu modunu ayarlamak için 2020-03-01 veya üzeri bir API sürümü kullanılmalıdır.
+* Düğüm havuzu modunu ayarlamak için 2020-03-01 veya üzeri bir API sürümü kullanılmalıdır. 2020-03-01 ' den eski API sürümlerinde oluşturulan kümeler yalnızca Kullanıcı düğümü havuzlarını içerir, ancak [güncelleştirme havuzu modu adımlarını](#update-existing-cluster-system-and-user-node-pools)izleyerek Sistem düğüm havuzlarını içerecek şekilde geçirilebilirler.
 * Düğüm havuzunun modu gerekli bir özelliktir ve ARM şablonları veya doğrudan API çağrıları kullanılırken açıkça ayarlanması gerekir.
 
 ## <a name="system-and-user-node-pools"></a>Sistem ve Kullanıcı düğümü havuzları
@@ -115,7 +116,10 @@ Sistem düğüm havuzları için **sistem** türü bir mod tanımlanır ve Kulla
 }
 ```
 
-## <a name="update-system-and-user-node-pools"></a>Sistem ve Kullanıcı düğümü havuzlarını güncelleştirme
+## <a name="update-existing-cluster-system-and-user-node-pools"></a>Mevcut küme sistemini ve Kullanıcı düğümü havuzlarını Güncelleştir
+
+> [!NOTE]
+> Bir sistem düğüm havuzu modu ayarlamak için 2020-03-01 veya üzeri bir API sürümü kullanılmalıdır. 2020-03-01 'den eski API sürümlerinde oluşturulan kümeler, sonuç olarak yalnızca Kullanıcı düğümü havuzlarını içerir. Daha eski kümelerde sistem düğüm havuzu işlevselliği ve avantajları almak için, mevcut düğüm havuzlarının modunu en son Azure CLı sürümünde aşağıdaki komutlarla güncelleştirin.
 
 Hem sistem hem de Kullanıcı düğüm havuzlarının modlarını değiştirebilirsiniz. Bir sistem düğüm havuzunu bir Kullanıcı havuzu için, yalnızca başka bir sistem düğüm havuzu zaten varsa, AKS kümesinde değiştirebilirsiniz.
 

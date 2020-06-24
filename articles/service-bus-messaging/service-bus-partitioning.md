@@ -7,14 +7,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 02/06/2020
+ms.date: 06/17/2020
 ms.author: aschhab
-ms.openlocfilehash: 671368993acb43c0d55eca73119effa934e3cff8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff216cba76a0b6eecd4879b9ce3aefc131161b9d
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260949"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987757"
 ---
 # <a name="partitioned-queues-and-topics"></a>Bölümlenmiş kuyruklar ve konular
 
@@ -31,11 +31,13 @@ Bölümlenmiş her sıra veya konu, birden çok bölümden oluşur. Her bölüm 
 
 İstemci, bölümlenmiş bir kuyruktan veya bir aboneliğinden bölümlenmiş bir konuya ileti almak istediğinde, Service Bus iletiler için tüm bölümleri sorgular ve ardından herhangi bir mesajlaşma mağazasından alıcıya alınan ilk iletiyi döndürür. Service Bus diğer iletileri önbelleğe alır ve ek alma istekleri aldığında onları döndürür. Alıcı istemci Bölümlendirmeyi bilmez; bölümlenmiş bir kuyruğun veya konunun istemciye yönelik davranışı (örneğin, okuma, tamamlanma, erteleme, sahipsiz, ön alma), normal bir varlığın davranışıyla aynıdır.
 
+Bölümlendirilmemiş bir varlıktaki göz atma işlemi her zaman en eski iletiyi döndürür, ancak bölümlenmiş bir varlıkta değil. Bunun yerine, ileti aracısının ilk yanıtı olan bölümlerden birindeki en eski iletiyi döndürür. Döndürülen iletinin tüm bölümlerde en eski bir değer olduğu garantisi yoktur. 
+
 Bölümlenmiş bir kuyruk veya konuyla bir ileti gönderilirken veya ileti alırken ek bir maliyet yoktur.
 
 ## <a name="enable-partitioning"></a>Bölümlemeyi etkinleştir
 
-Azure Service Bus ile bölümlenmiş kuyruklar ve konular kullanmak için Azure SDK 2,2 veya sonraki bir sürümünü kullanın veya HTTP isteklerinizi `api-version=2013-10` veya sonraki bir sürümünü belirtin.
+Azure Service Bus ile bölümlenmiş kuyruklar ve konular kullanmak için Azure SDK 2,2 veya sonraki bir sürümünü kullanın veya `api-version=2013-10` http isteklerinizi veya sonraki bir sürümünü belirtin.
 
 ### <a name="standard"></a>Standart
 

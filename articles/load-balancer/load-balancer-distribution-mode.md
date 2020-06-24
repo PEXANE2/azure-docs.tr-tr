@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5c50186692438be5d0922cd329c28e665310e5c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5dfcc84530597fc41c547a78478dcee4a4ad803
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77023540"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808487"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer için Dağıtım modunu yapılandırın
 
@@ -29,7 +29,7 @@ ms.locfileid: "77023540"
 Azure Load Balancer’ın varsayılan dağıtım modu beşli tanımlama grubu olan karmadır. 
 
 Tanımlama grubu şunlardan oluşur:
-* **Kaynak IP**
+* **Kaynak IP 'si**
 * **Kaynak bağlantı noktası**
 * **Hedef IP**
 * **Hedef bağlantı noktası**
@@ -90,7 +90,7 @@ Klasik sanal makinelerde, dağıtım ayarlarını değiştirmek için Azure Powe
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
-Gerekli Yük Dengeleme miktarı için `LoadBalancerDistribution` öğesinin değerini ayarlayın. İki demet (kaynak IP ve hedef IP) yük dengelemesi için SourceIP 'yi belirtin. Üç demet için Sourceıpprotocol (kaynak IP, hedef IP ve protokol türü) yük dengelemesi belirleyin. Beş demet yük dengelemenin varsayılan davranışı için hiçbiri ' ni belirtin.
+`LoadBalancerDistribution`Gerekli Yük Dengeleme miktarı için öğesinin değerini ayarlayın. İki demet (kaynak IP ve hedef IP) yük dengelemesi için SourceIP 'yi belirtin. Üç demet için Sourceıpprotocol (kaynak IP, hedef IP ve protokol türü) yük dengelemesi belirleyin. Beş demet yük dengelemenin varsayılan davranışı için hiçbiri ' ni belirtin.
 
 Bu ayarları kullanarak bir uç nokta yük dengeleyici dağıtım modu yapılandırması alın:
 
@@ -114,7 +114,7 @@ Bu ayarları kullanarak bir uç nokta yük dengeleyici dağıtım modu yapıland
     IdleTimeoutInMinutes : 15
     LoadBalancerDistribution : sourceIP
 
-`LoadBalancerDistribution` Öğe mevcut olmadığında, Azure Load Balancer varsayılan beş demet algoritmasını kullanır.
+`LoadBalancerDistribution`Öğe mevcut olmadığında, Azure Load Balancer varsayılan beş demet algoritmasını kullanır.
 
 ### <a name="configure-distribution-mode-on-load-balanced-endpoint-set"></a>Yük dengeli uç nokta kümesinde Dağıtım modunu yapılandırma
 
@@ -154,7 +154,7 @@ Aşağıdaki örnekte, bir dağıtımda belirtilen yük dengeli bir küme için 
 
 ### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>Dağıtılan yük dengeli küme için Dağıtım modunu değiştir
 
-Mevcut bir dağıtım yapılandırmasını değiştirmek için klasik Azure dağıtım modelini kullanın. `x-ms-version` Üstbilgiyi ekleyin ve değeri sürüm 2014-09-01 veya üzeri olarak ayarlayın.
+Mevcut bir dağıtım yapılandırmasını değiştirmek için klasik Azure dağıtım modelini kullanın. Üstbilgiyi ekleyin `x-ms-version` ve değeri sürüm 2014-09-01 veya üzeri olarak ayarlayın.
 
 #### <a name="request"></a>İstek
 

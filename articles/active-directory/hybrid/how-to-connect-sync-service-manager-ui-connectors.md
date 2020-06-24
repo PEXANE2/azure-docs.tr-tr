@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261053"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690736"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Azure AD Connect eşitleme Service Manager bağlayıcı kullanma
 
@@ -31,13 +31,13 @@ ms.locfileid: "79261053"
 Bağlayıcılar sekmesi, eşitleme altyapısının bağlı olduğu tüm sistemleri yönetmek için kullanılır.
 
 ## <a name="connector-actions"></a>Bağlayıcı eylemleri
-| Eylem | Açıklama |
+| Eylem | Yorum |
 | --- | --- |
 | Oluştur |Kullanmayın. Ek AD ormanlarına bağlanmak için Yükleme Sihirbazı ' nı kullanın. |
 | Özellikler |Etki alanı ve OU filtrelemesi için kullanılır. |
 | [Sil](#delete) |Bağlayıcı alanındaki verileri silmek ya da bir ormana bağlantıyı silmek için kullanılır. |
 | [Çalıştırma profillerini yapılandırma](#configure-run-profiles) |Etki alanı filtreleme dışında, burada yapılandırılacak bir şey yoktur. Bu eylemi, zaten yapılandırılmış çalıştırma profillerini görmek için kullanabilirsiniz. |
-| Çalıştırın |Bir profilin tek bir çalıştırmasını başlatmak için kullanılır. |
+| Çalıştır |Bir profilin tek bir çalıştırmasını başlatmak için kullanılır. |
 | Durdur |Şu anda bir profili çalıştıran bir bağlayıcıyı sonlandırır. |
 | Bağlayıcıyı dışarı aktar |Kullanmayın. |
 | Bağlayıcıyı içeri aktar |Kullanmayın. |
@@ -88,7 +88,7 @@ Bu sorunu çözmek için, AD DS kullanıcı hesabını aşağıdakileri kullanar
 5. Açılır iletişim kutusunda Active Directory ormana Bağlan ' ı seçin:
 6. Orman adı, şirket içi AD 'ye karşılık gelen adını gösterir.
 7. Kullanıcı adı, eşitleme için kullanılan AD DS hesabını belirtir.
-8. Parola metin kutusuna ![AD DS hesabının yeni parolasını girin Azure AD Connect şifreleme anahtarını Eşitle yardımcı programı](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)
+8. Parola metin kutusuna AD DS hesabının yeni parolasını girin ![ Azure AD Connect şifreleme anahtarını Eşitle yardımcı programı](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)
 9. Yeni parolayı kaydetmek için Tamam ' ı tıklatın ve eski parolayı bellek önbelleğinden kaldırmak için eşitleme hizmetini yeniden başlatın.
 
 

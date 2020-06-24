@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f91df2e4b76e2a85705100fa5626877b9a86312d
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282932"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752582"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure portal Azure Bilişsel Arama için hizmet yönetimi
 > [!div class="op_single_selector"]
@@ -98,9 +98,9 @@ Daha fazla çoğaltmaya sahip bir arama hizmeti, daha fazla sayıda dizin üzeri
 Yineleme eklerken sorgu işleme yukarı gidebilse de, hizmetinize çoğaltmalar eklerken tam olarak Double veya üçlü değildir. Tüm arama uygulamaları, sorgu performansını engelleyebilecek dış faktörlere tabidir. Karmaşık sorgular ve ağ gecikmesi, sorgu yanıt sürelerindeki çeşitlere katkıda bulunan iki etmendir.
 
 ### <a name="add-partitions"></a>Bölüm Ekle
-Çoğu hizmet uygulamasının bölümleri yerine daha fazla çoğaltma için yerleşik bir ihtiyacı vardır. Daha fazla belge sayısının gerekli olduğu durumlarda, standart hizmete kaydolduysanız bölüm ekleyebilirsiniz. Temel katman ek bölümler sağlamaz.
+Çoğaltmalar eklemek daha yaygındır, ancak depolama sınırlı olduğunda daha fazla kapasite sağlamak için bölümler ekleyebilirsiniz. Hizmeti sağladığınız katman bölümlerin eklenip eklenemeyeceğini belirler. Temel katman bir bölümde kilitlidir. Standart katmanlar ve yukarıdaki ek bölümler desteklenir.
 
-Standart katmanda, bölümler 12 ' ye (özellikle, 1, 2, 3, 4, 6 veya 12) katlara eklenir. Bu bir parça yapıtı. Hepsi 1 bölümde depolanabilen veya eşit olarak 2, 3, 4, 6 veya 12 bölüme (bölüm başına bir parça) bölünebilen 12 parçalı bir dizin oluşturulur.
+Bölümler 12 katlarına eklenir (özellikle, 1, 2, 3, 4, 6 veya 12). Bu bir parça yapıtı. Hepsi 1 bölümde depolanabilen veya eşit olarak 2, 3, 4, 6 veya 12 bölüme (bölüm başına bir parça) bölünebilen 12 parçalı bir dizin oluşturulur.
 
 ### <a name="remove-replicas"></a>Çoğaltmaları kaldır
 Yüksek sorgu birimleri dönemlerinden sonra, arama sorgusu yükleri normalleştirildikten sonra (örneğin, tatil satışları kapatıldıktan sonra) çoğaltmaları azaltmak için kaydırıcıyı kullanabilirsiniz. Sizin bölüminizdeki başka bir adım gerekli değildir. Çoğaltma sayısını azaltmak veri merkezindeki sanal makineleri yeniden oluşturur. Sorgunuz ve veri alma işlemleri artık daha az sayıda VM 'de çalışacak. En düşük gereksinim bir yinelemedir.

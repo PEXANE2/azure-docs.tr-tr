@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.author: cshoe
 ms.date: 3/18/2020
 ms.topic: article
-ms.openlocfilehash: f0b738f394c4a544ddb31e25b4570890ccfa9235
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: cdbb5bbde1e5efef9bef992a62a54f1525a16df7
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995879"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052575"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Azure Işlevleri özel işleyiciler (Önizleme)
 
@@ -37,14 +37,14 @@ Aşağıdaki diyagramda, Işlevler ana bilgisayarı ile özel işleyici olarak u
 - Web sunucusu bağımsız işlevi yürütür ve Işlevler ana bilgisayarına bir [Yanıt yükü](#response-payload) döndürür.
 - Işlevler, yanıtı hedefe çıkış bağlama yükü olarak barındırır.
 
-Özel işleyici olarak uygulanan bir Azure Işlevleri uygulamasının, *Host. JSON* ve *function. JSON* dosyalarını birkaç kurallara göre yapılandırması gerekir.
+Özel işleyici olarak uygulanan bir Azure Işlevleri uygulamasının, dosyalarda *host.js* ve *function.js* bir çok farklı kurallara göre yapılandırması gerekir.
 
 ## <a name="application-structure"></a>Uygulama yapısı
 
 Özel bir işleyici uygulamak için, uygulamanız için aşağıdaki yönlere ihtiyacınız vardır:
 
-- Uygulamanızın kökündeki bir *Host. JSON* dosyası
-- Her işlev için bir *function. JSON* dosyası (işlev adıyla eşleşen bir klasör içinde)
+- Uygulamanızın kökündeki bir *host.js* dosyası
+- Her işlev için dosyadaki bir *function.js* (işlev adıyla eşleşen bir klasör içinde)
 - Bir Web sunucusu çalıştıran bir komut, betik veya yürütülebilir dosya
 
 Aşağıdaki diyagramda, bu dosyaların "Order" adlı bir işlevin dosya sistemine nasıl bulunduğu gösterilmektedir.
@@ -58,9 +58,9 @@ Aşağıdaki diyagramda, bu dosyaların "Order" adlı bir işlevin dosya sistemi
 
 ### <a name="configuration"></a>Yapılandırma
 
-Uygulama, *Host. JSON* dosyası aracılığıyla yapılandırılır. Bu dosya, Işlevleri HTTP olaylarını işleyebilen bir Web sunucusuna işaret ederek istekleri nereye göndereceğini belirtir.
+Uygulama, dosyası *host.js* aracılığıyla yapılandırılır. Bu dosya, Işlevleri HTTP olaylarını işleyebilen bir Web sunucusuna işaret ederek istekleri nereye göndereceğini belirtir.
 
-Özel bir işleyici, *Host. JSON* dosyası, bölümünde Web sunucusunun nasıl çalıştırılacağı hakkındaki ayrıntılarla yapılandırılarak tanımlanır `httpWorker` .
+Özel bir işleyici, bölümünde Web sunucusunun nasıl çalıştırılacağı hakkındaki ayrıntılarla birlikte *host.js* yapılandırılarak tanımlanır `httpWorker` .
 
 ```json
 {
@@ -75,7 +75,7 @@ Uygulama, *Host. JSON* dosyası aracılığıyla yapılandırılır. Bu dosya, I
 
 `httpWorker`Bölümü tarafından tanımlanan bir hedefe işaret eder `defaultExecutablePath` . Yürütme hedefi, Web sunucusunun uygulandığı bir komut, yürütülebilir dosya ya da dosya olabilir.
 
-Betikleştirilmiş uygulamalar için, `defaultExecutablePath` komut dosyası dilinin çalışma zamanını işaret eder ve `defaultWorkerPath` betik dosyası konumunu işaret eder. Aşağıdaki örnek, Node. js içindeki bir JavaScript uygulamasının özel bir işleyici olarak nasıl yapılandırıldığını gösterir.
+Betikleştirilmiş uygulamalar için, `defaultExecutablePath` komut dosyası dilinin çalışma zamanını işaret eder ve `defaultWorkerPath` betik dosyası konumunu işaret eder. Aşağıdaki örnek, Node.js içindeki bir JavaScript uygulamasının özel bir işleyici olarak nasıl yapılandırıldığını gösterir.
 
 ```json
 {
@@ -107,15 +107,15 @@ Ayrıca, diziyi kullanarak bağımsız değişkenleri geçirebilirsiniz `argumen
 Birçok hata ayıklama kurulumu için bağımsız değişkenler gereklidir. Daha fazla ayrıntı için [hata ayıklama](#debugging) bölümüne bakın.
 
 > [!NOTE]
-> *Host. JSON* dosyası, çalışan Web sunucusuyla dizin yapısında aynı düzeyde olmalıdır. Bazı diller ve araç zincirler, bu dosyayı varsayılan olarak uygulama köküne yerleştirmeyebilir.
+> Dosyadaki *host.js* , çalışan Web sunucusuyla dizin yapısında aynı düzeyde olmalıdır. Bazı diller ve araç zincirler, bu dosyayı varsayılan olarak uygulama köküne yerleştirmeyebilir.
 
 #### <a name="bindings-support"></a>Bağlama desteği
 
-Giriş ve çıkış bağlamalarıyla birlikte standart Tetikleyiciler, *Host. JSON* dosyanızdaki [uzantı](./functions-bindings-register.md) paketleriyle bağlantı yoluyla kullanılabilir.
+Giriş ve çıkış bağlamalarıyla birlikte standart Tetikleyiciler, *host.js* dosyadaki [uzantı](./functions-bindings-register.md) paketleriyle başvurularak kullanılabilir.
 
 ### <a name="function-metadata"></a>İşlev meta verileri
 
-Özel bir işleyici ile kullanıldığında, *function. JSON* içerikleri başka bir bağlam altında bir işlevi nasıl tanımlayacağınızdan farklı değildir. Tek gereksinim, *function. JSON* dosyalarının işlev adıyla eşleşecek şekilde adında bir klasörde olması gerekir.
+Özel bir işleyiciyle kullanıldığında, içerik *üzerindekifunction.js* başka bir bağlam altında bir işlevi nasıl tanımlayacağınızdan farklı değildir. Tek gereksinim, dosyalardaki *function.js* , işlev adıyla eşleşecek şekilde adlı bir klasörde olmalıdır.
 
 ### <a name="request-payload"></a>İstek yükü
 
@@ -125,11 +125,11 @@ Giriş, çıkış bağlamaları veya HTTP dışında bir olay kaynağı aracıl�
 
 Aşağıdaki kod bir örnek istek yükünü temsil eder. Yük, iki üyeye sahip bir JSON yapısı içerir: `Data` ve `Metadata` .
 
-`Data`Üye, *function. JSON* dosyasındaki Bindings dizisinde tanımlanan giriş ve tetikleyici adlarıyla eşleşen anahtarlar içerir.
+`Data`Üye, dosyadaki *function.js* bağlama dizisinde tanımlanan giriş ve tetikleyici adlarıyla eşleşen anahtarlar içerir.
 
 `Metadata`Üye, [olay kaynağından oluşturulan meta verileri](./functions-bindings-expressions-patterns.md#trigger-metadata)içerir.
 
-Aşağıdaki *function. JSON* dosyasında tanımlanan bağlamalar verildi:
+Dosyasında aşağıdaki *function.js* tanımlanan bağlamalar verildi:
 
 ```json
 {
@@ -181,18 +181,18 @@ Kurala göre, işlev yanıtları anahtar/değer çiftleri olarak biçimlendirili
 
 | <nobr>Yük anahtarı</nobr>   | Veri türü | Açıklamalar                                                      |
 | ------------- | --------- | ------------------------------------------------------------ |
-| `Outputs`     | JSON      | Response değerlerini, `bindings` Array tarafından *function. JSON* dosyası tarafından tanımlanan şekilde tutar.<br /><br />Örneğin, bir işlev "blob" adlı bir BLOB depolama çıkış bağlaması ile yapılandırıldıysa, `Outputs` `blob` BLOB 'un değerine ayarlanan adlı bir anahtar içerir. |
+| `Outputs`     | JSON      | `bindings`Dosyasında *function.js* dizi tarafından tanımlanan yanıt değerlerini tutar.<br /><br />Örneğin, bir işlev "blob" adlı bir BLOB depolama çıkış bağlaması ile yapılandırıldıysa, `Outputs` `blob` BLOB 'un değerine ayarlanan adlı bir anahtar içerir. |
 | `Logs`        | array     | İletiler, Işlev çağırma günlüklerinde görüntülenir.<br /><br />Azure 'da çalışırken iletiler Application Insights görüntülenir. |
-| `ReturnValue` | string    | Bir çıktı `$return` , *function. JSON* dosyasında olarak yapılandırıldığında bir yanıt sağlamak için kullanılır. |
+| `ReturnValue` | string    | function.jsdosyadaki bir çıktı yapılandırıldığında bir yanıt sağlamak için kullanılır `$return` . *function.json* |
 
 [Örnek yük için örneğe](#bindings-implementation)bakın.
 
 ## <a name="examples"></a>Örnekler
 
-Özel işleyiciler, HTTP olaylarını destekleyen herhangi bir dilde uygulanabilir. Azure Işlevleri [JavaScript ve Node. js ' yi tam olarak desteklese](./functions-reference-node.md)de aşağıdaki örneklerde, yöntemi için Node. js ' de JavaScript kullanılarak özel işleyicinin nasıl uygulanacağı gösterilmektedir.
+Özel işleyiciler, HTTP olaylarını destekleyen herhangi bir dilde uygulanabilir. Azure Işlevleri [JavaScript ve Node.jstamamen desteklese ](./functions-reference-node.md)de aşağıdaki örneklerde, yönerge amaçları Için Node.js JavaScript kullanarak özel işleyicinin nasıl uygulanacağı gösterilmektedir.
 
 > [!TIP]
-> Diğer dillerde özel bir işleyicinin nasıl uygulanacağını öğrenirken, burada gösterilen Node. js tabanlı örnekler, Node. js ' nin desteklenmeyen bir sürümünde bir Işlevler uygulamasını çalıştırmak istediğinizde de yararlı olabilir.
+> Diğer dillerde özel bir işleyicinin nasıl uygulanacağını öğrenirken, burada gösterilen Node.js tabanlı örnekler, Node.js desteklenmeyen bir sürümünde Işlevler uygulaması çalıştırmak istediğinizde de yararlı olabilir.
 
 ## <a name="http-only-function"></a>Yalnızca HTTP işlevi
 
@@ -213,7 +213,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>Uygulama
 
-*Http*adlı bir klasörde, *function. JSON* dosyası http ile tetiklenen işlevi yapılandırır.
+*Http*adlı bir klasörde, dosyadaki *function.js* , http ile tetiklenen işlevi yapılandırır.
 
 ```json
 {
@@ -235,7 +235,7 @@ content-type: application/json
 
 İşlevi hem hem de isteklerini kabul edecek şekilde yapılandırılmıştır `GET` `POST` ve sonuç değeri adlı bir bağımsız değişken aracılığıyla sağlanır `res` .
 
-Uygulamanın kökünde, *Host. JSON* dosyası Node. js çalıştıracak şekilde yapılandırılır ve `server.js` dosyayı işaret.
+Uygulamanın kökünde, dosyadaki *host.js* Node.js çalıştıracak ve dosyayı gösterecek şekilde yapılandırılır `server.js` .
 
 ```json
 {
@@ -249,7 +249,7 @@ Uygulamanın kökünde, *Host. JSON* dosyası Node. js çalıştıracak şekilde
 }
 ```
 
-File *Server. js* dosyası bir Web sunucusu ve http işlevi uygular.
+Dosya *server.js* dosyası bir Web sunucusu ve http işlevi uygular.
 
 ```javascript
 const express = require("express");
@@ -302,7 +302,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>Uygulama
 
-*Order*adlı bir klasörde, *function. JSON* dosyası http ile tetiklenen işlevi yapılandırır.
+*Order*adlı bir klasörde, dosyadaki *function.js* , http ile tetiklenen işlevi yapılandırır.
 
 ```json
 {
@@ -333,7 +333,7 @@ content-type: application/json
 
 Bu işlev, [http yanıtı](./functions-bindings-http-webhook-output.md) döndüren ve [kuyruk depolama](./functions-bindings-storage-queue-output.md) iletisini veren bir [http tetiklenen işlev](./functions-bindings-http-webhook-trigger.md) olarak tanımlanır.
 
-Uygulamanın kökünde, *Host. JSON* dosyası Node. js çalıştıracak şekilde yapılandırılır ve `server.js` dosyayı işaret.
+Uygulamanın kökünde, dosyadaki *host.js* Node.js çalıştıracak ve dosyayı gösterecek şekilde yapılandırılır `server.js` .
 
 ```json
 {
@@ -347,7 +347,7 @@ Uygulamanın kökünde, *Host. JSON* dosyası Node. js çalıştıracak şekilde
 }
 ```
 
-File *Server. js* dosyası bir Web sunucusu ve http işlevi uygular.
+Dosya *server.js* dosyası bir Web sunucusu ve http işlevi uygular.
 
 ```javascript
 const express = require("express");
@@ -388,15 +388,15 @@ Bu örnekte, Express HTTP olaylarını işlemek üzere bir Web sunucusu oluştur
 - İstek gövdesi ile kullanılabilir`req.body`
 - İşleve gönderilen veriler ile kullanılabilir`req.body.Data.req.Body`
 
-İşlevin yanıtı, `Outputs` üyenin *function. JSON* dosyasında tanımlanan ÇıKıŞLARLA eşleştiği bir JSON değeri tutulduğu bir anahtar/değer çiftine biçimlendirilir.
+İşlevin yanıtı, `Outputs` üyenin dosyadaki *function.js* tanımlanan ÇıKTıLARLA eşleştiği bir JSON değeri tutulduğu bir anahtar/değer çiftine biçimlendirilir.
 
 `message`Bu işlev, istekten gelen iletiye ve `res` beklenen HTTP yanıtına eşit olarak ayarlanarak bir ileti verir ve bir http yanıtı döndürür.
 
-## <a name="debugging"></a>Hata ayıklama
+## <a name="debugging"></a>Hata Ayıklama
 
 Işlevlerinizin özel işleyici uygulamasında hata ayıklaması yapmak için, hata ayıklamayı etkinleştirmek üzere dile ve çalışma zamanına uygun bağımsız değişkenler eklemeniz gerekir.
 
-Örneğin, bir Node. js uygulamasında hata ayıklamak için, `--inspect` bayrak *Host. JSON* dosyasına bir bağımsız değişken olarak geçirilir.
+Örneğin, Node.js bir uygulamada hata ayıklamak için, `--inspect` bayrak *host.js* dosyadaki bir bağımsız değişken olarak geçirilir.
 
 ```json
 {
@@ -412,7 +412,7 @@ Işlevlerinizin özel işleyici uygulamasında hata ayıklaması yapmak için, h
 ```
 
 > [!NOTE]
-> Hata ayıklama yapılandırması *Host. JSON* dosyanızın bir parçasıdır. Bu, üretime dağıtım yapmadan önce bazı bağımsız değişkenleri kaldırmanız gerekebilecek anlamına gelir.
+> Hata ayıklama yapılandırması, *host.js* dosyadaki bir parçasıdır. Bu, üretime dağıtım yapmadan önce bazı bağımsız değişkenleri kaldırmanız gerekebilecek anlamına gelir.
 
 Bu yapılandırmayla, aşağıdaki komutu kullanarak Işlevin konak işlemini başlatabilirsiniz:
 
@@ -424,9 +424,9 @@ func host start
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-Aşağıdaki örnek, uygulamanızı Visual Studio Code hata ayıklayıcıya bağlamak için *Launch. JSON* dosyanızı nasıl ayarlayabileceğinizi gösteren örnek bir yapılandırmadır.
+Aşağıdaki örnek, uygulamanızı Visual Studio Code hata ayıklayıcıya bağlamak için *launch.js* dosyayı nasıl ayarlayabileceğinizi gösteren örnek bir yapılandırmadır.
 
-Bu örnek Node. js içindir, bu nedenle diğer diller veya çalışma zamanları için bu örneği değiştirmeniz gerekebilir.
+Bu örnek Node.js içindir. bu nedenle, diğer diller veya çalışma zamanları için bu örneği değiştirmeniz gerekebilir.
 
 ```json
 {
@@ -447,9 +447,14 @@ Bu örnek Node. js içindir, bu nedenle diğer diller veya çalışma zamanları
 
 Özel bir işleyici, neredeyse her Azure Işlevleri barındırma seçeneği (bkz. [kısıtlamalar](#restrictions)) için dağıtılabilir. İşleyiciniz özel bağımlılıklar (örneğin, dil çalışma zamanı) gerektiriyorsa, [özel bir kapsayıcı](./functions-create-function-linux-custom-image.md)kullanmanız gerekebilir.
 
+Azure Functions Core Tools kullanarak özel bir işleyici uygulamasını dağıtmak için aşağıdaki komutu çalıştırın.
+
+```bash
+func azure functionapp publish $functionAppName --no-build --force
+```
+
 ## <a name="restrictions"></a>Kısıtlamalar
 
-- Linux tüketim planlarında özel işleyiciler desteklenmez.
 - Web sunucusunun 60 saniye içinde başlaması gerekir.
 
 ## <a name="samples"></a>Örnekler

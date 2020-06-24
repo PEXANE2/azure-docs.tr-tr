@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 04/30/2020
-ms.openlocfilehash: a2e80b9320509144456663672ac5ae03f522459a
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 1004f7fcc8ff93a170b724a6d8b1c2216b9c39b8
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735394"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84726982"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory 'de veri akışı etkinliği
 
@@ -22,7 +22,7 @@ ms.locfileid: "82735394"
 
 Veri akışı etkinliğini, veri akışları eşleme yoluyla dönüştürmek ve taşımak için kullanın. Veri akışlarınız için yeni başladıysanız bkz. [eşleme veri akışına genel bakış](concepts-data-flow-overview.md)
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -57,7 +57,7 @@ Veri akışı etkinliğini, veri akışları eşleme yoluyla dönüştürmek ve 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
 veri akışı | Yürütülen veri akışının başvurusu | DataFlowReference | Yes
-ıntegrationruntime | Veri akışının çalıştığı işlem ortamı. Belirtilmemişse, Otomatik Çözümle Azure tümleştirme çalışma zamanı kullanılacaktır. Yalnızca otomatik çözümleme 'nin tümleştirme çalışma zamanları desteklenir. | IntegrationRuntimeReference | No
+ıntegrationruntime | Veri akışının çalıştığı işlem ortamı. Belirtilmemişse, Otomatik Çözümle Azure tümleştirme çalışma zamanı kullanılacaktır. | IntegrationRuntimeReference | No
 compute. coreCount | Spark kümesinde kullanılan çekirdek sayısı. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | 8, 16, 32, 48, 80, 144, 272 | No
 compute. computeType | Spark kümesinde kullanılan işlem türü. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | "Genel", "ComputeOptimized", "Memoryoptimlanmış" | No
 hazırlama. linkedService | Bir SQL DW kaynağı veya havuzu kullanıyorsanız, PolyBase hazırlama için kullanılan depolama hesabı | LinkedServiceReference | Yalnızca veri akışı bir SQL DW 'yi okuduğunda veya yazıyorsa
@@ -75,7 +75,7 @@ hazırlama. folderPath | Bir SQL DW kaynağı veya havuzu kullanıyorsanız, Pol
 
 ### <a name="data-flow-integration-runtime"></a>Veri akışı tümleştirme çalışma zamanı
 
-Veri akışı etkinliği yürütmesinde kullanılacak Integration Runtime seçin. Data Factory, varsayılan olarak, Azure tümleştirme çalışma zamanını dört çalışan çekirdekle ve canlı kalma süresi (TTL) ile otomatik çözümle 'yi kullanacaktır. Bu IR genel amaçlı bir işlem türüne sahiptir ve fabrikanızın bulunduğu bölgede çalışır. Veri akışı etkinlik yürütmenizi için belirli bölgeleri, işlem türünü, çekirdek sayılarını ve TTL 'yi tanımlayan kendi Azure tümleştirme çalışma zamanlarını oluşturabilirsiniz. Şu anda, veri akışı etkinliğinde yalnızca bölgenin otomatik olarak çözülmesi için tümleştirme çalışma zamanları desteklenir.
+Veri akışı etkinliği yürütmesinde kullanılacak Integration Runtime seçin. Data Factory, varsayılan olarak, Azure tümleştirme çalışma zamanını dört çalışan çekirdekle ve canlı kalma süresi (TTL) ile otomatik çözümle 'yi kullanacaktır. Bu IR genel amaçlı bir işlem türüne sahiptir ve fabrikanızın bulunduğu bölgede çalışır. Veri akışı etkinlik yürütmenizi için belirli bölgeleri, işlem türünü, çekirdek sayılarını ve TTL 'yi tanımlayan kendi Azure tümleştirme çalışma zamanlarını oluşturabilirsiniz.
 
 İşlem hattı yürütmeleri için küme, yürütme başlamadan önce birkaç dakika süren bir iş kümesidir. TTL belirtilmemişse, bu başlangıç saati her işlem hattı çalıştırmasında gereklidir. Bir TTL belirtirseniz, son yürütmeden sonra belirtilen süre için bir sıcak küme havuzu etkin kalır ve daha kısa başlangıç süreleri elde edilir. Örneğin, 60 dakikalık bir TTL 'SI varsa ve bir veri akışını saatte bir kez çalıştırırsanız, küme havuzu etkin kalır. Daha fazla bilgi için bkz. [Azure tümleştirme çalışma zamanı](concepts-integration-runtime.md).
 
@@ -120,7 +120,7 @@ Veri akışı etkinliğinin bölümlemeyi, aşama süresini ve veri kökenini bi
 
 ### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>Sonraki bir etkinliğin veri akışı etkinlik sonuçlarını kullanma
 
-Veri akışı etkinliği, her bir kaynaktan okunan her bir havuza ve satıra yazılan satır sayısıyla ilgili ölçümleri çıktı olarak verir. Bu sonuçlar, etkinlik çalıştırma sonucunun `output` bölümünde döndürülür. Döndürülen ölçümler aşağıdaki JSON biçimindedir.
+Veri akışı etkinliği, her bir kaynaktan okunan her bir havuza ve satıra yazılan satır sayısıyla ilgili ölçümleri çıktı olarak verir. Bu sonuçlar, `output` etkinlik çalıştırma sonucunun bölümünde döndürülür. Döndürülen ölçümler aşağıdaki JSON biçimindedir.
 
 ``` json
 {
@@ -148,12 +148,12 @@ Veri akışı etkinliği, her bir kaynaktan okunan her bir havuza ve satıra yaz
 }
 ```
 
-Örneğin, ' dataflowActivity ' adlı bir etkinlikte ' sink1 ' adlı bir havuza yazılan satır sayısına ulaşmak için kullanın `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`.
+Örneğin, ' dataflowActivity ' adlı bir etkinlikte ' sink1 ' adlı bir havuza yazılan satır sayısına ulaşmak için kullanın `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten` .
 
-Bu havuzda kullanılan ' source1 ' adlı bir kaynaktan okunan satır sayısını almak için kullanın `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`.
+Bu havuzda kullanılan ' source1 ' adlı bir kaynaktan okunan satır sayısını almak için kullanın `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead` .
 
 > [!NOTE]
-> Bir havuzda yazılmış sıfır satır varsa, ölçümler ' de gösterilmez. Varlık, `contains` işlevi kullanılarak doğrulanabilir. Örneğin, `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` sink1 'e herhangi bir satırın yazılıp yazılmadığını kontrol eder.
+> Bir havuzda yazılmış sıfır satır varsa, ölçümler ' de gösterilmez. Varlık, işlevi kullanılarak doğrulanabilir `contains` . Örneğin, `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` sink1 'e herhangi bir satırın yazılıp yazılmadığını kontrol eder.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

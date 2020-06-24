@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
 ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274781"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689019"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularının bilgisayar grupları
 Azure Izleyici 'de bilgisayar grupları, [günlük sorgularını](../log-query/log-query-overview.md) belirli bir bilgisayar kümesiyle kapsamlarınıza izin verir.  Her grup, tanımladığınız bir sorgu kullanılarak veya farklı kaynaklardan grupları içeri aktararak bilgisayarlarla doldurulur.  Grup bir günlük sorgusuna eklendiğinde, sonuçlar gruptaki bilgisayarlarla eşleşen kayıtlarla sınırlıdır.
@@ -21,7 +21,7 @@ Azure Izleyici 'de bilgisayar grupları, [günlük sorgularını](../log-query/l
 ## <a name="creating-a-computer-group"></a>Bilgisayar grubu oluşturma
 Aşağıdaki tablodaki yöntemlerden birini kullanarak Azure Izleyici 'de bir bilgisayar grubu oluşturabilirsiniz.  Her yöntemin ayrıntıları aşağıdaki bölümlerde verilmiştir. 
 
-| Yöntem | Açıklama |
+| Yöntem | Description |
 |:--- |:--- |
 | Günlük sorgusu |Bilgisayarların listesini döndüren bir günlük sorgusu oluşturun. |
 | Günlük Arama API’si |Günlük sorgusunun sonuçlarına göre program aracılığıyla bir bilgisayar grubu oluşturmak için günlük araması API 'sini kullanın. |
@@ -32,7 +32,7 @@ Aşağıdaki tablodaki yöntemlerden birini kullanarak Azure Izleyici 'de bir bi
 ### <a name="log-query"></a>Günlük sorgusu
 Bir günlük sorgusundan oluşturulan bilgisayar grupları, tanımladığınız bir sorgu tarafından döndürülen tüm bilgisayarları içerir.  Bu sorgu, bilgisayar grubu oluşturulduğu her seferinde çalıştırılır, böylece Grup oluşturulduktan sonra yapılan tüm değişiklikler yansıtılır.  
 
-Bilgisayar grubu için herhangi bir sorgu kullanabilirsiniz, ancak kullanarak `distinct Computer`farklı bir bilgisayar kümesi döndürmesi gerekir.  Aşağıda, bilgisayar grubu olarak kullanabileceğiniz tipik örnek bir sorgu verilmiştir.
+Bilgisayar grubu için herhangi bir sorgu kullanabilirsiniz, ancak kullanarak farklı bir bilgisayar kümesi döndürmesi gerekir `distinct Computer` .  Aşağıda, bilgisayar grubu olarak kullanabileceğiniz tipik örnek bir sorgu verilmiştir.
 
     Heartbeat | where Computer contains "srv" | distinct Computer
 
@@ -48,7 +48,7 @@ Aşağıdaki tabloda bir bilgisayar grubunu tanımlayan özellikler açıklanmak
 
 | Özellik | Açıklama |
 |:---|:---|
-| Adı   | Portalda görüntülenecek sorgunun adı. |
+| Name   | Portalda görüntülenecek sorgunun adı. |
 | İşlev diğer adı | Bir sorgudaki bilgisayar grubunu tanımlamak için kullanılan benzersiz bir diğer ad. |
 | Kategori       | Portaldaki sorguları düzenlemek için kategori. |
 
@@ -127,7 +127,7 @@ Active Directory veya WSUS 'tan oluşturulan her bilgisayar grubu üyeliğinin L
 | `GroupFullName` |Kaynak ve kaynak adı dahil olmak üzere grubun tam yolu. |
 | `GroupSource` |Grubun toplandığı kaynak. <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
 | `GroupSourceName` |Grubun toplandığı kaynağın adı.  Active Directory için, bu etki alanı adıdır. |
-| `ManagementGroupName` |SCOM aracıları için yönetim grubunun adı.  Diğer aracılar için bu, AOI-\<Workspace kimliğidir\> |
+| `ManagementGroupName` |SCOM aracıları için yönetim grubunun adı.  Diğer aracılar için, bu AOI 'dir\<workspace ID\> |
 | `TimeGenerated` |Bilgisayar grubunun oluşturulduğu veya güncelleştirildiği tarih ve saat. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

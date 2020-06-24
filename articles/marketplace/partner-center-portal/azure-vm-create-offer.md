@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: a64908eb639a44c6bc9d742e84ebb4d01082d49d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 7d32e4100d00a4ecff9f8bd5017d8bc5ab74105e
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847931"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752349"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure Market 'te Azure sanal makine teklifi oluşturma
 
@@ -40,7 +40,7 @@ Henüz yapmadıysanız, [Sanal Makine teklifi yayımlama kılavuzunu](https://do
   - [GitHub Azure hızlı başlangıç şablonları](https://github.com/azure/azure-quickstart-templates)
 - Öğreticiler
   - [Linux VM'leri](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
-  - [Windows VM’leri](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
+  - [Windows VM'leri](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
 - Örnekler
   - [Linux VM 'Ler için Azure CLı örnekleri](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
   - [Linux sanal makineleri için Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
@@ -63,7 +63,7 @@ Mühendislik ekibiniz aşağıdaki Microsoft teknolojileriyle temel bir anlama v
 2. Sol bölmede, **ticari Market**  >  **genel bakış**' ı seçin.
 3. **Genel bakış** sayfasında, **yeni teklif**  >  **Azure sanal makinesi**' ni seçin.
 
-    ![Sol bölme menü seçeneklerini ve "yeni teklif" düğmesini gösteren ekran görüntüsü.](./media/new-offer-azure-vm.png)
+    ![Sol bölme menü seçeneklerini ve "yeni teklif" düğmesini gösteren ekran görüntüsü.](./media/new-offer-azure-virtual-machine.png)
 
 > [!NOTE]
 > Teklifiniz yayımlandıktan sonra, Iş Ortağı Merkezi 'nde üzerinde yaptığınız herhangi bir düzenleme, yalnızca teklifi yeniden yayımladığınızda Azure Marketi 'nde görünür. Bir teklifi üzerinde değişiklik yaptıktan sonra her zaman yeniden yayımlamayı unutmayın.
@@ -171,7 +171,7 @@ Müşterilerinize teklif hüküm ve koşullar sağlamanız gerekir. İki seçene
 **Teklif listesi** sayfasında, teklif adı, açıklama, bağlantılar ve kişiler gibi teklif ayrıntılarını tanımlarsınız.
 
 > [!NOTE]
-> Açıklama, belgeler, ekran görüntüleri ve kullanım koşulları gibi teklif listesi içerikleri, "Bu uygulama yalnızca \< İngilizce olmayan dilde> kullanılabilir" olarak İngilizce olmak zorunda değildir. Ayrıca, teklif listesi içeriğinde kullanılandan farklı bir dilde içerik sunan bir siteye bağlantı sağlayan bir URL de sağlayabilirsiniz.
+> Teklif açıklaması, "Bu uygulama yalnızca içinde kullanılabilir." ifadesi ile başladığı sürece, açıklama, belgeler, ekran görüntüleri ve kullanım koşulları gibi teklif listesi içeriğinin Ingilizce olması gerekmez \<non-English language> . Ayrıca, teklif listesi içeriğinde kullanılandan farklı bir dilde içerik sunan bir siteye bağlantı sağlayan bir URL de sağlayabilirsiniz.
 
 ### <a name="marketplace-details"></a>Market ayrıntıları
 
@@ -191,7 +191,7 @@ Azure Marketi arama sonuçlarında gösterilmek üzere teklifinizin kısa bir a�
 
 Azure Marketi arama sonuçlarında gösterilmek üzere teklifiniz için daha uzun bir açıklama sağlayın. Bu, en fazla 256 karakter içerebilir.
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -237,8 +237,8 @@ Microsoft 'un, Teklifinizle ilgili sorunlar olduğunda, sertifika sorunları da 
 
 Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir. Bulanık görüntüler gönderiminizin reddedilmesine neden olur.
 
->[!Note]
->Dosya yükleme sorununuz varsa, yerel ağınızın *https://upload.xboxlive.com* Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
+>[!NOTE]
+>Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="azure-marketplace-logos"></a>Azure Market logoları
 
@@ -307,7 +307,7 @@ En üstte **Yeni plan oluştur** ' u seçin. **Yeni plan** iletişim kutusu gör
 
 **Plan adı** kutusuna bu plan için bir ad girin. Müşteriler teklifiniz dahilinde hangi planın seçeceğinize karar verirken bu adı görür. Planlar arasındaki farkları açıkça gösteren benzersiz bir ad oluşturun. Örneğin, *Kullandıkça Öde*, *KLG*, *Gelişmiş*ve *Kurumsal* planlar ile **Windows Server** girebilirsiniz.
 
-**Oluştur**’u seçin.
+**Oluştur**'u seçin.
 
 ### <a name="plan-setup"></a>Planı ayarla
 
@@ -514,32 +514,73 @@ Bu sayfa, durumuna bağlı olarak teklifle çalışmanıza yardımcı olacak ba�
 
 ## <a name="marketplace-examples"></a>Market örnekleri
 
-Aşağıdaki örneklerde, teklifin Azure Marketi 'nde nasıl göründüğü gösterilmektedir.
+Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
 
-### <a name="azure-marketplace-offer-details"></a>Azure Market teklif ayrıntıları
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-offer.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
 
-![Azure Marketi teklif ayrıntıları sayfası örneği](media/avm-create1.png)
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
-### <a name="azure-marketplace-search-results"></a>Azure Marketi arama sonuçları
+1. Büyük logo
+2. Fiyat
+3. Kategoriler
+4. hüküm ve koşullar
+5. Gizlilik ilkesi adresi (bağlantı)
+6. Teklif adı
+7. Description
+8. Yararlı bağlantılar
+9. Ekran görüntüleri/videolar
 
-![Azure Marketi arama ayrıntıları sayfası örneği](media/avm-create2.png)
+<br>Azure Marketi arama sonuçlarında teklif bilgilerinin nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
 
-### <a name="azure-marketplace-plan-details"></a>Azure Market planı Ayrıntıları
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="Bu teklifin Azure Marketi arama sonuçlarında nasıl göründüğünü gösterir.":::
 
-![Azure Market plan ayrıntıları sayfası örneği](media/avm-create3.png)
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
-### <a name="azure-portal-offer-details"></a>Azure portal teklif ayrıntıları
+1. Küçük logo
+2. Teklif adı
+3. Arama sonuçları Özeti
+4. Deneme
 
-![Azure portal teklif ayrıntıları sayfası örneği](media/avm-create4.png)
+<br>Azure Market planı ayrıntılarına bir örnek aşağıda verilmiştir:
 
-### <a name="azure-portal-search-results"></a>Azure portal arama sonuçları
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="Azure Market planı ayrıntılarını gösterir.":::
 
-![Azure portal arama sonuçları sayfası örneği](media/avm-create5.png)
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
-### <a name="azure-portal-plan-details"></a>Azure portal planı Ayrıntıları
+1. Plan adı ve Özeti
+2. VM boyutlarını öner
+3. Fiyat planı
 
-![Azure portal plan ayrıntıları sayfası örneği](media/avm-create6.png)
+<br>Teklif bilgilerinin Azure portal nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
 
-## <a name="next-steps"></a>Sonraki adımlar
+:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="Bu teklifin Azure portal nasıl göründüğünü gösterir.":::
+
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
+
+1. Name
+2. Description
+3. Yararlı bağlantılar
+4. Ekran görüntüleri/videolar
+
+<br>Teklif bilgilerinin Azure portal arama sonuçlarında nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
+
+:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="Bu teklifin Azure portal arama sonuçlarında nasıl göründüğünü gösterir.":::
+
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
+
+1. Küçük logo
+2. Teklif adı
+3. Arama sonuçları Özeti
+
+<br>Azure portal planı ayrıntılarına bir örnek aşağıda verilmiştir:
+
+:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="Azure portal planı ayrıntılarını gösterir.":::
+
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
+
+1. Plan adı
+2. Plan açıklaması
+
+## <a name="next-step"></a>Sonraki adım
 
 - [Ticari Market 'te mevcut bir teklifi güncelleştirme](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

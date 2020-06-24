@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: e3d4ca6f8e67f069bffcd27563d7f32b55f6591e
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: da62efff5db5c71b087657b0eec93f8dd4702665
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780522"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751494"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için ServiceNow 'ı yapılandırma
 
@@ -54,12 +54,19 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 1. ServiceNow örnek adınızı belirler. Örnek adını ServiceNow 'e erişmek için kullandığınız URL 'de bulabilirsiniz. Aşağıdaki örnekte, örnek adı dev35214 ' dir.
 
-![ServiceNow örneği](media/servicenow-provisioning-tutorial/servicenow_instance.png)
+   ![ServiceNow örneği](media/servicenow-provisioning-tutorial/servicenow_instance.png)
 
-    
 2. ServiceNow 'da yönetici için kimlik bilgilerini alın. ServiceNow içindeki kullanıcı profiline gidin ve kullanıcının yönetici rolüne sahip olduğunu doğrulayın. 
 
-![ServiceNow yönetici rolü](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
+   ![ServiceNow yönetici rolü](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
+
+3. ServiceNow 'da aşağıdaki ayarların **devre dışı bırakıldığından** emin olmak için denetleyin:
+
+   1. **Sistem güvenliği**  >  **yüksek güvenlik ayarları**' nı seçin,  >  **gelen şema istekleri için temel kimlik doğrulaması gerektirir**.
+   2. **Sistem özelliklerini**seçin  >  **Web Hizmetleri**  >  **gelen SOAP istekleri için temel yetkilendirme gerektir**.
+     
+   > [!IMPORTANT]
+   > Bu ayar *etkinleştirilirse*, sağlama altyapısı ServiceNow ile iletişim kuramayacaktır.
 
 ## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden ServiceNow ekleme
 
@@ -80,7 +87,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-servicenow-in-azure-ad"></a>Azure AD 'de ServiceNow için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -142,6 +149,14 @@ Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağı
 * **Entryjoiningpropertyvalueısmissing:** Eşleşen özniteliği tanımlamak için [öznitelik eşlemelerinizi](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) gözden geçirin. Sağlamaya çalıştığınız kullanıcı veya grupta bu değer bulunmalıdır. 
 * Tüm gereksinimleri veya sınırlamaları anlamak için [ServiceNow soap API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) 'sini gözden geçirin (örneğin, bir kullanıcı için ülke kodunu belirtme biçimi)
 * Sağlama istekleri varsayılan olarak https://{-örnek-adı}. Service-Now. com/{Table-Name} olarak gönderilir. Özel bir kiracı URL 'SI gerekiyorsa, örnek adı alanında tüm URL 'YI sağlayabilirsiniz.
+* **ServiceNowInstanceInvalid** 
+  
+  `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
+
+   Bu hata ServiceNow örneğiyle iletişim kuran bir sorunu gösterir. ServiceNow 'da aşağıdaki ayarların *devre dışı bırakıldığından* emin olmak için iki kez kontrol edin:
+   
+   1. **Sistem güvenliği**  >  **yüksek güvenlik ayarları**' nı seçin,  >  **gelen şema istekleri için temel kimlik doğrulaması gerektirir**.
+   2. **Sistem özelliklerini**seçin  >  **Web Hizmetleri**  >  **gelen SOAP istekleri için temel yetkilendirme gerektir**.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

@@ -4,11 +4,11 @@ description: Bu makalede, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı �
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247871"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709887"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı ile yedekleme için destek matrisi
 
@@ -27,7 +27,7 @@ Azure Backup, şirket içi makinelerden ve Azure VM 'lerinden verileri Azure 'da
 
 Yedekleme seçenekleriniz aracının yüklü olduğu yere bağlıdır. Daha fazla bilgi için bkz. [Mars Aracısı 'nı kullanarak Azure Backup mimarisi](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). MABS ve DPM yedekleme mimarisi hakkında daha fazla bilgi için bkz. [DPM veya mabs 'ye yedekleme](backup-architecture.md#architecture-back-up-to-dpmmabs). Ayrıca bkz. yedekleme mimarisi için [gereksinimler](backup-support-matrix-mabs-dpm.md) .
 
-**Yükleme** | **Bilgileri**
+**Yükleme** | **Ayrıntılar**
 --- | ---
 En son MARS aracısını indirin | Aracının en son sürümünü kasadan indirebilir veya [doğrudan indirebilirsiniz](https://aka.ms/azurebackup_agent).
 Doğrudan bir makineye yükler | MARS aracısını doğrudan şirket içi Windows Server 'a veya [desteklenen işletim sistemlerinden](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems)herhangi birini çalıştıran BIR Windows sanal makinesine yükleyebilirsiniz.
@@ -41,12 +41,12 @@ Yedekleme sunucusuna yüklensin | DPM 'yi veya MABS 'yi Azure 'a yedeklemek üze
 
 Verileri yedeklemek için MARS Aracısı 'nı kullandığınızda, aracı verilerin bir anlık görüntüsünü alır ve verileri Azure 'a göndermeden önce yerel bir önbellek klasöründe depolar. Önbellek (sıfırdan) klasöründe birkaç gereksinim vardır:
 
-**Önbellek** | **Bilgileri**
+**Önbellek** | **Ayrıntılar**
 --- | ---
 Boyut |  Önbellek klasöründeki boş alan, yedekleme verilerinizin genel boyutunun en az 5 ila yüzde 10 olması gerekir.
 Konum | Önbellek klasörünün yedeklenmekte olan makinede yerel olarak depolanması ve çevrimiçi olması gerekir. Önbellek klasörü bir ağ paylaşımında, çıkarılabilir medyada veya çevrimdışı bir birimde olmalıdır.
 Klasör | Önbellek klasörü, yinelenenleri kaldırılmış bir birimde veya sıkıştırılmış, bu seyrek olan veya bir yeniden ayrıştırma noktası olan bir klasörde şifrelenmemelidir.
-Konum değişiklikleri | Yedekleme altyapısını (`net stop bengine`) durdurup önbellek klasörünü yeni bir sürücüye kopyalayarak önbellek konumunu değiştirebilirsiniz. (Yeni sürücüde yeterli alan olduğundan emin olun.) Ardından, **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**config/Scratchlocation** ve **config/CloudBackupProvider/scratchlocation**) altındaki iki kayıt defteri girişini yeni konuma güncelleştirin ve altyapıyı yeniden başlatın.
+Konum değişiklikleri | Yedekleme altyapısını ( `net stop bengine` ) durdurup önbellek klasörünü yeni bir sürücüye kopyalayarak önbellek konumunu değiştirebilirsiniz. (Yeni sürücüde yeterli alan olduğundan emin olun.) Ardından, **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**config/Scratchlocation** ve **config/CloudBackupProvider/scratchlocation**) altındaki iki kayıt defteri girişini yeni konuma güncelleştirin ve altyapıyı yeniden başlatın.
 
 ## <a name="networking-and-access-support"></a>Ağ ve erişim desteği
 
@@ -92,7 +92,7 @@ Daha fazla bilgi için bkz. [ExpressRoute yönlendirme gereksinimleri](https://d
 
 ### <a name="throttling-support"></a>Daraltma desteği
 
-**Özellik** | **Bilgileri**
+**Özellik** | **Ayrıntılar**
 --- | ---
 Bant genişliği denetimi | Destekleniyor. MARS aracısında, bant genişliğini ayarlamak için **Özellikleri Değiştir** ' i kullanın.
 Ağ kapasitesi azaltma | Windows Server 2008 R2, Windows Server 2008 SP2 veya Windows 7 çalıştıran yedeklenen makinelerde kullanılamaz.
@@ -116,8 +116,8 @@ Windows 8.1 (Enterprise, Pro)| Yes |Hayır | Yazılım/modül gereksinimleri iç
 Windows 8 (Enterprise, Pro) | Yes | Hayır | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin
 Windows Server 2016 (Standard, Datacenter, Essentials) | Yes | Yes | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
 Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Yes | Yes | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
-Windows Server 2012 (Standard, Datacenter, Foundation) | Yes | Yes |-.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe)
-Windows Storage Server 2016/2012 R2/2012 (Standart, çalışma grubu) | Yes | Hayır | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
+Windows Server 2012 (Standard, Datacenter, Foundation) | Yes | Yes |-.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0 <br> -Dağıtım Görüntüsü Bakımı ve yönetimi (DISM.exe)
+Windows Storage Server 2016/2012 R2/2012 (Standart, çalışma grubu) | Evet | Hayır | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
 Windows Server 2019 (Standard, Datacenter, Essentials) | Yes | Yes | -.NET 4,5 <br> -Windows PowerShell <br> -En son uyumlu Microsoft VC + + yeniden dağıtılabilir <br> -Microsoft Yönetim Konsolu (MMC) 3,0
 
 Daha fazla bilgi için bkz. [desteklenen MABS ve DPM işletim sistemleri](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
@@ -132,9 +132,9 @@ Mevcut taahhütler işletim sisteminin yükseltilmesini engelliyorsa, Windows Se
 
 | **İşletim Sistemi**                                       | **Dosyalar/klasörler** | **Sistem durumu** | **Yazılım/modül gereksinimleri**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
-| Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Yes               | Hayır                 | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin |
-| Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Yes               | Yes                | -.NET 3,5, .NET 4,5 <br>  -Windows PowerShell <br>  -Uyumlu Microsoft VC + + yeniden dağıtılabilir <br>  -Microsoft Yönetim Konsolu (MMC) 3,0 <br>  -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe) |
-| Windows Server 2008 SP2 (Standard, Datacenter, Foundation)  | Yes               | Hayır                 | -.NET 3,5, .NET 4,5 <br>  -Windows PowerShell <br>  -Uyumlu Microsoft VC + + yeniden dağıtılabilir <br>  -Microsoft Yönetim Konsolu (MMC) 3,0 <br>  -Dağıtım Görüntüsü Bakımı ve yönetimi (DıSM. exe) <br>  -Sanal sunucu 2005 tabanı + KB KB948515 |
+| Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Evet               | Hayır                 | Yazılım/modül gereksinimleri için karşılık gelen sunucu sürümünü denetleyin |
+| Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Yes               | Yes                | -.NET 3,5, .NET 4,5 <br>  -Windows PowerShell <br>  -Uyumlu Microsoft VC + + yeniden dağıtılabilir <br>  -Microsoft Yönetim Konsolu (MMC) 3,0 <br>  -Dağıtım Görüntüsü Bakımı ve yönetimi (DISM.exe) |
+| Windows Server 2008 SP2 (Standard, Datacenter, Foundation)  | Evet               | Hayır                 | -.NET 3,5, .NET 4,5 <br>  -Windows PowerShell <br>  -Uyumlu Microsoft VC + + yeniden dağıtılabilir <br>  -Microsoft Yönetim Konsolu (MMC) 3,0 <br>  -Dağıtım Görüntüsü Bakımı ve yönetimi (DISM.exe) <br>  -Sanal sunucu 2005 tabanı + KB KB948515 |
 
 ## <a name="backup-limits"></a>Yedekleme limitleri
 
@@ -148,7 +148,7 @@ Windows Server 2012 veya üzeri |54.400 GB
 Windows Server 2008 R2 SP1 |1.700 GB
 Windows Server 2008 SP2| 1.700 GB
 Windows 8 veya üzeri| 54.400 GB
-Windows 7| 1.700 GB
+Windows 7| 1.700 GB
 
 ### <a name="other-limitations"></a>Diğer sınırlamalar
 
@@ -174,7 +174,7 @@ DFS Çoğaltma etkin olan klasörler | Desteklenmiyor.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Yedekleme için desteklenen sürücüler veya birimler
 
-**Sürücü/birim** | **Destek** | **Bilgileri**
+**Sürücü/birim** | **Destek** | **Ayrıntılar**
 --- | --- | ---
 Salt okuma birimleri| Desteklenmiyor | Birim kopyası gölge hizmeti (VSS) yalnızca birim yazılabilir ise geçerlidir.
 Çevrimdışı birimler| Desteklenmiyor |VSS yalnızca birim çevrimiçi olduğunda işe yarar.

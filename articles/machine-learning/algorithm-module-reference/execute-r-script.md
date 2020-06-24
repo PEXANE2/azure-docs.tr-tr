@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/27/2020
-ms.openlocfilehash: 7b72d83740e0e2b02ef9d2ea3cd1cbf04a4c99cc
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 71e1a43728cf923207d209848b26627aeb7bd680
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983576"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751754"
 ---
-# <a name="execute-r-script"></a>R Betiği yürütme
+# <a name="execute-r-script-module"></a>R betik modülünü Yürüt
 
-Bu makalede, Azure Machine Learning tasarımcı (Önizleme) ardışık düzeninde R kodu çalıştırmak için **r betiği yürütme** modülünün nasıl kullanılacağı açıklanır.
+Bu makalede, Azure Machine Learning tasarımcı (Önizleme) ardışık düzeninde R kodu çalıştırmak için R betiği yürütme modülünün nasıl kullanılacağı açıklanır.
 
-R ile Şu anda mevcut modüller tarafından desteklenmeyen görevleri gerçekleştirebilirsiniz: 
+R ile, var olan modüllerin Şu anda desteklemediği görevleri gerçekleştirebilirsiniz: 
 - Özel veri dönüştürmeleri oluşturma
 - Tahminleri değerlendirmek için kendi ölçümlerinizi kullanın
 - Tasarımcıda tek başına modüller olarak uygulanmayan algoritmaları kullanarak modeller oluşturun
@@ -31,9 +31,9 @@ Azure Machine Learning tasarımcı, R 'nin CRAN (kapsamlı R arşiv ağı) dağ�
 
 ## <a name="supported-r-packages"></a>Desteklenen R paketleri
 
-R ortamı, 100 ' den fazla pakete önceden yüklenir. Tam liste için, [önceden yüklenmiş R paketleri](#pre-installed-r-packages)bölümüne bakın.
+R ortamı 100 'den fazla pakete önceden yüklenir. Tüm liste için, [önceden yüklenmiş R paketleri](#preinstalled-r-packages)bölümüne bakın.
 
-Ayrıca, herhangi bir **R betik modülünü yürütmek** ve yüklü paketleri görmek için aşağıdaki kodu da ekleyebilirsiniz.
+Ayrıca yüklü paketleri görmek için, aşağıdaki kodu herhangi bir Execute R betik modülüne ekleyebilirsiniz.
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -43,23 +43,23 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 > [!NOTE]
-> İşlem hatlarınız birden çok Execute R betik modülü içeriyorsa ve önceden yüklenmiş listesinde olmayan aynı paketlere ihtiyaç duyuyorsanız, lütfen paketleri sırasıyla her modüle yüklemeniz gerekir. 
+> İşlem hatlarınız, önceden yüklenmiş listesinde olmayan paketlere ihtiyacı olan birden çok Execute R betik modülü içeriyorsa, paketleri her modüle yükler. 
 
 ## <a name="installing-r-packages"></a>R paketlerini yükleme
-Ek R paketleri yüklemek için `install.packages()` yöntemini kullanın. Paketler her bir **r betik** modülü için yüklenir ve diğer **yürütme r betik** modülleri arasında paylaşılmaz.
+Ek R paketleri yüklemek için `install.packages()` yöntemini kullanın. Paketler, her bir R betiği yürütme modülü için yüklenir. Diğer yürütülen R betiği modülleri arasında paylaşılmaz.
 
 > [!NOTE]
-> Lütfen gibi paketleri yüklerken CRAN deposunu belirtin`install.packages("zoo",repos = "http://cran.us.r-project.org")`
+> Paketleri yüklerken CRAN deposunu belirtin, örneğin `install.packages("zoo",repos = "http://cran.us.r-project.org")` .
 
 Bu örnek, Zoo 'nin nasıl yükleneceğini göstermektedir:
 ```R
 # R version: 3.5.1
-# The script MUST contain a function named azureml_main
+# The script MUST contain a function named azureml_main,
 # which is the entry point for this module.
 
-# Please note that functions dependant on X11 library
-# such as "View" are not supported because X11 library
-# is not pre-installed.
+# Note that functions dependent on the X11 library,
+# such as "View," are not supported because the X11 library
+# is not preinstalled.
 
 # The entry point function MUST have two input arguments.
 # If the input port is not connected, the corresponding
@@ -76,21 +76,21 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
  > [!NOTE]
-  > Yüklemeyi tekrardan kaçınmak için, yüklemeden önce paketin zaten mevcut olup olmadığını denetleyin. Yukarıdaki `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` örnek kodda olduğu gibi. Yüklemeyi tekrarlamak, Web hizmeti istek zaman aşımına neden olabilir.     
+ > Bir paketi yüklemeden önce, bir yükleme tekrarlamanız için zaten mevcut olup olmadığını denetleyin. Yineleme yüklemeleri, Web hizmeti isteklerinin zaman aşımına gelmesine neden olabilir.     
 
-## <a name="upload-files"></a>Dosyaları karşıya yükleme
-**Execute r betiği** , Azure MACHINE LEARNING R SDK kullanarak dosya yüklemeyi destekler.
+## <a name="uploading-files"></a>Karşıya dosya yükleme
+Execute R betiği modülü, Azure Machine Learning R SDK kullanarak dosyaları karşıya yüklemeyi destekler.
 
-Aşağıdaki örnek, bir görüntü dosyasının **Execute R betiğine**nasıl yükleneceğini göstermektedir:
+Aşağıdaki örnek, R betiğindeki bir görüntü dosyasının nasıl karşıya yükleneceğini göstermektedir:
 ```R
 
 # R version: 3.5.1
-# The script MUST contain a function named azureml_main
+# The script MUST contain a function named azureml_main,
 # which is the entry point for this module.
 
-# Please note that functions dependant on X11 library
-# such as "View" are not supported because X11 library
-# is not pre-installed.
+# Note that functions dependent on the X11 library,
+# such as "View," are not supported because the X11 library
+# is not preinstalled.
 
 # The entry point function MUST have two input arguments.
 # If the input port is not connected, the corresponding
@@ -114,49 +114,44 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-İşlem hattı çalıştırması tamamlandıktan sonra, modülün sağ panelinde görüntünün önizlemesini yapabilirsiniz
+İşlem hattı çalıştırması tamamlandıktan sonra, modülün sağ panelinde görüntünün önizlemesini yapabilirsiniz.
 
 > [!div class="mx-imgBorder"]
-> ![Karşıya yüklenen-görüntü](media/module/upload-image-in-r-script.png)
+> ![Karşıya yüklenen görüntünün önizlemesi](media/module/upload-image-in-r-script.png)
 
 ## <a name="how-to-configure-execute-r-script"></a>Execute R betiğini yapılandırma
 
-**R betiği Yürüt** modülü, başlangıç noktası olarak kullanabileceğiniz örnek kodu içerir. **R betiğini Yürüt** modülünü yapılandırmak için, yürütülecek bir giriş ve kod kümesi sağlayın.
+R betiği Yürüt modülü, başlangıç noktası olarak kullanabileceğiniz örnek kodu içerir. R betiğini Yürüt modülünü yapılandırmak için, çalıştırılacak bir giriş ve kod kümesi sağlayın.
 
-![R-modülü](media/module/execute-r-script.png)
+![R modülü için giriş diyagramı](media/module/execute-r-script.png)
 
 Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik olarak R veri çerçevesine dönüştürülür.
 
-1.  İşlem hattınızla **R betiği yürütme** modülünü ekleyin.
+1.  İşlem hattınızla **R betiği yürütme** modülünü ekleyin.  
 
-  
+1. Betikte gereken tüm girdileri bağlayın. Girişler isteğe bağlıdır ve veri ve ek R kodu içerebilir.
 
-1. Betiği için gereken tüm girdileri bağlayın. Girişler isteğe bağlıdır ve veri ve ek R kodu içerebilir.
+    * **DataSet1**: ilk girişe olarak başvuru yapın `dataframe1` . Giriş veri kümesi, CSV, TSV veya ARFF dosyası olarak biçimlendirilmelidir. Ya da bir Azure Machine Learning veri kümesini bağlayabilirsiniz.
 
-    * **DataSet1**: ilk girişe olarak `dataframe1`başvuru yapın. Giriş veri kümesi, CSV, TSV, ARFF olarak biçimlendirilmelidir veya bir Azure Machine Learning veri kümesini bağlayabilmeniz gerekir.
+    * **DataSet2**: ikinci girişe olarak başvuru yapın `dataframe2` . Bu veri kümesi aynı zamanda CSV, TSV veya ARFF dosyası ya da bir Azure Machine Learning veri kümesi olarak biçimlendirilmelidir.
 
-    * **DataSet2**: ikinci girişe olarak `dataframe2`başvuru yapın. Bu veri kümesi aynı zamanda CSV, TSV, ARFF dosyası veya Azure Machine Learning veri kümesi olarak biçimlendirilmelidir.
-
-    * **Betik paketi**: Üçüncü giriş ZIP dosyalarını kabul eder. Daraltılmış dosya birden çok dosya ve birden çok dosya türü içerebilir.
+    * **Betik paketi**: Üçüncü giriş. zip dosyalarını kabul eder. Daraltılmış bir dosya, birden çok dosya ve birden çok dosya türü içerebilir.
 
 1. **R betiği** metin kutusuna geçerli R betiği yazın veya yapıştırın.
 
     > [!NOTE]
-    > Lütfen betiğinizi yazarken çok dikkatli olun ve bildirilmeyen değişkenler veya içe aktarılmayan modüller veya işlevler kullanma gibi sözdizimi hatası olmadığından emin olun. Ayrıca, bu belgenin sonundaki önceden yüklenmiş paket listesine daha fazla dikkat ödeyin. Listelenmeyen paketleri kullanmak için lütfen bunları betikte`install.packages("zoo",repos = "http://cran.us.r-project.org")`
-    
-    > [!NOTE]
-    > X11 kitaplığı önceden yüklenmediği için, "Görünüm" gibi X11 kitaplığına bağımlı işlevler desteklenmez.
+    > Betiğinizi yazarken dikkatli olun. Bildirilmemiş değişkenleri veya içeri aktarılmayan modülleri veya işlevleri kullanma gibi sözdizimi hatası olmadığından emin olun. Bu makalenin sonundaki önceden yüklenmiş paket listesine daha fazla dikkat ödeyin. Listelenmeyen paketleri kullanmak için, onları betiğe yüklersiniz. `install.packages("zoo",repos = "http://cran.us.r-project.org")` bunun bir örneğidir.
     
     Başlamanıza yardımcı olmak için **R betiği** metin kutusu, düzenlenebilir veya değiştirilebilir örnek kodla önceden doldurulur.
     
     ```R
     # R version: 3.5.1
-    # The script MUST contain a function named azureml_main
+    # The script MUST contain a function named azureml_main,
     # which is the entry point for this module.
 
-    # Please note that functions dependant on X11 library
-    # such as "View" are not supported because X11 library
-    # is not pre-installed.
+    # Note that functions dependent on the X11 library,
+    # such as "View," are not supported because the X11 library
+    # is not preinstalled.
     
     # The entry point function MUST have two input arguments.
     # If the input port is not connected, the corresponding
@@ -166,7 +161,7 @@ Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik ola
     azureml_main <- function(dataframe1, dataframe2){
     print("R script run.")
 
-    # If a zip file is connected to the third input port, it is
+    # If a .zip file is connected to the third input port, it's
     # unzipped under "./Script Bundle". This directory is added
     # to sys.path.
 
@@ -175,23 +170,21 @@ Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik ola
     }
     ```
 
- * Betik, Bu modülün giriş noktası olan `azureml_main`adlı bir işlev içermelidir.
+    Giriş noktası işlevi, `Param<dataframe1>` `Param<dataframe2>` Bu bağımsız değişkenler işlevde kullanılmasa bile giriş bağımsız değişkenlerine sahip olmalıdır.
 
- * Giriş noktası işlevinin iki giriş bağımsız değişkeni olmalıdır: `Param<dataframe1>` ve `Param<dataframe2>`bu iki bağımsız değişken işlevde kullanılmasa bile.
-
-   > [!NOTE]
-    > **Execute R betiği** modülüne `dataframe1` geçirilen verilere ve `dataframe2`Azure Machine Learning tasarımcı 'dan (tasarımcı başvurusu, `dataset1` `dataset2`olarak) farklı olarak başvurulur. Giriş verilerinin betiğe doğru şekilde yazıldığından emin olmak için lütfen kontrol edin.  
+    > [!NOTE]
+    > Execute R betiği modülüne geçirilen verilere `dataframe1` ve `dataframe2` Azure Machine Learning tasarımcı 'dan (tasarımcı başvurusu, olarak) farklı olarak başvurulur `dataset1` `dataset2` . Betiğinizdeki giriş verilerine doğru şekilde başvurulduğundan emin olun.  
  
     > [!NOTE]
-    >  Varolan R kodunun bir tasarımcı işlem hattında çalıştırmak için küçük değişiklikler gerekebilir. Örneğin, CSV biçiminde sağladığınız giriş verileri, kodunuzda kullanabilmeniz için açıkça bir veri kümesine dönüştürülmelidir. R dilinde kullanılan veri ve sütun türleri, tasarımcıda kullanılan veri ve sütun türlerinden bazı yollarla da farklılık gösterir.
+    > Varolan R kodunun bir tasarımcı işlem hattında çalıştırmak için küçük değişikliklere ihtiyacı vardır. Örneğin, CSV biçiminde sağladığınız giriş verileri, kodunuzda kullanabilmeniz için açıkça bir veri kümesine dönüştürülmelidir. R dilinde kullanılan veri ve sütun türleri, tasarımcıda kullanılan veri ve sütun türlerinden bazı yollarla da farklılık gösterir.
 
-1.  **Rastgele çekirdek**: R ortamının içinde rastgele çekirdek değeri olarak kullanılacak bir değer yazın. Bu parametre, R Code 'da `set.seed(value)` çağırma ile eşdeğerdir.  
+1.  **Rastgele çekirdek**Için, R ortamının içinde rastgele çekirdek değeri olarak kullanılacak bir değer girin. Bu parametre, `set.seed(value)` R Code 'da çağırma ile eşdeğerdir.  
 
 1. İşlem hattını gönderme.  
 
 ## <a name="results"></a>Sonuçlar
 
-**Execute r betik** modülleri birden çok çıkış döndürebilir, ancak r veri çerçevesi olarak sağlanmalıdır. Veri çerçeveleri, diğer modüllerle uyumluluk için otomatik olarak tasarımcıda veri kümelerine dönüştürülür.
+Yürütme R betiği modülleri birden çok çıkış döndürebilir, ancak R veri çerçevesi olarak sağlanmalıdır. Veri çerçeveleri, diğer modüllerle uyumluluk için otomatik olarak tasarımcıda veri kümelerine dönüştürülür.
 
 R 'deki standart iletiler ve hatalar modülün günlüğüne döndürülür.
 
@@ -199,22 +192,22 @@ Sonuçları R betiğine yazdırmanız gerekirse, yazdırılan sonuçları modül
 
 ## <a name="sample-scripts"></a>Örnek betikler
 
-Özel R betiği kullanarak işlem hattınızı genişletebilmeniz için birçok yol vardır.  Bu bölüm ortak görevler için örnek kod sağlar.
+Özel R betiklerini kullanarak işlem hattınızı genişletmenin birçok yolu vardır. Bu bölüm ortak görevler için örnek kod sağlar.
 
 
-### <a name="add-r-script-as-an-input"></a>R betiğini giriş olarak ekle
+### <a name="add-an-r-script-as-an-input"></a>Giriş olarak R betiği ekleme
 
-**Execute r betiği** modülü, giriş olarak rastgele R betik dosyalarını destekler. Bunu yapmak için, ZIP dosyasının bir parçası olarak çalışma alanınıza yüklenmesi gerekir.
+Execute R betiği modülü, giriş olarak rastgele R betik dosyalarını destekler. Bunları kullanmak için,. zip dosyasının bir parçası olarak çalışma alanınıza yüklemeniz gerekir.
 
-1. R kodu içeren bir ZIP dosyasını çalışma alanınıza yüklemek için **veri kümeleri** varlık sayfasına gidin, **veri kümesi oluştur**' a tıklayın ve ardından **yerel dosya** ve **Dosya** veri kümesi türü seçeneğini belirleyin.  
+1. R kodu içeren bir. zip dosyasını çalışma alanınıza yüklemek için **veri kümeleri** varlık sayfasına gidin. **Veri kümesi oluştur**' u seçin ve ardından **yerel dosya** ve **Dosya** veri kümesi türü seçeneğini belirleyin.  
 
-1. Sıkıştırılmış dosyanın, sol modül ağacındaki **veri** kümeleri kategorisi altında bulunan **veri kümelerim** listesinde kullanılabilir olduğunu doğrulayın.
+1. Sıkıştırılmış dosyanın, sol modül ağacındaki **veri** kümeleri kategorisi altındaki **veri kümeleri** listesinde kullanılabilir olduğunu doğrulayın.
 
 1.  Veri kümesini **betik paketi** giriş bağlantı noktasına bağlayın.
 
-1. ZIP dosyasında yer alan tüm dosyalar işlem hattı çalışma zamanı sırasında kullanılabilir. 
+1. . Zip dosyasındaki tüm dosyalar işlem hattı çalışma zamanında kullanılabilir. 
 
-    Betik paketi dosyası bir dizin yapısı içeriyorsa, yapı korunur. Bununla birlikte, Dizin **./betik** paketini yola eklemek için kodunuzu değiştirmeniz gerekir.
+    Betik paketi dosyası bir dizin yapısı içeriyorsa, yapı korunur. Ancak, Dizin **./betik** paketini yola eklemek için kodunuzu değiştirmeniz gerekir.
 
 ### <a name="process-data"></a>Veri işleme
 
@@ -222,12 +215,12 @@ Aşağıdaki örnek, giriş verilerinin nasıl ölçeklendirip Normalleştirilec
 
 ```R
 # R version: 3.5.1
-# The script MUST contain a function named azureml_main
+# The script MUST contain a function named azureml_main,
 # which is the entry point for this module.
 
-# Please note that functions dependant on X11 library
-# such as "View" are not supported because X11 library
-# is not pre-installed.
+# Note that functions dependent on the X11 library,
+# such as "View," are not supported because the X11 library
+# is not preinstalled.
 
 # The entry point function MUST have two input arguments.
 # If the input port is not connected, the corresponding
@@ -236,17 +229,17 @@ Aşağıdaki örnek, giriş verilerinin nasıl ölçeklendirip Normalleştirilec
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
   print("R script run.")
-  # If a zip file is connected to the third input port, it is
+  # If a .zip file is connected to the third input port, it's
   # unzipped under "./Script Bundle". This directory is added
   # to sys.path.
   series <- dataframe1$width
-  # find the maximum and minimum values of width column in dataframe1
+  # Find the maximum and minimum values of the width column in dataframe1
   max_v <- max(series)
   min_v <- min(series)
-  # calculate the scale and bias
+  # Calculate the scale and bias
   scale <- max_v - min_v
   bias <- min_v / dis
-  # apply min-max normalizing
+  # Apply min-max normalizing
   dataframe1$width <- dataframe1$width / scale - bias
   dataframe2$width <- dataframe2$width / scale - bias
   # Return datasets as a Named List
@@ -254,12 +247,12 @@ azureml_main <- function(dataframe1, dataframe2){
 }
  ```
 
-### <a name="read-a-zip-file-as-input"></a>ZIP dosyasını girdi olarak oku
+### <a name="read-a-zip-file-as-input"></a>Bir. zip dosyasını girdi olarak oku
 
-Bu örnek, bir ZIP dosyasında bir veri kümesinin, **R betiği yürütme** modülüne giriş olarak nasıl kullanılacağını gösterir.
+Bu örnek, bir. zip dosyasında bir veri kümesinin R betiği Yürüt modülüne giriş olarak nasıl kullanılacağını gösterir.
 
-1. Veri dosyasını CSV biçiminde oluşturun ve "myveri. csv" olarak adlandırın.
-1. Bir ZIP dosyası oluşturun ve CSV dosyasını arşive ekleyin.
+1. Veri dosyasını CSV biçiminde oluşturun ve **mydatafile.csv**olarak adlandırın.
+1. Bir. zip dosyası oluşturun ve CSV dosyasını arşive ekleyin.
 1. Daraltılmış dosyayı Azure Machine Learning çalışma alanınıza yükleyin. 
 1. Elde edilen veri kümesini **yürütme R betik** modülünüzün **scriptpaket** girişine bağlayın.
 1. Sıkıştırılmış dosyadan CSV verilerini okumak için aşağıdaki kodu kullanın.
@@ -292,9 +285,9 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ### <a name="pass-r-objects-between-execute-r-script-modules"></a>R nesnelerini Execute R betik modülleri arasında geçirme
 
-R nesnelerini, iç serileştirme mekanizmasını kullanarak **r betiği yürütme** modülünün örnekleri arasında geçirebilirsiniz. Bu örnek, iki `A` **yürütme r betiği** modülü arasında adlı r nesnesini taşımak istediğinizi varsayar.
+R nesnelerini, iç serileştirme mekanizmasını kullanarak R betiği yürütme modülünün örnekleri arasında geçirebilirsiniz. Bu örnek, `A` Iki yürütme r betiği modülü arasında adlı r nesnesini taşımak istediğinizi varsayar.
 
-1. İlk **çalıştırma r betiği** modülünü işlem hattınızı ekleyin ve modülün çıkış verileri tablosunda bir sütun olarak seri hale getirilmiş bir nesne `A` oluşturmak için **r betiği** metin kutusuna aşağıdaki kodu yazın:  
+1. İlk **çalıştırma R betik** modülünü ardışık düzene ekleyin. Ardından, modülün çıkış verileri tablosunda bir sütun olarak seri hale getirilmiş bir nesne oluşturmak için **R betiği** metin kutusuna aşağıdaki kodu girin `A` :  
   
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -308,11 +301,11 @@ R nesnelerini, iç serileştirme mekanizmasını kullanarak **r betiği yürütm
     }
     ```
 
-    Tamsayı türüne açık dönüştürme işlemi, serileştirme işlevi, tasarımcı tarafından desteklenmeyen R `Raw` biçiminde veri çıktısı oluşturduğundan yapılır.
+    Tamsayı türüne açık dönüştürme işlemi, serileştirme işlevi, tasarımcı tarafından desteklenmeyen R biçiminde veri çıktısı oluşturduğundan yapılır `Raw` .
 
 1. **Execute R betik** modülünün ikinci bir örneğini ekleyin ve önceki modülün çıkış bağlantı noktasına bağlayın.
 
-1. Giriş verileri tablosundan nesne `A` ayıklamak Için **R betiği** metin kutusuna aşağıdaki kodu yazın. 
+1. Giriş verileri tablosundan nesne ayıklamak için **R betiği** metin kutusuna aşağıdaki kodu yazın `A` . 
 
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -323,9 +316,9 @@ R nesnelerini, iç serileştirme mekanizmasını kullanarak **r betiği yürütm
     }
     ```
 
-## <a name="pre-installed-r-packages"></a>Önceden yüklenmiş R paketleri
+## <a name="preinstalled-r-packages"></a>Önceden yüklenmiş R paketleri
 
-Kullanılabilecek önceden yüklenmiş R paketlerinin geçerli listesi:
+Aşağıdaki önceden yüklenmiş R paketleri şu anda kullanılabilir:
 
 |              |            | 
 |--------------|------------| 
@@ -342,7 +335,7 @@ Kullanılabilecek önceden yüklenmiş R paketlerinin geçerli listesi:
 | başlatma         | 1.3-22     | 
 | broom        | 0.5.2      | 
 | callr        | 3.2.0      | 
-| caret        | 6.0-84     | 
+| düzeltme işareti        | 6.0-84     | 
 | caTools      | 1.17.1.2   | 
 | cellranger   | 1.1.0      | 
 | sınıf        | 7.3-15     | 
@@ -351,7 +344,7 @@ Kullanılabilecek önceden yüklenmiş R paketlerinin geçerli listesi:
 | cluster      | 2.0.7-1    | 
 | codetools    | 0.2-16     | 
 | colorspace   | 1.4-1      | 
-|  derleyicisi     | 3.5.1      | 
+| compiler     | 3.5.1      | 
 | crayon       | 1.3.4      | 
 | curl         | 3.3        | 
 | data.table   | 1.12.2     | 
@@ -397,7 +390,7 @@ Kullanılabilecek önceden yüklenmiş R paketlerinin geçerli listesi:
 | magrittr     | 1,5        | 
 | markdown     | 1          | 
 | MASS         | 7.3-51.4   | 
-| Matrix       | 1.2-17     | 
+| Matris       | 1.2-17     | 
 | methods      | 3.5.1      | 
 | mgcv         | 1.8-28     | 
 | mime         | 0.7        | 
@@ -449,7 +442,7 @@ Kullanılabilecek önceden yüklenmiş R paketlerinin geçerli listesi:
 | stringi      | 1.4.3      | 
 | stringr      | 1.3.1      | 
 | survival     | 2.44-1.1   | 
-| sys          | 3,2        | 
+| sys          | 3.2        | 
 | tcltk        | 3.5.1      | 
 | tibble       | 2.1.3      | 
 | tidyr        | 0.8.3      | 

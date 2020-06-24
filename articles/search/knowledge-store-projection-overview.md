@@ -1,5 +1,5 @@
 ---
-title: Bilgi deposundaki projeksiyonler (Önizleme)
+title: Projeksiyon kavramları (Önizleme)
 titleSuffix: Azure Cognitive Search
 description: Zenginleştirme veri dizini oluşturma işlem hattından zenginleştirilmiş verilerinizi tam metin arama dışındaki senaryolarda kullanmak üzere bir bilgi deposuna kaydedin ve şekillendirin. Bilgi deposu Şu anda genel önizleme aşamasındadır.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: d264768bf27967d1a778400ae4e9e6f2e054d746
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 894fc6efc99eb7fcc17f2199270c08bc3cee8e8e
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78942980"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750324"
 ---
-# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir bilgi deposundaki projeksiyonlar
+# <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Azure Bilişsel Arama bilgi deposu "projeksiyonlarını"
 
 > [!IMPORTANT] 
 > Bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
@@ -69,7 +69,7 @@ Dizininizdeki tek bir belgeyi birden çok tabloya proje ekleyebilirsiniz ve ili�
 
 ### <a name="defining-a-table-projection"></a>Tablo projeksiyonu tanımlama
 
-Beceri `knowledgeStore` öğesi içinde tablo projeksiyonu tanımlarken, zenginleştirme ağacındaki bir düğümü tablo kaynağına eşleyerek başlayın. Genellikle bu düğüm, tablolarda proje yapmanız gereken belirli bir şekli oluşturmak için yetenekler listesine eklediğiniz **her** bir beceriye ait çıktıdır. Projeyi seçtiğiniz düğüm birden çok tablo halinde projeye dilimlenebilir. Tablolar tanımı, proje yapmak istediğiniz tabloların bir listesidir.
+Beceri öğesi içinde tablo projeksiyonu tanımlarken `knowledgeStore` , zenginleştirme ağacındaki bir düğümü tablo kaynağına eşleyerek başlayın. Genellikle bu düğüm, tablolarda proje yapmanız gereken belirli bir şekli oluşturmak için yetenekler listesine eklediğiniz **her** bir beceriye ait çıktıdır. Projeyi seçtiğiniz düğüm birden çok tablo halinde projeye dilimlenebilir. Tablolar tanımı, proje yapmak istediğiniz tabloların bir listesidir.
 
 Her tablo üç özellik gerektirir:
 
@@ -157,7 +157,7 @@ Nesne projeksiyonu oluşturmak, nesneye özgü birkaç özniteliği gerektirir:
 
 ## <a name="file-projection"></a>Dosya projeksiyonu
 
-Dosya projeksiyonlar nesne projeksiyona benzer ve yalnızca `normalized_images` koleksiyonda işlem görür. Nesne projeksiybunlara benzer şekilde dosya projeksiyonları, blob kapsayıcısına belge KIMLIĞININ Base64 kodlamalı değerinin klasör öneki ile kaydedilir. Dosya projeksiyonlar, nesne projeksiyonları ile aynı kapsayıcıyı paylaşamaz ve farklı bir kapsayıcıya yansıtılmalıdır.
+Dosya projeksiyonlar nesne projeksiyona benzer ve yalnızca koleksiyonda işlem görür `normalized_images` . Nesne projeksiybunlara benzer şekilde dosya projeksiyonları, blob kapsayıcısına belge KIMLIĞININ Base64 kodlamalı değerinin klasör öneki ile kaydedilir. Dosya projeksiyonlar, nesne projeksiyonları ile aynı kapsayıcıyı paylaşamaz ve farklı bir kapsayıcıya yansıtılmalıdır.
 
 ```json
 {

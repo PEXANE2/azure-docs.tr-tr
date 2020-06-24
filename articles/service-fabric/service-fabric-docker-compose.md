@@ -4,15 +4,15 @@ description: Azure Service Fabric, Service Fabric kullanarak var olan kapsayıc�
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282464"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691297"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric Docker Compose dağıtım desteği (Önizleme)
 
-Docker, çok Kapsayıcılı uygulamalar tanımlamak için [Docker-Compose. yıml](https://docs.docker.com/compose) dosyasını kullanır. Docker 'ın sunduğumuz müşterilerin Azure Service Fabric 'deki mevcut kapsayıcı uygulamalarını düzenleme konusunda daha kolay hale getirmek için, platformda yerel olarak Docker Compose dağıtımı için Önizleme desteği eklenmiştir. Service Fabric `docker-compose.yml` dosyaların sürüm 3 ' ü ve üstünü kabul edebilir. 
+Docker, çok Kapsayıcılı uygulamalar tanımlamak için [Docker-Compose. yıml](https://docs.docker.com/compose) dosyasını kullanır. Docker 'ın sunduğumuz müşterilerin Azure Service Fabric 'deki mevcut kapsayıcı uygulamalarını düzenleme konusunda daha kolay hale getirmek için, platformda yerel olarak Docker Compose dağıtımı için Önizleme desteği eklenmiştir. Service Fabric dosyaların sürüm 3 ' ü ve üstünü kabul edebilir `docker-compose.yml` . 
 
 Bu destek önizlemede olduğundan, oluşturma yönergelerinin yalnızca bir alt kümesi desteklenir.
 
@@ -24,7 +24,7 @@ Bu önizlemeyi kullanmak için, Service Fabric çalışma Azure portal zamanın�
 
 ## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>Service Fabric üzerinde Docker Compose dosyası dağıtma
 
-Aşağıdaki komutlar, diğer Service Fabric uygulamaları gibi izleyebilmeniz `fabric:/TestContainerApp`ve yönetebileceğiniz bir Service Fabric uygulaması (adlandırılmış) oluşturur. Sistem durumu sorguları için belirtilen uygulama adını kullanabilirsiniz.
+Aşağıdaki komutlar `fabric:/TestContainerApp` , diğer Service Fabric uygulamaları gibi izleyebilmeniz ve yönetebileceğiniz bir Service Fabric uygulaması (adlandırılmış) oluşturur. Sistem durumu sorguları için belirtilen uygulama adını kullanabilirsiniz.
 Service Fabric, oluşturma dağıtımının tanımlayıcısı olarak "DeploymentName" i tanır.
 
 ### <a name="use-powershell"></a>PowerShell kullanma
@@ -135,7 +135,7 @@ Service Fabric hizmeti dinleyicisi tarafından kullanılacak bağlantı noktalar
 
 ## <a name="servicednsname-computation"></a>ServiceDnsName hesaplama
 
-Bir oluşturma dosyasında belirttiğiniz hizmet adı tam etki alanı adıdır (yani, bir nokta [.] içeriyorsa) Service Fabric tarafından kaydedilen DNS adı (nokta dahil) olur `<ServiceName>` . Aksi takdirde, uygulama adındaki her yol segmenti, en üst düzey etki alanı etiketine sahip olan ilk yol segmenti olan hizmet DNS adında bir etki alanı etiketi haline gelir.
+Bir oluşturma dosyasında belirttiğiniz hizmet adı tam etki alanı adıdır (yani, bir nokta [.] içeriyorsa) Service Fabric tarafından kaydedilen DNS adı `<ServiceName>` (nokta dahil) olur. Aksi takdirde, uygulama adındaki her yol segmenti, en üst düzey etki alanı etiketine sahip olan ilk yol segmenti olan hizmet DNS adında bir etki alanı etiketi haline gelir.
 
 Örneğin, belirtilen uygulama adı ise `fabric:/SampleApp/MyComposeApp` `<ServiceName>.MyComposeApp.SampleApp` kayıtlı DNS adı olacaktır.
 

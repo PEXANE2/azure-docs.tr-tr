@@ -4,15 +4,15 @@ description: Farklı bir bölgedeki VNet 'i sanal WAN hub 'ınıza bağlayın.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 340472f84d2dd2c4f46d180992745a57e8ad1884
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78c06ec1d93dcda5d171099943c287a9e4f43bc1
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73588232"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750555"
 ---
 # <a name="configure-global-vnet-peering-cross-region-vnet-for-virtual-wan"></a>Sanal WAN için genel VNet eşlemesini (çapraz bölge VNet) yapılandırma
 
@@ -27,7 +27,7 @@ Aşağıdaki ölçütleri karşıladığınızı doğrulayın:
 
 ## <a name="register-this-feature"></a><a name="register"></a>Bu özelliği kaydedin
 
-PowerShell kullanarak bu özelliğe kaydolabilirsiniz. Aşağıdaki örnekteki "deneyin" seçeneğini belirlerseniz, Azure Cloud-Shell açılır ve PowerShell cmdlet 'lerini bilgisayarınıza yerel olarak yüklemeniz gerekmez. Gerekirse, ' Select-AzSubscription-SubscriptionID <subid>' cmdlet 'ini kullanarak abonelikleri değiştirebilirsiniz.
+PowerShell kullanarak bu özelliğe kaydolabilirsiniz. Aşağıdaki örnekteki "deneyin" seçeneğini belirlerseniz, Azure Cloud-Shell açılır ve PowerShell cmdlet 'lerini bilgisayarınıza yerel olarak yüklemeniz gerekmez. Gerekirse, ' Select-AzSubscription-SubscriptionID <subid> ' cmdlet 'ini kullanarak abonelikleri değiştirebilirsiniz.
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -FeatureName AllowCortexGlobalVnetPeering -ProviderNamespace Microsoft.Network

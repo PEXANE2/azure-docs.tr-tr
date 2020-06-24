@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/26/2020
-ms.openlocfilehash: 81061f9f20e325d6f392c76c5e2801527abc9e2b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 8b3dba7996b098ec398c9fe94705c18190b30ba6
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345011"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753562"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanı 
 
@@ -58,7 +58,7 @@ Aşağıdaki şemada gelişmiş veri tümleştirme özellikleri ve ağ desteği 
 Bir Azure tümleştirme çalışma zamanı şunları yapabilir:
 
 - Azure 'da veri akışları çalıştırma 
-- Bulut veri depoları arasında kopyalama etkinliği gerçekleştirme
+- Bulut veri depoları arasında kopyalama etkinliğini Çalıştır
 - Şu dönüştürme etkinliklerini genel ağa gönderme: Databricks Not defteri/jar/Python etkinliği, HDInsight Hive etkinliği, HDInsight Pig Activity, HDInsight MapReduce etkinliği, HDInsight Spark etkinliği, HDInsight akış etkinliği, Machine Learning Batch yürütme etkinliği, Machine Learning güncelleştirme kaynak etkinlikleri, saklı yordam etkinliği, Data Lake Analytics U-SQL etkinliği, .NET özel etkinliği, Web etkinliği, arama etkinliği ve meta veri alma etkinliği.
 
 ### <a name="azure-ir-network-environment"></a>Azure IR ağ ortamı

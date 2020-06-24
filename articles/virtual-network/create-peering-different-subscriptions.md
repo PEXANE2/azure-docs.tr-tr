@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Aynı veya farklı Azure Active Directory kiracısında farklı Azure aboneliklerinde bulunan Kaynak Yöneticisi ile oluşturulan sanal ağlar arasında sanal ağ eşlemesi oluşturmayı öğrenin.
 services: virtual-network
 documentationcenter: ''
-author: anavinahar
+author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
-ms.author: anavin
-ms.openlocfilehash: 242115ae454340fd0a8439b7b3c79b713409acc2
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.author: kumud
+ms.openlocfilehash: 26d82d4381649bc86950b1898c5c5351a97ec697
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774478"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688822"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Sanal ağ eşlemesi oluşturma-Kaynak Yöneticisi, farklı abonelikler ve Azure Active Directory kiracılar
 
@@ -246,7 +246,7 @@ Bu öğretici her abonelik için farklı hesaplar kullanır. Her iki abonelik i�
 ## <a name="create-peering---resource-manager-template"></a><a name="template"></a>Eşleme oluşturma-Kaynak Yöneticisi şablonu
 
 1. Bir sanal ağ oluşturmak ve uygun [izinleri](virtual-network-manage-peering.md#permissions)atamak için, bu makalenin [Portal](#portal), [Azure CLI](#cli)veya [PowerShell](#powershell) bölümlerindeki adımları izleyin.
-2. Aşağıdaki metni yerel bilgisayarınızdaki bir dosyaya kaydedin. `<subscription ID>`UserA 'nın ABONELIK kimliği ile değiştirin. Dosyayı vnetpeeringA. JSON olarak kaydedebilirsiniz, örneğin.
+2. Aşağıdaki metni yerel bilgisayarınızdaki bir dosyaya kaydedin. `<subscription ID>`UserA 'nın ABONELIK kimliği ile değiştirin. Dosyayı, örneğin vnetpeeringA.jsolarak kaydedebilirsiniz.
 
    ```json
    {
@@ -296,7 +296,7 @@ Bu öğreticiyi tamamladığınızda, öğreticide oluşturduğunuz kaynakları 
 5. Portaldan UserA olarak oturum açın ve UserB olarak oturum açın.
 6. MyResourceGroupB için 2-4 adımlarını izleyin.
 
-### <a name="azure-cli"></a><a name="delete-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a><a name="delete-cli"></a>Azure CLI
 
 1. Azure 'da UserA olarak oturum açın ve aşağıdaki komutu yürütün:
 

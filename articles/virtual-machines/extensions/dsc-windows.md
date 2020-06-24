@@ -14,11 +14,11 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253968"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689495"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC Uzantısı
 
@@ -97,34 +97,34 @@ Aşağıdaki JSON, bir Azure Resource Manager şablonunda DSC uzantısının Aya
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Adı | Değer/örnek | Veri Türü |
+| Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | date |
 | yayımcı | Microsoft. PowerShell. DSC | string |
-| type | DSC | string |
+| tür | DSC | string |
 | typeHandlerVersion | 2,77 | int |
 
 ### <a name="settings-property-values"></a>Ayarlar özellik değerleri
 
-| Adı | Veri Türü | Açıklama
+| Name | Veri Türü | Description
 | ---- | ---- | ---- |
 | Settings. wmfVersion | string | Sanal makinenize yüklenmesi gereken Windows Management Framework sürümünü belirtir. Bu özelliğin ' en son ' olarak ayarlanması, WMF 'nin en güncel sürümünü yükler. Bu özellik için geçerli olası değerler şunlardır. ' 4,0 ', ' 5,0 ' ve ' Latest '. Bu olası değerler güncelleştirmelere tabidir. Varsayılan değer ' Latest '. |
-| Settings. Configuration. URL | string | DSC yapılandırma ZIP dosyanızın indirileceği URL konumunu belirtir. Belirtilen URL erişim için bir SAS belirteci gerektiriyorsa, protectedSettings. configurationUrlSasToken özelliğini SAS belirtecinizin değerine ayarlamanız gerekir. Settings. Configuration. Script ve/veya Settings. Configuration. Function tanımlanmışsa bu özellik gereklidir.
-| Settings. Configuration. Script | string | DSC yapılandırmanızın tanımını içeren betiğin dosya adını belirtir. Bu betik, Configuration. URL özelliği tarafından belirtilen URL 'den indirilen ZIP dosyasının kök klasöründe olmalıdır. Settings. Configuration. URL ve/veya Settings. Configuration. Script tanımlanmışsa bu özellik gereklidir.
-| Settings. Configuration. Function | string | DSC yapılandırmanızın adını belirtir. Adlı yapılandırma, Configuration. Script tarafından tanımlanan betikte bulunmalıdır. Settings. Configuration. URL ve/veya Settings. Configuration. Function tanımlanmışsa bu özellik gereklidir.
-| Settings. configurationArguments | Koleksiyon | DSC yapılandırmanıza geçirmek istediğiniz parametreleri tanımlar. Bu özellik şifrelenmeyecektir.
-| Settings. configurationData. URL | string | DSC yapılandırmanız için giriş olarak kullanılacak yapılandırma verileri (. pds1) dosyanızın indirileceği URL 'YI belirtir. Belirtilen URL erişim için bir SAS belirteci gerektiriyorsa, protectedSettings. configurationDataUrlSasToken özelliğini SAS belirtecinizin değerine ayarlamanız gerekir.
+| settings.configacation. URL | string | DSC yapılandırma ZIP dosyanızın indirileceği URL konumunu belirtir. Belirtilen URL erişim için bir SAS belirteci gerektiriyorsa, protectedSettings.configurationUrlSasToken özelliğini SAS belirtecinizin değerine ayarlamanız gerekir. settings.configuration. Script ve/veya settings.configuration. Function tanımlanırsa bu özellik gereklidir.
+| settings.configuration. betiği | string | DSC yapılandırmanızın tanımını içeren betiğin dosya adını belirtir. Bu betik, Configuration. URL özelliği tarafından belirtilen URL 'den indirilen ZIP dosyasının kök klasöründe olmalıdır. settings.configuration. URL ve/veya settings.configuration. Script tanımlanmışsa bu özellik gereklidir.
+| settings.configuration. Function | string | DSC yapılandırmanızın adını belirtir. Adlı yapılandırma, Configuration. Script tarafından tanımlanan betikte bulunmalıdır. settings.configuration. URL ve/veya settings.configuration. Function tanımlanmışsa bu özellik gereklidir.
+| settings.configurationArguments | Koleksiyon | DSC yapılandırmanıza geçirmek istediğiniz parametreleri tanımlar. Bu özellik şifrelenmeyecektir.
+| settings.configurationData. URL | string | DSC yapılandırmanız için giriş olarak kullanılacak yapılandırma verileri (. pds1) dosyanızın indirileceği URL 'YI belirtir. Belirtilen URL erişim için bir SAS belirteci gerektiriyorsa, protectedSettings.configurationDataUrlSasToken özelliğini SAS belirtecinizin değerine ayarlamanız gerekir.
 | Settings. privacy. dataEnabled | string | Telemetri toplamayı etkinleştirilir veya devre dışı bırakır. Bu özellik için olası tek değerler ' Enable ', ' Disable ', "veya $null. Bu özelliğin boş veya null bırakılması telemetri sağlayacak
-| Settings. Advancedoçen. forcePullAndApply | Bool | Bu ayar, Azure Automation DSC ile düğümleri kaydetmek için uzantı ile çalışma deneyimini iyileştirmek üzere tasarlanmıştır.  Değer ise `$true`, uzantı başarı/başarısızlık döndürmeden önce yapılandırmanın ilk kez çalıştırılmasını bekler.  Değer $false olarak ayarlandıysa, uzantının döndürdüğü durum yalnızca düğümün Azure Otomasyonu durum yapılandırması 'na başarıyla kaydedilip kaydedilmediği ve düğüm yapılandırmasının kayıt sırasında çalıştırılmayacağı anlamına olur.
+| Settings. Advancedoçen. forcePullAndApply | Bool | Bu ayar, Azure Automation DSC ile düğümleri kaydetmek için uzantı ile çalışma deneyimini iyileştirmek üzere tasarlanmıştır.  Değer ise `$true` , uzantı başarı/başarısızlık döndürmeden önce yapılandırmanın ilk kez çalıştırılmasını bekler.  Değer $false olarak ayarlandıysa, uzantının döndürdüğü durum yalnızca düğümün Azure Otomasyonu durum yapılandırması 'na başarıyla kaydedilip kaydedilmediği ve düğüm yapılandırmasının kayıt sırasında çalıştırılmayacağı anlamına olur.
 | Settings. Advancedoçen. downloadMappings | Koleksiyon | WMF ve .NET gibi bağımlılıkları indirmek için alternatif konumlar tanımlar
 
 ### <a name="protected-settings-property-values"></a>Korumalı ayarlar özellik değerleri
 
-| Adı | Veri Türü | Açıklama
+| Name | Veri Türü | Description
 | ---- | ---- | ---- |
-| protectedSettings. configurationArguments | string | DSC yapılandırmanıza geçirmek istediğiniz parametreleri tanımlar. Bu özellik şifrelenir. |
-| protectedSettings. configurationUrlSasToken | string | Configuration. URL tarafından tanımlanan URL 'ye erişmek için SAS belirtecini belirtir. Bu özellik şifrelenir. |
-| protectedSettings. configurationDataUrlSasToken | string | ConfigurationData. URL tarafından tanımlanan URL 'ye erişmek için SAS belirtecini belirtir. Bu özellik şifrelenir. |
+| protectedSettings.configurationArguments | string | DSC yapılandırmanıza geçirmek istediğiniz parametreleri tanımlar. Bu özellik şifrelenir. |
+| protectedSettings.configurationUrlSasToken | string | Configuration. URL tarafından tanımlanan URL 'ye erişmek için SAS belirtecini belirtir. Bu özellik şifrelenir. |
+| protectedSettings.configurationDataUrlSasToken | string | ConfigurationData. URL tarafından tanımlanan URL 'ye erişmek için SAS belirtecini belirtir. Bu özellik şifrelenir. |
 
 
 ## <a name="template-deployment"></a>Şablon dağıtımı

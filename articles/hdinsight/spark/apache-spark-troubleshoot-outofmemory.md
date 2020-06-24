@@ -8,11 +8,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
 ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271973"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709054"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark için OutOfMemoryError özel durumları
 
@@ -116,13 +116,13 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 
 ### <a name="resolution"></a>Çözüm
 
-Spark yapılandırmasındaki `SPARK_DAEMON_MEMORY` özelliği düzenleyerek Spark geçmiş sunucu belleğini artırabilir ve tüm hizmetleri yeniden başlatabilirsiniz.
+Spark yapılandırmasındaki özelliği düzenleyerek Spark geçmiş sunucu belleğini artırabilir `SPARK_DAEMON_MEMORY` ve tüm hizmetleri yeniden başlatabilirsiniz.
 
 Bunu, Spark2/config/Advanced Spark2-env bölümünü seçerek, ambarı tarayıcısı kullanıcı arabiriminden yapabilirsiniz.
 
 ![Advanced spark2-env bölümü](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
 
-Spark geçmiş sunucusu belleğini 1G 'den 4g 'ye değiştirmek için aşağıdaki özelliği ekleyin: `SPARK_DAEMON_MEMORY=4g`.
+Spark geçmiş sunucusu belleğini 1G 'den 4g 'ye değiştirmek için aşağıdaki özelliği ekleyin: `SPARK_DAEMON_MEMORY=4g` .
 
 ![Spark özelliği](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
 
@@ -239,7 +239,7 @@ Aşağıda açıklanan adımları kullanarak tüm girdileri silin.
 1. Yukarıdaki komutun tamamlanmasını bekleyin ve imleci bir süre sonra yeniden başlatın ve bu işlemin başarılı olması gerekir.
 
 > [!NOTE]
-> `DELETE`Yürütme tamamlandıktan sonra tüm oturum. Tek tek toplu oturumlar, bir tasarıma göre olan Spark uygulaması tamamlandıktan hemen sonra otomatik olarak silinmez. Livy oturumu, Livy Rest sunucusuna yönelik bir POST isteği tarafından oluşturulan bir varlıktır. Varlığı `DELETE` silmek için bir çağrı gerekir. Ya da GC 'nin başlatılmasını beklememiz gerekir.
+> `DELETE`Yürütme tamamlandıktan sonra tüm oturum. Tek tek toplu oturumlar, bir tasarıma göre olan Spark uygulaması tamamlandıktan hemen sonra otomatik olarak silinmez. Livy oturumu, Livy Rest sunucusuna yönelik bir POST isteği tarafından oluşturulan bir varlıktır. `DELETE`Varlığı silmek için bir çağrı gerekir. Ya da GC 'nin başlatılmasını beklememiz gerekir.
 
 ---
 
@@ -253,6 +253,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
 * Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

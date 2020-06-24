@@ -4,16 +4,16 @@ description: Active Directory etki alanı ile mevcut bir Windows sanal masaüst�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4723c2a8fa66e4ed2c4b40975179d7d4d2b281d6
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 7fca57bd517296711ada2f714d523bfa0709337c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484652"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208391"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Azure dosyaları ve AD DS bir profil kapsayıcısı oluşturun
 
@@ -43,7 +43,7 @@ Bir depolama hesabı ayarlamak için:
     - Depolama hesabınız için benzersiz bir ad girin.
     - **Konum**Için, Windows sanal masaüstü ana bilgisayar havuzuyla aynı konumu seçmenizi öneririz.
     - **Performans** alanında **Standart**’ı seçin. (IOPS gereksinimlerinize bağlı olarak. Daha fazla bilgi için bkz. [Windows sanal masaüstündeki FSLogix profil kapsayıcıları Için depolama seçenekleri](store-fslogix-profile.md).)
-    - **Hesap türü**için **StorageV2** veya **FileStorage**' ı seçin.
+    - **Hesap türü**için **StorageV2** veya **FileStorage** (yalnızca performans katmanı Premium ise kullanılabilir) seçeneğini belirleyin.
     - **Çoğaltma**Için **yerel olarak yedekli depolama (LRS)** seçeneğini belirleyin.
 
 5. İşiniz bittiğinde, **gözden geçir + oluştur**' u seçin ve ardından **Oluştur**' u seçin.
@@ -78,7 +78,7 @@ Sonra, Active Directory (AD) kimlik doğrulamasını etkinleştirmeniz gerekir. 
 
 ## <a name="assign-azure-rbac-permissions-to-windows-virtual-desktop-users"></a>Windows sanal masaüstü kullanıcılarına Azure RBAC izinleri atama
 
-Depolama hesabında bulunan FSLogix profillerine sahip olması gereken tüm kullanıcılara depolama dosyası veri SMB paylaşımının katkıda bulunan rolü atanmalıdır. 
+Depolama hesabında bulunan FSLogix profillerine sahip olması gereken tüm kullanıcılara depolama dosyası veri SMB paylaşımının katkıda bulunan rolü atanmalıdır.
 
 Windows Sanal Masaüstü oturumunda oturum açan kullanıcıların, dosya paylaşımınıza erişmek için erişim izinleri olması gerekir. Bir Azure dosya paylaşımının erişimine izin verilmesi, izinleri hem paylaşma düzeyinde hem de NTFS düzeyinde geleneksel bir Windows paylaşımıyla aynı şekilde yapılandırmayı içerir.
 
@@ -98,10 +98,10 @@ Rol tabanlı erişim denetimi (RBAC) izinleri atamak için:
 4. **Rol ataması Ekle**' yi seçin.
 
 5. **Rol ataması Ekle** sekmesinde, yönetici hesabı Için **depolama dosyası veri SMB paylaşma yükseltilmiş katılımcısı** ' ı seçin.
-   
+
      FSLogix profillerine Kullanıcı izinleri atamak için, aynı yönergeleri izleyin. Bununla birlikte, 5. adıma geldiğinizde bunun yerine **depolama dosya VERI SMB payı katılımcısı** ' nı seçin.
 
-6. **Kaydet**'i seçin.
+6. **Kaydet**’i seçin.
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>Azure dosya paylaşımında Kullanıcı izinleri atama
 
@@ -126,7 +126,7 @@ UNC yolunu buradan edinebilirsiniz:
 
 5. URI 'yi kopyaladıktan sonra, UNC olarak değiştirmek için aşağıdaki işlemleri yapın:
 
-    - `https://` kaldır
+    - Kaldır `https://` ve Değiştir`\\`
     - Eğik çizgiyi `/` ters eğik çizgiyle değiştirin `\` .
     - [Azure dosya paylaşımında](#create-an-azure-file-share) oluşturduğunuz dosya PAYLAŞıMıNıN adını UNC sonuna ekleyin.
 
@@ -157,7 +157,7 @@ NTFS izinlerinizi yapılandırmak için:
      ```
 
 3. Azure dosya paylaşımının erişim izinlerini gözden geçirmek için aşağıdaki cmdlet 'i çalıştırın:
-    
+
     ```powershell
     icacls <mounted-drive-letter>:
     ```
@@ -167,7 +167,7 @@ NTFS izinlerinizi yapılandırmak için:
     Hem *NT Authorıty\authenticated Users* hem de *builtin\users* , varsayılan olarak belirli izinlere sahiptir. Bu varsayılan izinler, bu kullanıcıların diğer kullanıcıların profil kapsayıcılarını okumasına izin verir. Ancak, [profil kapsayıcıları ve Office kapsayıcıları ile kullanım için depolama Izinlerini yapılandırma](/fslogix/fslogix-storage-config-ht) bölümünde açıklanan izinler, kullanıcıların diğerlerinin profil kapsayıcılarını okumasına izin vermez.
 
 4. Windows sanal masaüstü kullanıcılarınızın, diğer kullanıcılardan profil kapsayıcısına erişimi engellediği sırada kendi profil kapsayıcıları oluşturmalarına izin vermek için aşağıdaki cmdlet 'leri çalıştırın.
-     
+
      ```powershell
      icacls <mounted-drive-letter>: /grant <user-email>:(M)
      icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
@@ -187,7 +187,7 @@ NTFS izinlerinizi yapılandırmak için:
      icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
-5. **Apply** (Uygula) seçeneğini belirleyin.
+5. **Uygula**’yı seçin.
 
 ## <a name="configure-fslogix-on-session-host-vms"></a>Oturum Ana bilgisayar VM 'lerinde FSLogix yapılandırma
 

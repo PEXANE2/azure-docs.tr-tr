@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e963d62df8d2c416726852ee3d46daf1cd22936e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 945bcd03bc3bf13517836e7a5624bd5142782183
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80349936"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208561"
 ---
 # <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Anlık ileti Azure SQL DW marketi teklif yüklemesi Kılavuzu
 
@@ -30,11 +30,11 @@ Her şeye, bir anlık ileti kümesi adı, parola ve yönetici parolasını göst
 
 ![Çarpıcı anlık ileti yapılandırma][configure]
 
-Dağıtıldıktan sonra, Azure portal \<vm adı>-masternode öğesine tıklayın, Bağlan ' a tıklayın ve VM yerel hesabı 'Nı kullanarak oturum açma 'yı kopyalayın 
+Dağıtıldıktan sonra, \<VM Name> Azure Portal sağ masternode ' a tıklayın, Bağlan ' a tıklayın ve VM yerel hesabı 'nı kullanarak oturum açma 'yı kopyalayın 
 
 ![SQL Data Warehouse 'a anlık ileti bağlama][connect]
 
-Sqljdbc42. jar dosyasını <https://www.microsoft.com/en-us/download/details.aspx?id=54671> yerel makinenize indirin. 
+Sqljdbc42. jar dosyasını <https://www.microsoft.com/en-us/download/details.aspx?id=54671> Yerel makinenize indirin. 
 
 Bir komut satırı penceresi açın ve dizinleri, JDBC jar dosyasını indirdiğiniz yere değiştirin. SCP dosyasını, Azure portal adresini ve parolayı alarak, e-mesajlaşma sanal makinenize kaya
 
@@ -56,7 +56,7 @@ JDBC jar dosyasını İlerim 'in lib dizinine taşımak ve sunucuyu başlatıp d
 
 ![Çarpıcı anlık ileti kümesini başlatma][start-striim]
 
-Şimdi, en sevdiğiniz tarayıcıyı açın ve \<DNS adı> şuraya gidin: 9080
+Şimdi, en sevdiğiniz tarayıcıyı açın ve şuraya gidin \<DNS Name> : 9080
 
 ![Oturum açma ekranına git][navigate]
 

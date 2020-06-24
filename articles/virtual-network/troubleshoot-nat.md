@@ -9,23 +9,23 @@ manager: KumudD
 ms.service: virtual-network
 Customer intent: As an IT administrator, I want to troubleshoot Virtual Network NAT.
 ms.devlang: na
-ms.topic: overview
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: 7723e74b9617d5e8d56dd3c3e46145c4945ca21f
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698084"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688290"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Azure sanal ağ NAT bağlantısı sorunlarını giderme
 
 Bu makale, yöneticilerin sanal ağ NAT kullanırken bağlantı sorunlarını tanılayıp çözümlemesine yardımcı olur.
 
-## <a name="problems"></a>Sorunlarının
+## <a name="problems"></a>Sorunlar
 
 * [SNAT tükenmesi](#snat-exhaustion)
 * [ICMP ping işlemi başarısız oluyor](#icmp-ping-is-failing)
@@ -130,7 +130,7 @@ Bu makaledeki [SNAT tükenmesi](#snat-exhaustion) bölümüne bakın.
 
 Azure, altyapısını büyük önem taşıyan şekilde izler ve çalışır. Geçici sorunlar ortaya çıkabilir, iletimlerin kayıpsız olduğunun garantisi yoktur.  TCP uygulamaları için SYN yeniden iletimlerine izin veren tasarım düzenlerini kullanın. Bir kayıp SYN paketinin neden olduğu geçici etkileri azaltmak için TCP SYN yeniden aktarım için yeterince büyük olan bağlantı zaman aşımlarını kullanın.
 
-_**Çözüm:**_
+_**Çözümden**_
 
 * [SNAT tükenmesi](#snat-exhaustion)olup olmadığını denetleyin.
 * SYN yeniden aktarım davranışını denetleyen bir TCP yığınındaki yapılandırma parametresi RTO ([yeniden Iletim zaman aşımı](https://tools.ietf.org/html/rfc793)) olarak adlandırılır. RTO değeri ayarlanabilir ancak varsayılan olarak üstel geri ile 1 saniye veya daha yüksektir.  Uygulamanızın bağlantı zaman aşımı çok kısaysa (örneğin 1 saniye), tek biçimli bağlantı zaman aşımları görebilirsiniz.  Uygulama bağlantısı zaman aşımını artırın.
@@ -155,7 +155,7 @@ Yukarıdaki [Azure altyapısı](#azure-infrastructure) bölümüyle aynı yöner
 
 Genellikle kaynak üzerinde paket yakalar ve hedefin ne olduğunu belirlemek için hedef (varsa) gereklidir.
 
-_**Çözüm:**_
+_**Çözümden**_
 
 * [SNAT tükenmesi](#snat-exhaustion)olup olmadığını denetleyin. 
 * Aynı bölgedeki bir uç nokta ile veya başka bir yerde karşılaştırma için bağlantıyı doğrulayın.  
@@ -171,7 +171,7 @@ Olası bir nedenden dolayı TCP bağlantısının boşta kalma süresi doldu.  B
 
 TCP sıfırlama, NAT ağ geçidi kaynaklarının genel tarafında oluşturulmaz. Hedef taraftaki TCP sıfırlamaları, NAT ağ geçidi kaynağı değil kaynak VM tarafından oluşturulur.
 
-_**Çözüm:**_
+_**Çözümden**_
 
 * [Tasarım desenleri](#design-patterns) önerilerini gözden geçirin.  
 * Gerekirse daha fazla sorun giderme için bir destek talebi açın.
@@ -188,7 +188,7 @@ _**Çözüm:**_ NAT ağ geçidini IPv6 öneki olmayan bir alt ağda dağıtın.
 
 NAT ağ geçidini, kullanılacak IP adreslerini ve bir NAT ağ geçidi kaynağı kullanması gereken alt ağı yapılandırırsınız. Ancak, NAT ağ geçidi dağıtılmadan önce var olan sanal makine örneklerinin bağlantıları IP adreslerini kullanmaz.  Bunlar, NAT ağ geçidi kaynağıyla kullanılmayan IP adreslerini kullanıyor gibi görünürler.
 
-_**Çözüm:**_
+_**Çözümden**_
 
 [Sanal ağ NAT](nat-overview.md) , üzerinde yapılandırıldığı alt ağın giden bağlantısını değiştirir. Varsayılan SNAT veya yük dengeleyici giden SNAT 'den NAT ağ geçitleri kullanılarak geçiş yaparken yeni bağlantılar, NAT ağ geçidi kaynağıyla ilişkili IP adreslerini kullanmaya hemen başlar.  Ancak, bir sanal makine, NAT ağ geçidi kaynağına geçiş sırasında hala oluşturulmuş bir bağlantıya sahipse bağlantı oluşturulduğunda atanan eski SNAT IP adresini kullanmaya devam eder.  İşletim sistemi veya tarayıcı bir bağlantı havuzundaki bağlantıları önbelleğe alındığından, zaten var olan bir bağlantıyı yeniden kullanmak yerine yeni bir bağlantı kullandığınızdan emin olun.  Örneğin, PowerShell 'de _kıvrımlı_ kullanırken, yeni bir bağlantı zorlamak için _-disablekeepalive_ parametresini belirttiğinizden emin olun.  Bir tarayıcı kullanıyorsanız, bağlantılar da havuza alınabilir.
 

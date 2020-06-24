@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 941b6ac86941824351f83592998e8735e3eb8ee5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c439113907c2eb28c41aed3c21c1d27398d5207
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75780377"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987084"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Multi-Factor Authentication için Azure VPN ağ geçidi RADIUS kimlik doğrulamasını NPS sunucusuyla tümleştirme 
 
@@ -65,13 +65,13 @@ MFA 'yı etkinleştirmek için kullanıcıların şirket içi veya bulut ortamı
 
     ![RADIUS istemcisi Gelişmiş ayarları hakkında resim](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
 
-4. **İlkeler** > **ağ ilkeleri**' ne gidin, **Microsoft Yönlendirme ve uzaktan erişim sunucusu ilkesi bağlantıları** ' na çift tıklayın, **erişim ver**' i seçin ve ardından **Tamam**' a tıklayın.
+4. **İlkeler**  >  **ağ ilkeleri**' ne gidin, **Microsoft Yönlendirme ve uzaktan erişim sunucusu ilkesi bağlantıları** ' na çift tıklayın, **erişim ver**' i seçin ve ardından **Tamam**' a tıklayın.
 
 ### <a name="step-3-configure-the-virtual-network-gateway"></a>3. adım sanal ağ geçidini yapılandırma
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 2. Oluşturduğunuz sanal ağ geçidini açın. Ağ Geçidi türünün **VPN** olarak AYARLANDıĞıNDAN ve VPN türünün **Rota tabanlı**olduğundan emin olun.
-3. **Site yapılandırması** > **Şimdi Yapılandır**' a tıklayın ve ardından aşağıdaki ayarları belirtin:
+3. **Site yapılandırması**  >  **Şimdi Yapılandır**' a tıklayın ve ardından aşağıdaki ayarları belirtin:
 
     - **Adres havuzu**: adım 1 ' de oluşturduğunuz ağ geçidi alt ağını yazın.
     - **Kimlik doğrulama türü**: **RADIUS kimlik doğrulamasını**seçin.

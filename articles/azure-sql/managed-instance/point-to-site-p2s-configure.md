@@ -3,7 +3,7 @@ title: SSMS kullanarak noktadan siteye bağlantı yapılandırma
 titleSuffix: Azure SQL Managed Instance
 description: Şirket içi istemci bilgisayarından Noktadan siteye bağlantı kullanarak SQL Server Management Studio (SSMS) kullanarak Azure SQL yönetilen örneğine bağlanın.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: debe32bc39840573620bba5280b6e05b94f3edb6
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 7b9c9fc6259656af77bf1ba1b95ccf190cbd85da
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220925"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708673"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Hızlı başlangıç: şirket içi Azure SQL yönetilen örneği ile noktadan siteye bağlantı yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -71,7 +71,7 @@ Bu hızlı başlangıç:
 
     ![VPN istemcisini indir](./media/point-to-site-p2s-configure/download-vpn-client.png)  
 4. Şirket içi istemci bilgisayarınızda, ZIP dosyasındaki dosyaları ayıklayın ve ardından ayıklanan dosyaların bulunduğu klasörü açın.
-5. **WindowsAmd64** klasörünü açın ve **VpnClientSetupAmd64. exe** dosyasını açın.
+5. **WindowsAmd64** klasörünü açın ve **VpnClientSetupAmd64.exe** dosyasını açın.
 6. **PC 'niz korumalı bir Windows** iletisi alırsanız, **daha fazla bilgi** ' ye ve **yine de Çalıştır**' a tıklayın.
 
     ![VPN istemcisi 'ni yükler](./media/point-to-site-p2s-configure/vpn-client-defender.png)

@@ -5,14 +5,14 @@ author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: include
 ms.date: 05/19/2020
-ms.openlocfilehash: 6713d93400bc391f4de7e07cc024ff9df2849a39
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7dd9de43e172737c96c3ee4cb5611cd2b2bee137
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700944"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750876"
 ---
 Açıklamanızı daha ilgi çekici olacak şekilde biçimlendirmek için HTML etiketlerini kullanın. Çoğu etiket, bu tabloda gösterildiği gibi bir açılış ve kapanış bileşeni gerektirir.
 

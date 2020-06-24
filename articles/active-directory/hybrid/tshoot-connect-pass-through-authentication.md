@@ -16,12 +16,12 @@ ms.date: 4/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: f297cec0e5f88461d61b14974b57992f847f6e1c
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60456173"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051989"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory Geçişli Kimlik Doğrulaması Sorunlarını Giderme
 
@@ -44,7 +44,7 @@ Doğrudan kimlik doğrulama özelliğinin kiracınızda hala **etkinleştirildi�
 
 Kullanıcı geçişli kimlik doğrulaması kullanarak oturum açamıyor ise Azure AD oturum açma ekranında aşağıdaki kullanıcıya yönelik hatalardan birini görebilirler: 
 
-|Hata|Açıklama|Çözüm
+|Hata|Description|Çözüm
 | --- | --- | ---
 |AADSTS80001|Active Directory ile bağlantı kurulamıyor|Aracı sunucularının, parolalarının doğrulanması gereken kullanıcılarla aynı AD ormanının üyesi olduğundan ve Active Directory bağlanabildiklerinden emin olun.  
 |AADSTS8002|Active Directory bağlantısında bir zaman aşımı oluştu|Active Directory kullanılabilir olduğundan ve aracılardan gelen isteklere yanıt verdiğinden emin olun.
@@ -52,13 +52,40 @@ Kullanıcı geçişli kimlik doğrulaması kullanarak oturum açamıyor ise Azur
 |AADSTS80005|Doğrulama öngörülemeyen WebException ile karşılaştı|Geçici bir hata. İsteği yeniden deneyin. Başarısız olmaya devam ederse, Microsoft destek 'e başvurun.
 |AADSTS80007|Active Directory ile iletişim kurulurken bir hata oluştu|Daha fazla bilgi için aracı günlüklerine bakın ve Active Directory beklendiği gibi çalıştığını doğrulayın.
 
+### <a name="users-get-invalid-usernamepassword-error"></a>Kullanıcılar geçersiz Kullanıcı adı/parola hatası alır 
+
+Bu durum, bir kullanıcının şirket içi UserPrincipalName (UPN) kullanıcının bulut UPN 'den farklı olduğunda meydana gelebilir.
+
+Bu sorun olduğunu doğrulamak için, ilk olarak geçişli kimlik doğrulama aracısının düzgün çalıştığını sınayın:
+
+
+1. Bir sınama hesabı oluşturun.  
+2. Aracı makinede PowerShell modülünü içeri aktarın:
+ 
+ ```powershell
+ Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication  Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
+ ```
+3. Invoke PowerShell komutunu çalıştırın: 
+
+ ```powershell
+ Invoke-PassthroughAuthOnPremLogonTroubleshooter 
+ ``` 
+4. Kimlik bilgilerini girmeniz istendiğinde, oturum açmak için kullanılan Kullanıcı adını ve parolayı girin ( https://login.microsoftonline.com) .
+
+Aynı Kullanıcı adı/parola hatası alırsanız, bu, geçişli kimlik doğrulama aracısının düzgün çalıştığı ve sorun şirket içi UPN 'nin yönlendirilemeyen olabileceği anlamına gelir. Daha fazla bilgi için bkz. [Alternatif oturum açma kimliğini yapılandırma]( https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More).
+
+
+
+
+
+
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Azure Active Directory Yönetim merkezinde oturum açma hatası nedenleri (Premium lisans gerekir)
 
 Kiracınızda ilişkili bir Azure AD Premium lisansı varsa, [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com/) [oturum açma etkinlik raporuna](../reports-monitoring/concept-sign-ins.md) da bakabilirsiniz.
 
 ![Azure Active Directory Yönetim Merkezi-oturum açma işlemleri raporu](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-[Azure Active Directory Yönetim Merkezi](https://aad.portal.azure.com/) 'nde **Azure Active Directory** -> **oturum açma** bölümüne gidin ve belirli bir kullanıcının oturum açma etkinliğine tıklayın. **Oturum açma hata kodu** alanını bulun. Aşağıdaki tabloyu kullanarak bu alanın değerini bir hata nedeni ve çözümüyle eşleyin:
+**Azure Active Directory**  ->  [Azure Active Directory Yönetim Merkezi](https://aad.portal.azure.com/) 'nde Azure Active Directory**oturum açma** bölümüne gidin ve belirli bir kullanıcının oturum açma etkinliğine tıklayın. **Oturum açma hata kodu** alanını bulun. Aşağıdaki tabloyu kullanarak bu alanın değerini bir hata nedeni ve çözümüyle eşleyin:
 
 |Oturum açma hata kodu|Oturum açma hatası nedeni|Çözüm
 | --- | --- | ---
@@ -123,7 +150,7 @@ Sahip olduğunuz sorunun türüne bağlı olarak, geçişli kimlik doğrulama Ar
 
 ### <a name="azure-ad-connect-logs"></a>Azure AD Connect günlükleri
 
-Yüklemeyle ilgili hatalar için **%ProgramData%\aadconnect\trace-\*. log**konumundaki Azure AD Connect günlüklerine bakın.
+Yüklemeyle ilgili hatalar için **%ProgramData%\aadconnect\trace- \* . log**konumundaki Azure AD Connect günlüklerine bakın.
 
 ### <a name="authentication-agent-event-logs"></a>Kimlik doğrulama Aracısı olay günlükleri
 
@@ -133,7 +160,7 @@ Ayrıntılı analiz için, "oturum" günlüğünü etkinleştirin (Bu seçeneği
 
 ### <a name="detailed-trace-logs"></a>Ayrıntılı izleme günlükleri
 
-Kullanıcı oturum açma hatalarıyla ilgili sorunları gidermek için **%ProgramData%\microsoft\azure AD Connect Authentication\\**me \ izleme konumundaki izleme günlüklerini arayın. Bu Günlükler, belirli bir Kullanıcı oturum açma özelliğinin doğrudan kimlik doğrulama özelliğini kullanarak başarısız olma nedenlerini içerir. Bu hatalar, yukarıdaki oturum açma hatası nedenleri tablosunda gösterilen oturum açma hatası nedenlerinden de eşleştirilir. Aşağıda örnek bir günlük girişi verilmiştir:
+Kullanıcı oturum açma hatalarıyla ilgili sorunları gidermek için **%ProgramData%\microsoft\azure AD Connect Authentication \\ **me \ izleme konumundaki izleme günlüklerini arayın. Bu Günlükler, belirli bir Kullanıcı oturum açma özelliğinin doğrudan kimlik doğrulama özelliğini kullanarak başarısız olma nedenlerini içerir. Bu hatalar, yukarıdaki oturum açma hatası nedenleri tablosunda gösterilen oturum açma hatası nedenlerinden de eşleştirilir. Aşağıda örnek bir günlük girişi verilmiştir:
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.

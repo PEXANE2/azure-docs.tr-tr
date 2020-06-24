@@ -17,11 +17,11 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e50733c843dfd21e35572f00fc6690e1e84aba97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279838"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688900"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>Azure 'da SAP ASCS/SCS örneği için Windows Yük devretme kümesine ve paylaşılan diske SAP NetWeaver HA 'yi yüklemeyin
 
@@ -185,7 +185,7 @@ SAP 'yi yüksek kullanılabilirliğe sahip bir ASCS/SCS örneğiyle yüklemek ş
 1. Windows DNS Yöneticisi 'nde, yoks/SCS örneğinin sanal ana bilgisayar adı için bir DNS girişi oluşturun.
 
    > [!IMPORTANT]
-   > YOKS/SCS örneğinin sanal ana bilgisayar adına atadığınız IP adresi, Azure Load Balancer atadığınız IP adresiyle aynı olmalıdır (\<SID\>-lb-ascs).  
+   > ASCS/SCS örneğinin sanal ana bilgisayar adına atadığınız IP adresi, Azure Load Balancer atadığınız IP adresiyle aynı olmalıdır ( \<SID\> -lb-ascs).  
    >
    >
 
@@ -195,7 +195,7 @@ SAP 'yi yüksek kullanılabilirliğe sahip bir ASCS/SCS örneğiyle yüklemek ş
 
    _**Şekil 1:** SAP ASCS/SCS kümesi sanal adı ve TCP/IP adresi için DNS girişi tanımlayın_
 
-2. Sanal ana bilgisayar adına atanan IP adresini tanımlamak için **DNS Yöneticisi** > **etki alanı**' nı seçin.
+2. Sanal ana bilgisayar adına atanan IP adresini tanımlamak için **DNS Yöneticisi**  >  **etki alanı**' nı seçin.
 
    ![Şekil 2: SAP Ass/SCS küme yapılandırması için yeni sanal ad ve TCP/IP adresi][sap-ha-guide-figure-3047]
 
@@ -221,7 +221,7 @@ Sonraki birkaç görev standart SAP yükleme belgelerinde açıklanmamıştır.
 
 ### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a>ASCS/SCS örneğinin SAP profilini değiştirme
 
-İlk olarak, yeni bir profil parametresi ekleyin. Profil parametresi, SAP iş işlemleriyle sıraya alma sunucusu arasındaki bağlantıları çok uzun süre boşta kaldığında kapatmadan önler. [SAP ASCS/SCS örneğinin küme düğümlerine kayıt defteri girişleri ekleme][sap-ha-guide-8.11]' deki sorun senaryosundan bahsedin. Bu bölümde, bazı temel TCP/IP bağlantı parametrelerinde iki değişiklik de sunuyoruz. İkinci bir adımda, bağlantıların Azure iç yük dengeleyicinin boşta eşiğine ulaşmaması için sıraya `keep_alive` alma sunucusunu bir sinyal gönderecek şekilde ayarlamanız gerekir.
+İlk olarak, yeni bir profil parametresi ekleyin. Profil parametresi, SAP iş işlemleriyle sıraya alma sunucusu arasındaki bağlantıları çok uzun süre boşta kaldığında kapatmadan önler. [SAP ASCS/SCS örneğinin küme düğümlerine kayıt defteri girişleri ekleme][sap-ha-guide-8.11]' deki sorun senaryosundan bahsedin. Bu bölümde, bazı temel TCP/IP bağlantı parametrelerinde iki değişiklik de sunuyoruz. İkinci bir adımda, `keep_alive` bağlantıların Azure iç yük dengeleyicinin boşta eşiğine ulaşmaması için sıraya alma sunucusunu bir sinyal gönderecek şekilde ayarlamanız gerekir.
 
 YOKS/SCS örneğinin SAP profilini değiştirmek için:
 
@@ -267,7 +267,7 @@ Araştırma bağlantı noktası eklemek için:
 
    Bağlantı noktası numarası SAP Azure Resource Manager şablonlarında tanımlanmıştır. Bağlantı noktası numarasını PowerShell 'e atayabilirsiniz.
 
-   SAP \<SID\> IP kümesi kaynağı Için yeni bir probeport değeri ayarlamak Için, ortamınız için PowerShell değişkenlerini güncelleştirmek üzere aşağıdaki PowerShell betiğini çalıştırın:
+   SAP IP küme kaynağı için yeni bir ProbePort değeri ayarlamak için \<SID\> , ortamınız Için PowerShell değişkenlerini güncelleştirmek üzere aşağıdaki PowerShell betiğini çalıştırın:
 
    ```powershell
    $SAPSID = "PR1"      # SAP <SID>
@@ -325,7 +325,7 @@ Araştırma bağlantı noktası eklemek için:
    }
    ```
 
-   SAP \<SID\> küme rolünü çevrimiçine geçirdikten sonra, **probeport** değerinin yeni değere ayarlandığını doğrulayın.
+   SAP \<SID\> Küme rolünü çevrimiçine geçirdikten sonra, **probeport** değerinin yeni değere ayarlandığını doğrulayın.
 
    ```powershell
    $SAPSID = "PR1"     # SAP <SID>
@@ -350,7 +350,7 @@ Her iki küme düğümünde bir Windows Güvenlik Duvarı araştırması bağlan
   New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
   ```
 
-**Probeport** **62000**olarak ayarlanır. Şimdi, \ascsha-clsap\sapmnt dosya paylaşımında \\, assha-DBAS gibi diğer konaklardan erişebilirsiniz.
+**Probeport** **62000**olarak ayarlanır. Şimdi, \\ \ascsha-clsap\sapmnt dosya paylaşımında, assha-DBAS gibi diğer konaklardan erişebilirsiniz.
 
 ## <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>Veritabanı örneğini yükler
 
@@ -370,11 +370,11 @@ _**Şekil 5:** SAP ERS örneği için hizmet türünü Gecikmeli otomatik olarak
 
 ## <a name="install-the-sap-primary-application-server"></a><a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a>SAP birincil uygulama sunucusunu yükler
 
-PAS 'yi barındırmak için belirlediğiniz sanal makineye birincil uygulama \<sunucusu\>(pas) örneği SID-dı-0 ' yı yükler. Azure üzerinde hiçbir bağımlılık yoktur. Veri ve özel ayar yok.
+PAS 'yi barındırmak için belirlediğiniz sanal makinede birincil uygulama sunucusu (PAS) örneği \<SID\> -dı-0 ' yı yükler. Azure üzerinde hiçbir bağımlılık yoktur. Veri ve özel ayar yok.
 
 ## <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a>SAP ek uygulama sunucusunu yükler
 
-SAP uygulama sunucusu örneğini barındırmak için belirlediğiniz tüm sanal makinelere bir SAP ek uygulama sunucusu (AAS) yükleyebilirsiniz. Örneğin \<, SID\>-dı-1 ile \<SID\>-dı-&lt;n&gt;arası.
+SAP uygulama sunucusu örneğini barındırmak için belirlediğiniz tüm sanal makinelere bir SAP ek uygulama sunucusu (AAS) yükleyebilirsiniz. Örneğin, \<SID\> -dı-1 ile \<SID\> -dı- &lt; n &gt; .
 
 > [!NOTE]
 > Bu, yüksek kullanılabilirliğe sahip SAP NetWeaver sisteminin yüklenmesini sonlandırır. Sonra, yük devretme testi ile devam edin.
@@ -388,9 +388,9 @@ Yük Devretme Kümesi Yöneticisi ve SIOS Dataman yönetimi ve yapılandırma ar
 
 SAP PR1 küme grubu, A küme düğümü üzerinde çalışıyor. Örneğin, PR1-ascs-0 üzerinde. SAP PR1 küme grubunun bir parçası olan paylaşılan disk sürücüsüne göre ' yi küme düğümüne atayın. YOKS/SCS örneği de disk sürücü S kullanır. 
 
-![Şekil 6: Yük Devretme Kümesi Yöneticisi: SAP \<SID\> küme grubu, A kümesi düğümünde çalışıyor][sap-ha-guide-figure-5000]
+![Şekil 6: Yük Devretme Kümesi Yöneticisi: SAP \< SID \> küme grubu, A kümesi düğümünde çalışıyor][sap-ha-guide-figure-5000]
 
-_**Şekil 6:** Yük Devretme Kümesi Yöneticisi: SAP \<SID\> küme grubu, A kümesi düğümünde çalışıyor_
+_**Şekil 6:** Yük Devretme Kümesi Yöneticisi: SAP \<SID\> küme grubu A kümesi düğümünde çalışıyor_
 
 SIOS Verilerlik yönetimi ve yapılandırma aracında, paylaşılan disk verilerinin, A küme düğümü üzerindeki kaynak birim sürücüsünden, B küme düğümü üzerindeki hedef birim sürücüsüne zaman uyumlu olarak çoğaltıldığından emin olabilirsiniz. Örneğin, PR1-ascs-0 [10.0.0.40] öğesinden PR1-ascs-1 [10.0.0.41] arasında çoğaltılır.
 
@@ -400,7 +400,7 @@ _**Şekil 7:** Jımdataman 'da yerel birimi küme düğümü A 'yı küme düğ�
 
 ### <a name="failover-from-node-a-to-node-b"></a><a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a>A düğümünden B düğümüne yük devretme
 
-1. A kümesi düğümünden B kümesine SAP \<SID\> küme grubunun yük devretmesini başlatmak için şu seçeneklerden birini seçin:
+1. A kümesi düğümünden B kümesine SAP küme grubunun yük devretmesini başlatmak için şu seçeneklerden birini seçin \<SID\> :
    - Yük Devretme Kümesi Yöneticisi  
    - Yük devretme kümesi PowerShell
 
@@ -411,13 +411,13 @@ _**Şekil 7:** Jımdataman 'da yerel birimi küme düğümü A 'yı küme düğ�
    Move-ClusterGroup -Name $SAPClusterGroup
 
    ```
-2. Windows Konuk işletim sisteminin içindeki küme düğümünü yeniden başlatın. Bu, A düğümünden B düğümüne SAP \<SID\> küme grubunun otomatik yük devretmesini başlatır.  
-3. Azure portal küme düğümünü yeniden başlatın. Bu, A düğümünden B düğümüne SAP \<SID\> küme grubunun otomatik yük devretmesini başlatır.  
-4. Azure PowerShell kullanarak küme düğümünü yeniden başlatın. Bu, A düğümünden B düğümüne SAP \<SID\> küme grubunun otomatik yük devretmesini başlatır.
+2. Windows Konuk işletim sisteminin içindeki küme düğümünü yeniden başlatın. Bu, \<SID\> A düğümünden B DÜĞÜMÜNE SAP küme grubunun otomatik yük devretmesini başlatır.  
+3. Azure portal küme düğümünü yeniden başlatın. Bu, \<SID\> A düğümünden B DÜĞÜMÜNE SAP küme grubunun otomatik yük devretmesini başlatır.  
+4. Azure PowerShell kullanarak küme düğümünü yeniden başlatın. Bu, \<SID\> A düğümünden B DÜĞÜMÜNE SAP küme grubunun otomatik yük devretmesini başlatır.
 
-   Yük devretmeden sonra, \<SAP\> SID kümesi grubu B kümesi düğümünde çalışır. Örneğin, PR1-ascs-1 üzerinde çalışıyor.
+   Yük devretmeden sonra SAP \<SID\> küme grubu B kümesi düğümünde çalışır. Örneğin, PR1-ascs-1 üzerinde çalışıyor.
 
-   ![Şekil 8: Yük Devretme Kümesi Yöneticisi, SAP \<SID\> kümesi grubu B kümesi düğümünde çalışıyor][sap-ha-guide-figure-5002]
+   ![Şekil 8: Yük Devretme Kümesi Yöneticisi, SAP \< SID \> kümesi grubu B kümesi düğümünde çalışıyor][sap-ha-guide-figure-5002]
 
    _**Şekil 8**: yük devretme KÜMESI YÖNETICISI, SAP \<SID\> kümesi grubu B kümesi düğümünde çalışıyor_
 

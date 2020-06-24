@@ -6,21 +6,21 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c547263be8c61d75491d1517b58c03b6365ef929
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631255"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208408"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te iş yükünüzü çözümleyin
 
-Azure SYNAPSE Analytics 'te SYNAPSE SQL iş yükünüzü çözümleme teknikleri.
+Azure SYNAPSE Analytics 'te SYNAPSE SQL iş yükünüzü çözümleme teknikleri. 
 
 ## <a name="resource-classes"></a>Kaynak Sınıfları
 
@@ -28,7 +28,7 @@ SYNAPSE SQL, sorgulara sistem kaynakları atamak için kaynak sınıfları sağl
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Sıraya alınan sorgu algılama ve diğer DMVs 'ler
 
-Bir eşzamanlılık kuyruğunda bekleyen `sys.dm_pdw_exec_requests` sorguları tanımlamak için DMV ' y i kullanabilirsiniz. Eşzamanlılık yuvası için bekleyen sorguların durumu **askıya alındı**.
+`sys.dm_pdw_exec_requests`Bir eşzamanlılık kuyruğunda bekleyen sorguları tanımlamak için DMV ' y i kullanabilirsiniz. Eşzamanlılık yuvası için bekleyen sorguların durumu **askıya alındı**.
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -41,7 +41,7 @@ FROM    sys.dm_pdw_exec_requests r
 ;
 ```
 
-İş yükü yönetimi rolleri ile `sys.database_principals`görüntülenebilir.
+İş yükü yönetimi rolleri ile görüntülenebilir `sys.database_principals` .
 
 ```sql
 SELECT  ro.[name]           AS [db_role_name]
@@ -70,7 +70,7 @@ SYNAPSE SQL aşağıdaki bekleme türlerini içerir:
 * **DmsConcurrencyResourceType**: bekleyen veri taşıma işlemleri.
 * **BackupConcurrencyResourceType**: Bu bekleme bir veritabanının yedeklenmekte olduğunu gösterir. Bu kaynak türü için en büyük değer 1 ' dir. Aynı anda birden çok yedekleme isteniyorsa, diğerleri kuyruk. Genel olarak, 10 dakikalık ardışık anlık görüntüler arasında en az bir süre öneriyoruz.
 
-Bir `sys.dm_pdw_waits` isteğin beklediği kaynakları görmek için DMV kullanılabilir.
+`sys.dm_pdw_waits`Bir isteğin beklediği kaynakları görmek için DMV kullanılabilir.
 
 ```sql
 SELECT  w.[wait_id]
@@ -107,7 +107,7 @@ WHERE    w.[session_id] <> SESSION_ID()
 ;
 ```
 
-DMV, `sys.dm_pdw_resource_waits` belirli bir sorgu için bekleme bilgilerini gösterir. Kaynak bekleme süresi, kaynakların sağlanması için bekleyen süreyi ölçer. Sinyal bekleme süresi, temel alınan SQL sunucularının sorguyu CPU 'ya zamanlaması için gereken süredir.
+`sys.dm_pdw_resource_waits`DMV, belirli bir sorgu için bekleme bilgilerini gösterir. Kaynak bekleme süresi, kaynakların sağlanması için bekleyen süreyi ölçer. Sinyal bekleme süresi, temel alınan SQL sunucularının sorguyu CPU 'ya zamanlaması için gereken süredir.
 
 ```sql
 SELECT  [session_id]
@@ -137,7 +137,7 @@ AND     [session_id]     <> session_id()
 ;
 ```
 
-DMV, `sys.dm_pdw_wait_stats` bekleyen eğilim analizi için kullanılabilir.
+`sys.dm_pdw_wait_stats`DMV, bekleyen eğilim analizi için kullanılabilir.
 
 ```sql
 SELECT   w.[pdw_node_id]

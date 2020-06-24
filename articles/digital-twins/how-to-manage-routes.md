@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a6549f4436fe1bd6a7ab27d942621ccaaf93cff7
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: cf18d8ef391115da5e1c8fcab235c30e96287f5b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612945"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725690"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Azure dijital TWINS 'de uç noktaları ve yolları yönetme
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure dijital TWINS 'de, [olay bildirimlerini](how-to-interpret-event-data.md) aşağı akış hizmetlerine yönlendirebilir veya işlem kaynaklarına bağlanabilirsiniz. Bu, önce olayları alabilen **uç noktalar** ayarlanarak, ardından Azure dijital TWINS tarafından oluşturulan olayların hangi uç noktalara teslim edildiğini belirten [**olay rotaları**](concepts-route-events.md) tarafından yapılır.
 

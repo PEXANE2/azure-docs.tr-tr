@@ -1,36 +1,52 @@
 ---
-title: Azure ön kapısına sahip WAF için özel bir yanıt yapılandırma
-description: Web uygulaması güvenlik duvarı (WAF) bir isteği engellediğinde özel yanıt kodunu ve iletiyi nasıl yapılandıracağınızı öğrenin.
+title: Azure ön kapısına sahip Web uygulaması güvenlik duvarı (WAF) için özel yanıtları yapılandırma
+description: WAF bir isteği engellediğinde özel yanıt kodunu ve iletiyi nasıl yapılandıracağınızı öğrenin.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 06/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: 215d4058937ad5fded6bef7a36e873b52a1b5ae9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14e4ccdf17647823dc9e1005c1c68a9f1f217b9e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185338"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84726402"
 ---
-# <a name="configure-a-custom-response-for-azure-web-application-firewall"></a>Azure Web uygulaması güvenlik duvarı için özel bir yanıt yapılandırma
+# <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>Azure Web uygulaması güvenlik duvarı (WAF) için özel bir yanıt yapılandırma
 
-Varsayılan olarak, Azure ön kapısına sahip Azure Web uygulaması güvenlik duvarı (WAF), eşleşen bir kural nedeniyle bir isteği engellediğinde, **istek engellendi** iletisiyle 403 durum kodu döndürür. Bu makalede bir istek WAF tarafından engellendiğinde özel yanıt durum kodu ve yanıt iletisinin nasıl yapılandırılacağı açıklanır.
+Varsayılan olarak, WAF eşleşen bir kural nedeniyle isteği engellediğinde, **istek engellendi** iletisiyle 403 durum kodu döndürür. Varsayılan ileti ayrıca, istek için [günlük girişlerine](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-monitor) bağlantı sağlamak üzere kullanılabilecek izleme başvuru dizesini de içerir.  Özel bir yanıt durum kodu ve kullanım durumunuz için başvuru dizesine sahip özel bir ileti yapılandırabilirsiniz. Bu makalede, bir istek WAF tarafından engellendiğinde özel bir yanıt sayfasının nasıl yapılandırılacağı açıklanır.
 
-## <a name="set-up-your-powershell-environment"></a>PowerShell ortamınızı hazırlama
+## <a name="configure-custom-response-status-code-and-message-use-portal"></a>Özel yanıt durum kodu ve ileti kullanım portalını yapılandırma
+
+WAF portalından "Ilke ayarları" altında özel yanıt durum kodunu ve gövdesini yapılandırabilirsiniz.
+
+:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response-settings.png" alt-text="WAF Ilke ayarları":::
+
+Yukarıdaki örnekte, yanıt kodu 403 olarak tutulduk ve aşağıdaki görüntüde gösterildiği gibi kısa bir "lütfen bize başvurun" iletisi yapılandırdınız:
+
+:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="Özel yanıt örneği":::
+
+"{{Azure-ref}}", yanıt gövdesine benzersiz başvuru dizesi ekler. Değer, ve günlüklerindeki TrackingReference alanıyla eşleşir `FrontdoorAccessLog` `FrontdoorWebApplicationFirewallLog` .
+
+## <a name="configure-custom-response-status-code-and-message-use-powershell"></a>Özel yanıt durum kodunu ve iletiyi yapılandırma PowerShell kullanma
+
+### <a name="set-up-your-powershell-environment"></a>PowerShell ortamınızı hazırlama
+
 Azure PowerShell, Azure kaynaklarınızı yönetmek için [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) modelini kullanan bir dizi cmdlet sunar. 
 
 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)'i yerel makinenize yükleyebilir ve herhangi bir PowerShell oturumunda kullanabilirsiniz. Azure kimlik bilgilerinizle oturum açmak ve az PowerShell modülünü yüklemek için sayfadaki yönergeleri izleyin.
 
 ### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Oturum açma için etkileşimli iletişim kutusuyla Azure 'a bağlanma
+
 ```
 Connect-AzAccount
 Install-Module -Name Az
+
 ```
 PowerShellGet 'in güncel sürümünün yüklü olduğundan emin olun. Aşağıdaki komutu çalıştırın ve PowerShell'i yeniden açın.
-
 ```
 Install-Module PowerShellGet -Force -AllowClobber
 ``` 
@@ -40,17 +56,17 @@ Install-Module PowerShellGet -Force -AllowClobber
 Install-Module -Name Az.FrontDoor
 ```
 
-## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
+### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure 'da, ilgili kaynakları bir kaynak grubuna ayırabilirsiniz. Bu örnekte, [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup)kullanarak bir kaynak grubu oluşturacaksınız.
+Azure 'da, ilgili kaynakları bir kaynak grubuna ayırabilirsiniz. Burada, [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup)kullanarak bir kaynak grubu oluşturacağız.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupWAF
 ```
 
-## <a name="create-a-new-waf-policy-with-custom-response"></a>Özel Yanıtla yeni bir WAF ilkesi oluşturma 
+### <a name="create-a-new-waf-policy-with-custom-response"></a>Özel Yanıtla yeni bir WAF ilkesi oluşturma 
 
-Aşağıda, özel yanıt durum kodu 405 olarak ayarlanan yeni bir WAF ilkesi oluşturma örneği verilmiştir ve bu ileti **engellenir.** [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)kullanma.
+Aşağıda, özel yanıt durum kodu 405 olarak ayarlanan yeni bir WAF ilkesi oluşturma örneği verilmiştir ve **size ileti engellenir.** [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) kullanarak
 
 ```azurepowershell
 # WAF policy setting
@@ -80,7 +96,7 @@ Update-AzFrontDoorFireWallPolicy `
 Update-AzFrontDoorFireWallPolicy `
 -Name myWAFPolicy `
 -ResourceGroupName myResourceGroupWAF `
--CustomBlockResponseBody "<html><head><title> Forbidden</title></head><body></body></html>"
+-CustomBlockResponseBody "<html><head><title>Forbidden</title></head><body>{{azure-ref}}</body></html>"
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

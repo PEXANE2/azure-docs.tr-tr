@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261625"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689223"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect eşitleme: mimariyi anlama
 Bu konuda Azure AD Connect eşitleme için temel mimari ele alınmaktadır. Birçok bakımdan, öncülleri MıSıS 2003, Ile 2007 ve FIM 2010 ' ye benzer. Azure AD Connect eşitleme, bu teknolojilerin gelişmidir. Bu önceki teknolojilerden herhangi birini biliyorsanız, bu konunun içeriği de size tanıdık gelecektir. Eşitleme için yeni bir konudur, bu konu sizin için önemlidir. Bu konu başlığı, özelleştirmeleri Azure AD Connect eşitleme yapma (Bu konudaki eşitleme altyapısı adı verilir) sırasında başarılı olmak için bu konunun ayrıntılarını sağlamak için gerekli değildir.
@@ -145,7 +145,7 @@ Bağlantılı nesneleri kullanarak, kimlik bilgilerini eşitleme altyapısında 
 ## <a name="sync-engine-identity-management-process"></a>Eşitleme altyapısı kimlik yönetimi işlemi
 Kimlik Yönetimi işlemi, farklı bağlı veri kaynakları arasında kimlik bilgilerinin nasıl güncelleştirileceğini denetler. Kimlik yönetimi üç işlem halinde gerçekleşir:
 
-* İçeri Aktarma
+* İçeri Aktar
 * Eşitleme
 * Dışarı Aktarma
 

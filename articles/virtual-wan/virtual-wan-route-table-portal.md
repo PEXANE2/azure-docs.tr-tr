@@ -4,16 +4,16 @@ description: Portalı kullanarak bir ağ sanal gerecine trafiği yönlendiren sa
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 740a2174933e37e2737de0daa56e4b1670ecf55f
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b22b751880cda91734ce0c322b19702e0ac9840d
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773177"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752971"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>NVA 'lar için bir sanal WAN hub yol tablosu oluşturma: Azure portal
 
@@ -34,7 +34,7 @@ Aşağıdaki ölçütleri karşıladığınızı doğrulayın:
     *  NVA sanal ağında bir veya birden çok sanal ağ bağlantısı olabilir. Bu makalede, NVA sanal ağına ' dolaylı bağlı bileşen VNet ' olarak değineceğiz. Bu sanal ağlar, VNet eşlemesi kullanılarak NVA VNet 'e bağlanabilir. VNet eşleme bağlantıları, VNet 1, VNet 2 ve NVA VNet arasında yukarıdaki şekilde siyah oklara göre gösterilmiştir.
 *  İki sanal ağ oluşturdunuz. Bunlar, bağlı olan VNET 'ler olarak kullanılacaktır.
 
-    * VNet bağlı bileşen adres alanları şunlardır: VNet1:10.0.2.0/24 ve VNet2:10.0.3.0/24. Sanal ağ oluşturma hakkında bilgilere ihtiyacınız varsa bkz. [sanal ağ oluşturma](../virtual-network/quick-create-portal.md).
+    * VNet bağlı bileşen adres alanları şunlardır: VNet1:10.0.2.0/24 ve VNet2:10.0.3.0/24. Sanal ağ oluşturma hakkında bilgilere ihtiyacınız varsa bkz. [sanal ağ oluşturma](../virtual-network/quick-create-portal.md). VNET1 içinde UDR ve 2 ' nin, NVA 'ya işaret ettiğinden emin olun.
 
     * VNET 'lerden hiçbirinde sanal ağ geçidi olmadığından emin olun.
 

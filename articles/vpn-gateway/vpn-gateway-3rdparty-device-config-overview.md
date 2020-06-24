@@ -4,15 +4,15 @@ description: Bu makalede, Azure VPN ağ geçitlerine bağlanmak için ortak VPN 
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 00291373ae1e30eca2fdf5f9435fc2201a492e40
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279409"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84988076"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>İş ortağı VPN cihaz yapılandırmalarına genel bakış
 Bu makalede, Azure VPN ağ geçitlerine bağlanmak için şirket içi VPN cihazlarını yapılandırmaya ilişkin bir genel bakış sunulmaktadır. Aynı parametreleri kullanarak farklı şirket içi VPN cihaz yapılandırmalarına nasıl bağlanakullanacağınızı göstermek için örnek bir Azure sanal ağ ve VPN ağ geçidi kurulumu kullanılır.
@@ -32,7 +32,7 @@ Tek bir VPN tüneli ayarlamaya yönelik adım adım yönergeler için bkz. [site
 ### <a name="connection-parameters"></a>Bağlantı parametreleri
 Bu bölümde, önceki bölümlerde açıklanan örneklerin parametreleri listelenmektedir.
 
-| **Parametre**                | **Deeri**                    |
+| **Parametre**                | **Değer**                    |
 | ---                          | ---                          |
 | Sanal ağ adresi önekleri        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN ağ geçidi IP 'si         | Azure VPN Gateway IP 'si         |

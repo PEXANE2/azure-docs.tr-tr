@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243945"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690040"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API Management şablonu veri modeli başvurusu
 Bu konu başlığı altında, Azure API Management geliştirici portalı şablonlarının veri modellerinde kullanılan ortak öğelerin varlık ve tür gösterimleri açıklanmaktadır.  
@@ -36,8 +36,8 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 -   [Uygulama](#Application)  
 -   [Ek](#Attachment)  
 -   [Kod örneği](#Sample)  
--   [Açıklamanın](#Comment)  
--   [Menin](#Filtering)  
+-   [Yorum](#Comment)  
+-   [Filtreleme](#Filtering)  
 -   [Üst bilgi](#Header)  
 -   [HTTP İsteği](#HTTPRequest)  
 -   [HTTP yanıtı](#HTTPResponse)  
@@ -47,7 +47,7 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 -   [İşlem menü öğesi](#MenuItem)  
 -   [Sayfalama](#Paging)  
 -   [Parametre](#Parameter)  
--   [Ürünüyle](#Product)  
+-   [Ürün](#Product)  
 -   [Sağlayıcı](#Provider)  
 -   [İmle](#Representation)  
 -   [Abonelik](#Subscription)  
@@ -57,63 +57,63 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 -   [Kullanıcı kaydı](#UserSignUp)  
   
 ##  <a name="api"></a><a name="API"></a>'SINDEKI  
- `API` Varlık aşağıdaki özelliklere sahiptir:  
+ `API`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`id`|string|Kaynak tanımlayıcısı. API 'YI geçerli API Management hizmet örneği içinde benzersiz şekilde tanımlar. Değer, bir API tanımlayıcısı olduğu biçiminde `apis/{id}` `{id}` geçerli bir göreli URL 'dir. Bu özellik salt okunur durumdadır.|  
+|`id`|dize|Kaynak tanımlayıcısı. API 'YI geçerli API Management hizmet örneği içinde benzersiz şekilde tanımlar. Değer, `apis/{id}` BIR API tanımlayıcısı olduğu biçiminde geçerli bir GÖRELI URL 'dir `{id}` . Bu özellik salt okunur durumdadır.|  
 |`name`|string|API 'nin adı. Boş olmamalıdır. Maksimum Uzunluk 100 karakterdir.|  
 |`description`|string|API 'nin açıklaması. Boş olmamalıdır. HTML biçimlendirme etiketleri içerebilir. Maksimum uzunluk 1000 karakterdir.|  
 |`serviceUrl`|string|Bu API 'YI uygulayan arka uç hizmetinin mutlak URL 'SI.|  
 |`path`|string|Göreli URL, bu API 'yi ve API Management hizmeti örneğindeki tüm kaynak yollarını benzersiz bir şekilde tanımlar. Bu API için genel bir URL oluşturmak üzere hizmet örneği oluşturma sırasında belirtilen API uç noktası taban URL 'sine eklenir.|  
-|`protocols`|sayı dizisi|Bu API 'deki işlemlerin hangi protokolde çağrılabileceğini açıklar. İzin verilen değerler `1 - http` ve `2 - https`veya her ikisi.|  
+|`protocols`|sayı dizisi|Bu API 'deki işlemlerin hangi protokolde çağrılabileceğini açıklar. İzin verilen değerler `1 - http` ve `2 - https` veya her ikisi.|  
 |`authenticationSettings`|[Yetkilendirme sunucusu kimlik doğrulama ayarları](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Bu API 'ye dahil edilen kimlik doğrulama ayarları koleksiyonu.|  
-|`subscriptionKeyParameterNames`|object|Abonelik anahtarını içeren sorgu ve/veya üst bilgi parametrelerine ilişkin özel adları belirtmek için kullanılabilen isteğe bağlı özellik. Bu özellik varsa, aşağıdaki iki özellikten en az birini içermesi gerekir.<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
+|`subscriptionKeyParameterNames`|nesne|Abonelik anahtarını içeren sorgu ve/veya üst bilgi parametrelerine ilişkin özel adları belirtmek için kullanılabilen isteğe bağlı özellik. Bu özellik varsa, aşağıdaki iki özellikten en az birini içermesi gerekir.<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
 ##  <a name="api-summary"></a><a name="APISummary"></a>API Özeti  
- `API summary` Varlık aşağıdaki özelliklere sahiptir:  
+ `API summary`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`id`|string|Kaynak tanımlayıcısı. API 'YI geçerli API Management hizmet örneği içinde benzersiz şekilde tanımlar. Değer, bir API tanımlayıcısı olduğu biçiminde `apis/{id}` `{id}` geçerli bir göreli URL 'dir. Bu özellik salt okunur durumdadır.|  
+|`id`|dize|Kaynak tanımlayıcısı. API 'YI geçerli API Management hizmet örneği içinde benzersiz şekilde tanımlar. Değer, `apis/{id}` BIR API tanımlayıcısı olduğu biçiminde geçerli bir GÖRELI URL 'dir `{id}` . Bu özellik salt okunur durumdadır.|  
 |`name`|string|API 'nin adı. Boş olmamalıdır. Maksimum Uzunluk 100 karakterdir.|  
 |`description`|string|API 'nin açıklaması. Boş olmamalıdır. HTML biçimlendirme etiketleri içerebilir. Maksimum uzunluk 1000 karakterdir.|  
   
 ##  <a name="application"></a><a name="Application"></a>Uygulamanızı  
- `application` Varlık aşağıdaki özelliklere sahiptir:  
+ `application`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`Id`|string|Uygulamanın benzersiz tanımlayıcısı.|  
+|`Id`|dize|Uygulamanın benzersiz tanımlayıcısı.|  
 |`Title`|string|Uygulamanın başlığı.|  
 |`Description`|string|Uygulamanın açıklaması.|  
 |`Url`|URI|Uygulamanın URI 'SI.|  
 |`Version`|string|Uygulamanın sürüm bilgileri.|  
 |`Requirements`|string|Uygulama gereksinimlerinin açıklaması.|  
-|`State`|number|Uygulamanın geçerli durumu.<br /><br /> -0-kayıtlı<br /><br /> -1-gönderildi<br /><br /> -2-yayımlandı<br /><br /> -3-reddedildi<br /><br /> -4-yayımdan kaldırıldı|  
+|`State`|sayı|Uygulamanın geçerli durumu.<br /><br /> -0-kayıtlı<br /><br /> -1-gönderildi<br /><br /> -2-yayımlandı<br /><br /> -3-reddedildi<br /><br /> -4-yayımdan kaldırıldı|  
 |`RegistrationDate`|DateTime|Uygulamanın kaydedildiği tarih ve saat.|  
-|`CategoryId`|number|Uygulamanın kategorisi (Finans, eğlence, vb.)|  
+|`CategoryId`|sayı|Uygulamanın kategorisi (Finans, eğlence, vb.)|  
 |`DeveloperId`|string|Uygulamayı gönderen geliştiricinin benzersiz tanıtıcısı.|  
 |`Attachments`|[Ek](#Attachment) varlıkların koleksiyonu.|Uygulamanın ekran görüntüleri veya simgeleri gibi ekleri.|  
 |`Icon`|[Ek](#Attachment)|Uygulamanın simgesi.|  
   
 ##  <a name="attachment"></a><a name="Attachment"></a>Ekindeki  
- `attachment` Varlık aşağıdaki özelliklere sahiptir:  
+ `attachment`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`UniqueId`|string|Ek için benzersiz tanımlayıcı.|  
+|`UniqueId`|dize|Ek için benzersiz tanımlayıcı.|  
 |`Url`|string|Kaynağın URL 'SI.|  
 |`Type`|string|Ek türü.|  
 |`ContentType`|string|Ekin medya türü.|  
   
 ##  <a name="code-sample"></a><a name="Sample"></a>Kod örneği  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`title`|string|İşlemin adı.|  
+|`title`|dize|İşlemin adı.|  
 |`snippet`|string|Bu özellik kullanım dışıdır ve kullanılmamalıdır.|  
-|`brush`|string|Kod örneği görüntülenirken kullanılacak olan kod sözdizimi şablonu. İzin verilen değerler `plain`, `php` `java` `xml` `objc`,,,, `python`, `ruby`ve `csharp`.|  
+|`brush`|string|Kod örneği görüntülenirken kullanılacak olan kod sözdizimi şablonu. İzin verilen değerler,,,,, `plain` `php` `java` `xml` `objc` `python` , `ruby` ve `csharp` .|  
 |`template`|string|Bu kod örneği şablonunun adı.|  
 |`body`|string|Kod parçacığının kod örnek bölümü için yer tutucu.|  
 |`method`|string|İşlemin HTTP yöntemi.|  
@@ -125,21 +125,21 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 |`parameters`|[Parametre](#Parameter) varlıklarının koleksiyonu.|Bu işlem için tanımlanan parametreler.|  
   
 ##  <a name="comment"></a><a name="Comment"></a>Açıklamanın  
- `API` Varlık aşağıdaki özelliklere sahiptir:  
+ `API`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`Id`|number|Açıklamanın KIMLIĞI.|  
+|`Id`|sayı|Açıklamanın KIMLIĞI.|  
 |`CommentText`|string|Açıklamanın gövdesi. HTML içerebilir.|  
 |`DeveloperCompany`|string|Geliştiricinin şirket adı.|  
 |`PostedOn`|DateTime|Yorumun gönderildiği tarih ve saat.|  
   
 ##  <a name="issue"></a><a name="Issue"></a>Konuda  
- `issue` Varlık aşağıdaki özelliklere sahiptir.  
+ `issue`Varlık aşağıdaki özelliklere sahiptir.  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`Id`|string|Sorun için benzersiz tanımlayıcı.|  
+|`Id`|dize|Sorun için benzersiz tanımlayıcı.|  
 |`ApiID`|string|Bu sorunun bildirildiği API 'nin KIMLIĞI.|  
 |`Title`|string|Sorunun başlığı.|  
 |`Description`|string|Sorunun açıklaması.|  
@@ -151,19 +151,19 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 |`Services`|[API](#API) varlıkları koleksiyonu.|API 'Ler, sorunu dosyalayan Kullanıcı tarafından abone oldu.|  
   
 ##  <a name="filtering"></a><a name="Filtering"></a>Menin  
- `filtering` Varlık aşağıdaki özelliklere sahiptir:  
+ `filtering`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`Pattern`|string|Geçerli arama terimi; veya `null` arama terimi yoksa.|  
+|`Pattern`|dize|Geçerli arama terimi; veya `null` arama terimi yoksa.|  
 |`Placeholder`|string|Arama terimi belirtilmediğinde arama kutusunda görüntülenecek metin.|  
   
 ##  <a name="header"></a><a name="Header"></a>Üst bilgi  
- Bu bölümde `parameter` temsil açıklanmaktadır.  
+ Bu bölümde temsil açıklanmaktadır `parameter` .  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|-----------------|----------|  
-|`name`|string|Parametre adı.|  
+|`name`|dize|Parametre adı.|  
 |`description`|string|Parametre açıklaması.|  
 |`value`|string|Üst bilgi değeri.|  
 |`typeName`|string|Üst bilgi değerinin veri türü.|  
@@ -172,33 +172,33 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 |`readOnly`|boole|Üstbilginin Salt okunabilir olup olmadığı.|  
   
 ##  <a name="http-request"></a><a name="HTTPRequest"></a>HTTP Isteği  
- Bu bölümde `request` temsil açıklanmaktadır.  
+ Bu bölümde temsil açıklanmaktadır `request` .  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`description`|string|İşlem isteği açıklaması.|  
+|`description`|dize|İşlem isteği açıklaması.|  
 |`headers`|[üst bilgi](#Header) varlıkları dizisi.|İstek üst bilgileri.|  
 |`parameters`|[parametre](#Parameter) dizisi|İşlem isteği parametreleri koleksiyonu.|  
 |`representations`|[temsili](#Representation) dizisi|İşlem isteği temsilleri koleksiyonu.|  
   
 ##  <a name="http-response"></a><a name="HTTPResponse"></a>HTTP yanıtı  
- Bu bölümde `response` temsil açıklanmaktadır.  
+ Bu bölümde temsil açıklanmaktadır `response` .  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
 |`statusCode`|pozitif tamsayı|İşlem yanıtı durum kodu.|  
 |`description`|string|İşlem yanıtı açıklaması.|  
 |`representations`|[temsili](#Representation) dizisi|İşlem yanıtı temsilleri koleksiyonu.|  
   
 ##  <a name="operation"></a><a name="Operation"></a>Çalışmasını  
- `operation` Varlık aşağıdaki özelliklere sahiptir:  
+ `operation`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`id`|string|Kaynak tanımlayıcısı. İşlemi geçerli API Management hizmet örneği içinde benzersiz şekilde tanımlar. Değer, bir API tanımlayıcısı olduğu ve `apis/{aid}/operations/{id}` `{aid}` `{id}` bir işlem tanımlayıcısı olan biçiminde geçerli bir göreli URL 'dir. Bu özellik salt okunur durumdadır.|  
+|`id`|dize|Kaynak tanımlayıcısı. İşlemi geçerli API Management hizmet örneği içinde benzersiz şekilde tanımlar. Değer, `apis/{aid}/operations/{id}` `{aid}` bir API tanımlayıcısı olduğu ve bir işlem tanımlayıcısı olan biçiminde geçerli BIR göreli URL 'dir `{id}` . Bu özellik salt okunur durumdadır.|  
 |`name`|string|İşlemin adı. Boş olmamalıdır. Maksimum Uzunluk 100 karakterdir.|  
 |`description`|string|İşlemin açıklaması. Boş olmamalıdır. HTML biçimlendirme etiketleri içerebilir. Maksimum uzunluk 1000 karakterdir.|  
-|`scheme`|string|Bu API 'deki işlemlerin hangi protokolde çağrılabileceğini açıklar. İzin verilen değerler `http`, `https`, veya her `http` ikisi `https`ve.|  
+|`scheme`|string|Bu API 'deki işlemlerin hangi protokolde çağrılabileceğini açıklar. İzin verilen değerler `http` ,, `https` veya her ikisi `http` ve `https` .|  
 |`uriTemplate`|string|Bu işlemin hedef kaynağını tanımlayan göreli URL şablonu. Parametreleri içerebilir. Örnek: `customers/{cid}/orders/{oid}/?date={date}`|  
 |`host`|string|API 'yi barındıran API Management ağ geçidi URL 'SI.|  
 |`httpMethod`|string|İşlem HTTP metodu.|  
@@ -206,96 +206,96 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 |`responses`|[http yanıtı](#HTTPResponse) dizisi|İşlem [http yanıtı](#HTTPResponse) varlıkları dizisi.|  
   
 ##  <a name="operation-menu"></a><a name="Menu"></a>İşlem menüsü  
- `operation menu` Varlık aşağıdaki özelliklere sahiptir:  
+ `operation menu`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`ApiId`|string|Geçerli API 'nin KIMLIĞI.|  
+|`ApiId`|dize|Geçerli API 'nin KIMLIĞI.|  
 |`CurrentOperationId`|string|Geçerli işlemin KIMLIĞI.|  
 |`Action`|string|Menü türü.|  
 |`MenuItems`|[İşlem menüsü öğe](#MenuItem) varlıkları koleksiyonu.|Geçerli API için işlemler.|  
   
 ##  <a name="operation-menu-item"></a><a name="MenuItem"></a>İşlem menü öğesi  
- `operation menu item` Varlık aşağıdaki özelliklere sahiptir:  
+ `operation menu item`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`Id`|string|İşlemin KIMLIĞI.|  
+|`Id`|dize|İşlemin KIMLIĞI.|  
 |`Title`|string|İşlemin açıklaması.|  
 |`HttpMethod`|string|İşlemin http yöntemi.|  
   
 ##  <a name="paging"></a><a name="Paging"></a>Sayfalamayı  
- `paging` Varlık aşağıdaki özelliklere sahiptir:  
+ `paging`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`Page`|number|Geçerli sayfa numarası.|  
-|`PageSize`|number|Tek bir sayfada görüntülenecek en fazla sonuç.|  
-|`TotalItemCount`|number|Görüntülenecek öğe sayısı.|  
+|`Page`|sayı|Geçerli sayfa numarası.|  
+|`PageSize`|sayı|Tek bir sayfada görüntülenecek en fazla sonuç.|  
+|`TotalItemCount`|sayı|Görüntülenecek öğe sayısı.|  
 |`ShowAll`|boole|Tüm sonuçların tek bir sayfada gösterilip gösterilmeyeceğini belirtir.|  
-|`PageCount`|number|Sonuçların sayfa sayısı.|  
+|`PageCount`|sayı|Sonuçların sayfa sayısı.|  
   
 ##  <a name="parameter"></a><a name="Parameter"></a>Parametresinin  
- Bu bölümde `parameter` temsil açıklanmaktadır.  
+ Bu bölümde temsil açıklanmaktadır `parameter` .  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|-----------------|----------|  
-|`name`|string|Parametre adı.|  
+|`name`|dize|Parametre adı.|  
 |`description`|string|Parametre açıklaması.|  
 |`value`|string|Parametre değeri.|  
 |`options`|dize dizisi|Sorgu parametresi değerleri için tanımlanan değerler.|  
 |`required`|boole|Parametrenin gerekli olup olmadığını belirtir.|  
-|`kind`|number|Bu parametrenin bir yol parametresi (1) veya QueryString parametresi (2) olup olmadığı.|  
+|`kind`|sayı|Bu parametrenin bir yol parametresi (1) veya QueryString parametresi (2) olup olmadığı.|  
 |`typeName`|string|Parametre türü.|  
   
 ##  <a name="product"></a><a name="Product"></a>Ürünüyle  
- `product` Varlık aşağıdaki özelliklere sahiptir:  
+ `product`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`Id`|string|Kaynak tanımlayıcısı. Ürünü geçerli API Management hizmet örneği içinde benzersiz şekilde tanımlar. Değer, bir ürün tanımlayıcısı olan biçiminde `products/{pid}` `{pid}` geçerli bir göreli URL 'dir. Bu özellik salt okunur durumdadır.|  
+|`Id`|dize|Kaynak tanımlayıcısı. Ürünü geçerli API Management hizmet örneği içinde benzersiz şekilde tanımlar. Değer, `products/{pid}` bir ürün tanımlayıcısı olan biçiminde geçerli bir GÖRELI URL 'dir `{pid}` . Bu özellik salt okunur durumdadır.|  
 |`Title`|string|Ürünün adı. Boş olmamalıdır. Maksimum Uzunluk 100 karakterdir.|  
 |`Description`|string|Ürünün açıklaması. Boş olmamalıdır. HTML biçimlendirme etiketleri içerebilir. Maksimum uzunluk 1000 karakterdir.|  
 |`Terms`|string|Ürün kullanım koşulları. Ürüne abone olmayı deneyen geliştiriciler, abonelik işlemini tamamlayabilmeleri için önce bu koşulları kabul etmek üzere sunulacaktır ve gerekli olacaktır.|  
-|`ProductState`|number|Ürünün yayınlanıp yayımlanmadığını belirtir. Yayımlanan ürünler geliştirici portalındaki geliştiriciler tarafından bulunabilir. Yayımlanmamış ürünler yalnızca yöneticiler tarafından görülebilir.<br /><br /> Ürün durumu için izin verilen değerler şunlardır:<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
+|`ProductState`|sayı|Ürünün yayınlanıp yayımlanmadığını belirtir. Yayımlanan ürünler geliştirici portalındaki geliştiriciler tarafından bulunabilir. Yayımlanmamış ürünler yalnızca yöneticiler tarafından görülebilir.<br /><br /> Ürün durumu için izin verilen değerler şunlardır:<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
 |`AllowMultipleSubscriptions`|boole|Bir kullanıcının aynı anda bu ürüne birden fazla aboneliğine sahip olup olmayacağını belirtir.|  
-|`MultipleSubscriptionsCount`|number|Bu ürüne bir kullanıcının aynı anda sahip olmasına izin verilen maksimum abonelik sayısı.|  
+|`MultipleSubscriptionsCount`|sayı|Bu ürüne bir kullanıcının aynı anda sahip olmasına izin verilen maksimum abonelik sayısı.|  
   
 ##  <a name="provider"></a><a name="Provider"></a>Sağlayıcısını  
- `provider` Varlık aşağıdaki özelliklere sahiptir:  
+ `provider`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
 |`Properties`|dize sözlüğü|Bu kimlik doğrulama sağlayıcısının özellikleri.|  
 |`AuthenticationType`|string|Sağlayıcı türü. (Azure Active Directory, Facebook oturum açma, Google hesabı, Microsoft hesabı, Twitter).|  
 |`Caption`|string|Sağlayıcının görünen adı.|  
   
 ##  <a name="representation"></a><a name="Representation"></a>İmle  
- Bu bölümde bir `representation`açıklanır.  
+ Bu bölümde bir açıklanır `representation` .  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`contentType`|string|Bu gösterim için kayıtlı veya özel bir içerik türü belirtir, örneğin `application/xml`.|  
+|`contentType`|dize|Bu gösterim için kayıtlı veya özel bir içerik türü belirtir, örneğin `application/xml` .|  
 |`sample`|string|Gösterimine bir örnek.|  
   
 ##  <a name="subscription"></a><a name="Subscription"></a>Aboneliğiniz  
- `subscription` Varlık aşağıdaki özelliklere sahiptir:  
+ `subscription`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`Id`|string|Kaynak tanımlayıcısı. Geçerli API Management hizmet örneği içinde aboneliği benzersiz şekilde tanımlar. Değer, `subscriptions/{sid}` nerede `{sid}` bir abonelik tanımlayıcısı olduğu BIÇIMINDE geçerli bir göreli URL 'dir. Bu özellik salt okunur durumdadır.|  
-|`ProductId`|string|Abone olunan ürünün ürün kaynak tanımlayıcısı. Değer, bir ürün tanımlayıcısı olan biçiminde `products/{pid}` `{pid}` geçerli bir göreli URL 'dir.|  
+|`Id`|dize|Kaynak tanımlayıcısı. Geçerli API Management hizmet örneği içinde aboneliği benzersiz şekilde tanımlar. Değer, `subscriptions/{sid}` nerede bir abonelik tanımlayıcısı olduğu biçiminde geçerli bir GÖRELI URL 'dir `{sid}` . Bu özellik salt okunur durumdadır.|  
+|`ProductId`|string|Abone olunan ürünün ürün kaynak tanımlayıcısı. Değer, `products/{pid}` bir ürün tanımlayıcısı olan biçiminde geçerli bir GÖRELI URL 'dir `{pid}` .|  
 |`ProductTitle`|string|Ürünün adı. Boş olmamalıdır. Maksimum Uzunluk 100 karakterdir.|  
 |`ProductDescription`|string|Ürünün açıklaması. Boş olmamalıdır. HTML biçimlendirme etiketleri içerebilir. Maksimum uzunluk 1000 karakterdir.|  
 |`ProductDetailsUrl`|string|Ürün ayrıntılarının göreli URL 'SI.|  
 |`state`|string|Aboneliğin durumu. Olası durumlar şunlardır:<br /><br /> - `0 - suspended`– abonelik engellenir ve abone ürünün herhangi bir API 'sini çağıramaz.<br /><br /> - `1 - active`– Abonelik etkin.<br /><br /> - `2 - expired`– abonelik sona erme tarihine ulaştı ve devre dışı bırakıldı.<br /><br /> - `3 - submitted`– abonelik isteği geliştirici tarafından yapıldı, ancak henüz onaylanmamış veya reddedildi.<br /><br /> - `4 - rejected`– abonelik isteği bir yönetici tarafından reddedildi.<br /><br /> - `5 - cancelled`– abonelik, geliştirici veya yönetici tarafından iptal edildi.|  
 |`DisplayName`|string|Aboneliğin görünen adı.|  
-|`CreatedDate`|tarih saat|Aboneliğin oluşturulduğu tarih, ISO 8601 biçiminde: `2014-06-24T16:25:00Z`.|  
+|`CreatedDate`|tarih saat|Aboneliğin oluşturulduğu tarih, ISO 8601 biçiminde: `2014-06-24T16:25:00Z` .|  
 |`CanBeCancelled`|boole|Aboneliğin geçerli kullanıcı tarafından iptal edilip edilmeyeceğini belirtir.|  
 |`IsAwaitingApproval`|boole|Aboneliğin onay bekliyor olup olmadığı.|  
-|`StartDate`|tarih saat|Aboneliğin başlangıç tarihi, ISO 8601 biçiminde: `2014-06-24T16:25:00Z`.|  
-|`ExpirationDate`|tarih saat|Aboneliğin son kullanma tarihi, ISO 8601 biçiminde: `2014-06-24T16:25:00Z`.|  
-|`NotificationDate`|tarih saat|Aboneliğin bildirim tarihi, ISO 8601 biçiminde: `2014-06-24T16:25:00Z`.|  
+|`StartDate`|tarih saat|Aboneliğin başlangıç tarihi, ISO 8601 biçiminde: `2014-06-24T16:25:00Z` .|  
+|`ExpirationDate`|tarih saat|Aboneliğin son kullanma tarihi, ISO 8601 biçiminde: `2014-06-24T16:25:00Z` .|  
+|`NotificationDate`|tarih saat|Aboneliğin bildirim tarihi, ISO 8601 biçiminde: `2014-06-24T16:25:00Z` .|  
 |`primaryKey`|string|Birincil abonelik anahtarı. Maksimum uzunluk 256 karakterdir.|  
 |`secondaryKey`|string|İkincil abonelik anahtarı. Maksimum uzunluk 256 karakterdir.|  
 |`CanBeRenewed`|boole|Aboneliğin geçerli kullanıcı tarafından yenilenebilir olup olmadığı.|  
@@ -305,19 +305,19 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 |`RenewUrl`|string|Aboneliği yenilemek için göreli URL.|  
   
 ##  <a name="subscription-summary"></a><a name="SubscriptionSummary"></a>Abonelik Özeti  
- `subscription summary` Varlık aşağıdaki özelliklere sahiptir:  
+ `subscription summary`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`Id`|string|Kaynak tanımlayıcısı. Geçerli API Management hizmet örneği içinde aboneliği benzersiz şekilde tanımlar. Değer, `subscriptions/{sid}` nerede `{sid}` bir abonelik tanımlayıcısı olduğu BIÇIMINDE geçerli bir göreli URL 'dir. Bu özellik salt okunur durumdadır.|  
+|`Id`|dize|Kaynak tanımlayıcısı. Geçerli API Management hizmet örneği içinde aboneliği benzersiz şekilde tanımlar. Değer, `subscriptions/{sid}` nerede bir abonelik tanımlayıcısı olduğu biçiminde geçerli bir GÖRELI URL 'dir `{sid}` . Bu özellik salt okunur durumdadır.|  
 |`DisplayName`|string|Aboneliğin görünen adı|  
   
 ##  <a name="user-account-info"></a><a name="UserAccountInfo"></a>Kullanıcı hesabı bilgileri  
- `user account info` Varlık aşağıdaki özelliklere sahiptir:  
+ `user account info`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`FirstName`|string|Ad. Boş olmamalıdır. Maksimum Uzunluk 100 karakterdir.|  
+|`FirstName`|dize|Ad. Boş olmamalıdır. Maksimum Uzunluk 100 karakterdir.|  
 |`LastName`|string|Soyadı. Boş olmamalıdır. Maksimum Uzunluk 100 karakterdir.|  
 |`Email`|string|E-posta adresi. Boş olmamalı ve hizmet örneği içinde benzersiz olmalıdır. Maksimum uzunluk 254 karakterdir.|  
 |`Password`|string|Kullanıcı hesabı parolası.|  
@@ -326,11 +326,11 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 |`IsBasicAccount`|boole|Bu hesap e-posta ve parola kullanılarak kaydedilmişse doğru; hesap bir sağlayıcı kullanılarak kaydedilmişse false.|  
   
 ##  <a name="user-sign-in"></a><a name="UseSignIn"></a>Kullanıcı oturum açma  
- `user sign in` Varlık aşağıdaki özelliklere sahiptir:  
+ `user sign in`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`Email`|string|E-posta adresi. Boş olmamalı ve hizmet örneği içinde benzersiz olmalıdır. Maksimum uzunluk 254 karakterdir.|  
+|`Email`|dize|E-posta adresi. Boş olmamalı ve hizmet örneği içinde benzersiz olmalıdır. Maksimum uzunluk 254 karakterdir.|  
 |`Password`|string|Kullanıcı hesabı parolası.|  
 |`ReturnUrl`|string|Kullanıcının oturum açma tıkladığını sayfanın URL 'SI.|  
 |`RememberMe`|boole|Geçerli kullanıcının bilgilerinin kaydedilip edilmeyeceğini belirtir.|  
@@ -344,15 +344,15 @@ Bu konu başlığı altında, Azure API Management geliştirici portalı şablon
 |`UserRegistrationTermsEnabled`|boole|Koşulların etkinleştirilip etkinleştirilmeyeceğini belirtir.|  
   
 ##  <a name="user-sign-up"></a><a name="UserSignUp"></a>Kullanıcı kaydı  
- `user sign up` Varlık aşağıdaki özelliklere sahiptir:  
+ `user sign up`Varlık aşağıdaki özelliklere sahiptir:  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
 |`PasswordConfirm`|boole|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
 |`Password`|string|Kullanıcı hesabı parolası.|  
-|`PasswordVerdictLevel`|number|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
+|`PasswordVerdictLevel`|sayı|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
 |`UserRegistrationTerms`|string|Kullanıcının oturum açmadan önce kabul etmesi gereken koşullar.|  
-|`UserRegistrationTermsOptions`|number|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
+|`UserRegistrationTermsOptions`|sayı|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
 |`ConsentAccepted`|boole|[Kaydolma](api-management-page-controls.md#sign-up)kayıt denetimi tarafından kullanılan değer.|  
 |`Email`|string|E-posta adresi. Boş olmamalı ve hizmet örneği içinde benzersiz olmalıdır. Maksimum uzunluk 254 karakterdir.|  
 |`FirstName`|string|Ad. Boş olmamalıdır. Maksimum Uzunluk 100 karakterdir.|  

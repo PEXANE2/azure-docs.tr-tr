@@ -4,15 +4,15 @@ description: Bu makalede, Azure temel Iç Load Balancer standart genel Load Bala
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: df7b8e6243bc45b5d5bdd8a9a72e81b0946454ff
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 6b4d2a5cf441eb702bc33fc862fec9cc28a998b5
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858401"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809361"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure Iç Load Balancer yükseltme-giden bağlantı gerekli
 [Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](https://docs.microsoft.com/azure/load-balancer/skus#skus). Standart dahili Load Balancer giden bağlantı sağlamadığından, bunun yerine standart bir genel Load Balancer oluşturmak için bir çözüm sağlıyoruz.
@@ -47,10 +47,10 @@ Aşağıdakileri gerçekleştiren bir Azure PowerShell betiği vardır:
 
 Yerel PowerShell ortamınız kuruluma ve tercihlerinize bağlı olarak sizin için iki seçenek vardır:
 
-* Azure az modules yüklü değilse veya Azure az modüllerini kaldırmayı bilmiyorsanız, en iyi seçenek betiği çalıştırmak için `Install-Script` seçeneğini kullanmaktır.
+* Azure az modules yüklü değilse veya Azure az modüllerini kaldırmayı bilmiyorsanız, en iyi seçenek `Install-Script` betiği çalıştırmak için seçeneğini kullanmaktır.
 * Azure az modules tutmanız gerekiyorsa, en iyi sonuç, betiği indirmek ve doğrudan çalıştırmak olacaktır.
 
-Azure az modules yüklü olup olmadığınızı öğrenmek için çalıştırın `Get-InstalledModule -Name az`. Yüklü az modül görmüyorsanız, `Install-Script` yöntemini kullanabilirsiniz.
+Azure az modules yüklü olup olmadığınızı öğrenmek için çalıştırın `Get-InstalledModule -Name az` . Yüklü az modül görmüyorsanız, `Install-Script` yöntemini kullanabilirsiniz.
 
 ### <a name="install-using-the-install-script-method"></a>Install-Script metodunu kullanarak install
 
@@ -68,9 +68,9 @@ Bazı Azure az modülleriniz varsa ve bunları kaldıramıyorsanız (veya kaldı
 
 Betiği çalıştırmak için:
 
-1. Azure `Connect-AzAccount` 'a bağlanmak için kullanın.
+1. `Connect-AzAccount`Azure 'a bağlanmak için kullanın.
 
-1. Az `Import-Module Az` modülleri içeri aktarmak için kullanın.
+1. `Import-Module Az`Az modülleri içeri aktarmak için kullanın.
 
 1. Gerekli parametreleri inceleyin:
 
@@ -81,7 +81,7 @@ Betiği çalıştırmak için:
    * **Newlbname: [dize]: gerekli** – bu, oluşturulacak standart Load Balancer adıdır.
 1. Uygun parametreleri kullanarak betiği çalıştırın. Tamamlanması beş ila yedi dakika sürebilir.
 
-    **Örneğinde**
+    **Örnek**
 
    ```azurepowershell
    AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
@@ -132,7 +132,7 @@ Hayır. Azure PowerShell betiği yalnızca yapılandırmayı geçirir. Gerçek t
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Bu betiği kullanmayla ilgili bazı sorunlarla karşılaştım. Nasıl yardım alabilirim?
   
-Adresine slbupgradesupport@microsoft.combir e-posta gönderebilir, Azure desteğiyle bir destek talebi açabilir veya her ikisini de yapabilirsiniz.
+Adresine bir e-posta gönderebilir slbupgradesupport@microsoft.com , Azure desteğiyle bir destek talebi açabilir veya her ikisini de yapabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

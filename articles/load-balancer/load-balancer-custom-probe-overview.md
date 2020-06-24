@@ -8,18 +8,18 @@ author: asudbring
 manager: kumudD
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 8e79f4c791d0252c719846da3aa8024b0e622dca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a96e22ee8d2f9565ae676574e263beae96b5c1f2
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80477012"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809418"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer durum araştırmaları
 
@@ -118,7 +118,7 @@ Aşağıda, Kaynak Yöneticisi şablonunda bu tür bir araştırma yapılandırm
       },
 ```
 
-### <a name="http--https-probe"></a><a name="httpprobe"></a><a name="httpsprobe"></a> Http/https araştırması
+### <a name="http--https-probe"></a><a name="httpprobe"></a><a name="httpsprobe"></a>Http/https araştırması
 
 >[!NOTE]
 >HTTPS araştırması yalnızca [Standart Load Balancer](load-balancer-standard-overview.md)için kullanılabilir.
@@ -130,7 +130,7 @@ Araştırma bağlantı noktası Ayrıca hizmetin kendisi için de dinleyici olan
 > [!NOTE] 
 > HTTPS araştırması, tüm zincirde en az bir SHA256 imza karması olan sertifikaların kullanılmasını gerektirir.
 
-Cloud Services kullanıyorsanız ve W3wp. exe kullanan Web rollerine sahipseniz, Web sitenizin otomatik olarak izlenmesini de elde edersiniz. Web sitesi kodunuzda oluşan hatalarda yük dengeleyici araştırmasına 200 olmayan bir durum döndürülür.
+Cloud Services kullanırsanız ve w3wp.exe kullanan Web rollerine sahipseniz, Web sitenizin otomatik olarak izlenmesini de elde edersiniz. Web sitesi kodunuzda oluşan hatalarda yük dengeleyici araştırmasına 200 olmayan bir durum döndürülür.
 
 Şu durumlarda bir HTTP/HTTPS araştırması başarısız olur:
 * Araştırma uç noktası 200 dışında bir HTTP yanıt kodu döndürür (örneğin, 403, 404 veya 500). Bu, sistem durumu araştırmasını hemen işaretleyecek. 
@@ -175,7 +175,7 @@ Konuk Aracısı HTTP 200 Tamam ile yanıt veremezse, yük dengeleyici örneği y
 
 Konuk Aracısı bir HTTP 200 ile yanıt verirse, yük dengeleyici yeni akışları bu örneğe yeniden gönderir.
 
-Web rolü kullandığınızda, Web sitesi kodu genellikle, Azure yapısı veya Konuk Aracısı tarafından izlenmeyen W3wp. exe ' de çalışır. W3wp. exe ' deki (örneğin, HTTP 500 yanıtları) sorunlar Konuk aracısına bildirilmedi. Sonuç olarak, yük dengeleyici bu örneği döndürmeden almaz.
+Web rolü kullandığınızda, Web sitesi kodu genellikle Azure yapısı veya Konuk Aracısı tarafından izlenmeyen w3wp.exe çalışır. w3wp.exe hatalarda (örneğin, HTTP 500 yanıtları) Konuk aracısına bildirilmemiştir. Sonuç olarak, yük dengeleyici bu örneği döndürmeden almaz.
 
 <a name="health"></a>
 ## <a name="probe-up-behavior"></a><a name="probehealth"></a>Araştırma davranışı

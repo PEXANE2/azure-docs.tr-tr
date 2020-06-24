@@ -3,7 +3,7 @@ title: Kaynak sınırları
 titleSuffix: Azure SQL Managed Instance
 description: Bu makalede, Azure SQL yönetilen örneği için kaynak sınırlarına genel bir bakış sunulmaktadır.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: 8007966482ba5f046a918ddfc02025e06fadc8d6
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 85d347c45e1ca2cd39c7504e44bd3ea063f788d6
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324190"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708427"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL yönetilen örnek kaynak sınırlarına genel bakış
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -65,7 +65,7 @@ SQL yönetilen örneği iki hizmet katmanına sahiptir: [genel amaçlı](../data
 > [!Important]
 > İş Açısından Kritik hizmet katmanı, salt okunurdur iş yükü için kullanılabilecek SQL yönetilen örneği 'nin (ikincil çoğaltma) ek yerleşik bir kopyasını sağlar. Okuma-yazma sorgularını ve salt okunurdur/analitik/raporlama sorgularını ayırabiliyorsanız, aynı fiyata ait sanal çekirdekler ve belleğin iki katına alınması gerekir. İkincil çoğaltma, birincil örneğinin arkasında birkaç saniye geciktelebilirler, bu nedenle, tam olarak geçerli veri durumunun gerekli olmadığı raporlama/analiz iş yüklerini boşaltmak üzere tasarlanmıştır. Aşağıdaki tabloda, salt yazılır **sorgular** , ikincil çoğaltmada yürütülen sorgulardır.
 
-| **Öne çıkan özelliği** | **Genel Amaçlı** | **İş Açısından Kritik** |
+| **Özellik** | **Genel Amaçlı** | **İş Açısından Kritik** |
 | --- | --- | --- |
 | Sanal çekirdek sayısı\* | 4. nesil: 8, 16, 24<br/>5. nesil: 4, 8, 16, 24, 32, 40, 64, 80 | 4. nesil: 8, 16, 24 <br/> 5. nesil: 4, 8, 16, 24, 32, 40, 64, 80 <br/>\*Salt okuma sorguları için aynı sayıda sanal çekirdek ayrılmış. |
 | Maksimum bellek | 4. nesil: 56 GB-168 GB (7GB/sanal çekirdek)<br/>5. nesil: 20,4 GB-408 GB (5.1 GB/sanal çekirdek)<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. | 4. nesil: 56 GB-168 GB (7GB/sanal çekirdek)<br/>Okuma-yazma sorguları için 5. nesil: 20,4 GB-408 GB (5.1 GB/vCore)<br/>+ salt okuma sorguları için + ek 20,4 GB-408 GB (5.1 GB/vCore).<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. |

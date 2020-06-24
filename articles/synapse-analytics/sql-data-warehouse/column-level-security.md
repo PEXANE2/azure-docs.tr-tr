@@ -6,18 +6,18 @@ author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/19/2020
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: b0a783ad5db86ca783ff1cebceec8d77ab528047
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4da74c01f732f3a62d29847d5f61934dede9778
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687932"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208102"
 ---
 # <a name="column-level-security"></a>Sütun düzeyinde güvenlik
 
@@ -32,7 +32,7 @@ Sütun düzeyinde güvenlik, uygulamanızda güvenliğin tasarımını ve kodlam
 
 ![CLS](./media/column-level-security/cls.png)
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```syntaxsql
 GRANT <permission> [ ,...n ] ON
@@ -52,9 +52,9 @@ GRANT <permission> [ ,...n ] ON
 
 ## <a name="example"></a>Örnek
 
-Aşağıdaki örnek, `TestUser` `SSN` `Membership` tablosunun sütununa erişimi nasıl kısıtlayabileceğini gösterir:
+Aşağıdaki örnek, `TestUser` tablosunun sütununa erişimi nasıl kısıtlayabileceğini gösterir `SSN` `Membership` :
 
-Sosyal `Membership` güvenlik numaralarını depolamak IÇIN kullanılan SSK sütunuyla tablo oluşturun:
+`Membership`Sosyal güvenlik numaralarını depolamak için kullanılan SSK sütunuyla tablo oluşturun:
 
 ```sql
 CREATE TABLE Membership
@@ -66,13 +66,13 @@ CREATE TABLE Membership
    Email varchar(100) NULL);
 ```
 
-Hassas `TestUser` verilere sahıp olan SSK sütunu dışındaki tüm sütunlara erişime izin ver:
+`TestUser`Hassas verilere sahip olan SSK sütunu dışındaki tüm sütunlara erişime izin ver:
 
 ```sql
 GRANT SELECT ON Membership(MemberID, FirstName, LastName, Phone, Email) TO TestUser;
 ```
 
-Olarak `TestUser` yürütülen sorgular, SSN sütununu içeriyorsa başarısız olur:
+Olarak yürütülen sorgular `TestUser` , SSN sütununu içeriyorsa başarısız olur:
 
 ```sql
 SELECT * FROM Membership;
@@ -81,7 +81,7 @@ SELECT * FROM Membership;
 -- The SELECT permission was denied on the column 'SSN' of the object 'Membership', database 'CLS_TestDW', schema 'dbo'.
 ```
 
-## <a name="use-cases"></a>Kullanım örnekleri
+## <a name="use-cases"></a>Kullanım Örnekleri
 
 Sütun düzeyi güvenliğin bugün nasıl kullanıldığı hakkında bazı örnekler:
 

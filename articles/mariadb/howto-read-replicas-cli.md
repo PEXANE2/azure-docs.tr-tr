@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/21/2020
-ms.openlocfilehash: c5062bce572fbeda4143902ae6a04b31b9a89754
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/10/2020
+ms.openlocfilehash: ddcfea684a22c9ad06197086b3e74700df755da1
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025059"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708000"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Azure CLı ve REST API kullanarak MariaDB için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
 
@@ -30,18 +30,21 @@ Azure CLı kullanarak okuma çoğaltmaları oluşturabilir ve yönetebilirsiniz.
 
 ### <a name="create-a-read-replica"></a>Okuma çoğaltması oluşturma
 
+> [!IMPORTANT]
+> Var olan çoğaltmaları olmayan bir ana öğe için bir çoğaltma oluşturduğunuzda, ana, önce kendisini çoğaltma için hazırlamak üzere yeniden başlatılır. Bunu dikkate alın ve yoğun bir süre boyunca bu işlemleri gerçekleştirin.
+
 Aşağıdaki komut kullanılarak bir okuma çoğaltması sunucusu oluşturulabilir:
 
 ```azurecli-interactive
 az mariadb server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup
 ```
 
-`az mariadb server replica create` Komut aşağıdaki parametreleri gerektirir:
+`az mariadb server replica create`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Örnek değer | Açıklama  |
+| Ayar | Örnek değer | Description  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Çoğaltma sunucusunun oluşturulacağı kaynak grubu.  |
-| ad | mydemoreplicaserver | Oluşturulan yeni çoğaltma sunucusunun adı. |
+| name | mydemoreplicaserver | Oluşturulan yeni çoğaltma sunucusunun adı. |
 | source-server | mydemoserver | Çoğaltılacak var olan ana sunucunun adı veya KIMLIĞI. |
 
 Bir çapraz bölge okuma çoğaltması oluşturmak için `--location` parametresini kullanın. 
@@ -66,9 +69,9 @@ Belirli bir ana sunucu için tüm çoğaltmaları görüntülemek için aşağı
 az mariadb server replica list --server-name mydemoserver --resource-group myresourcegroup
 ```
 
-`az mariadb server replica list` Komut aşağıdaki parametreleri gerektirir:
+`az mariadb server replica list`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Örnek değer | Açıklama  |
+| Ayar | Örnek değer | Description  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Çoğaltma sunucusunun oluşturulacağı kaynak grubu.  |
 | server-name | mydemoserver | Ana sunucunun adı veya KIMLIĞI. |
@@ -84,12 +87,12 @@ Bir okuma çoğaltması sunucusuna çoğaltma, aşağıdaki komut kullanılarak 
 az mariadb server replica stop --name mydemoreplicaserver --resource-group myresourcegroup
 ```
 
-`az mariadb server replica stop` Komut aşağıdaki parametreleri gerektirir:
+`az mariadb server replica stop`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Örnek değer | Açıklama  |
+| Ayar | Örnek değer | Description  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Çoğaltma sunucusunun bulunduğu kaynak grubu.  |
-| ad | mydemoreplicaserver | Çoğaltmayı durdurulacak çoğaltma sunucusunun adı. |
+| name | mydemoreplicaserver | Çoğaltmayı durdurulacak çoğaltma sunucusunun adı. |
 
 ### <a name="delete-a-replica-server"></a>Çoğaltma sunucusunu silme
 
@@ -133,7 +136,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 > [!NOTE]
 > İçinde bir çoğaltma oluşturabileceğiniz bölgeler hakkında daha fazla bilgi edinmek için [çoğaltma kavramlarını oku makalesini](concepts-read-replicas.md)ziyaret edin. 
 
-Parametreyi Genel Amaçlı veya bellek için Iyileştirilmiş ana sunucuda çoğaltma olarak ayarlamadıysanız ve sunucuyu yeniden başlattıktan sonra bir hata alırsınız. **REPLICA** `azure.replication_support` Bir çoğaltma oluşturmadan önce bu iki adımı uygulayın.
+`azure.replication_support`Parametreyi genel amaçlı veya bellek Için iyileştirilmiş ana sunucuda **çoğaltma** olarak ayarlamadıysanız ve sunucuyu yeniden başlattıktan sonra bir hata alırsınız. Bir çoğaltma oluşturmadan önce bu iki adımı uygulayın.
 
 Bir çoğaltma, ana öğe ile aynı işlem ve depolama ayarları kullanılarak oluşturulur. Bir çoğaltma oluşturulduktan sonra, birden fazla ayar ana sunucudan bağımsız olarak değiştirilebilir: işlem oluşturma, sanal çekirdek, depolama ve yedekleme saklama süresi. Fiyatlandırma Katmanı, temel katmandan veya dışında bağımsız olarak da değiştirilebilir.
 

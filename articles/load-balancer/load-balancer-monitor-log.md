@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 7563eb4d22048021886925f6864e3616bed83a75
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 1c8acd2d8055359288608f7bd2e5f54f8c4f6cc3
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858774"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809184"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Genel Temel Yük Dengeleyici için Azure İzleyici günlükleri
 
@@ -38,9 +38,9 @@ Etkinlik günlüğü tüm Kaynak Yöneticisi kaynakları için otomatik olarak e
 [Azure Portal](https://portal.azure.com) oturum açın. Zaten bir yük dengeleyiciniz yoksa devam etmeden önce [yük dengeleyici oluşturun](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
 
 1. Portalda **kaynak grupları**' na tıklayın.
-2. Yük dengeleyicinizin olduğu ** \<kaynak grubu adı>** seçin.
+2. **\<resource-group-name>** Yük dengeleyicinizin nerede olduğunu seçin.
 3. Yük dengeleyiciyi seçin.
-4. **İzleme** > **tanılama ayarlarını**seçin.
+4. **İzleme**  >  **tanılama ayarlarını**seçin.
 5. **Tanılama ayarları** bölmesinde, **Tanılama ayarları**altında **+ Tanılama ayarı Ekle**' yi seçin.
 6. **Tanılama ayarları** oluşturma bölmesinde **ad** alanına **mylbdiagnostics** ' i girin.
 7. **Tanılama ayarları**için üç seçeneğiniz vardır.  Bunlardan birini, ikisini veya üçünü seçebilirsiniz ve her birini gereksinimleriniz için yapılandırabilirsiniz:

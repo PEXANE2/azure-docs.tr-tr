@@ -6,17 +6,17 @@ services: virtual-network
 documentationcenter: na
 author: KumudD
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: cac67e85383f36aee0a1535d69fa075f92bd6dbf
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 38fe9582595969ac92d3468b3b7e8c0a9d793c0c
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267724"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708289"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Ağ güvenlik grubu oluşturma, değiştirme veya silme
 
@@ -57,7 +57,7 @@ Her bir Azure konumu ve aboneliği için kaç ağ güvenlik grubunun oluşturabi
     | **Abonelik** | Aboneliğinizi seçin. |
     | **Kaynak grubu** | Var olan bir kaynak grubunu seçin veya yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin. |
     | **Adı** | Kaynak grubu içinde benzersiz bir metin dizesi girin. |
-    | **Bölge** | İstediğiniz konumu seçin. |
+    | **Geli** | İstediğiniz konumu seçin. |
 
 4. **İncele ve oluştur**’u seçin.
 
@@ -174,7 +174,7 @@ Her bir Azure konumu ve aboneliği için ağ güvenlik grubu başına kaç kural
     | **Hedef bağlantı noktası aralıkları** | Aşağıdakilerden biri:<ul><li>Gibi tek bir bağlantı noktası`80`</li><li>Gibi bir bağlantı noktası aralığı`1024-65535`</li><li>Tek bağlantı noktaları ve/veya bağlantı noktası aralıklarının (örneğin,) virgülle ayrılmış listesi`80, 1024-65535`</li><li>`*`Herhangi bir bağlantı noktasında trafiğe izin vermek için yıldız işareti ()</li></ul> | **Kaynak bağlantı noktası aralıklarında**olduğu gibi, tek veya birden çok bağlantı noktası ve aralığı belirtebilirsiniz. Belirtebileceğiniz sayı için sınırlar vardır. Daha fazla ayrıntı için bkz. [Azure Limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). |
     | **Protokol** | **Any**, **TCP**, **UDP**veya **ICMP** | Kuralı Iletim Denetim Protokolü (TCP), Kullanıcı Datagram Protokolü (UDP) veya Internet Denetim Iletisi Protokolü (ıCMP) ile kısıtlayabilirsiniz. Kuralın tüm protokollere uygulanması için varsayılan değer varsayılandır. |
     | **Eylem** | **Izin ver** veya **Reddet** | Bu ayar, bu kuralın sağlanan kaynak ve hedef yapılandırma için erişim izni verip vermemeyeceğini belirtir. |
-    | **Öncelik** | Ağ güvenlik grubundaki tüm güvenlik kuralları için benzersiz olan 100 ve 4096 arasında bir değer | Azure Güvenlik kurallarını öncelik sırasına göre işler. Sayı ne kadar düşükse öncelik o kadar yüksektir. 100, 200 ve 300 gibi kurallar oluştururken, öncelik numaraları arasında bir boşluk bırakmanız önerilir. Boşlukları bırakmak, daha sonra kuralların daha kolay veya daha düşük öncelikli olmasını sağlamak için daha kolay kurallar eklemenizi sağlar. |
+    | **Priority** | Ağ güvenlik grubundaki tüm güvenlik kuralları için benzersiz olan 100 ve 4096 arasında bir değer | Azure Güvenlik kurallarını öncelik sırasına göre işler. Sayı ne kadar düşükse öncelik o kadar yüksektir. 100, 200 ve 300 gibi kurallar oluştururken, öncelik numaraları arasında bir boşluk bırakmanız önerilir. Boşlukları bırakmak, daha sonra kuralların daha kolay veya daha düşük öncelikli olmasını sağlamak için daha kolay kurallar eklemenizi sağlar. |
     | **Adı** | Ağ güvenlik grubu içindeki kural için benzersiz bir ad | Ad en fazla 80 karakter olabilir. Bir harf veya sayı ile başlamalı ve bir harf, sayı veya alt çizgi ile bitmelidir. Ad yalnızca harf, sayı, alt çizgi, nokta veya kısa çizgi içerebilir. |
     | **Açıklama** | Metin açıklaması | İsteğe bağlı olarak güvenlik kuralı için bir metin açıklaması belirtebilirsiniz. |
 
@@ -275,7 +275,7 @@ Bir uygulama güvenlik grubu sıfır veya daha fazla ağ arabirimi içerir. Daha
     | **Abonelik** | Aboneliğinizi seçin. |
     | **Kaynak grubu** | Var olan bir kaynak grubunu seçin veya yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin. |
     | **Adı** | Kaynak grubu içinde benzersiz bir metin dizesi girin. |
-    | **Bölge** | İstediğiniz konumu seçin. |
+    | **Geli** | İstediğiniz konumu seçin. |
 
 5. **İncele ve oluştur**’u seçin.
 
