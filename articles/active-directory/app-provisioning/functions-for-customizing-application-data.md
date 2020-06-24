@@ -2,20 +2,20 @@
 title: Azure Active Directory öznitelik eşlemeleri için ifadeler yazma
 description: Azure Active Directory ' de SaaS uygulama nesnelerinin otomatik sağlanması sırasında öznitelik değerlerini kabul edilebilir bir biçime dönüştürmek için ifade eşlemelerini nasıl kullanacağınızı öğrenin.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/05/2020
-ms.author: mimart
-ms.openlocfilehash: c8573f9151ac59178b19bbf354da43990405b3e0
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.author: kenwith
+ms.openlocfilehash: 47f0502226e4227c6b94920da6f040004beb41f1
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593701"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781676"
 ---
 # <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>Nasıl yapılır: Azure AD 'de öznitelik eşlemeleri için ifadeler yazma
 
@@ -26,18 +26,18 @@ Sağlamayı bir SaaS uygulamasına yapılandırdığınızda, belirtebileceğini
 Öznitelik eşlemeleri için Ifadeler söz dizimi Visual Basic for Applications (VBA) işlevlerinin bir rekidir.
 
 * İfadenin tamamı, parantez içindeki bağımsız değişkenlerin ardında yer aldığı bir addan oluşan işlevler bakımından tanımlanmalıdır: <br>
-  *Fonksiyonadı (`<<argument 1>>`,`<<argument N>>`)*
-* İşlevleri birbirlerine iç içe yerleştirebilirsiniz. Örneğin: <br> *FunctionOne (FunctionTwo (`<<argument1>>`))*
+  *Fonksiyonadı ( `<<argument 1>>` , `<<argument N>>` )*
+* İşlevleri birbirlerine iç içe yerleştirebilirsiniz. Örneğin: <br> *FunctionOne (FunctionTwo ( `<<argument1>>` ))*
 * İşlevlere üç farklı türde bağımsız değişken geçirebilirsiniz:
   
   1. Köşeli ayraçlar içine alınması gereken öznitelikler. Örneğin: [attributeName]
   2. Çift tırnak içine alınması gereken dize sabitleri. Örneğin: "Birleşik Devletler"
-  3. Diğer Işlevler. Örneğin: FunctionOne (`<<argument1>>`, functiontwo (`<<argument2>>`))
-* Dize sabitleri için, dizede bir ters eğik çizgi (\) veya tırnak işareti (") gerekiyorsa, ters eğik çizgi (\) simgesiyle atlanmalıdır. Örneğin: "Şirket adı: \\" contoso\\""
+  3. Diğer Işlevler. Örneğin: FunctionOne ( `<<argument1>>` , functiontwo ( `<<argument2>>` ))
+* Dize sabitleri için, dizede bir ters eğik çizgi (\) veya tırnak işareti (") gerekiyorsa, ters eğik çizgi (\) simgesiyle atlanmalıdır. Örneğin: "Şirket adı: \\ " contoso \\ ""
 
 ## <a name="list-of-functions"></a>Işlevlerin listesi
 
-[Append](#append) &nbsp; [Coalesce](#coalesce) &nbsp; [IIF](#iif) [ConvertToBase64](#converttobase64) &nbsp; [Replace](#replace) [Not](#not) [ConvertToUTF8Hex](#converttoutf8hex) &nbsp; [IsNullOrEmpty](#isnullorempty) [Count](#count) &nbsp; [Item](#item) [Left](#left) [IsNull](#isnull) [Join](#join) [Mid](#mid) [Guid](#guid) [BitAnd](#bitand) &nbsp; [CBool](#cbool) &nbsp; &nbsp; [CStr](#cstr) &nbsp; [RemoveDuplicates](#removeduplicates) [FormatDateTime](#formatdatetime) &nbsp; [IsPresent](#ispresent) [IsString](#isstring) [InStr](#instr) [DateFromNum](#datefromnum) &nbsp; [NormalizeDiacritics](#normalizediacritics) [SelectUniqueValue](#selectuniquevalue) bitand &nbsp; &nbsp; CBool &nbsp; JOIN ConvertToBase64 &nbsp; ConvertToUTF8Hex Count CStr &nbsp; datefromnum &nbsp; FormatDateTime &nbsp;Guid IIF instr &nbsp; IsNull IsNullOrEmpty &nbsp; issun &nbsp; IsString &nbsp; öğesi birleştirme &nbsp; sol &nbsp; orta &nbsp; normalizediactik Not &nbsp; removeyinelemelerini &nbsp; değiştirme selectuniquevalue &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Switch](#switch) [Split](#split)&nbsp; [Word](#word) [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) [ToLower](#tolower) [ToUpper](#toupper) Singleapprotaatama&nbsp; Split &nbsp; StripSpaces anahtarı&nbsp; ToUpper&nbsp; Word&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+[Sona](#append) &nbsp; &nbsp; Ekle &nbsp; &nbsp; [BitAnd](#bitand) &nbsp; &nbsp; Bitand &nbsp; &nbsp; [CBool](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp; [Coalesce](#coalesce) &nbsp; &nbsp; Birleşim &nbsp; &nbsp; [ConvertToBase64](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp; [Count](#count) &nbsp; &nbsp; Sayı &nbsp; &nbsp; [CStr](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp; [Tarih Fromnum](#datefromnum) &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp; [Guid](#guid) &nbsp; &nbsp; GUID &nbsp; &nbsp; [IIF](#iif) &nbsp; &nbsp; IIf &nbsp; &nbsp; [InStr](#instr) &nbsp; &nbsp; InStr &nbsp; &nbsp; [IsNull](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp; [IsPresent](#ispresent) &nbsp; &nbsp; İssun &nbsp; &nbsp; [IsString](#isstring) &nbsp; &nbsp; İsstrıng &nbsp; &nbsp; [Item](#item) &nbsp; &nbsp; Öğe &nbsp; &nbsp; [Join](#join) &nbsp; &nbsp; Katılırsanız &nbsp; &nbsp; [Left](#left) &nbsp; &nbsp; Sol &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) Removeyinelemelerini [desteklemeyen](#not) PARÇAAL, &nbsp; &nbsp; &nbsp; &nbsp; [RemoveDuplicates](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [Replace](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [selectuniquevalue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [singleapprotaatama](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Switch](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [Word 'ü](#word) Değiştir
 
 ---
 ### <a name="append"></a>Ekle
@@ -192,7 +192,7 @@ DateFromNum (129699324000000000)
 | Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
 | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
-| **InPutFormat** |Gerekli |Dize |Kaynak değerinin biçimi bekleniyordu. Desteklenen biçimler için bkz [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx).. |
+| **InPutFormat** |Gerekli |Dize |Kaynak değerinin biçimi bekleniyordu. Desteklenen biçimler için bkz [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) .. |
 | **outputFormat** |Gerekli |Dize |Çıkış tarihinin biçimi. |
 
 ---
@@ -231,7 +231,7 @@ IıF ([Country] = "USA", [Ülke], [departman])
 | **value1** |Gerekli |Dize |Aranacak dize |
 | **value2** |Gerekli |Dize |Bulunan dize |
 | **başından** |İsteğe Bağlı |Tamsayı |Alt dizeyi bulmak için başlangıç konumu|
-| **compareType** |İsteğe Bağlı |Sabit Listesi |VbTextCompare veya vbBinaryCompare olabilir |
+| **compareType** |İsteğe Bağlı |Sabit listesi |VbTextCompare veya vbBinaryCompare olabilir |
 
 **Örneğinde**<br>
 InStr ("hızlı kahverengi Fox", "Quick")                                                                             
@@ -399,7 +399,7 @@ Sol ("John tikan", 3)
 
 | Name | Gerekli/yinelenen | Tür | Notlar |
 | --- | --- | --- | --- |
-| **deeri** |Gerekli | Dize | Desteklenen biçimdeki tarih saat dizesi. Desteklenen biçimler için bkz https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx.. |
+| **deeri** |Gerekli | Dize | Desteklenen biçimdeki tarih saat dizesi. Desteklenen biçimler için bkz https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx .. |
 
 **Örneğinde**<br>
 * Workday örneği <br>
@@ -598,7 +598,7 @@ Kullanıcı adı almak için kullanıcının e-postalarından bilinen bir etki a
 
 **Örnek giriş/çıkış:** <br>
 
-* **Giriş** (posta): "john.doe@contoso.com"
+* **Giriş** (posta): " john.doe@contoso.com "
 * **Çıkış**: "John. tikan"
 
 ### <a name="append-constant-suffix-to-user-name"></a>Sabit son eki Kullanıcı adına Ekle
@@ -609,8 +609,8 @@ Salesforce korumalı alanı kullanıyorsanız, eşitlemeden önce tüm kullanıc
 
 **Örnek giriş/çıkış:** <br>
 
-* **Giriş**: (UserPrincipalName): "John.Doe@contoso.com"
-* **Çıkış**: "John.Doe@contoso.com.test"
+* **Giriş**: (UserPrincipalName): " John.Doe@contoso.com "
+* **Çıkış**: " John.Doe@contoso.com.test "
 
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Birinci ve soyadı parçalarını birleştirerek kullanıcı diğer adı oluştur
 Kullanıcının ilk adının ilk 3 harfini ve Kullanıcı adının ilk 5 harfini ayırarak bir kullanıcı diğer adı oluşturmanız gerekir.
@@ -693,7 +693,7 @@ Aşağıdaki örnekte, UPN değeri PreferredFirstName ve PreferredLastName kayna
 
 * **Giriş** (preferredfirstname): "John"
 * **Giriş** (preferredlastname): "Smith"
-* **Çıkış**: "john.smith@contoso.com"
+* **Çıkış**: " john.smith@contoso.com "
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>UserPrincipalName (UPN) özniteliği için benzersiz değer oluştur
 Kullanıcının adı, ikinci adı ve soyadı temelinde, UPN özniteliği için bir değer oluşturmanız ve değeri UPN özniteliğine atamadan önce hedef AD dizininde benzersizliği denetlemeniz gerekir.
@@ -710,9 +710,9 @@ Kullanıcının adı, ikinci adı ve soyadı temelinde, UPN özniteliği için b
 
 * **Giriş** (preferredfirstname): "John"
 * **Giriş** (preferredlastname): "Smith"
-* **Çıkış**: "John.Smith@contoso.com" için UPN değeri John.Smith@contoso.com zaten dizinde yoksa
-* **Çıkış**: "J.Smith@contoso.com" dizininde UPN değeri John.Smith@contoso.com zaten varsa
-* **Çıkış**: YukarıdakiJo.Smith@contoso.comiki UPN değeri dizinde zaten mevcutsa ""
+* **Çıkış**: " John.Smith@contoso.com " için UPN değeri John.Smith@contoso.com zaten dizinde yoksa
+* **Çıkış**: " J.Smith@contoso.com " dizininde UPN değeri John.Smith@contoso.com zaten varsa
+* **Çıkış**: Jo.Smith@contoso.com Yukarıdaki iki UPN değeri dizinde zaten mevcutsa ""
 
 ### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>NULL değilse Flow posta değeri, aksi takdirde Flow userPrincipalName
 Varsa posta özniteliğini akışa almak istiyorsunuz. Aksi takdirde, bunun yerine userPrincipalName değerini akmasını istersiniz.
@@ -723,8 +723,8 @@ Varsa posta özniteliğini akışa almak istiyorsunuz. Aksi takdirde, bunun yeri
 **Örnek giriş/çıkış:** <br>
 
 * **Giriş** (posta): null
-* **Giriş** (UserPrincipalName): "John.Doe@contoso.com"
-* **Çıkış**: "John.Doe@contoso.com"
+* **Giriş** (UserPrincipalName): " John.Doe@contoso.com "
+* **Çıkış**: " John.Doe@contoso.com "
 
 ## <a name="related-articles"></a>İlgili Makaleler
 * [SaaS uygulamalarına Kullanıcı sağlamasını/sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md)

@@ -4,15 +4,15 @@ description: Azure Resource Manager ve PowerShell kullanarak birden çok ilke ta
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: yushwang
-ms.openlocfilehash: 687c33e50a986cf8af08d0201fe0159a79cf02a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a8a4ba7ea3de9140d79856fad9d5d0bc42cf4c51
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80123314"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84984625"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>PowerShell kullanarak Azure VPN ağ geçitlerini birden çok şirket içi ilke tabanlı VPN cihazına bağlama
 

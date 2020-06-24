@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
-ms.openlocfilehash: 79a821a4c8fe4cb2d048f0dcb0a6e091462a1779
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b6d234c3845c220fd63c24db5bdbdae0f7c63fd
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548803"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255084"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>Azure Databricks veri kaynaklarına bağlanma
 
@@ -28,14 +28,14 @@ Bu makalede, Azure 'daki Azure Databricks bağlı olabilecek tüm farklı veri k
 
 Aşağıdaki liste, Azure Databricks ile kullanabileceğiniz Azure 'daki veri kaynaklarını sağlar. Azure Databricks ile kullanılabilecek veri kaynaklarının tamamen listesi için bkz. [Azure Databricks Için veri kaynakları](/azure/databricks/data/data-sources/index).
 
-- [Azure SQL veritabanı](/azure/databricks/data/data-sources/sql-databases)
+- [Azure SQL Veritabanı](/azure/databricks/data/data-sources/sql-databases)
 
-    Bu bağlantı, JDBC kullanarak SQL veritabanlarına bağlanmak için veri çerçevesi API 'sini ve JDBC arabirimi aracılığıyla okumaların paralelliğini denetleme olanağı sağlar. Bu konu, sonunda kısaltılmış Python ve Spark SQL örnekleri ile Scala API 'sini kullanarak ayrıntılı örnekler sağlar.
+    Bu bağlantı, JDBC kullanarak SQL veritabanı 'na bağlanmak için veri çerçevesi API 'sini sağlar ve JDBC arabirimi aracılığıyla okumaların paralelliğini nasıl denetbir şekilde kontrol edin. Bu konu, sonunda kısaltılmış Python ve Spark SQL örnekleri ile Scala API 'sini kullanarak ayrıntılı örnekler sağlar.
 - [Azure Data Lake Storage](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)
 
     Bu bağlantı, Azure Data Lake Storage kimlik doğrulamak için Azure Active Directory hizmet sorumlusunu kullanma hakkında örnekler sağlar. Ayrıca, Azure Databricks Azure Data Lake Storage verilere nasıl erişileceğini gösteren yönergeler de sağlar.
 
-- [Azure Blob depolama](/azure/databricks/data/data-sources/azure/azure-storage)
+- [Azure Blob Depolama](/azure/databricks/data/data-sources/azure/azure-storage)
 
     Bu bağlantı, belirli bir kapsayıcı için erişim anahtarını veya SAS 'yi kullanarak Azure Databricks Azure Blob depolamaya doğrudan erişme hakkında örnekler sağlar. Bağlantı Ayrıca, RDD API kullanarak Azure Databricks Azure Blob depolamaya nasıl erişeceğimiz hakkında bilgi de sağlar.
 

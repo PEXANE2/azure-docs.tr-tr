@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: 2625e1f55c0b7e7df44da6c1f36e024911577d63
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 3c4252f926163b00d3b4f4bf4a26373988017ac1
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457278"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255016"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
@@ -216,10 +216,10 @@ Etkin bölgeler:
 
 Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırlamalardır.  Mümkün olduğunca bu sınırlamaların çoğunu kaldırmak için etkin bir şekilde çalışıyoruz.
 
-| Sorun | Açıklama |
+| Sorun | Description |
 | :---- | :--------- |
-| Bir sunucunun Yedeklemeleri Yönet bölmesi hiper ölçekli veritabanlarını göstermez, bunlar görünümden filtrelenecektir  | Hiper ölçek, yedeklemeleri yönetmek için ayrı bir yönteme sahiptir ve bu nedenle uzun süreli saklama ve zaman içinde yedekleme bekletme ayarları uygulanmaz. Buna uygun olarak, hiper ölçekli veritabanları yedekleme bölmesini yönetme bölmesinde görünmez.|
-| Belirli bir noktaya geri yükleme | Hiper olmayan bir veritabanı hiper ölçekli bir veritabanı olarak geri yüklenemez ve hiper ölçek veritabanı hiper olmayan bir veritabanı olarak geri yüklenemez. Hizmet katmanını değiştirerek hiper ölçeğe geçirilmiş hiper olmayan bir veritabanı için, geçiş işleminden önce ve veritabanının yedekleme saklama süresi içinde bir zaman noktasına geri [yükleyin.](recovery-using-backups.md#programmatically-performing-recovery-by-using-automated-backups) Geri yüklenen veritabanı hiper olmayan ölçek olacaktır. |
+| Bir sunucunun Yedeklemeleri Yönet bölmesi, hiper ölçekli veritabanlarını göstermez. Bunlar görünümden filtrelenecektir.  | Hiper ölçek, yedeklemeleri yönetmek için ayrı bir yönteme sahiptir, bu nedenle uzun süreli saklama ve zaman içinde yedekleme bekletme ayarları uygulanmaz. Buna uygun olarak, hiper ölçekli veritabanları yedekleme bölmesini yönetme bölmesinde görünmez.|
+| Belirli bir noktaya geri yükleme | Hiper olmayan bir veritabanı hiper ölçekli bir veritabanı olarak geri yüklenemez ve hiper ölçek veritabanı hiper olmayan bir veritabanı olarak geri yüklenemez. Hizmet katmanını değiştirerek hiper ölçeğe geçirilmiş hiper olmayan bir veritabanı için, geçiş işleminden önce ve veritabanının yedekleme saklama süresi içinde bir zaman noktasına geri [yükleyin.](recovery-using-backups.md#programmatic-recovery-using-automated-backups) Geri yüklenen veritabanı hiper olmayan ölçek olacaktır. |
 | Bir veritabanında 1 TB 'den büyük bir veya daha fazla veri dosyası varsa, geçiş başarısız olur | Bazı durumlarda, büyük dosyaları 1 TB 'tan küçük olacak şekilde küçülterek Bu soruna geçici bir çözüm uygulanabilir. Geçiş işlemi sırasında kullanılan bir veritabanını geçiriyorsanız, hiçbir dosyanın 1 TB 'den büyük olmadığından emin olun. Veritabanı dosyalarının boyutunu anlamak için aşağıdaki sorguyu kullanın. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL Yönetilen Örnek | Azure SQL yönetilen örneği şu anda hiper ölçekli veritabanları ile desteklenmiyor. |
 | Esnek Havuzlar |  Esnek havuzlar Şu anda Hyperscale ile desteklenmemektedir.|

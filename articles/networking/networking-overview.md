@@ -10,20 +10,20 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 42d3360b7defaab2ff0a62dc125a213860b13a6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d3fff80dcae3f97ca947504390ebc4a824e5f0d
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133606"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255101"
 ---
 # <a name="azure-networking-services-overview"></a>Azure ağ hizmetleri 'ne genel bakış
 
 Azure 'daki ağ hizmetleri, birlikte veya ayrı olarak kullanılabilecek çeşitli ağ özellikleri sağlar. Bunlarla ilgili daha fazla bilgi edinmek için aşağıdaki önemli yeteneklerden birine tıklayın:
 - [**Bağlantı Hizmetleri**](#connect): Azure sanal ağ (VNet), sanal WAN, expressroute, VPN Gateway, sanal ağ NAT ağ geçidi, Azure DNS, eşleme hizmeti ve Azure savunma 'da bu ağ hizmetlerinin herhangi birini veya birleşimini kullanarak Azure kaynaklarını ve şirket içi kaynakları bağlayın.
-- [**Uygulama koruma hizmetleri**](#protect) Azure-Private link, DDoS koruması, güvenlik duvarı, ağ güvenlik grupları, Web uygulaması güvenlik duvarı ve sanal ağ uç noktalarında bu ağ hizmetlerinin herhangi birini veya birleşimini kullanarak uygulamalarınızı koruyun.
-- [**Uygulama Teslim Hizmetleri**](#deliver) Azure-Content Delivery Network (CDN), Azure ön kapı hizmeti, Traffic Manager, Application Gateway, Internet Çözümleyicisi ve Load Balancer bu ağ hizmetlerinin herhangi birini veya birleşimini kullanarak Azure ağı 'nda uygulamalar sunun.
-- [**Ağ izleme**](#monitor) – Azure-ağ Izleyicisi, ExpressRoute Izleyicisi, Azure Izleyici veya VNET Terminal erişim noktası (TAP) ' de bu ağ hizmetlerinin herhangi birini veya birleşimini kullanarak ağ kaynaklarınızı izleyin.
+- [**Uygulama koruma hizmetleri**](#protect): Azure-Private link, DDoS koruması, güvenlik duvarı, ağ güvenlik grupları, Web uygulaması güvenlik duvarı ve sanal ağ uç noktalarında bu ağ hizmetlerinin herhangi birini veya birleşimini kullanarak uygulamalarınızı koruyun.
+- [**Uygulama Teslim Hizmetleri**](#deliver): azure-Content DELIVERY Network (CDN), Azure ön kapı hizmeti, Traffic Manager, Application Gateway, Internet çözümleyicisi ve Load Balancer bu ağ hizmetlerinin herhangi birini veya birleşimini kullanarak Azure ağı 'nda uygulamalar sunun.
+- [**Ağ izleme**](#monitor): Azure-ağ Izleyicisi, ExpressRoute Izleyicisi, Azure Izleyici veya VNET Terminal erişim noktası (TAP) ' de bu ağ hizmetlerinin herhangi birini veya birleşimini kullanarak ağ kaynaklarınızı izleyin.
 
 ## <a name="connectivity-services"></a><a name="connect"></a>Bağlantı hizmetleri
  
@@ -99,7 +99,7 @@ Bu bölümde, Azure 'da ağ kaynaklarınızı korumaya yardımcı olan ağ hizme
 |[Sanal ağ hizmet uç noktaları](#serviceendpoints)|Bazı Azure hizmet kaynaklarına ağ erişimini bir sanal ağ alt ağıyla sınırlamanıza olanak sağlar|[PaaS kaynaklarına ağ erişimini kısıtlama](../virtual-network/tutorial-restrict-network-access-to-resources-powershell.md)|
 [Özel Bağlantı](#privatelink)|Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerini sanal ağınızdaki özel bir uç nokta üzerinden erişmenize izin vermez.|<p>[Özel uç nokta oluşturma](../private-link/create-private-endpoint-portal.md)</p><p>[Özel Bağlantı hizmeti oluşturma](../private-link/create-private-link-service-portal.md)</p>|
 |||
-### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDOS Koruması 
+### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDoS koruması 
 [Azure DDoS koruması](../virtual-network/manage-ddos-protection.md) , en gelişmiş DDoS tehditlerine karşı karşı önlemler sağlar. Hizmet, uygulamanız ve sanal ağlarınızda dağıtılan kaynaklarınız için gelişmiş DDoS azaltma özellikleri sağlar. Ayrıca, Azure DDoS koruması kullanan müşterilerin, etkin bir saldırı sırasında DDoS uzmanlarını sağlamak için DDoS hızlı yanıt desteğine erişimi vardır.
 
 ![DDOS Koruması](./media/networking-overview/ddos-protection.png)
@@ -137,7 +137,7 @@ Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağını de dola�
 
 ## <a name="application-delivery-services"></a><a name="deliver"></a>Uygulama Teslim Hizmetleri
 
-Bu bölümde, Azure 'da uygulamalar-ağ Izleyicisi, ExpressRoute Izleyicisi, Azure Izleyici veya VNet Terminal erişim noktası (TAP) sunmaya yardımcı olan ağ hizmetleri açıklanmaktadır.
+Bu bölümde, Azure 'da uygulamalar (Content Delivery Network, Azure ön kapı hizmeti, Traffic Manager, Load Balancer ve Application Gateway sunmaya yardımcı olan ağ hizmetleri açıklanmaktadır.
 
 |Hizmet|Neden kullanılmalıdır?|Senaryo|
 |---|---|---|
@@ -197,7 +197,7 @@ Bu bölümde, Azure 'da ağ kaynaklarınızı izlemeye, ExpressRoute Izleyicisin
 Azure Ağ İzleyicisi, Azure sanal ağındaki kaynaklarda izleme, tanılama, ölçümleri görüntüleme ve günlükleri etkinleştirme veya devre dışı bırakma işlemleri için araçlar sağlar. Daha fazla bilgi için bkz. [Ağ İzleyicisi nedir?](../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 ### <a name="expressroute-monitor"></a><a name="expressroutemonitor"></a>ExpressRoute Izleyicisi
 ExpressRoute devre ölçümlerini, kaynak günlüklerini ve uyarılarını görüntüleme hakkında bilgi edinmek için bkz. [ExpressRoute izleme, ölçümler ve uyarılar](../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json).
-### <a name="azure-monitor"></a><a name="azuremonitor"></a>Azure İzleyici
+### <a name="azure-monitor"></a><a name="azuremonitor"></a>Azure Izleyici
 Azure İzleyici, bulut ve şirket içi ortamlardaki telemetriyi toplamak, analiz etmek ve bunlarda eylem gerçekleştirmek için kapsamlı bir çözüm sunarak uygulamalarınızın kullanılabilirliğini ve performansını en üst düzeye çıkarır. Uygulamalarınızın performansını anlamanıza ve uygulamalarla bağlı oldukları kaynakları etkileyen sorunları önceden tespit etmenize yardımcı olur. Daha fazla bilgi için bkz. [Azure Izleyiciye genel bakış](../azure-monitor/overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 ### <a name="virtual-network-tap"></a><a name="vnettap"></a>Sanal ağ dokunma
 Azure sanal ağ TAP (Terminal erişim noktası), sanal makine ağ trafiğinizi bir ağ paketi toplayıcısına veya analiz aracına sürekli olarak akışla kullanmanıza olanak sağlar. Toplayıcı veya Analiz Aracı bir [ağ sanal gereç](https://azure.microsoft.com/solutions/network-appliances/) ortağı tarafından sağlanır. 

@@ -1,73 +1,104 @@
 ---
-title: Standart SKU yük dengeleyici kullanma
+title: Ortak Load Balancer kullanma
 titleSuffix: Azure Kubernetes Service
-description: Azure Kubernetes Service (AKS) ile hizmetlerinizi kullanıma sunmak için standart SKU ile yük dengeleyiciyi nasıl kullanacağınızı öğrenin.
+description: Azure Kubernetes Service (AKS) ile hizmetlerinizi kullanıma sunmak için standart SKU ile genel yük dengeleyiciyi nasıl kullanacağınızı öğrenin.
 services: container-service
 ms.topic: article
-ms.date: 09/27/2019
-ms.openlocfilehash: 9f75153868633079f24992955c7585f5954befc4
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.date: 06/14/2020
+ms.author: jpalma
+author: jpalma
+ms.openlocfilehash: 705cd9ae77217bdd3ac99c20e476d5673781df9c
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465788"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808307"
 ---
-# <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde standart bir SKU yük dengeleyici kullanma
+# <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde ortak Standart Load Balancer kullanma
 
-`LoadBalancer`Azure Kubernetes Service (AKS) içindeki türdeki Kubernetes Hizmetleri aracılığıyla uygulamalara erişim sağlamak için bir Azure Load Balancer kullanabilirsiniz. AKS üzerinde çalışan bir yük dengeleyici, iç veya dış yük dengeleyici olarak kullanılabilir. İç yük dengeleyici, bir Kubernetes hizmetini yalnızca AKS kümesi ile aynı sanal ağda çalışan uygulamalar için erişilebilir hale getirir. Dış yük dengeleyici, giriş için bir veya daha fazla genel IP alır ve genel IP 'Leri kullanarak bir Kubernetes hizmetini dışarıdan erişilebilir hale getirir.
+Azure Load Balancer, hem gelen hem de giden senaryoları destekleyen açık sistemler arası bağlantı (OSı) modelinin bir L4 'dir. Yük dengeleyicinin ön ucuna gelen akışları, arka uç havuzu örneklerine dağıtır.
 
-Azure Load Balancer, *temel* ve *Standart*olmak üzere iki SKU 'da kullanılabilir. Varsayılan olarak, bir AKS kümesi oluşturduğunuzda *Standart* SKU kullanılır. *Standart* SKU yük dengeleyici kullanmak, daha büyük bir arka uç havuzu boyutu ve kullanılabilirlik alanları gibi ek özellikler ve işlevler sağlar. Kullanmayı seçmeden önce *Standart* ve *temel* yük dengeleyiciler arasındaki farkları anlamanız önemlidir. Bir AKS kümesi oluşturduktan sonra, bu küme için yük dengeleyici SKU 'sunu değiştiremezsiniz. *Temel* ve *Standart* SKU 'lar hakkında daha fazla bilgi için bkz. [Azure yük dengeleyici SKU karşılaştırması][azure-lb-comparison].
-AKS kümesi birden çok düğüm havuzu kullanmak için standart SKU yük dengeleyiciyi kullanmalıdır, özellik temel SKU yük dengeleyiciler ile desteklenmez, bkz. [aks 'teki bir küme için birden çok düğüm havuzu oluşturma ve yönetme][use-multiple-node-pools].
+AKS ile tümleştirilen **ortak** Load Balancer iki amaca hizmet eder:     
 
-Bu makalede, Kubernetes ve Azure Load Balancer kavramlarının temel bir şekilde anlaşıldığı varsayılır. Daha fazla bilgi için bkz. [Azure Kubernetes hizmeti (AKS) Için Kubernetes temel kavramları][kubernetes-concepts] ve [Azure Load Balancer nedir?][azure-lb].
+1. AKS sanal ağı içindeki küme düğümlerine giden bağlantılar sağlamak için. Bu amaca, düğümlerin özel IP adresini, *giden havuzunun*bir parçası olan genel bir IP adresine çevirerek bu amaca erişir. 
+2. Türündeki Kubernetes Hizmetleri aracılığıyla uygulamalara erişim sağlamak için `LoadBalancer` . Bununla birlikte, uygulamalarınızı kolayca ölçeklendirebilir ve yüksek oranda kullanılabilir hizmetler oluşturabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Ön uç olarak yalnızca özel IP 'Lere izin verilen bir **iç (veya özel)** yük dengeleyici kullanılır. İç yük dengeleyiciler, bir sanal ağ içindeki trafiğin yükünü dengelemek için kullanılır. Yük dengeleyici ön uca karma senaryodaki bir şirket içi ağdan de erişilebilir. 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.81 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][install-azure-cli].
+Bu belge, ortak yük dengeleyici ile tümleştirmeyi içerir. İç Load Balancer tümleştirme için bkz. [aks Iç yük dengeleyici belgeleri](internal-lb.md).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, *Standart* SKU 'nun Azure Load Balancer bir aks kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
+Azure Load Balancer, *temel* ve *Standart*olmak üzere iki SKU 'da kullanılabilir. Varsayılan olarak, bir AKS kümesi oluşturduğunuzda *Standart* SKU kullanılır. Daha büyük bir arka uç havuzu, [**birden çok düğüm havuzu**](use-multiple-node-pools.md)ve [**kullanılabilirlik alanları**](availability-zones.md)gibi ek işlevlere erişebilmek için *Standart* SKU 'yu kullanın. AKS için önerilen Load Balancer SKU 'SU.
 
-AKS küme hizmeti sorumlusu Ayrıca mevcut bir alt ağ veya kaynak grubu kullanıyorsanız ağ kaynaklarını yönetme iznine de sahip olmalıdır. Genel olarak, temsilcili kaynaklar üzerindeki hizmet sorumlusu rolüne *ağ katılımcısı* rolünü atayın. Hizmet sorumlusu yerine, izinler için sistem tarafından atanmış yönetilen kimliği de kullanabilirsiniz. Daha fazla bilgi için bkz. [yönetilen kimlikleri kullanma](use-managed-identity.md). İzinler hakkında daha fazla bilgi için bkz. [diğer Azure kaynaklarına AKS erişimi verme][aks-sp].
+*Temel* ve *Standart* SKU 'lar hakkında daha fazla bilgi için bkz. [Azure yük dengeleyici SKU karşılaştırması][azure-lb-comparison].
 
-### <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>Temel SKU Load Balancer standart SKU 'ya taşıma
-
-Temel SKU 'nun Load Balancer var olan bir kümeniz varsa, standart SKU Load Balancer sahip bir küme kullanmaya geçiş yaparken dikkat etmeniz önemli davranış farklılıkları vardır.
-
-Örneğin, kümeleri geçirmek için mavi/yeşil dağıtımlar yapmak, `load-balancer-sku` küme türü için yalnızca küme oluşturma zamanında tanımlanmış olan yaygın bir uygulamadır. Ancak, *temel SKU* yük dengeleyiciler *Standart* SKU IP adreslerini gerektirdiğinden *Standart* SKU yük dengeleyiciler Ile uyumlu olmayan *temel SKU* IP adreslerini kullanır. Kümeleri Load Balancer SKU 'Larına geçirirken, uyumlu bir IP adresi SKU 'SU olan yeni bir IP adresi gerekir.
-
-Kümeleri geçirme hakkında daha fazla bilgi için, geçiş yaparken göz önünde bulundurmanız gereken önemli konuların bir listesini görüntülemek için [geçiş konuları hakkındaki belgelerimizi](aks-migration.md) ziyaret edin. Aşağıdaki sınırlamalar Ayrıca AKS 'de standart SKU yük dengeleyicileri kullanırken dikkat edilecek önemli davranış farklarıdır.
-
-### <a name="limitations"></a>Sınırlamalar
-
-*Standart* SKU ile yük dengeleyiciyi destekleyen aks kümelerini oluşturup yönetirken aşağıdaki sınırlamalar geçerlidir:
-
-* AKS kümesinden giden trafiğe izin vermek için en az bir genel IP veya IP öneki gereklidir. Genel IP veya IP öneki Ayrıca, denetim düzlemi ve aracı düğümleri arasındaki bağlantıyı sürdürmek için ve önceki AKS sürümleriyle uyumluluğu sürdürmek için de gereklidir. *Standart* bir SKU yük dengeleyiciye sahip genel IP 'LERI veya IP öneklerini belirtmek için aşağıdaki seçenekleriniz vardır:
-    * Kendi genel IP 'nizi sağlayın.
-    * Kendi genel IP öneklerinizi sağlayın.
-    * AKS kümesinin, genellikle başlangıçta *Mc_* olarak adlandırılan aks kümesi olarak oluşturulan aynı kaynak grubunda *Standart* SKU genel IP 'leri oluşturmasına izin vermek için en fazla 100 ' a kadar bir sayı belirtin. AKS, genel IP 'yi *Standart* SKU yük dengeleyicisine atar. Varsayılan olarak, genel IP, genel IP öneki veya IP sayısı belirtilmemişse, AKS kümesiyle aynı kaynak grubunda bir genel IP otomatik olarak oluşturulur. Ayrıca, genel adreslere izin vermeniz ve IP oluşturma ile ilgili herhangi bir Azure Ilkesinin oluşturulmasını önetmeniz gerekir.
-* Yük Dengeleyici için *Standart* SKU kullanırken, Kubernetes sürüm *1,13 veya üstünü*kullanmanız gerekir.
-* Yük dengeleyici SKU 'SU tanımlama yalnızca bir AKS kümesi oluşturduğunuzda yapılabilir. Bir AKS kümesi oluşturulduktan sonra yük dengeleyici SKU 'sunu değiştiremezsiniz.
-* Tek bir kümede yalnızca bir tür yük dengeleyici SKU 'SU (temel veya standart) kullanabilirsiniz.
-* *Standart* SKU yük dengeleyiciler yalnızca *Standart* SKU IP adreslerini destekler.
-
-## <a name="use-the-standard-sku-load-balancer"></a>*Standart* SKU yük dengeleyiciyi kullanma
-
-Bir AKS kümesi oluşturduğunuzda, varsayılan olarak, bu kümede Hizmetleri çalıştırdığınızda *Standart* SKU yük dengeleyici kullanılır. Örneğin, [Azure CLI kullanan hızlı başlangıç][aks-quickstart-cli] *Standart* SKU yük dengeleyiciyi kullanan bir örnek uygulama dağıtır.
+Bu makalede, *Standart* SKU 'nun Azure Load Balancer bir aks kümeniz olduğunu ve yük dengeleyicinin bazı özelliklerini ve özelliklerini nasıl kullanacağınızı ve yapılandıracağınızı öğreneceksiniz. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
 > [!IMPORTANT]
-> Kullanıcı tanımlı bir yol (UDR) özelleştirilerek genel IP adreslerine kaçınılabilir. Bir AKS kümesinin giden türünü UDR olarak belirtmek, AKS tarafından oluşturulan Azure Yük Dengeleyici için IP sağlama ve arka uç havuzu kurulumunu atlayabilir. Bkz. [küme `outboundType` ' userdefinedrouting ' olarak ayarlanıyor](egress-outboundtype.md).
+> Giden bağlantı sağlamak için Azure Load Balancer kullanmaktan yararlanmayı tercih ediyorsanız ve bu amaçla kendi ağ geçidinizin, güvenlik duvarınız veya ara sunucusu, [**Çıkış türü olarak UserDefinedRouting (UDR)**](egress-outboundtype.md)kullanarak yük dengeleyici giden havuzunun ve ilgili ön uç IP 'sinin oluşturulmasını atlayabilirsiniz. Giden türü bir küme için çıkış yöntemini tanımlar ve varsayılan olarak şunu yazın: yük dengeleyici.
 
-## <a name="configure-the-load-balancer-to-be-internal"></a>Yük dengeleyiciyi iç olarak yapılandırma
+## <a name="use-the-public-standard-load-balancer"></a>Ortak standart yük dengeleyiciyi kullanma
 
-Ayrıca yük dengeleyiciyi iç olarak yapılandırabilir ve genel bir IP 'yi kullanıma sunmamalısınız. Yük dengeleyiciyi iç olarak yapılandırmak için, `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` *LoadBalancer* hizmetine bir ek açıklama olarak ekleyin. [Burada][internal-lb-yaml]bir YAML bildiriminin yanı sıra bir iç yük dengeleyici hakkında daha fazla ayrıntı görebilirsiniz.
+Giden türü Load Balancer (varsayılan) olan bir AKS kümesi oluşturduktan sonra, küme, hizmet sunmak için yük dengeleyiciyi kullanmaya hazır hale gelir.
 
-## <a name="scale-the-number-of-managed-public-ips"></a>Yönetilen genel IP sayısını ölçeklendirme
+Bu şekilde, `LoadBalancer` Aşağıdaki örnekte gösterildiği gibi türünde bir ortak hizmet oluşturabilirsiniz. Şunu adlı bir hizmet bildirimi oluşturarak başlayın `public-svc.yaml` :
 
-Varsayılan olarak oluşturulan, yönetilen giden genel IP 'Ler ile *Standart* SKU yük dengeleyicisi kullanırken, *yük dengeleyici-yönetilen-IP-Count* parametresini kullanarak yönetilen giden genel IP sayısını ölçeklendirebilirsiniz.
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: public-svc
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: public-app
+```
+
+[Kubectl Apply][kubectl-apply] kullanarak genel hizmet bildirimini dağıtın ve YAML bildiriminizde adı belirtin:
+
+```azurecli-interactive
+kubectl apply -f public-svc.yaml
+```
+
+Azure Load Balancer, bu yeni hizmeti ön sağlayacak yeni bir genel IP ile yapılandırılır. Azure Load Balancer birden çok ön uç IP 'si olduğundan, dağıtılan her yeni hizmet, benzersiz olarak erişilecek yeni bir adanmış ön uç IP 'si alır.
+
+Hizmetin oluşturulduğunu ve yük dengeleyiciyi çalıştırarak yapılandırıldığını doğrulayabilirsiniz, örneğin:
+
+```azurecli-interactive
+kubectl get service public-svc
+```
+
+```console
+NAMESPACE     NAME          TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)         AGE
+default       public-svc    LoadBalancer   10.0.39.110    52.156.88.187   80:32068/TCP    52s
+```
+
+Hizmet ayrıntılarını görüntülediğinizde, yük dengeleyicide bu hizmet için oluşturulan genel IP adresi, *dış IP* sütununda gösterilir. *\<pending\>* Yukarıdaki örnekte gösterildiği gibi, IP adresinin gerçek bir genel IP adresine değiştirilmesi bir veya iki dakika sürebilir.
+
+## <a name="configure-the-public-standard-load-balancer"></a>Ortak standart yük dengeleyiciyi yapılandırma
+
+Standart SKU ortak yük dengeleyiciyi kullanırken, oluşturma zamanında özelleştirilebilen veya küme güncellenebilir bir seçenekler kümesi vardır. Bu seçenekler, Load Balancer iş yüklerinizin ihtiyaçlarını karşılayacak şekilde özelleştirmenize olanak tanır ve buna göre gözden geçirilmesi gerekir. Standart yük dengeleyici ile şunları yapabilirsiniz:
+* Yönetilen giden IP sayısını ayarlama veya ölçeklendirme;
+* Kendi giden IP 'Leri veya giden IP ön ekini getirin;
+* Kümenin her bir düğümüne ayrılan giden bağlantı noktası sayısını özelleştirin;
+* Boştaki bağlantılar için zaman aşımı ayarını yapılandırın.
+
+### <a name="scale-the-number-of-managed-outbound-public-ips"></a>Yönetilen giden genel IP sayısını ölçeklendirin
+
+Azure Load Balancer, gelen öğesine ek olarak bir sanal ağdan giden bağlantı sağlar. Giden kuralları, Genel Standart Load Balancer giden ağ adresi çevirisini yapılandırmayı basitleştirir. 
+
+Tüm Load Balancer kuralları gibi giden kurallar da yük dengeleme ve gelen NAT kuralları ile aynı tanıdık sözdizimini izler:
+
+***ön uç IP + parametreler + arka uç havuzu***
+
+Giden bir kural, arka uç havuzu tarafından belirtilen tüm sanal makineler için giden NAT 'yi ön uca çevrilecek şekilde yapılandırır. Ve parametreler giden NAT algoritması üzerinde ek ayrıntılı denetim sağlar.
+
+Giden kuralı yalnızca tek bir genel IP adresiyle kullanılabilir ancak giden kuralları, giden NAT ölçeklendirme için yapılandırma yükünü kolaylaştırır. Büyük ölçekli senaryoları planlamak için birden çok IP adresi kullanabilir ve giden kurallarını, SNAT tükenmesi açısından yüksek desenleri azaltmak için kullanabilirsiniz. Ön uç tarafından sağlanan her ek IP adresi, Load Balancer SNAT bağlantı noktası olarak kullanılacak 64K kısa ömürlü bağlantı noktaları sağlar. 
+
+Varsayılan olarak oluşturulan, yönetilen giden genel IP 'Ler ile *Standart* SKU yük dengeleyicisi kullanılırken, parametresini kullanarak yönetilen giden genel IP sayısını ölçeklendirebilirsiniz **`load-balancer-managed-ip-count`** .
 
 Var olan bir kümeyi güncelleştirmek için aşağıdaki komutu çalıştırın. Bu parametre, birden çok yönetilen giden genel IP 'si olması için küme oluşturma zamanında de ayarlanabilir.
 
@@ -80,25 +111,15 @@ az aks update \
 
 Yukarıdaki örnek, *Myresourcegroup*Içindeki *Myakscluster* kümesi Için yönetilen giden genel IP sayısını *2* ' ye ayarlar. 
 
-Ayrıca, parametreyi ekleyerek ve istediğiniz değere ayarlayarak, kümenizi oluştururken yönetilen giden genel IP 'lerin ilk sayısını ayarlamak için *yük dengeleyici-yönetilen-IP-Count* parametresini de kullanabilirsiniz `--load-balancer-managed-outbound-ip-count` . Varsayılan yönetilen giden genel IP sayısı 1 ' dir.
+Ayrıca, parametreyi **`load-balancer-managed-ip-count`** ekleyerek **`--load-balancer-managed-outbound-ip-count`** ve istediğiniz değere ayarlayarak kümenizi oluştururken yönetilen giden genel IP 'lerin başlangıç sayısını ayarlamak için parametresini de kullanabilirsiniz. Varsayılan yönetilen giden genel IP sayısı 1 ' dir.
 
-## <a name="provide-your-own-public-ips-or-prefixes-for-egress"></a>Çıkış için kendi genel IP 'Leri veya ön eklerini sağlayın
+### <a name="provide-your-own-outbound-public-ips-or-prefixes"></a>Kendi giden genel IP 'Leri veya öneklerinizi sağlayın
 
-*Standart* SKU yük dengeleyicisi kullanılırken aks kümesi, aks kümesi için oluşturulan aynı kaynak grubunda ortak IP 'yi otomatik olarak oluşturur ve genel IP 'yi *Standart* SKU yük dengeleyicisine atar. Alternatif olarak, küme oluşturma sırasında kendi genel IP 'nizi atayabilir veya var olan bir kümenin yük dengeleyici özelliklerini güncelleştirebilirsiniz.
+*Standart* SKU yük dengeleyiciyi KULLANDıĞıNıZDA, aks kümesi varsayılan olarak aks tarafından yönetilen altyapı kaynak grubunda BIR genel IP oluşturur ve bunu yük dengeleyici giden havuzuna atar. Alternatif olarak, küme oluşturma sırasında kendi genel IP veya genel IP ön ekini atayabilir veya var olan bir kümenin yük dengeleyici özelliklerini güncelleştirebilirsiniz.
 
-Birden çok IP adresi veya ön ek sunarak, tek bir yük dengeleyici nesnesi arkasında IP adresini tanımlarken birden çok yedekleme hizmeti tanımlayabilirsiniz. Belirli düğümlerin çıkış uç noktası, ilişkili oldukları hizmete bağlı olarak değişir.
+Bu işlemi gerçekleştirmeden önce, giden IP 'Leri veya giden IP öneklerini yapılandırmak için gerekli önkoşulları [ve kısıtlamaları](../virtual-network/public-ip-address-prefix.md#constraints) karşıladığınızdan emin olun.
 
-### <a name="pre-requisites-to-bring-your-own-ip-addresses-or-ip-prefixes"></a>Kendi IP adreslerinizi veya IP öneklerinizi getirmek için önkoşulları
-1. *Standart* SKU 'su yük dengeleyiciniz ile çıkış için *Standart* SKU genel IP 'lerini kullanmanız gerekir. [Az Network public-ip show][az-network-public-ip-show] komutunu kullanarak genel IP 'nizin SKU 'sunda emin olabilirsiniz:
-
-   ```azurecli-interactive
-   az network public-ip show --resource-group myResourceGroup --name myPublicIP --query sku.name -o tsv
-   ```
- 1. Genel IP 'Ler ve IP önekleri, AKS kümeniz ile aynı aboneliğin aynı bölgede ve bir parçası olmalıdır.
- 1. Genel IP 'Ler ve IP önekleri, AKS tarafından yönetilen bir IP olarak oluşturulan IP 'Ler olamaz. Özel IP olarak belirtilen IP 'Lerin, AKS hizmeti olmadığından, el ile oluşturulduğundan emin olun.
- 1. Genel IP 'Ler ve IP önekleri başka bir kaynak veya hizmet tarafından kullanılamaz.
-
- ### <a name="define-your-own-public-ip-or-prefixes-on-an-existing-cluster"></a>Mevcut bir kümede kendi genel IP veya öneklerinizi tanımlayın
+#### <a name="update-the-cluster-with-your-own-outbound-public-ip"></a>Kümeyi kendi giden genel IP 'niz ile güncelleştirme
 
 Genel IP 'nizin kimliklerini listelemek için [az Network public-ip show][az-network-public-ip-show] komutunu kullanın.
 
@@ -108,9 +129,9 @@ az network public-ip show --resource-group myResourceGroup --name myPublicIP --q
 
 Yukarıdaki komut, *Myresourcegroup* kaynak grubundaki *Mypublicıp* genel IP 'nin kimliğini gösterir.
 
-Kümenizi genel IP 'larınız ile güncelleştirmek için, *Load-dengeleyici-giden-IP* parametresi ile *az aks Update* komutunu kullanın.
+`az aks update` **`load-balancer-outbound-ips`** Kümenizi genel IP 'larınız ile güncelleştirmek için parametresiyle komutunu kullanın.
 
-Aşağıdaki örnek, önceki komuttan gelen kimliklerle *yük dengeleyici-giden-IP* parametresini kullanır.
+Aşağıdaki örnek, `load-balancer-outbound-ips` Önceki komuttan gelen kimliklerle parametresini kullanır.
 
 ```azurecli-interactive
 az aks update \
@@ -118,6 +139,8 @@ az aks update \
     --name myAKSCluster \
     --load-balancer-outbound-ips <publicIpId1>,<publicIpId2>
 ```
+
+#### <a name="update-the-cluster-with-your-own-outbound-public-ip-prefix"></a>Kümeyi kendi giden genel IP ön ekine göre güncelleştirin
 
 *Standart* SKU yük dengeleyicinizle çıkış IÇIN genel IP öneklerini de kullanabilirsiniz. Aşağıdaki örnek, genel IP öneklerinizin kimliklerini listelemek için [az Network public-ip önekini göster][az-network-public-ip-prefix-show] komutunu kullanır:
 
@@ -136,7 +159,7 @@ az aks update \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
-### <a name="define-your-own-public-ip-or-prefixes-at-cluster-create-time"></a>Küme oluşturma zamanında kendi genel IP veya öneklerinizi tanımlama
+#### <a name="create-the-cluster-with-your-own-public-ip-or-prefixes"></a>Kümeyi kendi genel IP 'niz veya önekleriyle oluşturun
 
 Çıkış uç noktaları beyaz listeleme gibi senaryoları desteklemek için küme oluşturma sırasında kendi IP adreslerinizi veya IP öneklerinizi almak isteyebilirsiniz. Kümenin yaşam döngüsünün başlangıcında kendi genel IP 'Leri ve IP öneklerinizi tanımlamak için yukarıda gösterilen aynı parametreleri küme oluşturma adımınıza ekleyin.
 
@@ -146,10 +169,6 @@ Başlangıç aşamasında genel IP 'inizle yeni bir küme oluşturmak için, *Lo
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --vm-set-type VirtualMachineScaleSets \
-    --node-count 1 \
-    --load-balancer-sku standard \
-    --generate-ssh-keys \
     --load-balancer-outbound-ips <publicIpId1>,<publicIpId2>
 ```
 
@@ -158,22 +177,15 @@ Başlangıçta genel IP öneklerinizi içeren yeni bir küme oluşturmak için, 
 ```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --vm-set-type VirtualMachineScaleSets \
-    --node-count 1 \
-    --load-balancer-sku standard \
-    --generate-ssh-keys \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
-## <a name="configure-outbound-ports-and-idle-timeout"></a>Giden bağlantı noktalarını ve boşta kalma zaman aşımını yapılandırma
+### <a name="configure-the-allocated-outbound-ports"></a>Ayrılan giden bağlantı noktalarını yapılandırma
+> [!IMPORTANT]
+> Kümenizde küçük hedef kümesine çok sayıda bağlantı kurması beklenen uygulamalar varsa, örn. SQL DB 'ye bağlanan çok sayıda ön uç örneği, SNAT bağlantı noktası tükenmesi (bağlantı noktası) ile karşılaşmanız çok açıktır. Bu senaryolar için, yük dengeleyicide ayrılan giden bağlantı noktalarını ve giden ön uç IP 'lerini artırmanız önemle önerilir. Artış, bir (1) ek IP adresinin tüm küme düğümlerine dağıtılacak 64K ek bağlantı noktaları ekleyeceğini göz önünde bulundurmalıdır.
 
-> [!WARNING]
-> Aşağıdaki bölüm, daha büyük ölçekli ağın gelişmiş senaryolarına veya varsayılan yapılandırmalara karşı SNAT tükenmesi sorunlarını gidermeye yöneliktir. Sağlıklı kümeleri sürdürmek için *AllocatedOutboundPorts* veya *IdleTimeout ınminutes* değerlerini varsayılan değerinden değiştirmeden önce, VM 'ler ve IP adresleri için uygun olan kotanın doğru envanterine sahip olmanız gerekir.
-> 
-> *AllocatedOutboundPorts* ve *IdleTimeout ınminutes* değerlerinin değiştirilmesi, yük dengeleyiciniz için giden kuralın davranışını önemli ölçüde değiştirebilir. Değişikliklerinizin etkisini tam olarak anlamak üzere bu değerleri güncelleştirmeden önce, Azure 'daki giden kuralları, [yük dengeleyici giden kurallarını][azure-lb-outbound-rules]ve [giden bağlantıları][azure-lb-outbound-connections] [Load Balancer][azure-lb-outbound-rules-overview]gözden geçirin.
 
-Giden ayrılmış bağlantı noktaları ve bunların boşta kalma zaman aşımları [SNAT][azure-lb-outbound-connections]için kullanılır. Varsayılan olarak, *Standart* SKU 'su yük dengeleyici, arka uç havuz boyutunu ve her bağlantı noktası için 30 dakikalık boşta kalma zaman aşımını [temel alan giden bağlantı noktası sayısı için otomatik atamayı][azure-lb-outbound-preallocatedports] kullanır. Bu değerleri görmek için [az Network lb giden kuralı listesini][az-network-lb-outbound-rule-list] kullanarak yük dengeleyicinin giden kuralını görüntüleyin:
+Aksi belirtilmedikçe, AKS, yapılandırma sırasında Standart Load Balancer tanımlayan ayrılmış giden bağlantı noktalarının varsayılan değerini kullanacaktır. Aşağıdaki komutta gösterildiği gibi, bu değer AKS API 'sinde veya SLB API 'sindeki **0** ' da **null** olur:
 
 ```azurecli-interactive
 NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
@@ -188,48 +200,74 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_eastus  
 ```
 
-Örnek çıktıda *AllocatedOutboundPorts* ve *IdleTimeout ınminutes*için varsayılan değer gösterilmektedir. *AllocatedOutboundPorts* için 0 değeri, arka uç havuz boyutunu temel alan giden bağlantı noktalarının sayısı için otomatik atamayı kullanan giden bağlantı noktası sayısını ayarlar. Örneğin, kümede 50 veya daha az düğüm varsa, her düğüm için 1024 bağlantı noktaları ayrılır.
+Bu çıktı, 0 bağlantı noktasına sahip olduğunuz ancak [arka uç havuz boyutunu temel alan otomatik giden bağlantı noktası atamasını][azure-lb-outbound-preallocatedports]kullandığınız için, örneğin, bir kümede 50 veya daha az düğüm varsa, her bir düğüm için 1024 bağlantı noktaları ayrılır, bu sayede düğümlerin sayısını giderek, düğüm başına daha az bağlantı noktası alırsınız.
 
-Yukarıdaki varsayılan yapılandırmaya göre 1 yüz SNAT tükenmesi beklemeniz durumunda *allocatedOutboundPorts* veya *IdleTimeout ınminutes* ayarını değiştirmeyi göz önünde bulundurun. Her ek IP adresi, ayırma için 64.000 ek bağlantı noktası sunar, ancak Azure Standart Load Balancer, daha fazla IP adresi eklendiğinde düğüm başına bağlantı noktalarını otomatik olarak artırmaz. *Yük dengeleyici-giden-bağlantı noktaları* ve *yük dengeleyici-boşta kalma zaman aşımı* parametrelerini ayarlayarak bu değerleri değiştirebilirsiniz. Örneğin:
+
+Ayrılan giden bağlantı noktası sayısını tanımlamak veya artırmak için aşağıdaki örneği izleyebilirsiniz:
+
 
 ```azurecli-interactive
 az aks update \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --load-balancer-outbound-ports 0 \
-    --load-balancer-idle-timeout 30
+    --load-balancer-managed-outbound-ip-count 7 \
+    --load-balancer-outbound-ports 4000
 ```
 
-> [!IMPORTANT]
-> Bağlantı veya ölçeklendirme sorunlarından kaçınmak için *allocatedOutboundPorts* 'i özelleştirmeden önce [gerekli kotayı hesaplamanız][calculate-required-quota] gerekir. *AllocatedOutboundPorts* için belirttiğiniz değer ayrıca 8 ' in katı olmalıdır.
+Bu örnekte, kümemdeki her düğüm için 4000 için ayrılan giden bağlantı noktası ve 7 IP, *düğüm başına 4000 bağlantı noktasına sahip olur * 100 düğümleri = 400k toplam bağlantı noktası < = 448k toplam bağlantı noktası = 7 IP * IP başına 64K bağlantı*noktası. Bu, 100 düğüme güvenle ölçeklenebilme ve varsayılan bir yükseltme işlemi yapmanıza olanak sağlar. Yükseltme ve diğer işlemler için gereken ek düğümler için yeterli bağlantı noktası ayrılması kritik öneme sahiptir. AKS, yükseltme için bir arabellek düğümüne varsayılan olarak, bu örnekte belirli bir zamanda 4000 boş bağlantı noktası gerekir. [Maxdalgalanma değerleri](upgrade-cluster.md#customize-node-surge-upgrade-preview)kullanılıyorsa, düğüm başına giden bağlantı noktalarını maxdalgalanma değerinizdeki değerle çarpın.
 
-Ayrıca, bir küme oluştururken *yük dengeleyici-giden-bağlantı noktaları* ve *yük dengeleyici-boşta kalma zaman aşımı* parametrelerini de kullanabilirsiniz, ancak Ayrıca *yük dengeleyici-yönetilen-giden-IP-sayısı*, *yük dengeleyici-giden-* IP veya *yük dengeleyici-giden-IP-öneklerini* de belirtmeniz gerekir.  Örneğin:
+100 düğümüne güvenle gitmek için daha fazla IP eklemeniz gerekir.
+
+
+> [!IMPORTANT]
+> Bağlantı veya ölçeklendirme sorunlarından kaçınmak için, [gerekli kotayı hesaplamanız ve][requirements] *allocatedOutboundPorts* özelleştirmeden önce gereksinimleri denetlemeniz gerekir.
+
+Ayrıca **`load-balancer-outbound-ports`** , bir küme oluştururken parametreleri de kullanabilirsiniz, ancak aynı zamanda, veya ' ı da belirtmeniz gerekir **`load-balancer-managed-outbound-ip-count`** **`load-balancer-outbound-ips`** **`load-balancer-outbound-ip-prefixes`** .  Örneğin:
 
 ```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --vm-set-type VirtualMachineScaleSets \
-    --node-count 1 \
     --load-balancer-sku standard \
-    --generate-ssh-keys \
     --load-balancer-managed-outbound-ip-count 2 \
-    --load-balancer-outbound-ports 0 \
-    --load-balancer-idle-timeout 30
+    --load-balancer-outbound-ports 1024 
 ```
 
-*Yük dengeleyici-giden-bağlantı noktaları* ve *yük dengeleyici-boşta kalma zaman aşımı* parametrelerini varsayılan olarak değiştirme sırasında, tüm kümeyi etkileyen yük dengeleyici profilinin davranışını etkiler.
+### <a name="configure-the-load-balancer-idle-timeout"></a>Yük dengeleyici boşta kalma zaman aşımını yapılandırma
 
-### <a name="required-quota-for-customizing-allocatedoutboundports"></a>AllocatedOutboundPorts özelleştirmek için gereken kota
-Düğüm sanal makinelerinizin sayısına ve istenen ayrılmış giden bağlantı noktalarına bağlı olarak yeterli giden IP kapasitesine sahip olmanız gerekir. Yeterli sayıda çıkış IP kapasitesi olduğunu doğrulamak için aşağıdaki formülü kullanın: 
+SNAT bağlantı noktası kaynakları tükendiğinde, mevcut akışlar SNAT bağlantı noktalarını yayınlana kadar giden akışlar başarısız olur. Flow kapandığında ve AKS tarafından yapılandırılan yük dengeleyici, boşta akışlardan geri kazanma SNAT bağlantı noktalarında 30 dakikalık bir boşta kalma zaman aşımı kullandığında, geri kazanır SNAT bağlantı noktalarını Load Balancer.
+Ayrıca, taşıma (örneğin, **`TCP keepalives`** ) veya **`application-layer keepalives`** boş bir akışı yenilemek ve gerekirse bu boşta kalma zaman aşımını sıfırlamak için kullanabilirsiniz. Bu zaman aşımını aşağıdaki örnekte de yapılandırabilirsiniz: 
+
+
+```azurecli-interactive
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-idle-timeout 4
+```
+
+Çok sayıda kısa süreli bağlantınız olması beklediğinizi ve uzun süreli ve uzun sürelerine sahip bir bağlantı yoksa `kubectl proxy` `kubectl port-forward` 4 dakika gibi düşük bir zaman aşımı değeri kullanmayı düşünebilirsiniz. Ayrıca, TCP keepcanlı tutma kullanılırken bağlantının bir tarafında etkinleştirilmesi yeterlidir. Örneğin, bunları sunucu tarafında etkinleştirmek yeterlidir ve akışın boşta kalma zamanlayıcısını sıfırlayın ve her iki taraf da TCP keepcanlı tutmayı başlatması gerekli değildir. Veritabanı istemci-sunucu yapılandırmalarına dahil olmak üzere uygulama katmanı için benzer kavramlar vardır. Uygulamaya özgü keepcanlı olarak hangi seçeneklerin mevcut olduğunu kontrol etmek için sunucu tarafını denetleyin.
+
+> [!IMPORTANT]
+> AKS, varsayılan olarak boşta durumunda TCP sıfırlamayı kolaylaştırır ve senaryolarınızda daha öngörülebilir uygulama davranışı için bu yapılandırmayı tutmanızı ve bundan yararlanmasını önerir.
+> TCP RST yalnızca TCP bağlantısı sırasında, belırlenen durumda gönderilir. Bu konuda [burada](../load-balancer/load-balancer-tcp-reset.md) daha fazla bilgi edinebilirsiniz.
+
+### <a name="requirements-for-customizing-allocated-outbound-ports-and-idle-timeout"></a>Ayrılan giden bağlantı noktalarını ve boşta kalma zaman aşımını özelleştirme gereksinimleri
+
+- *AllocatedOutboundPorts* için belirttiğiniz değer ayrıca 8 ' in katı olmalıdır.
+- Düğüm sanal makinelerinizin sayısına ve gerekli ayrılmış giden bağlantı noktalarına bağlı olarak yeterli giden IP kapasitesine sahip olmanız gerekir. Yeterli sayıda çıkış IP kapasitesi olduğunu doğrulamak için aşağıdaki formülü kullanın: 
  
 *Outboundıps* \* 64.000 \> *nodevms* \* *desiredAllocatedOutboundPorts*.
  
 Örneğin, 3 *Nodevms*ve 50.000 *desiredAllocatedOutboundPorts*varsa, en az 3 *outboundıps*gerekir. İhtiyaç duyduğunuz süreden daha fazla giden IP kapasitesi eklemeniz önerilir. Ayrıca, giden IP kapasitesini hesaplarken küme otomatik Scaler ve düğüm havuzu yükseltmeleri olasılığa yönelik hesaba sahip olmanız gerekir. Küme otomatik yüklemesi için geçerli düğüm sayısını ve en fazla düğüm sayısını gözden geçirin ve daha yüksek değeri kullanın. Yükseltme için, yükseltmeye izin veren her düğüm havuzu için ek bir düğüm VM 'si hesabı.
  
-*Idletimeoutınminutes* değerini varsayılan değer olan 30 dakikadan farklı bir değere ayarlarken, iş yüklerinizin giden bir bağlantıya ne kadar süreyle ihtiyacı olacağını düşünün. Ayrıca, AKS dışında kullanılan *Standart* SKU yük dengeleyici için varsayılan zaman aşımı değerini 4 dakikadır. Belirli AKS iş yükünüzü daha doğru bir şekilde yansıtan bir *ıdletimeoutınminutes* değeri, artık kullanılmayan bağlantıların AYıKLANMASıNDAN kaynaklanan SNAT tükenmesi azalmasına yardımcı olabilir.
+- *Idletimeoutınminutes* değerini varsayılan değer olan 30 dakikadan farklı bir değere ayarlarken, iş yüklerinizin giden bir bağlantıya ne kadar süreyle ihtiyacı olacağını düşünün. Ayrıca, AKS dışında kullanılan *Standart* SKU yük dengeleyici için varsayılan zaman aşımı değerini 4 dakikadır. Belirli AKS iş yükünüzü daha doğru bir şekilde yansıtan bir *ıdletimeoutınminutes* değeri, artık kullanılmayan bağlantıların AYıKLANMASıNDAN kaynaklanan SNAT tükenmesi azalmasına yardımcı olabilir.
 
-## <a name="restrict-access-to-specific-ip-ranges"></a>Belirli IP aralıklarına erişimi kısıtla
+> [!WARNING]
+> *AllocatedOutboundPorts* ve *ıdletimeoutınminutes* değerlerinin değiştirilmesi, yük dengeleyiciniz için giden kuralın davranışını önemli ölçüde değiştirebilir ve bu değerleri, avantajları ve uygulamanızın bağlantı düzenlerini anlamadan daha açık bir şekilde yapılmamalıdır, bu değerleri güncelleştirmeden önce, değişikliklerinizin etkisini tam olarak anlamak için [aşağıdaki][troubleshoot-snat] [Load Balancer giden kuralları][azure-lb-outbound-rules-overview] ve [giden bağlantıları][azure-lb-outbound-connections] gözden geçirin.
+
+
+## <a name="restrict-inbound-traffic-to-specific-ip-ranges"></a>Gelen trafiği belirli IP aralıklarıyla kısıtla
 
 Yük Dengeleyici için sanal ağla ilişkili ağ güvenlik grubu (NSG), varsayılan olarak tüm gelen dış trafiğe izin veren bir kural içerir. Bu kuralı, gelen trafik için yalnızca belirli IP aralıklarına izin verecek şekilde güncelleştirebilirsiniz. Aşağıdaki bildirim, gelen dış trafik için yeni bir IP aralığı belirtmek üzere *Loadbalancersourceranges* kullanır:
 
@@ -248,11 +286,75 @@ spec:
   - MY_EXTERNAL_IP_RANGE
 ```
 
+## <a name="additional-customizations-via-kubernetes-annotations"></a>Kubernetes ek açıklamaları aracılığıyla ek özelleştirmeler
+
+Bu, türü ile Kubernetes Hizmetleri için desteklenen ek açıklamaların bir listesidir `LoadBalancer` , bu ek açıklamalar yalnızca **gelen** akışlar için geçerlidir:
+
+| Ek Açıklama | Değer | Description
+| ----------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------ 
+| `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` veya `false`                     | Yük dengeleyicinin iç olup olmayacağını belirtin. Ayarlanmamışsa genel olarak varsayılan olarak ayarlanmıştır.
+| `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | Alt ağın adı                    | İç yük dengeleyicinin hangi alt ağa bağlanması gerektiğini belirtin. Bu, ayarlanmamışsa, bulut yapılandırma dosyasında yapılandırılan alt ağın varsayılan olarak ayarlanmamakta.
+| `service.beta.kubernetes.io/azure-dns-label-name`                 | Genel IP 'lerde DNS etiketinin adı   | **Ortak** HIZMET için DNS etiketi adını belirtin. Boş dizeye ayarlanırsa, genel IP 'deki DNS girişi kullanılmaz.
+| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` veya `false`                     | Hizmetin, başka bir hizmetle paylaşılabilecek bir Azure güvenlik kuralı kullanılarak sunulduğunu ve açığa çıkarılabileceğiniz hizmet sayısında bir artış için bir artış kuralları için bir artış olduğunu belirtin. Bu ek açıklama, ağ güvenlik gruplarının Azure [genişletilmiş güvenlik kuralları](../virtual-network/security-overview.md#augmented-security-rules) özelliğine bağımlıdır. 
+| `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | Kaynak grubunun adı            | Küme altyapısı (düğüm kaynak grubu) ile aynı kaynak grubunda olmayan yük dengeleyici genel IP 'Lerinin kaynak grubunu belirtin.
+| `service.beta.kubernetes.io/azure-allowed-service-tags`           | İzin verilen hizmet etiketlerinin listesi          | Virgülle ayrılmış izin verilen [hizmet etiketlerinin](../virtual-network/security-overview.md#service-tags) bir listesini belirtin.
+| `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | Dakikalar içinde TCP boş zaman aşımları          | Yük dengeleyicide, TCP bağlantısı boşta kalma zaman aşımlarının gerçekleşmesi için dakika cinsinden süreyi belirtin. Varsayılan ve en küçük değer 4 ' dir. En büyük değer 30 ' dur. Bir tamsayı olmalıdır.
+|`service.beta.kubernetes.io/azure-load-balancer-disable-tcp-reset` | `true`                                | SLB için devre dışı bırak `enableTcpReset`
+
+
+## <a name="troubleshooting-snat"></a>SNAT sorunlarını giderme
+
+Aynı hedef IP adresine ve bağlantı noktasına giden çok sayıda giden TCP veya UDP bağlantısı başlatdığınızı ve başarısız olmuş bağlantıları gözlemlebildiğinizi veya SNAT bağlantı noktalarını (PAT tarafından kullanılan önceden ayrılan kısa ömürlü bağlantı noktaları) tüketmenin bir şekilde önerdiğini biliyorsanız, çeşitli genel risk azaltma seçenekleriniz vardır. Bu seçenekleri gözden geçirin ve senaryonuz için nelerin kullanılabilir ve en iyisi olduğuna karar verin. Bir veya daha fazla bu senaryonun yönetilmesine yardımcı olabilir. Ayrıntılı bilgi için [giden bağlantılar sorun giderme kılavuzunu](../load-balancer/troubleshoot-outbound-connection.md#snatexhaust)gözden geçirin.
+
+SNAT tükenmesi 'nın temel nedeni, giden bağlantının kurulduğu, yönetildiği veya yapılandırılabilir zamanlayıcılar değerlerinin varsayılan değerlerinden nasıl değiştiği için bir kenar modeldir. Bu bölümü dikkatli bir şekilde inceleyin.
+
+### <a name="steps"></a>Adımlar
+1. Bağlantılarınızın uzun süre boşta kalıp kalmamasını denetleyin ve bu bağlantı noktasını serbest bırakmak için varsayılan boşta kalma zaman aşımını kullanır. Bu durumda 30 dakikalık varsayılan zaman aşımı, senaryonuz için azaltılmalıdır.
+2. Uygulamanızın giden bağlantı oluşturma şeklini araştırın (örneğin, kod incelemesi veya paket yakalama).
+3. Bu etkinliğin beklenen davranış olup olmadığını veya uygulamanın hatalı çalışıp çalışmadığını belirleme. Bulgularınızı eklemek için Azure Izleyici 'de [ölçümleri](../load-balancer/load-balancer-standard-diagnostics.md) ve [günlükleri](../load-balancer/load-balancer-monitor-log.md) kullanın. Örneğin, SNAT bağlantıları ölçümü için "başarısız" kategorisini kullanın.
+4. Uygun [desenlerin](#design-patterns) izlendikten sonra değerlendirin.
+5. SNAT bağlantı noktası tükenmesi 'nin [ek gıden IP adresleri + ayrılan ek giden bağlantı noktalarıyla](#configure-the-allocated-outbound-ports) azaltılıp azaltılmasının gerekip gerekmediğini değerlendirin.
+
+### <a name="design-patterns"></a>Tasarım desenleri
+Mümkün olduğunda her zaman bağlantı yeniden kullanımı ve bağlantı havuzlarından yararlanın. Bu desenler, kaynak tükenmesi sorunlarından kaçınır ve öngörülebilir davranışa neden olur. Bu desenlerin temelleri birçok geliştirme kitaplığı ve çerçeve içinde bulunabilir.
+
+- Atomik istekler (bağlantı başına bir istek) genellikle iyi bir tasarım seçeneği değildir. Bu şekilde, bu tür bir desenler ölçeği sınırlar, performansı azaltır ve güvenilirliği azaltır. Bunun yerine, bağlantı sayısını ve ilişkili SNAT bağlantı noktalarını azaltmak için HTTP/S bağlantılarını yeniden kullanın. TLS kullanırken, daha düşük el sıkışmaları, ek yük ve şifreleme işlemi maliyeti nedeniyle uygulama ölçeği artar ve performans artar.
+- Küme dışı/özel DNS kullanıyorsanız veya coreDNS üzerindeki özel yukarı akış sunucuları, istemci DNS çözümleyiciler sonucunu önbelleğe alırken her birimde çok sayıda akış getirebileceğini unutmayın. Özel DNS sunucuları kullanmak yerine coreDNS 'i özelleştirdiğinizden emin olun ve iyi bir önbelleğe alma değeri tanımlayın.
+- UDP akışları (örneğin, DNS aramaları), boşta kalma zaman aşımı süresi boyunca SNAT bağlantı noktalarını ayırır. Boşta kalma zaman aşımı, SNAT bağlantı noktalarında basınç arttıkça daha uzun olur. Kısa boşta kalma zaman aşımı (örneğin 4 dakika) kullanın.
+Bağlantı birimlerinizi şekillendirmek için bağlantı havuzlarını kullanın.
+- Hiçbir şekilde hiçbir TCP akışını sessizce iptal edin ve akışı temizlemek için TCP zamanlayıcılarını güvenin. Bağlantıyı açık bir şekilde kapatmaya izin vermezseniz, durum ara sistemlere ve uç noktalara ayrılır ve SNAT bağlantı noktalarını diğer bağlantılar için kullanılamaz hale getirir. Bu model, uygulama başarısızlıklarını ve SNAT tükenmesi 'ni tetikleyebilir.
+- Uzman etkisi olmadan, işletim sistemi düzeyinde TCP ile ilgili süreölçer değerlerini değiştirmeyin. TCP yığını kurtarılarken, bir bağlantının uç noktalarında yanlış beklentiler olduğunda uygulama performansı olumsuz etkilenebilir. Zamanlayıcı değiştirme sırasında, genellikle temel alınan tasarım sorununun bir işareti bulunur. Aşağıdaki önerileri gözden geçirin.
+
+
 Yukarıdaki örnek, kuralı yalnızca *MY_EXTERNAL_IP_RANGE* aralığından gelen dış trafiğe izin verecek şekilde güncelleştirir. Yük dengeleyici hizmetine erişimi kısıtlamak için bu yöntemi kullanma hakkında daha fazla bilgi, [Kubernetes belgelerinde][kubernetes-cloud-provider-firewall]bulunabilir.
+
+
+## <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>Temel bir SKU yük dengeleyiciden standart SKU 'ya taşıma
+
+Temel SKU 'nun Load Balancer var olan bir kümeniz varsa, standart SKU Load Balancer sahip bir küme kullanmaya geçiş yaparken dikkat etmeniz önemli davranış farklılıkları vardır.
+
+Örneğin, kümeleri geçirmek için mavi/yeşil dağıtımlar yapmak, `load-balancer-sku` küme türü için yalnızca küme oluşturma zamanında tanımlanmış olan yaygın bir uygulamadır. Ancak, *temel SKU* yük dengeleyiciler *, standart SKU IP adreslerini gerektirdiğinden* *Standart* SKU yük dengeleyiciler Ile uyumlu olmayan *temel SKU* IP adreslerini kullanır. Kümeleri Load Balancer SKU 'Larına geçirirken, uyumlu bir IP adresi SKU 'SU olan yeni bir IP adresi gerekir.
+
+Kümeleri geçirme hakkında daha fazla bilgi için, geçiş yaparken göz önünde bulundurmanız gereken önemli konuların bir listesini görüntülemek için [geçiş konuları hakkındaki belgelerimizi](aks-migration.md) ziyaret edin. Aşağıdaki sınırlamalar Ayrıca AKS 'de standart SKU yük dengeleyicileri kullanırken dikkat edilecek önemli davranış farklarıdır.
+
+## <a name="limitations"></a>Sınırlamalar
+
+*Standart* SKU ile yük dengeleyiciyi destekleyen aks kümelerini oluşturup yönetirken aşağıdaki sınırlamalar geçerlidir:
+
+* AKS kümesinden giden trafiğe izin vermek için en az bir genel IP veya IP öneki gereklidir. Genel IP veya IP öneki ayrıca denetim düzlemi ve aracı düğümleri arasındaki bağlantıyı sürdürmek ve AKS 'nin önceki sürümleriyle uyumluluğu sürdürmek için de gereklidir. *Standart* bir SKU yük dengeleyiciye sahip genel IP 'LERI veya IP öneklerini belirtmek için aşağıdaki seçenekleriniz vardır:
+    * Kendi genel IP 'nizi sağlayın.
+    * Kendi genel IP öneklerinizi sağlayın.
+    * AKS kümesinin, genellikle başlangıçta *Mc_* olarak adlandırılan aks kümesi olarak oluşturulan aynı kaynak grubunda *Standart* SKU genel IP 'leri oluşturmasına izin vermek için en fazla 100 ' a kadar bir sayı belirtin. AKS, genel IP 'yi *Standart* SKU yük dengeleyicisine atar. Varsayılan olarak, genel IP, genel IP öneki veya IP sayısı belirtilmemişse, AKS kümesiyle aynı kaynak grubunda bir genel IP otomatik olarak oluşturulur. Ayrıca, genel adreslere izin vermeniz ve IP oluşturma ile ilgili herhangi bir Azure Ilkesinin oluşturulmasını önetmeniz gerekir.
+* Yük dengeleyici SKU 'SU tanımlama yalnızca bir AKS kümesi oluşturduğunuzda yapılabilir. Bir AKS kümesi oluşturulduktan sonra yük dengeleyici SKU 'sunu değiştiremezsiniz.
+* Tek bir kümede yalnızca bir tür yük dengeleyici SKU 'SU (temel veya standart) kullanabilirsiniz.
+* *Standart* SKU yük dengeleyiciler yalnızca *Standart* SKU IP adreslerini destekler.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Kubernetes Services [belgelerindeki][kubernetes-services]Kubernetes hizmetleri hakkında daha fazla bilgi edinin.
+
+[Aks iç Load Balancer belgelerindeki](internal-lb.md)gelen trafik için dahili Load Balancer kullanma hakkında daha fazla bilgi edinin.
 
 <!-- LINKS - External -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
@@ -295,5 +397,6 @@ Kubernetes Services [belgelerindeki][kubernetes-services]Kubernetes hizmetleri h
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[calculate-required-quota]: #required-quota-for-customizing-allocatedoutboundports
+[requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
+[troubleshoot-snat]: #troubleshooting-snat

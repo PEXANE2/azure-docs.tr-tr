@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 11/19/2019
-ms.openlocfilehash: c3f843de6eaa621ecdd04c5a3418dc0d620f841e
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/10/2020
+ms.openlocfilehash: eac5814eb977a01135ad2fcd9551b3475673dbca
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343396"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691773"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics sunucuları için kaynak sınırları
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -53,13 +53,13 @@ Tek veritabanı kaynak depolama boyutları için, fiyatlandırma katmanı başı
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>Veritabanı kaynak sınırlarına ulaşıldığında ne olur?
 
-### <a name="compute-dtus-and-edtus--vcores"></a>Hesaplama (DTU 'Lar ve eDTU 'lar/sanal çekirdekler)
+### <a name="compute-cpu"></a>İşlem CPU 'SU
 
-Veritabanı işlem kullanımı (DTU 'lar ve eDTU 'lar ya da sanal çekirdekler) yüksek hale geldiğinde sorgu gecikmesi artar ve sorgular bile zaman aşımına uğrar. Bu koşullar altında, sorgular hizmet tarafından kuyruğa alınabilir ve kaynaklar ücretsiz hale geldiğinde yürütme için kaynaklar sağlanır.
+Veritabanı işlem CPU kullanımı yüksek hale geldiğinde sorgu gecikmesi artar ve sorgular bile zaman aşımına uğrar. Bu koşullar altında, sorgular hizmet tarafından kuyruğa alınabilir ve kaynaklar ücretsiz hale geldiğinde yürütme için kaynaklar sağlanır.
 Yüksek işlem kullanımı ile karşılaşıldığında, risk azaltma seçenekleri şunlardır:
 
 - Veritabanını daha fazla işlem kaynağı sağlamak için veritabanının veya elastik havuzun işlem boyutunu artırma. Bkz. [tek veritabanı kaynaklarını ölçeklendirme](single-database-scale.md) ve [elastik havuz kaynaklarını ölçeklendirme](elastic-pool-scale.md).
-- Her bir sorgunun kaynak kullanımını azaltmak için sorguları en iyi duruma getirme. Daha fazla bilgi için bkz. [sorgu ayarlama/Ipuçcu](performance-guidance.md#query-tuning-and-hinting).
+- Her bir sorgunun CPU kaynak kullanımını azaltmak için sorguları en iyi duruma getirme. Daha fazla bilgi için bkz. [sorgu ayarlama/Ipuçcu](performance-guidance.md#query-tuning-and-hinting).
 
 ### <a name="storage"></a>Depolama
 
@@ -82,7 +82,28 @@ Yüksek oturum veya çalışan kullanımı ile karşılaşıldığında, risk az
 - [MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (en fazla paralellik derecesi) ayarı azaltıyor.
 - Yineleme sayısını ve sorgu engelleme süresini azaltmak için sorgu iş yükünü iyileştirme.
 
-### <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>Kullanıcı iş yükleri ve iç işlemlere göre kaynak tüketimi
+### <a name="memory"></a>Bellek
+
+Diğer kaynakların aksine (CPU, çalışan, depolama), bellek sınırına ulaşmak, sorgu performansını olumsuz yönde etkilemez ve hatalara ve hatalara neden olmaz. [Bellek yönetimi mimarisi Kılavuzu](https://docs.microsoft.com/sql/relational-databases/memory-management-architecture-guide)'nda ayrıntılı olarak açıklandığı gibi, SQL Server veritabanı altyapısı, tasarım yoluyla genellikle kullanılabilir tüm belleği kullanır. Bellek, daha pahalı depolama erişiminin önüne geçmek için öncelikle verileri önbelleğe almak için kullanılır. Bu nedenle, daha yüksek bellek kullanımı genellikle depolama 'dan daha yavaş okuma yerine bellekten daha hızlı okuma nedeniyle sorgu performansını geliştirir.
+
+Veritabanı altyapısı başlatıldıktan sonra, iş yükü depolamadan veri okumaya başladığı için veritabanı altyapısı verileri bellekte saklar. Bu ilk ayarlama süresinden sonra, `avg_memory_usage_percent` ve `avg_instance_memory_percent` [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ' deki ve sütunlarının %100 ' e eşit veya daha büyük olması beklenir. Bu, özellikle boşta olmayan veritabanları için ve belleğe tamamen sığmıyor.
+
+Veri önbelleğinin yanı sıra, bellek veritabanı altyapısının diğer bileşenlerinde de kullanılır. Bellek için talep olduğunda ve kullanılabilir tüm bellek veri önbelleği tarafından kullanılıyorsa, veritabanı altyapısı belleği diğer bileşenlere kullanılabilir hale getirmek için veri önbelleği boyutunu dinamik olarak küçültir ve diğer bileşenler belleği serbest bırakrken veri önbelleğini dinamik olarak büyütürlerdir.
+
+Nadir durumlarda, yeterince yoğun bir iş yükü yetersiz bellek koşuluna neden olabilir ve bu da bellek dışı hatalara yol açabilir. Bu durum, %0 ile %100 arasında herhangi bir bellek kullanımında gerçekleşebilir. Bu, daha büyük bir daha küçük bilgi işlem boyutlarında ve/veya [yoğun elastik havuzlarda](elastic-pool-resource-management.md)olduğu gibi sorgu işleme için daha fazla bellek kullanan iş yükleriyle meydana gelir.
+
+Yetersiz bellek hatalarıyla karşılaşdığınızda, risk azaltma seçenekleri şunlardır:
+- Veritabanı veya elastik havuzun hizmet katmanını veya işlem boyutunu artırma. Bkz. [tek veritabanı kaynaklarını ölçeklendirme](single-database-scale.md) ve [elastik havuz kaynaklarını ölçeklendirme](elastic-pool-scale.md).
+- Bellek kullanımını azaltmak için sorguları ve yapılandırmayı en iyi duruma getirme. Ortak çözümler aşağıdaki tabloda açıklanmıştır.
+
+|Çözüm|Description|
+| :----- | :----- |
+|Bellek izin verdiği boyutu azaltma|Bellek onayları hakkında daha fazla bilgi için bkz. [SQL Server belleği vermeyi anlama](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595) blog gönderisi. Aşırı büyük bellek onayları önlemeye yönelik yaygın bir çözüm, [İstatistikleri](https://docs.microsoft.com/sql/relational-databases/statistics/statistics) güncel tutmaktan sorumludur. Bu, sorgu altyapısı tarafından bellek tüketiminin daha doğru tahminlerine neden olur, böylece gereksiz büyük bellek onayları önlenir.</br></br>Uyumluluk düzeyi 140 ve üzeri kullanan veritabanlarında veritabanı altyapısı, [toplu iş modu bellek verme geri bildirimi](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15#batch-mode-memory-grant-feedback)'ni kullanarak bellek verme boyutunu otomatik olarak ayarlayabilir. Uyumluluk düzeyi 150 ve üstünü kullanan veritabanlarında, veritabanı altyapısı benzer şekilde daha yaygın satır modu sorguları için [satır modu bellek verme geri bildirimi](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15#row-mode-memory-grant-feedback)kullanır. Bu yerleşik işlevsellik, gereksiz büyük bellek izni nedeniyle yetersiz bellek hatalarından kaçınmaya yardımcı olur.|
+|Sorgu planı önbelleğinin boyutunu küçültün|Veritabanı altyapısı, her sorgu yürütmesi için bir sorgu planı derlenmesini önlemek üzere sorgu planlarını bellekte önbelleğe alır. Yalnızca bir kez kullanılan önbelleğe alma planlarını nedeniyle sorgu planı önbelleği blobunun neden olduğu bir engel olmak için, [veritabanı kapsamındaki OPTIMIZE_FOR_AD_HOC_WORKLOADS yapılandırmasını](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)etkinleştirin.|
+|Kilitleme belleği boyutunu azaltma|Veritabanı altyapısı, [kilitler](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide#Lock_Engine)için bellek kullanır. Mümkün olduğunda, çok sayıda kilit elde edebilir ve yüksek kilit belleği tüketimine neden olabilecek büyük işlemlerden kaçının.|
+
+
+## <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>Kullanıcı iş yükleri ve iç işlemlere göre kaynak tüketimi
 
 Her bir veritabanındaki kullanıcı iş yükleri tarafından CPU ve bellek tüketimi, [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) ve [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) görünümlerinde, `avg_cpu_percent` ve `avg_memory_usage_percent` sütunlarında raporlanır. Elastik havuzlar için, [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) görünümünde havuz düzeyi kaynak tüketimi raporlanır. Kullanıcı iş yükü CPU tüketimi `cpu_percent` , [tek veritabanları](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases) ve havuz düzeyindeki [elastik havuzlar](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) için Azure izleyici ölçümü aracılığıyla da raporlanır.
 

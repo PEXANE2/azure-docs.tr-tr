@@ -4,7 +4,7 @@ description: Windows çalıştıran bir Azure VM 'de Azure AD oturum açma
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4abc2dee6b83820169173d965d53381ead9f4d0b
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 700e8f2ae29ad41ceaecf58c3ffde4a27725c25c
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194011"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252806"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -34,7 +34,7 @@ Azure AD kimlik doğrulamasını kullanarak Azure 'da Windows VM 'lerde oturum a
 - Artık yerel yönetici hesaplarını yönetmek zorunda değildir.
 - Azure RBAC, ihtiyaç duymak üzere VM 'lere uygun erişim izni vermenizi ve artık gerekli olmadığında kaldırmanızı sağlar.
 - Bir sanal makineye erişime izin vermeden önce Azure AD koşullu erişimi, şöyle ek gereksinimler uygulayabilir: 
-   - Çok faktörlü kimlik doğrulaması
+   - Multi-factor authentication
    - Oturum açma risk denetimi
 - VDı dağıtımlarınız için bir parçası olan Azure Windows VM 'lerinin Azure AD JOIN 'i otomatikleştirin ve ölçeklendirin.
 

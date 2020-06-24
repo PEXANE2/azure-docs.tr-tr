@@ -5,15 +5,15 @@ description: Portalı kullanarak Application Gateway için özel bir araştırma
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 15daf47a1cb44635932311e60b3690af9ff58677
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc599eef349c2d65483de18b0cc8c04c5c2e53ad
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74074601"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808227"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Portalı kullanarak Application Gateway için özel bir araştırma oluşturma
 
@@ -44,17 +44,17 @@ Yoklamalar, Portal üzerinden iki adımlı bir işlemde yapılandırılır. İlk
 
 4. **Durum araştırması Ekle** sayfasında, araştırma için gerekli bilgileri doldurun ve tamamlandığında **Tamam**' ı seçin.
 
-   |**Ayar** | **Deeri** | **Bilgileri**|
+   |**Ayar** | **Değer** | **Ayrıntılar**|
    |---|---|---|
    |**Adı**|Customaraştırması|Bu değer, portalda erişilebilen araştırmayı verilen kolay bir addır.|
-   |**Protocol**|HTTP veya HTTPS | Sistem durumu araştırmasının kullandığı protokol. |
+   |**Protokol**|HTTP veya HTTPS | Sistem durumu araştırmasının kullandığı protokol. |
    |**Konak**|Yani contoso.com|Bu değer, uygulama sunucusunda çalışan sanal ana bilgisayarın (VM ana bilgisayar adından farklı) adıdır. Araştırma, (protokol)://(ana bilgisayar adı):(bağlantı noktası httpsetting)/Urlpath' e gönderilir.  Bu, Application Gateway üzerinde birden çok site yapılandırıldığında geçerlidir. Application Gateway tek bir site için yapılandırıldıysa, ' 127.0.0.1 ' girin.|
-   |**Arka uç HTTP ayarlarından konak adı Seç**|Evet veya Hayır|Araştırmanın *konak* üstbilgisini, bu ARAŞTıRMANıN Ilişkilendirildiği http ayarıyla ilişkili arka uç havuzundaki arka uç kaynağının ana bilgisayar adına ayarlar. Azure App Service gibi çok kiracılı arka uçlar söz konusu olduğunda özel olarak gereklidir. [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
-   |**Yol**|/veya başka bir yol|Özel araştırma için tam URL 'nin geri kalanı. Geçerli bir yol '/' ile başlar. Http:\//contoso.com ' nin varsayılan yolu için yalnızca '/' kullanın |
+   |**Arka uç HTTP ayarlarından konak adı Seç**|Evet veya Hayır|Araştırmanın *konak* üstbilgisini, bu ARAŞTıRMANıN Ilişkilendirildiği http ayarıyla ilişkili arka uç havuzundaki arka uç kaynağının ana bilgisayar adına ayarlar. Azure App Service gibi çok kiracılı arka uçlar söz konusu olduğunda özel olarak gereklidir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
+   |**Yol**|/veya başka bir yol|Özel araştırma için tam URL 'nin geri kalanı. Geçerli bir yol '/' ile başlar. Http:/contoso.com ' nin varsayılan yolu için \/ yalnızca '/' kullanın |
    |**Aralık (saniye)**|30|Araştırmanın sistem durumunu denetlemek için ne sıklıkta çalıştırıldığı. 30 saniyeden daha düşük bir değer ayarlamanız önerilmez.|
    |**Zaman aşımı (saniye)**|30|Araştırmanın zaman aşımından önce bekleyeceği süre. Bu zaman aşımı süresi içinde geçerli bir yanıt alınmıyorsa, araştırma başarısız olarak işaretlenir. Zaman aşımı aralığı, arka uç sistem durumu sayfasının kullanılabilir olduğundan emin olmak için bir http çağrısının yüksek olması gerekir. Zaman aşımı değeri bu araştırma ayarında kullanılan ' Interval ' değerinden daha fazla olmamalıdır veya HTTP ayarındaki ' Istek zaman aşımı ' değeri bu yoklamasıyla ilişkilendirilecek.|
 |**Sağlıksız durum eşiği**|3|Hatalı olarak kabul edilecek ardışık başarısız deneme sayısı. Eşik 1 veya daha fazlasına ayarlanabilir.|
-   |**Araştırma eşleştirme koşullarını kullanma**|Evet veya Hayır|Varsayılan olarak, 200 ve 399 arasındaki durum koduna sahip HTTP (S) yanıtı sağlıklı olarak değerlendirilir. Kabul edilebilir arka uç yanıt kodu aralığını veya arka uç yanıtı gövdesini değiştirebilirsiniz. [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
+   |**Araştırma eşleştirme koşullarını kullanma**|Evet veya Hayır|Varsayılan olarak, 200 ve 399 arasındaki durum koduna sahip HTTP (S) yanıtı sağlıklı olarak değerlendirilir. Kabul edilebilir arka uç yanıt kodu aralığını veya arka uç yanıtı gövdesini değiştirebilirsiniz. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
    |**HTTP Ayarları**|açılan menüden seçim|Araştırma, burada seçilen HTTP ayarları ile ilişkilendirilir ve bu nedenle, seçilen HTTP ayarıyla ilişkili olan arka uç havuzunun sistem durumunu izler. Seçilen HTTP ayarında kullanılmakta olan araştırma isteği için aynı bağlantı noktasını kullanacaktır. Yalnızca diğer özel yoklamalar ile ilişkilendirilmemiş olan bu HTTP ayarlarını seçebilirsiniz. <br>Bu araştırma yapılandırmasında seçilen protokolle aynı protokolüne sahip ve yalnızca *arka uç http ayar anahtarından konak adı seçin* için aynı duruma sahip olan Association için yalnızca bu http ayarlarının kullanılabilir olduğunu unutmayın.|
    
    > [!IMPORTANT]
@@ -93,17 +93,17 @@ Yoklamalar, Portal üzerinden iki adımlı bir işlemde yapılandırılır. İlk
 
 4. **Sistem durumu araştırması Ekle** dikey penceresinde, araştırma için gerekli bilgileri doldurun ve tamamlandığında **Tamam**' ı seçin.
 
-   |**Ayar** | **Deeri** | **Bilgileri**|
+   |**Ayar** | **Değer** | **Ayrıntılar**|
    |---|---|---|
    |**Adı**|Customaraştırması|Bu değer, portalda erişilebilen araştırmayı verilen kolay bir addır.|
-   |**Protocol**|HTTP veya HTTPS | Sistem durumu araştırmasının kullandığı protokol. |
+   |**Protokol**|HTTP veya HTTPS | Sistem durumu araştırmasının kullandığı protokol. |
    |**Konak**|Yani contoso.com|Bu değer, uygulama sunucusunda çalışan sanal ana bilgisayarın (VM ana bilgisayar adından farklı) adıdır. Araştırma, (protokol)://(ana bilgisayar adı):(bağlantı noktası httpsetting)/Urlpath' e gönderilir.  Bu, Application Gateway üzerinde birden çok site yapılandırıldığında geçerlidir. Application Gateway tek bir site için yapılandırıldıysa, ' 127.0.0.1 ' girin.|
-   |**Arka uç HTTP ayarlarından konak adı Seç**|Evet veya Hayır|Araştırmanın *konak* üstbilgisini, bu ARAŞTıRMANıN Ilişkilendirildiği http ayarıyla ilişkili arka uç havuzundaki arka uç kaynağının ana bilgisayar adına ayarlar. Azure App Service gibi çok kiracılı arka uçlar söz konusu olduğunda özel olarak gereklidir. [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
-   |**Yol**|/veya başka bir yol|Özel araştırma için tam URL 'nin geri kalanı. Geçerli bir yol '/' ile başlar. Http:\//contoso.com ' nin varsayılan yolu için yalnızca '/' kullanın |
+   |**Arka uç HTTP ayarlarından konak adı Seç**|Evet veya Hayır|Araştırmanın *konak* üstbilgisini, bu ARAŞTıRMANıN Ilişkilendirildiği http ayarıyla ilişkili arka uç havuzundaki arka uç kaynağının ana bilgisayar adına ayarlar. Azure App Service gibi çok kiracılı arka uçlar söz konusu olduğunda özel olarak gereklidir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
+   |**Yol**|/veya başka bir yol|Özel araştırma için tam URL 'nin geri kalanı. Geçerli bir yol '/' ile başlar. Http:/contoso.com ' nin varsayılan yolu için \/ yalnızca '/' kullanın |
    |**Aralık (saniye)**|30|Araştırmanın sistem durumunu denetlemek için ne sıklıkta çalıştırıldığı. 30 saniyeden daha düşük bir değer ayarlamanız önerilmez.|
    |**Zaman aşımı (saniye)**|30|Araştırmanın zaman aşımından önce bekleyeceği süre. Bu zaman aşımı süresi içinde geçerli bir yanıt alınmıyorsa, araştırma başarısız olarak işaretlenir. Zaman aşımı aralığı, arka uç sistem durumu sayfasının kullanılabilir olduğundan emin olmak için bir http çağrısının yüksek olması gerekir. Zaman aşımı değeri bu araştırma ayarında kullanılan ' Interval ' değerinden daha fazla olmamalıdır veya HTTP ayarındaki ' Istek zaman aşımı ' değeri bu yoklamasıyla ilişkilendirilecek.|
 |**Sağlıksız durum eşiği**|3|Hatalı olarak kabul edilecek ardışık başarısız deneme sayısı. Eşik 1 veya daha fazlasına ayarlanabilir.|
-   |**Araştırma eşleştirme koşullarını kullanma**|Evet veya Hayır|Varsayılan olarak, 200 ve 399 arasındaki durum koduna sahip HTTP (S) yanıtı sağlıklı olarak değerlendirilir. Kabul edilebilir arka uç yanıt kodu aralığını veya arka uç yanıtı gövdesini değiştirebilirsiniz. [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
+   |**Araştırma eşleştirme koşullarını kullanma**|Evet veya Hayır|Varsayılan olarak, 200 ve 399 arasındaki durum koduna sahip HTTP (S) yanıtı sağlıklı olarak değerlendirilir. Kabul edilebilir arka uç yanıt kodu aralığını veya arka uç yanıtı gövdesini değiştirebilirsiniz. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
 
    > [!IMPORTANT]
    > Ana bilgisayar adı sunucu adı ile aynı değil. Bu değer, uygulama sunucusunda çalışan sanal konağın adıdır. Araştırma http://(ana bilgisayar adı):(bağlantı noktasına httpsetting)/urlPath 'e gönderilir

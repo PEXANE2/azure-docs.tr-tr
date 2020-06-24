@@ -1,5 +1,5 @@
 ---
-title: Uygulama Yöneticisi Yönetim yönetimi için temsilci seçme-Azure AD | Microsoft Docs
+title: Uygulama yönetimi yönetici izinleri verme-Azure AD | Microsoft Docs
 description: Azure Active Directory 'de uygulama erişim yönetimi için izin verme
 services: active-directory
 documentationcenter: ''
@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 251bc1c2277f9e43543f95c49d0b730a5a41c3d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2527e4e630e7bf9cce0c68261bfa1c1797fbf795
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253045"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84731826"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Azure Active Directory 'de uygulama kayıt izinleri verme
 
@@ -60,8 +60,8 @@ Bazı durumlarda, uygulama galerisinden oluşturulan kurumsal uygulamalarda hem 
 
 ### <a name="to-assign-an-owner-to-an-enterprise-application"></a>Bir kuruluş uygulamasına sahip atamak için
 
-1. Uygulama Yöneticisi veya kuruluş için bulut uygulama Yöneticisi için uygun bir hesapla [Azure AD kuruluşunuzda](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) oturum açın.
-1. Kuruluşun [uygulama kayıtları sayfasında](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) , uygulamanın genel bakış sayfasını açmak için bir uygulama seçin.
+1. [your Azure AD organization](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)   Uygulama Yöneticisi veya kuruluş için bulut uygulama Yöneticisi için uygun BIR hesapla Azure AD kuruluşunuzda oturum açın.
+1. Kuruluşun [uygulama kayıtları sayfasında](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)   , uygulamanın genel bakış sayfasını açmak için bir uygulama seçin.
 1. Uygulama sahiplerinin listesini görmek için **sahipler** ' i seçin.
 1. Uygulamaya eklenecek bir veya daha fazla sahip seçmek için **Ekle** ' yi seçin.
 

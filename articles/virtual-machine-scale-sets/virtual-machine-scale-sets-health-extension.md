@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 05/06/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 4710d03c4d5b2f2679a0d6b65f38ec584f9a056c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124117"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783053"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleriyle Uygulama Sistem Durumu uzantısını kullanma
 Uygulamanızın sistem durumunu izlemek, dağıtımınızı yönetmek ve yükseltmek için önemli bir sinyaldir. Azure sanal makine ölçek kümeleri, dağıtımınızı yükseltmek için ayrı örneklerin sistem durumu izlemesini kullanan [Otomatik işletim sistemi görüntüsü yükseltmeleri](virtual-machine-scale-sets-automatic-upgrade.md)dahil olmak üzere, çalışan [yükseltmeler](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) için destek sağlar. Ayrıca, ölçek kümesindeki her bir örneğin uygulama durumunu izlemek ve [Otomatik örnek onarımları](virtual-machine-scale-sets-automatic-instance-repairs.md)kullanarak örnek onarımları gerçekleştirmek için sistem durumu uzantısı ' nı da kullanabilirsiniz.
@@ -59,9 +59,9 @@ Aşağıdaki JSON, uygulama sistem durumu uzantısının şemasını gösterir. 
 
 | Name | Değer/örnek | Veri Türü
 | ---- | ---- | ---- 
-| apiVersion | `2018-10-01` | tarih |
+| apiVersion | `2018-10-01` | date |
 | yayımcı | `Microsoft.ManagedServices` | string |
-| type | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | string |
+| tür | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Ayarlar
@@ -154,7 +154,7 @@ az vmss extension set \
   --vmss-name <myVMScaleSet> \
   --settings ./extension.json
 ```
-Uzantı. JSON dosya içeriği.
+Dosya içeriğindeki extension.js.
 
 ```json
 {
@@ -173,7 +173,8 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\
 ```
 
 ```Linux
-/var/lib/waagent/apphealth
+/var/lib/waagent/Microsoft.ManagedServices.ApplicationHealthLinux-<extension_version>/status
+/var/log/azure/applicationhealth-extension
 ```
 
 Günlükler Ayrıca uygulamanın sistem durumunu düzenli olarak yakalar.

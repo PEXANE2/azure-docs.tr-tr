@@ -3,15 +3,15 @@ title: Azure iç Load Balancer Azure PowerShell kullanarak başka bir Azure böl
 description: Azure iç Load Balancer bir Azure bölgesinden diğerine taşımak için Azure Resource Manager şablonu kullanın Azure PowerShell
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: f8e431124155fe23853fe61e985fe4db522c3f77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63083c4bd058c63e21a40f2d245312a3f010b696
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75644282"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808352"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-powershell"></a>Azure iç Load Balancer PowerShell kullanarak başka bir bölgeye taşıma
 
@@ -60,7 +60,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-4. İndirilen dosya, kaynağın öğesinden verildikten sonra adı alınacaktır.  ** \<Resource-Group-Name>. JSON** adlı komuttan aktarılmış dosyayı bulun ve seçtiğiniz bir düzenleyicide açın:
+4. İndirilen dosya, kaynağın öğesinden verildikten sonra adı alınacaktır.  ** \<resource-group-name> . JSON** adlı komuttan aktarılmış dosyayı bulun ve seçtiğiniz bir düzenleyicide açın:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -105,9 +105,9 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
     Get-AzLocation | format-table
     
     ```
-8.  Ayrıca, isterseniz ** \<kaynak-grup-adı>. JSON** dosyasındaki diğer parametreleri değiştirebilirsiniz ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
+8.  Ayrıca, ** \<resource-group-name> . JSON** dosyasındaki diğer parametreleri de değiştirebilir ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
 
-    * **Adres alanı** -sanal ağın adres alanı, **Resources** > **AddressSpace** bölümünde değişiklik yapılarak ve ** \<kaynak-grup-adı>. JSON** dosyasındaki **addresspredüzeltmelerinin** özelliği değiştirilerek kaydedilmeden önce değiştirilebilir:
+    * **Adres alanı** : **kaynak**  >  **AddressSpace** bölümü değiştirilerek ve ** \<resource-group-name> . JSON** dosyasındaki **addresspredüzeltmelerinin** özelliği değiştirilerek kaydedilmeden önce VNET 'in adres alanı değiştirilebilir:
 
         ```json
                 "resources": [
@@ -127,7 +127,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
         ```
 
-    * **Alt ağ** -alt ağ adı ve alt ağ adres alanı, ** \<Resource-Group-Name>. JSON** dosyasının **alt ağlar** bölümü değiştirilerek değiştirilebilir veya öğesine eklenebilir. Alt ağın adı, **ad** özelliğini değiştirerek değiştirilebilir. Alt ağ adres alanı, ** \<Resource-Group-Name>. JSON** dosyasındaki **addresspredüzeltmesini** özelliğini değiştirerek değiştirilebilir:
+    * **Alt ağ** -alt ağ adı ve alt ağ adres alanı ** \<resource-group-name> . JSON** dosyasının **alt ağlar** bölümünde değişiklik yapılarak değiştirilebilir veya öğesine eklenebilir. Alt ağın adı, **ad** özelliğini değiştirerek değiştirilebilir. Alt ağ adres alanı ** \<resource-group-name> . JSON** dosyasındaki **addresspredüzeltmesini** özelliğinin değiştirilmesine göre değiştirilebilir:
 
         ```json
                 "subnets": [
@@ -158,7 +158,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
                 ]
         ```
 
-         **Resource-Group-Name>. json dosyasında, adres ön ekini değiştirmek için, yukarıda listelenen bölüm ve aşağıda listelenen tür bölümü olmak üzere iki yerde düzenlenmelidir. \<** **type**  **Addresspredüzeltmesini** özelliğini, yukarıdaki bir ile eşleşecek şekilde değiştirin:
+         ** \<resource-group-name> . JSON** dosyasında, adres ön ekini değiştirmek için, yukarıda listelenen bölüm ve aşağıda listelenen **tür** bölümü olmak üzere iki yerde düzenlenmelidir.  **Addresspredüzeltmesini** özelliğini, yukarıdaki bir ile eşleşecek şekilde değiştirin:
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -194,7 +194,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
          ]
         ```
 
-9.  **Resource-Group-Name>. json dosyasını kaydedin. \<**
+9.  ** \<resource-group-name> . JSON** dosyasını kaydedin.
 
 10. Hedef sanal ağın [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) kullanılarak dağıtılması için hedef bölgede bir kaynak grubu oluşturun
     
@@ -202,7 +202,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Düzenlenmiş ** \<kaynak-grup adı>. JSON** dosyasını, önceki adımda oluşturulan kaynak grubuna [New-azresourcegroupdeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
+11. Düzenlenen ** \<resource-group-name> . JSON** dosyasını önceki adımda oluşturulan kaynak grubuna [New-azresourcegroupdeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
 
     ```azurepowershell-interactive
 
@@ -241,7 +241,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceIntLBID -IncludeParameterDefaultValue
    ```
-4. İndirilen dosya, kaynağın öğesinden verildikten sonra adı alınacaktır.  ** \<Resource-Group-Name>. JSON** adlı komuttan aktarılmış dosyayı bulun ve seçtiğiniz bir düzenleyicide açın:
+4. İndirilen dosya, kaynağın öğesinden verildikten sonra adı alınacaktır.  ** \<resource-group-name> . JSON** adlı komuttan aktarılmış dosyayı bulun ve seçtiğiniz bir düzenleyicide açın:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -263,7 +263,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
              }
     ```
  
-6. Yukarıda taşınan hedef sanal ağın değerini düzenlemek için öncelikle kaynak kimliğini edinmeniz ve sonra ** \<kaynak-grup-adı>. JSON** dosyasına kopyalamanız ve yapıştırmanız gerekir.  KIMLIĞI almak için [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)kullanın:
+6. Yukarıda taşınan hedef sanal ağın değerini düzenlemek için öncelikle kaynak KIMLIĞINI edinmeniz ve sonra ** \<resource-group-name> . JSON** dosyasına kopyalamanız ve yapıştırmanız gerekir.  KIMLIĞI almak için [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)kullanın:
    
    ```azurepowershell-interactive
     $targetVNETID = (Get-AzVirtualNetwork -Name <target-vnet-name> -ResourceGroupName <target-resource-group-name>).Id
@@ -275,7 +275,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
     /subscriptions/7668d659-17fc-4ffd-85ba-9de61fe977e8/resourceGroups/myResourceGroupVNET-Move/providers/Microsoft.Network/virtualNetworks/myVNET2-Move
     ```
 
-7.  Resource-Group **defaultValue** **-Name>. json dosyasında, kaynak kimliği ' ni hedef sanal ağ kimliği için ikinci parametreye DefaultValue 'ın yerine, değişkenin tırnak içine \<** yapıştırın: **Resource ID**
+7.  ** \<resource-group-name> . JSON** dosyasında, **kaynak kimliği** ' ni hedef sanal ağ kimliği için ikinci parametreye **DefaultValue** yerine olan değişkenden yapıştırın, yolu tırnak içine aldığınızdan emin olun:
    
     ```json
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -291,7 +291,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
              }
     ```
 
-8. İç yük dengeleyici yapılandırmasının taşınacağı hedef bölgeyi düzenlemek için, ** \<Resource-Group-Name>. JSON** dosyasındaki **Resources** altındaki **Location** özelliğini değiştirin:
+8. İç yük dengeleyici yapılandırmasının taşınacağı hedef bölgeyi düzenlemek için, ** \<resource-group-name> . JSON** dosyasındaki **kaynaklar** altındaki **Location** özelliğini değiştirin:
 
     ```json
         "resources": [
@@ -315,7 +315,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
     ```
 12. Ayrıca, isterseniz şablondaki diğer parametreleri değiştirebilir ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
     
-    * **SKU** **- \<Resource-Group-Name>. JSON** dosyasındaki **SKU** > **adı** özelliğini değiştirerek, yapılandırmadaki iç yük dengeleyiciyi standart iken Basic veya Basic 'e dönüştürebilirsiniz:
+    * **SKU** - **sku**  >  ** \<resource-group-name> . JSON** dosyasındaki SKU**adı** özelliğini değiştirerek, yapılandırmadaki iç yük dengeleyicinin SKU 'sunu standart iken temel veya temel olarak değiştirebilirsiniz:
 
         ```json
         "resources": [
@@ -331,7 +331,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
         ```
       Temel ve standart SKU yük dengeleyiciler arasındaki farklar hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer genel bakış](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)
 
-    * **Yük Dengeleme kuralları** - ** \<kaynak-grup-adı>. JSON** dosyasının **loadBalancingRules** bölümüne girdi ekleyerek veya kaldırarak yapılandırmaya Yük Dengeleme kuralları ekleyebilir veya kaldırabilirsiniz:
+    * **Yük Dengeleme kuralları** - ** \<resource-group-name> . JSON** dosyasının **loadBalancingRules** bölümüne girdi ekleyerek veya kaldırarak, yapılandırmaya Yük Dengeleme kuralları ekleyebilir veya kaldırabilirsiniz:
 
         ```json
         "loadBalancingRules": [
@@ -363,7 +363,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
         ```
        Yük Dengeleme kuralları hakkında daha fazla bilgi için bkz. [Azure Load Balancer nedir?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 
-    * **Yoklamalar** - ** \<Resource-Group-Name>. JSON** dosyasının **yoklamalar** bölümüne girdi ekleyerek veya kaldırarak, yapılandırmadaki yük dengeleyici için bir araştırma ekleyebilir veya kaldırabilirsiniz:
+    * **Yoklamalar** : ** \<resource-group-name> . JSON** dosyasının **yoklamalar** bölümüne girdi ekleyerek veya kaldırarak, yapılandırmadaki yük dengeleyici için bir araştırma ekleyebilir veya kaldırabilirsiniz:
 
         ```json
         "probes": [
@@ -383,7 +383,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
         ```
        Azure Load Balancer sistem durumu araştırmaları hakkında daha fazla bilgi için bkz. [Load Balancer sistem durumu araştırmaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)
 
-    * **Gelen NAT kuralları** - ** \<Resource-Group-Name>. JSON** dosyasının **ınboundnatrules** bölümüne girdi ekleyerek veya kaldırarak yük dengeleyici için gelen NAT kuralları ekleyebilir veya kaldırabilirsiniz:
+    * **Gelen NAT kuralları** - ** \<resource-group-name> . JSON** dosyasının **ınboundnatrules** bölümüne girdi ekleyerek veya kaldırarak yük dengeleyici için gelen NAT kuralları ekleyebilir veya kaldırabilirsiniz:
 
         ```json
         "inboundNatRules": [
@@ -405,7 +405,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
                     }
                 ]
         ```
-        Bir gelen NAT kuralı ekleme veya kaldırma işlemini gerçekleştirmek için, kural var olmalıdır veya ** \<kaynak-grup-adı>. JSON** dosyasının sonunda bir **tür** özelliği olarak kaldırılmalıdır:
+        Bir gelen NAT kuralı ekleme veya kaldırma işlemini gerçekleştirmek için, kural var olmalıdır veya ** \<resource-group-name> . JSON** dosyasının sonunda bir **tür** özelliği olarak kaldırılmalıdır:
 
         ```json
         {
@@ -431,14 +431,14 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
         ```
         Gelen NAT kuralları hakkında daha fazla bilgi için bkz. [Azure Load Balancer nedir?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
     
-13. **Resource-Group-Name>. json dosyasını kaydedin. \<**
+13. ** \<resource-group-name> . JSON** dosyasını kaydedin.
     
 10. Hedef bölgede, [Yeni-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)kullanılarak dağıtılacak hedef iç yük dengeleyicinin dağıtılacağı bir kaynak grubu oluşturun. Yukarıdaki mevcut kaynak grubu, bu işlemin bir parçası olarak da kullanılabilir:
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Düzenlenmiş ** \<kaynak-grup adı>. JSON** dosyasını, önceki adımda oluşturulan kaynak grubuna [New-azresourcegroupdeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
+11. Düzenlenen ** \<resource-group-name> . JSON** dosyasını önceki adımda oluşturulan kaynak grubuna [New-azresourcegroupdeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
 
     ```azurepowershell-interactive
 

@@ -81,7 +81,7 @@ Bu bölümde, bir pilot for DevTest Labs kavramının kapsamını belirlemek iç
 > [!TIP]
 > Projenizi hata için ayarlama olasılığını en aza indirmek için, bu bölümde açıklanan örneği atlamanızı kesinlikle öneririz. 
 
-### <a name="overview"></a>Genel Bakış 
+### <a name="overview"></a>Genel bakış 
 
 Şirket ağından yalıtılmış bir ortam olarak kullanılacak satıcıların DevTest Labs 'e dayalı olarak Azure 'da yeni bir ortam geliştirmeyi planlıyoruz. Çözümün gereksinimleri karşılayıp karşılamadığını öğrenmek için, uçtan uca çözümü doğrulamaya yönelik bir kavram kanıtı geliştiriyoruz. Deneyiminizi denemek ve doğrulamak için birkaç satıcı ekledik. 
 

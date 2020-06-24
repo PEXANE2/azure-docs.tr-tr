@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/08/2020
-ms.openlocfilehash: a023599cb026a62aee034846dd390cda730d5df4
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 8891c65707822abeb2bcca52280d9b56dc725e4f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660302"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252007"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e veri yükleme
 
@@ -42,7 +42,7 @@ Bu makalede, _Azure SQL veritabanından Azure SYNAPSE Analytics 'e veri yükleme
 
 * Azure aboneliği: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * Azure SYNAPSE Analytics: veri ambarı, SQL veritabanından kopyalandığı verileri tutar. Azure SYNAPSE analizlerinizi bilmiyorsanız [Azure SYNAPSE Analytics oluşturma](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)' daki yönergelere bakın.
-* Azure SQL veritabanı: Bu öğretici, Adventure Works LT örnek verileriyle bir Azure SQL veritabanından veri kopyalar. [Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)bölümündeki yönergeleri IZLEYEREK bir SQL veritabanı oluşturabilirsiniz.
+* Azure SQL veritabanı: Bu öğretici, verileri Azure SQL veritabanı 'nda Adventure Works LT örnek veri kümesinden kopyalar. [Azure SQL veritabanı 'nda örnek veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)bölümündeki YÖNERGELERI Izleyerek SQL veritabanında bu örnek veritabanını oluşturabilirsiniz.
 * Azure depolama hesabı: Azure depolama, toplu kopyalama işleminde _hazırlama_ blobu olarak kullanılır. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) bölümündeki yönergelere bakın.
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma

@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: c35930a93751cc82c3145d414a2a09b3a1e90c53
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 17f98f452764abdc8458cdc38661d464ecb0a60d
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659842"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808538"
 ---
 # <a name="limitations"></a>Sınırlamalar
 
@@ -26,9 +26,10 @@ Birçok özellik boyut, sayı veya diğer sınırlamalara sahiptir.
 * Tek bir türdeki izin verilen toplam nesne (Entity, CutPlaneComponent, vb.): 16.777.215.
 * İzin verilen toplam etkin kesme düzlemleri: 8.
 
-## <a name="materials"></a>Malzemeler
+## <a name="geometry"></a>Geometrisi
 
 * Bir varlık için izin verilen toplam malzeme: 65.535.
+* Tek bir dokunun en büyük boyutu: 16.384 x 16.384. Daha büyük kaynak dokuları, dönüştürme işlemi tarafından aşağı ölçeklenacaktır.
 
 ## <a name="overall-number-of-polygons"></a>Toplam poligonu sayısı
 
@@ -39,6 +40,7 @@ Tüm yüklü modeller için izin verilen sayıda poligon, [oturum yönetim REST 
 |Stand| 20.000.000 |
 |Premium| sınır yok |
 
+Bu sınırlama hakkında daha ayrıntılı bilgi için bkz. [VM boyutu](../reference/vm-sizes.md) bölümü.
 
 ## <a name="platform-limitations"></a>Platform sınırlamaları
 

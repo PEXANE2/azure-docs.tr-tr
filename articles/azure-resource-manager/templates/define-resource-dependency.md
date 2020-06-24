@@ -3,16 +3,16 @@ title: Kaynaklar için dağıtım sırasını ayarla
 description: Kaynakların doğru sırada dağıtılmasını sağlamak için dağıtım sırasında bir kaynağı başka bir kaynağa bağımlı olarak nasıl ayarlayabileceğinizi açıklar.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: 764b718416e1185f56c7eb6b8335792a5822f212
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84cea915565ec6ac9872681e1d4173abacb46ac4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535477"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255220"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>ARM şablonlarında kaynak dağıtma sırasını tanımlayın
 
-Bir kaynağı dağıtırken, dağıtılmadan önce diğer kaynakların mevcut olduğundan emin olmanız gerekebilir. Örneğin, bir SQL veritabanı dağıtılmadan önce bir SQL Server gerekir. Bu ilişkiyi, bir kaynağı diğer kaynağa bağımlı olarak işaretleyerek tanımlarsınız. Dependency **DSON** öğesiyle bir bağımlılık tanımlar veya **başvuru** işlevini kullanarak.
+Bir kaynağı dağıtırken, dağıtılmadan önce diğer kaynakların mevcut olduğundan emin olmanız gerekebilir. Örneğin, bir veritabanını dağıtmaya başlamadan önce mantıksal bir SQL Server gerekir. Bu ilişkiyi, bir kaynağı diğer kaynağa bağımlı olarak işaretleyerek tanımlarsınız. Dependency **DSON** öğesiyle bir bağımlılık tanımlar veya **başvuru** işlevini kullanarak.
 
 Resource Manager, kaynaklar arasındaki bağımlılıkları değerlendirir ve bunları bağımlılık sırasına göre dağıtır. Resource Manager, birbirine bağımlı olmayan kaynakları paralel olarak dağıtır. Yalnızca aynı şablonda dağıtılan kaynaklar için bağımlılıklar tanımlamanız gerekir.
 
@@ -59,7 +59,7 @@ Resources özelliği, tanımlanmakta olan kaynakla ilgili alt kaynakları belirt
 
 Her üst kaynak, alt kaynaklar olarak yalnızca belirli kaynak türlerini kabul eder. Kabul edilen kaynak türleri, üst kaynağın [şablon şemasında](https://github.com/Azure/azure-resource-manager-schemas) belirtilir. Alt kaynak türünün adı, **Microsoft. Web**/ **Sites/config** ve **Microsoft. Web/Sites/Extensions** gibi üst kaynak türünün adını içerir.
 
-Aşağıdaki örnekte bir SQL Server ve SQL veritabanı gösterilmektedir. Veritabanı sunucusunun bir alt öğesi olsa bile SQL veritabanı ile SQL Server arasında açık bir bağımlılık tanımlandığına dikkat edin.
+Aşağıdaki örnekte, bir mantıksal SQL Server ve veritabanı gösterilmektedir. Veritabanı sunucusunun bir alt öğesi olsa da, veritabanı ve sunucu arasında açık bir bağımlılık tanımlandığına dikkat edin.
 
 ```json
 "resources": [

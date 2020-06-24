@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-network
 author: KumudD
 ms.service: virtual-network
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/21/2020
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: 1c790f10a310b6c4dea3aefd6cb02891b5bbcf9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c33d4988082496e53520254e0d85431497d8b38
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81768766"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84902743"
 ---
  Azure özel bağlantısı için aşağıdaki sınırlamalar geçerlidir:
 
@@ -21,7 +21,7 @@ ms.locfileid: "81768766"
 |---------|---------|
 |Sanal ağ başına özel uç nokta sayısı     |  1000       |
 |Abonelik başına özel uç nokta sayısı       |   64000       |
-|Abonelik başına özel bağlantı hizmeti sayısı         |   800      |
+|Abonelik başına özel bağlantı Hizmetleri sayısı         |   800      |
 |Özel bağlantı hizmetindeki IP yapılandırmalarının sayısı     |  8 (Bu sayı, PLS başına kullanılan NAT IP adresleri içindir)       |
 |Aynı özel bağlantı hizmetindeki özel uç noktaların sayısı   |  1000       |
 |Anahtar Kasası başına özel uç nokta sayısı | 64 |

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33dafaff396ce378dfa9eab0158e1b2fd9c10da6
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281996"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770501"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Şirket içinden yük devretmeden sonra Azure VM 'lerine bağlanma 
 
@@ -60,7 +60,7 @@ Azure VM 'lerine bağlantı sağlamak için, yük devretmeden önce şirket içi
 
 Yük devretmeden sonra, oluşturulan Azure VM 'lerinde aşağıdakileri yapın.
 
-1. SANAL makineye internet üzerinden bağlanmak için, VM 'ye bir genel IP adresi atayın. Şirket içi makineniz için kullandığınız Azure VM için aynı genel IP adresini kullanamazsınız. [Daha fazlasını öğrenin](../virtual-network/virtual-network-public-ip-address.md)
+1. SANAL makineye internet üzerinden bağlanmak için, VM 'ye bir genel IP adresi atayın. Şirket içi makineniz için kullandığınız Azure VM için aynı genel IP adresini kullanamazsınız. [Daha fazla bilgi edinin](../virtual-network/virtual-network-public-ip-address.md)
 2. VM 'deki ağ güvenlik grubu (NSG) kurallarının RDP veya SSH bağlantı noktasına gelen bağlantılara izin verin.
 3. VM 'yi görüntülemek için [önyükleme tanılamalarını](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) denetleyin.
 
@@ -149,11 +149,21 @@ Yük devretmeden önce, hedef Azure VM için ağ ayarlarını ve IP adresini bel
 
 ## <a name="get-new-ip-addresses"></a>Yeni IP adresleri Al
 
-Bu senaryoda, yük devretmeden sonra Azure VM yeni bir IP adresi alır. Yük devredilen makinelerin Azure VM 'nin IP adresini işaret eden kayıtlarını güncelleştirmek için bir DNS güncelleştirmesi.
+Bu senaryoda, yük devretmeden sonra Azure VM yeni bir IP adresi alır. Yük devretmeden sonra oluşturulan sanal makine için yeni bir IP adresi ayarlamak için aşağıdaki adımlara başvurulabilir
 
+1. **Çoğaltılan öğelere**gidin.
+2. İstediğiniz Azure sanal makinesini seçin.
+3. **İşlem ve ağ** ' ı seçin ve **Düzenle**' yi seçin.
 
+     ![Yük devretme ağ yapılandırmasını özelleştirme](media/azure-to-azure-customize-networking/edit-networking-properties.png)
+
+4. Yük devretme ağ ayarlarını güncelleştirmek için, yapılandırmak istediğiniz NIC için **Düzenle** ' yi seçin. Açılan sonraki sayfada, yük devretme testi ve yük devretme konumunda ilgili önceden oluşturulmuş IP adresini belirtin.
+
+    ![NIC yapılandırmasını düzenleme](media/azure-to-azure-customize-networking/nic-drilldown.png)
+
+5. **Tamam**’ı seçin.
+
+Site Recovery artık bu ayarları kabul eder ve hedef IP aralığında varsa, yük devretmede sanal makinenin karşılık gelen IP adresi aracılığıyla seçili kaynağa bağlı olduğundan emin olur. Bu senaryoda, tüm alt ağın yük devretmesine gerek yoktur. Yük devredilen makinenin kaydını, sanal makinenin yeni IP adresini işaret edecek şekilde güncelleştirmek için bir DNS güncelleştirmesi gerekecektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Şirket içi Active Directory ve DNS 'yi Azure 'a çoğaltma [hakkında bilgi edinin](site-recovery-active-directory.md) .
-
-

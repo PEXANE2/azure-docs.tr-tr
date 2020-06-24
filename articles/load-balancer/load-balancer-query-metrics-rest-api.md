@@ -7,15 +7,15 @@ author: asudbring
 manager: KumudD
 ms.service: load-balancer
 ms.custom: REST, seodec18
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 760ec8a945ab88b63dde2de75f5354818facf4f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b5aedb20bc7a8d2aa6f3aa3d8691a71af4cd3a2
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74225250"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808379"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>REST API kullanarak Load Balancer kullanım ölçümleri alın
 
@@ -42,14 +42,14 @@ Aşağıdaki üstbilgiler gereklidir:
 
 ### <a name="uri-parameters"></a>URI parametreleri
 
-| Adı | Açıklama |
+| Name | Description |
 | :--- | :---------- |
 | subscriptionId | Bir Azure aboneliğini tanımlayan abonelik KIMLIĞI. Birden çok aboneliğiniz varsa bkz. [birden çok abonelikle çalışma](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
 | resourceGroupName | Kaynağı içeren kaynak grubunun adı. Bu değeri Azure Resource Manager API, CLı veya portaldan elde edebilirsiniz. |
 | loadBalancerName | Azure Load Balancer adı. |
 | ölçüm adları | Geçerli [Load Balancer ölçümlerinin](/azure/load-balancer/load-balancer-standard-diagnostics)virgülle ayrılmış listesi. |
-| api-sürümü | İstek için kullanılacak API sürümü.<br /><br /> Bu belge, yukarıdaki URL 'ye `2018-01-01`dahil edilen api sürümünü içerir.  |
-| timespan | Sorgunun TimeSpan değeri. Bu, aşağıdaki biçime `startDateTime_ISO/endDateTime_ISO`sahip bir dizedir. Bu isteğe bağlı parametre, örnekteki verilerin bir gününü döndürecek şekilde ayarlanır. |
+| api-sürümü | İstek için kullanılacak API sürümü.<br /><br /> Bu belge `2018-01-01` , yukarıdaki URL 'ye dahil edilen api sürümünü içerir.  |
+| timespan | Sorgunun TimeSpan değeri. Bu, aşağıdaki biçime sahip bir dizedir `startDateTime_ISO/endDateTime_ISO` . Bu isteğe bağlı parametre, örnekteki verilerin bir gününü döndürecek şekilde ayarlanır. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>İstek gövdesi

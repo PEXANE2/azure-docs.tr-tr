@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 0b630c746932696d51455653a6e6db8869f04863
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 668406bb90e1f1e064adf01d7dbab42923fe30aa
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657147"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789285"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama
 
@@ -103,7 +103,7 @@ Spring Boot sürümü | Yay bulutu sürümü | Azure Spring Cloud sürümü
 2.1 | Greenwich. RELEASE | 2.1
 2,2 | Hoxton. RELEASE | 2,2
 
-Pod. xml dosyanıza aşağıdaki bağımlılıklardan birini ekleyin. Azure yay bulutu sürümü kendi ile eşleşen bağımlılığı seçin.
+pom.xml dosyanıza aşağıdaki bağımlılıklardan birini ekleyin. Azure yay bulutu sürümü kendi ile eşleşen bağımlılığı seçin.
 
 ### <a name="dependency-for-azure-spring-cloud-version-21"></a>Azure Spring Cloud sürüm 2,1 için bağımlılık
 
@@ -135,7 +135,7 @@ Azure Spring Cloud 'ın yerleşik özelliklerini hizmet kayıt defterinden dağ�
 
 ### <a name="service-registry"></a>Hizmet kayıt defteri
 
-Yönetilen Azure hizmeti kayıt defteri hizmetini kullanmak için, `spring-cloud-starter-netflix-eureka-client` bağımlılığı Pod. xml dosyasına aşağıda gösterildiği gibi ekleyin:
+Yönetilen Azure hizmeti kayıt defteri hizmetini kullanmak için, `spring-cloud-starter-netflix-eureka-client` pom.xml dosyasına bağımlılığı aşağıda gösterildiği gibi ekleyin:
 
 ```xml
     <dependency>
@@ -174,7 +174,7 @@ public class GatewayApplication {
 
 ### <a name="distributed-configuration"></a>Dağıtılmış yapılandırma
 
-Dağıtılmış yapılandırmayı etkinleştirmek için, `spring-cloud-config-client` Pok. XML dosyanızın bağımlılıklar bölümüne aşağıdaki bağımlılığı ekleyin:
+Dağıtılmış yapılandırmayı etkinleştirmek için, `spring-cloud-config-client` pom.xml dosyanızın bağımlılıklar bölümüne aşağıdaki bağımlılığı ekleyin:
 
 ```xml
 <dependency>
@@ -188,7 +188,7 @@ Dağıtılmış yapılandırmayı etkinleştirmek için, `spring-cloud-config-cl
 
 ### <a name="metrics"></a>Ölçümler
 
-`spring-boot-starter-actuator`Aşağıdaki şekilde gösterilen Pod. XML dosyanızın bağımlılıklar bölümüne bağımlılığı ekleyin:
+`spring-boot-starter-actuator`pom.xml dosyanızın bağımlılıklar bölümüne bağımlılığı aşağıda gösterildiği gibi ekleyin:
 
 ```xml
 <dependency>
@@ -199,9 +199,12 @@ Dağıtılmış yapılandırmayı etkinleştirmek için, `spring-cloud-config-cl
 
  Ölçümler, JMX uç noktalarından düzenli aralıklarla çekilir. Azure portal kullanarak ölçümleri görselleştirebilirsiniz.
 
+ > [!WARNING]
+ > Lütfen `spring.jmx.enabled=true` yapılandırma özelliği içinde belirtin. Aksi takdirde, ölçümler Azure portal görselleştirilebilen.
+
 ### <a name="distributed-tracing"></a>Dağıtılmış Izleme
 
-`spring-cloud-starter-sleuth` `spring-cloud-starter-zipkin` Pod. XML dosyanızın bağımlılıklar bölümüne aşağıdaki ve bağımlılıklarını ekleyin:
+`spring-cloud-starter-sleuth` `spring-cloud-starter-zipkin` pom.xml dosyanızın bağımlılıklar bölümüne aşağıdaki ve bağımlılıklarını ekleyin:
 
 ```xml
 <dependency>

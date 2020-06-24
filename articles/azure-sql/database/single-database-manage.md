@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 0f348ea67583d10dae2ebc548a48b7e74b66a958
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 43e28774625db0217dde1227bad160ba87750c8c
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343362"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255015"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Azure SQL veritabanı 'nda sunucular ve tek veritabanları oluşturma ve yönetme
 
@@ -43,7 +43,7 @@ Azure SQL veritabanı için kaynak grubunu zaman içinde veya sunucunun kendisin
 
 ## <a name="manage-an-existing-server"></a>Var olan bir sunucuyu yönetme
 
-Var olan bir sunucuyu yönetmek için, belirli bir SQL veritabanı sayfasından, **SQL Server** sayfasından veya **tüm kaynaklar** sayfasından bir dizi yöntemi kullanarak sunucuya gidin.
+Var olan bir sunucuyu yönetmek için, belirli bir veritabanı sayfasından, **SQL Server** sayfasından veya **tüm kaynaklar** sayfasından bir dizi yöntemi kullanarak sunucuya gidin.
 
 Var olan bir veritabanını yönetmek için **SQL veritabanları** sayfasına gidin ve yönetmek istediğiniz veritabanını seçin. Aşağıdaki ekran görüntüsünde, bir veritabanının **genel bakış** sayfasından bir veritabanı için sunucu düzeyinde güvenlik duvarının ayarlanmasına nasıl başlayabileceğiniz gösterilmektedir.
 

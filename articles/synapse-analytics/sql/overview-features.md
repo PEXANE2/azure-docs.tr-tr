@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6b4c44f0097b2896a063f3f3922760860e1d4a22
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 7562ddbe71902fe8986fb4177187951e86c8cd5a
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118308"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906913"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure SYNAPSE SQL 'de desteklenen Transact-SQL özellikleri
 
@@ -33,16 +33,16 @@ SYNAPSE SQL 'deki tüketim modelleri farklı veritabanı nesneleri kullanmanıza
 | **Şemalar** | [Evet](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | [Evet](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |
 | **Geçici tablolar** | [Evet](../sql-data-warehouse/sql-data-warehouse-tables-temporary.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | No |
 | **Yordamlar** | [Evet](/sql/t-sql/statements/create-procedure-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | No |
-| **İşlevler** | [Evet](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | No |
+| **İşlevler** | [Evet](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Evet, yalnızca satır içi tablo değerli işlevler. |
 | **Tetikleyiciler** | Hayır | Hayır |
 | **Dış tablolar** | [Evet](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Bkz. desteklenen [veri biçimleri](#data-formats). | [Evet](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Bkz. desteklenen [veri biçimleri](#data-formats). |
 | **Sorguları önbelleğe alma** | Evet, birden çok form (SSD tabanlı önbelleğe alma, bellek içi, sonuç kümesi önbelleği). Ayrıca, gerçekleştirilmiş görünüm desteklenir | No |
 | **Tablo değişkenleri** | [Hayır](/sql/t-sql/data-types/table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), geçici tabloları kullan | No |
-| **[Tablo dağıtımı](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**               | Yes | No |
-| **[Tablo dizinleri](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                           | Yes | No |
-| **[Tablo bölümleri](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                     | Yes | No |
+| **[Tablo dağıtımı](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**               | Evet | No |
+| **[Tablo dizinleri](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                           | Evet | No |
+| **[Tablo bölümleri](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                     | Evet | No |
 | **[İstatistikler](develop-tables-statistics.md)**            | Yes | Yes |
-| **[İş yükü yönetimi, kaynak sınıfları ve eşzamanlılık denetimi](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | Yes    | No |
+| **[İş yükü yönetimi, kaynak sınıfları ve eşzamanlılık denetimi](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | Evet    | No |
 
 ## <a name="query-language"></a>Sorgu dili
 
@@ -51,12 +51,12 @@ SYNAPSE SQL 'de kullanılan sorgu dilleri, tüketim modeline bağlı olarak dest
 |   | Oluşturulamadı | Sunucusuz |
 | --- | --- | --- |
 | **SELECT deyimleri** | Evet. For [XML/JSON](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [Match](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)ve [tahmin](/sql/t-sql/queries/predict-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) için Transact-SQL sorgu yan tümceleri desteklenmez. | Evet. XML, [Match](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [tahmin](/sql/t-sql/queries/predict-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)ve sorgu Ipuçları [için](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)Transact-SQL sorgu yan tümceleri desteklenmez. [Offset/Fetch](/sql/t-sql/queries/select-order-by-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#using-offset-and-fetch-to-limit-the-rows-returned) ve [PIVOT/UNPIVOT](/sql/t-sql/queries/from-using-pivot-and-unpivot?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) , sistem nesnelerini sorgulamak için kullanılabilir (dış veriler değil). |
-| **INSERT deyimleri** | Yes | No |
-| **UPDATE ekstresi** | Yes | No |
-| **DELETE deyimleri** | Yes | No |
-| **MERGE ekstresi** | Yes | No |
-| **[İşlemler](develop-transactions.md)** | Yes | No |
-| **[Etiketler](develop-label.md)** | Yes | No |
+| **INSERT deyimleri** | Evet | No |
+| **UPDATE ekstresi** | Evet | No |
+| **DELETE deyimleri** | Evet | No |
+| **MERGE ekstresi** | Evet | No |
+| **[İşlemler](develop-transactions.md)** | Evet | No |
+| **[Etiketler](develop-label.md)** | Evet | No |
 | **Veri yükleme** | Evet. Tercih edilen yardımcı program [Copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) deyimidir, ancak sistem, veri yüklemesi IÇIN hem toplu yükleme (bcp) hem de [Cetas](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 'yi destekler. | No |
 | **Veri dışarı aktarma** | Evet. [Cetas](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)kullanma. | Evet. [Cetas](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)kullanma. |
 | **Türler** | Evet, [imleç](/sql/t-sql/data-types/cursor-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [HierarchyId](/sql/t-sql/data-types/hierarchyid-data-type-method-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [ntext, Text ve Image](/sql/t-sql/data-types/ntext-text-and-image-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [rowversion](/sql/t-sql/data-types/rowversion-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [uzamsal türler](/sql/t-sql/spatial-geometry/spatial-types-geometry-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [SQL \_ Variant](/sql/t-sql/data-types/sql-variant-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)ve [XML](/sql/t-sql/xml/xml-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) dışındaki tüm Transact-SQL türleri | Evet, [imleç](/sql/t-sql/data-types/cursor-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [HierarchyId](/sql/t-sql/data-types/hierarchyid-data-type-method-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [ntext, Text ve Image](/sql/t-sql/data-types/ntext-text-and-image-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [rowversion](/sql/t-sql/data-types/rowversion-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [uzamsal türler](/sql/t-sql/spatial-geometry/spatial-types-geometry-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [SQL \_ Variant](/sql/t-sql/data-types/sql-variant-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [XML](/sql/t-sql/xml/xml-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)ve tablo türü dışındaki tüm Transact-SQL türleri |
@@ -93,7 +93,7 @@ SYNAPSE SQL, verilerinizi güvenli hale getirmek ve erişimi denetlemek için ye
 | **Roller/gruplar** | Evet (veritabanı kapsamlı) | Evet (sunucu ve veritabanı kapsamlı) |
 | **Güvenlik &amp; kimliği işlevleri** | Bazı Transact-SQL güvenlik işlevleri ve işleçleri: `CURRENT_USER` , `HAS_DBACCESS` , `IS_MEMBER` , `IS_ROLEMEMBER` , `SESSION_USER` , `SUSER_NAME` , `SUSER_SNAME` , `SYSTEM_USER` , `USER` , `USER_NAME` , `EXECUTE AS` ,`OPEN/CLOSE MASTER KEY` | Bazı Transact-SQL güvenlik işlevleri ve işleçleri: `CURRENT_USER` , `HAS_DBACCESS` , `HAS_PERMS_BY_NAME` , `IS_MEMBER', 'IS_ROLEMEMBER` , `IS_SRVROLEMEMBER` , `SESSION_USER` , `SUSER_NAME` , `SUSER_SNAME` , `SYSTEM_USER` , `USER` , `USER_NAME` , `EXECUTE AS` ve `REVERT` . Güvenlik işlevleri, dış verileri sorgulamak için kullanılamaz (sonucu sorguda kullanılabilen değişkende depolayın).  |
 | **VERITABANı KAPSAMLı KIMLIK BILGILERI** | Yes | Yes |
-| **SUNUCU KAPSAMLı KIMLIK BILGILERI** | Hayır | Yes |
+| **SUNUCU KAPSAMLı KIMLIK BILGILERI** | Hayır | Evet |
 | **Satır düzeyi güvenlik** | [Evet](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&view=sql-server-ver15) | No |
 | **Saydam Veri Şifrelemesi (TDE)** | [Evet](/azure/sql-database/transparent-data-encryption-azure-sql?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&tabs=azure-portal) | No | 
 | **Veri bulma & sınıflandırması** | [Evet](/azure/sql-database/sql-database-data-discovery-and-classification?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | No |
@@ -128,7 +128,7 @@ Analiz edilen veriler, çeşitli depolama türlerinde depolanabilir. Aşağıdak
 
 |   | Oluşturulamadı | Sunucusuz |
 | --- | --- | --- |
-| **İç depolama** | Yes | No |
+| **İç depolama** | Evet | No |
 | **Azure Data Lake v2** | Yes | Yes |
 | **Azure Blob Depolama** | Yes | Yes |
 | **Azure CosmosDB analitik depolama** | No | Evet ( [geçitli önizleme](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#limitations)altında) [SYNAPSE bağlantısı](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) kullanma |

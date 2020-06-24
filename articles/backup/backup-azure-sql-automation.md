@@ -4,12 +4,12 @@ description: Azure Backup ve PowerShell kullanarak Azure VM 'lerinde SQL veritab
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 21c8ea5ff50cc78b60ccb3b09c953b184757f3c9
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 862455175497fe5496c7eea459c32772074671ff
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84246994"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255152"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerinde SQL veritabanlarını yedekleme ve geri yükleme
 
@@ -499,7 +499,7 @@ MSSQLSERVER/m... Backup               InProgress           3/18/2019 8:41:27 PM 
 
 ### <a name="change-policy-for-backup-items"></a>Yedekleme öğeleri için ilkeyi değiştirme
 
-Kullanıcı var olan ilkeyi değiştirebilir veya Policy1 ' den Policy2 ' ye yedeklenmiş öğenin ilkesini değiştirebilir. Yedeklenen bir öğeye yönelik ilkeleri değiştirmek için ilgili ilkeyi ve yedekleme öğesini getirin ve parametresi olarak Backup öğesiyle [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) komutunu kullanın.
+Kullanıcı, Policy1 ' den Policy2 ' ye yedeklenen öğe ilkesini değiştirebilir. Yedeklenen bir öğeye yönelik ilkeleri değiştirmek için ilgili ilkeyi ve yedekleme öğesini getirin ve parametresi olarak Backup öğesiyle [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) komutunu kullanın.
 
 ```powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -513,6 +513,19 @@ Komut, yapılandırma yedeklemesi tamamlanana kadar bekler ve aşağıdaki çık
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   -----
 master           ConfigureBackup      Completed            3/18/2019 8:00:21 PM      3/18/2019 8:02:16 PM      654e8aa2-4096-402b-b5a9-e5e71a496c4e
+```
+
+### <a name="edit-an-existing-backup-policy"></a>Var olan bir yedekleme ilkesini Düzenle
+
+Var olan bir ilkeyi düzenlemek için [set-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-3.8.0) komutunu kullanın.
+
+```powershell
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
+```
+Tüm sorunları izlemek için bir süre geçtikten sonra yedekleme işlerini denetleyin. Varsa, sorunları çözmeniz gerekir. Ardından, işlemi daha önce başarısız olan tüm yedekleme öğelerinde yeniden düzenlemek için **FixForInconsistentItems** parametresiyle ilkeyi Düzenle komutunu yeniden çalıştırın.
+
+```powershell
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -FixForInconsistentItems
 ```
 
 ### <a name="re-register-sql-vms"></a>SQL VM 'lerini yeniden kaydetme
@@ -597,4 +610,4 @@ SQL Always on kullanılabilirlik grupları için, kullanılabilirlik grubunun (A
 
 [yedekleme kapsayıcıları listelendiğinde](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0)SQL-Server-0, SQL-Server-1 da "AzureVMAppContainer" olarak listelenecektir.
 
-[Yedeklemeyi etkinleştirmek](#configuring-backup) IÇIN ilgili SQL veritabanını yapmanız yeterlidir ve isteğe bağlı [yedekleme](#on-demand-backup) ve [geri yükleme PS cmdlet 'leri](#restore-sql-dbs) aynı.
+Yalnızca [yedeklemeyi etkinleştirmek](#configuring-backup) için ilgili veritabanını getirin ve isteğe bağlı [yedekleme](#on-demand-backup) ve [geri yükleme PS cmdlet 'leri](#restore-sql-dbs) aynıdır.

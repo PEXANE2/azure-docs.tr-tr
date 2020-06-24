@@ -10,12 +10,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 709ceb465594c566349cf9ea5bfed7db73c9a0cf
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: c640adb0758c8dfd9dcdae3e26fd023afd5499f7
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194744"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252279"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Azure Data Factory için Azure PowerShell örnekleri
 
@@ -28,7 +28,7 @@ Aşağıdaki tablo, Azure Data Factory için örnek Azure PowerShell betiklerini
 |**Veri kopyalama**||
 |[Blob 'ları bir klasörden bir Azure Blob depolama alanındaki başka bir klasöre kopyalama](scripts/copy-azure-blob-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell betiği, Blobları Azure Blob depolama alanındaki bir klasörden aynı BLOB depolama alanındaki başka bir klasöre kopyalar. |
 |[SQL Server verilerini Azure Blob depolamaya kopyalama](scripts/hybrid-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell betiği, verileri bir SQL Server veritabanından Azure Blob depolama alanına kopyalar. |
-|[Toplu kopyalama](scripts/bulk-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu örnek PowerShell betiği, verileri bir Azure SQL veritabanında bulunan birden çok tablodan Azure SQL veri ambarı 'na kopyalar. |
+|[Toplu kopyalama](scripts/bulk-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu örnek PowerShell betiği, Azure SQL veritabanı 'ndaki bir veritabanındaki birden çok tablodan verileri Azure SQL veri ambarı 'na kopyalar. |
 |[Artımlı kopya](scripts/incremental-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu örnek PowerShell betiği, kaynak veri deposundan yalnızca yeni veya güncelleştirilmiş kayıtları, kaynaktan havuza verilerin ilk tam kopyasından sonra bir havuz veri deposuna yükler. |
 |**Verileri dönüştürme**||
 |[Spark kümesi kullanarak veri dönüştürme](scripts/transform-data-spark-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell betiği, bir Spark kümesinde program çalıştırarak verileri dönüştürür. |

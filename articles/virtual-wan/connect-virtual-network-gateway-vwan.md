@@ -4,15 +4,15 @@ description: Bu makale bir Azure sanal ağ geçidini Azure sanal WAN VPN Gateway
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 688183bc07aa14d5e5df182d7de0897cec93f0b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca5880f76ffd3a85d4b3cec8e01f58ae5c024a58
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066245"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749690"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>VPN Gateway (sanal ağ geçidi) sanal WAN 'a bağlama
 
@@ -118,7 +118,7 @@ Bu bölümde, VPN Gateway yerel ağ geçitleri ve sanal ağ geçidi arasında bi
 3. Bağlantınızı oluşturmak için **Tamam**’a tıklayın.
 4. Bağlantıyı sanal ağ geçidinin **Bağlantılar** sayfasında görüntüleyebilirsiniz.
 
-   ![Bağlanma](./media/connect-virtual-network-gateway-vwan/connect.png "bağlantı")
+   ![Bağlantı](./media/connect-virtual-network-gateway-vwan/connect.png "bağlantı")
 5. İkinci bir bağlantı oluşturmak için önceki adımları tekrarlayın. İkinci bağlantı için, oluşturduğunuz diğer yerel ağ geçidini seçin.
 
 ## <a name="6-test-connections"></a><a name="test"></a>6. test bağlantıları
