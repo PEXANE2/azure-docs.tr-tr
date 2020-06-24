@@ -1,35 +1,35 @@
 ---
-title: Azure Işlevleri 2. x için Host. JSON başvurusu
-description: V2 çalışma zamanına sahip Azure Işlevleri Host. JSON dosyası için başvuru belgeleri.
+title: Azure Işlevleri 2. x için başvuru host.js
+description: Azure Işlevleri için başvuru belgeleri v2 çalışma zamanı ile dosyada host.js.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 39e6ce5d6807a554cc1714a3970bed8303c31ce8
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 8d9ea01ffd5bcf2adb25d4f1b3900ff291438ac8
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690894"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298506"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Işlevleri 2. x ve üzeri için Host. JSON başvurusu 
+# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Işlevleri 2. x ve üzeri için başvuru host.js 
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Işlevleri çalışma zamanının sürümünü seçin: "]
 > * [Sürüm 1](functions-host-json-v1.md)
 > * [Sürüm 2 +](functions-host-json.md)
 
-*Host. JSON* meta veri dosyası, bir işlev uygulaması için tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu makalede, Azure Işlevleri çalışma zamanının 2. x sürümünden itibaren kullanılabilen ayarlar listelenir.  
+Meta veri dosyası *host.js* , bir işlev uygulaması için tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu makalede, Azure Işlevleri çalışma zamanının 2. x sürümünden itibaren kullanılabilen ayarlar listelenir.  
 
 > [!NOTE]
-> Bu makale, Azure Işlevleri 2. x ve sonraki sürümleri için kullanılır.  1. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 1. x](functions-host-json-v1.md).
+> Bu makale, Azure Işlevleri 2. x ve sonraki sürümleri için kullanılır.  1. x Işlevleri içindeki host.jsbaşvurusu için bkz. [Azure işlevleri için başvuru üzerindehost.js, 1. x](functions-host-json-v1.md).
 
-Diğer işlev uygulama yapılandırma seçenekleri, [uygulama ayarlarınızda](functions-app-settings.md) (dağıtılan uygulamalar için) veya [yerel. Settings. JSON](functions-run-local.md#local-settings-file) dosyanızda (yerel geliştirme için) yönetilir.
+Diğer işlev uygulama yapılandırma seçenekleri, [uygulama ayarlarınızda](functions-app-settings.md) (dağıtılan uygulamalar için) veya [local.settings.js](functions-run-local.md#local-settings-file) dosyasına (yerel geliştirme için) yönetilir.
 
-Ana bilgisayar. json ' daki bağlamalarla ilgili yapılandırma işlevleri işlev uygulamasındaki her işleve eşit olarak uygulanır. 
+Bağlamalarla ilgili host.jsolan konfigürasyonlar, işlev uygulamasındaki her bir işleve eşit olarak uygulanır. 
 
 Ayrıca, uygulama ayarlarını kullanarak [ortam başına ayarları geçersiz kılabilir veya uygulayabilirsiniz](#override-hostjson-values) .
 
-## <a name="sample-hostjson-file"></a>Örnek Host. JSON dosyası
+## <a name="sample-hostjson-file"></a>Dosyadaki örnek host.js
 
-Sürüm 2. x + için aşağıdaki örnek *Host. JSON* dosyasında tüm olası seçenekler belirtilmiştir (yalnızca iç kullanım için olan).
+Sürüm 2. x + için aşağıdaki örnek *host.js* , belirtilen tüm seçenekleri (yalnızca iç kullanım için olan) içerir.
 
 ```json
 {
@@ -140,12 +140,12 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir.
 
 [Örnekleme seçenekleri](./functions-monitoring.md#configure-sampling)de dahil olmak üzere Application Insights seçeneklerini denetler.
 
-Tüm JSON yapısı için, önceki [örnek Host. JSON dosyasına](#sample-hostjson-file)bakın.
+Tüm JSON yapısı için bkz. önceki [örnek host.jsdosyası](#sample-hostjson-file).
 
 > [!NOTE]
 > Günlük örnekleme, bazı yürütmelerin Application Insights İzleyicisi dikey penceresinde gösterilmemesine neden olabilir. Günlük örneklemeyi önlemek için `excludedTypes: "Request"` `samplingSettings` değere ekleyin.
 
-| Özellik | Varsayılan | Açıklama |
+| Özellik | Varsayılan | Description |
 | --------- | --------- | --------- | 
 | samplingSettings | yok | Bkz. [ApplicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
 | Enableliveölçümleri | true | Canlı ölçüm toplamayı etkin bir şekilde sunar. |
@@ -157,7 +157,7 @@ Tüm JSON yapısı için, önceki [örnek Host. JSON dosyasına](#sample-hostjso
 
 ### <a name="applicationinsightssamplingsettings"></a>ApplicationInsights. samplingSettings
 
-|Özellik | Varsayılan | Açıklama |
+|Özellik | Varsayılan | Description |
 | --------- | --------- | --------- | 
 | IsEnabled | true | Örneklemeyi etkinleştirilir veya devre dışı bırakır. | 
 | maxTelemetryItemsPerSecond | 20 | Her bir sunucu konağında saniyede günlüğe kaydedilen telemetri öğelerinin hedef sayısı. Uygulamanız birçok ana bilgisayarda çalışıyorsa, bu değeri, genel hedef trafik hızında kalacak şekilde küçültün. | 
@@ -168,22 +168,22 @@ Tüm JSON yapısı için, önceki [örnek Host. JSON dosyasına](#sample-hostjso
 | Minörneklingpercentage | 0.1 | Örnekleme yüzdesi farklılık gösterdiğinden, bu özellik izin verilen minimum örnekleme yüzdesini belirler. |
 | maxSamplingPercentage | 0.1 | Örnekleme yüzdesi farklılık gösterdiğinden, bu özellik izin verilen en fazla örnekleme yüzdesini belirler. |
 | movingAverageRatio | 1.0 | Hareketli ortalama hesaplamasında, en son değere atanan ağırlık. 1 ' den küçük veya buna eşit bir değer kullanın. Daha küçük değerler, algoritmayı ani değişikliklere karşı daha az reaktif hale getirir. |
-| excludedTypes | null | Örneklemeyi istemediğiniz türlerin noktalı virgülle ayrılmış listesi. Tanınan türler şunlardır: `Dependency`, `Event`, `Exception`, `PageView`, `Request`, ve `Trace`. Belirtilen türlerin tüm örnekleri iletilir; belirtilmeyen türler örneklenir. |
-| ıncludedtypes | null | Örneklemeyi yapmak istediğiniz türlerin noktalı virgülle ayrılmış listesi; boş liste tüm türleri gösterir. Burada listelenen `excludedTypes` geçersiz kılma türlerinde listelenen tür. Tanınan türler şunlardır: `Dependency`, `Event`, `Exception`, `PageView`, `Request`, ve `Trace`. Belirtilen türlerin örnekleri örneklenir; belirtilmemiş veya zımni türler, örnekleme olmadan iletilir. |
+| excludedTypes | null | Örneklemeyi istemediğiniz türlerin noktalı virgülle ayrılmış listesi. Tanınan türler şunlardır: `Dependency` , `Event` , `Exception` , `PageView` , `Request` , ve `Trace` . Belirtilen türlerin tüm örnekleri iletilir; belirtilmeyen türler örneklenir. |
+| ıncludedtypes | null | Örneklemeyi yapmak istediğiniz türlerin noktalı virgülle ayrılmış listesi; boş liste tüm türleri gösterir. `excludedTypes`Burada listelenen geçersiz kılma türlerinde listelenen tür. Tanınan türler şunlardır: `Dependency` , `Event` , `Exception` , `PageView` , `Request` , ve `Trace` . Belirtilen türlerin örnekleri örneklenir; belirtilmemiş veya zımni türler, örnekleme olmadan iletilir. |
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>ApplicationInsights. httpAutoCollectionOptions
 
-|Özellik | Varsayılan | Açıklama |
+|Özellik | Varsayılan | Description |
 | --------- | --------- | --------- | 
 | Enablehttptriggerextendedınınfocollection | true | HTTP Tetikleyicileri için genişletilmiş HTTP isteği bilgilerini etkinleştirilir veya devre dışı bırakır: gelen istek bağıntı üstbilgileri, çok izleme anahtarları desteği, HTTP yöntemi, yol ve yanıt. |
-| enableW3CDistributedTracing | true | W3C dağıtılmış izleme protokolünün desteğini etkinleştirir veya devre dışı bırakır (ve eski bağıntı şemasını etkinleştirir). True ise varsayılan `enableHttpTriggerExtendedInfoCollection` olarak etkindir. Yanlış `enableHttpTriggerExtendedInfoCollection` ise, bu bayrak gelen isteklere değil yalnızca giden istekler için geçerlidir. |
-| Enableresponseheaderınjection | true | Çoklu bileşen bağıntı üstbilgilerinin yanıtlara eklenmesine izin vermez veya devre dışı bırakır. Ekleme özelliğinin etkinleştirilmesi, birden çok izleme anahtarı kullanıldığında Application Insights bir uygulama eşlemesi oluşturmasına izin verir. True ise varsayılan `enableHttpTriggerExtendedInfoCollection` olarak etkindir. Bu ayar yanlışsa uygulanmaz `enableHttpTriggerExtendedInfoCollection` . |
+| enableW3CDistributedTracing | true | W3C dağıtılmış izleme protokolünün desteğini etkinleştirir veya devre dışı bırakır (ve eski bağıntı şemasını etkinleştirir). True ise varsayılan olarak etkindir `enableHttpTriggerExtendedInfoCollection` . `enableHttpTriggerExtendedInfoCollection`Yanlış ise, bu bayrak gelen isteklere değil yalnızca giden istekler için geçerlidir. |
+| Enableresponseheaderınjection | true | Çoklu bileşen bağıntı üstbilgilerinin yanıtlara eklenmesine izin vermez veya devre dışı bırakır. Ekleme özelliğinin etkinleştirilmesi, birden çok izleme anahtarı kullanıldığında Application Insights bir uygulama eşlemesi oluşturmasına izin verir. True ise varsayılan olarak etkindir `enableHttpTriggerExtendedInfoCollection` . Bu ayar `enableHttpTriggerExtendedInfoCollection` yanlışsa uygulanmaz. |
 
 ### <a name="applicationinsightssnapshotconfiguration"></a>ApplicationInsights. snapshotConfiguration
 
 Anlık görüntüler hakkında daha fazla bilgi için bkz. [.NET uygulamalarında özel durumlarla Ilgili hata ayıklama anlık görüntüleri](/azure/azure-monitor/app/snapshot-debugger) ve [Application Insights Snapshot Debugger veya anlık görüntüleri görüntüleme sorunlarını giderme](/azure/azure-monitor/app/snapshot-debugger-troubleshoot).
 
-|Özellik | Varsayılan | Açıklama |
+|Özellik | Varsayılan | Description |
 | --------- | --------- | --------- | 
 | Tendtendpoint | null | Application Insights Snapshot Debugger hizmetine bağlanmak için kullanılan uç nokta. Null ise, varsayılan bir uç nokta kullanılır. |
 | captureSnapshotMemoryWeight | 0,5 | Anlık görüntü almak için yeterli bellek olup olmadığı denetlenirken geçerli işlem belleği boyutuna verilen ağırlık. Beklenen değer 0 ' dan büyük bir doğru kesenden (0 < CaptureSnapshotMemoryWeight < 1) fazla. |
@@ -195,8 +195,8 @@ Anlık görüntüler hakkında daha fazla bilgi için bkz. [.NET uygulamalarınd
 | ısexceptionsnappointsenabled | yanlış | Özel durumların filtrelenmesini mümkün veya devre dışı bırakır. |
 | ılowprioritysnapshotuploader | true | Anlık görüntüyle ayarlana Tuploader işleminin normal öncelikte çalıştırılıp çalıştırılmayacağını belirler. |
 | maximumCollectionPlanSize | 50 | Bire 9999 arasında bir aralıkta izleyediğimiz en fazla sorun sayısı. |
-| Maximumanlık görüntüyle gerekli | 3 | Tek bir sorun için toplanan en fazla anlık görüntü sayısı, bire 999 arasındadır. Bir sorun, uygulamanızda tek bir throw deyimleri olarak düşünülebilir. Bir sorun için toplanan anlık görüntü sayısı bu değere ulaştığında, sorun sayaçları sıfırlanana kadar bu sorun için daha fazla anlık görüntü toplanmaz (bkz `problemCounterResetInterval`.) ve `thresholdForSnapshotting` sınıra yeniden ulaşılırsa. |
-| Problemcounterresetınterval | 24:00:00 | Bir aralıktaki sorun sayaçlarını bir dakikadan yedi güne sıfırlama sıklığı. Bu aralığa ulaşıldığında, tüm sorun sayıları sıfıra sıfırlanır. Anlık görüntü yapma eşiğine zaten ulaşmış, ancak henüz ' de `maximumSnapshotsRequired`anlık görüntü sayısı üretilmemiş olan mevcut sorunlar etkin kalır. |
+| Maximumanlık görüntüyle gerekli | 3 | Tek bir sorun için toplanan en fazla anlık görüntü sayısı, bire 999 arasındadır. Bir sorun, uygulamanızda tek bir throw deyimleri olarak düşünülebilir. Bir sorun için toplanan anlık görüntü sayısı bu değere ulaştığında, sorun sayaçları sıfırlanana kadar bu sorun için daha fazla anlık görüntü toplanmaz (bkz `problemCounterResetInterval` .) ve `thresholdForSnapshotting` sınıra yeniden ulaşılırsa. |
+| Problemcounterresetınterval | 24:00:00 | Bir aralıktaki sorun sayaçlarını bir dakikadan yedi güne sıfırlama sıklığı. Bu aralığa ulaşıldığında, tüm sorun sayıları sıfıra sıfırlanır. Anlık görüntü yapma eşiğine zaten ulaşmış, ancak henüz ' de anlık görüntü sayısı üretilmemiş olan mevcut sorunlar `maximumSnapshotsRequired` etkin kalır. |
 | Provideanonymoustelemetrisi | true | Microsoft 'a anonim kullanım ve hata telemetrisi gönderileceğini belirler. Bu telemetri, Snapshot Debugger sorunları gidermeye yardımcı olmak için Microsoft 'a başvurdıysanız kullanılabilir. Kullanım düzenlerini izlemek için de kullanılır. |
 | Reconnectınterval | 00:15:00 | Snapshot Debugger uç noktasına ne sıklıkta yeniden bağlanıyoruz. İzin verilen Aralık, bir güne kadar bir dakikadır. |
 | shadowCopyFolder | null | Gölge kopyalama ikilileri için kullanılacak klasörü belirtir. Ayarlanmamışsa, aşağıdaki ortam değişkenleri tarafından belirtilen klasörler sırayla denenir: Fabric_Folder_App_Temp, LOCALAPPDATA, APPDATA, TEMP. |
@@ -242,11 +242,16 @@ Uzantı paketleri, işlev uygulamanıza uygun bir Işlev kümesi bağlama uzant�
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Tüm işlevler için zaman aşımı süresini gösterir. TimeSpan dize biçimini izler. Sunucusuz tüketim planında geçerli Aralık 1 saniye ila 10 dakika ve varsayılan değer 5 dakikadır.  
+Tüm işlevler için zaman aşımı süresini gösterir. TimeSpan dize biçimini izler. 
 
-Premium planda geçerli Aralık 1 saniye ila 60 dakikaya ve varsayılan değer 30 dakikadır.
+| Plan türü | Varsayılan (min) | Maksimum (min) |
+| -- | -- | -- |
+| Tüketim | 5 | 10 |
+| Premium<sup>1</sup> | 30 | -1 (sınırsız)<sup>2</sup> |
+| Adanmış (App Service) | 30 | -1 (sınırsız)<sup>2</sup> |
 
-Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan değer 30 dakikadır. Değeri, sınırsız `-1` yürütmeyi gösterir, ancak sabit bir üst sınırı korumak önerilir.
+<sup>1</sup> Premium plan yürütmesi yalnızca 60 dakika boyunca garanti edilir ancak teknik olarak sınırsız olur.   
+<sup>2</sup> değeri `-1` , sınırsız yürütmeyi gösterir, ancak sabit bir üst sınırı korumak önerilir.
 
 ```json
 {
@@ -270,11 +275,11 @@ Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan d
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |enabled|true|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
 |Healthcheckınterval|10 saniye|Düzenli arka plan sistem durumu denetimleri arasındaki zaman aralığı. | 
-|healthCheckWindow|2 dakika|`healthCheckThreshold` Ayarla birlikte kullanılan bir kayan zaman penceresi.| 
+|healthCheckWindow|2 dakika|Ayarla birlikte kullanılan bir kayan zaman penceresi `healthCheckThreshold` .| 
 |healthCheckThreshold|6|Konak geri dönüşüm başlatılmadan önce sistem durumu denetiminin başarısız olması için en fazla sayı.| 
 |Onay eşiği|0,80|Performans sayacının sağlıksız olduğu kabul edilecek eşik.| 
 
@@ -302,9 +307,9 @@ Application Insights dahil olmak üzere, işlev uygulamasının günlük davran�
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------|
-|fileLoggingMode|yalnızca Debug|Hangi dosya günlüğü düzeyinin etkin olduğunu tanımlar.  Seçenekler `never`, `always`, `debugOnly`. |
+|fileLoggingMode|yalnızca Debug|Hangi dosya günlüğü düzeyinin etkin olduğunu tanımlar.  Seçenekler `never` , `always` , `debugOnly` . |
 |logLevel|yok|Uygulamadaki işlevler için günlük kategorisi filtrelemeyi tanımlayan nesne. Sürüm 2. x ve üzeri, günlük kategorisi filtrelemesi için ASP.NET Core düzeni izler. Bu ayar, belirli işlevler için günlüğü filtrelemenizi sağlar. Daha fazla bilgi için ASP.NET Core belgelerine [günlük filtreleme](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) bölümüne bakın. |
 |console|yok| [Konsol](#console) günlüğü ayarı. |
 |ApplicationInsights|yok| [ApplicationInsights](#applicationinsights) ayarı. |
@@ -325,13 +330,13 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir. Hata ayık
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |IsEnabled|yanlış|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
 
 ## <a name="manageddependency"></a>managedDependency bağımlılığı
 
-Yönetilen bağımlılık Şu anda yalnızca PowerShell tabanlı işlevlerde desteklenen bir özelliktir. Bağımlılıkların hizmet tarafından otomatik olarak yönetilmesine olanak sağlar. `enabled` Özelliği olarak `true`ayarlandığında `requirements.psd1` dosya işlenir. Tüm küçük sürümler bırakıldığında bağımlılıklar güncelleştirilir. Daha fazla bilgi için bkz. PowerShell makalesinde [yönetilen bağımlılık](functions-reference-powershell.md#dependency-management) .
+Yönetilen bağımlılık Şu anda yalnızca PowerShell tabanlı işlevlerde desteklenen bir özelliktir. Bağımlılıkların hizmet tarafından otomatik olarak yönetilmesine olanak sağlar. `enabled`Özelliği olarak ayarlandığında `true` `requirements.psd1` Dosya işlenir. Tüm küçük sürümler bırakıldığında bağımlılıklar güncelleştirilir. Daha fazla bilgi için bkz. PowerShell makalesinde [yönetilen bağımlılık](functions-reference-powershell.md#dependency-management) .
 
 ```json
 {
@@ -369,7 +374,7 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |Kilit dönemi|00:00:15|İşlev düzeyi kilitlerinin alındığı dönem için. Kilitleri otomatik yenileme.| 
 |listenerLockPeriod|00:01:00|Dinleyici kilitlerinin alındığı dönem.| 
@@ -377,9 +382,9 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 |Locktanışılationtimeout|00:01:00|Çalışma zamanının kilit edinmeye çalışacak en uzun süre.| 
 |Locktanışmalationpollingınterval|yok|Kilit alma denemeleri arasındaki Aralık.| 
 
-## <a name="version"></a>version
+## <a name="version"></a>sürüm
 
-Bu değer Host. JSON şema sürümünü gösterir. Sürüm dizesi `"version": "2.0"` , v2 çalışma zamanını veya sonraki bir sürümünü hedefleyen bir işlev uygulaması için gereklidir. Ana bilgisayar yok. v2 ve v3 arasında JSON şeması değişikliği.
+Bu değer, host.jsşema sürümünü gösterir. Sürüm dizesi, `"version": "2.0"` v2 çalışma zamanını veya sonraki bir sürümünü hedefleyen bir işlev uygulaması için gereklidir. V2 ve v3 arasındaki şema değişikliklerinde host.jsyok.
 
 ## <a name="watchdirectories"></a>watchDirectories
 
@@ -391,11 +396,11 @@ Değişiklikler için izlenmesi gereken bir [paylaşılan kod dizinleri](functio
 }
 ```
 
-## <a name="override-hostjson-values"></a>Host. JSON değerlerini geçersiz kıl
+## <a name="override-hostjson-values"></a>Değerler üzerinde host.jsgeçersiz kıl
 
-Host. json dosyasının kendisini değiştirmeden belirli bir ortam için bir Host. JSON dosyasındaki belirli ayarları yapılandırmak veya değiştirmek istediğiniz örnekler olabilir.  Belirli bir konağı geçersiz kılabilirsiniz. JSON değerleri, bir uygulama ayarı olarak denk bir değer oluşturmaktır. Çalışma zamanı, biçimde `AzureFunctionsJobHost__path__to__setting`bir uygulama ayarı bulduğunda, JSON içinde konumunda `path.to.setting` bulunan eşdeğer Host. JSON ayarını geçersiz kılar. Bir uygulama ayarı olarak ifade edildiğinde, JSON hiyerarşisini göstermek`.`için kullanılan nokta () bir çift alt çizgi (`__`) ile değiştirilmiştir. 
+Belirli bir ortam için dosyadaki bir host.jsbelirli ayarları yapılandırmak veya değiştirmek istediğiniz örnekler olabilir. Bu durumda, dosyanın kendisinde host.jsdeğiştiremezsiniz.  Değerler üzerinde belirli host.jsgeçersiz kılabilirsiniz ve bir uygulama ayarı olarak eşdeğer bir değer oluşturabilirsiniz. Çalışma zamanı, biçimde bir uygulama ayarı bulduğunda `AzureFunctionsJobHost__path__to__setting` , JSON içinde bulunan ayarı üzerindeki eşdeğer host.jsgeçersiz kılar `path.to.setting` . Bir uygulama ayarı olarak ifade edildiğinde, `.` JSON hiyerarşisini göstermek için kullanılan nokta () bir çift alt çizgi () ile değiştirilmiştir `__` . 
 
-Örneğin, yerel olarak çalışırken Application Insight örneklemesi devre dışı bırakmak istediğinizi varsayalım. Application Insights devre dışı bırakmak için yerel Host. json dosyasını değiştirdiyseniz, bu değişiklik dağıtım sırasında üretim uygulamanıza gönderilir. Bunu yapmanın daha güvenli yolu, bunun yerine `"AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":"false"` `local.settings.json` dosyada olduğu gibi bir uygulama ayarı oluşturmaktır. Bunu, yayımlanmadığı aşağıdaki `local.settings.json` dosyada görebilirsiniz:
+Örneğin, yerel olarak çalışırken Application Insight örneklemesi devre dışı bırakmak istediğinizi varsayalım. Dosyayı Application Insights devre dışı bırakmak için yerel host.jsdeğiştirdiyseniz, bu değişiklik dağıtım sırasında üretim uygulamanıza gönderilir. Bunu yapmanın daha güvenli yolu, bunun yerine dosyada olduğu gibi bir uygulama ayarı oluşturmaktır `"AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":"false"` `local.settings.json` . Bunu `local.settings.json` , yayımlanmadığı aşağıdaki dosyada görebilirsiniz:
 
 ```json
 {
@@ -411,7 +416,7 @@ Host. json dosyasının kendisini değiştirmeden belirli bir ortam için bir Ho
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Host. json dosyasını güncelleştirme hakkında bilgi edinin](functions-reference.md#fileupdate)
+> [Dosyadaki host.jsgüncelleştirmeyi öğrenin](functions-reference.md#fileupdate)
 
 > [!div class="nextstepaction"]
 > [Ortam değişkenlerinde genel ayarları gör](functions-app-settings.md)

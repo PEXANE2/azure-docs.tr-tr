@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 6544cd115dbae2268492a8775a780d2f045f4e4a
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 4ac33a01f574f537d64c706842c7d867f387c804
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889662"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194476"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>JavaScript'te ilk dayanıklı işlevinizi oluşturma
 
@@ -32,7 +32,7 @@ Bu öğreticiyi tamamlamak için:
 
 * Dayanıklı İşlevler bir Azure depolama hesabı gerektirir. Bir Azure aboneliğine ihtiyacınız vardır.
 
-* [Node. js](https://nodejs.org/) sürümünün 10. x veya 12. x sürümünün yüklü olduğundan emin olun.
+* Sürüm 10. x veya 12. x [Node.js](https://nodejs.org/) yüklü olduğundan emin olun.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -40,7 +40,7 @@ Bu öğreticiyi tamamlamak için:
 
 Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Visual Studio Code kullanırsınız. 
 
-1. Visual Studio Code, komut paletini açmak için F1 (veya Ctrl/Cmd + SHIFT + P) tuşuna basın. Komut paletinde, araması yapın ve seçin `Azure Functions: Create New Project...`.
+1. Visual Studio Code, komut paletini açmak için F1 (veya Ctrl/Cmd + SHIFT + P) tuşuna basın. Komut paletinde, araması yapın ve seçin `Azure Functions: Create New Project...` .
 
     ![İşlev oluşturma](media/quickstart-js-vscode/functions-create-project.png)
 
@@ -48,43 +48,24 @@ Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Visual Studio
 
 1. İstemlerin ardından aşağıdaki bilgileri sağlayın:
 
-    | İstem | Değer | Açıklama |
+    | İstem | Değer | Description |
     | ------ | ----- | ----------- |
-    | İşlev uygulaması projeniz için bir dil seçin | JavaScript | Yerel Node. js Işlevleri projesi oluşturun. |
-    | Sürüm seçin | Azure Işlevleri v3 | Bu seçeneği yalnızca temel araçlar yüklü değilse görürsünüz. Bu durumda, uygulamayı ilk kez çalıştırdığınızda çekirdek araçlar yüklenir. |
+    | İşlev uygulaması projeniz için bir dil seçin | JavaScript | Yerel bir Node.js Işlevleri projesi oluşturun. |
+    | Sürüm seçin | Azure İşlevleri v3 | Bu seçeneği yalnızca temel araçlar yüklü değilse görürsünüz. Bu durumda, uygulamayı ilk kez çalıştırdığınızda çekirdek araçlar yüklenir. |
     | Projenizin ilk işlevi için bir şablon seçin | Şimdilik atla | |
     | Projenizi nasıl açmak istediğinizi seçin | Geçerli pencerede aç | VS Code seçtiğiniz klasörde yeniden açılır. |
 
-Gerekirse Azure Functions Core Tools Visual Studio Code yüklenir. Ayrıca, bir klasörde işlev uygulaması projesi oluşturur. Bu proje [Host. JSON](../functions-host-json.md) ve [Local. Settings. JSON](../functions-run-local.md#local-settings-file) yapılandırma dosyalarını içerir.
+Gerekirse Azure Functions Core Tools Visual Studio Code yüklenir. Ayrıca, bir klasörde işlev uygulaması projesi oluşturur. Bu proje yapılandırma dosyalarında [host.js](../functions-host-json.md) ve [local.settings.js](../functions-run-local.md#local-settings-file) içerir.
 
-Kök klasörde bir Package. JSON dosyası da oluşturulur.
-
-### <a name="enable-compatibility-mode"></a>Uyumluluk modunu etkinleştir
-
-Şu anda JavaScript Dayanıklı İşlevler Azure Işlevleri v2 uyumluluk modunun etkinleştirilmesini gerektirir.
-
-1. Uygulamayı yerel olarak çalıştırırken kullanılan ayarları düzenlemek için *Local. Settings. JSON* öğesini açın.
-
-1. Değeri olan adlı `FUNCTIONS_V2_COMPATIBILITY_MODE` bir ayar ekleyin `true`.
-
-    ```json
-    {
-        "IsEncrypted": false,
-        "Values": {
-            "AzureWebJobsStorage": "",
-            "FUNCTIONS_WORKER_RUNTIME": "node",
-            "FUNCTIONS_V2_COMPATIBILITY_MODE": "true"
-        }
-    }
-    ```
+Kök klasörde bir package.jsdosyası da oluşturulur.
 
 ## <a name="install-the-durable-functions-npm-package"></a>Dayanıklı İşlevler NPM paketini yükler
 
-Node. js işlev uygulamasındaki Dayanıklı İşlevler çalışmak için adlı `durable-functions`bir kitaplık kullanırsınız.
+Node.js işlevi uygulamasındaki Dayanıklı İşlevler çalışmak için adlı bir kitaplık kullanırsınız `durable-functions` .
 
 1. VS Code ' de yeni bir terminal açmak için *Görünüm* menüsünü veya CTRL + SHIFT + ' kullanın.
 
-1. İşlev uygulamasının `durable-functions` kök dizininde çalıştırarak `npm install durable-functions` NPM paketini yükler.
+1. `durable-functions`İşlev uygulamasının kök dizininde çalıştırarak NPM paketini yükler `npm install durable-functions` .
 
 ## <a name="creating-your-functions"></a>İşlevleriniz oluşturma
 
@@ -98,47 +79,47 @@ En temel Dayanıklı İşlevler uygulaması üç işlev içerir:
 
 Projenizde dayanıklı işlev kodu oluşturmak için bir şablon kullanın.
 
-1. Komut paletinde, araması yapın ve seçin `Azure Functions: Create Function...`.
+1. Komut paletinde, araması yapın ve seçin `Azure Functions: Create Function...` .
 
 1. İstemlerin ardından aşağıdaki bilgileri sağlayın:
 
-    | İstem | Değer | Açıklama |
+    | İstem | Değer | Description |
     | ------ | ----- | ----------- |
     | İşleviniz için bir şablon seçin | Dayanıklı İşlevler Orchestrator | Dayanıklı İşlevler düzenleme oluşturma |
     | Bir işlev adı girin | Merhaba Orchestrator | Dayanıklı işlevinizin adı |
 
-Etkinlik işlevlerini koordine etmek için bir Orchestrator eklediniz. Orchestrator işlevini görmek için *helloorchestrator/index. js* ' i açın. Her çağrı, `context.df.callActivity` adlı `Hello`bir etkinlik işlevini çağırır.
+Etkinlik işlevlerini koordine etmek için bir Orchestrator eklediniz. Orchestrator işlevini görmek için *helloorchestrator/index.js* açın. Her çağrı, `context.df.callActivity` adlı bir etkinlik işlevini çağırır `Hello` .
 
 Ardından, başvurulan `Hello` etkinlik işlevini eklersiniz.
 
 ### <a name="activity-function"></a>Activity işlevi
 
-1. Komut paletinde, araması yapın ve seçin `Azure Functions: Create Function...`.
+1. Komut paletinde, araması yapın ve seçin `Azure Functions: Create Function...` .
 
 1. İstemlerin ardından aşağıdaki bilgileri sağlayın:
 
-    | İstem | Değer | Açıklama |
+    | İstem | Değer | Description |
     | ------ | ----- | ----------- |
     | İşleviniz için bir şablon seçin | Dayanıklı İşlevler etkinliği | Etkinlik işlevi oluşturma |
     | Bir işlev adı girin | Hello | Etkinlik işlevinizin adı |
 
-Orchestrator tarafından çağrılan `Hello` etkinlik işlevini eklediniz. Giriş olarak bir ad ve bir tebrik döndürme olduğunu görmek için *Merhaba/index. js* ' i açın. Bir etkinlik işlevi, veritabanı çağrısı yapma veya hesaplama gerçekleştirme gibi eylemleri gerçekleştirebileceğiniz yerdir.
+`Hello`Orchestrator tarafından çağrılan etkinlik işlevini eklediniz. Giriş olarak bir ad ve bir tebrik döndürme olduğunu görmek için *Merhaba/index.js* açın. Bir etkinlik işlevi, veritabanı çağrısı yapma veya hesaplama gerçekleştirme gibi eylemleri gerçekleştirebileceğiniz yerdir.
 
 Son olarak, Orchestration 'u Başlatan bir HTTP tetiklenen işlev eklersiniz.
 
 ### <a name="client-function-http-starter"></a>İstemci işlevi (HTTP başlangıç)
 
-1. Komut paletinde, araması yapın ve seçin `Azure Functions: Create Function...`.
+1. Komut paletinde, araması yapın ve seçin `Azure Functions: Create Function...` .
 
 1. İstemlerin ardından aşağıdaki bilgileri sağlayın:
 
-    | İstem | Değer | Açıklama |
+    | İstem | Değer | Description |
     | ------ | ----- | ----------- |
     | İşleviniz için bir şablon seçin | HTTP Starter Dayanıklı İşlevler | HTTP başlangıç işlevi oluşturma |
     | Bir işlev adı girin | DurableFunctionsHttpStart | Etkinlik işlevinizin adı |
     | Yetkilendirme düzeyi | Anonim | Tanıtım amacıyla, işlevin kimlik doğrulaması olmadan çağrılmasına izin ver |
 
-Orchestration Başlatan bir HTTP tetiklenen işlev eklediniz. Yeni bir düzenleme başlatmak için kullandığını `client.startNew` görmek için *DurableFunctionsHttpStart/index. js* ' i açın. Ardından, yeni `client.createCheckStatusResponse` Orchestration izlemek ve yönetmek Için kullanılabilecek URL 'leri IÇEREN bir http yanıtı döndürmek için kullanır.
+Orchestration Başlatan bir HTTP tetiklenen işlev eklediniz. Yeni bir düzenleme başlatmak için kullandığını görmek için *DurableFunctionsHttpStart/index.js* açın `client.startNew` . Ardından `client.createCheckStatusResponse` , yeni Orchestration izlemek ve yönetmek için kullanılabilecek URL 'leri içeren BIR http yanıtı döndürmek için kullanır.
 
 Artık yerel olarak çalıştırılabilecek ve Azure 'a dağılabilecek bir Dayanıklı İşlevler uygulaması var.
 
@@ -146,7 +127,7 @@ Artık yerel olarak çalıştırılabilecek ve Azure 'a dağılabilecek bir Daya
 
 Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirme bilgisayarınızda çalıştırmanıza olanak sağlar. Visual Studio Code'da ilk kez bir işlev başlattığınızda bu araçları yüklemeniz istenir.
 
-1. İşlevinizi test etmek için `Hello` etkinlik işlev kodunda (*Hello/index. js*) bir kesme noktası ayarlayın. İşlev uygulaması projesini başlatmak `Debug: Start Debugging` için F5 tuşuna basın veya komut paletinden seçim yapın. Temel Araçlar’daki çıktı, **Terminal** panelinde görüntülenir.
+1. İşlevinizi test etmek için `Hello` etkinlik işlev kodunda (*merhaba/index.js*) bir kesme noktası ayarlayın. `Debug: Start Debugging`İşlev uygulaması projesini başlatmak Için F5 tuşuna basın veya komut paletinden seçim yapın. Temel Araçlar’daki çıktı, **Terminal** panelinde görüntülenir.
 
     > [!NOTE]
     > Hata ayıklama hakkında daha fazla bilgi için [dayanıklı işlevler tanılamayı](durable-functions-diagnostics.md#debugging) inceleyin.
@@ -157,19 +138,19 @@ Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirm
 
 1. İstemlerin ardından, Azure 'da yeni bir depolama hesabı oluşturmak için aşağıdaki bilgileri sağlayın.
 
-    | İstem | Değer | Açıklama |
+    | İstem | Değer | Description |
     | ------ | ----- | ----------- |
     | Abonelik seçme | *aboneliğinizin adı* | Azure aboneliğinizi seçin |
     | Bir depolama hesabı seçin | Yeni depolama hesabı oluşturma |  |
     | Yeni depolama hesabının adını girin | *benzersiz ad* | Oluşturulacak depolama hesabının adı |
     | Kaynak grubu seçme | *benzersiz ad* | Oluşturulacak kaynak grubunun adı |
-    | Bir konum seçin | *bölgesinde kullanılamıyor* | Size yakın bir bölge seçin |
+    | Bir konum seçin | *region* | Size yakın bir bölge seçin |
 
 1. **Terminal** panelinde, HTTP ile tetiklenen işlevinizin URL uç noktasını kopyalayın.
 
     ![Azure yerel çıktısı](media/quickstart-js-vscode/functions-f5.png)
 
-1. [Postman](https://www.getpostman.com/) veya [kıvrık](https://curl.haxx.se/)gibi BIR araç kullanarak, URL uç noktasına bir http post isteği gönderin. Son segmenti Orchestrator işlevinin adı (`HelloOrchestrator`) ile değiştirin. URL şuna benzer olmalıdır `http://localhost:7071/api/orchestrators/HelloOrchestrator`.
+1. Tarayıcınızı veya [Postman](https://www.getpostman.com/) veya [kıvrık](https://curl.haxx.se/)gıbı bir aracı kullanarak URL uç noktasına bir http post isteği gönderin. Son segmenti Orchestrator işlevinin adı () ile değiştirin `HelloOrchestrator` . URL şuna benzer olmalıdır `http://localhost:7071/api/orchestrators/HelloOrchestrator` .
 
    Yanıt, HTTP işlevinin ilk sonucudur ve dayanıklı düzenleme 'nin başarıyla başlatıldığını bilmenizi sağlar. Orchestration 'un nihai sonucu henüz değildir. Yanıt birkaç yararlı URL içerir. Şimdilik düzenleme durumunu sorgulayalım.
 
@@ -201,20 +182,6 @@ Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirm
 [!INCLUDE [functions-create-function-app-vs-code](../../../includes/functions-sign-in-vs-code.md)]
 
 [!INCLUDE [functions-publish-project-vscode](../../../includes/functions-publish-project-vscode.md)]
-
-### <a name="enable-compatibility-mode"></a>Uyumluluk modunu etkinleştir
-
-Yerel olarak etkinleştirdiğiniz Azure Işlevleri v2 uyumluluğu, Azure 'daki uygulamada etkinleştirilmelidir.
-
-1. Komut paletini kullanarak araması yapın ve seçin `Azure Functions: Edit Setting...`.
-
-1. Azure aboneliğinizde işlev uygulamanızı bulmak için istemleri izleyin.
-
-1. `Create new App Setting...` öğesini seçin.
-
-1. Yeni bir ayar anahtarı girin `FUNCTIONS_V2_COMPATIBILITY_MODE`.
-
-1. Bir ayar değeri girin `true`.
 
 ## <a name="test-your-function-in-azure"></a>Azure'da işlevinizi test etme
 

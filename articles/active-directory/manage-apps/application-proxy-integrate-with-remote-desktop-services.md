@@ -3,25 +3,25 @@ title: Uzak masaüstünü Azure AD Uygulaması Proxy ile yayımlama | Microsoft 
 description: Azure AD Uygulama Ara Sunucusu bağlayıcıları hakkında temel bilgileri içerir.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34f3dcd607a7417932912528167a1120dbfd9b4f
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67108458"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764528"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu uzak masaüstü 'Nü yayımlama
 
@@ -67,7 +67,7 @@ Ortamınız için RDS ve Azure AD Uygulama Ara Sunucusu ayarladıktan sonra, iki
 ### <a name="publish-the-rd-host-endpoint"></a>RD konak uç noktasını yayımlama
 
 1. Aşağıdaki değerlerle [Yeni bir uygulama proxy uygulaması yayımlayın](application-proxy-add-on-premises-application.md) :
-   - İç URL: `https://\<rdhost\>.com/`, burada `\<rdhost\>` RD Web ve RD Ağ Geçidi paylaşımının ortak köküdür.
+   - İç URL: `https://\<rdhost\>.com/` , burada `\<rdhost\>` RD Web ve RD Ağ Geçidi paylaşımının ortak köküdür.
    - Dış URL: Bu alan, uygulamanın adına göre otomatik olarak doldurulur, ancak bunu değiştirebilirsiniz. Kullanıcılarınız, RDS 'ye erişirken bu URL 'ye gider.
    - Ön kimlik doğrulama yöntemi: Azure Active Directory
    - URL üst bilgilerini çevir: Hayır
@@ -75,7 +75,7 @@ Ortamınız için RDS ve Azure AD Uygulama Ara Sunucusu ayarladıktan sonra, iki
 3. **Azure AD çoklu oturum açma devre dışı**olduğundan uygulama için çoklu oturum açma yöntemini bırakın. Kullanıcılarınızın Azure AD 'de bir kez kimlik doğrulaması yapması ve bir kez RD Web 'e bağlanmak istenir, ancak RD Ağ Geçidi için çoklu oturum açma gerekir.
 4. **Azure Active Directory**ve ardından **uygulama kayıtları**' nı seçin. Listeden uygulamanızı seçin.
 5. **Yönet**altında **marka**' i seçin.
-6. **Ana sayfa URL 'si** alanını RD Web uç noktanıza işaret etmek için (gibi `https://\<rdhost\>.com/RDWeb`) güncelleştirin.
+6. **Ana sayfa URL 'si** alanını RD Web uç noktanıza işaret etmek için (gibi `https://\<rdhost\>.com/RDWeb` ) güncelleştirin.
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>RDS trafiğini uygulama proxy 'sine doğrudan
 
@@ -91,7 +91,7 @@ RDS dağıtımına yönetici olarak bağlanın ve dağıtım için RD Ağ Geçid
 
    ![RDS 'de dağıtım özellikleri ekranı](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
 
-8. Her koleksiyon için bu komutu çalıştırın. * \<Yourcollectionname\> * ve *\> proxyfrontendurl bilgilerini kendi bilgileriniz ile değiştirin. \<* Bu komut RD Web ile RD Ağ Geçidi arasında çoklu oturum açmayı mümkün hale getirir ve performansı iyileştirir:
+8. Her koleksiyon için bu komutu çalıştırın. *\<yourcollectionname\>* Ve *\<proxyfrontendurl\>* bilgilerini kendi bilgileriniz ile değiştirin. Bu komut RD Web ile RD Ağ Geçidi arasında çoklu oturum açmayı mümkün hale getirir ve performansı iyileştirir:
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
@@ -124,7 +124,7 @@ Bir Windows 7 veya 10 bilgisayarda Internet Explorer ile senaryoyu test edin.
 
 Bu makalede özetlenen yapılandırma, Internet Explorer ve RDS ActiveX eklentisi ile Windows 7 veya 10 ' daki kullanıcılara yöneliktir. Bununla birlikte, diğer işletim sistemlerini veya tarayıcılarını de destekleyebilirsiniz. Fark, kullandığınız kimlik doğrulama yöntemidir.
 
-| Kimlik doğrulama Yöntemi | Desteklenen istemci yapılandırması |
+| Kimlik doğrulama yöntemi | Desteklenen istemci yapılandırması |
 | --------------------- | ------------------------------ |
 | Ön kimlik doğrulama    | Internet Explorer + RDS ActiveX eklentisini kullanarak Windows 7/10 |
 | Doğrudan geçiş | Microsoft Uzak Masaüstü uygulamasını destekleyen diğer tüm işletim sistemleri |

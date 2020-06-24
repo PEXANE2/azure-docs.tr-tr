@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/16/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3faca8d1a2538ed03a917d6db8d54323fe626369
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65a6a622a0d3fac7b28cc699d860068f12b780fe
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81533707"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728614"
 ---
 # <a name="bulk-download-members-of-a-group-in-azure-active-directory"></a>Azure Active Directory bir grubun üyelerini toplu indirin
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) portalını kullanarak, kuruluşunuzdaki bir g
 ## <a name="to-bulk-download-group-membership"></a>Grup üyeliğini toplu olarak indirmek için
 
 1. [Azure Portal,](https://portal.azure.com) kuruluştaki bir kullanıcı yönetici hesabıyla oturum açın. Grup sahipleri, sahip oldukları grupların üyelerini de toplu olarak indirebilir.
-1. Azure AD 'de **gruplar** > **tüm gruplar**' ı seçin.
+1. Azure AD 'de **gruplar**  >  **tüm gruplar**' ı seçin.
 1. Üyeliğini indirmek istediğiniz grubu açın ve ardından **Üyeler**' i seçin.
 1. **Üyeler** sayfasında, grup üyelerini listelemek üzere bir CSV dosyası indirmek Için **üyeleri indir** ' i seçin.
 

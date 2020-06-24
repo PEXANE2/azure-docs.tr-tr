@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 0ae06a1c3d486b5d5998b4c6d050d86f50910a0a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ba01b89b54dc7209449490059555f531f7616720
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598041"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193371"
 ---
 # <a name="what-is-routing-preference-preview"></a>Yönlendirme tercihi nedir (Önizleme)?
 
@@ -88,7 +88,7 @@ Her iki seçenek arasındaki fiyat farkı, Internet çıkış veri aktarımı fi
 
 Yönlendirme tercihi desteği, internet çıkış-Kuzey Avrupa, Batı Avrupa, Fransa Güney, UK Güney, Doğu ABD, Orta Kuzey ABD, Orta Güney ABD, Batı ABD, Orta Batı ABD, Güneydoğu Asya, Almanya Orta Batı, İsviçre Batı, Japonya Doğu ve Japonya Batı için genel bir IP kullanan sanal makine ve internet 'e yönelik yük dengeleyici gibi hizmetler için aşağıdaki bölgelerde kullanılabilir.
 
-Depolama hesabı için yönlendirme tercihi desteği, aşağıdaki Azure bölgelerinde bulunur-Fransa Güney, Orta Kuzey ABD ve Orta Batı ABD.
+Depolama hesabı için yönlendirme tercihi desteği, aşağıdaki Azure bölgelerinde bulunur-Fransa Güney, Orta Kuzey ABD, Orta Batı ABD, Japonya Doğu, Japonya Batı, Almanya Orta Batı ve İsviçre Batı.
 ## <a name="limitations"></a>Sınırlamalar
 
 * Yönlendirme tercihi yalnızca standart genel IP adresi SKU 'SU ile uyumludur. Temel genel IP adresi SKU 'SU desteklenmiyor.

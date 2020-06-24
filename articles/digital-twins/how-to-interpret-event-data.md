@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4c95e686de23654688d0d7c3182c6565a907b750
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: e194c046cde623e0fcdd4c73ac24f2bf0755945c
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612966"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299441"
 ---
 # <a name="understand-event-data"></a>Olay verilerini anlama
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure Digital TWINS 'deki farklı olaylar, farklı eylemler meydana geldiğinde çözüm arka ucunun farkında olmasını sağlayan **Bildirimler**üretir. Bunlar daha sonra bu bilgileri işlem yapmak için kullanabileceğiniz Azure dijital TWINS içindeki ve dışındaki farklı konumlara [yönlendirilir](concepts-route-events.md) .
 
@@ -232,46 +235,6 @@ Bir özelliği güncelleştirmek için bir güncelleştirme ilişkisi bildirimin
     "ownershipDepartment": "Operations"
 }
 ```
-
-### <a name="digital-twin-model-change-notifications"></a>Digital ikizi model değişikliği bildirimleri
-
-Bir dijital TWINS tanım dili (DTDL) [modeli](concepts-models.md) karşıya yüklendiğinde, yeniden yüklendiğinde, düzeltme eki uygulanmış, kullanımdan kaldırılan veya silinince **model değişikliği bildirimleri** tetiklenir.
-
-#### <a name="properties"></a>Özellikler
-
-Model değişiklik bildiriminin gövdesindeki alanlar aşağıda verilmiştir.
-
-| Name    | Değer |
-| --- | --- |
-| `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id`her farklı olay için benzersizdir |
-| `source` | *Myhub.Azure-Devices.net* veya *mydigitaltwins.westus2.azuredigitaltwins.net* gibi IoT Hub veya Azure dijital TWINS örneğinin adı |
-| `specversion` | 1.0 |
-| `type` | `Microsoft.DigitalTwins.Model.Upload`<br>`Microsoft.DigitalTwins.Model.Reload`(Hub 'a özgü)<br>`Microsoft.DigitalTwins.Model.Patch`(Hub 'a özgü)<br>`Microsoft.DigitalTwins.Model.Decom`<br>`Microsoft.DigitalTwins.Model.Delete` |
-| `datacontenttype` | uygulama/json |
-| `subject` | Modelin KIMLIĞI, form`dtmi:<domain>:<unique model identifier>;<model version number>` |
-| `time` | İşlemin modelde gerçekleştiği zaman damgası |
-| `sequence` | Etkinliğin daha büyük sıralı olaylar sırasındaki konumunu ifade eden değer. Hizmetlerin, sıralarını belirtmek için tüm bildirimlere bir sıra numarası eklemesi veya kendi sıralamasını başka bir şekilde korumanız gerekir. Sıra numarası her iletiyle birlikte artar. Nesne silinip aynı KIMLIKLE yeniden oluşturulduğunda 1 olarak sıfırlanır. |
-| `sequencetype` | Dizi alanının nasıl kullanıldığı hakkında daha ayrıntılı bilgi. Örneğin, bu özellik değerin 1 ile başlayan ve her seferinde 1 ile artan bir işaretli 32 bitlik tamsayı olması gerektiğini belirtebilir. |
-| `modelstatus` | Bir modeli çözmeye yönelik çözüm durumu. Olası değerler: başarılı/NotFound/Failed (yalnızca IoT Hub) | 
-| `updatereason` | Şemada model nedenini güncelleştirme. Olası değerler: oluşturma/sıfırlama/geçersiz kılma (yalnızca IoT Hub) | 
-
-#### <a name="body-details"></a>Gövde ayrıntıları
-
-Yükleme, yeniden yükleme ve modelleri düzeltme işlemleri için bir ileti gövdesi yoktur. Kullanıcının `GET` model içeriğini almak için bir çağrı yapması gerekir. 
-
-Ve için `Model.Decom` , düzeltme ekinin gövdesi, Azure Digital TWINS API yüzeyinde diğer tüm yama API 'leri gıbı JSON yama biçiminde olacaktır. Bu nedenle, bir modelin yetkisini almak için şunu kullanabilirsiniz:
-
-```json
-[
-  {
-    "op": "replace",
-    "path": "/decommissionedState",
-    "value": true
-  }
-]
-```
-
-İçin `Model.Delete` , istek gövdesi bir istek ile aynıdır `GET` ve silinmeden önce en son durumu alır.
 
 ### <a name="digital-twin-change-notifications"></a>Dijital ikizi değişiklik bildirimleri
 

@@ -6,7 +6,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: overview
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.date: 04/16/2020
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12101b170066bc52e75f4aa281c6f1c21283c004
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44a01bb7d2f4aa3d31204d6235e955e82e471d5d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406448"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84729056"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Azure Active Directory 'de yönetim birimleri yönetimi (Önizleme)
 
@@ -72,7 +72,7 @@ Aşağıdaki tabloda, yönetim birimi senaryoları için geçerli destek açıkl
 
 ### <a name="administrative-unit-management"></a>Yönetim Birimi Yönetimi
 
-İzinler |   MS Graph/PowerShell   | Azure AD portalı | Microsoft 365 yönetim merkezi
+İzinler |   MS Graph/PowerShell   | Azure AD portalı | Microsoft 365 yönetici merkezi
 ----------- | ----------------------- | --------------- | -----------------
 Yönetim birimleri oluşturma ve silme   |    Destekleniyor    |   Destekleniyor   |    Desteklenmiyor
 Yönetim birimi üyelerini tek tek ekleme ve kaldırma    |   Destekleniyor    |   Destekleniyor   |    Desteklenmiyor
@@ -82,7 +82,7 @@ AU üyelerini dinamik olarak özniteliklere göre ekleme ve kaldırma | Destekle
 
 ### <a name="user-management"></a>Kullanıcı yönetimi
 
-İzinler |   MS Graph/PowerShell   | Azure AD portalı | Microsoft 365 yönetim merkezi
+İzinler |   MS Graph/PowerShell   | Azure AD portalı | Microsoft 365 yönetici merkezi
 ----------- | ----------------------- | --------------- | -----------------
 Kullanıcı özelliklerinin, parolaların, lisansların yönetim birimi kapsamlı yönetimi   |    Destekleniyor     |  Destekleniyor   |   Destekleniyor
 yönetim birimi kapsamlı engelleme ve Kullanıcı oturum açma işlemleri engellemesini kaldırma    |   Destekleniyor   |    Destekleniyor   |    Destekleniyor
@@ -90,7 +90,7 @@ Kullanıcı MFA kimlik bilgilerinin yönetim birimi kapsamlı yönetimi   |    D
 
 ### <a name="group-management"></a>Grup yönetimi
 
-İzinler |   MS Graph/PowerShell   | Azure AD portalı | Microsoft 365 yönetim merkezi
+İzinler |   MS Graph/PowerShell   | Azure AD portalı | Microsoft 365 yönetici merkezi
 ----------- | ----------------------- | --------------- | -----------------
 Grup özelliklerinin ve üyelerinin yönetim birimi kapsamlı yönetimi     |  Destekleniyor   |    Destekleniyor    |  Desteklenmiyor
 Grup lisanslamanın yönetim birimi kapsamlı yönetimi   |    Destekleniyor  |    Destekleniyor   |   Desteklenmiyor

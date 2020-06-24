@@ -2,8 +2,8 @@
 title: Bağlayıcı grupları aracılığıyla uygulamaları ayrı ağlarda yayımlama-Azure AD
 description: Azure AD Uygulama Ara Sunucusu 'de bağlayıcı gruplarının nasıl oluşturulacağını ve yönetileceğini ele alır.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,15 +11,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22fa1de0a0e3bb91480212381e07b17875bf0bf4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be3e99ca57957e1975313fed8609533f4a65b102
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275574"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764732"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Bağlayıcı gruplarını kullanarak ayrı ağlarda ve konumlarda uygulama yayımlama
 
@@ -41,7 +41,7 @@ Bağlayıcılarınızı gruplandırmak için [birden çok bağlayıcı yükledi�
 İstediğiniz sayıda bağlayıcı grubu oluşturmak için bu adımları kullanın.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory** > **Kurumsal uygulamalar** > **uygulama proxy 'si**' ni seçin.
+1. **Azure Active Directory**  >  **Kurumsal uygulamalar**  >  **uygulama proxy 'si**' ni seçin.
 1. **Yeni bağlayıcı grubu**' nu seçin. Yeni bağlayıcı grubu dikey penceresi görünür.
 
    ![Yeni bir bağlayıcı grubu seçmek için ekranı gösterir](./media/application-proxy-connector-groups/new-group.png)
@@ -53,7 +53,7 @@ Bağlayıcılarınızı gruplandırmak için [birden çok bağlayıcı yükledi�
 
 Uygulama proxy 'Si ile yayımladığınız her bir uygulama için bu adımları kullanın. Bir uygulamayı ilk yayımladığınızda bir bağlayıcı grubuna atayabilir veya bu adımları kullanarak atamayı dilediğiniz zaman değiştirebilirsiniz.
 
-1. Dizininizin Yönetim panosundan **Kurumsal uygulamalar** > ' ı seçin**tüm uygulamalar** > bağlayıcı grubuna atamak istediğiniz uygulamayı > **uygulama proxy 'si**.
+1. Dizininizin Yönetim panosundan **Kurumsal uygulamalar**' ı seçin  >  **tüm uygulamalar** > bağlayıcı grubuna atamak istediğiniz uygulamayı > **uygulama proxy 'si**.
 1. Uygulamanın kullanmasını istediğiniz grubu seçmek için **bağlayıcı grubu** açılır menüsünü kullanın.
 1. Değişikliği uygulamak için **Kaydet** ' i seçin.
 

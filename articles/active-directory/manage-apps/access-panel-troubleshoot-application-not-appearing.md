@@ -3,25 +3,25 @@ title: Atanan uygulama erişim panelinde görünmüyor | Microsoft Docs
 description: Uygulamanın erişim panelinde neden görünmediğini sorun giderme
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/09/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviwer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10dfcf337dc75a202e781e931f38783291a72fe7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69f5196484b841e8f0de72ce52ae48e00963f6f5
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67272750"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84761004"
 ---
 # <a name="an-assigned-application-is-not-appearing-on-the-access-panel"></a>Atanan uygulama erişim panelinde görünmüyor
 
@@ -135,7 +135,7 @@ Bir uygulama için çoklu oturum açmayı yapılandırmak için aşağıdaki ad�
 
     2. Kaydet ' e tıklayın **.** Yeni özniteliği tabloda görürsünüz.
 
-13. uygulamada çoklu oturum açmayı yapılandırma hakkında belgeye erişmek için **uygulama adını &lt;&gt; Yapılandır** ' a tıklayın. Ayrıca, uygulama ile SSO 'yu ayarlamak için gereken meta veri URL 'Leri ve sertifikaya sahip olursunuz.
+13. uygulamada çoklu oturum açmayı yapılandırma hakkında belgeye erişmek için ** &lt; uygulama &gt; adını Yapılandır** ' a tıklayın. Ayrıca, uygulama ile SSO 'yu ayarlamak için gereken meta veri URL 'Leri ve sertifikaya sahip olursunuz.
 
 14. yapılandırmayı kaydetmek için **Kaydet** ' e tıklayın.
 
@@ -252,7 +252,7 @@ Azure AD galerisinde olmayan bir uygulama için çoklu oturum açmayı yapıland
 
     2. Kaydet ' e tıklayın **.** Yeni özniteliği tabloda görürsünüz.
 
-14. uygulamada çoklu oturum açmayı yapılandırma hakkında belgeye erişmek için **uygulama adını &lt;&gt; Yapılandır** ' a tıklayın. Ayrıca, Azure AD URL 'Lerine ve uygulama için gereken sertifikalara sahip olursunuz.
+14. uygulamada çoklu oturum açmayı yapılandırma hakkında belgeye erişmek için ** &lt; uygulama &gt; adını Yapılandır** ' a tıklayın. Ayrıca, Azure AD URL 'Lerine ve uygulama için gereken sertifikalara sahip olursunuz.
 
 #### <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>Kullanıcı tanımlayıcısı ' nı seçin ve uygulamaya gönderilecek kullanıcı özniteliklerini ekleyin
 

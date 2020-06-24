@@ -12,12 +12,12 @@ manager: rkarlin
 author: memildin
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: 7efcc4a9ec7da2bdd4005c124d5d0e8dd03c4363
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 5a732683b52885173a60563f436b6ab01ea00710
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669707"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254115"
 ---
 # <a name="advanced-data-security"></a>Gelişmiş veri güvenliği
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -62,7 +62,7 @@ ADS ayarlarını görüntülemek ve yönetmek için sunucunuzun veya yönetilen 
 
 ![Sunucu ayarlar](./media/advanced-data-security/server_settings.png)
 
-## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. bir SQL veritabanı için ADS ayarlarını yönetme
+## <a name="4-manage-ads-settings-for-a-database"></a>4. bir veritabanı için ADS ayarlarını yönetme
 
 Belirli bir veritabanının ADS ayarlarını geçersiz kılmak için **veritabanı düzeyinde gelişmiş veri güvenliğini etkinleştir** onay kutusunu işaretleyin. Bu seçeneği yalnızca tek veritabanına yönelik ayrı Gelişmiş tehdit koruması uyarıları veya güvenlik açığı değerlendirme sonuçlarını veya sunucu ya da yönetilen örnekteki tüm veritabanları için alınan uyarıların ve sonuçların yanı sıra ayrı bir veritabanı için güvenlik açığı değerlendirmesi sonuçları almak için kullanın.
 

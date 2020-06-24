@@ -2,21 +2,21 @@
 title: Azure AD uygulamaları için parola çoklu oturum açmayı yapılandırma | Microsoft Docs
 description: Microsoft Identity platform (Azure AD) içinde Azure AD kurumsal uygulamalarınıza parola çoklu oturum açma (SSO) yapılandırma
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2019
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563bda275b73f76b042b5e57a9909ca78c504bb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 043adc309c3480865eb9aa7a7bff8d35e85bc78a
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063535"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763508"
 ---
 # <a name="configure-password-single-sign-on"></a>Parola çoklu oturum açmayı yapılandırma
 
@@ -44,7 +44,7 @@ Uygulama Azure AD kiracınıza eklenmemişse, bkz. [Galeri uygulaması ekleme](a
 
 1. [Azure Portal](https://portal.azure.com) bir bulut uygulaması Yöneticisi veya Azure AD kiracınız için bir uygulama Yöneticisi olarak oturum açın.
 
-2. **Azure Active Directory** > **kurumsal uygulamalara**gidin. Azure AD kiracınızdaki uygulamaların rastgele bir örneği görüntülenir. 
+2. **Azure Active Directory**  >  **kurumsal uygulamalara**gidin. Azure AD kiracınızdaki uygulamaların rastgele bir örneği görüntülenir. 
 
 3. **Uygulama türü** menüsünde, **tüm uygulamalar**' ı seçin ve ardından **Uygula**' yı seçin.
 
@@ -68,7 +68,7 @@ Uygulama Azure AD kiracınıza eklenmemişse, bkz. [Galeri uygulaması ekleme](a
 
 Azure AD 'nin Ayrıştırma girişimi başarısız olursa, oturum açmayı el ile yapılandırabilirsiniz.
 
-1. ** \<Uygulama adı> yapılandırma**altında, **oturum açma yapılandırma** sayfasını göstermek için **uygulama adı> parola çoklu oturum açma ayarları Yapılandır \<** ' ı seçin. 
+1. ** \<application name> Yapılandırma**altında, **oturum açmayı Yapılandır** sayfasını göstermek Için ** \<application name> parola çoklu oturum açma ayarlarını yapılandır** ' ı seçin. 
 
 2. **Oturum açma alanlarını el ile Algıla**' yı seçin. Oturum açma alanlarının el ile algılanmasını açıklayan ek yönergeler görüntülenir.
 

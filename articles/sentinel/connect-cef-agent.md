@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 5a8b97e5bef57b29f388c86628f0af5d05e1724a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 502fbe3bc7b1de2038bc444ae5daf180cfc80203
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731653"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298999"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. Adım: günlük ileticisini dağıtma
 
@@ -36,7 +36,7 @@ Bu adımda, günlükleri güvenlik çözümünüzden Azure Sentinel çalışma a
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Belirlenen Linux makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır.
-- Linux makinesinde Python yüklü olmalıdır.<br>Denetlemek için `python -version` komutunu kullanın.
+- Linux makinesinde Python yüklü olmalıdır.<br>`python -version`Denetlemek için komutunu kullanın.
 - Log Analytics aracısını yüklemeden önce Linux makinenin herhangi bir Azure çalışma alanına bağlı olmaması gerekir.
 
 ## <a name="run-the-deployment-script"></a>Dağıtım betiğini çalıştırma
@@ -69,13 +69,13 @@ Uygun açıklamayı görmek için bir Syslog Daemon seçin.
 
 1. **Syslog Daemon 'ı yapılandırma:**
 
-    1. Syslog yapılandırma dosyasını `/etc/rsyslog.conf`kullanarak TCP iletişimi için 514 bağlantı noktasını açar.
+    1. Syslog yapılandırma dosyasını kullanarak TCP iletişimi için 514 bağlantı noktasını açar `/etc/rsyslog.conf` .
 
-    1. , Syslog Daemon dizinine `security-config-omsagent.conf` `/etc/rsyslog.d/`özel bir yapılandırma dosyası ekleyerek CEF iletilerini TCP bağlantı noktası 25226 ' deki Log Analytics aracısına iletmek için arka plan programını yapılandırır.
+    1. , Syslog Daemon dizinine özel bir yapılandırma dosyası ekleyerek CEF iletilerini TCP bağlantı noktası 25226 ' deki Log Analytics aracısına iletmek için arka plan programını yapılandırır `security-config-omsagent.conf` `/etc/rsyslog.d/` .
 
-        `security-config-omsagent.conf` Dosyanın içeriği:
+        `security-config-omsagent.conf`Dosyanın içeriği:
 
-            :rawmsg, regex, "CEF\|ASA" ~
+            :rawmsg, regex, "CEF"|"ASA"
             *.* @@127.0.0.1:25226
 
 1. **Syslog Daemon 'u yeniden başlatma**
@@ -101,11 +101,11 @@ Uygun açıklamayı görmek için bir Syslog Daemon seçin.
 
 1. **Syslog Daemon 'ı yapılandırma:**
 
-    1. Syslog yapılandırma dosyasını `/etc/syslog-ng/syslog-ng.conf`kullanarak TCP iletişimi için 514 bağlantı noktasını açar.
+    1. Syslog yapılandırma dosyasını kullanarak TCP iletişimi için 514 bağlantı noktasını açar `/etc/syslog-ng/syslog-ng.conf` .
 
-    1. , Syslog Daemon dizinine `security-config-omsagent.conf` `/etc/syslog-ng/conf.d/`özel bir yapılandırma dosyası ekleyerek CEF iletilerini TCP bağlantı noktası 25226 ' deki Log Analytics aracısına iletmek için arka plan programını yapılandırır.
+    1. , Syslog Daemon dizinine özel bir yapılandırma dosyası ekleyerek CEF iletilerini TCP bağlantı noktası 25226 ' deki Log Analytics aracısına iletmek için arka plan programını yapılandırır `security-config-omsagent.conf` `/etc/syslog-ng/conf.d/` .
 
-        `security-config-omsagent.conf` Dosyanın içeriği:
+        `security-config-omsagent.conf`Dosyanın içeriği:
 
             filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
             destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};

@@ -2,22 +2,22 @@
 title: Yönetici onayı iş akışını Yapılandırma-Azure Active Directory | Microsoft Docs
 description: Son kullanıcıların yönetici onayı gerektiren uygulamalara erişim istemesi için bir yol yapılandırmayı öğrenin.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/29/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83b3f0d97daf0b4ac17f74981119b380d1776d97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4871af354d68a8d6dcaf3170271959146f57cba
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75430210"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763627"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Yönetici onayı iş akışını yapılandırma (Önizleme)
 
@@ -131,7 +131,7 @@ Aşağıdaki tabloda, yönetici onayı iş akışı için kullanılabilen senary
 
 **Bu iş akışını etkinleştirdim, ancak işlevselliği sınarken, neden yeni "onay gerekli" istemi 'ni istemediğimi bana izin veriyor?**
 
-Özelliği açtıktan sonra, son kullanıcıların güncelleştirmeyi görme süresi 60 dakika sürebilir. `https://graph.microsoft.com/beta/settings` API 'de **Enableadminconsentrequests** değerini görüntüleyerek yapılandırmanın doğru şekilde sürdüğünü doğrulayabilirsiniz.
+Özelliği açtıktan sonra, son kullanıcıların güncelleştirmeyi görme süresi 60 dakika sürebilir. API 'de **Enableadminconsentrequests** değerini görüntüleyerek yapılandırmanın doğru şekilde sürdüğünü doğrulayabilirsiniz `https://graph.microsoft.com/beta/settings` .
 
 **Gözden geçiren olarak, bekleyen tüm istekleri neden göremiyorum?**
 
@@ -153,9 +153,9 @@ Yönetici onayı verme konusunda endişe ediyorsanız ve Kiracıdaki tüm kullan
 
 Uygulamalara yönelik yarışmaya yönelik daha fazla bilgi için bkz. [Azure Active Directory izin çerçevesi](../develop/consent-framework.md).
 
-[Son kullanıcıların uygulamalara nasıl izin vermesini yapılandırın](configure-user-consent.md)
+[Son kullanıcıların uygulamalara onay verme şeklini yapılandırma](configure-user-consent.md)
 
-[Bir uygulamaya kiracı genelinde yönetici onayı verme](grant-admin-consent.md)
+[Uygulamaya kiracı genelinde yönetici onayı verme](grant-admin-consent.md)
 
 [Microsoft Identity platformunda izinler ve onay](../develop/active-directory-v2-scopes.md)
 

@@ -4,12 +4,12 @@ description: Bu makalede, yedeklemeleri ve kurtarma noktalarını depolayan kurt
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: f1f1a66bd6e0fbd28be59b0211a1ac17f030022e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 410ef023898cc57847b8e2f7a5153d50731e2d4c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298627"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764409"
 ---
 # <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
@@ -92,6 +92,7 @@ Bu işlem için, depolama düzeyinde olduğu kadar fiyatlandırma etkileri vard�
 >- CRR, herhangi bir GRS Kasası için kasa düzeyi katılım özelliğidir (varsayılan olarak kapalıdır).
 >- Bu işlem yapıldıktan sonra, yedekleme öğelerinin ikincil bölgelerde kullanılabilmesi 48 saat kadar sürebilir.
 >- Şu anda CRR yalnızca yedekleme yönetimi türü ARM Azure VM için desteklenir (klasik Azure VM desteklenmez).  Ek yönetim türleri CRR 'yi desteklediklerinde, bunlar **otomatik olarak** kaydedilir.
+>- Koruma ilk kez başlatıldığında çapraz bölge geri yüklemesi şu anda GRS veya LRS 'ye geri döndürülemez. 
 
 ### <a name="configure-cross-region-restore"></a>Çapraz bölge geri yüklemeyi yapılandırma
 

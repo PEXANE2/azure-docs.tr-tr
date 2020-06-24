@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 68143c4ac3851604996e1f7ba2adce48934e59c5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b40d9c95cec3e83ff02aa04ca39eb942635ee90d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295397"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202944"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
 
@@ -41,7 +41,7 @@ SAML ile iki özel olmayan temel senaryoyu özetleme:
 | Uygulamam bir kimlik doğrulamasını tamamlamaya yönelik bir SAML onayı bekliyor. | **Azure AD B2C, kimlik sağlayıcısı (IDP) olarak davranır**<br />Azure AD B2C, uygulamalar için SAML IDP işlevi görür. | Bu makale. |
 | Kullanıcılarım ADFS, Salesforce veya Shibboi gibi SAML uyumlu bir kimlik sağlayıcısıyla çoklu oturum açma gerektirir.  | **Azure AD B2C hizmet sağlayıcısı (SP) olarak davranır**<br />Azure AD B2C, SAML kimlik sağlayıcısına bağlanırken bir hizmet sağlayıcısı olarak davranır. Bu, uygulamanız ile SAML kimlik sağlayıcısı arasında bir Federasyon ara sunucusu.  | <ul><li>[Özel ilkeler kullanarak bir SAML IDP olarak ADFS ile oturum açma ayarlama](identity-provider-adfs2016-custom.md)</li><li>[Özel ilkeler kullanarak Salesforce SAML sağlayıcısı ile oturum açma ayarlama](identity-provider-salesforce-custom.md)</li></ul> |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure AD B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Makalesinde açıklanan özel ilke başlangıç paketinden *SocialAndLocalAccounts* özel ilkesine ihtiyacınız vardır.
 * Security Assertion Markup Language (SAML) protokolünü temel olarak anlama.
@@ -104,7 +104,7 @@ Ardından, Azure AD B2C için SAML onaylama ve yanıt imzalama sertifikasını k
 1. Örneğin, *Samlidpcert*gibi bir **ad**girin. Önek *B2C_1A_* , anahtarınızın adına otomatik olarak eklenir.
 1. Karşıya yükleme dosyası denetimini kullanarak sertifikanızı karşıya yükleyin.
 1. Sertifikanın parolasını girin.
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 1. Anahtarın beklenen şekilde göründüğünü doğrulayın. Örneğin, *B2C_1A_SamlIdpCert*.
 
 ## <a name="2-prepare-your-policy"></a>2. ilkenizi hazırlayın
@@ -119,7 +119,7 @@ Bölümünü bulun `<ClaimsProviders>` ve AŞAĞıDAKI XML kod parçacığını 
 
 `IssuerUri`Meta verilerin değerini değiştirebilirsiniz. Bu, Azure AD B2C SAML yanıtında döndürülen veren URI 'sidir. Bağlı olan taraf uygulamanız, SAML onaylama doğrulaması sırasında bir veren URI 'sini kabul edecek şekilde yapılandırılmalıdır.
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Token Issuer</DisplayName>
   <TechnicalProfiles>
@@ -159,13 +159,13 @@ Kiracınız SAML onayları yayınlamadığına göre, SAML bağlı olan taraf il
 
 ### <a name="31-create-sign-up-or-sign-in-policy"></a>3,1 kaydolma veya oturum açma ilkesi oluşturma
 
-1. *Signuporsignın. xml* dosyasının bir kopyasını Starter Pack çalışma dizininizde oluşturun ve yeni bir adla kaydedin. Örneğin, *Signuporsignınsaml. xml*. Bu, bağlı olan taraf ilke dosyasıdır.
+1. *SignUpOrSignin.xml* dosyanın bir kopyasını Starter Pack çalışma dizininizde oluşturun ve yeni bir adla kaydedin. Örneğin, *SignUpOrSigninSAML.xml*. Bu, bağlı olan taraf ilke dosyasıdır.
 
-1. Tercih edilen Düzenleyicinizde *Signuporsignınsaml. xml* dosyasını açın.
+1. *SignUpOrSigninSAML.xml* dosyasını tercih ettiğiniz düzenleyicide açın.
 
 1. `PolicyId` `PublicPolicyUri` İlkenin ve _B2C_1A_signup_signin_saml_ olarak ve `http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml` aşağıda görüldüğü gibi değiştirin.
 
-    ```XML
+    ```xml
     <TrustFrameworkPolicy
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -178,7 +178,7 @@ Kiracınız SAML onayları yayınlamadığına göre, SAML bağlı olan taraf il
 
 1. Aşağıdaki XML kod parçacığını öğeden hemen önce ekleyin `<RelyingParty>` . Bu XML, _Signuporsignın_ Kullanıcı yolculuğunun 7 düzenleme adımı numarasını geçersiz kılar. Başlangıç paketindeki farklı bir klasörden başladıysanız veya düzenleme adımlarını ekleyerek veya kaldırarak Kullanıcı yolculuğu 'nı özelleştirdiyseniz, sayının ( `order` öğesinde), belirteç veren adımının Kullanıcı yolculuğu 'nda belirtilen bir şekilde hizalandığından emin olun (örneğin, 5 `LocalAccounts` . adımda, için 6 `SocialAccounts` ve 9 için 4. adım `SocialAndLocalAccountsWithMfa` ).
 
-    ```XML
+    ```xml
     <UserJourneys>
       <UserJourney Id="SignUpOrSignIn">
         <OrchestrationSteps>
@@ -190,7 +190,7 @@ Kiracınız SAML onayları yayınlamadığına göre, SAML bağlı olan taraf il
 
 1. `<TechnicalProfile>`Öğesi içindeki öğesinin tamamını `<RelyingParty>` aşağıdaki teknık profil XML ile değiştirin.
 
-    ```XML
+    ```xml
     <TechnicalProfile Id="PolicyProfile">
       <DisplayName>PolicyProfile</DisplayName>
       <Protocol Name="SAML2"/>
@@ -210,7 +210,7 @@ Kiracınız SAML onayları yayınlamadığına göre, SAML bağlı olan taraf il
 
 Son bağlı olan taraf ilkesi dosyanız aşağıdaki gibi görünmelidir:
 
-```XML
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TrustFrameworkPolicy
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -297,7 +297,7 @@ SAML meta veri *URL 'sinde ve* uygulama kaydının bildiriminde belirtilen özel
 
 SAML test uygulamasını kullanan Bu öğretici için aşağıdaki değeri kullanın `samlMetadataUrl` :
 
-```JSON
+```json
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
 ```
 
@@ -309,7 +309,7 @@ Uygulama bildiriminde hizmet sağlayıcısı meta verilerini kullanmadan yanıt 
 
 SAML test uygulamasını kullandığınız bu öğreticide, `url` öğesinin özelliğini `replyUrlsWithType` aşağıdaki JSON kod parçacığında gösterilen değere ayarlayın.
 
-```JSON
+```json
 "replyUrlsWithType":[
   {
     "url":"https://samltestapp2.azurewebsites.net/SP/AssertionConsumer",
@@ -324,7 +324,7 @@ Bu isteğe bağlı özellik `Logout` URL 'yi ( `SingleLogoutService` bağlı ola
 
 SAML test uygulamasını kullanan Bu öğretici için, şu `logoutUrl` şekilde ayarlı bırakın `https://samltestapp2.azurewebsites.net/logout` :
 
-```JSON
+```json
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",
 ```
 

@@ -4,12 +4,12 @@ description: Azure blok zinciri çalışma ekranı önizlemesinde akıllı sözl
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: f9626edd5bd655e3de5d0f9648041faf832e3b84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 716255f5e71ec19b5b9c5a0a32740abc39f1a40b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74325964"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254642"
 ---
 # <a name="smart-contract-integration-patterns"></a>Akıllı anlaşma tümleştirme desenleri
 
@@ -31,7 +31,7 @@ Azure blok zinciri çalışma ekranı tarafından oluşturulan Web uygulaması i
 
 REST API, öncelikle web, mobil ve bot uygulamaları gibi etkileşimli istemciler için kullanılır.
 
-Bu bölüm, dağıtılmış bir genel muhasebe ve Azure blok zinciri çalışma ekranı *zinciri* SQL veritabanı 'ndan işlemler hakkındaki verileri sorgulayan REST API yönlerini odaklanan desenlere bakar.
+Bu bölüm, dağıtılmış bir defter ve Azure blok zinciri çalışma ekranı 'ndan *zincir* veritabanı 'ndan işlemler hakkındaki verileri sorgulayan desenlere odaklanan REST API yönlerini gösteren desenlere bakar.
 
 ### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>Dış sistemden dağıtılmış bir genel muhasebeye işlem gönderme
 
@@ -204,7 +204,7 @@ Veri tümleştirmesi iyi bilinmektedir:
 
 -   Azure blok zinciri, uygulamalar, iş akışları, sözleşmeler ve işlemler hakkındaki meta verileri normal çalışma davranışının bir parçası olarak depolar.
 -   Dış sistemler veya Araçlar veritabanı sunucu adı, veritabanı adı, kimlik doğrulama türü, oturum açma kimlik bilgileri ve hangi veritabanı görünümlerinin kullanıldığı hakkında bilgi toplamayı kolaylaştırmak için bir veya daha fazla iletişim kutusu sağlar.
--   Dış sistemler, hizmetler, raporlama, geliştirici araçları ve kurumsal üretkenlik araçları tarafından aşağı akış tüketimini kolaylaştırmak için sorgular SQL veritabanı görünümlerine karşı yazılır.
+-   Sorgular, dış sistemler, hizmetler, raporlama, geliştirici araçları ve kurumsal üretkenlik araçları tarafından aşağı akış tüketimini kolaylaştırmak için veritabanı görünümlerine karşı yazılır.
 
 ## <a name="storage-integration"></a>Depolama tümleştirmesi
 

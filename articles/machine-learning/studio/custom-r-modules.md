@@ -5,17 +5,17 @@ description: ML Studio (klasik) ' de özel R modüllerini nasıl yazıp dağıta
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 5fb628b1730f0811debf0ff8a6cd517b96f8ef53
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 90e654255691686225ddab3c294dcd62877d4622
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208440"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696414"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio için özel R modülleri tanımlama (klasik)
 
@@ -34,10 +34,10 @@ Bu konu başlığı altında, özel bir R Studio (klasik) yazmak ve dağıtmak a
 Ek yardımcı dosyalar, özel modülden erişilebilen işlevselliği sağlayan. zip dosyasına da dahil edilebilir. Bu seçenek, hızlı başlangıç örneğini takip eden **XML tanım dosyasındaki** başvuru bölümü öğelerinin **bağımsız değişkenler** bölümünde ele alınmıştır.
 
 ## <a name="quickstart-example-define-package-and-register-a-custom-r-module"></a>Hızlı başlangıç örneği: özel bir R modülünü tanımlama, paketleme ve kaydetme
-Bu örnek, özel bir R modülü tarafından istenen dosyaların nasıl oluşturulduğunu, bunları bir ZIP dosyasına paketlemeyi ve sonra modülü Machine Learning çalışma alanınıza kaydetmeyi gösterir. Örnek zip paketi ve örnek dosyalar [Download CustomAddRows. zip dosyasından](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409)indirilebilir.
+Bu örnek, özel bir R modülü tarafından istenen dosyaların nasıl oluşturulduğunu, bunları bir ZIP dosyasına paketlemeyi ve sonra modülü Machine Learning çalışma alanınıza kaydetmeyi gösterir. Örnek ZIP paketi ve örnek dosyalar [indirme CustomAddRows.zip dosyasından](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409)indirilebilir.
 
 ## <a name="the-source-file"></a>Kaynak dosya
-İki veri kümesinden (veri çerçevelerinden) satırları (gözlemleme) birleştirmek için kullanılan **satır ekle** modülünün standart uygulamasını değiştiren **özel bir satır ekle** modülünün örneğini düşünün. Standart **satır ekleme** modülü, ikinci giriş veri kümesinin satırlarını, `rbind` algoritmayı kullanarak ilk giriş veri kümesinin sonuna ekler. Benzer şekilde `CustomAddRows` , özelleştirilmiş işlev iki veri kümesini kabul eder, ancak ek bir giriş olarak Boole takas parametresini de kabul eder. Swap parametresi **false**olarak ayarlandıysa, standart uygulamayla aynı veri kümesini döndürür. Ancak Swap parametresi **true**ise, işlevi ilk giriş veri kümesinin satırlarını ikinci veri kümesinin sonuna ekler. `CustomAddRows` **Özel satır ekle** modülü tarafından kullanıma sunulan r işlevinin uygulamasını içeren CustomAddRows. r dosyası aşağıdaki R koduna sahiptir.
+İki veri kümesinden (veri çerçevelerinden) satırları (gözlemleme) birleştirmek için kullanılan **satır ekle** modülünün standart uygulamasını değiştiren **özel bir satır ekle** modülünün örneğini düşünün. Standart **satır ekleme** modülü, ikinci giriş veri kümesinin satırlarını, algoritmayı kullanarak ilk giriş veri kümesinin sonuna ekler `rbind` . `CustomAddRows`Benzer şekilde, özelleştirilmiş işlev iki veri kümesini kabul eder, ancak ek bir giriş olarak Boole takas parametresini de kabul eder. Swap parametresi **false**olarak ayarlandıysa, standart uygulamayla aynı veri kümesini döndürür. Ancak Swap parametresi **true**ise, işlevi ilk giriş veri kümesinin satırlarını ikinci veri kümesinin sonuna ekler. `CustomAddRows` **Özel satır ekle** modülü tarafından kullanıma sunulan r Işlevinin uygulamasını Içeren CustomAddRows. R dosyası aşağıdaki R koduna sahiptir.
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) 
     {
@@ -52,7 +52,7 @@ Bu örnek, özel bir R modülü tarafından istenen dosyaların nasıl oluşturu
     } 
 
 ### <a name="the-xml-definition-file"></a>XML tanım dosyası
-Bu `CustomAddRows` işlevi Azure Machine Learning Studio (klasik) modülü olarak göstermek Için, **özel satır ekleme** modülünün nasıl görünmesi ve davranması GEREKTIĞINI belirtmek üzere bir XML tanım dosyası oluşturulmalıdır. 
+Bu `CustomAddRows` işlevi Azure Machine Learning Studio (klasik) modülü olarak göstermek için, **özel satır ekleme** modülünün nasıl görünmesi ve davranması gerektiğini BELIRTMEK üzere bir XML tanım dosyası oluşturulmalıdır. 
 
     <!-- Defined a module using an R Script -->
     <Module name="Custom Add Rows">
@@ -92,7 +92,7 @@ XML dosyasındaki **giriş** ve **bağımsız değişken** öğelerinin **kimlik
 Buna karşılık, **output** öğesi için **ID** özniteliği R betiğindeki herhangi bir değişkene karşılık gelmiyor. Birden fazla çıktı gerektiğinde, **çıktılar** öğeleri xml dosyasında bildirildiği *sırada* , sonuçları ile R işlevinden bir liste döndürür.
 
 ### <a name="package-and-register-the-module"></a>Modülü paketleme ve kaydetme
-Bu iki dosyayı *CustomAddRows. R* ve *CustomAddRows. xml* olarak kaydedin ve iki dosyayı bir *CustomAddRows. zip* dosyasında birlikte zip halinde saklayın.
+Bu iki dosyayı *CustomAddRows. R* olarak kaydedin ve *CustomAddRows.xml* ve ardından iki dosyayı birlikte bir *CustomAddRows.zip* dosyasına ekleyin.
 
 Bunları Machine Learning çalışma alanınıza kaydetmek için, Azure Machine Learning Studio (klasik) ' de çalışma alanınıza gidin, en alttaki **+ Yeni** düğmesine tıklayın ve **ZIP paketinden modül->** ' yı seçerek yeni **özel satır ekleme** modülünü karşıya yükleyin.
 
@@ -176,7 +176,7 @@ Bir denemenize giriş olarak geçirilmedi isteğe bağlı **DataTable** bağlant
 
 Özel R modüllerindeki çıktılar için, **ID** özniteliğinin değeri R betiğindeki herhangi bir şeyle eşleşmelidir, ancak benzersiz olmalıdır. Tek modüllü bir çıktıda, R işlevinin dönüş değeri bir *Data. Frame*olmalıdır. Desteklenen bir veri türünde birden fazla nesnenin çıktısını almak için, uygun çıkış bağlantı noktalarının XML tanım dosyasında belirtilmesi gerekir ve nesneler liste olarak döndürülmelidir. Çıkış nesneleri soldan sağa çıkış bağlantı noktalarına atanır ve nesnelerin döndürülen listeye yerleştirildiği sırayı yansıtır.
 
-Örneğin, **özel satır ekle** modülünü, yeni birleştirilmiş veri kümesine, *veri kümesine*(sırayla, soldan sağa: *DataSet*, *dataSet1*, *DataSet2*) ek olarak, özgün iki veri kümesini, *dataSet1* ve *DataSet2*' ı çıkarmak üzere değiştirmek istiyorsanız, aşağıdaki gibi CustomAddRows. xml dosyasında çıkış bağlantı noktalarını tanımlayın:
+Örneğin, **özel satır ekle** modülünü, yeni birleştirilmiş veri kümesine, *veri kümesine*(bir sırada, soldan sağa: *veri kümesi*, *dataSet1*, *DataSet2*) ek olarak, *dataSet1* ve *DataSet2*gibi özgün iki veri kümesinin çıktısını almak için değiştirmek istiyorsanız, CustomAddRows.xml dosyasında çıkış bağlantı noktalarını aşağıdaki gibi tanımlayın:
 
     <Ports> 
         <Output id="dataset" name="Dataset Out" type="DataTable"> 
@@ -219,7 +219,7 @@ Ve bir listedeki nesne listesini ' CustomAddRows. R ' içinde doğru sırada dö
 * **Output** öğesinin **name** özniteliğinin değeri 64 karakterden daha uzun olmamalıdır.
 * **Output** öğesinin **Type** özniteliğinin değeri *görselleştirme*olmalıdır.
 
-### <a name="arguments"></a>Bağımsız Değişkenler
+### <a name="arguments"></a>Arguments
 Ek veriler, **arguments** öğesinde tanımlanan modül parametreleri aracılığıyla R işlevine geçirilebilir. Bu parametreler, modül seçildiğinde Machine Learning kullanıcı arabiriminin en sağdaki Özellikler bölmesinde görünür. Bağımsız değişkenler desteklenen türlerden herhangi biri olabilir veya gerektiğinde özel bir numaralandırma oluşturabilirsiniz. **Bağlantı noktaları** öğelerine benzer şekilde, **bağımsız değişkenler** öğeleri, fareyi parametre adının üzerine getirdiğinizde görüntülenen metni belirten isteğe bağlı bir **Description** öğesine sahip olabilir.
 Bir modül için defaultValue, minValue ve maxValue gibi isteğe bağlı özellikler bir **Özellikler** öğesine öznitelik olarak herhangi bir bağımsız değişkene eklenebilir. **Properties** öğesi için geçerli özellikler bağımsız değişken türüne bağlıdır ve sonraki bölümde desteklenen bağımsız değişken türleriyle açıklanır. **IsOptional** özelliği **"true"** olarak ayarlanan bağımsız değişkenler kullanıcının bir değer girmesini gerektirmez. Bağımsız değişkene bir değer sağlanmazsa, bağımsız değişken giriş noktası işlevine geçirilmez. İsteğe bağlı olarak, giriş noktası işlev tanımında NULL değeri atanmış olan giriş noktası işlevinin bağımsız değişkenleri. İsteğe bağlı bir bağımsız değişken, Kullanıcı tarafından bir değer sağlanmışsa, Örneğin Min veya Max gibi diğer bağımsız değişken kısıtlamalarını uygular.
 Giriş ve çıkışlarla birlikte, her parametrenin kendileriyle ilişkili benzersiz KIMLIK değerleri olması önemlidir. Hızlı başlangıç örneğimizde ilişkili kimlik/parametre *takas*edildi.
@@ -290,7 +290,7 @@ Modül parametresi, XML tanım dosyasının **arguments** bölümünün **arg** 
     * Tümü
   * **varsayılan** -sütun seçici için geçerli varsayılan seçimler şunları içerir: 
     
-    * Hiçbiri
+    * Yok
     * NumericFeature
     * NumericLabel
     * NumericScore
@@ -356,7 +356,7 @@ CustomAddRows işlevindeki RemoveDupNARows. R yardımcı dosyasını kaynak böl
         return (dataset)
     }
 
-Ardından, özel bir R modülü olarak ' CustomAddRows. R ', ' CustomAddRows. xml ' ve ' RemoveDupNARows. R ' içeren bir ZIP dosyası yükleyin.
+Ardından, özel bir R modülü olarak ' CustomAddRows. R ', ' CustomAddRows.xml ' ve ' RemoveDupNARows. R ' içeren bir ZIP dosyası yükleyin.
 
 ## <a name="execution-environment"></a>Yürütme ortamı
 R betiğinin yürütme ortamı r **betiği yürüt komut dosyası** modülüyle aynı r sürümünü kullanır ve aynı varsayılan paketleri kullanabilir. Özel modüle özel modül ZIP paketine dahil etmek için ek R paketleri de ekleyebilirsiniz. Bunları kendi R ortamınızda yaptığınız gibi R betiğe de yüklemeniz yeterlidir. 

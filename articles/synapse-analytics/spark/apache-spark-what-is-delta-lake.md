@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 52758eab645fa0bb89cb499a5c617df62c21279e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 244cdf5329e26fc7d928998b734a539f086051ad
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429206"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193388"
 ---
 # <a name="what-is-delta-lake"></a>Delta Gölü nedir?
 
@@ -22,7 +22,7 @@ Azure SYNAPSE Analytics, Linux Foundation Delta Gölü ile uyumludur. Delta Göl
 
 ## <a name="key-features"></a>Önemli özellikler
 
-| Özellik | Açıklama |
+| Özellik | Description |
 | --- | --- |
 | **ACID Işlemleri** | Veri Lakes genellikle birden çok işlem ve işlem hattı ile doldurulur ve bazıları okumalarla eşzamanlı olarak veri yazıyor. Delta Gölü ve işlemlerin eklenmesinden önce veri mühendislerinin, veri bütünlüğünü sağlamak için el ile hata eden bir işlemden geçmesi gerekiyordu. Delta Gölü, tanıdık ACID işlemlerini veri Lakes 'e getirir. En güçlü yalıtım düzeyi düzeyi olan serializyeteneği sağlar. [Delta Gölü 'da daha fazla bilgi edinin: Işlem günlüğü açılıyor](https://databricks.com/blog/2019/08/21/diving-into-delta-lake-unpacking-the-transaction-log.html).|
 | **Ölçeklenebilir meta veri Işleme** | Büyük verilerde bile meta verilerin kendisi "büyük veri" olabilir. Delta Gölü meta verileri, tüm meta verilerini işlemek için Spark 'ın dağıtılmış işleme gücünden yararlanarak verileri tıpkı verilerle değerlendirir. Sonuç olarak, Delta Gölü, milyarlarca bölüm ve dosya içeren petablarca ölçekli tabloları kolayca işleyebilir. |

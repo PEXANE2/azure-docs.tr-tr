@@ -8,11 +8,11 @@ ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
 ms.openlocfilehash: 2e63b2ca0ee7246009068e6a2875795a14aeddb3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240341"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695377"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Azure Izleyici ile Azure sanal makinesinden veri toplama
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta mevcut bir Azure sanal makinenizin olduğu varsayılma
 
 1. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
 
-    ![Azure portalı](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
+    ![Azure portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. **Oluştur**' u seçin ve sonra aşağıdaki öğeler için Seçenekler ' i seçin:
 
@@ -77,7 +77,7 @@ Azure Izleyici, daha uzun süreli analiz ve raporlama için belirttiğiniz Windo
 
 2. **Veri**’yi seçin ve ardından **Windows Olay Günlükleri**’ni seçin.
 
-3. Bir olay günlüğü eklemek için günlüğün adını yazın.  **System** yazın ve ardından artı işaretini **+** seçin.
+3. Bir olay günlüğü eklemek için günlüğün adını yazın.  **System** yazın ve ardından artı işaretini seçin **+** .
 
 4. Tabloda, **Hata** ve **Uyarı** önem derecelerini işaretleyin.
 
@@ -97,7 +97,7 @@ Azure Izleyici, daha uzun süreli analiz ve raporlama için belirttiğiniz Windo
 
 1. **Syslog**’u seçin.  
 
-2. Bir olay günlüğü eklemek için günlüğün adını yazın.  **Syslog** yazın ve ardından artı işaretini **+** seçin.  
+2. Bir olay günlüğü eklemek için günlüğün adını yazın.  **Syslog** yazın ve ardından artı işaretini seçin **+** .  
 
 3. Tabloda, önem derecesi **bilgileri**, **bildirim** ve **hata ayıklama**seçimlerini kaldırın. 
 
@@ -119,7 +119,7 @@ Veri toplamayı etkinleştirdiyseniz, şimdi hedef VM’lerden verileri görmek 
 
 1. Seçilen çalışma alanında, sol bölmedeki **Günlükler**' i seçin.
 
-2. Günlük sorgusu sayfasında, sorgu Düzenleyicisi ' `Perf` ni yazın ve **Çalıştır**' ı seçin.
+2. Günlük sorgusu sayfasında, sorgu Düzenleyicisi ' ni yazın `Perf` ve **Çalıştır**' ı seçin.
 
     ![Log Analytics günlük araması sorgu örneği](./media/quick-collect-windows-computer/log-analytics-portal-queryexample.png) 
 

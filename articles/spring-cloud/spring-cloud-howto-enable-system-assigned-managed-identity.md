@@ -1,17 +1,17 @@
 ---
-title: Azure yay bulut uygulaması için sistem tarafından atanan yönetilen kimliği etkinleştirme
+title: Azure Spring Cloud uygulaması için sistem tarafından atanan yönetilen kimliği etkinleştirme
 description: Uygulama için sistem tarafından atanan yönetilen kimliği etkinleştirme.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
-ms.openlocfilehash: 81df4364324b03bb624e051fd71b25f0d6cdb049
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: c9b9eaf7447d30dfbec6b04ff00010e0e2992c8e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172301"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254540"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Azure yay bulut uygulaması için sistem tarafından atanan yönetilen kimliği etkinleştirme
 Azure kaynakları için Yönetilen kimlikler, Azure Spring Cloud uygulamanız gibi bir Azure kaynağına Azure Active Directory otomatik olarak yönetilen bir kimlik sağlar. Bu kimliği, kodunuzda kimlik bilgileri olmadan Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanabilirsiniz.
@@ -53,11 +53,11 @@ az spring-cloud app identity assign -n app_name -s service_name -g resource_grou
 ```
 
 ## <a name="obtain-tokens-for-azure-resources"></a>Azure kaynakları için belirteçleri alma
-Bir uygulama, Azure Key Vault gibi Azure AD tarafından korunan diğer kaynaklara erişmek için belirteçleri almak üzere yönetilen kimliğini kullanabilir. Bu belirteçler, uygulamanın belirli bir kullanıcısı yerine kaynağa erişen uygulamayı temsil eder.
+Bir uygulama, Azure Key Vault gibi Azure Active Directory tarafından korunan diğer kaynaklara erişmek için belirteçleri almak üzere kendi yönetilen kimliğini kullanabilir. Bu belirteçler, uygulamanın belirli bir kullanıcısı yerine kaynağa erişen uygulamayı temsil eder.
 
 [Uygulamanızdaki erişime izin vermek için hedef kaynağı yapılandırmanız](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/howto-assign-access-portal)gerekebilir. Örneğin, Key Vault erişmek için bir belirteç istemeniz durumunda uygulamanızın kimliğini içeren bir erişim ilkesi eklediğinizden emin olun. Aksi takdirde, belirteci içerse bile Key Vault çağrılarınız reddedilir. Azure Active Directory belirteçlerini destekleyen kaynaklar hakkında daha fazla bilgi edinmek için bkz. [Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication).
 
-Azure Spring Cloud, Azure sanal makinesi ile belirteç alımı için aynı uç noktayı paylaşır. Bkz. [sanal makine belirtecini](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) çeşitli kod ve betik örnekleri için kullanma ve belirteç süre sonu ve HTTP hatalarını işleme gibi önemli konularda yönergeler.
+Azure Spring Cloud, Azure sanal makinesi ile belirteç alımı için aynı uç noktayı paylaşır. Belirteç almak için Java SDK 'sını veya Spring Boot başlangıçlarını kullanmanızı öneririz.  Bkz. [sanal makine belirtecini](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) çeşitli kod ve betik örnekleri için kullanma ve belirteç süre sonu ve HTTP hatalarını işleme gibi önemli konularda yönergeler.
 
 Önerilir: belirteçleri almak için Java SDK 'sını veya Spring Boot başlangıçlarını kullanın.  [Sonraki adımlarda](#next-steps)bulunan örneklere bakın.
 
@@ -82,3 +82,4 @@ az spring-cloud app identity remove -n app_name -s service_name -g resource_grou
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Java SDK ile yönetilen kimlikler kullanma](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
 * [Spring Boot Starter 'da yönetilen kimliklerle Azure Key Vault erişme](https://github.com/microsoft/azure-spring-boot/blob/master/azure-spring-boot-starters/azure-keyvault-secrets-spring-boot-starter/README.md#use-msi--managed-identities)
+* [Yönetilen Hizmet Kimliği ile App Service Key Vault kullanın](https://docs.microsoft.com/samples/azure-samples/app-service-msi-keyvault-dotnet/keyvault-msi-appservice-sample/)

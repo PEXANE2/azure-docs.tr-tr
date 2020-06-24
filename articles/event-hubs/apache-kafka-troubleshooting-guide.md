@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/01/2020
+ms.date: 06/23/2020
 ms.author: shvija
-ms.openlocfilehash: 12ddc5fa74b7a1b42bbd64fde9ec3410b1c1e425
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 588f01e84405cfa82afd84971dbcf06a958bf89d
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606736"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299373"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Event Hubs için sorun giderme kılavuzu Apache Kafka
 Bu makalede, Apache Kafka için Event Hubs kullanırken çalıştırabileceğiniz sorunlar için sorun giderme ipuçları sunulmaktadır. 
 
 ## <a name="server-busy-exception"></a>Sunucu meşgul özel durumu
-Kafka azaltma nedeniyle sunucu meşgul özel durumu alabilirsiniz. AMQP istemcileri sayesinde, Event Hubs hemen hizmet azaltmaya göre **sunucu meşgul** özel durumu döndürür. "Daha sonra yeniden dene" iletisiyle eşdeğerdir. Kafka ' de iletiler tamamlanmadan önce gecikiyor. Gecikme uzunluğu, üretim/getirme yanıtında milisaniye `throttle_time_ms` cinsinden döndürülür. Çoğu durumda, bu geciktirilen istekler Event Hubs panolar üzerinde sunucu meşgul özel durumları olarak günlüğe kaydedilmez. Bunun yerine, yanıtın `throttle_time_ms` değeri, üretilen işin sağlanan kotayı aştığı bir gösterge olarak kullanılmalıdır.
+Kafka azaltma nedeniyle sunucu meşgul özel durumu alabilirsiniz. AMQP istemcileri sayesinde, Event Hubs hemen hizmet azaltmaya göre **sunucu meşgul** özel durumu döndürür. "Daha sonra yeniden dene" iletisiyle eşdeğerdir. Kafka ' de iletiler tamamlanmadan önce gecikiyor. Gecikme uzunluğu, `throttle_time_ms` Üretim/getirme yanıtında milisaniye cinsinden döndürülür. Çoğu durumda, bu geciktirilen istekler Event Hubs panolar üzerinde sunucu meşgul özel durumları olarak günlüğe kaydedilmez. Bunun yerine, yanıtın `throttle_time_ms` değeri, üretilen işin sağlanan kotayı aştığı bir gösterge olarak kullanılmalıdır.
 
 Trafik aşırı ise, hizmet aşağıdaki davranışa sahiptir:
 
@@ -35,11 +35,11 @@ Trafik aşırı ise, hizmet aşağıdaki davranışa sahiptir:
 ## <a name="no-records-received"></a>Hiçbir kayıt alınmadı
 Tüketicileri hiçbir kayıt almaz ve sürekli yeniden dengelemeden karşılaşabilirsiniz. Bu senaryoda, tüketiciler hiçbir kayıt almaz ve sürekli yeniden dengeleyin. Bu durumda özel durum veya hata yoktur, ancak Kafka Günlükler tüketicilerinin gruba yeniden bağlanmaya ve bölüm atamaya çalışırken takıldığını gösterir. Olası birkaç neden vardır:
 
-- En azından 60000 ' `request.timeout.ms` un önerilen değeri olan ve en azından 30000 ' `session.timeout.ms` nin önerilen değeri olduğundan emin olun. Bu ayarların çok düşük olması, müşteri zaman aşımları oluşmasına neden olabilir. Bu, daha sonra yeniden dengelemeye neden olur (daha sonra daha fazla zaman aşımı oluşmasına neden olur ve bu da daha fazla zaman 
+- `request.timeout.ms`En azından 60000 ' un önerilen değeri olan ve `session.timeout.ms` en azından 30000 ' nin önerilen değeri olduğundan emin olun. Bu ayarların çok düşük olması, müşteri zaman aşımları oluşmasına neden olabilir. Bu, daha sonra yeniden dengelemeye neden olur (daha sonra daha fazla zaman aşımı oluşmasına neden olur ve bu da daha fazla zaman 
 - Yapılandırmanız önerilen değerlerle eşleşiyorsa ve yine de sabit yeniden dengeleme görmeye devam ediyorsanız, bir sorun açmaya (hata ayıklamaya yardımcı olabilmemiz için tüm yapılandırmanızı eklediğinizden emin olun)!
 
 ## <a name="compressionmessage-format-version-issue"></a>Sıkıştırma/Ileti biçimi sürüm sorunu
-Kafka sıkıştırmayı destekler ve şu anda Kafka için Event Hubs. Bir ileti biçimi sürümü (örneğin,) ile ilgili hatalar bir `The message format version on the broker does not support the request.`istemci, aracılarımıza sıkıştırılmış Kafka iletileri göndermeyi denediğinde oluşur.
+Kafka sıkıştırmayı destekler ve şu anda Kafka için Event Hubs. Bir ileti biçimi sürümü (örneğin,) ile ilgili hatalar `The message format version on the broker does not support the request.` bir istemci, aracılarımıza sıkıştırılmış Kafka iletileri göndermeyi denediğinde oluşur.
 
 Sıkıştırılmış veriler gerekliyse, aracılarla gönderilmeden önce verilerinizi sıkıştırmak ve aldıktan sonra dosyayı sıkıştırmak geçerli bir geçici çözüm olur. İleti gövdesi yalnızca hizmete yönelik bir bayt dizisidir, bu nedenle istemci tarafı sıkıştırma/açma herhangi bir soruna neden olmaz.
 
@@ -66,7 +66,7 @@ Event Hubs üzerinde Kafka kullanırken sorunlarla karşılaşırsanız aşağı
 ## <a name="limits"></a>Sınırlar
 Apache Kafka vs. Event Hubs Kafka. Çoğu bölüm için, Kafka ekosistemlerine yönelik Event Hubs aynı varsayılanlar, özellikler, hata kodları ve Apache Kafka olan genel davranışları vardır. Bu iki açıkça farklı olan örnekler (veya Event Hubs Kafka olmayan bir sınır uygular) aşağıda listelenmiştir:
 
-- `group.id` Özelliğin uzunluk üst sınırı 256 karakterdir
+- Özelliğin uzunluk üst sınırı `group.id` 256 karakterdir
 - En büyük boyut `offset.metadata.max.bytes` 1024 bayttır
 - En büyük iç günlük boyutu olan 1 MB 'a sahip bölüm başına 4 çağrı/saniye cinsinden fark yürütmeler kısıtlandı
 

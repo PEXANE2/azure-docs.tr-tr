@@ -4,15 +4,15 @@ description: Azure DNS, etki alanınızı barındırırken DNS kayıt kümelerin
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/6/2018
 ms.author: rohink
-ms.openlocfilehash: 4012b32eb2684126b8dc64b9e86bf35a016e9fba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 111d94db1cbec658daabfb1a4c38c8160d6f50b6
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76936834"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696840"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Azure portal kullanarak DNS kayıtlarını ve kayıt kümelerini yönetme
 
@@ -93,7 +93,7 @@ Otomatik olarak oluşturulan NS ve SOA kayıtları, diğer kayıt türlerinden f
 
 ### <a name="modify-soa-records"></a>SOA kayıtlarını değiştirme
 
-Tepesinde (Name = "\@") bölgesinde otomatik olarak oluşturulan SOA kayıt kümesine kayıt ekleyemez veya buradan kayıt kaldıramazsınız. Bununla birlikte, SOA kaydındaki parametrelerden herhangi birini ("ana bilgisayar" hariç) ve kayıt kümesi TTL 'sini de değiştirebilirsiniz.
+Tepesinde (Name = "") bölgesinde otomatik olarak oluşturulan SOA kayıt kümesine kayıt ekleyemez veya buradan kayıt kaldıramazsınız \@ . Bununla birlikte, SOA kaydındaki parametrelerden herhangi birini ("ana bilgisayar" hariç) ve kayıt kümesi TTL 'sini de değiştirebilirsiniz.
 
 ### <a name="modify-ns-records-at-the-zone-apex"></a>Tepesinde bölgesinde NS kayıtlarını değiştirme
 
@@ -105,7 +105,7 @@ Bunun yalnızca tepesinde bölgesindeki NS kayıt kümesi için geçerli olduğu
 
 ### <a name="delete-soa-or-ns-record-sets"></a>SOA veya NS kayıt kümelerini silme
 
-Bölge oluşturulduğunda otomatik olarak oluşturulan bölge tepesinde (Name = "\@") konumundaki SOA ve NS kayıt kümelerini silemezsiniz. Bölgeyi sildiğinizde otomatik olarak silinir.
+Bölge oluşturulduğunda otomatik olarak oluşturulan bölge tepesinde (Name = "") konumundaki SOA ve NS kayıt kümelerini silemezsiniz \@ . Bölgeyi sildiğinizde otomatik olarak silinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

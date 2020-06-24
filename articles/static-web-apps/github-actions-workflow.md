@@ -2,17 +2,17 @@
 title: Azure statik Web Apps için GitHub eylemleri iş akışları
 description: Azure statik Web Apps sürekli dağıtımı ayarlamak için GitHub depolarını nasıl kullanacağınızı öğrenin.
 services: static-web-apps
-author: christiannwamba
+author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.author: chnwamba
-ms.openlocfilehash: e2cc1e20c20c17742f2bea56f4e87e8678e4cc03
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.author: cshoe
+ms.openlocfilehash: 4d69bb69081643e0223c23a9029aabb35c8d22ef
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434020"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254727"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için GitHub eylemleri iş akışları
 
@@ -155,13 +155,13 @@ Dağıtım her zaman `npm install` özel bir komuttan önce çağırır.
 
 ## <a name="route-file-location"></a>Yol dosyası konumu
 
-İş akışını, deponuzdaki herhangi bir klasörde [yönlendirmeler. JSON](routes.md) aramak için özelleştirebilirsiniz. Aşağıdaki özellik bir iş bölümünün altında tanımlanabilir `with` .
+Deponuzdaki herhangi bir klasörde [routes.js](routes.md) aramak için iş akışını özelleştirebilirsiniz. Aşağıdaki özellik bir iş bölümünün altında tanımlanabilir `with` .
 
 | Özellik            | Açıklama |
 |---------------------|-------------|
-| `routes_location` | _Routes. JSON_ dosyasının bulunduğu dizin konumunu tanımlar. Bu konum, deponun köküne göredir. |
+| `routes_location` | Dosyadaki _routes.js_ bulunduğu dizin konumunu tanımlar. Bu konum, deponun köküne göredir. |
 
- _Yolların_ konumuyla ilgili olarak açık olması, ön uç Framework oluşturma adımlarınızın bu dosyayı varsayılan olarak içine taşımaması durumunda özellikle önemlidir `app_artifact_location` .
+ _routes.jsdosya üzerinde_ açık olması özellikle, ön uç Framework derleme adımınız bu dosyayı varsayılan olarak ' a taşımadığından önemlidir `app_artifact_location` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

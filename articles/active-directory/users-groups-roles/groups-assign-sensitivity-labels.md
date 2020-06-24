@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e4dabad5057fda39fe3753c810a85e6aeb55b3a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 32dad942cf79933b2c44d3bc2d23581ead1238d6
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582942"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732761"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) içinde Office 365 gruplarına duyarlılık etiketleri atama
 
@@ -104,7 +104,7 @@ Grubunuz oluşturulur ve seçili etiketle ilişkili site ve grup ayarları otoma
 
 ## <a name="using-classic-azure-ad-classifications"></a>Klasik Azure AD sınıflandırmalarını kullanma
 
-Bu özelliği etkinleştirdikten sonra, gruplar için "klasik" sınıflandırmalar yalnızca var olan gruplar ve siteler görünür ve yalnızca duyarlılık etiketlerini desteklemeyen uygulamalarda gruplar oluşturuyorsanız bu grupları yeni gruplar için kullanmanız gerekir. Yöneticiniz, gerekirse daha sonra duyarlık etiketlerine dönüştürebilir. Klasik sınıflandırmalar, Azure AD PowerShell 'de `ClassificationList` ayar için değerleri tanımlayarak ayarladığınız eski sınıflandırmalardır. Bu özellik etkinleştirildiğinde, bu sınıflandırmalar gruplara uygulanmaz.
+Bu özelliği etkinleştirdikten sonra, gruplar için "klasik" sınıflandırmalar yalnızca var olan gruplar ve siteler görünür ve yalnızca duyarlılık etiketlerini desteklemeyen uygulamalarda gruplar oluşturuyorsanız bu grupları yeni gruplar için kullanmanız gerekir. Yöneticiniz, gerekirse daha sonra duyarlık etiketlerine dönüştürebilir. Klasik sınıflandırmalar, `ClassificationList` Azure AD PowerShell 'de ayar için değerleri tanımlayarak ayarladığınız eski sınıflandırmalardır. Bu özellik etkinleştirildiğinde, bu sınıflandırmalar gruplara uygulanmaz.
 
 ## <a name="troubleshooting-issues"></a>Sorun giderme
 

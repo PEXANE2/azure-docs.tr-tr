@@ -7,20 +7,20 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: bdb510113a8d65ac04b54e77158f46d03cccd9de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: 73cd8083dc6853e36b05854ab2fd7c0226f99bd6
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72791917"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080081"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR Bilişsel Beceri
 
-**Optik karakter tanıma (OCR)** yeteneği, görüntü dosyalarında yazdırılmış ve el yazısı metinleri tanır. Bu beceri bilişsel hizmetler 'de [görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) tarafından sunulan makine öğrenimi modellerini kullanır. **OCR** becerisi aşağıdaki işlevlere eşlenir:
+**Optik karakter tanıma (OCR)** yeteneği, görüntü dosyalarında yazdırılmış ve el yazısı metinleri tanır. Bu beceri bilişsel hizmetler 'de [görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) API [v 3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) tarafından sunulan makine öğrenimi modellerini kullanır. **OCR** becerisi aşağıdaki işlevlere eşlenir:
 
-+ Ingilizce dışındaki diller için ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) API 'si kullanılır. 
-+ Ingilizce için yeni ["okuma"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API 'si kullanılır.
++ Ingilizce, Ispanyolca, Almanca, Fransızca, Italyanca, Portekizce ve Felemenkçe için yeni ["okuma"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API 'si kullanılır.
++ Diğer tüm diller için ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) API 'si kullanılır.
 
 **OCR** becerisi, resim dosyalarından metin ayıklar. Desteklenen dosya biçimleri şunlardır:
 
@@ -34,33 +34,33 @@ ms.locfileid: "72791917"
 > [!NOTE]
 > İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
 >
-> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
+> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)açıklanmaktadır.
 
 
 ## <a name="skill-parameters"></a>Yetenek parametreleri
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
-| Parametre adı     | Açıklama |
+| Parametre adı     | Description |
 |--------------------|-------------|
-| detectOrientation | Görüntü yönünün yeniden algılanmasına izin vermez. <br/> Geçerli değerler: true/false.|
-|defaultLanguageCode | <p>  Giriş metninin dil kodu. Desteklenen diller: <br/> zh-Hans (Çinesebasitleştirilmiş) <br/> zh-Hant (çon Setradi) <br/>CS (Çek) <br/>da (Danimarka) <br/>nl (Felemenkçe) <br/>En (Ingilizce) <br/>Fi (Fince)  <br/>fr (Fransızca) <br/>  de (Almanca) <br/>el (Yunanca) <br/> Hu (Macarca) <br/> BT (Italyanca) <br/>  Ja (Japonca) <br/> Ko (Korece) <br/> NB (Norveç) <br/>   pl (Lehçe) <br/> PT (Portekizce) <br/>  ru (Rusça) <br/>  es (Ispanyolca) <br/>  ZF (Isveççe) <br/>  tr (Türkçe) <br/> AR (Arapça) <br/> ro (Rumence) <br/> SR-Cyrl (SerbianCyrillic) <br/> sr-Latn (SerbianLatin) <br/>  SK (Slovakça). <br/>  UNK (bilinmiyor) <br/><br/> Dil kodu belirtilmemişse veya null ise, dil Ingilizce olarak ayarlanır. Dil açıkça "UNK" olarak ayarlandıysa dil otomatik olarak algılanır. </p> |
-|Satır sonu | Algılanan her satır arasında kullanılacak değer. Olası değerler: ' Space ', ' CarriageReturn ', ' LineFeed '.  Varsayılan değer ' Space ' |
+| `detectOrientation`   | Görüntü yönünün yeniden algılanmasına izin vermez. <br/> Geçerli değerler: true/false.|
+| `defaultLanguageCode` | <p>   Giriş metninin dil kodu. Desteklenen diller: <br/> zh-Hans (Çinesebasitleştirilmiş) <br/> zh-Hant (çon Setradi) <br/>CS (Çek) <br/>da (Danimarka) <br/>nl (Felemenkçe) <br/>En (Ingilizce) <br/>Fi (Fince)  <br/>fr (Fransızca) <br/>  de (Almanca) <br/>el (Yunanca) <br/> Hu (Macarca) <br/> BT (Italyanca) <br/>  Ja (Japonca) <br/> Ko (Korece) <br/> NB (Norveç) <br/>   pl (Lehçe) <br/> PT (Portekizce) <br/>  ru (Rusça) <br/>  es (Ispanyolca) <br/>  ZF (Isveççe) <br/>  tr (Türkçe) <br/> AR (Arapça) <br/> ro (Rumence) <br/> SR-Cyrl (SerbianCyrillic) <br/> sr-Latn (SerbianLatin) <br/>  SK (Slovakça) <br/>  UNK (bilinmiyor) <br/><br/> Dil kodu belirtilmemişse veya null ise, dil Ingilizce olarak ayarlanır. Dil açıkça "UNK" olarak ayarlandıysa dil otomatik olarak algılanır. </p> |
+| `lineEnding` | Algılanan her satır arasında kullanılacak değer. Olası değerler: "boşluk", "CarriageReturn", "LineFeed".  Varsayılan değer "Space" dır. |
 
 Daha önce, yeteneğin "yazdırılmış" veya "el ile" metin ayıklanıp ayıklanmayacağını belirtmek için "textExtractionAlgorithm" adlı bir parametre vardı.  Bu parametre kullanım dışıdır ve en son okuma API 'SI algoritması aynı anda her iki türden metni ayıklamada artık gerekli değildir.  Yetenek tanımınızda zaten bu parametre varsa, onu kaldırmanız gerekmez, ancak artık kullanılmayacak ve her iki tür metin de ne şekilde ayarlandığına bakılmaksızın ileri doğru şekilde ayıklanacaktır.
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Giriş adı      | Açıklama                                          |
+| Giriş adı      | Description                                          |
 |---------------|------------------------------------------------------|
-| image         | Karmaşık tür. Şu anda yalnızca, ' den ```imageAction``` ```none```farklı bir değere ayarlandığında Azure Blob Indexer tarafından oluşturulan "/Document/normalized_images" alanı ile birlikte çalışıyor. Daha fazla bilgi için [örneğe](#sample-output) bakın.|
+| `image`         | Karmaşık tür. Şu anda yalnızca, ' ```imageAction``` den farklı bir değere ayarlandığında Azure Blob Indexer tarafından oluşturulan "/Document/normalized_images" alanı ile birlikte çalışıyor ```none``` . Daha fazla bilgi için [örneğe](#sample-output) bakın.|
 
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
-| Çıkış adı     | Açıklama                   |
+| Çıkış adı     | Description                   |
 |---------------|-------------------------------|
-| metin          | Görüntüden ayıklanan düz metin.   |
-| layoutText    | Ayıklanan metni ve metnin bulunduğu konumu açıklayan karmaşık tür.|
+| `text`            | Görüntüden ayıklanan düz metin.   |
+| `layoutText`    | Ayıklanan metni ve metnin bulunduğu konumu açıklayan karmaşık tür.|
 
 
 ## <a name="sample-definition"></a>Örnek tanım
@@ -172,18 +172,22 @@ Aşağıdaki örnek beceri bir *merged_text* alanı oluşturur. Bu alan, belgeni
       "insertPostTag": " ",
       "inputs": [
         {
-          "name":"text", "source": "/document/content"
+          "name":"text",
+          "source": "/document/content"
         },
         {
-          "name": "itemsToInsert", "source": "/document/normalized_images/*/text"
+          "name": "itemsToInsert", 
+          "source": "/document/normalized_images/*/text"
         },
         {
-          "name":"offsets", "source": "/document/normalized_images/*/contentOffset"
+          "name":"offsets", 
+          "source": "/document/normalized_images/*/contentOffset"
         }
       ],
       "outputs": [
         {
-          "name": "mergedText", "targetName" : "merged_text"
+          "name": "mergedText", 
+          "targetName" : "merged_text"
         }
       ]
     }

@@ -3,25 +3,25 @@ title: Proxy Azure AD Uygulaması bağlantıları ve URL 'Leri çevirme | Micros
 description: Azure AD Uygulama Ara Sunucusu bağlayıcıları hakkında temel bilgileri içerir.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/15/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa0dc2081aff5a24fb830b756131cccd5c6ce810
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e8d6f97870699cea7f55abe42290acdc82c385e
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69533689"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764851"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile yayımlanan uygulamalar için sabit kodlanmış bağlantıları yeniden yönlendirme
 
@@ -75,7 +75,7 @@ Bağlantı çevirisi etkinleştirildiğinde, uygulama proxy hizmeti yayınlanmı
 
 Kimlik doğrulamasından sonra, proxy sunucusu uygulama verilerini kullanıcıya geçirdiğinde, uygulama proxy 'si uygulamayı sabit kodlanmış bağlantılar için tarar ve bunları ilgili, yayımlanan dış URL 'lerle değiştirir.
 
-Uygulama proxy 'Si, uygulamaların UTF-8 ile kodlandığını varsayar. Böyle bir durum söz konusu değilse, kodlama türünü bir http yanıt üst bilgisinde (gibi `Content-Type:text/html;charset=utf-8`) belirtin.
+Uygulama proxy 'Si, uygulamaların UTF-8 ile kodlandığını varsayar. Böyle bir durum söz konusu değilse, kodlama türünü bir http yanıt üst bilgisinde (gibi) belirtin `Content-Type:text/html;charset=utf-8` .
 
 ### <a name="which-links-are-affected"></a>Hangi bağlantılar etkileniyor?
 
@@ -83,8 +83,8 @@ Bağlantı çevirisi özelliği yalnızca bir uygulamanın gövdesinde kod etike
 
 Şirket içi uygulamalarda iki ortak iç bağlantı türü vardır:
 
-- Paylaşılan bir kaynağa, gibi `/claims/claims.html`yerel bir dosya yapısında Işaret eden **göreli iç bağlantılar** . Bu bağlantılar, uygulama proxy 'Si aracılığıyla yayımlanan uygulamalarda otomatik olarak çalışır ve bağlantı çevirisi ile veya bu olmadan çalışmaya devam eder. 
-- Gibi diğer şirket içi uygulamalara yönelik olarak **kodlanmış iç bağlantılar** `http://expenses` veya gibi `http://expenses/logo.jpg`yayımlanmış dosyalar. Bağlantı çevirisi özelliği, kodlanmış iç bağlantılar üzerinde çalışarak, uzak kullanıcıların gitmesi gereken dış URL 'lere işaret etmek üzere değişir.
+- Paylaşılan bir kaynağa, gibi yerel bir dosya yapısında işaret eden **göreli iç bağlantılar** `/claims/claims.html` . Bu bağlantılar, uygulama proxy 'Si aracılığıyla yayımlanan uygulamalarda otomatik olarak çalışır ve bağlantı çevirisi ile veya bu olmadan çalışmaya devam eder. 
+- Gibi diğer şirket içi uygulamalara yönelik olarak **kodlanmış iç bağlantılar** `http://expenses` veya gibi yayımlanmış dosyalar `http://expenses/logo.jpg` . Bağlantı çevirisi özelliği, kodlanmış iç bağlantılar üzerinde çalışarak, uzak kullanıcıların gitmesi gereken dış URL 'lere işaret etmek üzere değişir.
 
 Uygulama proxy 'Sinin, şunlar için bağlantı çevirisini desteklediği HTML kodu etiketlerinin tamamı listesi:
 * a
@@ -103,9 +103,9 @@ Uygulama proxy 'Sinin, şunlar için bağlantı çevirisini desteklediği HTML k
 * bağlantı
 * MenuItem
 * bulunduruyor
-* object
+* nesne
 * betiğini çalıştırın
-* source
+* kaynak
 * izle
 * video
 
@@ -137,7 +137,7 @@ Bu iki senaryonun birini desteklemeniz gerekiyorsa, bağlantı çevirisi yerine 
 Bağlantı çevirisi ile çalışmaya başlamak, bir düğmeye tıklanması kadar kolaydır:
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-2. **Azure Active Directory** > **Kurumsal uygulamalar** > **tüm uygulamalar** ' a gidin > > **uygulama proxy 'sini**yönetmek istediğiniz uygulamayı seçin.
+2. **Azure Active Directory**  >  **Kurumsal uygulamalar**  >  **tüm uygulamalar** ' a gidin > > **uygulama proxy 'sini**yönetmek istediğiniz uygulamayı seçin.
 3. **Uygulama gövdesindeki URL 'Leri** **Evet**olarak çevir seçeneğini açın.
 
    ![Uygulama gövdesinde URL 'Leri çevirmek için Evet ' i seçin](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)

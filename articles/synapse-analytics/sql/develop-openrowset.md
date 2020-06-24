@@ -5,16 +5,16 @@ services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9c2a2d7059e24b37b0f47d0b568a3929f296d8c6
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 2c5f65993909e142de6017b07591529cd7cb7b86
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560863"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200588"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OPENROWSET 'yi isteğe bağlı SQL ile kullanma (Önizleme)
 
@@ -49,7 +49,7 @@ Bu, önceden yapılandırma olmadan dosyaların içeriğini okumak için hızlı
     Bu seçenek, veri kaynağındaki depolama hesabının konumunu yapılandırmanıza ve depolamaya erişmek için kullanılması gereken kimlik doğrulama yöntemini belirtmenize olanak sağlar. 
     
     > [!IMPORTANT]
-    > `OPENROWSET`olmadan `DATA_SOURCE` , depolama dosyalarına erişmek için hızlı ve kolay bir yol sağlar, ancak sınırlı kimlik doğrulama seçenekleri sunar. Örnek olarak, Azure AD sorumlusu yalnızca [Azure AD kimliklerini](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) kullanarak dosyalara erişebilir ve genel kullanıma açık dosyalara erişemez. Daha güçlü kimlik doğrulama seçeneklerine ihtiyacınız varsa, `DATA_SOURCE` seçeneğini kullanın ve depolama alanına erişmek için kullanmak istediğiniz kimlik bilgisini tanımlayın.
+    > `OPENROWSET`olmadan `DATA_SOURCE` , depolama dosyalarına erişmek için hızlı ve kolay bir yol sağlar, ancak sınırlı kimlik doğrulama seçenekleri sunar. Örnek olarak, Azure AD sorumluları yalnızca [Azure AD kimliklerini](develop-storage-files-storage-access-control.md?tabs=user-identity) veya genel kullanıma açık dosyaları kullanarak dosyalara erişebilir. Daha güçlü kimlik doğrulama seçeneklerine ihtiyacınız varsa, `DATA_SOURCE` seçeneğini kullanın ve depolama alanına erişmek için kullanmak istediğiniz kimlik bilgisini tanımlayın.
 
 
 ## <a name="security"></a>Güvenlik
@@ -60,7 +60,8 @@ Depolama Yöneticisi ayrıca, bir kullanıcının geçerli SAS belirteci sağlay
 
 `OPENROWSET`depolama alanının kimliğini nasıl doğrulayacağınızı öğrenmek için aşağıdaki kuralları kullanın:
 - `OPENROWSET` `DATA_SOURCE` Kimlik doğrulama mekanizması içinde, arayan türüne bağlıdır.
-  - Azure depolama, Azure AD Kullanıcı 'nın temel dosyalara erişmesine izin veriyorsa (örneğin, arayan, depolama üzerinde depolama okuyucusu iznine sahipse) ve SYNAPSE SQL hizmetinde [Azure AD PASSTHROUGH kimlik doğrulamasını etkinleştirirseniz](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through) , Azure AD oturum açmaları yalnızca kendı [Azure AD kimliklerini](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) kullanarak dosyalara erişebilir.
+  - Herhangi bir Kullanıcı, `OPENROWSET` `DATA_SOURCE` Azure depolama 'da genel kullanıma açık dosyaları okumak zorunda kalmadan kullanabilir.
+  - Azure depolama, Azure AD kullanıcısının temel dosyalara erişmesine izin veriyorsa (örneğin, çağıranın Azure Storage üzerinde izni varsa) Azure AD oturum açmaları, korunan dosyalara kendi [Azure AD kimliklerini](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) kullanarak erişebilirler `Storage Reader` .
   - SQL oturumları `OPENROWSET` `DATA_SOURCE` , genel kullanıma açık dosyalara erişmek için olmadan da KULLANABILIR, SAS belirteci kullanılarak korunan dosyalar veya SYNAPSE çalışma alanının yönetilen kimliği. Depolama dosyalarına erişim izni vermek için [sunucu kapsamlı kimlik bilgileri oluşturmanız](develop-storage-files-storage-access-control.md#examples) gerekir. 
 - İçindeki `OPENROWSET` `DATA_SOURCE` kimlik doğrulama mekanizması, başvurulan veri kaynağına atanan veritabanı kapsamlı kimlik bilgileri içinde tanımlanmıştır. Bu seçenek, genel olarak kullanılabilir depolamaya erişmenizi veya SAS belirtecini, çalışma alanının yönetilen kimliğini veya [arayanın Azure AD kimliğini](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) (arayan Azure AD sorumlusu ise) kullanarak depolamaya erişmenizi sağlar. `DATA_SOURCE`Ortak olmayan Azure Storage 'a başvuruyorsa, depolama dosyalarına erişime izin vermek için, [veritabanı kapsamlı kimlik bilgileri oluşturmanız](develop-storage-files-storage-access-control.md#examples) ve içinde başvurulmasına gerek duyarsınız `DATA SOURCE` .
 
@@ -132,7 +133,7 @@ Bir klasör olarak unstructured_data_path belirtirseniz, bir SQL isteğe bağlı
 > [!NOTE]
 > Hadoop ve PolyBase 'in aksine, SQL isteğe bağlı alt klasörler döndürmez. Ayrıca, Hadoop ve PolyBase 'den farklı olarak, SQL isteğe bağlı, dosya adının altı çizili (_) veya nokta (.) ile başladığı dosyaları döndürür.
 
-Aşağıdaki örnekte, unstructured_data_path = ise `https://mystorageaccount.dfs.core.windows.net/webdata/` , BIR SQL isteğe bağlı sorgusu, mydata. txt ve _Hidden. txt ' den satırları döndürür. Bir alt klasörde bulunduğundan mydata2. txt ve mydata3. txt döndürmez.
+Aşağıdaki örnekte, unstructured_data_path = ise `https://mystorageaccount.dfs.core.windows.net/webdata/` , BIR SQL isteğe bağlı sorgusu, mydata.txt ve _hidden.txt satırları döndürür. Bir alt klasörde bulunduğundan mydata2.txt ve mydata3.txt döndürmez.
 
 ![Dış tablolar için özyinelemeli veriler](./media/develop-openrowset/folder-traversal.png)
 
@@ -177,7 +178,7 @@ ESCAPE_CHAR = ' Char '
 
 Dosyanın kendisini ve dosyadaki tüm sınırlayıcı değerlerini kaçış için kullanılan karakteri belirtir. Kaçış karakterinin kendisi dışında bir değer veya sınırlayıcı değerlerinden herhangi biri gelmesi durumunda, değer okunurken kaçış karakteri bırakılır. 
 
-ESCAPE_CHAR parametresi, FIELDQUOTE 'un etkin olup olmamasından bağımsız olarak uygulanır. Tırnak işareti karakterini atlamak için kullanılmaz. Tırnak işareti karakteri, Excel CSV davranışına göre hizalamayla birlikte çift tırnak işareti karakteriyle sonuçlanır.
+ESCAPE_CHAR parametresi, FIELDQUOTE 'un etkin olup olmamasından bağımsız olarak uygulanır. Tırnak işareti karakterini atlamak için kullanılmaz. Tırnak işareti karakteri başka bir tırnak işareti karakteriyle atlanmalıdır. Tırnak içine alma karakteri sütun değeri içinde, yalnızca değer tırnak içine alma karakterleriyle kapsüllense görünebilir.
 
 FIRSTROW = ' first_row ' 
 
@@ -238,10 +239,6 @@ FROM
     ) AS [r]
 ```
 
-Dosyaların listelenmediğinden ilgili bir hata alıyorsanız, SYNAPSE SQL isteğe bağlı olarak genel depolamaya erişimi etkinleştirmeniz gerekir:
-- SQL oturumu kullanıyorsanız, [genel depolamaya erişime izin veren sunucu kapsamlı kimlik bilgileri oluşturmanız](develop-storage-files-storage-access-control.md#examples)gerekir.
-- Genel depolamaya erişmek için bir Azure AD sorumlusu kullanıyorsanız, genel depolamaya erişime izin veren ve [Azure AD PASSTHROUGH kimlik doğrulamasını](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)devre dışı bırakan [sunucu kapsamlı kimlik bilgileri oluşturmanız](develop-storage-files-storage-access-control.md#examples) gerekir.
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla örnek için bkz. [CSV](query-single-csv-file.md), [Parquet](query-parquet-files.md)ve [JSON](query-json-files.md) dosya biçimlerini okumak için ' OPENROWSET ' i nasıl kullanacağınızı öğrenmek için [Query Data Storage hızlı](query-data-storage.md) başlangıcı. Ayrıca, [Cetas](develop-tables-cetas.md)kullanarak sorgunuzun sonuçlarını Azure depolama 'ya kaydetmeyi de öğrenebilirsiniz.
+Daha fazla örnek için bkz [query data storage quickstart](query-data-storage.md) `OPENROWSET` . [CSV](query-single-csv-file.md), [Parquet](query-parquet-files.md)ve [JSON](query-json-files.md) dosya biçimlerini okumak için nasıl kullanacağınızı öğrenmek için Query Data Storage hızlı başlangıcı. Ayrıca, [Cetas](develop-tables-cetas.md)kullanarak sorgunuzun sonuçlarını Azure depolama 'ya kaydetmeyi de öğrenebilirsiniz.

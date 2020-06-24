@@ -9,36 +9,23 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 05/11/2020
+ms.date: 06/22/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: be78681ba01cf98f087331a5a9a6c7974f3b1122
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 5415237a502116b597c1514f75f35203108237ec
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560261"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299084"
 ---
-# <a name="secure-your-machine-learning-lifecycles-with-private-virtual-networks"></a>Özel sanal ağlarla makine öğrenimi yaşam döngülerinizi güvenceye alın
+# <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Özel sanal ağlarla eğitim sırasında ağ yalıtımı & çıkarım
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, bir Azure sanal ağı (VNet) içinde Azure Machine Learning deneme/eğitim işlerini ve çıkarım/Puanlama işlerini nasıl ayıracağınızı öğreneceksiniz. Ayrıca, bazı *Gelişmiş güvenlik ayarları*, temel veya Deneysel kullanım durumları için gerekli olmayan bilgiler hakkında bilgi edineceksiniz.
-
-> [!WARNING]
-> Temeldeki depolama alanı bir sanal ağda ise, kullanıcılar aşağıdakiler de dahil olmak üzere Azure Machine Learning Studio web deneyimini kullanamayacak:
-> - sürükleyin-n-Bırak Tasarımcısı
-> - Otomatik makine öğrenimi için Kullanıcı arabirimi
-> - Veri etiketleme için Kullanıcı arabirimi
-> - Veri kümeleri için Kullanıcı arabirimi
-> - Notebooks
-> 
-> Denerseniz, aşağıdakine benzer bir ileti alırsınız:`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
-
-## <a name="what-is-a-vnet"></a>VNET nedir?
+Bu makalede, bir Azure sanal ağı (VNet) içinde Azure Machine Learning eğitim ve çıkarım işlerini yalıtarak makine öğrenimi yaşam döngülerini nasıl sağlayacağınızı öğreneceksiniz. Azure Machine Learning, modelleri eğitmek ve dağıtmak için [işlem hedefleri](concept-compute-target.md)olarak da bilinen işlem kaynakları Için diğer Azure hizmetlerini kullanır. Hedefler bir sanal ağ içinde oluşturulabilir. Örneğin, bir modeli eğitme ve sonra modeli Azure Kubernetes Service (AKS) ' e dağıtmak için Azure Machine Learning işlem kullanabilirsiniz. 
 
 Bir **sanal ağ** , Azure kaynaklarınızı genel İnternet 'ten yalıtmak için bir güvenlik sınırı görevi görür. Ayrıca, bir Azure sanal ağını şirket içi ağınıza da katabilirsiniz. Ağları birleştirerek, modellerinizi güvenli bir şekilde eğitebilir ve çıkarım için dağıtılan modellerinize erişebilirsiniz.
 
-Azure Machine Learning, modelleri eğitmek ve dağıtmak için [işlem hedefleri](concept-compute-target.md)olarak da bilinen işlem kaynakları Için diğer Azure hizmetlerini kullanır. Hedefler bir sanal ağ içinde oluşturulabilir. Örneğin, bir modeli eğitme ve sonra modeli Azure Kubernetes Service (AKS) ' e dağıtmak için Azure Machine Learning işlem kullanabilirsiniz. 
-
+**Temeldeki depolama alanı bir sanal ağda ise, kullanıcılar**sürükle-bırak Tasarımcısı veya otomatik makine öğrenimi, veri etiketleme ve veri kümeleri veya tümleşik Not defterleri dahil Azure Machine Learning Studio web deneyimini kullanamaz.  Denerseniz, aşağıdakine benzer bir ileti alırsınız:`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -77,7 +64,7 @@ Ayrıca, özel bir uç nokta kullanarak çalışma alanınıza bağlanmak için 
 
 <a id="amlcompute"></a>
 
-## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>İşlem kümeleri & örnekleri
+## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>İşlem kümeleri & örnekleri 
 
 Bir sanal ağda [yönetilen Azure Machine Learning **işlem hedefi** ](concept-compute-target.md#azure-machine-learning-compute-managed) veya [Azure Machine Learning işlem **örneği** ](concept-compute-instance.md) kullanmak için aşağıdaki ağ gereksinimlerinin karşılanması gerekir:
 
@@ -102,7 +89,9 @@ Bir sanal ağda [yönetilen Azure Machine Learning **işlem hedefi** ](concept-c
 
 ### <a name="required-ports"></a><a id="mlcports"></a>Gerekli bağlantı noktaları
 
-Machine Learning İşlem şu anda, belirtilen sanal ağda VM 'Leri sağlamak için Azure Batch hizmetini kullanıyor. Alt ağ, Batch hizmetinden gelen iletişime izin vermelidir. Bu iletişimi, Machine Learning İşlem düğümlerinde çalıştırma zamanlamak ve Azure depolama ile diğer kaynaklarla iletişim kurmak için kullanırsınız. Batch hizmeti, sanal makinelere bağlı ağ arabirimi (NIC) düzeyinde ağ güvenlik grupları (NSG 'Ler) ekler. Bu NSG'ler şu trafiğe izin vermek için gelen ve giden bağlantı kurallarını otomatik olarak yapılandırır:
+Ağ trafiğini genel İnternet ile kısıtlayarak sanal ağın güvenliğini sağlamayı planlıyorsanız Azure Batch hizmetinden gelen iletişimlere izin vermeniz gerekir.
+
+Batch hizmeti, sanal makinelere bağlı ağ arabirimi (NIC) düzeyinde ağ güvenlik grupları (NSG 'Ler) ekler. Bu NSG'ler şu trafiğe izin vermek için gelen ve giden bağlantı kurallarını otomatik olarak yapılandırır:
 
 - __Batchnodemanagement__ __hizmet etiketinden__ 29876 ve 29877 bağlantı noktalarında gelen TCP trafiği.
 
@@ -116,9 +105,10 @@ Machine Learning İşlem şu anda, belirtilen sanal ağda VM 'Leri sağlamak iç
 
 - 44224 numaralı bağlantı noktasında işlem örneği gelen TCP trafiği için __AzureMachineLearning__bir __hizmet etiketinden__ .
 
-Batch tarafından yapılandırılmış olan NSG'lerdeki gelen veya giden kurallarını değiştirirken veya yenilerini eklerken dikkatli olun. Bir NSG, işlem düğümleriyle iletişimi engelliyorsa, işlem hizmeti işlem düğümlerinin durumunu kullanılamıyor olarak ayarlar.
-
-Azure Batch hizmeti kendi NSG 'leri yapılandırdığından alt ağ düzeyinde NSG 'leri belirtmeniz gerekmez. Bununla birlikte, belirtilen alt ağda ilişkili NSG 'ler veya güvenlik duvarı varsa, gelen ve giden güvenlik kurallarını daha önce belirtilen şekilde yapılandırın.
+> [!IMPORTANT]
+> Batch tarafından yapılandırılmış olan NSG'lerdeki gelen veya giden kurallarını değiştirirken veya yenilerini eklerken dikkatli olun. Bir NSG, işlem düğümleriyle iletişimi engelliyorsa, işlem hizmeti işlem düğümlerinin durumunu kullanılamıyor olarak ayarlar.
+>
+> Azure Batch hizmeti kendi NSG 'leri yapılandırdığından alt ağ düzeyinde NSG 'leri belirtmeniz gerekmez. Ancak, Azure Machine Learning işlem içeren alt ağda ilişkili NSG 'ler veya güvenlik duvarı varsa, daha önce listelenen trafiğe de izin vermeniz gerekir.
 
 Azure portal NSG kural yapılandırması aşağıdaki görüntülerde gösterilmektedir:
 
@@ -435,6 +425,9 @@ AKS ile iç yük dengeleyiciyi kullanma hakkında daha fazla bilgi için bkz. [A
 ## <a name="use-azure-container-instances-aci"></a>Azure Container Instances kullanın (ACI)
 
 Azure Container Instances, bir model dağıtıldığında dinamik olarak oluşturulur. Azure Machine Learning sanal ağ içinde ACI oluşturmak üzere etkinleştirmek için, dağıtım tarafından kullanılan alt ağ için __alt ağ temsilcisini__ etkinleştirmeniz gerekir.
+
+> [!WARNING]
+> Sanal ağ içinde Azure Container Instances kullanmak için, çalışma alanınızın Azure Container Registry (ACR) Sanal ağda de olamaz.
 
 Çalışma alanınıza bir sanal ağda ACI 'yi kullanmak için aşağıdaki adımları kullanın:
 

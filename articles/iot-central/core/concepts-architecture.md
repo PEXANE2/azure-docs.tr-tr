@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 12ad231d81b6c134ebb8d4902b3f95c978e9622d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271648"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695343"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central mimarisi
 
@@ -108,7 +108,7 @@ IoT Hub hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Hub](https://do
 
 Azure IoT Central cihaz bağlantısı hakkında daha fazla bilgi için bkz. [cihaz bağlantısı](concepts-get-connected.md).
 
-## <a name="data-stores"></a>Veri depoları
+## <a name="data-stores"></a>Veri depolama alanları
 
 Azure IoT Central, uygulama verilerini bulutta depolar. Depolanan uygulama verileri şunları içerir:
 

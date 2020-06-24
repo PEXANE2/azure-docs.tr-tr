@@ -7,15 +7,15 @@ manager: danielgi
 ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/23/2020
 ms.author: sohamnc
-ms.openlocfilehash: f4693cdac2d5d3a57987cc692797756314ded11e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a2522eba17574246ab99a0d47a42f128d5f61ace
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747309"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888647"
 ---
 # <a name="azure-cdn-http-raw-logs"></a>HTTP ham günlüklerini Azure CDN
 Ham Günlükler, denetim ve sorun giderme için önemli olan işlemler ve hatalar hakkında zengin bilgiler sağlar. Ham Günlükler etkinlik günlüklerinden farklıdır. Etkinlik günlükleri, Azure kaynakları üzerinde gerçekleştirilen işlemlere görünürlük sağlar. Ham Günlükler, kaynağınızın bir işlem kaydını sağlar.
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Microsoft profilinden Azure CDN ham günlüklerini yapılandırmak için: 
 
-1. Azure Portal menüsünde **tüm kaynaklar**  >>  ** \< -CDN-profile>**' i seçin.
+1. Azure portal menüsünde **tüm kaynaklar**' ı seçin  >>  **\<your-CDN-profile>** .
 
 2. **İzleme**altında **Tanılama ayarları**' nı seçin.
 

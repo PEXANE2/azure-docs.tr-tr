@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) ' de küme güvenliğini ve yükselt
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 305d4c15aaf72a47549497902e3027064fbfd608
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 72808f315f28a996a88e6cc56ae232a136726451
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208100"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298030"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde küme güvenliği ve yükseltmeleri için en iyi uygulamalar
 
@@ -48,7 +48,7 @@ Azure AD tümleştirmesi ve RBAC hakkında daha fazla bilgi için bkz. [AKS 'de 
 
 Kapsayıcının gerçekleştirebileceği eylemlere erişimi **en iyi yöntem kılavuzlarından** sınırlayın. En az sayıda izin sağlayın ve kök/ayrıcalıklı yükseltme kullanmaktan kaçının.
 
-Kullanıcılara veya gruplara gereken en az ayrıcalık sayısını vermeniz gerektiği gibi, kapsayıcılar de yalnızca ihtiyaç duydukları eylemlerle ve işlemlerle sınırlandırılmalıdır. Saldırı riskini en aza indirmek için, ilerletilen ayrıcalıklar veya kök erişim gerektiren uygulamaları ve kapsayıcıları yapılandırmayın. Örneğin, Pod bildiriminde `allowPrivilegeEscalation: false` ayarlayın. Bu *Pod güvenlik bağlamları* , Kubernetes 'te yerleşiktir ve çalıştırılacak Kullanıcı veya grup gibi ek izinler tanımlamanızı veya kullanıma sunulacak Linux özelliklerini tanımlamanızı sağlar. Daha iyi uygulamalar için bkz. [kaynaklara güvenli Pod erişimi][pod-security-contexts].
+Kullanıcılara veya gruplara gereken en az ayrıcalık sayısını vermeniz gerektiği gibi, kapsayıcılar de yalnızca ihtiyaç duydukları eylemlerle ve işlemlerle sınırlandırılmalıdır. Saldırı riskini en aza indirmek için, ilerletilen ayrıcalıklar veya kök erişim gerektiren uygulamaları ve kapsayıcıları yapılandırmayın. Örneğin, `allowPrivilegeEscalation: false` Pod bildiriminde ayarlayın. Bu *Pod güvenlik bağlamları* , Kubernetes 'te yerleşiktir ve çalıştırılacak Kullanıcı veya grup gibi ek izinler tanımlamanızı veya kullanıma sunulacak Linux özelliklerini tanımlamanızı sağlar. Daha iyi uygulamalar için bkz. [kaynaklara güvenli Pod erişimi][pod-security-contexts].
 
 Kapsayıcı eylemlerinin daha ayrıntılı denetimi için *AppArmor* ve *Seccomp*gibi yerleşik Linux güvenlik özelliklerini de kullanabilirsiniz. Bu özellikler düğüm düzeyinde tanımlanmıştır ve sonra Pod bildirimi aracılığıyla uygulanır. Yerleşik Linux güvenlik özellikleri yalnızca Linux düğümlerinde ve yığınların üzerinde kullanılabilir.
 
@@ -57,7 +57,7 @@ Kapsayıcı eylemlerinin daha ayrıntılı denetimi için *AppArmor* ve *Seccomp
 
 ### <a name="app-armor"></a>Uygulama koruma sağlamak
 
-Kapsayıcıların gerçekleştirebileceği eylemleri sınırlandırmak için [AppArmor][k8s-apparmor] Linux çekirdek güvenlik modülünü kullanabilirsiniz. AppArmor, temel alınan AKS düğüm işletim sisteminin bir parçası olarak kullanılabilir ve varsayılan olarak etkindir. Okuma, yazma veya yürütme gibi eylemleri kısıtlayan AppArmor profilleri veya filesystems bağlama gibi sistem işlevleri oluşturabilirsiniz. Varsayılan AppArmor profilleri, çeşitli `/proc` ve `/sys` konumlarına erişimi kısıtlar ve temel alınan düğümden kapsayıcıları mantıksal olarak yalıtmak için bir yol sağlar. AppArmor, yalnızca Kubernetes pods değil, Linux üzerinde çalışan tüm uygulamalar için çalışır.
+Kapsayıcıların gerçekleştirebileceği eylemleri sınırlandırmak için [AppArmor][k8s-apparmor] Linux çekirdek güvenlik modülünü kullanabilirsiniz. AppArmor, temel alınan AKS düğüm işletim sisteminin bir parçası olarak kullanılabilir ve varsayılan olarak etkindir. Okuma, yazma veya yürütme gibi eylemleri kısıtlayan AppArmor profilleri veya filesystems bağlama gibi sistem işlevleri oluşturabilirsiniz. Varsayılan AppArmor profilleri `/proc` , çeşitli ve konumlarına erişimi kısıtlar `/sys` ve temel alınan düğümden kapsayıcıları mantıksal olarak yalıtmak için bir yol sağlar. AppArmor, yalnızca Kubernetes pods değil, Linux üzerinde çalışan tüm uygulamalar için çalışır.
 
 ![Bir AKS kümesinde kullanılan AppArmor profilleri kapsayıcı eylemlerini sınırlandırmaya](media/operator-best-practices-container-security/apparmor.png)
 
@@ -74,7 +74,7 @@ profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
 }
 ```
 
-AppArmor profilleri `apparmor_parser` komutu kullanılarak eklenir. Profili AppArmor öğesine ekleyin ve önceki adımda oluşturulan profilin adını belirtin:
+AppArmor profilleri komutu kullanılarak eklenir `apparmor_parser` . Profili AppArmor öğesine ekleyin ve önceki adımda oluşturulan profilin adını belirtin:
 
 ```console
 sudo apparmor_parser deny-write.profile
@@ -82,7 +82,7 @@ sudo apparmor_parser deny-write.profile
 
 Profil doğru ayrıştırılırsa ve AppArmor 'e uygulanırsa hiçbir çıkış döndürülmedi. Komut istemine döndürülürsünüz.
 
-Şimdi, yerel makinenizden *aks-AppArmor. YAML* adlı bir pod bildirimi oluşturun ve aşağıdaki içeriği yapıştırın. Bu bildirim, önceki adımlarda oluşturulan `container.apparmor.security.beta.kubernetes` *reddetme-yazma* profiline başvuru Ekle için bir ek açıklama tanımlar:
+Şimdi, yerel makinenizden *aks-AppArmor. YAML* adlı bir pod bildirimi oluşturun ve aşağıdaki içeriği yapıştırın. Bu bildirim, `container.apparmor.security.beta.kubernetes` önceki adımlarda oluşturulan *reddetme-yazma* profiline başvuru Ekle için bir ek açıklama tanımlar:
 
 ```yaml
 apiVersion: v1
@@ -133,7 +133,7 @@ Seccomp eylemini görmek için, bir dosyada izinleri değiştirmeyi önleyen bir
 }
 ```
 
-Şimdi, yerel makinenizden *aks-seccomp. YAML* adlı bir pod bildirimi oluşturun ve aşağıdaki içeriği yapıştırın. Bu bildirim, için `seccomp.security.alpha.kubernetes.io` bir ek açıklama tanımlar ve önceki adımda oluşturulan *Önle-chmod* filtresine başvurur:
+Şimdi, yerel makinenizden *aks-seccomp. YAML* adlı bir pod bildirimi oluşturun ve aşağıdaki içeriği yapıştırın. Bu bildirim, için bir ek açıklama tanımlar `seccomp.security.alpha.kubernetes.io` ve önceki adımda oluşturulan *Önle-chmod* filtresine başvurur:
 
 ```yaml
 apiVersion: v1
@@ -160,7 +160,7 @@ spec:
 kubectl apply -f ./aks-seccomp.yaml
 ```
 
-[Kubectl Get Pod][kubectl-get] komutunu kullanarak Pod 'nin durumunu görüntüleyin. Pod bir hata bildiriyor. Aşağıdaki `chmod` örnek çıktıda gösterildiği gibi komutun seccomp filtresi tarafından çalışması engellenir:
+[Kubectl Get Pod][kubectl-get] komutunu kullanarak Pod 'nin durumunu görüntüleyin. Pod bir hata bildiriyor. `chmod`Aşağıdaki örnek çıktıda gösterildiği gibi komutun seccomp filtresi tarafından çalışması engellenir:
 
 ```
 $ kubectl get pods
@@ -173,7 +173,7 @@ Kullanılabilir filtreler hakkında daha fazla bilgi için bkz. [Docker Için Se
 
 ## <a name="regularly-update-to-the-latest-version-of-kubernetes"></a>En son Kubernetes sürümüne düzenli olarak güncelleştir
 
-**En iyi Yöntem Kılavuzu** -yeni özellikler ve hata düzeltmeleri üzerinde güncel kalmak için aks kümenizdeki Kubernetes sürümüne düzenli olarak yükseltin.
+**En iyi Yöntem Kılavuzu** -yeni özellikler ve hata düzeltmeleri üzerinde güncel kalmak için aks kümenizdeki Kubernetes sürümünü düzenli olarak yükseltin.
 
 Kubernetes, daha geleneksel altyapı platformlarından daha hızlı bir şekilde yeni özellikler yayımlar. Kubernetes güncelleştirmeleri yeni özellikler ve hata veya güvenlik düzeltmelerini içerir. Yeni özellikler tipik olarak bir *Alfa* ve ardından *Beta* durumunu *kararlı* hale gelmeden önce ve üretim kullanımı için kullanılması önerilen bir şekilde taşır. Bu yayın döngüsünün, Kubernetes 'i düzenli olarak bozmadan veya dağıtımlarınızı ve şablonlarınızı ayarlamadan güncelleştirmenize izin vermeniz gerekir.
 
@@ -195,15 +195,15 @@ AKS 'teki yükseltmeler hakkında daha fazla bilgi için bkz. [aks 'de desteklen
 
 ## <a name="process-linux-node-updates-and-reboots-using-kured"></a>Linux düğüm güncelleştirmelerini işleme ve kured kullanarak yeniden başlatmalar
 
-**En iyi Yöntem Kılavuzu** -aks her bir Linux düğümünde güvenlik düzeltmelerini otomatik olarak indirir ve yükler, ancak gerektiğinde otomatik olarak yeniden başlatılır. Bekleyen `kured` yeniden başlatmalar için izlemek üzere öğesini kullanın, ardından düğümün yeniden başlatılmasını sağlamak için düğümü güvenle kapatıp boşaltın, güncelleştirmeleri uygulayın ve işletim sistemine göre mümkün olduğunca güvenli hale getirin. Windows Server düğümleri için düzenli olarak bir AKS yükseltme işlemi gerçekleştirip, büyük/dışarı boşaltma ve güncelleştirilmiş düğümleri dağıtma işlemleri yapılır.
+**En iyi Yöntem Kılavuzu** -aks her bir Linux düğümünde güvenlik düzeltmelerini otomatik olarak indirir ve yükler, ancak gerektiğinde otomatik olarak yeniden başlatılır. `kured`Bekleyen yeniden başlatmalar için izlemek üzere öğesini kullanın, ardından düğümün yeniden başlatılmasını sağlamak için düğümü güvenle kapatıp boşaltın, güncelleştirmeleri uygulayın ve işletim sistemine göre mümkün olduğunca güvenli hale getirin. Windows Server düğümleri için düzenli olarak bir AKS yükseltme işlemi gerçekleştirip, büyük/dışarı boşaltma ve güncelleştirilmiş düğümleri dağıtma işlemleri yapılır.
 
 AKS içindeki her akşam Linux düğümü, kendi sahip oldukları güncelleştirme kanalıyla sunulan güvenlik düzeltme eklerini alır. Bu davranış, düğümler bir AKS kümesinde dağıtıldığında otomatik olarak yapılandırılır. Çalışma yüklerini çalıştırmaya yönelik kesintiyi ve olası etkiyi en aza indirmek için, bir güvenlik düzeltme eki veya çekirdek güncelleştirmesi gerektiriyorsa düğümler otomatik olarak yeniden başlatılır.
 
-Açık kaynaklı [kured (KUbernetes önyükleme cini)][kured] projesi, bekleyen düğüm yeniden başlatmaları için izler. Bir Linux düğümü, yeniden başlatma gerektiren güncelleştirmeler uygularsa, düğüm, kümedeki diğer düğümlerde bulunan düğümleri taşımak ve zamanlamak için güvenli bir şekilde donmış ve taşınabilir. Düğüm yeniden başlatıldıktan sonra, kümeye geri eklenir ve Kubernetes bu, üzerinde yer alan zamanlamaya devam eder. Kesintiyi en aza indirmek için, tek seferde yalnızca bir düğümün tarafından `kured`yeniden başlatılması izin verilir.
+Açık kaynaklı [kured (KUbernetes önyükleme cini)][kured] projesi, bekleyen düğüm yeniden başlatmaları için izler. Bir Linux düğümü, yeniden başlatma gerektiren güncelleştirmeler uygularsa, düğüm, kümedeki diğer düğümlerde bulunan düğümleri taşımak ve zamanlamak için güvenli bir şekilde donmış ve taşınabilir. Düğüm yeniden başlatıldıktan sonra, kümeye geri eklenir ve Kubernetes bu, üzerinde yer alan zamanlamaya devam eder. Kesintiyi en aza indirmek için, tek seferde yalnızca bir düğümün tarafından yeniden başlatılması izin verilir `kured` .
 
 ![Kured kullanarak AKS düğümü yeniden başlatma işlemi](media/operator-best-practices-cluster-security/node-reboot-process.png)
 
-Yeniden başlatmalar gerçekleştiğinde daha hassas bir denetim istiyorsanız, devam eden `kured` başka bakım olayları veya küme sorunları varsa, yeniden başlatmaları engellemek Için Prometheus ile tümleştirilebilir. Bu tümleştirme, diğer sorunları etkin bir şekilde giderirken düğümleri yeniden başlatarak ek karmaşıklıkları en aza indirir.
+Yeniden başlatmalar gerçekleştiğinde daha hassas bir denetim istiyorsanız, `kured` devam eden başka bakım olayları veya küme sorunları varsa, yeniden başlatmaları engellemek Için Prometheus ile tümleştirilebilir. Bu tümleştirme, diğer sorunları etkin bir şekilde giderirken düğümleri yeniden başlatarak ek karmaşıklıkları en aza indirir.
 
 Düğüm yeniden başlatmaların nasıl işleneceği hakkında daha fazla bilgi için bkz. [AKS 'deki düğümlere güvenlik ve çekirdek güncelleştirmelerini uygulama][aks-kured].
 

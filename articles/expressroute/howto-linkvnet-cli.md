@@ -4,15 +4,15 @@ description: Bu makalede, Kaynak Yöneticisi dağıtım modeli ve CLı kullanara
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: fdd809bcba703dbd8f9ee1e7c18185fd20e4586f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 133a586612f8a5b864c84400ece63d9ba6ccb150
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476143"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84729251"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>CLı kullanarak bir ExpressRoute devresine sanal ağ bağlama
 
@@ -36,7 +36,7 @@ Bu makale, CLı kullanarak sanal ağları (VNet) Azure ExpressRoute devrelerine 
   * [ExpressRoute](howto-circuit-cli.md) bağlantı hattı oluşturmak için yönergeleri izleyin ve bağlantı sağlayıcınız tarafından devre dışı bırakıldı. 
   * Devreniz için Azure özel eşlemesi 'nin yapılandırıldığından emin olun. Yönlendirme yönergeleri için [yönlendirmeyi yapılandırma](howto-routing-cli.md) makalesine bakın. 
   * Azure özel eşlemesinin yapılandırıldığından emin olun. Uçtan uca bağlantıyı etkinleştirebilmeniz için ağınız ve Microsoft arasındaki BGP eşlemesi olmalıdır.
-  * Oluşturulmuş ve tam olarak sağlanmış bir sanal ağa ve sanal ağ geçidine sahip olduğunuzdan emin olun. [ExpressRoute için sanal ağ geçidi yapılandırma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)yönergelerini izleyin. ' İ kullandığınızdan emin `--gateway-type ExpressRoute`olun.
+  * Oluşturulmuş ve tam olarak sağlanmış bir sanal ağa ve sanal ağ geçidine sahip olduğunuzdan emin olun. [ExpressRoute için sanal ağ geçidi yapılandırma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)yönergelerini izleyin. ' İ kullandığınızdan emin olun `--gateway-type ExpressRoute` .
 
 * 10 adede kadar sanal ağı standart bir ExpressRoute devresine bağlayabilirsiniz. Standart bir ExpressRoute bağlantı hattı kullanılırken tüm sanal ağların aynı geopolitik bölgede olması gerekir. 
 

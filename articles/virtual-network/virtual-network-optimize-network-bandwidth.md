@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: be5f38bdeaf51dbe23006ecf30b4deb66aa7402a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86785ada1d5b55a1eaa7c81243dd0b6c39087e1c
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75690898"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695972"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Azure sanal makineleri için ağ aktarım hızını iyileştirme
 
@@ -29,7 +29,7 @@ Azure sanal makineleri (VM), ağ işleme için daha iyi iyileştirilen varsayıl
 
 Windows VM 'niz [hızlandırılmış ağı](create-vm-accelerated-networking-powershell.md)destekliyorsa, bu özelliği etkinleştirmek üretilen iş için en uygun yapılandırma olacaktır. Diğer tüm Windows VM 'Leri için, Alma Tarafı Ölçeklendirmesi (RSS) kullanımı, RSS olmayan bir VM 'den daha yüksek olan en fazla verimlilik elde edebilir. RSS, bir Windows VM 'de varsayılan olarak devre dışı bırakılabilir. RSS 'nin etkinleştirilip etkinleştirilmediğini ve şu anda devre dışı bırakılmışsa bu seçeneği etkinleştirip etkinleştirmediğini anlamak için aşağıdaki adımları izleyin:
 
-1. `Get-NetAdapterRss` PowerShell komutuyla bir ağ BAĞDAŞTıRıCıSı için RSS 'nin etkinleştirilip etkinleştirilmediğini inceleyin. `Get-NetAdapterRss`' Dan döndürülen aşağıdaki örnek çıktıda RSS etkin değildir.
+1. PowerShell komutuyla bir ağ bağdaştırıcısı için RSS 'nin etkinleştirilip etkinleştirilmediğini inceleyin `Get-NetAdapterRss` . ' Dan döndürülen aşağıdaki örnek çıktıda `Get-NetAdapterRss` RSS etkin değildir.
 
     ```powershell
     Name                    : Ethernet
@@ -42,7 +42,7 @@ Windows VM 'niz [hızlandırılmış ağı](create-vm-accelerated-networking-pow
     Get-NetAdapter | % {Enable-NetAdapterRss -Name $_.Name}
     ```
     Önceki komutun çıktısı yok. Komut, NIC ayarlarını değiştirdi ve yaklaşık bir dakika boyunca geçici bağlantı kaybına neden olur. Bağlantı kaybı sırasında yeniden bağlama iletişim kutusu görüntülenir. Bağlantı genellikle üçüncü girişimden sonra geri yüklenir.
-3. `Get-NetAdapterRss` Komutu tekrar gırerek, VM 'de RSS 'nin etkinleştirildiğini doğrulayın. Başarılı olursa aşağıdaki örnek çıktı döndürülür:
+3. Komutu tekrar girerek, VM 'de RSS 'nin etkinleştirildiğini doğrulayın `Get-NetAdapterRss` . Başarılı olursa aşağıdaki örnek çıktı döndürülür:
 
     ```powershell
     Name                    : Ethernet

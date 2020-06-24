@@ -3,8 +3,7 @@ title: 'Hızlı başlangıç: C-Azure Event Hubs kullanarak olay gönderme'
 description: 'Hızlı başlangıç: Bu makale, Azure Event Hubs olayları gönderen bir C uygulaması oluşturmaya yönelik bir yol sağlar.'
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
@@ -13,14 +12,15 @@ ms.tgt_pltfrm: c
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 11/05/2019
-ms.author: shvija
-ms.openlocfilehash: 5bd4bb66b7e3c3ec37724f8684105befbc9132ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: 6bb4e6d754c091b57399a6154d491e93becad57e
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73720667"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299322"
 ---
 # <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>Hızlı başlangıç: C kullanarak Azure Event Hubs olayları gönderme
 

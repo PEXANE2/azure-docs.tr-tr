@@ -3,7 +3,7 @@ title: Kullanılabilirlik ve tutarlılık-Azure Event Hubs | Microsoft Docs
 description: Bölümler kullanılarak Azure Event Hubs maksimum kullanılabilirlik ve tutarlılık sağlama.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: spelluru
 editor: ''
 ms.assetid: 8f3637a1-bbd7-481e-be49-b3adf9510ba1
 ms.service: event-hubs
@@ -11,14 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2020
-ms.author: shvija
-ms.openlocfilehash: 0546adb6131479a8f5d2e7e31819483200586839
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: 8b60576eeaadb439cbeb0fb1fd5a189905390894
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80397331"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299356"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Event Hubs’da kullanılabilirlik ve tutarlılık
 
@@ -49,7 +50,7 @@ Yeni bir **[Eventhubclient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient
 En uzun süre gerektiren kullanım örnekleri için bu model tercih edilir.
 
 ## <a name="consistency"></a>Tutarlılık
-Bazı senaryolarda, olayların sıralaması önemli olabilir. Örneğin, arka uç sisteminizin silme komutundan önce bir update komutunu işlemesini isteyebilirsiniz. Bu örnekte, bir olayda bölüm anahtarını ayarlayabilir veya yalnızca belirli bir bölüme olayları göndermek için bir `PartitionSender` nesne (eski Microsoft. Azure. Messaging kitaplığını kullanıyorsanız) kullanabilirsiniz. Bunun yapılması, bu olaylar bölümden okunduklarında, bunların sırayla okunmasını sağlar. **Azure. Messaging. EventHubs** kitaplığını kullanıyorsanız ve daha fazla bilgi için bkz. [olayları bir bölüme yayımlamak için Partitionsender 'Dan EventHubProducerClient 'ye geçirme](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition).
+Bazı senaryolarda, olayların sıralaması önemli olabilir. Örneğin, arka uç sisteminizin silme komutundan önce bir update komutunu işlemesini isteyebilirsiniz. Bu örnekte, bir olayda bölüm anahtarını ayarlayabilir veya `PartitionSender` yalnızca belirli bir bölüme olayları göndermek için bir nesne (eski Microsoft. Azure. Messaging kitaplığını kullanıyorsanız) kullanabilirsiniz. Bunun yapılması, bu olaylar bölümden okunduklarında, bunların sırayla okunmasını sağlar. **Azure. Messaging. EventHubs** kitaplığını kullanıyorsanız ve daha fazla bilgi için bkz. [olayları bir bölüme yayımlamak için Partitionsender 'Dan EventHubProducerClient 'ye geçirme](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition).
 
 #### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure. Messaging. EventHubs (5.0.0 veya üzeri)](#tab/latest)
 

@@ -6,14 +6,14 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: cde5992355d274410bb43b1e3e60fbba1afe4e44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d29fef42fb875c6ed55ac1d879b9c398490e1700
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676365"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298829"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Event Hubs kaynaklarına erişimin kimliğini doğrulama
 Paylaşılan erişim imzası (SAS), paylaşılan erişim imzasına sahip istemcilere verdiğiniz erişim türü üzerinde ayrıntılı denetim sağlar. SAS içinde ayarlayabileceğiniz bazı denetimler aşağıda verilmiştir: 
@@ -63,13 +63,13 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 Belirteç, karma değeri aynı parametrelerle yeniden hesaplanabilmesi, böylece veren 'in geçerli bir imzalama anahtarına sahip olduğu doğrulanıyor.
 
-Kaynak URI 'SI, erişimin talep aldığı Service Bus kaynağın tam URI 'sidir. <namespace>Örneğin, http://.<entityPath> ServiceBus.Windows.NET/veya `sb://<namespace>.servicebus.windows.net/<entityPath>;` olan. `http://contoso.servicebus.windows.net/eventhubs/eh1`
+Kaynak URI 'SI, erişimin talep aldığı Service Bus kaynağın tam URI 'sidir. Örneğin, http:// <namespace> . ServiceBus.Windows.net/ <entityPath> veya `sb://<namespace>.servicebus.windows.net/<entityPath>;` olan `http://contoso.servicebus.windows.net/eventhubs/eh1` .
 
 URI yüzde kodlamalı olmalıdır.
 
-İmzalama için kullanılan paylaşılan erişim yetkilendirme kuralı, bu URI tarafından belirtilen varlıkta veya hiyerarşik üst öğelerinden biri ile yapılandırılmış olmalıdır. Örneğin, `http://contoso.servicebus.windows.net/eventhubs/eh1` veya `http://contoso.servicebus.windows.net` önceki örnekte.
+İmzalama için kullanılan paylaşılan erişim yetkilendirme kuralı, bu URI tarafından belirtilen varlıkta veya hiyerarşik üst öğelerinden biri ile yapılandırılmış olmalıdır. Örneğin, `http://contoso.servicebus.windows.net/eventhubs/eh1` veya `http://contoso.servicebus.windows.net` Önceki örnekte.
 
-Bir SAS belirteci, imza dizesinde <resourceURI> kullanılan ön ekli tüm kaynaklar için geçerlidir.
+Bir SAS belirteci, imza dizesinde kullanılan ön ekli tüm kaynaklar için geçerlidir <resourceURI> .
 
 > [!NOTE]
 > Paylaşılan erişim ilkesini kullanarak Event Hubs için bir erişim belirteci oluşturabilirsiniz. Daha fazla bilgi için bkz. [paylaşılan erişim yetkilendirme ilkesi](authorize-access-shared-access-signature.md#shared-access-authorization-policies).

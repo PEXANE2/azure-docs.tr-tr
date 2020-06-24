@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 8e44ce594375deeac47f037515d96c57d15c8359
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8b09c71e9ad55528788f97fb986606f21e8b0ec
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398397"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84769802"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama
 
@@ -58,21 +58,26 @@ Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları 
 
 1. Bilgileri inceledikten sonra saldırıya uğrayan bir kaynağa tıklayın.
 
+    Güvenlik Uyarısı sayfasının sol bölmesi, güvenlik uyarısıyla ilgili üst düzey bilgileri gösterir: Başlık, önem derecesi, durum, etkinlik süresi, şüpheli etkinliğin açıklaması ve etkilenen kaynak. Etkilenen kaynağın yanı sıra kaynakla ilgili Azure etiketlerdir. Uyarıyı araştırırken kaynağın kuruluş bağlamını anlamak için bunları kullanın.
+
+    Sağ bölmede, sorunu araştırmanıza yardımcı olmak üzere uyarının daha ayrıntılı ayrıntılarını içeren **Uyarı ayrıntıları** sekmesi bulunur: IP adresleri, dosyalar, süreçler ve daha fazlası.
+     
     ![Güvenlik uyarıları hakkında ne yapacaklarıyla ilgili öneriler](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
 
-    **Genel bilgiler** bölümü, güvenlik uyarısının tetiklendiği konusunda bir öngörü sunabilir. Hedef kaynak, kaynak IP adresi (varsa), uyarı hala etkinse ve nasıl düzeltileceğine ilişkin öneriler gibi bilgileri görüntüler.  
+    Sağ bölmedeki **eylem al** sekmesi de bulunur. güvenlik uyarısıyla ilgili daha fazla eylem gerçekleştirmek için bu sekmeyi kullanın. Şöyle eylemler:
+    - *Tehdidi azaltma* -bu güvenlik uyarısı için el ile düzeltme adımları sağlar
+    - *Gelecekteki saldırıları önleme* -saldırı yüzeyini azaltmaya, güvenlik duruşunu artırmaya ve bu nedenle gelecekteki saldırıları önlemeye yardımcı olmak için güvenlik önerileri sağlar
+    - *Otomatik yanıtı Tetikle* -bu güvenlik uyarısı için bir mantıksal uygulamayı bir yanıt olarak tetikleme seçeneği sağlar
+    - *Benzer Uyarıları Gizle* -uyarı kuruluşunuza uygun değilse, benzer özelliklerle gelecekteki uyarıları gösterme seçeneği sağlar
 
-    > [!NOTE]
-    >Bazı örneklerde, kaynak IP adresi kullanılamaz, bazı Windows güvenlik olayları günlükleri IP adresini içermez.
+    ![Eylem al sekmesi](./media/security-center-managing-and-responding-alerts/alert-take-action.png)
 
-1. Güvenlik Merkezi tarafından önerilen düzeltme adımları, güvenlik uyarısına göre farklılık gösterir. Bunları her uyarı için izleyin. 
 
-    Bazı durumlarda, bir güvenlik uyarısını azaltmak için, önerilen düzeltmeyi uygulamak üzere diğer Azure denetimlerini veya hizmetlerini kullanmanız gerekebilir. 
+
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-Bu belgede, Güvenlik Merkezi'nde güvenlik ilkelerinin nasıl yapılandırılacağını öğrendiniz. Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
+Bu belgede, güvenlik uyarılarını görüntülemeyi öğrendiniz. İlgili malzemeler için aşağıdaki sayfalara bakın:
 
-- [Tehditleri izlemek ve yanıtlamak için Azure Güvenlik Merkezi 'nin uyarı yeteneklerini kullanma hakkında Microsoft Learn modülü](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
-* [Azure Güvenlik Merkezi 'Nde güvenlik uyarıları](security-center-alerts-overview.md).
-* [Güvenlik olaylarını işleme](security-center-incident.md)
+- [Uyarı gizleme kurallarını yapılandırma](alerts-suppression-rules.md)
+- [İş akışı otomasyonu ile uyarı ve önerilerin yanıtlarını otomatikleştirin](workflow-automation.md)

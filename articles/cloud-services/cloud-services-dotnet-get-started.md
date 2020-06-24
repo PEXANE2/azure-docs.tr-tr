@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: dcaa87b8bf37cc0410c052b82014209327d5fe99
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 71020453f51e5baa9172ad8902eeb537dd55763b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310657"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255237"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services ve ASP.NET kullanmaya başlama
 
@@ -42,7 +42,7 @@ Bu öğreticide bir Azure bulut hizmetinde hem ön ucun hem de arka ucun nasıl 
 * Dosyaları karşıya yükleme ve Azure Blob hizmetine depolama.
 * Katmanlar arasında iletişim için Azure Queue hizmetini kullanma.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Öğretici *web rolü* ve *çalışan rolü* terminolojisi gibi [Azure bulut hizmetleri hakkında temel kavramları](cloud-services-choose-me.md) anladığınızı varsayar.  Ayrıca Visual Studio’da [ASP.NET MVC](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) veya [Web Forms](https://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) projeleri ile nasıl çalışılacağını bildiğinizi varsayar. Örnek uygulama MVC kullanır, ancak öğreticinin büyük bölümü Web Forms için de geçerlidir.
 
 Uygulamayı bir Azure aboneliği olmadan yerel olarak çalıştırabilirsiniz, ancak uygulamayı buluta dağıtmak için bir abonelik gerekecektir. Bir hesabınız yoksa, [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) veya [ücretsiz deneme için kaydolabilirsiniz.](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668)
@@ -104,9 +104,9 @@ Aşağıdaki bölümde çözümü bulutta çalışan kuyruklar, blob’lar ve uy
 Uygulamayı bulutta çalıştırmak için aşağıdaki adımları gerçekleştirin:
 
 * Bir Azure bulut hizmeti oluşturun.
-* Bir Azure SQL veritabanı oluşturun.
+* Azure SQL veritabanında bir veritabanı oluşturun.
 * Bir Azure Storage hesabı oluşturun.
-* Çözümünüzü Azure’da çalıştığında Azure SQL veritabanınızı kullanacak şekilde yapılandırın.
+* Çözümü, Azure 'da çalışırken veritabanınızı kullanacak şekilde yapılandırın.
 * Çözümünüzü Azure’da çalıştığında Azure Storage hesabınızı kullanacak şekilde yapılandırın.
 * Projeyi Azure bulut hizmetinize dağıtın.
 
@@ -124,13 +124,13 @@ Azure bulut hizmeti, uygulamanın çalıştırılacağı ortamıdır.
 5. Uygulamayı dağıtmak istediğiniz bölgeyi seçin.
 
     Bu alan, bulut hizmetinizin hangi veri merkezinde barındırılacağını belirtir. Bir üretim uygulaması için müşterilerinize en yakın bölgeyi seçmeniz gerekir. Bu öğretici için size en yakın bölgeyi seçin.
-5. **Oluştur**' a tıklayın.
+5. **Oluştur**'a tıklayın.
 
     Aşağıdaki görüntüde bulut hizmeti CSvccontosoads.cloudapp.net URL’si ile oluşturulur.
 
     ![Yeni Bulut Hizmeti](./media/cloud-services-dotnet-get-started/newcs.png)
 
-### <a name="create-an-azure-sql-database"></a>Bir Azure SQL veritabanı oluşturma
+### <a name="create-a-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda veritabanı oluşturma
 Uygulama bulutta çalıştırıldığında bulut tabanlı bir veritabanı kullanır.
 
 1. [Azure portalı](https://portal.azure.com)’nda **Kaynak oluştur > Veritabanları > SQL Veritabanı**’na tıklayın.
@@ -153,7 +153,7 @@ Uygulama bulutta çalıştırıldığında bulut tabanlı bir veritabanı kullan
 9. Yeni sunucu için **Seçin**’e tıklayın.
 
     ![Yeni sunucu](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. **Oluştur**' a tıklayın.
+10. **Oluştur**'a tıklayın.
 
 ### <a name="create-an-azure-storage-account"></a>Azure Storage hesabı oluşturma
 Azure Storage hesabı kuyruk ve blob verilerini buluta depolamaya yönelik kaynaklar sağlar.
@@ -176,14 +176,15 @@ Gerçek bir uygulamada genellikle uygulama verilerine karşı günlük verileri 
     Bulut hizmeti ve depolama hesabı farklı veri merkezlerinde (farklı bölgelerde) olduğunda gecikme artar ve veri merkezinin dışındaki bant genişliği için sizden ücret alınır. Bir veri merkezi içinde bant genişliği ücretsizdir.
 
     Azure benzeşim grupları bir veri merkezinde bulunan kaynaklar arasındaki uzaklığı en aza indirmeye yönelik bir mekanizma sağlar. Bu öğretici benzeşim gruplarını kullanmaz. Daha fazla bilgi için bkz. [Azure’da Benzeşim Grubu Oluşturma](/previous-versions/azure/reference/gg715317(v=azure.100)).
-7. **Oluştur**' a tıklayın.
+7. **Oluştur**'a tıklayın.
 
     ![Yeni depolama hesabı](./media/cloud-services-dotnet-get-started/newstorage.png)
 
     Görüntüde `csvccontosoads.core.windows.net` URL’si ile bir depolama hesabı oluşturulmuştur.
 
-### <a name="configure-the-solution-to-use-your-azure-sql-database-when-it-runs-in-azure"></a>Çözümünüzü Azure’da çalıştığında Azure SQL veritabanınızı kullanacak şekilde yapılandırma
-Web projesi ve çalışan rolü projelerinin her biri kendi veritabanı bağlantı dizesine sahiptir ve uygulama Azure'da çalıştırıldığında her birinin Azure SQL veritabanına işaret etmesi gerekir.
+### <a name="configure-the-solution-to-use-your-database-in-azure-sql-database-when-it-runs-in-azure"></a>Azure 'da çalıştığında Azure SQL veritabanı 'nda veritabanınızı kullanmak için çözümü yapılandırma
+
+Web projesi ve çalışan rolü projesinin her biri kendi veritabanı bağlantı dizesine sahiptir ve uygulama Azure 'da çalıştığında Azure SQL veritabanı 'nda veritabanına işaret etmek gerekir.
 
 Web rolü için bir [Web.config dönüşümü](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) ve çalışan rolü için bir bulut hizmet ortamı ayarı kullanacaksınız.
 
@@ -774,5 +775,5 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
 * [Azure Cloud Services Bölüm 1: Giriş](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [ Cloud Services nasıl yönetilir](cloud-services-how-to-manage-portal.md)
-* [Azure Storage](https://docs.microsoft.com/azure/storage/)
+* [Azure Depolama](https://docs.microsoft.com/azure/storage/)
 * [Bulut hizmeti sağlayıcısı seçme](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

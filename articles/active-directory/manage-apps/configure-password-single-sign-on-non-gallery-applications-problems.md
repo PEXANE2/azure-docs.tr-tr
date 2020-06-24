@@ -3,24 +3,24 @@ title: Galeri olmayan uygulamalar için parola SSO yapılandırma sorunları
 description: Azure AD uygulama galerisinde olmayan özel uygulamalar için parola çoklu oturum açma (SSO) yapılandırdığınızda oluşan yaygın sorunlar.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed8bafe7f5bc28cf37205107f8ab6dd5cdb4907c
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 9620a6ad584f20a0956e6a29c89609d79832f4d2
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74274142"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763457"
 ---
 # <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Galeri dışı bir uygulama için parola çoklu oturum açmayı yapılandırma sorunları
 
@@ -96,7 +96,7 @@ El ile oturum açma alanı yakalamayı kullanarak bir uygulama için parola taba
 
 9. Kullanıcıların oturum açmak için Kullanıcı adını ve parolasını girmesi gereken sayfa olan **oturum açma URL 'sini**girin. *SAĞLADıĞıNıZ URL 'nin sayfada oturum açma alanlarının göründüğünden emin olun*.
 
-10. ** * &lt;AppName&gt; * parolasını tek oturum açma ayarlarını yapılandır '** ı seçin.
+10. ** * &lt; Appname &gt; * parolasını tek oturum açma ayarlarını yapılandır '** ı seçin.
 
 11. **Oturum açma alanlarını el ile Algıla**' yı seçin.
 
@@ -140,7 +140,7 @@ Bu sorunlardan herhangi biriyle karşılaşırsanız şunları yapın:
 
 - El ile yakalama işlemini yeniden deneyin. Kırmızı işaretçilerin doğru alanların üzerinde olduğundan emin olun.
 
-- El ile yakalama işlemi yanıt vermeyi durdurmuş gibi görünüyorsa veya oturum açma sayfası yanıt vermezse, el ile yakalama işlemini yeniden deneyin. Ancak, bu kez işlemi tamamladıktan sonra gözatıcının geliştirici konsolunu açmak için F12 tuşuna basın. **Konsol** sekmesini seçin. **Window. Location = "*&lt;yazın ve&gt;uygulamayı yapılandırırken belirttiğiniz oturum açma URL 'si*"** yazın ve ENTER tuşuna basın. Bu, yakalama işlemini sonlandıran ve yakalanan alanları depolayan bir sayfa yeniden yönlendirmeyi zorlar.
+- El ile yakalama işlemi yanıt vermeyi durdurmuş gibi görünüyorsa veya oturum açma sayfası yanıt vermezse, el ile yakalama işlemini yeniden deneyin. Ancak, bu kez işlemi tamamladıktan sonra gözatıcının geliştirici konsolunu açmak için F12 tuşuna basın. **Konsol** sekmesini seçin. **Window. Location = "yazın ve* &lt; &gt; Uygulamayı yapılandırırken belirttiğiniz oturum açma URL 'si*"** yazın ve ENTER tuşuna basın. Bu, yakalama işlemini sonlandıran ve yakalanan alanları depolayan bir sayfa yeniden yönlendirmeyi zorlar.
 
 ### <a name="contact-support"></a>Desteğe başvurun
 
@@ -219,7 +219,7 @@ Aşağıdaki bilgiler, her bildirim öğesinin ne anlama geldiğini açıklar ve
 
 - **UPN**: işlemi çalıştıran kullanıcı.
 
-    Örnek: *tperkins\@f128.info*
+    Örnek: *tperkins \@ f128.info*
 
 - **KIRACı kimliği**: işlemi çalıştıran kullanıcının üyesi olduğu kiracının benzersiz kimliği.
 
@@ -245,7 +245,7 @@ Aşağıdaki bilgiler, her bildirim öğesinin ne anlama geldiğini açıklar ve
 
 - **Ayrıntılar**: işlemin sonucu olarak neyin ne olduğuna ilişkin ayrıntılı açıklama.
 
-    Örnek: *'<https://bing.com/>' iç URL 'si zaten kullanımda olduğundan geçersizdir.*
+    Örnek: *' ' iç URL 'si <https://bing.com/> zaten kullanımda olduğundan geçersizdir.*
 
 - **Kopyalama hatası**: destek konusunda yardım almak üzere bildirim ayrıntılarını kopyalamak için **kopyalama hatası** metin kutusunun sağ tarafındaki **Kopyala simgesini** seçmenizi sağlar.
 

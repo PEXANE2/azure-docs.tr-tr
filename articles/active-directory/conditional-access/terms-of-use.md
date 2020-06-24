@@ -4,19 +4,19 @@ description: Erişim almadan önce çalışanlara veya konuklara bilgi sunmak i�
 services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2f06a7c88a7c17f5f93201192664c2d4a97564e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39e76468238a911c7a9e5543bf5063d1c7b6a8b8
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480972"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253333"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Kullanım koşulları Azure Active Directory
 
@@ -92,7 +92,7 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
 
 1. Kullanım son tarihleri için zamanlamayı belirtmek üzere başlangıç ve **Sıklık** ayarlarını **sona erdir** ' i kullanın. Aşağıdaki tabloda, birkaç örnek ayar için sonuç gösterilmektedir:
 
-   | Başlangıç tarihi | Frequency | Sonuç |
+   | Başlangıç tarihi | Sıklık | Sonuç |
    | --- | --- | --- |
    | Bugünün tarihi  | Aylık | Bugünden itibaren, kullanıcılar kullanım koşullarını kabul etmeli ve sonra her ay yeniden kabul etmelidir. |
    | Gelecekteki Tarih  | Aylık | Bugünden itibaren, kullanıcıların kullanım koşullarını kabul etmesi gerekir. Gelecek tarih gerçekleştiğinde, yarışma süreleri sona erer ve kullanıcılar her ay yeniden kabul etmelidir.  |
@@ -117,7 +117,7 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
 
    ![İlke şablonu seçmek için koşullu erişim açılan listesi](./media/terms-of-use/conditional-access-templates.png)
 
-   | Şablon | Açıklama |
+   | Şablon | Description |
    | --- | --- |
    | **Tüm konuklar için bulut uygulamalarına erişim** | Tüm konuklar ve tüm bulut uygulamaları için bir koşullu erişim ilkesi oluşturulacaktır. Bu ilke Azure portal etkiler. Bu oluşturulduktan sonra, oturum açmanız ve oturum açmanız gerekebilir. |
    | **Tüm kullanıcılar için bulut uygulamalarına erişim** | Tüm kullanıcılar ve tüm bulut uygulamaları için bir koşullu erişim ilkesi oluşturulacaktır. Bu ilke Azure portal etkiler. Bu oluşturulduktan sonra, oturumunuzu kapatıp oturum açmanız gerekecektir. |
@@ -129,7 +129,7 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
 
     Özel koşullu erişim ilkeleri, belirli bir bulut uygulamasına veya kullanıcı grubuna göre ayrıntılı kullanım koşullarını sağlar. Daha fazla bilgi için bkz. [hızlı başlangıç: bulut uygulamalarına erişmeden önce kabul edilmesi gereken kullanım koşulları](require-tou.md).
 
-1. **Oluştur**' a tıklayın.
+1. **Oluştur**'a tıklayın.
 
    Özel bir koşullu erişim şablonu seçtiyseniz, özel koşullu erişim ilkesi oluşturmanıza olanak sağlayan yeni bir ekran görüntülenir.
 
@@ -225,7 +225,7 @@ Kullanım koşulları 'nın bazı ayrıntılarını düzenleyebilir, ancak var o
 
    ![Ad ve genişletme seçeneklerini gösteren kullanım koşulları bölmesini Düzenle](./media/terms-of-use/edit-tou.png)
 
-1. Değişikliklerinizi kaydetmek için **Kaydet** ' e tıklayın.
+1. Değişikliklerinizi kaydetmek için **Kaydet**’e tıklayın.
 
    Değişikliklerinizi kaydettikten sonra, kullanıcılar bu düzenlemeleri yeniden kabul etmek zorunda olmayacaktır.
 
@@ -387,7 +387,7 @@ Y: [önceden kabul edilen kullanım koşullarını gözden](#how-users-can-revie
 Y: Azure AD kullanım koşulları 'nı ve [Intune hüküm ve koşullarını](/intune/terms-and-conditions-create)yapılandırdıysanız, kullanıcının her ikisini de kabul etmesi gerekecektir. Daha fazla bilgi için bkz. [Kuruluşunuz için doğru terimler çözümü seçme blog gönderisi](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
 **S: kullanım koşulları hizmeti hangi uç noktalar kimlik doğrulaması için kullanılır?**<br />
-A: Kullanım koşulları kimlik doğrulaması için aşağıdaki uç noktaları kullanır https://tokenprovider.termsofuse.identitygovernance.azure.com : https://account.activedirectory.windowsazure.comve. Kuruluşunuzun kayıt için bir izin verilenler listesi varsa, bu uç noktaları, oturum açma için Azure AD uç noktaları ile birlikte izin verilenler listenize eklemeniz gerekir.
+A: Kullanım koşulları kimlik doğrulaması için aşağıdaki uç noktaları kullanır: https://tokenprovider.termsofuse.identitygovernance.azure.com ve https://account.activedirectory.windowsazure.com . Kuruluşunuzun kayıt için bir izin verilenler listesi varsa, bu uç noktaları, oturum açma için Azure AD uç noktaları ile birlikte izin verilenler listenize eklemeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

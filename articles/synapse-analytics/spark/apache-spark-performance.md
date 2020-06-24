@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 6ffe7f3d9faf82c892975e9ffa03b383d3610c36
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a4d95e57e3b72f8338da5c88f4ddfd57f66014cb
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424625"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194867"
 ---
 # <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark işleri (Önizleme) iyileştirme
 
@@ -56,7 +56,7 @@ Performans için en iyi biçim, Spark 2. x içinde varsayılan değer olan *Snap
 
 ## <a name="use-the-cache"></a>Önbelleği kullanma
 
-Spark,, ve `.persist()` `.cache()` `CACHE TABLE`gibi farklı yöntemler aracılığıyla kullanılabilecek kendi yerel önbelleğe alma mekanizmalarını sağlar. Bu yerel önbelleğe alma, küçük veri kümeleri ve ara sonuçları önbelleğe almanız gereken ETL işlem hatları ile etkilidir. Ancak, bir önbelleğe alınmış tablo bölümleme verilerini tutduğundan Spark Native Caching Şu anda bölümlendirme ile iyi çalışmaz.
+Spark,, ve gibi farklı yöntemler aracılığıyla kullanılabilecek kendi yerel önbelleğe alma mekanizmalarını sağlar `.persist()` `.cache()` `CACHE TABLE` . Bu yerel önbelleğe alma, küçük veri kümeleri ve ara sonuçları önbelleğe almanız gereken ETL işlem hatları ile etkilidir. Ancak, bir önbelleğe alınmış tablo bölümleme verilerini tutduğundan Spark Native Caching Şu anda bölümlendirme ile iyi çalışmaz.
 
 ## <a name="use-memory-efficiently"></a>Belleği verimli bir şekilde kullanma
 
@@ -77,8 +77,8 @@ Azure SYNAPSE Apache Spark Yarn [Apache HADOOP Yarn](https://hadoop.apache.org/d
 ' Bellek yetersiz ' iletilerini ele almak için şunu deneyin:
 
 * DAG yönetim karışık Les 'yi gözden geçirin. Harita-tarafı azaltma, bölüm öncesi (veya bucketize) kaynak verileri ile, tek bir karayı en üst düzeye çıkarıp gönderilen veri miktarını azaltarak azaltın.
-* Toplamaları `ReduceByKey` , Pencereleme ve diğer işlevleri sağlayan `GroupByKey`ancak sınırsız bellek sınırına sahip olan sabit bellek sınırı ile tercih edilir.
-* Yürüticilere veya bölümlerle `TreeReduce` `Reduce`üzerinde daha fazla çalışmayı, yani sürücü üzerinde çalışmayı tercih eder.
+* `ReduceByKey` `GroupByKey` Toplamaları, Pencereleme ve diğer işlevleri sağlayan ancak sınırsız bellek sınırına sahip olan sabit bellek sınırı ile tercih edilir.
+* `TreeReduce`Yürüticilere veya bölümlerle üzerinde daha fazla çalışmayı, yani `Reduce` sürücü üzerinde çalışmayı tercih eder.
 * Alt düzey RDD nesneleri yerine veri çerçevelerinden yararlanın.
 * "Ilk N", çeşitli toplamalar veya Pencereleme işlemleri gibi eylemleri kapsülleyen Karmaşıktürler oluşturun.
 
@@ -109,7 +109,7 @@ Yavaş birleştirmelere neden olan başka bir faktör birleştirme türü olabil
 
 Bir `Broadcast` JOIN, daha küçük veri kümeleri için en uygun seçenektir veya birleştirmenin bir tarafı diğer taraftan çok daha küçüktür. Bu tür bir JOIN, tüm yürüticilerine bir taraf yayınlar ve bu nedenle genel olarak yayınlar için daha fazla bellek gerektirir.
 
-Ayarları `spark.sql.autoBroadcastJoinThreshold`yaparak yapılandırmanızda JOIN türünü değiştirebilir veya Dataframe API 'lerini (`dataframe.join(broadcast(df2))`) kullanarak bir JOIN ipucu ayarlayabilirsiniz.
+Ayarları yaparak yapılandırmanızda JOIN türünü değiştirebilir `spark.sql.autoBroadcastJoinThreshold` veya DataFrame API 'lerini () kullanarak bir JOIN ipucu ayarlayabilirsiniz `dataframe.join(broadcast(df2))` .
 
 ```scala
 // Option 1
@@ -124,7 +124,7 @@ df1.join(broadcast(df2), Seq("PK")).
 sql("SELECT col1, col2 FROM V_JOIN")
 ```
 
-Buckelenmiş tablolar kullanıyorsanız, `Merge` birleşimi üçüncü bir birleşme türüne sahip olursunuz. Doğru bir önceden bölümlenmiş ve önceden sıralanmış veri kümesi, bir `SortMerge` birleşimden pahalı sıralama aşamasını atlar.
+Buckelenmiş tablolar kullanıyorsanız, birleşimi üçüncü bir birleşme türüne sahip olursunuz `Merge` . Doğru bir önceden bölümlenmiş ve önceden sıralanmış veri kümesi, bir birleşimden pahalı sıralama aşamasını atlar `SortMerge` .
 
 Birleştirme sırası, özellikle daha karmaşık sorgularda önemlidir. En seçmeli birleştirmelere başlayın. Ayrıca, mümkün olduğunda toplamaların ardından satır sayısını artıran birleştirmeleri taşıyın.
 
@@ -160,7 +160,7 @@ Eşzamanlı sorgular çalıştırılırken şunları göz önünde bulundurun:
 
 Zaman çizelgesi görünümüne, SQL grafiğine, iş istatistiklerine vb. bakarak, aykırı değerler veya diğer performans sorunları için sorgu performansınızı izleyin. Bazen yürüticilerinin biri veya birkaçı diğerlerinden daha yavaştır ve görevlerin yürütülmesi çok daha uzun sürer. Bu çoğunlukla daha büyük kümelerde (> 30 düğüm) oluşur. Bu durumda, Scheduler 'ın yavaş görevleri dengeyapabilmesi için çalışmayı daha fazla sayıda göreve bölün. 
 
-Örneğin, uygulamadaki yürütücü çekirdekleri sayısı kadar en az iki görev vardır. Ayrıca, ile `conf: spark.speculation = true`görevlerin yansımalı yürütülmesini de etkinleştirebilirsiniz.
+Örneğin, uygulamadaki yürütücü çekirdekleri sayısı kadar en az iki görev vardır. Ayrıca, ile görevlerin yansımalı yürütülmesini de etkinleştirebilirsiniz `conf: spark.speculation = true` .
 
 ## <a name="optimize-job-execution"></a>İş yürütmeyi iyileştirme
 
@@ -170,7 +170,7 @@ Zaman çizelgesi görünümüne, SQL grafiğine, iş istatistiklerine vb. bakara
 
 Spark 2. x sorgu performansına yönelik anahtar, tam aşamalı kod oluşturmaya bağlı olan tungsten altyapısıdır. Bazı durumlarda, tam aşama kod üretimi devre dışı bırakılabilir. 
 
-Örneğin, toplama ifadesinde kesilebilir olmayan bir tür (`string`) kullanırsanız, `SortAggregate` yerine görünür. `HashAggregate` Örneğin, daha iyi performans için aşağıdakileri deneyin ve kod oluşturmayı yeniden etkinleştirin:
+Örneğin, toplama ifadesinde kesilebilir olmayan bir tür ( `string` ) kullanırsanız, `SortAggregate` yerine görünür `HashAggregate` . Örneğin, daha iyi performans için aşağıdakileri deneyin ve kod oluşturmayı yeniden etkinleştirin:
 
 ```sql
 MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7db47eda47850c1c080b6a49256c8a0b37bb0d3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67acf675c6636c5d1066d4fe25310d875fa7c064
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80330379"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201523"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde Azure Active Directory teknik profil tanımlama
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) Azure Active Directory Kullanıcı yö
 
 ## <a name="protocol"></a>Protokol
 
-**Protokol** öğesinin `Proprietary` **Name** özniteliğinin olarak ayarlanması gerekir. **Handler** özniteliği, protokol işleyici derlemesinin `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`tam adını içermelidir.
+**Protokol** öğesinin **Name** özniteliğinin olarak ayarlanması gerekir `Proprietary` . **Handler** özniteliği, protokol işleyici derlemesinin tam adını içermelidir `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` .
 
 Aşağıdaki [özel ilke Başlatıcı paketi](custom-policy-get-started.md#custom-policy-starter-pack) Azure AD teknik profilleri **AAD ortak** teknik profilini içerir. Protokol **AAD ortak** teknik profilinde yapılandırıldığı IÇIN Azure AD teknik profilleri Protokolü belirtmez:
  
@@ -41,7 +41,7 @@ Aşağıdaki [özel ilke Başlatıcı paketi](custom-policy-get-started.md#custo
 
 Aşağıdaki örnekte **AAD ortak** teknik profili gösterilmektedir:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-Common">
   <DisplayName>Azure Active Directory</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -68,7 +68,7 @@ Yeni bir kullanıcı hesabı oluşturmak için, giriş talebi yerel veya Federas
 
 ## <a name="outputclaims"></a>Outputclaim
 
-**Outputclaim** öğesi, Azure AD teknik profili tarafından döndürülen taleplerin bir listesini içerir. İlkenizde tanımlanan talebin adını Azure Active Directory tanımlı adla eşlemeniz gerekebilir. `DefaultValue` Özniteliği ayarladığınız sürece Azure Active Directory tarafından döndürülmeyen talepleri de ekleyebilirsiniz.
+**Outputclaim** öğesi, Azure AD teknik profili tarafından döndürülen taleplerin bir listesini içerir. İlkenizde tanımlanan talebin adını Azure Active Directory tanımlı adla eşlemeniz gerekebilir. Özniteliği ayarladığınız sürece Azure Active Directory tarafından döndürülmeyen talepleri de ekleyebilirsiniz `DefaultValue` .
 
 [Outputclaimstransformations](technicalprofiles.md#outputclaimstransformations) öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
@@ -96,7 +96,7 @@ Yeni bir kullanıcı hesabı oluşturmak için, giriş talebi yerel veya Federas
 
 Yeni yerel hesap oluşturan **AAD-UserWriteUsingLogonEmail** teknik profili, sonrasında aşağıdaki talepler devam ediyor:
 
-```XML
+```xml
   <PersistedClaims>
     <!-- Required claims -->
     <PersistedClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" />
@@ -116,8 +116,8 @@ Azure AD öznitelik adını içeren **Partnerclaimtype** özniteliği belirtilme
 
 - Tüm Azure AD teknik profillerinin talep paketinde tam olarak bir **ınputclaim** öğesi olması gerekir.
 - [Kullanıcı profili öznitelikleri makalesi](user-profile-attributes.md) , giriş talepleri, çıkış talepleri ve kalıcı taleplerde kullanabileceğiniz desteklenen Azure AD B2C Kullanıcı profili özniteliklerini açıklar. 
-- İşlem veya `Write` `DeleteClaims`ise, **PersistedClaims** öğesinde de görünmelidir.
-- **UserPrincipalName** talebinin değeri biçiminde olmalıdır `user@tenant.onmicrosoft.com`.
+- İşlem `Write` veya ise `DeleteClaims` , **PersistedClaims** öğesinde de görünmelidir.
+- **UserPrincipalName** talebinin değeri biçiminde olmalıdır `user@tenant.onmicrosoft.com` .
 - **DisplayName** talebi gereklidir ve boş bir dize olamaz.
 
 ## <a name="azure-ad-technical-provider-operations"></a>Azure AD teknik sağlayıcı işlemleri
@@ -126,7 +126,7 @@ Azure AD öznitelik adını içeren **Partnerclaimtype** özniteliği belirtilme
 
 **Okuma** işlemi, tek bir kullanıcı hesabı hakkındaki verileri okur. Aşağıdaki teknik profil, kullanıcının ObjectID 'sini kullanarak bir kullanıcı hesabı hakkındaki verileri okur:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
   <Metadata>
     <Item Key="Operation">Read</Item>
@@ -156,7 +156,7 @@ Azure AD öznitelik adını içeren **Partnerclaimtype** özniteliği belirtilme
 
 **Yazma** işlemi tek bir kullanıcı hesabı oluşturur veya güncelleştirir. Aşağıdaki teknik profil yeni sosyal hesap oluşturur:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">Write</Item>
@@ -196,7 +196,7 @@ Azure AD öznitelik adını içeren **Partnerclaimtype** özniteliği belirtilme
 
 **Deleteclaim** işlemi, bilgileri, belirtilen talepler listesinden temizler. Aşağıdaki teknik profilde talepler silinir:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteClaimsUsingObjectId">
   <Metadata>
     <Item Key="Operation">DeleteClaims</Item>
@@ -217,7 +217,7 @@ Azure AD öznitelik adını içeren **Partnerclaimtype** özniteliği belirtilme
 
 **DeleteClaimsPrincipal** işlemi, dizinden tek bir kullanıcı hesabını siler. Aşağıdaki teknik profil, Kullanıcı asıl adını kullanarak bir kullanıcı hesabını dizinden siler:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteUserUsingObjectId">
   <Metadata>
     <Item Key="Operation">DeleteClaimsPrincipal</Item>
@@ -232,7 +232,7 @@ Azure AD öznitelik adını içeren **Partnerclaimtype** özniteliği belirtilme
 
 Aşağıdaki teknik profil, bir sosyal Kullanıcı hesabını **Alternativesecurityıd**kullanarak siler:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteUserUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">DeleteClaimsPrincipal</Item>
@@ -244,16 +244,16 @@ Aşağıdaki teknik profil, bir sosyal Kullanıcı hesabını **Alternativesecur
   <IncludeTechnicalProfile ReferenceId="AAD-Common" />
 </TechnicalProfile>
 ```
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| İşlem | Yes | Gerçekleştirilecek işlem. Olası değerler: `Read`, `Write`, `DeleteClaims`veya `DeleteClaimsPrincipal`. |
-| RaiseErrorIfClaimsPrincipalDoesNotExist | Hayır | Kullanıcı nesnesi dizinde yoksa bir hata oluştur. Olası değerler: `true` veya `false`. |
-| RaiseErrorIfClaimsPrincipalAlreadyExists | Hayır | Kullanıcı nesnesi zaten mevcutsa bir hata oluştur. Olası değerler: `true` veya `false`.|
-| Applicationobjectıd | Hayır | Uzantı öznitelikleri için uygulama nesne tanımlayıcısı. Değer: bir uygulamanın ObjectID 'si. Daha fazla bilgi için bkz. özel [bir profil düzenleme ilkesinde özel öznitelikler kullanma](custom-policy-custom-attributes.md). |
-| ClientId | Hayır | Kiracıya üçüncü taraf olarak erişmek için istemci tanımlayıcısı. Daha fazla bilgi için bkz. özel [bir profil düzenleme ilkesinde özel öznitelikler kullanma](custom-policy-custom-attributes.md) |
-| IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true`, veya `false`  (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız, bunu olarak `true`ayarlayın. |
+| Çalışma | Yes | Gerçekleştirilecek işlem. Olası değerler: `Read` , `Write` , `DeleteClaims` veya `DeleteClaimsPrincipal` . |
+| RaiseErrorIfClaimsPrincipalDoesNotExist | No | Kullanıcı nesnesi dizinde yoksa bir hata oluştur. Olası değerler: `true` veya `false` . |
+| RaiseErrorIfClaimsPrincipalAlreadyExists | No | Kullanıcı nesnesi zaten mevcutsa bir hata oluştur. Olası değerler: `true` veya `false` .|
+| Applicationobjectıd | No | Uzantı öznitelikleri için uygulama nesne tanımlayıcısı. Değer: bir uygulamanın ObjectID 'si. Daha fazla bilgi için bkz. özel [bir profil düzenleme ilkesinde özel öznitelikler kullanma](custom-policy-custom-attributes.md). |
+| ClientId | No | Kiracıya üçüncü taraf olarak erişmek için istemci tanımlayıcısı. Daha fazla bilgi için bkz. özel [bir profil düzenleme ilkesinde özel öznitelikler kullanma](custom-policy-custom-attributes.md) |
+| IncludeClaimResolvingInClaimsHandling  | No | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true` , veya `false`   (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız, bunu olarak ayarlayın `true` . |
 
 ### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
  
@@ -261,8 +261,8 @@ Hata durumunda görüntülenecek hata iletisini yapılandırmak için aşağıda
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Usermessageifclaimsprincıpalalreadyexists | Hayır | Bir hata ortaya çıkarılmalıdır (bkz. RaiseErrorIfClaimsPrincipalAlreadyExists Attribute Description), Kullanıcı nesnesi zaten varsa kullanıcıya gösterilecek iletiyi belirtin. |
-| UserMessageIfClaimsPrincipalDoesNotExist | Hayır | Bir hata ortaya çıkarılmalıdır (bkz. RaiseErrorIfClaimsPrincipalDoesNotExist Attribute Description), Kullanıcı nesnesi yoksa kullanıcıya gösterilecek iletiyi belirtin. |
+| Usermessageifclaimsprincıpalalreadyexists | No | Bir hata ortaya çıkarılmalıdır (bkz. RaiseErrorIfClaimsPrincipalAlreadyExists Attribute Description), Kullanıcı nesnesi zaten varsa kullanıcıya gösterilecek iletiyi belirtin. |
+| UserMessageIfClaimsPrincipalDoesNotExist | No | Bir hata ortaya çıkarılmalıdır (bkz. RaiseErrorIfClaimsPrincipalDoesNotExist Attribute Description), Kullanıcı nesnesi yoksa kullanıcıya gösterilecek iletiyi belirtin. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

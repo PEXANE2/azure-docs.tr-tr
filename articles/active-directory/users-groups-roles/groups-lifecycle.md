@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 562b551bc8a46a45135bf6a9a8e328b4b0e74f98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 182f51a150c2ef944b0104b73c63028e915c1a4a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80048256"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728342"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Office 365 grupları için süre sonu ilkesini yapılandırma
 
@@ -134,7 +134,7 @@ Azure AD Kuruluşunuzda Office 365 grupları için süre sonu ayarlarını yapı
    Connect-AzureAD
    ```
 
-1. Süre sonu ayarlarını yapılandırma Azure AD kuruluşundaki tüm Office 365 gruplarının ömrünü 365 güne ayarlamak için New-AzureADMSGroupLifecyclePolicy cmdlet 'ini kullanın. Sahipleri olmayan Office 365 grupları için yenileme bildirimleri 'emailaddress@contoso.com' öğesine gönderilir
+1. Süre sonu ayarlarını yapılandırma Azure AD kuruluşundaki tüm Office 365 gruplarının ömrünü 365 güne ayarlamak için New-AzureADMSGroupLifecyclePolicy cmdlet 'ini kullanın. Sahipleri olmayan Office 365 grupları için yenileme bildirimleri ' ' öğesine gönderilir emailaddress@contoso.com
   
    ``` PowerShell
    New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
@@ -144,7 +144,7 @@ Azure AD Kuruluşunuzda Office 365 grupları için süre sonu ayarlarını yapı
 
    - İlke KIMLIĞI
    - Azure AD kuruluşundaki tüm Office 365 gruplarının ömrü 365 gün olarak ayarlanır
-   - Sahipleri olmayan Office 365 grupları için yenileme bildirimleri 'emailaddress@contoso.com. ' öğesine gönderilir
+   - Sahipleri olmayan Office 365 grupları için yenileme bildirimleri '. ' öğesine gönderilir emailaddress@contoso.com
   
    ```powershell
    Get-AzureADMSGroupLifecyclePolicy

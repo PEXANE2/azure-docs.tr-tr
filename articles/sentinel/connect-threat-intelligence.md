@@ -5,19 +5,20 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: security-center
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: eec07a01edc6b126bb7cd3a814912ea5c5b14195
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8036203e33fd63a25ecfa7c4ea720e01259be04a
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529089"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84769882"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Tehdit zekası sağlayıcılarından veri bağlama
 
@@ -70,7 +71,7 @@ Sonraki bölümde listelenen tümleşik tehdit bilgileri platformu (tıp) ürün
 
 2. Kayıtlı uygulama için [API Izinlerini yapılandırma](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) : kayıtlı uygulamanıza, **Threatındictındictındictındicmators. ReadWrite. ownedby** uygulama izni Microsoft Graph ekleyin.
 
-3. Azure Active Directory kiracı yöneticinizden kuruluşunuzun kayıtlı uygulamasına yönetici onayı vermesini isteyin. Azure Portal: **Azure Active Directory** > **uygulama kayıtları** >  >  > **>uygulama adı_app name_görünümü API izinleri kiracı adı için yönetici onayı verir.\<****View API Permissions**** \<> _tenant name_**
+3. Azure Active Directory kiracı yöneticinizden kuruluşunuzun kayıtlı uygulamasına yönetici onayı vermesini isteyin. Azure Portal: **Azure Active Directory**  >  **uygulama kayıtları**  >  **\<_app name_>**  >  **API izinleri**  >  **için \<_tenant name_> yönetici izni ver **' i görüntüleyin.
 
 4. Şunları belirterek, Azure Sentinel 'e göstergeler göndermek için Microsoft Graph Security Tiındicators API 'SI ile doğrudan tümleştirme kullanan tıp ürününüzü veya uygulamanızı yapılandırın:
     
@@ -80,11 +81,11 @@ Sonraki bölümde listelenen tümleşik tehdit bilgileri platformu (tıp) ürün
     
     c. Eylem için uyarı ' ı belirtin.
 
-5. Azure Portal **Azure Sentinel** > **veri bağlayıcıları** ' na gidin ve ardından **tehdit bilgileri platformları (Önizleme)** bağlayıcısını seçin.
+5. Azure Portal **Azure Sentinel**  >  **veri bağlayıcıları** ' na gidin ve ardından **tehdit bilgileri platformları (Önizleme)** bağlayıcısını seçin.
 
 6. **Bağlayıcı sayfasını aç**' ı ve sonra **Bağlan**' ı seçin.
 
-7. Azure Sentinel 'e içeri aktarılan tehdit göstergelerini görüntülemek için **Azure Sentinel** > 'e gidin ve**securityınsights**'ı günlüğe kaydeder ve sonra **threatıntelligenceındicator**' ı genişletin.
+7. Azure Sentinel 'e içeri aktarılan tehdit göstergelerini görüntülemek için **Azure Sentinel**'e gidin  >  ve**securityınsights**'ı günlüğe kaydeder ve sonra **threatıntelligenceındicator**' ı genişletin.
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>Azure Sentinel 'i TAXıı sunucularına bağlama
 
@@ -96,7 +97,7 @@ Sonraki bölümde listelenen tümleşik tehdit bilgileri platformu (tıp) ürün
 
 ## <a name="instructions"></a>Yönergeler
 
-1. Azure Portal **Azure Sentinel** > **veri bağlayıcıları** ' na gidin ve **tehdit zekası-taxıı (Önizleme)** bağlayıcısını seçin.
+1. Azure Portal **Azure Sentinel**  >  **veri bağlayıcıları** ' na gidin ve **tehdit zekası-taxıı (Önizleme)** bağlayıcısını seçin.
 
 2. **Bağlayıcı sayfasını aç**' ı seçin.
 
@@ -106,7 +107,7 @@ Sonraki bölümde listelenen tümleşik tehdit bilgileri platformu (tıp) ürün
 
 5. Ek TAXıı 2,0 sunucularınız varsa: 3 ve 4. adımları yineleyin.
 
-6. Azure Sentinel 'e içeri aktarılan tehdit göstergelerini görüntülemek için **Azure Sentinel** > 'e gidin ve**securityınsights**'ı günlüğe kaydeder ve sonra **threatıntelligenceındicator**' ı genişletin.
+6. Azure Sentinel 'e içeri aktarılan tehdit göstergelerini görüntülemek için **Azure Sentinel**'e gidin  >  ve**securityınsights**'ı günlüğe kaydeder ve sonra **threatıntelligenceındicator**' ı genişletin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

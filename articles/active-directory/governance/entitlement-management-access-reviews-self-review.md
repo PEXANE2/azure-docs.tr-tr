@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 11/01/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45da1170705bab1206a98c59e02c7616c25ce502
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f8037ef1324cb10777511c4c363a62a2edab438
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78967765"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078422"
 ---
 # <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde bir erişim paketini kendi kendine gözden geçirme
 
@@ -37,7 +37,7 @@ Erişim gözden geçirmesi yapmak için, önce erişim gözden geçirmeyi açman
 
 1. **Erişimi gözden geçir** bağlantısına tıklayın.
 
-1. Ayrıca, e-posta almazsanız https://myaccess.microsoft.com bekleyen erişim incelemelerinizi bulmak için doğrudan öğesine gidebilirsiniz.  (ABD kamu için bunun yerine `https://myaccess.microsoft.us` kullanın.)
+1. Ayrıca, https://myaccess.microsoft.com e-posta almazsanız bekleyen erişim incelemelerinizi bulmak için doğrudan öğesine gidebilirsiniz.  (ABD kamu için `https://myaccess.microsoft.us` bunun yerine kullanın.)
 
 1. Size atanan bekleyen erişim incelemelerinin listesini görmek için sol gezinti çubuğundaki **erişim İncelemeleri** ' ne tıklayın.
 

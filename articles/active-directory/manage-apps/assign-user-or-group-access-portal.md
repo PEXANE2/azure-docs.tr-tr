@@ -2,24 +2,24 @@
 title: Azure AD 'de bir kurumsal uygulamaya Kullanıcı veya Grup atama
 description: Bir kurumsal uygulamayı seçerek bu gruba bir kullanıcı veya Grup atama Azure Active Directory
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/21/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b52bc45287e0e3a8f4908630cb6e57130c1725df
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 2eeab9cbb68567b6af3b1381b8ec5e67e82461ec
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772429"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763746"
 ---
-# <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory ' de bir kurumsal uygulamaya Kullanıcı veya Grup atama
+# <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory'de kurumsal uygulamaya kullanıcı veya grup atama
 
 Bu makalede, Azure portal içinden veya PowerShell kullanarak Azure Active Directory (Azure AD) içindeki kurumsal uygulamalara Kullanıcı veya Grup atama işlemlerinin nasıl yapılacağı gösterilir. Bir uygulamayı bir kullanıcıya atadığınızda, uygulama kolay erişim için kullanıcının [uygulamalar erişim panelinde](https://myapps.microsoft.com/) görüntülenir. Uygulama rolleri kullanıma sunarsa, kullanıcıya belirli bir rol de atayabilirsiniz.
 

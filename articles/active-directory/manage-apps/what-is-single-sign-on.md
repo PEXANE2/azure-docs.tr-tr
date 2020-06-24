@@ -2,22 +2,22 @@
 title: Uygulamalarda çoklu oturum açma-Azure Active Directory | Microsoft Docs
 description: Azure Active Directory (Azure AD) içinde uygulama yapılandırırken çoklu oturum açma yöntemi seçme hakkında bilgi edinin. Kullanıcıların her uygulama için parolaları hatırlamaları ve hesap yönetiminin yönetimini basitleştirmek için çoklu oturum açma kullanın.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f46bcf412403d8f911e484e12a9d1f421b1666f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2796df048e00d4b9d0bb8e51e1e1875e553862c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79366079"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84762973"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory uygulamalarda çoklu oturum açma
 
@@ -73,7 +73,7 @@ SAML tabanlı çoklu oturum açma, bu protokollerden herhangi birini kullanan uy
 
 SAML tabanlı çoklu oturum açma için bir SaaS uygulaması yapılandırmak üzere bkz. [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-non-gallery-applications.md). Ayrıca, hizmet olarak yazılım (SaaS) uygulamalarında, SAML tabanlı çoklu oturum açma yapılandırmasında size adım adım kılavuzluk eden [uygulamaya özgü bir öğretici](../saas-apps/tutorial-list.md) vardır.
 
-Bir uygulamayı WS-Federation için yapılandırmak üzere, SAML tabanlı çoklu oturum açma için uygulamayı yapılandırmak üzere aynı kılavuzu izleyin, bkz. [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-non-gallery-applications.md). Uygulamayı Azure AD kullanacak şekilde yapılandırma adımında, WS-Federation uç noktası `https://login.microsoftonline.com/<tenant-ID>/wsfed`IÇIN Azure AD oturum açma URL 'sini değiştirmeniz gerekir.
+Bir uygulamayı WS-Federation için yapılandırmak üzere, SAML tabanlı çoklu oturum açma için uygulamayı yapılandırmak üzere aynı kılavuzu izleyin, bkz. [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-non-gallery-applications.md). Uygulamayı Azure AD kullanacak şekilde yapılandırma adımında, WS-Federation uç noktası için Azure AD oturum açma URL 'sini değiştirmeniz gerekir `https://login.microsoftonline.com/<tenant-ID>/wsfed` .
 
 SAML tabanlı çoklu oturum açma için şirket içi bir uygulamayı yapılandırmak için, bkz. [uygulama proxy 'si ile şirket içi uygulamalar Için SAML çoklu oturum açma](application-proxy-configure-single-sign-on-on-premises-apps.md).
 

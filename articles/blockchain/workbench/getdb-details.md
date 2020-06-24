@@ -2,14 +2,14 @@
 title: Azure Blockchain Workbench veritabanı ayrıntılarını alma
 description: Azure blok zinciri çalışma ekranı önizleme veritabanı ve veritabanı sunucusu bilgilerini nasıl alabileceğinizi öğrenin.
 ms.date: 09/05/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: mmercuri
-ms.openlocfilehash: 2b3190a9d042be8ead1ff3d5ef48d4a2a19e8963
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 898360d8e22803e17ff4da7d3b63f5595cad47ba
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74324686"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254659"
 ---
 # <a name="get-information-about-your-azure-blockchain-workbench-database"></a>Azure Blockchain Workbench veritabanınızla ilgili bilgi edinin
 
@@ -31,7 +31,7 @@ Veritabanına bağlanmak için:
 1. Azure blok zinciri çalışma ekranı kaynakları için **sahip** izinlerine sahip bir hesapla Azure Portal oturum açın.
 2. Sol gezinti bölmesinden **Kaynak Grupları**'nı seçin.
 3. Blockchain Workbench dağıtımınıza yönelik kaynak grubunun adını seçin.
-4. Kaynak listesini sıralamak için **Tür**’ü, sonra da **SQL sunucunuzu** seçin. Bir sonraki ekran görüntüsünde yer alan sıralı listede "master" adlı bir veritabanının yanı sıra **Kaynak ön eki** olarak "lhgn" kullanan bir veritabanı şeklinde iki SQL veritabanı gösterilir.
+4. Kaynak listesini sıralamak için **Tür**’ü, sonra da **SQL sunucunuzu** seçin. Sonraki ekran yakalamadaki sıralanmış liste, "ana" ve **kaynak ön eki**olarak "lhgn" kullanan iki veritabanını gösterir.
 
    ![Sıralı Blockchain Workbench kaynak listesi](./media/getdb-details/sorted-workbench-resource-list.png)
 

@@ -5,17 +5,17 @@ description: Machine Learning Studio (klasik) denemeleri ve Web hizmetlerinde Py
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: tracking-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 1d164a5ab3d1ea9c1b07f11ee074670d3e5124c5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 4afb6dca94642ab9b908a4f07ff5de56677626f2
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558918"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696312"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) üzerinde Python Machine Learning betikleri yürütme
 
@@ -75,13 +75,13 @@ Yaygın kullanım örneği, mevcut Python betikleri Studio (klasik) denemeleri i
 
 ![Hello.py dosyasında Kullanıcı tanımlı işlev](./media/execute-python-scripts/figure4.png)
 
-Daha sonra, Hello.py içeren bir Hello. zip dosyası oluşturacağız:
+Sonra, Hello.py içeren bir dosya Hello.zip oluşturacağız:
 
 ![Kullanıcı tanımlı Python kodunu içeren zip dosyası](./media/execute-python-scripts/figure5.png)
 
-Zip dosyasını bir veri kümesi olarak Studio 'ya (klasik) yükleyin. Ardından, aşağıdaki görüntüde gösterildiği gibi, bu dosyayı **yürütme komut dosyası** modülünün üçüncü giriş bağlantı noktasına ekleyerek Hello. zip dosyasında Python kodunu kullanan bir deneme oluşturun ve çalıştırın.
+Zip dosyasını bir veri kümesi olarak Studio 'ya (klasik) yükleyin. Daha sonra, aşağıdaki görüntüde gösterildiği gibi, Hello.zip dosyasında Python kodunu kullanarak Python kodu **yürütme komut dosyası** modülünün üçüncü giriş bağlantı noktasına ekleyerek bir deneme oluşturun ve çalıştırın.
 
-![Yürütme Python betik modülüne giriş olarak Hello. zip ile örnek deneme](./media/execute-python-scripts/figure6a.png)
+![Bir Python betik modülüne giriş olarak Hello.zip örnek deneme](./media/execute-python-scripts/figure6a.png)
 
 ![Zip dosyası olarak karşıya yüklenen Kullanıcı tanımlı Python kodu](./media/execute-python-scripts/figure6b.png)
 

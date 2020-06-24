@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 127155e492b556ce1ce02b67cf0b0846b99ebcd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d7227a0eeaa496dd774eb962946a4ee85e22009
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72791945"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080022"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Adlandırılmış varlık tanıma bilişsel yeteneği
 
-**Adlandırılmış varlık tanıma** yeteneği, adlandırılmış varlıkları metinden ayıklar. Kullanılabilir varlıklar `person` `location` ve `organization`türlerini içerir.
+**Adlandırılmış varlık tanıma** yeteneği, adlandırılmış varlıkları metinden ayıklar. Kullanılabilir varlıklar ve türlerini içerir `person` `location` `organization` .
 
 > [!IMPORTANT]
 > Adlandırılmış varlık tanıma yeteneği artık [Microsoft. yetenekler. Text. Entityrecognitionbeceri](cognitive-search-skill-entity-recognition.md)tarafından değiştirilmiştir. Destek 15 Şubat 2019 tarihinde durdurulur ve API, 2 Mayıs 2019 tarihinde üründen kaldırılmıştır. Desteklenen bir yeteneğe geçiş yapmak için kullanım dışı bilişsel [arama becerilerinin](cognitive-search-skill-deprecated.md) önerilerini izleyin.
@@ -25,40 +25,40 @@ ms.locfileid: "72791945"
 > [!NOTE]
 > İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
 >
-> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
+> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)açıklanmaktadır.
 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft. yetenekler. Text. Namedentityrecognitionbeceri
 
 ## <a name="data-limits"></a>Veri sınırları
-Bir kaydın en büyük boyutu, tarafından [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçülen 50.000 karakter olmalıdır. Anahtar ifade ayıklayıcıya göndermeden önce verilerinizi kesmeniz gerekiyorsa, [metin bölme becerinizi](cognitive-search-skill-textsplit.md)kullanmayı göz önünde bulundurun.
+Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdır [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Anahtar ifade ayıklayıcıya göndermeden önce verilerinizi kesmeniz gerekiyorsa, [metin bölme becerinizi](cognitive-search-skill-textsplit.md)kullanmayı göz önünde bulundurun.
 
 ## <a name="skill-parameters"></a>Yetenek parametreleri
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
-| Parametre adı     | Açıklama |
+| Parametre adı     | Description |
 |--------------------|-------------|
-| kategoriler    | Ayıklanmak zorunda olan kategorilerin dizisi.  Olası kategori türleri: `"Person"`, `"Location"`, `"Organization"`. Hiçbir kategori sağlanmazsa, tüm türler döndürülür.|
+| kategoriler    | Ayıklanmak zorunda olan kategorilerin dizisi.  Olası kategori türleri: `"Person"` , `"Location"` , `"Organization"` . Hiçbir kategori sağlanmazsa, tüm türler döndürülür.|
 |defaultLanguageCode |  Giriş metninin dil kodu. Aşağıdaki diller desteklenir:`de, en, es, fr, it`|
 | minimumPrecision  | 0 ile 1 arasında bir sayı. Duyarlık bu değerden düşükse varlık döndürülmez. Varsayılan değer, 0'dur.|
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Giriş adı      | Açıklama                   |
+| Giriş adı      | Description                   |
 |---------------|-------------------------------|
 | languageCode  | İsteğe bağlı. `"en"` varsayılan değerdir.  |
 | metin          | Çözümlenecek metin.          |
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
-| Çıkış adı     | Açıklama                   |
+| Çıkış adı     | Description                   |
 |---------------|-------------------------------|
 | elemanları      | Her bir dizenin bir kişinin adını temsil ettiği dizeler dizisi. |
 | yerlerini  | Her bir dizenin bir konumu temsil ettiği dizeler dizisi. |
 | organizations  | Her bir dizenin bir kuruluşu temsil ettiği dizeler dizisi. |
-| varlıklar | Karmaşık türlerden oluşan dizi. Her karmaşık tür aşağıdaki alanları içerir: <ul><li>kategori (`"person"`, `"organization"`veya `"location"`)</li> <li>değer (gerçek varlık adı)</li><li>fark (metinde bulunduğu konum)</li><li>güvenirlik (değerin gerçek bir varlık olduğunu belirten, bu güveni temsil eden 0 ile 1 arasında bir değer)</li></ul> |
+| varlıklar | Karmaşık türlerden oluşan dizi. Her karmaşık tür aşağıdaki alanları içerir: <ul><li>kategori ( `"person"` , `"organization"` veya `"location"` )</li> <li>değer (gerçek varlık adı)</li><li>fark (metinde bulunduğu konum)</li><li>güvenirlik (değerin gerçek bir varlık olduğunu belirten, bu güveni temsil eden 0 ile 1 arasında bir değer)</li></ul> |
 
 ##  <a name="sample-definition"></a>Örnek tanım
 

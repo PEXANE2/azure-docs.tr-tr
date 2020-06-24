@@ -16,11 +16,11 @@ ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
 ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245440"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696009"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Sanal makine ağ bant genişliği
 
@@ -64,7 +64,7 @@ Azure ağ yığını, 8 ' den fazla CPU çekirdeği ve 100 ' den fazla CPU çeki
 
 [Azure izleyici](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) 'de ölçümler, sanal makine veya VMSS örneklerindeki ağ akışı sayısını ve akış oluşturma hızını izlemek için kullanılabilir.
 
-![Azure-Monitor-Flow-Metrics. png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
+![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 
 Bağlantı kurma ve sonlandırma ücretleri ayrıca, paket işleme yordamlarına sahip bağlantı kurma ve sonlandırma paylaşımları olarak ağ performansını etkileyebilir. İş yüklerini beklenen trafik desenlerine göre kıyaslanmasını ve iş yüklerini performans ihtiyaçlarınızı karşılayacak şekilde ölçeklendirmenizi öneririz. 
 

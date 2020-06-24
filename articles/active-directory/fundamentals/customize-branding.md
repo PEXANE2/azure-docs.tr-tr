@@ -8,28 +8,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 06/05/2020
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e0fc3cb450c253882ed34a2c4f5748efe55d0ec
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: d1e9ec975a17be2675d2f56b2cee87f91d7e9aae
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982046"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733135"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Kuruluşunuzun Azure Active Directory oturum açma sayfasına marka ekleyin
 Azure Active Directory (Azure AD) oturum açma sayfalarınızda tutarlı bir görünüm sağlamak için kuruluşunuzun logosu ve özel renk düzenlerini kullanın. Kullanıcılar, kimlik sağlayıcınız olarak Azure AD kullanan Office 365 gibi, kuruluşunuzun Web tabanlı uygulamalarında oturum açtığında oturum açma sayfalarınız görüntülenir.
 
->[!Note]
+>[!NOTE]
 >Özel marka eklemek için Azure Active Directory Premium 1, Premium 2 veya Basic sürümleri kullanmanız ya da bir Office 365 lisansına sahip olmanız gerekir. Lisanslama ve sürümler hakkında daha fazla bilgi için bkz. [Azure AD Premium kaydolma](active-directory-get-started-premium.md).<br><br>Azure AD Premium ve Temel sürümleri, Azure Active Directory'nin dünya çapındaki örneğini kullanan Çin'deki müşterilerin kullanımına sunulmuştur. Azure AD Premium ve Temel sürümleri, şu anda Çin’de 21Vianet tarafından işletilen Azure hizmeti kapsamında desteklenmemektedir. Daha fazla bilgi için [Azure Active Directory Forumu](https://feedback.azure.com/forums/169401-azure-active-directory/)’nu kullanarak bizimle görüşün.
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Azure AD oturum açma sayfanızı özelleştirin
-Kullanıcılar kuruluşunuzun kiracıya özgü uygulamalarında `https://outlook.com/contoso.com`oturum açtığında veya gibi bir etki alanı değişkeni geçirirken görüntülenen Azure AD oturum açma sayfalarınızı özelleştirebilirsiniz. `https://passwordreset.microsoftonline.com/?whr=contoso.com`
+Kullanıcılar kuruluşunuzun kiracıya özgü uygulamalarında oturum açtığında `https://outlook.com/contoso.com` veya gibi bir etki alanı değişkeni geçirirken görüntülenen Azure AD oturum açma sayfalarınızı özelleştirebilirsiniz `https://passwordreset.microsoftonline.com/?whr=contoso.com` .
 
-Kullanıcılarınızın www\.Office.com gibi sitelere gitmesi durumunda özel markası hemen görünmez. Bunun yerine, kullanıcının özelleştirilmiş marka görüntülenmeden önce oturum açması gerekir. Kullanıcı oturum açtıktan sonra, marka 15 dakika veya daha uzun sürebilir. 
+Kullanıcılarınızın www office.com gibi sitelere gitmesi durumunda özel markası hemen görünmez \. . Bunun yerine, kullanıcının özelleştirilmiş marka görüntülenmeden önce oturum açması gerekir. Kullanıcı oturum açtıktan sonra, marka 15 dakika veya daha uzun sürebilir. 
 
 > [!NOTE]
 > Tüm marka öğeleri isteğe bağlıdır. Örneğin, arka plan resmi olmayan bir başlık logosu belirtirseniz, oturum açma sayfası logonuzu hedef siteden varsayılan bir arka plan görüntüsü ile gösterir (örneğin, Office 365).<br><br>Ayrıca, oturum açma sayfası markalaması kişisel Microsoft hesaplarının üzerine taşınmaz. Kullanıcılarınız veya iş konuklarınız kişisel bir Microsoft hesabı oturum açtığında, oturum açma sayfası kuruluşunuzun markasını yansıtmaz.
@@ -43,7 +43,7 @@ Kullanıcılarınızın www\.Office.com gibi sitelere gitmesi durumunda özel ma
 
 3. **Şirket markasını Yapılandır** sayfasında, aşağıdaki bilgilerin herhangi birini veya tümünü sağlayın.
 
-    >[!Important]
+    >[!IMPORTANT]
     >Bu sayfaya eklediğiniz tüm özel görüntülerin görüntü boyutu (piksel) ve olası dosya boyutu (KB), kısıtlamalar vardır. Bu kısıtlamalar nedeniyle, genellikle doğru boyutlu görüntüleri oluşturmak için büyük olasılıkla bir fotoğraf düzenleyicisi kullanmanız gerekir.
 
     - **Genel ayarlar**
@@ -77,8 +77,10 @@ Kullanıcılarınızın www\.Office.com gibi sitelere gitmesi durumunda özel ma
         - **Kare logosu resmi, Koyu tema.** Yukarıdaki kare logosu görüntüsüyle aynı. Bu logo resmi, kutu dışı deneyim (OOBE) sırasında Windows 10 Azure AD 'ye katılmış ekranları gibi koyu bir arka planla birlikte kullanıldığında kare logosu görüntüsünün yerini alır.  Logonuz beyaz, koyu mavi ve siyah arka planlar üzerinde iyi görünüyorsa, bu görüntüyü eklemeniz gerekmez. 
         
         - **Oturum açmış durumda kalma seçeneğini göster.** Kullanıcılarınızın açık olarak oturumu açana kadar Azure AD 'de oturum açmış kalmasına izin verebilirsiniz. **Hayır**' ı seçerseniz, bu seçenek gizlidir ve kullanıcıların tarayıcının her kapatılışında ve yeniden açıldığı her seferinde oturum açması gerekir.
+
+            Oturum açmış durumda kalma seçeneğini yapılandırma ve sorun giderme hakkında daha fazla bilgi edinmek için bkz. [Azure AD hesapları için ' oturum açmış durumda kal? ' Istemi yapılandırma](keep-me-signed-in.md)
         
-            >[!Note]
+            >[!NOTE]
             >SharePoint Online ve Office 2010’un bazı özellikleri kullanıcıların oturumun açık kalmasını seçebilmesine bağlıdır. Bu ayarı **Hayır** olarak ayarlarsanız kullanıcılarınız oturum açmaya yönelik ek ve beklenmeyen istemler görebilir.
    
 
@@ -86,7 +88,7 @@ Kullanıcılarınızın www\.Office.com gibi sitelere gitmesi durumunda özel ma
 
     Bu işlem ilk özel marka yapılandırmanızı oluşturursa, kiracınız için varsayılan değer olur. Ek yapılandırmalar varsa, varsayılan yapılandırmanızı seçebileceksiniz.
     
-    >[!Important]
+    >[!IMPORTANT]
     >Kiracınıza daha fazla kurumsal marka yapılandırması eklemek için **contoso-Company marka** sayfasında **Yeni dil** ' i seçmeniz gerekir. Bu, yukarıdaki adımları izleyerek **Şirket markasını Yapılandır** sayfasını açar.
 
 ## <a name="update-your-custom-branding"></a>Özel markanızı güncelleştirme
@@ -125,7 +127,7 @@ Kullanıcılarınızın www\.Office.com gibi sitelere gitmesi durumunda özel ma
     ![Contoso-Şirket markası sayfası, varsayılan yapılandırma gösteriliyor](media/customize-branding/company-branding-french-config.png)
 
 ## <a name="add-your-custom-branding-to-pages"></a>Sayfalarınıza özel markalarınızı ekleme
-URL 'nin sonunu bir metinle değiştirerek özel markanızı sayfalara ekleyin `?whr=yourdomainname`. Bu değişiklik Multi-Factor Authentication (MFA) kurulum sayfası, self servis parola sıfırlama (SSPR) kurulum sayfası ve oturum açma sayfası dahil olmak üzere çeşitli sayfalarda çalışmaktadır.
+URL 'nin sonunu bir metinle değiştirerek özel markanızı sayfalara ekleyin `?whr=yourdomainname` . Bu değişiklik Multi-Factor Authentication (MFA) kurulum sayfası, self servis parola sıfırlama (SSPR) kurulum sayfası ve oturum açma sayfası dahil olmak üzere çeşitli sayfalarda çalışmaktadır.
 
 **Örnekler**
 
@@ -134,5 +136,3 @@ URL 'nin sonunu bir metinle değiştirerek özel markanızı sayfalara ekleyin `
 
 **Özgün URL:**https://aka.ms/SSPR<br>
 **Özel URL:**`https://passwordreset.microsoftonline.com/?whr=contoso.com`
-
- 

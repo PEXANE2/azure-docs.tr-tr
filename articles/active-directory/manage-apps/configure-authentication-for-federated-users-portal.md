@@ -3,24 +3,24 @@ title: Giriş bölgesi bulmayı kullanarak oturum açma otomatik hızlandırmas�
 description: Otomatik hızlandırma ve etki alanı ipuçları dahil olmak üzere federasyon kullanıcıları için Azure Active Directory kimlik doğrulaması için giriş bölgesi bulma ilkesini nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/08/2019
-ms.author: mimart
+ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 340cf77ae6b4c5677ed91f6a0626b73d259e5fd2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 16af484e77787ee1d729ce97eec8c666bf925837
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690499"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763593"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Giriş bölgesi bulma ilkesi kullanarak bir uygulama için Azure Active Directory oturum açma davranışı yapılandırma
 
@@ -81,8 +81,8 @@ Azure Active Directory tarafından desteklenen etki alanı ipuçlarını kullana
 ### <a name="home-realm-discovery-policy-for-auto-acceleration"></a>Otomatik hızlandırma için ana bölge bulma ilkesi
 Bazı uygulamalar, yaydıkları kimlik doğrulama isteğini yapılandırmak için bir yol sağlamaz. Bu durumlarda, otomatik hızlandırmayı denetlemek için etki alanı ipuçlarını kullanmak mümkün değildir. Otomatik hızlandırma, ilke aracılığıyla aynı davranışa ulaşmak için yapılandırılabilir.  
 
-## <a name="enable-direct-authentication-for-legacy-applications"></a>Eski uygulamalar için doğrudan kimlik doğrulamasını etkinleştir
-Uygulamaların kimliğini doğrulamak için AAD kitaplıklarını ve etkileşimli oturum açmayı kullanması en iyi uygulamadır. Kitaplıklar, Federasyon Kullanıcı akışlarını üstlenir.  Bazen eski uygulamalar, Federasyonu anlamak için yazılmaz. Bunlar, giriş bölgesi bulma gerçekleştirmez ve kullanıcının kimliğini doğrulamak için doğru Federal uç noktayla etkileşime girmez. ' I seçerseniz, kimlik doğrulaması yapmak için Kullanıcı adı/parola kimlik bilgileri gönderen belirli eski uygulamaları etkinleştirmek için HRD Ilkesini kullanabilirsiniz Azure Active Directory. Parola karması eşitlemesi etkinleştirilmelidir. 
+## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>Eski uygulamalar için Federal kullanıcıların doğrudan ROPC kimlik doğrulamasını etkinleştir
+Uygulamaların kimliğini doğrulamak için AAD kitaplıklarını ve etkileşimli oturum açmayı kullanması en iyi uygulamadır. Kitaplıklar, Federasyon Kullanıcı akışlarını üstlenir.  Bazen eski uygulamalar, özellikle ROPC 'yi kullananlar, Kullanıcı adı ve parolayı doğrudan Azure AD 'ye gönderir ve Federasyonu anlamak için yazılmaz. Bunlar, giriş bölgesi bulma gerçekleştirmez ve kullanıcının kimliğini doğrulamak için doğru Federal uç noktayla etkileşime girmez. ' I seçerseniz, Azure Active Directory doğrudan kimlik doğrulaması yapmak için ROPC iznini kullanarak Kullanıcı adı/parola kimlik bilgileri gönderen belirli eski uygulamaları etkinleştirmek üzere HRD Ilkesini kullanabilirsiniz. Parola karması eşitlemesi etkinleştirilmelidir. 
 
 > [!IMPORTANT]
 > Yalnızca Parola karması eşitlemesi açıksa doğrudan kimlik doğrulamayı etkinleştirin ve şirket içi IDP 'niz tarafından uygulanan herhangi bir ilke olmadan bu uygulamanın kimliklerinin doğrulanmasının uygun olduğunu bilirsiniz. Parola karma eşitlemesini devre dışı bırakırsanız veya herhangi bir nedenden dolayı AD Connect ile dizin eşitlemeyi kapatırsanız, eski parola karmasını kullanarak doğrudan kimlik doğrulama olasılığa engel olmak için bu ilkeyi kaldırmanız gerekir.
@@ -110,7 +110,7 @@ HRD ilkesini oluşturmak ve yönetmek için Azure Active Directory PowerShell cm
     {  
     "AccelerateToFederatedDomain":true,
     "PreferredDomain":"federated.example.edu",
-    "AllowCloudPasswordValidation":true
+    "AllowCloudPasswordValidation":false
     }
    }
 ```

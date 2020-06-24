@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: a55aebf13b341d1a722ddcb9525c4539b2f000e6
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 06/18/2020
+ms.openlocfilehash: 3643092cf867fb49a24d5c1961d1a10834d5d3a3
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84656762"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298863"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Tümleştirme hizmeti ortamı (ıSE) kullanarak Azure Logic Apps Azure sanal ağlarına bağlanma
 
@@ -44,25 +44,31 @@ Ayrıca, [örnek Azure Resource Manager hızlı başlangıç şablonunu](https:/
   > [!IMPORTANT]
   > Logic Apps, yerleşik Tetikleyiciler, yerleşik Eylemler ve ıSE 'de çalışan bağlayıcılar, tüketim tabanlı fiyatlandırma planından farklı bir fiyatlandırma planı kullanır. Fiyatlandırma ve faturalandırma işinin nasıl sesleri olduğunu öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](../logic-apps/logic-apps-pricing.md).
 
-* Bir [Azure sanal ağı](../virtual-network/virtual-networks-overview.md). Bir sanal ağınız yoksa, [Azure sanal ağı oluşturmayı](../virtual-network/quick-create-portal.md)öğrenin.
+* Bir [Azure sanal ağı](../virtual-network/virtual-networks-overview.md). Sanal ağınızın, ıSE 'de kaynak oluşturmak ve dağıtmak için herhangi bir hizmete temsilci olmayan dört *boş* alt ağa sahip olması gerekir. Her alt ağ, ıSE 'de kullanılan farklı bir Logic Apps bileşenini destekler. Alt ağları önceden oluşturabilirsiniz veya aynı anda alt ağlar oluşturabileceğiniz için ıSE 'yi oluşturmanız için bekleyebilirsiniz. [Alt ağ gereksinimleri](#create-subnet)hakkında daha fazla bilgi edinin.
 
-  * Sanal ağınızın, ıSE 'de kaynak oluşturup dağıtmak için dört *boş* alt ağa sahip olması gerekir. Her alt ağ, ıSE 'de kullanılan farklı bir Logic Apps bileşenini destekler. Bu alt ağları önceden oluşturabilirsiniz veya aynı anda alt ağlar oluşturabileceğiniz için ıSE 'yi oluşturmaya kadar bekleyebilirsiniz. [Alt ağ gereksinimleri](#create-subnet)hakkında daha fazla bilgi edinin.
-
-  * Alt ağ adlarının alfabetik bir karakter veya alt çizgi ile başlaması gerekir ve şu karakterleri kullanamaz: `<` , `>` , `%` , `&` , `\\` , `?` , `/` . 
-  
-  * ISE 'yi bir Azure Resource Manager şablonuyla dağıtmak istiyorsanız, önce bir boş alt ağı Microsoft. Logic/ıntegrationserviceenvironment 'a temsilcdiğinizden emin olun. Azure portal aracılığıyla dağıtırken bu temsilciyi yapmanız gerekmez.
+  > [!IMPORTANT]
+  >
+  > Azure Logic Apps tarafından çözümlenemediğinden, sanal ağınız veya alt ağlarınız için aşağıdaki IP adresi alanlarını kullanmayın:<p>
+  > 
+  > * 0.0.0.0/8
+  > * 100.64.0.0/10
+  > * 127.0.0.0/8
+  > * 168.63.129.16/32
+  > * 169.254.169.254/32
+  > 
+  > Alt ağ adlarının alfabetik bir karakter veya alt çizgi ile başlaması gerekir ve şu karakterleri kullanamaz: `<` , `>` , `%` , `&` , `\\` , `?` , `/` . ISE 'yi bir Azure Resource Manager şablonuyla dağıtmak için, önce bir boş alt ağ temsilciliğini yaptığınızdan emin olun `Microsoft.Logic/integrationServiceEnvironment` . Azure portal aracılığıyla dağıtırken bu temsilciyi yapmanız gerekmez.
 
   * Sanal ağınızın, ıSE 'nin doğru çalışabilmesi ve erişilebilir kalabilmesi [IÇIN Ise için erişim sağladığından](#enable-access) emin olun.
 
-  * [ExpressRoute](../expressroute/expressroute-introduction.md) , şirket içi ağlarınızı Microsoft bulutuna genişletmenize ve bağlantı sağlayıcısı tarafından kolaylaştırılırlanan özel bir bağlantı üzerinden Microsoft bulut hizmetlerine bağlanmanızı sağlar. ExpressRoute özellikle, trafiği genel İnternet üzerinden değil, özel bir ağ üzerinden yönlendiren bir sanal özel ağ. Mantıksal uygulamalarınız, ExpressRoute veya bir sanal özel ağ aracılığıyla bağlandıklarında aynı sanal ağdaki şirket içi kaynaklara bağlanabilir.
-     
-    ExpressRoute kullanırsanız, [Zorlamalı tünel](../firewall/forced-tunneling.md)kullandığınızdan emin olun. Zorlamalı tünel kullanıyorsanız, aşağıdaki rotayı belirten [bir yol tablosu oluşturmanız](../virtual-network/manage-route-table.md) gerekir:
-  
+  * Ya da [Zorlamalı tünel](../firewall/forced-tunneling.md)Ile [ExpressRoute](../expressroute/expressroute-introduction.md) 'u kullanmak istiyorsanız, aşağıdaki belirli yolu içeren [bir yol tablosu oluşturmanız](../virtual-network/manage-route-table.md) ve yol tablosunu Ise tarafından kullanılan her alt ağa bağlamanız gerekir:
+
     **Ad**: <*yol adı*><br>
     **Adres ön eki**: 0.0.0.0/0<br>
     **Sonraki durak**: Internet
     
-    Bu yol tablosunu, ıSE tarafından kullanılan her alt ağa bağlamanız gerekir. Logic Apps bileşenlerinin Azure depolama ve Azure SQL VERITABANı gibi diğer bağımlı Azure hizmetleriyle iletişim kurabilmesi için yol tablosu gereklidir. Bu yol hakkında daha fazla bilgi için bkz. [0.0.0.0/0 adres ön eki](../virtual-network/virtual-networks-udr-overview.md#default-route).
+    Bu belirli yol tablosu, Logic Apps bileşenlerinin Azure depolama ve Azure SQL VERITABANı gibi diğer bağımlı Azure hizmetleriyle iletişim kurabilmesi için gereklidir. Bu yol hakkında daha fazla bilgi için bkz. [0.0.0.0/0 adres ön eki](../virtual-network/virtual-networks-udr-overview.md#default-route). ExpressRoute ile Zorlamalı tünel kullanmıyorsanız, bu özel yol tablosuna gerek kalmaz.
+    
+    ExpressRoute, şirket içi ağlarınızı Microsoft bulutuna genişletmenizi ve bağlantı sağlayıcısı tarafından kolaylaştırmaya yönelik özel bir bağlantı üzerinden Microsoft bulut hizmetlerine bağlanmanızı sağlar. ExpressRoute özellikle, trafiği genel İnternet üzerinden değil, özel bir ağ üzerinden yönlendiren bir sanal özel ağ. Mantıksal uygulamalarınız, ExpressRoute veya bir sanal özel ağ aracılığıyla bağlandıklarında aynı sanal ağdaki şirket içi kaynaklara bağlanabilir.
    
   * Bir [ağ sanal gereci (NVA)](../virtual-network/virtual-networks-udr-overview.md#user-defined)KULLANıYORSANıZ, TLS/SSL sonlandırmasını etkinleştirmeyin veya giden TLS/SSL trafiğini değiştiremezsiniz. Ayrıca, ıSE 'nin alt ağından kaynaklanan trafik için incelemeyi etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [sanal ağ trafiği yönlendirme](../virtual-network/virtual-networks-udr-overview.md).
 
@@ -130,6 +136,12 @@ Bu tabloda, ıSE 'nizin erişilebilir olması ve bu bağlantı noktalarının am
 | Rol örnekleri arasında Redsıs örnekleri için Azure önbelleğine erişin | **VirtualNetwork** | * | **VirtualNetwork** | 6379-6383, ve **notlara** bakın| ISE 'nin Redsıs için Azure Cache ile çalışması için, [REDSıS SSS Için Azure önbelleği tarafından tanımlanan bu giden ve gelen bağlantı noktalarını](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)açmanız gerekir. |
 |||||||
 
+Ayrıca, [App Service ortamı (Ao)](../app-service/environment/intro.md)için giden kuralları eklemeniz gerekir:
+
+* Azure Güvenlik duvarı kullanıyorsanız, asa platformu trafiğine giden erişime izin veren App Service Ortamı (ASA) [tam etki alanı adı (FQDN) etiketiyle](../firewall/fqdn-tags.md#current-fqdn-tags)güvenlik duvarınızı ayarlamanız gerekir.
+
+* Azure Güvenlik Duvarı dışında bir güvenlik duvarı gereci kullanıyorsanız, güvenlik duvarınızı App Service Ortamı için gereken [Güvenlik Duvarı Tümleştirme bağımlılıklarında](../app-service/environment/firewall-integration.md#dependencies) listelenen *Tüm* kurallarla ayarlamanız gerekir.
+
 <a name="create-environment"></a>
 
 ## <a name="create-your-ise"></a>ISE'nizi oluşturun
@@ -169,7 +181,7 @@ Bu tabloda, ıSE 'nizin erişilebilir olması ve bu bağlantı noktalarının am
 
    * [Sınıfsız etki alanları arası yönlendirme (CIDR) biçimini](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) ve bir sınıf B adres alanını kullanır.
 
-   * `/27`Her alt ağ 32 adresi gerektirdiğinden adres alanındaki bir kullanır. Örneğin, `10.0.0.0/27` 2<sup>(32-27)</sup> 2<sup>5</sup> veya 32 olduğundan 32 adresi vardır. Diğer adresler daha fazla avantaj sağlamaz.  Adresleri hesaplama hakkında daha fazla bilgi edinmek için bkz. [ıPV4 CIDR blokları](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
+   * `/27`Her alt ağ 32 adresi gerektirdiğinden adres alanındaki bir kullanır. Örneğin, `10.0.0.0/27` 2<sup>(32-27)</sup> 2<sup>5</sup> veya 32 olduğundan 32 adresi vardır. Diğer adresler daha fazla avantaj sağlamaz. Adresleri hesaplama hakkında daha fazla bilgi edinmek için bkz. [ıPV4 CIDR blokları](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 
    * [ExpressRoute](../expressroute/expressroute-introduction.md)kullanırsanız, aşağıdaki rotayı içeren [bir yol tablosu oluşturmanız](../virtual-network/manage-route-table.md) ve bu tabloyu, Ise tarafından kullanılan her alt ağ ile bağlamanız gerekir:
 
@@ -216,7 +228,7 @@ Bu tabloda, ıSE 'nizin erişilebilir olması ve bu bağlantı noktalarının am
    Aksi takdirde, dağıtım sorunlarını gidermeye yönelik Azure portal yönergeleri izleyin.
 
    > [!NOTE]
-   > Dağıtım başarısız olursa veya ıSE 'yi silerseniz, Azure, alt ağlarınızı serbest bırakmadan önce bir saat kadar sürebilir. Bu gecikme, başka bir ıSE içinde bu alt ağları yeniden kullanmadan önce beklemeniz gerekebilecek anlamına gelir.
+   > Dağıtım başarısız olursa veya ıSE 'yi silerseniz Azure, alt ağlarınızı serbest bırakmadan önce bir saat veya daha uzun bir durumda olabilir. Bu nedenle, başka bir ıSE 'de bu alt ağları yeniden kullanabilmeniz için beklemeniz gerekebilir.
    >
    > Sanal ağınızı silerseniz Azure, alt ağlarınızı serbest bırakmadan genellikle iki saate kadar sürer, ancak bu işlem daha uzun sürebilir. 
    > Sanal ağları silerken, hala bağlı hiçbir kaynak bulunmadığından emin olun. 

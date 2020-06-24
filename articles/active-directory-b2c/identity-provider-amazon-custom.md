@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 059c43b24ddc9f319eac4f2783cfc203bed8c7f1
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: fbe15e2fab9935e0e76cd1cca23f4b8b1e760d38
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900427"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202271"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak bir Amazon hesabı ile oturum açmayı ayarlama
 
@@ -27,14 +27,14 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) içinde [özel ilkeler](c
 ## <a name="prerequisites"></a>Ön koşullar
 
 - [Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
-- Zaten bir Amazon hesabınız yoksa, bir tane oluşturun [https://www.amazon.com/](https://www.amazon.com/).
+- Zaten bir Amazon hesabınız yoksa, bir tane oluşturun [https://www.amazon.com/](https://www.amazon.com/) .
 
 ## <a name="create-an-app-in-the-amazon-developer-console"></a>Amazon geliştirici konsolunda uygulama oluşturma
 
-Azure Active Directory B2C (Azure AD B2C) ' de bir Amazon hesabını federal kimlik sağlayıcısı olarak kullanmak için, [Amazon Developer Services ve teknolojilerinde](https://developer.amazon.com)bir uygulama oluşturmanız gerekir. Zaten bir Amazon hesabınız yoksa kaydolabilirsiniz [https://www.amazon.com/](https://www.amazon.com/).
+Azure Active Directory B2C (Azure AD B2C) ' de bir Amazon hesabını federal kimlik sağlayıcısı olarak kullanmak için, [Amazon Developer Services ve teknolojilerinde](https://developer.amazon.com)bir uygulama oluşturmanız gerekir. Zaten bir Amazon hesabınız yoksa kaydolabilirsiniz [https://www.amazon.com/](https://www.amazon.com/) .
 
 > [!NOTE]  
-> Aşağıdaki **8. adımdaki** URL 'leri kullanarak kiracınızın adıyla `your-tenant-name` değiştirin. Kiracı adınızı girerken, kiracı, Azure AD B2C büyük harfle tanımlansa bile, tüm küçük harfleri kullanın.
+> Aşağıdaki **8. adımdaki** URL 'leri kullanarak `your-tenant-name` kiracınızın adıyla değiştirin. Kiracı adınızı girerken, kiracı, Azure AD B2C büyük harfle tanımlansa bile, tüm küçük harfleri kullanın.
 > - **Izin verilen çıkış noktaları**için şunu girin`https://your-tenant-name.b2clogin.com` 
 > - **Izin verilen dönüş URL 'leri**için şunu girin`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
 
@@ -49,11 +49,11 @@ Daha önce Azure AD B2C kiracınızda kaydettiğiniz istemci gizli anahtarını 
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
 5. **Ilke anahtarlarını** seçin ve ardından **Ekle**' yi seçin.
-6. **Seçenekler**için öğesini seçin `Manual`.
-7. İlke anahtarı için bir **ad** girin. Örneğin, `AmazonSecret`. Ön ek `B2C_1A_` , anahtarınızın adına otomatik olarak eklenir.
+6. **Seçenekler**için öğesini seçin `Manual` .
+7. İlke anahtarı için bir **ad** girin. Örneğin, `AmazonSecret`. Ön ek, `B2C_1A_` anahtarınızın adına otomatik olarak eklenir.
 8. **Gizli**, daha önce kaydettiğiniz istemci gizli anahtarını girin.
-9. **Anahtar kullanımı**için öğesini seçin `Signature`.
-10. **Oluştur**' a tıklayın.
+9. **Anahtar kullanımı**için öğesini seçin `Signature` .
+10. **Oluştur**'a tıklayın.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
 
@@ -62,7 +62,7 @@ Kullanıcıların bir Amazon hesabı kullanarak oturum açmasını istiyorsanız
 Bir Amazon hesabını, ilkenizin uzantı dosyasındaki **Claimsproviders** öğesine ekleyerek bir istek sağlayıcısı olarak tanımlayabilirsiniz.
 
 
-1. *TrustFrameworkExtensions. xml*' i açın.
+1. *TrustFrameworkExtensions.xml*açın.
 2. **Claimsproviders** öğesini bulun. Yoksa, kök öğenin altına ekleyin.
 3. Yeni bir **ClaimsProvider** 'ı aşağıdaki şekilde ekleyin:
 
@@ -113,16 +113,16 @@ Bir Amazon hesabını, ilkenizin uzantı dosyasındaki **Claimsproviders** öğe
 Şimdi, ilkenizi Azure AD dizininizle nasıl iletişim kuracağını öğrenmek için Azure AD B2C ilkenizi yapılandırdınız. Şu ana kadar herhangi bir sorun olmadığını doğrulamak için, ilkenizin uzantı dosyasını karşıya yüklemeyi deneyin.
 
 1. Azure AD B2C kiracınızdaki **özel ilkeler** sayfasında, **ilkeyi karşıya yükle**' yi seçin.
-2. Varsa **Ilkenin üzerine yazmayı**etkinleştirin ve ardından *TrustFrameworkExtensions. xml* dosyasına gidip seçin.
+2. Varsa **Ilkenin üzerine yazmayı**etkinleştirin ve sonra *TrustFrameworkExtensions.xml* dosyasına gidip seçin.
 3. **Karşıya Yükle**'ye tıklayın.
 
 ## <a name="register-the-claims-provider"></a>Talep sağlayıcısını Kaydet
 
 Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma/oturum açma ekranlarından hiçbirinde kullanılamaz. Kullanılabilir hale getirmek için, var olan bir şablon Kullanıcı yolculuğunun bir yinelemesini oluşturun ve ardından Amazon kimlik sağlayıcısı 'nı da içerecek şekilde değiştirin.
 
-1. *TrustFrameworkBase. xml* dosyasını başlangıç paketinden açın.
-2. Dahil `Id="SignUpOrSignIn"`olan **userelde ney** öğesinin tüm içeriğini bulup kopyalayın.
-3. *TrustFrameworkExtensions. xml* ' i açın ve **User, neys** öğesini bulun. Öğe yoksa, bir tane ekleyin.
+1. *TrustFrameworkBase.xml* dosyasını başlangıç paketinden açın.
+2. Dahil olan **Userelde ney** öğesinin tüm içeriğini bulup kopyalayın `Id="SignUpOrSignIn"` .
+3. *TrustFrameworkExtensions.xml* açın ve **User, neys** öğesini bulun. Öğe yoksa, bir tane ekleyin.
 4. **User, neys** öğesinin bir alt öğesi olarak kopyaladığınız **User, ney** öğesinin tüm içeriğini yapıştırın.
 5. Kullanıcı yolculuğunun KIMLIĞINI yeniden adlandırın. Örneğin, `SignUpSignInAmazon`.
 
@@ -130,10 +130,10 @@ Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma/oturum açma
 
 **Claimsproviderselection** öğesi, kaydolma/oturum açma ekranındaki bir kimlik sağlayıcısı düğmesine benzer. Bir Amazon hesabı için bir **Claimsproviderselection** öğesi eklerseniz, bir Kullanıcı sayfada yer alıyorsa yeni bir düğme görüntülenir.
 
-1. Oluşturduğunuz Kullanıcı yolculuğuna dahil `Order="1"` olan **orchestrationstep** öğesini bulun.
-2. **Claimsproviderseçilir**altında aşağıdaki öğeyi ekleyin. **Targetclaimsexchangeıd** değerini uygun bir değere ayarlayın, örneğin `AmazonExchange`:
+1. Oluşturduğunuz Kullanıcı yolculuğuna dahil olan **Orchestrationstep** öğesini bulun `Order="1"` .
+2. **Claimsproviderseçilir**altında aşağıdaki öğeyi ekleyin. **Targetclaimsexchangeıd** değerini uygun bir değere ayarlayın, örneğin `AmazonExchange` :
 
-    ```XML
+    ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="AmazonExchange" />
     ```
 
@@ -141,16 +141,16 @@ Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma/oturum açma
 
 Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerekir. Bu durumda, bir belirteç almak için Azure AD B2C bir Amazon hesabıyla iletişim kurmak için kullanılır.
 
-1. Kullanıcı yolculuğu `Order="2"` ' nda yer alan **orchestrationstep** ' i bulun.
+1. Kullanıcı yolculuğu ' nda yer alan **Orchestrationstep** ' i bulun `Order="2"` .
 2. **Targetclaimsexchangeıd**IÇIN kullandığınız kimlik için aynı değeri kullandığınızdan emin olmak Için aşağıdaki **claimsexchange** öğesini ekleyin:
 
-    ```XML
+    ```xml
     <ClaimsExchange Id="AmazonExchange" TechnicalProfileReferenceId="Amazon-OAuth" />
     ```
 
     **TechnicalProfileReferenceId** değerini daha önce oluşturduğunuz teknık profilin kimliğiyle güncelleştirin. Örneğin, `Amazon-OAuth`.
 
-3. *TrustFrameworkExtensions. xml* dosyasını kaydedin ve doğrulama için yeniden yükleyin.
+3. *TrustFrameworkExtensions.xml* dosyasını kaydedin ve doğrulama için yeniden yükleyin.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C uygulaması oluşturma
 
@@ -162,7 +162,7 @@ Azure AD B2C ile iletişim, B2C kiracınıza kaydolmanızı sağlayan bir uygula
 
 Oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf (RP) dosyasını güncelleştirin.
 
-1. Çalışma dizininizde *Signuporsignın. xml* ' in bir kopyasını oluşturun ve yeniden adlandırın. Örneğin, bunu *Signupsignınamazon. xml*olarak yeniden adlandırın.
+1. Çalışma dizininizde *SignUpOrSignIn.xml* bir kopyasını oluşturun ve yeniden adlandırın. Örneğin, *SignUpSignInAmazon.xml*olarak yeniden adlandırın.
 2. Yeni dosyayı açın ve **TrustFrameworkPolicy** Için **PolicyId** özniteliğinin değerini benzersiz bir değerle güncelleştirin. Örneğin, `SignUpSignInAmazon`.
 3. **Publicpolicyuri** DEĞERINI ilke URI 'siyle güncelleştirin. Örneğin,`http://contoso.com/B2C_1A_signup_signin_amazon`
 4. **Defaultuseryolculuney** Içindeki **referenceıd** özniteliğinin değerini, oluşturduğunuz yenı Kullanıcı yolculuğunun kimliğiyle eşleşecek şekilde güncelleştirin (Signuptiflaon).

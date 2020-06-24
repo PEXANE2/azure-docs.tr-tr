@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18409f93ab50f7d031ec78a55b9eaf8ad1b85a49
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 601af3a5e642b4bbda54f461b3139e72b01b21d6
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70101406"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193507"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Sanal Makineler'de SAP Business One
 Bu belge, Azure sanal makinelerinde SAP Business One dağıtımı için rehberlik sağlar. Belgeler, SAP için Iş 'nin yükleme belgelerinin yerini almaz. Belgeler, Azure altyapısına ilişkin Iş tek uygulamaları çalıştırmak için temel planlama ve dağıtım yönergelerini kapsamalıdır.
@@ -67,17 +67,17 @@ Azure belgelerinin yanı sıra, Iş için SAP 'den bir veya iş için merkezi no
 - ' FAT ' istemcisiyle istemci katmanı
 - Bir kiracının veritabanı şemasını içeren bir veritabanı katmanı
 
-İstemci bölümünde hangi bileşenlerin çalıştığını ve sunucu bölümünde çalışmakta olan parçaların [SAP Business One Yönetici Kılavuzu](https://help.sap.com/http.svc/rc/879bd9289df34a47af838e67d74ea302/9.3/en-US/AdministratorGuide_SQL.pdf) 'nda belgelendiği daha iyi bir genel bakış 
+İstemci bölümünde hangi bileşenlerin çalıştığını ve sunucu bölümünde çalışmakta olan parçaların [SAP Business One Yönetici Kılavuzu](https://help.sap.com/doc/601fbd9113be4240b81d74626439cfa9/10.0/en-US/AdministratorGuide_SQL.pdf) 'nda belgelendiği daha iyi bir genel bakış 
 
 İstemci katmanı ve DBMS katmanı arasında ağır gecikme süresi açısından kritik bir etkileşim olduğundan, her iki katmanın Azure 'da dağıtma sırasında Azure 'da bulunması gerekir. Kullanıcıların, Iş tek istemci bileşenleri için bir RDS hizmetini çalıştıran bir veya birden çok VM 'de RDS.
 
 ### <a name="sizing-vms-for-sap-business-one"></a>SAP Iş için VM 'Leri boyutlandırma
 
-İstemci VM 'leri boyutlandırmasıyla ilgili olarak, kaynak gereksinimleri, belge [SAP Iş bir donanım gereksinimleri Kılavuzu](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)'nda SAP tarafından belgelenmiştir. Azure için, belge Bölüm 2,4 ' de belirtilen gereksinimlere odaklanmanız ve hesaplamanız gerekir.
+İstemci VM 'leri boyutlandırmasıyla ilgili olarak, kaynak gereksinimleri, belge [SAP Iş bir donanım gereksinimleri Kılavuzu](https://help.sap.com/doc/bfa9770d12284cce8509956dcd4c5fcb/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)'nda SAP tarafından belgelenmiştir. Azure için, belge Bölüm 2,4 ' de belirtilen gereksinimlere odaklanmanız ve hesaplamanız gerekir.
 
 Iş tek istemci bileşenlerini ve DBMS konağını barındırmak için Azure sanal makineleri olarak yalnızca SAP NetWeaver destekleniyor olan VM 'Lere izin verilir. SAP NetWeaver desteklenen Azure VM 'lerinin listesini bulmak için [SAP Note #1928533](https://launchpad.support.sap.com/#/notes/1928533)makalesini okuyun.
 
-Iş için DBMS arka ucu olarak SAP HANA çalıştırmak, yalnızca Hana [sertifikası](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) 'nda Hana 'da iş Için listelenen VM 'ler için desteklenir. Iş One istemci bileşenleri, SAP HANA DBMS sistemi olarak bu daha güçlü kısıtlamadan etkilenmez.
+Iş için DBMS arka ucu olarak SAP HANA çalıştırmak, yalnızca Hana [sertifikalı IaaS platformu LISTESINDE](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) Hana 'da iş Için listelenen VM 'ler için desteklenir. Iş One istemci bileşenleri, SAP HANA DBMS sistemi olarak bu daha güçlü kısıtlamadan etkilenmez.
 
 ### <a name="operating-system-releases-to-use-for-sap-business-one"></a>SAP Business One için kullanılacak işletim sistemi sürümleri
 

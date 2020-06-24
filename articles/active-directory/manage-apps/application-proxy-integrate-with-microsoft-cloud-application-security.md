@@ -1,22 +1,22 @@
 ---
 title: Cloud App Security-Azure AD ile şirket içi uygulamaları tümleştirme
 description: Azure Active Directory Microsoft Cloud App Security (MCAS) ile çalışmak için bir şirket içi uygulama yapılandırın. , Koşullu erişim ilkelerine bağlı olarak oturumları gerçek zamanlı izlemek ve denetlemek için MCAS Koşullu Erişim Uygulama Denetimi kullanın. Bu ilkeleri, Azure Active Directory (Azure AD) içinde uygulama proxy 'Si kullanan şirket içi uygulamalara uygulayabilirsiniz.
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb97f9dd87277215a5d4708d3a6f49564c490204
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 889168782acabaafa4200a8ebd097e431a68ede3
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275506"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764579"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Microsoft Cloud App Security ve Azure Active Directory ile gerçek zamanlı uygulama erişimi izlemeyi yapılandırma
 Azure Active Directory (Azure AD) içindeki şirket içi bir uygulamayı gerçek zamanlı izleme için Microsoft Cloud App Security (MCAS) kullanacak şekilde yapılandırın. MCAS, koşullu erişim ilkelerine bağlı olarak oturumları gerçek zamanlı olarak izlemek ve denetlemek için Koşullu Erişim Uygulama Denetimi kullanır. Bu ilkeleri, Azure Active Directory (Azure AD) içinde uygulama proxy 'Si kullanan şirket içi uygulamalara uygulayabilirsiniz.

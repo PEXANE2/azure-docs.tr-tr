@@ -8,11 +8,11 @@ ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
 ms.openlocfilehash: 5b2e2c51eaa878ba0ce8bc31c001575acebe6919
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240159"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695258"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB: Tablo API’sine Giriş
 
@@ -43,7 +43,7 @@ Azure Tablo depolama için yazılmış uygulamalar herhangi bir kod değişikli�
 | Fiyatlandırma | Depolama açısından iyileştirilmiş. | Aktarım hızı açısından iyileştirilmiş. |
 | SLA’lar | çoğaltma stratejisine bağlı olarak% 99,9% 99,99 oranında kullanılabilirlik. | % 99,999, tek bölgede hesapta kullanılabilirliği ve% 99,99 yazma kullanılabilirliği ve çok bölgeli hesaplarda% 99,999 yazma kullanılabilirliği. Kullanılabilirlik, gecikme süresi, aktarım hızı ve tutarlılığı kapsayan [kapsamlı SLA 'lar](https://azure.microsoft.com/support/legal/sla/cosmos-db/) . |
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [Azure portalındaki](https://portal.azure.com) yeni Azure Cosmos DB hesabı. Ardından [.NET kullanarak Tablo API'sı için hızlı başlangıç](create-table-dotnet.md) makalemizi inceleyin. 
 
@@ -61,5 +61,5 @@ Azure Tablo depolama için yazılmış uygulamalar herhangi bir kod değişikli�
 * [Azure Cosmos DB tablo .NET Standard SDK](table-sdk-dotnet-standard.md)
 * [Azure Cosmos DB tablosu .NET SDK 'Sı](table-sdk-dotnet.md)
 * [Azure Cosmos DB tablosu Java SDK 'Sı](table-sdk-java.md)
-* [Azure Cosmos DB Table Node. js SDK 'Sı](table-sdk-nodejs.md)
+* [Azure Cosmos DB tablo Node.js SDK](table-sdk-nodejs.md)
 * [Python için Azure Cosmos DB Tablosu SDK'sı](table-sdk-python.md)

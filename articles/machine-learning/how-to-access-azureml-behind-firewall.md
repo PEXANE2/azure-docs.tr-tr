@@ -11,18 +11,18 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/27/2020
 ms.custom: tracking-python
-ms.openlocfilehash: ab2bb3d94a740ca25be15b64895c52d5c038add3
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 31daec93352c0e142075a55c61f2b8d3a6d56fab
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552459"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080242"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Azure Machine Learning için Azure Güvenlik duvarının arkasındaki çalışma alanını kullanın
 
 Bu makalede, Azure Güvenlik duvarını bir Azure Machine Learning çalışma alanıyla kullanılmak üzere nasıl yapılandıracağınızı öğrenin.
 
-Azure Güvenlik Duvarı, Azure Machine Learning çalışma alanınıza ve genel İnternet 'e erişimi denetlemek için kullanılabilir. Doğru yapılandırılmamışsa, güvenlik duvarı çalışma alanınızı kullanarak sorunlara yol açabilir.
+Azure Güvenlik Duvarı, Azure Machine Learning çalışma alanınıza ve genel İnternet 'e erişimi denetlemek için kullanılabilir. Doğru yapılandırılmamışsa, güvenlik duvarı çalışma alanınızı kullanarak sorunlara yol açabilir. Hem Azure Machine Learning çalışma alanı tarafından hem de bu makalede açıklanan birçok konak adı vardır.
 
 ## <a name="network-rules"></a>Ağ kuralları
 
@@ -41,16 +41,18 @@ Bu bölümdeki konaklar Microsoft 'a aittir ve çalışma alanınızın düzgün
 | ---- | ---- |
 | **\*. batchai.core.windows.net** | Eğitim kümeleri |
 | **ml.azure.com** | Azure Machine Learning Studio |
+| **default.exp-tas.com** | Azure Machine Learning Studio tarafından kullanılır |
 | **\*. azureml.ms** | Azure Machine Learning API 'Leri tarafından kullanılır |
-| **\*. experiments.azureml.net** | Azure Machine Learning çalıştıran denemeleri tarafından kullanılır|
+| **\*. experiments.azureml.net** | Azure Machine Learning çalıştıran denemeleri tarafından kullanılır |
 | **\*. modelmanagement.azureml.net** | Modelleri kaydetmek ve dağıtmak için kullanılır|
 | **mlworkspace.azure.ai** | Bir çalışma alanı görüntülenirken Azure portal tarafından kullanılır |
 | **\*. aether.ms** | Azure Machine Learning işlem hatları çalıştırılırken kullanılır |
 | **\*. instances.azureml.net** | Azure Machine Learning işlem örnekleri |
+| **\*. instances.azureml.ms** | Çalışma alanında özel bağlantı etkinleştirildiğinde işlem örneklerinin Azure Machine Learning |
 | **windows.net** | Azure Blob Depolama |
 | **vault.azure.net** | Azure Key Vault |
-| **microsoft.com** | Temel Docker görüntüleri |
 | **azurecr.io** | Azure Container Registry |
+| **mcr.microsoft.com** | Temel Docker görüntüleri için Microsoft Container Registry |
 
 ## <a name="python-hosts"></a>Python Konakları
 

@@ -4,15 +4,16 @@ description: Bu makalede, özel bağlantıları kullanarak Azure SYNAPSE çalı�
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: d217e6d49f33db099d54e6521073c56ec146c0b8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0f2e01390a1ddd179e50523a8b5748994524a52e
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660102"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193881"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>Özel bağlantıları kullanarak Azure SYNAPSE çalışma alanınıza bağlanma (Önizleme)
 

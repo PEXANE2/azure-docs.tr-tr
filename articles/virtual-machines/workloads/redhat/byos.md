@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/10/2020
+ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: 9ab578b4b688c02c9150dfb23fce53fbb82df405
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af541faaf9529cec81c60cb1a879161d66e34a7e
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273180"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694391"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure 'da kendi aboneliğinizi getir Gold görüntülerini Red Hat Enterprise Linux
 
@@ -52,7 +52,7 @@ Bulut erişimi etkinleştirme adımlarını tamamladıktan sonra Red hat, Red Ha
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-portal"></a>Azure portal kırmızı hat altın görüntülerini kullanın
 
-1. Azure aboneliğiniz Red Hat altın görüntülerine erişimi aldıktan sonra, bunları [Azure Portal](https://portal.azure.com)bulabilirsiniz. **Kaynak** > oluştur ' a gidin,**Tümünü gör**.
+1. Azure aboneliğiniz Red Hat altın görüntülerine erişimi aldıktan sonra, bunları [Azure Portal](https://portal.azure.com)bulabilirsiniz. **Kaynak oluştur ' a**gidin,  >  **Tümünü gör**.
 
 1. Sayfanın üst kısmında özel tekliflerle ilgili olduğunu görürsünüz.
 
@@ -96,7 +96,7 @@ Aşağıdaki yönergeler, Azure CLı kullanarak bir RHEL VM için ilk dağıtım
 
     OR
 
-    az vm image terms accept --urn RedHat:rhel-byos:rhel-lvm8:8.0.20190620
+    az vm image terms accept --urn redhat:rhel-byos:rhel-lvm8:8.0.20190620
     ```
 
     >[!NOTE]
@@ -108,19 +108,22 @@ Aşağıdaki yönergeler, Azure CLı kullanarak bir RHEL VM için ilk dağıtım
     az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
 
     # Example:
-    az vm create -n rhel-byos-vm -g rhel-byos-group --image RedHat:rhel-byos:rhel-lvm75:7.5.20190620
+    az vm create -n rhel-byos-vm -g rhel-byos-group --image redhat:rhel-byos:rhel-lvm8:latest --validate
     ```
 
-1. Önceki örnekte gösterilen aynı komutu `--validate` bağımsız değişken olmadan çalıştırarak VM 'nizi sağlayın.
+1. Önceki örnekte gösterilen aynı komutu bağımsız değişken olmadan çalıştırarak VM 'nizi sağlayın `--validate` .
 
     ```azurecli
-    az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
+    az vm create -n <VM name> -g <resource group name> --image <image urn>
+
+    # Example:
+    az vm create -n rhel-byos-vm -g rhel-byos-group --image redhat:rhel-byos:rhel-lvm8:latest
     ```
 
-1. Sanal makinenize SSH ekleyin ve ilgili olmayan bir görüntünüz olduğunu doğrulayın. Bu adımı yapmak için öğesini çalıştırın `sudo yum repolist`. RHEL 8 için kullanın `sudo dnf repolist`. Çıktı, VM 'yi Red Hat ile kaydetmek için abonelik Yöneticisi 'ni kullanmanızı ister.
+1. Sanal makinenize SSH ekleyin ve ilgili olmayan bir görüntünüz olduğunu doğrulayın. Bu adımı yapmak için öğesini çalıştırın `sudo yum repolist` . RHEL 8 için kullanın `sudo dnf repolist` . Çıktı, VM 'yi Red Hat ile kaydetmek için abonelik Yöneticisi 'ni kullanmanızı ister.
 
 >[!NOTE]
->, `dnf` RHEL 8 üzerinde ve `yum` Bu değiştirilebilir. Daha fazla bilgi için bkz. [RHEL 8 Yönetici Kılavuzu](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index).
+>, RHEL 8 üzerinde `dnf` ve bu `yum` değiştirilebilir. Daha fazla bilgi için bkz. [RHEL 8 Yönetici Kılavuzu](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index).
 
 ## <a name="use-the-red-hat-gold-images-from-powershell"></a>PowerShell 'den Red Hat Gold görüntülerini kullanma
 
@@ -135,7 +138,7 @@ Aşağıdaki betik bir örnektir. Kaynak grubu, konum, VM adı, oturum açma bil
     # Define user name and blank password
     $securePassword = ConvertTo-SecureString 'TestPassword1!' -AsPlainText -Force
     $cred = New-Object System.Management.Automation.PSCredential("azureuser",$securePassword)
-    Get-AzureRmMarketplaceTerms -Publisher RedHat -Product rhel-byos -Name rhel-lvm75 | SetAzureRmMarketplaceTerms -Accept
+    Get-AzureRmMarketplaceTerms -Publisher redhat -Product rhel-byos -Name rhel-lvm75 | SetAzureRmMarketplaceTerms -Accept
 
     # Create a resource group
     New-AzureRmResourceGroup -Name $resourceGroup -Location $location

@@ -3,25 +3,25 @@ title: Yerel istemci uygulamalarını yayımlama-Azure AD | Microsoft Docs
 description: Şirket içi uygulamalarınıza güvenli uzaktan erişim sağlamak amacıyla yerel istemci uygulamalarının Azure AD Uygulama Ara Sunucusu Bağlayıcısı ile iletişim kurmasını sağlar.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 442e1515159afc1df79bb6f5f1f747ce0800fef7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ca5cdb592de29f8c5396a68a7c36e6994df906cc
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647226"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764817"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Yerel istemci uygulamalarının proxy uygulamalarıyla etkileşime geçmesini sağlama
 
@@ -113,10 +113,10 @@ if (authResult != null)
 
 | Bilgi gerekiyor | Azure AD portalında bulma |
 | --- | --- |
-| \<Kiracı KIMLIĞI> | **Azure Active Directory**  >  **Özellikler**  >  **DIZIN kimliği** |
-| \<Yerel uygulamanın uygulama KIMLIĞI> | **Uygulama kaydı**  >  *Yerel uygulamanız*  >  **Genel bakış**  >  **Uygulama kimliği** |
-| \<Kapsam> | **Uygulama kaydı**  >  *Yerel uygulamanız*  >  **API izinleri** > izin API 'sine (User_impersonation) tıklayarak, sağ tarafta başlık **user_impersonation** olan bir panel >. Kapsam >, düzenleme kutusunda URL 'dir.
-| \<Proxy Uygulama URL 'Si> | Dış URL ve API yolu
+| \<Tenant ID> | **Azure Active Directory**  >  **Özellikler**  >  **DIZIN kimliği** |
+| \<App ID of the Native app> | **Uygulama kaydı**  >  *Yerel uygulamanız*  >  **Genel bakış**  >  **Uygulama kimliği** |
+| \<Scope> | **Uygulama kaydı**  >  *Yerel uygulamanız*  >  **API izinleri** > izin API 'sine (User_impersonation) tıklayarak, sağ tarafta başlık **user_impersonation** olan bir panel >. Kapsam >, düzenleme kutusunda URL 'dir.
+| \<Proxy App Url> | Dış URL ve API yolu
 
 MSAL kodunu bu parametrelerle düzenledikten sonra, kullanıcılarınız şirket ağı dışında olsalar bile yerel istemci uygulamalarında kimlik doğrulaması yapabilir.
 

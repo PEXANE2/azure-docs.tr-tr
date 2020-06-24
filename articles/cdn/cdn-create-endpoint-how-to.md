@@ -10,16 +10,16 @@ ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/12/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0a130a433c68d0d5cc8c26eae4b81ff264eb0ca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43718f8ebc851f27035f2999bfb4ff3ec12ca5b4
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254024"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887719"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Azure CDN uç noktası oluşturma
 Bu makalede, mevcut bir CDN profilinde [Azure Content Delivery Network (CDN)](cdn-overview.md) uç noktası oluşturmaya yönelik tüm ayarlar açıklanmaktadır. Bir profil ve uç nokta oluşturduktan sonra müşterilerinize içerik sunmaya başlayabilirsiniz. Bir profil ve uç nokta oluşturmaya yönelik hızlı başlangıç için bkz. [hızlı başlangıç: Azure CDN profili ve uç noktası oluşturma](cdn-create-new-endpoint.md).
@@ -44,7 +44,7 @@ Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
    
     ![Uç nokta sayfası ekle](./media/cdn-create-endpoint-how-to/cdn-add-endpoint-page.png)
 
-3. **Ad** için, yeni CDN uç noktasına yönelik benzersiz bir ad girin. Bu ad, _ \<>_. azureedge.net etki alanındaki önbelleğe alınmış kaynaklarınıza erişmek için kullanılır.
+3. **Ad** için, yeni CDN uç noktasına yönelik benzersiz bir ad girin. Bu ad, etki alanındaki önbelleğe alınmış kaynaklarınıza erişmek için kullanılır. _\<endpointname>_ azureedge.net.
 
 4. **Kaynak türü**için aşağıdaki kaynak türlerinden birini seçin: 
    - Azure depolama için **depolama**
@@ -62,7 +62,7 @@ Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
    > Azure Storage ve Web Apps gibi bazı kaynak türleri, ana bilgisayar üst bilgisinin kaynağın etki alanı ile eşleşmesini gerektirir. Etki alanından farklı ana bilgisayar üst bilgisi gerektiren bir kaynağa sahip değilseniz varsayılan değeri bırakmanız gerekir.
    > 
     
-8. **Protokol** ve **kaynak bağlantı noktası**için, kaynak sunucudaki kaynaklarınıza erişmek üzere kullanılacak protokolleri ve bağlantı noktalarını belirtin. En az bir protokol (HTTP veya HTTPS) seçilmelidir. HTTPS içeriğine erişmek için CDN tarafından belirtilen etki alanını (_\<uçnoktaadı>_. azureedge.net) kullanın. 
+8. **Protokol** ve **kaynak bağlantı noktası**için, kaynak sunucudaki kaynaklarınıza erişmek üzere kullanılacak protokolleri ve bağlantı noktalarını belirtin. En az bir protokol (HTTP veya HTTPS) seçilmelidir. HTTPS içeriğine erişmek için CDN tarafından belirtilen etki alanını ( _\<endpointname>_ . azureedge.net) kullanın. 
    
    > [!NOTE]
    > **Kaynak bağlantı noktası** değeri, yalnızca uç noktanın kaynak sunucudan bilgi almak için kullandığı bağlantı noktasını belirler. Uç noktanın kendisi, **Kaynak bağlantı noktası** değerinden bağımsız olarak, yalnızca varsayılan HTTP ve HTTPS bağlantı noktalarındaki (80 ve 443) uç istemciler tarafından kullanılabilir.  

@@ -4,20 +4,20 @@ description: Azure Active Directory ' de koşullu erişim hakkında sık sorulan
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 05/28/2020
+ms.topic: troubleshooting
+ms.date: 06/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1704fb50586168be6f960e62b918019cb67ce4c8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 5e75f7214e3a9aa5b44a763cc3448583b47185f9
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167817"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253248"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory Koşullu erişim SSS
 
@@ -54,6 +54,12 @@ Microsoft ekipleri Ayrıca koşullu erişim ilkelerinde bir bulut uygulaması ol
 Windows ve Mac için Microsoft ekipleri masaüstü istemcileri modern kimlik doğrulamayı destekler. Modern kimlik doğrulaması, platformlar arası istemci uygulamalarını Microsoft Office için Azure Active Directory kimlik doğrulama kitaplığı 'nı (ADAL) temel alan oturum açma olanağı sunar.
 
 Daha fazla bilgi için, [koşullu erişim hizmeti bağımlılıkları](service-dependencies.md) makalesine bakın ve bunun yerine ilkeleri [Office 365 uygulamasına](concept-conditional-access-cloud-apps.md#office-365-preview) hedeflemeyi düşünün.
+
+## <a name="why-are-some-tabs-not-working-in-microsoft-teams-after-enabling-conditional-access-policies"></a>Koşullu erişim ilkelerini etkinleştirdikten sonra neden bazı sekmeler Microsoft ekiplerde çalışmıyor?
+
+Microsoft ekiplerinde kiracı üzerinde bazı koşullu erişim ilkelerini etkinleştirdikten sonra, bazı sekmeler artık beklendiği gibi masaüstü istemcisinde çalışmayabilir. Ancak, Microsoft ekipleri Web istemcisi kullanılırken etkilenen sekmeler çalışır. Etkilenen sekmeler Power BI, Forms, VSTS, PowerApps ve SharePoint listesi içerebilir.
+
+Etkilenen sekmeleri görmek için, Windows 10 hesapları uzantısı yüklü olan uç, Internet Explorer veya Chrome 'da takımlar Web istemcisini kullanmanız gerekir. Bazı sekmeler, koşullu erişim etkinleştirildiğinde Microsoft ekipleri masaüstü istemcisinde çalışmayan Web kimlik doğrulamasına bağımlıdır. Microsoft bu senaryoları etkinleştirmek için iş ortaklarıyla çalışmaktadır. Bu tarihten sonra, planlayıcısı, OneNote ve Stream içeren manzara iOS 'u etkinleştirdik.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

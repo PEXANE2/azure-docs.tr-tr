@@ -3,25 +3,25 @@ title: Uygulama proxy 'Si aracı bağlayıcısını yükleme sorunu | Microsoft 
 description: Uygulama proxy 'Si aracı bağlayıcısını yüklerken karşılaşabileceğiniz sorunları giderme
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f73d46b612c1dcf94554e10b4820c3f2442248f
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 602ca070bcaefd20585681e409ab85e9d455160a
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82172415"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764698"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Uygulama Ara Sunucusu Aracı Bağlayıcısı’nı yüklerken sorun oluşuyor
 
@@ -48,7 +48,7 @@ Bağlayıcının yüklemesi başarısız olduğunda, kök neden genellikle aşa�
 
 2.  Bu bağlantı noktalarından herhangi biri başarılı olmazsa, güvenlik duvarının veya arka uç proxy 'sinin gerekli etki alanlarına ve bağlantı noktalarına erişimi olduğunu doğrulayın, Şirket [içi ortamınızı hazırlayın](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 
-3.  Bir tarayıcı (ayrı bir sekme) açın ve aşağıdaki Web sayfasına gidin: `https://login.microsoftonline.com`bu sayfada oturum açabildiğinizden emin olun.
+3.  Bir tarayıcı (ayrı bir sekme) açın ve aşağıdaki Web sayfasına gidin: `https://login.microsoftonline.com` Bu sayfada oturum açabildiğinizden emin olun.
 
 ## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-certificate"></a>Uygulama proxy 'Si güven sertifikası için makine ve arka uç bileşenleri desteğini doğrulama
 
@@ -67,7 +67,7 @@ Bağlayıcının yüklemesi başarısız olduğunda, kök neden genellikle aşa�
 
 **İstemci sertifikasını doğrulamak için:**
 
-Geçerli istemci sertifikasının parmak izini doğrulayın. Sertifika depolama alanı%ProgramData%\microsoft\Microsoft AAD uygulama proxy Connector\trustsettings.xml konumunda bulunabilir
+Geçerli istemci sertifikasının parmak izini doğrulayın. Sertifika depolama alanı%ProgramData%\microsoft\Microsoft AAD uygulama proxy 'Si Connector\Config\TrustSettings.xml bulunabilir
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -93,8 +93,8 @@ Sertifikayı doğrulamak için aşağıdaki adımları izleyin:
 
 Sertifikayı doğrulamak için aşağıdaki adımları izleyin:
 
-1. [Padstools. zip](https://docs.microsoft.com/sysinternals/downloads/pstools) indir
-2. Paketten [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) 'yi ayıklayın ve yükseltilmiş bir komut isteminden **PsExec-i-u "NT authorıty\servıce" cmd. exe** ' yi çalıştırın.
+1. [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools) indir
+2. Paketten [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) 'yi ayıklayın ve yükseltilmiş bir komut isteminden **PsExec-i-u "NT authorıty\servıce" cmd.exe** çalıştırın.
 3. Yeni görünen komut isteminde **certmgr. msc** dosyasını çalıştır
 2. Yönetim konsolunda kişisel kapsayıcıyı genişletin ve Sertifikalar ' a tıklayın.
 3. **Connectorregistrationca.msappproxy.net** tarafından verilen sertifikayı bulma
@@ -120,7 +120,7 @@ Register-AppProxyConnector komutu hakkında daha fazla bilgi edinmek için lütf
 
 **Kimlik bilgilerinin doğru olduğunu doğrulamak için:**
 
-`https://login.microsoftonline.com` ' A bağlanın ve aynı kimlik bilgilerini kullanın. Oturum açmanın başarılı olduğundan emin olun.  - &gt; **Kullanıcılar ve** gruplar - **Azure Active Directory** &gt; **tüm kullanıcılar**Azure Active Directory giderek Kullanıcı rolünü kontrol edebilirsiniz. 
+' A bağlanın `https://login.microsoftonline.com` ve aynı kimlik bilgilerini kullanın. Oturum açmanın başarılı olduğundan emin olun. **Azure Active Directory**  - &gt; **Kullanıcılar ve gruplar**  - &gt; **tüm kullanıcılar**Azure Active Directory giderek Kullanıcı rolünü kontrol edebilirsiniz. 
 
 Kullanıcı hesabınızı ve ardından ortaya çıkan menüdeki "Dizin rolü" nü seçin. Seçili rolün "uygulama Yöneticisi" olduğunu doğrulayın. Bu adımlarla ilgili sayfaların hiçbirine erişemiyorsanız, gerekli rolünüzün olması gerekmez.
 

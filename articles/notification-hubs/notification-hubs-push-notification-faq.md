@@ -5,9 +5,7 @@ services: notification-hubs
 documentationcenter: mobile
 author: sethmanheim
 manager: femila
-editor: jwargo
 keywords: anında iletme bildirimi, anında iletme bildirimleri, iOS anında iletme bildirimleri, Android anında iletme bildirimleri, iOS push, Android gönderim
-ms.assetid: 7b385713-ef3b-4f01-8b1f-ffe3690bbd40
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
@@ -17,12 +15,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 29ef1ec551169bb84680f343e38949f73724f5ae
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 0fe4ae76645ec2a0ae8aae93b9db987ece9a45b9
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84307393"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255135"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs ile anında iletme bildirimleri: sık sorulan sorular
 
@@ -65,11 +63,11 @@ Temel ve Standart Notification Hubs katmanlarında, düzgün şekilde yapıland�
 
 ### <a name="which-server-side-platforms-do-you-support"></a>Hangi sunucu tarafı platformları destekliyoruz?
 
-Sunucu SDK 'Ları .NET, Java, Node. js, PHP ve Python için kullanılabilir. Notification Hubs API 'Ler REST arabirimlerini temel alır. bu sayede, farklı platformlar kullanıyorsanız veya ek bağımlılık istemiyorsanız doğrudan REST API 'lerle çalışabilirsiniz. Daha fazla bilgi için [NOTIFICATION HUBS REST API 'leri] sayfasına gidin.
+Sunucu SDK 'Ları, .NET, Java, Node.js, PHP ve Python için kullanılabilir. Notification Hubs API 'Ler REST arabirimlerini temel alır. bu sayede, farklı platformlar kullanıyorsanız veya ek bağımlılık istemiyorsanız doğrudan REST API 'lerle çalışabilirsiniz. Daha fazla bilgi için [NOTIFICATION HUBS REST API 'leri] sayfasına gidin.
 
 ### <a name="which-client-platforms-do-you-support"></a>Hangi istemci platformlarını destekliyoruz?
 
-Anında iletme bildirimleri [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Android China (Baidu aracılığıyla)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) ve Android ve [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)) için desteklenir. Daha fazla bilgi için [Notification Hubs Başlarken öğreticileri] sayfasına gidin.
+Anında iletme bildirimleri [iOS](ios-sdk-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Android China (Baidu aracılığıyla)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin [iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) ve [Android](xamarin-notification-hubs-push-notifications-android-gcm.md)ve [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)için desteklenir. Daha fazla bilgi için Notification Hubs Başlarken [öğreticileri](ios-sdk-get-started.md) sayfasına bakın.
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>SMS mesajı, e-posta veya Web bildirimlerini destekliyor musunuz?
 
@@ -206,7 +204,6 @@ Azure Notification Hubs, [Azure Portal]Telemetri verilerinin görüntülenmesine
 [Notification Hubs fiyatlandırması]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [REST API 'Leri Notification Hubs]: https://msdn.microsoft.com/library/azure/dn530746.aspx
-[Notification Hubs Başlarken öğreticileri]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
 [Arka uç Kayıt Kılavuzu]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [Arka uç Kayıt Kılavuzu 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx

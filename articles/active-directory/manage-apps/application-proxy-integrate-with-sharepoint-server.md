@@ -3,25 +3,25 @@ title: SharePoint 'e uzaktan erişimi etkinleştirme-Azure AD Uygulama Ara Sunuc
 description: Şirket içi SharePoint sunucusunu Azure AD Uygulama Ara Sunucusu ile tümleştirme hakkında temel bilgileri içerir.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/02/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 983470994c103cb25d0d2aff96ae8544080e6288
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42dd979f6e069addc1067d0018390c358e79a7b6
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481305"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764545"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile SharePoint’e uzaktan erişimi etkinleştirme
 
@@ -56,7 +56,7 @@ Bu makale aşağıdaki değerleri kullanır:
 Bu adımda, Azure Active Directory kiracınızda uygulama proxy 'Si kullanan bir uygulama oluşturacaksınız. Dış URL 'yi ayarlarsınız ve ikisi de SharePoint 'te daha sonra kullanılan iç URL 'YI belirtirsiniz.
 
 1. Aşağıdaki ayarlarla açıklandığı gibi uygulamayı oluşturun. Adım adım yönergeler için bkz. [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
-   * **Iç URL**: Örneğin, SharePoint 'te daha sonra ayarlanacak SharePoint iç URL 'si `https://sharepoint`.
+   * **Iç URL**: Örneğin, SharePoint 'te daha sonra ayarlanacak SharePoint iç URL 'si `https://sharepoint` .
    * **Ön kimlik doğrulaması**: Azure Active Directory
    * **Üst bilgilerdeki URL 'Leri çevir**: Hayır
    * **Uygulama gövdesinde URL 'Leri çevir**: Hayır
@@ -65,14 +65,14 @@ Bu adımda, Azure Active Directory kiracınızda uygulama proxy 'Si kullanan bir
 
 1. Uygulamanız yayımlandıktan sonra, çoklu oturum açma ayarlarını yapılandırmak için aşağıdaki adımları izleyin:
 
-   1. Portaldaki uygulama sayfasında, **Çoklu oturum açma**' yı seçin.
-   1. **Çoklu oturum açma modu**Için **Tümleşik Windows kimlik doğrulaması**' nı seçin.
-   1. **Iç uygulama SPN 'sini** daha önce ayarladığınız değere ayarlayın. Bu örnekte, değeri `HTTP/sharepoint`.
+   1. Portaldaki uygulama sayfasında **Çoklu oturum açma**’yı seçin.
+   1. **Çoklu Oturum Açma Modu** olarak **Tümleşik Windows Kimlik Doğrulaması**’nı seçin.
+   1. **Iç uygulama SPN 'sini** daha önce ayarladığınız değere ayarlayın. Bu örnekte, değeri `HTTP/sharepoint` .
    1. **Temsilci atanan oturum kimliği**altında Active Directory orman yapılandırmanız için en uygun seçeneği belirleyin. Örneğin, ormanınızda tek bir Active Directory etki alanınız varsa Şirket **ıçı Sam hesap adı** ' nı (aşağıdaki ekran görüntüsünde gösterildiği gibi) seçin. Ancak kullanıcılarınız SharePoint ve uygulama proxy Bağlayıcısı sunucularıyla aynı etki alanında değilse **Şirket içi Kullanıcı asıl adı** ' nı (ekran görüntüsünde gösterilmez) seçin.
 
    ![SSO için tümleşik Windows kimlik doğrulamasını yapılandırma](./media/application-proxy-integrate-with-sharepoint-server/configure-iwa.png)
 
-1. Uygulamanızı ayarlamayı bitirmeden, **Kullanıcılar ve gruplar** bölümüne gidin ve bu uygulamaya erişmek için kullanıcıları atayın. 
+1. Uygulamanızı ayarlamayı bitirmek için **Kullanıcılar ve gruplar** bölümüne gidin ve bu uygulamaya erişecek kullanıcıları atayın. 
 
 ## <a name="step-2-configure-the-sharepoint-web-application"></a>2. Adım: SharePoint Web uygulamasını yapılandırma
 
@@ -145,7 +145,7 @@ SharePoint Web uygulamasının uygulama havuzunu çalıştıran hesabı belirlem
 
 ### <a name="make-sure-that-an-https-certificate-is-configured-for-the-iis-site-of-the-extranet-zone"></a>Extranet bölgesinin IIS sitesi için bir HTTPS sertifikası yapılandırıldığından emin olun
 
-Iç URL HTTPS protokolü (`https://SharePoint/`) kullandığından, Internet INFORMATION SERVICES (IIS) sitesinde bir sertifikanın ayarlanması gerekir.
+Iç URL HTTPS protokolü ( `https://SharePoint/` ) kullandığından, Internet Information Services (IIS) sitesinde bir sertifikanın ayarlanması gerekir.
 
 1. Windows PowerShell konsolunu açın.
 1. Otomatik olarak imzalanan bir sertifika oluşturmak ve bunu bilgisayarın mağazama eklemek için aşağıdaki betiği çalıştırın:
@@ -171,22 +171,22 @@ Kullanıcılar, Azure AD proxy Bağlayıcısı aracılığıyla Kerberos kullana
 
 ### <a name="set-the-spn-for-the-sharepoint-service-account"></a>SharePoint hizmet hesabı için SPN 'YI ayarlama
 
-Bu makalede, iç URL olur `https://sharepoint`ve bu nedenle hizmet asıl adı (SPN) olur. `HTTP/sharepoint` Bu değerleri ortamınıza karşılık gelen değerlerle değiştirmeniz gerekir.
-SharePoint uygulama havuzu `HTTP/sharepoint` HESABı `Contoso\spapppool`için SPN 'yi kaydetmek üzere, bir komut isteminden aşağıdaki komutu etki alanının yöneticisi olarak çalıştırın:
+Bu makalede, iç URL olur ve bu `https://sharepoint` nedenle hizmet asıl adı (SPN) olur `HTTP/sharepoint` . Bu değerleri ortamınıza karşılık gelen değerlerle değiştirmeniz gerekir.
+`HTTP/sharepoint`SharePoint uygulama havuzu hesabı IÇIN SPN 'yi kaydetmek üzere, `Contoso\spapppool` bir komut isteminden aşağıdaki komutu etki alanının yöneticisi olarak çalıştırın:
 
 `setspn -S HTTP/sharepoint Contoso\spapppool`
 
-Komutu `Setspn` , SPN 'yi eklemeden önce arar. SPN zaten varsa **Yinelenen BIR SPN değeri** hatası görürsünüz. Bu durumda, doğru uygulama havuzu hesabı altında ayarlanmamışsa mevcut SPN 'YI kaldırmayı göz önünde bulundurun. `Setspn` Komutu-L SEÇENEĞIYLE çalıştırarak SPN 'nin başarıyla eklendiğini doğrulayabilirsiniz. Bu komut hakkında daha fazla bilgi edinmek için bkz. [Setspn](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11)).
+`Setspn`Komutu, SPN 'yi eklemeden önce arar. SPN zaten varsa **Yinelenen BIR SPN değeri** hatası görürsünüz. Bu durumda, doğru uygulama havuzu hesabı altında ayarlanmamışsa mevcut SPN 'YI kaldırmayı göz önünde bulundurun. Komutu-L seçeneğiyle çalıştırarak SPN 'nin başarıyla eklendiğini doğrulayabilirsiniz `Setspn` . Bu komut hakkında daha fazla bilgi edinmek için bkz. [Setspn](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11)).
 
 ### <a name="make-sure-the-connector-is-trusted-for-delegation-to-the-spn-that-was-added-to-the-sharepoint-application-pool-account"></a>Bağlayıcının SharePoint uygulama havuzu hesabına eklenen SPN 'ye devredilmek için güvenilir olduğundan emin olun
 
-KCD 'YI, Azure AD Uygulama Ara Sunucusu hizmetinin Kullanıcı kimliklerini SharePoint uygulama havuzu hesabına atayabilmesi için yapılandırın. Azure AD 'de kimlik doğrulamasından geçen kullanıcılarınız için Kerberos biletleri almak üzere uygulama proxy bağlayıcısını etkinleştirerek KCD 'yi yapılandırın. Ardından, bu sunucu bağlamı hedef uygulamaya geçirir (Bu durumda SharePoint).
+KCD 'YI, Azure AD Uygulama Ara Sunucusu hizmetinin Kullanıcı kimliklerini SharePoint uygulama havuzu hesabına atayabilmesi için yapılandırın. Uygulama Ara Sunucusu bağlayıcısının Azure AD’de kimliği doğrulanmış olan kullanıcılarınız için Kerberos biletleri almasını etkinleştirerek KCD’yi yapılandırın. Ardından, bu sunucu bağlamı hedef uygulamaya geçirir (Bu durumda SharePoint).
 
 KCD 'yi yapılandırmak için, her bağlayıcı makinesi için aşağıdaki adımları izleyin:
 
 1. Etki alanı denetleyicisinde etki alanı yöneticisi olarak oturum açın ve ardından Active Directory Kullanıcıları ve Bilgisayarları ' nı açın.
 1. Azure AD proxy bağlayıcısını çalıştıran bilgisayarı bulun. Bu örnekte, SharePoint sunucusudur.
-1. Bilgisayara çift tıklayın ve ardından **temsili** sekmesini seçin.
+1. Bilgisayara çift tıklayın ve ardından **Temsilci** sekmesini seçin.
 1. Atama seçeneklerinin **yalnızca belirtilen hizmetlere temsilciliğini sağlamak üzere bu bilgisayara güvenecek**şekilde ayarlandığından emin olun. Ardından **herhangi bir kimlik doğrulama protokolünü kullan**' ı seçin.
 1. **Ekle** düğmesini seçin, **Kullanıcılar veya bilgisayarlar**' ı seçin ve SharePoint uygulama havuzu hesabını bulun. Örneğin: `Contoso\spapppool`.
 1. SPN 'Ler listesinde, daha önce hizmet hesabı için oluşturduğunuz birini seçin.
@@ -198,7 +198,7 @@ Artık dış URL 'YI kullanarak SharePoint 'te oturum açmaya ve Azure ile kimli
 
 ## <a name="troubleshoot-sign-in-errors"></a>Oturum açma hatalarında sorun giderme
 
-Sitede oturum açma çalışmıyorsa, bağlayıcı günlüklerinde sorun hakkında daha fazla bilgi edinebilirsiniz: bağlayıcıyı çalıştıran makineden, Olay Görüntüleyicisi 'ni açın, **uygulamalar ve hizmetler günlükleri** > **Microsoft** > **aadapplicationproxy** > **Bağlayıcısı**' na gidin ve **yönetici** günlüğünü inceleyin.
+Sitede oturum açma çalışmıyorsa, bağlayıcı günlüklerinde sorun hakkında daha fazla bilgi edinebilirsiniz: bağlayıcıyı çalıştıran makineden, Olay Görüntüleyicisi 'ni açın, **uygulamalar ve hizmetler günlükleri**  >  **Microsoft**  >  **aadapplicationproxy**  >  **Bağlayıcısı**' na gidin ve **yönetici** günlüğünü inceleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

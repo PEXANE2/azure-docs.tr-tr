@@ -2,45 +2,44 @@
 title: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık analizini ayarlama
 description: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık analizini ayarlayın.
 ms.topic: how-to
-ms.date: 2/24/2020
-ms.openlocfilehash: 68c95c74768f9d9628f92b061754c942b080565c
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 6/08/2020
+ms.openlocfilehash: dc2ea0656198927cc8ae58533d296a2bedc37c13
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659996"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771385"
 ---
-# <a name="set-up-agentless-dependency-visualization"></a>Aracısız bağımlılık görselleştirmesini ayarlama 
+# <a name="analyze-machine-dependencies-agentless"></a>Makine bağımlılıklarını analiz etme (aracısız)
 
-Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracısız bağımlılık analizinin nasıl ayarlanacağı açıklanır. [Bağımlılık Analizi](concepts-dependency-visualization.md) , değerlendirmek ve Azure 'a geçirmek istediğiniz makineler arasında bağımlılıkları belirlemenize ve anlamanıza yardımcı olur.
+Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracısız bağımlılık analizinin nasıl ayarlanacağı açıklanır. [Bağımlılık Analizi](concepts-dependency-visualization.md) , değerlendirme ve Azure 'a geçiş için makineler genelinde bağımlılıkları belirlemenize ve anlamanıza yardımcı olur.
 
 
 > [!IMPORTANT]
-> Aracısız bağımlılık görselleştirmesi Şu anda yalnızca VMware VM 'Leri için Azure geçişi: Sunucu değerlendirmesi aracı 'yla birlikte bulunan önizlemededir.
+> Aracısız bağımlılık görselleştirmesi Şu anda Azure geçişi: Sunucu değerlendirmesi aracında bulunan VMware VM 'Leri için önizleme aşamasındadır.
 > Özellikler sınırlı veya tamamlanmamış olabilir.
 > Bu önizleme müşteri desteği kapsamında ele alınmıştır ve üretim iş yükleri için kullanılabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+## <a name="current-limitations"></a>Geçerli sınırlamalar
 
+- Bağımlılık analizi görünümünde, şu anda bir gruptan bir sunucu ekleyemez veya kaldırabilirsiniz.
+- Bir sunucu grubu için bağımlılık eşlemesi Şu anda kullanılamıyor.
+- Bağımlılık verileri tablolu biçimde indirilemez.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-- Aracısız bağımlılık Analizi [hakkında bilgi edinin](concepts-dependency-visualization.md#agentless-analysis) .
-- VMware VM 'Leri için aracısız bağımlılık görselleştirmesini ayarlamaya yönelik önkoşulları ve destek gereksinimlerini [gözden geçirin](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)
-- Bir Azure geçişi projesi [oluşturduğunuzdan](how-to-add-tool-first-time.md) emin olun.
-- Zaten bir proje oluşturduysanız Azure geçişi: Sunucu değerlendirmesi [aracını eklediğinizden emin](how-to-assess.md) olun.
-- Şirket içi makinelerinizi keşfetmeye yönelik bir [Azure geçiş](migrate-appliance.md) gereci ayarladığınızdan emin olun. [VMware](how-to-set-up-appliance-vmware.md) VM 'leri için bir gereç ayarlamayı öğrenin. Gereç, şirket içi makineleri bulur ve Azure geçişi: Sunucu değerlendirmesi ' ne meta veri ve performans verileri gönderir.
+- Desteklenen işletim sistemlerini ve gerekli izinleri [gözden geçirin](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) .
+- Şunları yaptığınızdan emin olun:
+    - Bir Azure geçişi projesi vardır. Bunu yapmazsanız, şimdi bir tane [oluşturun](how-to-add-tool-first-time.md) .
+    - Projeye Azure geçişi: Sunucu değerlendirmesi aracını [eklemişseniz](how-to-assess.md) ' i kontrol edin.
+    - Şirket içi makineleri keşfetmeye yönelik bir [Azure geçiş](migrate-appliance.md) gereci ayarlayın. VMware VM 'Leri için [bir gereç ayarlayın](how-to-set-up-appliance-vmware.md) . Gereç, şirket içi makineleri bulur ve Azure geçişi: Sunucu değerlendirmesi ' ne meta veri ve performans verileri gönderir.
+- Çözümlemek istediğiniz her VM 'de VMware araçlarının (10,2 ' den sonraki bir sürüm) yüklü olduğundan emin olun.
 
-
-## <a name="current-limitations"></a>Geçerli sınırlamalar
-
-- Artık, bağımlılık analizi görünümünde bir gruba sunucu ekleyemez veya gruptan sunucu kaldıramazsınız.
-- Bir sunucu grubu için bağımlılık eşlemesi Şu anda kullanılamıyor.
-- Şu anda, bağımlılık verileri tablolu biçimde indirilemez.
 
 ## <a name="create-a-user-account-for-discovery"></a>Bulma için bir kullanıcı hesabı oluşturma
 
-Sunucu değerlendirmesinin, bulma için VM 'ye erişebilmesi için bir kullanıcı hesabı ayarlayın. Hesap gereksinimleri hakkında [bilgi edinin](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) .
+Sunucu değerlendirmesinin bağımlılıkları saptamak için VM 'ye erişebilmeleri için bir kullanıcı hesabı ayarlayın. Windows ve Linux VM 'Leri için hesap gereksinimleri hakkında [bilgi edinin](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) .
 
 
 ## <a name="add-the-user-account-to-the-appliance"></a>Kullanıcı hesabını gereç 'e ekleme
@@ -104,6 +103,25 @@ Bağımlılık bulmayı başlattıktan sonra altı saat etrafında bağımlılı
 Bağımlılık verileri bir CSV biçiminde verilir ve indirilir. İndirilen dosya, bağımlılık analizi için etkinleştirilen tüm makinelerde bağımlılık verilerini içerir. 
 
 ![Bağımlılıkları dışarı aktar](./media/how-to-create-group-machine-dependencies-agentless/export.png)
+
+### <a name="dependency-information"></a>Bağımlılık bilgileri
+
+İçe aktarılmış CSV içindeki her satır, belirtilen zaman yuvasında gözlemlenen bir bağımlılığa karşılık gelir. 
+
+Aşağıdaki tablo, dışarıya aktarılmış CSV içindeki alanları özetler. Sunucu adı, uygulama ve işlem alanlarının yalnızca aracısız bağımlılık Analizi etkin olan sunucular için doldurulduğunu unutmayın.
+
+**Alan adı** | **Ayrıntılar**
+--- | --- 
+Timeslot | Bağımlılığın gözlemlendiği zaman lotu. <br/> Bağımlılık verileri, şu anda 6 saatlik yuva üzerinden yakalanır.
+Kaynak sunucu adı | Kaynak makinenin adı 
+Kaynak uygulama | Kaynak makinedeki uygulamanın adı 
+Kaynak işlem | Kaynak makinedeki işlemin adı 
+Hedef sunucu adı | Hedef makinenin adı
+Hedef IP | Hedef makinenin IP adresi
+Hedef uygulama | Hedef makinedeki uygulamanın adı
+Hedef işlem | Hedef makinedeki işlemin adı 
+Hedef bağlantı noktası | Hedef makinedeki bağlantı noktası numarası
+
 
 ## <a name="stop-dependency-discovery"></a>Bağımlılık bulmayı durdur
 

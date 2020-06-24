@@ -6,19 +6,33 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 95eba648219413923ce27d433a5236877c4953f3
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.date: 05/26/2020
+ms.openlocfilehash: 6a5335a1048adaa50344e75662b4ad593955f34d
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725474"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694952"
 ---
-# <a name="marketplace-metering-service-apis"></a>Market ölçüm hizmeti API’leri
+# <a name="marketplace-metered-billing-apis"></a>Market ölçülen faturalandırma API 'Leri
 
-Kullanım olayı API 'SI, satın alınan belirli bir varlık için kullanım olaylarını yayalmanıza olanak sağlar. Kullanım olayı isteği, teklif yayımlanırken yayımcı tarafından tanımlanan ölçüm hizmetleri boyutuna başvurur.
+Yayımcı, Iş Ortağı Merkezi 'nde yayımlanacak bir teklif için özel ölçüm boyutları oluşturduğunda ölçülen faturalandırma API 'Leri kullanılmalıdır. Kullanım olaylarını yaymaya yönelik özel boyutları olan bir veya daha fazla planı olan satın alınan tüm teklifler için ölçülen faturalandırma API 'Leri ile tümleştirme gereklidir.
 
-## <a name="usage-event"></a>Kullanım olayı
+SaaS için özel ölçüm boyutları oluşturma hakkında daha fazla bilgi için bkz. [SaaS ölçülen faturalandırma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/saas-metered-billing).
+
+Yönetilen bir uygulama planına sahip bir Azure uygulaması teklifi için özel ölçüm boyutları oluşturma hakkında daha fazla bilgi için, [yeni Azure uygulamaları oluşturma teklifinin teknik yapılandırma bölümüne](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer#technical-configuration-managed-application-plans-only)bakın.
+
+## <a name="enforcing-tls-12-note"></a>TLS 1,2 zorlama
+
+TLS sürüm 1,2 sürümü, HTTPS iletişimleri için en düşük sürüm olarak zorlanır. Kodunuzda bu TLS sürümünü kullandığınızdan emin olun. TLS sürüm 1,0 ve 1,1 kullanım dışıdır ve bağlantı girişimleri reddedilir.
+
+## <a name="metered-billing-single-usage-event"></a>Ölçülen faturalandırma tek kullanım olayı
+
+Kullanım olayı API 'SI, belirli müşteri tarafından satın alınan plana yönelik kullanım olaylarını etkin bir kaynağa (abone olunmuş) göre göstermek için yayımcı tarafından çağrılmalıdır. Kullanım olayı, teklif yayımlanırken yayımcı tarafından tanımlanan planın her özel boyutu için ayrı olarak yayınlanır.
+
+Takvim gününün her bir saati için yalnızca bir kullanım olayı dağıtılabilir. Örneğin, 8:15 ' te bugün bir kullanım olayı oluşturabilirsiniz. Bu olay kabul edilirse, sonraki kullanım etkinliği bugün 9:00 ' den kabul edilecektir. 8:15 ile 8:59:59 arasında ek bir olay gönderirseniz, bu, bir yinelenen olarak reddedilir. Bir saat içinde tüketilen tüm birimleri biriktirmek ve sonra tek bir olayda yaymalısınız.
+
+Kaynak başına bir takvim gününe ait her saat için yalnızca bir kullanım olayı dağıtılabilir. Bir saat içinde birden fazla birim tüketilirse, saat içinde tüketilen tüm birimleri birikir ve tek bir olayda yayın. Kullanım olayları yalnızca son 24 saat için kullanılabilir. Bir kullanım olayını 8:00 ile 8:59:59 arasında herhangi bir zamanda yayar (ve kabul edilirse) ve aynı gün için 8:00 ve 8:59:59 arasında ek bir olay gönderirseniz, yineleme olarak reddedilir.
 
 **Gönderi**:`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
@@ -26,7 +40,8 @@ Kullanım olayı API 'SI, satın alınan belirli bir varlık için kullanım ola
 
 |            |          |
 | ---------- | ---------------------- |
-| `ApiVersion` | Bu istek için kullanılacak işlemin sürümü. En son API sürümü 2018-08-31 ' dir. |
+| `ApiVersion` | 2018-08-31 kullanın. |
+| | |
 
 *İstek üst bilgileri:*
 
@@ -34,43 +49,56 @@ Kullanım olayı API 'SI, satın alınan belirli bir varlık için kullanım ola
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | İstemciden gelen isteği izlemek için benzersiz dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
 | `x-ms-correlationid` | İstemcideki işlem için benzersiz dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanacaktır. |
-| `authorization`   | [JSON Web belirteci (JWT) taşıyıcı belirtecini al.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Note: HTTP isteği yapılırken `Bearer` başvurulan bağlantıdan alınan belirtecin öneki. |
+| `authorization`   | Bu API çağrısını yapan ISV 'YI tanımlayan benzersiz bir erişim belirteci. Biçim, `"Bearer <access_token>"` belirteç değerinin yayımcı tarafından şu şekilde açıklandığı gibi alındığı <br> <ul> <li> İçindeki SaaS [, belirteci BIR http gönderimiyle alır](./pc-saas-registration.md#get-the-token-with-an-http-post). </li> <li> [Kimlik doğrulama stratejilerinde](./marketplace-metering-service-authentication.md)yönetilen uygulama. </li> </ul> |
+| | |
 
->[!Note]
->Azure uygulama tarafından yönetilen uygulamalar planları için, `resourceId` `resourceUsageId` `billingDetails` yönetilen uygulama meta verileri nesnesinin altında bulunur.  [Azure tarafından yönetilen kimlikler belirtecini kullanarak](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token), bu dosyayı getirmeye yönelik örnek bir betik bulunabilir.  SaaS teklifleri için `resourceId` SaaS ABONELIK kimliğidir.  SaaS abonelikleri hakkında daha fazla bilgi için bkz. [abonelikleri listeleme](./pc-saas-fulfillment-api-v2.md#list-subscriptions).
-
-*İsteyen*
+*İstek gövdesi örneği:*
 
 ```json
 {
-  "resourceId": "Identifier of the resource against which usage is emitted",
-  "quantity": 5.0,
-  "dimension": "Dimension identifier",
-  "effectiveStartTime": "Time in UTC when the usage event occurred",
-  "planId": "Plan associated with the purchased offer"
+  "resourceId": <guid>, // unique identifier of the resource against which usage is emitted. 
+  "quantity": 5.0, // how many units were consumed for the date and hour specified in effectiveStartTime, must be greater than 0, can be integer or float value
+  "dimension": "dim1", // custom dimension identifier
+  "effectiveStartTime": "2018-12-01T08:30:14", // time in UTC when the usage event occurred, from now and until 24 hours back
+  "planId": "plan1", // id of the plan purchased for the offer
 }
 ```
+
+>[!NOTE]
+>`resourceId`SaaS uygulaması ve yönetilen uygulama yayma özel ölçümü için farklı anlamlara sahiptir. 
+
+Azure uygulama tarafından yönetilen uygulamalar planları için, `resourceId` `resourceUsageId` `billingDetails` yönetilen uygulama meta verileri nesnesinin altında bulunur. [Azure tarafından yönetilen kimlikler belirtecini kullanarak](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token), bu dosyayı getirmeye yönelik örnek bir betik bulunabilir. 
+
+SaaS teklifleri için `resourceId` SaaS ABONELIK kimliğidir. SaaS abonelikleri hakkında daha fazla bilgi için bkz. [abonelikleri listeleme](./pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions).
 
 ### <a name="responses"></a>Yanıtlar
 
 Kod: 200<br>
-Tamam 
+Tamam ögesini seçin. Kullanım egörevi, daha fazla işlem ve faturalandırma için Microsoft tarafında kabul edildi ve kaydedildi.
+
+Yanıt yükü örneği: 
 
 ```json
 {
-  "usageEventId": "Unique identifier associated with the usage event",
-  "status": "Accepted",
-  "messageTime": "Time this message was created in UTC",
-  "resourceId": "Identifier of the resource against which usage is emitted",
-  "quantity": 5.0,
-  "dimension": "Dimension identifier",
-  "effectiveStartTime": "Time in UTC when the usage event occurred",
-  "planId": "Plan associated with the purchased offer"
+  "usageEventId": <guid>, // unique identifier associated with the usage event in Microsoft records
+  "status": "Accepted" // this is the only value in case of single usage event
+  "messageTime": "2020-01-12T13:19:35.3458658Z", // time in UTC this event was accepted
+  "resourceId": <guid>, // unique identifier of the resource against which usage is emitted. For SaaS it's the subscriptionId.
+  "quantity": 5.0, // amount of emitted units as recorded by Microsoft
+  "dimension": "dim1", // custom dimension identifier
+  "effectiveStartTime": "2018-12-01T08:30:14", // time in UTC when the usage event occurred, as sent by the ISV
+  "planId": "plan1", // id of the plan purchased for the offer
 }
 ```
 
 Kod: 400 <br>
-Hatalı istek, eksik veya geçersiz veri sağlanmış veya geçerliliği zaman aşımına uğradı
+Hatalı istek.
+
+* Eksik veya geçersiz istek verileri belirtildi.
+* `effectiveStartTime`Geçmişte 24 saatten fazla. Olayın süresi doldu.
+* SaaS aboneliği abone durumunda değil.
+
+Yanıt yükü örneği: 
 
 ```json
 {
@@ -88,40 +116,36 @@ Hatalı istek, eksik veya geçersiz veri sağlanmış veya geçerliliği zaman a
 ```
 
 Kod: 403<br>
-Hatalı istek, eksik veya geçersiz veri sağlanmış veya geçerliliği zaman aşımına uğradı
 
-```json
-{
-  "code": "Forbidden",
-  "message": "User is not allowed authorized to call this"
-}
-```
+Inı. Yetkilendirme belirteci belirtilmemiş, geçersiz veya zaman aşımına uğradı.  Ya da istek, yetkilendirme belirtecini oluşturmak için kullanılan bir Azure AD Uygulaması KIMLIĞIYLE yayınlanan bir teklifin aboneliğine erişmeye çalışıyor.
 
 Kod: 409<br>
-Kullanım kaynak KIMLIĞI için kullanım çağrısını ve zaten var olan etkin kullanımı aldığımızda çakışma. Yanıt, `additionalInfo` kabul edilen ileti hakkında bilgi içeren alanı içerecektir.
+Uzantıları. Belirtilen kaynak KIMLIĞI, geçerli kullanım tarihi ve saati için bir kullanım olayı zaten başarıyla bildirildi.
+
+Yanıt yükü örneği: 
 
 ```json
 {
-  "code": "Conflict",
   "additionalInfo": {
-    "usageEventId": "Unique identifier associated with the usage event",
-    "status": "Accepted|NotProcessed|Expired",
-    "messageTime": "Time this message was created in UTC",
-    "resourceId": "Identifier of the resource against which usage is emitted",
-    "quantity": 5.0,
-    "dimension": "Dimension identifier",
-    "effectiveStartTime": "Time in UTC when the usage event occurred",
-    "planId": "Plan associated with the purchased offer"
-  }
+    "acceptedMessage": {
+      "usageEventId": "<guid>", //unique identifier associated with the usage event in Microsoft records
+      "status": "Duplicate",
+      "messageTime": "2020-01-12T13:19:35.3458658Z",
+      "resourceId": "<guid>", //unique identifier of the resource against which usage is emitted.
+      "quantity": 1.0,
+      "dimension": "dim1",
+      "effectiveStartTime": "2020-01-12T11:03:28.14Z",
+      "planId": "plan1"
+    }
+  },
+  "message": "This usage event already exist.",
+  "code": "Conflict"
 }
 ```
 
-## <a name="batch-usage-event"></a>Toplu kullanım olayı
+## <a name="metered-billing-batch-usage-event"></a>Ölçülen faturalandırma toplu işlem kullanım olayı
 
-Toplu kullanım olayı API 'SI, bir kerede birden fazla satın alınan varlık için kullanım olaylarını yayalmanıza olanak sağlar. Toplu kullanım olay isteği, teklif yayımlanırken yayımcı tarafından tanımlanan ölçüm hizmetleri boyutuna başvurur.
-
->[!Note]
->Microsoft 'un ticari marketi 'nde birden çok SaaS teklifi kaydedebilirsiniz. Her kayıtlı SaaS teklifinin, kimlik doğrulama ve yetkilendirme amaçları için kayıtlı benzersiz bir Azure AD uygulaması vardır. Toplu iş içinde Yayınlanan olaylar, teklifi kaydetme sırasında aynı Azure AD uygulamasıyla sunulan tekliflere ait olmalıdır.
+Toplu kullanım olayı API 'SI, birden fazla satın alınan kaynağın kullanım olaylarını aynı anda yayalmanıza olanak sağlar. Aynı zamanda, farklı takvim saatlerinde olduğu sürece aynı kaynak için birkaç kullanım olayı da yayabilirsiniz. Tek bir toplu işlemdeki olayların maxhayvan sayısı 25 ' tir.
 
 **Gönderi:**`https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
 
@@ -129,7 +153,7 @@ Toplu kullanım olayı API 'SI, bir kerede birden fazla satın alınan varlık i
 
 |            |     |
 | ---------- | -------------------- |
-| `ApiVersion` | Bu istek için kullanılacak işlemin sürümü. En son API sürümü 2018-08-31 ' dir. |
+| `ApiVersion` | 2018-08-31 kullanın. |
 
 *İstek üst bilgileri:*
 
@@ -137,59 +161,85 @@ Toplu kullanım olayı API 'SI, bir kerede birden fazla satın alınan varlık i
 | ------------------ | ------ |
 | `x-ms-requestid`     | İstemciden gelen isteği izlemek için benzersiz dize değeri, tercihen bir GUID. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanır. |
 | `x-ms-correlationid` | İstemcideki işlem için benzersiz dize değeri. Bu parametre, istemci işlemindeki tüm olayları sunucu tarafındaki olaylarla ilişkilendirir. Bu değer sağlanmazsa, bir tane oluşturulur ve yanıt üst bilgilerinde sağlanmış olur. |
-| `authorization`      | [JSON Web belirteci (JWT) taşıyıcı belirtecini al.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Note: HTTP isteği yapılırken `Bearer` başvurulan bağlantıdan alınan belirtecin öneki.  |
+| `authorization`      | Bu API çağrısını yapan ISV 'YI tanımlayan benzersiz bir erişim belirteci. Biçim, `Bearer <access_token>` belirteç değerinin yayımcı tarafından şu şekilde açıklandığı gibi alındığı <br> <ul> <li> İçindeki SaaS [, belirteci BIR http gönderimiyle alır](./pc-saas-registration.md#get-the-token-with-an-http-post). </li> <li> [Kimlik doğrulama stratejilerinde](./marketplace-metering-service-authentication.md)yönetilen uygulama. </li> </ul> |
+| | |
 
-*İsteyen*
+
+*İstek gövdesi örneği:*
+
 ```json
 {
-  "request": [
-    {
-      "resourceId": "Identifier of the resource against which usage is emitted",
-      "quantity": 5.0,
-      "dimension": "Dimension identifier",
-      "effectiveStartTime": "Time in UTC when the usage event occurred",
-      "planId": "Plan associated with the purchased offer"
+  "request": [ // list of usage events for the same or different resources of the publisher
+    { // first event
+      "resourceId": "<guid1>", // Unique identifier of the resource against which usage is emitted. 
+      "quantity": 5.0, // how many units were consumed for the date and hour specified in effectiveStartTime, must be greater than 0, can be integer or float value
+      "dimension": "dim1", //Custom dimension identifier
+      "effectiveStartTime": "2018-12-01T08:30:14",//Time in UTC when the usage event occurred, from now and until 24 hours back
+      "planId": "plan1", // id of the plan purchased for the offer
     },
-    {
-      "resourceId": "Identifier of the resource against which usage is emitted",
-      "quantity": 5.0,
-      "dimension": "Dimension identifier",
-      "effectiveStartTime": "Time in UTC when the usage event occurred",
-      "planId": "Plan associated with the purchased offer"
+    { // next event
+      "resourceId": "<guid2>", 
+      "quantity": 39.0, 
+      "dimension": "email", 
+      "effectiveStartTime": "2018-11-01T23:33:10
+      "planId": "gold", // id of the plan purchased for the offer
     }
   ]
 }
 ```
+
+>[!NOTE]
+>`resourceId`SaaS uygulaması ve yönetilen uygulama yayma özel ölçümü için farklı anlamlara sahiptir. 
+
+Azure uygulama tarafından yönetilen uygulamalar planları için, `resourceId` `resourceUsageId` `billingDetails` yönetilen uygulama meta verileri nesnesinin altında bulunur. [Azure tarafından yönetilen kimlikler belirtecini kullanarak](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token), bu dosyayı getirmeye yönelik örnek bir betik bulunabilir. 
+
+SaaS teklifleri için `resourceId` SaaS ABONELIK kimliğidir. SaaS abonelikleri hakkında daha fazla bilgi için bkz. [abonelikleri listeleme](./pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions).
+
 ### <a name="responses"></a>Yanıtlar
 
 Kod: 200<br>
-Tamam
+Tamam ögesini seçin. Toplu kullanım egörev, daha fazla işlem ve faturalandırma için Microsoft tarafında kabul edildi ve kaydedildi. Yanıt listesi, toplu işteki her bir olay için durum ile döndürülür. Toplu iş olayının bir parçası olarak gönderilen her bir kullanım olayının yanıtlarını anlamak için yanıt yükünde yineleme yapmanız gerekir.
+
+Yanıt yükü örneği: 
 
 ```json
 {
-  "count": 2,
+  "count": 2, // number of records in the response
   "result": [
-    {
-      "usageEventId": "Unique identifier associated with the usage event",
-      "status": "Accepted|Expired|Duplicate|Error|ResourceNotFound|ResourceNotAuthorized|InvalidDimension|BadArgument",
-      "messageTime": "Time this message was created in UTC",
-      "resourceId": "Identifier of the resource against which usage is emitted",
-      "quantity": 5.0,
-      "dimension": "Dimension identifier",
-      "effectiveStartTime": "Time in UTC when the usage event occurred",
-      "planId": "Plan associated with the purchased offer",
-      "error": "Error object (optional)"
+    { // first response
+      "usageEventId": "<guid>", // unique identifier associated with the usage event in Microsoft records
+      "status": "Accepted" // see list of possible statuses below,
+      "messageTime": "2020-01-12T13:19:35.3458658Z", // Time in UTC this event was accepted by Microsoft,
+      "resourceId": "<guid1>", // unique identifier of the resource against which usage is emitted.
+      "quantity": 5.0, // amount of emitted units as recorded by Microsoft 
+      "dimension": "dim1", // custom dimension identifier
+      "effectiveStartTime": "2018-12-01T08:30:14",// time in UTC when the usage event occurred, as sent by the ISV
+      "planId": "plan1", // id of the plan purchased for the offer
     },
-    {
-      "usageEventId": "Unique identifier associated with the usage event",
-      "status": "Accepted|Expired|Duplicate|Error|ResourceNotFound|ResourceNotAuthorized|InvalidDimension|BadArgument",
-      "messageTime": "Time this message was created in UTC",
-      "resourceId": "Identifier of the resource against which usage is emitted",
-      "quantity": 5.0,
-      "dimension": "Dimension identifier",
-      "effectiveStartTime": "Time in UTC when the usage event occurred",
-      "planId": "Plan associated with the purchased offer",
-      "error": "Error object (optional)"
+    { // second response
+      "status": "Duplicate",
+      "messageTime": "0001-01-01T00:00:00",
+      "error": {
+        "additionalInfo": {
+          "acceptedMessage": {
+            "usageEventId": "<guid>",
+            "status": "Duplicate",
+            "messageTime": "2020-01-12T13:19:35.3458658Z",
+            "resourceId": "<guid2>",
+            "quantity": 1.0,
+            "dimension": "email",
+            "effectiveStartTime": "2020-01-12T11:03:28.14Z",
+            "planId": "gold"
+          }
+        },
+        "message": "This usage event already exist.",
+        "code": "Conflict"
+      },
+      "resourceId": "<guid2>",
+      "quantity": 1.0,
+      "dimension": "email",
+      "effectiveStartTime": "2020-01-12T11:03:28.14Z",
+      "planId": "gold"
     }
   ]
 }
@@ -199,43 +249,32 @@ API yanıtında başvurulan durum kodu açıklaması `BatchUsageEvent` :
 
 | Durum kodu  | Description |
 | ---------- | -------------------- |
-| `Accepted` | Kabul edilen kod. |
+| `Accepted` | Eden. |
 | `Expired` | Kullanım zaman aşımına uğradı. |
 | `Duplicate` | Yinelenen kullanım belirtildi. |
 | `Error` | Hata kodu. |
 | `ResourceNotFound` | Belirtilen kullanım kaynağı geçersiz. |
 | `ResourceNotAuthorized` | Bu kaynak için kullanım sağlama yetkiniz yok. |
 | `InvalidDimension` | Bu teklif/plan için kullanım geçirildiği boyut geçersiz. |
-| `InvalidQuantity` | Geçirilen miktar 0 <. |
+| `InvalidQuantity` | Geçirilen miktar 0 ' dan küçük veya buna eşit. |
 | `BadArgument` | Giriş eksik veya hatalı biçimlendirilmiş. |
 
 Kod: 400<br>
-Hatalı istek, eksik veya geçersiz veri sağlanmış veya geçerliliği zaman aşımına uğradı
+Hatalı istek. Batch, 25 ' ten fazla kullanım olayı içeriyordu.
 
-```json
-{
-  "message": "One or more errors have occurred.",
-  "target": "usageEventRequest",
-  "details": [
-    {
-      "message": "Invalid data format.",
-      "target": "usageEventRequest",
-      "code": "BadArgument"
-    }
-  ],
-  "code": "BadArgument"
-}
-```
 Kod: 403<br>
-Kullanıcının bu çağrıyı yapması yetkilendirilmemiş
+Inı. Yetkilendirme belirteci belirtilmemiş, geçersiz veya zaman aşımına uğradı.  Ya da istek, yetkilendirme belirtecini oluşturmak için kullanılan bir Azure AD Uygulaması KIMLIĞIYLE yayınlanan bir teklifin aboneliğine erişmeye çalışıyor.
 
-```json
-{
-  "code": "Forbidden",
-  "message": "User is not allowed to call this"
-}
-```
+## <a name="development-and-testing-best-practices"></a>Geliştirme ve test en iyi uygulamaları
+
+Özel Ölçüm emisyonunu test etmek için, ölçüm API 'SI ile tümleştirmeyi uygulayın, bir birim başına sıfır fiyatla birlikte, yayınlanmış SaaS teklifiniz için bir plan oluşturun. Ve bu teklifi önizleme olarak yayımlayarak yalnızca sınırlı kullanıcılar tümleştirmeyi erişebilir ve test edebilir.
+
+Ayrıca, sınırlı hedef kitlelerine test sırasında bu plana erişimi sınırlandırmak için, mevcut bir canlı teklif için özel planı da kullanabilirsiniz.
+
+## <a name="get-support"></a>Destek alma
+
+Yayımcı desteği seçeneklerini anlamak ve Microsoft ile destek bileti açmak için [Iş Ortağı Merkezi ' nde ticari Market programına yönelik destek](./support.md) bölümündeki yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz. [SaaS ölçülen faturalandırma](./saas-metered-billing.md).
+Ölçüm hizmeti API 'Leri hakkında daha fazla bilgi için bkz. [Market ölçüm hizmeti API 'LERI SSS](./marketplace-metering-service-apis-faq.md).

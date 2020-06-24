@@ -2,22 +2,22 @@
 title: Mevcut şirket içi proxy sunucularıyla ve Azure AD ile çalışma | Microsoft Docs
 description: Mevcut şirket içi proxy sunucularıyla çalışmayı ele alır.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/07/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 088a87f4c4eb200cfeecff1d2513fefdb0088a38
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 48727e377c2b6707e570cad103e4b08bcb44a1cb
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827056"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764936"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Mevcut şirket içi proxy sunucularıyla çalışma
 
@@ -56,7 +56,7 @@ Bağlayıcı için giden proxy kullanımını devre dışı bırakmak için, C:\
 </configuration>
 ```
 
-Bağlayıcı Güncelleştiricisi hizmetinin proxy 'yi de atlayacak emin olmak için, ApplicationProxyConnectorUpdaterService. exe. config dosyasında benzer bir değişiklik yapın. Bu dosya C:\Program Files\Microsoft AAD App proxy Bağlayıcı Güncelleştiricisi konumundadır.
+Bağlayıcı Güncelleştiricisi hizmetinin proxy 'yi de atlayacak emin olmak için, ApplicationProxyConnectorUpdaterService.exe.config dosyasında benzer bir değişiklik yapın. Bu dosya C:\Program Files\Microsoft AAD App proxy Bağlayıcı Güncelleştiricisi konumundadır.
 
 Varsayılan. config dosyalarına döndürmeniz gerekiyorsa, özgün dosyaların kopyalarını aldığınızdan emin olun.
 
@@ -152,9 +152,9 @@ Bunu etkinleştirmek için lütfen sonraki adımları izleyin:
 3.  Yönetici haklarıyla yükseltilmiş bir komut istemi başlatın ve girin `control inetcpl.cpl` .
 4.  Gerekli proxy ayarlarını yapılandırın. 
 
-Bu ayarlar, bağlayıcının Azure ile iletişim için aynı ileri ara sunucusunu ve arka uç uygulamasını kullanmasını sağlar. Azure iletişimine yönelik bağlayıcı, ileri proxy veya farklı bir ileri ara sunucu gerektirmez, bunu, giden proxy 'leri atlama veya giden proxy sunucusunu kullanma bölümlerinde açıklandığı gibi ApplicationProxyConnectorService. exe. config dosyasını değiştirmeye göre ayarlayabilirsiniz.
+Bu ayarlar, bağlayıcının Azure ile iletişim için aynı ileri ara sunucusunu ve arka uç uygulamasını kullanmasını sağlar. Azure iletişimine yönelik bağlayıcı, ileri ara sunucu veya farklı bir ileri ara sunucu gerektirmez, bu ayarı, giden proxy 'leri atlama veya giden ara sunucu kullanma bölümlerinde açıklandığı gibi dosya ApplicationProxyConnectorService.exe.config değiştirmek üzere ayarlayabilirsiniz.
 
-Bağlayıcı Güncelleştirici hizmeti, makine proxy 'sini de kullanacaktır. Bu davranış, ApplicationProxyConnectorUpdaterService. exe. config dosyası değiştirilerek değiştirilebilir.
+Bağlayıcı Güncelleştirici hizmeti, makine proxy 'sini de kullanacaktır. Bu davranış, ApplicationProxyConnectorUpdaterService.exe.config dosya değiştirilerek değiştirilebilir.
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Bağlayıcı ara sunucu sorunlarını ve hizmet bağlantı sorunlarını giderme
 

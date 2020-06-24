@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8cc085fd27004928babd7df305a4452d1b068f6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6232ba859c985929c9df0fb5020fb932611bbb40
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72794244"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079441"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Örnek: C 'de Azure Bilişsel Arama için eş anlamlılar ekleme #
 
@@ -38,7 +38,7 @@ Birden çok eş anlamlı eşlemi oluşturabilir, bunları bir dizin için kullan
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Bilişsel Arama hizmeti](search-create-service-portal.md)
-* [Microsoft.Azure.Search .NET kitaplığı](https://aka.ms/search-sdk)
+* [Microsoft.Azure.Search .NET kitaplığı](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 * [.NET uygulamasından Azure Bilişsel Arama kullanma](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>Genel Bakış
@@ -128,7 +128,7 @@ Eş anlamlıların etkinleştirilmesi iki adımlı bir işlemdir. İlk olarak e�
 
     serviceClient.SynonymMaps.CreateOrUpdate(synonymMap);
    ```
-   Bir eş anlamlı eşlemi, açık kaynak standart `solr` biçimine uygun olmalıdır. Biçim, bölüm `Apache Solr synonym format`altında [Azure bilişsel arama eş anlamlılar](search-synonyms.md) olarak açıklanmaktadır.
+   Bir eş anlamlı eşlemi, açık kaynak standart `solr` biçimine uygun olmalıdır. Biçim, bölüm altında [Azure bilişsel arama eş anlamlılar](search-synonyms.md) olarak açıklanmaktadır `Apache Solr synonym format` .
 
 2. Dizin tanımında eş anlamlı eşlemini kullanacak aranabilir alanları yapılandırın. `EnableSynonymsInHotelsIndex` içinde, `synonymMaps` özelliği yeni yüklenen eş anlamlı eşleminin adına ayarlanarak `category` ve `tags` alanlarında eş anlamlılar etkinleştirilir.
    ```csharp

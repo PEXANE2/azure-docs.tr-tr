@@ -3,13 +3,13 @@ title: Özel bir Azure Kubernetes hizmet kümesi oluşturma
 description: Özel bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmayı öğrenin
 services: container-service
 ms.topic: article
-ms.date: 2/21/2020
-ms.openlocfilehash: 49776fb50eabeef8238e54c7a2f3128c99c2514b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 6/18/2020
+ms.openlocfilehash: d2705570f6993ecda0c88241d2dc517fac60695c
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849697"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194051"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma
 
@@ -71,11 +71,11 @@ AKS kümesiyle aynı VNET 'te VM oluşturma en kolay seçenektir.  Express Route
 
 Belirtildiği gibi, VNet eşlemesi özel kümenize erişmenin bir yoludur. VNet eşlemesini kullanmak için sanal ağ ile özel DNS bölgesi arasında bir bağlantı ayarlamanız gerekir.
     
-1. Azure portal MC_ * kaynak grubuna gidin.  
+1. Azure portal düğüm kaynak grubuna gidin.  
 2. Özel DNS bölgesini seçin.   
 3. Sol bölmede **sanal ağ** bağlantısını seçin.  
 4. VM 'nin sanal ağını özel DNS bölgesine eklemek için yeni bir bağlantı oluşturun. DNS bölgesi bağlantısının kullanılabilir olması birkaç dakika sürer.  
-5. Azure portal MC_ * kaynak grubuna geri dönün.  
+5. Azure portal, kümenizin VNet 'i içeren kaynak grubuna gidin.  
 6. Sağ bölmede sanal ağı seçin. Sanal ağ adı *aks-VNET- \* *biçimindedir.  
 7. Sol bölmede, eşlemeler ' i **seçin.**  
 8. **Ekle**' yi SEÇIN, VM 'nin sanal ağını ekleyin ve ardından eşlemeyi oluşturun.  
@@ -91,7 +91,7 @@ Belirtildiği gibi, VNet eşlemesi özel kümenize erişmenin bir yoludur. VNet 
 
 2. Özel DNS bölgesi yalnızca küme düğümlerinin eklendiği sanal ağa bağlanır (3). Bu, Özel uç noktanın yalnızca bağlı VNet 'teki konaklarla çözümlenebileceği anlamına gelir. VNet üzerinde özel DNS yapılandırılmadığından (varsayılan) senaryolarda, bu, bağlantı nedeniyle özel DNS bölgesindeki kayıtları çözümleyebilen DNS için 168.63.129.16 adresinde ana bilgisayar olarak sorun olmadan çalışmaktadır.
 
-3. Kümenizi içeren VNet 'in özel DNS ayarları (4) olduğu senaryolarda, özel DNS bölgesi özel DNS çözümleyicilerine (5) sahip olan VNet 'e bağlanmadığı takdirde küme dağıtımı başarısız olur. Bu bağlantı, Küme sağlama sırasında veya Azure Ilkesi veya diğer olay tabanlı dağıtım mekanizmaları (örneğin, Azure Event Grid ve Azure Işlevleri) kullanılarak bölgenin oluşturulması algılandıktan sonra Otomasyon yoluyla, özel bölge oluşturulduktan sonra el ile oluşturulabilir.
+3. Kümenizi içeren VNet 'in özel DNS ayarları (4) olduğu senaryolarda, özel DNS bölgesi özel DNS çözümleyicilerine (5) sahip olan VNet 'e bağlanmadığı takdirde küme dağıtımı başarısız olur. Bu bağlantı, Küme sağlama sırasında veya olay tabanlı dağıtım mekanizmaları (örneğin, Azure Event Grid ve Azure Işlevleri) kullanılarak bölge oluşturma algılandıktan sonra Otomasyon yoluyla, özel bölge oluşturulduktan sonra el ile oluşturulabilir.
 
 ## <a name="dependencies"></a>Bağımlılıklar  
 
@@ -102,7 +102,6 @@ Belirtildiği gibi, VNet eşlemesi özel kümenize erişmenin bir yoludur. VNet 
 * IP yetkili aralıkları özel API sunucusu uç noktasına uygulanamıyor, yalnızca ortak API sunucusu için geçerlidir
 * Kullanılabilirlik Alanları Şu anda belirli bölgelerde destekleniyor, bu belgenin başlangıcına bakın 
 * [Azure özel bağlantı hizmeti sınırlamaları][private-link-service] özel kümeler için geçerlidir.
-* Özel bir kümede özel bir Azure sanal ağında özel Azure Container Instances (ACI) döndürme için sanal düğümler desteklenmez
 * Özel kümelerle Azure DevOps Microsoft tarafından barındırılan aracılar için destek yoktur. [Şirket içinde barındırılan aracıları][devops-agents]kullanmayı göz önünde bulundurun. 
 * Azure Container Registry özel AKS ile çalışmak üzere etkinleştirmesi gereken müşteriler için, Container Registry sanal ağı aracı kümesi sanal ağıyla eşlenmelidir.
 * Azure Dev Spaces için geçerli destek yok

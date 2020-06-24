@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 8be1f1161ac1c4611ddb2a5ec61592394014c488
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87f1fcfa08ef2b7d2e4f72588eff8576c5ace146
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548675"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254302"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS koruması-dayanıklı çözümler tasarlama
 
@@ -30,6 +30,7 @@ DDoS, uygulama kaynaklarını tüketmeye çalışan bir saldırı türüdür. Am
 
 ![Azure DDoS koruması 'nın, müşterileri ve bir saldırgandan bir sanal ağı koruma rolü](./media/ddos-best-practices/image1.png)
 
+Bu teknolojiyle ilgili güvenlik önerileri için bkz. [DDoS koruması Için Azure Güvenlik temeli](ddos-protection-security-baseline.md).
 
 ## <a name="fundamental-best-practices"></a>Temel en iyi uygulamalar
 
@@ -97,7 +98,7 @@ DDoS koruma standardı, DDoS saldırısı süresince [Azure izleyici](/azure/azu
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS risk azaltma ilkeleri
 
-Azure Portal**ölçümleri** **İzle** > ' yi seçin. **Ölçümler** bölmesinde, kaynak grubunu seçin, **ortak IP adresi**kaynak türünü SEÇIN ve Azure genel IP adresinizi seçin. DDoS ölçümleri **kullanılabilir ölçümler** bölmesinde görünür.
+Azure Portal ölçümleri **İzle**' yi seçin  >  **Metrics**. **Ölçümler** bölmesinde, kaynak grubunu seçin, **ortak IP adresi**kaynak türünü SEÇIN ve Azure genel IP adresinizi seçin. DDoS ölçümleri **kullanılabilir ölçümler** bölmesinde görünür.
 
 DDoS koruması standardı, korumalı kaynağın her genel IP 'si için, DDoS özellikli olan sanal ağdaki üç etkin Azaltma ilkesi (TCP SYN, TCP ve UDP) uygular. **DDoS risk azaltma tetiklenecek ölçüm gelen paketleri**seçerek ilke eşiklerini görüntüleyebilirsiniz.
 
@@ -235,7 +236,7 @@ Bu mimaride, DDoS koruma standardı sanal ağ üzerinde etkinleştirilmiştir. S
 
 #### <a name="paas-web-application"></a>PaaS web uygulaması
 
-Bu başvuru mimarisi, tek bir bölgede Azure App Service uygulamasının çalıştığını gösterir. Bu mimari, [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) ve [Azure SQL veritabanı](https://azure.microsoft.com/documentation/services/sql-database/)kullanan bir Web uygulaması için kanıtlanmış bir uygulamalar kümesi gösterir.
+Bu başvuru mimarisi, tek bir bölgede Azure App Service uygulamasının çalıştığını gösterir. Bu mimari, [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/)   ve [Azure SQL veritabanı](https://azure.microsoft.com/documentation/services/sql-database/)kullanan bir Web uygulaması için kanıtlanmış bir uygulamalar kümesi gösterir.
 Yük devretme senaryoları için bir bekleme bölgesi ayarlanır.
 
 ![PaaS Web uygulaması için başvuru mimarisinin diyagramı](./media/ddos-best-practices/image11.png)
@@ -268,8 +269,7 @@ Bu başvuru mimarisi hakkında daha fazla bilgi için Azure [sanal ağ kullanara
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [DDoS koruması için Azure Güvenlik temeli](ddos-protection-security-baseline.md)
 * [Bulutta paylaşılan sorumluluk](shared-responsibility.md)
-
 * [Azure DDoS koruması ürün sayfası](https://azure.microsoft.com/services/ddos-protection/)
-
 * [Azure DDoS koruması belgeleri](/azure/virtual-network/ddos-protection-overview)

@@ -2,13 +2,13 @@
 title: Kapsayıcılar için Azure Izleyicisine genel bakış | Microsoft Docs
 description: Bu makalede AKS kapsayıcı öngörüleri çözümünü izleyen kapsayıcılar için Azure Izleyici ve AKS kümelerinizin sistem durumunu ve Azure 'daki Container Instances izleyerek sunduğu değer açıklanmaktadır.
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 5bd951f7dcb2def62893df48709f1e57bd340bb2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 05/21/2020
+ms.openlocfilehash: 709759d1a2b2eb5d8f919ed90e6525c664129f16
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118074"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770824"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Kapsayıcılar için Azure İzleyici'ye genel bakış
 
@@ -19,6 +19,7 @@ Kapsayıcılar için Azure Izleyici, ' ye dağıtılan kapsayıcı iş yüklerin
 - [Azure Container Instances](../../container-instances/container-instances-overview.md)
 - [Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) veya şirket içinde barındırılan, kendi kendine yönetilen Kubernetes kümeleri
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
+- [Azure Arc etkin Kubernetes](../../azure-arc/kubernetes/overview.md) (Önizleme) 
 
 Kapsayıcılar için Azure Izleyici, Linux ve Windows Server 2019 işletim sistemi çalıştıran kümeleri destekler. 
 
@@ -46,9 +47,11 @@ Kapsayıcılar için Azure Izleyici, Azure Izleyici 'nin farklı özelliklerini 
     >Azure Red Hat OpenShift desteği şu anda genel önizlemede bir özelliktir.
     >
 
+* [Azure Arc etkin Kubernetes (Önizleme) için dağıtılan](../../azure-arc/kubernetes/overview.md)kapsayıcı iş yüklerini izleyin.
+
 Bir Windows Server kümesini bir Linux kümesiyle karşılaştırılan izlemedeki başlıca farklar şunlardır:
 
-- Windows 'un bellek RSS ölçümü yoktur ve bu nedenle Windows düğüm ve kapsayıcılar için kullanılamaz. Çalışma kümesi kullanılabilir. [Windows 'da bellek yönetimi](https://docs.microsoft.com/windows/win32/memory/working-set)hakkında daha fazla bilgi edinin.
+- Windows 'un bellek RSS ölçümü yoktur ve bu nedenle Windows düğüm ve kapsayıcıları için kullanılamaz. [Çalışma kümesi](https://docs.microsoft.com/windows/win32/memory/working-set) ölçümü kullanılabilir.
 - Disk depolama kapasitesi bilgileri Windows düğümleri için kullanılamaz.
 - Kapsayıcı günlükleri Windows düğümlerinde çalışan kapsayıcılar için kullanılamaz.
 - Canlı veriler (Önizleme) özelliği desteği, Windows kapsayıcı günlükleri dışında bulunur.

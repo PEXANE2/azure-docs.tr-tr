@@ -4,12 +4,12 @@ description: Azure blok zinciri çalışma ekranı önizleme mimarisine ve bile�
 ms.date: 09/05/2019
 ms.topic: conceptual
 ms.reviewer: brendal
-ms.openlocfilehash: aa972e8ae486d181f0c48df72ec89c925c940451
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef56d0fdac74bf447fce01e772abed8a2b07c27b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74324891"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253435"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench mimarisi
 
@@ -43,12 +43,12 @@ Daha fazla bilgi için bkz. [GitHub 'Da Azure blok zinciri çalışma ekranı ö
 
 ## <a name="gateway-service-api"></a>Ağ geçidi hizmeti API 'SI
 
-Blok zinciri çalışma ekranı, REST tabanlı bir ağ geçidi hizmeti API 'sini içerir. Bir blok zincirine yazarken, API bir olay aracısına ileti oluşturur ve gönderir. API tarafından veriler istendiğinde sorgular, zincir dışı SQL veritabanına gönderilir. SQL veritabanı, desteklenen akıllı sözleşmeler için bağlam ve yapılandırma bilgilerini sağlayan bir zincir veri ve meta veri çoğaltmasını içerir. Sorgular, yük dışı çoğaltmadaki gerekli verileri, sözleşmenin meta verileri tarafından bilgilendirilmiş bir biçimde döndürür.
+Blok zinciri çalışma ekranı, REST tabanlı bir ağ geçidi hizmeti API 'sini içerir. Bir blok zincirine yazarken, API bir olay aracısına ileti oluşturur ve gönderir. API tarafından veriler istendiğinde sorgular, zincir dışı veritabanına gönderilir. Veritabanı, desteklenen akıllı sözleşmeler için bağlam ve yapılandırma bilgilerini sağlayan, bir zincir verileri ve meta verilerin bir çoğaltmasını içerir. Sorgular, yük dışı çoğaltmadaki gerekli verileri, sözleşmenin meta verileri tarafından bilgilendirilmiş bir biçimde döndürür.
 
 Geliştiriciler, blok zinciri çalışma ekranı istemci uygulamalarına bağlı olmadan blok zinciri çözümlerini derlemek veya bütünleştirmek için ağ geçidi hizmeti API 'sine erişebilirler.
 
 > [!NOTE]
-> API 'ye kimliği doğrulanmış erişimi etkinleştirmek için, iki istemci uygulaması Azure Active Directory kaydedilir. Azure Active Directory her uygulama türü (yerel ve Web) için farklı uygulama kayıtları gerektirir. 
+> API 'ye kimliği doğrulanmış erişimi etkinleştirmek için, iki istemci uygulaması Azure Active Directory kaydedilir. Azure Active Directory her uygulama türü (yerel ve Web) için farklı uygulama kayıtları gerektirir.
 
 ## <a name="message-broker-for-incoming-messages"></a>Gelen iletiler için ileti Aracısı
 
@@ -70,7 +70,7 @@ Dağıtılmış muhasebe teknolojisi (DLT) iletileri, blok zincirine yazılacak 
 
 ### <a name="database-consumer"></a>Veritabanı tüketicisi
 
-Veritabanı tüketicisi Service Bus iletileri alır ve verileri SQL veritabanı gibi eklenmiş bir veritabanına gönderir.
+Veritabanı tüketicisi Service Bus iletileri alır ve verileri Azure SQL veritabanı 'ndaki bir veritabanı gibi eklenmiş bir veritabanına gönderir.
 
 ### <a name="storage-consumer"></a>Depolama tüketicisi
 
@@ -91,15 +91,15 @@ Gelen ileti aracısıdır bir iletinin blok zincirine yazılması gerekiyorsa, b
 Dağıtılmış bir muhasebe teknolojisi (DLT) İzleyicisi blok zinciri çalışma ekranına eklenen blok zincirlerinde gerçekleşen olayları izler.
 Olaylar, bireyler ve sistemlerle ilgili bilgileri yansıtır. Örneğin, yeni sözleşme örnekleri oluşturma, işlemlerin yürütülmesi ve durum değişiklikleri. Olaylar yakalanarak giden ileti aracısına gönderilir, bu nedenle aşağı akış tüketicileri tarafından tüketilebilir.
 
-Örneğin, SQL tüketicisi olayları izler, bunları kullanır ve SQL veritabanını dahil edilen değerlerle doldurur. Kopyalama, zincir dışı bir depoda bir zincir veri çoğaltmasının yeniden kullanılmasını mümkün bir şekilde sunar.
+Örneğin, SQL tüketicisi olayları izler, bunları tüketir ve veritabanını dahil edilen değerlerle doldurur. Kopyalama, zincir dışı bir depoda bir zincir veri çoğaltmasının yeniden kullanılmasını mümkün bir şekilde sunar.
 
-## <a name="azure-sql-database"></a>Azure SQL veritabanı
+## <a name="azure-sql-database"></a>Azure SQL Veritabanı
 
-Blok zinciri çalışma ekranına eklenen Azure SQL veritabanı, sözleşme tanımlarını, yapılandırma meta verilerini ve blok zincirinde depolanan verilerin SQL erişimli bir çoğaltmasını depolar. Bu veriler, veritabanına doğrudan erişerek kolayca sorgulanabilir, görselleştirilir veya analiz edilebilir. Geliştiriciler ve diğer kullanıcılar veritabanını raporlama, analiz veya diğer veri merkezli Tümleştirmeler için kullanabilir. Örneğin, kullanıcılar Power BI kullanarak işlem verilerini görselleştirebilir.
+Blok zinciri çalışma ekranına eklenen veritabanı, sözleşme tanımlarını, yapılandırma meta verilerini ve blok zincirinde depolanan verilerin SQL erişimli bir çoğaltmasını depolar. Bu veriler, veritabanına doğrudan erişerek kolayca sorgulanabilir, görselleştirilir veya analiz edilebilir. Geliştiriciler ve diğer kullanıcılar veritabanını raporlama, analiz veya diğer veri merkezli Tümleştirmeler için kullanabilir. Örneğin, kullanıcılar Power BI kullanarak işlem verilerini görselleştirebilir.
 
 Bu kapalı depolama alanı, kurumsal kuruluşların bir blok zinciri defteri yerine SQL 'de verileri sorgulamasına olanak sağlar. Ayrıca, blok zinciri teknolojisi yığınlarından bağımsız bir standart şemayı standartlaştırarak zincir dışı depolama, raporların ve diğer yapıların projeler, senaryolar ve kuruluşlar genelinde yeniden kullanılmasını mümkün hale getirir.
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Depolama
 
 Azure depolama, sözleşmelerle ilişkili sözleşmeleri ve meta verileri depolamak için kullanılır.
 

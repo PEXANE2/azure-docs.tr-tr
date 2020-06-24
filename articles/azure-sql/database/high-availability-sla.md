@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 04/02/2020
-ms.openlocfilehash: a5c55149b9cfbe1c82208347f96383a60b6b1817
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 7ed23f192fc173c1c9802593ed7a043fabd765c2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331568"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254608"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için yüksek kullanılabilirlik
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,7 +91,7 @@ Yüksek kullanılabilirlik mimarisinin bölge yedekli sürümü aşağıdaki diy
 
 ## <a name="accelerated-database-recovery-adr"></a>Hızlandırılmış veritabanı kurtarma (ADR)
 
-[Hızlandırılmış veritabanı kurtarma (ADR)](../accelerated-database-recovery.md) , özellikle uzun süre çalışan işlemler söz konusu olduğunda veritabanı kullanılabilirliğini büyük ölçüde geliştiren yenı bir SQL veritabanı altyapısı özelliğidir. ADR Şu anda Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SQL veri ambarı için kullanılabilir.
+[Hızlandırılmış veritabanı kurtarma (ADR)](../accelerated-database-recovery.md) , özellikle uzun süre çalışan işlemler söz konusu olduğunda veritabanı kullanılabilirliğini büyük ölçüde geliştiren yeni bir veritabanı altyapısı özelliğidir. ADR Şu anda Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SQL veri ambarı için kullanılabilir.
 
 ## <a name="testing-application-fault-resiliency"></a>Uygulama hatası dayanıklılığı sınanıyor
 

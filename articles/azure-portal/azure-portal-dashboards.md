@@ -8,17 +8,17 @@ manager: mtillman
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: e6eda3b522a5b46cd82ef29ae493891a624d3272
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06cf0a5692b3d80a07c305f53c9e3801cbdb5110
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459296"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764018"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Azure portalında pano oluşturma ve paylaşma
 
@@ -58,7 +58,7 @@ Pano görünümü artık yeni panonuzu gösterir. Kullanılabilir panoları gör
 
 Bir panoya kutucuk eklemek için şu adımları izleyin:
 
-1. Sayfa ![başlığından Düzenle](./media/azure-portal-dashboards/dashboard-edit-icon.png) simgesini **Düzenle** ' yi seçin.
+1. ![Sayfa başlığından Düzenle simgesini ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Düzenle** ' yi seçin.
 
     ![Pano vurgulama düzenleme ekran görüntüsü](./media/azure-portal-dashboards/dashboard-edit.png)
 
@@ -79,7 +79,7 @@ Panolarınıza kutucuk eklemenin alternatif bir yolu vardır. Birçok kaynak say
 
 Bir kutucuğun boyutunu değiştirmek veya bir panodaki kutucukları yeniden düzenlemek için aşağıdaki adımları izleyin:
 
-1. Sayfa ![başlığından Düzenle](./media/azure-portal-dashboards/dashboard-edit-icon.png) simgesini **Düzenle** ' yi seçin.
+1. ![Sayfa başlığından Düzenle simgesini ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Düzenle** ' yi seçin.
 
 1. Bir kutucuğun sağ üst köşesindeki bağlam menüsünü seçin. Sonra bir kutucuk boyutu seçin. Herhangi bir boyutu destekleyen Kutucuklar, Kutucuğu istediğiniz boyuta sürüklemenize imkan tanıyan sağ alt köşedeki bir "tanıtıcı" da içerir.
 
@@ -106,7 +106,7 @@ Ayarlanması gereken her kutucuk, kutucuğu özelleştirene kadar **kutucuk baş
 
 Panodaki veriler, son 24 saat için etkinliği otomatik olarak gösterir. Yalnızca bu kutucuk için farklı bir zaman aralığı göstermek için şu adımları izleyin:
 
-1. Bağlam menüsünden **kutucuk verilerini Özelleştir** ' i veya kutucuğun ![sol üst](./media/azure-portal-dashboards/dashboard-filter.png) köşesinden filtre simgesi filtresini seçin.
+1. Bağlam menüsünden **kutucuk verilerini Özelleştir** ' i veya ![ ](./media/azure-portal-dashboards/dashboard-filter.png) kutucuğun sol üst köşesinden filtre simgesi filtresini seçin.
 
     ![Kutucuk bağlam menüsünün ekran görüntüsü](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
@@ -126,7 +126,7 @@ Bir panodaki kutucuğu kaldırmak için şu adımları izleyin:
 
 * Kutucuğun sağ üst köşesindeki bağlam menüsünü seçin ve **panodan kaldır**' ı seçin. Veya
 
-* Özelleştirme ![modunu girmek](./media/azure-portal-dashboards/dashboard-edit-icon.png) **için Düzenle simgesini Düzenle '** yi seçin. Kutucuğun sağ üst köşesine gelin, sonra kutucuğu panodan kaldırmak için simgeyi ![](./media/azure-portal-dashboards/dashboard-delete-icon.png) Sil simgesini seçin.
+* ![ ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Edit** Özelleştirme modunu girmek için Düzenle simgesini Düzenle ' yi seçin. Kutucuğun sağ üst köşesine gelin, sonra ![ ](./media/azure-portal-dashboards/dashboard-delete-icon.png) kutucuğu panodan kaldırmak için simgeyi Sil simgesini seçin.
 
    ![Panodan kutucuğun nasıl kaldırılacağını gösteren ekran görüntüsü](./media/azure-portal-dashboards/dashboard-delete-tile.png)
 
@@ -136,7 +136,7 @@ Mevcut bir panoyu yeni bir Pano için şablon olarak kullanmak için şu adımla
 
 1. Pano görünümünün kopyalamak istediğiniz panoyu göstermesini sağlayın.
 
-1. Sayfa üstbilgisinde Kopyala simgesini ![](./media/azure-portal-dashboards/dashboard-clone.png) **Kopyala**' yı seçin.
+1. Sayfa üstbilgisinde ![ Kopyala simgesini Kopyala ' yı seçin ](./media/azure-portal-dashboards/dashboard-clone.png) **Clone**.
 
 1. Panonun **bir kopyası,** *Pano adınızın* kopyası adlı düzenleme modunda açılır. Panoyu yeniden adlandırmak ve özelleştirmek için bu makaledeki yukarıdaki adımları kullanın.
 
@@ -170,7 +170,7 @@ Paylaşılan bir panoyu bulup açmak için şu adımları izleyin:
 
 1. Pano adının yanındaki listeden silmek istediğiniz panoyu seçin.
 
-1. Sayfa ![üstbilgisindeki Sil](./media/azure-portal-dashboards/dashboard-delete-icon.png) **simgesini Sil** ' i seçin.
+1. Sayfa üstbilgisindeki Sil simgesini Sil ' i seçin ![ ](./media/azure-portal-dashboards/dashboard-delete-icon.png) **Delete** .
 
 1. Özel bir Pano için onay iletişim kutusunda **Tamam** ' ı seçerek panoyu kaldırın. Paylaşılan bir Pano için, onay iletişim kutusunda, yayımlanan panonun artık başkaları tarafından görüntülenemeyeceği onaylanacak onay kutusunu seçin. Ardından **Tamam**' ı seçin.
 

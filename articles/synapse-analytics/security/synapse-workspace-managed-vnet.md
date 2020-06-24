@@ -4,15 +4,16 @@ description: Azure SYNAPSE Analytics 'te yönetilen sanal ağı açıklayan bir 
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 623b6325b88f42f0076c84a221864762cd3918f9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b46ce6f6164479853bc762cb1ca45d67f7f80930
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83645228"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194374"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Azure SYNAPSE Analytics yönetilen sanal ağ (Önizleme)
 

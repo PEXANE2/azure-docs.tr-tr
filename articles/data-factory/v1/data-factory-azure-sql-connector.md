@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7fc0b2822195d952c2a4f9c02bf3758c0e2b809a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf731b09115558fc4280fe322d7e952ccb420c03
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260507"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254880"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SQL veritabanına veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -52,7 +52,7 @@ Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri depos
 
 1. Bir **Veri Fabrikası**oluşturun. Bir veri fabrikası bir veya daha fazla işlem hattı içerebilir.
 2. Giriş ve çıkış veri depolarını veri fabrikanıza bağlamak için **bağlı hizmetler** oluşturun. Örneğin, bir Azure Blob depolama alanından Azure SQL veritabanına veri kopyalıyorsanız, Azure depolama hesabınızı ve Azure SQL veritabanınızı veri fabrikanıza bağlamak için iki bağlı hizmet oluşturursunuz. Azure SQL veritabanı 'na özgü bağlantılı hizmet özellikleri için bkz. [bağlı hizmet özellikleri](#linked-service-properties) bölümü.
-3. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun. Son adımda bahsedilen örnekte, blob kapsayıcısını ve girdi verilerini içeren klasörü belirtmek için bir veri kümesi oluşturursunuz. Ve, blob depolamadan kopyalanmış verileri tutan Azure SQL veritabanında SQL tablosunu belirtmek için başka bir veri kümesi oluşturursunuz. Azure Data Lake Store özgü veri kümesi özellikleri için bkz. [veri kümesi özellikleri](#dataset-properties) bölümü.
+3. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun. Son adımda bahsedilen örnekte, blob kapsayıcısını ve girdi verilerini içeren klasörü belirtmek için bir veri kümesi oluşturursunuz. Ve, blob depolamadan kopyalanmış verileri tutan Azure SQL veritabanı 'nda SQL tablosunu belirtmek için başka bir veri kümesi oluşturursunuz. Azure Data Lake Store özgü veri kümesi özellikleri için bkz. [veri kümesi özellikleri](#dataset-properties) bölümü.
 4. Bir veri kümesini girdi olarak ve bir veri kümesini çıkış olarak alan kopyalama etkinliği ile bir işlem **hattı** oluşturun. Daha önce bahsedilen örnekte, BlobSource değerini kaynak ve SqlSink olarak kopyalama etkinliği için havuz olarak kullanacaksınız. Benzer şekilde, Azure SQL veritabanından Azure Blob depolama alanına kopyalama yapıyorsanız, kopyalama etkinliğinde SqlSource ve BlobSink kullanın. Azure SQL veritabanı 'na özel kopyalama etkinliği özellikleri için bkz. [kopyalama etkinliği özellikleri](#copy-activity-properties) bölümü. Bir veri deposunu kaynak veya havuz olarak kullanma hakkında ayrıntılı bilgi için, veri deponuzdaki önceki bölümde yer alan bağlantıya tıklayın.
 
 Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (bağlı hizmetler, veri kümeleri ve işlem hattı) sizin için otomatik olarak oluşturulur. Araçlar/API 'Leri (.NET API hariç) kullandığınızda, bu Data Factory varlıkları JSON biçimini kullanarak tanımlarsınız. Azure SQL veritabanına veri kopyalamak için kullanılan Data Factory varlıkları için JSON tanımları içeren örnekler için, bu makalenin [JSON örnekleri](#json-examples-for-copying-data-to-and-from-sql-database) bölümüne bakın.
@@ -60,18 +60,18 @@ Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (
 Aşağıdaki bölümler, Azure SQL veritabanı 'na özgü Data Factory varlıkları tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
 
 ## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
-Azure SQL bağlı hizmeti, bir Azure SQL veritabanını veri fabrikanıza bağlar. Aşağıdaki tabloda, Azure SQL bağlı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
+Azure SQL bağlı hizmeti, Azure SQL veritabanını veri fabrikanıza bağlar. Aşağıdaki tabloda, Azure SQL bağlı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| type |Type özelliği: **Azuressqldatabase** olarak ayarlanmalıdır |Yes |
+| tür |Type özelliği: **Azuressqldatabase** olarak ayarlanmalıdır |Yes |
 | Dizisi |ConnectionString özelliği için Azure SQL veritabanı örneğine bağlanmak için gereken bilgileri belirtin. Yalnızca temel kimlik doğrulaması desteklenir. |Yes |
 
 > [!IMPORTANT]
 > Azure [hizmetlerinin sunucuya erişmesine izin](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)vermek için veritabanı sunucusunu [Azure SQL veritabanı güvenlik duvarını](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) yapılandırın. Ayrıca, Data Factory ağ geçidine sahip şirket içi veri kaynaklarından Azure SQL veritabanı 'na veri kopyalıyorsanız, verileri Azure SQL veritabanına gönderen makine için uygun IP adresi aralığını yapılandırın.
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
-Bir Azure SQL veritabanında giriş veya çıkış verilerini temsil edecek bir veri kümesi belirtmek için, veri kümesinin Type özelliğini: **Azurestabtable**olarak ayarlarsınız. Veri kümesinin **Linkedservicename** ÖZELLIĞINI Azure SQL bağlı hizmetinin adı olarak ayarlayın.
+Azure SQL veritabanı 'nda giriş veya çıkış verilerini temsil edecek bir veri kümesi belirtmek için, veri kümesinin Type özelliğini: **Azuressqltable**olarak ayarlarsınız. Veri kümesinin **Linkedservicename** ÖZELLIĞINI Azure SQL bağlı hizmetinin adı olarak ayarlayın.
 
 Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu vb.) için benzerdir.
 
@@ -89,20 +89,20 @@ Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, 
 
 Ancak, etkinliğin **typeproperties** bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için, kaynak ve havuz türlerine göre farklılık gösterir.
 
-Verileri bir Azure SQL veritabanından taşıyorsanız, kopyalama etkinliğindeki kaynak türünü **SQLSource**olarak ayarlarsınız. Benzer şekilde, verileri bir Azure SQL veritabanına taşıyorsanız, kopyalama etkinliğindeki havuz türünü **Sqlsink**olarak ayarlarsınız. Bu bölüm, SqlSource ve SqlSink tarafından desteklenen özelliklerin bir listesini sağlar.
+Azure SQL veritabanından veri taşıyorsanız, kopyalama etkinliğindeki kaynak türünü **SQLSource**olarak ayarlarsınız. Benzer şekilde, verileri Azure SQL veritabanı 'na taşıyorsanız, kopyalama etkinliğindeki havuz türünü **Sqlsink**olarak ayarlarsınız. Bu bölüm, SqlSource ve SqlSink tarafından desteklenen özelliklerin bir listesini sağlar.
 
 ### <a name="sqlsource"></a>SqlSource
 Kopyalama etkinliğinde, kaynak **SQLSource**türünde olduğunda, **typeproperties** bölümünde aşağıdaki özellikler mevcuttur:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| sqlReaderQuery |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örnek: `select * from MyTable`. |Hayır |
-| sqlReaderStoredProcedureName |Kaynak tablodaki verileri okuyan saklı yordamın adı. |Saklı yordamın adı. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. |Hayır |
-| storedProcedureParameters |Saklı yordamın parametreleri. |Ad/değer çiftleri. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. |Hayır |
+| sqlReaderQuery |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örnek: `select * from MyTable`. |No |
+| sqlReaderStoredProcedureName |Kaynak tablodaki verileri okuyan saklı yordamın adı. |Saklı yordamın adı. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. |No |
+| storedProcedureParameters |Saklı yordamın parametreleri. |Ad/değer çiftleri. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. |No |
 
 SqlSource için **Sqlreaderquery** belirtilmişse kopyalama etkinliği, verileri almak IÇIN Azure SQL veritabanı kaynağına karşı bu sorguyu çalıştırır. Alternatif olarak, **sqlReaderStoredProcedureName** ve **storedProcedureParameters** (saklı yordam parametreler alırsa) belirterek bir saklı yordam belirtebilirsiniz.
 
-SqlReaderQuery veya sqlReaderStoredProcedureName belirtmezseniz, JSON veri kümesinin yapı bölümünde tanımlanan sütunlar, Azure SQL veritabanında çalıştırılacak bir sorgu (`select column1, column2 from mytable`) oluşturmak için kullanılır. Veri kümesi tanımında yapı yoksa, tablodaki tüm sütunlar seçilir.
+SqlReaderQuery veya sqlReaderStoredProcedureName belirtmezseniz, JSON veri kümesinin yapı bölümünde tanımlanan sütunlar, `select column1, column2 from mytable` Azure SQL veritabanında çalıştırılacak bir sorgu () oluşturmak için kullanılır. Veri kümesi tanımında yapı yoksa, tablodaki tüm sütunlar seçilir.
 
 > [!NOTE]
 > **SqlReaderStoredProcedureName**kullandığınızda JSON veri kümesindeki **TableName** özelliği için de bir değer belirtmeniz gerekir. Ancak bu tabloda gerçekleştirilen hiçbir doğrulama yoktur.
@@ -146,13 +146,13 @@ GO
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi. |timespan<br/><br/> Örnek: "00:30:00" (30 dakika). |Hayır |
+| writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi. |timespan<br/><br/> Örnek: "00:30:00" (30 dakika). |No |
 | writeBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler. |Tamsayı (satır sayısı) |Hayır (varsayılan: 10000) |
-| sqlWriterCleanupScript |Bir kopyalama etkinliğinin yürütülmesi için belirli bir dilim verilerinin temizlenmesi için bir sorgu belirtin. Daha fazla bilgi için bkz. [yinelenebilir kopya](#repeatable-copy). |Sorgu ekstresi. |Hayır |
-| Dilimleyiceıdentifiercolumnname |Kopyalama etkinliği için, yeniden çalıştırıldığında belirli bir dilimin verilerini temizlemek için kullanılan otomatik olarak oluşturulan dilim tanımlayıcısı ile doldurulacak bir sütun adı belirtin. Daha fazla bilgi için bkz. [yinelenebilir kopya](#repeatable-copy). |Binary (32) veri türüne sahip bir sütunun sütun adı. |Hayır |
-| sqlWriterStoredProcedureName |Hedef tabloya kaynak verilerinin nasıl uygulanacağını tanımlayan saklı yordamın adı (örneğin, kendi iş mantığınızı kullanarak). <br/><br/>Bu saklı yordamın **toplu iş başına çağrılacağını**aklınızda görürsünüz. Yalnızca bir kez çalıştırılan ve kaynak verilerle hiçbir şey olmayan bir işlem yapmak isterseniz, örneğin Delete/Truncate, özelliği kullanın `sqlWriterCleanupScript` . |Saklı yordamın adı. |Hayır |
-| storedProcedureParameters |Saklı yordamın parametreleri. |Ad/değer çiftleri. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. |Hayır |
-| sqlWriterTableType |Saklı yordamda kullanılacak bir tablo türü adı belirtin. Kopyalama etkinliği, verileri bu tablo türüyle geçici bir tabloda kullanılabilir hale getirir. Saklı yordam kodu daha sonra mevcut verilerle Kopyalanmakta olan verileri birleştirebilirler. |Tablo türü adı. |Hayır |
+| sqlWriterCleanupScript |Bir kopyalama etkinliğinin yürütülmesi için belirli bir dilim verilerinin temizlenmesi için bir sorgu belirtin. Daha fazla bilgi için bkz. [yinelenebilir kopya](#repeatable-copy). |Sorgu ekstresi. |No |
+| Dilimleyiceıdentifiercolumnname |Kopyalama etkinliği için, yeniden çalıştırıldığında belirli bir dilimin verilerini temizlemek için kullanılan otomatik olarak oluşturulan dilim tanımlayıcısı ile doldurulacak bir sütun adı belirtin. Daha fazla bilgi için bkz. [yinelenebilir kopya](#repeatable-copy). |Binary (32) veri türüne sahip bir sütunun sütun adı. |No |
+| sqlWriterStoredProcedureName |Hedef tabloya kaynak verilerinin nasıl uygulanacağını tanımlayan saklı yordamın adı (örneğin, kendi iş mantığınızı kullanarak). <br/><br/>Bu saklı yordamın **toplu iş başına çağrılacağını**aklınızda görürsünüz. Yalnızca bir kez çalıştırılan ve kaynak verilerle hiçbir şey olmayan bir işlem yapmak isterseniz, örneğin Delete/Truncate, `sqlWriterCleanupScript` özelliği kullanın. |Saklı yordamın adı. |No |
+| storedProcedureParameters |Saklı yordamın parametreleri. |Ad/değer çiftleri. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. |No |
+| sqlWriterTableType |Saklı yordamda kullanılacak bir tablo türü adı belirtin. Kopyalama etkinliği, verileri bu tablo türüyle geçici bir tabloda kullanılabilir hale getirir. Saklı yordam kodu daha sonra mevcut verilerle Kopyalanmakta olan verileri birleştirebilirler. |Tablo türü adı. |No |
 
 #### <a name="sqlsink-example"></a>SqlSink örneği
 
@@ -646,7 +646,7 @@ Verileri Azure SQL veritabanına taşırken, SQL türünden .NET türüne ve tam
 | Türünde |DateTimeOffset |
 | Ondalık |Ondalık |
 | FıLESTREAM özniteliği (varbinary (max)) |Byte [] |
-| Kayan |Çift |
+| Float |Çift |
 | image |Byte [] |
 | int |Int32 |
 | etmenize |Ondalık |

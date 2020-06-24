@@ -2,25 +2,31 @@
 title: Azure geçişi sunucu değerlendirmesi 'nde aracı tabanlı bağımlılık analizini ayarlama
 description: Bu makalede, Azure geçişi sunucu değerlendirmesi ' nde aracı tabanlı bağımlılık analizinin nasıl ayarlanacağı açıklanır.
 ms.topic: how-to
-ms.date: 2/24/2020
-ms.openlocfilehash: 47fd7e7c864e82400288bb67da952a18b648849e
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.date: 6/09/2020
+ms.openlocfilehash: 1271a45843a3775d4e1444321faad194edad2f23
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996884"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770586"
 ---
 # <a name="set-up-dependency-visualization"></a>Bağımlılık görselleştirmesini ayarlama
 
-Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracı tabanlı bağımlılık analizinin nasıl ayarlanacağı açıklanır. [Bağımlılık Analizi](concepts-dependency-visualization.md) , değerlendirmek ve Azure 'a geçirmek istediğiniz makineler arasında bağımlılıkları belirlemenize ve anlamanıza yardımcı olur.
+Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracısız bağımlılık analizinin nasıl ayarlanacağı açıklanır. [Bağımlılık Analizi](concepts-dependency-visualization.md) , değerlendirmek ve Azure 'a geçirmek istediğiniz makineler arasında bağımlılıkları belirlemenize ve anlamanıza yardımcı olur.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-- Aracı tabanlı bağımlılık Analizi [hakkında bilgi edinin](concepts-dependency-visualization.md#agent-based-analysis) .
-- [VMware VM 'leri](migrate-support-matrix-vmware.md#agent-based-dependency-analysis-requirements), [fiziksel sunucular](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)ve [Hyper-V VM 'leri](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)için aracı tabanlı bağımlılık görselleştirmesini ayarlamaya yönelik önkoşulları ve destek gereksinimlerini gözden geçirin.
-- Bir Azure geçişi projesi [oluşturduğunuzdan](how-to-add-tool-first-time.md) emin olun.
-- Zaten bir proje oluşturduysanız Azure geçişi: Sunucu değerlendirmesi [aracını eklediğinizden emin](how-to-assess.md) olun.
-- Şirket içi makinelerinizi keşfetmeye yönelik bir [Azure geçiş](migrate-appliance.md) gereci ayarladığınızdan emin olun. [VMware](how-to-set-up-appliance-vmware.md), [Hyper-V](how-to-set-up-appliance-hyper-v.md)veya [fiziksel sunucular](how-to-set-up-appliance-physical.md)için bir gereç ayarlamayı öğrenin. Gereç, şirket içi makineleri bulur ve meta verileri, performans verilerini Azure geçişi: Sunucu değerlendirmesi ' ne gönderir.
+- İçin aracı tabanlı bağımlılık analizine yönelik destek ve dağıtım gereksinimlerini gözden geçirin:
+    - [VMware Sanal Makineleri](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)
+    - [Fiziksel sunucular](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
+    - [Hyper-V VM 'leri](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
+- Şunları yaptığınızdan emin olun:
+    - Bir Azure geçişi projesi vardır. Bunu yapmazsanız, şimdi bir tane [oluşturun](how-to-add-tool-first-time.md) .
+    - Projeye Azure geçişi: Sunucu değerlendirmesi aracını [eklemişseniz](how-to-assess.md) ' i kontrol edin.
+    - Şirket içi makineleri keşfetmeye yönelik bir [Azure geçiş](migrate-appliance.md) gereci ayarlayın. Gereç, şirket içi makineleri bulur ve Azure geçişi: Sunucu değerlendirmesi ' ne meta veri ve performans verileri gönderir. İçin bir gereç ayarlayın:
+        - [VMware](how-to-set-up-appliance-vmware.md) VM 'ler.
+        - [Hyper-V](how-to-set-up-appliance-hyper-v.md) VM 'ler.
+        - [Fiziksel sunucular](how-to-set-up-appliance-physical.md).
 - Bağımlılık görselleştirmesini kullanmak için bir [Log Analytics çalışma alanını](../azure-monitor/platform/manage-access.md) Azure geçişi projesiyle ilişkilendirirsiniz:
     - Bir çalışma alanını yalnızca Azure geçiş gereci ayarladıktan sonra ve Azure geçişi projesindeki makineleri keşfetmek için ekleyebilirsiniz.
     - Abonelikte Azure geçişi projesini içeren bir çalışma alanı olduğundan emin olun.
@@ -32,7 +38,7 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracı tabanlı bağ�
 
 ## <a name="associate-a-workspace"></a>Çalışma alanını ilişkilendirme
 
-1. Makineleri değerlendirme için bulduktan sonra, **sunucular** > **Azure geçişi: Sunucu değerlendirmesi**' nde **Genel Bakış ' a**tıklayın.  
+1. Makineleri değerlendirme için bulduktan sonra, **sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **Genel Bakış ' a**tıklayın.  
 2. **Azure geçişi: Sunucu değerlendirmesi**' nde, **temel**bileşenler ' e tıklayın.
 3. **OMS çalışma alanında** **yapılandırma gerekiyor**' a tıklayın.
 
@@ -72,7 +78,7 @@ Aracıyı bir Windows makinesine yüklemek için:
 1. İndirilen aracıya çift tıklayın.
 2. **Hoş Geldiniz** sayfasında **İleri**'ye tıklayın. **Lisans Koşulları** sayfasında **Kabul Ediyorum**’a tıklayarak lisansı kabul edin.
 3. **Hedef klasörde**, **sonraki**> varsayılan yükleme klasörünü tutun veya değiştirin.
-4. **Aracı kurulum seçenekleri**' nde, **Azure Log Analytics** > **İleri**' yi seçin.
+4. **Aracı kurulum seçenekleri**' nde, **Azure Log Analytics**  >  **İleri**' yi seçin.
 5. Yeni bir Log Analytics çalışma alanı eklemek için **Ekle** ' ye tıklayın. Portaldan kopyaladığınız çalışma alanı KIMLIĞINI ve anahtarını yapıştırın. **İleri**’ye tıklayın.
 
 Aracıyı komut satırından veya Configuration Manager veya [ıntigua](https://www.intigua.com/intigua-for-azure-migration)gibi otomatikleştirilmiş bir yöntem kullanarak yükleyebilirsiniz.

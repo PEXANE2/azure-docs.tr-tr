@@ -7,20 +7,20 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 6120d7b63a948b0de004a6a0d731c0d075689da1
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 71d00da5cc0021aacbe849a541ff386cc6414ff2
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678231"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694646"
 ---
 # <a name="dv2-and-dsv2-series"></a>Dv2 ve DSv2 serisi
 
-Özgün D serisi için bir takip olan dv2 ve Dsv2-Series, daha güçlü bir CPU ve en iyi CPU 'ya sahip bir yapılandırma ve bunları üretim iş yüklerinin çoğu için uygun hale getirir. Dv2 serisi, D serisinden daha hızlı %35 daha hızlıdır. Dv2 serisi, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
+Özgün D serisi için bir takip olan dv2 ve Dsv2-Series, daha güçlü bir CPU ve en iyi CPU 'ya sahip bir yapılandırma ve bunları üretim iş yüklerinin çoğu için uygun hale getirir. Dv2 serisi, D serisinden daha hızlı %35 daha hızlıdır. Dv2 serisi, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
 
 ## <a name="dv2-series"></a>Dv2 Serisi
 
-Dv2 serisi Boyutlar, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü)® veya Intel® 2,4 Xeon® E5-2673 v4 2,3 GHz (Haswell) işlemcileri üzerinde çalışır.
+Dv2 serisi Boyutlar, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (2,3 ufuk Gölü) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır.
 
 ACU: 210-250
 
@@ -42,7 +42,7 @@ Güncelleştirmeleri koruyan bellek: desteklenir
 
 ## <a name="dsv2-series"></a>DSv2 serisi
 
-DSv2 serisi Boyutlar, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® 8171M 2.1 GHz (2,3®® ufuk Gölü) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır ve Premium depolama kullanır.
+DSv2 serisi boyutlar Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü) veya Intel® Xeon® E5-2673 v4 2,4 2,3 GHz (Haswell) işlemcileri, Intel Turbo Boost Technology 2,0 ve Premium Storage kullanır.
 
 ACU: 210-250
 

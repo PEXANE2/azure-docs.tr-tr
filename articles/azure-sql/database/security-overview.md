@@ -12,19 +12,19 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 6204600cde1b9776e5edbbe129d550065cebf331
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 78af56e0b6f9e8e195ab77fdc57da336dd170c25
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322131"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255067"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL veritabanı ve SQL yönetilen örnek güvenlik özelliklerine genel bakış
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Bu makalede, [Azure SQL veritabanı](sql-database-paas-overview.md) ve [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md)kullanılarak bir uygulamanın veri katmanını güvenli hale getirmenin temelleri özetlenmektedir. Açıklanan güvenlik stratejisi aşağıdaki resimde gösterildiği gibi katmanlı derinlemesine savunma yaklaşımını takip eder ve dışarıdan şu şekilde gider:
 
-![SQL-Security-Layer. png](./media/security-overview/sql-security-layer.png)
+![sql-security-layer.png](./media/security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>Ağ güvenliği
 
@@ -48,13 +48,13 @@ IP güvenlik duvarı kuralları, her isteğin kaynak IP adresine göre veritaban
 > [!IMPORTANT]
 > Azure 'daki veritabanlarını ve sunucuları yönetmek, Portal Kullanıcı hesabınızın rol atamaları tarafından denetlenir. Bu makale hakkında daha fazla bilgi için [Azure Portal rol tabanlı erişim denetimi](../../role-based-access-control/overview.md)bölümüne bakın.
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
 Kimlik doğrulama, kullanıcının talep ettikleri kim olduğunu kanıtlama işlemidir. Azure SQL veritabanı ve SQL yönetilen örneği iki tür kimlik doğrulamasını destekler:
 
 - **SQL kimlik doğrulaması**:
 
-    SQL veritabanı kimlik doğrulaması, Kullanıcı adı ve parola kullanarak Azure SQL veritabanı veya Azure SQL yönetilen örneği ile bağlantı kurulurken bir kullanıcının kimlik doğrulamasını ifade eder. Sunucu oluşturulurken Kullanıcı adı ve parola ile **Sunucu Yöneticisi** oturum açma belirtilmelidir. Bu kimlik bilgilerini kullanarak **Sunucu Yöneticisi** , veritabanı sahibi olarak bu sunucu veya örnekteki herhangi bir veritabanında kimlik doğrulaması yapabilir. Bundan sonra, ek SQL oturum açmaları ve kullanıcılar, kullanıcıların Kullanıcı adı ve parola kullanarak bağlanmasına olanak tanıyan Sunucu Yöneticisi tarafından oluşturulabilir.
+    SQL kimlik doğrulaması, Kullanıcı adı ve parola kullanarak Azure SQL veritabanı veya Azure SQL yönetilen örneği ile bağlantı kurulurken bir kullanıcının kimlik doğrulamasını ifade eder. Sunucu oluşturulurken Kullanıcı adı ve parola ile **Sunucu Yöneticisi** oturum açma belirtilmelidir. Bu kimlik bilgilerini kullanarak **Sunucu Yöneticisi** , veritabanı sahibi olarak bu sunucu veya örnekteki herhangi bir veritabanında kimlik doğrulaması yapabilir. Bundan sonra, ek SQL oturum açmaları ve kullanıcılar, kullanıcıların Kullanıcı adı ve parola kullanarak bağlanmasına olanak tanıyan Sunucu Yöneticisi tarafından oluşturulabilir.
 
 - **Azure Active Directory kimlik doğrulaması**:
 
@@ -77,7 +77,7 @@ En iyi uygulama olarak, gerektiğinde özel roller oluşturun. Kullanıcıları,
 
 Satır düzeyi güvenlik, müşterilerin bir veritabanı tablosundaki satırlara erişimi, sorguyu yürüten kullanıcının özelliklerine göre denetlemesini sağlar (örneğin, Grup üyeliği veya yürütme bağlamı). Satır düzeyi güvenlik, özel etiket tabanlı güvenlik kavramlarını uygulamak için de kullanılabilir. Daha fazla bilgi için bkz. [satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security).
 
-![Azure-Database-RLS. png](./media/security-overview/azure-database-rls.png)
+![azure-database-rls.png](./media/security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>Tehdit koruması
 
@@ -91,7 +91,7 @@ SQL veritabanı ve SQL yönetilen örnek denetimi, veritabanı etkinliklerini m�
 
 Gelişmiş tehdit koruması, olağan dışı davranışları ve veritabanlarına erişme ya da yararlanmaya yönelik olabilecek olası girişimleri algılamak için günlüklerinizi analiz etmeyi sağlar. SQL ekleme, olası veri girişi ve deneme yanılma saldırıları gibi şüpheli etkinlikler için uyarılar oluşturulur ve erişim desenlerine yönelik olarak ayrıcalık yürüyen istekleri ve ihlal edilen kimlik bilgileri kullanımını yakalayın. Uyarılar, şüpheli etkinliklerin ayrıntılarının sağlandığı ve tehdidi hafifletmek için eylemlerle birlikte daha fazla araştırma önerileri sunan [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)' nden görüntülenir. Gelişmiş tehdit koruması, sunucu başına ek bir ücret karşılığında etkinleştirilebilir. Daha fazla bilgi için bkz. [SQL veritabanı Gelişmiş tehdit koruması ile çalışmaya başlama](threat-detection-configure.md).
 
-![Azure-Database-TD. jpg](./media/security-overview/azure-database-td.jpg)
+![azure-database-td.jpg](./media/security-overview/azure-database-td.jpg)
 
 ## <a name="information-protection-and-encryption"></a>Bilgi koruması ve şifreleme
 
@@ -122,13 +122,13 @@ Azure 'da, yeni oluşturulan tüm veritabanları varsayılan olarak şifrelenir 
 
 ### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (kullanımda olan şifreleme)
 
-![Azure-Database-AE. png](./media/security-overview/azure-database-ae.png)
+![azure-database-ae.png](./media/security-overview/azure-database-ae.png)
 
 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) , belirli veritabanı sütunlarında depolanan hassas verileri erişimden korumak için tasarlanmış bir özelliktir (örneğin, kredi kartı numaraları, ulusal kimlik numaraları veya tek _yapmanız gereken_ veriler). Bu, veritabanı yöneticilerini veya yönetim görevlerini gerçekleştirmek üzere veritabanına erişim yetkisi olan diğer ayrıcalıklı kullanıcıları içerir, ancak şifrelenmiş sütunlardaki belirli verilere erişmesi gereken iş gerektirmez. Veriler her zaman şifrelenir. Bu, şifrelenmiş verilerin yalnızca şifreleme anahtarına erişimi olan istemci uygulamaları tarafından işlenmek üzere şifresinin çözülmesi anlamına gelir. Şifreleme anahtarı hiçbir şekilde SQL veritabanı veya SQL yönetilen örneği için gösterilmez ve [Windows sertifika deposunda](always-encrypted-certificate-store-configure.md) veya [Azure Key Vault](always-encrypted-azure-key-vault-configure.md)depolanabilir.
 
 ### <a name="dynamic-data-masking"></a>Dinamik veri maskeleme
 
-![Azure-Database-DDM. png](./media/security-overview/azure-database-ddm.png)
+![azure-database-ddm.png](./media/security-overview/azure-database-ddm.png)
 
 Dinamik veri maskeleme, hassas verileri ayrıcalıksız kullanıcılarla maskeleyerek kısıtlar. Dinamik veri maskeleme, Azure SQL veritabanı ve SQL yönetilen örneği 'nde potansiyel olarak hassas verileri otomatik olarak bulur ve uygulama katmanında en az etkiyle bu alanları maskelemek için eylem yapılabilir öneriler sağlar. Bu özellik, hassas verileri belirlenen veritabanı alanlarına yapılan sorgunun sonuç kümesinde karartır ancak veritabanındaki veriler değişmez. Daha fazla bilgi için bkz. [SQL veritabanı ve SQL yönetilen örnek dinamik veri maskeleme 'yi kullanmaya başlama](dynamic-data-masking-overview.md).
 

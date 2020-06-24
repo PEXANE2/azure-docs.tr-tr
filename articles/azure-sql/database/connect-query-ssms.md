@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 5ecf180b71c43d5df25d7c3c948a59482dd06a1c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3b601fbbc448ef909b0700ac887375147c42ecdd
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267316"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253622"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanmak ve veritabanını sorgulamak için SSMS kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -47,7 +47,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdaki öğeler gereklidir:
   > [!IMPORTANT]
   > Bu makaledeki betikler, Adventure Works veritabanını kullanmak için yazılmıştır. Yönetilen bir örnek ile, Adventure Works veritabanını bir örnek veritabanına aktarmanız veya bu makaledeki betikleri Wide World Importers veritabanını kullanacak şekilde değiştirmeniz gerekir.
 
-Yalnızca bazı geçici sorguları SSMS yüklemeden çalıştırmak istiyorsanız, bkz. [hızlı başlangıç: Azure Portal sorgu düzenleyicisini kullanarak BIR SQL veritabanını sorgulama](connect-query-portal.md).
+Yalnızca bazı geçici sorguları SSMS yüklemeden çalıştırmak istiyorsanız, bkz. [hızlı başlangıç: Azure SQL veritabanında bir veritabanını sorgulamak için Azure Portal sorgu düzenleyicisini kullanın](connect-query-portal.md).
 
 ## <a name="get-server-connection-information"></a>Sunucu bağlantı bilgilerini al
 
@@ -73,11 +73,11 @@ SSMS 'de sunucunuza bağlanın.
 
 2. **Sunucuya Bağlan** iletişim kutusu görüntülenir. Aşağıdaki bilgileri girin:
 
-   | Ayar      | Önerilen değer    | Açıklama |
+   | Ayar      | Önerilen değer    | Description |
    | ------------ | ------------------ | ----------- |
    | **Sunucu türü** | Veritabanı altyapısı | Gerekli değer. |
    | **Sunucu adı** | Tam sunucu adı | Şöyle bir şey: **ServerName.Database.Windows.net**. |
-   | **Kimlik Doğrulaması** | SQL Server Kimlik Doğrulaması | Bu öğretici, SQL kimlik doğrulamasını kullanır. |
+   | **Kimlik doğrulaması** | SQL Server Kimlik Doğrulaması | Bu öğretici, SQL kimlik doğrulamasını kullanır. |
    | **Oturum aç** | Sunucu Yöneticisi hesabı kullanıcı KIMLIĞI | Sunucu oluşturmak için kullanılan sunucu yönetici hesabındaki Kullanıcı KIMLIĞI. |
    | **Parola** | Sunucu Yöneticisi hesap parolası | Sunucu oluşturmak için kullanılan sunucu yönetici hesabındaki parola. |
    ||||

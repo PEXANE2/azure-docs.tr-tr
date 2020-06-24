@@ -4,19 +4,19 @@ description: Azure kaynakları ve Azure AD kimlik doğrulaması için yönetilen
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 06/04/2020
+ms.date: 06/11/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 66f3e8b07ecb3bceb2f147aa27b1fb1ad585be91
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 0dc8b77f75cffdd0b2017d8a9b0f7c168fb796cb
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673690"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193779"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler
 
@@ -56,6 +56,14 @@ Azure App Service yönetilen kimliği (varsa) yapılandırmak için aşağıdaki
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
 - [Azure Resource Manager şablonu](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
 
+### <a name="azure-arc-enabled-kubernetes"></a>Azure Arc özellikli Kubernetes
+
+| Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Sistem atandı | Önizleme | Kullanılamaz | Kullanılamaz | Kullanılamaz | 
+| Kullanıcı atandı | Kullanılamaz | Kullanılamaz | Kullanılamaz | Kullanılamaz |
+
+Azure Arc etkin Kubernetes Şu anda [sistem tarafından atanan kimliği desteklemektedir](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#azure-arc-agents-for-kubernetes). Yönetilen hizmet kimlik sertifikası, Azure ile iletişim kurmak için tüm Azure Arc etkinleştirilmiş Kubernetes aracıları tarafından kullanılır.
 
 ### <a name="azure-blueprints"></a>Azure Blueprints
 
@@ -68,6 +76,14 @@ Azure App Service yönetilen kimliği (varsa) yapılandırmak için aşağıdaki
 
 - [Azure portal şeması atama](../../governance/blueprints/create-blueprint-portal.md#assign-a-blueprint)
 - [REST API şeması atama](../../governance/blueprints/create-blueprint-rest-api.md#assign-a-blueprint)
+
+
+### <a name="azure-cognitive-search"></a>Azure Bilişsel Arama
+
+Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Sistem atandı | ![Kullanılabilir][check] | ![Kullanılabilir][check] | Kullanılamaz | ![Kullanılabilir][check] |
+| Kullanıcı atandı | Kullanılamaz | Kullanılamaz | Kullanılamaz | Kullanılamaz |
 
 
 ### <a name="azure-container-instances"></a>Azure Container Instances
@@ -115,6 +131,22 @@ Azure Data Factory v2 için yönetilen kimliği yapılandırmak üzere aşağıd
 - [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
 - [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
 - [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
+
+
+
+### <a name="azure-event-grid"></a>Azure Event Grid 
+
+Yönetilen kimlik türü |Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Sistem atandı | Önizleme | Kullanılamaz | Kullanılamaz | Kullanılamaz |
+| Kullanıcı atandı | Kullanılamaz | Kullanılamaz  | Kullanılamaz  | Kullanılamaz |
+
+
+
+
+
+
+
 
 
 ### <a name="azure-functions"></a>Azure İşlevleri
@@ -255,6 +287,16 @@ Azure sanal makineleri için yönetilen kimliği yapılandırmak üzere aşağı
 | Kullanıcı atandı | [Desteklenen bölgelerde kullanılabilir](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) | Kullanılamaz | Kullanılamaz | Kullanılamaz |
 
 Azure VM görüntü Oluşturucu için yönetilen kimliği yapılandırma hakkında bilgi edinmek için (varsa) bkz. [görüntü oluşturucuya genel bakış](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#permissions).
+### <a name="azure-signalr-service"></a>Azure SignalR Hizmeti
+
+Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Sistem atandı | Önizleme | Önizleme | Kullanılamaz | Önizleme |
+| Kullanıcı atandı | Önizleme | Önizleme | Kullanılamaz | Önizleme |
+
+Azure SignalR hizmeti için yönetilen kimliği (varsa) yapılandırmak üzere aşağıdaki listeye bakın:
+
+- [Azure Resource Manager şablonu](../../azure-signalr/howto-use-managed-identity.md)
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri
 

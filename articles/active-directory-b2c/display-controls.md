@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4998fb19e42e123edd57bfcf10931d594ac4cb44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 131ecd010cba55f08199f713654792c0844a47e1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188741"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202305"
 ---
 # <a name="display-controls"></a>Görüntüleme denetimleri
 
@@ -32,9 +32,9 @@ Aşağıdaki görüntüde, birincil ve ikincil e-posta adresini doğrulayan iki 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
- [Otomatik olarak onaylanan bir teknik profilin](self-asserted-technical-profile.md) [meta veri](self-asserted-technical-profile.md#metadata) bölümünde, başvurulan [ContentDefinition](contentdefinitions.md) 'ın sayfa sözleşmesi sürüm 2.0.0 veya `DataUri` üzeri olarak ayarlanması gerekir. Örneğin:
+ [Otomatik olarak onaylanan bir teknik profilin](self-asserted-technical-profile.md) [meta veri](self-asserted-technical-profile.md#metadata) bölümünde, başvurulan [ContentDefinition](contentdefinitions.md) 'ın `DataUri` sayfa sözleşmesi sürüm 2.0.0 veya üzeri olarak ayarlanması gerekir. Örneğin:
 
-```XML
+```xml
 <ContentDefinition Id="api.selfasserted">
   <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
@@ -53,7 +53,7 @@ Aşağıdaki görüntüde, birincil ve ikincil e-posta adresini doğrulayan iki 
 
 **DisplayControl** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | Inputclaims | 0:1 | **Inputclaim** , kullanıcıdan toplanacak taleplerin değerini önceden doldurmak için kullanılır. |
 | DisplayClaim | 0:1 | **DisplayClaim** , kullanıcıdan toplanacak talepleri temsil etmek için kullanılır. |
@@ -66,7 +66,7 @@ Bir görüntüleme denetiminde **inputclaim** öğelerini kullanarak sayfadaki k
 
 Aşağıdaki örnek, e-posta adresini önceden var olan adresle doğrulanacak şekilde önceden doldurur.
 
-```XML
+```xml
 <DisplayControl Id="emailControl" UserInterfaceControlType="VerificationControl">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="emailAddress" />
@@ -78,11 +78,11 @@ Aşağıdaki örnek, e-posta adresini önceden var olan adresle doğrulanacak ş
 
 Her bir görüntüleme denetimi türü, gerçekleştirilecek farklı bir görüntüleme talepleri, [Çıkış talepleri](#output-claims)ve [eylem](#display-control-actions) kümesi gerektirir.
 
-[Kendi kendini onaylanan bir teknik profilde](self-asserted-technical-profile.md#display-claims)tanımlanan **görüntüleme taleplerine** benzer şekilde, görüntüleme talepleri Kullanıcı tarafından görüntüleme denetimindeki toplanacak talepleri temsil eder. Başvurulan **ClaimType** öğesinin, veya `TextBox` `DropdownSingleSelect`gibi Azure AD B2C tarafından desteklenen bir kullanıcı giriş türü için **userınputtype** öğesini belirtmesi gerekir. Bir **eylem**için bir görüntüleme talep değeri gerekliyse, kullanıcıyı o belirli görüntüleme talebi için bir `true` değer sağlamaya zorlamak üzere **gerekli** özniteliği olarak ayarlayın.
+[Kendi kendini onaylanan bir teknik profilde](self-asserted-technical-profile.md#display-claims)tanımlanan **görüntüleme taleplerine** benzer şekilde, görüntüleme talepleri Kullanıcı tarafından görüntüleme denetimindeki toplanacak talepleri temsil eder. Başvurulan **ClaimType** öğesinin, veya gibi Azure AD B2C tarafından desteklenen bir kullanıcı giriş türü Için **userınputtype** öğesini belirtmesi gerekir `TextBox` `DropdownSingleSelect` . Bir **eylem**için bir görüntüleme talep değeri gerekliyse, **Required** `true` kullanıcıyı o belirli görüntüleme talebi için bir değer sağlamaya zorlamak üzere gerekli özniteliği olarak ayarlayın.
 
 Belirli görüntüleme talepleri belirli görüntüleme denetimi türleri için gereklidir. Örneğin, doğrulamalar **Icationcontrol**türündeki görüntüleme denetimi Için **doğrulama kodu** gereklidir. Bu gerekli talep için hangi DisplayClaim 'nin kullanılacağını belirtmek için **Controlclaimtype** özniteliğini kullanın. Örneğin:
 
-```XML
+```xml
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
 ```
 
@@ -100,7 +100,7 @@ Bir eylem, **doğrulama teknik profillerinin**bir listesini tanımlar. Bunlar, g
 
 Aşağıdaki örnek, kullanıcının **Mfatype** talebinin seçimine bağlı olarak e-posta veya SMS içinde bir kod gönderir.
 
-```XML
+```xml
 <Action Id="SendCode">
   <ValidationClaimsExchange>
     <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AzureMfa-SendSms">
@@ -131,7 +131,7 @@ Görüntüleme denetimlerine, [kendi kendini onaylanan teknik profilin](self-ass
 
 Örneğin:
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
   ...
   <DisplayClaims>

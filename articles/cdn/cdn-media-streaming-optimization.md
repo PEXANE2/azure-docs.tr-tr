@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 2931dffaaab2d06b2c06f03770a66d78d6466787
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f8dc5ef89c70cebce1d59fc389300b30dc828f6
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260488"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887599"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Azure CDN ile medya akışı iyileştirmesi 
  
@@ -77,7 +77,7 @@ Genel medya teslimi veya video isteğe bağlı medya teslimi iyileştirme türle
  
 Uç noktasını oluşturduktan sonra, belirli ölçütlerle eşleşen tüm dosyalar için iyileştirme uygular. Aşağıdaki bölümde bu işlem açıklanmaktadır. 
 
-### <a name="caching"></a>Önbelleğe alma
+### <a name="caching"></a>Önbelleğe Alma
 
 **Akamai 'den Azure CDN Standard** , varlığın bir akış bildirimi veya parçası olduğunu algılarsa, genel Web tesliminden farklı önbelleğe alma sona erme süreleri kullanır. (Aşağıdaki tablodaki tam listeye bakın.) Her zaman olduğu gibi, kaynaktan gönderilen Cache-Control veya Expires üstbilgileri kabul edilir. Varlık bir medya varlığı değilse, genel Web tesliminin sona erme zamanlarını kullanarak önbelleğe alınır.
 
@@ -87,7 +87,7 @@ Uç noktasını oluşturduktan sonra, belirli ölçütlerle eşleşen tüm dosya
 |   | Genel web teslimi | Genel medya akışı | İsteğe bağlı video medya akışı  
 --- | --- | --- | ---
 Önbelleğe alma: pozitif <br> HTTP 200, 203, 300, <br> 301, 302 ve 410 | 7 gün |365 gün | 365 gün   
-Önbelleğe alma: negatif <br> HTTP 204, 305, 404, <br> ve 405 | Hiçbiri | 1 saniye | 1 saniye
+Önbelleğe alma: negatif <br> HTTP 204, 305, 404, <br> ve 405 | Yok | 1 saniye | 1 saniye
  
 ### <a name="deal-with-origin-failure"></a>Kaynak hatasıyla uğraşın  
 

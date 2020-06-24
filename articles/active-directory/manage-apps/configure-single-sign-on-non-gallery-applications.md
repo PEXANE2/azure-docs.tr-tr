@@ -6,18 +6,18 @@ author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 06/08/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c828ab0a3d4f2aff6724967e1467b87df09d09b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 1e3aa91ce9b1b4ba56507dfe1920d7f7dbd18ac3
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606080"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763542"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Galeri uygulaması olmayan uygulamalarda SAML tabanlı çoklu oturum açmayı yapılandırma
 
@@ -50,7 +50,7 @@ Uygulama Azure AD kiracınıza eklenmemişse, bkz. [Galeri dışı bir uygulama 
 
 1. Aşağıdaki ayarları girin. Uygulama satıcısından değerleri almalısınız. Değerleri el ile girebilir veya alanların değerini ayıklamak için bir meta veri dosyası yükleyebilirsiniz.
 
-    | Temel SAML yapılandırma ayarı | SP ile başlatılan | idP ile başlatılan | Açıklama |
+    | Temel SAML yapılandırma ayarı | SP ile başlatılan | idP ile başlatılan | Description |
     |:--|:--|:--|:--|
     | **Tanımlayıcı (Varlık Kimliği)** | Bazı uygulamalar için gereklidir | Bazı uygulamalar için gereklidir | Uygulamayı benzersiz olarak tanımlar. Azure AD, kimliği, SAML belirtecinin hedef kitle parametresi olarak uygulamaya gönderir. Uygulamanın doğrulaması bekleniyordu. Bu değer ayrıca uygulama tarafından sağlanan SAML meta verilerinde Varlık Kimliği olarak da görünür. Şu kalıbı kullanan bir URL girin: ' https:// <subdomain> . contoso.com ' *Bu değeri, uygulama tarafından gönderilen **Authisteyner** (SAML isteği) içinde **veren** öğesi olarak bulabilirsiniz.* |
     | **Yanıt URL'si** | Gerekli | Gerekli | Uygulamanın SAML belirtecini almayı beklediği konumu belirtir. Yanıt URL'si, Onay Belgesi Tüketici Hizmeti (ACS) URL'si olarak da bilinir. Birden çok yanıt URL 'si belirtmek için ek yanıt URL 'si alanlarını kullanabilirsiniz. Örneğin, birden çok alt etki alanları için ek yanıt URL 'Leri gerekebilir. Ya da, sınama amaçları için aynı anda birden çok yanıt URL 'Si (yerel ana bilgisayar ve genel URL 'Ler) belirtebilirsiniz. |
@@ -76,7 +76,7 @@ Kullanıcı uygulamanın kimliğini doğruladığında Azure AD, uygulamayı ben
 
 5. Talep eklemek için sayfanın en üstünde **yeni talep Ekle** ' yi seçin. **Adı** girin ve uygun kaynağı seçin. **Öznitelik** kaynağını seçerseniz, kullanmak istediğiniz **kaynak özniteliğini** seçmeniz gerekir. **Çeviri** kaynağını seçerseniz, kullanmak istediğiniz **dönüştürme** ve **parametre 1** ' i seçmeniz gerekir. Ayrıntılar için bkz. [uygulamaya özgü talepler ekleme](../develop/active-directory-saml-claims-customization.md#adding-application-specific-claims). İşiniz bittiğinde değişiklikleri kaydedin. 
 
-6. **Kaydet**'i seçin. Yeni talep tabloda görüntülenir.
+6. **Kaydet**’i seçin. Yeni talep tabloda görüntülenir.
 
    > [!NOTE]
    > SAML belirtecini Azure AD 'den uygulamanıza özelleştirmenin ek yolları için aşağıdaki kaynaklara bakın.

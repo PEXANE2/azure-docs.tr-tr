@@ -1,9 +1,9 @@
 ---
 title: Sanal makine ölçek kümesi 'nde yönetilen kimlikleri Yapılandırma-Azure CLı-Azure AD
-description: Azure CLı kullanarak bir Azure sanal makine ölçek kümesinde sistem ve Kullanıcı tarafından atanan Yönetilen kimlikler yapılandırmaya yönelik adım adım yönergeler.
+description: Azure CLı kullanarak bir Azure sanal makine ölçek kümesi üzerinde sistem ve Kullanıcı tarafından atanan Yönetilen kimlikler yapılandırmaya yönelik adım adım yönergeler.
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: MarkusVi
 editor: ''
 ms.service: active-directory
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2832a8c584c0fbe707f22501809d772c6ffb970b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d310ecfb10393cf6e952cb1ddb72c9bfd1d3745
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75430085"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693910"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Azure CLı kullanarak bir sanal makine ölçek kümesindeki Azure kaynakları için Yönetilen kimlikler yapılandırma
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Azure kaynakları için Yönetilen kimlikler, Azure Active Directory ' de otomatik olarak yönetilen bir kimlikle Azure hizmetleri sağlar. Bu kimliği, kodunuzda kimlik bilgileri olmadan Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanabilirsiniz. 
+Azure kaynakları için Yönetilen kimlikler, Azure Active Directory ' de otomatik olarak yönetilen kimlik ile Azure hizmetleri sağlar. Bu kimliği, kodunuzda kimlik bilgileri olmadan Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanabilirsiniz. 
 
 Bu makalede, Azure CLı kullanarak Azure sanal makine ölçek kümesindeki Azure kaynakları işlemleri için aşağıdaki yönetilen kimliklerin nasıl gerçekleştirileceğini öğreneceksiniz:
 - Azure sanal makine ölçek kümesi üzerinde sistem tarafından atanan yönetilen kimliği etkinleştirme ve devre dışı bırakma
@@ -35,7 +35,7 @@ Bu makalede, Azure CLı kullanarak Azure sanal makine ölçek kümesindeki Azure
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
+- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#managed-identity-types)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 - Bu makaledeki yönetim işlemlerini gerçekleştirmek için, hesabınız aşağıdaki Azure rol tabanlı erişim denetimi atamalarına ihtiyaç duyuyor:
 
@@ -75,7 +75,7 @@ Sistem tarafından atanan yönetilen kimlik etkin bir sanal makine ölçek küme
    az group create --name myResourceGroup --location westus
    ```
 
-3. [Az VMSS Create](/cli/azure/vmss/#az-vmss-create) komutunu kullanarak bir sanal makine ölçek kümesi oluşturun. Aşağıdaki örnek, `--assign-identity` parametresi tarafından istenen şekilde, sistem tarafından atanan yönetilen kimlik Ile *myvmss* adlı bir sanal makine ölçek kümesi oluşturur. `--admin-username` ve `--admin-password` parametreleri, sanal makinede oturum açmak için yönetici hesabının kullanıcı adı ve parolasını belirtir. Bu değerleri ortamınıza uyacak şekilde güncelleştirin: 
+3. Bir sanal makine ölçek kümesi [oluşturun](/cli/azure/vmss/#az-vmss-create) . Aşağıdaki örnek, parametresi tarafından istenen şekilde, sistem tarafından atanan yönetilen kimlik ile *Myvmss* adlı bir sanal makine ölçek kümesi oluşturur `--assign-identity` . `--admin-username` ve `--admin-password` parametreleri, sanal makinede oturum açmak için yönetici hesabının kullanıcı adı ve parolasını belirtir. Bu değerleri ortamınıza uyacak şekilde güncelleştirin: 
 
    ```azurecli-interactive 
    az vmss create --resource-group myResourceGroup --name myVMSS --image win2016datacenter --upgrade-policy-mode automatic --custom-data cloud-init.txt --admin-username azureuser --admin-password myPassword12 --assign-identity --generate-ssh-keys
@@ -91,7 +91,7 @@ Mevcut bir Azure sanal makine ölçek kümesi üzerinde sistem tarafından atana
    az login
    ```
 
-2. Mevcut bir VM 'ye sistem tarafından atanan yönetilen kimliği etkinleştirmek için [az VMSS Identity Assign](/cli/azure/vmss/identity/#az-vmss-identity-assign) komutunu kullanın:
+2. Mevcut bir VM 'ye sistem tarafından atanan bir yönetilen kimliği [etkinleştirme](/cli/azure/vmss/identity/#az-vmss-identity-assign) :
 
    ```azurecli-interactive
    az vmss identity assign -g myResourceGroup -n myVMSS
@@ -137,7 +137,7 @@ Bu bölümde, bir sanal makine ölçek kümesi oluşturma ve sanal makine ölçe
    ```azurecli-interactive
    az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
    ```
-   Yanıt, aşağıdaki gibi oluşturulan kullanıcı tarafından atanan yönetilen kimliğin ayrıntılarını içerir. Kullanıcı tarafından `id` atanan yönetilen kimliğe atanan kaynak değeri aşağıdaki adımda kullanılır.
+   Yanıt, aşağıdaki gibi oluşturulan kullanıcı tarafından atanan yönetilen kimliğin ayrıntılarını içerir. `id`Kullanıcı tarafından atanan yönetilen kimliğe atanan kaynak değeri aşağıdaki adımda kullanılır.
 
    ```json
    {
@@ -154,7 +154,7 @@ Bu bölümde, bir sanal makine ölçek kümesi oluşturma ve sanal makine ölçe
    }
    ```
 
-3. [Az VMSS Create](/cli/azure/vmss/#az-vmss-create)komutunu kullanarak bir sanal makine ölçek kümesi oluşturun. Aşağıdaki örnek, `--assign-identity` parametresi tarafından belirtilen yeni kullanıcı tarafından atanan yönetilen kimlikle ilişkili bir sanal makine ölçek kümesi oluşturur. `<RESOURCE GROUP>`, `<VMSS NAME>`, `<USER NAME>`, `<PASSWORD>` ve `<USER ASSIGNED IDENTITY>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. 
+3. Bir sanal makine ölçek kümesi [oluşturun](/cli/azure/vmss/#az-vmss-create) . Aşağıdaki örnek, parametresi tarafından belirtilen yeni kullanıcı tarafından atanan yönetilen kimlikle ilişkili bir sanal makine ölçek kümesi oluşturur `--assign-identity` . `<RESOURCE GROUP>`, `<VMSS NAME>`, `<USER NAME>`, `<PASSWORD>` ve `<USER ASSIGNED IDENTITY>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. 
 
    ```azurecli-interactive 
    az vmss create --resource-group <RESOURCE GROUP> --name <VMSS NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <USER ASSIGNED IDENTITY>
@@ -184,7 +184,7 @@ Bu bölümde, bir sanal makine ölçek kümesi oluşturma ve sanal makine ölçe
    }
    ```
 
-2. [Az VMSS Identity Assign](/cli/azure/vmss/identity)komutunu kullanarak sanal makine ölçek kümesine Kullanıcı tarafından atanan yönetilen kimliği atayın. `<RESOURCE GROUP>` ve `<VIRTUAL MACHINE SCALE SET NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. , `<USER ASSIGNED IDENTITY>` Önceki adımda oluşturulan kullanıcı tarafından atanan kimliğin kaynak `name` özelliğidir:
+2. Kullanıcı tarafından atanan yönetilen kimliği sanal makine ölçek kümesine [atayın](/cli/azure/vmss/identity) . `<RESOURCE GROUP>` ve `<VIRTUAL MACHINE SCALE SET NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. , `<USER ASSIGNED IDENTITY>` Önceki adımda oluşturulan kullanıcı tarafından atanan kimliğin kaynak `name` özelliğidir:
 
     ```azurecli-interactive
     az vmss identity assign -g <RESOURCE GROUP> -n <VIRTUAL MACHINE SCALE SET NAME> --identities <USER ASSIGNED IDENTITY>
@@ -192,7 +192,7 @@ Bu bölümde, bir sanal makine ölçek kümesi oluşturma ve sanal makine ölçe
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Kullanıcı tarafından atanan yönetilen kimliği bir Azure sanal makine ölçek kümesinden kaldırma
 
-Bir sanal makine ölçek kümesinden Kullanıcı tarafından atanan yönetilen kimliği kaldırmak için [az VMSS Identity Remove](/cli/azure/vmss/identity#az-vmss-identity-remove)komutunu kullanın. Bu, sanal makine ölçek kümesine atanan tek kullanıcı tarafından atanan yönetilen kimlik ise, `UserAssigned` kimlik türü değerinden kaldırılır.  `<RESOURCE GROUP>` ve `<VIRTUAL MACHINE SCALE SET NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. , `<USER ASSIGNED IDENTITY>` Şu kullanılarak `az vmss identity show`sanal makine ölçek kümesinin kimlik bölümünde bulunan `name` , Kullanıcı tarafından atanan yönetilen kimliğin özelliği olacaktır:
+Bir sanal makine ölçek kümesi kullanımıyla Kullanıcı tarafından atanan bir yönetilen kimliği [kaldırmak](/cli/azure/vmss/identity#az-vmss-identity-remove) için `az vmss identity remove` . Bu, sanal makine ölçek kümesine atanan tek kullanıcı tarafından atanan yönetilen kimlik ise, `UserAssigned` kimlik türü değerinden kaldırılır.  `<RESOURCE GROUP>` ve `<VIRTUAL MACHINE SCALE SET NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. , `<USER ASSIGNED IDENTITY>` Şu `name` kullanılarak sanal makine ölçek kümesinin kimlik bölümünde bulunan, Kullanıcı tarafından atanan yönetilen kimliğin özelliği olacaktır `az vmss identity show` :
 
 ```azurecli-interactive
 az vmss identity remove -g <RESOURCE GROUP> -n <VIRTUAL MACHINE SCALE SET NAME> --identities <USER ASSIGNED IDENTITY>

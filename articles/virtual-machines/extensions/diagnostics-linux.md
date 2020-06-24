@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 4033437db5c14abcd0376fbfeca22cca915908d2
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 824ba9e1f9b4325c1e0974ed1c22b465ec4b85a8
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677194"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298965"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama Uzantısı’nı kullanma
 
@@ -74,7 +74,12 @@ Desteklenen dağıtımlar ve sürümler:
 
 ### <a name="sample-installation"></a>Örnek yükleme
 
-Çalışmadan önce ilk bölümdeki değişkenler için doğru değerleri girin:
+> [!NOTE]
+> Örneklerden herhangi biri için, çalıştırmadan önce ilk bölümdeki değişkenler için doğru değerleri girin. 
+
+Bu örneklerde indirilen örnek yapılandırma bir dizi standart veri toplar ve bunları tablo depolamaya gönderir. Örnek yapılandırma ve içeriği için URL, değişikliğe tabidir. Çoğu durumda, portal ayarları JSON dosyasının bir kopyasını indirmeniz ve gereksinimlerinize göre özelleştirmeniz gerekir, ardından oluşturduğunuz herhangi bir şablon veya Otomasyon, bu URL 'YI her seferinde indirmek yerine yapılandırma dosyası sürümünüzü kullanır.
+
+#### <a name="azure-cli-sample"></a>Azure CLı örneği
 
 ```azurecli
 # Set your Azure VM diagnostic variables correctly below
@@ -103,8 +108,6 @@ my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_accoun
 # Finallly tell Azure to install and enable the extension
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
-
-Bu örneklerde indirilen örnek yapılandırma bir dizi standart veri toplar ve bunları tablo depolamaya gönderir. Örnek yapılandırma ve içeriği için URL, değişikliğe tabidir. Çoğu durumda, portal ayarları JSON dosyasının bir kopyasını indirmeniz ve gereksinimlerinize göre özelleştirmeniz gerekir, ardından oluşturduğunuz herhangi bir şablon veya Otomasyon, bu URL 'YI her seferinde indirmek yerine yapılandırma dosyası sürümünüzü kullanır.
 
 #### <a name="powershell-sample"></a>PowerShell örneği
 
@@ -439,6 +442,9 @@ yapma | seçim Ham örnek ölçüm sonuçlarının yayımlanması gereken ek hav
 
 Günlük dosyalarının yakalanmasını denetler. LAD, dosyaya yazıldığı ve bunları tablo satırlarına ve/veya belirtilen herhangi bir havuza (JsonBlob veya EventHub) yazan yeni metin satırlarını yakalar.
 
+> [!NOTE]
+> Dosya günlükleri, LAD 'nin çağrılan bir alt bileşeni tarafından yakalanır `omsagent` . Dosya günlüklerini toplamak için, `omsagent` kullanıcının belirttiğiniz dosyalar üzerinde okuma izinlerine sahip olduğundan ve bu dosyanın yolundaki tüm dizinlerde izinleri yürütdiğinizden emin olmanız gerekir. Bu `sudo su omsagent -c 'cat /path/to/file'` işlemi, LAD yüklendikten sonra çalıştırarak denetleyebilirsiniz.
+
 ```json
 "fileLogs": [
     {
@@ -564,23 +570,36 @@ BytesPerSecond | Saniye başına okunan veya yazılan bayt sayısı
 
 Tüm diskler genelinde toplanmış değerler ayarıyla elde edilebilir `"condition": "IsAggregate=True"` . Belirli bir cihazla ilgili bilgi almak için (örneğin,/dev/sdf1), ayarlayın `"condition": "Name=\\"/dev/sdf1\\""` .
 
-## <a name="installing-and-configuring-lad-30-via-cli"></a>CLI üzerinden LAD 3.0'ı yükleme ve yapılandırma
+## <a name="installing-and-configuring-lad-30"></a>LAD 3,0 yükleme ve yapılandırma
 
-Korunan ayarlarınızın dosyada PrivateConfig.jsolduğu varsayıldığında ve genel yapılandırma bilgileriniz üzerinde PublicConfig.js, şu komutu çalıştırın:
+### <a name="azure-cli"></a>Azure CLI
+
+Korunan ayarlarınızın dosyada ProtectedSettings.jsolduğu varsayıldığında ve genel yapılandırma bilgileriniz üzerinde PublicSettings.js, şu komutu çalıştırın:
 
 ```azurecli
-az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Azure.Diagnostics '3.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json
+az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-Bu komut, Azure CLı 'nın Azure Kaynak yönetimi modunu (ARM) kullandığınızı varsayar. Klasik dağıtım modeli (ASM) VM 'Leri için LAD 'yi yapılandırmak üzere, "asm" moduna geçin ( `azure config mode asm` ) ve komutta kaynak grubu adını atlayın. Daha fazla bilgi için [platformlar arası CLI belgelerine](https://docs.microsoft.com/azure/xplat-cli-connect)bakın.
+Bu komut, Azure CLı 'nın Azure Kaynak Yönetimi (ARM) modunu kullandığınızı varsayar. Klasik dağıtım modeli (ASM) VM 'Leri için LAD 'yi yapılandırmak üzere, "asm" moduna geçin ( `azure config mode asm` ) ve komutta kaynak grubu adını atlayın. Daha fazla bilgi için [platformlar arası CLI belgelerine](https://docs.microsoft.com/azure/xplat-cli-connect)bakın.
+
+### <a name="powershell"></a>PowerShell
+
+Korunan ayarlarınızın değişkende olduğu varsayıldığında `$protectedSettings` ve ortak yapılandırma bilgileriniz `$publicSettings` değişkeninde ise şu komutu çalıştırın:
+
+```powershell
+Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0
+```
 
 ## <a name="an-example-lad-30-configuration"></a>Örnek LAD 3,0 yapılandırması
 
 Önceki tanımları temel alarak, bazı açıklamayla örnek bir LAD 3,0 uzantı yapılandırması aşağıda verilmiştir. Bu örneği çalışmanıza uygulamak için kendi depolama hesabı adınızı, hesap SAS belirtecinizi ve EventHubs SAS belirteçlerini kullanmanız gerekir.
 
-### <a name="privateconfigjson"></a>Üzerinde PrivateConfig.js
+> [!NOTE]
+> LAD 'yi yüklemek için Azure CLı veya PowerShell 'i kullanmanıza bağlı olarak, ortak ve korumalı ayarların sağlanması yöntemi farklılık gösterir. Azure CLı kullanıyorsanız, yukarıdaki örnek komutla birlikte kullanmak için ProtectedSettings.jsve PublicSettings.jsiçin aşağıdaki ayarları kaydedin. PowerShell kullanıyorsanız, ayarları çalıştırarak ve ile kaydedin `$protectedSettings` `$publicSettings` `$protectedSettings = '{ ... }'` .
 
-Bu özel ayarlar yapılandırılır:
+### <a name="protected-settings"></a>Korumalı ayarlar
+
+Bu korumalı ayarlar yapılandırılır:
 
 * depolama hesabı
 * eşleşen bir hesap SAS belirteci
@@ -628,7 +647,7 @@ Bu özel ayarlar yapılandırılır:
 }
 ```
 
-### <a name="publicconfigjson"></a>Üzerinde PublicConfig.js
+### <a name="public-settings"></a>Ortak ayarlar
 
 Bu genel ayarlar, LAD 'ye neden olur:
 

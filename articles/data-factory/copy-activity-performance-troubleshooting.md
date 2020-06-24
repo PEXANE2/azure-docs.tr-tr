@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 6a7c04bec8a794a234f2f0c6fad75dc94c12d291
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: d339e68dcf49c74c508029fda3e7eb548ec92588
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84668364"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770990"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Kopyalama etkinliği performansını sorun giderme
 
@@ -57,7 +57,7 @@ Kopyalama etkinliği izleme görünümünün en altındaki yürütme ayrıntıla
 | --------------- | ------------------------------------------------------------ |
 | Kuyruk           | Kopyalama etkinliği tümleştirme çalışma zamanı üzerinde çalışmaya başlanana kadar geçen süre. |
 | Kopyalama öncesi betiği | IR ve kopyalama etkinliğinden itibaren kopyalama etkinliği arasındaki geçen süre, havuz veri deposunda kopyalama öncesi betiği yürütmeyi tamamlıyor. Veritabanı havuzları için kopyalama öncesi betiği yapılandırdığınızda, örneğin Azure SQL veritabanı 'na veri yazarken yeni verileri kopyalamaya başlamadan önce bu uygulamayı temizleyebilirsiniz. |
-| Aktarma        | Önceki adımın sonu ile IR 'nin tüm verileri kaynaktan havuza aktarma arasındaki geçen süre. <br/>Aktarım çalıştırmasının altındaki alt adımlara paralel olarak not alın ve bazı işlemler, örnek olarak ayrıştırma/oluşturma.<br><br/>- **İlk bayta kalan süre:** Önceki adımın sonu ile IR 'nin kaynak veri deposundan ilk baytı aldığı zaman arasında geçen süre. Dosya tabanlı olmayan kaynaklar için geçerlidir.<br>- **Listeleme kaynağı:** Kaynak dosyalarını veya veri bölümlerini listelemek için harcanan sürenin miktarı. İkincisi, veritabanı kaynakları için bölüm seçeneklerini yapılandırdığınızda, ör. Oracle/SAP HANA/Teradata/Netezza/vb gibi veritabanlarından veri kopyalama yaparken geçerlidir.<br/>-**Kaynaktan okunuyor:** Kaynak veri deposundan verileri almak için harcanan sürenin miktarı.<br/>- **Havuza yazma:** Havuz veri deposuna veri yazmak için harcanan sürenin miktarı. |
+| Aktarma        | Önceki adımın sonu ile IR 'nin tüm verileri kaynaktan havuza aktarma arasındaki geçen süre. <br/>Aktarım çalıştırmasının altındaki alt adımlara paralel olarak not alın ve bazı işlemler, örnek olarak ayrıştırma/oluşturma.<br><br/>- **İlk bayta kalan süre:** Önceki adımın sonu ile IR 'nin kaynak veri deposundan ilk baytı aldığı zaman arasında geçen süre. Dosya tabanlı olmayan kaynaklar için geçerlidir.<br>- **Listeleme kaynağı:** Kaynak dosyalarını veya veri bölümlerini listelemek için harcanan sürenin miktarı. İkincisi, veritabanı kaynakları için bölüm seçeneklerini yapılandırdığınızda, ör. Oracle/SAP HANA/Teradata/Netezza/vb gibi veritabanlarından veri kopyalama yaparken geçerlidir.<br/>-**Kaynaktan okunuyor:** Kaynak veri deposundan verileri almak için harcanan sürenin miktarı.<br/>- **Havuza yazma:** Havuz veri deposuna veri yazmak için harcanan sürenin miktarı. Not Bazı bağlayıcılarda Azure Bilişsel Arama, Azure Veri Gezgini, Azure Tablo depolama, Oracle, SQL Server, Common Data Service, Dynamics 365, Dynamics CRM, Salesforce/Salesforce hizmeti bulutu dahil bu ölçüm yoktur. |
 
 ## <a name="troubleshoot-copy-activity-on-azure-ir"></a>Azure IR kopyalama etkinliğinin sorunlarını giderme
 
@@ -142,7 +142,7 @@ Kopyalama performansı beklentilerinizi karşılamıyorsa, Azure Integration Run
 
   - Data Factory-> genel bakış sayfanıza Azure portal > şirket içinde barındırılan IR 'nin CPU ve bellek kullanımı eğilimini kontrol edin. CPU kullanımı yüksek veya kullanılabilir bellek düşükse, [ölçeği artırma/genişletme](create-self-hosted-integration-runtime.md#high-availability-and-scalability) için göz önünde bulundurun.
 
-  - Varsa bağlayıcıya özgü verileri yükleme en iyi uygulamasını benimseyin. Örnek:
+  - Varsa bağlayıcıya özgü verileri yükleme en iyi uygulamasını benimseyin. Örneğin:
 
     - [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source)ve [SAP açık hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)'dan verileri kopyalarken, verileri paralel olarak kopyalamak için veri bölümü seçeneklerini etkinleştirin.
 

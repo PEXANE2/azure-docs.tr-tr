@@ -9,11 +9,11 @@ ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: dab13f222b441c7415a8d09d0d91ab3af5aaf836
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280189"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695836"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service için SSH desteği
 
@@ -41,7 +41,7 @@ TCP tünelini kullanarak, geliştirme makineniz ile kimliği doğrulanmış bir 
 
 Başlamak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)'yi yüklemeniz gerekir. Azure CLı yüklemeden nasıl çalıştığını görmek için [Azure Cloud Shell](../../cloud-shell/overview.md)açın. 
 
-[Az WebApp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) komutunu kullanarak uygulamanıza uzak bir bağlantı açın. Uygulamanız için _ \<abonelik kimliği>_, _ \<grup adı>_ ve \_ \<uygulama adı>_ belirtin.
+[Az WebApp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) komutunu kullanarak uygulamanıza uzak bir bağlantı açın. _\<subscription-id>_ _\<group-name>_ \_ \<app-name> Uygulamanız için ve _ öğesini belirtin.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
@@ -64,7 +64,7 @@ Yerel bağlantı noktasını kullanarak, istediğiniz istemcisiyle kapsayıcın�
 ssh root@127.0.0.1 -p <port>
 ```
 
-İstendiğinde, bağlanmaya devam etmek `yes` için yazın. Bundan sonra parola istenir. Daha `Docker!`önce gösterilen ' i kullanın.
+İstendiğinde, `yes` bağlanmaya devam etmek için yazın. Bundan sonra parola istenir. `Docker!`Daha önce gösterilen ' i kullanın.
 
 ```output
 Warning: Permanently added '[127.0.0.1]:21382' (ECDSA) to the list of known hosts.
@@ -87,7 +87,7 @@ A P P   S E R V I C E   O N   L I N U X
 
 Artık bağlayıcınıza bağlısınız.  
 
-[En üstteki](https://ss64.com/bash/top.html) komutu çalıştırmayı deneyin. Uygulamanızın işlemini işlem listesinde görebilmeniz gerekir. Aşağıdaki örnek çıktıda, ile olan `PID 263`.
+[En üstteki](https://ss64.com/bash/top.html) komutu çalıştırmayı deneyin. Uygulamanızın işlemini işlem listesinde görebilmeniz gerekir. Aşağıdaki örnek çıktıda, ile olan `PID 263` .
 
 ```output
 Mem: 1578756K used, 127032K free, 8744K shrd, 201592K buff, 341348K cached
@@ -117,7 +117,7 @@ Load average: 0.07 0.04 0.08 4/765 45738
 
 Kapsayıcılar için Web App hakkında daha fazla bilgi için bkz.
 
-* [VS Code 'deki Azure App Service Node. js uygulamalarının uzaktan hata ayıklamasını tanıtma](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
+* [VS Code Azure App Service Node.js uygulamalarda uzaktan hata ayıklamayı tanıtma](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
 * [Kapsayıcılar için Web App için özel bir Docker görüntüsü kullanma](quickstart-docker-go.md)
 * [Linux üzerinde Azure App Service’te .NET Core Kullanma](quickstart-dotnetcore.md)
 * [Linux üzerinde Azure App Service’te Ruby Kullanma](quickstart-ruby.md)

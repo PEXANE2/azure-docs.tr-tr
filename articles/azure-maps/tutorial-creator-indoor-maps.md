@@ -3,17 +3,17 @@ title: Inkapılı haritalar oluşturmak için Oluşturucu kullanma
 description: Inkapılı haritalar oluşturmak için Azure haritalar Oluşturucu kullanın.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/28/2020
+ms.date: 06/17/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c27752d7a4b8e99dd70563cece02a4fd4e67bdc1
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 93827e4d5f6bcf66191ae78c18adac71b5dd0a22
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560358"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255186"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Inkapılı haritalar oluşturmak için Oluşturucu kullanma
 
@@ -64,25 +64,30 @@ Karşıya veri yükleme API 'SI, burada tanımlanan kalıbı uygulayan uzun sür
 
 5. Mavi **Gönder** düğmesine tıklayın ve isteğin işlemesini bekleyin. İstek tamamlandıktan sonra yanıtın **üstbilgiler** sekmesine gidin. Olan **konum** anahtarının değerini kopyalayın `status URL` .
 
-6. API çağrısının durumunu denetlemek için üzerinde bir HTTP isteği alın `status URL` . Kimlik doğrulaması için birincil abonelik anahtarınızı URL 'ye eklemeniz gerekir.
+6. API çağrısının durumunu denetlemek için üzerinde bir http isteği **alın** `status URL` . Kimlik doğrulaması için birincil abonelik anahtarınızı URL 'ye eklemeniz gerekir. **Get** isteği aşağıdaki URL 'yi beğenmelidir:
 
     ```http
-    https://atlas.microsoft.com/mapData/operations/{operationsId}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/mapData/operations/{operationId}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-7. HTTP isteği **Al** işlemi başarıyla tamamlandığında, bir `resourceLocation` sonraki adımda bu kaynaktan meta verileri almak için URL 'yi kullanabilirsiniz.
+7. HTTP isteği **Al** işlemi başarıyla tamamlandığında, döndürür `resourceLocation` . , `resourceLocation` `udid` Karşıya yüklenen içerik için benzersiz bir içerir. İsteğe bağlı olarak, bir `resourceLocation` sonraki adımda bu kaynaktan meta verileri almak için URL 'yi kullanabilirsiniz.
 
     ```json
     {
-        "operationId": "{operationId}",
         "status": "Succeeded",
-        "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{upload-udid}?api-version=1.0"
+        "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0"
     }
     ```
 
-8. İçerik meta verilerini almak için, **GET** `resourceLocation` adım 7 ' de kopyaladığınız URL 'de http isteği Al ' ı oluşturun. Yanıt gövdesi, `udid` karşıya yüklenen içerik için benzersiz bir, gelecekte içeriğe erişim/indirme yapılacak konum ve oluşturulma/güncelleme tarihi, boyutu vb. gibi içerikler hakkında başka bazı meta veriler içerir. Genel yanıta bir örnek:
+8. İçerik meta verilerini almak için, **GET** `resourceLocation` adım 7 ' de alınan URL 'de http isteği Al ' ı oluşturun. Kimlik doğrulaması için birincil abonelik anahtarınızı URL 'ye eklemediğinizden emin olun. **Get** isteği aşağıdaki URL 'yi beğenmelidir:
 
-     ```json
+    ```http
+   https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    ```
+
+9. HTTP isteği **Al** işlemi başarıyla tamamlandığında, yanıt gövdesi `udid` `resourceLocation` adım 7 ' de belirtilen içeriği, gelecekteki içeriğe erişmek/indirmek için konumunu ve oluşturulma/güncelleme tarihi, boyutu vb. gibi içerikler hakkında bazı diğer meta verileri içerir. Genel yanıta bir örnek:
+
+    ```json
     {
         "udid": "{udid}",
         "location": "https://atlas.microsoft.com/mapData/{udid}?api-version=1.0",
@@ -102,7 +107,7 @@ Karşıya veri yükleme API 'SI, burada tanımlanan kalıbı uygulayan uzun sür
 2. Oluşturucu sekmesinde http **Post** yöntemini seçin ve karşıya yüklenen çizim paketinizi harita verilerine dönüştürmek için aşağıdaki URL 'yi girin. `udid`Karşıya yüklenen paket için öğesini kullanın.
 
     ```http
-    https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={upload-udid}&inputType=DWG
+    https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={udid}&inputType=DWG
     ```
 
 3. **Gönder** düğmesine tıklayın ve isteğin işlemesini bekleyin. İstek tamamlandıktan sonra yanıtın **üstbilgiler** sekmesine gidin ve **konum** anahtarını bulun. Dönüştürme isteği için olan **konum** anahtarının değerini kopyalayın `status URL` .
@@ -163,7 +168,7 @@ Veri kümesi, binalar, düzeyler ve odalar gibi eşleme özelliklerinin bir kole
 4. Elde etmek için üzerinde bir **Get** isteği yapın `statusURL` `datasetId` . Kimlik doğrulaması için Azure Maps birincil abonelik anahtarınızı ekleyin. İstek aşağıdaki URL gibi görünmelidir:
 
     ```http
-    https://atlas.microsoft.com/dataset/operations/{operationsId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/dataset/operations/{operationId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
     ```
 
 5. HTTP isteği **Al** işlemi başarıyla tamamlandığında, yanıt üst bilgisi `datasetId` oluşturulan veri kümesi için öğesini içerir. Öğesini kopyalayın `datasetId` . `datasetId`Bir tileset oluşturmak için öğesini kullanmanız gerekir.
@@ -192,7 +197,7 @@ Bir tileset, haritada işlenen vektör kutucukları kümesidir. Tilesets 'ler va
 3. Tileset için üzerinde bir **Get** isteği yapın `statusURL` . Kimlik doğrulaması için Azure Maps birincil abonelik anahtarınızı ekleyin. İstek aşağıdaki URL gibi görünmelidir:
 
    ```http
-    https://atlas.microsoft.com/tileset/operations/{operationsId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/tileset/operations/{operationId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
     ```
 
 4. HTTP isteği **Al** işlemi başarıyla tamamlandığında, yanıt üst bilgisi `tilesetId` oluşturulan tileset için öğesini içerir. Öğesini kopyalayın `tilesetId` .

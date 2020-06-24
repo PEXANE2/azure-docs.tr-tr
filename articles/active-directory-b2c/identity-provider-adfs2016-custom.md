@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 12845f09ac2eb2342cdb1ab82b703ebd3a67c706
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ddd0b2406a7f6feac18a2b80b4dab212f350f541
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229740"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202246"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak ADFS 'yi SAML kimlik sağlayıcısı olarak ekleyin
 
@@ -39,10 +39,10 @@ Sertifikanızı Azure AD B2C kiracınızda depolamanız gerekir.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
 5. **Ilke anahtarlarını** seçin ve ardından **Ekle**' yi seçin.
-6. **Seçenekler**için öğesini seçin `Upload`.
-7. İlke anahtarı için bir **ad** girin. Örneğin, `SamlCert`. Ön ek `B2C_1A_` , anahtarınızın adına otomatik olarak eklenir.
+6. **Seçenekler**için öğesini seçin `Upload` .
+7. İlke anahtarı için bir **ad** girin. Örneğin, `SamlCert`. Ön ek, `B2C_1A_` anahtarınızın adına otomatik olarak eklenir.
 8. Özel anahtarla Certificate. pfx dosyanıza gidin ve bu dosyayı seçin.
-9. **Oluştur**' a tıklayın.
+9. **Oluştur**'a tıklayın.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
 
@@ -50,7 +50,7 @@ Kullanıcıların bir ADFS hesabı kullanarak oturum açmasını istiyorsanız, 
 
 Bir ADFS hesabını, ilkenizin uzantı dosyasındaki **Claimsproviders** öğesine ekleyerek talep sağlayıcı olarak tanımlayabilirsiniz. Daha fazla bilgi için bkz. [SAML kimlik sağlayıcısı teknik profili tanımlama](saml-identity-provider-technical-profile.md).
 
-1. *TrustFrameworkExtensions. xml*' i açın.
+1. *TrustFrameworkExtensions.xml*açın.
 1. **Claimsproviders** öğesini bulun. Yoksa, kök öğenin altına ekleyin.
 1. Yeni bir **ClaimsProvider** 'ı aşağıdaki şekilde ekleyin:
 
@@ -95,9 +95,9 @@ Bir ADFS hesabını, ilkenizin uzantı dosyasındaki **Claimsproviders** öğesi
 
 1. Öğesini `your-ADFS-domain` ADFS etki alanınız adıyla değiştirin ve **IdentityProvider** çıkış talebinin değerini DNS ile değiştirin (etki alanınızı gösteren rastgele değer).
 
-1. `<ClaimsProviders>` Bölümünü bulun ve aşağıdaki XML kod parçacığını ekleyin. İlkeniz zaten `SM-Saml-idp` teknik profili içeriyorsa, sonraki adıma atlayın. Daha fazla bilgi için bkz. [Çoklu oturum açma oturumu yönetimi](custom-policy-reference-sso.md).
+1. Bölümünü bulun `<ClaimsProviders>` ve AŞAĞıDAKI XML kod parçacığını ekleyin. İlkeniz zaten `SM-Saml-idp` Teknik profili içeriyorsa, sonraki adıma atlayın. Daha fazla bilgi için bkz. [Çoklu oturum açma oturumu yönetimi](custom-policy-reference-sso.md).
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Session Management</DisplayName>
       <TechnicalProfiles>
@@ -120,7 +120,7 @@ Bir ADFS hesabını, ilkenizin uzantı dosyasındaki **Claimsproviders** öğesi
 Şimdi, ilkenizi Azure AD B2C ADFS hesabıyla nasıl iletişim kuracağını bilmesini sağlayacak şekilde yapılandırdınız. Şu ana kadar herhangi bir sorun olmadığını doğrulamak için, ilkenizin uzantı dosyasını karşıya yüklemeyi deneyin.
 
 1. Azure AD B2C kiracınızdaki **özel ilkeler** sayfasında, **ilkeyi karşıya yükle**' yi seçin.
-2. Varsa **Ilkenin üzerine yazmayı**etkinleştirin ve ardından *TrustFrameworkExtensions. xml* dosyasına gidip seçin.
+2. Varsa **Ilkenin üzerine yazmayı**etkinleştirin ve sonra *TrustFrameworkExtensions.xml* dosyasına gidip seçin.
 3. **Karşıya Yükle**'ye tıklayın.
 
 > [!NOTE]
@@ -131,9 +131,9 @@ Bir ADFS hesabını, ilkenizin uzantı dosyasındaki **Claimsproviders** öğesi
 
 Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma veya oturum açma ekranlarından hiçbirinde kullanılamaz. Kullanılabilir hale getirmek için, var olan bir şablon Kullanıcı yolculuğunun bir yinelemesini oluşturun ve ardından bunu, ADFS kimlik sağlayıcısı da olacak şekilde değiştirin.
 
-1. *TrustFrameworkBase. xml* dosyasını başlangıç paketinden açın.
-2. Dahil `Id="SignUpOrSignIn"`olan **userelde ney** öğesinin tüm içeriğini bulup kopyalayın.
-3. *TrustFrameworkExtensions. xml* ' i açın ve **User, neys** öğesini bulun. Öğe yoksa, bir tane ekleyin.
+1. *TrustFrameworkBase.xml* dosyasını başlangıç paketinden açın.
+2. Dahil olan **Userelde ney** öğesinin tüm içeriğini bulup kopyalayın `Id="SignUpOrSignIn"` .
+3. *TrustFrameworkExtensions.xml* açın ve **User, neys** öğesini bulun. Öğe yoksa, bir tane ekleyin.
 4. **User, neys** öğesinin bir alt öğesi olarak kopyaladığınız **User, ney** öğesinin tüm içeriğini yapıştırın.
 5. Kullanıcı yolculuğunun KIMLIĞINI yeniden adlandırın. Örneğin, `SignUpSignInADFS`.
 
@@ -141,10 +141,10 @@ Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma veya oturum 
 
 **Claimsproviderselection** öğesi, kaydolma veya oturum açma ekranındaki bir kimlik sağlayıcısı düğmesine benzer. Bir ADFS hesabı için bir **Claimsproviderselection** öğesi eklerseniz, bir Kullanıcı sayfada yer alıyorsa yeni bir düğme görüntülenir.
 
-1. Oluşturduğunuz Kullanıcı yolculuğuna dahil `Order="1"` olan **orchestrationstep** öğesini bulun.
-2. **Claimsproviderseçimleri**altında aşağıdaki öğeyi ekleyin. **Targetclaimsexchangeıd** değerini uygun bir değere ayarlayın, örneğin `ContosoExchange`:
+1. Oluşturduğunuz Kullanıcı yolculuğuna dahil olan **Orchestrationstep** öğesini bulun `Order="1"` .
+2. **Claimsproviderseçimleri**altında aşağıdaki öğeyi ekleyin. **Targetclaimsexchangeıd** değerini uygun bir değere ayarlayın, örneğin `ContosoExchange` :
 
-    ```XML
+    ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
     ```
 
@@ -152,16 +152,16 @@ Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma veya oturum 
 
 Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerekir. Bu durumda, bir belirteci almak için bir ADFS hesabıyla iletişim kurması Azure AD B2C.
 
-1. Kullanıcı yolculuğu `Order="2"` ' nda yer alan **orchestrationstep** ' i bulun.
+1. Kullanıcı yolculuğu ' nda yer alan **Orchestrationstep** ' i bulun `Order="2"` .
 2. **Targetclaimsexchangeıd**IÇIN kullandığınız kimlik için aynı değeri kullandığınızdan emin olmak Için aşağıdaki **claimsexchange** öğesini ekleyin:
 
-    ```XML
+    ```xml
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
     ```
 
     **TechnicalProfileReferenceId** değerini daha önce oluşturduğunuz teknık profilin kimliğiyle güncelleştirin. Örneğin, `Contoso-SAML2`.
 
-3. *TrustFrameworkExtensions. xml* dosyasını kaydedin ve doğrulama için yeniden yükleyin.
+3. *TrustFrameworkExtensions.xml* dosyasını kaydedin ve doğrulama için yeniden yükleyin.
 
 
 ## <a name="configure-an-adfs-relying-party-trust"></a>ADFS bağlı olan taraf güveni yapılandırma
@@ -198,11 +198,11 @@ Bir tarayıcı açın ve URL 'ye gidin. Doğru URL 'YI yazdığınızdan ve XML 
     | Soyadı | family_name |
     | Verilen-ad | given_name |
     | E-posta adresi | e-posta |
-    | Görünen ad | ad |
+    | Görünen ad | name |
 
     Bu adların, giden talep türü açılan listesinde görüntülemediğine unutmayın. Bunları el ile yazmanız gerekir. (Açılan menü aslında düzenlenebilir).
 
-12.  Sertifika türü temelinde, karma algoritmayı ayarlamanız gerekebilir. Bağlı olan taraf güveni (B2C tanıtımı) Özellikler penceresinde **Gelişmiş** sekmesini seçin ve **güvenli karma algoritmasını** olarak `SHA-256`değiştirin ve **Tamam**' a tıklayın.
+12.  Sertifika türü temelinde, karma algoritmayı ayarlamanız gerekebilir. Bağlı olan taraf güveni (B2C tanıtımı) Özellikler penceresinde **Gelişmiş** sekmesini seçin ve **güvenli karma algoritmasını** olarak değiştirin `SHA-256` ve **Tamam**' a tıklayın.
 13. Sunucu Yöneticisi ' de **Araçlar**' ı seçin ve ardından **ADFS yönetimi**' ni seçin.
 14. Oluşturduğunuz bağlı olan taraf güvenini seçin, **Federasyon meta verilerinden Güncelleştir**' i seçin ve ardından **Güncelleştir**' e tıklayın.
 
@@ -216,7 +216,7 @@ Azure AD B2C ile iletişim, B2C kiracınıza kaydolmanızı sağlayan bir uygula
 
 Oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf (RP) dosyasını güncelleştirin.
 
-1. Çalışma dizininizde *Signuporsignın. xml* ' in bir kopyasını oluşturun ve yeniden adlandırın. Örneğin, bunu *Signupsignınadfs. xml*olarak yeniden adlandırın.
+1. Çalışma dizininizde *SignUpOrSignIn.xml* bir kopyasını oluşturun ve yeniden adlandırın. Örneğin, *SignUpSignInADFS.xml*olarak yeniden adlandırın.
 2. Yeni dosyayı açın ve **TrustFrameworkPolicy** Için **PolicyId** özniteliğinin değerini benzersiz bir değerle güncelleştirin. Örneğin, `SignUpSignInADFS`.
 3. **Publicpolicyuri** DEĞERINI ilke URI 'siyle güncelleştirin. Örneğin,`http://contoso.com/B2C_1A_signup_signin_adfs`
 4. **Defaultuseryolculuney** Içindeki **referenceıd** özniteliğinin değerini, oluşturduğunuz yenı Kullanıcı yolculuğunun kimliğiyle eşleşecek şekilde güncelleştirin (Signupsignınadfs).

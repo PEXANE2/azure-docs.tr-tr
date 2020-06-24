@@ -3,25 +3,25 @@ title: Ekipteki proxy uygulamalarına Azure AD Uygulaması erişim | Microsoft D
 description: Microsoft ekipleri aracılığıyla şirket içi uygulamanıza erişmek için Azure AD Uygulama Ara Sunucusu kullanın.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/05/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 037e005993a54e525560571a6d893197af99b6a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7afcd3bfe16775d5c99100278eda81da739b8d22
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67807768"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764494"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Şirket içi uygulamalarınıza Microsoft ekipleri aracılığıyla erişin
 
@@ -33,13 +33,13 @@ Kullanıcılarınız, [sekmeleri kullanarak](https://support.office.com/article/
 
 Henüz yapmadıysanız, [kiracınız Için uygulama proxy 'sini yapılandırın ve bağlayıcıyı yükleyebilirsiniz](application-proxy-add-on-premises-application.md). Ardından, Şirket [içi uygulamanızı](application-proxy-add-on-premises-application.md) uzaktan erişim için yayımlayın. Uygulamayı yayımlarken, uygulamayı takımlara eklemek için kullanıldığından dış URL 'yi unutmayın.
 
-Uygulamalarınız zaten yayımladıysanız, ancak dış URL 'Lerini anımsamıyorsanız, [Azure Portal](https://portal.azure.com)bakın. Oturum açın ve **Azure Active Directory** > **Kurumsal uygulamalar** > **tüm uygulamalar** ' a gidin > **uygulama proxy 'si**> uygulamanızı seçin.
+Uygulamalarınız zaten yayımladıysanız, ancak dış URL 'Lerini anımsamıyorsanız, [Azure Portal](https://portal.azure.com)bakın. Oturum açın ve **Azure Active Directory**  >  **Kurumsal uygulamalar**  >  **tüm uygulamalar** ' a gidin > **uygulama proxy 'si**> uygulamanızı seçin.
 
 ## <a name="add-your-app-to-teams"></a>Uygulamanızı takımlara ekleyin
 
 Uygulamayı uygulama proxy 'Si aracılığıyla yayımladıktan sonra, kullanıcılarınıza onu doğrudan takımlar kanallarında bir sekme olarak ekleyebileceklerini ve sonra da ekibin kullanabilmesi için uygulamanın kullanılabilir olduğunu bilmesini sağlayın. Bu üç adımı takip edin:
 
-1. Bu uygulamayı eklemek istediğiniz takımlar kanalına gidin ve sekme eklemeyi seçin **+** .
+1. Bu uygulamayı eklemek istediğiniz takımlar kanalına gidin ve **+** sekme eklemeyi seçin.
 
    ![Takımlara sekme eklemek için + seçeneğini belirleyin](./media/application-proxy-integrate-with-teams/add-tab.png)
 
