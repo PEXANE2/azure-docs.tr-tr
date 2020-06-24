@@ -7,13 +7,13 @@ author: rohinkoul
 ms.service: dns
 ms.date: 4/3/2019
 ms.author: rohink
-ms.topic: conceptual
-ms.openlocfilehash: a5c2fdde564eba2d95e7f14f4d47e4d381739d5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: bd40b3400b2a1c09be8fabd1201bedc7043bf19b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79365177"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709105"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Azure CLI’yı kullanarak DNS bölge dosyasını içeri ve dışarı aktarma
 
@@ -43,7 +43,7 @@ Bir bölge dosyasının içe aktarılması, zaten mevcut değilse Azure DNS yeni
 
 * Varsayılan olarak, mevcut ve yeni kayıt kümeleri birleştirilir. Birleştirilmiş bir kayıt kümesi içindeki özdeş kayıtlar de tekrarlanmış.
 * Kayıt kümeleri birleştirildiğinde, önceden var olan kayıt kümelerinin yaşam süresi (TTL) kullanılır.
-* Yetki başlangıcı (SOA) parametreleri (hariç `host`), her zaman içeri aktarılan bölge dosyasından alınır. Benzer şekilde, bölge tepesinde için ayarlanan ad sunucusu kaydı için, TTL her zaman içeri aktarılan bölge dosyasından alınır.
+* Yetki başlangıcı (SOA) parametreleri (hariç `host` ), her zaman içeri aktarılan bölge dosyasından alınır. Benzer şekilde, bölge tepesinde için ayarlanan ad sunucusu kaydı için, TTL her zaman içeri aktarılan bölge dosyasından alınır.
 * İçeri aktarılan bir CNAME kaydı, var olan bir CNAME kaydının aynı adla yerini almaz.  
 * Bir CNAME kaydı ve aynı ada sahip başka bir kayıt arasında bir çakışma ortaya çıkarsa (hangisi var veya yeni olduğunda), varolan kayıt tutulur. 
 
@@ -51,11 +51,11 @@ Bir bölge dosyasının içe aktarılması, zaten mevcut değilse Azure DNS yeni
 
 Aşağıdaki notlar bölge içeri aktarma işlemiyle ilgili ek teknik ayrıntılar sağlar.
 
-* `$TTL` Yönergesi isteğe bağlıdır ve desteklenir. Hiçbir `$TTL` yönerge verilmezse, açık TTL 'si olmayan kayıtlar, varsayılan ttl olan 3600 saniyeye ayarlanır. Aynı kayıt kümesindeki iki kayıt farklı TTLs belirttiğinizde, alt değer kullanılır.
-* `$ORIGIN` Yönergesi isteğe bağlıdır ve desteklenir. Hiçbir `$ORIGIN` değer ayarlandığında, kullanılan varsayılan değer, komut satırında belirtilen bölge adıdır (artı ".").
-* `$INCLUDE` Ve `$GENERATE` yönergeleri desteklenmez.
+* `$TTL`Yönergesi isteğe bağlıdır ve desteklenir. Hiçbir `$TTL` yönerge verilmezse, açık TTL 'si olmayan kayıtlar, varsayılan TTL olan 3600 saniyeye ayarlanır. Aynı kayıt kümesindeki iki kayıt farklı TTLs belirttiğinizde, alt değer kullanılır.
+* `$ORIGIN`Yönergesi isteğe bağlıdır ve desteklenir. Hiçbir değer `$ORIGIN` ayarlandığında, kullanılan varsayılan değer, komut satırında belirtilen bölge adıdır (artı ".").
+* `$INCLUDE`Ve `$GENERATE` yönergeleri desteklenmez.
 * Bu kayıt türleri desteklenir: A, AAAA, CAA, CNAME, MX, NS, SOA, SRV ve TXT.
-* SOA kaydı, bir bölge oluşturulduğunda Azure DNS tarafından otomatik olarak oluşturulur. Bir bölge dosyasını içeri aktardığınızda, tüm SOA parametreleri `host` parametre *dışında* bölge dosyasından alınır. Bu parametre Azure DNS tarafından belirtilen değeri kullanır. Bunun nedeni, bu parametrenin Azure DNS tarafından belirtilen birincil ad sunucusuna başvurması olması.
+* SOA kaydı, bir bölge oluşturulduğunda Azure DNS tarafından otomatik olarak oluşturulur. Bir bölge dosyasını içeri aktardığınızda, tüm SOA parametreleri parametre *dışında* bölge dosyasından alınır `host` . Bu parametre Azure DNS tarafından belirtilen değeri kullanır. Bunun nedeni, bu parametrenin Azure DNS tarafından belirtilen birincil ad sunucusuna başvurması olması.
 * Bölge tepesinde ' de ayarlanan ad sunucusu kaydı, bölge oluşturulduğunda Azure DNS tarafından otomatik olarak oluşturulur. Yalnızca bu kayıt kümesinin TTL değeri içeri aktarılır. Bu kayıtlar Azure DNS tarafından belirtilen ad sunucusu adlarını içerir. Kayıt verilerinin, içeri aktarılan bölge dosyasında bulunan değerlerle üzerine yazılmaz.
 * Genel Önizleme sırasında Azure DNS yalnızca tek dizeli TXT kayıtlarını destekler. Çok dizeli TXT kayıtları, 255 karakter ile birleştirilir ve kesilir.
 
@@ -75,7 +75,7 @@ Değerler:
 
 Kaynak grubunda bu ada sahip bir bölge yoksa, sizin için oluşturulur. Bölge zaten varsa, içeri aktarılan kayıt kümeleri varolan kayıt kümeleriyle birleştirilir. 
 
-### <a name="step-1-import-a-zone-file"></a>1. Adım. Bölge dosyasını içeri aktarma
+### <a name="step-1-import-a-zone-file"></a>Adım 1. Bölge dosyasını içeri aktarma
 
 Bölge **contoso.com**için bir bölge dosyasını içeri aktarma.
 
@@ -85,13 +85,13 @@ Bölge **contoso.com**için bir bölge dosyasını içeri aktarma.
     az group create --group myresourcegroup -l westeurope
     ```
 
-2. **Contoso. com. txt** dosyasındaki **contoso.com** bölgesini **myresourcegroup**kaynak grubundaki yeni bir DNS bölgesine aktarmak için komutunu `az network dns zone import`çalıştırın.<BR>Bu komut, bölge dosyasını yükler ve ayrıştırır. Komutu, bölgeyi ve bölgedeki tüm kayıt kümelerini oluşturmak için Azure DNS hizmetinde bir dizi komut yürütür. Komut, ilerleme durumunu, hata veya uyarılarla birlikte konsol penceresinde bildirir. Kayıt kümeleri seri halinde oluşturulduğundan, büyük bir bölge dosyasının içe aktarılması birkaç dakika sürebilir.
+2. **Contoso.com** bölgesini dosya **contoso.com.txt** **myresourcegroup**kaynak grubundaki yeni bir DNS bölgesine aktarmak için komutunu çalıştırın `az network dns zone import` .<BR>Bu komut, bölge dosyasını yükler ve ayrıştırır. Komutu, bölgeyi ve bölgedeki tüm kayıt kümelerini oluşturmak için Azure DNS hizmetinde bir dizi komut yürütür. Komut, ilerleme durumunu, hata veya uyarılarla birlikte konsol penceresinde bildirir. Kayıt kümeleri seri halinde oluşturulduğundan, büyük bir bölge dosyasının içe aktarılması birkaç dakika sürebilir.
 
     ```azurecli
     az network dns zone import -g myresourcegroup -n contoso.com -f contoso.com.txt
     ```
 
-### <a name="step-2-verify-the-zone"></a>2. Adım Bölgeyi doğrulama
+### <a name="step-2-verify-the-zone"></a>Adım 2. Bölgeyi doğrulama
 
 Dosyayı içeri aktardıktan sonra DNS bölgesini doğrulamak için aşağıdaki yöntemlerden birini kullanabilirsiniz:
 
@@ -101,8 +101,8 @@ Dosyayı içeri aktardıktan sonra DNS bölgesini doğrulamak için aşağıdaki
     az network dns record-set list -g myresourcegroup -z contoso.com
     ```
 
-* Azure CLı komutunu `az network dns record-set ns list`kullanarak kayıtları listeleyebilirsiniz.
-* Kayıtlar için ad `nslookup` çözümlemesini doğrulamak üzere ' i kullanabilirsiniz. Bölge henüz temsilci olmadığından, doğru Azure DNS ad sunucularını açıkça belirtmeniz gerekir. Aşağıdaki örnek, bölgeye atanan ad sunucusu adlarının nasıl alınacağını gösterir. Bu Ayrıca, kullanarak `nslookup`"www" kaydının nasıl sorgulanalınacağını gösterir.
+* Azure CLı komutunu kullanarak kayıtları listeleyebilirsiniz `az network dns record-set ns list` .
+* `nslookup`Kayıtlar için ad çözümlemesini doğrulamak üzere ' i kullanabilirsiniz. Bölge henüz temsilci olmadığından, doğru Azure DNS ad sunucularını açıkça belirtmeniz gerekir. Aşağıdaki örnek, bölgeye atanan ad sunucusu adlarının nasıl alınacağını gösterir. Bu Ayrıca, kullanarak "www" kaydının nasıl sorgulanalınacağını gösterir `nslookup` .
 
     ```azurecli
     az network dns record-set ns list -g myresourcegroup -z contoso.com  --output json 
@@ -171,7 +171,7 @@ Bölge içeri aktarırken olduğu gibi, önce oturum açmanız, aboneliğinizi s
 
 ### <a name="to-export-a-zone-file"></a>Bir bölge dosyasını dışarı aktarmak için
 
-**Myresourcegroup** kaynak grubundaki mevcut Azure DNS Zone **contoso.com** dosyasını **contoso. com. txt** dosyasına (geçerli klasörde) dışarı aktarmak için komutunu çalıştırın `azure network dns zone export`. Bu komut, bölgedeki kayıt kümelerini numaralandırmak ve sonuçları bağlama uyumlu bir bölge dosyasına aktarmak için Azure DNS hizmetini çağırır.
+**Myresourcegroup** kaynak grubundaki mevcut Azure DNS Zone **contoso.com** öğesini dosya **contoso.com.txt** (geçerli klasörde) olarak dışa aktarmak için komutunu çalıştırın `azure network dns zone export` . Bu komut, bölgedeki kayıt kümelerini numaralandırmak ve sonuçları bağlama uyumlu bir bölge dosyasına aktarmak için Azure DNS hizmetini çağırır.
 
 ```azurecli
 az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt

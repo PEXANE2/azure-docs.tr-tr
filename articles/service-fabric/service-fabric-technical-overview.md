@@ -7,11 +7,11 @@ ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
 ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258245"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710295"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric terimlere genel bakış
 
@@ -21,7 +21,7 @@ Azure Service Fabric; ölçeklenebilir ve güvenilir mikro hizmetleri paketlemey
 
 **Küme**: mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesi.  Kümeler binlerce makine içerecek şekilde ölçeklendirilebilir.
 
-**Düğüm**: bir kümenin parçası olan makıne veya VM, *düğüm*olarak adlandırılır. Her düğüme bir düğüm adı (dize) atanır. Düğümlerin yerleştirme özellikleri gibi özellikleri vardır. Her makine veya VM, önyükleme sonrasında çalışmaya başlayan ve ardından iki `FabricHost.exe`yürütülebilir dosya Başlatan bir otomatik başlatma Windows hizmetine sahiptir: `Fabric.exe` ve `FabricGateway.exe`. Bu iki yürütülebilir dosya düğümü yapar. Test senaryoları için birden fazla `Fabric.exe` ve `FabricGateway.exe`birden çok örneğini çalıştırarak tek bir makinede veya VM 'de birden çok düğümü barındırabilirsiniz.
+**Düğüm**: bir kümenin parçası olan makıne veya VM, *düğüm*olarak adlandırılır. Her düğüme bir düğüm adı (dize) atanır. Düğümlerin yerleştirme özellikleri gibi özellikleri vardır. Her makine veya VM, `FabricHost.exe` önyükleme sonrasında çalışmaya başlayan ve ardından iki yürütülebilir dosya Başlatan bir otomatik başlatma Windows hizmetine sahiptir: `Fabric.exe` ve `FabricGateway.exe` . Bu iki yürütülebilir dosya düğümü yapar. Test senaryoları için birden fazla ve birden çok örneğini çalıştırarak tek bir makinede veya VM 'de birden çok düğümü barındırabilirsiniz `Fabric.exe` `FabricGateway.exe` .
 
 ## <a name="application-and-service-concepts"></a>Uygulama ve hizmet kavramları
 
@@ -58,11 +58,11 @@ Bir uygulama kaynağının parçası olarak tanımlanan tüm kod paketleri, bir 
 
 Daha fazla bilgi için [uygulama modeli](service-fabric-application-model.md) makalesini okuyun.
 
-**Uygulama paketi**: uygulama türünün `ApplicationManifest.xml` dosyasını içeren bir disk dizini. Uygulama türünü oluşturan her bir hizmet türü için hizmet paketlerine başvurur. Uygulama paketi dizinindeki dosyalar Service Fabric kümenin görüntü deposuna kopyalanır. Örneğin, bir e-posta uygulama türü için uygulama paketi bir kuyruk hizmeti paketine, ön uç hizmet paketine ve bir veritabanı hizmeti paketine başvuru içerebilir.
+**Uygulama paketi**: uygulama türünün dosyasını içeren bir disk dizini `ApplicationManifest.xml` . Uygulama türünü oluşturan her bir hizmet türü için hizmet paketlerine başvurur. Uygulama paketi dizinindeki dosyalar Service Fabric kümenin görüntü deposuna kopyalanır. Örneğin, bir e-posta uygulama türü için uygulama paketi bir kuyruk hizmeti paketine, ön uç hizmet paketine ve bir veritabanı hizmeti paketine başvuru içerebilir.
 
-**Adlandırılmış uygulama**: bir uygulama paketini görüntü deposuna kopyaladıktan sonra, küme içinde uygulamanın bir örneğini oluşturursunuz. Uygulama paketinin uygulama türünü, adını veya sürümünü kullanarak belirttiğinizde bir örnek oluşturursunuz. Her uygulama türü örneğine şöyle görünen bir Tekdüzen Kaynak tanımlayıcısı (URI) adı atanır: `"fabric:/MyNamedApp"`. Bir küme içinde, tek bir uygulama türünden birden çok adlandırılmış uygulama oluşturabilirsiniz. Farklı uygulama türlerinden adlandırılmış uygulamalar da oluşturabilirsiniz. Adlandırılmış her uygulama bağımsız olarak yönetilir ve sürümü oluşturulur.
+**Adlandırılmış uygulama**: bir uygulama paketini görüntü deposuna kopyaladıktan sonra, küme içinde uygulamanın bir örneğini oluşturursunuz. Uygulama paketinin uygulama türünü, adını veya sürümünü kullanarak belirttiğinizde bir örnek oluşturursunuz. Her uygulama türü örneğine şöyle görünen bir Tekdüzen Kaynak tanımlayıcısı (URI) adı atanır: `"fabric:/MyNamedApp"` . Bir küme içinde, tek bir uygulama türünden birden çok adlandırılmış uygulama oluşturabilirsiniz. Farklı uygulama türlerinden adlandırılmış uygulamalar da oluşturabilirsiniz. Adlandırılmış her uygulama bağımsız olarak yönetilir ve sürümü oluşturulur.
 
-**Hizmet türü**: bir hizmetin kod paketlerine, veri paketlerine ve yapılandırma paketlerine atanan ad/sürüm. Hizmet türü, `ServiceManifest.xml` dosyasında tanımlanır ve bir hizmet paketi dizinine katıştırılır. Daha sonra hizmet paketi dizinine bir uygulama paketi `ApplicationManifest.xml` dosyası tarafından başvurulur. Küme içinde, adlandırılmış bir uygulama oluşturduktan sonra uygulama türünün hizmet türlerinden birinden adlandırılmış bir hizmet oluşturabilirsiniz. Hizmet türünün `ServiceManifest.xml` dosyası hizmeti açıklar.
+**Hizmet türü**: bir hizmetin kod paketlerine, veri paketlerine ve yapılandırma paketlerine atanan ad/sürüm. Hizmet türü, `ServiceManifest.xml` dosyasında tanımlanır ve bir hizmet paketi dizinine katıştırılır. Daha sonra hizmet paketi dizinine bir uygulama paketi dosyası tarafından başvurulur `ApplicationManifest.xml` . Küme içinde, adlandırılmış bir uygulama oluşturduktan sonra uygulama türünün hizmet türlerinden birinden adlandırılmış bir hizmet oluşturabilirsiniz. Hizmet türünün `ServiceManifest.xml` dosyası hizmeti açıklar.
 
 Daha fazla bilgi için [uygulama modeli](service-fabric-application-model.md) makalesini okuyun.
 
@@ -75,18 +75,18 @@ Daha fazla bilgi için [uygulama modeli](service-fabric-application-model.md) ma
 
 Yeniden **yapılandırma** , bir hizmetin çoğaltma kümesindeki herhangi bir değişikliğin işlemini ifade eder. Bkz. yeniden [yapılandırma](service-fabric-concepts-reconfiguration.md).
 
-**Hizmet paketi**: hizmet türünün `ServiceManifest.xml` dosyasını içeren bir disk dizini. Bu dosya, hizmet türü için koda, statik verilere ve yapılandırma paketlerine başvurur. Hizmet paketi dizinindeki dosyalara uygulama türünün `ApplicationManifest.xml` dosyası tarafından başvurulur. Örneğin, bir hizmet paketi, bir veritabanı hizmetini oluşturan koda, statik verilere ve yapılandırma paketlerine başvurabilir.
+**Hizmet paketi**: hizmet türünün dosyasını içeren bir disk dizini `ServiceManifest.xml` . Bu dosya, hizmet türü için koda, statik verilere ve yapılandırma paketlerine başvurur. Hizmet paketi dizinindeki dosyalara uygulama türünün dosyası tarafından başvurulur `ApplicationManifest.xml` . Örneğin, bir hizmet paketi, bir veritabanı hizmetini oluşturan koda, statik verilere ve yapılandırma paketlerine başvurabilir.
 
-**Adlandırılmış hizmet**: adlandırılmış bir uygulama oluşturduktan sonra, küme içindeki hizmet türlerinden birinin bir örneğini oluşturabilirsiniz. Hizmet türünü, adını/sürümünü kullanarak belirtirsiniz. Her hizmet türü örneğine, adlandırılmış uygulamasının URI 'sinin kapsamında bir URI adı atanır. Örneğin, "MyNamedApp" adlı uygulama içinde bir "MyDatabase" hizmeti oluşturursanız, URI şöyle görünür: `"fabric:/MyNamedApp/MyDatabase"`. Adlandırılmış bir uygulama içinde birkaç adlandırılmış hizmet oluşturabilirsiniz. Her bir adlandırılmış hizmet kendi bölüm şemasına, örneğine veya çoğaltma sayısına sahip olabilir.
+**Adlandırılmış hizmet**: adlandırılmış bir uygulama oluşturduktan sonra, küme içindeki hizmet türlerinden birinin bir örneğini oluşturabilirsiniz. Hizmet türünü, adını/sürümünü kullanarak belirtirsiniz. Her hizmet türü örneğine, adlandırılmış uygulamasının URI 'sinin kapsamında bir URI adı atanır. Örneğin, "MyNamedApp" adlı uygulama içinde bir "MyDatabase" hizmeti oluşturursanız, URI şöyle görünür: `"fabric:/MyNamedApp/MyDatabase"` . Adlandırılmış bir uygulama içinde birkaç adlandırılmış hizmet oluşturabilirsiniz. Her bir adlandırılmış hizmet kendi bölüm şemasına, örneğine veya çoğaltma sayısına sahip olabilir.
 
-**Kod paketi**: hizmet türünün yürütülebilir dosyalarını, genellikle exe/dll dosyalarını içeren bir disk dizini. Kod paketi dizinindeki dosyalara hizmet türünün `ServiceManifest.xml` dosyası tarafından başvurulur. Adlandırılmış bir hizmet oluşturduğunuzda, kod paketi, adlandırılmış hizmeti çalıştırmak için seçilen düğüme veya düğümlere kopyalanır. Ardından kod çalışmaya başlar. İki tür kod paketi yürütülebilir dosya vardır:
+**Kod paketi**: hizmet türünün yürütülebilir dosyalarını, genellikle exe/dll dosyalarını içeren bir disk dizini. Kod paketi dizinindeki dosyalara hizmet türünün dosyası tarafından başvurulur `ServiceManifest.xml` . Adlandırılmış bir hizmet oluşturduğunuzda, kod paketi, adlandırılmış hizmeti çalıştırmak için seçilen düğüme veya düğümlere kopyalanır. Ardından kod çalışmaya başlar. İki tür kod paketi yürütülebilir dosya vardır:
 
 * **Konuk yürütülebilir dosyaları**: olarak çalışan yürütülebilir dosyalar, ana bilgisayar işletim sistemidir (Windows veya Linux). Bu yürütülebilir dosyalar, hiçbir Service Fabric çalışma zamanı dosyasına bağlantı vermez veya referans vermez, bu nedenle hiçbir Service Fabric programlama modeli kullanmaz. Bu yürütülebilir dosyalar, uç nokta keşfi için adlandırma hizmeti gibi bazı Service Fabric özelliklerini kullanamaz. Konuk yürütülebilir dosyaları her hizmet örneğine özgü yük ölçümlerini bildirebilirler.
 * **Hizmet ana bilgisayarı yürütülebilir**dosyaları: Service Fabric çalışma zamanı dosyalarına bağlanarak Service Fabric programlama modellerini kullanan yürütülebilir dosyalar Service Fabric özellikleri etkinleştirir. Örneğin, adlandırılmış bir hizmet örneği uç noktaları Service Fabric Adlandırma Hizmeti kaydedebilir ve ayrıca yük ölçümlerini rapor edebilir.
 
-**Veri paketi**: hizmet türünün statik, Salt okunabilir veri dosyalarını, genellikle fotoğraf, ses ve video dosyalarını içeren bir disk dizini. Veri paketi dizinindeki dosyalara hizmet türünün `ServiceManifest.xml` dosyası tarafından başvurulur. Adlandırılmış bir hizmet oluşturduğunuzda, veri paketi, adlandırılmış hizmeti çalıştırmak için seçilen düğüme veya düğümlere kopyalanır. Kod çalışmaya başlar ve artık veri dosyalarına erişebilir.
+**Veri paketi**: hizmet türünün statik, Salt okunabilir veri dosyalarını, genellikle fotoğraf, ses ve video dosyalarını içeren bir disk dizini. Veri paketi dizinindeki dosyalara hizmet türünün dosyası tarafından başvurulur `ServiceManifest.xml` . Adlandırılmış bir hizmet oluşturduğunuzda, veri paketi, adlandırılmış hizmeti çalıştırmak için seçilen düğüme veya düğümlere kopyalanır. Kod çalışmaya başlar ve artık veri dosyalarına erişebilir.
 
-**Yapılandırma paketi**: hizmet türünün statik, salt okunurdur yapılandırma dosyalarını ve genellikle metin dosyalarını içeren bir disk dizini. Yapılandırma paketi dizinindeki dosyalara hizmet türünün `ServiceManifest.xml` dosyası tarafından başvurulur. Adlandırılmış bir hizmet oluşturduğunuzda, yapılandırma paketindeki dosyalar, adlandırılmış hizmeti çalıştırmak için seçilen bir veya daha fazla düğüme kopyalanır. Ardından kod çalışmaya başlar ve artık yapılandırma dosyalarına erişebilir.
+**Yapılandırma paketi**: hizmet türünün statik, salt okunurdur yapılandırma dosyalarını ve genellikle metin dosyalarını içeren bir disk dizini. Yapılandırma paketi dizinindeki dosyalara hizmet türünün dosyası tarafından başvurulur `ServiceManifest.xml` . Adlandırılmış bir hizmet oluşturduğunuzda, yapılandırma paketindeki dosyalar, adlandırılmış hizmeti çalıştırmak için seçilen bir veya daha fazla düğüme kopyalanır. Ardından kod çalışmaya başlar ve artık yapılandırma dosyalarına erişebilir.
 
 **Kapsayıcılar**: varsayılan olarak, Service Fabric Hizmetleri işlem olarak dağıtır ve etkinleştirir. Service Fabric Ayrıca, kapsayıcı görüntülerinde Hizmetleri dağıtabilir. Kapsayıcılar, temel işletim sistemini uygulamalardan soyutlayan bir sanallaştırma teknolojisidir. Bir uygulama ve çalışma zamanı, bağımlılıkları ve sistem kitaplıkları bir kapsayıcı içinde çalışır. Kapsayıcı, kapsayıcının işletim sistemi yapılarının yalıtılmış görünümüne tam ve özel erişimi vardır. Service Fabric, Linux üzerinde Windows Server kapsayıcıları ve Docker Kapsayıcıları destekler. Daha fazla bilgi için [Service Fabric ve kapsayıcıları](service-fabric-containers-overview.md)okuyun.
 
@@ -141,7 +141,7 @@ Ayrıca, mevcut uygulamalarınızı Service Fabric de çalıştırabilirsiniz:
 
 **Kapsayıcılar**: Service Fabric, windows Server 2016 ' de Linux ve Windows Server kapsayıcılarındaki Docker Kapsayıcıları dağıtımını destekler ve Hyper-V yalıtım modu desteğiyle birlikte. Service Fabric [uygulama modelinde](service-fabric-application-model.md)bir kapsayıcı, birden fazla hizmet çoğaltmalarının yerleştirildiği bir uygulama konağını temsil eder. Service Fabric herhangi bir kapsayıcıyı çalıştırabilir ve senaryo, mevcut bir uygulamayı bir kapsayıcı içinde paketettiğiniz Konuk yürütülebilir senaryosuna benzerdir. Ayrıca, [kapsayıcılar içinde Service Fabric hizmetleri de çalıştırabilirsiniz](service-fabric-services-inside-containers.md) .
 
-**Konuk yürütülebilir dosyaları**: node. js, Python, Java veya C++ gibi herhangi bir tür kodu Azure Service Fabric hizmet olarak çalıştırabilirsiniz. Service Fabric, durum bilgisi olmayan hizmetler olarak kabul edilen konuk yürütülebilir dosyaları olarak bu hizmet türlerine başvurur. Bir Service Fabric kümesinde Konuk yürütülebilir dosyası çalıştırmanın avantajları arasında yüksek kullanılabilirlik, sistem durumu izleme, uygulama yaşam döngüsü yönetimi, yüksek yoğunluklu ve bulunabilirliği bulunur.
+**Konuk yürütülebilir dosyaları**: Azure Service Fabric hizmet olarak Node.js, Python, Java veya C++ gibi herhangi bir tür kodu çalıştırabilirsiniz. Service Fabric, durum bilgisi olmayan hizmetler olarak kabul edilen konuk yürütülebilir dosyaları olarak bu hizmet türlerine başvurur. Bir Service Fabric kümesinde Konuk yürütülebilir dosyası çalıştırmanın avantajları arasında yüksek kullanılabilirlik, sistem durumu izleme, uygulama yaşam döngüsü yönetimi, yüksek yoğunluklu ve bulunabilirliği bulunur.
 
 Daha fazla bilgi için, [hizmetiniz için bir programlama modeli seçin](service-fabric-choose-framework.md) makalesini okuyun.
 

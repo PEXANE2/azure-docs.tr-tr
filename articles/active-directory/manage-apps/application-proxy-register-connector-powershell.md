@@ -3,25 +3,25 @@ title: Sessiz install Azure AD Uygulaması Proxy Bağlayıcısı | Microsoft Doc
 description: Şirket içi uygulamalarınıza güvenli uzaktan erişim sağlamak için Azure AD Uygulama Ara Sunucusu bağlayıcısının katılımsız yüklemesinin nasıl gerçekleştirileceğini ele alır.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/24/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ae3cd491db03fd036869a8d86aeb646e3175b59
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 0b959649074e68d50a266f05841ce4c87e2b3e20
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609978"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760023"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Azure AD Uygulama Ara Sunucusu Bağlayıcısı için katılımsız yükleme betiği oluşturma
 
@@ -53,13 +53,13 @@ Bağlayıcıyı kaydetmek için kullanabileceğiniz iki yöntem vardır:
 * Çevrimdışı oluşturulan bir belirteci kullanarak bağlayıcıyı kaydetme
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Windows PowerShell kimlik bilgisi nesnesi kullanarak bağlayıcıyı kaydetme
-1. Dizininiz için Yönetici Kullanıcı adı ve `$cred` parola Içeren bir Windows PowerShell kimlik bilgileri nesnesi oluşturun. Şu komutu çalıştırarak * \<Kullanıcı adı\> * ve * \<parolayı\>* değiştirin:
+1. `$cred`Dizininiz için Yönetici Kullanıcı adı ve parola içeren bir Windows PowerShell kimlik bilgileri nesnesi oluşturun. Ve yerine aşağıdaki komutu çalıştırın *\<username\>* *\<password\>* :
 
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
-2. **C:\Program FILES\MICROSOFT AAD uygulama proxy Bağlayıcısı** ' na gidin ve oluşturduğunuz `$cred` nesneyi kullanarak aşağıdaki betiği çalıştırın:
+2. **C:\Program FILES\MICROSOFT AAD uygulama proxy Bağlayıcısı** ' na gidin ve oluşturduğunuz nesneyi kullanarak aşağıdaki betiği çalıştırın `$cred` :
 
         .\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature ApplicationProxy
 
@@ -175,7 +175,7 @@ Bağlayıcıyı kaydetmek için kullanabileceğiniz iki yöntem vardır:
 
    `$SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force`
 
-3. Aşağıdaki Windows PowerShell komutunu çalıştırarak kiracı GUID 'sini \<\> Dizin Kimliğiniz ile değiştirin:
+3. Aşağıdaki Windows PowerShell komutunu çalıştırarak \<tenant GUID\> DIZIN Kimliğinizle değiştirin:
 
    `.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID> -Feature ApplicationProxy`
 

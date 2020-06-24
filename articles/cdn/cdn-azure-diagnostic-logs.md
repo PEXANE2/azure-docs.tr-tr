@@ -11,21 +11,21 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: allensu
-ms.openlocfilehash: 35d028a38e6ac19f270abcc8708a532b3749eb39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c432b28250dca382f69a992de73d633b5ea45b8
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254810"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84883979"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure tanılama günlükleri
 
 Azure tanılama günlükleri ile çekirdek analizlerini görüntüleyebilir ve bunları aşağıdakiler dahil olmak üzere bir veya daha fazla hedefe kaydedebilirsiniz:
 
- - Azure Depolama hesabınızın
+ - Azure Storage hesabı
  - Azure Event Hubs
  - [Log Analytics çalışma alanı](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
@@ -87,7 +87,7 @@ Günlükleri depolamak üzere bir depolama hesabı kullanmak için şu adımlar�
 
 5. Tanılama günlüğü ayarlarınızı yapmayı tamamladıktan sonra **Kaydet**' i seçin.
 
-### <a name="logging-with-azure-monitor"></a>Azure Izleyici ile günlüğe kaydetme
+### <a name="logging-with-azure-monitor"></a>Azure İzleyici ile günlüğe kaydetme
 
 Günlükleri depolamak üzere Azure Izleyici 'yi kullanmak için şu adımları izleyin:
 
@@ -176,8 +176,8 @@ Bu bölümde, Azure depolama hesabının içinde nasıl düzenlendiği CDN Core 
 2.  Depolama hesabını bulma
 3.  Bu depolama hesabı altındaki **BLOB kapsayıcıları** düğümünü genişletin.
 4.  *Öngörüler-logs-coreanalytics*adlı kapsayıcıyı seçin.
-5.  Sonuçlar, *RESOURCEID =* olarak ilk düzeyden başlayarak sağ bölmedeki görünür. *PT1H. JSON*dosyasını buluncaya kadar her bir düzeyi seçmeye devam edin. Yolun açıklaması için bkz. [BLOB yol biçimi](cdn-azure-diagnostic-logs.md#blob-path-format).
-6.  Her blob *PT1H. JSON* dosyası, belırlı bir CDN uç noktası veya özel etki alanı için bir saat için analiz günlüklerini temsil eder.
+5.  Sonuçlar, *RESOURCEID =* olarak ilk düzeyden başlayarak sağ bölmedeki görünür. *ÜzerindePT1H.js*dosyayı bulana kadar her bir düzeyi seçmeye devam edin. Yolun açıklaması için bkz. [BLOB yol biçimi](cdn-azure-diagnostic-logs.md#blob-path-format).
+6.  Her blob *PT1H.js* dosyasında, belırlı bir CDN uç noktası veya özel etki alanı için bir saat için analiz günlükleri temsil eder.
 7.  Bu JSON dosyasının içeriğinin şeması, çekirdek analiz günlüklerinin bölüm şemasında açıklanmaktadır.
 
 
@@ -189,7 +189,7 @@ Bu bölümde, Azure depolama hesabının içinde nasıl düzenlendiği CDN Core 
 
 **Alanların açıklaması:**
 
-|Değer|Açıklama|
+|Değer|Description|
 |-------|---------|
 |Abonelik Kimliği    |GUID biçiminde Azure aboneliğinin KIMLIĞI.|
 |Kaynak grubu adı |CDN kaynaklarının ait olduğu kaynak grubunun adı.|
@@ -198,7 +198,7 @@ Bu bölümde, Azure depolama hesabının içinde nasıl düzenlendiği CDN Core 
 |Yıl|  Yılın dört basamaklı temsili, örneğin, 2017|
 |Ay| Ay numarasının iki basamaklı temsili. 01 = Ocak... 12 = Aralık|
 |Gün|   Ayın gününün iki basamaklı temsili|
-|PT1H. JSON| Analiz verilerinin depolandığı gerçek JSON dosyası|
+|Üzerinde PT1H.js| Analiz verilerinin depolandığı gerçek JSON dosyası|
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>Temel analiz verilerini bir CSV dosyasına aktarma
 
@@ -323,7 +323,7 @@ Microsoft şu anda yalnızca CDN pop 'Ları/kenarlarından görüldüğü gibi H
 Aşağıdaki tabloda **Microsoft 'tan Azure CDN Standard**, **Akamai 'ten standart Azure CDN**ve **Verizon 'ten Standart/Premium Azure CDN**için temel analiz günlüklerinde bulunan ölçümlerin bir listesi gösterilmektedir. Tüm ölçümler tüm sağlayıcılardan kullanılamaz, ancak bu farklar en az düzeydedir. Tablo aynı zamanda belirli bir metriğin sağlayıcıdan kullanılabilir olup olmadığını gösterir. Ölçümler yalnızca üzerinde trafiği bulunan CDN uç noktaları için kullanılabilir.
 
 
-|Ölçüm                     | Açıklama | Microsoft | Verizon | Akamai |
+|Metric                     | Açıklama | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
 | RequestCountTotal         | Bu süre boyunca toplam istek isabet sayısı. | Yes | Yes |Yes |
 | RequestCountHttpStatus2xx | 2xx HTTP kodu ile sonuçlanan tüm isteklerin sayısı (örneğin, 200, 202). | Yes | Yes |Yes |
@@ -331,16 +331,16 @@ Aşağıdaki tabloda **Microsoft 'tan Azure CDN Standard**, **Akamai 'ten standa
 | RequestCountHttpStatus4xx | 4xx HTTP kodu ile sonuçlanan tüm isteklerin sayısı (örneğin, 400, 404). | Yes | Yes |Yes |
 | RequestCountHttpStatus5xx | 5xx HTTP kodu ile sonuçlanan tüm isteklerin sayısı (örneğin, 500, 504). | Yes | Yes |Yes |
 | RequestCountHttpStatusOthers | Diğer tüm HTTP kodlarının sayısı (2xx-5xx dışında). | Yes | Yes |Yes |
-| RequestCountHttpStatus200 | 200 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Yes | Hayır  |Yes |
-| RequestCountHttpStatus206 | 206 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Yes | Hayır  |Yes |
-| RequestCountHttpStatus302 | 302 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Yes | Hayır  |Yes |
-| RequestCountHttpStatus304 | 304 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Yes | Hayır  |Yes |
-| RequestCountHttpStatus404 | 404 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Yes | Hayır  |Yes |
+| RequestCountHttpStatus200 | 200 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Evet | Hayır  |Evet |
+| RequestCountHttpStatus206 | 206 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Evet | Hayır  |Evet |
+| RequestCountHttpStatus302 | 302 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Evet | Hayır  |Evet |
+| RequestCountHttpStatus304 | 304 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Evet | Hayır  |Evet |
+| RequestCountHttpStatus404 | 404 HTTP kod yanıtıyla sonuçlanan tüm isteklerin sayısı. | Evet | Hayır  |Evet |
 | RequestCountCacheHit | Önbellek okuması ile sonuçlanan tüm isteklerin sayısı. Varlık doğrudan POP 'tan istemciye sunulur. | Yes | Yes | Hayır  |
 | Requestcountcacheisabetsizlik | Önbellek isabetsizliği ile sonuçlanan tüm isteklerin sayısı. Önbellek isabetsizliği, varlığın istemciye en yakın POP üzerinde bulunmadığı ve bu nedenle kaynaktan alındığı anlamına gelir. | Yes | Yes | Hayır |
 | RequestCountCacheNoCache | Bir varlık için, uçta Kullanıcı yapılandırması nedeniyle önbelleğe alınması engellenen tüm isteklerin sayısı. | Yes | Yes | Hayır |
 | RequestCountCacheUncacheable | Varlığın Cache-Control ve Expires üstbilgileri tarafından önbelleğe alınması engellenen ve bir POP 'ta veya HTTP istemcisi tarafından önbelleğe alınmamalıdır belirten varlıkların tüm isteklerinin sayısı. | Yes | Yes | Hayır |
-| Requestcountcachediğerleri | Yukarıda yer almayan önbellek durumuna sahip tüm isteklerin sayısı. | Hayır | Yes | Hayır  |
+| Requestcountcachediğerleri | Yukarıda yer almayan önbellek durumuna sahip tüm isteklerin sayısı. | Hayır | Evet | Hayır  |
 | Yumurresstotal | GB cinsinden giden veri aktarımı | Yes |Yes |Yes |
 | EgressHttpStatus2xx | GB cinsinden 2xx HTTP durum koduna sahip yanıtlar için giden veri aktarımı *. | Yes | Yes | Hayır  |
 | EgressHttpStatus3xx | GB olarak 3xx HTTP durum koduna sahip yanıtlar için giden veri aktarımı. | Yes | Yes | Hayır  |
@@ -351,7 +351,7 @@ Aşağıdaki tabloda **Microsoft 'tan Azure CDN Standard**, **Akamai 'ten standa
 | Yumurresscacheisabetsizlik. | En yakın POP sunucusunda bulunmayan ve kaynak sunucudan alınan yanıtlar için giden veri aktarımı. | Yes | Yes | Hayır |
 | Yumurresscachenocache | Kenarda Kullanıcı yapılandırması nedeniyle önbelleğe alınması engellenen varlıkların giden veri aktarımı. | Yes | Yes | Hayır |
 | Yumurresscacheuncacheable | Varlığın Cache-Control ve/veya Expires üstbilgileri tarafından önbelleğe alınması engellenen varlıkların giden veri aktarımı. Bir POP veya HTTP istemcisi tarafından önbelleğe alınmamalıdır. | Yes | Yes | Hayır |
-| Yumurresscachediğerleri | Diğer önbellek senaryoları için giden veri aktarımları. | Hayır | Yes | Hayır |
+| Yumurresscachediğerleri | Diğer önbellek senaryoları için giden veri aktarımları. | Hayır | Evet | Hayır |
 
 * Giden veri aktarımı, CDN POP sunucularından istemciye teslim edilen trafiğin anlamına gelir.
 

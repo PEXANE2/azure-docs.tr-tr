@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/19/2018
 ms.author: allensu
-ms.openlocfilehash: 7ae7224efdaa281106dfbe2118ab0092c8284c6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fba1f0b1f8160dece41c312b61cbc8ae9571436d
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260165"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887028"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>Azure CDN içeriğini ülkeye/bölgeye göre kısıtla
 
@@ -42,13 +42,13 @@ Coğrafi filtreleme özelliğine erişmek için Portal içindeki CDN uç noktan�
 
 **Yol** kutusunda, kullanıcıların erişime izin verilecek veya erişimi reddedildiği konumun göreli yolunu belirtin. 
 
-Tüm dosyalarınız için bir eğik çizgi (/) ile coğrafi filtreleme uygulayabilir veya dizin yollarını belirterek belirli klasörleri seçebilirsiniz (örneğin, */resim/*). Ayrıca, tek bir dosyaya coğrafi filtreleme uygulayabilirsiniz (örneğin, */resim/City.exe*). Birden çok kurala izin verilir; bir kural girdikten sonra, sonraki kuralı girmeniz için boş bir satır görüntülenir.
+Tüm dosyalarınız için bir eğik çizgi (/) ile coğrafi filtreleme uygulayabilir veya dizin yollarını belirterek belirli klasörleri seçebilirsiniz (örneğin, */resim/*). Ayrıca, tek bir dosyaya coğrafi filtreleme uygulayabilirsiniz (örneğin, */resim/city.png*). Birden çok kurala izin verilir; bir kural girdikten sonra, sonraki kuralı girmeniz için boş bir satır görüntülenir.
 
 Örneğin, aşağıdaki dizin yolu filtrelerinin tümü geçerlidir:   
 */*                                 
 *Fotoğraflar*     
 */Photos/Strasbourg/*     
-*/Photos/Strasbourg/City.exe*
+*/Photos/Strasbourg/city.png*
 
 ### <a name="define-the-type-of-action"></a>Eylem türünü tanımlayın
 
@@ -59,8 +59,8 @@ Tüm dosyalarınız için bir eğik çizgi (/) ile coğrafi filtreleme uygulayab
 - **Engelle**: belirtilen ülkelerin/bölgelerdeki kullanıcıların özyinelemeli yoldan istenen varlıklara erişimi reddedildi. Bu konum için başka bir ülke/bölge filtreleme seçeneği yapılandırılmamışsa, diğer tüm kullanıcılara erişim izni verilir.
 
 Örneğin, */photos/Strasbourg/* yolunu engellemek için bir coğrafi filtreleme kuralı aşağıdaki dosyaları filtreler:     
-*http\//:\<Endpoint>. azureedge.net/photos/Strasbourg/1000.jpg*
-*http:\//\<uç nokta>. azureedge.net/photos/Strasbourg/Cathedral/1000.jpg*
+*http: \/ / \<endpoint> . azureedge.net/photos/Strasbourg/1000.jpg* 
+ *http: \/ / \<endpoint> . azureedge.net/photos/Strasbourg/Cathedral/1000.jpg*
 
 ### <a name="define-the-countriesregions"></a>Ülkeleri/bölgeleri tanımlama
 **Ülke kodları** listesinden, yol için engellemek veya izin vermek istediğiniz ülkeleri/bölgeleri seçin. 

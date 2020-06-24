@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: how-to
 ms.date: 12/27/2019
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: bc312964b9afe5c025b6e13657ccf2725aff3bd8
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 0d8f6069193607d19e10c013f3d9cb1cf00a7de6
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552408"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816732"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ Azure Machine Learning [işlem örneği (Önizleme)](concept-compute-instance.md
 
 Bir işlem örneği için yüklenecek veya yapılandırılacak bir şey yok.  Azure Machine Learning çalışma alanınızın içinden dilediğiniz zaman oluşturun. Yalnızca bir ad girin ve Azure VM türünü belirtin. Şu öğreticiyle şimdi deneyin [: Kurulum ortamı ve çalışma alanı](tutorial-1st-experiment-sdk-setup.md).
 
-[İşlem örnekleri](concept-compute-instance.md)hakkında daha fazla bilgi edinin.
+Paketlerin nasıl yükleneceği dahil olmak üzere işlem örnekleri hakkında daha fazla bilgi edinmek için bkz. [işlem örnekleri](concept-compute-instance.md).
 
 İşlem ücretlerini durdurmak için [işlem örneğini durdurun](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
 
@@ -345,7 +345,7 @@ Deneyin:
 
 ## <a name="create-a-workspace-configuration-file"></a><a id="workspace"></a>Çalışma alanı yapılandırma dosyası oluşturma
 
-Çalışma alanı yapılandırma dosyası, SDK 'nın Azure Machine Learning çalışma alanıyla nasıl iletişim kuracağını söyleyen bir JSON dosyasıdır. Dosya *config. JSON*olarak adlandırılır ve aşağıdaki biçimdedir:
+Çalışma alanı yapılandırma dosyası, SDK 'nın Azure Machine Learning çalışma alanıyla nasıl iletişim kuracağını söyleyen bir JSON dosyasıdır. Dosya *config.js*olarak adlandırılır ve aşağıdaki biçime sahiptir:
 
 ```json
 {
@@ -361,9 +361,9 @@ Bu dosyayı kodunuzda kullanmak için kullanın `ws=Workspace.from_config()` . B
 
 Yapılandırma dosyasını üç şekilde oluşturabilirsiniz:
 
-* ** [Ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)**: bir *config. JSON* dosyası yazmak için kullanın. Dosya, çalışma alanınızın yapılandırma bilgilerini içerir. *Config. json dosyasını* diğer geliştirme ortamlarına indirebilir veya kopyalayabilirsiniz.
+* Dosya *üzerinde birconfig.js* yazmak için ** [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py): kullanın**. Dosya, çalışma alanınızın yapılandırma bilgilerini içerir. *config.js* diğer geliştirme ortamlarına indirebilir veya kopyalayabilirsiniz.
 
-* **Dosyayı indirin**: [Azure Portal](https://ms.portal.azure.com), çalışma alanınızın **genel bakış** bölümünde **config. json dosyasını indir** ' i seçin.
+* **Dosyayı indirin**: [Azure Portal](https://ms.portal.azure.com), çalışma alanınızın **genel bakış** bölümünde **config.jsindir** ' i seçin.
 
      ![Azure portal](./media/how-to-configure-environment/configure.png)
 
@@ -384,7 +384,7 @@ Yapılandırma dosyasını üç şekilde oluşturabilirsiniz:
         print('Workspace not found')
     ```
 
-    Bu kod, yapılandırma dosyasını *. azureml/config. JSON* dosyasına yazar.
+    Bu kod, yapılandırma dosyasını dosyasına *. azureml/config.js* yazar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

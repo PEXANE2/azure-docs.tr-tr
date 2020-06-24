@@ -1,7 +1,7 @@
 ---
-title: include dosyası
+title: dosya dahil etme
 titleSuffix: Azure
-description: include dosyası
+description: dosya dahil etme
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -15,7 +15,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "82587831"
 ---
-**Get-AzPeeringLocation** PowerShell cmdlet 'i, sonraki adımlarda kullanacağınız zorunlu parametreye `Kind`sahip eşleme konumları listesini döndürür.
+**Get-AzPeeringLocation** PowerShell cmdlet 'i, sonraki adımlarda kullanacağınız zorunlu parametreye sahip eşleme konumları listesini döndürür `Kind` .
 
 ```powershell
 Get-AzPeeringLocation -Kind "Exchange"

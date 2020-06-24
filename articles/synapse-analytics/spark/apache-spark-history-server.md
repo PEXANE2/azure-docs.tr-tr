@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 4f03033942517f4778192e0b12f84610df8fd469
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4ee5d064d17d7b11305c6c86dc1d29ddccc642e
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429219"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85195003"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Apache Spark uygulamalarda hata ayıklamak ve tanılamak için genişletilmiş Apache Spark geçmiş sunucusunu kullanma
 
@@ -106,7 +106,7 @@ Oluşturulan iş grafiğinde işinize bir genel bakış görebilirsiniz. Varsay�
 
 ![Spark uygulaması ve iş grafiği iş KIMLIĞI](./media/apache-spark-history-server/apache-spark-graph-jobid.png)
 
-### <a name="display"></a>Ekran
+### <a name="display"></a>Göster
 
 Varsayılan olarak, **Ilerleme durumu** ekranı seçilidir. **Görüntüleme** açılır listesinde **okuma** veya **yazma** seçeneğini belirleyerek veri akışını kontrol edebilirsiniz.
 
@@ -157,7 +157,7 @@ Başarısız görevler olduğunda araç ipucunu görmek için Graph düğümünd
 
 İş grafiği sekmesinde, aşamaların bir araç ipucu vardır ve aşağıdaki koşullara uyan görevler varsa küçük bir simge gösterilir:
 
-|Koşul|Açıklama|
+|Koşul|Description|
 |-|-|
 |Veri eğriltme|veri okuma boyutu > bu aşama içindeki tüm görevlerin ortalama veri okuma boyutu * 2 ve veri okuma boyutu > 10 MB|
 |Zaman eğriltme|yürütme süresi > bu aşama içindeki tüm görevlerin ortalama yürütme süresi * 2 ve yürütme süresi > 2 dakika|
@@ -182,7 +182,7 @@ Başarısız görevler olduğunda araç ipucunu görmek için Graph düğümünd
     >  
     > Okuma ve yazma veri boyutu 1 MB/1000 KB = 1000 * 1000 bayttır.
 
-### <a name="provide-feedback"></a>Geri bildirimde bulunma
+### <a name="provide-feedback"></a>Geribildirim gönderme
 
 Sorunları **bize geri bildirim**gönderin ' i seçerek geri bildirimde bulunun.
 

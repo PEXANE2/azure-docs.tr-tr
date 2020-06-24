@@ -4,11 +4,11 @@ description: Azure dosya paylaşımlarını veya belirli dosyaları Azure Backup
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252512"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710584"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>REST API kullanarak Azure dosya paylaşımlarını geri yükleme
 
@@ -160,7 +160,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Azure dosya paylaşımında geri yükleme tetiklenmesi için, istek gövdesinin bileşenleri aşağıda verilmiştir:
 
-Adı |  Tür   |   Açıklama
+Name |  Tür   |   Description
 --- | ---- | ----
 Özellikler | AzureFileShareRestoreRequest | RestoreRequestResource özellikleri
 
@@ -370,7 +370,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Azure dosya paylaşımında geri yükleme tetiklenmesi için, istek gövdesinin bileşenleri aşağıda verilmiştir:
 
-Adı |  Tür   |   Açıklama
+Name |  Tür   |   Description
 --- | ---- | ----
 Özellikler | AzureFileShareRestoreRequest | RestoreRequestResource özellikleri
 
@@ -378,7 +378,7 @@ Adı |  Tür   |   Açıklama
 
 ### <a name="restore-to-original-location"></a>Özgün konuma geri yükle
 
-Aşağıdaki istek gövdesi, restore *. txt* dosyasını *afsaccount* depolama hesabındaki *azurefiles* dosya paylaşımında geri yüklemektir.
+Aşağıdaki istek gövdesi, *Restoretest.txt* dosyasını *afsaccount* depolama hesabındaki *azurefiles* dosya paylaşımında geri yüklemektir.
 
 Istek gövdesi oluştur
 
@@ -404,7 +404,7 @@ Istek gövdesi oluştur
 
 ### <a name="restore-to-alternate-location"></a>Alternatif konuma geri yükle
 
-Aşağıdaki istek gövdesi, *afsaccount* depolama hesabındaki *Azurefiles* dosya paylaşımında *restoretest. txt* dosyasını *afaccount1* depolama hesabındaki *azurefiles1* dosya paylaşımının *restoredata* klasörüne geri yüklemektir.
+Aşağıdaki istek gövdesi, *afsaccount* depolama hesabındaki *azurefiles* dosya paylaşımında bulunan *Restoretest.txt* dosyasını *afaccount1* depolama hesabındaki *azurefiles1* dosya paylaşımının *restoredata* klasörüne geri yüklemektir.
 
 İstek gövdesi oluştur
 

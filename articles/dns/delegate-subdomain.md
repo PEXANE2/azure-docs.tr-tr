@@ -4,15 +4,15 @@ description: Bu öğrenme yoluyla bir Azure DNS alt etki alanı için temsilci s
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.topic: article
+ms.topic: how-to
 ms.date: 2/7/2019
 ms.author: rohink
-ms.openlocfilehash: cd1443a9ca8ccf7172072078734f21d789d36194
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: add7674771fd19f6029a94c46624006f0cf30f1a
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76937426"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710890"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Azure DNS bir alt etki alanı verme
 
@@ -33,10 +33,10 @@ Azure DNS bir alt etki alanı atamak için, önce genel etki alanınızı Azure 
 
 1. Azure portal **kaynak oluştur**' u seçin.
 2. Arama kutusuna **DNS**yazın ve **DNS bölgesi**' ni seçin.
-3. **Oluştur**’u seçin.
+3. **Oluştur**'u seçin.
 4. **DNS bölgesi oluştur** bölmesinde **ad** metin kutusuna **Engineering.contoso.com** yazın.
 5. Bölgeniz için kaynak grubunu seçin. Benzer kaynakları birlikte tutmak için üst bölgeyle aynı kaynak grubunu kullanmak isteyebilirsiniz.
-6. **Oluştur**' a tıklayın.
+6. **Oluştur**'a tıklayın.
 7. Dağıtım başarılı olduktan sonra yeni bölgeye gidin.
 
 ## <a name="note-the-name-servers"></a>Ad sunucularına göz önünde

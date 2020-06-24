@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 55ca9232252895dd46ad3da3912f808ebd9b9533
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 68dddde965900b966efa96fbd7da7141f1ed8a94
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559682"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753553"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Linux için NVıDıA GPU sürücü uzantısı
 
@@ -146,8 +146,7 @@ az vm extension set \
   --vm-name myVM \
   --name NvidiaGpuDriverLinux \
   --publisher Microsoft.HpcCompute \
-  --version 1.3 \
-  }'
+  --version 1.3 
 ```
 
 Aşağıdaki örnek, varsayılan olmayan sürücü yüklemesi için örnek olarak iki isteğe bağlı özel ayar de ekler. Özellikle, işletim sistemi çekirdeğini en son sürümüne güncelleştirir ve belirli bir CUDA Araç Seti sürüm sürücüsünü kurar. '--Settings ', isteğe bağlı ve varsayılan ' i aklınızda bulunur. Çekirdeği güncelleştirmenin Uzantı yükleme sürelerini artırabileceğini unutmayın. Ayrıca, belirli (eski) CUDA tolkit sürümünü seçmek, her zaman daha yeni çekirdekler ile uyumlu olmayabilir.

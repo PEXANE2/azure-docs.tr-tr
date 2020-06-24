@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 59409c428aba938c49fc37647db82f30d783a629
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37e09612491d41887c5945920488569d3620bf0b
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730568"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052022"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web uygulaması güvenlik duvarı, kural grupları ve kuralları
 
@@ -40,7 +40,10 @@ WAF aşağıdaki Web açıklarına karşı koruma sağlar:
 
 Aşağıdaki tabloda gösterildiği gibi, bu 3,1 ' de 13 kural grubu bulunur. Her grup, devre dışı bırakılabilen birden çok kural içerir.
 
-|Kural grubu|Açıklama|
+> [!NOTE]
+> Yalnızca WAF_v2 SKU 'sunda yukarı ve 3,1 bulunur.
+
+|Kural grubu|Description|
 |---|---|
 |**[Genel](#general-31)**|Genel Grup|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-31)**|Kilitleme yöntemleri (PUT, PATCH)|
@@ -60,7 +63,7 @@ Aşağıdaki tabloda gösterildiği gibi, bu 3,1 ' de 13 kural grubu bulunur. He
 
 Aşağıdaki tabloda gösterildiği gibi, bu 3,0, 12 kural grubunu içerir. Her grup, devre dışı bırakılabilen birden çok kural içerir.
 
-|Kural grubu|Açıklama|
+|Kural grubu|Description|
 |---|---|
 |**[Genel](#general-30)**|Genel Grup|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-30)**|Kilitleme yöntemleri (PUT, PATCH)|
@@ -79,7 +82,7 @@ Aşağıdaki tabloda gösterildiği gibi, bu 3,0, 12 kural grubunu içerir. Her 
 
 2.2.9, aşağıdaki tabloda gösterildiği gibi 10 kural grubunu içerir. Her grup, devre dışı bırakılabilen birden çok kural içerir.
 
-|Kural grubu|Açıklama|
+|Kural grubu|Description|
 |---|---|
 |**[crs_20_protocol_violations](#crs20)**|Protokol ihlallerine karşı koruma (geçersiz karakterler veya istek gövdesi ile al)|
 |**[crs_21_protocol_anomalies](#crs21)**|Yanlış başlık bilgilerine karşı koruma|
@@ -100,20 +103,20 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-31"></a> <p x-ms-format-detection="none">Genel</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |200004|Olası çok parçalı eşleşmeyen sınır.|
 
 ### <a name="p-x-ms-format-detectionnonerequest-911-method-enforcementp"></a><a name="crs911-31"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |911100|Yönteme ilke tarafından izin verilmiyor|
 
 
 ### <a name="p-x-ms-format-detectionnonerequest-913-scanner-detectionp"></a><a name="crs913-31"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |913100|Güvenlik tarayıcısıyla ilişkili Kullanıcı Aracısı bulundu|
 |913101|Betik/genel HTTP istemcisiyle ilişkili Kullanıcı Aracısı bulundu|
@@ -124,7 +127,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-920-protocol-enforcementp"></a><a name="crs920-31"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |920100|Geçersiz HTTP Istek satırı|
 |920120|Çok parçalı/form-veri atlama denendi|
@@ -176,7 +179,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-921-protocol-attackp"></a><a name="crs921-31"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |921110|HTTP Isteği, Uytoze saldırısı|
 |921120|HTTP yanıt bölme saldırısı|
@@ -190,7 +193,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-930-application-attack-lfip"></a><a name="crs930-31"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |930100|Yol çapraz geçiş saldırısı (/.. /)|
 |930110|Yol çapraz geçiş saldırısı (/.. /)|
@@ -199,7 +202,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-931-application-attack-rfip"></a><a name="crs931-31"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |931100|Olası uzak dosya ekleme (RFI) saldırısı = IP adresini kullanan URL parametresi|
 |931110|Olası uzak dosya ekleme (RFI) saldırısı = ortak RFI güvenlik açığı parametre adı kullanılan w/URL yükü|
@@ -208,7 +211,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-932-application-attack-rcep"></a><a name="crs932-31"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |932100|Uzaktan komut yürütme: Unix komut ekleme|
 |932105|Uzaktan komut yürütme: Unix komut ekleme|
@@ -227,7 +230,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-933-application-attack-phpp"></a><a name="crs933-31"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |933100|PHP ekleme saldırısı = açma/kapatma etiketi bulundu|
 |933110|PHP ekleme saldırısı = PHP betik dosyası karşıya yüklemesi bulundu|
@@ -246,7 +249,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-941-application-attack-xssp"></a><a name="crs941-31"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |941100|Libinjection aracılığıyla algılanan XSS saldırısı|
 |941101|Libinjection aracılığıyla algılanan XSS saldırısı|
@@ -278,7 +281,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-942-application-attack-sqlip"></a><a name="crs942-31"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |942100|Libinjection aracılığıyla SQL ekleme saldırısı algılandı|
 |942110|SQL ekleme saldırısı: ortak ekleme testi algılandı|
@@ -328,7 +331,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-943-application-attack-session-fixationp"></a><a name="crs943-31"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |943100|Olası oturum oluşturma saldırısı = HTML 'de tanımlama bilgisi değerlerini ayarlama|
 |943110|Olası oturum armatürü saldırısı = SessionID parametre adı ve etki alanı dışı başvuran|
@@ -336,7 +339,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-944-application-attack-session-javap"></a><a name="crs944-31"></a> <p x-ms-format-detection="none">ISTEK-944-UYGULAMA-SALDıRı-OTURUM-JAVA</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |944120|Olası yük yürütme ve uzak komut yürütme|
 |944130|Kuşkulu Java sınıfları|
@@ -348,20 +351,20 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-30"></a> <p x-ms-format-detection="none">Genel</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |200004|Olası çok parçalı eşleşmeyen sınır.|
 
 ### <a name="p-x-ms-format-detectionnonerequest-911-method-enforcementp"></a><a name="crs911-30"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |911100|Yönteme ilke tarafından izin verilmiyor|
 
 
 ### <a name="p-x-ms-format-detectionnonerequest-913-scanner-detectionp"></a><a name="crs913-30"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |913100|Güvenlik tarayıcısıyla ilişkili Kullanıcı Aracısı bulundu|
 |913110|Güvenlik tarayıcısıyla ilişkili istek üst bilgisi bulundu|
@@ -371,7 +374,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-920-protocol-enforcementp"></a><a name="crs920-30"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |920100|Geçersiz HTTP Istek satırı|
 |920130|İstek gövdesi ayrıştırılamadı.|
@@ -417,7 +420,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-921-protocol-attackp"></a><a name="crs921-30"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |921100|HTTP Isteği Evleki saldırısı.|
 |921110|HTTP Isteği, Uytoze saldırısı|
@@ -432,7 +435,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-930-application-attack-lfip"></a><a name="crs930-30"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |930100|Yol çapraz geçiş saldırısı (/.. /)|
 |930110|Yol çapraz geçiş saldırısı (/.. /)|
@@ -441,7 +444,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-931-application-attack-rfip"></a><a name="crs931-30"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |931100|Olası uzak dosya ekleme (RFI) saldırısı = IP adresini kullanan URL parametresi|
 |931110|Olası uzak dosya ekleme (RFI) saldırısı = ortak RFI güvenlik açığı parametre adı kullanılan w/URL yükü|
@@ -450,7 +453,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-932-application-attack-rcep"></a><a name="crs932-30"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |932120|Uzak komut yürütme = Windows PowerShell komutu bulundu|
 |932130|Uzak komut yürütme = Unix kabuğu Ifadesi bulundu|
@@ -461,7 +464,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-933-application-attack-phpp"></a><a name="crs933-30"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |933100|PHP ekleme saldırısı = açma/kapatma etiketi bulundu|
 |933110|PHP ekleme saldırısı = PHP betik dosyası karşıya yüklemesi bulundu|
@@ -477,7 +480,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-941-application-attack-xssp"></a><a name="crs941-30"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |941100|Libinjection aracılığıyla algılanan XSS saldırısı|
 |941110|XSS filtresi-Kategori 1 = komut dosyası etiketi vektörü|
@@ -504,7 +507,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-942-application-attack-sqlip"></a><a name="crs942-30"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |942100|Libinjection aracılığıyla SQL ekleme saldırısı algılandı|
 |942110|SQL ekleme saldırısı: ortak ekleme testi algılandı|
@@ -536,7 +539,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="p-x-ms-format-detectionnonerequest-943-application-attack-session-fixationp"></a><a name="crs943-30"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |943100|Olası oturum oluşturma saldırısı = HTML 'de tanımlama bilgisi değerlerini ayarlama|
 |943110|Olası oturum armatürü saldırısı = SessionID parametre adı ve etki alanı dışı başvuran|
@@ -548,7 +551,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="crs_20_protocol_violations"></a><a name="crs20"></a>crs_20_protocol_violations
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |960911|Geçersiz HTTP Istek satırı|
 |981227|Apache hatası = Istekte Geçersiz URI.|
@@ -574,7 +577,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="crs_21_protocol_anomalies"></a><a name="crs21"></a>crs_21_protocol_anomalies
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |960008|İstekte bir konak üstbilgisi eksik|
 |960007|Boş ana bilgisayar üstbilgisi|
@@ -587,7 +590,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="crs_23_request_limits"></a><a name="crs23"></a>crs_23_request_limits
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |960209|Bağımsız değişken adı çok uzun|
 |960208|Bağımsız değişken değeri çok uzun|
@@ -598,7 +601,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="crs_30_http_policy"></a><a name="crs30"></a>crs_30_http_policy
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |960032|Yönteme ilke tarafından izin verilmiyor|
 |960010|İlke tarafından istek içerik türüne izin verilmiyor|
@@ -608,7 +611,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="crs_35_bad_robots"></a><a name="crs35"></a>crs_35_bad_robots
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |990002|İstek, siteyi tarayan bir güvenlik tarayıcısı olduğunu belirtir|
 |990901|İstek, siteyi tarayan bir güvenlik tarayıcısı olduğunu belirtir|
@@ -617,7 +620,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="crs_40_generic_attacks"></a><a name="crs40"></a>crs_40_generic_attacks
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |960024|Meta karakter anomali algılama uyarısı-yinelenen sözcük olmayan karakterler|
 |950008|Belgelenmemiş ColdFusion etiketlerinin ekleme|
@@ -646,7 +649,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="crs_41_sql_injection_attacks"></a><a name="crs41sql"></a>crs_41_sql_injection_attacks
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |981231|SQL açıklama sırası algılandı.|
 |981260|SQL onaltılı kodlama tanımlandı|
@@ -683,7 +686,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="crs_41_xss_attacks"></a><a name="crs41xss"></a>crs_41_xss_attacks
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |973336|XSS filtresi-Kategori 1 = komut dosyası etiketi vektörü|
 |973338|XSS filtresi-kategori 3 = JavaScript URI vektörü|
@@ -788,13 +791,13 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 
 ### <a name="crs_42_tight_security"></a><a name="crs42"></a>crs_42_tight_security
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |950103|Yol çapraz geçişi saldırısı|
 
 ### <a name="crs_45_trojans"></a><a name="crs45"></a>crs_45_trojans
 
-|RuleId|Açıklama|
+|RuleId|Description|
 |---|---|
 |950110|Arka kapı erişimi|
 |950921|Arka kapı erişimi|

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ff5ef8f742914129d868152814d84d2112267c09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7307d047861a4fd6ba2065d231fde8040a383cfb
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187804"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201846"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Uygulamanıza özel bir ilke aracılığıyla bir erişim belirteci geçirin Azure Active Directory B2C
 
@@ -30,9 +30,9 @@ Azure AD B2C, [OAuth 2,0](authorization-code-flow.md) ve [OpenID Connect](openid
 
 ## <a name="add-the-claim-elements"></a>Talep öğelerini ekleme
 
-1. *TrustframeworkExtensions. xml* dosyanızı açın ve aşağıdaki **ClaimType** öğesini `identityProviderAccessToken` **claimsschema** öğesine tanıtıcısı ile ekleyin:
+1. *TrustframeworkExtensions.xml* dosyanızı açın ve aşağıdaki **ClaimType** öğesini `identityProviderAccessToken` **claimsschema** öğesine tanıtıcısı ile ekleyin:
 
-    ```XML
+    ```xml
     <BuildingBlocks>
       <ClaimsSchema>
         <ClaimType Id="identityProviderAccessToken">
@@ -47,7 +47,7 @@ Azure AD B2C, [OAuth 2,0](authorization-code-flow.md) ve [OpenID Connect](openid
 
 2. Erişim belirtecinin istediğiniz her OAuth 2,0 kimlik sağlayıcısı için, **Outputclaim** öğesini, **teknisyen** öğesine ekleyin. Aşağıdaki örnekte, Facebook teknik profiline eklenen öğe gösterilmektedir:
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Facebook</DisplayName>
       <TechnicalProfiles>
@@ -61,10 +61,10 @@ Azure AD B2C, [OAuth 2,0](authorization-code-flow.md) ve [OpenID Connect](openid
     </ClaimsProvider>
     ```
 
-3. *TrustframeworkExtensions. xml* dosyasını kaydedin.
-4. *Signuporsignın. xml*gibi bağlı olan taraf ilkesi dosyanızı açın ve bir **deneme profili**öğesine **outputclaim** öğesini ekleyin:
+3. *TrustframeworkExtensions.xml* dosyasını kaydedin.
+4. *SignUpOrSignIn.xml*gibi, bağlı olan taraf ilkesi dosyanızı açın ve bu **profil**için **outputclaim** öğesini ekleyin:
 
-    ```XML
+    ```xml
     <RelyingParty>
       <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
       <TechnicalProfile Id="PolicyProfile">
@@ -80,7 +80,7 @@ Azure AD B2C, [OAuth 2,0](authorization-code-flow.md) ve [OpenID Connect](openid
 
 ## <a name="test-your-policy"></a>İlkenizi test etme
 
-Azure AD B2C ' de Uygulamalarınızı sınarken, içindeki talepleri gözden geçirebilmek `https://jwt.ms` için Azure AD B2C belirtecinin geri döndürüldüğünden yararlı olabilir.
+Azure AD B2C ' de Uygulamalarınızı sınarken, `https://jwt.ms` içindeki talepleri gözden geçirebilmek için Azure AD B2C belirtecinin geri döndürüldüğünden yararlı olabilir.
 
 ### <a name="upload-the-files"></a>Dosyaları karşıya yükleme
 
@@ -89,14 +89,14 @@ Azure AD B2C ' de Uygulamalarınızı sınarken, içindeki talepleri gözden ge�
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Kimlik deneyimi çerçevesini**seçin.
 5. Özel Ilkeler sayfasında, **Ilkeyi karşıya yükle**' ye tıklayın.
-6. Varsa **Ilkenin üzerine yaz**' ı seçin ve ardından *TrustframeworkExtensions. xml* dosyasını bulun ve seçin.
-7. **Karşıya yükle**' yi seçin.
-8. *Signuporsignın. xml*gibi bağlı olan taraf dosyası için 5 ile 7 arasındaki adımları yineleyin.
+6. Varsa **Ilkenin üzerine yaz**' ı seçin ve ardından *TrustframeworkExtensions.xml* dosyasını arayıp seçin.
+7. **Karşıya Yükle**'yi seçin.
+8. *SignUpOrSignIn.xml*gibi bağlı olan taraf dosyası için 5 ile 7 arasındaki adımları yineleyin.
 
 ### <a name="run-the-policy"></a>İlkeyi çalıştırma
 
 1. Değiştirdiğiniz ilkeyi açın. Örneğin, *B2C_1A_signup_signin*.
-2. **Uygulama**için, daha önce kaydetmiş olduğunuz uygulamanızı seçin. Aşağıdaki örnekteki belirteci görmek için, **yanıt URL 'sinin** gösterilmesi `https://jwt.ms`gerekir.
+2. **Uygulama**için, daha önce kaydetmiş olduğunuz uygulamanızı seçin. Aşağıdaki örnekteki belirteci görmek için, **yanıt URL 'sinin** gösterilmesi gerekir `https://jwt.ms` .
 3. **Şimdi Çalıştır**' ı seçin.
 
     Aşağıdaki örneğe benzer bir şey görmeniz gerekir:

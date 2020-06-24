@@ -3,12 +3,12 @@ title: Bir komut dosyası ile Azure geçişi gereci ayarlama
 description: Bir komut dosyası ile Azure geçişi gereci ayarlamayı öğrenin
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 20dbe4ba3b1b4858cb7022bb72129ee419ea2540
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: d5603aaef0a1c3e784f455777302c23e6724fbe7
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331993"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052458"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Komut dosyası ile gereç ayarlama
 
@@ -20,23 +20,23 @@ VMware ve Hyper-V VM 'Leri için bir betik kullanarak veya Azure portal indirti�
 - Fiziksel sunucular için bir gereç ayarlamak üzere yalnızca bir komut dosyası kullanabilirsiniz. [Bu makaleyi](how-to-set-up-appliance-physical.md)izleyin.
 - Azure Kamu bulutunda bir gereç ayarlamak için [Bu makaleyi](deploy-appliance-script-government.md)izleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Betik, mevcut bir fiziksel makineye veya VM 'ye Azure geçişi gereci ayarlar.
 
-- Gereç işlevi görecek makinenin Windows Server 2016, 32 GB bellek, 5. disk depolaması ve bir dış sanal anahtar ile birlikte sekiz V80 CPU çalıştırması gerekir. Statik veya dinamik bir IP adresi ve internet erişimi gerektirir.
-- Gereci dağıtmadan önce, [VMware VM 'leri](migrate-appliance.md#appliance---vmware), [Hyper-V VM 'leri](migrate-appliance.md#appliance---hyper-v)ve [fiziksel sunucular](migrate-appliance.md#appliance---physical)için ayrıntılı gereç gereksinimlerini gözden geçirin.
+- Gereç görevi görecek makinenin aşağıdaki donanım ve işletim sistemi gereksinimlerini karşılaması gerekir:
+
+Senaryo | Gereksinimler
+--- | ---
+VMware | Windows Server 2016, 32 GB bellek, sekiz vCPU, yaklaşık 80 GB disk depolaması
+Hyper-V | 16 GB bellek, 8 GB disk depolaması 80 etrafında sekiz vCPU ile Windows Server 2016
+- Makinenin aynı zamanda bir dış sanal anahtar olması gerekir. Statik veya dinamik bir IP adresi ve internet erişimi gerektirir.
+- Gereci dağıtmadan önce, [VMware VM](migrate-appliance.md#appliance---vmware)'leri, [Hyper-V VM 'leri](migrate-appliance.md#appliance---hyper-v)için ayrıntılı gereç gereksinimlerini gözden geçirin.
 - Betiği mevcut bir Azure geçiş gereci üzerinde çalıştırmayın.
 
 ## <a name="set-up-the-appliance-for-vmware"></a>VMware için gereci ayarlama
 
-VMware için gereci ayarlamak üzere Azure portal daraltılmış bir dosya indirir ve içeriği ayıklayabilir. Gereç Web uygulamasını başlatmak için PowerShell betiğini çalıştırın. Gereci ayarlayın ve ilk kez yapılandırın. Ardından, gereci Azure geçişi projesi ile kaydedersiniz.
-
-### <a name="download-the-script"></a>Betiği indir
-
-1.  **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
-2.  Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **VMware vSphere Hiper Yöneticisi ile Evet '** i seçin.
-3.  Sıkıştırılmış dosyayı indirmek için **İndir**' e tıklayın. 
+VMware için gereci ayarlamak için, AzureMigrateInstaller.zip adlı daraltılmış dosyayı [buradan](https://go.microsoft.com/fwlink/?linkid=2105112)indirin ve içeriği ayıklayın. Gereç Web uygulamasını başlatmak için PowerShell betiğini çalıştırın. Gereci ayarlayın ve ilk kez yapılandırın. Ardından, gereci Azure geçişi projesi ile kaydedersiniz.
 
 
 ### <a name="verify-file-security"></a>Dosya güvenliğini doğrula
@@ -51,7 +51,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
     **Algoritma** | **İndir** | **SHA256**
     --- | --- | ---
-    VMware (10,9 GB) | [En son sürüm](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
+    VMware (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
 
 
 
@@ -72,7 +72,7 @@ Betiği çalıştırmak için:
 1. Sıkıştırılmış dosyayı, gereci barındıracak makinedeki bir klasöre ayıklayın. Betiği mevcut bir Azure geçişi gereci üzerinde bir makinede çalıştırmayın emin olun.
 2. Makinede, yönetici (yükseltilmiş) ayrıcalıklarla PowerShell 'i başlatın.
 3. PowerShell dizinini, indirilen sıkıştırılmış dosyadan ayıklanan içerikleri içeren klasör olarak değiştirin.
-4. **AzureMigrateInstaller. ps1**betiğini aşağıdaki gibi çalıştırın:
+4. Komut dosyası **AzureMigrateInstaller.ps1**aşağıdaki gibi çalıştırın:
 
     ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario VMware ```
    
@@ -84,13 +84,7 @@ Gerecin [genel](migrate-appliance.md#public-cloud-urls) bulut Için Azure URL 'l
 
 ## <a name="set-up-the-appliance-for-hyper-v"></a>Hyper-V için gereci ayarlama
 
-Hyper-V için gereci ayarlamak üzere Azure portal daraltılmış bir dosya indirir ve içeriği ayıklayabilir. Gereç Web uygulamasını başlatmak için PowerShell betiğini çalıştırın. Gereci ayarlayın ve ilk kez yapılandırın. Ardından, gereci Azure geçişi projesi ile kaydedersiniz.
-
-### <a name="download-the-script"></a>Betiği indir
-
-1.  **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **keşfet**' e tıklayın.
-2.  Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **Hyper-V ile Evet '** i seçin.
-3.  Sıkıştırılmış dosyayı indirmek için **İndir**' e tıklayın. 
+Hyper-V için gereci ayarlamak için, AzureMigrateInstaller.zip adlı daraltılmış dosyayı [buradan](https://go.microsoft.com/fwlink/?linkid=2105112)indirin ve içeriği ayıklayın. Gereç Web uygulamasını başlatmak için PowerShell betiğini çalıştırın. Gereci ayarlayın ve ilk kez yapılandırın. Ardından, gereci Azure geçişi projesi ile kaydedersiniz.
 
 
 ### <a name="verify-file-security"></a>Dosya güvenliğini doğrula
@@ -106,7 +100,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
     **Senaryo** | **İndir** | **SHA256**
     --- | --- | ---
-    Hyper-V (8,93 MB) | [En son sürüm](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+    Hyper-V (63,1 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2105112) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
 
 ### <a name="run-the-script"></a>Betiği çalıştırın
 
@@ -125,7 +119,7 @@ Betiği çalıştırmak için:
 1. Sıkıştırılmış dosyayı, gereci barındıracak makinedeki bir klasöre ayıklayın. Betiği mevcut bir Azure geçişi gereci üzerinde bir makinede çalıştırmayın emin olun.
 2. Makinede, yönetici (yükseltilmiş) ayrıcalıklarla PowerShell 'i başlatın.
 3. PowerShell dizinini, indirilen sıkıştırılmış dosyadan ayıklanan içerikleri içeren klasör olarak değiştirin.
-4. **AzureMigrateInstaller. ps1**betiğini aşağıdaki gibi çalıştırın:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario Hyperv ```
+4. Komut dosyası **AzureMigrateInstaller.ps1**aşağıdaki gibi çalıştırın:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario Hyperv ```
    
 5. Betik başarıyla çalıştıktan sonra gereci ayarlayabilmeniz için gereç Web uygulamasını başlatır. Herhangi bir sorunla karşılaşırsanız, C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log konumundaki betik günlüklerini gözden geçirin.
 

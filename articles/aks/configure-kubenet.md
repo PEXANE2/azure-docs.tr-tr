@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: a393e87963eabf2e3cf41148233c0e350dc6e380
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 8a101235f8e7aaeff455732b5c048cbc81c20079
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309677"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079052"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde kendi IP adresi aralıklarınız ile Kubernetes kullanan ağını kullanma
 
@@ -20,7 +20,7 @@ Varsayılan olarak, aks kümeleri [Kubernetes kullanan][kubenet]kullanır ve siz
 
 Bu makalede, bir aks kümesi için bir sanal ağ alt ağı oluşturmak ve kullanmak için *Kubernetes kullanan* Networking 'in nasıl kullanılacağı gösterilmektedir. Ağ seçenekleri ve konuları hakkında daha fazla bilgi için bkz. [Kubernetes ve AKS Için ağ kavramları][aks-network-concepts].
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * AKS kümesinin sanal ağı giden internet bağlantısına izin vermelidir.
 * Aynı alt ağda birden fazla AKS kümesi oluşturmayın.
@@ -201,16 +201,37 @@ Bir AKS kümesi oluşturduğunuzda, otomatik olarak bir ağ güvenlik grubu ve y
 
 Kubenet ile, küme alt ağlarınız üzerinde bir yol tablosu bulunmalıdır. AKS, kendi mevcut alt ağlarınızı ve yol tablonuzu getirme desteği sunmaktadır.
 
-Özel alt ağınız bir yol tablosu içermiyorsa, AKS sizin için bir tane oluşturur ve ona kurallar ekler. Kümenizi oluştururken özel alt ağınız bir yol tablosu içeriyorsa, AKS, küme işlemleri sırasında mevcut yol tablosunu ve bulut sağlayıcısı işlemlerine uygun olarak güncelleştirme kurallarını onaylar.
+Özel alt ağınız bir yol tablosu içermiyorsa, AKS sizin için bir tane oluşturur ve küme yaşam döngüsü boyunca ona kurallar ekler. Kümenizi oluştururken özel alt ağınız bir yol tablosu içeriyorsa, AKS, küme işlemleri sırasında mevcut yol tablosunu onaylar ve bulut sağlayıcısı işlemlerine göre kuralları ekler/güncelleştirir.
+
+> [!WARNING]
+> Özel kurallar özel yol tablosuna eklenebilir ve güncelleştirilir. Ancak, kurallar, güncelleştirilmeleri veya kaldırılması gereken Kubernetes bulut sağlayıcısı tarafından eklenir. 0.0.0.0/0 gibi kurallar her zaman belirli bir yol tablosunda bulunmalı ve bir NVA veya diğer çıkış ağ geçidi gibi internet ağ geçidinizin hedefine eşlenir. Yalnızca özel kurallarınızın değiştirildiği kuralları güncelleştirirken dikkatli olun.
+
+[Özel bir yol tablosu][custom-route-table]ayarlama hakkında daha fazla bilgi edinin.
+
+Kubenet Networking, istekleri başarıyla yönlendirmek için düzenlenmiş yol tablosu kuralları gerektirir. Bu tasarım nedeniyle, yol tablolarının kendisine bağımlı olan her küme için dikkatle tutulması gerekir. Farklı kümelerden Pod Cıdrs, beklenmedik ve hatalı yönlendirmeye yol açacağından, birden çok küme bir yol tablosu paylaşamaz. Aynı sanal ağ üzerinde birden fazla küme yapılandırırken veya bir sanal ağı her kümeye ayırma sırasında, aşağıdaki kısıtlamaların değerlendirildiğinden emin olun.
 
 Sınırlamalar:
 
 * Küme oluşturmadan önce izinler atanmalıdır, özel alt ağınız ve özel yol tablonuz için yazma izinlerine sahip bir hizmet sorumlusu kullandığınızdan emin olun.
 * Yönetilen kimlikler Şu anda kubenet içindeki özel yol tabloları ile desteklenmemektedir.
-* AKS kümesini oluşturmadan önce özel bir yol tablosunun alt ağ ile ilişkilendirilmesi gerekir. Bu yol tablosu güncelleştirilemez ve AKS kümesini oluşturmadan önce tüm yönlendirme kuralları ilk yol tablosundan eklenmelidir veya çıkarılmalıdır.
-* Bir AKS sanal ağı içindeki tüm alt ağların aynı yol tablosuyla ilişkilendirilmesi gerekir.
-* Her AKS kümesinin benzersiz bir yol tablosu kullanması gerekir. Birden çok küme içeren bir rota tablosunu yeniden kullanamazsınız.
+* AKS kümesini oluşturmadan önce özel bir yol tablosunun alt ağ ile ilişkilendirilmesi gerekir.
+* İlişkili yol tablosu kaynağı, küme oluşturulduktan sonra güncelleştirilemez. Yol tablosu kaynağı güncelleştirilemediğinden, yönlendirme tablosunda özel kurallar değiştirilebilir.
+* Her bir AKS kümesi, kümeyle ilişkili tüm alt ağlar için tek bir benzersiz yol tablosu kullanmalıdır. Çakışan Pod Cıdrs ve çakışan yönlendirme kuralları nedeniyle potansiyel olarak birden çok küme içeren bir yol tablosunu yeniden kullanamazsınız.
 
+Özel bir yol tablosu oluşturup sanal ağınızdaki alt ağınızla ilişkilendirdikten sonra, yol tablonuzu kullanan yeni bir AKS kümesi oluşturabilirsiniz.
+AKS kümenizi dağıtmayı planladığınız alt ağ KIMLIĞINI kullanmanız gerekir. Bu alt ağ aynı zamanda özel yol tablonuz ile ilişkilendirilmesi gerekir.
+
+```azurecli-interactive
+# Find your subnet ID
+az network vnet subnet list --resource-group
+                            --vnet-name
+                            [--subscription]
+```
+
+```azurecli-interactive
+# Create a kubernetes cluster with with a custom subnet preconfigured with a route table
+az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -238,3 +259,4 @@ Var olan sanal ağ alt ağınıza dağıtılmış bir AKS kümesi ile, artık k�
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [express-route]: ../expressroute/expressroute-introduction.md
 [network-comparisons]: concepts-network.md#compare-network-models
+[custom-route-table]: ../virtual-network/manage-route-table.md

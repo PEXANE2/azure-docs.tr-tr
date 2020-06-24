@@ -4,11 +4,11 @@ description: Kurtarma Hizmetleri kasasındaki Azure dosya paylaşımlarını yed
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248105"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710618"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>REST API aracılığıyla Azure Backup kullanarak Azure dosya paylaşma 'yı yedekleme
 
@@ -38,7 +38,7 @@ Kasanın, kurtarma hizmetleri kasasına yedeklenebilir dosya paylaşımları ile
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01&$filter={$filter}
 ```
 
-Post URI 'sinin, `{subscriptionId}`, `{vaultName}`ve `{vaultresourceGroupName}` `{fabricName}` parametreleri vardır. Örneğimizde, farklı parametrelerin değeri aşağıdaki gibi olacaktır:
+Post URI 'sinin, `{subscriptionId}` , `{vaultName}` `{vaultresourceGroupName}` ve parametreleri vardır `{fabricName}` . Örneğimizde, farklı parametrelerin değeri aşağıdaki gibi olacaktır:
 
 - `{fabricName}`*Azure*
 
@@ -467,7 +467,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 İsteğe bağlı bir yedeklemeyi tetiklemek için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-| Adı       | Tür                       | Açıklama                       |
+| Name       | Tür                       | Description                       |
 | ---------- | -------------------------- | --------------------------------- |
 | Özellikler | AzurefilesharebackupReques | BackupRequestResource özellikleri |
 

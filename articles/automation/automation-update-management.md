@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi Genel Bakış
 description: Bu makalede, Windows ve Linux makineleriniz için güncelleştirmeleri uygulayan Güncelleştirme Yönetimi özelliğine bir genel bakış sunulmaktadır.
 services: automation
 ms.subservice: update-management
-ms.date: 06/03/2020
+ms.date: 06/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: fcc34f8d5a07354b31880ebfa605012e05ec3a20
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 85b724cacc9c878f39de62e91e18713a1817933d
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342961"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817225"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimine genel bakış
 
@@ -29,7 +29,7 @@ Aşağıdaki yollarla VM 'Ler için Güncelleştirme Yönetimi etkinleştirebili
 [Azure Resource Manager şablonu](automation-update-management-deploy-template.md) , güncelleştirme yönetimi yeni veya mevcut bir Otomasyon hesabına ve aboneliğinizdeki Log Analytics çalışma alanına dağıtmanıza yardımcı olmak için kullanılabilir.
 
 > [!NOTE]
-> Azure Otomasyonu 'ndan özel betikleri çalıştırmak için Güncelleştirme Yönetimi ile yapılandırılmış bir makine kullanamazsınız. Bu makine, yalnızca Microsoft tarafından imzalanmış güncelleştirme betiğini çalıştırabilir. 
+> Azure Otomasyonu 'ndan özel betikleri çalıştırmak için Güncelleştirme Yönetimi ile yapılandırılmış bir makine kullanamazsınız. Bu makine, yalnızca Microsoft tarafından imzalanmış güncelleştirme betiğini çalıştırabilir.
 
 ## <a name="about-update-management"></a>Güncelleştirme Yönetimi hakkında
 
@@ -68,21 +68,22 @@ Bir dağıtım tanımlarken, güncelleştirmelerin yüklenebileceği bir zaman a
 Güncelleştirmeler Azure Automation’daki runbook'lar tarafından yüklenir. Bu runbook 'ları görüntüleyemezsiniz ve herhangi bir yapılandırma gerektirmez. Bir güncelleştirme dağıtımı oluşturulduğunda, dahil edilen makineler için belirtilen zamanda ana güncelleştirme runbook 'unu Başlatan bir zamanlama oluşturur. Ana runbook, gerekli güncelleştirmeleri yüklemek için her bir aracıda bir alt runbook başlatır.
 
 Güncelleştirme dağıtımında belirtilen tarih ve saatte, hedef makineler dağıtımı paralel olarak yürütür. Yüklemeden önce, güncelleştirmelerin hala gerekli olduğunu doğrulamak üzere bir tarama çalıştırılır. WSUS istemci makineleri için güncelleştirmeler WSUS 'ta onaylanmamışsa güncelleştirme dağıtımı başarısız olur.
+
 Birden fazla Log Analytics çalışma alanında (aynı zamanda çoklu kayıt olarak da adlandırılır) Güncelleştirme Yönetimi için bir makinenin kayıtlı olması desteklenmez.
 
 ## <a name="clients"></a>İstemciler
 
 ### <a name="supported-client-types"></a>Desteklenen istemci türleri
 
-Aşağıdaki tabloda güncelleştirme değerlendirmeleri için desteklenen işletim sistemleri listelenmektedir. Düzeltme eki uygulama karma Runbook Worker gerektirir. Karma Runbook Worker gereksinimleri hakkında bilgi için bkz. [Windows karma Runbook Worker dağıtımı](automation-windows-hrw-install.md) ve [Linux karma Runbook Worker](automation-linux-hrw-install.md)dağıtımı.
+Aşağıdaki tabloda güncelleştirme değerlendirmeleri ve düzeltme eki uygulama için desteklenen işletim sistemleri listelenmektedir. Düzeltme eki uygulama karma Runbook Worker gerektirir. Karma Runbook Worker gereksinimleri hakkında bilgi için bkz. [Windows karma Runbook Worker dağıtımı](automation-windows-hrw-install.md) ve [Linux karma Runbook Worker](automation-linux-hrw-install.md)dağıtımı.
 
 > [!NOTE]
 > Linux makinelerin güncelleştirme değerlendirmesi yalnızca Otomasyon hesabı ve Log Analytics çalışma alanı [eşlemeleri tablosunda](https://docs.microsoft.com/azure/automation/how-to/region-mappings#supported-mappings)listelenen belirli bölgelerde desteklenir. 
 
 |İşletim sistemi  |Notlar  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 || 
-|Windows Server 2008 R2 (RTM ve SP1 standart)| Güncelleştirme Yönetimi yalnızca bu işletim sistemi için değerlendirmeleri destekler. [Karma Runbook Worker](automation-windows-hrw-install.md) Windows Server 2008 R2 için desteklenmediğinden düzeltme eki uygulama desteklenmez. |
+|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 ||
+|Windows Server 2008 R2 (RTM ve SP1 standart)| Güncelleştirme Yönetimi, bu işletim sistemi için değerlendirmeleri ve düzeltme eki uygulamayı destekler. [Karma Runbook Worker](automation-windows-hrw-install.md) , Windows Server 2008 R2 için desteklenir. |
 |CentOS 6 (x86/x64) ve 7 (x64)      | Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir. Sınıflandırma tabanlı düzeltme eki `yum` , CentOS 'ıN RTM sürümlerindeki güvenlik verilerini döndürmesini gerektirir. CentOS üzerinde sınıflandırma tabanlı düzeltme eki uygulama hakkında daha fazla bilgi için bkz. [Linux üzerinde sınıflandırmaları güncelleştirme](automation-view-update-assessments.md#linux-2).          |
 |Red Hat Enterprise 6 (x86/x64) ve 7 (x64)     | Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) ve 12 (x64)     | Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir.        |
@@ -103,7 +104,7 @@ Aşağıdaki tabloda desteklenmeyen işletim sistemleri listelenmektedir:
 
 ### <a name="client-requirements"></a>İstemci gereksinimleri
 
-Aşağıdaki bilgiler işletim sistemine özgü istemci gereksinimlerini açıklamaktadır. Ek rehberlik için bkz. [ağ planlaması](#ports).  TLS 1,2 için istemci gereksinimlerini anlamak üzere bkz. [Azure Otomasyonu Için tls 1,2 zorlaması](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
+Aşağıdaki bilgiler işletim sistemine özgü istemci gereksinimlerini açıklamaktadır. Ek rehberlik için bkz. [ağ planlaması](#ports). TLS 1,2 için istemci gereksinimlerini anlamak üzere bkz. [Azure Otomasyonu Için tls 1,2 zorlaması](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
 #### <a name="windows"></a>Windows
 
@@ -152,7 +153,7 @@ Operations Manager yönetim grubunuz [bir Log Analytics çalışma alanına bağ
 * MP Dağıtımını güncelleştirme
 
 > [!NOTE]
-> Günlük verilerini toplamak için yönetim grubunda yapılandırılmış aracılarla bir Log Analytics çalışma alanına bağlı Operations Manager 1807 veya 2019 yönetim grubunuz varsa, parametreyi geçersiz kılmanız `IsAutoRegistrationEnabled` ve **Microsoft. ıntelligencepacks. AzureAutomation. Hybridavgent. Init** kuralında true olarak ayarlamanız gerekir.
+> Günlük verilerini toplamak üzere yönetim grubunda yapılandırılmış aracılarla bir Log Analytics çalışma alanına bağlı Operations Manager 1807 veya 2019 yönetim grubunuz varsa, parametreyi geçersiz kılmanız `IsAutoRegistrationEnabled` ve **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** kuralında true olarak ayarlamanız gerekir.
 
 Yönetim paketlerine yönelik güncelleştirmeler hakkında daha fazla bilgi için bkz. [Azure izleyici günlüklerine bağlanma Operations Manager](../azure-monitor/platform/om-agents.md).
 
@@ -187,10 +188,10 @@ Aşağıdaki adresler Güncelleştirme Yönetimi için özel olarak gereklidir. 
 
 |Azure Genel  |Azure Kamu  |
 |---------|---------|
-|*.ods.opinsights.azure.com    | *. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net | *. blob.core.usgovcloudapi.net|
-|*.azure-automation.net | *. azure-automation.us|
+|`*.ods.opinsights.azure.com`    | `*.ods.opinsights.azure.us`        |
+|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
+|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
+|`*.azure-automation.net` | `*.azure-automation.us`|
 
 Windows makinelerinde, Windows Update için gereken tüm uç noktalara giden trafiğe de izin vermeniz gerekir. [Http/proxy ile Ilgili sorunlarda](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy), gerekli uç noktaların güncelleştirilmiş bir listesini bulabilirsiniz. Yerel bir [Windows Update sunucunuz](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)varsa, [WSUS anahtarınıza](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)belirtilen sunucuya giden trafiğe de izin vermeniz gerekir.
 

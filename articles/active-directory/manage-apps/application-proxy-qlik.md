@@ -3,23 +3,23 @@ title: Azure AD Uygulaması Proxy ve Qlik Sense | Microsoft Docs
 description: Azure portal uygulama proxy 'Sini açın ve ters proxy için bağlayıcıları yükledikten sonra.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/06/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2edf63da0fd09f829f936b54eb088c34dfe029a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9696d48db7d051f3a8bdf16f93438fb71f025dc
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79036990"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760057"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Uygulama proxy 'Si ve Qlik Sense 
 Azure Active Directory Uygulama Ara Sunucusu ve Qlik Sense, Qlik Sense dağıtımınız için uzaktan erişim sağlamak üzere kolayca uygulama proxy 'Si kullanabildiğinizden emin olmak için iş ortağı ile işbirliği yaptı.  
@@ -38,7 +38,7 @@ Uygulamanızı yayımlamak için aşağıdaki adımları izleyin. 1-8 adımları
 
 
 1. Azure portalında genel yönetici olarak oturum açın. 
-2. **Azure Active Directory** > **Kurumsal uygulamalar**' ı seçin. 
+2. **Azure Active Directory**  >  **Kurumsal uygulamalar**' ı seçin. 
 3. Dikey pencerenin üst kısmında **Ekle** ' yi seçin. 
 4. **Şirket içi uygulama '** yı seçin. 
 5. Gerekli alanları yeni uygulamanız hakkındaki bilgilerle doldurun. Ayarlar için aşağıdaki kılavuzu kullanın: 

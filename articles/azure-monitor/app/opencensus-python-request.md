@@ -6,12 +6,12 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 10d54088859332ad986dc642247c6af96b378978
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c9d69c0f39d9cad52dc86c3ab33d202c88131ab0
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553898"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753202"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>OpenCensus Python ile gelen istekleri izleme
 
@@ -33,7 +33,7 @@ Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanıla
     )
     ```
 
-3. AzureExporter 'in altında düzgün şekilde yapılandırıldığından emin olun `settings.py` `OPENCENSUS` .
+3. AzureExporter 'in altında düzgün şekilde yapılandırıldığından emin olun `settings.py` `OPENCENSUS` . İzlemek istemediğiniz URL 'lerden gelen istekler için, onları öğesine ekleyin `BLACKLIST_PATHS` .
 
     ```python
     OPENCENSUS = {
@@ -42,20 +42,7 @@ Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanıla
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                 connection_string="InstrumentationKey=<your-ikey-here>"
             )''',
-        }
-    }
-    ```
-
-4. Ayrıca, `settings.py` izlemek istemediğiniz isteklerin altına URL 'leri ekleyebilirsiniz `BLACKLIST_PATHS` .
-
-    ```python
-    OPENCENSUS = {
-        'TRACE': {
-            'SAMPLER': 'opencensus.trace.samplers.ProbabilitySampler(rate=0.5)',
-            'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
-                connection_string="InstrumentationKey=<your-ikey-here>",
-            )''',
-            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent from it.
+            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -87,7 +74,7 @@ Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanıla
     
     ```
 
-2. `flask`Ara ortamınızı doğrudan kodda yapılandırabilirsiniz. İzlemek istemediğiniz URL 'lerden gelen istekler için, onları öğesine ekleyin `BLACKLIST_PATHS` .
+2. `flask`Uygulamanızı aracılığıyla da yapılandırabilirsiniz `app.config` . İzlemek istemediğiniz URL 'lerden gelen istekler için, onları öğesine ekleyin `BLACKLIST_PATHS` .
 
     ```python
     app.config['OPENCENSUS'] = {

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: rajanaki
 ms.openlocfilehash: 4b005ae308576db6fd26fcf079161430b266ec3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281788"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710261"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Hyper-V VM’leri için yeniden çalışma işlemi çalıştırma
 
@@ -36,7 +36,7 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md)ile şirket Içi si
 
 Azure 'da Hyper-V VM 'lerini ilk şirket içi VM 'ye geri yüklemek için Azure 'dan şirket içi siteye planlı bir yük devretme çalıştırın:
 
-1. Kasada **çoğaltılan öğeleri**> VM 'yi seçin. **Planlı Yük devretme**> VM 'ye sağ tıklayın. Kurtarma planını geri alıyorsa, plan adını seçin ve**Planlı Yük**devretme **yük devretmesi** > ' ne tıklayın.
+1. Kasada **çoğaltılan öğeleri**> VM 'yi seçin. **Planlı Yük devretme**> VM 'ye sağ tıklayın. Kurtarma planını geri alıyorsa, plan adını seçin ve **Failover**  >  **Planlı Yük**devretme yük devretmesi ' ne tıklayın.
 2. **Planlı Yük devretmeyi Onayla**bölümünde kaynak ve hedef konumları seçin. Yük devretme yönünü aklınızda edin. Birincil sunucudan yük devretme beklenen şekilde çalıştıysa ve tüm sanal makineler ikincil konumdaysa bu yalnızca bilgi amaçlıdır.
 3. **Veri eşitleme**' de bir seçenek belirleyin:
     - **Yük devretmeden önce verileri eşitleme (yalnızca Delta değişikliklerini eşitleme)**— Bu seçenek, kapatmadan eşitlendiğinde VM 'ler için kapalı kalma süresini en aza indirir.
@@ -64,7 +64,7 @@ Alternatif bir konuma aşağıdaki şekilde geri dönme:
 
 1. Yeni donanım ayarlıyorsanız, [Windows 'un desteklenen bir sürümünü](hyper-v-azure-support-matrix.md#replicated-vms)ve makinede Hyper-V rolünü yükleyebilirsiniz.
 2. Özgün sunucuda sahip olduğunuz adla aynı ada sahip bir sanal ağ anahtarı oluşturun.
-3. **Korumalı öğeler** > **koruma grubu** > \<protectiongroupname>-> \<virtualmachinename>, yeniden devretmek istediğiniz VM 'yi seçin ve ardından **Planlı Yük devretme**' yı seçin.
+3. **Korumalı öğeler**  >  **koruma grubunda**  >  \<ProtectionGroupName>  ->  \<VirtualMachineName> , yeniden yük devretmek istediğiniz VM 'yi seçin ve ardından **Planlı Yük devretme**' yı seçin.
 4. **Planlı Yük devretmeyi Onayla**bölümünde, **yoksa, şirket Içi sanal makine oluştur**' u seçin.
 5. **Ana bilgisayar adı**' nda, VM 'yi yerleştirmek Istediğiniz yeni Hyper-V ana bilgisayar sunucusunu seçin.
 6. **Veri eşitleme**' de, yük devretmeden önce verileri eşitleme seçeneğini seçmenizi öneririz. Bu, VM 'Lerin kapanmadan eşitlendiği kapalı kalma süresini en aza indirir. Şunları yapar:
@@ -72,7 +72,7 @@ Alternatif bir konuma aşağıdaki şekilde geri dönme:
     - **2. aşama**: hiçbir yeni değişiklik gerçekleşmemesi için Azure VM 'yi kapatır. Son değişiklik kümesi şirket içi sunucuya aktarılır ve şirket içi sanal makine başlatılır.
     
 7. Yük devretmeye (yeniden çalışma) başlamak için onay işaretine tıklayın.
-8. İlk eşitleme bittikten ve Azure VM 'yi kapatmaya hazırsanız, **Yük devretme işlemini tamamlamaya**yönelik işler> > **işleri** > \<planlı yük devretme işi ' ne tıklayın. Bu, Azure makinesini kapatır, en son değişiklikleri şirket içi VM 'ye aktarır ve başlatır.
+8. İlk eşitleme bittikten ve Azure VM 'yi kapatmaya hazırsanız, **işler**  >  \<planned failover job>  >  **Yük devretmeyi tamamlayacak**öğesine tıklayın. Bu, Azure makinesini kapatır, en son değişiklikleri şirket içi VM 'ye aktarır ve başlatır.
 9. Her şeyin beklendiği gibi çalıştığını doğrulamak için şirket içi VM 'de oturum açabilirsiniz.
 10. Yük devretmeyi tamamlamak için **Yürüt** ' e tıklayın. Yürüt, Azure VM 'sini ve disklerini siler ve şirket içi VM 'yi yeniden korunacak şekilde hazırlar.
 10. Şirket içi VM 'yi Azure 'a Çoğaltmaya başlamak için **çoğaltmayı tersine çevir** ' e tıklayın. Azure 'da VM kapatılmış olduğundan yalnızca Delta değişir.

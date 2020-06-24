@@ -2,14 +2,14 @@
 title: Azure CLı-Azure blok zinciri hizmeti 'ni kullanarak Blockzincirini yapılandırma Veri Yöneticisi
 description: Azure CLı kullanarak Azure blok zinciri hizmeti için bir blok zinciri Veri Yöneticisi oluşturma ve yönetme
 ms.date: 03/30/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: e490803fabeed7d6234bd6984acbfb9f5270e0c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7b897f35cb864e2a1fa904bbb3ec13b56986598
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254419"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200471"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>CLI kullanarak Blok Zinciri Veri Yöneticisi'ni yapılandırma
 
@@ -25,7 +25,7 @@ Bir blok zinciri Veri Yöneticisi örneği yapılandırmak için şunları yapı
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* En son [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 'yı yükleyip kullanarak `az login`oturum açın.
+* En son [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 'yı yükleyip kullanarak oturum açın `az login` .
 * [Hızlı başlangıç: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanın](connect-vscode.md). Blok zinciri Veri Yöneticisi kullanılırken Azure blok zinciri hizmeti *Standart* katmanı önerilir.
 * [Event Grid konu başlığı](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) oluşturma
 * [Azure Event Grid Içindeki olay işleyicileri](../../event-grid/event-handlers.md) hakkında bilgi edinin
@@ -34,7 +34,7 @@ Bir blok zinciri Veri Yöneticisi örneği yapılandırmak için şunları yapı
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır.
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash). **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash) . **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2.0.51 veya üstünü gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -62,7 +62,7 @@ az resource create \
 | Parametre | Açıklama |
 |-----------|-------------|
 | resource-group | Blok zinciri Veri Yöneticisi örneğinin oluşturulacağı kaynak grubu adı. |
-| ad | Blok zinciri Veri Yöneticisi örneğinin adı. |
+| name | Blok zinciri Veri Yöneticisi örneğinin adı. |
 | Kaynak türü | Bir blok zinciri Veri Yöneticisi örneği için kaynak türü **Microsoft. blockzincirde/izleyicileri**. |
 | -Full-Object | Özellikler ' in izleyici kaynağı seçeneklerini içerdiğini gösterir. |
 | properties | İzleyici kaynağının özelliklerini içeren JSON biçimli dize. , Bir dize veya dosya olarak geçirilebilir.  |
@@ -79,7 +79,7 @@ az resource create \
 }
 ```
 
-| Öğe | Açıklama |
+| Öğe | Description |
 |---------|-------------|
 | location | İzleyici kaynağının oluşturulacağı bölge |
 | properties | İzleyici kaynağı oluşturulurken ayarlanacak Özellikler |
@@ -124,7 +124,7 @@ az resource create \
 | Parametre | Açıklama |
 |-----------|-------------|
 | resource-group | Giriş kaynağının oluşturulacağı kaynak grubu adı. |
-| ad | Girişin adı. |
+| name | Girişin adı. |
 | ad alanı | **Microsoft. Blockzincirde** sağlayıcı ad alanını kullanın. |
 | Kaynak türü | Bir blok zinciri Veri Yöneticisi girişi için kaynak türü **giriştir**. |
 | üst | Girişin ilişkilendirildiği izleyicinin yolu. Örneğin, **izleyicileri/myizleyici**. |
@@ -133,7 +133,7 @@ az resource create \
 
 ### <a name="input-examples"></a>Giriş örnekleri
 
-Yapılandırma JSON örneği, \<blok zinciri üyesine\>bağlı *Doğu ABD* bölgesinde bir giriş kaynağı oluşturmak için kullanılır.
+' A bağlı *Doğu ABD* bölgesinde bir giriş kaynağı oluşturmak için JSON örneği yapılandırma \<Blockchain member\> .
 
 ``` json
 {
@@ -147,11 +147,11 @@ Yapılandırma JSON örneği, \<blok zinciri üyesine\>bağlı *Doğu ABD* bölg
 }
 ```
 
-| Öğe | Açıklama |
+| Öğe | Description |
 |---------|-------------|
 | location | Giriş kaynağının oluşturulacağı bölge. |
 | InputType | Azure blok zinciri hizmeti üyesinin defter türü. Şu anda **Ethereum** destekleniyor. |
-| resourceId | Girişin bağlandığı işlem düğümü. Abonelik \<\>kimliği \<, kaynak\>grubu ve \<blok zinciri üyesini\> , işlem düğümü kaynağı değerleri ile değiştirin. Giriş, Azure blok zinciri hizmeti üyesinin varsayılan işlem düğümüne bağlanır. |
+| resourceId | Girişin bağlandığı işlem düğümü. \<Subscription ID\>, \<Resource group\> Ve \<Blockchain member\> değerlerini işlem düğümü kaynağı ile değiştirin. Giriş, Azure blok zinciri hizmeti üyesinin varsayılan işlem düğümüne bağlanır. |
 
 Yapılandırma için JSON dizesi kullanarak *myizleyici* Için *MyInput* adlı bir giriş oluşturun.
 
@@ -196,7 +196,7 @@ az resource create \
 | Parametre | Açıklama |
 |-----------|-------------|
 | resource-group | Çıkış kaynağının oluşturulacağı kaynak grubu adı. |
-| ad | Çıkışın adı. |
+| name | Çıkışın adı. |
 | ad alanı | **Microsoft. Blockzincirde** sağlayıcı ad alanını kullanın. |
 | Kaynak türü | Bir blok zinciri için kaynak türü Veri Yöneticisi çıkışı **çıktılar**olur. |
 | üst | Çıktının ilişkilendirildiği izleyicinin yolu. Örneğin, **izleyicileri/myizleyici**. |
@@ -205,7 +205,7 @@ az resource create \
 
 ### <a name="output-examples"></a>Çıkış örnekleri
 
-Event Grid konusu \<\>adlı bir event Grid konusuna bağlı *Doğu ABD* BÖLGESINDE bir çıkış kaynağı oluşturmak için JSON örneği yapılandırma.
+Adlı bir olay kılavuzu konusuna bağlı *Doğu ABD* bölgesinde bir çıkış kaynağı oluşturmak için JSON örneği yapılandırma \<event grid topic\> .
 
 ``` json
 {
@@ -219,11 +219,11 @@ Event Grid konusu \<\>adlı bir event Grid konusuna bağlı *Doğu ABD* BÖLGESI
 }
 ```
 
-| Öğe | Açıklama |
+| Öğe | Description |
 |---------|-------------|
 | location | Çıkış kaynağının oluşturulacağı bölge. |
 | #b2 | Çıkışın türü. Şu anda **Eventgrid** destekleniyor. |
-| resourceId | Çıktının bağlandığı kaynak. Abonelik \<\>kimliği \<, kaynak\>grubu ve \<blok zinciri üyesini\> olay Kılavuzu kaynağı değerleriyle değiştirin. |
+| resourceId | Çıktının bağlandığı kaynak. \<Subscription ID\>, \<Resource group\> Ve \<Blockchain member\> değerlerini Event Grid kaynağı ile değiştirin. |
 
 JSON yapılandırma dizesi kullanarak bir Event Grid konusuna bağlanan *myizleyici* için *MVU put* adlı bir çıktı oluşturun.
 
@@ -273,7 +273,7 @@ az resource create \
 | Parametre | Açıklama |
 |-----------|-------------|
 | resource-group | Uygulama kaynağının oluşturulacağı kaynak grubu adı. |
-| ad | Uygulamanın adı. |
+| name | Uygulamanın adı. |
 | ad alanı | **Microsoft. Blockzincirde** sağlayıcı ad alanını kullanın. |
 | Kaynak türü | Bir blok zinciri Veri Yöneticisi uygulama için kaynak türü **yapıtdır**. |
 | üst | Uygulamanın ilişkilendirildiği izleyicinin yolu. Örneğin, **izleyicileri/myizleyici**. |
@@ -301,7 +301,7 @@ Configuration JSON örneği, sözleşme ABı ve bytecode tarafından tanımlanan
 }
 ```
 
-| Öğe | Açıklama |
+| Öğe | Description |
 |---------|-------------|
 | location | Uygulama kaynağının oluşturulacağı bölge. |
 | artifactType | Uygulamanın türü. Şu anda **Ethereumsmartcontract** destekleniyor. |
@@ -348,7 +348,7 @@ az resource invoke-action \
 | Parametre | Açıklama |
 |-----------|-------------|
 | action | İzleyiciyi çalıştırmak için **Başlat** 'ı kullanın. |
-| ayrılacak | İzleyici kaynak KIMLIĞI. Abonelik \<\>kimliği \<, kaynak\>grubu ve \<izleyici adını\> izleyici kaynağı değerleriyle değiştirin.|
+| ayrılacak | İzleyici kaynak KIMLIĞI. \<Subscription ID\>, \<Resource group\> Ve \<Watcher name\> değerlerini izleyici kaynağı değerleriyle değiştirin.|
 
 ### <a name="start-instance-example"></a>Örnek örneğini Başlat
 
@@ -373,7 +373,7 @@ az resource invoke-action \
 | Parametre | Açıklama |
 |-----------|-------------|
 | action | İzleyiciyi durdurmak için **Durdur** kullanın. |
-| ayrılacak | İzleyicinin adı. Abonelik \<\>kimliği \<, kaynak\>grubu ve \<izleyici adını\> izleyici kaynağı değerleriyle değiştirin. |
+| ayrılacak | İzleyicinin adı. \<Subscription ID\>, \<Resource group\> Ve \<Watcher name\> değerlerini izleyici kaynağı değerleriyle değiştirin. |
 
 ### <a name="stop-watcher-example"></a>İzleyici örneğini durdur
 
@@ -399,7 +399,7 @@ az resource delete \
 | Parametre | Açıklama |
 |-----------|-------------|
 | resource-group | Silinecek izleyicinin kaynak grubu adı. |
-| ad | Silinecek izleyici adı. |
+| name | Silinecek izleyici adı. |
 | Kaynak türü | Bir blok zinciri Veri Yöneticisi İzleyicisi için kaynak türü **Microsoft. blockzinciridir/izleyicileri**. |
 
 ### <a name="delete-instance-example"></a>Örnek örneğini Sil

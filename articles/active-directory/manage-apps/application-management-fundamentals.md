@@ -3,42 +3,43 @@ title: 'Uygulama Yönetimi: En Iyi uygulamalar ve öneriler | Microsoft Docs'
 description: Azure Active Directory uygulamaları yönetmeye yönelik en iyi yöntemleri ve önerileri öğrenin. Uygulama proxy 'Si ile otomatik sağlama ve şirket içi uygulamalar yayımlamayı kullanma hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: reference
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2019
 ms.subservice: app-mgmt
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6534efb6fcd07ee3b9f3979cabf2feb77496a8b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c633f6d311d052b9f9388a38b17c6459aec4b6cc
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74085297"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760278"
 ---
 # <a name="application-management-best-practices"></a>Uygulama yönetimi en iyi uygulamaları
+
 Bu makalede, Azure Active Directory (Azure AD) içinde uygulamaları yönetmeye yönelik öneriler ve en iyi uygulamalar, otomatik sağlama ve uygulama proxy 'Si ile şirket içi uygulamaları yayımlama işlemlerini içerir.
 
 ## <a name="cloud-app-and-single-sign-on-recommendations"></a>Bulut uygulaması ve çoklu oturum açma önerileri
-| Öneri | Açıklamalar |
+| Öneri | Yorumlar |
 | --- | --- |
 | Uygulamalar için Azure AD Uygulama Galerisine bakın  | Azure AD 'de Kurumsal Çoklu oturum açma (SSO) ile etkinleştirilen binlerce önceden tümleştirilmiş uygulama içeren bir galeri bulunur. Uygulamaya özgü Kurulum Kılavuzu için [SaaS uygulama öğreticileri listesine](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)bakın.  | 
 | Federal SAML tabanlı SSO kullanın  | Bir uygulama bunu destekliyorsa, parola tabanlı SSO ve ADFS yerine Azure AD ile Federal ve SAML tabanlı SSO kullanın.  | 
 | Sertifika imzalama için SHA-256 kullanın  | Azure AD, SAML Yanıtını imzalamak için varsayılan olarak SHA-256 algoritmasını kullanır. Uygulama SHA-1 gerektirmediği takdirde SHA-256 kullanın (bkz. [sertifika imzalama seçenekleri](certificate-signing-options.md) ve [uygulama oturum açma sorunu](application-sign-in-problem-application-error.md).)  | 
 | Kullanıcı Ataması gerektir  | Varsayılan olarak, kullanıcılar bu kullanıcılara atanmadan kurumsal uygulamalarınıza erişebilir. Ancak, uygulama rolleri kullanıma sunarsa veya uygulamanın bir kullanıcının erişim panelinde görünmesini istiyorsanız, Kullanıcı Ataması gerektir. (Bkz. [uygulamaları tümleştirmek Için Geliştirici Kılavuzu](developer-guidance-for-integrating-applications.md).)  | 
-| Uygulamalarım erişim panelinden kullanıcılarınıza dağıtın | `https://myapps.microsoft.com` Üzerindeki [erişim paneli](end-user-experiences.md) , kullanıcılara atanan bulut tabanlı uygulamalar için tek bir giriş noktası sağlayan Web tabanlı bir portaldır. Grup Yönetimi ve self servis parola sıfırlama gibi ek yetenekler eklendikçe, kullanıcılar bunları erişim panelinde bulabilir. Bkz. [erişim bölmesi dağıtımı planı](access-panel-deployment-plan.md).
+| Uygulamalarım erişim panelinden kullanıcılarınıza dağıtın | Üzerindeki [erişim paneli](end-user-experiences.md) , `https://myapps.microsoft.com` kullanıcılara atanan bulut tabanlı uygulamalar için tek bir giriş noktası sağlayan Web tabanlı bir portaldır. Grup Yönetimi ve self servis parola sıfırlama gibi ek yetenekler eklendikçe, kullanıcılar bunları erişim panelinde bulabilir. Bkz. [erişim bölmesi dağıtımı planı](access-panel-deployment-plan.md).
 | Grup atamasını kullanma  | Aboneliğinize dahil ise, grup sahibine devam eden erişim yönetimini devredebilmeniz için bir uygulamaya gruplar atayın. (Bkz. [uygulamaları tümleştirmek Için Geliştirici Kılavuzu](developer-guidance-for-integrating-applications.md).)   | 
 | Sertifikaları yönetmek için bir işlem oluşturma | İmza sertifikasının maksimum ömrü üç yıldır. Sertifikanın süresi dolduğunda kesinti oluşmasını engellemek veya en aza indirmek için, sertifikayla ilgili değişiklik bildirimlerinin yakından izlendiğinden emin olmak için roller ve e-posta dağıtım listelerini kullanın. |
 
 ## <a name="provisioning-recommendations"></a>Sağlama önerileri
-| Öneri | Açıklamalar |
+| Öneri | Yorumlar |
 | --- | --- |
 | Bulut uygulamalarıyla sağlamayı ayarlamak için öğreticileri kullanın | Eklemek istediğiniz Galeri uygulaması için sağlamayı yapılandırmaya yönelik adım adım yönergeler için [SaaS uygulama öğreticileri listesini](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) kontrol edin. |
 | Durumu izlemek için sağlama günlüklerini (Önizleme) kullanma | [Sağlama günlükleri](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) , bireysel kullanıcılar için durum da dahil olmak üzere, sağlama hizmeti tarafından gerçekleştirilen tüm eylemlerin ayrıntılarını verir. |
@@ -46,7 +47,7 @@ Bu makalede, Azure Active Directory (Azure AD) içinde uygulamaları yönetmeye 
 
 
 ## <a name="application-proxy-recommendations"></a>Uygulama proxy 'Si önerileri
-| Öneri | Açıklamalar |
+| Öneri | Yorumlar |
 | --- | --- |
 | İç kaynaklara uzaktan erişim için uygulama proxy 'Si kullanma | Uygulama proxy 'Si, uzak kullanıcılara iç kaynaklara erişim verilmesi için önerilir ve bu da VPN veya ters proxy gereksinimini değiştirir. Gecikme ekleyebileceğinden, kurumsal ağ içinden kaynaklara erişmek için tasarlanmamıştır.
 | Özel etki alanlarını kullanma | Uygulamalarınız için özel etki alanları ayarlayın (bkz. [özel etki alanlarını yapılandırma](application-proxy-configure-custom-domain.md)). böylece kullanıcılar ve uygulamalar arasında URL 'lerin ağınızın içinden veya dışından çalışması gerekir. Ayrıca markanızı denetleyebilir ve URL 'nizi özelleştirebilirsiniz.  Özel etki alanı adları kullanırken, Microsoft olmayan bir güvenilen sertifika yetkilisinden ortak bir sertifika almayı planlayın. Azure uygulama proxy 'Si standart, ([joker karakter](application-proxy-wildcard.md)) veya San tabanlı sertifikaları destekler. (Bkz. [uygulama proxy planlaması](application-proxy-deployment-plan.md).) |

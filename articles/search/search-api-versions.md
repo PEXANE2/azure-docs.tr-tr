@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 178f56354120bf7a65c51f1c9cf54e34bd011d97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20f11b14c0393f27a81710218d630f052775e1c3
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137297"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078957"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure Bilişsel Arama API sürümleri
 
@@ -32,11 +32,11 @@ Azure Bilişsel Arama tüm programlama arabirimlerinin geçerli sürümlerinin b
 
 | Arabirimler | En son ana sürüm | Durum |
 | --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |9.0 |Genel kullanıma sunulan, 2019 Mayıs |
+| [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) |9.0 |Genel kullanıma sunulan, 2019 Mayıs |
 | [.NET SDK önizlemesi](https://aka.ms/search-sdk-preview) |8,0-Önizleme |Önizleme, yayın 2019 Nisan |
 | [Hizmet REST API'si](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Genel olarak kullanılabilir |
 | [Service REST API 2019-05-06-Önizleme](search-api-preview.md) |2019-05-06-Önizleme |Önizleme |
-| [.NET Yönetim SDK'sı](https://aka.ms/search-mgmt-sdk) |3,0 |Genel olarak kullanılabilir |
+| [.NET Yönetim SDK'sı](https://aka.ms/search-mgmt-sdk) |3.0 |Genel olarak kullanılabilir |
 | [Yönetim REST API'si](https://docs.microsoft.com/rest/api/searchmanagement/) |2020-03-13|Genel olarak kullanılabilir |
 
 REST API 'Leri için, her bir `api-version` çağrının dahil edilmesi gerekir. Kullanarak `api-version` , önizleme API 'si gibi belirli bir sürümü hedeflemek kolaylaşır. Aşağıdaki örnek, `api-version` parametresinin nasıl belirtildiğini göstermektedir:
@@ -44,14 +44,14 @@ REST API 'Leri için, her bir `api-version` çağrının dahil edilmesi gerekir.
     GET https://my-demo-app.search.windows.net/indexes/hotels?api-version=2019-05-06
 
 > [!NOTE]
-> Her istek bir `api-version`olsa da, tüm API istekleri için aynı sürümü kullanmanızı öneririz. Bu, yeni API sürümleri önceki sürümler tarafından tanınmayan öznitelikler veya işlemler tanıtdığında özellikle doğrudur. API sürümlerinin karışması istenmeyen sonuçlara sahip olabilir ve kaçınılmalıdır.
+> Her istek bir olsa da `api-version` , tüm API istekleri için aynı sürümü kullanmanızı öneririz. Bu, yeni API sürümleri önceki sürümler tarafından tanınmayan öznitelikler veya işlemler tanıtdığında özellikle doğrudur. API sürümlerinin karışması istenmeyen sonuçlara sahip olabilir ve kaçınılmalıdır.
 >
 > Hizmet REST API ve yönetim REST API birbirinden bağımsız olarak sürümlüdür. Sürüm numaralarında benzerlik varsa coarızdır.
 
 Genel olarak kullanılabilir (veya GA) API 'Leri üretimde kullanılabilir ve Azure hizmet düzeyi sözleşmelerine tabidir. Önizleme sürümleri, her zaman bir GA sürümüne geçirilmeyen deneysel özelliklere sahiptir. **Üretim uygulamalarında önizleme API 'Lerini kullanmaktan kaçınmak kesinlikle önerilir.**
 
 ## <a name="update-to-the-latest-version-of-the-rest-api-by-october-15-2020"></a>15 Ekim 2020 ' e kadar REST API en son sürümüne güncelleştirin
-Azure Bilişsel Arama REST API aşağıdaki sürümleri kullanımdan kaldırılacak ve 15 Ekim 2020 itibariyle artık desteklenmeyecektir: **2014-07-31-Preview**, **2014-10-20-Preview**, **2015-02-28-Preview**ve **2015-02-28**. Ayrıca, Azure Bilişsel Arama .NET SDK 'nın **3.0.0-RC** ' den daha eski sürümleri de bu REST API sürümlerinden birini hedeflerse devre dışı bırakılacaktır. Bu tarihten sonra, kullanımdan kaldırılan REST API veya SDK sürümlerinden herhangi birini kullanan uygulamalar artık çalışmaz ve yükseltilmesi gerekir. Bu türde herhangi bir değişiklik yaparken, 12 aylık bir bildirim sunuyoruz, bu nedenle ayarlamak için yeterli zaman vardır.  Azure Bilişsel Arama 'yi kullanmaya devam etmek için lütfen REST API [REST API](search-api-migration.md) hedefleyen mevcut kodu, 15 Ekim 2020 ' ye [2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) veya daha yeni bir sürümü veya .NET SDK 'sını 3,0 veya daha yeni bir [sürüme](search-dotnet-sdk-migration.md) geçirin.  En son sürüme güncelleştirme hakkında sorularınız varsa, kodunuzu güncelleştirmek için yeterli zamana sahip olduğunuzdan emin azuresearch_contact@microsoft.com olmak için lütfen 15 Mayıs 2020 ' e kadar posta gönderin.
+Azure Bilişsel Arama REST API aşağıdaki sürümleri kullanımdan kaldırılacak ve 15 Ekim 2020 itibariyle artık desteklenmeyecektir: **2014-07-31-Preview**, **2014-10-20-Preview**, **2015-02-28-Preview**ve **2015-02-28**. Ayrıca, Azure Bilişsel Arama .NET SDK 'nın **3.0.0-RC** ' den daha eski sürümleri de bu REST API sürümlerinden birini hedeflerse devre dışı bırakılacaktır. Bu tarihten sonra, kullanımdan kaldırılan REST API veya SDK sürümlerinden herhangi birini kullanan uygulamalar artık çalışmaz ve yükseltilmesi gerekir. Bu türde herhangi bir değişiklik yaparken, 12 aylık bir bildirim sunuyoruz, bu nedenle ayarlamak için yeterli zaman vardır.  Azure Bilişsel Arama 'yi kullanmaya devam etmek için lütfen REST API [REST API](search-api-migration.md) hedefleyen mevcut kodu, 15 Ekim 2020 ' ye [2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) veya daha yeni bir sürümü veya .NET SDK 'sını 3,0 veya daha yeni bir [sürüme](search-dotnet-sdk-migration.md) geçirin.  En son sürüme güncelleştirme hakkında sorularınız varsa, azuresearch_contact@microsoft.com kodunuzu güncelleştirmek için yeterli zamana sahip olduğunuzdan emin olmak için lütfen 15 mayıs 2020 ' e kadar posta gönderin.
 
 ## <a name="about-preview-and-generally-available-versions"></a>Önizleme ve genel kullanıma açık sürümler hakkında
 Azure Bilişsel Arama, önce REST API önce, sonra .NET SDK 'nin ön sürüm sürümlerini kullanarak deneysel özellikleri önceden yayınlar.

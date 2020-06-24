@@ -4,15 +4,15 @@ description: Azure Analysis Services sunucu adı diğer adları oluşturmayı ö
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 06/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4b416a25fd0befa91076fed5f9bf5df23ea30844
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 42055762c9c0a642b3efd05af841d70f3f91413c
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698994"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816877"
 ---
 # <a name="alias-server-names"></a>Diğer ad sunucu adları
 
@@ -37,7 +37,7 @@ Bir istemciden bağlanırken, diğer ad sunucu adı **link://** protokol biçimi
 
 Bir diğer ad uç noktası oluşturmak için, geçerli bir Azure Analysis Services sunucu adı döndüren herhangi bir yöntemi kullanabilirsiniz. Örneğin, Azure Blob depolamada gerçek sunucu adını içeren bir dosyaya başvuru veya bir ASP.NET Web Forms uygulaması oluşturup yayımlayacaksınız.
 
-Bu örnekte, Visual Studio 'da bir ASP.NET Web Forms uygulaması oluşturulur. Ana sayfa başvurusu ve Kullanıcı denetimi varsayılan. aspx sayfasından kaldırılır. Default. aspx ' in içeriği yalnızca aşağıdaki sayfa yönergedir:
+Bu örnekte, Visual Studio 'da bir ASP.NET Web Forms uygulaması oluşturulur. Sayfa başvurusu ve Kullanıcı denetimi varsayılan. aspx sayfasından kaldırılır. Default. aspx ' in içeriği yalnızca aşağıdaki sayfa yönergedir:
 
 ```
 <%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FriendlyRedirect._Default" %>

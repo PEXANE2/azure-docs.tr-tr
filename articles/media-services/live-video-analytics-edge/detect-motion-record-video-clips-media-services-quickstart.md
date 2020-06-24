@@ -3,12 +3,12 @@ title: Hareket algılama, video Azure Media Services kaydetme
 description: Bu hızlı başlangıçta canlı video analizinin IoT Edge, canlı video akışındaki hareketleri tespit etmek ve video kliplerini Azure Media Services kaydetmek için nasıl kullanılacağı gösterilmektedir.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: f0045f7fddfe6c544f10d280450cdafe8dca9e2d
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 0a81bebe7333266e1b70f97f8c712fccf392a464
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84262047"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817312"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Hızlı başlangıç: hareketi algılama, videoyu Media Services kaydetme
 
@@ -21,9 +21,9 @@ Bu makalede [Başlarken hızlı](get-started-detect-motion-emit-events-quickstar
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Azure IoT araçları uzantısı](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)ile makinenizde [Visual Studio Code](https://code.visualstudio.com/) .
 * Daha önce [Başlarken hızlı başlangıç](get-started-detect-motion-emit-events-quickstart.md) adımlarını tamamlamadıysanız, aşağıdaki adımları izleyin:
-    * [Azure kaynaklarını ayarlamayı](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources) tamamlar
+    * [Azure kaynakları ayarlama](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [Modülleri dağıtma](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
-    * [Visual Studio Code yapılandırma](get-started-detect-motion-emit-events-quickstart.md#configure-azure-iot-tools-extension-in-visual-studio-code)
+    * [Visual Studio Code Yapılandır](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
 
 ## <a name="review-the-sample-video"></a>Örnek videoyu gözden geçirin
 

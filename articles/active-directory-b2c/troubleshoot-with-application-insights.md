@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 403dbe6106cb7a1d277ba672112d2bc45dbc2987
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc227081af4f306a27b77eb727ea96467f94fa2e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186276"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203121"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Application Insights ile Azure Active Directory B2C günlüklerini toplayın
 
@@ -42,28 +42,28 @@ Henüz bir tane yoksa, aboneliğinizde bir Application Insights örneği oluştu
 
 ## <a name="configure-the-custom-policy"></a>Özel ilkeyi yapılandırma
 
-1. Bağlı olan taraf (RP) dosyasını açın. Örneğin, *Signuporsignın. xml*.
+1. Bağlı olan taraf (RP) dosyasını açın, örneğin *SignUpOrSignin.xml*.
 1. Aşağıdaki öznitelikleri `<TrustFrameworkPolicy>` öğesine ekleyin:
 
-   ```XML
+   ```xml
    DeploymentMode="Development"
    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
    ```
 
-1. Zaten mevcut değilse, `<UserJourneyBehaviors>` `<RelyingParty>` düğüme bir alt düğüm ekleyin. Hemen sonrasında `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`konumlandırmalıdır.
-1. Aşağıdaki düğümü `<UserJourneyBehaviors>` öğesinin alt öğesi olarak ekleyin. ' İ daha önce `{Your Application Insights Key}` kaydettiğiniz Application Insights **izleme anahtarıyla** değiştirdiğinizden emin olun.
+1. Zaten mevcut değilse, `<UserJourneyBehaviors>` düğüme bir alt düğüm ekleyin `<RelyingParty>` . Hemen sonrasında konumlandırmalıdır `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` .
+1. Aşağıdaki düğümü öğesinin alt öğesi olarak ekleyin `<UserJourneyBehaviors>` . ' İ `{Your Application Insights Key}` daha önce kaydettiğiniz Application Insights **izleme anahtarıyla** değiştirdiğinizden emin olun.
 
-    ```XML
+    ```xml
     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
     ```
 
     * `DeveloperMode="true"`ApplicationInsights 'ın işleme işlem hattı aracılığıyla Telemetriyi hızlandırmasını söyler. Geliştirme için iyi, ancak yüksek birimlerde kısıtlanmıştır.
-    * `ClientEnabled="true"`İzleme sayfası görünümü ve istemci tarafı hataları için ApplicationInsights istemci tarafı betiği gönderir. Bunları, Application Insights portalındaki **Browserzamanlamalar** tablosunda görüntüleyebilirsiniz. Ayar `ClientEnabled= "true"`olarak, sayfa betiklerine Application Insights ekler ve sayfa YÜKLERININ ve Ajax çağrılarının, sayımların, tarayıcı özel DURUMLARıNıN ve Ajax hatalarının ayrıntılarının yanı sıra Kullanıcı ve oturum sayımlarının zamanlamalarını alırsınız. Bu alan **isteğe bağlıdır**ve varsayılan olarak olarak `false` ayarlanır.
+    * `ClientEnabled="true"`İzleme sayfası görünümü ve istemci tarafı hataları için ApplicationInsights istemci tarafı betiği gönderir. Bunları, Application Insights portalındaki **Browserzamanlamalar** tablosunda görüntüleyebilirsiniz. Ayar olarak `ClientEnabled= "true"` , sayfa betiklerine Application Insights ekler ve sayfa yüklerinin ve Ajax çağrılarının, sayımların, tarayıcı özel durumlarının ve Ajax hatalarının ayrıntılarının yanı sıra Kullanıcı ve oturum sayımlarının zamanlamalarını alırsınız. Bu alan **isteğe bağlıdır**ve varsayılan olarak olarak ayarlanır `false` .
     * `ServerEnabled="true"`Application Insights için, var olan Kullanıcıgünneyıkaydedicisi JSON 'sini özel bir olay olarak gönderir.
 
     Örneğin:
 
-    ```XML
+    ```xml
     <TrustFrameworkPolicy
       ...
       TenantId="fabrikamb2c.onmicrosoft.com"
@@ -93,7 +93,7 @@ Application Insights yeni Günlükler görebilmeniz için genellikle beş dakika
 
 Günlükleri görmek için kullanabileceğiniz bir sorgu listesi aşağıda verilmiştir:
 
-| Sorgu | Açıklama |
+| Sorgu | Description |
 |---------------------|--------------------|
 `traces` | Azure AD B2C tarafından oluşturulan tüm günlüklere bakın |
 `traces | where timestamp > ago(1d)` | Son gün için Azure AD B2C tarafından oluşturulan tüm günlüklere bakın

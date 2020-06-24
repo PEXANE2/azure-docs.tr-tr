@@ -1,7 +1,7 @@
 ---
-title: include dosyası
+title: dosya dahil etme
 titleSuffix: Azure
-description: include dosyası
+description: dosya dahil etme
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -31,7 +31,7 @@ Bu bölümde, doğrudan eşleme için aşağıdaki değişiklik işlemlerinin na
 Bir bağlantının kaldırılması Azure portal Şu anda desteklenmiyor. Daha fazla bilgi için [Microsoft eşlemesi](mailto:peeringexperience@microsoft.com)'ne başvurun.
 
 ### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>Etkin bağlantılarda bant genişliğini yükseltme veya düşürme
-1. Değiştirmek istediğiniz eşleme bağlantısını seçin ve ardından **..** . seçeneğini belirleyin.  >  **Bağlantıyı Düzenle**.
+1. Değiştirmek istediğiniz eşleme bağlantısını seçin ve ardından **..**  >  . seçeneğini belirleyin. **Bağlantıyı Düzenle**.
     > [!div class="mx-imgBorder"]
     > ![Bağlantıyı Düzenle](../media/setup-direct-modify-editconnection.png)
 
@@ -40,7 +40,7 @@ Bir bağlantının kaldırılması Azure portal Şu anda desteklenmiyor. Daha fa
     > ![Bant genişliğini değiştirme](../media/setup-direct-modify-editconnectionsettings.png)
 
 ### <a name="add-ipv4-or-ipv6-session-information-on-active-connections"></a>Etkin bağlantılara IPv4 veya IPv6 oturumu bilgilerini ekleme
-1. Değiştirmek istediğiniz eşleme bağlantısını seçin ve ardından **..** . seçeneğini belirleyin.  >  **Bağlantıyı** adım 1 ' de gösterildiği gibi düzenleyin.
+1. Değiştirmek istediğiniz eşleme bağlantısını seçin ve ardından **..**  >  . seçeneğini belirleyin. **Bağlantıyı** adım 1 ' de gösterildiği gibi düzenleyin.
 1. **Oturum IPv4 öneki** veya **oturum IPv6 ön eki** bilgilerini girin ve **Kaydet**' i seçin.
 
 ### <a name="remove-ipv4-or-ipv6-session-information-on-active-connections"></a>Etkin bağlantılardaki IPv4 veya IPv6 oturumu bilgilerini Kaldır

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f50373b0841b7626bc405f121015c15ae1587a97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77bb53e2605913fcee6999284acb04616efc53af
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80108581"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201421"
 ---
 # <a name="define-an-application-insights-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde Application Insights teknik profil tanımlama
 
@@ -32,7 +32,7 @@ Azure Active Directory B2C (Azure AD B2C), Azure AD B2C için sunulan izleme ana
 
 ## <a name="protocol"></a>Protokol
 
-**Protokol** öğesinin `Proprietary` **Name** özniteliğinin olarak ayarlanması gerekir. **Handler** özniteliği, Application Insights için Azure AD B2C tarafından kullanılan protokol işleyici derlemesinin tam adını içermelidir:`Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+**Protokol** öğesinin **Name** özniteliğinin olarak ayarlanması gerekir `Proprietary` . **Handler** özniteliği, Application Insights için Azure AD B2C tarafından kullanılan protokol işleyici derlemesinin tam adını içermelidir:`Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
 Aşağıdaki örnek, ortak Application Insights teknik profilini gösterir. Diğer Application Insights teknik profiller, yapılandırmasından yararlanmak için AzureInsights-Common ' i içerir.  
 
@@ -45,9 +45,9 @@ Aşağıdaki örnek, ortak Application Insights teknik profilini gösterir. Diğ
 
 ## <a name="input-claims"></a>Giriş talepleri
 
-**Inputclaim** öğesi Application Insights gönderileceği talepler listesini içerir. Ayrıca, talebin adını Application Insights görünmesini istediğiniz bir adla eşleyebilirsiniz. Aşağıdaki örnek, Application Insights için nasıl Telemetriler gönderileceğini gösterir. Bir olayın özellikleri, olaya eklenen özelliğin sözdizimi `{property:NAME}`aracılığıyla eklenir. DefaultValue, bir statik değer veya desteklenen [talep çözümleyicilerine](claim-resolver-overview.md)göre çözümlenen bir değer olabilir.
+**Inputclaim** öğesi Application Insights gönderileceği talepler listesini içerir. Ayrıca, talebin adını Application Insights görünmesini istediğiniz bir adla eşleyebilirsiniz. Aşağıdaki örnek, Application Insights için nasıl Telemetriler gönderileceğini gösterir. Bir olayın özellikleri `{property:NAME}` , olaya eklenen özelliğin sözdizimi aracılığıyla eklenir. DefaultValue, bir statik değer veya desteklenen [talep çözümleyicilerine](claim-resolver-overview.md)göre çözümlenen bir değer olabilir.
 
-```XML
+```xml
 <InputClaims>
   <InputClaim ClaimTypeReferenceId="PolicyId" PartnerClaimType="{property:Policy}" DefaultValue="{Policy:PolicyId}" />
   <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="{property:JourneyId}" DefaultValue="{Context:CorrelationId}" />
@@ -71,13 +71,13 @@ Outputclaim ve OutputClaimsTransformations öğeleri kullanılmaz.
 CryptographicKeys öğesi kullanılmıyor.
 
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | Instrumentationkey| Yes | Olayları günlüğe kaydetmek için kullanılacak Application Insights [izleme anahtarı](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key). | 
-| DeveloperMode| Hayır | Geliştirici modunun etkin olup olmadığını gösteren bir Boole değeri. Olası değerler: `true` veya `false` (varsayılan). Bu meta veriler, olayların nasıl arabelleğe alınacağını denetler. En az olay hacmi olan bir geliştirme ortamında, geliştirici modunun etkinleştirilmesi, Application Insights ' a anında gönderilen olaylarda sonuçlanır.|  
-|Disabletelemetri |Hayır |Telemetrinin etkin olup olmadığını gösteren bir Boole değeri. Olası değerler: `true` veya `false` (varsayılan).| 
+| DeveloperMode| No | Geliştirici modunun etkin olup olmadığını gösteren bir Boole değeri. Olası değerler: `true` veya `false` (varsayılan). Bu meta veriler, olayların nasıl arabelleğe alınacağını denetler. En az olay hacmi olan bir geliştirme ortamında, geliştirici modunun etkinleştirilmesi, Application Insights ' a anında gönderilen olaylarda sonuçlanır.|  
+|Disabletelemetri |No |Telemetrinin etkin olup olmadığını gösteren bir Boole değeri. Olası değerler: `true` veya `false` (varsayılan).| 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

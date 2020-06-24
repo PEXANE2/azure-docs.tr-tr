@@ -3,25 +3,25 @@ title: Uygulama erişim paneli tarayıcı uzantısını yükler-Azure AD
 description: Erişim paneli tarayıcı uzantısını yüklerken karşılaşılan yaygın hataları giderme.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 05/04/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 771ba79f067cbff1ab8bbfece64f4028b4ca50b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2046c24220079a604792d07f3ebc3f6ef11e9c8a
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275849"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84761094"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>Erişim paneli tarayıcı uzantısını yükler
 
@@ -52,7 +52,7 @@ Erişim paneli tarayıcı uzantısını yüklemek için aşağıdakileri yapın:
 3.  İstendiğinde, **Şimdi yüklensin**' i seçin.  
     Seçtiğiniz tarayıcı için indirme bağlantısına yönlendirilirsiniz. 
     
-4.  **Add (Ekle)** seçeneğini belirleyin.
+4.  **Ekle**'yi seçin.
 
 5.  İstenirse, uzantıyı **etkinleştirin** ya da **buna izin verin** .
 
@@ -67,7 +67,7 @@ Chrome ve Microsoft Edge 'in uzantısını doğrudan aşağıdaki sitelerden da 
 - [Firefox uzantısı](https://addons.mozilla.org/en-US/firefox/addon/access-panel-extension/)
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>Uygulamalarımın güvenli oturum açma uzantısını kullanma
-* Dışında `https://myapps.microsoft.com`bir uygulamam URL 'si kullanıyorsanız, aşağıdakileri yaparak varsayılan URL 'nizi yapılandırın:
+* Dışında bir uygulamam URL 'SI kullanıyorsanız `https://myapps.microsoft.com` , aşağıdakileri yaparak varsayılan URL 'nizi yapılandırın:
    1. Uzantıya *oturum açmadığınızdan uzantı* simgesine sağ tıklayın.
    2. Menüsünde, **uygulamalar URL 'si**' ni seçin.
    3. Varsayılan URL 'nizi seçin.

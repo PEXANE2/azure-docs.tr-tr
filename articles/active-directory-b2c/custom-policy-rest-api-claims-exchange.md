@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 78f7c8eb363d791b7109aebced668c1e0a952274
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fdbd6784ea3333c92154e940916f052dd9cdbfd9
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636088"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202519"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>İzlenecek yol: Azure Active Directory B2C içindeki özel ilkelere REST API talep alışverişi ekleme
 
@@ -27,7 +27,7 @@ Bu senaryoda, kullanıcının belirteç verilerini kurumsal iş kolu iş akış�
 
 Etkileşimi bir doğrulama teknik profili olarak da tasarlayabilirsiniz. Bu, REST API ekranda verileri doğrularken ve talepler döndüren durumlarda uygundur. Daha fazla bilgi için bkz. [Izlenecek yol: Kullanıcı girişini doğrulamak için Azure AD B2C Kullanıcı yolculuğunda REST API talep Değişimlerinizi tümleştirme](custom-policy-rest-api-claims-validation.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Kaydolma ve yerel hesaplarla oturum açma için çalışan bir özel ilkenize sahip olmanız gerekir.
 - [Azure AD B2C özel ilkenizde REST API talep değişimlerinin nasıl tümleştirileceğini](custom-policy-rest-api-intro.md)öğrenin.
@@ -123,7 +123,7 @@ Yukarıdaki açıklamalar `AuthenticationType` ve `AllowInsecureAuthInProduction
 1. `<UserJourneys>`Öğesi kapatıldıktan sonra uzantı dosyasına yapıştırın `<ClaimsProviders>` .
 1. Öğesini bulun `<UserJourney Id="SignUpOrSignIn">` ve en son düzenlemeden önce aşağıdaki düzenleme adımını ekleyin.
 
-    ```XML
+    ```xml
     <OrchestrationStep Order="7" Type="ClaimsExchange">
       <ClaimsExchanges>
         <ClaimsExchange Id="RESTGetProfile" TechnicalProfileReferenceId="REST-GetProfile" />
@@ -133,7 +133,7 @@ Yukarıdaki açıklamalar `AuthenticationType` ve `AllowInsecureAuthInProduction
 
 1. ' İ ' ye değiştirerek son düzenleme adımını yeniden düzenleyin `Order` `8` . Son iki düzenleme adımlarınız aşağıdaki gibi görünmelidir:
 
-    ```XML
+    ```xml
     <OrchestrationStep Order="7" Type="ClaimsExchange">
       <ClaimsExchanges>
         <ClaimsExchange Id="RESTGetProfile" TechnicalProfileReferenceId="REST-GetProfile" />
@@ -171,17 +171,17 @@ Yukarıdaki açıklamalar `AuthenticationType` ve `AllowInsecureAuthInProduction
 </RelyingParty>
 ```
 
-**Profileedit. xml**ve **passwordreset. xml** Kullanıcı bağlantısı için bu adımı tekrarlayın.
+**ProfileEdit.xml**için bu adımı tekrarlayın ve Kullanıcı **PasswordReset.xml** .
 
-Değiştirdiğiniz dosyaları kaydedin: *TrustFrameworkBase. xml*ve *TrustFrameworkExtensions. xml*, *Signuporsign. xml*, *profileedit. xml*ve *passwordreset. xml*. 
+Değiştirdiğiniz dosyaları kaydedin: *TrustFrameworkBase.xml*ve *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*ve *PasswordReset.xml*. 
 
 ## <a name="test-the-custom-policy"></a>Özel ilkeyi test etme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 1. **Kimlik deneyimi çerçevesini**seçin.
-1. **Özel Ilkeyi karşıya yükle**' yi seçin ve ardından değiştirdiğiniz ilke dosyalarını karşıya yükleyin: *TrustFrameworkBase. xml*ve *TrustFrameworkExtensions. xml*, *Signuporsign. xml*, *profileedit. xml*ve *passwordreset. xml*. 
+1. **Özel Ilkeyi karşıya yükle**' yi seçin ve ardından değiştirdiğiniz ilke dosyalarını karşıya yükleyin: *TrustFrameworkBase.xml*ve *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*ve *PasswordReset.xml*. 
 1. Karşıya yüklediğiniz kaydolma veya oturum açma ilkesini seçin ve **Şimdi Çalıştır** düğmesine tıklayın.
 1. Bir e-posta adresi veya Facebook hesabı kullanarak kaydolabilirsiniz.
 1. Uygulamanıza geri gönderilen belirteç `balance` talebi içerir.

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0b460d5a3c5535b74e349fa46c6a2ad55fc3a8d8
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a60824ecac9d62de74ac00472ca9108789b9b3a8
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966577"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202885"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak SSO ve belirteç özelleştirmesini yönetme
 
@@ -30,7 +30,7 @@ BasePolicy öğesi ve bağlı olan taraf dosyasının RelyingParty öğesi aras�
 
 İçinde, belirteç ömürlerinizi etkileyen bilgileri yerleştirmeniz gerekir. XML şu örneğe benzer şekilde görünür:
 
-```XML
+```xml
 <ClaimsProviders>
   <ClaimsProvider>
     <DisplayName>Token Issuer</DisplayName>
@@ -55,13 +55,13 @@ BasePolicy öğesi ve bağlı olan taraf dosyasının RelyingParty öğesi aras�
 - **Erişim belirteci yaşam süreleri** -erişim belirteci yaşam süresi değeri **token_lifetime_secs** meta veri öğesiyle ayarlanır. Varsayılan değer 3600 saniyedir (60 dakika).
 - **Kimlik belirteci ömrü** -kimlik belirtecinin yaşam süresi değeri **id_token_lifetime_secs** meta veri öğesiyle ayarlanır. Varsayılan değer 3600 saniyedir (60 dakika).
 - **Belirteç ömrünü Yenile** -yenileme belirteci yaşam süresi değeri **refresh_token_lifetime_secs** meta veri öğesiyle ayarlanır. Varsayılan değer 1209600 saniyedir (14 gün).
-- **Yenileme belirteci kayan pencere ömrü** -yenileme belirtecinize bir kayan pencere ömrü ayarlamak isterseniz, **rolling_refresh_token_lifetime_secs** meta veri öğesi değerini ayarlayın. Varsayılan değer 7776000 ' dir (90 gün). Bir kayan pencere ömrü zorlamak istemiyorsanız, öğesini ile `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`değiştirin.
-- **Veren (ISS) talebi** -veren (İSS) talebi **ıssuanceclaımpattern** meta veri öğesiyle ayarlanır. Geçerli değerler ve ' `AuthorityAndTenantGuid` `AuthorityWithTfp`dir.
-- **Ilke kimliğini temsil eden talep ayarlama** -bu değeri ayarlama seçenekleri `TFP` (güven Framework ilkesi) ve `ACR` (kimlik doğrulama bağlamı başvurusu). `TFP`önerilen değerdir. **Authenticationcontextreferenceclaımpattern** değerini olarak ayarlayın `None`.
+- **Yenileme belirteci kayan pencere ömrü** -yenileme belirtecinize bir kayan pencere ömrü ayarlamak isterseniz, **rolling_refresh_token_lifetime_secs** meta veri öğesi değerini ayarlayın. Varsayılan değer 7776000 ' dir (90 gün). Bir kayan pencere ömrü zorlamak istemiyorsanız, öğesini ile değiştirin `<Item Key="allow_infinite_rolling_refresh_token">True</Item>` .
+- **Veren (ISS) talebi** -veren (İSS) talebi **ıssuanceclaımpattern** meta veri öğesiyle ayarlanır. Geçerli değerler `AuthorityAndTenantGuid` ve ' dir `AuthorityWithTfp` .
+- **Ilke kimliğini temsil eden talep ayarlama** -bu değeri ayarlama seçenekleri `TFP` (güven Framework ilkesi) ve `ACR` (kimlik doğrulama bağlamı başvurusu). `TFP`önerilen değerdir. **Authenticationcontextreferenceclaımpattern** değerini olarak ayarlayın `None` .
 
     **Claimsschema** öğesinde şu öğeyi ekleyin:
 
-    ```XML
+    ```xml
     <ClaimType Id="trustFrameworkPolicy">
       <DisplayName>Trust framework policy name</DisplayName>
       <DataType>string</DataType>
@@ -70,21 +70,21 @@ BasePolicy öğesi ve bağlı olan taraf dosyasının RelyingParty öğesi aras�
 
     **Outputclaim** öğesinde şu öğeyi ekleyin:
 
-    ```XML
+    ```xml
     <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />
     ```
 
     ACR için **Authenticationcontextreferenceclaımpattern** öğesini kaldırın.
 
-- **Subject (Sub) talebi** -Bu seçenek, bu ayarı değiştirmek istiyorsanız varsayılan olarak ObjectID olarak değiştirilir `Not Supported`, şu satırı değiştirin:
+- **Subject (Sub) talebi** -Bu seçenek, bu ayarı değiştirmek istiyorsanız varsayılan olarak ObjectID olarak `Not Supported` değiştirilir, şu satırı değiştirin:
 
-    ```XML
+    ```xml
     <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
     ```
 
     Bu satırla:
 
-    ```XML
+    ```xml
     <OutputClaim ClaimTypeReferenceId="sub" />
     ```
 

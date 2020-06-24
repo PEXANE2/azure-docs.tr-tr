@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 596967a918dc3a94061ce907848e7e502660b97c
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: c587af529831c4fb8cdb15b50b2a0b16a868efe3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324377"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255390"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Azure SQL veritabanı ve Azure SYNAPSE 'de mantıksal SQL Server nedir?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -55,7 +55,7 @@ Sunucu için kaynak grubunu zaman içinde veya sunucunun kendisini oluştururken
 
 Bir sunucu oluşturmak için (veritabanı, elastik havuz veya veri ambarı veritabanı olmadan) [Azure Portal](https://portal.azure.com)kullanarak boş bir SQL Server (mantıksal SQL Server) formuna gidin.
 
-### <a name="create-a-blank-or-sample-sql-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda boş veya örnek bir SQL veritabanı oluşturma
+### <a name="create-a-blank-or-sample-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda boş veya örnek veritabanı oluşturma
 
 SQL veritabanında [Azure Portal](https://portal.azure.com)kullanarak veritabanı oluşturmak için boş bir SQL veritabanı formuna gidin ve istenen bilgileri sağlayın. Kaynak grubunu ve sunucuyu zaman içinde veya veritabanını oluştururken oluşturabilirsiniz. Boş bir veritabanı oluşturabilir veya Adventure Works LT ' y a göre örnek bir veritabanı oluşturabilirsiniz.
 

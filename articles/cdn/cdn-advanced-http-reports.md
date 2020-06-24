@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 0b0eec2425f8a1663eb7a09c83a6bad037d1d79c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c06af1cc7f068070954669fc4ec269c9e679f278
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67594103"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886067"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Gelişmiş HTTP raporları Azure CDN kullanım istatistiklerini çözümleme
 ## <a name="overview"></a>Genel Bakış
@@ -48,7 +48,7 @@ Her bölge için ayrıntılı trafik ve bant genişliği bilgileri, doğrudan ha
 
 Her harita tabanlı Coğrafya raporu türü için aşağıda kısaca bir açıklama verilmiştir.
 
-| Rapor Adı | Açıklama |
+| Rapor Adı | Description |
 | --- | --- |
 | Dünya Haritası |Bu rapor, CDN içeriğiniz için dünya çapında talebi görüntülemenizi sağlar. Her ülke/bölge, bu bölgeden kaynaklanan isabetlerin yüzdesini belirtmek için dünya haritasında renk kodludur. |
 | Birleşik Devletler eşleme |Bu rapor, Birleşik Devletler CDN içeriğiniz için talebi görüntülemenize olanak sağlar. Her durum bu haritada, bu bölgeden kaynaklı isabetlerin yüzdesini göstermek için renk kodludur. |
@@ -71,7 +71,7 @@ Grafiğin sol tarafı (y ekseni), belirtilen bölgede kaç isabetlerin oluştuğ
 
 Aşağıdaki tür raporların her ikisi için de kısa bir açıklama verilmiştir.
 
-| Rapor Adı | Açıklama |
+| Rapor Adı | Description |
 | --- | --- |
 | En çok şehir |Bu rapor, şehri ilgili bölgeden kaynaklanan isabet sayısına göre derecelendirir. |
 | Popüler ülkeler |Bu rapor, ülkeleri/bölgeleri, bu ülke/bölgeden kaynaklanan isabetlerin sayısına göre derecelendirir. |

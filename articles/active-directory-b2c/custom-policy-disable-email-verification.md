@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 51cb46d3ce1b74681c2ee3e53104cc57e73f1c5d
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 7674cda0e64670c611e599c2116e31c0a3d03b35
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192225"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202832"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içinde özel bir ilke kullanarak müşteri kaydı sırasında e-posta doğrulamayı devre dışı bırakma
 
@@ -34,7 +34,7 @@ ms.locfileid: "84192225"
 1. Öğesini bulun `ClaimsProviders` . Öğe yoksa, ekleyin.
 1. Aşağıdaki talep sağlayıcısını `ClaimsProviders` öğesine ekleyin:
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>

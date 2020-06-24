@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 514f8e86d6bd28cc5212e0f0058f00e270f43e35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86f2d5202a9b5439fcacca549659e4e181ffeca4
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128429"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078139"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde raporları ve günlükleri görüntüleme
 
@@ -79,17 +79,17 @@ Bu rapor, Yetkilendirme Yönetimi 'nde bir kullanıcıya şu anda atanmış olan
 
 ## <a name="determine-the-status-of-a-users-request"></a>Kullanıcının isteğinin durumunu belirleme
 
-Bir kullanıcının erişim paketine erişim isteği ve erişimi alma hakkında daha fazla bilgi edinmek için Azure AD denetim günlüğünü kullanabilirsiniz. Özellikle, `EntitlementManagement` ve `UserManagement` kategorilerindeki günlük kayıtlarını, her istek için işleme adımlarıyla ilgili ek ayrıntılar almak için kullanabilirsiniz.  
+Bir kullanıcının erişim paketine erişim isteği ve erişimi alma hakkında daha fazla bilgi edinmek için Azure AD denetim günlüğünü kullanabilirsiniz. Özellikle, ve kategorilerindeki günlük kayıtlarını, `EntitlementManagement` `UserManagement` her istek için işleme adımlarıyla ilgili ek ayrıntılar almak için kullanabilirsiniz.  
 
 1. **Azure Active Directory** ' a ve sonra **Denetim günlükleri**' ne tıklayın.
 
-1. En üstte, aradığınız denetim kaydına **Category** bağlı olarak kategoriyi `EntitlementManagement` veya `UserManagement`ya da olarak değiştirin.  
+1. En üstte, **Category** `EntitlementManagement` `UserManagement` Aradığınız denetim kaydına bağlı olarak kategoriyi veya ya da olarak değiştirin.  
 
-1. **Uygula**’ya tıklayın.
+1. **Uygula**'ya tıklayın.
 
 1. Günlükleri indirmek için **İndir**' e tıklayın.
 
-Azure AD yeni bir istek aldığında, **kategorinin** olduğu `EntitlementManagement` ve **etkinliğin** genellikle `User requests access package assignment`olduğu bir denetim kaydı yazar.  Azure portal doğrudan atama durumunda, denetim kaydının **etkinlik** alanı olur `Administrator directly assigns user to access package`ve atamayı gerçekleştiren kullanıcı **actoruserprincipalname**tarafından tanımlanır.
+Azure AD yeni bir istek aldığında, **kategorinin** olduğu `EntitlementManagement` ve **etkinliğin** genellikle olduğu bir denetim kaydı yazar `User requests access package assignment` .  Azure portal doğrudan atama durumunda, denetim kaydının **etkinlik** alanı olur `Administrator directly assigns user to access package` ve atamayı gerçekleştiren kullanıcı **actoruserprincipalname**tarafından tanımlanır.
 
 Azure AD, istek sürerken aşağıdakiler de dahil olmak üzere ek denetim kayıtları yazacak:
 
@@ -101,11 +101,11 @@ Azure AD, istek sürerken aşağıdakiler de dahil olmak üzere ek denetim kayı
 | `EntitlementManagement` | `Approve access package assignment request` | İstek onaylandı |
 | `EntitlementManagement` | `Ready to fulfill access package assignment request` |İstek onaylandı veya onay gerektirmiyor |
 
-Bir kullanıcıya erişim atandığında Azure AD, `EntitlementManagement` **etkinlik** `Fulfill access package assignment`içeren kategori için bir denetim kaydı yazar.  Erişimi alan Kullanıcı **Actoruserprincipalname** alanı tarafından tanımlanır.
+Bir kullanıcıya erişim atandığında Azure AD, `EntitlementManagement` **etkinlik** içeren kategori için bir denetim kaydı yazar `Fulfill access package assignment` .  Erişimi alan Kullanıcı **Actoruserprincipalname** alanı tarafından tanımlanır.
 
-Erişim atanmamışsa, Azure `EntitlementManagement` ad, etkinlik bir onaylayan tarafından reddedildiyse veya `Access package assignment request timed out (no approver action taken)`bir onaylayanın onaylanmadan önce zaman `Deny access package assignment request`aşımına uğradığından, **etkinlik** içeren kategori için bir denetim kaydı yazar.
+Erişim atanmamışsa, Azure AD, `EntitlementManagement` **etkinlik** `Deny access package assignment request` bir onaylayan tarafından reddedildiyse veya `Access package assignment request timed out (no approver action taken)` bir onaylayanın onaylanmadan önce zaman aşımına uğradığından, etkinlik içeren kategori için bir denetim kaydı yazar.
 
-Kullanıcının erişim paketi atamasının süresi dolarsa, Kullanıcı tarafından iptal edilir veya bir yönetici tarafından kaldırıldıktan sonra Azure AD, `EntitlementManagement` **etkinliği** olan kategori için bir denetim kaydı yazar `Remove access package assignment`.
+Kullanıcının erişim paketi atamasının süresi dolarsa, Kullanıcı tarafından iptal edilir veya bir yönetici tarafından kaldırıldıktan sonra Azure AD, `EntitlementManagement` **etkinliği** olan kategori için bir denetim kaydı yazar `Remove access package assignment` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

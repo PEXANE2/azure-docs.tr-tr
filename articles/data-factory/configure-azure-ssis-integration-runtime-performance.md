@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 36662a0089fef34a539788cfac667b5086a10c78
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6a3b463196142691a59f625429953d1e82502f3d
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194276"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255543"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Yüksek performans için Azure-SSIS Integration Runtime yapılandırma
 
@@ -150,7 +150,7 @@ Paketinizin maliyetine ve çalışan düğümlerine yönelik aşağıdaki yapıl
 
 ## <a name="ssisdbpricingtier"></a>SSISDBPricingTier
 
-**Ssisdbpricingtier** , BIR Azure SQL veritabanında SSIS Katalog veritabanı 'NıN (sssısdb) fiyatlandırma katmandır. Bu ayar IR örneğindeki en fazla çalışan sayısını, bir paket yürütmesini sıraya alma hızını ve yürütme günlüğünü yükleme hızını etkiler.
+**Ssisdbpricingtier** , Azure SQL veritabanı 'NDA bulunan SSIS Katalog veritabanı 'NıN (sssısdb) fiyatlandırma katmandır. Bu ayar IR örneğindeki en fazla çalışan sayısını, bir paket yürütmesini sıraya alma hızını ve yürütme günlüğünü yükleme hızını etkiler.
 
 -   Paket yürütmeyi sıraya alma ve yürütme günlüğünü yükleme hızlarından endişelenmezseniz, en düşük veritabanı fiyatlandırma katmanını seçebilirsiniz. Temel fiyatlandırmayla Azure SQL veritabanı, bir tümleştirme çalışma zamanı örneğinde 8 çalışanı destekler.
 

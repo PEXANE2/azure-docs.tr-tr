@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ff2a8ad05e26ea31fc8100d4000171313881f4e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e42c889277f937a33e72eaf57819385166d6a409
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188792"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202323"
 ---
 # <a name="verification-display-control"></a>Doğrulama görüntüleme denetimi
 
@@ -40,12 +40,12 @@ Doğrulama görüntüleme denetimi iki adımdan oluşur (Eylemler):
 
 **Doğrulamaları ıationcontrol** aşağıdaki öğeleri içermelidir:
 
-- Öğesinin türü `DisplayControl` `VerificationControl`.
+- Öğesinin türü `DisplayControl` `VerificationControl` .
 - `DisplayClaims`
   - Doğrulama kodunun nereye gönderileceğini belirten bir veya daha fazla talebe **gönderin** . Örneğin, *e-posta* veya *ülke kodu* ve *telefon numarası*.
-  - **Doğrulama kodu** -kod gönderildikten sonra kullanıcının sağladığı doğrulama kodu talebi. Bu talep gerekli olarak ayarlanmalıdır ve `ControlClaimType` olarak ayarlanmalıdır. `VerificationCode`
+  - **Doğrulama kodu** -kod gönderildikten sonra kullanıcının sağladığı doğrulama kodu talebi. Bu talep gerekli olarak ayarlanmalıdır ve olarak `ControlClaimType` ayarlanmalıdır `VerificationCode` .
 - Kullanıcı doğrulama sürecini tamamladıktan sonra otomatik olarak onaylanan sayfaya döndürülecek çıkış talebi (isteğe bağlı). Örneğin, *e-posta* veya *ülke kodu* ve *telefon numarası*. Kendi kendini onaylanan teknik profil, verileri kalıcı hale getirmek veya çıkış taleplerini bir sonraki düzenleme adımına çıkarmak için talepleri kullanır.
-- Aşağıdaki `Action`adlarla iki adet:
+- `Action`Aşağıdaki adlarla iki adet:
   - **Sendcode** -kullanıcıya bir kod gönderir. Bu eylem genellikle bir kod oluşturmak ve göndermek için iki doğrulama teknik profili içerir.
   - **Verifycode** -kodu doğrular. Bu eylem genellikle tek bir doğrulama teknik profili içerir.
 
@@ -53,7 +53,7 @@ Aşağıdaki örnekte, sayfada bir **e-posta** metin kutusu görüntülenir. Kul
 
 Ardından Kullanıcı, **doğrulama** kodunu girer ve geri uçtaki **verifycode** eylemini tetiklemek için **verifycode** 'u seçer. Tüm doğrulamalar başarılı olursa, **doğrulamaları ıationcontrol** tamamlanmış olarak kabul edilir ve Kullanıcı bir sonraki adıma devam edebilir.
 
-```XML
+```xml
 <DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">
   <DisplayClaims>
     <DisplayClaim ClaimTypeReferenceId="email"  Required="true" />

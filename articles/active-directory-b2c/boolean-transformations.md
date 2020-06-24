@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 02d488108474084346d9e37d5cc6ecbe3a8a05c6
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 7c292f939339add06168c55236f8666651e4aace
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484287"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201285"
 ---
 # <a name="boolean-claims-transformations"></a>Boole talep dönüştürmeleri
 
@@ -36,7 +36,7 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) ' de kimlik deneyimi çer
 
 Aşağıdaki talep dönüşümünde, ve iki Boolean ClaimTypes gösterilmektedir: `isEmailNotExist` , ve `isSocialAccount` . `presentEmailSelfAsserted` `true` Giriş taleplerinin her ikisi de değeri ise, çıkış talebi olarak ayarlanır `true` . Bir düzenleme adımında, yalnızca sosyal hesap e-postası boş ise, otomatik olarak onaylanan bir sayfayı önceden ayarlamak için bir ön koşul kullanabilirsiniz.
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="AndClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="isEmailNotExist" TransformationClaimType="inputClaim1" />
@@ -72,7 +72,7 @@ Aşağıdaki talep dönüşümünde, ve iki Boolean ClaimTypes gösterilmektedir
 
 Aşağıdaki talep dönüşümünde, bir Boolean ClaimType değerinin bir değerle nasıl kontrol yapılacağı gösterilmektedir `true` . `accountEnabled`ClaimType değeri false ise, bir hata iletisi oluşturulur.
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertAccountEnabledIsTrue" TransformationMethod="AssertBooleanClaimIsEqualToValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="accountEnabled" TransformationClaimType="inputClaim" />
@@ -86,7 +86,7 @@ Aşağıdaki talep dönüşümünde, bir Boolean ClaimType değerinin bir değer
 
 `login-NonInteractive`Doğrulama teknik profili `AssertAccountEnabledIsTrue` talep dönüşümünü çağırır.
 
-```XML
+```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
   <OutputClaimsTransformations>
@@ -97,7 +97,7 @@ Aşağıdaki talep dönüşümünde, bir Boolean ClaimType değerinin bir değer
 
 Otomatik olarak onaylanan teknik profil, doğrulama **oturum açma-etkileşimsiz** teknik profilini çağırır.
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationBooleanValueIsNotEqual">Custom error message if account is disabled.</Item>
@@ -127,7 +127,7 @@ Bir talebin Boole değerinin veya değerine eşit olduğunu denetler `true` `fal
 
 Aşağıdaki talep dönüşümünde, bir Boolean ClaimType değerinin bir değerle nasıl kontrol yapılacağı gösterilmektedir `true` . `IsAgeOver21Years`ClaimType değeri öğesine eşitse `true` , talep dönüştürmesi, `true` Aksi takdirde döndürür `false` .
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertAccountEnabled" TransformationMethod="CompareBooleanClaimToValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="IsAgeOver21Years" TransformationClaimType="inputClaim" />
@@ -161,7 +161,7 @@ Boolean ınputclaim ' in olmayan bir işlemini gerçekleştirir ve outputClaim '
 
 Bir talep üzerinde mantıksal olumsuzlama gerçekleştirmek için bu talep dönüşümünü kullanın.
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="NotClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userExists" TransformationClaimType="inputClaim" />
@@ -191,7 +191,7 @@ Bir talep üzerinde mantıksal olumsuzlama gerçekleştirmek için bu talep dön
 
 Aşağıdaki talep dönüşümünde `Or` iki Boolean ClaimTypes gösterilmektedir. Düzenleme adımında, taleplerden birinin değeri ise, otomatik olarak onaylanan bir sayfayı önceden ayarlamak için bir ön koşul kullanabilirsiniz `true` .
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="OrClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="isLastTOSAcceptedNotExists" TransformationClaimType="inputClaim1" />

@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4aa9f4839c8bfc04cee4bb03ea0eac98cb8b25c0
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4824b64236270c422f22809e9eeb191ee3be27fa
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926128"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202577"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'da çoklu oturum açma oturumu yönetimi
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-[Çoklu oturum açma (SSO) oturum](session-overview.md) yönetimi, özel ilkelerdeki diğer teknik profille aynı semantiğini kullanır. Bir düzenleme adımı yürütüldüğünde, adımla ilişkili teknik profil bir `UseTechnicalProfileForSessionManagement` başvuru için sorgulanır. Varsa, başvurulan SSO oturum sağlayıcısı, kullanıcının bir oturum katılımcısı olup olmadığını görmek için denetlenir. Öyleyse, oturum yeniden doldurmak için SSO oturum sağlayıcısı kullanılır. Benzer şekilde, bir düzenleme adımının yürütülmesi tamamlandığında, bir SSO oturum sağlayıcısı belirtilmişse, oturum bilgilerini oturumdaki depolamak için sağlayıcı kullanılır.
+[Çoklu oturum açma (SSO) oturum](session-overview.md) yönetimi, özel ilkelerdeki diğer teknik profille aynı semantiğini kullanır. Bir düzenleme adımı yürütüldüğünde, adımla ilişkili teknik profil bir başvuru için sorgulanır `UseTechnicalProfileForSessionManagement` . Varsa, başvurulan SSO oturum sağlayıcısı, kullanıcının bir oturum katılımcısı olup olmadığını görmek için denetlenir. Öyleyse, oturum yeniden doldurmak için SSO oturum sağlayıcısı kullanılır. Benzer şekilde, bir düzenleme adımının yürütülmesi tamamlandığında, bir SSO oturum sağlayıcısı belirtilmişse, oturum bilgilerini oturumdaki depolamak için sağlayıcı kullanılır.
 
 Azure AD B2C, kullanılabilecek birkaç SSO oturum sağlayıcısı tanımladı:
 
@@ -41,11 +41,11 @@ SSO yönetim sınıfları, `<UseTechnicalProfileForSessionManagement ReferenceId
 
 ## <a name="input-claims"></a>Giriş talepleri
 
-`InputClaims` Öğe boş veya yok.
+`InputClaims`Öğe boş veya yok.
 
 ## <a name="persisted-claims"></a>Kalıcı talepler
 
-Uygulamanın geri döndürülmesi veya sonraki adımlarda ön koşullar tarafından kullanılması gereken talepler, oturum üzerinde depolanması veya dizindeki Kullanıcı profilinden bir okuma ile genişletilmiş olmalıdır. Kalıcı talepler kullanmak, kimlik doğrulamanın, eksik taleplerde başarısız olmasına neden olur. Oturumdaki talepleri eklemek için teknik profilin `<PersistedClaims>` öğesini kullanın. Sağlayıcı oturumu yeniden doldurmak için kullanıldığında, kalıcı talepler talep çantasına eklenir.
+Uygulamanın geri döndürülmesi veya sonraki adımlarda ön koşullar tarafından kullanılması gereken talepler, oturum üzerinde depolanması veya dizindeki Kullanıcı profilinden bir okuma ile genişletilmiş olmalıdır. Kalıcı talepler kullanmak, kimlik doğrulamanın, eksik taleplerde başarısız olmasına neden olur. Oturumdaki talepleri eklemek için `<PersistedClaims>` Teknik profilin öğesini kullanın. Sağlayıcı oturumu yeniden doldurmak için kullanıldığında, kalıcı talepler talep çantasına eklenir.
 
 ## <a name="output-claims"></a>Çıkış talepleri
 
@@ -55,9 +55,9 @@ Uygulamanın geri döndürülmesi veya sonraki adımlarda ön koşullar tarafın
 
 ### <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
 
-Ad, bu sağlayıcı hiçbir şey yapmaz. Bu sağlayıcı, belirli bir teknik profilde SSO davranışını gizleme için kullanılabilir. Aşağıdaki `SM-Noop` teknik profil [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.
+Ad, bu sağlayıcı hiçbir şey yapmaz. Bu sağlayıcı, belirli bir teknik profilde SSO davranışını gizleme için kullanılabilir. Aşağıdaki `SM-Noop` Teknik profil [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Noop">
   <DisplayName>Noop Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.NoopSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -66,9 +66,9 @@ Ad, bu sağlayıcı hiçbir şey yapmaz. Bu sağlayıcı, belirli bir teknik pro
 
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-Bu sağlayıcı, talepleri bir oturumda depolamak için kullanılabilir. Bu sağlayıcıya genellikle yerel ve Federasyon hesaplarını yönetmek için kullanılan teknik bir profilde başvurulur. Aşağıdaki `SM-AAD` teknik profil [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.
+Bu sağlayıcı, talepleri bir oturumda depolamak için kullanılabilir. Bu sağlayıcıya genellikle yerel ve Federasyon hesaplarını yönetmek için kullanılan teknik bir profilde başvurulur. Aşağıdaki `SM-AAD` Teknik profil [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-AAD">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -87,9 +87,9 @@ Bu sağlayıcı, talepleri bir oturumda depolamak için kullanılabilir. Bu sağ
 ```
 
 
-Aşağıdaki `SM-MFA` teknik profil [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`dahildir. Bu teknik profil, Multi-Factor Authentication oturumunu yönetir.
+Aşağıdaki `SM-MFA` Teknik profil [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack) dahildir `SocialAndLocalAccountsWithMfa` . Bu teknik profil, Multi-Factor Authentication oturumunu yönetir.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-MFA">
   <DisplayName>Session Mananagement Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -104,9 +104,9 @@ Aşağıdaki `SM-MFA` teknik profil [özel ilke başlangıç paketine](custom-po
 
 ### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
-Bu sağlayıcı, "kimlik sağlayıcısı Seç" ekranını bastırmak ve bir Federasyon kimlik sağlayıcısından oturumu kapatmak için kullanılır. Genellikle Facebook veya Azure Active Directory gibi bir federal kimlik sağlayıcısı için yapılandırılmış teknik bir profilde başvurulur. Aşağıdaki `SM-SocialLogin` teknik profil [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.
+Bu sağlayıcı, "kimlik sağlayıcısı Seç" ekranını bastırmak ve bir Federasyon kimlik sağlayıcısından oturumu kapatmak için kullanılır. Genellikle Facebook veya Azure Active Directory gibi bir federal kimlik sağlayıcısı için yapılandırılmış teknik bir profilde başvurulur. Aşağıdaki `SM-SocialLogin` Teknik profil [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-SocialLogin">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.ExternalLoginSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -119,7 +119,7 @@ Bu sağlayıcı, "kimlik sağlayıcısı Seç" ekranını bastırmak ve bir Fede
 </TechnicalProfile>
 ```
 
-#### <a name="metadata"></a>Meta Veriler
+#### <a name="metadata"></a>Meta veri
 
 | Öznitelik | Gerekli | Açıklama|
 | --- | --- | --- |
@@ -138,9 +138,9 @@ Bu sağlayıcı, OAuth2 veya OpenID Connect bağlı olan taraf ve Azure AD B2C a
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Bu sağlayıcı, bağlı olan taraf uygulaması veya Federe SAML kimlik sağlayıcısı arasında Azure AD B2C SAML oturumlarını yönetmek için kullanılır. SAML kimlik sağlayıcısı oturumunu depolamak için SSO sağlayıcısını kullanırken, olarak `RegisterServiceProviders` `false`ayarlanması gerekir. Aşağıdaki `SM-Saml-idp` teknik profil [SAML kimlik sağlayıcısı teknik profili](saml-identity-provider-technical-profile.md)tarafından kullanılır.
+Bu sağlayıcı, bağlı olan taraf uygulaması veya Federe SAML kimlik sağlayıcısı arasında Azure AD B2C SAML oturumlarını yönetmek için kullanılır. SAML kimlik sağlayıcısı oturumunu depolamak için SSO sağlayıcısını kullanırken, `RegisterServiceProviders` olarak ayarlanması gerekir `false` . Aşağıdaki `SM-Saml-idp` Teknik profil [SAML kimlik sağlayıcısı teknik profili](saml-identity-provider-technical-profile.md)tarafından kullanılır.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Saml-idp">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -150,23 +150,23 @@ Bu sağlayıcı, bağlı olan taraf uygulaması veya Federe SAML kimlik sağlay�
 </TechnicalProfile>
 ```
 
-B2C SAML oturumunu `RegisterServiceProviders` depolamak için sağlayıcıyı kullanırken, olarak `true`ayarlanmalıdır. SAML oturumu kapatma için `SessionIndex` ve `NameID` işleminin tamamlanmasını gerekir.
+B2C SAML oturumunu depolamak için sağlayıcıyı kullanırken, `RegisterServiceProviders` olarak ayarlanmalıdır `true` . SAML oturumu kapatma için `SessionIndex` ve `NameID` işleminin tamamlanmasını gerekir.
 
-Aşağıdaki `SM-Saml-issuer` teknik profil, [SAML verenin teknik profili](saml-issuer-technical-profile.md) tarafından kullanılır
+Aşağıdaki `SM-Saml-issuer` Teknik profil, [SAML verenin teknik profili](saml-issuer-technical-profile.md) tarafından kullanılır
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Saml-issuer">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
 </TechnicalProfile>
 ```
 
-#### <a name="metadata"></a>Meta Veriler
+#### <a name="metadata"></a>Meta veri
 
 | Öznitelik | Gerekli | Açıklama|
 | --- | --- | --- |
 | Includesessionındex | No | Şu anda kullanılmıyor olabilir.|
-| RegisterServiceProviders | No | Sağlayıcının onay verilen tüm SAML hizmeti sağlayıcılarını kaydetmesi gerektiğini gösterir. Olası değerler: `true` (varsayılan) veya `false`.|
+| RegisterServiceProviders | No | Sağlayıcının onay verilen tüm SAML hizmeti sağlayıcılarını kaydetmesi gerektiğini gösterir. Olası değerler: `true` (varsayılan) veya `false` .|
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

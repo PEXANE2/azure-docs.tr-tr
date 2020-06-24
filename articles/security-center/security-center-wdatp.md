@@ -12,21 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: a741fb76827327c1231890d71ee1da79e052ed50
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 99c9a9ac742981734daf107d73c9cec8777dc642
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232419"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85257542"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Azure Güvenlik Merkezi ile Microsoft Defender Gelişmiş tehdit koruması
 
-Azure Güvenlik Merkezi, [Microsoft Defender Gelişmiş tehdit koruması](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) (ATP) ile tümleştirerek bulut Iş yükü koruma platformlarını sunmaktadır.
-Bu değişiklik, kapsamlı Uç Nokta Koruma ve Yanıt (EDR) özelliklerini de beraberinde getirmektedir. Microsoft Defender ATP tümleştirmesi ile, normalleştirimler oluşturabilirsiniz. Ayrıca, Azure Güvenlik Merkezi tarafından izlenen sunucu uç noktalarında gelişmiş saldırıları algılayabilir ve bunlara yanıt verebilirsiniz.
+Azure Güvenlik Merkezi, kapsamlı uç nokta algılama ve yanıt (EDR) özellikleri sağlamak için [Microsoft Defender Gelişmiş tehdit koruması (ATP)](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) ile tümleşir.
 
 ## <a name="microsoft-defender-atp-features-in-security-center"></a>Güvenlik Merkezi 'ndeki Microsoft Defender ATP özellikleri
 
-Microsoft Defender ATP kullandığınızda şunları alırsınız:
+Microsoft Defender ATP şunları sağlar:
 
 - **Gelişmiş ihlal sonrası algılama algılayıcı**: Windows Server Için MICROSOFT Defender ATP sensörleri çok sayıda davranış sinyali toplar.
 
@@ -34,19 +33,18 @@ Microsoft Defender ATP kullandığınızda şunları alırsınız:
 
 - **Tehdit bilgileri**: MICROSOFT Defender ATP, saldırgan araçlarını, tekniklerini ve yordamlarını belirlediğinde uyarı oluşturur. Microsoft tehdit arayıcılar ve güvenlik ekipleri tarafından oluşturulan ve iş ortakları tarafından sunulan zeka tarafından düzenlenen verileri kullanır.
 
-Aşağıdaki yetenekler artık Azure Güvenlik Merkezi 'nde sunulmaktadır:
 
-- **Otomatik ekleme**: MICROSOFT Defender ATP algılayıcısı, Azure Güvenlik Merkezi 'ne eklendi olan Windows Server 'lar için otomatik olarak etkinleştirilir (windows Server 2019 çalıştıranlar hariç).
+Defender ATP 'yi Azure Güvenlik Merkezi ile tümleştirerek aşağıdaki ek yetenekler de yararlı olabilir:
 
-- **Tek bir cam bölmesi**: Azure Güvenlik Merkezi konsolunda MICROSOFT Defender ATP uyarıları görüntülenir.
+- **Otomatik ekleme**: Tümleştirme, Azure Güvenlik Merkezi tarafından izlenen Windows sunucuları Için MICROSOFT Defender ATP algılayıcısı 'nı otomatik olarak (windows Server 2019 çalıştırmadıkları müddetçe) otomatik olarak sunar.
 
-Daha fazla araştırmak için Microsoft Defender ATP 'yi kullanın. Microsoft Defender ATP, uyarı işlem ağacı ve olay grafiği gibi ek bilgiler sağlar. Ayrıca, altı aya kadar geçmiş bir dönem için her davranışı gösteren ayrıntılı bir makine zaman çizelgesi görebilirsiniz.
+- **Tek bir cam bölmesi**: Azure Güvenlik Merkezi konsolunda MICROSOFT Defender ATP uyarıları görüntülenir. Daha fazla araştırmak için Microsoft Defender ATP 'yi kullanın. Microsoft Defender ATP, uyarı işlem ağacı ve olay grafiği gibi ek bilgiler sağlar. Ayrıca, altı aya kadar geçmiş bir dönem için her davranışı gösteren ayrıntılı bir makine zaman çizelgesi görebilirsiniz.
 
-![Uyarı hakkında ayrıntılı bilgi içeren Microsoft Defender ATP sayfası](media/security-center-wdatp/image3.png)
+    ![Uyarı hakkında ayrıntılı bilgi içeren Microsoft Defender ATP sayfası](media/security-center-wdatp/image3.png)
 
 ## <a name="platform-support"></a>Platform desteği
 
-Güvenlik Merkezi 'ndeki Microsoft Defender ATP, Windows Server 2016, 2012 R2 ve 2008 R2 SP1 'de algılamayı destekler, Azure VM 'Leri için Standart katman aboneliğine ve Azure dışı VM 'Lere ihtiyacınız varsa yalnızca çalışma alanı düzeyinde Standart katman gerekir.
+Güvenlik Merkezi 'ndeki Microsoft Defender ATP, Windows Server 2016, 2012 R2 ve 2008 R2 SP1 üzerinde algılamayı destekler. Azure VM 'Ler için Standart katman aboneliğine ve Azure dışı VM 'Ler için yalnızca çalışma alanı düzeyinde Standart katmana ihtiyacınız vardır.
 
 > [!NOTE]
 > Sunucuları izlemek için Azure Güvenlik Merkezi 'ni kullandığınızda, Microsoft Defender ATP kiracısı otomatik olarak oluşturulur ve Microsoft Defender ATP verileri varsayılan olarak Avrupa 'da depolanır. Verilerinizi başka bir konuma taşımanız gerekiyorsa, kiracıyı sıfırlamak için Microsoft Desteği başvurmanız gerekir. Bu tümleştirmenin kullanılmasıyla sunucu uç noktası izleme Office 365 GCC müşterileri için devre dışı bırakıldı.
@@ -66,7 +64,7 @@ Sunucuları güvenlik merkezi 'ne eklemek için **Azure Güvenlik Merkezi 'Ne gi
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>Microsoft Defender ATP tümleştirmesini etkinleştir
 
-Microsoft Defender ATP tümleştirmesi 'nin etkin olup olmadığını görmek için **Güvenlik Merkezi** > **fiyatlandırma & ayarları** ' nı seçin > aboneliğinize tıklayın.
+Microsoft Defender ATP tümleştirmesi 'nin etkin olup olmadığını görmek için **Güvenlik Merkezi**  >  **fiyatlandırma & ayarları** ' nı seçin > aboneliğinize tıklayın.
 Burada, şu anda etkin olan entegrasyona bakabilirsiniz.
 
   ![Microsoft Defender ATP tümleştirmesi etkin olan Azure Güvenlik Merkezi tehdit algılama ayarları sayfası](media/security-center-wdatp/enable-integrations.png)
@@ -81,11 +79,9 @@ Burada, şu anda etkin olan entegrasyona bakabilirsiniz.
 
 ## <a name="access-to-the-microsoft-defender-atp-portal"></a>Microsoft Defender ATP portalına erişim
 
-[Portala kullanıcı erişimi atama](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access)' daki yönergeleri izleyin.
+1. [Portala kullanıcı erişimi atama](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access)' daki yönergeleri izleyin.
 
-## <a name="set-the-firewall-configuration"></a>Güvenlik duvarı yapılandırmasını ayarlama
-
-Anonim trafiği engelleyen bir ara sunucu veya güvenlik duvarınız varsa, Microsoft Defender ATP algılayıcısı sistem bağlamından bağlandığında, anonim trafiğe izin verildiğini doğrulayın. [Proxy sunucusundaki Microsoft Defender ATP hizmeti URL 'lerine erişimi etkinleştirme](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server)' deki yönergeleri izleyin.
+1. Anonim trafiği engelleyen bir ara sunucuya veya güvenlik duvarına sahip olup olmadığınızı denetleyin. Defender ATP algılayıcısı sistem bağlamından bağlanır, bu nedenle anonim trafiğe izin verilmelidir. Microsoft Defender ATP portalına bir daha fazla erişim sağlamak için [proxy sunucusundaki Microsoft Defender ATP hizmeti URL 'lerine erişimi etkinleştirme](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server)' deki yönergeleri izleyin.
 
 ## <a name="test-the-feature"></a>Özelliği test etme
 
@@ -93,7 +89,7 @@ Bir zararsız Microsoft Defender ATP test uyarısı oluşturmak için:
 
 1. ' C:\Test-mbatp-test ' klasörünü oluşturun.
 
-1. Uzak Masaüstü 'Nü kullanarak bir Windows Server 2012 R2 VM 'sine veya Windows Server 2016 sanal makinesine erişin. Bir komut satırı penceresi açın.
+1. Uzak Masaüstü 'Nü kullanarak bir Windows Server 2012 R2 VM 'sine veya Windows Server 2016 sanal makinesine erişin. Komut satırı penceresi açın.
 
 1. Komut isteminde aşağıdaki komutu kopyalayın ve çalıştırın. Komut Istemi penceresi otomatik olarak kapatılacak.
 
@@ -105,7 +101,7 @@ Bir zararsız Microsoft Defender ATP test uyarısı oluşturmak için:
 
 1. Komut başarılı olursa, Azure Güvenlik Merkezi panosunda ve Microsoft Defender ATP portalında yeni bir uyarı görürsünüz. Bu uyarının görünmesi birkaç dakika sürebilir.
 
-1. Güvenlik Merkezi 'nde uyarıyı gözden geçirmek için **güvenlik uyarıları** > **şüpheli PowerShell komut satırı**bölümüne gidin.
+1. Güvenlik Merkezi 'nde uyarıyı gözden geçirmek için **güvenlik uyarıları**  >  **şüpheli PowerShell komut satırı**bölümüne gidin.
 
 1. Araştırma penceresinde, Microsoft Defender ATP portalına gitmek için bağlantıyı seçin.
 

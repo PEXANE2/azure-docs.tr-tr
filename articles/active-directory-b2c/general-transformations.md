@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: afdf2f531ede30d868123d89cac94fcfae070384
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52831a1907d5ca8d13b0477c909d0d0358873973
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188554"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202229"
 ---
 # <a name="general-claims-transformations"></a>Genel talep dönüştürmeleri
 
@@ -35,7 +35,7 @@ Bir talebin değerini başka bir değere kopyalayın. Her iki talep da aynı tü
 
 Bir dize veya sayısal talepten bir değeri başka bir talebe kopyalamak için bu talep dönüşümünü kullanın. Aşağıdaki örnekte, Externatamail talep değeri e-posta talebine kopyalanır.
 
-```XML
+```xml
 <ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="externalEmail" TransformationClaimType="inputClaim"/>
@@ -64,7 +64,7 @@ Bir dize veya sayısal talepten bir değeri başka bir talebe kopyalamak için b
 
 Bir talebin mevcut olup olmadığını veya herhangi bir değer içerip içerdiğini denetlemek için bu talep dönüşümünü kullanın. Dönüş değeri, talebin mevcut olup olmadığını gösteren bir Boole değeridir. Aşağıdaki örnek, e-posta adresinin mevcut olup olmadığını denetler.
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckIfEmailPresent" TransformationMethod="DoesClaimExist">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="inputClaim" />
@@ -89,11 +89,11 @@ Anahtar ve gizli anahtar kullanarak, sağlanmış düz metni karma olarak kullan
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | düz metin | string | Şifrelenecek giriş talebi |
-| Inputclaim | değerinin | string | Anahtar parametresi. Talep dönüştürmeyi kullanarak `CreateRandomString` rastgele bir değer oluşturabilirsiniz. |
-| InputParameter | randomizerSecret | string | Mevcut bir Azure AD B2C **ilkesi anahtarına**işaret eder. Yeni bir ilke anahtarı oluşturmak için: Azure AD B2C kiracınızda, **Yönet**altında **kimlik deneyimi çerçevesi**' ni seçin. Kiracınızda kullanılabilir olan anahtarları görüntülemek için **ilke anahtarlarını** seçin. **Add (Ekle)** seçeneğini belirleyin. **Seçenekler**Için **el ile**' yi seçin. Bir ad belirtin ( *B2C_1A_* ön ek otomatik olarak eklenebilir.). **Gizli** metin kutusuna, kullanmak istediğiniz tüm gizli anahtarı (1234567890 gibi) girin. **Anahtar kullanımı**için **imza**' yı seçin. **Oluştur**’u seçin. |
-| OutputClaim | hash | string | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. `plaintext` Inputclaim 'de yapılandırılan talep. |
+| Inputclaim | değerinin | string | Anahtar parametresi. Talep dönüştürmeyi kullanarak rastgele bir değer oluşturabilirsiniz `CreateRandomString` . |
+| InputParameter | randomizerSecret | string | Mevcut bir Azure AD B2C **ilkesi anahtarına**işaret eder. Yeni bir ilke anahtarı oluşturmak için: Azure AD B2C kiracınızda, **Yönet**altında **kimlik deneyimi çerçevesi**' ni seçin. Kiracınızda kullanılabilir olan anahtarları görüntülemek için **ilke anahtarlarını** seçin. **Ekle**'yi seçin. **Seçenekler**Için **el ile**' yi seçin. Bir ad belirtin ( *B2C_1A_* ön ek otomatik olarak eklenebilir.). **Gizli** metin kutusuna, kullanmak istediğiniz tüm gizli anahtarı (1234567890 gibi) girin. **Anahtar kullanımı**için **imza**' yı seçin. **Oluştur**'u seçin. |
+| OutputClaim | hash | string | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. Inputclaim 'de yapılandırılan talep `plaintext` . |
 
-```XML
+```xml
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="password" TransformationClaimType="plaintext" />

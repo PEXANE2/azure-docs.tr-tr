@@ -1,15 +1,14 @@
 ---
 title: Azure VM’lerinde SQL Server veritabanlarını yedekleme
 description: Bu makalede, Azure sanal makinelerinde Azure Backup SQL Server veritabanlarını nasıl yedekleyeceğinizi öğrenin.
-ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: faf5ffd65f9b3133c504413201d58aee988af71a
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 16e24ed94d8017d9fb922193bb16a33ec7a9cdfd
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248116"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817542"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM’lerinde SQL Server veritabanlarını yedekleme
 
@@ -34,9 +33,10 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 Bir SQL Server veritabanını yedeklemek için aşağıdaki ölçütleri kontrol edin:
 
 1. SQL Server örneğini barındıran VM ile aynı bölgede ve abonelikte bir [Kurtarma Hizmetleri Kasası](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) oluşturun veya oluşturun.
-2. VM 'nin [ağ bağlantısı](backup-sql-server-database-azure-vms.md#establish-network-connectivity)olduğunu doğrulayın.
-3. SQL Server veritabanlarının [Azure Backup için veritabanı adlandırma yönergelerini](#database-naming-guidelines-for-azure-backup)izlediğinden emin olun.
-4. Veritabanı için etkinleştirilmiş başka bir yedekleme çözümünden emin olup olmadığınızı denetleyin. Veritabanını kapatmadan önce diğer tüm SQL Server yedeklemelerini devre dışı bırakın.
+1. VM 'nin [ağ bağlantısı](backup-sql-server-database-azure-vms.md#establish-network-connectivity)olduğunu doğrulayın.
+1. SQL Server veritabanlarının [Azure Backup için veritabanı adlandırma yönergelerini](#database-naming-guidelines-for-azure-backup)izlediğinden emin olun.
+1. SQL Server VM adının ve kaynak grubu adının Birleşik uzunluğunun Azure Resource Manager (ARM) VM 'Ler için 84 karakteri (veya klasik VM 'Ler için 77 karakter) aşmadığından emin olun. Bu sınırlama, bazı karakterlerin hizmet tarafından ayrıldığı bir kısıtlamadır.
+1. Veritabanı için etkinleştirilmiş başka bir yedekleme çözümünden emin olup olmadığınızı denetleyin. Veritabanını kapatmadan önce diğer tüm SQL Server yedeklemelerini devre dışı bırakın.
 
 > [!NOTE]
 > Azure VM için Azure Backup ve ayrıca çakışma olmadan VM üzerinde çalışan bir SQL Server veritabanı için etkinleştirebilirsiniz.
@@ -69,7 +69,7 @@ Ağ güvenlik grupları (NSG) kullanıyorsanız, Azure Backup giden erişime izi
 
 1. **Ayarlar**altında **giden güvenlik kuralları** ' nı seçin.
 
-1. **Add (Ekle)** seçeneğini belirleyin. [Güvenlik kuralı ayarları](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** *hizmet etiketi* olarak ayarlandığından ve **hedef hizmet etiketinin** *AzureBackup*olarak ayarlandığından emin olun.
+1. **Ekle**'yi seçin. [Güvenlik kuralı ayarları](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** *hizmet etiketi* olarak ayarlandığından ve **hedef hizmet etiketinin** *AzureBackup*olarak ayarlandığından emin olun.
 
 1. Yeni oluşturulan giden güvenlik kuralını kaydetmek için **Ekle** ' ye tıklayın.
 
@@ -264,7 +264,7 @@ Bir yedekleme ilkesi oluşturmak için:
 
 Otomatik korumayı, tüm mevcut ve gelecekteki veritabanlarını tek başına bir SQL Server örneğine veya her zaman açık kullanılabilirlik grubuna otomatik olarak yedekleyecek şekilde etkinleştirebilirsiniz.
 
-* Tek seferde otomatik koruma için seçebileceğiniz veritabanı sayısı için bir sınır yoktur.
+* Tek seferde otomatik koruma için seçebileceğiniz veritabanı sayısı için bir sınır yoktur. Bulma genellikle her sekiz saatte bir çalışır. Bununla birlikte, bulmayı **yeniden keşfet** seçeneğini belirleyerek el ile bir keşif çalıştırırsanız yeni veritabanlarını hemen bulabilir ve koruyabilirsiniz.
 * Otomatik korumayı etkinleştirdiğiniz sırada bir örnekteki veritabanlarını seçmeli olarak koruyamazsınız veya dışlayabilirsiniz.
 * Örneğiniz zaten bazı korumalı veritabanları içeriyorsa, otomatik korumayı etkinleştirdikten sonra bile kendi ilkeleri altında korunmaları gerekir. Daha sonra eklenen tüm korumasız veritabanları, otomatik korumayı etkinleştirme sırasında, **yedeklemeyi Yapılandır**altında listelenen tek bir ilkeye sahip olacaktır. Ancak, bir otomatik korumalı veritabanıyla ilişkili ilkeyi daha sonra değiştirebilirsiniz.  
 

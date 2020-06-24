@@ -2,21 +2,21 @@
 title: Belirtilen genel IP adreslerine sahip bir havuz oluşturun
 description: Kendi genel IP adreslerinizi kullanan bir Batch havuzu oluşturmayı öğrenin.
 ms.topic: how-to
-ms.date: 06/02/2020
-ms.openlocfilehash: dc8657655f67ab2c686897677788e3c5bcb490f7
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.date: 06/16/2020
+ms.openlocfilehash: 9992ae573ea5c9590f15d6cffa11da599026c0a9
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300200"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84884964"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>Belirtilen genel IP adreslerine sahip bir Azure Batch havuzu oluşturun
 
-Bir Azure Batch havuzu oluşturduğunuzda, [havuzu belirttiğiniz Azure sanal ağının bir alt ağında](batch-virtual-network.md) sağlayabilirsiniz. Batch havuzundaki sanal makinelere, Batch tarafından oluşturulan genel IP adresleri üzerinden erişilir. Bu genel IP adresleri havuzun ömrü boyunca değişebilir, bu da IP adresleri yenilenmemişse ağ ayarlarınızın güncelliğini yitirmiş hale gelebileceği anlamına gelir.
+Bir Azure Batch havuzu oluşturduğunuzda, [havuzu belirttiğiniz bir Azure sanal ağının](batch-virtual-network.md) (VNet) alt ağında sağlayabilirsiniz. Batch havuzundaki sanal makinelere, Batch tarafından oluşturulan genel IP adresleri üzerinden erişilir. Bu genel IP adresleri havuzun ömrü boyunca değişebilir, bu da IP adresleri yenilenmemişse ağ ayarlarınızın güncelliğini yitirmiş hale gelebileceği anlamına gelir.
 
 Havuzunuzdaki sanal makinelerle birlikte kullanmak üzere statik genel IP adreslerinin bir listesini oluşturabilirsiniz. Bu, genel IP adreslerinin listesini denetlemenizi ve bunların beklenmedik şekilde değişmemesini sağlar. Bu, özellikle belirli IP adreslerine erişimi kısıtlayan bir veritabanı gibi herhangi bir dış hizmetle çalışıyorsanız yararlı olabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Kimlik doğrulaması**. Genel bir IP adresi kullanmak için Batch istemci API 'sinin [Azure Active Directory (ad) kimlik doğrulamasını](batch-aad-auth.md)kullanması gerekir.
 
@@ -25,7 +25,7 @@ Havuzunuzdaki sanal makinelerle birlikte kullanmak üzere statik genel IP adresl
 - **En az bir Azure genel IP adresi**. Bir veya daha fazla genel IP adresi oluşturmak için [Azure Portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address), [Azure komut SATıRı arabirimini (clı)](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)veya [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress)kullanabilirsiniz. Aşağıda listelenen gereksinimleri izlediğinizden emin olun.
 
 > [!NOTE]
-> Batch, genel IP adreslerini içeren kaynak grubundaki ek ağ kaynaklarını otomatik olarak ayırır. Batch, her 80 ayrılmış düğüm için genellikle bir ağ güvenlik grubu (NSG) ve bir yük dengeleyici ayırır. Bu kaynaklar, aboneliğin kaynak kotalarıyla sınırlıdır. Daha büyük havuzlar kullanılırken, bir veya daha fazla kaynağın bir veya daha fazlası için [bir kota artışı istemeniz](batch-quota-limit.md#increase-a-quota) gerekebilir.
+> Batch, genel IP adreslerini içeren kaynak grubundaki ek ağ kaynaklarını otomatik olarak ayırır. Batch, her 100 ayrılmış düğüm için genellikle bir ağ güvenlik grubu (NSG) ve bir yük dengeleyici ayırır. Bu kaynaklar, aboneliğin kaynak kotalarıyla sınırlıdır. Daha büyük havuzlar kullanılırken, bir veya daha fazla kaynağın bir veya daha fazlası için [bir kota artışı istemeniz](batch-quota-limit.md#increase-a-quota) gerekebilir.
 
 ## <a name="public-ip-address-requirements"></a>Genel IP adresi gereksinimleri
 
@@ -37,7 +37,7 @@ Genel IP adreslerinizi oluştururken aşağıdaki gereksinimleri göz önünde b
 - DNS adı belirtilmelidir.
 - Genel IP adreslerinin yalnızca sanal makine yapılandırma havuzları için kullanılması gerekir. Başka hiçbir kaynak bu IP adreslerini kullanmamalıdır veya havuz ayırma hatalarıyla karşılaşabilir.
 - Hiçbir güvenlik ilkesi veya kaynak kilidi, bir kullanıcının genel IP adresine erişimini kısıtlayamaz.
-- Havuz için belirtilen genel IP adresi sayısı, havuzun hedeflediği VM sayısına uyum sağlayacak kadar büyük olmalıdır. Bu, havuzun en azından hedeflenmiş olarak bulunan **düğümlerin**   ve **Targetlowprioritynodes**   özelliklerinin toplamı olmalıdır. Yeterli IP adresi yoksa, havuz işlem düğümlerini kısmen ayırır ve bir yeniden boyutlandırma hatası oluşur. Şu anda Batch, her 80 VM için bir genel IP adresi kullanır.
+- Havuz için belirtilen genel IP adresi sayısı, havuzun hedeflediği VM sayısına uyum sağlayacak kadar büyük olmalıdır. Bu, havuzun en azından hedeflenmiş olarak bulunan **düğümlerin**   ve **Targetlowprioritynodes**   özelliklerinin toplamı olmalıdır. Yeterli IP adresi yoksa, havuz işlem düğümlerini kısmen ayırır ve bir yeniden boyutlandırma hatası oluşur. Şu anda Batch, her 100 VM için bir genel IP adresi kullanır.
 - Her zaman ek bir genel IP adresi arabelleği olmalıdır. Bir havuza eklediğiniz en az bir genel IP adresi veya bir havuza eklediğiniz toplam genel IP adreslerinin yaklaşık %10 ' u daha büyük bir değer eklemenizi öneririz. Bu ek arabellek, ölçeklendirilirken iç iyileştirmesine ve başarısız bir ölçeğe göre daha hızlı ölçeklendirilmesine ve ölçeği ölçeklendirilmesine yardımcı olur.
 - Havuz oluşturulduktan sonra, havuz tarafından kullanılan genel IP adresleri listesini ekleyemez veya değiştiremezsiniz. Listeyi değiştirmeniz gerekiyorsa, havuzu silip yeniden oluşturmanız gerekir.
 

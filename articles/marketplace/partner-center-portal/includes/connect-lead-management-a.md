@@ -1,20 +1,20 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 documentationcenter: partner-center-commercial-marketplace
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
-ms.date: 10/09/2019
+ms.date: 06/01/2020
 ms.author: dsindona
 ms.custom: include file
-ms.openlocfilehash: f79b25c98ae2e764f607fc5a12bc311ed0edacae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d868d7d231f6dbe1952756917e5a7965d6cea2e
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80286192"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686366"
 ---
 Teklifinizi markette listeleyerek ve Müşteri Ilişkileri yönetimi (CRM) sisteminizin dökümünü yaparak müşterilere doğrudan bağlanın. böylece müşteri iletişim bilgilerini bir müşteri ilgilendikten veya ürününüzü dağıtduktan hemen sonra alabilirsiniz.
 
@@ -22,7 +22,6 @@ Teklifinizi markette listeleyerek ve Müşteri Ilişkileri yönetimi (CRM) siste
 
 İş Ortağı Merkezi, müşteri adayı yönetimi için aşağıdaki CRM sistemlerini destekler. Kurulum yönergeleri için bağlantıyı seçin.
 
-- [Azure Blob](../commercial-marketplace-lead-management-instructions-azure-blob.md) -iletişim e-postası, kapsayıcı adı ve depolama hesabı bağlantı dizesi sağlayın. 
 - [Azure tablosu](../commercial-marketplace-lead-management-instructions-azure-table.md) -iletişim e-postası ve depolama hesabı bağlantı dizesi sağlayın. 
 - [DYNAMICS CRM Online](../commercial-marketplace-lead-management-instructions-dynamics.md) -iletişim e-POSTASı, URL ve kimlik doğrulama modu (Office 365 veya Azure Active Directory) sağlayın.
 - [Https uç noktası](../commercial-marketplace-lead-management-instructions-https.md) -e-posta ve HTTPS uç noktası URL 'si sağlayın. 

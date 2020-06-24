@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 1d1368ef8ffb474c6bec1240f567f043961597fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265577"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686180"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Lake Storage 1. ile HDInsight kümeleri oluşturma
 
@@ -29,7 +29,7 @@ Varsayılan depolama alanı veya ek depolama alanı olarak bir Azure Data Lake S
 
 Başlamadan önce, aşağıdaki gereksinimleri karşıladığınızı doğrulayın:
 
-* **Azure aboneliği**. [Azure Ücretsiz deneme sürümünü alın](https://azure.microsoft.com/pricing/free-trial/)sayfasına gidin.
+* **Bir Azure aboneliği**. [Azure Ücretsiz deneme sürümünü alın](https://azure.microsoft.com/pricing/free-trial/)sayfasına gidin.
 * **Data Lake Storage 1. hesabı**. [Azure Portal kullanarak Azure Data Lake Storage 1. ile çalışmaya başlama](data-lake-store-get-started-portal.md)yönergelerini izleyin. Ayrıca hesapta bir kök klasör oluşturmanız gerekir.  Bu makalede, __/kümeler__ adlı bir kök klasör kullanılır.
 * **Bir Azure Active Directory hizmet sorumlusu**. Bu nasıl yapılır Kılavuzu, Azure Active Directory (Azure AD) içinde hizmet sorumlusu oluşturma hakkında yönergeler sağlar. Bununla birlikte, bir hizmet sorumlusu oluşturmak için bir Azure AD yöneticisi olmanız gerekir. Yönetici değilseniz, bu önkoşulu atlayıp devam edebilirsiniz.
 

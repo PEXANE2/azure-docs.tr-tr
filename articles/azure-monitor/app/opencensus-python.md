@@ -7,12 +7,12 @@ ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.custom: tracking-python
-ms.openlocfilehash: 3a47296d755c2a933e7e136a4b17ae87561213ad
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 04581826ab6b05333e910a162c7a0ca9566ec334
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553866"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079110"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python uygulamanız için Azure Izleyicisini ayarlama
 
@@ -342,36 +342,10 @@ Bu ölçümleri ' de görebilmeniz gerekir `performanceCounters` . Gelen istek o
     > [!NOTE]
     > `traces`Bu bağlamda ile aynı değildir `Tracing` . `traces`kullanarak Azure Izleyici 'de göreceğiniz telemetri türünü ifade eder `AzureLogHandler` . `Tracing`OpenCensus içindeki bir kavramı ifade eder ve [Dağıtılmış izleme](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)ile ilgilidir.
 
-5. Günlük iletilerinizi biçimlendirmek için, `formatters` yerleşik Python [günlüğü API](https://docs.python.org/3/library/logging.html#formatter-objects)'sinde öğesini kullanabilirsiniz.
+    > [!NOTE]
+    > Kök günlükçüsü, düzey uyarısı ile yapılandırılır. Diğer bir deyişle, daha az önem derecesine sahip olan gönderdiğiniz tüm Günlükler yok sayılır ve sırasıyla Azure Izleyici 'ye gönderilmez. Daha fazla bilgi için bu [belgelere](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel) bakın.
 
-    ```python
-    import logging
-    from opencensus.ext.azure.log_exporter import AzureLogHandler
-    
-    logger = logging.getLogger(__name__)
-    
-    format_str = '%(asctime)s - %(levelname)-8s - %(message)s'
-    date_format = '%Y-%m-%d %H:%M:%S'
-    formatter = logging.Formatter(format_str, date_format)
-    # TODO: replace the all-zero GUID with your instrumentation key.
-    handler = AzureLogHandler(
-        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
-    handler.setFormatter(formatter)
-    logger.addHandler(handler)
-    
-    def valuePrompt():
-        line = input("Enter a value: ")
-        logger.warning(line)
-    
-    def main():
-        while True:
-            valuePrompt()
-    
-    if __name__ == "__main__":
-        main()
-    ```
-
-6. Ayrıca, custom_dimensions alanını kullanarak *fazladan* anahtar sözcük bağımsız değişkenine günlük iletilerinize özel özellikler ekleyebilirsiniz. Bunlar, Azure Izleyici 'de anahtar-değer çiftleri olarak görünür `customDimensions` .
+5. Ayrıca, custom_dimensions alanını kullanarak *fazladan* anahtar sözcük bağımsız değişkenine günlük iletilerinize özel özellikler ekleyebilirsiniz. Bunlar, Azure Izleyici 'de anahtar-değer çiftleri olarak görünür `customDimensions` .
     > [!NOTE]
     > Bu özelliğin çalışması için custom_dimensions alana bir sözlük geçirmeniz gerekir. Diğer herhangi bir türün bağımsız değişkenlerini geçirirseniz, günlükçü bunları yoksayar.
 
@@ -390,6 +364,39 @@ Bu ölçümleri ' de görebilmeniz gerekir `performanceCounters` . Gelen istek o
 
     # Use properties in logging statements
     logger.warning('action', extra=properties)
+    ```
+
+#### <a name="configure-logging-for-django-applications"></a>Docgo uygulamaları için günlüğü yapılandırma
+
+Günlük kaydını, Docgo uygulamalarınız için yukarıdaki uygulama kodunuzda açıkça yapılandırabilir veya Docgo 'nun günlük yapılandırmasında belirtebilirsiniz. Bu kod, Docgo ayarları yapılandırması için kullandığınız herhangi bir dosyaya gidebilir. Günlüğe kaydetmeyi yapılandırma hakkında daha fazla bilgi [için bkz. docgo](https://docs.djangoproject.com/en/3.0/topics/settings/) ayarlarını yapılandırma ve docgo [günlüğü](https://docs.djangoproject.com/en/3.0/topics/logging/) .
+
+    ```python
+    LOGGING = {
+        "handlers": {
+            "azure": {
+                "level": "DEBUG",
+                "class": "opencensus.ext.azure.log_exporter.AzureLogHandler",
+                "instrumentation_key": "<your-ikey-here>",
+            },
+            "console": {
+                "level": "DEBUG",
+                "class": "logging.StreamHandler",
+                "stream": sys.stdout,
+            },
+        },
+        "loggers": {
+            "logger_name": {"handlers": ["azure", "console"]},
+        },
+    }
+    ```
+
+Yapılandırmanızda belirtilen adla aynı ada sahip günlükçü kullandığınızdan emin olun.
+
+    ```python
+    import logging
+        
+    logger = logging.getLogger("logger_name")
+    logger.warning("this will be tracked")
     ```
 
 #### <a name="sending-exceptions"></a>Özel durumlar gönderiliyor
@@ -428,6 +435,21 @@ Günlüklerinizi izleme bağlamı verileriyle zenginleştirme hakkında daha faz
 #### <a name="modify-telemetry"></a>Telemetriyi değiştirme
 
 İzlenen Telemetriyi Azure Izleyici 'ye gönderilmeden önce değiştirme hakkında daha fazla bilgi için bkz. OpenCensus Python [telemetri işlemcileri](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors).
+
+## <a name="configure-azure-monitor-exporters"></a>Azure Izleyici Exporicileri yapılandırma
+
+Yukarıda gösterildiği gibi, her biri Azure Izleyici 'ye farklı telemetri türleri gönderen ve OpenCensus destekleyen üç farklı Azure Izleyici dışarı aktarmak vardır. Her bir dışarı aktarıcı tarafından gönderilen telemetri türlerini görmek için aşağıya bakın.
+
+Her bir dışarı aktarma, oluşturuculardan geçen yapılandırma için aynı bağımsız değişkenleri kabul eder. Aşağıda, her birine ilişkin ayrıntıları görebilirsiniz.
+
+1. `connection_string`-Azure Izleyici kaynağına bağlanmak için kullanılan bağlantı dizesi. Üzerinden önceliklidir `instrumentation_key` .
+2. `enable_standard_metrics`-İçin kullanılır `AzureMetricsExporter` . Dışarı Aktarıcı 'nın [performans sayacı](https://docs.microsoft.com/azure/azure-monitor/platform/app-insights-metrics#performance-counters) ölçümlerini Azure izleyici 'ye otomatik olarak göndermesini bildirir. Varsayılan olarak olur `True` .
+3. `export_interval`-Dışarı aktarmanın saniye cinsinden sıklığını belirtmek için kullanılır.
+4. `instrumentation_key`-Azure Izleyici kaynağına bağlanmak için kullanılan izleme anahtarı.
+5. `logging_sampling_rate`-İçin kullanılır `AzureLogHandler` . Günlükleri dışarı aktarmak için bir örnekleme hızı [0, 1.0] sağlar. Varsayılan olarak 1,0 ' dir.
+6. `max_batch_size`-Aynı anda verilen telemetri en büyük boyutunu belirtir.
+7. `proxies`-Azure Izleyici 'ye veri göndermek için kullanılacak bir proxy dizisi belirtir. Daha fazla ayrıntı için bkz. [proxy 'ler](https://requests.readthedocs.io/en/master/user/advanced/#proxies) .
+8. `storage_path`-Yerel depolama klasörünün bulunduğu konum (gönderilmemiş telemetri). `opencensus-ext-azure`V 1.0.3 itibariyle varsayılan yol, işletim sistemi geçici dizini + ' dır `opencensus-python`  +  `your-ikey` . Ön v 1.0.3 için varsayılan yol $USER + ' dır `.opencensus`  +  `.azure`  +  `python-file-name` .
 
 ## <a name="view-your-data-with-queries"></a>Sorgular ile verilerinizi görüntüleme
 

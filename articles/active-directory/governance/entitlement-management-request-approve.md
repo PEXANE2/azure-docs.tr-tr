@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/27/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20ec63efe16f1120ca6e7d07c8917d8ad2b3a0e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78c3c177bfcd5ee969e1430306c7294f0a14b658
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261729"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078095"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde erişim isteklerini onaylama veya reddetme
 
@@ -43,7 +43,7 @@ Erişim isteklerini onaylamaya veya reddetmeye yönelik ilk adım, onay bekleyen
 
 E-postanız yoksa, bu adımları izleyerek Onayınızı bekleyen erişim isteklerini bulabilirsiniz.
 
-1. Konumundaki [https://myaccess.microsoft.com](https://myaccess.microsoft.com)erişim portalında oturum açın.  (ABD kamu için, erişim portalındaki etki alanı bağlantısı olacaktır `myaccess.microsoft.us`.)
+1. Konumundaki erişim portalında oturum açın [https://myaccess.microsoft.com](https://myaccess.microsoft.com) .  (ABD kamu için, erişim portalındaki etki alanı bağlantısı olacaktır `myaccess.microsoft.us` .)
 
 1. Onay bekleyen erişim isteklerinin bir listesini görmek için sol taraftaki menüden **onaylar** ' a tıklayın.
 

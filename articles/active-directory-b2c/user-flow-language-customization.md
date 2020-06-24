@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5b3af812b2b78c276b5345b9b19226e6e1dba80b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2040d4521f655a0043987f2363e520abcc6c5d3a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78185769"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203186"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C dil özelleştirmesi
 
@@ -23,12 +23,12 @@ Azure Active Directory B2C (Azure AD B2C) dil özelleştirmesi, Kullanıcı akı
 
 ## <a name="how-language-customization-works"></a>Dil özelleştirmesi nasıl kullanılır?
 
-Kullanıcı akışlarınızın hangi dillerde kullanılabilir olduğunu seçmek için dil özelleştirmesi ' nı kullanırsınız. Özellik etkinleştirildikten sonra, uygulamanızdan sorgu dizesi parametresini `ui_locales`sağlayabilirsiniz. Azure AD B2C ' a çağırdığınızda, sayfanız belirttiğiniz yerel ayara çevrilir. Bu tür bir yapılandırma, Kullanıcı akışlarınızdaki diller üzerinde tüm denetimleri denetlemenizi sağlar ve müşterinin tarayıcısının dil ayarlarını yoksayar.
+Kullanıcı akışlarınızın hangi dillerde kullanılabilir olduğunu seçmek için dil özelleştirmesi ' nı kullanırsınız. Özellik etkinleştirildikten sonra, uygulamanızdan sorgu dizesi parametresini sağlayabilirsiniz `ui_locales` . Azure AD B2C ' a çağırdığınızda, sayfanız belirttiğiniz yerel ayara çevrilir. Bu tür bir yapılandırma, Kullanıcı akışlarınızdaki diller üzerinde tüm denetimleri denetlemenizi sağlar ve müşterinin tarayıcısının dil ayarlarını yoksayar.
 
 Müşterinizin hangi dillerde gördüğü üzerinde bu denetim düzeyine ihtiyaç duymayabilir. Bir `ui_locales` parametre sağlamazsanız, müşterinin deneyimi tarayıcının ayarları tarafından belirlenir. Desteklenen bir dil olarak ekleyerek, Kullanıcı akışlarınızın hangi dillerde çevrildiğinden de denetleyebilirsiniz. Bir müşterinin tarayıcısı, desteklemek istemediğiniz bir dili gösterecek şekilde ayarlandıysa, desteklenen kültürler için varsayılan olarak seçtiğiniz dil bunun yerine gösterilir.
 
 * **UI-yerel ayarlar belirtilen dil**: dil özelleştirmesini etkinleştirdikten sonra, Kullanıcı akışınız burada belirtilen dile çevrilir.
-* **Tarayıcı tarafından istenen dil**: herhangi `ui_locales` bir parametre belirtilmemişse, *dil destekleniyorsa*Kullanıcı akışınız tarayıcı tarafından istenen dile çevrilir.
+* **Tarayıcı tarafından istenen dil**: herhangi bir `ui_locales` parametre belirtilmemişse, *dil destekleniyorsa*Kullanıcı akışınız tarayıcı tarafından istenen dile çevrilir.
 * **İlke varsayılan dili**: tarayıcı bir dil belirtmezse veya desteklenmeyen bir değer belirtiyorsa, Kullanıcı akışı, Kullanıcı akışı varsayılan diline çevrilir.
 
 > [!NOTE]
@@ -38,7 +38,7 @@ Müşterinizin hangi dillerde gördüğü üzerinde bu denetim düzeyine ihtiya�
 
 Dil özelleştirmenin genel kullanıma sunulmadan önce oluşturulan ilkelerin önce bu özelliği etkinleştirmesi gerekir. Sonrasında oluşturulan ilkeler ve Kullanıcı akışları, varsayılan olarak dil özelleştirmesi etkindir.
 
-Bir Kullanıcı akışında dil özelleştirmesini etkinleştirdiğinizde, `ui_locales` parametresini ekleyerek Kullanıcı akışının dilini kontrol edebilirsiniz.
+Bir Kullanıcı akışında dil özelleştirmesini etkinleştirdiğinizde, parametresini ekleyerek Kullanıcı akışının dilini kontrol edebilirsiniz `ui_locales` .
 
 1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
 1. Çeviriler için etkinleştirmek istediğiniz kullanıcı akışına tıklayın.
@@ -47,7 +47,7 @@ Bir Kullanıcı akışında dil özelleştirmesini etkinleştirdiğinizde, `ui_l
 
 ## <a name="select-which-languages-in-your-user-flow-are-enabled"></a>Kullanıcı akışındaki hangi dillerin etkinleştirildiğini seçin
 
-Kullanıcı akışınız için `ui_locales` parametresi olmadan tarayıcı tarafından istendiğinde çevrilecek bir dil kümesi etkinleştirin.
+Kullanıcı akışınız için parametresi olmadan tarayıcı tarafından istendiğinde çevrilecek bir dil kümesi etkinleştirin `ui_locales` .
 
 1. Kullanıcı akışınızdan önceki yönergelerden dil özelleştirmesi etkinleştirildiğinden emin olun.
 1. Kullanıcı akışının **Diller** sayfasında, desteklemek istediğiniz bir dil seçin.
@@ -72,19 +72,19 @@ Bu adımlar size Dizelerinizin düzenlenmesine başlamak için kullanabileceğin
 ### <a name="change-any-string-on-the-page"></a>Sayfadaki herhangi bir dizeyi değiştirme
 
 1. JSON düzenleyicisinde önceki yönergelerden indirilen JSON dosyasını açın.
-1. Değiştirmek istediğiniz öğeyi bulun. Aradığınız dize `StringId` için arama yapabilir veya değiştirmek istediğiniz `Value` özniteliği arayabilirsiniz.
+1. Değiştirmek istediğiniz öğeyi bulun. `StringId`Aradığınız dize için arama yapabilir veya `Value` değiştirmek istediğiniz özniteliği arayabilirsiniz.
 1. Özniteliğini, `Value` görüntülenmesini istediğiniz şekilde güncelleştirin.
-1. Değiştirmek istediğiniz her dize için olarak `Override` `true`değiştirin.
+1. Değiştirmek istediğiniz her dize için `Override` olarak değiştirin `true` .
 1. Dosyayı kaydedin ve değişikliklerinizi karşıya yükleyin. (Karşıya yükleme denetimini, JSON dosyasını indirdiğiniz konum ile aynı yerde bulabilirsiniz.)
 
 > [!IMPORTANT]
-> Bir dizeyi geçersiz kılmanız gerekirse `Override` değerini olarak `true`ayarladığınızdan emin olun. Değer değiştirilmemişse, giriş yok sayılır.
+> Bir dizeyi geçersiz kılmanız gerekirse değerini olarak ayarladığınızdan emin olun `Override` `true` . Değer değiştirilmemişse, giriş yok sayılır.
 
 ### <a name="change-extension-attributes"></a>Uzantı özniteliklerini Değiştir
 
 Bir özel kullanıcı özniteliği için dizeyi değiştirmek isterseniz veya bir JSON öğesine eklemek istiyorsanız, şu biçimdedir:
 
-```JSON
+```json
 {
   "LocalizedStrings": [
     {
@@ -98,15 +98,15 @@ Bir özel kullanıcı özniteliği için dizeyi değiştirmek isterseniz veya bi
 }
 ```
 
-Özel `<ExtensionAttribute>` Kullanıcı özniteme adıyla değiştirin.
+`<ExtensionAttribute>`Özel Kullanıcı özniteme adıyla değiştirin.
 
-Görüntülenecek `<ExtensionAttributeValue>` yeni dize ile değiştirin.
+`<ExtensionAttributeValue>`Görüntülenecek yeni dize ile değiştirin.
 
 ### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>LocalizedCollections kullanarak değer listesi sağlama
 
-Yanıtlar için bir değer listesi kümesi sağlamak istiyorsanız, bir `LocalizedCollections` öznitelik oluşturmanız gerekir. `LocalizedCollections`, `Name` ve `Value` çiftleri dizisidir. Öğelerin sırası görüntülendikleri sıra olacaktır. Eklemek `LocalizedCollections`için aşağıdaki biçimi kullanın:
+Yanıtlar için bir değer listesi kümesi sağlamak istiyorsanız, bir öznitelik oluşturmanız gerekir `LocalizedCollections` . `LocalizedCollections`, `Name` ve `Value` çiftleri dizisidir. Öğelerin sırası görüntülendikleri sıra olacaktır. Eklemek için `LocalizedCollections` aşağıdaki biçimi kullanın:
 
-```JSON
+```json
 {
   "LocalizedStrings": [...],
   "LocalizedCollections": [{
@@ -145,15 +145,15 @@ Değişiklikler Kullanıcı akışınıza otomatik olarak kaydedilir.
 
 ## <a name="customize-the-page-ui-by-using-language-customization"></a>Dil özelleştirmesini kullanarak sayfa Kullanıcı arabirimini özelleştirme
 
-HTML içeriğinizi yerelleştirmenin iki yolu vardır. Bir yol, [dil özelleştirmesini](user-flow-language-customization.md)açmak için bir yoldur. Bu özelliğin etkinleştirilmesi, Azure AD B2C OpenID Connect parametresini `ui-locales`uç noktanıza iletmesine izin verir. İçerik sunucunuz bu parametreyi dile özgü özelleştirilmiş HTML sayfaları sağlamak için kullanabilir.
+HTML içeriğinizi yerelleştirmenin iki yolu vardır. Bir yol, [dil özelleştirmesini](user-flow-language-customization.md)açmak için bir yoldur. Bu özelliğin etkinleştirilmesi, Azure AD B2C OpenID Connect parametresini uç noktanıza iletmesine izin verir `ui-locales` . İçerik sunucunuz bu parametreyi dile özgü özelleştirilmiş HTML sayfaları sağlamak için kullanabilir.
 
-Alternatif olarak, kullanılan yerel ayara göre farklı yerlerden içerik çekebilirsiniz. CORS etkin uç noktanıza, belirli diller için içerik barındırmak üzere bir klasör yapısı ayarlayabilirsiniz. Joker karakter değerini `{Culture:RFC5646}`kullanırsanız, doğru olanı çağıracaksınız. Örneğin, bunun özel sayfa URI 'SI olduğunu varsayalım:
+Alternatif olarak, kullanılan yerel ayara göre farklı yerlerden içerik çekebilirsiniz. CORS etkin uç noktanıza, belirli diller için içerik barındırmak üzere bir klasör yapısı ayarlayabilirsiniz. Joker karakter değerini kullanırsanız, doğru olanı çağıracaksınız `{Culture:RFC5646}` . Örneğin, bunun özel sayfa URI 'SI olduğunu varsayalım:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.html
 ```
 
-Sayfasını ' de `fr`yükleyebilirsiniz. Sayfa HTML ve CSS içeriğini çeker, buradan çekilir:
+Sayfasını ' de yükleyebilirsiniz `fr` . Sayfa HTML ve CSS içeriğini çeker, buradan çekilir:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
@@ -221,9 +221,9 @@ Azure AD B2C aşağıdaki diller için destek içerir. Kullanıcı akış diller
 | Gucerat dili              | çubuğu            | ![evet](./media/user-flow-language-customization/yes.png) | ![hayır](./media/user-flow-language-customization/no.png) |
 | İbranice                | LIP            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Hintçe                 | n            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
-| Hırvatça              | hr            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| Hırvatça              | sa            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Macarca             | Hu            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
-| Endonezce            | id            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
+| Endonezce            | kimlik            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | İtalyanca               | içerdiği            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Japonca              | Sofya            | ![evet](./media/user-flow-language-customization/yes.png) | ![evet](./media/user-flow-language-customization/yes.png) |
 | Kazakça                | kk            | ![hayır](./media/user-flow-language-customization/no.png) | ![evet](./media/user-flow-language-customization/yes.png) |

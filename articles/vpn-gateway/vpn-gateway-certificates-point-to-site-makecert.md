@@ -4,15 +4,15 @@ description: Otomatik olarak imzalanan bir kök sertifika oluşturun, ortak anah
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: ad2ab31e6771efc54238d5747863fa2a9bb2f356
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7903dc7f614d16380626f27579363b1529665cc
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75833983"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84988120"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>MakeCert kullanarak noktadan siteye bağlantılar için sertifikaları oluşturma ve dışarı aktarma
 
@@ -27,7 +27,7 @@ Sertifikalarınızı oluşturmak için [Windows 10 PowerShell adımlarını](vpn
 Aşağıdaki adımlarda, MakeCert kullanarak otomatik olarak imzalanan bir sertifika oluşturma adımları gösterilmektedir. Bu adımlar dağıtım modeline özgü değildir. Bunlar hem Kaynak Yöneticisi hem de klasik için geçerlidir.
 
 1. [MakeCert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx)indirin ve yükleyin.
-2. Yükleme sonrasında, genellikle şu yolda bulunan MakeCert. exe yardımcı programını bulabilirsiniz: ' C:\Program Files (x86) \Windows Kits\10\bin\<Arch> '. Ancak, başka bir konuma yüklenmiş olabilir. Yönetici olarak bir komut istemi açın ve MakeCert yardımcı programının konumuna gidin. Doğru konum için ayarlama yaparak aşağıdaki örneği kullanabilirsiniz:
+2. Yükleme sonrasında, genellikle makecert.exe yardımcı programını şu yolda bulabilirsiniz: ' C:\Program Files (x86) \Windows Kits\10\bin \<arch> '. Ancak, başka bir konuma yüklenmiş olabilir. Yönetici olarak bir komut istemi açın ve MakeCert yardımcı programının konumuna gidin. Doğru konum için ayarlama yaparak aşağıdaki örneği kullanabilirsiniz:
 
    ```cmd
    cd C:\Program Files (x86)\Windows Kits\10\bin\x64

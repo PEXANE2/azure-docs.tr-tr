@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 931511a44e19bfe094791a3ee9b9ca30e03648cb
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: fc6ab2c9c844350e83674ed96a0e79289c7f5b43
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669667"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255424"
 ---
 # <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Azure SQL Edge 'de Azure Stream Analytics işi oluşturma (Önizleme) 
 
@@ -33,7 +33,7 @@ T-SQL akışı, akış işinin dış akış girişleri ve çıkışları ile ili
 
 - [Dış AKıŞ oluşturma (Transact-SQL)](#example-create-an-external-stream-object-to-azure-sql-database)
 
-Ayrıca, Azure SQL Edge, SQL Server veya Azure SQL veritabanı bir çıkış akışı olarak kullanılıyorsa, [VERITABANı KAPSAMLı KIMLIK bilgileri (Transact-SQL) oluşturmanız](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql)gerekir. Bu T-SQL komutu, SQL veritabanına erişmek için kimlik bilgilerini tanımlar.
+Ayrıca, Azure SQL Edge, SQL Server veya Azure SQL veritabanı bir çıkış akışı olarak kullanılıyorsa, [VERITABANı KAPSAMLı KIMLIK bilgileri (Transact-SQL) oluşturmanız](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql)gerekir. Bu T-SQL komutu, veritabanına erişmek için kimlik bilgilerini tanımlar.
 
 ### <a name="supported-input-and-output-stream-data-sources"></a>Desteklenen giriş ve çıkış akışı veri kaynakları
 
@@ -42,7 +42,7 @@ Azure SQL Edge Şu anda yalnızca akış girişleri ve çıkışları olarak aş
 | Veri kaynağı türü | Girdi | Çıktı | Description |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub 'ı | E | E | Bir Azure IoT Edge hub 'ına akış verilerini okumak ve yazmak için veri kaynağı. Daha fazla bilgi için bkz. [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
-| SQL Veritabanı | N | E | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. SQL veritabanı, Azure SQL Edge 'de yerel bir veritabanı veya SQL Server ya da Azure SQL veritabanı 'ndaki uzak bir veritabanı olabilir.|
+| SQL Veritabanı | N | E | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. Veritabanı, Azure SQL Edge 'deki bir yerel veritabanı veya SQL Server ya da Azure SQL veritabanı 'ndaki uzak bir veritabanı olabilir.|
 | Azure Blob depolama | N | E | Azure depolama hesabındaki bir bloba veri yazmak için veri kaynağı. |
 | Kafka | E | N | Bir Kafka konusunun akış verilerini okumak için veri kaynağı. Bu bağdaştırıcı Şu anda yalnızca Azure SQL Edge 'in Intel veya AMD sürümlerinde kullanılabilir. Azure SQL Edge 'in ARM64 sürümünde kullanılamaz.|
 
@@ -202,7 +202,7 @@ Akış işi aşağıdaki durumlardan herhangi birine sahip olabilir:
 | Oluşturulan | Akış işi oluşturuldu, ancak henüz başlatılmadı. |
 | Başlatılıyor | Akış işi başlangıç aşamasındadır. |
 | Boş | Akış işi çalışıyor, ancak işlenecek giriş yok. |
-| İşleniyor | Akış işi çalışıyor ve girişleri işliyor. Bu durum, akış işi için sağlıklı bir durumu gösterir. |
+| İşleme | Akış işi çalışıyor ve girişleri işliyor. Bu durum, akış işi için sağlıklı bir durumu gösterir. |
 | Düzeyi düşürüldü | Akış işi çalışıyor, ancak giriş işlenirken önemli olmayan bazı hatalar oluştu. Giriş işi çalışmaya devam eder, ancak hatalarla karşılaşan girdileri de bırakacak. |
 | Durduruldu | Akış işi durduruldu. |
 | Başarısız | Akış işi başarısız oldu. Bu genellikle işlem sırasında önemli bir hatanın göstergesidir. |

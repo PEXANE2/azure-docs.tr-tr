@@ -5,20 +5,20 @@ description: Azure 'da bir sanal ağ alt ağı ekleme, değiştirme veya silme h
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2020
 ms.author: kumud
-ms.openlocfilehash: b9ef084e530faa3bcea2cfcf1554a84f543bbf59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b43fb027116d746a60c9cd4e690e63181fff4ade
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186093"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711026"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Sanal ağ alt ağını ekleme, değiştirme veya silme
 
@@ -32,9 +32,9 @@ Hesabınız yoksa, etkin abonelikle bir Azure hesabı ayarlayın. [Ücretsiz hes
 
 - **PowerShell kullanıcıları**: [Azure Cloud Shell](https://shell.azure.com/powershell)komutları çalıştırın ya da bilgisayarınızdan PowerShell 'i çalıştırın. Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. Azure Cloud Shell tarayıcısı sekmesinde **ortam Seç** açılan listesini bulun ve daha önce seçilmemişse **PowerShell** ' i seçin.
 
-    PowerShell 'i yerel olarak çalıştırıyorsanız, Azure PowerShell Module sürüm 1.0.0 veya üstünü kullanın. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az.Network` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). Azure ile `Connect-AzAccount` bağlantı oluşturmak için de ' i çalıştırın.
+    PowerShell 'i yerel olarak çalıştırıyorsanız, Azure PowerShell Module sürüm 1.0.0 veya üstünü kullanın. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az.Network` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). `Connect-AzAccount`Azure ile bağlantı oluşturmak için de ' i çalıştırın.
 
-- **Azure komut satırı arabirimi (CLI) kullanıcıları**: [Azure Cloud Shell](https://shell.azure.com/bash)komutları çalıştırın ya da CLI 'yı bilgisayarınızdan çalıştırın. Azure CLı 'yi yerel olarak çalıştırıyorsanız, Azure CLı sürüm 2.0.31 veya üstünü kullanın. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli). Azure ile `az login` bağlantı oluşturmak için de ' i çalıştırın.
+- **Azure komut satırı arabirimi (CLI) kullanıcıları**: [Azure Cloud Shell](https://shell.azure.com/bash)komutları çalıştırın ya da CLI 'yı bilgisayarınızdan çalıştırın. Azure CLı 'yi yerel olarak çalıştırıyorsanız, Azure CLı sürüm 2.0.31 veya üstünü kullanın. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli). `az login`Azure ile bağlantı oluşturmak için de ' i çalıştırın.
 
 Üzerinde oturum açmak veya Azure 'a bağlanmak için kullandığınız hesap, [ağ katılımcısı rolü](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya [izinlerde](#permissions)listelenen uygun eylemlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanmalıdır.
 
@@ -44,11 +44,11 @@ Hesabınız yoksa, etkin abonelikle bir Azure hesabı ayarlayın. [Ücretsiz hes
 
 2. Bir alt ağ eklemek istediğiniz sanal ağın adını seçin.
 
-3. **Ayarlar**' dan **alt** > **ağ alt ağı**' nı seçin.
+3. **Ayarlar**' dan **alt**  >  **ağ alt ağı**' nı seçin.
 
 4. **Alt ağ ekle** iletişim kutusunda, aşağıdaki ayarlar için değerler girin:
 
-    | Ayar | Açıklama |
+    | Ayar | Description |
     | --- | --- |
     | **Adı** | Ad, sanal ağ içinde benzersiz olmalıdır. Diğer Azure hizmetleriyle maksimum uyumluluk için, adın ilk karakteri olarak bir harf kullanmanızı öneririz. Örneğin, Azure Application Gateway, bir sayı ile başlayan bir alt ağa dağıtılır. |
     | **Adres aralığı** | <p>Aralık, sanal ağın adres alanı içinde benzersiz olmalıdır. Aralık, sanal ağ içindeki diğer alt ağ adres aralıklarıyla çakışamaz. Adres alanının, sınıfsız etki alanları arası yönlendirme (CıDR) gösterimi kullanılarak belirtilmesi gerekir.</p><p>Örneğin, *10.0.0.0/16*adres alanına sahip bir sanal ağda, *10.0.0.0/22*olan bir alt ağ adres alanı tanımlayabilirsiniz. Belirtebileceğiniz en küçük Aralık */29*, alt ağ IÇIN sekiz IP adresi sağlar. Azure, protokol uyumluluğu için her bir alt ağdaki ilk ve son adresi ayırır. Azure hizmeti kullanımı için üç ek adres ayrılır. Sonuç olarak, */29* adres aralığı ile bir alt ağ tanımlamak alt ağda KULLANILABILIR üç IP adresi ile sonuçlanır.</p><p>Bir sanal ağı bir VPN ağ geçidine bağlamayı planlıyorsanız, bir ağ geçidi alt ağı oluşturmanız gerekir. [Ağ geçidi alt ağları için belirli adres aralığı konuları](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)hakkında daha fazla bilgi edinin. Belirli koşullar altında alt ağ eklendikten sonra adres aralığını değiştirebilirsiniz. Bir alt ağ adres aralığını değiştirme hakkında bilgi edinmek için bkz. [alt ağ ayarlarını değiştirme](#change-subnet-settings).</p> |
@@ -78,7 +78,7 @@ Hesabınız yoksa, etkin abonelikle bir Azure hesabı ayarlayın. [Ücretsiz hes
 
 5. Alt ağ sayfasında, aşağıdaki ayarlardan birini değiştirin:
 
-    | Ayar | Açıklama |
+    | Ayar | Description |
     | --- | --- |
     | **Adres aralığı** | Alt ağ içinde hiçbir kaynak dağıtılmamışsa, adres aralığını değiştirebilirsiniz. Alt ağda herhangi bir kaynak varsa, kaynakları başka bir alt ağa taşımanız ya da önce alt ağdan silmeniz gerekir. Bir kaynağı taşımak veya silmek için aldığınız adımlar kaynağa bağlı olarak değişir. Alt ağlardaki kaynakları taşımayı veya silmeyi öğrenmek için, bu kaynak türlerinin her biri için belgeleri okuyun. [Bir alt ağ ekleme](#add-a-subnet)adım 4 ' te **adres aralığı** kısıtlamalarına bakın. |
     | **Kullanıcılar** | Yerleşik rolleri veya kendi özel rollerinizi kullanarak alt ağa erişimi denetleyebilirsiniz. Alt ağa erişim için rol ve kullanıcı atama hakkında daha fazla bilgi edinmek için bkz. [rol ataması ekleme](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment). |
@@ -120,7 +120,7 @@ Alt ağı yalnızca alt ağda kaynak yoksa silebilirsiniz. Kaynaklar alt ağdays
 
 Alt ağlardaki görevleri yapmak için, hesabınız [ağ katılımcısı rolüne](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) veya aşağıdaki tabloda uygun eylemlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanmalıdır:
 
-|Eylem                                                                   |   Adı                                       |
+|Eylem                                                                   |   Name                                       |
 |-----------------------------------------------------------------------  |   -----------------------------------------  |
 |Microsoft. Network/virtualNetworks/alt ağlar/okuma                           |   Sanal ağ alt ağını oku              |
 |Microsoft. Network/virtualNetworks/alt ağlar/yazma                          |   Sanal ağ alt ağını oluşturma veya güncelleştirme  |

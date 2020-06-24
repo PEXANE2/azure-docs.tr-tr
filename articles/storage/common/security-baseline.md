@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 92f2102d8d6353da2002a4ee9d5bfbe57a774e10
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: cd7e7df5c789743cf6bd84c6150fd901490bdedd
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792080"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751626"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure depolama için Azure Güvenlik temeli
 
@@ -218,7 +218,7 @@ Depolama hesabı ile ilgili yerleşik ilke tanımlarından da yararlanabilirsini
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: günlükleri izleme ve gözden geçirme
 
-**Kılavuz**: Azure depolama günlüklerini gözden geçirmek için, Log Analytics teklifiyle sorgu gibi olağan seçenekler ve günlük dosyalarını doğrudan görüntülemenin benzersiz bir seçeneği vardır. Azure depolama 'da Günlükler, doğrudan http://accountname.blob.core.windows.net/$logs erişilmesi gereken bloblarda depolanır (günlük klasörü varsayılan olarak gizlidir, bu nedenle doğrudan gitmeniz gerekir. Liste komutlarında görüntülenmez) 
+**Kılavuz**: Azure depolama günlüklerini gözden geçirmek için, Log Analytics teklifiyle sorgu gibi olağan seçenekler ve günlük dosyalarını doğrudan görüntülemenin benzersiz bir seçeneği vardır. Azure depolama 'da Günlükler, doğrudan $logs erişilmesi gereken bloblarda depolanır http://accountname.blob.core.windows.net/ (günlük klasörü varsayılan olarak gizlidir, bu nedenle doğrudan gitmeniz gerekir. Liste komutlarında görüntülenmez) 
 
 Ayrıca, Azure depolama hesabınız için Gelişmiş tehdit koruması 'nı etkinleştirin. Azure depolama için Gelişmiş tehdit koruması, depolama hesaplarına yönelik olağan dışı ve potansiyel olarak zararlı girişimleri algılayan ek bir güvenlik zekası katmanı sağlar. Güvenlik uyarıları, etkinlik durumunda olan bozukluklar gerçekleştiğinde tetiklenir. Bu güvenlik uyarıları Azure Güvenlik Merkezi ile tümleşiktir ve ayrıca, şüpheli etkinliklerin ayrıntıları ve tehditleri İnceleme ve düzeltme önerileri ile abonelik yöneticilerine e-posta yoluyla da gönderilir. 
 
@@ -785,7 +785,10 @@ Ayrıca, Azure Kaynak grafiğini kullanarak abonelikler içindeki kaynakları so
 
 **Rehberlik**: depolama hesabı örneklerinizin yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak Için "Microsoft. Storage" ad alanındaki Azure ilke diğer adlarını kullanın. Azure depolama hesabı için yerleşik Azure Ilke tanımlarını da kullanabilirsiniz, örneğin: 
 
-Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme depolama hesaplarında Gelişmiş tehdit koruması dağıtma depolama hesaplarında, yeni Azure Resource Manager kaynaklara geçirilmesi gerekir depolama hesaplarına Güvenli aktarım etkinleştirilmelidir 
+Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme  
+Depolama hesaplarında Gelişmiş tehdit koruması dağıtma  
+Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir  
+Depolama hesaplarına güvenli aktarım etkinleştirilmelidir  
 
 Azure Güvenlik Merkezi 'nden, depolama hesaplarınız için güvenli bir yapılandırma temeli olarak öneriler kullanın. 
 

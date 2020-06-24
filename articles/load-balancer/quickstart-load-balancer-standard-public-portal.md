@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: b424fe315737b84479283eed2d77398c8ce4f148
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 99a2de4cd8a19d3f05b9dc37f3bcd08cd84b2e68
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78898823"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052752"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak VM 'Lerin yükünü dengelemek için Load Balancer oluşturma
 
@@ -36,19 +36,19 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu bölümde, sanal makinelerin yük dengelemeye yardımcı olan bir Load Balancer oluşturursunuz. Ortak bir Load Balancer veya iç Load Balancer oluşturabilirsiniz. Ortak bir Load Balancer oluşturduğunuzda, Load Balancer için ön uç (varsayılan olarak *Loadbalancerön uç* olarak adlandırılır) olarak yapılandırılmış yeni BIR genel IP adresi de oluşturmanız gerekir.
 
-1. Ekranın sol üst kısmında, **kaynak** > oluştur**ağ** > **Load Balancer**' ı seçin.
+1. Ekranın sol üst kısmında, **kaynak oluştur**  >  **ağ**  >  **Load Balancer**' ı seçin.
 2. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur**' u seçin:
 
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna *Myresourcegroupslb* yazın.|
-    | Adı                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Bölge         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Ortak**seçeneğini belirleyin.                                        |
     | SKU           | **Standart** veya **temel**seçeneğini belirleyin. Microsoft, üretim iş yükleri için standart önerir. |
     | Genel IP adresi | **Yeni oluştur**’u seçin. Kullanmak istediğiniz var olan bir genel IP varsa, **var olanı kullan** ' ı seçin. |
-    | Genel IP adresi adı              | Metin kutusuna *Mypublicıp* yazın.   Temel ```-SKU Basic``` genel IP oluşturmak için kullanın. Temel genel IP 'Ler **Standart** yük dengeleyici ile uyumlu değildir. Microsoft, üretim iş yükleri için **Standart** kullanılmasını önerir.|
+    | Genel IP adresi adı              | Metin kutusuna *Mypublicıp* yazın.   ```-SKU Basic```Temel genel IP oluşturmak için kullanın. Temel genel IP 'Ler **Standart** yük dengeleyici ile uyumlu değildir. Microsoft, üretim iş yükleri için **Standart** kullanılmasını önerir.|
     | Kullanılabilirlik alanı | Esnek bir Load Balancer oluşturmak için *bölge yedekli* yazın. Bir bölgesel Load Balancer oluşturmak için, 1, 2 veya 3 ' ten belirli bir bölge seçin |
 
 > [!IMPORTANT]
@@ -116,26 +116,26 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
 
 | Parametre                   | Değer                |
 |-----------------------------|----------------------|
-| **\<Kaynak-Grup adı>**  | myResourceGroupSLB |
-| **\<sanal ağ-adı>** | myVNet          |
-| **\<bölge adı>**          | Batı Avrupa      |
-| **\<IPv4-adres-alanı>**   | 10.1.0.0 \ 16          |
-| **\<alt ağ-adı>**          | myBackendSubnet        |
-| **\<alt ağ-adres aralığı>** | 10.1.0.0 \ 24          |
+| **\<resource-group-name>**  | myResourceGroupSLB |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | Batı Avrupa      |
+| **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.1.0.0 \ 24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 Genel IP SKU 'Ları ve Load Balancer SKU 'Ları eşleşmelidir. Standart Load Balancer için, arka uç havuzundaki standart IP adresleriyle VM 'Leri kullanın. Bu bölümde, daha sonra daha önce oluşturulmuş Load Balancer arka uç havuzuna eklenen üç farklı bölgede (*bölge 1*, *bölge 2*ve *Bölge 3*) standart bir genel IP adresi ile üç VM (*myVM1*, *myVM2* ve *myVM3*) oluşturacaksınız. Temel ' yı seçtiyseniz, temel IP adresleriyle VM 'Leri kullanın.
 
-1. Portalın sol üst tarafında, **kaynak** > oluştur**işlem** > **Windows Server 2019 Datacenter**' u seçin. 
+1. Portalın sol üst tarafında, **kaynak oluştur**  >  **işlem**  >  **Windows Server 2019 Datacenter**' u seçin. 
    
 1. **Sanal makine oluştur**' da, **temel bilgiler** sekmesinde aşağıdaki değerleri yazın veya seçin:
-   - **Abonelik** > **kaynak grubu**: **myresourcegroupslb**öğesini seçin.
-   - **Örnek ayrıntıları** > **sanal makine adı**: tür *myVM1*.
-   - **Örnek ayrıntıları** > **bölgesi** > **Batı Avrupa**seçin.
-   - **Örnek ayrıntıları** > **kullanılabilirlik seçenekleri** > **kullanılabilirlik alanları**' nı seçin. 
-   - **Örnek ayrıntıları** > **kullanılabilirlik bölgesi** > **1**' i seçin.
+   - **Abonelik**  >  **Kaynak grubu**: **Myresourcegroupslb**öğesini seçin.
+   - **Örnek ayrıntıları**  >  **Sanal makine adı**: *myVM1*yazın.
+   - **Örnek ayrıntıları**  >  **Bölge** > **Batı Avrupa**seçin.
+   - **Örnek ayrıntıları**  >  Kullanılabilirlik **seçenekleri** > **kullanılabilirlik alanları**' nı seçin. 
+   - **Örnek ayrıntıları**  >  **Kullanılabilirlik bölgesi** **1**> seçin.
    - **Yönetici hesabı**> **Kullanıcı adı**, **parola** ve **parola onaylama** bilgilerini girin.
    - **Ağ** sekmesini seçin veya **Sonraki: diskler**' i ve sonra **İleri: ağ**' ı seçin.
   
@@ -150,7 +150,7 @@ Genel IP SKU 'Ları ve Load Balancer SKU 'Ları eşleşmelidir. Standart Load Ba
         - **Yük dengelemesinde**, **Bu sanal makineyi var olan bir yük dengeleme çözümünün arkasına koymak**için **Evet**' i seçin.
         - **Yük Dengeleme ayarları**' nda, **Yük dengeleme seçenekleri**için **Azure yük dengeleyici**' ni seçin.
         - **Yük dengeleyici seçin**için *myloadbalancer*.
-        - **Yönetim** sekmesini seçin veya **İleri** > **Yönetim**' i seçin.
+        - **Yönetim** sekmesini seçin veya **İleri**  >  **Yönetim**' i seçin.
 2. **Yönetim** sekmesinde, **izleme**' nin altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın. 
 1. **İncele ve oluştur**’u seçin.   
 1. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
@@ -158,11 +158,11 @@ Genel IP SKU 'Ları ve Load Balancer SKU 'Ları eşleşmelidir. Standart Load Ba
 
     | Ayar | VM 2| VM 3|
     | ------- | ----- |---|
-    | Adı |  *myVM2* |*myVM3*|
+    | Name |  *myVM2* |*myVM3*|
     | Kullanılabilirlik alanı | 2 |3|
     |Genel IP| **Standart** ISTEYIN|**Standart** ISTEYIN|
     | Genel IP kullanılabilirlik alanı| **Bölge yedekli** |**Bölge yedekli**|
-    | Ağ güvenlik grubu | Mevcut *Mynetworksecurity grubunu* seçin| Mevcut *Mynetworksecurity grubunu* seçin|
+    | Ağ güvenlik grubu | Mevcut *Mynetworksecuritygroup* 'u seçin| Mevcut *Mynetworksecuritygroup* 'u seçin|
 
  ### <a name="create-nsg-rule"></a>NSG kuralı oluşturma
 
@@ -179,7 +179,7 @@ Bu bölümde, HTTP kullanarak gelen bağlantılara izin veren bir ağ güvenlik 
     - **Öncelik**: *100*
     - **Ad**: *myhttprule* 
     - **Açıklama**: "*http 'ye izin ver* 
-4. **Add (Ekle)** seçeneğini belirleyin.
+4. **Ekle**'yi seçin.
 5. Gerekirse, gelen RDP kuralı için aşağıdaki farklı değerlerle adımları yineleyin:
    - **Hedef bağlantı noktası aralıkları**: *3389*yazın.
    - **Öncelik**: *200*yazın. 
@@ -191,7 +191,7 @@ Bu bölümde, HTTP kullanarak gelen bağlantılara izin veren bir ağ güvenlik 
 1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden, *Myresourcegroupslb* kaynak grubunda bulunan **myVM1** ' yi seçin.
 2. Sanal makineye yönelik RDP için **Genel Bakış** sayfasında **Bağlan**’ı seçin.
 5. VM oluşturma işlemleri sırasında belirlediğiniz kimlik bilgilerini kullanarak VM'de oturum açın. *myVM1* adlı sanal makinede uzak masaüstü oturumu başlatılır.
-6. Sunucu masaüstünde **Windows Yönetim Araçları**>**Windows PowerShell**' e gidin.
+6. Sunucu masaüstünde **Windows Yönetim Araçları** > **Windows PowerShell**' e gidin.
 7. PowerShell Penceresinde aşağıdaki komutları çalıştırarak IIS sunucusunu yükleyin, varsayılan iisstart.htm dosyasını kaldırın ve ardından VM’nin adını gösteren yeni bir iisstart.htm dosyasını ekleyin:
 
    ```azurepowershell-interactive

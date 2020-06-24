@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b23b60ae49a4973fa04e6fa5f795f99536e32e7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f17bbe1a19b969fec681082df50be754f5d6034b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188758"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202373"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Azure Pipelines ile özel ilkeler dağıtma
 
@@ -29,7 +29,7 @@ Azure AD B2C içindeki özel ilkeleri yönetmek için Azure Pipelines etkinleşt
 1. Azure işlem hattı yapılandırma
 
 > [!IMPORTANT]
-> Azure işlem hattı ile Azure AD B2C özel ilkeleri yönetmek Şu anda **preview** Microsoft Graph API `/beta` uç noktasında kullanılabilen önizleme işlemlerini kullanıyor. Üretim uygulamalarında bu API 'lerin kullanılması desteklenmez. Daha fazla bilgi için [Microsoft Graph REST API Beta uç nokta başvurusuna](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta)bakın.
+> Azure işlem hattı ile Azure AD B2C özel ilkeleri yönetmek Şu anda Microsoft Graph API uç noktasında kullanılabilen **Önizleme** işlemlerini kullanıyor `/beta` . Üretim uygulamalarında bu API 'lerin kullanılması desteklenmez. Daha fazla bilgi için [Microsoft Graph REST API Beta uç nokta başvurusuna](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -46,7 +46,7 @@ Burada açıklanan senaryo, OAuth 2,0 [istemci kimlik bilgileri verme akışın�
 
 [Önkoşullardan](#prerequisites)bahsedildiği gibi, PowerShell betiklerinizin (Azure Pipelines tarafından yürütülen), kiracınızdaki kaynaklara erişmek için kullanabileceği bir uygulama kaydına ihtiyacınız vardır.
 
-Otomasyon görevleri için kullandığınız bir uygulama kaydınız zaten varsa, uygulama kaydının **API izinleri** içinde **Microsoft Graph** > **Policy** > **Policy. ReadWrite. TrustFramework** izninin verildiğinden emin olun.
+Otomasyon görevleri için kullandığınız bir uygulama kaydınız zaten varsa, **Microsoft Graph**  >  **Policy**  >  uygulama kaydının **API izinleri** içinde Microsoft Graph Policy**Policy. ReadWrite. TrustFramework** izninin verildiğinden emin olun.
 
 Bir yönetim uygulamasını kaydetme hakkında yönergeler için bkz. [Microsoft Graph Azure AD B2C yönetme](microsoft-graph-get-started.md).
 
@@ -58,9 +58,9 @@ Kayıtlı bir yönetim uygulaması ile, ilke dosyalarınız için bir depo yapı
 1. [Yeni bir proje oluşturun][devops-create-project] veya var olan bir projeyi seçin.
 1. Projenizde, **Repos** ' a gidin ve **dosyalar** sayfasını seçin. Mevcut bir depoyu seçin veya bu alıştırma için bir tane oluşturun.
 1. *B2CAssets*adlı bir klasör oluşturun. Gerekli yer tutucu dosyasını *README.MD* olarak adlandırın ve dosyayı **işleyin** . İsterseniz bu dosyayı daha sonra kaldırabilirsiniz.
-1. Azure AD B2C ilkesi dosyalarınızı *B2CAssets* klasörüne ekleyin. Bu, *TrustFrameworkBase. xml*, *TrustFrameWorkExtensions. xml*, *Signuporsign. xml*, *profileedit. xml*, *passwordreset. xml*ve oluşturduğunuz diğer tüm ilkeleri içerir. Daha sonraki bir adımda kullanmak üzere her bir Azure AD B2C ilkesi dosyasının dosya adını kaydedin (PowerShell betiği bağımsız değişkenleri olarak kullanılırlar).
-1. Deponun kök dizininde *betikler* adlı bir klasör oluşturun, *DeployToB2c. ps1*yer tutucu dosyasını adlandırın. Bu noktada dosyayı kaydetme, daha sonraki bir adımda yapacaksınız.
-1. Aşağıdaki PowerShell betiğini *DeployToB2c. ps1*dosyasına yapıştırın ve dosyayı **yürütün** . Betik, Azure AD 'den bir belirteç alır ve *B2CAssets* klasörünün içindeki ilkeleri Azure AD B2C kiracınıza yüklemek IÇIN Microsoft Graph API 'sini çağırır.
+1. Azure AD B2C ilkesi dosyalarınızı *B2CAssets* klasörüne ekleyin. Bu, *TrustFrameworkBase.xml*, *TrustFrameWorkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*, *PasswordReset.xml*ve oluşturduğunuz diğer ilkeleri içerir. Daha sonraki bir adımda kullanmak üzere her bir Azure AD B2C ilkesi dosyasının dosya adını kaydedin (PowerShell betiği bağımsız değişkenleri olarak kullanılırlar).
+1. Deponun kök dizininde *betikler* adlı bir klasör oluşturun, yer tutucu dosyasını *DeployToB2c.ps1*olarak adlandırın. Bu noktada dosyayı kaydetme, daha sonraki bir adımda yapacaksınız.
+1. Aşağıdaki PowerShell betiğini *DeployToB2c.ps1*yapıştırın, sonra dosyayı **yürütün** . Betik, Azure AD 'den bir belirteç alır ve *B2CAssets* klasörünün içindeki ilkeleri Azure AD B2C kiracınıza yüklemek IÇIN Microsoft Graph API 'sini çağırır.
 
     ```PowerShell
     [Cmdletbinding()]
@@ -114,7 +114,7 @@ Deponuz başlatılmış ve özel ilke dosyalarınıza doldurulduktan sonra yayı
 ### <a name="create-pipeline"></a>İşlem hattı oluşturma
 
 1. Azure DevOps Services kuruluşunuzda oturum açın ve projenize gidin.
-1. Projenizde**Releases** > işlem **hatları** > **Yeni işlem hattı**' nı seçin.
+1. Projenizde işlem **hatları**  >  **Releases**  >  **Yeni işlem hattı**' nı seçin.
 1. **Şablon seç**altında **boş iş**' ı seçin.
 1. Bir **aşama adı**girin, örneğin *DeployCustomPolicies*, sonra bölmeyi kapatın.
 1. **Yapıt Ekle**' yi seçin ve **kaynak türü**altında **Azure deposu**' nu seçin.
@@ -131,7 +131,7 @@ Deponuz başlatılmış ve özel ilke dosyalarınıza doldurulduktan sonra yayı
 1. **Değişkenler** sekmesini seçin.
 1. Aşağıdaki değişkenleri **ardışık düzen değişkenleri** altına ekleyin ve değerlerini belirtilen şekilde ayarlayın:
 
-    | Adı | Değer |
+    | Name | Değer |
     | ---- | ----- |
     | `clientId` | Daha önce kaydettiğiniz uygulamanın **uygulama (istemci) kimliği** . |
     | `clientSecret` | Daha önce oluşturduğunuz **istemci parolasının** değeri. <br /> Değişken türünü **gizli** olarak değiştirin (kilit simgesini seçin). |
@@ -144,17 +144,17 @@ Deponuz başlatılmış ve özel ilke dosyalarınıza doldurulduktan sonra yayı
 Sonra, bir ilke dosyası dağıtmak için bir görev ekleyin.
 
 1. **Görevler** sekmesini seçin.
-1. **Aracı**işini seçin ve ardından aracı işine bir görev eklemek için**+** artı işaretini () seçin.
+1. **Aracı**işini seçin ve ardından **+** Aracı işine bir görev eklemek için artı işaretini () seçin.
 1. **PowerShell**'i arayın ve seçin. "Azure PowerShell," "hedef makinelerde PowerShell" veya başka bir PowerShell girişi seçmeyin.
 1. Yeni eklenen **PowerShell betiği** görevi ' ni seçin.
 1. PowerShell betiği görevi için aşağıdaki değerleri girin:
     * **Görev sürümü**: 2. *
     * **Görünen ad**: Bu görevin karşıya yüklenmesi gereken ilkenin adı. Örneğin, *B2C_1A_TrustFrameworkBase*.
     * **Tür**: dosya yolu
-    * **Betik yolu**: üç noktayı (***...***) seçin, *Scripts* klasörüne gidin ve *DeployToB2C. ps1* dosyasını seçin.
+    * **Betik yolu**: üç noktayı (***...***) seçin, *betikler* klasörüne gidin ve *DeployToB2C.ps1* dosyasını seçin.
     * **Değişkenlerinden**
 
-        **Bağımsız değişkenler**için aşağıdaki değerleri girin. Önceki `{alias-name}` bölümde belirttiğiniz diğer adla değiştirin.
+        **Bağımsız değişkenler**için aşağıdaki değerleri girin. `{alias-name}`Önceki bölümde belirttiğiniz diğer adla değiştirin.
 
         ```PowerShell
         # Before
@@ -172,11 +172,11 @@ Sonra, bir ilke dosyası dağıtmak için bir görev ekleyin.
 
 Yeni eklediğiniz görev Azure AD B2C *bir* ilke dosyası yükler. Devam etmeden önce, ek görevler oluşturmadan önce başarıyla tamamlandığından emin olmak için işi el ile tetikleyin (**yayın oluşturun**).
 
-Görev başarıyla tamamlanırsa, özel ilke dosyalarının her biri için önceki adımları gerçekleştirerek dağıtım görevleri ekleyin. Her ilke `-PolicyId` için `-PathToFile` ve bağımsız değişken değerlerini değiştirin.
+Görev başarıyla tamamlanırsa, özel ilke dosyalarının her biri için önceki adımları gerçekleştirerek dağıtım görevleri ekleyin. `-PolicyId` `-PathToFile` Her ilke için ve bağımsız değişken değerlerini değiştirin.
 
-, `PolicyId` TrustFrameworkPolicy DÜĞÜMÜNDEKI bir XML ilke dosyasının başlangıcında bulunan bir değerdir. Örneğin, aşağıdaki Policy `PolicyId` XML dosyasında *B2C_1A_TrustFrameworkBase*:
+, `PolicyId` TrustFrameworkPolicy düğümündeki BIR XML ilke dosyasının başlangıcında bulunan bir değerdir. Örneğin, `PolicyId` aşağıdaki POLICY XML dosyasında *B2C_1A_TrustFrameworkBase*:
 
-```XML
+```xml
 <TrustFrameworkPolicy
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -189,11 +189,11 @@ PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
 
 Aracıları çalıştırırken ve ilke dosyalarını karşıya yüklerken, bu sırada karşıya yüklendiklerinden emin olun:
 
-1. *TrustFrameworkBase. xml*
-1. *TrustFrameworkExtensions. xml*
-1. *Signuporsignın. xml*
-1. *ProfileEdit. xml*
-1. *PasswordReset. xml*
+1. *TrustFrameworkBase.xml*
+1. *TrustFrameworkExtensions.xml*
+1. *SignUpOrSignin.xml*
+1. *ProfileEdit.xml*
+1. *PasswordReset.xml*
 
 Dosya yapısı hiyerarşik bir zincirde oluşturulduğu için kimlik deneyimi çerçevesi bu sırayı zorlar.
 

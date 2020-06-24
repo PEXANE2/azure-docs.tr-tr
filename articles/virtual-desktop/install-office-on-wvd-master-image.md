@@ -4,20 +4,20 @@ description: Windows sanal masaüstü ana görüntüsünde Office 'i Azure 'a y�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2c62fdb41cdd19e34062124564ace9645df1dde6
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 3e213ac7a4d0436cf904a8104cea7e76eabaece4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672706"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200537"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Ana VHD görüntüsü üzerinde Office yükleme
 
-Bu makalede, Azure 'a yüklemek üzere Office 365 ProPlus, OneDrive ve diğer yaygın uygulamaların bir ana sanal sabit disk (VHD) görüntüsüne nasıl yükleneceği açıklanır. Kullanıcılarınızın belirli iş kolu (LOB) uygulamalarına erişmesi gerekiyorsa, bu makaledeki yönergeleri tamamladıktan sonra bunları yüklemenizi öneririz.
+Bu makalede, Azure 'a yüklemek üzere bir ana sanal sabit disk (VHD) görüntüsüne Enterprise, OneDrive ve diğer yaygın uygulamalar için Microsoft 365 uygulamalarını nasıl yükleyeceğiniz açıklanır. Kullanıcılarınızın belirli iş kolu (LOB) uygulamalarına erişmesi gerekiyorsa, bu makaledeki yönergeleri tamamladıktan sonra bunları yüklemenizi öneririz.
 
 Bu makalede, zaten bir sanal makine (VM) oluşturmuş olduğunuz varsayılmaktadır. Aksi takdirde, bkz. [ana VHD görüntüsünü hazırlama ve özelleştirme](set-up-customize-master-image.md#create-a-vm)
 
@@ -28,29 +28,30 @@ Bu makalede ayrıca, Azure 'da veya Hyper-V Yöneticisi 'nde sağlanmasından ba
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>Office 'i paylaşılan bilgisayar etkinleştirme moduna yüklerken
 
-Paylaşılan bilgisayar etkinleştirmesi, kuruluşunuzda birden çok kullanıcı tarafından erişilen bir bilgisayara Office 365 ProPlus dağıtmanızı sağlar. Paylaşılan bilgisayar etkinleştirmesi hakkında daha fazla bilgi için bkz. [Office 365 ProPlus için paylaşılan bilgisayar etkinleştirmeye genel bakış](/deployoffice/overview-of-shared-computer-activation-for-office-365-proplus/).
+Paylaşılan bilgisayar etkinleştirme, kuruluşunuzda birden çok kullanıcı tarafından erişilen bir bilgisayara Microsoft 365 uygulamalarını dağıtmanıza olanak tanır. Paylaşılan bilgisayar etkinleştirmesi hakkında daha fazla bilgi için bkz. [Microsoft 365 uygulamalar için paylaşılan bilgisayar etkinleştirmeye genel bakış](/deployoffice/overview-shared-computer-activation).
 
 Office 'i yüklemek için [Office dağıtım aracı](https://www.microsoft.com/download/details.aspx?id=49117) 'nı kullanın. Windows 10 Enterprise çoklu oturum yalnızca aşağıdaki Office sürümlerini destekler:
-- Office 365 ProPlus
-- Microsoft 365 İş abonelikle birlikte sunulan Office 365 Business
+
+   - Enterprise için Microsoft 365 uygulamalar
+   - Microsoft 365 Microsoft 365 İş Premium abonelikle birlikte gelen iş uygulamaları
 
 Office dağıtım aracı bir yapılandırma XML dosyası gerektirir. Aşağıdaki örneği özelleştirmek için, [Office dağıtım aracı yapılandırma seçeneklerine](/deployoffice/configuration-options-for-the-office-2016-deployment-tool/)bakın.
 
 Sağladığımız Bu örnek yapılandırma XML 'i şu işlemleri yapar:
 
-- • Aylık kurumsal kanaldan Office 'i yükleyip, yürütüldüğü zaman aylık kurumsal kanaldan güncelleştirmeleri sunun.
-- X64 mimarisini kullanın.
-- Otomatik güncelleştirmeleri devre dışı bırakın.
-- Mevcut Office yüklemelerini kaldırın ve ayarlarını geçirin.
-- Paylaşılan bilgisayar etkinleştirmesini etkinleştirin.
+   - Aylık kurumsal kanaldan Office 'i yükleyip aylık kurumsal kanaldan güncelleştirmeleri sunun.
+   - X64 mimarisini kullanın.
+   - Otomatik güncelleştirmeleri devre dışı bırakın.
+   - Mevcut Office yüklemelerini kaldırın ve ayarlarını geçirin.
+   - Paylaşılan bilgisayar etkinleştirmesini etkinleştirin.
 
 >[!NOTE]
 >Visio 'nun şablon arama özelliği, Windows sanal masaüstü 'nde beklendiği gibi çalışmayabilir.
 
 Bu örnek yapılandırma XML 'i şunları yapamayacaklarınız:
 
-- Skype Kurumsal 'ı yükler
-- OneDrive 'ı Kullanıcı başına moda yükleyin. Daha fazla bilgi için bkz. [OneDrive 'ı makine başına moda yükleyin](#install-onedrive-in-per-machine-mode).
+   - Skype Kurumsal 'ı yükler
+   - OneDrive 'ı Kullanıcı başına moda yükleyin. Daha fazla bilgi için bkz. [OneDrive 'ı makine başına moda yükleyin](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
 >Paylaşılan bilgisayar etkinleştirme, grup ilkesi nesneleri (GPO 'Lar) veya kayıt defteri ayarları aracılığıyla ayarlanabilir. GPO, ** \\ \\ Yönetim Şablonları \\ Microsoft Office 2016 (makine) \\ lisanslama ayarlarındaki bilgisayar yapılandırma ilkeleri** ' nde bulunur
@@ -121,7 +122,7 @@ OneDrive 'ı makine başına modunda yüklemek için şu adımları uygulayın:
 2. OneDriveSetup.exe, bu bağlantıyla hazırlanan konumunuza indirin:<https://aka.ms/OneDriveWVD-Installer>
 
 3. Office 'i yok ederek OneDrive 'a yüklediyseniz **\<ExcludeApp ID="OneDrive" /\>** , aşağıdaki komutu çalıştırarak, var olan tüm OneDrive Kullanıcı başına yüklemelerini yükseltilmiş bir komut isteminden kaldırın:
-    
+
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall
     ```
@@ -160,7 +161,7 @@ OneDrive 'ı makine başına modunda yüklemek için şu adımları uygulayın:
 
 Windows sanal masaüstü, Skype Kurumsal 'ı desteklemez.
 
-Microsoft ekipleri yükleme konusunda yardım için bkz. [Windows sanal masaüstü üzerinde Microsoft ekipleri kullanma](teams-on-wvd.md).
+Microsoft ekipleri yükleme konusunda yardım için bkz. [Windows sanal masaüstü üzerinde Microsoft ekipleri kullanma](teams-on-wvd.md). Windows sanal masaüstündeki Microsoft ekipleri için medya iyileştirmesi önizleme sürümünde kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

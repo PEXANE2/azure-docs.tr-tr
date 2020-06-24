@@ -1,158 +1,176 @@
 ---
-title: Hareket algılama, uç cihazlarda video kaydetme-Azure
+title: Hareket & ekran, uç cihazlarda video kaydetme-Azure
 description: Bu hızlı başlangıçta, (sanal) bir IP kamerasından canlı video akışını analiz etmek, herhangi bir hareketin mevcut olup olmadığını algılamak ve bu durumda bir MP4 video klibini, sınır cihazında yerel dosya sistemine kaydetmek için IoT Edge 'da canlı video analizinin nasıl kullanılacağı gösterilmektedir.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d824870ea95922bbbdbf01cf2c95692522936f85
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 32f1ae5e9edbdbe522afb39bd56584cd2423dd33
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84262083"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817086"
 ---
-# <a name="quickstart-detect-motion-record-video-on-edge-devices"></a>Hızlı başlangıç: hareket algılama, uç cihazlarda video kaydetme
+# <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>Hızlı başlangıç: Edge cihazlarındaki hareketi algılama ve video kaydetme
  
-Bu hızlı başlangıçta, (sanal) bir IP kamerasından canlı video akışını analiz etmek, herhangi bir hareketin mevcut olup olmadığını algılamak ve bu durumda bir MP4 video klibini, sınır cihazında yerel dosya sistemine kaydetmek için IoT Edge 'da canlı video analizinin nasıl kullanılacağı gösterilmektedir. Bir Azure VM 'yi IoT Edge bir cihaz ve sanal bir canlı video akışı olarak kullanır. Bu makale, C# dilinde yazılan örnek kodu temel alır.
+Bu hızlı başlangıçta, (benzetimli) bir IP kamerasından canlı video akışını çözümlemek için IoT Edge 'da canlı video analizinin nasıl kullanılacağı gösterilmektedir. Herhangi bir hareketin mevcut olup olmadığını nasıl tespit etmek gerektiğini gösterir. Bu durumda, sınır cihazında yerel dosya sistemine bir MP4 video klip kaydedin. Hızlı başlangıç, bir Azure VM 'yi IoT Edge bir cihaz olarak kullanır ve ayrıca sanal bir canlı video akışı kullanır. 
 
-Bu makalede, [Bu](detect-motion-emit-events-quickstart.md) hızlı başlangıç hakkında daha fazla derleme yapılır. 
+Bu makale, C# dilinde yazılan örnek kodu temel alır. Bu BT, [hareket Algıla ve olayları göster](detect-motion-emit-events-quickstart.md) hızlı başlangıç sayfasında oluşturulur. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Aşağıdaki uzantılara sahip makinenizde [Visual Studio Code](https://code.visualstudio.com/) :
+* Etkin aboneliği olan bir Azure hesabı. Henüz bir [hesabınız yoksa ücretsiz olarak bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* [Visual Studio Code](https://code.visualstudio.com/), aşağıdaki uzantılara sahip:
     * [Azure IoT Araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
     * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-* Sisteminizde yüklü [.NET Core 3,1 SDK 'sı](https://dotnet.microsoft.com/download/dotnet-core/3.1)
-* [Bu](detect-motion-emit-events-quickstart.md) hızlı başlangıcı önceden tamamlamadıysanız aşağıdaki adımları uygulayın:
-     * [Azure kaynakları ayarlama](detect-motion-emit-events-quickstart.md#set-up-azure-resources)
-     * [Geliştirme ortamınızı kurma](detect-motion-emit-events-quickstart.md#set-up-your-development-environment)
-     * [IoT Edge dağıtım bildirimini oluşturma ve dağıtma](detect-motion-emit-events-quickstart.md#generate-and-deploy-the-iot-edge-deployment-manifest)
-     * [İzleme olaylarını hazırlama](detect-motion-emit-events-quickstart.md#prepare-for-monitoring-events)
+* [.NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1).
+* [Hareketi Algıla ve olayları göster](detect-motion-emit-events-quickstart.md) hızlı başlangıcı ' nı tamamlamadıysanız şu adımları izleyin:
+     1. [Azure kaynakları ayarlama](detect-motion-emit-events-quickstart.md#set-up-azure-resources)
+     1. [Geliştirme ortamınızı kurma](detect-motion-emit-events-quickstart.md#set-up-your-development-environment)
+     1. [IoT Edge dağıtım bildirimini oluşturma ve dağıtma](detect-motion-emit-events-quickstart.md#generate-and-deploy-the-deployment-manifest)
+     1. [Olayları izlemeye hazırlanma](detect-motion-emit-events-quickstart.md#prepare-to-monitor-events)
 
 > [!TIP]
-> Azure IoT araçlarını yüklerken Docker 'ı yüklemeniz istenebilir. Yok saymaktan çekinmeyin.
+> Azure IoT araçları 'nı yüklerken Docker 'ı yüklemeniz istenebilir. İstemi yok saymaktan çekinmeyin.
 
 ## <a name="review-the-sample-video"></a>Örnek videoyu gözden geçirin
-Azure kaynaklarını kurmak için yukarıdaki adımların bir parçası olarak, bir park lotunun (kısa) bir videosu IoT Edge cihaz olarak kullanılan Azure 'daki Linux VM 'sine kopyalanacaktır. Bu video dosyası, bu öğretici için canlı bir akışın benzetimini yapmak üzere kullanılacaktır.
+Bu hızlı başlangıç için Azure kaynaklarını ayarlarken, bir park lotunun kısa bir videosu, Azure 'daki IoT Edge cihaz olarak kullanılan Linux VM 'sine kopyalanır. Bu video dosyası, bu öğretici için canlı bir akışın benzetimini yapmak üzere kullanılacaktır.
 
-[VLC Player](https://www.videolan.org/vlc/)gibi bir uygulama kullanabilir, bunu başlatabilir, Control + N tuşuna basın ve [Bu](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) bağlantıyı Park lotu videosuna yapıştırarak kayıttan yürütmeyi başlatın. 5 saniyelik işaret hakkında bir beyaz araba, Park partisi üzerinden geçer.
+[VLC medya oynatıcı](https://www.videolan.org/vlc/)gibi bir uygulama açın, CTRL + N ' ı seçin ve [Bu bağlantıyı](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) Park lotu videosunu seçerek kayıttan yürütmeyi başlatın. 5 saniyelik işaret hakkında bir beyaz araba, Park partisi üzerinden geçer.
 
-Aşağıdaki adımları tamamladığınızda, arabasının bu hareketini saptamak için IoT Edge üzerinde canlı video analizi kullandınız ve 5 saniyelik bir işaret üzerinden başlayarak bir video klibini kaydedecaksınız.
+Arabasının hareketini algılamak ve 5 saniyelik işaret etrafında bir video klibi kaydetmek için IoT Edge üzerinde canlı video analizlerini kullanmak için aşağıdaki adımları izleyin.
 
 ## <a name="overview"></a>Genel Bakış
 
 ![genel bakış](./media/quickstarts/overview-qs4.png)
 
-Yukarıdaki diyagramda, sinyallerin bu hızlı başlangıçta nasıl akagösterdiği gösterilmektedir. Bir Edge modülü ( [burada](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)ayrıntılı), bir RTSP sunucusu BARıNDıRAN bir IP kamerasının benzetimini yapar. Bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü, bu sunucudan video akışını çeker ve [hareket algılama işlemcisi](media-graph-concept.md#motion-detection-processor) düğümüne video çerçeveleri gönderir. RTSP kaynağı bir olay tarafından tetiklenene kadar kapalı kalan bir [sinyal kapısı işlemci](media-graph-concept.md#signal-gate-processor) düğümüne aynı video çerçevelerini gönderir.
+Yukarıdaki diyagramda, sinyallerin bu hızlı başlangıçta nasıl akagösterdiği gösterilmektedir. [Sınır modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , gerçek zamanlı bir akış protokolü (RTSP) sunucusunu BARıNDıRAN bir IP kamerasına benzetim yapar. Bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü, bu sunucudan video akışını çeker ve [hareket algılama işlemcisi](media-graph-concept.md#motion-detection-processor) düğümüne video çerçeveleri gönderir. RTSP kaynağı bir olay tarafından tetiklenene kadar kapalı kalan bir [sinyal kapısı işlemci](media-graph-concept.md#signal-gate-processor) düğümüne aynı video çerçevelerini gönderir.
 
-Hareket algılama işlemcisi videoda bu hareket olduğunu belirlediğinde, sinyal kapısı işlemci düğümüne bir olay gönderir ve bunu tetikler. Ağ Geçidi, yapılandırılan süre boyunca açılır ve video çerçevelerini [Dosya havuzu](media-graph-concept.md#file-sink) düğümüne gönderir. Bu havuz düğümü, videoyu, yapılandırılmış konumda uç cihazınızın yerel dosya sistemine bir MP4 dosyası olarak kaydeder.
+Hareket algılama işlemcisi videoda hareket algıladığında, sinyal kapısı işlemci düğümüne bir olay gönderir ve bunu tetikler. Ağ Geçidi, yapılandırılan süre boyunca açılır ve video çerçevelerini [Dosya havuzu](media-graph-concept.md#file-sink) düğümüne gönderir. Bu havuz düğümü, videoyu uç cihazınızın yerel dosya sisteminde bir MP4 dosyası olarak kaydeder. Dosya yapılandırılan konuma kaydedilir.
 
 Bu hızlı başlangıçta şunları yapmanız gerekir:
 
-1. Medya grafiğini oluşturma ve dağıtma
-1. Sonuçları yorumlama
-1. Kaynakları temizleme
+1. Medya grafiğini oluşturun ve dağıtın.
+1. Sonuçları yorumlayın.
+1. Kaynakları temizleyin.
 
 ## <a name="examine-and-edit-the-sample-files"></a>Örnek dosyaları İnceleme ve düzenleme
-Önkoşulların bir parçası olarak, örnek kodu bir klasöre indirmiş olursunuz. Visual Studio Code başlatın ve klasörü açın.
+Bu hızlı başlangıç önkoşulları kapsamında, örnek kodu bir klasöre indirdiniz. Örnek kodu incelemek ve düzenlemek için bu adımları izleyin.
 
-1. Visual Studio Code, "src/Edge" e gidin. Oluşturduğunuz. env dosyasını, birkaç dağıtım şablonu dosyası ile birlikte görürsünüz
-    * Dağıtım şablonu, kenar cihazının bazı yer tutucu değerleriyle birlikte dağıtım bildirimini ifade eder. . Env dosyası bu değişkenlerin değerlerini içerir.
-1. Sonra, "src/buluttan-cihaza-Console-App" klasörüne gidin. Burada, oluşturduğunuz appSettings. json dosyasını ve diğer birkaç dosyayı görürsünüz:
-    * C2D-Console-App. csproj-bu, Visual Studio Code için proje dosyasıdır
-    * Operations. JSON-bu dosya, programın çalıştırmasını istediğiniz farklı işlemleri listeler
-    * Program.cs-Bu örnek program kodudur ve şunları yapar:
+1. Visual Studio Code, *src/Edge*bölümüne gidin. *. Env* dosyanızı ve birkaç dağıtım şablonu dosyasını görürsünüz.
 
-        * Uygulama ayarlarını yükler
-        * IoT Edge modülünde canlı video analizi tarafından kullanıma sunulan doğrudan yöntemleri çağırır. [Doğrudan yöntemlerini](direct-methods.md) çağırarak canlı video akışlarını çözümlemek için modülünü kullanabilirsiniz 
-        * TERMINAL penceresinde programın çıkışını ve çıkış penceresinde modül tarafından oluşturulan olayları incelemek için duraklamalar
-        * Kaynakları temizlemek için doğrudan yöntemleri çağırır   
+    Dağıtım şablonu, sınır cihazının bazı özellikler için kullanıldığı dağıtım bildirimini ifade eder. *. Env* dosyası bu değişkenlerin değerlerini içerir.
+1. *Src/buluttan cihaza-Console-App* klasörüne gidin. Burada dosya ve diğer birkaç dosya *appsettings.js* görürsünüz:
+    * ***C2D-Console-App. csproj*** -Visual Studio Code için proje dosyası.
+    * ***operations.json*** -programın çalıştırmasını istediğiniz işlemler listesi.
+    * ***Program.cs*** -örnek program kodu. Bu kod:
 
-1. Operations. json dosyasında aşağıdaki düzenlemeleri yapın
-    * Grafik topolojisine olan bağlantıyı değiştirin:`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-motion-files/topology.json"`
-    * Graphınstanceset altında, grafik topolojisinin adını Yukarıdaki bağlantıdaki değerle eşleşecek şekilde düzenleyin`"topologyName" : "EVRToFilesOnMotionDetection"`
-    * Ayrıca, istenen video dosyasına işaret etmek için RTSP URL 'sini düzenleyin`"value": "rtsp://rtspsim:554/media/lots_015.mkv"`
-    * Graphtopologyıdelete altında adı düzenleyin`"name": "EVRToFilesOnMotionDetection"`
+        * Uygulama ayarlarını yükler.
+        * IoT Edge modülündeki canlı video analizinin sunduğu doğrudan yöntemleri çağırır. [Doğrudan yöntemlerini](direct-methods.md)çağırarak canlı video akışlarını çözümlemek için modülünü kullanabilirsiniz. 
+        * Pencereyi, **TERMINAL** penceresinde programın çıktısını Incelemenize ve **Çıkış** penceresinde modül tarafından oluşturulan olayları incelemenize olanak sağlamak için duraklar.
+        * Kaynakları temizlemek için doğrudan yöntemleri çağırır.
 
-## <a name="review---check-status-of-the-modules"></a>Gözden geçirme-modüllerin durumunu denetleme
-[IoT Edge dağıtım bildirimini oluşturma ve dağıtma](detect-motion-emit-events-quickstart.md#generate-and-deploy-the-iot-edge-deployment-manifest) adımında, VISUAL STUDIO Code, Azure IoT Hub altında "LVA-örnek-cihaz" düğümünü genişletirseniz (alt sol bölümde), aşağıdaki modüllerin dağıtıldığını görmeniz gerekir
+1. Dosyadaki *operations.js* düzenleyin:
+    * Grafik topolojisine olan bağlantıyı değiştirin:
 
-    1. "LvaEdge" olarak adlandırılan canlı video analizi modülü
-    1. Bir RTSP sunucusuna benzetir ve canlı video akışı kaynağı görevi gören "rtspsim" adlı bir modül
+        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-motion-files/topology.json"`
+    * Altında `GraphInstanceSet` , grafik topolojisinin adını önceki bağlantıdaki değerle eşleşecek şekilde düzenleyin:
+    
+      `"topologyName" : "EVRToFilesOnMotionDetection"`
 
-        ![Modül](./media/quickstarts/lva-sample-device-node.png)
+    * Video dosyasını işaret etmek için RTSP URL 'sini düzenleyin:
+
+        `"value": "rtsp://rtspsim:554/media/lots_015.mkv"`
+
+    * Altında `GraphTopologyDelete` , adı düzenleyin:
+
+        `"name": "EVRToFilesOnMotionDetection"`
+
+## <a name="review---check-the-modules-status"></a>İnceleme-modüllerin durumunu denetleme
+
+[IoT Edge dağıtım bildirimi oluşturma ve dağıtma](detect-motion-emit-events-quickstart.md#generate-and-deploy-the-deployment-manifest) adımında, Visual Studio Code ' de **Azure IoT Hub** altında **LVA-örnek-cihaz** düğümünü genişletin (sol alt bölümde). Aşağıdaki modüllerin dağıtıldığını görmeniz gerekir:
+
+* **Lvaedge** adlı canlı video analizi modülü
+* Canlı video akışı kaynağı görevi gören bir RTSP sunucusunun benzetimini yapan **rtspsim** modülü
+
+  ![Modül](./media/quickstarts/lva-sample-device-node.png)
 
 
 ## <a name="review---prepare-for-monitoring-events"></a>İnceleme-izleme olayları için hazırlanma
-[İzleme olaylarını hazırlamaya](detect-motion-emit-events-quickstart.md#prepare-for-monitoring-events) yönelik adımları tamamladığınızdan emin olun
+[Olayları Izlemeye hazırlanmak](detect-motion-emit-events-quickstart.md#prepare-to-monitor-events)için adımları tamamladığınızdan emin olun.
 
 ![Yerleşik olay uç noktasını Izlemeye başla](./media/quickstarts/start-monitoring-iothub-events.png)
 
 ## <a name="run-the-sample-program"></a>Örnek programı çalıştırma
 
-1. Bir hata ayıklama oturumu başlatın (F5 tuşuna basın). TERMINAL penceresinde yazdırılmış bazı iletileri görmeye başlayacaksınız.
-1. Operations. JSON doğrudan Yöntemler Graphtopologyılist ve Graphınstancelist çağrıları ile başlatılır. Önceki hızlı başlangıçlardan sonra kaynakları temizlediyseniz, bu, boş listeler döndürür ve ardından ENTER tuşuna basmanız için duraklatıp
-```
---------------------------------------------------------------------------
-Executing operation GraphTopologyList
------------------------  Request: GraphTopologyList  --------------------------------------------------
-{
-  "@apiVersion": "1.0"
-}
----------------  Response: GraphTopologyList - Status: 200  ---------------
-{
-  "value": []
-}
---------------------------------------------------------------------------
-Executing operation WaitForInput
-Press Enter to continue
-```
-1. TERMINAL penceresinde "Enter" tuşuna bastığınızda, bir sonraki doğrudan yöntem çağrısı kümesi yapılır
-     * Yukarıdaki Topologyıurl 'yi kullanarak Graphtopologyıset çağrısı
-     * Aşağıdaki gövdeyi kullanarak Graphınstanceset öğesine çağrı
-     ```
-     {
-       "@apiVersion": "1.0",
-       "name": "Sample-Graph",
-       "properties": {
-         "topologyName": "EVRToFilesOnMotionDetection",
-         "description": "Sample graph description",
-         "parameters": [
-           {
-             "name": "rtspUrl",
-             "value": "rtsp://rtspsim:554/media/lots_015.mkv"
-           },
-           {
-             "name": "rtspUserName",
-             "value": "testuser"
-           },
-           {
-             "name": "rtspPassword",
-             "value": "testpassword"
+1. F5 tuşunu seçerek bir hata ayıklama oturumu başlatın. **TERMINAL** penceresinde bazı iletiler yazdırılır.
+1. Koddaki *operations.js* doğrudan yöntemleri `GraphTopologyList` ve ' i çağırır `GraphInstanceList` . Önceki hızlı başlangıçlardan sonra kaynakları temizledikten sonra bu işlem boş listeleri döndürür ve sonra duraklatılır. Enter tuşunu seçin.
+
+    ```
+    --------------------------------------------------------------------------
+    Executing operation GraphTopologyList
+    -----------------------  Request: GraphTopologyList  --------------------------------------------------
+    {
+      "@apiVersion": "1.0"
+    }
+    ---------------  Response: GraphTopologyList - Status: 200  ---------------
+    {
+      "value": []
+    }
+    --------------------------------------------------------------------------
+    Executing operation WaitForInput
+    Press Enter to continue
+    ```
+
+    **TERMINAL** penceresinde, bir sonraki doğrudan yöntem çağrısı kümesi gösterilir:
+
+     * Öğesine yapılan bir çağrı `GraphTopologySet``topologyUrl` 
+     * Aşağıdaki gövdesini kullanan öğesine yapılan bir çağrı `GraphInstanceSet` :
+
+         ```
+         {
+           "@apiVersion": "1.0",
+           "name": "Sample-Graph",
+           "properties": {
+             "topologyName": "EVRToFilesOnMotionDetection",
+             "description": "Sample graph description",
+             "parameters": [
+               {
+                 "name": "rtspUrl",
+                 "value": "rtsp://rtspsim:554/media/lots_015.mkv"
+               },
+               {
+                 "name": "rtspUserName",
+                 "value": "testuser"
+               },
+               {
+                 "name": "rtspPassword",
+                 "value": "testpassword"
+               }
+             ]
            }
-         ]
-       }
-     }
-     ```
-     * Graph örneğini başlatmak ve video akışını başlatmak için Graphınstanceactivate öğesine yapılan çağrı
-     * Grafik örneğinin gerçekten çalışır durumda olduğunu göstermek için Graphınstancelist öğesine yapılan ikinci bir çağrı
-1. TERMINAL penceresindeki çıktı, şimdi ' devam etmek için ENTER tuşuna basın ' isteminde duraklatılır. Şu an "Enter" tuşuna basmayın. Çağrdığınız doğrudan yöntemler için JSON yanıtı yüklerini görmek üzere yukarı doğru izleyebilirsiniz
-1. Artık Visual Studio Code çıkış penceresine geçiş yaparsanız, IoT Edge modülündeki canlı video analizi tarafından IoT Hub gönderilen iletileri görürsünüz.
-     * Bu iletiler aşağıdaki bölümde ele alınmıştır
-1. Medya grafiği çalışmaya devam eder ve sonuçları yazdırır; RTSP simülatör kaynak videoyu döngüye sokacaktır. Medya grafiğini durdurmak için, TERMINAL penceresine geri dönerek "Enter" tuşuna basın. Kaynakları temizlemek için sonraki çağrı dizisi yapılır:
-     * Grafik örneğini devre dışı bırakmak için Graphınstancedeactivate öğesine çağrı
-     * Örneği silmek için Graphınstancedelete öğesine çağrı
-     * Topolojiyi silmek için Graphtopologyıdelete çağrısı
-     * Listenin artık boş olduğunu göstermek için Graphtopologyılist öğesine yapılan son çağrı
+         }
+         ```
+     * `GraphInstanceActivate`Grafik örneğini ve videonun akışını başlatan öğesine yönelik bir çağrı
+     * `GraphInstanceList`Grafik örneğinin çalışır durumda olduğunu gösteren ikinci bir çağrı
+1. **TERMINAL** penceresindeki çıktı, tarihinde duraklatılır `Press Enter to continue` . Henüz ENTER ' ı seçmeyin. Çağrdığınız doğrudan yöntemler için JSON yanıtı yüklerini görmek için yukarı kaydırın.
+1. Visual Studio Code **Çıkış** penceresine geçin. IoT Edge modülünün canlı video analizinin IoT Hub 'ına gönderdiği iletileri görürsünüz. Bu hızlı başlangıçta aşağıdaki bölümde bu iletiler ele alınmaktadır.
+
+1. Medya grafiği çalışmaya devam eder ve sonuçları yazdırır. RTSP simülatörü kaynak videoyu döngüye sokmaya devam eder. Medya grafiğini durdurmak için, **TERMINAL** penceresine dönün ve ENTER ' u seçin. 
+
+    Sonraki çağrı dizisi kaynakları temizler:
+     * `GraphInstanceDeactivate`Grafik örneğini devre dışı bırakmak için bir çağrı.
+     * `GraphInstanceDelete`Örneği silme çağrısı.
+     * İçin bir çağrı `GraphTopologyDelete` , topolojiyi siler.
+     * İçin son çağrı `GraphTopologyList` , listenin artık boş olduğunu gösterir.
 
 ## <a name="interpret-results"></a>Sonuçları yorumlama 
-Medya grafiğini çalıştırdığınızda, hareket algılayıcısı işlemci düğümündeki sonuçlar, IoT Hub IoT Hub havuz düğümü aracılığıyla gönderilir. Visual Studio Code çıkış penceresinde gördüğünüz iletiler bir "gövde" bölümü ve bir "applicationProperties" bölümü içerir. Bu bölümlerin neyi temsil ettiğini anlamak için [Bu](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) makaleyi okuyun.
+Medya grafiğini çalıştırdığınızda, hareket algılayıcısı işlemci düğümündeki sonuçlar, IoT Hub havuz düğümünden IoT Hub 'ına geçer. Visual Studio Code **Çıkış** penceresinde gördüğünüz iletiler bir `body` bölümü ve bir `applicationProperties` bölümü içerir. Daha fazla bilgi için bkz. [IoT Hub Iletileri oluşturma ve okuma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
 
-Aşağıdaki iletilerde, uygulama özellikleri ve gövdenin içeriği canlı video analizi modülü tarafından tanımlanır.
+Aşağıdaki iletilerde, canlı video analizi modülü, uygulama özelliklerini ve gövdenin içeriğini tanımlar.
 
-## <a name="mediasession-established-event"></a>MediaSession tarafından belirlenen olay
+### <a name="mediasessionestablished-event"></a>Mediasessionkurulduğu olayı
 
-Bir medya grafiği oluşturulduğunda, RTSP kaynak düğümü rtspsim-live555 kapsayıcısında çalışan RTSP sunucusuna bağlanmaya çalışır. Başarılı olursa, bu olayı yazdıracaktır:
+Bir medya grafiği oluşturulduğunda, RTSP kaynak düğümü, rtspsim-live555 kapsayıcısında çalışan RTSP sunucusuna bağlanmaya çalışır. Bağlantı başarılı olursa, aşağıdaki olay yazdırılır.
 
 ```
 [IoTHubMonitor] [05:37:21 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -170,16 +188,19 @@ Bir medya grafiği oluşturulduğunda, RTSP kaynak düğümü rtspsim-live555 ka
 }
 ```
 
-* İleti bir tanılama olayıdır, Mediasessionkurulan, RTSP kaynak düğümünün (konu) RTSP simülatörü ile bağlantı kurabildiğini ve (sanal) canlı bir akış almaya başlayabileceğini gösterir.
-* ApplicationProperties 'teki "Subject" değeri, iletinin oluşturulduğu grafik topolojisinde bulunan düğüme başvurur. Bu durumda, ileti RTSP kaynak düğümünden gönderilir.
-* applicationProperties 'teki "eventType" bir tanılama olayı olduğunu gösterir.
-* "eventTime" olayın gerçekleştiği saati gösterir.
-* "gövde", bu durumda [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) ayrıntılarından oluşan tanılama olayı hakkındaki verileri içerir.
+Önceki çıktıda: 
 
+* İleti bir tanılama olayıdır `MediaSessionEstablished` . RTSP kaynak düğümünün (konu) RTSP simülatörü ile bağlantı kurmadığını ve (benzetimli) canlı akışını almaya başladığını gösterir.
+* `applicationProperties`' De, `subject` iletinin oluşturulduğu grafik topolojisinde bulunan düğüme başvurur. Bu durumda, ileti RTSP kaynak düğümünden gelmektedir.
+* `applicationProperties`' De, `eventType` Bu olayın bir tanılama olayı olduğunu gösterir.
+* `eventTime`Değer, olayın gerçekleştiği zaman değeridir.
+* `body`Bölüm, tanılama olayı hakkındaki verileri içerir. Bu durumda, veriler [oturum açıklaması Protokolü (SDP)](https://en.wikipedia.org/wiki/Session_Description_Protocol) ayrıntılarını içerir.
 
-## <a name="recording-started-event"></a>Kayıt başlatıldı olayı
+### <a name="recordingstarted-event"></a>RecordingStarted olayı
 
-[Burada](#overview)açıklandığı gibi, hareket algılandığında, sinyal kapısı işlemci düğümü etkinleştirilir ve medya grafiğindeki dosya havuzu düğümü bir MP4 dosyası yazmaya başlar. Dosya havuzu düğümü Işlemsel bir olay gönderir. Tür "Motion" olarak ayarlanır ve bu, hareket algılama Işlemcisinden kaynaklanan bir sonuç olduğunu gösterir ve eventTime, size (UTC) hareketin oluştuğunu söyler. Aşağıda bir örnek verilmiştir:
+Hareket algılandığında, sinyal kapısı işlemci düğümü etkinleştirilir ve medya grafiğindeki dosya havuzu düğümü bir MP4 dosyası yazmaya başlar. Dosya havuzu düğümü işlemsel bir olay gönderir. , `type` `motion` Hareket algılama işlemcisinden kaynaklanan bir sonuç olduğunu belirtmek için olarak ayarlanır. `eventTime`Değer, hareketin GERÇEKLEŞTIĞI UTC zamanının değeridir. Bu işlem hakkında daha fazla bilgi için bu hızlı başlangıçta [genel bakış](#overview) bölümüne bakın.
+
+Bu iletinin bir örneği aşağıda verilmiştir:
 
 ```
 [IoTHubMonitor] [05:37:27 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -198,41 +219,52 @@ Bir medya grafiği oluşturulduğunda, RTSP kaynak düğümü rtspsim-live555 ka
 }
 ```
 
-* applicationProperties 'teki "Subject", iletinin oluşturulduğu medya grafiğindeki düğüme başvurur. Bu durumda, ileti dosya havuzu düğümünden gönderilir.
-* applicationProperties 'teki "eventType" bir Işletimsel olay olduğunu gösterir.
-* "eventTime" olayın gerçekleştiği saati gösterir. Mediasessionkurulduğu ve videonun akışa başladıktan sonra bu 5-6 saniye değerini unutmayın. Bu, Araba Park lotuna [taşımaya başladığında](#review-the-sample-video) oluşan 5-6 ikinci işaretine karşılık gelir
-* "gövde" işletimsel olay hakkında, bu örnekte "outputType" ve "outputLocation" verileri olan verileri içerir.
-* "outputType" Bu bilgilerin dosya yolu hakkında olduğunu belirtir
-* "outputLocation", bir MP4 dosyasının konumunu Edge modülünün içinden sağlar
+Önceki iletide: 
 
-## <a name="recording-stopped-and-available-events"></a>Kayıt durduruldu ve kullanılabilir olaylar
+* `applicationProperties`' De, `subject` iletinin oluşturulduğu medya grafiğindeki düğüme başvurur. Bu durumda, ileti dosya havuzu düğümünden gelmektedir.
+* `applicationProperties`' De, `eventType` Bu olayın işlevsel olduğunu gösterir.
+* `eventTime`Değer, olayın gerçekleştiği zaman değeridir. Bu süre, `MediaSessionEstablished` video akışa başladıktan sonra ve sonra 5-6 saniye arasındadır. Bu süre, Araba Park lotuna [taşımaya başladığında](#review-the-sample-video) 5-6 saniyelik bir işaretine karşılık gelir.
+* `body`Bölüm işletimsel olayla ilgili verileri içerir. Bu durumda, veriler `outputType` ve içerir `outputLocation` .
+* `outputType`Değişkeni, bu bilgilerin dosya yolu hakkında olduğunu gösterir.
+* `outputLocation`Değer, sınır MODÜLÜNDEKI MP4 dosyasının konumudur.
 
-[Graph topolojisinde](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-motion-files/topology.json)sinyal kapısı işlemci düğümünün özelliklerini incelerseniz, etkinleştirme sürelerinin 5 saniyeye ayarlandığını görürsünüz. Bu nedenle, RecordingStarted olayı alındıktan sonra 5 saniye boyunca
-* Kaydın durdurulduğunu belirten Recordingdurdurulan olay
-* MP4 dosyasının artık görüntülenmek üzere kullanılabileceğini gösteren RecordingAvailable olayı
+### <a name="recordingstopped-and-recordingavailable-events"></a>Recordingdurduruldu ve RecordingAvailable olayları
 
-İki olay, genellikle birbirleriyle saniyeler ile yayılır.
+[Graph topolojisinde](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-motion-files/topology.json)sinyal kapısı işlemci düğümünün özelliklerini incelerseniz etkinleştirme sürelerinin 5 saniyeye ayarlandığını görürsünüz. Bu nedenle, olay alındıktan sonra 5 saniye boyunca şunları `RecordingStarted` alırsınız:
 
-### <a name="playing-back-the-mp4-clip"></a>MP4 klibini kayıttan yürütme
+* `RecordingStopped`Kaydın durdurulduğunu belirten bir olay.
+* `RecordingAvailable`MP4 dosyasının artık görüntülenmek üzere kullanılabileceğini gösteren bir olay.
 
-1. MP4 dosyaları, bu anahtar OUTPUT_VIDEO_FOLDER_ON_DEVICE aracılığıyla. env dosyasında yapılandırdığınız Edge cihazında bir dizine yazılır. Bu değeri varsayılan değere bıraktıysanız, sonuçlar/Home/lvaadmin/Samples/output/konumunda olmalıdır.
-1. Kaynak grubunuza gidin, sanal makineyi bulun ve savunma kullanarak bağlanın
+İki olay, genellikle birbirleriyle Saniyeler içinde yayılır.
+
+## <a name="play-the-mp4-clip"></a>MP4 klibini oynat
+
+MP4 dosyaları, OUTPUT_VIDEO_FOLDER_ON_DEVICE anahtarını kullanarak *. env* dosyasında yapılandırdığınız Edge cihazında bir dizine yazılır. Varsayılan değeri kullandıysanız, sonuçlar */Home/lvaadmin/Samples/output/* klasöründe olmalıdır.
+
+MP4 klibini oynatmak için:
+
+1. Kaynak grubunuza gidin, VM 'yi bulun ve ardından Azure savunma kullanarak bağlanın.
 
     ![Kaynak grubu](./media/quickstarts/resource-group.png)
- 
+    
     ![VM](./media/quickstarts/virtual-machine.png)
-1. Oturum açıldıktan sonra ( [Bu](detect-motion-emit-events-quickstart.md#set-up-azure-resources) adım sırasında oluşturulan kimlik bilgilerini kullanarak), komut isteminde ilgili dizine gidin (varsayılan:/Home/lvaadmin/Samples/output) ve MP4 dosyalarını orada görmeniz gerekir. Dosyaları yerel makinenize [SCP](https://docs.microsoft.com/azure/virtual-machines/linux/copy-files-to-linux-vm-using-scp) yapabilir ve [VLC oynatıcı](https://www.videolan.org/vlc/) veya başka bir MP4 oynatıcı aracılığıyla geri oynatabilirsiniz.
 
-    ![Çıktı](./media/quickstarts/samples-output.png)
+1. [Azure kaynaklarınızı ayarlarken](detect-motion-emit-events-quickstart.md#set-up-azure-resources)oluşturulan kimlik bilgilerini kullanarak oturum açın. 
+1. Komut isteminde ilgili dizine gidin. Varsayılan konum */Home/lvaadmin/Samples/output*' dır. MP4 dosyalarını dizinde görmeniz gerekir.
+
+    ![Çıkış](./media/quickstarts/samples-output.png) 
+
+1. Dosyaları yerel makinenize kopyalamak için [Güvenli kopya (SCP)](https://docs.microsoft.com/azure/virtual-machines/linux/copy-files-to-linux-vm-using-scp) kullanın. 
+1. [VLC medya oynatıcı](https://www.videolan.org/vlc/) veya başka bir MP4 oynatıcı kullanarak dosyaları yürütün.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Diğer hızlı başlangıçlarını denemek istiyorsanız oluşturulan kaynaklarda tutmanız gerekir. Aksi takdirde Azure portal gidin, Kaynak gruplarınızı inceleyin, bu hızlı başlangıcı çalıştırdığınız kaynak grubunu seçin ve tüm kaynakları silin.
+Diğer hızlı başlangıçlarını denemek istiyorsanız, oluşturduğunuz kaynakları saklayın. Aksi takdirde, Azure portal kaynak gruplarınıza gidin, bu hızlı başlangıcı çalıştırdığınız kaynak grubunu seçin ve ardından tüm kaynakları silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Canlı video akışlarına nasıl AI uygulanacağını gösteren [kendi model hızlı başlangıç Ile canlı video analizi Çalıştır](use-your-model-quickstart.md) ' ı çalıştırın.
+* Canlı video akışlarına AI uygulamak için [kendi modelinizdeki canlı video analizlerini çalıştırın](use-your-model-quickstart.md) hızlı başlangıç adımlarını izleyin.
 * Gelişmiş kullanıcılar için ek güçlükleri gözden geçirin:
 
-    * RTSP simülatörü kullanmak yerine RTSP desteğiyle bir [IP kamerası](https://en.wikipedia.org/wiki/IP_camera) kullanın. Profiller G, S veya T ile uyumlu cihazlar ' ı arayarak [ONVIF uyumlu ürünler](https://en.wikipedia.org/wiki/IP_camera) SAYFASıNDA, RTSP desteğiyle IP kameralarını arayabilirsiniz.
-    * AMD64 veya x64 Linux cihazı kullanın (Azure Linux VM kullanarak). Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux 'ta Azure IoT Edge çalışma zamanını Install](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) ' daki yönergeleri izleyebilir ve sonra Azure IoT Hub 'e kaydetmek için [ilk IoT Edge modülünüzü bir sanal Linux cihaz](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) hızlı başlangıçlarına dağıtma ' daki yönergeleri izleyebilirsiniz.
+    * RTSP simülatörü kullanmak yerine RTSP 'yi destekleyen bir [IP kamera](https://en.wikipedia.org/wiki/IP_camera) kullanın. [ONVIF uyumlu ürünler](https://www.onvif.org/conformant-products) sayfasında RTSP 'YI destekleyen IP kameralarını bulabilirsiniz. Profiller G, S veya T ile uyumlu olan cihazları arayın.
+    * Azure 'da Linux VM kullanmak yerine AMD64 veya x64 Linux cihazı kullanın. Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux üzerinde Azure IoT Edge çalışma zamanını Install](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)içindeki yönergeleri izleyin. Ardından, cihazı Azure IoT Hub 'a kaydetmek için [ilk IoT Edge modülünüzü bir sanal Linux cihazına dağıtma](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) bölümündeki yönergeleri izleyin.

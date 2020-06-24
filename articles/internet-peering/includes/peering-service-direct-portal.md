@@ -1,7 +1,7 @@
 ---
-title: include dosyası
+title: dosya dahil etme
 titleSuffix: Azure
-description: include dosyası
+description: dosya dahil etme
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
@@ -15,7 +15,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687035"
 ---
-1. Azure eşleme hizmeti için etkinleştirmek istediğiniz eşleme bağlantısını seçin. Ardından **.** .. öğesini seçin  >  **Bağlantıyı Düzenle**.
+1. Azure eşleme hizmeti için etkinleştirmek istediğiniz eşleme bağlantısını seçin. Ardından **.**  >  .. öğesini seçin **Bağlantıyı Düzenle**.
     > [!div class="mx-imgBorder"]
     > ![Eşleme bağlantısı bağlantıyı Düzenle](../media/setup-direct-modify-editconnection.png)
 1. **Eşleme hizmeti Için kullanım**altında, **etkin** ' i seçin ve ardından **Kaydet**' i seçin.

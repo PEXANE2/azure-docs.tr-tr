@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -15,7 +15,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "67188896"
 ---
-Adı | Ticari URL | Kamu URL 'SI | Açıklama
+Name | Ticari URL | Kamu URL 'SI | Description
 --- | --- | --- | ---
 Azure Active Directory | ``login.microsoftonline.com`` | ``login.microsoftonline.us`` | Azure Active Directory kullanarak erişim denetimi ve kimlik yönetimi için kullanılır. 
 Backup | ``*.backup.windowsazure.com`` | ``*.backup.windowsazure.us`` | Çoğaltma veri aktarımı ve düzenlemesi için kullanılır.
