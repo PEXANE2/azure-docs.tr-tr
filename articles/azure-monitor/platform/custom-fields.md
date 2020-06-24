@@ -6,17 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: bfb0a73631564c96a4af745fe9d7540a3a84f9c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0f31ddb0e0aeabff06d14d40d254c2577b38b5c
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655370"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906811"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Azure Izleyici 'de Log Analytics çalışma alanında özel alanlar oluşturma (Önizleme)
 
 > [!NOTE]
 > Bu makalede, Log Analytics çalışma alanındaki metin verilerinin toplanarak nasıl ayrıştırılacağını açıklanmaktadır. Bir sorgu filtresinde, [Azure izleyici 'de metin verileri ayrıştırma](../log-query/parse-text.md)bölümünde açıklanan yönergelerin toplanmasından sonra metin verilerini ayrıştırmayı öneririz. Özel alanları kullanarak çeşitli avantajlar sağlar.
+
+> [!IMPORTANT]
+> Özel alanlar, Log Analytics çalışma alanında toplanan veri miktarını artırır ve bu da maliyetinizi artırabilir. Ayrıntılar için bkz. [Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme](manage-cost-storage.md#pricing-model) .
 
 Azure Izleyici 'nin **özel alanlar** özelliği, kendi aranabilir alanlarınızı ekleyerek Log Analytics çalışma alanınızdaki mevcut kayıtları genişletmenizi sağlar.  Özel alanlar, aynı kayıttaki diğer özelliklerden ayıklanan verilerden otomatik olarak doldurulur.
 
@@ -50,7 +53,7 @@ Aşağıdaki bölümlerde özel alan oluşturma yordamı sağlanmaktadır.  Bu m
 ### <a name="step-2---perform-initial-extract"></a>2. adım-ilk ayıklamayı gerçekleştirin.
 Özel alana sahip olacak kayıtları tanımladıktan sonra, ayıklamak istediğiniz verileri belirlersiniz.  Log Analytics, benzer kayıtlardaki benzer desenleri belirlemek için bu bilgileri kullanacaktır.  Bundan sonraki adımda, sonuçları doğrulayabilir ve Log Analytics analizinde kullanmak üzere daha fazla ayrıntı sağlayabilirsiniz.
 
-1. Özel alanı doldurmak istediğiniz örnek kayıttaki metni vurgulayın.  Daha sonra alan için bir ad ve veri türü sağlamak ve ilk ayıklamayı gerçekleştirmek için bir iletişim kutusu görüntülenir.  ** \_CF** karakterleri otomatik olarak eklenir.
+1. Özel alanı doldurmak istediğiniz örnek kayıttaki metni vurgulayın.  Daha sonra alan için bir ad ve veri türü sağlamak ve ilk ayıklamayı gerçekleştirmek için bir iletişim kutusu görüntülenir.  ** \_ CF** karakterleri otomatik olarak eklenir.
 2. Toplanan kayıtların analizini gerçekleştirmek için **Ayıkla** ' ya tıklayın.  
 3. **Özet** ve **Arama sonuçları** bölümleri, ayıklamayı doğru bir şekilde incelemenize olanak sağlayacak sonuçları görüntüler.  **Özet** , kayıtları tanımlamak için kullanılan ölçütü ve tanımlanan veri değerlerinin her biri için bir sayıyı görüntüler.  **Arama sonuçları** ölçütlere uyan kayıtların ayrıntılı bir listesini sağlar.
 

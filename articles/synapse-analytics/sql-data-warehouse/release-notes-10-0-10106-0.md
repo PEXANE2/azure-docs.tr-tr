@@ -4,7 +4,7 @@ description: Azure SYNAPSE Analytics için sürüm notları.
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 4/30/2020
 author: anumjs
 ms.author: anjangsh
@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: bf74e520340690c3dda71496360e5d9a2fe54ae8
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 6e2247d448807413d425dfec5d572fa895041938
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115368"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206827"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure SYNAPSE Analytics sürüm notları
 
@@ -48,9 +48,9 @@ Araç geliştirmeleri için sürüm notunda belirtilen doğru sürümün yüklü
 |**İş yükü yalıtımı (GA)**|[Iş yükü yalıtımı](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation) artık genel kullanıma sunuldu.  [İş yükü grupları](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) aracılığıyla kaynakları ayırabilir ve kullanabilirsiniz.  Denetimsiz sorguları iptal etmek için sorgu zaman aşımlarını yapılandırma özelliği de mümkündür.|
 |**İş yükü Yönetim Portalı deneyimi (Önizleme)**| Kullanıcılar, Azure portal aracılığıyla iş yükü yönetimi ayarlarını yapılandırabilir ve yönetebilir.  [İş yükü gruplarını](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) ve [iş yükü sınıflandırıcıları](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) önem derecesine göre yapılandırma özelliği mümkündür.|
 |**Değiştirme iş yükü grubu**|[Alter Workload Group](https://docs.microsoft.com/sql/t-sql/statements/alter-workload-group-transact-sql?view=azure-sqldw-latest) komutunu kullanma özelliği artık kullanılabilir.  Var olan bir [iş yükü grubunun](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation)yapılandırmasını değiştirmek için Değiştir ' i kullanın.|
-|**COPY komutuyla Parquet dosyaları için otomatik şema algılama (Önizleme)**|[Copy komutu](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) artık Parquet dosyaları yüklenirken otomatik şema algılamayı desteklemektedir. Komut, Parquet dosya şemasını otomatik olarak algılayacak ve yüklemeden önce tabloyu oluşturacaktır. Daha iyi listelenmiş olması için aşağıdaki e-posta dağıtım listesine ulaşın: sqldwcopypreview@service.microsoft.com . |
-|**COPY komutuyla karmaşık Parquet veri türlerini yükleme (Önizleme)**|[Copy komutu](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) artık karmaşık Parquet türlerini yüklemeyi destekliyor. Haritalar ve listeler gibi karmaşık türleri dize sütunlarına yükleyebilirsiniz.  Daha iyi listelenmiş olması için aşağıdaki e-posta dağıtım listesine ulaşın: sqldwcopypreview@service.microsoft.com . |
-|**COPY komutuyla birlikte Parquet dosyalarının algılanması otomatik sıkıştırma**|[Copy komutu](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) artık, Parquet dosyaları için sıkıştırma metodunun otomatik algılanmasını desteklemektedir.|
+|**COPY komutuyla Parquet dosyaları için otomatik şema algılama (Önizleme)**|[Copy komutu](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) artık Parquet dosyaları yüklenirken otomatik şema algılamayı desteklemektedir. Komut, Parquet dosya şemasını otomatik olarak algılayacak ve yüklemeden önce tabloyu oluşturacaktır. Bu özelliği etkinleştirmek için şu e-posta dağıtım listesine ulaşın: sqldwcopypreview@service.microsoft.com . |
+|**COPY komutuyla karmaşık Parquet veri türlerini yükleme (Önizleme)**|[Copy komutu](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) artık karmaşık Parquet türlerini yüklemeyi destekliyor. Haritalar ve listeler gibi karmaşık türleri dize sütunlarına yükleyebilirsiniz.  Bu özelliği etkinleştirmek için şu e-posta dağıtım listesine ulaşın: sqldwcopypreview@service.microsoft.com . |
+|**COPY komutuyla birlikte Parquet dosyalarının algılanması otomatik sıkıştırma**|[Copy komutu](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) artık, Parquet dosyaları için sıkıştırma metodunun otomatik algılanmasını desteklemektedir. Bu özelliği etkinleştirmek için şu e-posta dağıtım listesine ulaşın: sqldwcopypreview@service.microsoft.com .|
 |**Ek yük önerileri**|[Yük önerileri](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations) artık SYNAPSE SQL için kullanılabilir. Dosyalarınızı en yüksek aktarım hızı için bölmeniz gerektiğinde öngörülü bildirimler alın, depolama hesabınızı SQL havuzunuza birlikte bulun veya SQLBulkCopy API 'SI veya BCP gibi yardımcı programları yüklerken toplu iş boyutunu artırın.|
 |**T-SQL güncelleştirilebilir dağıtım sütunu (GA)**|Kullanıcılar artık dağıtım sütununda depolanan verileri güncelleştirebilir. Ayrıntılar için [SYNAPSE SQL havuzunda dağıtılmış tablo tasarlamaya yönelik kılavuza](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute) göz atın.|
 |**T-SQL Update/Delete from... Birleştir (GA)**|Başka bir tabloyla birleştirilmesinden kaynaklanan sonuçlara göre güncelleştir ve Sil artık kullanılabilir. Ayrıntılar için bkz. belgeleri [Güncelleştir](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest) ve [Sil](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest) .|

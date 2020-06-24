@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 541c6f4a6c728844524af794f5e2063f4e352cce
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fb3dda7a2f33fa76ab78a67f86fb015430c64099
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592143"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114784"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Azure Cosmos DB'de veri şifreleme 
 
@@ -24,7 +24,7 @@ PaaS hizmeti olarak Azure Cosmos DB kullanımı çok kolaydır. Azure Cosmos DB 
 
 Bekleyen şifreleme, güvenli anahtar depolama sistemleri, şifrelenmiş ağlar ve şifreleme API 'Leri dahil olmak üzere çeşitli güvenlik teknolojileri kullanılarak uygulanır. Verilerin şifresini çözen ve işleyen sistemlerin, anahtarları yöneten sistemlerle iletişim kurması gerekir. Diyagramda, şifrelenmiş verilerin ve anahtarların yönetiminin nasıl ayrıldığı gösterilmektedir. 
 
-![Tasarım diyagramı](./media/database-encryption-at-rest/design-diagram.png)
+:::image type="content" source="./media/database-encryption-at-rest/design-diagram.png" alt-text="Tasarım diyagramı" border="false":::
 
 Bir Kullanıcı isteğinin temel akışı aşağıdaki gibidir:
 - Kullanıcı veritabanı hesabı kullanıma sunulacaktır ve depolama anahtarları yönetim hizmeti kaynak sağlayıcısına bir istek aracılığıyla alınır.
@@ -46,7 +46,7 @@ Y: anahtarlar Microsoft tarafından yönetilir.
 Y: Microsoft, Cosmos DB aşağıdaki şifreleme anahtarı dönüşü için bir iç kılavuz kümesine sahiptir. Belirli yönergeler yayımlanmaz. Microsoft, iç yönergelerin bir alt kümesi olarak görülen ve geliştiriciler için faydalı en iyi yöntemlere sahip olan [güvenlik geliştirme yaşam döngüsünü (SDL)](https://www.microsoft.com/sdl/default.aspx)yayımlar.
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>S: kendi şifreleme anahtarlarımı kullanabilir miyim?
-Y: Evet, şimdi bu özellik yeni Cosmos hesapları için kullanılabilir ve hesap oluşturma sırasında gerçekleştirilmelidir. Daha fazla bilgi için lütfen [müşteri tarafından yönetilen anahtarlar](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk) belgesine gidin.
+Y: Evet, bu özellik artık yeni Azure Cosmos DB hesapları için kullanılabilir ve bu, hesap oluşturma sırasında yapılmalıdır. Daha fazla bilgi için lütfen [müşteri tarafından yönetilen anahtarlar](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk) belgesine gidin.
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>S: şifreleme hangi bölgelerde açık?
 Y: tüm Azure Cosmos DB bölgelerinin tüm Kullanıcı verileri için şifrelenmesi açıktır.

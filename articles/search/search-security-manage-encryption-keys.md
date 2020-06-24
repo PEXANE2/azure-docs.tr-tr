@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: cb17fe24339ad618229b3456ece15c206f79bdb7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 548ebf5b0d5836383b74326516fbe47b1b25f60f
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76899940"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080190"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault içindeki müşteri tarafından yönetilen anahtarları kullanarak Azure Bilişsel Arama içeriğin geri kalanında şifreleme
 
@@ -38,7 +38,7 @@ Aşağıdaki hizmetler bu örnekte kullanılır.
 
 + Yapılandırma görevleri için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) veya [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) kullanılır.
 
-+ [Postman](search-get-started-postman.md), [Azure PowerShell](search-create-index-rest-api.md) ve [Azure bilişsel arama SDK](https://aka.ms/search-sdk-preview) REST API çağırmak için kullanılabilir. Şu anda müşteri tarafından yönetilen şifreleme için portal desteği yok.
++ [Postman](search-get-started-postman.md), [Azure POWERSHELL](search-create-index-rest-api.md) ve [.NET SDK önizlemesi](https://aka.ms/search-sdk-preview) REST API çağırmak için kullanılabilir. Şu anda müşteri tarafından yönetilen şifreleme için portal desteği yok.
 
 >[!Note]
 > Azure Anahtar Kasası anahtarınız silinmişse Azure Bilişsel Arama, müşteri tarafından yönetilen anahtarlar özelliği ile şifrelemenin doğası nedeniyle verilerinizi alamıyor. Yanlışlıkla Key Vault anahtar silmeleri nedeniyle oluşan veri kaybını engellemek için, kullanılmadan önce Key Vault geçici silme ve Temizleme korumasını etkinleştirmeniz **gerekir** . Daha fazla bilgi için bkz. [Azure Key Vault geçici silme](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).   

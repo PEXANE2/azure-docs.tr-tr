@@ -1,33 +1,33 @@
 ---
-title: Azure Güvenlik Duvarı Yöneticisi güvenilen güvenlik iş ortakları (Önizleme) nedir?
-description: Azure Güvenlik Duvarı Yöneticisi güvenilen güvenlik iş ortakları hakkında bilgi edinin
+title: Azure Güvenlik Duvarı Yöneticisi güvenlik iş ortağı sağlayıcıları (Önizleme)
+description: Azure Güvenlik Duvarı Yöneticisi güvenlik iş ortağı sağlayıcıları hakkında bilgi edinin
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 06/15/2020
 ms.author: victorh
-ms.openlocfilehash: b92242ce9086579d0397f78853402cfc08453f68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d430deae191fbc9f9ab5bbbc2b83ee4640dd831
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75436784"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791544"
 ---
-# <a name="what-are-trusted-security-partners-preview"></a>Güvenilen güvenlik iş ortakları (önizleme) nedir?
+# <a name="what-are-security-partner-providers-preview"></a>Güvenlik iş ortağı sağlayıcıları (Önizleme) nedir?
 
 > [!IMPORTANT]
 > Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure Güvenlik Duvarı Yöneticisi 'nde *güvenilir güvenlik iş ortakları (Önizleme)* , kullanıcılarınız için Internet erişimini korumak üzere tanıdık, en uygun, yerleşik, üçüncü taraf güvenlik hizmeti (SECaaS) tekliflerini kullanmanıza olanak sağlar.
+Azure Güvenlik Duvarı Yöneticisi 'nde *güvenlik iş ortakları sağlayıcıları (Önizleme)* , kullanıcılarınız için Internet erişimini korumak üzere tanıdık, en uygun, kümelenen, üçüncü taraf güvenlik (SECaaS) tekliflerini kullanmanıza olanak sağlar.
 
 Hızlı yapılandırmayla, desteklenen bir güvenlik ortağıyla bir hub 'ı güvenli hale getirebilirsiniz ve Internet trafiğini sanal ağlarınızdan (VNet) veya bir bölgedeki dal konumlarından yönlendirebilir ve filtreleyebilirsiniz. Bu işlem, Kullanıcı tanımlı yollar (UDRs) ayarlamadan ve yönetilmeden otomatik rota Yönetimi kullanılarak yapılır.
 
 Kullanıcılarınızın bu bölgelerdeki dünya genelinde her yerde bağlantı ve güvenlik sağlamak için birden fazla Azure bölgesinde tercih ettiğiniz güvenlik ortağıyla yapılandırılmış güvenli hub 'ları dağıtabilirsiniz. Güvenlik iş ortağının Internet/SaaS uygulama trafiği ve güvenli hub 'larda özel trafik için Azure Güvenlik Duvarı tekliflerini kullanma olanağı sayesinde, artık Azure 'da, genel olarak dağıtılmış kullanıcılarınıza ve uygulamalarınıza yakın olan güvenlik ucunu oluşturmaya başlayabilirsiniz.
 
-Bu önizleme için, desteklenen güvenlik iş ortakları **Zscaler** ve **ıpatron**' dir. Desteklenen bölgeler şunlardır WestCentralUS, kuzeydoğu, WestUS, WestUS2 ve EastUS.
+Bu önizleme için, desteklenen güvenlik iş ortakları **Zscaler**, **Check Point**ve **ıpatron**. Desteklenen bölgeler şunlardır WestCentralUS, kuzeydoğu, WestUS, WestUS2 ve EastUS.
 
-![Güvenilen güvenlik iş ortakları](media/trusted-security-partners/trusted-security-partners.png)
+![Güvenlik iş ortağı sağlayıcıları](media/trusted-security-partners/trusted-security-partners.png)
 
 ## <a name="key-scenarios"></a>Önemli senaryolar
 
@@ -80,4 +80,4 @@ Ayrıca, Office 365 bağlantılarının gizlilik açısından güçlü şekilde 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Güvenlik Duvarı Yöneticisi 'ni kullanarak güvenli bir hub 'da güvenilir bir güvenlik teklifi dağıtın](deploy-trusted-security-partner.md).
+[Azure Güvenlik Duvarı Yöneticisi 'ni kullanarak güvenli bir hub 'da güvenlik ortağı teklifi dağıtın](deploy-trusted-security-partner.md).

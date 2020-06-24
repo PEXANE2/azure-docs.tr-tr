@@ -7,19 +7,19 @@ ms.service: automation
 ms.subservice: dsc
 author: mgoedtel
 ms.author: magoedte
-ms.date: 06/03/2020
+ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d2109baf077b1b4c1074cfae9edd0d2b5ef5030d
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: bdb387739be65b761c773ca13b7a407d7aebf738
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343012"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206895"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Otomasyonu durum yapılandırmasına genel bakış
 
-Azure Otomasyonu durum yapılandırması, herhangi bir bulutta veya şirket içi veri merkezinde bulunan düğümler için PowerShell Istenen durum yapılandırması (DSC) [yapılandırmalarını](/powershell/scripting/dsc/configurations/configurations) yazmanızı, yönetmenizi ve derlemenize olanak tanıyan bir Azure yapılandırma yönetim hizmetidir. Hizmet ayrıca [DSC kaynaklarını](/powershell/scripting/dsc/resources/resources)içeri aktarır ve tüm bulutta, hedef düğümlere yapılandırma atar. **Yapılandırma yönetimi**altında **Durum Yapılandırması (DSC)** seçeneğini belirleyerek Azure Portal Azure Automation durum yapılandırmasına erişebilirsiniz. 
+Azure Otomasyonu durum yapılandırması, herhangi bir bulutta veya şirket içi veri merkezinde bulunan düğümler için PowerShell Istenen durum yapılandırması (DSC) [yapılandırmalarını](/powershell/scripting/dsc/configurations/configurations) yazmanızı, yönetmenizi ve derlemenize olanak tanıyan bir Azure yapılandırma yönetim hizmetidir. Hizmet ayrıca [DSC kaynaklarını](/powershell/scripting/dsc/resources/resources)içeri aktarır ve tüm bulutta, hedef düğümlere yapılandırma atar. **Yapılandırma yönetimi**altında **Durum Yapılandırması (DSC)** seçeneğini belirleyerek Azure Portal Azure Automation durum yapılandırmasına erişebilirsiniz.
 
 Çeşitli makineleri yönetmek için Azure Otomasyonu durum yapılandırmasını kullanabilirsiniz:
 
@@ -53,7 +53,7 @@ Azure Otomasyonu durum yapılandırması, PowerShell komut dosyası oluşturma �
 
 Azure Otomasyonu durum yapılandırması ile yönetilen düğümler, yerleşik çekme sunucusuna ayrıntılı raporlama durum verileri gönderir. Azure Otomasyonu durum yapılandırması 'nı, bu verileri Log Analytics çalışma alanınıza gönderecek şekilde yapılandırabilirsiniz. Bkz. [Azure Otomasyonu durum yapılandırması raporlama verilerini Azure izleyici günlüklerine iletme](automation-dsc-diagnostics.md).
 
-## <a name="prerequisites-for-using-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırması 'nı kullanma önkoşulları
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Otomasyonu durum yapılandırması 'nı kullanırken bu bölümdeki gereksinimleri göz önünde bulundurun.
 
@@ -68,7 +68,7 @@ Windows çalıştıran düğümler için aşağıdaki sürümler desteklenir:
 - Windows Server 2008 R2 SP1
 - Windows 10
 - Windows 8.1
-- Windows 7
+- Windows 7
 
 >[!NOTE]
 >[Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) tek başına Ürün SKU 'SU bir DSC uygulamasını içermez. Bu nedenle, PowerShell DSC veya Azure Otomasyonu durum yapılandırması tarafından yönetilemez.
@@ -103,36 +103,9 @@ DSC aracısına yönelik ara sunucu desteği Windows sürüm 1809 ve sonrasında
 
 Linux düğümleri için DSC Aracısı ara sunucuyu destekler ve `http_proxy` URL 'yi belirlemede bu değişkeni kullanır. Ara sunucu desteği hakkında daha fazla bilgi edinmek için bkz. [DSC metaconfigurations oluşturma](automation-dsc-onboarding.md#generate-dsc-metaconfigurations).
 
-#### <a name="azure-automation-state-configuration-network-ranges-and-namespace"></a>Azure Otomasyonu durum yapılandırması ağ aralıkları ve ad alanı
+#### <a name="dns-records-per-region"></a>Bölge başına DNS kayıtları
 
-Özel durumları tanımlarken aşağıda listelenen adreslerin kullanılması önerilir. IP adresleri için [Microsoft Azure veri MERKEZI IP aralıklarını](https://www.microsoft.com/download/details.aspx?id=41653)indirebilirsiniz. Bu dosya haftalık olarak güncelleştirilir ve şu anda dağıtılmış aralıklar ve IP aralıklarında yaklaşan değişiklikler vardır.
-
-Belirli bir bölge için tanımlanan bir Otomasyon hesabınız varsa, bu bölgesel veri merkezi ile iletişimi kısıtlayabilirsiniz. Aşağıdaki tabloda her bölge için DNS kaydı verilmiştir:
-
-| **Bölge** | **DNS kaydı** |
-| --- | --- |
-| Orta Batı ABD | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| Orta Güney ABD |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| Doğu ABD    | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
-| Doğu ABD 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
-| Orta Kanada |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
-| Batı Avrupa |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
-| Kuzey Avrupa |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
-| Güneydoğu Asya |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
-| Orta Hindistan |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
-| Doğu Japonya |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
-| Avustralya Güneydoğu |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Güney Birleşik Krallık | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| US Gov Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
-
-Bölge adları yerine bölge IP adresleri listesi için, Microsoft Indirme Merkezi ' nden [Azure veri MERKEZI IP adresi](https://www.microsoft.com/download/details.aspx?id=41653) XML dosyasını indirin.
-
-> [!NOTE]
-> Azure veri merkezi IP adresi XML dosyası Microsoft Azure veri merkezlerinde kullanılan IP adresi aralıklarını listeler. Dosya işlem, SQL ve depolama aralıklarını içerir.
->
->Güncelleştirilmiş bir dosya haftalık olarak gönderilir. Dosya, şu anda dağıtılmış aralıkları ve IP aralıklarında yaklaşan değişiklikleri yansıtır. Dosyada görüntülenen yeni aralıklar, en az bir hafta için veri merkezlerinde kullanılmıyor. Her hafta yeni XML dosyasını indirmek iyi bir fikirdir. Ardından sitenizi Azure 'da çalışan hizmetleri doğru şekilde belirlemek için güncelleştirin. 
-
-Azure ExpressRoute kullanıcıları bu dosyanın, her ayın ilk haftasında Azure Space Sınır Ağ Geçidi Protokolü (BGP) tanıtımını güncelleştirmek için kullanıldığını unutmayın.
+Özel durumları tanımlarken [bölge başına DNS kayıtları](how-to/automation-region-dns-records.md) tablosunda listelenen adreslerin kullanılması önerilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

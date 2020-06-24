@@ -9,26 +9,26 @@ ms.topic: reference
 ms.custom: tracking-python
 author: likebupt
 ms.author: keli19
-ms.date: 04/27/2020
-ms.openlocfilehash: d25a738a76c955ee11f091bb0f8861bd21cc9f1d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/16/2020
+ms.openlocfilehash: f64c79a970ec54c07c2934a92a9ca349ea56ca40
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555874"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907559"
 ---
 # <a name="execute-python-script-module"></a>Python betik modülünü Yürüt
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede, Azure Machine Learning tasarımcısında Python betik modülünü yürütme (Önizleme) açıklanmaktadır.
 
-Python kodunu çalıştırmak için bu modülü kullanın. Python 'un mimari ve tasarım ilkeleri hakkında daha fazla bilgi için [aşağıdaki makaleye](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)bakın.
+Python kodunu çalıştırmak için bu modülü kullanın. Python 'un mimari ve tasarım ilkeleri hakkında daha fazla bilgi için [Bu makaleye](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)bakın.
 
-Python ile Şu anda mevcut modüller tarafından desteklenmeyen görevleri gerçekleştirebilirsiniz:
+Python ile, var olan modüllerin desteklemediği görevleri gerçekleştirebilirsiniz, örneğin:
 
-+ Kullanarak verileri görselleştirme`matplotlib`
-+ Çalışma alanınızdaki veri kümelerini ve modelleri numaralandırmak için Python kitaplıklarını kullanma
-+ [Verileri Içeri aktarma](./import-data.md) modülü tarafından desteklenmeyen kaynaklardaki verileri okuma, yükleme ve düzenleme
-+ Kendi derin öğrenme kodunuzu çalıştırın 
++ Kullanarak verileri görselleştirme `matplotlib` .
++ Çalışma alanınızdaki veri kümelerini ve modelleri listelemek için Python kitaplıklarını kullanma.
++ [Veri alma](./import-data.md) modülünün desteklemediği kaynaklardaki verileri okuma, yükleme ve düzenleme.
++ Kendi derin öğrenme kodunuzu çalıştırın. 
 
 
 Azure Machine Learning, Python 'un, veri işleme için birçok yaygın yardımcı programını içeren Anaconda dağıtımını kullanır. Anaconda sürümünü otomatik olarak güncelleştireceğiz. Geçerli sürüm:
@@ -145,26 +145,37 @@ Azure Machine Learning, Python 'un, veri işleme için birçok yaygın yardımc�
 -    Werkzeug = = 0.16.1
 -    tekerlek = = 0.34.2
 
- Önceden yüklenmiş listede olmayan diğer paketleri yüklemek için, örneğin *scikit-misc*, aşağıdaki kodu betiğe ekleyin: 
+ Önceden yüklenmiş listede olmayan paketleri yüklemek için (örneğin, *scikit-misc*), betiğe aşağıdaki kodu ekleyin: 
 
  ```python
 import os
 os.system(f"pip install scikit-misc")
 ```
+
+Daha iyi performans için, özellikle çıkarım için paketleri yüklemek üzere aşağıdaki kodu kullanın:
+```python
+import importlib.util
+package_name = 'scikit-misc'
+spec = importlib.util.find_spec(package_name)
+if spec is None:
+    import os
+    os.system(f"pip install scikit-misc")
+```
+
 > [!NOTE]
-> İşlem hatlarınız birden çok yürütme Python betik modülü içeriyorsa ve önceden yüklenmiş listesinde olmayan aynı paketlere ihtiyaç duyuyorsanız, lütfen paketleri sırasıyla her bir modüle yüklemeniz gerekir. 
+> İşlem hatlarınız, önceden yüklenmiş listesinde olmayan paketlere ihtiyacı olan birden çok yürütme Python betik modülü içeriyorsa, paketleri her modüle yükler.
 
 ## <a name="upload-files"></a>Dosyaları karşıya yükleme
-**Execute Python betiği** , [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-)kullanılarak dosyaların yüklenmesini destekler.
+Execute Python betik modülü, [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-)kullanarak dosyaları karşıya yüklemeyi destekler.
 
-Aşağıdaki örnek, **Python betik** modülündeki bir görüntü dosyasının nasıl karşıya yükleneceğini göstermektedir:
+Aşağıdaki örnek, Python betik modülündeki bir görüntü dosyasının nasıl karşıya yükleneceğini göstermektedir:
 
 ```Python
 
-# The script MUST contain a function named azureml_main
+# The script MUST contain a function named azureml_main,
 # which is the entry point for this module.
 
-# imports up here can be used to
+# Imports up here can be used to
 import pandas as pd
 
 # The entry point function must have two input arguments:
@@ -186,70 +197,70 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     run.upload_file(f"graphics/{img_file}", img_file)
 
     # Return value must be of a sequence of pandas.DataFrame
-    # E.g.
+    # For example:
     #   -  Single return value: return dataframe1,
     #   -  Two return values: return dataframe1, dataframe2
     return dataframe1,
 }
 ```
 
-İşlem hattı çalıştırması tamamlandıktan sonra, modülün sağ panelinde görüntünün önizlemesini yapabilirsiniz
+İşlem hattı çalıştırması tamamlandıktan sonra, modülün sağ panelinde görüntünün önizlemesini yapabilirsiniz.
 
 > [!div class="mx-imgBorder"]
-> ![Karşıya yüklenen-görüntü](media/module/upload-image-in-python-script.png)
+> ![Karşıya yüklenen görüntünün önizlemesi](media/module/upload-image-in-python-script.png)
 
 ## <a name="how-to-configure-execute-python-script"></a>Python betiğini yürütme betiği nasıl yapılandırılır
 
-**Execute Python betik** modülü, başlangıç noktası olarak kullanabileceğiniz örnek Python kodunu içerir. Python betik modülünü **Yürüt** ' ü yapılandırmak Için, **Python betiği** metin kutusunda yürütülecek bir giriş ve Python kodu kümesi sağlarsınız.
+Execute Python betik modülü, başlangıç noktası olarak kullanabileceğiniz örnek Python kodunu içerir. Python betik modülünü Yürüt ' ü yapılandırmak için, **Python betiği** metin kutusunda çalıştırılacak bir giriş kümesi ve Python kodu sağlayın.
 
 1. İşlem hattınızla **Python betiği yürütme** modülünü ekleyin.
 
 2. Giriş için kullanmak istediğiniz tasarımcıdan **dataSet1** herhangi bir veri kümesini ekleyin ve bağlayın. Bu veri kümesine Python betiğinizdeki **DataFrame1**olarak başvurun.
 
-    Veri kümesinin kullanımı isteğe bağlıdır, Python kullanarak veri oluşturmak istiyorsanız veya verileri doğrudan modüle aktarmak için Python kodu kullanın.
+    Veri kümesinin kullanımı isteğe bağlıdır. Python kullanarak veri oluşturmak istiyorsanız veya verileri doğrudan modüle aktarmak için Python kodu ' nu kullanın.
 
-    Bu modül, **DataSet2**üzerindeki ikinci veri kümesinin eklenmesini destekler. Python betiğinizdeki ikinci veri kümesine DataFrame2 olarak başvurun.
+    Bu modül, **DataSet2**üzerindeki ikinci bir veri kümesinin eklenmesini destekler. Python betiğinizdeki ikinci veri kümesine **DataFrame2**olarak başvurun.
 
-    Azure Machine Learning depolanan veri kümeleri, bu modülle yüklendiğinde otomatik olarak **Pandas** Data. Frames 'e dönüştürülür.
+    Azure Machine Learning depolanan veri kümeleri, bu modülle yüklendiğinde otomatik olarak Pandas veri çerçevelerine dönüştürülür.
 
     ![Python giriş eşlemesini Yürüt](media/module/python-module.png)
 
-4. Yeni Python paketleri veya kodu eklemek için, bu özel kaynakları içeren daraltılmış dosyayı **betik paketi**'ne ekleyin. **Betik** paketine giriş, dosya türü veri kümesi olarak çalışma alanınıza yüklenmiş sıkıştırılmış bir dosya olmalıdır. **Veri kümesi varlık sayfasında** veri kümesini karşıya yükleyebilir ve veri kümesi modülünü tasarımcı yazma sayfasındaki sol modül ağacında bulunan **veri kümeleri** listesinden sürükleyip bırakabilirsiniz. 
+4. Yeni Python paketleri veya kodu eklemek için, bu özel kaynakları içeren daraltılmış dosyayı **betik paketi**'ne ekleyin. **Betik** paketine giriş, dosya türü veri kümesi olarak çalışma alanınıza yüklenmiş sıkıştırılmış bir dosya olmalıdır. **Veri kümesi varlık sayfasında** veri kümesini karşıya yükleyebilirsiniz. Veri kümesi modülünü, tasarımcı yazma sayfasındaki sol modül ağacındaki **veri kümeleri** listesinden sürükleyebilirsiniz. 
 
     Karşıya yüklenen sıkıştırılmış arşivde bulunan herhangi bir dosya, işlem hattı yürütmesi sırasında kullanılabilir. Arşiv bir dizin yapısı içeriyorsa, yapı korunur, ancak **src** adlı bir dizini yola eklemek zorundasınız.
 
 5. **Python betiği** metin kutusuna geçerli Python betiği yazın veya yapıştırın.
 
     > [!NOTE]
-    > Lütfen komut dosyanızı yazarken çok dikkatli olun ve bildirilmeyen nesneler veya içeri aktarılmayan modüller kullanma gibi sözdizimi hatası olmadığından emin olun. Ayrıca önceden yüklenmiş modül listesine daha fazla dikkat ödeyin. Listelenmemiş modülleri içeri aktarmak için, komut dosyasına karşılık gelen paketleri
+    >  Betiğinizi yazarken dikkatli olun. Bildirilmemiş değişkenleri veya içeri aktarılmayan modülleri veya işlevleri kullanma gibi sözdizimi hatası olmadığından emin olun. Önceden yüklenmiş modül listesine daha fazla dikkat ödeyin. Listelenmemiş modülleri içeri aktarmak için, betiğinizdeki ilgili paketleri şu şekilde yüklemelisiniz:
     >  ``` Python
     > import os
     > os.system(f"pip install scikit-misc")
     > ```
     
-    **Python betiği** metin kutusu, açıklamalarda bazı yönergeler ve veri erişimi ve çıktısı için örnek kod ile önceden doldurulur. Bu kodu düzenlemeniz veya değiştirmeniz gerekir. Girintileme ve büyük küçük harf ile ilgili Python kurallarını izlediğinizden emin olun.
+    **Python betiği** metin kutusu, açıklamalarda bazı yönergelerden ve veri erişimi ve çıkış için örnek kodda önceden doldurulur. Bu kodu düzenlemeniz veya değiştirmeniz gerekir. Girintileme ve büyük küçük harf için Python kurallarını izleyin:
 
     + Betik, `azureml_main` Bu modül için giriş noktası olarak adlandırılan bir işlev içermelidir.
-    + Giriş noktası işlevinin iki giriş bağımsız değişkeni olmalıdır: `Param<dataframe1>` ve `Param<dataframe2>` Bu bağımsız değişkenler betikte kullanılmıyor olsa bile.
+    + Giriş noktası işlevinin, `Param<dataframe1>` `Param<dataframe2>` Bu bağımsız değişkenler betiğinizde kullanılmasa bile iki giriş bağımsız değişkeni olması gerekir.
     + Üçüncü giriş bağlantı noktasına bağlı daraltılmış dosyalar, `.\Script Bundle` aynı zamanda Python 'a eklenen dizininde sıkıştırıldı ve dizinde depolanmaktadır `sys.path` . 
 
-    Bu nedenle, ZIP dosyanız içeriyorsa `mymodule.py` kullanarak dosyayı içeri aktarın `import mymodule` .
+    . Zip dosyanız içeriyorsa `mymodule.py` , öğesini kullanarak alın `import mymodule` .
 
-    + İki veri kümesi tasarımcıya döndürülebilir ve bu tür bir dizi olmalıdır `pandas.DataFrame` . Python kodunuzda başka çıktılar oluşturabilir ve bunları doğrudan Azure depolama 'ya yazabilirsiniz.
+    İki veri kümesi tasarımcıya döndürülebilir ve bu tür bir dizi olmalıdır `pandas.DataFrame` . Python kodunuzda başka çıktılar oluşturabilir ve bunları doğrudan Azure depolama 'ya yazabilirsiniz.
 
-6. İşlem hattını gönderme veya modülü seçme ve yalnızca Python betiğini çalıştırmak için **Seçileni Çalıştır** ' a tıklayın.
+6. İşlem hattını gönder veya modülü seçip yalnızca Python betiğini çalıştırmak için **Seçileni Çalıştır** ' ı seçin.
 
     Tüm veriler ve kodlar bir sanal makineye yüklenir ve belirtilen Python ortamı kullanılarak çalıştırılır.
 
 ## <a name="results"></a>Sonuçlar
 
-Katıştırılmış Python kodu tarafından gerçekleştirilen hesaplamaların sonuçlarının bir Pandas olarak sağlanması gerekir. Sonuçları, işlem hattındaki diğer modüllerle kullanabilmeniz için Azure Machine Learning veri kümesi biçimine otomatik olarak dönüştürülecek olan DataFrame.
+Katıştırılmış Python kodu tarafından yapılan hesaplamaların sonuçları `pandas.DataFrame` , Azure Machine Learning veri kümesi biçimine otomatik olarak dönüştürülecek olarak sağlanmalıdır. Daha sonra sonuçları işlem hattındaki diğer modüllerle birlikte kullanabilirsiniz.
 
 Modül iki veri kümesi döndürür:  
   
-+ Python betikteki ilk döndürülen Pandas dataframe tarafından tanımlanan **sonuçlar veri kümesi 1**
++ Bir Python betiğinde ilk döndürülen Pandas veri çerçevesi tarafından tanımlanan **sonuçlar veri kümesi 1**.
 
-+ **Sonuç veri kümesi 2**, Python betiğinde ikinci döndürülen Pandas dataframe tarafından tanımlanır
++ **Sonuç veri kümesi 2**, bir Python betiğinin ikinci döndürülen Pandas veri çerçevesi tarafından tanımlanır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

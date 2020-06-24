@@ -3,13 +3,13 @@ title: Linux ASP.NET Core uygulamalarını yapılandırma
 description: Uygulamanız için önceden oluşturulmuş bir ASP.NET Core kapsayıcısını yapılandırmayı öğrenin. Bu makalede en sık kullanılan yapılandırma görevleri gösterilmektedir.
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/13/2019
-ms.openlocfilehash: b1d9e59109f5ace25abb9840b48e44ff03d394e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/02/2020
+ms.openlocfilehash: e009f5b1fc656f700b3f0e76dda6e545aed535d2
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78255904"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905774"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Azure App Service için bir Linux ASP.NET Core uygulaması yapılandırma
 
@@ -43,12 +43,12 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 Uygulamanızı, derleme Otomasyonu açıkken git veya ZIP paketleri kullanarak dağıtırsanız, App Service aşağıdaki sırayla Otomasyon adımları oluşturun:
 
-1. Tarafından `PRE_BUILD_SCRIPT_PATH`belirtilmişse özel betiği çalıştırın.
-1. NuGet `dotnet restore` bağımlılıklarını geri yüklemek için ' i çalıştırın.
-1. Üretim `dotnet publish` için bir ikili oluşturmak üzere ' i çalıştırın.
-1. Tarafından `POST_BUILD_SCRIPT_PATH`belirtilmişse özel betiği çalıştırın.
+1. Tarafından belirtilmişse özel betiği çalıştırın `PRE_BUILD_SCRIPT_PATH` .
+1. `dotnet restore`NuGet bağımlılıklarını geri yüklemek için ' i çalıştırın.
+1. `dotnet publish`Üretim için bir ikili oluşturmak üzere ' i çalıştırın.
+1. Tarafından belirtilmişse özel betiği çalıştırın `POST_BUILD_SCRIPT_PATH` .
 
-`PRE_BUILD_COMMAND`ve `POST_BUILD_COMMAND` varsayılan olarak boş olan ortam değişkenleridir. Oluşturma öncesi komutları çalıştırmak için, tanımlayın `PRE_BUILD_COMMAND`. Oluşturma sonrası komutları çalıştırmak için, tanımlayın `POST_BUILD_COMMAND`.
+`PRE_BUILD_COMMAND`ve `POST_BUILD_COMMAND` Varsayılan olarak boş olan ortam değişkenleridir. Oluşturma öncesi komutları çalıştırmak için, tanımlayın `PRE_BUILD_COMMAND` . Oluşturma sonrası komutları çalıştırmak için, tanımlayın `POST_BUILD_COMMAND` .
 
 Aşağıdaki örnek, virgülle ayrılmış bir dizi komuta iki değişkeni belirtir.
 
@@ -81,8 +81,8 @@ namespace SomeNamespace
     
         public SomeMethod()
         {
-            // retrieve App Service app setting
-            var myAppSetting = _configuration["MySetting"];
+            // retrieve nested App Service app setting
+            var myHierarchicalConfig = _configuration["My:Hierarchical:Config:Data"];
             // retrieve App Service connection string
             var myConnString = _configuration.GetConnectionString("MyDbConnection");
         }
@@ -90,11 +90,18 @@ namespace SomeNamespace
 }
 ```
 
-App Service ve *appSettings. JSON*' de aynı ada sahip bir uygulama ayarı yapılandırırsanız, örneğin, App Service değeri *appSettings. JSON* değerine göre önceliklidir. Yerel *appSettings. JSON* değeri, uygulamada yerel olarak hata ayıklamanıza olanak tanır, ancak App Service değeri, uygulamayı üretim ayarları ile birlikte çalıştırmanıza olanak sağlar. Bağlantı dizeleri aynı şekilde çalışır. Bu şekilde, uygulamanızın gizli dizilerini kod deponuzun dışında tutabilir ve kodunuzda değişiklik yapmadan uygun değerlere erişebilirsiniz.
+App Service ve *appsettings.jsüzerinde*aynı ada sahip bir uygulama ayarı yapılandırırsanız, örneğin App Service değeri değeri *appsettings.js* üzerinden önceliklidir. Değer *üzerindeki yerelappsettings.js* , uygulamada yerel olarak hata ayıklamanıza olanak tanır, ancak App Service değeri, uygulamayı üretim ayarları ile birlikte çalıştırmanıza olanak sağlar. Bağlantı dizeleri aynı şekilde çalışır. Bu şekilde, uygulamanızın gizli dizilerini kod deponuzun dışında tutabilir ve kodunuzda değişiklik yapmadan uygun değerlere erişebilirsiniz.
+
+> [!NOTE]
+> *appsettings.jsüzerindeki* [Hiyerarşik yapılandırma verilerine](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) `:` .NET Core için standart olan sınırlayıcı kullanılarak erişildiğini unutmayın. App Service belirli bir hiyerarşik yapılandırma ayarını geçersiz kılmak için, uygulama ayarı adını anahtarda aynı ayrılmış biçimle ayarlayın. [Cloud Shell](https://shell.azure.com)aşağıdaki örneği çalıştırabilirsiniz:
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings My:Hierarchical:Config:Data="some value"
+```
 
 ## <a name="get-detailed-exceptions-page"></a>Ayrıntılı özel durumlar sayfası al
 
-ASP.NET uygulamanız Visual Studio hata ayıklayıcısında bir özel durum oluşturduğunda, tarayıcıda ayrıntılı bir özel durum sayfası görüntülenir, ancak bu sayfa App Service bir genel **HTTP 500** hatası ile **değiştirilirken veya isteğiniz işlenirken bir hata oluştu.** iletisi döndürmektedir. Ayrıntılı özel durum sayfasını App Service göstermek için, <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>aşağıdaki komutu `ASPNETCORE_ENVIRONMENT` çalıştırarak uygulama ayarını uygulamanıza ekleyin.
+ASP.NET uygulamanız Visual Studio hata ayıklayıcısında bir özel durum oluşturduğunda, tarayıcıda ayrıntılı bir özel durum sayfası görüntülenir, ancak bu sayfa App Service bir genel **HTTP 500** hatası ile **değiştirilirken veya isteğiniz işlenirken bir hata oluştu.** iletisi döndürmektedir. Ayrıntılı özel durum sayfasını App Service göstermek için, `ASPNETCORE_ENVIRONMENT` <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>aşağıdaki komutu çalıştırarak uygulama ayarını uygulamanıza ekleyin.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
@@ -104,9 +111,9 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 App Service, [SSL sonlandırması](https://wikipedia.org/wiki/TLS_termination_proxy) ağ yükü dengeleyicilerde gerçekleşinceye kadar, tüm https istekleri UYGULAMANıZA şifrelenmemiş HTTP istekleri olarak ulaşacak. Uygulama mantığınızın kullanıcı isteklerinin şifrelenip şifrelenmediğini bilmeleri gerekiyorsa, Iletilen üstbilgiler ara yazılımını *Startup.cs*içinde yapılandırın:
 
-- `X-Forwarded-Proto` İçindeki `Startup.ConfigureServices`ve üst bilgilerini iletmek Için, `X-Forwarded-For` yazılım yazılımını [forwardedheadersoptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) ile yapılandırın.
+- İçindeki ve üst bilgilerini iletmek için, yazılım yazılımını [Forwardedheadersoptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) ile yapılandırın `X-Forwarded-For` `X-Forwarded-Proto` `Startup.ConfigureServices` .
 - Bilinen ağlara özel IP adresi aralıkları ekleyin, böylece ara yazılım App Service yük dengeleyiciye güvenebilirler.
-- Diğer middlewares çağrılmadan önce içinde `Startup.Configure` [Useforwardedheaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) yöntemini çağırın.
+- Diğer middlewares çağrılmadan önce içinde [Useforwardedheaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) yöntemini çağırın `Startup.Configure` .
 
 Üç öğeyi birlikte koymak, kodunuz aşağıdaki örneğe benzer şekilde görünür:
 
@@ -154,7 +161,7 @@ project = <project-name>/<project-name>.csproj
 
 ### <a name="using-app-settings"></a>Uygulama ayarlarını kullanma
 
-<a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>, aşağıdaki CLI komutunu çalıştırarak App Service uygulamanıza bir uygulama ayarı ekleyin. * \<App-name>*, * \<Resource-Group-Name>* ve * \<proje-Name>* uygun değerlerle değiştirin.
+<a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>, aşağıdaki CLI komutunu çalıştırarak App Service uygulamanıza bir uygulama ayarı ekleyin. *\<app-name>*, *\<resource-group-name>* Ve *\<project-name>* değerlerini uygun değerlerle değiştirin.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -162,7 +169,26 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="access-diagnostic-logs"></a>Tanılama günlüklerine erişim
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+ASP.NET Core, [App Service için yerleşik bir günlük oluşturma sağlayıcısı](https://docs.microsoft.com/aspnet/core/fundamentals/logging/#azure-app-service)sağlar. Projenizin *program.cs* içinde, `ConfigureLogging` Aşağıdaki örnekte gösterildiği gibi, sağlayıcıyı uzantı yöntemi aracılığıyla uygulamanıza ekleyin:
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureLogging(logging =>
+        {
+            logging.AddAzureWebAppDiagnostics();
+        })
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        });
+```
+
+Daha sonra [Standart .NET Core düzeniyle](https://docs.microsoft.com/aspnet/core/fundamentals/logging)günlükleri yapılandırabilir ve oluşturabilirsiniz.
+
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
+
+App Service ASP.NET Core uygulamalar hakkında sorun giderme hakkında daha fazla bilgi için bkz. [ASP.NET Core Azure App Service ve IIS 'de sorun giderme](https://docs.microsoft.com/aspnet/core/test/troubleshoot-azure-iis)
 
 ## <a name="open-ssh-session-in-browser"></a>SSH oturumunu tarayıcıda aç
 

@@ -4,12 +4,12 @@ description: Uygulamanız için önceden oluşturulmuş bir PHP kapsayıcısın�
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 9933205095587d9e8e0d8a5641d213f159512450
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 9e4237f1eecb9f6542aac946525ff4583e478c2e
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234946"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905706"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Azure App Service için bir Linux PHP uygulaması yapılandırma
 
@@ -104,17 +104,17 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 
 Popüler Web çerçeveleri `X-Forwarded-*` Standart uygulama hiyerarşinizdeki bilgilere erişmenizi sağlar. [Codeigniter](https://codeigniter.com/)'da, [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) `X_FORWARDED_PROTO` Varsayılan olarak değerini denetler.
 
-## <a name="customize-phpini-settings"></a>Php. ini ayarlarını özelleştirme
+## <a name="customize-phpini-settings"></a>php.ini ayarlarını özelleştirme
 
-PHP yüklemenizde değişiklik yapmanız gerekiyorsa, bu adımları izleyerek [php. ini yönergelerinden](https://www.php.net/manual/ini.list.php) herhangi birini değiştirebilirsiniz.
+PHP yüklemenizde değişiklikler yapmanız gerekiyorsa, bu adımları izleyerek [php.ini yönergelerinden](https://www.php.net/manual/ini.list.php) herhangi birini değiştirebilirsiniz.
 
 > [!NOTE]
-> PHP sürümünü ve geçerli *php. ini* yapılandırmasını görmenin en iyi yolu, uygulamanızda [PHPINFO ()](https://www.php.net/manual/function.phpinfo.php) öğesini çağırmanız.
+> PHP sürümünü ve geçerli *php.ini* yapılandırmasını görmenin en iyi yolu, uygulamanızda [PHPINFO ()](https://php.net/manual/function.phpinfo.php) öğesini çağırmanız.
 >
 
 ### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a>Özelleştirme-PHP_INI_SYSTEM olmayan yönergeler
 
-PHP_INI_USER, PHP_INI_PERDIR ve PHP_INI_ALL yönergeleri (bkz. [php. ını yönergeleri](https://www.php.net/manual/ini.list.php)) özelleştirmek için uygulamanızın kök dizinine bir *. htaccess* dosyası ekleyin.
+PHP_INI_USER, PHP_INI_PERDIR ve PHP_INI_ALL yönergelerini özelleştirmek için (bkz. [php.ini yönergeleri](https://www.php.net/manual/ini.list.php)), uygulamanızın kök dizinine bir *. htaccess* dosyası ekleyin.
 
 *. Htaccess* dosyasında, söz dizimini kullanarak yönergeleri ekleyin `php_value <directive-name> <value>` . Örneğin:
 
@@ -134,7 +134,7 @@ Değişiklikleri ile uygulamanızı yeniden dağıtın ve yeniden başlatın. Ku
 
 ### <a name="customize-php_ini_system-directives"></a><a name="customize-php_ini_system-directives"></a>PHP_INI_SYSTEM yönergeleri özelleştirme
 
-PHP_INI_SYSTEM yönergeleri özelleştirmek için (bkz. [php. ını yönergeleri](https://www.php.net/manual/ini.list.php)), *. htaccess* yaklaşımını kullanamazsınız. App Service, uygulama ayarını kullanarak ayrı bir mekanizma sağlar `PHP_INI_SCAN_DIR` .
+PHP_INI_SYSTEM yönergeleri özelleştirmek için (bkz. [php.ini yönergeleri](https://www.php.net/manual/ini.list.php)), *. htaccess* yaklaşımını kullanamazsınız. App Service, uygulama ayarını kullanarak ayrı bir mekanizma sağlar `PHP_INI_SCAN_DIR` .
 
 İlk olarak, adlı bir uygulama ayarı eklemek için [Cloud Shell](https://shell.azure.com) aşağıdaki komutu çalıştırın `PHP_INI_SCAN_DIR` :
 
@@ -142,11 +142,11 @@ PHP_INI_SYSTEM yönergeleri özelleştirmek için (bkz. [php. ını yönergeleri
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="/usr/local/etc/php/conf.d:/home/site/ini"
 ```
 
-`/usr/local/etc/php/conf.d`, *php. ini* dosyasının bulunduğu varsayılan dizindir. `/home/site/ini`, özel bir *. ini* dosyası ekleyeceğiniz özel dizindir. Değerleri bir ile ayırın `:` .
+`/usr/local/etc/php/conf.d`, *php.ini* var olan varsayılan dizindir. `/home/site/ini`, özel bir *. ini* dosyası ekleyeceğiniz özel dizindir. Değerleri bir ile ayırın `:` .
 
 Linux kapsayıcınızda () Web SSH oturumuna gidin `https://<app-name>.scm.azurewebsites.net/webssh/host` .
 
-Çağrılan bir dizin oluşturun `/home/site` `ini` ve ardından *.ini* `/home/site/ini` dizinde (örneğin, *Settings. ini)* özelleştirmek istediğiniz yönergeleri kullanarak bir. ini dosyası oluşturun. *Php. ini* dosyasında kullanacağınız söz dizimini kullanın. 
+Çağrılan bir dizin oluşturun `/home/site` `ini` ve ardından *.ini* `/home/site/ini` dizinde (örneğin, *settings.ini)* özelleştirmek istediğiniz yönergeleri kullanarak bir. ini dosyası oluşturun. *php.ini* dosyasında kullanacağınız söz dizimini kullanın. 
 
 > [!TIP]
 > App Service 'daki yerleşik Linux kapsayıcılarında, */Home* kalıcı paylaşılan depolama alanı olarak kullanılır. 
@@ -164,10 +164,10 @@ Değişikliklerin etkili olması için uygulamayı yeniden başlatın.
 
 ## <a name="enable-php-extensions"></a>PHP uzantılarını etkinleştir
 
-Yerleşik PHP yüklemeleri en yaygın olarak kullanılan uzantıları içerir. [Php. ini yönergelerini özelleştirdiğiniz](#customize-php_ini_system-directives)şekilde ek uzantıları etkinleştirebilirsiniz.
+Yerleşik PHP yüklemeleri en yaygın olarak kullanılan uzantıları içerir. [php.ini yönergelerini özelleştirdiğiniz](#customize-php_ini_system-directives)şekilde ek uzantıları etkinleştirebilirsiniz.
 
 > [!NOTE]
-> PHP sürümünü ve geçerli *php. ini* yapılandırmasını görmenin en iyi yolu, uygulamanızda [PHPINFO ()](https://php.net/manual/function.phpinfo.php) öğesini çağırmanız.
+> PHP sürümünü ve geçerli *php.ini* yapılandırmasını görmenin en iyi yolu, uygulamanızda [PHPINFO ()](https://php.net/manual/function.phpinfo.php) öğesini çağırmanız.
 >
 
 Ek uzantıları etkinleştirmek için aşağıdaki adımları izleyin:
@@ -187,7 +187,7 @@ Değişikliklerin etkili olması için uygulamayı yeniden başlatın.
 
 ## <a name="access-diagnostic-logs"></a>Tanılama günlüklerine erişim
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="open-ssh-session-in-browser"></a>SSH oturumunu tarayıcıda aç
 
@@ -198,8 +198,8 @@ Değişikliklerin etkili olması için uygulamayı yeniden başlatın.
 Çalışan bir PHP uygulaması App Service veya hata durumunda farklı davrandığı zaman, aşağıdakileri deneyin:
 
 - [Günlük akışına erişin](#access-diagnostic-logs).
-- Uygulamayı üretim modunda yerel olarak test edin. App Service, Node. js uygulamalarınızı üretim modunda çalıştırır, bu nedenle projenizin üretim modunda yerel olarak beklendiği gibi çalıştığından emin olmanız gerekir. Örneğin:
-    - *Besteci. JSON*'unuza bağlı olarak, üretim modu ( `require` vs.) için farklı paketler yüklenebilir `require-dev` .
+- Uygulamayı üretim modunda yerel olarak test edin. App Service uygulamanızı üretim modunda çalıştırır, bu nedenle projenizin üretim modunda yerel olarak beklendiği gibi çalıştığından emin olmanız gerekir. Örneğin:
+    - *composer.js*bağlı olarak, üretim modu ( `require` vs.) için farklı paketler yüklenebilir `require-dev` .
     - Bazı Web çerçeveleri, statik dosyaları üretim modunda farklı şekilde dağıtabilir.
     - Belirli Web çerçeveleri, üretim modunda çalışırken özel başlatma betikleri kullanabilir.
 - Uygulamanızı hata ayıklama modunda App Service çalıştırın. Örneğin, [Laraesin](https://meanjs.org/)içinde, uygulama [ `APP_DEBUG` ayarını `true` olarak ayarlayarak ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)uygulamanızı üretim sırasında hata ayıklama iletilerini verecek şekilde yapılandırabilirsiniz.

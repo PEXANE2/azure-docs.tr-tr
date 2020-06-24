@@ -2,24 +2,21 @@
 title: Azure Ilkesi kullanılarak uyumluluk
 description: Azure Container kayıt defterlerinden uyumluluğu denetlemek için Azure Ilkesinde yerleşik ilkeler atama
 ms.topic: article
-ms.date: 02/26/2020
-ms.openlocfilehash: a2bfdc18f4bbf16fe8fa6bcbcba7bab18aedabf1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/11/2020
+ms.openlocfilehash: 6101db865749f98f50e04f1fec3b8009089b7908
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144992"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791903"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Azure Ilkesi kullanarak Azure Container Registry 'nin uyumluluğunu denetleme
 
 [Azure ilkesi](../governance/policy/overview.md) , Azure 'da ilke oluşturmak, atamak ve yönetmek için kullandığınız bir hizmettir. Bu ilkeler, kaynaklarınız üzerinden farklı kuralları ve eylemleri uygulatarak kaynaklarınızın kurumsal standartlarınız ve hizmet düzeyi sözleşmelerinizle uyumlu kalmasını sağlar.
 
-Bu makalede Azure Container Registry için yerleşik ilkeler (Önizleme) tanıtılmıştır. Yeni ve mevcut kayıt defterlerinin uyumluluğunu denetlemek için bu ilkeleri kullanın.
+Bu makalede Azure Container Registry için yerleşik ilkeler tanıtılmıştır. Yeni ve mevcut kayıt defterlerinin uyumluluğunu denetlemek için bu ilkeleri kullanın.
 
 Azure Ilkesi kullanımı için herhangi bir ücret alınmaz.
-
-> [!IMPORTANT]
-> Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
 ## <a name="built-in-policy-definitions"></a>Yerleşik ilke tanımları
 
@@ -27,7 +24,7 @@ Aşağıdaki yerleşik ilke tanımları Azure Container Registry özgüdür:
 
 [!INCLUDE [azure-policy-samples-policies-container-registry](../../includes/policy/samples/bycat/policies-container-registry.md)]
 
-Ayrıca bkz. yerleşik ağ ilkesi tanımı: [[Önizleme] Container Registry sanal ağ hizmeti uç noktası kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78).
+Ayrıca bkz. yerleşik ağ ilkesi tanımı: [Container Registry bir sanal ağ hizmeti uç noktası kullanmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78).
 
 ## <a name="assign-policies"></a>İlke atama
 
@@ -48,7 +45,10 @@ Bir kaynak uyumsuz olduğunda birçok olası neden vardır. Nedenini öğrenmek 
 
 1. **Tüm hizmetler**' i seçin ve **ilke**araması yapın.
 1. **Uyumluluk**' i seçin.
-1. Portalda ![](./media/container-registry-azure-policy/azure-policy-compliance.png)uyumluluk durumlarını sınırlamak veya ilkeler ilkesi uyumluluğunu aramak için filtreleri kullanın.
+1. Uyumluluk durumlarını sınırlamak veya ilkeleri aramak için filtreleri kullanın.
+
+    ![Portalda ilke uyumluluğu](./media/container-registry-azure-policy/azure-policy-compliance.png)
+    
 1. Toplu uyumluluk ayrıntılarını ve olaylarını gözden geçirmek için bir ilke seçin. İsterseniz, kaynak uyumluluğu için belirli bir kayıt defteri seçin.
 
 ### <a name="policy-compliance-in-the-azure-cli"></a>Azure CLı 'de ilke uyumluluğu
@@ -64,8 +64,8 @@ az policy assignment list --query "[?contains(displayName,'Container Registries'
 ```
 Name                                                                                   ID
 -------------------------------------------------------------------------------------  --------------------------------------------------------------------------------------------------------------------------------
-[Preview]: Container Registries should not allow unrestricted network access           /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/b4faf132dc344b84ba68a441
-[Preview]: Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
+Container Registries should not allow unrestricted network access           /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/b4faf132dc344b84ba68a441
+Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
 Ardından, belirli bir ilke KIMLIĞI altındaki tüm kaynaklar için JSON biçimli uyumluluk durumunu döndürmek üzere [az Policy State List](/cli/azure/policy/state#az-policy-state-list) öğesini çalıştırın:
@@ -87,12 +87,8 @@ az policy state list \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Ilke [tanımları](../governance/policy/concepts/definition-structure.md) ve [etkileri](../governance/policy/concepts/effects.md) hakkında daha fazla bilgi edinin
+* Azure Ilke [tanımları](../governance/policy/concepts/definition-structure.md) ve [etkileri](../governance/policy/concepts/effects.md)hakkında daha fazla bilgi edinin.
 
-* [Özel ilke tanımı](../governance/policy/tutorials/create-custom-policy-definition.md) oluşturma
+* Özel bir [ilke tanımı](../governance/policy/tutorials/create-custom-policy-definition.md)oluşturun.
 
-* Azure 'da [idare özellikleri](../governance/index.yml) hakkında daha fazla bilgi edinin
-
-
-<!-- LINKS - External -->
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+* Azure 'da [idare özellikleri](../governance/index.yml) hakkında daha fazla bilgi edinin.

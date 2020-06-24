@@ -4,21 +4,21 @@ description: Bu makale, Application Gateway ölçümleri ve Azure Kubernetes öl
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 1169ed0e9a2b970ee0e30d73ea20c87001b62786
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e0533a44db269229b2f26fa8d2f2b4f84f4d0b4
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80239443"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125472"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Application Gateway ölçümlerini kullanarak AKS yığınlarınızı otomatik ölçeklendirme (Beta)
 
 Gelen trafik arttıkça, talebe göre uygulamalarınızın ölçeğini ölçeklendirmek çok önemli hale gelir.
 
-Aşağıdaki öğreticide, uygulamanızı ölçeklendirmek için Application Gateway `AvgRequestCountPerHealthyHost` ölçüsünü nasıl kullanabileceğinizi açıkladık. `AvgRequestCountPerHealthyHost`belirli bir arka uç havuzuna ve arka uç HTTP ayarı birleşimine gönderilen ortalama isteği ölçer.
+Aşağıdaki öğreticide, uygulamanızı ölçeklendirmek için Application Gateway ölçüsünü nasıl kullanabileceğinizi açıkladık `AvgRequestCountPerHealthyHost` . `AvgRequestCountPerHealthyHost`belirli bir arka uç havuzuna ve arka uç HTTP ayarı birleşimine gönderilen ortalama isteği ölçer.
 
 Aşağıdaki iki bileşeni kullanacağız:
 
@@ -27,7 +27,7 @@ Aşağıdaki iki bileşeni kullanacağız:
 
 ## <a name="setting-up-azure-kubernetes-metric-adapter"></a>Azure Kubernetes ölçüm bağdaştırıcısını ayarlama
 
-1. İlk olarak bir Azure AAD hizmet sorumlusu oluşturacak ve Application Gateway kaynak grubuna `Monitoring Reader` erişim atayacağız. 
+1. İlk olarak bir Azure AAD hizmet sorumlusu oluşturacak ve `Monitoring Reader` Application Gateway kaynak grubuna erişim atayacağız. 
 
     ```azurecli
         applicationGatewayGroupName="<application-gateway-group-id>"
@@ -35,11 +35,11 @@ Aşağıdaki iki bileşeni kullanacağız:
         az ad sp create-for-rbac -n "azure-k8s-metric-adapter-sp" --role "Monitoring Reader" --scopes applicationGatewayGroupId
     ```
 
-1. Şimdi, yukarıda oluşturulan AAD hizmet [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) sorumlusunu kullanarak dağıtırsınız.
+1. Şimdi, [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) yukarıda oluşturulan AAD hizmet sorumlusunu kullanarak dağıtırsınız.
 
     ```bash
     kubectl create namespace custom-metrics
-    # use values from service principle created above to create secret
+    # use values from service principal created above to create secret
     kubectl create secret generic azure-k8s-metrics-adapter -n custom-metrics \
         --from-literal=azure-tenant-id=<tenantid> \
         --from-literal=azure-client-id=<clientid> \
@@ -47,7 +47,7 @@ Aşağıdaki iki bileşeni kullanacağız:
     kubectl apply -f kubectl apply -f https://raw.githubusercontent.com/Azure/azure-k8s-metrics-adapter/master/deploy/adapter.yaml -n custom-metrics
     ```
 
-1. Adında `ExternalMetric` `appgw-request-count-metric`bir kaynak oluşturacağız. Bu kaynak, ölçüm bağdaştırıcısına kaynak grubundaki kaynak `AvgRequestCountPerHealthyHost` `myApplicationGateway` `myResourceGroup` için ölçümü açığa çıkarmak için talimat verecektir. Alanı, `filter` Application Gateway belirli bir arka uç havuzunu ve arka uç http ayarını hedeflemek için kullanabilirsiniz.
+1. Adında bir kaynak oluşturacağız `ExternalMetric` `appgw-request-count-metric` . Bu kaynak, ölçüm bağdaştırıcısına kaynak `AvgRequestCountPerHealthyHost` grubundaki kaynak için ölçümü açığa çıkarmak için talimat verecektir `myApplicationGateway` `myResourceGroup` . `filter`Alanı, Application Gateway belirli bir arka uç havuzunu ve arka uç http ayarını hedeflemek için kullanabilirsiniz.
 
     ```yaml
     apiVersion: azure.com/v1alpha2
@@ -92,9 +92,9 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 
 ## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>Dağıtımı ölçeklendirmek için yeni ölçümü kullanma
 
-Ölçüm sunucusu üzerinden kullanıma sunabilebilmemiz `appgw-request-count-metric` için, hedef dağıtımımızın ölçeğini ölçeklendirmek [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) üzere kullanıma hazırız.
+Ölçüm sunucusu üzerinden kullanıma sunabilebilmemiz için `appgw-request-count-metric` , [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) hedef dağıtımımızın ölçeğini ölçeklendirmek üzere kullanıma hazırız.
 
-Aşağıdaki örnekte, örnek bir dağıtım `aspnet`hedefliyoruz. En fazla sayıda `appgw-request-count-metric` `10` Pod 'a kadar > 200 ' ü yukarı kadar ölçeklendireceğiz.
+Aşağıdaki örnekte, örnek bir dağıtım hedefliyoruz `aspnet` . `appgw-request-count-metric`En fazla sayıda Pod 'a kadar > 200 ' ü yukarı kadar ölçeklendireceğiz `10` .
 
 Hedef dağıtım adınızı değiştirin ve aşağıdaki otomatik ölçek yapılandırmasını uygulayın:
 ```yaml

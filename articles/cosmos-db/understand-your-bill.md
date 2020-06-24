@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9384b974463c963cc130e7ca0d4a9ee815a92e53
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 34f55d628b4e334df4b3e74edfd3c0defbdeaa93
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647730"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114250"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB faturanızı anlama
 
@@ -73,7 +73,7 @@ Bir kapsayıcı için sağlanan aktarım hızını veya 9:30:100-K RU/sn ile 200
 
 * 720 saatlik bir ayda (24 saat * 30 gün), 500 saat için sağlanan aktarım hızı 1.200 RU/sn ise ve kalan 220 saat için sağlanan aktarım hızı 22.200 RU/sn ise aylık faturanız şu şekilde görünür: 500 x $0.096/saat + 220 x $1.776/saat = $438.72/ay.
 
-![Adanmış üretilen iş faturası örneği](./media/understand-your-bill/bill-example1.png)
+:::image type="content" source="./media/understand-your-bill/bill-example1.png" alt-text="Adanmış üretilen iş faturası örneği":::
 
 ### <a name="billing-example-containers-with-shared-throughput-mode"></a>Faturalandırma örneği: paylaşılan işleme modundaki kapsayıcılar
 
@@ -87,7 +87,7 @@ Bir kapsayıcı için sağlanan aktarım hızını veya 9:30:100-K RU/sn ile 200
 
 * 720 saatlik bir ayda saat 300 için sağlanan aktarım hızı 120-K RU/sn ve kalan 420 saat için sağlanan aktarım hızı 155-K RU/sn ise aylık faturanız şu şekilde görünür: 300 x $9.60/saat + 420 x $12.40/saat = $2.880 + $5.208 = $8088/ay. 
 
-![Paylaşılan verimlilik faturası örneği](./media/understand-your-bill/bill-example2.png)
+:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Paylaşılan verimlilik faturası örneği":::
 
 ## <a name="billing-examples-with-geo-replication-and-multi-master"></a>Coğrafi çoğaltma ve çoklu yönetici ile faturalandırma örnekleri  
 
@@ -177,11 +177,11 @@ Tüm bölgelerin yazılabilir olduğu çok bölgeli bir Azure Cosmos hesabımız
 
 Ayda 720 saat boyunca toplam sağlanan aktarım hızı içindeki değişiklikler aşağıdaki şekilde gösterilmiştir: 
 
-![Gerçek yaşam örneği](./media/understand-your-bill/bill-example3.png)
+:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Gerçek yaşam örneği":::
 
 Toplam aylık fatura şöyle olacaktır (bir ayda 30 gün/720 saat varsayılır), aşağıdaki şekilde hesaplanır:
 
-|**Saat**  |**RU/s** |**Öğe** |**Kullanım (saatlik)** |**Maliyet** |
+|**Hours**  |**RU/s** |**Öğe** |**Kullanım (saatlik)** |**Maliyet** |
 |---------|---------|---------|-------|-------|
 |[0-100] |D1:10.000 <br/>D2:30K <br/>C1:20K |Batı ABD kapsayıcı için üretilen iş faturası (tüm bölgeler yazılabilir)  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$960  |
 | | |2 ek bölge için üretilen iş faturası: Doğu ABD, Kuzey Avrupa (tüm bölgeler yazılabilir)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2.880  |
@@ -268,7 +268,7 @@ Azure Cosmos DB ayrılmış kapasite, tüm Azure bölgelerindeki tüm Azure Cosm
 
 Toplam faturanız (ayrılmış kapasite olmadan) olacaktır (30 gün veya 720 saat varsayılır): 
 
-|**Bölge**| **100 RU/sn başına saatlik fiyat**|**Birimler (RU/s)**|**Faturalandırılan tutar (saatlik)**| **Faturalandırılan tutar (aylık)**|
+|**Geli**| **100 RU/sn başına saatlik fiyat**|**Birimler (RU/s)**|**Faturalandırılan tutar (saatlik)**| **Faturalandırılan tutar (aylık)**|
 |----|----|----|----|----|
 |Doğu ABD|$0,008 |50 K|$4|$2.880 |
 |Doğu Japonya|$0,009 |50 K| $4,50 |$3.240 |
@@ -282,7 +282,7 @@ Bunun yerine ayrılmış kapasite satın aldığınızı göz önünde bulunduru
 
 Kullanım dışı olarak satın almış olduğunuz miktar, $8 KB/sn 100 için saat başına, saat başına $6,40 fiyat üzerinden Doğu ABD. Daha sonra, aboneliğiniz için ayarlanan bölgesel liste fiyatlarındaki herhangi bir genel Azure bölgesindeki sağlanan aktarım hızı kapasitesi için saatlik olarak bu ön ödemeli üretilen iş hacmi üzerinden aşağı doğru çizebilirsiniz. Bu örnekte, Doğu ABD her biri için 50 K RU/sn sağladığınızda ve Japonya Doğu, saat başına sağlanan aktarım hızı $8,00 ' i çizecek ve saat başına $0,50 yaş (veya $360/ay) üzerinden faturalandırılırsınız. 
 
-|**Bölge**| **100 RU/sn başına saatlik fiyat**|**Birimler (RU/s)**| **Faturalandırılan tutar (saatlik)**| **Faturalandırılan tutar (aylık)**|
+|**Geli**| **100 RU/sn başına saatlik fiyat**|**Birimler (RU/s)**| **Faturalandırılan tutar (saatlik)**| **Faturalandırılan tutar (aylık)**|
 |----|----|----|----|----|
 |Doğu ABD|$0,008 |50 K|$4|$2.880 |
 |Doğu Japonya|$0,009 |50 K| $4,50 |$3.240 |

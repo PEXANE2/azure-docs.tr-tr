@@ -6,7 +6,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.date: 04/16/2020
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c2c5c083115440e1e4da203f39f2b32734458c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a57392b0072f6e6bb692ad0a28e6adf87f615eed
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684965"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732574"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Azure Active Directory bir yönetim biriminde Kullanıcı ekleme ve yönetme
 
@@ -96,11 +96,11 @@ Kullanıcının atandığı yönetim birimlerinin listesini görmek için sol pa
 
 ### <a name="azure-portal"></a>Azure portal
 
-Bir kullanıcıyı yönetim biriminden kaldırabilmeniz için iki yol vardır. Azure Portal **Azure AD** > **kullanıcılarına**giderek bir kullanıcının profilini açabilirsiniz. Kullanıcının profilini açmak için kullanıcıyı seçin. Kullanıcının kaldırılmasını istediğiniz yönetim birimini seçin ve **Yönetim biriminden kaldır**' ı seçin.
+Bir kullanıcıyı yönetim biriminden kaldırabilmeniz için iki yol vardır. Azure Portal **Azure AD**kullanıcılarına giderek bir kullanıcının profilini açabilirsiniz  >  **Users**. Kullanıcının profilini açmak için kullanıcıyı seçin. Kullanıcının kaldırılmasını istediğiniz yönetim birimini seçin ve **Yönetim biriminden kaldır**' ı seçin.
 
 ![Kullanıcı profilinden bir yönetim biriminden kullanıcı kaldırma](./media/roles-admin-units-add-manage-users/user-remove-admin-units.png)
 
-Ayrıca, kullanıcıları kaldırmak istediğiniz yönetim birimini seçerek **Azure AD** > **Yönetim birimlerindeki** bir kullanıcıyı da kaldırabilirsiniz. Kullanıcıyı seçin ve **üyeyi kaldır**' ı seçin.
+Ayrıca, kullanıcıları kaldırmak istediğiniz yönetim birimini seçerek **Azure AD**  >  **Yönetim birimlerindeki** bir kullanıcıyı da kaldırabilirsiniz. Kullanıcıyı seçin ve **üyeyi kaldır**' ı seçin.
   
 ![Yönetim birimi düzeyinde Kullanıcı kaldırma](./media/roles-admin-units-add-manage-users/admin-units-remove-user.png)
 

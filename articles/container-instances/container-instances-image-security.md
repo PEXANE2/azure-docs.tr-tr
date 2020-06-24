@@ -1,15 +1,15 @@
 ---
-title: Kapsayıcı örnekleri için güvenlik
+title: Kapsayıcı örnekleri için güvenlik konuları
 description: Azure Container Instances için güvenli görüntü ve gizli dizileri ve herhangi bir kapsayıcı platformu için genel güvenlik konularını korumanıza yönelik öneriler
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: 87fa28cf9bdb546a5f108284023a9f787645a1fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d339683c8864b85f7ccb1ac3c982f03aa7abf103
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458003"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907032"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure Container Instances için güvenlik konuları
 
@@ -18,6 +18,9 @@ Bu makalede, kapsayıcı uygulamalarını çalıştırmak için Azure Container 
 > [!div class="checklist"]
 > * Azure Container Instances için görüntü ve gizli dizileri yönetmeye yönelik **güvenlik önerileri**
 > * Kapsayıcı platformu için kapsayıcı ekosisteminin her türlü kapsayıcı platformu için **dikkat edilmesi gerekenler**
+
+Dağıtımınızın güvenlik duruşunu artırmanıza yardımcı olacak kapsamlı öneriler için bkz. [Container Instances Için Azure Güvenlik temeli](security-baseline.md).
+
 
 ## <a name="security-recommendations-for-azure-container-instances"></a>Azure Container Instances için güvenlik önerileri
 
@@ -140,6 +143,8 @@ Kubernetes kümeniz, kapsayıcı kayıt defteriniz ve kapsayıcı görüntüleri
 * [Azure Container Instances](container-instances-log-analytics.md) ve [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md) için kaynak günlükleri
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+* Dağıtımınızın güvenlik duruşunu artırmanıza yardımcı olacak kapsamlı öneriler için bkz. [Azure Güvenlik temeli Container Instances](security-baseline.md) .
 
 * Kapsayıcılı ortamlarınızda gerçek zamanlı tehdit algılama için [Azure Güvenlik Merkezi](../security-center/container-security.md) 'ni kullanma hakkında daha fazla bilgi edinin.
 

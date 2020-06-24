@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 012d183a20e5fdcf39d72813051d745a3f9787a7
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 13ce9204ad09d2ecb4b149cf50696aa73d927314
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560117"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214375"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Azure Kubernetes hizmeti ve Azure Container Instances modelinin Docker dağıtımı sorunlarını giderin 
 
@@ -277,7 +277,7 @@ Azure Kubernetes hizmet dağıtımları otomatik ölçeklendirmeyi destekler, bu
 
 504 durum kodu, isteğin zaman aşımına uğradığını gösterir. Varsayılan zaman aşımı 1 dakikadır.
 
-Gereksiz çağrıları kaldırmak için score.py değiştirerek, zaman aşımını artırabilir veya hizmeti hızlandırmayı deneyebilirsiniz. Bu eylemler sorunu düzeltmez, score.py dosyasında hata ayıklamak için bu makaledeki bilgileri kullanın. Kod askıda bir durumda veya sonsuz bir döngüde olabilir.
+Gereksiz çağrıları kaldırmak için score.py değiştirerek, zaman aşımını artırabilir veya hizmeti hızlandırmayı deneyebilirsiniz. Bu eylemler sorunu düzeltmez, score.py dosyasında hata ayıklamak için bu makaledeki bilgileri kullanın. Kod, yanıt vermeyen bir durumda veya sonsuz bir döngüde olabilir.
 
 ## <a name="advanced-debugging"></a>Gelişmiş hata ayıklama
 
@@ -300,9 +300,9 @@ Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yük
 
 1. Docker görüntüsüyle iletişim kurmak üzere VS Code yapılandırmak için yeni bir hata ayıklama yapılandırması oluşturun:
 
-    1. VS Code, __Hata Ayıkla__ menüsünü ve ardından __yapılandırma aç__' ı seçin. __Launch. JSON__ adlı bir dosya açılır.
+    1. VS Code, __Hata Ayıkla__ menüsünü ve ardından __yapılandırma aç__' ı seçin. __launch.js__ adlı bir dosya açılır.
 
-    1. __Launch. JSON__ dosyasında, içeren satırı bulun `"configurations": [` ve sonra aşağıdaki metni ekleyin:
+    1. Dosyadaki __launch.js__ , içeren satırı bulun `"configurations": [` ve sonra aşağıdaki metni ekleyin:
 
         ```json
         {
@@ -325,7 +325,7 @@ Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yük
 
         Bu bölüm, 5678 numaralı bağlantı noktasını kullanarak Docker kapsayıcısına ekler.
 
-    1. __Launch. JSON__ dosyasını kaydedin.
+    1. __launch.js__ dosyaya kaydedin.
 
 ### <a name="create-an-image-that-includes-ptvsd"></a>PTVSD içeren bir görüntü oluşturma
 

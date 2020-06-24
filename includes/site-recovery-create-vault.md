@@ -11,12 +11,12 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "75980323"
 ---
-1. [Azure Portal](https://portal.azure.com) > **Kurtarma hizmetlerinde**oturum açın.
-2. **Yedekleme ve Site Recovery** > **izleme ve yönetim** >  **kaynak oluştur ' a**tıklayın.
+1. [Azure Portal](https://portal.azure.com)  >  **Kurtarma hizmetlerinde**oturum açın.
+2. **Create a resource**  >  **Monitoring + Management**  >  **Yedekleme ve Site Recovery**izleme ve yönetim kaynak oluştur ' a tıklayın.
 3. **Ad**alanında, kasayı tanımlamak için bir kolay ad belirtin. Birden fazla aboneliğiniz varsa uygun olanı seçin.
 4. [Bir kaynak grubu oluşturun](../articles/azure-resource-manager/templates/deploy-portal.md)veya var olan bir grubu seçin. Bir Azure bölgesi belirtin. 
-5. Panodan kasaya hızlıca erişmek için **panoya** > sabitle**Oluştur**' a tıklayın.
+5. Panodan kasaya hızlıca erişmek için **panoya sabitle**  >  **Oluştur**' a tıklayın.
 
    ![Yeni kasa](./media/site-recovery-create-vault/new-vault-settings.png)
 
-   Yeni kasa **Pano** > **tüm kaynaklar**' da ve ana **Kurtarma Hizmetleri kasaları** sayfasında görüntülenir.
+   Yeni kasa **Pano**  >  **tüm kaynaklar**' da ve ana **Kurtarma Hizmetleri kasaları** sayfasında görüntülenir.

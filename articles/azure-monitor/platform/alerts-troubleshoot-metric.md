@@ -4,14 +4,14 @@ description: Azure Izleyici ölçüm uyarıları ve olası çözümlerle ilgili 
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 04/28/2020
+ms.date: 06/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: 605d1f550335417a26340b6ee54736321ad69f80
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 36ff80bc0858d6d08cc120d126628de02ba6e703
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300765"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130747"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Izleyici ölçüm uyarılarında sorun giderme sorunları 
 
@@ -112,7 +112,7 @@ Abonelik başına izin verilen ölçüm uyarısı kuralı sayısı, [kota sını
 Kota sınırına ulaştıysanız aşağıdaki adımlar sorunu çözmenize yardımcı olabilir:
 1. Artık kullanılmayan ölçüm uyarısı kurallarını silmeyi veya devre dışı bırakmayı deneyin.
 
-2. Birden fazla kaynağı izleyen ölçüm uyarı kurallarına geçiş yapın. Bu özellik sayesinde, tek bir uyarı kuralı, kotayla sayılan tek bir uyarı kuralını kullanarak birden çok kaynağı izleyebilir. Bu yetenek ve desteklenen kaynak türleri hakkında daha fazla bilgi için bkz. [birden](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor)fazla.
+2. Birden fazla kaynağı izleyen ölçüm uyarı kurallarına geçiş yapın. Bu özellik sayesinde, tek bir uyarı kuralı, kotayla sayılan tek bir uyarı kuralını kullanarak birden çok kaynağı izleyebilir. Bu özellik ve desteklenen kaynak türleri hakkında daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor) bakın.
 
 3. Kota sınırının artırılması gerekiyorsa, bir destek isteği açın ve aşağıdaki bilgileri sağlayın:
 
@@ -159,7 +159,7 @@ Tüm parametreleri doğru geçirdiğinizi onaylamak için [REST API kılavuzu](h
 - Ölçüm uyarılarına yönelik PowerShell cmdlet’leri [Az.Monitor modülünde](https://docs.microsoft.com/powershell/module/az.monitor/?view=azps-3.6.1) de sunulur
 - Yeni (klasik olmayan) ölçüm uyarıları için ' v2 ' ile biten cmdlet 'leri kullandığınızdan emin olun (örneğin, [Add-AzMetricAlertRuleV2](https://docs.microsoft.com/powershell/module/az.monitor/Add-AzMetricAlertRuleV2?view=azps-3.6.1))
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Ölçüm uyarıları için doğru CLı komutlarını kullandığınızdan emin olun:
 
@@ -191,6 +191,33 @@ Tüm parametreleri doğru geçirdiğinizi onaylamak için [REST API kılavuzu](h
 - Uyarı kuralının hedef kaynağında Oku izni
 - Uyarı kuralının oluşturulduğu kaynak grubu üzerinde yazma izni (Azure portal uyarı kuralı oluşturuyorsanız, uyarı kuralı hedef kaynağın bulunduğu aynı kaynak grubunda oluşturulur)
 - Uyarı kuralıyla ilişkili tüm eylem grupları üzerinde okuma izni (varsa)
+
+
+## <a name="naming-restrictions-for-metric-alert-rules"></a>Ölçüm uyarı kuralları için adlandırma kısıtlamaları
+
+Ölçüm uyarı kuralı adları için aşağıdaki kısıtlamalara göz önünde olun:
+
+- Ölçüm uyarısı kural adları, oluşturulduktan sonra değiştirilemez (yeniden adlandırılamaz)
+- Ölçüm uyarısı kural adları, bir kaynak grubu içinde benzersiz olmalıdır
+- Ölçüm uyarısı kural adları şu karakterleri içeremez: * # & +:  < > ? @ % { } \ / 
+- Ölçüm uyarısı kural adları şu karakterle bitemez:.
+
+
+## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>Birden çok koşula sahip bir ölçüm uyarı kuralında boyutlar kullanırken kısıtlamalar
+
+Ölçüm uyarıları çok boyutlu ölçümler üzerinde uyarı vermeyi ve birden çok koşul tanımlamayı destekler (uyarı kuralı başına 5 koşula kadar).
+
+Birden çok koşul içeren bir uyarı kuralında boyutları kullanırken lütfen aşağıdaki kısıtlamalara göz önünde unutmayın:
+1. Her bir koşul içinde yalnızca boyut başına bir değer seçebilirsiniz.
+2. "Tüm geçerli ve gelecekteki değerleri Seç" seçeneğini (Select \* ) kullanamazsınız.
+3. Farklı koşullarda yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılmış bir boyut değerinin tüm bu ölçümler için (ilgili koşullarda) aynı şekilde ayarlanması gerekir.
+Örneğin:
+    - Bir depolama hesabında tanımlanan ölçüm uyarısı kuralını düşünün ve iki koşulu izler:
+        * Toplam **işlem** sayısı > 5
+        * Ortalama **SuccessE2ELatency** > 250 MS
+    - İlk koşulu güncelleştirmek istiyorum ve yalnızca **Apiname** boyutunun *"GetBlob"* değerine eşit olduğu işlemleri izle
+    - Hem **işlemler** hem de **SuccessE2ELatency** ölçümleri bir **apiname** boyutunu destekledikleri için her iki koşulu da güncelleştirmem gerekir ve her ikisine de bir *"GetBlob"* değeri ile **apiname** boyutunu belirtmektir.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

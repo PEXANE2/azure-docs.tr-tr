@@ -2,7 +2,7 @@
 title: Azure SQL yönetilen örneği için yönetim API 'SI başvurusu
 description: Azure SQL yönetilen örneği 'nin yönetilen örneklerini oluşturma ve yapılandırma hakkında bilgi edinin.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 7802c5792d91c0eae3ae7e666e6ac65df7d5143f
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 3f0eb2c1ecb26475b25cd5ca41c9c61d5e2b47a3
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84661052"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695615"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için yönetilen API başvurusu
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

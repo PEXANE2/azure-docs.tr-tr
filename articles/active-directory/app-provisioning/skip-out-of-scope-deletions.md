@@ -2,31 +2,31 @@
 title: Kapsam dışı kullanıcıların silinmesini atlayın
 description: Kapsam kullanıcılarının ön sağlamasını kaldırma işlemi için varsayılan davranışı nasıl geçersiz kılacağınızı öğrenin.
 services: active-directory
-author: cmmdesai
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2019
-ms.author: chmutali
+ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 5f17886736efb87cf44bc54c82ccca794482a093
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 719258933dfadf34b8678bf03ee07ee6cc76e331
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593276"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789914"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Kapsam dışına çıkan Kullanıcı hesaplarını silmeyi atlayın
 
-Varsayılan olarak, Azure AD sağlama altyapısı, kapsam dışına çıkan kullanıcıları geçici olarak siler veya devre dışı bırakır. Ancak, Workday ile AD Kullanıcı tarafından sağlanma gibi bazı senaryolar için bu davranış beklenmeyebilir ve bu varsayılan davranışı geçersiz kılmak isteyebilirsiniz.  
+Varsayılan olarak, Azure AD sağlama altyapısı, kapsam dışına çıkan kullanıcıları geçici olarak siler veya devre dışı bırakır. Ancak, Workday gibi AD kullanıcısı gelen sağlama ile ilgili bazı senaryolar için bu davranış beklenmeyebilir ve bu varsayılan davranışı geçersiz kılmak isteyebilirsiniz.  
 
-Bu kılavuzda, kapsam dışına çıkan hesapların işlenmesini denetleyen ***Skipoutofscopesilmeleri*** bayrağını ayarlamak IÇIN Microsoft Graph apı ve Microsoft Graph API Explorer 'ın nasıl kullanılacağı açıklanmaktadır. 
-* ***Skipoutofscopesilmeleri*** 0 (false) olarak ayarlandıysa, kapsam dışına çıkan hesaplar hedefte devre dışı bırakılır
-* ***Skipoutofscopesilmeleri*** 1 (true) olarak ayarlandıysa, kapsam dışına çıkan hesaplar hedefte devre dışı bırakılmayacak ve bu bayrak, *sağlama uygulama* düzeyinde ayarlanır ve Graph API kullanılarak yapılandırılabilir. 
+Bu makalede, kapsam dışına çıkan hesapların işlenmesini denetleyen ***Skipoutofscopesilmelerini*** bayrağını ayarlamak IÇIN Microsoft Graph apı ve Microsoft Graph API Explorer 'ın nasıl kullanılacağı açıklanır. 
+* ***Skipoutofscopesilmeleri*** 0 (false) olarak ayarlandıysa, kapsam dışına çıkan hesaplar hedefte devre dışı bırakılır.
+* ***Skipoutofscopesilmeleri*** 1 (true) olarak ayarlandıysa, kapsam dışına çıkan hesaplar hedefte devre dışı olmayacaktır. Bu bayrak, *sağlama uygulama* düzeyinde ayarlanır ve Graph API kullanılarak yapılandırılabilir. 
 
-Bu yapılandırma, *Kullanıcı sağlama uygulamasını Active Directory Için Workday* ile yaygın olarak kullanıldığından, aşağıdaki adımlarda Workday uygulamasının ekran görüntüleri yer alır. Ancak bu, (ServiceNow, Salesforce, Dropbox vb.) gibi **diğer uygulamalarla** de kullanılabilir.
+Bu yapılandırma *Kullanıcı sağlama uygulamasını Active Directory Için Workday* ile yaygın olarak kullanıldığından, Workday uygulamasının ekran görüntülerini içerir. Ancak, yapılandırma ServiceNow, Salesforce ve Dropbox gibi *diğer uygulamalarla*de kullanılabilir.
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>1. Adım: sağlama App Service asıl KIMLIĞINI alma (nesne KIMLIĞI)
 

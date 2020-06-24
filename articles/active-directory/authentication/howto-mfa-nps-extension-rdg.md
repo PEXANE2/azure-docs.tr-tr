@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c61bea7f3ca1105edfec54501c5f0725a5a10225
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5ef454871f242adb9de5e5c567c1a76e00478cc
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654105"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789948"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Ağ Ilkesi sunucusu (NPS) uzantısını ve Azure AD 'yi kullanarak Uzak Masaüstü Ağ Geçidi altyapınızı tümleştirin
 
@@ -130,13 +130,14 @@ NPS uzantısının yapılandırmasının bir parçası olarak, Azure AD kiracın
 
 NPS uzantısını, ağ Ilkesi ve erişim Hizmetleri (NPS) rolünün yüklü olduğu bir sunucuya yükler. Bu, tasarımınızın RADIUS sunucusu olarak işlev görür.
 
-> [!Important]
-> NPS uzantısını Uzak Masaüstü Ağ Geçidi sunucunuza yüklemediğinizden emin olun.
+> [!IMPORTANT]
+> NPS uzantısını Uzak Masaüstü Ağ Geçidi (RDG) sunucunuza yüklemeyin. RDG sunucusu RADIUS protokolünü istemcisiyle kullanmaz, bu nedenle uzantı MFA 'yı yorumlayamaz ve gerçekleştiremez.
 >
+> RDG sunucusu ve NPS Uzantısı ile NPS sunucusu farklı sunuculardır, RDG diğer NPS sunucularıyla iletişim kurmak için NPS 'YI kullanır ve doğru iletişim kurmak için RADIUS kullanır.
 
 1. [NPS uzantısını](https://aka.ms/npsmfa)indirin.
-1. Kurulum yürütülebilir dosyasını (NpsExtnForAzureMfaInstaller. exe) NPS sunucusuna kopyalayın.
-1. NPS sunucusunda **NpsExtnForAzureMfaInstaller. exe**' ye çift tıklayın. İstenirse, **Çalıştır**' a tıklayın.
+1. Kurulum yürütülebilir dosyasını (NpsExtnForAzureMfaInstaller.exe) NPS sunucusuna kopyalayın.
+1. NPS sunucusunda **NpsExtnForAzureMfaInstaller.exe**' ye çift tıklayın. İstenirse, **Çalıştır**' a tıklayın.
 1. Azure MFA Için NPS uzantısı kurulum iletişim kutusunda, yazılım lisans koşullarını gözden geçirin, **Lisans hüküm ve koşullarını kabul**ediyorum ' u Işaretleyin ve **yükleme**' ye tıklayın.
 1. Azure MFA Için NPS uzantısı kurulum iletişim kutusunda **Kapat**' a tıklayın.
 
@@ -157,10 +158,10 @@ Kendi sertifikalarınızı kullanmak istiyorsanız, sertifikanızın ortak anaht
 Betiği kullanmak için, uzantıyı Azure AD yönetici kimlik bilgilerinizle ve daha önce kopyaladığınız Azure AD kiracı KIMLIĞIYLE birlikte belirtin. Betiği, NPS uzantısını yüklediğiniz her NPS sunucusunda çalıştırın. Ardından şunları yapın:
 
 1. Bir yönetim Windows PowerShell istemi açın.
-1. PowerShell komut isteminde yazın `cd 'c:\Program Files\Microsoft\AzureMfa\Config'`ve **ENTER**tuşuna basın.
-1. Yazın `.\AzureMfaNpsExtnConfigSetup.ps1`ve **ENTER**tuşuna basın. Betik, Azure Active Directory PowerShell modülünün yüklü olup olmadığını denetler. Yüklü değilse, komut dosyası modülü sizin için yüklerse.
+1. PowerShell komut isteminde yazın `cd 'c:\Program Files\Microsoft\AzureMfa\Config'` ve **ENTER**tuşuna basın.
+1. Yazın `.\AzureMfaNpsExtnConfigSetup.ps1` ve **ENTER**tuşuna basın. Betik, Azure Active Directory PowerShell modülünün yüklü olup olmadığını denetler. Yüklü değilse, komut dosyası modülü sizin için yüklerse.
 
-   ![Azure AD PowerShell 'de AzureMfaNpsExtnConfigSetup. ps1 çalıştırma](./media/howto-mfa-nps-extension-rdg/image4.png)
+   ![Azure AD PowerShell 'de AzureMfaNpsExtnConfigSetup.ps1 çalıştırma](./media/howto-mfa-nps-extension-rdg/image4.png)
   
 1. Betik, PowerShell modülünün yüklemesini doğruladıktan sonra, Azure Active Directory PowerShell modülü iletişim kutusunu görüntüler. İletişim kutusunda Azure AD yönetici kimlik bilgilerinizi ve parolanızı girip **oturum aç**' a tıklayın.
 
@@ -186,7 +187,7 @@ Uzak Masaüstü bağlantı yetkilendirme ilkeleri (RD CAP 'ler) bir Uzak Masaüs
 
 1. RD Ağ Geçidi sunucusunda, **Sunucu Yöneticisi**açın.
 1. Menüsünde **Araçlar**' a tıklayın, **Uzak Masaüstü Hizmetleri**' nin üzerine gelin ve ardından **Uzak Masaüstü Ağ Geçidi Yöneticisi**' e tıklayın.
-1. RD Ağ Geçidi Yöneticisi, ** \[sunucu adı\] (yerel)**' e sağ tıklayın ve **Özellikler**' e tıklayın.
+1. RD Ağ Geçidi Yöneticisi, ** \[ sunucu adı \] (yerel)**' e sağ tıklayın ve **Özellikler**' e tıklayın.
 1. Özellikler iletişim kutusunda **RD CAP deposu** sekmesini seçin.
 1. RD CAP Deposu sekmesinde **NPS çalıştıran merkezi sunucu**' yı seçin. 
 1. **NPS çalıştıran sunucu için bir ad veya IP adresi girin** alanına NPS uzantısını YÜKLEDIĞINIZ sunucunun IP adresini veya sunucu adını yazın.

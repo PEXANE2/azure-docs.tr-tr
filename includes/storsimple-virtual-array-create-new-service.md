@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: storage
 author: alkohli
 ms.service: storage
@@ -17,7 +17,7 @@ ms.locfileid: "67188558"
 ---
 #### <a name="to-create-a-new-service"></a>Yeni hizmet oluşturmak için
 
-1.  Microsoft hesabı kimlik bilgilerinizi kullanarak bu URL 'de Azure portal oturum açın: <https://portal.azure.com/>. Cihazı kamu portalında dağıtıyorsanız şurada oturum açın:<https://portal.azure.us/>
+1.  Microsoft hesabı kimlik bilgilerinizi kullanarak bu URL 'de Azure portal oturum açın: <https://portal.azure.com/> . Cihazı kamu portalında dağıtıyorsanız şurada oturum açın:<https://portal.azure.us/>
 
 2.  Azure Portal **+ kaynak** &gt; **depolaması** &gt; **StorSimple Sanal serisi**' ne tıklayın.
 

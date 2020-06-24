@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 254c912114e3f1c7a495f389bc6a6416cbde7e11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 301f77d4eba7b1a63dd49de280de252bd9af1956
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77472460"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080472"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir beceri bilişsel hizmetler kaynağı iliştirme 
 
@@ -29,7 +29,7 @@ Azure Bilişsel Arama, görüntü analizi ve optik karakter tanıma (OCR), doğa
 
 + Azure Bilişsel Arama, görüntü ve metin zenginleştirme için bir beceri to faturanızda sağladığınız bilişsel hizmetler kaynak anahtarını kullanır. Faturalanabilir yeteneklerin yürütülmesi, bilişsel [Hizmetler Kullandıkça Öde fiyatındaki](https://azure.microsoft.com/pricing/details/cognitive-services/)ücretlendirilir.
 
-+ Görüntü ayıklama, belgeler enzenginleştirme öncesinde kırıldığınızda oluşan bir Azure Bilişsel Arama işlemidir. Görüntü ayıklama işlemi faturalandırılabilir. Görüntü ayıklama fiyatlandırması için bkz. [Azure bilişsel arama fiyatlandırma sayfası](https://go.microsoft.com/fwlink/?linkid=2042400).
++ Görüntü ayıklama, belgeler enzenginleştirme öncesinde kırıldığınızda oluşan bir Azure Bilişsel Arama işlemidir. Görüntü ayıklama işlemi faturalandırılabilir. Görüntü ayıklama fiyatlandırması için bkz. [Azure bilişsel arama fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/search/).
 
 + Belge çözme tümceciği sırasında metin ayıklama de gerçekleşir. Faturalandırılabilir değildir.
 
@@ -108,9 +108,9 @@ Mevcut bir beceri varsa, bunu yeni veya farklı bir bilişsel hizmetler kaynağ�
 
 ## <a name="attach-cognitive-services-programmatically"></a>Bilişsel hizmetler 'i programlı olarak ekle
 
-Program aracılığıyla beceri tanımlarken, Beceri öğesine bir `cognitiveServices` bölüm ekleyin. Bu bölümde, Beceri ilişkilendirmek istediğiniz bilişsel hizmetler kaynağının anahtarını ekleyin. Kaynağın Azure Bilişsel Arama kaynağınız ile aynı bölgede olması gerektiğini unutmayın. Ayrıca dahil `@odata.type`edin ve olarak `#Microsoft.Azure.Search.CognitiveServicesByKey`ayarlayın.
+Program aracılığıyla beceri tanımlarken, `cognitiveServices` beceri öğesine bir bölüm ekleyin. Bu bölümde, Beceri ilişkilendirmek istediğiniz bilişsel hizmetler kaynağının anahtarını ekleyin. Kaynağın Azure Bilişsel Arama kaynağınız ile aynı bölgede olması gerektiğini unutmayın. Ayrıca dahil `@odata.type` edin ve olarak ayarlayın `#Microsoft.Azure.Search.CognitiveServicesByKey` .
 
-Aşağıdaki örnekte bu desenler gösterilmektedir. Tanımın sonundaki `cognitiveServices` bölüme dikkat edin.
+Aşağıdaki örnekte bu desenler gösterilmektedir. `cognitiveServices`Tanımın sonundaki bölüme dikkat edin.
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06

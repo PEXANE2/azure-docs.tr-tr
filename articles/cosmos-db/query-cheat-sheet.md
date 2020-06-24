@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 51660fb416aa9850381f515a3a31cc57519094b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb080858ff6be98846c542844810cf976eb3f264
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66256989"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117990"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB tabloları sorgula
 
@@ -23,12 +23,12 @@ Letter boyutlu veya a3 boyutlu bir indirme arasından seçim yapın.
 
 Letter boyutlu kağıda yazdıracaksanız (8,5 "x 11"), [Azure Cosmos DB Letter boyutlu sorgu ile sayfaları](https://go.microsoft.com/fwlink/?LinkId=623215) indirin.
 
-![Azure Cosmos DB, SQL API 'SI, JavaScript, MongoDB, Gremlin ve Tablo API'si sorguları ve işlevleri ile sayfaları tek tek harf ölçekli olarak sorgulama](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png)
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png" alt-text="Azure Cosmos DB, SQL API 'SI, JavaScript, MongoDB, Gremlin ve Tablo API'si sorguları ve işlevleri ile sayfaları tek tek harf ölçekli olarak sorgulama" border="false":::
 
 ## <a name="oversized-cheat-sheets"></a>Büyük/büyük yemek sayfaları
 A3 boyutlu kağıda (11,7 "x 16,5") bir çizici veya büyük ölçekli bir yazıcı kullanarak yazdıracaksanız [Azure Cosmos DB a3 boyutlu sorgu oluşturma sayfalarını](https://go.microsoft.com/fwlink/?linkid=870413) indirin.
 
-![SQL API, JavaScript, MongoDB, Gremlin ve Tablo API'si sorguları ve işlevleri ile bir arada bulunan sayfaları (a3-boyutlu) sorgulama Azure Cosmos DB](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png)
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="SQL API, JavaScript, MongoDB, Gremlin ve Tablo API'si sorguları ve işlevleri ile bir arada bulunan sayfaları (a3-boyutlu) sorgulama Azure Cosmos DB" border="false":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sorgu yazma hakkında daha fazla yardım için aşağıdaki makalelere bakın:

@@ -1,29 +1,29 @@
 ---
-title: 'Hızlı başlangıç: node. js web uygulaması oluşturma'
-description: İlk Node. js Merhaba Dünya Azure App Service dakikalar içinde dağıtın. App Service dağıtmanın birçok yolu olan Visual Studio Code kullanarak dağıtın.
+title: 'Hızlı başlangıç: Node.js Web uygulaması oluşturma'
+description: İlk Node.js Merhaba Dünya Azure App Service dakikalar içinde dağıtın. App Service dağıtmanın birçok yolu olan Visual Studio Code kullanarak dağıtın.
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 03/04/2020
 ms.custom: mvc, devcenter, seodec18
-ms.openlocfilehash: df1e0809c0122eae593543cd193a6477b03d0938
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4f08068e0920eb8a9e93fbbf91cb352bb8860fe3
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "82690788"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905927"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure App Service'te Node.js web uygulaması oluşturma 
 
-Visual Studio Code kullanarak yerel olarak bir Node. js/Express uygulaması oluşturup uygulamayı buluta dağıtarak Azure App Service kullanmaya başlayın. Ücretsiz bir App Service katmanı kullandığınız için, bu hızlı başlangıcı tamamlamaya yönelik bir ücret ödeirsiniz.
+Visual Studio Code kullanarak yerel olarak bir Node.js/Express uygulaması oluşturarak ve sonra uygulamayı buluta dağıtarak Azure App Service kullanmaya başlayın. Ücretsiz bir App Service katmanı kullandığınız için, bu hızlı başlangıcı tamamlamaya yönelik bir ücret ödeirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension).
-- [Node.js ve npm](https://nodejs.org). `node --version`Node. js ' nin yüklü olduğunu doğrulamak için komutunu çalıştırın.
+- [Node.js ve npm](https://nodejs.org). `node --version`Node.js yüklendiğini doğrulamak için komutunu çalıştırın.
 - [Visual Studio Code](https://code.visualstudio.com/).
 - Visual Studio Code için [Azure App Service uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice) .
 
-## <a name="clone-and-run-a-local-nodejs-application"></a>Yerel bir Node. js uygulamasını kopyalama ve çalıştırma
+## <a name="clone-and-run-a-local-nodejs-application"></a>Yerel bir Node.js uygulamasını kopyalama ve çalıştırma
 
 1. Yerel bilgisayarınızda bir Terminal açın ve örnek depoyu kopyalayın:
 
@@ -52,7 +52,7 @@ Visual Studio Code kullanarak yerel olarak bir Node. js/Express uygulaması olu�
 
 ## <a name="deploy-the-app-to-azure"></a>Uygulamayı Azure’da dağıtma
 
-Bu bölümde, VS Code ve Azure App Service uzantısını kullanarak Node. js uygulamanızı Azure 'a dağıtırsınız.
+Bu bölümde, VS Code ve Azure App Service uzantısı aracılığıyla Node.js uygulamanızı Azure 'a dağıtırsınız.
 
 1. Terminalde *NodeJS-docs-Hello-World* klasöründe olduğunuzdan emin olun ve Visual Studio Code aşağıdaki komutla başlatın:
 
@@ -77,7 +77,7 @@ Bu bölümde, VS Code ve Azure App Service uzantısını kullanarak Node. js uyg
 
 1. Web uygulamanız için genel olarak benzersiz bir ad yazın ve **ENTER**tuşuna basın. Ad tüm Azure genelinde benzersiz olmalıdır ve yalnızca alfasayısal karakterler (' A-Z ', ' a-z ' ve ' 0-9 ') ve tireler ('-') kullanılmalıdır.
 
-1. Linux hedefleniyorsa, sorulduğunda bir Node. js sürümü seçin. **LTS** sürümü önerilir.
+1. Linux 'u hedefliyorsanız, sorulduğunda Node.js bir sürüm seçin. **LTS** sürümü önerilir.
 
 1. Windows 'u hedefliyorsanız, ek istemleri izleyin:
     1. **Yeni kaynak grubu oluştur**' u seçin, ardından kaynak grubu için gibi bir ad girin `AppServiceQS-rg` .
@@ -96,7 +96,7 @@ Bu bölümde, VS Code ve Azure App Service uzantısını kullanarak Node. js uyg
 
 1. Linux 'a dağıtıyorsanız, dağıtım tamamlandıktan sonra yeniden dağıtılan Web uygulamanızı görüntülemek için istemde **Web sitesine gözatıp** ' yi seçin. Tarayıcının "Merhaba Dünya!" görüntülemesi gerekir
 
-1. Windows 'a dağıtıyorsanız, önce Web uygulaması için Node. js sürüm numarasını ayarlamanız gerekir:
+1. Windows 'a dağıtıyorsanız, önce Web uygulaması için Node.js sürüm numarasını ayarlamanız gerekir:
 
     1. VS Code ' de, yeni App Service düğümünü genişletin, **uygulama ayarları**' na sağ tıklayın ve **yeni ayar Ekle...**' yi seçin:
 
@@ -155,7 +155,13 @@ Günlük çıktısını (çağrıları `console.log` ) uygulamadan doğrudan vs 
 
 Tebrikler, bu hızlı başlangıcı başarıyla tamamladınız!
 
-Daha sonra diğer Azure uzantılarına göz atın.
+> [!div class="nextstepaction"]
+> [Öğretici: MongoDB ile uygulama Node.js](app-service-web-tutorial-nodejs-mongodb-app.md)
+
+> [!div class="nextstepaction"]
+> [Node.js uygulamasını yapılandırma](configure-language-nodejs.md)
+
+Diğer Azure uzantılarına göz atın.
 
 * [Cosmos DB](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
 * [Azure İşlevleri](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
@@ -164,3 +170,4 @@ Daha sonra diğer Azure uzantılarına göz atın.
 * [Azure Resource Manager araçları](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
 Ya da Azure Uzantı paketi [Için düğüm paketini](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) yükleyerek tümünü alın.
+

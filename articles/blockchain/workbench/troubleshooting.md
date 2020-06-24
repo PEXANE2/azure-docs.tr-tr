@@ -2,14 +2,14 @@
 title: Azure blok zinciri ve sorun giderme
 description: Azure blok zinciri çalışma ekranı önizleme uygulaması sorunlarını giderme.
 ms.date: 10/14/2019
-ms.topic: article
+ms.topic: troubleshooting
 ms.reviewer: brendal
-ms.openlocfilehash: ef4bce4dfba77aafa9b86c6877c153534b54636e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20c0f9bdd6f820a73b1ba6660de805268c0d8714
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74324293"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212862"
 ---
 # <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure blok zinciri ekranı önizleme sorunlarını giderme
 
@@ -35,7 +35,7 @@ git clone https://github.com/Azure-Samples/blockchain.git
 ## <a name="run-the-script"></a>Betiği çalıştırın
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
-Günlükleri toplamak `collectBlockchainWorkbenchTroubleshooting.ps1` ve sorun giderme bilgileri klasörünü IÇEREN bir ZIP dosyası oluşturmak için betiği çalıştırın. Örneğin:
+`collectBlockchainWorkbenchTroubleshooting.ps1`Günlükleri toplamak ve sorun giderme bilgileri klasörünü içeren BIR ZIP dosyası oluşturmak için betiği çalıştırın. Örneğin:
 
 ``` powershell
 collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>" -ResourceGroupName "workbench-resource-group-name"
@@ -46,17 +46,17 @@ Betik aşağıdaki parametreleri kabul eder:
 |---------|---------|----|
 | SubscriptionID | Tüm kaynakları oluşturmak veya bulmak için SubscriptionID. | Yes |
 | ResourceGroupName | Blok zinciri çalışma ekranının dağıtıldığı Azure Kaynak grubunun adı. | Yes |
-| OutputDirectory | Çıktının oluşturulacağı yol. ZIP dosyası. Belirtilmezse, varsayılan olarak geçerli dizini alır. | Hayır |
-| Geriye yönelik saat | Telemetri çekme sırasında kullanılacak saat sayısı. Varsayılan değer 24 saattir. Maksimum değer 90 saattir | Hayır |
-| Omssubscriptionıd | Azure Izleyici günlüklerinin dağıtıldığı abonelik KIMLIĞI. Bu parametreyi yalnızca blok zinciri ağı için Azure Izleyici günlükleri blok zinciri çalışma ekranının kaynak grubu dışında dağıtılırsa geçirin.| Hayır |
-| OmsResourceGroup |Azure Izleyici günlüklerinin dağıtıldığı kaynak grubu. Bu parametreyi yalnızca blok zinciri ağı için Azure Izleyici günlükleri blok zinciri çalışma ekranının kaynak grubu dışında dağıtılırsa geçirin.| Hayır |
-| Omsçalışmaalanıadı | Log Analytics çalışma alanı adı. Bu parametreyi yalnızca blok zinciri ağı için Azure Izleyici günlüklerinin, blok zinciri çalışma ekranının kaynak grubu dışında dağıtılırsa geçirin | Hayır |
+| OutputDirectory | Çıktının oluşturulacağı yol. ZIP dosyası. Belirtilmezse, varsayılan olarak geçerli dizini alır. | No |
+| Geriye yönelik saat | Telemetri çekme sırasında kullanılacak saat sayısı. Varsayılan değer 24 saattir. Maksimum değer 90 saattir | No |
+| Omssubscriptionıd | Azure Izleyici günlüklerinin dağıtıldığı abonelik KIMLIĞI. Bu parametreyi yalnızca blok zinciri ağı için Azure Izleyici günlükleri blok zinciri çalışma ekranının kaynak grubu dışında dağıtılırsa geçirin.| No |
+| OmsResourceGroup |Azure Izleyici günlüklerinin dağıtıldığı kaynak grubu. Bu parametreyi yalnızca blok zinciri ağı için Azure Izleyici günlükleri blok zinciri çalışma ekranının kaynak grubu dışında dağıtılırsa geçirin.| No |
+| Omsçalışmaalanıadı | Log Analytics çalışma alanı adı. Bu parametreyi yalnızca blok zinciri ağı için Azure Izleyici günlüklerinin, blok zinciri çalışma ekranının kaynak grubu dışında dağıtılırsa geçirin | No |
 
 ## <a name="what-is-collected"></a>Ne toplanır?
 
 Çıkış ZIP dosyası aşağıdaki klasör yapısını içerir:
 
-| Klasör veya dosya | Açıklama  |
+| Klasör veya dosya | Description  |
 |---------|---------|
 | \Summary.txt | Sistemin Özeti |
 | \Metrics\blockzinciri | Blok zinciri hakkında ölçümler |
@@ -66,7 +66,7 @@ Betik aşağıdaki parametreleri kabul eder:
 
 Özet dosyası, uygulamanın genel durumunun bir anlık görüntüsünü ve uygulamanın sistem durumunu sağlar. Özet, önerilen eylemleri, en önemli hataları vurgular ve Hizmetleri çalıştırma hakkında meta verileri sağlar.
 
-**Ölçüm** klasörü, zaman içinde çeşitli sistem bileşenlerinin ölçümlerini içerir. Örneğin, çıkış dosyası `\Details\Workbench\apiMetrics.txt` farklı yanıt kodlarının özetini ve toplama süresi boyunca yanıt sürelerini içerir. **Ayrıntılar** klasörü, çalışma ekranı veya temeldeki blok zinciri ağı ile ilgili sorunları gidermeye yönelik ayrıntılı günlükleri içerir. Örneğin, `\Details\Workbench\Exceptions.csv` sistemde oluşan en son özel durumların bir listesini içerir, bu, akıllı sözleşmelerle veya blok zinciriyle etkileşimlerle ilgili sorunları gidermek için kullanışlıdır. 
+**Ölçüm** klasörü, zaman içinde çeşitli sistem bileşenlerinin ölçümlerini içerir. Örneğin, çıkış dosyası `\Details\Workbench\apiMetrics.txt` farklı yanıt kodlarının özetini ve toplama süresi boyunca yanıt sürelerini içerir. **Ayrıntılar** klasörü, çalışma ekranı veya temeldeki blok zinciri ağı ile ilgili sorunları gidermeye yönelik ayrıntılı günlükleri içerir. Örneğin, `\Details\Workbench\Exceptions.csv` Sistemde oluşan en son özel durumların bir listesini içerir, bu, akıllı sözleşmelerle veya blok zinciriyle etkileşimlerle ilgili sorunları gidermek için kullanışlıdır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

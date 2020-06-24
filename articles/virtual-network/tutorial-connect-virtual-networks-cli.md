@@ -9,18 +9,18 @@ Customer intent: I want to connect two virtual networks so that virtual machines
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: aa2d75173b14e768a207336b54b3dc10a8c3ea5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b8c226d083c75d50639e7036de938626ca81a5ee
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80235157"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703477"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Azure CLı kullanarak sanal ağ eşlemesi ile sanal ağları bağlama
 
@@ -86,7 +86,7 @@ vNet2Id=$(az network vnet show \
   --out tsv)
 ```
 
-[Az Network VNET eşleme Create](/cli/azure/network/vnet/peering)ile *myVirtualNetwork1* ile *myVirtualNetwork2* arasında bir eşleme oluşturun. `--allow-vnet-access` Parametre belirtilmemişse, bir eşleme oluşturulur, ancak hiçbir iletişim üzerinden akabilir.
+[Az Network VNET eşleme Create](/cli/azure/network/vnet/peering)ile *myVirtualNetwork1* ile *myVirtualNetwork2* arasında bir eşleme oluşturun. `--allow-vnet-access`Parametre belirtilmemişse, bir eşleme oluşturulur, ancak hiçbir iletişim üzerinden akabilir.
 
 ```azurecli-interactive
 az network vnet peering create \
@@ -172,7 +172,7 @@ Sanal makinenin oluşturulması birkaç dakika sürer. VM oluşturulduktan sonra
 
 ## <a name="communicate-between-vms"></a>Sanal makineler arasında iletişim
 
-*MyVm2* VM Ile bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın. SANAL `<publicIpAddress>` MAKINENIZIN genel IP adresi ile değiştirin. Önceki örnekte, genel IP adresi *13.90.242.231*' dir.
+*MyVm2* VM Ile bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın. `<publicIpAddress>`Sanal makinenizin genel IP adresi ile değiştirin. Önceki örnekte, genel IP adresi *13.90.242.231*' dir.
 
 ```bash
 ssh <publicIpAddress>

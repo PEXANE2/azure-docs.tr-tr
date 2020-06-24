@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 9a6e77f630d9a78706a82bdc020dd7fd3eb11230
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 2e84d2f7c1a45f1ef18e5dc32b58d75bb17e2516
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84431408"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213763"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Tasarımcı için özel durumlar ve hata kodları (Önizleme)
 
@@ -22,9 +22,9 @@ Bu makalede, Machine Learning işlem hatlarınızı gidermenize yardımcı olmak
 
 Aşağıdaki adımları izleyerek tasarımcıda hata iletisini bulabilirsiniz:  
 
-- Başarısız modülünü seçin, **çıktılar + Günlükler** sekmesine gidin, ayrıntılı günlüğü, **70_driver_log. txt** dosyasında, **azureml-logs** kategorisi altında bulabilirsiniz.
+- Başarısız modülünü seçin, **çıktılar + Günlükler** sekmesine gidin, ayrıntılı günlüğü, **70_driver_log.txt** dosyasında, **azureml-logs** kategorisi altında bulabilirsiniz.
 
-- Ayrıntılı modül hatası için, **module_statistics** kategorisi altındaki error_info. json ' da kontrol edebilirsiniz.
+- Ayrıntılı modül hatası için **module_statistics** kategorisi altındaki error_info.jskontrol edebilirsiniz.
 
 Tasarımcı 'daki modül hata kodları aşağıda verilmiştir.
 
@@ -356,7 +356,7 @@ Gruplandırma veya kategorilere ayırma için kullanmayı düşündüğünüz s�
 ## <a name="error-0018"></a>Hata 0018  
  Giriş veri kümesi geçerli değilse özel durum oluşur.  
 
-**Çözüm:** Azure Machine Learning bu hata birçok bağlamda görünebilir, bu nedenle tek bir çözüm yoktur. Genellikle hata, bir modüle giriş olarak girilen verilerin yanlış sayıda sütuna sahip olduğunu veya veri türünün modül gereksinimleriyle eşleşmediğinden emin olduğunu gösterir. Örnek:  
+**Çözüm:** Azure Machine Learning bu hata birçok bağlamda görünebilir, bu nedenle tek bir çözüm yoktur. Genellikle hata, bir modüle giriş olarak girilen verilerin yanlış sayıda sütuna sahip olduğunu veya veri türünün modül gereksinimleriyle eşleşmediğinden emin olduğunu gösterir. Örneğin:  
 
 -   Modül bir etiket sütunu gerektiriyor, ancak hiçbir sütun etiket olarak işaretlenmemiş veya henüz bir etiket sütunu seçmediniz.  
   
@@ -438,7 +438,7 @@ Gruplandırma veya kategorilere ayırma için kullanmayı düşündüğünüz s�
 ## <a name="error-0022"></a>Hata 0022  
  Giriş veri kümesindeki Seçili sütunların sayısı beklenen sayıya eşit değilse özel durum oluşur.  
 
- Azure Machine Learning içinde bu hata, aşağı akış modülü veya işlemi belirli sayıda sütun veya giriş gerektirdiğinde ve çok az veya çok fazla sayıda sütun veya giriş sağladıysanız oluşabilir. Örnek:  
+ Azure Machine Learning içinde bu hata, aşağı akış modülü veya işlemi belirli sayıda sütun veya giriş gerektirdiğinde ve çok az veya çok fazla sayıda sütun veya giriş sağladıysanız oluşabilir. Örneğin:  
 
 -   Tek etiketli bir sütun veya anahtar sütunu ve yanlışlıkla birden çok sütun seçtiniz.  
   
@@ -1515,7 +1515,7 @@ Bu hata, önceki bir işlem, bir aşağı akış işleminde yeterli sayıda sat�
 
 Bu hata, işlenmemiş iç altyapı hatalarını yakalamak için sağlanır. Bu nedenle, hatayı oluşturan modüle bağlı olarak bu hatanın nedeni farklı olabilir.  
 
-Daha fazla yardım almak için, hataya eşlik eden ayrıntılı iletiyi, giriş olarak kullanılan veriler de dahil olmak üzere senaryonun açıklamasıyla birlikte Azure Machine Learning forumuna nakletmeniz önerilir. Bu geri bildirim, hataları önceliklendirmemize ve daha fazla iş için en önemli sorunları belirlemenize yardımcı olur.  
+Daha fazla yardım almak için, hataya eşlik eden ayrıntılı iletiyi, giriş olarak kullanılan veriler de dahil olmak üzere senaryonun açıklamasıyla birlikte [Azure Machine Learning forumuna](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)nakletmeniz önerilir. Bu geri bildirim, hataları önceliklendirmemize ve daha fazla iş için en önemli sorunları belirlemenize yardımcı olur.  
 
 |Özel durum Iletileri|
 |------------------------|

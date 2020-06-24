@@ -11,21 +11,21 @@ ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0bc96dc9a8e541cfd827ba5f5abe35c13f2d2462
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: b459f44308827308c28687db3c3fc33df470ea8d
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734102"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790200"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>REST API kullanarak Azure özel rolleri oluşturun veya güncelleştirin
 
 > [!IMPORTANT]
-> ' Ye `AssignableScopes` bir yönetim grubu eklemek Şu anda önizlemededir.
+> ' Ye bir yönetim grubu eklemek `AssignableScopes` Şu anda önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -44,7 +44,7 @@ Bir dizindeki tüm özel rolleri listelemek için, [rol tanımları-liste](/rest
 1. *{Filter}* öğesini rol türüyle değiştirin.
 
     > [!div class="mx-tableFixed"]
-    > | Filtre | Açıklama |
+    > | Filtre | Description |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | CustomRole türünü temel alan filtre |
 
@@ -71,7 +71,7 @@ Bir dizindeki tüm özel rolleri listelemek için, [rol tanımları-liste](/rest
 1. *{Filter}* öğesini rol türüyle değiştirin.
 
     > [!div class="mx-tableFixed"]
-    > | Filtre | Açıklama |
+    > | Filtre | Description |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | CustomRole türünü temel alan filtre |
 
@@ -98,7 +98,7 @@ Görünen adına göre özel bir rol hakkında bilgi almak için, [get REST API 
 1. *{Filter}* değerini rolün görünen adıyla değiştirin.
 
     > [!div class="mx-tableFixed"]
-    > | Filtre | Açıklama |
+    > | Filtre | Description |
     > | --- | --- |
     > | `$filter=roleName+eq+'{roleDisplayName}'` | Rolün tam ekran adının URL kodlamalı formunu kullanın. Örneğin,`$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
 
@@ -128,7 +128,7 @@ Görünen adına göre özel bir rol hakkında bilgi almak için, [get REST API 
 
 ## <a name="create-a-custom-role"></a>Özel rol oluşturma
 
-Özel bir rol oluşturmak için, rol tanımlarını kullanın; REST API [oluşturun veya güncelleştirin](/rest/api/authorization/roledefinitions/createorupdate) . Bu API 'yi çağırmak için, tüm için `Microsoft.Authorization/roleDefinitions/write` `assignableScopes`izni olan bir rol atanmış bir kullanıcıyla oturum açmalısınız. Yerleşik rollerde yalnızca [sahip](built-in-roles.md#owner) ve [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) bu izni içerir.
+Özel bir rol oluşturmak için, rol tanımlarını kullanın; REST API [oluşturun veya güncelleştirin](/rest/api/authorization/roledefinitions/createorupdate) . Bu API 'yi çağırmak için, tüm için izni olan bir rol atanmış bir kullanıcıyla oturum açmalısınız `Microsoft.Authorization/roleDefinitions/write` `assignableScopes` . Yerleşik rollerde yalnızca [sahip](built-in-roles.md#owner) ve [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) bu izni içerir.
 
 1. Özel rolünüzün izinlerini oluşturmak için kullanılabilir [kaynak sağlayıcısı işlemlerinin](resource-provider-operations.md) listesini gözden geçirin.
 
@@ -168,7 +168,7 @@ Görünen adına göre özel bir rol hakkında bilgi almak için, [get REST API 
     }
     ```
 
-1. URI içinde, *{scope}* öğesini özel rolün birinciyle `assignableScopes` değiştirin.
+1. URI içinde, *{scope}* öğesini özel rolün birinciyle değiştirin `assignableScopes` .
 
     > [!div class="mx-tableFixed"]
     > | Kapsam | Tür |
@@ -181,15 +181,15 @@ Görünen adına göre özel bir rol hakkında bilgi almak için, [get REST API 
 
 1. İstek gövdesi içinde *{Roledefinitionıd}* değerini GUID tanımlayıcısı ile değiştirin.
 
-1. `assignableScopes` Bir abonelik veya kaynak grubu ise, *{SubscriptionID}* veya *{resourceGroup}* örneklerini tanımlayıcılarınız ile değiştirin.
+1. `assignableScopes`Bir abonelik veya kaynak grubu ise, *{SubscriptionID}* veya *{resourceGroup}* örneklerini tanımlayıcılarınız ile değiştirin.
 
-1. `assignableScopes` Bir yönetim grub, *{GroupID}* örneğini yönetim grubu tanımlayıcı ile değiştirin. ' Ye `assignableScopes` bir yönetim grubu eklemek Şu anda önizlemededir.
+1. `assignableScopes`Bir yönetim grub, *{GroupID}* örneğini yönetim grubu tanımlayıcı ile değiştirin. ' Ye bir yönetim grubu eklemek `assignableScopes` Şu anda önizlemededir.
 
-1. `actions` Özelliğinde, rolün gerçekleştirilmesine izin verdiği işlemleri ekleyin.
+1. `actions`Özelliğinde, rolün gerçekleştirilmesine izin verdiği işlemleri ekleyin.
 
-1. `notActions` Özelliğinde, izin verilen `actions`öğesinden hariç tutulan işlemleri ekleyin.
+1. `notActions`Özelliğinde, izin verilen öğesinden hariç tutulan işlemleri ekleyin `actions` .
 
-1. `roleName` Ve `description` özellikleri ' nde, benzersiz bir rol adı ve açıklama belirtin. Özellikler hakkında daha fazla bilgi için bkz. [Azure özel roller](custom-roles.md).
+1. `roleName`Ve `description` Özellikleri ' nde, benzersiz bir rol adı ve açıklama belirtin. Özellikler hakkında daha fazla bilgi için bkz. [Azure özel roller](custom-roles.md).
 
     Aşağıda bir istek gövdesi örneği gösterilmektedir:
 
@@ -227,7 +227,7 @@ Görünen adına göre özel bir rol hakkında bilgi almak için, [get REST API 
 
 ## <a name="update-a-custom-role"></a>Özel rolü güncelleştirme
 
-Özel bir rolü güncelleştirmek için, rol tanımlarını kullanın; REST API [oluşturun veya güncelleştirin](/rest/api/authorization/roledefinitions/createorupdate) . Bu API 'yi çağırmak için, tüm için `Microsoft.Authorization/roleDefinitions/write` `assignableScopes`izni olan bir rol atanmış bir kullanıcıyla oturum açmalısınız. Yerleşik rollerde yalnızca [sahip](built-in-roles.md#owner) ve [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) bu izni içerir.
+Özel bir rolü güncelleştirmek için, rol tanımlarını kullanın; REST API [oluşturun veya güncelleştirin](/rest/api/authorization/roledefinitions/createorupdate) . Bu API 'yi çağırmak için, tüm için izni olan bir rol atanmış bir kullanıcıyla oturum açmalısınız `Microsoft.Authorization/roleDefinitions/write` `assignableScopes` . Yerleşik rollerde yalnızca [sahip](built-in-roles.md#owner) ve [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) bu izni içerir.
 
 1. Özel rol hakkında bilgi almak için [rol tanımları-liste](/rest/api/authorization/roledefinitions/list) veya [rol tanımları-al](/rest/api/authorization/roledefinitions/get) REST API kullanın. Daha fazla bilgi için, önceki [özel roller listesi](#list-custom-roles) bölümüne bakın.
 
@@ -237,7 +237,7 @@ Görünen adına göre özel bir rol hakkında bilgi almak için, [get REST API 
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-1. URI içinde, *{scope}* öğesini özel rolün birinciyle `assignableScopes` değiştirin.
+1. URI içinde, *{scope}* öğesini özel rolün birinciyle değiştirin `assignableScopes` .
 
     > [!div class="mx-tableFixed"]
     > | Kapsam | Tür |
@@ -317,7 +317,7 @@ Görünen adına göre özel bir rol hakkında bilgi almak için, [get REST API 
 
 ## <a name="delete-a-custom-role"></a>Özel rolü silme
 
-Özel bir rolü silmek için, [rol tanımlarını kullanın-sil](/rest/api/authorization/roledefinitions/delete) REST API. Bu API 'yi çağırmak için, tüm için `Microsoft.Authorization/roleDefinitions/delete` `assignableScopes`izni olan bir rol atanmış bir kullanıcıyla oturum açmalısınız. Yerleşik rollerde yalnızca [sahip](built-in-roles.md#owner) ve [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) bu izni içerir.
+Özel bir rolü silmek için, [rol tanımlarını kullanın-sil](/rest/api/authorization/roledefinitions/delete) REST API. Bu API 'yi çağırmak için, tüm için izni olan bir rol atanmış bir kullanıcıyla oturum açmalısınız `Microsoft.Authorization/roleDefinitions/delete` `assignableScopes` . Yerleşik rollerde yalnızca [sahip](built-in-roles.md#owner) ve [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) bu izni içerir.
 
 1. [Rol tanımlarını-liste](/rest/api/authorization/roledefinitions/list) veya [rol tanımlarını kullanın-](/rest/api/authorization/roledefinitions/get) özel rolün guıd tanımlayıcısını almak için REST API alın. Daha fazla bilgi için, önceki [özel roller listesi](#list-custom-roles) bölümüne bakın.
 

@@ -4,16 +4,16 @@ description: Mevcut bir konak havuzunu Windows sanal masaüstündeki yeni oturum
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f4313f36a0b250be9646c6658b98f15037374729
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 70ae4a014768976c7dcf81ffadf1066027fa06ad
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615532"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214290"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Yeni oturum Konakları ile mevcut bir konak havuzunu Genişlet
 
@@ -57,12 +57,12 @@ Bir konak havuzunu genişletmek için Azure Resource Manager şablonunu yeniden 
      - Özgün ana bilgisayar havuzunu Azure Marketi teklifiyle oluşturduysanız, **RDS. WVD-provision-Host-Pool**ile başlayan dağıtımı seçin.
      - GitHub Azure Resource Manager şablonuyla orijinal ana bilgisayar havuzunu oluşturduysanız, **Microsoft. Template**adlı dağıtımı seçin.
 6. Yeniden **Dağıt**' ı seçin.
-     
+
      >[!NOTE]
      >Yeniden **Dağıt**seçeneğini belirlediğinizde şablon otomatik olarak yeniden **dağıtmazsa**, tarayıcınızın sol tarafındaki panelde **şablon** ' u seçin ve ardından Dağıt ' ı seçin.
 
 7. Mevcut konak havuzundaki geçerli oturum ana bilgisayar sanal makinelerini içeren kaynak grubunu seçin.
-     
+
      >[!NOTE]
      >Girdiğiniz bir kaynak grubunu seçmenizi bildiren bir hata görürseniz, başka bir kaynak grubu seçin ve ardından orijinal kaynak grubunu seçin.
 
@@ -85,7 +85,7 @@ Bu bölümdeki tüm değerler, *varsayılan masaüstü kullanıcıları*dışın
 3.    *Bölge*için, mevcut konak havuzu oturum ana bilgisayar VM 'lerinin bulunduğu bölgeyi seçin.
 4.    *Hostpool adı*için, mevcut konak havuzunun adını girin.
 5.    *Masaüstü türü*için, mevcut konak havuzuyla eşleşen masaüstü türünü seçin.
-6.    *Varsayılan masaüstü kullanıcıları*Için, Windows sanal masaüstü istemcilerinde oturum açmak istediğiniz ek kullanıcıların virgülle ayrılmış bir listesini girin ve Azure Marketi teklifi bittikten sonra bir masaüstüne erişin. user3@contoso.com Örneğin, atamak user4@contoso.com ve erişmek istiyorsanız, girin. user3@contoso.comuser4@contoso.com
+6.    *Varsayılan masaüstü kullanıcıları*Için, Windows sanal masaüstü istemcilerinde oturum açmak istediğiniz ek kullanıcıların virgülle ayrılmış bir listesini girin ve Azure Marketi teklifi bittikten sonra bir masaüstüne erişin. Örneğin, atamak user3@contoso.com ve erişmek istiyorsanız, user4@contoso.com girin user3@contoso.com user4@contoso.com .
 7.    **İleri ' yi seçin: sanal makineyi yapılandırın**.
 
 >[!NOTE]
@@ -96,7 +96,7 @@ Bu bölümdeki tüm değerler, *varsayılan masaüstü kullanıcıları*dışın
 Toplam VM sayısı dışında, bu bölümdeki tüm parametre değerleri, ana bilgisayar havuzunu ve oturum ana bilgisayar VM 'lerini ilk oluşturduğunuzda sağladıklarınız ile aynı olmalıdır. Girdiğiniz VM sayısı, genişletilmiş konak havuzunuzdaki sanal makinelerin sayısı olacaktır:
 
 1. Mevcut oturum ana bilgisayarı VM 'leriyle eşleşen VM boyutunu seçin.
-    
+
     >[!NOTE]
     >Aradığınız belirli VM boyutu VM boyut Seçicisi 'nde görünmezse, bu, henüz Azure Market aracına eklendi. VM boyutu istemek için [Windows sanal masaüstü UserVoice forumundaki](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)bir istek oluşturun veya var olan bir isteği oylayın.
 

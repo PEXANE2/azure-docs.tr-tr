@@ -1,25 +1,25 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 05/14/2020
+ms.date: 06/22/2020
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 4e00b0c46c79dc058d19076a396d055ba1d41b87
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fe223030b98f95036f01cf69babdeb8a9a84dc2d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673535"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242185"
 ---
 | Kaynak | Sınır |
 | --- | --- |
-| Veri aktarım hızı |30 Gbps<sup>1</sup> |
+| Veri işleme |30 Gbps<sup>1</sup> |
 |Kurallar|10.000. Tüm kural türleri birleştirildi.|
-|Maksimum DNAT kuralları|298<br>Bir kuralın protokolü TCP ve UDP için yapılandırılırsa, iki kural olarak sayılır.|
+|Maksimum DNAT kuralları|tek bir genel IP adresi için 298.<br>Ek genel IP adresleri kullanılabilir SNAT bağlantı noktalarına katkıda bulunur, ancak kullanılabilir DNAT kurallarının sayısını azaltır. Örneğin, 297 DNAT kurallarına izin veren iki genel IP adresi vardır. Bir kuralın protokolü TCP ve UDP için yapılandırılırsa, iki kural olarak sayılır.|
 |Minimum AzureFirewallSubnet boyutu |/26|
 |Ağ ve uygulama kurallarında bağlantı noktası aralığı|1 - 65535|
 |Genel IP adresleri|250 en fazla. Tüm genel IP adresleri DNAT kurallarında kullanılabilir ve hepsi, kullanılabilir SNAT bağlantı noktalarına katkıda bulunur.|

@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: de8574cd691c77bb764c7e695db1e7c2f23c5f3a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9764d3964a38408493bafe0e9c8ca059b055ca21
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837925"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242143"
 ---
 Bu makalede, Azure yönetilen diskler ve Azure Premium SSD diskleri hakkında sık sorulan bazı sorular yanıtlanmaktadır.
 
@@ -451,7 +451,7 @@ Diskin bağlı olduğu VM 'yi durdurup başlatabilir veya diskinizin bağlantıs
 
 **Tüm disk boyutlarında konak önbelleğini etkinleştirmeyi destekliyoruz.**
 
-Salt okunur ve okuma/yazma işlemleri için 4 TiB 'den az disk boyutlarında konak önbelleğe alma destekliyoruz. 4 TiB 'den fazla disk boyutları için, None dışında önbelleğe alma seçeneğini ayarlamayı desteklemiyoruz. VM 'de önbelleğe alınan verilerle daha iyi performans artışı gözlemleyebileceğiniz daha küçük disk boyutları için önbelleğe almayı öneririz.
+Ana bilgisayar önbelleğe alma (salt okunur ve okuma/yazma), 4 TiB 'den küçük disk boyutlarında desteklenir. Bu, 4095 GiB 'ye kadar sağlanan tüm disklerin konak önbelleğe alma özelliğinden yararlanabilme anlamına gelir. Ana bilgisayar önbelleği 4096 GiB 'den büyük veya buna eşit disk boyutları için desteklenmez. Örneğin, 4095 GiB 'de sağlanan bir P50 Premium disk, ana bilgisayar Önbelleklerinden yararlanabilir ve 4096 GiB 'de sağlanan bir P50 diski ana bilgisayar Önbelleklerinden yararlanamaz. VM 'de önbelleğe alınan verilerle daha iyi performans artışı gözlemleyebileceğiniz daha küçük disk boyutları için önbelleğe almayı öneririz.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Sorum burada yanıtlanmazsa ne olacak?
 

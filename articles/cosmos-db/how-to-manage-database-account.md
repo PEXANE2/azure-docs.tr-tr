@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 76e8167a5d0dc83a5cc1b238d3015594278e344d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 35659eba274b4b93ca74e480f6ad2b5edfd2e293
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116702"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116766"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos hesabını yönetme
 
@@ -49,7 +49,7 @@ Lütfen bkz. [Azure Resource Manager şablonlarla Azure Cosmos DB hesap oluştur
 
 1. Değişikliklerinizi kaydetmek için **Tamam**' ı seçin.
 
-   ![Bölge Ekle veya Kaldır menüsü](./media/how-to-manage-database-account/add-region.png)
+   :::image type="content" source="./media/how-to-manage-database-account/add-region.png" alt-text="Bölge Ekle veya Kaldır menüsü":::
 
 Tek bölgeli yazma modunda yazma bölgesini kaldıramazsınız. Geçerli yazma bölgesini silebilmeniz için önce farklı bir bölgeye yük devretme gerçekleştirmeniz gerekir.
 
@@ -69,7 +69,7 @@ Lütfen bkz. [PowerShell ile bölge ekleme veya kaldırma](manage-with-powershel
 
 **Verileri genel olarak Çoğalt** sekmesini açın ve çok bölgeli yazmaları etkinleştirmek için **Etkinleştir** ' i seçin. Çok bölgeli yazmaları etkinleştirdikten sonra, şu anda hesapta yer alan tüm okuma bölgeleri okuma ve yazma bölgeleri olur.
 
-![Azure Cosmos hesabı, çok yöneticili ekran görüntüsünü yapılandırır](./media/how-to-manage-database-account/single-to-multi-master.png)
+:::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Azure Cosmos hesabı, çok yöneticili ekran görüntüsünü yapılandırır":::
 
 ### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
@@ -149,13 +149,13 @@ Otomatik yük devretme seçeneği, bir bölgenin kullanılamaz duruma gelmesi i�
 
 2. Bölmenin en üstünde **otomatik yük devretme**' yı seçin.
 
-   ![Verileri genel olarak çoğaltma menüsü](./media/how-to-manage-database-account/replicate-data-globally.png)
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Verileri genel olarak çoğaltma menüsü":::
 
 3. **Otomatik yük devretme** bölmesinde, **otomatik yük devretmeyi etkinleştir** ' in **Açık**olarak ayarlandığından emin olun. 
 
 4. **Kaydet**’i seçin.
 
-   ![Otomatik yük devretme portal menüsü](./media/how-to-manage-database-account/automatic-failover.png)
+   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Otomatik yük devretme portal menüsü":::
 
 ### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure CLI
 
@@ -178,7 +178,7 @@ Bir Cosmos hesabı otomatik yük devretme için yapılandırıldıktan sonra, b�
 
 2. Bölmenin en üstünde **otomatik yük devretme**' yı seçin.
 
-   ![Verileri genel olarak çoğaltma menüsü](./media/how-to-manage-database-account/replicate-data-globally.png)
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Verileri genel olarak çoğaltma menüsü":::
 
 3. **Otomatik yük devretme** bölmesinde, **otomatik yük devretmeyi etkinleştir** ' in **Açık**olarak ayarlandığından emin olun.
 
@@ -186,7 +186,7 @@ Bir Cosmos hesabı otomatik yük devretme için yapılandırıldıktan sonra, b�
 
 5. **Kaydet**’i seçin.
 
-   ![Otomatik yük devretme portal menüsü](./media/how-to-manage-database-account/automatic-failover.png)
+   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Otomatik yük devretme portal menüsü":::
 
 ### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure CLI
 
@@ -212,13 +212,13 @@ El ile yük devretme gerçekleştirme süreci, hesabın yazma bölgesinin (yük 
 
 2. Menünün üst kısmında **El Ile yük devretme**' yı seçin.
 
-   ![Verileri genel olarak çoğaltma menüsü](./media/how-to-manage-database-account/replicate-data-globally.png)
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Verileri genel olarak çoğaltma menüsü":::
 
 3. **El Ile yük devretme** menüsünde Yeni yazma bölgenizi seçin. Bu seçeneği, yazma bölgenizi değiştirdiğinize işaret eden onay kutusunu seçin.
 
 4. Yük devretmeyi tetiklemek için **Tamam**' ı seçin.
 
-   ![El ile yük devretme portal menüsü](./media/how-to-manage-database-account/manual-failover.png)
+   :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="El ile yük devretme portal menüsü":::
 
 ### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure CLI
 

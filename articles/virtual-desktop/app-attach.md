@@ -4,22 +4,23 @@ description: Windows sanal masaüstü için MSIX uygulama iliştirme 'yi ayarlam
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
-ms.date: 05/11/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c6544a0536a99261d1ebc13748a5365b9893e789
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 76edc88f127d7e52514ab72539f7212ac982b5e4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605203"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204482"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX uygulama iliştirmeyi ayarlama
 
 > [!IMPORTANT]
 > MSIX uygulama iliştirme Şu anda genel önizlemededir.
-> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu konu başlığı altında, bir Windows sanal masaüstü ortamında MSIX uygulama iliştirme 'yi ayarlama işleminde size yol gösterilir.
 
@@ -29,11 +30,29 @@ Başlamadan önce, MSIX uygulama iliştirme 'yi yapılandırmak için gerekenler
 
 - MSIX uygulama iliştirme API 'Leri desteğiyle Windows 10 sürümünü edinmek için Windows Insider portalına erişim.
 - Çalışan bir Windows sanal masaüstü dağıtımı. Windows sanal masaüstü Fall 2019 sürümünün nasıl dağıtılacağını öğrenmek için bkz. [Windows sanal masaüstü 'nde kiracı oluşturma](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Windows sanal masaüstü Spring 2020 sürümünün nasıl dağıtılacağını öğrenmek için, bkz. [Azure Portal bir konak havuzu oluşturma](./create-host-pools-azure-marketplace.md).
+- MSIX paketleme aracı.
+- Windows sanal masaüstü dağıtımınızda MSIX paketinin depolanacağı bir ağ paylaşımıdır.
 
-- MSIX paketleme aracı
-- Windows sanal masaüstü dağıtımınızda MSIX paketinin depolanacağı bir ağ paylaşımıdır
+## <a name="get-the-os-image"></a>İşletim sistemi görüntüsünü al
 
-## <a name="get-the-os-image-from-the-technology-adoption-program-tap-portal"></a>Teknoloji benimseme programından (TAP) işletim sistemi görüntüsünü alın
+İlk olarak, işletim sistemi görüntüsünü almanız gerekir. İşletim sistemi görüntüsünü Azure portal aracılığıyla alabilirsiniz. Ancak, Windows Insider programının bir üyesiyseniz bunun yerine Windows Insider portalını kullanma seçeneğiniz vardır.
+
+### <a name="get-the-os-image-from-the-azure-portal"></a>Azure portal işletim sistemi görüntüsünü alın
+
+Azure portal işletim sistemi görüntüsünü almak için:
+
+1. [Azure Portal](https://portal.azure.com) açın ve oturum açın.
+
+2. **Sanal makine oluşturma**bölümüne gidin.
+
+3. **Temel** sekmede, **Windows 10 Enterprise multi-session, sürüm 2004**' ı seçin.
+
+4. Sanal makine oluşturma işleminin tamamlanmasının ardından kalan yönergeleri izleyin.
+
+     >[!NOTE]
+     >Bu VM 'yi, MSIX uygulama iliştirmeyi doğrudan test etmek için kullanabilirsiniz. Daha fazla bilgi edinmek için, [MSIX için BIR VHD veya vhdx paketi oluşturmaya](#generate-a-vhd-or-vhdx-package-for-msix)devam edin. Aksi takdirde, bu bölümü okumaya devam edin.
+
+### <a name="get-the-os-image-from-the-windows-insider-portal"></a>Windows Insider portalından işletim sistemi görüntüsünü alın
 
 Windows Insider portalından işletim sistemi görüntüsünü almak için:
 
@@ -45,30 +64,15 @@ Windows Insider portalından işletim sistemi görüntüsünü almak için:
 2. **Seç sürümü** bölümüne gidin ve **Windows 10 Insider PREVIEW Enterprise (Fast) – Build 19041** veya üzeri ' i seçin.
 
 3. **Onayla**' yı seçin, ardından kullanmak istediğiniz dili seçin ve sonra yeniden **Onayla** ' yı seçin.
-    
+
      >[!NOTE]
      >Şu anda, özelliği ile test edilen tek dil Ingilizce 'dir. Diğer dilleri seçebilirsiniz, ancak tasarlanan gibi görünmeyebilir.
-    
+
 4. İndirme bağlantısı oluşturulduğunda, **64 bit indirmeyi** seçin ve yerel sabit diskinize kaydedin.
 
-## <a name="get-the-os-image-from-the-azure-portal"></a>Azure portal işletim sistemi görüntüsünü alın
+## <a name="prepare-the-vhd-image-for-azure"></a>Azure için VHD görüntüsünü hazırlama
 
-Azure portal işletim sistemi görüntüsünü almak için:
-
-1. [Azure Portal](https://portal.azure.com) açın ve oturum açın.
-
-2. **Sanal makine oluşturma**bölümüne gidin.
-
-3. **Temel** sekmede, **Windows 10 Enterprise multi-session, sürüm 2004**' ı seçin.
-      
-4. Sanal makine oluşturma işleminin tamamlanmasının ardından kalan yönergeleri izleyin.
-
-     >[!NOTE]
-     >Bu VM 'yi, MSIX uygulama iliştirmeyi doğrudan test etmek için kullanabilirsiniz. Daha fazla bilgi edinmek için, [MSIX için BIR VHD veya vhdx paketi oluşturmaya](#generate-a-vhd-or-vhdx-package-for-msix)devam edin. Aksi takdirde, bu bölümü okumaya devam edin.
-
-## <a name="prepare-the-vhd-image-for-azure"></a>Azure için VHD görüntüsünü hazırlama 
-
-Başlamadan önce, bir ana VHD görüntüsü oluşturmanız gerekir. Ana VHD görüntünüzü henüz oluşturmadıysanız, [ana VHD görüntüsünü hazırla ve özelleştirme](set-up-customize-master-image.md) bölümüne gidin ve yönergeleri izleyin. 
+Ardından, bir ana VHD görüntüsü oluşturmanız gerekir. Ana VHD görüntünüzü henüz oluşturmadıysanız, [ana VHD görüntüsünü hazırla ve özelleştirme](set-up-customize-master-image.md) bölümüne gidin ve yönergeleri izleyin.
 
 Ana VHD görüntünüzü oluşturduktan sonra, MSIX uygulama iliştirme uygulamaları için otomatik güncelleştirmeleri devre dışı bırakmanız gerekir. Otomatik güncelleştirmeleri devre dışı bırakmak için, yükseltilmiş bir komut isteminde aşağıdaki komutları çalıştırmanız gerekir:
 
@@ -90,7 +94,7 @@ rem Disable Windows Update:
 sc config wuauserv start=disabled
 ```
 
-Otomatik güncelleştirmeleri devre dışı bırakıldıktan sonra, Hyper-V ' d i etkinleştirmeniz gerekir, çünkü VHD 'yi hazırlamak ve çıkarmak için Mount-VHD komutunu kullanacaksınız. 
+Otomatik güncelleştirmeleri devre dışı bırakıldıktan sonra, Hyper-V ' d i etkinleştirmeniz gerekir, çünkü VHD 'yi hazırlamak ve çıkarmak için Mount-VHD komutunu kullanacaksınız.
 
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
@@ -102,7 +106,7 @@ Ardından, Azure için VM VHD 'yi hazırlayın ve elde edilen VHD diskini Azure 
 
 VHD 'yi Azure 'a yükledikten sonra [Azure Marketi öğreticisini kullanarak bir konak havuzu oluşturma](create-host-pools-azure-marketplace.md) bölümünde yer alan yönergeleri izleyerek bu yeni görüntüye dayalı bir konak havuzu oluşturun.
 
-## <a name="prepare-the-application-for-msix-app-attach"></a>Uygulamayı MALTı uygulama iliştirme için hazırlama 
+## <a name="prepare-the-application-for-msix-app-attach"></a>Uygulamayı MALTı uygulama iliştirme için hazırlama
 
 Zaten bir MSIX paketiniz varsa [Windows sanal masaüstü altyapısını yapılandırma](#configure-windows-virtual-desktop-infrastructure)bölümüne atlayın. Eski uygulamaları test etmek istiyorsanız, eski uygulamayı bir MSIX paketine dönüştürmek için [BIR sanal makinede bulunan bir masaüstü yükleyicisinden msix paketi oluşturma](/windows/msix/packaging-tool/create-app-package-msi-vm/) bölümündeki yönergeleri izleyin.
 
@@ -185,7 +189,7 @@ Başlamadan önce, ağ paylaşımınızın bu gereksinimleri karşıladığında
 - Paylaşımda SMB uyumlu.
 - Oturum Ana bilgisayar havuzunun parçası olan sanal makinelerin, paylaşımda NTFS izinleri vardır.
 
-### <a name="set-up-an-msix-app-attach-share"></a>MALTı uygulama iliştirme paylaşma ayarlama 
+### <a name="set-up-an-msix-app-attach-share"></a>MALTı uygulama iliştirme paylaşma ayarlama
 
 Windows sanal masaüstü ortamınızda bir ağ paylaşma oluşturun ve paketi buraya taşıyın.
 
@@ -426,16 +430,16 @@ Bu otomatik betiklerin her biri, uygulama komut dosyalarının bir aşamasını 
 
 ## <a name="use-packages-offline"></a>Paketleri çevrimdışı kullanma
 
-[İş için Microsoft Store](https://businessstore.microsoft.com/) veya ağınıza veya internet 'e bağlı olmayan cihazlarda [eğitim Microsoft Store](https://educationstore.microsoft.com/) kullanıyorsanız, uygulamayı başarılı bir şekilde çalıştırmak için Microsoft Store paket lisanslarını almanız ve cihazınıza yüklemeniz gerekir. Cihazınız çevrimiçiyse ve Iş için Microsoft Store bağlanabildiğinizde, gerekli lisanslar otomatik olarak indirilmelidir, ancak çevrimdışı çalışıyorsanız, lisansları el ile ayarlamanız gerekir. 
+[İş için Microsoft Store](https://businessstore.microsoft.com/) veya ağınıza veya internet 'e bağlı olmayan cihazlarda [eğitim Microsoft Store](https://educationstore.microsoft.com/) kullanıyorsanız, uygulamayı başarılı bir şekilde çalıştırmak için Microsoft Store paket lisanslarını almanız ve cihazınıza yüklemeniz gerekir. Cihazınız çevrimiçiyse ve Iş için Microsoft Store bağlanabildiğinizde, gerekli lisanslar otomatik olarak indirilmelidir, ancak çevrimdışı çalışıyorsanız, lisansları el ile ayarlamanız gerekir.
 
-Lisans dosyalarını yüklemek için, WMI Köprüsü sağlayıcısında MDM_EnterpriseModernAppManagement_StoreLicenses02_01 sınıfını çağıran bir PowerShell betiği kullanmanız gerekir.  
+Lisans dosyalarını yüklemek için, WMI Köprüsü sağlayıcısında MDM_EnterpriseModernAppManagement_StoreLicenses02_01 sınıfını çağıran bir PowerShell betiği kullanmanız gerekir.
 
-Lisansları çevrimdışı kullanım için ayarlama: 
+Lisansları çevrimdışı kullanım için ayarlama:
 
 1. Iş için Microsoft Store uygulama paketini, lisansları ve gerekli çerçeveleri indirin. Kodlanmış ve kodlanmamış lisans dosyalarının her ikisi de gereklidir. Ayrıntılı indirme yönergeleri [burada](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)bulunabilir.
 2. 3. adım için komut dosyasında aşağıdaki değişkenleri güncelleştirin:
       1. `$contentID`, kodlanmamış lisans dosyasından (. xml) ContentID değeridir. Lisans dosyasını dilediğiniz bir metin düzenleyicisinde açabilirsiniz.
-      2. `$licenseBlob`, kodlanmış lisans dosyasında (. bin), lisans blobu için tüm dizedir. Kodlanmış lisans dosyasını dilediğiniz bir metin düzenleyicisinde açabilirsiniz. 
+      2. `$licenseBlob`, kodlanmış lisans dosyasında (. bin), lisans blobu için tüm dizedir. Kodlanmış lisans dosyasını dilediğiniz bir metin düzenleyicisinde açabilirsiniz.
 3. Yönetici PowerShell isteminden aşağıdaki betiği çalıştırın. Lisans yükleme işlemini gerçekleştirmek için iyi bir yer, bir yönetici isteminden çalıştırılması gereken [hazırlama betiğinin](#stage-the-powershell-script) sonunda yer alan bir yerdir.
 
 ```powershell
@@ -450,14 +454,14 @@ $contentID = "{'ContentID'_in_unencoded_license_file}"
 #TODO - Update $licenseBlob with the entire String in the encoded license file (.bin)
 $licenseBlob = "{Entire_String_in_encoded_license_file}"
 
-$session = New-CimSession 
+$session = New-CimSession
 
 #The final string passed into the AddLicenseMethod should be of the form <License Content="encoded license blob" />
-$licenseString = '<License Content='+ '"' + $licenseBlob +'"' + ' />' 
+$licenseString = '<License Content='+ '"' + $licenseBlob +'"' + ' />'
 
 $params = New-Object Microsoft.Management.Infrastructure.CimMethodParametersCollection
 $param = [Microsoft.Management.Infrastructure.CimMethodParameter]::Create("param",$licenseString ,"String", "In")
-$params.Add($param) 
+$params.Add($param)
 
 
 try
@@ -469,7 +473,7 @@ try
 catch [Exception]
 {
      write-host $_ | out-string
-}  
+}
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

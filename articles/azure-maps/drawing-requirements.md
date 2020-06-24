@@ -3,17 +3,17 @@ title: Azure haritalar Creator 'da paket gereksinimlerini çizme
 description: Azure haritalar dönüştürme hizmeti 'ni kullanarak tesis tasarım dosyalarınızı eşleme verilerine dönüştürmek için çizim paketi gereksinimleri hakkında bilgi edinin
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 6/09/2020
+ms.date: 6/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: cb34cb386939fc1160ee5a7db0007cfbf500ccb8
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: c8699ff86573084e3199b096b25dd5d97cce2985
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660626"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791580"
 ---
 # <a name="drawing-package-requirements"></a>Çizim paketi gereksinimleri
 
@@ -34,7 +34,7 @@ Bu belge içinde kullanılan terimler sözlüğü.
 | Katman | Bir AutoCAD DWG katmanı.|
 | Düzey | Bir küme yükseltmesinde bina alanı. Örneğin, bir bina tabanı. |
 | XREF  |AutoCAD DWG dosya biçimindeki (. dwg), dış başvuru olarak birincil Çizime eklenen bir dosya.  |
-| Öne çıkan özelliği | Ek meta veri bilgileriyle geometriyi birleştiren bir nesne. |
+| Özellik | Ek meta veri bilgileriyle geometriyi birleştiren bir nesne. |
 | Özellik sınıfları | Özellikler için ortak bir şema. Örneğin, bir birim bir özellik sınıfıdır ve Office bir özelliktir. |
 
 ## <a name="drawing-package-structure"></a>Çizim paketi yapısı
@@ -169,12 +169,13 @@ Bölge etiketi katmanının bir örneği, [örnek çizim PAKETINDEKI](https://gi
 
 ZIP klasörü, dizinin kök düzeyinde bir bildirim dosyası içermeli ve dosyanın **manifest.jsolarak**adlandırılması gerekir. [Azure haritalar dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion) 'nin içeriklerini ayrıştırmasına izin vermek için DWG dosyalarını açıklar. Yalnızca bildirimle tanımlanan dosyalar alınır. ZIP klasöründe olan, ancak bildirimde düzgün listelenmeyen dosyalar yok sayılır.
 
-Bildirim dosyasının **Buildinglevels** nesnesindeki dosya yolları ZIP klasörünün köküne göreli olmalıdır. DWG dosya adı, Tesis düzeyinin adıyla tam olarak eşleşmelidir. Örneğin, "Basement" düzeyi için bir DWG dosyası "Basement. dwg" olacaktır. Düzey 2 için bir DWG dosyası "level_2. dwg" olarak adlandırılır. Düzey adınızın bir alanı varsa alt çizgi kullanın. 
+Bildirim dosyasının **Buildinglevels** nesnesindeki dosya yolları ZIP klasörünün köküne göreli olmalıdır. DWG dosya adı, Tesis düzeyinin adıyla tam olarak eşleşmelidir. Örneğin, "Basement" düzeyi için bir DWG dosyası "Basement. dwg" olacaktır. Düzey 2 için bir DWG dosyası "level_2. dwg" olarak adlandırılır. Düzey adınızın bir alanı varsa alt çizgi kullanın.
 
 Bildirim nesneleri kullanılırken gereksinimler olsa da, tüm nesneler gerekli değildir. Aşağıdaki tabloda, [Azure Maps dönüştürme hizmeti](https://docs.microsoft.com/rest/api/maps/conversion)'nin 1,1 sürümü için gerekli ve isteğe bağlı nesneler gösterilmektedir.
 
 | Nesne | Gerekli | Açıklama |
 | :----- | :------- | :------- |
+| sürüm | true |Bildirim şeması sürümü. Şu anda yalnızca sürüm 1,1 destekleniyor.|
 | DirectoryInfo | true | Tesis coğrafi ve iletişim bilgilerini özetler. Ayrıca, bir açık coğrafi ve iletişim bilgilerini ana hatlarıyla yapmak için de kullanılabilir. |
 | buildingLevels | true | Bina düzeylerini ve düzeylerin tasarımını içeren dosyaları belirtir. |
 | georeference | true | Tesis çizimi için sayısal coğrafi bilgiler içerir. |
@@ -211,7 +212,7 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 |-----------|------|----------|-------------|
 |levelName    |string    |true |    Açıklayıcı düzey adı. Örneğin: Floor 1, lobide, mavi Park, taban ve benzeri.|
 |numarasını | integer |    true | Sıra sayısı dikey düzeyin sırasını belirlemede kullanılır. Her tesis 0 sıralı bir düzeye sahip olmalıdır. |
-|heightAboveFacilityAnchor | sayısal |    yanlış |    Metrekare cinsinden taban zemin üzerindeki düzey yüksekliği. |
+|heightAboveFacilityAnchor | sayısal | yanlış |    Metredeki bağlayıcının üzerindeki düzey yüksekliği. |
 | Verticalexkatlanmış | sayısal | yanlış | Ölçü cinsinden düzeyin tavan yüksekliğini (kalınlığı) kat. |
 |filename |    string |    true |    Bir bina düzeyi için CAD çiziminin dosya sistemi yolu. Bu, binanın ZIP dosyasının köküne göreli olmalıdır. |
 
@@ -253,7 +254,7 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 |Verticalpenetoytiondirection|    string|    yanlış    |`verticalPenetrationCategory`Tanımlanmışsa, isteğe bağlı olarak geçerli seyahat yönünü tanımlayın. İzin verilen değerler `lowToHigh` ,, `highToLow` `both` ve `closed` . Varsayılan değer `both` .|
 | nonPublic | bool | yanlış | Birimin herkese açık olup olmadığını gösterir. |
 | IBir yönlendirilebilir | bool | yanlış | Olarak ayarlandığında `false` , birim ' e veya ' a gidildiği zaman. Varsayılan değer `true` . |
-| ısopenarea | bool | yanlış | Aracının, birime eklenmiş bir açmaya gerek kalmadan birimi girmesine izin verir. Varsayılan olarak, bu değer `true` birimde bir açma işlemi yoksa olarak ayarlanır. |
+| ısopenarea | bool | yanlış | Gezinti aracının, birime eklenmiş bir açmaya gerek kalmadan birimi girmesine izin verir. Bu değer, varsayılan olarak, yer `true` içermeyen birimler için olarak ayarlanır; `false`  `isOpenArea` `false` Açık olmayan bir birimde el ile olarak ayarlanması bir uyarı ile sonuçlanır. Bunun nedeni, elde edilen birime gezinme Aracısı tarafından erişilememesi olabilir.|
 
 ### <a name="the-zoneproperties-object"></a>ZoneProperties nesnesi
 
@@ -265,6 +266,7 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 |categoryName|    string|    yanlış    |Kategori adı. Kategorilerin tüm listesi için [Kategoriler](https://aka.ms/pa-indoor-spacecategories)' e bakın. |
 |Bölge \/alt|    string|    yanlış    |Bölgenin alternatif adı.  |
 |Bölgesi \ Amesubtitle|    string |    yanlış    |Bölgenin alt başlığı. |
+|Bölge SetID|    string |    yanlış    | Bir grup olarak sorgulanabilmeleri veya seçilebilmeleri için birden çok bölge arasında ilişki kurmak üzere KIMLIĞI ayarlayın. Örneğin, birden çok düzeye yayılan bölgeler. |
 
 ### <a name="sample-drawing-package-manifest"></a>Örnek çizim paketi bildirimi
 

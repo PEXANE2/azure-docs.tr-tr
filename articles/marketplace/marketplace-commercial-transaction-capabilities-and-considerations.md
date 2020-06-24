@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 06/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 8818b06e84f6ffe05398087c4aaeba282adc8b2e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b190f2392fae11b074b2ee90a1c89f272b88818d
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298219"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790306"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Ticari Market Transact özellikleri
 
@@ -42,7 +42,7 @@ Transact Publishing seçeneğini kullanırken, Microsoft üçüncü taraf yazıl
 
 ### <a name="billing-infrastructure-costs"></a>Faturalandırma altyapısı maliyetleri
 
-**Sanal makineler ve Azure uygulamaları**için Azure altyapı kullanım ücretleri müşterinin Azure aboneliğine faturalandırılır. Altyapı kullanım ücretleri fiyatlandırılır ve müşterinin faturasında yazılım sağlayıcısının lisanslama ücretlerinden ayrı olarak sunulur.
+**Sanal makineler** ve **Azure uygulamaları**için Azure altyapı kullanım ücretleri müşterinin Azure aboneliğine faturalandırılır. Altyapı kullanım ücretleri fiyatlandırılır ve müşterinin faturasında yazılım sağlayıcısının lisanslama ücretlerinden ayrı olarak sunulur.
 
 **SaaS uygulamaları**için, yayımcının tek bir maliyet öğesi olarak Azure altyapı kullanım ücretlerini ve yazılım lisanslama ücretlerini hesaba göre hesabı olması gerekir.  Müşteriye yönelik bir sabit ücret olarak gösterilir. Azure altyapı kullanımı, doğrudan iş ortağı tarafından yönetilir ve faturalandırılır. Gerçek altyapı kullanım ücretleri müşteri tarafından görülmez. Yayımcılar genellikle Azure altyapı kullanım ücretlerini yazılım lisans fiyatlandırmasına paketlendirmeyi tercih edebilir. Yazılım Lisanslama ücretleri tarifeli veya tüketim temelli değildir.
 
@@ -136,7 +136,7 @@ Bu senaryoda, Microsoft, yazılım lisansınızın $100,00 ' i faturalandırır 
 |Microsoft, lisans maliyetinizi %80 oranında ödetir <br> \*Microsoft, tüm nitelikli SaaS uygulamaları için lisans maliyetinizi %90 oranında ödetir   |   $80,00/ay <br> \*$90,00/ay    |
 |Microsoft, lisans maliyetlerinizin %20 ' sini tutar <br> \*Microsoft, tüm nitelikli SaaS uygulamaları için lisans maliyetinizi %10 oranında tutar.  |  $20,00/ay <br> \*$10,00     |
 
-Ticari marketi 'nde yayımladığınız belirli SaaS ürünleri için Microsoft, **Market hizmet ücretini** %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 oranında azaltacak. Teklifinizin uygun olması için, tekliflerinizin en az birinin, IP ortak satışı veya IP ortak satışı kapsamında Microsoft tarafından belirlenmiş olması gerekir. Bu ay için daha düşük olan bu Market hizmeti ücretini almak için, uygunluk önceki takvim ayının sonundan önce en az beş iş günü önce sağlanmalıdır. Daha az Market hizmeti ücreti, sanal makineler, yönetilen uygulamalar veya ticari Market aracılığıyla sunulan diğer ürünlerden hiçbiri için de geçerlidir. Bu azaltılan ücret, Microsoft tarafından 1 Mayıs 2019 ile 30 Haziran 2020 arasında toplanan lisans ücretleri sayesinde nitelikli tekliflerle kullanılabilir. Bu süreden sonra, ücret normal miktarına geri döner.
+Ticari Market 'te yayımladığınız belirli SaaS ürünleri için Microsoft, **Market hizmet ücretini** %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 oranında azaltacak. Teklifinizin uygun olması için, tekliflerinizin en az birinin, IP ortak satışı veya IP ortak satışı kapsamında Microsoft tarafından belirlenmiş olması gerekir. Bu ay için daha düşük olan bu Market hizmeti ücretini almak için, uygunluk önceki takvim ayının sonundan önce en az beş iş günü önce sağlanmalıdır. Daha az Market hizmeti ücreti, sanal makineler, yönetilen uygulamalar veya ticari Market aracılığıyla sunulan diğer ürünlerden hiçbiri için de geçerlidir. Bu azaltılan ücret, Microsoft tarafından 1 Mayıs 2019 ile 30 Haziran 2020 arasında toplanan lisans ücretleri sayesinde nitelikli tekliflerle kullanılabilir. Bu süreden sonra, ücret normal miktarına geri döner.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Müşteri Faturalama, ödeme, faturalandırma ve koleksiyonlar
 
@@ -183,7 +183,10 @@ Bu hesapları ayarlama hakkında daha fazla bilgi için bkz. [Iş Ortağı Merke
 Transact yayımlama seçeneği yalnızca aşağıdaki Market teklif türleriyle kullanılabilir:
 
 - **Sanal makine** : ücretsiz, kendi lisansını getir veya kullandıkça öde fiyatlandırma modelleri arasından seçim yapın ve teklif düzeyinde tanımlanan SKU 'lar olarak sunun. Microsoft, müşterinin Azure faturasında, yayımcı yazılımı lisans ücretlerini temel alınan Azure altyapı ücretlerinden ayrı olarak sunar. Azure altyapı ücretleri, yayımcı yazılımı kullanılarak dağıtılır.
-- **Azure uygulamaları: çözüm şablonu veya yönetilen uygulama** – bir veya daha fazla sanal makine sağlamalıdır ve sanal makine fiyatlandırmasının toplamına çekilir. Tek bir planda yönetilen uygulamalar için, sanal makine fiyatlandırması yerine fiyatlandırma modeli olarak bir sabit hızlı aylık abonelik seçilebilir. Bazı durumlarda, Azure altyapı kullanım ücretleri müşteriye yazılım lisans ücretlerinden ayrı olarak geçirilir, ancak aynı faturalandırma beyanının üzerinden yapılır. Ancak, ISV altyapı ücretleri için yönetilen bir uygulama teklifi yapılandırırsanız Azure kaynakları yayımcıya faturalandırılır ve müşteri altyapı, yazılım lisansı ve yönetim hizmetleri maliyetini içeren bir sabit ücret alır.
+
+- **Azure uygulaması: çözüm şablonu veya yönetilen uygulama** – bir veya daha fazla sanal makine sağlamalıdır ve sanal makine fiyatlandırmasının toplamını almalıdır. Tek bir planda yönetilen uygulamalar için, sanal makine fiyatlandırması yerine fiyatlandırma modeli olarak bir sabit hızlı aylık abonelik seçilebilir. Bazı durumlarda, Azure altyapı kullanım ücretleri müşteriye yazılım lisans ücretlerinden ayrı olarak geçirilir, ancak aynı faturalandırma beyanının üzerinden yapılır. Ancak, ISV altyapı ücretleri için yönetilen bir uygulama teklifi yapılandırırsanız Azure kaynakları yayımcıya faturalandırılır ve müşteri altyapı, yazılım lisansı ve yönetim hizmetleri maliyetini içeren bir sabit ücret alır.
+
+- **SaaS uygulaması** -çok kiracılı bir çözüm olmalıdır, kimlik doğrulaması için [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) kullanın ve [SaaS karşılama API 'leriyle](partner-center-portal/pc-saas-fulfillment-api-v2.md)tümleştirin. Azure altyapı kullanımı, doğrudan sizin kullanımınıza (iş ortağı) göre yönetilir ve faturalandırılır. bu nedenle, Azure altyapı kullanım ücretleri ve yazılım lisanslama ücretlerini tek bir maliyet öğesi olarak hesaba almalısınız. Ayrıntılı kılavuz için bkz. [ticari Market 'te yeni SaaS teklifi oluşturma](partner-center-portal/create-new-saas-offer.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

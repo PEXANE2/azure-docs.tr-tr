@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: quickstart
 ms.date: 03/17/2020
 ms.author: juliako
-ms.openlocfilehash: 22b06ce99333750d48d1cb65d9f60779572723b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f6c3953947e6f7e84f4cf9b565d2f66648b177f7
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79499634"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130764"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Hızlı başlangıç: nasıl kaydolun ve ilk videonuzu karşıya yükleyebilirsiniz
 
@@ -25,7 +25,7 @@ Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli 
 
 ## <a name="sign-up-for-video-indexer"></a>Video Indexer’a kaydolma
 
-Video Indexer ile geliştirmeye başlamak için [Video Indexer](https://www.videoindexer.com) web sitesine gidip kaydolun.
+Video Indexer ile geliştirmeye başlamak için [Video Indexer](https://www.videoindexer.ai/) web sitesine gidip kaydolun.
 
 > [!NOTE]
 > Video Indexer kullanmaya başladıktan sonra, tüm depolanmış verileriniz ve karşıya yüklenen içerikler, Microsoft tarafından yönetilen bir anahtarla geri kalanında şifrelenir.

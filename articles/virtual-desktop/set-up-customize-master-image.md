@@ -4,16 +4,16 @@ description: Windows sanal masaüstü ana görüntüsünü hazırlama, özelleş
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fc6eb22f81279003a5355993db231ffec8e31b7d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 31a2bcdcf7b21999ddf17170b024589204c0e9e5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611968"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212794"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Ana VHD görüntüsünü hazırlama ve özelleştirme
 
@@ -63,9 +63,9 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 
 ## <a name="software-preparation-and-installation"></a>Yazılım hazırlama ve yükleme
 
-Bu bölümde FSLogix ve Windows Defender 'ın hazırlanması ve yüklenmesi, uygulamalar için bazı temel yapılandırma seçenekleri ve görüntü kayıt defteriniz açıklanmaktadır. 
+Bu bölümde FSLogix ve Windows Defender 'ın hazırlanması ve yüklenmesi, uygulamalar için bazı temel yapılandırma seçenekleri ve görüntü kayıt defteriniz açıklanmaktadır.
 
-Sanal makinenize Office 365 ProPlus ve OneDrive yüklüyorsanız, [bir ana VHD görüntüsüne Office yükleme](install-office-on-wvd-master-image.md) bölümüne gidin ve uygulamaları yüklemek için bu yönergeleri izleyin. İşiniz bittiğinde bu makaleye geri dönün.
+VM 'nize Enterprise ve OneDrive için Microsoft 365 uygulamalar yüklüyorsanız, [bir ana VHD görüntüsüne Office 'ı yükleme](install-office-on-wvd-master-image.md) ' ye gidin ve uygulamaları yüklemek için bu yönergeleri izleyin. İşiniz bittiğinde bu makaleye geri dönün.
 
 Kullanıcılarınızın belirli LOB uygulamalarına erişmesi gerekiyorsa, bu bölümün yönergelerini tamamladıktan sonra yüklemenizi öneririz.
 
@@ -87,7 +87,7 @@ Windows Defender 'ın belirli dosyaları taramayla hariç tutmak üzere nasıl y
 
 Yerel grup ilkesi aracılığıyla otomatik güncelleştirmeleri devre dışı bırakmak için:
 
-1. **Windows bileşenleri\\\\Windows Update\\Yönetim Şablonları yerel Grup İlkesi Düzenleyicisi**açın.
+1. ** \\ \\ Windows bileşenleri \\ Windows Update Yönetim Şablonları yerel Grup İlkesi Düzenleyicisi**açın.
 2. **Otomatik güncelleştirmeyi yapılandır** ' a sağ tıklayın ve **devre dışı**olarak ayarlayın.
 
 Otomatik güncelleştirmeleri devre dışı bırakmak için komut isteminde aşağıdaki komutu da çalıştırabilirsiniz.
@@ -113,7 +113,7 @@ Saat dilimlerini yeniden yönlendirmek için:
 1. Active Directory sunucusunda, **Grup İlkesi Yönetim Konsolu**açın.
 2. Etki alanınızı ve grup ilkesi nesnelerini genişletin.
 3. Grup İlkesi ayarları için oluşturduğunuz **Grup İlkesi nesnesine** sağ tıklayın ve **Düzenle**' yi seçin.
-4. **Grup İlkesi Yönetimi Düzenleyicisi**,**Windows bileşenleri** > **Remote Desktop Session Host** >  > **Administrative Templates** >  > Yönetim Şablonları > **Cihaz ve kaynak yeniden yönlendirme****Uzak Masaüstü Hizmetleri**Uzak Masaüstü oturumu ana bilgisayarı **bilgisayar yapılandırma****ilkeleri**' ne gidin.
+4. **Grup İlkesi Yönetimi Düzenleyicisi**, **Computer Configuration**  >  **Policies**  >  **Administrative Templates**  >  **Windows bileşenleri**Yönetim Şablonları  >  **Remote Desktop Services**  >  **Remote Desktop Session Host**  >  **Cihaz ve kaynak yeniden yönlendirme**Uzak Masaüstü Hizmetleri Uzak Masaüstü oturumu ana bilgisayarı bilgisayar yapılandırma ilkeleri ' ne gidin.
 5. **Saat dilimi yeniden yönlendirmesine Izin ver** ayarını etkinleştirin.
 
 Ayrıca, saat dilimlerini yeniden yönlendirmek için ana görüntüde bu komutu çalıştırabilirsiniz:
@@ -136,7 +136,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 ### <a name="include-additional-language-support"></a>Ek dil desteği ekle
 
-Bu makale, dil ve bölge desteğinin nasıl yapılandırılacağını kapsamaz. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Bu makale, dil ve bölge desteğinin nasıl yapılandırılacağını kapsamaz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Windows yansımalarına dil ekleme](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
 - [İsteğe bağlı özellikler](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)

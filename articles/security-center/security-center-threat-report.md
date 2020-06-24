@@ -1,6 +1,6 @@
 ---
 title: Azure Güvenlik Merkezi tehdit zekası raporu | Microsoft Docs
-description: Bu belge, bir araştırma sırasında güvenlik uyarıları hakkında daha fazla bilgiye ulaşmak için Azure Güvenlik Merkezi Tehdit Zekası Raporlarını kullanmanıza yardımcı olur.
+description: Bu sayfa, güvenlik uyarıları hakkında daha fazla bilgi edinmek için araştırma sırasında Azure Güvenlik Merkezi tehdit bilgileri raporlarını kullanmanıza yardımcı olur
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,22 +11,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: f8b4063d87fa9a89dccd42eddea644609bd6ff27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4fdbab4a69fac1376779f37d5fa69fef587bf52
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77921258"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888210"
 ---
-# <a name="azure-security-center-threat-intelligence-report"></a>Azure Güvenlik Merkezi Tehdit Zekası Raporu
-Bu belge, Azure Güvenlik Merkezi Tehdit Zekası Raporlarının, güvenlik uyarılarını oluşturan tehditler hakkında daha fazla bilgi edinmenize nasıl yardımcı olabileceğini açıklamaktadır.
+# <a name="azure-security-center-threat-intelligence-report"></a>Azure Güvenlik Merkezi tehdit zekası raporu
+
+Bu sayfada, Azure Güvenlik Merkezi 'nin tehdit bilgileri raporlarının güvenlik uyarısı tetikleyen bir tehdit hakkında daha fazla bilgi edinmenize nasıl yardımcı olduğu açıklanmaktadır.
+
 
 ## <a name="what-is-a-threat-intelligence-report"></a>Tehdit zekası rapor nedir?
+
 Güvenlik Merkezi tehdit koruması, Azure kaynaklarınızdan, ağınızdan ve bağlı iş ortağı çözümlerinden güvenlik bilgilerini izleyerek işe yarar. Tehditleri belirlemek amacıyla bu bilgileri genellikle birden fazla kaynaktan bilgileri ilişkilendirerek analiz eder. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nin tehditleri nasıl algıladığı ve yanıt verdiği](security-center-alerts-overview.md#detect-threats).
 
-Güvenlik Merkezi tarafından bir tehdit algılandığında, belirli bir olay için düzeltme önerileri de dahil olmak üzere ayrıntılı bilgiler içeren bir [güvenlik uyarısı](security-center-managing-and-responding-alerts.md) tetikler. Güvenlik Merkezi, olay yanıt ekiplerine yardımcı olmak üzere tehditleri araştırmak ve düzeltmek için, algılanan tehdit hakkında aşağıdakiler gibi bilgiler içeren bir tehdit bilgileri raporu içerir:
+Güvenlik Merkezi bir tehdidi tanımlarsa, düzeltme önerileri de dahil olmak üzere olayla ilgili ayrıntılı bilgileri içeren bir [güvenlik uyarısını](security-center-managing-and-responding-alerts.md)tetikler. Güvenlik Merkezi, olay yanıt ekiplerinin tehditleri araştırıp düzeltmesini sağlamak için algılanan tehditler hakkında bilgi içeren tehdit bilgileri raporları sağlar. Rapor aşağıdakiler gibi bilgiler içerir:
 
 * Saldırganların kimliği veya bağlantıları (bu konuda bilgi varsa)
 * Saldırganların hedefleri
@@ -38,36 +41,39 @@ Güvenlik Merkezi tarafından bir tehdit algılandığında, belirli bir olay i�
 
 > [!NOTE]
 > Raporlardaki bilgi düzeyi değişiklik gösterir. Ayrıntı düzeyi kötü amaçlı yazılımın etkinliğine ve yaygınlığına bağlıdır.
->
->
 
 Güvenlik Merkezi’nde, saldırıya göre değişiklik gösteren üç tehdit raporu türü vardır. Raporlar şunlardır:
 
-* **Etkinlik Grubu Raporu**: Saldırganlar, amaçları ve taktikleri hakkında ayrıntılı bilgi sunar.
+* **Etkinlik grubu raporu**: saldırganlar, amaçları ve tackleri için derin öngörüleri sağlar.
 * **Kampanya Raporu**: Belirli saldırı kampanyaların ayrıntılarına odaklanır.
 * **Tehdit Özeti Raporu**: Yukarıdaki iki raporun tüm maddelerini kapsar.
 
-Bu tür bilgiler, saldırı kaynağını, saldırganın ilerlemeleri ve bu sorunu azaltmak için ne yapılacağını anlamak üzere devam eden bir araştırma olduğu olay yanıtı sürecinde yararlıdır.
+Bu tür bilgiler, saldırı kaynağını, saldırganın yaptığı ilerlemeyi ve gelecekte bu sorunu azaltmak için ne yapılacağını anlamak üzere devam eden bir araştırma olan olay yanıtı işlemi sırasında yararlıdır.
+
+
 
 ## <a name="how-to-access-the-threat-intelligence-report"></a>Tehdit zekası raporuna nasıl erişebilirim?
-**Güvenlik uyarıları** kutucuğuna bakarak mevcut uyarılarınızı gözden geçirebilirsiniz. Azure portal açın ve her uyarı hakkında daha fazla ayrıntı görmek için aşağıdaki adımları izleyin:
 
-1. Güvenlik Merkezi panosunda **Güvenlik uyarıları** kutucuğunu görürsünüz.
-2. Kutucuğa tıklayarak uyarılar hakkında daha fazla bilginin yer aldığı **Güvenlik uyarıları** dikey penceresini açın ve daha fazla bilgi almak istediğiniz güvenlik uyarısını seçin.
+1. Güvenlik Merkezi 'nin kenar çubuğundan **güvenlik uyarıları** sayfasını açın.
+1. Bir uyarı seçin. 
+    Uyarı ayrıntıları sayfası, uyarı hakkında daha fazla ayrıntı ile açılır. Aşağıda, **fidye yazılımı göstergeleri** Uyarı ayrıntıları sayfası algılandı.
 
-    ![Güvenlik uyarıları](./media/security-center-threat-report/security-center-threat-report-fig1.png)
-3. Bu durumda, şu şekilde **yürütülen şüpheli işlem** dikey penceresinde aşağıdaki şekilde gösterildiği gibi uyarı hakkındaki ayrıntılar gösterilir:
+    [![Fidye göstergeleri, uyarı ayrıntıları sayfası algıladı](media/security-center-threat-report/ransomware-indicators-detected-link-to-threat-intel-report.png)](media/security-center-threat-report/ransomware-indicators-detected-link-to-threat-intel-report.png#lightbox)
 
-    ![Güvenlik uyarısı ayrıntıları](./media/security-center-threat-report/security-center-threat-report-fig2.png)
-4. Güvenlik uyarılarındaki bilgi miktarı, uyarının türüne göre değişiklik gösterir. **Raporlar** alanında tehdit bilgileri raporuna bir bağlantı vardır. Bağlantıya tıkladığınızda PDF dosyası yeni bir tarayıcı penceresinde açılacaktır.
+1. Raporun bağlantısını seçin ve bir PDF varsayılan tarayıcınızda açılır.
 
-   ![Storage seçimi](./media/security-center-threat-report/security-center-threat-report-fig3.png)
+    [![Güvensiz olabilecek eylem uyarısı ayrıntıları sayfası](media/security-center-threat-report/threat-intelligence-report.png)](media/security-center-threat-report/threat-intelligence-report.png#lightbox)
 
-Buradan raporun PDF dosyasını indirebilir, algılanan güvenlik sorunu hakkında daha fazla bilgi edinebilir ve verilen bilgilere göre işlem yapabilirsiniz.
+    PDF raporunu isteğe bağlı olarak indirebilirsiniz. 
 
-## <a name="see-also"></a>Ayrıca bkz.
-Bu belgede Azure Güvenlik Merkezi Tehdit Zekası Raporlarının güvenlik uyarısı araştırmaları sırasında nasıl yardımcı olabileceğini öğrendiniz. Azure Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
+    >[!TIP]
+    > Güvenlik uyarılarındaki bilgi miktarı, uyarının türüne göre değişiklik gösterir.
 
-* [Azure Güvenlik Merkezi planlama ve işlemler Kılavuzu](security-center-planning-and-operations-guide.md). Azure Güvenlik Merkezi'ni benimsemek için tasarım ile ilgili dikkat edilmesi gerekenleri planlama ve anlama hakkında bilgi edinin.
+
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Bu sayfada güvenlik uyarılarını araştırırken tehdit bilgileri raporlarının nasıl açılacağı açıklanmıştır. İlgili bilgiler için, aşağıdaki sayfalara bakın:
+
 * [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md). Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi'nde Güvenlik Olayını İşleme](security-center-incident.md)
+* [Azure Güvenlik Merkezi 'nde güvenlik olaylarını işleme](security-center-incident.md)

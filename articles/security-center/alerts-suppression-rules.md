@@ -8,14 +8,14 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 84b5cd8a59103f60249da861238acb45f8aa2fd5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 8644a4e7dc8973775d952581bfc57d266c79f1a5
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871692"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130798"
 ---
-# <a name="suppressing-alerts-from-azure-security-centers-threat-protection"></a>Azure Güvenlik Merkezi 'nin tehdit korumasından gelen uyarıları gizleme
+# <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>Azure Güvenlik Merkezi 'nin tehdit korumasından gelen uyarıları gösterme
 
 Bu sayfada, Azure Güvenlik Merkezi 'nde yanlış pozitifleri veya diğer istenmeyen güvenlik uyarılarını gizlemek için uyarı gizleme kurallarını nasıl kullanabileceğiniz açıklanmaktadır.
 
@@ -28,7 +28,7 @@ Bu sayfada, Azure Güvenlik Merkezi 'nde yanlış pozitifleri veya diğer istenm
     - ✔ National/Sovereign (US Gov, Çin gov, diğer gov)
 
 
-## <a name="introduction-to-suppression-rules"></a>Gizleme kurallarına giriş
+## <a name="what-are-suppression-rules"></a>Gizleme kuralları nelerdir?
 
 Azure Güvenlik Merkezi 'nin tehdit koruması bileşenleri, ortamınızın herhangi bir alanındaki tehditleri algılar ve güvenlik uyarıları oluşturur.
 
@@ -45,7 +45,7 @@ Gizleme kurallarınız, uyarıların otomatik olarak hangi ölçütlere göre ka
 
 [![Uyarı gizleme seçenekleri içeren Azure Güvenlik Merkezi güvenlik uyarıları sayfası](media/alerts-suppression-rules/alerts-screen-with-options.png)](media/alerts-suppression-rules/alerts-screen-with-options.png#lightbox)
 
-## <a name="creating-a-suppression-rule"></a>Gizleme kuralı oluşturma
+## <a name="create-a-suppression-rule"></a>Gizleme kuralı oluşturma
 
 İstenmeyen güvenlik uyarılarını bastırmak için kurallar oluşturabileceğiniz birkaç yol vardır:
 
@@ -89,13 +89,13 @@ Azure portal doğrudan bir kural oluşturmak için:
 
 1. Kuralı kaydedin. 
 
-## <a name="editing-suppression-rules"></a>Gizleme kurallarını Düzenle
+## <a name="edit-a-suppression-rules"></a>Gizleme kurallarını Düzenle
 
 Oluşturduğunuz kuralları düzenlemek için gizleme kuralları sayfasını kullanın.
 
 1. Güvenlik Merkezi 'nin güvenlik uyarıları sayfasında, sayfanın üst kısmındaki **gizleme kuralları** bağlantısını seçin.
 
-1. Gizleme kuralları sayfası seçili olan aboneliklere göre tüm kullanılabilir kuralları listelemeyi açar. 
+1. Gizleme kuralları sayfası, seçili abonelikler için tüm kurallarla birlikte açılır.
 
     [![Gizleme kuralları listesi](media/alerts-suppression-rules/suppression-rules-page.png)](media/alerts-suppression-rules/suppression-rules-page.png#lightbox)
 
@@ -103,13 +103,13 @@ Oluşturduğunuz kuralları düzenlemek için gizleme kuralları sayfasını kul
 
 1. Gerekli değişiklikleri yapın ve **Uygula**' yı seçin. 
 
-## <a name="deleting-suppression-rules"></a>Gizleme kurallarını silme
+## <a name="delete-a-suppression-rule"></a>Gizleme kuralını Sil
 
 Oluşturduğunuz bir veya daha fazla kuralı silmek için gizleme kuralları sayfasını kullanın.
 
 1. Güvenlik Merkezi 'nin güvenlik uyarıları sayfasında, sayfanın üst kısmındaki **gizleme kuralları** bağlantısını seçin.
 
-1. Gizleme kuralları sayfası seçili olan aboneliklere göre tüm kullanılabilir kuralları listelemeyi açar. 
+1. Gizleme kuralları sayfası, seçili abonelikler için tüm kurallarla birlikte açılır.
 
 1. Tek bir kuralı silmek için, kural için üç nokta menüsünü (...) açın ve **Sil**' i seçin.
 
@@ -117,7 +117,7 @@ Oluşturduğunuz bir veya daha fazla kuralı silmek için gizleme kuralları say
 
     ![Bir veya daha fazla gizleme kuralını silme](media/alerts-suppression-rules/delete-multiple-alerts.png)
 
-## <a name="viewing-alerts-that-have-been-suppressed"></a>Gizlenen uyarıları görüntüleme
+## <a name="view-suppressed-alerts"></a>Gizlenen Uyarıları görüntüle
 
 Etkin gizleme kuralları ile eşleşen uyarılar üretilmeye devam eder, ancak durumları **kapatıldı**olarak ayarlanır. Durumu Azure portal görebilirsiniz, ancak Güvenlik Merkezi güvenlik uyarılarınıza erişebilirsiniz. 
 
@@ -131,7 +131,7 @@ Kurallarınız tarafından kapatılan uyarıları görüntülemek için Güvenli
    [![Kapatılan uyarıları görüntüleme](media/alerts-suppression-rules/view-dismissed-alerts.png)](media/alerts-suppression-rules/view-dismissed-alerts.png#lightbox)
 
 
-## <a name="using-the-api-to-create-and-manage-suppression-rules"></a>Gizleme kuralları oluşturmak ve yönetmek için API 'YI kullanma
+## <a name="create-and-manage-suppression-rules-with-the-api"></a>API ile gizleme kuralları oluşturma ve yönetme
 
 Güvenlik Merkezi 'nin REST API aracılığıyla uyarı gizleme kuralları oluşturabilir, görüntüleyebilir veya silebilirsiniz. 
 

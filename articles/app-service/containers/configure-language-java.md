@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 63fee90be773f61bfef73e21a272192eea5f789c
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 496f519ba5e4eb17060ee35ed86fba45c85336d6
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167494"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905740"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service için Linux Java uygulaması yapılandırma
 
@@ -44,7 +44,7 @@ Performans raporları, trafik görselleştirmeleri ve sistem durumu sağlaması,
 
 ### <a name="stream-diagnostic-logs"></a>Tanılama günlüklerini akışla aktarma
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 Daha fazla bilgi için bkz. [Cloud Shell akış günlükleri](../troubleshoot-diagnostic-logs.md#in-cloud-shell).
 
@@ -280,7 +280,7 @@ Bu bölümde, Newrelik ve AppDynamics uygulama performansı izleme (APM) platfor
 ### <a name="configure-new-relic"></a>Yeni relik yapılandırma
 
 1. [NewRelic.com](https://newrelic.com/signup) adresinde bir Newrelik hesabı oluşturun
-2. Newrelik 'ten Java aracısını indirin, *newrelic-Java-x. x. x. zip*dosyasına benzer bir dosya adı olacaktır.
+2. Newrelik 'ten Java aracısını indirin, *newrelic-java-x.x.x.zip*benzer bir dosya adı olacaktır.
 3. Lisans anahtarınızı kopyalayın, aracıyı daha sonra yapılandırmak için gerekir.
 4. [App Service örneğine SSH ekleyin](app-service-linux-ssh-support.md) ve */Home/site/Wwwroot/APM*adlı yeni bir dizin oluşturun.
 5. Paketi açılan Newrelik Java aracı dosyalarını */Home/site/Wwwroot/APM*altındaki bir dizine yükleyin. Aracınızın dosyaları */Home/site/Wwwroot/APM/newrelik*konumunda olmalıdır.
@@ -292,7 +292,7 @@ Bu bölümde, Newrelik ve AppDynamics uygulama performansı izleme (APM) platfor
 ### <a name="configure-appdynamics"></a>AppDynamics 'i yapılandırma
 
 1. [AppDynamics.com](https://www.appdynamics.com/community/register/) adresinde bir AppDynamics hesabı oluşturun
-2. AppDynamics Web sitesinden Java aracısını indirin, dosya adı *AppServerAgent-x. x. x. xxxxx. zip* ile benzerdir.
+2. AppDynamics Web sitesinden Java aracısını indirin, dosya adı *AppServerAgent-x.x.x.xxxxx.zip* benzerdir.
 3. [App Service örneğine SSH ekleyin](app-service-linux-ssh-support.md) ve */Home/site/Wwwroot/APM*adlı yeni bir dizin oluşturun.
 4. Java aracı dosyalarını */Home/site/Wwwroot/APM*altındaki bir dizine yükleyin. Aracınızın dosyaları */Home/site/Wwwroot/APM/AppDynamics*konumunda olmalıdır.
 5. Azure portal, App Service uygulamanıza gidin ve yeni bir uygulama ayarı oluşturun.
@@ -306,7 +306,7 @@ Bu bölümde, Newrelik ve AppDynamics uygulama performansı izleme (APM) platfor
 
 ### <a name="starting-jar-apps"></a>JAR uygulamaları başlatılıyor
 
-Varsayılan olarak, App Service JAR uygulamanızın *app. jar*olarak adlandırıldığını bekliyor. Bu ada sahipse, otomatik olarak çalıştırılır. Maven kullanıcıları için, `<finalName>app</finalName>` `<build>` *Pod. xml*'nizin bölümüne ekleyerek jar adını ayarlayabilirsiniz. Özelliği ayarlayarak [Gradle 'de aynısını](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) yapabilirsiniz `archiveFileName` .
+Varsayılan olarak, App Service JAR uygulamanızın *app. jar*olarak adlandırıldığını bekliyor. Bu ada sahipse, otomatik olarak çalıştırılır. Maven kullanıcıları için,pom.xmlbölümüne ekleyerek JAR adını ayarlayabilirsiniz `<finalName>app</finalName>` `<build>` . * * Özelliği ayarlayarak [Gradle 'de aynısını](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) yapabilirsiniz `archiveFileName` .
 
 JAR 'niz için farklı bir ad kullanmak istiyorsanız, JAR dosyanızı yürüten [Başlangıç komutunu](app-service-linux-faq.md#built-in-images) da sağlamanız gerekir. Örneğin, `java -jar my-jar-app.jar`. Portalda başlangıç Komutunuz için değeri, yapılandırma > genel ayarlar altında veya adlı bir uygulama ayarıyla ayarlayabilirsiniz `STARTUP_COMMAND` .
 
@@ -350,9 +350,9 @@ Daha sonra, veri kaynağının bir uygulama için mi yoksa Tomcat servlet üzeri
 
 #### <a name="application-level-data-sources"></a>Uygulama düzeyi veri kaynakları
 
-1. Projenizin *meta INF/* dizininde bir *Context. xml* dosyası oluşturun. Yoksa *meta INF/* dizin oluşturun.
+1. Projenizin *meta INF/* dizininde bir *context.xml* dosyası oluşturun. Yoksa *meta INF/* dizin oluşturun.
 
-2. *Context. xml*dosyasında, `Context` veri kaynağını bir JNDI adresine bağlamak için bir öğe ekleyin. `driverClassName`Yer tutucusunu, yukarıdaki tablodaki sürücünüzün sınıf adıyla değiştirin.
+2. *context.xml*, `Context` veri kaynağını bir JNDI adresine bağlamak için bir öğe ekleyin. `driverClassName`Yer tutucusunu, yukarıdaki tablodaki sürücünüzün sınıf adıyla değiştirin.
 
     ```xml
     <Context>
@@ -367,7 +367,7 @@ Daha sonra, veri kaynağının bir uygulama için mi yoksa Tomcat servlet üzeri
     </Context>
     ```
 
-3. Uygulamanızdaki veri kaynağını kullanmak için uygulamanızın *Web. xml* ' i güncelleştirin.
+3. Uygulamanızdaki veri kaynağını kullanmak için uygulamanızın *web.xml* güncelleştirin.
 
     ```xml
     <resource-env-ref>
@@ -378,9 +378,9 @@ Daha sonra, veri kaynağının bir uygulama için mi yoksa Tomcat servlet üzeri
 
 #### <a name="shared-server-level-resources"></a>Paylaşılan sunucu düzeyi kaynakları
 
-Paylaşılan, sunucu düzeyinde bir veri kaynağı eklemek, Tomcat 'in Server. xml ' i düzenlemenizi gerektirir. İlk olarak, bir [Başlangıç betiğini](app-service-linux-faq.md#built-in-images) karşıya yükleyin ve yolu **yapılandırma**  >  **Başlangıç komutunda**betiğin yolunu ayarlayın. [FTP](../deploy-ftp.md)kullanarak başlangıç betiğini karşıya yükleyebilirsiniz.
+Paylaşılan, sunucu düzeyinde bir veri kaynağı eklemek, Tomcat 'in server.xml düzenlemenizi gerektirir. İlk olarak, bir [Başlangıç betiğini](app-service-linux-faq.md#built-in-images) karşıya yükleyin ve yolu **yapılandırma**  >  **Başlangıç komutunda**betiğin yolunu ayarlayın. [FTP](../deploy-ftp.md)kullanarak başlangıç betiğini karşıya yükleyebilirsiniz.
 
-Başlangıç komut dosyanız, Server. xml dosyasına bir [XSL dönüştürmesi](https://www.w3schools.com/xml/xsl_intro.asp) yapar ve elde edilen XML dosyasının çıktısını çıkarır `/usr/local/tomcat/conf/server.xml` . Başlangıç betiği APK aracılığıyla libxslt 'yi yüklemelidir. XSL dosyanız ve başlangıç betiğimiz FTP aracılığıyla karşıya yüklenebilir. Aşağıda örnek bir başlangıç betiği verilmiştir.
+Başlangıç betiğinizin server.xml dosyasına bir [XSL dönüştürmesi](https://www.w3schools.com/xml/xsl_intro.asp) yapıp elde edilen XML dosyasının çıktısını almak için kullanılır `/usr/local/tomcat/conf/server.xml` . Başlangıç betiği APK aracılığıyla libxslt 'yi yüklemelidir. XSL dosyanız ve başlangıç betiğimiz FTP aracılığıyla karşıya yüklenebilir. Aşağıda örnek bir başlangıç betiği verilmiştir.
 
 ```sh
 # Install libxslt. Also copy the transform file to /home/tomcat/conf/
@@ -390,7 +390,7 @@ apk add --update libxslt
 xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
-Örnek bir xsl dosyası aşağıda verilmiştir. Örnek xsl dosyası, Tomcat Server. xml dosyasına yeni bir bağlayıcı düğümü ekler.
+Örnek bir xsl dosyası aşağıda verilmiştir. Örnek xsl dosyası, Tomcat server.xml yeni bir bağlayıcı düğümü ekler.
 
 ```xml
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
@@ -524,7 +524,7 @@ Tomcat 'i Redwith ile kullanmak için uygulamanızı bir [Persistentmanager](htt
 
     Hizmet örneğinizin **Özellikler** veya **erişim anahtarları** bölümlerine bakarak Azure Portal ad, bağlantı noktası ve erişim anahtarı bilgilerini bulabilirsiniz.
 
-2. Aşağıdaki içerikle uygulamanızın *src/Main/WebApp/meta-INF/Context. xml* dosyasını oluşturun veya güncelleştirin:
+2. Uygulamanızın *src/Main/WebApp/meta-INF/context.xml* dosyasını aşağıdaki içerikle oluşturun veya güncelleştirin:
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -562,7 +562,7 @@ Tomcat 'i Redwith ile kullanmak için uygulamanızı bir [Persistentmanager](htt
 
 7. Redsıs örneğinizin **Gelişmiş ayarlar** bölümüne gidin ve **yalnızca SSL aracılığıyla erişime izin ver** ' i **Hayır**olarak ayarlayın. Bu, Azure altyapısı aracılığıyla App Service örneğinizin Redsıs önbelleğiyle iletişim kurmasını sağlar.
 
-8. `azure-webapp-maven-plugin`Uygulamanızın *Pod. xml* dosyasındaki yapılandırmayı, redsıs hesap bilgilerinize başvuracak şekilde güncelleştirin. Bu dosya, daha önce ayarladığınız ortam değişkenlerini kullanarak hesap bilgilerinizin kaynak dosyalarınıza ait olmasını sağlar.
+8. `azure-webapp-maven-plugin`Redsıs hesap bilgilerinize başvurmak için uygulamanızın *pom.xml* dosyasındaki yapılandırmayı güncelleştirin. Bu dosya, daha önce ayarladığınız ortam değişkenlerini kullanarak hesap bilgilerinizin kaynak dosyalarınıza ait olmasını sağlar.
 
     Gerekirse `1.9.1` sürümünü [Azure App Service için Maven Eklentisinin](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) geçerli sürümüyle değiştirin.
 

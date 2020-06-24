@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 83b223ab2195516492d55ac85be6e7db0dffbd98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57850b45820ec259337a8ad5b67bfebfd6762c24
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176796"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790594"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme
 
@@ -28,7 +28,7 @@ Azure Spring Cloud 'ın tanılama işlevini kullanarak, aşağıdaki hizmetlerde
 
 ## <a name="logs"></a>Günlükler
 
-|Günlük | Açıklama |
+|Günlük | Description |
 |----|----|
 | **ApplicationConsole** | Tüm müşteri uygulamalarının konsol günlüğü. |
 | **Sistem günlükleri** | Şu anda, bu kategoride yalnızca [Spring Cloud config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) kaydedilir. |
@@ -105,7 +105,7 @@ Günlükleri ve ölçümleri aşağıdaki başlıklar altında açıklandığı 
     | limit 50
     ```
 > [!NOTE]
-> `==`büyük/küçük harfe duyarlıdır `=~` , ancak değildir.
+> `==`büyük/küçük harfe duyarlıdır, ancak `=~` değildir.
 
 Log Analytics 'de kullanılan sorgu dili hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlük sorguları](../azure-monitor/log-query/query-language.md).
 
@@ -174,3 +174,31 @@ AppPlatformLogsforSpring
 ### <a name="learn-more-about-querying-application-logs"></a>Uygulama günlüklerini sorgulama hakkında daha fazla bilgi edinin
 
 Azure Izleyici, Log Analytics kullanarak uygulama günlüklerini sorgulamak için kapsamlı destek sağlar. Bu hizmet hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de günlük sorgularıyla çalışmaya başlama](../azure-monitor/log-query/get-started-queries.md). Uygulama günlüklerinizi çözümlemek üzere sorgu oluşturma hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](../azure-monitor/log-query/log-query-overview.md).
+
+## <a name="frequently-asked-questions-faq"></a>Sık sorulan sorular (SSS)
+
+### <a name="how-to-convert-multi-line-java-stack-traces-into-a-single-line"></a>Çok satırlı Java yığını izlemeleri tek satıra nasıl dönüştürülür?
+
+Çok satırlı yığın izlemelerinizi tek bir satıra dönüştürmek için geçici bir çözüm vardır. Yığın izleme iletilerini yeniden biçimlendirmek için Java günlük çıkışını değiştirebilirsiniz ve yeni satır karakterlerini bir belirteçle değiştirin. Java Logback kitaplığı kullanıyorsanız, aşağıdaki gibi ekleyerek yığın izleme iletilerini yeniden biçimlendirebilirsiniz `%replace(%ex){'[\r\n]+', '\\n'}%nopex` :
+
+```xml
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                level: %level, message: "%logger{36}: %msg", exceptions: "%replace(%ex){'[\r\n]+', '\\n'}%nopex"%n
+            </pattern>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
+```
+Ardından Log Analytics yeni satır karakteri ile aşağıdaki gibi bir şekilde değiştirebilirsiniz:
+
+```sql
+AppPlatformLogsforSpring
+| extend Log = array_strcat(split(Log, '\\n'), '\n')
+```
+Diğer Java günlük kitaplıkları için de aynı stratejiyi kullanabilirsiniz.

@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 1bb8300f1e54cf03563704cf00549ce9e09a3916
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71df5aa22eb93df6c98eb15f97ab017457946b80
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260169"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099080"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk sınırları
 
@@ -56,6 +56,7 @@ Azure depolama hizmeti sınırları ve adlandırma paylaşımları, kapsayıcıl
     - Önceden oluşturulmuş tüm klasörler ve tüm Data Box Disk’ler arasında, bir kaynak grubunda belirli bir ada sahip yalnızca bir yönetilen diskiniz olabilir. Bu durum, önceden oluşturulan klasörlere yüklenen VHD'lerin benzersiz adlara sahip olması gerektiği anlamına gelir. Verilen adın bir kaynak grubunda zaten var olan bir yönetilen diskle eşleşmediğinden emin olun. VHD'ler aynı ada sahipse, o adı taşıyan yalnızca bir VHD yönetilen diske dönüştürülür. Diğer VHD'ler, hazırlama depolama hesabına sayfa blobları olarak yüklenir.
     - VHD'leri her zaman önceden oluşturulmuş klasörlerden birine kopyalayın. VHD'leri bu klasörlerin dışına veya oluşturduğunuz bir klasöre kopyalarsanız, VHD'ler Azure Depolama hesabına yönetilen diskler olarak değil sayfa blobları olarak yüklenir.
     - Yönetilen diskler oluşturmak için yalnızca sabit VHD'ler karşıya yüklenebilir. Dinamik VHD'ler, fark kayıt VHD'leri veya VHDX dosyaları desteklenmez.
+    - Önceden biçimlendirilmiş yönetilen disk klasörlerine kopyalanan VHD olmayan dosyalar, yönetilen diske dönüştürülmez.
 
 ## <a name="azure-storage-account-size-limits"></a>Azure depolama hesabı boyut sınırları
 
@@ -83,14 +84,14 @@ Yazıılabilecek Azure nesnelerinin boyutları aşağıda verilmiştir. Karşıy
 | Varlık                                       | Kurallar                                                                                                                                                                                                                                                                                                               |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Blok Blobu ve Sayfa Blobu için kapsayıcı adları <br> Azure dosyaları için FileShare adları | 3 ile 63 karakter uzunluğunda geçerli bir DNS adı olmalıdır. <br>  Bir harf veya sayı ile başlamalıdır. <br> Yalnızca küçük harf, sayı ve kısa çizgi (-) içerebilir. <br> Kısa çizgiden (-) hemen önce ve sonra bir harf veya rakam gelmelidir. <br> Adlarda kısa çizgiler art arda kullanılamaz. |
-| Azure dosyaları için dizin ve dosya adları     |<li> Büyük küçük harf koruma, büyük/küçük harfe duyarsız ve 255 karakter uzunluğunda olmalıdır. </li><li> Eğik çizgi (/) ile bitemez. </li><li>Sağlanmışsa, otomatik olarak kaldırılır. </li><li> Şu karakterlere izin verilmez:<code>" \\ / : \| < > * ?</code></li><li> Ayrılmış URL karakterleri doğru şekilde atlanmalıdır. </li><li> Geçersiz URL yolu karakterlerine izin verilmiyor. UE000 gibi \\kod noktaları geçerli Unicode karakterler değildir. Denetim karakterleri (0x00-0x1F, \\u0081, vb.) gıbı bazı ASCII veya Unicode karakterlere de izin verilmez. HTTP/1.1 'de Unicode dizelerini yöneten kurallar için bkz. RFC 2616, Bölüm 2,2: temel kurallar ve RFC 3987. </li><li> Şu dosya adlarına izin verilmiyor: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK $, Dot karakteri (.) ve iki nokta karakteri (..).</li>|
+| Azure dosyaları için dizin ve dosya adları     |<li> Büyük küçük harf koruma, büyük/küçük harfe duyarsız ve 255 karakter uzunluğunda olmalıdır. </li><li> Eğik çizgi (/) ile bitemez. </li><li>Sağlanmışsa, otomatik olarak kaldırılır. </li><li> Şu karakterlere izin verilmez:<code>" \\ / : \| < > * ?</code></li><li> Ayrılmış URL karakterleri doğru şekilde atlanmalıdır. </li><li> Geçersiz URL yolu karakterlerine izin verilmiyor. UE000 gibi kod noktaları \\ geçerli Unicode karakterler değildir. Denetim karakterleri (0x00-0x1F, u0081, vb.) gibi bazı ASCII veya Unicode karakterlere \\ de izin verilmez. HTTP/1.1 'de Unicode dizelerini yöneten kurallar için bkz. RFC 2616, Bölüm 2,2: temel kurallar ve RFC 3987. </li><li> Şu dosya adlarına izin verilmiyor: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK $, Dot karakteri (.) ve iki nokta karakteri (..).</li>|
 | Blok blobu ve sayfa blobu için blob adları      | Blob adları büyük/küçük harfe duyarlıdır ve karakterler herhangi bir düzende sıralanabilir. <br> Blob adı 1 ila 1024 karakter uzunluğunda olmalıdır. <br> Ayrılmış URL karakterleri doğru şekilde atlanmalıdır. <br>Blob adını oluşturan yolun bölümleri 254 karakterden uzun olamaz. Yol bölümü, arka arkaya gelen sınırlayıcı karakterlerinin (örneğin eğik çizgi "/") arasında yer alan ve bir sanal dizinin adına karşılık gelen dizedir. |
 
 ## <a name="managed-disk-naming-conventions"></a>Yönetilen disk adlandırma kuralları
 
 | Varlık | Kurallar                                             |
 |-------------------|-----------------------------------------------------------|
-| Yönetilen disk adları       | <li> Ad 1 ile 80 karakter uzunluğunda olmalıdır. </li><li> Ad bir harf veya sayı ile başlamalı, bir harf, sayı veya alt çizgi ile bitmelidir. </li><li> Ad yalnızca harf, sayı, alt çizgi, nokta veya kısa çizgi içerebilir. </li><li>   Ad boşluk veya `/`içermemelidir.                                              |
+| Yönetilen disk adları       | <li> Ad 1 ile 80 karakter uzunluğunda olmalıdır. </li><li> Ad bir harf veya sayı ile başlamalı, bir harf, sayı veya alt çizgi ile bitmelidir. </li><li> Ad yalnızca harf, sayı, alt çizgi, nokta veya kısa çizgi içerebilir. </li><li>   Ad boşluk veya içermemelidir `/` .                                              |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

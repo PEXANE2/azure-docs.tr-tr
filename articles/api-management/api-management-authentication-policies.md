@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: c9cf77971038a3d7d160180b93594736d3ca6200
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 8a92540ff2c57ff5c1aa827237a7341aecc1592b
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84674236"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789268"
 ---
 # <a name="api-management-authentication-policies"></a>API Management kimlik doğrulaması ilkeleri
 Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -56,8 +56,8 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 |Name|Description|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|kullanıcı adı|Temel kimlik bilgisinin Kullanıcı adını belirtir.|Yes|YOK|
-|password|Temel kimlik bilgisinin parolasını belirtir.|Yes|YOK|
+|kullanıcı adı|Temel kimlik bilgisinin Kullanıcı adını belirtir.|Yes|Yok|
+|password|Temel kimlik bilgisinin parolasını belirtir.|Yes|Yok|
 
 ### <a name="usage"></a>Kullanım
  Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
@@ -105,10 +105,10 @@ Bu örnekte, istemci sertifikası yerleşik sertifika deposundan alınmaktansa i
   
 |Name|Description|Gerekli|Varsayılan|  
 |----------|-----------------|--------------|-------------|  
-|#c0|İstemci sertifikası için parmak izi.|`thumbprint`Ya da `certificate-id` mevcut olmalıdır.|YOK|
-|sertifika kimliği|Sertifika kaynağı adı.|`thumbprint`Ya da `certificate-id` mevcut olmalıdır.|YOK|
-|body|Bir bayt dizisi olarak istemci sertifikası.|No|YOK|
-|password|İstemci sertifikası için parola.|' De belirtilen sertifika `body` parola korumalı ise kullanılır.|YOK|
+|#c0|İstemci sertifikası için parmak izi.|`thumbprint`Ya da `certificate-id` mevcut olmalıdır.|Yok|
+|sertifika kimliği|Sertifika kaynağı adı.|`thumbprint`Ya da `certificate-id` mevcut olmalıdır.|Yok|
+|body|Bir bayt dizisi olarak istemci sertifikası.|No|Yok|
+|password|İstemci sertifikası için parola.|' De belirtilen sertifika `body` parola korumalı ise kullanılır.|Yok|
   
 ### <a name="usage"></a>Kullanım  
  Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.  
@@ -118,12 +118,14 @@ Bu örnekte, istemci sertifikası yerleşik sertifika deposundan alınmaktansa i
 -   **İlke kapsamları:** tüm kapsamlar  
 
 ##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a>Yönetilen kimlikle kimlik doğrulama  
- `authentication-managed-identity`API Management hizmetinin yönetilen kimliğini kullanarak arka uç hizmetiyle kimlik doğrulaması yapmak için ilkeyi kullanın. Bu ilke temelde, belirtilen kaynağa erişmek için Azure Active Directory bir erişim belirteci almak üzere yönetilen kimliği kullanır. Belirteç başarıyla alındıktan sonra, ilke `Authorization` düzeni kullanarak başlıktaki belirtecin değerini ayarlar `Bearer` .
+ `authentication-managed-identity`Yönetilen kimliği kullanarak bir arka uç hizmetiyle kimlik doğrulaması yapmak için ilkeyi kullanın. Bu ilke temelde, belirtilen kaynağa erişmek için Azure Active Directory bir erişim belirteci almak üzere yönetilen kimliği kullanır. Belirteç başarıyla alındıktan sonra, ilke `Authorization` düzeni kullanarak başlıktaki belirtecin değerini ayarlar `Bearer` .
+
+Sistem tarafından atanan kimlik ve birden çok kullanıcı tarafından atanan kimlik, belirteç istemek için kullanılabilir. `client-id`Sağlanmazsa sistem tarafından atanan kimliğin kabul edilir. `client-id`Değişken sağlanmışsa Kullanıcı tarafından atanan kimlik için Azure Active Directory belirteç istenir
   
 ### <a name="policy-statement"></a>İlke ekstresi  
   
 ```xml  
-<authentication-managed-identity resource="resource" output-token-variable-name="token-variable" ignore-error="true|false"/>  
+<authentication-managed-identity resource="resource" client-id="clientid of user-assigned identity" output-token-variable-name="token-variable" ignore-error="true|false"/>  
 ```  
   
 ### <a name="example"></a>Örnek  
@@ -180,8 +182,9 @@ Bu örnekte, istemci sertifikası yerleşik sertifika deposundan alınmaktansa i
   
 |Name|Description|Gerekli|Varsayılan|  
 |----------|-----------------|--------------|-------------|  
-|kaynak|Dize. Azure Active Directory içindeki hedef Web API 'sinin (güvenli kaynak) uygulama KIMLIĞI.|Yes|YOK|  
-|çıkış-belirteç-değişken-adı|Dize. Bir nesne türü olarak belirteç değeri alacak bağlam değişkeninin adı `string` . |No|YOK|  
+|kaynak|Dize. Azure Active Directory içindeki hedef Web API 'sinin (güvenli kaynak) uygulama KIMLIĞI.|Yes|Yok|
+|istemci kimliği|Dize. Azure Active Directory içindeki kullanıcı tarafından atanan kimliğin uygulama KIMLIĞI.|No|sistem tarafından atanan kimlik|
+|çıkış-belirteç-değişken-adı|Dize. Bir nesne türü olarak belirteç değeri alacak bağlam değişkeninin adı `string` . |No|Yok|  
 |yoksayma-hata|Boolean. Olarak ayarlanırsa `true` , bir erişim belirteci alınmasa bile ilke ardışık düzeni yürütülmeye devam eder.|No|yanlış|  
   
 ### <a name="usage"></a>Kullanım  

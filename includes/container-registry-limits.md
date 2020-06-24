@@ -1,24 +1,25 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 05/18/2020
+ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 19d0be6a032868c6683cd5b6bbfa7f07306171fb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 643cf8fd400adf06bf61f070947bd78ba7be50eb
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683424"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242063"
 ---
 | Kaynak | Temel | Standart | Premium |
 |---|---|---|---|
-| Depolama<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
-| Maksimum görüntü katman boyutu | 200 GiB | 200 GiB | 200 GiB |
+| Dahil edilen depolama<sup>1</sup> (gib) | 10 | 100 | 500 |
+| Depolama sınırı (TiB) | 20| 20 | 20 |
+| Maksimum görüntü katmanı boyutu (GiB) | 200 | 200 | 200 |
 | Dakikada ReadOps<sup>2, 3</sup> | 1000 | 3,000 | 10,000 |
 | Dakikada WriteOps<sup>2, 4</sup> | 100 | 500 | 2.000 |
 | İndirme bant genişliği MBps<sup>2</sup> | 30 | 60 | 100 |
@@ -35,7 +36,7 @@ ms.locfileid: "83683424"
 | &bull;Kapsam başına depo eşleme | Yok | Yok | 500 |
 
 
-<sup>1</sup> Belirtilen depolama sınırları, her katman için *dahil edilen* depolama miktarıdır. Bu limitlerin üzerinde görüntü depolaması için GiB başına ek bir günlük ücret ödersiniz. Hız bilgileri için bkz. [Azure Container Registry fiyatlandırması][pricing].
+<sup>1</sup> depolama her katman için günlük fiyata dahildir. Ek depolama için, depolama sınırına kadar, GiB başına ek bir günlük ücret ödersiniz. Hız bilgileri için bkz. [Azure Container Registry fiyatlandırması][pricing].
 
 <sup>2</sup>*readops*, *writeops*ve *bant genişliği* minimum tahminlerdir. Azure Container Registry, kullanım gerektirdiğinden performansı artırmak için çaba harcar.
 

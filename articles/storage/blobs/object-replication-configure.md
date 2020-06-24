@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 89a4c934a0245c39f6015a43d9de16db800691d8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170639"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888109"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Blok Blobları için nesne çoğaltmasını yapılandırma (Önizleme)
 
@@ -28,7 +28,9 @@ Bu makalede, Azure portal, PowerShell veya Azure CLı kullanarak depolama hesab�
 
 Nesne çoğaltmasını yapılandırmadan önce, zaten mevcut değilse kaynak ve hedef depolama hesapları oluşturun. Her iki hesap da genel amaçlı v2 depolama hesabı olmalıdır. Daha fazla bilgi için bkz. [Azure depolama hesabı oluşturma](../common/storage-account-create.md).
 
-Ayrıca, aşağıdaki özellik önizlemeleri için kaydolduğunuzdan emin olun:
+Bir depolama hesabı, en fazla iki hedef hesap için kaynak hesap olarak görev yapabilir. Ve bir hedef hesabın ikiden fazla kaynak hesabı olamaz. Kaynak ve hedef hesaplar farklı bölgelerde bulunabilir. Hedef hesapların her birine veri çoğaltmak için ayrı çoğaltma ilkeleri yapılandırabilirsiniz.
+
+Başlamadan önce, aşağıdaki özellik önizlemeleri için kaydolduğunuzdan emin olun:
 
 - [Nesne çoğaltma (Önizleme)](object-replication-overview.md)
 - [Blob sürümü oluşturma (Önizleme)](versioning-overview.md)
@@ -41,7 +43,7 @@ Azure portal nesne çoğaltmasını yapılandırmadan önce, zaten mevcut değil
 Azure portal bir çoğaltma ilkesi oluşturmak için şu adımları izleyin:
 
 1. Azure portal kaynak depolama hesabına gidin.
-1. **Ayarlar**altında, **nesne çoğaltma**' yı seçin.
+1. **BLOB hizmeti**altında, **nesne çoğaltma**' yı seçin.
 1. **Çoğaltmayı ayarla**' yı seçin.
 1. Hedef aboneliği ve depolama hesabını seçin.
 1. **Kapsayıcı çiftleri** bölümünde, kaynak hesaptan kaynak kapsayıcısını ve hedef hesaptan bir hedef kapsayıcıyı seçin. Çoğaltma İlkesi başına en fazla 10 kapsayıcı çifti oluşturabilirsiniz.

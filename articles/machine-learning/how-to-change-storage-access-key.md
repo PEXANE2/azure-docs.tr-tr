@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/06/2020
-ms.openlocfilehash: 0444ffd27b3a261268f04f0077cca3116521e6f7
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.date: 06/19/2020
+ms.openlocfilehash: 911fa7d509e756f482b2deefad11e35f9cb5ec01
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484523"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117956"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Depolama hesabı erişim anahtarlarını yeniden oluştur
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -85,7 +85,7 @@ Yeni anahtarı kullanmak üzere Azure Machine Learning güncelleştirmek için a
 
 1. Anahtarı yeniden oluşturun. Erişim anahtarı oluşturma hakkında bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md). Yeni anahtarı kaydedin.
 
-1. Yeni anahtarı kullanmak üzere çalışma alanını güncelleştirmek için aşağıdaki adımları kullanın:
+1. Azure Machine Learning çalışma alanı, yeni anahtarı otomatik olarak eşitler ve bir saatten sonra kullanmaya başlar. Çalışma alanını yeni anahtarla hemen eşitleme için zorlamak üzere aşağıdaki adımları kullanın:
 
     1. Aşağıdaki Azure CLı komutunu kullanarak çalışma alanınızı içeren Azure aboneliğinde oturum açın:
 

@@ -7,20 +7,20 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/18/2019
 ms.author: lbosq
-ms.openlocfilehash: 9151b54d7fa0b64a465aa8384cb4bfdb8e72c482
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0eb778d1fc2dca522bef675709b5241f214e2b86
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75500011"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118126"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB: Gremlin API'sine giriş
 
-[Azure Cosmos DB](introduction.md) , Microsoft 'un görev açısından kritik uygulamalar için genel olarak dağıtılmış, çok modelli bir veritabanı hizmetidir. Bu, çok modelli bir veritabanıdır ve belge, anahtar-değer, grafik ve sütun ailesi veri modellerini destekler. Azure Cosmos DB Gremlin API, herhangi bir ölçek için tasarlanan tam olarak yönetilen bir veritabanı hizmetinde grafik verilerini depolamak ve bunlarla çalışmak için kullanılır.  
+[Azure Cosmos DB](introduction.md)   , Microsoft 'un görev açısından kritik uygulamalar için genel olarak dağıtılmış, çok modelli bir veritabanı hizmetidir. Bu, çok modelli bir veritabanıdır ve belge, anahtar-değer, grafik ve sütun ailesi veri modellerini destekler. Azure Cosmos DB Gremlin API, herhangi bir ölçek için tasarlanan tam olarak yönetilen bir veritabanı hizmetinde grafik verilerini depolamak ve bunlarla çalışmak için kullanılır.  
 
-![Azure Cosmos DB grafik mimarisi](./media/graph-introduction/cosmosdb-graph-architecture.png)
+:::image type="content" source="./media/graph-introduction/cosmosdb-graph-architecture.png" alt-text="Azure Cosmos DB grafik mimarisi" border="false":::
 
-Bu makale, Azure Cosmos DB Gremlin API'ye genel bir bakış sağlar ve milyarlarca köşesi ve kenarı olan yoğun grafikleri depolamak için bunu nasıl kullanabileceğinizi açıklar. Daha fazla milisaniyelik gecikme süresiyle grafikleri sorgulayabilir ve Graf yapısını kolayca geliştirebilirsiniz. Azure Cosmos DB Gremlin API 'si [Apache tinkerpop](https://tinkerpop.apache.org) Graph veritabanı standardını temel alır ve Gremlin sorgu dilini kullanır. 
+Bu makale, Azure Cosmos DB Gremlin API'ye genel bir bakış sağlar ve milyarlarca köşesi ve kenarı olan yoğun grafikleri depolamak için bunu nasıl kullanabileceğinizi açıklar. Daha fazla milisaniyelik gecikme süresiyle grafikleri sorgulayabilir ve Graf yapısını kolayca geliştirebilirsiniz. Azure Cosmos DB Gremlin API 'SI [Apache TinkerPop](https://tinkerpop.apache.org)   Graph veritabanı standardını temel alır ve Gremlin sorgu dilini kullanır. 
 
 Azure Cosmos DB Gremlin API 'SI, grafik veritabanı algoritmalarının gücünü yüksek düzeyde ölçeklenebilir, yönetilen altyapıyla birleştirerek esneklik ve ilişkisel yaklaşımlarla ilişkili en yaygın veri sorunlarına yönelik benzersiz ve esnek bir çözüm sunar. 
 
@@ -101,7 +101,7 @@ Grafik veritabanları genellikle NoSQL veya ilişkisel olmayan veritabanı kateg
 ### <a name="gremlin-by-example"></a>Örneğe göre Gremlin
 Sorguların Gremlin’de nasıl ifade edildiğini anlamak için örnek bir grafik kullanalım. Aşağıdaki şekilde kullanıcılar, ilgi alanları ve cihazlar hakkındaki verileri yöneten bir iş uygulaması grafik biçiminde gösterilir.  
 
-![Kişileri, cihazları ve ilgi alanlarını gösteren örnek grafik](./media/gremlin-support/sample-graph.png) 
+:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Kişileri, cihazları ve ilgi alanlarını gösteren örnek grafik" border="false"::: 
 
 Bu grafik, aşağıdaki *köşe* türlerine sahiptir (Gremlin içinde "etiket" adı verilir):
 

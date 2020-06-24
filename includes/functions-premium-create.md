@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: functions
 author: jeffhollan
 ms.service: azure-functions
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2020
 ms.author: jehollan, glenga
 ms.custom: include file
-ms.openlocfilehash: c53486bf3368039f172c7a13420e2291dd9c9892
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4dc85988d904fdec72e1e6d92f03582a2a8f1427
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83122736"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85121570"
 ---
 1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**'u seçin.
 
@@ -21,7 +21,7 @@ ms.locfileid: "83122736"
 
 1. **Temel bilgiler** sayfasında, aşağıdaki tabloda belirtilen işlev uygulaması ayarlarını kullanın:
 
-    | Ayar      | Önerilen değer  | Açıklama |
+    | Ayar      | Önerilen değer  | Description |
     | ------------ | ---------------- | ----------- |
     | **Abonelik** | Aboneliğiniz | Bu yeni işlev uygulamasının oluşturulduğu abonelik. |
     | **[Kaynak grubu](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | İşlev uygulamanızın oluşturulacağı yeni kaynak grubunun adı. |
@@ -34,17 +34,17 @@ ms.locfileid: "83122736"
 
 1. Ileri 'yi seçin **: barındırma**. **Barındırma** sayfasında, aşağıdaki ayarları girin:
 
-    | Ayar      | Önerilen değer  | Açıklama |
+    | Ayar      | Önerilen değer  | Description |
     | ------------ | ---------------- | ----------- |
     | **[Depolama hesabı](../articles/storage/common/storage-account-create.md)** |  Genel olarak benzersiz bir ad |  İşlev uygulamanız tarafından kullanılan bir depolama hesabı oluşturun. Depolama hesabı adları 3 ile 24 karakter arasında olmalı ve yalnızca sayıyla küçük harf içermelidir. Ayrıca, [depolama hesabı gereksinimlerini](../articles/azure-functions/functions-scale.md#storage-account-requirements)karşılaması gereken mevcut bir hesabı da kullanabilirsiniz. |
-    |**İşletim sistemi**| Tercih edilen işletim sistemi | Çalışma zamanı yığını seçiminize göre sizin için bir işletim sistemi önceden seçilmiştir, ancak gerekirse ayarı değiştirebilirsiniz. |
-    | **[Planlama](../articles/azure-functions/functions-scale.md)** | Premium | Kaynakların işlev uygulamanıza nasıl ayrılacağını tanımlayan barındırma planı. **Premium**' u seçin ve ardından **Windows planı** ve **SKU ve boyut**için Varsayılanları seçin. |
+    |**İşletim sistemi**| Tercih edilen işletim sistemi | Çalışma zamanı yığını seçiminize göre sizin için bir işletim sistemi önceden seçilmiştir, ancak gerekirse ayarı değiştirebilirsiniz. Python yalnızca Linux üzerinde desteklenir. |
+    | **[Planlama](../articles/azure-functions/functions-scale.md)** | Premium | Kaynakların işlev uygulamanıza nasıl ayrılacağını tanımlayan barındırma planı. **Premium**' u seçin. Varsayılan olarak, yeni bir App Service planı oluşturulur. Varsayılan **SKU ve boyut** **EP1**, burada EP, _elastik Premium_için temsil eder. Daha fazla bilgi edinmek için [Premium SKU 'ların listesine](../articles/azure-functions/functions-premium-plan.md#available-instance-skus)bakın.<br/>Premium bir planda JavaScript işlevlerini çalıştırırken, daha az vCPU içeren bir örnek seçmeniz gerekir. Daha fazla bilgi için bkz. [tek çekirdekli Premium planları seçme](../articles/azure-functions/functions-reference-node.md#considerations-for-javascript-functions).  |
 
     ![Barındırma sayfası](./media/functions-premium-create/function-app-premium-create-hosting.png)
 
 1. **İleri: izleme**öğesini seçin. **İzleme** sayfasında, aşağıdaki ayarları girin:
 
-    | Ayar      | Önerilen değer  | Açıklama |
+    | Ayar      | Önerilen değer  | Description |
     | ------------ | ---------------- | ----------- |
     | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | Varsayılan | En yakın desteklenen bölgede aynı *uygulama adının* Application Insights kaynağını oluşturur. Bu ayarı genişleterek, verilerinizi depolamak için **Yeni kaynak adını** değiştirebilir veya [Azure Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/) 'da farklı bir **konum** seçebilirsiniz. |
 

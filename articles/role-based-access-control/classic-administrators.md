@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: cacdeee4512c512b058be96c4fe3a829c2933f06
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 298ec15700537f2368ef33ead267e85f5f22bfd7
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734867"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791801"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure klasik abonelik yöneticileri
 
@@ -44,7 +44,7 @@ Bu makalede, ortak yönetici ve hizmet yöneticisi rollerinin nasıl ekleneceği
 
     ![Klasik yöneticileri açan ekran görüntüsü](./media/classic-administrators/classic-administrators.png)
 
-1. Ortak yönetici Ekle bölmesini açmak için**ortak yönetici Ekle** ' ye tıklayın. **Add** > 
+1. Ortak **Add**  >  yönetici Ekle bölmesini açmak için**ortak yönetici Ekle** ' ye tıklayın.
 
     Ortak yönetici Ekle seçeneği devre dışıysa, izinleriniz yoktur.
 
@@ -125,10 +125,10 @@ Azure aboneliği başına yalnızca bir hizmet yöneticisi olabilir. Hizmet yön
 
 | Hesap yönetici hesabı | Hizmet Yöneticisi farklı bir Microsoft hesabı değiştirilebilir mi? | Hizmet yöneticisini aynı dizindeki bir Azure AD hesabına değiştirebilir mi? | Hizmet Yöneticisi 'ni farklı bir dizinde Azure AD hesabı olarak değiştirebilir miyim? |
 | --- | --- | --- | --- |
-| Microsoft hesabı | Yes | Hayır | Hayır |
-| Azure AD hesabı | Yes | Yes | No |
+| Microsoft hesabı | Evet | Hayır | Hayır |
+| Azure AD hesabı | Yes | Evet | No |
 
-Hesap Yöneticisi bir Azure AD hesabı ise, hizmet yöneticisini aynı dizinde bir Azure AD hesabı olarak değiştirebilirsiniz, ancak farklı bir dizinde kullanamazsınız. Örneğin, abby@contoso.com hizmet yöneticisini olarak bob@contoso.comdeğiştirebilir, ancak contoso.com dizininde bir varlık john@notcontoso.com olmadığı müddetçe john@notcontoso.com hizmet yöneticisini olarak değiştiremezsiniz.
+Hesap Yöneticisi bir Azure AD hesabı ise, hizmet yöneticisini aynı dizinde bir Azure AD hesabı olarak değiştirebilirsiniz, ancak farklı bir dizinde kullanamazsınız. Örneğin, abby@contoso.com hizmet yöneticisini olarak değiştirebilir bob@contoso.com , ancak john@notcontoso.com john@notcontoso.com contoso.com dizininde bir varlık olmadığı müddetçe hizmet yöneticisini olarak değiştiremezsiniz.
 
 Microsoft hesapları ve Azure AD hesapları hakkında daha fazla bilgi için bkz. [Azure Active Directory nedir?](../active-directory/fundamentals/active-directory-whatis.md).
 

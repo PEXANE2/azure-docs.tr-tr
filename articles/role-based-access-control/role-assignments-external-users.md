@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 568cb7602d9cb454685ef69e820288bcc68563c4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: dc2763fd3c203a5b0443299d9824b6ebf61bdc78
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735768"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791087"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure portal kullanarak dış Konuk kullanıcılar için Azure rol atamaları ekleme veya kaldırma
 
@@ -51,7 +51,7 @@ Azure Active Directory sayfasını kullanarak dizininize Konuk Kullanıcı eklem
 
 1. Kuruluşunuzun dış işbirliği ayarlarının, konukları davet etmenize izin verilecek şekilde yapılandırıldığından emin olun. Daha fazla bilgi için bkz. [B2B dış Işbirliğini etkinleştirme ve konukları kimlerin davet edebileceğini yönetme](../active-directory/b2b/delegate-invitations.md).
 
-1. Azure Portal,**Kullanıcılar** > **Yeni Konuk Kullanıcı** **Azure Active Directory** > ' a tıklayın.
+1. Azure Portal, **Azure Active Directory**  >  **Kullanıcılar**  >  **Yeni Konuk Kullanıcı**Azure Active Directory ' a tıklayın.
 
     ![Azure portal yeni Konuk Kullanıcı özelliği](./media/role-assignments-external-users/invite-guest-user.png)
 
@@ -85,7 +85,7 @@ Azure RBAC 'de, erişim izni vermek için bir rol atarsınız. Konuk kullanıcı
 
 1. Bu kapsamdaki tüm rol atamalarını görüntülemek için **rol atamaları** sekmesine tıklayın.
 
-1.  > Rol **ataması Ekle bölmesini**açmak için**rol ataması** Ekle ' ye tıklayın.
+1. **Ekle** > **Rol ataması ekle** seçeneğine tıklayarak Rol ataması ekle bölmesini açın.
 
     Rol atama izniniz yoksa rol ataması Ekle seçeneği devre dışı bırakılır.
 
@@ -117,7 +117,7 @@ Konuk Kullanıcı henüz dizininizde değilse, kullanıcıyı doğrudan rol atam
 
 1. Bu kapsamdaki tüm rol atamalarını görüntülemek için **rol atamaları** sekmesine tıklayın.
 
-1.  > Rol **ataması Ekle bölmesini**açmak için**rol ataması** Ekle ' ye tıklayın.
+1. **Ekle** > **Rol ataması ekle** seçeneğine tıklayarak Rol ataması ekle bölmesini açın.
 
     ![Menü ekle](./media/role-assignments-external-users/add-menu.png)
 
@@ -161,11 +161,11 @@ Konuk kullanıcıyı bir dizinden kaldırmadan önce, önce bu Konuk Kullanıcı
 
 1. Görüntülenen rol atamasını Kaldır iletisinde **Evet**' e tıklayın.
 
-1. Sol gezinti çubuğunda **Azure Active Directory** > **Kullanıcılar**' a tıklayın.
+1. Sol gezinti çubuğunda **Azure Active Directory**  >  **Kullanıcılar**' a tıklayın.
 
 1. Kaldırmak istediğiniz Konuk Kullanıcı ' ya tıklayın.
 
-1. **Sil**' e tıklayın.
+1. **Sil**'e tıklayın.
 
    ![Konuk kullanıcıyı sil](./media/role-assignments-external-users/delete-guest-user.png)
 

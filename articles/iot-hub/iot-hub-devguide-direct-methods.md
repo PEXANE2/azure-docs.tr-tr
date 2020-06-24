@@ -10,12 +10,12 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9fb2242f6e3f8ce78a0e5043a53ce3055819725b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 357fe6f04c79b5ad0cdf569e6716589007f6253b
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583672"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791971"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Doğrudan yöntemleri anlama ve IoT Hub'dan çağırma
 
@@ -33,7 +33,7 @@ Doğrudan Yöntemler bir istek-yanıt modelini izler ve sonuçlarının hemen on
 
 ## <a name="method-lifecycle"></a>Yöntem yaşam döngüsü
 
-Doğrudan yöntemler cihaza uygulanır ve doğru şekilde örneklendirilecek Yöntem yükünde sıfır veya daha fazla giriş gerektirebilir. Bir hizmete yönelik URI (`{iot hub}/twins/{device id}/methods/`) aracılığıyla doğrudan bir yöntem çağırılır. Bir cihaz,`$iothub/methods/POST/{method name}/` `IoThub-methodname` cihaza özgü bir MQTT konusu () veya AMQP bağlantıları aracılığıyla doğrudan Yöntemler alır (ve `IoThub-status` uygulama özellikleri). 
+Doğrudan yöntemler cihaza uygulanır ve doğru şekilde örneklendirilecek Yöntem yükünde sıfır veya daha fazla giriş gerektirebilir. Bir hizmete yönelik URI () aracılığıyla doğrudan bir yöntem çağırılır `{iot hub}/twins/{device id}/methods/` . Bir cihaz, cihaza özgü bir MQTT konusu ( `$iothub/methods/POST/{method name}/` ) veya AMQP bağlantıları aracılığıyla doğrudan Yöntemler alır ( `IoThub-methodname` ve `IoThub-status` uygulama özellikleri). 
 
 > [!NOTE]
 > Bir cihazda doğrudan yöntem çağırdığınızda, özellik adları ve değerleri, aşağıdaki küme dışında yalnızca US-ASCII yazdırılabilir alfasayısal içerebilir:``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
@@ -41,7 +41,7 @@ Doğrudan yöntemler cihaza uygulanır ve doğru şekilde örneklendirilecek Yö
 
 Doğrudan Yöntemler zaman uyumludur ve zaman aşımı süresinden sonra başarılı ya da başarısız olur (varsayılan: 30 saniye, 5 ile 300 saniye arasında ayarlanabilir). Doğrudan Yöntemler, cihazın ve yalnızca cihaz çevrimiçi olduğunda ve komutları alacağından, bir cihazın çalışır durumda olmasını istediğiniz Etkileşimli senaryolarda faydalıdır. Örneğin, bir telefonda bir ışığı açmak. Bu senaryolarda, bulut hizmetinin sonuca en kısa sürede işlem yapabilmesi için anında başarı veya başarısızlık olduğunu görmek istersiniz. Cihaz, metodun bir sonucu olarak bazı ileti gövdesini döndürebilir, ancak bunu yapmak için gerekli değildir. Yöntem çağrılarında sıralamada veya herhangi bir eşzamanlılık semantiğinin garantisi yoktur.
 
-Doğrudan Yöntemler, yalnızca HTTPS 'den bulut tarafında, MQTT veya AMQP 'den cihaz tarafında bulunur.
+Doğrudan Yöntemler, yalnızca HTTPS, bulut tarafı ve HTTPS, MQTT, AMQP, WebSockets üzerinden MQTT ya da cihaz tarafındaki WebSockets üzerinden AMQP 'DIR.
 
 Yöntem istekleri ve yanıtları için yük, 128 KB 'ye kadar bir JSON belgesidir.
 
@@ -76,9 +76,9 @@ Bir cihazdaki doğrudan yöntem etkinleştirmeleri, aşağıdaki öğelerden olu
     }
     ```
 
-İstekte olarak `responseTimeoutInSeconds` belirtilen değer, bir cihazda doğrudan yöntem yürütmeyi tamamlamak için IoT Hub hizmetin tamamlaması gereken süre miktarıdır. Bu zaman aşımını, bir cihaz tarafından doğrudan bir metodun beklenen yürütme süresi kadar en az olacak şekilde ayarlayın. Zaman aşımı sağlanmazsa, varsayılan değer olan 30 saniye kullanılır. İçin `responseTimeoutInSeconds` en düşük ve en yüksek değerler, sırasıyla 5 ve 300 saniyedir.
+İstekte olarak belirtilen değer, `responseTimeoutInSeconds` bir cihazda doğrudan yöntem yürütmeyi tamamlamak için IoT Hub hizmetin tamamlaması gereken süre miktarıdır. Bu zaman aşımını, bir cihaz tarafından doğrudan bir metodun beklenen yürütme süresi kadar en az olacak şekilde ayarlayın. Zaman aşımı sağlanmazsa, varsayılan değer olan 30 saniye kullanılır. İçin en düşük ve en yüksek değerler `responseTimeoutInSeconds` , sırasıyla 5 ve 300 saniyedir.
 
-İstekte olarak `connectTimeoutInSeconds` belirtilen değer, IoT Hub hizmetin, bağlantısı kesilen bir cihazın çevrimiçi olması için beklemek zorunda olduğu doğrudan bir yöntemi çağırmada geçen süredir. Varsayılan değer 0 ' dır, yani doğrudan bir yöntemi çağırılmak için cihazların zaten çevrimiçi olması gerekir. İçin `connectTimeoutInSeconds` en büyük değer 300 saniyedir.
+İstekte olarak belirtilen değer, `connectTimeoutInSeconds` IoT Hub hizmetin, bağlantısı kesilen bir cihazın çevrimiçi olması için beklemek zorunda olduğu doğrudan bir yöntemi çağırmada geçen süredir. Varsayılan değer 0 ' dır, yani doğrudan bir yöntemi çağırılmak için cihazların zaten çevrimiçi olması gerekir. İçin en büyük değer `connectTimeoutInSeconds` 300 saniyedir.
 
 
 #### <a name="example"></a>Örnek
@@ -91,7 +91,7 @@ Başlamak için, SharedAccessSignature oluşturmak üzere [Azure CLI için Micro
 az iot hub generate-sas-token -n <iothubName> -du <duration>
 ```
 
-Ardından, yetkilendirme üst bilgisini yeni oluşturulan sharedaccesssignature ile değiştirin, ardından `iothubName`, `deviceId` `methodName` ve `payload` parametrelerini aşağıdaki örnek `curl` komutta uygulamanız ile eşleşecek şekilde değiştirin.  
+Ardından, yetkilendirme üst bilgisini yeni oluşturulan sharedaccesssignature ile değiştirin, ardından, `iothubName` `deviceId` `methodName` ve `payload` parametrelerini aşağıdaki örnek komutta uygulamanız ile eşleşecek şekilde değiştirin `curl` .  
 
 ```bash
 curl -X POST \
@@ -123,7 +123,7 @@ Arka uç uygulaması, aşağıdaki öğelerden oluşan bir yanıt alır:
 * *Http durum kodu*:
   * 200, doğrudan metodun başarıyla yürütülmesini gösterir;
   * 404, cihaz KIMLIĞININ geçersiz olduğunu ya da cihazın doğrudan bir yöntemi çağırdıktan sonra çevrimiçi olmadığını veya daha `connectTimeoutInSeconds` sonra (kök nedenini anlamak için birlikte hata iletisini kullanın) olduğunu belirtir;
-  * 504, cihazın içindeki `responseTimeoutInSeconds`doğrudan yöntem çağrısına yanıt vermemesinin neden olduğu ağ geçidi zaman aşımını belirtir.
+  * 504, cihazın içindeki doğrudan yöntem çağrısına yanıt vermemesinin neden olduğu ağ geçidi zaman aşımını belirtir `responseTimeoutInSeconds` .
 
 * ETag, istek KIMLIĞI, içerik türü ve içerik kodlamasını içeren *üst bilgiler* .
 
@@ -136,7 +136,7 @@ Arka uç uygulaması, aşağıdaki öğelerden oluşan bir yanıt alır:
     }
     ```
 
-    `body` Hem hem de `status` cihaz tarafından sağlanır ve cihazın kendi durum kodu ve/veya açıklamasıyla yanıt vermek için kullanılır.
+    Hem hem de `status` `body` cihaz tarafından sağlanır ve cihazın kendi durum kodu ve/veya açıklamasıyla yanıt vermek için kullanılır.
 
 ### <a name="method-invocation-for-iot-edge-modules"></a>IoT Edge modülleri için yöntem çağırma
 
@@ -154,7 +154,7 @@ Aşağıdaki bölüm MQTT protokolüne yöneliktir.
 
 #### <a name="method-invocation"></a>Yöntem çağırma
 
-Cihazlar MQTT konusunda doğrudan yöntem istekleri alıyor: `$iothub/methods/POST/{method name}/?$rid={request id}`. Cihaz başına abonelik sayısı 5 ile sınırlıdır. Bu nedenle, her bir doğrudan yönteme ayrı ayrı abone olmaması önerilir. Bunun yerine, istenen `$iothub/methods/POST/#` Yöntem adlarınız temelinde teslim edilen iletilere abone olmayı ve bunları filtrelemeyi düşünün.
+Cihazlar MQTT konusunda doğrudan yöntem istekleri alıyor: `$iothub/methods/POST/{method name}/?$rid={request id}` . Cihaz başına abonelik sayısı 5 ile sınırlıdır. Bu nedenle, her bir doğrudan yönteme ayrı ayrı abone olmaması önerilir. Bunun yerine `$iothub/methods/POST/#` , istenen Yöntem adlarınız temelinde teslim edilen iletilere abone olmayı ve bunları filtrelemeyi düşünün.
 
 Cihazın aldığı gövde aşağıdaki biçimdedir:
 
@@ -169,11 +169,11 @@ Yöntem istekleri QoS 0 ' dır.
 
 #### <a name="response"></a>Yanıt
 
-Cihaz yanıtlarını gönderir `$iothub/methods/res/{status}/?$rid={request id}`, burada:
+Cihaz yanıtlarını gönderir `$iothub/methods/res/{status}/?$rid={request id}` , burada:
 
-* `status` Özelliği, yöntem yürütmenin cihaz tarafından sağlanan durumudur.
+* `status`Özelliği, yöntem yürütmenin cihaz tarafından sağlanan durumudur.
 
-* `$rid` Özelliği, IoT Hub 'den alınan yöntem çağrısından gelen istek kimliğidir.
+* `$rid`Özelliği, IoT Hub 'den alınan yöntem çağrısından gelen Istek kimliğidir.
 
 Gövde, cihaz tarafından ayarlanır ve herhangi bir durum olabilir.
 
@@ -183,25 +183,25 @@ Aşağıdaki bölüm AMQP protokolüne yöneliktir.
 
 #### <a name="method-invocation"></a>Yöntem çağırma
 
-Cihaz, adreste `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`bir alma bağlantısı oluşturarak doğrudan yöntem istekleri alır.
+Cihaz, adreste bir alma bağlantısı oluşturarak doğrudan yöntem istekleri alır `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` .
 
 AMQP iletisi, yöntem isteğini temsil eden alma bağlantısına ulaşır. Aşağıdaki bölümleri içerir:
 
 * Karşılık gelen Yöntem yanıtıyla geri geçirilmesi gereken bir istek KIMLIĞI içeren bağıntı KIMLIĞI özelliği.
 
-* Çağrılan yöntemin adını içeren `IoThub-methodname`adlı bir uygulama özelliği.
+* `IoThub-methodname`Çağrılan yöntemin adını içeren adlı bir uygulama özelliği.
 
 * JSON olarak Yöntem yükünü içeren AMQP ileti gövdesi.
 
 #### <a name="response"></a>Yanıt
 
-Cihaz, adreste `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`Yöntem yanıtını döndürmek için bir gönderme bağlantısı oluşturur.
+Cihaz, adreste Yöntem yanıtını döndürmek için bir gönderme bağlantısı oluşturur `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` .
 
 Yöntemin yanıtı gönderme bağlantısında döndürülür ve aşağıdaki şekilde yapılandırılır:
 
 * Metodun istek iletisinde geçirilen istek KIMLIĞINI içeren bağıntı KIMLIĞI özelliği.
 
-* Kullanıcı tarafından sağlanan yöntem `IoThub-status`durumunu içeren adlı bir uygulama özelliği.
+* `IoThub-status`Kullanıcı tarafından sağlanan yöntem durumunu içeren adlı bir uygulama özelliği.
 
 * JSON olarak Yöntem yanıtını içeren AMQP ileti gövdesi.
 

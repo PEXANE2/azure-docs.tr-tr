@@ -5,16 +5,16 @@ services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f264a62428f919fe23797171926ddf63c585c42b
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 628631fb7fddbc07dcb865e3d3badbfb608ad097
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234122"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214460"
 ---
 # <a name="query-csv-files"></a>CSV dosyalarını sorgula
 
@@ -179,6 +179,37 @@ WHERE
 
 > [!NOTE]
 > "Slov, enıa" içindeki virgül, ülke/bölge adının bir parçası yerine alan sınırlayıcısı olarak değerlendirildiğinden, bu sorgu, ESCAPECHAR belirtilmemişse başarısız olur. "Slov, Enia" iki sütun olarak değerlendirilir. Bu nedenle, belirli satırda diğer satırlardan daha fazla bir sütun ve WıTH yan tümcesinde tanımladığınız bir sütun daha vardır.
+
+### <a name="escaping-quoting-characters"></a>Tırnak içine alma karakterlerini kaçış
+
+Aşağıdaki sorgu, bir üst bilgi satırıyla bir dosyanın nasıl okunacağını, UNIX stili yeni bir satır, virgülle ayrılmış sütunlar ve değerler içindeki bir kaçışlı çift tırnak karakteri gösterir. Diğer örneklerle karşılaştırıldığında dosyanın farklı konumunu aklınızda yapın.
+
+Dosya önizlemesi:
+
+![Aşağıdaki sorgu, bir üst bilgi satırıyla bir dosyanın nasıl okunacağını, UNIX stili yeni bir satır, virgülle ayrılmış sütunlar ve değerler içindeki bir kaçışlı çift tırnak karakteri gösterir.](./media/query-single-csv-file/population-unix-hdr-escape-quoted.png)
+
+```sql
+SELECT *
+FROM OPENROWSET(
+        BULK 'csv/population-unix-hdr-escape-quoted/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
+        FIELDTERMINATOR =',',
+        ROWTERMINATOR = '0x0a',
+        FIRSTROW = 2
+    )
+    WITH (
+        [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
+        [country_name] VARCHAR (100) COLLATE Latin1_General_BIN2,
+        [year] smallint,
+        [population] bigint
+    ) AS [r]
+WHERE
+    country_name = 'Slovenia';
+```
+
+> [!NOTE]
+> Tırnak işareti karakteri başka bir tırnak işareti karakteriyle atlanmalıdır. Tırnak içine alma karakteri sütun değeri içinde, yalnızca değer tırnak içine alma karakterleriyle kapsüllense görünebilir.
 
 ## <a name="tab-delimited-files"></a>Sekmeyle ayrılmış dosyalar
 

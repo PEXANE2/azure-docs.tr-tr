@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: b2efca53ce8d59ca1e050a9c18100b67024f3ba3
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 20b0bcfe5043d4767199c36796fa1123ed779363
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465669"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791155"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Otomatik ölçeklendirme işleme ile Azure Cosmos kapsayıcıları ve veritabanları oluşturma
 
@@ -57,8 +57,9 @@ Her saat, `T` sistemin saat içinde ölçeklendirileceği en yüksek aktarım h�
 
 Otomatik ölçeklendirme en yüksek aktarım hızı için giriş noktası, `Tmax` 400-4000 ru/s arasında ölçeklendirilebilen 4000 ru/sn 'den başlar. `Tmax`1000 ru/sn 'lik artışlarla ayarlanabilir ve değeri dilediğiniz zaman değiştirebilirsiniz.  
 
-## <a name="enable-autoscale-on-existing-resources"></a>Varolan kaynaklarda otomatik ölçeklendirmeyi etkinleştir ##
-Varolan bir veritabanı veya kapsayıcıda otomatik ölçeklendirmeyi etkinleştirmek için [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container) kullanın. İstediğiniz zaman otomatik ölçeklendirme ve standart (el ile) sağlanan aktarım hızı arasında geçiş yapabilirsiniz. Daha fazla bilgi için bu [belgelere](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) bakın.
+## <a name="enable-autoscale-on-existing-resources"></a>Varolan kaynaklarda otomatik ölçeklendirmeyi etkinleştir
+
+Varolan bir veritabanı veya kapsayıcıda otomatik ölçeklendirmeyi etkinleştirmek için [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container) kullanın. İstediğiniz zaman otomatik ölçeklendirme ve standart (el ile) sağlanan aktarım hızı arasında geçiş yapabilirsiniz. Daha fazla bilgi için bu [belgelere](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) bakın. Şu anda tüm API 'Ler için, mevcut kaynaklarda otomatik ölçeklendirmeyi etkinleştirmek üzere yalnızca Azure portal kullanabilirsiniz.
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a>Otomatik ölçeklendirme için üretilen iş ve depolama sınırları
 
@@ -75,7 +76,7 @@ Daha fazla ayrıntı için, standart (el ile) ve otomatik ölçeklendirme veriml
 |---------|---------|---------|
 | **Sağlanan aktarım hızı (RU/s)** | El ile sağlandı. | Otomatik olarak ve anında iş yükü kullanım desenlerine göre ölçeklendirildi. |
 | **İsteklerin/işlemlerin hız sınırlaması (429)**  | Tüketim sağlanan kapasiteyi aşarsa meydana gelebilir. | , Belirlediğiniz otomatik ölçeklendirme üretilen iş aralığı içinde RU/s kullanırsanız gerçekleşmeyecektir.    |
-| **Kapasite planlaması** |  Kapasite planlaması yapmanız ve ihtiyacınız olan tam üretimi sağlamanız gerekir. |    Sistem, kapasite planlama ve kapasite yönetimini otomatik olarak gerçekleştirir. |
+| **Kapasite planlama** |  Kapasite planlaması yapmanız ve ihtiyacınız olan tam üretimi sağlamanız gerekir. |    Sistem, kapasite planlama ve kapasite yönetimini otomatik olarak gerçekleştirir. |
 | **Fiyatlandırma** | Saatte el ile sağlanan RU/s için, [saat başına standart (el ile) ru/s](https://azure.microsoft.com/pricing/details/cosmos-db/)ücreti üzerinden ödeme yaparsınız. | Sistem, en yüksek RU/sn için saatte bir saat içinde ödersiniz. <br/><br/> Tek bir yazma bölgesi hesabında, [her saat için otomatik ÖLÇEKLENDIRME ru/sn](https://azure.microsoft.com/pricing/details/cosmos-db/)'yi kullanarak saatlik olarak kullanılan ru/s için ödeme yaparsınız. <br/><br/>Birden çok yazma bölgesi olan hesaplar için otomatik ölçeklendirme için ek ücret alınmaz. [Saat başına aynı çok YÖNETICILI ru/sn](https://azure.microsoft.com/pricing/details/cosmos-db/)'yi kullanarak saatlik olarak kullanılan aktarım hızı için ödeme yaparsınız. |
 | **İş yükü türleri için en uygun** |  Öngörülebilir ve kararlı iş yükleri|   Tahmin edilemeyen ve değişken iş yükleri  |
 

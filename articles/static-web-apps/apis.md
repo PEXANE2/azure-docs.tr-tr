@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4fa3acf0e6cc767aeee4504bbc4df382a75e256b
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: f5f40a615bc5faab6265f42d0728403e2735aa0f
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758767"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791631"
 ---
 # <a name="api-support-in-azure-static-web-apps-preview-with-azure-functions"></a>Azure Işlevleri ile Azure statik Web Apps önizlemede API desteği
 
@@ -20,7 +20,7 @@ Azure statik Web Apps, [Azure işlevleri](../azure-functions/functions-overview.
 
 - Kullanıcı [kimlik doğrulamasına ve rol tabanlı yetkilendirme](user-information.md) verilerine doğrudan erişimli **Tümleşik güvenlik** .
 - _API_ yolunu özel CORS kuralları gerekmeden güvenli bir şekilde Web uygulaması için kullanılabilir hale getiren **sorunsuz yönlendirme** .
-- **Azure işlevleri** v3 ve Node. js 12 ile uyumludur.
+- **Azure işlevleri** v3 Node.js 12 ile uyumludur.
 - **Http Tetikleyicileri** ve çıkış bağlamaları.
 
 ## <a name="configuration"></a>Yapılandırma
@@ -33,6 +33,7 @@ Azure statik Web Apps, Azure Işlevleri aracılığıyla bir API sağlar. Azure 
 
 - API yolu ön eki _API_olmalıdır.
 - API Işlevleri uygulaması JavaScript 'te olmalıdır.
+- API işlevleri için yol kuralları yalnızca yeniden [yönlendirmeleri](routes.md#redirects) destekler ve [yolların rollerle güvenliğini sağlama](routes.md#securing-routes-with-roles).
 - Tetikleyiciler ve bağlamalar [http](../azure-functions/functions-bindings-http-webhook.md)ile sınırlıdır.
   - Çıkış bağlamaları hariç tüm diğer [Azure işlevleri Tetikleyicileri ve bağlamaları](../azure-functions/functions-triggers-bindings.md#supported-bindings) kısıtlıdır.
 - Günlükler yalnızca Işlevler uygulamanıza [Application Insights](../azure-functions/functions-monitoring.md) eklerseniz kullanılabilir.

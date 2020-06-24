@@ -2,22 +2,22 @@
 title: Uygulama onayını yönetme ve izin isteklerini değerlendirme-Azure AD
 description: Kullanıcı onayı devre dışı bırakıldığında veya kısıtlandıktan sonra izin isteklerini yönetmeyi ve bir uygulamaya kiracı genelinde yönetici onayı için bir istek değerlendirmeyi öğrenin.
 services: active-directory
-author: psignoret
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/27/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0451fe18629a572c9b49f14924bfa50293f42a2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5a725eefd678720f2d9b8763277b02452819155b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77367840"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763202"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Uygulamalara onayı yönetme ve izin isteklerini değerlendirme
 
@@ -114,7 +114,7 @@ Ek karmaşık senaryoların nasıl işleneceği hakkında daha geniş bir genel 
 
 [Yönetici onayı iş akışını yapılandırma](configure-admin-consent-workflow.md)
 
-[Son kullanıcıların uygulamalara nasıl izin vermesini yapılandırın](configure-user-consent.md)
+[Son kullanıcıların uygulamalara onay verme şeklini yapılandırma](configure-user-consent.md)
 
 [Microsoft Identity platformunda izinler ve onay](../develop/active-directory-v2-scopes.md)
 

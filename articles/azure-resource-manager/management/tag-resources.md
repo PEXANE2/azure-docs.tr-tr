@@ -2,13 +2,13 @@
 title: Mantıksal kuruluş için kaynakları, kaynak grupları ve abonelikleri etiketleme
 description: Azure kaynaklarını faturalandırma ve yönetmeye göre düzenlemek için etiketlerin nasıl uygulanacağını gösterir.
 ms.topic: conceptual
-ms.date: 05/06/2020
-ms.openlocfilehash: 9ba7c58f6fa56b8ef2c233a5fe7f8f8e04fe29e1
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.date: 06/15/2020
+ms.openlocfilehash: c06bd5f44f01a98e3a39d0cf404713e0d0546192
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864496"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791937"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Azure kaynaklarınızı ve yönetim hiyerarşinizi düzenlemek için etiketleri kullanma
 
@@ -31,7 +31,7 @@ Bir kaynağa etiket uygulamak için, **Microsoft. resources/Tags** kaynak türü
 
 ### <a name="apply-tags"></a>Etiketleri Uygula
 
-Azure PowerShell- [New-aztag](/powershell/module/az.resources/new-aztag) ve [Update-aztag](/powershell/module/az.resources/update-aztag)etiketlerini uygulamak için iki komut sunar. Az. resources Module 1.12.0 veya sonraki bir sürüme sahip olmanız gerekir. Sürümünüzü ile `Get-Module Az.Resources`denetleyebilirsiniz. Bu modülü yükleyebilir veya Azure PowerShell 3.6.1 veya üstünü [yükleyebilirsiniz](/powershell/azure/install-az-ps) .
+Azure PowerShell- [New-aztag](/powershell/module/az.resources/new-aztag) ve [Update-aztag](/powershell/module/az.resources/update-aztag)etiketlerini uygulamak için iki komut sunar. Az. resources Module 1.12.0 veya sonraki bir sürüme sahip olmanız gerekir. Sürümünüzü ile denetleyebilirsiniz `Get-Module Az.Resources` . Bu modülü yükleyebilir veya Azure PowerShell 3.6.1 veya üstünü [yükleyebilirsiniz](/powershell/azure/install-az-ps) .
 
 **New-AzTag** , kaynaktaki, kaynak grubundaki veya abonelikteki tüm etiketlerin yerini alır. Komutunu çağırırken etiketlemek istediğiniz varlığın kaynak KIMLIĞINI geçirin.
 
@@ -263,7 +263,7 @@ Bir kaynak grubundaki varolan etiketlere bir etiket eklemek için şunu kullanı
 az group update -n examplegroup --set tags.'Status'='Approved'
 ```
 
-Şu anda Azure CLı, aboneliğe etiket uygulanmasını desteklemiyor.
+Şu anda Azure CLı, aboneliğe Etiketler uygulamak için bir komuta sahip değildir. Ancak, bir aboneliğe etiketleri uygulayan bir ARM şablonu dağıtmak için CLı kullanabilirsiniz. Bkz. [kaynak grupları veya aboneliklerde etiket uygulama](#apply-tags-to-resource-groups-or-subscriptions).
 
 ### <a name="list-tags"></a>Etiketleri listeleme
 
@@ -290,13 +290,13 @@ Bu betik aşağıdaki biçimde veri döndürür:
 
 ### <a name="list-by-tag"></a>Etikete göre Listele
 
-Belirli bir etiketi ve değeri olan tüm kaynakları almak için şunu kullanın `az resource list`:
+Belirli bir etiketi ve değeri olan tüm kaynakları almak için şunu kullanın `az resource list` :
 
 ```azurecli-interactive
 az resource list --tag Dept=Finance
 ```
 
-Belirli bir etikete sahip kaynak gruplarını almak için şunu kullanın `az group list`:
+Belirli bir etikete sahip kaynak gruplarını almak için şunu kullanın `az group list` :
 
 ```azurecli-interactive
 az group list --tag Dept=IT
@@ -326,7 +326,7 @@ Dağıtım sırasında kaynakları, kaynak grupları ve abonelikleri bir Kaynak 
 
 ### <a name="apply-values"></a>Değerleri Uygula
 
-Aşağıdaki örnek, üç etiketli bir depolama hesabı dağıtır. Etiketlerin ikisi (`Dept` ve `Environment`) değişmez değerler olarak ayarlanır. Bir Tag (`LastDeployed`), geçerli tarih için varsayılan değer olan bir parametreye ayarlanır.
+Aşağıdaki örnek, üç etiketli bir depolama hesabı dağıtır. Etiketlerin ikisi ( `Dept` ve `Environment` ) değişmez değerler olarak ayarlanır. Bir Tag ( `LastDeployed` ), geçerli tarih için varsayılan değer olan bir parametreye ayarlanır.
 
 ```json
 {
@@ -436,7 +436,7 @@ Birkaç etiketi depolayan bir nesne parametresi tanımlayabilir ve bu nesneyi et
 
 ### <a name="apply-tags-from-resource-group"></a>Kaynak grubundan Etiketler uygulama
 
-Kaynak grubundan bir kaynağa etiket uygulamak için [resourceGroup](../templates/template-functions-resource.md#resourcegroup) işlevini kullanın. Etiket değerini alırken `tags[tag-name]` `tags.tag-name` sözdizimi yerine sözdizimini kullanın, çünkü bazı karakterler nokta gösteriminde doğru ayrıştırılmaz.
+Kaynak grubundan bir kaynağa etiket uygulamak için [resourceGroup](../templates/template-functions-resource.md#resourcegroup) işlevini kullanın. Etiket değerini alırken `tags[tag-name]` sözdizimi yerine sözdizimini kullanın `tags.tag-name` , çünkü bazı karakterler nokta gösteriminde doğru ayrıştırılmaz.
 
 ```json
 {
@@ -523,6 +523,8 @@ New-AzSubscriptionDeployment -name tagresourcegroup -Location westus2 -TemplateU
 az deployment sub create --name tagresourcegroup --location westus2 --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
 ```
 
+Abonelik dağıtımları hakkında daha fazla bilgi için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](../templates/deploy-to-subscription.md).
+
 Aşağıdaki şablon bir nesneden bir kaynak grubuna veya aboneliğe Etiketler ekler.
 
 ```json
@@ -583,17 +585,15 @@ REST API işlemler için bkz. [Azure faturalandırma REST API başvurusu](/rest/
 Etiketler için aşağıdaki sınırlamalar geçerlidir:
 
 * Tüm kaynak türleri etiketleri desteklemez. Bir kaynak türüne etiket uygulayıp uygulayacağınızı öğrenmek için bkz. [Azure kaynakları Için etiket desteği](tag-support.md).
-* Yönetim grupları Şu anda etiketleri desteklemiyor.
 * Her kaynak, kaynak grubu ve abonelik en fazla 50 etiket adı/değer çiftine sahip olabilir. İzin verilen maksimum sayıdan daha fazla etiket uygulamanız gerekiyorsa, etiket değeri için bir JSON dizesi kullanın. JSON dizesi, tek etiket adına uygulanan birden fazla değer içerebilir. Bir kaynak grubu veya abonelik, her birinin 50 etiket adı/değer çifti olan çok sayıda kaynak içerebilir.
 * Etiket adı 512 karakter ile sınırlıdır ve etiket değeri 256 karakter ile sınırlıdır. Depolama hesapları için etiket adı 128 karakter ile sınırlıdır ve etiket değeri 256 karakter ile sınırlıdır.
-* Genelleştirilmiş VM 'Ler etiketleri desteklemez.
 * Etiketler, Cloud Services gibi klasik kaynaklara uygulanamaz.
-* Etiket adları şu karakterleri içeremez `<`:, `>`, `%`, `&`, `\`,, `?``/`
+* Etiket adları şu karakterleri içeremez: `<` , `>` ,, `%` `&` , `\` , `?` ,`/`
 
    > [!NOTE]
    > Şu anda Azure DNS bölgeleri ve Traffic Manager hizmetleri etiketinde boşluk kullanılmasına da izin vermez.
    >
-   > Azure ön kapısının etiket adında kullanılması `#` desteklenmez.
+   > Azure ön kapısının etiket adında kullanılması desteklenmez `#` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 09/05/2019
-ms.openlocfilehash: 9652b78674d6a6b905eb049564d1b17cdc7c17b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/20/2020
+ms.openlocfilehash: 84026a5a9ba63bf008eeb25df3d0c42cbd558fa9
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78254924"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118789"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının durumu
 
@@ -48,18 +48,20 @@ Aşağıdaki tabloda çevrimdışı geçişler için Azure veritabanı geçiş h
 | Hedef  | Kaynak | Destek | Durum |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
-|   | RDS SQL |  |  |
-|   | Oracle |  |  |
+|   | RDS SQL | X |  |
+|   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
-|   | RDS SQL |  |  |
-|   | Oracle |  |   |
+|   | RDS SQL | X |  |
+|   | Oracle | X |   |
 | **Azure SQL VM** | SQL Server | ✔ | GA |
-|   | Oracle |   |   |
+|   | Oracle | X |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
-| **MySQL için Azure DB** | MySQL |   |   |
-|   | RDS MySQL |   |   |
-| **PostgreSQL için Azure DB** | PostgreSQL |  |
-|  | RDS PostgreSQL |   |   |
+| **MySQL için Azure DB** | MySQL | X |   |
+|   | RDS MySQL | X |   |
+| **PostgreSQL için Azure DB-tek sunucu** | PostgreSQL | X |
+|  | RDS PostgreSQL | X |   |
+| **PostgreSQL için Azure DB-Hyperscale (Citus)** | PostgreSQL | X |
+|  | RDS PostgreSQL | X |   |
 
 ### <a name="online-continuous-sync-migration-support"></a>Çevrimiçi (sürekli eşitleme) geçiş desteği
 
@@ -69,18 +71,20 @@ Aşağıdaki tabloda, çevrimiçi geçişler için Azure veritabanı geçiş hiz
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | RDS SQL | ✔ | GA |
-|   | Oracle |  |  |
+|   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
 |   | RDS SQL | ✔ | GA |
 |   | Oracle | ✔ | Özel Önizleme |
-| **Azure SQL VM** | SQL Server |   |   |
-|   | Oracle  |  |  |
+| **Azure SQL VM** | SQL Server | X |   |
+|   | Oracle  | X |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
 | **MySQL için Azure DB** | MySQL | ✔ | GA |
 |   | RDS MySQL | ✔ | GA |
-| **PostgreSQL için Azure DB** | PostgreSQL | ✔ | GA |
+| **PostgreSQL için Azure DB-tek sunucu** | PostgreSQL | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
 |   | Oracle | ✔ | Genel Önizleme |
+| **PostgreSQL için Azure DB-Hyperscale (Citus)** | PostgreSQL | ✔ | GA |
+|   | RDS PostgreSQL | ✔ | GA |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

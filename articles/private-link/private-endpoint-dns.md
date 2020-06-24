@@ -5,14 +5,14 @@ services: private-link
 author: mblanco77
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 2341fa45446078f669314561db13e640e78776b8
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: d6417b3632e1aad0b942844a1470772e8f0197e2
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84463209"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85081089"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure özel uç nokta DNS yapılandırması
 
@@ -38,6 +38,7 @@ Azure hizmetleri için aşağıdaki tabloda açıklandığı gibi önerilen böl
 
 | Özel bağlantı kaynak türü/alt kaynak |Özel DNS bölge adı | Genel DNS bölgesi ileticileri |
 |---|---|---|---|
+| Azure Otomasyonu/(Microsoft. Automation/automationAccounts)/Web kancası, Dscandhyıbridworker | privatelink.azure-automation.net | azure-automation.net |
 | Azure SQL veritabanı (Microsoft. SQL/sunucuları)/SQL Server | privatelink.database.windows.net | database.windows.net |
 | Azure SYNAPSE Analytics (Microsoft. SQL/Servers)/SQL Server  | privatelink.database.windows.net | database.windows.net |
 | Depolama hesabı (Microsoft. Storage/storageAccounts)/blob (blob, blob_secondary) | privatelink.blob.core.windows.net | blob.core.windows.net |
