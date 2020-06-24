@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36c7bb426a329a54f333b76e028b884204543014
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 0cd2de0929b22dda6e566316c4eda966d8d62e24
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582982"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732659"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory yönetilmeyen bir dizinden yönetici olarak yararlanın
 
@@ -28,9 +28,9 @@ Bu makalede, Azure Active Directory (Azure AD) içinde yönetilmeyen bir dizinde
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Yönetilmeyen bir dizini nasıl almak istediğinize karar verin
 Yönetici devralma işlemi sırasında, [Azure AD’ye özel etki alanı adı ekleme](../fundamentals/add-custom-domain.md) bölümünde açıklandığı gibi sahipliği kanıtlayabilirsiniz. Sonraki bölümlerde, yönetici deneyimi daha ayrıntılı şekilde açıklanmaktadır, ancak bir özeti aşağıda verilmiştir:
 
-* Yönetilmeyen bir Azure dizininin ["iç" yönetici devralma işlemini](#internal-admin-takeover) gerçekleştirdiğinizde, yönetilmeyen dizinin genel yöneticisi olarak eklendiniz. Herhangi bir kullanıcı, etki alanı veya hizmet planı, yönettiğiniz diğer dizine geçirilmiyor.
+* Yönetilmeyen bir Azure dizininin ["Dahili" bir yönetim](#internal-admin-takeover) gerçekleştiri gerçekleştirdiğinizde, yönetilmeyen dizinin genel yöneticisi olarak eklendiniz. Hiçbir kullanıcı, etki alanı veya hizmet planı, yönettiğiniz başka bir dizine geçirilmez.
 
-* Yönetilmeyen bir Azure dizininin ["dış" yönetici devralma işlemini](#external-admin-takeover) gerçekleştirdiğinizde, yönetilmeyen dizininizin DNS etki alanı adını, yönetilen Azure dizininize eklersiniz. Etki alanı adını eklediğinizde, kullanıcıların kesinti olmadan hizmetlere erişmeye devam edebilmesi için yönetilen Azure dizininizde, kullanıcıların kaynaklara bir eşlemesi oluşturulur. 
+* Yönetilmeyen bir Azure dizininin ["harici" bir yönetim](#external-admin-takeover) gerçekleştiri gerçekleştirdiğinizde, YÖNETILMEYEN dizinin DNS etki alanı adını yönetilen Azure dizininize eklersiniz. Etki alanı adını eklediğinizde, kullanıcıların kesinti olmadan hizmetlere erişmeye devam edebilmesi için yönetilen Azure dizininizde, kullanıcıların kaynaklara bir eşlemesi oluşturulur. 
 
 ## <a name="internal-admin-takeover"></a>İç yönetici yönetim
 
@@ -38,7 +38,7 @@ SharePoint ve OneDrive içeren bazı ürünler (Office 365 gibi) dışarıdan de
 
 1. Power BI için kaydolup yönetilmeyen kuruluşta bir kullanıcı bağlamı oluşturun. Örneğin, bu adımlar bu yolu kabul eder.
 
-2. [Power BI sitesini](https://powerbi.com) açın ve **ücretsiz Başlat**' ı seçin. Kuruluşun etki alanı adını kullanan bir kullanıcı hesabı girin; Örneğin, `admin@fourthcoffee.xyz`. Doğrulama kodunu girdikten sonra, onay kodu için e-postanızı kontrol edin.
+2. [Power BI sitesini](https://powerbi.com) açın ve **ücretsiz Başlat**' ı seçin. Kuruluşun etki alanı adını kullanan bir kullanıcı hesabı girin; Örneğin, `admin@fourthcoffee.xyz` . Doğrulama kodunu girdikten sonra, onay kodu için e-postanızı kontrol edin.
 
 3. Power BI 'den onay e-postasında, **Evet '** i seçin.
 
@@ -57,13 +57,13 @@ Yukarıdaki adımları tamamladığınızda, artık Office 365 ' de dördüncü 
 ### <a name="adding-the-domain-name-to-a-managed-organization-in-azure-ad"></a>Azure AD 'de yönetilen bir kuruluşa etki alanı adı ekleme
 
 1. [Microsoft 365 Yönetim merkezini](https://admin.microsoft.com)açın.
-2. **Kullanıcılar** sekmesini seçin ve özel etki alanı adı kullanmayan *user\@fourthcoffeexyz.onmicrosoft.com* gibi bir ada sahip yeni bir kullanıcı hesabı oluşturun. 
+2. **Kullanıcılar** sekmesini seçin ve özel etki alanı adı kullanmayan *user \@ fourthcoffeexyz.onmicrosoft.com* gibi bir ada sahip yeni bir kullanıcı hesabı oluşturun. 
 3. Yeni Kullanıcı hesabının Azure AD kuruluşu için genel yönetici ayrıcalıklarına sahip olduğundan emin olun.
 4. Microsoft 365 Yönetim merkezinde **etki alanları** sekmesini açın, etki alanı adını seçin ve **Kaldır**' ı seçin. 
   
    ![etki alanı adını Office 365 ' dan kaldırma](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. Office 365 ' de kaldırılan etki alanı adına başvuran herhangi bir kullanıcı veya grup varsa,. onmicrosoft.com etki alanına yeniden adlandırılması gerekir. Etki alanı adını silmeye zorlarsanız, bu örnekte *user\@fourthcoffeexyz.onmicrosoft.com*olarak tüm kullanıcılar otomatik olarak yeniden adlandırılır.
+5. Office 365 ' de kaldırılan etki alanı adına başvuran herhangi bir kullanıcı veya grup varsa,. onmicrosoft.com etki alanına yeniden adlandırılması gerekir. Etki alanı adını silmeye zorlarsanız, bu örnekte *user \@ fourthcoffeexyz.onmicrosoft.com*olarak tüm kullanıcılar otomatik olarak yeniden adlandırılır.
   
 6. Azure AD [Yönetim merkezinde](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) Azure AD kuruluşu için genel yönetici olan bir hesapla oturum açın.
   
@@ -72,7 +72,7 @@ Yukarıdaki adımları tamamladığınızda, artık Office 365 ' de dördüncü 
    ![Azure AD 'ye eklenen etki alanı doğrulandı](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Office 365 kuruluşunda atanmış lisanslarına sahip tüm Power BI veya Azure Rights Management hizmet kullanıcıları, etki alanı adı kaldırılırsa panoları kaydetmelidir. Kullanıcı *\@fourthcoffeexyz.onmicrosoft.com* *\@* gibi Kullanıcı adı ile oturum açması gerekir, yani Kullanıcı, mathcoffee. xyz.
+> Office 365 kuruluşunda atanmış lisanslarına sahip tüm Power BI veya Azure Rights Management hizmet kullanıcıları, etki alanı adı kaldırılırsa panoları kaydetmelidir. Kullanıcı * \@ fourthcoffeexyz.onmicrosoft.com* gibi Kullanıcı adı ile oturum açması gerekir, yani Kullanıcı, * \@ mathcoffee. xyz*.
 
 ## <a name="external-admin-takeover"></a>Dış yönetici
 

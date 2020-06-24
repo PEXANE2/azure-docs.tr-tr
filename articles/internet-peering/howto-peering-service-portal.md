@@ -5,15 +5,15 @@ description: Azure portal kullanarak doğrudan eşleme üzerinde Azure eşleme h
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 3/18/2020
 ms.author: derekol
-ms.openlocfilehash: 625a17e5acff00f78c5a19725653eec629936f87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a52e6038b622c004dc0d133394cd4f53600b2935
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687036"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700051"
 ---
 # <a name="enable-azure-peering-service-on-a-direct-peering-by-using-the-azure-portal"></a>Azure portal kullanarak doğrudan eşleme üzerinde Azure eşleme hizmetini etkinleştirin
 

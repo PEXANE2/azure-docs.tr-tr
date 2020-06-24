@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: 9e35ba5a3f3705a52e80262da9bbfbfda489bf83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a4f98b3c569147699432aa4bdcdd44b0b16b3af
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050372"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297452"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft kimlik doğrulama Kitaplığı yapılandırma dosyası
 
@@ -34,10 +34,10 @@ Bu makale yapılandırma dosyasında çeşitli ayarları anlamanıza ve MSAL tab
 |-----------|------------|-------------|-------|
 | `client_id` | Dize | Yes | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) UYGULAMANıZıN istemci kimliği |
 | `redirect_uri`   | Dize | Yes | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) uygulamanızın yeniden yönlendirme URI 'si |
-| `authorities` | Yetkili\<> listesi | Hayır | Uygulamanızın ihtiyaç duyacağı yetkililer listesi |
-| `authorization_user_agent` | AuthorizationAgent (enum) | Hayır | Olası değerler: `DEFAULT`, `BROWSER`,`WEBVIEW` |
-| `http` | HttpConfiguration | Hayır | Ve `HttpUrlConnection` `connect_timeout` yapılandırın`read_timeout` |
-| `logging` | LoggingConfiguration | Hayır | Günlüğe kaydetme ayrıntı düzeyini belirtir. `pii_enabled`İsteğe bağlı yapılandırmalara, bir Boolean değer alan ve `log_level`,,, veya `ERROR` `WARNING` `INFO` `VERBOSE`alan. |
+| `authorities` | Listele\<Authority> | No | Uygulamanızın ihtiyaç duyacağı yetkililer listesi |
+| `authorization_user_agent` | AuthorizationAgent (enum) | No | Olası değerler: `DEFAULT` , `BROWSER` ,`WEBVIEW` |
+| `http` | HttpConfiguration | No | `HttpUrlConnection` `connect_timeout` Ve yapılandırın`read_timeout` |
+| `logging` | LoggingConfiguration | No | Günlüğe kaydetme ayrıntı düzeyini belirtir. İsteğe bağlı yapılandırmalara, `pii_enabled` bir Boolean değer alan ve,,, `log_level` `ERROR` `WARNING` `INFO` veya alan `VERBOSE` . |
 
 ### <a name="client_id"></a>client_id
 
@@ -49,7 +49,7 @@ Uygulamanızı kaydettirdiğiniz sırada kaydettiğiniz yeniden yönlendirme URI
 
 ### <a name="authorities"></a>Kaynakça
 
-Sizin tarafınızdan bilinen ve güvenilir olan yetkililer listesi. Burada listelenen yetkililere ek olarak, MSAL Microsoft 'un bilinen bulutların ve yetkililerinin bir listesini almak için Microsoft 'u da sorgular. Bu Kaynakça listesinde, uygulamanın kaydına göre uygulamanızın hedef kitlesi ile hizalanması gereken `"audience"`, yetkilisinin türünü ve diğer isteğe bağlı parametreleri belirtin. Aşağıda, kaynakçanın örnek bir listesi verilmiştir:
+Sizin tarafınızdan bilinen ve güvenilir olan yetkililer listesi. Burada listelenen yetkililere ek olarak, MSAL Microsoft 'un bilinen bulutların ve yetkililerinin bir listesini almak için Microsoft 'u da sorgular. Bu Kaynakça listesinde, `"audience"` uygulamanın kaydına göre uygulamanızın hedef kitlesi ile hizalanması gereken, yetkilisinin türünü ve diğer isteğe bağlı parametreleri belirtin. Aşağıda, kaynakçanın örnek bir listesi verilmiştir:
 
 ```javascript
 // Example AzureAD and Personal Microsoft Account
@@ -103,17 +103,17 @@ Sizin tarafınızdan bilinen ve güvenilir olan yetkililer listesi. Burada liste
 
 | Özellik | Veri türü  | Gerekli | Notlar |
 |-----------|-------------|-----------|--------|
-| `type` | Dize | Yes | Uygulama hedeflerinizin kitlesini veya hesap türünü yansıtır. Olası değerler: `AAD`,`B2C` |
-| `audience` | Nesne | Hayır | Yalnızca Type =`AAD`olduğunda geçerlidir. Uygulamanızın hedeflediği kimliği belirtir. Uygulama kaydınızdan değeri kullanın |
-| `authority_url` | Dize | Yes | Yalnızca Type =`B2C`olduğunda gereklidir. Uygulamanızın kullanması gereken yetkili URL 'sini veya ilkeyi belirtir  |
-| `default` | boole | Yes | Bir veya `"default":true` daha fazla sertifika belirtildiğinde tek bir tane gerekir. |
+| `type` | Dize | Yes | Uygulama hedeflerinizin kitlesini veya hesap türünü yansıtır. Olası değerler: `AAD` ,`B2C` |
+| `audience` | Nesne | No | Yalnızca Type = olduğunda geçerlidir `AAD` . Uygulamanızın hedeflediği kimliği belirtir. Uygulama kaydınızdan değeri kullanın |
+| `authority_url` | Dize | Yes | Yalnızca Type = olduğunda gereklidir `B2C` . Uygulamanızın kullanması gereken yetkili URL 'sini veya ilkeyi belirtir  |
+| `default` | boole | Yes | `"default":true`Bir veya daha fazla sertifika belirtildiğinde tek bir tane gerekir. |
 
 #### <a name="audience-properties"></a>Hedef kitle özellikleri
 
 | Özellik | Veri Türü  | Gerekli | Notlar |
 |-----------|-------------|------------|-------|
-| `type` | Dize | Yes | Uygulamanızın hedeflemek istediği izleyiciyi belirtir. Olası değerler: `AzureADandPersonalMicrosoftAccount`, `PersonalMicrosoftAccount`, `AzureADMultipleOrgs`,`AzureADMyOrg` |
-| `tenant_id` | Dize | Yes | Yalnızca olduğunda `"type":"AzureADMyOrg"`gereklidir. Diğer `type` değerler için isteğe bağlıdır. Bu `contoso.com`, gibi bir kiracı etki alanı veya gibi BIR Kiracı kimliği `72f988bf-86f1-41af-91ab-2d7cd011db46`olabilir |
+| `type` | Dize | Yes | Uygulamanızın hedeflemek istediği izleyiciyi belirtir. Olası değerler: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` ,`AzureADMyOrg` |
+| `tenant_id` | Dize | Yes | Yalnızca olduğunda gereklidir `"type":"AzureADMyOrg"` . Diğer değerler için isteğe bağlıdır `type` . Bu, gibi bir kiracı etki alanı veya gibi bir `contoso.com` KIRACı kimliği olabilir `72f988bf-86f1-41af-91ab-2d7cd011db46` |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
 
@@ -126,13 +126,13 @@ Olası değerler:
 
 ### <a name="multiple_clouds_supported"></a>multiple_clouds_supported
 
-Birden çok ulusal bulutu destekleyen istemciler için, belirtin `true`. Daha sonra Microsoft Identity platformu yetkilendirme ve belirteç kullanım sırasında doğru Ulusal buluta otomatik olarak yönlendirilir. İle ilişkili olan yetkiyi inceleyerek, `AuthenticationResult`oturum açmış olan hesabın Ulusal bulutunu belirleyebilirsiniz. Belirtecinin, `AuthenticationResult` belirteç istediğiniz kaynağın, buluta özgü ulusal özel uç nokta adresini sağlamayacağını unutmayın.
+Birden çok ulusal bulutu destekleyen istemciler için, belirtin `true` . Daha sonra Microsoft Identity platformu yetkilendirme ve belirteç kullanım sırasında doğru Ulusal buluta otomatik olarak yönlendirilir. İle ilişkili olan yetkiyi inceleyerek, oturum açmış olan hesabın Ulusal bulutunu belirleyebilirsiniz `AuthenticationResult` . `AuthenticationResult`Belirtecinin, belirteç istediğiniz kaynağın, buluta özgü ulusal özel uç nokta adresini sağlamayacağını unutmayın.
 
 ### <a name="broker_redirect_uri_registered"></a>broker_redirect_uri_registered
 
-Microsoft Identity broker ile uyumlu bir aracı yeniden yönlendirme URI 'SI kullanıp kullanmayacağınızı belirten bir Boole değeri. Aracı uygulamanızda `false` kullanmak istemiyorsanız, olarak ayarlayın.
+Microsoft Identity broker ile uyumlu bir aracı yeniden yönlendirme URI 'SI kullanıp kullanmayacağınızı belirten bir Boole değeri. Aracı uygulamanızda kullanmak istemiyorsanız, olarak ayarlayın `false` .
 
-Hedef kitle olarak ayarlanmış AAD yetkilisini kullanıyorsanız `"MicrosoftPersonalAccount"`, aracı kullanılmaz.
+Hedef kitle olarak ayarlanmış AAD yetkilisini kullanıyorsanız `"MicrosoftPersonalAccount"` , aracı kullanılmaz.
 
 ### <a name="http"></a>http
 
@@ -140,8 +140,8 @@ HTTP zaman aşımları için genel ayarları yapılandırın, örneğin:
 
 | Özellik | Veri türü | Gerekli | Notlar |
 | ---------|-----------|------------|--------|
-| `connect_timeout` | int | Hayır | Milisaniye cinsinden süre |
-| `read_timeout` | int | Hayır | Milisaniye cinsinden süre |
+| `connect_timeout` | int | No | Milisaniye cinsinden süre |
+| `read_timeout` | int | No | Milisaniye cinsinden süre |
 
 ### <a name="logging"></a>günlüğe kaydetme
 
@@ -149,9 +149,9 @@ Günlüğe kaydetme için aşağıdaki genel ayarlar verilmiştir:
 
 | Özellik | Veri Türü  | Gerekli | Notlar |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | boole | Hayır | Kişisel verilerin yayanıp bildirilmeyeceğini belirtir |
-| `log_level`   | boole | Hayır | Çıktının kaydedileceği günlük iletileri |
-| `logcat_enabled` | boole | Hayır | Günlüğe kaydetme arabirimine ek olarak günlük Cat 'e çıkış yapılıp yapılmayacağını belirtir |
+| `pii_enabled`  | boole | No | Kişisel verilerin yayanıp bildirilmeyeceğini belirtir |
+| `log_level`   | dize | No | Çıktının kaydedileceği günlük iletileri. Desteklenen günlük düzeyleri,,, `ERROR` `WARNING` ve içerir `INFO` `VERBOSE` . |
+| `logcat_enabled` | boole | No | Günlüğe kaydetme arabirimine ek olarak günlük Cat 'e çıkış yapılıp yapılmayacağını belirtir |
 
 ### <a name="account_mode"></a>account_mode
 
@@ -160,7 +160,7 @@ Uygulamanızda aynı anda kaç tane hesap kullanılabileceğini belirtir. Olası
 - `MULTIPLE`Varsayılanını
 - `SINGLE`
 
-Bu ayarla `PublicClientApplication` eşleşmeyen bir hesap modunu kullanarak oluşturma, özel durum oluşmasına neden olur.
+`PublicClientApplication`Bu ayarla eşleşmeyen bir hesap modunu kullanarak oluşturma, özel durum oluşmasına neden olur.
 
 Tek ve birden çok hesap arasındaki farklar hakkında daha fazla bilgi için bkz. [tek ve birden çok hesap uygulamaları](single-multi-account.md).
 
@@ -340,8 +340,8 @@ Aşağıdaki örnek, istemci KIMLIĞINI, yeniden yönlendirme URI 'sini, bir ara
 
 ## <a name="how-to-use-a-configuration-file"></a>Yapılandırma dosyası kullanma
 
-1. Bir yapılandırma dosyası oluşturun. İçinde `res/raw/auth_config.json`özel yapılandırma dosyanızı oluşturmanızı öneririz. Ancak istediğiniz yere koyabilirsiniz.
-2. ' İ oluştururken yapılandırmanıza nerede bakacağınızı MSAL anlatın `PublicClientApplication`. Örneğin:
+1. Bir yapılandırma dosyası oluşturun. İçinde özel yapılandırma dosyanızı oluşturmanızı öneririz `res/raw/auth_config.json` . Ancak istediğiniz yere koyabilirsiniz.
+2. ' İ oluştururken yapılandırmanıza nerede bakacağınızı MSAL anlatın `PublicClientApplication` . Örneğin:
 
    ```java
    //On Worker Thread

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271908"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700506"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Storm topolojileri dağıtma ve yönetme
 
@@ -42,9 +42,9 @@ Visual Studio için Data Lake araçlarını kullanarak, fırtınası kümenize C
 
 1. **Başlangıç** penceresinde **Yeni proje oluştur**' u seçin.
 
-1. **Yeni proje oluştur** penceresinde arama kutusunu seçin ve girin `Storm`. Sonra sonuç listesinden **fırtınası örneği** ' ni seçin ve **İleri**' yi seçin.
+1. **Yeni proje oluştur** penceresinde arama kutusunu seçin ve girin `Storm` . Sonra sonuç listesinden **fırtınası örneği** ' ni seçin ve **İleri**' yi seçin.
 
-1. Yeni projeyi **yapılandırın** penceresinde, bir **Proje adı**girin ve ' a gidin veya yeni projenin kaydedileceği **konumu** oluşturun. Ardından **Oluştur**’u seçin.
+1. Yeni projeyi **yapılandırın** penceresinde, bir **Proje adı**girin ve ' a gidin veya yeni projenin kaydedileceği **konumu** oluşturun. Ardından **Oluştur**'u seçin.
 
     ![Yeni proje pencerenizi, Visual Studio 'yu yapılandırın](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
@@ -74,9 +74,9 @@ Visual Studio için Data Lake araçlarını kullanarak, fırtınası kümenize C
     Bu komut, kümede örnek WordCount topolojisini başlatır. Bu topoloji rastgele cümleler oluşturur ve cümlelerde her sözcüğün geçtiği yeri sayar.
 
     > [!NOTE]  
-    > Kümeye topoloji gönderirken, önce `storm` komutunu kullanmadan önce kümeyi içeren. jar dosyasını kopyalamanız gerekir. Dosyayı kümeye kopyalamak için `scp` komutunu kullanabilirsiniz. Örneğin, `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar` girin.
+    > Kümeye topoloji gönderirken, önce komutunu kullanmadan önce kümeyi içeren. jar dosyasını kopyalamanız gerekir `storm` . Dosyayı kümeye kopyalamak için `scp` komutunu kullanabilirsiniz. Örneğin, `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar` girin.
     >
-    > *WORDCOUNT* örneği ve diğer fırtınası başlangıç örnekleri, ' de kümenize zaten dahil edilmiştir `/usr/hdp/current/storm-client/contrib/storm-starter/`.
+    > *WORDCOUNT* örneği ve diğer fırtınası başlangıç örnekleri, ' de kümenize zaten dahil edilmiştir `/usr/hdp/current/storm-client/contrib/storm-starter/` .
 
 ## <a name="submit-a-topology-programmatically"></a>Bir topolojiyi programlı olarak gönderme
 
@@ -89,7 +89,7 @@ Visual Studio kullanarak bir topoloji gönderdiğinizde, **fırtınası topoloji
 ![İzleyici topolojisi, fırtınası topolojileri Görünüm penceresi, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
 
 > [!NOTE]  
-> Ayrıca, **Sunucu Gezgini**karşı **fırtınası topolojilerini** görüntüleyebilirsiniz. **Azure** > **HDInsight**' ı genişletin, HDInsight kümesinde bir fırtınası ' a sağ tıklayın ve ardından **fırtınası topolojilerini görüntüle**' yi seçin.
+> Ayrıca, **Sunucu Gezgini**karşı **fırtınası topolojilerini** görüntüleyebilirsiniz. **Azure**  >  **HDInsight**' ı genişletin, HDInsight kümesinde bir fırtınası ' a sağ tıklayın ve ardından **fırtınası topolojilerini görüntüle**' yi seçin.
 
 Bu bileşenler hakkındaki bilgileri görüntülemek için spomalar veya cıvatları şeklini seçin. Seçilen öğe için bileşen bilgileri içeren bir araç ipucu görüntülenir.
 
@@ -112,7 +112,7 @@ Fırtınası topolojileri durduruluncaya veya küme silinene kadar çalışmaya 
 
 ## <a name="monitor-and-manage-a-topology-using-ssh-and-the-storm-command"></a>SSH ve fırtınası komutunu kullanarak topolojiyi izleme ve yönetme
 
-Yardımcı `storm` programı, çalışan topolojilerle komut satırından çalışmanıza olanak sağlar. Komutların `storm -h` tam listesi için kullanın.
+`storm`Yardımcı programı, çalışan topolojilerle komut satırından çalışmanıza olanak sağlar. `storm -h`Komutların tam listesi için kullanın.
 
 ### <a name="list-topologies"></a>Topolojileri Listele
 
@@ -163,7 +163,7 @@ storm rebalance TOPOLOGYNAME
 
 ## <a name="monitor-and-manage-a-topology-using-the-storm-ui"></a>Bir topolojiyi, fırtınası Kullanıcı arabirimini kullanarak izleme ve yönetme
 
-Fırtınası Kullanıcı arabirimi, çalışan topolojilerle çalışmaya yönelik bir Web arabirimi sağlar ve HDInsight kümenize eklenmiştir. Fırtınası Kullanıcı arabirimini görüntülemek için, açmak `https://CLUSTERNAME.azurehdinsight.net/stormui`üzere bir Web tarayıcısı kullanın, burada *clustername* kümenizin adıdır.
+Fırtınası Kullanıcı arabirimi, çalışan topolojilerle çalışmaya yönelik bir Web arabirimi sağlar ve HDInsight kümenize eklenmiştir. Fırtınası Kullanıcı arabirimini görüntülemek için, açmak üzere bir Web tarayıcısı kullanın `https://CLUSTERNAME.azurehdinsight.net/stormui` , burada *clustername* kümenizin adıdır.
 
 > [!NOTE]  
 > Bir Kullanıcı adı ve parola sağlamanız isteniyorsa, kümeyi oluştururken kullandığınız küme yönetici kullanıcı adını ve parolasını girin.
@@ -172,7 +172,7 @@ Fırtınası Kullanıcı arabirimi, çalışan topolojilerle çalışmaya yönel
 
 Fırtınası Kullanıcı arabiriminin ana sayfası aşağıdaki bilgileri sağlar:
 
-| Section | Açıklama |
+| Section | Description |
 | --- | --- |
 | Küme özeti| Fırtınası kümesiyle ilgili temel bilgiler. |
 | Nimbus Özeti | Temel Nimbus bilgilerinin listesi. |
@@ -188,7 +188,7 @@ Fırtınası Kullanıcı arabirimi ana sayfası bu Web sayfasına benzer şekild
 
 **Topoloji Özeti** bölümünden bir bağlantı seçmek topolojiyle ilgili aşağıdaki bilgileri görüntüler:
 
-| Section | Açıklama |
+| Section | Description |
 | --- | --- |
 | Topoloji Özeti | Topolojiyle ilgili temel bilgiler. |
 | Topoloji eylemleri| Topoloji için yapabileceğiniz yönetim eylemleri. Kullanılabilir eylemler, bu bölümün ilerleyen kısımlarında açıklanmıştır. |
@@ -205,7 +205,7 @@ Fırtınası topolojisi Özet sayfası, bu Web sayfasına benzer şekilde görü
 
 **Topoloji eylemleri** bölümünde, bir eylem yapmak için aşağıdaki düğmeleri seçebilirsiniz:
 
-| Düğme | Açıklama |
+| Düğme | Description |
 | --- | --- |
 | Etkinleştir | Devre dışı bırakılan bir topoloji işlemeyi sürdürür. |
 | Devre dışı bırak | Çalışan bir topolojiyi duraklatır. |
@@ -219,7 +219,7 @@ Fırtınası topolojisi Özet sayfası, bu Web sayfasına benzer şekilde görü
 
 **Spout** veya **cıvatalar** bölümlerinden bir biriktirmede seçim yapmak seçili öğeyle ilgili aşağıdaki bilgileri görüntüler:
 
-| Section | Açıklama |
+| Section | Description |
 | --- | --- |
 | Bileşen Özeti | Spout veya cıvam hakkındaki temel bilgiler. |
 | Bileşen eylemleri | **Hata Ayıkla ve** **Hata Ayıkla** düğmeleri. |
@@ -245,17 +245,17 @@ Daha fazla bilgi için bkz. [Apache Storm uı REST API](https://storm.apache.org
 
 ### <a name="base-uri"></a>Taban URI 'SI
 
-Linux tabanlı HDInsight kümelerinde REST API için temel URI, *Headnodefqdn* 'yi baş DÜĞÜMLE `https://HEADNODEFQDN:8744/api/v1/`değiştirdiğiniz URL adresinde bulabilirsiniz. Baş düğümün etki alanı adı, küme oluşturma sırasında oluşturulur ve statik değildir.
+Linux tabanlı HDInsight kümelerinde REST API için temel URI, `https://HEADNODEFQDN:8744/api/v1/` *Headnodefqdn* 'yi baş düğümle değiştirdiğiniz URL adresinde bulabilirsiniz. Baş düğümün etki alanı adı, küme oluşturma sırasında oluşturulur ve statik değildir.
 
 Küme baş düğümü için tam etki alanı adını (FQDN) çeşitli yollarla bulabilirsiniz:
 
-| FQDN bulma yöntemi | Açıklama |
+| FQDN bulma yöntemi | Description |
 | --- | --- |
-| SSH oturumu | Kümeden bir SSH `headnode -f` oturumunda komutunu kullanın. |
-| Ambarı web | Ambarı küme Web sayfasında (`https://CLUSTERNAME.azurehdinsight.net`), sayfanın üst kısmından **Hizmetler** ' i seçin ve ardından **fırtınası**' yi seçin. **Özet** sekmesinden, **fırtınası Kullanıcı arabirimi sunucusu**' nu seçin. Fırtınası Kullanıcı arabirimini barındıran düğümün FQDN 'SI ve REST API sayfanın en üstünde görüntülenir. |
-| Ambarı REST API | Fırtınası Kullanıcı arabiriminin `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` ve REST API üzerinde çalıştığı düğüm hakkında bilgi almak için komutunu kullanın. *Clustername* öğesinin iki örneğini küme adıyla değiştirin. İstendiğinde, Kullanıcı (yönetici) hesabının parolasını girin. Yanıtta, JSON çıktısının "host_name" girdisi düğümün FQDN 'sini içerir. |
+| SSH oturumu | `headnode -f`Kümeden BIR SSH oturumunda komutunu kullanın. |
+| Ambarı web | Ambarı küme Web sayfasında ( `https://CLUSTERNAME.azurehdinsight.net` ), sayfanın üst kısmından **Hizmetler** ' i seçin ve ardından **fırtınası**' yi seçin. **Özet** sekmesinden, **fırtınası Kullanıcı arabirimi sunucusu**' nu seçin. Fırtınası Kullanıcı arabirimini barındıran düğümün FQDN 'SI ve REST API sayfanın en üstünde görüntülenir. |
+| Ambarı REST API | `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"`Fırtınası Kullanıcı arabiriminin ve REST API üzerinde çalıştığı düğüm hakkında bilgi almak için komutunu kullanın. *Clustername* öğesinin iki örneğini küme adıyla değiştirin. İstendiğinde, Kullanıcı (yönetici) hesabının parolasını girin. Yanıtta, JSON çıktısının "host_name" girdisi düğümün FQDN 'sini içerir. |
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
 REST API istekleri *temel kimlik doğrulaması*kullanmalıdır, bu nedenle HDInsight kümesi için yönetici adını ve parolasını kullanmanız gerekir.
 

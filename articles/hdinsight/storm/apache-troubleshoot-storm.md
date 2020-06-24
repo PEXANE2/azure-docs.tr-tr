@@ -10,11 +10,11 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271934"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700374"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Azure HDInsight 'ı kullanarak Apache Storm sorunlarını giderme
 
@@ -46,9 +46,9 @@ HDInsight fırtınası Olay Hub Spout. jar dosyasını kullanarak Azure Event Hu
 
 Uzaklıklara yönelik denetim noktası verileri, ZooKeeper 'de Olay Hub 'ı tarafından iki kök yolda saklanır:
 
-- İşlem dışı Spout kontrol noktaları içinde `/eventhubspout`depolanır.
+- İşlem dışı Spout kontrol noktaları içinde depolanır `/eventhubspout` .
 
-- İşlemsel Spout denetim noktası verileri ' de `/transactional`depolanır.
+- İşlemsel Spout denetim noktası verileri ' de depolanır `/transactional` .
 
 ### <a name="how-to-restore"></a>Geri yükleme
 
@@ -65,7 +65,7 @@ Dışarı aktar komutu, ayarladığınız bir konuma (Azure Blob Storage veya Az
 #### <a name="export-offset-metadata"></a>Dışarı aktarma boşluğu meta verileri
 
 1. Denetim noktası kaydırması gereken kümedeki ZooKeeper kümesine gitmek için SSH kullanın.
-2. ZooKeeper fark verilerini, `/stormmetadta/zkdata` "& lt; 1 & lt; 1} aktarmak için aşağıdaki komutu çalıştırın (HDP sürüm dizesini güncelleştirdikten sonra):
+2. ZooKeeper fark verilerini, "& lt; 1 & lt; 1} aktarmak için aşağıdaki komutu çalıştırın (HDP sürüm dizesini güncelleştirdikten sonra) `/stormmetadta/zkdata` :
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter export /eventhubspout /stormmetadata/zkdata
@@ -74,7 +74,7 @@ Dışarı aktar komutu, ayarladığınız bir konuma (Azure Blob Storage veya Az
 #### <a name="import-offset-metadata"></a>İçeri aktarma meta verileri
 
 1. Denetim noktası sapmasını içeri aktarılması gereken kümedeki ZooKeeper kümesine gitmek için SSH kullanın.
-2. ZooKeeper x 1 & gt; 1 & lt; 1} ' dan `/stormmetadata/zkdata` hedef kümedeki ZooKeeper sunucusuna veri aktarmak için aşağıdaki komutu çalıştırın (HDP sürüm dizesini güncelleştirdikten sonra):
+2. ZooKeeper x 1 & gt; 1 & lt; 1} `/stormmetadata/zkdata` ' dan hedef kümedeki ZooKeeper sunucusuna veri aktarmak için aşağıdaki komutu çalıştırın (HDP sürüm dizesini güncelleştirdikten sonra):
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter import /eventhubspout /home/sshadmin/zkdata
@@ -91,9 +91,9 @@ Dışarı aktar komutu, ayarladığınız bir konuma (Azure Blob Storage veya Az
 
 ## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>Nasıl yaparım? bir kümedeki fırtınası ikililerini bulun mi?
 
-Geçerli HDP yığınının fırtınası ikilileri `/usr/hdp/current/storm-client`. Konum, hem baş düğümleri hem de çalışan düğümleri için aynıdır.
+Geçerli HDP yığınının fırtınası ikilileri `/usr/hdp/current/storm-client` . Konum, hem baş düğümleri hem de çalışan düğümleri için aynıdır.
 
-/Usr/HDP içindeki belirli HDP sürümleri için birden çok ikili olabilir (örneğin, `/usr/hdp/2.5.0.1233/storm`). `/usr/hdp/current/storm-client` Klasör, küme üzerinde çalışan en son sürüme bağlı değildir.
+/Usr/HDP içindeki belirli HDP sürümleri için birden çok ikili olabilir (örneğin, `/usr/hdp/2.5.0.1233/storm` ). `/usr/hdp/current/storm-client`Klasör, küme üzerinde çalışan en son sürüme bağlı değildir.
 
 Daha fazla bilgi için bkz. SSH ve [Apache Storm](https://storm.apache.org/) [kullanarak HDInsight kümesine bağlanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) .
 
@@ -157,13 +157,13 @@ Fırtınası Hizmetleri için [Apache Log4J 2](https://logging.apache.org/log4j/
 
 ### <a name="on-head-nodes"></a>Baş düğümlerde
 
-Nimbus Log4J yapılandırması öğesinden `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`okundu.
+Nimbus Log4J yapılandırması öğesinden okundu `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml` .
 
 ### <a name="on-worker-nodes"></a>Çalışan düğümlerinde
 
-Gözetmen Log4J yapılandırması öğesinden `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`okundu.
+Gözetmen Log4J yapılandırması öğesinden okundu `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml` .
 
-Worker Log4J yapılandırma dosyası öğesinden `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml`okundu.
+Worker Log4J yapılandırma dosyası öğesinden okundu `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml` .
 
 Örnekler`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 `/usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml`
@@ -172,9 +172,9 @@ Worker Log4J yapılandırma dosyası öğesinden `/usr/hdp/\<HDP version>/storm/
 
 ## <a name="not-a-leader-exception"></a>Öncü özel durum değil
 
-Bir topoloji gönderirken Kullanıcı şuna benzer bir hata iletisi alabilir: `Topology submission exception, cause not a leader, the current leader is NimbusInfo`.
+Bir topoloji gönderirken Kullanıcı şuna benzer bir hata iletisi alabilir: `Topology submission exception, cause not a leader, the current leader is NimbusInfo` .
 
-Bu sorunu çözmek için, kullanıcıların düğümlerin yeniden başlatılması/yeniden başlatılması için bir bilet dosyası erişmesi gerekebilir. Daha fazla bilgi için bkz [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html)..
+Bu sorunu çözmek için, kullanıcıların düğümlerin yeniden başlatılması/yeniden başlatılması için bir bilet dosyası erişmesi gerekebilir. Daha fazla bilgi için bkz. [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html).
 
 ---
 
@@ -184,6 +184,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 - Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-- [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+- [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
 - Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

@@ -1,6 +1,6 @@
 ---
 title: Azure AD Domain Services bir CentOS VM 'sine ekleme | Microsoft Docs
-description: Bir CentOS Linux sanal makinesini Azure AD Domain Services yönetilen bir etki alanına nasıl yapılandıracağınızı ve katılacağınızı öğrenin.
+description: Bir CentOS Linux sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına nasıl yapılandıracağınızı ve katılacağınızı öğrenin.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,18 +11,18 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: iainfou
-ms.openlocfilehash: d08552dcae51c897f2419d94e5e61e857247f09a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 062150c5d19a97a13fdd5567c2875bc69c839639
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655227"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734767"
 ---
-# <a name="join-a-centos-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Bir CentOS Linux sanal makinesini Azure AD Domain Services yönetilen bir etki alanına katma
+# <a name="join-a-centos-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Bir CentOS Linux sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına katma
 
-Kullanıcıların Azure 'da tek bir kimlik bilgileri kümesi kullanarak sanal makinelerde (VM) oturum açmalarına izin vermek için, VM 'Leri Azure Active Directory Domain Services (AD DS) yönetilen bir etki alanına katabilirsiniz. Bir VM 'yi Azure AD DS yönetilen bir etki alanına katdığınızda, etki alanındaki Kullanıcı hesapları ve kimlik bilgileri, sunucuları oturum açmak ve yönetmek için kullanılabilir. Azure AD DS yönetilen etki alanındaki grup üyelikleri, VM 'deki dosya ve hizmetlere erişimi denetlemenize olanak sağlamak için de uygulanır.
+Kullanıcıların Azure 'da tek bir kimlik bilgileri kümesi kullanarak sanal makinelerde (VM) oturum açmalarına izin vermek için VM 'Leri Azure Active Directory Domain Services (Azure AD DS) yönetilen bir etki alanına katabilirsiniz. Bir VM 'yi Azure AD DS yönetilen bir etki alanına katdığınızda, etki alanındaki Kullanıcı hesapları ve kimlik bilgileri, sunucuları oturum açmak ve yönetmek için kullanılabilir. Yönetilen etki alanındaki grup üyelikleri, VM 'deki dosyalara veya hizmetlere erişimi denetlemenize olanak sağlamak için de uygulanır.
 
-Bu makalede bir CentOS Linux sanal makinesini Azure AD DS yönetilen bir etki alanına nasıl katılabilmeniz gösterilmektedir.
+Bu makalede, bir CentOS Linux sanal makinesini yönetilen bir etki alanına nasıl katılabilmeniz gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -33,8 +33,8 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar
 * Abonelikle ilişkili bir Azure Active Directory kiracısı, şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
     * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
 * Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
-    * Gerekirse, ilk öğretici [bir Azure Active Directory Domain Services örneği oluşturur ve yapılandırır][create-azure-ad-ds-instance].
-* Azure AD DS yönetilen etki alanının parçası olan bir kullanıcı hesabı.
+    * Gerekirse, ilk öğretici [Azure Active Directory Domain Services yönetilen bir etki alanı oluşturur ve yapılandırır][create-azure-ad-ds-instance].
+* Yönetilen etki alanının parçası olan bir kullanıcı hesabı.
 
 ## <a name="create-and-connect-to-a-centos-linux-vm"></a>CentOS Linux VM 'si oluşturma ve bu makineye bağlanma
 
@@ -46,10 +46,10 @@ Bir CentOS Linux sanal makinesi oluşturmanız veya bu makaleyle kullanmak üzer
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
-VM 'yi oluştururken, sanal makınenın Azure AD DS yönetilen etki alanıyla iletişim kurabildiğinden emin olmak için sanal ağ ayarlarına dikkat edin:
+VM 'yi oluştururken sanal ağ ayarlarına dikkat ederek VM 'nin yönetilen etki alanıyla iletişim kurabildiğinden emin olun:
 
 * Sanal makineyi aynı veya Azure AD Domain Services etkinleştirdiğiniz bir eşlenen sanal ağa dağıtın.
-* VM 'yi Azure AD Domain Services örneğinden farklı bir alt ağa dağıtın.
+* VM 'yi yönetilen etki alanından farklı bir alt ağa dağıtın.
 
 VM dağıtıldıktan sonra, SSH kullanarak VM 'ye bağlanma adımlarını izleyin.
 
@@ -63,7 +63,7 @@ sudo vi /etc/hosts
 
 *Konaklar* dosyasında, *localhost* adresini güncelleştirin. Aşağıdaki örnekte:
 
-* *aaddscontoso.com* , Azure AD DS yönetilen etkı alanının DNS etki alanı adıdır.
+* *aaddscontoso.com* , yönetilen etkı alanının DNS etki alanı adıdır.
 * *CentOS* , yönetilen etki alanına katıldığınız CENTOS sanal makinenizin ana bilgisayar adıdır.
 
 Bu adları kendi değerlerinizle güncelleştirin:
@@ -72,11 +72,11 @@ Bu adları kendi değerlerinizle güncelleştirin:
 127.0.0.1 centos.aaddscontoso.com centos
 ```
 
-İşiniz bittiğinde, düzenleyicinin `:wq` komutunu kullanarak *konaklar* dosyasını kaydedin ve kapatın.
+İşiniz bittiğinde, düzenleyicinin komutunu kullanarak *konaklar* dosyasını kaydedin ve kapatın `:wq` .
 
 ## <a name="install-required-packages"></a>Gerekli paketleri yükleme
 
-VM 'nin VM 'ye Azure AD DS tarafından yönetilen etki alanına katılması için bazı ek paketlere ihtiyacı vardır. Bu paketleri yüklemek ve yapılandırmak için, kullanarak `yum`etki alanına ekleme araçlarını güncelleştirin ve yapılandırın:
+VM 'nin yönetilen etki alanına sanal makineye katılması için bazı ek paketlere ihtiyacı vardır. Bu paketleri yüklemek ve yapılandırmak için, kullanarak etki alanına ekleme araçlarını güncelleştirin ve yapılandırın `yum` :
 
 ```console
 sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir samba-common-tools
@@ -84,45 +84,45 @@ sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir 
 
 ## <a name="join-vm-to-the-managed-domain"></a>VM 'yi yönetilen etki alanına katma
 
-Gerekli paketler VM 'ye yüklendikten sonra, VM 'yi Azure AD DS yönetilen etki alanına katın.
+Gerekli paketler VM 'ye yüklendikten sonra VM 'yi yönetilen etki alanına katın.
 
-1. Azure AD DS `realm discover` yönetilen etki alanını bulmaya yönelik komutunu kullanın. Aşağıdaki örnek, *AADDSCONTOSO.com*bölgesini bulur. Azure AD DS yönetilen etki alanı adınızı tüm büyük harfle belirtin:
+1. `realm discover`Yönetilen etki alanını bulma komutunu kullanın. Aşağıdaki örnek, *AADDSCONTOSO.com*bölgesini bulur. Tüm büyük harfle yönetilen etki alanı adınızı belirtin:
 
     ```console
     sudo realm discover AADDSCONTOSO.COM
     ```
 
-   `realm discover` Komut Azure AD DS yönetilen etki alanınızı bulamazsa, aşağıdaki sorun giderme adımlarını gözden geçirin:
+   `realm discover`Komut yönetilen etki alanınızı bulamazsa, aşağıdaki sorun giderme adımlarını gözden geçirin:
 
-    * Etki alanına VM 'den erişilebildiğinden emin olun. Olumlu `ping aaddscontoso.com` bir yanıtın döndürülüp döndürülmediğini görmeyi deneyin.
-    * VM 'nin aynı veya Azure AD DS yönetilen etki alanının kullanılabildiği eşlenmiş bir sanal ağa dağıtıldığını denetleyin.
-    * Sanal ağ için DNS sunucu ayarlarının, Azure AD DS yönetilen etki alanının etki alanı denetleyicilerini işaret etmek üzere güncelleştirildiğinden emin olun.
+    * Etki alanına VM 'den erişilebildiğinden emin olun. `ping aaddscontoso.com`Olumlu bir yanıtın döndürülüp döndürülmediğini görmeyi deneyin.
+    * VM 'nin, yönetilen etki alanının kullanılabildiği aynı veya eşlenmiş bir sanal ağa dağıtılmış olduğunu denetleyin.
+    * Sanal ağ için DNS sunucu ayarlarının, yönetilen etki alanının etki alanı denetleyicilerini işaret etmek üzere güncelleştirildiğinden emin olun.
 
-1. Şimdi `kinit` komutunu kullanarak Kerberos başlatın. Azure AD DS yönetilen etki alanının bir parçası olan bir kullanıcı belirtin. Gerekirse, [Azure AD 'de bir gruba bir kullanıcı hesabı ekleyin](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
+1. Şimdi komutunu kullanarak Kerberos başlatın `kinit` . Yönetilen etki alanının bir parçası olan bir kullanıcı belirtin. Gerekirse, [Azure AD 'de bir gruba bir kullanıcı hesabı ekleyin](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Azure AD DS yönetilen etki alanı adının tümü büyük harfle girilmelidir. Aşağıdaki örnekte, adlı `contosoadmin@aaddscontoso.com` hesap, Kerberos 'u başlatmak için kullanılır. Azure AD DS yönetilen etki alanının bir parçası olan kendi kullanıcı hesabınızı girin:
+    Daha sonra, yönetilen etki alanı adının tümü büyük harfle girilmelidir. Aşağıdaki örnekte, adlı hesap, `contosoadmin@aaddscontoso.com` Kerberos 'u başlatmak için kullanılır. Yönetilen etki alanının bir parçası olan kendi kullanıcı hesabınızı girin:
 
     ```console
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. Son olarak, `realm join` komutunu kullanarak makineyi Azure AD DS yönetilen etki alanına katın. Önceki `kinit` komutta belirttiğiniz Azure AD DS yönetilen etki alanının bir parçası olan kullanıcı hesabını kullanın, örneğin `contosoadmin@AADDSCONTOSO.COM`:
+1. Son olarak, komutunu kullanarak makineyi yönetilen etki alanına katın `realm join` . Önceki komutta belirttiğiniz yönetilen etki alanının bir parçası olan kullanıcı hesabını kullanın `kinit` , örneğin `contosoadmin@AADDSCONTOSO.COM` :
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM'
     ```
 
-VM 'nin Azure AD DS yönetilen etki alanına katılması birkaç dakika sürer. Aşağıdaki örnek çıktı, sanal makinenin Azure AD DS yönetilen etki alanına başarıyla katıldığını göstermektedir:
+VM 'nin yönetilen etki alanına katılması birkaç dakika sürer. Aşağıdaki örnek çıktıda VM 'nin yönetilen etki alanına başarıyla katıldığını gösterilmektedir:
 
 ```output
 Successfully enrolled machine in realm
 ```
 
-VM 'niz etki alanına ekleme işlemini başarıyla tamamlayamadıysanız, VM 'nin ağ güvenlik grubunun TCP + UDP bağlantı noktası 464 üzerinde giden Kerberos trafiğinin Azure AD DS yönetilen etki alanınıza yönelik sanal ağ alt ağına izin verdiğinden emin olun.
+VM 'niz etki alanına ekleme işlemini başarıyla tamamlayamadıysanız, VM 'nin ağ güvenlik grubunun, TCP + UDP bağlantı noktası 464 üzerinde giden Kerberos trafiğine, yönetilen etki alanınıza ait sanal ağ alt ağına izin verdiğinden emin olun.
 
 ## <a name="allow-password-authentication-for-ssh"></a>SSH için parola kimlik doğrulamasına izin ver
 
-Varsayılan olarak, kullanıcılar yalnızca SSH ortak anahtar tabanlı kimlik doğrulaması kullanarak bir VM 'de oturum açabilirler. Parola tabanlı kimlik doğrulaması başarısız olur. VM 'yi Azure AD DS yönetilen bir etki alanına katdığınızda, bu etki alanı hesaplarının parola tabanlı kimlik doğrulamasını kullanması gerekir. Aşağıdaki gibi, parola tabanlı kimlik doğrulamasına izin vermek için SSH yapılandırmasını güncelleştirin.
+Varsayılan olarak, kullanıcılar yalnızca SSH ortak anahtar tabanlı kimlik doğrulaması kullanarak bir VM 'de oturum açabilirler. Parola tabanlı kimlik doğrulaması başarısız olur. VM 'yi yönetilen bir etki alanına katdığınızda, bu etki alanı hesaplarının parola tabanlı kimlik doğrulaması kullanması gerekir. Aşağıdaki gibi, parola tabanlı kimlik doğrulamasına izin vermek için SSH yapılandırmasını güncelleştirin.
 
 1. *Sshd_conf* dosyasını bir düzenleyici ile açın:
 
@@ -136,7 +136,7 @@ Varsayılan olarak, kullanıcılar yalnızca SSH ortak anahtar tabanlı kimlik d
     PasswordAuthentication yes
     ```
 
-    İşiniz bittiğinde, düzenleyicinin `:wq` komutunu kullanarak *sshd_conf* dosyasını kaydedin ve kapatın.
+    İşiniz bittiğinde, düzenleyicinin komutunu kullanarak *sshd_conf* dosyasını kaydedin ve kapatın `:wq` .
 
 1. Değişiklikleri uygulamak ve kullanıcıların bir parola kullanarak oturum açmasını sağlamak için SSH hizmetini yeniden başlatın:
 
@@ -146,7 +146,7 @@ Varsayılan olarak, kullanıcılar yalnızca SSH ortak anahtar tabanlı kimlik d
 
 ## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>' AAD DC yöneticileri ' Grup sudo ayrıcalıklarına izin verme
 
-CentOS sanal makinesinde *AAD DC Administrators* grubu yönetici ayrıcalıklarının üyelerine izin vermek için, */etc/sudoers*'a bir giriş eklersiniz. Eklendikten sonra *AAD DC yöneticileri* grubunun üyeleri, CENTOS sanal makinesinde `sudo` komutunu kullanabilir.
+CentOS sanal makinesinde *AAD DC Administrators* grubu yönetici ayrıcalıklarının üyelerine izin vermek için, */etc/sudoers*'a bir giriş eklersiniz. Eklendikten sonra *AAD DC yöneticileri* grubunun üyeleri, `sudo` CentOS sanal makinesinde komutunu kullanabilir.
 
 1. Şu şekilde düzenlenecek *sudoers* dosyasını açın:
 
@@ -161,13 +161,13 @@ CentOS sanal makinesinde *AAD DC Administrators* grubu yönetici ayrıcalıklar�
     %AAD\ DC\ Administrators@aaddscontoso.com ALL=(ALL) NOPASSWD:ALL
     ```
 
-    İşiniz bittiğinde düzenleyicinin `:wq` komutunu kullanarak düzenleyiciyi kaydedin ve kapatın.
+    İşiniz bittiğinde düzenleyicinin komutunu kullanarak düzenleyiciyi kaydedin ve kapatın `:wq` .
 
 ## <a name="sign-in-to-the-vm-using-a-domain-account"></a>Bir etki alanı hesabı kullanarak VM 'de oturum açma
 
-VM 'nin Azure AD DS tarafından yönetilen etki alanına başarıyla katıldığını doğrulamak için, bir etki alanı kullanıcı hesabı kullanarak yeni bir SSH bağlantısı başlatın. Bir giriş dizininin oluşturulduğunu ve etki alanındaki grup üyeliğinin uygulandığını doğrulayın.
+VM 'nin yönetilen etki alanına başarıyla katıldığını doğrulamak için, bir etki alanı kullanıcı hesabı kullanarak yeni bir SSH bağlantısı başlatın. Bir giriş dizininin oluşturulduğunu ve etki alanındaki grup üyeliğinin uygulandığını doğrulayın.
 
-1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. `ssh -l` Komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın, `contosoadmin@aaddscontoso.com` ÖRNEĞIN, *CentOS.aaddscontoso.com*gibi sanal makinenizin adresini girin. Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
+1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. Komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın, örneğin, `ssh -l` `contosoadmin@aaddscontoso.com` *CentOS.aaddscontoso.com*gibi sanal makinenizin adresini girin. Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
 
     ```console
     ssh -l contosoadmin@AADDSCONTOSO.com centos.aaddscontoso.com
@@ -187,9 +187,9 @@ VM 'nin Azure AD DS tarafından yönetilen etki alanına başarıyla katıldığ
     id
     ```
 
-    Grup üyeliklerinizi Azure AD DS yönetilen etki alanından görmeniz gerekir.
+    Grup üyeliklerinizi yönetilen etki alanından görmeniz gerekir.
 
-1. VM 'de *AAD DC Administrators* grubunun bir üyesi olarak oturum açtıysanız, `sudo` komutunu doğru şekilde kullanıp kullandığınıza bakın:
+1. VM 'de *AAD DC Administrators* grubunun bir üyesi olarak oturum açtıysanız, komutunu doğru şekilde kullanıp kullandığınıza bakın `sudo` :
 
     ```console
     sudo yum update
@@ -197,7 +197,7 @@ VM 'nin Azure AD DS tarafından yönetilen etki alanına başarıyla katıldığ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VM 'yi Azure AD DS tarafından yönetilen etki alanına bağlama veya bir etki alanı hesabıyla oturum açma sorunları yaşıyorsanız, bkz. [etki alanına ekleme sorunlarını giderme](join-windows-vm.md#troubleshoot-domain-join-issues).
+VM 'yi yönetilen etki alanına bağlama veya bir etki alanı hesabıyla oturum açma sorunları yaşıyorsanız, bkz. [etki alanına ekleme sorunlarını giderme](join-windows-vm.md#troubleshoot-domain-join-issues).
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

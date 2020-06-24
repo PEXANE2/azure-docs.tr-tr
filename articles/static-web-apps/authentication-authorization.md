@@ -7,14 +7,14 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 1ac1df402c25c0f6e5f07ce8d9631c01c0fa504c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4c72a80b164e8ca1dd649503dcb968efd92be797
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655257"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297078"
 ---
-# <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için kimlik doğrulama ve yetkilendirme
+# <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure Static Web Apps Önizlemesi için kimlik doğrulaması ve yetkilendirme
 
 Azure statik Web Apps, kimlik doğrulamasını aşağıdaki sağlayıcılarla yöneterek kimlik doğrulama deneyimini kolaylaştırır:
 
@@ -24,7 +24,7 @@ Azure statik Web Apps, kimlik doğrulamasını aşağıdaki sağlayıcılarla y�
 - Google<sup>1</sup>
 - Twitter
 
-Sağlayıcıya özgü [davetler](#invitations) kullanıcıları rollerle ilişkilendirir ve yetkili kullanıcılara _rotalar. JSON_ dosyasında tanımlanan kurallara göre [yollara](routes.md) erişim verilir.
+Sağlayıcıya özgü [davetler](#invitations) kullanıcıları rollerle ilişkilendirir ve yetkili kullanıcılara, _routes.js_ dosyasında tanımlanan kurallara göre [yollara](routes.md) erişim verilir.
 
 Tüm kimlik doğrulama sağlayıcıları varsayılan olarak etkindir. Bir kimlik doğrulama sağlayıcısını kısıtlamak için özel bir yol kuralıyla [erişimi engelleyin](#block-an-authorization-provider) .
 
@@ -37,13 +37,13 @@ Statik bir Web uygulamasına erişen her Kullanıcı bir veya daha fazla role ai
 - **anonim**: tüm kullanıcılar _anonim_ role otomatik olarak aittir.
 - **kimliği doğrulanan**: oturum açan tüm kullanıcılar _kimliği doğrulanmış_ role aittir.
 
-Yerleşik rollerin ötesinde, yeni roller oluşturabilir, bunları davet aracılığıyla kullanıcılara atayabilir ve _yollar. JSON_ dosyasında bunlara başvurabilirsiniz.
+Yerleşik rollerin ötesinde, yeni roller oluşturabilir, bunları davet aracılığıyla kullanıcılara atayabilir ve dosyadaki _routes.js_ bunlara başvurabilirsiniz.
 
 ## <a name="role-management"></a>Rol yönetimi
 
 ### <a name="add-a-user-to-a-role"></a>Bir role Kullanıcı ekleme
 
-Web sitenize Kullanıcı eklemek için, kullanıcıları belirli rollerle ilişkilendirmenizi sağlayan davetler oluşturursunuz. Roller, _rotalar. JSON_ dosyasında tanımlanır ve saklanır.
+Web sitenize Kullanıcı eklemek için, kullanıcıları belirli rollerle ilişkilendirmenizi sağlayan davetler oluşturursunuz. Roller dosyada _routes.js_ tanımlanır ve saklanır.
 
 <a name="invitations" id="invitations"></a>
 
@@ -192,6 +192,10 @@ Sağlayıcıyı engellemek için, engellenen sağlayıcıya özgü rotaya yönel
   "statusCode": "404"
 }
 ```
+
+## <a name="restrictions"></a>Kısıtlamalar
+
+Genel kısıtlamalar ve sınırlamalar için [Kotalar makalesine](quotas.md) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,18 +1,18 @@
 ---
-title: Kubernetes ile yerel Işlem nasıl işe yarar?
+title: Kubernetes ile Yerel İşlem nasıl çalışır?
 services: azure-dev-spaces
 ms.date: 06/02/2020
 ms.topic: conceptual
 description: Geliştirme bilgisayarınızı Kubernetes kümenize bağlamak için Kubernetes ile yerel Işlem kullanma işlemlerini açıklar
 keywords: Kubernetes, Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar ile yerel Işlem
-ms.openlocfilehash: 443783eb7f5359318cf8efbec8b6466a80fa1e85
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: dd126fc55a86b1de115239a31e5adb7b1d264846
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84316603"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974430"
 ---
-# <a name="how-local-process-with-kubernetes-works"></a>Kubernetes ile yerel Işlem nasıl işe yarar?
+# <a name="how-local-process-with-kubernetes-works"></a>Kubernetes ile Yerel İşlem nasıl çalışır?
 
 Kubernetes ile yerel Işlem, geliştirme bilgisayarınızda kod çalıştırmanıza ve hata ayıklamanıza karşın uygulamanızın veya hizmetlerinizin geri kalanı ile Kubernetes kümenize bağlı olmaya devam etmenize olanak tanır. Örneğin, birbirine bağlı çok sayıda hizmet ve veritabanına sahip büyük bir mikro hizmet mimariniz varsa, bu bağımlılıkların geliştirme bilgisayarınızda çoğaltılması zor olabilir. Ayrıca, iç döngü geliştirme sırasında her kod değişikliği için Kubernetes kümenize kod oluşturup dağıtmak, bir hata ayıklayıcıyla yavaş, zaman alabilir ve kullanılması zor olabilir.
 
@@ -42,6 +42,15 @@ Kümenize bir bağlantı kurduktan sonra, kodu kapsayıcı olmadan yerel olarak 
 ## <a name="diagnostics-and-logging"></a>Tanılama ve günlüğe kaydetme
 
 Kümenize bağlanmak için Kubernetes ile yerel Işlem kullanılırken, kümenizdeki tanılama günlükleri geliştirme bilgisayarınızın [geçici dizinine][azds-tmp-dir]kaydedilir. Visual Studio Code kullanarak, geçerli ortam değişkenlerini ve DNS girdilerini kümeinizden yazdırmak için *tanı bilgilerini göster* komutunu da kullanabilirsiniz.
+
+## <a name="limitations"></a>Sınırlamalar
+
+Kubernetes ile yerel Işlem aşağıdaki sınırlamalara sahiptir:
+
+* Kubernetes ile yerel Işlem, tek bir hizmet için trafiği geliştirme bilgisayarınıza yönlendirir. Aynı anda birden çok hizmeti yeniden yönlendirmek için Kubernetes ile yerel Işlem kullanamazsınız.
+* Bu hizmete bağlanabilmek için bir hizmetin tek bir pod tarafından desteklenen olması gerekir. Çoğaltmaları olan bir hizmet gibi birden fazla pods içeren bir hizmete bağlanamazsınız.
+* Pod, başarıyla bağlanmak için Kubernetes ile yerel Işlem için bu Pod 'da çalışan tek bir kapsayıcıya sahip olabilir. Kubernetes ile yerel işlem, hizmet kafesleri tarafından eklenen sepet kapsayıcıları gibi ek kapsayıcıları olan Pod ile hizmetlere bağlanamaz.
+* Kubernetes ile yerel Işlemin, ana bilgisayar Dosyanızı düzenlemek için geliştirme bilgisayarınızda çalışması için yükseltilmiş izinlere ihtiyacı vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
