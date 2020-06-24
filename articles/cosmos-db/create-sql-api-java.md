@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 236cff59ffbef835b5a57a3d5a0d223cfebf34ae
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bb711dc67df51edc569f23bd1e6c54eef55012d2
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647693"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115406"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Hızlı başlangıç: Azure Cosmos DB SQL API verilerini yönetmek için bir Java uygulaması oluşturma
 
@@ -22,7 +22,7 @@ ms.locfileid: "83647693"
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java SDK v4](create-sql-api-java.md)
+> * [Java SDK’sı v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -44,7 +44,7 @@ Bu hızlı başlangıçta, Azure portal Azure Cosmos DB bir SQL API hesabı olu�
 
 *Cosmos DB hesabının yapısı.* API veya programlama dilinden bağımsız olarak, bir Cosmos DB *hesabı* sıfır veya daha fazla *veritabanı*içerir, bir *veritabanı* (DB) sıfır veya daha fazla *kapsayıcı*içerir ve bir *kapsayıcı* , aşağıdaki diyagramda gösterildiği gibi sıfır veya daha fazla öğe içerir:
 
-![Azure Cosmos hesabı varlıkları](./media/databases-containers-items/cosmos-entities.png)
+:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos hesabı varlıkları" border="false":::
 
 Burada veritabanları, kapsayıcılar ve öğeler hakkında daha fazla bilgi edinebilirsiniz [.](databases-containers-items.md) Birkaç önemli özellik, kapsayıcı düzeyinde, *sağlanan aktarım hızı* ve *bölüm anahtarı*arasında tanımlanır. 
 

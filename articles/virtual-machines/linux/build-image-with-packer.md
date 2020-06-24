@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: fa899764e4e80e7eba849e02d617c8c1ca2ae410
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 587e339f2c2d91792ef1c342f7a1f8363da63626
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792709"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106001"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Azure 'da Linux sanal makine görüntüleri oluşturmak için Packer kullanma
 Azure 'daki her sanal makine (VM), Linux dağıtımını ve işletim sistemi sürümünü tanımlayan bir görüntüden oluşturulur. Görüntüler, önceden yüklenmiş uygulamaları ve konfigürasyonları içerebilir. Azure Marketi, en yaygın dağıtımlar ve uygulama ortamları için birçok birinci ve üçüncü taraf görüntü sağlar veya gereksinimlerinize uygun kendi özel görüntülerinizi oluşturabilirsiniz. Bu makalede, Azure 'da özel görüntüler tanımlamak ve derlemek için açık kaynak aracı [Packer](https://www.packer.io/) 'ın nasıl kullanılacağı açıklanır.
@@ -63,14 +63,14 @@ Sonraki adımda bu iki komuttan gelen çıktıyı kullanırsınız.
 ## <a name="define-packer-template"></a>Packer şablonunu tanımla
 Görüntü oluşturmak için JSON dosyası olarak bir şablon oluşturursunuz. Şablonda, gerçek yapı işlemini yürüten oluşturucular ve hazırlayıcılar tanımlarsınız. Packer, Azure için, önceki adımda oluşturulan hizmet sorumlusu kimlik bilgileri gibi Azure kaynaklarını tanımlamanızı sağlayan bir [hazırlayıcı](https://www.packer.io/docs/builders/azure.html) içerir.
 
-*Ubuntu. JSON* adlı bir dosya oluşturun ve aşağıdaki içeriği yapıştırın. Aşağıdaki değerleri girin:
+*Üzerindeubuntu.js* adlı bir dosya oluşturun ve aşağıdaki içeriği yapıştırın. Aşağıdaki değerleri girin:
 
 | Parametre                           | Nereden alınır |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | `az ad sp` Create komutuyla çıktının ilk satırı- *AppID* |
-| *client_secret*                     | Create komutu- *Password* öğesinden `az ad sp` ikinci çıkış satırı |
-| *tenant_id*                         | `az ad sp` Create komutuyla üçüncü çıkış satırı- *kiracı* |
-| *subscription_id*                   | `az account show` Komutun çıktısı |
+| *client_id*                         | Create komutuyla çıktının ilk satırı `az ad sp` - *AppID* |
+| *client_secret*                     | `az ad sp`Create komutu- *Password* öğesinden ikinci çıkış satırı |
+| *tenant_id*                         | Create komutuyla üçüncü çıkış satırı `az ad sp` - *kiracı* |
+| *subscription_id*                   | Komutun çıktısı `az account show` |
 | *managed_image_resource_group_name* | İlk adımda oluşturduğunuz kaynak grubunun adı |
 | *managed_image_name*                | Oluşturulan yönetilen disk görüntüsünün adı |
 
@@ -119,12 +119,12 @@ Görüntü oluşturmak için JSON dosyası olarak bir şablon oluşturursunuz. �
 Bu şablon Ubuntu 16,04 LTS görüntüsünü oluşturur, NGıNX 'i yükleyip VM 'yi kaldırır.
 
 > [!NOTE]
-> Bu şablonda Kullanıcı kimlik bilgilerini sağlamak için öğesini genişletirseniz, Azure aracısının yerine okumak `-deprovision` üzere sağlamasını kaldırtan sağlayıcısı Oluştur komutunu ayarlayın. `deprovision+user`
-> Bayrak `+user` , tüm Kullanıcı HESAPLARıNı kaynak sanal makineden kaldırır.
+> Bu şablonda Kullanıcı kimlik bilgilerini sağlamak için öğesini genişletirseniz, Azure aracısının yerine okumak üzere sağlamasını kaldırtan sağlayıcısı Oluştur komutunu ayarlayın `-deprovision` `deprovision+user` .
+> `+user`Bayrak, tüm Kullanıcı hesaplarını kaynak sanal makineden kaldırır.
 
 
 ## <a name="build-packer-image"></a>Packer görüntüsü oluştur
-Yerel makinenizde zaten Packer yüklü değilse, [Packer yükleme yönergelerini izleyin](https://www.packer.io/docs/install/index.html).
+Yerel makinenizde zaten Packer yüklü değilse, [Packer yükleme yönergelerini izleyin](https://www.packer.io/docs/install).
 
 Packer şablonu dosyanızı aşağıdaki şekilde belirterek görüntüyü oluşturun:
 
@@ -197,7 +197,7 @@ Packer 'ın VM 'yi oluşturması, hazırlayıcılar çalıştırması ve dağıt
 
 
 ## <a name="create-vm-from-azure-image"></a>Azure görüntüsünden VM oluşturma
-Artık, [az VM Create](/cli/azure/vm)komutuyla görüntinizden bir VM oluşturabilirsiniz. `--image` Parametresiyle oluşturduğunuz görüntüyü belirtin. Aşağıdaki örnek *Mypackerımage* öğesinden *myvm* adlı bir VM oluşturur ve henüz yoksa SSH anahtarlarını oluşturur:
+Artık, [az VM Create](/cli/azure/vm)komutuyla görüntinizden bir VM oluşturabilirsiniz. Parametresiyle oluşturduğunuz görüntüyü belirtin `--image` . Aşağıdaki örnek *Mypackerımage* öğesinden *myvm* adlı bir VM oluşturur ve henüz yoksa SSH anahtarlarını oluşturur:
 
 ```azurecli
 az vm create \
@@ -210,7 +210,7 @@ az vm create \
 
 Sanal makineleri, Packer görüntüsünden farklı bir kaynak grubunda veya bölgede oluşturmak istiyorsanız, görüntü adı yerine görüntü KIMLIĞINI belirtin. Görüntü KIMLIĞINI [az Image Show](/cli/azure/image#az-image-show)ile elde edebilirsiniz.
 
-VM 'nin oluşturulması birkaç dakika sürer. VM oluşturulduktan sonra, Azure CLı tarafından `publicIpAddress` görüntülenmiş olarak bir göz atın. Bu adres, NGıNX sitesine bir Web tarayıcısı aracılığıyla erişmek için kullanılır.
+VM 'nin oluşturulması birkaç dakika sürer. VM oluşturulduktan sonra, `publicIpAddress` Azure CLI tarafından görüntülenmiş olarak bir göz atın. Bu adres, NGıNX sitesine bir Web tarayıcısı aracılığıyla erişmek için kullanılır.
 
 Web trafiğinin VM’nize erişmesine izin vermek için, [az vm open-port](/cli/azure/vm) komutuyla İnternet’te 80 numaralı bağlantı noktasını açın:
 

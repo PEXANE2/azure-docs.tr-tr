@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
 ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259974"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707744"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Data Box Disk’inizi yönetmek için Azure portalını kullanma
 
@@ -51,7 +51,7 @@ Siparişi kopyalamak için aşağıdaki adımları gerçekleştirin.
 
     ![Siparişi kopyalama 1](media/data-box-portal-ui-admin/clone-order1.png)
 
-2.  Siparişin tüm ayrıntıları aynı şekilde korunur. Siparişin adı, özgün siparişin adına *-Kopya* eklenerek oluşturulur. Gizlilik bilgilerini gözden geçirdiğinizi onaylamak için onay kutusunu seçin. **Oluştur**' a tıklayın.    
+2.  Siparişin tüm ayrıntıları aynı şekilde korunur. Siparişin adı, özgün siparişin adına *-Kopya* eklenerek oluşturulur. Gizlilik bilgilerini gözden geçirdiğinizi onaylamak için onay kutusunu seçin. **Oluştur**'a tıklayın.    
 
 Kopya sipariş birkaç dakikada oluşturulur ve portal yeni siparişi gösterecek şekilde güncelleştirilir.
 
@@ -71,7 +71,7 @@ Yalnızca tamamlanan veya iptal edilen siparişleri silebilirsiniz. Siparişi si
 
     ![Data Box Disk siparişini silme 1](media/data-box-portal-ui-admin/delete-order1.png)
 
-3. Siparişi silme işlemini onaylamanız istendiğinde siparişin adını girin. **Sil**' e tıklayın.
+3. Siparişi silme işlemini onaylamanız istendiğinde siparişin adını girin. **Sil**'e tıklayın.
 
      ![Data Box Disk siparişini silme 2](media/data-box-portal-ui-admin/delete-order2.png)
 
@@ -119,7 +119,7 @@ Bildirim ayrıntılarını düzenlemek için aşağıdaki adımları gerçekleş
 
 ## <a name="view-order-status"></a>Sipariş durumunu görüntüleme
 
-|Sipariş durumu |Açıklama |
+|Sipariş durumu |Description |
 |---------|---------|
 |Sipariş edildi     | Sipariş başarıyla oluşturuldu. <br> Diskler kullanılabilir durumda değilse bir bildirim gönderilir. <br>Diskler kullanılabilir durumdaysa Microsoft tarafından gönderilecek disk belirlenir ve disk paketi hazırlanır.        |
 |İşlendi     | Siparişin işlenmesi tamamlandı. <br> Sipariş sırasında aşağıdaki eylemler gerçekleştirilir:<li>Diskler AES-128 BitLocker şifrelemesi kullanılarak şifrelenir. </li> <li>Data Box Disk, yetkisiz erişimi önlemek için kilitlenir.</li><li>Bu işlem sırasında disklerin kilidini açan destek anahtarı oluşturulur.</li>        |

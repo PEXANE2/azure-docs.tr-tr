@@ -4,12 +4,12 @@ description: Azure CLI ile bir Batch işi çalıştırmayı hızlı bir şekilde
 ms.topic: quickstart
 ms.date: 05/19/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: a4d2e791d810a55b765669c8e909cf448a68fc99
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 1e3becaa8a71fbb0f3c7baea97b57a03722a99cc
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266908"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262693"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak Batch hesabı oluşturma
 
@@ -23,7 +23,7 @@ Etkin bir Azure aboneliğiniz olmalıdır.
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
+## <a name="create-a-batch-account-with-storage"></a>Depolama ile Batch hesabı oluşturma
 
 ### <a name="review-the-template"></a>Şablonu gözden geçirme
 
@@ -34,7 +34,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 Şablonda iki Azure kaynağı tanımlanmıştır:
 
 - [Microsoft. Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): bir depolama hesabı oluşturur.
-- [Microsoft. Batch/batchAccounts](https://docs.microsoft.com/azure/templates/microsoft.batch/batchaccounts): bir Batch hesabı oluşturur.
+- [Microsoft.Batch/batchAccounts](https://docs.microsoft.com/azure/templates/microsoft.batch/batchaccounts): bir Batch hesabı oluşturur.
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 

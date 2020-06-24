@@ -4,18 +4,18 @@ description: Google güvenlik ve gizlilik ilkelerinin Gmail gibi Google bağlay�
 services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
-ms.topic: article
-ms.date: 04/24/2020
-ms.openlocfilehash: 590ad6a52d768c7e59d8d97691e146205e43cadd
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.topic: conceptual
+ms.date: 06/05/2020
+ms.openlocfilehash: 384335898c7cd6b379c6107152b49e9931cf513a
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628717"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194985"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Azure Logic Apps 'de Google bağlayıcıları için veri güvenliği ve gizlilik ilkeleri
 
-**1 mayıs 2020**' den Itibaren, Google 'ın [veri güvenliği ve gizlilik ilkeleri](https://www.blog.google/technology/safety-security/project-strobe/) nedeniyle yapılan değişiklikler [Gmail bağlayıcısını](https://docs.microsoft.com/connectors/gmail/)kullanan mantıksal uygulama iş akışlarınızı etkileyebilir. Mantıksal uygulamalarınız Gmail bağlayıcısını bir Gmail tüketicisi hesabı (veya @gmail.com @googlemail.comile biten e-posta adresi) ile kullanıyorsa, Logic Apps yalnızca belirli [Google-onaylanan Tetikleyiciler, Eylemler ve bağlayıcılar](#approved-connectors)kullanabilir. 
+**1 mayıs 2020**' den Itibaren, Google 'ın [veri güvenliği ve gizlilik ilkeleri](https://www.blog.google/technology/safety-security/project-strobe/) nedeniyle yapılan değişiklikler [Gmail bağlayıcısını](https://docs.microsoft.com/connectors/gmail/)kullanan mantıksal uygulama iş akışlarınızı etkileyebilir. Mantıksal uygulamalarınız Gmail bağlayıcısını bir Gmail tüketicisi hesabı (veya ile biten e-posta adresi) ile kullanıyorsa @gmail.com @googlemail.com , Logic Apps yalnızca belirli [Google-onaylanan Tetikleyiciler, Eylemler ve bağlayıcılar](#approved-connectors)kullanabilir.
 
 > [!NOTE]
 > Mantıksal uygulamalarınız Gmail bağlayıcısını bir G-Suite iş hesabıyla (özel bir etki alanı olan e-posta adresi) kullanıyorsa, mantıksal uygulamalarınız etkilenmez ve Gmail bağlayıcısını kullanma konusunda hiçbir kısıtlama yoktur.
@@ -36,11 +36,31 @@ Bu ilke altında, bir Gmail tüketici hesabı kullandığınızda Gmail bağlay�
 
 * Logic Apps yerleşik Tetikleyiciler ve eylemler: Batch, Control, veri Işlemleri, tarih saat, düz dosya, sıvı, Istek, zamanlama, değişkenler ve XML
 
+  HTTP, Azure Işlevleri, Azure Logic Apps ve diğerleri gibi Google tarafından onaylanmamış yerleşik Tetikleyiciler ve Eylemler, uygulama her yerden veri gönderebildiğinden ve alabileceği için Gmail bağlayıcısıyla uyumlu olmayan bir mantıksal uygulama oluşturun.
+
 * Google hizmetleri: Gmail, Google Takvim, Google Contacts, Google Drive, Google sayfaları ve Google görevleri
 
 * Onaylanan Microsoft Hizmetleri: Dynamics 365, Excel Online, Microsoft ekipleri, Office 365, OneDrive ve SharePoint Online
 
 * Müşteri tarafından yönetilen veri kaynakları için bağlayıcılar: FTP, RSS, SFTP, SMTP ve SQL Server
+
+## <a name="non-compliant-examples"></a>Uyumlu olmayan örnekler
+
+Aşağıda, Google tarafından onaylanmamış yerleşik Tetikleyiciler ve eylemler ya da yönetilen bağlayıcılar ile Gmail bağlayıcısını kullanan bazı örnekler verilmiştir:
+
+* Bu mantıksal uygulama, HTTP yerleşik tetikleyicisiyle Gmail bağlayıcısını kullanır:
+
+  ![Uyumlu olmayan mantıksal uygulama-örnek 1](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-1.png)
+  
+  Mantıksal uygulama, onaylanan Google Takvim bağlayıcısını de kullanır.
+
+* Bu mantıksal uygulama, Azure Blob depolama Bağlayıcısı ile Gmail bağlayıcısını kullanır:
+
+  ![Uyumlu olmayan mantıksal uygulama-örnek 2](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-2.png)
+
+* Bu mantıksal uygulama, Twitter Bağlayıcısı ile Gmail bağlayıcısını kullanır:
+
+  ![Uyumlu olmayan mantıksal uygulama-örnek 3](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-3.png)
 
 En son bilgiler için [Gmail bağlayıcısının teknik başvuru belgelerine](https://docs.microsoft.com/connectors/gmail/)bakın.
 
@@ -70,7 +90,7 @@ Google istemci uygulamanızdan Gmail Tetikleyiciniz veya eyleminizdeki istemci K
 
 1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
-1. Yeni bir Gmail tetikleyicisi veya eylemi ekliyorsanız ve tamamen yeni bir bağlantı oluşturuyorsanız, sonraki adımla devam edin. Aksi takdirde, Gmail tetikleyicisinde veya eyleminde **bağlantıyı** > Değiştir**Yeni Ekle**' yi seçin, örneğin:
+1. Yeni bir Gmail tetikleyicisi veya eylemi ekliyorsanız ve tamamen yeni bir bağlantı oluşturuyorsanız, sonraki adımla devam edin. Aksi takdirde, Gmail tetikleyicisinde veya eyleminde **Bağlantıyı Değiştir**  >  **Yeni Ekle**' yi seçin, örneğin:
 
    !["Bağlantıyı değiştir" > "Yeni Ekle" seçeneğini belirleyin](./media/connectors-google-data-security-privacy-policy/change-gmail-connection.png)
 
@@ -78,7 +98,7 @@ Google istemci uygulamanızdan Gmail Tetikleyiciniz veya eyleminizdeki istemci K
 
    ![Bağlantı bilgilerini girin](./media/connectors-google-data-security-privacy-policy/authentication-type-bring-your-own.png)
 
-   | Özellik | Değer | Açıklama |
+   | Özellik | Değer | Description |
    |----------|-------|-------------|
    | **Kimlik doğrulama türü** | **Kendi uygulamanızı getir** | Kimlik doğrulaması için kendi istemci uygulamanızı kullanacağınızı belirtir. |
    | **İstemci KIMLIĞI** | <*istemci KIMLIĞI*> | Google istemci uygulamanızdan istemci KIMLIĞI |

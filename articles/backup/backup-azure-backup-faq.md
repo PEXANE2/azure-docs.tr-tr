@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 04921cd617a688ebcf31bcec29cf26681914f44b
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 4f7c83df738b72d57719de9b9ef650d119ac5dc4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247674"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255169"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -75,7 +75,7 @@ Evet.
 
 Azure Backup, Azure Backup Sunucusu ve DPM kullanılarak korunan dosyaların, klasörlerin ve uygulamaların yedeklenmesi için şu işletim sistemlerini destekler.
 
-**İşletim Sistemi** | **SKU** | **Bilgileri**
+**İşletim Sistemi** | **SKU** | **Ayrıntılar**
 --- | --- | ---
 İş İstasyonu | |
 Windows 10 64 bit | Enterprise, Pro, Home | Makinelerin en son hizmet paketlerini ve güncelleştirmeleri çalıştırması gerekir.
@@ -104,7 +104,7 @@ Boyut sınırları şöyledir:
 İşletim sistemi/makine | Veri kaynağının boyut sınırı
 --- | ---
 Windows 8 veya üzeri | 54.400 GB
-Windows 7 |1700 GB
+Windows 7 |1700 GB
 Windows Server 2012 veya üzeri | 54.400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1700 GB
 Azure VM | Bkz. [Azure VM yedeklemesi için destek matrisi](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support)
@@ -113,10 +113,10 @@ Azure VM | Bkz. [Azure VM yedeklemesi için destek matrisi](https://docs.microso
 
 Aşağıdaki tabloda, her bir veri kaynağı boyutunun nasıl belirlendiği açıklanmaktadır.
 
-**Veri kaynağı** | **Bilgileri**
+**Veri kaynağı** | **Ayrıntılar**
 --- | ---
 Birim |Yedeklenmekte olan tek bir birim VM'den yedeklenen verilerin miktarı.
-SQL Server veritabanı |Yedeklenmekte olan tek bir SQL veritabanının boyutu.
+SQL Server veritabanı |Yedeklenmekte olan tek veritabanı boyutunun boyutu.
 SharePoint | Yedeklenmekte olan bir SharePoint grubu içinde içerik ve yapılandırma veritabanlarının toplamı.
 Exchange |Yedeklenmekte olan bir Exchange sunucusundaki tüm Exchange veritabanlarının toplamı.
 BMR/Sistem durumu |Yedeklenmekte olan makinenin BMR'sinin veya sistem durumunun her ayrı kopyası.

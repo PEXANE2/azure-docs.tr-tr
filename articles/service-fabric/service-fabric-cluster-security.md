@@ -4,12 +4,12 @@ description: Azure Service Fabric kümesi için güvenlik senaryoları ve bunlar
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 71a5891bf26cbd79ba5cfeff8324e225b3febd73
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: ba1565c31e8a3ce3f25501f0cad321d5413dc962
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324020"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080677"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric kümesi güvenlik senaryoları
 
@@ -41,6 +41,11 @@ Tek başına Windows Server kümesi için bir kümede sertifika güvenliği ayar
 
 ### <a name="node-to-node-windows-security"></a>Düğümden düğüme Windows güvenliği
 
+> [!NOTE]
+> Windows kimlik doğrulaması, Kerberos 'u temel alır. NTLM, kimlik doğrulama türü olarak desteklenmez.
+>
+> Mümkün olduğunda, Service Fabric kümeleri için X. 509.440 sertifika kimlik doğrulamasını kullanın.
+
 Tek başına bir Windows Server kümesi için Windows güvenliği ayarlama hakkında bilgi edinmek için bkz. Windows [güvenliği kullanarak Windows 'da tek başına kümeyi güvenli hale getirme](service-fabric-windows-cluster-windows-security.md).
 
 ## <a name="client-to-node-security"></a>İstemciden düğüme güvenlik
@@ -49,7 +54,7 @@ Tek başına bir Windows Server kümesi için Windows güvenliği ayarlama hakk�
 
 ![İstemciden düğüme iletişimin diyagramı][Client-to-Node]
 
-Azure 'da çalıştırılan kümeler ve Windows üzerinde çalışan tek başına kümeler, [sertifika güvenliği](https://msdn.microsoft.com/library/ff649801.aspx) veya [Windows güvenliği](https://msdn.microsoft.com/library/ff649396.aspx)kullanabilir.
+Azure 'da çalışan kümeler ve Windows üzerinde çalışan tek başına kümeler, her ikisi de [sertifika güvenliği](https://msdn.microsoft.com/library/ff649801.aspx) veya [Windows güvenliği](https://msdn.microsoft.com/library/ff649396.aspx)kullanabilir, ancak öneri, mümkün olduğunda X. 509.440 sertifika kimlik doğrulamasını kullanmaktır.
 
 ### <a name="client-to-node-certificate-security"></a>İstemciden düğüme Sertifika güvenliği
 
@@ -95,7 +100,7 @@ X. 509.440 dijital sertifikaları genellikle istemcilerin ve sunucuların kimli�
 Göz önünde bulundurmanız gereken bazı önemli noktalar:
 
 * Üretim iş yüklerini çalıştıran kümeler için sertifikalar oluşturmak üzere, doğru yapılandırılmış bir Windows Server sertifika hizmetini veya bir onaylanmış [sertifika yetkilisinden (CA)](https://en.wikipedia.org/wiki/Certificate_authority)bir tane kullanın.
-* Bir üretim ortamında MakeCert. exe gibi araçları kullanarak oluşturduğunuz geçici veya test sertifikalarını hiçbir şekilde kullanmayın.
+* Üretim ortamında MakeCert.exe gibi araçları kullanarak oluşturduğunuz geçici veya test sertifikalarını hiçbir şekilde kullanmayın.
 * Otomatik olarak imzalanan bir sertifika kullanabilirsiniz, ancak yalnızca bir test kümesinde olabilir. Üretimde kendinden imzalı bir sertifika kullanmayın.
 * Sertifika parmak izini oluştururken, bir SHA1 parmak izi üretdiğinizden emin olun. SHA1, Istemci ve küme sertifikası parmak izlerini yapılandırırken kullanılan şeydir.
 

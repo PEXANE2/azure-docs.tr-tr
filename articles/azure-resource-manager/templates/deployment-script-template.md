@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 06/19/2020
 ms.author: jgao
-ms.openlocfilehash: fb910260c562a41871fe0cd13d5e5e9652b2017d
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 3d9ab41fdb05eca3b39bf1ad222f6d42a3311b77
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417115"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193745"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım betikleri kullanma (Önizleme)
 
@@ -38,7 +38,7 @@ Dağıtım betiği kaynağı yalnızca Azure Container Instance 'ın kullanılab
 > [!IMPORTANT]
 > Betik yürütme ve sorun giderme için bir depolama hesabı ve kapsayıcı örneği gereklidir. Mevcut bir depolama hesabını belirtme seçenekleriniz vardır; Aksi takdirde, kapsayıcı örneğiyle birlikte depolama hesabı betik hizmeti tarafından otomatik olarak oluşturulur. Dağıtım betiği yürütmesi bir terminal durumunda olduğunda, otomatik olarak oluşturulan iki kaynak genellikle betik hizmeti tarafından silinir. Kaynaklar silinene kadar kaynaklar için faturalandırılırsınız. Daha fazla bilgi için bkz. [Temizleme dağıtım betiği kaynakları](#clean-up-deployment-script-resources).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Hedef kaynak grubu için katkıda bulunan rolüne sahip bir kullanıcı tarafından atanan yönetilen kimlik**. Bu kimlik, dağıtım betikleri yürütmek için kullanılır. İşlemleri kaynak grubu dışında gerçekleştirmek için ek izinler vermeniz gerekir. Örneğin, yeni bir kaynak grubu oluşturmak istiyorsanız kimliği abonelik düzeyine atayın.
 
@@ -139,7 +139,7 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
 - **tür**: betiğin türünü belirtin. Şu anda, Azure PowerShell ve Azure CLı betikleri desteklenmektedir. Değerler **AzurePowerShell** ve **azurecli**' dir.
 - **Forceupdatetag**: Bu değerin, şablon dağıtımları arasında değiştirilmesi dağıtım betiğini yeniden yürütmeye zorlar. Parametrenin defaultValue 'ı olarak ayarlanması gereken newGuid () veya utcNow () işlevini kullanın. Daha fazla bilgi için bkz. [betiği birden çok kez çalıştırma](#run-script-more-than-once).
 - **Containersettings**: Azure Container Instance 'ı özelleştirmek için ayarları belirtin.  **Containergroupname** kapsayıcı grubu adını belirtmektir.  Belirtilmemişse, Grup adı otomatik olarak oluşturulur.
-- **Storageaccountsettings**: mevcut bir depolama hesabını kullanmak için ayarları belirtin. Belirtilmemişse, otomatik olarak bir depolama hesabı oluşturulur. Bkz. [var olan bir depolama hesabını kullanma](#use-an-existing-storage-account).
+- **Storageaccountsettings**: mevcut bir depolama hesabını kullanmak için ayarları belirtin. Belirtilmemişse, otomatik olarak bir depolama hesabı oluşturulur. Bkz. [var olan bir depolama hesabını kullanma](#use-existing-storage-account).
 - **Azpowershellversion** / **Azcliversion**: kullanılacak modül sürümünü belirtin. Desteklenen PowerShell ve CLı sürümlerinin listesi için bkz. [Önkoşullar](#prerequisites).
 - **bağımsız değişkenler**: parametre değerlerini belirtin. Değerler boşluklarla ayrılır.
 - **EnvironmentVariables**: betiğe geçirilecek ortam değişkenlerini belirtin. Daha fazla bilgi için bkz. [dağıtım betikleri geliştirme](#develop-deployment-scripts).
@@ -152,9 +152,9 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
 
 ### <a name="additional-samples"></a>Ek örnekler
 
-- [anahtar kasasına sertifika oluşturma ve atama](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)
-
-- [bir kaynak grubuna kullanıcı tarafından atanan bir yönetilen kimlik oluşturun ve atayın ve bir dağıtım betiği çalıştırın](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json).
+- [Örnek 1](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json): bir Anahtar Kasası oluşturun ve anahtar kasasına bir sertifika atamak için dağıtım betiği kullanın.
+- [Örnek 2](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-subscription.json): abonelik düzeyinde bir kaynak grubu oluşturun, kaynak grubunda bir Anahtar Kasası oluşturun ve sonra anahtar kasasına bir sertifika atamak için dağıtım betiği kullanın.
+- [Örnek 3](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json): Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun, kaynak grubu düzeyindeki kimliğe katkıda bulunan rolünü atayın, bir Anahtar Kasası oluşturun ve sonra anahtar kasasına bir sertifika atamak için dağıtım betiği kullanın.
 
 > [!NOTE]
 > Kullanıcı tarafından atanan bir kimlik oluşturmanız ve izinlerin önceden verilmesi önerilir. Kimliği oluşturur ve dağıtım betikleri çalıştırdığınız şablonda izin verirseniz, oturum açma ve izinle ilgili hatalar alabilirsiniz. İzinlerin etkin hale gelmesi biraz zaman alır.
@@ -168,7 +168,7 @@ Aşağıdaki şablonda, türüyle tanımlanmış bir kaynak vardır `Microsoft.R
 > [!NOTE]
 > Satır içi dağıtım betikleri çift tırnak içine alındığından, dağıtım betiklerinin içindeki dizelerin bir **&#92;** kullanılarak veya tek tırnak içine alınmış olması gerekir. Ayrıca, önceki JSON örneğinde gösterildiği üzere dize değiştirme kullanmayı da düşünebilirsiniz.
 
-Betik bir parametre alır ve parametre değerini çıktı. **Deploymentscriptoutkoyar** , çıktıları depolamak için kullanılır.  Çıktılar bölümünde, **değer** satırı depolanan değerlere nasıl erişegösterdiğini gösterir. `Write-Output`hata ayıklama amacıyla kullanılır. Çıktı dosyasına nasıl erişebileceğinizi öğrenmek için bkz. [dağıtım betiklerine hata ayıklama](#debug-deployment-scripts).  Özellik açıklamaları için bkz. [örnek şablonlar](#sample-templates).
+Betik bir parametre alır ve parametre değerini çıktı. **Deploymentscriptoutkoyar** , çıktıları depolamak için kullanılır.  Çıktılar bölümünde, **değer** satırı depolanan değerlere nasıl erişegösterdiğini gösterir. `Write-Output`hata ayıklama amacıyla kullanılır. Çıkış dosyasına nasıl erişebileceğinizi öğrenmek için bkz. [Dağıtım betiklerini izleme ve sorun giderme](#monitor-and-troubleshoot-deployment-scripts).  Özellik açıklamaları için bkz. [örnek şablonlar](#sample-templates).
 
 Betiği çalıştırmak için **dene** ' yi seçerek Cloud Shell açın ve ardından aşağıdaki kodu kabuk bölmesine yapıştırın.
 
@@ -190,7 +190,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="use-external-scripts"></a>Dış betikler kullanın
 
-Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsiniz. Yalnızca **ps1** dosya uzantısına sahip birincil PowerShell betikleri desteklenir. CLı betikleri için, betikler geçerli Bash betikleri olduğu sürece, birincil betiklerin uzantıları (veya uzantısı olmadan) olabilir. Dış betik dosyalarını kullanmak için ile değiştirin `scriptContent` `primaryScriptUri` . Örnek:
+Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsiniz. Yalnızca **ps1** dosya uzantısına sahip birincil PowerShell betikleri desteklenir. CLı betikleri için, betikler geçerli Bash betikleri olduğu sürece, birincil betiklerin uzantıları (veya uzantısı olmadan) olabilir. Dış betik dosyalarını kullanmak için ile değiştirin `scriptContent` `primaryScriptUri` . Örneğin:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -244,6 +244,50 @@ Dağıtım betiği çıkışları AZ_SCRIPTS_OUTPUT_PATH konumuna kaydedilmelidi
 
 [JQ](https://stedolan.github.io/jq/) , önceki örnekte kullanılır. Kapsayıcı görüntüleri ile birlikte gelir. Bkz. [geliştirme ortamını yapılandırma](#configure-development-environment).
 
+## <a name="use-existing-storage-account"></a>Var olan depolama hesabını kullan
+
+Betik yürütme ve sorun giderme için bir depolama hesabı ve kapsayıcı örneği gereklidir. Mevcut bir depolama hesabını belirtme seçenekleriniz vardır; Aksi takdirde, kapsayıcı örneğiyle birlikte depolama hesabı betik hizmeti tarafından otomatik olarak oluşturulur. Var olan bir depolama hesabını kullanma gereksinimleri:
+
+- Desteklenen depolama hesabı türleri şunlardır:
+
+    | SKU             | Desteklenen tür     |
+    |-----------------|--------------------|
+    | Premium_LRS     | Dosya depolama        |
+    | Premium_ZRS     | Dosya depolama        |
+    | Standard_GRS    | Depolama, StorageV2 |
+    | Standard_GZRS   | StorageV2          |
+    | Standard_LRS    | Depolama, StorageV2 |
+    | Standard_RAGRS  | Depolama, StorageV2 |
+    | Standard_RAGZRS | StorageV2          |
+    | Standard_ZRS    | StorageV2          |
+
+    Bu birleşimler dosya payını destekler.  Daha fazla bilgi için bkz. [Azure dosya paylaşma](../../storage/files/storage-how-to-create-file-share.md) ve [depolama hesabı türleri](../../storage/common/storage-account-overview.md)oluşturma.
+- Depolama hesabı güvenlik duvarı kuralları henüz desteklenmiyor. Daha fazla bilgi için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](../../storage/common/storage-network-security.md).
+- Dağıtım betiğinin Kullanıcı tarafından atanan yönetilen kimliğinin, okuma, oluşturma, dosya paylaşımlarını silme dahil olmak üzere depolama hesabını yönetme izinleri olmalıdır.
+
+Mevcut bir depolama hesabını belirtmek için aşağıdaki JSON öğesini öğesinin özellik öğesine ekleyin `Microsoft.Resources/deploymentScripts` :
+
+```json
+"storageAccountSettings": {
+  "storageAccountName": "myStorageAccount",
+  "storageAccountKey": "myKey"
+},
+```
+
+- **storageAccountName**: depolama hesabının adını belirtin.
+- **Storageaccountkey "**: depolama hesabı anahtarlarından birini belirtin. [`listKeys()`](./template-functions-resource.md#listkeys)Anahtarı almak için işlevini kullanabilirsiniz. Örneğin:
+
+    ```json
+    "storageAccountSettings": {
+        "storageAccountName": "[variables('storageAccountName')]",
+        "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value]"
+    }
+    ```
+
+Tüm tanım örnekleri için bkz. [örnek şablonlar](#sample-templates) `Microsoft.Resources/deploymentScripts` .
+
+Mevcut bir depolama hesabı kullanıldığında, betik hizmeti benzersiz bir ada sahip bir dosya paylaşma oluşturur. Betik hizmetinin dosya paylaşımının nasıl temizleyeceğini öğrenmek için bkz. [dağıtım betiği kaynaklarını Temizleme](#clean-up-deployment-script-resources) .
+
 ## <a name="develop-deployment-scripts"></a>Dağıtım betikleri geliştirme
 
 ### <a name="handle-non-terminating-errors"></a>Sonlandırma olmayan hataları işle
@@ -258,7 +302,7 @@ Kapsayıcı örneklerinizin ortam değişkenlerini (EnvironmentVariable) ayarlam
 
 Ortam değişkenleri için izin verilen en büyük boyut 64 KB 'dir.
 
-## <a name="debug-deployment-scripts"></a>Hata ayıklama dağıtım betikleri
+## <a name="monitor-and-troubleshoot-deployment-scripts"></a>Dağıtım betiklerini izleme ve sorunlarını giderme
 
 Betik hizmeti bir [depolama hesabı](../../storage/common/storage-account-overview.md) (mevcut bir depolama hesabı belirtmediğiniz müddetçe) ve betik yürütme için bir [kapsayıcı örneği](../../container-instances/container-instances-overview.md) oluşturur. Bu kaynaklar betik hizmeti tarafından otomatik olarak oluşturulduysa, her iki kaynak de kaynak adlarında **azscripts** sonekine sahiptir.
 
@@ -266,7 +310,122 @@ Betik hizmeti bir [depolama hesabı](../../storage/common/storage-account-overvi
 
 Kullanıcı betiği, yürütme sonuçları ve STDOUT dosyası depolama hesabının dosya paylaşımlarında depolanır. **Azscripts**adında bir klasör vardır. Klasöründe, giriş ve çıkış dosyaları için iki klasör vardır: **azscriptınput** ve **azscriptoutput**.
 
-Çıkış klasörü bir **ExecutionResult. JSON** ve betik çıkış dosyası içerir. **ExecutionResult. JSON**dosyasında betik yürütme hata iletisini görebilirsiniz. Çıkış dosyası yalnızca komut dosyası başarıyla yürütüldüğünde oluşturulur. Giriş klasörü bir sistem PowerShell betik dosyası ve kullanıcı dağıtımı komut dosyalarını içerir. Kullanıcı dağıtımı betik dosyasını düzeltilmiş bir kodla değiştirebilir ve dağıtım betiğini Azure Container Instance ' dan yeniden çalıştırabilirsiniz.
+Çıkış klasörü, üzerinde bir **executionresult.js** ve betik çıkış dosyası içerir. Betik yürütme hata iletisini **üzerindeexecutionresult.js**görebilirsiniz. Çıkış dosyası yalnızca komut dosyası başarıyla yürütüldüğünde oluşturulur. Giriş klasörü bir sistem PowerShell betik dosyası ve kullanıcı dağıtımı komut dosyalarını içerir. Kullanıcı dağıtımı betik dosyasını düzeltilmiş bir kodla değiştirebilir ve dağıtım betiğini Azure Container Instance ' dan yeniden çalıştırabilirsiniz.
+
+### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+
+Dağıtım komut dosyası kaynağını dağıttıktan sonra, kaynak Azure portal kaynak grubunun altında listelenir. Aşağıdaki ekran görüntüsünde, bir dağıtım betiği kaynağının genel bakış sayfası gösterilmektedir:
+
+![Kaynak Yöneticisi şablonu dağıtım betiği portalına genel bakış](./media/deployment-script-template/resource-manager-deployment-script-portal.png)
+
+Genel Bakış sayfası kaynağı **sağlama durumu**, **depolama hesabı**, **kapsayıcı örneği**ve **Günlükler**gibi bazı önemli bilgileri görüntüler.
+
+Sol taraftaki menüden dağıtım betiği içeriğini, Betiğe geçirilen bağımsız değişkenleri ve çıktıyı görüntüleyebilirsiniz.  Dağıtım betiği için dağıtım betiği de dahil olmak üzere bir şablonu dışa aktarabilirsiniz.
+
+### <a name="use-powershell"></a>PowerShell kullanma
+
+Azure PowerShell kullanarak, Dağıtım betiklerini abonelik veya kaynak grubu kapsamında yönetebilirsiniz:
+
+- [Get-AzDeploymentScript](/powershell/module/az.resources/get-azdeploymentscript): Dağıtım betiklerini alır veya listeler.
+- [Get-AzDeploymentScriptLog](/powershell/module/az.resources/get-azdeploymentscriptlog): bir dağıtım betiği yürütmenin günlüğünü alır.
+- [Remove-AzDeploymentScript](/powershell/module/az.resources/remove-azdeploymentscript): bir dağıtım betiğini ve ilişkili kaynaklarını kaldırır.
+- [Save-AzDeploymentScriptLog](/powershell/module/az.resources/save-azdeploymentscriptlog): bir dağıtım betiği yürütmenin günlüğünü diske kaydeder.
+
+Get-AzDeploymentScript çıkışı şuna benzer:
+
+```output
+Name                : runPowerShellInlineWithOutput
+Id                  : /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.Resources/deploymentScripts/runPowerShellInlineWithOutput
+ResourceGroupName   : myds0618rg
+Location            : centralus
+SubscriptionId      : 01234567-89AB-CDEF-0123-456789ABCDEF
+ProvisioningState   : Succeeded
+Identity            : /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/mydentity1008rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuami
+ScriptKind          : AzurePowerShell
+AzPowerShellVersion : 3.0
+StartTime           : 6/18/2020 7:46:45 PM
+EndTime             : 6/18/2020 7:49:45 PM
+ExpirationDate      : 6/19/2020 7:49:45 PM
+CleanupPreference   : OnSuccess
+StorageAccountId    : /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.Storage/storageAccounts/ftnlvo6rlrvo2azscripts
+ContainerInstanceId : /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.ContainerInstance/containerGroups/ftnlvo6rlrvo2azscripts
+Outputs             :
+                      Key                 Value
+                      ==================  ==================
+                      text                Hello John Dole
+
+RetentionInterval   : P1D
+Timeout             : PT1H
+```
+
+### <a name="use-azure-cli"></a>Azure CLI kullanma
+
+Azure CLı kullanarak, abonelik veya kaynak grubu kapsamındaki Dağıtım betiklerini yönetebilirsiniz:
+
+- [az Deployment-betikler Delete](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-delete): bir dağıtım betiğini silin.
+- [az Deployment-Scripts List](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-list): tüm Dağıtım betiklerini listeleyin.
+- [az Deployment-Scripts Show](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show): dağıtım betiği alma.
+- [az Deployment-betikler Show-log](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show-log): dağıtım betiği günlüklerini göster.
+
+Liste komut çıktısı şuna benzerdir:
+
+```json
+[
+  {
+    "arguments": "-name 'John Dole'",
+    "azPowerShellVersion": "3.0",
+    "cleanupPreference": "OnSuccess",
+    "containerSettings": {
+      "containerGroupName": null
+    },
+    "environmentVariables": null,
+    "forceUpdateTag": "20200618T194637Z",
+    "id": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.Resources/deploymentScripts/runPowerShellInlineWithOutput",
+    "identity": {
+      "tenantId": "01234567-89AB-CDEF-0123-456789ABCDEF",
+      "type": "userAssigned",
+      "userAssignedIdentities": {
+        "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myidentity1008rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuami": {
+          "clientId": "01234567-89AB-CDEF-0123-456789ABCDEF",
+          "principalId": "01234567-89AB-CDEF-0123-456789ABCDEF"
+        }
+      }
+    },
+    "kind": "AzurePowerShell",
+    "location": "centralus",
+    "name": "runPowerShellInlineWithOutput",
+    "outputs": {
+      "text": "Hello John Dole"
+    },
+    "primaryScriptUri": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "myds0618rg",
+    "retentionInterval": "1 day, 0:00:00",
+    "scriptContent": "\r\n          param([string] $name)\r\n          $output = \"Hello {0}\" -f $name\r\n          Write-Output $output\r\n          $DeploymentScriptOutputs = @{}\r\n          $DeploymentScriptOutputs['text'] = $output\r\n        ",
+    "status": {
+      "containerInstanceId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.ContainerInstance/containerGroups/ftnlvo6rlrvo2azscripts",
+      "endTime": "2020-06-18T19:49:45.926522+00:00",
+      "error": null,
+      "expirationTime": "2020-06-19T19:49:45.926522+00:00",
+      "startTime": "2020-06-18T19:46:45.667124+00:00",
+      "storageAccountId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.Storage/storageAccounts/ftnlvo6rlrvo2azscripts"
+    },
+    "supportingScriptUris": null,
+    "systemData": {
+      "createdAt": "2020-06-18T19:46:41.363741+00:00",
+      "createdBy": "someon@contoso.com",
+      "createdByType": "User",
+      "lastModifiedAt": "2020-06-18T19:46:41.363741+00:00",
+      "lastModifiedBy": "someone@contoso.com",
+      "lastModifiedByType": "User"
+    },
+    "tags": null,
+    "timeout": "1:00:00",
+    "type": "Microsoft.Resources/deploymentScripts"
+  },
+```
+
+### <a name="use-rest-api"></a>REST API kullanma
 
 Dağıtım betik kaynağı dağıtım bilgilerini kaynak grubu düzeyinde ve abonelik düzeyinde REST API kullanarak edinebilirsiniz:
 
@@ -303,50 +462,6 @@ Portalda deploymentScripts kaynağını görmek için **gizli türleri göster**
 
 ![Kaynak Yöneticisi şablonu dağıtım betiği, gizli türleri göster, Portal](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
 
-## <a name="use-an-existing-storage-account"></a>Var olan bir depolama hesabını kullan
-
-Betik yürütme ve sorun giderme için bir depolama hesabı ve kapsayıcı örneği gereklidir. Mevcut bir depolama hesabını belirtme seçenekleriniz vardır; Aksi takdirde, kapsayıcı örneğiyle birlikte depolama hesabı betik hizmeti tarafından otomatik olarak oluşturulur. Var olan bir depolama hesabını kullanma gereksinimleri:
-
-- Desteklenen depolama hesabı türleri şunlardır:
-
-    | SKU             | Desteklenen tür     |
-    |-----------------|--------------------|
-    | Premium_LRS     | Dosya depolama        |
-    | Premium_ZRS     | Dosya depolama        |
-    | Standard_GRS    | Depolama, StorageV2 |
-    | Standard_GZRS   | StorageV2          |
-    | Standard_LRS    | Depolama, StorageV2 |
-    | Standard_RAGRS  | Depolama, StorageV2 |
-    | Standard_RAGZRS | StorageV2          |
-    | Standard_ZRS    | StorageV2          |
-
-    Bu birleşimler dosya payını destekler.  Daha fazla bilgi için bkz. [Azure dosya paylaşma](../../storage/files/storage-how-to-create-file-share.md) ve [depolama hesabı türleri](../../storage/common/storage-account-overview.md)oluşturma.
-- Depolama hesabı güvenlik duvarı kuralları henüz desteklenmiyor. Daha fazla bilgi için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](../../storage/common/storage-network-security.md).
-- Dağıtım betiğinin Kullanıcı tarafından atanan yönetilen kimliğinin, okuma, oluşturma, dosya paylaşımlarını silme dahil olmak üzere depolama hesabını yönetme izinleri olmalıdır.
-
-Mevcut bir depolama hesabını belirtmek için aşağıdaki JSON öğesini öğesinin özellik öğesine ekleyin `Microsoft.Resources/deploymentScripts` :
-
-```json
-"storageAccountSettings": {
-  "storageAccountName": "myStorageAccount",
-  "storageAccountKey": "myKey"
-},
-```
-
-- **storageAccountName**: depolama hesabının adını belirtin.
-- **Storageaccountkey "**: depolama hesabı anahtarlarından birini belirtin. [`listKeys()`](./template-functions-resource.md#listkeys)Anahtarı almak için işlevini kullanabilirsiniz. Örnek:
-
-    ```json
-    "storageAccountSettings": {
-        "storageAccountName": "[variables('storageAccountName')]",
-        "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value]"
-    }
-    ```
-
-Tüm tanım örnekleri için bkz. [örnek şablonlar](#sample-templates) `Microsoft.Resources/deploymentScripts` .
-
-Mevcut bir depolama hesabı kullanıldığında, betik hizmeti benzersiz bir ada sahip bir dosya paylaşma oluşturur. Betik hizmetinin dosya paylaşımının nasıl temizleyeceğini öğrenmek için bkz. [dağıtım betiği kaynaklarını Temizleme](#clean-up-deployment-script-resources) .
-
 ## <a name="clean-up-deployment-script-resources"></a>Dağıtım betiği kaynaklarını temizle
 
 Betik yürütme ve sorun giderme için bir depolama hesabı ve kapsayıcı örneği gereklidir. Mevcut bir depolama hesabını belirtme seçenekleriniz vardır, aksi takdirde bir kapsayıcı örneğiyle birlikte bir depolama hesabı otomatik olarak betik hizmeti tarafından oluşturulur. Dağıtım betiği yürütmesi bir terminal durumunda olduğunda, otomatik olarak oluşturulan iki kaynak betik hizmeti tarafından silinir. Kaynaklar silinene kadar kaynaklar için faturalandırılırsınız. Fiyat bilgileri için bkz. [Container Instances fiyatlandırması](https://azure.microsoft.com/pricing/details/container-instances/) ve [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
@@ -380,17 +495,9 @@ Dağıtım betiği yürütmesi bir ıdempotent işlemidir. DeploymentScripts kay
 
 ## <a name="configure-development-environment"></a>Geliştirme ortamını yapılandırma
 
-Dağıtım komut dosyası geliştirme ortamınız olarak önceden yapılandırılmış bir Docker kapsayıcı görüntüsü kullanabilirsiniz. Aşağıdaki yordamda, Windows 'da Docker görüntüsünün nasıl yapılandırılacağı gösterilmektedir. Linux ve Mac için Internet 'teki bilgileri bulabilirsiniz.
+Dağıtım komut dosyası geliştirme ortamınız olarak önceden yapılandırılmış bir Docker kapsayıcı görüntüsü kullanabilirsiniz. Docker 'ı yüklemek için bkz. [Docker 'ı edinme](https://docs.docker.com/get-docker/).
+Ayrıca, Dağıtım betiklerini içeren dizini Docker kapsayıcısına bağlamak için dosya paylaşımı 'nı yapılandırmanız gerekir.
 
-1. Geliştirme bilgisayarınıza [Docker Desktop](https://www.docker.com/products/docker-desktop) uygulamasını yüklemeyin.
-1. Docker Desktop 'ı açın.
-1. Görev çubuklarından Docker Desktop simgesini seçin ve ardından **Ayarlar**' ı seçin.
-1. **Paylaşılan sürücüler**' i seçin, kapsayıcılarınız için kullanılabilir olmasını istediğiniz bir yerel sürücü seçin ve ardından **Uygula** ' yı seçin.
-
-    ![Kaynak Yöneticisi şablonu dağıtım betiği Docker sürücüsü](./media/deployment-script-template/resource-manager-deployment-script-docker-setting-drive.png)
-
-1. Sorulduğunda Windows kimlik bilgilerinizi girin.
-1. Komut Istemi ya da Windows PowerShell (PowerShell ıSE kullanmayın) gibi bir Terminal penceresi açın.
 1. Dağıtım betiği kapsayıcı görüntüsünü yerel bilgisayara çekin:
 
     ```command
@@ -427,12 +534,11 @@ Dağıtım komut dosyası geliştirme ortamınız olarak önceden yapılandırı
     docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
     ```
 
-1. Bir istem aldığınızda **paylaşma** seçeneğini belirleyin.
-1. Aşağıdaki ekran görüntüsünde, d:\docker klasöründe HelloWorld. ps1 dosyasına sahip olduğunuz için bir PowerShell betiğinin nasıl çalıştırılacağı gösterilmektedir.
+1. Aşağıdaki ekran görüntüsünde, paylaşılan sürücüde bir helloworld.ps1 dosyanız olduğunda bir PowerShell betiğinin nasıl çalıştırılacağı gösterilmektedir.
 
     ![Kaynak Yöneticisi şablonu dağıtım betiği Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
-Betik başarıyla sınandıktan sonra bunu bir dağıtım betiği olarak kullanabilirsiniz.
+Betiği başarıyla test edildikten sonra, şablonlarınızı şablonlarda bir dağıtım betiği olarak kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

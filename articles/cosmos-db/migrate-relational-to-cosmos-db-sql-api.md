@@ -4,15 +4,15 @@ description: SQL API ile bire çok arasında ilişkiler için karmaşık veri ge
 author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 467e9627a2623779bd808ca5aebdf76d8a5eda42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f79ad56d8083e7ef75279eb2a07e1d35a50c45b5
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75896642"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261112"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Bire çok ilişkisel verileri Azure Cosmos DB SQL API hesabına geçirme
 
@@ -25,7 +25,7 @@ Yaygın olarak kullanılan bir dönüşüm, ilgili alt öğeleri tek bir JSON be
 SQL veritabanımız, siparişlerimiz ve OrderDetails içinde aşağıdaki iki tabloya sahip olduğunu varsayalım.
 
 
-![Sipariş Ayrıntıları](./media/migrate-relational-to-cosmos-sql-api/orders.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/orders.png" alt-text="Sipariş Ayrıntıları" border="false" :::
 
 Bu bire bir ilişkiyi geçiş sırasında tek bir JSON belgesiyle birleştirmek istiyoruz. Bunu yapmak için, aşağıdaki gibi "JSON IÇIN" kullanarak bir T-SQL sorgusu oluşturuyoruz:
 
@@ -91,31 +91,31 @@ SELECT [value] FROM OPENJSON(
 )
 ```
 
-![ADF kopyası](./media/migrate-relational-to-cosmos-sql-api/adf1.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf1.png" alt-text="ADF kopyası":::
 
 
-SqlJsonToBlobText kopyalama etkinliğinin havuzu için, "sınırlandırılmış metin" i seçer ve dinamik olarak oluşturulan benzersiz bir dosya adına (örneğin, '@concat(işlem hattı ()) Azure Blob depolama 'daki belirli bir klasöre işaret ediyor. RunId, '. json ').
+SqlJsonToBlobText kopyalama etkinliğinin havuzu için, "sınırlandırılmış metin" i seçer ve dinamik olarak oluşturulan benzersiz bir dosya adına (örneğin, ' @concat (işlem hattı ()) Azure Blob depolama 'daki belirli bir klasöre işaret ediyor. RunId, '. json ').
 Metin dosyamız gerçekten "sınırlı" olmadığından ve çift tırnak işareti (") korumak istediğimiz için," sütun sınırlayıcısı "seçeneğini bir sekmeye (" \t ") veya veri ve" tırnak karakteri "olarak" tırnak işareti karakteri "olarak belirledik.
 
-![ADF kopyası](./media/migrate-relational-to-cosmos-sql-api/adf2.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="ADF kopyası":::
 
 ### <a name="copy-activity-2-blobjsontocosmos"></a>Kopyalama etkinliği #2: BlobJsonToCosmos
 
 Daha sonra, ilk etkinlik tarafından oluşturulan metin dosyası için Azure Blob depolama alanına görünen ikinci kopyalama etkinliğini ekleyerek ADF işlem hattımızı değiştirdik. Metin dosyasında her JSON satırı için bir belge olarak Cosmos DB havuza eklemek üzere bunu "JSON" kaynağı olarak işler.
 
-![ADF kopyası](./media/migrate-relational-to-cosmos-sql-api/adf3.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf3.png" alt-text="ADF kopyası":::
 
 İsteğe bağlı olarak, her çalıştırmadan önce/Orders/klasöründe kalan tüm dosyaları silmesi için işlem hattına bir "Sil" etkinliği de ekleyeceğiz. ADF işlem hatmız şu şekilde görünür:
 
-![ADF kopyası](./media/migrate-relational-to-cosmos-sql-api/adf4.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf4.png" alt-text="ADF kopyası":::
 
 Yukarıdaki işlem hattını tetikledikten sonra, her satır için bir JSON nesnesi içeren ara Azure Blob depolama konumunda oluşturulmuş bir dosya görüyoruz:
 
-![ADF kopyası](./media/migrate-relational-to-cosmos-sql-api/adf5.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf5.png" alt-text="ADF kopyası":::
 
 Ayrıca, Cosmos DB koleksiyonumuza eklenmiş, doğru gömülü OrderDetails içeren siparişler belgelerini de görüyorsunuz:
 
-![ADF kopyası](./media/migrate-relational-to-cosmos-sql-api/adf6.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf6.png" alt-text="ADF kopyası":::
 
 
 ## <a name="azure-databricks"></a>Azure Databricks
@@ -128,7 +128,7 @@ Azure Blob depolamada ara metin/JSON dosyalarını oluşturmadan verileri SQL ve
 
 İlk olarak, gerekli [SQL bağlayıcısını](https://docs.databricks.com/data/data-sources/sql-databases-azure.html) ve [Azure Cosmos DB bağlayıcı](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html) kitaplıklarını oluşturup Azure Databricks kümemize iliştirdik. Kitaplıkların yüklü olduğundan emin olmak için kümeyi yeniden başlatın.
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks1.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="Databricks":::
 
 Ardından, Scala ve Python için iki örnek sunuyoruz. 
 
@@ -151,7 +151,7 @@ val orders = sqlContext.read.sqlDB(configSql)
 display(orders)
 ```
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks2.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks2.png" alt-text="Databricks":::
 
 Sonra, Cosmos DB veritabanı ve koleksiyonumuza bağlandık:
 
@@ -208,7 +208,7 @@ display(ordersWithSchema)
 CosmosDBSpark.save(ordersWithSchema, configCosmos)
 ```
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks3.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks3.png" alt-text="Databricks":::
 
 
 ### <a name="python"></a>Python
@@ -338,7 +338,7 @@ pool.map(writeOrder, orderids)
 ```
 Her iki yaklaşımda da sonda, Cosmos DB koleksiyonundaki her bir sipariş belgesinde doğru şekilde kaydedilmiş ekli OrderDetails almalıdır:
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks4.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="Databricks":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Cosmos DB veri modelleme](https://docs.microsoft.com/azure/cosmos-db/modeling-data) hakkında bilgi edinin

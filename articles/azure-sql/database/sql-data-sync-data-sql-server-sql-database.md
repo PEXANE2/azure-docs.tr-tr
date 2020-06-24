@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 94479bda00e2ea7fa7cf2d0b7cd8001a070a5703
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: a6e7e01917ac6499b9836b460077a5513782a4ce
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343277"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254013"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure için SQL Data Sync nedir?
 
@@ -148,7 +148,7 @@ Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sa
 
 #### <a name="unsupported-column-types"></a>Desteklenmeyen sütun türleri
 
-Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları eşitleyemiyor. Örnek:
+Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları eşitleyemiyor. Örneğin:
 
 - Hesaplanan sütunlar.
 - Zamana bağlı tablolar için sistem tarafından oluşturulan sütunlar.
@@ -218,7 +218,7 @@ Evet. Şemayı orijinalden komut dosyasıyla yeni veritabanında el ile oluştur
 
 Verilerinizin yedeğini oluşturmak için SQL Data Sync kullanılması önerilmez. SQL Data Sync eşitlemeler sürümü olmadığından belirli bir zaman noktasına yedekleme ve geri yükleme yapamazsınız. Ayrıca, SQL Data Sync saklı yordamlar gibi diğer SQL nesnelerini de yedeklememez ve geri yükleme işleminin hemen eşdeğerini yapmaz.
 
-Önerilen bir yedekleme tekniği için bkz. [Azure SQL veritabanını kopyalama](database-copy.md).
+Önerilen bir yedekleme tekniği için bkz. [Azure SQL veritabanı 'nda bir veritabanını kopyalama](database-copy.md).
 
 ### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Veri eşitleme eşitleme şifrelenmiş tabloları ve sütunları
 

@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 689a528a75613ac6a38bed74d6597d492f498e8b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 8730ac8aa6a6056db67613f2ac8decf11740c467
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582724"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727696"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Sorun giderme ve grup sorunlarını çözme
 
@@ -35,7 +35,7 @@ PowerShell 'de yönetici olmayan kullanıcılar için Grup oluşturmayı devre d
    ```
 
   
-2. Döndürürse `UsersPermissionToCreateGroupsEnabled : True`yönetici olmayan kullanıcılar grupları oluşturabilir. Bu özelliği devre dışı bırakmak için:
+2. Döndürürse `UsersPermissionToCreateGroupsEnabled : True` yönetici olmayan kullanıcılar grupları oluşturabilir. Bu özelliği devre dışı bırakmak için:
   
 
    ``` 
@@ -68,7 +68,7 @@ Her şey iyi görünüyorsa, lütfen grubun doldurulması için bir süre bekley
 | --- | --- | --- |
 | Hata: öznitelik desteklenmiyor. |(User. ınvalidproperty-EQ "Value") |(User. Department-EQ "değer")<br/><br/>Özniteliğin [desteklenen özellikler listesinde](groups-dynamic-membership.md#supported-properties)olduğundan emin olun. |
 | Hata: Işleç öznitelik üzerinde desteklenmiyor. |(User. accountEnabled-true içerir) |(User. accountEnabled-EQ true)<br/><br/>Kullanılan işleç Özellik türü için desteklenmiyor (Bu örnekte-Contains, Boolean türü üzerinde kullanılamaz). Özellik türü için doğru işleçleri kullanın. |
-| Hata: sorgu derleme hatası. | 1. (User. Department-EQ "Sales") (User. Department-EQ "pazarlama")<br>2. (User. userPrincipalName-Match "*@domain.ext") | 1. işleç eksik. Ve veya ya da iki JOIN yüklemleri kullanın<br>(User. Department-EQ "Sales")-veya (User. Department-EQ "pazarlama")<br>2.-Match ile kullanılan normal ifadede hata<br>(User. userPrincipalName-Match ". *@domain.ext")<br>ya da alternatif olarak: (User. userPrincipalName-@domain.extMatch "$") |
+| Hata: sorgu derleme hatası. | 1. (User. Department-EQ "Sales") (User. Department-EQ "pazarlama")<br>2. (User. userPrincipalName-Match "* @domain.ext ") | 1. işleç eksik. Ve veya ya da iki JOIN yüklemleri kullanın<br>(User. Department-EQ "Sales")-veya (User. Department-EQ "pazarlama")<br>2.-Match ile kullanılan normal ifadede hata<br>(User. userPrincipalName-Match ". * @domain.ext ")<br>ya da alternatif olarak: (User. userPrincipalName-Match " @domain.ext $") |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

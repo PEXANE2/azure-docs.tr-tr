@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: bbf1aa2fe8410f6d624fb9d50b1edb6ac2c64093
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: ee742eae38ae95756cf31d60b877f18629c569d4
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84429502"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080493"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Active Directory kimliklerini kullanarak Azure Bilişsel Arama sonuçlarını kırpmasına yönelik güvenlik filtreleri
 
@@ -28,9 +28,9 @@ Bu makale aşağıdaki görevleri kapsar:
 > - Grup tanımlayıcıları filtresiyle bir arama isteği verme
 > 
 > [!NOTE]
-> Bu makaledeki örnek kod parçacıkları C# dilinde yazılmıştır. Tam kaynak kodunu [GitHub](https://aka.ms/search-dotnet-howto)'da bulabilirsiniz. 
+> Bu makaledeki örnek kod parçacıkları C# dilinde yazılmıştır. Tam kaynak kodunu [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started)'da bulabilirsiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Bilişsel Arama dizininizin, belgeye okuma erişimi olan grup kimliklerinin listesini depolamak için bir [güvenlik alanı](search-security-trimming-for-azure-search.md) olmalıdır. Bu kullanım örneği, güvenli kılınabilir bir öğe (örneğin, bir okul uygulaması) ve bu öğeye kimlerin erişimi olduğunu belirten bir güvenlik alanı (Admissions personeli) arasında bire bir yazışma olduğunu varsayar.
 

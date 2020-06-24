@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/29/2020
+ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1487cbb7885711beca969604316fd151defb114a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 359837ef5d202cd0e98a6c7cf429a34a38fb7d70
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82580610"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052176"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede zaman serisi modeli
 
@@ -100,9 +100,9 @@ Time Series Insights ortamı için bir olay kaynağı yapılandırıldıktan son
 
 | Özellik | Açıklama |
 | --- | ---|
-| Timeseriesıd | Örneğin ilişkilendirildiği zaman serisinin UUID 'SI. |
-| Türü | Örneğin ilişkilendirildiği zaman serisi modeli türünün UUID 'SI. Varsayılan olarak, bulunan tüm yeni örnekler varsayılan bir türle ilişkili alır.
-| ad | **Name** özelliği isteğe bağlıdır ve büyük/küçük harfe duyarlıdır. **Ad** yoksa, varsayılan olarak **Timeseriesıd değerini**alır. Bir ad sağlanmışsa, **Timeseriesıd** [yine de kullanılabilir.](time-series-insights-update-explorer.md#4-time-series-well) |
+| Timeseriesıd | Örneğin ilişkilendirildiği zaman serisinin benzersiz KIMLIĞI. Çoğu durumda, örnekler DeviceID veya assetId gibi bir özellik tarafından benzersiz şekilde tanımlanır. Bazı durumlarda, 3 ' e kadar özellik birleştiren daha belirli bir bileşik KIMLIK kullanılabilir. |
+| Türü | Örneğin ilişkilendirildiği zaman serisi modeli türünün büyük/küçük harfe duyarlı benzersiz dize KIMLIĞI. Varsayılan olarak, bulunan tüm yeni örnekler varsayılan bir türle ilişkili alır.
+| name | **Name** özelliği isteğe bağlıdır ve büyük/küçük harfe duyarlıdır. **Ad** yoksa, varsayılan olarak **Timeseriesıd değerini**alır. Bir ad sağlanmışsa, **Timeseriesıd** [yine de kullanılabilir.](time-series-insights-update-explorer.md#4-time-series-well) |
 | açıklama | Örneğin metin açıklaması. |
 | Hierarchyıds | Örneğin hangi hiyerarşilerin ait olduğunu tanımlar. |
 | ınstancefields | Bir örneğin ve bir örneği tanımlayan herhangi bir statik verinin özellikleri. Bunlar hiyerarşi veya hiyerarşi dışı özelliklerin değerlerini tanımlar, Ayrıca, arama işlemlerini gerçekleştirmek için dizin oluşturmayı da destekler. |
@@ -148,9 +148,9 @@ Hiyerarşiler hiyerarşi **kimliği**, **ad**ve **kaynak**tarafından tanımlan�
 
 | Özellik | Açıklama |
 | ---| ---|
-| id | Hiyerarşinin, örneğin bir örnek tanımladığınızda kullanılan benzersiz tanımlayıcısı. |
-| ad | Hiyerarşi için bir ad sağlamak üzere kullanılan dize. |
-| source | Kullanıcıların oluşturmak istedikleri hiyerarşinin üst-alt öğe sırası olan kuruluş hiyerarşisini veya yolunu belirtir. Üst-alt özellikleri eşleme örneği alanları. |
+| kimlik | Hiyerarşinin, örneğin bir örnek tanımladığınızda kullanılan benzersiz tanımlayıcısı. |
+| name | Hiyerarşi için bir ad sağlamak üzere kullanılan dize. |
+| kaynak | Kullanıcıların oluşturmak istedikleri hiyerarşinin üst-alt öğe sırası olan kuruluş hiyerarşisini veya yolunu belirtir. Üst-alt özellikleri eşleme örneği alanları. |
 
 Hiyerarşiler JSON içinde şu şekilde temsil edilir:
 
@@ -183,15 +183,15 @@ Hiyerarşiler JSON içinde şu şekilde temsil edilir:
 
 Önceki JSON örneğinde:
 
-* `Location`üst `states` ve alt `cities`öğesi olan bir hiyerarşiyi tanımlar. Her `location` biri birden çok `states`içerebilir, bu da birden fazla `cities`bulunabilir.
-* `ManufactureDate`üst `year` ve alt `month`öğesi olan bir hiyerarşiyi tanımlar. Her `ManufactureDate` biri birden çok `years`içerebilir, bu da birden fazla `months`bulunabilir.
+* `Location`üst ve alt öğesi olan bir hiyerarşiyi tanımlar `states` `cities` . Her biri `location` birden çok içerebilir `states` , bu da birden fazla bulunabilir `cities` .
+* `ManufactureDate`üst ve alt öğesi olan bir hiyerarşiyi tanımlar `year` `month` . Her biri `ManufactureDate` birden çok içerebilir `years` , bu da birden fazla bulunabilir `months` .
 
 > [!TIP]
 > Time Series Insights örneği API 'SI ve CRUD desteği için, [verileri sorgulama](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) makalesini ve [HIYERARŞI API 'si Rest belgelerini](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)okuyun.
 
 ### <a name="hierarchy-example"></a>Hiyerarşi örneği
 
-Bu hiyerarşinin `building`, `floor`, `room` ve hiyerarşisinde **ınstancefieldnames** tanımının bir parçası olarak bulunduğu bir örnek düşünün: **H1**
+Bu **hiyerarşinin** `building` , `floor` , ve hiyerarşisinde `room` **ınstancefieldnames** tanımının bir parçası olarak bulunduğu bir örnek düşünün:
 
 ```JSON
 {
@@ -240,8 +240,8 @@ Zaman serisi model türleri **kimlik**, **ad**, **Açıklama**ve **değişkenler
 
 | Özellik | Açıklama |
 | ---| ---|
-| id | Türün UUID 'SI. |
-| ad | Tür için bir ad sağlamak üzere kullanılan dize. |
+| kimlik | Tür için büyük/küçük harfe duyarlı benzersiz dize KIMLIĞI. |
+| name | Tür için bir ad sağlamak üzere kullanılan dize. |
 | açıklama | Tür için bir dize açıklaması. |
 | değişkenlerinin | Türle ilişkili değişkenleri belirtin. |
 
@@ -301,7 +301,7 @@ Aşağıdaki tabloda, her değişken türü için uygun olan özellikler görün
 
 #### <a name="numeric-variables"></a>Sayısal değişkenler
 
-| Variable Özelliği | Açıklama |
+| Variable Özelliği | Description |
 | --- | ---|
 | Değişken filtresi | Filtreler, hesaplama için göz önünde bulundurulmakta olan satır sayısını kısıtlamak için isteğe bağlı Koşullu yan tümcelerdir. |
 | Değişken değeri | Cihaz veya sensörlerden gelen ve zaman serisi Ifadeleri kullanılarak dönüştürülen hesaplama için kullanılan telemetri değerleri. Sayısal tür değişkenleri *Double*türünde olmalıdır.|
@@ -331,7 +331,7 @@ Değişkenler aşağıdaki JSON örneğine uyar:
 
 #### <a name="categorical-variables"></a>Kategorik değişkenler
 
-| Variable Özelliği | Açıklama |
+| Variable Özelliği | Description |
 | --- | ---|
 | Değişken filtresi | Filtreler, hesaplama için göz önünde bulundurulmakta olan satır sayısını kısıtlamak için isteğe bağlı Koşullu yan tümcelerdir. |
 | Değişken değeri | Cihazdan veya sensörlerden gelen hesaplama için kullanılan telemetri değerleri. Kategorik tür değişkenleri *Long* veya *String*olmalıdır. |
@@ -371,7 +371,7 @@ Değişkenler aşağıdaki JSON örneğine uyar:
 
 #### <a name="aggregate-variables"></a>Toplam değişkenleri
 
-| Variable Özelliği | Açıklama |
+| Variable Özelliği | Description |
 | --- | ---|
 | Değişken filtresi | Filtreler, hesaplama için göz önünde bulundurulmakta olan satır sayısını kısıtlamak için isteğe bağlı Koşullu yan tümcelerdir. |
 | Değişken toplama | *AVG*, *Min*, *Max*, *Sum*, *Count*, *First*, *Last*ile hesaplamayı destekler. |

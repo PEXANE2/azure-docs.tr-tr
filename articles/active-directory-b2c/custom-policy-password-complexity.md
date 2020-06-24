@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b16790e288f6569f08ce14e5a7c751bbd8083faf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07212f2968ff1db99ef5fee2e6e8eca818ec0e24
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79138443"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202645"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak parola karmaşıklığını yapılandırma
 
@@ -31,13 +31,13 @@ Azure Active Directory B2C (Azure AD B2C) ' de, bir hesap oluştururken bir kull
 
 ## <a name="add-the-elements"></a>Öğeleri ekleyin
 
-Parola karmaşıklığını yapılandırmak için `newPassword` , ve `reenterPassword` [talep türlerini](claimsschema.md) [koşul doğrulamaları](predicates.md#predicatevalidations)başvurusuyla geçersiz kılın. Predicatevalidation öğesi, bir talep türüne uygulanabilen bir kullanıcı girişi doğrulaması oluşturmak için bir koşullar kümesi gruplandırır. İlkenizin uzantıları dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>.
+Parola karmaşıklığını yapılandırmak için, `newPassword` ve `reenterPassword` [talep türlerini](claimsschema.md) [koşul doğrulamaları](predicates.md#predicatevalidations)başvurusuyla geçersiz kılın. Predicatevalidation öğesi, bir talep türüne uygulanabilen bir kullanıcı girişi doğrulaması oluşturmak için bir koşullar kümesi gruplandırır. İlkenizin uzantıları dosyasını açın. Örneğin, <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 
 1. [Buildingblocks](buildingblocks.md) öğesi için arama yapın. Öğe yoksa, ekleyin.
 1. [Claimsschema](claimsschema.md) öğesini bulun. Öğe yoksa, ekleyin.
-1. `newPassword` Ve `reenterPassword` taleplerini **claimsschema** öğesine ekleyin.
+1. `newPassword`Ve `reenterPassword` taleplerini **Claimsschema** öğesine ekleyin.
 
-    ```XML
+    ```xml
     <ClaimType Id="newPassword">
       <PredicateValidationReference Id="CustomPassword" />
     </ClaimType>
@@ -46,9 +46,9 @@ Parola karmaşıklığını yapılandırmak için `newPassword` , ve `reenterPas
     </ClaimType>
     ```
 
-1. [Koşullar](predicates.md) , bir talep türünün değerini denetlemek için temel bir doğrulama tanımlar ve true veya false değerini döndürür. Doğrulama, belirtilen bir yöntem öğesi ve yöntemiyle ilgili bir dizi parametre kullanılarak yapılır. Aşağıdaki koşulları, `</ClaimsSchema>` öğesinin kapanışından hemen sonra **buildingblocks** öğesine ekleyin:
+1. [Koşullar](predicates.md) , bir talep türünün değerini denetlemek için temel bir doğrulama tanımlar ve true veya false değerini döndürür. Doğrulama, belirtilen bir yöntem öğesi ve yöntemiyle ilgili bir dizi parametre kullanılarak yapılır. Aşağıdaki koşulları, öğesinin kapanışından hemen sonra **Buildingblocks** öğesine ekleyin `</ClaimsSchema>` :
 
-    ```XML
+    ```xml
     <Predicates>
       <Predicate Id="LengthRange" Method="IsLengthRange">
         <UserHelpText>The password must be between 6 and 64 characters.</UserHelpText>
@@ -84,9 +84,9 @@ Parola karmaşıklığını yapılandırmak için `newPassword` , ve `reenterPas
     </Predicates>
     ```
 
-1. Aşağıdaki koşul doğrulamaları, `</Predicates>` öğesinin kapanışından hemen sonra **buildingblocks** öğesine ekleyin:
+1. Aşağıdaki koşul doğrulamaları, öğesinin kapanışından hemen sonra **Buildingblocks** öğesine ekleyin `</Predicates>` :
 
-    ```XML
+    ```xml
     <PredicateValidations>
       <PredicateValidation Id="CustomPassword">
         <PredicateGroups>
@@ -109,9 +109,9 @@ Parola karmaşıklığını yapılandırmak için `newPassword` , ve `reenterPas
     </PredicateValidations>
     ```
 
-1. Aşağıdaki teknik profiller, Azure Active Directory verileri okuyan ve yazan [Teknik profillerdir Active Directory](active-directory-technical-profile.md). Uzantı dosyasındaki bu teknik profilleri geçersiz kılın. Güçlü `PersistedClaims` parola ilkesini devre dışı bırakmak için kullanın. **Claimsproviders** öğesini bulun.  Aşağıdaki talep sağlayıcılarını şu şekilde ekleyin:
+1. Aşağıdaki teknik profiller, Azure Active Directory verileri okuyan ve yazan [Teknik profillerdir Active Directory](active-directory-technical-profile.md). Uzantı dosyasındaki bu teknik profilleri geçersiz kılın. `PersistedClaims`Güçlü parola ilkesini devre dışı bırakmak için kullanın. **Claimsproviders** öğesini bulun.  Aşağıdaki talep sağlayıcılarını şu şekilde ekleyin:
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Azure Active Directory</DisplayName>
       <TechnicalProfiles>
@@ -140,13 +140,13 @@ Parola karmaşıklığını yapılandırmak için `newPassword` , ve `reenterPas
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Kimlik deneyimi çerçevesini**seçin.
 5. Özel Ilkeler sayfasında, **Ilkeyi karşıya yükle**' ye tıklayın.
-6. Varsa **Ilkenin üzerine yaz**' ı seçin ve ardından *TrustFrameworkExtensions. xml* dosyasını bulun ve seçin.
+6. Varsa **Ilkenin üzerine yaz**' ı seçin ve ardından *TrustFrameworkExtensions.xml* dosyasını arayıp seçin.
 7. **Karşıya Yükle**'ye tıklayın.
 
 ### <a name="run-the-policy"></a>İlkeyi çalıştırma
 
 1. Kaydolma veya oturum açma ilkesini açın. Örneğin, *B2C_1A_signup_signin*.
-2. **Uygulama**için, daha önce kaydetmiş olduğunuz uygulamanızı seçin. Belirteci görmek için, **yanıt URL 'sinin** gösterilmesi `https://jwt.ms`gerekir.
+2. **Uygulama**için, daha önce kaydetmiş olduğunuz uygulamanızı seçin. Belirteci görmek için, **yanıt URL 'sinin** gösterilmesi gerekir `https://jwt.ms` .
 3. **Şimdi çalıştır**’a tıklayın.
 4. **Şimdi kaydolun**' ı seçin, bir e-posta adresi girin ve yeni bir parola girin. Yönergeler, parola kısıtlamalarına göre sunulmuştur. Kullanıcı bilgilerini girmeyi ve ardından **Oluştur**' u tıklatın. Döndürülen belirtecin içeriğini görmeniz gerekir.
 

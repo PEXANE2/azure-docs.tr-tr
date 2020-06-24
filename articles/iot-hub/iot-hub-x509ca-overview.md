@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cce3a0e6993ea91236a3ce8c8b14eb6c66f72ad1
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284518"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84717809"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>X.509 CA Sertifikaları ile Cihaz Kimlik Doğrulaması
 
@@ -50,7 +50,7 @@ X. 509.952 CA sertifikasının sahibi, başka bir ara CA 'yı açan bir ara CA '
 
 ![img-genel-CERT-güven zinciri](./media/generic-cert-chain-of-trust.png)
 
-Cihaz Sertifikası (yaprak sertifikası da denir), IoT cihazını Azure IoT Hub kaydedilirken kullanılan **CIHAZ kimliğine** ayarlanmış *konu adına* sahip olmalıdır. Bu ayar kimlik doğrulaması için gereklidir.
+Cihaz Sertifikası (yaprak sertifikası da denir *),* IoT cihazını Azure IoT Hub kaydederken kullanılan **cihaz kimliğine** () sahip olmalıdır `CN=deviceId` . Bu ayar kimlik doğrulaması için gereklidir.
 
 Cihazları imzalarken [bir sertifika zinciri oluşturma](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) hakkında bilgi edinin.
 

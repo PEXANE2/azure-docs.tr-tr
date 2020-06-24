@@ -1,14 +1,14 @@
 ---
-title: Terminoloji-Azure
+title: IoT EDG terimlerinde canlı video analizi-Azure
 description: Bu makalede, IoT Edge terminolojisine ilişkin canlı video analizlerine genel bakış sunulmaktadır.
 ms.topic: conceptual
 ms.date: 05/30/2020
-ms.openlocfilehash: 51fcc962f6546d727dbbc5e7ff62dc9c4e5677af
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 58f3d7b54fd0bd19e6bc0a057ef053bb2c74cd97
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261047"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816528"
 ---
 # <a name="terminology"></a>Terminoloji
 
@@ -26,7 +26,7 @@ IoT Edge üzerindeki canlı video analizi, varlık oluşturabilir ve/veya mevcut
 
 ## <a name="streaming"></a>Akış
 
-Netflix, YouTube ve diğer hizmetler gibi hizmetlerden bir mobil cihazda video izleniyor varsa, akış videosu ile karşılaşmış olursunuz. Kayıttan yürütme, "Oynat" düğmesine (yeterli bant genişliğine sahipseniz) kadar ilerledikten sonra videonun zaman çizelgesinde geri ve ileriye doğru arama yapabilirsiniz. Akışla, fikir yalnızca izlenmekte olan videonun yalnızca bir kısmını sunmanız ve verilerin bir sunucudan kayıttan yürütme istemcisine aktarılmakta olması halinde görüntüleyicisinin videoyu yürütmeye başlamasını sağlar. Azure Media Services bağlamında, [akış](https://en.wikipedia.org/wiki/Streaming_media) [Azure Media Services](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview) bir akış istemcisine medya sunma işlemini (örneğin, Azure Media Player) ifade eder. Azure Media Services kullanarak, [http canlı akışı (HLS)](https://developer.apple.com/streaming/) ve [MPEG-Dash](https://dashif.org/about/)gıbı sektör standardı, HTTP tabanlı medya akışı protokollerini kullanarak müşterilere video akışını sağlayabilirsiniz. HLS, Azure Media Player ve [JW Player](https://www.jwplayer.com/), [Hls. js](https://github.com/video-dev/hls.js/), [Videojs](https://videojs.com/), [Google 'ın Shaka Player](https://github.com/google/shaka-player)gibi Web oyuncularını ve Android 'in [exoplayer](https://github.com/google/ExoPlayer) ve iOS 'un [av Foundation](https://developer.apple.com/av-foundation/)ile mobil uygulamalarda yerel olarak işleyebilmeniz için desteklenir. MPEG-DASH aynı şekilde Azure Media Player tarafından desteklenir, [Bu sayfadaki istemcilerin bir listesini bulur](https://dashif.org/clients/). 
+Netflix, YouTube ve diğer hizmetler gibi hizmetlerden bir mobil cihazda video izleniyor varsa, akış videosu ile karşılaşmış olursunuz. Kayıttan yürütme, "Oynat" düğmesine (yeterli bant genişliğine sahipseniz) kadar ilerledikten sonra videonun zaman çizelgesinde geri ve ileriye doğru arama yapabilirsiniz. Akışla, fikir yalnızca izlenmekte olan videonun yalnızca bir kısmını sunmanız ve verilerin bir sunucudan kayıttan yürütme istemcisine aktarılmakta olması halinde görüntüleyicisinin videoyu yürütmeye başlamasını sağlar. Azure Media Services bağlamında, [akış](https://en.wikipedia.org/wiki/Streaming_media) [Azure Media Services](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview) bir akış istemcisine medya sunma işlemini (örneğin, Azure Media Player) ifade eder. Azure Media Services kullanarak, [http canlı akışı (HLS)](https://developer.apple.com/streaming/) ve [MPEG-Dash](https://dashif.org/about/)gıbı sektör standardı, HTTP tabanlı medya akışı protokollerini kullanarak müşterilere video akışını sağlayabilirsiniz. HLS, Azure Media Player ve [JW oynatıcı](https://www.jwplayer.com/), [hls.js](https://github.com/video-dev/hls.js/), [Videojs](https://videojs.com/), [Google 'ın Shaka Player](https://github.com/google/shaka-player)gibi Web oyuncularını ve Android 'in [exoplayer](https://github.com/google/ExoPlayer) ve iOS 'un [av Foundation](https://developer.apple.com/av-foundation/)ile mobil uygulamalarda yerel olarak işleyebilmeniz için desteklenir. MPEG-DASH aynı şekilde Azure Media Player tarafından desteklenir, [Bu sayfadaki istemcilerin bir listesini bulur](https://dashif.org/clients/). 
 
 Videoları Azure Media Services bir varlığa kaydetmek için [medya graflarını](#media-graph)kullanarak, HLS ve Dash 'de video akışları teslim etmek üzere Media Services akış özelliğinden yararlanabilirsiniz. [Video kayıttan yürütme](video-playback-concept.md) makalesinde bunun hakkında daha fazla bilgi edinebilirsiniz.
 

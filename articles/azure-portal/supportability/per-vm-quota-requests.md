@@ -4,15 +4,15 @@ description: Toplam bölgesel vCPU limitini aynı tutara göre artıran Azure po
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: de06375dad5999a29691435317e62585a2ea7f64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e00b1cf11b906390335f257b20787d394b3a8ed4
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76843774"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117174"
 ---
 # <a name="standard-quota-increase-limits-by-vm-series"></a>Standart kota: VM serisine göre limitleri artırma
 
@@ -26,7 +26,7 @@ Kullandıkça öde ve ayrılmış sanal makine örnekleri için standart vCPU ko
 * İlk katman, tüm VM serileri genelinde *Toplam bölgesel vCPU sayısı*.
 * İkinci katman, Dv3 serisi vCPU 'Lar gibi *VM başına seri vCPU sayısı sınırı*olur.
 
-Yeni bir spot VM dağıttığınızda, bu VM Serisi için yeni ve mevcut vCPU kullanımı, söz konusu VM Serisi için onaylanan vCPU kotasını aşmamalıdır. Ayrıca, tüm VM dizileri arasında dağıtılan yeni ve var olan vCPU 'ların toplam sayısı, abonelik için onaylanan toplam bölgesel vCPU kotasını aşmamalıdır. Bu kotalardan biri aşılırsa, VM dağıtımına izin verilmez.
+Yeni bir spot VM 'yi her dağıttığınızda, tüm spot sanal makine örneklerinin toplam yeni ve var olan vCPU kullanımı, onaylanan nokta vCPU kota sınırını aşmamalıdır. Spot kota aşılırsa, spot VM dağıtımına izin verilmez.
 
 Azure portal kullanarak VM Serisi için vCPU kota sınırı artışını isteyebilirsiniz. VM Serisi kotasının bir artışı toplam bölgesel vCPU limitini aynı tutara göre otomatik olarak arttırır.
 

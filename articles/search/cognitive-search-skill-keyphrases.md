@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ddcd95356f9b70fec5a74f36f5b80e55ea56b477
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 529e79abbd7fa8f9733254d207af570237044305
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744009"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080818"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Bilişsel Beceri Anahtar İfade Ayıklama
 
@@ -24,7 +24,7 @@ Bu özellik, kayıttaki ana konuşmayı hızlı bir şekilde belirlemeniz gereki
 > [!NOTE]
 > İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
 >
-> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
+> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)açıklanmaktadır.
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -37,26 +37,37 @@ Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdı
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
-| Girişler                | Açıklama |
+| Girişler                | Description |
 |---------------------|-------------|
-| defaultLanguageCode | Seçim Açıkça dil belirtmeyen belgelere uygulanacak dil kodu.  Varsayılan dil kodu belirtilmemişse, varsayılan dil kodu olarak Ingilizce (en) kullanılır. <br/> [Desteklenen dillerin tam listesini](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)görüntüleyin. |
-| maxKeyPhraseCount   | Seçim Üretilecek anahtar tümceciklerin en fazla sayısı. |
+| `defaultLanguageCode` | Seçim Açıkça dil belirtmeyen belgelere uygulanacak dil kodu.  Varsayılan dil kodu belirtilmemişse, varsayılan dil kodu olarak Ingilizce (en) kullanılır. <br/> [Desteklenen dillerin tam listesini](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)görüntüleyin. |
+| `maxKeyPhraseCount`   | Seçim Üretilecek anahtar tümceciklerin en fazla sayısı. |
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Giriş  | Açıklama |
+| Giriş  | Description |
 |--------------------|-------------|
-| metin | Çözümlenecek metin.|
-| languageCode  |  Kayıtların dilini gösteren bir dize. Bu parametre belirtilmemişse, kayıtları çözümlemek için varsayılan dil kodu kullanılacaktır. <br/>[Desteklenen dillerin tam listesini](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) görün|
+| `text` | Çözümlenecek metin.|
+| `languageCode`    |  Kayıtların dilini gösteren bir dize. Bu parametre belirtilmemişse, kayıtları çözümlemek için varsayılan dil kodu kullanılacaktır. <br/>[Desteklenen dillerin tam listesini](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) görün|
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
-| Çıktı  | Açıklama |
+| Çıkış     | Description |
 |--------------------|-------------|
-| keyPhrases | Giriş metninde ayıklanan anahtar tümceciklerin listesi. Anahtar tümceleri önem sırasına göre döndürülür. |
+| `keyPhrases` | Giriş metninde ayıklanan anahtar tümceciklerin listesi. Anahtar tümceleri önem sırasına göre döndürülür. |
 
 
 ##  <a name="sample-definition"></a>Örnek tanım
+
+Aşağıdaki alanlara sahip bir SQL kaydı düşünün:
+
+```json
+{
+    "content": "Glaciers are huge rivers of ice that ooze their way over land, powered by gravity and their own sheer weight. They accumulate ice from snowfall and lose it through melting. As global temperatures have risen, many of the world’s glaciers have already started to shrink and retreat. Continued warming could see many iconic landscapes – from the Canadian Rockies to the Mount Everest region of the Himalayas – lose almost all their glaciers by the end of the century.",
+    "language": "en"
+}
+```
+
+Daha sonra beceri tanımınız şöyle görünebilir:
 
 ```json
  {
@@ -68,7 +79,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
       },
       {
         "name": "languageCode",
-        "source": "/document/languagecode" 
+        "source": "/document/language" 
       }
     ],
     "outputs": [
@@ -80,33 +91,12 @@ Parametreler büyük/küçük harfe duyarlıdır.
   }
 ```
 
-##  <a name="sample-input"></a>Örnek giriş
-
-```json
-{
-    "values": [
-      {
-        "recordId": "1",
-        "data":
-           {
-             "text": "Glaciers are huge rivers of ice that ooze their way over land, powered by gravity and their own sheer weight. They accumulate ice from snowfall and lose it through melting. As global temperatures have risen, many of the world’s glaciers have already started to shrink and retreat. Continued warming could see many iconic landscapes – from the Canadian Rockies to the Mount Everest region of the Himalayas – lose almost all their glaciers by the end of the century.",
-             "language": "en"
-           }
-      }
-    ]
-```
-
-
 ##  <a name="sample-output"></a>Örnek çıktı
 
+Yukarıdaki örnekte, becerinizi gösteren çıktı, belirttiğimiz bu yana "Document/myKeyPhrases" adlı zenginleştirilmiş ağaçta yeni bir düğüme yazılır `targetName` . Bir belirtmezseniz `targetName` , "Document/keyPhrases" olacaktır.
+
+#### <a name="documentmykeyphrases"></a>Belge/myKeyPhrases 
 ```json
-{
-    "values": [
-      {
-        "recordId": "1",
-        "data":
-           {
-            "keyPhrases": 
             [
               "world’s glaciers", 
               "huge rivers of ice", 
@@ -115,12 +105,9 @@ Parametreler büyük/küçük harfe duyarlıdır.
               "Mount Everest region",
               "Continued warming"
             ]
-           }
-      }
-    ]
-}
 ```
 
+"Document/myKeyPhrases" öğesini diğer becerilere giriş olarak veya bir [Çıkış alanı eşlemesinin](cognitive-search-output-field-mapping.md)kaynağı olarak kullanabilirsiniz.
 
 ## <a name="errors-and-warnings"></a>Hatalar ve uyarılar
 Desteklenmeyen bir dil kodu sağlarsanız bir hata oluşturulur ve anahtar ifadeler ayıklanmaz.
@@ -131,3 +118,4 @@ Metniniz 50.000 karakterden fazlaysa, yalnızca ilk 50.000 karakter analiz edili
 
 + [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
++ [Çıkış alanı eşlemelerini tanımlama](cognitive-search-output-field-mapping.md)

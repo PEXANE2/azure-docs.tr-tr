@@ -4,21 +4,20 @@ description: Bir kullanıcının ağ konumuna bağlı olarak, bulut uygulamalar�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.workload: identity
-ms.date: 05/28/2020
+ms.topic: conceptual
+ms.date: 06/15/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: f9f80cf0c42bdc6e45d62cac930c0bce4b20ee60
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 7db7e64840d248b66a61ff310f9441800e1afc31
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605468"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253231"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Bir koşullu erişim ilkesinde konum koşulunu kullanma 
 
@@ -141,6 +140,30 @@ Bu seçenek şu şekilde geçerlidir:
 ### <a name="selected-locations"></a>Seçili konumlar
 
 Bu seçenekle, bir veya daha fazla adlandırılmış konum seçebilirsiniz. Bu ayarın uygulanacağı bir ilke için, bir kullanıcının seçili konumlardan herhangi birinden bağlanması gerekir. ' A tıkladığınızda, adlandırılmış ağların listesini gösteren adlandırılmış ağ seçimi denetimini **Seç** ' e tıklayın. Liste ayrıca ağ konumunun güvenilir olarak işaretlenip işaretlenmediğini gösterir. **MFA güvenilir IP 'ler** adlı adlandırılmış konum, Multi-Factor Authentication hizmet ayarı sayfasında yapılandırılabilecek IP ayarlarını eklemek için kullanılır.
+
+## <a name="ipv6-traffic"></a>IPv6 trafiği
+
+Varsayılan olarak, koşullu erişim ilkeleri tüm IPv6 trafiği için geçerlidir. [Adlandırılmış konum önizlemesiyle](#preview-features), belirli IPv6 adres aralıklarını bir koşullu erişim ilkesinden dışlayabilirsiniz. Bu seçenek, ilkenin belirli IPv6 aralıkları için uygulanmasını istemediğiniz durumlarda faydalıdır. Örneğin, kurumsal ağınızda kullanım için bir ilkeyi zorunlu kılmak istiyorsanız ve şirket ağınız genel IPv6 aralıklarında barındırılır.  
+
+### <a name="when-will-my-tenant-have-ipv6-traffic"></a>Kiracımın IPv6 trafiği var mı?
+
+Azure Active Directory (Azure AD) Şu anda IPv6 kullanan doğrudan ağ bağlantılarını desteklememektedir. Ancak, kimlik doğrulama trafiğinin başka bir hizmet aracılığıyla proxy olduğu bazı durumlar vardır. Bu durumlarda, IPv6 adresi ilke değerlendirmesi sırasında kullanılacaktır.
+
+Azure AD 'ye kullanan IPv6 trafiğinin çoğu Microsoft Exchange Online 'dan gelir. Kullanılabilir olduğunda, Exchange IPv6 bağlantılarını tercih edecektir. **Bu nedenle, belirli IPv4 aralıkları için yapılandırılmış Exchange için koşullu erişim ilkelerinize sahipseniz, kuruluşların IPv6 aralıklarını de eklediğinizden emin olmak isteyeceksiniz.** IPv6 aralıklarının dahil edilmesi, aşağıdaki iki durum için beklenmeyen davranışlara neden olur:
+
+- Exchange Online 'a eski kimlik doğrulamasıyla bağlanmak için bir posta istemcisi kullanıldığında, Azure AD bir IPv6 adresi alabilir. İlk kimlik doğrulama isteği Exchange 'e gider ve daha sonra Azure AD 'ye gönderilir.
+- Tarayıcıda Outlook Web Erişimi (OWA) kullanıldığında, tüm koşullu erişim ilkelerinin karşılanmasını düzenli olarak doğrular. Bu denetim, bir kullanıcının izin verilen bir IP adresinden yeni bir konuma taşındığı, kafeteryi aşağı doğru bir yere yakalayabildiği durumlarda kullanılır. Bu durumda, bir IPv6 adresi kullanılıyorsa ve IPv6 adresi yapılandırılmış bir aralıkta değilse, Kullanıcı oturumunun kesintiye uğratılmasını ve yeniden kimlik doğrulaması için Azure AD 'ye yönlendirilmesini sağlayabilir. 
+
+Bunlar, adlandırılmış konumlarınızın IPv6 aralıklarını yapılandırmanız gerekebilecek en yaygın nedenlerdir. Ayrıca, Azure sanal ağları 'nı kullanıyorsanız bir IPv6 adresinden gelen trafiğe sahip olursunuz. Bir koşullu erişim ilkesi tarafından engellenen VNet trafiği varsa, Azure AD oturum açma günlüğlerinizi kontrol edin. Trafiği tanımladıktan sonra, kullanılan IPv6 adresini alabilir ve ilkenize dışlayabilirsiniz. 
+
+> [!NOTE]
+> Tek bir adres için bir IP CıDR aralığı belirtmek istiyorsanız/32 bit maskesini uygulayın. 2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74A IPv6 adresini söylerseniz ve bu tek adresi bir Aralık olarak dışlamak istediğinizde, 2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74A/32 kullanabilirsiniz.
+
+### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>Azure AD oturum açma etkinlik raporlarında IPv6 trafiğini tanımlama
+
+[Azure AD oturum açma etkinlik raporları](../reports-monitoring/concept-sign-ins.md)' na giderek Kiracınızdaki IPv6 trafiğini bulabilirsiniz. Etkinlik raporunu açtıktan sonra, "IP adresi" sütununu ekleyin. Bu sütun, IPv6 trafiğini tanımlamanızı sağlayacak.
+
+Ayrıca, rapordaki bir satıra tıklayarak ve ardından oturum açma etkinliği ayrıntılarından "konum" sekmesine giderek istemci IP 'sini bulabilirsiniz. 
 
 ## <a name="what-you-should-know"></a>Bilmeniz gerekenler
 

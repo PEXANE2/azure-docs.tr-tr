@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7c15312b48e7118517894d8ffd4807e4892e03a3
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: e323c56f22c3a7d32bda5afe03a3462d3263f0d0
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233138"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254081"
 ---
 # <a name="using-azure-stream-analytics-jobs-with-sql-edge"></a>SQL Edge ile Azure Stream Analytics işleri kullanma
 
@@ -32,7 +32,7 @@ Azure SQL Edge, Stream Analytics çalışma zamanının yerel bir uygulamasına 
 }
 ```
 
-|Alan | Açıklama |
+|Alan | Description |
 |------|-------------|
 | SqlPackage | SQL veritabanı DAC paketini içeren *. zip dosyası için Azure Blob depolama URI 'SI.
 | Aşama Jobınfo | ASA Edge işi için Azure Blob depolama URI 'SI.
@@ -49,10 +49,10 @@ Azure SQL Edge, Stream Analytics çalışma zamanının yerel bir uygulamasına 
 
     **Çıktı**. Çıkış olarak SQL veritabanı ' nı seçin. **SQL veritabanı ayarlarını el Ile sağla**' yı seçin. Veritabanı ve tablo için yapılandırma ayrıntılarını sağlayın.
 
-    |Alan      | Açıklama |
+    |Alan      | Description |
     |---------------|-------------|
     |Çıktı diğer adı | Çıkış diğer adının adı.|
-    |Veritabanı | SQL veritabanının adı. SQL Edge örneğinde bulunan bir veritabanının geçerli bir adı olması gerekir.|
+    |Veritabanı | Veritabanının adı. SQL Edge örneğinde bulunan bir veritabanının geçerli bir adı olması gerekir.|
     |Sunucu adı | SQL örneği için ad (veya IP adresi) ve bağlantı noktası numarası ayrıntıları. Bir SQL Edge dağıtımı için sunucu adı için **TCP:., 1433** kullanabilirsiniz.|
     |Kullanıcı adı | Daha önce belirttiğiniz veritabanına veri okuyucu ve veri yazıcısı erişimi olan SQL oturum açma hesabı.|
     |Parola | Daha önce belirttiğiniz SQL oturum açma hesabının parolası.|

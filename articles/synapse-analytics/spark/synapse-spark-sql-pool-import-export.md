@@ -5,22 +5,22 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 20b030079121104fe7bd75924a63ab0e12be9b19
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 515fd9bfedc5bc5d3cefda2a357c351f515fb5f5
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020872"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194680"
 ---
 # <a name="introduction"></a>Giriş
 
 Azure SYNAPSE Apache Spark to SYNAPSE SQL Connector, Azure SYNAPSE 'te Spark havuzları (Önizleme) ve SQL havuzları arasında verileri verimli bir şekilde aktarmak için tasarlanmıştır. Azure SYNAPSE Apache Spark to SYNAPSE SQL Connector yalnızca SQL havuzlarında çalışır, isteğe bağlı SQL ile çalışmaz.
 
-## <a name="design"></a>Tasarım
+## <a name="design"></a>Tasarlama
 
 Spark havuzları ve SQL havuzları arasında veri aktarımı, JDBC kullanılarak yapılabilir. Bununla birlikte, Spark ve SQL havuzları gibi iki Dağıtılmış Sistem, JDBC, seri veri aktarımı ile ilgili bir performans sorunu olduğunu eğilimi gösterir.
 
@@ -170,11 +170,11 @@ Benzer şekilde, okuma senaryosunda, Scala kullanarak verileri okuyun ve geçici
 
 Diğer kullanıcıların eksik izinlerini değiştirmek için, çalışma alanına bağlı ADLS 2. depolama hesabında Depolama Blobu veri sahibi olmanız gerekir. Kullanıcının çalışma alanına erişimi olduğundan ve not defterlerini çalıştırma izinlerine sahip olduğundan emin olun.
 
-### <a name="option-1"></a>Seçenek 1
+### <a name="option-1"></a>1\. Seçenek
 
 - Kullanıcıya Depolama Blobu verileri katılımcısı/Owner yapın
 
-### <a name="option-2"></a>2. Seçenek
+### <a name="option-2"></a>2\. Seçenek
 
 - Klasör yapısında aşağıdaki ACL 'Leri belirtin:
 

@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: a2c57ca6a1f7eb50c277543e9fbe27a13f839bac
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 03402828720272851f9b74000d5bcb79405885a5
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648809"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117237"
 ---
 # <a name="azure-functions-networking-options"></a>Azure İşlevleri ağ seçenekleri
 
@@ -28,13 +28,7 @@ Barındırma modellerinin farklı düzeylerde ağ yalıtımı vardır. Doğru ol
 
 ## <a name="matrix-of-networking-features"></a>Ağ özellikleri matrisi
 
-|                |[Tüketim planı](functions-scale.md#consumption-plan)|[Premium planı](functions-scale.md#premium-plan)|[App Service planı](functions-scale.md#app-service-plan)|[App Service Ortamı](../app-service/environment/intro.md)|
-|----------------|-----------|----------------|---------|-----------------------|  
-|[Gelen IP kısıtlamaları ve özel site erişimi](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
-|[Sanal Ağ tümleştirmesi](#virtual-network-integration)|❌Hayır|✅Evet (bölgesel)|✅Evet (bölgesel ve ağ geçidi)|✅Yes|
-|[Sanal ağ Tetikleyicileri (HTTP olmayan)](#virtual-network-triggers-non-http)|❌Hayır| ✅Yes |✅Yes|✅Yes|
-|[Karma bağlantılar](#hybrid-connections) (yalnızca Windows)|❌Hayır|✅Yes|✅Yes|✅Yes|
-|[Giden IP kısıtlamaları](#outbound-ip-restrictions)|❌Hayır| ✅Yes|✅Yes|✅Yes|
+[!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
 
 ## <a name="inbound-ip-restrictions"></a>Gelen IP kısıtlamaları
 
@@ -139,6 +133,12 @@ Daha fazla bilgi edinmek için [Karma Bağlantılar App Service belgelerine](../
 Giden IP kısıtlamaları bir Premium planda, App Service planında veya App Service Ortamı kullanılabilir. App Service Ortamı dağıtıldığı sanal ağın giden kısıtlamalarını yapılandırabilirsiniz.
 
 Bir Premium planda veya bir sanal ağla App Service bir planda bir işlev uygulamasını tümleştirdiğinizde, uygulama varsayılan olarak internet 'e giden çağrılar yapmaya devam edebilir. Uygulama ayarını ekleyerek `WEBSITE_VNET_ROUTE_ALL=1` , trafiği kısıtlamak için ağ güvenlik grubu kurallarının kullanılabileceği sanal ağınıza giden tüm trafiği gönderilmesini zorlarsınız.
+
+## <a name="automation"></a>Otomasyon
+Aşağıdaki API 'Ler, bölgesel sanal ağ tümleştirmelerini programlı bir şekilde yönetmenizi sağlar:
+
++ **Azure CLI**: [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) Bölgesel bir sanal ağ tümleştirmeleri eklemek, listelemek veya kaldırmak için komutları kullanın.  
++ **ARM şablonları**: bölgesel sanal ağ tümleştirmesi, bir Azure Resource Manager şablonu kullanılarak etkinleştirilebilir. Tam bir örnek için, [Bu işlevlere hızlı başlangıç şablonu](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/)' na bakın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

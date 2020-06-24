@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 255e440586af2a5c9115023f45fbf02e25c57ab6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 789d70f77558bbade854ba31fd10ecd2b8e7b853
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692137"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194714"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob depolama yaşam döngüsünü yönetme
 
@@ -130,7 +130,7 @@ Azure portal bir ilke eklemenin iki yolu vardır.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Aşağıdaki PowerShell betiği, depolama hesabınıza bir ilke eklemek için kullanılabilir. Değişken `$rgname` , kaynak grubu adınızla başlatılmalıdır. Değişken `$accountName` , depolama hesabı adınızla başlatılmalıdır.
+Aşağıdaki PowerShell betiği, depolama hesabınıza bir ilke eklemek için kullanılabilir. `$rgname`Değişken, kaynak grubu adınızla başlatılmalıdır. `$accountName`Değişken, depolama hesabı adınızla başlatılmalıdır.
 
 ```powershell
 #Install the latest module
@@ -236,7 +236,7 @@ Yaşam döngüsü yönetimi ilkesi, bir JSON belgesindeki kuralların koleksiyon
 |----------------|----------------|-------|----------|
 | `name`         | Dize |Bir kural adı en fazla 256 alfasayısal karakter içerebilir. Kural adı büyük/küçük harfe duyarlıdır.  Bir ilke içinde benzersiz olmalıdır. | True |
 | `enabled`      | Boole | Bir kuralın geçici olarak devre dışı bırakılması için isteğe bağlı bir Boole değeri. Ayarlanmamışsa varsayılan değer true 'dur. | False | 
-| `type`         | Sabit listesi değeri | Geçerli geçerli tür `Lifecycle`. | True |
+| `type`         | Sabit listesi değeri | Geçerli geçerli tür `Lifecycle` . | True |
 | `definition`   | Yaşam döngüsü kuralını tanımlayan bir nesne | Her tanım bir filtre kümesinden ve bir eylem kümesinden oluşur. | True |
 
 ## <a name="rules"></a>Kurallar
@@ -245,7 +245,7 @@ Her kural tanımı bir filtre kümesi ve bir eylem kümesi içerir. [Filtre küm
 
 ### <a name="sample-rule"></a>Örnek kural
 
-Aşağıdaki örnek kural, içinde `container1` bulunan ve ile `foo`başlayan nesneler üzerinde eylemleri çalıştırmak için hesabı filtreler.  
+Aşağıdaki örnek kural, içinde bulunan ve ile başlayan nesneler üzerinde eylemleri çalıştırmak için hesabı filtreler `container1` `foo` .  
 
 >[!NOTE]
 >Yaşam döngüsü yönetimi yalnızca Blok Blobu türünü destekler.  
@@ -285,15 +285,15 @@ Aşağıdaki örnek kural, içinde `container1` bulunan ve ile `foo`başlayan ne
 
 ### <a name="rule-filters"></a>Kural filtreleri
 
-Filtre, kural eylemlerini depolama hesabındaki Blobların bir alt kümesiyle sınırlar. Birden çok filtre tanımlanmışsa, tüm filtrelerdeki mantıksal `AND` bir çalışır.
+Filtre, kural eylemlerini depolama hesabındaki Blobların bir alt kümesiyle sınırlar. Birden çok filtre tanımlanmışsa, `AND` Tüm filtrelerdeki mantıksal bir çalışır.
 
 Filtreler aşağıdakileri içerir:
 
 | Filtre adı | Filtre türü | Notlar | Gereklidir |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Önceden tanımlanmış sabit listesi değerleri dizisi. | Geçerli yayın şunları destekler `blockBlob`. | Yes |
-| prefixMatch | Öneklerin eşleştirileceği dizeler dizisi. Her kural en fazla 10 ön ek tanımlayabilir. Önek dizesinin bir kapsayıcı adıyla başlaması gerekir. Örneğin, bir kural için altındaki `https://myaccount.blob.core.windows.net/container1/foo/...` tüm Blobları eşleştirmek Istiyorsanız, prefixMatch olur. `container1/foo` | PrefixMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir.  | No |
-| blobIndexMatch | Blob dizini etiketi anahtarından ve eşleştirilecek değer koşullarından oluşan Sözlük değerleri dizisi. Her kural, en fazla 10 blob Dizin etiketi koşulunu tanımlayabilir. Örneğin, bir kural için `Project = Contoso` altındaki `https://myaccount.blob.core.windows.net/` tüm Blobları eşleştirmek Istiyorsanız, blobindexmatch olur. `{"name": "Project","op": "==","value": "Contoso"}` | BlobIndexMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | No |
+| blobTypes   | Önceden tanımlanmış sabit listesi değerleri dizisi. | Geçerli yayın şunları destekler `blockBlob` . | Yes |
+| prefixMatch | Öneklerin eşleştirileceği dizeler dizisi. Her kural en fazla 10 ön ek tanımlayabilir. Önek dizesinin bir kapsayıcı adıyla başlaması gerekir. Örneğin, bir kural için altındaki tüm Blobları eşleştirmek istiyorsanız, `https://myaccount.blob.core.windows.net/container1/foo/...` prefixMatch olur `container1/foo` . | PrefixMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir.  | No |
+| blobIndexMatch | Blob dizini etiketi anahtarından ve eşleştirilecek değer koşullarından oluşan Sözlük değerleri dizisi. Her kural, en fazla 10 blob Dizin etiketi koşulunu tanımlayabilir. Örneğin, bir kural için altındaki tüm Blobları eşleştirmek istiyorsanız `Project = Contoso` `https://myaccount.blob.core.windows.net/` , blobIndexMatch olur `{"name": "Project","op": "==","value": "Contoso"}` . | BlobIndexMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | No |
 
 > [!NOTE]
 > Blob dizini genel önizlemededir ve **Fransa orta** ve **Fransa Güney** bölgelerinde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
@@ -311,11 +311,11 @@ Yaşam döngüsü yönetimi, Blobları ve silme işlemini ve BLOB anlık görün
 | delete        | Destekleniyor                                   | Destekleniyor     |
 
 >[!NOTE]
->Aynı blob üzerinde birden fazla eylem tanımlarsanız, yaşam döngüsü yönetimi Blobun en az maliyetli eylemi uygular. Örneğin eylem `delete` , eylemden `tierToArchive`daha fazla. Eylem `tierToArchive` eylemden `tierToCool`daha fazla.
+>Aynı blob üzerinde birden fazla eylem tanımlarsanız, yaşam döngüsü yönetimi Blobun en az maliyetli eylemi uygular. Örneğin eylem, `delete` eylemden daha fazla `tierToArchive` . Eylem `tierToArchive` eylemden daha fazla `tierToCool` .
 
 Çalışma koşulları yaşa göre yapılır. Temel Bloblar, yaşı izlemek için son değiştirme süresini kullanır ve BLOB anlık görüntüleri, yaşı izlemek için anlık görüntü oluşturma süresini kullanır.
 
-| Eylem çalıştırma koşulu             | Koşul değeri                          | Açıklama                             |
+| Eylem çalıştırma koşulu             | Koşul değeri                          | Description                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | Yaşı gün olarak gösteren tamsayı değeri | Temel blob eylemleri için koşul     |
 | daysAfterCreationGreaterThan     | Yaşı gün olarak gösteren tamsayı değeri | Blob anlık görüntü eylemleri için koşul |
@@ -326,7 +326,7 @@ Aşağıdaki örneklerde, yaşam döngüsü ilke kurallarıyla yaygın senaryola
 
 ### <a name="move-aging-data-to-a-cooler-tier"></a>Eskime verilerini daha soğuk bir katmana taşıyın
 
-Bu örnek, veya `container1/foo` `container2/bar`ile ön önekli blok bloblarının nasıl yapılacağını gösterir. İlke, 30 gün boyunca seyrek erişimli depolamaya değiştirilmeyen Blobları ve arşiv katmanına 90 gün içinde değiştirilmeyen Blobları geçirir:
+Bu örnek, veya ile ön önekli blok bloblarının nasıl yapılacağını gösterir `container1/foo` `container2/bar` . İlke, 30 gün boyunca seyrek erişimli depolamaya değiştirilmeyen Blobları ve arşiv katmanına 90 gün içinde değiştirilmeyen Blobları geçirir:
 
 ```json
 {
@@ -354,10 +354,10 @@ Bu örnek, veya `container1/foo` `container2/bar`ile ön önekli blok blobların
 
 ### <a name="archive-data-after-ingest"></a>Aldıktan sonra verileri Arşivle
 
-Bazı veriler bulutta boş kalır ve şimdiye kadar, kaydedildikten sonra erişiliyorsa nadiren olur. Aşağıdaki yaşam döngüsü ilkesi, verileri alındıktan sonra arşivlemek üzere yapılandırılmıştır. Bu örnek, kapsayıcı `archivecontainer` içindeki depolama hesabındaki Blobları bir arşiv katmanına geçirir. Geçiş, son değiştirilme zamanından sonra blob 0 gün sonra işlem yaparak gerçekleştirilir:
+Bazı veriler bulutta boş kalır ve şimdiye kadar, kaydedildikten sonra erişiliyorsa nadiren olur. Aşağıdaki yaşam döngüsü ilkesi, verileri alındıktan sonra arşivlemek üzere yapılandırılmıştır. Bu örnek, kapsayıcı içindeki depolama hesabındaki Blobları `archivecontainer` bir arşiv katmanına geçirir. Geçiş, son değiştirilme zamanından sonra blob 0 gün sonra işlem yaparak gerçekleştirilir:
 
 > [!NOTE] 
-> Bloblarınızı doğrudan arşiv katmanının daha verimli olması için yüklemeniz önerilir. [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) veya [putblocklist](https://docs.microsoft.com/rest/api/storageservices/put-block-list) için x-MS-acess-tier başlığını Rest sürüm 2018-11-09 ve daha yeni veya en son BLOB depolama istemci kitaplıklarımızla birlikte kullanabilirsiniz. 
+> Bloblarınızı doğrudan arşiv katmanının daha verimli olması için yüklemeniz önerilir. [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) veya [putblocklist](https://docs.microsoft.com/rest/api/storageservices/put-block-list) için x-MS-Access-Tier üst bilgisini Rest sürüm 2018-11-09 ve daha yeni veya en son BLOB depolama istemci kitaplıklarımızla birlikte kullanabilirsiniz. 
 
 ```json
 {
@@ -410,7 +410,7 @@ Bazı verilerin oluşturulduktan sonra gün veya ay sonu bekleniyor. Bir yaşam 
 ```
 
 ### <a name="delete-data-with-blob-index-tags"></a>Blob dizini etiketleriyle verileri silme
-Bazı verilerin yalnızca silinmek üzere işaretlenmişse zaman aşımına uğradı. Bir yaşam döngüsü yönetim ilkesini, blob dizini anahtar/değer öznitelikleriyle etiketlenmiş verilerin süresi dolacak şekilde yapılandırabilirsiniz. Aşağıdaki örnek, ile `Project = Contoso`etiketlenmiş tüm blok bloblarını silen bir ilke gösterir. Blob dizini hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
+Bazı verilerin yalnızca silinmek üzere işaretlenmişse zaman aşımına uğradı. Bir yaşam döngüsü yönetim ilkesini, blob dizini anahtar/değer öznitelikleriyle etiketlenmiş verilerin süresi dolacak şekilde yapılandırabilirsiniz. Aşağıdaki örnek, ile etiketlenmiş tüm blok bloblarını silen bir ilke gösterir `Project = Contoso` . Blob dizini hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
 
 ```json
 {
@@ -447,7 +447,7 @@ Bazı verilerin yalnızca silinmek üzere işaretlenmişse zaman aşımına uğr
 
 ### <a name="delete-old-snapshots"></a>Eski anlık görüntüleri Sil
 
-Düzenli aralıklarla değiştirilen ve erişilen veriler için, anlık görüntüler genellikle verilerin eski sürümlerini izlemek için kullanılır. Anlık görüntü yaşı temelinde eski anlık görüntüleri silen bir ilke oluşturabilirsiniz. Anlık görüntü yaşı, anlık görüntü oluşturma süresi hesaplanarak belirlenir. Bu ilke kuralı, anlık görüntü oluşturulduktan sonra 90 `activedata` gün veya daha eski kapsayıcı içindeki Blok Blobu anlık görüntülerini siler.
+Düzenli aralıklarla değiştirilen ve erişilen veriler için, anlık görüntüler genellikle verilerin eski sürümlerini izlemek için kullanılır. Anlık görüntü yaşı temelinde eski anlık görüntüleri silen bir ilke oluşturabilirsiniz. Anlık görüntü yaşı, anlık görüntü oluşturma süresi hesaplanarak belirlenir. Bu ilke kuralı `activedata` , anlık görüntü oluşturulduktan sonra 90 gün veya daha eski kapsayıcı içindeki Blok Blobu anlık görüntülerini siler.
 
 ```json
 {

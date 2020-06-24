@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fbdf0fda51ae35fac4f3f8ae45bfcd788fc406ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0fcbe59aa4393f1266c0840cf05c3dc7b1f6d90
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81413997"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204991"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) kapasite sınırları
 
@@ -24,26 +24,26 @@ ms.locfileid: "81413997"
 
 ## <a name="workload-management"></a>İş yükü yönetimi
 
-| Kategori | Açıklama | Maksimum |
+| Kategori | Description | Maksimum |
 |:--- |:--- |:--- |
 | [Veri ambarı birimleri (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Tek bir SQL Havuzu (veri ambarı) birimi için maksimum DWU | Gen1: DW6000<br></br>Gen2: DW30000c |
 | [Veri ambarı birimleri (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Sunucu başına varsayılan DTU |54.000<br></br>Varsayılan olarak, her SQL Server (örneğin, myserver.database.windows.net), DW5000c 'e kadar izin veren bir DTU kotasına sahiptir 54.000. Bu kota yalnızca bir güvenlik sınırıdır. [Bir destek bileti oluşturarak](sql-data-warehouse-get-started-create-support-ticket.md) ve istek türü olarak *Kota* ' yı seçerek kotanızı artırabilirsiniz.  DTU gereksinimlerinizi hesaplamak için gereken toplam DWU ile 7,5 ' i çarpıp, gereken toplam cDWU ile 9,5 ' i çarpın. Örneğin:<br></br>DW6000 x 7,5 = 45.000 DTU<br></br>DW5000c x 9,5 = 47.500 DTU.<br></br>Geçerli DTU tüketiminizi, portalda SQL Server seçeneğinden görüntüleyebilirsiniz. DTU kotasında hem duraklatılmış hem de duraklatılmamış veritabanları sayılır. |
 | Veritabanı bağlantısı |Maksimum eş zamanlı açık oturum |1024<br/><br/>Eş zamanlı açık oturumların sayısı, seçilen DWU 'ya göre değişiklik gösterecektir. DWU600c ve üzeri, en fazla 1024 açık oturumu destekler. DWU500c ve altı, en fazla eşzamanlı açık oturum sınırı olan 512 ' i destekler. Aynı anda yürütebileceğini sorgu sayısı için sınırlamalar olduğunu unutmayın. Eşzamanlılık sınırı aşıldığında, istek işlenmek üzere beklediği bir iç sıraya gider. |
 | Veritabanı bağlantısı |Hazırlanan deyimler için maksimum bellek |20 MB |
 | [İş yükü yönetimi](resource-classes-for-workload-management.md) |En fazla eşzamanlı sorgu |128<br/><br/>  En fazla 128 eşzamanlı sorgu yürütülecektir ve kalan sorgular sıraya alınacaktır.<br/><br/>Kullanıcılar daha yüksek kaynak sınıflarına atandığında veya [veri ambarı birimi](memory-concurrency-limits.md) ayarı düşürülen zaman eşzamanlı sorguların sayısı azalabilir. DMV sorguları gibi bazı sorguların çalışmasına her zaman izin verilir ve eşzamanlı sorgu sınırını etkilemez. Eşzamanlı sorgu yürütme hakkında daha fazla bilgi için bkz. [eşzamanlılık üst sınırları](memory-concurrency-limits.md) makalesi. |
-| ['nin](sql-data-warehouse-tables-temporary.md) |En fazla GB |DW100c başına 399 GB. Bu nedenle, DWU1000c adresinde tempdb 3,99 TB olarak boyutlandırılır. |
+| ['nin](sql-data-warehouse-tables-temporary.md) |En fazla GB |DW100c başına 399 GB. DWU1000c adresinde tempdb 3,99 TB olarak boyutlandırılır. |
 ||||
 
 ## <a name="database-objects"></a>Veritabanı nesneleri
 
-| Kategori | Açıklama | Maksimum |
+| Kategori | Description | Maksimum |
 |:--- |:--- |:--- |
 | Veritabanı |En büyük boyut | Gen1:240 TB diskte sıkıştırılmış. Bu alan tempdb veya günlük alanından bağımsızdır ve bu nedenle bu alan kalıcı tablolara ayrılmıştır.  Kümelenmiş columnstore sıkıştırması, 5X ile tahmin edilir.  Bu sıkıştırma, tüm tablolar kümelenmiş columnstore (varsayılan tablo türü) olduğunda veritabanının yaklaşık 1 PB 'e büyümesine izin verir. <br/><br/> Gen2: columnstore tabloları için sınırsız depolama alanı.  Veritabanının rowstore kısmı diskte hala 240 TB sıkıştırılmış ile sınırlıdır. |
 | Tablo |En büyük boyut |Columnstore tabloları için sınırsız boyut. <br>disk üzerinde sıkıştırılan rowstore tabloları için 60 TB. |
 | Tablo |Veritabanı başına tablo | 100.000 |
 | Tablo |Tablo başına sütun |1024 sütun |
 | Tablo |Sütun başına bayt |Sütun [veri türüne](sql-data-warehouse-tables-data-types.md)bağımlıdır. Sınır, karakter veri türleri için 8000, nvarchar için 4000 veya en fazla veri türü için 2 GB 'dir. |
-| Tablo |Satır başına bayt, tanımlı boyut |8060 bayt<br/><br/>Satır başına bayt sayısı, sayfa sıkıştırması ile SQL Server için olduğu şekilde hesaplanır. SQL Server gibi, satır taşma alanı desteklenir ve bu da **değişken uzunluklu sütunların** satır dışı gönderilmesine olanak sağlar. Değişken uzunluk satırları satır dışı gönderildiğinde, ana kayıtta yalnızca 24 baytlık kök depolanır. Daha fazla bilgi için bkz. [8 kb aşan satır taşma verileri](https://msdn.microsoft.com/library/ms186981.aspx). |
+| Tablo |Satır başına bayt, tanımlı boyut |8060 bayt<br/><br/>Satır başına bayt sayısı, sayfa sıkıştırması ile SQL Server için olduğu şekilde hesaplanır. SQL Server gibi, satır taşma alanı desteklenir ve bu da **değişken uzunluklu sütunların** satır dışı gönderilmesine olanak sağlar. Değişken uzunluk satırları satır dışı gönderildiğinde, ana kayıtta yalnızca 24 baytlık kök depolanır. Daha fazla bilgi için bkz. [8 KB 'ı aşan satır taşma verileri](https://msdn.microsoft.com/library/ms186981.aspx). |
 | Tablo |Tablo başına bölüm sayısı |15.000<br/><br/>Yüksek performans için, hala iş gereksinimlerinizi desteklerken ihtiyacınız olan bölüm sayısını en aza indirmenizi öneririz. Bölüm sayısı arttıkça, veri tanımlama dili (DDL) ve veri Işleme dili (DML) işlemleri için ek yükün büyümesi ve performansının yavaşlamasına neden olur. |
 | Tablo |Bölüm sınırı değeri başına karakter. |4000 |
 | Dizin oluşturma |Tablo başına kümelenmemiş dizinler. |50<br/><br/>Yalnızca rowstore tabloları için geçerlidir. |
@@ -54,19 +54,19 @@ ms.locfileid: "81413997"
 | İstatistikler |İstatistik nesnesi başına sütun. |32 |
 | İstatistikler |Tablo başına sütunlarda oluşturulan istatistikler. |30.000 |
 | Saklı Yordamlar |En fazla iç içe geçme düzeyi. |8 |
-| Görüntüle |Görünüm başına sütun |1.024 |
+| Görünüm |Görünüm başına sütun |1.024 |
 ||||
 
 ## <a name="loads"></a>Sayfam
 
-| Kategori | Açıklama | Maksimum |
+| Kategori | Description | Maksimum |
 |:--- |:--- |:--- |
 | PolyBase yükleri |Satır başına MB |1<br/><br/>PolyBase, 1 MB 'tan küçük satırları yükler. LOB veri türlerini kümelenmiş bir columnstore dizini (CCı) olan tablolara yüklemek desteklenmez.<br/><br/> |
 ||||
 
 ## <a name="queries"></a>Sorgular
 
-| Kategori | Açıklama | Maksimum |
+| Kategori | Description | Maksimum |
 |:--- |:--- |:--- |
 | Sorgu |Kullanıcı tablolarında sıraya alınmış sorgular. |1000 |
 | Sorgu |Sistem görünümlerinde eşzamanlı sorgular. |100 |
@@ -82,7 +82,7 @@ ms.locfileid: "81413997"
 | Dize sabit değerleri | Deyimdeki dize sabit değerlerinin sayısı | 20.000 <br/><br/>Bir sorgunun tek bir ifadesindeki dize sabitleri sayısı sınırlıdır. Bu sayının aşılması SQL Server hatası 8632 ile sonuçlanır.|
 ||||
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 | Sistem görünümü | En fazla satır |
 |:--- |:--- |

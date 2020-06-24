@@ -5,20 +5,20 @@ services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9c90bc9527bffff55d7478150cc1f31827bacc46
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: c9f6a61dfa688980fa6400a2fa93ab8862798750
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235280"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194782"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Desteklenen Azure Cosmos DB özellikler için Azure SYNAPSE link (Önizleme)
 
-Bu makalede, şu anda Azure Cosmos DB için Azure SYNAPSE bağlantısında desteklenen işlevler açıklanmaktadır.
+Bu makalede Azure Cosmos DB için Azure Synapse Link'te desteklenen işlevler anlatılmıştır.
 
 ## <a name="azure-synapse-support"></a>Azure SYNAPSE desteği
 
@@ -31,7 +31,7 @@ Azure Cosmos DB iki tür kapsayıcı vardır:
 
 SYNAPSE bağlantısını etkinleştirmeden bir Azure Cosmos DB kapsayıcısına bağlanabilirsiniz, bu durumda yalnızca işlem deposuna okuma/yazma yapabilirsiniz. Azure Cosmos DB için SYNAPSE link içindeki şu anda desteklenen özelliklerin bir listesi aşağıdadır. 
 
-| Kategori              | Açıklama |[Spark](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [SQL sunucusuz](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
+| Kategori              | Description |[Spark](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [SQL sunucusuz](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
 | **Çalışma zamanı desteği** |Azure SYNAPSE çalışma zamanına göre okuma veya yazma desteği| ✓ | [Bizimle iletişime geçin](mailto:AskSynapse@microsoft.com?subject=[Enable%20Preview%20Feature]%20SQL%20serverless%20for%20Cosmos%20DB)|
 | **Azure Cosmos DB API desteği** |SYNAPSE bağlantısı olarak API desteği| SQL/MongoDB | SQL/MongoDB |
@@ -44,7 +44,7 @@ SYNAPSE bağlantısını etkinleştirmeden bir Azure Cosmos DB kapsayıcısına 
 
 ## <a name="supported-code-generated-actions-for-spark"></a>Spark için desteklenen kod tarafından oluşturulan eylemler
 
-| Hareket              | Açıklama |OLTP |HTAP  |
+| Hareket              | Description |OLTP |HTAP  |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
 | **DataFrame 'e yükle** |Spark DataFrame 'e veri yükleme ve verileri okuma |X| ✓ |
 | **Spark tablosu oluşturma** |Azure Cosmos DB kapsayıcısına işaret eden tablo oluşturma|X| ✓ |
@@ -56,7 +56,7 @@ SYNAPSE bağlantısını etkinleştirmeden bir Azure Cosmos DB kapsayıcısına 
 
 ## <a name="supported-code-generated-actions-for-sql-serverless"></a>SQL sunucusuz için desteklenen kod tarafından oluşturulan eylemler
 
-| Hareket              | Açıklama |OLTP |HTAP |
+| Hareket              | Description |OLTP |HTAP |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
 | **En üstteki 100 seçin** |Bir kapsayıcıdan ilk 100 öğe önizleme|X| ✓ |
 | **Görünüm Oluştur** |SYNAPSE SQL aracılığıyla doğrudan bir kapsayıcıda bı erişimine sahip olmak için bir görünüm oluşturma|X| ✓ |

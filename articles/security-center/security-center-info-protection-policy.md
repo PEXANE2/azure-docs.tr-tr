@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/29/2019
+ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 5120e7ca3a29f12066343e5c4a81d6e51278f9ef
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: abcdc903e1509c266b9ea6666c296a59183e83c5
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020413"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711094"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Azure Güvenlik Merkezi 'nde SQL Information Protection ilkesini özelleştirme (Önizleme)
  
@@ -75,7 +75,11 @@ Azure kiracınız için Information Protection ilkesini özelleştirmek üzere [
 7. Tüm değişikliklerinizi uygulamak için ana **Etiketler** dikey penceresinde **Kaydet** ' e tıkladığınızdan emin olun.
  
 Bilgi koruma ilkeniz tam olarak tanımlandıktan ve kaydedildikten sonra, kiracınızdaki tüm Azure SQL veritabanlarında verilerin sınıflandırmasına uygulanır.
- 
+
+## <a name="manage-sql-information-protection-using-azure-powershell"></a>Azure PowerShell kullanarak SQL Information Protection 'ı yönetme
+
+- [Get-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/get-azsqlinformationprotectionpolicy): ETKIN kiracı SQL Information Protection ilkesini alır.
+- [Set-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/set-azsqlinformationprotectionpolicy): ETKIN kiracı SQL Information Protection ilkesini ayarlar.
  
 ## <a name="next-steps"></a>Sonraki adımlar
  

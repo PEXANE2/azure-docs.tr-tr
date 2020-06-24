@@ -3,15 +3,15 @@ title: Dayanıklı İşlevler genel bakış-Azure
 description: Azure Işlevleri için Dayanıklı İşlevler uzantısına giriş.
 author: cgillum
 ms.topic: overview
-ms.date: 08/07/2019
+ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 5d454aefaba89bef9dc9009ff442fa5543dae2ef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bfbab26e47befbd84ed7b060992d6c0b239ae4db
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241349"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193439"
 ---
 # <a name="what-are-durable-functions"></a>Dayanıklı İşlevler nedir?
 
@@ -23,6 +23,7 @@ Dayanıklı İşlevler Şu anda aşağıdaki dilleri desteklemektedir:
 
 * **C#**: hem [önceden derlenmiş sınıf kitaplıkları](../functions-dotnet-class-library.md) hem de [C# betiği](../functions-reference-csharp.md).
 * **JavaScript**: yalnızca Azure işlevleri çalışma zamanının 2. x sürümü için desteklenir. Dayanıklı İşlevler uzantısının veya sonraki bir sürümün sürüm 1.7.0 gerektirir. 
+* **Python**: dayanıklı İşlevler uzantısının veya sonraki bir sürümün sürüm 1.8.5 gerektirir. 
 * **F #**: önceden derlenmiş sınıf kitaplıkları ve F # betiği. F # betiği yalnızca Azure Işlevleri çalışma zamanının sürüm 1. x 'i için desteklenir.
 
 Dayanıklı İşlevler tüm [Azure işlevleri dillerini](../supported-languages.md)destekleme amacını içerir. Ek dilleri desteklemek için işin en son durumunun [dayanıklı işlevler sorunlar listesine](https://github.com/Azure/azure-functions-durable-extension/issues) bakın.
@@ -48,9 +49,9 @@ Dayanıklı İşlevler için birincil kullanım örneği sunucusuz uygulamalarda
 
 Aşağıdaki örnekte gösterildiği gibi, öz işlev zincirleme modelini uygulamak için Dayanıklı İşlevler kullanabilirsiniz.
 
-Bu örnekte,,, ve `F1` `F4` değerleri `F2` `F3`aynı işlev uygulamasındaki diğer işlevlerin adlarıdır. Normal kesinlik temelli kodlama yapılarını kullanarak denetim akışı uygulayabilirsiniz. Kod yukarıdan aşağı doğru çalışır. Kod, koşul ve döngüler gibi var olan dil denetim akışı semantiğini içerebilir. `finally` Bloklara hata işleme mantığını `try` / `catch` / dahil edebilirsiniz.
+Bu örnekte,,, `F1` ve değerleri `F2` `F3` `F4` aynı işlev uygulamasındaki diğer işlevlerin adlarıdır. Normal kesinlik temelli kodlama yapılarını kullanarak denetim akışı uygulayabilirsiniz. Kod yukarıdan aşağı doğru çalışır. Kod, koşul ve döngüler gibi var olan dil denetim akışı semantiğini içerebilir. Bloklara hata işleme mantığını dahil edebilirsiniz `try` / `catch` / `finally` .
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Chaining")]
@@ -71,7 +72,7 @@ public static async Task<object> Run(
 }
 ```
 
-Diğer işlevleri ada göre `context` çağırmak, parametreleri geçirmek ve işlev çıkışı döndürmek için parametresini kullanabilirsiniz. Kod her çağırdığında `await`dayanıklı işlevler Framework geçerli işlev örneğinin ilerlemesini kontrol etmektedir. İşlem veya sanal makine yürütme üzerinden geçişli olarak geri dönüştürüldüğünde, işlev örneği önceki `await` çağrıdan devam eder. Daha fazla bilgi için, bkz. bir sonraki bölüm, model #2: fan çıkış/fan
+`context`Diğer işlevleri ada göre çağırmak, parametreleri geçirmek ve işlev çıkışı döndürmek için parametresini kullanabilirsiniz. Kod her çağırdığında `await` dayanıklı işlevler Framework geçerli işlev örneğinin ilerlemesini kontrol etmektedir. İşlem veya sanal makine yürütme üzerinden geçişli olarak geri dönüştürüldüğünde, işlev örneği önceki çağrıdan devam eder `await` . Daha fazla bilgi için, bkz. bir sonraki bölüm, model #2: fan çıkış/fan
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -90,10 +91,33 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Diğer işlevleri ada göre `context.df` çağırmak, parametreleri geçirmek ve işlev çıkışı döndürmek için nesnesini kullanabilirsiniz. Kod her çağırdığında `yield`dayanıklı işlevler Framework geçerli işlev örneğinin ilerlemesini kontrol etmektedir. İşlem veya sanal makine yürütme üzerinden geçişli olarak geri dönüştürüldüğünde, işlev örneği önceki `yield` çağrıdan devam eder. Daha fazla bilgi için, bkz. bir sonraki bölüm, model #2: fan çıkış/fan
+`context.df`Diğer işlevleri ada göre çağırmak, parametreleri geçirmek ve işlev çıkışı döndürmek için nesnesini kullanabilirsiniz. Kod her çağırdığında `yield` dayanıklı işlevler Framework geçerli işlev örneğinin ilerlemesini kontrol etmektedir. İşlem veya sanal makine yürütme üzerinden geçişli olarak geri dönüştürüldüğünde, işlev örneği önceki çağrıdan devam eder `yield` . Daha fazla bilgi için, bkz. bir sonraki bölüm, model #2: fan çıkış/fan
 
 > [!NOTE]
-> JavaScript `context` içindeki nesne, tüm [işlev bağlamını](../functions-reference-node.md#context-object)temsil eder. Ana bağlamdaki `df` özelliğini kullanarak dayanıklı işlevler bağlamına erişin.
+> `context`JavaScript içindeki nesne, tüm [işlev bağlamını](../functions-reference-node.md#context-object)temsil eder. `df`Ana bağlamdaki özelliğini kullanarak dayanıklı işlevler bağlamına erişin.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    x = yield context.call_activity("F1", None)
+    y = yield context.call_activity("F2", x)
+    z = yield context.call_activity("F3", y)
+    result = yield context.call_activity("F4", z)
+    return result
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+`context`Diğer işlevleri ada göre çağırmak, parametreleri geçirmek ve işlev çıkışı döndürmek için nesnesini kullanabilirsiniz. Kod her çağırdığında `yield` dayanıklı işlevler Framework geçerli işlev örneğinin ilerlemesini kontrol etmektedir. İşlem veya sanal makine yürütme üzerinden geçişli olarak geri dönüştürüldüğünde, işlev örneği önceki çağrıdan devam eder `yield` . Daha fazla bilgi için, bkz. bir sonraki bölüm, model #2: fan çıkış/fan
+
+> [!NOTE]
+> `context`Python 'daki nesnesi düzenleme bağlamını temsil eder. Düzenleme bağlamındaki özelliğini kullanarak ana Azure Işlevleri bağlamına erişin `function_context` .
 
 ---
 
@@ -107,7 +131,7 @@ Normal işlevlerle, işlevi bir sıraya birden çok ileti göndermesini sağlaya
 
 Dayanıklı İşlevler uzantısı görece basit kodla bu düzene sahiptir:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("FanOutFanIn")]
@@ -132,9 +156,9 @@ public static async Task Run(
 }
 ```
 
-Fanı-Out işi `F2` işlevin birden çok örneğine dağıtılır. İş, dinamik bir görev listesi kullanılarak izlenir. `Task.WhenAll`çağrılan tüm işlevlerin bitmesini beklemek için çağırılır. Sonra, `F2` işlev çıkışları dinamik görev listesinden toplanır ve `F3` işleve geçirilir.
+Fanı-Out işi işlevin birden çok örneğine dağıtılır `F2` . İş, dinamik bir görev listesi kullanılarak izlenir. `Task.WhenAll`çağrılan tüm işlevlerin bitmesini beklemek için çağırılır. Sonra, `F2` işlev çıkışları dinamik görev listesinden toplanır ve `F3` işleve geçirilir.
 
-`await` Çağrısında gerçekleşen otomatik onay işareti, olası bir Midway kilitlenmesinin veya yeniden başlatmanın zaten tamamlanmış bir görevin yeniden başlatılmasını `Task.WhenAll` gerektirmemesini sağlar.
+Çağrısında gerçekleşen otomatik onay `await` `Task.WhenAll` işareti, olası bir Midway kilitlenmesinin veya yeniden başlatmanın zaten tamamlanmış bir görevin yeniden başlatılmasını gerektirmemesini sağlar.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -158,9 +182,39 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Fanı-Out işi `F2` işlevin birden çok örneğine dağıtılır. İş, dinamik bir görev listesi kullanılarak izlenir. `context.df.Task.all`Çağrılan tüm işlevlerin bitmesini beklemek için API çağırılır. Sonra, `F2` işlev çıkışları dinamik görev listesinden toplanır ve `F3` işleve geçirilir.
+Fanı-Out işi işlevin birden çok örneğine dağıtılır `F2` . İş, dinamik bir görev listesi kullanılarak izlenir. `context.df.Task.all`Çağrılan tüm işlevlerin bitmesini beklemek için API çağırılır. Sonra, `F2` işlev çıkışları dinamik görev listesinden toplanır ve `F3` işleve geçirilir.
 
-`yield` Çağrısında gerçekleşen otomatik onay işareti, olası bir Midway kilitlenmesinin veya yeniden başlatmanın zaten tamamlanmış bir görevin yeniden başlatılmasını `context.df.Task.all` gerektirmemesini sağlar.
+Çağrısında gerçekleşen otomatik onay `yield` `context.df.Task.all` işareti, olası bir Midway kilitlenmesinin veya yeniden başlatmanın zaten tamamlanmış bir görevin yeniden başlatılmasını gerektirmemesini sağlar.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    parallel_tasks = []
+
+    # Get a list of N work items to process in parallel.
+    work_batch = yield context.call_activity("F1", None)
+
+    for i in range(0, len(work_batch)):
+        parallel_tasks.append(context.call_activity("F2", work_batch[i]))
+    
+    outputs = yield context.task_all(parallel_tasks)
+
+    # Aggregate all N outputs and send the result to F3.
+    total = sum(outputs)
+    yield context.call_activity("F3", total)
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+Fanı-Out işi işlevin birden çok örneğine dağıtılır `F2` . İş, dinamik bir görev listesi kullanılarak izlenir. `context.task_all`Çağrılan tüm işlevlerin bitmesini beklemek için API çağırılır. Sonra, `F2` işlev çıkışları dinamik görev listesinden toplanır ve `F3` işleve geçirilir.
+
+Çağrısında gerçekleşen otomatik onay `yield` `context.task_all` işareti, olası bir Midway kilitlenmesinin veya yeniden başlatmanın zaten tamamlanmış bir görevin yeniden başlatılmasını gerektirmemesini sağlar.
 
 ---
 
@@ -218,7 +272,7 @@ Birkaç kod satırı içinde, rastgele uç noktaları gözlemleyecek birden çok
 
 Aşağıdaki kod temel bir izleyiciyi uygular:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("MonitorJobStatus")]
@@ -276,9 +330,41 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+import json
+from datetime import timedelta 
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    job = json.loads(context.get_input())
+    job_id = job["jobId"]
+    polling_interval = job["pollingInterval"]
+    expiry_time = job["expiryTime"]
+
+    while context.current_utc_datetime < expiry_time:
+        job_status = yield context.call_activity("GetJobStatus", job_id)
+        if job_status == "Completed":
+            # Perform an action when a condition is met.
+            yield context.call_activity("SendAlert", job_id)
+            break
+
+        # Orchestration sleeps until this time.
+        next_check = context.current_utc_datetime + timedelta(seconds=polling_interval)
+        yield context.create_timer(next_check)
+
+    # Perform more work here, or let the orchestration end.
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
-Bir istek alındığında, bu iş KIMLIĞI için yeni bir düzenleme örneği oluşturulur. Örnek, bir koşul karşılanana ve döngünün çıkış yapılıncaya kadar bir durumu yoklar. Dayanıklı bir Zamanlayıcı yoklama aralığını denetler. Daha sonra, daha fazla iş gerçekleştirilebilir veya düzenleme sona erdirmek üzere. `nextCheck` Aştığında `expiryTime`, izleyici sona erer.
+Bir istek alındığında, bu iş KIMLIĞI için yeni bir düzenleme örneği oluşturulur. Örnek, bir koşul karşılanana ve döngünün çıkış yapılıncaya kadar bir durumu yoklar. Dayanıklı bir Zamanlayıcı yoklama aralığını denetler. Daha sonra, daha fazla iş gerçekleştirilebilir veya düzenleme sona erdirmek üzere. `nextCheck`Aştığında `expiryTime` , izleyici sona erer.
 
 ### <a name="pattern-5-human-interaction"></a><a name="human"></a>#5 model: Insan etkileşimi
 
@@ -292,7 +378,7 @@ Bu örnekte, bir Orchestrator işlevi kullanarak bir stili uygulayabilirsiniz. O
 
 Bu örnekler insan etkileşimi modelini göstermek için bir onay işlemi oluşturur:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalWorkflow")]
@@ -319,7 +405,7 @@ public static async Task Run(
 }
 ```
 
-Dayanıklı Zamanlayıcı 'yı oluşturmak için çağrısı `context.CreateTimer`yapın. Bildirim tarafından `context.WaitForExternalEvent`alınır. Ardından, `Task.WhenAny` ilerletilip yükseltilmeyeceğine karar vermek için çağrılır (Öncelikle zaman aşımı olur) veya onay işlemini işleyin (onay zaman aşımından önce alınır).
+Dayanıklı Zamanlayıcı 'yı oluşturmak için çağrısı yapın `context.CreateTimer` . Bildirim tarafından alınır `context.WaitForExternalEvent` . Ardından, `Task.WhenAny` ilerletilip yükseltilmeyeceğine karar vermek için çağrılır (Öncelikle zaman aşımı olur) veya onay işlemini işleyin (onay zaman aşımından önce alınır).
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -343,7 +429,37 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Dayanıklı Zamanlayıcı 'yı oluşturmak için çağrısı `context.df.createTimer`yapın. Bildirim tarafından `context.df.waitForExternalEvent`alınır. Ardından, `context.df.Task.any` ilerletilip yükseltilmeyeceğine karar vermek için çağrılır (Öncelikle zaman aşımı olur) veya onay işlemini işleyin (onay zaman aşımından önce alınır).
+Dayanıklı Zamanlayıcı 'yı oluşturmak için çağrısı yapın `context.df.createTimer` . Bildirim tarafından alınır `context.df.waitForExternalEvent` . Ardından, `context.df.Task.any` ilerletilip yükseltilmeyeceğine karar vermek için çağrılır (Öncelikle zaman aşımı olur) veya onay işlemini işleyin (onay zaman aşımından önce alınır).
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+import json
+from datetime import timedelta 
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    yield context.call_activity("RequestApproval", None)
+
+    due_time = context.current_utc_datetime + timedelta(hours=72)
+    durable_timeout_task = context.create_timer(due_time)
+    approval_event_task = context.wait_for_external_event("ApprovalEvent")
+
+    winning_task = yield context.task_any([approval_event_task, durable_timeout_task])
+
+    if approval_event_task == winning_task:
+        durable_timeout_task.cancel()
+        yield context.call_activity("ProcessApproval", approval_event_task.result)
+    else:
+        yield context.call_activity("Escalate", None)
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+Dayanıklı Zamanlayıcı 'yı oluşturmak için çağrısı yapın `context.create_timer` . Bildirim tarafından alınır `context.wait_for_external_event` . Ardından, `context.task_any` ilerletilip yükseltilmeyeceğine karar vermek için çağrılır (Öncelikle zaman aşımı olur) veya onay işlemini işleyin (onay zaman aşımından önce alınır).
 
 ---
 
@@ -355,7 +471,7 @@ curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{ins
 
 Aynı zamanda aynı işlev uygulamasındaki başka bir işlevden dayanıklı düzenleme istemcisi kullanılarak bir olay da oluşturulabilir:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RaiseEventToOrchestration")]
@@ -380,6 +496,18 @@ module.exports = async function (context) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.durable_functions as df
+
+
+async def main(client: str):
+    durable_client = df.DurableOrchestrationClient(client)
+    is_approved = True
+    await durable_client.raise_event(instance_id, "ApprovalEvent", is_approved)
+```
+
 ---
 
 ### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>#6 Model: toplayıcı (durum bilgisi olan varlıklar)
@@ -392,7 +520,7 @@ Bu düzenin normal, durum bilgisiz işlevlerle uygulamaya çalışılması, eşz
 
 Bu kalıbı tek bir işlev olarak kolayca uygulamak için [dayanıklı varlıkları](durable-functions-entities.md) kullanabilirsiniz.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Counter")]
@@ -415,7 +543,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-Dayanıklı varlıklar, .NET ' de sınıflar olarak modellenebilir. Bu model, işlem listesi düzeltildiğinde ve büyük olursa yararlı olabilir. Aşağıdaki örnek, .NET sınıfları ve yöntemleri kullanılarak `Counter` varlığın eşdeğer bir uygulamasıdır.
+Dayanıklı varlıklar, .NET ' de sınıflar olarak modellenebilir. Bu model, işlem listesi düzeltildiğinde ve büyük olursa yararlı olabilir. Aşağıdaki örnek, `Counter` .NET sınıfları ve yöntemleri kullanılarak varlığın eşdeğer bir uygulamasıdır.
 
 ```csharp
 public class Counter
@@ -457,11 +585,15 @@ module.exports = df.entity(function(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+Kalıcı varlıklar Şu anda Python 'da desteklenmiyor.
+
 ---
 
 İstemciler, [varlık istemci bağlamasını](durable-functions-bindings.md#entity-client)kullanarak bir varlık işlevi için ("sinyal" olarak da bilinir) *işlemleri* sıraya alabilir.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -493,9 +625,13 @@ module.exports = async function (context) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+Kalıcı varlıklar Şu anda Python 'da desteklenmiyor.
+
 ---
 
-Varlık işlevleri [Dayanıklı İşlevler 2,0](durable-functions-versions.md) ve üzeri sürümlerde kullanılabilir.
+Varlık işlevleri, C# ve JavaScript için [Dayanıklı İşlevler 2,0](durable-functions-versions.md) ve üzeri sürümlerde kullanılabilir.
 
 ## <a name="the-technology"></a>Teknoloji
 
@@ -515,6 +651,7 @@ Bu dile özgü hızlı başlangıç öğreticilerden birini tamamlayarak 10 daki
 
 * [Visual Studio 2019 kullanarak C#](durable-functions-create-first-csharp.md)
 * [Visual Studio Code kullanan JavaScript](quickstart-js-vscode.md)
+* [Visual Studio Code kullanarak Python](quickstart-python-vscode.md)
 
 Her iki hızlı başlangıçlarda, "Hello World" dayanıklı işlevini yerel olarak oluşturup test edersiniz. Ardından işlev kodunu Azure’da yayımlayacaksınız. Oluşturduğunuz işlev, diğer işlevlere yapılan çağrıları düzenler ve birbirine zincirler.
 

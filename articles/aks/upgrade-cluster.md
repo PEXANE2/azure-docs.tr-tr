@@ -4,12 +4,12 @@ description: En son özellikleri ve güvenlik güncelleştirmelerini almak için
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: 761df8abc60671341fcdd74e7c66111cfeb105ad
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 5f0391c10a99173e7a2d87c1dd08a36852fc0450
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259244"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887988"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) kümesini yükseltme
 
@@ -105,13 +105,14 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 
 AKS kümeniz için kullanılabilir sürümlerin bir listesi ile yükseltmek için [az aks Upgrade][az-aks-upgrade] komutunu kullanın. Yükseltme işlemi sırasında, AKS, belirtilen Kubernetes sürümünü çalıştıran kümeye yeni bir düğüm ekler, ardından çalışan uygulamaların kesintiye uğramasını azaltmak için eski düğümlerden birini dikkatle indirin [ve][kubernetes-drain] kapatın. Yeni düğüm çalışan uygulama yığınlarını onayladığı zaman, eski düğüm silinir. Bu işlem, kümedeki tüm düğümler yükseltilene kadar yinelenir.
 
-Aşağıdaki örnek, bir kümeyi *1.13.10*sürümüne yükseltir:
-
 ```azurecli-interactive
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.13.10
+az aks upgrade \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --kubernetes-version KUBERNETES_VERSION
 ```
 
-Kaç tane düğüme sahip olduğunuza bağlı olarak, kümeyi yükseltmek birkaç dakika sürer. 
+Kaç tane düğüme sahip olduğunuza bağlı olarak, kümeyi yükseltmek birkaç dakika sürer.
 
 > [!NOTE]
 > Bir küme yükseltmesinin tamamlanabilmesi için bir toplam izin verilen süre vardır. Bu süre, ürünü alınarak hesaplanır `10 minutes * total number of nodes in the cluster` . Örneğin, 20 düğümlü bir kümede, yükseltme işlemleri 200 dakika içinde başarılı olmalıdır veya AKS kurtarılamayan bir küme durumundan kaçınmak için işlemi başarısız olur. Yükseltme hatasını kurtarmak için, zaman aşımı isabet alındıktan sonra yükseltme işlemini yeniden deneyin.

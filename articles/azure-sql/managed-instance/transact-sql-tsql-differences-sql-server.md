@@ -2,21 +2,21 @@
 title: SQL Server & Azure SQL yönetilen örneği arasındaki T-SQL farklılıkları
 description: Bu makalede, Azure SQL yönetilen örneği ve SQL Server arasındaki Transact-SQL (T-SQL) farklılıkları ele alınmaktadır.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
-ms.date: 03/11/2020
+ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 3a912e636c8bd8f762b401bda9623f23913047cb
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 229a74fe760386b59bc83373cc7b1429bd826929
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344535"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298456"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL yönetilen örneği arasındaki T-SQL farklılıkları
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +42,7 @@ SQL yönetilen örneğinde bulunan ve gelecekte çözümlenecek olan geçici bil
 
 ## <a name="availability"></a>Kullanılabilirlik
 
-### <a name="always-on-availability-groups"></a><a name="always-on-availability-groups"></a>Always on kullanılabilirlik grupları
+### <a name="always-on-availability-groups"></a><a name="always-on-availability-groups"></a>AlwaysOn Kullanılabilirlik Grupları
 
 [Yüksek KULLANıLABILIRLIK](../database/high-availability-sla.md) SQL yönetilen örneği ile yerleşiktir ve kullanıcılar tarafından denetlenemez. Aşağıdaki deyimler desteklenmez:
 
@@ -159,7 +159,7 @@ SQL yönetilen örneği dosyalara erişemez, bu nedenle şifreleme sağlayıcıl
     - KULLANıCı OLARAK YÜRÜT
     - OTURUM AÇMA OLARAK YÜRÜT
 
-- Bacpac dosyalarını kullanarak veritabanı dışarı aktarma/içeri aktarma işlemi, SQL yönetilen örneğindeki [SSMS v 18.4 veya üzeri](/sql/ssms/download-sql-server-management-studio-ssms)ya da [SqlPackage. exe](/sql/tools/sqlpackage-download)kullanılarak Azure AD kullanıcıları için desteklenir.
+- Bacpac dosyalarını kullanarak veritabanı dışarı aktarma/içeri aktarma işlemi, SQL yönetilen örneğindeki [SSMS v 18.4 veya üzeri](/sql/ssms/download-sql-server-management-studio-ssms)ya da [SQLPackage.exe](/sql/tools/sqlpackage-download)kullanılarak Azure AD kullanıcıları için desteklenir.
   - Aşağıdaki konfigürasyonlar veritabanı bacpac dosyası kullanılarak desteklenir: 
     - Aynı Azure AD etki alanı içindeki farklı yönetme örnekleri arasında bir veritabanını içeri/dışarı aktarın.
     - SQL yönetilen örneğinden bir veritabanını dışarı aktarın ve aynı Azure AD etki alanı içindeki SQL veritabanı 'na içeri aktarın. 
@@ -432,7 +432,7 @@ SQL yönetilen örneğindeki bağlantılı sunucular, sınırlı sayıda hedefi 
   - `FROM URL`(Azure Blob depolama) desteklenen tek seçenektir.
   - `FROM DISK`/`TAPE`/Backup cihazı desteklenmiyor.
   - Yedekleme kümeleri desteklenmez.
-- `WITH`Seçenekler, veya gibi desteklenmez `DIFFERENTIAL` `STATS` .
+- `WITH`Seçenekler desteklenmez. ,, `WITH` Vb. gibi geri yükleme girişimleri `DIFFERENTIAL` `STATS` `REPLACE` başarısız olur.
 - `ASYNC RESTORE`: Geri yükleme, istemci bağlantısı kesilse bile devam eder. Bağlantınız atıldıysanız, `sys.dm_operation_status` geri yükleme işleminin durumunun görünümünü ve bır oluşturma ve bırakma veritabanı için görünümü kontrol edebilirsiniz. Bkz. [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 Aşağıdaki veritabanı seçenekleri ayarlanır veya geçersiz kılınır ve daha sonra değiştirilemez: 
@@ -490,7 +490,7 @@ Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndü
 - `@@SERVERNAME`tam DNS "bağlanılabilir" adı döndürür, örneğin, my-managed-instance.wcus17662feb9ce98.database.windows.net. Bkz [. @SERVERNAME @](/sql/t-sql/functions/servername-transact-sql). 
 - `SYS.SERVERS``myinstance.domain.database.windows.net`"ad" ve "data_source" özellikleri gibi bir tam DNS "bağlanılabilir" adı döndürür. Bkz [. sys. Sunucu](/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
 - `@@SERVICENAME`SQL Server için mevcut hizmet kavramı SQL yönetilen örneği için uygulanamadığından NULL değerini döndürür. Bkz [. @SERVICENAME @](/sql/t-sql/functions/servicename-transact-sql).
-- `SUSER_ID`desteklenir. Azure AD oturum açma, sys. syslogins içinde değilse NULL değerini döndürür. Bkz. [SUSER_ID](/sql/t-sql/functions/suser-id-transact-sql). 
+- `SUSER_ID`desteklenir. Azure AD oturum açma sys.sysoturum açmalarında NULL değeri döndürür. Bkz. [SUSER_ID](/sql/t-sql/functions/suser-id-transact-sql). 
 - `SUSER_SID`desteklenmez. Yanlış veriler döndürülür, bu geçici olarak bilinen bir sorundur. Bkz. [SUSER_SID](/sql/t-sql/functions/suser-sid-transact-sql). 
 
 ## <a name="environment-constraints"></a><a name="Environment"></a>Ortam kısıtlamaları

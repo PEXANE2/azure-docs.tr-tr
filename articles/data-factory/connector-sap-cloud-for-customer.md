@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/02/2019
-ms.openlocfilehash: 1d3772a17d0429d9b3a5bf95d2060f2dfbbbafe1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/12/2020
+ms.openlocfilehash: 9544d0298a7aa62d5fd935e8670d02e470ac15e5
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418057"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987553"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory kullanarak müşteri için SAP bulutlarından (C4C) veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,7 +50,7 @@ Müşteri bağlantılı hizmeti için SAP bulutu için aşağıdaki özellikler 
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği: **Sapcloudforcustomer**olarak ayarlanmalıdır. | Yes |
+| tür | Type özelliği: **Sapcloudforcustomer**olarak ayarlanmalıdır. | Yes |
 | url | SAP C4C OData hizmetinin URL 'SI. | Yes |
 | kullanıcı adı | SAP C4C bağlanmak için Kullanıcı adını belirtin. | Yes |
 | password | Kullanıcı adı için belirttiğiniz kullanıcı hesabının parolasını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
@@ -90,7 +90,7 @@ Müşteri için SAP bulutundaki verileri kopyalamak için veri kümesinin Type �
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin Type özelliği: **Sapcloudforcustomerresource** olarak ayarlanmalıdır |Yes |
+| tür | Veri kümesinin Type özelliği: **Sapcloudforcustomerresource** olarak ayarlanmalıdır |Yes |
 | yol | SAP C4C OData varlığının yolunu belirtin. |Yes |
 
 **Örneğinde**
@@ -122,8 +122,9 @@ Müşteri için SAP buluttan veri kopyalamak için kopyalama etkinliğindeki kay
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği: **SapCloudForCustomerSource** olarak ayarlanmalıdır  | Yes |
-| sorgu | Verileri okumak için özel OData sorgusunu belirtin. | Hayır |
+| tür | Type özelliği: **SapCloudForCustomerSource** olarak ayarlanmalıdır  | Yes |
+| sorgu | Verileri okumak için özel OData sorgusunu belirtin. | No |
+| httpRequestTimeout | HTTP isteğinin yanıt almak için zaman aşımı ( **TimeSpan** değeri). Bu değer, yanıt verilerinin okunması için zaman aşımı değil, yanıt almaya yönelik zaman aşımı değeridir. Belirtilmemişse, varsayılan değer **00:30:00** ' dir (30 dakika). | No |
 
 Belirli bir güne ait verileri almak için örnek sorgu:`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
@@ -165,7 +166,7 @@ Müşteri için SAP bulutuna veri kopyalamak için kopyalama etkinliğindeki hav
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği: **Sapcloudforcustomersink** olarak ayarlanmalıdır  | Yes |
+| tür | Type özelliği: **Sapcloudforcustomersink** olarak ayarlanmalıdır  | Yes |
 | writeBehavior | İşlemin yazma davranışı. "INSERT", "Update" olabilir. | Hayır. Varsayılan "Ekle". |
 | writeBatchSize | Yazma işleminin toplu iş boyutu. En iyi performansı elde etmek için toplu iş boyutu, farklı tablo veya sunucu için farklı olabilir. | Hayır. Varsayılan 10. |
 

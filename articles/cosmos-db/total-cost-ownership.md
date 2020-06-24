@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b24b69716e472082abfdb388e7d79e88a8e23e64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac9e3fd4fec8ab2fe9f0c93d46489e67feebe88d
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72754802"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116273"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Azure Cosmos DB ile toplam sahip olma maliyeti (TCO)
 
@@ -30,7 +30,7 @@ Azure Cosmos DB sunucusuz sağlama modeli, veritabanı altyapısının aşırı 
 
 * **NoSQL DevOps yönetimi gerekmez:** Azure Cosmos DB, dağıtımları yönetmek, bakım, ölçek veya yama gerçekleştirmek için bir tane olan DevOps 'u kullanmak zorunda değildir. Şirket içinde veya bulut altyapısında barındırılan OSS NoSQL kümesi ile yaptığınız tüm iş yüklerini yürütebilirsiniz.
 
-![Azure Cosmos DB mülkiyet maliyeti](./media/total-cost-ownership/tco.png)
+:::image type="content" source="./media/total-cost-ownership/tco.png" alt-text="Azure Cosmos DB mülkiyet maliyeti" border="false":::
 
 * **Esnek ölçek özelliği:** Azure Cosmos DB üretilen iş miktarı yukarı ve aşağı ölçeklendirilebilir ve yoğun olmayan saatlerde sahiplik maliyetini düşürmenize olanak tanır. Bulut altyapısına dağıtılan OSS NoSQL kümeleri, sınırlı esneklik sunar ve şirket içi dağıtımlar tanıma göre elastik değildir. Azure Cosmos DB, daha fazla verimlilik sağlarsanız, üretilen iş hızının doğrusal olarak ölçeklendirilmesi garanti edilir. Bu garanti, finans SLA 'Ları ve her ölçekte 99. yüzdebirlik ile yedeklenir.
 

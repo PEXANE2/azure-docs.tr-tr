@@ -3,15 +3,15 @@ title: Azure Cosmos hesabı için Azure özel bağlantısını yapılandırma
 description: Bir sanal ağda özel bir IP adresi kullanarak bir Azure Cosmos hesabına erişmek için Azure özel bağlantısı ayarlamayı öğrenin.
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 06/04/2020
+ms.topic: how-to
+ms.date: 06/11/2020
 ms.author: thweiss
-ms.openlocfilehash: b05fa32529372a89ff441b953f001dc2ab1b5606
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 1ee468b99cddeb5f18f78a6d1298c8959bda075b
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84431657"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261639"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Cosmos hesabı için Azure özel bağlantısını yapılandırma
 
@@ -31,7 +31,7 @@ Azure portal kullanarak mevcut bir Azure Cosmos hesabı için özel bir uç nokt
 
 1. Ayarlar listesinden **Özel uç nokta bağlantıları** ' nı seçin ve ardından **Özel uç nokta**' ı seçin:
 
-   ![Azure portal özel uç nokta oluşturma seçimleri](./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png)
+   :::image type="content" source="./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png" alt-text="Azure portal özel uç nokta oluşturma seçimleri":::
 
 1. **Özel uç nokta oluşturma-temel bilgiler** bölmesinde, aşağıdaki ayrıntıları girin veya seçin:
 
@@ -66,7 +66,7 @@ Azure portal kullanarak mevcut bir Azure Cosmos hesabı için özel bir uç nokt
     | Alt ağ | Alt ağlarınızı seçin. |
     |**Özel DNS tümleştirme**||
     |Özel DNS bölgesiyle tümleştirin |**Evet**' i seçin. <br><br/> Özel uç noktanıza özel olarak bağlanmak için bir DNS kaydına ihtiyacınız vardır. Özel uç noktanızı özel bir DNS bölgesiyle tümleştirmenizi öneririz. Ayrıca, kendi DNS sunucularınızı kullanabilir veya sanal makinelerinizdeki konak dosyalarını kullanarak DNS kayıtları oluşturabilirsiniz. |
-    |Özel DNS bölgesi |**Privatelink.Documents.Azure.com**öğesini seçin. <br><br/> Özel DNS bölgesi otomatik olarak belirlenir. Azure portal kullanarak değiştiremezsiniz.|
+    |Özel DNS bölgesi |**privatelink.documents.Azure.com**öğesini seçin. <br><br/> Özel DNS bölgesi otomatik olarak belirlenir. Azure portal kullanarak değiştiremezsiniz.|
     |||
 
 1. **İncele ve oluştur**’u seçin. **Gözden geçir + oluştur** sayfasında, Azure yapılandırmanızı doğrular.
@@ -94,7 +94,7 @@ Aşağıdaki tabloda, farklı Azure Cosmos hesabı API türleri, desteklenen alt
 1. Daha önce oluşturduğunuz özel uç nokta için arama yapın. Bu durumda, **cdbPrivateEndpoint3**.
 1. DNS ayarlarını ve IP adreslerini görmek için **genel bakış** sekmesini seçin.
 
-![Azure portal özel IP adresleri](./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png)
+:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Azure portal özel IP adresleri":::
 
 Özel uç nokta başına birden çok IP adresi oluşturuldu:
 
@@ -263,7 +263,7 @@ az network private-dns record-set a add-record --record-set-name recordSet2 --zo
 
 Bir sanal ağ alt ağında özel bir uç nokta oluşturarak özel bir bağlantı kurabilirsiniz. Bunu bir Azure Resource Manager şablonu kullanarak elde edersiniz.
 
-"PrivateEndpoint_template. JSON" adlı bir Kaynak Yöneticisi şablonu oluşturmak için aşağıdaki kodu kullanın. Bu şablon, mevcut bir sanal ağdaki mevcut bir Azure Cosmos SQL API hesabı için özel bir uç nokta oluşturur.
+"PrivateEndpoint_template.json" adlı bir Kaynak Yöneticisi şablonu oluşturmak için aşağıdaki kodu kullanın. Bu şablon, mevcut bir sanal ağdaki mevcut bir Azure Cosmos SQL API hesabı için özel bir uç nokta oluşturur.
 
 ```json
 {
@@ -324,7 +324,7 @@ Bir sanal ağ alt ağında özel bir uç nokta oluşturarak özel bir bağlantı
 
 **Şablon için parametreler dosyasını tanımlayın**
 
-Şablon için bir parametre dosyası oluşturun ve "PrivateEndpoint_parameters. JSON" olarak adlandırın. Aşağıdaki kodu parametreler dosyasına ekleyin:
+Şablon için bir parametre dosyası oluşturun ve bunu "PrivateEndpoint_parameters.jsüzerinde" olarak adlandırın. Aşağıdaki kodu parametreler dosyasına ekleyin:
 
 ```json
 {
@@ -398,7 +398,7 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
 $deploymentOutput
 ```
 
-PowerShell betikte, `GroupId` değişken yalnızca bir değer içerebilir. Bu değer, hesabın API türüdür. İzin verilen değerler: `Sql` , `MongoDB` , `Cassandra` , `Gremlin` , ve `Table` . Bazı Azure Cosmos hesap türlerine birden çok API aracılığıyla erişilebilir. Örnek:
+PowerShell betikte, `GroupId` değişken yalnızca bir değer içerebilir. Bu değer, hesabın API türüdür. İzin verilen değerler: `Sql` , `MongoDB` , `Cassandra` , `Gremlin` , ve `Table` . Bazı Azure Cosmos hesap türlerine birden çok API aracılığıyla erişilebilir. Örneğin:
 
 * Gremlin API hesabına hem Gremlin hem de SQL API hesaplarından erişilebilir.
 * Tablo API'si hesaba hem tablo hem de SQL API hesaplarından erişilebilir.
@@ -407,13 +407,13 @@ Bu hesaplar için, her API türü için bir özel uç nokta oluşturmanız gerek
 
 Şablon başarıyla dağıtıldıktan sonra, aşağıdaki görüntüde gösterilene benzer bir çıktı görebilirsiniz. Bu `provisioningState` değer, `Succeeded` Özel uç noktaların doğru şekilde ayarlandığının değeridir.
 
-![Kaynak Yöneticisi şablonu için dağıtım çıkışı](./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png)
+:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Kaynak Yöneticisi şablonu için dağıtım çıkışı":::
 
 Şablon dağıtıldıktan sonra, özel IP adresleri alt ağ içinde ayrılır. Azure Cosmos hesabının güvenlik duvarı kuralı yalnızca özel uç noktadan gelen bağlantıları kabul edecek şekilde yapılandırılmıştır.
 
 ### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>Özel uç noktayı bir Özel DNS bölgesiyle tümleştirme
 
-"PrivateZone_template. JSON" adlı bir Kaynak Yöneticisi şablonu oluşturmak için aşağıdaki kodu kullanın. Bu şablon, mevcut bir sanal ağdaki mevcut bir Azure Cosmos SQL API hesabı için özel bir DNS bölgesi oluşturur.
+"PrivateZone_template.json" adlı bir Kaynak Yöneticisi şablonu oluşturmak için aşağıdaki kodu kullanın. Bu şablon, mevcut bir sanal ağdaki mevcut bir Azure Cosmos SQL API hesabı için özel bir DNS bölgesi oluşturur.
 
 ```json
 {
@@ -455,7 +455,7 @@ Bu hesaplar için, her API türü için bir özel uç nokta oluşturmanız gerek
 }
 ```
 
-"PrivateZoneRecords_template. JSON" adlı bir Kaynak Yöneticisi şablonu oluşturmak için aşağıdaki kodu kullanın.
+"PrivateZoneRecords_template.json" adlı bir Kaynak Yöneticisi şablonu oluşturmak için aşağıdaki kodu kullanın.
 
 ```json
 {
@@ -489,7 +489,7 @@ Bu hesaplar için, her API türü için bir özel uç nokta oluşturmanız gerek
 
 **Şablon için parametreler dosyasını tanımlayın**
 
-Şablon için aşağıdaki iki parametre dosyasını oluşturun. "PrivateZone_parameters. JSON" oluşturun. aşağıdaki kodla:
+Şablon için aşağıdaki iki parametre dosyasını oluşturun. "PrivateZone_parameters.jsüzerinde" oluşturun. aşağıdaki kodla:
 
 ```json
 {
@@ -506,7 +506,7 @@ Bu hesaplar için, her API türü için bir özel uç nokta oluşturmanız gerek
 }
 ```
 
-"PrivateZoneRecords_parameters. JSON" oluşturun. aşağıdaki kodla:
+"PrivateZoneRecords_parameters.jsüzerinde" oluşturun. aşağıdaki kodla:
 
 ```json
 {
@@ -645,6 +645,8 @@ Bir bölgeyi kaldırırken de aynı adımları kullanabilirsiniz. Bölge kaldır
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
 Bir Azure Cosmos hesabıyla özel bağlantı kullandığınızda aşağıdaki sınırlamalar geçerlidir:
+
+* Tek bir Azure Cosmos hesabında 200 ' den fazla özel uç noktası olamaz.
 
 * Bir Azure Cosmos hesabıyla doğrudan mod bağlantısı aracılığıyla özel bağlantı kullanırken, yalnızca TCP protokolünü kullanabilirsiniz. HTTP protokolü Şu anda desteklenmiyor.
 

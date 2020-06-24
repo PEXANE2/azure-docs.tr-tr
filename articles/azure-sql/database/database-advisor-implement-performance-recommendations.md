@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 14f304e3846cab25691da347732de50924356540
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5a81ceea151b937b63544cbe51cc22de11d25230
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048878"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254948"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Azure SQL veritabanı için Veritabanı Danışmanı performans önerileri
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,7 +43,7 @@ Azure SQL veritabanı 'nda kullanılabilen performans önerisi seçenekleri şun
 | **Dizin önerileri oluşturma** -iş yükünüzün performansını iyileştirebilecek dizinlerin oluşturulmasını önerir. | Yes | Hayır |
 | **Dizin önerilerini bırakma** -benzersiz dizinler ve uzun süredir kullanılmamış dizinler dışında, yedekli ve yinelenen dizinlerin her gün kaldırılmasını önerir (>90 gün). Bu seçeneğin bölüm değiştirme ve Dizin ipuçlarını kullanan uygulamalarla uyumlu olmadığına lütfen unutmayın. Kullanılmayan dizinleri bırakma, Premium ve İş Açısından Kritik hizmet katmanlarında desteklenmez. | Yes | Hayır |
 | **Sorgu önerilerini Parametreleştirme (Önizleme)** -sürekli olarak yeniden derlenen ancak aynı sorgu yürütme planına sahip bir veya daha fazla sorgunuz varsa, bu durumlarda zorunlu Parametreleştirme önerilir. | Yes | Hayır |
-| **Şema sorunları önerilerini düzeltme (Önizleme)** -Azure SQL VERITABANı, SQL veritabanınızda oluşan şemaya ilişkin SQL hatalarının sayısında bir anomali fark edildiğinde şema düzeltme için öneriler görüntülenir. Microsoft şu anda "şema sorununu çözme" önerilerini kullanımdan kaldıramamaktadır. | Yes | Hayır |
+| **Şema sorunları önerilerini düzeltme (Önizleme)** -Azure SQL veritabanı, veritabanınızda gerçekleşen şemaya ilişkin SQL hatalarının sayısında bir anomali fark edildiğinde şema düzeltme için öneriler görüntülenir. Microsoft şu anda "şema sorununu çözme" önerilerini kullanımdan kaldıramamaktadır. | Yes | Hayır |
 
 ![Azure SQL veritabanı için performans önerileri](./media/database-advisor-implement-performance-recommendations/performance-recommendations-annotated.png)
 
@@ -97,11 +97,11 @@ Bu öneriyi uyguladıktan sonra, veritabanınızda dakika içinde zorunlu Parame
 > [!IMPORTANT]
 > Microsoft şu anda "şema sorununu çözme" önerilerini kullanımdan kaldıramamaktadır. Daha önce bahsedilen "şema sorununu çözme" önerilerini içeren şema sorunları da dahil olmak üzere, veritabanı performans sorunlarınızı izlemek için [akıllı içgörüler](intelligent-insights-overview.md) kullanmanızı öneririz.
 
-**Şema sorunlarını çözme** önerileri, Azure SQL VERITABANı, SQL veritabanınızda oluşan şemaya ilişkin SQL hatalarının sayısında bir anomali fark edildiğinde görüntülenir. Bu öneri genellikle veritabanınız bir saat içinde birden fazla şemaya ilişkin hatayla (geçersiz sütun adı, geçersiz nesne adı vb.) karşılaştığında görüntülenir.
+**Şema sorunlarını çözme** önerileri, Azure SQL veritabanı, veritabanınızda gerçekleşen şemaya ilişkin SQL hatalarının sayısında bir anomali fark edildiğinde görüntülenir. Bu öneri genellikle veritabanınız bir saat içinde birden fazla şemaya ilişkin hatayla (geçersiz sütun adı, geçersiz nesne adı vb.) karşılaştığında görüntülenir.
 
 "Şema sorunları" bir sözdizimi hataları sınıfıdır. SQL sorgusunun tanımı ve veritabanı şemasının tanımı hizalanmazsa bunlar oluşur. Örneğin, sorgu tarafından beklenen sütunlardan biri hedef tabloda eksik olabilir veya bunun tersi de geçerlidir.
 
-Azure SQL veritabanı, SQL veritabanınızda oluşan şemaya ilişkin SQL hatalarının sayısında bir anomali fark edildiğinde "şema sorununu çözme" önerisi görüntülenir. Aşağıdaki tabloda, şema sorunlarıyla ilgili hatalar gösterilmektedir:
+"Şema sorununu çözme" önerisi, Azure SQL veritabanı, veritabanınızda oluşan şemaya ilişkin SQL hatalarının sayısında bir anomali fark edildiğinde görüntülenir. Aşağıdaki tabloda, şema sorunlarıyla ilgili hatalar gösterilmektedir:
 
 | SQL hata kodu | İleti |
 | --- | --- |

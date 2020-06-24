@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3454909707b1f9a8a515ff4432cfb4bf75a20f6e
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: 26c48c84521946ff748ca960b8060cc973640eb3
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509279"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888399"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure dosyalarında Azure Active Directory Domain Services kimlik doğrulamasını etkinleştirme
 
@@ -56,6 +56,10 @@ Azure dosya paylaşımları için SMB üzerinden Azure AD 'yi etkinleştirmeden 
 
     VM ve dosya paylaşımınızın düzgün yapılandırıldığını doğrulamak için, depolama hesabı anahtarınızı kullanarak dosya paylaşımının bağlanmasını deneyin. Daha fazla bilgi için bkz. [Azure dosya paylaşma bağlama ve Windows 'da paylaşıma erişme](storage-how-to-use-files-windows.md).
 
+## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
+
+Azure AD DS ile Azure dosyaları kimlik doğrulaması, [tüm Azure genel bölgelerinde](https://azure.microsoft.com/global-infrastructure/locations/)kullanılabilir.
+
 ## <a name="overview-of-the-workflow"></a>İş akışına genel bakış
 
 Azure dosya paylaşımları için SMB üzerinden Azure AD DS kimlik doğrulamasını etkinleştirmeden önce Azure AD ve Azure depolama ortamlarınızın düzgün şekilde yapılandırıldığını doğrulayın. Gerekli tüm adımları tamamladığınızdan emin olmak için [önkoşulları](#prerequisites) gözden etmenizi öneririz.
@@ -84,7 +88,7 @@ Azure AD DS kimlik doğrulamasını yalnızca Azure AD DS Azure AD kiracınıza 
 1. Azure portal, mevcut depolama hesabınıza gidin veya [bir depolama hesabı oluşturun](../common/storage-account-create.md).
 1. **Ayarlar** bölümünde **yapılandırma**' yı seçin.
 1. **Dosya paylaşımları Için kimlik tabanlı erişim** altında **Azure Active Directory etki alanı HIZMETI 'nın (AAD DS)** **etkin**olarak değiştirin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Aşağıdaki görüntüde, depolama hesabınız için SMB üzerinden Azure AD DS kimlik doğrulamasının nasıl etkinleştirileceği gösterilmektedir.
 

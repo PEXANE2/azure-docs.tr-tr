@@ -7,17 +7,17 @@ documentationcenter: ''
 author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: rohink
-ms.openlocfilehash: f5e9b7690c28793a35c692a6125a6b11c7a140a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5299c72d96fd7453d7df352ca842b4ede35f41fd
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938768"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707676"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>Performans trafiği yönlendirme yöntemini yapılandırma
 
@@ -32,7 +32,7 @@ Performans trafiği yönlendirme yöntemi, trafiği uç noktaya yönlendirmenizi
     1. **Trafik yönlendirme yöntemi ayarları**Için, **yönlendirme yöntemi** için **performans**' ı seçin.
     2. Bu profildeki tüm uç noktaları için aynı **uç nokta izleyici ayarlarını** aşağıdaki şekilde ayarlayın:
         1. Uygun **Protokolü**seçin ve **bağlantı noktası** numarasını belirtin. 
-        2. **Yol** için eğik çizgi */* yazın. Uç noktaları izlemek için bir yol ve dosya adı belirtmeniz gerekir. Eğik çizgi "/", göreli yol için geçerli bir giriştir ve dosyanın kök dizinde (varsayılan) olduğunu gösterir.
+        2. **Yol** için eğik çizgi yazın */* . Uç noktaları izlemek için bir yol ve dosya adı belirtmeniz gerekir. Eğik çizgi "/", göreli yol için geçerli bir giriştir ve dosyanın kök dizinde (varsayılan) olduğunu gösterir.
         3. Sayfanın üst kısmında **Kaydet**' e tıklayın.
 5.  Yapılandırmanızda yaptığınız değişiklikleri aşağıdaki gibi test edin:
     1.  Portalın arama çubuğunda Traffic Manager profili adını arayın ve görüntülenen sonuçlarda Traffic Manager profiline tıklayın.

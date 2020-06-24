@@ -13,11 +13,11 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265720"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689767"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Azure Data Factory kullanarak bir Web tablosu kaynağından veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -72,7 +72,7 @@ Aşağıdaki tabloda, web bağlantılı hizmetine özgü JSON öğeleri için a�
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| type |Type özelliği: **Web** olarak ayarlanmalıdır |Yes |
+| tür |Type özelliği: **Web** olarak ayarlanmalıdır |Yes |
 | Url |Web kaynağının URL 'SI |Yes |
 | authenticationType |Deðeri. |Yes |
 
@@ -100,7 +100,7 @@ Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi i�
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type |veri kümesinin türü. **Webtable** olarak ayarlanmalıdır |Yes |
+| tür |veri kümesinin türü. **Webtable** olarak ayarlanmalıdır |Yes |
 | yol |Tabloyu içeren kaynağın göreli URL 'SI. |Hayır. Yol belirtilmediğinde, yalnızca bağlı hizmet tanımında belirtilen URL kullanılır. |
 | dizin |Kaynaktaki tablonun dizini. HTML sayfasındaki bir tablonun dizinini alma adımları için bkz. [HTML sayfasındaki tablonun dizinini alma](#get-index-of-a-table-in-an-html-page) bölümü. |Yes |
 
@@ -288,7 +288,7 @@ WebSource tarafından desteklenen özelliklerin listesi için bkz. WebSource tü
 2. Araç çubuğunda **Yeni sorgu** ' ya tıklayın, **diğer kaynaklardan** üzerine gelin ve **Web 'den**' ye tıklayın.
 
     ![Power Query menüsü](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
-3. **Web 'den** , bağlantılı hizmet JSON 'Da kullanacağınız **URL 'yi** girin (örneğin, veri kümesi için belirttiğiniz yolun https://en.wikipedia.org/wiki/) yanı da (örneğin: AFI% 27s_100_Years... 100_Movies) ve **Tamam**' a tıklayın.
+3. **Web 'den** , bağlantılı hizmet JSON 'Da kullanacağınız **URL 'yi** girin (örneğin, https://en.wikipedia.org/wiki/) veri kümesi için belirttiğiniz yolun yanı da (örneğin: AFI% 27s_100_Years... 100_Movies) ve **Tamam**' a tıklayın.
 
     ![Web iletişim kutusundan](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 

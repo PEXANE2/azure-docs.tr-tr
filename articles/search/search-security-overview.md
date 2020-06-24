@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: fb79c3546037aabf5ce60905044901f0d5793990
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: cc02890cb5293e48a8065b63f4f9c799c5dda7f7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465635"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85081036"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure Bilişsel Arama güvenlik-genel bakış
 
@@ -107,7 +107,7 @@ Bir Kullanıcı bir dizine nasıl eriştiğinde ve diğer nesneler istekteki API
 
 Arama sonuçları üzerinde ayrıntılı, Kullanıcı başına denetim istiyorsanız, sorgularda güvenlik filtreleri oluşturabilir, bu, belirli bir güvenlik kimliğiyle ilişkili belgeleri döndürür. Kimlik tabanlı erişim denetimi, önceden tanımlanmış roller ve rol atamaları yerine, belgelerin ve içeriğin arama sonuçlarını kimliklere göre kırpan bir *filtre* olarak uygulanır. Aşağıdaki tabloda yetkisiz içeriğin arama sonuçlarını kırpma için iki yaklaşım açıklanmaktadır.
 
-| Yaklaşım | Açıklama |
+| Yaklaşım | Description |
 |----------|-------------|
 |[Kimlik filtrelerine göre güvenlik kırpması](search-security-trimming-for-azure-search.md)  | Kullanıcı kimliği erişim denetimi uygulamak için temel iş akışını belgeler. Bir dizine güvenlik tanımlayıcıları eklenmesini ve sonra yasaklanmış içeriğin sonuçlarını kırpmak için bu alana karşı filtrelemeyi açıklar. |
 |[Azure Active Directory kimliklerine göre güvenlik kırpması](search-security-trimming-for-azure-search-with-aad.md)  | Bu makale, Azure bulut platformunda [ücretsiz hizmetlerden](https://azure.microsoft.com/free/) biri olan Azure ACTIVE DIRECTORY (AAD) ' den kimlik alma adımlarını sağlayan önceki makaleye genişletilir. |
@@ -123,7 +123,7 @@ Buna karşılık, bir dizin oluşturma veya silme yeteneği gibi, hizmette barı
 
 ## <a name="certifications-and-compliance"></a>Sertifikalamaları ve uyumluluk
 
-Azure Bilişsel Arama, genel bulut ve Azure Kamu için birden çok küresel, bölgesel ve sektöre özgü standartlar için sertifikalandırilmiştir. Tüm liste için, resmi denetim raporları sayfasından [ **Microsoft Azure uyumluluk teklifleri** teknik](https://aka.ms/azurecompliance) incelemesini indirin.
+Azure Bilişsel Arama, genel bulut ve Azure Kamu için birden çok küresel, bölgesel ve sektöre özgü standartlar için sertifikalandırilmiştir. Tüm liste için, resmi denetim raporları sayfasından [ **Microsoft Azure uyumluluk teklifleri** teknik](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/) incelemesini indirin.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

@@ -7,21 +7,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: cc3f38e9bb96ce76263a3124f8bfdc49dc638bfd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/18/2020
+ms.openlocfilehash: 332b221043356eb32b4f1ef4eed8b1b7246c0f21
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282763"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080540"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Veri içeri genel bakış-Azure Bilişsel Arama
 
 Azure Bilişsel Arama 'de sorgular, ' a yüklenmiş ve bir [arama dizinine](search-what-is-an-index.md)kaydedilen içeriklerinizin üzerinde yürütülür. Bu makalede, bir dizini doldurmak için iki temel yaklaşım incelenir: verileri programlı bir şekilde dizine *gönderin* veya desteklenen bir veri kaynağındaki [Azure bilişsel arama Dizin oluşturucuyu](search-indexer-overview.md) , verileri *çekmek* için işaretleyin.
 
-Her iki yaklaşımla de amaç bir dış veri kaynağından Azure Bilişsel Arama dizinine *veri yükleme* . Azure Bilişsel Arama, boş bir dizin oluşturmanıza izin verir, ancak veri göndermeye veya çekene kadar sorgulanabilir değildir.
+Her iki yaklaşımla de amaç bir dış veri kaynağından Azure Bilişsel Arama dizinine veri yükleme. Azure Bilişsel Arama, boş bir dizin oluşturmanıza izin verir, ancak veri göndermeye veya çekene kadar sorgulanabilir değildir.
+
+> [!NOTE]
+> [AI zenginleştirme](cognitive-search-concept-intro.md) bir çözüm gereksinimidir, bir dizin yüklemek için çekme modelini (Dizin oluşturucular) kullanmanız gerekir. Dış işleme yalnızca bir dizin oluşturucuya iliştirilmiş becerileri aracılığıyla desteklenir.
 
 ## <a name="pushing-data-to-an-index"></a>Verileri dizine gönderme
+
 Verilerinizi Azure Bilişsel Arama 'a programlı bir şekilde göndermek için kullanılan anında iletme modeli, en esnek yaklaşımdır. Birincisi, veri kaynağı türüne hiçbir kısıtlama getirmez. JSON belgelerinden oluşan herhangi bir veri kümesi, bir Azure Bilişsel Arama dizinine itilmiş olduğundan, veri kümesindeki her belgenin dizin şemanızda tanımlı alanlarla alanları eşleştirmiş olduğunu varsayarsak. İkincisi, yürütme frekansı üzerinde hiçbir kısıtlaması yoktur. Değişiklikleri istediğiniz sıklıkta dizine gönderebilirsiniz. Çok düşük gecikme süresi gereksinimlerine sahip uygulamalar için (örneğin, arama işlemlerinin dinamik stok veritabanlarıyla eşitlenmiş olması gerekiyorsa), tek seçeneğiniz gönderme modelidir.
 
 Belgeleri tek tek veya toplu işlemle karşıya yükleyebileceğinizden (toplu işlem başına en fazla 1000 veya 16 MB sınırlarından hangisi önce gelirse), bu yaklaşım çekme modelinden daha esnektir. Anında iletme modeli, verilerinizi nerede olursa olsun Azure Bilişsel Arama yüklemenize de olanak tanır.
@@ -45,21 +49,18 @@ Belge başına temelinde dizin oluşturma eylemi türünü denetleyebilir, belge
 
 REST API Azure Bilişsel Arama dizininizin Endpoint URL 'nize JSON istek gövdeleriyle HTTP POST istekleri verin. "Value" dizisindeki her JSON nesnesi belgenin anahtarını içerir ve bir dizin oluşturma eyleminin belge içeriğini ekleyip eklemediğini veya silmediğini belirtir. Kod örneği için bkz. [belgeleri yükleme](search-get-started-dotnet.md#load-documents).
 
-.NET SDK 'sında verilerinizi bir `IndexBatch` nesneye paketleyin. , `IndexBatch` Her biri bir belge `IndexAction` ve bu belgede hangi eylemin gerçekleştirileceğini bilişsel arama Azure 'a söyleyen bir özellik içeren bir nesne koleksiyonunu kapsüller. Kod örneği için bkz. [C# hızlı](search-get-started-dotnet.md)başlangıcı.
+.NET SDK 'sında verilerinizi bir `IndexBatch` nesneye paketleyin. `IndexBatch` `IndexAction` , Her biri bir belge ve bu belgede hangi eylemin gerçekleştirileceğini bilişsel arama Azure 'a söyleyen bir özellik içeren bir nesne koleksiyonunu kapsüller. Kod örneği için bkz. [C# hızlı](search-get-started-dotnet.md)başlangıcı.
 
 
-| @search.action | Açıklama | Her bir belge için gerekli alanlar | Notlar |
+| @search.action | Description | Her bir belge için gerekli alanlar | Notlar |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |Bir `upload` eylemi, belgenin yeni olması durumunda ekleneceği ve var olması durumunda güncelleştirileceği/değiştirileceği bir "upsert" ile benzerlik gösterir. |anahtar ve tanımlamak istediğiniz diğer alanlar |Var olan bir belgeyi güncelleştirirken/değiştirirken istekte belirtilmeyen herhangi bir alan `null` olarak ayarlanır. Bu durum, alan daha önce değersiz olmayan bir değere ayarlanmış olsa dahi gerçekleşir. |
-| `merge` |Var olan belgeyi belirtilen alanlarla güncelleştirir. Belge dizinde mevcut değilse birleştirme işlemi başarısız olur. |anahtar ve tanımlamak istediğiniz diğer alanlar |Birleştirmede belirttiğiniz herhangi bir alan belgede var olan alanın yerini alır. .NET SDK 'sında bu, türünde `DataType.Collection(DataType.String)`alanlar içerir. REST API, bu, türünde `Collection(Edm.String)`alanlar içerir. Örneğin, belge `["budget"]` değerine sahip bir `tags` alanını içeriyorsa ve `tags` için `["economy", "pool"]` değeriyle bir birleştirme yürütürseniz `tags` alanının son değeri `["economy", "pool"]` olur. `["budget", "economy", "pool"]` olmayacaktır. |
+| `merge` |Var olan belgeyi belirtilen alanlarla güncelleştirir. Belge dizinde mevcut değilse birleştirme işlemi başarısız olur. |anahtar ve tanımlamak istediğiniz diğer alanlar |Birleştirmede belirttiğiniz herhangi bir alan belgede var olan alanın yerini alır. .NET SDK 'sında bu, türünde alanlar içerir `DataType.Collection(DataType.String)` . REST API, bu, türünde alanlar içerir `Collection(Edm.String)` . Örneğin, belge `["budget"]` değerine sahip bir `tags` alanını içeriyorsa ve `tags` için `["economy", "pool"]` değeriyle bir birleştirme yürütürseniz `tags` alanının son değeri `["economy", "pool"]` olur. `["budget", "economy", "pool"]` olmayacaktır. |
 | `mergeOrUpload` |Belirtilen anahtara sahip bir belge dizinde zaten mevcutsa bu eylem `merge` gibi davranır. Belge mevcut değilse yeni bir belgeyle `upload` gibi davranır. |anahtar ve tanımlamak istediğiniz diğer alanlar |- |
 | `delete` |Belirtilen belgeyi dizinden kaldırır. |yalnızca anahtar |Anahtar alanı dışında belirttiğiniz tüm alanlar yoksayılır. Bir belgeden tek bir alanı kaldırmak istiyorsanız bunun yerine `merge` kullanıp alanı açık bir şekilde null olarak ayarlamanız yeterlidir. |
 
-## <a name="decide-which-indexing-action-to-use"></a>Hangi dizin oluşturma eyleminin kullanılacağına karar verme
-.NET SDK kullanarak verileri içeri aktarmak için (karşıya yükleme, birleştirme, silme ve mergeOrUpload). Yukarıdaki eylemlerden hangisini seçtiğinize bağlı olarak, her bir belgeye yalnızca belirli alanlar dahil edilmelidir:
-
-
 ### <a name="formulate-your-query"></a>Sorgunuzu düzenleme
+
 [REST API kullanarak dizininizi aramanın](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) iki yolu bulunur. Bu yollardan biri, sorgu parametrelerinizin istek gövdesindeki bir JSON nesnesinde tanımlanacağı bir HTTP POST isteği göndermektir. Diğer yol ise sorgu parametrelerinizin istek URL'si içinde tanımlanacağı bir HTTP GET isteği göndermektir. POST, sorgu parametrelerinin boyutu açısından GET'ten daha [esnek sınırlara](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) sahiptir. Bu nedenle, GET'i kullanmanın daha kullanışlı olduğu özel durumlar olmadığı sürece POST kullanmanızı öneririz.
 
 POST ve GET için *hizmet adınızı*, *dizin adını* ve uygun *API sürümünü* (bu belgenin yayımlandığı sırada geçerli API sürümü `2019-05-06`) istek URL'sinde sağlamanız gerekir. GET için sorgu parametrelerini URL'nin sonundaki *sorgu dizesine* sağlarsınız. URL biçimi için aşağıya bakın:
@@ -68,13 +69,13 @@ POST ve GET için *hizmet adınızı*, *dizin adını* ve uygun *API sürümün�
 
 POST için biçim aynıdır ancak sorgu dizesi parametrelerinde yalnızca api sürümü olur.
 
-
 ## <a name="pulling-data-into-an-index"></a>Verileri dizine çekme
+
 Çekme modeli, desteklenen veri kaynağında gezinir ve dizininize verileri otomatik olarak yükler. Azure Bilişsel Arama, bu özellik şu anda bu platformlar için kullanılabilen *Dizin oluşturucular*aracılığıyla uygulanır:
 
-+ [Blob depolama](search-howto-indexing-azure-blob-storage.md)
++ [BLOB depolama](search-howto-indexing-azure-blob-storage.md)
 + [Tablo depolama](search-howto-indexing-azure-tables.md)
-+ [Azure Cosmos DB](https://aka.ms/documentdb-search-indexer)
++ [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure SQL veritabanı ve Azure VM'lerinde SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
 Dizin oluşturucular bir dizini bir veri kaynağına (genelde tablo, görünüm veya eşdeğer bir yapı) bağlar ve kaynak alanları dizindeki eşdeğer alanlara eşler. Yürütme sırasında satır kümesi otomatik olarak JSON'a dönüştürülür ve belirtilen dizine yüklenir. Tüm dizin oluşturucular zamanlamayı destekler ve bu sayede verilerin yenilenme sıklığını belirleyebilirsiniz. Çoğu dizin oluşturucular veri kaynağının desteklemesi durumunda değişiklik izleme özelliği sunar. Dizin oluşturucular, var olan belgelerdeki değişiklikleri ve silmeleri takip etmenin yanı sıra yeni belgeleri tanıyarak, dizininizdeki verileri aktif şekilde yönetme ihtiyacını ortadan kaldırır. 

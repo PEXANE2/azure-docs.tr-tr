@@ -4,20 +4,19 @@ description: Dış kullanıcıların (konuklar) kendi Facebook hesaplarıyla Azu
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/19/2020
+ms.topic: article
+ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aadbe07c5bb22c23ac32e46fdf7f102cdd33989a
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 9eabee8e287d29f3a3a01b63b0d79da651be9082
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673112"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886484"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Bir uygulamaya self servis kaydolma Kullanıcı akışı ekleme (Önizleme)
 |     |
@@ -86,7 +85,7 @@ Kaydolma sayfasında özniteliklerin görüntülenme sırasını seçebilirsiniz
 3. Listeden self servis kaydolma Kullanıcı akışını seçin.
 4. **Özelleştir**altında **sayfa düzenleri**' ni seçin.
 5. Toplamayı seçtiğiniz öznitelikler listelenir. Görüntüleme sırasını değiştirmek için bir öznitelik seçin ve ardından **yukarı**taşı, **aşağı taşı**, **üste**taşı veya **en alta taşı**' yı seçin.
-6. **Kaydet**'i seçin.
+6. **Kaydet**’i seçin.
 
 ## <a name="add-applications-to-the-self-service-sign-up-user-flow"></a>Self Servis kaydolma Kullanıcı akışına uygulama ekleme
 
@@ -109,5 +108,5 @@ Artık uygulamaları Kullanıcı akışıyla ilişkilendirebilirsiniz.
 
 - [Sosyal kimlik sağlayıcıları listenize Google ekleyin](google-federation.md)
 - [Sosyal kimlik sağlayıcıları listenize Facebook ekleyin](facebook-federation.md)
-<!-- - [Use API connectors to customize and extend your user flows via web APIs](api-connectors-overview.md) -->
-<!-- - [Add custom approval to your user flow](self-service-sign-up-add-approvals.md) -->
+- [Web API 'Leri aracılığıyla Kullanıcı akışlarınızı özelleştirmek ve genişletmek için API bağlayıcıları kullanma](api-connectors-overview.md)
+- [Kullanıcı akışınıza özel onay iş akışı ekleme](self-service-sign-up-add-approvals.md)

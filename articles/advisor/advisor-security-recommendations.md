@@ -3,12 +3,12 @@ title: Azure Danışmanı ile kaynakları daha güvenli hale getirme
 description: Azure dağıtımlarınızın güvenliğini artırmaya yardımcı olmak için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 5a4b7e9a9d9a7919155db361fd2c96ed98e6e5a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf7a316c893600bed18b9392404af5792e2e31f7
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443032"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113866"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Azure Danışmanı ile kaynakları daha güvenli hale getirme
 
@@ -28,10 +28,10 @@ Güvenlik önerileri hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merk
 
 Danışman önerileri hakkında daha fazla bilgi edinmek için bkz.:
 * [Advisor 'a giriş](advisor-overview.md)
-* [Danışman’ı kullanmaya başlama](advisor-get-started.md)
+* [Danışman'ı kullanmaya başlama](advisor-get-started.md)
 * [Danışman maliyet önerileri](advisor-cost-recommendations.md)
 * [Advisor performans önerileri](advisor-performance-recommendations.md)
-* [Danışman yüksek kullanılabilirlik önerileri](advisor-high-availability-recommendations.md)
-* [Danışman Işletimsel üstün öneriler](advisor-operational-excellence-recommendations.md)
-
+* [Advisor güvenilirlik önerileri](advisor-high-availability-recommendations.md)
+* [Danışman işletimsel üstün öneriler](advisor-operational-excellence-recommendations.md)
+* [Danışman REST API](https://docs.microsoft.com/rest/api/advisor/)
  

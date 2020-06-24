@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243698"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694914"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift için bir Azure AD kiracısı oluşturma
 
@@ -28,7 +28,7 @@ Kiracı oluşturmak için:
 3. **Kuruluş adı**belirtin.
 4. **İlk etki alanı adı**belirtin. Buna *onmicrosoft.com* eklenmiş olması gerekir. *Kuruluş adı* değerini buradan yeniden kullanabilirsiniz.
 5. Kiracının oluşturulacağı bir ülke veya bölge seçin.
-6. **Oluştur**' a tıklayın.
+6. **Oluştur**'a tıklayın.
 7. Azure AD kiracınız oluşturulduktan sonra **Yeni dizin bağlantısını yönetmek için buraya tıklayın ' ı** seçin. Yeni kiracı adınız Azure portal sağ üst kısmında görüntülenmelidir:  
 
     ![Sağ üst köşedeki kiracı adını gösteren portalın ekran görüntüsü][tenantcallout]  

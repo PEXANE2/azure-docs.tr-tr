@@ -3,24 +3,22 @@ title: Üretilen iş birimlerini otomatik olarak ölçeklendirme-Azure Event Hub
 description: Bir ad alanı üzerinde otomatik şişimine, üretilen iş birimlerini otomatik olarak ölçeklendirmeye olanak tanır.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: dc6edaebebe89b6d4a35ada58d40795f86a935d3
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: afd28fa878651b08443f7863c16cd22c1bc96e3d
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72264481"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297333"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Azure Event Hubs üretilen iş birimlerini otomatik olarak ölçeklendirme
 Azure Event Hubs, yüksek düzeyde ölçeklenebilir bir veri akışı platformudur. Bu nedenle, Event Hubs kullanım genellikle hizmeti kullanmaya başladıktan sonra artar. Bu tür kullanımlar, önceden tanımlanmış [üretilen iş birimlerinin](event-hubs-scalability.md#throughput-units) Event Hubs ölçeklendirilmesini ve daha büyük aktarım hızlarını işlemesini gerektirir. Event Hubs **Otomatik Şişir** özelliği, kullanım ihtiyaçlarını karşılamak için üretilen iş birimi sayısını artırarak otomatik olarak ölçeklendirilir. Üretilen iş birimlerinin artırılması, azaltma senaryolarına engel olur; bu:
@@ -76,7 +74,7 @@ Ayrıca, otomatik Şişir özelliğini etkinleştirebilir ve ayarlarını aşağ
 
 ### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak otomatik Şişir etkinleştir
 
-Bir Azure Resource Manager şablonu dağıtımı sırasında otomatik olarak Şişir sağlayabilirsiniz. Örneğin, `isAutoInflateEnabled` özelliğini **true** olarak ayarlayın ve 10 olarak ayarlayın `maximumThroughputUnits` . Örneğin:
+Bir Azure Resource Manager şablonu dağıtımı sırasında otomatik olarak Şişir sağlayabilirsiniz. Örneğin, `isAutoInflateEnabled` özelliğini **true** olarak ayarlayın ve `maximumThroughputUnits` 10 olarak ayarlayın. Örneğin:
 
 ```json
 "resources": [

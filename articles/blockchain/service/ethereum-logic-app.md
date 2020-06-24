@@ -2,14 +2,14 @@
 title: Azure Logic Apps-Azure blok zinciri hizmeti ile Ethereum blok zinciri bağlayıcısını kullanma
 description: Akıllı sözleşme işlevlerini tetiklemek ve akıllı sözleşme olaylarına yanıt vermek için Azure Logic Apps ile Ethereum blok zinciri bağlayıcısını kullanın.
 ms.date: 10/14/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: chrisseg
-ms.openlocfilehash: 4a9acfd6098ed45fd92c7e3047b5d1446eeddbd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7b45134e8b5c3e33e5d05d59c006abe103e5bda
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74325215"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200741"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Azure Logic Apps ile Ethereum blok zinciri bağlayıcısını kullanın
 
@@ -114,7 +114,7 @@ Ethereum Visual Studio Code uzantısı için Azure blok zinciri geliştirme seti
     Mantıksal uygulama yapılandırması ve kod dosyaları **generatedLogicApp** dizininde oluşturulur.
 
 1. **GeneratedLogicApp/Helloblockzincirleri** dizinini görüntüleyin. Her akıllı sözleşme işlevi, olayı ve özelliği için bir mantıksal uygulama JSON dosyası vardır.
-1. **GeneratedLogicApp/Helloblockzincirleri/Service/Property ' i açın. RequestMessage. logicapp. JSON** dosyası ve içeriğini kopyalayın.
+1. **GeneratedLogicApp/Helloblockzincirleri/Service/property.RequestMessage.logicapp.js** dosyasını açın ve içeriğini kopyalayın.
 
     ![Kopyalanacak kodu içeren JSON dosyası](./media/ethereum-logic-app/requestmessage.png)
 
@@ -132,7 +132,7 @@ Ethereum Visual Studio Code uzantısı için Azure blok zinciri geliştirme seti
 
     ![HTTP POST URL 'SI ile Logic Apps tasarımcı bölmesi](./media/ethereum-logic-app/post-url.png)
 
-1. Bir HTTP POST isteği oluşturmak için kıvrımlı kullanın. Yer tutucu metni * \<http post URL\> * 'sini önceki adımdaki URL ile değiştirin.
+1. Bir HTTP POST isteği oluşturmak için kıvrımlı kullanın. Yer tutucu metnini *\<HTTP POST URL\>* önceki ADıMDAKI URL ile değiştirin.
 
     ``` bash
     curl -d "{}" -H "Content-Type: application/json" -X POST "<HTTP POST URL>"
@@ -181,7 +181,7 @@ Blok zinciri ağına bağlanmak için Azure blok zinciri hizmeti RPC uç noktas�
 
     ![İşlem düğümleri sayfası (varsayılan düğüm) seçimi](./media/ethereum-logic-app/transaction-nodes.png)
 
-1. **Bağlantı dizeleri** > **erişim anahtarlarını**seçin.
+1. **Bağlantı dizeleri**  >  **erişim anahtarlarını**seçin.
 1. Endpoint adresini **https (erişim anahtarı 1)** veya **https (erişim anahtarı 2)** konumundan kopyalayın.
 
     ![Bağlantı dizesi erişim anahtarlarıyla Azure portal](./media/ethereum-logic-app/connection-string.png)
@@ -261,7 +261,7 @@ Akıllı sözleşmenizi derlemek için geliştirme seti 'ni veya Truffle 'yı ku
 
 **Solidity derleyicisini kullanmak için:**
 
-Sözleşme bytecode 'u `solc --bin <smart contract>.sol` oluşturmak için komutunu kullanın.
+`solc --bin <smart contract>.sol`Sözleşme bytecode 'u oluşturmak için komutunu kullanın.
 
 ## <a name="get-the-contract-address"></a>Sözleşme adresini al
 

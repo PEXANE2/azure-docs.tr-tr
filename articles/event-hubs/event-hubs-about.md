@@ -3,19 +3,20 @@ title: Azure Event Hubs nedir? -Büyük veri alma hizmeti | Microsoft Docs
 description: Saniyede milyonlarca olayın eklenmesini sağlayan bir Büyük Veri akış hizmeti olan Azure Event Hubs hakkında daha fazla bilgi edinin.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: spelluru
 manager: timlt
 ms.service: event-hubs
 ms.topic: overview
 ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 45276ab59f1a3dabea42b904ff54bd37326fdeca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: 9f23bef37f6c858670de076b7a6a9ce5d8e2d046
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80398118"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297316"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs — büyük bir veri akışı platformu ve olay alma hizmeti
 Azure Event Hubs, büyük bir veri akışı platformu ve olay alma hizmetidir. Saniyede milyonlarca olayı alabilir ve işleyebilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir.
@@ -49,7 +50,7 @@ Event Hubs, çok az yapılandırma veya yönetim yüküyle birlikte tam olarak y
 
 Eyleme dönüştürülebilir içgörüler elde etmek için akışınızı gerçek zamanlı olarak ekleyin, arabelleğe alın, depolayın ve işleyin. Event Hubs, birden fazla uygulamanın akışı eşzamanlı olarak işlemesini ve işleme hızını denetlemenize olanak sağlayan [bölümlenmiş bir tüketici modeli](event-hubs-scalability.md#partitions)kullanır.
 
-Verilerinizi [Azure Blob depolamada](https://azure.microsoft.com/services/storage/blobs/) neredeyse gerçek zamanlı olarak [yakalayın](event-hubs-capture-overview.md) veya uzun süreli saklama veya mikro toplu işleme için [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) . Bu davranışı gerçek zamanlı analiz türetmede kullandığınız akışta elde edebilirsiniz. Olay verilerinin yakalanması hızlı bir şekilde ayarlanır. Çalıştırmak için yönetim maliyeti yoktur ve Event Hubs [üretilen iş birimleriyle](event-hubs-scalability.md#throughput-units)otomatik olarak ölçeklendirilir. Event Hubs veri yakalama yerine veri işlemeye odaklanmanızı sağlar.
+Verilerinizi [Azure Blob depolamada](https://azure.microsoft.com/services/storage/blobs/) neredeyse gerçek zamanlı olarak [yakalayın](event-hubs-capture-overview.md) veya [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)   uzun süreli saklama veya mikro toplu işleme için Azure Data Lake Storage. Bu davranışı gerçek zamanlı analiz türetmede kullandığınız akışta elde edebilirsiniz. Olay verilerinin yakalanması hızlı bir şekilde ayarlanır. Çalıştırmak için yönetim maliyeti yoktur ve Event Hubs [üretilen iş birimleriyle](event-hubs-scalability.md#throughput-units)otomatik olarak ölçeklendirilir. Event Hubs veri yakalama yerine veri işlemeye odaklanmanızı sağlar.
 
 Azure Event Hubs, sunucusuz mimari için [Azure İşlevleri](/azure/azure-functions/) ile de tümleştirilebilir.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: f5cc4339d7d6dce6d49c8d3eb744fca7fa5774d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8ed9e23b178b8eeefbd3c3a690491124e6901180
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240428"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85112931"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB çevrimiçi yedekleme ve isteğe bağlı veri yükleme
 
@@ -34,7 +34,7 @@ Yalnızca verilerinizin değil, Azure Cosmos DB ile verilerinizin yedekleri çok
 
 Aşağıdaki görüntüde, Batı ABD ' deki üç birincil fiziksel bölüm içeren bir Azure Cosmos kapsayıcısının Batı ABD ' de uzak Azure Blob depolama hesabında nasıl yedeklenebileceği ve ardından Doğu ABD ' e nasıl çoğaltıldığı gösterilmektedir:
 
-![GRS Azure depolama alanındaki tüm Cosmos DB varlıkların düzenli aralıklarla tam yedeklemeleri](./media/online-backup-and-restore/automatic-backup.png)
+:::image type="content" source="./media/online-backup-and-restore/automatic-backup.png" alt-text="GRS Azure depolama alanındaki tüm Cosmos DB varlıkların düzenli aralıklarla tam yedeklemeleri" border="false":::
 
 ## <a name="options-to-manage-your-own-backups"></a>Kendi yedeklemelerinizi yönetme seçenekleri
 
@@ -62,7 +62,7 @@ Verileri yanlışlıkla silme veya değiştirme, aşağıdaki senaryolardan biri
 
 * Paylaşılan bir teklif veritabanı içindeki paylaşılan bir teklif veritabanı veya kapsayıcılar silinir veya bozuktur
 
-Azure Cosmos DB yukarıdaki tüm senaryolarda verileri geri yükleyebilir. Geri yükleme işlemi, geri yüklenen verileri barındırmak için her zaman yeni bir Azure Cosmos hesabı oluşturur. Yeni hesabın adı belirtilmezse, biçimi `<Azure_Cosmos_account_original_name>-restored1`olur. Birden fazla geri yükleme denendiğinde, son basamak artırılır. Önceden oluşturulmuş bir Azure Cosmos hesabına veri geri yükleme yapamazsınız.
+Azure Cosmos DB yukarıdaki tüm senaryolarda verileri geri yükleyebilir. Geri yükleme işlemi, geri yüklenen verileri barındırmak için her zaman yeni bir Azure Cosmos hesabı oluşturur. Yeni hesabın adı belirtilmezse, biçimi olur `<Azure_Cosmos_account_original_name>-restored1` . Birden fazla geri yükleme denendiğinde, son basamak artırılır. Önceden oluşturulmuş bir Azure Cosmos hesabına veri geri yükleme yapamazsınız.
 
 Bir Azure Cosmos hesabı silindiğinde, hesap adının kullanımda olmaması kaydıyla, verileri aynı ada sahip bir hesaba geri yükleme işlemi yapılabilir. Bu gibi durumlarda, yalnızca geri yüklenen verilerin aynı adı kullanmasına engel olmadığından ve ayrıca geri yüklenecek doğru hesabı daha zor bir şekilde keşfettiğinden, silme işleminden sonra hesabı yeniden oluşturmanız önerilir. 
 

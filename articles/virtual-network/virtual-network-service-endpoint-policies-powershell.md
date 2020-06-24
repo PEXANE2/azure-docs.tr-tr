@@ -11,18 +11,18 @@ Customer intent: I want only resources in a virtual network subnet to access an 
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 673431e2ddfc9a641bb1c640891daac79350cb3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d4fcc280ba2e34d2fa81584846441ad6fe81431
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78253032"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708204"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-azure-powershell"></a>Azure PowerShell kullanarak sanal ağ hizmeti uç noktası ilkeleri ile Azure depolama hesaplarına veri alımını yönetme
 
@@ -172,7 +172,7 @@ Depolama hesabı oluşturulduktan sonra, [Get-AzStorageAccountKey](/powershell/m
 $storageAcctKey1 = (Get-AzStorageAccountKey -ResourceGroupName myResourceGroup -AccountName $storageAcctName1).Value[0]
 ```
 
-Anahtar, sonraki bir adımda dosya paylaşma oluşturmak için kullanılır. Dosya `$storageAcctKey` paylaşma 'Yı bir VM 'deki sürücüyle eşlediğinizde daha sonra da el ile girmeniz gerekeceğinden, değeri girin ve aklınızda bir adım girin.
+Anahtar, sonraki bir adımda dosya paylaşma oluşturmak için kullanılır. `$storageAcctKey`Dosya paylaşma 'yı BIR VM 'deki sürücüyle eşlediğinizde daha sonra da el ile girmeniz gerekeceğinden, değeri girin ve aklınızda bir adım girin.
 
 Şimdi ikinci bir depolama hesabı oluşturmak için yukarıdaki adımları tekrarlayın.
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c02ac9392d6f3f95deef38ff86250e96dfb76d96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eaf58b964517162ee7f7eb925e1e64830eedc087
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476697"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202560"
 ---
 # <a name="date-claims-transformations"></a>Tarih talebi dönüşümleri
 
@@ -39,9 +39,9 @@ Bir tarih ve saat talebinin (dize veri türü) ikinci bir tarih ve saat talebine
 
 ![Assertstringclaimsareeşittir yürütme](./media/date-transformations/assert-execution.png)
 
-Aşağıdaki örnek talebi `approvedDateTime` talep ile `currentDateTime` karşılaştırır. Sonrasında bir hata oluşur `currentDateTime` `approvedDateTime`. Dönüştürme, 5 dakika (30000 milisaniye) farklılık içinde olan değerleri eşit olarak değerlendirir.
+Aşağıdaki örnek talebi `currentDateTime` talep ile karşılaştırır `approvedDateTime` . Sonrasında bir hata oluşur `currentDateTime` `approvedDateTime` . Dönüştürme, 5 dakika (30000 milisaniye) farklılık içinde olan değerleri eşit olarak değerlendirir.
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="approvedDateTime" TransformationClaimType="leftOperand" />
@@ -55,8 +55,8 @@ Aşağıdaki örnek talebi `approvedDateTime` talep ile `currentDateTime` karş�
 </ClaimsTransformation>
 ```
 
-`login-NonInteractive` Doğrulama teknik profili `AssertApprovedDateTimeLaterThanCurrentDateTime` talep dönüşümünü çağırır.
-```XML
+`login-NonInteractive`Doğrulama teknik profili `AssertApprovedDateTimeLaterThanCurrentDateTime` talep dönüşümünü çağırır.
+```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
   <OutputClaimsTransformations>
@@ -67,7 +67,7 @@ Aşağıdaki örnek talebi `approvedDateTime` talep ile `currentDateTime` karş�
 
 Otomatik olarak onaylanan teknik profil, doğrulama **oturum açma-etkileşimsiz** teknik profilini çağırır.
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
   <Metadata>
     <Item Key="DateTimeGreaterThan">Custom error message if the provided left operand is greater than the right operand.</Item>
@@ -96,7 +96,7 @@ Otomatik olarak onaylanan teknik profil, doğrulama **oturum açma-etkileşimsiz
 
 Aşağıdaki örnek, talebin `dateOfBirth` (Tarih veri türü) başka bir talebe `dateOfBirthWithTime` (TarihSaat veri türü) dönüştürülmesini gösterir.
 
-```XML
+```xml
   <ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
     <InputClaims>
       <InputClaim ClaimTypeReferenceId="dateOfBirth" TransformationClaimType="inputClaim" />
@@ -125,7 +125,7 @@ Bir **DateTime** ClaimType 'ı bir **Tarih** ClaimType 'a dönüştürür. Talep
 
 Aşağıdaki örnek, talebin `systemDateTime` (TarihSaat veri türü) başka bir talebe `systemDate` (Tarih veri türü) dönüştürülmesini gösterir.
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertToDate" TransformationMethod="ConvertDateTimeToDateClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="inputClaim" />
@@ -151,7 +151,7 @@ Geçerli UTC Tarih ve saatini alın ve değeri bir ClaimType 'a ekleyin.
 | ---- | ----------------------- | --------- | ----- |
 | OutputClaim | currentDateTime | tarih saat | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
 
-```XML
+```xml
 <ClaimsTransformation Id="GetSystemDateTime" TransformationMethod="GetCurrentDateTime">
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="currentDateTime" />
@@ -166,7 +166,7 @@ Geçerli UTC Tarih ve saatini alın ve değeri bir ClaimType 'a ekleyin.
 
 ## <a name="datetimecomparison"></a>DateTimeComparison
 
-Bir tarih saat değerinin daha sonra, daha önce veya diğer bir değere eşit olup olmadığını belirleme. Sonuç, `true` veya `false`değerine sahip yeni bir Boole ClaimType Boole değeridir.
+Bir tarih saat değerinin daha sonra, daha önce veya diğer bir değere eşit olup olmadığını belirleme. Sonuç, veya değerine sahip yeni bir Boole ClaimType Boole değeridir `true` `false` .
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
@@ -179,7 +179,7 @@ Bir tarih saat değerinin daha sonra, daha önce veya diğer bir değere eşit o
 İki ClaimTypes 'ın eşit, daha sonra veya daha önceki bir sürümü olup olmadığını anlamak için bu talep dönüşümünü kullanın. Örneğin, bir kullanıcının hizmet koşullarınızı (TOS) en son kabul ettiği zamanı saklayabilirsiniz. 3 aydan sonra kullanıcıdan TOS 'a yeniden erişmesini isteyebilirsiniz.
 Talep dönüşümünü çalıştırmak için, ilk olarak geçerli tarih saat ve ayrıca Kullanıcı TOS 'ı kabul eden son zamanı almanız gerekir.
 
-```XML
+```xml
 <ClaimsTransformation Id="CompareLastTOSAcceptedWithCurrentDateTime" TransformationMethod="DateTimeComparison">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="currentDateTime" TransformationClaimType="firstDateTime" />

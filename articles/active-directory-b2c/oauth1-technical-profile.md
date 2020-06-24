@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7f734844859d44e66bddbc2ddd999659e52f9668
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d570ddbcf974936bbaa78be5799e7bd42fa6d514
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184086"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204090"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde bir OAuth1 teknik profili tanımlama
 
@@ -26,9 +26,9 @@ Azure Active Directory B2C (Azure AD B2C), [OAuth 1,0 protokol](https://tools.ie
 
 ## <a name="protocol"></a>Protokol
 
-**Protokol** öğesinin `OAuth1` **Name** özniteliğinin olarak ayarlanması gerekir. Örneğin, **Twitter-OAUTH1** Technical profile için protokol `OAuth1`.
+**Protokol** öğesinin **Name** özniteliğinin olarak ayarlanması gerekir `OAuth1` . Örneğin, **Twitter-OAUTH1** Technical profile için protokol `OAuth1` .
 
-```XML
+```xml
 <TechnicalProfile Id="Twitter-OAUTH1">
   <DisplayName>Twitter</DisplayName>
   <Protocol Name="OAuth1" />
@@ -54,7 +54,7 @@ Aşağıdaki örnekte, Twitter kimlik sağlayıcısı tarafından döndürülen 
 Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de döndürür:
 
 - Kimlik sağlayıcısının adını içeren **IdentityProvider** talebi.
-- Varsayılan değeri olan **Authenticationsource** talebi `socialIdpAuthentication`.
+- Varsayılan değeri olan **Authenticationsource** talebi `socialIdpAuthentication` .
 
 ```xml
 <OutputClaims>
@@ -66,17 +66,17 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 </OutputClaims>
 ```
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | client_id | Yes | Kimlik sağlayıcısının uygulama tanımlayıcısı. |
-| Adı | Hayır | Kimlik sağlayıcısının adı. |
+| Adı | No | Kimlik sağlayıcısının adı. |
 | request_token_endpoint | Yes | RFC 5849 başına istek belirteci uç noktasının URL 'SI. |
 | authorization_endpoint | Yes | RFC 5849 başına yetkilendirme uç noktasının URL 'SI. |
 | access_token_endpoint | Yes | RFC 5849 başına belirteç uç noktasının URL 'SI. |
-| ClaimsEndpoint | Hayır | Kullanıcı bilgisi uç noktasının URL 'SI. |
-| ClaimsResponseFormat | Hayır | Talep yanıtı biçimi.|
+| ClaimsEndpoint | No | Kullanıcı bilgisi uç noktasının URL 'SI. |
+| ClaimsResponseFormat | No | Talep yanıtı biçimi.|
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
 
@@ -88,7 +88,7 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 
 ## <a name="redirect-uri"></a>Yeniden Yönlendirme URI'si
 
-Kimlik sağlayıcınızın yeniden yönlendirme URL 'sini yapılandırdığınızda, girin `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`. **Kiracınızı** kiracı adınızla (örneğin, contosob2c.onmicrosoft.com) ve **PolicyId** ile ilkenizin (örneğin, b2c_1a_policy) ile değiştirdiğinizden emin olun. Yeniden yönlendirme URI 'sinin tamamen küçük harfle olması gerekir. Kimlik sağlayıcısı oturum açma bilgilerini kullanan tüm ilkeler için yeniden yönlendirme URL 'SI ekleyin.
+Kimlik sağlayıcınızın yeniden yönlendirme URL 'sini yapılandırdığınızda, girin `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp` . **Kiracınızı** kiracı adınızla (örneğin, contosob2c.onmicrosoft.com) ve **PolicyId** ile ilkenizin (örneğin, b2c_1a_policy) ile değiştirdiğinizden emin olun. Yeniden yönlendirme URI 'sinin tamamen küçük harfle olması gerekir. Kimlik sağlayıcısı oturum açma bilgilerini kullanan tüm ilkeler için yeniden yönlendirme URL 'SI ekleyin.
 
 **Login.microsoftonline.com** yerine **b2clogin.com** etki alanını kullanıyorsanız Login.microsoftonline.com yerine b2clogin.com kullandığınızdan emin olun.
 

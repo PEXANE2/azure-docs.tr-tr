@@ -6,14 +6,15 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: bdb1896f8a40c6de21ae76b536bfccec316341cd
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.reviewer: shvija
+ms.openlocfilehash: 0c572723c493847ed15f80948511d1cc993fa7e1
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "69992802"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298761"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>Paylaşılan erişim Imzalarını kullanarak Event Hubs kaynaklarına erişimi yetkilendirme
 Paylaşılan erişim imzası (SAS), Event Hubs ad alanındaki kaynaklara sınırlı erişim vermek için bir yol sağlar. SAS koruyucuları, yetkilendirme kurallarına göre Event Hubs kaynaklara erişim sağlar. Bu kurallar bir ad alanında ya da bir varlıkta (Olay Hub 'ı veya konu başlığı) yapılandırılır. Bu makalede SAS modeline genel bir bakış sağlanır ve SAS en iyi uygulamaları incelenir.
@@ -33,7 +34,7 @@ SAS, basit belirteçler kullanan talep tabanlı bir yetkilendirme mekanizmasıd�
 
 ## <a name="shared-access-authorization-policies"></a>Paylaşılan erişim yetkilendirme ilkeleri
 Her bir Event Hubs ad alanı ve Event Hubs varlığı (bir olay hub 'ı örneği veya bir Kafka konusu), kurallardan oluşan bir paylaşılan erişim yetkilendirme ilkesine sahiptir. Ad alanı düzeyindeki ilke, bireysel ilke yapılandırmasından bağımsız olarak ad alanındaki tüm varlıklar için geçerlidir.
-Her yetkilendirme ilkesi kuralı için üç bilgi parçasına karar verirsiniz: ad, kapsam ve haklar. Ad, bu kapsamdaki benzersiz bir addır. Kapsam, söz konusu kaynağın URI 'sidir. Event Hubs ad alanı için kapsam, gibi tam etki alanı adıdır (FQDN) `https://<yournamespace>.servicebus.windows.net/`.
+Her yetkilendirme ilkesi kuralı için üç bilgi parçasına karar verirsiniz: ad, kapsam ve haklar. Ad, bu kapsamdaki benzersiz bir addır. Kapsam, söz konusu kaynağın URI 'sidir. Event Hubs ad alanı için kapsam, gibi tam etki alanı adıdır (FQDN) `https://<yournamespace>.servicebus.windows.net/` .
 
 İlke kuralı tarafından belirtilen haklar şu bir bileşim olabilir:
 - **Gönder** : varlığa ileti gönderme hakkını verir

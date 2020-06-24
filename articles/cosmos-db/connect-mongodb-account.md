@@ -5,15 +5,15 @@ author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: cba16d79b6506f9809a76f0128938a68afd15c92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd4d6e1632ba858e709f6d463a6da4779314e64d
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80617048"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262030"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Azure Cosmos DB’ye MongoDB uygulaması bağlama
 
@@ -21,7 +21,7 @@ MongoDB bağlantı dizesi kullanarak MongoDB uygulamanızı Azure Cosmos DB'ye b
 
 Bu öğreticide bağlantı dizesi bilgilerini almak için iki yol sağlanır:
 
-- .NET, Node. js, MongoDB kabuğu, Java ve Python sürücüleriyle kullanım için [hızlı başlangıç yöntemi](#get-the-mongodb-connection-string-by-using-the-quick-start)
+- .NET, Node.js, MongoDB kabuğu, Java ve Python sürücüleriyle kullanım için [hızlı başlangıç yöntemi](#get-the-mongodb-connection-string-by-using-the-quick-start)
 - Diğer sürücülerle kullanılmak üzere [özel bağlantı dizesi yöntemi](#get-the-mongodb-connection-string-to-customize)
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -34,7 +34,7 @@ Bu öğreticide bağlantı dizesi bilgilerini almak için iki yol sağlanır:
 1. Bir Internet tarayıcısında [Azure Portal](https://portal.azure.com)oturum açın.
 2. **Azure Cosmos DB** dikey PENCERESINDE, API 'yi seçin.
 3. Hesap dikey penceresinin sol bölmesinde **hızlı başlangıç**' a tıklayın.
-4. Platformunuzu seçin (**.net**, **Node. js**, **MongoDB kabuğu**, **Java**, **Python**). Sürücü veya aracınız listede görmüyorsanız endişelenmeyin, sürekli olarak daha fazla bağlantı kodu parçacığı belgeliyoruz. Görmek istediğiniz şekilde lütfen aşağıdaki açıklamayı inceleyin. Kendi bağlantınızı oluşturmayı öğrenmek için [hesabın bağlantı dizesi bilgilerini](#get-the-mongodb-connection-string-to-customize)okuyun.
+4. Platformunuzu (**.net**, **Node.js**, **MongoDB kabuğu**, **Java**, **Python**) seçin. Sürücü veya aracınız listede görmüyorsanız endişelenmeyin, sürekli olarak daha fazla bağlantı kodu parçacığı belgeliyoruz. Görmek istediğiniz şekilde lütfen aşağıdaki açıklamayı inceleyin. Kendi bağlantınızı oluşturmayı öğrenmek için [hesabın bağlantı dizesi bilgilerini](#get-the-mongodb-connection-string-to-customize)okuyun.
 5. Kod parçacığını kopyalayıp MongoDB uygulamanıza yapıştırın.
 
     ![Hızlı başlangıç dikey penceresi](./media/connect-mongodb-account/QuickStartBlade.png)
@@ -46,7 +46,7 @@ Bu öğreticide bağlantı dizesi bilgilerini almak için iki yol sağlanır:
 3. Hesap dikey penceresinin sol bölmesinde **bağlantı dizesi**' ne tıklayın.
 4. **Bağlantı dizesi** dikey penceresi açılır. Önceden oluşturulmuş bir bağlantı dizesi dahil olmak üzere MongoDB için bir sürücü kullanarak hesaba bağlanmak için gerekli tüm bilgilere sahiptir.
 
-   [![Bağlantı dizesi dikey](./media/connect-mongodb-account/ConnectionStringBlade.png) penceresi](./media/connect-mongodb-account/ConnectionStringBlade.png#lightbox)
+   :::image type="content" source="./media/connect-mongodb-account/ConnectionStringBlade.png" alt-text="Bağlantı Dizesi dikey penceresi" lightbox= "./media/connect-mongodb-account/ConnectionStringBlade.png" :::
 
 ## <a name="connection-string-requirements"></a>Bağlantı dizesi gereksinimleri
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 65bbc9f66ceb732a8f773f0b49cd46f99750a7d5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 871ea665d23a5fba644448ddb6c596179d47bb3f
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196319"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106379"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'ne çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları
 
@@ -62,6 +62,6 @@ SQL Server ile Azure SQL yönetilen örneği arasındaki çevrimiçi geçişlerl
 
 - **Dağıtımlar**
 
-    SQL yönetilen örneği, otomatik düzeltme eki uygulama ve sürüm güncelleştirmeleri içeren bir PaaS hizmetidir. SQL yönetilen örneğinizin geçirilmesi sırasında kritik olmayan güncelleştirmeler 36 saate kadar yardımcı olur. Daha sonra (ve kritik güncelleştirmeler için), geçiş kesintiye uğratılıyor ise işlem tam geri yükleme durumuna sıfırlanır.
+    SQL yönetilen örneği, otomatik düzeltme eki uygulama ve sürüm güncelleştirmeleri içeren bir PaaS hizmetidir. SQL yönetilen örneğinizin geçirilmesi sırasında kritik olmayan güncelleştirmeler 36 saate kadar tutulur. Daha sonra (ve kritik güncelleştirmeler için), geçiş kesintiye uğratılıyor ise işlem tam geri yükleme durumuna sıfırlanır.
 
     Tam geçişi geçişi yalnızca tam yedekleme geri yüklendikten sonra çağrılabilir ve tüm günlük yedeklemeleriyle yapılır. Üretim geçişiniz etkileniyorsa [Azure DMS geri bildirim diğer adı](mailto:dmsfeedback@microsoft.com)ile iletişime geçin.

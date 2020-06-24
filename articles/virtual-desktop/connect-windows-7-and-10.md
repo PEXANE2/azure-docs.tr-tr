@@ -4,16 +4,16 @@ description: Windows masaüstü istemcisini kullanarak Windows sanal masaüstün
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2b16818856ca8196b82eb8f618cf22b5fc1b6854
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5d333b2f8bbb660e9fd71339159d942c0520f4f4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612699"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201557"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Windows Masaüstü istemcisine bağlanma
 
@@ -22,7 +22,7 @@ ms.locfileid: "82612699"
 Windows Masaüstü istemcisi 'ni kullanarak Windows 7, Windows 10 ve Windows 10 IoT Enterprise ile cihazlarda Windows sanal masaüstü kaynaklarına erişebilirsiniz.
 
 >[!NOTE]
->Windows istemcisi varsayılan olarak Windows sanal masaüstü Fall 2019 sürümüne otomatik olarak girer. Ancak, istemci kullanıcının Azure Resource Manager kaynaklara sahip olduğunu algılarsa, kaynakları otomatik olarak ekler veya kullanıcılara kullanılabilir olduğunu bildirir. 
+>Windows istemcisi varsayılan olarak Windows sanal masaüstü Fall 2019 sürümüne otomatik olarak girer. Ancak, istemci kullanıcının Azure Resource Manager kaynaklara sahip olduğunu algılarsa, kaynakları otomatik olarak ekler veya kullanıcılara kullanılabilir olduğunu bildirir.
 
 > [!IMPORTANT]
 > Windows sanal masaüstü, RemoteApp ve Masaüstü bağlantıları (ÇDC) istemcisini veya Uzak Masaüstü Bağlantısı (MSTSC) istemcisini desteklemez.

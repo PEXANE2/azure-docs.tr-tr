@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: 36279039bbc63173a4c3c06901a0800a0893cebb
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 678a605ce1585b58cfc5f9aaea3423efa8d53ad3
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84430864"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296925"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 'de bilinen sorunlar ve sorun giderme
 
@@ -181,6 +181,20 @@ Veri aktarımı gibi diğer iş yükleri için dosya paylaşma 'yı kullanıyors
 |Görüntüleri gözden geçirirken yeni etiketlenmiş görüntüler gösterilmez.     |   Etiketlenmiş tüm görüntüleri yüklemek için **ilk** düğmeyi seçin. **İlk** düğme, listenin önüne geri götürür, ancak etiketlenmiş tüm verileri yükler.      |
 |Nesne algılama için etiketleme sırasında Esc tuşuna basmak, sol üst köşede Sıfır boyutlu bir etiket oluşturur. Etiketlerin bu durumda gönderilmesi başarısız oluyor.     |   Yanındaki çapraz işaretine tıklayarak etiketi silin.  |
 
+### <a name="data-drift-monitors"></a>Veri kayması izleyicileri
+
+* SDK `backfill()` işlevi beklenen çıktıyı üretmiyorsa, bunun nedeni bir kimlik doğrulama sorunu olabilir.  Bu işleve geçirilecek bir işlem oluşturduğunuzda, kullanmayın `Run.get_context().experiment.workspace.compute_targets` .  Bunun yerine, bu işleve geçirdiğiniz işlem oluşturmak için aşağıdaki gibi [Serviceprincıpalauthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) kullanın `backfill()` : 
+
+  ```python
+   auth = ServicePrincipalAuthentication(
+          tenant_id=tenant_id,
+          service_principal_id=app_id,
+          service_principal_password=client_secret
+          )
+   ws = Workspace.get("xxx", auth=auth, subscription_id="xxx", resource_group"xxx")
+   compute = ws.compute_targets.get("xxx")
+   ```
+
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning Tasarımcısı
 
 Bilinen sorunlar:
@@ -220,8 +234,14 @@ Bilinen sorunlar:
 
 ## <a name="automated-machine-learning"></a>Otomatik makine öğrenimi
 
-* **TensorFlow**: otomatik makine öğrenimi Şu anda TensorFlow sürüm 1,13 ' i desteklememektedir. Bu sürümün yüklenmesi paket bağımlılıklarının çalışmayı durdurmasına neden olur. Bu sorunu gelecekte yayımlanacak bir sürümde gidermeye çalışıyoruz.
-
+* **TensorFlow**: SDK 'nın sürüm 1.5.0 itibariyle, otomatik makine öğrenimi, varsayılan olarak TensorFlow modellerini yüklemez. TensorFlow 'u yüklemek ve otomatik ML denemeleri ile kullanmak için, Conerbağımlılar aracılığıyla TensorFlow = = 1.12.0 ' yi kurun. 
+ 
+   ```python
+   from azureml.core.runconfig import RunConfiguration
+   from azureml.core.conda_dependencies import CondaDependencies
+   run_config = RunConfiguration()
+   run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['tensorflow==1.12.0'])
+  ```
 * **Deneme grafikleri**: otomatik ml denemesi yinelemeleriyle gösterilen ikili sınıflandırma grafikleri (duyarlık-HATıRLA, Roc, kazanç eğrisi vb.), 4/12 ' den beri Kullanıcı arabiriminde doğru işlenmemektedir. Grafik çizimleri Şu anda daha iyi şekilde uygulanan modellerin daha düşük sonuçlarla gösterildiği ters sonuçları gösteriyor. Bir çözüm, araştırma aşamasındadır.
 
 * **Databricks otomatik makine öğrenimi çalıştırmayı iptal et**: Azure Databricks ' de otomatik makine öğrenimi özellikleri kullandığınızda, çalıştırmayı iptal etmek ve yeni bir deneme çalıştırması başlatmak için Azure Databricks kümenizi yeniden başlatın.

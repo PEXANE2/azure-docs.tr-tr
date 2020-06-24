@@ -11,17 +11,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: fb3246564c7902d1a99c28425ee7ee1789b00354
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 51d7ae8671d4b57e1822aa1c4ee5bf30a5f24cbd
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171149"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253996"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL veritabanı 'ndaki sunucular için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-*Sanal ağ kuralları* , veritabanlarınızı ve [Azure SQL veritabanı](sql-database-paas-overview.md) 'ndaki elastik havuzlarınızın ve [Azure SYNAPSE](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) ' deki veritabanları için sanal ağlardaki belirli alt ağlardan gönderilen iletişimleri kabul edip etmediğini denetleyen bir güvenlik duvarı güvenlik özelliğidir. Bu makalede, Azure SQL veritabanınıza ve SQL veri ambarınıza yönelik iletişimin güvenli bir şekilde yapılmasına olanak tanımak için sanal ağ kuralı özelliğinin neden bazen en iyi seçenektir.
+*Sanal ağ kuralları* , veritabanlarınızı ve [Azure SQL veritabanı](sql-database-paas-overview.md) 'ndaki elastik havuzlarınızın ve [Azure SYNAPSE](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) ' deki veritabanları için sanal ağlardaki belirli alt ağlardan gönderilen iletişimleri kabul edip etmediğini denetleyen bir güvenlik duvarı güvenlik özelliğidir. Bu makalede, Azure SQL veritabanı ve SQL veri ambarı 'nda veritabanınıza iletişimin güvenli bir şekilde yapılmasına olanak tanımak için sanal ağ kuralı özelliğinin neden bazen en iyi seçenektir.
 
 > [!NOTE]
 > Bu makale hem Azure SQL veritabanı hem de Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) için geçerlidir. Basitlik için, ' Database ' terimi, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'te her iki veritabanına başvurur. Benzer şekilde, ' Server ' öğesine yapılan tüm başvurular, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'i barındıran [MANTıKSAL SQL Server](logical-servers.md) 'a başvurmaktadır.
@@ -74,7 +74,7 @@ Azure 'da [rol tabanlı erişim denetimi (RBAC)][rbac-what-is-813s] kullanarak y
 
 Azure SQL veritabanı için sanal ağ kuralları özelliği aşağıdaki sınırlamalara sahiptir:
 
-- Azure SQL veritabanı 'nda veritabanınızın güvenlik duvarında, her bir sanal ağ kuralı bir alt ağa başvurur. Bu başvurulan alt ağların tümü, Azure SQL veritabanını barındıran aynı coğrafi bölgede barındırılmalıdır.
+- Azure SQL veritabanı 'nda veritabanınızın güvenlik duvarında, her bir sanal ağ kuralı bir alt ağa başvurur. Bu başvurulmuş alt ağların tümü, veritabanını barındıran aynı coğrafi bölgede barındırılmalıdır.
 
 - Her sunucu, belirli bir sanal ağ için en fazla 128 ACL girişine sahip olabilir.
 
@@ -240,7 +240,7 @@ Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *tür
 
 ## <a name="azure-portal-steps"></a>Azure portal adımları
 
-1. [Azure portalında][http-azure-portal-link-ref-477t] oturum açın.
+1. [Azure Portal][http-azure-portal-link-ref-477t] oturum açın.
 
 2. **SQL Server 'lar**için arama yapın ve ardından sunucunuzu seçin. **Güvenlik altında güvenlik** **duvarları ve sanal ağlar**' ı seçin.
 

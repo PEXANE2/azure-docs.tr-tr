@@ -7,13 +7,13 @@ ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
-ms.reviewer: cbrooks
-ms.openlocfilehash: d9c666fd6fcf020908b6fc5bdd639261853ad9c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: dineshm
+ms.openlocfilehash: 8f51b6f94ae8a245471757d256a923570582bb12
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811552"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809063"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Blob depolama olaylarına yanıt verme
 
@@ -39,7 +39,7 @@ Azure işlevleri 'ni kullanarak BLOB depolama olaylarına yeniden işlem hakkın
 - [Öğretici: Event Grid kullanarak karşıya yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirme](https://docs.microsoft.com/azure/event-grid/resize-images-on-storage-blob-upload-event?tabs=dotnet)
 
 >[!NOTE]
-> Yalnızca **StorageV2 (genel amaçlı v2)**, **blok Blobstorage**ve **blobstorage** türündeki depolama hesapları olay tümleştirmesini destekler. **Depolama (genral amaçlı v1)** Event Grid ile *tümleştirmeyi desteklemez.*
+> Yalnızca **StorageV2 (genel amaçlı v2)**, **blok Blobstorage**ve **blobstorage** türündeki depolama hesapları olay tümleştirmesini destekler. **Depolama (genel amaçlı v1)** Event Grid ile *tümleştirmeyi desteklemez.*
 
 ## <a name="the-event-model"></a>Olay modeli
 
@@ -70,25 +70,25 @@ Blob Storage olaylarının konusu şu biçimi kullanır:
 
 Bir depolama hesabının tüm olaylarını eşleştirmek için, konu filtrelerini boş bırakabilirsiniz.
 
-Bir öneki paylaşan bir kapsayıcı kümesi içinde oluşturulan Blobların olaylarını eşleştirmek için şöyle bir `subjectBeginsWith` filtre kullanın:
+Bir öneki paylaşan bir kapsayıcı kümesi içinde oluşturulan Blobların olaylarını eşleştirmek için şöyle bir filtre kullanın `subjectBeginsWith` :
 
 ```
 /blobServices/default/containers/containerprefix
 ```
 
-Belirli bir kapsayıcıda oluşturulan Blobların olaylarını eşleştirmek için şöyle bir `subjectBeginsWith` filtre kullanın:
+Belirli bir kapsayıcıda oluşturulan Blobların olaylarını eşleştirmek için `subjectBeginsWith` şöyle bir filtre kullanın:
 
 ```
 /blobServices/default/containers/containername/
 ```
 
-Blob adı ön ekini paylaşan belirli bir kapsayıcıda oluşturulan Blobların olaylarını eşleştirmek için şöyle bir `subjectBeginsWith` filtre kullanın:
+Blob adı ön ekini paylaşan belirli bir kapsayıcıda oluşturulan Blobların olaylarını eşleştirmek için `subjectBeginsWith` şöyle bir filtre kullanın:
 
 ```
 /blobServices/default/containers/containername/blobs/blobprefix
 ```
 
-Blob sonekini paylaşan belirli bir kapsayıcıda oluşturulan Blobların olaylarını eşleştirmek için ". log" `subjectEndsWith` veya ". jpg" gibi bir filtre kullanın. Daha fazla bilgi için bkz. [Event Grid kavramları](../../event-grid/concepts.md#event-subscriptions).
+Blob sonekini paylaşan belirli bir kapsayıcıda oluşturulan Blobların olaylarını eşleştirmek için `subjectEndsWith` ". log" veya ". jpg" gibi bir filtre kullanın. Daha fazla bilgi için bkz. [Event Grid kavramları](../../event-grid/concepts.md#event-subscriptions).
 
 ## <a name="practices-for-consuming-events"></a>Olayları tüketen uygulamalar
 
@@ -99,10 +99,10 @@ Blob Depolama olaylarını işleyen uygulamalar birkaç önerilen uygulamayı iz
 > * İletiler bir gecikmeden sonra gelebileceğinden, nesneler hakkındaki bilgilerinizin hala güncel olup olmadığını anlamak için ETag alanlarını kullanın. ETag alanını nasıl kullanacağınızı öğrenmek için bkz. [BLOB depolamada eşzamanlılık yönetimi](https://docs.microsoft.com/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage). 
 > * İletiler sıra dışına gelebileceğinden, belirli bir nesne üzerindeki olayların sırasını anlamak için sıralayıcı alanlarını kullanın. Sıralayıcı alanı, belirli bir blob adı için olayların mantıksal dizisini temsil eden bir dize değeridir. Aynı blob adı üzerinde iki olayın göreli sırasını anlamak için standart dize karşılaştırmayı kullanabilirsiniz.
 > * Depolama olayları, abonelere en az bir kez gönderim garantisi sağlar ve bu da tüm iletilerin kaydedilmesini sağlar. Ancak, yeniden denemeler veya aboneliklerin kullanılabilirliği nedeniyle, yinelenen iletiler zaman zaman oluşabilir. İleti teslimi ve yeniden deneme hakkında daha fazla bilgi edinmek için bkz. [Event Grid ileti teslimi ve yeniden deneme](../../event-grid/delivery-and-retry.md).
-> * Blob üzerinde ne tür işlemlere izin verileceğini ve Blobun erişmek için hangi istemci kitaplığı türlerini kullanacağınızı anlamak için blobType alanını kullanın. Geçerli değerler ya `PageBlob`da `BlockBlob` . 
-> * Blob 'a erişmek için `CloudBlockBlob` ve `CloudAppendBlob` oluşturucularla birlikte URL alanını kullanın.
+> * Blob üzerinde ne tür işlemlere izin verileceğini ve Blobun erişmek için hangi istemci kitaplığı türlerini kullanacağınızı anlamak için blobType alanını kullanın. Geçerli değerler ya da `BlockBlob` `PageBlob` . 
+> * `CloudBlockBlob` `CloudAppendBlob` BLOB 'a erişmek için ve oluşturucularla birlikte URL alanını kullanın.
 > * Anladığınızı alanları yoksayın. Bu uygulama, gelecekte eklenebilecek yeni özelliklere dayanıklı tutmaya yardımcı olur.
-> * **Microsoft. Storage. blobcreated** olayının yalnızca bir Blok Blobu tamamen yürütüldüğü zaman tetiklendiğinden emin olmak `CopyBlob`istiyorsanız,, `PutBlob` `PutBlockList` veya `FlushWithClose` REST API çağrılarının olayını filtreleyin. Bu API çağrıları, **Microsoft. Storage. BlobCreated** olayını yalnızca veriler bir blok blobuna tam olarak kaydedildikten sonra tetikler. Filtre oluşturmayı öğrenmek için bkz. [Event Grid olayları filtreleme](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+> * **Microsoft. Storage. blobcreated** olayının yalnızca bir Blok Blobu tamamen yürütüldüğü zaman tetiklendiğinden emin olmak istiyorsanız,, `CopyBlob` `PutBlob` `PutBlockList` veya `FlushWithClose` REST API çağrılarının olayını filtreleyin. Bu API çağrıları, **Microsoft. Storage. BlobCreated** olayını yalnızca veriler bir blok blobuna tam olarak kaydedildikten sonra tetikler. Filtre oluşturmayı öğrenmek için bkz. [Event Grid olayları filtreleme](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

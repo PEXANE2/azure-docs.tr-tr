@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: cba39b1631988ec33fb349357de3efa6a321fc03
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 683e448156d8f55c19ba55607f6171ca4279ebe9
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045882"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253911"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Öğretici: bir yük devretme grubuna Azure SQL veritabanı elastik havuzu ekleme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -268,7 +268,7 @@ Azure portal kullanarak yük devretme grubunuzun yük devretmesini test edin.
 1. Elastik havuzunuzu içeren yük devretme grubunuzun yükünü devretmek için görev bölmesinden **Yük devretmeyi** seçin.
 1. TDS oturumlarının kesileceğini bildiren uyarıda **Evet** ' i seçin.
 
-   ![SQL veritabanınızı içeren yük devretme grubunuzun yükünü devreder](./media/failover-group-add-elastic-pool-tutorial/failover-sql-db.png)
+   ![Veritabanınızı içeren yük devretme grubunuzun yükünü devreder](./media/failover-group-add-elastic-pool-tutorial/failover-sql-db.png)
 
 1. Hangi sunucunun birincil olduğunu ve hangi sunucunun ikincil olduğunu gözden geçirin. Yük devretme başarılı olursa iki sunucu, bulunan rolleri değiştirmiş olmalıdır.
 1. Yük devretme grubundan özgün ayarlara geri dönmek için **Yük devretmeyi** yeniden seçin.

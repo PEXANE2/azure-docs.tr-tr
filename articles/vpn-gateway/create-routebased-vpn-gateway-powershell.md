@@ -4,15 +4,15 @@ description: PowerShell kullanarak hızlı bir şekilde rota tabanlı VPN Gatewa
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8a4bb9d2ac7b8124fa9b1e00f3ecceda4f4a4cdf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5cd0971b04d1bad140cf3aac29a8c153977cfa62
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152967"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987652"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>PowerShell kullanarak rota temelli VPN ağ geçidi oluşturma
 
@@ -28,7 +28,7 @@ Bu makaledeki adımlarda bir VNet, alt ağ, bir ağ geçidi alt ağı ve rota ta
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)Ile bir Azure Kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Bir kaynak grubu oluşturun. PowerShell 'i yerel olarak çalıştırıyorsanız, PowerShell konsolunuzu yükseltilmiş ayrıcalıklarla açın ve `Connect-AzAccount` komutunu kullanarak Azure 'a bağlanın.
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)Ile bir Azure Kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Bir kaynak grubu oluşturun. PowerShell 'i yerel olarak çalıştırıyorsanız, PowerShell konsolunuzu yükseltilmiş ayrıcalıklarla açın ve komutunu kullanarak Azure 'a bağlanın `Connect-AzAccount` .
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name TestRG1 -Location EastUS

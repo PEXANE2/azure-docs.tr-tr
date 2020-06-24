@@ -4,12 +4,13 @@ description: İşlev yürütmeyi izlemek için Azure Application Insights Azure 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 2aaf52a528f929f183c9bf4565d9f0da4918f146
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 578e1580bdaafb1b309a7af44353602cc31cb5a5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757764"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207016"
 ---
 # <a name="monitor-azure-functions"></a>Azure İşlevlerini İzleme
 
@@ -63,7 +64,7 @@ Application Insights kullanma hakkında daha fazla bilgi için [Application Insi
 
 Aşağıdaki Application Insights, işlevinizdeki davranış, performans ve hataları değerlendirirken yararlı olabilir:
 
-| Araştır | Açıklama |
+| Araştır | Description |
 | ---- | ----------- |
 | **[Hatalar](../azure-monitor/app/asp-net-exceptions.md)** |  İşlev hatalarıyla ve sunucu özel durumlarına göre grafikler ve uyarılar oluşturun. **Işlem adı** işlev adıdır. Bağımlılıklar için özel telemetri uygulamadığınız takdirde Bağımlılıklardaki arızalar gösterilmez. |
 | **[Performans](../azure-monitor/app/performance-counters.md)** | **Bulut rol örnekleri**başına kaynak kullanımını ve aktarım hızını görüntüleyerek performans sorunlarını analiz edin. Bu veriler, işlevlerin temeldeki kaynaklarınızın gerisinde bulunduğu hata ayıklama senaryolarında yararlı olabilir. |
@@ -111,13 +112,13 @@ traces
 
 ## <a name="configure-categories-and-log-levels"></a>Kategorileri ve günlük düzeylerini yapılandırma
 
-Application Insights, özel yapılandırma olmadan kullanabilirsiniz. Varsayılan yapılandırma, yüksek hacimde veri oluşmasına neden olabilir. Visual Studio Azure aboneliği kullanıyorsanız, Application Insights için veri üst sınırına ulaşırsınız. Bu makalenin ilerleyen kısımlarında, işlevlerinizin Application Insights gönderileceği verileri yapılandırmayı ve özelleştirmeyi öğreneceksiniz. Bir işlev uygulaması için, Logging [Host. JSON] dosyasında yapılandırılır.
+Application Insights, özel yapılandırma olmadan kullanabilirsiniz. Varsayılan yapılandırma, yüksek hacimde veri oluşmasına neden olabilir. Visual Studio Azure aboneliği kullanıyorsanız, Application Insights için veri üst sınırına ulaşırsınız. Bu makalenin ilerleyen kısımlarında, işlevlerinizin Application Insights gönderileceği verileri yapılandırmayı ve özelleştirmeyi öğreneceksiniz. Bir işlev uygulaması için günlüğe kaydetme, dosyadaki [host.js] yapılandırılır.
 
 ### <a name="categories"></a>Kategoriler
 
 Azure Işlevleri günlükçüsü, her günlük için bir *Kategori* içerir. Kategori, çalışma zamanı kodunun veya işlev kodunuzun günlüğü yazanın hangi kısmının olduğunu gösterir. Aşağıdaki grafikte, çalışma zamanının oluşturduğu günlüklerin ana kategorileri açıklanmaktadır. 
 
-| Kategori | Açıklama |
+| Kategori | Description |
 | ----- | ----- | 
 | Host.Results | Bu Günlükler Application Insights **istek** olarak gösterir. Bir işlevin başarısını veya başarısızlığını gösterir. Tüm bu Günlükler `Information` düzeyinde yazılır. Veya üzerine filtre yaparsanız `Warning` , bu verilerden herhangi birini görmezsiniz. |
 | Host. toplayıcısı | Bu Günlükler, [yapılandırılabilir](#configure-the-aggregator) bir süre boyunca işlev çağırma sayısının sayısını ve ortalamasını sağlar. Varsayılan süre 30 saniye veya 1.000 sonuçdur, hangisi önce gelir. Günlükler, Application Insights 'daki **Customölçümler** tablosunda bulunabilir. Çalıştırma sayısı, başarı oranı ve süre örnekleri verilebilir. Tüm bu Günlükler `Information` düzeyinde yazılır. Veya üzerine filtre yaparsanız `Warning` , bu verilerden herhangi birini görmezsiniz. |
@@ -146,9 +147,9 @@ Azure Işlevleri günlükçüsü, her günlük için bir *günlük düzeyi* de i
 
 Günlük düzeyi `None` sonraki bölümde açıklanmaktadır. 
 
-### <a name="log-configuration-in-hostjson"></a>Host. JSON içinde günlük yapılandırması
+### <a name="log-configuration-in-hostjson"></a>host.js'de günlük yapılandırması
 
-[Host. JSON] dosyası, bir işlev uygulamasının Application Insights ne kadar günlüğe göndereceğini yapılandırır. Her kategori için, gönderileceği en düşük günlük düzeyini belirtirsiniz. İki örnek vardır: ilk örnek, [sürüm 2. x ve sonraki](functions-versions.md#version-2x) sürümlerini işlevler çalışma zamanının (.NET Core ile) hedefliyor ve ikinci örnek sürüm 1. x çalışma zamanı içindir.
+Dosya [host.js] , bir işlev uygulamasının Application Insights ne kadar günlüğe göndereceğini yapılandırır. Her kategori için, gönderileceği en düşük günlük düzeyini belirtirsiniz. İki örnek vardır: ilk örnek, [sürüm 2. x ve sonraki](functions-versions.md#version-2x) sürümlerini işlevler çalışma zamanının (.NET Core ile) hedefliyor ve ikinci örnek sürüm 1. x çalışma zamanı içindir.
 
 ### <a name="version-2x-and-higher"></a>Sürüm 2. x ve üzeri
 
@@ -188,12 +189,12 @@ Işlev çalışma zamanının Sürüm V2. x ve sonraki sürümlerinde [.NET Core
 Bu örnek aşağıdaki kuralları ayarlar:
 
 * Kategorisi olan Günlükler `Host.Results` veya `Function` Application Insights için yalnızca bir `Error` düzey ve yukarıya gönder. Düzey ve alt için Günlükler `Warning` yoksayıldı.
-* Kategorisi olan Günlükler için `Host.Aggregator` tüm günlükleri Application Insights gönderin. `Trace`Günlük düzeyi, bazı günlükçülerin çağrı yaptığı `Verbose` , ancak `Trace` [Host. JSON] dosyasında kullanılan şeydir.
+* Kategorisi olan Günlükler için `Host.Aggregator` tüm günlükleri Application Insights gönderin. `Trace`Günlük düzeyi, bazı günlükçülerin çağrı yaptığı `Verbose` , ancak `Trace` dosyada [host.js] kullanılan şeydir.
 * Tüm diğer Günlükler için, `Information` Application Insights için yalnızca düzeyini ve üstünü gönderin.
 
-[Host. JSON] dosyasındaki kategori değeri aynı değerle başlayan tüm kategoriler için günlük kaydını denetler. `Host`[konak. JSON] ' da,,, vb. için günlüğe kaydetmeyi denetler `Host.General` `Host.Executor` `Host.Results` .
+' Deki kategori değeri, aynı değer ile başlayan tüm kategoriler için günlük kaydı denetimlerinde [host.js] . `Host`,,, vb. için denetim günlük [host.js] `Host.General` `Host.Executor` `Host.Results` .
 
-[Host. JSON] aynı dizeyle başlayan birden çok kategori içeriyorsa, daha uzun olanlar önce eşleştirilir. Çalışma zamanından itibaren `Host.Aggregator` oturum açma haricinde `Error` , ancak şu `Host.Aggregator` düzeyde günlüğe kaydetmek istediğiniz her şeyi istediğinizi varsayalım `Information` :
+[host.json] , aynı dizeyle başlayan birden çok kategori içeriyorsa, daha uzun olanlar önce eşleştirilir. Çalışma zamanından itibaren `Host.Aggregator` oturum açma haricinde `Error` , ancak şu `Host.Aggregator` düzeyde günlüğe kaydetmek istediğiniz her şeyi istediğinizi varsayalım `Information` :
 
 ### <a name="version-2x-and-later"></a>Sürüm 2. x ve üzeri
 
@@ -232,7 +233,7 @@ Bir kategorinin tüm günlüklerini gizlemek için günlük düzeyi ' ni kullana
 
 ## <a name="configure-the-aggregator"></a>Toplayıcısı yapılandırma
 
-Önceki bölümde belirtildiği gibi, çalışma zamanı bir süre boyunca işlev yürütmeleri hakkındaki verileri toplar. Varsayılan süre 30 saniye veya 1.000 çalışma olur ve hangisi önce gelir. Bu ayarı, [Host. JSON] dosyasında yapılandırabilirsiniz.  İşte bir örnek:
+Önceki bölümde belirtildiği gibi, çalışma zamanı bir süre boyunca işlev yürütmeleri hakkındaki verileri toplar. Varsayılan süre 30 saniye veya 1.000 çalışma olur ve hangisi önce gelir. Bu ayarı, [host.jsdosya üzerinde] yapılandırabilirsiniz.  İşte bir örnek:
 
 ```json
 {
@@ -245,7 +246,7 @@ Bir kategorinin tüm günlüklerini gizlemek için günlük düzeyi ' ni kullana
 
 ## <a name="configure-sampling"></a>Örnekleme yapılandırma
 
-Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Gelen yürütmeler oranı belirtilen eşiği aştığında Application Insights, gelen yürütmelerin bazılarını rastgele yok saymaya başlar. Saniyedeki en fazla yürütme sayısı için varsayılan ayar 20 ' dir (sürüm 1. x içinde beş). [Host. JSON]içinde örnekleme yapılandırabilirsiniz.  İşte bir örnek:
+Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Gelen yürütmeler oranı belirtilen eşiği aştığında Application Insights, gelen yürütmelerin bazılarını rastgele yok saymaya başlar. Saniyedeki en fazla yürütme sayısı için varsayılan ayar 20 ' dir (sürüm 1. x içinde beş). [Üzerindehost.js](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsights)örnekleme yapılandırabilirsiniz.  İşte bir örnek:
 
 ### <a name="version-2x-and-later"></a>Sürüm 2. x ve üzeri
 
@@ -255,12 +256,15 @@ Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde 
     "applicationInsights": {
       "samplingSettings": {
         "isEnabled": true,
-        "maxTelemetryItemsPerSecond" : 20
+        "maxTelemetryItemsPerSecond" : 20,
+        "excludedTypes": "Request"
       }
     }
   }
 }
 ```
+
+2. x sürümünde belirli telemetri türlerini örnekleme dışında bırakabilirsiniz. Yukarıdaki örnekte, türündeki veriler `Request` örnekleme dışında tutulur. Bu, diğer telemetri türleri örneklemeye tabi kaldığı sürece *Tüm* işlev yürütmelerinin (istekler) günlüğe kaydedilmesini sağlar.
 
 ### <a name="version-1x"></a>Sürüm 1. x 
 
@@ -313,7 +317,7 @@ Aşağıda, verilerin JSON örnek bir gösterimi verilmiştir `customDimensions`
 
 ```json
 {
-  customDimensions: {
+  "customDimensions": {
     "prop__{OriginalFormat}":"C# Queue trigger function processed: {message}",
     "Category":"Function",
     "LogLevel":"Information",
@@ -334,7 +338,7 @@ Bu kod, `TrackMetric` .NET için Application Insights API 'si kullanılarak ça�
 
 ## <a name="write-logs-in-javascript-functions"></a>JavaScript işlevlerinde yazma günlükleri
 
-Node. js işlevlerinde, `context.log` günlükleri yazmak için kullanın. Yapılandırılmış günlüğe kaydetme etkin değil.
+Node.js işlevlerde `context.log` günlükleri yazmak için kullanın. Yapılandırılmış günlüğe kaydetme etkin değil.
 
 ```
 context.log('JavaScript HTTP trigger function processed a request.' + context.invocationId);
@@ -342,13 +346,13 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="custom-metrics-logging"></a>Özel Ölçüm günlüğü
 
-Functions çalışma zamanının [1. x sürümünde](functions-versions.md#creating-1x-apps) çalışırken Node. js işlevleri `context.log.metric` Application Insights içinde özel ölçümler oluşturmak için yöntemini kullanabilir. Bu yöntem şu anda sürüm 2. x ve üzeri sürümlerde desteklenmiyor. Örnek bir yöntem çağrısı aşağıda verilmiştir:
+Işlevler çalışma zamanının [1. x sürümünde](functions-versions.md#creating-1x-apps) çalışırken, Node.js işlevleri `context.log.metric` Application Insights içinde özel ölçümler oluşturmak için yöntemini kullanabilir. Bu yöntem şu anda sürüm 2. x ve üzeri sürümlerde desteklenmiyor. Örnek bir yöntem çağrısı aşağıda verilmiştir:
 
 ```javascript
 context.log.metric("TestMetric", 1234);
 ```
 
-Bu kod, `trackMetric` Application Insights Için Node. js SDK 'sını kullanarak çağırmak için bir alternatiftir.
+Bu kod, `trackMetric` Application Insights için Node.js SDK kullanılarak çağırmanın bir alternatifidir.
 
 ## <a name="log-custom-telemetry-in-c-functions"></a>C# işlevlerinde özel telemetriyi günlüğe kaydetme
 
@@ -533,7 +537,7 @@ Ayarlanmadı `telemetryClient.Context.Operation.Id` . Aynı anda çok sayıda i�
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>JavaScript işlevlerinde özel telemetriyi günlüğe kaydetme
 
-[Application Insights Node. js SDK 'sı](https://github.com/microsoft/applicationinsights-node.js)ile özel telemetri gönderen örnek kod parçacıkları aşağıda verilmiştir:
+[Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js)ile özel telemetri gönderen örnek kod parçacıkları aşağıda verilmiştir:
 
 ### <a name="version-2x-and-later"></a>Sürüm 2. x ve üzeri
 
@@ -684,6 +688,28 @@ Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscripti
 Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 ```
 
+## <a name="scale-controller-logs"></a>Denetleyici günlüklerini ölçeklendirme
+
+[Azure işlevleri ölçek denetleyicisi](./functions-scale.md#runtime-scaling) , uygulamanızı çalıştıran işlev ana bilgisayar örneklerini izler ve işlev konak örneklerinin ne zaman ekleneceğini veya kaldırılacağını gösteren kararlar verir. Ölçek denetleyicisinin uygulamanızda yaptığı kararların anlaşılması gerekiyorsa, günlükleri Application Insights veya blob depolama alanına yaymak üzere yapılandırabilirsiniz.
+
+> [!WARNING]
+> Bu özellik önizlemede. Bu özelliği süresiz olarak bırakmanız önerilmez. bunun yerine, topladığı bilgilere ihtiyacınız olduğunda onu etkinleştirmeniz ve sonra devre dışı bırakmanız gerekir.
+
+Bu özelliği etkinleştirmek için adlı yeni bir uygulama ayarı ekleyin `SCALE_CONTROLLER_LOGGING_ENABLED` . Bu ayarın değeri şu biçimde olmalıdır `{Destination}:{Verbosity}` :
+* `{Destination}`gönderilecek günlüklerin hedefini belirtir ve ya da olmalıdır `AppInsights` `Blob` .
+* `{Verbosity}`istediğiniz günlüğe kaydetme düzeyini belirtir ve, veya ' den biri olmalıdır `None` `Warning` `Verbose` .
+
+Örneğin, ölçek denetleyicisinden Application Insights için ayrıntılı bilgileri günlüğe kaydetmek için değerini kullanın `AppInsights:Verbose` .
+
+> [!NOTE]
+> `AppInsights`Hedef türünü etkinleştirirseniz, [işlev uygulamanız için Application Insights](#enable-application-insights-integration)yapılandırmanıza emin olmanız gerekir.
+
+Hedefi olarak ayarlarsanız `Blob` , Günlükler `azure-functions-scale-controller` uygulama ayarında ayarlanan depolama hesabı içinde adlı bir blob kapsayıcısında oluşturulur `AzureWebJobsStorage` .
+
+Ayrıntı düzeyini olarak ayarlarsanız `Verbose` , ölçek denetleyicisi çalışan sayısında her değişiklik için bir neden, Ayrıca ölçek denetleyicinin kararına katılan Tetikleyiciler hakkındaki bilgileri günlüğe kaydeder. Örneğin, günlüklerde tetikleyici uyarıları ve ölçek denetleyicisi çalıştırılmadan önce ve sonra Tetikleyiciler tarafından kullanılan karmaları dahil edilir.
+
+Ölçek denetleyicisi günlüğünü devre dışı bırakmak için, değerini olarak ayarlayın `{Verbosity}` `None` veya `SCALE_CONTROLLER_LOGGING_ENABLED` uygulama ayarını kaldırın.
+
 ## <a name="disable-built-in-logging"></a>Yerleşik günlüğe kaydetmeyi devre dışı bırak
 
 Application Insights etkinleştirdiğinizde, Azure Storage kullanan yerleşik günlüğe kaydetmeyi devre dışı bırakın. Yerleşik günlük kaydı, hafif iş yükleri ile test etmek için kullanışlıdır, ancak yüksek yük üretim kullanımı için tasarlanmamıştır. Üretim izleme için Application Insights önerilir. Üretim ortamında yerleşik günlük kullanılıyorsa, Azure Storage üzerinde azaltma nedeniyle günlüğe kaydetme kaydı tamamlanmamış olabilir.
@@ -697,4 +723,4 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 * [Uygulama Bilgileri](/azure/application-insights/)
 * [Günlüğe kaydetme ASP.NET Core](/aspnet/core/fundamentals/logging/)
 
-[Host. JSON]: functions-host-json.md
+[Üzerindehost.js]: functions-host-json.md

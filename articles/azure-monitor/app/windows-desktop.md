@@ -2,22 +2,22 @@
 title: Windows masaüstü uygulamaları için kullanımı ve performansı izleme
 description: Application Insights ile Windows masaüstü uygulamanızın kullanımını ve performansını analiz edin.
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.openlocfilehash: eb9e0fc480098478a3a68265ac85e0d5450e27fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/11/2020
+ms.openlocfilehash: 1b8909c47594ebd752035ca88b23d4b836345f88
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537398"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718793"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Klasik Windows Masaüstü uygulamalarında kullanımı ve performansı izleme
 
 Şirket içinde, Azure’da ve diğer bulutlarda barındırılan tüm uygulamalar Application Insights’tan faydalanabilir. Tek sınırlama Application Insights hizmetine [iletişim izni verme](../../azure-monitor/app/ip-addresses.md) gerekliliğidir. Evrensel Windows Platformu (UWP) uygulamalarını izlemek için [Visual Studio App Center](../../azure-monitor/learn/mobile-center-quickstart.md)’ı öneririz.
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>Bir Klasik Windows uygulamasından Application Insights’a telemetri göndermek için
-1. [Azure portalında](https://portal.azure.com)[bir Application Insights kaynağı oluşturun](../../azure-monitor/app/create-new-resource.md ). Uygulama türü olarak ASP.NET uygulamasını seçin.
-2. İzleme Anahtarının bir kopyasını oluşturun. Yeni oluşturduğunuz kaynağın Temel Bileşenler açılan penceresinde anahtarı bulun. 
-3. Visual Studio’da uygulama projenizin NuGet paketlerini düzenleyin ve şunu ekleyin: Microsoft.ApplicationInsights.WindowsServer. (Alternatif olarak, standart telemetri toplama modülleri olmaksızın yalnızca API’nın kendisini istiyorsanız Microsoft.ApplicationInsights seçeneğini belirleyin.)
+1. [Azure portalında](https://portal.azure.com)[bir Application Insights kaynağı oluşturun](../../azure-monitor/app/create-new-resource.md ). 
+2. İzleme Anahtarının bir kopyasını oluşturun.
+3. Visual Studio’da uygulama projenizin NuGet paketlerini düzenleyin ve şunu ekleyin: Microsoft.ApplicationInsights.WindowsServer. (Veya temel API 'yi yalnızca standart telemetri koleksiyonu modülleri olmadan istiyorsanız Microsoft. ApplicationInsights ' ı seçin.)
 4. İzleme anahtarını kodunuzda ayarlayın:
    
     `TelemetryConfiguration.Active.InstrumentationKey = "` *anahtarınız* `";`
@@ -31,6 +31,7 @@ ms.locfileid: "81537398"
 6. Uygulamanızı çalıştırın ve Azure portal oluşturduğunuz kaynakta Telemetriyi görüntüleyin.
 
 ## <a name="example-code"></a><a name="telemetry"></a>Örnek kod
+
 ```csharp
 using Microsoft.ApplicationInsights;
 
@@ -70,7 +71,11 @@ using Microsoft.ApplicationInsights;
 
 ## <a name="override-storage-of-computer-name"></a>Bilgisayar adının depolanmasını geçersiz kıl
 
-Varsayılan olarak, bu SDK sistem yayma telemetrinin bilgisayar adını toplayıp depolar. Koleksiyonu geçersiz kılmak için bir telemetri Başlatıcısı kullanmanız gerekir:
+Varsayılan olarak, bu SDK sistem yayma telemetrinin bilgisayar adını toplayıp depolar.
+
+Bilgisayar adı, dahili fatura amaçları için Application Insights [eski Kurumsal (düğüm başına) Fiyatlandırma Katmanı](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) tarafından kullanılır. Varsayılan olarak, geçersiz kılmak için bir telemetri başlatıcısı kullanırsanız `telemetry.Context.Cloud.RoleInstance` , `ai.internal.nodeName` bilgisayar adı değerini de içerecek şekilde ayrı bir özellik gönderilir. Bu değer, Application Insights telemetriyle birlikte depolanmayacak, ancak eski düğüm tabanlı faturalandırma modeliyle geriye dönük uyumluluk sağlamak için dahili olarak kullanılır.
+
+[Eski Kurumsal (düğüm başına) fiyatlandırma katmanındaysa](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) ve yalnızca bilgisayar adının depolanmasını geçersiz kılmanız gerekiyorsa, bir telemetri başlatıcısı kullanın:
 
 **Aşağıdaki gibi özel Telemetryınitializer yazın.**
 
@@ -84,16 +89,18 @@ namespace CustomInitializer.Telemetry
     {
         public void Initialize(ITelemetry telemetry)
         {
-            if (string.IsNullOrEmpty(telemetry.Context.Cloud.RoleName))
+            if (string.IsNullOrEmpty(telemetry.Context.Cloud.RoleInstance))
             {
-                //set custom role name here, you can pass an empty string if needed.
+                // Set custom role name here. Providing an empty string will result
+                // in the computer name still be sent via this property.
                   telemetry.Context.Cloud.RoleInstance = "Custom RoleInstance";
             }
         }
     }
 }
 ```
-İzleme anahtarını ayarlamak için aşağıdaki `Program.cs` `Main()` yöntemde başlatıcıyı oluşturun:
+
+`Program.cs` `Main()` İzleme anahtarını ayarlamak için aşağıdaki yöntemde başlatıcıyı oluşturun:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -103,8 +110,69 @@ namespace CustomInitializer.Telemetry
         {
             TelemetryConfiguration.Active.InstrumentationKey = "{Instrumentation-key-here}";
             TelemetryConfiguration.Active.TelemetryInitializers.Add(new MyTelemetryInitializer());
+            //...
         }
 ```
+
+## <a name="override-transmission-of-computer-name"></a>Bilgisayar adının aktarımını geçersiz kıl
+
+[Eski Kurumsal (düğüm başına) fiyatlandırma katmanında](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) değilseniz ve bilgisayar adı içeren herhangi bir telemetrinin gönderilmesini tamamen engellemek isterseniz, bir telemetri işlemcisi kullanmanız gerekir.
+
+### <a name="telemetry-processor"></a>Telemetri işlemcisi
+
+```csharp
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.Extensibility;
+
+
+namespace WindowsFormsApp2
+{
+    public class CustomTelemetryProcessor : ITelemetryProcessor
+    {
+        private readonly ITelemetryProcessor _next;
+
+        public CustomTelemetryProcessor(ITelemetryProcessor next)
+        {
+            _next = next;
+        }
+
+        public void Process(ITelemetry item)
+        {
+            if (item != null)
+            {
+                item.Context.Cloud.RoleInstance = string.Empty;
+            }
+
+            _next.Process(item);
+        }
+    }
+}
+```
+
+`Program.cs` `Main()` İzleme anahtarını ayarlamak için aşağıdaki yöntemde telemetri işlemcisini oluşturun:
+
+```csharp
+using Microsoft.ApplicationInsights.Extensibility;
+
+namespace WindowsFormsApp2
+{
+    static class Program
+    {
+        static void Main()
+        {
+            TelemetryConfiguration.Active.InstrumentationKey = "{Instrumentation-key-here}";
+            var builder = TelemetryConfiguration.Active.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
+            builder.Use((next) => new CustomTelemetryProcessor(next));
+            builder.Build();
+            //...
+        }
+    }
+}
+
+```
+
+> [!NOTE]
+> [Eski Kurumsal (düğüm başına) fiyatlandırma katmanında](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier)olsanız bile, daha önce açıklandığı gibi bir telemetri işlemcisi de kullanabilirsiniz. Bu, düğüm başına fiyatlandırma için düğümleri doğru bir şekilde ayırt edememe nedeniyle, yüksek faturalandırma için olası bir işlem oluşmasına neden olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Pano oluşturma](../../azure-monitor/app/overview-dashboard.md)

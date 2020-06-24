@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/07/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c685fa231bc1f40a78aae0d4fa89569ec146eea
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 4855db7678a8cdea9bdad19ac0a8ec33503ff983
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582922"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728425"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Azure Active Directory içinde dinamik grup oluşturma veya güncelleştirme
 
@@ -67,7 +67,7 @@ Girdiğiniz kural geçerli değilse, kuralın neden işlenmediği hakkında bir 
 ## <a name="to-update-an-existing-rule"></a>Mevcut bir kuralı güncelleştirmek için
 
 1. Azure AD kuruluşunda genel yönetici, Grup Yöneticisi, Intune Yöneticisi veya Kullanıcı Yöneticisi rolündeki bir hesapla [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
-1. **Gruplar** > **tüm gruplar**' ı seçin.
+1. **Gruplar**  >  **tüm gruplar**' ı seçin.
 1. Profilini açmak için bir grup seçin.
 1. Grubun profil sayfasında **dinamik üyelik kuralları**' nı seçin. Kural Oluşturucusu en fazla beş ifadeyi destekler. Beşten fazla ifade eklemek için metin kutusunu kullanmanız gerekir.
 
@@ -98,7 +98,7 @@ Grubun **genel bakış** sayfasında Üyelik işleme durumu ve son güncelleşti
 
 **Üyelik son güncelleştirilme** durumu için aşağıdaki durum iletileri görüntülenebilir:
 
-- &lt;**Tarih ve saat**&gt;: üyeliğin güncelleştirildiği son zaman.
+- &lt;**Tarih ve saat** &gt; : üyeliğin güncelleştirildiği son zaman.
 - **Devam**ediyor: Şu anda güncelleştirmeler devam ediyor.
 - **Bilinmiyor**: son güncelleştirme saati alınamıyor. Grup yeni olabilir.
 

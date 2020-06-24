@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
 ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282490"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712233"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric için izleme ve tanılama
 
@@ -35,13 +35,13 @@ Kullanıcı kodun kendisini yazmasından, ancak Service Fabric platformundan tan
 
 Service Fabric, kutudan çıkan kapsamlı bir olay kümesi sağlar. Bu [Service Fabric olaylarına](service-fabric-diagnostics-events.md) eventstore veya işlemsel kanal (platform tarafından sunulan olay kanalı) üzerinden erişilebilir. 
 
-* Service Fabric olay kanalları-Windows 'Da Service Fabric olaylar, Işletimsel ve veri & mesajlaşma kanalları arasında seçim yapmak için kullanılan bir `logLevelKeywordFilters` dizi ilgisi olan tek bir ETW sağlayıcısından kullanılabilir. Bu, giden Service Fabric olaylarını gerektiği şekilde filtreleyebilmemiz için ayırdığımız yoldur. Linux 'ta, Service Fabric olayları LTTng aracılığıyla gelir ve gerektiğinde filtrelenebilir bir depolama tablosuna konur. Bu kanallar, kümenizin durumunu daha iyi anlamak için kullanılabilen, seçkin ve yapılandırılmış olayları içerir. Tanılama, küme oluşturma sırasında varsayılan olarak etkinleştirilir. Bu, gelecekte sorgulama yapmanız için bu kanallara ait olayların gönderildiği bir Azure depolama tablosu oluşturur. 
+* Service Fabric olay kanalları-Windows 'Da Service Fabric olaylar, `logLevelKeywordFilters` işletimsel ve veri & mesajlaşma kanalları arasında seçim yapmak için kullanılan bir dizi ilgisi olan tek BIR ETW sağlayıcısından kullanılabilir. Bu, giden Service Fabric olaylarını gerektiği şekilde filtreleyebilmemiz için ayırdığımız yoldur. Linux 'ta, Service Fabric olayları LTTng aracılığıyla gelir ve gerektiğinde filtrelenebilir bir depolama tablosuna konur. Bu kanallar, kümenizin durumunu daha iyi anlamak için kullanılabilen, seçkin ve yapılandırılmış olayları içerir. Tanılama, küme oluşturma sırasında varsayılan olarak etkinleştirilir. Bu, gelecekte sorgulama yapmanız için bu kanallara ait olayların gönderildiği bir Azure depolama tablosu oluşturur. 
 
 * EventStore-EventStore, Service Fabric Explorer ve REST API aracılığıyla kullanılabilir Service Fabric platform olayları sağlayan platform tarafından sunulan bir özelliktir. Düğüm, hizmet, uygulama ve sorgu gibi her bir varlık için kümenizde neler olduğunu bir anlık görüntü görünümünü görebilirsiniz. Eventstore hakkında daha fazla bilgi için de [Eventstore 'A genel bakış konusuna](service-fabric-diagnostics-eventstore.md)bakabilirsiniz.    
 
 ![EventStore](media/service-fabric-diagnostics-overview/eventstore.png)
 
-Verilen Tanılamalar, kutudan gelen kapsamlı bir olay kümesi biçiminde bulunur. Bu [Service Fabric olaylar](service-fabric-diagnostics-events.md) , platform tarafından düğümler, uygulamalar, hizmetler, bölümler vb. gibi farklı varlıklarda gerçekleştirilen eylemleri gösterir. Yukarıdaki son senaryoda, bir düğüm daha aşağı `NodeDown` gidiyordu ve tercih ettiğiniz izleme aracınız tarafından anında bildirim alabilirsiniz. Diğer yaygın örnekler, `ApplicationUpgradeRollbackStarted` yük `PartitionReconfigured` devretme sırasında veya içerir. **Aynı olaylar hem Windows hem de Linux kümelerinde kullanılabilir.**
+Verilen Tanılamalar, kutudan gelen kapsamlı bir olay kümesi biçiminde bulunur. Bu [Service Fabric olaylar](service-fabric-diagnostics-events.md) , platform tarafından düğümler, uygulamalar, hizmetler, bölümler vb. gibi farklı varlıklarda gerçekleştirilen eylemleri gösterir. Yukarıdaki son senaryoda, bir düğüm daha aşağı gidiyordu `NodeDown` ve tercih ettiğiniz izleme aracınız tarafından anında bildirim alabilirsiniz. Diğer yaygın örnekler, `ApplicationUpgradeRollbackStarted` `PartitionReconfigured` Yük devretme sırasında veya içerir. **Aynı olaylar hem Windows hem de Linux kümelerinde kullanılabilir.**
 
 Olaylar hem Windows hem de Linux 'ta standart kanallar aracılığıyla gönderilir ve bunları destekleyen herhangi bir izleme aracı tarafından okunabilir. Azure Izleyici çözümü Azure Izleyici günlüklerinizi kaydeder. Kümeniz için özel bir işletimsel Pano ve uyarı oluşturabileceğiniz bazı örnek sorgular içeren [Azure izleyici günlükleri tümleştirmemi](service-fabric-diagnostics-event-analysis-oms.md) hakkında daha fazla bilgi edinebilirsiniz. [Platform düzeyi olay ve günlük oluşturma](service-fabric-diagnostics-event-generation-infra.md)konusunda daha fazla küme izleme kavramı mevcuttur.
 

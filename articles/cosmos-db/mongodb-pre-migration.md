@@ -4,15 +4,15 @@ description: Bu belge, MongoDB 'den Cosmos DB 'e veri geçişinin önkoşulları
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/04/2020
 ms.author: lbosq
-ms.openlocfilehash: a93486e00325e84de655b5b759162fcf63956454
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: ffa30b0fa42abc69c19b5e6c32f4224f3ad1c95a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465686"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263067"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB 'den Azure Cosmos DB MongoDB için API 'sine veri geçişleri için geçiş öncesi adımlar
 
@@ -42,7 +42,7 @@ Aşağıda, MongoDB için Azure Cosmos DB API 'SI hakkında özel özellikler ve
 
 [MongoDB için Azure Cosmos DB API 'si Için Azure veritabanı geçiş hizmeti](../dms/tutorial-mongodb-cosmos-db.md) , tam olarak yönetilen bir barındırma platformu, geçiş izleme seçenekleri ve otomatik azaltma işleme sağlayarak veri geçişini kolaylaştıran bir mekanizma sağlar. Seçeneklerin tam listesi şunlardır:
 
-|**Geçiş türü**|**Çözümden**|**Önemli noktalar**|
+|**Geçiş türü**|**Çözüm**|**Dikkat edilmesi gerekenler**|
 |---------|---------|---------|
 |Çevrimdışı|[Veri geçiş aracı](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Birden çok kaynağı ayarlama ve destekleyen kolay <br/>&bull;Büyük veri kümeleri için uygun değildir.|
 |Çevrimdışı|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Birden çok kaynağı ayarlama ve destekleyen kolay <br/>&bull;Azure Cosmos DB toplu yürütücü kitaplığını kullanır <br/>&bull;Büyük veri kümeleri için uygun <br/>&bull;Checkişaret olmaması, geçiş işlemi sırasında herhangi bir sorunun tüm geçiş sürecinin yeniden başlatılmasını gerektirmeyeceği anlamına gelir.<br/>&bull;Sahipsiz bir sıra olmaması, birkaç hatalı dosyanın tüm geçiş sürecini durduramaması anlamına gelir. <br/>&bull;Belirli veri kaynakları için okuma aktarım hızını artırmak için özel kod gerekir|

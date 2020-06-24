@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 041fb8d881307b52fb170a11618f930debc522a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3294acecaf98de1f55e1aff8ec97defc1dd13fc7
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803169"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202713"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'da Oturumumu Açık tut (KMSI) özelliğini etkinleştir
 
@@ -34,9 +34,9 @@ Kullanıcılar bu seçeneği genel bilgisayarlarda etkinleştirmemelidir.
 
 ## <a name="configure-the-page-identifier"></a>Sayfa tanımlayıcısını yapılandırma
 
-KMsi 'yi etkinleştirmek için, içerik `DataUri` tanımı öğesini [sayfa tanımlayıcısı](contentdefinitions.md#datauri) `unifiedssp` ve [sayfa sürümü](page-layout.md) *1.1.0* veya üzeri olarak ayarlayın.
+KMSI 'yi etkinleştirmek için, içerik tanımı `DataUri` öğesini [sayfa tanımlayıcısı](contentdefinitions.md#datauri) `unifiedssp` ve [sayfa sürümü](page-layout.md) *1.1.0* veya üzeri olarak ayarlayın.
 
-1. İlkenizin uzantısı dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>. Bu uzantı dosyası, önkoşul içinde elde etmeniz gereken özel ilke başlangıç paketine dahil olan ilke dosyalarından biridir, [özel ilkeleri](custom-policy-get-started.md)kullanmaya başlayın.
+1. İlkenizin uzantısı dosyasını açın. Örneğin, <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> . Bu uzantı dosyası, önkoşul içinde elde etmeniz gereken özel ilke başlangıç paketine dahil olan ilke dosyalarından biridir, [özel ilkeleri](custom-policy-get-started.md)kullanmaya başlayın.
 1. **Buildingblocks** öğesi için arama yapın. Öğe yoksa, ekleyin.
 1. **ContentDefinitions** öğesini Ilkenin **buildingblocks** öğesine ekleyin.
 
@@ -59,7 +59,7 @@ Kayıt ve oturum açma sayfasına KMSI onay kutusunu eklemek için `setting.enab
 1. ClaimsProviders öğesini bulun. Öğe yoksa, ekleyin.
 1. Aşağıdaki talep sağlayıcısını ClaimsProviders öğesine ekleyin:
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
@@ -78,11 +78,11 @@ Kayıt ve oturum açma sayfasına KMSI onay kutusunu eklemek için `setting.enab
 
 Oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf (RP) dosyasını güncelleştirin.
 
-1. Özel ilke dosyanızı açın. Örneğin, *Signuporsignın. xml*.
-1. Zaten mevcut değilse, `<UserJourneyBehaviors>` `<RelyingParty>` düğüme bir alt düğüm ekleyin. Hemen sonra `<DefaultUserJourney ReferenceId="User journey Id" />`yerleştirilmelidir, örneğin: `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />`.
-1. Aşağıdaki düğümü `<UserJourneyBehaviors>` öğesinin alt öğesi olarak ekleyin.
+1. Özel ilke dosyanızı açın. Örneğin, *SignUpOrSignin.xml*.
+1. Zaten mevcut değilse, `<UserJourneyBehaviors>` düğüme bir alt düğüm ekleyin `<RelyingParty>` . Hemen sonra yerleştirilmelidir `<DefaultUserJourney ReferenceId="User journey Id" />` , örneğin: `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />` .
+1. Aşağıdaki düğümü öğesinin alt öğesi olarak ekleyin `<UserJourneyBehaviors>` .
 
-    ```XML
+    ```xml
     <UserJourneyBehaviors>
       <SingleSignOn Scope="Tenant" KeepAliveInDays="30" />
       <SessionExpiryType>Absolute</SessionExpiryType>
@@ -90,17 +90,17 @@ Oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf (RP) dosy
     </UserJourneyBehaviors>
     ```
 
-    - **Sessionexpiryıtype** -oturumun ve `SessionExpiryInSeconds` `KeepAliveInDays`' de belirtilen zamana göre nasıl uzatıldığını gösterir. `Rolling` Değer (varsayılan), kullanıcının kimlik doğrulaması gerçekleştirdiği her seferinde oturumun genişletildiğini gösterir. `Absolute` Değer, kullanıcının belirtilen süre sonunda yeniden kimlik doğrulaması zorlaması gerektiğini gösterir.
+    - **Sessionexpiryıtype** -oturumun ve ' de belirtilen zamana göre nasıl uzatıldığını gösterir `SessionExpiryInSeconds` `KeepAliveInDays` . `Rolling`Değer (varsayılan), kullanıcının kimlik doğrulaması gerçekleştirdiği her seferinde oturumun genişletildiğini gösterir. `Absolute`Değer, kullanıcının belirtilen süre sonunda yeniden kimlik doğrulaması zorlaması gerektiğini gösterir.
 
-    - **Sessionexpirınınseconds** - *Oturumumu Açık bırak* etkin olmadığında oturum tanımlama bilgilerinin ömrü etkinleştirilmemiştir veya bir Kullanıcı Oturumumu *Açık bırak*seçeneğini seçmiyor. Oturumun süresi geçtiğinde veya `SessionExpiryInSeconds` tarayıcı kapatıldıktan sonra sona erer.
+    - **Sessionexpirınınseconds** - *Oturumumu Açık bırak* etkin olmadığında oturum tanımlama bilgilerinin ömrü etkinleştirilmemiştir veya bir Kullanıcı Oturumumu *Açık bırak*seçeneğini seçmiyor. Oturumun süresi `SessionExpiryInSeconds` geçtiğinde veya tarayıcı kapatıldıktan sonra sona erer.
 
-    - **Keepaliveındays** - *Oturumumu Açık bırak* etkin olduğunda oturum tanımlama bilgilerinin yaşam süresi etkindir ve Kullanıcı Oturumumu *açık tut '* i seçer.  Değeri `KeepAliveInDays` `SessionExpiryInSeconds` değerin üzerine gelir ve oturum sona erme süresini belirler. Bir kullanıcı tarayıcıyı kapatır ve daha sonra yeniden açarsa, bu kullanıcılar yine de Keepaliveındays zaman diliminde olduğu sürece sessizce oturum açabilir.
+    - **Keepaliveındays** - *Oturumumu Açık bırak* etkin olduğunda oturum tanımlama bilgilerinin yaşam süresi etkindir ve Kullanıcı Oturumumu *açık tut '* i seçer.  Değeri `KeepAliveInDays` değerin üzerine gelir `SessionExpiryInSeconds` ve oturum sona erme süresini belirler. Bir kullanıcı tarayıcıyı kapatır ve daha sonra yeniden açarsa, bu kullanıcılar yine de Keepaliveındays zaman diliminde olduğu sürece sessizce oturum açabilir.
 
     Daha fazla bilgi için bkz. [Kullanıcı yolculuğu davranışları](relyingparty.md#userjourneybehaviors).
 
 Aşağıdaki örnekte gösterildiği gibi, Sessionexpirınseconds değerini kısa bir süre (1200 saniye) olarak ayarlamanızı öneririz, ancak Keepaliveındays değeri görece uzun bir döneme (30 gün) ayarlanabilir:
 
-```XML
+```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
   <UserJourneyBehaviors>
@@ -131,7 +131,7 @@ Aşağıdaki örnekte gösterildiği gibi, Sessionexpirınseconds değerini kıs
 1. Karşıya yüklediğiniz özel ilkeyi test etmek için, Azure portal ilke sayfasına gidin ve **Şimdi Çalıştır**' ı seçin.
 1. **Kullanıcı adınızı** ve **parolanızı**yazın, **Oturumumu Açık bırak**' ı seçin ve **oturum aç**' a tıklayın.
 1. Azure portalına geri dönün. İlke sayfasına gidin ve ardından oturum açma URL 'sini kopyalamak için **Kopyala** ' yı seçin.
-1. Tarayıcı adres çubuğunda, kullanıcıyı bu istek üzerine `&prompt=login` kimlik bilgilerini girmeye zorlayan sorgu dizesi parametresini kaldırın.
+1. Tarayıcı adres çubuğunda, `&prompt=login` kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlayan sorgu dizesi parametresini kaldırın.
 1. Tarayıcıda **Git**' e tıklayın. Artık Azure AD B2C, yeniden oturum açmanızı istemeden bir erişim belirteci yayımlayacak. 
 
 ## <a name="next-steps"></a>Sonraki adımlar

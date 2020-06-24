@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: a185ec4938670519029abaf6fa4d23b7bf5c5399
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 2f928ac2f8772942eb748d68a65662938b1405ed
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466534"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84882506"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Application Insights Profiler ve Snapshot Debugger için kendi depolama alanınızı getir (BYOS) yapılandırma
 
@@ -32,7 +32,7 @@ Kendi depolama alanınızı getir ile, bu yapılar denetlediğiniz bir depolama 
 
 ## <a name="prerequisites"></a>Ön koşullar
 * Depolama hesabınızı Application Insights kaynağınız ile aynı konumda oluşturmaya dikkat edin. Örn. Application Insights kaynağınız Batı ABD 2, depolama hesabınızın da Batı ABD 2 olması gerekir. 
-* Depolama hesabınızdaki "Tanılama Hizmetleri güvenilen depolama erişimi" AAD uygulamasına, Access Control (ıAM) Kullanıcı arabirimi aracılığıyla "Depolama Blobu katılımcısı" rolünü verin.
+* Depolama hesabınızda Access Control (ıAM) Kullanıcı arabirimi aracılığıyla "Tanılama Hizmetleri güvenilen depolama erişimi" AAD uygulamasına "Depolama Blobu verileri katılımcısı" rolünü verin.
 * Özel bağlantı etkinleştirilirse, sanal ağınızdan güvenilir Microsoft hizmetimize bağlantı sağlamak için ek ayarı yapılandırın. 
 
 ## <a name="how-to-enable-byos"></a>KCG 'yi etkinleştirme
@@ -156,7 +156,7 @@ KCG 'yi kod düzeyi tanılama (Profiler/Debugger) için yapılandırmak üzere i
 
 #### <a name="configure-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak yapılandırma
 
-1. Aşağıdaki içeriğe sahip bir Azure Resource Manager şablon dosyası oluşturun (byos. Template. JSON).
+1. Aşağıdaki içerikle bir Azure Resource Manager şablon dosyası oluşturun (byos.template.jsüzerinde).
     ```json
     {
       "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",

@@ -1,6 +1,6 @@
 ---
-title: Hızlı başlangıç-Azure Cosmos DB SQL API hesabından sorgulamak için Node. js kullanma
-description: Azure Cosmos DB SQL API hesabına ve sorgu verilerine bağlanan bir uygulama oluşturmak için Node. js kullanma.
+title: Hızlı başlangıç-Azure Cosmos DB SQL API hesabından sorgulamak için Node.js kullanma
+description: Node.js kullanarak Azure Cosmos DB SQL API hesabına bağlanan ve verileri sorgulayan bir uygulama oluşturma.
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,24 +8,24 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 4f874bd77432ba9ee110a7304629a80f1ce5d0dd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e40dc59cf1e8fe3302c59f1067c285bc37141465
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655365"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115226"
 ---
-# <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabına bağlanmak ve veri sorgulamak için Node. js kullanma
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabından bağlanmak ve veri sorgulamak için Node.js kullanma
 
 > [!div class="op_single_selector"]
 > - [.NET V3](create-sql-api-dotnet.md)
 > - [.NET V4](create-sql-api-dotnet-V4.md)
-> - [Java SDK v4](create-sql-api-java.md)
+> - [Java SDK’sı v4](create-sql-api-java.md)
 > - [Node.js](create-sql-api-nodejs.md)
 > - [Python](create-sql-api-python.md)
 > - [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-Bu hızlı başlangıçta, Azure portal Azure Cosmos DB bir SQL API hesabı oluşturup, GitHub 'dan kopyalanmış bir Node. js uygulaması kullanarak oluşturursunuz. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
+Bu hızlı başlangıçta, Azure portal Azure Cosmos DB bir SQL API hesabı oluşturup, GitHub 'dan kopyalanmış bir Node.js uygulamasını kullanarak yönetirsiniz. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
 
 ## <a name="walkthrough-video"></a>İzlenecek yol videosu
 
@@ -36,7 +36,7 @@ Bu makaledeki içeriğe ilişkin kapsamlı bir anlatım için bu videoyu izleyin
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) . [Azure Cosmos DB öykünücüsünü](https://aka.ms/cosmosdb-emulator) bir URI ve anahtar ile de kullanabilirsiniz `https://localhost:8081` `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
-- [Node. js 6.0.0 +](https://nodejs.org/).
+- [Node.js 6.0.0 +](https://nodejs.org/).
 - [Git](https://www.git-scm.com/downloads).
 
 ## <a name="create-an-azure-cosmos-account"></a>Azure Cosmos hesabı oluşturma
@@ -59,11 +59,11 @@ Artık bir veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgin
 
    **Kapsayıcı Ekle** alanı en sağda görüntülenir, görmek için sağa kaydırmanız gerekebilir.
 
-   ![Azure portalındaki Veri Gezgini, Kapsayıcı Ekle bölmesi](./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png)
+   :::image type="content" source="./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png" alt-text="Azure portalındaki Veri Gezgini, Kapsayıcı Ekle bölmesi":::
 
 2. **Kapsayıcı Ekle** sayfasında, yeni kapsayıcının ayarlarını girin.
 
-   | Ayar           | Önerilen değer | Açıklama                                                                                                                                                                                                                                                                                                                                                                           |
+   | Ayar           | Önerilen değer | Description                                                                                                                                                                                                                                                                                                                                                                           |
    | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Veritabanı Kimliği**   | Görevler           | Yeni veritabanınızın adı olarak _Görevler_ girin. Veritabanı adları 1 ila 255 karakterden oluşmalıdır ve `/, \\, #, ?` boşluk içeremez veya sonunda boşluk olamaz. Veritabanı **Işleme sağlama** seçeneğini kontrol edin, veritabanı içindeki tüm kapsayıcılar üzerinde veritabanı için sağlanan aktarım hızını paylaşmanıza olanak sağlar. Bu seçenek maliyet tasarruflarıyla de yardımcı olur. |
    | **Aktarım hızı**    | 400             | Aktarım hızını saniyede 400 istek birimi (RU/s) olarak bırakın. Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz.                                                                                                                                                                                                                                                    |
@@ -84,7 +84,7 @@ Artık bir veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgin
 
 ## <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
 
-Şimdi GitHub 'dan bir Node. js uygulaması kopyalayalım, bağlantı dizesini ayarlayalım ve uygulamayı çalıştıralım.
+Şimdi GitHub 'dan bir Node.js uygulaması kopyalayalım, bağlantı dizesini ayarlayalım ve uygulamayı çalıştıralım.
 
 1. Örnek depoyu kopyalamak için aşağıdaki komutu çalıştırın. Bu komut bilgisayarınızda örnek uygulamanın bir kopyasını oluşturur.
 
@@ -173,17 +173,17 @@ Aşağıdaki kod parçacıklarının tamamı, _app.js_ dosyasından alınmışt�
 
 Şimdi Azure Cosmos hesabınızın bağlantı dizesi ayrıntılarını almak için Azure portal geri dönün. Veritabanınıza bağlanabilmeleri için bağlantı dizesini uygulamaya kopyalayın.
 
-1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda, sol gezinti bölmesinde **anahtarlar** ' ı seçin ve ardından **okuma-yazma anahtarları**' nı seçin. Bir sonraki adımda _app. js_ dosyasına URI ve birincil anahtar kopyalamak için ekranın sağ tarafındaki kopyalama düğmelerini kullanın.
+1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda, sol gezinti bölmesinde **anahtarlar** ' ı seçin ve ardından **okuma-yazma anahtarları**' nı seçin. Bir sonraki adımda _app.js_ dosyasına URI ve birincil anahtar kopyalamak için ekranın sağ tarafındaki kopyalama düğmelerini kullanın.
 
-   ![Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar dikey penceresi](./media/create-sql-api-dotnet/keys.png)
+   :::image type="content" source="./media/create-sql-api-dotnet/keys.png" alt-text="Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar dikey penceresi":::
 
-2. İçinde, _config. js_ dosyasını açın.
+2. İçinde _config.js_ dosyasını açın.
 
-3. Portaldan URI değerini kopyalayın (kopyalama düğmesini kullanarak) ve _config. js_' de bitiş noktası anahtarının değeri yapın.
+3. Portaldan URI değerini kopyalayın (kopyalama düğmesini kullanarak) ve _config.js_uç nokta anahtarının değeri yapın.
 
    `endpoint: "<Your Azure Cosmos account URI>"`
 
-4. Ardından portaldan BIRINCIL anahtar değerini kopyalayın ve bunu `config.key` _config. js_içindeki değeri yapın. Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz.
+4. Ardından, portaldan BIRINCIL anahtar değerini kopyalayın ve `config.key` _config.js_değeri yapın. Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz.
 
    `key: "<Your Azure Cosmos account key>"`
 
@@ -203,7 +203,7 @@ Bu örnek uygulamayla denemeler yapmaya devam edebilir veya Veri Gezgini, deği�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir Azure Cosmos DB hesabı oluşturmayı, Veri Gezgini kullanarak bir kapsayıcı oluşturmayı ve bir Node. js uygulamasını çalıştırmayı öğrendiniz. Şimdi Azure Cosmos DB hesabınıza ek veriler aktarabilirsiniz.
+Bu hızlı başlangıçta, bir Azure Cosmos DB hesabı oluşturmayı, Veri Gezgini kullanarak bir kapsayıcı oluşturmayı ve Node.js uygulamayı çalıştırmayı öğrendiniz. Şimdi Azure Cosmos DB hesabınıza ek veriler aktarabilirsiniz.
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB 'ye veri aktarma](import-data.md)
