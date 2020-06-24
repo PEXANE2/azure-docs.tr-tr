@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253838"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698776"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect için topolojiler
 Bu makalede, anahtar tümleştirme çözümü olarak Azure AD Connect eşitleme kullanan çeşitli şirket içi ve Azure Active Directory (Azure AD) topolojileri açıklanmaktadır. Bu makalede hem desteklenen hem de desteklenmeyen yapılandırmalar bulunur.
@@ -29,7 +29,7 @@ Bu makalede, anahtar tümleştirme çözümü olarak Azure AD Connect eşitleme 
 
 Makalede resimler için gösterge aşağıda verilmiştir:
 
-| Açıklama | Sembol |
+| Description | Sembol |
 | --- | --- |
 | Şirket içi Active Directory ormanı |![Şirket içi Active Directory ormanı](./media/plan-connect-topologies/LegendAD1.png) |
 | Filtrelenmiş içeri aktarma ile şirket içi Active Directory |![Filtrelenmiş içeri aktarma ile Active Directory](./media/plan-connect-topologies/LegendAD2.png) |

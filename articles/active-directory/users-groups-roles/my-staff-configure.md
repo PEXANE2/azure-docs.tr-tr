@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: ''
 author: curtand
 manager: daveba
-ms.topic: article
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 791f2e9bf825bb0a1d1ce555c9fbd879106213df
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 40d1efd5d5e8dc5fed07bf5b9ab1cfa70927b5cf
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995838"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732591"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Personelim ile kullanıcılarınızı yönetme (Önizleme)
 
@@ -54,7 +54,7 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar ger
 Au 'yı yapılandırdıktan sonra, bu kapsamı personelime erişen kullanıcılarınıza uygulayabilirsiniz. Yalnızca bir yönetim rolü atanmış kullanıcılar personelime erişebilir. Personelimi etkinleştirmek için aşağıdaki adımları izleyin:
 
 1. Azure portal Kullanıcı Yöneticisi olarak oturum açın.
-2. Kullanıcı**ayarlarına** **Azure Active Directory** >  > Azure Active Directory, Kullanıcı**özelliği önizlemeleri** > **Kullanıcı özelliği Önizleme ayarlarını yönet**' e gidin.
+2. Kullanıcı ayarlarına **Azure Active Directory**, Kullanıcı  >  **User settings**  >  **özelliği önizlemeleri**  >  **Kullanıcı özelliği Önizleme ayarlarını yönet**' e gidin.
 3. **Yöneticiler temsilcime erişebilme**altında, tüm kullanıcılar, seçili kullanıcılar veya Kullanıcı erişimi olmadan ' yi etkinleştirmeyi seçebilirsiniz.
 
 > [!Note]
@@ -80,7 +80,7 @@ Azure AD koşullu erişim ilkesini kullanarak personel portalından koruma sağl
 
 ## <a name="using-my-staff"></a>Personelimi kullanma
 
-Bir Kullanıcı personelime gittiğinde, yönetim izinlerinin bulunduğu [yönetim birimlerinin](directory-administrative-units.md) adları gösterilir. [Personelin kullanıcı belgelerinde](../user-help/my-staff-team-manager.md), yönetim birimlerine başvurmak için "konum" terimini kullanırız. Yöneticinin izinlerinin AU kapsamı yoksa, izinler kuruluş genelinde uygulanır. Personeliniz etkinleştirildikten sonra, etkin olan ve bir yönetim rolü atanmış olan kullanıcılar buna aracılığıyla [https://mystaff.microsoft.com](https://mystaff.microsoft.com)erişebilir. Bu otomatik olarak, bu AU 'daki kullanıcıları görüntülemek için bir AU seçebilir ve profillerini açmak için bir kullanıcı seçebilirsiniz.
+Bir Kullanıcı personelime gittiğinde, yönetim izinlerinin bulunduğu [yönetim birimlerinin](directory-administrative-units.md) adları gösterilir. [Personelin kullanıcı belgelerinde](../user-help/my-staff-team-manager.md), yönetim birimlerine başvurmak için "konum" terimini kullanırız. Yöneticinin izinlerinin AU kapsamı yoksa, izinler kuruluş genelinde uygulanır. Personeliniz etkinleştirildikten sonra, etkin olan ve bir yönetim rolü atanmış olan kullanıcılar buna aracılığıyla erişebilir [https://mystaff.microsoft.com](https://mystaff.microsoft.com) . Bu otomatik olarak, bu AU 'daki kullanıcıları görüntülemek için bir AU seçebilir ve profillerini açmak için bir kullanıcı seçebilirsiniz.
 
 ## <a name="reset-a-users-password"></a>Kullanıcı parolasını sıfırlama
 
@@ -90,7 +90,7 @@ Aşağıdaki rollerin bir kullanıcının parolasını sıfırlama izni vardır:
 - [Ayrıcalıklı kimlik doğrulama Yöneticisi](directory-assign-admin-roles.md#privileged-authentication-administrator)
 - [Genel yönetici](directory-assign-admin-roles.md#global-administrator--company-administrator)
 - [Yardım Masası Yöneticisi](directory-assign-admin-roles.md#helpdesk-administrator)
-- [Kullanıcı Yöneticisi](directory-assign-admin-roles.md#user-administrator)
+- [Kullanıcı yöneticisi](directory-assign-admin-roles.md#user-administrator)
 - [Parola yöneticisi](directory-assign-admin-roles.md#password-administrator)
 
 **Personelimin**içinden bir kullanıcının profilini açın. **Parolayı Sıfırla**' yı seçin.
@@ -130,5 +130,5 @@ Azure Active Directory portalında personelimde gerçekleştirilen eylemler içi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Personel Kullanıcı belgeleri](../user-help/my-staff-team-manager.md)
-[yönetim birimleri belgeleri](directory-administrative-units.md)
+[Personel Kullanıcı belgeleri](../user-help/my-staff-team-manager.md) 
+ [Yönetim birimleri belgeleri](directory-administrative-units.md)

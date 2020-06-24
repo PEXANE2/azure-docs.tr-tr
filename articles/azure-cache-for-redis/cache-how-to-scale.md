@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
 ms.openlocfilehash: 68c668561123aee943f54e6fdcbad7c6450957f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79278005"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698368"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini ölçeklendirme
 Redin için Azure önbelleğinde, önbellek boyutu ve özellikleri seçiminde esneklik sağlayan farklı önbellek teklifleri vardır. Bir önbellek oluşturulduktan sonra, uygulamanızın gereksinimlerinin değiştirilmesi durumunda önbelleğin boyutunu ve fiyatlandırma katmanını ölçeklendirebilirsiniz. Bu makalede, Azure portal ve Azure PowerShell ve Azure CLı gibi araçları kullanarak önbelleğinizi nasıl ölçekleyebilirsiniz.
@@ -64,19 +64,19 @@ Azure portal önbellek örneklerinizi ölçeklendirmenin yanı sıra, PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-`Size`, `Sku`Veya `ShardCount` özellikleri değiştirildiğinde [set-azrediscache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) cmdlet 'ini kullanarak PowerShell ile redsıs örnekleri için Azure önbelleğinizi ölçekleyebilirsiniz. Aşağıdaki örnek, 2,5 GB önbellek olarak adlandırılan `myCache` bir önbelleğin nasıl ölçeklendirilebilen gösterilmektedir. 
+, Veya özellikleri değiştirildiğinde [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) cmdlet 'Ini kullanarak PowerShell ile redsıs örnekleri Için Azure önbelleğinizi ölçekleyebilirsiniz `Size` `Sku` `ShardCount` . Aşağıdaki örnek, `myCache` 2,5 GB önbellek olarak adlandırılan bir önbelleğin nasıl ölçeklendirilebilen gösterilmektedir. 
 
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
 PowerShell ile ölçeklendirme hakkında daha fazla bilgi için bkz. [PowerShell kullanarak redsıs Için Azure önbelleğini ölçekleme](cache-how-to-manage-redis-cache-powershell.md#scale).
 
 ### <a name="scale-using-azure-cli"></a>Azure CLı kullanarak ölçeklendirme
-Azure CLı kullanarak Redsıs örnekleri için Azure önbelleğinizi ölçeklendirmek üzere, istenen ölçeklendirme `azure rediscache set` işlemine bağlı olarak komutu çağırın ve yeni boyut, SKU veya küme boyutu içeren istenen yapılandırma değişikliklerini geçirin.
+Azure CLı kullanarak Redsıs örnekleri için Azure önbelleğinizi ölçeklendirmek üzere, `azure rediscache set` istenen ölçeklendirme işlemine bağlı olarak komutu çağırın ve yeni boyut, SKU veya küme boyutu içeren istenen yapılandırma değişikliklerini geçirin.
 
 Azure CLı ile ölçeklendirme hakkında daha fazla bilgi için bkz. [redsıs için mevcut bir Azure önbelleğinin ayarlarını değiştirme](cache-manage-cli.md#scale).
 
 ### <a name="scale-using-maml"></a>MAML kullanarak ölçeklendirme
-[Microsoft Azure Yönetim kitaplıklarını (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/)kullanarak redsıs örnekleri Için Azure önbelleğinizi ölçeklendirmek için, `IRedisOperations.CreateOrUpdate` yöntemini çağırın ve için yeni boyutu geçirin. `RedisProperties.SKU.Capacity`
+[Microsoft Azure Yönetim kitaplıklarını (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/)kullanarak redsıs örnekleri Için Azure önbelleğinizi ölçeklendirmek için, `IRedisOperations.CreateOrUpdate` yöntemini çağırın ve için yeni boyutu geçirin `RedisProperties.SKU.Capacity` .
 
     static void Main(string[] args)
     {
@@ -134,13 +134,13 @@ Hayır, bir ölçeklendirme işlemi sırasında önbellek adınız ve anahtarlar
 * **Standart** önbellek daha büyük bir boyuta veya katmana ölçeklendirildiğinde veya **Premium** önbellek daha büyük bir boyuta ölçeklenirse, tüm veriler genellikle korunur. **Standart** veya **Premium** bir önbelleğin boyutunu daha küçük bir boyuta ölçeklendirirken veriler, ölçeklendiği sırada yeni boyutla ilgili önbellekte ne kadar veri olduğunu kaybetmiş olabilir. Ölçeği azaltma sırasında veriler kaybolursa, anahtarlar [AllKeys-LRU](https://redis.io/topics/lru-cache) çıkarma ilkesi kullanılarak kaldırılır. 
 
 ### <a name="is-my-custom-databases-setting-affected-during-scaling"></a>Özel Veritabanlarım, ölçekleme sırasında etkileniyor mu?
-Önbellek oluşturma sırasında `databases` ayar için özel bir değer yapılandırdıysanız, bazı fiyatlandırma katmanlarının farklı [veritabanı sınırlarına](cache-configure.md#databases)sahip olduğunu aklınızda bulundurun. Bu senaryoda ölçeklendirilirken bazı konular aşağıda verilmiştir:
+Önbellek oluşturma sırasında ayar için özel bir değer yapılandırdıysanız `databases` , bazı fiyatlandırma katmanlarının farklı [veritabanı sınırlarına](cache-configure.md#databases)sahip olduğunu aklınızda bulundurun. Bu senaryoda ölçeklendirilirken bazı konular aşağıda verilmiştir:
 
-* Geçerli katmandan daha düşük `databases` bir sınır içeren bir fiyatlandırma katmanına ölçeklendirirken:
-  * Tüm fiyatlandırma katmanları için 16 olan varsayılan sayısını `databases`kullanıyorsanız, hiçbir veri kaybolmaz.
-  * Ölçeklendirilen katmanın sınırları dahilinde `databases` olan özel bir sayı kullanıyorsanız, bu `databases` ayar korunur ve hiçbir veri kaybolmaz.
-  * Yeni katmanın sınırlarını aşan özel bir sayı `databases` kullanıyorsanız, `databases` ayar yeni katmanın sınırlarına indirgenmiş olur ve kaldırılan veritabanlarındaki tüm veriler kaybolur.
-* Geçerli katmandan aynı veya daha yüksek `databases` sınıra sahip bir fiyatlandırma katmanına ölçeklendirirken, `databases` ayarınız korunur ve hiçbir veri kaybolmaz.
+* Geçerli katmandan daha düşük bir sınır içeren bir fiyatlandırma katmanına ölçeklendirirken `databases` :
+  * `databases`Tüm fiyatlandırma katmanları için 16 olan varsayılan sayısını kullanıyorsanız, hiçbir veri kaybolmaz.
+  * `databases`Ölçeklendirilen katmanın sınırları dahilinde olan özel bir sayı kullanıyorsanız, bu `databases` ayar korunur ve hiçbir veri kaybolmaz.
+  * Yeni katmanın sınırlarını aşan özel bir sayı kullanıyorsanız `databases` , `databases` ayar yeni katmanın sınırlarına indirgenmiş olur ve kaldırılan veritabanlarındaki tüm veriler kaybolur.
+* Geçerli katmandan aynı veya daha yüksek sınıra sahip bir fiyatlandırma katmanına ölçeklendirirken `databases` , `databases` ayarınız korunur ve hiçbir veri kaybolmaz.
 
 Standart ve Premium önbellekler kullanılabilirlik için% 99,9 SLA 'ya sahip olsa da veri kaybı için SLA yoktur.
 

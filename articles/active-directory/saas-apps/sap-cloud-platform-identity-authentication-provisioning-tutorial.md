@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: c30a7b1e6440cf69f7a4858273b365d885e5ec7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 534d75a5b9009f0febee2746179ab7357a4985e0
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77060489"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732880"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için SAP bulut platformu kimlik doğrulamasını yapılandırma
 
@@ -58,7 +58,10 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
     ![SAP bulut platformu kimlik doğrulama Yönetici Konsolu](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/adminconsole.png)
 
-2.  Yönetici kullanıcı oluşturun ve kullanıcıyı seçin.  
+2.  Listeye yeni bir yönetici eklemek için sol bölmedeki **+ Ekle** düğmesine basın. **Sistem Ekle** ' yi seçin ve sistemin adını girin.   
+
+> [!NOTE]
+> SAP bulut platformu kimlik doğrulaması içindeki adminınistrator kullanıcısı **System**türünde olmalıdır. Normal Yönetici Kullanıcı oluşturma, sağlama sırasında *yetkisiz* hatalara yol açabilir.   
 
 3.  Yetkilendirmeleri Yapılandır altında, **kullanıcıları yönetme** ve **grupları yönetme**için iki durumlu düğmeye geçiş yapın.
 

@@ -2,23 +2,22 @@
 title: Azure AD Uygulama Ara Sunucusu ile şirket içi uygulamaları yayımlama
 description: Şirket içi Web uygulamalarını uzak kullanıcılara yayımlamak için uygulama proxy 'Sinin neden kullanılacağını anlayın. Uygulama proxy 'Si mimarisi, bağlayıcılar, kimlik doğrulama yöntemleri ve güvenlik avantajları hakkında bilgi edinin.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
 ms.date: 05/31/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref
-ms.openlocfilehash: d38cf25bb3b7622a0d444e4a71a4d62aafc053b6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a5c9ba026819a542ccd0a7ae41316c0f1d325004
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196459"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976515"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Uzak kullanıcılar için şirket içi uygulamalar yayımlamak üzere Azure AD Uygulama Ara Sunucusu kullanma
 
@@ -82,14 +81,14 @@ Oturum açtıktan sonra dış kullanıcılar, masaüstü veya iOS/MAC cihazları
 
 ![Azure AD Uygulama Ara Sunucusu mimarisi](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
 Bir uygulamayı çoklu oturum açma için yapılandırmanın birkaç yolu vardır ve seçtiğiniz yöntem uygulamanızın kullandığı kimlik doğrulamasına bağlıdır. Uygulama proxy 'Si aşağıdaki uygulama türlerini destekler:
 
 * Web uygulamaları
 * Farklı cihazlarda zengin uygulamalarda kullanıma sunmak istediğiniz Web API 'Leri
 * Uzak Masaüstü Ağ Geçidi arkasında barındırılan uygulamalar
-* Active Directory Authentication Library (ADAL) ile tümleştirilmiş zengin istemci uygulamaları
+* [Microsoft kimlik doğrulama kitaplığı (msal)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview) ile tümleştirilmiş zengin istemci uygulamaları
 
 Uygulama proxy 'Si, aşağıdaki yerel kimlik doğrulama protokolünü kullanan uygulamalarla birlikte kullanılabilir:
 
@@ -181,7 +180,7 @@ Bağlayıcılarınızın nereye yükleneceğini ve ağınızı iyileştirerek ku
 
 ## <a name="other-use-cases"></a>Diğer kullanım örnekleri
 
-Bu noktaya kadar, tüm bulut ve şirket içi uygulamalarınız için çoklu oturum açmayı etkinleştirirken şirket içi uygulamaları dışarıdan yayımlamak için uygulama ara sunucusu 'nu kullanmaya odaklandık. Ancak, uygulama proxy 'Si için gereken başka kullanım örnekleri de vardır. Şunları içerir:
+Bu noktaya kadar, tüm bulut ve şirket içi uygulamalarınız için çoklu oturum açmayı etkinleştirirken şirket içi uygulamaları dışarıdan yayımlamak için uygulama ara sunucusu 'nu kullanmaya odaklandık. Ancak, uygulama proxy 'Si için gereken başka kullanım örnekleri de vardır. Bunlara aşağıdakiler dahildir:
 
 * **REST API 'Leri güvenli bir şekilde yayımlayın**. Şirket içinde çalışan veya buluttaki sanal makinelerde barındırılan iş mantığı veya API 'Ler olduğunda, uygulama proxy 'SI API erişimi için genel bir uç nokta sağlar. API uç noktası erişimi, gelen bağlantı noktalarına gerek kalmadan kimlik doğrulama ve yetkilendirmeyi denetlemenize olanak tanır. Intune kullanan masaüstleri, iOS, MAC ve Android cihazlar için Multi-Factor Authentication ve cihaz tabanlı koşullu erişim gibi Azure AD Premium özellikler aracılığıyla ek güvenlik sağlar. Daha fazla bilgi edinmek için bkz. [yerel istemci uygulamalarının proxy uygulamalarıyla etkileşime geçmesini sağlama](application-proxy-configure-native-client-application.md) ve [Azure Active Directory ve API Management ile OAUTH 2,0 kullanarak API 'yi koruma](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad).
 * **Uzak Masaüstü Hizmetleri** **(RDS)**. Standart RDS dağıtımları açık gelen bağlantılar gerektirir. Ancak, [uygulama proxy 'si Ile RDS dağıtımı](application-proxy-integrate-with-remote-desktop-services.md) , bağlayıcı hizmetini çalıştıran sunucudan kalıcı bir giden bağlantıya sahiptir. Bu şekilde, Uzak Masaüstü Hizmetleri aracılığıyla şirket içi uygulamaları yayımlayarak son kullanıcılara daha fazla uygulama sunabilirsiniz. Ayrıca, RDS 'ye sınırlı bir iki adımlı doğrulama ve koşullu erişim denetimi kümesiyle dağıtımın saldırı yüzeyini de azaltabilirsiniz.

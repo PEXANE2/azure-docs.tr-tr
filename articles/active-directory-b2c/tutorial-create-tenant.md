@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c31f3c4c6688af7d2142180e8d9b7100965bad96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e2957ea179d9737bb6aad6fb8f121780575115b
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186412"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976412"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Öğretici: Azure Active Directory B2C kiracısı oluşturma
 
@@ -49,27 +49,20 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
     ![Azure portal ' de seçili yeni bir Azure AD B2C kiracı oluşturun](media/tutorial-create-tenant/portal-02-create-tenant.png)
 
-1. Bir **kuruluş adı** ve **ilk etki alanı adı**girin. **Ülke veya bölgeyi** seçin (daha sonra değiştirilemez) ve ardından **Oluştur**' u seçin.
+1. **Dizin Oluştur** sayfasında, aşağıdakileri girin:
 
-    Etki alanı adı, tam kiracı etki alanı adınızın bir parçası olarak kullanılır. Bu örnekte, kiracı adı *contosob2c.onmicrosoft.com*' dir:
+   - **Kuruluş adı** -kuruluşunuzun adını girin.
+   - **İlk etki alanı adı** -bir etki alanı adı girin. Varsayılan olarak, bu ad *. onmicrosoft.com*eklenir. Bunu daha sonra, kuruluşunuzun zaten kullandığı bir etki alanı adı ekleyerek ' contoso.com ' gibi değiştirebilirsiniz.
+   - **Ülke veya bölge** -listeden ülkenizi veya bölgenizi seçin. Bu seçim daha sonra değiştirilemez.
+   - **Abonelik** -listeden aboneliğinizi seçin.
+   - **Kaynak grubu** -kiracıyı içerecek bir kaynak grubu seçin. Ya da **Yeni oluştur**' u seçin, kaynak grubu Için bir **ad** girin, **kaynak grubu konumunu**seçin ve ardından **Tamam**' ı seçin.
 
-    ![İçinde kiracı formunu örnek değerlerle oluşturun Azure portal](media/tutorial-create-tenant/portal-03-tenant-naming.png)
+    ![İçinde kiracı formunu örnek değerlerle oluşturun Azure portal](media/tutorial-create-tenant/review-and-create-tenant.png)
 
-1. Kiracı oluşturma işlemi tamamlandıktan sonra, kiracı oluşturma sayfasının en üstündeki **yenı B2C kiracısı oluştur ' u veya mevcut kiracı** bağlantısı bağlantısını seçin.
+1. **İncele ve oluştur**’u seçin.
+1. Dizin ayarlarınızı gözden geçirin. Ardından **Oluştur**'u seçin.
 
-    ![Azure portal bağlantı kiracı içerik haritası bağlantısı vurgulandı](media/tutorial-create-tenant/portal-04-select-link-sub-link.png)
-
-1. **Mevcut bir Azure AD B2C kiracıyı Azure aboneliğime bağla**' yı seçin.
-
-   ![Azure portal mevcut bir abonelik seçimini bağlama](media/tutorial-create-tenant/portal-05-link-subscription.png)
-
-1. Oluşturduğunuz **Azure AD B2C kiracıyı** seçin, sonra **aboneliğinizi**seçin.
-
-    **Kaynak grubu** için **Yeni oluştur**’u seçin. Kiracıyı içerecek kaynak grubu için bir **ad** girin, **kaynak grubu konumunu**seçin ve ardından **Oluştur**' u seçin.
-
-    ![Azure portal abonelik ayarları formu bağlantısı](media/tutorial-create-tenant/portal-06-link-subscription-settings.png)
-
-    Faturalama amacıyla birden çok Azure AD B2C kiracıyı tek bir Azure aboneliğine bağlayabilirsiniz.
+Faturalama amacıyla birden çok Azure AD B2C kiracıyı tek bir Azure aboneliğine bağlayabilirsiniz.
 
 ## <a name="select-your-b2c-tenant-directory"></a>B2C kiracı dizininizi seçin
 

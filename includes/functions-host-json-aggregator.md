@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
@@ -25,7 +25,7 @@ ms.locfileid: "76279413"
 }
 ```
 
-|Özellik |Varsayılan  | Açıklama |
+|Özellik |Varsayılan  | Description |
 |---------|---------|---------| 
 |batchSize|1000|Toplanacak en fazla istek sayısı.| 
 |flushTimeout|00:00:30|Toplanacak en uzun süre.| 

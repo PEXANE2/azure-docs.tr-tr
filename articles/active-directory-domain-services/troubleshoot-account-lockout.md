@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 04/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 7d2e22804c06f589c7990bf8f19319b897363a93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 22743a1e202ac26d95cf4a48cb58b2a2418e9f0c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743456"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734190"
 ---
-# <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanıyla hesap kilitleme sorunlarını giderme
+# <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanıyla hesap kilitleme sorunlarını giderme
 
-Yinelenen kötü amaçlı oturum açma girişimlerini engellemek için Azure AD DS, tanımlı eşikten sonra hesapları kilitler. Bu hesap kilitleme, bir oturum açma saldırısı olayı olmadan yanlışlıkla de gerçekleşebilir. Örneğin, bir Kullanıcı yanlış parolayı tekrar girerse veya bir hizmet eski bir parola kullanmaya çalışırsa, hesap kilitlenir.
+Yinelenen kötü amaçlı oturum açma girişimlerini engellemek için, Azure Active Directory Domain Services (Azure AD DS) hesapları tanımlı eşikten sonra kilitler. Bu hesap kilitleme, bir oturum açma saldırısı olayı olmadan yanlışlıkla de gerçekleşebilir. Örneğin, bir Kullanıcı yanlış parolayı tekrar girerse veya bir hizmet eski bir parola kullanmaya çalışırsa, hesap kilitlenir.
 
 Bu sorun giderme makalesinde, hesap kilitleme işlemlerinin neden olduğu ve davranışı nasıl yapılandırabileceğiniz ve kilitleme olayları sorunlarını gidermek için güvenlik denetimlerinin nasıl inceleyeceği özetlenmektedir.
 
@@ -33,9 +33,9 @@ Varsayılan hesap kilitleme eşikleri, hassas parola ilkesi kullanılarak yapıl
 
 ### <a name="fine-grained-password-policy"></a>Hassas parola ilkesi
 
-Hassas parola ilkeleri (FGPPs), bir etki alanındaki farklı kullanıcılara parola ve hesap kilitleme ilkeleri için özel kısıtlamalar uygulamanıza imkan tanır. FGPP yalnızca Azure AD DS yönetilen bir etki alanında bulunan kullanıcıları etkiler. Azure AD 'den Azure AD DS yönetilen etki alanı ile eşitlenen bulut kullanıcıları ve etki alanı kullanıcıları yalnızca Azure AD DS 'deki parola ilkelerinden etkilenir. Azure AD 'deki hesapları veya şirket içi bir dizin etkilenmemektedir.
+Hassas parola ilkeleri (FGPPs), bir etki alanındaki farklı kullanıcılara parola ve hesap kilitleme ilkeleri için özel kısıtlamalar uygulamanıza imkan tanır. FGPP yalnızca yönetilen bir etki alanı içindeki kullanıcıları etkiler. Azure AD 'den Azure AD DS yönetilen etki alanı ile eşitlenen bulut kullanıcıları ve etki alanı kullanıcıları yalnızca Azure AD DS 'deki parola ilkelerinden etkilenir. Azure AD 'deki hesapları veya şirket içi bir dizin etkilenmemektedir.
 
-İlkeler, Azure AD DS yönetilen etki alanındaki grup ilişkilendirmesi aracılığıyla dağıtılır ve yaptığınız tüm değişiklikler sonraki Kullanıcı oturumu sırasında uygulanır. İlkenin değiştirilmesi, zaten kilitlenen bir kullanıcı hesabının kilidini açmıyor.
+İlkeler, yönetilen etki alanındaki grup ilişkilendirmesi aracılığıyla dağıtılır ve yaptığınız tüm değişiklikler bir sonraki Kullanıcı oturumu sırasında uygulanır. İlkenin değiştirilmesi, zaten kilitlenen bir kullanıcı hesabının kilidini açmıyor.
 
 Hassas parola ilkeleri hakkında daha fazla bilgi ve Azure AD 'de doğrudan Azure AD DS tarafından oluşturulan kullanıcılar arasındaki farklılıklar, bkz. [parola ve hesap kilitleme Ilkeleri yapılandırma][configure-fgpp].
 
@@ -88,7 +88,7 @@ AADDomainServicesAccountManagement
 
 Hesap kilitleme eşiklerini ayarlamaya yönelik hassas parola ilkeleri hakkında daha fazla bilgi için bkz. [parola ve hesap kilitleme Ilkeleri yapılandırma][configure-fgpp].
 
-VM 'nize Azure AD DS yönetilen etki alanına katılma sorunları yaşıyorsanız, [yardım bulun ve Azure Active Directory için bir destek bileti açın][azure-ad-support].
+VM 'nize yönetilen etki alanına katılma sorunları yaşamaya devam ediyorsanız Yardım ' ı [bulun ve Azure Active Directory için bir destek bileti açın][azure-ad-support].
 
 <!-- INTERNAL LINKS -->
 [configure-fgpp]: password-policy.md

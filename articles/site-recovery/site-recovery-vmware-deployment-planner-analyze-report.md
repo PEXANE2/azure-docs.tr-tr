@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
 ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257517"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699201"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Azure 'da VMware olağanüstü durum kurtarma için Dağıtım Planlayıcısı raporunu analiz etme
 
@@ -186,7 +186,7 @@ Site Recovery çoğaltması için x MB/sn’den fazla bant genişliği ayarlayam
 * 1025 GB ile 2048 GB arası P40'dır.
 * 2049 GB ile 4095 GB arası P50'dir.
 
-Örneğin, bir diskin iş yükü özellikleri P20 veya P30 kategorisine yerleştiriyorsa, ancak boyut onu daha düşük bir Premium depolama disk türüne eşledikten sonra, araç bu VM 'yi **Evet**\*olarak işaretler. Araç ayrıca kaynak disk boyutunu önerilen premium depolama disk türüne uyacak şekilde değiştirmenizi veya hedef disk türünü yük devretme sonrasını değiştirmenizi önerir.
+Örneğin, bir diskin iş yükü özellikleri P20 veya P30 kategorisine yerleştiriyorsa, ancak boyut onu daha düşük bir Premium depolama disk türüne eşledikten sonra, araç bu VM 'yi **Evet**olarak işaretler \* . Araç ayrıca kaynak disk boyutunu önerilen premium depolama disk türüne uyacak şekilde değiştirmenizi veya hedef disk türünü yük devretme sonrasını değiştirmenizi önerir.
 
 **Depolama Türü**: Standart veya Premium.
 
@@ -269,7 +269,7 @@ Premium P10 veya P15 disk | 32 KB veya daha büyük | 8 MB/sn | Disk başına 67
 Premium P20 veya P30 veya P40 veya P50 disk | 8 KB    | 5 MB/sn | Disk başına 421 GB
 Premium P20 veya P30 veya P40 veya P50 disk | 16 KB veya daha büyük | 20 MB/sn | disk başına 1684 GB
 
-**Kaynak veri değişim sıklığı** | **Üst Sınır**
+**Kaynak veri değişim sıklığı** | **Maksimum sınır**
 ---|---
 VM üzerindeki tüm disklerde en yüksek veri değişim sıklığı | 54 MB/sn
 İşlem Sunucusu tarafından desteklenen günlük en fazla veri değişim sıklığı | 2 TB

@@ -10,16 +10,18 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: c8a29f95e7b987af2b408ec24bc390a7fd162263
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 472ff9de069e7d95cb1753a6b05830649806d2fc
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554861"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734563"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services nedir?
 
-Azure Active Directory Domain Services (Azure AD DS), etki alanına katılması, Grup ilkesi, Hafif Dizin Erişim Protokolü (LDAP) ve Kerberos/NTLM kimlik doğrulaması gibi yönetilen etki alanı Hizmetleri sağlar. Bulutta etki alanı denetleyicileri dağıtma, yönetme ve düzeltme eki uygulama gerekmeden bu etki alanı hizmetlerini kullanırsınız.
+Azure Active Directory Domain Services (Azure AD DS), etki alanına katılması, Grup ilkesi, Hafif Dizin Erişim Protokolü (LDAP) ve Kerberos/NTLM kimlik doğrulaması gibi yönetilen etki alanı Hizmetleri sağlar. Bu etki alanı hizmetlerini, bulutta etki alanı denetleyicileri (DC) dağıtmak, yönetmek ve bunlara yama yapmak zorunda kalmadan kullanırsınız.
+
+Yönetilen etki alanı, DNS ad alanıdır ve eşleşen dizindir. Yönetilen etki alanı, mevcut Azure AD kiracınızla tümleştirilir, bu da kullanıcıların mevcut kimlik bilgilerini kullanarak oturum açmasını olanaklı kılar. Ayrıca, mevcut grupları ve Kullanıcı hesaplarını, kaynaklara erişimi güvenli hale getirmek için de kullanabilirsiniz. Bu, şirket içi kaynakların daha yumuşak bir şekilde daha iyi bir şekilde daha iyi bir şekilde daha iyi bir şekilde
 
 Azure AD DS, mevcut Azure AD kiracınızla tümleşir. Bu tümleştirme, kullanıcıların, mevcut kimlik bilgilerini kullanarak yönetilen etki alanına bağlı hizmet ve uygulamalar üzerinde oturum açmalarına olanak tanır. Kaynaklara erişimi güvenli hale getirmek için mevcut grupları ve Kullanıcı hesaplarını da kullanabilirsiniz. Bu özellikler, şirket içi kaynakların Azure 'a daha yumuşak bir şekilde daha iyi bir şekilde daha iyi şekilde kaymasını sağlar.
 
@@ -61,9 +63,9 @@ Azure AD DS, kimlik hizmetleri sağlamak için şirket içi AD DS ortamına VPN 
 
 ## <a name="how-does-azure-ad-ds-work"></a>Azure AD DS nasıl çalışır?
 
-Azure, kimlik hizmetleri sağlamak için seçtiğiniz bir sanal ağ üzerinde bir AD DS örneği oluşturur. Arka planda, Azure VM 'lerinde çalışan bir çift Windows Server etki alanı denetleyicisi oluşturulur. Bu etki alanı denetleyicilerini yönetmeniz, yapılandırmanız veya güncelleştirmeniz gerekmez. Azure platformu, etki alanı denetleyicilerini Azure AD DS hizmeti 'nin bir parçası olarak yönetir.
+Azure, kimlik hizmetleri sağlamak için seçtiğiniz bir sanal ağda AD DS yönetilen bir etki alanı oluşturur. Arka planda, Azure VM 'lerinde çalışan bir çift Windows Server etki alanı denetleyicisi oluşturulur. Bu etki alanı denetleyicilerini yönetmeniz, yapılandırmanız veya güncelleştirmeniz gerekmez. Azure platformu, etki alanı denetleyicilerini Azure AD DS hizmeti 'nin bir parçası olarak yönetir.
 
-Azure AD DS yönetilen etki alanı, merkezi bir grup kullanıcıya, gruba ve kimlik bilgilerine erişim sağlamak için Azure AD 'den tek yönlü bir eşitleme gerçekleştirecek şekilde yapılandırılmıştır. Kaynakları doğrudan Azure AD DS yönetilen etki alanında oluşturabilirsiniz, ancak Azure AD 'ye geri eşitlenmez. Azure 'daki bu sanal ağa bağlanan uygulamalar, hizmetler ve VM 'Ler, etki alanına katılması, Grup ilkesi, LDAP ve Kerberos/NTLM kimlik doğrulaması gibi ortak AD DS özellikleri kullanabilir.
+Yönetilen etki alanı, merkezi bir grup kullanıcıya, gruba ve kimlik bilgilerine erişim sağlamak için Azure AD 'den tek yönlü bir eşitleme gerçekleştirecek şekilde yapılandırılmıştır. Kaynakları doğrudan yönetilen etki alanında oluşturabilirsiniz, ancak Azure AD 'ye geri eşitlenmez. Azure 'daki bu sanal ağa bağlanan uygulamalar, hizmetler ve VM 'Ler, etki alanına katılması, Grup ilkesi, LDAP ve Kerberos/NTLM kimlik doğrulaması gibi ortak AD DS özellikleri kullanabilir.
 
 Şirket içi AD DS ortamına sahip bir karma ortamda, [Azure AD Connect][azure-ad-connect] kimlik BILGILERINI Azure AD ile eşitler ve bu daha sonra Azure AD DS ile eşitlenir.
 
@@ -90,7 +92,7 @@ Hem şirket içinde hem de Azure kaynaklarını çalıştıran bir karma kurulu�
 * Azure sanal ağında dağıtılan uygulamalar ve VM 'Ler, etki alanına katılması, LDAP okuma, LDAP bağlama, NTLM ve Kerberos kimlik doğrulaması ve grup ilkesi gibi Azure AD DS özelliklerini kullanabilir.
 
 > [!IMPORTANT]
-> Azure AD Connect yalnızca şirket içi AD DS ortamları ile eşitleme için yüklenmeli ve yapılandırılmalıdır. Nesneleri Azure AD 'ye geri eşitlemeniz için Azure AD DS tarafından yönetilen bir etki alanına Azure AD Connect yüklemek desteklenmez.
+> Azure AD Connect yalnızca şirket içi AD DS ortamları ile eşitleme için yüklenmeli ve yapılandırılmalıdır. Nesneleri Azure AD 'ye geri eşitlemeniz için yönetilen bir etki alanında Azure AD Connect yüklemek desteklenmez.
 
 ### <a name="azure-ad-ds-for-cloud-only-organizations"></a>Yalnızca bulutta kuruluşlar için Azure AD DS
 
@@ -136,7 +138,7 @@ Azure AD DS diğer kimlik çözümleriyle ve eşitlemenin nasıl çalıştığı
 * [Azure AD DS Azure AD ile karşılaştırın, Azure VM 'lerinde Active Directory Domain Services ve şirket içi Active Directory Domain Services][compare]
 * [Azure AD Domain Services Azure AD dizininizle nasıl eşitleneceğini öğrenin][synchronization]
 
-Başlamak için [Azure Portal kullanarak Azure AD DS yönetilen bir etki alanı oluşturun][tutorial-create].
+Başlamak için [Azure Portal kullanarak yönetilen bir etki alanı oluşturun][tutorial-create].
 
 <!-- INTERNAL LINKS -->
 [compare]: compare-identity-solutions.md

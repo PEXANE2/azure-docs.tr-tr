@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: ace818adb4c5157675ac3b1d88f5df2ef61d69ee
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a264e40814952577d3a7db3b36c168dfc396f388
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042207"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249180"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Ayıklanan verileri kullanan çapraz kiracı analizi-çok kiracılı uygulama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -80,7 +80,7 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığı
 
 Bu öğreticide, Bilet satış verilerinde analiz yapılır. Geçerli adımda, tüm kiracılara yönelik bilet verileri oluşturun.  Daha sonra bu veriler analiz için ayıklanır. *Daha önce açıklandığı gibi kiracılar toplu işlemini sağladığınızdan emin olun, böylece anlamlı bir veri miktarına sahip olursunuz*. Yeterince büyük miktarda veri, farklı bilet satın alma desenlerinin bir aralığını açığa çıkarır.
 
-1. **PowerShell ISE**'de *. ..\Learning Modules\işletimsel Analtics\tenant Analytics\Demo-TenantAnalytics.ps1*açın ve aşağıdaki değeri ayarlayın:
+1. **PowerShell ISE**'de *. ..\Learning Modules\işlemsel analiz tics\tenant Analytics\Demo-TenantAnalytics.ps1*açın ve aşağıdaki değeri ayarlayın:
     - **$DemoScenario**  =  **1** tüm havalandırma olaylardaki olaylar için bilet satın al
 2. Komut dosyasını çalıştırmak ve her bir mekan her olay için bilet satın alma geçmişi oluşturmak için **F5** tuşuna basın.  Betik on binlerce bilet üretmek için birkaç dakika çalışır.
 
@@ -88,7 +88,7 @@ Bu öğreticide, Bilet satış verilerinde analiz yapılır. Geçerli adımda, t
 Genellikle tüm kiracı verilerini tutan çok sayıda hareketsel birleştirilmiş veritabanı vardır. Parçalı veritabanındaki kiracı verilerini tek bir analiz deposunda toplamanız gerekir. Toplama, verilerin verimli bir şekilde sorgulanmalarını sağlar. Bu öğreticide, toplanan verileri depolamak için bir Azure SQL veritabanı veritabanı kullanılır.
 
 Aşağıdaki adımlarda, **tenantanalytics**adlı analiz deposunu dağıtırsınız. Ayrıca öğreticide daha sonra doldurulmuş önceden tanımlanmış tablolar da dağıtabilirsiniz:
-1. PowerShell ıSE 'de *. ..\Learning Modules\işletimsel Analtics\tenant Analytics\Demo-TenantAnalytics.ps1* açın 
+1. PowerShell ıSE 'de *. ..\Learning Modules\işlemsel analiz Tics\tenant Analytics\Demo-TenantAnalytics.ps1* açın 
 2. Betikteki $DemoScenario değişkenini, analiz deposu seçimiyle eşleşecek şekilde ayarlayın. Öğrenme amacıyla, veritabanının columnstore olmadan kullanılması önerilir.
     - SQL veritabanı 'nı columnstore olmadan kullanmak için **$DemoScenario**  =  **2** ' yi ayarlayın.
     - SQL veritabanını columnstore ile kullanmak için, **$DemoScenario**  =  **3** ' ü ayarlayın  

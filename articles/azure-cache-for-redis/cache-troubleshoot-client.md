@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.openlocfilehash: ace953fcb278604cb64eef463753f0f2622d3d24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277953"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698202"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Redis için Azure Cache istemci tarafı sorunlarını giderme
 
@@ -39,17 +39,17 @@ Bu bölümde, uygulamanızın kullandığı Redsıs istemcisindeki bir koşul ne
 
 ## <a name="traffic-burst"></a>Trafik veri bloğu
 
-Kötü `ThreadPool` ayarlarla birleştirilmiş trafik, Redsıs sunucusu tarafından zaten gönderilmiş ancak istemci tarafında henüz tüketilmeyen verilerin işlenmesinde gecikmelere neden olabilir.
+Kötü ayarlarla birleştirilmiş trafik, `ThreadPool` Redsıs sunucusu tarafından zaten gönderilmiş ancak istemci tarafında henüz tüketilmeyen verilerin işlenmesinde gecikmelere neden olabilir.
 
-[Bir örnek `ThreadPoolLogger` ](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs)kullanarak `ThreadPool` istatistiklerinizin zaman içindeki değişimini izleyin. Daha fazla araştırmak `TimeoutException` Için StackExchange. redin 'dan iletileri kullanabilirsiniz:
+`ThreadPool` [Bir örnek `ThreadPoolLogger` ](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs)kullanarak istatistiklerinizin zaman içindeki değişimini izleyin. `TimeoutException`Daha fazla araştırmak Için StackExchange. redin 'dan iletileri kullanabilirsiniz:
 
     System.TimeoutException: Timeout performing EVAL, inst: 8, mgr: Inactive, queue: 0, qu: 0, qs: 0, qc: 0, wr: 0, wq: 0, in: 64221, ar: 0,
     IOCP: (Busy=6,Free=999,Min=2,Max=1000), WORKER: (Busy=7,Free=8184,Min=2,Max=8191)
 
 Önceki özel durumda, ilginç olan birkaç sorun vardır:
 
-- `IOCP` Bölümünde `WORKER` ve bölümünde `Busy` `Min` değerden daha büyük bir değer olduğuna dikkat edin. Bu fark, `ThreadPool` ayarlarınızın ayarlanması gereken anlamına gelir.
-- Ayrıca, bkz `in: 64221`.. Bu değer, istemcinin çekirdek yuva katmanında 64.211 baytın alındığını, ancak uygulama tarafından okunmadığını gösterir. Bu fark genellikle uygulamanızın (örneğin, StackExchange. Redsıs), sunucu tarafından size gönderildiğinde, ağdan veri okuyamayacağı anlamına gelir.
+- `IOCP`Bölümünde ve `WORKER` bölümünde `Busy` değerden daha büyük bir değer olduğuna dikkat edin `Min` . Bu fark, `ThreadPool` ayarlarınızın ayarlanması gereken anlamına gelir.
+- Ayrıca, bkz `in: 64221` .. Bu değer, istemcinin çekirdek yuva katmanında 64.211 baytın alındığını, ancak uygulama tarafından okunmadığını gösterir. Bu fark genellikle uygulamanızın (örneğin, StackExchange. Redsıs), sunucu tarafından size gönderildiğinde, ağdan veri okuyamayacağı anlamına gelir.
 
 İş parçacığı havuzunuzun, patlama senaryolarında hızlı bir şekilde ölçeklendirdiğinizden emin olmak için [ `ThreadPool` ayarlarınızı yapılandırabilirsiniz](cache-faq.md#important-details-about-threadpool-growth) .
 
@@ -57,7 +57,7 @@ Kötü `ThreadPool` ayarlarla birleştirilmiş trafik, Redsıs sunucusu tarafın
 
 Yüksek istemci CPU kullanımı, sistemin yapması istenen işi tutamayacağını belirtir. Önbellek yanıtı hızla gönderse de istemci, yanıtı zamanında işleyemeyebilir.
 
-Azure portal veya makinedeki performans sayaçları aracılığıyla bulunan ölçümleri kullanarak istemcinin sistem genelinde CPU kullanımını izleyin. Tek bir işlemde düşük CPU kullanımı olabileceğinden ancak sistem genelindeki CPU yüksek olabileceğinden *işlem* CPU 'yu izlemenin dikkatli olun. CPU kullanımında, zaman aşımları ile karşılık gelen ani artışlar izleyin. Yüksek CPU Ayrıca [trafik veri bloğu](#traffic-burst) bölümünde açıklandığı `TimeoutException` gibi hata iletilerinde yüksek `in: XXX` değerlere neden olabilir.
+Azure portal veya makinedeki performans sayaçları aracılığıyla bulunan ölçümleri kullanarak istemcinin sistem genelinde CPU kullanımını izleyin. Tek bir işlemde düşük CPU kullanımı olabileceğinden ancak sistem genelindeki CPU yüksek olabileceğinden *işlem* CPU 'yu izlemenin dikkatli olun. CPU kullanımında, zaman aşımları ile karşılık gelen ani artışlar izleyin. Yüksek CPU Ayrıca `in: XXX` `TimeoutException` [trafik veri bloğu](#traffic-burst) bölümünde açıklandığı gibi hata iletilerinde yüksek değerlere neden olabilir.
 
 > [!NOTE]
 > StackExchange. redme 1.1.603 ve üzeri, `local-cpu` `TimeoutException` hata iletilerinde ölçüm içerir. [StackExchange. Redsıs NuGet paketinin](https://www.nuget.org/packages/StackExchange.Redis/)en son sürümünü kullandığınızdan emin olun. En son sürüme sahip olacak şekilde, zaman aşımlarını daha sağlam hale getirmek için kodda sürekli olarak düzeltilen hatalar vardır.

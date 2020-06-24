@@ -4,15 +4,15 @@ description: P2S ve RADIUS kimlik doğrulaması kullanarak Windows ve Mac OS X i
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: cb9a02532c3651aca544ed946f40bdcff9e9be83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bdaa2fd1e435e8bf7ff4b17c7f8a15d5bd249d5
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411767"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987176"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS kimlik doğrulaması kullanarak bir sanal ağa Noktadan siteye bağlantı yapılandırma: PowerShell
 
@@ -109,7 +109,7 @@ Kullanmak istediğiniz değişkenleri bildirin. Aşağıdaki örneği kullanın 
   $GWIPconfName = "gwipconf"
   ```
 
-## <a name="2-create-the-resource-group-vnet-and-public-ip-address"></a>2. <a name="vnet"> </a>kaynak grubu, VNET ve genel IP adresi oluşturma
+## <a name="2-create-the-resource-group-vnet-and-public-ip-address"></a>2. <a name="vnet"></a> kaynak grubu, VNET ve genel IP adresi oluşturma
 
 Aşağıdaki adımlar kaynak grubunda üç alt ağa sahip bir kaynak grubu ve bir sanal ağ oluşturur. Değerleri değiştirirken, ağ geçidi alt ağını özel olarak "GatewaySubnet" olarak yazmanız önemlidir. Başka bir ad belirtirseniz, ağ geçidi oluşturma işlemi başarısız olur;
 
@@ -143,7 +143,7 @@ Aşağıdaki adımlar kaynak grubunda üç alt ağa sahip bir kaynak grubu ve bi
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name "gwipconf" -Subnet $subnet -PublicIpAddress $pip
    ```
 
-## <a name="3-set-up-your-radius-server"></a>3. <a name="radius"> </a>RADIUS sunucunuzu ayarlama
+## <a name="3-set-up-your-radius-server"></a>3. <a name="radius"></a> RADIUS sunucunuzu ayarlama
 
 Sanal ağ geçidini oluşturmadan ve yapılandırmadan önce, RADIUS sunucunuz kimlik doğrulaması için doğru şekilde yapılandırılmalıdır.
 
@@ -153,12 +153,12 @@ Sanal ağ geçidini oluşturmadan ve yapılandırmadan önce, RADIUS sunucunuz k
 
 [Ağ Ilkesi sunucusu (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) MAKALESI, ad etki alanı kimlik doğrulaması Için BIR Windows RADIUS sunucusu (NPS) yapılandırma hakkında rehberlik sağlar.
 
-## <a name="4-create-the-vpn-gateway"></a>4. <a name="creategw"> </a>VPN Gateway oluşturma
+## <a name="4-create-the-vpn-gateway"></a>4. <a name="creategw"></a> VPN Gateway oluşturma
 
 Sanal ağınız için VPN Gateway 'i yapılandırın ve oluşturun.
 
 * -GatewayType ' VPN ' olmalıdır ve-VpnType değeri ' RouteBased ' olmalıdır.
-* Bir VPN ağ geçidinin tamamlanması, seçtiğiniz [ağ geçidi SKU 'suna](vpn-gateway-about-vpn-gateway-settings.md#gwsku) bağlı olarak 45 dakika sürebilir.
+* Bir VPN ağ geçidinin tamamlanması, seçtiğiniz [ağ geçidi SKU 'suna](vpn-gateway-about-vpn-gateway-settings.md#gwsku)bağlı olarak 45 dakika sürebilir   .
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
@@ -166,7 +166,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1
 ```
 
-## <a name="5-add-the-radius-server-and-client-address-pool"></a>5. <a name="addradius"> </a>RADIUS sunucusunu ve istemci adres havuzunu ekleme
+## <a name="5-add-the-radius-server-and-client-address-pool"></a>5. <a name="addradius"></a> RADIUS sunucusunu ve istemci adres havuzunu ekleme
  
 * -RadiusServer adı veya IP adresi ile belirtilebilir. Adı belirtirseniz ve sunucu şirket içinde yer alıyorsa, VPN Gateway adı çözemeyebilir. Bu durumda, sunucunun IP adresini belirtmek daha iyidir. 
 * -RadiusSecret, RADIUS sunucunuzda yapılandırılanla eşleşmelidir.
@@ -223,7 +223,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
-## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6. <a name="vpnclient"> </a>VPN istemcisi yapılandırma paketini INDIRME ve VPN istemcisini ayarlama
+## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6. <a name="vpnclient"></a> VPN istemcisi yapılandırma paketini indirme ve VPN istemcisini ayarlama
 
 VPN istemci yapılandırması, cihazların bir P2S bağlantısı üzerinden bir sanal ağa bağlanmasına olanak sağlar.VPN istemcisi yapılandırma paketi oluşturmak ve VPN istemcisini ayarlamak için bkz. [RADIUS kimlik doğrulaması IÇIN VPN Istemci yapılandırması oluşturma](point-to-site-vpn-client-configuration-radius.md).
 

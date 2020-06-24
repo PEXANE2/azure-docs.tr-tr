@@ -6,25 +6,36 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/18/2020
+ms.date: 06/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4dbc559e62523a1ea17236a9e8c9666ef48bba33
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3b49682b2ece20266b3a051091d3784cc3e8bcca
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664154"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976430"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>Sunucular için Azure Arc aracısına genel bakış
 
 Sunucular için Azure yay bağlı makine Aracısı, kurumsal ağınızda veya diğer bulut sağlayıcıınızda Azure dışında barındırılan Windows ve Linux makinelerinizi yönetmenizi sağlar. Bu makalede Aracı, sistem ve ağ gereksinimleri ve farklı dağıtım yöntemlerine ilişkin ayrıntılı bir genel bakış sunulmaktadır.
 
+## <a name="agent-component-details"></a>Aracı bileşeni ayrıntıları
+
+Azure bağlı makine Aracısı paketi, birlikte paketlenmiş çeşitli mantıksal bileşenler içerir.
+
+* Karma örnek meta veri hizmeti (HıMDS), Azure ve bağlı makinenin Azure kimliğiyle bağlantıyı yönetir.
+
+* Konuk yapılandırma Aracısı, makinenin gerekli ilkelerle uyumlu olup olmadığını değerlendirmek gibi Konuk yapılandırma işlevlerini sağlar.
+
+* Uzantı Aracısı, yükleme, kaldırma ve yükseltme dahil olmak üzere VM uzantılarını yönetir. Uzantılar Azure 'dan indirilir ve `%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads` Windows üzerindeki klasöre kopyalanır ve Linux için `/opt/GC_Ext/downloads` . Windows 'da, uzantı aşağıdaki yola yüklenir `%SystemDrive%\Packages\Plugins\<extension>` ve Linux üzerinde uzantı yüklenir `/var/lib/waagent/<extension>` .
+
 ## <a name="download-agents"></a>Aracıları indir
 
 Windows ve Linux için Azure bağlı makine Aracısı paketini aşağıda listelenen konumlardan indirebilirsiniz.
 
-- Microsoft Indirme merkezi 'nden [Windows agent Windows Installer paketi](https://aka.ms/AzureConnectedMachineAgent) .
-- Linux aracı paketi, dağıtım için tercih edilen paket biçimi kullanılarak Microsoft 'un [paket deposundan](https://packages.microsoft.com/) dağıtılır (. RPM veya. DEB).
+* Microsoft Indirme merkezi 'nden [Windows agent Windows Installer paketi](https://aka.ms/AzureConnectedMachineAgent) .
+
+* Linux aracı paketi, dağıtım için tercih edilen paket biçimi kullanılarak Microsoft 'un [paket deposundan](https://packages.microsoft.com/) dağıtılır (. RPM veya. DEB).
 
 >[!NOTE]
 >Bu önizleme sırasında, Ubuntu 16,04 veya 18,04 için uygun olan yalnızca bir paket yayımlanmıştır.
@@ -43,38 +54,42 @@ Windows için bağlı makine aracısını yükledikten sonra, aşağıdaki ek si
 
 * Aşağıdaki yükleme klasörleri kurulum sırasında oluşturulur.
 
-    |Klasör |Açıklama |
+    |Klasör |Description |
     |-------|------------|
     |C:\Program Files\AzureConnectedMachineAgent |Aracı destek dosyalarını içeren varsayılan yükleme yolu.|
     |%ProgramData%\AzureConnectedMachineAgent |Aracı yapılandırma dosyalarını içerir.|
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |Alınan belirteçleri içerir.|
     |%ProgramData%\AzureConnectedMachineAgent\Config |`agentconfig.json`Hizmet ile kayıt bilgilerini kaydeden aracı yapılandırma dosyasını içerir.|
-    |%ProgramData%\GuestConfig |(Uygulanan) Azure ilkelerine ilişkin dosyaları içerir.|
+    |%SystemDrive%\Program Files\ArcConnectedMachineAgent\ExtensionService\GC | Konuk yapılandırma Aracısı dosyalarını içeren yükleme yolu. |
+    |%ProgramData%\GuestConfig |Azure 'daki (uygulanan) ilkeleri içerir.|
+    |%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads | Uzantılar Azure 'dan indirilir ve buradan kopyalanır.|
 
 * Aşağıdaki Windows Hizmetleri, aracının yüklenmesi sırasında hedef makinede oluşturulur.
 
-    |Hizmet adı |Görünen ad |İşlem adı |Açıklama |
+    |Hizmet adı |Görünen ad |İşlem adı |Description |
     |-------------|-------------|-------------|------------|
-    |hımds |Azure hibrit Instance Metadata Service |hımds. exe |Bu hizmet, makineyi izlemek için Azure örnek meta veri hizmeti 'ni (ıMDS) uygular.|
-    |DscService |Konuk yapılandırma hizmeti |dsc_service. exe |Bu, Azure 'Da Konuk içi Ilkeyi uygulamak için kullanılan Istenen durum yapılandırması (DSC v2) kod tabandır.|
+    |hımds |Azure hibrit Instance Metadata Service |himds.exe |Bu hizmet, Azure ve bağlı makinenin Azure kimliğiyle bağlantıyı yönetmek için Azure örnek meta veri hizmeti 'ni (ıMDS) uygular.|
+    |DscService |Konuk yapılandırma hizmeti |dsc_service.exe |Bu, Azure 'Da Konuk içi Ilkeyi uygulamak için kullanılan Istenen durum yapılandırması (DSC v2) kod tabandır.|
 
 * Aşağıdaki çevresel değişkenler aracı yüklemesi sırasında oluşturulur.
 
-    |Name |Varsayılan değer |Açıklama |
+    |Name |Varsayılan değer |Description |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
-    
-* Sorun giderme için dört günlük dosyası kullanılabilir. Bunlar aşağıdaki tabloda açıklanmıştır.
 
-    |Günlük |Açıklama |
+* Sorun giderme için kullanılabilen çeşitli günlük dosyaları vardır. Bunlar aşağıdaki tabloda açıklanmıştır.
+
+    |Günlük |Description |
     |----|------------|
-    |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Aracıların (hımds) hizmetinin ayrıntılarını ve Azure ile etkileşimini kaydeder.|
+    |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Aracıların (HıMDS) hizmetinin ayrıntılarını ve Azure ile etkileşimini kaydeder.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Verbose (-v) bağımsız değişkeni kullanıldığında azcmagent aracı komutlarının çıktısını içerir.|
-    |%ProgramData%\GuestConfig\ gc_agent_logs \ gc_agent. log |DSC hizmeti etkinliğinin ayrıntılarını kaydeder,<br> belirli bir deyişle, hımds hizmeti ile Azure Ilkesi arasındaki bağlantı.|
-    |%ProgramData%\GuestConfig\ gc_agent_logs \ gc_agent_telemetry. txt |DSC hizmeti telemetrisi ve ayrıntılı günlük kaydı hakkındaki ayrıntıları kaydeder.|
+    |%ProgramData%\GuestConfig\ gc_agent_logs \ gc_agent. log |DSC hizmeti etkinliğinin ayrıntılarını kaydeder,<br> belirli bir deyişle, HıMDS hizmeti ile Azure Ilkesi arasındaki bağlantı.|
+    |% ProgramData% \GuestConfig\gc_agent_logs\gc_agent_telemetry.txt |DSC hizmeti telemetrisi ve ayrıntılı günlük kaydı hakkındaki ayrıntıları kaydeder.|
+    |%SystemDrive%\ProgramData\GuestConfig\ ext_mgr_logs|Uzantı Aracısı bileşeniyle ilgili ayrıntıları kaydeder.|
+    |%SystemDrive%\ProgramData\GuestConfig\ extension_logs\<Extension>|Yüklü uzantının ayrıntılarını kaydeder.|
 
-* Yerel güvenlik grubu **karma Aracısı uzantısı uygulamaları** oluşturulur. 
+* Yerel güvenlik grubu **karma Aracısı uzantısı uygulamaları** oluşturulur.
 
 * Aracının kaldırılması sırasında, aşağıdaki yapıtlar kaldırılmaz.
 
@@ -84,39 +99,43 @@ Windows için bağlı makine aracısını yükledikten sonra, aşağıdaki ek si
 
 ## <a name="linux-agent-installation-details"></a>Linux Aracısı yükleme ayrıntıları
 
-Linux için bağlı makine Aracısı, dağıtım için tercih edilen paket biçiminde sağlanır (. RPM veya. DEB) Microsoft [paket deposunda](https://packages.microsoft.com/)barındırılır. Aracı yüklenir ve [Install_linux_azcmagent. sh](https://aka.ms/azcmagent)kabuk betik paketi ile yapılandırılır. 
+Linux için bağlı makine Aracısı, dağıtım için tercih edilen paket biçiminde sağlanır (. RPM veya. DEB) Microsoft [paket deposunda](https://packages.microsoft.com/)barındırılır. Aracı yüklenir ve [Install_linux_azcmagent. sh](https://aka.ms/azcmagent)kabuk betik paketi ile yapılandırılır.
 
 Linux için bağlı makine aracısını yükledikten sonra, aşağıdaki ek sistem genelinde yapılandırma değişiklikleri uygulanır.
 
 * Aşağıdaki yükleme klasörleri kurulum sırasında oluşturulur.
 
-    |Klasör |Açıklama |
+    |Klasör |Description |
     |-------|------------|
     |/var/seçenek/azcmagent/ |Aracı destek dosyalarını içeren varsayılan yükleme yolu.|
     |/seçenek/azcmagent/ |
+    |/seçenek/GC_Ext | Konuk yapılandırma Aracısı dosyalarını içeren yükleme yolu.|
     |/Seçenek/DSC/ |
     |/var/seçenek/azcmagent/Tokens |Alınan belirteçleri içerir.|
-    |/var/lib/GuestConfig |(Uygulanan) Azure ilkelerine ilişkin dosyaları içerir.|
+    |/var/lib/GuestConfig |Azure 'daki (uygulanan) ilkeleri içerir.|
+    |/seçenek/GC_Ext/downloads|Uzantılar Azure 'dan indirilir ve buradan kopyalanır.|
 
 * Aşağıdaki Daemon 'ları, aracının yüklenmesi sırasında hedef makinede oluşturulur.
 
-    |Hizmet adı |Görünen ad |İşlem adı |Açıklama |
+    |Hizmet adı |Görünen ad |İşlem adı |Description |
     |-------------|-------------|-------------|------------|
-    |hımdsd. hizmeti |Azure hibrit Instance Metadata Service |/opt/azcmagent/bin/himds |Bu hizmet, makineyi izlemek için Azure örnek meta veri hizmeti 'ni (ıMDS) uygular.|
+    |hımdsd. hizmeti |Azure hibrit Instance Metadata Service |/opt/azcmagent/bin/himds |Bu hizmet, Azure ve bağlı makinenin Azure kimliğiyle bağlantıyı yönetmek için Azure örnek meta veri hizmeti 'ni (ıMDS) uygular.|
     |DSCD. hizmeti |Konuk yapılandırma hizmeti |/Seçenek/DSC/dsc_linux_service |Bu, Azure 'Da Konuk içi Ilkeyi uygulamak için kullanılan Istenen durum yapılandırması (DSC v2) kod tabandır.|
 
-* Sorun giderme için dört günlük dosyası kullanılabilir. Bunlar aşağıdaki tabloda açıklanmıştır.
+* Sorun giderme için kullanılabilen çeşitli günlük dosyaları vardır. Bunlar aşağıdaki tabloda açıklanmıştır.
 
-    |Günlük |Açıklama |
+    |Günlük |Description |
     |----|------------|
-    |/var/seçenek/azcmagent/log/hımds.log |Aracıların (hımds) hizmetinin ayrıntılarını ve Azure ile etkileşimini kaydeder.|
+    |/var/seçenek/azcmagent/log/hımds.log |Aracıların (HıMDS) hizmetinin ayrıntılarını ve Azure ile etkileşimini kaydeder.|
     |/var/seçenek/azcmagent/log/azcmagent.log |Verbose (-v) bağımsız değişkeni kullanıldığında azcmagent aracı komutlarının çıktısını içerir.|
     |/seçenek/logs/DSC.log |DSC hizmeti etkinliğinin ayrıntılarını kaydeder,<br> belirli bir deyişle, hımds hizmeti ile Azure Ilkesi arasındaki bağlantı.|
-    |/opt/logs/dsc.telemetry.txt |DSC hizmeti telemetrisi ve ayrıntılı günlük kaydı hakkındaki ayrıntıları kaydeder.|
+    |/seçenek/logs/dsc.telemetry.txt |DSC hizmeti telemetrisi ve ayrıntılı günlük kaydı hakkındaki ayrıntıları kaydeder.|
+    |/var/lib/GuestConfig/ext_mgr_logs |Uzantı Aracısı bileşeniyle ilgili ayrıntıları kaydeder.|
+    |/var/log/GuestConfig/extension_logs|Yüklü uzantının ayrıntılarını kaydeder.|
 
 * Aşağıdaki çevresel değişkenler aracı yüklemesi sırasında oluşturulur. Bu değişkenler ' de ayarlanır `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Name |Varsayılan değer |Açıklama |
+    |Name |Varsayılan değer |Description |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -126,18 +145,18 @@ Linux için bağlı makine aracısını yükledikten sonra, aşağıdaki ek sist
     * /var/seçenek/azcmagent
     * /seçenek/logs
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
 Windows ve Linux işletim sisteminin aşağıdaki sürümleri resmi olarak Azure bağlı makine Aracısı için desteklenir: 
 
 - Windows Server 2012 R2 ve üzeri (Windows Server Core dahil)
-- Ubuntu 16,04 ve 18,04
-- CentOS Linux 7
-- SUSE Linux Enterprise Server (SLES) 15
-- Red Hat Enterprise Linux (RHEL) 7
-- Amazon Linux 2
+- Ubuntu 16,04 ve 18,04 (x64)
+- CentOS Linux 7 (x64)
+- SUSE Linux Enterprise Server (SLES) 15 (x64)
+- Red Hat Enterprise Linux (RHEL) 7 (x64)
+- Amazon Linux 2 (x64)
 
 >[!NOTE]
 >Windows için bağlı makine aracısının bu önizleme sürümü yalnızca Ingilizce dilini kullanmak üzere yapılandırılmış Windows Server 'ı destekler.
@@ -155,7 +174,7 @@ Makinelerinizi sunucular için Azure Arc (Önizleme) ile yapılandırmadan önce
 
 ## <a name="tls-12-protocol"></a>TLS 1,2 Protokolü
 
-Azure 'a aktarılan verilerin güvenliğini sağlamak için, makineyi Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmanızı kesinlikle öneririz. TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümlerinin **kullanılması önerilmez**. 
+Azure 'a aktarılan verilerin güvenliğini sağlamak için, makineyi Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmanızı kesinlikle öneririz. TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümlerinin **kullanılması önerilmez**.
 
 |Platform/dil | Destek | Daha Fazla Bilgi |
 | --- | --- | --- |
@@ -175,7 +194,7 @@ Hizmet Etiketleri:
 
 Adresleri
 
-| Aracı kaynağı | Açıklama |
+| Aracı kaynağı | Description |
 |---------|---------|
 |management.azure.com|Azure Resource Manager|
 |login.windows.net|Azure Active Directory|
@@ -216,12 +235,11 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 Ayrıca, [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)altındaki adımları izleyerek Azure Portal kaynak sağlayıcılarını kaydedebilirsiniz.
 
-
 ## <a name="installation-and-configuration"></a>Yükleme ve yapılandırma
 
 Karma ortamınızdaki makineleri doğrudan Azure ile bağlamak, gereksinimlerinize bağlı olarak farklı yöntemler kullanılarak gerçekleştirilebilir. Aşağıdaki tabloda, kuruluşunuz için en uygun olanı belirleyen her bir yöntem vurgulanmaktadır.
 
-| Yöntem | Açıklama |
+| Yöntem | Description |
 |--------|-------------|
 | Biriyle | [Azure Portal makinelerinden gelen bağlantı](onboard-portal.md)adımlarını izleyerek aracıyı tek veya az sayıda makineye el ile yükleyebilirsiniz.<br> Azure portal, aracının yüklenmesi ve yapılandırma adımlarını otomatik hale getirmek için bir betik oluşturup makinede çalıştırabilirsiniz.|
 | Ölçekte | [Hizmet sorumlusu kullanarak, Connect makinelerini](onboard-service-principal.md)izleyen birden çok makine için aracıyı yükleyip yapılandırın.<br> Bu yöntem, makineleri etkileşimli olmayan bir şekilde bağlamak için bir hizmet sorumlusu oluşturur.|

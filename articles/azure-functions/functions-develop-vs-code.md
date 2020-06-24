@@ -3,12 +3,12 @@ title: Visual Studio Code kullanarak Azure Işlevleri geliştirme
 description: Visual Studio Code için Azure Işlevleri uzantısını kullanarak Azure Işlevleri geliştirmeyi ve test yapmayı öğrenin.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 39e62f78f9f0cf1550a01201f753782566aa7c80
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: 459162c277a9510297580a99acb8a88b0702a290
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424168"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732488"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code kullanarak Azure Işlevleri geliştirme
 
@@ -31,14 +31,14 @@ Uzantı, sürüm 2. x ile başlayan Azure Işlevleri çalışma zamanı tarafın
 
 <sup>*</sup>[C# betiğini varsayılan proje diliniz olarak ayarlamanızı](#c-script-projects)gerektirir.
 
-Bu makalede, örnekler şu anda yalnızca JavaScript (node. js) ve C# sınıf kitaplığı işlevleri için kullanılabilir.  
+Bu makalede, örnekler şu anda yalnızca JavaScript (Node.js) ve C# sınıf kitaplığı işlevleri için kullanılabilir.  
 
 Bu makalede, işlevleri geliştirmek ve Azure 'da yayımlamak için Azure Işlevleri uzantısının nasıl kullanılacağına ilişkin ayrıntılar sağlanmaktadır. Bu makaleyi okuduktan sonra, [Visual Studio Code kullanarak ilk işlevinizi oluşturmanız](functions-create-first-function-vs-code.md)gerekir.
 
 > [!IMPORTANT]
 > Tek bir işlev uygulaması için yerel geliştirme ve Portal geliştirmeyi karışmayın. Yerel bir projeden bir işlev uygulamasına yayımladığınızda, dağıtım işlemi portalda geliştirdiğiniz işlevlerin üzerine yazar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Visual Studio Code için [Azure işlevleri uzantısı][Azure işlevleri uzantısını]yükleyip çalıştırmadan önce, şu gereksinimleri karşılamanız gerekir:
 
@@ -83,12 +83,12 @@ Işlevler uzantısı, ilk işlevinizle birlikte bir işlev uygulaması projesi o
 
 Proje şablonu seçtiğiniz dilde bir proje oluşturur ve gerekli bağımlılıkları kurar. Her dil için, yeni proje bu dosyalara sahiptir:
 
-* **Host. JSON**: işlevler konağını yapılandırmanızı sağlar. Bu ayarlar, işlevleri yerel olarak çalıştırırken ve bunları Azure 'da çalıştırırken geçerlidir. Daha fazla bilgi için bkz. [Host. JSON başvurusu](functions-host-json.md).
+* **host.js**:, işlevleri ana bilgisayarını yapılandırmanıza izin verir. Bu ayarlar, işlevleri yerel olarak çalıştırırken ve bunları Azure 'da çalıştırırken geçerlidir. Daha fazla bilgi için bkz. [host.jsbaşvurusu](functions-host-json.md).
 
-* **Local. Settings. JSON**: işlevleri yerel olarak çalıştırırken kullanılan ayarları korur. Bu ayarlar yalnızca işlevleri yerel olarak çalıştırdığınızda kullanılır. Daha fazla bilgi için bkz. [yerel ayarlar dosyası](#local-settings-file).
+* **local.settings.js**:, işlevleri yerel olarak çalıştırırken kullanılan ayarları korur. Bu ayarlar yalnızca işlevleri yerel olarak çalıştırdığınızda kullanılır. Daha fazla bilgi için bkz. [yerel ayarlar dosyası](#local-settings-file).
 
     >[!IMPORTANT]
-    >Local. Settings. JSON dosyası gizli dizileri içerebildiğinden, bunu proje kaynak denetiinizden çıkarmanız gerekir.
+    >Dosyadaki local.settings.jsgizli dizileri içerebildiğinden, bunu proje kaynak denetiinizden çıkarmanız gerekir.
 
 Dilinize bağlı olarak, bu diğer dosyalar oluşturulur:
 
@@ -100,11 +100,11 @@ Bu noktada, [C# sınıf kitaplığı işlevine bir parametre ekleyerek](#add-inp
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
-* Kök klasörde bir Package. JSON dosyası.
+* Kök klasördeki dosya package.js.
 
-* İşlev kodunu içeren bir Node. js dosyası olan [function. JSON tanım dosyasını](functions-reference-node.md#folder-structure) ve [index. js dosyasını](functions-reference-node.md#exporting-a-function)içeren bir httpexample klasörü.
+* [Tanım dosyasıfunction.js](functions-reference-node.md#folder-structure) Içeren bir httpexample klasörü ve işlev kodunu içeren bir Node.js dosyası [index.js dosyası](functions-reference-node.md#exporting-a-function).
 
-Bu noktada, [function. json dosyasını değiştirerek](#add-input-and-output-bindings)işlevinizde giriş ve çıkış bağlamaları ekleyebilirsiniz.
+Bu noktada, [dosyanızdaki function.jsdeğiştirerek](#add-input-and-output-bindings)işlevinizde giriş ve çıkış bağlamaları ekleyebilirsiniz.
 
 <!-- # [PowerShell](#tab/powershell)
 
@@ -150,7 +150,7 @@ Projenize yeni bir C# sınıf kitaplığı (. cs) dosyası eklenir.
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
-Projede yeni bir klasör oluşturulur. Klasör yeni bir Function. JSON dosyası ve yeni JavaScript kod dosyası içeriyor.
+Projede yeni bir klasör oluşturulur. Klasör yeni bir function.jsdosya ve yeni JavaScript kod dosyası içerir.
 
 ---
 
@@ -158,7 +158,7 @@ Projede yeni bir klasör oluşturulur. Klasör yeni bir Function. JSON dosyası 
 
 Giriş ve çıkış bağlamaları ekleyerek işlevinizi genişletebilirsiniz. Bağlama ekleme işlemi projenizin diline bağlıdır. Bağlamalar hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md).
 
-Aşağıdaki örnekler `outqueue` , depolama hesabının bağlantı dizesinin `MyStorageConnection` yerel. Settings. JSON içindeki uygulama ayarında ayarlandığı adlı bir depolama kuyruğuna bağlanır.
+Aşağıdaki örneklerde `outqueue` , depolama hesabının bağlantı dizesinin `MyStorageConnection` local.settings.jsüzerindeki uygulama ayarında ayarlandığı adlı bir depolama kuyruğuna bağlanır.
 
 # <a name="c"></a>[,\#](#tab/csharp)
 
@@ -180,7 +180,7 @@ Daha fazla bilgi için bkz. [kuyruk depolama çıkışı bağlama](functions-bin
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
-Visual Studio Code, uygun bir istem kümesini izleyerek function. JSON dosyanıza bağlama eklemenizi sağlar. Bir bağlama oluşturmak için, işlev klasörünüzdeki **function. JSON** dosyasını sağ tıklatın (MacOS üzerinde CTRL + tıklama) ve **bağlama Ekle**' yi seçin:
+Visual Studio Code, uygun bir istem kümesini izleyerek dosya üzerinde function.jsbağlama eklemenize olanak tanır. Bağlama oluşturmak için, işlev klasörünüzdeki dosyadaki **function.js** sağ tıklayıp (MacOS üzerinde CTRL + tıklama), **bağlama Ekle**' yi seçin:
 
 ![Varolan bir JavaScript işlevine bağlama ekleme ](media/functions-develop-vs-code/function-add-binding.png)
 
@@ -192,9 +192,9 @@ Aşağıda yeni bir depolama çıkış bağlaması tanımlamak için örnek iste
 | **Yön içeren bağlamayı seçin** | `Azure Queue Storage` | Bağlama bir Azure depolama kuyruğu bağlamadır. |
 | **Kodunuzda bu bağlamayı tanımlamak için kullanılan ad** | `msg` | Kodunuzda başvurulan bağlama parametresini tanımlayan ad. |
 | **İletinin gönderileceği kuyruk** | `outqueue` | Bağlamanın yazdığı kuyruğun adı. *SıraAdı* mevcut olmadığında, bağlama ilk kullanımda oluşturulur. |
-| **"Local. Settings. JSON" ayarını seçin** | `MyStorageConnection` | Depolama hesabı için bağlantı dizesini içeren bir uygulama ayarının adı. `AzureWebJobsStorage`Ayar, işlev uygulamasıyla oluşturduğunuz depolama hesabı için bağlantı dizesini içerir. |
+| **"local.settings.json" ayarını seçin** | `MyStorageConnection` | Depolama hesabı için bağlantı dizesini içeren bir uygulama ayarının adı. `AzureWebJobsStorage`Ayar, işlev uygulamasıyla oluşturduğunuz depolama hesabı için bağlantı dizesini içerir. |
 
-Bu örnekte, `bindings` function. JSON dosyanızdaki diziye aşağıdaki bağlama eklenir:
+Bu örnekte, aşağıdaki bağlama `bindings` dosyadaki function.jsdizisine eklenir:
 
 ```javascript
 {
@@ -206,7 +206,7 @@ Bu örnekte, `bindings` function. JSON dosyanızdaki diziye aşağıdaki bağlam
 }
 ```
 
-Aynı bağlama tanımını doğrudan işleviniz. json ' a de ekleyebilirsiniz.
+Aynı bağlama tanımını doğrudan üzerinde function.jsde ekleyebilirsiniz.
 
 İşlev kodunuzda, `msg` `context` Bu örnekte olduğu gibi bağlama öğesinden öğesine erişilir:
 
@@ -269,13 +269,7 @@ Aşağıdaki adımlar, projenizi gelişmiş oluşturma seçenekleriyle oluşturu
 > [!IMPORTANT]
 > Varolan bir işlev uygulamasına yayımladığınızda Azure’daki uygulamanın içeriğinin üzerine yazılır.
 
-1. Visual Studio Code ' de, F1 ' i seçerek komut paleti ' ni açın. Komut paletinde, **Azure işlevleri: işlev uygulamasına dağıt**' ı arayın ve seçin.
-
-1. Oturum açmadıysanız **Azure 'Da oturum açmanız**istenir. Tarayıcıdan oturum açtıktan sonra Visual Studio Code ' e geri dönün. Birden çok aboneliğiniz varsa, işlev uygulamanızı içeren **bir abonelik seçin** .
-
-1. Azure 'da mevcut işlev uygulamanızı seçin. İşlev uygulamasındaki tüm dosyaların üzerine yazma konusunda uyarı aldığınızda, uyarıyı onaylamak ve devam etmek için **Dağıt** ' ı seçin.
-
-Proje yeniden oluşturulur, yeniden paketlenmiştir ve Azure 'a yüklenir. Mevcut proje yeni paket ile değiştirilmiştir ve işlev uygulaması yeniden başlatılır.
+[!INCLUDE [functions-republish-vscode](../../includes/functions-republish-vscode.md)]
 
 ## <a name="get-the-url-of-the-deployed-function"></a>Dağıtılan işlevin URL 'sini al
 
@@ -289,7 +283,7 @@ HTTP ile tetiklenen bir işlevi çağırmak için işlev uygulamanıza dağıtı
 
 ## <a name="run-functions-locally"></a>İşlevleri yerel olarak çalıştır
 
-Azure Işlevleri uzantısı, yerel geliştirme bilgisayarınızda bir Işlevler projesi çalıştırmanızı sağlar. Yerel çalışma zamanı, Azure 'da işlev uygulamanızı barındıran çalışma zamanının aynısıdır. Yerel ayarlar [yerel. Settings. json dosyasından](#local-settings-file)okunmalıdır.
+Azure Işlevleri uzantısı, yerel geliştirme bilgisayarınızda bir Işlevler projesi çalıştırmanızı sağlar. Yerel çalışma zamanı, Azure 'da işlev uygulamanızı barındıran çalışma zamanının aynısıdır. Yerel ayarlar [dosyadakilocal.settings.js](#local-settings-file)okur.
 
 ### <a name="additional-requirements-for-running-a-project-locally"></a>Projeyi yerel olarak çalıştırmaya yönelik ek gereksinimler
 
@@ -303,7 +297,7 @@ Işlevler projenizi yerel olarak çalıştırmak için aşağıdaki ek gereksini
     | -------- | --------- |
     | **C#** | [C# uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI araçları](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [Java uzantısı için hata ayıklayıcı](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 veya üzeri](https://maven.apache.org/) |
-    | **JavaScript** | [Node. js](https://nodejs.org/)<sup>*</sup> |  
+    | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
     | **Python** | [Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6.8](https://www.python.org/downloads/) önerilir|
 
     <sup>*</sup>Etkin LTS ve bakım LTS sürümleri (8.11.1 ve 10.14.1 önerilir).
@@ -318,7 +312,7 @@ Depolama hesabı bağlantı dizesini ayarlamak için:
 
 1. Visual Studio 'da **Cloud Explorer**' ı açın, **depolama hesabı ' nı genişletin**  >  **Your Storage Account**ve ardından **Özellikler** ' i seçin ve **birincil bağlantı dizesi** değerini kopyalayın.
 
-2. Projenizde, Local. Settings. json dosyasını açın ve **AzureWebJobsStorage** anahtarının değerini kopyaladığınız bağlantı dizesine ayarlayın.
+2. Projenizde local.settings.jsdosya üzerinde açın ve **AzureWebJobsStorage** anahtarının değerini kopyaladığınız bağlantı dizesi olarak ayarlayın.
 
 3. İşlevlerinizin gerektirdiği diğer tüm bağlantılar için **Values** dizisine benzersiz anahtarlar eklemek için önceki adımı tekrarlayın.
 
@@ -336,7 +330,7 @@ Daha fazla bilgi için bkz. Azure Functions Core Tools[Azure Functions Core Tool
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olarak geçirilmez. Yayımlama bittikten sonra, Azure 'daki işlev uygulamanıza yerel. Settings. JSON konumundan ayarları yayımlama seçeneği sunulur. Daha fazla bilgi için bkz. [uygulama ayarlarını yayımlama](#publish-application-settings).
+Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olarak geçirilmez. Yayımlama bittikten sonra, Azure 'daki işlev uygulamanıza local.settings.jsayarları yayımlama seçeneği sunulur. Daha fazla bilgi için bkz. [uygulama ayarlarını yayımlama](#publish-application-settings).
 
 **ConnectionString** içindeki değerler hiçbir şekilde yayımlanmaz.
 
@@ -349,7 +343,7 @@ Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olar
 
 ## <a name="application-settings-in-azure"></a>Azure 'da uygulama ayarları
 
-Projenizdeki Local. Settings. JSON dosyasındaki ayarlar, Azure 'daki işlev uygulamasındaki uygulama ayarlarıyla aynı olmalıdır. Yerel. Settings. JSON öğesine eklediğiniz tüm ayarlar ayrıca Azure 'daki işlev uygulamasına eklenmelidir. Projeyi yayımladığınızda bu ayarlar otomatik olarak karşıya yüklenemez. Benzer şekilde, [portalda](functions-how-to-use-azure-function-app-settings.md#settings) işlev uygulamanızda oluşturduğunuz tüm ayarlar yerel projenize indirilmelidir.
+Projenizdeki local.settings.jsdosyadaki ayarlar, Azure 'daki işlev uygulamasındaki uygulama ayarları ile aynı olmalıdır. local.settings.js' ye eklediğiniz tüm ayarların Azure 'daki işlev uygulamasına da eklenmesi gerekir. Projeyi yayımladığınızda bu ayarlar otomatik olarak karşıya yüklenemez. Benzer şekilde, [portalda](functions-how-to-use-azure-function-app-settings.md#settings) işlev uygulamanızda oluşturduğunuz tüm ayarlar yerel projenize indirilmelidir.
 
 ### <a name="publish-application-settings"></a>Uygulama ayarlarını Yayımla
 
@@ -360,7 +354,7 @@ Azure 'daki işlev uygulamanıza gereken ayarları yayımlamanın en kolay yolu,
 Ayrıca, komut paletindeki **Azure işlevleri: yerel ayarı yükle** komutunu kullanarak ayarları yayımlayabilirsiniz. Azure **işlevleri: yeni ayar Ekle** komutunu kullanarak Azure 'daki uygulama ayarlarına ayrı ayarlar ekleyebilirsiniz.
 
 > [!TIP]
-> Yayımlamadan önce Local. Settings. JSON dosyanızı kaydettiğinizden emin olun.
+> Yayımlamadan önce local.settings.jsdosyayı kaydettiğinizden emin olun.
 
 Yerel dosya şifrelendiyse, şifresi çözülür, yayımlanır ve yeniden şifrelenir. İki konumda çakışan değerlere sahip ayarlar varsa, nasıl devam etmek istediğinizi seçmeniz istenir.
 
@@ -370,7 +364,7 @@ Aboneliğinizi, işlev uygulamanızı ve **uygulama ayarlarınızı**genişleter
 
 ### <a name="download-settings-from-azure"></a>Azure 'dan ayarları indirin
 
-Azure 'da uygulama ayarları oluşturduysanız, **Azure işlevleri: uzak ayarları indir** komutunu kullanarak bunları yerel. Settings. JSON dosyanıza indirebilirsiniz.
+Azure 'da uygulama ayarları oluşturduysanız **Azure işlevleri: uzak ayarları indir** komutunu kullanarak bunları dosya local.settings.jsyükleyebilirsiniz.
 
 Karşıya yüklenirken olduğu gibi, yerel dosya şifrelenirse, yeniden çözülür, güncelleştirilir ve şifrelenir. İki konumda çakışan değerlere sahip ayarlar varsa, nasıl devam etmek istediğinizi seçmeniz istenir.
 
@@ -409,7 +403,7 @@ Varsayılan olarak, tüm C# projeleri [C# derlenmiş sınıf kitaplığı projel
 
 1. Azure Işlevinden **C # betiği** seçin **: proje dili**.
 
-Bu adımları tamamladıktan sonra, temel alınan temel araçlara yapılan çağrılar `--csx` C# betiği (. CSX) proje dosyalarını oluşturan ve yayımlayan seçeneğini içerir. Bu varsayılan dili belirttiğinizde, varsayılan olarak C# betik projelerinde oluşturduğunuz tüm projeler. Varsayılan değer ayarlandığında bir proje dili seçmeniz istenmez. Diğer dillerde proje oluşturmak için bu ayarı değiştirmeniz veya Kullanıcı ayarları. json dosyasından kaldırmanız gerekir. Bu ayarı kaldırdıktan sonra bir proje oluşturduğunuzda dilinizi seçmeniz istenir.
+Bu adımları tamamladıktan sonra, temel alınan temel araçlara yapılan çağrılar `--csx` C# betiği (. CSX) proje dosyalarını oluşturan ve yayımlayan seçeneğini içerir. Bu varsayılan dili belirttiğinizde, varsayılan olarak C# betik projelerinde oluşturduğunuz tüm projeler. Varsayılan değer ayarlandığında bir proje dili seçmeniz istenmez. Diğer dillerde proje oluşturmak için bu ayarı değiştirmeniz veya dosyadaki Kullanıcı settings.jskaldırmanız gerekir. Bu ayarı kaldırdıktan sonra bir proje oluşturduğunuzda dilinizi seçmeniz istenir.
 
 ## <a name="command-palette-reference"></a>Komut paleti başvurusu
 
@@ -426,16 +420,16 @@ Azure Işlevleri uzantısı, Azure 'daki işlev uygulamalarınızla etkileşim k
 | **İşlev Uygulaması Sil** | Azure 'daki aboneliğinizden bir işlev uygulamasını kaldırır. App Service planında başka uygulama yoksa, bunu silme seçeneği sunulur. Depolama hesapları ve kaynak grupları gibi diğer kaynaklar silinmez. Tüm kaynakları kaldırmak için, bunun yerine [kaynak grubunu silmelisiniz](functions-add-output-binding-storage-queue-vs-code.md#clean-up-resources). Yerel projeniz etkilenmez. |
 |**Delete Işlevi**  | Azure 'daki bir işlev uygulamasından mevcut bir işlevi kaldırır. Bu silme işlemi yerel projenizi etkilemediğinden, bunun yerine işlevi yerel olarak kaldırıp [projenizi yeniden yayımönünde](#republish-project-files)bulundurun. |
 | **Ara sunucuyu Sil** | Azure Işlevleri proxy 'sini Azure 'daki işlev uygulamanızdan kaldırır. Proxy 'ler hakkında daha fazla bilgi için bkz. [Azure işlev proxy'leri Ile çalışma](functions-proxies.md). |
-| **Ayarı Sil** | Azure 'da bir işlev uygulaması ayarını siler. Bu silme işlemi, Local. Settings. JSON dosyanızdaki ayarları etkilemez. |
+| **Ayarı Sil** | Azure 'da bir işlev uygulaması ayarını siler. Bu silme işlemi dosyadaki local.settings.jsayarları etkilemez. |
 | **Deponun bağlantısını kes**  | Azure 'daki bir işlev uygulaması ve bir kaynak denetimi deposu arasındaki [sürekli dağıtım](functions-continuous-deployment.md) bağlantısını kaldırır. |
-| **Uzak ayarları indir** | Azure 'daki seçili işlev uygulamasındaki ayarları yerel. Settings. JSON dosyanıza indirir. Yerel dosya şifrelendiyse, şifresi çözülür, güncelleştirilir ve yeniden şifrelenir. İki konumda çakışan değerlere sahip ayarlar varsa, nasıl devam etmek istediğinizi seçmeniz istenir. Bu komutu çalıştırmadan önce yerel. Settings. JSON dosyanızdaki değişiklikleri kaydettiğinizden emin olun. |
-| **Ayarları Düzenle** | Azure 'da var olan bir işlev uygulaması ayarının değerini değiştirir. Bu komut yerel. Settings. JSON dosyanızdaki ayarları etkilemez.  |
+| **Uzak ayarları indir** | Azure 'daki seçili işlev uygulamasından gelen ayarları local.settings.jsdosyasına indirir. Yerel dosya şifrelendiyse, şifresi çözülür, güncelleştirilir ve yeniden şifrelenir. İki konumda çakışan değerlere sahip ayarlar varsa, nasıl devam etmek istediğinizi seçmeniz istenir. Bu komutu çalıştırmadan önce dosyadaki değişiklikleri local.settings.jskaydettiğinizden emin olun. |
+| **Ayarları Düzenle** | Azure 'da var olan bir işlev uygulaması ayarının değerini değiştirir. Bu komut, local.settings.jsdosyadaki ayarları etkilemez.  |
 | **Şifreleme ayarları** | `Values` [Yerel ayarlarda](#local-settings-file)dizideki tek tek öğeleri şifreler. Bu dosyada Ayrıca, `IsEncrypted` `true` yerel çalışma zamanının kullanılmadan önce ayarların şifresini çözmesini belirten olarak ayarlanır. Değerli bilgilerin sızması riskini azaltmak için yerel ayarları şifreleyin. Azure 'da uygulama ayarları her zaman şifreli olarak depolanır. |
 | **Işlevi Şimdi Çalıştır** | Azure 'da [Zamanlayıcı tarafından tetiklenen bir işlevi](functions-bindings-timer.md) el ile başlatır. Bu komut test için kullanılır. HTTP olmayan işlevleri Azure 'da tetikleme hakkında daha fazla bilgi edinmek için bkz. [http ile tetiklenen bir Işlevi el ile çalıştırma](functions-manually-run-non-http.md). |
 | **Projeyi VS Code ile kullanım için Başlat** | Gerekli Visual Studio Code proje dosyalarını var olan Işlevler projesine ekler. Temel araçları kullanarak oluşturduğunuz bir projeyle çalışmak için bu komutu kullanın. |
 | **Azure Functions Core Tools yüklemeyi veya güncelleştirmeyi** | İşlevleri yerel olarak çalıştırmak için kullanılan [Azure Functions Core Tools]yüklenir veya güncelleştirir. |
 | **Yeniden dağıtım**  | Bağlı bir git deposundan proje dosyalarını Azure 'daki belirli bir dağıtıma yeniden dağıtmanıza olanak tanır. Visual Studio Code yerel güncelleştirmeleri yeniden yayımlamak için [projenizi yeniden yayımlayın](#republish-project-files). |
-| **Ayarları yeniden adlandır** | Azure 'da var olan bir işlev uygulaması ayarının anahtar adını değiştirir. Bu komut yerel. Settings. JSON dosyanızdaki ayarları etkilemez. Azure 'daki ayarları yeniden adlandırdıktan sonra, [Bu değişiklikleri yerel projeye indirmeniz](#download-settings-from-azure)gerekir. |
+| **Ayarları yeniden adlandır** | Azure 'da var olan bir işlev uygulaması ayarının anahtar adını değiştirir. Bu komut, local.settings.jsdosyadaki ayarları etkilemez. Azure 'daki ayarları yeniden adlandırdıktan sonra, [Bu değişiklikleri yerel projeye indirmeniz](#download-settings-from-azure)gerekir. |
 | **Yeniden başlat** | İşlev uygulamasını Azure 'da yeniden başlatır. Güncelleştirmelerin dağıtımı, işlev uygulamasını da yeniden başlatır. |
 | **AzureWebJobsStorage ayarla**| `AzureWebJobsStorage`Uygulama ayarının değerini ayarlar. Bu ayar, Azure Işlevleri için gereklidir. Azure 'da bir işlev uygulaması oluşturulduğunda ayarlanır. |
 | **Başlangıç** | Azure 'da durdurulmuş bir işlev uygulaması başlatır. |
@@ -444,7 +438,7 @@ Azure Işlevleri uzantısı, Azure 'daki işlev uygulamalarınızla etkileşim k
 | **Akış günlüklerini durdur** | Azure 'da işlev uygulaması için akış günlüklerini sonlandırır. |
 | **Yuva ayarı olarak değiştirme** | Etkinleştirildiğinde, belirli bir dağıtım yuvası için bir uygulama ayarının devam ettiğinden emin olur. |
 | **Azure Functions Core Tools kaldır** | Uzantısının gerektirdiği Azure Functions Core Tools kaldırır. |
-| **Yerel ayarları karşıya yükle** | Yerel. Settings. JSON dosyanızdaki ayarları Azure 'da seçilen işlev uygulamasına yükler. Yerel dosya şifrelendiyse, dosyanın şifresi çözülür, karşıya yüklenir ve yeniden şifrelenir. İki konumda çakışan değerlere sahip ayarlar varsa, nasıl devam etmek istediğinizi seçmeniz istenir. Bu komutu çalıştırmadan önce yerel. Settings. JSON dosyanızdaki değişiklikleri kaydettiğinizden emin olun. |
+| **Yerel ayarları karşıya yükle** | local.settings.jsdosyadaki ayarları Azure 'daki seçili işlev uygulamasına yükler. Yerel dosya şifrelendiyse, dosyanın şifresi çözülür, karşıya yüklenir ve yeniden şifrelenir. İki konumda çakışan değerlere sahip ayarlar varsa, nasıl devam etmek istediğinizi seçmeniz istenir. Bu komutu çalıştırmadan önce dosyadaki değişiklikleri local.settings.jskaydettiğinizden emin olun. |
 | **GitHub 'da yürütmeyi görüntüle** | İşlev uygulamanız depoya bağlıyken belirli bir dağıtımda en son yürütmeyi gösterir. |
 | **Dağıtım günlüklerini görüntüle** | Azure 'daki işlev uygulamasına belirli bir dağıtımın günlüklerini gösterir. |
 

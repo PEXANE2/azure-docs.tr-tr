@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 0052657c947f8a9ff9c9d6aef86ff16d9a22adae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 538db1f2a757dd5216839ac9ac37ad0c06c5e9ea
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803492"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976080"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Uygulama geliştiricilerinin Azure Kubernetes Service (AKS) içindeki kaynakları yönetmesi için en iyi uygulamalar
 
@@ -23,7 +23,7 @@ Bu en iyi yöntemler makalesi, bir uygulama geliştirici perspektifinden kümeni
 > [!div class="checklist"]
 > * Pod kaynak istekleri ve limitleri nelerdir?
 > * Geliştirme alanları ve Visual Studio Code uygulamalar geliştirme ve dağıtmaya yönelik yollar
-> * Dağıtımlarla ilgili sorunları `kube-advisor` denetlemek için aracı kullanma
+> * `kube-advisor`Dağıtımlarla ilgili sorunları denetlemek için aracı kullanma
 
 ## <a name="define-pod-resource-requests-and-limits"></a>Pod kaynak isteklerini ve sınırlarını tanımlama
 
@@ -76,9 +76,7 @@ Kaynak ölçümleri ve atamaları hakkında daha fazla bilgi için bkz. [kapsay�
 
 **En iyi yöntem kılavuzumuzu** geliştirme ekipleri, dev alanlarını kullanarak bir aks kümesine karşı dağıtım ve hata ayıklamalıdır. Bu geliştirme modeli, uygulama üretime dağıtılmadan önce rol tabanlı erişim denetimleri, ağ veya depolama gereksinimlerinizin uygulandığından emin olur.
 
-Azure Dev Spaces ile, uygulamaları doğrudan bir AKS kümesine karşı geliştirin, hata ayıklayın ve test edersiniz. Bir ekip içindeki geliştiriciler, uygulama yaşam döngüsü boyunca derleme ve test yapmak için birlikte çalışır. Visual Studio veya Visual Studio Code gibi mevcut araçları kullanmaya devam edebilirsiniz. Bir AKS kümesinde uygulamayı çalıştırma ve hata ayıklama seçeneği sunan dev alanları için bir uzantı yüklenir:
-
-![Dev Spaces ile bir AKS kümesindeki uygulamalarda hata ayıklama](media/developer-best-practices-resource-management/dev-spaces-debug.png)
+Azure Dev Spaces ile, uygulamaları doğrudan bir AKS kümesine karşı geliştirin, hata ayıklayın ve test edersiniz. Bir ekip içindeki geliştiriciler, uygulama yaşam döngüsü boyunca derleme ve test yapmak için birlikte çalışır. Visual Studio veya Visual Studio Code gibi mevcut araçları kullanmaya devam edebilirsiniz. Bir AKS kümesinde uygulamayı çalıştırma ve hata ayıklama seçeneği sunan dev alanları için bir uzantı yüklenir.
 
 Geliştirme alanları ile bu tümleşik geliştirme ve test süreci, [minikube][minikube]gibi yerel test ortamları gereksinimini azaltır. Bunun yerine, bir AKS kümesinde geliştirme ve test edersiniz. Bu küme güvenli hale getirilir ve bir kümeyi mantıksal olarak yalıtmak için ad alanları kullanmanın önceki bölümünde belirtildiği gibi yalıtılabilir. Uygulamalarınız üretime dağıtılmaya hazırsanız, geliştirmenin hepsi gerçek bir AKS kümesine karşı yapıldığından güvenle dağıtım yapabilirsiniz.
 
@@ -94,13 +92,13 @@ Azure dev Spaces, Linux Pod ve düğümlerinde çalışan uygulamalarla kullanı
 
 ## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>Kuin-Advisor ile uygulama sorunlarını düzenli olarak denetleme
 
-**En iyi Yöntem Kılavuzu** -kümenizdeki sorunları algılamak için `kube-advisor` açık kaynak aracının en son sürümünü düzenli olarak çalıştırın. Mevcut bir aks kümesinde kaynak kotaları uygularsanız, kaynak istekleri ve sınırları `kube-advisor` tanımlı olmayan bir pod bulmak için ilk olarak ' i çalıştırın.
+**En iyi Yöntem Kılavuzu** - `kube-advisor` kümenizdeki sorunları algılamak için açık kaynak aracının en son sürümünü düzenli olarak çalıştırın. Mevcut bir aks kümesinde kaynak kotaları uygularsanız, `kube-advisor` kaynak istekleri ve sınırları tanımlı olmayan bir pod bulmak için ilk olarak ' i çalıştırın.
 
 [Kuin-Advisor][kube-advisor] Aracı, bir Kubernetes kümesini tarayan ve bulduğu sorunlar hakkında rapor veren ilişkili bir aks açık kaynak projesidir. Tek bir faydalı denetim, kaynak istekleri ve sınırları olmayan Pod 'yi belirlemektir.
 
 Kumak-Advisor Aracı, Windows Uygulamaları ve Linux uygulamaları için pod özelliklerinin yanı sıra kaynak isteği ve limitleri rapor edebilir, ancak Kuto-Advisor aracının kendisi bir Linux pod üzerinde zamanlanmalıdır. Pod 'un yapılandırmasındaki [düğüm seçicisini][k8s-node-selector] kullanarak belirli bir işletim sistemine sahip bir düğüm havuzunda çalışacak bir pod zamanlayabilirsiniz.
 
-Birçok geliştirme ekiplerini ve uygulamayı barındıran bir aks kümesinde, bu kaynak istekleri ve limitler kümesi olmadan Pod 'yi izlemek zor olabilir. En iyi uygulama olarak AKS kümelerinizde düzenli olarak çalışır `kube-advisor` .
+Birçok geliştirme ekiplerini ve uygulamayı barındıran bir aks kümesinde, bu kaynak istekleri ve limitler kümesi olmadan Pod 'yi izlemek zor olabilir. En iyi uygulama olarak `kube-advisor` AKS kümelerinizde düzenli olarak çalışır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -119,7 +117,7 @@ Bu en iyi uygulamalardan bazılarını uygulamak için aşağıdaki makalelere b
 
 <!-- INTERNAL LINKS -->
 [aks-kubeadvisor]: kube-advisor-tool.md
-[dev-spaces]: ../dev-spaces/get-started-netcore.md
+[dev-spaces]: ../dev-spaces/how-dev-spaces-works-local-process-kubernetes.md
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
 [k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

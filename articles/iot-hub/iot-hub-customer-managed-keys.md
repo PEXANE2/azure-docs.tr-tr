@@ -6,20 +6,21 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/08/2020
+ms.date: 06/17/2020
 ms.author: asrastog
-ms.openlocfilehash: 609f68c79159c4ce17468fc1df13c0c9eae7f211
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83d2fa59654e038586a7f23eedbe7c656873f35c
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370585"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976583"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-iot-hub"></a>IoT Hub için müşteri tarafından yönetilen anahtarlarla bekleyen verilerin şifrelenmesi
 
-IoT Hub, müşteri tarafından yönetilen anahtarlar (CMK) ile bekleyen verilerin şifrelenmesini destekler, Ayrıca, kendi anahtarını getir (BYOK) olarak da bilinen Azure IoT Hub desteği. Azure IoT Hub, bekleyen ve aktarım sırasında veri şifrelemesini sağlar. Varsayılan olarak IoT Hub, verileri şifrelemek için Microsoft tarafından yönetilen anahtarları kullanır. CMK desteğiyle, müşteriler artık [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)kullanarak müşterilerin yönettiği bir anahtar şifreleme anahtarıyla bekleyen verileri şifreleme seçeneği vardır.
+IoT Hub, kendi anahtarını getir (BYOK) olarak da bilinen, müşteri tarafından yönetilen anahtarlarla (CMK) kalan verilerin şifrelenmesini destekler. Azure IoT Hub, veri merkezlerimizde yazıldığı sırada verilerin, bekleyen ve aktarım sırasında şifrelenmesini sağlar ve ona erişirken sizin için şifresini çözer. IoT Hub, varsayılan olarak, bekleyen verileri şifrelemek için Microsoft tarafından yönetilen anahtarları kullanır. CMK ile, varsayılan şifrelemenin en üstünde başka bir şifreleme katmanı alabilir ve [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), bekleyen verileri bir anahtar şifreleme anahtarıyla, bu anahtarla yönetilen bir anahtarla şifrelemeyi tercih edebilirsiniz. Bu, erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme esnekliği sağlar. IoT Hub için BYOK yapılandırıldıysa, ikinci bir koruma katmanı sunan ve Azure Key Vault bir şifreleme anahtarı denetlemenizi sağlayan çift şifrelemeyi de sağlarız.
 
-Bu özellik, şu bölgelerden birinde yeni bir IoT Hub (temel veya Standart katman) oluşturulmasını gerektirir: Doğu ABD, Batı ABD 2, Orta Güney ABD veya US Gov. Bu özelliği denemek için [Microsoft desteği](https://azure.microsoft.com/support/create-ticket/)ile bizimle iletişim kurun. Microsoft Destek ile iletişim kurarken şirketinizin adını ve abonelik KIMLIĞINIZI paylaşabilirsiniz.
+Bu yetenek, yeni bir IoT Hub (temel veya Standart katman) oluşturulmasını gerektirir. Bu özelliği denemek için [Microsoft desteği](https://azure.microsoft.com/support/create-ticket/)ile bizimle iletişim kurun. Microsoft Destek ile iletişim kurarken şirketinizin adını ve abonelik KIMLIĞINIZI paylaşabilirsiniz.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

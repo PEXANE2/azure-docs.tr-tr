@@ -5,15 +5,15 @@ description: Bu makalede, bir TLS/SSL sertifikasının Azure Application Gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 06/09/2020
+ms.topic: how-to
+ms.date: 06/17/2020
 ms.author: absha
-ms.openlocfilehash: 010ecc234afd745844b5b7868030d3c4e823872f
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 125da04c9fafe33c7f3de3a5849e4238b3b45d6d
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628920"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976549"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Azure Application Gateway arka uca izin vermek için sertifikalar oluşturma
 
@@ -26,7 +26,7 @@ Bu makalede şunları öğreneceksiniz:
 > - Bir arka uç sertifikasından kimlik doğrulama sertifikasını dışarı aktar (v1 SKU 'SU için)
 > - Güvenilen kök sertifikayı bir arka uç sertifikasından dışarı aktar (v2 SKU 'SU için)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Application Gateway ile arka uç örneklerine izin vermek için gereken kimlik doğrulama sertifikalarını veya güvenilir kök sertifikaları oluşturmak için mevcut bir arka uç sertifikası gerekir. Arka uç sertifikası, TLS/SSL sertifikasıyla aynı veya ek güvenlik için farklı olabilir. Application Gateway, size bir TLS/SSL sertifikası oluşturma veya satın alma mekanizması sağlamaz. Test amacıyla, otomatik olarak imzalanan bir sertifika oluşturabilirsiniz, ancak bunu üretim iş yükleri için kullanmamalısınız. 
 
@@ -78,7 +78,7 @@ Uygulama ağ geçidi v2 SKU 'sunda arka uç örneklerine izin vermek için güve
 
 Aşağıdaki adımlar, sertifikanız için. cer dosyasını dışarı aktarmaya yardımcı olur:
 
-1. Arka uç sertifikaınızdan ortak anahtarı dışarı aktarmak için yukarıdaki **kimlik doğrulama sertifikasını bir arka uç sertifikasından dışarı aktarma (v1 SKU 'su için)** bölümünde bahsedilen 1-9 adımlarını kullanın.
+1. Arka uç sertifikaınızdan ortak anahtarı dışarı aktarmak için önceki bölümde belirtilen [kimlik doğrulama sertifikası (v1 SKU 'su için)](#export-authentication-certificate-for-v1-sku) ile ilgili 1-8 adımları kullanın.
 
 2. Ortak anahtar verildikten sonra dosyayı açın.
 

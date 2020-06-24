@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: a17f27831dd0a674c1d55cde6974aba5e1bfcfc3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a9382af630d80480e5bec50d629451ebe49bf73
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105735"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734478"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de sanal makinelere uzaktan erişimi güvenli hale getirme
 
@@ -41,7 +41,7 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardı
 * Abonelikle ilişkili bir Azure Active Directory kiracısı, şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
     * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
 * Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
-    * Gerekirse, [bir Azure Active Directory Domain Services örneği oluşturun ve yapılandırın][create-azure-ad-ds-instance].
+    * Gerekirse, [Azure Active Directory Domain Services yönetilen bir etki alanı oluşturun ve yapılandırın][create-azure-ad-ds-instance].
 * Azure Active Directory Domain Services sanal ağınızda oluşturulan bir *iş yükü* alt ağı.
     * Gerekirse, [Azure Active Directory Domain Services yönetilen bir etki alanı için sanal ağ yapılandırın][configure-azureadds-vnet].
 * Azure AD kiracınızda *Azure AD DC Administrators* grubunun üyesi olan bir kullanıcı hesabı.
@@ -55,16 +55,16 @@ Başlamak için, Windows Server 2016 veya Windows Server 2019 çalıştıran en 
 * *RDGVM01* -RD Bağlantı Aracısı sunucusunu, RD Web Erişimi sunucusunu ve RD Ağ Geçidi sunucusunu çalıştırır.
 * *RDSHVM01* -RD Oturumu Ana Bilgisayarı sunucusunu çalıştırır.
 
-VM 'Lerin Azure AD DS sanal ağınızın bir *iş yükü* alt ağına dağıtıldığından emin olun ve ardından VM 'leri Azure AD DS yönetilen etki alanına katın. Daha fazla bilgi için bkz. [Windows Server VM oluşturma ve Azure AD DS yönetilen bir etki alanına katma][tutorial-create-join-vm].
+VM 'Lerin Azure AD DS sanal ağınızın bir *iş yükü* alt ağına dağıtıldığından emin olun ve ardından VM 'leri yönetilen etki alanına katın. Daha fazla bilgi için bkz. [Windows Server VM oluşturma ve yönetilen bir etki alanına katma][tutorial-create-join-vm].
 
-RD ortamı dağıtımı bir dizi adım içerir. Mevcut RD dağıtım kılavuzu, Azure AD DS yönetilen bir etki alanında kullanılmak üzere belirli bir değişiklik yapılmadan kullanılabilir:
+RD ortamı dağıtımı bir dizi adım içerir. Mevcut RD dağıtım kılavuzu, yönetilen bir etki alanında kullanılmak üzere belirli bir değişiklik yapılmadan kullanılabilir:
 
 1. *Azure AD DC yöneticileri* grubunun bir parçası olan *contosoadmin*gibi bir hesapla RD ortamı için oluşturulan VM 'lerde oturum açın.
 1. RDS oluşturmak ve yapılandırmak için, mevcut [Uzak Masaüstü ortamı dağıtım kılavuzunu][deploy-remote-desktop]kullanın. RD sunucusu bileşenlerini istediğiniz şekilde Azure sanal makinelerinize dağıtın.
     * Azure AD DS 'e özgü-RD lisansını yapılandırırken, dağıtım kılavuzunda belirtildiği şekilde **Kullanıcı başına** değil, **cihaz başına** moduna ayarlayın.
 1. Bir Web tarayıcısı kullanarak erişim sağlamak istiyorsanız, [kullanıcılarınız Için Uzak Masaüstü Web istemcisini ayarlayın][rd-web-client].
 
-Azure AD DS yönetilen etki alanına dağıtılan RD ile, hizmeti şirket içi AD DS etki alanı ile yaptığınız gibi yönetebilir ve kullanabilirsiniz.
+Yönetilen etki alanına dağıtılan RD ile hizmeti, şirket içi AD DS etki alanı ile yaptığınız gibi yönetebilir ve kullanabilirsiniz.
 
 ## <a name="deploy-and-configure-nps-and-the-azure-mfa-nps-extension"></a>NPS 'yi ve Azure MFA NPS uzantısını dağıtma ve yapılandırma
 
@@ -76,7 +76,7 @@ Kullanıcıların [azure Multi-Factor Authentication kullanmak için kayıtlı][
 
 Azure Multi-Factor Authentication ' de Azure AD DS uzak masaüstü ortamınızda bütünleştirmek için, bir NPS sunucusu oluşturun ve uzantıyı yüklemelisiniz:
 
-1. Azure AD DS sanal ağınızdaki bir *iş yükü* alt ağına bağlı *NPSVM01*gibi ek bir Windows Server 2016 veya 2019 sanal makinesi oluşturun. VM 'yi Azure AD DS yönetilen etki alanına ekleyin.
+1. Azure AD DS sanal ağınızdaki bir *iş yükü* alt ağına bağlı *NPSVM01*gibi ek bir Windows Server 2016 veya 2019 sanal makinesi oluşturun. VM 'yi yönetilen etki alanına ekleyin.
 1. NPS VM 'de *contosoadmin*gıbı *Azure AD DC yöneticileri* grubunun bir parçası olan hesap olarak oturum açın.
 1. **Sunucu Yöneticisi**, **rol ve Özellik Ekle**' yi seçin, ardından *Ağ İlkesi ve erişim Hizmetleri* rolünü yükler.
 1. [Azure MFA NPS uzantısını yüklemek ve yapılandırmak][nps-extension]için mevcut nasıl yapılır makalesini kullanın.
@@ -87,9 +87,9 @@ NPS sunucusu ve Azure Multi-Factor Authentication NPS uzantısı yüklüyken, RD
 
 Azure Multi-Factor Authentication NPS uzantısını bütünleştirmek için, [ağ Ilkesi sunucusu (NPS) uzantısını ve Azure AD 'yi kullanarak Uzak Masaüstü Ağ Geçidi altyapınızı bütünleştirmek][azure-mfa-nps-integration]üzere mevcut nasıl yapılır makalesini kullanın.
 
-Azure AD DS yönetilen bir etki alanıyla tümleştirme için aşağıdaki ek yapılandırma seçenekleri gereklidir:
+Yönetilen bir etki alanı ile tümleştirme için aşağıdaki ek yapılandırma seçenekleri gereklidir:
 
-1. [NPS sunucusunu Active Directory kaydetme][register-nps-ad]. Bu adım Azure AD DS yönetilen bir etki alanında başarısız olur.
+1. [NPS sunucusunu Active Directory kaydetme][register-nps-ad]. Bu adım yönetilen bir etki alanında başarısız olur.
 1. [Ağ ilkesini yapılandırmak için 4. adım][create-nps-policy]' da, **Kullanıcı hesabı Içeri arama özelliklerini yok saymak**için kutuyu işaretleyin.
 1. NPS sunucusu ve Azure Multi-Factor Authentication NPS uzantısı için Windows Server 2019 kullanıyorsanız, güvenli kanalı NPS sunucusunun doğru iletişim kurmasına izin verecek şekilde güncelleştirmek için aşağıdaki komutu çalıştırın:
 

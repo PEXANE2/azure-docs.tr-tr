@@ -9,14 +9,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: iainfou
-ms.openlocfilehash: bdfc7d37d99dc5511f47e33d1848c3f142a9693e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99b61bdd4318bf7c77ae53cc9b77e66ebd6c098a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654463"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733407"
 ---
-# <a name="review-security-audit-events-in-azure-ad-domain-services-using-azure-monitor-workbooks"></a>Azure Izleyici çalışma kitaplarını kullanarak Azure AD Domain Services güvenlik denetim olaylarını gözden geçirme
+# <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Azure Izleyici çalışma kitaplarını kullanarak Azure Active Directory Domain Services güvenlik denetim olaylarını gözden geçirme
 
 Azure Active Directory Domain Services (Azure AD DS) yönetilen etki alanının durumunu anlamanıza yardımcı olmak için güvenlik denetim olaylarını etkinleştirebilirsiniz. Bu güvenlik denetim olayları daha sonra, metin, analiz sorguları ve parametreleri zengin etkileşimli raporlara birleştiren Azure Izleyici çalışma kitaplarını kullanarak incelenebilir. Azure AD DS, denetim olaylarını ve ortamınızı yönetmenizi sağlayan güvenlik genel bakışı ve hesap etkinliğinin çalışma kitabı şablonlarını içerir.
 
@@ -31,7 +31,7 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar ger
 * Abonelikle ilişkili bir Azure Active Directory kiracısı, şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
     * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
 * Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
-    * Gerekirse, [Azure Active Directory Domain Services bir örnek oluşturmak ve yapılandırmak][create-azure-ad-ds-instance]için öğreticiyi doldurun.
+    * Gerekirse, [Azure Active Directory Domain Services yönetilen bir etki alanı oluşturmak ve yapılandırmak][create-azure-ad-ds-instance]için öğreticiyi doldurun.
 * Log Analytics çalışma alanına veri akışı yapan Azure Active Directory Domain Services yönetilen etki alanınız için etkinleştirilen güvenlik denetim olayları.
     * Gerekirse, [Azure Active Directory Domain Services için güvenlik denetimlerini etkinleştirin][enable-security-audits].
 

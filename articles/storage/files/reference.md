@@ -1,5 +1,5 @@
 ---
-title: Azure dosya paylaşımları depolama başvurusu
+title: Azure Dosya Paylaşımları depolama başvurusu
 description: Azure depolama API başvurusunu, Benioku dosyalarını ve istemci kitaplığı paketlerini bulun.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,14 +7,14 @@ ms.date: 06/02/2020
 ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: d995e66c2bf3bc1cb1bd0cd93dfc2a0739ab692b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: ffe3777882cd857ffb776bbadb41da0fb88d994e
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84346027"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976532"
 ---
-# <a name="azure-file-shares-storage-reference"></a>Azure dosya paylaşımları depolama başvurusu
+# <a name="azure-file-shares-storage-reference"></a>Azure Dosya Paylaşımları depolama başvurusu
 
 Azure dosya paylaşımları depolama API 'SI başvurusunu, kitaplık paketlerini, Benioku dosyalarını ve Başlarken makalelerini bulun.
 
@@ -66,8 +66,8 @@ Aşağıdaki tabloda, Azure dosya paylaşımları Python API 'Leri için başvur
 
 |  Sürüm  | Başvuru belgeleri | Paket | Hızlı Başlangıç |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Python için Azure dosya paylaşımları istemci kitaplığı V12](/python/api/overview/azure/storage-file-share-readme) | [Paket (Pypı)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Örnekler](/python/api/overview/azure/storage-file-share-readme#examples) |
-| 2.x | [Azure-Storage-File](/python/api/azure-storage-file/?view=azure-python-previous) | [Paket (Pypı)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Python ile Azure Dosyaları için geliştirme](/azure/storage/files/storage-python-how-to-use-file-storage) |
+| 12. x | [Python için Azure Storage istemci kitaplıkları V12](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [Paket (Pypı)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Örnekler](/python/api/overview/azure/storage-file-share-readme#examples) |
+| 2.x | [Python için Azure Storage istemci kitaplıkları v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [Paket (Pypı)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Python ile Azure Dosyaları için geliştirme](/azure/storage/files/storage-python-how-to-use-file-storage) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript istemci kitaplıkları
 
@@ -109,6 +109,6 @@ Aşağıdaki tablo, başvuru içeriğinin en son sürümüne bağlantılar içer
 |  3.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-3.8.0) |
 |  2.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-2.8.0) |
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
 - [Azure CLI](/cli/azure/storage)

@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 581963c94129c36acbd8761d93e369281797fa9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7b15f79d8b63c13718d309a16eb9b71648699a1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654714"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734325"
 ---
-# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanının güvenliğini sağlamak için zayıf şifre ve parola karma eşitlemesini devre dışı bırakın
+# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanının güvenliğini sağlamak için zayıf şifre ve parola karma eşitlemesini devre dışı bırakın
 
 Varsayılan olarak, Azure Active Directory Domain Services (Azure AD DS), NTLM v1 ve TLS v1 gibi şifrelemelerin kullanımını mümkün değildir. Bu şifrelemeler bazı eski uygulamalar için gerekli olabilir, ancak zayıf kabul edilir ve gerek duymuyorsanız devre dışı bırakılabilir. Azure AD Connect kullanarak şirket içi karma bağlantınız varsa, NTLM parola karmalarının eşitlenmesini de devre dışı bırakabilirsiniz.
 
@@ -33,7 +33,7 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardı
 * Abonelikle ilişkili bir Azure Active Directory kiracısı, şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
     * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
 * Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
-    * Gerekirse, [bir Azure Active Directory Domain Services örneği oluşturun ve yapılandırın][create-azure-ad-ds-instance].
+    * Gerekirse, [Azure Active Directory Domain Services yönetilen bir etki alanı oluşturun ve yapılandırın][create-azure-ad-ds-instance].
 * Azure PowerShell'i yükleyip yapılandırın.
     * Gerekirse, [Azure PowerShell modülünü yüklemek ve Azure aboneliğinize bağlanmak](/powershell/azure/install-az-ps)için yönergeleri izleyin.
     * [Connect-AzAccount][Connect-AzAccount] cmdlet 'Ini kullanarak Azure aboneliğinizde oturum açın.
@@ -67,17 +67,17 @@ Ardından, aşağıdaki güvenlik seçeneklerini yapılandırmak için *Domainse
 $securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPasswords"="Disabled";"TlsV1"="Disabled"}}
 ```
 
-Son olarak, [set-AzResource][Set-AzResource] cmdlet 'ini kullanarak tanımlı güvenlik ayarlarını Azure AD DS tarafından yönetilen etki alanına uygulayın. İlk adımdan Azure AD DS kaynağını ve önceki adımdaki güvenlik ayarlarını belirtin.
+Son olarak, tanımlı güvenlik ayarlarını [set-AzResource][Set-AzResource] cmdlet 'ini kullanarak yönetilen etki alanına uygulayın. İlk adımdan Azure AD DS kaynağını ve önceki adımdaki güvenlik ayarlarını belirtin.
 
 ```powershell
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -Verbose -Force
 ```
 
-Güvenlik ayarlarının Azure AD DS yönetilen etki alanına uygulanması birkaç dakika sürer.
+Yönetilen etki alanına güvenlik ayarlarının uygulanması birkaç dakika sürer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Eşitleme işlemi hakkında daha fazla bilgi edinmek için bkz. [Azure AD DS yönetilen bir etki alanında nesnelerin ve kimlik bilgilerinin nasıl eşitleneceğini][synchronization]öğrenin.
+Eşitleme işlemi hakkında daha fazla bilgi edinmek için bkz. [nesneleri ve kimlik bilgilerini yönetilen bir etki alanında eşitleme][synchronization].
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

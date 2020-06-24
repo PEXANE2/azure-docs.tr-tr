@@ -16,11 +16,11 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef908429d359020282920d73480a472bfde0aa60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261521"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698637"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health işlemler
 Bu konuda Azure Active Directory (Azure AD) Connect Health kullanarak gerçekleştirebileceğiniz çeşitli işlemler açıklanmaktadır.
@@ -74,7 +74,7 @@ Active Directory Federasyon Hizmetleri (AD FS) (AD FS) ve Azure AD Connect (eşi
 2. **Sunucu** dikey penceresinde, eylem çubuğundan **Sil**' e tıklayın.
 ![Sunucu silme Azure AD Connect Health ekran görüntüsü](./media/how-to-connect-health-operations/DeleteServer2.png)
 3. Onay kutusuna sunucu adını yazarak doğrulayın.
-4. **Sil**' e tıklayın.
+4. **Sil**'e tıklayın.
 
 Azure Active Directory Domain Services için Azure AD Connect Health:
 
@@ -82,7 +82,7 @@ Azure Active Directory Domain Services için Azure AD Connect Health:
 2. Kaldırılacak etki alanı denetleyicisini seçin.
 3. Eylem çubuğundan **Seçileni Sil**' e tıklayın.
 4. Sunucuyu silme eylemini onaylayın.
-5. **Sil**' e tıklayın.
+5. **Sil**'e tıklayın.
 
 ### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>Hizmet örneğini Azure AD Connect Health hizmetten silme
 Bazı örneklerde, bir hizmet örneğini kaldırmak isteyebilirsiniz. Azure AD Connect Health hizmetinden bir hizmet örneğini kaldırmak için bilmeniz gerekenler aşağıda verilmiştir.
@@ -99,7 +99,7 @@ Bir hizmet örneğini silerken, aşağıdakilere dikkat edin:
 2. **Hizmet** dikey penceresinde, eylem çubuğundan **Sil**' e tıklayın. 
 ![Azure AD Connect Health hizmeti silme ekran görüntüsü](./media/how-to-connect-health-operations/DeleteServer.png)
 3. Onay kutusuna hizmet adını yazarak onaylayın (örneğin: sts.contoso.com).
-4. **Sil**' e tıklayın.
+4. **Sil**'e tıklayın.
    <br><br>
 
 [//]: # (RBAC bölümünün başlangıcı)
@@ -133,7 +133,7 @@ Azure AD Connect Health içindeki *tüm hizmet örnekleri* düzeyinde kullanıc�
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>2. Adım: kullanıcıları ve grupları ekleme ve rol atama
 1. **Yapılandır** bölümünde **Kullanıcılar**' a tıklayın.<br>
    ![Azure AD Connect Health kaynak kenar çubuğu ekran görüntüsü](./media/how-to-connect-health-operations/startRBAC.png)
-2. **Add (Ekle)** seçeneğini belirleyin.
+2. **Ekle**'yi seçin.
 3. **Rol seçin** bölmesinde bir rol (örneğin, **sahip**) seçin.<br>
    ![RBAC kullanıcıları penceresinin Azure AD Connect Health ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_add.png)
 4. Hedeflenen kullanıcı veya grubun adını veya tanımlayıcısını yazın. Aynı anda bir veya daha fazla Kullanıcı veya grup seçebilirsiniz. **Seç**' e tıklayın.

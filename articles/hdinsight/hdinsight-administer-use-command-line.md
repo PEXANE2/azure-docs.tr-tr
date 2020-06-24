@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/26/2020
 ms.openlocfilehash: 2c6495454e5ba2449d4b3c74a096681f74610813
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272779"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699371"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Azure CLı kullanarak Azure HDInsight kümelerini yönetme
 
@@ -42,7 +42,7 @@ az login
 
 ## <a name="list-clusters"></a>Kümeleri Listele
 
-Kümeleri listelemek için [az HDInsight List](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-list) kullanın. Aşağıdaki komutları, kaynak grubunuzun adıyla `RESOURCE_GROUP_NAME` değiştirin ve ardından komutları girin:
+Kümeleri listelemek için [az HDInsight List](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-list) kullanın. Aşağıdaki komutları, `RESOURCE_GROUP_NAME` kaynak grubunuzun adıyla değiştirin ve ardından komutları girin:
 
 ```azurecli-interactive
 # List all clusters in the current subscription
@@ -60,7 +60,7 @@ az hdinsight list --resource-group RESOURCE_GROUP_NAME --query "[].{clusterName:
 
 ## <a name="show-cluster"></a>Kümeyi göster
 
-Belirtilen bir kümenin bilgilerini göstermek için [az HDInsight Show](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-show) ' i kullanın. Aşağıdaki komutu ve `CLUSTER_NAME` ilgili bilgileri değiştirerek `RESOURCE_GROUP_NAME`aşağıdaki komutu düzenleyin:
+Belirtilen bir kümenin bilgilerini göstermek için [az HDInsight Show](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-show) ' i kullanın. Aşağıdaki komutu `RESOURCE_GROUP_NAME` ve ilgili bilgileri değiştirerek aşağıdaki komutu düzenleyin `CLUSTER_NAME` :
 
 ```azurecli-interactive
 az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -68,7 +68,7 @@ az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 
 ## <a name="delete-clusters"></a>Kümeleri Sil
 
-Belirtilen kümeyi silmek için [az HDInsight Delete](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-delete) kullanın. Aşağıdaki komutu ve `CLUSTER_NAME` ilgili bilgileri değiştirerek `RESOURCE_GROUP_NAME`aşağıdaki komutu düzenleyin:
+Belirtilen kümeyi silmek için [az HDInsight Delete](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-delete) kullanın. Aşağıdaki komutu `RESOURCE_GROUP_NAME` ve ilgili bilgileri değiştirerek aşağıdaki komutu düzenleyin `CLUSTER_NAME` :
 
 ```azurecli-interactive
 az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -82,7 +82,7 @@ az group delete --name RESOURCE_GROUP_NAME
 
 ## <a name="scale-clusters"></a>Ölçek Kümeleri
 
-Belirtilen HDInsight kümesini belirtilen boyuta göre yeniden boyutlandırmak için [az HDInsight Resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) ' i kullanın. Aşağıdaki komutu `RESOURCE_GROUP_NAME`, ve `CLUSTER_NAME` ile ilgili bilgilerle değiştirin. Kümeniz `WORKERNODE_COUNT` için istenen çalışan düğüm sayısıyla değiştirin. Kümeleri ölçeklendirme hakkında daha fazla bilgi için bkz. [HDInsight kümelerini ölçeklendirme](./hdinsight-scaling-best-practices.md). Şu komutu girin:
+Belirtilen HDInsight kümesini belirtilen boyuta göre yeniden boyutlandırmak için [az HDInsight Resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) ' i kullanın. Aşağıdaki komutu `RESOURCE_GROUP_NAME` , ve `CLUSTER_NAME` ile ilgili bilgilerle değiştirin. `WORKERNODE_COUNT`Kümeniz için istenen çalışan düğüm sayısıyla değiştirin. Kümeleri ölçeklendirme hakkında daha fazla bilgi için bkz. [HDInsight kümelerini ölçeklendirme](./hdinsight-scaling-best-practices.md). Şu komutu girin:
 
 ```azurecli-interactive
 az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --workernode-count WORKERNODE_COUNT

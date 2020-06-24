@@ -7,14 +7,14 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c07167a9f3a9194b7c45932ac749324429943ea9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93a142ddca360b3d85519a0531a221794ad3a892
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450131"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808810"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure Depolama için istemci tarafı şifreleme ve Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -61,7 +61,7 @@ Depolama istemci kitaplığı, Kullanıcı verilerini şifrelemek için [AES](ht
 > 
 > 
 
-Şifrelenmiş bir blob 'u indirmek,**bloenine akış** kolaylığı yöntemlerine **downloadto**/kullanarak tüm Blobun içeriğini almayı içerir. Sarmalanmış CEK, şifresi çözülmüş verileri kullanıcılara döndürmek için sarmalanmış ve IV (Bu durumda blob meta verileri olarak saklanır) ile birlikte kullanılır.
+Şifrelenmiş bir blob 'u indirmek, **DownloadTo** / **bloenine akış** kolaylığı yöntemlerine downloadto kullanarak tüm Blobun içeriğini almayı içerir. Sarmalanmış CEK, şifresi çözülmüş verileri kullanıcılara döndürmek için sarmalanmış ve IV (Bu durumda blob meta verileri olarak saklanır) ile birlikte kullanılır.
 
 Şifrelenmiş Blobun rastgele bir aralığın (**downloadrange** yöntemleri) indirilmesi, istenen aralığın şifresini başarıyla çözmek için kullanılabilecek az miktarda ek veri alabilmek için kullanıcılar tarafından sunulan aralığı ayarlamayı içerir.
 

@@ -3,14 +3,14 @@ title: Windows geliştirme ortamı ayarlama
 description: Çalışma zamanını, SDK'yı ve araçları yükleyip yerel bir geliştirme kümesi oluşturun. Bu kurulumu tamamladıktan sonra Windows üzerinde uygulama derlemek için hazır hale gelirsiniz.
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 06/16/2020
 ms.custom: sfrev
-ms.openlocfilehash: 8e51b224bdb91d8bce0f83088791cba8cd3b2d45
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: e059a503a29872ee6241fe00ff5c7ec94ae30308
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449422"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888096"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows üzerinde geliştirme ortamınızı hazırlama
 
@@ -29,7 +29,7 @@ Windows geliştirme makinenizde [Azure Service Fabric uygulamaları][1] derlemek
 
 Geliştirme için şu işletim sistemi sürümleri desteklenir:
 
-* Windows 7
+* Windows 7
 * Windows 8/Windows 8.1
 * Windows Server 2012 R2
 * Windows Server 2016
@@ -69,7 +69,7 @@ Yalnızca SDK'yı yüklemeniz gerekiyorsa bu paketi yükleyebilirsiniz:
 Geçerli sürümler şunlardır:
 
 * Service Fabric SDK ve araçlar 4.1.416
-* Service Fabric Runtime 7.1.416
+* Service Fabric Runtime 7.1.417
 
 Desteklenen sürümlerin listesi için bkz. [Service Fabric sürümleri](service-fabric-versions.md)
 

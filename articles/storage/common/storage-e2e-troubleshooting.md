@@ -7,15 +7,15 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: normesta
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 9b4accd14785aedee06850d5a79dc9835086306a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4b0145514a884c43ef18518cf25a2a78b1fc3aa3
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680381"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809061"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Depolama ölçümlerini ve günlüğe kaydetmeyi, AzCopy’yi ve İleti Çözümleyicisi’ni kullanarak uçtan uca sorun giderme
 
@@ -90,11 +90,11 @@ Bu öğreticide, Message Analyzer 'ı üç farklı türde günlük dosyası ile 
 
 ### <a name="configure-net-client-side-logging"></a>.NET istemci tarafında günlüğe kaydetmeyi yapılandırma
 
-Bir .NET uygulaması için istemci tarafı günlüğe kaydetmeyi yapılandırmak için, uygulamanın yapılandırma dosyasında (Web. config veya App. config) .NET tanılamayı etkinleştirin. Ayrıntılar için bkz. MSDN 'de [Java için MICROSOFT Azure depolama SDK ile](https://msdn.microsoft.com/library/azure/dn782844.aspx) birlikte, [.net depolama Istemci kitaplığı](https://msdn.microsoft.com/library/azure/dn782839.aspx) ve istemci tarafı günlüğü ile istemci tarafı günlüğe kaydetme.
+Bir .NET uygulaması için istemci tarafı günlüğe kaydetmeyi yapılandırmak için, uygulamanın yapılandırma dosyasında (web.config veya app.config) .NET tanılamayı etkinleştirin. Ayrıntılar için bkz. MSDN 'de [Java için MICROSOFT Azure depolama SDK ile](https://msdn.microsoft.com/library/azure/dn782844.aspx) birlikte, [.net depolama Istemci kitaplığı](https://msdn.microsoft.com/library/azure/dn782839.aspx) ve istemci tarafı günlüğü ile istemci tarafı günlüğe kaydetme.
 
 İstemci tarafı günlüğü, istemcinin isteği nasıl hazırlar ve yanıtı alıp işleme hakkında ayrıntılı bilgiler içerir.
 
-Depolama Istemci kitaplığı, istemci tarafı günlük verilerini uygulamanın yapılandırma dosyasında (Web. config veya App. config) belirtilen konumda depolar.
+Depolama Istemci kitaplığı, istemci tarafı günlük verilerini uygulamanın yapılandırma dosyasında belirtilen konumda (web.config veya app.config) depolar.
 
 ### <a name="collect-a-network-trace"></a>Bir ağ izlemesi toplayın
 

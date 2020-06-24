@@ -11,24 +11,24 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 8c6d59889e572893877f2178cade57e07aa91413
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4dc1cdd760c3d370c31b5c77db56df7df3ab6c1d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654783"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734580"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services sorunları için e-posta bildirimlerini yapılandırın
 
 Azure Active Directory Domain Services (Azure AD DS) yönetilen etki alanının sistem durumu, Azure platformu tarafından izlenir. Azure portal sistem durumu sayfasında, yönetilen etki alanı için tüm uyarılar gösterilir. Sorunların zamanında yanıt verdiğinden emin olmak için e-posta bildirimleri, Azure AD DS yönetilen etki alanında algılanan her zamanki gibi sistem durumu uyarılarını raporlamak üzere yapılandırılabilir.
 
-Bu makalede, Azure AD DS yönetilen bir etki alanı için e-posta bildirim alıcılarını nasıl yapılandıracağınız gösterilir.
+Bu makalede, yönetilen bir etki alanı için e-posta bildirim alıcılarını nasıl yapılandıracağınız gösterilir.
 
 ## <a name="email-notification-overview"></a>E-posta bildirimine genel bakış
 
-Azure AD DS yönetilen bir etki alanıyla ilgili sorunları uyarmak için e-posta bildirimleri yapılandırabilirsiniz. Bu e-posta bildirimleri, uyarının bulunduğu Azure AD DS yönetilen etki alanını belirtir ve ayrıca, algılama zamanını ve Azure portal sistem durumu sayfasına bir bağlantı verir. Daha sonra sorunları çözmek için, belirtilen sorun giderme önerisi ' ni izleyebilirsiniz.
+Yönetilen bir etki alanı ile ilgili sorunlar konusunda sizi uyarmak için e-posta bildirimleri yapılandırabilirsiniz. Bu e-posta bildirimleri, uyarının bulunduğu yönetilen etki alanını belirtir ve Azure portal, algılama zamanını ve durum sayfasına yönelik bir bağlantıyı verir. Daha sonra sorunları çözmek için, belirtilen sorun giderme önerisi ' ni izleyebilirsiniz.
 
-Aşağıdaki örnek e-posta bildirimi, Azure AD DS yönetilen etki alanında kritik bir uyarı veya uyarının oluşturulduğunu gösterir:
+Aşağıdaki örnek e-posta bildirimi, yönetilen etki alanında kritik bir uyarı veya uyarının oluşturulduğunu gösterir:
 
 ![Örnek e-posta bildirimi](./media/active-directory-domain-services-alerts/email-alert.png)
 
@@ -37,13 +37,13 @@ Aşağıdaki örnek e-posta bildirimi, Azure AD DS yönetilen etki alanında kri
 
 ### <a name="why-would-i-receive-email-notifications"></a>Neden e-posta bildirimleri alıyorum?
 
-Azure AD DS, yönetilen etki alanı hakkında önemli güncelleştirmeler için e-posta bildirimleri gönderir. Bu bildirimler yalnızca hizmeti etkileyen acil sorunlar içindir ve hemen ele alınmalıdır. Her e-posta bildirimi, Azure AD DS yönetilen etki alanındaki bir uyarı tarafından tetiklenir. Uyarılar Azure portal de görüntülenir ve [Azure AD DS sistem durumu sayfasında][check-health]görüntülenebilir.
+Azure AD DS, yönetilen etki alanı hakkında önemli güncelleştirmeler için e-posta bildirimleri gönderir. Bu bildirimler yalnızca hizmeti etkileyen acil sorunlar içindir ve hemen ele alınmalıdır. Her e-posta bildirimi, yönetilen etki alanındaki bir uyarı tarafından tetiklenir. Uyarılar Azure portal de görüntülenir ve [Azure AD DS sistem durumu sayfasında][check-health]görüntülenebilir.
 
 Azure AD DS tanıtım, güncelleştirme veya satış amaçları için e-posta göndermez.
 
 ### <a name="when-will-i-receive-email-notifications"></a>Ne zaman e-posta bildirimleri alabilirim?
 
-Azure AD DS yönetilen bir etki alanında [Yeni bir uyarı][troubleshoot-alerts] bulunduğunda anında bildirim gönderilir. Uyarı çözümlenmemişse, her dört günde bir anımsatıcı olarak ek e-posta bildirimleri gönderilir.
+Yönetilen bir etki alanında [Yeni bir uyarı][troubleshoot-alerts] bulunduğunda anında bir bildirim gönderilir. Uyarı çözümlenmemişse, her dört günde bir anımsatıcı olarak ek e-posta bildirimleri gönderilir.
 
 ### <a name="who-should-receive-the-email-notifications"></a>E-posta bildirimlerini kimler alacak?
 
@@ -58,31 +58,31 @@ Ayrıca, Azure AD dizini 'nin tüm *genel yöneticilerinin* ve *AAD DC yönetici
 Var olan e-posta bildirim alıcılarını gözden geçirmek veya ek alıcılar eklemek için aşağıdaki adımları izleyin:
 
 1. Azure portal, araması yapın ve **Azure AD Domain Services**seçin.
-1. *Aaddscontoso.com*gibi Azure AD DS yönetilen etki alanınızı seçin.
+1. *Aaddscontoso.com*gibi yönetilen etki alanınızı seçin.
 1. Azure AD DS kaynak penceresinin sol tarafında **bildirim ayarları**' nı seçin. E-posta bildirimleri için mevcut alıcılar gösterilir.
 1. E-posta alıcısı eklemek için, ek alıcılar tablosuna e-posta adresini girin.
 1. İşiniz bittiğinde, üstteki gezinmede **Kaydet** ' i seçin.
 
 > [!WARNING]
-> Bildirim ayarlarını değiştirdiğinizde, tüm Azure AD DS yönetilen etki alanı için bildirim ayarları yalnızca kendi başınıza değil güncelleştirilir.
+> Bildirim ayarlarını değiştirdiğinizde, tüm yönetilen etki alanı için bildirim ayarları yalnızca kendi başınıza değil güncelleştirilir.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>Uyarı için bir e-posta bildirimi aldım, ancak Azure portal oturum açtıklarında hiçbir uyarı yoktu. Ne oldu?
+### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>Uyarı için bir e-posta bildirimi aldım, ancak Azure portal oturum açtıklarında hiçbir uyarı yoktu. Neler oldu?
 
-Bir uyarı çözümlenirse, uyarı Azure portal temizlenir. En olası neden, e-posta bildirimleri alan başka birisinin Azure AD DS yönetilen etki alanındaki uyarıyı çözdüğü veya Azure platformu tarafından yeniden çözümlenmesidir.
+Bir uyarı çözümlenirse, uyarı Azure portal temizlenir. En olası neden, e-posta bildirimleri alan başka birinin, yönetilen etki alanındaki uyarıyı çözdüğü veya Azure platformu tarafından yeniden çözümlenmesidir.
 
 ### <a name="why-can-i-not-edit-the-notification-settings"></a>Bildirim ayarlarını neden düzenleyemiyorum?
 
-Azure portal bildirim ayarları sayfasına erişemezseniz Azure AD DS yönetilen etki alanını düzenleme izniniz yoktur. Azure AD DS kaynağını düzenleme veya alıcı listesinden kaldırılma izinleri almak için genel bir yöneticiye başvurmanız gerekir.
+Azure portal bildirim ayarları sayfasına erişemezseniz, yönetilen etki alanını düzenleme izinleriniz yoktur. Azure AD DS kaynağını düzenleme veya alıcı listesinden kaldırılma izinleri almak için genel bir yöneticiye başvurmanız gerekir.
 
-### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>E-posta adresimi sağladığım halde e-posta bildirimleri almıyorum. Neden?
+### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>E-posta adresimi sağladığım halde e-posta bildirimleri almıyorum. Neden mi?
 
-Bildirim için e-postalarınızın istenmeyen posta veya istenmeyen klasörünüzü denetleyin ve göndericiye izin vermeyi unutmayın `azure-noreply@microsoft.com`.
+Bildirim için e-postalarınızın istenmeyen posta veya istenmeyen klasörünüzü denetleyin ve göndericiye izin vermeyi unutmayın `azure-noreply@microsoft.com` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Raporlanacak bazı sorunları giderme hakkında daha fazla bilgi için bkz. [Azure AD DS yönetilen etki alanındaki uyarıları çözümleme][troubleshoot-alerts].
+Raporlanacak bazı sorunları giderme hakkında daha fazla bilgi için bkz. [yönetilen bir etki alanında uyarıları çözümleme][troubleshoot-alerts].
 
 <!-- INTERNAL LINKS -->
 [check-health]: check-health.md
