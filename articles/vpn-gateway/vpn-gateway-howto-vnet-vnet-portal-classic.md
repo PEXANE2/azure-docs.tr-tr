@@ -5,15 +5,15 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 63c6329ad62289cd127902c1438073b28fc8683e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdd27645045195016b7a563787470bf6f2187115
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77201858"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985474"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet 'ten VNet 'e bağlantı yapılandırma (klasik)
 
@@ -71,7 +71,7 @@ Sanal ağlarınızı yapılandırmak için kullanacağınız aralıklara karar v
 
 Aşağıdaki tabloda, sanal ağlarınızı nasıl tanımlayacağınızı gösteren bir örnek gösterilmektedir. Aralıkları yalnızca bir kılavuz olarak kullanın. Sanal ağlarınız için aralıkları yazın. Sonraki adımlar için bu bilgilere ihtiyacınız vardır.
 
-**Örneğinde**
+**Örnek**
 
 | Sanal Ağ | Adres Alanı | Bölge | Yerel ağ sitesine bağlanır |
 |:--- |:--- |:--- |:--- |

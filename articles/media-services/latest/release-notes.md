@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: 0833215449c92a1710dcaf4f2fe13ce9a16685ba
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 6abb44012035f31f970a347687964afb0c715d29
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434051"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983385"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -32,9 +32,9 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 ## <a name="known-issues"></a>Bilinen sorunlar
 
 > [!NOTE]
-> V3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, v3 [varlıklarını](assets-concept.md)görüntülemek, API 'lere erişim hakkında bilgi almak için [Azure Portal](https://portal.azure.com/) kullanabilirsiniz. Diğer tüm yönetim görevleri (örneğin, dönüşümler ve Işler) için [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
-
-Daha fazla bilgi için bkz. [Media Services V2 'den v3 'e geçiş Için geçiş kılavuzu](migrate-from-v2-to-v3.md#known-issues).
+> V3 [canlı olaylarını](live-events-outputs-concept.md)yönetmek, v3 [varlıklarını](assets-concept.md) ve Işleri görüntülemek, API 'lere erişme hakkında bilgi almak, içeriği şifrelemek için [Azure Portal](https://portal.azure.com/) kullanabilirsiniz. Diğer tüm yönetim görevleri için (örneğin, dönüşümleri ve işleri yönetme) [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
+>
+> Ayrıntılar için bkz.: [Media Services v3 için Azure Portal sınırlamaları](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
 
 ## <a name="june-2020"></a>Haziran 2020
 
@@ -191,7 +191,7 @@ Media Services artık Kore Orta ve Kore Güney bölgelerinde kullanılabilir.
 
 Daha fazla bilgi için bkz. [Media Services v3 'nin bulunduğu bulutlar ve bölgeler](azure-clouds-regions.md).
 
-### <a name="performance-improvements"></a>Performans iyileştirmeleri
+### <a name="performance-improvements"></a>Performans geliştirmeleri
 
 Media Services performans iyileştirmeleri içeren güncelleştirmeler eklendi.
 
@@ -207,7 +207,7 @@ Media Services performans iyileştirmeleri içeren güncelleştirmeler eklendi.
 
 ## <a name="march-2019"></a>Mart 2019
 
-Dinamik paketleme artık Dolby Atmos 'ı destekliyor. Daha fazla bilgi için bkz. [dinamik paketleme tarafından desteklenen ses codec bileşenleri](dynamic-packaging-overview.md#audio-codecs).
+Dinamik paketleme artık Dolby Atmos 'ı destekliyor. Daha fazla bilgi için bkz. [dinamik paketleme tarafından desteklenen ses codec bileşenleri](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging).
 
 Artık akış bulucusu için uygulanacak varlık veya hesap filtrelerinin bir listesini belirtebilirsiniz. Daha fazla bilgi için bkz. [akış bulucu ile filtreleri ilişkilendirme](filters-concept.md#associating-filters-with-streaming-locator).
 
@@ -314,7 +314,7 @@ Azure AD kimlik doğrulaması ve rol tabanlı Access Control (RBAC), Azure AD 'd
 
 #### <a name="client-sdks"></a>İstemci SDK'ları  
 
-Media Services v3 sürümünde desteklenen diller: .NET Core, Java, Node. js, Ruby, TypeScript, Python, go.
+Media Services v3 sürümünde desteklenen diller: .NET Core, Java, Node.js, Ruby, TypeScript, Python, go.
 
 #### <a name="live-encoding-updates"></a>Canlı kodlama güncelleştirmeleri
 
@@ -370,11 +370,15 @@ Media Services v3 CLı veya API 'Leri ile 09/28 ve 10/12 arasında varlıklar ve
 
 ### <a name="known-issues"></a>Bilinen sorunlar
 
-* Bir iş gönderilirken, HTTPS URL 'Leri, SAS URL 'Leri veya Azure Blob depolama alanında bulunan dosyalara yollar kullanarak kaynak videonuzu almak istediğinizi belirtebilirsiniz. AMS v3 şu anda HTTPS URL'leri üzerinden yığın halinde aktarım kodlamasını desteklememektedir.
+* Bir iş gönderilirken, HTTPS URL 'Leri, SAS URL 'Leri veya Azure Blob depolama alanında bulunan dosyalara yollar kullanarak kaynak videonuzu almak istediğinizi belirtebilirsiniz. Şu anda Media Services v3, HTTPS URL 'Leri üzerinden öbekli aktarım kodlamasını desteklemez.
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde bulunun, güncelleştirmeleri al
 
 Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştirmeler almak için [Azure Media Services Community](media-services-community.md) makalesine göz atın.
+
+## <a name="see-also"></a>Ayrıca bkz.
+
+[Media Services V2 'den v3 'e geçmek Için geçiş kılavuzu](migrate-from-v2-to-v3.md#known-issues).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

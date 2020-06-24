@@ -10,16 +10,16 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: efc79f82a2181099f832da0d4a17fc370bf4f7f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0fedd2a304c73347b7ec72818b5289c1df2e561
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74929861"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248635"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>PowerShell betiği-Azure Data Factory kullanarak birden çok tabloyu toplu olarak kopyalama
 
-Bu örnek PowerShell betiği, verileri bir Azure SQL veritabanında bulunan birden çok tablodan Azure SQL veri ambarı 'na kopyalar.
+Bu örnek PowerShell betiği, verileri Azure SQL veritabanı 'ndaki birden çok tablodan Azure SQL veri ambarı 'na kopyalar.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

@@ -4,17 +4,17 @@ description: Bu makalede, Azure portal kullanarak yerel ağ geçidinizin IP adre
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/19/2017
 ms.author: cherylmc
-ms.openlocfilehash: fdb98242cede36f818604a7a5d713f5f7c75daad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa43df8c4f17bff4e97d999c6653bdcb045bfec3
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75864035"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985206"
 ---
-# <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Azure portal kullanarak yerel ağ geçidi ayarlarını değiştirme
+# <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Azure portalını kullanarak yerel ağ geçidi ayarlarını değiştirme
 
 Bazen yerel ağ geçidi Adresispredüzeltmesini veya Gatewayıpaddress değişikliği ayarları değişir. Bu makalede yerel ağ geçidi ayarlarınızı nasıl değiştireceğiniz gösterilir. Ayrıca, aşağıdaki listeden farklı bir seçenek belirleyerek bu ayarları farklı bir yöntem kullanarak da değiştirebilirsiniz:
 

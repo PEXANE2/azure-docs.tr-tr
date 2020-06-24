@@ -4,15 +4,15 @@ description: Bu makalede, Azure Resource Manager ve PowerShell kullanarak Azure 
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: 78147a96d6d9e92c2602b6a83cbed743cf2abf37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6896cc268f6472b1816608067340c2c5868a2547
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152049"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84984629"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>PowerShell kullanarak Azure VPN ağ geçitlerinde BGP yapılandırma
 Bu makalede, Kaynak Yöneticisi dağıtım modelini ve PowerShell 'i kullanarak şirket içi siteden siteye (S2S) VPN bağlantısı ve VNet-VNet bağlantısı üzerinde BGP 'yi etkinleştirme adımları anlatılmaktadır.

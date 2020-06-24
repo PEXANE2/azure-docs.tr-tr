@@ -4,15 +4,15 @@ description: Resource Manager ve Azure portalı kullanarak sanal ağlar arasınd
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3d91203253c08acdaa159fc70f7a34fa7fca20c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5abf79d23ca2de661383cc002dac9d7f9e4dc5bf
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78674180"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985569"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure portal kullanarak VNet-VNet VPN Gateway bağlantısı yapılandırma
 
@@ -92,7 +92,7 @@ Bu makalede VNet-VNet bağlantı türünü kullanarak sanal ağların nasıl ba�
     - **VPN türü**: **Rota tabanlı**' ı seçin.
     - **SKU**: kullanmak istediğiniz ağ geçidi SKU 'sunu seçin.
     - **Genel IP adresi adı**: VNet1GWpip
-    - **Bağlanma**
+    - **Bağlantı**
        - **Ad**: VNet1toVNet4
        - **Paylaşılan anahtar**: paylaşılan anahtarı kendiniz oluşturabilirsiniz. VNET 'ler arasında bağlantı oluşturduğunuzda değerler eşleşmelidir. Bu alıştırma için abc123 kullanın.
 
@@ -117,7 +117,7 @@ Bu makalede VNet-VNet bağlantı türünü kullanarak sanal ağların nasıl ba�
     - **VPN türü**: **Rota tabanlı**' ı seçin.
     - **SKU**: kullanmak istediğiniz ağ geçidi SKU 'sunu seçin.
     - **Genel IP adresi adı**: VNet4GWpip
-    - **Bağlanma** 
+    - **Bağlantı** 
        - **Ad**: VNet4toVNet1
        - **Paylaşılan anahtar**: paylaşılan anahtarı kendiniz oluşturabilirsiniz. VNET 'ler arasında bağlantı oluşturduğunuzda değerler eşleşmelidir. Bu alıştırma için abc123 kullanın.
 

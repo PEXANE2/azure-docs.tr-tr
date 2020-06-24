@@ -5,17 +5,17 @@ description: P2S sertifikası kimlik doğrulaması için Windows, Linux, Linux (
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: cherylmc
-ms.openlocfilehash: d15efee635e131d658cd650b7f80eb9e670a0dea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d917bc1d52cc2a43e87affcc9c5e3c2ab533da07
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279422"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84984871"
 ---
-# <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Yerel Azure sertifikası kimlik doğrulaması P2S yapılandırmaları için VPN istemcisi yapılandırma dosyalarını oluşturma ve yapılandırma
+# <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Yerel Azure sertifikası kimlik doğrulaması P2S yapılandırmaları için VPN istemcisi yapılandırma dosyalarını oluşturma ve yükleme
 
 VPN istemcisi yapılandırma dosyaları bir ZIP dosyasında bulunur. Yapılandırma dosyaları, yerel bir Windows, Mac IKEv2 VPN veya Linux istemcilerinin yerel Azure sertifika kimlik doğrulaması kullanan Noktadan siteye bağlantılar üzerinden bir sanal ağa bağlanması için gereken ayarları sağlar.
 
@@ -78,7 +78,7 @@ Sertifika kimlik doğrulaması için yerel Windows VPN istemcisini yapılandırm
 
  Yerel IKEv2 VPN istemcisini Azure’a bağlanacak her Mac cihazda el ile yapılandırmanız gerekir. Azure, yerel Azure sertifika kimlik doğrulaması için mobileconfig dosyası sağlamaz. **Genel** , yapılandırma için ihtiyaç duyduğunuz tüm bilgileri içerir. İndirdiğiniz pakette Genel klasörünü görmüyorsanız, tünel türü olarak IKEv2 seçilmemiş olabilir. VPN Gateway temel SKU 'sunun Ikev2 'yi desteklemediğini unutmayın. IKEv2 seçildikten sonra zip dosyasını tekrar oluşturarak Genel klasörünü alın.<br>Genel klasörü aşağıdaki dosyaları içerir:
 
-* Sunucu adresi ve tünel türü gibi önemli ayarları içeren **Vpnsettings. xml**. 
+* Sunucu adresi ve tünel türü gibi önemli ayarları içeren **VpnSettings.xml**. 
 * P2S bağlantı kurulumu sırasında Azure VPN Gateway doğrulamak için gereken kök sertifikayı içeren **Vpnserverroot. cer**.
 
 Mac 'te sertifika kimlik doğrulaması için yerel VPN istemcisini yapılandırmak üzere aşağıdaki adımları kullanın. Azure 'a bağlanacak her Mac üzerinde bu adımları gerçekleştirmeniz gerekir:
@@ -97,7 +97,7 @@ Mac 'te sertifika kimlik doğrulaması için yerel VPN istemcisini yapılandırm
    **Arabirim** DEĞERI ' VPN ' ve **VPN türü** değeri ' Ikev2 '. **Hizmet adı** alanında profil için bir ad belirtin ve ardından **Oluştur** ' a tıklayarak VPN istemci bağlantı profilini oluşturun.
 
    ![network](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
-4. **Genel** klasöründe, **vpnsettings. xml** dosyasından **VPNServer** etiket değerini kopyalayın. Bu değeri, profilin **sunucu adresine** ve **uzak kimlik** alanlarına yapıştırın.
+4. **Genel** klasörde, **VpnSettings.xml** dosyasından, **VPNServer** etiket değerini kopyalayın. Bu değeri, profilin **sunucu adresine** ve **uzak kimlik** alanlarına yapıştırın.
 
    ![sunucu bilgileri](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
 5. **Kimlik doğrulama ayarları** ' na tıklayıp **sertifika**' yı seçin.**Catalina**için **hiçbiri** ve ardından **sertifika** öğesine tıklayın
@@ -143,13 +143,13 @@ Ubuntu 18.0.4 üzerinde aşağıdaki yönergeler oluşturulmuştur. Ubuntu 16.0.
 2. **Ayarlar**' ı ve ardından **ağ**' ı seçin.
 
    ![bağlantıları Düzenle](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
-3. Yeni bir **+** bağlantı oluşturmak için düğmeye tıklayın.
+3. **+** Yeni bir bağlantı oluşturmak için düğmeye tıklayın.
 
    ![bağlantı ekleme](./media/point-to-site-vpn-client-configuration-azure-cert/addconnection.png)
 4. Menüden **IPSec/Ikev2 (Strongswa)** öğesini seçin ve çift tıklayın. Bu adımda, bağlantınızın adını verebilirsiniz.
 
    ![bir bağlantı türü seçin](./media/point-to-site-vpn-client-configuration-azure-cert/choosetype.png)
-5. İndirilen istemci yapılandırma dosyalarında bulunan **genel** klasörden **vpnsettings. xml** dosyasını açın. **VPNServer** adlı etiketi bulun ve ' azuregateway ' ile başlayıp '. cloudapp.net ' ile biten adı kopyalayın.
+5. İndirilen istemci yapılandırma dosyalarında bulunan **genel** klasörden **VpnSettings.xml** dosyasını açın. **VPNServer** adlı etiketi bulun ve ' azuregateway ' ile başlayıp '. cloudapp.net ' ile biten adı kopyalayın.
 
    ![adı Kopyala](./media/point-to-site-vpn-client-configuration-azure-cert/vpnserver.png)
 6. Bu adı, **ağ geçidi** bölümünde yer alan yeni VPN bağlantınızın **Adres** alanına yapıştırın. Sonra, **sertifika** alanının sonundaki klasör simgesini seçin, **genel** klasöre gidin ve **vpnserverroot** dosyasını seçin.
@@ -176,7 +176,7 @@ Ubuntu 18.0.4 üzerinde aşağıdaki yönergeler oluşturulmuştur. Ubuntu 16.0.
 2. Dosyayı ayıklayın.
 3. **Genel** klasöründen, VpnServerRoot. cer dosyasını/etc/IPSec.exe dizinine kopyalayın veya taşıyın.
 4. CP Client. p12 öğesini/etc/IPSec.exe dizinine kopyalayın veya taşıyın. Bu dosya, Azure VPN Gateway için istemci sertifikasıdır.
-5. VpnSettings. xml dosyasını açın ve `<VpnServer>` değeri kopyalayın. Bu değeri bir sonraki adımda kullanacaksınız.
+5. VpnSettings.xml dosyasını açın ve değeri kopyalayın `<VpnServer>` . Bu değeri bir sonraki adımda kullanacaksınız.
 6. Aşağıdaki örnekteki değerleri ayarlayın ve ardından/etc/IPSec.exe yapılandırmasına örnek ekleyin.
   
    ```

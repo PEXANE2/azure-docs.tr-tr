@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 0285520c2733cd6e190f9055824cdfed0ce4b842
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/18/2020
+ms.openlocfilehash: 59a335e41116818e41579488cc6931ed1534c9ab
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189863"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84984898"
 ---
 # <a name="create-python-model-module"></a>Python model modülü oluşturma
 
@@ -25,7 +25,7 @@ Python betiğiyle eğitilen bir model oluşturmak için Python modeli oluşturma
 Modeli oluşturduktan sonra, Azure Machine Learning diğer öğrenme gibi bir veri kümesi üzerinde modeli eğmek için [eğitme modeli](train-model.md) ' ni kullanabilirsiniz. Eğitilen model, tahmine dayalı hale getirmek için [puan modeline](score-model.md) geçirilebilir. Daha sonra eğitilen modeli kaydedebilir ve Puanlama iş akışını bir Web hizmeti olarak yayımlayabilirsiniz.
 
 > [!WARNING]
-> Şu anda [modeli değerlendirmek](evaluate-model.md)Için bir Python modelinin puanlanmış sonuçlarının iletilmesi mümkün değildir. Bir modeli değerlendirmeniz gerekiyorsa, özel bir Python betiği yazabilir ve [Python betiği Yürüt](execute-python-script.md) modülünü kullanarak çalıştırabilirsiniz.  
+> Şu anda bu modülün **model Hyperparameters modülünü ayarlamak** ya da [modeli değerlendirmek](evaluate-model.md)için bir Python modelinin puanlanmış sonuçlarını geçirmek mümkün değildir. Hiper parametreleri ayarlamanız veya bir modeli değerlendirmek istiyorsanız, [Python betik modülünü Yürüt](execute-python-script.md) ' ü kullanarak özel bir Python betiği yazabilirsiniz.
 
 
 ## <a name="configure-the-module"></a>Modülü yapılandırma

@@ -4,15 +4,15 @@ description: Azure portalını kullanarak klasik bir Noktadan siteye VPN ağ ge�
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5d80cb2f2ed844126d1e9311151e6c53fcb11840
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f68631771b8f86d995108112b1243ab38bf826bc
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244582"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84984791"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Sertifika kimlik doğrulaması kullanarak noktadan siteye bağlantı yapılandırma (klasik)
 
@@ -202,7 +202,7 @@ Sürümünün istemci mimarisiyle eşleşmesi şartıyla, her istemci bilgisayar
 >
 >
 
-1. VNet 'iniz ile bağlantı kurmak için, istemci bilgisayarda Azure portal **VPN bağlantıları** ' na gidin ve oluşturduğunuz VPN bağlantısını bulun. VPN bağlantısı, sanal ağınızla aynı ada sahiptir. **Bağlan**’ı seçin. Sertifikayla ilgili bir açılır ileti görünürse, yükseltilmiş ayrıcalıkları kullanmak için **devam** ' ı seçin.
+1. VNet 'iniz ile bağlantı kurmak için, istemci bilgisayarda Azure portal **VPN bağlantıları** ' na gidin ve oluşturduğunuz VPN bağlantısını bulun. VPN bağlantısı, sanal ağınızla aynı ada sahiptir. **Bağlan**'ı seçin. Sertifikayla ilgili bir açılır ileti görünürse, yükseltilmiş ayrıcalıkları kullanmak için **devam** ' ı seçin.
 
 2. **Bağlantı durumu sayfasında** , bağlantıyı başlatmak için **Bağlan** ' ı seçin. **Sertifika seç** ekranını görürseniz, görüntülenen istemci sertifikasının doğru bir tane olduğunu doğrulayın. Aksi takdirde, açılan listeden doğru sertifikayı seçin ve ardından **Tamam**' ı seçin.
 

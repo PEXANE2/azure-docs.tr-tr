@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 3483ee01-8177-49e7-b337-4d5cb14f5e32
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3a66482aeee7832baa91fe98357b870e2a280912
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 95ec9a25f97154d8e2d0e2e5b5f9cd29cf7a9c31
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735785"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983334"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Azure CLı kullanarak Azure rol atamaları ekleme veya kaldırma
 
@@ -34,7 +34,7 @@ Rol atamaları eklemek veya kaldırmak için şunları yapmanız gerekir:
 
 ## <a name="get-object-ids"></a>Nesne kimliklerini al
 
-Rol atamaları eklemek veya kaldırmak için, bir nesnenin benzersiz KIMLIĞINI belirtmeniz gerekebilir. KIMLIK şu biçimdedir: `11111111-1111-1111-1111-111111111111`. KIMLIĞI Azure portal veya Azure CLı 'yi kullanarak edinebilirsiniz.
+Rol atamaları eklemek veya kaldırmak için, bir nesnenin benzersiz KIMLIĞINI belirtmeniz gerekebilir. KIMLIK şu biçimdedir: `11111111-1111-1111-1111-111111111111` . KIMLIĞI Azure portal veya Azure CLı 'yi kullanarak edinebilirsiniz.
 
 ### <a name="user"></a>Kullanıcı
 
@@ -69,10 +69,10 @@ Azure RBAC 'de, erişim izni vermek için bir rol ataması eklersiniz.
 Bir kaynak grubu kapsamındaki bir kullanıcı için rol ataması eklemek için [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create)' i kullanın.
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
+az role assignment create --role {roleNameOrId} --assignee {assignee} --resource-group {resourceGroup}
 ```
 
-Aşağıdaki örnek, *sanal makine katılımcısı* rolünü *ilaç-Sales* kaynak grubu kapsamındaki *patlong\@contoso.com* kullanıcısına atar:
+Aşağıdaki örnek, *sanal makine katılımcısı* rolünü *ilaç-Sales* kaynak grubu kapsamındaki *patlong \@ contoso.com* kullanıcısına atar:
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales
@@ -94,10 +94,10 @@ Rol yeniden adlandırılsa bile, rol KIMLIĞI değişmez. Rol atamalarınızı o
 Rol adı yerine benzersiz rol KIMLIĞINI kullanarak rol ataması eklemek için [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create)' i kullanın.
 
 ```azurecli
-az role assignment create --role <role_id> --assignee <assignee> --resource-group <resource_group>
+az role assignment create --role {roleId} --assignee {assignee} --resource-group {resourceGroup}
 ```
 
-Aşağıdaki örnek, [sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) rolünü *ilaç-Sales* kaynak grubu kapsamındaki *patlong\@contoso.com* kullanıcısına atar. Benzersiz rol KIMLIĞINI almak için [az role Definition List](/cli/azure/role/definition#az-role-definition-list) ' i kullanabilir veya [Azure yerleşik rolleri](built-in-roles.md)' ne bakabilirsiniz.
+Aşağıdaki örnek, [sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) rolünü *ilaç-Sales* kaynak grubu kapsamındaki *patlong \@ contoso.com* kullanıcısına atar. Benzersiz rol KIMLIĞINI almak için [az role Definition List](/cli/azure/role/definition#az-role-definition-list) ' i kullanabilir veya [Azure yerleşik rolleri](built-in-roles.md)' ne bakabilirsiniz.
 
 ```azurecli
 az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee patlong@contoso.com --resource-group pharma-sales
@@ -108,7 +108,7 @@ az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee
 Bir gruba rol ataması eklemek için [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create)' i kullanın. Grubun nesne KIMLIĞINI alma hakkında daha fazla bilgi için bkz. [nesne kimliklerini alma](#get-object-ids).
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
+az role assignment create --role {roleNameOrId} --assignee-object-id {assigneeObjectId} --resource-group {resourceGroup} --scope /subscriptions/{subscriptionId}
 ```
 
 Aşağıdaki örnek, *okuyucu* rolünü bir ABONELIK kapsamındaki kimliği 22222222-2222-2222-2222-222222222222 olan *Ann Mack ekip* grubuna atar.
@@ -132,7 +132,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 Bir uygulamaya rol ataması eklemek için [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create)' i kullanın. Uygulamanın nesne KIMLIĞINI alma hakkında daha fazla bilgi için bkz. [nesne kimliklerini alma](#get-object-ids).
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group>
+az role assignment create --role {roleNameOrId} --assignee-object-id {assigneeObjectId} --resource-group {resourceGroup}
 ```
 
 Aşağıdaki örnek, *sanal makine katılımcısı* rolünü, *ilaç-Sales* kaynak grubu kapsamındaki 44444444-4444-4444-4444-444444444444 nesne kimliği ile bir uygulamaya atar.
@@ -146,10 +146,10 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 Bir kullanıcı için abonelik kapsamındaki bir rol ataması eklemek için [az role atama oluştur](/cli/azure/role/assignment#az-role-assignment-create)' u kullanın. Abonelik KIMLIĞINI almak için Azure portal **abonelikler** dikey penceresinde bulabilir veya [az Account List](/cli/azure/account#az-account-list)' i kullanabilirsiniz.
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee <assignee> --subscription <subscription_name_or_id>
+az role assignment create --role {roleNameOrId} --assignee {assignee} --subscription {subscriptionNameOrId}
 ```
 
-Aşağıdaki örnek, *okuyucu* rolünü bir abonelik kapsamındaki *annm\@example.com* kullanıcısına atar.
+Aşağıdaki örnek, *okuyucu* rolünü bir abonelik kapsamındaki *annm \@ example.com* kullanıcısına atar.
 
 ```azurecli
 az role assignment create --role "Reader" --assignee annm@example.com --subscription 00000000-0000-0000-0000-000000000000
@@ -160,10 +160,10 @@ az role assignment create --role "Reader" --assignee annm@example.com --subscrip
 Bir kullanıcı için yönetim grubu kapsamındaki bir rol ataması eklemek için [az role atama oluştur](/cli/azure/role/assignment#az-role-assignment-create)' u kullanın. Yönetim grubu KIMLIĞINI almak için Azure portal **Yönetim grupları** dikey penceresinde bulabilir veya [az Account Management-Group List](/cli/azure/account/management-group#az-account-management-group-list)kullanabilirsiniz.
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee <assignee> --scope /providers/Microsoft.Management/managementGroups/<group_id>
+az role assignment create --role {roleNameOrId} --assignee {assignee} --scope /providers/Microsoft.Management/managementGroups/{groupId}
 ```
 
-Aşağıdaki örnek, bir yönetim grubu kapsamındaki *Alain\@example.com* kullanıcısına *faturalandırma okuyucusu* rolünü atar.
+Aşağıdaki örnek, bir yönetim grubu kapsamındaki *Alain \@ example.com* kullanıcısına *faturalandırma okuyucusu* rolünü atar.
 
 ```azurecli
 az role assignment create --role "Billing Reader" --assignee alain@example.com --scope /providers/Microsoft.Management/managementGroups/marketing-group
@@ -173,10 +173,10 @@ az role assignment create --role "Billing Reader" --assignee alain@example.com -
 
 Yeni bir hizmet sorumlusu oluşturur ve bu hizmet sorumlusuna hemen bir rol atamayı denerseniz, bu rol ataması bazı durumlarda başarısız olabilir. Örneğin, yeni bir yönetilen kimlik oluşturmak ve ardından bu hizmet sorumlusuna bir rol atamayı denemek için bir komut dosyası kullanırsanız, rol ataması başarısız olabilir. Bu hatanın nedeni büyük olasılıkla çoğaltma gecikmesi. Hizmet sorumlusu tek bir bölgede oluşturulur; Ancak, rol ataması henüz hizmet sorumlusunu çoğaltılmamış farklı bir bölgede gerçekleşebilir. Bu senaryoya yönelik olarak, rol atamasını oluştururken asıl türü belirtmeniz gerekir.
 
-Rol ataması eklemek için [az role atama oluştur](/cli/azure/role/assignment#az-role-assignment-create)kullanın, için `--assignee-object-id`bir değer belirtin ve sonra olarak `--assignee-principal-type` `ServicePrincipal`ayarlayın.
+Rol ataması eklemek için [az role atama oluştur](/cli/azure/role/assignment#az-role-assignment-create)kullanın, için bir değer belirtin `--assignee-object-id` ve sonra `--assignee-principal-type` olarak ayarlayın `ServicePrincipal` .
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --assignee-principal-type <assignee_principal_type> --resource-group <resource_group> --scope </subscriptions/subscription_id>
+az role assignment create --role {roleNameOrId} --assignee-object-id {assigneeObjectId} --assignee-principal-type {assigneePrincipalType} --resource-group {resourceGroup} --scope /subscriptions/{subscriptionId}
 ```
 
 Aşağıdaki örnek, *sanal makine katılımcısı* rolünü, *sahte ma-Sales* kaynak grubu kapsamındaki *MSI-test* tarafından yönetilen kimliğe atar:
@@ -190,10 +190,10 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 Azure RBAC 'de, erişimi kaldırmak için [az role atama Sil](/cli/azure/role/assignment#az-role-assignment-delete)' i kullanarak bir rol atamasını kaldırırsınız:
 
 ```azurecli
-az role assignment delete --assignee <assignee> --role <role_name_or_id> --resource-group <resource_group>
+az role assignment delete --assignee {assignee} --role {roleNameOrId} --resource-group {resourceGroup}
 ```
 
-Aşağıdaki örnek, *ilaç-Sales* kaynak grubundaki *\@Patlong contoso.com* kullanıcısının *sanal makine katılımcısı* rolü atamasını kaldırır:
+Aşağıdaki örnek, *ilaç-Sales* kaynak grubundaki *patlong \@ contoso.com* kullanıcısının *sanal makine katılımcısı* rolü atamasını kaldırır:
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales
@@ -205,7 +205,7 @@ Aşağıdaki örnek, bir abonelik kapsamındaki KIMLIĞI 22222222-2222-2222-2222
 az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-Aşağıdaki örnek, yönetim grubu kapsamındaki *Alain\@example.com* kullanıcısının *faturalandırma okuyucusu* rolünü kaldırır. Yönetim grubunun KIMLIĞINI almak için [az Account Management-Group List](/cli/azure/account/management-group#az-account-management-group-list)kullanabilirsiniz.
+Aşağıdaki örnek, yönetim grubu kapsamındaki *Alain \@ example.com* kullanıcısının *faturalandırma okuyucusu* rolünü kaldırır. Yönetim grubunun KIMLIĞINI almak için [az Account Management-Group List](/cli/azure/account/management-group#az-account-management-group-list)kullanabilirsiniz.
 
 ```azurecli
 az role assignment delete --assignee alain@example.com --role "Billing Reader" --scope /providers/Microsoft.Management/managementGroups/marketing-group

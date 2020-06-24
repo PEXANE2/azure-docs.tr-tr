@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 995d70419edb374c3761fe2f989ce3a757cc7a47
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 62202946193c111921c97dc95a7ec7955a63804f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050068"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251198"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Elastik işler oluşturma, yapılandırma ve yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ Elastik işler kullandıysanız, [Azure SQL veritabanı 'nda iş Otomasyonu kavr
 
 ## <a name="create-and-configure-the-agent"></a>Aracıyı oluşturma ve yapılandırma
 
-1. Boş bir S0 veya üzeri SQL veritabanı oluşturun ya da tanımlayın. Bu veritabanı, elastik Iş Aracısı oluşturma sırasında *iş veritabanı* olarak kullanılacaktır.
+1. Boş bir S0 veya daha yüksek veritabanı oluşturun veya oluşturun. Bu veritabanı, elastik Iş Aracısı oluşturma sırasında *iş veritabanı* olarak kullanılacaktır.
 2. [Portalda](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent) veya [PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent)Ile elastik bir iş Aracısı oluşturun.
 
    ![Elastik Iş Aracısı oluşturma](./media/elastic-jobs-overview/create-elastic-job-agent.png)

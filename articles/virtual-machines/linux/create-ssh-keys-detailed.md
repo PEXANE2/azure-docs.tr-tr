@@ -6,19 +6,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 5add789809f274ef5634f3c33dfedd3cd96b36d0
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 44923a124b864083b1badfc617ce0303be66a10e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142478"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985351"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Ayrıntılı adımlar: Azure 'da bir Linux VM 'sine kimlik doğrulaması için SSH anahtarları oluşturma ve yönetme 
 Güvenli Kabuk (SSH) anahtar çifti ile Azure 'da, kimlik doğrulaması için SSH anahtarlarını kullanan varsayılan bir Linux sanal makinesi oluşturabilir ve parolaların oturum açması gereksinimini ortadan kaldırabilirsiniz. Azure portal, Azure CLı, Kaynak Yöneticisi şablonları veya diğer araçlarla oluşturulan VM 'Ler, SSH bağlantıları için SSH anahtarı kimlik doğrulamasını ayarlayan dağıtımın bir parçası olarak SSH ortak anahtarınızı içerebilir. 
 
 Bu makalede SSH istemci bağlantıları için SSH RSA genel özel anahtar dosya çifti oluşturma ve yönetme hakkında ayrıntılı arka plan ve adımlar sağlanmaktadır. Hızlı komutları istiyorsanız bkz. [Azure 'Da Linux VM 'ler IÇIN SSH genel-özel anahtar çifti oluşturma](mac-create-ssh-keys.md).
 
-Windows bilgisayarda SSH anahtarları oluşturma ve kullanma hakkında ek yollar için bkz. [Azure 'Da Windows Ile SSH anahtarlarını kullanma](ssh-from-windows.md).
+SSH anahtarları oluşturmak ve bunları bir Windows bilgisayarından bir **Windows** bilgisayardan bağlanmak üzere kullanmak için bkz. [Azure 'DA Windows ile SSH anahtarlarını kullanma](ssh-from-windows.md).
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 

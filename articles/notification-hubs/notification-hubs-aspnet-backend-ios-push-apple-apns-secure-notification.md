@@ -4,9 +4,7 @@ description: Azure 'dan bir iOS uygulamasına güvenli anında iletme bildirimle
 documentationcenter: ios
 author: sethmanheim
 manager: femila
-editor: jwargo
 services: notification-hubs
-ms.assetid: 17d42b0a-2c80-4e35-a1ed-ed510d19f4b4
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
@@ -16,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 96d1dd514f6fb9c11d7194714337583d6b4387cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa84ad9f48f79a77bad1445dadc8c5c965b13655
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75530757"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248709"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs güvenli gönderim
 
@@ -50,7 +48,7 @@ Yüksek düzeyde, akış şu şekildedir:
 Bu güvenli gönderim öğreticisinde güvenli bir anında iletme bildirimi gönderme gösterilmektedir. Öğretici [kullanıcılara bildirme](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) öğreticisini oluşturur, bu nedenle öncelikle bu öğreticideki adımları tamamlamalısınız.
 
 > [!NOTE]
-> Bu öğreticide, Bildirim Hub 'ınızı [Notification Hubs (iOS) Ile çalışmaya](notification-hubs-ios-apple-push-notification-apns-get-started.md)başlama konusunda açıklandığı gibi oluşturduğunuzu ve yapılandırdığınızı varsaymaktadır.
+> Bu öğreticide, Bildirim Hub 'ınızı [Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri gönderme](ios-sdk-get-started.md)konusunda açıklandığı gibi oluşturduğunuzu ve yapılandırdığınızı varsaymaktadır.
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
@@ -60,19 +58,19 @@ Yalnızca bir bildirimin *kimliğini* göndermek için uygulamanızın arka ucun
 
 Bu hedefe ulaşmak için, uygulama arka ucundan güvenli içerik almak üzere mantığı yazmanız gerekir.
 
-1. ' `AppDelegate.m`De, uygulamanın arka uca GÖNDERILEN bildirim kimliğini işleyeceği şekilde sessiz bildirimler için kaydoldığından emin olun. Didsonlandırhlaunchingwithoptions içindeki `UIRemoteNotificationTypeNewsstandContentAvailability` seçeneği ekleyin:
+1. ' De `AppDelegate.m` , uygulamanın arka uca gönderilen BILDIRIM kimliğini işleyeceği şekilde sessiz bildirimler için kaydoldığından emin olun. `UIRemoteNotificationTypeNewsstandContentAvailability`Didsonlandırhlaunchingwithoptions içindeki seçeneği ekleyin:
 
     ```objc
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
     ```
-2. Aşağıdaki bildirimle `AppDelegate.m` en üstteki uygulama ekleme bölümünde:
+2. `AppDelegate.m`Aşağıdaki bildirimle en üstteki uygulama ekleme bölümünde:
 
     ```objc
     @interface AppDelegate ()
     - (void) retrieveSecurePayloadWithId:(int)payloadId completion: (void(^)(NSString*, NSError*)) completion;
     @end
     ```
-3. Ardından, daha önce elde edilen arka ucunuzla birlikte yer tutucuyu `{back-end endpoint}` yerine, uygulama bölümüne aşağıdaki kodu ekleyin:
+3. Ardından, `{back-end endpoint}` daha önce elde edilen arka ucunuzla birlikte yer tutucuyu yerine, uygulama bölümüne aşağıdaki kodu ekleyin:
 
     ```objc
     NSString *const GetNotificationEndpoint = @"{back-end endpoint}/api/notifications";

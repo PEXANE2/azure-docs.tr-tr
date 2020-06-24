@@ -4,15 +4,15 @@ description: Bu makale, SSTP 'nin 128 eşzamanlı bağlantı sınırını aşman
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: alzam
-ms.openlocfilehash: 5500d993a4bf3c664f14182d983f9abed8ebb08a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e98fd0d57219599fb1c3934638a928542e4311a7
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398374"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983335"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>SSTP 'den OpenVPN protokolüne veya Ikev2 'e geçiş
 
@@ -22,7 +22,7 @@ Noktadan Siteye (P2S) VPN ağ geçidi bağlantısı, ayrı bir istemci bilgisaya
 
 Noktadan siteye VPN aşağıdaki protokollerden birini kullanabilir:
 
-* Bir SSL/TLS tabanlı VPN protokolü olan **OpenVPN&reg; Protokolü**. Çoğu güvenlik duvarı, SSL tarafından kullanılan TCP bağlantı noktası 443 giden ' ü açık olduğundan, bir SSL VPN çözümü, güvenlik duvarlarını sızma edebilir. OpenVPN, Android, iOS (sürüm 11,0 ve üzeri), Windows, Linux ve Mac cihazları (OSX sürümleri 10,13 ve üzeri) ile bağlantı kurmak için kullanılabilir.
+* **OpenVPN &reg; Protokol**, SSL/TLS tabanlı VPN protokolü. Çoğu güvenlik duvarı, SSL tarafından kullanılan TCP bağlantı noktası 443 giden ' ü açık olduğundan, bir SSL VPN çözümü, güvenlik duvarlarını sızma edebilir. OpenVPN, Android, iOS (sürüm 11,0 ve üzeri), Windows, Linux ve Mac cihazları (OSX sürümleri 10,13 ve üzeri) ile bağlantı kurmak için kullanılabilir.
 
 * Özel bir SSL tabanlı VPN protokolü olan **Güvenli Yuva Tünel Protokolü (SSTP)**. Çoğu güvenlik duvarı, SSL tarafından kullanılan TCP bağlantı noktası 443 giden ' ü açık olduğundan, bir SSL VPN çözümü, güvenlik duvarlarını sızma edebilir. SSTP yalnızca Windows cihazlarında desteklenir. Azure, SSTP (Windows 7 ve üzeri) olan tüm Windows sürümlerini destekler. **SSTP, yalnızca ağ geçidi SKU 'su ne olursa olsun, en fazla 128 eşzamanlı bağlantıyı destekler**.
 
@@ -94,7 +94,7 @@ ZIP dosyası Ayrıca, Azure tarafında bu cihazların kendi profilinizi oluştur
 ### <a name="what-ikeipsec-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="IKE/IPsec policies"></a>P2S için VPN ağ geçitlerinde hangi ıKE/IPSec ilkeleri yapılandırılır?
 
 
-**IKEv2**
+**Ike**
 
 |**Şifre** | **Bütünlük** | **PRF** | **DH Grubu** |
 |---        | ---            | ---        | ---     |

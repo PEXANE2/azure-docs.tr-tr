@@ -5,15 +5,15 @@ description: P2S ve otomatik olarak imzalanan veya CA tarafından verilen sertif
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: cherylmc
-ms.openlocfilehash: 013ebc2a1343c8eab3d477023e36660c93fa6da5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33f35dc2a8224f496e040b66b2b92bc4c2ec4682
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244491"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84984842"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Yerel Azure sertifika kimlik doğrulaması kullanarak bir VNet 'e Noktadan siteye VPN bağlantısı yapılandırma: Azure portal
 
@@ -144,7 +144,7 @@ VPN istemcisi yapılandırma dosyaları, P2S bağlantısı üzerinden bir sanal 
 >
 >
 
-1. İstemci bilgisayarda sanal ağınıza bağlanmak için VPN bağlantılarında gezinin ve oluşturduğunuz VPN bağlantısını bulun. Bu VPN bağlantısı sanal ağınızla aynı ada sahiptir. **Bağlan**’ı seçin. Sertifika kullanımına ilişkin bir açılır ileti görüntülenebilir. Yükseltilmiş ayrıcalıkları kullanmak için **devam** ' ı seçin.
+1. İstemci bilgisayarda sanal ağınıza bağlanmak için VPN bağlantılarında gezinin ve oluşturduğunuz VPN bağlantısını bulun. Bu VPN bağlantısı sanal ağınızla aynı ada sahiptir. **Bağlan**'ı seçin. Sertifika kullanımına ilişkin bir açılır ileti görüntülenebilir. Yükseltilmiş ayrıcalıkları kullanmak için **devam** ' ı seçin.
 
 2. **Bağlantı durumu sayfasında** , bağlantıyı başlatmak için **Bağlan** ' ı seçin. Bir **Sertifika Seç** ekranı çıkarsa, gösterilen istemci sertifikasının bağlanmak için kullanmak istediğiniz sertifika olduğunu doğrulayın. Değilse, doğru sertifikayı seçmek için aşağı açılan oku kullanın ve ardından **Tamam**' ı seçin.
 
@@ -159,7 +159,7 @@ VPN istemcisi yapılandırma dosyaları, P2S bağlantısı üzerinden bir sanal 
 
 ### <a name="to-connect-from-a-mac-vpn-client"></a>Mac VPN istemcisinden bağlanmak için
 
-Ağ iletişim kutusunda, kullanmak istediğiniz istemci profilini bulun, [vpnsettings. xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac)' den ayarları belirtin ve sonra **Bağlan**' ı seçin.
+Ağ iletişim kutusunda, kullanmak istediğiniz istemci profilini bulun, [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac)ayarları belirtin ve sonra **Bağlan**' ı seçin.
 
 Ayrıntılı yönergeler için [Install-Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) ' i işaretleyin. Bağlanmayla ilgili sorun yaşıyorsanız, sanal ağ geçidinin temel bir SKU kullanmadığından emin olun. Temel SKU, Mac istemcileri için desteklenmez.
 

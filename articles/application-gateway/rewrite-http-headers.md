@@ -4,15 +4,15 @@ description: Bu makalede, Azure Application Gateway HTTP üstbilgilerini yeniden
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: 421c1f4d1abe9be5f5081235e78ebe77b1813e6e
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: fb5196f9612cb4ce1f0a49be8b5a76f6703fdab6
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562245"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248692"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>HTTP üstbilgilerini Application Gateway yeniden yazın
 
@@ -60,30 +60,30 @@ Application Gateway sunucu, istemciyle bağlantı ve bağlantıdaki geçerli ist
 
 Application Gateway bu sunucu değişkenlerini destekler:
 
-| Değişken adı | Açıklama                                                  |
+| Değişken adı | Description                                                  |
 | -------------------------- | :----------------------------------------------------------- |
-| add_x_forwarded_for_proxy  | IP1, ıP2, IP3, vb. biçiminde bu `client_ip` değişkene eklenen (Bu tablodaki açıklamaya bakın) X-iletilmiş istemci isteği üst bilgisi alanı. X-Iletilmiş-for alanı istemci isteği üstbilgisinde yoksa, `add_x_forwarded_for_proxy` değişken `$client_ip` değişkenine eşittir. Bu değişken özellikle, üstbilginin yalnızca bağlantı noktası bilgisi olmadan yalnızca IP adresini içermesi için, Application Gateway tarafından ayarlanmış X-Iletilmiş-for üst bilgisini yeniden yazmak istediğinizde yararlıdır. |
+| add_x_forwarded_for_proxy  | `client_ip`IP1, IP2, IP3, vb. biçiminde bu değişkene eklenen (Bu tablodaki açıklamaya bakın) X-iletilmiş istemci isteği üst bilgisi alanı. X-Iletilmiş-for alanı istemci isteği üstbilgisinde yoksa, `add_x_forwarded_for_proxy` değişken `$client_ip` değişkenine eşittir. Bu değişken özellikle, üstbilginin yalnızca bağlantı noktası bilgisi olmadan yalnızca IP adresini içermesi için, Application Gateway tarafından ayarlanmış X-Iletilmiş-for üst bilgisini yeniden yazmak istediğinizde yararlıdır. |
 | ciphers_supported          | İstemci tarafından desteklenen şifrelemelerin listesi.          |
 | ciphers_used               | Kurulan bir TLS bağlantısı için kullanılan şifre dizeleri. |
 | client_ip                  | Uygulama ağ geçidinin isteği aldığı istemcinin IP adresi. Uygulama ağ geçidi ve kaynak istemciden önce ters bir ara sunucu varsa, *client_ip* ters proxy 'nin IP adresini döndürür. |
 | client_port                | İstemci bağlantı noktası.                                                  |
 | client_tcp_rtt             | İstemci TCP bağlantısıyla ilgili bilgiler. TCP_INFO yuva seçeneğini destekleyen sistemlerde kullanılabilir. |
 | client_user                | HTTP kimlik doğrulaması kullanıldığında, kimlik doğrulaması için sağlanan Kullanıcı adı. |
-| konak                       | Öncelik sırasına göre: istek satırından ana bilgisayar adı, konak istek üst bilgisi alanından ana bilgisayar adı veya bir istekle eşleşen sunucu adı. Örnek: istekte *http://contoso.com:8080/article.aspx?id=123&title=fabrikam*ana bilgisayar değeri *contoso.com* olacaktır |
+| konak                       | Öncelik sırasına göre: istek satırından ana bilgisayar adı, konak istek üst bilgisi alanından ana bilgisayar adı veya bir istekle eşleşen sunucu adı. Örnek: istekte *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* ana bilgisayar değeri *contoso.com* olacaktır |
 | cookie_*adı*              | *Ad* tanımlama bilgisi.                                            |
 | http_method                | URL isteğini yapmak için kullanılan yöntem. Örneğin, GET veya POST. |
 | http_status                | Oturum durumu. Örneğin, 200, 400 veya 403.                       |
 | http_version               | İstek Protokolü. Genellikle HTTP/1.0, HTTP/1.1 veya HTTP/2.0. |
-| query_string               | İstenen URL 'de "?" öğesini izleyen değişken/değer çiftleri listesi. Örnek: istekte *http://contoso.com:8080/article.aspx?id=123&title=fabrikam*query_string değer *ıd = 123&title = fabrikam* olacaktır |
+| query_string               | İstenen URL 'de "?" öğesini izleyen değişken/değer çiftleri listesi. Örnek: istekte *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* query_string değer *ID = 123&title = fabrikam* olacaktır |
 | received_bytes             | İsteğin uzunluğu (istek satırı, üst bilgi ve istek gövdesi dahil). |
 | request_query              | İstek satırındaki bağımsız değişkenler.                                |
 | request_scheme             | İstek düzeni: http veya https.                            |
-| request_uri                | Tüm özgün istek URI 'SI (bağımsız değişkenlerle). Örnek: istekte *http://contoso.com:8080/article.aspx?id=123&title=fabrikam*request_uri değeri */article.aspx olacak mı? ıd = 123&title = fabrikam*   |
+| request_uri                | Tüm özgün istek URI 'SI (bağımsız değişkenlerle). Örnek: istekte *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* request_uri değeri */article.aspx olacak mı? ID = 123&title = fabrikam*   |
 | sent_bytes                 | Bir istemciye gönderilen bayt sayısı.                             |
 | server_port                | Bir isteği kabul eden sunucunun bağlantı noktası.                 |
 | ssl_connection_protocol    | Kurulan bir TLS bağlantısının protokolü.        |
 | ssl_enabled                | Bağlantı, TLS modunda çalışıyorsa "açık". Aksi takdirde, boş bir dize. |
-| uri_path                   | Web istemcisinin erişmek istediği konaktaki belirli kaynağı tanımlar. Bu, istek URI 'sinin bağımsız değişkenler olmadan bölümüdür. Örnek: istekte *http://contoso.com:8080/article.aspx?id=123&title=fabrikam*uri_path değer */article.aspx* olacaktır  |
+| uri_path                   | Web istemcisinin erişmek istediği konaktaki belirli kaynağı tanımlar. Bu, istek URI 'sinin bağımsız değişkenler olmadan bölümüdür. Örnek: istekte *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* uri_path değer */article.aspx* olacaktır  |
 
 ## <a name="rewrite-configuration"></a>Yeniden yazma yapılandırması
 
@@ -131,8 +131,8 @@ Konum üstbilgisindeki ana bilgisayar adını Application Gateway 'in etki alan�
 
 Burada, ana bilgisayar adını değiştirme adımları verilmiştir:
 
-1. Yanıttaki konum üstbilgisinin azurewebsites.net içerip içermeyeceğini değerlendiren bir koşul içeren bir yeniden yazma kuralı oluşturun. Kalıbı `(https?):\/\/.*azurewebsites\.net(.*)$`girin.
-1. Uygulama ağ geçidinin ana bilgisayar adına sahip olması için konum başlığını yeniden yazmak üzere bir eylem gerçekleştirin. Bunu, üst bilgi `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` değeri olarak girerek yapın.
+1. Yanıttaki konum üstbilgisinin azurewebsites.net içerip içermeyeceğini değerlendiren bir koşul içeren bir yeniden yazma kuralı oluşturun. Kalıbı girin `(https?):\/\/.*azurewebsites\.net(.*)$` .
+1. Uygulama ağ geçidinin ana bilgisayar adına sahip olması için konum başlığını yeniden yazmak üzere bir eylem gerçekleştirin. Bunu `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` , üst bilgi değeri olarak girerek yapın.
 
 ![Konum üst bilgisini Değiştir](media/rewrite-http-headers/app-service-redirection.png)
 
@@ -156,13 +156,13 @@ Bir üst bilgi veya sunucu değişkeni varlığı için bir HTTP isteği veya ya
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Bir yanıtta aynı ada sahip birden fazla üst bilgi varsa, bu üst bilgilerden birinin değerini yeniden yazmak yanıttaki diğer üstbilgilerin bırakılmasına neden olur. Bu, genellikle bir yanıtta birden fazla set-Cookie üst bilgisine sahip olabileceğinizden, set-Cookie üst bilgisinde meydana gelebilir. Bu tür bir senaryo, uygulama ağ geçidi ile uygulama hizmeti kullanırken ve uygulama ağ geçidinde tanımlama bilgisi tabanlı oturum benzeşimi yapılandırmış olduğunuz bir senaryodur. Bu durumda, yanıt iki set-Cookie üst bilgisi içerir: bir App Service tarafından kullanılan, örneğin: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` ve uygulama ağ geçidi benzeşimi için bir diğeri (örneğin, `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`). Bu senaryodaki set-Cookie başlıklarından birini yeniden yazmak, diğer set-Cookie üst bilgisinin yanıttan kaldırılmasına neden olabilir.
+- Bir yanıtta aynı ada sahip birden fazla üst bilgi varsa, bu üst bilgilerden birinin değerini yeniden yazmak yanıttaki diğer üstbilgilerin bırakılmasına neden olur. Bu, genellikle bir yanıtta birden fazla set-Cookie üst bilgisine sahip olabileceğinizden, set-Cookie üst bilgisinde meydana gelebilir. Bu tür bir senaryo, uygulama ağ geçidi ile uygulama hizmeti kullanırken ve uygulama ağ geçidinde tanımlama bilgisi tabanlı oturum benzeşimi yapılandırmış olduğunuz bir senaryodur. Bu durumda, yanıt iki set-Cookie üst bilgisi içerir: bir App Service tarafından kullanılan, örneğin: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` ve uygulama ağ geçidi benzeşimi için bir diğeri (örneğin,) `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Bu senaryodaki set-Cookie başlıklarından birini yeniden yazmak, diğer set-Cookie üst bilgisinin yanıttan kaldırılmasına neden olabilir.
 
 - Uygulama ağ geçidi istekleri yeniden yönlendirmek veya özel bir hata sayfası göstermek üzere yapılandırıldığında, yeniden yazar desteklenmez.
 
 - Bağlantı, yükseltme ve ana bilgisayar üst bilgilerini yeniden yazma Şu anda desteklenmiyor.
 
-- Üst bilgi adları, [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27)' de tanımlanan alfasayısal karakterleri ve belirli sembolleri içerebilir. Şu anda üstbilgi adlarında alt çizgi (\_) özel karakterini desteklemiyoruz.
+- Üst bilgi adları, [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27)' de tanımlanan alfasayısal karakterleri ve belirli sembolleri içerebilir. Şu anda üstbilgi adlarında alt çizgi ( \_ ) özel karakterini desteklemiyoruz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
