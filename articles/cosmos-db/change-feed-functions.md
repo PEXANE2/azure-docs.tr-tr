@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7a74635551d8416bf60689b1f1403f29883e81bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce95e760dd9faf2130a81dff3f0611c27f99551d
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78851375"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118908"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB ve Azure Işlevleri ile sunucusuz olay tabanlı mimariler
 
 Azure Işlevleri, [değişiklik akışına](change-feed.md)bağlanmak için en kolay yolu sağlar. Azure Cosmos kapsayıcısının değişiklik akışındaki her yeni olayda otomatik olarak tetiklenecek küçük reaktif Azure Işlevleri oluşturabilirsiniz.
 
-![Cosmos DB için Azure Işlevleri tetikleyicisiyle çalışan sunucusuz olay tabanlı Işlevler](./media/change-feed-functions/functions.png)
+:::image type="content" source="./media/change-feed-functions/functions.png" alt-text="Cosmos DB için Azure Işlevleri tetikleyicisiyle çalışan sunucusuz olay tabanlı Işlevler" border="false":::
 
 [Cosmos DB Için Azure işlevleri tetiklemesi](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)sayesinde, herhangi bir [çalışan altyapısını](./change-feed-processor.md)sürdürmenize gerek kalmadan [değişiklik akışı işlemcisinin](./change-feed-processor.md)ölçeklendirilmesine ve güvenilir olay algılama işlevlerinden yararlanabilirsiniz. Olay kaynağını belirleme işlem hattının geri kalanı hakkında endişelenmeden Azure Işlevinizin mantığına odaklanmanız yeterlidir. Tetikleyiciyi diğer [Azure işlevleri bağlamalarıyla](../azure-functions/functions-triggers-bindings.md#supported-bindings)de karıştırabilirsiniz.
 
@@ -30,7 +30,7 @@ Azure Işlevleri, [değişiklik akışına](change-feed.md)bağlanmak için en k
 Sunucusuz bir olay tabanlı akış uygulamak için şunlar gerekir:
 
 * **İzlenen kapsayıcı**: izlenen kapsayıcı, Izlenen Azure Cosmos kapsayıcısıdır ve değişiklik beslemenin oluşturulduğu verileri depolar. Tüm ekler, izlenen kapsayıcıya yapılan güncelleştirmeler kapsayıcının değişiklik akışına yansıtılır.
-* **Kira kapsayıcısı**: kira kapsayıcısı, birden çok ve dinamik sunucusuz Azure işlev örneğinde durum tutar ve dinamik ölçeklendirmeyi sağlar. Bu Kiralama kapsayıcısı, Cosmos DB için Azure Işlevleri tetikleyicisi tarafından el ile veya otomatik olarak oluşturulabilir. Kira kapsayıcısını otomatik olarak oluşturmak için, [yapılandırmada](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) *Createleasecollectionifnotexists* bayrağını ayarlayın. Bölümlenmiş kira kapsayıcıları, `/id` bölüm anahtarı tanımına sahip olmak için gereklidir.
+* **Kira kapsayıcısı**: kira kapsayıcısı, birden çok ve dinamik sunucusuz Azure işlev örneğinde durum tutar ve dinamik ölçeklendirmeyi sağlar. Bu Kiralama kapsayıcısı, Cosmos DB için Azure Işlevleri tetikleyicisi tarafından el ile veya otomatik olarak oluşturulabilir. Kira kapsayıcısını otomatik olarak oluşturmak için, [yapılandırmada](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) *Createleasecollectionifnotexists* bayrağını ayarlayın. Bölümlenmiş kira kapsayıcıları, bölüm anahtarı tanımına sahip olmak için gereklidir `/id` .
 
 ## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Işlevleri tetiklerinizi oluşturma
 

@@ -3,12 +3,12 @@ title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 5baf9ce63442ee60d212362df92a44d0fa2723fa
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 7d5a7d82aceae6902ad953e314434f1a3736a5e1
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610313"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117548"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -343,7 +343,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | Labs/formüller | ın | 1-80 | Alfasayısal, alt çizgi, kısa çizgi ve parantez. |
 > | Labs/virtualmachines | ın | 1-15 (Windows)<br>1-64 (Linux) | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. Tüm sayılar olamaz. |
 
-## <a name="microsoftdocumentdb"></a>Microsoft. DocumentDB
+## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
@@ -524,7 +524,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | öznitelikleri | global | 6-50 | Alfasayısal ve tireler<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
+> | öznitelikleri | global | 6-50 | Alfasayısal ve tireler<br><br>Mektup ile başlayın. Alfasayısal ile biter. |
 > | ad alanları/AuthorizationRules | ad alanı | 1-256 | Alfasayısal, nokta, kısa çizgi ve alt çizgi.<br><br>Alfasayısal başlatın. |
 > | ad alanları/Notificationhub 'Lar | ad alanı | 1-260 | Alfasayısal, nokta, kısa çizgi ve alt çizgi.<br><br>Alfasayısal başlatın. |
 > | ad alanları/Notificationhub 'Lar/AuthorizationRules | Bildirim Hub 'ı | 1-256 | Alfasayısal, nokta, kısa çizgi ve alt çizgi.<br><br>Alfasayısal başlatın. |
@@ -542,7 +542,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | çözümler | çalışma alanı | YOK | Microsoft tarafından yazılan çözümler için, adın şu düzende olması gerekir:<br>`SolutionType(WorkspaceName)`<br><br>Üçüncü taraflar tarafından yazılan çözümler için, adın düzende olması gerekir:<br>`SolutionType[WorkspaceName]`<br><br>Örneğin, geçerli bir ad:<br>`AntiMalware(contoso-IT)`<br><br>Çözüm türü, büyük/küçük harfe duyarlıdır. |
+> | çözümler | çalışma alanı | Yok | Microsoft tarafından yazılan çözümler için, adın şu düzende olması gerekir:<br>`SolutionType(WorkspaceName)`<br><br>Üçüncü taraflar tarafından yazılan çözümler için, adın düzende olması gerekir:<br>`SolutionType[WorkspaceName]`<br><br>Örneğin, geçerli bir ad:<br>`AntiMalware(contoso-IT)`<br><br>Çözüm türü, büyük/küçük harfe duyarlıdır. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 

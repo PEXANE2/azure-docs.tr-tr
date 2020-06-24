@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2dcf706ea59657abc2718a69e59191604dc2849d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0cbadc10fb817c70bd259397c840aae68abc2d54
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633418"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213338"
 ---
 # <a name="assign-variables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda değişken atama
 
@@ -24,7 +24,7 @@ Bu makalede, SQL havuzunda T-SQL değişkenlerini atamaya yönelik temel ipuçla
 
 ## <a name="set-variables-with-declare"></a>DECLARE ile değişkenleri ayarla
 
-SQL havuzundaki değişkenler, `DECLARE` ifadesini veya `SET` ifadesini kullanarak ayarlanır. Değişkenleri DECLARE ile başlatmak, SQL havuzunda değişken değer ayarlamak için en esnek yollarla biridir.
+SQL havuzundaki değişkenler, `DECLARE` ifadesini veya ifadesini kullanarak ayarlanır `SET` . Değişkenleri DECLARE ile başlatmak, SQL havuzunda değişken değer ayarlamak için en esnek yollarla biridir.
 
 ```sql
 DECLARE @v  int = 0
@@ -39,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Aynı DECLARE ifadesinde bir değişkeni başlatamıyor ve kullanamazsınız. Bu @p1 noktayı göstermek için, aynı Declare ifadesinde hem başlatılmış hem de kullanıldığı için aşağıdaki **örneğe izin verilmez** . Bu nedenle, aşağıdaki örnek bir hata verir:
+Aynı DECLARE ifadesinde bir değişkeni başlatamıyor ve kullanamazsınız. Bu noktayı göstermek için, **not** @p1 aynı Declare ifadesinde hem başlatılmış hem de kullanıldığı için aşağıdaki örneğe izin verilmez. Bu nedenle, aşağıdaki örnek bir hata verir:
 
 ```sql
 DECLARE @p1 int = 0

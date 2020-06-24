@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 368276f75128c80b8df326a26acf26c841e9f68a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7c7358dc405b3db2b3f014bb99a96fa56580314
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742679"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213933"
 ---
 # <a name="partitioning-tables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda tabloları bölümleme
 
@@ -157,7 +157,7 @@ INSERT INTO dbo.FactInternetSales
 VALUES (1,20000101,1,1,1,1,1,1);
 ```
 
-Aşağıdaki sorgu, `sys.partitions` katalog görünümünü kullanarak satır sayısını bulur:
+Aşağıdaki sorgu, katalog görünümünü kullanarak satır sayısını bulur `sys.partitions` :
 
 ```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
@@ -182,7 +182,7 @@ ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 
 Bölüm boş olmadığından, # 35346, düzey 15, durum 1, ALTER PARTITION ifadesinin Line 44 SPLIT yan tümcesi başarısız oldu. Tabloda bir columnstore dizini mevcut olduğunda yalnızca boş bölümler bölünebilir. ALTER PARTıTıON deyimini yürütmeden önce columnstore dizinini devre dışı bırakmayı, ardından ALTER PARTıTıON tamamlandıktan sonra columnstore dizinini yeniden oluşturmayı düşünün.
 
-Ancak, verileri tutmak üzere `CTAS` yeni bir tablo oluşturmak için kullanabilirsiniz.
+Ancak, `CTAS` verileri tutmak üzere yeni bir tablo oluşturmak için kullanabilirsiniz.
 
 ```sql
 CREATE TABLE dbo.FactInternetSales_20000101
@@ -208,7 +208,7 @@ ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Her şey, verileri kullanarak `CTAS`yeni bölüm sınırlarına hizalamak ve sonra verileri ana tabloya geri geçirmek için kullanılır.
+Her şey, verileri kullanarak yeni bölüm sınırlarına hizalamak `CTAS` ve sonra verileri ana tabloya geri geçirmek için kullanılır.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
@@ -237,7 +237,7 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Verileri tek bir adımda içeren bölümlere yeni verileri yükleme
 
-Bölüm değiştirme ile verileri bölümlere yükleme, kullanıcıların yeni verilerde anahtara görünmeyen bir tabloda yeni verileri aşamalandırmaya uygun bir yoldur.  Bölüm geçişle ilişkili kilitleme çekişmesiyle uğraşmak için meşgul sistemler zor olabilir.  Bir bölümdeki mevcut verileri temizlemek için, verileri değiştirmek için `ALTER TABLE` kullanılması gerekir.  Yeni verilerde `ALTER TABLE` geçiş yapmak için başka bir tane gerekiyordu.  SYNAPSE SQL havuzunda `TRUNCATE_TARGET` seçeneği, `ALTER TABLE` komutunda desteklenir.  `TRUNCATE_TARGET` Komutuyla, yeni verilerle bölümdeki mevcut verilerin üzerine `ALTER TABLE` yazar.  Aşağıda, var olan verileri içeren `CTAS` yeni bir tablo oluşturmak, yeni veriler eklemek ve ardından tüm verileri yeniden hedef tabloya dönüştürmek, varolan verilerin üzerine yazmak için kullanılan bir örnek verilmiştir.
+Bölüm değiştirme ile verileri bölümlere yükleme, kullanıcıların yeni verilerde anahtara görünmeyen bir tabloda yeni verileri aşamalandırmaya uygun bir yoldur.  Bölüm geçişle ilişkili kilitleme çekişmesiyle uğraşmak için meşgul sistemler zor olabilir.  Bir bölümdeki mevcut verileri temizlemek için, `ALTER TABLE` verileri değiştirmek için kullanılması gerekir.  `ALTER TABLE`Yeni verilerde geçiş yapmak için başka bir tane gerekiyordu.  SYNAPSE SQL havuzunda `TRUNCATE_TARGET` seçeneği, `ALTER TABLE` komutunda desteklenir.  `TRUNCATE_TARGET`Komutuyla, `ALTER TABLE` yeni verilerle bölümdeki mevcut verilerin üzerine yazar.  Aşağıda, `CTAS` var olan verileri içeren yeni bir tablo oluşturmak, yeni veriler eklemek ve ardından tüm verileri yeniden hedef tabloya dönüştürmek, varolan verilerin üzerine yazmak için kullanılan bir örnek verilmiştir.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]

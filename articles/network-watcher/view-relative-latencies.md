@@ -6,18 +6,18 @@ documentationcenter: ''
 author: damendo
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 39f81731f20566d1a39f3f0931ff52c4e8b43ec0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 938315dac80ae51984851083753a9cb8f77662b2
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521387"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737912"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Belirli konumlardan Azure bölgelerine göreli gecikmeyi görün
 
@@ -59,10 +59,10 @@ Get-AzNetworkWatcherReachabilityReport `
 ```
 
 > [!NOTE]
-> Önceki komutta belirttiğiniz bölgenin, Ağ İzleyicisi 'ni aldığınızda belirttiğiniz bölgeyle aynı olması gerekmez. Önceki komut basitçe var olan bir ağ izleyicisi belirtmenizi gerektirir. Ağ İzleyicisi herhangi bir bölgede olabilir. Ve `-Country` `-State`için değerler belirtirseniz, bunların geçerli olmaları gerekir. Değerler büyük/küçük harfe duyarlıdır. Veriler, sınırlı sayıda ülke/bölge, eyalet ve şehir için kullanılabilir. Kullanılabilir ülke/bölge, [eyalet, şehir ve sağlayıcıları görüntüleme](#view-available) içindeki komutları çalıştırarak, önceki komutla birlikte kullanılacak mevcut ülkelerin/bölgelerin, şehirlerin ve durumların bir listesini görüntüleyin. 
+> Önceki komutta belirttiğiniz bölgenin, Ağ İzleyicisi 'ni aldığınızda belirttiğiniz bölgeyle aynı olması gerekmez. Önceki komut basitçe var olan bir ağ izleyicisi belirtmenizi gerektirir. Ağ İzleyicisi herhangi bir bölgede olabilir. Ve için değerler belirtirseniz `-Country` `-State` , bunların geçerli olmaları gerekir. Değerler büyük/küçük harfe duyarlıdır. Veriler, sınırlı sayıda ülke/bölge, eyalet ve şehir için kullanılabilir. Kullanılabilir ülke/bölge, [eyalet, şehir ve sağlayıcıları görüntüleme](#view-available) içindeki komutları çalıştırarak, önceki komutla birlikte kullanılacak mevcut ülkelerin/bölgelerin, şehirlerin ve durumların bir listesini görüntüleyin. 
 
 > [!WARNING]
-> Son 30 gün içinde ve `-StartTime` `-EndTime`için bir tarih belirtmeniz gerekir. Önceki bir tarih belirtildiğinde hiçbir veri döndürülmeyecektir.
+> Son 30 gün içinde ve için bir tarih belirtmeniz gerekir `-StartTime` `-EndTime` . Önceki bir tarih belirtildiğinde hiçbir veri döndürülmeyecektir.
 
 Önceki komutun çıktısı şöyledir:
 
@@ -108,7 +108,7 @@ Döndürülen çıktıda, **puan** değeri bölgeler ve sağlayıcılar arasınd
 
 ## <a name="compare-relative-network-latencies-across-azure-regions-from-a-specific-location"></a>Belirli bir konumdan Azure bölgelerinde göreli Ağ gecikmeleri karşılaştırın
 
-Kullanarak `-Location`belirli bir konum ve belirli bir Azure bölgesi arasındaki göreli gecikme sürelerini belirtmek yerine, belirli bir fiziksel konumdan tüm Azure bölgelerinin göreli gecikme sürelerini belirlemek istediğinizde, bunu da yapabilirsiniz. Örneğin, aşağıdaki komut, birincil kullanıcılarınızın Washington durumunda bulunan kullanıcıları Comcast durumunda ' de bir hizmeti hangi Azure bölgesine dağıtacağınızı değerlendirmenize yardımcı olur:
+Kullanarak belirli bir konum ve belirli bir Azure bölgesi arasındaki göreli gecikme sürelerini belirtmek yerine `-Location` , belirli bir fiziksel konumdan tüm Azure bölgelerinin göreli gecikme sürelerini belirlemek istediğinizde, bunu da yapabilirsiniz. Örneğin, aşağıdaki komut, birincil kullanıcılarınızın Washington durumunda bulunan kullanıcıları Comcast durumunda ' de bir hizmeti hangi Azure bölgesine dağıtacağınızı değerlendirmenize yardımcı olur:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityReport `

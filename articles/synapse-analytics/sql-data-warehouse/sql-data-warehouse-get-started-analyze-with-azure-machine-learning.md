@@ -6,18 +6,18 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/05/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: daaa5e3a075eee19ab473818ae3bd84d4bd3b32b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2f69ece56ebd17bcf012fdbc2c1d8da7a020be66
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683671"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212335"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Azure Machine Learning ile veri çözümleme
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Bu öğretici, Azure SYNAPSE 'de depolanan verileri temel alan tahmine dayalı b
 > 
 > 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticide ilerleyebilmeniz için şunlar gereklidir:
 
 * AdventureWorksDW örnek verileriyle önceden yüklenmiş bir SQL Havuzu. Bunu sağlamak için [SQL havuzu oluşturma](create-data-warehouse-portal.md) konusuna bakın ve örnek verileri yüklemeyi seçin. Bir veri ambarınız olmasına karşın örnek verileriniz yoksa [örnek verileri elle yükleyebilirsiniz](load-data-from-azure-blob-storage-using-polybase.md).

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: tracking-python
-ms.openlocfilehash: 6a25f3393a3c99273f12af0c5ff5047dfe373581
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 7c67bc77984af8a25c3514931ed0983df1751d5e
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554906"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126136"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Hızlı başlangıç: Python için Azure Key Vault istemci kitaplığı
 
@@ -27,7 +27,7 @@ Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan
 - TLS/SSL sertifikaları için görevleri basitleştirme ve otomatikleştirme.
 - FIPS 140-2 düzey 2 doğrulanan HSM 'leri kullanın.
 
-[API başvuru belgeleri](/python/api/overview/azure/key-vault?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault)  |  [Paket (Python paket dizini)](https://pypi.org/project/azure-keyvault/)
+[API başvuru belgeleri](/python/api/overview/azure/keyvault-certificates-readme?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault)  |  [Paket (Python paket dizini)](https://pypi.org/project/azure-keyvault/)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -70,12 +70,12 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 Bulut tabanlı bir .NET uygulamasının kimlik doğrulamasının en kolay yolu, yönetilen bir kimliktir; Ayrıntılar için [Azure Key Vault erişmek üzere App Service yönetilen bir kimlik kullanma](../general/managed-identity.md) konusuna bakın.
 
-Kolaylık sağlaması için, bu hızlı başlangıç, bir hizmet sorumlusu ve bir erişim denetimi ilkesi kullanılmasını gerektiren bir masaüstü uygulaması oluşturur. Hizmet prensibi, "http:// &lt; My-Unique-Service-prensibi-Name" biçiminde benzersiz bir ad gerektirir &gt; .
+Kolaylık sağlaması için, bu hızlı başlangıç, bir hizmet sorumlusu ve bir erişim denetimi ilkesi kullanılmasını gerektiren bir masaüstü uygulaması oluşturur. Hizmet sorumlusu, "http:// &lt; My-Unique-Service-Principal-Name" biçiminde benzersiz bir ad gerektirir &gt; .
 
-Azure CLı [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir hizmet ilkesi oluşturun:
+Azure CLı [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir hizmet sorumlusu oluşturun:
 
 ```azurecli
-az ad sp create-for-rbac -n "http://&lt;my-unique-service-principle-name&gt;" --sdk-auth
+az ad sp create-for-rbac -n "http://&lt;my-unique-service-principal-name&gt;" --sdk-auth
 ```
 
 Bu işlem, bir dizi anahtar/değer çifti döndürür. 

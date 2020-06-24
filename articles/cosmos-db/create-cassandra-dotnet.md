@@ -8,12 +8,12 @@ ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.openlocfilehash: abab57a84a7c630bcce71056b49d73024ae75e9f
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 88ec29ef1a0c0766a6c50af218e66f5fec3b9087
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310814"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118432"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Hızlı başlangıç: .NET SDK ve Azure Cosmos DB Cassandra uygulaması derleme
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta, GitHub 'dan bir örneği kopyalayarak bir profil uygu
 
 Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Bu hizmetle belge, tablo, anahtar/değer ve grafik veritabanlarını kolayca oluşturup sorgulayabilir ve tüm bunları yaparken Azure Cosmos DB'nin genel dağıtım ve yatay ölçeklendirme özelliklerinden faydalanabilirsiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternatif olarak, [Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)’yi ücretsiz olarak, Azure aboneliği olmadan ve herhangi bir taahhütte bulunmadan deneyebilirsiniz.
 
@@ -120,31 +120,31 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 1. [Azure portalında](https://portal.azure.com/)**Bağlantı Dizesi**’ni seçin.
 
-    En üstteki USERNAME değerini kopyalamak için ekranın sağ tarafındaki ![Kopyala düğmesini](./media/create-cassandra-dotnet/copy.png) kullanın.
+1. En üstteki USERNAME değerini kopyalamak için ekranın sağ tarafındaki ![Kopyala düğmesini](./media/create-cassandra-dotnet/copy.png) kullanın.
 
-    ![Azure portalı, Bağlantı Dizesi sayfasından erişim anahtarını görüntüleme ve kopyalama](./media/create-cassandra-dotnet/keys.png)
+   :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="Azure portalı, Bağlantı Dizesi sayfasından erişim anahtarını görüntüleme ve kopyalama":::
 
-2. Visual Studio 'da Program.cs dosyasını açın. 
+1. Visual Studio 'da Program.cs dosyasını açın. 
 
-3. Portaldan USERNAME değerini 13. satırdaki `<FILLME>` üzerine yapıştırın.
+1. Portaldan USERNAME değerini 13. satırdaki `<FILLME>` üzerine yapıştırın.
 
     Program.cs dosyasının 13. satırı şuna benzer şekilde görünmelidir: 
 
     `private const string UserName = "cosmos-db-quickstart";`
 
-3. Portala geri dönün ve PASSWORD değerini kopyalayın. Portaldan PASSWORD değerini 14. satırdaki `<FILLME>` üzerine yapıştırın.
+1. Portala geri dönün ve PASSWORD değerini kopyalayın. Portaldan PASSWORD değerini 14. satırdaki `<FILLME>` üzerine yapıştırın.
 
     Program.cs dosyasının 14. satırı şuna benzer şekilde görünmelidir: 
 
     `private const string Password = "2Ggkr662ifxz2Mg...==";`
 
-4. Portala geri dönün ve CONTACT POINT değerini kopyalayın. Portaldan CONTACT POINT değerini 15. satırdaki `<FILLME>` üzerine yapıştırın.
+1. Portala geri dönün ve CONTACT POINT değerini kopyalayın. Portaldan CONTACT POINT değerini 15. satırdaki `<FILLME>` üzerine yapıştırın.
 
     Program.cs dosyasının 15. satırı şuna benzer şekilde görünmelidir: 
 
     `private const string CassandraContactPoint = "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com"; //  DnsName`
 
-5. Program.cs dosyasını kaydedin.
+1. Program.cs dosyasını kaydedin.
     
 ## <a name="run-the-net-app"></a>.NET uygulamasını çalıştırma
 
@@ -157,13 +157,13 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
     ```
 3. Uygulamayı çalıştırmak için CTRL+F5 tuşlarına basın. Uygulamanız konsol pencerenizde görüntülenir. 
 
-    ![Çıktıyı görüntüleme ve doğrulama](./media/create-cassandra-dotnet/output.png)
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="Çıktıyı görüntüleme ve doğrulama":::
 
     Programın yürütülmesini durdurup konsol penceresini kapatmak için CTRL + C tuşlarına basın. 
     
 4. Azure portalında bu yeni verileri sorgulamak, değiştirmek ve birlikte çalışmak için **Veri Gezgini**'ni açın.
 
-    ![Veri Gezgini’nde verileri görüntüleme](./media/create-cassandra-dotnet/data-explorer.png)
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Veri Gezgini’nde verileri görüntüleme":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure portalında SLA'ları gözden geçirme
 

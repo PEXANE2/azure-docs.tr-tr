@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: e1e4d3c896fadc60e4c0492691eaa1e0bb8e929a
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 1e9cce7adc6dbc9062dd133d690fbce92c3190fc
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678486"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783325"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Genel amaçlı sanal makine boyutları
 
@@ -31,12 +31,13 @@ Genel amaçlı VM boyutları dengeli CPU-bellek oranını sağlar. Test ve geli�
 
 - [DCv2 serisi](dcv2-series.md) , genel bulutta işlendiği sırada verilerinizin ve kodunuzun gizliliğini ve bütünlüğünü korumaya yardımcı olabilir. Bu makineler, SGX teknolojisini içeren en son Intel XEON E-2288G Işlemcisi tarafından desteklenir. Intel Turbo Boost teknolojisiyle bu makineler, 5.0 GHz 'ye kadar sürebilir. DCv2 serisi örnekler, müşterilerin, kullanıldığı sırada kod ve verilerini korumak için güvenli şifreleme tabanlı uygulamalar oluşturmasına imkan tanır.
 
-- [Dv2 ve Dsv2 serisi](dv2-dsv2-series.md) Özgün D serisi için bir takip eden VM 'Ler, daha güçlü bir CPU ve en iyi CPU-bellek yapılandırmasına sahiptir ve bu da üretim iş yüklerinin çoğu için uygun hale getirir. Dv2 serisi, D serisinden daha hızlı %35 daha hızlıdır. Dv2 serisi, Intel Turbo Boost Technology 2,0 ile Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
+- [Dv2 ve Dsv2 serisi](dv2-dsv2-series.md) Özgün D serisi için bir takip eden VM 'Ler, daha güçlü bir CPU ve en iyi CPU-bellek yapılandırmasına sahiptir ve bu da üretim iş yüklerinin çoğu için uygun hale getirir. Dv2 serisi, D serisinden daha hızlı %35 daha hızlıdır. Dv2 serisi, 1. nesil Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 2,4 GHz (Kaswell) ve Intel Turbo Boost Technology 2,0. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
 
-- [Dv3 ve Dsv3 serisi](dv3-dsv3-series.md) VM 'Ler, bir hiper iş yükleri için daha iyi bir değer teklifi sağlayan Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır. Bellek ve ağ sınırları, hiper iş parçacığına geçme ile hizalanmak üzere bir çekirdek temelinde ayarlanırken, bellek (~ 3,5 GiB/vCPU 'dan 4 GiB/vCPU 'ya) genişletildi. Dv3 serisi artık D/dv2-Series ' in yüksek bellek sanal makine boyutlarına sahiptir; bunlar bellek için iyileştirilmiş [Ev3 ve Esv3-serisine](ev3-esv3-series.md)taşınmıştır.
+- [Dv3 ve Dsv3 serisi](dv3-dsv3-series.md) VM 'Ler 2. nesil Intel® Xeon® Platinum 8272CL (Cascade Lake) üzerinde çalışır, bir hiper iş yükleri için daha iyi bir değer teklifi sağlayan Intel® Xeon® 8171M 2.1 GHz (ufuk Gölü), Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri. Bellek ve ağ sınırları, hiper iş parçacığına geçme ile hizalanmak üzere bir çekirdek temelinde ayarlanırken, bellek (~ 3,5 GiB/vCPU 'dan 4 GiB/vCPU 'ya) genişletildi. Dv3 serisi artık D/dv2-Series ' in yüksek bellek sanal makine boyutlarına sahiptir; bunlar bellek için iyileştirilmiş [Ev3 ve Esv3-serisine](ev3-esv3-series.md)taşınmıştır.
 
-- [Ddv4 ve Ddsv4 serisi](ddv4-ddsv4-series.md) VM 'Ler 2. nesil Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) işlemcileri üzerinde çalışarak genel amaçlı iş yükleri için daha iyi bir değer teklifi sağlar. 3,4 GHz 'nin tüm çekirdek Turbo saat hızına sürekli olarak sahiptir ve [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; hiper iş parçacıklı teknoloji](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve [Intel &reg; Gelişmiş vektör Uzantıları 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)özelliklerine sahiptir. 
+- [Dv4 ve Dsv4 serisi](dv4-dsv4-series.md) VM 'Ler 2. nesil Intel &reg; Xeon &reg; Platinum (Cascade Lake) işlemcileri üzerinde çalışır ve genel amaçlı iş yükleri için daha iyi bir değer teklifi sağlar. Dv4 ve Dsv4 VM 'Leri serisi, uzak disklere güvenen ve geçici yerel depolama sağlamayan yeni bir sanal makine kategorisidir. 3,4 GHz 'nin tüm çekirdek Turbo saat hızına sürekli olarak sahiptir ve [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; hiper iş parçacıklı teknoloji](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve [Intel &reg; Gelişmiş vektör Uzantıları 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)özelliklerine sahiptir. 
 
+- [Ddv4 ve Ddsv4 serisi](ddv4-ddsv4-series.md) VM 'Ler 2. nesil Intel &reg; Xeon &reg; Platinum (Cascade Lake) işlemcileri üzerinde çalışır ve genel amaçlı iş yükleri için daha iyi bir değer teklifi sağlar. Ddv4 ve Ddsv4 VM 'Leri serisi, yerel veri geçici disklerini içeren yeni bir sanal makine kategorisidir. 3,4 GHz 'nin tüm çekirdek Turbo saat hızına sürekli olarak sahiptir ve [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; hiper iş parçacıklı teknoloji](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ve [Intel &reg; Gelişmiş vektör Uzantıları 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)özelliklerine sahiptir. 
 
 ## <a name="other-sizes"></a>Diğer boyutlar
 

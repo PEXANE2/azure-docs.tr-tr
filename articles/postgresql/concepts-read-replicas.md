@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/09/2020
-ms.openlocfilehash: be9e396a778b81e730906e4a6971505e164dfa43
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.date: 06/11/2020
+ms.openlocfilehash: 48e23aa8cf20dd1225d3d7774d9703b960e0155a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636725"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737895"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda çoğaltmaları okuma-tek sunucu
 
@@ -32,6 +32,9 @@ Okuma çoğaltması özelliği PostgreSQL zaman uyumsuz çoğaltmasını kullan�
 
 ## <a name="cross-region-replication"></a>Çapraz bölge çoğaltma
 Ana sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilirsiniz. Çapraz bölge çoğaltma, olağanüstü durum kurtarma planlaması veya kullanıcılarınıza daha yakın veri getirme gibi senaryolar için yararlı olabilir.
+
+>[!NOTE]
+> Temel katman sunucuları yalnızca aynı bölge çoğaltmasını destekler.
 
 [PostgreSQL Için Azure veritabanı bölgesine](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)bir ana sunucu ekleyebilirsiniz. Ana sunucu, eşleştirilmiş bölge veya evrensel çoğaltma bölgelerinde bir çoğaltmaya sahip olabilir. Aşağıdaki resimde, ana bölgenize göre hangi çoğaltma bölgelerinin kullanılabildiği gösterilmektedir.
 
@@ -142,11 +145,11 @@ Bir çoğaltmaya yük devretmek istediğinizde,
 Uygulamanız okuma ve yazma işlemlerini başarıyla tamamladıktan sonra, yük devretmeyi tamamladınız. Bir sorunu saptadığınızda ve yukarıdaki 1. ve 2. adımları tamamladıktan sonra uygulama deneyimlerinizin ne kadar süre açık olacağını gösterir.
 
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 Bu bölümde çoğaltma oku özelliği hakkında dikkat edilecek noktalar özetlenmektedir.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Okuma çoğaltmaları ve [mantıksal kod çözme](concepts-logical.md) , bilgi Için doğrudan Postgres yazma günlüğüne (Wal) bağlıdır. Bu iki özellik, Postgres 'den farklı günlük düzeylerine sahip olmalıdır. Mantıksal kod çözme, okuma Çoğaltmalarından daha yüksek bir günlüğe kaydetme düzeyine sahip olmalıdır.
 
 Doğru günlük kaydını yapılandırmak için Azure çoğaltma desteği parametresini kullanın. Azure çoğaltma desteğinin üç ayar seçeneği vardır:
@@ -171,6 +174,9 @@ PostgreSQL, `max_connections` okuma çoğaltmasındaki parametrenin değerini an
 Yukarıda açıklanan sunucu değerlerini güncelleştirmeye çalışırsanız, ancak sınırlara bağlı kalmazsanız bir hata alırsınız.
 
 Çoğaltma oluşturulduğunda veya daha sonra güvenlik duvarı kuralları, sanal ağ kuralları ve parametre ayarları ana sunucudan çoğaltmaya devralınmaz.
+
+### <a name="basic-tier"></a>Temel katman
+Temel katman sunucuları yalnızca aynı bölge çoğaltmasını destekler.
 
 ### <a name="max_prepared_transactions"></a>max_prepared_transactions
 [PostgreSQL](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) , `max_prepared_transactions` okuma çoğaltmasındaki parametrenin değerini ana değerden büyük veya ona eşit olacak şekilde gerektirir; Aksi takdirde, çoğaltma başlatılmaz. `max_prepared_transactions`Ana bilgisayarda değiştirmek istiyorsanız, önce çoğaltmalarda değiştirin.

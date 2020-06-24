@@ -4,22 +4,22 @@ description: Azure CLı kullanarak Azure özel bağlantı hizmeti oluşturmayı 
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 6e6148d305af26f7933567ae58023d2ba73263eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4312c6b89a7ba3e56e39050d76c673aa532f6f92
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75350235"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737351"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Azure CLı kullanarak özel bağlantı hizmeti oluşturma
 Bu makalede Azure CLı kullanarak Azure 'da özel bir bağlantı hizmeti oluşturma gösterilmektedir.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Bunun yerine Azure CLı 'yı yüklemeye ve kullanmaya karar verirseniz, bu hızlı başlangıç, en son Azure CLı sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version`. Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
+Bunun yerine Azure CLı 'yı yüklemeye ve kullanmaya karar verirseniz, bu hızlı başlangıç, en son Azure CLı sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version` . Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
 ## <a name="create-a-private-link-service"></a>Özel Bağlantı hizmeti oluşturma
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -111,7 +111,7 @@ Daha sonra, Azure CLı kullanarak bu hizmetin farklı bir sanal ağda özel bir 
 ## <a name="private-endpoints"></a>Özel uç noktalar
 
 ### <a name="create-the-virtual-network"></a>Sanal ağı oluşturma 
- [Az Network VNET Create](/cli/azure/network/vnet#az-network-vnet-create)komutuyla bir sanal ağ oluşturun. Bu örnek, *myresourcegroup*adlı kaynak grubu adlı *mypevnet* adlı bir sanal ağ oluşturur: 
+ [Az Network VNET Create](/cli/azure/network/vnet#az-network-vnet-create)komutuyla bir sanal ağ oluşturun. Bu örnek *myPEVNet*   , *myresourcegroup*adlı kaynak grubu adlı mypevnet adlı bir sanal ağ oluşturur: 
 ```azurecli-interactive
 az network vnet create \
 --resource-group myResourceGroup \
@@ -119,7 +119,7 @@ az network vnet create \
 --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-the-subnet"></a>Alt ağ oluşturma 
- [Az Network VNET subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)komutuyla sanal ağ üzerinde bir alt ağ oluşturun. Bu örnek, *myresourcegroup*adlı kaynak grubunda *mypevnet* adlı sanal ağda *mysubnet* adlı bir alt ağ oluşturur: 
+ [Az Network VNET subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)komutuyla sanal ağ üzerinde bir alt ağ oluşturun. Bu örnek, *mySubnet*   *myresourcegroup*adlı kaynak grubunda *Mypevnet* adlı sanal ağda mysubnet adlı bir alt ağ oluşturur: 
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -151,7 +151,7 @@ az network private-endpoint create \
 --connection-name myPEConnectingPLS \
 --location westcentralus 
 ```
-Özel bağlantı hizmetinde *özel bağlantı-kaynak kimliği* `az network private-link-service show` ' ni kullanabilirsiniz. KIMLIK şöyle görünür:   
+Özel bağlantı hizmetinde *özel bağlantı-kaynak kimliği* ' ni kullanabilirsiniz `az network private-link-service show` . KIMLIK şöyle görünür:   
 /Subscriptions/subıd/ResourceGroups/*resourcegroupname*/Providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
  
 ## <a name="show-private-link-service-connections"></a>Özel bağlantı hizmeti bağlantılarını göster 

@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
-ms.openlocfilehash: 13d74fbb4a7c133ca2365fd2cbfce4b3d2bea72e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c23244707179e05c63ed44b5915e58eefd3f4a3
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75350583"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84705058"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>Bir sanal makine yönlendirme sorununu tanılama
 
@@ -38,7 +38,7 @@ Aşağıdaki adımlarda, için geçerli yolları görüntülemek için mevcut bi
 2. Azure portal üst kısmında, arama kutusuna çalışır durumda olan bir VM 'nin adını girin. VM 'nin adı arama sonuçlarında göründüğünde, bunu seçin.
 3. Sol taraftaki **Ayarlar** **altında ağ ' ı seçin ve**adı ' nı seçerek ağ arabirimi kaynağına gidin.
      ![Ağ arabirimlerini görüntüle](./media/diagnose-network-routing-problem/view-nics.png)
-4. Sol tarafta, **etkin rotalar**' ı seçin. Aşağıdaki resimde, **myVMNic1** adlı bir ağ arabirimi için geçerli rotalar gösterilmektedir: ![geçerli rotaları görüntüleme](./media/diagnose-network-routing-problem/view-effective-routes.png)
+4. Sol tarafta, **etkin rotalar**' ı seçin. Aşağıdaki resimde, **myVMNic1** adlı bir ağ arabirimi için geçerli rotalar gösterilmektedir: ![ geçerli rotaları görüntüleme](./media/diagnose-network-routing-problem/view-effective-routes.png)
 
     VM 'ye bağlı birden fazla ağ arabirimi varsa, herhangi bir ağ arabirimi için geçerli yolları seçerek görüntüleyebilirsiniz. Her ağ arabirimi farklı bir alt ağda yer aldığı için, her bir ağ arabirimi farklı bir etkin yollara sahip olabilir.
 
@@ -52,7 +52,7 @@ Etkin yollar önceki adımlarda VM üzerinden görüntülenmekle birlikte, geçe
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure Cloud Shell](https://shell.azure.com/powershell)izleyen komutları veya bilgisayarınızdan PowerShell 'i çalıştırarak çalıştırabilirsiniz. Azure Cloud Shell, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. PowerShell 'i bilgisayarınızdan çalıştırırsanız, Azure PowerShell Module, sürüm 1.0.0 veya sonraki bir sürümü gerekir. Yüklü `Get-Module -ListAvailable Az` sürümü bulmak için bilgisayarınızda çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız, [gerekli izinlere](virtual-network-network-interface.md#permissions)sahip bir hesapla Azure `Connect-AzAccount` 'da oturum açmak için de çalıştırmanız gerekir.
+[Azure Cloud Shell](https://shell.azure.com/powershell)izleyen komutları veya bilgisayarınızdan PowerShell 'i çalıştırarak çalıştırabilirsiniz. Azure Cloud Shell, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. PowerShell 'i bilgisayarınızdan çalıştırırsanız, Azure PowerShell Module, sürüm 1.0.0 veya sonraki bir sürümü gerekir. `Get-Module -ListAvailable Az`Yüklü sürümü bulmak için bilgisayarınızda çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız, `Connect-AzAccount` [gerekli izinlere](virtual-network-network-interface.md#permissions)sahip bir hesapla Azure 'da oturum açmak için de çalıştırmanız gerekir.
 
 [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)ile bir ağ arabirimi için geçerli yolları alın. Aşağıdaki örnek, *Myresourcegroup*adlı bir kaynak grubunda bulunan *myVMNic1*adlı bir ağ arabirimi için geçerli yolları alır:
 
@@ -85,7 +85,7 @@ NetworkInterfaces
 
 ## <a name="diagnose-using-azure-cli"></a>Azure CLı kullanarak tanılama
 
-[Azure Cloud Shell](https://shell.azure.com/bash)izleyen komutları veya CLI 'yi bilgisayarınızdan çalıştırarak çalıştırabilirsiniz. Bu makale, Azure CLı sürüm 2.0.32 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırıyorsanız, Ayrıca, [gerekli izinlere](virtual-network-network-interface.md#permissions)sahip bir hesapla `az login` Azure 'da çalıştırmanız ve oturum açmanız gerekir.
+[Azure Cloud Shell](https://shell.azure.com/bash)izleyen komutları veya CLI 'yi bilgisayarınızdan çalıştırarak çalıştırabilirsiniz. Bu makale, Azure CLı sürüm 2.0.32 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırıyorsanız, Ayrıca, `az login` [gerekli izinlere](virtual-network-network-interface.md#permissions)sahip bir hesapla Azure 'da çalıştırmanız ve oturum açmanız gerekir.
 
 [Az Network Nic Show-geçerli-Route-Table](/cli/azure/network/nic#az-network-nic-show-effective-route-table)ile bir ağ arabirimi için geçerli yolları alın. Aşağıdaki örnek, *Myresourcegroup*adlı bir kaynak grubunda bulunan *myVMNic1* adlı bir ağ arabirimi için geçerli yolları alır:
 

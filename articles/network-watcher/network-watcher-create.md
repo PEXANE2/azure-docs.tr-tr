@@ -7,17 +7,17 @@ author: damendo
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 77812a3765a027152c957f6dbb7c9b3811a2278f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6b7453a0100233896e3d01769897ed224a0b2618
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77191188"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737555"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Azure Ağ İzleyicisi örneği oluşturma
 
@@ -49,7 +49,7 @@ az provider register -n Microsoft.Network
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>Portalda ağ Izleyicisi oluşturma
 
-**Tüm hizmetler** > **ağ** > **İzleyicisi ağ**izleyicisine gidin. Ağ İzleyicisini etkinleştirmek istediğiniz tüm abonelikleri seçebilirsiniz. Bu eylem, kullanılabilir her bölgede bir ağ Izleyicisi oluşturur.
+**Tüm hizmetler**  >  **ağ**  >  **İzleyicisi ağ**izleyicisine gidin. Ağ İzleyicisini etkinleştirmek istediğiniz tüm abonelikleri seçebilirsiniz. Bu eylem, kullanılabilir her bölgede bir ağ Izleyicisi oluşturur.
 
 ![Ağ İzleyicisi oluşturma](./media/network-watcher-create/figure1.png)
 
@@ -103,7 +103,7 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 
 ## <a name="delete-a-network-watcher-in-the-portal"></a>Portalda bir ağ izleyicisini silme
 
-**Tüm hizmetler** > **ağ** > **İzleyicisi ağ**izleyicisine gidin.
+**Tüm hizmetler**  >  **ağ**  >  **İzleyicisi ağ**izleyicisine gidin.
 
 Henüz orada değilseniz genel bakış sekmesini seçin. ' De Ağ İzleyicisini devre dışı bırakmak istediğiniz aboneliği seçmek için açılan menüyü kullanın.
 Ok simgesine tıklayarak seçtiğiniz abonelik için bölgelerin listesini genişletin. Verilen her türlü için, bağlam menüsüne erişmek için sağdaki 3 noktayı kullanın.

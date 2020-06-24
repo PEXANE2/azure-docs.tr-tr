@@ -4,16 +4,16 @@ description: PowerShell kullanarak Kaynak Yöneticisi modeli için bir arada bul
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/11/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 5a7ac1b6a9f75655f7e07cc8af89b676ec611421
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52105cf351a45a233a5fb96c9ac8df689c575527
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76905463"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736297"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell kullanarak ExpressRoute ve siteden siteye birlikte var olan bağlantıları yapılandırma
 > [!div class="op_single_selector"]

@@ -3,30 +3,30 @@ title: Azure Advisor 'a giriş
 description: Azure dağıtımlarınızı iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 74048073677cdf0f9f57d84469959a84e78cd6c7
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 0c6c79dd764f92475b3b0121ae46706c0dfc0bcb
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854423"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117786"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure Advisor 'a giriş
 
 Azure Advisor 'ın temel özellikleri hakkında bilgi edinin ve sık sorulan soruların yanıtlarını alın.
 
 ## <a name="what-is-advisor"></a>Advisor nedir?
-Danışman, Azure dağıtımlarınızı iyileştirmek için en iyi yöntemleri izlemenize yardımcı olan kişiselleştirilmiş bir bulut danışmanıdır. Danışman, kaynak yapılandırmanızı ve kullanım telemetrinizi analiz ederek Azure kaynaklarınızın maliyet verimliliğini, performansını, yüksek kullanılabilirliğini ve güvenliğini geliştirmenize yardımcı olabilecek çözümler önerir.
+Danışman, Azure dağıtımlarınızı iyileştirmek için en iyi yöntemleri izlemenize yardımcı olan kişiselleştirilmiş bir bulut danışmanıdır. Kaynak yapılandırmanızı ve kullanım telemetrinizi analiz eder ve ardından maliyet verimliliğini, performansı, güvenilirliği (eskiden yüksek kullanılabilirlik adı verilir) ve Azure kaynaklarınızın güvenliğini artırmanıza yardımcı olabilecek çözümler önerir.
 
 Advisor ile şunları yapabilirsiniz:
 * Proaktif, eyleme dönüştürülebilir ve kişiselleştirilmiş en iyi yöntem önerileri alabilirsiniz. 
-* Genel Azure harcamalarınızı azaltmaya yönelik fırsatları belirlerken kaynaklarınızın performansını, güvenliğini ve yüksek oranda kullanılabilirliğini geliştirme.
+* Genel Azure harcamalarınızı azaltmaya yönelik fırsatları belirlerken kaynaklarınızın performansını, güvenliğini ve güvenilirliğini artırabilirsiniz.
 * İşlem sırasında önerilen eylemler halinde öneriler alabilirsiniz.
 
 [Azure Portal](https://aka.ms/azureadvisordashboard)aracılığıyla Advisor 'a erişebilirsiniz. [Portalda](https://portal.azure.com)oturum açın, gezinti menüsünde **Advisor** 'ı bulun veya **tüm hizmetler** menüsünde aramak için arama yapın.
 
 Danışman panosu, tüm abonelikleriniz için kişiselleştirilmiş öneriler görüntüler.  Belirli abonelikler ve kaynak türleri için önerileri görüntüleme için filtre uygulayabilirsiniz.  Öneriler beş kategoriye ayrılmıştır: 
 
-* **Yüksek kullanılabilirlik**: iş açısından kritik uygulamalarınızın sürekliliğini sağlamak ve artırmak için. Daha fazla bilgi için bkz. [danışman yüksek kullanılabilirlik önerileri](advisor-high-availability-recommendations.md).
+* **Güvenilirlik (eski adıyla yüksek kullanılabilirlik olarak biliniyordu)**: işle ilgili kritik uygulamalarınızın sürekliliğini sağlamak ve geliştirmek için. Daha fazla bilgi için bkz. [Advisor güvenilirlik önerileri](advisor-high-availability-recommendations.md).
 * **Güvenlik**: güvenlik ihlallerine neden olabilecek tehditleri ve güvenlik açıklarını algılamak için. Daha fazla bilgi için bkz. [Advisor güvenlik önerileri](advisor-security-recommendations.md).
 * **Performans**: uygulamalarınızın hızını artırmak için. Daha fazla bilgi için bkz. [Advisor performans önerileri](advisor-performance-recommendations.md).
 * **Maliyet**: Genel Azure harcamalarınızı iyileştirmek ve azaltmak için. Daha fazla bilgi için bkz. [danışman maliyet önerileri](advisor-cost-recommendations.md).
@@ -67,8 +67,8 @@ Bir öneriyi erteleyip kapatmak için **erteleme** bağlantısına tıklayın. B
 
 Danışman önerileri hakkında daha fazla bilgi edinmek için bkz.:
 
-* [Danışman’ı kullanmaya başlama](advisor-get-started.md)
-* [Danışman yüksek kullanılabilirlik önerileri](advisor-high-availability-recommendations.md)
+* [Danışman'ı kullanmaya başlama](advisor-get-started.md)
+* [Advisor güvenilirlik önerileri](advisor-high-availability-recommendations.md)
 * [Danışman güvenlik önerileri](advisor-security-recommendations.md)
 * [Advisor performans önerileri](advisor-performance-recommendations.md)
 * [Danışman maliyet önerileri](advisor-cost-recommendations.md)

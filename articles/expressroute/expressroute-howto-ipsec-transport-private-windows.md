@@ -4,16 +4,16 @@ description: Azure Windows VM 'Leri ve şirket içi Windows konakları arasında
 services: expressroute
 author: fabferri
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: fabferri
 ms.custom: seodec18
-ms.openlocfilehash: 1bc33047d31262af443cddc418853fbacd88aec1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32ad4f643ff0b217460403245cbb4e99f139aef9
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74022001"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737266"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>ExpressRoute özel eşlemesi için IPSec aktarım modunu yapılandırma
 
@@ -161,7 +161,7 @@ Hedef bağlantı noktası 8080 ile şifrelenmiş HTTP trafiği belirten bir filt
 2. **Ad:** ALANıNA, IP filtresi listeniz için bir ad yazın. Örneğin, **Azure-OnPremises-HTTP8080**. Ardından **Ekle**' ye tıklayın.
 
    [![25]][25]
-3. **IP filtresi açıklaması ve yansıtmalı Özellik** sayfasında, **yansıtılmış**' ı seçin. Yansıtılmış ayar, iki yönlü iletişime olanak sağlayan paketlerle her iki yönde de eşleşir. Ardından **İleri**’ye tıklayın.
+3. **IP filtresi açıklaması ve yansıtmalı Özellik** sayfasında, **yansıtılmış**' ı seçin. Yansıtılmış ayar, iki yönlü iletişime olanak sağlayan paketlerle her iki yönde de eşleşir. Ardından **İleri**'ye tıklayın.
 
    [![26]][26]
 4. **IP trafiği kaynağı** sayfasında, **kaynak adresi:** AÇıLAN menüsünde **belirli bir IP adresi veya alt ağ**seçin. 

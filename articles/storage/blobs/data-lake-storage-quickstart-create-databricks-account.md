@@ -6,20 +6,20 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/17/2020
+ms.date: 06/12/2020
 ms.reviewer: jeking
-ms.openlocfilehash: b6dd1aab4c0ce6c656600d7cc7c71233d256aa0b
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 6c44588f3c95e4707813143c216823323d8183da
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780547"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782981"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>Hızlı başlangıç: Databricks ile verileri analiz etme
 
 Bu hızlı başlangıçta, bir depolama hesabında depolanan veriler üzerinde analiz gerçekleştirmek için Azure Databricks kullanarak bir Apache Spark işi çalıştırırsınız. Spark işinin bir parçası olarak, demografik tabanlı ücretsiz/ücretli kullanıma yönelik Öngörüler elde etmek için bir radyo kanalı abonelik verilerini çözümleyebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -34,7 +34,7 @@ Bu hızlı başlangıçta, bir depolama hesabında depolanan veriler üzerinde a
 
 Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı oluşturursunuz.
 
-1. Azure Portal, **kaynak** > **Analizi** > oluştur**Azure Databricks**' u seçin.
+1. Azure Portal, **kaynak**  >  **Analizi**oluştur  >  **Azure Databricks**' u seçin.
 
     ![Azure portal databricks](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Azure portal databricks")
 
@@ -48,7 +48,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
     |---------|---------|
     |**Çalışma alanı adı**     | Databricks çalışma alanınız için bir ad sağlayın        |
     |**Abonelik**     | Açılan listeden Azure aboneliğinizi seçin.        |
-    |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümü için ilgili kaynakları bir arada tutan kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../../azure-resource-manager/management/overview.md). |
+    |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümüne ilişkin kaynakları tutan bir kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../../azure-resource-manager/management/overview.md). |
     |**Konum**     | **Batı ABD 2**'yi seçin. Tercih ettiğiniz başka bir genel bölgeyi seçebilirsiniz.        |
     |**Fiyatlandırma Katmanı**     |  **Standart** veya **Premium** arasında seçim yapın. Bu katmanlar hakkında daha fazla bilgi için bkz. [Databricks fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/databricks/).       |
 
@@ -60,7 +60,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
 1. Azure portalında, oluşturduğunuz Databricks çalışma alanına gidin ve sonra **Çalışma Alanını Başlat**’ı seçin.
 
-2. Azure Databricks portalına yönlendirilirsiniz. Portaldan **Yeni** > **küme**' yi seçin.
+2. Azure Databricks portalına yönlendirilirsiniz. Portaldan **Yeni**  >  **küme**' yi seçin.
 
     ![Azure 'da databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-on-azure.png "Azure 'da databricks")
 
@@ -92,7 +92,7 @@ Bu bölümde, Azure Databricks çalışma alanında bir not defteri oluşturacak
 
     ![Databricks 'te Not defteri oluşturma](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-details.png "Databricks 'te Not defteri oluşturma")
 
-    **Oluştur**’u seçin.
+    **Oluştur**'u seçin.
 
 4. Aşağıdaki kod bloğunu kopyalayıp ilk hücreye yapıştırın, ancak henüz bu kodu çalıştırmayın.
 
@@ -107,7 +107,7 @@ Bu bölümde, Azure Databricks çalışma alanında bir not defteri oluşturacak
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
    ```
-5. Bu kod bloğunda, bu kod bloğundaki `storage-account-name`, `appID` `password`, ve `tenant-id` yer tutucu değerlerini hizmet sorumlusunu oluştururken topladığınız değerlerle değiştirin. `container-name` Yer tutucu değerini, kapsayıcıya vermek istediğiniz ada ayarlayın.
+5. Bu kod bloğunda, `storage-account-name` `appID` `password` `tenant-id` Bu kod bloğundaki,, ve yer tutucu değerlerini hizmet sorumlusunu oluştururken topladığınız değerlerle değiştirin. `container-name`Yer tutucu değerini, kapsayıcıya vermek istediğiniz ada ayarlayın.
 
 6. Bu bloktaki kodu çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
@@ -173,7 +173,7 @@ Verilerde bir Spark SQL işi çalıştırmak için aşağıdaki görevleri gerç
     - **Değerler**’ı **düzey** olarak ayarlayın.
     - **Toplama**’yı **SAYI** olarak ayarlayın.
 
-6. **Uygula**’ya tıklayın.
+6. **Uygula**'ya tıklayın.
 
 7. Çıktı aşağıdaki ekran görüntüsünde gösterildiği gibi görsel açıklamayı gösterir:
 
@@ -185,7 +185,7 @@ Bu makaleyle işiniz bittiğinde kümeyi sonlandırabilirsiniz. Azure Databricks
 
 ![Databricks kümesini durdurma](./media/data-lake-storage-quickstart-create-databricks-account/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-Otomatik olarak durduğu kümeyi el ile sonlandırdıysanız, kümeyi oluştururken süre **etkinlik süresi dolduktan \_ \_ sonra Sonlandır** onay kutusunu işaretlediyseniz. Bu seçeneği belirlerseniz küme belirtilen zaman boyunca devre dışı olması halinde durdurulur.
+Otomatik olarak durduğu kümeyi el ile sonlandırdıysanız, kümeyi oluştururken süre ** \_ \_ etkinlik süresi dolduktan sonra Sonlandır** onay kutusunu işaretlediyseniz. Bu seçeneği belirlerseniz küme belirtilen zaman boyunca devre dışı olması halinde durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

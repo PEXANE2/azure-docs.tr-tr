@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 3b390ffa20cf3cf79b8fb6311ad05b2978bd5d24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46716cf5bd810225cbfc3b54d246917c9559f78f
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655814"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124477"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Azure Izleyici ölçüm deposunda klasik Cloud Services Konuk işletim sistemi ölçümleri gönderme 
 
@@ -46,7 +46,7 @@ Bu makalede özetlenen işlem yalnızca Azure Cloud Services performans sayaçla
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma 
 
-Azure Active Directory kiracınızda, [kaynaklara erişebilen Azure Active Directory bir uygulama ve hizmet sorumlusu oluşturmak için Portal kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)bölümündeki yönergeleri kullanarak bir hizmet ilkesi oluşturun. Bu işlemi yaparken aşağıdakilere göz önünde olabilirsiniz: 
+Azure Active Directory kiracınızda, [kaynaklara erişebilen Azure Active Directory bir uygulama ve hizmet sorumlusu oluşturmak için Portal kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)bölümündeki yönergeleri kullanarak bir hizmet sorumlusu oluşturun. Bu işlemi yaparken aşağıdakilere göz önünde olabilirsiniz: 
 
 - Oturum açma URL 'si için herhangi bir URL 'YI yerleştirebilirsiniz.  
 - Bu uygulama için yeni bir istemci gizli dizisi oluşturun.  

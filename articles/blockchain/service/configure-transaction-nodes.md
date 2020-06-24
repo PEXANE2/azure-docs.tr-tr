@@ -2,14 +2,14 @@
 title: Azure blok zinciri hizmeti işlem düğümlerini yapılandırma
 description: Azure blok zinciri hizmeti işlem düğümlerini yapılandırma
 ms.date: 11/20/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 8fa18496d0c1aa59beb55569e731967d5ebea427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90836ad94410dfec5caa32275362f1407c9f5b1a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80876938"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212573"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure blok zinciri hizmeti işlem düğümlerini yapılandırma
 
@@ -35,12 +35,12 @@ Blok zinciri üyesine toplam 10 işlem düğümü için en fazla dokuz ek işlem
 
     ![İşlem düğümü Ekle](./media/configure-transaction-nodes/add-node.png)
 
-    | Ayar | Açıklama |
+    | Ayar | Description |
     |---------|-------------|
-    | Adı | İşlem düğümü adı. Ad, işlem düğümü uç noktasının DNS adresini oluşturmak için kullanılır. Örneğin, `newnode-myblockchainmember.blockchain.azure.com`. Düğüm adı, oluşturulduktan sonra değiştirilemez. |
+    | Name | İşlem düğümü adı. Ad, işlem düğümü uç noktasının DNS adresini oluşturmak için kullanılır. Örneğin, `newnode-myblockchainmember.blockchain.azure.com`. Düğüm adı, oluşturulduktan sonra değiştirilemez. |
     | Parola | Güçlü bir parola ayarlayın. Temel kimlik doğrulamasıyla işlem düğümü uç noktasına erişmek için parolayı kullanın.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
     Yeni bir işlem düğümü sağlanması yaklaşık 10 dakika sürer. Ek işlem düğümleri ücret doğurur. Maliyetler hakkında daha fazla bilgi için bkz. [Azure fiyatlandırması](https://aka.ms/ABSPricing).
 
@@ -89,7 +89,7 @@ HTTPS temel kimlik doğrulaması için, Kullanıcı adı ve parola kimlik bilgil
 
 Kullanıcı adı, düğümünüz adıdır ve değiştirilemez.
 
-URL 'YI kullanmak için, düğüm \<sağlandığında\> parolayı ayarlanan parola ile değiştirin. Parolayı **Sıfırla**' yı seçerek parolayı güncelleştirebilirsiniz.
+URL 'YI kullanmak için, \<password\> düğüm sağlandığı zaman ayarlanan parolayla değiştirin. Parolayı **Sıfırla**' yı seçerek parolayı güncelleştirebilirsiniz.
 
 ### <a name="access-keys"></a>Erişim tuşları
 

@@ -9,25 +9,20 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2019
+ms.date: 06/14/2020
 ms.author: yelevin
-ms.openlocfilehash: b392644e504fa8187e637278bef8718c9c2caa3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14928d3c94ced8d1cd0c12e76428be73b68b91d9
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77582135"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783172"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Tehditleri algılamak için Azure Sentinel 'de canlı akışı 'i kullanma
-
-> [!IMPORTANT]
-> Azure Sentinel 'de canlı akışı 'i Şu anda genel önizlemede bulabilirsiniz ve kiracılar için kademeli olarak kullanıma alınıyor.
-> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 Yeni oluşturulan sorguları olay meydana geldiğinde test etmenize olanak sağlayan etkileşimli oturumlar oluşturmak, bir eşleşme bulunduğunda oturumlardan bildirimler almak ve gerekirse araştırmalar başlatmak için canlı akışı 'i kullanın. Herhangi bir Log Analytics sorgusunu kullanarak hızlı bir şekilde canlı akış oturumu oluşturabilirsiniz.
 
@@ -48,42 +43,42 @@ Yeni oluşturulan sorguları olay meydana geldiğinde test etmenize olanak sağl
 
 Mevcut bir arama sorgusundan canlı akışı oturumu oluşturabilir veya oturumunuzu sıfırdan oluşturabilirsiniz.
 
-1. Azure Portal, **Sentinel** > **tehdit yönetimi** > **Arayıcı**' a gidin.
+1. Azure Portal, **Sentinel**  >  **tehdit yönetimi**  >  **Arayıcı**' a gidin.
 
-2. Bir hunme sorgusundan canlı akış oturumu oluşturmak için:
+1. Bir hunme sorgusundan canlı akış oturumu oluşturmak için:
     
     1. **Sorgular** sekmesinden kullanılacak arama sorgusunu bulun.
-    2. Sorguya sağ tıklayın ve **canlı akışı 'e Ekle**' yi seçin. Örneğin:
+    1. Sorguya sağ tıklayın ve **canlı akışı 'e Ekle**' yi seçin. Örneğin:
     
     > [!div class="mx-imgBorder"]
     > ![Azure Sentinel arama sorgusundan Livestream oturumu oluşturma](./media/livestream/livestream-from-query.png)
 
-3. Sıfırdan bir canlı akışı oturumu oluşturmak için: 
+1. Sıfırdan bir canlı akışı oturumu oluşturmak için: 
     
     1. **Livestream** sekmesini seçin
-    2. **Canlı akışı 'e git**' i seçin.
+    1. **+ Yeni canlı akışı**' e tıklayın.
     
-4. **Livestream** bölmesinde:
+1. **Livestream** bölmesinde:
     
     - Bir sorgudan canlı akışı 'i başlattıysanız, sorguyu gözden geçirin ve yapmak istediğiniz değişiklikleri yapın.
     - Sıfırdan canlı akışı 'i başlattıysanız sorgunuzu oluşturun. 
 
-5. Komut çubuğundan **oynat** ' ı seçin.
+1. Komut çubuğundan **oynat** ' ı seçin.
     
     Komut çubuğunun altındaki durum çubuğu, canlı akışı oturumunuzun çalışıp çalışmadığını veya duraklatılmadığını gösterir. Aşağıdaki örnekte, oturum çalışıyor:
     
     > [!div class="mx-imgBorder"]
     > ![Azure Sentinel ile canlı akış oturumu oluşturma](./media/livestream/livestream-session.png)
 
-6. Komut çubuğundan **Kaydet** ' i seçin.
+1. Komut çubuğundan **Kaydet** ' i seçin.
     
     **Duraklat**' ı seçmezseniz, Azure Portal oturumunuz kapatılana kadar oturum çalışmaya devam eder.
 
 ## <a name="view-your-livestream-sessions"></a>Canlı akışı oturumlarınızı görüntüleyin
 
-1. Azure Portal, **Sentinel** > **tehdit yönetimi** > **Hunting** > için**Livestream** sekmesine gidin.
+1. Azure Portal, **Sentinel**  >  **tehdit yönetimi**için  >  **Hunting**  >  **Livestream** sekmesine gidin.
 
-2. Görüntülemek veya düzenlemek istediğiniz canlı akışı oturumunu seçin. Örneğin:
+1. Görüntülemek veya düzenlemek istediğiniz canlı akışı oturumunu seçin. Örneğin:
     
     > [!div class="mx-imgBorder"]
     > ![Azure Sentinel arama sorgusundan canlı akışı oturumu oluşturma](./media/livestream/livestream-tab.png)

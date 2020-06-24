@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2a81d28998c531339a1b719e37e4b90004157edf
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 16828435dc8913fff8da4717ee7f77cc701504ed
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005842"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213083"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Key Vault kullanmak için en iyi uygulamalar
 
@@ -36,6 +36,19 @@ Kasanıza erişimi denetlerken öneriler aşağıdaki gibidir:
 ## <a name="backup"></a>Backup
 
 Bir kasadaki nesnelerin güncelleştirme/silme/silme işlemleri sırasında kasanızın düzenli olarak arka pencerelerini aldığınızdan emin olun.
+
+### <a name="azure-powershell-backup-commands"></a>Azure PowerShell yedekleme komutları
+
+* [Yedekleme sertifikası](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultCertificate?view=azurermps-6.13.0)
+* [Yedekleme anahtarı](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultKey?view=azurermps-6.13.0)
+* [Yedekleme gizli dizisi](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultSecret?view=azurermps-6.13.0)
+
+### <a name="azure-cli-backup-commands"></a>Azure CLı yedekleme komutları
+
+* [Yedekleme sertifikası](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-backup)
+* [Yedekleme anahtarı](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-backup)
+* [Yedekleme gizli dizisi](https://docs.microsoft.com/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-backup)
+
 
 ## <a name="turn-on-logging"></a>Günlüğü aç
 

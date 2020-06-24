@@ -11,19 +11,21 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 835bcba5e24137377c33c9166b1c3076d19cacc1
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d73427db5fd168a31c478f92ef11307df136a775
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552392"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125421"
 ---
 # <a name="connect-to-azure-storage-services"></a>Azure Storage Services 'a bağlanma
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, Azure Machine Learning veri depoları aracılığıyla Azure Storage Services 'a nasıl bağlanacağınızı öğrenin. Veri deposu, çalışma alanıyla ilişkili [Key Vault](https://azure.microsoft.com/services/key-vault/) abonelik kimliğiniz ve belirteç yetkilendirmesi gibi mağaza bağlantı bilgilerini, betiklerinizde kalıcı olarak kodlamadan depolamaya güvenle erişebilmek için depolar. Datamağazaların Azure Machine Learning genel veri erişimi iş akışına uygun olduğunu anlamak için, [güvenli erişim verileri](concept-data.md#data-workflow) makalesine bakın.
+Bu makalede, **Azure Machine Learning veri depoları aracılığıyla Azure Storage Services 'a nasıl bağlanacağınızı**öğrenin. Veri deposu, çalışma alanıyla ilişkili [Key Vault](https://azure.microsoft.com/services/key-vault/) abonelik kimliğiniz ve belirteç yetkilendirmesi gibi mağaza bağlantı bilgilerini, betiklerinizde kalıcı olarak kodlamadan depolamaya güvenle erişebilmek için depolar. 
 
-[Bu Azure depolama çözümlerinden](#matrix)veri depoları oluşturabilirsiniz. Desteklenmeyen depolama çözümleri için ve Machine Learning denemeleri sırasında veri çıkış maliyetini kaydetmek için, verilerinizi desteklenen Azure depolama çözümlerine [taşımanızı](#move) öneririz. 
+**Desteklenmeyen depolama çözümleri için**ve ml denemeleri sırasında veri çıkış maliyetini kaydetmek için, verilerinizi desteklenen bir Azure depolama çözümlerine [taşıyın](#move) .  [Bu Azure depolama çözümlerinden](#matrix)veri depoları oluşturabilirsiniz. 
+
+Datamağazaların Azure Machine Learning genel veri erişimi iş akışına uygun olduğunu anlamak için, [güvenli erişim verileri](concept-data.md#data-workflow) makalesine bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -95,12 +97,14 @@ Tüm yazmaç yöntemleri [`Datastore`](https://docs.microsoft.com/python/api/azu
 
 Yöntemi Azure portal doldurmanız için gereken bilgileri bulabilirsiniz `register_azure_*()` . [Azure portal](https://portal.azure.com)
 
+* Veri deposu adı yalnızca küçük harflerden, rakamlardan ve alt çizgilerden oluşmalıdır. 
+
 * Kimlik doğrulaması için bir hesap anahtarı veya SAS belirteci kullanmayı planlıyorsanız, sol bölmede **depolama hesapları** ' nı seçin ve kaydetmek istediğiniz depolama hesabını seçin. 
   * **Genel bakış** sayfası hesap adı, kapsayıcı ve dosya paylaşma adı gibi bilgiler sağlar. 
       1. Hesap anahtarları için, **Ayarlar** bölmesinde **erişim tuşları** ' na gidin. 
       1. SAS belirteçleri için, **Ayarlar** bölmesinde **paylaşılan erişim imzaları** ' na gidin.
 
-* Kimlik doğrulaması için bir hizmet ilkesi kullanmayı planlıyorsanız, **uygulama kayıtları** gidin ve kullanmak istediğiniz uygulamayı seçin. 
+* Kimlik doğrulaması için bir hizmet sorumlusu kullanmayı planlıyorsanız, **uygulama kayıtları** gidin ve kullanmak istediğiniz uygulamayı seçin. 
     * Kendisine karşılık gelen **genel bakış** sayfası, Kiracı kimliği ve istemci kimliği gibi gerekli bilgileri içerir.
 
 > [!IMPORTANT]
@@ -112,7 +116,7 @@ Diğer depolama hizmetleri için veri depoları oluşturmak ve bu yöntemler iç
 
 #### <a name="blob-container"></a>Blob kapsayıcı
 
-Bir Azure Blob kapsayıcısını bir veri deposu olarak kaydetmek için kullanın [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
+Bir Azure Blob kapsayıcısını bir veri deposu olarak kaydetmek için kullanın [`register_azure_blob_container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
 
 Aşağıdaki kod, veri deposunu oluşturur ve `blob_datastore_name` `ws` çalışma alanına kaydeder. Bu veri deposu, `my-container-name` `my-account-name` belirtilen hesap erişim anahtarını kullanarak depolama hesabındaki blob kapsayıcısına erişir.
 
@@ -128,7 +132,7 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
                                                          account_name=account_name,
                                                          account_key=account_key)
 ```
-Blob Kapsayıcınız sanal ağda ise, `skip_validation=True` yöntecunuza parametresini ekleyin [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) . 
+Blob Kapsayıcınız sanal ağda ise, `skip_validation=True` yöntecunuza parametresini ekleyin [`register_azure_blob_container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) . 
 
 #### <a name="file-share"></a>Dosya paylaşımı
 

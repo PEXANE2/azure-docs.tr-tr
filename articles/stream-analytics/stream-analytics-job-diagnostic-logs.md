@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: 40b57af95f9ea4d4212756634c721ddd55f85d7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/18/2020
+ms.openlocfilehash: 4737b8f13a3a4a1e65c4c7812bd514f76a24d2e3
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127762"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119059"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Kaynak günlüklerini kullanarak Azure Stream Analytics sorunlarını giderme
 
@@ -59,23 +59,23 @@ Etkinlik günlükleri varsayılan olarak açık ve Stream Analytics işiniz tara
 
 Kaynak günlüklerini açıp Azure Izleyici günlüklerine göndermek, önemle önerilir. Varsayılan olarak **kapalıdır** . Bunları açmak için şu adımları izleyin:
 
-1.  Azure portal oturum açın ve Stream Analytics işinize gidin. **İzleme**altında **tanılama günlükleri**' ni seçin. Sonra **tanılamayı aç '** ı seçin.
+1.  Henüz bir tane yoksa [Log Analytics çalışma alanı oluşturun](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) . Log Analytics çalışma alanınızın Stream Analytics işiniz ile aynı bölgede olması önerilir.
+
+2.  Azure portal oturum açın ve Stream Analytics işinize gidin. **İzleme**altında **tanılama günlükleri**' ni seçin. Sonra **tanılamayı aç '** ı seçin.
 
     ![Kaynak günlüklerine dikey pencere gezintisi](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  **Tanılama ayarları** ' nda bir **ad** oluşturun ve **Log Analytics gönder**' in yanındaki kutuyu işaretleyin. Sonra var olan veya yeni bir **Log Analytics çalışma alanı**oluşturun. **Günlük**altında **yürütme** ve **yazma** kutularını ve **ölçüm**' in altındaki **allölçümleri** ' ni işaretleyin. **Kaydet**’e tıklayın. Ek maliyetleri engellemek için Stream Analytics işiniz ile aynı Azure bölgesinde bir Log Analytics çalışma alanı kullanmanız önerilir.
+2.  **Tanılama Ayarları adında** bir **ad** girin ve **günlük**altında **yürütme** ve **yazma** kutularını işaretleyin ve **ölçüm**bölümündeki **allölçümler** ' i inceleyin. Sonra **Log Analytics gönder** ' i seçin ve çalışma alanınızı seçin. **Kaydet**’e tıklayın.
 
-    ![Kaynak günlükleri ayarları](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
+    ![Kaynak günlükleri ayarları](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 
 3. Stream Analytics işiniz başlatıldığında, kaynak günlükleri Log Analytics çalışma alanınıza yönlendirilir. İşinizin kaynak günlüklerini görüntülemek için **izleme** bölümünün altındaki **Günlükler** ' i seçin.
 
    ![Izleme altındaki kaynak günlükleri](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
-4. Stream Analytics, ilgilendiğiniz günlüklere kolayca arama yapmanıza olanak tanıyan önceden tanımlanmış sorgular sağlar. 3 kategori **genel**, **giriş verileri hataları** ve **çıkış verileri hataları**. Örneğin, son 7 gün içinde işinizin tüm hatalarının özetini görmek için, uygun önceden tanımlanmış sorgunun **çalıştırılmasını** seçebilirsiniz. 
+4. Stream Analytics, ilgilendiğiniz günlüklere kolayca arama yapmanıza olanak tanıyan önceden tanımlanmış sorgular sağlar. Sol bölmede önceden tanımlanmış herhangi bir sorguyu seçip **Çalıştır**' ı seçebilirsiniz. Sorgunun sonuçlarını alt bölmede görürsünüz. 
 
-   ![Izleme altındaki kaynak günlükleri](./media/stream-analytics-job-diagnostic-logs/logs-categories.png)
-
-   ![Günlüklerin sonuçları](./media/stream-analytics-job-diagnostic-logs/logs-result.png)
+   ![Izleme altındaki kaynak günlükleri](./media/stream-analytics-job-diagnostic-logs/logs-example.png)
 
 ## <a name="resource-log-categories"></a>Kaynak günlüğü kategorileri
 
@@ -94,7 +94,7 @@ Azure Stream Analytics, kaynak günlüklerinin iki kategorisini yakalar:
 
 Tüm Günlükler JSON biçiminde depolanır. Her giriş aşağıdaki ortak dize alanlarına sahiptir:
 
-Adı | Açıklama
+Name | Description
 ------- | -------
 time | Günlüğün zaman damgası (UTC).
 resourceId | İşlemin üzerinde gerçekleştiği kaynağın KIMLIĞI (büyük harfle). Abonelik KIMLIĞI, kaynak grubu ve iş adını içerir. Örneğin, **/Subscriptions/6503d296-dac1-4449-9B03-609a1f4a1c87/ResourceGroups/My-Resource-Group/Providers/Microsoft. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMMINGJOB**.
@@ -112,7 +112,7 @@ Yürütme günlükleri Stream Analytics işi yürütme sırasında gerçekleşen
 
 İş işlenirken oluşan herhangi bir hata, bu Günlükler kategorisindedir. Bu Günlükler genellikle veri okuma, serileştirme ve yazma işlemleri sırasında oluşturulur. Bu Günlükler bağlantı hatalarını içermez. Bağlantı hataları genel olaylar olarak değerlendirilir. Çeşitli farklı [giriş ve çıkış verileri hatalarının](https://docs.microsoft.com/azure/stream-analytics/data-errors)nedeni hakkında daha fazla bilgi edinebilirsiniz.
 
-Adı | Açıklama
+Name | Description
 ------- | -------
 Kaynak | Hatanın oluştuğu iş girişinin veya çıktının adı.
 İleti | Hatayla ilişkili ileti.
@@ -133,7 +133,7 @@ Veriler | Hatanın kaynağını doğru bir şekilde bulmak için yararlı olan v
 
 Genel olaylar diğer her şeyi kapsar.
 
-Adı | Açıklama
+Name | Description
 -------- | --------
 Hata | seçim Hata bilgileri. Genellikle, bu, varsa özel durum bilgileri olur.
 İleti| Günlük iletisi.

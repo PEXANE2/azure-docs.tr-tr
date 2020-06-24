@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 65bb1a3915ece384974da12b4e7a1ad0c1e08133
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7656b60c31e7da7841f9afb723167eb061fe3401
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655829"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124554"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Windows sanal makinesi için Azure Izleyici ölçümleri veritabanına Konuk işletim sistemi ölçümleri gönderme (klasik)
 
@@ -48,7 +48,7 @@ Bu makalede özetlenen işlem yalnızca Windows işletim sistemini çalıştıra
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-[Hizmet sorumlusu oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md)bölümündeki yönergeleri kullanarak Azure Active Directory kiracınızda bir hizmet ilkesi oluşturun. Bu işlemden sonra aşağıdaki adımları göz önünde edin: 
+[Hizmet sorumlusu oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md)bölümündeki yönergeleri kullanarak Azure Active Directory kiracınızda bir hizmet sorumlusu oluşturun. Bu işlemden sonra aşağıdaki adımları göz önünde edin: 
 - Bu uygulama için yeni bir istemci gizli dizisi oluşturun.
 - Daha sonraki adımlarda kullanmak üzere anahtarı ve istemci KIMLIĞINI kaydedin.
 

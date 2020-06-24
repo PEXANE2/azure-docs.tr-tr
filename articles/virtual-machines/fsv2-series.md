@@ -7,16 +7,16 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 81cace31b8d9ab27aff749ea496687e01430ce26
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 07e11e3dbd7141ed3f54debfe4bafbda9431486b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84675296"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703889"
 ---
 # <a name="fsv2-series"></a>Fsv2 serisi
 
-Fsv2 serisi, Intel® Xeon® Platinum 8168 işlemcisini temel alır. Sürekli olarak 3,4 GHz 'nin tüm Core Turbo saat hızına ve en yüksek çekirdekli Turbo 3,7 GHz sıklığına sahiptir. Intel® AVX-512 yönergeleri Intel Ölçeklenebilir Işlemcilerde yenidir. Bu yönergeler, tek ve çift duyarlıklı kayan nokta işlemlerinde vektör işleme iş yükleri için bir 2X performans artışı sağlar. Diğer bir deyişle, tüm hesaplama iş yükleri oldukça hızlıdır.
+Fsv2 serisi, Intel® Xeon® Platinum 8272CL (Cascade Lake) işlemcileri ve Intel® Xeon® Platinum 8168 işlemcileri üzerinde çalışır. Sürekli olarak 3,4 GHz 'nin tüm Core Turbo saat hızına ve en yüksek çekirdekli Turbo 3,7 GHz sıklığına sahiptir. Intel® AVX-512 yönergeleri Intel Ölçeklenebilir Işlemcilerde yenidir. Bu yönergeler, tek ve çift duyarlıklı kayan nokta işlemlerinde vektör işleme iş yükleri için bir 2X performans artışı sağlar. Diğer bir deyişle, tüm hesaplama iş yükleri oldukça hızlıdır.
 
 Fsv2 serisi VM 'Ler özelliği, hiper Iş parçacığı teknolojisinin Intel®.
 

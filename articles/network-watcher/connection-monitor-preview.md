@@ -9,18 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: d926a9f686f0f4c39203b8a217a7c608cfad926e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52d33e7292ebe7b27eede2b89aa605780f826392
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548113"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737623"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Bağlantı Izleyicisi ile ağ bağlantısı Izleme (Önizleme)
 
@@ -402,9 +402,9 @@ Azure portal, bir bağlantı izleyicisinde bir test grubu oluşturmak için aşa
    
        Abonelik düzeyinden hiyerarşideki diğer düzeylere ayrıntıya gidebilirsiniz:
 
-      **Abonelik** > **kaynak** > **VNETs**grupları > **aracıları olan sanal** **ağlar alt ağları** > 
+      **Abonelik**  >  **Kaynak grupları**  >  **VNET 'ler**  >  **Alt ağlar**  >  **Aracılarla VM 'ler**
 
-      Ayrıca, ağacı başka bir düzeyden başlatmak için **Group By** alanı değerini de değiştirebilirsiniz. Örneğin, sanal ağ ile gruplandırma yaparsanız,**aracılarla**sanal **VNETs** > **ağlar alt ağları** > VM 'lerinde aracıların bulunduğu VM 'leri görürsünüz.
+      Ayrıca, ağacı başka bir düzeyden başlatmak için **Group By** alanı değerini de değiştirebilirsiniz. Örneğin, sanal ağ ile gruplandırma yaparsanız, **VNETs**  >  aracılarla sanal**ağlar alt ağları**  >  **VM**'lerinde aracıların bulunduğu VM 'leri görürsünüz.
 
       ![Kaynak ekleme paneli ve Azure aracıları sekmesini gösteren bağlantı Izleyicisinin ekran görüntüsü](./media/connection-monitor-2-preview/add-azure-sources.png)
 
@@ -444,7 +444,7 @@ Azure portal, bir bağlantı izleyicisinde bir test grubu oluşturmak için aşa
 
     * **Ad** – test yapılandırmasını adlandırın.
     * **Protokol** : TCP, ıCMP veya http ' yi seçin. HTTP 'yi HTTPS olarak değiştirmek için protokol olarak **http** ' yi seçin ve bağlantı noktası olarak **443** ' yı seçin.
-        * **Ağ test yapılandırması oluştur** – bu onay kutusu yalnızca **protokol** alanında **http** ' yi seçtiğinizde görünür. Yapılandırmanızda başka bir yerde belirttiğiniz kaynakları ve hedefleri kullanan başka bir test yapılandırması oluşturmak için bu kutuyu seçin. Yeni oluşturulan test yapılandırması olarak adlandırılmıştır `<the name of your test configuration>_networkTestConfig`.
+        * **Ağ test yapılandırması oluştur** – bu onay kutusu yalnızca **protokol** alanında **http** ' yi seçtiğinizde görünür. Yapılandırmanızda başka bir yerde belirttiğiniz kaynakları ve hedefleri kullanan başka bir test yapılandırması oluşturmak için bu kutuyu seçin. Yeni oluşturulan test yapılandırması olarak adlandırılmıştır `<the name of your test configuration>_networkTestConfig` .
         * İzleme hareketini **devre dışı bırak** – Bu alan, protokolü TCP veya ICMP olan test grupları için geçerlidir. Kaynakları, topolojiyi ve Atlama RTT 'yi bulmaktan durdurmak için bu kutuyu seçin.
     * **Hedef bağlantı noktası** : bu alanı, seçtiğiniz bir hedef bağlantı noktasıyla özelleştirebilirsiniz.
     * **Sınama sıklığı** – kaynakların, belirttiğiniz protokol ve bağlantı noktasındaki hedeflere ne sıklıkta ping uygulayabileceğini belirlemek için bu alanı kullanın. 30 saniye, 1 dakika, 5 dakika, 15 dakika veya 30 dakika seçebilirsiniz. Kaynaklar, seçtiğiniz değere göre hedeflere bağlantıyı test edecektir.  Örneğin, 30 saniye seçerseniz, kaynaklar en az 30 saniyelik bir dönemde hedefe bağlantıyı kontrol eder.
@@ -573,7 +573,7 @@ RTT içindeki eğilimleri ve bir bağlantı izleyicisinin başarısız olan dene
 
 1. Daha fazla veri görüntülemek için zaman aralığını değiştirin.
 1. Kaynakları, hedefleri veya test yapılandırmasını görmek için görünümü değiştirin. 
-1. Başarısız testler temelinde bir kaynak seçin ve başarısız olan ilk beş testi araştırın. Örneğin, bağlantı izleyicisinde ilgili testleri araştırmak için**kaynaklara** **göre** > görüntüle ve > **hedeflere** **göre görüntüle**' yi seçin.
+1. Başarısız testler temelinde bir kaynak seçin ve başarısız olan ilk beş testi araştırın. Örneğin, **View by**  >  bağlantı izleyicisinde ilgili testleri araştırmak için**kaynaklara** göre görüntüle ve hedeflere **göre görüntüle**' yi seçin  >  **Destinations** .
 
    ![İlk beş başarısız test için performans ölçümlerini gösteren ekran görüntüsü](./media/connection-monitor-2-preview/cm-drill-select-source.png)
 
@@ -616,7 +616,7 @@ Bağlantı Izleyicisi (Önizleme) deneyiminden önce oluşturulan bağlantı izl
 
 Ölçümleri kullandığınızda, kaynak türünü Microsoft. Network/networkWatchers/Connectionmonitörleri olarak ayarlayın
 
-| Ölçüm | Görünen ad | Birim | Toplama türü | Açıklama | Boyutlar |
+| Ölçüm | Görünen ad | Birim | Toplama türü | Description | Boyutlar |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | % Yoklama başarısız oldu | Yüzde | Ortalama | Bağlantı İzleme Araştırmaları yüzdesi başarısız oldu. | Boyut yok |
 | AverageRoundtripMs | Ort. gidiş dönüş süresi (MS) | Mayacak | Ortalama | Kaynak ve hedef arasında gönderilen bağlantı izleme araştırmaları için Ortalama ağ RTT. |             Boyut yok |

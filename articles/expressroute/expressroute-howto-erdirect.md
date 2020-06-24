@@ -4,15 +4,15 @@ description: Bu sayfa, ExpressRoute Direct 'i yapılandırmanıza yardımcı olu
 services: expressroute
 author: jaredr80
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: jaredro
-ms.openlocfilehash: 2722a852b1119ef619bc414bce5cb3a8ff6f8f00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d028baef8898ce8d45fa8e2e142a58a1ae3300c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77031621"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736263"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>ExpressRoute Direct 'i yapılandırma
 
@@ -223,7 +223,7 @@ ExpressRoute Direct, doğrudan Microsoft 'un Dünya genelinde dağıtılmış ol
    Circuits                   : []
    ```
 
-   Bağlantı noktalarını kapatmak için ile `AdminState = "Disabled"` aynı yordamı kullanın.
+   `AdminState = "Disabled"`Bağlantı noktalarını kapatmak için ile aynı yordamı kullanın.
 
 ## <a name="create-a-circuit"></a><a name="circuit"></a>Bağlantı hattı oluşturma
 

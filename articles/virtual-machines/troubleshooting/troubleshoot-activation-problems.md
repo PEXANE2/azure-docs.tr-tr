@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 820fe016d630e63660368c9065acbcda9b514921
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 44c86dae3c7df8293404c253b94164c37d574158
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858619"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736943"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows sanal makinesi etkinleştirme sorunlarını giderme
 
@@ -92,7 +92,7 @@ Azure VM etkinleştirme sorunları genellikle Windows VM uygun KMS istemci ayar�
 4. Psping kullanarak KMS sunucusuna bağlandığınızı doğrulayın. Pstools.zip dosyasını ayıkladığınız klasöre geçin ve sonra aşağıdaki komutu çalıştırın:
   
     ```
-    \psping.exe kms.core.windows.net:1688
+    .\psping.exe kms.core.windows.net:1688
     ```
    Çıktının ikinci-son satırına şunu görtığınızdan emin olun: gönderilen = 4, alınan = 4, kayıp = 0 (%0 kayıp).
 

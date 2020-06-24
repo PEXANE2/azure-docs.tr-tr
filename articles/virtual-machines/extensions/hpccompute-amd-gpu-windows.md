@@ -3,22 +3,20 @@ title: AMD GPU sürücü uzantısı-Azure Windows VM 'Leri
 description: Windows çalıştıran NVv4 serisi VM 'Lere AMD GPU sürücülerini yüklemek için Microsoft Azure uzantısı.
 services: virtual-machines-windows
 documentationcenter: ''
-author: vikancha
+author: vikancha-MSFT
 manager: jkabat
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
-ms.openlocfilehash: 0819eec5275fa9783fff363cabbd8c3ed22b7cd6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cbba0401815f6754939cdaeb6e7343cf085dff68
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119561"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736977"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>Windows için AMD GPU sürücü uzantısı
 
@@ -26,7 +24,7 @@ Bu makalede, Windows [NVv4 serisi](https://docs.microsoft.com/azure/virtual-mach
 
 Sürücülerin ve desteklenen geçerli sürümlerin el ile yüklenmesiyle ilgili yönergeler [burada](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-amd-driver-setup)bulunabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 

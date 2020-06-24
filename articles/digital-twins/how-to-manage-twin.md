@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1d5731b16463f1f298f1ad633225fee95aa1a0bd
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 9acea128313fc440834626dd3a99b117e4b25a8f
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612910"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735906"
 ---
 # <a name="manage-digital-twins"></a>Dijital TWINS 'i yönetme
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Ortamınızdaki varlıklar [dijital TWINS](concepts-twins-graph.md)tarafından temsil edilir. Dijital iklerinizi yönetmek oluşturma, değiştirme ve kaldırma işlemini içerebilir. Bu işlemleri yapmak için, [**Digitaltwins API 'lerini**](how-to-use-apis-sdks.md), [.net (C#) SDK 'Sını](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)veya [Azure dijital TWINS CLI](how-to-use-cli.md)' yi kullanabilirsiniz.
 

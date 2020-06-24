@@ -5,12 +5,12 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 326075b947ea61384681fb2353c27d3e1450156d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282230"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735345"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric ters proxy
 Azure 'da yerleşik olarak bulunan ters proxy Service Fabric, bir Service Fabric kümesinde çalışan mikro hizmetlerin HTTP uç noktalarına sahip diğer hizmetleri bulmasına ve iletişim kurmasına yardımcı olur.
@@ -32,7 +32,7 @@ Ters proxy, istemci hizmetlerinin diğer hizmetlere istek göndermek için kulla
 ![İç iletişim][1]
 
 > [!NOTE]
-> **Desteklenen platformlar**
+> **Desteklenen Platformlar**
 >
 > Service Fabric ters proxy Şu anda aşağıdaki platformları desteklemektedir
 > * *Windows kümesi*: Windows 8 ve üzeri ya da windows Server 2012 ve üzeri
@@ -78,7 +78,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 * **Targetreplicaselector** Bu, hedef çoğaltmanın veya örneğin nasıl seçilmesi gerektiğini belirtir.
   * Hedef hizmetin durum bilgisi olduğunda, TargetReplicaSelector aşağıdakilerden biri olabilir: ' PrimaryReplica ', ' Rasgelesecondaryreplica ' veya ' RandomReplica '. Bu parametre belirtilmediğinde, varsayılan değer ' PrimaryReplica ' olur.
   * Hedef hizmet durum bilgisiz olduğunda, ters proxy, isteği iletmek için hizmet bölümünün rastgele bir örneğini seçer.
-* **Zaman aşımı:**  Bu, istemci isteği adına hizmete ters proxy tarafından oluşturulan HTTP isteğinin zaman aşımını belirtir. Varsayılan değer 60 saniyedir. Bu, isteğe bağlı bir parametredir.
+* **Zaman aşımı:**  Bu, istemci isteği adına hizmete ters proxy tarafından oluşturulan HTTP isteğinin zaman aşımını belirtir. Varsayılan değer 120 saniyedir. Bu, isteğe bağlı bir parametredir.
 
 ### <a name="example-usage"></a>Örnek kullanım
 Örnek olarak, aşağıdaki URL 'de bir HTTP dinleyicisi açan *doku:/MyApp/hizmetim* hizmetini ele alalım:
@@ -115,7 +115,7 @@ Ağ Geçidi daha sonra bu istekleri hizmetin URL 'sine iletir:
 ## <a name="special-handling-for-port-sharing-services"></a>Bağlantı noktası paylaşma Hizmetleri için özel işleme
 Ters proxy Service Fabric, bir hizmet adresini yeniden çözümlemeye çalışır ve bir hizmete ulaşılamadığında isteği yeniden dener. Genellikle, bir hizmete ulaşılamadığından, hizmet örneği veya çoğaltma, normal yaşam döngüsünün bir parçası olarak farklı bir düğüme taşınır. Bu durumda, ters proxy, bir uç noktanın artık özgün olarak çözümlenen adreste açık olmadığını belirten bir ağ bağlantı hatası alabilir.
 
-Ancak, çoğaltmalar veya hizmet örnekleri bir konak işlemini paylaşabilir ve ayrıca, bir http. sys tabanlı Web sunucusu tarafından barındırıldığı sırada bir bağlantı noktası paylaşabilir, örneğin:
+Ancak, çoğaltmalar veya hizmet örnekleri bir konak işlemini paylaşabilir ve ayrıca, http.sys tabanlı bir Web sunucusu tarafından barındırıldığı sırada bir bağlantı noktası paylaşabilir:
 
 * [System .net. HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
 * [WebListener ASP.NET Core](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
@@ -139,13 +139,13 @@ Bu HTTP yanıt üst bilgisi, istenen kaynağın bulunmadığı normal bir HTTP 4
 
 ## <a name="special-handling-for-services-running-in-containers"></a>Kapsayıcılar üzerinde çalışan hizmetler için özel işleme
 
-Kapsayıcılar içinde çalışan hizmetler için, aşağıdaki kodda gösterildiği gibi, `Fabric_NodeIPOrFQDN` [ters proxy URL 'sini](#uri-format-for-addressing-services-by-using-the-reverse-proxy) oluşturmak için ortam değişkenini kullanabilirsiniz:
+Kapsayıcılar içinde çalışan hizmetler için, `Fabric_NodeIPOrFQDN` aşağıdaki kodda gösterildiği gibi, [ters proxy URL 'sini](#uri-format-for-addressing-services-by-using-the-reverse-proxy) oluşturmak için ortam değişkenini kullanabilirsiniz:
 
 ```csharp
     var fqdn = Environment.GetEnvironmentVariable("Fabric_NodeIPOrFQDN");
     var serviceUrl = $"http://{fqdn}:19081/DockerSFApp/UserApiContainer";
 ```
-Yerel küme `Fabric_NodeIPOrFQDN` için varsayılan olarak "localhost" olarak ayarlanır. Kapsayıcıların düğüm üzerinde çalışan ters proxy `-UseMachineName` 'ye ulaşmasını sağlamak için yerel kümeyi parametresiyle başlatın. Daha fazla bilgi için bkz. bir [Geliştirici ortamınızı kapsayıcılara hata ayıklama Için yapılandırma](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
+Yerel küme için `Fabric_NodeIPOrFQDN` Varsayılan olarak "localhost" olarak ayarlanır. `-UseMachineName`Kapsayıcıların düğüm üzerinde çalışan ters proxy 'ye ulaşmasını sağlamak için yerel kümeyi parametresiyle başlatın. Daha fazla bilgi için bkz. bir [Geliştirici ortamınızı kapsayıcılara hata ayıklama Için yapılandırma](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
 
 Docker Compose kapsayıcıları içinde çalışan Service Fabric Hizmetleri, özel bir Docker-Compose. yml *bağlantı noktaları bölümü* http: veya https: Configuration gerektirir. Daha fazla bilgi için bkz. [Azure Service Fabric Docker Compose dağıtım desteği](service-fabric-docker-compose.md).
 

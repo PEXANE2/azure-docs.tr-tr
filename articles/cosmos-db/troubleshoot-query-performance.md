@@ -8,12 +8,12 @@ ms.date: 04/22/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 977b2fa40e2ce27a2711e5a44f5fb487433c9462
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 80e966bf190dcbe4490269ef28a95babadda68d8
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714568"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117922"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB kullanırken sorgu sorunlarını giderme
 
@@ -34,7 +34,7 @@ Bu kılavuzu okumadan önce, sorgu altyapısıyla ilgili olmayan yaygın SDK sor
 
 - En iyi performans için, bu [performans ipuçlarını](performance-tips.md)izleyin.
     > [!NOTE]
-    > Daha iyi performans için Windows 64 bit ana bilgisayar işlemesini öneririz. SQL SDK, sorguları yerel olarak ayrıştırmak ve iyileştirmek için yerel Serviceınterop. dll dosyasını içerir. Serviceınterop. dll yalnızca Windows x64 platformunda desteklenir. Serviceınterop. dll ' nin kullanılamadığı Linux ve diğer desteklenmeyen platformlar için, iyileştirilmiş sorguyu almak üzere ağ geçidine ek bir ağ çağrısı yapılır.
+    > Daha iyi performans için Windows 64 bit ana bilgisayar işlemesini öneririz. SQL SDK, sorguları yerel olarak ayrıştırmak ve iyileştirmek için yerel bir ServiceInterop.dll içerir. ServiceInterop.dll yalnızca Windows x64 platformunda desteklenir. ServiceInterop.dll kullanılamadığı Linux ve diğer desteklenmeyen platformlar için, iyileştirilmiş sorguyu almak üzere ağ geçidine ek bir ağ çağrısı yapılır.
 - SDK, sorgunuz için bir ayar yapılmasına izin verir, `MaxItemCount` ancak en az öğe sayısını belirtemezsiniz.
     - Kod, sıfırdan olan herhangi bir sayfa boyutunu işlemelidir `MaxItemCount` .
     - Sayfadaki öğelerin sayısı her zaman belirtilen değere eşit veya daha büyük olacaktır `MaxItemCount` . Ancak, `MaxItemCount` tam olarak en yüksek bir değer ve bu tutardan daha az sonuç olabilir.
@@ -47,7 +47,7 @@ Bu kılavuzu okumadan önce, sorgu altyapısıyla ilgili olmayan yaygın SDK sor
 
 Azure Cosmos DB bir sorguyu en iyileştirirken, ilk adım her zaman sorgunuzun [sorgu ölçümlerini almak](profile-sql-api-query.md) için kullanılır. Bu ölçümler Azure portal aracılığıyla da kullanılabilir. Veri Gezgini sorgunuzu çalıştırdığınızda, sorgu ölçümleri **sonuçlar** sekmesinin yanında görünür:
 
-[![Sorgu ölçümleri ](./media/troubleshoot-query-performance/obtain-query-metrics.png) alma](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
+:::image type="content" source="./media/troubleshoot-query-performance/obtain-query-metrics.png" alt-text="Sorgu ölçümleri alma" lightbox="./media/troubleshoot-query-performance/obtain-query-metrics.png":::
 
 Sorgu ölçümlerini aldıktan sonra, sorgularınızın **çıktı belge sayısıyla** **alınan belge sayısını** karşılaştırın. Bu makaleyi gözden geçirmek üzere ilgili bölümleri belirlemek için bu karşılaştırmayı kullanın.
 

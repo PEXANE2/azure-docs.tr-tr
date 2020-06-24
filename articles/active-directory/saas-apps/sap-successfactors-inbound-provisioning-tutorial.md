@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
 ms.openlocfilehash: d9317a68c8967fbe0728e8c47e59dd33367c6163
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249691"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84702184"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Öğretici: Kullanıcı sağlamasını Active Directory için SAP başarılı faktörleri yapılandırma (Önizleme)
 Bu öğreticinin amacı, kullanıcıları başarıyla Active Directory (AD) ve Azure AD 'ye, isteğe bağlı e-posta adresi olarak başarılı bir şekilde geri yazma işlemi ile Azure AD 'ye sağlamak için gerçekleştirmeniz gereken adımları gösteriyoruz. Bu tümleştirme genel önizlemededir ve başarılı bir şekilde çalışan merkezi 'nden 70 ' ten fazla [Kullanıcı özniteliği](../app-provisioning/sap-successfactors-attribute-reference.md) almayı destekler.
@@ -247,7 +247,7 @@ Bu adımda, başarılı faktörlerle bağlantı kurmaya ve Azure portal Active D
 
 1. **Yönetici kimlik bilgileri** bölümünü aşağıdaki şekilde doldurun:
 
-   * **Yönetici Kullanıcı adı** – şirket kimliği eklenerek, başarılı olan API Kullanıcı hesabının kullanıcı adını girin. Şu biçimdedir: **\@username CompanyID**
+   * **Yönetici Kullanıcı adı** – şirket kimliği eklenerek, başarılı olan API Kullanıcı hesabının kullanıcı adını girin. Şu biçimdedir: **UserName \@ CompanyID**
 
    * **Yönetici parolası –** Başarılı etken API 'SI Kullanıcı hesabının parolasını girin. 
 

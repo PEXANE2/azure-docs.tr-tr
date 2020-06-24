@@ -4,15 +4,15 @@ description: Özel bir uç nokta kullanarak Azure 'daki bir depolama hesabına �
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 111e6e2f80c3460f363c496b7b32befdca16250d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ccbb685ceb406fd7a52edf793b53d9e1c32630b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81115102"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737334"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Azure Özel Uç Noktasını kullanıp depolama hesabına özel olarak bağlanma
 Azure özel uç noktası, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar.
@@ -34,19 +34,19 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
 
 | Parametre                   | Değer                |
 |-----------------------------|----------------------|
-| **\<Kaynak-Grup adı>**  | myResourceGroup |
-| **\<sanal ağ-adı>** | myVirtualNetwork          |
-| **\<bölge adı>**          | Orta Batı ABD      |
-| **\<IPv4-adres-alanı>**   | 10.1.0.0 \ 16          |
-| **\<alt ağ-adı>**          | mySubnet        |
-| **\<alt ağ-adres aralığı>** | 10.1.0.0 \ 24          |
+| **\<resource-group-name>**  | myResourceGroup |
+| **\<virtual-network-name>** | myVirtualNetwork          |
+| **\<region-name>**          | Orta Batı ABD      |
+| **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0 \ 24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 
 ### <a name="create-virtual-machine"></a>Sanal makine oluşturma
 
-1. Azure Portal ekranın sol üst tarafında **kaynak** > oluştur**işlem** > **sanal makinesi**' ni seçin.
+1. Azure Portal ekranın sol üst tarafında **kaynak oluştur**  >  **işlem**  >  **sanal makinesi**' ni seçin.
 
 1. **Sanal makine oluşturma-temel bilgiler**bölümünde, bu bilgileri girin veya seçin:
 
@@ -94,7 +94,7 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
 ## <a name="create-your-private-endpoint"></a>Özel uç noktanızı oluşturma
 Bu bölümde, için özel bir uç nokta kullanarak özel bir depolama hesabı oluşturacaksınız. 
 
-1. Azure Portal ekranın sol üst tarafında, **kaynak** > **depolama** > **depolama hesabı**oluştur ' u seçin.
+1. Azure Portal ekranın sol üst tarafında, **kaynak**  >  **depolama**  >  **depolama hesabı**oluştur ' u seçin.
 
 1. **Depolama hesabı oluşturma-temel**bilgiler bölümünde, bu bilgileri girin veya seçin:
 
@@ -122,7 +122,7 @@ Bu bölümde, için özel bir uç nokta kullanarak özel bir depolama hesabı ol
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
     |Konum|**WestCentralUS**öğesini seçin.|
-    |Adı|*Myprivateendpoint*girin.  |
+    |Name|*Myprivateendpoint*girin.  |
     |Depolama alt kaynağı|Varsayılan **blobu**bırakın. |
     | **IŞLEMLERI** |  |
     | Sanal ağ  | *Myresourcegroup*kaynak grubundan *MyVirtualNetwork* öğesini seçin. |
@@ -155,7 +155,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
     1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
         > [!NOTE]
-        > VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için > **farklı bir hesap kullan**' **ı seçmeniz gerekebilir**.
+        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
 1. **Tamam**’ı seçin.
 
@@ -168,7 +168,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 Bu bölümde, Özel uç nokta kullanarak, depolama hesabına özel olarak bağlanacaksınız.
 
 1. *Myvm*uzak masaüstünde PowerShell ' i açın.
-2. `nslookup mystorageaccount.blob.core.windows.net` Şuna benzer bir ileti alacaksınız:
+2. `nslookup mystorageaccount.blob.core.windows.net`Şuna benzer bir ileti alacaksınız:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -184,7 +184,7 @@ Bu bölümde, Özel uç nokta kullanarak, depolama hesabına özel olarak bağla
 7. **İleri**’yi seçin.
 8. Daha önce kopyalanmış bilgileri yapıştırarak bağlantı dizesini girin.
 9. **İleri**’yi seçin.
-10. **Bağlan**’ı seçin.
+10. **Bağlan**'ı seçin.
 11. Mystorageaccount öğesinden blob kapsayıcılarına gözatam 
 12. I Klasörler oluşturun ve/veya dosyaları *mystorageaccount*konumuna yükleyin. 
 13. *Myvm*ile uzak masaüstü bağlantısını kapatın. 

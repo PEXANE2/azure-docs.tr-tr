@@ -2,13 +2,13 @@
 title: Kapsayıcı görüntüsü depolaması
 description: Docker kapsayıcı görüntülerinizin güvenlik, artıklık ve kapasite dahil olmak üzere Azure Container Registry nasıl depolandığı hakkında ayrıntılar.
 ms.topic: article
-ms.date: 03/21/2018
-ms.openlocfilehash: b738556e5a4f764cd47c72d964ee188d1344b336
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/18/2020
+ms.openlocfilehash: d51014e9e0769091aba42682cce3a6a01cfa19de
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683410"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214069"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure Container Registry kapsayıcı görüntüsü depolaması
 
@@ -16,7 +16,7 @@ Her [temel, standart ve Premium](container-registry-skus.md) Azure Container Reg
 
 ## <a name="encryption-at-rest"></a>Bekleyen şifreleme
 
-Kayıt defterinizde bulunan tüm kapsayıcı görüntüleri bekleyen olarak şifrelenir. Azure, bir görüntüyü depolamadan önce otomatik olarak şifreler ve siz veya Uygulamalarınız ve hizmetleriniz görüntüyü çektiğinizde BT 'nin şifresini çözer.
+Kayıt defterinizde bulunan tüm kapsayıcı görüntüleri bekleyen olarak şifrelenir. Azure, bir görüntüyü depolamadan önce otomatik olarak şifreler ve siz veya Uygulamalarınız ve hizmetleriniz görüntüyü çektiğinizde BT 'nin şifresini çözer. İsteğe bağlı olarak, [müşteri tarafından yönetilen bir anahtarla](container-registry-customer-managed-keys.md)ek bir şifreleme katmanı uygulayın.
 
 ## <a name="geo-redundant-storage"></a>Coğrafi olarak yedekli depolama
 
@@ -26,19 +26,11 @@ Azure, kapsayıcı görüntülerinin kaybedilmesine karşı koruma sağlamak iç
 
 Daha da yüksek kullanılabilirlik güvencesi gerektiren senaryolar için Premium kayıt defterlerinin [coğrafi çoğaltma](container-registry-geo-replication.md) özelliğini kullanmayı düşünün. Coğrafi çoğaltma, yalnızca bir depolama hatası değil, *Toplam* bölgesel bir hata durumunda kayıt defterinize erişimi kaybetmekten korunmaya yardımcı olur. Coğrafi çoğaltma, dağıtılmış geliştirme veya dağıtım senaryolarında daha hızlı gönderim ve çekmelerde diğer avantajlar sağlar.
 
-## <a name="image-limits"></a>Görüntü sınırları
+## <a name="scalable-storage"></a>Ölçeklenebilir depolama
 
-Aşağıdaki tabloda, Azure Container Registry için kapsayıcı görüntüsü ve depolama sınırları açıklanmaktadır.
+Azure Container Registry, [kayıt defteri depolama sınırına](container-registry-skus.md#service-tier-features-and-limits)kadar, ihtiyacınız olan sayıda depo, resim, katman veya etiket oluşturmanızı sağlar. 
 
-| Kaynak | Sınır |
-| -------- | :---- |
-| Depolar | Sınır yok |
-| Görüntüler | Sınır yok |
-| Katmanlar | Sınır yok |
-| Etiketler | Sınır yok|
-| Depolama | 5 TB |
-
-Çok yüksek sayıda depolar ve Etiketler, kayıt defterinizin performansını etkileyebilir. Kullanılmayan depoları, etiketleri ve görüntüleri kayıt defteri bakım yordamlarınızın bir parçası olarak düzenli aralıklarla silin. Depolar, görüntüler *ve Etiketler gibi* silinen kayıt defteri kaynakları silinmeden sonra kurtarılamaz. Kayıt defteri kaynaklarını silme hakkında daha fazla bilgi için bkz. [Azure Container Registry kapsayıcı görüntülerini silme](container-registry-delete.md).
+Çok yüksek sayıda depolar ve Etiketler, kayıt defterinizin performansını etkileyebilir. Kullanılmayan depoları, etiketleri ve görüntüleri kayıt defteri bakım yordamlarınızın bir parçası olarak düzenli olarak silin ve etiketlenmemiş bildirimler için isteğe bağlı olarak bir [bekletme ilkesi](container-registry-retention-policy.md) ayarlayın. Depolar, görüntüler *ve Etiketler gibi* silinen kayıt defteri kaynakları silinmeden sonra kurtarılamaz. Kayıt defteri kaynaklarını silme hakkında daha fazla bilgi için bkz. [Azure Container Registry kapsayıcı görüntülerini silme](container-registry-delete.md).
 
 ## <a name="storage-cost"></a>Depolama maliyeti
 

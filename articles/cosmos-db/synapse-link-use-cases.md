@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: f0efaf593725fd676ae8e85ff9c190c8b850fef1
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 493a2b0d0aab47c2e38648ec8f6be75685dfd7ec
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744672"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119503"
 ---
-# <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısı: neredeyse gerçek zamanlı analiz kullanım örnekleri
+# <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Cosmos DB için Azure Synapse Link: Gerçek zamanlıya yakın analiz için kullanım örnekleri
 
 Azure Cosmos DB için [Azure SYNAPSE bağlantısı](synapse-link.md) , işletimsel veriler üzerinde neredeyse gerçek zamanlı analizler çalıştırmanızı sağlayan bir bulut Yerel karma işlem ve analitik Işleme (htap) özelliğidir. SYNAPSE link, Azure Cosmos DB ile Azure SYNAPSE Analytics arasında sıkı sorunsuz bir tümleştirme oluşturur.
 
@@ -34,7 +34,7 @@ Araştırma çalışmaları, tedarik zinciri işlemlerinde büyük veri analizle
 
 Aşağıdaki mimaride, tedarik zinciri analizinden Cloud Native işletimsel veritabanı ve SYNAPSE bağlantısı olarak Azure Cosmos DB kullanma gücü gösterilmektedir:
 
-![Tedarik zinciri analizinden Azure Cosmos DB için Azure SYNAPSE bağlantısı ](./media/synapse-link-use-cases/supply-chain-analytics.png)
+:::image type="content" source="./media/synapse-link-use-cases/supply-chain-analytics.png" alt-text="Tedarik zinciri analizinden Azure Cosmos DB için Azure SYNAPSE bağlantısı" border="false":::
 
 Önceki mimariye bağlı olarak, Azure Cosmos DB için SYNAPSE bağlantısı ile aşağıdaki kullanım örneklerini elde edebilirsiniz:
 
@@ -70,7 +70,7 @@ Aşağıda toplu iş & akışı verileri Azure Cosmos DB içine veri tümleştir
 
 Günümüzde satıcılar, hem müşterilerin hem de işletmenin taleplerini karşılayan güvenli ve ölçeklenebilir e-ticaret çözümleri dermelidir. Bu e-ticaret çözümlerinin, müşterileri özelleştirilmiş ürünler ve tekliflerle, işlemleri hızlı ve güvenli bir şekilde işlemesi, işleme ve müşteri hizmetleri 'ne odaklanmanız gerekir. Azure Cosmos DB için en son SYNAPSE bağlantısı ile birlikte Azure Cosmos DB, perakendecilerin müşteriler için gerçek zamanlı olarak kişiselleştirilmiş öneriler oluşturmasına izin verir. Bunlar, aşağıdaki mimaride gösterildiği gibi anında Öngörüler için düşük gecikme süresi ve tunlı tutarlılık ayarlarını kullanırlar:
 
-![Gerçek zamanlı kişiselleştirme Azure Cosmos DB için Azure SYNAPSE bağlantısı](./media/synapse-link-use-cases/real-time-personalization.png)
+:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="Gerçek zamanlı kişiselleştirme Azure Cosmos DB için Azure SYNAPSE bağlantısı" border="false":::
 
 Azure Cosmos DB kullanım durumu için SYNAPSE bağlantısı:
 
@@ -82,7 +82,7 @@ Endüstriyel ıOT yenilikleri, makinelerin alt zamanlarını büyük ölçüde a
 
 IoT tahmine dayalı bakımda Azure Cosmos DB için Azure SYNAPSE bağlantısının bulut Yerel HTAP özelliklerini kullanan bir mimari aşağıda verilmiştir:
 
-![IOT tahmine dayalı bakımda Azure Cosmos DB için Azure SYNAPSE bağlantısı](./media/synapse-link-use-cases/iot-predictive-maintenance.png)
+:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="IOT tahmine dayalı bakımda Azure Cosmos DB için Azure SYNAPSE bağlantısı" border="false" :::
 
 Azure Cosmos DB kullanım örnekleri için SYNAPSE bağlantısı:
 
@@ -104,7 +104,7 @@ Aşağıdaki listede, Azure Cosmos DB kullanılarak işletimsel verilerle destek
 
 Azure SYNAPSE Azure Cosmos DB bağlantısı, yalnızca işlemsel iş yüklerini güçlendirin ve ayrıca geçmiş işletimsel veriler üzerinde neredeyse gerçek zamanlı analitik iş yükleri gerçekleştirebilir. İşlem iş yüklerinden hiçbir ETL gereksinimi ve garantili performans yalıtımı olmadan gerçekleşir.
 
-Aşağıdaki görüntüde Azure Cosmos DB kullanarak iş yükü desenleri gösterilmektedir: ![ Azure Cosmos DB iş yükü desenleri için Azure SYNAPSE link](./media/synapse-link-use-cases/synapse-link-workload-patterns.png)
+Aşağıdaki görüntüde Azure Cosmos DB kullanarak iş yükü desenleri gösterilmektedir: :::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="Azure Cosmos DB iş yükü desenleri Için Azure SYNAPSE link" border="false":::
 
 Tek bir gerçek zamanlı veritabanı, bir envanter yönetimi platformunun hem işlem hem de analitik gereksinimlerini güçlendiren şekilde Azure Cosmos DB seçme avantajlarının yanı sıra, bir e-ticaret şirketi şirket xyz örneğini 20 ülkede/bölgede küresel işlemlerle birlikte ele alalım.
 
@@ -138,7 +138,7 @@ Daha fazla bilgi için aşağıdaki belgelere bakın:
 
 * [Azure Cosmos DB için Azure SYNAPSE bağlantısıyla çalışma](configure-synapse-link.md)
 
-* [Azure Cosmos DB için Azure SYNAPSE bağlantısı hakkında sık sorulan sorular](synapse-link-frequently-asked-questions.md)
+* [Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular](synapse-link-frequently-asked-questions.md)
 
 * [Azure SYNAPSE Analytics 'te Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md)
 

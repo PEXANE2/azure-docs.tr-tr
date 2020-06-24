@@ -10,19 +10,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 03/18/2020
-ms.openlocfilehash: e61bc750a06fb041e97def842e81fd62b614fcf6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 06/10/2020
+ms.openlocfilehash: 756c62aa070f05c4b66de0cde6c7df59d9b1d09a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982165"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735209"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Hızlı başlangıç: Veri Kopyalama aracını kullanarak veri kopyalama
 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [Geçerli sürüm](quickstart-create-data-factory-copy-data-tool.md)
+> * [Güncel sürüm](quickstart-create-data-factory-copy-data-tool.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -37,13 +37,13 @@ Bu hızlı başlangıçta Azure portalını kullanarak bir veri fabrikası oluş
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
 1. [Azure Portal](https://portal.azure.com)gidin. 
-1. Azure Portal menüsünde **kaynak** > **Analizi** > oluştur**Data Factory**' u seçin:
+1. Azure Portal menüsünde **kaynak**  >  **Analizi**oluştur  >  **Data Factory**' u seçin:
 
     ![Yeni veri fabrikası oluşturma](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 1. **Yeni veri fabrikası** sayfasında **Ad** için **ADFTutorialDataFactory** girin. 
  
-   Azure veri fabrikasının adı *genel olarak benzersiz*olmalıdır. Aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin (örneğin, ** &lt;adınız&gt;ADFTutorialDataFactory**) ve yeniden oluşturmayı deneyin. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - adlandırma kuralları](naming-rules.md) makalesini inceleyin.
+   Azure veri fabrikasının adı *genel olarak benzersiz*olmalıdır. Aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin (örneğin, ** &lt; adınız &gt; ADFTutorialDataFactory**) ve yeniden oluşturmayı deneyin. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - adlandırma kuralları](naming-rules.md) makalesini inceleyin.
   
    ![Bir ad kullanılamadığında alınan hata](./media/doc-common-process/name-not-available-error.png)
 1. **Abonelik** için, veri fabrikasını oluşturmak istediğiniz Azure aboneliğini seçin. 
@@ -58,7 +58,7 @@ Bu hızlı başlangıçta Azure portalını kullanarak bir veri fabrikası oluş
 
    Listede yalnızca Data Factory tarafından desteklenen ve Azure Data Factory meta verilerinizin depolanacağı konumlar gösterilir. Data Factory kullanımı ile ilişkili veri depoları (Azure depolama ve Azure SQL veritabanı gibi) ve bu işlemler (Azure HDInsight gibi) başka bölgelerde çalıştırılabilir.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 1. Oluşturma işlemi tamamlandıktan sonra **Data Factory** sayfasını görürsünüz. Azure Data Factory kullanıcı arabirimi (UI) uygulamasını ayrı bir sekmede başlatmak için **Yazar ve İzleyici** kutucuğunu seçin.
    
@@ -90,7 +90,7 @@ Bu hızlı başlangıçta Azure portalını kullanarak bir veri fabrikası oluş
 
 1. **Girdi dosyasını veya klasörünü seçin** sayfasında aşağıdaki adımları uygulayın:
 
-   a. **Adföğreticisi/giriş** klasörüne gitmek için, git ' **e tıklayın,** sonra da **. txt** dosyasını seçin ve ardından **Seç**' e tıklayın. 
+   a. **Adföğreticisi/giriş** klasörüne gitmek Için, **Gözden** geçirme ' ye tıklayın, **emp.txt** dosyasını seçin ve ardından **Seç**' e tıklayın. 
 
    d. Dosyayı olduğu gibi kopyalamak için **ikili kopya** onay kutusunu seçin ve ardından **İleri**' yi seçin. 
 

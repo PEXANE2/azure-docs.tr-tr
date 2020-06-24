@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: df9135c39c1ff27abe8915c221185fca517a5614
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: bea6d01a8363dd68cff33435335391e0fb0f76c7
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849799"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118602"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB’de dizin oluşturma - Genel bakış
 
@@ -41,7 +41,7 @@ Bir öğe kapsayıcıda her depolandığında, içeriği bir JSON belgesi olarak
 
 Aşağıdaki ağaç tarafından temsil edilir:
 
-![Ağaç olarak temsil edilen önceki öğe](./media/index-overview/item-as-tree.png)
+:::image type="content" source="./media/index-overview/item-as-tree.png" alt-text="Ağaç olarak temsil edilen önceki öğe" border="false":::
 
 Dizilerin ağaçta nasıl kodlandığını unutmayın: dizideki her giriş dizideki bu girdinin diziniyle etiketlenmiş bir ara düğüm alır (0, 1 vb.).
 
@@ -181,7 +181,7 @@ Verileri dizinlerken ayıklanan yollar, bir sorgu işlenirken dizinde arama yapm
 
 Örneğin, aşağıdaki sorguyu göz önünde bulundurun: `SELECT location FROM location IN company.locations WHERE location.country = 'France'` . Sorgu koşulu (herhangi bir konumda ülke/bölge olarak "Fransa" bulunduğu öğeler üzerinde filtreleme) aşağıdaki kırmızı renkle eşleşir:
 
-![Ağaç içindeki belirli bir yolu eşleştirme](./media/index-overview/matching-path.png)
+:::image type="content" source="./media/index-overview/matching-path.png" alt-text="Ağaç içindeki belirli bir yolu eşleştirme" border="false":::
 
 > [!NOTE]
 > `ORDER BY`Tek bir özelliğe göre siparişlerin *her zaman* bir Aralık dizinine ihtiyacı olan ve başvurduğu yolun bir tane yoksa başarısız olacağı bir yan tümce. Benzer şekilde, `ORDER BY` birden çok özelliğe göre siparişlerin *her zaman* bir bileşik dizine ihtiyacı olan bir sorgu.

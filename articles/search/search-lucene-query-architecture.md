@@ -8,14 +8,14 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab40b5c811fd75e6927be41d4cf4cc7524e868a1
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282945"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130464"
 ---
-# <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Azure Bilişsel Arama’da tam metin araması nasıl çalışır?
+# <a name="full-text-search-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de tam metin araması
 
 Bu makale, Lucene tam metin aramasının Azure Bilişsel Arama nasıl çalıştığını daha ayrıntılı olarak anlayabilmek isteyen geliştiricilere yöneliktir. Metin sorguları için, Azure Bilişsel Arama çoğu senaryoda beklenen sonuçları hiç sorunsuz verecektir ama bazen biraz "konu dışı" görünen sonuçlar alabilirsiniz. Böyle durumlarda Lucene sorgu yürütmesinin dört aşaması (sorgu ayrıştırma, sözcük analizi, belge eşleştirme, puanlama) hakkında arka plan bilgilerine sahip olmak, istenen sonucu verecek belirli sorgu parametresi değişikliklerini ve dizin yapılandırmasını belirlemenize yardımcı olabilir. 
 
@@ -66,10 +66,10 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 Bu istek için arama motoru şunları yapar:
 
 1. Fiyatın en az $60 ve $300 ' den küçük olduğu belgeleri filtreler.
-2. Sorguyu yürütür. Bu örnekte, arama sorgusu tümcecik ve terimlerden oluşur: `"Spacious, air-condition* +\"Ocean view\""` (kullanıcılar genellikle noktalama işareti girmez, ancak örnek eklemek, çözümleyiciler onu nasıl işleyeceğinizi anlamamızı sağlar). Bu sorgu için arama altyapısı, "okyanus görünümü" ni içeren belgeler için `searchFields` ' de belirtilen Açıklama ve başlık alanlarını ve ek olarak "spacemi" ya da "AIR-Condition" önekiyle başlayan koşulları tarar. `searchMode` Parametresi, bir terimin açıkça gerekli olmadığı durumlarda (`+`varsayılan) veya tümü için herhangi bir dönem (varsayılan) veya hepsi ile eşleştirmek için kullanılır.
+2. Sorguyu yürütür. Bu örnekte, arama sorgusu tümcecik ve terimlerden oluşur: `"Spacious, air-condition* +\"Ocean view\""` (kullanıcılar genellikle noktalama işareti girmez, ancak örnek eklemek, çözümleyiciler onu nasıl işleyeceğinizi anlamamızı sağlar). Bu sorgu için arama altyapısı, `searchFields` "okyanus görünümü" ni içeren belgeler için ' de belirtilen Açıklama ve başlık alanlarını ve ek olarak "spacemi" ya da "AIR-Condition" önekiyle başlayan koşulları tarar. `searchMode`Parametresi, bir terimin açıkça gerekli olmadığı durumlarda (varsayılan) veya tümü için herhangi bir dönem (varsayılan) veya hepsi ile eşleştirmek için kullanılır `+` .
 3. Elde edilen otel kümesini, belirli bir Coğrafya konumuna yakınlığa göre sıralar ve ardından çağıran uygulamaya geri döner. 
 
-Bu makalenin çoğu, *arama sorgusunun*işlenmesiyle ilgilidir: `"Spacious, air-condition* +\"Ocean view\""`. Filtreleme ve sıralama kapsam dışında. Daha fazla bilgi için bkz. [Arama API başvurusu belgeleri](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Bu makalenin çoğu, *arama sorgusunun*işlenmesiyle ilgilidir: `"Spacious, air-condition* +\"Ocean view\""` . Filtreleme ve sıralama kapsam dışında. Daha fazla bilgi için bkz. [Arama API başvurusu belgeleri](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
 <a name="stage1"></a>
 ## <a name="stage-1-query-parsing"></a>1. Aşama: sorgu ayrıştırma 
@@ -80,15 +80,15 @@ Belirtildiği gibi, sorgu dizesi isteğin ilk satırdır:
  "search": "Spacious, air-condition* +\"Ocean view\"", 
 ~~~~
 
-Sorgu ayrıştırıcısı, işleçleri (örneğin, `*` ve `+` örneğinde) arama terimlerinden ayırır ve arama sorgusunu desteklenen bir türün alt *sorguları* olarak kaldırır: 
+Sorgu ayrıştırıcısı, işleçleri ( `*` `+` Örneğin, ve örneğinde) arama terimlerinden ayırır ve arama sorgusunu desteklenen bir türün alt *sorguları* olarak kaldırır: 
 
 + tek başına terimler için *terim sorgusu* (spacemlike gibi)
 + alıntı yapılan terimler için *tümcecik sorgusu* (okyanus görünümü gibi)
-+ bir önek işleci `*` (Air koşulu gibi) tarafından izlenen terimler için *ön ek sorgusu*
++ bir önek işleci (Air koşulu gibi) tarafından izlenen terimler için *ön ek sorgusu* `*`
 
 Desteklenen sorgu türlerinin tam listesi için bkz. [Lucene sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 
-Bir alt sorgu ile İlişkili işleçler, bir belgenin eşleşme olarak kabul edilmesi için "olması gereken" veya "olması" gerektiğini belirtir. Örneğin, `+"Ocean view"` `+` işleci nedeniyle "gerekir". 
+Bir alt sorgu ile İlişkili işleçler, bir belgenin eşleşme olarak kabul edilmesi için "olması gereken" veya "olması" gerektiğini belirtir. Örneğin, `+"Ocean view"` işleci nedeniyle "gerekir" `+` . 
 
 Sorgu ayrıştırıcısı, arama motoruna geçiş yaptığı bir *sorgu ağacında* (sorguyu temsil eden bir iç yapı) alt sorguları yeniden yapılandırır. Sorgu ayrıştırma işlevinin ilk aşamasında, sorgu ağacı şuna benzer.  
 
@@ -96,23 +96,23 @@ Sorgu ayrıştırıcısı, arama motoruna geçiş yaptığı bir *sorgu ağacın
 
 ### <a name="supported-parsers-simple-and-full-lucene"></a>Desteklenen çözümleyiciler: Simple ve Full Lucene 
 
- Azure Bilişsel Arama, iki farklı sorgu dili sunar `simple` , (varsayılan) `full`ve. `queryType` Parametresini arama isteğinizle birlikte ayarlayarak, sorgu ayrıştırıcısına, işleç ve sözdiziminin nasıl yorumlanacağını anlayabilmesi için hangi sorgu dilini istediğinizi söyleirsiniz. [Basit sorgu dili](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) sezgisel ve sağlam olduğundan, genellikle kullanıcı girişini istemci tarafı işleme olmadan olduğu gibi yorumlamak için uygundur. Web araması altyapılarından tanıdık gelen sorgu işleçlerini destekler. Ayarla, benzer, Regex ve alan kapsamlı sorgular gibi daha `queryType=full`fazla işleç ve sorgu türü için destek ekleyerek varsayılan basit sorgu dilini genişleterek, bu ayarı yaparak alacağınız [tam Lucene sorgu dili](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search). Örneğin, basit sorgu sözdiziminde gönderilen normal ifade bir ifade değil sorgu dizesi olarak yorumlanır. Bu makaledeki örnek istek, tam Lucene sorgu dilini kullanır.
+ Azure Bilişsel Arama, iki farklı sorgu dili sunar, `simple` (varsayılan) ve `full` . `queryType`Parametresini arama isteğinizle birlikte ayarlayarak, sorgu ayrıştırıcısına, işleç ve sözdiziminin nasıl yorumlanacağını anlayabilmesi için hangi sorgu dilini istediğinizi söyleirsiniz. [Basit sorgu dili](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) sezgisel ve sağlam olduğundan, genellikle kullanıcı girişini istemci tarafı işleme olmadan olduğu gibi yorumlamak için uygundur. Web araması altyapılarından tanıdık gelen sorgu işleçlerini destekler. Ayarla [Full Lucene query language](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), `queryType=full` benzer, Regex ve alan kapsamlı sorgular gibi daha fazla işleç ve sorgu türü için destek ekleyerek varsayılan basit sorgu dilini genişleterek, bu ayarı yaparak alacağınız tam Lucene sorgu dili. Örneğin, basit sorgu sözdiziminde gönderilen normal ifade bir ifade değil sorgu dizesi olarak yorumlanır. Bu makaledeki örnek istek, tam Lucene sorgu dilini kullanır.
 
 ### <a name="impact-of-searchmode-on-the-parser"></a>Ayrıştırıcıda searchMode etkisi 
 
 Ayrıştırmayı etkileyen başka bir arama isteği parametresi `searchMode` parametresi. Boolean sorguları için varsayılan işleci denetler: Any (varsayılan) veya ALL.  
 
-Ne `searchMode=any`zaman, varsayılan olarak, spacemli ve hava durumu arasındaki boşluk sınırlayıcısı veya (`||`) olduğunda, örnek sorgu metnini ile eşdeğer hale getirme: 
+Ne zaman `searchMode=any` , varsayılan olarak, spacemli ve hava durumu arasındaki boşluk SıNıRLAYıCıSı veya ( `||` ) olduğunda, örnek sorgu metnini ile eşdeğer hale getirme: 
 
 ~~~~
 Spacious,||air-condition*+"Ocean view" 
 ~~~~
 
-İçindeki `+` `+"Ocean view"`gibi açık işleçler, Boole sorgu oluşturma *(terimi eşleşmelidir* ) için net değildir. Daha az belirgin, kalan koşulları yorumlama: spacve Hava durumu gibi. Arama altyapısının okyanus görünümü *ve* spacemli *ve* Hava durumu ile eşleşmeleri bulması gerekir mi? Ya da okyanus görünümü ve kalan terimlerden *birini* bulmalıdır mi? 
+İçindeki gibi açık işleçler, `+` `+"Ocean view"` Boole sorgu oluşturma (terimi eşleşmelidir) için net değildir. *must* Daha az belirgin, kalan koşulları yorumlama: spacve Hava durumu gibi. Arama altyapısının okyanus görünümü *ve* spacemli *ve* Hava durumu ile eşleşmeleri bulması gerekir mi? Ya da okyanus görünümü ve kalan terimlerden *birini* bulmalıdır mi? 
 
-Varsayılan olarak (`searchMode=any`), arama motoru daha geniş yorumu kabul eder. Her iki alanın de eşleşmesi, yansıtılırken "veya" semantiğinin olması *gerekir* . Daha önce gösterilen ilk sorgu ağacı, iki "i" işlemi ile, varsayılan olarak gösterilir.  
+Varsayılan olarak ( `searchMode=any` ), arama motoru daha geniş yorumu kabul eder. Her iki alanın de eşleşmesi, yansıtılırken "veya" semantiğinin olması *gerekir* . Daha önce gösterilen ilk sorgu ağacı, iki "i" işlemi ile, varsayılan olarak gösterilir.  
 
-Şimdi belirlediğimiz `searchMode=all`hakkında düşünün. Bu durumda, alan "ve" işlemi olarak yorumlanır. Kalan koşulların her ikisi de eşleşme olarak nitelendirmek için belgede bulunmalıdır. Elde edilen örnek sorgu şu şekilde yorumlanacaktır: 
+Şimdi belirlediğimiz hakkında düşünün `searchMode=all` . Bu durumda, alan "ve" işlemi olarak yorumlanır. Kalan koşulların her ikisi de eşleşme olarak nitelendirmek için belgede bulunmalıdır. Elde edilen örnek sorgu şu şekilde yorumlanacaktır: 
 
 ~~~~
 +Spacious,+air-condition*+"Ocean view"
@@ -123,7 +123,7 @@ Bu sorgu için değiştirilen bir sorgu ağacı, eşleşen bir belge üç alt so
  ![Boolean sorgusu searchmode tümü][3]
 
 > [!Note] 
-> Üzerinde `searchMode=any` `searchMode=all` seçim yapmak, temsilci sorguları çalıştırarak en iyi şekilde ulaşan bir karardır. İşleçleri içermesi muhtemel olabilecek kullanıcılar (belge depoları aranırken ortak), Boole sorgu yapılarını bilgilendirir, `searchMode=all` sonuçları daha sezgisel bulabilir. Ve işleçleri arasında `searchMode` karşılıklı yürütme hakkında daha fazla bilgi için bkz. [basit sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search).
+> Üzerinde seçim yapmak `searchMode=any` `searchMode=all` , temsilci sorguları çalıştırarak en iyi şekilde ulaşan bir karardır. İşleçleri içermesi muhtemel olabilecek kullanıcılar (belge depoları aranırken ortak), `searchMode=all` Boole sorgu yapılarını bilgilendirir, sonuçları daha sezgisel bulabilir. Ve işleçleri arasında karşılıklı yürütme hakkında daha fazla bilgi için `searchMode` bkz. [basit sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search).
 
 <a name="stage2"></a>
 ## <a name="stage-2-lexical-analysis"></a>2. Aşama: sözcük Analizi 
@@ -184,7 +184,7 @@ Standart çözümleyici, giriş metnini aşağıdaki iki belirtece ayırır, bun
 
 ### <a name="exceptions-to-lexical-analysis"></a>Sözcük temelli Analize özel durumlar 
 
-Sözcük temelli analiz yalnızca, bir terim sorgusu veya bir tümcecik sorgusu için yalnızca tüm terimleri gerektiren sorgu türleri için geçerlidir. Eksik terimlere sahip sorgu türleri – ön ek sorgusu, joker karakter sorgusu, Regex sorgusu veya benzer bir sorguya uygulanmaz. Örneğimizde terim `air-condition*` içeren önek sorgusu da dahil olmak üzere bu sorgu türleri doğrudan sorgu ağacına eklenir, analiz aşaması atlanarak yapılır. Bu türlerin sorgu koşullarında gerçekleştirilen tek dönüşüm küçük harfe göre yapılır.
+Sözcük temelli analiz yalnızca, bir terim sorgusu veya bir tümcecik sorgusu için yalnızca tüm terimleri gerektiren sorgu türleri için geçerlidir. Eksik terimlere sahip sorgu türleri – ön ek sorgusu, joker karakter sorgusu, Regex sorgusu veya benzer bir sorguya uygulanmaz. Örneğimizde terim içeren önek sorgusu da dahil olmak üzere bu sorgu türleri `air-condition*` doğrudan sorgu ağacına eklenir, analiz aşaması atlanarak yapılır. Bu türlerin sorgu koşullarında gerçekleştirilen tek dönüşüm küçük harfe göre yapılır.
 
 <a name="stage3"></a>
 
@@ -239,19 +239,19 @@ Alımı anlamak için dizin oluşturma hakkında birkaç temel bilgi sağlamaya 
 Ters bir dizindeki koşulları oluşturmak için, arama motoru, sorgu işleme sırasında ne olduğu gibi, belgelerin içeriği üzerinde sözlü analiz gerçekleştirir:
 
 1. *Metin girişleri* , çözümleyici yapılandırmasına bağlı olarak, bir çözümleyici 'ye, daha düşük noktalama işaretlerine ve bu şekilde çıkarılır. 
-2. *Belirteçler* metin analizinin çıktıdır.
+2. *Belirteçler* , sözlü çözümlemenin çıktılardır.
 3. *Koşullar* dizine eklenir.
 
 Bu, arama ve dizin oluşturma işlemlerinde aynı Çözümleyicileri kullanmak için yaygın, ancak gerekli değildir, bu sayede sorgu terimleri dizin içinde terimler gibi görünür.
 
 > [!Note]
-> Azure Bilişsel Arama, dizin oluşturma ve ek `indexAnalyzer` ve `searchAnalyzer` alan parametreleri aracılığıyla arama için farklı çözümleyiciler belirtmenize olanak tanır. Belirtilmemişse, `analyzer` özelliği ile ayarlanan çözümleyici, hem dizin oluşturma hem de arama için kullanılır.  
+> Azure Bilişsel Arama, dizin oluşturma ve ek `indexAnalyzer` ve alan parametreleri aracılığıyla arama için farklı çözümleyiciler belirtmenize olanak tanır `searchAnalyzer` . Belirtilmemişse, özelliği ile ayarlanan çözümleyici, `analyzer` hem dizin oluşturma hem de arama için kullanılır.  
 
 **Örnek belgeler için ters dizin**
 
 Örneğimize dönerek, **başlık** alanı için ters dizin şöyle görünür:
 
-| Sözleşme Dönemi | Belge listesi |
+| Terim | Belge listesi |
 |------|---------------|
 | atman | 1 |
 | unun | 2 |
@@ -265,7 +265,7 @@ Başlık alanında, yalnızca *otel* iki belgede görünür: 1, 3.
 
 **Açıklama** alanı için dizin aşağıdaki gibidir:
 
-| Sözleşme Dönemi | Belge listesi |
+| Terim | Belge listesi |
 |------|---------------|
 | te | 3
 | ve | 4
@@ -309,7 +309,7 @@ Sorgu yürütme sırasında, tekil sorgular bağımsız olarak aranabilir alanla
 + PhraseQuery, "okyanus görünümü", "okyanus" ve "Görünüm" terimlerini arar ve özgün belgedeki koşulların yakınlığını denetler. Belgeler 1, 2 ve 3 ' ü Açıklama alanında bu sorguyla eşleştirin. Bildirim belgesi 4 ' te, başlık içinde okyanus terimi bulunur, ancak tek sözcükler yerine "okyanus görünümü" ifadesini aradığımız için eşleşme olarak kabul edilmez. 
 
 > [!Note]
-> Arama sorgusu, `searchFields` parametre ile ayarlanan alanları, örnek arama isteğinde gösterildiği gibi Sınırlandırmadığınız sürece Azure bilişsel arama dizinindeki tüm aranabilir alanlara göre bağımsız olarak yürütülür. Seçili alanlardan herhangi biri ile eşleşen belgeler döndürülür. 
+> Arama sorgusu, parametre ile ayarlanan alanları `searchFields` , örnek arama isteğinde gösterildiği gibi sınırlandırmadığınız sürece Azure bilişsel arama dizinindeki tüm aranabilir alanlara göre bağımsız olarak yürütülür. Seçili alanlardan herhangi biri ile eşleşen belgeler döndürülür. 
 
 Tüm sorgu için, söz konusu sorgu için, eşleşen belgeler 1, 2, 3 ' dir. 
 
@@ -360,7 +360,7 @@ Bunun ne kadar önemli olduğunu gösteren bir örnek. Önek aramaları dahil ol
 Azure Bilişsel Arama ilgi puanlarını ayarlamaya yönelik iki yol vardır:
 
 1. **Puanlama profilleri** , bir dizi kurala göre dereceli sonuçlar listesindeki belgeleri yükseltir. Örneğimizde, başlık alanında, açıklama alanında eşleşen belgelerden daha alakalı olan belgeleri kabul eteceğiz. Ayrıca, dizinimizin her otel için bir fiyat alanı varsa, belgeleri daha düşük fiyatla yükseltebiliriz. [Arama dizinine Puanlama profilleri ekleme](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) hakkında daha fazla bilgi edinin.
-2. **Terim arttırma** (yalnızca tam Lucene sorgu sözdiziminde kullanılabilir), sorgu ağacının herhangi bir bölümüne `^` uygulanabilen bir artırma işleci sağlar. Örneğimizde, *Hava durumu ön koşulunu*\*aramak yerine bir tane, *Uçak koşulunun* veya ön koşulun tam terimini arayabilir, ancak tam terimle eşleşen belgeler, sorgu teriminin yükselmesine uygulanarak daha yüksek bir şekilde derecelendirilir: * Air-condition ^ 2 | | Hava durumu * *. [Terim artırma](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)hakkında daha fazla bilgi edinin.
+2. **Terim arttırma** (yalnızca tam Lucene sorgu sözdiziminde kullanılabilir) `^` , sorgu ağacının herhangi bir bölümüne uygulanabilen bir artırma işleci sağlar. Örneğimizde, *Hava durumu ön koşulunu*aramak yerine \* bir tane, *Uçak koşulunun* veya ön koşulun tam terimini arayabilir, ancak tam terimle eşleşen belgeler, sorgu teriminin yükselmesine uygulanarak daha yüksek bir şekilde derecelendirilir: * Air-condition ^ 2 | | Hava durumu * *. [Terim artırma](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)hakkında daha fazla bilgi edinin.
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Dağıtılmış dizindeki Puanlama

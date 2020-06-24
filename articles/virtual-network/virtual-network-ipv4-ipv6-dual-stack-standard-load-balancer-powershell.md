@@ -8,17 +8,17 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2020
 ms.author: kumud
-ms.openlocfilehash: d6b61e27324220fc78ace3e964aed98f9ba114d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a13a2a081815f2a3b668caf9b4e78c2208601cb2
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420942"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703018"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell"></a>Azure-PowerShell 'de IPv6 ikili yığın uygulaması dağıtma
 
@@ -307,7 +307,7 @@ $VM2 = New-AzVM -ResourceGroupName $rg.ResourceGroupName  -Location $rg.Location
 ```
 
 ## <a name="determine-ip-addresses-of-the-ipv4-and-ipv6-endpoints"></a>IPv4 ve IPv6 bitiş noktalarının IP adreslerini belirleme
-Bu dağıtımda kullanılan IP 'yi özetlemek için kaynak grubundaki tüm ağ arabirimi nesnelerini alın `get-AzNetworkInterface`. Ayrıca, ile `get-AzpublicIpAddress`IPv4 ve IPv6 bitiş noktaları için Load Balancer ön uç adreslerini alın.
+Bu dağıtımda kullanılan IP 'yi özetlemek için kaynak grubundaki tüm ağ arabirimi nesnelerini alın `get-AzNetworkInterface` . Ayrıca, ile IPv4 ve IPv6 bitiş noktaları için Load Balancer ön uç adreslerini alın `get-AzpublicIpAddress` .
 
 ```azurepowershell-interactive
 $rgName= "dsRG1"

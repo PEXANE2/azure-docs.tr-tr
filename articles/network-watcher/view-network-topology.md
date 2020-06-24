@@ -6,17 +6,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
-ms.openlocfilehash: 675919db55932d3ccc04fd5397f6f673832b4900
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840579"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737538"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Bir Azure sanal ağının topolojisini görüntüleme
 
@@ -51,7 +51,7 @@ Diyagramda gösterilen kaynaklar, sanal ağdaki ağ bileşenlerinin bir alt küm
 
 Aşağıdaki adımlarda komutları çalıştırabilirsiniz:
 - Azure Cloud Shell, herhangi bir komutun sağ üst kısmında **deneyin** ' i seçin. Azure Cloud Shell, ortak Azure Araçları önceden yüklenmiş ve hesabınızla kullanılmak üzere yapılandırılmış olan ücretsiz bir etkileşimli kabuktur.
-- CLı 'yi bilgisayarınızdan çalıştırın. CLı 'yı bilgisayarınızdan çalıştırırsanız, bu makaledeki adımlarda Azure CLı sürüm 2.0.31 veya sonraki bir sürümü gerekir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırıyorsanız, Azure ile bir bağlantı oluşturmak için çalıştırmanız `az login` da gerekir.
+- CLı 'yi bilgisayarınızdan çalıştırın. CLı 'yı bilgisayarınızdan çalıştırırsanız, bu makaledeki adımlarda Azure CLı sürüm 2.0.31 veya sonraki bir sürümü gerekir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırıyorsanız, `az login` Azure ile bir bağlantı oluşturmak için çalıştırmanız da gerekir.
 
 Kullandığınız hesabın gerekli [izinlere](required-rbac-permissions.md)sahip olması gerekir.
 

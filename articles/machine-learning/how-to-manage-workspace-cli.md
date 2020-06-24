@@ -8,20 +8,20 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/05/2020
-ms.openlocfilehash: 9131ce9b211a33fe45ef571f3a274b4ddc81739f
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 06/19/2020
+ms.openlocfilehash: f22ef4d1ebd9c4d3c226556c4ef28a873edd80ea
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84430402"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119282"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLı ile Azure Machine Learning çalışma alanı oluşturma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, Azure CLı kullanarak Azure Machine Learning çalışma alanı oluşturmayı öğreneceksiniz. Azure CLı, Azure kaynaklarını yönetmeye yönelik komutlar sağlar. CLı 'ya makine öğrenimi uzantısı, Azure Machine Learning kaynaklarıyla çalışmaya yönelik komutlar sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
@@ -59,7 +59,7 @@ az extension add -n azure-cli-ml
 Azure Machine Learning çalışma alanı aşağıdaki Azure hizmetlerine veya varlıklara bağımlıdır:
 
 > [!IMPORTANT]
-> Mevcut bir Azure hizmeti belirtmezseniz, bir tane, çalışma alanı oluşturma sırasında otomatik olarak oluşturulur. Her zaman bir kaynak grubu belirtmeniz gerekir.
+> Mevcut bir Azure hizmeti belirtmezseniz, bir tane, çalışma alanı oluşturma sırasında otomatik olarak oluşturulur. Her zaman bir kaynak grubu belirtmeniz gerekir. Kendi depolama hesabınızı iliştirirken hem Azure Blob 'un hem de Azure dosya yeteneklerinin etkinleştirildiğinden ve bu hiyerarşik ad alanının (ADLS Gen 2) devre dışı bırakıldığından emin olun. Çalışma alanı veri depoları olarak oluşturulduktan sonra, her zaman kendi depolama hesabınızı iliştirebilirsiniz.
 
 | Hizmet | Var olan bir örneği belirtecek parametre |
 | ---- | ---- |
@@ -317,7 +317,7 @@ Daha fazla bilgi için, [az ml çalışma alanı paylaşma](https://docs.microso
 
 ## <a name="sync-keys-for-dependent-resources"></a>Bağımlı kaynaklar için eşitleme anahtarları
 
-Çalışma alanınız tarafından kullanılan kaynaklardan birinin erişim anahtarlarını değiştirirseniz, yeni anahtarları çalışma alanıyla eşitlemek için aşağıdaki komutu kullanın:
+Çalışma alanınız tarafından kullanılan kaynaklardan birinin erişim anahtarlarını değiştirirseniz, çalışma alanının yeni anahtarla eşitlenmesi bir saat boyunca zaman alır. Çalışma alanını yeni anahtarları hemen eşitlemeye zorlamak için aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
 az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
@@ -327,7 +327,7 @@ Anahtarları değiştirme hakkında daha fazla bilgi için bkz. [depolama erişi
 
 Daha fazla bilgi için, [az ml çalışma alanı eşitleme anahtarları](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-sync-keys) belgelerine bakın.
 
-## <a name="delete-a-workspace"></a>Çalışma alanı silme
+## <a name="delete-a-workspace"></a>Çalışma alanını silme
 
 Artık gerekli olmadığında bir çalışma alanını silmek için aşağıdaki komutu kullanın:
 

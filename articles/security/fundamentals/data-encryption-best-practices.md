@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: c5bf62f434b2095f7200b5562c38c252a0195c5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b6fcf38f9f69976e6ed8d64040cfbcf44f090e1
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243503"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124060"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure veri güvenliği ve şifreleme için en iyi yöntemler
 Bu makalede veri güvenliği ve şifreleme için en iyi uygulamalar açıklanmaktadır.
@@ -121,7 +121,7 @@ Yoldaki verileri koruyamadığı kuruluşlar, [ortadaki adam saldırıları](htt
 
 Verilerin nerede depolandığını veya paylaşıldığına bakılmaksızın sınıflandırma her zaman tanımlanabilir. Etiketler üst bilgi, alt bilgi veya filigran gibi görsel işaretler içerir. Dosyalara ve e-posta üst bilgilerine düz metin olarak meta veriler eklenir. Şifresiz metin, veri kaybını önleyen çözümler gibi diğer hizmetlerin sınıflandırmayı tanımlayabilir ve uygun eylemi gerçekleştirebilir.
 
-Koruma teknolojisi Azure Rights Management (Azure RMS) kullanır. Bu teknoloji, Office 365 ve Azure Active Directory gibi diğer Microsoft bulut hizmetleri ve uygulamalarıyla tümleşiktir. Bu koruma teknolojisinde şifreleme, kimlik ve yetkilendirme ilkeleri kullanılır. Azure RMS ile uygulanan koruma, "kuruluşunuzun, ağların, dosya sunucularınızın ve uygulamalarınızın içindeki veya dışındaki belge ve e-postalarla birlikte kalır.
+Koruma teknolojisi Azure Rights Management (Azure RMS) kullanır. Bu teknoloji, Microsoft 365 ve Azure Active Directory gibi diğer Microsoft bulut hizmetleri ve uygulamalarıyla tümleşiktir. Bu koruma teknolojisinde şifreleme, kimlik ve yetkilendirme ilkeleri kullanılır. Azure RMS ile uygulanan koruma, "kuruluşunuzun, ağların, dosya sunucularınızın ve uygulamalarınızın içindeki veya dışındaki belge ve e-postalarla birlikte kalır.
 
 Bu bilgi koruma çözümü, diğer kişilerle paylaşıldığında bile verilerinizi denetlemenize devam eder. Ayrıca, bu uygulamaların ve çözümlerin şirket içinde veya bulutta olup olmadığı yazılım satıcılarından kendi iş kolu uygulamalarınızı ve bilgi koruma Çözümlerinizi Azure RMS de kullanabilirsiniz.
 

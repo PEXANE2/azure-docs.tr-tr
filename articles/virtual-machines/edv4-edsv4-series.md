@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 79623f48e8aaf89636910d47ec4daa1e3ce83bb3
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 7a21fb1c8da365176c27921bd58a5dffae468d2c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676633"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735957"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 ve Edsv4 serisi
 
@@ -34,7 +34,7 @@ Dinamik Geçiş: destekleniyor
 
 Güncelleştirmeleri koruyan bellek: desteklenir
 
-| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps (GiB 'de önbellek boyutu) | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: ıOPS/MBps | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |---|---|---|---|---|---|---|
 | Standard_E2d_v4  | 2 | 16 | 75 | 4 | 19000/120 | 2/1000 |
 | Standard_E4d_v4  | 4 | 32 | 150 | 8 | 38500/242 | 2/2000 |

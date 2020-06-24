@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 6c56dc32ff733aa9dbbba8102ff8d79a592ea957
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 0136dce793fea1672b68062480420e5a05c75253
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309756"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118381"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v3-driver"></a>Hızlı başlangıç: Azure Cosmos DB Cassandra API verileri (v3 sürücüsü) yönetmek için bir Java uygulaması oluşturma
 
@@ -29,7 +29,7 @@ ms.locfileid: "84309756"
 
 Bu hızlı başlangıçta, bir Azure Cosmos DB Cassandra API hesabı oluşturur ve Java için [v3. x Apache Cassandra sürücülerini](https://github.com/datastax/java-driver/tree/3.x) kullanarak Cassandra veritabanı ve kapsayıcısı oluşturmak için GitHub 'dan kopyalanmış bir Cassandra Java uygulaması kullanırsınız. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) .
 - [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). `JAVA_HOME`Ortam değişkeninizi JDK 'nin yüklü olduğu klasöre işaret edin.
@@ -146,7 +146,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda **bağlantı dizesi**' ni seçin. 
 
-    ![Azure portalı, Bağlantı Dizesi sayfasından kullanıcı adını görüntüleme ve kopyalama](./media/create-cassandra-java/copy-username-connection-string-azure-portal.png)
+    :::image type="content" source="./media/create-cassandra-java/copy-username-connection-string-azure-portal.png" alt-text="Azure portalı, Bağlantı Dizesi sayfasından kullanıcı adını görüntüleme ve kopyalama":::
 
 2. En üstteki USERNAME değerini kopyalamak için ekranın sağ tarafındaki ![Kopyala düğmesini](./media/create-cassandra-java/copy-button-azure-portal.png) kullanın.
 
@@ -202,7 +202,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 4. Azure portalında bu yeni verileri sorgulamak, değiştirmek ve birlikte çalışmak için **Veri Gezgini**'ni açın. 
 
-    ![Veri Gezgini Azure Cosmos DB verileri görüntüleme](./media/create-cassandra-java/view-data-explorer-java-app.png)
+    :::image type="content" source="./media/create-cassandra-java/view-data-explorer-java-app.png" alt-text="Veri Gezgini Azure Cosmos DB verileri görüntüleme":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure portalında SLA'ları gözden geçirme
 

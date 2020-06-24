@@ -4,16 +4,16 @@ description: İOS istemcisini kullanarak Windows sanal masaüstüne bağlanma.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 80bbb90c46376d29c1f4f8b0701cf4059db32246
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 10ad1e3fdcccce4eb0ce97806f67486ce5cc391b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615012"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213219"
 ---
 # <a name="connect-with-the-ios-client"></a>iOS istemcisiyle bağlanma
 
@@ -34,9 +34,9 @@ Başlamak için, istemcisini iOS cihazınıza [indirin](https://aka.ms/rdios) ve
 
 Bir akışa abone olmak için:
 
-1. Bağlantı merkezi 'nde **+**, ve ardından **çalışma alanı Ekle**' ye dokunun.
+1. Bağlantı merkezi 'nde **+** , ve ardından **çalışma alanı Ekle**' ye dokunun.
 2. Akış **URL 'si alanına AKıŞ** URL 'sini girin. Akış URL 'SI ya bir URL ya da bir e-posta adresi olabilir.
-   - Bir URL kullanıyorsanız, yöneticinizin size verdiği bir URL 'yi kullanın. Normalde, URL olur <https://rdweb.wvd.microsoft.com>.
+   - Bir URL kullanıyorsanız, yöneticinizin size verdiği bir URL 'yi kullanın. Normalde, URL olur <https://rdweb.wvd.microsoft.com> .
    - E-posta kullanmak için e-posta adresinizi girin. Bu, yönetici sunucuyu bu şekilde yapılandırdıysa, istemciye e-posta adresinizle ilişkili bir URL aramasını söyler.
 3. **İleri**' ye dokunun.
 4. İstendiğinde kimlik bilgilerinizi sağlayın.

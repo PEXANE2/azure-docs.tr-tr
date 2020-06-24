@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 2aeb2ab4cfb4ed5e8652638aaced320cc7119d3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7700e151a49dbfbad452927ba4a308651a0b584a
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77919490"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782821"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Güvenlik Merkezi 'nde çapraz Kiracı Yönetimi
 
@@ -43,10 +43,10 @@ Birden çok Kiracıdaki abonelikleri, tek bir kiracıda birden çok aboneliği y
 
   ![Kiracıları filtrele](./media/security-center-cross-tenant-management/cross-tenant-filter.png)
 
-Görünümler ve eylemler temelde aynıdır. İşte bazı örnekler:
+Görünümler ve eylemler temelde aynıdır. Aşağıda bazı örnekler verilmiştir:
 
 - **Güvenlik Ilkelerini yönetme**: tek bir görünümden, [ilkelerle](tutorial-security-policy.md)birçok kaynağın güvenlik duruşunu yönetin, güvenlik önerileri ile eylemler gerçekleştirin ve güvenlikle ilgili verileri toplayın ve yönetin.
-- **Güvenli puanı ve uyumluluğu iyileştirme**: çapraz kiracı görünürlüğü, tüm Kiracılarınızın genel güvenlik duruşunu ve bunların her biri Için [güvenli puan](security-center-secure-score.md) ve [Uyumluluk](security-center-compliance-dashboard.md) duruşunu en iyi şekilde nasıl iyileştirebileceğinizi görüntülemenize olanak sağlar.
+- **Güvenli puanı ve uyumluluğu iyileştirme**: çapraz kiracı görünürlüğü, tüm Kiracılarınızın genel güvenlik duruşunu ve bunların her biri için [güvenli puan](secure-score-security-controls.md) ve [Uyumluluk](security-center-compliance-dashboard.md) duruşunu en iyi şekilde nasıl iyileştirebileceğinizi görüntülemenize olanak sağlar.
 - **Önerileri düzeltin**: aynı anda çeşitli kiracılardan çok sayıda kaynak için bir [öneriyi](security-center-recommendations.md) izleyin ve düzeltin. Daha sonra tüm kiracılar genelinde en yüksek riski sunan güvenlik açıklarını hemen ekleyebilirsiniz.
 - **Uyarıları yönetme**: farklı kiracılar genelinde [uyarıları](security-center-alerts-overview.md) algıla. Eyleme dönüştürülebilir [Düzeltme adımlarıyla](security-center-managing-and-responding-alerts.md)uyumlu olmayan kaynaklar üzerinde işlem yapın.
 

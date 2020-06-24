@@ -5,16 +5,16 @@ description: Azure Machine Learning Studio için destek ve eğitim alın ve geri
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: peterclu
 ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: cd48e97f642402d1c7ff2ff71e7cee67be17f91d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 708f337ebc627f863f632a677a2186a9d7fe99f8
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209443"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213185"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio için destek ve eğitim alın (klasik)
 
@@ -38,7 +38,7 @@ Bu destek kaynaklarına göz atın:
 
 + **Azure müşterileri Için Teknik destek**: Azure Portal aracılığıyla [destek istekleri gönderir ve yönetin](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) .
 
-+ **Kullanıcı Forumu**: [MSDN 'deki Azure Machine Learning Studio (klasik) destek forumundaki](https://aka.ms/aml-forum-studio)soru sorun, soruları yanıtlayın ve diğer kullanıcılarla bağlantı yapın.
++ **Kullanıcı Forumu**: soru sorun, sorular yanıtlayın ve [Azure Machine Learning Studio (klasik) destek forumundaki](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)diğer kullanıcılarla bağlantı yapın.
 
 + **Stack Overflow**: "Azure-Machine-Learning" Ile etiketlenen [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) üzerinde Azure Machine Learning topluluğunu ziyaret edin.
 

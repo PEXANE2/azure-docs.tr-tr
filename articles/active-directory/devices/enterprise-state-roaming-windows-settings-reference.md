@@ -4,19 +4,19 @@ description: ESR ile Windows 10 ' da dolaşılabilir veya yedeklenecek ayarlar
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: troubleshooting
+ms.topic: reference
 ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7abc402f1fc2e449e7aac5effdb01b6b941100
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672620"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252976"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 dolaşım ayarları başvurusu
 
@@ -26,12 +26,12 @@ Windows 10 ' da dolaşılabilir veya yedeklenecek ayarların bir listesi aşağ�
 
 Windows 10 ' da eşitleme, yedekleme ve geri yükleme çerçevesi tarafından desteklenen cihazların ve hesap türlerinin Özeti için aşağıdaki tabloya bakın.
 
-| Hesap türü ve işlem | Masaüstü | Cep telefonu |
+| Hesap türü ve işlem | Masaüstü | Mobil |
 | --- | --- | --- |
-| Azure Active Directory: eşitleme |Yes |Hayır |
+| Azure Active Directory: eşitleme |Evet |No |
 | Azure Active Directory: yedekleme/geri yükleme |Hayır |Hayır |
 | Microsoft hesabı: eşitleme |Yes |Yes |
-| Microsoft hesabı: yedekleme/geri yükleme |Hayır |Yes |
+| Microsoft hesabı: yedekleme/geri yükleme |No |Evet |
 
 ## <a name="what-is-backup"></a>Yedekleme nedir?
 
@@ -69,7 +69,7 @@ Aşağıdaki tabloda, ayarlar grubu sütunundaki diğer girişler ayarlar > hesa
 Ayarlar Grup sütunundaki iç girişler yalnızca uygulamanın kendisi içinde eşitlenmesi devre dışı bırakılabilecek veya mobil cihaz yönetimi (MDM) veya grup ilkesi ayarları kullanılarak tüm cihazın eşitlemesini devre dışı bırakarak, ayarlar ve uygulamalar bölümüne başvurur.
 Dolaşımda olmayan veya eşitlenmeyecek ayarlar bir gruba ait değil.
 
-| Ayarlar | Masaüstü | Cep telefonu | Grup |
+| Ayarlar | Masaüstü | Mobil | Grup |
 | --- | --- | --- | --- |
 | **Hesaplar**: hesap resmi |eşitleme |X |Tema |
 | **Hesaplar**: diğer hesap ayarları |X |X | |

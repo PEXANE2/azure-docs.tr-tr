@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 6292c3c2d928581d0564fe457342ea7b1e17111c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bfac783fcb8ce88977fc8d97f821a7350f57aab8
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80983033"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118585"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB’ye hoş geldiniz
 
@@ -24,7 +24,7 @@ Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyebilir](https://azure.m
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB ücretsiz deneyin](https://azure.microsoft.com/try/cosmosdb/)
 
-![Azure Cosmos DB, Microsoft'un esnek ölçek genişletme, garantili düşük gecikme süresi, beş tutarlılık modeli ve kapsamlı SLA garantisi ile genel olarak dağıtılmış veritabanı hizmetidir](./media/introduction/azure-cosmos-db.png)
+:::image type="content" source="./media/introduction/azure-cosmos-db.png" alt-text="Azure Cosmos DB, Microsoft'un esnek ölçek genişletme, garantili düşük gecikme süresi, beş tutarlılık modeli ve kapsamlı SLA garantisi ile genel olarak dağıtılmış veritabanı hizmetidir" border="false":::
 
 ## <a name="key-benefits"></a>Önemli Avantajlar
 
@@ -48,7 +48,7 @@ Cosmos DB kullanarak yüksek oranda duyarlı, dünya ölçekli uygulamalar oluş
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Tam olarak tanımlanmış, birden çok tutarlılık seçeneği
 
-Cosmos DB ' de küresel olarak dağıtılmış uygulamalar oluştururken, artık [tutarlılık, kullanılabilirlik, gecikme süresi ve aktarım hızı arasında](consistency-levels-tradeoffs.md)aşırı bir denge yapmanız gerekmez. Cosmos DB çok yöneticili çoğaltma protokolü, genel olarak dağıtılmış uygulamanız için düşük gecikme süresi ve yüksek kullanılabilirliğe sahip, sezgisel bir programlama modeli için*sağlam*, *sınırlanmış Eskime durumu*, *oturum*, *tutarlı ön ek*ve *nihai* [beş iyi tanımlanmış tutarlılık seçeneği](consistency-levels.md) - sunmak üzere dikkatle tasarlanmıştır.
+Cosmos DB ' de küresel olarak dağıtılmış uygulamalar oluştururken, artık [tutarlılık, kullanılabilirlik, gecikme süresi ve aktarım hızı arasında](consistency-levels-tradeoffs.md)aşırı bir denge yapmanız gerekmez. Cosmos DB çok yöneticili çoğaltma protokolü, [five well-defined consistency choices](consistency-levels.md)  -  genel olarak dağıtılmış uygulamanız için düşük gecikme süresi ve yüksek kullanılabilirliğe sahip, sezgisel bir programlama modeli için*sağlam*, *sınırlanmış Eskime durumu*, *oturum*, *tutarlı ön ek*ve *nihai* beş iyi tanımlanmış tutarlılık seçeneği sunmak üzere dikkatle tasarlanmıştır.
 
 ### <a name="no-schema-or-index-management"></a>Şema veya dizin yönetimi yok
 

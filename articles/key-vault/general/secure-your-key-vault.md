@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 348ddb0fa8bd973a7e8ebcf5ae14de1eee57d5a5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c97645df5fb9183effa8f29f088376519404192d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827531"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212879"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Anahtar kasasına güvenli erişim
 
@@ -79,6 +79,8 @@ Bir kaynak grubunda bir Anahtar Kasası oluşturup Azure AD 'yi kullanarak eriş
 Bir Anahtar Kasası için Key Vault erişim ilkeleri ayarlayarak veri düzlemi erişimi verirsiniz. Bu erişim ilkelerini ayarlamak için, bir Kullanıcı, Grup veya uygulamanın `Contributor` Bu anahtar kasası için yönetim düzlemi için izinleri olması gerekir.
 
 Bir anahtar kasasındaki anahtarlar veya gizlilikler için belirli işlemleri yürütmek üzere bir Kullanıcı, Grup veya uygulama erişimi verirsiniz. Key Vault, bir Anahtar Kasası için en fazla 1.024 erişim ilkesi girişini destekler. Birkaç kullanıcıya veri düzlemi erişimi sağlamak için bir Azure AD güvenlik grubu oluşturun ve bu gruba kullanıcı ekleyin.
+
+Kasa ve gizli işlemlerin tam listesini görebilir ve aşağıdaki başvuruyu görüntüleyerek, Anahtar Kasası erişim ilkelerini yapılandırırken izin verilen işlemleri anlayabilirsiniz. [Işlem başvurusunu Key Vault](https://docs.microsoft.com/rest/api/keyvault/#vault-operations)
 
 <a id="key-vault-access-policies"></a>Key Vault erişim ilkeleri, izinleri anahtarlar, gizlilikler ve sertifikaya ayrı olarak verir. Gizli dizileri değil yalnızca anahtarlara bir kullanıcı erişimi verebilirsiniz. Anahtarlar, gizli diziler ve sertifikalar için erişim izinleri kasa düzeyindedir. Key Vault erişim ilkeleri, belirli bir anahtar, gizli dizi ya da sertifika gibi ayrıntılı, nesne düzeyindeki izinleri desteklemez. Bir Anahtar Kasası için erişim ilkeleri ayarlamak için [Azure Portal](https://portal.azure.com/), [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azureps-cmdlets-docs)veya [Key Vault yönetimi REST API 'lerini](https://msdn.microsoft.com/library/azure/mt620024.aspx)kullanın.
 

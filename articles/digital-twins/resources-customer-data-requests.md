@@ -8,14 +8,17 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 9822044de53f5f74df302e05e0e6c5cd06f3eb92
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 9e8cd41f54871cf88e9f4d0fc207289b66b7e38c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613127"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737164"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Müşteri verileri isteme özelliklerinin özeti
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure dijital TWINS, bir iş ortamının güvenli dijital temsillerini oluşturmaya yönelik bir geliştirici platformudur. Temsiller, kullanıcılar tarafından seçilen veri kaynaklarından canlı durum verileri tarafından çalıştırılır.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7b5208d2da3635e822049859cae9c8f17b6105a
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 9090ca5b8057179b0cbef1d0a87ae563303ed2c1
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84464258"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130441"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Kimlik Koruması bildirimleri
 
@@ -31,7 +31,11 @@ Bu makalede her iki bildirim e-postası için bir genel bakış sunulmaktadır.
 
 Risk altında algılanan bir hesaba yanıt olarak Azure AD Kimlik Koruması, **risk altındaki kullanıcılar** konu olarak algılanan bir e-posta uyarısı oluşturur. E-posta, **[risk için Işaretlenmiş kullanıcılar](../reports-monitoring/concept-user-at-risk.md)** raporu için bir bağlantı içerir. En iyi uygulama olarak, risk altındaki kullanıcıları hemen araştırmanız gerekir.
 
-Bu uyarının yapılandırması, uyarının oluşturulmasını istediğiniz Kullanıcı risk düzeyini belirtmenize olanak tanır. Bu e-posta, kullanıcının risk düzeyi belirtdiklerinize ulaştığında oluşturulacaktır; Bununla birlikte, risk bu Kullanıcı risk düzeyine geçtikten sonra bu kullanıcı için e-posta uyarılarını tespit eden yeni kullanıcıları almazsınız. Örneğin, ilkeyi orta Kullanıcı riski üzerine uyarı olarak ayarlarsanız ve Kullanıcı John, orta riske geçerse, kullanıcılardan John için algılanan risk için e-posta olduğunu görürsünüz. Ancak, John daha sonra yüksek riske geçerse veya ek risk algılamaları varsa, risk tespit eden ikinci bir Kullanıcı almazsınız.
+Bu uyarının yapılandırması, uyarının oluşturulmasını istediğiniz Kullanıcı risk düzeyini belirtmenize olanak tanır. Kullanıcının risk düzeyi belirtdiklerinize ulaştığında e-posta oluşturulacaktır. Örneğin, ilkeyi orta Kullanıcı riski üzerine uyarı olarak ayarlarsanız ve Kullanıcı John 'un Kullanıcı risk puanı, gerçek zamanlı bir oturum açma riski nedeniyle orta riske geçerse, risk altında algılanan kullanıcılara e-posta gönderilir. Kullanıcı risk düzeyi hesaplamasının belirtilen risk düzeyi (veya üzeri) olmasına neden olan bir sonraki risk algılamamız varsa, Kullanıcı risk puanı yeniden hesaplandığında, tehlikede daha fazla Kullanıcı görürsünüz. Örneğin, bir Kullanıcı 1 Ocak 'ta orta riske geçerse, ayarlarınız Orta risk üzerine uyarı olarak ayarlandıysa, bir e-posta bildirimi alırsınız. Aynı kullanıcı daha sonra da orta ölçekli bir risk algılamasında daha fazla risk algılamasına sahipse ve Kullanıcı risk puanı yeniden hesaplanmışsa ve hala orta düzeydeyse, başka bir e-posta bildirimi alırsınız. 
+
+Bununla birlikte, yalnızca risk algılaması gerçekleştiği zaman (Kullanıcı risk düzeyindeki değişikliğe neden olan) son e-postanın gönderildiği zamana kıyasla daha yeni bir e-posta bildirimi gönderilir. Örneğin, 1 Ocak 'tan 5 ' te bir Kullanıcı oturum açma işlemleri ve gerçek zamanlı risk yoktur (Bu oturum açma nedeniyle hiçbir e-posta üretilmez). On dakika sonra, 5:10 ' de aynı Kullanıcı yeniden oturum açar ve gerçek zamanlı riske sahiptir ve Kullanıcı risk düzeyinin gönderilmek üzere yüksek ve e-posta gönderilmesine neden olur. Daha sonra, 5:15 ' de, özgün oturum açma için 5. adımda çevrimdışı risk puanı, çevrimdışı risk işleme nedeniyle yüksek riskli olarak değişir. İlk oturum açma zamanı, zaten bir e-posta bildirimi tetikleyen ikinci oturum açma işleminden önce olduğundan, risk e-postası için işaretlenen ilave Kullanıcı gönderilmez.
+
+E-postaların aşırı yüklenmesini engellemek için, risk altında 5 saniyelik bir süre içinde yalnızca bir Kullanıcı tespit edersiniz. Bu, birden çok kullanıcı aynı 5 saniyelik bir dönemde belirtilen risk düzeyine taşındığında, hepsi için risk düzeyindeki değişikliği temsil eden bir e-posta toplayacağız ve gönderebiliyoruz.
 
 ![Risk altındaki kullanıcılar e-posta algıladı](./media/howto-identity-protection-configure-notifications/01.png)
 

@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 18158c867ba7a3307585eab0f950d15a6a12aa7c
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 5323e54a81c7123e3e60f69d05accef9a63c7bc4
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342638"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737453"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
 
@@ -105,7 +105,7 @@ Azure geçişi sunucu değerlendirmesi Şu anda yalnızca Windows makineler içi
 
 Sunucu Değerlendirmesi şirket içi makinelerin performans verilerini sürekli toplar ve bunları Azure’da VM SKU'su ile disk SKU'su önermek için kullanır. Performans tabanlı verilerin nasıl toplandığını [öğrenin](concepts-assessment-calculation.md#calculate-sizing-performance-based) .
 
-## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combintion-of-reserved-instances-vm-uptime-and-discount-"></a>Değerlendirmem neden, geçersiz bir combintion ayrılmış örnek, VM çalışma süresi ve Indirim (%) ile oluşturulduğunu belirten bir uyarı gösteriyor?
+## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>Değerlendirmem neden ayrılmış örneklerin, VM çalışma süresinin ve Iskontonun (%) bir birleşimi ile oluşturulduğunu belirten bir uyarı gösteriyor?
 ' Ayrılmış örnekler ' seçtiğinizde, ' Discount (%) ' ve ' VM çalışma süresi ' özellikleri geçerli değil. Değerlendirmenizi bu özelliklerin geçersiz bir birleşimiyle oluşturulduğundan, Düzenle ve yeniden hesapla düğmeleri devre dışı bırakılır. Lütfen yeni bir değerlendirme oluşturun. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2131554).
 
 ## <a name="dependency-visualization-in-azure-government"></a>Azure Kamu 'da bağımlılık görselleştirmesi
@@ -132,15 +132,14 @@ Linux sanal makineleri için, MMA ve bağımlılık aracısının yükleme komut
 
 ## <a name="visualize-dependencies-for--hour"></a>> saat bağımlılıklarını görselleştirin
 
-Azure geçişi, son ayın belirli bir tarihine geri dönmenize izin verse de, bağımlılıkları görselleştirebileceğiniz en uzun süre bir saattir.
+Aracısız bağımlılık analizi sayesinde, bağımlılıkları görselleştirin veya 30 güne kadar bir süre için bir haritada dışarı aktarabilirsiniz.
 
-Örneğin, dün bağımlılıklarını görüntülemek için bağımlılık eşlemesindeki süre süresi işlevini kullanabilirsiniz, ancak bunları yalnızca bir saatlik dönem için görüntüleyebilirsiniz.
-
-Ancak, Azure Izleyici günlüklerini daha uzun bir süre boyunca [bağımlılık verilerini sorgulamak](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) için kullanabilirsiniz.
+Aracı tabanlı bağımlılık analizine sahip olan Azure geçişi, son ayın belirli bir tarihine geri dönmenize rağmen, bağımlılıkları görselleştirebileceğiniz en uzun süre bir saattir. Örneğin, dün bağımlılıklarını görüntülemek için bağımlılık eşlemesindeki süre süresi işlevini kullanabilirsiniz, ancak bunları yalnızca bir saatlik dönem için görüntüleyebilirsiniz. Ancak, Azure Izleyici günlüklerini daha uzun bir süre boyunca [bağımlılık verilerini sorgulamak](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) için kullanabilirsiniz.
 
 ## <a name="visualized-dependencies-for--10-machines"></a>> 10 makineler için görselleştirilen bağımlılıklar
 
-Azure geçişi sunucu değerlendirmesi ' nde, en fazla 10 VM içeren [gruplar için bağımlılıkları görselleştirebilirsiniz](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) . Daha büyük gruplar için, bağımlılıkları görselleştirmek üzere VM 'Leri daha küçük gruplara bölmeniz önerilir.
+Azure geçişi sunucu değerlendirmesi ' nde, aracı tabanlı bağımlılık analizi ile, en fazla 10 VM içeren [gruplar için bağımlılıkları görselleştirebilirsiniz](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) . Daha büyük gruplar için, bağımlılıkları görselleştirmek üzere VM 'Leri daha küçük gruplara bölmeniz önerilir.
+
 
 ## <a name="machines-show-install-agent"></a>Makineler "aracıyı yüklemeyi" gösterir
 
@@ -152,12 +151,15 @@ Bağımlılık görselleştirmesi etkinleştirilmiş makineleri Azure 'a geçird
 - MAC ve IP adreslerinin her ikisi de Şirket içinden farklıysa Azure geçişi, şirket içi makineleri Hizmet Eşlemesi bağımlılık verileriyle ilişkilendirmez. Bu durumda, bağımlılıkları görüntülemek yerine aracıyı yüklemek için seçeneği görüntülenir.
 - Azure 'a bir test geçişten sonra şirket içi makineler beklendiği gibi açık kalır. Azure 'da bulunan eşdeğer makineler, farklı bir MAC adresi elde edebilir ve farklı IP adresleri alabilir. Bu makinelerden giden Azure Izleyici günlük trafiğini engeletmediğiniz takdirde Azure geçişi, şirket içi makineleri Hizmet Eşlemesi bağımlılık verileriyle ilişkilendirmez ve bu nedenle, bağımlılıkları görüntülemek yerine aracıları yüklemek için seçeneği gösterir.
 
+## <a name="dependencies-export-csv-shows-unknown-process"></a>CSV dışarı aktarma bağımlılıkları "Bilinmeyen işlem" gösterir
+Aracısız bağımlılık analizinde, işlem adları en iyi çaba temelinde yakalanır. Belirli senaryolarda, kaynak ve hedef sunucu adları ve hedef bağlantı noktası yakalansa da, bağımlılığın her iki ucunda işlem adlarını belirlenmesi uygun değildir. Bu gibi durumlarda, işlem "Bilinmeyen işlem" olarak işaretlenir.
+
 
 ## <a name="capture-network-traffic"></a>Ağ trafiğini yakala
 
 Ağ trafiği günlüklerini aşağıda gösterildiği gibi toplayın:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Geliştirici Araçları başlamak için F12 tuşuna basın. Gerekirse, **Gezinti ayarında girişleri temizle** ' yi temizleyin.
 3. **Ağ** sekmesini seçin ve ağ trafiğini yakalamaya başlayın:
    - Chrome 'da **günlüğü koru**' yı seçin. Kayıt otomatik olarak başlamalıdır. Kırmızı bir daire trafiğin yakalandığını gösterir. Kırmızı daire görünmezse başlamak için siyah daireyi seçin.

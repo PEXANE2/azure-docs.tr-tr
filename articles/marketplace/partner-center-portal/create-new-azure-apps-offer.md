@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: ace85727680ecf6d62860ac2239a8c0b68ae6e0e
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 1755d6808183887ca428f227272c3923d4bae21f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848796"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213864"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -92,9 +92,9 @@ Mevcut araçları [Azure Geliştirici Araçları](https://azure.microsoft.com/to
 
 Tüm Azure uygulamaları, bir arşiv kök klasöründe en az iki dosya içerir `.zip` :
 
-* [Maintemplate. JSON](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)adlı bir kaynak yöneticisi şablon dosyası.  Bu şablon, müşterinin Azure aboneliğine dağıtılacak kaynakları tanımlar.  Kaynak Yöneticisi şablonlarının örnekleri için bkz. [Azure hızlı başlangıç şablonları Galerisi](https://azure.microsoft.com/resources/templates/) veya ilgili [GitHub: Azure Resource Manager hızlı başlangıç şablonları](https://github.com/azure/azure-quickstart-templates) deposu.
+* [mainTemplate.js](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)adlı kaynak yöneticisi şablon dosyası.  Bu şablon, müşterinin Azure aboneliğine dağıtılacak kaynakları tanımlar. Kaynak Yöneticisi şablonlarının örnekleri için bkz. [Azure hızlı başlangıç şablonları Galerisi](https://azure.microsoft.com/resources/templates/) veya ilgili [GitHub: Azure Resource Manager hızlı başlangıç şablonları](https://github.com/azure/azure-quickstart-templates) deposu.
 
-* [Createuıdefinition. JSON](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview)adlı Azure uygulama oluşturma deneyimi için bir kullanıcı arabirimi tanımı.  Kullanıcı arayüzünde tüketicilerin parametre değerleri sağlamasına olanak tanıyan öğeleri belirlersiniz.
+* Azure uygulama oluşturma deneyimi için [createUiDefinition.js](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview)adlı bir kullanıcı arabirimi tanımı.  Kullanıcı arayüzünde tüketicilerin parametre değerleri sağlamasına olanak tanıyan öğeleri belirlersiniz.
 
 Tüm yeni Azure Uygulama teklifleri bir [Azure iş ortağı müşteri kullanımı attributıon GUID 'i](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution)içermelidir. 
 
@@ -161,16 +161,43 @@ Teklifinizi uygun Market arama alanlarında yerleştirmek için en az bir ve en 
 
 ## <a name="offer-listing"></a>Teklif listesi
 
-Bu sayfa, ticari Market teklifinizin kopyasını ve resimlerini yönettiğiniz yerdir. 
+Bu sayfa, ticari Market teklifinizin kopyasını ve resimlerini yönettiğiniz yerdir.
 
 ### <a name="marketplace-details"></a>Market ayrıntıları
 
 > [!NOTE]
 > Teklif açıklaması (Açıklama, belgeler, ekran görüntüleri ve kullanım koşulları gibi) sunan teklif listesinin Ingilizce olması gerekmez, "Bu uygulama yalnızca [Ingilizce olmayan dilde] kullanılabilir". Ayrıca, teklif listeleme içeriğinde kullanılandan farklı bir dilde içerik sunmak için *yararlı bir bağlantı URL 'si* sağlamak da kabul edilebilir.
 
+Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir (listelenen tüm fiyatlar yalnızca örnek amaçlıdır ve gerçek maliyetlerin yansıtılmasına yönelik değildir):
+
+:::image type="content" source="media/example-azure-marketplace-app.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
+
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
+
+1. Logo
+2. Kategoriler
+3. Destek adresi (bağlantı)
+4. Kullanım koşulları
+5. Gizlilik ilkesi adresi (bağlantı)
+6. Teklif adı
+7. Özet
+8. Description
+9. Ekran görüntüleri/videolar
+
+<br>Teklif bilgilerinin Azure portal nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
+
+:::image type="content" source="media/example-virtual-machine-container-iot-edge-saas.png" alt-text="Bu teklifin Azure portal nasıl göründüğünü gösterir.":::
+
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
+
+1. Başlık
+2. Açıklama
+3. Yararlı bağlantılar
+4. Ekran görüntüleri
+
 #### <a name="name"></a>Name
 
-Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metin ile önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
+Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
 #### <a name="search-results-summary"></a>Arama sonuçları Özeti
 
@@ -180,7 +207,7 @@ Teklifinizin en fazla 100 karakter uzunluğunda olması için kısa bir açıkla
 
 Teklifinizin en fazla 256 karakter uzunluğunda olması için daha uzun bir açıklama sağlayın. Bu açıklama, arama sonuçlarında kullanılabilir.
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -421,8 +448,8 @@ Bu sekme, teknik yapılandırmanızın taslak sürümünü düzenlemenize olanak
 
 Tüm Azure uygulama planı paketleri, bir arşiv kök klasöründe bu iki dosyayı içermelidir `.zip` :
 
-* [Maintemplate. JSON](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)adlı bir kaynak yöneticisi şablon dosyası. Bu şablon, müşterilerin Azure aboneliğine kaynak dağıtımını otomatikleştirir.  Kaynak Yöneticisi şablonlarının örnekleri için bkz. [Azure hızlı başlangıç şablonları Galerisi](https://azure.microsoft.com/documentation/templates/) veya ilgili [GitHub: Azure Resource Manager hızlı başlangıç şablonları](https://github.com/azure/azure-quickstart-templates) deposu.
-* [Createuıdefinition. JSON](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)adlı Azure uygulama oluşturma deneyimi için bir kullanıcı arabirimi tanımı.
+* [mainTemplate.js](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)adlı kaynak yöneticisi şablon dosyası. Bu şablon, müşterilerin Azure aboneliğine kaynak dağıtımını otomatikleştirir.  Kaynak Yöneticisi şablonlarının örnekleri için bkz. [Azure hızlı başlangıç şablonları Galerisi](https://azure.microsoft.com/documentation/templates/) veya ilgili [GitHub: Azure Resource Manager hızlı başlangıç şablonları](https://github.com/azure/azure-quickstart-templates) deposu.
+* Azure uygulama oluşturma deneyimi için [createUiDefinition.js](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)adlı bir kullanıcı arabirimi tanımı.
 
 Desteklenen en büyük dosya boyutu:
 
@@ -505,13 +532,13 @@ Bir sınama sürücüsünü etkinleştirmek için [teklif kurulumu](#test-drive)
 
 ### <a name="test-drive-technical-configuration"></a>Sınama sürücüsü teknik yapılandırma
 
-- **Azure AD uygulama kimliği** (gerekli): Azure ACTIVE DIRECTORY (ad) [uygulama kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)girin. Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol menüden Active Directory sekmesini seçin, **uygulama kayıtları**' yı seçin, ardından listelenen **uygulama kimliği** numarasını arayın (örneğin, 50c464d3-4930-494c-963c-1e951d15360e).
+- **Azure AD uygulama kimliği** (gerekli): Azure ACTIVE DIRECTORY (ad) [uygulama kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)girin. Bu KIMLIĞI bulmak için, [Azure Portal](https://portal.azure.com/)oturum açın, sol menüden Active Directory sekmesini seçin, **uygulama kayıtları**' yı seçin, ardından listelenen **uygulama kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın.
 
 #### <a name="deployment-subscription-details"></a>Dağıtım aboneliği ayrıntıları
 
 Test sürücüsünün sizin adınıza dağıtılmasına izin vermek için, ayrı ve benzersiz bir Azure aboneliği oluşturun ve sağlayın (Power BI test sürücüleri için gerekli değildir).
 
-* **Azure ABONELIK kimliği** (Azure Resource Manager ve Logic Apps için gereklidir) – Azure hesap hizmetlerinizi kaynak kullanımı raporlama ve faturalama için erişim izni vermek üzere abonelik kimliğini girin. Henüz bir tane yoksa, test sürücüleri için kullanmak üzere [ayrı bir Azure aboneliği oluşturmayı](https://docs.microsoft.com/azure/billing/billing-create-subscription) düşünmeniz önerilir. [Azure Portal](https://portal.azure.com/) oturum açarak ve sol taraftaki menüdeki **abonelikler** SEKMESINE giderek Azure abonelik kimliğinizi bulabilirsiniz. Sekmeyi seçtiğinizde, abonelik KIMLIĞINIZ görüntülenir (örneğin, "a83645ac-1234-5AB6-345-1h234g764ghty").
+* **Azure ABONELIK kimliği** (Azure Resource Manager ve Logic Apps için gereklidir) – Azure hesap hizmetlerinizi kaynak kullanımı raporlama ve faturalama için erişim izni vermek üzere abonelik kimliğini girin. Henüz bir tane yoksa, test sürücüleri için kullanmak üzere [ayrı bir Azure aboneliği oluşturmayı](https://docs.microsoft.com/azure/billing/billing-create-subscription) düşünmeniz önerilir. [Azure Portal](https://portal.azure.com/) oturum açarak ve sol taraftaki menüdeki **abonelikler** SEKMESINE giderek Azure abonelik kimliğinizi bulabilirsiniz. Sekmeyi seçtiğinizde abonelik KIMLIĞINIZ görüntülenir (örneğin, "a83645ac-1234-5AB6-345-1h234g764ghty").
 * **Azure AD KIRACı kimliği** (gerekli) – Azure ACTIVE DIRECTORY (ad) [kiracı kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)girin. Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol taraftaki menüden Active Directory sekmesini seçin, **Özellikler**' i seçin, sonra listelenen **dizin kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın. Ayrıca, şu adreste bulunan etki alanı adı URL 'nizi kullanarak kuruluşunuzun kiracı KIMLIĞINI de arayabilirsiniz: [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 * **Azure AD kiracı adı** (dinamik 365 için gereklidir) – Azure ACTIVE DIRECTORY (ad) adınızı girin. Bu adı bulmak için sağ üst köşedeki [Azure Portal](https://portal.azure.com/)oturum açın, kiracı adınız hesap adınızın altında listelenecektir.
 * **Azure AD uygulama kimliği** (gerekli) – Azure ACTIVE DIRECTORY (ad) [uygulama kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)girin. Bu KIMLIĞI bulmak için [Azure Portal](https://portal.azure.com/)oturum açın, sol gezinti menüsünde Active Directory sekmesini seçin, **uygulama kayıtları**' i seçin, ardından listelenen **uygulama kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın.

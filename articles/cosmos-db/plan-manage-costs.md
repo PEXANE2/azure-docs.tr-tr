@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: cf259dfa0b00393cf0fee259b199527569ba1792
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42421f745759d9aee75b285c3fbc6ea7217ba5c0
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152593"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85112710"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Azure Cosmos DB maliyetlerini planlayın ve yönetin
 
@@ -30,7 +30,7 @@ Azure Cosmos hesabında kaynakları oluşturmadan önce maliyetleri tahmin etmek
 
 Aşağıdaki ekran görüntüsünde kapasite Hesaplayıcı kullanılarak aktarım hızı ve maliyet tahmini gösterilmektedir:
 
-![Azure Cosmos DB kapasite hesaplayıcıda maliyet tahmini](./media/plan-manage-costs/capacity-calculator-cost-estimate.png)
+:::image type="content" source="./media/plan-manage-costs/capacity-calculator-cost-estimate.png" alt-text="Azure Cosmos DB kapasite hesaplayıcıda maliyet tahmini":::
 
 ## <a name="review-estimated-costs-from-the-azure-portal"></a>Azure portal Tahmini maliyetleri gözden geçirin
 
@@ -41,7 +41,7 @@ Azure portal Azure Cosmos DB kaynaklar oluştururken Tahmini maliyetleri görebi
 1. Grafik kapsayıcısı gibi yeni bir kapsayıcı oluşturun.
 1. İş yükünüz için gereken aktarım hızını girin. Örneğin, 400 RU/s. Üretilen iş değerini girdikten sonra, fiyatlandırma tahminini aşağıdaki ekran görüntüsünde gösterildiği gibi görebilirsiniz:
 
-   ![Azure portal maliyet tahmini](./media/plan-manage-costs/cost-estimate-portal.png)
+   :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Azure portal maliyet tahmini":::
 
 Azure aboneliğinizin harcama limiti varsa, Azure kredi miktarınızdan harcamanıza engel olur. Azure kaynaklarını oluştururken ve kullanırken kredileriniz kullanılır. Kredi sınırınıza ulaştığınızda, dağıttığınız kaynaklar bu fatura döneminin geri kalanı için devre dışı bırakılır. Kredi sınırınızı değiştiremezsiniz, ancak kaldırabilirsiniz. Harcama limitleri hakkında daha fazla bilgi için bkz. [Azure harcama limiti](../billing/billing-spending-limit.md).
 
@@ -55,7 +55,7 @@ Azure Cosmos DB ile kaynakları kullanırken maliyetleriniz vardır. Kaynak kull
 
 Maliyet analizini kullandığınızda, grafik ve tablolardaki Azure Cosmos DB maliyetlerini farklı zaman aralıkları için görüntüleyebilirsiniz. Bazı örnekler güne, geçerli, önceki aya ve yıla göre yapılır. Ayrıca bütçeleri ve tahmin edilen maliyetlerden de maliyet görüntüleyebilirsiniz. Zamana göre daha uzun görünümlere geçiş yapmak, harcama eğilimlerini belirlemenize ve fazla harcama oluşmuş olabileceğini görmenizi sağlar. Bütçeleri oluşturduysanız, nerede aşıldığını da kolayca görebilirsiniz. Maliyet analizinde Azure Cosmos DB maliyetlerini görüntülemek için:
 
-1. [Azure Portal](https://portal.azure.com)oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. **Maliyet yönetimi + faturalandırma** penceresini açın, menüden **maliyet yönetimi** ' ni seçin ve ardından **Maliyet Analizi**' ni seçin. Daha sonra **kapsam** açılan listesinden belirli bir aboneliğin kapsamını değiştirebilirsiniz.
 
@@ -63,7 +63,7 @@ Maliyet analizini kullandığınızda, grafik ve tablolardaki Azure Cosmos DB ma
 
 1. Azure Cosmos DB gibi tek bir hizmetin maliyetlerini daraltmak için, **Filtre Ekle** ' yi ve ardından **hizmet adı**' nı seçin. Sonra listeden **Azure Cosmos DB** öğesini seçin. Yalnızca Azure Cosmos DB maliyetlerini gösteren bir örnek aşağıda verilmiştir:
  
-   ![Maliyet Analizi bölmesi ile maliyetleri izleme](./media/plan-manage-costs/cost-analysis-pane.png)
+   :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="Maliyet Analizi bölmesi ile maliyetleri izleme":::
 
 Yukarıdaki örnekte, Şubat ayı için geçerli Azure Cosmos DB maliyeti görürsünüz. Grafiklerde Ayrıca konuma ve kaynak grubuna göre Azure Cosmos DB maliyetleri de bulunur.
 

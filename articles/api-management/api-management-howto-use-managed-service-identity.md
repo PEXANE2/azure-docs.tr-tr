@@ -9,30 +9,64 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: 49576b805e6c6d01340e663bfb5d8e9013917625
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 028b26537c9fe8a976dbc68a4776b2ea4101d811
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249639"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789453"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Azure API Management Yönetilen kimlikler kullanma
 
-Bu makalede, bir API Management hizmet örneği için yönetilen kimlik oluşturma ve diğer kaynaklara erişme hakkında yönergeler verilmektedir. Azure Active Directory tarafından oluşturulan yönetilen bir kimlik (Azure AD), API Management örneğinizin Azure Key Vault gibi diğer Azure AD korumalı kaynaklarına kolayca ve güvenli bir şekilde erişmesini sağlar. Bu kimlik Azure tarafından yönetilir ve tüm gizli dizileri sağlamanıza veya döndürmenize gerek yoktur. Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md).
+Bu makalede, bir API Management örneği için yönetilen kimlik oluşturma ve diğer kaynaklara erişme gösterilmektedir. Azure Active Directory tarafından oluşturulan yönetilen bir kimlik (Azure AD), API Management örneğinizin Azure Key Vault gibi diğer Azure AD korumalı kaynaklarına kolayca ve güvenli bir şekilde erişmesini sağlar. Bu kimlik Azure tarafından yönetilir ve tüm gizli dizileri sağlamanıza veya döndürmenize gerek yoktur. Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md).
 
-## <a name="create-a-managed-identity-for-an-api-management-instance"></a>API Management örneği için yönetilen kimlik oluşturma
+Bir API Management örneğine iki tür kimlik verilebilir:
+
+- **Sistem tarafından atanan bir kimlik** hizmetinize bağlanır ve hizmetiniz silinirse silinir. Hizmette yalnızca bir sistem tarafından atanmış kimlik olabilir.
+- **Kullanıcı tarafından atanan bir kimlik** , hizmetinize atanabilecek tek başına bir Azure kaynağıdır. Hizmette birden çok kullanıcı tarafından atanan kimlik (*) bulunabilir.
+
+## <a name="create-a-system-assigned-managed-identity-for-an-api-management-instance"></a>API Management örneği için sistem tarafından atanan yönetilen kimlik oluşturma
 
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
 Portalda yönetilen bir kimlik ayarlamak için öncelikle normal olarak bir API Management örneği oluşturup sonra özelliği etkinleştirmeniz gerekir.
 
 1. Portalda genellikle yaptığınız gibi bir API Management örneği oluşturun. Portalda bu sayfaya gidin.
-2. **Yönetilen hizmet kimliklerini**seçin.
-3. Azure Active Directory için kayıt anahtarına kaydolun. Kaydet’e tıklayın.
+2. **Yönetilen kimlikler**' i seçin.
+3. **Sistem atandı** sekmesinde **durumu** **Açık**olarak değiştirin. **Kaydet**’e tıklayın.
 
-![MSI’yi etkinleştirme](./media/api-management-msi/enable-msi.png)
+    :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="Sistem tarafından atanan yönetilen kimliği etkinleştirin." border="true":::
+
+
+### <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Aşağıdaki adımlar, bir API Management örneği oluşturma ve Azure PowerShell kullanarak bir kimlik atama işleminde size yol gösterecektir. 
+
+1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/install-az-ps)bulunan yönergeleri kullanarak Azure PowerShell yükleyip `Connect-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
+
+2. Azure PowerShell kullanarak API Management bir örnek oluşturun. API Management örneği ile Azure PowerShell kullanma hakkında daha fazla örnek için bkz. [API Management PowerShell örnekleri](powershell-samples.md):
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create an API Management Consumption Sku service.
+    New-AzApiManagement -ResourceGroupName $resourceGroupName -Name consumptionskuservice -Location $location -Sku Consumption -Organization contoso -AdminEmail contoso@contoso.com -SystemAssignedIdentity
+    ```
+
+3. Kimliği oluşturmak için ve var olan örneği güncelleştirin:
+
+    ```azurepowershell-interactive
+    # Get an API Management instance
+    $apimService = Get-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
+
+    # Update an API Management instance
+    Set-AzApiManagement -InputObject $apimService -SystemAssignedIdentity
+    ```
 
 ### <a name="using-the-azure-resource-manager-template"></a>Azure Resource Manager şablonunu kullanma
 
@@ -53,7 +87,7 @@ Bu, Azure 'ın API Management örneğiniz için kimlik oluşturmasını ve yöne
     "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "0.9.0.0",
     "resources": [{
-        "apiVersion": "2017-03-01",
+        "apiVersion": "2019-01-01",
         "name": "contoso",
         "type": "Microsoft.ApiManagement/service",
         "location": "[resourceGroup().location]",
@@ -72,36 +106,33 @@ Bu, Azure 'ın API Management örneğiniz için kimlik oluşturmasını ve yöne
     }]
 }
 ```
-## <a name="use-the-managed-service-identity-to-access-other-resources"></a>Diğer kaynaklara erişmek için yönetilen hizmet kimliğini kullanma
 
-> [!NOTE]
-> Şu anda yönetilen kimlikler, API Management özel etki alanı adları için Azure Key Vault sertifika almak için kullanılabilir. Yakında daha fazla senaryo desteklenecek.
->
->
+Örnek oluşturulduğunda, aşağıdaki ek özelliklere sahiptir:
 
-
-### <a name="obtain-a-certificate-from-azure-key-vault"></a>Azure Key Vault bir sertifika alın
-
-#### <a name="prerequisites"></a>Ön koşullar
-1. Pfx sertifikasını içeren Key Vault aynı Azure aboneliğinde ve API Management hizmetiyle aynı kaynak grubunda olmalıdır. Bu, Azure Resource Manager şablonunun bir gereksinimidir.
-2. Gizli dizi Içerik türü *Application/x-PKCS12*olmalıdır. Sertifikayı karşıya yüklemek için aşağıdaki betiği kullanabilirsiniz:
-
-```powershell
-$pfxFilePath = "PFX_CERTIFICATE_FILE_PATH" # Change this path 
-$pwd = "PFX_CERTIFICATE_PASSWORD" # Change this password 
-$flag = [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable 
-$collection = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection 
-$collection.Import($pfxFilePath, $pwd, $flag) 
-$pkcs12ContentType = [System.Security.Cryptography.X509Certificates.X509ContentType]::Pkcs12 
-$clearBytes = $collection.Export($pkcs12ContentType) 
-$fileContentEncoded = [System.Convert]::ToBase64String($clearBytes) 
-$secret = ConvertTo-SecureString -String $fileContentEncoded -AsPlainText –Force 
-$secretContentType = 'application/x-pkcs12' 
-Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -SecretValue $Secret -ContentType $secretContentType
+```json
+"identity": {
+    "type": "SystemAssigned",
+    "tenantId": "<TENANTID>",
+    "principalId": "<PRINCIPALID>"
+}
 ```
 
+Tenantıd özelliği, kimliğin ait olduğu Azure AD kiracısını tanımlar. PrincipalId, örnek yeni kimlik için benzersiz bir tanımlayıcıdır. Azure AD 'de hizmet sorumlusu, API Management örneğinize verdiğiniz aynı ada sahiptir.
+
+
+> [!NOTE]
+> Bir API Management örneği aynı anda hem sistem tarafından hem de Kullanıcı tarafından atanan kimliklere sahip olabilir. Bu durumda, `type` özelliği`SystemAssigned,UserAssigned`
+
+### <a name="scenarios-supported"></a>Desteklenen senaryolar
+
+#### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>Azure Key Vault API Management örneği için özel bir TLS/SSL sertifikası alın
+API Management bir hizmetin sistem tarafından atanan kimliği, Azure Key Vault depolanan özel TLS/SSL sertifikalarını almak için kullanılabilir. Bu sertifikalar, API Management örneğindeki özel etki alanlarına atanabilir.
+
+1. Gizli dizi Içerik türü *Application/x-PKCS12*olmalıdır.
+2. Gerçek gizli anahtarı içeren Key Vault sertifika gizli uç noktası kullanılmalıdır.
+
 > [!Important]
-> Sertifikanın nesne sürümü sağlanmazsa, API Management Key Vault karşıya yüklendikten sonra sertifikanın otomatik olarak yeni sürümünü elde eder.
+> Sertifikanın nesne sürümü sağlanmazsa API Management, sertifikanın 4 saat içinde Key Vault karşıya yüklendikten sonra otomatik olarak yeni sürümünü elde eder
 
 Aşağıdaki örnekte aşağıdaki adımları içeren bir Azure Resource Manager şablonu gösterilmektedir:
 
@@ -136,14 +167,14 @@ Aşağıdaki örnekte aşağıdaki adımları içeren bir Azure Resource Manager
             "Premium"],
             "defaultValue": "Developer",
             "metadata": {
-                "description": "The pricing tier of this API Management service"
+                "description": "The pricing tier of this API Management instance"
             }
         },
         "skuCount": {
             "type": "int",
             "defaultValue": 1,
             "metadata": {
-                "description": "The instance size of this API Management service."
+                "description": "The instance size of this API Management instance."
             }
         },
         "keyVaultName": {
@@ -170,7 +201,7 @@ Aşağıdaki örnekte aşağıdaki adımları içeren bir Azure Resource Manager
         "apimServiceIdentityResourceId": "[concat(resourceId('Microsoft.ApiManagement/service', variables('apiManagementServiceName')),'/providers/Microsoft.ManagedIdentity/Identities/default')]"
     },
     "resources": [{
-        "apiVersion": "2017-03-01",
+        "apiVersion": "2019-01-01",
         "name": "[variables('apiManagementServiceName')]",
         "type": "Microsoft.ApiManagement/service",
         "location": "[resourceGroup().location]",
@@ -230,6 +261,156 @@ Aşağıdaki örnekte aşağıdaki adımları içeren bir Azure Resource Manager
     }]
 }
 ```
+
+#### <a name="authenticate-using-api-management-identity-to-the-backend"></a>API Management kimliğini arka uca kullanarak kimlik doğrulama
+
+Sistem tarafından atanan kimlik, [kimlik doğrulaması ile yönetilen](api-management-authentication-policies.md#ManagedIdentity) kimlik ilkesi kullanılarak arka ucunuza kimlik doğrulaması yapmak için kullanılabilir.
+
+
+## <a name="create-a-user-assigned-managed-identity-for-an-api-management-instance"></a>API Management örneği için Kullanıcı tarafından atanan yönetilen kimlik oluşturma
+
+> [!NOTE]
+> API Management bir örnek, Kullanıcı tarafından atanan yönetilen kimlik ile ilişkilendirilebilir.
+
+### <a name="using-the-azure-portal"></a>Azure portalını kullanma
+
+Portalda yönetilen bir kimlik ayarlamak için öncelikle normal olarak bir API Management örneği oluşturup sonra özelliği etkinleştirmeniz gerekir.
+
+1. Portalda genellikle yaptığınız gibi bir API Management örneği oluşturun. Portalda bu sayfaya gidin.
+2. **Yönetilen kimlikler**' i seçin.
+3. **Kullanıcı atandı** sekmesinde **Ekle**' ye tıklayın.
+4. Daha önce oluşturduğunuz kimliği arayın ve seçin. **Ekle**'ye tıklayın.
+
+   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="Kullanıcı tarafından atanan yönetilen kimliği etkinleştirin." border="true":::
+
+### <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Aşağıdaki adımlar, bir API Management örneği oluşturma ve Azure PowerShell kullanarak bir kimlik atama işleminde size yol gösterecektir. 
+
+1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/install-az-ps)bulunan yönergeleri kullanarak Azure PowerShell yükleyip `Connect-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
+
+2. Azure PowerShell kullanarak API Management bir örnek oluşturun. API Management örneği ile Azure PowerShell kullanma hakkında daha fazla örnek için bkz. [API Management PowerShell örnekleri](powershell-samples.md):
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a user-assigned identity. This requires installation of the "Az.ManagedServiceIdentity" module.
+    $userAssignedIdentity = New-AzUserAssignedIdentity -Name $userAssignedIdentityName -ResourceGroupName $resourceGroupName
+
+    # Create an API Management Consumption Sku service.
+    $userIdentities = @($userAssignedIdentity.Id)
+
+    New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization contoso -AdminEmail admin@contoso.com -Sku Consumption -UserAssignedIdentity $userIdentities
+    ```
+
+3. Hizmete bir kimlik atamak için ve mevcut hizmeti güncelleştirin.
+
+    ```azurepowershell-interactive
+    # Get an API Management instance
+    $apimService = Get-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
+
+    # Create a user-assigned identity. This requires installation of the "Az.ManagedServiceIdentity" module.
+    $userAssignedIdentity = New-AzUserAssignedIdentity -Name $userAssignedIdentityName -ResourceGroupName $resourceGroupName
+
+    # Update an API Management instance
+    $userIdentities = @($userAssignedIdentity.Id)
+    Set-AzApiManagement -InputObject $apimService -UserAssignedIdentity $userIdentities
+    ```
+
+### <a name="using-the-azure-resource-manager-template"></a>Azure Resource Manager şablonunu kullanma
+
+Kaynak tanımına aşağıdaki özelliği ekleyerek bir kimlik ile API Management örneği oluşturabilirsiniz:
+
+```json
+"identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+        "<RESOURCEID>": {}
+    }
+}
+```
+
+Kullanıcı tarafından atanan türü eklemek, Azure 'un örneğiniz için belirtilen kullanıcı tarafından atanan kimliğini kullanmasını söyler.
+
+Örneğin, Azure Resource Manager bir şablon aşağıdaki gibi görünebilir:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "0.9.0.0",
+    "resources": [{
+        "apiVersion": "2019-12-01",
+        "name": "contoso",
+        "type": "Microsoft.ApiManagement/service",
+        "location": "[resourceGroup().location]",
+        "tags": {},
+        "sku": {
+            "name": "Developer",
+            "capacity": "1"
+        },
+        "properties": {
+            "publisherEmail": "admin@contoso.com",
+            "publisherName": "Contoso"
+        },
+        "identity": {
+            "type": "UserAssigned",
+             "userAssignedIdentities": {
+                "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]": {}
+             }
+        },
+        "dependsOn": [       
+          "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]"
+        ]
+    }]
+}
+```
+
+Hizmet oluşturulduğunda, aşağıdaki ek özelliklere sahiptir:
+
+```json
+"identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+        "<RESOURCEID>": {
+            "principalId": "<PRINCIPALID>",
+            "clientId": "<CLIENTID>"
+        }
+    }
+}
+```
+
+PrincipalId, Azure AD yönetimi için kullanılan kimlik için benzersiz bir tanımlayıcıdır. ClientID, uygulamanın çalışma zamanı çağrıları sırasında hangi kimliğin kullanılacağını belirtmek için kullanılan yeni kimliği için benzersiz bir tanımlayıcıdır.
+
+> [!NOTE]
+> Bir API Management örneği aynı anda hem sistem tarafından hem de Kullanıcı tarafından atanan kimliklere sahip olabilir. Bu durumda, `type` özelliği`SystemAssigned,UserAssigned`
+
+### <a name="scenarios-supported"></a>Desteklenen senaryolar
+
+#### <a name="authenticate-using-user-assigned-identity-to-the-backend"></a>Kullanıcı tarafından atanan kimliği kullanarak arka uca kimlik doğrulama
+
+Kullanıcı tarafından atanan kimlik, [kimlik doğrulaması ile yönetilen](api-management-authentication-policies.md#ManagedIdentity) kimlik ilkesini kullanarak arka ucunuza kimlik doğrulaması yapmak için kullanılabilir.
+
+
+## <a name="remove-an-identity"></a><a name="remove"></a>Kimlik kaldırma
+
+Portal veya Azure Resource Manager şablonu kullanılarak oluşturulduğu gibi özellik devre dışı bırakılarak sistem tarafından atanan bir kimlik kaldırılabilir. Kullanıcı tarafından atanan kimlikler tek tek kaldırılabilir. Tüm kimlikleri kaldırmak için kimlik türünü "none" olarak ayarlayın.
+
+Sistem tarafından atanan bir kimliğin bu şekilde kaldırılması, Azure AD 'den de silinecek. API Management örneği silindiğinde, sistem tarafından atanan kimlikler de Azure AD 'den otomatik olarak kaldırılır.
+
+Azure Resource Manager şablonu kullanarak tüm kimlikleri kaldırmak için bu bölümü güncelleştirin:
+
+```json
+"identity": {
+    "type": "None"
+}
+```
+
+> [!Important]
+> Bir API Management örnek, anahtar kasasından özel SSL sertifikası ile yapılandırıldıysa ve yönetilen kimliği devre dışı bırakmak için girişim yapılırsa istek başarısız olur.
+> Müşteri, Azure Key Vault sertifikasından satır içi kodlanmış sertifika sağlayarak ve sonra yönetilen kimliği devre dışı bırakarak kendi engellemesini kaldırabilir. [Özel etki alanını yapılandırma](configure-custom-domain.md) bölümüne bakın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: tracking-python
-ms.openlocfilehash: dc8f00e5764cea856e028acb7adb5aebc070c625
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: dee07db85d8886ab44be096e405143ea0d881ba2
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559839"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118283"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Hızlı başlangıç: Python SDK ve Azure Cosmos DB Cassandra uygulaması derleme
 
@@ -137,31 +137,31 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda **bağlantı dizesi**' ni seçin. 
 
-    En üstteki USERNAME değerini kopyalamak için ekranın sağ tarafındaki ![Kopyala düğmesini](./media/create-cassandra-python/copy.png) düğmesini kullanın.
+1. En üstteki USERNAME değerini kopyalamak için ekranın sağ tarafındaki ![Kopyala düğmesini](./media/create-cassandra-python/copy.png) düğmesini kullanın.
 
-    ![Azure portalında erişim için kullanıcı adı, parola ve erişim noktasını görüntüleme ve kopyalama, bağlantı dizesi dikey penceresi](./media/create-cassandra-python/keys.png)
+    :::image type="content" source="./media/create-cassandra-python/keys.png" alt-text="Azure portalında erişim için kullanıcı adı, parola ve erişim noktasını görüntüleme ve kopyalama, bağlantı dizesi dikey penceresi":::
 
-2. *Config.py* dosyasını açın. 
+1. *Config.py* dosyasını açın. 
 
-3. Portaldan CONTACT POINT değerini 10. satırda `<FILLME>` üzerine yapıştırın.
+1. Portaldan CONTACT POINT değerini 10. satırda `<FILLME>` üzerine yapıştırın.
 
     10. satır şuna benzer şekilde görünmelidir: 
 
     `'contactPoint': 'cosmos-db-quickstarts.cassandra.cosmosdb.azure.com:10350'`
 
-4. Portaldan USERNAME değerini kopyalayın ve 6. satırda `<FILLME>` üzerine yapıştırın.
+1. Portaldan USERNAME değerini kopyalayın ve 6. satırda `<FILLME>` üzerine yapıştırın.
 
     6. satır şuna benzer şekilde görünmelidir: 
 
     `'username': 'cosmos-db-quickstart',`
     
-5. Portaldan PASSWORD değerini kopyalayın ve 8. satırda `<FILLME>` üzerine yapıştırın.
+1. Portaldan PASSWORD değerini kopyalayın ve 8. satırda `<FILLME>` üzerine yapıştırın.
 
     8. satır şuna benzer şekilde görünmelidir:
 
     `'password' = '2Ggkr662ifxz2Mg==`';`
 
-6. *Config.py* dosyasını kaydedin.
+1. *Config.py* dosyasını kaydedin.
     
 ## <a name="use-the-x509-certificate"></a>X509 sertifikası kullanma
 
@@ -196,11 +196,11 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
     Programın yürütülmesini durdurmak için CTRL + C tuşlarına basın ve konsol penceresini kapatın. 
 
-    ![Çıktıyı görüntüleme ve doğrulama](./media/create-cassandra-python/output.png)
+    :::image type="content" source="./media/create-cassandra-python/output.png" alt-text="Çıktıyı görüntüleme ve doğrulama":::
     
 4. Azure portalında bu yeni verileri sorgulamak, değiştirmek ve birlikte çalışmak için **Veri Gezgini**'ni açın. 
 
-    ![Veri Gezgini’nde verileri görüntüleme](./media/create-cassandra-python/data-explorer.png)
+    :::image type="content" source="./media/create-cassandra-python/data-explorer.png" alt-text="Veri Gezgini’nde verileri görüntüleme":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure portalında SLA'ları gözden geçirme
 

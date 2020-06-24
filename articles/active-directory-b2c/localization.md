@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 94ff7ddda41f2df2634d927a7dbf8a5a0d4fc1d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69368ecd7234912bcaf5eb606545f62ddb7b30a0
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681409"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204192"
 ---
 # <a name="localization"></a>Yerelleştirme
 
@@ -26,7 +26,7 @@ ms.locfileid: "81681409"
 - Bir ilkede desteklenen dillerin açık listesini ayarlayın ve varsayılan bir dil seçin.
 - Dile özgü dizeler ve koleksiyonlar sağlayın.
 
-```XML
+```xml
 <Localization Enabled="true">
   <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
     <SupportedLanguage>en</SupportedLanguage>
@@ -41,11 +41,11 @@ ms.locfileid: "81681409"
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Etkin | Hayır | Olası değerler: `true` veya `false`. |
+| Etkin | No | Olası değerler: `true` veya `false` . |
 
 **Yerelleştirme** Öğesı aşağıdaki XML öğelerini içerir
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | SupportedLanguages | 1: n | Desteklenen dillerin listesi. |
 | LocalizedResources | 0: n | Yerelleştirilmiş kaynakların listesi. |
@@ -57,13 +57,13 @@ ms.locfileid: "81681409"
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | DefaultLanguage | Yes | Yerelleştirilmiş kaynaklar için varsayılan olarak kullanılacak dil. |
-| MergeBehavior | Hayır | Aynı tanımlayıcıya sahip bir üst ilkede bulunan tüm ClaimType ile birlikte birleştirilmiş değerlerin sabit listesi değerleri. Temel ilkede belirtilen bir talebin üzerine yazdığınızda bu özniteliği kullanın. Olası değerler: `Append`, `Prepend`, veya `ReplaceAll`. `Append` Değer, var olan veri koleksiyonunun üst ilkede belirtilen koleksiyonun sonuna eklenmesi gerektiğini belirtir. `Prepend` Değer, var olan veri koleksiyonunun üst ilkede belirtilen koleksiyondan önce eklenmesi gerektiğini belirtir. `ReplaceAll` Değer, üst ilkede tanımlanan veri koleksiyonunun, bunun yerine geçerli ilkede tanımlanan veriler kullanılarak yoksayılacağını belirtir. |
+| MergeBehavior | No | Aynı tanımlayıcıya sahip bir üst ilkede bulunan tüm ClaimType ile birlikte birleştirilmiş değerlerin sabit listesi değerleri. Temel ilkede belirtilen bir talebin üzerine yazdığınızda bu özniteliği kullanın. Olası değerler: `Append` , `Prepend` , veya `ReplaceAll` . `Append`Değer, var olan veri koleksiyonunun üst ilkede belirtilen koleksiyonun sonuna eklenmesi gerektiğini belirtir. `Prepend`Değer, var olan veri koleksiyonunun üst ilkede belirtilen koleksiyondan önce eklenmesi gerektiğini belirtir. `ReplaceAll`Değer, üst ilkede tanımlanan veri koleksiyonunun, bunun yerine geçerli ilkede tanımlanan veriler kullanılarak yoksayılacağını belirtir. |
 
 ### <a name="supportedlanguages"></a>SupportedLanguages
 
 **Supportedlanguages** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | SupportedLanguage | 1: n | Dilleri tanımlamak için RFC 5646-Tags başına bir dil etiketine uyan içeriği görüntüler. |
 
@@ -77,7 +77,7 @@ ms.locfileid: "81681409"
 
 **Localizedresources** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | LocalizedCollections | 0: n | Çeşitli kültürlerde tüm koleksiyonları tanımlar. Bir koleksiyon çeşitli kültürler için farklı sayıda öğe ve farklı dize içerebilir. Koleksiyon örnekleri, talep türlerinde görünen numaralandırmaları içerir. Örneğin, bir ülke/bölge listesi kullanıcıya bir açılan listede gösterilir. |
 | LocalizedStrings | 0: n | Çeşitli kültürlerde koleksiyonlarda görünen dizeler hariç tüm dizeleri tanımlar. |
@@ -86,7 +86,7 @@ ms.locfileid: "81681409"
 
 **Localizedcollections** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | LocalizedCollection | 1: n | Desteklenen dillerin listesi. |
 
@@ -102,7 +102,7 @@ ms.locfileid: "81681409"
 
 **Localizedcollection** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | Öğe | 0: n | Kullanıcının, açılan menüdeki bir değer gibi kullanıcı arabirimindeki bir talep için seçim yapmak üzere kullanılabilir bir seçenek tanımlar. |
 
@@ -112,11 +112,11 @@ ms.locfileid: "81681409"
 | --------- | -------- | ----------- |
 | Metin | Yes | Bu seçenek için Kullanıcı arabiriminde kullanıcıya gösterilmesi gereken kullanıcı dostu görüntüleme dizesi. |
 | Değer | Yes | Bu seçeneği belirleyerek ilişkili dize talep değeri. |
-| SelectByDefault | Hayır | Bu seçeneğin Kullanıcı arabiriminde varsayılan olarak seçilmesinin gerekip gerekmediğini gösterir. Olası değerler: true veya false. |
+| SelectByDefault | No | Bu seçeneğin Kullanıcı arabiriminde varsayılan olarak seçilmesinin gerekip gerekmediğini gösterir. Olası değerler: true veya false. |
 
-Aşağıdaki örnek, **Localizedcollections** öğesinin kullanımını gösterir. Biri Ingilizce ve diğeri Ispanyolca için olmak üzere iki **Localizedcollection** öğesi içerir. Her ikisi de **Restriction** , `Gender` bir öğenin kısıtlama koleksiyonunu İngilizce ve İspanyolca için bir öğe listesiyle ayarlayın.
+Aşağıdaki örnek, **Localizedcollections** öğesinin kullanımını gösterir. Biri Ingilizce ve diğeri Ispanyolca için olmak üzere iki **Localizedcollection** öğesi içerir. Her ikisi de, bir öğenin **kısıtlama** koleksiyonunu `Gender` İngilizce ve İspanyolca için bir öğe listesiyle ayarlayın.
 
-```XML
+```xml
 <LocalizedResources Id="api.selfasserted.en">
  <LocalizedCollections>
    <LocalizedCollection ElementType="ClaimType" ElementId="Gender" TargetCollection="Restriction">
@@ -138,7 +138,7 @@ Aşağıdaki örnek, **Localizedcollections** öğesinin kullanımını gösteri
 
 **Localizedstrings** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | LocalizedString | 1: n | Yerelleştirilmiş bir dize. |
 
@@ -147,8 +147,8 @@ Aşağıdaki örnek, **Localizedcollections** öğesinin kullanımını gösteri
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | ElementType | Yes | Olası değerler: [ClaimsProvider](#claimsprovider), [ClaimType](#claimtype), [ErrorMessage](#errormessage), [getlocalizedstringstransformationclaimtype](#getlocalizedstringstransformationclaimtype), [koşul](#predicate), [ınputvalidation](#inputvalidation)veya [uxelement](#uxelement).   | 
-| ElementID | Yes | **ElementType** `ClaimType`, `Predicate`veya `InputValidation`olarak ayarlandıysa, bu öğe claimsschema bölümünde zaten tanımlanmış olan bir talep türüne başvuru içerir. |
-| StringID | Yes | **ElementType** olarak `ClaimType`ayarlandıysa, bu öğe bir talep türü özniteliğine başvuru içerir. Olası değerler: `DisplayName`, `AdminHelpText`, veya `PatternHelpText`. `DisplayName` Değer, talep görünen adını ayarlamak için kullanılır. `AdminHelpText` Değer, talep kullanıcısının yardım metni adını ayarlamak için kullanılır. `PatternHelpText` Değer, talep deseninin yardım metnini ayarlamak için kullanılır. **ElementType** olarak `UxElement`ayarlandıysa, bu öğe bir kullanıcı arabirimi öğesinin özniteliğine bir başvuru içerir. **ElementType** olarak `ErrorMessage`ayarlandıysa, bu öğe bir hata iletisinin tanımlayıcısını belirtir. Tanımlayıcıların tüm listesi için bkz. [Yerelleştirme dize kimlikleri.](localization-string-ids.md) `UxElement`|
+| ElementID | Yes | **ElementType** , veya olarak ayarlandıysa `ClaimType` , `Predicate` `InputValidation` Bu öğe claimsschema bölümünde zaten tanımlanmış olan bir talep türüne başvuru içerir. |
+| StringID | Yes | **ElementType** olarak ayarlandıysa `ClaimType` , bu öğe bir talep türü özniteliğine başvuru içerir. Olası değerler: `DisplayName` , `AdminHelpText` , veya `PatternHelpText` . `DisplayName`Değer, talep görünen adını ayarlamak için kullanılır. `AdminHelpText`Değer, talep kullanıcısının yardım metni adını ayarlamak için kullanılır. `PatternHelpText`Değer, talep deseninin yardım metnini ayarlamak için kullanılır. **ElementType** olarak ayarlandıysa `UxElement` , bu öğe bir kullanıcı arabirimi öğesinin özniteliğine bir başvuru içerir. **ElementType** olarak ayarlandıysa `ErrorMessage` , bu öğe bir hata iletisinin tanımlayıcısını belirtir. Tanımlayıcıların tüm listesi için bkz. [Yerelleştirme dize kimlikleri](localization-string-ids.md) `UxElement` .|
 
 ## <a name="elementtype"></a>ElementType
 
@@ -157,10 +157,10 @@ Yerelleştirilmesi için bir talep türüne ait ElementType başvurusu, bir tale
 | Yerelleştirilecek öğe | ElementType | ElementID |StringID |
 | --------- | -------- | ----------- |----------- |
 | Kimlik sağlayıcısı adı |`ClaimsProvider`| | ClaimsExchange öğesinin KIMLIĞI|
-| Talep türü öznitelikleri|`ClaimType`|Talep türünün adı| Yerelleştirilecek talebin özniteliği. Olası değerler: `AdminHelpText`, `DisplayName` `PatternHelpText`, ve `UserHelpText`.|
+| Talep türü öznitelikleri|`ClaimType`|Talep türünün adı| Yerelleştirilecek talebin özniteliği. Olası değerler: `AdminHelpText` , `DisplayName` , `PatternHelpText` ve `UserHelpText` .|
 |Hata iletisi|`ErrorMessage`||Hata iletisinin KIMLIĞI |
 |Yerelleştirilmiş dizeleri talebe kopyalar|`GetLocalizedStringsTra nsformationClaimType`||Çıkış talebinin adı|
-|Koşul Kullanıcı iletisi|`Predicate`|Koşulun adı| Yerelleştirilecek koşulun özniteliği. Olası değerler: `HelpText`.|
+|Koşul Kullanıcı iletisi|`Predicate`|Koşulun adı| Yerelleştirilecek koşulun özniteliği. Olası değerler: `HelpText` .|
 |Koşul grubu Kullanıcı iletisi|`InputValidation`|PredicateValidation öğesinin KIMLIĞI.|PredicateGroup öğesinin KIMLIĞI. Koşul grubu, ElementID 'de tanımlandığı şekilde koşul doğrulama öğesinin bir alt öğesi olmalıdır.|
 |Kullanıcı arabirimi öğeleri |`UxElement` | | Yerelleştirilecek Kullanıcı arabirimi öğesinin KIMLIĞI.|
 
@@ -205,7 +205,7 @@ ClaimType değeri, talep özniteliklerinden birini yerelleştirmek için kullan�
 
 Aşağıdaki örnek, e-posta talep türünün DisplayName, UserHelpText ve PatternHelpText özniteliklerinin nasıl yerelleştirileceğini gösterir.
 
-```XML
+```xml
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
@@ -228,7 +228,7 @@ ErrorMessage değeri, sistem hatası iletilerinden birini yerelleştirmek için 
 Aşağıdaki örnek, Usermessageifclaimsprincıpalalreadyexists hata iletisinin nasıl yerelleştirileceğini gösterir.
 
 
-```XML
+```xml
 <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
 ```
 
@@ -319,7 +319,7 @@ Inputvalidation değeri, [Predicatevalidation](predicates.md) grup hata iletiler
 
 Aşağıdaki örnek, bir koşul doğrulama grubu yardım metninin yerelleştirilmesi gösterilmektedir.
 
-```XML
+```xml
 <LocalizedString ElementType="InputValidation" ElementId="CustomPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
 ```
 
@@ -327,7 +327,7 @@ Aşağıdaki örnek, bir koşul doğrulama grubu yardım metninin yerelleştiril
 
 UxElement değeri, Kullanıcı arabirimi öğelerinden birini yerelleştirmek için kullanılır. Aşağıdaki örnek, Continue ve Cancel düğmelerinin nasıl yerelleştirileceğini gösterir.
 
-```XML
+```xml
 <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
 <LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
 ```

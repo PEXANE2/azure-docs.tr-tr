@@ -4,19 +4,19 @@ description: Ortamınızdaki Azure AD 'ye katılmış cihazları uygulamak için
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6bbecf0e365ba7a8424da775245181fa64c21f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 17e6660548084d64fce38617ba4e80ccf197f3d3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672690"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253078"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Nasıl yapılır: Azure AD JOIN Uygulamanızı planlayın
 
@@ -104,7 +104,7 @@ Azure AD katılımı:
 
 - Yalnızca Windows 10 cihazlarına uygulanabilir. 
 - , Windows 'un veya diğer işletim sistemlerinin önceki sürümleri için geçerli değildir. Windows 7/8.1 cihazlarınız varsa, Azure AD JOIN 'i dağıtmak için Windows 10 ' a yükseltmeniz gerekir.
-- FIPS modunda TPM içeren cihazlarda desteklenmez.
+- FIPS uyumlu TPM 2,0 için desteklenir, ancak TPM 1,2 için desteklenmez. Cihazlarınızda FIPS uyumlu TPM 1,2 varsa, Azure AD JOIN 'e devam etmeden önce bunları devre dışı bırakmanız gerekir. Microsoft, TPM üreticisine bağlı olduğundan, TPMs için FIPS modunu devre dışı bırakmaya yönelik herhangi bir araç sağlamaz. Destek için lütfen donanımınızın OEM 'nize başvurun.
  
 **Öneri:** Güncel özelliklerden yararlanmak için her zaman en son Windows 10 sürümünü kullanın.
 
@@ -185,6 +185,8 @@ Azure AD 'ye katılmış cihazlar makine kimlik doğrulamasına bağlı olan şi
 
 Azure AD 'ye katılmış cihazlara yönelik Uzak Masaüstü bağlantısı konak makinenin Azure AD 'ye katılmış veya hibrit Azure AD 'ye katılmış olmasını gerektirir. Katılmamış veya Windows dışı bir cihazdan uzak masaüstü desteklenmez. Daha fazla bilgi için bkz. [uzak Azure AD 'ye katılmış bilgisayara bağlanma](/windows/client-management/connect-to-remote-aadj-pc)
 
+Windows 10 2004 Güncelleştirmesi başlatıldığında, kullanıcılar Azure AD 'ye kayıtlı bir Windows 10 cihazından Azure AD 'ye katılmış bir cihaza uzak masaüstü Alo kullanabilir. 
+
 ## <a name="understand-your-provisioning-options"></a>Sağlama seçeneklerinizi anlayın
 
 Aşağıdaki yaklaşımlardan yararlanarak Azure AD katılımı sağlayabilirsiniz:
@@ -200,8 +202,8 @@ Bu üç yaklaşımdan oluşan bir karşılaştırma
 | Ayarlama için Kullanıcı etkileşimi gerektir | Yes | Yes | Hayır |
 | BT çabaları gerektir | Hayır | Yes | Yes |
 | Geçerli akışlar | OOBE & ayarları | Yalnızca OOBE | Yalnızca OOBE |
-| Birincil Kullanıcı için yerel yönetici hakları | Evet, varsayılan olarak | Yapılandırılabilir | Hayır |
-| Cihaz OEM desteği gerektir | Hayır | Yes | Hayır |
+| Birincil Kullanıcı için yerel yönetici hakları | Evet, varsayılan olarak | Yapılandırılabilir | No |
+| Cihaz OEM desteği gerektir | Hayır | Evet | Hayır |
 | Desteklenen sürümler | 1511 + | 1709 + | 1703 + |
  
 Yukarıdaki tabloyu inceleyerek dağıtım yaklaşımınızı veya yaklaşımlarınızı seçin ve iki yaklaşımı benimsemeye yönelik aşağıdaki konuları gözden geçirin:  
@@ -217,7 +219,7 @@ Yukarıdaki tabloyu inceleyerek dağıtım yaklaşımınızı veya yaklaşımlar
 
 ## <a name="configure-your-device-settings"></a>Cihaz ayarlarınızı yapılandırın
 
-Azure portal, kuruluşunuzda Azure AD 'ye katılmış cihazların dağıtımını denetlemenize olanak tanır. İlgili ayarları yapılandırmak için, **Azure Active Directory sayfasında**, öğesini seçin `Devices > Device settings`.
+Azure portal, kuruluşunuzda Azure AD 'ye katılmış cihazların dağıtımını denetlemenize olanak tanır. İlgili ayarları yapılandırmak için, **Azure Active Directory sayfasında**, öğesini seçin `Devices > Device settings` .
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>Kullanıcılar cihazları Azure AD 'ye katabilir
 
@@ -243,7 +245,7 @@ Mobility ayarlarınızı yapılandırmadan önce, önce bir MDM sağlayıcısı 
 
 **MDM sağlayıcısı eklemek için**:
 
-1. **Azure Active Directory sayfasında**, **Yönet** bölümünde, ' ye tıklayın `Mobility (MDM and MAM)`. 
+1. **Azure Active Directory sayfasında**, **Yönet** bölümünde, ' ye tıklayın `Mobility (MDM and MAM)` . 
 1. **Uygulama Ekle**' ye tıklayın.
 1. Listeden MDM sağlayıcınızı seçin.
 
@@ -295,8 +297,8 @@ Bu uygulamayı, [bulut uygulaması için yönetilen cihazların koşullu erişim
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [İlk çalıştırma sırasında Azure AD ile yeni bir Windows 10 cihazına katılarak](azuread-joined-devices-frx.md)
-> [iş cihazınızı kuruluşunuzun ağına katın](/azure/active-directory/user-help/user-help-join-device-on-network)
+> [İlk çalıştırma sırasında Azure AD ile yeni bir Windows 10 cihazına ekleme](azuread-joined-devices-frx.md) 
+>  [İş cihazınızı kuruluşunuzun ağına ekleyin](/azure/active-directory/user-help/user-help-join-device-on-network)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

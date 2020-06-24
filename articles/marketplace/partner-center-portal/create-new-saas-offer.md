@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: 3c922675619fc877d9d97a43b69a15f5ca4f393e
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 06/10/2020
+ms.openlocfilehash: b02ba8bd6e3ae858c9e3ded07776a8a83ede171a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849119"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212607"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Ticari Market 'te yeni bir SaaS teklifi oluşturun
 
@@ -57,7 +57,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 - Teklif bir taslak silise taslak silme
 - Teklif canlı değilse, satış teklifini durdur
 - Teklif önizleme sürümündedir-canlı
-- Yayımcı oturumunu kapatma Işlemini tamamlamadıysanız, yayımlamayı Iptal edin
+- Yayımcı oturumu kapatma Işlemini tamamlamadıysanız, yayımlamayı Iptal edin
 
 ## <a name="offer-setup"></a>Teklif kurulumu
 
@@ -80,11 +80,11 @@ Iş Ortağı Merkezi 'nde ticari Market ile hizmet olarak yazılım (SaaS) tekli
 
 #### <a name="saas-pricing-and-billing-options"></a>SaaS fiyatlandırma ve faturalandırma seçenekleri
 
-Yayımcının Azure aboneliğinde çalışan SaaS çözümleri sayesinde, müşteriler tarafından ödenen lisans ücretleri, yazılımın dağıtıldığı altyapının maliyetini içerir. Azure altyapı kullanımı, iş ortağı tarafından doğrudan yönetilir ve size faturalandırılır. Gerçek altyapı kullanım ücretleri müşteri tarafından görülmez. Yayımcılar, Azure altyapı kullanım ücretlerini yazılım lisans fiyatlandırmasına paketlemelidir. 
+Yayımcının Azure aboneliğinde çalışan SaaS çözümleri sayesinde, müşteriler tarafından ödenen lisans ücretleri, yazılımın dağıtıldığı altyapının maliyetini içerir. Azure altyapı kullanımı, iş ortağı tarafından doğrudan yönetilir ve size faturalandırılır. Gerçek altyapı kullanım ücretleri müşteri tarafından görülmez. Yayımcılar, Azure altyapı kullanım ücretlerini yazılım lisans fiyatlandırmasına paketlemelidir.
 
 SaaS, aylık veya yıllık faturalandırmaya, Kullanıcı başına veya ölçülen faturalandırma hizmeti kullanılarak sunulan tüketim ücretlerine göre destek sunuyor. Microsoft 'un ticari Market 'i, yayımcıların fiyatları, Microsoft ürün müşterileri ve Microsoft 'un bir kurum ücretini stopajına göre gelir ödediği bir kurum modeli üzerinde çalışır.
 
-Bu, kurumlar modelini göstermek için maliyetleri ve ödemeler için örnek bir dökümdir:
+Bu, bir ücret modelini (listelenen tüm fiyatlar yalnızca örnek amaçlıdır ve gerçek maliyetlerin yansıtılmasından sorumlu olmak üzere) göstermek için maliyet ve ödemeler için örnek bir dökümtür.
 
 |**Lisans maliyetiniz**|**$100/ay**|
 |:---|:---|
@@ -124,7 +124,36 @@ Müşteri Ilişkileri yönetimi (CRM) sisteminizi bağlayarak müşteri iletişi
 
 #### <a name="example-marketplace-offer-listing"></a>Örnek market teklifi listesi
 
-![Not ile örnek Market teklif listesi](./media/marketplace-offer.svg)
+<!-- ![Example marketplace offer listing with notes](./media/marketplace-offer.svg) -->
+
+Teklif bilgilerinin Microsoft AppSource ' de nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
+
+:::image type="content" source="media/example-appsource-saas.png" alt-text="Bu teklifin Microsoft AppSource nasıl göründüğünü gösterir.":::
+
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
+
+1. Büyük logo
+2. Kategoriler
+3. Sektörler
+4. Destek adresi (bağlantı)
+5. Kullanım koşulları
+6. Gizlilik ilkesi
+7. Teklif adı
+8. Özet
+9. Description
+10. Ekran görüntüleri/videolar
+11. Belgeler
+
+<br>Teklif bilgilerinin Azure portal nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
+
+:::image type="content" source="media/example-virtual-machine-container-iot-edge-saas.png" alt-text="Bu teklifin Azure portal nasıl göründüğünü gösterir.":::
+
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
+
+1. Başlık
+2. Açıklama
+3. Yararlı bağlantılar
+4. Ekran görüntüleri
 
 ## <a name="enable-a-test-drive"></a>Sınama sürücüsünü etkinleştir
 
@@ -194,12 +223,12 @@ Ticari Market yayımcıları için iki çeşit değişiklik bulunur:
 >[!NOTE]
 > Bu iki tür değişiklik yığını birbirlerinin üzerine. Özel değişiklik ile hedeflenen müşteriler, satın alma sırasında standart sözleşmeye evrensel değişiklik de alır.
 
-**Evrensel değişiklik Microsoft 'un ticari Market 'e yönelik standart sözleşme** – bu kutuya evrensel düzeltme koşullarını girin. Teklif başına tek bir evrensel düzeltme sağlayabilirsiniz. Bu kutuya sınırsız sayıda karakter girebilirsiniz. Bu terimler, bulma ve satın alma akışında AppSource, Azure Marketi 'nde müşterilere ve/veya Azure portal görüntülenir.
+**Evrensel değişiklik Microsoft 'un ticari Market 'e yönelik standart sözleşme** – bu kutuya evrensel düzeltme koşullarını girin. Teklif başına tek bir evrensel düzeltme sağlayabilirsiniz. Bu kutuya sınırsız sayıda karakter girebilirsiniz. Bu terimler, bulma ve satın alma akışında AppSource, Azure Marketi ve/veya Azure portal müşterilere gösterilir.
 
 **Microsoft 'un ticari Market 'e yönelik standart sözleşmeye yönelik özel düzeltme koşulları** – **özel değişiklik koşulları Ekle**' ye tıklayarak başlayın. Teklif başına en fazla 10 özel düzeltme terimi sağlayabilirsiniz.
 
 - **Özel değişiklik koşulları** : özel değişiklik koşullarını özel düzeltme koşulları kutusuna girin. Bu kutuya sınırsız sayıda karakter girebilirsiniz. Yalnızca bu özel şartlar için belirttiğiniz kiracı kimliklerinin müşterileri, Azure portal teklifin satın alma akışındaki özel değişiklik hükümleriyle birlikte sunulacaktır.  
-- **Kiracı kimlikleri** (gerekli) – her bir özel değişiklik, en fazla 20 Kiracı kimliğini hedefleyebilir. Özel bir değişiklik eklerseniz, en az bir kiracı KIMLIĞI sağlamanız gerekir. Kiracı kimliği, Azure 'da müşterinizin kimliğini tanımlar. Müşterinizden bu KIMLIĞI sorabilir ve portal.azure.com > Azure Active Directory > özelliklerine giderek bulabilecekleri. Dizin KIMLIĞI değeri kiracı KIMLIĞIDIR (örneğin, 50c464d3-4930-494c-963c-1e951d15360e). Ayrıca, [Microsoft Azure ve Office 365 KIRACı kimliği olan](https://www.whatismytenantid.com)etki alanı adı URL 'sini kullanarak KURULUŞUNUZUN Kiracı kimliğini de arayabilirsiniz.
+- **Kiracı kimlikleri** (gerekli) – her bir özel değişiklik, en fazla 20 Kiracı kimliğini hedefleyebilir. Özel bir değişiklik eklerseniz, en az bir kiracı KIMLIĞI sağlamanız gerekir. Kiracı kimliği, Azure 'da müşterinizin kimliğini tanımlar. Müşterinizden bu KIMLIĞI sorabilir ve portal.azure.com > Azure Active Directory > özelliklerine giderek bulabilecekleri. Dizin KIMLIĞI değeri kiracı KIMLIĞIDIR (örneğin, 50c464d3-4930-494c-963c-1e951d15360e). Ayrıca, [Microsoft Azure ve Office 365 KIRACı kimliği olan](https://www.whatismytenantid.com) etki alanı adı URL 'sini kullanarak KURULUŞUNUZUN Kiracı kimliğini de arayabilirsiniz.
 - **Açıklama** (isteğe bağlı): Isteğe bağlı olarak, Kiracı kimliği için, değişiklik yaparken hedeflediğiniz müşteriyi belirlemenize yardımcı olan kolay bir açıklama sağlayın.
 
 #### <a name="terms-and-conditions"></a>hüküm ve koşullar
@@ -227,7 +256,7 @@ Teklif ve pazarlama varlıklarınızın açıklamaları dahil olmak üzere Marke
 - **Anahtar sözcükleri ara** – müşterilerin Market 'te teklifinizi bulmak için kullanabileceği en fazla üç arama anahtar sözcüğü girin.
 - Başlarken yönergeleri (gerekli) – uygulamanızı nasıl yapılandıracağınızı ve potansiyel müşteriler için kullanmaya **başlamanızı** açıklayın.  Bu hızlı başlangıç, daha ayrıntılı çevrimiçi belgelere bağlantılar içerebilir. Bu alana en fazla 3.000 karakter metin girilebilir.
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 
 Bu alan gereklidir.
 
@@ -251,7 +280,7 @@ Bu alan gereklidir.
 
 #### <a name="files-and-images"></a>Dosyalar ve görüntüler
 
-- **Belgeler** (gerekli) – teklif başına en az bir (1) ve en fazla üç (3) belge sağlayan PDF biçiminde ilgili pazarlama belgelerini ekleyin.
+- **Belgeler** (gerekli) – Teklifinizle ilgili pazarlama belgelerini, en az bir ve teklif başına üç adede kadar belgeyi PDF biçiminde ekleyin.
 - **Görüntüler** (isteğe bağlı): teklifinizin logo görüntülerinin Market genelinde GÖRÜNEBILECEĞI, PNG biçiminde aşağıdaki piksel boyutlarını gerektiren birden çok yer vardır:
 
     - **Küçük** (48 x 48, gereklidir)
@@ -260,7 +289,7 @@ Bu alan gereklidir.
     - **Geniş** (255 x 115)
     - **Hero** (815 x 290)
 
-- **Ekran görüntüleri** (gerekli) – teklifinizi gösteren ekran görüntüleri ekleyin. En fazla beş (5) ekran görüntüsü eklenebilir ve 1280 x 720 piksel boyutunda olmalıdır. Tüm görüntülerin içinde olması gerekir. PNG biçimi.
+- **Ekran görüntüleri** (gerekli) – teklifinizi gösteren en fazla beş ekran görüntüsü ekleyin, 1280 x 720 piksel boyutunda. Tüm görüntülerin içinde olması gerekir. PNG biçimi.
 - **Videolar** (isteğe bağlı) – teklifinizi gösteren videoların bağlantılarını ekleyin. Müşteriler teklifinizle birlikte gösterilen YouTube ve/veya Vimeo videolarını içeren bağlantıları kullanabilirsiniz. Ayrıca, PNG biçiminde 1280 x 720 piksel boyutunda videonun küçük resmini de girmeniz gerekir. Her teklif için en fazla dört video görüntüleyebilirsiniz.
 
 >[!NOTE]
@@ -290,18 +319,26 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 ## <a name="technical-configuration"></a>Teknik yapılandırma
 
-Bu sayfa, teklifinizi bağlamak için kullanılan teknik ayrıntıları (URL yolu, Web kancası, kiracı KIMLIĞI ve uygulama KIMLIĞI) tanımlar. Bu bağlantı, teklifi edinmeyi tercih ettiklerinde, son müşteri için teklifinizi sağlamamızı sağlar. Toplanan alanların kullanımını açıklayan diyagramlar [SaaS karşılama API 'leri](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)için belgelerde bulunabilir.
-
-- **Giriş sayfası URL 'si** (gerekli) – müşterilerinizin teklifinizi Market 'ten aldıktan sonra HANGI site URL 'sini tanımlayın. Bu URL, bir müşteri sayfaya yönlendirildiğini belirteç alan uç nokta olur. Bu belirteç, karşılama API 'Lerinde çözümle kullanılarak sağlama ayrıntıları için takas edilebilir. Bu ayrıntılar ve topladığınız tüm diğerleri, kaydınızı tamamlayıp satın almasını etkinleştirmek için deneyiminizin yerleşik olduğu müşteri etkileşimli Web sayfasının bir parçası olarak kullanılabilir.
-
-- **Bağlantı Web kancası** (gerekli) – Microsoft 'un müşteri adına size gönderilmesi gereken tüm zaman uyumsuz olaylar için (örneğin, SaaS aboneliği geçersiz oldu), bağlantı Web kancası sağlamanız gerekir. Zaten bir Web kancası sisteminiz yoksa, en basit yapılandırma, kendisine gönderilen olayları dinleyen bir HTTP uç noktası mantıksal uygulamasına sahip olmak ve bunları uygun şekilde işleymelidir (örneğin, https: \/ /prod-1westus.Logic.Azure.com:443/Work). Daha fazla bilgi için bkz. [Logic Apps 'TE HTTP uç noktaları Ile çağrı, tetikleyici veya iç içe iş akışları](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
-
-- **Azure AD KIRACı kimliği** (gerekli) – Azure Portal içinde, iki hizmetimiz arasındaki bağlantının kimliği doğrulanmış bir iletişimin arkasında olduğunu doğrulayabilmemiz için [BIR Azure Active Directory (ad) uygulaması oluşturmanız](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) gerekir. [KIRACı kimliğini](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)bulmak için Azure Active Directory gidin ve **Özellikler**' i seçin, ardından listelenen **dizin kimliği** numarasını arayın (örneğin, 50c464d3-4930-494c-963c-1e951d15360e).
-
-- **Azure AD uygulama kimliği** (gerekli) – Ayrıca, [Uygulama Kimliğiniz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) ve bir kimlik doğrulama anahtarınız olması gerekir. Bu değerleri almak için Azure Active Directory gidin ve **uygulama kayıtları**' i seçin, ardından LISTELENEN **uygulama kimliği** numarasını arayın (örneğin, 50c464d3-4930-494c-963c-1e951d15360e). Kimlik doğrulama anahtarını bulmak için **Ayarlar** ' a gidin ve **anahtarlar**' ı seçin. Bir açıklama ve süre sağlamanız gerekir ve ardından bir sayı değeri sağlanacaktır.
+**Teknik yapılandırma** sekmesi, Market tarafından SaaS hizmetinize iletişim kurmak için kullanılan teknik ayrıntıları tanımlar. Bu bağlantı, teklifi edinmeyi ve yönetmeyi tercih ettiklerinde, son müşteri için teklifinizi sağlamamızı sağlar. 
 
 >[!Note]
->Azure uygulama KIMLIĞI, yayımcı KIMLIĞINIZLE ilişkilendirilir, bu nedenle tüm tekliflerinizi aynı uygulama KIMLIĞININ kullanıldığından emin olun.
+>Teklif ayrıntılarında bu ayrıntıları yapılandırmadan önce [SaaS API 'leri](./pc-saas-fulfillment-api-v2.md) ile tümleştirme uygulamanız gerekir.
+
+Toplanan alanların kullanımını açıklayan diyagramlar ve ayrıntılı açıklamalar [API 'ler](./pc-saas-fulfillment-api-v2.md)için belgelerde bulunur.
+
+- **Giriş sayfası URL 'si** (gerekli) – `https://contoso.com/signup` son müşterilerin, marketten teklifinizi aldıktan sonra ve yeni oluşturulan SaaS aboneliğinden yapılandırma işlemini tetikleyerek, SaaS site URL 'sini (örneğin:) tanımlayın.  Bu URL, belirli bir son müşterinin SaaS satın alımını benzersiz bir şekilde tanımlayan Market satın alma tanımlama belirteci parametresi ile çağırılır.  Bu belirteci, [Çözümle](./pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) API 'sini kullanarak ilgili SaaS aboneliği ayrıntıları için değiş tokuş etmeniz gerekir.  Bu ayrıntılar ve toplamak istediğiniz tüm diğerleri, son müşteri kaydını tamamlamaya ve satın alımlarını etkinleştirmeye yönelik deneyiminizle oluşturulmuş bir müşteri etkileşimli Web sayfasının bir parçası olarak kullanılmalıdır.  Bu sayfada, Kullanıcı Azure Active Directory (Azure AD) kullanarak tek tıklamalı kimlik doğrulama aracılığıyla kaydolmalıdır. <br> <br> Market satın alma tanımlama belirteci parametresi ile bu URL, son müşteri Azure portal veya M365 yönetim merkezinden yönetilen SaaS deneyimini başlattığında de çağrılır. Belirtecin yeni müşteriler için satın alındıktan sonra ilk kez sağlandığı ve SaaS 'yi yöneten mevcut müşteri için sağlanışında her iki akışı da işlemeniz gerekir. <br> <br> Burada yapılandırdığınız giriş sayfası, 24/7 olmalıdır ve çalışıyor olmalıdır. Bu, Market 'te yapılan SaaS tekliflerinizin yeni satınalmaları veya bir teklifin etkin bir aboneliğinin yapılandırma istekleri hakkında size bildirilecek tek yoldur.
+
+- **Bağlantı Web kancası** (gerekli) – Microsoft 'un size gönderilmesi gereken tüm zaman uyumsuz olaylar için (örneğin, SaaS aboneliği iptal edildi), bir bağlantı Web kancası URL 'si sağlamanızı istiyoruz. Bu URL 'YI olay üzerinde bilgilendirmek için çağıracağız. <br> <br> Sağladığınız Web kancası, Market aracılığıyla satın alınan müşterilerinizin SaaS abonelik24/7 leriyle ilgili güncelleştirmeler hakkında bildirim almanız gereken tek yoldur.  Zaten bir Web kancası sisteminiz yoksa, en basit yapılandırma, kendisine gönderilen olayları dinleyen bir HTTP uç noktası mantıksal uygulamasına sahip olmak ve bunları uygun şekilde (örneğin,) işleymeyecektir `https://prod-1westus.logic.azure.com:443/work` . Daha fazla bilgi için bkz. [Logic Apps 'TE HTTP uç noktaları Ile çağrı, tetikleyici veya iç içe iş akışları](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+
+- **Azure AD KIRACı kimliği** (gerekli) – Azure Portal içinde, iki hizmetimiz arasındaki bağlantının kimliği doğrulanmış bir iletişimin arkasında olduğunu doğrulayabilmemiz için [BIR Azure Active Directory (ad) uygulaması oluşturmanız](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) gerekir. [KIRACı kimliğini](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)bulmak için Azure Active Directory gidin ve **Özellikler**' i seçin, ardından listelenen **dizin kimliği** numarasını (örneğin, 50c464d3-4930-494c-963c-1e951d15360e) arayın.
+
+- **Azure AD uygulama kimliği** (gerekli) – Ayrıca [Uygulama Kimliğiniz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)gerekir. Değerini almak için Azure Active Directory gidin ve **uygulama kayıtları**' i seçin, sonra LISTELENEN **uygulama kimliği** numarasını (örneğin, `50c464d3-4930-494c-963c-1e951d15360e` ) arayın.
+
+>[!Note]
+>Azure AD uygulama KIMLIĞI, Iş Ortağı Merkezi hesabınızdaki yayımcı KIMLIĞINIZLE ilişkilidir.  Tüm tekliflerinizi aynı uygulama KIMLIĞININ kullanıldığından emin olun.
+
+>[!Note]
+>Yayımcının Iş Ortağı Merkezi 'nde iki veya daha fazla farklı hesabı varsa, her biri hesaplarından biri için iki veya daha fazla farklı Azure AD uygulama kimliği kullanılmalıdır. Iş Ortağı Merkezi 'ndeki her iş ortağı hesabı, bu hesap aracılığıyla yayınlanan tüm SaaS teklifleri için benzersiz Azure AD uygulama KIMLIĞI kullanmalıdır.
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
@@ -350,7 +387,7 @@ Devam etmeden önce **Kaydet** ' i seçin.
 
 ##### <a name="pricing-model"></a>Fiyatlandırma modeli
 
-**Düz oran** : tek bir aylık veya yıllık fiyat düz fiyat fiyatı ile teklifinizin erişimini etkinleştirin. Bu, bazen site tabanlı fiyatlandırma olarak adlandırılır. Bu fiyatlandırma modeliyle isteğe bağlı olarak, müşterileri standart olmayan birimlere göre ücretlendirmesi için Market ölçüm hizmeti API 'sini kullanan tarifeli planlar tanımlayabilirsiniz.  Tarifeli faturalandırma hakkında daha fazla bilgi için bkz. [Market ölçüm hizmeti kullanılarak ölçülen faturalandırma](./saas-metered-billing.md).
+**Düz oran** : tek bir aylık veya yıllık fiyat düz fiyat fiyatı ile teklifinizin erişimini etkinleştirin. Bu, bazen site tabanlı fiyatlandırma olarak adlandırılır. Bu fiyatlandırma modeliyle isteğe bağlı olarak, müşterileri standart olmayan birimlere göre ücretlendirmesi için Market ölçüm hizmeti API 'sini kullanan tarifeli planlar tanımlayabilirsiniz.  Tarifeli faturalandırma hakkında daha fazla bilgi için bkz. [Market ölçüm hizmeti kullanılarak ölçülen faturalandırma](./saas-metered-billing.md).  Bu seçeneği, kullanım davranışı SaaS hizmetiniz için artışlarıyla 'de ise de kullanmanız gerekir.  Müşterilerin planları günlük veya saatlik olarak sıklıkla geçiş yapması önerilmez.
 
 **Kullanıcı başına** – teklifle veya işgal eden kullanıcılara erişen kullanıcı sayısına bağlı olarak fiyat ile teklifinizin erişimini etkinleştirin. Bu Kullanıcı tabanlı model, fiyata göre izin verilen en düşük ve en yüksek Kullanıcı sayısını ayarlamanıza olanak sağlar. Bu şekilde, farklı fiyat noktaları, birden çok plan yapılandırılarak kullanıcı sayısına göre yapılandırılabilir.  Bu alanlar isteğe bağlıdır. Sol tarafta yoksa, Kullanıcı sayısı bir sınıra sahip değildir (en az 1, en fazla sistem tarafından desteklenebilir). Bu alanlar, planınızdaki bir güncelleştirmenin parçası olarak düzenlenebilir.
 
@@ -404,7 +441,7 @@ Planınızı özel ve yalnızca seçtiğiniz kısıtlanmış kitlele görünür 
 
 Bu özel plana erişimi olacak hedef kitleyi atayın. Atanan her kiracı KIMLIĞININ açıklamasını ekleme seçeneğiyle kiracı kimlikleri kullanılarak erişim atanır. Bir. csv elektronik tablo dosyası içeri aktarıldıysanız, en fazla 10 Kiracı kimliği eklenebilir veya 20.000 müşteri Kiracı kimliği olabilir.
 
-Kiracı, bir GUID (genel benzersiz tanımlayıcı, kaynakları tanımlamak için kullanılan 128 bitlik bir tamsayı numarası) olarak temsil edilen KIMLIĞE sahip bir kuruluşun gösterimidir. Kuruluş veya uygulama geliştiricisi, Microsoft ile bir ilişki oluştururken bir kuruluşun veya uygulama geliştiricisinin Microsoft ile bir ilişki oluşturduğunda (örneğin, Azure için kaydolurken, Microsoft Intune veya Microsoft 365) adanmış bir Azure AD örneğidir. Her Azure AD kiracısı benzersizdir ve diğer Azure AD kiracılarından ayrıdır. Kiracıyı denetlemek için, uygulamanızı yönetirken kullanmak istediğiniz hesapla Azure portalında oturum açın. Bir kiracınız varsa, otomatik olarak bu kiracıda oturum açar ve kiracı adını doğrudan hesap adınızın altında görebilirsiniz. Adınızı, e-postanızı, dizininizi/kiracı kimliğinizi (GUID) ve etki alanınızı görmek için, Azure portalının sağ üst kısmında bulunan hesap adınızın üzerine gelin. Hesabınız birden çok kiracıyla ilişkiliyse, kiracılar arasında geçiş yapabileceğiniz bir menüyü açmak için hesap adınızı seçebilirsiniz. Her kiracının kendi kiracı kimliği vardır. Ayrıca, bir etki alanı adı URL 'sini kullanarak kuruluşunuzun kiracı KIMLIĞINI de arayabilirsiniz [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
+Kiracı, bir GUID (genel benzersiz tanımlayıcı, kaynakları tanımlamak için kullanılan 128 bitlik bir tamsayı numarası) olarak temsil edilen KIMLIĞE sahip bir kuruluşun gösterimidir. Kuruluş veya uygulama geliştiricisi, Microsoft ile bir ilişki oluştururken bir kuruluşun veya uygulama geliştiricisinin Microsoft ile bir ilişki oluşturduğunda (örneğin, Azure için kaydolurken, Microsoft Intune veya Microsoft 365) adanmış bir Azure AD örneğidir. Her Azure AD kiracısı diğer Azure AD kiracılarından ayrıdır. Kiracıyı denetlemek için, uygulamanızı yönetirken kullanmak istediğiniz hesapla Azure portalında oturum açın. Bir kiracınız varsa, otomatik olarak bu kiracıda oturum açar ve kiracı adını doğrudan hesap adınızın altında görebilirsiniz. Adınızı, e-postanızı, dizininizi/kiracı kimliğinizi (GUID) ve etki alanınızı görmek için, Azure portalının sağ üst kısmında bulunan hesap adınızın üzerine gelin. Hesabınız birden çok kiracıyla ilişkiliyse, kiracılar arasında geçiş yapabileceğiniz bir menüyü açmak için hesap adınızı seçebilirsiniz. Her kiracının kendi kiracı kimliği vardır. Ayrıca, bir etki alanı adı URL 'sini kullanarak kuruluşunuzun kiracı KIMLIĞINI de arayabilirsiniz [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 
 SaaS, özel bir hedef kitle tanımlamak için kiracı kimlikleri kullanır, diğer teklif türleri de Azure abonelik kimliklerini (GUID 'Ler olarak da temsil edilir) kullanabilir.
 
@@ -415,7 +452,14 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 ## <a name="example-list-of-plans-within-a-marketplace-offer"></a>Market teklifi içindeki planların örnek listesi
 
-![Notlardaki örnek Market planı listesi](./media/marketplace-plan.svg)
+:::image type="content" source="media/marketplace-plan.png" alt-text="Notlar ile örnek Market planı listesi.":::
+
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
+
+1. Plan adı
+2. Plan açıklaması
+
+<br>
 
 ## <a name="cloud-solution-provider-csp-reseller-audience"></a>Bulut çözümü sağlayıcısı (CSP) satıcı hedef kitlesi
 
@@ -434,7 +478,7 @@ Bu teklifi ilk kez yayınlıyorsanız, şunları yapabilirsiniz:
     - **Tamamlanmamış** – bölümde düzeltilmesi gereken hatalar var veya daha fazla bilgi sağlanması gerekiyor. Bölümüne dönüp güncelleştirmeniz gerekir.
     - **Tamamlandı** – bölüm tamamlandı, tüm gerekli veriler sağlanmış ve hata yok. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
 - Uygulamanızı anlamak için yararlı olan tüm ek notlara ek olarak, uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın.
-- **Gönder**' i seçerek teklifi yayımlamaya gönderebilirsiniz. Size, gözden geçirmeniz ve onaylamanız için teklifin bir önizleme sürümünün ne zaman kullanılabileceğini bilmenizi sağlayacak bir e-posta göndereceğiz. Teklifinizi ortak (veya özel bir teklif, özel hedef kitleye) yayımlamak için Iş Ortağı Merkezi 'ne dönmeniz ve teklif için **Go-Live** ' ı seçmeniz gerekir.
+- **Gönder**' i seçerek teklifi yayımlamaya gönderebilirsiniz. Size, gözden geçirmeniz ve onaylamanız için teklifin bir önizleme sürümünün ne zaman kullanılabileceğini bilmenizi sağlayacak bir e-posta göndereceğiz. Iş Ortağı Merkezi ' ne dönün ve teklifinizi herkese açık (veya özel bir teklif olarak özel hedef kitleye) yayımlamak için **Go-Live** ' ı seçin.
 
 ## <a name="next-step"></a>Sonraki adım
 

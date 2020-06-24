@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: a5ef03689a6374dc1cf945a787f9f82b9979a1e0
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f6b2d081b0dc475e0950b12de31bab83cbe7da8b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834924"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213100"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB'deki farklı API'ler hakkında sık sorulan sorular
 
@@ -138,7 +138,7 @@ Daha fazla bilgi için bkz. [kapsayıcı ve veritabanı](set-throughput.md#compa
 
 ### <a name="can-i-access-some-ready-made-samples-to-get-a-head-start"></a>Baş bir başlangıç yapmak için bazı kullanıma hazırlanmış örneklere erişebilir miyim?
 
-GitHub 'da SQL API [.net](sql-api-dotnet-samples.md), [Java](https://github.com/Azure/azure-documentdb-java), [Node. js](sql-api-nodejs-samples.md)ve [Python](sql-api-python-samples.md) SDK 'ları örnekleri mevcuttur.
+SQL API [.net](sql-api-dotnet-samples.md), [Java](https://github.com/Azure/azure-documentdb-java), [Node.js](sql-api-nodejs-samples.md)ve [Python](sql-api-python-samples.md) SDK örnekleri GitHub ' da kullanılabilir.
 
 ### <a name="does-the-sql-api-database-support-schema-free-data"></a>SQL API veritabanı şemaya ücretsiz verileri destekliyor mu?
 
@@ -152,7 +152,7 @@ Evet, SQL API JavaScript saklı yordamları ve Tetikleyicileri ifade eden belgel
 
 Kapsayıcı, bir dizi belge ve ilişkili JavaScript uygulama mantığının bir grubudur. Bir kapsayıcı, [maliyetin](performance-levels.md) verimlilik ve kullanılan depolama tarafından belirlendiği faturalandırılabilir bir varlıktır. Kapsayıcılar bir veya daha fazla bölüme veya sunucuya yayılabilir ve bu işlem, neredeyse sınırsız miktarda depolama alanı veya aktarım hızı işleyecek şekilde ölçeklendirebilir.
 
-* SQL API 'SI için bir kapsayıcı bir kapsayıcıya eşlenir.
+* SQL API 'SI için kaynağa kapsayıcı adı verilir.
 * MongoDB hesapları için Cosmos DB API 'SI için bir kapsayıcı bir koleksiyonla eşlenir.
 * Cassandra ve Tablo API'si hesapları için bir kapsayıcı bir tabloyla eşlenir.
 * Gremlin API hesapları için bir kapsayıcı bir grafikle eşlenir.

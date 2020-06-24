@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: f00acf3580130d85d6eaeaee4d52eb748d20aa7b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a6f486f15fb5967dfb14508115e2340e4953be81
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656638"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116035"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB analitik depo (Önizleme) nedir?
 
@@ -44,7 +44,7 @@ Analitik iş yükleri genellikle Seçili alanların toplamaları ve sıralı tar
 
 Örneğin, işletimsel tablolarınız aşağıdaki biçimdedir:
 
-![Örnek işletimsel tablo](./media/analytical-store-introduction/sample-operational-data-table.png)
+:::image type="content" source="./media/analytical-store-introduction/sample-operational-data-table.png" alt-text="Örnek işletimsel tablo" border="false":::
 
 Satır deposu, yukarıdaki verileri diskte satır başına serileştirilmiş biçimde devam ettirir. Bu biçim, "Product1 hakkında bilgi Döndür" gibi daha hızlı işlem okuma, yazma ve işlem sorgularının kullanılmasına olanak tanır. Ancak, veri kümesi büyük olarak büyüdükçe ve karmaşık analitik sorguları verilerde çalıştırmak istiyorsanız, pahalı olabilir. Örneğin, farklı iş birimleri ve aylar arasında ' ekipman ' adlı kategori altında bir ürüne ilişkin satış eğilimleri almak istiyorsanız, karmaşık bir sorgu çalıştırmanız gerekir. Bu veri kümesindeki büyük taramalar, sağlanan aktarım hızı açısından pahalı olabilir ve ayrıca gerçek zamanlı uygulamalarınızı ve hizmetlerinizi destekleyen işlem iş yüklerinin performansını etkileyebilir.
 
@@ -52,7 +52,7 @@ Sütun deposu olan analitik depo, benzer veri alanlarını birlikte serileştird
 
 Aşağıdaki görüntüde işlem satır deposu ve analitik sütun deposu Azure Cosmos DB gösterilmektedir:
 
-![Azure Cosmos DB 'de işlem satır deposu vs analitik sütun deposu](./media/analytical-store-introduction/transactional-analytical-data-stores.png)
+:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Azure Cosmos DB 'de işlem satır deposu vs analitik sütun deposu" border="false":::
 
 ### <a name="decoupled-performance-for-analytical-workloads"></a>Analitik iş yükleri için ayrılmış performans
 
@@ -168,8 +168,8 @@ Daha fazla bilgi için aşağıdaki belgelere bakın:
 
 * [Azure Cosmos DB için Azure SYNAPSE bağlantısı](synapse-link.md)
 
-* [Azure Cosmos DB için Azure SYNAPSE bağlantısı ile çalışmaya başlama](configure-synapse-link.md)
+* [Azure Cosmos DB için Azure Synapse Link'i kullanmaya başlama](configure-synapse-link.md)
 
 * [Azure Cosmos DB için SYNAPSE bağlantısı hakkında sık sorulan sorular](synapse-link-frequently-asked-questions.md)
 
-* [Azure Cosmos DB kullanım örnekleri için Azure SYNAPSE bağlantısı](synapse-link-use-cases.md)
+* [Azure Cosmos DB için Azure Synapse Link kullanım örnekleri](synapse-link-use-cases.md)

@@ -3,21 +3,21 @@ title: Azure özel bağlantısı ile bir Azure Cosmos hesabına bağlanma
 description: Özel bir uç nokta oluşturarak bir VM 'den Azure Cosmos hesabına güvenli bir şekilde erişme hakkında bilgi edinin.
 author: malopMSFT
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: b7a50a2dabc9503ca5dbdd3388e29cfc69963885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d074128376d481902a203de3d32ef89aa72d7b3a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78252595"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737725"
 ---
-# <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Azure özel bağlantısını kullanarak bir Azure Cosmos hesabına özel olarak bağlanma
+# <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Azure Özel Bağlantı’yı kullanıp Azure Cosmos hesabına özel olarak bağlanma
 
 Azure özel uç noktası, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar.
 
-Bu makalede, bir Azure sanal ağında bir sanal makıne oluşturmayı ve Azure portal kullanarak özel uç nokta olan bir Azure Cosmos hesabını öğreneceksiniz. Ardından, VM 'den Azure Cosmos hesabına güvenli bir şekilde erişebilirsiniz.
+Bu makalede Azure portalını kullanarak Özel Uç Nokta ile Azure sanal ağında bir sanal makine ve bir Azure Cosmos hesabı oluşturmayı öğreneceksiniz. Ardından sanal makineden Azure Cosmos hesabına güvenle erişebilirsiniz.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -33,18 +33,18 @@ Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değ
 
 | Parametre                   | Değer                |
 |-----------------------------|----------------------|
-| **\<Kaynak-Grup adı>**  | myResourceGroup|
-| **\<sanal ağ-adı>** | myVirtualNetwork         |
-| **\<bölge adı>**          | Orta Batı ABD     |
-| **\<IPv4-adres-alanı>**   | 10.1.0.0 \ 16          |
-| **\<alt ağ-adı>**          | mySubnet        |
-| **\<alt ağ-adres aralığı>** | 10.1.0.0 \ 24          |
+| **\<resource-group-name>**  | myResourceGroup|
+| **\<virtual-network-name>** | myVirtualNetwork         |
+| **\<region-name>**          | Orta Batı ABD     |
+| **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0 \ 24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-the-virtual-machine"></a>Sanal makineyi oluşturma
 
-1. Azure Portal ekranın sol üst tarafında **kaynak** > oluştur**işlem** > **sanal makinesi**' ni seçin.
+1. Azure Portal ekranın sol üst tarafında **kaynak oluştur**  >  **işlem**  >  **sanal makinesi**' ni seçin.
 
 1. **Sanal makine oluşturma-temel bilgiler**bölümünde, bu bilgileri girin veya seçin:
 
@@ -114,7 +114,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
     1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
         > [!NOTE]
-        > VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için > **farklı bir hesap kullan**' **ı seçmeniz gerekebilir**.
+        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
 1. **Tamam**’ı seçin.
 
@@ -126,7 +126,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 Bu bölümde, Özel uç nokta kullanarak Azure Cosmos hesabına özel olarak bağlanacaksınız. 
 
-1. IP adresi ve DNS eşlemesini dahil etmek için, sanal makinenizde *Myvm*'de oturum açın, `c:\Windows\System32\Drivers\etc\hosts` dosyayı açın ve önceki adımdan gelen DNS bilgilerini aşağıdaki biçimde ekleyin:
+1. IP adresi ve DNS eşlemesini dahil etmek için, sanal makinenizde *Myvm*'de oturum açın, dosyayı açın `c:\Windows\System32\Drivers\etc\hosts` ve ÖNCEKI adımdan gelen DNS bilgilerini aşağıdaki biçimde ekleyin:
 
    [Özel IP adresi] [Hesap uç noktası]. Documents. Azure. com
 
@@ -149,7 +149,7 @@ Bu bölümde, Özel uç nokta kullanarak Azure Cosmos hesabına özel olarak ba�
 
 1. **İleri**’yi seçin.
 
-1. **Bağlan**’ı seçin.
+1. **Bağlan**'ı seçin.
 
 1. *Mycosmosaccount*Içindeki Azure Cosmos veritabanlarına ve kapsayıcılarına gözatamazsınız.
 

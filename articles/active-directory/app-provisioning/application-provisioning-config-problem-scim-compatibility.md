@@ -2,21 +2,21 @@
 title: SCıM 2,0 protokol uyumluluğuyla ilgili bilinen sorunlar-Azure AD
 description: Azure AD 'de SCıM 2,0 ' i destekleyen Galeri dışı bir uygulama eklenirken karşılaşılan yaygın protokol uyumluluk sorunlarını çözme
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 12/03/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 00551eb6c9d5d6fab9dc1d698a7a25bb6872901b
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: ae08589785d8a482801c71ce3641ba0d66d11133
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594041"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782271"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD Kullanıcı sağlama hizmeti 'nin SCıM 2,0 protokol uyumluluğuyla ilgili bilinen sorunlar ve çözümleri
 
@@ -53,10 +53,10 @@ Evet. Bu uygulama örneğini çoklu oturum açma için zaten kullanıyorsanız v
 > [!NOTE]
 > Uygulamanız hala geliştirilmeye devam ediyorsa ve henüz çoklu oturum açma ya da Kullanıcı sağlama için dağıtılmamışsa, en kolay çözüm Azure portal **Azure Active Directory > kurumsal uygulamalar** bölümünde uygulama girişini silmek ve uygulama Için **Galeri olmayan bir seçenek > oluştur** seçeneğini kullanarak uygulama için yeni bir giriş eklemektir. Bu, aşağıdaki yordamı çalıştırmaya alternatiftir.
  
-1. Azure portal ' de https://portal.azure.comoturum açın.
+1. Azure portal ' de oturum açın https://portal.azure.com .
 2. Azure portal **Azure Active Directory > Enterprise Applications** bölümünde, mevcut SCIM uygulamanızı bulun ve seçin.
 3. Mevcut SCıM uygulamanızın **Özellikler** bölümünde, **nesne kimliğini**kopyalayın.
-4. Yeni bir Web tarayıcısı penceresinde, ' a gidin https://developer.microsoft.com/graph/graph-explorer ve uygulamanızın EKLENDIĞI Azure AD kiracısı için yönetici olarak oturum açın.
+4. Yeni bir Web tarayıcısı penceresinde, ' a gidin https://developer.microsoft.com/graph/graph-explorer ve uygulamanızın eklendiği Azure AD kiracısı için yönetici olarak oturum açın.
 5. Graph Explorer 'da, sağlama işinizin KIMLIĞINI bulmak için aşağıdaki komutu çalıştırın. "[Nesne-kimliği]" değerini üçüncü adımdan kopyalanmış hizmet sorumlusu KIMLIĞI (nesne KIMLIĞI) ile değiştirin.
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
@@ -93,10 +93,10 @@ Evet. Bu uygulama örneğini çoklu oturum açma için zaten kullanıyorsanız v
 
 Evet. Düzeltmelerden önce varolan eski davranışa bir uygulamayı kodlandırdıysanız ve yeni bir örneğini dağıtmanız gerekiyorsa, aşağıdaki yordamı izleyin. Bu yordamda, eski davranışı gösteren bir SCıM sağlama işi oluşturmak için Microsoft Graph API ve Microsoft Graph API Explorer 'ın nasıl kullanılacağı açıklanmaktadır.
  
-1. Azure portal ' de https://portal.azure.comoturum açın.
+1. Azure portal ' de oturum açın https://portal.azure.com .
 2. **Azure Active Directory > kurumsal uygulamalar > uygulama oluştur** Azure Portal bölümünde, **Galeri olmayan** yeni bir uygulama oluşturun.
 3. Yeni özel uygulamanızın **Özellikler** bölümünde, **nesne kimliğini**kopyalayın.
-4. Yeni bir Web tarayıcısı penceresinde, ' a gidin https://developer.microsoft.com/graph/graph-explorer ve uygulamanızın EKLENDIĞI Azure AD kiracısı için yönetici olarak oturum açın.
+4. Yeni bir Web tarayıcısı penceresinde, ' a gidin https://developer.microsoft.com/graph/graph-explorer ve uygulamanızın eklendiği Azure AD kiracısı için yönetici olarak oturum açın.
 5. Graph Explorer 'da, uygulamanız için sağlama yapılandırmasını başlatmak üzere aşağıdaki komutu çalıştırın.
    "[Nesne-kimliği]" değerini üçüncü adımdan kopyalanmış hizmet sorumlusu KIMLIĞI (nesne KIMLIĞI) ile değiştirin.
 

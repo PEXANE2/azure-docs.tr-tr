@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 118653efc8829ac5ef6287bb36fb5595cff1147b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90da35b76bbe6ec933b3a1fd200f0f5bad643759
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416120"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213321"
 ---
 # <a name="load-contoso-retail-data-to-synapse-sql"></a>Contoso perakende verilerini SYNAPSE SQL 'e yükleme 
 
@@ -292,7 +292,7 @@ Columnstore dizinlerini koruma hakkında daha fazla bilgi için bkz. [columnstor
 
 Bir yükden hemen sonra tek sütunlu istatistikler oluşturmak en iyisidir. Bazı sütunların sorgu koşullarına sahip olmadığını biliyorsanız, bu sütunlarda istatistik oluşturmayı atlayabilirsiniz. Her sütunda tek sütunlu istatistikler oluşturursanız, tüm istatistiklerin yeniden oluşturulması uzun zaman alabilir.
 
-Her tablonun her sütununda tek sütunlu istatistikler oluşturmaya karar verirseniz, `prc_sqldw_create_stats` [istatistik](sql-data-warehouse-tables-statistics.md) makalesindeki saklı yordam kodu örneğini kullanabilirsiniz.
+Her tablonun her sütununda tek sütunlu istatistikler oluşturmaya karar verirseniz, istatistik makalesindeki saklı yordam kodu örneğini kullanabilirsiniz `prc_sqldw_create_stats` . [statistics](sql-data-warehouse-tables-statistics.md)
 
 Aşağıdaki örnek, istatistik oluşturmak için iyi bir başlangıç noktasıdır. Boyut tablosundaki her bir sütunda ve olgu tablolarındaki her bir birleştirme sütununda tek sütunlu istatistikler oluşturur. Daha sonra, daha sonra diğer olgu tablosu sütunlarına tek veya çok sütunlu istatistikler ekleyebilirsiniz.
 

@@ -2,21 +2,21 @@
 title: SAP başarılı etmenleri öznitelik başvurusu
 description: Başarılı bir şekilde hangi özniteliklerin desteklendiğini
 services: active-directory
-author: cmmdesai
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: article
+ms.topic: reference
 ms.workload: identity
 ms.date: 12/06/2019
-ms.author: chmutali
+ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: cdd6abf5d10a529aa4c529d0364b2ba9f1df72e3
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 25541b76dda55db1ec26f4d8e3ec63573a47e7b1
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593193"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781557"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP başarılı etmenleri öznitelik başvurusu
 
@@ -33,7 +33,7 @@ Aşağıdaki tabloda, aşağıdaki iki sağlama uygulaması tarafından destekle
 - [Azure AD Kullanıcı sağlama için başarılı etken](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)
 
 
-| \# | Başarılı etken varlığı                  | Başarılı etken özniteliği     | İşlem Türü |
+| \# | Başarılı etken varlığı                  | Başarılı etken özniteliği     | İşlem türü |
 |----|----------------------------------------|------------------------------|----------------|
 | 1  | PerPerson                              | Personıdexternal             | Okuma           |
 | 2  | PerPerson                              | PersonID                     | Okuma           |
@@ -92,26 +92,26 @@ Aşağıdaki tabloda, aşağıdaki iki sağlama uygulaması tarafından destekle
 | 55 | EmpJob                                 | konum                     | Okuma           |
 | 65 | EmpJob                                 | customString13               | Okuma           |
 | 56 | EmpJob                                 | Yönetici kimliği                    | Okuma           |
-| 57 | EmpJob\.businessunit                   | businessUnit                 | Okuma           |
-| 58 | EmpJob\.businessunit                   | Businessunid               | Okuma           |
-| 59 | EmpJob\.şirketi                        | şirket                      | Okuma           |
-| 60 | EmpJob\.şirketi                        | CompanyID                    | Okuma           |
-| 61 | EmpJob\.şirketi\.countryofregistration | twoCharCountryCode           | Okuma           |
-| 62 | EmpJob\.costcenter                     | costCenter                   | Okuma           |
-| 63 | EmpJob\.costcenter                     | Costcenterıd                 | Okuma           |
-| 64 | EmpJob\.costcenter                     | costCenterDescription        | Okuma           |
-| 65 | EmpJob\.departmanı                     | bölüm                   | Okuma           |
-| 66 | EmpJob\.departmanı                     | departmentId                 | Okuma           |
-| 67 | EmpJob\.bölmesi                       | bölmenin                     | Okuma           |
-| 68 | EmpJob\.bölmesi                       | divisionId                   | Okuma           |
-| 69 | EmpJob\.jobcode                        | jobCode                      | Okuma           |
-| 70 | EmpJob\.jobcode                        | Jobcodeıd                    | Okuma           |
-| 71 | EmpJob\.konumu                       | LocationName                 | Okuma           |
-| 72 | EmpJob\.konumu                       | officeLocationAddress        | Okuma           |
-| 73 | EmpJob\.konumu                       | officeLocationCity           | Okuma           |
-| 74 | EmpJob\.konumu                       | officeLocationCustomString4  | Okuma           |
-| 75 | EmpJob\.konumu                       | officeLocationZipCode        | Okuma           |
-| 76 | EmpJob\.paygrad                       | Paygrad                     | Okuma           |
+| 57 | EmpJob \. businessunit                   | businessUnit                 | Okuma           |
+| 58 | EmpJob \. businessunit                   | Businessunid               | Okuma           |
+| 59 | EmpJob \. şirketi                        | şirket                      | Okuma           |
+| 60 | EmpJob \. şirketi                        | CompanyID                    | Okuma           |
+| 61 | EmpJob \. şirketi \. countryofregistration | twoCharCountryCode           | Okuma           |
+| 62 | EmpJob \. costcenter                     | costCenter                   | Okuma           |
+| 63 | EmpJob \. costcenter                     | Costcenterıd                 | Okuma           |
+| 64 | EmpJob \. costcenter                     | costCenterDescription        | Okuma           |
+| 65 | EmpJob \. departmanı                     | bölüm                   | Okuma           |
+| 66 | EmpJob \. departmanı                     | departmentId                 | Okuma           |
+| 67 | EmpJob \. bölmesi                       | bölmenin                     | Okuma           |
+| 68 | EmpJob \. bölmesi                       | divisionId                   | Okuma           |
+| 69 | EmpJob \. jobcode                        | jobCode                      | Okuma           |
+| 70 | EmpJob \. jobcode                        | Jobcodeıd                    | Okuma           |
+| 71 | EmpJob \. konumu                       | LocationName                 | Okuma           |
+| 72 | EmpJob \. konumu                       | officeLocationAddress        | Okuma           |
+| 73 | EmpJob \. konumu                       | officeLocationCity           | Okuma           |
+| 74 | EmpJob \. konumu                       | officeLocationCustomString4  | Okuma           |
+| 75 | EmpJob \. konumu                       | officeLocationZipCode        | Okuma           |
+| 76 | EmpJob \. paygrad                       | Paygrad                     | Okuma           |
 | 77 | EmpEmploymentTermination               | activeEmploymentsCount       | Okuma           |
 | 78 | EmpEmploymentTermination               | Latestsonlandırmatarihi        | Okuma           |
 
@@ -135,9 +135,9 @@ Aşağıdaki tabloda, yukarıda listelenen başarılı Özellikler ve AD/Azure A
 | 12 | PerEmail                               | emailAddress             | posta                                    | NA                                                                                           |
 | 13 | EmpJob                                 | jobTitle                 | başlık                                   | NA                                                                                           |
 | 14 | EmpJob                                 | Yönetici kimliği                | manager                                 | NA                                                                                           |
-| 15 | EmpJob\.şirketi\.countryofregistration | twoCharCountryCode       | c                                       | NA                                                                                           |
-| 16 | EmpJob\.departmanı                     | bölüm               | bölüm                              | NA                                                                                           |
-| 17 | EmpJob\.bölmesi                       | bölmenin                 | şirket                                 | NA                                                                                           |
-| 18 | EmpJob\.konumu                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
-| 19 | EmpJob\.konumu                       | officeLocationZipCode    | postalCode                              | NA                                                                                           |
+| 15 | EmpJob \. şirketi \. countryofregistration | twoCharCountryCode       | c                                       | NA                                                                                           |
+| 16 | EmpJob \. departmanı                     | bölüm               | bölüm                              | NA                                                                                           |
+| 17 | EmpJob \. bölmesi                       | bölmenin                 | şirket                                 | NA                                                                                           |
+| 18 | EmpJob \. konumu                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
+| 19 | EmpJob \. konumu                       | officeLocationZipCode    | postalCode                              | NA                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | activeEmploymentsCount = 0 ise, account\'ı devre dışı bırakın.                                           |

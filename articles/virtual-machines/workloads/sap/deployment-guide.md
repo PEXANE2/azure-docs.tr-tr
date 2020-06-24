@@ -13,14 +13,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/16/2019
+ms.date: 06/22/2020
 ms.author: sedusch
-ms.openlocfilehash: a850f7ceaeb57678738084cb14f383b46c7dfe84
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 828615add9f24b5a2089e240bbf62647f34a25f0
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660637"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207422"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler dağıtımı
 
@@ -201,7 +201,6 @@ ms.locfileid: "84660637"
 [planning-guide-3.2.2]:planning-guide.md#fc1ac8b2-e54a-487c-8581-d3cc6625e560 (Yükseltme etki alanları)
 [planning-guide-3.2.3]:planning-guide.md#18810088-f9be-4c97-958a-27996255c665 (Azure kullanılabilirlik kümeleri)
 [planning-guide-3.2]:planning-guide.md#8d8ad4b8-6093-4b91-ac36-ea56d80dbf77 (Microsoft Azure sanal makineler kavramı)
-[planning-guide-3.3.2]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure Premium Depolama)
 [planning-guide-5.1.1]:planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53 (Bir VM 'yi Şirket içinden, genelleştirilmiş olmayan bir disk ile Azure 'a taşıma)
 [planning-guide-5.1.2]:planning-guide.md#e18f7839-c0e2-4385-b1e6-4538453a285c (Müşteriye özgü görüntüyle VM dağıtma)
 [planning-guide-5.2.1]:planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef (Genelleştirilmiş olmayan bir diskle bir VM 'yi Şirket içinden Azure 'a taşımaya yönelik hazırlık)
@@ -215,7 +214,6 @@ ms.locfileid: "84660637"
 [planning-guide-7.1]:planning-guide.md#3e9c3690-da67-421a-bc3f-12c520d99a30 (SAP NetWeaver demo/eğitim senaryosuna sahip tek VM)
 [planning-guide-7]:planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 (SAP örneklerinin yalnızca bulutta dağıtılması kavramları)
 [planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (SAP için Azure Izleme çözümü)
-[planning-guide-azure-premium-storage]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure Premium Depolama)
 [planning-guide-managed-disks]:planning-guide.md#c55b2c6e-3ca1-4476-be16-16c81927550f (Yönetilen diskler)
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
@@ -443,7 +441,7 @@ Sihirbaz, ağ arabirimleri ve depolama hesapları gibi gerekli tüm kaynaklara e
    * **Konum**: yeni sanal makinenin dağıtılacağı yer. Sanal makineyi şirket içi ağınıza bağlamak istiyorsanız, Azure 'u şirket içi ağınıza bağlayan sanal ağın konumunu seçtiğinizden emin olun. Daha fazla bilgi için bkz. [SAP NetWeaver Için Azure sanal makinelerinde planlama ve uygulama][planning-guide] [Microsoft Azure ağ iletişimi][planning-guide-microsoft-azure-networking] .
 1. **Boyut**:
 
-     Desteklenen VM türlerinin bir listesi için bkz. SAP Note [1928533]. Azure Premium Depolama kullanmak istiyorsanız, doğru VM türünü seçtiğinizden emin olun. Tüm VM türleri Premium depolamayı desteklemez. Daha fazla bilgi için bkz. [Depolama: Microsoft Azure depolama ve veri diskleri][planning-guide-storage-microsoft-azure-storage-and-data-disks] ve Azure sanal makineler 'de [Azure PREMIUM depolama][planning-guide-azure-premium-storage] , [SAP NetWeaver için planlama ve uygulama][planning-guide].
+     Desteklenen VM türlerinin bir listesi için bkz. SAP Note [1928533]. Azure Premium Depolama kullanmak istiyorsanız, doğru VM türünü seçtiğinizden emin olun. Tüm VM türleri Premium depolamayı desteklemez. Daha fazla bilgi için bkz. [Depolama: Microsoft Azure depolama ve veri diskleri][planning-guide-storage-microsoft-azure-storage-and-data-disks] ve SAP NETWEAVER for [SAP iş yükleri Için](./planning-guide-storage.md) Azure [sanal makinelerinde planlama ve uygulama][planning-guide].
 
 1. **Ayarlar**:
    * **Depolama**
@@ -583,7 +581,7 @@ Sihirbaz, ağ arabirimleri ve depolama hesapları gibi gerekli tüm kaynaklara e
    * **Konum**: yeni sanal makinenin dağıtılacağı yer. Sanal makineyi şirket içi ağınıza bağlamak istiyorsanız, Azure 'u şirket içi ağınıza bağlayan sanal ağın konumunu seçtiğinizden emin olun. Daha fazla bilgi için bkz. [SAP NetWeaver Için Azure sanal makinelerinde planlama ve uygulama][planning-guide] [Microsoft Azure ağ iletişimi][planning-guide-microsoft-azure-networking] .
 1. **Boyut**:
 
-     Desteklenen VM türlerinin bir listesi için bkz. SAP Note [1928533]. Azure Premium Depolama kullanmak istiyorsanız, doğru VM türünü seçtiğinizden emin olun. Tüm VM türleri Premium depolamayı desteklemez. Daha fazla bilgi için bkz. [Depolama: Microsoft Azure depolama ve veri diskleri][planning-guide-storage-microsoft-azure-storage-and-data-disks] ve Azure sanal makineler 'de [Azure PREMIUM depolama][planning-guide-azure-premium-storage] , [SAP NetWeaver için planlama ve uygulama][planning-guide].
+     Desteklenen VM türlerinin bir listesi için bkz. SAP Note [1928533]. Azure Premium Depolama kullanmak istiyorsanız, doğru VM türünü seçtiğinizden emin olun. Tüm VM türleri Premium depolamayı desteklemez. Daha fazla bilgi için bkz. [Depolama: Microsoft Azure depolama ve veri diskleri][planning-guide-storage-microsoft-azure-storage-and-data-disks] ve SAP NETWEAVER for [SAP iş yükleri Için](./planning-guide-storage.md) Azure [sanal makinelerinde planlama ve uygulama][planning-guide].
 
 1. **Ayarlar**:
    * **Depolama**
@@ -1030,6 +1028,11 @@ SAP için yeni VM uzantısı, VM 'nin izleme ve yapılandırma verilerine erişm
 
 Bu işlem, Azure PowerShell sonraki sürümünde otomatikleştirilebilir (> 4.2.0). Yeni sürüm kullanılabilir olduğunda bu makaleyi güncelleştireceğiz. Bu kadar, uzantıyı el ile yüklemek için lütfen bu adımları izleyin.
 
+> [!NOTE]
+> Aşağıdaki adımlarda, kaynak grubu veya ayrı kaynaklar (sanal makine, veri diskleri vb.) üzerinde sahip ayrıcalıklar gerekir
+
+1. SAP konak Aracısı 7,21 PL 47 veya üstünü kullandığınızdan emin olun.
+1. SAP için VM uzantısının geçerli sürümünü kaldırdığınızdan emin olun. Aynı sanal makinede SAP için VM uzantısının her iki sürümünün de yüklenmesi desteklenmez.
 1. Azure PowerShell cmdlet 'inin en son sürümünü yüklediğinizden emin olun. Daha fazla bilgi için bkz. [Azure PowerShell cmdlet 'Leri dağıtma][deployment-guide-4.1].
 1. VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirmek için [PowerShell 'i kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma][qs-configure-powershell-windows-vm] makalesindeki adımları izleyin. Kullanıcı tarafından atanan Yönetilen kimlikler, SAP için VM uzantısı tarafından desteklenmez. Ancak, sistem tarafından atanan ve Kullanıcı tarafından atanan bir kimlik olmak üzere her ikisini de etkinleştirebilirsiniz.
     
@@ -1067,6 +1070,11 @@ Bu işlem, Azure PowerShell sonraki sürümünde otomatikleştirilebilir (> 4.2.
 
 SAP için yeni VM uzantısı, VM 'nin izleme ve yapılandırma verilerine erişmek için VM 'ye atanan bir yönetilen kimlik kullanır. Azure CLı kullanarak SAP için yeni Azure uzantısı 'nı yüklemek için, önce VM 'ye bu tür bir kimlik atamanız ve bu kimliğe bu kimlik, sanal makine tarafından kullanılan tüm kaynaklara (örneğin, diskler ve ağ arabirimleri) vermesi gerekir.
 
+> [!NOTE]
+> Aşağıdaki adımlarda, kaynak grubu veya ayrı kaynaklar (sanal makine, veri diskleri vb.) üzerinde sahip ayrıcalıklar gerekir
+
+1. SAP konak Aracısı 7,21 PL 47 veya üstünü kullandığınızdan emin olun.
+1. SAP için VM uzantısının geçerli sürümünü kaldırdığınızdan emin olun. Aynı sanal makinede SAP için VM uzantısının her iki sürümünün de yüklenmesi desteklenmez.
 1. Azure CLI 2,0 'yi, [Azure clı 2,0][azure-cli-2]' de açıklandığı gibi yükler.
 
 1. Azure hesabınızla oturum açın:
@@ -1420,7 +1428,7 @@ Uzantı yüklü değil. Bunun bir ara sunucu sorunu olup olmadığını (daha ö
 
 AzureEnhancedMonitoring Windows işlemi, Azure 'da performans ölçümlerini toplar. İşlem birkaç kaynaktan veri alır. Bazı yapılandırma verileri yerel olarak toplanır ve bazı performans ölçümleri Azure Izleyici 'den okunurdur.
 
-SAP Note [1999351]kullanarak sorun giderirken, bir Linux sanal makinesi için WINDOWS için BC-op-NT-azr veya BC-op-LNX-azr bileşen ÜZERINDE bir SAP müşteri destek iletisi açın.
+SAP Not [1999351] kullanarak sorun giderme sorunu çözmezse, bir Linux sanal makinesi için WINDOWS için BC-op-NT-azr veya BC-op-LNX-azr bileşen ÜZERINDE bir SAP müşteri destek iletisi açın. Lütfen C: \\ Packages \\ eklentileri \\ Microsoft. AzureCAT. AzureEnhancedMonitoring. MonitorX64Windows \\ &lt; Sürüm>\\logapp.txt günlük dosyasını olaya ekleyin.
 
 #### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Azure performans sayaçları hiç görünmüyor
 
@@ -1442,7 +1450,7 @@ Azure 'daki performans ölçümleri, çeşitli kaynaklardan veri alan bir Daemon
 
 Bilinen sorunların tam ve güncel listesi için bkz. sap Note [1999351], SAP Için Azure Uzantısı ile ilgili ek sorun giderme bilgileri.
 
-SAP Not [1999351] kullanarak sorun giderme sorunu çözmezse, uzantıyı [SAP Için Azure uzantısını yapılandırma][deployment-guide-4.5]başlığı altında açıklandığı gibi yeniden yüklemelisiniz. Sorun devam ederse, bir Linux sanal makinesi için Windows için BC-OP-NT-AZR veya BC-OP-LNX-AZR bileşen üzerinde bir SAP müşteri destek iletisi açın.
+SAP Not [1999351] kullanarak sorun giderme sorunu çözmezse, uzantıyı [SAP Için Azure uzantısını yapılandırma][deployment-guide-4.5]başlığı altında açıklandığı gibi yeniden yüklemelisiniz. Sorun devam ederse, bir Linux sanal makinesi için Windows için BC-OP-NT-AZR veya BC-OP-LNX-AZR bileşen üzerinde bir SAP müşteri destek iletisi açın. Lütfen/var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux- &lt; sürüm>/logapp.txt günlük dosyasını olaya ekleyin.
 
 ## <a name="azure-extension-error-codes"></a>Azure uzantısı hata kodları
 

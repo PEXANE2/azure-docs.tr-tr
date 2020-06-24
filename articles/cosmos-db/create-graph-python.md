@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: lbosq
 ms.custom: tracking-python
-ms.openlocfilehash: fd266dd4e75915c0710acce1a2a49f24049c4e9d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 0f96cbd86921428a85aa69f3561252aeb7fd67b5
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559861"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118228"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Hızlı başlangıç: Python ve Azure portal kullanarak Azure Cosmos DB grafik veritabanı oluşturma
 
@@ -98,7 +98,7 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
 
     URI değerinin ilk parçasını kopyalayın.
 
-    ![Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar sayfası](./media/create-graph-python/keys.png)
+    :::image type="content" source="./media/create-graph-python/keys.png" alt-text="Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar sayfası":::
 
 2. *Connect.py* dosyasını açın ve 104. satırda URI değerini `<YOUR_ENDPOINT>` buraya yapıştırın:
 
@@ -172,15 +172,15 @@ Köşeler ve kenarlar eklendikten sonra artık Veri Gezgini geri dönüp grafiğ
 
 1. Azure portal Azure Cosmos DB hesabınızda, **Veri Gezgini**, **örnek grafik**' i ve **Graf**' ı seçin ve ardından **Filtre Uygula**' yı seçin. 
 
-   ![Azure portalındaki Veri Gezgini'nde yeni belge oluşturma](./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png)
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="Azure portalındaki Veri Gezgini'nde yeni belge oluşturma":::
 
 2. **Sonuçlar** listesinde, grafiğe üç yeni kullanıcı eklendiğine dikkat edin. Köşeleri sürükleyip bırakarak hareket ettirebilir, farenizin tekerleğini kaydırarak öğeleri yakınlaştırabilir ve uzaklaştırabilir, ayrıca çift okla grafiğin boyutunu genişletebilirsiniz. 
 
-   ![Azure portalında Veri Gezgini'ndeki grafikte yeni köşeler](./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png)
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png" alt-text="Azure portalında Veri Gezgini'ndeki grafikte yeni köşeler":::
 
 3. Şimdi birkaç yeni kullanıcı ekleyelim. Grafiğinize veri eklemek için **Yeni köşe** düğmesini seçin.
 
-   ![Azure portalındaki Veri Gezgini'nde yeni belge oluşturma](./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png)
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Azure portalındaki Veri Gezgini'nde yeni belge oluşturma":::
 
 4. *Kişi* etiketi girin.
 
@@ -219,15 +219,15 @@ Köşeler ve kenarlar eklendikten sonra artık Veri Gezgini geri dönüp grafiğ
 
 12. Artık rakesh ve ashley arasında bağlantı kurabiliriz. **Sonuçlar** listesinde **Ashley** ' in seçili olduğundan emin olun, sonra sağ alt köşedeki **hedefler** ' in yanındaki Düzenle düğmesini seçin. **Özellikler** alanını görmek için pencerenizi genişletmeniz gerekebilir.
 
-    ![Hedef grafikteki bir köşeyi değiştirme](./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Hedef grafikteki bir köşeyi değiştirme":::
 
 13. **Hedef** kutusuna *Rakesh*yazın ve **kenar etiketi** kutusuna *bilir*yazın ve ardından denetimi seçin.
 
-    ![Veri Gezgininde ashley ve rakesh arasında bir bağlantı ekleyin](./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png" alt-text="Veri Gezgininde ashley ve rakesh arasında bir bağlantı ekleyin":::
 
 14. Sonuç listesinden **rakesh**’i seçin, ashley ve rakesh’in bağlantılı olduğunu görürsünüz. 
 
-    ![Veri Gezgini'nde bağlı iki köşe](./media/create-graph-python/azure-cosmosdb-graph-explorer.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer.png" alt-text="Veri Gezgini'nde bağlı iki köşe":::
 
 Bu işlemle birlikte, bu öğreticideki kaynak oluşturma bölümünü tamamladınız. Grafiğinize köşe eklemeye, var olan köşeleri veya sorguları değiştirmeye devam edebilirsiniz. Şimdi, Azure Cosmos DB’nin sağladığı ölçümleri gözden geçirip kaynakları temizleyelim. 
 

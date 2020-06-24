@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: ce287ed94066aac4b900d2ddb02579a54b8550f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1ae8ca1ef940e45c2d32adc9a002b349f9e1b44
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680394"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783019"
 ---
 # <a name="material-mapping-for-model-formats"></a>Model biçimleri için malzeme eşleme
 
@@ -43,18 +43,17 @@ Aşağıdaki tabloda eşleme gösterilmektedir:
 |   emissiveFactor    |   -                        |
 |   emissiveTexture   |   -                        |
 
-GlTF içindeki her dokuda Azure uzaktan `texCoord` işleme malzemelerde desteklenen bir değer olabilir.
+GlTF içindeki her `texCoord` dokuda Azure uzaktan işleme malzemelerde desteklenen bir değer olabilir.
 
 ### <a name="embedded-textures"></a>Gömülü dokular
 
-. Bin veya * \*. GLB* dosyalarına gömülü dokular desteklenir. * \**
+* \* . Bin* veya * \* . GLB* dosyalarına gömülü dokular desteklenir.
 
 ### <a name="supported-gltf-extension"></a>Desteklenen glTF uzantısı
 
 Ayrıca, temel özellik kümesine ek olarak Azure uzaktan Işleme aşağıdaki glTF uzantılarını destekler:
 
 * [MSFT_packing_occlusionRoughnessMetallic](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_packing_occlusionRoughnessMetallic/README.md)
-* [MSFT_texture_dds](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_texture_dds/README.md)
 * [KHR_materials_unlit](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_unlit/README.md): [renk malzemelere](../overview/features/color-materials.md)karşılık gelir. *Duykulu* malzemeler için bu uzantının kullanılması önerilir.
 * [KHR_materials_pbrSpecularGlossiness](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_pbrSpecularGlossiness/README.md): Metalik bir kabalık dokular yerine, dağıtılmış, kurgusal bir açıklık dokuları sağlayabilirsiniz. Azure uzaktan Işleme uygulamasının uzantısı doğrudan uzantısından sonra dönüştürme formüllerini izler.
 
@@ -102,10 +101,10 @@ Yukarıdaki eşleme, çok sayıda varsayımlar nedeniyle, malzeme dönüştürme
 Aşağıda kullanılan bazı tanımlar:
 
 * `Specular` =  `SpecularColor` * `SpecularFactor`
-* `SpecularIntensity` = `Specular`. Red ∗ 0,2125 + `Specular`. Yeşil ∗ 0,7154 + `Specular`. Mavi ∗ 0,0721
-* `DiffuseBrightness`= 0,299 * `Diffuse`. Kırmızı<sup>2</sup> + 0,587 * `Diffuse`. Yeşil<sup>2</sup> + 0,114 * `Diffuse`. Mavi<sup>2</sup>
-* `SpecularBrightness`= 0,299 * `Specular`. Kırmızı<sup>2</sup> + 0,587 * `Specular`. Yeşil<sup>2</sup> + 0,114 * `Specular`. Mavi<sup>2</sup>
-* `SpecularStrength`= Max (`Specular`. Kırmızı, `Specular`. Yeşil, `Specular`. Ma
+* `SpecularIntensity` = `Specular`. Red ∗ 0,2125 + `Specular` . Yeşil ∗ 0,7154 + `Specular` . Mavi ∗ 0,0721
+* `DiffuseBrightness`= 0,299 * `Diffuse` . Kırmızı<sup>2</sup> + 0,587 * `Diffuse` . Yeşil<sup>2</sup> + 0,114 * `Diffuse` . Mavi<sup>2</sup>
+* `SpecularBrightness`= 0,299 * `Specular` . Kırmızı<sup>2</sup> + 0,587 * `Specular` . Yeşil<sup>2</sup> + 0,114 * `Specular` . Mavi<sup>2</sup>
+* `SpecularStrength`= Max ( `Specular` . Kırmızı, `Specular` . Yeşil, `Specular` . Ma
 
 Specularyoğunluğu formülü [buradan](https://en.wikipedia.org/wiki/Luma_(video))elde edilir.
 Parlaklık formülü bu [belirtimde](http://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.601-7-201103-I!!PDF-E.pdf)açıklanmıştır.
@@ -120,7 +119,7 @@ Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
 
 ### <a name="metalness"></a>Metalness
 
-`Metalness`, ' dan `Diffuse` hesaplanır `Specular` ve [gltf belirtiminde bu formül](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js)kullanılarak kullanılır.
+`Metalness`, ' dan hesaplanır `Diffuse` ve `Specular` [gltf belirtiminde bu formül](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js)kullanılarak kullanılır.
 
 Buradaki fikir denklemi çözeceğiz: AX<sup>2</sup> + BX + C = 0.
 Temel olarak, dielektrik yüzeyleri, hafif bir şekilde ışığın %4 ' i etrafında yansıtmaktadır ve geri kalan dağıtılmış olur. Metalik yüzeyler, dağıtılmış bir şekilde hiçbir ışık göstermez, ancak tamamen yansımalı bir şekilde yansıtır.
@@ -139,10 +138,10 @@ Metalness = clamp(value, 0.0, 1.0);
 
 ### <a name="albedo"></a>Albedo
 
-`Albedo`, `Specular`ve `Metalness`' `Diffuse`den hesaplanır.
+`Albedo`, ve ' den hesaplanır `Diffuse` `Specular` `Metalness` .
 
 Metalness bölümünde açıklandığı gibi, dielektrik yüzeyleri ışığın %4 ' i etrafında yansıtır.  
-Buradaki fikir, bir faktör olarak değer kullanan `Dielectric` `Metal` `Metalness` renkler arasında ve renklerle daha erken enterpoladır. Metalness ise `0.0`, yansımalı öğesine bağlı olarak, koyu bir renk (yansımalı ise yüksekse) veya dağıtma değişmez (herhangi bir yansımalı yoksa) olur. Metalness büyük bir değer ise, bir daha sonra yansımalı renk yerine, dağıtma rengi kaybolacaktır.
+Buradaki fikir, `Dielectric` `Metal` `Metalness` bir faktör olarak değer kullanan renkler arasında ve renklerle daha erken enterpoladır. Metalness ise `0.0` , yansımalı öğesine bağlı olarak, koyu bir renk (yansımalı ise yüksekse) veya dağıtma değişmez (herhangi bir yansımalı yoksa) olur. Metalness büyük bir değer ise, bir daha sonra yansımalı renk yerine, dağıtma rengi kaybolacaktır.
 
 ```Cpp
 dielectricSpecularReflectance = 0.04
@@ -156,21 +155,21 @@ AlbedoRGB = clamp(albedoRawColor, 0.0, 1.0);
 
 `AlbedoRGB`Yukarıdaki formül tarafından hesaplandı, ancak alfa kanalı ek hesaplamalar gerektiriyor. FBX biçimi saydamlık ile ilgilidir ve bunu tanımlamanın birçok yolu vardır. Farklı içerik araçları farklı yöntemler kullanır. Buradaki fikir, bunları tek bir formülde birleştirmenizde yarar vardır. Bazı varlıkları yanlışlıkla saydam olarak gösteriliyor, ancak ortak bir şekilde oluşturulmadıysa.
 
-Bu,, `TransparentColor` `TransparencyFactor`,, ' `Opacity`den hesaplanır:
+Bu,, `TransparentColor` `TransparencyFactor` ,, ' den hesaplanır `Opacity` :
 
-tanımlanmışsa, bunu doğrudan kullanın:  =  `Opacity` `AlbedoAlpha` `Opacity`  
-tanımlanmışsa = 1,0-((`TransparentColor` `TransparencyColor` `AlbedoAlpha` Kırmızı + `TransparentColor`. Yeşil + `TransparentColor`. Mavi)/3,0) else  
-Eğer `TransparencyFactor`, then `AlbedoAlpha` = 1,0-`TransparencyFactor`
+`Opacity`tanımlanmışsa, bunu doğrudan kullanın: `AlbedoAlpha`  =  `Opacity` Else  
+`TransparencyColor`tanımlanmışsa `AlbedoAlpha` = 1,0-(( `TransparentColor` . Kırmızı + `TransparentColor` . Yeşil + `TransparentColor` . Mavi)/3,0) else  
+Eğer `TransparencyFactor` , then `AlbedoAlpha` = 1,0-`TransparencyFactor`
 
-Son `Albedo` rengin, `AlbedoRGB` ile birleştiren dört kanalı vardır. `AlbedoAlpha`
+Son `Albedo` rengin, ile birleştiren dört kanalı vardır `AlbedoRGB` `AlbedoAlpha` .
 
 ### <a name="summary"></a>Özet
 
-Burada özetlemek gerekirse, `Albedo` sıfıra yakınsa, orijinale `Diffuse` `Specular` yakın olacak. Aksi takdirde yüzey metalik bir yüzey gibi görünür ve dağıtma rengini kaybeder. Yüzey yeterince büyükse daha parlak ve yansıtıcı `ShininessExponent` görünür ve `Specular` parlak olur. Aksi takdirde yüzey kabaca görünür ve ortamı yansıtmaktadır.
+Burada özetlemek gerekirse, `Albedo` `Diffuse` sıfıra yakınsa, orijinale yakın olacak `Specular` . Aksi takdirde yüzey metalik bir yüzey gibi görünür ve dağıtma rengini kaybeder. Yüzey yeterince büyükse daha parlak ve yansıtıcı görünür `ShininessExponent` ve `Specular` parlak olur. Aksi takdirde yüzey kabaca görünür ve ortamı yansıtmaktadır.
 
 ### <a name="known-issues"></a>Bilinen sorunlar
 
-* Geçerli formül basit renkli geometri için iyi çalışmıyor. `Specular` Yeterince parlak ise, tüm geometriler herhangi bir renk olmadan yansıtmalı metalik yüzeyler haline gelir. Buradaki geçici çözüm, orijinalden `Specular` %30 ' a düşürüme veya dönüştürme ayarı [fbxAssumeMetallic](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model)' i kullanmaktır.
+* Geçerli formül basit renkli geometri için iyi çalışmıyor. `Specular`Yeterince parlak ise, tüm geometriler herhangi bir renk olmadan yansıtmalı metalik yüzeyler haline gelir. Buradaki geçici çözüm, `Specular` orijinalden %30 ' a düşürüme veya dönüştürme ayarı [fbxAssumeMetallic](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model)' i kullanmaktır.
 * PBR malzemeleri son zamanlarda `Maya` ve `3DS Max` içerik oluşturma araçlarına eklendi. Bu kişiler, FBX 'e geçirmek için Kullanıcı tanımlı özel siyah kutu özelliklerini kullanırlar. Azure uzaktan Işleme, açıklanmadığı ve biçim kapalı-kaynak olduğundan bu ek özellikleri okummıyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar

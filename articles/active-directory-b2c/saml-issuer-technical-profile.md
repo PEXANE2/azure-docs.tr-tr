@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8f7beccde92030d1e01633f4e4044849d7e91d05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d709bf02f1cb504121e52f88385d0f6c074b24a0
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229961"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203597"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde SAML belirteci veren için teknik profil tanımlama
 
@@ -26,11 +26,11 @@ Azure Active Directory B2C (Azure AD B2C), her kimlik doğrulama akışını iş
 
 ## <a name="protocol"></a>Protokol
 
-**Protokol** öğesinin `None` **Name** özniteliğinin olarak ayarlanması gerekir. **Outputtokenformat** öğesini olarak `SAML2`ayarlayın.
+**Protokol** öğesinin **Name** özniteliğinin olarak ayarlanması gerekir `None` . **Outputtokenformat** öğesini olarak ayarlayın `SAML2` .
 
-Aşağıdaki örnek, için `Saml2AssertionIssuer`bir teknik profil göstermektedir:
+Aşağıdaki örnek, için bir teknik profil göstermektedir `Saml2AssertionIssuer` :
 
-```XML
+```xml
 <TechnicalProfile Id="Saml2AssertionIssuer">
   <DisplayName>Token Issuer</DisplayName>
   <Protocol Name="SAML2"/>
@@ -52,11 +52,11 @@ Aşağıdaki örnek, için `Saml2AssertionIssuer`bir teknik profil göstermekted
 
 **Inputclaim**, **Outputclaim**ve **persistclaim** öğeleri boş veya yok. **Inutputclaimstransformations** ve **outputclaimstransformations** öğeleri de yok.
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Issueruri | Hayır | SAML yanıtında görünen veren adı. Değer, bağlı olan taraf uygulamasında yapılandırılan adla aynı olmalıdır. |
+| Issueruri | No | SAML yanıtında görünen veren adı. Değer, bağlı olan taraf uygulamasında yapılandırılan adla aynı olmalıdır. |
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
 
@@ -65,11 +65,11 @@ CryptographicKeys öğesi aşağıdaki öznitelikleri içerir:
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | MetadataSigning | Yes | SAML meta verilerini imzalamak için kullanılacak x509 sertifikası (RSA anahtar kümesi). Azure AD B2C meta verileri imzalamak için bu anahtarı kullanır. |
-| SamlMessageSigning| Yes| SAML iletilerini imzalamak için kullanılacak x509 sertifikasını (RSA anahtar kümesi) belirtin. Azure AD B2C, bağlı olan tarafa gönderilen yanıtı `<samlp:Response>` imzalamak için bu anahtarı kullanır.|
+| SamlMessageSigning| Yes| SAML iletilerini imzalamak için kullanılacak x509 sertifikasını (RSA anahtar kümesi) belirtin. Azure AD B2C, `<samlp:Response>` bağlı olan tarafa gönderilen yanıtı imzalamak için bu anahtarı kullanır.|
 
 ## <a name="session-management"></a>Oturum yönetimi
 
-Bağlı olan taraf uygulaması arasındaki Azure AD B2C SAML oturumlarını, `UseTechnicalProfileForSessionManagement` öğesinin özniteliği, [Samlssosessionprovider](custom-policy-reference-sso.md#samlssosessionprovider) SSO oturumuna başvuru olarak yapılandırmak için.
+Bağlı olan taraf uygulaması arasındaki Azure AD B2C SAML oturumlarını, öğesinin özniteliği, `UseTechnicalProfileForSessionManagement` [Samlssosessionprovider](custom-policy-reference-sso.md#samlssosessionprovider) SSO oturumuna başvuru olarak yapılandırmak için.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

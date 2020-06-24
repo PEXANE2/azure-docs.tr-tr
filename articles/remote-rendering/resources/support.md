@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 04/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 8c471687579dfe30b913197c6f080a450f5f3449
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 082148ecfd4332abb42f96afcd94032d428069ce
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82107452"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782526"
 ---
 # <a name="azure-remote-rendering-support-options"></a>Azure uzaktan Işleme desteği seçenekleri
 
@@ -43,7 +43,7 @@ Azure uzaktan Işleme için Azure portal içinde bir teknik destek bileti açmak
 
 ## <a name="community-support"></a>Topluluk desteği
 
-Kullanıcı topluluğundan destek için lütfen [Stack Overflow Azure uzaktan işleme](https://stackoverflow.com/questions/tagged/azure-remote-rendering)' ya bakın.
+Kullanıcı topluluğundan destek için, bkz. [Azure uzaktan işleme Stack Overflow](https://stackoverflow.com/questions/tagged/azure-remote-rendering).
 
 ## <a name="provide-documentation-feedback"></a>Belge geri bildirimi sağlama
 
@@ -52,6 +52,11 @@ Her belge makalesinin en altında, Bu sayfa için geri bildirim sağlamak üzere
 ## <a name="provide-product-feedback"></a>Ürün geri bildirimi sağlama
 
 Geri bildirim sağlamak için, Azure uzaktan Işleme için bir fikir veya öneri paylaşın veya başkalarının gönderdiği fikirleri oylayın, [Azure uzaktan Işleme geri bildirim forumunu](https://feedback.azure.com/forums/928696-azure-remote-rendering)ziyaret edin.
+
+
+## <a name="microsoft-qa"></a>Microsoft Soru-Cevap
+
+Microsoft mühendisleri, Azure en değerli uzmanlar (MVP) veya uzman topluluğumuza ait teknik ürün sorularınız hakkında hızlı ve güvenilir yanıtlar için, Azure 'un topluluk desteği için tercih edilen hedefi olan [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-remote-rendering.html)'da bize katılın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

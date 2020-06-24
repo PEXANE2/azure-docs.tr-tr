@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 9152bdfa9575738c853521814938cd0d7ec25efb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 53725e7d4c39405e7ba47f8915e7444ce6a2167a
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657366"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118458"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Azure Cosmos DB 'de yerleşik jupi Not Defteri desteği (Önizleme)
 
@@ -19,11 +19,11 @@ Jupyter Not defteri, canlı kod, denklem, görselleştirmeler ve anlatım metni 
 
 Azure Cosmos DB yerleşik jupi Not defterleri, Azure portal ve Azure Cosmos DB hesaplarınız ile doğrudan tümleşiktir ve kolayca kullanılabilir hale getirir. Geliştiriciler, veri uzmanları, mühendisler ve analistler, veri araştırması, veri temizleme, veri dönüştürmeleri, sayısal benzetimler, istatistiksel modelleme, veri görselleştirme ve makine öğrenimi yapmak için tanıdık Jupistter Not defteri deneyimini kullanabilir.
 
-![Azure Cosmos DB 'de jupi Not defteri görselleştirmeleri](./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png)
+:::image type="content" source="./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png" alt-text="Azure Cosmos DB 'de jupi Not defteri görselleştirmeleri":::
 
 Azure Cosmos DB, çekirdek (SQL), Cassandra, Gremlin, tablo ve MongoDB için API dahil tüm API 'Ler için hem C# hem de Python not defterlerini destekler. Not defteri içinde, Azure Cosmos DB kaynakları oluşturmayı, verileri yüklemeyi ve verilerinizi Azure Cosmos DB ve görselleştirmeyi kolaylaştıran yerleşik komutlar ve özelliklerden yararlanabilirsiniz. 
 
-![Azure Cosmos DB 'de jupi Not Defteri desteği](./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png)
+:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Azure Cosmos DB 'de jupi Not Defteri desteği":::
 
 ## <a name="benefits-of-jupyter-notebooks"></a>Jupyıter Not defterlerinin avantajları
 

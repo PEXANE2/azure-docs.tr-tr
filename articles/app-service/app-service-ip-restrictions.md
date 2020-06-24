@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 298555da2056bc4c16d4d7b16615604f9798b91b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a77172aacc4c58e6430339328410744cc866def3
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81639279"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207133"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service erişim kısıtlamaları
 
@@ -30,7 +30,7 @@ Bir Azure sanal ağından (VNet) Web uygulamanıza erişimi kısıtlama özelli�
 
 ## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>Portalda erişim kısıtlama kuralları ekleme ve bunları Düzenle ##
 
-Uygulamanıza bir erişim kısıtlama kuralı eklemek için, menüyü kullanarak **ağ**>**erişim kısıtlamalarını** açın ve **erişim kısıtlamalarını Yapılandır** ' a tıklayın.
+Uygulamanıza bir erişim kısıtlama kuralı eklemek için, menüyü kullanarak **ağ** > **erişim kısıtlamalarını** açın ve **erişim kısıtlamalarını Yapılandır** ' a tıklayın.
 
 ![App Service ağ seçenekleri](media/app-service-ip-restrictions/access-restrictions.png)  
 
@@ -59,6 +59,10 @@ Hizmet uç noktaları, seçili Azure sanal ağ alt ağlarına erişimi kısıtla
 Hizmet uç noktaları, bir App Service Ortamı çalışan uygulamalara erişimi kısıtlamak için kullanılamaz. Uygulamanız bir App Service Ortamı olduğunda, IP erişim kuralları ile uygulamanıza erişimi denetleyebilirsiniz. 
 
 Hizmet uç noktaları ile uygulamanızı uygulama ağ geçitleri veya diğer WAF cihazları ile yapılandırabilirsiniz. Ayrıca, çok katmanlı uygulamaları güvenli arka uçlarla da yapılandırabilirsiniz. Bazı olasılıklarla ilgili daha fazla ayrıntı için, [ağ özelliklerini okuyun ve App Service](networking-features.md) ve [hizmet uç noktalarıyla tümleştirme Application Gateway](networking/app-gateway-with-service-endpoints.md).
+
+> [!NOTE]
+> Hizmet uç noktaları şu anda IP SSL sanal IP (VIP) kullanan Web uygulamaları için desteklenmemektedir. 
+>
 
 ## <a name="managing-access-restriction-rules"></a>Erişim kısıtlama kurallarını yönetme
 

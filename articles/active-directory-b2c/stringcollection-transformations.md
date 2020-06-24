@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cac7e6feb632456b63b97ead057f9ecaf49322ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ad9cc3d6d07c8d744ec667e2fffb035848121b4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729712"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203257"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection talep dönüştürmeleri
 
@@ -38,7 +38,7 @@ Yeni veya mevcut bir stringCollection 'a bir dize eklemek için bu talep dönü�
 
 Aşağıdaki talep dönüştürmesi, **e-posta** ClaimType 'ı **Diğer postalar** ClaimType 'a ekler.
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateOtherMailsFromEmail" TransformationMethod="AddItemToStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="item" />
@@ -53,10 +53,10 @@ Aşağıdaki talep dönüştürmesi, **e-posta** ClaimType 'ı **Diğer postalar
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-  - **koleksiyon**: ["someone@outlook.com"]
-  - **öğe**: "admin@contoso.com"
+  - **koleksiyon**: [" someone@outlook.com "]
+  - **öğe**: " admin@contoso.com "
 - Çıkış talepleri:
-  - **koleksiyon**: ["someone@outlook.com", "admin@contoso.com"]
+  - **koleksiyon**: [" someone@outlook.com ", " admin@contoso.com "]
 
 ## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
 
@@ -68,9 +68,9 @@ Yeni bir benzersiz değerler stringCollection talebine bir String parametresi ek
 | InputParameter | öğe | string | Çıkış talebine eklenecek değer. |
 | OutputClaim |  koleksiyonu | stringCollection | Bu talep dönüştürmesinin ardından üretilen ClaimType, giriş parametresinde belirtilen değerle çağırılır. |
 
-Yeni veya mevcut bir stringCollection 'a bir dize değeri eklemek için bu talep dönüşümünü kullanın. Aşağıdaki örnek, **Diğer postalar** talebine bir sabit eadmin@contoso.com-posta adresi () ekler.
+Yeni veya mevcut bir stringCollection 'a bir dize değeri eklemek için bu talep dönüşümünü kullanın. Aşağıdaki örnek, admin@contoso.com **Diğer postalar** talebine bir sabit e-posta adresi () ekler.
 
-```XML
+```xml
 <ClaimsTransformation Id="SetCompanyEmail" TransformationMethod="AddParameterToStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="otherMails" TransformationClaimType="collection" />
@@ -87,11 +87,11 @@ Yeni veya mevcut bir stringCollection 'a bir dize değeri eklemek için bu talep
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-  - **koleksiyon**: ["someone@outlook.com"]
+  - **koleksiyon**: [" someone@outlook.com "]
 - Giriş parametreleri
-  - **öğe**: "admin@contoso.com"
+  - **öğe**: " admin@contoso.com "
 - Çıkış talepleri:
-  - **koleksiyon**: ["someone@outlook.com", "admin@contoso.com"]
+  - **koleksiyon**: [" someone@outlook.com ", " admin@contoso.com "]
 
 ## <a name="getsingleitemfromstringcollection"></a>Getsingleıtemfromstringcollection
 
@@ -104,7 +104,7 @@ Belirtilen dize koleksiyonundan ilk öğeyi alır.
 
 Aşağıdaki örnek, **Diğer postalar** talebini okur ve ilk öğeyi **e-posta** talebine döndürür.
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateEmailFromOtherMails" TransformationMethod="GetSingleItemFromStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="otherMails" TransformationClaimType="collection" />
@@ -118,9 +118,9 @@ Aşağıdaki örnek, **Diğer postalar** talebini okur ve ilk öğeyi **e-posta*
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-  - **koleksiyon**: ["someone@outlook.com", "someone@contoso.com"]
+  - **koleksiyon**: [" someone@outlook.com ", " someone@contoso.com "]
 - Çıkış talepleri:
-  - **Extracteditıtem**: "someone@outlook.com"
+  - **Extracteditıtem**: " someone@outlook.com "
 
 
 ## <a name="stringcollectioncontains"></a>StringCollectionContains
@@ -136,7 +136,7 @@ Bir StringCollection talep türünün bir öğe içerip içermediğini denetler
 
 Aşağıdaki örnek, `roles` StringCollection talep türünün **yönetici**değerini içerip içermediğini denetler.
 
-```XML
+```xml
 <ClaimsTransformation Id="IsAdmin" TransformationMethod="StringCollectionContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
@@ -170,9 +170,9 @@ Bir StringCollection talep türünün bir talep değeri içerip içermediğini d
 |InputParameter|ignoreCase|string|Bu karşılaştırmanın karşılaştırılan dizelerin durumunu yoksayıp saymayacağını belirtir.|
 | OutputClaim | outputClaim | boole | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. Koleksiyon böyle bir dize içeriyorsa Boolean göstergesi |
 
-Aşağıdaki örnek, `roles` StringCollection talep türünün `role` talep türü değerini içerip içermediğini denetler.
+Aşağıdaki örnek, `roles` StringCollection talep türünün talep türü değerini içerip içermediğini denetler `role` .
 
-```XML
+```xml
 <ClaimsTransformation Id="HasRequiredRole" TransformationMethod="StringCollectionContainsClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="collection" />

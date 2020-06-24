@@ -6,12 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: d60885f7dbcd090e4f2172015787bc34d4ee7bcf
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ac05d5b4eb8dd9d7a39f56ec6efae4831f00c623
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832512"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100000"
 ---
 # <a name="manage-role-permissions-and-security"></a>Rol izinlerini ve güvenliği yönetme
 
@@ -21,7 +21,7 @@ Rol tabanlı erişim denetimi (RBAC), Azure kaynakları için erişim yönetimi 
 
 Azure Automation’da, otomasyon hesabı kapsamında kullanıcılara, gruplara ve uygulamalara uygun RBAC rolü atanarak erişim verilir. Aşağıda Automation hesabının desteklediği yerleşik roller bulunmaktadır:
 
-| **Rol** | **Açıklama** |
+| **Role** | **Açıklama** |
 |:--- |:--- |
 | Sahip |Sahip rolü, Otomasyon hesabını yönetmek için diğer kullanıcılara, gruplara ve uygulamalara erişim sağlamak dahil olmak üzere Otomasyon hesabı içindeki tüm kaynaklara ve eylemlere erişim sağlar. |
 | Katılımcı |Katılımcı rolü, başka kullanıcının Otomasyon hesabına erişim izinlerini değiştirme dışında her şeyi yönetmenizi sağlar. |
@@ -43,7 +43,7 @@ Aşağıdaki tablolar her role verilen belirli izinleri anlatmaktadır. Bu, izin
 
 Bir sahip, erişim dahil her şeyi yönetebilir. Aşağıdaki tabloda rol için verilen izinler gösterilmektedir:
 
-|Eylemler|Açıklama|
+|Eylemler|Description|
 |---|---|
 |Microsoft. Automation/automationAccounts/|Tüm türlerin kaynaklarını oluşturun ve yönetin.|
 
@@ -254,7 +254,7 @@ Aşağıdaki bölümlerde, Güncelleştirme Yönetimi ve Değişiklik İzleme ve
 
 Güncelleştirme yönetimi, hizmeti sağlamak için birden çok hizmete ulaşır. Aşağıdaki tabloda, güncelleştirme yönetimi dağıtımlarını yönetmek için gereken izinler gösterilmektedir:
 
-|**Kaynak**  |**Rol**  |**Kapsam**  |
+|**Kaynak**  |**Role**  |**Kapsam**  |
 |---------|---------|---------|
 |Otomasyon hesabı     | Log Analytics Katkıda Bulunan       | Otomasyon hesabı        |
 |Otomasyon hesabı    | Sanal Makine Katılımcısı        | Hesabın kaynak grubu        |
@@ -283,7 +283,7 @@ Aşağıdaki bölümde, Otomasyon hesabınızda [Azure Portal](#configure-rbac-u
 
 3. **Seçim** alanında izinleri vermek istediğiniz kullanıcının adını yazın. Listeden kullanıcıyı seçin ve **Kaydet**' e tıklayın.
 
-   ![Kullanıcı ekle](media/automation-role-based-access-control/automation-04-add-users.png)
+   ![Kullanıcı ekleme](media/automation-role-based-access-control/automation-04-add-users.png)
 
    Şimdi, seçilen rolün atandığı kullanıcılar sayfasına eklenen kullanıcıyı görmeniz gerekir.
 
@@ -404,7 +404,7 @@ $userId = "<User ObjectId>" # Azure Active Directory (AAD) user's ObjectId from 
 $aa = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts" -ResourceName $automationAccountName
 
 # Get the Runbook resource
-$rb = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts/runbooks" -ResourceName "$automationAccountName/$rbName"
+$rb = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts/runbooks" -ResourceName "$rbName"
 
 # The Automation Job Operator role only needs to be run once per user.
 New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job Operator" -Scope $aa.ResourceId

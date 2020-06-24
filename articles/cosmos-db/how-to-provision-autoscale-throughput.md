@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/10/2020
-ms.openlocfilehash: 16fad7f57d3054c193da2571f1b33cfd77fdd51c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 59feabce099087edb011df471561229bfa88a289
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664763"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118738"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Azure Cosmos DB veritabanında veya kapsayıcıda otomatik ölçeklendirme üretilen işi sağlama
 
@@ -26,7 +26,7 @@ Bu makalede, Azure Cosmos DB bir veritabanında veya kapsayıcıda (koleksiyon, 
 
 1. **Yeni kapsayıcı** ' yı seçin. Veritabanınız, Kapsayıcınız ve bölüm anahtarınız için bir ad girin. **Verimlilik**altında, **Otomatik ölçeklendirme** seçeneğini belirleyin ve veritabanının veya kapsayıcının ölçeklendirilmesini istediğiniz [en yüksek aktarım hızını (ru/sn)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) ayarlayın.
 
-   ![Kapsayıcı oluşturma ve otomatik ölçeklendirme sağlanan verimini yapılandırma](./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png)
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="Kapsayıcı oluşturma ve otomatik ölçeklendirme sağlanan verimini yapılandırma":::
 
 1. **Tamam**’ı seçin.
 
@@ -45,7 +45,7 @@ Paylaşılan aktarım hızı veritabanında otomatik ölçeklendirme sağlamak i
 
 1. **Ölçek**altında, **Otomatik ölçeklendirme** seçeneğini belirleyin ve **kaydedin**.
 
-   ![Varolan bir kapsayıcıda otomatik ölçeklendirmeyi etkinleştirme](./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png)
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Varolan bir kapsayıcıda otomatik ölçeklendirmeyi etkinleştirme":::
 
 > [!NOTE]
 > Varolan bir veritabanı veya kapsayıcıda otomatik ölçeklendirmeyi etkinleştirdiğinizde, en fazla RU/sn için başlangıç değeri sistem tarafından belirlenir ve geçerli el ile sağlanan aktarım hızı ayarları ve depolama alanınızı temel alır. İşlem tamamlandıktan sonra gerekirse en fazla RU/sn 'yi değiştirebilirsiniz. [Daha fazla bilgi edinin.](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 

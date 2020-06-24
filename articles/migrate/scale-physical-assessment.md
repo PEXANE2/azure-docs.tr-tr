@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
-ms.openlocfilehash: a19a1b6e7416667079ab07fc5440ee8828c26bf4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b84a7b88f700e2ba8e9fbe29099dfcbce8dbf3b7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76294376"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85081073"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Azure 'a geçiş için çok sayıda fiziksel sunucuyu değerlendirin
 
@@ -47,7 +47,7 @@ Planlama için bu tabloda özetlenen limitleri kullanın.
 **Planlama** | **Sınırlar**
 --- | --- 
 **Azure geçişi projeleri** | Bir projede en fazla 35.000 sunucuyu değerlendirin.
-**Azure Geçişi gereci** | Bir gereç, en fazla 250 sunucuyu bulabilir.<br/> Bir gereç, yalnızca tek bir Azure geçişi projesiyle ilişkilendirilebilir.<br/> Herhangi bir sayıda gereç, tek bir Azure geçişi projesiyle ilişkilendirilebilir. <br/><br/> 
+**Azure Geçişi gereci** | Bir gereç, en fazla 1000 sunucuyu bulabilir.<br/> Bir gereç, yalnızca tek bir Azure geçişi projesiyle ilişkilendirilebilir.<br/> Herhangi bir sayıda gereç, tek bir Azure geçişi projesiyle ilişkilendirilebilir. <br/><br/> 
 **Grubu** | Tek bir gruba en fazla 35.000 sunucu ekleyebilirsiniz.
 **Azure geçişi değerlendirmesi** | Tek bir değerlendirmede en fazla 35.000 sunucu değerlendirebilirsiniz.
 
@@ -73,7 +73,7 @@ Planlama gereksinimlerinize uygun olarak şunları yapın:
 1. Bir Azure Geçişi projesi oluşturun.
 2. Azure geçişi sunucu değerlendirmesi aracını projelere ekleyin.
 
-[Daha fazlasını öğrenin](how-to-add-tool-first-time.md)
+[Daha fazla bilgi edinin](how-to-add-tool-first-time.md)
 
 ## <a name="create-and-review-an-assessment"></a>Değerlendirme oluşturma ve gözden geçirme
 

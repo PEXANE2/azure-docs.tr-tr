@@ -9,11 +9,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7f2c7a6f9c1146627f81dc20386c59a91724b245
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254540"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698963"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Sanal dizisi dağıtma-Azure portal hazırlama
 
@@ -127,7 +127,7 @@ Hizmet kayıt anahtarını aldıktan sonra, ana bilgisayar sisteminizde bir sana
 
 #### <a name="to-get-the-virtual-array-image"></a>Sanal dizi görüntüsünü almak için
 
-1. [Azure Portal](https://portal.azure.com/)oturum açın. 
+1. [Azure portalında](https://portal.azure.com/) oturum açın. 
 2. Azure portal, **> StorSimple cihaz yöneticilerine gözatıp**' ye tıklayın.
 3. Mevcut bir StorSimple Aygıt Yöneticisi hizmeti seçin. **StorSimple aygıt yöneticisi** dikey penceresinde **hızlı başlangıç**' e tıklayın. 
 4. Microsoft Indirme Merkezi ' nden indirmek istediğiniz görüntüye karşılık gelen bağlantıya tıklayın. Görüntü dosyaları yaklaşık 4,8 GB'tır.

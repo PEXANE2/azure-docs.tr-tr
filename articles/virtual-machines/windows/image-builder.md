@@ -3,28 +3,33 @@ title: Azure Image Builder ile Windows VM oluşturma (Önizleme)
 description: Azure görüntü Oluşturucu ile bir Windows sanal makinesi oluşturun.
 author: cynthn
 ms.author: cynthn
-ms.date: 07/31/2019
+ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 269b2f4674f2c99fc438c1a7be65e5660ca58d08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6fa1f6bcc6c91a493225726bc0df60d2d0b4a1e3
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869503"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119197"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Önizleme: Azure Image Builder ile Windows VM oluşturma
 
 Bu makale, Azure VM görüntü Oluşturucusu 'nu kullanarak özelleştirilmiş bir Windows görüntüsünü nasıl oluşturabileceğiniz hakkında sizi gösterir. Bu makaledeki örnek, görüntüyü özelleştirmek için [özelleştiriciler](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize) kullanır:
 - PowerShell (ScriptUri)- [PowerShell betiğini](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)indirip çalıştırın.
 - Windows yeniden başlatma-VM 'yi yeniden başlatır.
-- PowerShell (satır içi)-belirli bir komut çalıştırın. Bu örnekte, kullanarak `mkdir c:\\buildActions`VM üzerinde bir dizin oluşturur.
-- Dosya-GitHub 'dan sanal makineye dosya kopyalama. Bu örnek, [index.MD](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) `c:\buildArtifacts\index.html` öğesini sanal makineye kopyalar.
+- PowerShell (satır içi)-belirli bir komut çalıştırın. Bu örnekte, kullanarak VM üzerinde bir dizin oluşturur `mkdir c:\\buildActions` .
+- Dosya-GitHub 'dan sanal makineye dosya kopyalama. Bu örnek, [index.MD](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) öğesini `c:\buildArtifacts\index.html` sanal makineye kopyalar.
+- Buildtimeoutınminutes-daha uzun süre çalışan derlemeler için derleme süresini artırın, varsayılan değer 240 dakikadır ve derleme süresini daha uzun süre çalışan yapılara izin verecek şekilde artırabilirsiniz.
+- vmProfile-bir vmSize ve ağ özelliklerini belirtme
+- osDiskSizeGB-görüntünün boyutunu artırabilirsiniz
+- kimlik-Azure Image Builder 'ın derleme sırasında kullanması için bir kimlik sağlama
 
-Ayrıca, bir `buildTimeoutInMinutes`de belirtebilirsiniz. Varsayılan değer 240 dakikadır ve bir derleme süresini daha uzun süre çalışan derlemeler için de artırabilirsiniz.
 
-Görüntüyü yapılandırmak için bir Sample. JSON şablonu kullanacağız. Kullandığımız. JSON dosyası şurada: [Helloımagetemplatewin. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json). 
+Ayrıca, bir de belirtebilirsiniz `buildTimeoutInMinutes` . Varsayılan değer 240 dakikadır ve bir derleme süresini daha uzun süre çalışan derlemeler için de artırabilirsiniz.
+
+Görüntüyü yapılandırmak için bir Sample. JSON şablonu kullanacağız. Kullandığımız. JSON dosyası şurada: [helloImageTemplateWin.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json). 
 
 
 > [!IMPORTANT]
@@ -50,7 +55,8 @@ Kaydınızı denetleyin.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-
+az provider show -n Microsoft.KeyVault | grep registrationState
+az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
@@ -58,9 +64,11 @@ Kayıtlı değilse, aşağıdakileri çalıştırın:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
-
+az provider register -n Microsoft.Compute
+az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
 ```
+
 
 ## <a name="set-variables"></a>Değişkenleri ayarla
 
@@ -80,7 +88,7 @@ runOutputName=aibWindows
 imageName=aibWinImage
 ```
 
-Abonelik KIMLIĞINIZ için bir değişken oluşturun. Bunu kullanarak `az account show | grep id`edinebilirsiniz.
+Abonelik KIMLIĞINIZ için bir değişken oluşturun. Bunu kullanarak edinebilirsiniz `az account show | grep id` .
 
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
@@ -93,18 +101,41 @@ Bu kaynak grubu, görüntü yapılandırma şablonu yapıtı ve görüntüsünü
 az group create -n $imageResourceGroup -l $location
 ```
 
-## <a name="set-permissions-on-the-resource-group"></a>Kaynak grubunda izinleri ayarla
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Kullanıcı tarafından atanan bir kimlik oluşturma ve kaynak grubunda izinleri ayarlama
+Image Builder, görüntüyü kaynak grubuna eklemek için belirtilen [Kullanıcı kimliğini](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity) kullanır. Bu örnekte, görüntüyü dağıtmayı gerçekleştirmeye yönelik ayrıntılı eylemlere sahip bir Azure rol tanımı oluşturacaksınız. Rol tanımı daha sonra kullanıcı kimliğine atanır.
 
-Görüntü Oluşturucu ' katkıda bulunan ' iznini kaynak grubunda oluşturmak için izin verin. Bu olmadan, görüntü derlemesi başarısız olur. 
+## <a name="create-user-assigned-managed-identity-and-grant-permissions"></a>Kullanıcı tarafından atanan yönetilen kimlik oluşturma ve izin verme 
+```bash
+# create user assigned identity for image builder to access the storage account where the script is located
+idenityName=aibBuiUserId$(date +'%s')
+az identity create -g $imageResourceGroup -n $idenityName
 
-`--assignee` Değer, görüntü Oluşturucu hizmeti için uygulama kayıt kimliğidir. 
+# get identity id
+imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $idenityName | grep "clientId" | cut -c16- | tr -d '",')
 
-```azurecli-interactive
+# get the user identity URI, needed for the template
+imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
+
+# download preconfigured role definition example
+curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+
+imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
+
+# update the definition
+sed -i -e "s/<subscriptionID>/$subscriptionID/g" aibRoleImageCreation.json
+sed -i -e "s/<rgName>/$imageResourceGroup/g" aibRoleImageCreation.json
+sed -i -e "s/Azure Image Builder Service Image Creation Role/$imageRoleDefName/g" aibRoleImageCreation.json
+
+# create role definitions
+az role definition create --role-definition ./aibRoleImageCreation.json
+
+# grant role definition to the user assigned identity
 az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
+    --assignee $imgBuilderCliId \
+    --role $imageRoleDefName \
     --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
 ```
+
 
 
 ## <a name="download-the-image-configuration-template-example"></a>Görüntü yapılandırma şablonu örneğini indirin
@@ -119,18 +150,19 @@ sed -i -e "s/<rgName>/$imageResourceGroup/g" helloImageTemplateWin.json
 sed -i -e "s/<region>/$location/g" helloImageTemplateWin.json
 sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateWin.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateWin.json
+sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateWin.json
 
 ```
 
-Bu örneği terminalde, gibi `vi`bir metin düzenleyicisi kullanarak değiştirebilirsiniz.
+Bu örneği terminalde, gibi bir metin düzenleyicisi kullanarak değiştirebilirsiniz `vi` .
 
 ```azurecli-interactive
-vi helloImageTemplateLinux.json
+vi helloImageTemplateWin.json
 ```
 
 > [!NOTE]
-> Kaynak görüntüde her zaman [bir sürüm belirtmeniz](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)gerekir `latest`.
-> Görüntünün dağıtıldığı kaynak grubunu ekler veya değiştirirseniz, izinleri kaynak grubunda [ayarlamanız](#set-permissions-on-the-resource-group) gerekir.
+> Kaynak görüntüde her zaman [bir sürüm belirtmeniz](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)gerekir `latest` .
+> Görüntünün dağıtıldığı kaynak grubunu ekler veya değiştirirseniz, izinleri kaynak grubunda [ayarlamanız](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group) gerekir.
  
 ## <a name="create-the-image"></a>Görüntü oluşturma
 
@@ -145,7 +177,7 @@ az resource create \
     -n helloImageTemplateWin01
 ```
 
-Bu işlem tamamlandığında, bir başarı iletisini konsola geri döndürür ve içinde bir `Image Builder Configuration Template` oluşturur. `$imageResourceGroup` ' Gizli türleri göster ' i etkinleştirirseniz, bu kaynağı Azure portal kaynak grubunda görebilirsiniz.
+Bu işlem tamamlandığında, bir başarı iletisini konsola geri döndürür ve içinde bir oluşturur `Image Builder Configuration Template` `$imageResourceGroup` . ' Gizli türleri göster ' i etkinleştirirseniz, bu kaynağı Azure portal kaynak grubunda görebilirsiniz.
 
 Arka planda, görüntü Oluşturucu aynı zamanda aboneliğinizde bir hazırlama kaynak grubu oluşturur. Bu kaynak grubu, görüntü derlemesi için kullanılır. Bu biçimde olacaktır:`IT_<DestinationResourceGroup>_<TemplateName>`
 
@@ -181,7 +213,7 @@ Herhangi bir hatayla karşılaşırsanız lütfen bu [sorun giderme](https://git
 
 ## <a name="create-the-vm"></a>Sanal makine oluşturma
 
-Oluşturduğunuz görüntüyü kullanarak VM 'yi oluşturun. * \<Parola>* , `aibuser` VM üzerindeki için kendi parolanızla değiştirin.
+Oluşturduğunuz görüntüyü kullanarak VM 'yi oluşturun. *\<password>* VM üzerindeki için kendi parolanızla değiştirin `aibuser` .
 
 ```azurecli-interactive
 az vm create \
@@ -216,6 +248,18 @@ az resource delete \
     --resource-group $imageResourceGroup \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
     -n helloImageTemplateWin01
+```
+
+### <a name="delete-the-role-assignment-role-definition-and-user-identity"></a>Rol atamasını, rol tanımını ve Kullanıcı kimliğini silin.
+```azurecli-interactive
+az role assignment delete \
+    --assignee $imgBuilderCliId \
+    --role "$imageRoleDefName" \
+    --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
+
+az role definition delete --name "$imageRoleDefName"
+
+az identity delete --ids $imgBuilderId
 ```
 
 ### <a name="delete-the-image-resource-group"></a>Görüntü kaynak grubunu sil

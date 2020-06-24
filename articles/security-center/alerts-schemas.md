@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 19ca17f66f6818ed4c3ef532e2030cc03f0e73ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b8d7f241f79b087f318c9c416dcadf92838b084
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062960"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126221"
 ---
 # <a name="security-alerts-schemas"></a>Güvenlik uyarıları şemaları
 
@@ -140,7 +140,7 @@ Uyarı etkinleştir olayını gösterildiği gibi arayarak etkinlik günlüğün
 
 ### <a name="the-data-model-of-the-schema"></a>Şemanın veri modeli
 
-|Alan|Açıklama|
+|Alan|Description|
 |----|----|
 |**lardan**|Sabit, "Işlem"|
 |**correlationId**|Azure Güvenlik Merkezi uyarı KIMLIĞI|
@@ -150,7 +150,7 @@ Uyarı etkinleştir olayını gösterildiği gibi arayarak etkinlik günlüğün
 |**alan**|Value ve localizedValue alt alanları sabittir-"güvenlik"|
 |**eventTimestamp**|Uyarının oluşturulduğu zamana ilişkin UTC zaman damgası|
 |**numarasını**|Tam olarak nitelenmiş uyarı KIMLIĞI|
-|**düzeyde**|Sabit, "bilgilendirme"|
+|**düzey**|Sabit, "bilgilendirme"|
 |**operationId**|Bkz. CorrelationId|
 |**operationName**|Değer alanı sabittir-"Microsoft. Security/Locations/Alerts/Activate/Action" ve yerelleştirilmiş değer "uyarıyı etkinleştir" (büyük olasılıkla Kullanıcı yerel ayarı için yerelleştirilmiş olabilir) olacaktır|
 |**resourceGroupName**|Kaynak grubu adını dahil eder|
@@ -171,7 +171,7 @@ Uyarı etkinleştir olayını gösterildiği gibi arayarak etkinlik günlüğün
 
 ### <a name="ms-graph-api"></a>[MS Graph API](#tab/schema-graphapi)
 
-Microsoft Graph, Microsoft 365 veri ve zeka ağ geçidindir. Office 365, Windows 10 ve Enterprise Mobility + Security 'daki çok fazla veri miktarına erişmek için kullanabileceğiniz Birleşik bir programlama modeli sağlar. Milyonlarca kullanıcıyla etkileşime geçen kuruluşlar ve tüketiciler için uygulama derlemek üzere Microsoft Graph içindeki çok sayıda veriyi kullanın.
+Microsoft Graph, Microsoft 365 veri ve zeka ağ geçidindir. Microsoft 365, Windows 10 ve Enterprise Mobility + Security çok fazla miktarda veriye erişmek için kullanabileceğiniz Birleşik bir programlama modeli sağlar. Milyonlarca kullanıcıyla etkileşime geçen kuruluşlar ve tüketiciler için uygulama derlemek üzere Microsoft Graph içindeki çok sayıda veriyi kullanın.
 
 MS Graph 'e gönderilen güvenlik uyarıları için şema ve JSON temsili [Microsoft Graph belgelerinde](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0)bulunabilir.
 

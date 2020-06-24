@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 5728a8e254074cd96ae1f13cb053220f347e3983
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 7162e2e8c42f3e83a47c46d739f93cfc4cfcaac6
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83791046"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737640"
 ---
-# <a name="data-storage-optimization"></a>Veri depolama iyileştirmesi
+# <a name="data-storage-optimization-for-apache-spark"></a>Apache Spark için veri depolama iyileştirmesi
 
 Bu makalede, Azure HDInsight 'ta verimli Apache Spark iş yürütmesi için veri depolamayı iyileştirmek için stratejiler ele alınmaktadır.
 
@@ -54,7 +54,7 @@ Performans için en iyi biçim, Spark 2. x içinde varsayılan değer olan *Snap
 
 Yeni bir Spark kümesi oluşturduğunuzda, kümenizin varsayılan depolama alanı olarak Azure Blob depolama veya Azure Data Lake Storage seçebilirsiniz. Her iki seçenek de, geçici kümeler için uzun süreli depolamanın avantajını sağlar. Bu nedenle, kümenizi sildiğinizde verileriniz otomatik olarak silinmez. Geçici bir kümeyi yeniden oluşturabilir ve verilerinize erişmeye devam edebilirsiniz.
 
-| Mağaza Türü | Dosya Sistemi | Hız | Larsa | Kullanım örnekleri |
+| Mağaza Türü | Dosya Sistemi | Hız | Larsa | Kullanım Örnekleri |
 | --- | --- | --- | --- | --- |
 | Azure Blob Depolama | fazla **b:**// | **Standart** | Yes | Geçici küme |
 | Azure Blob depolama (güvenli) | fazla **BS:**// | **Standart** | Yes | Geçici küme |

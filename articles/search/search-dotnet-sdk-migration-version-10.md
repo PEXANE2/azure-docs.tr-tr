@@ -9,20 +9,20 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ad912eb0b26354d40a654a1c8782dfcb960235e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32d77b82b30411bd5b423f903c25392fd8e09e44
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73847514"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080947"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Azure Bilişsel Arama .NET SDK sürüm 10 ' a yükseltme
 
-[Azure Search .NET SDK 'sının](https://aka.ms/search-sdk)sürüm 9,0 veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı sürüm 10 ' u kullanacak şekilde yükseltmenize yardımcı olur.
+[.NET SDK 'sının](https://docs.microsoft.com/dotnet/api/overview/azure/search)9,0 veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı sürüm 10 ' u kullanacak şekilde yükseltmenize yardımcı olur.
 
 Azure Search, sürüm 10 ' da Azure Bilişsel Arama olarak yeniden adlandırıldı, ancak ad alanları ve paket adları değiştirilmez. SDK 'nın önceki sürümleri (9,0 ve öncesi), eski adı kullanmaya devam eder. SDK 'yı kullanma hakkında daha fazla bilgi için örnekler de dahil olmak üzere [.NET uygulamasından Azure bilişsel arama kullanma](search-howto-dotnet-sdk.md)konusuna bakın.
 
-Sürüm 10, çeşitli özellikler ve hata düzeltmeleri ekleyerek REST API sürümünün `2019-05-06`en son sürümüyle aynı işlev düzeyine getirir. Bir değişikliğin mevcut kodu kesen durumlarda, [sorunu çözmek için gereken adımlarda](#UpgradeSteps)size yol göstereceğiz.
+Sürüm 10, çeşitli özellikler ve hata düzeltmeleri ekleyerek REST API sürümünün en son sürümüyle aynı işlev düzeyine getirir `2019-05-06` . Bir değişikliğin mevcut kodu kesen durumlarda, [sorunu çözmek için gereken adımlarda](#UpgradeSteps)size yol göstereceğiz.
 
 > [!NOTE]
 > Sürüm 8,0-Önizleme veya daha eski bir sürümünü kullanıyorsanız, önce sürüm 9 ' a yükseltmeniz ve sonra sürüm 10 ' a yükseltmeniz gerekir. Yönergeler için bkz. [Azure Search .NET SDK sürüm 9](search-dotnet-sdk-migration-version-9.md) ' a yükseltme.
@@ -32,7 +32,7 @@ Sürüm 10, çeşitli özellikler ve hata düzeltmeleri ekleyerek REST API sür�
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-10"></a>Sürüm 10 ' daki yenilikler
-Azure Bilişsel Arama .NET SDK 'sının 10. sürümü, bu güncelleştirmelerle birlikte sunulan en son genel sürümü REST API`2019-05-06`() hedefliyor:
+Azure Bilişsel Arama .NET SDK 'sının 10. sürümü, bu güncelleştirmelerle birlikte sunulan en son genel sürümü REST API ( `2019-05-06` ) hedefliyor:
 
 * İki yeni becerinin tanıtımı- [koşullu yetenek](cognitive-search-skill-conditional.md) ve [metin çeviri yeteneği](cognitive-search-skill-text-translation.md).
 * [Tek tek beceri](cognitive-search-skill-shaper.md) girişleri, iç içe bağlamlardan birleştirmeye uyum sağlayacak şekilde yeniden yapılandırılmış. Daha fazla bilgi için bu [örnek JSON tanımına](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts)bakın.
@@ -40,14 +40,14 @@ Azure Bilişsel Arama .NET SDK 'sının 10. sürümü, bu güncelleştirmelerle 
     - [urlEncode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urlencode-function)
     - [URL kod çözme](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urldecode-function)
 * Belirli durumlarda, [Dizin Oluşturucu yürütme durumunda](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) görüntülenen hatalar ve uyarılar hata ayıklamada yardımcı olan ek ayrıntılara sahip olabilir. `IndexerExecutionResult`, bu davranışı yansıtacak şekilde güncelleştirildi.
-* Bir [beceri](cognitive-search-defining-skillset.md) içinde tanımlanan bireysel yetenekler, isteğe bağlı olarak bir `name` Özellik belirtilerek belirlenebilir.
+* Bir [beceri](cognitive-search-defining-skillset.md) içinde tanımlanan bireysel yetenekler, isteğe bağlı olarak bir özellik belirtilerek belirlenebilir `name` .
 * `ServiceLimits`[karmaşık türlerin](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) sınırlarını gösterir ve `IndexerExecutionInfo` ilgili Dizin Oluşturucu sınırlarını/kotalarını gösterir.
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Yükseltme adımları
 
-1. NuGet, NuGet Paket Yöneticisi `Microsoft.Azure.Search` konsolunu veya proje başvurularınızı sağ tıklayıp "NuGet Paketlerini Yönet..." seçeneğini belirleyerek için NuGet başvurunuz ' ı güncelleştirin. Visual Studio 'da.
+1. NuGet `Microsoft.Azure.Search` , NuGet Paket Yöneticisi konsolunu veya proje başvurularınızı sağ tıklayıp "NuGet Paketlerini Yönet..." seçeneğini belirleyerek Için NuGet başvurunuz ' ı güncelleştirin. Visual Studio 'da.
 
 2. NuGet yeni paketleri ve bağımlılıklarını indirdikten sonra projenizi yeniden derleyin. 
 
@@ -68,9 +68,9 @@ Sürüm 10 ' da uygulamanızı yeniden oluşturmak için ek olarak kod değişik
 
 [Özel Web API 'si yeteneğin](cognitive-search-custom-skill-web-api.md) tanımı, sürüm 9 ve daha eski sürümlerde yanlış belirtildi. 
 
-Sözlük içeren bir `WebApiSkill` nesne `HttpHeaders` özelliği olarak belirtilen model. _contains_ Bu şekilde `WebApiSkill` oluşturulmuş bir beceri oluşturmak, isteğin hatalı biçimlendirilmiş olduğundan REST API bir özel durum oluşmasına neden olur. Bu sorun, `WebApiSkill` modelin kendisi üzerinde, REST API `HttpHeaders` geçerli bir istek olarak kabul edilen bir **üst düzey sözlük özelliği** yapılarak düzeltildi.
+`WebApiSkill` `HttpHeaders` Sözlük _içeren_ bir nesne özelliği olarak belirtilen model. `WebApiSkill`Bu şekilde oluşturulmuş bir beceri oluşturmak, isteğin hatalı biçimlendirilmiş olduğundan REST API bir özel durum oluşmasına neden olur. Bu sorun, `HttpHeaders` modelin kendisi üzerinde, REST API geçerli bir istek olarak kabul edilen bir **üst düzey sözlük özelliği** yapılarak düzeltildi `WebApiSkill` .
 
-Örneğin, daha önce bir `WebApiSkill` örneğini şu şekilde örneğini oluşturmaya çalıştınız:
+Örneğin, daha önce bir örneğini şu şekilde örneğini oluşturmaya çalıştınız `WebApiSkill` :
 
 ```csharp
 
@@ -109,22 +109,22 @@ var webApiSkill = new WebApiSkill(
 
 ## <a name="shaper-skill-allows-nested-context-consolidation"></a>Beceri başına mil iç içe bağlam birleştirmeye izin verir
 
-Beceri başına mil, artık iç içe bağlamlardan giriş birleştirmeye izin verebilir. Bu değişikliği etkinleştirmek için, yalnızca bir `InputFieldMappingEntry` `Source` özellik veya hem de `SourceContext` `Inputs` özellikleri belirtilerek, örnekleri oluşturulacak şekilde değiştirdik.
+Beceri başına mil, artık iç içe bağlamlardan giriş birleştirmeye izin verebilir. Bu değişikliği etkinleştirmek için, `InputFieldMappingEntry` yalnızca bir `Source` özellik veya hem de özellikleri belirtilerek, örnekleri oluşturulacak şekilde değiştirdik `SourceContext` `Inputs` .
 
-Büyük olasılıkla herhangi bir kod değişikliği yapmanız gerekmez; Ancak, bu iki birleşimden yalnızca birine izin verildiğini unutmayın. Bunun anlamı:
+Büyük olasılıkla herhangi bir kod değişikliği yapmanız gerekmez; Ancak, bu iki birleşimden yalnızca birine izin verildiğini unutmayın. Diğer bir deyişle:
 
-- Yalnızca `Source` başlatılmış `InputFieldMappingEntry` bir konum oluşturmak geçerlidir.
-- Yalnızca `InputFieldMappingEntry` `SourceContext` ve `Inputs` başlatılmış bir WHERE oluşturulması geçerlidir.
+- `InputFieldMappingEntry`Yalnızca başlatılmış bir konum oluşturmak `Source` geçerlidir.
+- `InputFieldMappingEntry`Yalnızca ve başlatılmış bir WHERE oluşturulması `SourceContext` `Inputs` geçerlidir.
 - Bu üç özelliği içeren diğer tüm birleşimler geçersizdir.
 
 Bu yeni özellikten birini kullanmaya başlatmaya karar verirseniz, bu değişikliği yapmadan önce tüm istemcilerinizin sürüm 10 ' u kullanacak şekilde güncelleştirildiğinden emin olun. Aksi takdirde, bir istemci tarafından (SDK 'nın eski bir sürümünü kullanarak), bir yetenek başına Biçimlendiriciye, doğrulama hatalarına neden olabilir.
 
 > [!NOTE]
-> Temel alınan `InputFieldMappingEntry` model, iç içe bağlamlardan birleştirmeye izin verecek şekilde değiştirilmiş olsa da, bu kullanım yalnızca her beceri Için bir mil tanımı dahilinde geçerlidir. Bu özelliği, derleme zamanında geçerli olan diğer becerilerle kullanmak çalışma zamanında bir doğrulama hatasına neden olur.
+> Temel alınan model, `InputFieldMappingEntry` iç içe bağlamlardan birleştirmeye izin verecek şekilde değiştirilmiş olsa da, bu kullanım yalnızca her beceri için bir mil tanımı dahilinde geçerlidir. Bu özelliği, derleme zamanında geçerli olan diğer becerilerle kullanmak çalışma zamanında bir doğrulama hatasına neden olur.
 
 ## <a name="skills-can-be-identified-by-a-name"></a>Yetenekler, bir adla tanımlanabilir
 
-Bir beceri içindeki her yetenek artık, becerinizi belirlemenize `Name`yardımcı olmak için kodunuzda başlatılan yeni bir özelliğe sahiptir. Bu isteğe bağlıdır-belirtilmemişse (varsayılan olarak, açıkça kod değişikliği yapılmamıştır), Beceri içindeki yeteneğin 1 tabanlı dizinini kullanarak varsayılan bir ad atanır ve ' # ' karakteri önüne gelir. Örneğin, aşağıdaki beceri tanımında (breçekimi için en fazla başlatma atlandı):
+Bir beceri içindeki her yetenek artık, `Name` becerinizi belirlemenize yardımcı olmak için kodunuzda başlatılan yeni bir özelliğe sahiptir. Bu isteğe bağlıdır-belirtilmemişse (varsayılan olarak, açıkça kod değişikliği yapılmamıştır), Beceri içindeki yeteneğin 1 tabanlı dizinini kullanarak varsayılan bir ad atanır ve ' # ' karakteri önüne gelir. Örneğin, aşağıdaki beceri tanımında (breçekimi için en fazla başlatma atlandı):
 
 ```csharp
 var skillset = new Skillset()
@@ -139,9 +139,9 @@ var skillset = new Skillset()
 }
 ```
 
-`SentimentSkill``#1`bir ad atanır, `WebApiSkill` atanır `#2`, `ShaperSkill` atanır `#3` ve bu şekilde devam eder.
+`SentimentSkill`bir ad atanır `#1` , atanır `WebApiSkill` `#2` , `ShaperSkill` atanır `#3` ve bu şekilde devam eder.
 
-Becerileri özel bir ad ile belirlemeyi seçerseniz, istemcilerinizin tüm örneklerini öncelikle SDK 'nın 10. sürümüne güncelleştirdiğinizden emin olun. Aksi takdirde, SDK `null` 'nın eski bir sürümünü kullanan bir istemcinin bir beceri `Name` özelliğini kullanmasını ve istemcinin varsayılan adlandırma düzenine geri dönmesine neden olduğu bir olasılık vardır.
+Becerileri özel bir ad ile belirlemeyi seçerseniz, istemcilerinizin tüm örneklerini öncelikle SDK 'nın 10. sürümüne güncelleştirdiğinizden emin olun. Aksi takdirde, SDK 'nın eski bir sürümünü kullanan bir istemcinin `null` `Name` bir beceri özelliğini kullanmasını ve istemcinin varsayılan adlandırma düzenine geri dönmesine neden olduğu bir olasılık vardır.
 
 ## <a name="details-about-errors-and-warnings"></a>Hatalar ve uyarılar hakkındaki ayrıntılar
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: b78e227159065d2ae85d9b1dc989e8ea192ae26a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5028417758bb8be38505d27d3dfb5e2fc055c3ca
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982811"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125830"
 ---
 # <a name="microsoft-global-network"></a>Microsoft küresel ağı
 
@@ -38,7 +38,7 @@ Londra 'dan Tokyo 'ya veya Washington DC 'den Los Angeles 'a bağlanıp, ağ per
 
 Örneğin, Londra 'daki bir Kullanıcı Tokyo 'daki bir hizmete erişmeye çalışırsa, Internet trafiği Londra 'daki kenarlarımızın birini, Fransa 'dan Microsoft WAN 'dan, Avrupa ve Hindistan arasındaki Trans-Arabistan yollarımızla, sonra da hizmetin barındırıldığı yerde Japonya 'dan geçer. Yanıt trafiği simetrik. Bu bazen [soğuk Potato yönlendirme](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) olarak adlandırılır. Bu, trafiğin, kapatmadan önce mümkün olduğunca uzun süre Microsoft ağ üzerinde kalması anlamına gelir.  
   
-Bu nedenle, Microsoft hizmetlerini kullanırken herhangi bir ve tüm trafik anlamına gelir. Evet, Microsoft Azure veya sanal makineler, Office 365, XBox, SQL DB, depolama ve sanal ağlar gibi Microsoft Hizmetleri arasındaki veri merkezleri arasındaki herhangi bir trafik, en iyi performans ve bütünlüğü sağlamak için genel ağımızda ve genel Internet üzerinden yönlendirilmesidir.  
+Bu nedenle, Microsoft hizmetlerini kullanırken herhangi bir ve tüm trafik anlamına gelir. Evet, Microsoft Azure veya sanal makineler, Microsoft 365, XBox, SQL DBs, depolama ve sanal ağlar gibi Microsoft Hizmetleri arasındaki herhangi bir trafik, en iyi performans ve bütünlüğü sağlamak için genel ağımızda ve hiçbir şekilde genel Internet üzerinden yönlendirilir.  
  
 Fiber kapasitesinde çok büyük yatırım ve metro, berkik ve denizsel yolların üzerinde çeşitliliğe sahip olmak, bulut ve çevrimiçi hizmetler üstün büyümesinin yanı sıra tutarlı ve yüksek hizmet düzeyini korumamız için çok önemlidir. Küresel ağımızda son eklemeler, [Marea](https://www.submarinecablemap.com/#/submarine-cable/marea) alt deniz kablonuz, sektörün, Kbao, Ispanya ve Virginia plaj, Virginia, USA ve New York, ABD ve Dublin, Irlanda ve [yeni çapraz Pasifik (NCP](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) ) arasında, Tokyo, Japonya ve Portland, Oregon ve ABD arasında [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) olan ilk açık satır sistemi (as). 
  

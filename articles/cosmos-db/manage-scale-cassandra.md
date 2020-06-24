@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: 8f84d611ecdf3fc0f86273498753e550315cd878
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c9517b6d48f21a2ac2c4b92e68c788a33897511b
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586193"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119163"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API bir hesabı ölçeklendirin
 
@@ -19,7 +19,7 @@ Cassandra için Azure Cosmos DB API 'sinin elastik yapısını keşfetmeye yöne
 
 Cassandra API için, [.net ve Java SDK](https://docs.microsoft.com/azure/cosmos-db/find-request-unit-charge#cassandra-api)'larını kullanarak tekil sorgular Için istek birimi ücreti alabilirsiniz. Bu, hizmette sağlamanız gereken RU/sn miktarını belirlemede yararlı olacaktır.
 
-![Veritabanı işlemleri Istek birimlerini tüketir](./media/request-units/request-units.png)
+:::image type="content" source="./media/request-units/request-units.png" alt-text="Veritabanı işlemleri Istek birimlerini tüketir" border="false":::
 
 ## <a name="handling-rate-limiting-429-errors"></a>İşleme hızı sınırlaması (429 hata)
 
